@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Arcade – fünf Agenten, erste gemeinsame Reparaturrunde ·15.11.2026 UTC
+
+Auf `codex/neon-flug-koop` / Entwurfs-PR3156:36 Spiele-Adressen einschliesslich vier alter Weiterleitungen erfasst,20 Minispiele auf Handy/Desktop gestartet und gezielte Eingabe-/End-/Neustartfehler repariert. Weitere Fixes in Actionspielen, Wildnis/Park/Tempel, Lebenspfad, Traumhaus und beiden Wortspielen. Gemeinsame Header lassen eigene Stationen sowie Modell-Blobs/Blob-Bilder nur auf Spielrouten zu; Sprachchat-Mikrofon nur für Lebenspfad/Traumhaus mit Browserfreigabe. Flugfelsen behalten Form/UVs, Rettung am Ziel und kleine Ergebnis-/Trainingsdetails korrigiert;96 gezielte Flugprüfbedingungen grün. Keine pauschale Fertig- oder Handy-FPS-Zusage; genaue Belege/Restpunkte in `spiele-dev/parallel-audit/README.md`. Frische lokale Flugaufnahme; nicht veröffentlicht oder gemergt.
+
 ## Codex: Neon-Flug – schneller Standard und Bonus-Level ·15.11.2026
 
 Auf `codex/neon-flug-koop` / PR3156: Canvas2D-Perspektive als neuer Standard ohne WebGL-Kontext, bisherige 3D-Fassung optional. Kurze Cloud-Probe mit v3-Boni: rund59,8 rAF-Bilder/s bei960×540, kein Handy-Benchmark. Neue Bonusringe, Kettenboni, zehn Piloten-Level plus weitere500-XP-Stufen und neun freischaltbare Module mit echten Spieleffekten. Alte schwere Grafikeinstellung einmalig migriert, Profile/XP erhalten. Gemessen:43 Unit-,8 Kampagnen-,12 Such-/Ausrüstungs-,9 UI- und6 Rendererprüfungen bestanden. Neue Videoaufnahme zeigt echten lokalen Trainingslauf. Öffentlicher Verbindungsnachweis weiterhin offen; keine CA-Änderung, nicht veröffentlicht. Details: `spiele-dev/neon-flug/README.md`.

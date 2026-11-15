@@ -59,7 +59,8 @@ const server = http.createServer((req, res) => {
     return;
   }
   let file = url === "/" ? "/neon-flug.html" : url;
-  if (!path.extname(file)) file += ".html";
+  if (file.endsWith("/")) file += "index.html";
+  else if (!path.extname(file)) file += ".html";
   file = path.resolve(ROOT, "." + file);
   if (
     !file.startsWith(ROOT + path.sep) ||

@@ -111,6 +111,8 @@
   var raf=null, lastT=0;
 
   function newGame(){
+    if(raf!==null) cancelAnimationFrame(raf);
+    lastT=0; state=null; falling=[]; flash=0;
     towers={1:[],2:[]};
     blockH=Math.max(22,Math.min(34,H*0.06));
     baseW=Math.min(W*0.42,150);
@@ -119,7 +121,7 @@
     v1.textContent="0"; v2.textContent="0";
     startTurn();
     ov.classList.add("hidden");
-    loop();
+    raf=requestAnimationFrame(loop);
   }
 
   function towerWidthOfNext(pl){
@@ -355,8 +357,9 @@
     if(state==="over") return;
     place();
   }
-  cv.addEventListener("touchstart",tap,{passive:false});
-  cv.addEventListener("mousedown",function(e){ if(!('ontouchstart'in window)) tap(e); });
+  cv.addEventListener("pointerdown",function(e){
+    if(e.pointerType!=="mouse" || e.button===0) tap(e);
+  });
 
   ovBtn.addEventListener("click",function(){
     lastT=0;

@@ -35,11 +35,11 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 html,body{height:100%;overflow:hidden;background:#07061a;color:#fff;font-family:system-ui,Segoe UI,Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
 #wrap{position:fixed;inset:0}
 canvas{display:block}
-#hud{position:fixed;top:10px;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:0 58px 0 14px;font-weight:800;font-size:1.1rem;text-shadow:0 2px 8px #000;pointer-events:none;z-index:5}
+#hud{position:fixed;top:10px;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:0 110px 0 14px;font-weight:800;font-size:1.1rem;text-shadow:0 2px 8px #000;pointer-events:none;z-index:5}
 /* HUD-Chips: lesbar vor Sonne/Neon (vorher nackter Text, rechts unterm Mute-Knopf) */
 #hud>div{background:rgba(20,10,40,.66);border:1px solid rgba(255,122,217,.32);border-radius:14px;padding:6px 12px;white-space:nowrap}
 /* Schmale Screens: Level-Chip in die 2. Reihe statt rechts abgeschnitten */
-@media (max-width:560px){#hud{flex-wrap:wrap;font-size:.98rem}#lvlTag{order:3}}
+@media (max-width:560px){#hud{flex-wrap:wrap;font-size:.98rem;padding-right:110px}#lvlTag{order:3}}
 .overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(30,20,60,.72),rgba(7,6,26,.93));backdrop-filter:blur(3px);padding:20px;overflow-y:auto}
 /* Zentrier-Trick statt justify-content:center: Inhalt höher als Viewport wird scrollbar statt oben abgeschnitten (Titel war auf Desktop gekappt) */
 .overlay>:first-child{margin-top:auto}.overlay>:last-child{margin-bottom:auto}
@@ -69,6 +69,10 @@ canvas{display:block}
 .cpAcc{width:42px;height:36px;font-size:1.05rem;border-radius:14px;border:2px solid #5a3170;background:rgba(30,16,43,.7);cursor:pointer;color:#ffd6ee}
 .cpAcc.on{border-color:#ffe14d;box-shadow:0 0 12px rgba(255,225,77,.5)}
 @keyframes wpB{0%,100%{opacity:.72}50%{opacity:1}}
+
+#pauseBtn{position:fixed;top:8px;right:60px;z-index:21;width:44px;height:44px;border:1px solid #5a617d;border-radius:50%;background:#17162e;color:#fff;font-size:1.1rem;cursor:pointer}
+#pauseLayer{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:rgba(7,6,26,.88);text-align:center;padding:20px}
+#pauseLayer button{min-height:44px;padding:12px 24px;border:0;border-radius:14px;font:700 1rem system-ui;cursor:pointer}
 </style>
 </head>
 <body>
@@ -77,6 +81,8 @@ canvas{display:block}
 <div id="hud" class="hide"><div>🪙 <span id="coins">0</span></div><div id="lvlTag" style="color:#ffb0d8">Level 1</div><div>💀 <span id="deaths">0</span> · ⏱ <span id="time">0s</span></div></div>
 <div id="waitP" class="hide" style="position:fixed;top:62px;left:50%;transform:translateX(-50%);z-index:6;background:rgba(20,10,40,.85);color:#ffd6ee;font-weight:800;font-size:1rem;padding:8px 18px;border-radius:14px;border:1px solid rgba(255,122,217,.45);box-shadow:0 6px 20px rgba(0,0,0,.4);animation:wpB 1s ease-in-out infinite">⏳ Warte auf deinen Partner!</div>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
+<button id="pauseBtn" class="hide" title="Pause (Esc/P)" aria-label="Pause">⏸</button>
+<div id="pauseLayer" class="hide"><strong>⏸ Pause</strong><button id="resumeBtn">Weiterspielen ▶</button><span>Esc / P</span></div>
 <div id="touch"><div class="z" id="tzL" style="left:0" data-g="◀"></div><div class="z" id="tzR" style="left:33%" data-g="▶"></div><div class="z" id="tzJ" style="right:0;width:34%" data-g="⤴ SPRUNG"></div></div>
 
 <div class="overlay" id="start">
@@ -268,7 +274,7 @@ var actx=null,muted=false;try{muted=localStorage.getItem("nj_muted")==="1";}catc
 (function(){function _unlock(){try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state!=="running")actx.resume();}catch(e){}}["touchstart","pointerdown","mousedown","keydown"].forEach(function(ev){addEventListener(ev,_unlock,true);});})(); /* 🔊 Schwarm-3 P3: AudioContext in der 1. Nutzer-Geste entsperren (iOS-Autoplay) */
 function beep(f,d,t,v){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(1e-4,actx.currentTime+(d||.1));o.stop(actx.currentTime+(d||.1));}catch(e){}}
 var MUS=new Audio("/audio/electrodoodle.mp3");MUS.loop=true;MUS.volume=0.28;MUS.preload="none";
-function musSync(){if(muted||!running)MUS.pause();else MUS.play().catch(function(){});}
+function musSync(){if(muted||!running||paused)MUS.pause();else MUS.play().catch(function(){});}
 var muteBtn=document.getElementById("muteBtn");
 function applyMute(){muteBtn.textContent=muted?"🔇":"🔊";try{localStorage.setItem("nj_muted",muted?"1":"0");}catch(e){}musSync();}
 applyMute();muteBtn.onclick=function(){muted=!muted;applyMute();};
@@ -528,7 +534,7 @@ function buildPicker(){
 var GRAV=52,MAXVX=13,ACC=95,FRIC=70,JUMPV=19,HW=0.42,HH=0.7;
 function freshP(x,y){return {x:x,y:y,vx:0,vy:0,onGround:false,coyote:0,jbuf:0,jumps:0,sq:1,ckX:x,ckY:y,atGoal:false};}
 var PL=[freshP(3,2.2),freshP(5,2.2)];
-var coins=0,deaths=0,running=false,won=false,elapsed=0,last=performance.now();
+var coins=0,deaths=0,running=false,paused=false,won=false,elapsed=0,last=performance.now();
 var inp=[{L:false,R:false,J:false},{L:false,R:false,J:false}];
 var shake=0;
 function resetRun(){
@@ -543,8 +549,18 @@ function respawn(pi){ /* J1: zerbröselte Crumble-Plattformen wiederherstellen �
 function doJump(p){if(p.coyote>0||p.jumps<2){p.vy=JUMPV*(p.jumps===0?1:0.92);p.coyote=0;p.jumps++;p.sq=0.6;beep(560+p.jumps*90,.08,"square",.05);
   if(p.jumps>=2)burst(p.x,p.y-0.1,[FXC.dj2a,FXC.dj2b],3.4);   // Doppelsprung: Cyan + Magenta
   else spawnRing(p.x,p.y-0.6,FXC.dj1,0.34,2.0);}}             // 1. Sprung: dezenter Violett-Puls
+function clearInput(){inp.forEach(function(i){i.L=i.R=i.J=false;});}
+function setPaused(value){if(!running)return;paused=value;clearInput();last=performance.now();
+  document.getElementById("pauseLayer").classList.toggle("hide",!paused);
+  document.getElementById("pauseBtn").textContent=paused?"▶":"⏸";musSync();}
+document.getElementById("pauseBtn").onclick=function(){setPaused(!paused);};
+document.getElementById("resumeBtn").onclick=function(){setPaused(false);};
+addEventListener("blur",function(){clearInput();if(running)setPaused(true);});
+document.addEventListener("visibilitychange",function(){if(document.hidden){clearInput();if(running)setPaused(true);}});
 // ---- Eingaben: P1 = WAD, P2 = Pfeile; Handy = Zonen für P1(solo) ----
-addEventListener("keydown",function(e){if(e.repeat)return;var k=e.key.toLowerCase(); /* 🩹 Schwarm-P2: Auto-Repeat feuerte Doppelsprung */
+addEventListener("keydown",function(e){if(e.repeat)return;var k=e.key.toLowerCase();
+  if((k==="escape"||k==="p")&&running){e.preventDefault();setPaused(!paused);return;}
+  if(paused)return; /* 🩹 Schwarm-P2: Auto-Repeat feuerte Doppelsprung */
   if(k==="a")inp[0].L=true;if(k==="d")inp[0].R=true;
   if(k==="arrowleft")inp[coopMode?1:0].L=true;if(k==="arrowright")inp[coopMode?1:0].R=true;
   if(k==="w"||k===" "){if(!running){startGame(coopMode);}else{inp[0].J=true;}e.preventDefault&&e.preventDefault();} /* J5: Modus beibehalten statt Koop erzwingen */
@@ -553,13 +569,13 @@ addEventListener("keyup",function(e){var k=e.key.toLowerCase();
   if(k==="a")inp[0].L=false;if(k==="d")inp[0].R=false;
   if(k==="arrowleft")inp[coopMode?1:0].L=false;if(k==="arrowright")inp[coopMode?1:0].R=false;});
 var touchEl=document.getElementById("touch");
-document.getElementById("tzL").addEventListener("touchstart",function(e){inp[0].L=true;e.preventDefault();},{passive:false});
+document.getElementById("tzL").addEventListener("touchstart",function(e){if(paused)return;inp[0].L=true;e.preventDefault();},{passive:false});
 document.getElementById("tzL").addEventListener("touchend",function(){inp[0].L=false;});
 document.getElementById("tzL").addEventListener("touchcancel",function(){inp[0].L=false;});
-document.getElementById("tzR").addEventListener("touchstart",function(e){inp[0].R=true;e.preventDefault();},{passive:false});
+document.getElementById("tzR").addEventListener("touchstart",function(e){if(paused)return;inp[0].R=true;e.preventDefault();},{passive:false});
 document.getElementById("tzR").addEventListener("touchend",function(){inp[0].R=false;});
 document.getElementById("tzR").addEventListener("touchcancel",function(){inp[0].R=false;});
-document.getElementById("tzJ").addEventListener("touchstart",function(e){if(!running)startGame(false);else inp[0].J=true;e.preventDefault();},{passive:false});
+document.getElementById("tzJ").addEventListener("touchstart",function(e){if(paused)return;if(!running)startGame(false);else inp[0].J=true;e.preventDefault();},{passive:false});
 // ---- Level-Auswahl ----
 function renderLvlSel(){var el=document.getElementById("lvlSel");if(!el)return;el.innerHTML="";
   LEVELS.forEach(function(L,i){var b=document.createElement("button");
@@ -569,12 +585,12 @@ function renderLvlSel(){var el=document.getElementById("lvlSel");if(!el)return;e
     el.appendChild(b);});}
 function startGame(coop){
   coopMode=IS_MOBILE?false:coop; // 📱 Handy: IMMER Solo mit Touch-Zonen (Tastatur-Koop ergab dort KEINE Steuerung)
-  resetRun();running=true;
+  resetRun();running=true;setPaused(false);document.getElementById("pauseBtn").classList.remove("hide");
   document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   if(IS_MOBILE)touchEl.style.display="block";
   musSync();}
 function showBest(){var b=bestT();document.getElementById("best2").textContent=b>0?("🏆 Beste Zeit L1: "+b+"s"):"";}
-function finish(win){running=false;won=win;musSync();shake=win?0.4:0.6;touchEl.style.display="none";var _wp=document.getElementById("waitP");if(_wp)_wp.classList.add("hide");
+function finish(win){setPaused(false);document.getElementById("pauseBtn").classList.add("hide");running=false;won=win;musSync();shake=win?0.4:0.6;touchEl.style.display="none";var _wp=document.getElementById("waitP");if(_wp)_wp.classList.add("hide");
   if(win){for(var gi=0;gi<FXC.goal.length;gi++)spawnRing(goalX,goalY+1,FXC.goal[gi],0.7,4+gi*1.1);} // Ziel: bunter Feier-Puls
   var secs=Math.floor(elapsed);
   if(win){var stars=(coins>=coinMeshes.length?"⭐⭐⭐":(deaths===0?"⭐⭐":"⭐"));
@@ -602,12 +618,13 @@ function overlaps(ax,ay,bx,by,bw2,bh2){return Math.abs(ax-bx)<HW+bw2 && Math.abs
 function loop(now){
   gridMesh.material.uniforms.uT.value=now*0.0005;
   requestAnimationFrame(loop);
-  var dt=Math.max(0,Math.min(0.033,(now-last)/1000)); last=now; /* P1 (Play-Test): erster rAF-Timestamp kann VOR dem Skriptload-last liegen → negatives dt gab 1 Gratis-Tod + negative Zeit im Stationsstart */
+  var dt=Math.max(0,Math.min(0.033,(now-last)/1000)); last=now;
+  if(paused){renderBloom();return;} /* P1 (Play-Test): erster rAF-Timestamp kann VOR dem Skriptload-last liegen → negatives dt gab 1 Gratis-Tod + negative Zeit im Stationsstart */
   if(running&&!won){
     elapsed+=dt;
     // bewegliche + bröckelnde Plattformen
     for(var i=0;i<PLAT.length;i++){var pl=PLAT[i];
-      if(pl.mv){var ph=now*0.001*(6.283/pl.mv.per);
+      if(pl.mv){var ph=elapsed*(6.283/pl.mv.per);
         var nx=pl.x0+Math.sin(ph)*(pl.mv.dx||0),ny=pl.y0+Math.sin(ph)*(pl.mv.dy||0);
         pl.dx=nx-pl.x;pl.dy=ny-pl.y;pl.x=nx;pl.y=ny;pl.m.position.set(nx,ny,0);}
       if(pl.crumble&&pl.cT>0&&!pl.gone){pl.cT-=dt;pl.m.rotation.z=Math.sin(now*0.05)*0.03;
@@ -725,13 +742,13 @@ function loop(now){
   var cx2=PL[1]?(PL[0].x+PL[1].x)/2:PL[0].x;
   var cy2=PL[1]?Math.max(1,(PL[0].y+PL[1].y)/2):Math.max(1,PL[0].y);
   var dist=PL[1]?Math.hypot(PL[0].x-PL[1].x,PL[0].y-PL[1].y):0;
-  camera.position.x+=((cx2+3)-camera.position.x)*0.12;
-  camera.position.y+=((cy2+3.4)-camera.position.y)*0.08;
+  camera.position.x+=((cx2+3)-camera.position.x)*(1-Math.pow(0.88,dt*60));
+  camera.position.y+=((cy2+3.4)-camera.position.y)*(1-Math.pow(0.92,dt*60));
   // Zoom: weiter raus als zuvor (Basis 17->20), auf Hochformat zusätzlich zurück (mehr Vorausschau)
   var aspect=W/H,tz0=20+(aspect<1?Math.min(8,(1-aspect)*14):0);
   var tz=tz0+Math.min(12,Math.max(0,dist-8)*0.9);
-  camera.position.z+=(tz-camera.position.z)*0.08;
-  if(shake>0.001){camera.position.x+=(Math.random()-0.5)*shake*1.6;camera.position.y+=(Math.random()-0.5)*shake*1.6;shake*=0.85;}else shake=0;
+  camera.position.z+=(tz-camera.position.z)*(1-Math.pow(0.92,dt*60));
+  if(shake>0.001){camera.position.x+=(Math.random()-0.5)*shake*1.6;camera.position.y+=(Math.random()-0.5)*shake*1.6;shake*=Math.pow(0.85,dt*60);}else shake=0;
   camera.lookAt(camera.position.x-1.5,camera.position.y-2.5,0);
   sky.position.set(camera.position.x,camera.position.y,0);
   sun.position.x=camera.position.x*0.55;

@@ -633,7 +633,14 @@ var moveX=0,moveZ=0,keys={};
 /* Online-Client: Pause/Ability/Skills liegen beim HOST — lokal wirkten sie nur auf die Spiegel-Welt
    (Gegner explodierten und standen nach dem nächsten Snapshot wieder auf; Pause fror nur das eigene Bild ein,
    während der Host weitersimulierte und die eigene Figur totgeschlagen wurde) → für den Client sperren. */
-addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=true;if((e.key==="Escape"||e.key.toLowerCase()==="p")&&running&&coopMode!=='client'&&document.getElementById("levelup").classList.contains("hide")&&!buildMenuOpen&&!placing&&!demolishMode){paused=!paused;announce(paused?"⏸ Pause (Esc/P)":"");}if(e.key===" "&&running&&!paused&&coopMode!=='client'){if(e.preventDefault)e.preventDefault();castAbility();}
+function clearMoveInput(){keys={};touch=null;moveX=moveZ=0;}
+function canManualPause(){return running&&coopMode!=='client'&&document.getElementById("levelup").classList.contains("hide")&&!buildMenuOpen&&!structMenuOpen&&!placing&&!demolishMode;}
+function manualPause(value){if(!canManualPause())return;paused=value;clearMoveInput();last=performance.now();
+  var pb=document.getElementById("pauseBtn");if(pb)pb.textContent=paused?"▶":"⏸";announce(paused?"⏸ Pause (Esc/P)":"");musSync();}
+addEventListener("blur",function(){clearMoveInput();if(!coopMode||coopMode==='ai')manualPause(true);});
+document.addEventListener("visibilitychange",function(){if(document.hidden){clearMoveInput();if(!coopMode||coopMode==='ai')manualPause(true);}});
+addEventListener("keydown",function(e){if(e.target&&e.target.closest&&e.target.closest("input,textarea,select,[contenteditable=true]"))return;
+  keys[e.key.toLowerCase()]=true;if(e.repeat)return;if(e.key==="Escape"||e.key.toLowerCase()==="p"){manualPause(!paused);}if(e.key===" "&&running&&!paused&&coopMode!=='client'){if(e.preventDefault)e.preventDefault();castAbility();}
 if(running&&!paused&&coopMode!=='client'&&(e.key==="1"||e.key==="2"||e.key==="3"))castSkill(+e.key);});
 addEventListener("keyup",function(e){keys[e.key.toLowerCase()]=false;});
 var touch=null;
@@ -658,7 +665,7 @@ function showTouchBtns(on){if(!COARSE)return;var ab=document.getElementById("abB
   b.addEventListener("click",function(e){e.stopPropagation();if(running&&!paused)castSkill(n);});});
 (function(){var pb=document.getElementById("pauseBtn");if(!pb)return;
   function tgl(e){e.preventDefault&&e.preventDefault();e.stopPropagation();
-    if(running&&coopMode!=='client'&&document.getElementById("levelup").classList.contains("hide")){paused=!paused;pb.textContent=paused?"▶":"⏸";announce(paused?"⏸ Pause":"");}} /* Client-Pause s. keydown-Kommentar */
+    manualPause(!paused);} /* Client-Pause s. keydown-Kommentar */
   pb.addEventListener("touchstart",tgl,{passive:false});pb.addEventListener("click",tgl);})();
 addEventListener("touchmove",function(e){if(!touch)return;for(var _ti=0;_ti<e.touches.length;_ti++){var _tt=e.touches[_ti];if(_tt.identifier===touch.id){touch.x=_tt.clientX;touch.y=_tt.clientY;e.preventDefault();break;}}},{passive:false}); /* S1: preventDefault nur bei aktivem Joystick → Overlays scrollen; S6: per Identifier nur DEN Joystick-Finger verfolgen */
 function relTouch(e){if(!touch)return;for(var _ti=0;_ti<e.changedTouches.length;_ti++)if(e.changedTouches[_ti].identifier===touch.id){touch=null;return;}} /* S6: nur das Loslassen des Joystick-Fingers löscht den Joystick — jeder Button-Tipp mit dem 2. Finger stoppte sonst die Figur mitten im Schwarm */
@@ -1277,7 +1284,7 @@ function resetBuild(){for(var i=0;i<structures.length;i++){scene.remove(structur
   var cc=document.getElementById("cancelBtn");if(cc)cc.style.display="none";
   updateScrapHUD();updateBuildBtn();var wn=document.getElementById("waveN");if(wn)wn.textContent="";}
 // Eingaben Bau-Modus
-addEventListener("keydown",function(e){var k=e.key.toLowerCase();
+addEventListener("keydown",function(e){if(e.repeat)return;var k=e.key.toLowerCase();
   if(k==="b"&&running){if(placing||buildMenuOpen)return;if(S.buildPhase==="build")openBuildMenu();else announce("🔨 Bauen nur zwischen den Wellen");}
   if(e.key==="Escape"){if(structMenuOpen){closeStructMenu();openBuildMenu();}else if(placing){cancelPlacing();if(S.buildPhase==="build")openBuildMenu();}else if(buildMenuOpen)closeBuildMenu();else if(demolishMode)exitDemolish();}});
 renderer.domElement.addEventListener("mousemove",function(e){if(placing&&!COARSE){var pt=screenToFloor(e.clientX,e.clientY);if(pt)setGhost(pt.x,pt.z);}});
@@ -1600,7 +1607,7 @@ function start(){
   var input=document.getElementById("nameInput");
   curName=nsSetName((input&&input.value)?input.value:nsGetName());
   var hn=document.getElementById("hudName");if(hn)hn.textContent=curName?("👤 "+curName):"";
-  if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;paused=false;document.getElementById("levelup").classList.add("hide");document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
+  clearMoveInput();last=performance.now();if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;paused=false;document.getElementById("levelup").classList.add("hide");document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   hurt=0;hurtEl.style.opacity=0;showTouchBtns(true);updateBuildBtn();
   var mi=(coopMode==='client'&&pendingMap!=null)?pendingMap:(dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length));
   curMapIdx=mi;var m=applyMap(mi);coopSetup();announce("» "+m.name+" «");startMusic();
@@ -1651,9 +1658,11 @@ var amb2N=IS_TOUCH?48:80,ambG=new THREE.BufferGeometry(),ambP=new Float32Array(a
 for(var _ai=0;_ai<amb2N;_ai++){ambP[_ai*3]=(Math.random()-.5)*110;ambP[_ai*3+1]=Math.random()*7;ambP[_ai*3+2]=(Math.random()-.5)*110;ambVv[_ai]=0.3+Math.random()*0.9;}
 ambG.setAttribute("position",new THREE.BufferAttribute(ambP,3));
 var ambPts=new THREE.Points(ambG,new THREE.PointsMaterial({color:0x5ef2ff,size:0.3,transparent:true,opacity:.55,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(ambPts);
+var musicPauseState=null,musicRunState=null;
 function loop(now){
   requestAnimationFrame(loop);
-  var dt=Math.min(0.05,(now-last)/1000); last=now;
+  var dt=Math.max(0,Math.min(0.05,(now-last)/1000)); last=now;
+  if(musicPauseState!==paused||musicRunState!==running){musicPauseState=paused;musicRunState=running;musSync();}
   if(hitstop>0){hitstop-=dt;dt*=0.12;} // Hitstop-Juice: kurzer Zeit-Stopp bei großen Treffern
   if(running&&!paused&&coopMode==='client'){clientFrame(dt);} /* Online-Client: nur rendern + Input senden — Host simuliert */
   else if(running&&!paused){

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>Wortbrücke — das tägliche Kompositum-Rätsel | aban news</title>
 <meta name="description" content="Wortbrücke: Finde täglich das Brücken-Wort, das mit beiden Seiten ein zusammengesetztes Wort bildet (GARTEN_?_TÜR → HAUS). Gratis, deutsch, teilbar.">
 <link rel="canonical" href="https://abannews.com/wortbruecke.html">
@@ -16,10 +17,10 @@
 {"@context":"https://schema.org","@type":"Game","name":"Wortbrücke","url":"https://abannews.com/wortbruecke.html","genre":"Wortspiel","inLanguage":"de","isAccessibleForFree":true,"publisher":{"@type":"Organization","name":"aban news"}}
 </script>
 <style>
-:root{--cream:#fffbf5;--ink:#1f2937;--amber:#b45309;--line:#ece3d4;--ok:#6aaa64}
+:root{--cream:#fffbf5;--ink:#1f2937;--amber:#b45309;--line:#ece3d4;--ok:#326f2c}
 *{box-sizing:border-box}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;display:flex;flex-direction:column;min-height:100vh}
-header{border-bottom:1px solid var(--line);text-align:center;padding:10px}
+header{border-bottom:1px solid var(--line);text-align:center;padding:10px 58px}
 header b{color:var(--amber);font-size:1.05rem}
 header .sub{display:block;font-size:.78rem;color:#57534e;margin-top:2px}
 main{flex:1;max-width:540px;width:100%;margin:0 auto;padding:14px;text-align:center}
@@ -32,7 +33,7 @@ h1{font-size:1.3rem;margin:.6rem 0 .2rem}
 .slots{letter-spacing:6px;font-size:1.3rem;font-weight:800}
 #msg{min-height:24px;font-weight:700;color:var(--amber);margin:6px 0}
 .row{display:flex;gap:8px;max-width:380px;margin:10px auto;justify-content:center}
-input{flex:1;padding:12px 14px;border:2px solid #d8cbb0;border-radius:14px;font-size:1.05rem;text-transform:uppercase;text-align:center;outline:none}
+input{flex:1;min-width:0;width:100%;padding:12px 14px;border:2px solid #d8cbb0;border-radius:14px;font-size:1.05rem;text-transform:uppercase;text-align:center;outline:none}
 input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(180,83,9,.15)}
 .btn{border:0;cursor:pointer;font-weight:800;padding:12px 18px;border-radius:14px;color:#fff;background:var(--amber);font-size:1rem;box-shadow:0 2px 6px rgba(180,83,9,.28)}
 .btn.ghost{background:#fff;color:var(--amber);border:1px solid #e7c98a;box-shadow:none}
@@ -55,6 +56,16 @@ footer a{color:var(--amber);text-decoration:none}
   .plus{font-size:1.1rem}
   .slots{letter-spacing:4px;font-size:1.1rem}
 }
+button:focus-visible,a:focus-visible{outline:3px solid #1d4ed8;outline-offset:3px}
+.btn{touch-action:manipulation}
+.solved,.cta{overflow-wrap:anywhere}
+.cta .btn{display:inline-block;margin:4px 0}
+@media(max-width:440px){
+  .bridge{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.1fr) auto minmax(0,1fr)}
+  .word{min-width:0;padding:10px 3px;font-size:clamp(.72rem,3.1vw,.98rem)}
+  .slots{font-size:inherit;letter-spacing:1px}
+}
+@media(prefers-reduced-motion:reduce){.shake,.solved .big{animation:none}}
 </style>
 </head>
 <body>
@@ -71,13 +82,14 @@ footer a{color:var(--amber);text-decoration:none}
     <span class="word" id="right">—</span>
   </div>
 
-  <div id="msg"></div>
+  <p class="lead">Neues Rätsel um 00:00 UTC · Fortschritt bleibt auf diesem Gerät erhalten.</p>
+  <div id="msg" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <div id="play">
-    <div class="row">
-      <input id="guess" type="text" autocomplete="off" autocapitalize="characters" placeholder="Brücken-Wort…" maxlength="20">
-      <button class="btn" id="go">Raten</button>
-    </div>
+    <form class="row" id="guessform">
+      <input id="guess" type="text" autocomplete="off" autocapitalize="characters" placeholder="Brücken-Wort…" aria-label="Brücken-Wort" spellcheck="false" enterkeyhint="go" maxlength="20">
+      <button class="btn" id="go" type="submit">Raten</button>
+    </form>
     <button class="btn ghost" id="hint">💡 Hinweis (Buchstabe)</button>
   </div>
 
@@ -126,7 +138,11 @@ footer a{color:var(--amber);text-decoration:none}
   var SK="aban_brk", st=load();
   var tries=0, hints=0, revealed=0, done=false;
 
-  function load(){try{return JSON.parse(localStorage.getItem(SK)||"{}");}catch(e){return {};}}
+  function load(){try{var o=JSON.parse(localStorage.getItem(SK)||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{};}catch(e){return {};}}
+  function saveProgress(){
+    if(done)return;
+    st.progress={day:dayNo,tries:tries,hints:hints,revealed:revealed,draft:document.getElementById("guess").value};save();
+  }
   function save(){try{localStorage.setItem(SK,JSON.stringify(st));}catch(e){}}
 
   function renderSlots(){
@@ -135,7 +151,7 @@ footer a{color:var(--amber);text-decoration:none}
     document.getElementById("slots").textContent=s;
   }
   function setMsg(t){document.getElementById("msg").textContent=t;}
-  function upStats(){document.getElementById("tries").textContent=tries;document.getElementById("hints").textContent=hints;document.getElementById("streak").textContent=st.streak||0;}
+  function upStats(){document.getElementById("tries").textContent=tries;document.getElementById("hints").textContent=hints;document.getElementById("streak").textContent=st.lastDay<dayNo-1?0:(st.streak||0);}
 
   function guess(){
     if(done)return;
@@ -144,11 +160,11 @@ footer a{color:var(--amber);text-decoration:none}
     tries++;
     if(norm(v)===norm(ANS)){win();}
     else{setMsg("Nicht ganz — versuch's nochmal oder nimm einen Hinweis.");var gi=document.getElementById("guess");gi.value="";gi.classList.remove("shake");void gi.offsetWidth;gi.classList.add("shake");}
-    upStats();
+    upStats();saveProgress();
   }
   function hint(){
     if(done)return;
-    if(revealed<ANS.length-1){revealed++;hints++;renderSlots();upStats();}
+    if(revealed<ANS.length-1){revealed++;hints++;renderSlots();upStats();setMsg("Ein weiterer Buchstabe ist aufgedeckt.");saveProgress();}
     else{setMsg("Fast alles verraten — jetzt raten! 😄");}
   }
   function win(){
@@ -159,7 +175,7 @@ footer a{color:var(--amber);text-decoration:none}
     // Serie nur bei „heute zum ersten Mal gelöst"
     if(st.day!==dayNo){
       st.streak=(st.lastDay===dayNo-1?(st.streak||0):0)+1;
-      st.day=dayNo; st.lastDay=dayNo; st.lastTries=tries; st.lastHints=hints; save();
+      st.day=dayNo; st.lastDay=dayNo; st.lastTries=tries; st.lastHints=hints; delete st.progress; save();
     }
     var sol=document.getElementById("solved");
     sol.classList.remove("hide");
@@ -170,25 +186,35 @@ footer a{color:var(--amber);text-decoration:none}
     upStats();
   }
 
-  document.getElementById("go").onclick=guess;
+  document.getElementById("guessform").addEventListener("submit",function(e){e.preventDefault();guess();});
   document.getElementById("hint").onclick=hint;
-  document.getElementById("guess").addEventListener("keydown",function(e){if(e.key==="Enter")guess();});
+  document.getElementById("guess").addEventListener("input",function(){setMsg("");saveProgress();});
   document.getElementById("share").onclick=function(){
     var txt="aban Wortbrücke #"+(dayNo+1)+" 🌉 — gelöst mit "+tries+" Versuch(en), "+hints+" Hinweis(en)\nabannews.com/wortbruecke.html";
     if(navigator.share){navigator.share({text:txt}).catch(function(){});}
-    else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){document.getElementById("share").textContent="Kopiert 📋";});}
+    else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){setMsg("Ergebnis kopiert 📋");}).catch(function(){setMsg("Kopieren nicht möglich — bitte erneut versuchen.");});}
+    else{setMsg("Teilen ist in diesem Browser nicht verfügbar.");}
   };
+
+  // Laufenden Tagesfortschritt wiederherstellen; alte gelöste Spielstände bleiben gültig.
+  if(st.progress&&st.progress.day===dayNo){
+    var pr=st.progress;
+    tries=Number.isSafeInteger(pr.tries)&&pr.tries>=0?pr.tries:0;
+    hints=Number.isSafeInteger(pr.hints)&&pr.hints>=0?Math.min(pr.hints,ANS.length-1):0;
+    revealed=Number.isSafeInteger(pr.revealed)&&pr.revealed>=0?Math.min(pr.revealed,ANS.length-1):0;
+    document.getElementById("guess").value=typeof pr.draft==="string"?pr.draft.slice(0,20):"";
+  }
 
   // schon heute gelöst?
   if(st.day===dayNo){revealed=ANS.length;tries=st.lastTries||0;hints=st.lastHints||0;win();}
   renderSlots(); upStats();
 })();
 </script>
-<button id="musBtn" title="Musik an/aus" style="position:fixed;top:10px;right:10px;z-index:50;border:1px solid #8884;background:rgba(127,127,127,.14);border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer">🎵</button>
+<button id="musBtn" aria-label="Musik einschalten" aria-pressed="false" title="Musik an/aus" style="position:fixed;top:10px;right:10px;z-index:50;border:1px solid #8884;background:rgba(127,127,127,.14);border-radius:50%;width:44px;height:44px;font-size:1rem;cursor:pointer">🎵</button>
 <script>
 (function(){var MUS=null,on=false,btn=document.getElementById("musBtn");
 try{on=localStorage.getItem("aban_wort_musik")==="1";}catch(e){}
-function paint(){btn.style.opacity=on?"1":"0.55";btn.textContent=on?"🎵":"🔇";}
+function paint(){btn.style.opacity=on?"1":"0.55";btn.textContent=on?"🎵":"🔇";btn.setAttribute("aria-pressed",String(on));btn.setAttribute("aria-label",on?"Musik ausschalten":"Musik einschalten");}
 function sync(){if(on){if(!MUS){MUS=new Audio("/audio/lemonade.mp3");MUS.loop=true;MUS.volume=0.18;}MUS.play().catch(function(){});}else if(MUS)MUS.pause();}
 btn.onclick=function(){on=!on;try{localStorage.setItem("aban_wort_musik",on?"1":"0");}catch(e){}paint();sync();};
 paint();if(on)document.addEventListener("pointerdown",function f(){document.removeEventListener("pointerdown",f);sync();});

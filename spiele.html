@@ -196,7 +196,6 @@ footer a{color:var(--purple);text-decoration:none}
           <span class="rec" data-best="nw_save1" data-json="level" data-icon="⭐" data-prefix="Dein Held: Level " data-suffix="" data-chip="🌲 Wildnis · Level #"></span> <!-- P7: zeigte nie etwas — las nr_save1/lvl statt nw_save1/level -->
 
           <span class="rec" data-best="ns_best" data-icon="⚔️" data-prefix="Arena: " data-suffix="s überlebt" data-chip="⚔️ Arena · #s"></span>
-          <span class="rec" data-best="aban_neon_best" data-icon="✈️" data-prefix="Flugfeld: " data-suffix=" Punkte" data-chip="✈️ Flugfeld · # P"></span>
           <span class="rec" data-best="nj_best" data-icon="🏃" data-prefix="Parcours: " data-suffix="s Bestzeit" data-chip="🏃 Parcours · #s"></span>
           <span class="rec" data-best="nr_best" data-icon="🏎️" data-prefix="Rennstrecke: " data-suffix=" m" data-chip="🏎️ Rennstrecke · # m"></span>
         </div>
@@ -207,6 +206,15 @@ footer a{color:var(--purple);text-decoration:none}
 
   <h2 class="sect">Ausserdem in der Arcade</h2>
   <div class="grid-games">
+    <a class="card" href="/neon-flug.html" style="--c:#81e9df">
+      <img src="/assets/neon-flug/aether-cover-v1.webp" alt="Zwei Gleiter über einer Felsschlucht" width="640" height="360" loading="lazy" style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:9px;margin-bottom:14px">
+      <span class="tag">2 Piloten · Online-Koop · 3 Kapitel</span>
+      <h2>Aether Run · Neon-Flug</h2>
+      <p>Fliegt gemeinsam durch Schluchten und Sturm: sammelt Doppelringe, stimmt euren Dash ab und rettet euren Partner. Piloten-Level und Module bleiben auf diesem Gerät gespeichert. Zum Üben gibt es einen Autopiloten.</p>
+      <span class="rec" data-best="aether-pilot" data-json="xp" data-icon="✈️" data-prefix="Pilot: " data-suffix=" Flug-XP" data-chip="✈️ Aether Run · # XP"></span>
+      <span class="play">Zum Hangar</span>
+    </a>
+
     <a class="card" href="/traumhaus.html" style="--c:#ff9a6e">
       <div class="emo">🏡</div>
       <span class="tag">Simulation · Bauen · 🌐 Online-Koop</span>
@@ -250,7 +258,7 @@ footer a{color:var(--purple);text-decoration:none}
        background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;
        font-size:.93rem;line-height:1.9;text-align:center">
     <strong>Einzelne Welten direkt öffnen:</strong><br>
-    <a href="/neon-realm.html">⚔️ Neon Realm — Open-World-RPG</a> ·
+    <a href="/neon-realm.html">🌲 Zur Wildnis (früher Neon Realm)</a> ·
     <a href="/neon-dungeon.html">🏰 Neon Dungeon — Katakomben &amp; Koloss</a> ·
     <a href="/neon-zusammen.html">🤝 Tempel der Zwei — Koop-Rätsel</a> ·
     <a href="/neon-park.html">🎢 Neon-Park — Freizeitpark zu zweit</a>
@@ -268,7 +276,7 @@ footer a{color:var(--purple);text-decoration:none}
 <script src="/js/arcade.js"></script>
 <script>
 (function(){
-  var GAMES_TOTAL=6; // 2 Welten (Lebenspfad, Neon Wildnis) + Traumhaus + Minispiele + 2 Rätsel
+  var GAMES_TOTAL=document.querySelectorAll("a.card").length; // Tatsächliche Spieleinstiege im Hub.
   function readBest(key,field){ // defensiv: nutzt AbanArcade, sonst Inline-Fallback
     if(window.AbanArcade)return AbanArcade.readBest(key,field);
     try{var raw=localStorage.getItem(key);if(raw==null||raw==="")return 0;

@@ -156,6 +156,7 @@
   var current='X';      // whose turn
   var over=false;
   var scoreX=0, scoreO=0;
+  var resultTimer=null;
 
   var LINES=[
     [0,1,2],[3,4,5],[6,7,8],
@@ -241,7 +242,7 @@
       else{scoreO++;scoreOEl.textContent=scoreO;}
       statusEl.innerHTML='<span class="'+(winner==='X'?'turnx':'turno')+'">'+symbol(winner)+' Spieler '+(winner==='X'?'1':'2')+' gewinnt!</span>';
       confetti();
-      setTimeout(function(){
+      resultTimer=setTimeout(function(){
         ovBig.textContent='🎉';
         ovRes.textContent=symbol(winner)+' Spieler '+(winner==='X'?'1':'2')+' gewinnt!';
         ovSub.textContent='Stand: '+scoreX+' : '+scoreO;
@@ -249,7 +250,7 @@
       },700);
     }else{
       statusEl.innerHTML='🤝 Unentschieden!';
-      setTimeout(function(){
+      resultTimer=setTimeout(function(){
         ovBig.textContent='🤝';
         ovRes.textContent='Unentschieden!';
         ovSub.textContent='Keiner gewinnt diese Runde · Stand: '+scoreX+' : '+scoreO;
@@ -259,6 +260,7 @@
   }
 
   function newRound(starter){
+    clearTimeout(resultTimer); resultTimer=null;
     overlay.classList.remove('show');
     buildBoard();
     over=false;

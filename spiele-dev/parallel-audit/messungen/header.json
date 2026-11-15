@@ -1,0 +1,98 @@
+{
+  "checks": [
+    {
+      "name": "Lokale Spieleübersicht öffnet die Minispiele-Sammlung",
+      "ok": true
+    },
+    {
+      "name": "Lebenspfad darf echtes Punkte-Jagd-Minispiel einbetten",
+      "ok": true
+    },
+    {
+      "name": "Lokaler Modell-Blob ist lesbar",
+      "ok": true
+    },
+    {
+      "name": "Eingebettete Modelltextur lädt als echtes Blob-Bild",
+      "ok": true
+    },
+    {
+      "name": "Sprachchat erhält nur nach Browserfreigabe einen Test-Audiotrack",
+      "ok": true
+    },
+    {
+      "name": "Keine CSP-Blockade der geprüften Einbettung/Blob-Abrufe",
+      "ok": true
+    },
+    {
+      "name": "neon-flug: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-flug.html: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-park: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-park.html: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-dungeon: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-dungeon.html: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-jump: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-jump.html: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-racer: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-racer.html: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-survivor: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-survivor.html: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-zusammen: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "neon-zusammen.html: nur eigener Ursprung darf einbetten",
+      "ok": true
+    },
+    {
+      "name": "Wildnis lädt echte Sprung-Station ohne Wildnis-Weiterleitung",
+      "ok": true
+    },
+    {
+      "name": "/impressum.html: globale Einbettungs- und Mikrofonbeschränkung erhalten",
+      "ok": true
+    },
+    {
+      "name": "/wort-des-tages.html: globale Einbettungs- und Mikrofonbeschränkung erhalten",
+      "ok": true
+    }
+  ],
+  "violations": [],
+  "microphone": "Nur synthetisches Chromium-Testgerät; keine reale Aufnahme"
+}
