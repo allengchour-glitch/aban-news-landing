@@ -1,0 +1,87 @@
+{
+  "revision": 230,
+  "startedAtUTC": "2026-11-15T09:10:35Z",
+  "recordedAtUTC": "2026-11-15T09:48:50.590485+00:00",
+  "dateZurich": "2026-11-15",
+  "kind": "sales_session_funnel_and_purchase_selection_note_saved_in_fresh_unpublished_theme",
+  "shopIdentityReads": 1,
+  "metricoolIdentityReads": 1,
+  "newShopifySessionsQueries": 1,
+  "orderQueries": 0,
+  "newMetricoolScheduleMetricsReadsOrWrites": 0,
+  "newKlaviyoReportsOrWrites": 0,
+  "newGscQueries": 0,
+  "newMerchantReadsOrWrites": 0,
+  "targetNativeProductReads": 2,
+  "targetCjProductReads": 1,
+  "themeDuplicateMutationCalls": 1,
+  "themeBashEditScripts": 2,
+  "themeCommitCalls": 1,
+  "themeId": "214040805767",
+  "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+  "themeRole": "UNPUBLISHED",
+  "themeCommit": "688dc1d24e0bd8040c288060e31a07943c9dbcf5",
+  "themePublishCalls": 0,
+  "liveThemeWrites": 0,
+  "productWrites": 0,
+  "newSocialPostsSchedulesUploadsDeletes": 0,
+  "nativeScreenshotCalls": 2,
+  "nativeScreenshotImages": 4,
+  "browserPageGETs": {
+    "liveBaseline": 2,
+    "previewInitialOverRestricted": 3,
+    "previewCorrectedMobile": 1
+  },
+  "correctedPreviewProductSectionGETs": 2,
+  "allCustomerFormsCartCheckoutOrMessages": 0,
+  "paidRendersOrInstalls": 0,
+  "newAutomationOrFrequencyChange": false,
+  "shippingThresholdsAndAccountDomainPreserved": true,
+  "sourceGscReused": {
+    "run": "R226",
+    "rows": 20,
+    "truncated": true,
+    "finalEstimatedThrough": "2026-11-12",
+    "notFullPeriodOrFullPageList": true
+  },
+  "funnelIsNotPaymentOrAttributionProof": true,
+  "newMasterMp4": false,
+  "claudeReceipt": "unknown_no_new_receipt",
+  "table": [
+    [
+      "Fortsetzung / Identität",
+      "Core4, heutigen Tagesblock und Shop-/Metricool-Identitäten frisch geprüft",
+      "LuxeStyle/luxestyle.ch/CHF/EuropeZurich, Marke6227837 und sechs Kanalidentitäten passen. Revision229 fortgesetzt; fremde Marken nicht bearbeitet."
+    ],
+    [
+      "Verkaufsgrundlage",
+      "Ersten heutigen kleinen Shopify-Sitzungsreport für 08.–14.11. gelesen und sieben Tage offline gegengeprüft",
+      "318 gemessene Sitzungen,16 mit Warenkorb-Ergänzung, 10 mit erreichtem Checkout,3 mit abgeschlossenem Checkout; 0.94% sitzungsbezogen. Kein Beleg bezahlter Bestellungen, keine SKU-/Ursachenattribution oder eindeutige Personenanzahl."
+    ],
+    [
+      "Konkreter Kaufweg",
+      "Zwei aktuelle Produktseiten mobil gelesen; bei Wickel Schwarz und anschliessend Klett ausgewählt, ohne Kaufaktion",
+      "Schwarz/Knöpfe ist eine ungültige Kombination; Klett ist kaufbar zu CHF16.90. Einschränkung und Öl-Hinweis standen rund1’704CSSpx unterhalb des Kaufbuttons. Kein pauschaler Ausverkaufs- oder Lieferantenlagerbefund."
+    ],
+    [
+      "Unveröffentlicht umgesetzt",
+      "Frische Kopie von MAIN213991391623 erstellt; genau zwei Dateien geändert und einmal gespeichert",
+      "Theme214040805767 «LuxeStyle – Kaufhinweis 15.11.2026», Version688dc1d…bcf5; saved buy-buttons.liquid und footer-group.json, pending/pushErrors leer. Auswahlhinweis aus vorhandener Produktbeschreibung vor Kaufcontrols; Popup-Satz ausR229 übernommen. Nicht live."
+    ],
+    [
+      "Qualität / Gegenprobe",
+      "547 Theme-Dateien verglichen, Quelldiff/Peerreview und gezielte Browserprüfung durchgeführt",
+      "Genau2 erwartete Dateien unterschiedlich,545 identisch. Korrigierter mobiler Test bestätigt Default-ID, gesperrtes Schwarz/Knöpfe und Schwarz/Klett-ID66048961905031/CHF16.90/aktiven Button. Hinweis45–102 px vor CTA, kein horizontaler Überlauf/CSS-Fehler. Keine Warenkorb-/Checkout-/Formsendung."
+    ],
+    [
+      "CJ / Produktangaben",
+      "Projektor und eine gezielte CJ-Detailquelle frisch gelesen; vollständige Rohantwort und lokale Parse-Gegenprobe gesichert",
+      "A–G/SKUs erneut zugeordnet. R228-Beschreibungsentwurf unverändert und weiterhin nicht live. Fehlender Rohquellbeleg jetzt behoben; kein Film, keine Musik-/Werberechte oder Lieferumfang allein aus globaler Packliste abgeleitet."
+    ],
+    [
+      "Memory / Grenzen",
+      "24 Aufgaben-IDs, Historien und heutigen Tagesblock erhalten; Tagesreport-Sperre um den ersten Shopify-Sitzungsreport ergänzt",
+      "Kein neuer Socialpost/-termin/-delete, Produkt-/Live-Theme-/Flow-/Merchantwrite, Bestell-Watch, Rabatt/Budget/DNS oder Workflowstart. Ein Clone und eine unveröffentlichte Theme-Speicherung sind keine Live-Veröffentlichung oder Verkaufssteigerung. Claude-Empfang unbekannt."
+    ]
+  ]
+}

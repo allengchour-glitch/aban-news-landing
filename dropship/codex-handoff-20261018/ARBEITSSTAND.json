@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 229,
-  "updatedAt": "2026-11-15T09:02:53.684628+00:00",
+  "revision": 230,
+  "updatedAt": "2026-11-15T09:48:50.590485+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17,8 +17,8 @@
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-15",
-    "currentDayEvidenceKind": "R228_ONCE_DAILY_SMALL_REPORTS_OFFLINE_COUNTERCHECKED",
-    "currentDayEvidence": "Frische R227-Core4 und Tagesblock vom 15. November vor Reads. Genau sechs Metricool-Definitionen und sechs Datenreads, ein Klaviyo-Flowreport nach W7XTVD-Discovery, fünf gezielte Flowdefinitionsreads und ein Formsread und Accountidentität. Rohdaten und zwölf Metriken und Planung offline gegengeprüft. GSC am 15. November war in R226 bereits gelesen und bleibt unverändert. Keine Order-Watch/Shopumsatzabfrage. Heute ohne neuen konkreten Befund nicht erneut berichten/abfragen.",
+    "currentDayEvidenceKind": "R228_SOCIAL_KLAVIYO_R226_GSC_R230_FIRST_SHOPIFY_SESSION_FUNNEL",
+    "currentDayEvidence": "Frische R227-Core4 und Tagesblock vom 15. November vor Reads. Genau sechs Metricool-Definitionen und sechs Datenreads, ein Klaviyo-Flowreport nach W7XTVD-Discovery, fünf gezielte Flowdefinitionsreads und ein Formsread und Accountidentität. Rohdaten und zwölf Metriken und Planung offline gegengeprüft. GSC am 15. November war in R226 bereits gelesen und bleibt unverändert. Keine Order-Watch/Shopumsatzabfrage. Heute ohne neuen konkreten Befund nicht erneut berichten/abfragen. R230: Auf das ausdrückliche Verkaufsziel erstmals heute genau einen Shopify-Sitzungsreport08.–14.11. mit Human-Session-Filter und7Tageszeilen gelesen;318/16/10/3, keine Order-Watch-/Zahlungs-/SKU-Attribution. Gegenprobe offline. Diesen zusätzlichen Quellenreport heute ohne neuen konkreten Befund nicht nochmals lesen.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-11-15",
@@ -57,6 +57,17 @@
         "truncated": true,
         "proof": "dropship/codex-handoff-20261018/SEO-LIVE-KORREKTUREN-20261115-R226.json",
         "completePeriodVerified": false
+      },
+      "shopifySessionsFunnel": {
+        "localDate": "2026-11-15",
+        "range": "2026-11-08/2026-11-14",
+        "queryCalls": 1,
+        "rows": 7,
+        "missingDays": [],
+        "ordersQueried": false,
+        "paidOrdersProven": false,
+        "humanFilter": "human_or_bot_session = human",
+        "source": "dropship/codex-handoff-20261018/SHOP-FUNNEL-20261115-R230.json"
       }
     },
     "dayHistory": [
@@ -604,17 +615,16 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r228_projector_two_bundle_copy_scopes_prepared_nail_net_contents_open",
+      "state": "r230_current_wrap_scope_checked_and_full_cj_projector_source_saved",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "R227-Nagellack-Nettoinhalt bleibt unbelegt. R228 bereitet nach aktueller Projektorprüfung einen engen Diff vor: pauschale Vollausstattungs-Zusage im Variantenabsatz und Fakten-Lieferumfang durch Verweis auf gewählte Ausführung ersetzen. Vollständiges vorgeschlagenes Feld und Vorher-/Nachher-Hashes gesichert; alle anderenHTML-Bytes unabhängig bestätigt unverändert. Kein Shopwrite; CJ-Vollantwort fehlt, Detailauszug erhalten.",
-      "nextAllowedStep": "Projektor-Diff konkret freigeben lassen, vor späterem Write native Felder und genaue Lieferantenausführung frisch gegenprüfen und expliziten Diff erhalten. Keine Produktmasse/Preise/Varianten/Zubehör erfinden. Nettoinhalt Modell6 und R226-Bild-/2PC-Quellenfälle bleiben getrennt offen.",
+      "lastEvidence": "Wickel ACTIVE,9Tags,22Varianten untracked/CONTINUE und echte Storefront/Kaufbarkeit geprüft. Vorhandene Auswahl-/Ölhinweise in frischer Theme-Kopie näher an CTA platziert, Produktdaten unverändert. Projektor A–G undCJ1477820492730732544 frisch gelesen, gesamte Rohantwort vor lokalem Parse gesichert; früherer fehlender Roh-CJ-Beleg dadurch behoben. Aktuelle Beschreibung SHAa7a1fad…549b undR228-Diff5ab094c…69c unverändert, nicht angewendet.",
+      "nextAllowedStep": "Wickel-Prüftheme konkret freigeben lassen. Projektor-Beschreibungsdiff separat konkret freigeben und unmittelbar vor späterem Produktwrite aktuelle native Felder/CJ-Ausführung gegenprüfen. Keine Produktdaten/Nettoinhalte/Masse/Materialien aus globaler Packliste erfinden.",
       "blockers": [
-        "Projektor-Beschreibungsdiff nur vorbereitet, nicht live und nicht als vollständige Produktrechts-/Materialabnahme zu werten.",
-        "CJ-Originalantwort nicht gesichert; vor abhängigem Write aktuelle begrenzte Gegenprobe erforderlich.",
-        "Nagellack Modell6 ohne lesbaren Nettoinhalt; kein ml-Wert.",
-        "Garagentor/Reinigungsgerät: saubere Medien/Rechte/2PC-Inhalt und Syncbeleg bleiben offen."
+        "Theme-/Projektor-Diff nicht live; zwei getrennte Änderungsscopes.",
+        "Globale CJ-Packliste bestätigt nicht den Lieferumfang des GrundmodellsA.",
+        "Nettoinhalt NagellackModell6 undR226-Medien-/2PC-/Syncfälle bleiben separat offen."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -1329,6 +1339,26 @@
           "sha256": "47a96c5b728ce72ef80c612e005abdbef89494481073a2aba66ef9bbd7d13fdb",
           "gitBlobSha": "7f724987969b2c6f1fb8e5b3f29e898802e78f0b",
           "bytes": 938
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.md",
+          "sha256": "db58b50cd6a766244465c789e8005ddb1d2d2f432aca46d87e46d09d934c01fe",
+          "gitBlobSha": "b10eccc7237e262bb219683fcbd61986a6046315"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KAUFWEG-THEME-20261115-R230.json",
+          "sha256": "d9ec516adbc20bf8310ecd4f11ad9deeb1b46937af74770b1dd09e7166826246",
+          "gitBlobSha": "d94c1e1debcd4438846a2e5dc9c9a98d06eed6d4"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-FUNNEL-20261115-R230.json",
+          "sha256": "de580d20b338896fe4e4f9309e3bf7356babb7c16987e3ee3ccc05e33dd2aaa3",
+          "gitBlobSha": "a871b8d951dfbc878f9133cdeb14ae03c6a0c298"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-QUELLEN-20261115-R230.json",
+          "sha256": "23d656898ab9023fec308093699acea80010f578e222d05306d42400ed6036ed",
+          "gitBlobSha": "c1239f13517ea70039d9a18cb92359cfa16c7dff"
         }
       ],
       "requiresFreshVerification": true,
@@ -2338,6 +2368,21 @@
             "Nettoinhalt von Modell6 unbelegt; keinen ml-Wert erfinden.",
             "R226 Garagentor/Reinigungsgerät: saubere Originale, Rechte und 2PC-Lieferumfang weiter offen; erneuter Syncbeleg fehlt."
           ]
+        },
+        {
+          "at": "2026-11-15T09:48:50.590485+00:00",
+          "sourceRevision": 229,
+          "previousState": "r228_projector_two_bundle_copy_scopes_prepared_nail_net_contents_open",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "R227-Nagellack-Nettoinhalt bleibt unbelegt. R228 bereitet nach aktueller Projektorprüfung einen engen Diff vor: pauschale Vollausstattungs-Zusage im Variantenabsatz und Fakten-Lieferumfang durch Verweis auf gewählte Ausführung ersetzen. Vollständiges vorgeschlagenes Feld und Vorher-/Nachher-Hashes gesichert; alle anderenHTML-Bytes unabhängig bestätigt unverändert. Kein Shopwrite; CJ-Vollantwort fehlt, Detailauszug erhalten.",
+          "previousNextAllowedStep": "Projektor-Diff konkret freigeben lassen, vor späterem Write native Felder und genaue Lieferantenausführung frisch gegenprüfen und expliziten Diff erhalten. Keine Produktmasse/Preise/Varianten/Zubehör erfinden. Nettoinhalt Modell6 und R226-Bild-/2PC-Quellenfälle bleiben getrennt offen.",
+          "previousBlockers": [
+            "Projektor-Beschreibungsdiff nur vorbereitet, nicht live und nicht als vollständige Produktrechts-/Materialabnahme zu werten.",
+            "CJ-Originalantwort nicht gesichert; vor abhängigem Write aktuelle begrenzte Gegenprobe erforderlich.",
+            "Nagellack Modell6 ohne lesbaren Nettoinhalt; kein ml-Wert.",
+            "Garagentor/Reinigungsgerät: saubere Medien/Rechte/2PC-Inhalt und Syncbeleg bleiben offen."
+          ]
         }
       ],
       "additionalProductCleanups": [
@@ -3311,6 +3356,11 @@
         "at": "2026-11-15T07:19:23.182598+00:00",
         "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
         "ownExternalWrites": 0
+      },
+      "run230": {
+        "proof": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.json",
+        "themeSavedUnpublished": true,
+        "livePublish": false
       }
     },
     {
@@ -4161,16 +4211,16 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r229_unpublished_popup_saved_verified_and_music_source_gap_named",
+      "state": "r230_sales_funnel_purchase_guidance_saved_unpublished_and_shared_memory",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "R228 fortgesetzt: aktuelle Core4/Identitäten, Ein-Satz-Quellpatch und Native-/Browser-Gegenprobe. Eine Datei im unveröffentlichten Theme gespeichert und frisch zurückgelesen; mobile Anzeige bestätigt, keine Anmeldung/Flow-/Liveänderung. Musikquellen präzisiert, tatsächlicher Font-/Lizenz-/Exportbeleg offen. Heute keine erneuten Leistungsreports. Quellenfehler und fünf tatsächliche Browserladungen dokumentiert.",
-      "nextAllowedStep": "Am Schluss direkten aktuellen Memory-Link teilen. Live-Übernahme bleibt auf konkret freigegebenen Satz und frische Quelle begrenzt; kein Vollpublish des älteren Themes. R228-Tagesreports/R226-GSC wiederverwenden, denselben Master mit konkreter Font-/Filmrechtekette weiterentwickeln. Keine neue Automation oder Zeitplanänderung.",
+      "lastEvidence": "Auf ausdrückliches Verkaufsziel ersten heutigen kleinen Sitzungsreport gelesen; keine Bestell-Watch und keine Paid-Sales-Attribution. Konkrete Wickel-Auswahlhürde und frische MAIN-Kopie mit genau 2 Dateidiffs bearbeitet und gespeichert, begrenzte QAfehler korrigiert. Frische vollständige CJ-Quelle gesichert. R228 Social/Klaviyo undR226 GSC nicht erneut abgefragt,24 IDs/Historien erhalten.",
+      "nextAllowedStep": "Direkten aktuellen Memory-Link am Schluss teilen. Einmal konkret für Theme «LuxeStyle – Kaufhinweis 15.11.2026» fragen; Genehmigung erst für dieses benannte Theme als Publishbasis nutzen. Heute keine erneuten Funnel-/Social-/Klaviyo-/GSC-Abfragen ohne neuen Befund. Keine zusätzliche Automation oder Dauerloop versprechen.",
       "blockers": [
-        "Claude-Empfang unbekannt; gespeichertes Theme ist keine veröffentlichte Seite.",
-        "Einzelne Textänderung freigabefähig vorbereitet, gesamtes älteres Theme nicht abgenommen.",
-        "Film-/Musik-/Kanal-/Ledger-Gates weiterhin vor neuen Social-Pushes erforderlich."
+        "Benannte Theme-Publish-Freigabe offen; Speichern ist keine Live-Übernahme oder Verkaufssteigerung.",
+        "Claude-Empfang unbekannt.",
+        "Film-/Musik-/Bio-/Board-/Ledgergates für neue Socialwrites unverändert."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -5329,6 +5379,26 @@
           "sha256": "baeca6ebe46d55411edebb088d6bb2f17847d697b2eb59848882fba57ac67843",
           "gitBlobSha": "7e78609d5492459d2419f2b08b93600f89968e2b",
           "bytes": 6332
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.md",
+          "sha256": "db58b50cd6a766244465c789e8005ddb1d2d2f432aca46d87e46d09d934c01fe",
+          "gitBlobSha": "b10eccc7237e262bb219683fcbd61986a6046315"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KAUFWEG-THEME-20261115-R230.json",
+          "sha256": "d9ec516adbc20bf8310ecd4f11ad9deeb1b46937af74770b1dd09e7166826246",
+          "gitBlobSha": "d94c1e1debcd4438846a2e5dc9c9a98d06eed6d4"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-FUNNEL-20261115-R230.json",
+          "sha256": "de580d20b338896fe4e4f9309e3bf7356babb7c16987e3ee3ccc05e33dd2aaa3",
+          "gitBlobSha": "a871b8d951dfbc878f9133cdeb14ae03c6a0c298"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-QUELLEN-20261115-R230.json",
+          "sha256": "23d656898ab9023fec308093699acea80010f578e222d05306d42400ed6036ed",
+          "gitBlobSha": "c1239f13517ea70039d9a18cb92359cfa16c7dff"
         }
       ],
       "requiresFreshVerification": true,
@@ -7633,6 +7703,20 @@
             "Termine sind keine PUBLISHED-Belege; fehlende vergangene Kanalzustände bleiben unbekannt.",
             "Verkaufs-/Capture-Entwürfe sind keine Shop-/Flow-/Rabattfreigabe. DNS/Ads und andere spezialisierte Grenzen unverändert."
           ]
+        },
+        {
+          "at": "2026-11-15T09:48:50.590485+00:00",
+          "sourceRevision": 229,
+          "previousState": "r229_unpublished_popup_saved_verified_and_music_source_gap_named",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "R228 fortgesetzt: aktuelle Core4/Identitäten, Ein-Satz-Quellpatch und Native-/Browser-Gegenprobe. Eine Datei im unveröffentlichten Theme gespeichert und frisch zurückgelesen; mobile Anzeige bestätigt, keine Anmeldung/Flow-/Liveänderung. Musikquellen präzisiert, tatsächlicher Font-/Lizenz-/Exportbeleg offen. Heute keine erneuten Leistungsreports. Quellenfehler und fünf tatsächliche Browserladungen dokumentiert.",
+          "previousNextAllowedStep": "Am Schluss direkten aktuellen Memory-Link teilen. Live-Übernahme bleibt auf konkret freigegebenen Satz und frische Quelle begrenzt; kein Vollpublish des älteren Themes. R228-Tagesreports/R226-GSC wiederverwenden, denselben Master mit konkreter Font-/Filmrechtekette weiterentwickeln. Keine neue Automation oder Zeitplanänderung.",
+          "previousBlockers": [
+            "Claude-Empfang unbekannt; gespeichertes Theme ist keine veröffentlichte Seite.",
+            "Einzelne Textänderung freigabefähig vorbereitet, gesamtes älteres Theme nicht abgenommen.",
+            "Film-/Musik-/Kanal-/Ledger-Gates weiterhin vor neuen Social-Pushes erforderlich."
+          ]
         }
       ],
       "reviewPacket": {
@@ -9552,6 +9636,11 @@
       "run229": {
         "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
         "themeSaveUnpublished": true,
+        "livePublish": false
+      },
+      "run230": {
+        "proof": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.json",
+        "themeSavedUnpublished": true,
         "livePublish": false
       }
     },
@@ -15051,17 +15140,16 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r229_native_header_artifact_counterchecked_no_layout_write",
+      "state": "r230_fresh_main_clone_two_file_diff_and_purchase_display_checked",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Ein-Satz-Popupprüfung führte zu nativen Desktop-/Mobileaufnahmen mit auffälliger Headerdarstellung. MAIN-/Preview-Desktopbilder sind byteidentisch. Öffentlicher Chromium-Read zeigt normalen Header, Herz22x22px, Logo215x44px, keine CSS-Fehler oder horizontale Überbreite bei1440/390. Kein CSS- oder Layoutwrite. Nach gespeichertem Preview-Satz mobile Lesbarkeitsansicht mit nur lokalen display-Overrides geprüft.",
+      "lastEvidence": "Frische aktuelle MAIN-Kopie214040805767 erstellt statt älteresR229-Theme zu veröffentlichen. Vollständige547-Dateien-Hashgegenprobe zeigt545 unverändert und genau 2 erwartete Diffs. Korrigierte mobile echte Browserprüfung bestätigt Hinweis/Variante/CTA, kein Überlauf/CSSfehler; Desktop/Kontrollprodukt nur statisch. Native Renderer-Headerartefakt und erste überstrenge Fetch-Prüfblockade nicht als Shopbug ausgegeben.",
       "previewUrl": "https://luxestyle.ch/?preview_theme_id=213619179911",
-      "nextAllowedStep": "Native Aufnahmeauffälligkeit nicht als belegten Live-Shopdefekt oder neuen Fix ausgeben. Bei weiteren Änderungen reale Browsergeometrie und genaue Quell-Diffs nutzen; keine ganze ältere Theme-Version aus diesem begrenzten Check veröffentlichen.",
+      "nextAllowedStep": "Nach konkretem Ja zum benannten Theme aktuelle MAIN-Rolle, Hashes und freigegebenen Diff erneut prüfen, einmal publishen und rollen-/kanalbezogen zurücklesen. Kein unverifiziertes Voll-Theme-Update oder weitere Layoutänderung einschieben.",
       "blockers": [
-        "Begrenzte Homepage-/Popup-Prüfung, keine vollständige Theme-/Checkout-/Accessibility-Abnahme.",
-        "Nicht-GET/HEAD bewusst blockiert; Netzwerk-/Consentfehler aus dieser Sperre sind keine normalen Shopfehler.",
-        "Älteres Prüftheme als Ganzes nicht zur Live-Übernahme abgenommen."
+        "Theme214040805767 gespeichert, weiterhin nicht live.",
+        "Nur betroffener Kaufbereich/Popup-Satz geprüft; keine vollständige Checkout-/Accessibility-Abnahme."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -15484,6 +15572,26 @@
           "sha256": "baeca6ebe46d55411edebb088d6bb2f17847d697b2eb59848882fba57ac67843",
           "gitBlobSha": "7e78609d5492459d2419f2b08b93600f89968e2b",
           "bytes": 6332
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.md",
+          "sha256": "db58b50cd6a766244465c789e8005ddb1d2d2f432aca46d87e46d09d934c01fe",
+          "gitBlobSha": "b10eccc7237e262bb219683fcbd61986a6046315"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KAUFWEG-THEME-20261115-R230.json",
+          "sha256": "d9ec516adbc20bf8310ecd4f11ad9deeb1b46937af74770b1dd09e7166826246",
+          "gitBlobSha": "d94c1e1debcd4438846a2e5dc9c9a98d06eed6d4"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-FUNNEL-20261115-R230.json",
+          "sha256": "de580d20b338896fe4e4f9309e3bf7356babb7c16987e3ee3ccc05e33dd2aaa3",
+          "gitBlobSha": "a871b8d951dfbc878f9133cdeb14ae03c6a0c298"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-QUELLEN-20261115-R230.json",
+          "sha256": "23d656898ab9023fec308093699acea80010f578e222d05306d42400ed6036ed",
+          "gitBlobSha": "c1239f13517ea70039d9a18cb92359cfa16c7dff"
         }
       ],
       "requiresFreshVerification": true,
@@ -16082,6 +16190,20 @@
             "Publishwerkzeug fehlt.",
             "Korrekturen sind nur in UNPUBLISHED-Vorschau.",
             "Menü-IA bleibt separat gesperrt und ist nicht Teil dieses Themes."
+          ]
+        },
+        {
+          "at": "2026-11-15T09:48:50.590485+00:00",
+          "sourceRevision": 229,
+          "previousState": "r229_native_header_artifact_counterchecked_no_layout_write",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "Ein-Satz-Popupprüfung führte zu nativen Desktop-/Mobileaufnahmen mit auffälliger Headerdarstellung. MAIN-/Preview-Desktopbilder sind byteidentisch. Öffentlicher Chromium-Read zeigt normalen Header, Herz22x22px, Logo215x44px, keine CSS-Fehler oder horizontale Überbreite bei1440/390. Kein CSS- oder Layoutwrite. Nach gespeichertem Preview-Satz mobile Lesbarkeitsansicht mit nur lokalen display-Overrides geprüft.",
+          "previousNextAllowedStep": "Native Aufnahmeauffälligkeit nicht als belegten Live-Shopdefekt oder neuen Fix ausgeben. Bei weiteren Änderungen reale Browsergeometrie und genaue Quell-Diffs nutzen; keine ganze ältere Theme-Version aus diesem begrenzten Check veröffentlichen.",
+          "previousBlockers": [
+            "Begrenzte Homepage-/Popup-Prüfung, keine vollständige Theme-/Checkout-/Accessibility-Abnahme.",
+            "Nicht-GET/HEAD bewusst blockiert; Netzwerk-/Consentfehler aus dieser Sperre sind keine normalen Shopfehler.",
+            "Älteres Prüftheme als Ganzes nicht zur Live-Übernahme abgenommen."
           ]
         }
       ],
@@ -16970,6 +17092,11 @@
       "run229": {
         "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
         "themeSaveUnpublished": true,
+        "livePublish": false
+      },
+      "run230": {
+        "proof": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.json",
+        "themeSavedUnpublished": true,
         "livePublish": false
       }
     },
@@ -22654,17 +22781,16 @@
       "id": "welcome-service-trust-20261102",
       "priority": 6,
       "priorityKind": "SETZUNG",
-      "state": "r229_popup_one_sentence_saved_unpublished_mobile_checked",
+      "state": "r230_popup_sentence_transferred_to_fresh_main_clone_not_live",
       "title": "Welcome-Serviceangaben mit genau zwei belegten Zeilen korrigieren",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "Aktuelle MAIN-/Preview-Footerdatei vor Änderung hashgleich. Ein Satz in custom_liquid_lxpopup neutralisiert und nach Quell-/Peerprüfung im UNPUBLISHED-Theme213013037447 gespeichert; Version14499e471299d707a12fb1d1986ac1390480a777, saved eine Datei, pending leer. Neue mobile Preview liefert den Satz; Screenshot nur mit lokalen display-Overrides, kein Submit/State/Consent. Sämtliche Skriptbytes und übrige Einstellungen erhalten. MAIN unverändert; keine Live-Übernahme oder Flowänderung.",
-      "nextAllowedStep": "Den geprüften Satz nur nach konkreter Freigabe und frischem Quellenvergleich kontrolliert in den aktuellen Live-Stand übernehmen. Nicht das gesamte ältere Prüftheme veröffentlichen. R228-Capture-/Flowdaten wiederverwenden; Laufzeit/Listeneintrag/E-Mail-Zustellung bleiben separat ungeprüft. Kein Testsend oder Kundenkontakt.",
+      "lastEvidence": "R229-Einzelsatz in frische Kopie des aktuellen MAIN übernommen. Footer-Vorhash59f8477f…37100, Nachhash9321568a…3f978, eine Satzersetzung und unveränderte Skripte/übrige Bytes. Zusammen mit Kaufhinweis als zwei Dateien in Theme214040805767/Version688dc1d…bcf5 gespeichert. Kein Vollpublish des älteren Themes, keine Anmeldung oder Flowaktivierung.",
+      "nextAllowedStep": "Nur das benannte frische Theme nach konkreter Zustimmung und aktuellem Diff veröffentlichen. R228-Flow-/Capturedaten weiterverwenden; Laufzeit, Einwilligung, Listenaufnahme und E-Mail-Zustellung bleiben separat ungeprüft. Keine Testsendung/Kundenansprache.",
       "blockers": [
-        "Die Korrektur ist nur im unveröffentlichten Theme gespeichert; keine Livefreigabe/-Übernahme.",
-        "Das gesamte ältere Theme ist nicht abgenommen und keine pauschale Publish-Grundlage.",
-        "Display-only-Ansicht ist keine erfolgreiche Anmeldung oder Einwilligungs-/Sendeprüfung.",
-        "Frühere Betreff-/Welcome-Vorschläge und Aktivierungsgrenzen bleiben separat; kein Rabatt oder Flow aktiviert."
+        "Neue frische Theme-Kopie weiterhin UNPUBLISHED; Live-Übernahme offen.",
+        "Popup-Laufzeit, Listenaufnahme und Zustellung aus der Satz-/Quellprüfung nicht belegt.",
+        "Keine Flow-, Rabatt- oder Consentaktivierung freigegeben."
       ],
       "acceptance": [
         "Genau zwei belegte Servicezeilen ändern, keine erfundenen Liefer-, Material- oder Bestandsversprechen.",
@@ -22896,6 +23022,26 @@
           "sha256": "baeca6ebe46d55411edebb088d6bb2f17847d697b2eb59848882fba57ac67843",
           "gitBlobSha": "7e78609d5492459d2419f2b08b93600f89968e2b",
           "bytes": 6332
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.md",
+          "sha256": "db58b50cd6a766244465c789e8005ddb1d2d2f432aca46d87e46d09d934c01fe",
+          "gitBlobSha": "b10eccc7237e262bb219683fcbd61986a6046315"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KAUFWEG-THEME-20261115-R230.json",
+          "sha256": "d9ec516adbc20bf8310ecd4f11ad9deeb1b46937af74770b1dd09e7166826246",
+          "gitBlobSha": "d94c1e1debcd4438846a2e5dc9c9a98d06eed6d4"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-FUNNEL-20261115-R230.json",
+          "sha256": "de580d20b338896fe4e4f9309e3bf7356babb7c16987e3ee3ccc05e33dd2aaa3",
+          "gitBlobSha": "a871b8d951dfbc878f9133cdeb14ae03c6a0c298"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-QUELLEN-20261115-R230.json",
+          "sha256": "23d656898ab9023fec308093699acea80010f578e222d05306d42400ed6036ed",
+          "gitBlobSha": "c1239f13517ea70039d9a18cb92359cfa16c7dff"
         }
       ],
       "requiresFreshVerification": true,
@@ -23031,6 +23177,21 @@
             "Popup-Korrektur ist ein neuer Freigabeentwurf; kein Theme-/Flowwrite.",
             "Welcome-Rabattbehauptung und ältere Inhalte bleiben vor jeder Aktivierung gesondert zu prüfen.",
             "Keine Shopumsatz-/Syncableitung aus Flowreport; USD und CHF getrennt."
+          ]
+        },
+        {
+          "at": "2026-11-15T09:48:50.590485+00:00",
+          "sourceRevision": 229,
+          "previousState": "r229_popup_one_sentence_saved_unpublished_mobile_checked",
+          "previousLastEvidenceDate": "2026-11-15",
+          "previousBelegArt": "GEMESSEN",
+          "previousLastEvidence": "Aktuelle MAIN-/Preview-Footerdatei vor Änderung hashgleich. Ein Satz in custom_liquid_lxpopup neutralisiert und nach Quell-/Peerprüfung im UNPUBLISHED-Theme213013037447 gespeichert; Version14499e471299d707a12fb1d1986ac1390480a777, saved eine Datei, pending leer. Neue mobile Preview liefert den Satz; Screenshot nur mit lokalen display-Overrides, kein Submit/State/Consent. Sämtliche Skriptbytes und übrige Einstellungen erhalten. MAIN unverändert; keine Live-Übernahme oder Flowänderung.",
+          "previousNextAllowedStep": "Den geprüften Satz nur nach konkreter Freigabe und frischem Quellenvergleich kontrolliert in den aktuellen Live-Stand übernehmen. Nicht das gesamte ältere Prüftheme veröffentlichen. R228-Capture-/Flowdaten wiederverwenden; Laufzeit/Listeneintrag/E-Mail-Zustellung bleiben separat ungeprüft. Kein Testsend oder Kundenkontakt.",
+          "previousBlockers": [
+            "Die Korrektur ist nur im unveröffentlichten Theme gespeichert; keine Livefreigabe/-Übernahme.",
+            "Das gesamte ältere Theme ist nicht abgenommen und keine pauschale Publish-Grundlage.",
+            "Display-only-Ansicht ist keine erfolgreiche Anmeldung oder Einwilligungs-/Sendeprüfung.",
+            "Frühere Betreff-/Welcome-Vorschläge und Aktivierungsgrenzen bleiben separat; kein Rabatt oder Flow aktiviert."
           ]
         }
       ],
@@ -23193,6 +23354,11 @@
       "run229": {
         "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R229.json",
         "themeSaveUnpublished": true,
+        "livePublish": false
+      },
+      "run230": {
+        "proof": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.json",
+        "themeSavedUnpublished": true,
         "livePublish": false
       }
     },
@@ -26522,13 +26688,16 @@
       "id": "product-stock-status-display-20261105",
       "priority": 4,
       "priorityKind": "SETZUNG",
-      "state": "live_durch_claude_owner_codex_oeffentlich_verifiziert_kein_eigener_write",
+      "state": "r230_invalid_combination_not_stockout_guidance_saved_unpublished",
       "title": "Variantenabhängigen Lagerstatus auf öffentlichen Produktseiten ehrlich anzeigen",
-      "lastEvidenceDate": "2026-11-05",
-      "belegArt": "R92_SHOP_IDENTITAET_GITHUB_MERGE_VIER_OEFFENTLICHE_RUECKLESEN_KEIN_WRITE",
-      "lastEvidence": "Shopify LuxeStyle/luxestyle.ch/CHF passend. PR2895/Head82f41095bada975dfd3ff34e4655b12dfc964adb durch Claude-/Inhaberarbeit am Merge4fd7bbe0924dd57db03d0afa2073722935d51c10 übernommen. Öffentlich Sensemann XL55970683388289 available true/grün Auf Lager, XXL55970683421057 true/orange Nur noch1, XXXL55970683453825 false/rot Diese Ausführung ist ausverkauft; vollständig nicht kaufbares Hippiekleid rot Momentan ausverkauft. data-lx-delivery und aria-live=polite beobachtet. Codex-R92 nur verifiziert; kein Theme-/Produkt-/Bestandswrite, Banner/Layout unverändert.",
-      "nextAllowedStep": "Anzeige erhalten. Bei späterem Wunsch nach Kollektionskarten diesen separaten Scope zuerst auf Produkt- gegen Variantenverfügbarkeit, Performance, mobile Darstellung und unbekannte Inventory-Quellen prüfen. Vor jeder Themeänderung aktuellen MAIN-Block/Hash lesen, minimalen Diff und Rückweg prüfen; Bestellbarkeit nie als Lieferantenlager oder Lieferzeit ausgeben.",
-      "blockers": [],
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "GEMESSEN",
+      "lastEvidence": "Aktueller mobiler Wickel-Kaufweg zeigt ungültiges Schwarz/Knöpfe, nicht pauschalen Ausverkauf. Schwarz/Klett hat aktuelle ID66048961905031,CHF16.90, untracked/CONTINUE und verfügbare Storefront. In frischer MAIN-Kopie sourcegebundenen Hinweis gespeichert und korrigierten mobilen Zustand gegengeprüft; keine Verfügbarkeits-/Preis-/Variantenlogik geändert.",
+      "nextAllowedStep": "Konkrete Veröffentlichung des Themes214040805767 nach benannter Inhaberfreigabe und frischem MAIN-/Quellvergleich. Kein automatisches Variantenersatzverhalten oder Lager-/Lieferzeitversprechen. Nach Live-Übernahme beim nächsten zulässigen Reportfenster messen; keinen Effekt vorab zusagen.",
+      "blockers": [
+        "Prüftheme gespeichert, nicht live; benannte Theme-Publish-Freigabe offen.",
+        "Kein tatsächlicher Warenkorb-/Checkout-/Bezahltest; keine gemessene Conversionwirkung."
+      ],
       "acceptance": [
         "Gewählte Shopify-Ausführung ist Statusquelle; kaufbar und nicht kaufbar werden textlich und farblich unterschieden.",
         "Farbe ist nicht die einzige Information; Statuscontainer bleibt zugänglich und Variantenwechsel darf keine fremde Produkt-ID übernehmen.",
@@ -26541,6 +26710,26 @@
           "readAt": "2026-11-05T13:44:48+01:00",
           "ref": "4fd7bbe0924dd57db03d0afa2073722935d51c10",
           "url": "https://github.com/allengchour-glitch/aban-news-landing/pull/2895"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.md",
+          "sha256": "db58b50cd6a766244465c789e8005ddb1d2d2f432aca46d87e46d09d934c01fe",
+          "gitBlobSha": "b10eccc7237e262bb219683fcbd61986a6046315"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KAUFWEG-THEME-20261115-R230.json",
+          "sha256": "d9ec516adbc20bf8310ecd4f11ad9deeb1b46937af74770b1dd09e7166826246",
+          "gitBlobSha": "d94c1e1debcd4438846a2e5dc9c9a98d06eed6d4"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-FUNNEL-20261115-R230.json",
+          "sha256": "de580d20b338896fe4e4f9309e3bf7356babb7c16987e3ee3ccc05e33dd2aaa3",
+          "gitBlobSha": "a871b8d951dfbc878f9133cdeb14ae03c6a0c298"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-QUELLEN-20261115-R230.json",
+          "sha256": "23d656898ab9023fec308093699acea80010f578e222d05306d42400ed6036ed",
+          "gitBlobSha": "c1239f13517ea70039d9a18cb92359cfa16c7dff"
         }
       ],
       "requiresFreshVerification": true,
@@ -26552,6 +26741,23 @@
         "collectionCards": false,
         "catalogWideLiveCoverageClaimed": false,
         "publicSamples": 4
+      },
+      "evidenceHistory": [
+        {
+          "at": "2026-11-15T09:48:50.590485+00:00",
+          "sourceRevision": 229,
+          "previousState": "live_durch_claude_owner_codex_oeffentlich_verifiziert_kein_eigener_write",
+          "previousLastEvidenceDate": "2026-11-05",
+          "previousBelegArt": "R92_SHOP_IDENTITAET_GITHUB_MERGE_VIER_OEFFENTLICHE_RUECKLESEN_KEIN_WRITE",
+          "previousLastEvidence": "Shopify LuxeStyle/luxestyle.ch/CHF passend. PR2895/Head82f41095bada975dfd3ff34e4655b12dfc964adb durch Claude-/Inhaberarbeit am Merge4fd7bbe0924dd57db03d0afa2073722935d51c10 übernommen. Öffentlich Sensemann XL55970683388289 available true/grün Auf Lager, XXL55970683421057 true/orange Nur noch1, XXXL55970683453825 false/rot Diese Ausführung ist ausverkauft; vollständig nicht kaufbares Hippiekleid rot Momentan ausverkauft. data-lx-delivery und aria-live=polite beobachtet. Codex-R92 nur verifiziert; kein Theme-/Produkt-/Bestandswrite, Banner/Layout unverändert.",
+          "previousNextAllowedStep": "Anzeige erhalten. Bei späterem Wunsch nach Kollektionskarten diesen separaten Scope zuerst auf Produkt- gegen Variantenverfügbarkeit, Performance, mobile Darstellung und unbekannte Inventory-Quellen prüfen. Vor jeder Themeänderung aktuellen MAIN-Block/Hash lesen, minimalen Diff und Rückweg prüfen; Bestellbarkeit nie als Lieferantenlager oder Lieferzeit ausgeben.",
+          "previousBlockers": []
+        }
+      ],
+      "run230": {
+        "proof": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.json",
+        "themeSavedUnpublished": true,
+        "livePublish": false
       }
     }
   ],
@@ -29953,6 +30159,36 @@
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 230,
+      "at": "2026-11-15T09:48:50.590485+00:00",
+      "actor": "codex",
+      "summary": "Verkaufsziel konkretisiert: erster heutiger kleiner Sitzungsfunnel, ungültige Wickel-Auswahl erkannt und vorhandenen Hinweis in frischer MAIN-Kopie neben Kaufcontrols gespeichert. Popup-Einzelsatz ebenfalls übernommen, genau 2von547 Dateien anders, kein Live-Publish. Mobiler Interaktionscheck nach Korrektur der Testblockade bestanden. Volle frischeCJ-Rohquelle gesichert. Keine Tagesreportwiederholung, Order-Watch oder neue Automation.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/VERKAUFSARBEIT-20261115-R230.md",
+          "sha256": "db58b50cd6a766244465c789e8005ddb1d2d2f432aca46d87e46d09d934c01fe",
+          "gitBlobSha": "b10eccc7237e262bb219683fcbd61986a6046315"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/KAUFWEG-THEME-20261115-R230.json",
+          "sha256": "d9ec516adbc20bf8310ecd4f11ad9deeb1b46937af74770b1dd09e7166826246",
+          "gitBlobSha": "d94c1e1debcd4438846a2e5dc9c9a98d06eed6d4"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SHOP-FUNNEL-20261115-R230.json",
+          "sha256": "de580d20b338896fe4e4f9309e3bf7356babb7c16987e3ee3ccc05e33dd2aaa3",
+          "gitBlobSha": "a871b8d951dfbc878f9133cdeb14ae03c6a0c298"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PROJEKTOR-QUELLEN-20261115-R230.json",
+          "sha256": "23d656898ab9023fec308093699acea80010f578e222d05306d42400ed6036ed",
+          "gitBlobSha": "c1239f13517ea70039d9a18cb92359cfa16c7dff"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
     }
   ],
   "salesGoal": {
@@ -30700,6 +30936,572 @@
         }
       },
       "reason": "R228 first15Nov Metricool/Klaviyo daily report after fresh Core4; already15Nov GSC remains preserved."
+    },
+    {
+      "at": "2026-11-15T09:48:50.590485+00:00",
+      "sourceRevision": 229,
+      "previous": {
+        "timezone": "Europe/Zurich",
+        "checkLogBeforeReading": true,
+        "metricsFlowAndBroadSalesMaxPerDay": 1,
+        "exception": "new_concrete_finding_with_recorded_reason",
+        "currentDayEvidenceDate": "2026-11-15",
+        "currentDayEvidenceKind": "R228_ONCE_DAILY_SMALL_REPORTS_OFFLINE_COUNTERCHECKED",
+        "currentDayEvidence": "Frische R227-Core4 und Tagesblock vom 15. November vor Reads. Genau sechs Metricool-Definitionen und sechs Datenreads, ein Klaviyo-Flowreport nach W7XTVD-Discovery, fünf gezielte Flowdefinitionsreads und ein Formsread und Accountidentität. Rohdaten und zwölf Metriken und Planung offline gegengeprüft. GSC am 15. November war in R226 bereits gelesen und bleibt unverändert. Keine Order-Watch/Shopumsatzabfrage. Heute ohne neuen konkreten Befund nicht erneut berichten/abfragen.",
+        "completedReports": {
+          "metricool": {
+            "localDate": "2026-11-15",
+            "range": "2026-11-08/2026-11-14",
+            "definitionCalls": 6,
+            "dataCalls": 6,
+            "missingIsUnknown": true,
+            "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json"
+          },
+          "klaviyo": {
+            "localDate": "2026-11-15",
+            "range": "2026-11-08/2026-11-14",
+            "metricDiscoveryCalls": 1,
+            "flowReportCalls": 1,
+            "flowDefinitionReads": 5,
+            "formsReads": 1,
+            "conversionMetricId": "W7XTVD",
+            "accountCurrency": "USD",
+            "shopCurrency": "CHF",
+            "currenciesMixed": false,
+            "missingRowsUnknown": true,
+            "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261115-R228.json"
+          },
+          "ordersQueried": false,
+          "purchaseWatchEnded": true,
+          "broadSalesRepeated": false,
+          "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261115-08H-R228.json",
+          "searchConsole": {
+            "localDate": "2026-11-15",
+            "property": "sc-domain:luxestyle.ch",
+            "range": "2026-11-08/2026-11-14",
+            "dataState": "final",
+            "finalEstimatedThrough": "2026-11-12",
+            "queryCalls": 1,
+            "rows": 20,
+            "truncated": true,
+            "proof": "dropship/codex-handoff-20261018/SEO-LIVE-KORREKTUREN-20261115-R226.json",
+            "completePeriodVerified": false
+          }
+        },
+        "dayHistory": [
+          {
+            "dateZurich": "2026-11-02",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-02",
+              "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
+              "currentDayEvidence": "Vor Reports frische R47-Quellen und fehlenden02.11.-Tagesblock geprüft. Einmalig26.10.–01.11.:6Metricool-Definitionen+6kleineDatenabfragen; kanalbezogeneAbdeckung/Nullnurbeobachtet. Genau1Klaviyo-Report nachW7XTVD-Discovery, tatsächlicheRecoveryperformance nichtangefragt/unbekannt. KeineUmsatz-/Syncableitung und keineKauf-Watchabfrage. Heute nicht erneut lesen ohnekonkretenneuenGegenprüfgrund. R49: Neue ausdrückliche Frage nach Google/ChatGPT und frischverifizierte passendeGA4-/GSC-Identitäten begründen genau2gezielte bisherheutenichtgeleseneQuellenreports; keineWiederholungder6Metricool-/1Klaviyoreports. GA4/GSC26.10.–01.11. abgeschlossen, Cache-/Attributionsgrenzen erhalten.",
+              "completedReports": {
+                "metricool": {
+                  "localDate": "2026-11-02",
+                  "range": "2026-10-26/2026-11-01",
+                  "dataCalls": 6,
+                  "definitionCalls": 6
+                },
+                "klaviyo": {
+                  "localDate": "2026-11-02",
+                  "range": "2026-10-26/2026-11-01",
+                  "flowReportCalls": 1
+                },
+                "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261102-R48.json",
+                "trafficByExplicitRequest": {
+                  "localDate": "2026-11-02",
+                  "range": "2026-10-26/2026-11-01",
+                  "ga4Calls": 1,
+                  "searchConsoleCalls": 1,
+                  "reason": "New explicit user question and newly verified LuxeStyle source identities; not repeated social/flow reports",
+                  "proof": "dropship/codex-handoff-20261018/SICHTBARKEIT-20261102-R49.json"
+                }
+              }
+            }
+          },
+          {
+            "dateZurich": "2026-11-03",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-03",
+              "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
+              "currentDayEvidence": "Vor Reports frische R63-Dateien und fehlenden03.11.-Block geprüft. Einmalig27.10.–02.11.:6Metricool-Definitionen und6kleine Kanalabfragen, genau1Klaviyo-Flowreport nach frischerW7XTVD-Discovery. Direkte Flowdefinitionen bestätigen alle3draft; Statusänderungsursache unbekannt. Datenlücken unknown, keine Shopumsatz-/Sync-/Kaufableitung. Keine Bestell-Watch-Abfrage oder neue Automation. Heute ohne konkreten neuen Gegenprüfgrund nicht erneut lesen.",
+              "completedReports": {
+                "metricool": {
+                  "localDate": "2026-11-03",
+                  "range": "2026-10-27/2026-11-02",
+                  "dataCalls": 6,
+                  "definitionCalls": 6
+                },
+                "klaviyo": {
+                  "localDate": "2026-11-03",
+                  "range": "2026-10-27/2026-11-02",
+                  "flowReportCalls": 1
+                },
+                "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261103-R64.json"
+              }
+            }
+          },
+          {
+            "dateZurich": "2026-11-04",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-04",
+              "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
+              "currentDayEvidence": "Vor Reports frische R76-Dateien und heutigen04.11.-Block geprüft: letzteTagesreports03.11., heute nochkeine. Einmalig28.10.–03.11.: sechsMetricool-Definitionen+sechskleineDatenabfragen, genaueinKlaviyo-Flowreport nachfrischerW7XTVD-Discovery. Datenlückenunknown; keinShopumsatz-/Kauf-/Syncschluss. HeuteohnekonkretenneuenGegenprüfgrundnichtwiederholen. Kauf-Watchbeendet, keineBestellabfrage. R83: Tageskennzahlen und Klaviyo nicht erneut abgefragt; frische Planungs-/Produktreads sind keine zweite Tagesmessung.",
+              "completedReports": {
+                "metricool": {
+                  "localDate": "2026-11-04",
+                  "range": "2026-10-28/2026-11-03",
+                  "dataCalls": 6,
+                  "definitionCalls": 6
+                },
+                "klaviyo": {
+                  "localDate": "2026-11-04",
+                  "range": "2026-10-28/2026-11-03",
+                  "flowReportCalls": 1
+                },
+                "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261104-R77.json"
+              }
+            }
+          },
+          {
+            "dateZurich": "2026-11-05",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-05",
+              "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
+              "currentDayEvidence": "Vor Reports frischenR87-Stand und fehlenden05.11.-Tagesblock geprüft. Einmalig29.10.–04.11.: sechsMetricool-Definitionen+sechskleineKanalabfragen und genau1Klaviyo-Flowreport nachfrischerW7XTVD-Discovery. Datenlücken unknown, keineShopumsatz-/Sync-/Kaufableitung. Drei gezielte Beauty-Seiten sind eine begrenzte SEO-Gegenprobe, kein breiter Umsatzreport. Kauf-Watch beendet, keineBestellabfrage. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R98: Tageskennzahlen und Klaviyo nicht erneut gelesen; frische Metricool-Planungs- und zwei gezielte Produkt-/Medienreads sind keine zweite Tagesmessung.",
+              "completedReports": {
+                "metricool": {
+                  "localDate": "2026-11-05",
+                  "range": "2026-10-29/2026-11-04",
+                  "dataCalls": 6,
+                  "definitionCalls": 6
+                },
+                "klaviyo": {
+                  "localDate": "2026-11-05",
+                  "range": "2026-10-29/2026-11-04",
+                  "flowReportCalls": 1,
+                  "metricDiscoveryCalls": 1
+                },
+                "targetedSeoRead": {
+                  "localDate": "2026-11-05",
+                  "pages": 3,
+                  "reason": "price-filter pager countercheck; no revenue metrics"
+                },
+                "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261105-R88.json"
+              }
+            }
+          },
+          {
+            "dateZurich": "2026-11-06",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-06",
+              "currentDayEvidenceKind": "GEMESSEN_TEILREIHEN_UNBEKANNT",
+              "currentDayEvidence": "Vor den Reports frischen Revision-114-Stand und heutigen Tagesblock geprüft. Einmalig 30.10.–05.11.: sechs kleine kanalgetrennte Metricool-Definitionen/Datenreihen und genau ein Klaviyo-Flowreport nach frischer Placed-Order-ID W7XTVD. Mehrere Metricool-Reihen sowie Vse76a-Leistung bleiben unbekannt; Views/Impressionen/Interaktionen nicht kanalübergreifend verglichen und keine Umsatz-/Kauf-/Syncableitung. Kauf-Watch beendet, keine Bestellabfrage. Breiter Verkaufsreport nicht ausgelöst; genau eine erreichbare BRUDER-Collection gezielt gelesen. R122: Metricool-Kennzahlen und Klaviyo nicht erneut abgefragt; nur frische Planung, Identitäten und zwei gezielte Produktreads. Planung32 UUIDs/48 PENDING-Kanalzustände; Lücken kein Postingzwang, keine Verkaufsableitung.",
+              "completedReports": {
+                "metricool": {
+                  "localDate": "2026-11-06",
+                  "range": "2026-10-30/2026-11-05",
+                  "dataCalls": 6,
+                  "definitionCalls": 6
+                },
+                "klaviyo": {
+                  "localDate": "2026-11-06",
+                  "range": "rolling_7_days_as_returned",
+                  "flowReportCalls": 1,
+                  "metricDiscoveryCalls": 1
+                },
+                "targetedSeoRead": {
+                  "localDate": "2026-11-06",
+                  "pages": 1,
+                  "collection": "ft-bruder",
+                  "reason": "one narrow sales improvement; no revenue metrics"
+                },
+                "proof": "dropship/codex-handoff-20261018/LAUFBELEGE-20261106-R115.json"
+              }
+            }
+          },
+          {
+            "dateZurich": "2026-11-08",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-08",
+              "currentDayEvidenceKind": "HYPD_GSC_MERCHANT_READ_ONLY_TEILMESSUNG_PLUS_TARGETED_TWO_OFFERS",
+              "currentDayEvidence": "Vor Abfragen Revision129, heutigen Tagesblock und Claude-Scope geprüft. Einmalige kleine HYPD-Abfragen: GSC-Identitäten, finalisierte Webdaten09.10.–05.11., zwei Seiten-/Query-Auszüge, FR-Teilreihe50/truncated, zwei URL-Inspections und Sitemap; Merchant-Shop, Summary5000/truncated, Account-Issues und genau erste25 Disapproval-Zeilen mit next-page-token. Keine Metricool-/Klaviyo-/Bestell-/Kauf-Watch-Wiederholung, keine Verkaufsableitung. GSC-Vorperiode leer bleibt unbekannt; Merchant-/FR-Umfang nicht hochgerechnet. Heute ohne neuen konkreten Gegenprüfgrund nicht wiederholen. R141: Keine breite Kennzahl-/Flow-/Verkaufsabfrage wiederholt. Zwei öffentliche Seiten wurden als neuer konkreter Trackingbefund eng auf dataLayer/Netzwerk geprüft; kein Cart/Checkout/Order. Drei Merchant-Offers und FR-Locale/Translations wurden gezielt rein lesend gegengeprüft, ohne Kataloghochrechnung. R144: Als konkrete Folgeprüfung wurden genau zwei Merchant-Offers an ihre Shopify-Produkte, Preise, Status und Variantenbilder gebunden. R145: Für die exakt bestätigte Shopify-Varianten-SKU wurde nach Merge des begrenzten Readers genau ein Produktread und nach bestätigter PID genau ein separater Inventoryread ausgeführt; keine Suche, Pagination oder Mutation. Keine zweite breite Kennzahl-, Flow-, Verkaufs-, Bestell- oder Kauf-Watch-Abfrage und keine Kataloghochrechnung. R146: Metricool-Identität und Planung08.–15.11. wurden als kleine Planungsgegenprobe gelesen; keine Kennzahlabfrage oder Mutation. Drei konkrete Produkte, ein Merchant-Sicherheitsprodukt und eine einzelne CJ-Yoga-Route wurden gezielt geprüft; keine breite Katalogpagination, Klaviyo-/Bestell-/Kauf-Watch-Wiederholung oder Verkaufsableitung. R147: Genau das bestehende Masterprodukt15521256604033 wurde eng mit sieben Varianten,12 Bildern, Tags und Inventory-Verhalten gelesen; keine breite Katalog-, Kennzahl-, Flow-, Bestell- oder Kauf-Watch-Abfrage und keine Mutation.",
+              "completedReports": {
+                "searchConsole": {
+                  "localDate": "2026-11-08",
+                  "range": "2026-10-09/2026-11-05",
+                  "source": "HYPD",
+                  "dataState": "final",
+                  "partialRows": true
+                },
+                "merchant": {
+                  "localDate": "2026-11-08",
+                  "source": "HYPD",
+                  "summaryScannedProducts": 5000,
+                  "summaryTruncated": true,
+                  "disapprovalRowsRead": 25,
+                  "nextPageTokenPresent": true,
+                  "r149Countercheck": {
+                    "reason": "owner_supplied_110mb_merchant_export_with_new_shipping_scope",
+                    "scannedProducts": 5000,
+                    "truncated": true,
+                    "eligibleLimited": 4991,
+                    "notEligibleOrDisapproved": 9,
+                    "missingShippingProductsInPartialScan": 5000,
+                    "disapprovalRowsRead": 10,
+                    "accountIssuesReturned": 0,
+                    "catalogQuoteAllowed": false,
+                    "writes": 0
+                  }
+                },
+                "proof": "dropship/codex-handoff-20261018/HYPD-LIVE-AUDIT-20261108-R130.json",
+                "publicTrackingRouteR141": {
+                  "localDate": "2026-11-08",
+                  "pages": 2,
+                  "mode": "read_only_browser",
+                  "reason": "R140 missing-ecommerce root-cause countercheck",
+                  "cartCheckoutOrderTriggered": false,
+                  "proof": "/workspace/luxestyle-review/tracking-fix-20261108/public-network-audit.json",
+                  "sha256": "e0264a21bae766b510db796eaf88da6ff3380173d2da3a0918313d36a6d3fe41"
+                }
+              }
+            }
+          },
+          {
+            "dateZurich": "2026-11-09",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-09",
+              "currentDayEvidenceKind": "R154_METRICOOL_SEVEN_DAY_CHANNEL_METRICS_AND_KLAVIYO_FLOW_REPORT_PARTIALS_UNKNOWN",
+              "currentDayEvidence": "Vor Abfragen Revision153, Projektgedächtnis und vorhandenen Tagesstand geprüft; für09.11. lag noch kein Tagesreport vor. Einmalig02.–08.11.: gültige Metricool-Kennzahl-IDs entdeckt und sechs kleine kanalgetrennte Reihen gelesen; fehlende Zeilen/null bleiben unbekannt. Genau ein Klaviyo-Flowreport nach frischer Placed-Order-MetrikW7XTVD; fehlende Flowzeilen unbekannt, alle geprüften Flows draft. Zwei Shopify-Produkte und Planung09.–17.11. gezielt gelesen; 43 ungeeignete bestehende Videoobjekte als Qualitätskorrektur auf draft/autopublish aus gesetzt und zurückgelesen. Kein breiter Verkaufsreport, keine Bestellung/Kauf-Watch, keine Verkaufsableitung. Heute ohne neuen konkreten Gegenprüfgrund Kennzahlen, Klaviyo oder breite Verkaufsdaten nicht erneut lesen. R155-Folgelauf14:00: Kennzahlen, Klaviyo, breite Verkaufsdaten und Bestellungen nicht erneut gelesen. Nur frische Identitäten, Planung in drei kleinen Fenstern, zwei Produktreads, Medien-/Rechteprüfung, zwei gezielte FR-Seiten/Übersetzungsressourcen und öffentliche DNS-Gegenprobe; keine Verkaufsableitung. R156-Abendlauf19:00: Kennzahlen, Klaviyo, breite Verkaufsdaten, Bestellungen/Kauf-Watch und DNS nicht erneut gelesen. Nur frische Identitäten, Planung in drei kleinen Fenstern, zwei gezielte Produkte, fünf öffentliche SEO-Seiten/drei Bilder, Master-Preflight und FR-Seiten-/Digest-Dry-run. Keine Verkaufsableitung und keine operativen Writes. R157: neuer ausdrücklicher Rankingauftrag begründete genau eine enge HYPD-GSC-Seiten-/Querymessung, einen zwingenden Page-Digest-/Übersetzungsread und öffentliche Vorher-/Nachherprüfung. Vier FR-Felder live und vollständig zurückgelesen; keine Wiederholung der heutigen Metricool-/Klaviyo-/DNS-/breiten Verkaufsdaten.",
+              "completedReports": {
+                "metricool": {
+                  "localDate": "2026-11-09",
+                  "range": "2026-11-02/2026-11-08",
+                  "definitionCalls": 6,
+                  "dataCalls": 6,
+                  "partialRows": true,
+                  "missingIsUnknown": true
+                },
+                "klaviyo": {
+                  "localDate": "2026-11-09",
+                  "range": "2026-11-02/2026-11-09T00:00 Europe/Zurich",
+                  "metricDiscoveryCalls": 1,
+                  "flowReportCalls": 1,
+                  "missingRowsUnknown": true
+                },
+                "targetedProducts": {
+                  "localDate": "2026-11-09",
+                  "shopifyProducts": 2,
+                  "broadPagination": false
+                },
+                "planning": {
+                  "localDate": "2026-11-09",
+                  "range": "2026-11-09/2026-11-17",
+                  "objects": 65,
+                  "videoQualityBlocksWritten": 43
+                },
+                "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R154.json",
+                "followUpR155": {
+                  "localDate": "2026-11-09",
+                  "timeZurich": "14:08",
+                  "metricsRepeated": false,
+                  "klaviyoRepeated": false,
+                  "ordersQueried": false,
+                  "planningObjects": 59,
+                  "targetedProducts": 2,
+                  "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R155.json"
+                },
+                "followUpR156": {
+                  "localDate": "2026-11-09",
+                  "timeZurich": "19:00",
+                  "metricsRepeated": false,
+                  "klaviyoRepeated": false,
+                  "ordersQueried": false,
+                  "dnsRepeated": false,
+                  "planningObjects": 65,
+                  "activeObjects": 21,
+                  "draftObjects": 44,
+                  "activeVideos": 0,
+                  "targetedProducts": 2,
+                  "publicPages": 5,
+                  "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261109-R156.json"
+                },
+                "rankingFollowUpR157": {
+                  "date": "2026-11-09",
+                  "at": "2026-11-09T21:30:30+01:00",
+                  "reason": "new explicit ranking request",
+                  "scope": "one bounded GSC page/query measurement, one Page prewrite/readback and exact public before/after",
+                  "gsc": "final10.10-06.11 DE33 impressions/0 clicks/65.21; FR exact rows not exposed unknown",
+                  "repeatedToday": {
+                    "metricoolMetrics": false,
+                    "klaviyo": false,
+                    "dns": false,
+                    "broadSales": false,
+                    "orders": false,
+                    "merchantBroad": false
+                  }
+                }
+              }
+            }
+          },
+          {
+            "dateZurich": "2026-11-10",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-10",
+              "currentDayEvidenceKind": "R174_SINGLE_PINTEREST_WRITE_AFTER_R165_METRICOOL_KLAVIYO_AND_R162_GSC_NO_REPEAT",
+              "currentDayEvidence": "Vor den aktuellen Reads Revision171, Projektgedächtnis und den vollständigen10.11.-Tagesblock geprüft. R165 hatte heute bereits die gültigen Metricool-IDs und03.–09.11. in kleinen kanalgetrennten Abfragen gelesen sowie nach frischer Placed-Order-ID W7XTVD genau einen kleinen Klaviyo-Flowreport. R162 hatte heute bereits eine begrenzte GSC-Seiten-/Querymessung11.10.–07.11. ausgeführt. R172 wiederholte keine dieser Messungen, keine breite Verkaufs-/Merchantabfrage und keine Bestellung/Kauf-Watch. Nur Shopify-/Metricool-Identitäten, Planung10.–18.11. in kleinen Tagesfenstern, zwei gezielte Produkte, aktuelle Video-/Bild-/Musik-/Rechtequellen und vorhandene R165/R166-Belege wurden gelesen. Plan66 Objekte/84 Zustände:62 aktive/79 aktive Zustände,4 Drafts/5 Zustände;12 PUBLISHED/72 PENDING/0 FAILED. Fehlende Daten bleiben unbekannt; keine Verkaufsableitung. Heute ohne neuen konkreten Gegenprüfgrund Metricool-Kennzahlen, Klaviyo, GSC, breite Verkaufs-/Merchantdaten oder Bestellungen nicht erneut lesen. R173-Folgeschritt: nur der exakt freigegebene Futterspender-Inhaltswrite, Vse76a-Mail2-/Mail3-Inhaltswrites, unabhängige Schutz-Readbacks sowie gezielte Social-/Master-Gates; keine erneute Metricool-Kennzahl-, Klaviyo-Flowreport-, GSC-, breite Verkaufs-/Merchant- oder Bestellabfrage. R174-Folgeschritt: nur frische Pinterest-/Metricool-Identität, aktueller Produkt-/Varianten-/Guard-/Medien-/Rechte-/Board-/Slot-Preflight, begrenzte Plan-/Historiengegenprobe und genau ein Pinterest-Write mit gezieltem Readback. Keine erneute Metricool-Kennzahl-, Klaviyo-Flowreport-, GSC-, breite Verkaufs-/Merchant- oder Bestellabfrage; keine Verkaufsableitung.",
+              "completedReports": {
+                "metricool": {
+                  "localDate": "2026-11-10",
+                  "range": "2026-11-03/2026-11-09",
+                  "source": "R165",
+                  "definitionCalls": 6,
+                  "dataCalls": 6,
+                  "partialRows": true,
+                  "missingIsUnknown": true,
+                  "repeatedInR172": false
+                },
+                "klaviyo": {
+                  "localDate": "2026-11-10",
+                  "range": "rolling_7_days_as_returned",
+                  "source": "R165_R166",
+                  "metricDiscoveryCalls": 1,
+                  "flowReportCalls": 1,
+                  "missingRowsUnknown": true,
+                  "repeatedInR172": false
+                },
+                "searchConsole": {
+                  "localDate": "2026-11-10",
+                  "range": "2026-10-11/2026-11-07",
+                  "source": "R162",
+                  "partialRows": true,
+                  "repeatedInR172": false
+                },
+                "targetedProductsR172": {
+                  "localDate": "2026-11-10",
+                  "shopifyProducts": 2,
+                  "broadPagination": false
+                },
+                "planningR172": {
+                  "localDate": "2026-11-10",
+                  "range": "2026-11-10/2026-11-18",
+                  "objects": 66,
+                  "channelStates": 84,
+                  "activeObjects": 62,
+                  "activeStates": 79,
+                  "draftObjects": 4,
+                  "draftStates": 5,
+                  "writes": 0
+                },
+                "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261110-R172.json",
+                "ordersQueried": false,
+                "purchaseWatchEnded": true,
+                "broadSalesRepeated": false,
+                "merchantBroadRepeated": false,
+                "followUpR173": {
+                  "localDate": "2026-11-10",
+                  "source": "R173",
+                  "kind": "targeted_authorized_content_writes_and_guard_readbacks",
+                  "shopifyProductWrites": 1,
+                  "klaviyoTemplateWrites": 2,
+                  "klaviyoFlowActionContentWrites": 2,
+                  "klaviyoActivations": 0,
+                  "customerSends": 0,
+                  "socialWrites": 0,
+                  "renderWrites": 0,
+                  "metricoolMetricsRepeated": false,
+                  "klaviyoFlowReportRepeated": false,
+                  "searchConsoleRepeated": false,
+                  "broadSalesRepeated": false,
+                  "merchantBroadRepeated": false,
+                  "ordersQueried": false,
+                  "proof": "dropship/codex-handoff-20261018/UMSETZUNGSBELEG-20261110-R173.json"
+                },
+                "followUpR174": {
+                  "localDate": "2026-11-10",
+                  "source": "R174",
+                  "kind": "single_guarded_pinterest_write_and_targeted_readback",
+                  "historyRange": "2026-11-01/2026-11-18",
+                  "returnedObjects": 102,
+                  "pinterestPins": 14,
+                  "hashedPinterestMedia": 14,
+                  "matches": 0,
+                  "metricoolWrites": 1,
+                  "retries": 0,
+                  "status": "PENDING",
+                  "metricsRepeated": false,
+                  "klaviyoFlowReportRepeated": false,
+                  "searchConsoleRepeated": false,
+                  "broadSalesRepeated": false,
+                  "merchantBroadRepeated": false,
+                  "ordersQueried": false,
+                  "proof": "dropship/codex-handoff-20261018/PINTEREST-PUSH-20261110-R174.json"
+                }
+              }
+            }
+          },
+          {
+            "dateZurich": "2026-11-11",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-11",
+              "currentDayEvidenceKind": "R175_METRICOOL_SEVEN_DAY_CHANNEL_METRICS_KLAVIYO_FLOW_REPORT_AND_NARROW_SEO_READ_ONLY",
+              "currentDayEvidence": "Vor Abfragen Revision174, Projektgedächtnis, Arbeitsstand, Übergabe und den letzten Tagesblock geprüft. Einmalig04.–10.11.: sechs gültige Metricool-Kennzahl-IDs und sechs kleine kanalgetrennte Reihen gelesen; fehlende Tage/null bleiben unbekannt. Nach frischer Placed-Order-Metrik W7XTVD genau ein kleiner Klaviyo-Flowreport über30 Tage; fehlende Flowzeilen und Live-Capture bleiben unbekannt. Planung11.–19.11. in kleinen Tagesfenstern, zwei gezielte Shopify-Produkte sowie enge öffentliche SEO-/CSV-Gegenproben wurden read-only gelesen. Keine GSC-/Merchant-Vollabfrage, keine Bestellung/Kauf-Watch, keine Umsatz- oder Verkaufsableitung.0 Plattformwrites. Heute ohne neuen konkreten Gegenprüfgrund Metricool-Kennzahlen, Klaviyo-Flowreport, GSC, breite Verkaufs-/Merchantdaten oder Bestellungen nicht erneut lesen. R175-Präzisionsnachtrag: vorhandene CJ-Helfer/Workflows im Repo bestätigt; im aktuellen Prozess keine Namen von CJ-Laufzeit-Credential-Variablen gefunden und vier benannte lokale Referenzpfade nicht vorhanden. Das ist kein Connector-Negativbeweis. Keine CJ-/API-/Katalogabfrage und kein Write.",
+              "completedReports": {
+                "metricool": {
+                  "localDate": "2026-11-11",
+                  "range": "2026-11-04/2026-11-10",
+                  "source": "R175",
+                  "definitionCalls": 6,
+                  "dataCalls": 6,
+                  "partialRows": true,
+                  "missingIsUnknown": true
+                },
+                "klaviyo": {
+                  "localDate": "2026-11-11",
+                  "range": "rolling_30_days",
+                  "source": "R175",
+                  "metricDiscoveryCalls": 1,
+                  "flowReportCalls": 1,
+                  "missingRowsUnknown": true,
+                  "accountCurrency": "USD",
+                  "shopCurrency": "CHF",
+                  "currenciesMixed": false
+                },
+                "targetedProductsR175": {
+                  "localDate": "2026-11-11",
+                  "shopifyProducts": 2,
+                  "broadPagination": false
+                },
+                "planningR175": {
+                  "localDate": "2026-11-11",
+                  "range": "2026-11-11/2026-11-19",
+                  "activeObjects": 53,
+                  "activeStates": 67,
+                  "draftObjects": 4,
+                  "draftStates": 5,
+                  "writes": 0
+                },
+                "seoNarrowR175": {
+                  "localDate": "2026-11-11",
+                  "publicPages": [
+                    "home",
+                    "robots",
+                    "sitemap",
+                    "projector",
+                    "organizer",
+                    "beauty_selfcare_collection"
+                  ],
+                  "merchantCsvFiles": 2,
+                  "merchantCsvHashEqual": true,
+                  "searchConsoleRepeated": false,
+                  "merchantBroadRepeated": false,
+                  "writes": 0
+                },
+                "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261111-R175.json",
+                "ordersQueried": false,
+                "purchaseWatchEnded": true,
+                "broadSalesRepeated": false,
+                "merchantBroadRepeated": false,
+                "accessPreflightR175": {
+                  "localDate": "2026-11-11",
+                  "source": "R175_precision_addendum",
+                  "repositoryHelpersPresent": true,
+                  "currentProcessCjRuntimeCredentialVariableNamesFound": false,
+                  "missingLocalReferencePaths": 4,
+                  "missingConnectorProven": false,
+                  "cjApiReads": 0,
+                  "catalogReads": 0,
+                  "writes": 0
+                }
+              }
+            }
+          },
+          {
+            "dateZurich": "2026-11-13",
+            "record": {
+              "timezone": "Europe/Zurich",
+              "checkLogBeforeReading": true,
+              "metricsFlowAndBroadSalesMaxPerDay": 1,
+              "exception": "new_concrete_finding_with_recorded_reason",
+              "currentDayEvidenceDate": "2026-11-13",
+              "currentDayEvidenceKind": "R194_MORNING_ONCE_REPORTS_AND_TARGETED_AUDIO_HOLDS",
+              "currentDayEvidence": "Before reads, fresh R193 memory and13Nov log confirmed no reports today. Once06–12Nov:6Metricooldefinitions+6small data calls; freshW7XTVD metric discovery+1Klaviyoflowreport. Missing values remainunknown; IG includesorganic+paid. Fresh seven R125-bound audio holds and targeted SEO/product reads are not repeated analytics. No orderwatch or broad sales query. Reuse these reports in later13Nov runs unless a concrete new countercheck reason is recorded.",
+              "completedReports": {
+                "metricool": {
+                  "localDate": "2026-11-13",
+                  "range": "2026-11-06/2026-11-12",
+                  "definitionCalls": 6,
+                  "dataCalls": 6,
+                  "missingIsUnknown": true,
+                  "source": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261113-R194.json"
+                },
+                "klaviyo": {
+                  "localDate": "2026-11-13",
+                  "range": "2026-11-06/2026-11-12",
+                  "metricDiscoveryCalls": 1,
+                  "flowReportCalls": 1,
+                  "conversionMetricId": "W7XTVD",
+                  "accountCurrency": "USD",
+                  "shopCurrency": "CHF",
+                  "currenciesMixed": false,
+                  "missingRowsUnknown": true
+                },
+                "ordersQueried": false,
+                "purchaseWatchEnded": true,
+                "broadSalesRepeated": false,
+                "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261113-R194.json"
+              }
+            }
+          }
+        ],
+        "additionalSourceReports": [
+          {
+            "recordedAtUTC": "2026-11-15T01:07:15.677774+00:00",
+            "localDate": "2026-11-15",
+            "source": "searchConsole",
+            "queryCalls": 1,
+            "reason": "Existing owner SEO continuation, first15NovGSCread after fresh log/policy check",
+            "socialAndKlaviyo15NovRead": false,
+            "doNotRepeatGSCWithoutNewReason": true
+          }
+        ]
+      }
     }
   ],
   "reviewPacketHistory": [
@@ -55615,6 +56417,93 @@
         "Fehler / Memory",
         "Fehlversuch mit fehlendem python im Theme-Sandbox und den nativen Renderer-Befund dokumentiert; Quellen danach mit verfügbaren Shellwerkzeugen gesichert",
         "Kein Auth-/Quota-Fehler oder leere-Daten-Beweis. Native Darstellungsauffälligkeit nicht als Live-Shopdefekt ausgegeben. Tagesblock,24IDs und Historien erhalten. Keine neuen Tagesreports, Socialposts, Löschungen, Budgets, Rabatte, Versand-/Flow-/DNSänderungen, Workflows oder Automation. Claude-Empfang unbekannt."
+      ]
+    ]
+  },
+  "run230": {
+    "revision": 230,
+    "startedAtUTC": "2026-11-15T09:10:35Z",
+    "recordedAtUTC": "2026-11-15T09:48:50.590485+00:00",
+    "dateZurich": "2026-11-15",
+    "kind": "sales_session_funnel_and_purchase_selection_note_saved_in_fresh_unpublished_theme",
+    "shopIdentityReads": 1,
+    "metricoolIdentityReads": 1,
+    "newShopifySessionsQueries": 1,
+    "orderQueries": 0,
+    "newMetricoolScheduleMetricsReadsOrWrites": 0,
+    "newKlaviyoReportsOrWrites": 0,
+    "newGscQueries": 0,
+    "newMerchantReadsOrWrites": 0,
+    "targetNativeProductReads": 2,
+    "targetCjProductReads": 1,
+    "themeDuplicateMutationCalls": 1,
+    "themeBashEditScripts": 2,
+    "themeCommitCalls": 1,
+    "themeId": "214040805767",
+    "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+    "themeRole": "UNPUBLISHED",
+    "themeCommit": "688dc1d24e0bd8040c288060e31a07943c9dbcf5",
+    "themePublishCalls": 0,
+    "liveThemeWrites": 0,
+    "productWrites": 0,
+    "newSocialPostsSchedulesUploadsDeletes": 0,
+    "nativeScreenshotCalls": 2,
+    "nativeScreenshotImages": 4,
+    "browserPageGETs": {
+      "liveBaseline": 2,
+      "previewInitialOverRestricted": 3,
+      "previewCorrectedMobile": 1
+    },
+    "correctedPreviewProductSectionGETs": 2,
+    "allCustomerFormsCartCheckoutOrMessages": 0,
+    "paidRendersOrInstalls": 0,
+    "newAutomationOrFrequencyChange": false,
+    "shippingThresholdsAndAccountDomainPreserved": true,
+    "sourceGscReused": {
+      "run": "R226",
+      "rows": 20,
+      "truncated": true,
+      "finalEstimatedThrough": "2026-11-12",
+      "notFullPeriodOrFullPageList": true
+    },
+    "funnelIsNotPaymentOrAttributionProof": true,
+    "newMasterMp4": false,
+    "claudeReceipt": "unknown_no_new_receipt",
+    "table": [
+      [
+        "Fortsetzung / Identität",
+        "Core4, heutigen Tagesblock und Shop-/Metricool-Identitäten frisch geprüft",
+        "LuxeStyle/luxestyle.ch/CHF/EuropeZurich, Marke6227837 und sechs Kanalidentitäten passen. Revision229 fortgesetzt; fremde Marken nicht bearbeitet."
+      ],
+      [
+        "Verkaufsgrundlage",
+        "Ersten heutigen kleinen Shopify-Sitzungsreport für 08.–14.11. gelesen und sieben Tage offline gegengeprüft",
+        "318 gemessene Sitzungen,16 mit Warenkorb-Ergänzung, 10 mit erreichtem Checkout,3 mit abgeschlossenem Checkout; 0.94% sitzungsbezogen. Kein Beleg bezahlter Bestellungen, keine SKU-/Ursachenattribution oder eindeutige Personenanzahl."
+      ],
+      [
+        "Konkreter Kaufweg",
+        "Zwei aktuelle Produktseiten mobil gelesen; bei Wickel Schwarz und anschliessend Klett ausgewählt, ohne Kaufaktion",
+        "Schwarz/Knöpfe ist eine ungültige Kombination; Klett ist kaufbar zu CHF16.90. Einschränkung und Öl-Hinweis standen rund1’704CSSpx unterhalb des Kaufbuttons. Kein pauschaler Ausverkaufs- oder Lieferantenlagerbefund."
+      ],
+      [
+        "Unveröffentlicht umgesetzt",
+        "Frische Kopie von MAIN213991391623 erstellt; genau zwei Dateien geändert und einmal gespeichert",
+        "Theme214040805767 «LuxeStyle – Kaufhinweis 15.11.2026», Version688dc1d…bcf5; saved buy-buttons.liquid und footer-group.json, pending/pushErrors leer. Auswahlhinweis aus vorhandener Produktbeschreibung vor Kaufcontrols; Popup-Satz ausR229 übernommen. Nicht live."
+      ],
+      [
+        "Qualität / Gegenprobe",
+        "547 Theme-Dateien verglichen, Quelldiff/Peerreview und gezielte Browserprüfung durchgeführt",
+        "Genau2 erwartete Dateien unterschiedlich,545 identisch. Korrigierter mobiler Test bestätigt Default-ID, gesperrtes Schwarz/Knöpfe und Schwarz/Klett-ID66048961905031/CHF16.90/aktiven Button. Hinweis45–102 px vor CTA, kein horizontaler Überlauf/CSS-Fehler. Keine Warenkorb-/Checkout-/Formsendung."
+      ],
+      [
+        "CJ / Produktangaben",
+        "Projektor und eine gezielte CJ-Detailquelle frisch gelesen; vollständige Rohantwort und lokale Parse-Gegenprobe gesichert",
+        "A–G/SKUs erneut zugeordnet. R228-Beschreibungsentwurf unverändert und weiterhin nicht live. Fehlender Rohquellbeleg jetzt behoben; kein Film, keine Musik-/Werberechte oder Lieferumfang allein aus globaler Packliste abgeleitet."
+      ],
+      [
+        "Memory / Grenzen",
+        "24 Aufgaben-IDs, Historien und heutigen Tagesblock erhalten; Tagesreport-Sperre um den ersten Shopify-Sitzungsreport ergänzt",
+        "Kein neuer Socialpost/-termin/-delete, Produkt-/Live-Theme-/Flow-/Merchantwrite, Bestell-Watch, Rabatt/Budget/DNS oder Workflowstart. Ein Clone und eine unveröffentlichte Theme-Speicherung sind keine Live-Veröffentlichung oder Verkaufssteigerung. Claude-Empfang unbekannt."
       ]
     ]
   }

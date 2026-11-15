@@ -2651,3 +2651,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Bericht](WEITERARBEIT-20261115-R229.md) · [Belege](WEITERARBEIT-20261115-R229.json).
 
+
+### R230 – Sitzungsfunnel und konkreten Kaufhinweis bearbeitet
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Fortsetzung / Identität | Core4, heutigen Tagesblock und Shop-/Metricool-Identitäten frisch geprüft | LuxeStyle/luxestyle.ch/CHF/EuropeZurich, Marke6227837 und sechs Kanalidentitäten passen. Revision229 fortgesetzt; fremde Marken nicht bearbeitet. |
+| Verkaufsgrundlage | Ersten heutigen kleinen Shopify-Sitzungsreport für 08.–14.11. gelesen und sieben Tage offline gegengeprüft | 318 gemessene Sitzungen,16 mit Warenkorb-Ergänzung, 10 mit erreichtem Checkout,3 mit abgeschlossenem Checkout; 0.94% sitzungsbezogen. Kein Beleg bezahlter Bestellungen, keine SKU-/Ursachenattribution oder eindeutige Personenanzahl. |
+| Konkreter Kaufweg | Zwei aktuelle Produktseiten mobil gelesen; bei Wickel Schwarz und anschliessend Klett ausgewählt, ohne Kaufaktion | Schwarz/Knöpfe ist eine ungültige Kombination; Klett ist kaufbar zu CHF16.90. Einschränkung und Öl-Hinweis standen rund1’704CSSpx unterhalb des Kaufbuttons. Kein pauschaler Ausverkaufs- oder Lieferantenlagerbefund. |
+| Unveröffentlicht umgesetzt | Frische Kopie von MAIN213991391623 erstellt; genau zwei Dateien geändert und einmal gespeichert | Theme214040805767 «LuxeStyle – Kaufhinweis 15.11.2026», Version688dc1d…bcf5; saved buy-buttons.liquid und footer-group.json, pending/pushErrors leer. Auswahlhinweis aus vorhandener Produktbeschreibung vor Kaufcontrols; Popup-Satz ausR229 übernommen. Nicht live. |
+| Qualität / Gegenprobe | 547 Theme-Dateien verglichen, Quelldiff/Peerreview und gezielte Browserprüfung durchgeführt | Genau2 erwartete Dateien unterschiedlich,545 identisch. Korrigierter mobiler Test bestätigt Default-ID, gesperrtes Schwarz/Knöpfe und Schwarz/Klett-ID66048961905031/CHF16.90/aktiven Button. Hinweis45–102 px vor CTA, kein horizontaler Überlauf/CSS-Fehler. Keine Warenkorb-/Checkout-/Formsendung. |
+| CJ / Produktangaben | Projektor und eine gezielte CJ-Detailquelle frisch gelesen; vollständige Rohantwort und lokale Parse-Gegenprobe gesichert | A–G/SKUs erneut zugeordnet. R228-Beschreibungsentwurf unverändert und weiterhin nicht live. Fehlender Rohquellbeleg jetzt behoben; kein Film, keine Musik-/Werberechte oder Lieferumfang allein aus globaler Packliste abgeleitet. |
+| Memory / Grenzen | 24 Aufgaben-IDs, Historien und heutigen Tagesblock erhalten; Tagesreport-Sperre um den ersten Shopify-Sitzungsreport ergänzt | Kein neuer Socialpost/-termin/-delete, Produkt-/Live-Theme-/Flow-/Merchantwrite, Bestell-Watch, Rabatt/Budget/DNS oder Workflowstart. Ein Clone und eine unveröffentlichte Theme-Speicherung sind keine Live-Veröffentlichung oder Verkaufssteigerung. Claude-Empfang unbekannt. |
+
+[Bericht](VERKAUFSARBEIT-20261115-R230.md) · [Belege](VERKAUFSARBEIT-20261115-R230.json).
+

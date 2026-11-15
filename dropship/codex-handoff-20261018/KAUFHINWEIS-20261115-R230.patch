@@ -1,0 +1,28 @@
+--- blocks/buy-buttons.liquid (MAIN)
++++ blocks/buy-buttons.liquid (R230 draft)
+@@ -52,6 +52,25 @@
+       data-quantity-default="{% if product.selected_or_first_available_variant.quantity_rule.min %}{{ product.selected_or_first_available_variant.quantity_rule.min }}{% else %}1{% endif %}"
+       data-quantity-error-max="{{ 'products.product.quantity_error_max' | t }}"
+     >
++      {%- comment -%} Repeat existing product facts beside purchase controls; fail closed if either source sentence changes. {%- endcomment -%}
++      {%- if product.id == 16592643817863 -%}
++        {%- liquid
++          assign selection_source = product.description | strip_html
++          assign oil_marker = 'Rizinusöl ist nicht enthalten.'
++          assign selection_marker = 'Schwarz nur mit Klett, als Set oder Nackenwickel'
++        -%}
++        {%- if selection_source contains oil_marker and selection_source contains selection_marker -%}
++          {%- liquid
++            assign oil_offset = selection_source | split: oil_marker | first | size
++            assign oil_length = oil_marker | size
++            assign selection_offset = selection_source | split: selection_marker | first | size
++            assign selection_length = selection_marker | size
++          -%}
++          <div class="rte" data-luxe-selection-note>
++            <p>{{- selection_source | slice: selection_offset, selection_length | escape -}}<br>{{- selection_source | slice: oil_offset, oil_length | escape -}}</p>
++          </div>
++        {%- endif -%}
++      {%- endif -%}
+       <div
+         class="visually-hidden"
+         aria-live="assertive"

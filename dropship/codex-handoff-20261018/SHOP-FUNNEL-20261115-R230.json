@@ -1,0 +1,218 @@
+{
+  "raw": {
+    "query": "FROM sessions SHOW sessions, online_store_visitors, sessions_with_cart_additions, sessions_that_reached_checkout, sessions_that_completed_checkout, conversion_rate WHERE human_or_bot_session = 'human' TIMESERIES day SINCE 2026-11-08 UNTIL 2026-11-14 ORDER BY day ASC LIMIT 7",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Query returned 7 row(s) with columns: day, sessions, online_store_visitors, sessions_with_cart_additions, sessions_that_reached_checkout, sessions_that_completed_checkout, conversion_rate.\nAnalytics results are shown in a chart widget the user can see.\nSummarize key insights from the data. Highlight trends, top performers, or anomalies. Suggest follow-up queries if relevant."
+        },
+        {
+          "type": "text",
+          "text": "{\"query\":\"FROM sessions SHOW sessions, online_store_visitors, sessions_with_cart_additions, sessions_that_reached_checkout, sessions_that_completed_checkout, conversion_rate WHERE human_or_bot_session = 'human' TIMESERIES day SINCE 2026-11-08 UNTIL 2026-11-14 ORDER BY day ASC LIMIT 7\",\"columns\":[{\"name\":\"day\",\"dataType\":\"DAY_TIMESTAMP\"},{\"name\":\"sessions\",\"dataType\":\"INTEGER\"},{\"name\":\"online_store_visitors\",\"dataType\":\"INTEGER\"},{\"name\":\"sessions_with_cart_additions\",\"dataType\":\"INTEGER\"},{\"name\":\"sessions_that_reached_checkout\",\"dataType\":\"INTEGER\"},{\"name\":\"sessions_that_completed_checkout\",\"dataType\":\"INTEGER\"},{\"name\":\"conversion_rate\",\"dataType\":\"PERCENT\"}],\"rows\":[[\"2026-11-08\",\"49\",\"47\",\"4\",\"2\",\"2\",\"0.04081632653061224\"],[\"2026-11-09\",\"38\",\"37\",\"2\",\"0\",\"0\",\"0.0\"],[\"2026-11-10\",\"52\",\"50\",\"6\",\"5\",\"0\",\"0.0\"],[\"2026-11-11\",\"54\",\"50\",\"2\",\"1\",\"1\",\"0.018518518518518517\"],[\"2026-11-12\",\"39\",\"37\",\"0\",\"0\",\"0\",\"0.0\"],[\"2026-11-13\",\"45\",\"43\",\"0\",\"0\",\"0\",\"0.0\"],[\"2026-11-14\",\"41\",\"40\",\"2\",\"2\",\"0\",\"0.0\"]],\"rowCount\":7,\"chartHint\":{\"type\":\"line\",\"xAxisColumnIndex\":0,\"yAxisColumnIndices\":[1,2,3,4,5],\"yAxisFormat\":\"number\"},\"summaryMetric\":{\"label\":\"sessions\",\"value\":\"318\"},\"shopDomain\":\"au3j0y-hq.myshopify.com\",\"currencyCode\":\"CHF\"}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "text": "The widget has rendered the primary result for the user. Do not reproduce its contents in your reply: no JSON, lists of rows, or field-by-field recaps. Give a concise summary or interpretation, important caveats, and relevant next steps instead. You may refer to a specific item to explain a recommendation. Only repeat the full data if the user explicitly asks to repeat it in text or export it.",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "query": "FROM sessions SHOW sessions, online_store_visitors, sessions_with_cart_additions, sessions_that_reached_checkout, sessions_that_completed_checkout, conversion_rate WHERE human_or_bot_session = 'human' TIMESERIES day SINCE 2026-11-08 UNTIL 2026-11-14 ORDER BY day ASC LIMIT 7",
+        "columns": [
+          {
+            "name": "day",
+            "dataType": "DAY_TIMESTAMP"
+          },
+          {
+            "name": "sessions",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "online_store_visitors",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "sessions_with_cart_additions",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "sessions_that_reached_checkout",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "sessions_that_completed_checkout",
+            "dataType": "INTEGER"
+          },
+          {
+            "name": "conversion_rate",
+            "dataType": "PERCENT"
+          }
+        ],
+        "rows": [
+          [
+            "2026-11-08",
+            "49",
+            "47",
+            "4",
+            "2",
+            "2",
+            "0.04081632653061224"
+          ],
+          [
+            "2026-11-09",
+            "38",
+            "37",
+            "2",
+            "0",
+            "0",
+            "0.0"
+          ],
+          [
+            "2026-11-10",
+            "52",
+            "50",
+            "6",
+            "5",
+            "0",
+            "0.0"
+          ],
+          [
+            "2026-11-11",
+            "54",
+            "50",
+            "2",
+            "1",
+            "1",
+            "0.018518518518518517"
+          ],
+          [
+            "2026-11-12",
+            "39",
+            "37",
+            "0",
+            "0",
+            "0",
+            "0.0"
+          ],
+          [
+            "2026-11-13",
+            "45",
+            "43",
+            "0",
+            "0",
+            "0",
+            "0.0"
+          ],
+          [
+            "2026-11-14",
+            "41",
+            "40",
+            "2",
+            "2",
+            "0",
+            "0.0"
+          ]
+        ],
+        "rowCount": 7,
+        "chartHint": {
+          "type": "line",
+          "xAxisColumnIndex": 0,
+          "yAxisColumnIndices": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "yAxisFormat": "number"
+        },
+        "summaryMetric": {
+          "label": "sessions",
+          "value": "318"
+        },
+        "shopDomain": "au3j0y-hq.myshopify.com",
+        "currencyCode": "CHF"
+      },
+      "isError": false
+    },
+    "documentation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "[\n  {\n    \"score\": 0.49000000953674316,\n    \"content\": \"Examples Show the daily session-to-checkout funnel this month Description Track the session-to-checkout funnel day by day this month, against the prior period. This example uses [`WHERE`](/docs/api/shopifyql/latest/syntax/where) `human_or_bot_session = 'human'` to filter out bots. ShopifyQL FROM sessions SHOW sessions, online_store_visitors, sessions_with_cart_additions, sessions_that_reached_checkout, sessions_that_completed_checkout, conversion_rate WHERE human_or_bot_session = 'human' TIMESERIES day WITH PERCENT_CHANGE DURING this_month COMPARE TO previous_period ORDER BY day ASC VISUALIZE sessions, conversion_rate TYPE line Rank completed checkouts by referrer and device Description Rank the top 50 referrer-and-device pairs by `sessions_that_completed_checkout` since the start of last year. This example uses [`GROUP_TOTALS`](/docs/api/shopifyql/latest/syntax/with#group-total-columns) to subtotal each referrer across its devices. ShopifyQL FROM sessions SHOW sessions, conversion_rate, sessions_that_completed_checkout, average_session_duration GROUP BY referrer_source, session_device_type WITH TOTALS, GROUP_TOTALS HAVING sessions > 100 SINCE last_year UNTIL today ORDER BY sessions_that_completed_checkout DESC LIMIT 50 VISUALIZE sessions_that_completed_checkout TYPE stacked_horizontal_bar Track daily human\",\n    \"url\": \"https://shopify.dev/docs/api/shopifyql/2026-10/schemas/sessions_and_behavior/sessions\",\n    \"title\": \"sessions\",\n    \"domain\": \"shopifyql\"\n  },\n  {\n    \"score\": 0.39454546570777893,\n    \"content\": \"Examples Report a daily series for last month Description Chart daily [`sessions`](/docs/api/shopifyql/latest/schemas/sessions_and_behavior/sessions#sessionsmetric-propertydetail-sessions) and `conversion_rate` for last month. This example uses [`SINCE startOfMonth(-1m) UNTIL endOfMonth(-1m)`](/docs/api/shopifyql/latest/syntax/since-until-during) to pin the range to the previous calendar month. ShopifyQL FROM sessions SHOW sessions, conversion_rate TIMESERIES day SINCE startOfMonth(-1m) UNTIL endOfMonth(-1m) ORDER BY day ASC Aggregate sales metrics over a fixed date range Description Show [`gross_sales`](/docs/api/shopifyql/latest/schemas/sales_revenue/sales#salesmetric-propertydetail-grosssales), `discounts`, and `net_sales` for a fixed one-month range as a single aggregated row. This example sets fixed [`SINCE` and `UNTIL`](/docs/api/shopifyql/latest/syntax/since-until-during) dates with no `TIMESERIES`, so the metrics collapse into one total for the range rather than a daily series. ShopifyQL FROM sales SHOW gross_sales, discounts, net_sales SINCE 2026-01-01 UNTIL 2026-01-31 Result columns TIMESERIES adds the selected time dimension to the returned columns. Where the time dimension appears depends on whether you also reference it in SHOW or GROUP BY: If the time dimension isn't in GROUP BY or SHOW, then it's the first dimension in the result. If the time dimension is in GROUP BY, then its position follows the GROUP BY order. If the time dimension is also in SHOW, then its position follows the SHOW order.\",\n    \"url\": \"https://shopify.dev/docs/api/shopifyql/2026-10/syntax/timeseries\",\n    \"title\": \"TIMESERIES\",\n    \"domain\": \"shopifyql\"\n  }\n]"
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    },
+    "sourceIdentity": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Query executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize the key information in a helpful, readable way."
+          },
+          {
+            "type": "text",
+            "text": "{\"data\":{\"shop\":{\"id\":\"gid://shopify/Shop/94368563585\",\"name\":\"LuxeStyle\",\"primaryDomain\":{\"host\":\"luxestyle.ch\"},\"currencyCode\":\"CHF\",\"ianaTimezone\":\"Europe/Zurich\"}}}",
+            "annotations": {
+              "audience": [
+                "assistant"
+              ]
+            }
+          }
+        ],
+        "structuredContent": {
+          "data": {
+            "shop": {
+              "id": "gid://shopify/Shop/94368563585",
+              "name": "LuxeStyle",
+              "primaryDomain": {
+                "host": "luxestyle.ch"
+              },
+              "currencyCode": "CHF",
+              "ianaTimezone": "Europe/Zurich"
+            }
+          }
+        },
+        "isError": false
+      }
+    },
+    "reason": "First15Nov bounded Shopify session funnel report for the owner's new sales-priority request. No repeated social/Klaviyo/GSC report and no order watch."
+  },
+  "countercheck": {
+    "observedDays": 7,
+    "requestedDays": 7,
+    "missingDays": [],
+    "humanSessionFilter": "Shopify classification, not proof of unique real humans",
+    "totals": {
+      "sessions": 318,
+      "sessions_with_cart_additions": 16,
+      "sessions_that_reached_checkout": 10,
+      "sessions_that_completed_checkout": 3
+    },
+    "dailyVisitorCountsNotAggregatedAsUniquePeople": true,
+    "sessionBasedPercentages": {
+      "sessions_with_cart_additions": 5.031446540880503,
+      "sessions_that_reached_checkout": 3.1446540880503147,
+      "sessions_that_completed_checkout": 0.9433962264150944
+    },
+    "allDailyReportedRatesConsistentWithCompletedCheckoutSessionsOverSessions": true,
+    "reportShopDomain": "au3j0y-hq.myshopify.com",
+    "scope": "Aggregated session stages only; no individual path, purchase/payment verification, SKU attribution, or cause established. No sales/order Watch query. No finality/cache timestamp supplied.",
+    "atUTC": "2026-11-15T09:16:53.613742+00:00"
+  },
+  "paidOrdersProven": false,
+  "orderWatchRestarted": false
+}

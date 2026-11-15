@@ -1,0 +1,468 @@
+{
+  "identities": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      },
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    }
+  },
+  "themeCheckpoint": {
+    "commit": {
+      "commit": "688dc1d24e0bd8040c288060e31a07943c9dbcf5",
+      "saved": [
+        "blocks/buy-buttons.liquid",
+        "sections/footer-group.json"
+      ],
+      "deleted": [],
+      "pending": [],
+      "pushErrors": [],
+      "rejectedReason": null
+    },
+    "roles": {
+      "data": {
+        "themes": {
+          "nodes": [
+            {
+              "id": "gid://shopify/OnlineStoreTheme/187043086721",
+              "name": "Horizon · LuxeStyle Branded",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-06-09T21:10:28Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/187478475137",
+              "name": "Horizon · LuxeStyle PDP-Optik (Claude)",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-06-11T17:12:27Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/187533001089",
+              "name": "Horizon · LuxeStyle + Email-Popup (Claude)",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-10-26T17:32:02Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212302922119",
+              "name": "Horizon – SEO Versand CHF50 (Entwurf)",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-10-23T19:55:25Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212497039751",
+              "name": "Horizon · LuxeStyle Premium (Entwurf 25.10.)",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-10-25T21:17:30Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212498841991",
+              "name": "Horizon · LuxeStyle Premium (Entwurf 25.10. b)",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-10-27T18:38:53Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212591444359",
+              "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. Men...",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-10-27T21:09:16Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212645413255",
+              "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. abe...",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-01T07:04:16Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212656488839",
+              "name": "Horizon · LuxeStyle Premium (Entwurf 27.10. Kun...",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-01T15:09:13Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212752499079",
+              "name": "LuxeStyle – Schema-Prüfung 29.10.2026",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-01T15:46:13Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212967981447",
+              "name": "LuxeStyle – Neue Startseite 01.11.2026",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-01T17:27:24Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212971061639",
+              "name": "LuxeStyle – Bewertungen 01.11.2026",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-02T06:04:37Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212978598279",
+              "name": "LuxeStyle – Sticker und Varianten 01.11.2026",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-04T06:32:12Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/212998619527",
+              "name": "LuxeStyle – Codex + Handy-Fixes 01.11.2026 (zus...",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-02T08:10:23Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/213013037447",
+              "name": "LuxeStyle – Schrift und Banner 02.11.2026",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-15T08:54:34Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/213482963335",
+              "name": "LuxeStyle – Printful Fix 08.11.2026",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-08T09:42:26Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/213619179911",
+              "name": "LuxeStyle – R158 SEO Preview 09.11.2026",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-09T20:46:25Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/213991391623",
+              "name": "LuxeStyle – SEO 14.11.2026",
+              "role": "MAIN",
+              "updatedAt": "2026-11-14T15:08:04Z"
+            },
+            {
+              "id": "gid://shopify/OnlineStoreTheme/214040805767",
+              "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+              "role": "UNPUBLISHED",
+              "updatedAt": "2026-11-15T09:38:48Z"
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false
+          }
+        }
+      }
+    },
+    "clone": {
+      "data": {
+        "themeDuplicate": {
+          "newTheme": {
+            "id": "gid://shopify/OnlineStoreTheme/214040805767",
+            "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+            "role": "UNPUBLISHED"
+          },
+          "userErrors": []
+        }
+      }
+    }
+  },
+  "wholeSourceComparison": {
+    "main": {
+      "stdout": "667f1b404461babe3bdc8607ff1813231544ce19fdbb99d0d06165d705f5a126  -\n547\n",
+      "stderr": "",
+      "exitCode": 0,
+      "timedOut": false,
+      "pending": []
+    },
+    "draft": {
+      "stdout": "667f1b404461babe3bdc8607ff1813231544ce19fdbb99d0d06165d705f5a126  -\n547\n",
+      "stderr": "",
+      "exitCode": 0,
+      "timedOut": false,
+      "pending": []
+    },
+    "mainThemeId": "213991391623",
+    "draftThemeId": "214040805767",
+    "scope": "assets blocks config layout locales sections snippets templates",
+    "filesCompared": 547,
+    "unchangedFiles": 545,
+    "excludedExpectedTwoFiles": [
+      "blocks/buy-buttons.liquid",
+      "sections/footer-group.json"
+    ],
+    "otherFilesManifestSha256": "667f1b404461babe3bdc8607ff1813231544ce19fdbb99d0d06165d705f5a126",
+    "onlyExpectedTwoFilesDiffer": true,
+    "method": "sha256sum sorted per-file SHA-256 records excluding exactly the two reviewed edits; file counts match; the two edited hashes separately read back",
+    "limitations": [
+      "Not a full checkout or accessibility acceptance.",
+      "Earlier full hash manifests were tool-truncated; first compact sed pipeline failed and is discarded. These final compact hashes have exitCode0 and empty stderr."
+    ]
+  },
+  "diffQA": {
+    "scope": "Unpublished current MAIN copy only",
+    "newThemeId": "214040805767",
+    "files": [
+      {
+        "path": "blocks/buy-buttons.liquid",
+        "beforeSha256": "5777a1ac479e3c6d000b2a12445832d45c1c38b558064f43a7ae1a9bb88c2611",
+        "afterSha256": "b0b6656f7feecff559eb73feee421203afe8cfc54b01a0d1284fefd45a4580eb",
+        "change": "One source-guarded display-only insertion; all outside bytes, scripts, variant/form logic and schema unchanged"
+      },
+      {
+        "path": "sections/footer-group.json",
+        "beforeSha256": "59f8477f4177c92bf52029c0b90e28f7d4f9a5577e07a517e8231bc8fe037100",
+        "afterSha256": "9321568a79430181fbdc2c300b3c3ce34ab2f1187fb6891e3d3657dc7c43f978",
+        "change": "Exactly one existing success-message sentence; no script or other byte changed"
+      }
+    ],
+    "checks": {
+      "outsideInsertionUnchanged": true,
+      "scriptsUnchanged": true,
+      "schemaUnchanged": true,
+      "footerSingleSentenceOnly": true
+    },
+    "notes": [
+      "No invalid variant is enabled or auto-selected.",
+      "Note derives displayed strings from current product.description; markers and product ID guard the single-product scope.",
+      "Translated/changed/missing source markers result in no note.",
+      "Two existing source facts only, no new medical, stock, pricing, shipping or material claim."
+    ],
+    "sourceGuardCases": [
+      {
+        "case": "current",
+        "expectedDisplay": true,
+        "actualDisplay": true,
+        "pass": true
+      },
+      {
+        "case": "other_product",
+        "expectedDisplay": false,
+        "actualDisplay": false,
+        "pass": true
+      },
+      {
+        "case": "oil_removed",
+        "expectedDisplay": false,
+        "actualDisplay": false,
+        "pass": true
+      },
+      {
+        "case": "selection_removed",
+        "expectedDisplay": false,
+        "actualDisplay": false,
+        "pass": true
+      },
+      {
+        "case": "empty",
+        "expectedDisplay": false,
+        "actualDisplay": false,
+        "pass": true
+      }
+    ],
+    "peerFinding": {
+      "initialMarkerRejected": "terminal period missing in actual description",
+      "correctedMarker": "Schwarz nur mit Klett, als Set oder Nackenwickel",
+      "repeatedApiReads": 0,
+      "resolvedOfflineFromSavedCurrentProduct": true
+    }
+  },
+  "peerReview": "# R230 draft peer review — buy-buttons note\n\n**Verdict: HOLD / not GO yet.** Offline review only; no API, browser, or theme writes.\n\n## Finding\n\nThe source guard cannot match the saved product text for product `16592643817863`. The proposed marker is `Schwarz nur mit Klett, als Set oder Nackenwickel.` (with a final period), but the saved public source has `Schwarz nur mit Klett, als Set oder Nackenwickel` inside parentheses, with **no period** before the closing parenthesis. Since the code requires `selection_source contains selection_marker`, the entire note is suppressed on this source. This also contradicts the QA claim that the exact source marker is present. Correct the marker to the exact source substring (or use an explicitly reviewed normalization), then re-check the saved-source guard and regenerated diff/QA before GO.\n\n## Checks that passed statically\n\n- `buy-buttons.diff` shows one insertion at the existing `product-form-component`, before the product form and purchase buttons. The before/after diff contains no other change.\n- The insertion is display-only: it does not change variant selection, product form fields, availability state, invalid-combination handling, POD logic, JavaScript, or schema. Existing unavailable/invalid variant behavior remains byte-identical in the supplied source.\n- Liquid flow is otherwise coherent: the product-ID guard scopes the note; `contains` gates it; `split | first | size` computes the marker offset; `slice` selects the source substring; `escape` renders it as text. The note is medically neutral and adds no claims.\n\nNo Liquid runtime/render test was performed. The blocker is sufficient to withhold GO; no platform action is authorized by this review.\n\n## Reviewed local files\n\n- `buy-buttons.before.liquid` SHA-256 `5777a1ac479e3c6d000b2a12445832d45c1c38b558064f43a7ae1a9bb88c2611`\n- `buy-buttons.proposed.liquid` SHA-256 `6a235fbdc831e2e084b9df2474520e87f494480425cc6d938cc4363f5a785532`\n- `buy-buttons.diff` SHA-256 `0679d5dca720dd40e292e7d97068f818c554ed916a80cea4bfab5ff1f6808109`\n- `draft-diff-qa.json` SHA-256 `424d74cdb798d85ceefce25fc80328e7682b3a6438909a6d717bbdb1675f30ab`\n- Source snapshot `r226/seo-opportunities/html/page1.html` SHA-256 `a5f7f1b383edd07b01b9cc49b63661824c0edcde224b95533976b3bc6f4dd7fe`\n\n## Resolution — corrected draft reviewed offline\n\n**Updated verdict: GO for this local approval draft; not a live-theme approval.** The revised marker now exactly matches the saved source without a terminal period, and the displayed text is sliced from `product.description` rather than reconstructed. I independently confirmed the two strings exist in the saved public source. The updated QA records five expected source/scope outcomes, all passing: current product displays; another product, either missing marker, or empty source suppresses the note. No API reads were repeated.\n\nThe updated diff remains one insertion before the existing product form/CTA. The invalid/unavailable variant and form code is unchanged byte-for-byte outside that insertion; no POD, JavaScript, schema, or medical claim was added. Liquid `if`/`contains`, `split | first | size`, and string `slice` usage is consistent with the intended source-guard behavior. No Liquid runtime or browser render was run, so this is a static peer-review GO only.\n\nUpdated hashes:\n\n- `buy-buttons.proposed.liquid` SHA-256 `b0b6656f7feecff559eb73feee421203afe8cfc54b01a0d1284fefd45a4580eb`\n- `buy-buttons.diff` SHA-256 `fbb549bb62bccc6681129f9322e93ddbd19c02cb5385ff1fa7df0c19ce04c82c`\n- `draft-diff-qa.json` SHA-256 `e0ebf9584152707be92da341937f5c12ca77accdb763c82a8d7e9313689c379f`\n",
+  "browserCorrectedMobile": {
+    "status": "PASS",
+    "previewTheme": {
+      "expectedId": "214040805767",
+      "actualId": 214040805767,
+      "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+      "role": "unpublished",
+      "assetPathPrefix": "/cdn/shop/t/30/assets/ (Shopify.theme.id confirms unpublished preview theme)"
+    },
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "mobileWrapStates": [
+      {
+        "name": "default",
+        "status": "PASS",
+        "shopifyThemeId": 214040805767,
+        "hiddenVariantInput": {
+          "name": "id",
+          "value": "66048961315207",
+          "disabled": false
+        },
+        "selectedOptions": {
+          "Farbe": "Rosa",
+          "Ausführung": "Bauchwickel · Knöpfe"
+        },
+        "price": "CHF 16.90",
+        "addToCart": {
+          "text": "In den Warenkorb legen",
+          "disabled": false
+        },
+        "selectionNote": "Schwarz nur mit Klett, als Set oder Nackenwickel Rizinusöl ist nicht enthalten.",
+        "noteDistanceToAddButtonPx": 102,
+        "horizontalOverflow": false,
+        "cssFailures": 0
+      },
+      {
+        "name": "schwarz",
+        "status": "PASS",
+        "shopifyThemeId": 214040805767,
+        "hiddenVariantInput": {
+          "name": "id",
+          "value": "",
+          "disabled": false
+        },
+        "selectedOptions": {
+          "Farbe": "Schwarz",
+          "Ausführung": "Bauchwickel · Knöpfe"
+        },
+        "price": "CHF 16.90",
+        "addToCart": {
+          "text": "Nicht verfügbar",
+          "disabled": true
+        },
+        "selectionNote": "Schwarz nur mit Klett, als Set oder Nackenwickel Rizinusöl ist nicht enthalten.",
+        "noteDistanceToAddButtonPx": 45,
+        "horizontalOverflow": false,
+        "cssFailures": 0
+      },
+      {
+        "name": "klett",
+        "status": "PASS",
+        "shopifyThemeId": 214040805767,
+        "hiddenVariantInput": {
+          "name": "id",
+          "value": "66048961905031",
+          "disabled": false
+        },
+        "selectedOptions": {
+          "Farbe": "Schwarz",
+          "Ausführung": "Bauchwickel · Klett"
+        },
+        "price": "CHF 16.90",
+        "addToCart": {
+          "text": "In den Warenkorb legen",
+          "disabled": false
+        },
+        "selectionNote": "Schwarz nur mit Klett, als Set oder Nackenwickel Rizinusöl ist nicht enthalten.",
+        "noteDistanceToAddButtonPx": 102,
+        "horizontalOverflow": false,
+        "cssFailures": 0
+      }
+    ],
+    "comparisonPages": {
+      "desktopWrap": {
+        "status": "PASS",
+        "shopifyThemeId": 214040805767,
+        "hiddenVariantId": "66048961315207",
+        "price": "CHF 16.90",
+        "addToCart": {
+          "text": "In den Warenkorb legen",
+          "disabled": false
+        },
+        "selectionNote": "Schwarz nur mit Klett, als Set oder Nackenwickel Rizinusöl ist nicht enthalten.",
+        "horizontalOverflow": "not captured in this read-only static check",
+        "cssFailures": 0,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        }
+      },
+      "projectorMobile": {
+        "status": "PASS",
+        "shopifyThemeId": 214040805767,
+        "hiddenVariantId": "68122445283719",
+        "price": "CHF 34.90",
+        "addToCart": {
+          "text": "In den Warenkorb legen",
+          "disabled": false
+        },
+        "selectionNote": "absent (expected: note is wrap-product-specific)",
+        "horizontalOverflow": "not captured in this read-only static check",
+        "cssFailures": 0,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      }
+    },
+    "network": {
+      "correctedMobilePreviewTopLevelPageGETs": 1,
+      "allowedTargetedOptionValuesSectionGETs": 2,
+      "allowlistedThemeJsCssFetches": 67,
+      "blockedNonGETHead": 50,
+      "blockedOther": 30,
+      "cssFailures": 0,
+      "overflow": [
+        {
+          "state": "default",
+          "overflow": false
+        },
+        {
+          "state": "schwarz",
+          "overflow": false
+        },
+        {
+          "state": "klett",
+          "overflow": false
+        }
+      ],
+      "previousStrictAttemptPageGETs": 3,
+      "correctedAdditionalMobilePageGETs": 1,
+      "cumulativeProductPageGETs": 4,
+      "targetedOptionSectionGETs": 2
+    },
+    "copyScope": {
+      "inlineNote": "DOM confirms new Black-closure restriction and oil-not-included wording before quantity and CTA in all three states.",
+      "longDescription": "The existing explanatory copy remains in the lower product description; this QA did not edit/remove product-description copy.",
+      "projector": "No selection note on projector control page, as expected for a wrap-specific note."
+    },
+    "limits": "Cumulative QA: three initial preview page GETs (mobile wrap, desktop wrap, mobile projector), then exactly one corrected mobile preview page GET after the strict run was found to block theme variant resources. Corrected run allowed two same-origin option_values product-section GETs and allowlisted same-origin theme JS/CSS. All non-GET/HEAD requests and cart, checkout, payment, consent, telemetry and unrelated API/fetch reads were blocked. No purchase action or consent choice."
+  },
+  "liveBaselineConfirmedFriction": "Schwarz with the default Bauchwickel · Knöpfe shows Nicht verfügbar and disables add-to-cart; selecting Bauchwickel · Klett restores CHF 16.90 and enables add-to-cart. The black-only-with-Klett/set/neck restriction is only in lower description, ~1,704 CSS px below CTA.",
+  "files": {
+    "blocks/buy-buttons.liquid": {
+      "before": "\n{% liquid\n  assign block_settings = block.settings\n  assign product = closest.product\n  if request.visual_preview_mode and product == blank\n    assign product = collections.all.products.first\n  endif\n\n  assign variant = closest.product.selected_or_first_available_variant\n  assign inventory_quantity = variant.inventory_quantity\n  assign inventory_policy = variant.inventory_policy\n\n  if variant.inventory_management == 'shopify'\n    assign inventory_managed = true\n  endif\n\n  assign can_add_to_cart = false\n  assign add_to_cart_text = 'products.product.unavailable' | t\n\n  if variant\n    if variant.quantity_rule.min > variant.inventory_quantity and inventory_managed and inventory_policy == 'deny'\n      assign quantity_rule_soldout = true\n    endif\n\n    if variant.available\n      assign can_add_to_cart = true\n      assign add_to_cart_text = 'products.product.add_to_cart' | t\n    elsif inventory_managed and inventory_quantity <= 0 and inventory_policy == 'deny' or quantity_rule_soldout\n      assign can_add_to_cart = false\n      assign add_to_cart_text = 'products.product.sold_out' | t\n    else\n      assign can_add_to_cart = false\n      assign add_to_cart_text = 'products.product.unavailable' | t\n    endif\n  endif\n%}\n\n{%- comment -%} LSPOD-DESIGNZWANG: Produkte mit eigenem Gestalter dürfen nicht ohne Design gekauft werden. {%- endcomment -%}\n{%- capture lspod_designzwang -%}{%- render 'lspod-designzwang', product: product -%}{%- endcapture -%}\n\n<span\n  class=\"buy-buttons-block buy-buttons-block--{{ block.id }}\"\n  {{ block.shopify_attributes }}\n>\n  {%- if product != blank -%}\n    {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id -%}\n    <product-form-component\n      data-section-id=\"{{ section.id }}\"\n      data-product-id=\"{{ product.id }}\"\n      data-product-url=\"{{ product.url }}\"\n      on:submit=\"/handleSubmit\"\n      data-quantity-default=\"{% if product.selected_or_first_available_variant.quantity_rule.min %}{{ product.selected_or_first_available_variant.quantity_rule.min }}{% else %}1{% endif %}\"\n      data-quantity-error-max=\"{{ 'products.product.quantity_error_max' | t }}\"\n    >\n      <div\n        class=\"visually-hidden\"\n        aria-live=\"assertive\"\n        role=\"status\"\n        aria-atomic=\"true\"\n        ref=\"liveRegion\"\n      ></div>\n      {%- form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' -%}\n        <input\n          type=\"hidden\"\n          name=\"id\"\n          ref=\"variantId\"\n          value=\"{{ product.selected_or_first_available_variant.id }}\"\n        >\n        {%- if block_settings.gift_card_form and product.gift_card? -%}\n          {%- render 'gift-card-recipient-form', product: product, form: form, section: section, block: block -%}\n          <span class=\"buy-buttons-block__bar\">\n        {%- endif -%}\n        <div\n          class=\"product-form-buttons spacing-style{% if block_settings.stacking %} product-form-buttons--stacked{% endif %}\"\n          style=\"{% render 'spacing-style', settings: block_settings %}\"\n          ref=\"productFormButtons\"\n        >\n          {%- unless block_settings.gift_card_form and product.gift_card? -%}\n            <span\n              class=\"product-form-text__error hidden\"\n              ref=\"addToCartTextError\"\n            >\n              <span class=\"svg-wrapper\">\n                {{- 'icon-error.svg' | inline_asset_content -}}\n              </span>\n            </span>\n          {%- endunless -%}\n\n          {%- liquid\n            assign has_quantity_rules = false\n            if variant.quantity_rule.min > 1 or variant.quantity_rule.increment > 1 or variant.quantity_rule.max != null\n              assign has_quantity_rules = true\n            endif\n          -%}\n\n          {%- if has_quantity_rules -%}\n            {%- assign cart_quantity = cart | item_count_for_variant: variant.id -%}\n            <div\n              class=\"quantity-label\"\n              ref=\"quantityLabel\"\n            >\n              {{ 'products.product.quantity' | t }}\n              <span\n                class=\"quantity-label__cart-count{% if cart_quantity == 0 %} hidden{% endif %}\"\n                ref=\"quantityLabelCartCount\"\n                >({{ cart_quantity }}\n                {{ 'products.product.in_cart' | t }})</span\n              >\n            </div>\n          {%- endif -%}\n\n          {%- comment -%} LSPOD-DESIGNZWANG: kein Mengenfeld — ein Formular ohne Textfeld kann nicht per Enter abgeschickt werden. {%- endcomment -%}\n          {% unless lspod_designzwang == '1' %}\n            {% content_for 'block', type: 'quantity', id: 'quantity' %}\n          {% endunless %}\n\n          {%- if has_quantity_rules -%}\n            <div\n              class=\"quantity-rules\"\n              ref=\"quantityRules\"\n            >\n              {%- if variant.quantity_rule.increment > 1 -%}\n                <span class=\"quantity-rules__item\">\n                  {{ 'products.product.quantity_increments' | t: increment: variant.quantity_rule.increment }}\n                </span>\n              {%- endif -%}\n              {%- if variant.quantity_rule.min > 1 -%}\n                <span class=\"quantity-rules__item\">\n                  {{ 'products.product.quantity_minimum' | t: minimum: variant.quantity_rule.min }}\n                </span>\n              {%- endif -%}\n              {%- if variant.quantity_rule.max != null -%}\n                <span class=\"quantity-rules__item\">\n                  {{ 'products.product.quantity_maximum' | t: maximum: variant.quantity_rule.max }}\n                </span>\n              {%- endif -%}\n            </div>\n          {%- endif -%}\n\n          {%- if product.quantity_price_breaks_configured? and variant.quantity_price_breaks.size > 0 -%}\n            {%- liquid\n              assign use_currency = settings.currency_code_enabled_product_pages\n            -%}\n            <volume-pricing\n              class=\"volume-pricing\"\n              data-section-id=\"{{ section.id }}\"\n              ref=\"volumePricing\"\n            >\n              <span class=\"volume-pricing__title\">{{ 'content.volume_pricing' | t }}</span>\n              <div class=\"volume-pricing__table\">\n                <div class=\"volume-pricing__row volume-pricing__row--even\">\n                  <span>{{ variant.quantity_rule.min }}+</span>\n                  <span>\n                    {%- if use_currency -%}\n                      {{- variant.price | money_with_currency | strip -}}\n                    {%- else -%}\n                      {{- variant.price | money | strip -}}\n                    {%- endif -%}\n                    /{{ 'content.each_abbreviation' | t -}}\n                  </span>\n                </div>\n                {%- for price_break in variant.quantity_price_breaks limit: 2 -%}\n                  {%- liquid\n                    assign row_index = forloop.index\n                    if row_index == 1\n                      assign row_class = 'volume-pricing__row volume-pricing__row--odd'\n                    else\n                      assign row_class = 'volume-pricing__row volume-pricing__row--even'\n                    endif\n                  -%}\n                  <div class=\"{{ row_class }}\">\n                    <span>{{ price_break.minimum_quantity }}+</span>\n                    <span>\n                      {%- if use_currency -%}\n                        {{- price_break.price | money_with_currency | strip -}}\n                      {%- else -%}\n                        {{- price_break.price | money | strip -}}\n                      {%- endif -%}\n                      /{{ 'content.each_abbreviation' | t -}}\n                    </span>\n                  </div>\n                {%- endfor -%}\n\n                {%- if variant.quantity_price_breaks.size > 2 -%}\n                  <div class=\"volume-pricing__collapsible-wrapper\">\n                    {%- for price_break in variant.quantity_price_breaks offset: 2 -%}\n                      {%- liquid\n                        assign collapsed_index = forloop.index\n                        assign total_index = collapsed_index | plus: 2\n                        assign modulo_result = total_index | modulo: 2\n                        if modulo_result == 1\n                          assign row_class = 'volume-pricing__row volume-pricing__row--odd'\n                        else\n                          assign row_class = 'volume-pricing__row volume-pricing__row--even'\n                        endif\n                      -%}\n                      <div class=\"{{ row_class }}\">\n                        <span>{{ price_break.minimum_quantity }}+</span>\n                        <span>\n                          {%- if use_currency -%}\n                            {{- price_break.price | money_with_currency | strip -}}\n                          {%- else -%}\n                            {{- price_break.price | money | strip -}}\n                          {%- endif -%}\n                          /{{ 'content.each_abbreviation' | t -}}\n                        </span>\n                      </div>\n                    {%- endfor -%}\n                  </div>\n\n                  <button\n                    type=\"button\"\n                    class=\"volume-pricing__toggle button-unstyled\"\n                    ref=\"volumePricingToggle\"\n                    on:click=\"/toggleExpanded\"\n                  >\n                    <span class=\"volume-pricing__toggle-text\">\n                      <span class=\"volume-pricing__show-more\">+ {{ 'actions.show_more' | t }}</span>\n                      <span class=\"volume-pricing__show-less\">- {{ 'actions.show_less' | t }}</span>\n                    </span>\n                  </button>\n                {%- endif -%}\n              </div>\n            </volume-pricing>\n          {%- endif -%}\n          {%- comment -%} LSPOD-DESIGNZWANG: Kaufknopf UND Express-Bezahlknopf entfallen — gekauft wird\n          unten im Gestalter mit «Mit meinem Design in den Warenkorb». Das <form> mit dem\n          versteckten Feld name=\"id\" bleibt stehen: designer.js liest daraus die gewählte Variante. {%- endcomment -%}\n          {% if lspod_designzwang == '1' %}\n            <div class=\"lspod-designzwang\">\n              <a class=\"button lspod-designzwang__button\" href=\"#lspod-start\">\n                {%- if request.locale.iso_code == 'en' -%}\n                  🎨 Create your design first\n                {%- else -%}\n                  🎨 Zuerst dein Design gestalten\n                {%- endif -%}\n              </a>\n              <p class=\"lspod-designzwang__note\">\n                {%- if product.description contains 'data-lspod-blocked' -%}\n                  {%- if request.locale.iso_code == 'en' -%}\n                    Personalisation is currently not available for this item. The reason is explained in the box below.\n                  {%- else -%}\n                    Die Personalisierung ist für dieses Produkt derzeit nicht bestellbar. Die Begründung steht im Kasten weiter unten.\n                  {%- endif -%}\n                {%- elsif request.locale.iso_code == 'en' -%}\n                  This item is printed with your own design. Create it in the designer below and\n                  add it to the cart there — that way your print file travels with the order.\n                {%- else -%}\n                  Dieses Produkt wird mit deinem eigenen Design bedruckt. Du gestaltest es weiter\n                  unten, prüfst es mit «Druckvorschau prüfen» und legst es dort mit «Druckvorschau bestätigen und in den Warenkorb» ab — nur so\n                  geht deine Druckdatei mit der Bestellung mit.\n                {%- endif -%}\n              </p>\n            </div>\n            <script>\n              (function () {\n                var setzen = function () {\n                  var d = document.querySelector('.lspod-designer');\n                  if (d && !d.id) d.id = 'lspod-start';\n                };\n                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setzen);\n                else setzen();\n              })();\n            </script>\n            <script>\n              /* lx-einheiten-0411: Sprung zum Editor (#lspod-start): die rechte Spalte ist sticky und höher als das Fenster, der blosse Anker landete unterhalb */\n              (function () {\n                var ziel = function () {\n                  var d = document.getElementById('lspod-start');\n                  if (!d) return;\n                  var y = d.getBoundingClientRect().top + window.scrollY - 100;\n                  try { window.scrollTo({ top: y, behavior: 'instant' }); } catch (e) { window.scrollTo(0, y); }\n                };\n                var fokus = function () {\n                  var d = document.getElementById('lspod-start');\n                  if (!d) return;\n                  if (!d.hasAttribute('tabindex')) { d.setAttribute('tabindex', '-1'); d.style.outline = 'none'; }\n                  try { d.focus({ preventScroll: true }); } catch (e) {}\n                };\n                var gehe = function () { ziel(); fokus(); setTimeout(ziel, 150); setTimeout(ziel, 450); };\n                if (location.hash === '#lspod-start') window.addEventListener('load', gehe);\n                document.addEventListener('click', function (e) {\n                  if (e.defaultPrevented || e.button || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;\n                  var a = e.target.closest && e.target.closest('a[href=\"#lspod-start\"]');\n                  if (!a) return;\n                  e.preventDefault();\n                  try { history.replaceState(history.state, '', '#lspod-start'); } catch (x) {}\n                  gehe();\n                });\n              })();\n            </script>\n          {% else %}\n            {% content_for 'block',\n              type: 'add-to-cart',\n              id: 'add-to-cart',\n              can_add_to_cart: can_add_to_cart,\n              add_to_cart_text: add_to_cart_text\n            %}\n\n            {% content_for 'block',\n              type: 'accelerated-checkout',\n              id: 'accelerated-checkout',\n              can_add_to_cart: can_add_to_cart,\n              form_obj: form\n            %}\n          {% endif %}\n        </div>\n        {%- if block_settings.gift_card_form and product.gift_card? -%}\n          </span>\n        {%- endif -%}\n      {%- endform -%}\n    </product-form-component>\n  {%- else -%}\n    <div class=\"product-form-buttons\">\n      <button\n        type=\"submit\"\n        name=\"add\"\n        class=\"button\"\n        disabled\n      >\n        {{ 'blocks.sold_out' | t }}\n      </button>\n    </div>\n  {%- endif -%}\n</span>\n\n{% if block_settings.show_pickup_availability %}\n  <script\n    src=\"{{ 'local-pickup.js' | asset_url }}\"\n    type=\"module\"\n  ></script>\n\n  {%- assign pick_up_availabilities = closest.product.selected_or_first_available_variant.store_availabilities\n    | where: 'pick_up_enabled', true\n  -%}\n\n  <local-pickup\n    class=\"spacing-style product__pickup-availabilities\"\n    {% if pick_up_availabilities.size == 0 %}\n      hidden\n    {% endif %}\n    data-section-id=\"{{ section.id }}\"\n    data-product-url=\"{{ closest.product.url }}\"\n    data-variant-id=\"{{ closest.product.selected_or_first_available_variant.id }}\"\n    style=\"{% render 'spacing-style', settings: block_settings %}\"\n    ref=\"localPickupButton\"\n  >\n    {% if can_add_to_cart %}\n      <dialog-component>\n        <div class=\"pickup-availability__row\">\n          <div class=\"pickup-availability__column\">\n            <span class=\"svg-wrapper\">\n              {% if pick_up_availabilities.first.available %}\n                {{- 'icon-available.svg' | inline_asset_content -}}\n              {% else %}\n                {{- 'icon-unavailable.svg' | inline_asset_content -}}\n              {% endif %}\n            </span>\n          </div>\n          <div class=\"pickup-availability__column\">\n            {% if pick_up_availabilities.first.available %}\n              <p class=\"pickup-location__text-sm\">\n                {{ 'content.pickup_available_at_html' | t: location: pick_up_availabilities.first.location.name }}\n              </p>\n              <p class=\"pickup-location__text-xs\">\n                {{ 'content.pickup_ready_in' | t: pickup_time: pick_up_availabilities.first.pick_up_time }}\n              </p>\n            {% else %}\n              <p class=\"pickup-location__text-sm\">\n                {{ 'content.pickup_not_available' | t }}\n              </p>\n            {% endif %}\n            <button\n              on:click=\"/showDialog\"\n              class=\"button-unstyled pickup-location__button\"\n            >\n              {{ 'actions.view_store_information' | t }}\n            </button>\n          </div>\n        </div>\n        <dialog\n          ref=\"dialog\"\n          class=\"dialog-modal dialog-drawer pickup-location__dialog color-{{ settings.drawer_color_scheme }}\"\n          scroll-lock\n          aria-labelledby=\"pickup-dialog-heading\"\n          data-testid=\"pickup-location-dialog\"\n        >\n          <h2\n            id=\"pickup-dialog-heading\"\n            class=\"visually-hidden\"\n          >\n            {{ 'actions.view_store_information' | t }}\n          </h2>\n          <div class=\"pickup-availability__dialog-row pickup-availability__header-container\">\n            <div class=\"pickup-availability__column\">\n              <h4 class=\"pickup-location__h4\">{{ closest.product.title }}</h4>\n              {% unless closest.product.has_only_default_variant %}\n                <p class=\"pickup-location__text-sm\">\n                  {{ closest.product.selected_or_first_available_variant.title }}\n                </p>\n              {% endunless %}\n            </div>\n            <button\n              ref=\"closeButton\"\n              on:click=\"/closeDialog\"\n              class=\"button button-unstyled close-button pickup-location__close-button\"\n              aria-label=\"{{ 'actions.close_dialog' | t }}\"\n            >\n              <span class=\"svg-wrapper\">\n                {{- 'icon-close.svg' | inline_asset_content -}}\n              </span>\n            </button>\n          </div>\n          {% for pick_up_availability in pick_up_availabilities %}\n            <div class=\"pickup-location__wrapper\">\n              <p class=\"pickup-location__text-bold\">{{ pick_up_availability.location.name }}</p>\n              <div class=\"pickup-location__address-wrapper\">\n                <span class=\"pickup-location__availability-wrapper\">\n                  {% if pick_up_availability.available %}\n                    {{- 'icon-available.svg' | inline_asset_content -}}\n                    {% assign pickup_time = pick_up_availability.pick_up_time | downcase %}\n                    {{ 'content.pickup_available_in' | t: pickup_time: pickup_time }}\n                  {% else %}\n                    {{- 'icon-unavailable.svg' | inline_asset_content -}}\n                    {{ 'content.pickup_not_available' | t }}\n                  {% endif %}\n                </span>\n                <address class=\"pickup-location__address\">\n                  {{ pick_up_availability.location.address | format_address }}\n                  {{ pick_up_availability.location.address.phone }}\n                </address>\n              </div>\n            </div>\n          {% endfor %}\n        </dialog>\n      </dialog-component>\n    {% endif %}\n  </local-pickup>\n{% endif %}\n\n{% render 'buy-buttons-styles' %}\n\n{%- comment -%} LSPOD-DESIGNZWANG {%- endcomment -%}\n<style>\n  .lspod-designzwang__button { width: 100%; text-align: center; }\n  .lspod-designzwang__note { font-size: 0.875rem; opacity: 0.8; margin-top: 0.5rem; }\n</style>\n\n{% schema %}\n{\n  \"name\": \"t:names.product_buy_buttons\",\n  \"tag\": null,\n  \"settings\": [\n    {\n      \"type\": \"paragraph\",\n      \"content\": \"t:content.resource_reference_product\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"stacking\",\n      \"label\": \"t:settings.always_stack_buttons\",\n      \"default\": false\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_pickup_availability\",\n      \"label\": \"t:settings.show_pickup_availability\",\n      \"default\": true\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"gift_card_form\",\n      \"label\": \"t:settings.gift_card_form\",\n      \"default\": true\n    },\n    {\n      \"type\": \"paragraph\",\n      \"content\": \"t:content.gift_card_form_description\"\n    },\n    {\n      \"type\": \"header\",\n      \"content\": \"t:content.padding\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"padding-block-start\",\n      \"label\": \"t:settings.top\",\n      \"min\": 0,\n      \"max\": 100,\n      \"step\": 1,\n      \"unit\": \"px\",\n      \"default\": 0\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"padding-block-end\",\n      \"label\": \"t:settings.bottom\",\n      \"min\": 0,\n      \"max\": 100,\n      \"step\": 1,\n      \"unit\": \"px\",\n      \"default\": 0\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"padding-inline-start\",\n      \"label\": \"t:settings.left\",\n      \"min\": 0,\n      \"max\": 100,\n      \"step\": 1,\n      \"unit\": \"px\",\n      \"default\": 0\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"padding-inline-end\",\n      \"label\": \"t:settings.right\",\n      \"min\": 0,\n      \"max\": 100,\n      \"step\": 1,\n      \"unit\": \"px\",\n      \"default\": 0\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"t:names.product_buy_buttons\",\n      \"category\": \"t:categories.product\",\n      \"blocks\": {\n        \"quantity\": {\n          \"type\": \"quantity\",\n          \"static\": true\n        },\n        \"add-to-cart\": {\n          \"type\": \"add-to-cart\",\n          \"static\": true,\n          \"settings\": {\n            \"style_class\": \"button-secondary\"\n          }\n        },\n        \"accelerated-checkout\": {\n          \"type\": \"accelerated-checkout\",\n          \"static\": true\n        }\n      }\n    }\n  ]\n}\n{% endschema %}\n",
+      "proposed": "\n{% liquid\n  assign block_settings = block.settings\n  assign product = closest.product\n  if request.visual_preview_mode and product == blank\n    assign product = collections.all.products.first\n  endif\n\n  assign variant = closest.product.selected_or_first_available_variant\n  assign inventory_quantity = variant.inventory_quantity\n  assign inventory_policy = variant.inventory_policy\n\n  if variant.inventory_management == 'shopify'\n    assign inventory_managed = true\n  endif\n\n  assign can_add_to_cart = false\n  assign add_to_cart_text = 'products.product.unavailable' | t\n\n  if variant\n    if variant.quantity_rule.min > variant.inventory_quantity and inventory_managed and inventory_policy == 'deny'\n      assign quantity_rule_soldout = true\n    endif\n\n    if variant.available\n      assign can_add_to_cart = true\n      assign add_to_cart_text = 'products.product.add_to_cart' | t\n    elsif inventory_managed and inventory_quantity <= 0 and inventory_policy == 'deny' or quantity_rule_soldout\n      assign can_add_to_cart = false\n      assign add_to_cart_text = 'products.product.sold_out' | t\n    else\n      assign can_add_to_cart = false\n      assign add_to_cart_text = 'products.product.unavailable' | t\n    endif\n  endif\n%}\n\n{%- comment -%} LSPOD-DESIGNZWANG: Produkte mit eigenem Gestalter dürfen nicht ohne Design gekauft werden. {%- endcomment -%}\n{%- capture lspod_designzwang -%}{%- render 'lspod-designzwang', product: product -%}{%- endcapture -%}\n\n<span\n  class=\"buy-buttons-block buy-buttons-block--{{ block.id }}\"\n  {{ block.shopify_attributes }}\n>\n  {%- if product != blank -%}\n    {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id -%}\n    <product-form-component\n      data-section-id=\"{{ section.id }}\"\n      data-product-id=\"{{ product.id }}\"\n      data-product-url=\"{{ product.url }}\"\n      on:submit=\"/handleSubmit\"\n      data-quantity-default=\"{% if product.selected_or_first_available_variant.quantity_rule.min %}{{ product.selected_or_first_available_variant.quantity_rule.min }}{% else %}1{% endif %}\"\n      data-quantity-error-max=\"{{ 'products.product.quantity_error_max' | t }}\"\n    >\n      {%- comment -%} Repeat existing product facts beside purchase controls; fail closed if either source sentence changes. {%- endcomment -%}\n      {%- if product.id == 16592643817863 -%}\n        {%- liquid\n          assign selection_source = product.description | strip_html\n          assign oil_marker = 'Rizinusöl ist nicht enthalten.'\n          assign selection_marker = 'Schwarz nur mit Klett, als Set oder Nackenwickel'\n        -%}\n        {%- if selection_source contains oil_marker and selection_source contains selection_marker -%}\n          {%- liquid\n            assign oil_offset = selection_source | split: oil_marker | first | size\n            assign oil_length = oil_marker | size\n            assign selection_offset = selection_source | split: selection_marker | first | size\n            assign selection_length = selection_marker | size\n          -%}\n          <div class=\"rte\" data-luxe-selection-note>\n            <p>{{- selection_source | slice: selection_offset, selection_length | escape -}}<br>{{- selection_source | slice: oil_offset, oil_length | escape -}}</p>\n          </div>\n        {%- endif -%}\n      {%- endif -%}\n      <div\n        class=\"visually-hidden\"\n        aria-live=\"assertive\"\n        role=\"status\"\n        aria-atomic=\"true\"\n        ref=\"liveRegion\"\n      ></div>\n      {%- form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' -%}\n        <input\n          type=\"hidden\"\n          name=\"id\"\n          ref=\"variantId\"\n          value=\"{{ product.selected_or_first_available_variant.id }}\"\n        >\n        {%- if block_settings.gift_card_form and product.gift_card? -%}\n          {%- render 'gift-card-recipient-form', product: product, form: form, section: section, block: block -%}\n          <span class=\"buy-buttons-block__bar\">\n        {%- endif -%}\n        <div\n          class=\"product-form-buttons spacing-style{% if block_settings.stacking %} product-form-buttons--stacked{% endif %}\"\n          style=\"{% render 'spacing-style', settings: block_settings %}\"\n          ref=\"productFormButtons\"\n        >\n          {%- unless block_settings.gift_card_form and product.gift_card? -%}\n            <span\n              class=\"product-form-text__error hidden\"\n              ref=\"addToCartTextError\"\n            >\n              <span class=\"svg-wrapper\">\n                {{- 'icon-error.svg' | inline_asset_content -}}\n              </span>\n            </span>\n          {%- endunless -%}\n\n          {%- liquid\n            assign has_quantity_rules = false\n            if variant.quantity_rule.min > 1 or variant.quantity_rule.increment > 1 or variant.quantity_rule.max != null\n              assign has_quantity_rules = true\n            endif\n          -%}\n\n          {%- if has_quantity_rules -%}\n            {%- assign cart_quantity = cart | item_count_for_variant: variant.id -%}\n            <div\n              class=\"quantity-label\"\n              ref=\"quantityLabel\"\n            >\n              {{ 'products.product.quantity' | t }}\n              <span\n                class=\"quantity-label__cart-count{% if cart_quantity == 0 %} hidden{% endif %}\"\n                ref=\"quantityLabelCartCount\"\n                >({{ cart_quantity }}\n                {{ 'products.product.in_cart' | t }})</span\n              >\n            </div>\n          {%- endif -%}\n\n          {%- comment -%} LSPOD-DESIGNZWANG: kein Mengenfeld — ein Formular ohne Textfeld kann nicht per Enter abgeschickt werden. {%- endcomment -%}\n          {% unless lspod_designzwang == '1' %}\n            {% content_for 'block', type: 'quantity', id: 'quantity' %}\n          {% endunless %}\n\n          {%- if has_quantity_rules -%}\n            <div\n              class=\"quantity-rules\"\n              ref=\"quantityRules\"\n            >\n              {%- if variant.quantity_rule.increment > 1 -%}\n                <span class=\"quantity-rules__item\">\n                  {{ 'products.product.quantity_increments' | t: increment: variant.quantity_rule.increment }}\n                </span>\n              {%- endif -%}\n              {%- if variant.quantity_rule.min > 1 -%}\n                <span class=\"quantity-rules__item\">\n                  {{ 'products.product.quantity_minimum' | t: minimum: variant.quantity_rule.min }}\n                </span>\n              {%- endif -%}\n              {%- if variant.quantity_rule.max != null -%}\n                <span class=\"quantity-rules__item\">\n                  {{ 'products.product.quantity_maximum' | t: maximum: variant.quantity_rule.max }}\n                </span>\n              {%- endif -%}\n            </div>\n          {%- endif -%}\n\n          {%- if product.quantity_price_breaks_configured? and variant.quantity_price_breaks.size > 0 -%}\n            {%- liquid\n              assign use_currency = settings.currency_code_enabled_product_pages\n            -%}\n            <volume-pricing\n              class=\"volume-pricing\"\n              data-section-id=\"{{ section.id }}\"\n              ref=\"volumePricing\"\n            >\n              <span class=\"volume-pricing__title\">{{ 'content.volume_pricing' | t }}</span>\n              <div class=\"volume-pricing__table\">\n                <div class=\"volume-pricing__row volume-pricing__row--even\">\n                  <span>{{ variant.quantity_rule.min }}+</span>\n                  <span>\n                    {%- if use_currency -%}\n                      {{- variant.price | money_with_currency | strip -}}\n                    {%- else -%}\n                      {{- variant.price | money | strip -}}\n                    {%- endif -%}\n                    /{{ 'content.each_abbreviation' | t -}}\n                  </span>\n                </div>\n                {%- for price_break in variant.quantity_price_breaks limit: 2 -%}\n                  {%- liquid\n                    assign row_index = forloop.index\n                    if row_index == 1\n                      assign row_class = 'volume-pricing__row volume-pricing__row--odd'\n                    else\n                      assign row_class = 'volume-pricing__row volume-pricing__row--even'\n                    endif\n                  -%}\n                  <div class=\"{{ row_class }}\">\n                    <span>{{ price_break.minimum_quantity }}+</span>\n                    <span>\n                      {%- if use_currency -%}\n                        {{- price_break.price | money_with_currency | strip -}}\n                      {%- else -%}\n                        {{- price_break.price | money | strip -}}\n                      {%- endif -%}\n                      /{{ 'content.each_abbreviation' | t -}}\n                    </span>\n                  </div>\n                {%- endfor -%}\n\n                {%- if variant.quantity_price_breaks.size > 2 -%}\n                  <div class=\"volume-pricing__collapsible-wrapper\">\n                    {%- for price_break in variant.quantity_price_breaks offset: 2 -%}\n                      {%- liquid\n                        assign collapsed_index = forloop.index\n                        assign total_index = collapsed_index | plus: 2\n                        assign modulo_result = total_index | modulo: 2\n                        if modulo_result == 1\n                          assign row_class = 'volume-pricing__row volume-pricing__row--odd'\n                        else\n                          assign row_class = 'volume-pricing__row volume-pricing__row--even'\n                        endif\n                      -%}\n                      <div class=\"{{ row_class }}\">\n                        <span>{{ price_break.minimum_quantity }}+</span>\n                        <span>\n                          {%- if use_currency -%}\n                            {{- price_break.price | money_with_currency | strip -}}\n                          {%- else -%}\n                            {{- price_break.price | money | strip -}}\n                          {%- endif -%}\n                          /{{ 'content.each_abbreviation' | t -}}\n                        </span>\n                      </div>\n                    {%- endfor -%}\n                  </div>\n\n                  <button\n                    type=\"button\"\n                    class=\"volume-pricing__toggle button-unstyled\"\n                    ref=\"volumePricingToggle\"\n                    on:click=\"/toggleExpanded\"\n                  >\n                    <span class=\"volume-pricing__toggle-text\">\n                      <span class=\"volume-pricing__show-more\">+ {{ 'actions.show_more' | t }}</span>\n                      <span class=\"volume-pricing__show-less\">- {{ 'actions.show_less' | t }}</span>\n                    </span>\n                  </button>\n                {%- endif -%}\n              </div>\n            </volume-pricing>\n          {%- endif -%}\n          {%- comment -%} LSPOD-DESIGNZWANG: Kaufknopf UND Express-Bezahlknopf entfallen — gekauft wird\n          unten im Gestalter mit «Mit meinem Design in den Warenkorb». Das <form> mit dem\n          versteckten Feld name=\"id\" bleibt stehen: designer.js liest daraus die gewählte Variante. {%- endcomment -%}\n          {% if lspod_designzwang == '1' %}\n            <div class=\"lspod-designzwang\">\n              <a class=\"button lspod-designzwang__button\" href=\"#lspod-start\">\n                {%- if request.locale.iso_code == 'en' -%}\n                  🎨 Create your design first\n                {%- else -%}\n                  🎨 Zuerst dein Design gestalten\n                {%- endif -%}\n              </a>\n              <p class=\"lspod-designzwang__note\">\n                {%- if product.description contains 'data-lspod-blocked' -%}\n                  {%- if request.locale.iso_code == 'en' -%}\n                    Personalisation is currently not available for this item. The reason is explained in the box below.\n                  {%- else -%}\n                    Die Personalisierung ist für dieses Produkt derzeit nicht bestellbar. Die Begründung steht im Kasten weiter unten.\n                  {%- endif -%}\n                {%- elsif request.locale.iso_code == 'en' -%}\n                  This item is printed with your own design. Create it in the designer below and\n                  add it to the cart there — that way your print file travels with the order.\n                {%- else -%}\n                  Dieses Produkt wird mit deinem eigenen Design bedruckt. Du gestaltest es weiter\n                  unten, prüfst es mit «Druckvorschau prüfen» und legst es dort mit «Druckvorschau bestätigen und in den Warenkorb» ab — nur so\n                  geht deine Druckdatei mit der Bestellung mit.\n                {%- endif -%}\n              </p>\n            </div>\n            <script>\n              (function () {\n                var setzen = function () {\n                  var d = document.querySelector('.lspod-designer');\n                  if (d && !d.id) d.id = 'lspod-start';\n                };\n                if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setzen);\n                else setzen();\n              })();\n            </script>\n            <script>\n              /* lx-einheiten-0411: Sprung zum Editor (#lspod-start): die rechte Spalte ist sticky und höher als das Fenster, der blosse Anker landete unterhalb */\n              (function () {\n                var ziel = function () {\n                  var d = document.getElementById('lspod-start');\n                  if (!d) return;\n                  var y = d.getBoundingClientRect().top + window.scrollY - 100;\n                  try { window.scrollTo({ top: y, behavior: 'instant' }); } catch (e) { window.scrollTo(0, y); }\n                };\n                var fokus = function () {\n                  var d = document.getElementById('lspod-start');\n                  if (!d) return;\n                  if (!d.hasAttribute('tabindex')) { d.setAttribute('tabindex', '-1'); d.style.outline = 'none'; }\n                  try { d.focus({ preventScroll: true }); } catch (e) {}\n                };\n                var gehe = function () { ziel(); fokus(); setTimeout(ziel, 150); setTimeout(ziel, 450); };\n                if (location.hash === '#lspod-start') window.addEventListener('load', gehe);\n                document.addEventListener('click', function (e) {\n                  if (e.defaultPrevented || e.button || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;\n                  var a = e.target.closest && e.target.closest('a[href=\"#lspod-start\"]');\n                  if (!a) return;\n                  e.preventDefault();\n                  try { history.replaceState(history.state, '', '#lspod-start'); } catch (x) {}\n                  gehe();\n                });\n              })();\n            </script>\n          {% else %}\n            {% content_for 'block',\n              type: 'add-to-cart',\n              id: 'add-to-cart',\n              can_add_to_cart: can_add_to_cart,\n              add_to_cart_text: add_to_cart_text\n            %}\n\n            {% content_for 'block',\n              type: 'accelerated-checkout',\n              id: 'accelerated-checkout',\n              can_add_to_cart: can_add_to_cart,\n              form_obj: form\n            %}\n          {% endif %}\n        </div>\n        {%- if block_settings.gift_card_form and product.gift_card? -%}\n          </span>\n        {%- endif -%}\n      {%- endform -%}\n    </product-form-component>\n  {%- else -%}\n    <div class=\"product-form-buttons\">\n      <button\n        type=\"submit\"\n        name=\"add\"\n        class=\"button\"\n        disabled\n      >\n        {{ 'blocks.sold_out' | t }}\n      </button>\n    </div>\n  {%- endif -%}\n</span>\n\n{% if block_settings.show_pickup_availability %}\n  <script\n    src=\"{{ 'local-pickup.js' | asset_url }}\"\n    type=\"module\"\n  ></script>\n\n  {%- assign pick_up_availabilities = closest.product.selected_or_first_available_variant.store_availabilities\n    | where: 'pick_up_enabled', true\n  -%}\n\n  <local-pickup\n    class=\"spacing-style product__pickup-availabilities\"\n    {% if pick_up_availabilities.size == 0 %}\n      hidden\n    {% endif %}\n    data-section-id=\"{{ section.id }}\"\n    data-product-url=\"{{ closest.product.url }}\"\n    data-variant-id=\"{{ closest.product.selected_or_first_available_variant.id }}\"\n    style=\"{% render 'spacing-style', settings: block_settings %}\"\n    ref=\"localPickupButton\"\n  >\n    {% if can_add_to_cart %}\n      <dialog-component>\n        <div class=\"pickup-availability__row\">\n          <div class=\"pickup-availability__column\">\n            <span class=\"svg-wrapper\">\n              {% if pick_up_availabilities.first.available %}\n                {{- 'icon-available.svg' | inline_asset_content -}}\n              {% else %}\n                {{- 'icon-unavailable.svg' | inline_asset_content -}}\n              {% endif %}\n            </span>\n          </div>\n          <div class=\"pickup-availability__column\">\n            {% if pick_up_availabilities.first.available %}\n              <p class=\"pickup-location__text-sm\">\n                {{ 'content.pickup_available_at_html' | t: location: pick_up_availabilities.first.location.name }}\n              </p>\n              <p class=\"pickup-location__text-xs\">\n                {{ 'content.pickup_ready_in' | t: pickup_time: pick_up_availabilities.first.pick_up_time }}\n              </p>\n            {% else %}\n              <p class=\"pickup-location__text-sm\">\n                {{ 'content.pickup_not_available' | t }}\n              </p>\n            {% endif %}\n            <button\n              on:click=\"/showDialog\"\n              class=\"button-unstyled pickup-location__button\"\n            >\n              {{ 'actions.view_store_information' | t }}\n            </button>\n          </div>\n        </div>\n        <dialog\n          ref=\"dialog\"\n          class=\"dialog-modal dialog-drawer pickup-location__dialog color-{{ settings.drawer_color_scheme }}\"\n          scroll-lock\n          aria-labelledby=\"pickup-dialog-heading\"\n          data-testid=\"pickup-location-dialog\"\n        >\n          <h2\n            id=\"pickup-dialog-heading\"\n            class=\"visually-hidden\"\n          >\n            {{ 'actions.view_store_information' | t }}\n          </h2>\n          <div class=\"pickup-availability__dialog-row pickup-availability__header-container\">\n            <div class=\"pickup-availability__column\">\n              <h4 class=\"pickup-location__h4\">{{ closest.product.title }}</h4>\n              {% unless closest.product.has_only_default_variant %}\n                <p class=\"pickup-location__text-sm\">\n                  {{ closest.product.selected_or_first_available_variant.title }}\n                </p>\n              {% endunless %}\n            </div>\n            <button\n              ref=\"closeButton\"\n              on:click=\"/closeDialog\"\n              class=\"button button-unstyled close-button pickup-location__close-button\"\n              aria-label=\"{{ 'actions.close_dialog' | t }}\"\n            >\n              <span class=\"svg-wrapper\">\n                {{- 'icon-close.svg' | inline_asset_content -}}\n              </span>\n            </button>\n          </div>\n          {% for pick_up_availability in pick_up_availabilities %}\n            <div class=\"pickup-location__wrapper\">\n              <p class=\"pickup-location__text-bold\">{{ pick_up_availability.location.name }}</p>\n              <div class=\"pickup-location__address-wrapper\">\n                <span class=\"pickup-location__availability-wrapper\">\n                  {% if pick_up_availability.available %}\n                    {{- 'icon-available.svg' | inline_asset_content -}}\n                    {% assign pickup_time = pick_up_availability.pick_up_time | downcase %}\n                    {{ 'content.pickup_available_in' | t: pickup_time: pickup_time }}\n                  {% else %}\n                    {{- 'icon-unavailable.svg' | inline_asset_content -}}\n                    {{ 'content.pickup_not_available' | t }}\n                  {% endif %}\n                </span>\n                <address class=\"pickup-location__address\">\n                  {{ pick_up_availability.location.address | format_address }}\n                  {{ pick_up_availability.location.address.phone }}\n                </address>\n              </div>\n            </div>\n          {% endfor %}\n        </dialog>\n      </dialog-component>\n    {% endif %}\n  </local-pickup>\n{% endif %}\n\n{% render 'buy-buttons-styles' %}\n\n{%- comment -%} LSPOD-DESIGNZWANG {%- endcomment -%}\n<style>\n  .lspod-designzwang__button { width: 100%; text-align: center; }\n  .lspod-designzwang__note { font-size: 0.875rem; opacity: 0.8; margin-top: 0.5rem; }\n</style>\n\n{% schema %}\n{\n  \"name\": \"t:names.product_buy_buttons\",\n  \"tag\": null,\n  \"settings\": [\n    {\n      \"type\": \"paragraph\",\n      \"content\": \"t:content.resource_reference_product\"\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"stacking\",\n      \"label\": \"t:settings.always_stack_buttons\",\n      \"default\": false\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"show_pickup_availability\",\n      \"label\": \"t:settings.show_pickup_availability\",\n      \"default\": true\n    },\n    {\n      \"type\": \"checkbox\",\n      \"id\": \"gift_card_form\",\n      \"label\": \"t:settings.gift_card_form\",\n      \"default\": true\n    },\n    {\n      \"type\": \"paragraph\",\n      \"content\": \"t:content.gift_card_form_description\"\n    },\n    {\n      \"type\": \"header\",\n      \"content\": \"t:content.padding\"\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"padding-block-start\",\n      \"label\": \"t:settings.top\",\n      \"min\": 0,\n      \"max\": 100,\n      \"step\": 1,\n      \"unit\": \"px\",\n      \"default\": 0\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"padding-block-end\",\n      \"label\": \"t:settings.bottom\",\n      \"min\": 0,\n      \"max\": 100,\n      \"step\": 1,\n      \"unit\": \"px\",\n      \"default\": 0\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"padding-inline-start\",\n      \"label\": \"t:settings.left\",\n      \"min\": 0,\n      \"max\": 100,\n      \"step\": 1,\n      \"unit\": \"px\",\n      \"default\": 0\n    },\n    {\n      \"type\": \"range\",\n      \"id\": \"padding-inline-end\",\n      \"label\": \"t:settings.right\",\n      \"min\": 0,\n      \"max\": 100,\n      \"step\": 1,\n      \"unit\": \"px\",\n      \"default\": 0\n    }\n  ],\n  \"presets\": [\n    {\n      \"name\": \"t:names.product_buy_buttons\",\n      \"category\": \"t:categories.product\",\n      \"blocks\": {\n        \"quantity\": {\n          \"type\": \"quantity\",\n          \"static\": true\n        },\n        \"add-to-cart\": {\n          \"type\": \"add-to-cart\",\n          \"static\": true,\n          \"settings\": {\n            \"style_class\": \"button-secondary\"\n          }\n        },\n        \"accelerated-checkout\": {\n          \"type\": \"accelerated-checkout\",\n          \"static\": true\n        }\n      }\n    }\n  ]\n}\n{% endschema %}\n"
+    },
+    "sections/footer-group.json": {
+      "beforeSha256": "59f8477f4177c92bf52029c0b90e28f7d4f9a5577e07a517e8231bc8fe037100",
+      "afterSha256": "9321568a79430181fbdc2c300b3c3ce34ab2f1187fb6891e3d3657dc7c43f978",
+      "oldSentence": "Der Code ist auch gleich per E-Mail bei dir.",
+      "newSentence": "Deine Anmeldung wurde übermittelt.",
+      "otherBytesAndScriptsUnchanged": true
+    }
+  },
+  "images": {
+    "KAUFHINWEIS-MOBIL-20261115-R230.png": {
+      "sha256": "0724ebaa0f492de4b43e18891e8ec4f7d90079d64f0cebcbb0b14c9a9c88e934",
+      "bytes": 60609
+    },
+    "KAUFHINWEIS-DESKTOP-20261115-R230.png": {
+      "sha256": "15667619ae5a7e7fcdd8fa3f0e05fe6b7b4c571211e85769002c58cf0883346b",
+      "bytes": 523166
+    }
+  },
+  "actualThemePublishCalls": 0,
+  "actualProductWrites": 0,
+  "qaCorrections": [
+    "Initial guard marker had a non-existing terminal period. Peer review caught it; corrected from saved current product source before theme_commit. Five offline positive/negative cases checked.",
+    "First strict preview browser pass blocked fetched theme modules and section GETs, causing invalid observed variant states. Discarded for interaction acceptance. One justified corrected mobile GET allowed theme static assets and exactly two product option section GETs; no non-GET/HEAD, cart or checkout action.",
+    "Full hash-list tool stdout was truncated; no complete comparison inferred. First compact sed pipeline failed. Later compact sorted-manifest SHA-256 countercheck completed on both themes with empty stderr and matching 545 unchanged-file records. Two intervening rate-limit replies stated nothing ran; only after cooldown was the final read performed.",
+    "Native screenshot service retains the known malformed header rendering. It is not a live-shop defect or a passed full visual acceptance; normal Chromium is the independent display check."
+  ],
+  "limits": [
+    "Fresh copy of current MAIN, not publication of the entire older R229 preview.",
+    "Display-only repeat of two facts from product.description; original source remains merchant-editable and a missing/changed marker suppresses the note.",
+    "Invalid combination remains disabled; no automatic substitution or stock claim.",
+    "No checkout submit, paid-order proof, conversion lift, consent, list signup or email-delivery verification.",
+    "Mobile interaction verified in corrected run. Desktop and projector counterchecks came from the first preview run and prove static rendering only because its fetch guard was over-restrictive."
+  ]
+}
