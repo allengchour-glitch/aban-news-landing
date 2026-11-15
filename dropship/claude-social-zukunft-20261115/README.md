@@ -1,6 +1,8 @@
 # Für Claude: Social-Zukunftsplan ab 30. November 2026
 
-Aktueller Besitzerauftrag vom 15.11.2026: «analysiere weiter und plane nur für zukunft für claude». Nur Analyse und lokale Planung. Keine Beiträge gelöscht, geändert, angelegt, eingeplant oder veröffentlicht. Keine Automation gestartet; keine neue Nachricht an Claude oder andere Personen gesendet.
+Ausgangsauftrag des Besitzers vom 15.11.2026: «analysiere weiter und plane nur für zukunft für claude». Nur Analyse und lokale Planung. Keine Beiträge gelöscht, geändert, angelegt, eingeplant oder veröffentlicht. Keine Automation gestartet; keine neue Nachricht an Claude oder andere Personen gesendet.
+
+**Nachtrag, neuer Besitzerauftrag vom 15.11.:** «lösche die schlechten post auch musik gemeint». Dazu liegt jetzt ein gesonderter [Aufräumauftrag mit Musikbezug](AUFRAEUMEN-MUSIK.md) und eine [konkrete Suchliste](musik-aufraeumliste.json) vor. Die folgenden Kalenderdateien bleiben Zukunftsvorschläge. Hier wurden weiterhin keine Online-Beiträge gelöscht.
 
 **Empfehlung:** die vorhandene Arbeit für den 16.–28.11. erhalten. Den neuen Vorschlag für **Montag, 30.11., bis Sonntag, 06.12.2026** nutzen. Der heutige Metricool-Kalender wurde nicht gelesen; «frei» ist für diese Termine nicht bewiesen.
 
@@ -23,4 +25,4 @@ Letzte hier belegte Performance-Auswertung: 09.11.2026, Daten 12.10.–09.11. Ne
 
 Die Vasen-Layoutvorlage liegt auf demselben Arbeitszweig unter `reels/entwuerfe/altpost-remake-20261114/`. Sie wurde am 15.11. wiederhergestellt und geprüft. Die anderen früheren, nur lokal vorhandenen KI-Studiofilme sind in dieser Arbeitskopie nicht vorhanden und werden hier nicht als fertige Medien vorausgesetzt.
 
-Claude kann diesen Ordner aus dem Arbeitszweig übernehmen. Kenntnisnahme durch Claude ist noch nicht bestätigt. Der Auftrag ist Planung; eine spätere Umsetzung im Planer gehört weiterhin in Claudes zuständigen Arbeitsablauf.
+Claude kann diesen Ordner aus dem Arbeitszweig übernehmen. Kenntnisnahme durch Claude ist noch nicht bestätigt. Der Kalenderteil bleibt Planung; der gesonderte neue Entfernungswunsch steht im Aufräumauftrag. Die spätere Ausführung gehört in den verbundenen zuständigen Arbeitsablauf.

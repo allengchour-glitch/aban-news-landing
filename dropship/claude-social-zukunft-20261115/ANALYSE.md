@@ -12,7 +12,7 @@ Stand: 15.11.2026, Europe/Zurich. Keine frischen Metricool-Zahlen abgerufen. **Q
 | Verkaufsbezug war nicht gemessen. Reichweite und Aufrufe lagen auch bei besseren Beiträgen niedrig. | QUELLE: derselbe Bericht, Schlussfolgerungen. | Kanalwerte und Shopbesuche getrennt erfassen. Keine Verkäufe, Rendite oder Algorithmuswirkung erfinden. |
 | Der Besitzer lobte in dieser Unterhaltung die warmen, ruhigen Studioentwürfe. | QUELLE: aktuelles Gespräch, 14./15.11. | Stilpräferenz für die Gestaltung übernehmen; das ist kein Reichweitennachweis. |
 
-Keine Löschentscheidung aus diesen Zahlen ableiten. Ein schwacher alter Beitrag ist weder ein belegter Schaden für das Konto noch ein Grund, ihn automatisch zu entfernen. Der neue Auftrag betrifft nur die Zukunft.
+Keine Löschentscheidung aus diesen Zahlen ableiten. Ein schwacher alter Beitrag ist weder ein belegter Schaden für das Konto noch ein Grund, ihn automatisch zu entfernen. Dieser Kalenderteil betrifft die Zukunft. Der spätere konkrete Besitzerwunsch zur Entfernung schlechter Beiträge einschliesslich beanstandeter Musik steht separat in `AUFRAEUMEN-MUSIK.md`.
 
 ## Bereits vorhandene Arbeit beachten
 

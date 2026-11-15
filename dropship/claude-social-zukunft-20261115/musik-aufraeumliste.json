@@ -1,0 +1,208 @@
+{
+  "purpose": "Lokale Such- und Ausführungshinweise für den verbundenen Claude-Arbeitsablauf, kein Lösch-API-Payload",
+  "owner_instruction_date": "2026-11-15",
+  "owner_instruction": "lösche die schlechten post auch musik gemeint",
+  "confirmed_live_deletions": 0,
+  "live_read_performed": false,
+  "known_music_tracks_rejected": [
+    "mixkit-new-york-427.mp3",
+    "mixkit-violin-uplift-675.mp3"
+  ],
+  "older_post_search_candidates": [
+    {
+      "product": "Rose im Glas",
+      "asset_reference": "luxe-cj-rose-0411.mp4",
+      "track_reference": "mixkit-violin-uplift-675.mp3",
+      "networks": [
+        "instagram",
+        "facebook"
+      ],
+      "time_at_source_europe_zurich": "2026-11-09T19:30:00+01:00",
+      "metricool_uuid": "3863915044291300024",
+      "metricool_id_at_source": null,
+      "status_at_source": "eingeplant, keine Veröffentlichung belegt",
+      "source_date": "2026-11-04",
+      "current_status": "unbekannt; live prüfen",
+      "platform_post_ids": null,
+      "metricool_review_link": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=3863915044291300024",
+      "ready_for_automatic_deletion": false
+    },
+    {
+      "product": "Rose im Glas",
+      "asset_reference": "luxe-cj-rose-0411.mp4",
+      "track_reference": "mixkit-violin-uplift-675.mp3",
+      "networks": [
+        "tiktok"
+      ],
+      "time_at_source_europe_zurich": "2026-11-09T12:30:00+01:00",
+      "metricool_uuid": "-7257455683644011058",
+      "metricool_id_at_source": null,
+      "status_at_source": "eingeplant, keine Veröffentlichung belegt",
+      "source_date": "2026-11-04",
+      "current_status": "unbekannt; live prüfen",
+      "platform_post_ids": null,
+      "metricool_review_link": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=-7257455683644011058",
+      "ready_for_automatic_deletion": false
+    },
+    {
+      "product": "Gemüsehobel",
+      "asset_reference": "luxe-cj-hobel-0411.mp4",
+      "track_reference": "mixkit-new-york-427.mp3",
+      "networks": [
+        "instagram",
+        "facebook"
+      ],
+      "time_at_source_europe_zurich": "2026-11-11T20:30:00+01:00",
+      "metricool_uuid": "3963843144054620883",
+      "metricool_id_at_source": null,
+      "status_at_source": "eingeplant, keine Veröffentlichung belegt",
+      "source_date": "2026-11-04",
+      "current_status": "unbekannt; live prüfen",
+      "platform_post_ids": null,
+      "metricool_review_link": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=3963843144054620883",
+      "ready_for_automatic_deletion": false
+    },
+    {
+      "product": "Gemüsehobel",
+      "asset_reference": "luxe-cj-hobel-0411.mp4",
+      "track_reference": "mixkit-new-york-427.mp3",
+      "networks": [
+        "tiktok"
+      ],
+      "time_at_source_europe_zurich": "2026-11-10T18:00:00+01:00",
+      "metricool_uuid": "2172266762404316928",
+      "metricool_id_at_source": null,
+      "status_at_source": "eingeplant, keine Veröffentlichung belegt",
+      "source_date": "2026-11-04",
+      "current_status": "unbekannt; live prüfen",
+      "platform_post_ids": null,
+      "metricool_review_link": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=2172266762404316928",
+      "ready_for_automatic_deletion": false
+    }
+  ],
+  "held_draft_search_candidates": [
+    {
+      "product": "Knoblauch- und Zwiebelhacker",
+      "asset_reference": "luxe-w1611-hacker-reel.mp4",
+      "track_reference": "mixkit-new-york-427.mp3",
+      "networks": [
+        "instagram",
+        "facebook"
+      ],
+      "time_at_source_europe_zurich": "2026-11-18T10:00:00+01:00",
+      "metricool_uuid": "4659816415037836014",
+      "metricool_id_at_source": "423483793",
+      "status_at_source": "gehaltener Entwurf laut Notiz",
+      "source_date": "2026-11-10/11",
+      "current_status": "unbekannt; live prüfen",
+      "platform_post_ids": null,
+      "metricool_review_link": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=4659816415037836014",
+      "ready_for_automatic_deletion": false
+    },
+    {
+      "product": "Knoblauch- und Zwiebelhacker",
+      "asset_reference": "luxe-w1611-hacker-reel.mp4",
+      "track_reference": "mixkit-new-york-427.mp3",
+      "networks": [
+        "threads"
+      ],
+      "time_at_source_europe_zurich": "2026-11-18T11:00:00+01:00",
+      "metricool_uuid": "-8339089096074181290",
+      "metricool_id_at_source": "423484712",
+      "status_at_source": "gehaltener Entwurf laut Notiz",
+      "source_date": "2026-11-10/11",
+      "current_status": "unbekannt; live prüfen",
+      "platform_post_ids": null,
+      "metricool_review_link": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=-8339089096074181290",
+      "ready_for_automatic_deletion": false
+    },
+    {
+      "product": "Knoblauch- und Zwiebelhacker",
+      "asset_reference": "luxe-w1611-hacker-reel.mp4",
+      "track_reference": "mixkit-new-york-427.mp3",
+      "networks": [
+        "tiktok"
+      ],
+      "time_at_source_europe_zurich": "2026-11-18T12:00:00+01:00",
+      "metricool_uuid": "-8305910546945982140",
+      "metricool_id_at_source": "423484773",
+      "status_at_source": "gehaltener Entwurf laut Notiz",
+      "source_date": "2026-11-10/11",
+      "current_status": "unbekannt; live prüfen",
+      "platform_post_ids": null,
+      "metricool_review_link": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=-8305910546945982140",
+      "ready_for_automatic_deletion": false
+    },
+    {
+      "product": "Knoblauch- und Zwiebelhacker",
+      "asset_reference": "luxe-w1611-hacker-reel.mp4",
+      "track_reference": "mixkit-new-york-427.mp3",
+      "networks": [
+        "youtube"
+      ],
+      "time_at_source_europe_zurich": "2026-11-18T18:00:00+01:00",
+      "metricool_uuid": "-3731207601091163105",
+      "metricool_id_at_source": "423484839",
+      "status_at_source": "gehaltener Entwurf laut Notiz",
+      "source_date": "2026-11-10/11",
+      "current_status": "unbekannt; live prüfen",
+      "platform_post_ids": null,
+      "metricool_review_link": "https://app.metricool.com/planner/calendar?blogId=6227837&openWithPostUuid=-3731207601091163105",
+      "ready_for_automatic_deletion": false
+    }
+  ],
+  "unidentified_asset_search_candidates": [
+    {
+      "product": "Winter warme Haussocken",
+      "asset_reference": "luxe-w1611-haussocken-reel.mp4",
+      "track_reference": "mixkit-violin-uplift-675.mp3",
+      "status_at_source": "unveröffentlicht; kein Planerobjekt belegt",
+      "metricool_uuid": null,
+      "current_status": "unbekannt; nur tatsächlichen Fund bearbeiten"
+    }
+  ],
+  "independent_prior_owner_request": {
+    "product": "Kuscheldecke Hasenfell-Imitat Tie-Dye",
+    "source": "dropship/BROWSER-BEFEHL-TIKTOK-LOESCHEN-0411.md",
+    "prior_published_date": "2026-10-25",
+    "metricool_uuid": null,
+    "music_relation": "nicht belegt",
+    "current_status": "unbekannt"
+  },
+  "do_not_infer_deletion_reason_from": [
+    "Alter allein",
+    "wenige Aufrufe allein",
+    "anderer Track ohne beanstandete Musikzuordnung"
+  ],
+  "read_repo_commit": "c3b7ed0171210d11257d55868854174df942874a",
+  "source_files": [
+    {
+      "path": "dropship/tiktok-cj-videos-0311/cj_clips.json",
+      "sha256": "f1e5d606ec061ca2ba472cc66c681ef7d4bc0bc8a8213807a65b1ab5cde826b3"
+    },
+    {
+      "path": "dropship/tiktok-cj-videos-0311/PAKET.md",
+      "sha256": "38a724c2728679470f5d74ae48d191968b7bd53bac418b4b1a4ec496ae3af082"
+    },
+    {
+      "path": "dropship/METRICOOL-HALTEN.txt",
+      "sha256": "821b6c310e90076ce682d706cb6444eee30515ca76a6b6a6bf6c9ed8debd11fc"
+    },
+    {
+      "path": "dropship/social-woche-1611/MEDIEN-LIEFERUNG.md",
+      "sha256": "24a63c4625e01017bb593a9fa31bdea14711fa100912364dd34127b526b70fea"
+    },
+    {
+      "path": "dropship/CODEX-RUECKMELDUNG-1111.md",
+      "sha256": "55a0f8c99de65c38e09973b131ab653e97a7754a64f8a7cd604e741987d684e4"
+    },
+    {
+      "path": "dropship/REEL-REGELN.md",
+      "sha256": "666d227047b0676348961c2c9efd001981ff783b35f34510a1247e36166c10b0"
+    },
+    {
+      "path": "SHARED-MEMORY.md",
+      "sha256": "509351bd7b52d65742bd0a975d4c13d2f58acfe39976105e624eaae24d8e74d4"
+    }
+  ]
+}
