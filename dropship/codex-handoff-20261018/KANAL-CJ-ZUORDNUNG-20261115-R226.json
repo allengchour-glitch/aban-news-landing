@@ -1,0 +1,734 @@
+{
+  "atUTC": "2026-11-15T01:07:15.677774+00:00",
+  "reason": "R225 exact current Shaker Merchant resources missing; investigate native publication/mapping before assuming missing sales channel or sync failure.",
+  "publicationRead": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Query executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize the key information in a helpful, readable way."
+      },
+      {
+        "type": "text",
+        "text": "{\"data\":{\"publications\":{\"nodes\":[{\"id\":\"gid://shopify/Publication/301970915713\",\"autoPublish\":false,\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150511518081\",\"title\":\"Channel Catalog 301970915713 for Online Store\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/301970915713\",\"name\":\"Onlineshop\",\"handle\":\"online_store\",\"accountName\":null,\"activeRegions\":[\"CH\"]}],\"pageInfo\":{\"hasNextPage\":false}}},{\"id\":\"gid://shopify/Publication/301970981249\",\"autoPublish\":false,\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150511550849\",\"title\":\"Channel Catalog 301970981249 for Point of Sale\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/301970981249\",\"name\":\"Point of Sale\",\"handle\":\"pos\",\"accountName\":null,\"activeRegions\":[]}],\"pageInfo\":{\"hasNextPage\":false}}},{\"id\":\"gid://shopify/Publication/301971014017\",\"autoPublish\":false,\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150511583617\",\"title\":\"Channel Catalog 301971014017 for Shop\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/301971014017\",\"name\":\"Shop\",\"handle\":\"shop-72\",\"accountName\":null,\"activeRegions\":[]}],\"pageInfo\":{\"hasNextPage\":false}}},{\"id\":\"gid://shopify/Publication/302032716161\",\"autoPublish\":false,\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150554706305\",\"title\":\"Channel Catalog 302032716161 for TikTok\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302032716161\",\"name\":\"TikTok\",\"handle\":\"tiktok-ads-2\",\"accountName\":null,\"activeRegions\":[\"CH\"]}],\"pageInfo\":{\"hasNextPage\":false}}},{\"id\":\"gid://shopify/Publication/302566834561\",\"autoPublish\":false,\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150934454657\",\"title\":\"Channel Catalog 302566834561 for Facebook & Instagram\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302566834561\",\"name\":\"Facebook & Instagram\",\"handle\":\"facebook-ads\",\"accountName\":null,\"activeRegions\":[\"CH\"]}],\"pageInfo\":{\"hasNextPage\":false}}},{\"id\":\"gid://shopify/Publication/302872297857\",\"autoPublish\":false,\"catalog\":{\"id\":\"gid://shopify/AppCatalog/151180607873\",\"title\":\"Channel Catalog 302872297857 for Google & YouTube\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302872297857\",\"name\":\"Google & YouTube\",\"handle\":\"google\",\"accountName\":null,\"activeRegions\":[\"CH\"]}],\"pageInfo\":{\"hasNextPage\":false}}},{\"id\":\"gid://shopify/Publication/302994456961\",\"autoPublish\":false,\"catalog\":{\"id\":\"gid://shopify/AppCatalog/151268032897\",\"title\":\"Channel Catalog 302994456961 for Pinterest\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302994456961\",\"name\":\"Pinterest\",\"handle\":\"pinterest-4\",\"accountName\":null,\"activeRegions\":[]}],\"pageInfo\":{\"hasNextPage\":false}}},{\"id\":\"gid://shopify/Publication/305570283905\",\"autoPublish\":false,\"catalog\":{\"id\":\"gid://shopify/AppCatalog/153233260929\",\"title\":\"Channel Catalog 305570283905 for Inbox\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/305570283905\",\"name\":\"Inbox\",\"handle\":\"shopify-inbox\",\"accountName\":null,\"activeRegions\":[]}],\"pageInfo\":{\"hasNextPage\":false}}},{\"id\":\"gid://shopify/Publication/391626359175\",\"autoPublish\":false,\"catalog\":{\"id\":\"gid://shopify/AppCatalog/209771168135\",\"title\":\"Channel Catalog 391626359175 for Luxe Style Headless\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/391626359175\",\"name\":\"Luxe Style Headless\",\"handle\":\"45285767\",\"accountName\":\"Luxe Style Headless\",\"activeRegions\":[]}],\"pageInfo\":{\"hasNextPage\":false}}}],\"pageInfo\":{\"hasNextPage\":false,\"endCursor\":\"eyJsYXN0X2lkIjozOTE2MjYzNTkxNzUsImxhc3RfdmFsdWUiOiIzOTE2MjYzNTkxNzUifQ==\"}},\"shaker\":{\"id\":\"gid://shopify/Product/15523818045825\",\"title\":\"Elektrischer Milchshaker, drei Ausführungen\",\"updatedAt\":\"2026-11-15T00:17:22Z\",\"status\":\"ACTIVE\",\"handle\":\"elektrischer-milchshaker-mit-konstanter-temper-619200\",\"resourcePublicationsV2\":{\"nodes\":[{\"isPublished\":true,\"publishDate\":\"2026-09-02T21:09:18Z\",\"publication\":{\"id\":\"gid://shopify/Publication/301970915713\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150511518081\",\"title\":\"Channel Catalog 301970915713 for Online Store\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/301970915713\",\"name\":\"Onlineshop\",\"handle\":\"online_store\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-02T21:09:18Z\",\"publication\":{\"id\":\"gid://shopify/Publication/301971014017\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150511583617\",\"title\":\"Channel Catalog 301971014017 for Shop\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/301971014017\",\"name\":\"Shop\",\"handle\":\"shop-72\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-02T21:09:18Z\",\"publication\":{\"id\":\"gid://shopify/Publication/302032716161\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150554706305\",\"title\":\"Channel Catalog 302032716161 for TikTok\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302032716161\",\"name\":\"TikTok\",\"handle\":\"tiktok-ads-2\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-02T21:09:18Z\",\"publication\":{\"id\":\"gid://shopify/Publication/302566834561\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150934454657\",\"title\":\"Channel Catalog 302566834561 for Facebook & Instagram\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302566834561\",\"name\":\"Facebook & Instagram\",\"handle\":\"facebook-ads\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-02T21:09:18Z\",\"publication\":{\"id\":\"gid://shopify/Publication/302872297857\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/151180607873\",\"title\":\"Channel Catalog 302872297857 for Google & YouTube\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302872297857\",\"name\":\"Google & YouTube\",\"handle\":\"google\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-02T21:09:18Z\",\"publication\":{\"id\":\"gid://shopify/Publication/302994456961\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/151268032897\",\"title\":\"Channel Catalog 302994456961 for Pinterest\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302994456961\",\"name\":\"Pinterest\",\"handle\":\"pinterest-4\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-30T17:59:33Z\",\"publication\":{\"id\":\"gid://shopify/Publication/391626359175\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/209771168135\",\"title\":\"Channel Catalog 391626359175 for Luxe Style Headless\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/391626359175\",\"name\":\"Luxe Style Headless\",\"handle\":\"45285767\"}],\"pageInfo\":{\"hasNextPage\":false}}}}],\"pageInfo\":{\"hasNextPage\":false,\"endCursor\":\"eyJsYXN0X2lkIjoxNzIyODQ3OTg4Mjg5MzUsImxhc3RfdmFsdWUiOjE3MjI4NDc5ODgyODkzNX0=\"}}},\"controlShirt\":{\"id\":\"gid://shopify/Product/15448020582785\",\"title\":\"Elegantes Langarmshirt mit Spitze\",\"updatedAt\":\"2026-11-15T00:10:47Z\",\"status\":\"ACTIVE\",\"handle\":\"elegantes-langarmshirt-mit-spitze-617600\",\"resourcePublicationsV2\":{\"nodes\":[{\"isPublished\":true,\"publishDate\":\"2026-09-07T12:14:21Z\",\"publication\":{\"id\":\"gid://shopify/Publication/301970915713\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150511518081\",\"title\":\"Channel Catalog 301970915713 for Online Store\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/301970915713\",\"name\":\"Onlineshop\",\"handle\":\"online_store\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-07T12:14:21Z\",\"publication\":{\"id\":\"gid://shopify/Publication/301971014017\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150511583617\",\"title\":\"Channel Catalog 301971014017 for Shop\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/301971014017\",\"name\":\"Shop\",\"handle\":\"shop-72\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-07T12:14:21Z\",\"publication\":{\"id\":\"gid://shopify/Publication/302032716161\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150554706305\",\"title\":\"Channel Catalog 302032716161 for TikTok\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302032716161\",\"name\":\"TikTok\",\"handle\":\"tiktok-ads-2\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-07T12:14:21Z\",\"publication\":{\"id\":\"gid://shopify/Publication/302566834561\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/150934454657\",\"title\":\"Channel Catalog 302566834561 for Facebook & Instagram\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302566834561\",\"name\":\"Facebook & Instagram\",\"handle\":\"facebook-ads\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-07T12:14:21Z\",\"publication\":{\"id\":\"gid://shopify/Publication/302994456961\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/151268032897\",\"title\":\"Channel Catalog 302994456961 for Pinterest\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302994456961\",\"name\":\"Pinterest\",\"handle\":\"pinterest-4\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-07T12:14:21Z\",\"publication\":{\"id\":\"gid://shopify/Publication/302872297857\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/151180607873\",\"title\":\"Channel Catalog 302872297857 for Google & YouTube\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/302872297857\",\"name\":\"Google & YouTube\",\"handle\":\"google\"}],\"pageInfo\":{\"hasNextPage\":false}}}},{\"isPublished\":true,\"publishDate\":\"2026-09-30T15:02:14Z\",\"publication\":{\"id\":\"gid://shopify/Publication/391626359175\",\"catalog\":{\"id\":\"gid://shopify/AppCatalog/209771168135\",\"title\":\"Channel Catalog 391626359175 for Luxe Style Headless\"},\"channels\":{\"nodes\":[{\"id\":\"gid://shopify/Channel/391626359175\",\"name\":\"Luxe Style Headless\",\"handle\":\"45285767\"}],\"pageInfo\":{\"hasNextPage\":false}}}}],\"pageInfo\":{\"hasNextPage\":false,\"endCursor\":\"eyJsYXN0X2lkIjoxNzIyNzYyMjM1MDg4NzEsImxhc3RfdmFsdWUiOjE3MjI3NjIyMzUwODg3MX0=\"}}}}}",
+        "annotations": {
+          "audience": [
+            "assistant"
+          ]
+        }
+      }
+    ],
+    "structuredContent": {
+      "data": {
+        "publications": {
+          "nodes": [
+            {
+              "id": "gid://shopify/Publication/301970915713",
+              "autoPublish": false,
+              "catalog": {
+                "id": "gid://shopify/AppCatalog/150511518081",
+                "title": "Channel Catalog 301970915713 for Online Store"
+              },
+              "channels": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Channel/301970915713",
+                    "name": "Onlineshop",
+                    "handle": "online_store",
+                    "accountName": null,
+                    "activeRegions": [
+                      "CH"
+                    ]
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              }
+            },
+            {
+              "id": "gid://shopify/Publication/301970981249",
+              "autoPublish": false,
+              "catalog": {
+                "id": "gid://shopify/AppCatalog/150511550849",
+                "title": "Channel Catalog 301970981249 for Point of Sale"
+              },
+              "channels": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Channel/301970981249",
+                    "name": "Point of Sale",
+                    "handle": "pos",
+                    "accountName": null,
+                    "activeRegions": []
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              }
+            },
+            {
+              "id": "gid://shopify/Publication/301971014017",
+              "autoPublish": false,
+              "catalog": {
+                "id": "gid://shopify/AppCatalog/150511583617",
+                "title": "Channel Catalog 301971014017 for Shop"
+              },
+              "channels": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Channel/301971014017",
+                    "name": "Shop",
+                    "handle": "shop-72",
+                    "accountName": null,
+                    "activeRegions": []
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              }
+            },
+            {
+              "id": "gid://shopify/Publication/302032716161",
+              "autoPublish": false,
+              "catalog": {
+                "id": "gid://shopify/AppCatalog/150554706305",
+                "title": "Channel Catalog 302032716161 for TikTok"
+              },
+              "channels": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Channel/302032716161",
+                    "name": "TikTok",
+                    "handle": "tiktok-ads-2",
+                    "accountName": null,
+                    "activeRegions": [
+                      "CH"
+                    ]
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              }
+            },
+            {
+              "id": "gid://shopify/Publication/302566834561",
+              "autoPublish": false,
+              "catalog": {
+                "id": "gid://shopify/AppCatalog/150934454657",
+                "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+              },
+              "channels": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Channel/302566834561",
+                    "name": "Facebook & Instagram",
+                    "handle": "facebook-ads",
+                    "accountName": null,
+                    "activeRegions": [
+                      "CH"
+                    ]
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              }
+            },
+            {
+              "id": "gid://shopify/Publication/302872297857",
+              "autoPublish": false,
+              "catalog": {
+                "id": "gid://shopify/AppCatalog/151180607873",
+                "title": "Channel Catalog 302872297857 for Google & YouTube"
+              },
+              "channels": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Channel/302872297857",
+                    "name": "Google & YouTube",
+                    "handle": "google",
+                    "accountName": null,
+                    "activeRegions": [
+                      "CH"
+                    ]
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              }
+            },
+            {
+              "id": "gid://shopify/Publication/302994456961",
+              "autoPublish": false,
+              "catalog": {
+                "id": "gid://shopify/AppCatalog/151268032897",
+                "title": "Channel Catalog 302994456961 for Pinterest"
+              },
+              "channels": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Channel/302994456961",
+                    "name": "Pinterest",
+                    "handle": "pinterest-4",
+                    "accountName": null,
+                    "activeRegions": []
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              }
+            },
+            {
+              "id": "gid://shopify/Publication/305570283905",
+              "autoPublish": false,
+              "catalog": {
+                "id": "gid://shopify/AppCatalog/153233260929",
+                "title": "Channel Catalog 305570283905 for Inbox"
+              },
+              "channels": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Channel/305570283905",
+                    "name": "Inbox",
+                    "handle": "shopify-inbox",
+                    "accountName": null,
+                    "activeRegions": []
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              }
+            },
+            {
+              "id": "gid://shopify/Publication/391626359175",
+              "autoPublish": false,
+              "catalog": {
+                "id": "gid://shopify/AppCatalog/209771168135",
+                "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+              },
+              "channels": {
+                "nodes": [
+                  {
+                    "id": "gid://shopify/Channel/391626359175",
+                    "name": "Luxe Style Headless",
+                    "handle": "45285767",
+                    "accountName": "Luxe Style Headless",
+                    "activeRegions": []
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false
+                }
+              }
+            }
+          ],
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": "eyJsYXN0X2lkIjozOTE2MjYzNTkxNzUsImxhc3RfdmFsdWUiOiIzOTE2MjYzNTkxNzUifQ=="
+          }
+        },
+        "shaker": {
+          "id": "gid://shopify/Product/15523818045825",
+          "title": "Elektrischer Milchshaker, drei Ausführungen",
+          "updatedAt": "2026-11-15T00:17:22Z",
+          "status": "ACTIVE",
+          "handle": "elektrischer-milchshaker-mit-konstanter-temper-619200",
+          "resourcePublicationsV2": {
+            "nodes": [
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-02T21:09:18Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/301970915713",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/150511518081",
+                    "title": "Channel Catalog 301970915713 for Online Store"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/301970915713",
+                        "name": "Onlineshop",
+                        "handle": "online_store"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-02T21:09:18Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/301971014017",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/150511583617",
+                    "title": "Channel Catalog 301971014017 for Shop"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/301971014017",
+                        "name": "Shop",
+                        "handle": "shop-72"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-02T21:09:18Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/302032716161",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/150554706305",
+                    "title": "Channel Catalog 302032716161 for TikTok"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/302032716161",
+                        "name": "TikTok",
+                        "handle": "tiktok-ads-2"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-02T21:09:18Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/302566834561",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/150934454657",
+                    "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/302566834561",
+                        "name": "Facebook & Instagram",
+                        "handle": "facebook-ads"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-02T21:09:18Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/302872297857",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/151180607873",
+                    "title": "Channel Catalog 302872297857 for Google & YouTube"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/302872297857",
+                        "name": "Google & YouTube",
+                        "handle": "google"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-02T21:09:18Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/302994456961",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/151268032897",
+                    "title": "Channel Catalog 302994456961 for Pinterest"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/302994456961",
+                        "name": "Pinterest",
+                        "handle": "pinterest-4"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-30T17:59:33Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/391626359175",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/209771168135",
+                    "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/391626359175",
+                        "name": "Luxe Style Headless",
+                        "handle": "45285767"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNzIyODQ3OTg4Mjg5MzUsImxhc3RfdmFsdWUiOjE3MjI4NDc5ODgyODkzNX0="
+            }
+          }
+        },
+        "controlShirt": {
+          "id": "gid://shopify/Product/15448020582785",
+          "title": "Elegantes Langarmshirt mit Spitze",
+          "updatedAt": "2026-11-15T00:10:47Z",
+          "status": "ACTIVE",
+          "handle": "elegantes-langarmshirt-mit-spitze-617600",
+          "resourcePublicationsV2": {
+            "nodes": [
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-07T12:14:21Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/301970915713",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/150511518081",
+                    "title": "Channel Catalog 301970915713 for Online Store"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/301970915713",
+                        "name": "Onlineshop",
+                        "handle": "online_store"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-07T12:14:21Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/301971014017",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/150511583617",
+                    "title": "Channel Catalog 301971014017 for Shop"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/301971014017",
+                        "name": "Shop",
+                        "handle": "shop-72"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-07T12:14:21Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/302032716161",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/150554706305",
+                    "title": "Channel Catalog 302032716161 for TikTok"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/302032716161",
+                        "name": "TikTok",
+                        "handle": "tiktok-ads-2"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-07T12:14:21Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/302566834561",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/150934454657",
+                    "title": "Channel Catalog 302566834561 for Facebook & Instagram"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/302566834561",
+                        "name": "Facebook & Instagram",
+                        "handle": "facebook-ads"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-07T12:14:21Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/302994456961",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/151268032897",
+                    "title": "Channel Catalog 302994456961 for Pinterest"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/302994456961",
+                        "name": "Pinterest",
+                        "handle": "pinterest-4"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-07T12:14:21Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/302872297857",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/151180607873",
+                    "title": "Channel Catalog 302872297857 for Google & YouTube"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/302872297857",
+                        "name": "Google & YouTube",
+                        "handle": "google"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              },
+              {
+                "isPublished": true,
+                "publishDate": "2026-09-30T15:02:14Z",
+                "publication": {
+                  "id": "gid://shopify/Publication/391626359175",
+                  "catalog": {
+                    "id": "gid://shopify/AppCatalog/209771168135",
+                    "title": "Channel Catalog 391626359175 for Luxe Style Headless"
+                  },
+                  "channels": {
+                    "nodes": [
+                      {
+                        "id": "gid://shopify/Channel/391626359175",
+                        "name": "Luxe Style Headless",
+                        "handle": "45285767"
+                      }
+                    ],
+                    "pageInfo": {
+                      "hasNextPage": false
+                    }
+                  }
+                }
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": "eyJsYXN0X2lkIjoxNzIyNzYyMjM1MDg4NzEsImxhc3RfdmFsdWUiOjE3MjI3NjIyMzUwODg3MX0="
+            }
+          }
+        }
+      }
+    },
+    "isError": false
+  },
+  "variantRead": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Query executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize the key information in a helpful, readable way."
+      },
+      {
+        "type": "text",
+        "text": "{\"data\":{\"shaker\":{\"id\":\"gid://shopify/Product/15523818045825\",\"updatedAt\":\"2026-11-15T00:17:22Z\",\"variants\":{\"nodes\":[{\"id\":\"gid://shopify/ProductVariant/67948168413575\",\"sku\":\"CJYD210486101AZ\",\"availableForSale\":true,\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false},\"publishedOnPublication\":true},{\"id\":\"gid://shopify/ProductVariant/67948168446343\",\"sku\":\"CJYD210486102BY\",\"availableForSale\":true,\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false},\"publishedOnPublication\":true},{\"id\":\"gid://shopify/ProductVariant/67948168479111\",\"sku\":\"CJYD210486103CX\",\"availableForSale\":true,\"inventoryPolicy\":\"CONTINUE\",\"inventoryItem\":{\"tracked\":false},\"publishedOnPublication\":true}],\"pageInfo\":{\"hasNextPage\":false}}},\"control\":{\"id\":\"gid://shopify/Product/15448020582785\",\"updatedAt\":\"2026-11-15T00:10:47Z\",\"variants\":{\"nodes\":[{\"id\":\"gid://shopify/ProductVariant/55873968636289\",\"sku\":\"CJ-CJCS295862001AZ\",\"publishedOnPublication\":true},{\"id\":\"gid://shopify/ProductVariant/55873968669057\",\"sku\":\"CJ-CJCS295862002BY\",\"publishedOnPublication\":true},{\"id\":\"gid://shopify/ProductVariant/55873968701825\",\"sku\":\"CJ-CJCS295862003CX\",\"publishedOnPublication\":true}],\"pageInfo\":{\"hasNextPage\":false}}}}}",
+        "annotations": {
+          "audience": [
+            "assistant"
+          ]
+        }
+      }
+    ],
+    "structuredContent": {
+      "data": {
+        "shaker": {
+          "id": "gid://shopify/Product/15523818045825",
+          "updatedAt": "2026-11-15T00:17:22Z",
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/67948168413575",
+                "sku": "CJYD210486101AZ",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "publishedOnPublication": true
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67948168446343",
+                "sku": "CJYD210486102BY",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "publishedOnPublication": true
+              },
+              {
+                "id": "gid://shopify/ProductVariant/67948168479111",
+                "sku": "CJYD210486103CX",
+                "availableForSale": true,
+                "inventoryPolicy": "CONTINUE",
+                "inventoryItem": {
+                  "tracked": false
+                },
+                "publishedOnPublication": true
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false
+            }
+          }
+        },
+        "control": {
+          "id": "gid://shopify/Product/15448020582785",
+          "updatedAt": "2026-11-15T00:10:47Z",
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/55873968636289",
+                "sku": "CJ-CJCS295862001AZ",
+                "publishedOnPublication": true
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55873968669057",
+                "sku": "CJ-CJCS295862002BY",
+                "publishedOnPublication": true
+              },
+              {
+                "id": "gid://shopify/ProductVariant/55873968701825",
+                "sku": "CJ-CJCS295862003CX",
+                "publishedOnPublication": true
+              }
+            ],
+            "pageInfo": {
+              "hasNextPage": false
+            }
+          }
+        }
+      }
+    },
+    "isError": false
+  },
+  "nativeShop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com"
+  },
+  "verifiedCJShop": {
+    "id": "2605251603003533600",
+    "name": "au3j0y-hq",
+    "aliasName": "LuxeStyle CH",
+    "type": "shopify",
+    "currencyCode": "CHF",
+    "nativeShopId": "gid://shopify/Shop/94368563585",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "matched": true
+  },
+  "inventoryRequest": {
+    "shopId": "2605251603003533600",
+    "items": [
+      {
+        "platformProductId": "15448882938241",
+        "platformVariantIds": [
+          "55878125060481"
+        ]
+      },
+      {
+        "platformProductId": "15451605500289",
+        "platformVariantIds": [
+          "67790204567943"
+        ]
+      }
+    ]
+  },
+  "inventoryResponse": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "[]"
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    }
+  },
+  "interpretation": {
+    "googlePublication": "302872297857 Google & YouTube, native Shaker product and all3currentvariants published. ControlShirt3variants also published. No missing-channel activation justified.",
+    "merchantLimits": "No new Merchant API query inR226. Prior R225 old-offer issue/currentexactresourceabsence remains dated; new Shop publication evidence does not prove successful feed export or repair policy issue. Other feed labels/languages/IDs not fully scanned.",
+    "cjIdentity": "Native myshopifyDomain au3j0y-hq.myshopify.com matched active CJ Shopify entry au3j0y-hq / aliasLuxeStyleCH / CHF. Existing connector works; this is not a missing-plugin claim.",
+    "inventoryEmpty": "Successful tool response [] for2exactvariants, no matching sync detail rows delivered. Latest-push/mapping evidence unknown, not warehouse stock0, no supplier availability or lead-time promise."
+  },
+  "ownWrites": 0
+}

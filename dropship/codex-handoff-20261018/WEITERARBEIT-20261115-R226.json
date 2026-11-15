@@ -1,0 +1,45 @@
+{
+  "revision": 226,
+  "startedAtUTC": "2026-11-15T00:45:58Z",
+  "recordedAtUTC": "2026-11-15T01:07:15.677774+00:00",
+  "dateZurich": "2026-11-15",
+  "actualShopifyWriteCalls": 2,
+  "changedTargets": {
+    "collection755407323527": [
+      "descriptionHtml"
+    ],
+    "product15496579711361": [
+      "seo.description"
+    ]
+  },
+  "nativeAndPublicReadbackPassed": true,
+  "blindWriteRetries": 0,
+  "merchantMetricoolThemeCJSettingsWrites": 0,
+  "gscPerformanceQueries": 1,
+  "gscProperty": "sc-domain:luxestyle.ch",
+  "gscRangeRequested": "2026-11-08..2026-11-14",
+  "gscFinalEstimatedThrough": "2026-11-12",
+  "gscRows": 20,
+  "gscTruncated": true,
+  "otherMetricsFlowOrdersReportsRead": 0,
+  "googleProductAndThreeVariantsAlreadyPublished": true,
+  "cjShopIdentityMatched": true,
+  "cjExactInventorySyncRows": "none_delivered_unknown_not_zero",
+  "twoImageCases": "source_preparation_rights_and_clean_variant_media_unresolved",
+  "sourceAgentReadLimitExceeded": {
+    "CJ": 6,
+    "Shopify": 6,
+    "intendedEach": 2
+  },
+  "otherRootCJCalls": {
+    "dressDetail": 1,
+    "shopList": 1,
+    "inventorySyncDetails": 1
+  },
+  "newSocialPostsSchedulesDeletesRenders": 0,
+  "newAutomationFrequencyChangeDeployMergeInstallWorkflowStart": 0,
+  "customerContactsDiscountBudgetShippingFlowDNSChanges": 0,
+  "ownerFinalMemoryPreference": "teile am schluss memory — end each run with direct link to current shared PROJEKTGEDAECHTNIS.md; no Claude-receipt claim",
+  "claudeReceipt": "unknown_no_new_receipt",
+  "metricsReuseNote": "R225 planner proof retained as dated; no second manual queue scan. Social/Klaviyo15Nov not read here; GSC15Nov now consumed once."
+}

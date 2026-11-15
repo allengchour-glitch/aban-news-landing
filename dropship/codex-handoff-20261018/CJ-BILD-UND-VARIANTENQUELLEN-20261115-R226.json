@@ -1,0 +1,458 @@
+{
+  "atUTC": "2026-11-15T01:07:15.677774+00:00",
+  "scope": "Two exact existing image cases; factual/visual/source preparation only. No media/SKU/feed write.",
+  "matrix": {
+    "task": "LuxeStyle R226 read-only product source matrix",
+    "apiSourceId": "10667445201",
+    "cases": [
+      {
+        "key": "garage",
+        "shopifyProductId": "gid://shopify/Product/15448882938241",
+        "shopifyVariantId": "gid://shopify/ProductVariant/55878125060481",
+        "merchantSourceId": "10667445201",
+        "shopifyTitle": "WLAN Garagentor-Steuerung mit App",
+        "shopifyVariantTitle": "Default Title",
+        "shopifySku": "CJ-1621773026956161024",
+        "shopifyProductStatus": "ACTIVE",
+        "shopifyInventory": 0,
+        "shopifyPrice": "19.90",
+        "cjLookup": {
+          "pid": "1621773026956161024",
+          "productSku": "CJZN1676367",
+          "matchedVariantSku": "CJZN167636701AZ",
+          "variantKey": "Black-USB",
+          "variantNameEn": "Wifi Garage Door Switch Intelligent APP Remote Group Conrtrol Wireless Black USB",
+          "variantWeightGrams": 300.0,
+          "variantPrice": 8.17,
+          "productWeight": "280.00",
+          "materialEn": [
+            "Plastic"
+          ],
+          "technicalDescriptionHtml": "<p><b>Product information:</b><br></p><p>Product name: Switch garage door controller<br>Type: Controller<br>Material: Plastic<br>Weight: 0.28kg<br>Product size: 12.2cm * 11.3cm * 4.6cm</p><p><br></p><p><strong>Description:<br></strong></p><p>This is an intelligent garage door controller, you can open/close and monitor your garage door or gate from anywhere. It will make your home smarter.</p><p>You can open or close the garage door by the APP, and authorize multiple people you trust to access your garage.</p><p>You can activate your garage door opener by placing a voice Compatible with Amazon Alexa or Google Home.</p><p>Can be connected to an alarm and will activate the alarm system when the garage door is opened by a stranger.</p><p>You can check whether the garage door is open or not on APP without getting out of the car. When the garage door is opened or closed, it will remind you in time to make your life safe.</p><p>Quick and easy installation and convenient operation.</p><p>New upgrade function:</p><p>1: Added Bluetooth network configuration function, faster pairing</p><p>2: Support forget to turn off reminder, users can remind the cycle (for example, push the message without turning off for 5 minutes)</p><p>3: Support google home password setting, use voice speakers to open the door, you need to provide a password to ensure security</p><p>4: Support setting the motor travel time</p><p><br></p><p><b>Packing list:</b></p><p>1 * Intelligent Garage Door Controller</p><p>1 * Set of Mounting Accessories</p><p>1 * User Manual</p><p><br></p><p><b>Product Image:</b></p><p><img src=\"https://cf.cjdropshipping.com/b227181b-1565-4b89-b66b-457d7b745395.jpg\" style=\"max-width:100%;\"><b><br></b></p><p><img src=\"https://cf.cjdropshipping.com/0d061d4a-a03a-4dc5-b4b4-5215bf8ab6ea.jpg\" style=\"max-width:100%;\"><img src=\"https://cf.cjdropshipping.com/c98bcdd4-76e7-49d9-9d4b-0f2448ac705d.jpg\" style=\"max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/7926f302-1d33-4855-acac-f277c527fb91.jpg\" style=\"max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/f8a6a207-0aa1-4392-ba27-ad1923786e99.jpg\" style=\"max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/03963cc6-8a34-4dd0-b06e-20f5febe97ba.jpg\" style=\"max-width: 100%;\"><b><br></b></p>",
+          "productImageURLs": [
+            "https://cf.cjdropshipping.com/15ddd489-caa1-4209-886d-1a8e67a2dacd.jpg",
+            "https://cf.cjdropshipping.com/223a02ab-48b2-4a7f-b296-79ac2ee6c3af.jpg",
+            "https://cf.cjdropshipping.com/7563b68f-734d-4830-b3f2-e92a834335ea.jpg",
+            "https://cf.cjdropshipping.com/691e81ec-6341-4604-b413-2e46b62f94b8.jpg",
+            "https://cf.cjdropshipping.com/bb14ae97-6051-4df9-bdd0-0a70080874e9.jpg"
+          ],
+          "variantImageURL": "https://cf.cjdropshipping.com/223a02ab-48b2-4a7f-b296-79ac2ee6c3af.jpg"
+        },
+        "shopifyClaimsHtml": "<p>Dieser intelligente Garagentor-Controller macht dein Zuhause smarter. Über die zugehörige App kannst du dein Garagentor oder Hoftor von überall aus öffnen, schliessen und überwachen. Erteile vertrauenswürdigen Personen Zugang zu deiner Garage direkt über die App. Die Steuerung ist kompatibel mit Amazon Alexa und Google Home, sodass du dein Garagentor auch per Sprachbefehl bedienen kannst. Für zusätzliche Sicherheit lässt sich das Gerät mit einem Alarmsystem verbinden, welches ausgelöst wird, falls das Garagentor von Unbefugten geöffnet wird. Überprüfe jederzeit den Status deines Garagentors in der App.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Intelligente Steuerung für Garagen- und Hoftore</li>\n<li>Fernzugriff und Überwachung via Smartphone-App</li>\n<li>Sprachsteuerung über Amazon Alexa und Google Home</li>\n<li>Berechtigungsvergabe für mehrere Benutzer</li>\n<li>Kompatibel mit Alarmsystemen für erhöhte Sicherheit</li>\n<li>Kompaktes Design aus Kunststoff (12.2 x 11.3 x 4.6 cm, 0.28 kg)</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "shopifyProductImageURLs": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb14ae97-6051-4df9-bdd0-0a70080874e9.jpg?v=1783190746",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7563b68f-734d-4830-b3f2-e92a834335ea.jpg?v=1783190747",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/691e81ec-6341-4604-b413-2e46b62f94b8.jpg?v=1783190747"
+        ],
+        "imageVisualReview": "Reviewed two CJ originals: primary shows prominent “Voice Control” and Alexa/Google and dialogue text; variant image includes assistant/app logos and app/device graphics, not clean.",
+        "commercialLicenseStatementFound": false,
+        "licenseSearch": "No license/copyright/commercial-use/right field or statement found in the returned CJ detail payload."
+      },
+      {
+        "key": "ultrasonic",
+        "shopifyProductId": "gid://shopify/Product/15451605500289",
+        "shopifyVariantId": "gid://shopify/ProductVariant/67790204567943",
+        "merchantSourceId": "10667445201",
+        "shopifyTitle": "Ultraschall-Reinigungsgerät",
+        "shopifyVariantTitle": "Offwhite 2 Teile",
+        "shopifySku": "CJJY126910302BY",
+        "shopifyProductStatus": "ACTIVE",
+        "shopifyInventory": 0,
+        "shopifyPrice": "20.90",
+        "cjLookup": {
+          "pid": "1432187342642352128",
+          "productSku": "CJJY1269103",
+          "matchedVariantSku": "CJJY126910302BY",
+          "variantKey": "Offwhite 2PC",
+          "variantNameEn": "Ultrasonic Cleaning Machine High Frequency Vibration Wash Cleaner Washing Jewelry Glasses Watch Ring Dentures Cleaner Offwhite 2PC",
+          "variantWeightGrams": 460.0,
+          "variantPrice": 3.59,
+          "productWeight": "182.00-552.00",
+          "materialEn": [
+            "Others",
+            "Plastic"
+          ],
+          "technicalDescriptionHtml": "<p><b>Overview:<br/></b>1. Professional Jewelry Cleaning Machine, Cleans dirty jewelry in minutes using only tap water and does not remove tarnish.<br/>2. Ultrasonic cleaner fits and deep-cleans every angle of your ring, jewelry, glasses, and various accessories.<br/>3. User-Friendly with Overheat Protection, a One-touch button with an indicator, and smart cleaning of your jewelry.<br/>4. This ultrasonic cleaner comes with high-end waterproof surface finishing, ensuring durability while having a great tactile feeling. SUS 304 stainless steel tank provides good corrosion resistance, use any ultrasonic detergent/solution with peace.<b><span style=\"font-size: 1em;\"><br/></span></b></p><p><b><span style=\"font-size: 1em;\"><br/></span></b></p><p><b><span style=\"font-size: 1em;\">Product Information</span><font style=\"vertical-align: inherit;\"><font style=\"vertical-align: inherit;\">：</font></font></b><br/></p><p>Type: swing type<br/>Application field: glasses<br/>Use: Household<br/>Ultrasonic cleaning frequency; 45000hz<br/>Cleaning temperature; 10-70 (℃)<br/>Working method: high-frequency vibration<br/>Power: 5w<br/>Specification: off-white</p><p><br/><b>Size Information:</b></p><p>Dimensions: 19*7.2*6.8 (cm)<br/></p><p><br/></p><p><b>Packing list:</b></p><p>Washing machine x 1</p><p>Instruction Manual X1<br/><br/>This product is suitable for cleaning glasses, contact lenses, jewelry, watches, makeup tools, children's tableware, razors and other appliances.<br/>You need to bring your own two AAA batteries, without batteries when sending.</p><p><img src=\"https://cf.cjdropshipping.com/16414272/1641433843923.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433844061.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433844147.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433844201.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433844305.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433844369.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433844836.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433844914.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433844956.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433845018.jpg\"/></p><p><img src=\"https://cf.cjdropshipping.com/16414272/1641433845059.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433845102.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433845165.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433845231.jpg\"/><img src=\"https://cf.cjdropshipping.com/16414272/1641433845289.jpg\"/></p>",
+          "productImageURLs": [
+            "https://cf.cjdropshipping.com/17fd10ff-0e37-4dce-8179-80afabc58152.jpg",
+            "https://cf.cjdropshipping.com/44c4c94a-dffd-478b-ba83-897689787565.png",
+            "https://cf.cjdropshipping.com/ce3ae673-9a78-4405-ac89-996025a3639b.jpg",
+            "https://cf.cjdropshipping.com/814d1761-14cd-4b6e-98b6-2eb6b1400450.jpg",
+            "https://cf.cjdropshipping.com/8e8ff6d6-3c86-46e7-9053-8595dc6af4c1.jpg",
+            "https://cf.cjdropshipping.com/351217df-e943-490d-a6b3-1e4eb84e4ed4.jpg",
+            "https://cf.cjdropshipping.com/3e3eb4b8-50a3-4bcd-bd0b-229145dabd50.jpg",
+            "https://cf.cjdropshipping.com/d1c085af-21a8-44ea-81bb-b037f457ffca.jpg",
+            "https://cf.cjdropshipping.com/0b047602-446f-491d-8066-9a2e48ed3148.jpg",
+            "https://cf.cjdropshipping.com/ce0e6d66-39e7-4c3a-8da3-de2fa1443156.jpg",
+            "https://cf.cjdropshipping.com/34d36267-1606-46e7-9c0b-8fe55ea74564.jpg",
+            "https://cf.cjdropshipping.com/17acb250-1400-42ef-a594-7841693a1933.jpg",
+            "https://cf.cjdropshipping.com/5473b566-e513-4857-9dda-feaa3230e4c3.png",
+            "https://cf.cjdropshipping.com/2a5b77bb-315a-4c4b-ae46-8a650931e39d.png",
+            "https://cf.cjdropshipping.com/085e53e4-1bdc-4c54-af07-39535fee56f2.png",
+            "https://cf.cjdropshipping.com/2e2924a6-ef45-46ab-bf3d-34931dd5e4f2.png",
+            "https://cf.cjdropshipping.com/f6356f45-f8f3-4ad9-8d80-76d3991c0a0c.png",
+            "https://cf.cjdropshipping.com/5b7a6e8f-ea50-4b4f-8e41-718b4ad06e87.png",
+            "https://cf.cjdropshipping.com/e733a4e6-98b5-436b-8a7b-16be0c1f45ec.png",
+            "https://cf.cjdropshipping.com/80da057a-5a6f-4468-bb9a-1acbbbf329db.png",
+            "https://cf.cjdropshipping.com/7e6c08f6-5835-4809-9be9-544540024fa1.png",
+            "https://cf.cjdropshipping.com/a90a6da3-b138-4def-a6fb-34aa8acd3c30.png",
+            "https://cf.cjdropshipping.com/181444a6-9434-41a1-a775-9f74597f7964.png",
+            "https://cf.cjdropshipping.com/018bb3f4-f256-4e28-a0f1-06b4be11c642.png",
+            "https://cf.cjdropshipping.com/29b158b6-07e2-4134-abe7-54d557ad6cae.png",
+            "https://oss-cf.cjdropshipping.com/product/2024/10/10/08/ac5a13fe-6d6d-466d-a51e-95391a511633.jpg",
+            "https://oss-cf.cjdropshipping.com/product/2024/10/10/08/e57bf931-3833-4660-bfd8-027ad6c07cdf.jpg"
+          ],
+          "variantImageURL": "https://cf.cjdropshipping.com/ce0e6d66-39e7-4c3a-8da3-de2fa1443156.jpg"
+        },
+        "shopifyClaimsHtml": "<!-- ls-var-v1 --><p>Dieses Gerät reinigt Schmuck, Brillen und andere Accessoires professionell mit Ultraschall. Es verwendet einfach Leitungswasser und entfernt keine Patina. Die Benutzeroberfläche ist einfach und sicher, mit einer Überhitzungsschutzfunktion und einem Touch-Button.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Professionelle Reinigung von Schmuck und Accessoires in Minuten</li>\n<li>Tiefenreinigung durch Ultraschall</li>\n<li>Benutzerfreundliche Bedienung mit Überhitzungsschutz</li>\n<li>Hochwertige, korrosionsbeständige Ausführung mit Edelstahlbehälter</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 182 g – 552 g (je nach Variante)</li>\n<li>\n<strong>Leistung:</strong> 5w</li>\n<li>\n<strong>Masse:</strong> 19 × 7.2 × 6.8 (cm)</li>\n</ul>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "shopifyProductImageURLs": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44c4c94a-dffd-478b-ba83-897689787565.png?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193844_ba3fb0ee-4c0e-4b0b-b7bc-e9f6091047af.png?v=1794427471",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193841_5be83c0d-ef46-46ef-9974-dfcf1564fc9a.png?v=1794427481",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e57bf931-3833-4660-bfd8-027ad6c07cdf.jpg?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/351217df-e943-490d-a6b3-1e4eb84e4ed4.jpg?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/181444a6-9434-41a1-a775-9f74597f7964.png?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f6356f45-f8f3-4ad9-8d80-76d3991c0a0c.png?v=1783549584",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/80da057a-5a6f-4468-bb9a-1acbbbf329db.png?v=1783549584",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8e8ff6d6-3c86-46e7-9053-8595dc6af4c1.jpg?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193842_b7d7a769-48ab-4f27-a91a-647857716694.png?v=1794427487",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29b158b6-07e2-4134-abe7-54d557ad6cae.png?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3e3eb4b8-50a3-4bcd-bd0b-229145dabd50.jpg?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0b047602-446f-491d-8066-9a2e48ed3148.jpg?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2e2924a6-ef45-46ab-bf3d-34931dd5e4f2.png?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5b7a6e8f-ea50-4b4f-8e41-718b4ad06e87.png?v=1783549584",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d1c085af-21a8-44ea-81bb-b037f457ffca.jpg?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a90a6da3-b138-4def-a6fb-34aa8acd3c30.png?v=1783549584",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ce3ae673-9a78-4405-ac89-996025a3639b.jpg?v=1783549584",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a5b77bb-315a-4c4b-ae46-8a650931e39d.png?v=1783549585",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/17fd10ff-0e37-4dce-8179-80afabc58152.jpg?v=1783549583",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac5a13fe-6d6d-466d-a51e-95391a511633.png?v=1792982628",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193841_ee117ad5-8da9-4bbe-a641-4cf8441185ff.png?v=1794427476"
+        ],
+        "imageVisualReview": "Reviewed two CJ originals: primary includes multiple feature captions; exact 2PC variant image is mostly plain product on white but has “2PC” text. Neither is fully overlay-free.",
+        "commercialLicenseStatementFound": false,
+        "licenseSearch": "No license/copyright/commercial-use/right field or statement found in the returned CJ detail payload."
+      }
+    ]
+  },
+  "originalResponses": {
+    "shopify-garage": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Product: \"WLAN Garagentor-Steuerung mit App\" (gid://shopify/Product/15448882938241). Status: ACTIVE. Vendor: LuxeStyle. Type: Gadget. Total inventory: 0. Variants: 1. Tags: bild-ok, bildmass-ok-0906, cj-real, dropship, elektronik, gadget, rueckhol-0907, tech, trend.\nProduct details are shown in a widget the user can see.\nHighlight anything relevant to the user's context — status for publishing decisions, inventory for stock management, variant pricing for adjustments. Suggest next steps like editing, updating inventory, or adding to a collection."
+        },
+        {
+          "type": "text",
+          "text": "{\"id\":\"gid://shopify/Product/15448882938241\",\"title\":\"WLAN Garagentor-Steuerung mit App\",\"vendor\":\"LuxeStyle\",\"status\":\"ACTIVE\",\"productType\":\"Gadget\",\"descriptionHtml\":\"<p>Dieser intelligente Garagentor-Controller macht dein Zuhause smarter. Über die zugehörige App kannst du dein Garagentor oder Hoftor von überall aus öffnen, schliessen und überwachen. Erteile vertrauenswürdigen Personen Zugang zu deiner Garage direkt über die App. Die Steuerung ist kompatibel mit Amazon Alexa und Google Home, sodass du dein Garagentor auch per Sprachbefehl bedienen kannst. Für zusätzliche Sicherheit lässt sich das Gerät mit einem Alarmsystem verbinden, welches ausgelöst wird, falls das Garagentor von Unbefugten geöffnet wird. Überprüfe jederzeit den Status deines Garagentors in der App.</p><h3>Das zeichnet es aus</h3><ul>\\n<li>Intelligente Steuerung für Garagen- und Hoftore</li>\\n<li>Fernzugriff und Überwachung via Smartphone-App</li>\\n<li>Sprachsteuerung über Amazon Alexa und Google Home</li>\\n<li>Berechtigungsvergabe für mehrere Benutzer</li>\\n<li>Kompatibel mit Alarmsystemen für erhöhte Sicherheit</li>\\n<li>Kompaktes Design aus Kunststoff (12.2 x 11.3 x 4.6 cm, 0.28 kg)</li>\\n</ul>\\n<div style=\\\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\\\">\\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\\\"/collections/trends-gadgets\\\">Trends &amp; Gadgets</a> · <a href=\\\"/collections/bestseller-premium-heroes\\\">Bestseller</a></p>\",\"tags\":[\"bild-ok\",\"bildmass-ok-0906\",\"cj-real\",\"dropship\",\"elektronik\",\"gadget\",\"rueckhol-0907\",\"tech\",\"trend\"],\"totalInventory\":0,\"featuredImageUrl\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363\",\"images\":[{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363\",\"altText\":\"WLAN Garagentor-Steuerung mit App – Ansicht 1\",\"mediaId\":\"gid://shopify/MediaImage/78014934286727\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb14ae97-6051-4df9-bdd0-0a70080874e9.jpg?v=1783190746\",\"altText\":\"WLAN Garagentor-Steuerung mit App\",\"mediaId\":\"gid://shopify/MediaImage/69861881708929\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7563b68f-734d-4830-b3f2-e92a834335ea.jpg?v=1783190747\",\"altText\":\"WLAN Garagentor-Steuerung mit App – Ansicht 2\",\"mediaId\":\"gid://shopify/MediaImage/69861881741697\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/691e81ec-6341-4604-b413-2e46b62f94b8.jpg?v=1783190747\",\"altText\":\"WLAN Garagentor-Steuerung mit App – Ansicht 5\",\"mediaId\":\"gid://shopify/MediaImage/69861881840001\"}],\"totalVariants\":1,\"variants\":[{\"id\":\"gid://shopify/ProductVariant/55878125060481\",\"title\":\"Default Title\",\"sku\":\"CJ-1621773026956161024\",\"price\":\"19.90\",\"inventoryQuantity\":0}],\"currencyCode\":\"CHF\"}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "text": "The widget has rendered the primary result for the user. Do not reproduce its contents in your reply: no JSON, lists of rows, or field-by-field recaps. Give a concise summary or interpretation, important caveats, and relevant next steps instead. You may refer to a specific item to explain a recommendation. Only repeat the full data if the user explicitly asks to repeat it in text or export it.",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "id": "gid://shopify/Product/15448882938241",
+        "title": "WLAN Garagentor-Steuerung mit App",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Gadget",
+        "descriptionHtml": "<p>Dieser intelligente Garagentor-Controller macht dein Zuhause smarter. Über die zugehörige App kannst du dein Garagentor oder Hoftor von überall aus öffnen, schliessen und überwachen. Erteile vertrauenswürdigen Personen Zugang zu deiner Garage direkt über die App. Die Steuerung ist kompatibel mit Amazon Alexa und Google Home, sodass du dein Garagentor auch per Sprachbefehl bedienen kannst. Für zusätzliche Sicherheit lässt sich das Gerät mit einem Alarmsystem verbinden, welches ausgelöst wird, falls das Garagentor von Unbefugten geöffnet wird. Überprüfe jederzeit den Status deines Garagentors in der App.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Intelligente Steuerung für Garagen- und Hoftore</li>\n<li>Fernzugriff und Überwachung via Smartphone-App</li>\n<li>Sprachsteuerung über Amazon Alexa und Google Home</li>\n<li>Berechtigungsvergabe für mehrere Benutzer</li>\n<li>Kompatibel mit Alarmsystemen für erhöhte Sicherheit</li>\n<li>Kompaktes Design aus Kunststoff (12.2 x 11.3 x 4.6 cm, 0.28 kg)</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "elektronik",
+          "gadget",
+          "rueckhol-0907",
+          "tech",
+          "trend"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193725_3e9d5b33-4904-49b5-bf82-927a0b4dc7a6.png?v=1794427363",
+            "altText": "WLAN Garagentor-Steuerung mit App – Ansicht 1",
+            "mediaId": "gid://shopify/MediaImage/78014934286727"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb14ae97-6051-4df9-bdd0-0a70080874e9.jpg?v=1783190746",
+            "altText": "WLAN Garagentor-Steuerung mit App",
+            "mediaId": "gid://shopify/MediaImage/69861881708929"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7563b68f-734d-4830-b3f2-e92a834335ea.jpg?v=1783190747",
+            "altText": "WLAN Garagentor-Steuerung mit App – Ansicht 2",
+            "mediaId": "gid://shopify/MediaImage/69861881741697"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/691e81ec-6341-4604-b413-2e46b62f94b8.jpg?v=1783190747",
+            "altText": "WLAN Garagentor-Steuerung mit App – Ansicht 5",
+            "mediaId": "gid://shopify/MediaImage/69861881840001"
+          }
+        ],
+        "totalVariants": 1,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/55878125060481",
+            "title": "Default Title",
+            "sku": "CJ-1621773026956161024",
+            "price": "19.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "isError": false
+    },
+    "shopify-ultrasonic": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Product: \"Ultraschall-Reinigungsgerät\" (gid://shopify/Product/15451605500289). Status: ACTIVE. Vendor: LuxeStyle. Type: Haushalt & Wohnen. Total inventory: 0. Variants: 5. Tags: bild-ok, bildmass-ok-0906, cj-real, dropship, neu, reinigungsgeraet, rueckhol-0907, sort-desinfektion-reinigungsgeraete, trend, varianten-nachgezogen-1025, video-hit, viral.\nProduct details are shown in a widget the user can see.\nHighlight anything relevant to the user's context — status for publishing decisions, inventory for stock management, variant pricing for adjustments. Suggest next steps like editing, updating inventory, or adding to a collection."
+        },
+        {
+          "type": "text",
+          "text": "{\"id\":\"gid://shopify/Product/15451605500289\",\"title\":\"Ultraschall-Reinigungsgerät\",\"vendor\":\"LuxeStyle\",\"status\":\"ACTIVE\",\"productType\":\"Haushalt & Wohnen\",\"descriptionHtml\":\"<!-- ls-var-v1 --><p>Dieses Gerät reinigt Schmuck, Brillen und andere Accessoires professionell mit Ultraschall. Es verwendet einfach Leitungswasser und entfernt keine Patina. Die Benutzeroberfläche ist einfach und sicher, mit einer Überhitzungsschutzfunktion und einem Touch-Button.</p><h3>Das zeichnet es aus</h3><ul>\\n<li>Professionelle Reinigung von Schmuck und Accessoires in Minuten</li>\\n<li>Tiefenreinigung durch Ultraschall</li>\\n<li>Benutzerfreundliche Bedienung mit Überhitzungsschutz</li>\\n<li>Hochwertige, korrosionsbeständige Ausführung mit Edelstahlbehälter</li>\\n</ul>\\n<div class=\\\"ls-produktdetails\\\">\\n<!--ls-feed-details--><h4>Produktdetails</h4>\\n<ul>\\n<li>\\n<strong>Material:</strong> Kunststoff</li>\\n<li>\\n<strong>Gewicht:</strong> ca. 182 g – 552 g (je nach Variante)</li>\\n<li>\\n<strong>Leistung:</strong> 5w</li>\\n<li>\\n<strong>Masse:</strong> 19 × 7.2 × 6.8 (cm)</li>\\n</ul>\\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\\\"/collections/wohnen-dekoration\\\">Wohnen &amp; Deko</a> · <a href=\\\"/collections/bestseller-premium-heroes\\\">Bestseller</a></p>\",\"tags\":[\"bild-ok\",\"bildmass-ok-0906\",\"cj-real\",\"dropship\",\"neu\",\"reinigungsgeraet\",\"rueckhol-0907\",\"sort-desinfektion-reinigungsgeraete\",\"trend\",\"varianten-nachgezogen-1025\",\"video-hit\",\"viral\"],\"totalInventory\":0,\"featuredImageUrl\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44c4c94a-dffd-478b-ba83-897689787565.png?v=1783549583\",\"images\":[{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44c4c94a-dffd-478b-ba83-897689787565.png?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 1 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894396871041\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193844_ba3fb0ee-4c0e-4b0b-b7bc-e9f6091047af.png?v=1794427471\",\"altText\":\"Ultraschall-Reinigungsgerät – Ansicht 2\",\"mediaId\":\"gid://shopify/MediaImage/78014937891207\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193841_5be83c0d-ef46-46ef-9974-dfcf1564fc9a.png?v=1794427481\",\"altText\":\"Ultraschall-Reinigungsgerät – Ansicht 3\",\"mediaId\":\"gid://shopify/MediaImage/78014939005319\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e57bf931-3833-4660-bfd8-027ad6c07cdf.jpg?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 4 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894396969345\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/351217df-e943-490d-a6b3-1e4eb84e4ed4.jpg?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 5 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397002113\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/181444a6-9434-41a1-a775-9f74597f7964.png?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 6 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397034881\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f6356f45-f8f3-4ad9-8d80-76d3991c0a0c.png?v=1783549584\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 7 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397067649\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/80da057a-5a6f-4468-bb9a-1acbbbf329db.png?v=1783549584\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 8 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397100417\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8e8ff6d6-3c86-46e7-9053-8595dc6af4c1.jpg?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 9 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397133185\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193842_b7d7a769-48ab-4f27-a91a-647857716694.png?v=1794427487\",\"altText\":\"Ultraschall-Reinigungsgerät – Ansicht 10\",\"mediaId\":\"gid://shopify/MediaImage/78014939332999\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29b158b6-07e2-4134-abe7-54d557ad6cae.png?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 11 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397198721\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3e3eb4b8-50a3-4bcd-bd0b-229145dabd50.jpg?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 12 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397231489\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0b047602-446f-491d-8066-9a2e48ed3148.jpg?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 1 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397264257\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2e2924a6-ef45-46ab-bf3d-34931dd5e4f2.png?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 2 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397297025\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5b7a6e8f-ea50-4b4f-8e41-718b4ad06e87.png?v=1783549584\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 3 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397329793\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d1c085af-21a8-44ea-81bb-b037f457ffca.jpg?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 4 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397362561\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a90a6da3-b138-4def-a6fb-34aa8acd3c30.png?v=1783549584\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 5 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397395329\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ce3ae673-9a78-4405-ac89-996025a3639b.jpg?v=1783549584\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 6 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397428097\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a5b77bb-315a-4c4b-ae46-8a650931e39d.png?v=1783549585\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 7 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397460865\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/17fd10ff-0e37-4dce-8179-80afabc58152.jpg?v=1783549583\",\"altText\":\"Ultraschall-Reinigungsgerät – Bild 8 | LuxeStyle\",\"mediaId\":\"gid://shopify/MediaImage/69894397493633\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac5a13fe-6d6d-466d-a51e-95391a511633.png?v=1792982628\",\"altText\":\"\",\"mediaId\":\"gid://shopify/MediaImage/77830110544263\"},{\"url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193841_ee117ad5-8da9-4bbe-a641-4cf8441185ff.png?v=1794427476\",\"altText\":\"Ultraschall-Reinigungsgerät – Ansicht 23\",\"mediaId\":\"gid://shopify/MediaImage/78014938218887\"}],\"totalVariants\":5,\"variants\":[{\"id\":\"gid://shopify/ProductVariant/67790204535175\",\"title\":\"Cremeweiss\",\"sku\":\"CJJY126910301AZ\",\"price\":\"18.90\",\"inventoryQuantity\":0},{\"id\":\"gid://shopify/ProductVariant/67790204567943\",\"title\":\"Offwhite 2 Teile\",\"sku\":\"CJJY126910302BY\",\"price\":\"20.90\",\"inventoryQuantity\":0},{\"id\":\"gid://shopify/ProductVariant/67790204600711\",\"title\":\"Offwhite mit blauem Stoff\",\"sku\":\"CJJY126910303CX\",\"price\":\"20.90\",\"inventoryQuantity\":0},{\"id\":\"gid://shopify/ProductVariant/67790204633479\",\"title\":\"Set\",\"sku\":\"CJJY126910304DW\",\"price\":\"22.90\",\"inventoryQuantity\":0},{\"id\":\"gid://shopify/ProductVariant/67790204666247\",\"title\":\"Offwhite 3 Teile\",\"sku\":\"CJJY126910305EV\",\"price\":\"22.90\",\"inventoryQuantity\":0}],\"currencyCode\":\"CHF\"}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "text": "The widget has rendered the primary result for the user. Do not reproduce its contents in your reply: no JSON, lists of rows, or field-by-field recaps. Give a concise summary or interpretation, important caveats, and relevant next steps instead. You may refer to a specific item to explain a recommendation. Only repeat the full data if the user explicitly asks to repeat it in text or export it.",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "id": "gid://shopify/Product/15451605500289",
+        "title": "Ultraschall-Reinigungsgerät",
+        "vendor": "LuxeStyle",
+        "status": "ACTIVE",
+        "productType": "Haushalt & Wohnen",
+        "descriptionHtml": "<!-- ls-var-v1 --><p>Dieses Gerät reinigt Schmuck, Brillen und andere Accessoires professionell mit Ultraschall. Es verwendet einfach Leitungswasser und entfernt keine Patina. Die Benutzeroberfläche ist einfach und sicher, mit einer Überhitzungsschutzfunktion und einem Touch-Button.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Professionelle Reinigung von Schmuck und Accessoires in Minuten</li>\n<li>Tiefenreinigung durch Ultraschall</li>\n<li>Benutzerfreundliche Bedienung mit Überhitzungsschutz</li>\n<li>Hochwertige, korrosionsbeständige Ausführung mit Edelstahlbehälter</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 182 g – 552 g (je nach Variante)</li>\n<li>\n<strong>Leistung:</strong> 5w</li>\n<li>\n<strong>Masse:</strong> 19 × 7.2 × 6.8 (cm)</li>\n</ul>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "tags": [
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "neu",
+          "reinigungsgeraet",
+          "rueckhol-0907",
+          "sort-desinfektion-reinigungsgeraete",
+          "trend",
+          "varianten-nachgezogen-1025",
+          "video-hit",
+          "viral"
+        ],
+        "totalInventory": 0,
+        "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44c4c94a-dffd-478b-ba83-897689787565.png?v=1783549583",
+        "images": [
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44c4c94a-dffd-478b-ba83-897689787565.png?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894396871041"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193844_ba3fb0ee-4c0e-4b0b-b7bc-e9f6091047af.png?v=1794427471",
+            "altText": "Ultraschall-Reinigungsgerät – Ansicht 2",
+            "mediaId": "gid://shopify/MediaImage/78014937891207"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193841_5be83c0d-ef46-46ef-9974-dfcf1564fc9a.png?v=1794427481",
+            "altText": "Ultraschall-Reinigungsgerät – Ansicht 3",
+            "mediaId": "gid://shopify/MediaImage/78014939005319"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e57bf931-3833-4660-bfd8-027ad6c07cdf.jpg?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894396969345"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/351217df-e943-490d-a6b3-1e4eb84e4ed4.jpg?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397002113"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/181444a6-9434-41a1-a775-9f74597f7964.png?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397034881"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f6356f45-f8f3-4ad9-8d80-76d3991c0a0c.png?v=1783549584",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397067649"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/80da057a-5a6f-4468-bb9a-1acbbbf329db.png?v=1783549584",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397100417"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8e8ff6d6-3c86-46e7-9053-8595dc6af4c1.jpg?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 9 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397133185"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193842_b7d7a769-48ab-4f27-a91a-647857716694.png?v=1794427487",
+            "altText": "Ultraschall-Reinigungsgerät – Ansicht 10",
+            "mediaId": "gid://shopify/MediaImage/78014939332999"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29b158b6-07e2-4134-abe7-54d557ad6cae.png?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 11 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397198721"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3e3eb4b8-50a3-4bcd-bd0b-229145dabd50.jpg?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 12 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397231489"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0b047602-446f-491d-8066-9a2e48ed3148.jpg?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 1 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397264257"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2e2924a6-ef45-46ab-bf3d-34931dd5e4f2.png?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 2 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397297025"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5b7a6e8f-ea50-4b4f-8e41-718b4ad06e87.png?v=1783549584",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 3 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397329793"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d1c085af-21a8-44ea-81bb-b037f457ffca.jpg?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 4 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397362561"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a90a6da3-b138-4def-a6fb-34aa8acd3c30.png?v=1783549584",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 5 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397395329"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ce3ae673-9a78-4405-ac89-996025a3639b.jpg?v=1783549584",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 6 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397428097"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a5b77bb-315a-4c4b-ae46-8a650931e39d.png?v=1783549585",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 7 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397460865"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/17fd10ff-0e37-4dce-8179-80afabc58152.jpg?v=1783549583",
+            "altText": "Ultraschall-Reinigungsgerät – Bild 8 | LuxeStyle",
+            "mediaId": "gid://shopify/MediaImage/69894397493633"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ac5a13fe-6d6d-466d-a51e-95391a511633.png?v=1792982628",
+            "altText": "",
+            "mediaId": "gid://shopify/MediaImage/77830110544263"
+          },
+          {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193841_ee117ad5-8da9-4bbe-a641-4cf8441185ff.png?v=1794427476",
+            "altText": "Ultraschall-Reinigungsgerät – Ansicht 23",
+            "mediaId": "gid://shopify/MediaImage/78014938218887"
+          }
+        ],
+        "totalVariants": 5,
+        "variants": [
+          {
+            "id": "gid://shopify/ProductVariant/67790204535175",
+            "title": "Cremeweiss",
+            "sku": "CJJY126910301AZ",
+            "price": "18.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67790204567943",
+            "title": "Offwhite 2 Teile",
+            "sku": "CJJY126910302BY",
+            "price": "20.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67790204600711",
+            "title": "Offwhite mit blauem Stoff",
+            "sku": "CJJY126910303CX",
+            "price": "20.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67790204633479",
+            "title": "Set",
+            "sku": "CJJY126910304DW",
+            "price": "22.90",
+            "inventoryQuantity": 0
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67790204666247",
+            "title": "Offwhite 3 Teile",
+            "sku": "CJJY126910305EV",
+            "price": "22.90",
+            "inventoryQuantity": 0
+          }
+        ],
+        "currencyCode": "CHF"
+      },
+      "isError": false
+    },
+    "cj-garage": {
+      "content": [
+        {
+          "type": "text",
+          "text": "🔍 Product detail loaded.\n\n{\n  \"pid\": \"1621773026956161024\",\n  \"productName\": \"[\\\"涂鸦WiFi车库门开关\\\",\\\"车库门控制器\\\",\\\"远程语音控制\\\"]\",\n  \"productNameSet\": [\n    \"车库门控制器\",\n    \"涂鸦WiFi车库门开关\",\n    \"远程语音控制\"\n  ],\n  \"productNameEn\": \"Wifi Garage Door Switch Intelligent APP Remote Group Conrtrol Wireless\",\n  \"productSku\": \"CJZN1676367\",\n  \"bigImage\": \"https://cf.cjdropshipping.com/15ddd489-caa1-4209-886d-1a8e67a2dacd.jpg\",\n  \"productImage\": \"[\\\"https://cf.cjdropshipping.com/15ddd489-caa1-4209-886d-1a8e67a2dacd.jpg\\\",\\\"https://cf.cjdropshipping.com/223a02ab-48b2-4a7f-b296-79ac2ee6c3af.jpg\\\",\\\"https://cf.cjdropshipping.com/7563b68f-734d-4830-b3f2-e92a834335ea.jpg\\\",\\\"https://cf.cjdropshipping.com/691e81ec-6341-4604-b413-2e46b62f94b8.jpg\\\",\\\"https://cf.cjdropshipping.com/bb14ae97-6051-4df9-bdd0-0a70080874e9.jpg\\\"]\",\n  \"productImageSet\": [\n    \"https://cf.cjdropshipping.com/bb14ae97-6051-4df9-bdd0-0a70080874e9.jpg\",\n    \"https://cf.cjdropshipping.com/7563b68f-734d-4830-b3f2-e92a834335ea.jpg\",\n    \"https://cf.cjdropshipping.com/15ddd489-caa1-4209-886d-1a8e67a2dacd.jpg\",\n    \"https://cf.cjdropshipping.com/223a02ab-48b2-4a7f-b296-79ac2ee6c3af.jpg\",\n    \"https://cf.cjdropshipping.com/691e81ec-6341-4604-b413-2e46b62f94b8.jpg\"\n  ],\n  \"productWeight\": \"280.00\",\n  \"productUnit\": null,\n  \"productType\": \"ORDINARY_PRODUCT\",\n  \"categoryId\": \"E95322D2-FF23-4837-A0C0-0CA686B9F062\",\n  \"categoryName\": \"Consumer Electronics > Smart Electronics > Smart Remote Controls\",\n  \"entryCode\": \"8526920000\",\n  \"entryName\": \"塑料车库门控制器\",\n  \"entryNameEn\": \"Plastic garage door controller\",\n  \"materialName\": \"[\\\"塑料\\\"]\",\n  \"materialNameSet\": [\n    \"塑料\"\n  ],\n  \"materialNameEn\": \"[\\\"Plastic\\\"]\",\n  \"materialNameEnSet\": [\n    \"Plastic\"\n  ],\n  \"materialKey\": \"[\\\"PLASTIC\\\"]\",\n  \"materialKeySet\": [\n    \"PLASTIC\"\n  ],\n  \"packingWeight\": \"300.00\",\n  \"packingName\": \"[\\\"纸盒\\\"]\",\n  \"packingNameSet\": [\n    \"纸盒\"\n  ],\n  \"packingNameEn\": \"[\\\"Carton\\\"]\",\n  \"packingNameEnSet\": [\n    \"Carton\"\n  ],\n  \"packingKey\": \"[\\\"PAPER_BOX\\\"]\",\n  \"packingKeySet\": [\n    \"PAPER_BOX\"\n  ],\n  \"productKey\": \"[\\\"颜色\\\",\\\"电源\\\"]\",\n  \"productKeySet\": [\n    \"颜色\",\n    \"电源\"\n  ],\n  \"productKeyEn\": \"Color-Electrical outlet\",\n  \"productKeyEnSet\": [\n    \"Color\",\n    \"Electrical outlet\"\n  ],\n  \"productPro\": \"[\\\"普货\\\"]\",\n  \"productProSet\": [\n    \"普货\"\n  ],\n  \"productProEn\": \"[\\\"COMMON\\\"]\",\n  \"productProEnSet\": [\n    \"COMMON\"\n  ],\n  \"sellPrice\": \"8.17\",\n  \"sourceFrom\": 2,\n  \"description\": \"<p><b>Product information:</b><br></p><p>Product name: Switch garage door controller<br>Type: Controller<br>Material: Plastic<br>Weight: 0.28kg<br>Product size: 12.2cm * 11.3cm * 4.6cm</p><p><br></p><p><strong>Description:<br></strong></p><p>This is an intelligent garage door controller, you can open/close and monitor your garage door or gate from anywhere. It will make your home smarter.</p><p>You can open or close the garage door by the APP, and authorize multiple people you trust to access your garage.</p><p>You can activate your garage door opener by placing a voice Compatible with Amazon Alexa or Google Home.</p><p>Can be connected to an alarm and will activate the alarm system when the garage door is opened by a stranger.</p><p>You can check whether the garage door is open or not on APP without getting out of the car. When the garage door is opened or closed, it will remind you in time to make your life safe.</p><p>Quick and easy installation and convenient operation.</p><p>New upgrade function:</p><p>1: Added Bluetooth network configuration function, faster pairing</p><p>2: Support forget to turn off reminder, users can remind the cycle (for example, push the message without turning off for 5 minutes)</p><p>3: Support google home password setting, use voice speakers to open the door, you need to provide a password to ensure security</p><p>4: Support setting the motor travel time</p><p><br></p><p><b>Packing list:</b></p><p>1 * Intelligent Garage Door Controller</p><p>1 * Set of Mounting Accessories</p><p>1 * User Manual</p><p><br></p><p><b>Product Image:</b></p><p><img src=\\\"https://cf.cjdropshipping.com/b227181b-1565-4b89-b66b-457d7b745395.jpg\\\" style=\\\"max-width:100%;\\\"><b><br></b></p><p><img src=\\\"https://cf.cjdropshipping.com/0d061d4a-a03a-4dc5-b4b4-5215bf8ab6ea.jpg\\\" style=\\\"max-width:100%;\\\"><img src=\\\"https://cf.cjdropshipping.com/c98bcdd4-76e7-49d9-9d4b-0f2448ac705d.jpg\\\" style=\\\"max-width: 100%;\\\"><img src=\\\"https://cf.cjdropshipping.com/7926f302-1d33-4855-acac-f277c527fb91.jpg\\\" style=\\\"max-width: 100%;\\\"><img src=\\\"https://cf.cjdropshipping.com/f8a6a207-0aa1-4392-ba27-ad1923786e99.jpg\\\" style=\\\"max-width: 100%;\\\"><img src=\\\"https://cf.cjdropshipping.com/03963cc6-8a34-4dd0-b06e-20f5febe97ba.jpg\\\" style=\\\"max-width: 100%;\\\"><b><br></b></p>\",\n  \"variants\": [\n    {\n      \"vid\": \"1622073089758605312\",\n      \"pid\": \"1621773026956161024\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Wifi Garage Door Switch Intelligent APP Remote Group Conrtrol Wireless Black USB\",\n      \"variantImage\": \"https://cf.cjdropshipping.com/223a02ab-48b2-4a7f-b296-79ac2ee6c3af.jpg\",\n      \"variantSku\": \"CJZN167636701AZ\",\n      \"barcode\": \"1598453999844\",\n      \"variantUnit\": \"个\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Black-USB\",\n      \"variantLength\": 200,\n      \"variantWidth\": 100,\n      \"variantHeight\": 70,\n      \"variantVolume\": 1400000,\n      \"variantWeight\": 300.0,\n      \"variantSellPrice\": 8.17,\n      \"createTime\": 1675567335000,\n      \"variantStandard\": \"long=200,width=100,height=70\",\n      \"variantSugSellPrice\": 19.86,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    }\n  ],\n  \"addMarkStatus\": 0,\n  \"createrTime\": \"2023-02-04T07:29:55+08:00\",\n  \"productVideo\": null,\n  \"status\": \"3\",\n  \"suggestSellPrice\": \"19.86\",\n  \"listedNum\": 102,\n  \"supplierName\": null,\n  \"supplierId\": null,\n  \"customizationVersion\": null,\n  \"customizationJson1\": null,\n  \"customizationJson2\": null,\n  \"customizationJson3\": null,\n  \"customizationJson4\": null,\n  \"isTestProduct\": false,\n  \"productUrl\": \"https://www.cjdropshipping.com/product/wifi-garage-door-switch-intelligent-app-remote-group-conrtrol-wireless-p-1621773026956161024.html\"\n}"
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    },
+    "cj-ultrasonic": {
+      "content": [
+        {
+          "type": "text",
+          "text": "🔍 Product detail loaded.\n\n{\n  \"pid\": \"1432187342642352128\",\n  \"productName\": \"[\\\"家用超声波清洗机迷你便携式清洁眼镜简单快捷c\\\",\\\"家用超声波清洗机迷你便携式清洁眼镜简单快捷首饰无线清洗盒\\\",\\\"塑料清洗机\\\"]\",\n  \"productNameSet\": [\n    \"家用超声波清洗机迷你便携式清洁眼镜简单快捷首饰无线清洗盒\",\n    \"塑料清洗机\",\n    \"家用超声波清洗机迷你便携式清洁眼镜简单快捷c\"\n  ],\n  \"productNameEn\": \"Ultrasonic Cleaning Machine High Frequency Vibration Wash Cleaner Washing Jewelry Glasses Watch Ring Dentures Cleaner\",\n  \"productSku\": \"CJJY1269103\",\n  \"bigImage\": \"https://cf.cjdropshipping.com/17fd10ff-0e37-4dce-8179-80afabc58152.jpg\",\n  \"productImage\": \"[\\\"https://cf.cjdropshipping.com/17fd10ff-0e37-4dce-8179-80afabc58152.jpg\\\",\\\"https://cf.cjdropshipping.com/44c4c94a-dffd-478b-ba83-897689787565.png\\\",\\\"https://cf.cjdropshipping.com/ce3ae673-9a78-4405-ac89-996025a3639b.jpg\\\",\\\"https://cf.cjdropshipping.com/814d1761-14cd-4b6e-98b6-2eb6b1400450.jpg\\\",\\\"https://cf.cjdropshipping.com/8e8ff6d6-3c86-46e7-9053-8595dc6af4c1.jpg\\\",\\\"https://cf.cjdropshipping.com/351217df-e943-490d-a6b3-1e4eb84e4ed4.jpg\\\",\\\"https://cf.cjdropshipping.com/3e3eb4b8-50a3-4bcd-bd0b-229145dabd50.jpg\\\",\\\"https://cf.cjdropshipping.com/d1c085af-21a8-44ea-81bb-b037f457ffca.jpg\\\",\\\"https://cf.cjdropshipping.com/0b047602-446f-491d-8066-9a2e48ed3148.jpg\\\",\\\"https://cf.cjdropshipping.com/ce0e6d66-39e7-4c3a-8da3-de2fa1443156.jpg\\\",\\\"https://cf.cjdropshipping.com/34d36267-1606-46e7-9c0b-8fe55ea74564.jpg\\\",\\\"https://cf.cjdropshipping.com/17acb250-1400-42ef-a594-7841693a1933.jpg\\\",\\\"https://cf.cjdropshipping.com/5473b566-e513-4857-9dda-feaa3230e4c3.png\\\",\\\"https://cf.cjdropshipping.com/2a5b77bb-315a-4c4b-ae46-8a650931e39d.png\\\",\\\"https://cf.cjdropshipping.com/085e53e4-1bdc-4c54-af07-39535fee56f2.png\\\",\\\"https://cf.cjdropshipping.com/2e2924a6-ef45-46ab-bf3d-34931dd5e4f2.png\\\",\\\"https://cf.cjdropshipping.com/f6356f45-f8f3-4ad9-8d80-76d3991c0a0c.png\\\",\\\"https://cf.cjdropshipping.com/5b7a6e8f-ea50-4b4f-8e41-718b4ad06e87.png\\\",\\\"https://cf.cjdropshipping.com/e733a4e6-98b5-436b-8a7b-16be0c1f45ec.png\\\",\\\"https://cf.cjdropshipping.com/80da057a-5a6f-4468-bb9a-1acbbbf329db.png\\\",\\\"https://cf.cjdropshipping.com/7e6c08f6-5835-4809-9be9-544540024fa1.png\\\",\\\"https://cf.cjdropshipping.com/a90a6da3-b138-4def-a6fb-34aa8acd3c30.png\\\",\\\"https://cf.cjdropshipping.com/181444a6-9434-41a1-a775-9f74597f7964.png\\\",\\\"https://cf.cjdropshipping.com/018bb3f4-f256-4e28-a0f1-06b4be11c642.png\\\",\\\"https://cf.cjdropshipping.com/29b158b6-07e2-4134-abe7-54d557ad6cae.png\\\",\\\"https://oss-cf.cjdropshipping.com/product/2024/10/10/08/ac5a13fe-6d6d-466d-a51e-95391a511633.jpg\\\",\\\"https://oss-cf.cjdropshipping.com/product/2024/10/10/08/e57bf931-3833-4660-bfd8-027ad6c07cdf.jpg\\\"]\",\n  \"productImageSet\": [\n    \"https://cf.cjdropshipping.com/44c4c94a-dffd-478b-ba83-897689787565.png\",\n    \"https://cf.cjdropshipping.com/ce0e6d66-39e7-4c3a-8da3-de2fa1443156.jpg\",\n    \"https://cf.cjdropshipping.com/17acb250-1400-42ef-a594-7841693a1933.jpg\",\n    \"https://oss-cf.cjdropshipping.com/product/2024/10/10/08/e57bf931-3833-4660-bfd8-027ad6c07cdf.jpg\",\n    \"https://cf.cjdropshipping.com/351217df-e943-490d-a6b3-1e4eb84e4ed4.jpg\",\n    \"https://cf.cjdropshipping.com/181444a6-9434-41a1-a775-9f74597f7964.png\",\n    \"https://cf.cjdropshipping.com/f6356f45-f8f3-4ad9-8d80-76d3991c0a0c.png\",\n    \"https://cf.cjdropshipping.com/80da057a-5a6f-4468-bb9a-1acbbbf329db.png\",\n    \"https://cf.cjdropshipping.com/8e8ff6d6-3c86-46e7-9053-8595dc6af4c1.jpg\",\n    \"https://cf.cjdropshipping.com/5473b566-e513-4857-9dda-feaa3230e4c3.png\",\n    \"https://cf.cjdropshipping.com/29b158b6-07e2-4134-abe7-54d557ad6cae.png\",\n    \"https://cf.cjdropshipping.com/3e3eb4b8-50a3-4bcd-bd0b-229145dabd50.jpg\",\n    \"https://cf.cjdropshipping.com/0b047602-446f-491d-8066-9a2e48ed3148.jpg\",\n    \"https://cf.cjdropshipping.com/2e2924a6-ef45-46ab-bf3d-34931dd5e4f2.png\",\n    \"https://cf.cjdropshipping.com/5b7a6e8f-ea50-4b4f-8e41-718b4ad06e87.png\",\n    \"https://cf.cjdropshipping.com/d1c085af-21a8-44ea-81bb-b037f457ffca.jpg\",\n    \"https://cf.cjdropshipping.com/a90a6da3-b138-4def-a6fb-34aa8acd3c30.png\",\n    \"https://cf.cjdropshipping.com/ce3ae673-9a78-4405-ac89-996025a3639b.jpg\",\n    \"https://cf.cjdropshipping.com/2a5b77bb-315a-4c4b-ae46-8a650931e39d.png\",\n    \"https://cf.cjdropshipping.com/17fd10ff-0e37-4dce-8179-80afabc58152.jpg\",\n    \"https://cf.cjdropshipping.com/34d36267-1606-46e7-9c0b-8fe55ea74564.jpg\",\n    \"https://cf.cjdropshipping.com/7e6c08f6-5835-4809-9be9-544540024fa1.png\",\n    \"https://cf.cjdropshipping.com/085e53e4-1bdc-4c54-af07-39535fee56f2.png\",\n    \"https://cf.cjdropshipping.com/814d1761-14cd-4b6e-98b6-2eb6b1400450.jpg\",\n    \"https://oss-cf.cjdropshipping.com/product/2024/10/10/08/ac5a13fe-6d6d-466d-a51e-95391a511633.jpg\",\n    \"https://cf.cjdropshipping.com/e733a4e6-98b5-436b-8a7b-16be0c1f45ec.png\",\n    \"https://cf.cjdropshipping.com/018bb3f4-f256-4e28-a0f1-06b4be11c642.png\"\n  ],\n  \"productWeight\": \"182.00-552.00\",\n  \"productUnit\": null,\n  \"productType\": \"ORDINARY_PRODUCT\",\n  \"categoryId\": \"C1394E10-1EDF-4107-AA93-F142B44C3136\",\n  \"categoryName\": \"Home, Garden & Furniture > Home Storage > Storage Bottles & Jars\",\n  \"entryCode\": \"8424300000\",\n  \"entryName\": \"塑料清洗机\",\n  \"entryNameEn\": \"Plastic washing machine\",\n  \"materialName\": \"[\\\"塑料\\\",\\\"其他\\\"]\",\n  \"materialNameSet\": [\n    \"塑料\",\n    \"其他\"\n  ],\n  \"materialNameEn\": \"[\\\"Plastic\\\",\\\"Others\\\"]\",\n  \"materialNameEnSet\": [\n    \"Others\",\n    \"Plastic\"\n  ],\n  \"materialKey\": \"[\\\"PLASTIC\\\",\\\"MATERIAL\\\"]\",\n  \"materialKeySet\": [\n    \"PLASTIC\",\n    \"MATERIAL\"\n  ],\n  \"packingWeight\": \"250.00-660.00\",\n  \"packingName\": \"[\\\"塑料袋\\\"]\",\n  \"packingNameSet\": [\n    \"塑料袋\"\n  ],\n  \"packingNameEn\": \"[\\\"Plastic bags\\\"]\",\n  \"packingNameEnSet\": [\n    \"Plastic bags\"\n  ],\n  \"packingKey\": \"[\\\"PLASTIC_BAG\\\"]\",\n  \"packingKeySet\": [\n    \"PLASTIC_BAG\"\n  ],\n  \"productKey\": \"[\\\"颜色\\\"]\",\n  \"productKeySet\": [\n    \"颜色\"\n  ],\n  \"productKeyEn\": \"Color\",\n  \"productKeyEnSet\": [\n    \"Color\"\n  ],\n  \"productPro\": \"[\\\"电子\\\"]\",\n  \"productProSet\": [\n    \"电子\"\n  ],\n  \"productProEn\": \"[\\\"ELECTRONIC\\\"]\",\n  \"productProEnSet\": [\n    \"ELECTRONIC\"\n  ],\n  \"sellPrice\": \"1.88-5.40\",\n  \"sourceFrom\": 1,\n  \"description\": \"<p><b>Overview:<br/></b>1. Professional Jewelry Cleaning Machine, Cleans dirty jewelry in minutes using only tap water and does not remove tarnish.<br/>2. Ultrasonic cleaner fits and deep-cleans every angle of your ring, jewelry, glasses, and various accessories.<br/>3. User-Friendly with Overheat Protection, a One-touch button with an indicator, and smart cleaning of your jewelry.<br/>4. This ultrasonic cleaner comes with high-end waterproof surface finishing, ensuring durability while having a great tactile feeling. SUS 304 stainless steel tank provides good corrosion resistance, use any ultrasonic detergent/solution with peace.<b><span style=\\\"font-size: 1em;\\\"><br/></span></b></p><p><b><span style=\\\"font-size: 1em;\\\"><br/></span></b></p><p><b><span style=\\\"font-size: 1em;\\\">Product Information</span><font style=\\\"vertical-align: inherit;\\\"><font style=\\\"vertical-align: inherit;\\\">：</font></font></b><br/></p><p>Type: swing type<br/>Application field: glasses<br/>Use: Household<br/>Ultrasonic cleaning frequency; 45000hz<br/>Cleaning temperature; 10-70 (℃)<br/>Working method: high-frequency vibration<br/>Power: 5w<br/>Specification: off-white</p><p><br/><b>Size Information:</b></p><p>Dimensions: 19*7.2*6.8 (cm)<br/></p><p><br/></p><p><b>Packing list:</b></p><p>Washing machine x 1</p><p>Instruction Manual X1<br/><br/>This product is suitable for cleaning glasses, contact lenses, jewelry, watches, makeup tools, children's tableware, razors and other appliances.<br/>You need to bring your own two AAA batteries, without batteries when sending.</p><p><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433843923.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433844061.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433844147.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433844201.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433844305.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433844369.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433844836.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433844914.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433844956.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433845018.jpg\\\"/></p><p><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433845059.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433845102.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433845165.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433845231.jpg\\\"/><img src=\\\"https://cf.cjdropshipping.com/16414272/1641433845289.jpg\\\"/></p>\",\n  \"variants\": [\n    {\n      \"vid\": \"1432187342675906560\",\n      \"pid\": \"1432187342642352128\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Ultrasonic Cleaning Machine High Frequency Vibration Wash Cleaner Washing Jewelry Glasses Watch Ring Dentures Cleaner Offwhite\",\n      \"variantImage\": \"https://oss-cf.cjdropshipping.com/product/2024/10/10/08/ac5a13fe-6d6d-466d-a51e-95391a511633.jpg\",\n      \"variantSku\": \"CJJY126910301AZ\",\n      \"barcode\": \"1598449074130\",\n      \"variantUnit\": \"个\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Offwhite\",\n      \"variantLength\": 210,\n      \"variantWidth\": 90,\n      \"variantHeight\": 90,\n      \"variantVolume\": 1701000,\n      \"variantWeight\": 250.0,\n      \"variantSellPrice\": 1.88,\n      \"createTime\": 1630295045000,\n      \"variantStandard\": \"long=210,width=90,height=90\",\n      \"variantSugSellPrice\": 25.72,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    },\n    {\n      \"vid\": \"1501074790759804928\",\n      \"pid\": \"1432187342642352128\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Ultrasonic Cleaning Machine High Frequency Vibration Wash Cleaner Washing Jewelry Glasses Watch Ring Dentures Cleaner Offwhite 2PC\",\n      \"variantImage\": \"https://cf.cjdropshipping.com/ce0e6d66-39e7-4c3a-8da3-de2fa1443156.jpg\",\n      \"variantSku\": \"CJJY126910302BY\",\n      \"barcode\": \"1598451058907\",\n      \"variantUnit\": \"个\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Offwhite 2PC\",\n      \"variantLength\": 210,\n      \"variantWidth\": 90,\n      \"variantHeight\": 180,\n      \"variantVolume\": 3402000,\n      \"variantWeight\": 460.0,\n      \"variantSellPrice\": 3.59,\n      \"createTime\": 1646719093000,\n      \"variantStandard\": \"long=210,width=90,height=180\",\n      \"variantSugSellPrice\": 20.07,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    },\n    {\n      \"vid\": \"1620359462622081024\",\n      \"pid\": \"1432187342642352128\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Ultrasonic Cleaning Machine High Frequency Vibration Wash Cleaner Washing Jewelry Glasses Watch Ring Dentures Cleaner Offwhite with blue cloth\",\n      \"variantImage\": \"https://cf.cjdropshipping.com/34d36267-1606-46e7-9c0b-8fe55ea74564.jpg\",\n      \"variantSku\": \"CJJY126910303CX\",\n      \"barcode\": \"1598453952178\",\n      \"variantUnit\": \"个\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Offwhite with blue cloth\",\n      \"variantLength\": 210,\n      \"variantWidth\": 90,\n      \"variantHeight\": 90,\n      \"variantVolume\": 1701000,\n      \"variantWeight\": 274.0,\n      \"variantSellPrice\": 2.83,\n      \"createTime\": 1675158775000,\n      \"variantStandard\": \"long=210,width=90,height=90\",\n      \"variantSugSellPrice\": 30.93,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    },\n    {\n      \"vid\": \"1621390502543241216\",\n      \"pid\": \"1432187342642352128\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Ultrasonic Cleaning Machine High Frequency Vibration Wash Cleaner Washing Jewelry Glasses Watch Ring Dentures Cleaner Set\",\n      \"variantImage\": \"https://cf.cjdropshipping.com/17acb250-1400-42ef-a594-7841693a1933.jpg\",\n      \"variantSku\": \"CJJY126910304DW\",\n      \"barcode\": \"1598453982715\",\n      \"variantUnit\": \"个\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Set\",\n      \"variantLength\": 210,\n      \"variantWidth\": 90,\n      \"variantHeight\": 180,\n      \"variantVolume\": 3402000,\n      \"variantWeight\": 539.0,\n      \"variantSellPrice\": 5.4,\n      \"createTime\": 1675404594000,\n      \"variantStandard\": \"long=210,width=90,height=180\",\n      \"variantSugSellPrice\": 30.19,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    },\n    {\n      \"vid\": \"1640903740288937984\",\n      \"pid\": \"1432187342642352128\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Ultrasonic Cleaning Machine High Frequency Vibration Wash Cleaner Washing Jewelry Glasses Watch Ring Dentures Cleaner Offwhite 3pcs\",\n      \"variantImage\": \"https://cf.cjdropshipping.com/5473b566-e513-4857-9dda-feaa3230e4c3.png\",\n      \"variantSku\": \"CJJY126910305EV\",\n      \"barcode\": \"1600000360611\",\n      \"variantUnit\": \"个\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Offwhite 3pcs\",\n      \"variantLength\": 210,\n      \"variantWidth\": 90,\n      \"variantHeight\": 270,\n      \"variantVolume\": 5103000,\n      \"variantWeight\": 690.0,\n      \"variantSellPrice\": 5.38,\n      \"createTime\": 1680056912000,\n      \"variantStandard\": \"long=210,width=90,height=270\",\n      \"variantSugSellPrice\": 30.08,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    }\n  ],\n  \"addMarkStatus\": 0,\n  \"createrTime\": \"2021-08-30T03:44:05+08:00\",\n  \"productVideo\": null,\n  \"status\": \"3\",\n  \"suggestSellPrice\": \"20.07 - 46.57\",\n  \"listedNum\": 11297,\n  \"supplierName\": null,\n  \"supplierId\": null,\n  \"customizationVersion\": null,\n  \"customizationJson1\": null,\n  \"customizationJson2\": null,\n  \"customizationJson3\": null,\n  \"customizationJson4\": null,\n  \"isTestProduct\": false,\n  \"productUrl\": \"https://www.cjdropshipping.com/product/ultrasonic-cleaning-machine-high-frequency-vibration-wash-cleaner-washing-jewelry-glasses-watch-ring-dentures-cleaner-p-1432187342642352128.html\"\n}"
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    }
+  },
+  "sourceReadBudget": {
+    "intendedCJ": 2,
+    "intendedShopify": 2,
+    "actualCJ": 6,
+    "actualShopify": 6,
+    "exceeded": true,
+    "reason": "Agent completed successful connector reads but failed two local serializations (btoa/TextEncoder not available), then unnecessarily repeated the four reads twice. Final third-pass payloads are saved. These are not new products or connector failures. No writes, no performance query repetition."
+  },
+  "rootInterpretation": {
+    "garageSKU": "Shopify CJ-1621773026956161024 embeds the exact CJ PID; CJ returns SPUCJZN1676367 and one current variantCJZN167636701AZ/Black-USB. Different SKU format alone is not proof of a broken binding. Do not blindly overwrite Shopify SKU.",
+    "ultrasonicBundle": "Exact CJJY126910302BY says Offwhite2PC, but generic packing list says one unit. Exact piece contents remain unresolved; no invented 2-piece delivery guarantee.",
+    "imageScope": "Only2originals per product inspected. Captions/logos/app screenshots/2PC text remain; other originals unassessed. No claim that no clean image exists anywhere.",
+    "rights": "No commercial-edit/advertising licence statement in returned payloads. CJ availability and earlier owner approval for two nail images do not establish rights for these two cases."
+  }
+}

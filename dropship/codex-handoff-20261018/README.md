@@ -1,3 +1,17 @@
+# R226 – Zwei gezielte SEO-Verbesserungen live – 15.11.2026 Zürich
+
+Cargohosen-Kollektion mit kompakter Orientierung und geprüftem Herrenhosen-Link ergänzt; Cheongsam-Kleid mit konkreter Suchbeschreibung versehen. Zwei Writes, native und öffentliche Rücklesung passend. Titel, Preise, Varianten, Regeln, Sortierung und Medien erhalten. Keine Ranking- oder Verkaufswirkung behauptet.
+
+Erstmals heute ein kleiner GSC-Report gelesen: 20 Seiten, abgeschnittene Auswahl. Der Connector schätzt den finalisierten Datenstand auf den 12.11.; die Vollständigkeit für den angefragten 13./14.11. bleibt unbekannt. GSC heute nicht ohne neuen Grund wiederholen; Social-/Klaviyo-Tagesreports wurden hier nicht gelesen.
+
+Milchshaker und drei Varianten sind in Shopify bereits für Google & YouTube veröffentlicht; keine Kanalaktivierung nötig, Merchant-Übernahme damit nicht bewiesen. CJ-Shopidentität stimmt mit der nativen Shopify-Domain überein. Für zwei genaue Varianten keine Sync-Zeilen geliefert: unbekannt, kein Nullbestand. Zwei Geräte-Bildfälle vorbereitet; passende textfreie Medien, Rechte und ein 2PC-Lieferumfang bleiben offen. Das Quellenleselimit wurde durch lokale Speicherfehler überschritten und ist mit tatsächlichen Aufrufzahlen dokumentiert.
+
+Am Schluss jedes Laufs den direkten Link zu diesem gemeinsamen Projektgedächtnis teilen. Claude-Empfang bleibt ohne Quittung unbekannt. 24 Aufgaben-IDs und Historie erhalten, bestehender Zeitplan unverändert.
+
+[Bericht und Tagestabelle](WEITERARBEIT-20261115-R226.md) · [Laufbeleg](WEITERARBEIT-20261115-R226.json).
+
+---
+
 # R225 – Zwei Produktseiten korrigiert, weitere Arbeit eingegrenzt – 15.11.2026 Zürich
 
 Spitzen-Shirt und Milchshaker anhand exakter CJ-SKUs live korrigiert. Drei Shopify-Writes einschliesslich der Wiederherstellung des beim ersten Aufruf geleerten SEO-Titels. Native und öffentliche Rücklesung stimmen; Preise, Varianten, Medien, Tags und Handles sind erhalten. Ladestation und Shirt wurden bei Google bereits genehmigt vorgefunden. Die Merchant-Stichprobe umfasst zwölf Ablehnungen und ist kein Katalogzensus.
