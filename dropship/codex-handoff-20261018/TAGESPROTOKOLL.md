@@ -2930,3 +2930,20 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Bericht](MERCHANT-PRODUKTDETAILS-LIVE-20261115-R248.md) · [Belege](MERCHANT-PRODUKTDETAILS-BELEGE-20261115-R248.json).
 
 [LUXESTYLE_R248_20261115]
+### R249 – Vier Produktdetailseiten, 19 Konsolen-Bildzuordnungen und acht Merchant-Angebote
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Kontinuität | Vier Kerndokumente, Shopify-Shop, Metricool-Marke samt sechs Kanälen und Merchant frisch geprüft; bestehende Ergänzungsquelle gezielt bestätigt. | Richtige LuxeStyle-Identitäten; Revision248 fortgesetzt. Keine andere Marke bearbeitet. |
+| Produkte / live | Zehn Shopify-Writes für Handheld, X6, Rucksack und Hundejacke: drei Optionsnamen,21 Werttexte,27 abgeleitete Variantentitel, zwei Produkt-/SEO-Titel, vier Beschreibungen und vier Meta-Beschreibungen verbessert. | Native Vollrücklesung und vier öffentliche HTTP200-/H1-/Meta-/Canonical-/AJAX-Checks bestanden.60 Varianten-/38 Wert-IDs/36 Produktmedien und SKU-/Preis-/Bestands-/Tracking-/Inventarrichtlinien erhalten. |
+| Variantenbilder / live | Alle19 fehlenden Konsolen-Variantbild-Verknüpfungen auf vorhandene, CJ-farbgeprüfte Medien gesetzt; keine Uploads. | Öffentliche Zuordnungen und echte mobile Auswahlklicks bestätigt. Rosa64G und SchwarzX6 zeigen nach Korrektur die richtigen Hero-Bilder. |
+| Merchant / live | Neun Writes auf acht vorhandene Angebote: vier Preis-/Titel-/Link-Bindungen, vier Availability-Korrekturen und eine zusätzliche Hundebeschreibungsbereinigung. Jeden Write gezielt unabhängig zurückgelesen. | Fünf kostenlos CH/LI genehmigt; vier ohne Artikelprobleme, Wandleuchte zusätzlich NOT_IMPACTED-Zertifizierungshinweis. Drei IN_STOCK-Korrekturen weiter Crawl-pending, Genehmigung ausstehend. Andere Attribute/Bilder/IDs/Primärquelle/Ausschlüsse geschützt. |
+| Restarbeit / Herkunft | Vorhandenen historischen R240-Ausschnitt offline auf144Preis-/19Availability-Fälle eingegrenzt; bekannte7/5Korrekturen ausR247–249 markiert. Konsolenliste nur in zwei vorhandenen Zeilen fortgeschrieben. |137Preis-/14Availability-Restfälle heute unbekannt; CSV nicht importbereit. Keine18Gruppen-/0Gesamtfehlerbehauptung. Konsolen8/36 redaktionell bearbeitet,28offen; Spiele/Karten nicht verifiziert. |
+| Social / Prüfung | Ein frischer Wochenread15.–22.11. mit46Objekten, anschliessend Offline-Duplikat-/Audio-Hold-Gegenprobe. | Keine exakten vollständigen Text/Medien- oder Video-URL-Dubletten proKanal im Fenster. VierMasterholds erhalten; ein alterAudiohold sichtbar, sechs imFenster nicht vorhanden→unbekannt. YouTube nur16./17.aktiv; Threads15.Lücke. Keine Social-Writes/eigenen Publikationen. |
+| Offene Angaben / Grenzen | Rohquellen und echte Bilder geprüft; Hundetabelle ohne Einheiten nicht als cm übernommen. Rucksack-Materialliste präzisiert, keine Mischungsanteile erfunden. | R248-Hellgrau-Rechte-/Farbantwort weiter offen, Warnhinweis bleibt. Keine neueQuelle/Offers, Uploads, Budgets, Settings, Flows, DNS oder kostenpflichtigeRenders. Tagesreports/Kauf-Watch nicht wiederholt. |
+| Gedächtnis / Folgelauf | Register von4 auf12 exakteEinträge ergänzt, alte4 erhalten. Quellen, Diffs, Mobil-/Schutzbelege und konkrete nächste Schritte in Revision249 vorbereitet. | Bestehenden Override vor Änderungen frisch gegen exakteShopifyvariante prüfen, keineSync-/Claude-Empfangsbehauptung. Bestehende08/14/19-Zürich-Läufe unverändert. |
+
+[Live-Bericht](LOOP-FORTSCHRITT-LIVE-20261115-R249.md) · [Belege](LOOP-BELEGE-20261115-R249.json) · [Register](MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R249.json).
+
+[LUXESTYLE_R249_20261115]
+

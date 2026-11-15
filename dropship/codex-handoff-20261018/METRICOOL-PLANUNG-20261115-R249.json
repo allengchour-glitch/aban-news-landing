@@ -1,0 +1,1869 @@
+{
+  "planner": {
+    "source": "Metricool scheduledposts; one read; 2026-11-15 through 2026-11-22 Europe/Zurich, extendedRange=false",
+    "retrieved_records": 46,
+    "byChannel": {
+      "instagram": {
+        "total": 12,
+        "drafts": 3,
+        "active": 9
+      },
+      "facebook": {
+        "total": 11,
+        "drafts": 2,
+        "active": 9
+      },
+      "tiktok": {
+        "total": 12,
+        "drafts": 2,
+        "active": 10
+      },
+      "threads": {
+        "total": 9,
+        "drafts": 2,
+        "active": 7
+      },
+      "youtube": {
+        "total": 4,
+        "drafts": 2,
+        "active": 2
+      },
+      "pinterest": {
+        "total": 8,
+        "drafts": 0,
+        "active": 8
+      }
+    },
+    "byDay": {
+      "2026-11-15": {
+        "instagram": {
+          "total": 2,
+          "drafts": 0,
+          "active": 2,
+          "published_status": 2
+        },
+        "facebook": {
+          "total": 2,
+          "drafts": 0,
+          "active": 2,
+          "published_status": 2
+        },
+        "tiktok": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 1
+        },
+        "pinterest": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 1
+        },
+        "threads": {
+          "total": 1,
+          "drafts": 1,
+          "active": 0,
+          "published_status": 0
+        }
+      },
+      "2026-11-18": {
+        "facebook": {
+          "total": 2,
+          "drafts": 1,
+          "active": 1,
+          "published_status": 0
+        },
+        "instagram": {
+          "total": 2,
+          "drafts": 1,
+          "active": 1,
+          "published_status": 0
+        },
+        "threads": {
+          "total": 2,
+          "drafts": 1,
+          "active": 1,
+          "published_status": 0
+        },
+        "tiktok": {
+          "total": 2,
+          "drafts": 1,
+          "active": 1,
+          "published_status": 0
+        },
+        "youtube": {
+          "total": 1,
+          "drafts": 1,
+          "active": 0,
+          "published_status": 0
+        },
+        "pinterest": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        }
+      },
+      "2026-11-16": {
+        "threads": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "facebook": {
+          "total": 2,
+          "drafts": 1,
+          "active": 1,
+          "published_status": 0
+        },
+        "instagram": {
+          "total": 3,
+          "drafts": 2,
+          "active": 1,
+          "published_status": 0
+        },
+        "tiktok": {
+          "total": 2,
+          "drafts": 0,
+          "active": 2,
+          "published_status": 0
+        },
+        "pinterest": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "youtube": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        }
+      },
+      "2026-11-17": {
+        "threads": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "tiktok": {
+          "total": 2,
+          "drafts": 1,
+          "active": 1,
+          "published_status": 0
+        },
+        "facebook": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "instagram": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "pinterest": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "youtube": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        }
+      },
+      "2026-11-19": {
+        "threads": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "facebook": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "instagram": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "tiktok": {
+          "total": 2,
+          "drafts": 0,
+          "active": 2,
+          "published_status": 0
+        },
+        "pinterest": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "youtube": {
+          "total": 1,
+          "drafts": 1,
+          "active": 0,
+          "published_status": 0
+        }
+      },
+      "2026-11-20": {
+        "threads": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "tiktok": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "facebook": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "instagram": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "pinterest": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        }
+      },
+      "2026-11-21": {
+        "threads": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "facebook": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "instagram": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "tiktok": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "pinterest": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        }
+      },
+      "2026-11-22": {
+        "threads": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "facebook": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "instagram": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "tiktok": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        },
+        "pinterest": {
+          "total": 1,
+          "drafts": 0,
+          "active": 1,
+          "published_status": 0
+        }
+      }
+    },
+    "protectedRows": [
+      {
+        "id": 429127242,
+        "uuid": "4156060813550767248",
+        "date": "2026-11-16T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING"
+          }
+        ],
+        "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung über den Link im Profil.\n\n#sternlicht #lichtmomente #wohnen #luxestyle",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ]
+      },
+      {
+        "id": 429127259,
+        "uuid": "6680239273933357186",
+        "date": "2026-11-16T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING"
+          }
+        ],
+        "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung auf der Produktseite:\n\nhttps://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_entwurf_202611&utm_content=luxe_sternenprojektor_master_20261018_r176_facebook\n\n#sternlicht #lichtmomente #wohnen #luxestyle",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ]
+      },
+      {
+        "id": 429127272,
+        "uuid": "3614365779669041576",
+        "date": "2026-11-17T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING"
+          }
+        ],
+        "caption": "Licht im Detail: der Sternenlicht-Projektor für Schlafzimmer. Welche Ausführung welche Scheiben mitbringt, steht beim Artikel.\n\nShop: luxestyle.ch/tt\n\n#sternlicht #lichtmomente #luxestyle",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ]
+      },
+      {
+        "id": 429127286,
+        "uuid": "-7647174116509334899",
+        "date": "2026-11-19T19:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING"
+          }
+        ],
+        "caption": "Licht im Detail: ein Blick auf den Sternenlicht-Projektor. Die gewünschte Ausführung auf der Produktseite prüfen:\n\nhttps://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_entwurf_202611&utm_content=luxe_sternenprojektor_master_20261018_r176_youtube\n\n#Shorts #Sternenlicht #LuxeStyle",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ]
+      }
+    ],
+    "notes": [
+      "Provider status PUBLISHED is a status in the scheduled queue response, not independent publication verification.",
+      "Counts are per provider/network; drafts excluded from active counts."
+    ],
+    "items": [
+      {
+        "date": "2026-11-15",
+        "ch": "instagram",
+        "uuid": "6199136659928140012",
+        "id": 420726136,
+        "draft": false,
+        "caption": "Wann kommt meine Bestellung? Ehrlich erklärt: so liefern wir.\n\nDirektversand aus Asien: Lieferung 10–20 Werktage (Richtwert), das voraussich",
+        "urls": [],
+        "providerStatus": "PUBLISHED"
+      },
+      {
+        "date": "2026-11-15",
+        "ch": "facebook",
+        "uuid": "7768651932591999367",
+        "id": 420728374,
+        "draft": false,
+        "caption": "Wann kommt meine Bestellung? Ehrlich erklärt: so liefern wir.\n\nDirektversand aus Asien: Lieferung 10–20 Werktage (Richtwert), das voraussich",
+        "urls": [
+          "https://luxestyle.ch/pages/versand-lieferung?utm_source=facebook&utm_medium=social&utm_campaign=b1&utm_content=20261115_lieferung_karussell"
+        ],
+        "providerStatus": "PUBLISHED"
+      },
+      {
+        "date": "2026-11-15",
+        "ch": "facebook",
+        "uuid": "-3833193365444016309",
+        "id": 422280155,
+        "draft": false,
+        "caption": "Die Wichtelrunde steht an und dir fehlt noch eine Idee? 🎁\nDer Stick speichert Daten und öffnet Flaschen. Die Speichergrössen von 4 bis 128 ",
+        "urls": [],
+        "providerStatus": "PUBLISHED"
+      },
+      {
+        "date": "2026-11-15",
+        "ch": "instagram",
+        "uuid": "-3833193365444016309",
+        "id": 422280155,
+        "draft": false,
+        "caption": "Die Wichtelrunde steht an und dir fehlt noch eine Idee? 🎁\nDer Stick speichert Daten und öffnet Flaschen. Die Speichergrössen von 4 bis 128 ",
+        "urls": [],
+        "providerStatus": "PUBLISHED"
+      },
+      {
+        "date": "2026-11-15",
+        "ch": "tiktok",
+        "uuid": "-6967517640837021033",
+        "id": 422295156,
+        "draft": false,
+        "caption": "Wichtelgeschenk unter CHF 20? Dieser Panda wartet schon 🐼\n\nPlüsch Panda, 15 cm, empfohlen ab 3 Jahren · CHF 19.90\nSchweiz: ab Schweizer Lag",
+        "urls": [],
+        "providerStatus": "PUBLISHED"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "facebook",
+        "uuid": "4659816415037836014",
+        "id": 423483793,
+        "draft": true,
+        "caption": "Knoblauch und Zwiebeln per Druck hacken: der Knoblauch- und Zwiebelhacker arbeitet mit einem einfachen Druckmechanismus.\n\nEr zerkleinert Zwi",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "instagram",
+        "uuid": "4659816415037836014",
+        "id": 423483793,
+        "draft": true,
+        "caption": "Knoblauch und Zwiebeln per Druck hacken: der Knoblauch- und Zwiebelhacker arbeitet mit einem einfachen Druckmechanismus.\n\nEr zerkleinert Zwi",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "threads",
+        "uuid": "-8339089096074181290",
+        "id": 423484712,
+        "draft": true,
+        "caption": "Knoblauch hacken per Druck: der Knoblauch- und Zwiebelhacker zerkleinert auch Zwiebeln und anderes Gemüse.\n\nShop: luxestyle.ch/ig",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "tiktok",
+        "uuid": "-8305910546945982140",
+        "id": 423484773,
+        "draft": true,
+        "caption": "Knoblauch und Zwiebeln per Druck hacken: der Knoblauch- und Zwiebelhacker mit Edelstahlklingen. Zerkleinert auch anderes Gemüse.\n\nShop: luxe",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "youtube",
+        "uuid": "-3731207601091163105",
+        "id": 423484839,
+        "draft": true,
+        "caption": "Der Knoblauch- und Zwiebelhacker zerkleinert Zwiebeln, Knoblauch und anderes Gemüse per Druck. Edelstahlklingen, mehrschichtiger Aufbau für ",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-15",
+        "ch": "pinterest",
+        "uuid": "6213007717183669914",
+        "id": 423622854,
+        "draft": false,
+        "caption": "Mehr Überblick auf deinem Schminktisch. Dieser Kosmetik-Organizer bringt deine Auswahl gestaffelt in Szene. Produkt und aktuelle Angaben ans",
+        "urls": [],
+        "providerStatus": "PUBLISHED"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "threads",
+        "uuid": "-8080777271331700055",
+        "id": 424392566,
+        "draft": false,
+        "caption": "Weinrot, Dunkelgrün oder Kaffeefarbe: Welche Farbe hängt bei dir am Baum? Die beflockten Weihnachtskugeln gibt es als Set mit 9 Stück aus Ku",
+        "urls": [
+          "https://luxestyle.ch/products/weihnachtskugeln-beflockt-9-stuck-625300"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "facebook",
+        "uuid": "7991040995405613204",
+        "id": 424392702,
+        "draft": false,
+        "caption": "Weinrot, Dunkelgrün oder Kaffeefarbe: Welche Farbe passt an deinen Baum? 🎄\n\nDiese Weihnachtskugeln sind beflockt und kommen als Set mit 9 S",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "instagram",
+        "uuid": "7991040995405613204",
+        "id": 424392702,
+        "draft": false,
+        "caption": "Weinrot, Dunkelgrün oder Kaffeefarbe: Welche Farbe passt an deinen Baum? 🎄\n\nDiese Weihnachtskugeln sind beflockt und kommen als Set mit 9 S",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "tiktok",
+        "uuid": "-580082399036486516",
+        "id": 424392795,
+        "draft": false,
+        "caption": "Weinrot, Dunkelgrün oder Kaffeefarbe: Welche Kugeln hängst du auf?\n\nWeihnachtskugeln, beflockt, 9 Stück im Set. Jede Kugel trägt ein Zierban",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "pinterest",
+        "uuid": "-8863891854936750949",
+        "id": 424393081,
+        "draft": false,
+        "caption": "Weihnachtskugeln, beflockt, 9 Stück im Set: Deko für die Zweige am Weihnachtsbaum oder als Akzent in einem Kranz. Jede Kugel trägt ein Zierb",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-17",
+        "ch": "threads",
+        "uuid": "-2055061205905158476",
+        "id": 424393187,
+        "draft": false,
+        "caption": "Schwalbe oder Schmetterling? Die Retro-Keramiktasse mit Tiermotiv gibt es in Braun mit Schwalben und in Weiss mit Schmetterlingen. Welche wü",
+        "urls": [
+          "https://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-17",
+        "ch": "tiktok",
+        "uuid": "-326770756211684563",
+        "id": 424393289,
+        "draft": false,
+        "caption": "Schwalbe oder Schmetterling: Welche Tasse wäre deine?\n\nRetro-Keramiktasse mit Tiermotiv. Zwei Motive: Schwalbe · Braun und Schmetterling · W",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-17",
+        "ch": "facebook",
+        "uuid": "8906814597211638530",
+        "id": 424393422,
+        "draft": false,
+        "caption": "Schwalbe oder Schmetterling? ☕\n\nDie Retro-Keramiktasse mit Tiermotiv gibt es in zwei Ausführungen: Schwalbe · Braun und Schmetterling · Weis",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-17",
+        "ch": "instagram",
+        "uuid": "8906814597211638530",
+        "id": 424393422,
+        "draft": false,
+        "caption": "Schwalbe oder Schmetterling? ☕\n\nDie Retro-Keramiktasse mit Tiermotiv gibt es in zwei Ausführungen: Schwalbe · Braun und Schmetterling · Weis",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-17",
+        "ch": "pinterest",
+        "uuid": "9119250214596987223",
+        "id": 424393614,
+        "draft": false,
+        "caption": "Keramiktasse im Retro-Design mit Tiermotiv. Zwei Ausführungen: Schwalbe · Braun und Schmetterling · Weiss. Handgefertigt, der Henkel ist gew",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "threads",
+        "uuid": "-2256568300747601062",
+        "id": 424393691,
+        "draft": false,
+        "caption": "Rot mit grünem Umschlag oder Grün mit rotem? Der Weihnachtsstrumpf mit Samt-Optik hat eine goldgelbe Quaste und eine Schlaufe zum Aufhängen.",
+        "urls": [
+          "https://luxestyle.ch/products/weihnachtsstrumpf-mit-samt-optik-639700"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "facebook",
+        "uuid": "5511347900019396585",
+        "id": 425725034,
+        "draft": false,
+        "caption": "Rot oder Grün: welche Farbe hängst du auf? 🎄\n\nDer Weihnachtsstrumpf mit Samt-Optik kommt in zwei Farben. Der rote hat einen grünen Umschlag",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "instagram",
+        "uuid": "5511347900019396585",
+        "id": 425725034,
+        "draft": false,
+        "caption": "Rot oder Grün: welche Farbe hängst du auf? 🎄\n\nDer Weihnachtsstrumpf mit Samt-Optik kommt in zwei Farben. Der rote hat einen grünen Umschlag",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "tiktok",
+        "uuid": "-4254912497617780595",
+        "id": 425725162,
+        "draft": false,
+        "caption": "Rot oder Grün? Wisch durch und sag es uns. 🎄\n\nWeihnachtsstrumpf mit Samt-Optik: spitz zulaufender Umschlag in der Gegenfarbe, Kordel in Rot",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-18",
+        "ch": "pinterest",
+        "uuid": "-5899965466644493317",
+        "id": 425725272,
+        "draft": false,
+        "caption": "Weihnachtsstrumpf mit Samt-Optik als Deko für die Weihnachtszeit. Es gibt ihn in Rot mit grünem Umschlag oder in Grün mit rotem Umschlag. De",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-19",
+        "ch": "threads",
+        "uuid": "2120727659527094958",
+        "id": 425725415,
+        "draft": false,
+        "caption": "Der LED-Schminkspiegel ist tragbar und faltbar. Ein Knopf schaltet zwischen drei Farbmodi um. Rosa, Violett, Weiss oder Schwarz: welche Farb",
+        "urls": [
+          "https://luxestyle.ch/products/led-schminkspiegel-wiederaufladbar-tragbar-639500"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-19",
+        "ch": "facebook",
+        "uuid": "4792908094992761420",
+        "id": 425725555,
+        "draft": false,
+        "caption": "Schminklicht zum Mitnehmen ✨\n\nDer LED-Schminkspiegel ist tragbar und faltbar. Aufgeklappt hast du zwei Spiegelflächen, eine davon mit Lichtr",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-19",
+        "ch": "instagram",
+        "uuid": "4792908094992761420",
+        "id": 425725555,
+        "draft": false,
+        "caption": "Schminklicht zum Mitnehmen ✨\n\nDer LED-Schminkspiegel ist tragbar und faltbar. Aufgeklappt hast du zwei Spiegelflächen, eine davon mit Lichtr",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-19",
+        "ch": "tiktok",
+        "uuid": "-1560468010126717309",
+        "id": 425725709,
+        "draft": false,
+        "caption": "Rosa, Violett, Weiss oder Schwarz: welche Farbe wäre deine?\n\nLED-Schminkspiegel zum Mitnehmen: tragbar und faltbar. 20 LED, drei Farbmodi pe",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-19",
+        "ch": "pinterest",
+        "uuid": "6443070221295305315",
+        "id": 425725932,
+        "draft": false,
+        "caption": "LED-Schminkspiegel zum Mitnehmen: tragbar und faltbar. Aufgeklappt hast du zwei Spiegelflächen, eine davon mit Lichtrahmen. 20 LED, drei Far",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-20",
+        "ch": "threads",
+        "uuid": "-6491658134482960242",
+        "id": 425726070,
+        "draft": false,
+        "caption": "Ein kleiner Tannenbaum, der leuchtet und eine Musikbox ist: die Lichterbaum-Musikbox mit bunten Lichtern und rotem Stern, 20 cm hoch. Wo wür",
+        "urls": [
+          "https://luxestyle.ch/products/lichterbaum-musikbox-10x10x20-cm-604200"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-20",
+        "ch": "tiktok",
+        "uuid": "5095221239706765903",
+        "id": 425726186,
+        "draft": false,
+        "caption": "Dieser kleine Tannenbaum ist eine Musikbox. 🎄\n\nLichterbaum-Musikbox: bunte Lichter rund um den Baum, roter Stern an der Spitze, kleine Häus",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-20",
+        "ch": "facebook",
+        "uuid": "108318075245381964",
+        "id": 425726329,
+        "draft": false,
+        "caption": "Ein Tannenbaum, der leuchtet und zugleich eine Musikbox ist: die Lichterbaum-Musikbox. 🎄\n\nEine Lichterkette mit bunten Lichtern zieht sich ",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-20",
+        "ch": "instagram",
+        "uuid": "108318075245381964",
+        "id": 425726329,
+        "draft": false,
+        "caption": "Ein Tannenbaum, der leuchtet und zugleich eine Musikbox ist: die Lichterbaum-Musikbox. 🎄\n\nEine Lichterkette mit bunten Lichtern zieht sich ",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-20",
+        "ch": "pinterest",
+        "uuid": "-457707186698434580",
+        "id": 425726479,
+        "draft": false,
+        "caption": "Die Lichterbaum-Musikbox ist eine Musikbox in Form eines Tannenbaums. Eine Lichterkette mit bunten Lichtern zieht sich um den Baum, an der S",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-21",
+        "ch": "threads",
+        "uuid": "-325577156053548845",
+        "id": 426961960,
+        "draft": false,
+        "caption": "Ein Schmuckkästchen, das du selbst zusammensetzt: Dieses 3D-Holzpuzzle wird zum Kästchen mit Fächern und Schublade. Würdest du es selbst bau",
+        "urls": [
+          "https://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-21",
+        "ch": "facebook",
+        "uuid": "4464007380148308511",
+        "id": 426962036,
+        "draft": false,
+        "caption": "Erst puzzeln, dann Schmuck verstauen 🧩\n\nDieses Schmuckkästchen ist ein 3D-Holzpuzzle zum Selberbauen. Du setzt es selbst aus Holzteilen zus",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-21",
+        "ch": "instagram",
+        "uuid": "4464007380148308511",
+        "id": 426962036,
+        "draft": false,
+        "caption": "Erst puzzeln, dann Schmuck verstauen 🧩\n\nDieses Schmuckkästchen ist ein 3D-Holzpuzzle zum Selberbauen. Du setzt es selbst aus Holzteilen zus",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-21",
+        "ch": "tiktok",
+        "uuid": "1244897565051602488",
+        "id": 426962130,
+        "draft": false,
+        "caption": "Würdest du dein Schmuckkästchen selbst bauen? 🧩\n\nAus diesem 3D-Holzpuzzle baust du ein Schmuckkästchen. Fertig gebaut zeigt es mehrere Fäch",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-21",
+        "ch": "pinterest",
+        "uuid": "1277216616076757571",
+        "id": 426962209,
+        "draft": false,
+        "caption": "Schmuckkästchen als 3D-Holzpuzzle: Du setzt das Kästchen selbst aus Holzteilen zusammen. Fertig gebaut lässt sich der Deckel aufklappen, dan",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-22",
+        "ch": "threads",
+        "uuid": "7447187506709285656",
+        "id": 426962312,
+        "draft": false,
+        "caption": "Was kommt bei dir zuerst unter den Weihnachtsbaum? Unsere Christbaumdecke aus Plüsch misst 90 cm im Durchmesser, trägt goldene Pailletten-Sc",
+        "urls": [
+          "https://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-22",
+        "ch": "facebook",
+        "uuid": "2057359447521839535",
+        "id": 426962393,
+        "draft": false,
+        "caption": "Was liegt bei dir unter dem Baum, bevor die Geschenke kommen? 🎄\n\nDie Christbaumdecke mit goldenen Pailletten-Schneeflocken liegt rund um de",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-22",
+        "ch": "instagram",
+        "uuid": "2057359447521839535",
+        "id": 426962393,
+        "draft": false,
+        "caption": "Was liegt bei dir unter dem Baum, bevor die Geschenke kommen? 🎄\n\nDie Christbaumdecke mit goldenen Pailletten-Schneeflocken liegt rund um de",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-22",
+        "ch": "tiktok",
+        "uuid": "-5766619704983925146",
+        "id": 427963228,
+        "draft": false,
+        "caption": "Goldene Schneeflocken für unter den Baum 🎄\n\nChristbaumdecke mit goldenen Pailletten-Schneeflocken: aus Plüsch, 90 cm Durchmesser, mit runde",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-22",
+        "ch": "pinterest",
+        "uuid": "-2010279446251812932",
+        "id": 427963279,
+        "draft": false,
+        "caption": "Runde Christbaumdecke aus Plüsch mit einem Muster aus goldenen Pailletten-Schneeflocken. Sie misst 90 cm im Durchmesser und hat in der Mitte",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-15",
+        "ch": "threads",
+        "uuid": "8935974072695279179",
+        "id": 427969120,
+        "draft": true,
+        "caption": "Eine Rose im Glas mit warmem LED-Licht 🌹 In sechs Farben wählbar, Betrieb mit AAA-Batterie (nicht enthalten). Lieferung 10–20 Werktage, Ver",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "instagram",
+        "uuid": "2242731246724795766",
+        "id": 428827820,
+        "draft": true,
+        "caption": "Krallenpflege für Hund und Katze 🐾\nEntdecke den elektrischen Krallenschleifer und prüfe die Anwendungshinweise im Shop. Gewöhne dein Tier s",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-19",
+        "ch": "tiktok",
+        "uuid": "733493005328404096",
+        "id": 428884064,
+        "draft": false,
+        "caption": "Licht wie Wasserwellen. ✨\n\nDie LED-Wasserwellen-Projektionsleuchte wirft bewegte Lichtmuster an Wand und Decke. Schau dir den Effekt im Vide",
+        "urls": [
+          "https://luxestyle.ch/products/led-wasserwellen-projektionsleuchte-677504?utm_source=tiktok&utm_medium=organic_social&utm_campaign=repost_20261119"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "tiktok",
+        "uuid": "-1463494076488727798",
+        "id": 428891142,
+        "draft": false,
+        "caption": "Drei Ideen für Hund und Katze 🐾\n\nKatzen-Spielzeug mit Futterspender, LED-Leuchtgeschirr für Hunde und interaktives Slow-Feeder-Spielzeug – ",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "youtube",
+        "uuid": "-1463494076488727798",
+        "id": 428891142,
+        "draft": false,
+        "caption": "Drei Ideen für Hund und Katze 🐾\n\nKatzen-Spielzeug mit Futterspender, LED-Leuchtgeschirr für Hunde und interaktives Slow-Feeder-Spielzeug – ",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-17",
+        "ch": "youtube",
+        "uuid": "-3668679867663038577",
+        "id": 428891173,
+        "draft": false,
+        "caption": "8 Fächer, kompakt verstaut.\n\nDie Medizin-Box mit 8 Fächern lässt sich zusammenklappen. Im kurzen Video siehst du die Aufteilung und das Öffn",
+        "urls": [
+          "https://luxestyle.ch/products/medizin-box-mit-8-fachern-612200?utm_source=youtube&utm_medium=shorts&utm_campaign=repost_20261117"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "instagram",
+        "uuid": "4156060813550767248",
+        "id": 429127242,
+        "draft": true,
+        "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung über den Link im Profil.\n\n#sternlicht #lichtmomente",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-16",
+        "ch": "facebook",
+        "uuid": "6680239273933357186",
+        "id": 429127259,
+        "draft": true,
+        "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung auf der Produktseite:\n\nhttps://luxestyle.ch/product",
+        "urls": [
+          "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_entwurf_202611&utm_content=luxe_sternenprojektor_master_20261018_r176_facebook"
+        ],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-17",
+        "ch": "tiktok",
+        "uuid": "3614365779669041576",
+        "id": 429127272,
+        "draft": true,
+        "caption": "Licht im Detail: der Sternenlicht-Projektor für Schlafzimmer. Welche Ausführung welche Scheiben mitbringt, steht beim Artikel.\n\nShop: luxest",
+        "urls": [],
+        "providerStatus": "PENDING"
+      },
+      {
+        "date": "2026-11-19",
+        "ch": "youtube",
+        "uuid": "-7647174116509334899",
+        "id": 429127286,
+        "draft": true,
+        "caption": "Licht im Detail: ein Blick auf den Sternenlicht-Projektor. Die gewünschte Ausführung auf der Produktseite prüfen:\n\nhttps://luxestyle.ch/prod",
+        "urls": [
+          "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_entwurf_202611&utm_content=luxe_sternenprojektor_master_20261018_r176_youtube"
+        ],
+        "providerStatus": "PENDING"
+      }
+    ],
+    "duplicateReview": {
+      "scope": "per provider channel and Zurich publication date; exact normalized caption or exact URL in caption",
+      "result": "no exact duplicate caption or shared exact URL candidates detected",
+      "sameDateMultipleItems": [
+        {
+          "date": "2026-11-15",
+          "channel": "instagram",
+          "count": 2
+        },
+        {
+          "date": "2026-11-15",
+          "channel": "facebook",
+          "count": 2
+        },
+        {
+          "date": "2026-11-16",
+          "channel": "facebook",
+          "count": 2
+        },
+        {
+          "date": "2026-11-16",
+          "channel": "instagram",
+          "count": 3
+        },
+        {
+          "date": "2026-11-16",
+          "channel": "tiktok",
+          "count": 2
+        },
+        {
+          "date": "2026-11-17",
+          "channel": "tiktok",
+          "count": 2
+        },
+        {
+          "date": "2026-11-18",
+          "channel": "facebook",
+          "count": 2
+        },
+        {
+          "date": "2026-11-18",
+          "channel": "instagram",
+          "count": 2
+        },
+        {
+          "date": "2026-11-18",
+          "channel": "threads",
+          "count": 2
+        },
+        {
+          "date": "2026-11-18",
+          "channel": "tiktok",
+          "count": 2
+        },
+        {
+          "date": "2026-11-19",
+          "channel": "tiktok",
+          "count": 2
+        }
+      ]
+    },
+    "masterFilmHoldReview": {
+      "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+      "source": "offline R243 hold register; master still not approved for creative/music rights",
+      "activeHoldsFound": 0,
+      "fourRequiredHolds": [
+        {
+          "id": 429127242,
+          "uuid": "4156060813550767248",
+          "date": "2026-11-16T19:00:00",
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "instagram",
+              "status": "PENDING"
+            }
+          ],
+          "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung über den Link im Profil.\n\n#sternlicht #lichtmomente #wohnen #luxestyle",
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+          ]
+        },
+        {
+          "id": 429127259,
+          "uuid": "6680239273933357186",
+          "date": "2026-11-16T19:00:00",
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING"
+            }
+          ],
+          "caption": "Licht im Detail. Entdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung auf der Produktseite:\n\nhttps://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_entwurf_202611&utm_content=luxe_sternenprojektor_master_20261018_r176_facebook\n\n#sternlicht #lichtmomente #wohnen #luxestyle",
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+          ]
+        },
+        {
+          "id": 429127272,
+          "uuid": "3614365779669041576",
+          "date": "2026-11-17T19:00:00",
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING"
+            }
+          ],
+          "caption": "Licht im Detail: der Sternenlicht-Projektor für Schlafzimmer. Welche Ausführung welche Scheiben mitbringt, steht beim Artikel.\n\nShop: luxestyle.ch/tt\n\n#sternlicht #lichtmomente #luxestyle",
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+          ]
+        },
+        {
+          "id": 429127286,
+          "uuid": "-7647174116509334899",
+          "date": "2026-11-19T19:00:00",
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "youtube",
+              "status": "PENDING"
+            }
+          ],
+          "caption": "Licht im Detail: ein Blick auf den Sternenlicht-Projektor. Die gewünschte Ausführung auf der Produktseite prüfen:\n\nhttps://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_entwurf_202611&utm_content=luxe_sternenprojektor_master_20261018_r176_youtube\n\n#Shorts #Sternenlicht #LuxeStyle",
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+          ]
+        }
+      ]
+    }
+  },
+  "audioHolds": {
+    "scope": "Offline comparison only; saved R249 Metricool scheduledposts snapshot (46 records; 2026-11-15 through 2026-11-22 Europe/Zurich). No API calls or writes in this cross-check.",
+    "sources": {
+      "R249Snapshot": "/dev/shm/luxestyle-review/r249/metricool/raw.json",
+      "R125AudioRegister": "/workspace/luxestyle-review/r124/dropship/codex-handoff-20261018/SOCIAL-AUDIO-PRUEFUNG-20261108-R125.json",
+      "R243ProjectorHoldRegister": "/dev/shm/luxestyle-review/r243/output/register/hold-luxe_sternenprojektor_master_20261018-r243.json",
+      "R196StateReference": "/dev/shm/luxestyle-review/r224/ARBEITSSTAND.json (R196 status/history and later R197 knownHolds embedded; standalone R196 hold JSON not present locally)",
+      "R197KnownHolds": "/dev/shm/luxestyle-review/r224/ARBEITSSTAND.json: run197.queueSummary.knownHolds"
+    },
+    "audioHoldsSeven": [
+      {
+        "uuid": "-4472725258033347244",
+        "r197Id": 426613069,
+        "r197Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true
+        },
+        "r197ProviderFlags": {
+          "youtube": {
+            "title": "Acht Kristallspitzen, eine Holzbox – Geschenkidee im Detail #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "kristalle",
+              "kristallspitzen",
+              "naturpur",
+              "geschenkidee",
+              "schweiz",
+              "luxestyle"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": true
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "-7002936161864562103",
+        "r197Id": 426613132,
+        "r197Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true
+        },
+        "r197ProviderFlags": {
+          "youtube": {
+            "title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "gemuesehobel",
+              "kuechenhelfer",
+              "kochen",
+              "schweiz"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "1744402171830094170",
+        "r197Id": 426612259,
+        "r197Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true
+        },
+        "r197ProviderFlags": {
+          "instagram": {
+            "autoPublish": false,
+            "type": "REEL",
+            "showReelOnFeed": true,
+            "isAiGenerated": true
+          },
+          "facebook": {
+            "type": "REEL",
+            "title": "Kristallspitzen-Set"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "2172266762404316928",
+        "r197Id": 426613082,
+        "r197Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true
+        },
+        "r197ProviderFlags": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "3-in-1 Gemüsehobel",
+            "photoCoverIndex": 0
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "3963843144054620883",
+        "r197Id": 427286519,
+        "r197Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true
+        },
+        "r197ProviderFlags": {
+          "instagram": {
+            "autoPublish": false,
+            "type": "REEL",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "facebook": {
+            "type": "REEL",
+            "title": "3-in-1 Gemüsehobel"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "5647388074617226143",
+        "r197Id": 426613048,
+        "r197Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true
+        },
+        "r197ProviderFlags": {
+          "tiktok": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Kristallspitzen-Set",
+            "photoCoverIndex": 0,
+            "isAigc": true
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "8935974072695279179",
+        "r197Id": 427286591,
+        "r197Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "inactiveConfirmed": true
+        },
+        "r197ProviderFlags": {
+          "threads": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          }
+        },
+        "r249": {
+          "snapshot": "returned",
+          "id": 427969120,
+          "publicationDate": {
+            "dateTime": "2026-11-15T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "threads",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "providerFlags": {
+            "instagramData": {
+              "autoPublish": false,
+              "isAiGenerated": false
+            },
+            "threadsData": {
+              "replyControl": "EVERYONE",
+              "type": "POST",
+              "shareAsInstagramStory": false
+            }
+          },
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+          ]
+        }
+      }
+    ],
+    "projectorMasterHoldsFour": [
+      {
+        "uuid": "4156060813550767248",
+        "r243CurrentId": 429127242,
+        "network": "instagram",
+        "r243Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "targetAutoPublish": false,
+          "providerStates": [
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        "r249": {
+          "snapshot": "returned",
+          "id": 429127242,
+          "publicationDate": {
+            "dateTime": "2026-11-16T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "instagram",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "providerFlags": {
+            "instagramData": {
+              "autoPublish": false,
+              "type": "REEL",
+              "showReelOnFeed": true,
+              "isAiGenerated": false
+            }
+          },
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+          ]
+        }
+      },
+      {
+        "uuid": "6680239273933357186",
+        "r243CurrentId": 429127259,
+        "network": "facebook",
+        "r243Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "targetAutoPublish": "not_returned",
+          "providerStates": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        "r249": {
+          "snapshot": "returned",
+          "id": 429127259,
+          "publicationDate": {
+            "dateTime": "2026-11-16T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "facebook",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "providerFlags": {
+            "instagramData": {
+              "autoPublish": false,
+              "isAiGenerated": false
+            },
+            "facebookData": {
+              "type": "REEL",
+              "title": "Sternenlicht-Projektor im Detail"
+            }
+          },
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+          ]
+        }
+      },
+      {
+        "uuid": "3614365779669041576",
+        "r243CurrentId": 429127272,
+        "network": "tiktok",
+        "r243Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "targetAutoPublish": "not_returned",
+          "providerStates": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        "r249": {
+          "snapshot": "returned",
+          "id": 429127272,
+          "publicationDate": {
+            "dateTime": "2026-11-17T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "tiktok",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "providerFlags": {
+            "instagramData": {
+              "autoPublish": false,
+              "isAiGenerated": false
+            },
+            "tiktokData": {
+              "privacyOption": "PUBLIC_TO_EVERYONE",
+              "commercialContentOwnBrand": true,
+              "title": "Sternenlicht im Detail",
+              "photoCoverIndex": 0
+            }
+          },
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+          ]
+        }
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "r243CurrentId": 429127286,
+        "network": "youtube",
+        "r243Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "targetAutoPublish": "not_returned",
+          "providerStates": [
+            {
+              "network": "youtube",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ]
+        },
+        "r249": {
+          "snapshot": "returned",
+          "id": 429127286,
+          "publicationDate": {
+            "dateTime": "2026-11-19T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "draft": true,
+          "autoPublish": false,
+          "providers": [
+            {
+              "network": "youtube",
+              "status": "PENDING",
+              "detailedStatus": "Pending"
+            }
+          ],
+          "providerFlags": {
+            "instagramData": {
+              "autoPublish": false,
+              "isAiGenerated": false
+            },
+            "youtubeData": {
+              "title": "Sternenlicht-Projektor im Detail #Shorts",
+              "type": "short",
+              "privacy": "public",
+              "tags": [
+                "sternlicht",
+                "lichtmomente",
+                "luxestyle"
+              ],
+              "madeForKids": false,
+              "isAiGeneratedContent": false
+            }
+          },
+          "media": [
+            "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+          ]
+        }
+      }
+    ],
+    "allR125AudioObjects": [
+      {
+        "uuid": "1744402171830094170",
+        "r125Id": 420321517,
+        "r125Date": {
+          "dateTime": "2026-11-08T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "facebook": "PENDING",
+            "instagram": "PENDING",
+            "tiktok": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "-4472725258033347244",
+        "r125Id": 420321593,
+        "r125Date": {
+          "dateTime": "2026-11-08T17:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "youtube": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "-7257455683644011058",
+        "r125Id": 420323597,
+        "r125Date": {
+          "dateTime": "2026-11-09T12:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "tiktok": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "3863915044291300024",
+        "r125Id": 420323611,
+        "r125Date": {
+          "dateTime": "2026-11-09T19:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "facebook": "PENDING",
+            "instagram": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "-3553911421145298799",
+        "r125Id": 420323647,
+        "r125Date": {
+          "dateTime": "2026-11-09T21:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "youtube": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "2172266762404316928",
+        "r125Id": 420323616,
+        "r125Date": {
+          "dateTime": "2026-11-10T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "tiktok": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "-7002936161864562103",
+        "r125Id": 420323653,
+        "r125Date": {
+          "dateTime": "2026-11-10T19:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "youtube": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "-7768329881687535680",
+        "r125Id": 420323631,
+        "r125Date": {
+          "dateTime": "2026-11-11T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "tiktok": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "5681760339256165072",
+        "r125Id": 420323659,
+        "r125Date": {
+          "dateTime": "2026-11-11T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "youtube": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "3963843144054620883",
+        "r125Id": 420323622,
+        "r125Date": {
+          "dateTime": "2026-11-11T20:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "facebook": "PENDING",
+            "instagram": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      },
+      {
+        "uuid": "-2435184774283179178",
+        "r125Id": 420323639,
+        "r125Date": {
+          "dateTime": "2026-11-13T20:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "r125Flags": {
+          "draft": true,
+          "autoPublish": false,
+          "providerStates": {
+            "facebook": "PENDING",
+            "instagram": "PENDING"
+          }
+        },
+        "r249": {
+          "snapshot": "not returned; outside-window/current-state unknown",
+          "id": null,
+          "publicationDate": null,
+          "draft": null,
+          "autoPublish": null,
+          "providers": null,
+          "media": null
+        }
+      }
+    ],
+    "reusedR125AudioFilesInR249": [
+      {
+        "snapshotId": 427969120,
+        "snapshotUuid": "8935974072695279179",
+        "publicationDate": {
+          "dateTime": "2026-11-15T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "mediaUrl": "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4",
+        "r125AudioSha256": "746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c"
+      }
+    ],
+    "limits": [
+      "UUID absent from this dated 7-day snapshot is unknown/outside-window, not evidence that it is inactive or safe.",
+      "R125 audio-file reuse is identified only where the exact saved media URL matches; no new media downloads or hashes performed.",
+      "R249 provider states are queue response state, not independent publication verification."
+    ],
+    "conclusion": "Six of the seven R197-listed audio holds are absent from this R249 window and remain unknown/outside-window. UUID 8935974072695279179 is returned as a held draft (draft=true, autoPublish=false, PENDING on Threads). It reuses exact R125 audio URL 8433270664969267227.mp4 (R125 blocked file SHA-256 746cbd8a22969e262e76452bf4e1c6d1d5169adf7305fea63770b37f55d9166c). All four R243 projector master holds are present and remain held (draft=true, autoPublish=false, PENDING)."
+  },
+  "wholeWeekDuplicates": {
+    "scope": "Offline comparison of the saved R249 scheduledposts response; channel scoped across dates 2026-11-15 to 2026-11-22 Europe/Zurich. No API call or write. Cross-channel matches are excluded.",
+    "records": 46,
+    "channelPlacements": 56,
+    "rules": [
+      "Full duplicate candidate requires exact caption string and exact ordered full media list.",
+      "Video candidate requires exact same video URL on different post objects in same channel.",
+      "Different URLs are not treated as same film; no history outside this snapshot was searched."
+    ],
+    "exactCaptionAndFullMediaList": [],
+    "sameVideoUrl": [],
+    "conclusion": {
+      "exactFullCaptionAndMediaListDuplicates": 0,
+      "sameVideoUrlCandidates": 0,
+      "scopeLimit": "Exact URL identity only; different/re-encoded URLs and history outside the 7-day response remain unknown."
+    }
+  }
+}

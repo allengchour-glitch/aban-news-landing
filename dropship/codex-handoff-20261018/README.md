@@ -1,3 +1,21 @@
+# R249 – Produktdetails, Variantenbilder und acht Merchant-Angebote live verbessert – 15.11.2026
+
+Auf **«weiter in loop»** mit frischen Shopify-, Metricool- und Merchant-Identitäten fortgesetzt. **Zehn Shopify-Schreibvorgänge für vier Produkte** bestätigt: Retro-Handheld, X6, Rucksack und Hundejacke. Drei Optionsnamen und 21 bestehende Auswahltexte präzisiert; zwei Produkt-/SEO-Titel und vier Beschreibungen/Meta-Beschreibungen verbessert. **Alle 19 bisher fehlenden Konsolen-Variantenbildzuordnungen** mit bereits vorhandenen, farbpassenden Medien ergänzt. Keine Uploads. 60 Varianten-IDs, 38 Optionswert-IDs, 36 Produktmedien und abgefragte SKU-/Preis-/Inventardaten erhalten. Öffentliche Gegenproben und echte mobile Auswahlklicks bestanden; Rosa/64G und Schwarz/X6 zeigen jetzt die richtigen Bilder.
+
+**Neun Merchant-Schreibvorgänge auf acht bestehende Angebote**, über dieselbe Ergänzungsquelle **10795447118 → 10678939025**. Rucksack Grün mit Anhänger CHF17.90, Hundejacke Grau/L CHF24.90, Picknicktasche Mattschwarz/Set1 CHF21.90 und Wandleuchte einflammig/Warmlicht CHF47.90 exakt an bestehende Varianten gebunden; keine Rekonstruktion unbekannter Altvarianten oder Mindestpreise. Vier Kaufbarkeitsattribute geprüft und ergänzt, Hundebeschreibung zusätzlich bereinigt. **Fünf Angebote für kostenlose Einträge in CH/LI genehmigt**, davon vier ohne Artikelprobleme; bei der Wandleuchte bleibt ein **NOT_IMPACTED-Zertifizierungshinweis**. **Drei Angebote warten trotz bestätigter Attributkorrektur auf Googles Seitenabruf**. Keine CE-/Konformitätsfreigabe oder physischer Lagerbestand daraus abgeleitet.
+
+**Register jetzt zwölf Einträge**, die früheren vier unverändert. Feste Overrides brauchen bei späteren Shopify-Änderungen erneut die exakte Varianten-/Preis-/Kaufbarkeitsprüfung; kein Sync deployt. Der historische R240-Ausschnitt enthält 144 Preis-/19 Availability-Fälle. Davon sind über R247–R249 7/5 gezielt korrigiert; die übrigen 137/14 sind heute **unbekannt**, keine aktuellen Gesamtsummen. **Keine Bestätigung von null Fehlern oder allen 18 UI-Gruppen.**
+
+**Offene Produktangaben bleiben sichtbar:** Spiele-/Karten-/Softwareumfang nicht zugesagt, X6-Fotofunktion nicht erfunden, Hundemass-Tabelle ohne Einheit nicht als cm ausgegeben, Rucksack-Materialanteile unbekannt. Die CJ-Quelle nennt Rucksack-Produktmasse29×12×43cm und bei der Picknicktasche ausdrücklich10L; Verpackungsmasse nicht als Produktmasse verwendet. Konsolen-Arbeitsliste **8/36 redaktionell bearbeitet, 28 offen**, kein Nachweis von Spielelizenzen. R248-Hellgrau-Bildrechte-/Farbantwort weiterhin ausstehend; Warnhinweis erhalten, kein Upload.
+
+**Metricool einmalig 46 Einträge für 15.–22.11. geprüft:** keine exakten Text-plus-Medien-Dubletten oder wiederholten exakten Video-URLs pro Kanal im Wochenfenster. Andere URLs/Re-Encoding/Vergangenheit bleiben unbekannt. Vier Projektor-UUIDs weiterhin Draft/Autopublish aus; ein alter Audio-Hold sichtbar, sechs ausserhalb des Fensters status-unbekannt. YouTube nur16./17.11. aktiv; Threads15.11. offen. Keine Social-Writes oder eigenen Veröffentlichungen. Keine erneuten Tageskennzahlen/Flows/Kauf-Watch, keine neue Automation oder Frequenzänderung.
+
+[Live-Bericht](LOOP-FORTSCHRITT-LIVE-20261115-R249.md) · [Belege](LOOP-BELEGE-20261115-R249.json) · [Register](MERCHANT-ERGAENZUNGEN-REGISTER-20261115-R249.json) · [Restarbeit](MERCHANT-RESTARBEIT-20261115-R249.csv) · [Konsolen-Auswahlstand](KONSOLEN-DETAILARBEIT-20261115-R242.csv).
+
+Stand **2026-11-15T22:09:21Z**. Claude kann diese belegte Übergabe lesen; Empfang/Kenntnisnahme ist **unbekannt**. Revision249 erhält die vollständige Historie und alle24 Aufgaben-IDs.
+
+---
+
 # R248 – Weitere Merchant-Preisfehler und konkrete Produktdetails live – 15.11.2026
 
 Auf **«mehr»** zwei weitere bestehende Angebote korrigiert: **Schmuckbox10784371818943082880 / genaue grüne Langbox67821514326407 / CHF16.90** und **Malbild10073494240929787683 / bewusst konkret gewähltes MotivB50×65cm67821433094535 / CHF24.90**. Preis-/Link-/Titeldiffs einzeln geprüft, über bestehendesSupplement10795447118 geschrieben und unabhängig als **FREE_LISTINGS approved CH/LI, itemLevelIssues=[]** zurückgelesen. Malbild-Zuordnung ist eine transparente Angebotsbegrenzung, kein geratener Mindestpreis oder Beweis der unbekannten Altgrösse. Keine neueQuelle/Offers/Bilder.

@@ -1,0 +1,708 @@
+--- products-before/handheld.json
++++ final-products-and-media/handheld.json
+@@ -1,61 +1,61 @@
+ {
+-  "descriptionHtml": "<p>Die Handheld-Konsole im Retro-Stil bietet kabellosen HD-Spielspass für PSP- und GBA-Titel. Das Gehäuse aus Aluminiumlegierung sorgt für Robustheit und ein hochwertiges Gefühl. Dank des integrierten MP4-Videoplayers kannst du auch unterwegs deine Lieblingsvideos geniessen. Die Konsole ist universell einsetzbar und eignet sich hervorragend als Geburtstagsgeschenk für Gaming-Fans jeden Alters. Im Lieferumfang enthalten sind die Haupteinheit, ein Datenkabel, eine Ersatz-Stiftkappe sowie eine Bedienungsanleitung, alles verpackt in einer attraktiven Geschenkbox.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Kabelloses HD-Gaming für PSP und GBA</li>\n<li>Robustes Gehäuse aus Aluminiumlegierung</li>\n<li>Integrierter MP4-Videoplayer</li>\n<li>Lieferung in Geschenkbox</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
++  "descriptionHtml": "<p>Ein Retro-Handheld mit MP4-Videoplayer und USB-Schnittstelle. Wähle die gewünschte Farbe zusammen mit der passenden Speicheroption. Der Preis gilt für die jeweils gewählte Ausführung.</p>\n<h2>Farbe und Speicheroption</h2>\n<ul>\n<li>\n<strong>Standard ohne Karte:</strong> Grau, Rosa, Grün, Silber oder Schwarz.</li>\n<li>\n<strong>64G, Englisch:</strong> Grau, Rosa, Grün oder Silber.</li>\n<li>\n<strong>128G, Englisch:</strong> Grau, Rosa, Grün oder Silber.</li>\n</ul>\n<p>«64G» und «128G» sind die angebotenen Ausführungsbezeichnungen. Die genaue Speicherbestückung, der Kartentyp und eine mitgelieferte Speicherkarte sind für diese beiden Gruppen nicht verbindlich bestätigt. Die Angabe «Englisch» gehört zur jeweiligen Ausführungsbezeichnung; eine deutsche Bedienoberfläche ist nicht zugesagt.</p>\n<h2>Welche Spiele sind enthalten?</h2>\n<p>Eine bestätigte Spieleliste, eine Zahl vorinstallierter Spiele und konkrete getestete Spielkompatibilitäten liegen nicht vor. Gehe deshalb nicht von bestimmten mitgelieferten Spieltiteln aus.</p>\n<h2>Lieferumfang</h2>\n<p>Aufgeführt sind ein Spielgerät, Datenkabel, Ersatz-Stiftkappe, Bedienungsanleitung und Geschenkbox. Anzahl und Ausführung einzelner Zubehörteile sind nicht näher angegeben.</p>",
+   "id": "gid://shopify/Product/15448847253889",
+   "options": [
+     {
+       "id": "gid://shopify/ProductOption/17880365597057",
+-      "name": "Farbe",
++      "name": "Farbe und Speicheroption",
+       "optionValues": [
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444510593",
+-          "name": "Standard Ohne Karte, Grau"
++          "name": "Grau · Standard ohne Karte"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444543361",
+-          "name": "Standard Ohne Karte, Rosa"
++          "name": "Rosa · Standard ohne Karte"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444576129",
+-          "name": "Standard Ohne Karte, Grün"
++          "name": "Grün · Standard ohne Karte"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444608897",
+-          "name": "Standard Ohne Karte, Silber"
++          "name": "Silber · Standard ohne Karte"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444641665",
+-          "name": "Standard Ohne Karte, Schwarz"
++          "name": "Schwarz · Standard ohne Karte"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444674433",
+-          "name": "64G Englisch-Grau"
++          "name": "Grau · 64G, Englisch"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444707201",
+-          "name": "64G Englisch-Pink"
++          "name": "Rosa · 64G, Englisch"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444739969",
+-          "name": "64G Englisch-Grün"
++          "name": "Grün · 64G, Englisch"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444772737",
+-          "name": "64G Englisch-Silber"
++          "name": "Silber · 64G, Englisch"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444805505",
+-          "name": "128G Englisch-Grau"
++          "name": "Grau · 128G, Englisch"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444838273",
+-          "name": "128G Englisch-Pink"
++          "name": "Rosa · 128G, Englisch"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444871041",
+-          "name": "128G Englisch-Grün"
++          "name": "Grün · 128G, Englisch"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296444903809",
+-          "name": "128G Englisch-Silber"
++          "name": "Silber · 128G, Englisch"
+         }
+       ]
+@@ -63,177 +63,203 @@
+   ],
+   "seo": {
+-    "description": "Retro Handheld-Konsole für PSP und GBA bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+-    "title": "Retro Handheld-Konsole für PSP und GBA | LuxeStyle CH"
++    "description": "Retro-Handheld mit MP4-Player und USB-Schnittstelle. Farbe und Speicheroption wählen; Karteninhalt und konkrete vorinstallierte Spiele sind nicht bestätigt.",
++    "title": "Retro Handheld-Konsole mit MP4-Player | LuxeStyle CH"
+   },
+-  "title": "Retro Handheld-Konsole für PSP und GBA",
++  "title": "Retro Handheld-Konsole mit MP4-Player",
+   "variants": [
+     {
+       "id": "gid://shopify/ProductVariant/56053712454017",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "Standard Ohne Karte, Grau"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475778945"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Grau · Standard ohne Karte"
+         }
+       ],
+       "sku": "CJ-CJYD276084701AZ",
+-      "title": "Standard Ohne Karte, Grau"
++      "title": "Grau · Standard ohne Karte"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712486785",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "Standard Ohne Karte, Rosa"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475844481"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Rosa · Standard ohne Karte"
+         }
+       ],
+       "sku": "CJ-CJYD276084702BY",
+-      "title": "Standard Ohne Karte, Rosa"
++      "title": "Rosa · Standard ohne Karte"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712519553",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "Standard Ohne Karte, Grün"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475746177"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Grün · Standard ohne Karte"
+         }
+       ],
+       "sku": "CJ-CJYD276084703CX",
+-      "title": "Standard Ohne Karte, Grün"
++      "title": "Grün · Standard ohne Karte"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712552321",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "Standard Ohne Karte, Silber"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475975553"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Silber · Standard ohne Karte"
+         }
+       ],
+       "sku": "CJ-CJYD276084704DW",
+-      "title": "Standard Ohne Karte, Silber"
++      "title": "Silber · Standard ohne Karte"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712585089",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "Standard Ohne Karte, Schwarz"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475811713"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Schwarz · Standard ohne Karte"
+         }
+       ],
+       "sku": "CJ-CJYD276084705EV",
+-      "title": "Standard Ohne Karte, Schwarz"
++      "title": "Schwarz · Standard ohne Karte"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712617857",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "64G Englisch-Grau"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475778945"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Grau · 64G, Englisch"
+         }
+       ],
+       "sku": "CJ-CJYD276084706FU",
+-      "title": "64G Englisch-Grau"
++      "title": "Grau · 64G, Englisch"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712650625",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "64G Englisch-Pink"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475844481"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Rosa · 64G, Englisch"
+         }
+       ],
+       "sku": "CJ-CJYD276084707GT",
+-      "title": "64G Englisch-Pink"
++      "title": "Rosa · 64G, Englisch"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712683393",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "64G Englisch-Grün"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475746177"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Grün · 64G, Englisch"
+         }
+       ],
+       "sku": "CJ-CJYD276084708HS",
+-      "title": "64G Englisch-Grün"
++      "title": "Grün · 64G, Englisch"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712716161",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "64G Englisch-Silber"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475975553"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Silber · 64G, Englisch"
+         }
+       ],
+       "sku": "CJ-CJYD276084709IR",
+-      "title": "64G Englisch-Silber"
++      "title": "Silber · 64G, Englisch"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712748929",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "128G Englisch-Grau"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475778945"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Grau · 128G, Englisch"
+         }
+       ],
+       "sku": "CJ-CJYD276084711KP",
+-      "title": "128G Englisch-Grau"
++      "title": "Grau · 128G, Englisch"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712781697",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "128G Englisch-Pink"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475844481"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Rosa · 128G, Englisch"
+         }
+       ],
+       "sku": "CJ-CJYD276084712LO",
+-      "title": "128G Englisch-Pink"
++      "title": "Rosa · 128G, Englisch"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712814465",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "128G Englisch-Grün"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475746177"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Grün · 128G, Englisch"
+         }
+       ],
+       "sku": "CJ-CJYD276084713MN",
+-      "title": "128G Englisch-Grün"
++      "title": "Grün · 128G, Englisch"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053712847233",
+-      "mediaIds": [],
+-      "price": "137.90",
+-      "selectedOptions": [
+-        {
+-          "name": "Farbe",
+-          "value": "128G Englisch-Silber"
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861475975553"
++      ],
++      "price": "137.90",
++      "selectedOptions": [
++        {
++          "name": "Farbe und Speicheroption",
++          "value": "Silber · 128G, Englisch"
+         }
+       ],
+       "sku": "CJ-CJYD276084714NM",
+-      "title": "128G Englisch-Silber"
++      "title": "Silber · 128G, Englisch"
+     }
+   ]
+--- products-before/x6.json
++++ final-products-and-media/x6.json
+@@ -1,33 +1,33 @@
+ {
+-  "descriptionHtml": "<p>Die Retro Handheld Arcade Konsole im klassischen Stil bringt Spielspass für unterwegs. Dieses Gerät ist mehr als nur eine Spielkonsole – es ist auch ein MP4-Videoplayer. Dank des USB-Anschlusses lässt sich die Konsole einfach verbinden. Im Lieferumfang sind die Konsole, ein Kabel, ein Headset, die Verpackung sowie eine Bedienungsanleitung enthalten. Ein ideales Gadget für alle, die eine kompakte Unterhaltungslösung mit Retro-Charme suchen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Klassisches Design im Retro-Stil</li>\n<li>Integriertes MP4-Videoplayer-Feature</li>\n<li>Einfache Verbindung via USB-Schnittstelle</li>\n<li>Komplettes Set inklusive Headset und Anleitung</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
++  "descriptionHtml": "<p>Die X6 ist eine Retro-Handheld-Konsole mit MP4-Videoplayer und USB-Schnittstelle. Wähle neben der Farbe auch die Ausführung; die sechs Varianten unterscheiden sich nicht nur farblich.</p>\n<h2>Farbe und Ausführung wählen</h2>\n<ul>\n<li>\n<strong>Weiss, Blau oder Schwarz · X6:</strong> drei regulär bezeichnete Ausführungen.</li>\n<li>\n<strong>Weiss, Blau oder Schwarz · X6 · ohne Fotofunktion:</strong> drei ausdrücklich entsprechend gekennzeichnete Ausführungen.</li>\n</ul>\n<p>Die Varianten ohne Fotofunktion sind in der Auswahl direkt erkennbar. Eine Fotofunktion der übrigen X6-Ausführungen ist nicht verbindlich bestätigt; die Produktbilder allein belegen diesen Unterschied nicht.</p>\n<h2>Welche Spiele sind enthalten?</h2>\n<p>Konkrete Spieltitel, eine Spielezahl und die tatsächlich vorinstallierte Software sind nicht bestätigt. Eine bestimmte Spielesammlung ist daher nicht zugesagt.</p>\n<h2>Lieferumfang</h2>\n<p>Aufgeführt sind Spielgerät, Kabel, Headset, Verpackung und Bedienungsanleitung. Die Anzahl einzelner Zubehörteile, der genaue Kabeltyp und die Ausführung des Headsets sind nicht näher angegeben.</p>",
+   "id": "gid://shopify/Product/15448848826753",
+   "options": [
+     {
+       "id": "gid://shopify/ProductOption/17880367300993",
+-      "name": "Farbe",
++      "name": "Farbe und Ausführung",
+       "optionValues": [
+         {
+           "id": "gid://shopify/ProductOptionValue/12296565588353",
+-          "name": "Weiss-X6"
++          "name": "Weiss · X6"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296565621121",
+-          "name": "Blau-X6"
++          "name": "Blau · X6"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296565653889",
+-          "name": "Schwarz-X6"
++          "name": "Schwarz · X6"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296565686657",
+-          "name": "Schwarz, Fotos werden nicht unterstützt, X6"
++          "name": "Schwarz · X6 · ohne Fotofunktion"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296565719425",
+-          "name": "Blau, Fotos werden nicht unterstützt, X6"
++          "name": "Blau · X6 · ohne Fotofunktion"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/12296565752193",
+-          "name": "Weiss, kann keine Bilder aufnehmen, X6"
++          "name": "Weiss · X6 · ohne Fotofunktion"
+         }
+       ]
+@@ -35,5 +35,5 @@
+   ],
+   "seo": {
+-    "description": "Retro Handheld Arcade Konsole bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
++    "description": "Retro-Handheld X6 mit MP4-Player und USB. Farben und Varianten ohne Fotofunktion klar auswählen; konkrete vorinstallierte Spiele sind nicht bestätigt.",
+     "title": "Retro Handheld Arcade Konsole | LuxeStyle CH"
+   },
+@@ -42,79 +42,91 @@
+     {
+       "id": "gid://shopify/ProductVariant/56053826453889",
+-      "mediaIds": [],
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861510873473"
++      ],
+       "price": "39.90",
+       "selectedOptions": [
+         {
+-          "name": "Farbe",
+-          "value": "Weiss-X6"
++          "name": "Farbe und Ausführung",
++          "value": "Weiss · X6"
+         }
+       ],
+       "sku": "CJ-CJYD208614801AZ",
+-      "title": "Weiss-X6"
++      "title": "Weiss · X6"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053826486657",
+-      "mediaIds": [],
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861510807937"
++      ],
+       "price": "39.90",
+       "selectedOptions": [
+         {
+-          "name": "Farbe",
+-          "value": "Blau-X6"
++          "name": "Farbe und Ausführung",
++          "value": "Blau · X6"
+         }
+       ],
+       "sku": "CJ-CJYD208614802BY",
+-      "title": "Blau-X6"
++      "title": "Blau · X6"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053826519425",
+-      "mediaIds": [],
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861510906241"
++      ],
+       "price": "39.90",
+       "selectedOptions": [
+         {
+-          "name": "Farbe",
+-          "value": "Schwarz-X6"
++          "name": "Farbe und Ausführung",
++          "value": "Schwarz · X6"
+         }
+       ],
+       "sku": "CJ-CJYD208614803CX",
+-      "title": "Schwarz-X6"
++      "title": "Schwarz · X6"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053826552193",
+-      "mediaIds": [],
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861510906241"
++      ],
+       "price": "35.90",
+       "selectedOptions": [
+         {
+-          "name": "Farbe",
+-          "value": "Schwarz, Fotos werden nicht unterstützt, X6"
++          "name": "Farbe und Ausführung",
++          "value": "Schwarz · X6 · ohne Fotofunktion"
+         }
+       ],
+       "sku": "CJ-CJYD208614804DW",
+-      "title": "Schwarz, Fotos werden nicht unterstützt, X6"
++      "title": "Schwarz · X6 · ohne Fotofunktion"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053826584961",
+-      "mediaIds": [],
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861510807937"
++      ],
+       "price": "35.90",
+       "selectedOptions": [
+         {
+-          "name": "Farbe",
+-          "value": "Blau, Fotos werden nicht unterstützt, X6"
++          "name": "Farbe und Ausführung",
++          "value": "Blau · X6 · ohne Fotofunktion"
+         }
+       ],
+       "sku": "CJ-CJYD208614805EV",
+-      "title": "Blau, Fotos werden nicht unterstützt, X6"
++      "title": "Blau · X6 · ohne Fotofunktion"
+     },
+     {
+       "id": "gid://shopify/ProductVariant/56053826617729",
+-      "mediaIds": [],
++      "mediaIds": [
++        "gid://shopify/MediaImage/69861510873473"
++      ],
+       "price": "35.90",
+       "selectedOptions": [
+         {
+-          "name": "Farbe",
+-          "value": "Weiss, kann keine Bilder aufnehmen, X6"
++          "name": "Farbe und Ausführung",
++          "value": "Weiss · X6 · ohne Fotofunktion"
+         }
+       ],
+       "sku": "CJ-CJYD208614806FU",
+-      "title": "Weiss, kann keine Bilder aufnehmen, X6"
++      "title": "Weiss · X6 · ohne Fotofunktion"
+     }
+   ]
+--- products-before/backpack.json
++++ final-products-and-media/backpack.json
+@@ -1,4 +1,4 @@
+ {
+-  "descriptionHtml": "<!-- ls-var-v1 --><p>Für Schüler*innen und Studenten, die viel Gepäck transportieren. Der Rucksack misst 29 cm Länge, 12 cm Breite, 43 cm Höhe und besteht aus Nylon, Baumwolle und Leinen. Er verfügt über doppelte Schultergurte, gepolsterte Schulterstütze, einen weichen Griff und ein Innenfach mit Reissverschluss. Das Aussenmaterial ist atmungsaktiv, wasserabweisend und reissfest.</p><h3>Das zeichnet es aus</h3><ul>\n<li>3‑D‑Tasche für zusätzliche Aufbewahrung</li>\n<li>Atmungsaktiv und wasserabweisend</li>\n<li>Reissfestes Innenfach</li>\n<li>Weiche Oberfläche</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Gewicht:</strong> ca. 300 g</li>\n<li>\n<strong>Fassungsvermögen:</strong> 20-35L</li>\n<li>\n<strong>Muster:</strong> Uni</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
++  "descriptionHtml": "<p>Ein Rucksack für Schule und Alltag in Grün, Khaki, Grau oder Rosa. Wähle zusätzlich den Lieferumfang: den einzelnen Rucksack oder den Rucksack mit Anhänger. Der angezeigte Preis gilt für genau diese Kombination.</p>\n<h2>Farbe und Lieferumfang</h2>\n<ul>\n<li>\n<strong>Rucksack:</strong> eine Tasche in der gewählten Farbe.</li>\n<li>\n<strong>Rucksack mit Anhänger:</strong> die entsprechende Ausführung inklusive Anhänger.</li>\n</ul>\n<p>Die Auswahl «Lieferumfang» bezeichnet das Zubehör, keine andere Taschengrösse. Alle vier Farben sind in beiden Ausführungen angelegt.</p>\n<h2>Masse und Ausstattung</h2>\n<p>Die Produktangabe nennt 29 × 12 × 43 cm. Die Tasche hat zwei Schultergurte, eine gepolsterte Schulterpartie und einen weichen Tragegriff. Die Ausstattung nennt ein Handyfach und ein Fach mit Reissverschluss.</p>\n<h2>Materialangaben</h2>\n<p>Für das Aussenmaterial werden Nylon, Baumwolle und Leinen genannt, für das Innenfutter Polyester. Die genaue Faserzusammensetzung und die Mischungsanteile sind nicht bestätigt. Ein unabhängig geprüftes Fassungsvermögen in Litern ist nicht angegeben.</p>",
+   "id": "gid://shopify/Product/16648376779143",
+   "options": [
+@@ -27,13 +27,13 @@
+     {
+       "id": "gid://shopify/ProductOption/19634037424519",
+-      "name": "Grösse",
++      "name": "Lieferumfang",
+       "optionValues": [
+         {
+           "id": "gid://shopify/ProductOptionValue/58678397665671",
+-          "name": "Einzelne Tasche"
++          "name": "Rucksack"
+         },
+         {
+           "id": "gid://shopify/ProductOptionValue/58678397698439",
+-          "name": "Tasche und Anhänger"
++          "name": "Rucksack mit Anhänger"
+         }
+       ]
+@@ -41,5 +41,5 @@
+   ],
+   "seo": {
+-    "description": "Für Schüler*innen und Studenten, die viel Gepäck transportieren. 3‑D‑Tasche für zusätzliche Aufbewahrung.",
++    "description": "Rucksack in vier Farben, einzeln oder mit Anhänger. Masse 29 × 12 × 43 cm. Lieferumfang und Materialangaben vor der Auswahl vergleichen.",
+     "title": "Klassischer Rucksack für Schule und Alltag | LuxeStyle CH"
+   },
+@@ -56,10 +56,10 @@
+         },
+         {
+-          "name": "Grösse",
+-          "value": "Einzelne Tasche"
++          "name": "Lieferumfang",
++          "value": "Rucksack"
+         }
+       ],
+       "sku": "CJNS154178001AZ",
+-      "title": "Grün / Einzelne Tasche"
++      "title": "Grün / Rucksack"
+     },
+     {
+@@ -73,10 +73,10 @@
+         },
+         {
+-          "name": "Grösse",
+-          "value": "Tasche und Anhänger"
++          "name": "Lieferumfang",
++          "value": "Rucksack mit Anhänger"
+         }
+       ],
+       "sku": "CJNS154178002BY",
+-      "title": "Grün / Tasche und Anhänger"
++      "title": "Grün / Rucksack mit Anhänger"
+     },
+     {
+@@ -90,10 +90,10 @@
+         },
+         {
+-          "name": "Grösse",
+-          "value": "Einzelne Tasche"
++          "name": "Lieferumfang",
++          "value": "Rucksack"
+         }
+       ],
+       "sku": "CJNS154178003CX",
+-      "title": "Khaki / Einzelne Tasche"
++      "title": "Khaki / Rucksack"
+     },
+     {
+@@ -107,10 +107,10 @@
+         },
+         {
+-          "name": "Grösse",
+-          "value": "Tasche und Anhänger"
++          "name": "Lieferumfang",
++          "value": "Rucksack mit Anhänger"
+         }
+       ],
+       "sku": "CJNS154178004DW",
+-      "title": "Khaki / Tasche und Anhänger"
++      "title": "Khaki / Rucksack mit Anhänger"
+     },
+     {
+@@ -124,10 +124,10 @@
+         },
+         {
+-          "name": "Grösse",
+-          "value": "Einzelne Tasche"
++          "name": "Lieferumfang",
++          "value": "Rucksack"
+         }
+       ],
+       "sku": "CJNS154178005EV",
+-      "title": "Grau / Einzelne Tasche"
++      "title": "Grau / Rucksack"
+     },
+     {
+@@ -141,10 +141,10 @@
+         },
+         {
+-          "name": "Grösse",
+-          "value": "Tasche und Anhänger"
++          "name": "Lieferumfang",
++          "value": "Rucksack mit Anhänger"
+         }
+       ],
+       "sku": "CJNS154178006FU",
+-      "title": "Grau / Tasche und Anhänger"
++      "title": "Grau / Rucksack mit Anhänger"
+     },
+     {
+@@ -158,10 +158,10 @@
+         },
+         {
+-          "name": "Grösse",
+-          "value": "Einzelne Tasche"
++          "name": "Lieferumfang",
++          "value": "Rucksack"
+         }
+       ],
+       "sku": "CJNS154178007GT",
+-      "title": "Rosa / Einzelne Tasche"
++      "title": "Rosa / Rucksack"
+     },
+     {
+@@ -175,10 +175,10 @@
+         },
+         {
+-          "name": "Grösse",
+-          "value": "Tasche und Anhänger"
++          "name": "Lieferumfang",
++          "value": "Rucksack mit Anhänger"
+         }
+       ],
+       "sku": "CJNS154178008HS",
+-      "title": "Rosa / Tasche und Anhänger"
++      "title": "Rosa / Rucksack mit Anhänger"
+     }
+   ]
+--- products-before/dogshirt.json
++++ final-products-and-media/dogshirt.json
+@@ -1,4 +1,4 @@
+ {
+-  "descriptionHtml": "<!-- ls-var-v1 --><p>Das Wetterfeste Hundehemd aus Oxford-Stoff ist ideal für Herbst und Winter. Es ist mit einem nicht rutschenden Lining gefüllt und besteht aus PP-Kotton.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Material: Oxford-Stoff</li>\n<li>Nicht rutschender Lining</li>\n<li>Füllung aus PP-Kotton</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
++  "descriptionHtml": "<p>Eine gefütterte Hundejacke mit Oxford-Aussenstoff. Wähle zuerst die Farbe und anschliessend eine passende vorhandene Grösse. Der Preis bezieht sich auf die gewählte Kombination.</p>\n<h2>Farben und Grössen</h2>\n<p>Im Sortiment angelegt sind Rot, Himmelblau, Blau und Grau sowie die Grössen S, M, L, XL, XXL, 3XL, 4XL, 5XL und 6XL. Nicht jede Grösse ist in jeder Farbe angelegt; massgeblich ist die tatsächlich auswählbare Kombination.</p>\n<h2>Material und Futter</h2>\n<p>Die Produktangabe nennt Oxford-Gewebe, ein Innenfutter und eine als «PP Cotton» bezeichnete Füllung. Die genaue Faserzusammensetzung von Aussenstoff, Futter und Füllung ist nicht näher spezifiziert. Eine geprüfte Wasserdichtigkeit ist nicht angegeben.</p>\n<h2>Passform vor dem Kauf beachten</h2>\n<p>Die Grössenbezeichnung allein bestätigt keine Passform für einen bestimmten Hund. Verbindliche Körpermassgrenzen in Zentimetern und eine Passformtoleranz sind derzeit nicht bestätigt. Eine Auswahl nur nach Rasse oder Körpergewicht ist deshalb nicht zugesagt.</p>",
+   "id": "gid://shopify/Product/15501915750785",
+   "options": [
+@@ -69,8 +69,8 @@
+   ],
+   "seo": {
+-    "description": "Wetterfestes Hundehemd – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+-    "title": "Wetterfestes Hundehemd | LuxeStyle CH"
++    "description": "Gefütterte Hundejacke mit Oxford-Aussenstoff. Vier Farben und verschiedene Grössen; Materialangaben und noch offene Passformangaben vor dem Kauf beachten.",
++    "title": "Hundejacke mit Futter | LuxeStyle CH"
+   },
+-  "title": "Wetterfestes Hundehemd",
++  "title": "Hundejacke mit Futter",
+   "variants": [
+     {
