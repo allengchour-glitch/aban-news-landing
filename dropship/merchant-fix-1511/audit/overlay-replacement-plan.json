@@ -1,43 +1,32 @@
 [
   {
-    "handle": "retro-super-console-x-cube-058112",
-    "erwartet_erstes": "gid://shopify/MediaImage/69861519196545",
+    "handle": "geburtsstein-ring-mit-zirkonia-601500",
+    "erwartet_erstes": "gid://shopify/MediaImage/70446533804417",
     "ersatz": [
       {
-        "alt": "gid://shopify/MediaImage/69861519196545",
-        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/console.png",
-        "alt_text": "Retro-Konsole mit vier Controllern und Zubehör"
-      }
-    ],
-    "loesen": [],
-    "nach_vorn": null
-  },
-  {
-    "handle": "sace-lady-flussig-mascara-wasserfest-langanhal-ebb71b",
-    "erwartet_erstes": "gid://shopify/MediaImage/78014936351111",
-    "ersatz": [
-      {
-        "alt": "gid://shopify/MediaImage/70563439870337",
-        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/brow03.png",
-        "alt_text": "Getöntes Augenbrauen-Gel – Schwarzbraun"
+        "alt": "gid://shopify/MediaImage/70446533935489",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Gold-1.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Gold, 1 Stein"
       },
       {
-        "alt": "gid://shopify/MediaImage/70563439968641",
-        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/brow01.png",
-        "alt_text": "Getöntes Augenbrauen-Gel – Hellbraun"
-      }
-    ],
-    "loesen": [],
-    "nach_vorn": null
-  },
-  {
-    "handle": "s68-mini-drohne-mit-4k-dual-kamera-220928",
-    "erwartet_erstes": "gid://shopify/MediaImage/70098997903745",
-    "ersatz": [
+        "alt": "gid://shopify/MediaImage/70446533771649",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Gold-2.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Gold, 2 Steine"
+      },
       {
-        "alt": "gid://shopify/MediaImage/70098997903745",
-        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/drone.png",
-        "alt_text": "S68-Drohne mit Controller, Tasche und zwei Akkus"
+        "alt": "gid://shopify/MediaImage/70446533706113",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Silber-1.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Silber, 1 Stein"
+      },
+      {
+        "alt": "gid://shopify/MediaImage/70446533968257",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Silber-2.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Silber, 2 Steine"
+      },
+      {
+        "alt": "gid://shopify/MediaImage/70446534001025",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Silber-3.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Silber, 3 Steine"
       }
     ],
     "loesen": [],
