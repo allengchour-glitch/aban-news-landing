@@ -17,7 +17,7 @@ Die komplette Szene ist nicht automatisch mit dessen eigenem WebGL-Renderer komp
 Übertragen sind dort zunächst die grössere Monitorwand, Rahmen, Plattform und
 angepasste Kamera. Modellpakete, Messwerte, Monitorfokus und Auftragsgrenzen bleiben.
 
-Higgsfield-Projekt: `e58dcbea-0774-4c26-a586-5a461fe0ad55`.
+Die private Projektkennung bleibt im zugehörigen privaten Chat.
 Renderprüfung und endgültige Revision stehen in der Codex-Claude-Übergabe und im PR.
 Es wurden keine Bild-/Videogenerierungen, Kreditkäufe oder GPU-Mieten gestartet.
 Die Darstellung belegt keinen laufenden Geschäftsbetrieb und keine neue Datenquelle.
