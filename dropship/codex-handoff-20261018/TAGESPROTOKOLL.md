@@ -2773,3 +2773,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Entwurfs-PR3145](https://github.com/allengchour-glitch/aban-news-landing/pull/3145) · [Bericht](EDITOR-REVIEWPAKET-20261115-R238.md) · [Belege](EDITOR-REVIEWPAKET-20261115-R238.json).
 
+
+### R239 – Zwei bestätigte Produktkorrekturen und zusätzlicher Theme-Diff
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Sortiment / live | Zwei Leuchten frisch vollständig gelesen, echte Bilder gesichtet und passende Kategorien sowie Storefront geprüft; zwei minimale Updates seriell ausgeführt. | Je Produkttyp «Beleuchtung», insgesamt vier fachfremde Tags entfernt. Native Vollrücklesung und öffentliche JSONs HTTP 200 bestätigt; zwei Writes, keine Retries. |
+| Schutz / Daten | 27 Varianten inklusive Barcodes und 20 Medien vorher/nachher verglichen. | Preise, SKUs, Barcodes, Policies, Tracking, Texte, SEO, Kategorien und Medien unverändert; beide Rueckhol-Sperren erhalten. Keine Social-Freigabe oder Merchant-/Verkaufswirkung behauptet. |
+| Theme / neuer Befund | Sieben freigegebene Dateien anhand MD5 geprüft; zusätzliche Layout-/Snippet-Abweichungen nativ auf zwei Dateien eingegrenzt und Diff gesichert. | Zusätzliche Restbetragsrechnung in layout/theme.liquid und snippets/cart-summary.liquid, Urheber unbekannt. Theme unveröffentlicht; frühere Freigabe der sieben Dateien erhalten, neue zwei nicht als abgenommen behandelt. |
+| Versand / Gegenprobe | Zwei rein synthetische Rechenfälle mit und ohne 10%-Annahme erstellt. | Neue Differenz unter 10%-Annahme zu wenig für die UI-Schwelle CHF 50; ohne Rabatt passend. Aktuelle Checkout-/Rabattregeln unbekannt. Keine Tarifänderung oder automatische Rücknahme. |
+| Zugriff / Tagesgrenzen | Shell-Drosselungen und verworfenen Hashaufruf getrennt dokumentiert; spätere fristgerechte native Dateigegenprobe ausgeführt. | «Nothing ran / 60s» als Limit, keine Null-/404-Aussage. Keine Wiederholung der Tagesreports oder des beendeten Kauf-Watchs. Keine Social-, Merchant-, Theme-, Flow-, Budget-, DNS- oder Frequenzänderung. Claude-Empfang unbekannt. |
+
+[Bericht](PRODUKTZUORDNUNG-THEMEPRUEFUNG-20261115-R239.md) · [Belege](PRODUKTZUORDNUNG-THEMEPRUEFUNG-20261115-R239.json).
+

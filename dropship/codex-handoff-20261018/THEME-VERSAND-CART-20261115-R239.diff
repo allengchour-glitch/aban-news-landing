@@ -1,0 +1,13 @@
+--- MAIN/snippets-cart-summary.liquid
++++ DRAFT/snippets-cart-summary.liquid
+@@ -271,9 +271,7 @@
+         {%- else -%}
+           {%- comment -%} LUX-WARENKORB-EINIG (09.10.2026): 50 − Warenwert VOR Rabatt (jeder Zusatzartikel = −10 %),
+               mindestens ⌈(50 − Betrag nach Rabatt) · 10/9⌉ — derselbe Rechenweg wie der Versandbalken. {%- endcomment -%}
+-          {%- assign lux_gv_rest = 5556 | minus: cart.items_subtotal_price -%}
+-          {%- assign lux_gv_rest2 = 5000 | minus: cart.total_price | times: 10 | plus: 8 | divided_by: 9 -%}
+-          {%- if lux_gv_rest2 > lux_gv_rest -%}{%- assign lux_gv_rest = lux_gv_rest2 -%}{%- endif -%}
++          {%- assign lux_gv_rest = 5000 | minus: cart.total_price | at_least: 0 -%}
+           <span>🚚 Versand in der Schweiz CHF 7 · noch <strong>{{ lux_gv_rest | money }}</strong> bis zum Gratisversand (ab CHF 50 nach Rabatt)</span>
+         {%- endif -%}
+       </div>

@@ -1,0 +1,35 @@
+{
+  "actualCheckoutOrDiscountPolicyVerified": false,
+  "ownerInstructionPreserved": "PublicCHF50/internalCHF45afterdiscount must not be changed by Codex",
+  "meaning": "Conditional arithmetic counterexample only. Under a10percent whole-basket discount, a1400gross addition leaves total4860 below unchangedUI5000; with no discount newrest is exact and oldoverstates. Do not pick formula without current rule proof.",
+  "cases": [
+    {
+      "case": "SETZUNG:10Prozent_auf_gesamten_Korb",
+      "syntheticNotActualCart": true,
+      "subtotalMinor": 4000,
+      "totalMinor": 3600,
+      "assumedDiscountRate": 0.1,
+      "oldSuggestedGrossAdditionMinor": 1556,
+      "newSuggestedGrossAdditionMinor": 1400,
+      "totalAfterOldSuggestedAdditionMinor": 5000,
+      "totalAfterNewSuggestedAdditionMinor": 4860,
+      "oldReachesUnchangedUi5000Condition": true,
+      "newReachesUnchangedUi5000Condition": false
+    },
+    {
+      "case": "SETZUNG:kein_Rabatt",
+      "syntheticNotActualCart": true,
+      "subtotalMinor": 4000,
+      "totalMinor": 4000,
+      "assumedDiscountRate": 0,
+      "oldSuggestedGrossAdditionMinor": 1556,
+      "newSuggestedGrossAdditionMinor": 1000,
+      "totalAfterOldSuggestedAdditionMinor": 5556,
+      "totalAfterNewSuggestedAdditionMinor": 5000,
+      "oldReachesUnchangedUi5000Condition": true,
+      "newReachesUnchangedUi5000Condition": true
+    }
+  ],
+  "shopSettingsWrites": 0,
+  "cartCheckoutOrderActions": 0
+}

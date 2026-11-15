@@ -1,0 +1,555 @@
+{
+  "revision": 239,
+  "atUTC": "2026-11-15T16:23:24Z",
+  "trigger": "weiter",
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "channels": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    }
+  },
+  "authorization": {
+    "scope": "Continue existing explicit owner sorting/website task with small current product batches",
+    "canonicalTaskId": "tech-category-structure-20261102",
+    "sourceRevision": 238,
+    "objects": [
+      "gid://shopify/Product/15491395846529",
+      "gid://shopify/Product/15460287250817"
+    ],
+    "plannedPayloadKeys": [
+      "id",
+      "productType",
+      "tags"
+    ]
+  },
+  "writes": [
+    {
+      "product": {
+        "id": "gid://shopify/Product/15491395846529",
+        "productType": "Beleuchtung",
+        "tags": [
+          "beleuchtung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "leuchte",
+          "neuheit",
+          "rueckhol-0907",
+          "sort-wandleuchten",
+          "varianten-nachgezogen-1025",
+          "wohnen"
+        ],
+        "updatedAt": "2026-11-15T16:11:57Z"
+      },
+      "userErrors": []
+    },
+    {
+      "product": {
+        "id": "gid://shopify/Product/15460287250817",
+        "productType": "Beleuchtung",
+        "tags": [
+          "beleuchtung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "deckenlampe",
+          "dropship",
+          "franzoesisch",
+          "haushalt",
+          "leuchte",
+          "rueckhol-0907",
+          "sort-deckenleuchten",
+          "wohnen"
+        ],
+        "updatedAt": "2026-11-15T16:12:48Z"
+      },
+      "userErrors": []
+    }
+  ],
+  "prewriteAndReadback": {
+    "wall": true,
+    "ceiling": true,
+    "writeCount": 2,
+    "retries": 0
+  },
+  "theme": {
+    "observed": {
+      "id": "gid://shopify/OnlineStoreTheme/214040805767",
+      "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-15T15:52:32Z"
+    },
+    "existingSeven": [
+      {
+        "filename": "assets/luxe-edit.css",
+        "checksumMd5": "fcec3bcc5fc26b1938f84eee5f9ff7f7"
+      },
+      {
+        "filename": "blocks/buy-buttons.liquid",
+        "checksumMd5": "aa72424fb39bc83483126845ca1f742f"
+      },
+      {
+        "filename": "locales/de.schema.json",
+        "checksumMd5": "b6df0bcf79552db0fc5adae3b3f72c48"
+      },
+      {
+        "filename": "locales/en.default.schema.json",
+        "checksumMd5": "9bb4eb1ece1f3ed247003675cb6a03ae"
+      },
+      {
+        "filename": "sections/footer-group.json",
+        "checksumMd5": "fee6b2d72799f7f580733427b9380268"
+      },
+      {
+        "filename": "sections/luxe-edit-home.liquid",
+        "checksumMd5": "fdfd9fde03050e9085a1356645467309"
+      },
+      {
+        "filename": "templates/index.json",
+        "checksumMd5": "b1a3c3cb244d8ddbc3b28cb35aacc9c3"
+      }
+    ],
+    "extraDifferences": [
+      {
+        "filename": "layout/theme.liquid",
+        "mainMd5": "79a586ab4ccd342f2ef529f896eea23b",
+        "draftMd5": "ebfbeb66157d575e6b0217982d728288"
+      },
+      {
+        "filename": "snippets/cart-summary.liquid",
+        "mainMd5": "88e224946155647e7ec46498b5aac870",
+        "draftMd5": "a45299b79b5f7ad092630139ce2ba5c8"
+      }
+    ],
+    "authoritativeRead": {
+      "requestedKnownLayoutSnippetFiles": 130,
+      "mainReturned": 130,
+      "draftReturned": 130,
+      "afterRetryWindow": true,
+      "readOnly": true
+    },
+    "protectedSourceMainAggregate": {
+      "stdout": "547\n172071cc14c47af06258e535e20bc933cd78b8476b9238ff7e6f3d109bed8f81  -\n",
+      "stderr": "",
+      "exitCode": 0,
+      "timedOut": false,
+      "pending": []
+    },
+    "draftSourceAggregate": "tainer should perform next.\n547\n07a50f28d1293281410a68e8b2bc5771276ae39d40bfeb29314c7cce74bcd522  -\n",
+    "rawSnapshotsKeptLocally": true,
+    "newFilesInShellMirror": "AGENTS.md is tool guide, not sourcechange; source-only counts547 each",
+    "themeWriteCount": 0,
+    "publishCalls": 0,
+    "existingApprovalSevenRetained": true,
+    "newShippingDiffNotAccepted": true,
+    "actorOfExtraChanges": "unknown",
+    "newShippingChangesDescription": "Additional changes inlayout/theme.liquid andsnippets/cart-summary.liquid replacegross-upremaining formulas with net5000-total and changetheprogressbar. Constantsunchanged inthese diffs; actualcheckout/discountpolicyunknown; noCodexshippingwrite.",
+    "finalReadback": {
+      "id": "gid://shopify/OnlineStoreTheme/214040805767",
+      "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-15T15:52:32Z",
+      "files": {
+        "nodes": [
+          {
+            "filename": "assets/luxe-edit.css",
+            "checksumMd5": "fcec3bcc5fc26b1938f84eee5f9ff7f7"
+          },
+          {
+            "filename": "blocks/buy-buttons.liquid",
+            "checksumMd5": "aa72424fb39bc83483126845ca1f742f"
+          },
+          {
+            "filename": "layout/theme.liquid",
+            "checksumMd5": "ebfbeb66157d575e6b0217982d728288"
+          },
+          {
+            "filename": "locales/de.schema.json",
+            "checksumMd5": "b6df0bcf79552db0fc5adae3b3f72c48"
+          },
+          {
+            "filename": "locales/en.default.schema.json",
+            "checksumMd5": "9bb4eb1ece1f3ed247003675cb6a03ae"
+          },
+          {
+            "filename": "sections/footer-group.json",
+            "checksumMd5": "fee6b2d72799f7f580733427b9380268"
+          },
+          {
+            "filename": "sections/luxe-edit-home.liquid",
+            "checksumMd5": "fdfd9fde03050e9085a1356645467309"
+          },
+          {
+            "filename": "snippets/cart-summary.liquid",
+            "checksumMd5": "a45299b79b5f7ad092630139ce2ba5c8"
+          },
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "b1a3c3cb244d8ddbc3b28cb35aacc9c3"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "technicalErrors": {
+    "deprecatedBarcodeQuery": "Rejected before execution; schema barcodes discovered and complete modernbarcode connection read before writes",
+    "initialManifestCommand": "sha256sum wrapper treated-- as filename; initial failed/truncated manifest discarded",
+    "shellRateLimits": "Several rate_limited responses explicitlysaid nothingran and60seconds; backoffhonored, no furtherbashretries afterlast. Not treated aszero/empty404. Laterpurposebuilt nativefile-query countercheck afterretrywindow returnedboth savedfiles anddiff.",
+    "noUncertainWrites": true
+  },
+  "scope": {
+    "activeProducts": 2,
+    "variantsProtected": 27,
+    "mediaProtected": 20,
+    "obsoleteTagsRemoved": 4,
+    "correctTaxonomyLeavesPreserved": 2,
+    "socialHoldTagsPreserved": true,
+    "newSocialPosts": 0,
+    "merchantWrites": 0,
+    "flowsBudgetsDnsOrShippingSettingsWrites": 0,
+    "paidRenders": 0,
+    "orderWatchEnded": true,
+    "metricsFlowSalesOrderReports": 0,
+    "automationOrScheduleChanges": 0,
+    "claudeReceipt": "unknown"
+  },
+  "productChanges": [
+    {
+      "key": "wall",
+      "id": "gid://shopify/Product/15491395846529",
+      "title": "Moderne minimalistische Wandleuchte",
+      "handle": "moderne-minimalistische-wandleuchte-622600",
+      "status": "ACTIVE",
+      "beforeType": "Aufbewahrung & Organizer",
+      "afterType": "Beleuchtung",
+      "removedTags": [
+        "aufbewahrung",
+        "organizer"
+      ],
+      "beforeTags": [
+        "aufbewahrung",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "leuchte",
+        "neuheit",
+        "organizer",
+        "rueckhol-0907",
+        "sort-wandleuchten",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "afterTags": [
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "leuchte",
+        "neuheit",
+        "rueckhol-0907",
+        "sort-wandleuchten",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "updatedAtBefore": "2026-10-31T01:13:18Z",
+      "updatedAtAfter": "2026-11-15T16:12:02Z",
+      "categoryPreserved": {
+        "id": "gid://shopify/TaxonomyCategory/hg-13-9-4",
+        "fullName": "Heim & Garten > Beleuchtung > Leuchten > Wandleuchten, Wandbeleuchtung",
+        "isLeaf": true,
+        "isArchived": false
+      },
+      "googleCategoryPreserved": {
+        "id": "gid://shopify/Metafield/202048828965249",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Home & Garden > Lighting > Lighting Fixtures > Wall Light Fixtures"
+      },
+      "variantCount": 21,
+      "mediaCount": 13,
+      "barcodesCompletelyRead": true,
+      "protectedNativeFieldsBeforeSha256": "bd0186d6a3fa64139d16031a3ebbc2740f20683a4b5389ca376ddd76ff018b99",
+      "protectedNativeFieldsAfterSha256": "bd0186d6a3fa64139d16031a3ebbc2740f20683a4b5389ca376ddd76ff018b99",
+      "allProtectedNativeFieldsIdentical": true,
+      "rueckholRetained": true,
+      "notSocialApproved": true,
+      "fieldPayload": [
+        "id",
+        "productType",
+        "tags"
+      ]
+    },
+    {
+      "key": "ceiling",
+      "id": "gid://shopify/Product/15460287250817",
+      "title": "Französisch-stil Deckenleuchte mit Sand-Textur & Wellenrand",
+      "handle": "franzosisch-stil-deckenleuchte-mit-sand-textur-617000",
+      "status": "ACTIVE",
+      "beforeType": "Aufbewahrung & Organizer",
+      "afterType": "Beleuchtung",
+      "removedTags": [
+        "aufbewahrung",
+        "organizer"
+      ],
+      "beforeTags": [
+        "aufbewahrung",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "deckenlampe",
+        "dropship",
+        "franzoesisch",
+        "haushalt",
+        "leuchte",
+        "organizer",
+        "rueckhol-0907",
+        "sort-deckenleuchten",
+        "wohnen"
+      ],
+      "afterTags": [
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "deckenlampe",
+        "dropship",
+        "franzoesisch",
+        "haushalt",
+        "leuchte",
+        "rueckhol-0907",
+        "sort-deckenleuchten",
+        "wohnen"
+      ],
+      "updatedAtBefore": "2026-10-25T23:13:27Z",
+      "updatedAtAfter": "2026-11-15T16:12:53Z",
+      "categoryPreserved": {
+        "id": "gid://shopify/TaxonomyCategory/hg-13-9-2",
+        "fullName": "Heim & Garten > Beleuchtung > Leuchten > Deckenleuchten",
+        "isLeaf": true,
+        "isArchived": false
+      },
+      "googleCategoryPreserved": {
+        "id": "gid://shopify/Metafield/202048585728385",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Home & Garden > Lighting > Lighting Fixtures > Ceiling Light Fixtures"
+      },
+      "variantCount": 6,
+      "mediaCount": 7,
+      "barcodesCompletelyRead": true,
+      "protectedNativeFieldsBeforeSha256": "42e0dc4070c53c94d0d1ff29a74c5fa395b5e515e2698b9e55e3e04f7061efcb",
+      "protectedNativeFieldsAfterSha256": "42e0dc4070c53c94d0d1ff29a74c5fa395b5e515e2698b9e55e3e04f7061efcb",
+      "allProtectedNativeFieldsIdentical": true,
+      "rueckholRetained": true,
+      "notSocialApproved": true,
+      "fieldPayload": [
+        "id",
+        "productType",
+        "tags"
+      ]
+    }
+  ],
+  "publicBefore": [
+    {
+      "key": "wall",
+      "productId": "gid://shopify/Product/15491395846529",
+      "url": "https://luxestyle.ch/products/moderne-minimalistische-wandleuchte-622600",
+      "htmlStatus": 200,
+      "htmlFinalUrl": "https://luxestyle.ch/products/moderne-minimalistische-wandleuchte-622600",
+      "htmlSha256": "829b111d1edfdb5d4a0b4d18037f35ed4456220ab6219a63f5977cef2c83c9ca",
+      "jsonStatus": 200,
+      "jsonFinalUrl": "https://luxestyle.ch/products/moderne-minimalistische-wandleuchte-622600.js",
+      "jsonSha256": "ef64fc89492cb0d4ec3301f645289229bba6c5c2e1159ab38e5ff01ddf92bd05",
+      "type": "Aufbewahrung & Organizer",
+      "handle": "moderne-minimalistische-wandleuchte-622600",
+      "variantCount": 21,
+      "availableVariants": 21,
+      "variantIds": [
+        67841336181127,
+        67841336213895,
+        67841336246663,
+        67841336279431,
+        67841336312199,
+        67841336344967,
+        67841336377735,
+        67841336410503,
+        67841336443271,
+        67841336476039,
+        67841336508807,
+        67841336541575,
+        67841336574343,
+        67841336607111,
+        67841336639879,
+        67841336672647,
+        67841336705415,
+        67841336738183,
+        67841336770951,
+        67841336803719,
+        67841336836487
+      ],
+      "jpgStatus": 200,
+      "jpgFinalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3cebf617-58a8-4de2-b10e-53eaf26301e1.jpg?v=1786148832",
+      "jpgSha256": "a486398d597394c02b48081bbb6955d99ce4e35c7323b2616d584c902422c5ef"
+    },
+    {
+      "key": "ceiling",
+      "productId": "gid://shopify/Product/15460287250817",
+      "url": "https://luxestyle.ch/products/franzosisch-stil-deckenleuchte-mit-sand-textur-617000",
+      "htmlStatus": 200,
+      "htmlFinalUrl": "https://luxestyle.ch/products/franzosisch-stil-deckenleuchte-mit-sand-textur-617000",
+      "htmlSha256": "d5a4d5250ba445984fb71c79a7cb7bde026fc63a68f0bc021c486800af7a2f1e",
+      "jsonStatus": 200,
+      "jsonFinalUrl": "https://luxestyle.ch/products/franzosisch-stil-deckenleuchte-mit-sand-textur-617000.js",
+      "jsonSha256": "f1a762b66033f05934795dbf565034c1f997fd9102891863a0f7ded15fe4a304",
+      "type": "Aufbewahrung & Organizer",
+      "handle": "franzosisch-stil-deckenleuchte-mit-sand-textur-617000",
+      "variantCount": 6,
+      "availableVariants": 1,
+      "variantIds": [
+        56069482348929,
+        56069482381697,
+        56069482414465,
+        56069482447233,
+        56069482480001,
+        56069482512769
+      ],
+      "jpgStatus": 200,
+      "jpgFinalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2033dac2-9014-4e42-950c-8684f66109c5.jpg?v=1784300903",
+      "jpgSha256": "836e87d0437067172b9238e9f8809acadf6aeb96c4d720b59c5f800719d1c4ee"
+    }
+  ],
+  "publicAfter": [
+    {
+      "key": "wall",
+      "productId": 15491395846529,
+      "httpStatus": 200,
+      "type": "Beleuchtung",
+      "tags": [
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "leuchte",
+        "neuheit",
+        "rueckhol-0907",
+        "sort-wandleuchten",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "variantCount": 21,
+      "availableVariants": 21,
+      "protectedPublicFieldsIdentical": true,
+      "sha256": "eec7853642afe6f074ec1023faa32bc2b44d85ce58895baa237b4fc74d9c79af",
+      "googleFeedAdoption": "unknown_not_queried",
+      "stockOrShippingPromiseMade": false
+    },
+    {
+      "key": "ceiling",
+      "productId": 15460287250817,
+      "httpStatus": 200,
+      "type": "Beleuchtung",
+      "tags": [
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "deckenlampe",
+        "dropship",
+        "franzoesisch",
+        "haushalt",
+        "leuchte",
+        "rueckhol-0907",
+        "sort-deckenleuchten",
+        "wohnen"
+      ],
+      "variantCount": 6,
+      "availableVariants": 1,
+      "protectedPublicFieldsIdentical": true,
+      "sha256": "950fb4ee69f16ebf5877d5d5ec3e4ce7473174c61afc05f4415df3edaccbaabe",
+      "googleFeedAdoption": "unknown_not_queried",
+      "stockOrShippingPromiseMade": false
+    }
+  ],
+  "extraThemeDiffs": [
+    {
+      "filename": "layout-theme.liquid",
+      "mainSha256": "3099eff3f8b245429198c49ed2c2fca2ebe1c410b6980f425b07f592d687b06c",
+      "draftSha256": "53ad8c1fcaf26026f52ae574502830135cc3f88e27ddb33a37ef8d6e35ad0110",
+      "diff": "--- MAIN/layout-theme.liquid\n+++ DRAFT/layout-theme.liquid\n@@ -597,13 +597,13 @@\n     var chlDom=document.querySelector('.lux-gratisversand[data-lux-alle-chlager=\"1\"]');\n     var sub=cart.items_subtotal_price, tot=(cart.total_price!=null?cart.total_price:sub),\n         chl=(cart.alle_chlager===true)||(cart.alle_chlager===undefined&&!!chlDom);\n-    var gratis=chl||tot>=5000, rest=gratis?0:Math.max(5556-sub, Math.floor(((5000-tot)*10+8)/9));\n+    var gratis=chl||tot>=5000, rest=gratis?0:Math.max(0,SCHWELLE-tot);\n     var end=((tot+(gratis?0:VERSAND))/100).toFixed(2);\n     if(chl){el.innerHTML='🎉 <strong>Gratis-Versand in der Schweiz</strong> · Ware ab Schweizer Lager · Du zahlst <strong>CHF '+end+'</strong>';}\n     else if(gratis){el.innerHTML='🎉 <strong>Gratis-Versand gesichert</strong> · Du zahlst <strong>CHF '+end+'</strong>';}\n     else{\n       el.innerHTML='🚚 Noch <strong>CHF '+(rest/100).toFixed(2)+'</strong> bis zum Gratis-Versand (ab CHF 50 nach Rabatt)'+\n-      '<div class=\"track\"><div class=\"fill\" style=\"width:'+Math.min(100,Math.round(sub/5000*100))+'%\"></div></div>'+\n+      '<div class=\"track\"><div class=\"fill\" style=\"width:'+Math.min(100,Math.round(tot/SCHWELLE*100))+'%\"></div></div>'+\n       '<div style=\"margin-top:6px;color:#5b5346\">Aktuell CHF '+(tot/100).toFixed(2)+' + CHF '+(VERSAND/100).toFixed(2)+\n       ' Versand = <strong style=\"color:#2b2b2b\">CHF '+end+'</strong></div>';}\n     anchors[0].parentNode.insertBefore(el,anchors[0]);\n"
+    },
+    {
+      "filename": "snippets-cart-summary.liquid",
+      "mainSha256": "504c482f521b9bc157afb778d43b81102397fc1a69e87cd476af1183fd00f636",
+      "draftSha256": "aa70cffa22ea3d66a5bff4ed8eef4f54199bc1fdcc87fd11354fc33a46182f85",
+      "diff": "--- MAIN/snippets-cart-summary.liquid\n+++ DRAFT/snippets-cart-summary.liquid\n@@ -271,9 +271,7 @@\n         {%- else -%}\n           {%- comment -%} LUX-WARENKORB-EINIG (09.10.2026): 50 − Warenwert VOR Rabatt (jeder Zusatzartikel = −10 %),\n               mindestens ⌈(50 − Betrag nach Rabatt) · 10/9⌉ — derselbe Rechenweg wie der Versandbalken. {%- endcomment -%}\n-          {%- assign lux_gv_rest = 5556 | minus: cart.items_subtotal_price -%}\n-          {%- assign lux_gv_rest2 = 5000 | minus: cart.total_price | times: 10 | plus: 8 | divided_by: 9 -%}\n-          {%- if lux_gv_rest2 > lux_gv_rest -%}{%- assign lux_gv_rest = lux_gv_rest2 -%}{%- endif -%}\n+          {%- assign lux_gv_rest = 5000 | minus: cart.total_price | at_least: 0 -%}\n           <span>🚚 Versand in der Schweiz CHF 7 · noch <strong>{{ lux_gv_rest | money }}</strong> bis zum Gratisversand (ab CHF 50 nach Rabatt)</span>\n         {%- endif -%}\n       </div>\n"
+    }
+  ],
+  "shippingMath": {
+    "actualCheckoutOrDiscountPolicyVerified": false,
+    "ownerInstructionPreserved": "PublicCHF50/internalCHF45afterdiscount must not be changed by Codex",
+    "meaning": "Conditional arithmetic counterexample only. Under a10percent whole-basket discount, a1400gross addition leaves total4860 below unchangedUI5000; with no discount newrest is exact and oldoverstates. Do not pick formula without current rule proof.",
+    "cases": [
+      {
+        "case": "SETZUNG:10Prozent_auf_gesamten_Korb",
+        "syntheticNotActualCart": true,
+        "subtotalMinor": 4000,
+        "totalMinor": 3600,
+        "assumedDiscountRate": 0.1,
+        "oldSuggestedGrossAdditionMinor": 1556,
+        "newSuggestedGrossAdditionMinor": 1400,
+        "totalAfterOldSuggestedAdditionMinor": 5000,
+        "totalAfterNewSuggestedAdditionMinor": 4860,
+        "oldReachesUnchangedUi5000Condition": true,
+        "newReachesUnchangedUi5000Condition": false
+      },
+      {
+        "case": "SETZUNG:kein_Rabatt",
+        "syntheticNotActualCart": true,
+        "subtotalMinor": 4000,
+        "totalMinor": 4000,
+        "assumedDiscountRate": 0,
+        "oldSuggestedGrossAdditionMinor": 1556,
+        "newSuggestedGrossAdditionMinor": 1000,
+        "totalAfterOldSuggestedAdditionMinor": 5556,
+        "totalAfterNewSuggestedAdditionMinor": 5000,
+        "oldReachesUnchangedUi5000Condition": true,
+        "newReachesUnchangedUi5000Condition": true
+      }
+    ],
+    "shopSettingsWrites": 0,
+    "cartCheckoutOrderActions": 0
+  },
+  "recordedAtUTC": "2026-11-15T16:26:36Z"
+}
