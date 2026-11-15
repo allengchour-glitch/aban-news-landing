@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 232,
-  "updatedAt": "2026-11-15T11:12:44.229398+00:00",
+  "revision": 233,
+  "updatedAt": "2026-11-15T11:38:04.985588+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -4295,16 +4295,18 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r232_full_image_category_cards_saved_corrected_and_preview_qa_passed_unpublished",
+      "state": "r233_remaining_merchant_groups_partial_diagnosis_autofeed_and_review_gates",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "UMGESETZT",
-      "lastEvidence": "R232: fünf Dateien im UNPUBLISHED-Theme 214040805767 gespeichert. 16 vollflächige Bildkarten mit weissen Titeln, zwei neuen Higgsfield-Kategoriemotiven und Editor-Feldern. Fehlende Index-Zuweisungen nach erstem Save gezielt korrigiert; finale Admin- und Browser-Gegenprobe bestätigt. Alle Kategorie-Ziele/Reihenfolge und sechs JS-Blöcke unverändert. Deutsche QA 390/1440 px bestanden; R230-Kaufhinweis/Popup hashgleich. MAIN nicht geändert, kein Publish.",
-      "nextAllowedStep": "Dem Inhaber die fertige Bildkarten-Vorschau inklusive erhaltener R230-Kaufhinweis-/Popup-Änderungen vorlegen. Für genau Theme 214040805767 mit Name «LuxeStyle – Kaufhinweis 15.11.2026» ausdrückliches Publish-Ja abwarten; danach frisch Identität/Rolle/Quelle und Diff prüfen. Keine neue Kopie und keine alten Theme-Freigaben übertragen. Bei Weitergestaltung verbliebene alte Bannerwörter in 14 Bestandsmotiven gezielt bewerten, nicht 16 neue Bilder behaupten.",
+      "belegArt": "GEPRUEFT",
+      "lastEvidence": "R233: Neuer Ownerbefund 18 Gruppen. 5000er Summary abgeschnitten; 200 abgelehnte Angebote / 7 Codes, davon 144 Preis- und 19 Verfügbarkeitsmeldungen, überlappende Teilmessung. Nagellack 7/11 weiterhin neue Bilder/leere Issues/CHLI in je 6 Kontexten genehmigt. AUTOFEED-Wandleuchte weiterhin de/CH mit fr-Link und fehlendem Preis; 4 Quellprofile, kein Supplemental. Offizielle AUTOFEED-Updatefähigkeit für Supplementallink nicht belegt. Waage Google-Landingpagefehler bleibt trotz öffentlicher HTTP200-/robots-Gegenprobe. 1 Windsor-Timeout unbekannt; keine neuen operativen Writes.",
+      "nextAllowedStep": "Vollständige aktuelle 18 UI-Gruppen per zulässigem Export/Editorzugriff mit Beispielen zuordnen; AUTOFEED-Pflichtfeldfälle erst mit eindeutiger Angebots-/Variantenbindung und nachgewiesen erlaubtem Quellweg korrigieren. Keinen beliebigen Preis, keine massenhafte Unterdrückung und keine ungeprüfte neue Source/defaultRule. Waage/Uhr-Dossiers über echte Review-Aktion einreichen, wenn verfügbar. Bereits bestätigte Bildkorrekturen und Theme-Entwurf erhalten.",
       "blockers": [
-        "Konkretes ausdrückliches Publish-Ja für dieses Theme steht noch aus; gespeicherter Entwurf ist nicht live.",
-        "Keine Vollshop-/Checkout-/alle-Sprachen-Abnahme oder Conversionmessung durch die gezielte deutsche Kartenprüfung.",
-        "Claude-Empfang unbekannt; Memory-Commit ist keine Kenntnisnahme."
+        "Die zwei API-Teilmessungen enumerieren die 18 UI-Gruppen nicht vollständig; weitere Produktseiten wurden bewusst nicht massenhaft gelesen.",
+        "Produktwriter ändert API-Inputs; konkreter AUTOFEED-Einzelfallwriter bzw. erlaubtes Supplemental-Linking unbekannt.",
+        "AUTOFEED-Wandleuchte hat mehrere echte Varianten; keine beliebige Preisbindung.",
+        "Google-Review/Reprocess-Schreibaktion fehlt. Öffentlicher Googlebot-UA ist kein echter Google-Crawl.",
+        "Claude-Empfang unbekannt; Theme214040805767 bleibt unveröffentlicht."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -5521,6 +5523,18 @@
           "sha256": "09cf322db8c9d7fc6778211094582af8b1d0f7a2709d4a7ca356087f6297955e",
           "gitBlobSha": "2feabbad124ca3f4b03e9720d0bd57300193ba3f",
           "readAt": "2026-11-15T11:12:44.229398+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-20261115-R233.md",
+          "gitBlobSha": "48c791a128b17a5e75accc248f048bba2ef21fd0",
+          "sha256": "c585ae10502c2e75d8c98866b3ff6080875e8bc9c467dcc5569894e26c917225",
+          "readAt": "2026-11-15T11:38:04.985588+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-BELEGE-20261115-R233.json",
+          "gitBlobSha": "769c1d49b3518bb89240d93ff2257b054fedb516",
+          "sha256": "b050bc47f750ed1e9aeb647cf09e05670e1a2faa1e0c9b68b05a0377d7d1787d",
+          "readAt": "2026-11-15T11:38:04.985588+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -9853,6 +9867,50 @@
           }
         ],
         "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Identität / Fortsetzung | Core4 Revision 231 und Tagesblock gelesen; verbundenen Shopify-Shop und Theme-Rollen frisch geprüft | LuxeStyle / luxestyle.ch / CHF / Europe/Zurich bestätigt. MAIN 213991391623 bleibt live; gearbeitet im UNPUBLISHED-Theme 214040805767. Keine wiederholten Tagesreports oder Kauf-Watch. |\n| Bildmotive | Zwei originale Higgsfield-Kategoriemotive für Kinder und Baby sowie Schmuck erzeugt, visuell geprüft und in Shopify Files gespeichert | Zwei Still-Jobs gpt_image_2_6, je Kostenschätzung 1.5 Credits; keine separate Abrechnungsprüfung. Illustrative Szenen ohne SKU-/Materialversprechen; kein Video-Render. Weitere 14 vorhandene Bilder erhalten. |\n| Theme / Umsetzung | 16 Kategorie-Einstiege als vollflächige Bildkarten mit weissen Titeln, dunklem Verlauf und responsiven Bildern gestaltet; zwei Bildwähler und Textfarbe im Editor ergänzt | Fünf Dateien gespeichert. Erster Save c1a5f4e7 meldete Erfolg, aber Bildzuweisungen fehlten im Admin-/Browser-Readback; gezielte Index-Korrektur 742a075e anschliessend bestätigt. Keine blinde Wiederholung oder Live-Schaltung. |\n| Darstellung / Gegenprobe | Gespeicherte Vorschau in normalem Chromium bei 390×844 und 1440×900 geprüft; Kategorie-Links mit Baseline verglichen | 16 Bilder geladen, alle 16 Links/Reihenfolge gleich. Mobil 2 Spalten / 173×173 px, Desktop 4 Spalten / 316×237 px. Weisse Titel/Pfeile lesbar, kein festgestellter Text-/Seitenüberlauf oder CSS-Ladefehler. Neue Bildmotive aktiv. |\n| Schutzfelder / Grenzen | Sechs inline JavaScript-Blöcke, Kategorie-Reihenfolge/Linklogik, Produktliste/Section-Reihenfolge und R230-Dateihashes gegengeprüft | Erhalten. Keine Produkt-, Collection-, Preis-, Versand-, Flow-, DNS-, Rabatt-, Budget- oder Kontoeinstellung geändert. Nur Theme-Entwurf und zwei neue Files. Keine gemessene Conversionwirkung. |\n| Memory / Freigabe | R232-Quellen und Diff vorbereitet; zwei bestehende Aufgaben fortgeschrieben, 24 IDs/Historien erhalten | Das konkrete Theme «LuxeStyle – Kaufhinweis 15.11.2026» braucht vor Publish ein ausdrückliches Ja gemäss Shopify-Skill. Enthält weiterhin R230-Kaufhinweis und Popup-Text. Metricool-Identitätsread technisch blockiert, keine Social-Writes. Claude-Empfang unbekannt. |\n"
+      },
+      "run233": {
+        "revision": 233,
+        "dateZurich": "2026-11-15",
+        "recordedAtUTC": "2026-11-15T11:38:04.985588+00:00",
+        "trigger": "owner_reports_still18_merchant_issue_groups",
+        "newConcreteCountercheckReason": "Persistent 18 groups after R231 exact image corrections; diagnose remaining source and issue scopes, not repeat performance.",
+        "summaryScannedProducts": 5000,
+        "summaryTruncated": true,
+        "disapprovedPages": 2,
+        "pageSize": 100,
+        "uniqueDisapprovedOffers": 200,
+        "hasMoreDisapprovedPages": true,
+        "distinctCodesInDisapprovedSlice": 7,
+        "requiredPriceOccurrences": 144,
+        "requiredAvailabilityOccurrences": 19,
+        "ui18GroupsFullyEnumerated": false,
+        "globalErrorCount": "unknown",
+        "sourcesReturned": 4,
+        "newFeedWrites": 0,
+        "nail7_11StillApproved": true,
+        "realGoogleCrawlOrReviewPerformed": false,
+        "windsorProductReadTimeouts": 1,
+        "publicUrlUserAgentChecks": 2,
+        "robotsReads": 1,
+        "performanceOrOrderReports": 0,
+        "newThemeOrSocialWrites": 0,
+        "automationFrequencyChanged": false,
+        "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Identität / Fortsetzung | Core4 Revision 232 und heutigen Tagesblock frisch gelesen; Shop und Merchant-Konten abgeglichen | LuxeStyle / luxestyle.ch / CHF / Europe/Zurich und Merchant 5797470070 bestätigt. Der konkrete Ownerbefund «weiterhin 18 Fehlergruppen» begründet die Diagnose-Gegenprobe; keine Leistungs- oder Verkaufsreports wiederholt. |\n| Fehlergruppen / Teilmessung | Eine auf 5000 Produkte begrenzte Übersicht und zwei Seiten mit je 100 abgelehnten Angeboten gelesen | Übersicht abgeschnitten. 200 eindeutige Angebote, 7 Codes: 144 Preis- und 19 Verfügbarkeitsmeldungen, 30 Bildoverlay-, 4 Waffen-, 4 Tabak-, 1 Landingpage-, 1 Local-Requirements- und 1 Bildgrössen-Meldung. Meldungen überlappen; weitere Seiten vorhanden. Keine vollständige Zuordnung aller 18 UI-Gruppen. |\n| Bestätigte Bildkorrekturen | Die exakten vorhandenen Nagellack-Angebote 7/11 frisch direkt bei Google gegengeprüft | Beide neuen PNGs aktiv, itemLevelIssues leer, je 6 gelieferte Kontexte für CH/LI genehmigt. Keine neuen Bildwrites, keine erneute Freigabe verlangt und keine neue Behebung gezählt. |\n| Ursache / Datenquelle | Vier aktuelle Quellprofile und Wandleuchten-Einzelfall gelesen; Writer-Schema und offizielle Dokumentation geprüft | Offer 10018213324745296287 aus AUTOFEED 10678939025: de/CH, Link auf /fr/-Seite, Preis fehlt. Kein vorhandener Supplementalfeed. Produktwriter nur API; generisches Linking belegt keine erlaubte AUTOFEED-Änderung. Keine Quelle, Regel oder Preiszahl auf Verdacht angelegt. |\n| Waage / Gegenprobe | Exakten Google-Landingpagefehler und eingereichte URL mit Desktop-/Googlebot-User-Agent sowie robots.txt geprüft | Google weiterhin abgelehnt. Beide öffentlichen UA-Proben HTTP 200 ohne Redirect; robots erlaubt den geprüften Pfad. Selbst deklarierter Googlebot-UA ist kein echter Google-Crawl/Review und keine Genehmigung. Review-/Reprocess-Schreibaktion fehlt. |\n| Zugriff / tatsächliche Änderung | Windsor-Produktabruf nach MCP-Timeout als unbekannt dokumentiert; direkte Google-Reads genutzt, Dokumentation und Teil-Arbeitsliste ergänzt | In R233 keine Feed-, Produkt-, Theme-, Social-, Flow-, DNS- oder Budgetänderung. 24 Aufgaben und Historie erhalten. Theme 214040805767 bleibt unveröffentlicht; Claude-Empfang unbekannt. |\n",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-20261115-R233.md",
+            "gitBlobSha": "48c791a128b17a5e75accc248f048bba2ef21fd0",
+            "sha256": "c585ae10502c2e75d8c98866b3ff6080875e8bc9c467dcc5569894e26c917225",
+            "readAt": "2026-11-15T11:38:04.985588+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-BELEGE-20261115-R233.json",
+            "gitBlobSha": "769c1d49b3518bb89240d93ff2257b054fedb516",
+            "sha256": "b050bc47f750ed1e9aeb647cf09e05670e1a2faa1e0c9b68b05a0377d7d1787d",
+            "readAt": "2026-11-15T11:38:04.985588+00:00"
+          }
+        ],
+        "claudeReceipt": "unknown"
       }
     },
     {
@@ -12882,18 +12940,18 @@
       "id": "merchant-missing-price-20261029",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r231_nail7_11_image_only_writes_applied_google_approved_other_errors_open",
+      "state": "r233_remaining_merchant_groups_partial_diagnosis_autofeed_and_review_gates",
       "title": "Merchant: Preisquellen, Bilder und konkrete Richtlinienfälle",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "GEMESSEN",
-      "lastEvidence": "Auf neue Fehler-Rückmeldung48 eindeutige Disapproved-Offers begrenzt gelesen, weitereSeitenvorhanden. Nach ausdrücklicher neuer7/11-Rechte-/Farbfreigabe nur beide Hauptbildlinks inAPI10667445201/de/CHF_99383214465 aktualisiert: zweiWrites/0Retries. Verzögerte direkte Rücklesung10:16:22UTC bestätigt neuePNGs, keineitemLevelIssues undCH/LI in je6geliefertenGooglekontexten genehmigt. Attributgegenprobe zeigt nurimageLink geändert, alleanderenProduktattribute unverändert. Kein globalerNullfehlerbeleg.",
-      "nextAllowedStep": "Diese zwei freigegebenen7/11-Angebote erhalten und nicht erneut schreiben; bei späterer Drift dieselben Ressourcen gezielt lesen und verursachenden Sync prüfen.1/6-Paar ebenfalls nicht wiederholen. Weitere Overlay-Fälle brauchen genaue Quellen/Medien/Rechte. AUTOFEED-Wandleuchte auf einzelne legitime Editor-/Sprach-/Variantenpreisquelle prüfen, keinen beliebigen Preis anlegen. Waage und Uhr mit vorbereiteten echten Nachprüfungsdossiers weiterführen, sobald legitime Review-Aktion verfügbar ist.",
+      "belegArt": "GEPRUEFT",
+      "lastEvidence": "R233: Neuer Ownerbefund 18 Gruppen. 5000er Summary abgeschnitten; 200 abgelehnte Angebote / 7 Codes, davon 144 Preis- und 19 Verfügbarkeitsmeldungen, überlappende Teilmessung. Nagellack 7/11 weiterhin neue Bilder/leere Issues/CHLI in je 6 Kontexten genehmigt. AUTOFEED-Wandleuchte weiterhin de/CH mit fr-Link und fehlendem Preis; 4 Quellprofile, kein Supplemental. Offizielle AUTOFEED-Updatefähigkeit für Supplementallink nicht belegt. Waage Google-Landingpagefehler bleibt trotz öffentlicher HTTP200-/robots-Gegenprobe. 1 Windsor-Timeout unbekannt; keine neuen operativen Writes.",
+      "nextAllowedStep": "Vollständige aktuelle 18 UI-Gruppen per zulässigem Export/Editorzugriff mit Beispielen zuordnen; AUTOFEED-Pflichtfeldfälle erst mit eindeutiger Angebots-/Variantenbindung und nachgewiesen erlaubtem Quellweg korrigieren. Keinen beliebigen Preis, keine massenhafte Unterdrückung und keine ungeprüfte neue Source/defaultRule. Waage/Uhr-Dossiers über echte Review-Aktion einreichen, wenn verfügbar. Bereits bestätigte Bildkorrekturen und Theme-Entwurf erhalten.",
       "blockers": [
-        "Vorher48er-Ausschnitt war partiell mit weiterem Cursor; andere aktuelle Fehler nicht vollständig behoben oder gezählt.",
-        "AUTOFEED10678939025-Einzeleditor und Google-Review/Reprocess fehlen in verbundenen Schreibfähigkeiten.",
-        "Wandleuchten-de-Offer verweist auf fr/noindex-Seite; Preis fehlt im Google-Datensatz trotz vorhandenerCHF-Variantenpreise. Kein willkürlicher Variantenpreis.",
-        "Waage öffentlichHTTP 200/CHF 127.90, Google-Crawl/Neubeurteilung unbekannt; Uhren-Waffenmeldung trotz Kategorie 201 bleibt zur Prüfung offen.",
-        "Weitere nicht aktuell gegengeprüfte historischeEinzelfälle bleiben ungeprüft; R224-Löschpaar nicht blind wiederholen."
+        "Die zwei API-Teilmessungen enumerieren die 18 UI-Gruppen nicht vollständig; weitere Produktseiten wurden bewusst nicht massenhaft gelesen.",
+        "Produktwriter ändert API-Inputs; konkreter AUTOFEED-Einzelfallwriter bzw. erlaubtes Supplemental-Linking unbekannt.",
+        "AUTOFEED-Wandleuchte hat mehrere echte Varianten; keine beliebige Preisbindung.",
+        "Google-Review/Reprocess-Schreibaktion fehlt. Öffentlicher Googlebot-UA ist kein echter Google-Crawl.",
+        "Claude-Empfang unbekannt; Theme214040805767 bleibt unveröffentlicht."
       ],
       "acceptance": [
         "Artikel-/Varianten-/Quellenidentität und aktueller Scope eindeutig",
@@ -13391,6 +13449,18 @@
           "sourceUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_193728_e9a69fb9-9d2d-4055-ac48-63f37be21a8f.png?v=1794427345",
           "sha256": "62ca475b761708fafefa254337c6b53001be115b886722d136e5b4b46128d441",
           "gitBlobSha": "d102dfecc19f2482c44b7b37a5661cd5db0ded9b"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-20261115-R233.md",
+          "gitBlobSha": "48c791a128b17a5e75accc248f048bba2ef21fd0",
+          "sha256": "c585ae10502c2e75d8c98866b3ff6080875e8bc9c467dcc5569894e26c917225",
+          "readAt": "2026-11-15T11:38:04.985588+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-BELEGE-20261115-R233.json",
+          "gitBlobSha": "769c1d49b3518bb89240d93ff2257b054fedb516",
+          "sha256": "b050bc47f750ed1e9aeb647cf09e05670e1a2faa1e0c9b68b05a0377d7d1787d",
+          "readAt": "2026-11-15T11:38:04.985588+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -15390,6 +15460,50 @@
           11
         ],
         "processedAndGoogleApproved": true
+      },
+      "run233": {
+        "revision": 233,
+        "dateZurich": "2026-11-15",
+        "recordedAtUTC": "2026-11-15T11:38:04.985588+00:00",
+        "trigger": "owner_reports_still18_merchant_issue_groups",
+        "newConcreteCountercheckReason": "Persistent 18 groups after R231 exact image corrections; diagnose remaining source and issue scopes, not repeat performance.",
+        "summaryScannedProducts": 5000,
+        "summaryTruncated": true,
+        "disapprovedPages": 2,
+        "pageSize": 100,
+        "uniqueDisapprovedOffers": 200,
+        "hasMoreDisapprovedPages": true,
+        "distinctCodesInDisapprovedSlice": 7,
+        "requiredPriceOccurrences": 144,
+        "requiredAvailabilityOccurrences": 19,
+        "ui18GroupsFullyEnumerated": false,
+        "globalErrorCount": "unknown",
+        "sourcesReturned": 4,
+        "newFeedWrites": 0,
+        "nail7_11StillApproved": true,
+        "realGoogleCrawlOrReviewPerformed": false,
+        "windsorProductReadTimeouts": 1,
+        "publicUrlUserAgentChecks": 2,
+        "robotsReads": 1,
+        "performanceOrOrderReports": 0,
+        "newThemeOrSocialWrites": 0,
+        "automationFrequencyChanged": false,
+        "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Identität / Fortsetzung | Core4 Revision 232 und heutigen Tagesblock frisch gelesen; Shop und Merchant-Konten abgeglichen | LuxeStyle / luxestyle.ch / CHF / Europe/Zurich und Merchant 5797470070 bestätigt. Der konkrete Ownerbefund «weiterhin 18 Fehlergruppen» begründet die Diagnose-Gegenprobe; keine Leistungs- oder Verkaufsreports wiederholt. |\n| Fehlergruppen / Teilmessung | Eine auf 5000 Produkte begrenzte Übersicht und zwei Seiten mit je 100 abgelehnten Angeboten gelesen | Übersicht abgeschnitten. 200 eindeutige Angebote, 7 Codes: 144 Preis- und 19 Verfügbarkeitsmeldungen, 30 Bildoverlay-, 4 Waffen-, 4 Tabak-, 1 Landingpage-, 1 Local-Requirements- und 1 Bildgrössen-Meldung. Meldungen überlappen; weitere Seiten vorhanden. Keine vollständige Zuordnung aller 18 UI-Gruppen. |\n| Bestätigte Bildkorrekturen | Die exakten vorhandenen Nagellack-Angebote 7/11 frisch direkt bei Google gegengeprüft | Beide neuen PNGs aktiv, itemLevelIssues leer, je 6 gelieferte Kontexte für CH/LI genehmigt. Keine neuen Bildwrites, keine erneute Freigabe verlangt und keine neue Behebung gezählt. |\n| Ursache / Datenquelle | Vier aktuelle Quellprofile und Wandleuchten-Einzelfall gelesen; Writer-Schema und offizielle Dokumentation geprüft | Offer 10018213324745296287 aus AUTOFEED 10678939025: de/CH, Link auf /fr/-Seite, Preis fehlt. Kein vorhandener Supplementalfeed. Produktwriter nur API; generisches Linking belegt keine erlaubte AUTOFEED-Änderung. Keine Quelle, Regel oder Preiszahl auf Verdacht angelegt. |\n| Waage / Gegenprobe | Exakten Google-Landingpagefehler und eingereichte URL mit Desktop-/Googlebot-User-Agent sowie robots.txt geprüft | Google weiterhin abgelehnt. Beide öffentlichen UA-Proben HTTP 200 ohne Redirect; robots erlaubt den geprüften Pfad. Selbst deklarierter Googlebot-UA ist kein echter Google-Crawl/Review und keine Genehmigung. Review-/Reprocess-Schreibaktion fehlt. |\n| Zugriff / tatsächliche Änderung | Windsor-Produktabruf nach MCP-Timeout als unbekannt dokumentiert; direkte Google-Reads genutzt, Dokumentation und Teil-Arbeitsliste ergänzt | In R233 keine Feed-, Produkt-, Theme-, Social-, Flow-, DNS- oder Budgetänderung. 24 Aufgaben und Historie erhalten. Theme 214040805767 bleibt unveröffentlicht; Claude-Empfang unbekannt. |\n",
+        "sources": [
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-20261115-R233.md",
+            "gitBlobSha": "48c791a128b17a5e75accc248f048bba2ef21fd0",
+            "sha256": "c585ae10502c2e75d8c98866b3ff6080875e8bc9c467dcc5569894e26c917225",
+            "readAt": "2026-11-15T11:38:04.985588+00:00"
+          },
+          {
+            "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-BELEGE-20261115-R233.json",
+            "gitBlobSha": "769c1d49b3518bb89240d93ff2257b054fedb516",
+            "sha256": "b050bc47f750ed1e9aeb647cf09e05670e1a2faa1e0c9b68b05a0377d7d1787d",
+            "readAt": "2026-11-15T11:38:04.985588+00:00"
+          }
+        ],
+        "claudeReceipt": "unknown"
       }
     },
     {
@@ -30584,6 +30698,28 @@
           "sha256": "09cf322db8c9d7fc6778211094582af8b1d0f7a2709d4a7ca356087f6297955e",
           "gitBlobSha": "2feabbad124ca3f4b03e9720d0bd57300193ba3f",
           "readAt": "2026-11-15T11:12:44.229398+00:00"
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 233,
+      "at": "2026-11-15T11:38:04.985588+00:00",
+      "actor": "codex",
+      "summary": "Restliche Merchant-Gruppen nach neuer Owner-Meldung begrenzt gegengeprüft: 200 abgelehnte Angebote mit 7 Codes, abgeschnittene 5000er-Übersicht, 144 Preis-/19 Verfügbarkeitsmeldungen. Exakte 7/11-Bilder weiterhin für CH/LI genehmigt. AUTOFEED-/Sprach-/Preisursache an Wandleuchte und Quellengrenze belegt, öffentliche Waage-/robots-Gegenprobe. Ein Windsor-Timeout bleibt unbekannt. Keine operativen Writes, 24 IDs/Historie erhalten; 18 UI-Gruppen nicht vollständig enumeriert.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-20261115-R233.md",
+          "gitBlobSha": "48c791a128b17a5e75accc248f048bba2ef21fd0",
+          "sha256": "c585ae10502c2e75d8c98866b3ff6080875e8bc9c467dcc5569894e26c917225",
+          "readAt": "2026-11-15T11:38:04.985588+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-BELEGE-20261115-R233.json",
+          "gitBlobSha": "769c1d49b3518bb89240d93ff2257b054fedb516",
+          "sha256": "b050bc47f750ed1e9aeb647cf09e05670e1a2faa1e0c9b68b05a0377d7d1787d",
+          "readAt": "2026-11-15T11:38:04.985588+00:00"
         }
       ],
       "taskCount": 24,
@@ -57066,5 +57202,49 @@
       }
     ],
     "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Identität / Fortsetzung | Core4 Revision 231 und Tagesblock gelesen; verbundenen Shopify-Shop und Theme-Rollen frisch geprüft | LuxeStyle / luxestyle.ch / CHF / Europe/Zurich bestätigt. MAIN 213991391623 bleibt live; gearbeitet im UNPUBLISHED-Theme 214040805767. Keine wiederholten Tagesreports oder Kauf-Watch. |\n| Bildmotive | Zwei originale Higgsfield-Kategoriemotive für Kinder und Baby sowie Schmuck erzeugt, visuell geprüft und in Shopify Files gespeichert | Zwei Still-Jobs gpt_image_2_6, je Kostenschätzung 1.5 Credits; keine separate Abrechnungsprüfung. Illustrative Szenen ohne SKU-/Materialversprechen; kein Video-Render. Weitere 14 vorhandene Bilder erhalten. |\n| Theme / Umsetzung | 16 Kategorie-Einstiege als vollflächige Bildkarten mit weissen Titeln, dunklem Verlauf und responsiven Bildern gestaltet; zwei Bildwähler und Textfarbe im Editor ergänzt | Fünf Dateien gespeichert. Erster Save c1a5f4e7 meldete Erfolg, aber Bildzuweisungen fehlten im Admin-/Browser-Readback; gezielte Index-Korrektur 742a075e anschliessend bestätigt. Keine blinde Wiederholung oder Live-Schaltung. |\n| Darstellung / Gegenprobe | Gespeicherte Vorschau in normalem Chromium bei 390×844 und 1440×900 geprüft; Kategorie-Links mit Baseline verglichen | 16 Bilder geladen, alle 16 Links/Reihenfolge gleich. Mobil 2 Spalten / 173×173 px, Desktop 4 Spalten / 316×237 px. Weisse Titel/Pfeile lesbar, kein festgestellter Text-/Seitenüberlauf oder CSS-Ladefehler. Neue Bildmotive aktiv. |\n| Schutzfelder / Grenzen | Sechs inline JavaScript-Blöcke, Kategorie-Reihenfolge/Linklogik, Produktliste/Section-Reihenfolge und R230-Dateihashes gegengeprüft | Erhalten. Keine Produkt-, Collection-, Preis-, Versand-, Flow-, DNS-, Rabatt-, Budget- oder Kontoeinstellung geändert. Nur Theme-Entwurf und zwei neue Files. Keine gemessene Conversionwirkung. |\n| Memory / Freigabe | R232-Quellen und Diff vorbereitet; zwei bestehende Aufgaben fortgeschrieben, 24 IDs/Historien erhalten | Das konkrete Theme «LuxeStyle – Kaufhinweis 15.11.2026» braucht vor Publish ein ausdrückliches Ja gemäss Shopify-Skill. Enthält weiterhin R230-Kaufhinweis und Popup-Text. Metricool-Identitätsread technisch blockiert, keine Social-Writes. Claude-Empfang unbekannt. |\n"
+  },
+  "run233": {
+    "revision": 233,
+    "dateZurich": "2026-11-15",
+    "recordedAtUTC": "2026-11-15T11:38:04.985588+00:00",
+    "trigger": "owner_reports_still18_merchant_issue_groups",
+    "newConcreteCountercheckReason": "Persistent 18 groups after R231 exact image corrections; diagnose remaining source and issue scopes, not repeat performance.",
+    "summaryScannedProducts": 5000,
+    "summaryTruncated": true,
+    "disapprovedPages": 2,
+    "pageSize": 100,
+    "uniqueDisapprovedOffers": 200,
+    "hasMoreDisapprovedPages": true,
+    "distinctCodesInDisapprovedSlice": 7,
+    "requiredPriceOccurrences": 144,
+    "requiredAvailabilityOccurrences": 19,
+    "ui18GroupsFullyEnumerated": false,
+    "globalErrorCount": "unknown",
+    "sourcesReturned": 4,
+    "newFeedWrites": 0,
+    "nail7_11StillApproved": true,
+    "realGoogleCrawlOrReviewPerformed": false,
+    "windsorProductReadTimeouts": 1,
+    "publicUrlUserAgentChecks": 2,
+    "robotsReads": 1,
+    "performanceOrOrderReports": 0,
+    "newThemeOrSocialWrites": 0,
+    "automationFrequencyChanged": false,
+    "table": "| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Identität / Fortsetzung | Core4 Revision 232 und heutigen Tagesblock frisch gelesen; Shop und Merchant-Konten abgeglichen | LuxeStyle / luxestyle.ch / CHF / Europe/Zurich und Merchant 5797470070 bestätigt. Der konkrete Ownerbefund «weiterhin 18 Fehlergruppen» begründet die Diagnose-Gegenprobe; keine Leistungs- oder Verkaufsreports wiederholt. |\n| Fehlergruppen / Teilmessung | Eine auf 5000 Produkte begrenzte Übersicht und zwei Seiten mit je 100 abgelehnten Angeboten gelesen | Übersicht abgeschnitten. 200 eindeutige Angebote, 7 Codes: 144 Preis- und 19 Verfügbarkeitsmeldungen, 30 Bildoverlay-, 4 Waffen-, 4 Tabak-, 1 Landingpage-, 1 Local-Requirements- und 1 Bildgrössen-Meldung. Meldungen überlappen; weitere Seiten vorhanden. Keine vollständige Zuordnung aller 18 UI-Gruppen. |\n| Bestätigte Bildkorrekturen | Die exakten vorhandenen Nagellack-Angebote 7/11 frisch direkt bei Google gegengeprüft | Beide neuen PNGs aktiv, itemLevelIssues leer, je 6 gelieferte Kontexte für CH/LI genehmigt. Keine neuen Bildwrites, keine erneute Freigabe verlangt und keine neue Behebung gezählt. |\n| Ursache / Datenquelle | Vier aktuelle Quellprofile und Wandleuchten-Einzelfall gelesen; Writer-Schema und offizielle Dokumentation geprüft | Offer 10018213324745296287 aus AUTOFEED 10678939025: de/CH, Link auf /fr/-Seite, Preis fehlt. Kein vorhandener Supplementalfeed. Produktwriter nur API; generisches Linking belegt keine erlaubte AUTOFEED-Änderung. Keine Quelle, Regel oder Preiszahl auf Verdacht angelegt. |\n| Waage / Gegenprobe | Exakten Google-Landingpagefehler und eingereichte URL mit Desktop-/Googlebot-User-Agent sowie robots.txt geprüft | Google weiterhin abgelehnt. Beide öffentlichen UA-Proben HTTP 200 ohne Redirect; robots erlaubt den geprüften Pfad. Selbst deklarierter Googlebot-UA ist kein echter Google-Crawl/Review und keine Genehmigung. Review-/Reprocess-Schreibaktion fehlt. |\n| Zugriff / tatsächliche Änderung | Windsor-Produktabruf nach MCP-Timeout als unbekannt dokumentiert; direkte Google-Reads genutzt, Dokumentation und Teil-Arbeitsliste ergänzt | In R233 keine Feed-, Produkt-, Theme-, Social-, Flow-, DNS- oder Budgetänderung. 24 Aufgaben und Historie erhalten. Theme 214040805767 bleibt unveröffentlicht; Claude-Empfang unbekannt. |\n",
+    "sources": [
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-20261115-R233.md",
+        "gitBlobSha": "48c791a128b17a5e75accc248f048bba2ef21fd0",
+        "sha256": "c585ae10502c2e75d8c98866b3ff6080875e8bc9c467dcc5569894e26c917225",
+        "readAt": "2026-11-15T11:38:04.985588+00:00"
+      },
+      {
+        "path": "dropship/codex-handoff-20261018/MERCHANT-GRUPPEN-BELEGE-20261115-R233.json",
+        "gitBlobSha": "769c1d49b3518bb89240d93ff2257b054fedb516",
+        "sha256": "b050bc47f750ed1e9aeb647cf09e05670e1a2faa1e0c9b68b05a0377d7d1787d",
+        "readAt": "2026-11-15T11:38:04.985588+00:00"
+      }
+    ],
+    "claudeReceipt": "unknown"
   }
 }

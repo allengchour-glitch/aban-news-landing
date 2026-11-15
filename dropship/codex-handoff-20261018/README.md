@@ -1,3 +1,27 @@
+# R233 – Merchant: 18 gemeldete Gruppen bleiben offen, Ursachen gezielt weiter geprüft – 15.11.2026 Zürich
+
+Der Inhaber meldet weiterhin 18 Fehlergruppen in Merchant. **Diese sind nicht vollständig behoben.** Die Gesamtzahl und vollständige aktuelle UI-Gruppenliste sind über die begrenzten API-Ausschnitte nicht unabhängig bestätigt. Der neue konkrete Befund begründet die Diagnose-Gegenprobe; keine heutigen Leistungs-, Umsatz-, Klaviyo- oder Kauf-Watch-Abfragen wiederholt.
+
+Frisch bestätigt: Shopify LuxeStyle / luxestyle.ch / CHF / Europe/Zurich und Merchant **5797470070**. Die zwei bereits in R231 korrigierten deutschen Nagellack-Angebote 7/11 bleiben mit den neuen Bildern in allen je sechs gelieferten Google-Kontexten für CH/LI genehmigt, itemLevelIssues leer. Keine neuen Bildwrites und nicht als neuer Erfolg zählen.
+
+**Begrenzter aktueller Befund:** Eine Übersicht scannt maximal 5'000 Produkte und meldet truncated=true; sie erfasst zwei Policy-Codes in diesem Ausschnitt und ist keine Gesamtdiagnose. Zwei weitere gezielte Seiten liefern 200 eindeutige abgelehnte Angebote mit sieben Codes. Es gibt 144 Meldungen zu fehlenden Preisen und 19 zu fehlender Verfügbarkeit, daneben 30 Bildüberlagerungs-, vier Waffen-, vier Tabak-, eine Landingpage-, eine Local-Requirements- und eine Bildgrössen-Meldung. Ein Angebot kann mehrere Meldungen haben. Weiterer Cursor vorhanden; keine Katalogquote, globale Null oder vollständige Abdeckung aller 18 UI-Gruppen behaupten. Die Kontoissues-Antwort ist leer; das beseitigt keine Produktfehler.
+
+**Konkrete Ursache weiter bestätigt:** Wandleuchten-Offer **10018213324745296287** kommt aus **AUTOFEED 10678939025**, ist de/CH zugeordnet, verlinkt eine `/fr/`-Produktseite und enthält keinen Preis. Das ist nicht die deutsche Shopify-API-Quelle 10667445201. Vier aktuelle Quellprofile zurückgelesen, Abrufzeit 11:27:37 UTC: deutsche API, französische API, AUTOFEED, Promotions; kein Supplementalfeed. Nicht pauschal alle 163 Pflichtfeldmeldungen diesem einen nachgewiesenen Beispiel zuordnen.
+
+Der verbundene Writer bietet insert/update/delete_product für API-Quellen und generisches create_data_source mit supplemental/defaultRule-Verknüpfung, aber keine Google-Review-/Reprocess-Aktion. Googles Dokumentation beschreibt AUTOFEED in der Data-Sources-API als read-only; der generische Verknüpfungsmechanismus beweist keine erlaubte Änderung dieser Quelle. Keine neue Quelle oder globale Regel auf Verdacht angelegt. Vor einem konkreten Quellenwechsel braucht es eine nachgewiesene unterstützte AUTOFEED-Einzelbearbeitung oder eine konkret geprüfte Quellstrategie sowie eindeutige Angebots-/Variantenbindung. Keinen beliebigen Preis aus mehreren Varianten und keine Verfügbarkeit aus Bestand 0 ableiten. Fehler nicht durch Ausblenden gültiger Produkte oder Policy-Umbenennung zum Verschwinden bringen.
+
+**Waage:** Google-Offer shopify_ZZ_15502258831745_68193799242119 bleibt mit landing_page_error abgelehnt. Die exakt eingereichte URL liefert heute bei Desktop-UA und selbst deklarierter Googlebot-UA HTTP 200 ohne Redirect; robots.txt erlaubt diesen Pfad. Das sind öffentliche Gegenproben, kein echter Google-Crawl oder Nachprüfungsbeleg. Keinen neuen Preis-/Availability-/URL-Patch ohne Ursache. Aktueller Googlepreis CHF 127.90; keine Umsatzwirkung daraus ableiten. Der fehlgeschlagene Windsor-Einzelabruf endete mit MCP request timed out; Daten unbekannt, nicht leer/404. Direkte bekannte Google-Ressourcen erfolgreich gelesen.
+
+**Tatsächliche Änderungen in R233:** ausschliesslich LuxeStyle-Dokumentation, aktuelle Teil-Arbeitsliste und Quellen-/Zugriffsbelege. Keine Feed-, Produkt-, Theme-, Social-, Flow-, DNS-, Budget- oder Rabattänderung. Kein zusätzlicher Publisher oder Zeitplan. Der R232-Theme-Entwurf 214040805767 ist weiterhin nicht live; diese Merchant-Rückmeldung ist keine Theme-Publishfreigabe. 24 Aufgaben-IDs und Historien erhalten. Claude-Kenntnisnahme unbekannt.
+
+Nächster konkreter Schritt: die vollständigen 18 UI-Gruppen per zulässigem aktuellem Export/Editorzugriff mit Beispielen zuordnen; danach die AUTOFEED-Pflichtfeldfälle mit eindeutigen Shopify-Varianten und erlaubtem Quellweg lösen. Die bereits vorbereiteten Google-Nachprüfungsdossiers für Waage/Uhr erst über eine tatsächlich verfügbare Review-Aktion einreichen. Keine weiteren pauschalen Katalogscans oder Änderungen erzwingen.
+
+Offizielle Quellen: [Data Sources / AUTOFEED](https://developers.google.com/merchant/api/guides/data-sources/manage-various-data-sources) · [Supplemental-Verknüpfung](https://developers.google.com/merchant/api/samples/add-supplemental-datasource-to-primary-datasource).
+
+[Belege und aktuelle Teilarbeitsliste](MERCHANT-GRUPPEN-BELEGE-20261115-R233.json).
+
+---
+
 # R232 – Einkaufswelten als Bildkarten im gespeicherten Theme-Entwurf – 15.11.2026 Zürich
 
 Die 16 Homepage-Kategorien sind im unveröffentlichten Theme **214040805767 «LuxeStyle – Kaufhinweis 15.11.2026»** als vollflächige Bildkarten mit weissen Titeln und dunklem Verlauf umgesetzt: mobil zwei, am Desktop vier Spalten. Zwei neue, unbeschriftete Higgsfield-Kategoriemotive für Kinder und Baby sowie Schmuck sind gespeichert und aktiv in der Vorschau. Die anderen 14 bestehenden Motive bleiben erhalten; einige enthalten alte Bannerwörter. Keine konkreten SKU-, Material-, Herkunfts-, Bestands- oder Lieferzeitversprechen aus den Illustrationen ableiten.

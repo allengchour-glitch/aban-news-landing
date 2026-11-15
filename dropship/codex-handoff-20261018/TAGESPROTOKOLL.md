@@ -2696,3 +2696,17 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [Bericht](EINKAUFSWELTEN-20261115-R232.md) · [Belege](EINKAUFSWELTEN-BELEGE-20261115-R232.json).
 
+
+### R233 – Merchant-Gruppen: aktuelle Teilmessung und Quellenblocker
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität / Fortsetzung | Core4 Revision 232 und heutigen Tagesblock frisch gelesen; Shop und Merchant-Konten abgeglichen | LuxeStyle / luxestyle.ch / CHF / Europe/Zurich und Merchant 5797470070 bestätigt. Der konkrete Ownerbefund «weiterhin 18 Fehlergruppen» begründet die Diagnose-Gegenprobe; keine Leistungs- oder Verkaufsreports wiederholt. |
+| Fehlergruppen / Teilmessung | Eine auf 5000 Produkte begrenzte Übersicht und zwei Seiten mit je 100 abgelehnten Angeboten gelesen | Übersicht abgeschnitten. 200 eindeutige Angebote, 7 Codes: 144 Preis- und 19 Verfügbarkeitsmeldungen, 30 Bildoverlay-, 4 Waffen-, 4 Tabak-, 1 Landingpage-, 1 Local-Requirements- und 1 Bildgrössen-Meldung. Meldungen überlappen; weitere Seiten vorhanden. Keine vollständige Zuordnung aller 18 UI-Gruppen. |
+| Bestätigte Bildkorrekturen | Die exakten vorhandenen Nagellack-Angebote 7/11 frisch direkt bei Google gegengeprüft | Beide neuen PNGs aktiv, itemLevelIssues leer, je 6 gelieferte Kontexte für CH/LI genehmigt. Keine neuen Bildwrites, keine erneute Freigabe verlangt und keine neue Behebung gezählt. |
+| Ursache / Datenquelle | Vier aktuelle Quellprofile und Wandleuchten-Einzelfall gelesen; Writer-Schema und offizielle Dokumentation geprüft | Offer 10018213324745296287 aus AUTOFEED 10678939025: de/CH, Link auf /fr/-Seite, Preis fehlt. Kein vorhandener Supplementalfeed. Produktwriter nur API; generisches Linking belegt keine erlaubte AUTOFEED-Änderung. Keine Quelle, Regel oder Preiszahl auf Verdacht angelegt. |
+| Waage / Gegenprobe | Exakten Google-Landingpagefehler und eingereichte URL mit Desktop-/Googlebot-User-Agent sowie robots.txt geprüft | Google weiterhin abgelehnt. Beide öffentlichen UA-Proben HTTP 200 ohne Redirect; robots erlaubt den geprüften Pfad. Selbst deklarierter Googlebot-UA ist kein echter Google-Crawl/Review und keine Genehmigung. Review-/Reprocess-Schreibaktion fehlt. |
+| Zugriff / tatsächliche Änderung | Windsor-Produktabruf nach MCP-Timeout als unbekannt dokumentiert; direkte Google-Reads genutzt, Dokumentation und Teil-Arbeitsliste ergänzt | In R233 keine Feed-, Produkt-, Theme-, Social-, Flow-, DNS- oder Budgetänderung. 24 Aufgaben und Historie erhalten. Theme 214040805767 bleibt unveröffentlicht; Claude-Empfang unbekannt. |
+
+[Bericht](MERCHANT-GRUPPEN-20261115-R233.md) · [Belege](MERCHANT-GRUPPEN-BELEGE-20261115-R233.json).
+
