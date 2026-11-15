@@ -1,4 +1,4 @@
-/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-18).
+/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-19).
    Sieben eigene Pavillons (je rund 10,4 × 8 m) stehen in zwei Spalten mit Gassen dazwischen: Chefbüro und Krypto, Shop und Versand, dann der
    Campusplatz mit dem Zentralmonitor, danach Social Media, Entwicklerbüro und das YouTube-Studio. Jeder Raum hat eine hohe Rückwand im Norden
    mit einem grossen Liveboard (Monitor mit Zahlen aus den Zeilen dieses Raums) und davor genug Platz zwischen den Schreibtischen.
@@ -56,7 +56,7 @@
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
   var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
   SEATS.forEach(function (s) { var r = ROOMS[s.room]; s.x = r.x0 + s.u; s.z = r.z0 + s.v; });
-  K.DESIGN_VERSION = 'campus-einheitlich-18';
+  K.DESIGN_VERSION = 'campus-einheitlich-19';
   K.SEATS = SEATS;
   K.ROOMS = ROOMS;
   K.ROOM_SIZE = [RW, RD];
@@ -439,6 +439,20 @@
     endRoom();
 
     /* =============================== CAMPUSPLATZ =============================== */
+    // Eigene Ficus-Kronen: nur die Blätter bewegen sich, Topf und Stamm bleiben fest.
+    // Atmosphärische Gestaltung, weder Wetterdaten noch gemessene Arbeitsaktivität.
+    W.foliage = [];
+    [[-10.9, 8.0], [10.9, 8.0], [-10.9, 13.7], [10.9, 13.7]].forEach(function(p,k){
+      B.cylb(p[0], GY, p[1], 0.42, 0.34, 0.64, 20, '#345b54');
+      B.cylb(p[0], GY+0.63, p[1], 0.37, 0.37, 0.025, 20, '#6f5540');
+      B.cylb(p[0], GY+0.65, p[1], 0.045, 0.065, 1.05, 10, '#806044');
+      var crown=new K.Builder();
+      for(var l=0;l<5;l++){
+        var a=l*PI*2/5;
+        crown.sph(Math.cos(a)*0.24, 0.5+(l%2)*0.22, Math.sin(a)*0.24, 0.36, 0.43, 0.28, 10, 7, l%2?'#557e50':'#3e6945');
+      }
+      W.foliage.push({mesh:R.mesh(crown),m:M.ident(),x:p[0],y:GY+1.05,z:p[1],phase:k*1.9});
+    });
     // Kontrollplatz: ruhige Bühne und breitere Monitorwand, Daten/Hittests unverändert.
     B.cyl(0, GY + 0.035, 11.8, 6.6, 6.6, 0.07, 72, '#365751');
     B.cyl(0, GY + 0.075, 11.8, 6.43, 6.43, 0.03, 72, '#7fc3b0', 0.12);
@@ -584,6 +598,12 @@
     var i, j, m, it;
     for (i = 0; i < W.statics.length; i++) R.draw(W.statics[i], null);
     for (i = 0; i < W.shadowStatics.length; i++) R.shadow(W.shadowStatics[i], null);
+    for(i=0;i<(W.foliage||[]).length;i++){
+      var leaf=W.foliage[i], sway=still?0:Math.sin(t*(0.43+i*0.06)+leaf.phase)*0.034+Math.sin(t*0.19+leaf.phase*0.7)*0.012;
+      m=leaf.m;M.ident(m);var ca=Math.cos(sway),sa=Math.sin(sway);
+      m[0]=ca;m[1]=sa;m[4]=-sa;m[5]=ca;m[12]=leaf.x;m[13]=leaf.y;m[14]=leaf.z;
+      R.draw(leaf.mesh,m);R.shadow(leaf.mesh,m);
+    }
     for (i = 0; i < W.inst.length; i++) {
       it = W.inst[i];
       for (j = 0; j < it.meshes.length; j++) { R.draw(it.meshes[j], it.m, it.pal); if (it.shadow) R.shadow(it.meshes[j], it.m); }

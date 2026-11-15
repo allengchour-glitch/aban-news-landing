@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: dekorative Bewegung im Büro ·15.11.2026
+
+Kleine Blickbewegungen und vier Pflanzen mit sanft bewegten Kronen, bei reduzierter Bewegung still. Bestehendes Atmen/Blinzeln erhalten. Raumgestaltung ausdrücklich von Quellen/Messzeiten getrennt; keine erfundene Arbeit/Live-Anbindung. Version19 synchron, vier WebGL-Gegenproben390/1440px und43 Dashboardbauprüfungen grün. Higgsfield unverändert; privater Claude-Upload separat. Details und Bereitstellung im Abschnitt Lebhafteres Büro der kanonischen Übergabe und zugehörigem PR.
+
 ## Codex: Monitorgehäuse und Leseansicht verbessert ·15.11.2026
 
 Realistischere Gehäuse/Bedienleisten, dezenter Glas-Hintergrund hinter der Schrift, frontaler Monitorfokus mit Rückkehr. Daten/Statusbedeutung unverändert; keine neuen Live-Verbindungen. Version18 synchron,390/1440px geprüft und43 Dashboardbauprüfungen grün. Higgsfield unverändert Revision4; privater Claude-Upload weiterhin separat. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Büro-Monitore und zugehöriger PR.
