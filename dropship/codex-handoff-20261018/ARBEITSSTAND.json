@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 234,
-  "updatedAt": "2026-11-15T13:35:41.637194+00:00",
+  "revision": 235,
+  "updatedAt": "2026-11-15T14:02:33Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -4567,7 +4567,7 @@
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEPRUEFT",
       "lastEvidence": "R234: Theme-Livefreigabeerhalten,einPushvomConnectorverweigert;547Dateiengeprüft,keineUmgehung. AlterMerchant-Exportvorhanden/hashgleich,18Kandidatenmatrix+exakte200erOfferprüfliste,6WandleuchtenPreispaareverifiziert. Metricoollux-Bindungfrischfunktionsfähig,6Kanalidentitätenpassen,1Planread46Objekte,keineSocialwrites. Daten/Quellen/Blockergeteilt,keineClaudeKenntnisnahmebehauptet.",
-      "nextAllowedStep": "Memorylink amSchlussteilen. OwnerfreigabezuTheme214040805767bewahren;manuellenlegitimenPublishunddanachLive-Readback ermöglichen. DieSource-,Review-,Rechte-undMastergatesweiterbearbeiten;keineanderenMarken,neueAutomationoderTagesreports. GlobaleFehlerfreiheitundPublikationennurmitBelegmelden.",
+      "nextAllowedStep": "Memorylink amSchlussteilen. OwnerfreigabezuTheme 214040805767bewahren;manuellenlegitimenPublishunddanachLive-Readback ermöglichen. DieSource-,Review-,Rechte-undMastergatesweiterbearbeiten;keineanderenMarken,neueAutomationoderTagesreports. GlobaleFehlerfreiheitundPublikationennurmitBelegmelden.",
       "blockers": [
         "Shopify-Publisher verweigertdiesesTheme trotzFreigabe;Zielunveröffentlicht.",
         "Merchant-AUTOFEED-/ReviewzugangundvollständigeraktuellerGruppenabgleichoffen.",
@@ -8589,7 +8589,7 @@
           "classification": "technical_review_draft_not_professional_master",
           "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
           "bytes": 5535209,
-          "durationSeconds": 18.0,
+          "durationSeconds": 18,
           "width": 1080,
           "height": 1920,
           "fps": 25,
@@ -12802,7 +12802,7 @@
           "classification": "technical_review_draft_not_professional_master",
           "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
           "bytes": 5535209,
-          "durationSeconds": 18.0,
+          "durationSeconds": 18,
           "width": 1080,
           "height": 1920,
           "fps": 25,
@@ -18842,6 +18842,16 @@
         "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
         "scope": "7 reviewed R230/R232 file changes",
         "needsSameApprovalAgain": false
+      },
+      "run235": {
+        "at": "2026-11-15T14:02:33Z",
+        "ownerMessage": "ja live",
+        "sameApprovalStillReceived": true,
+        "published": false,
+        "targetRole": "UNPUBLISHED",
+        "liveThemeId": "213991391623",
+        "technicalRefusal": "Only agent-created themes can be published here",
+        "nextAllowedStep": "Owner manually publishes the exact already-approved theme214040805767 in Shopify Admin; then verify role and public live rendering. Do not request the same approval again or clone/bypass the publisher restriction."
       }
     },
     {
@@ -24529,7 +24539,7 @@
       "title": "Welcome-Serviceangaben mit genau zwei belegten Zeilen korrigieren",
       "lastEvidenceDate": "2026-11-15",
       "belegArt": "GEMESSEN",
-      "lastEvidence": "R229-Einzelsatz in frische Kopie des aktuellen MAIN übernommen. Footer-Vorhash59f8477f…37100, Nachhash9321568a…3f978, eine Satzersetzung und unveränderte Skripte/übrige Bytes. Zusammen mit Kaufhinweis als zwei Dateien in Theme214040805767/Version688dc1d…bcf5 gespeichert. Kein Vollpublish des älteren Themes, keine Anmeldung oder Flowaktivierung.",
+      "lastEvidence": "R229-Einzelsatz in frische Kopie des aktuellen MAIN übernommen. Footer-Vorhash59f8477f…37100, Nachhash9321568a…3f978, eine Satzersetzung und unveränderte Skripte/übrige Bytes. Zusammen mit Kaufhinweis als zwei Dateien in Theme 214040805767/Version688dc1d…bcf5 gespeichert. Kein Vollpublish des älteren Themes, keine Anmeldung oder Flowaktivierung.",
       "nextAllowedStep": "Nur das benannte frische Theme nach konkreter Zustimmung und aktuellem Diff veröffentlichen. R228-Flow-/Capturedaten weiterverwenden; Laufzeit, Einwilligung, Listenaufnahme und E-Mail-Zustellung bleiben separat ungeprüft. Keine Testsendung/Kundenansprache.",
       "blockers": [
         "Neue frische Theme-Kopie weiterhin UNPUBLISHED; Live-Übernahme offen.",
@@ -27828,7 +27838,7 @@
           "classification": "technical_review_draft_not_professional_master",
           "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
           "bytes": 5535209,
-          "durationSeconds": 18.0,
+          "durationSeconds": 18,
           "width": 1080,
           "height": 1920,
           "fps": 25,
@@ -32098,6 +32108,17 @@
           "sha256": "0a35d70bd99f464c5f31615b9deccb192b5baeaeafb9857db69a7d98e4e910c9",
           "readAt": "2026-11-15T13:35:41.637194+00:00"
         }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 235,
+      "at": "2026-11-15T14:02:33Z",
+      "actor": "codex",
+      "summary": "Erneutes ausdrückliches «ja live» erhalten. Shop/Ziel frisch bestätigt; genau ein neuer nativer Publishversuch vom Connector mit published=false und Only agent-created themes can be published here abgewiesen. Rücklesung: Ziel 214040805767 UNPUBLISHED, bisheriges MAIN213991391623. Keine Umgehung, keine weiteren Theme-Änderungen, Kennzahl-/Flow-/Bestellreports oder Social-/Feedwrites. Gleiche Freigabe bleibt erhalten; manueller Admin-Publish ist nächster konkreter Schritt.",
+      "sources": [
+        "dropship/codex-handoff-20261018/LIVE-FREIGABE-20261115-R235.json"
       ],
       "taskCount": 24,
       "receiptState": "unknown_no_new_receipt"
@@ -54688,7 +54709,7 @@
       "classification": "technical_review_draft_not_professional_master",
       "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
       "bytes": 5535209,
-      "durationSeconds": 18.0,
+      "durationSeconds": 18,
       "width": 1080,
       "height": 1920,
       "fps": 25,
@@ -54840,7 +54861,7 @@
       "classification": "technical_review_draft_not_professional_master",
       "sha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
       "bytes": 5535209,
-      "durationSeconds": 18.0,
+      "durationSeconds": 18,
       "width": 1080,
       "height": 1920,
       "fps": 25,
@@ -55605,7 +55626,7 @@
       "width": 1080,
       "height": 1170,
       "frameRate": "30/1",
-      "duration": 8.0,
+      "duration": 8,
       "audioStreams": 0,
       "sourceNative": [
         960,
@@ -58400,7 +58421,7 @@
       [
         "Unveröffentlicht umgesetzt",
         "Frische Kopie von MAIN213991391623 erstellt; genau zwei Dateien geändert und einmal gespeichert",
-        "Theme214040805767 «LuxeStyle – Kaufhinweis 15.11.2026», Version688dc1d…bcf5; saved buy-buttons.liquid und footer-group.json, pending/pushErrors leer. Auswahlhinweis aus vorhandener Produktbeschreibung vor Kaufcontrols; Popup-Satz ausR229 übernommen. Nicht live."
+        "Theme 214040805767 «LuxeStyle – Kaufhinweis 15.11.2026», Version688dc1d…bcf5; saved buy-buttons.liquid und footer-group.json, pending/pushErrors leer. Auswahlhinweis aus vorhandener Produktbeschreibung vor Kaufcontrols; Popup-Satz ausR229 übernommen. Nicht live."
       ],
       [
         "Qualität / Gegenprobe",
@@ -58813,5 +58834,66 @@
     ],
     "nativeCJProductDetailReads": 1,
     "CJVideoCallsDownloadsRenders": 0
+  },
+  "run235": {
+    "revision": 235,
+    "at": "2026-11-15T14:02:33Z",
+    "ownerMessage": "ja live",
+    "scope": {
+      "themeId": "214040805767",
+      "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+      "reviewedChangeCount": 7,
+      "approvalReceived": true,
+      "approvalMissing": false
+    },
+    "identity": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch",
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "publishAttempt": {
+      "themeId": "gid://shopify/OnlineStoreTheme/214040805767",
+      "published": false,
+      "pending": [],
+      "userErrors": [
+        "Only agent-created themes can be published here"
+      ],
+      "rejectedReason": "publish_refused"
+    },
+    "readback": {
+      "target": {
+        "id": "gid://shopify/OnlineStoreTheme/214040805767",
+        "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+        "role": "UNPUBLISHED",
+        "updatedAt": "2026-11-15T11:01:03Z"
+      },
+      "main": [
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213991391623",
+          "name": "LuxeStyle – SEO 14.11.2026",
+          "role": "MAIN"
+        }
+      ]
+    },
+    "interpretation": "User expressly renewed the publish instruction. One native publish attempt returned a definite refusal, published=false, pending=[]. No ambiguous write, additional retry, clone or other publishing path. Scope restriction, not an automatic approval-review rejection.",
+    "manualAdminUrl": "https://admin.shopify.com/store/luxestyle-ch/themes",
+    "liveQa": "NOT_RUN_TARGET_REMAINS_UNPUBLISHED",
+    "otherWork": {
+      "newThemeEdits": 0,
+      "newSocialWrites": 0,
+      "newMerchantWrites": 0,
+      "newMetricsFlowOrderReports": 0,
+      "automationOrBudgetChanges": 0,
+      "claudeReceipt": "unknown"
+    },
+    "sources": [
+      "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+      "dropship/codex-handoff-20261018/LIVE-FREIGABE-20261115-R235.json"
+    ]
   }
 }

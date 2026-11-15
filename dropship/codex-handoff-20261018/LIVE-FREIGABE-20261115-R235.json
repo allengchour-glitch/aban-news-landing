@@ -1,0 +1,61 @@
+{
+  "revision": 235,
+  "at": "2026-11-15T14:02:33Z",
+  "ownerMessage": "ja live",
+  "scope": {
+    "themeId": "214040805767",
+    "themeName": "LuxeStyle – Kaufhinweis 15.11.2026",
+    "reviewedChangeCount": 7,
+    "approvalReceived": true,
+    "approvalMissing": false
+  },
+  "identity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "publishAttempt": {
+    "themeId": "gid://shopify/OnlineStoreTheme/214040805767",
+    "published": false,
+    "pending": [],
+    "userErrors": [
+      "Only agent-created themes can be published here"
+    ],
+    "rejectedReason": "publish_refused"
+  },
+  "readback": {
+    "target": {
+      "id": "gid://shopify/OnlineStoreTheme/214040805767",
+      "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-15T11:01:03Z"
+    },
+    "main": [
+      {
+        "id": "gid://shopify/OnlineStoreTheme/213991391623",
+        "name": "LuxeStyle – SEO 14.11.2026",
+        "role": "MAIN"
+      }
+    ]
+  },
+  "interpretation": "User expressly renewed the publish instruction. One native publish attempt returned a definite refusal, published=false, pending=[]. No ambiguous write, additional retry, clone or other publishing path. Scope restriction, not an automatic approval-review rejection.",
+  "manualAdminUrl": "https://admin.shopify.com/store/luxestyle-ch/themes",
+  "liveQa": "NOT_RUN_TARGET_REMAINS_UNPUBLISHED",
+  "otherWork": {
+    "newThemeEdits": 0,
+    "newSocialWrites": 0,
+    "newMerchantWrites": 0,
+    "newMetricsFlowOrderReports": 0,
+    "automationOrBudgetChanges": 0,
+    "claudeReceipt": "unknown"
+  },
+  "sources": [
+    "dropship/codex-handoff-20261018/LIVE-MERCHANT-BELEGE-20261115-R234.json",
+    "dropship/codex-handoff-20261018/LIVE-FREIGABE-20261115-R235.json"
+  ]
+}
