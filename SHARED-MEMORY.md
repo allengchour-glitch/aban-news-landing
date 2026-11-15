@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: privater Higgsfield-Farbstand Revision4 ·15.11.2026
+
+Vorhandene Szene mit warmem Stein/Porzellan, dunklem Petrol, Eiche/Kupfer und sieben Bereichsfarben überarbeitet.270 Objekte erhalten;960x720-Render geprüft und Revision4 im Viewer gezeigt. Schritt04_farben.py dokumentiert, keine privaten Kennungen in Git. Web-Büro-Version17 nicht umgefärbt, keine neue Datenverbindung oder bezahlte Generierung. Details: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt Higgsfield-Farbgestaltung und zugehöriger PR.
+
 ## Codex: grösserer3D-Kontrollplatz und Higgsfield-Vorlage ·15.11.2026
 
 Vorhandenes Büro mit breiterem Zentralmonitor, markantem Rahmen/Plattform und Kamera erweitert, Version17 synchron.390/1440px WebGL/Monitorfokus geprüft,43 Dashboardbauprüfungen grün. Private Higgsfield-3D-Vorlage Revision3 tatsächlich gebaut, gerendert, angesehen und gezeigt; keine Live-Datenverbindung oder vollständige Integration. Keine bezahlten Generierungen/Publikation. Claude-Upload weiterhin bei Claude und nur vollständiger Bau plus passender3D-Code. Details/Bereitstellung: `docs/CODEX-CLAUDE-UEBERGABE.md`, Abschnitt3D-Büro und zugehöriger PR.
