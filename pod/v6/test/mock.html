@@ -68,6 +68,7 @@
 (function () {
   var q = new URLSearchParams(location.search);
   window.Shopify = { locale: q.get('lang') || 'de' };
+  if (q.get('wurzel') !== null) window.Shopify.routes = { root: q.get('wurzel') };   // wie Shopify auf /fr/-Seiten: Shopify.routes.root = '/fr/'
   if (q.get('themeregel') === '1') { var tr = document.createElement('style'); tr.textContent = 'img{max-width:100%;height:auto}'; document.head.appendChild(tr); }
   document.documentElement.lang = window.Shopify.locale;
   var modi = (q.get('modus') || 'v6').split(',');

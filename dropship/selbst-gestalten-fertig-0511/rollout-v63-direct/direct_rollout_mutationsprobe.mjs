@@ -89,6 +89,11 @@ const MUTANTEN = [
   { id: 'B05', was: 'Standard-Vorgänger nur 6.3.0', edits: [z('bau', 'export const STANDARD_VORGAENGER', "export const STANDARD_VORGAENGER = Object.freeze(['6.3.0']);")] },
   { id: 'B06', was: 'Standard-Ziel 6.3.1 statt 6.4.0', edits: [z('bau', 'export function editorReleaseErzeugen(', zeileErsetzt('version = ROLLOUT_V64', "version = '6.3.1'"))] },
   { id: 'B07', was: 'JSON ohne abschliessenden Zeilenumbruch', edits: [z('bau', 'export const editorReleaseText', zeileErsetzt('}\\n`', '}`'))] },
+  { id: 'B08', was: 'RO2-05: --pruefen übergeht die Liste --vorgaenger wieder', edits: [z('bau', "if (o.vorgaenger && istVorg.join(',') !== vorgaenger.join(','))", null)] },
+  { id: 'B09', was: 'RO2-05: Vorgänger nur nach Anzahl verglichen', edits: [z('bau', "if (o.vorgaenger && istVorg.join(',') !== vorgaenger.join(','))", zeileErsetzt("istVorg.join(',') !== vorgaenger.join(',')", 'istVorg.length !== vorgaenger.length'))] },
+  { id: 'B10', was: 'RO2-05: Reihenfolge der Vorgänger egal', edits: [z('bau', "if (o.vorgaenger && istVorg.join(',') !== vorgaenger.join(','))", zeileErsetzt("istVorg.join(',') !== vorgaenger.join(',')", "[...istVorg].sort().join(',') !== [...vorgaenger].sort().join(',')"))] },
+  { id: 'B11', was: 'RO2-05: Vergleich auch ohne --vorgaenger (gegen die Vorgabe 6.3.0, 6.3.1)', edits: [z('bau', "if (o.vorgaenger && istVorg.join(',') !== vorgaenger.join(','))", zeileErsetzt('if (o.vorgaenger && ', 'if ('))] },
+  { id: 'B12', was: 'RO2-05: Erfolgsmeldung zählt wieder die Argumente statt der Datei', edits: [z('bau', 'ist konsistent (Ziel', zeileErsetzt("${json.version}, ${istVorg.length} Vorgänger: ${istVorg.join(', ')}", '${version}, ${vorgaenger.length} Vorgänger'))] },
   // ---- direct_rollout.mjs (Kindprozess-Tests) ----------------------------------------------------------------
   { id: 'S01', was: 'Skript reicht die Bestätigung nicht an die Prüfung weiter', edits: [z('skript', "ack: process.env.ACK || process.env.ACK_FULL || '',", null)] },
   { id: 'S02', was: 'Skript behandelt LIVE immer als gesetzt', edits: [z('skript', "live: process.env.LIVE === '1',", '  live: true,')] },
