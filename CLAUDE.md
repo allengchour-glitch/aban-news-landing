@@ -94,6 +94,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   auswerten. **Beim Hauptmodell bleiben:** jedes Urteil (Bildqualität, Rechtliches, Lieferbarkeit), Code mit
   Geldwirkung, Shop-/Theme-Schreibzugriffe, Reviews. Ein Haiku-Befund ist eine **Behauptung** — Zahlen, die in eine
   Entscheidung gehen, am Rohergebnis stichprobenartig gegenprüfen (Messgerät zuerst prüfen).
+  **Modell-Leiter für Unteragenten (Besitzer 15.11.: TikTok-Tipp «Fable plant, Opus führt aus» mit «mache das», dann
+  «nutze auch sonnet model» und «und haiku»; Auslegung meine, nicht bestätigt):** Haiku für Mechanisches (wie oben),
+  **Sonnet als Vorgabe** für Standardarbeit mit klarem Auftrag (Code nach Vorgabe mit Tests, Texte entwerfen, Dateien
+  und Läufe zusammenfassen, übersetzen), **Opus ausdrücklich** (`model: "opus"`) für jedes Urteil, Code mit Geldwirkung,
+  Shop- und Theme-Schreibzugriffe und Prüfer; Fable nur als Hauptmodell (stellt der Besitzer per `/model`). Technisch:
+  `.claude/settings.json` setzt `CLAUDE_CODE_SUBAGENT_MODEL=sonnet`, bewusst OHNE `CLAUDE_CODE_SUBAGENT_MODEL_FORCE`
+  (sonst würde jede Modellangabe überschrieben). Laut Doku (code.claude.com, gelesen 15.11.) gilt die Vorgabe für
+  Unteragenten ohne eigene Modellangabe, nicht für die eingebauten Explore- und Plan-Agenten: die erben das
+  Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
 **📌 2026-11-15 abends (🎄 Weihnachts-Schaufenster LIVE · 📱 kompakter Kategoriekopf LIVE und nachgebessert · 💡 Bestseller-Lampe: Hauptausführung war nicht kaufbar, behoben · 🧭 Menü-Übersetzung gerettet · 🔎 Index-Liste; Besitzer «mache alles weiter, aber allererst 10 indexdierungslink», «merchant fix und alles auch weiter», «nimm dir viel zeit für saubere arbeit», «nutze model für token sparen», «nutze auch sonnet für einfache sachen», Earshot «Nein»; PRs #3154 `ae59115056`, #3155 `a15cce339b`, #3157 `2a26c07791` gemergt):**
