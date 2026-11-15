@@ -1,623 +1,391 @@
 <!doctype html>
 <html lang="de">
-<head>
-<meta charset="utf-8">
-<script>/* 🧹 SW-Kick: Eine alte Service-Worker-Version zerbricht auf manchen Geraeten die Modell-Downloads
-   (User-Diagnose: Header ok, Body scheitert). Spiel-Seiten brauchen keinen SW — abmelden und EINMAL
-   neu laden; spiele.html registriert bei Bedarf die reparierte v2 neu. */
-(function(){try{
-  if(navigator.serviceWorker&&navigator.serviceWorker.controller&&!sessionStorage.getItem("swKick")){
-    navigator.serviceWorker.getRegistrations().then(function(rs){
-      if(!rs.length)return;
-      Promise.all(rs.map(function(r){return r.unregister();})).then(function(){
-        sessionStorage.setItem("swKick","1");location.reload();});
-    });}
-}catch(e){}})();</script>
-
-<script>/* Fusion: Direktbesuch -> Wildnis-Welt; als Station (iframe/?station=1) laeuft das Spiel normal */
-if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.replace("/neon-wildnis.html?von="+location.pathname.replace(/\W/g,""));}</script>
-<meta name="robots" content="noindex">
-<meta name="aban-nav" content="off">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>Neon-Flug — 3D-Arcade-Spiel | aban news</title>
-<meta name="description" content="Neon-Flug: flüssiges 3D-Arcade-Spiel im Browser. Steuere den Gleiter durch den Neon-Canyon, weiche Säulen aus, sammle Orbs. Gratis, kein Download, 60 fps.">
-<link rel="canonical" href="https://abannews.com/neon-wildnis.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Neon-Flug — 3D-Arcade im Browser">
-<meta property="og:description" content="Flüssiges 3D-Spiel, kein Download. Weiche aus, sammle Orbs, knacke deinen Rekord.">
-<meta property="og:url" content="https://abannews.com/neon-flug.html">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"VideoGame","name":"Neon-Flug","url":"https://abannews.com/neon-flug.html","genre":"Arcade","inLanguage":"de","isAccessibleForFree":true,"applicationCategory":"Game","operatingSystem":"Web","publisher":{"@type":"Organization","name":"aban news"}}
-</script>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:#06070f;font-family:system-ui,Segoe UI,Roboto,sans-serif;color:#fff;-webkit-tap-highlight-color:transparent;touch-action:none;overscroll-behavior:none} /* P3 (Play-Test): Wisch in der Pause löste Browser-History-Navigation aus → Spielstand weg */
-#wrap{position:fixed;inset:0}
-canvas{display:block}
-/* HUD-Lesbarkeits-Muster (neon-realm): Fliesstext ≥16px, Panels vor Neon-Szene, Touch ≥44px */
-#hud{position:fixed;top:10px;left:0;right:0;display:flex;justify-content:space-between;align-items:flex-start;padding:0 112px 0 12px;font-weight:800;font-size:1.35rem;pointer-events:none;z-index:5}
-#hud>span{background:rgba(8,11,28,.72);border:1px solid rgba(94,242,255,.28);border-radius:14px;padding:7px 14px;text-shadow:0 2px 8px #000}
-#hud .best{font-size:1.05rem;color:#c7cbe6;padding-top:10px}
-.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 40%,rgba(20,24,48,.7),rgba(6,7,15,.92));backdrop-filter:blur(3px);padding:20px;z-index:7;overflow-y:auto}
-.overlay h1{font-size:2.2rem;letter-spacing:1px;margin-bottom:.2rem;background:linear-gradient(90deg,#5ef2ff,#b98bff,#ff7ad9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.overlay p{color:#c7cbe6;max-width:360px;margin:.5rem 0;font-size:1rem;line-height:1.55}
-.btn{margin-top:14px;border:0;cursor:pointer;font-weight:800;font-size:1.1rem;padding:13px 32px;min-height:48px;border-radius:14px;color:#06070f;background:linear-gradient(90deg,#5ef2ff,#b98bff);box-shadow:0 8px 30px rgba(94,242,255,.35)}
-.btn.ghost{background:transparent;color:#9fb2ff;border:1px solid #3a4170;box-shadow:none;font-size:1rem;padding:12px 24px;min-height:44px}
-.small{font-size:1rem;color:#98a0c6;margin-top:18px}
-.small a{color:#9fb2ff}
-.hide{display:none!important}
-.tag{font-size:.9rem;letter-spacing:3px;color:#8f99d0;text-transform:uppercase;margin-bottom:6px}
-#combo:empty{display:none}
-#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;transition:opacity .08s}
-#vig{position:fixed;inset:0;pointer-events:none;z-index:4;background:radial-gradient(ellipse at 50% 45%,transparent 52%,rgba(2,2,12,.42) 100%)}
-</style>
-</head>
-<body>
-<div id="wrap"></div>
-<div id="vig"></div>
-<div id="hud"><span id="score">0</span><span class="best"><span id="bestLbl">Rekord</span> <span id="best">0</span></span></div>
-<button id="muteBtn" title="Ton an/aus (M)" style="position:fixed;top:8px;right:10px;z-index:8;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer">🔊</button>
-<button id="setBtn" title="Einstellungen" style="position:fixed;top:8px;right:62px;z-index:8;border:1px solid #3a4170;background:rgba(16,20,43,.8);color:#9fb2ff;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer">⚙️</button>
-<div id="flash"></div>
-<div id="combo" style="position:fixed;top:60px;left:12px;font-weight:800;font-size:1.5rem;background:rgba(8,11,28,.72);border:1px solid rgba(94,242,255,.28);border-radius:14px;padding:4px 12px;text-shadow:0 2px 8px #000;pointer-events:none;z-index:5"></div>
-<div id="dashbar" style="position:fixed;top:106px;left:12px;width:180px;height:14px;background:rgba(8,11,28,.72);border:1px solid rgba(94,242,255,.28);border-radius:8px;overflow:hidden;pointer-events:none;z-index:5"><i id="dashfill" style="display:block;height:100%;width:0;background:linear-gradient(90deg,#ffd166,#ff7ad9)"></i></div>
-<div id="announce" style="position:fixed;top:24%;left:0;right:0;text-align:center;font-weight:800;font-size:1.9rem;text-shadow:0 2px 12px #000,0 0 24px rgba(0,0,0,.8);pointer-events:none;opacity:0;transition:opacity .3s;color:#5ef2ff;z-index:5"></div>
-<div id="upg" class="overlay hide" style="background:rgba(6,7,15,.82);backdrop-filter:blur(4px)"></div>
-
-<div class="overlay" id="start">
-  <div class="tag" id="tStartTag">aban news · 3D-Arcade</div>
-  <h1>NEON-FLUG</h1>
-  <p id="tIntro">Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.</p>
-  <p id="tControls" style="font-size:1rem;color:#aab4dd">Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen</p>
-  <button class="btn" id="startBtn">Start ▶</button>
-  <button class="btn ghost" id="dailyBtn">🗓️ Tages-Challenge</button>
-  <div id="skins" style="margin-top:16px;font-size:1rem;color:#c7cbe6"></div>
-  <div class="small" id="tStartFoot">Läuft im Browser, kein Download · <a href="/spiele.html">🕹️ mehr Spiele</a> · <a href="/online-tools.html">mehr Tools</a></div>
-</div>
-
-<div class="overlay hide" id="over">
-  <div class="tag" id="tOverTag">Game Over</div>
-  <h1 id="finalScore">0</h1>
-  <p id="verdict">Nicht schlecht!</p>
-  <button class="btn" id="againBtn">Nochmal ▶</button>
-  <button class="btn ghost" id="shareBtn">Ergebnis teilen 📋</button>
-  <p class="small" id="tOverFoot">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a></p>
-</div>
-
-<div class="overlay hide" id="settings">
-  <div class="tag">Einstellungen · Settings</div>
-  <h1 style="font-size:1.5rem" id="tSetTitle">Einstellungen</h1>
-  <div id="setBody" style="margin-top:10px;font-size:1rem;color:#c7cbe6"></div>
-  <button class="btn" id="setCloseBtn">OK</button>
-</div>
-
-<div class="overlay hide" id="pause">
-  <div class="tag">Pause</div>
-  <h1>⏸</h1>
-  <p id="tPauseTxt">Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.</p>
-  <button class="btn" id="resumeBtn">Weiter ▶</button>
-</div>
-
-<script src="/js/vendor/three.min.js"></script>
-<script src="/js/vendor/GLTFLoader.js"></script>
-<script>/* 🚑 Robust-Loader: r128-FileLoader (Stream-Reader) scheitert auf manchen Geraeten hinter dem
-   Service Worker mit 'Failed to fetch' (User-Diagnose Android/Brave). GLB selbst per fetch holen
-   und direkt parsen — bei Fehler faellt es auf den alten Weg zurueck. */
-(function(){if(!(window.THREE&&THREE.GLTFLoader))return;
-  var _origLoad=THREE.GLTFLoader.prototype.load;
-  THREE.GLTFLoader.prototype.load=function(url,onLoad,onProgress,onError){var self=this;
-    fetch(url,{cache:"force-cache"}).then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.arrayBuffer();})
-    .then(function(buf){self.parse(buf,url.slice(0,url.lastIndexOf("/")+1),onLoad,function(pe){if(onError)onError(pe);});})
-    .catch(function(e){try{_origLoad.call(self,url,onLoad,onProgress,onError);}catch(e2){if(onError)onError(e2);}});
-  };})();
-</script>
-<script>
-(function(){
-"use strict";
-var THREE=window.THREE;
-var IS_TOUCH=navigator.maxTouchPoints>0,PFX=IS_TOUCH?0.6:1;
-var wrap=document.getElementById("wrap");
-var W=window.innerWidth,H=window.innerHeight;
-
-var renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.outputEncoding=THREE.sRGBEncoding;
-renderer.setSize(W,H);wrap.appendChild(renderer.domElement);
-
-var scene=new THREE.Scene();
-scene.background=new THREE.Color(0x06070f);
-scene.fog=new THREE.Fog(0x06070f,55,330); // weiter Nebel, damit die GLB-Bergketten am Horizont sichtbar sind
-
-var camera=new THREE.PerspectiveCamera(70,W/H,0.1,460);
-camera.position.set(0,3.2,9);
-
-scene.add(new THREE.AmbientLight(0x404a8c,1.1));
-var dir=new THREE.DirectionalLight(0xffffff,0.7);dir.position.set(5,12,8);scene.add(dir);
-var glow=new THREE.PointLight(0x5ef2ff,1.4,60);scene.add(glow);
-
-// Floor grid (neon) — heller für mehr Präsenz
-
-// Animierter Retrowave-Grid-Boden (Shader: scrollende Neon-Linien, Puls, Horizont-Fade)
-function neonGrid(size,cells,c1,c2){
- var m=new THREE.ShaderMaterial({transparent:true,depthWrite:false,fog:false,
-  uniforms:{uT:{value:0},c1:{value:new THREE.Color(c1)},c2:{value:new THREE.Color(c2)}},
-  vertexShader:"varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}",
-  fragmentShader:"varying vec2 vUv;uniform float uT;uniform vec3 c1;uniform vec3 c2;void main(){vec2 g=vUv*"+cells.toFixed(1)+";g.y+=uT;vec2 gv=fract(g)-0.5;float d=min(abs(gv.x),abs(gv.y));float line=smoothstep(0.07,0.012,d);float pulse=0.8+0.2*sin(uT*1.7);float cd=distance(vUv,vec2(0.5));float fade=smoothstep(0.5,0.18,cd);vec3 col=mix(c2,c1,line)*pulse;gl_FragColor=vec4(col,line*0.75*fade);}",
-  blending:THREE.AdditiveBlending,side:THREE.DoubleSide});
- var mesh=new THREE.Mesh(new THREE.PlaneGeometry(size,size),m);mesh.rotation.x=-Math.PI/2;return mesh;
-}
-var gridMesh=neonGrid(420,84,0x5ef2ff,0x1a2258);gridMesh.position.y=-2;scene.add(gridMesh);
-// Licht-Trail hinter dem Gleiter
-var trailN=Math.round(14*PFX),trailG=new THREE.BufferGeometry(),trailP=new Float32Array(trailN*3),trailCl=new Float32Array(trailN*3);
-for(var _ti=0;_ti<trailN;_ti++){var fdd=1-_ti/trailN;trailCl[_ti*3]=0.37*fdd;trailCl[_ti*3+1]=0.95*fdd;trailCl[_ti*3+2]=1.0*fdd;}
-trailG.setAttribute("position",new THREE.BufferAttribute(trailP,3));trailG.setAttribute("color",new THREE.BufferAttribute(trailCl,3));
-var trailTex=(function(){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");var g=c.createRadialGradient(32,32,2,32,32,30);g.addColorStop(0,"rgba(255,255,255,1)");g.addColorStop(1,"rgba(255,255,255,0)");c.fillStyle=g;c.fillRect(0,0,64,64);return new THREE.CanvasTexture(cv);})();
-var trail=new THREE.Points(trailG,new THREE.PointsMaterial({size:0.34,map:trailTex,vertexColors:true,transparent:true,opacity:0.45,blending:THREE.AdditiveBlending,depthWrite:false}));scene.add(trail);
-
-// Neon-Canyon-Wände (füllen den leeren Raum, geben "Canyon"-Gefühl)
-var wallL=new THREE.Mesh(new THREE.BoxGeometry(0.6,3.2,800),new THREE.MeshStandardMaterial({color:0x0b1636,emissive:0x5ef2ff,emissiveIntensity:0.14,flatShading:true})); /* Polier-Pass: 0.32 brannte die Wände zu riesigen Pastell-Rampen aus */
-wallL.position.set(-9.6,-0.4,-300);scene.add(wallL);
-var wallR=wallL.clone();wallR.material=wallL.material.clone();wallR.position.x=9.6;scene.add(wallR);
-// Untere Leuchtleisten an den Wänden
-var stripL=new THREE.Mesh(new THREE.BoxGeometry(0.25,0.25,800),new THREE.MeshStandardMaterial({color:0xb98bff,emissive:0xb98bff,emissiveIntensity:0.85}));
-stripL.position.set(-9.0,-1.8,-300);scene.add(stripL);
-var stripR=stripL.clone();stripR.material=stripL.material.clone();stripR.position.x=9.0;scene.add(stripR);
-
-// Sterne/Tiefe im Hintergrund
-var starGeo=new THREE.BufferGeometry();var sp=new Float32Array(220*3);
-for(var si=0;si<220;si++){sp[si*3]=(Math.random()-.5)*140;sp[si*3+1]=Math.random()*45+6;sp[si*3+2]=-Math.random()*320;}
-starGeo.setAttribute("position",new THREE.BufferAttribute(sp,3));
-var stars=new THREE.Points(starGeo,new THREE.PointsMaterial({color:0x9aa2d8,size:0.7,map:trailTex,transparent:true,opacity:.8,depthWrite:false}));
-scene.add(stars);
-
-// Horizont-Glut hinter den Bergen (Retrowave-Band, Farbe folgt dem Biom)
-var horizonTex=(function(){var cv=document.createElement("canvas");cv.width=256;cv.height=128;var c=cv.getContext("2d");var g=c.createRadialGradient(128,128,8,128,128,122);g.addColorStop(0,"rgba(255,255,255,.85)");g.addColorStop(.45,"rgba(255,255,255,.3)");g.addColorStop(1,"rgba(255,255,255,0)");c.fillStyle=g;c.fillRect(0,0,256,128);return new THREE.CanvasTexture(cv);})();
-var horizon=new THREE.Mesh(new THREE.PlaneGeometry(430,150),new THREE.MeshBasicMaterial({map:horizonTex,color:0x5ef2ff,transparent:true,opacity:.4,blending:THREE.AdditiveBlending,depthWrite:false,fog:false}));
-horizon.position.set(0,14,-320);horizon.material.opacity=0.55;scene.add(horizon);
-
-// Horizont-Landschaft (Blender-GLB, spiele-dev/blender_landscape_flug.py):
-// "corr_*" = kachelbares Bergketten-Segment (Länge 360) → 2 Instanzen mit Parallax-Scroll+Wrap,
-// "back_*" = statische Peak-Wand am Horizont. Kristall-Materialien glühen via emissiveIntensity.
-var landCorr=[],LSEG=360;
-if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/landscape_flug.glb",function(g){
-  var corr=new THREE.Group(),back=new THREE.Group();
-  g.scene.children.slice().forEach(function(n){(n.name.indexOf("back")===0?back:corr).add(n);});
-  var done={},rocks=[];
-  [corr,back].forEach(function(gr){gr.traverse(function(n){if(n.isMesh&&n.material){
-    if(((n.material.name||"").indexOf("crystal")<0))rocks.push(n);
-    if(done[n.material.uuid])return;done[n.material.uuid]=1;
-    if(((n.material.name||"").indexOf("crystal")>=0)){n.material.emissiveIntensity=0.9;}
-    else{n.material.emissiveIntensity=0.35;n.material.color.multiplyScalar(0.18);}}});});
-  // Retrowave-Kanten: glühende Cyan-Linien auf den Berg-Facetten (dunkle Silhouette + Neon-Draht);
-  // Winkel-Schwelle 30° = nur markante Kanten (Kegel-Facetten), kein Gekritzel auf den sanften Hängen
-  var edgeMat=new THREE.LineBasicMaterial({color:0x36d8ff,transparent:true,opacity:0.35,blending:THREE.AdditiveBlending});
-  rocks.forEach(function(n){n.add(new THREE.LineSegments(new THREE.EdgesGeometry(n.geometry,30),edgeMat));});
-  back.position.set(0,-2,-262);scene.add(back);
-  corr.position.set(0,-2,-60);scene.add(corr);landCorr.push(corr);
-  var c2=corr.clone();c2.position.set(0,-2,-60-LSEG);scene.add(c2);landCorr.push(c2);
-},undefined,function(){});}
-
-// Player glider (low-poly)
-var ship=new THREE.Group();
-var body=new THREE.Mesh(new THREE.ConeGeometry(0.7,2.2,4),
-  new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x1a6f8c,metalness:.4,roughness:.3,flatShading:true}));
-body.rotation.x=Math.PI/2;ship.add(body);
-var wing=new THREE.Mesh(new THREE.BoxGeometry(2.6,0.12,0.7),
-  new THREE.MeshStandardMaterial({color:0xb98bff,emissive:0x3a1a6f,flatShading:true}));
-wing.position.z=0.3;ship.add(wing);
-ship.position.set(0,0,0);scene.add(ship);
-
-// Trail particles
-var TRN=Math.round(60*PFX),trail=[],trailGeo=new THREE.BufferGeometry();
-var tpos=new Float32Array(TRN*3);
-for(var i=0;i<TRN;i++){trail.push({x:0,y:0,z:0});}
-trailGeo.setAttribute("position",new THREE.BufferAttribute(tpos,3));
-var trailMat=new THREE.PointsMaterial({color:0x5ef2ff,size:0.3,map:trailTex,transparent:true,opacity:.4,blending:THREE.AdditiveBlending,depthWrite:false}); /* 0.5/.6 wirkte wie weisser Leuchtstab unterm Gleiter */
-var trailPts=new THREE.Points(trailGeo,trailMat);scene.add(trailPts);
-
-// Object pools
-var COLORS=[0xff7ad9,0xb98bff,0x5ef2ff,0xffd166,0x6aff9e];
-var pillars=[],orbs=[],bursts=[];
-function pillar(){
-  var h=6+Math.random()*10;
-  var m=new THREE.Mesh(new THREE.BoxGeometry(1.6,h,1.6),
-    new THREE.MeshStandardMaterial({color:0x222a55,emissive:COLORS[(Math.random()*COLORS.length)|0],emissiveIntensity:.55,flatShading:true,metalness:.3,roughness:.4})); /* .9 brannte die Neon-Säulen weiss aus (Doppel-Tonemap) */
-  m.position.set(0,h/2-2,-200);scene.add(m);return {m:m,h:h,active:false};
-}
-function orb(){
-  var m=new THREE.Mesh(new THREE.IcosahedronGeometry(0.6,0),
-    new THREE.MeshStandardMaterial({color:0xffd166,emissive:0xffd166,emissiveIntensity:.8,flatShading:true}));
-  m.position.set(0,0,-200);scene.add(m);return {m:m,active:false};
-}
-// Bonus-Ringe (Skill-Event, Rhythmuswechsel): durchfliegen = großer Combo/Score/Dash-Bonus.
-function gate(){
-  var m=new THREE.Mesh(new THREE.TorusGeometry(2.4,0.22,8,28),
-    new THREE.MeshStandardMaterial({color:0x5ef2ff,emissive:0x5ef2ff,emissiveIntensity:.7,flatShading:true}));
-  m.position.set(0,0.4,-200);scene.add(m);return {m:m,active:false,scored:false};
-}
-for(i=0;i<14;i++)pillars.push(pillar());
-for(i=0;i<10;i++)orbs.push(orb());
-var gates=[];for(i=0;i<4;i++)gates.push(gate());
-// Deko: Neon-Bögen über der Strecke
-var arches=[];
-for(i=0;i<4;i++){var am=new THREE.Mesh(new THREE.TorusGeometry(8.6,0.22,8,28,Math.PI),new THREE.MeshStandardMaterial({color:i%2?0xb98bff:0x5ef2ff,emissive:i%2?0xb98bff:0x5ef2ff,emissiveIntensity:0.6,flatShading:true}));
-  am.position.set(0,-1.6,-260-i*90);scene.add(am);arches.push(am);}
-
-// Burst particle effect on collect/crash
-function burst(x,y,z,color){
-  var g=new THREE.BufferGeometry();var n=24;var p=new Float32Array(n*3);
-  for(var k=0;k<n;k++){p[k*3]=x;p[k*3+1]=y;p[k*3+2]=z;}
-  g.setAttribute("position",new THREE.BufferAttribute(p,3));
-  var pts=new THREE.Points(g,new THREE.PointsMaterial({color:color,size:0.6,map:trailTex,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false})); /* #2 Beauty-Sweep: weiche Glow-Punkte statt grauer Quadrate */
-  scene.add(pts);
-  var vel=[];for(k=0;k<n;k++){vel.push([(Math.random()-.5)*.7,(Math.random()-.5)*.7,(Math.random()-.5)*.7]);}
-  bursts.push({pts:pts,vel:vel,life:1});
-}
-
-// Sicheres localStorage (wirft nicht in Private-Mode / Sandbox-iframes → sonst weißer Bildschirm)
-function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
-function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
-// State
-var running=false,score=0,best=+(lsGet("aban_neon_best")||0),speed=0.6,targetX=0,shipX=0,shake=0,tick=0;
-var shield=0,magnet=false,orbsCollected=0,nextUp=6,choosing=false,paused=false;
-// Meisterklasse-Mechaniken (spiegeln den Godot-Build): Flow/Combo, Dash, Biome.
-var combo=0,comboTimer=0,comboTime=180,nearWindow=1.6,orbValue=1;
-var dashCharge=0,dashActive=false,dashTimer=0,dashRecharge=0.0035;
-var biomeIndex=0,phaseTimer=1320;
-var gauntlet=0,gauntTimer=600;
-var BIOMES=[
-  {name:"CYAN-SEKTOR",fog:0x06070f,accent:0x5ef2ff},
-  {name:"MAGENTA-ZONE",fog:0x0c0610,accent:0xff7ad9},
-  {name:"TOXIC-GRÜN",fog:0x06100a,accent:0x6aff9e},
-  {name:"GOLD-RAUSCH",fog:0x100c06,accent:0xffd166}
-];
-function mult(){return Math.min(9,1+((combo/6)|0));}
-function hex2css(h){return "#"+("000000"+(h>>>0).toString(16)).slice(-6);}
-function applyBiome(i){var b=BIOMES[i%BIOMES.length];scene.fog.color.setHex(b.fog);scene.background.setHex(b.fog);glow.color.setHex(b.accent);horizon.material.color.setHex(b.accent);
- wallL.material.color.setHex(b.accent);wallL.material.color.multiplyScalar(0.16);wallL.material.emissive.setHex(b.accent);
- wallR.material.color.setHex(b.accent);wallR.material.color.multiplyScalar(0.16);wallR.material.emissive.setHex(b.accent);
- stripL.material.color.setHex(b.accent);stripL.material.emissive.setHex(b.accent);stripR.material.color.setHex(b.accent);stripR.material.emissive.setHex(b.accent);return b;}
-function announce(txt,colorHex){var a=document.getElementById("announce");a.style.color=hex2css(colorHex);a.textContent=txt;a.style.opacity="1";clearTimeout(window._annT);window._annT=setTimeout(function(){a.style.opacity="0";},1300);}
-function nearMiss(){combo++;comboTimer=comboTime;score+=mult();if(shake<0.25)shake=0.25;beep(720+combo*6,.05,"square",.04);
-  burst(shipX,0,1.4,BIOMES[biomeIndex%BIOMES.length].accent); /* ✈️ Beinahe-Streifer sichtbar (Partikel-Pop) */
-  if(combo>0&&combo%10===0){var ac=BIOMES[biomeIndex%BIOMES.length].accent;score+=10*mult();announce("COMBO "+combo+"!  ×"+mult(),ac);flash();beep(300+combo*4,.18,"square",.08);}} /* 🔥 Combo-Meilenstein-Belohnung alle 10 */
-function doDash(){if(!running||choosing||paused||dashActive||dashCharge<1)return;dashActive=true;dashTimer=26;dashCharge=0;if(shake<0.6)shake=0.6;burst(shipX,0,1,BIOMES[biomeIndex%BIOMES.length].accent);beep(880,.12,"square",.08);}
-function togglePause(){if(!running||choosing)return;paused=!paused;document.getElementById("pause").classList.toggle("hide",!paused);try{musSync();}catch(e){}}
-// Tages-Challenge: deterministischer Seed pro Tag → alle spielen denselben Lauf, Score vergleichbar/teilbar.
-var dailyMode=false, dayNo=Math.floor((Date.now()/864e5)), _seed=0;
-function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
-var _srng=mulberry32(123);
-function rnd(){return dailyMode?_srng():Math.random();}
-document.getElementById("best").textContent=best;
-
-// Meta-Progression: Gesamt-XP (Summe aller Scores) schaltet Schiff-Skins frei.
-var SKINS=[
-  {name:"Cyan",body:0x5ef2ff,em:0x1a6f8c,wing:0xb98bff,need:0},
-  {name:"Magenta",body:0xff7ad9,em:0x6f1a4f,wing:0x5ef2ff,need:250},
-  {name:"Smaragd",body:0x6aff9e,em:0x1a6f3f,wing:0xffd166,need:800},
-  {name:"Gold",body:0xffd166,em:0x6f5a1a,wing:0xff7ad9,need:2000}
-];
-var xp=+(lsGet("aban_neon_xp")||0);
-var selSkin=+(lsGet("aban_neon_skin")||0);
-function unlocked(i){return SKINS[i]?(xp>=SKINS[i].need):false;} /* 🛡️ Schwarm-3 P3: kaputter/ausser-Reichweite aban_neon_skin → kein Absturz (SKINS[i] undefined) */
-function applySkin(i){if(!SKINS[i]||!unlocked(i))i=0;selSkin=i;try{localStorage.setItem("aban_neon_skin",i);}catch(e){}var s=SKINS[i];body.material.color.setHex(s.body);body.material.emissive.setHex(s.em);wing.material.color.setHex(s.wing);}
-function renderSkins(){var el=document.getElementById("skins");if(!el)return;var next=null;for(var n=0;n<SKINS.length;n++){if(xp<SKINS[n].need){next=SKINS[n];break;}}
-  var html="🛸 "+tr("skin")+": "+SKINS.map(function(s,i){var u=unlocked(i);return "<button data-i='"+i+"' style='margin:3px;padding:11px 14px;font-size:1rem;border-radius:14px;cursor:"+(u?"pointer":"default")+";border:1px solid "+(i===selSkin?"#5ef2ff":"#3a4170")+";background:"+(u?"#10142b":"#0a0c18")+";color:"+(u?"#e6e9ff":"#555c80")+"'>"+(u?s.name:tr("locked"))+"</button>";}).join("");
-  html+="<div style='margin-top:8px;font-size:1rem;color:#98a0c6'>"+tr("xpTotal")+": "+xp+(next?(" · "+tr("nextSkin")+" "+next.need):" · "+tr("allFree"))+"</div>";
-  el.innerHTML=html;
-  el.querySelectorAll("button").forEach(function(b){b.onclick=function(){var i=+b.getAttribute("data-i");if(unlocked(i)){applySkin(i);renderSkins();beep(520,.1,"triangle",.06);}};});}
-
-// i18n DE/EN
-var T={
-  de:{startTag:"aban news · 3D-Arcade",intro:'Steuere den Gleiter durch den Neon-Canyon. Weiche knapp aus (Near-Miss = <b>Combo ×</b>), sammle Orbs, flieg durch <b>Ringe</b> für PERFEKT-Bonus, lade den <b>Dash</b>. Je weiter, desto schneller.',controls:"Bewegen: ← → / A D / Maus / Finger · Dash: LEER / ↑ / Tippen",start:"Start ▶",daily:"🗓️ Tages-Challenge",startFoot:'Läuft im Browser, kein Download · <a href="/spiele.html">🕹️ mehr Spiele</a> · <a href="/online-tools.html">mehr Tools</a>',over:"Game Over",again:"Nochmal ▶",share:"Ergebnis teilen 📋",copied:"Kopiert 📋",overFoot:'5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter gratis →</a>',best:"Rekord",pauseTxt:"Tippe <b>ESC</b> / <b>P</b> oder den Knopf zum Weiterspielen.",setTitle:"Einstellungen",sound:"Ton",lang:"Sprache",on:"an",off:"aus",skin:"Skin",xpTotal:"Gesamt-XP",nextSkin:"nächster Skin bei",allFree:"alle frei 🏆",locked:"🔒",newRec:"Neuer Rekord! 🏆",verdicts:["Übung macht den Meister!","Solide!","Stark geflogen!","Schon besser!"],upgrade:"⬆️ Upgrade wählen",endless:"Endlos",dailyTag:"Tages-Challenge",pts:"Punkte",playFree:"Gratis spielen",gauntlet:"TOR-WELLE!"},
-  en:{startTag:"aban news · 3D arcade",intro:'Fly the glider through the neon canyon. Graze obstacles (near-miss = <b>Combo ×</b>), grab orbs, fly through <b>rings</b> for a PERFECT bonus, charge your <b>Dash</b>. The further you go, the faster it gets.',controls:"Move: ← → / A D / mouse / finger · Dash: SPACE / ↑ / tap",start:"Start ▶",daily:"🗓️ Daily Challenge",startFoot:'Runs in your browser, no download · <a href="/spiele.html">🕹️ more games</a> · <a href="/online-tools.html">more tools</a>',over:"Game Over",again:"Again ▶",share:"Share result 📋",copied:"Copied 📋",overFoot:'5 min of AI without hype, on weekdays — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">free newsletter →</a>',best:"Best",pauseTxt:"Press <b>ESC</b> / <b>P</b> or the button to resume.",setTitle:"Settings",sound:"Sound",lang:"Language",on:"on",off:"off",skin:"Skin",xpTotal:"Total XP",nextSkin:"next skin at",allFree:"all unlocked 🏆",locked:"🔒",newRec:"New record! 🏆",verdicts:["Practice makes perfect!","Solid!","Nicely flown!","Getting better!"],upgrade:"⬆️ Choose an upgrade",endless:"Endless",dailyTag:"Daily Challenge",pts:"pts",playFree:"Play free",gauntlet:"GAUNTLET!"}
-};
-var lang=lsGet("aban_neon_lang")||((navigator.language||"").indexOf("de")===0?"de":"en");
-if(lang!=="de"&&lang!=="en")lang="de";
-function tr(k){return (T[lang]&&T[lang][k]!=null)?T[lang][k]:T.de[k];}
-function setText(id,html){var e=document.getElementById(id);if(e)e.innerHTML=html;}
-function applyLang(){try{localStorage.setItem("aban_neon_lang",lang);}catch(e){}document.documentElement.lang=lang;
-  setText("tStartTag",tr("startTag"));setText("tIntro",tr("intro"));setText("tControls",tr("controls"));
-  setText("startBtn",tr("start"));setText("dailyBtn",tr("daily"));setText("tStartFoot",tr("startFoot"));
-  setText("tOverTag",tr("over"));setText("againBtn",tr("again"));setText("shareBtn",tr("share"));setText("tOverFoot",tr("overFoot"));
-  setText("bestLbl",tr("best"));setText("tPauseTxt",tr("pauseTxt"));setText("tSetTitle",tr("setTitle"));renderSkins();}
-var setWasRunning=false;
-function renderSettings(){var el=document.getElementById("setBody");if(!el)return;
-  el.innerHTML="<div style='margin:8px 0'>"+tr("lang")+": "+
-    "<button data-l='de' style='margin:3px;padding:11px 20px;font-size:1rem;border-radius:14px;cursor:pointer;border:1px solid "+(lang==="de"?"#5ef2ff":"#3a4170")+";background:#10142b;color:#e6e9ff'>DE</button>"+
-    "<button data-l='en' style='margin:3px;padding:11px 20px;font-size:1rem;border-radius:14px;cursor:pointer;border:1px solid "+(lang==="en"?"#5ef2ff":"#3a4170")+";background:#10142b;color:#e6e9ff'>EN</button></div>"+
-    "<div style='margin:8px 0'>"+tr("sound")+": <button id='setSound' style='margin:3px;padding:11px 20px;font-size:1rem;border-radius:14px;cursor:pointer;border:1px solid #3a4170;background:#10142b;color:#e6e9ff'>"+(muted?tr("off"):tr("on"))+"</button></div>";
-  el.querySelectorAll("button[data-l]").forEach(function(b){b.onclick=function(){lang=b.getAttribute("data-l");applyLang();renderSettings();beep(520,.1,"triangle",.06);};});
-  var sb=document.getElementById("setSound");if(sb)sb.onclick=function(){muted=!muted;try{localStorage.setItem("aban_neon_muted",muted?"1":"0");}catch(e){}var mb=document.getElementById("muteBtn");if(mb)mb.textContent=muted?"🔇":"🔊";try{musSync();}catch(e){}renderSettings();};}
-function openSettings(){var _wasHidden=document.getElementById("settings").classList.contains("hide");if(_wasHidden){setWasRunning=running&&!paused;if(setWasRunning)paused=true;} /* 🐛 Schwarm-3 P2: Zustand nur beim ERSTEN Öffnen merken — 2. Gear-Tap setzte setWasRunning=false bei paused=true → Dauer-Freeze */renderSettings();document.getElementById("settings").classList.remove("hide");}
-function closeSettings(){document.getElementById("settings").classList.add("hide");if(setWasRunning){paused=false;setWasRunning=false;}}
-applySkin(selSkin);applyLang();
-
-var UPGRADES=[
-  {id:"magnet",name:"🧲 Magnet",en:"🧲 Magnet"},{id:"shield",name:"🛡️ Schild +1",en:"🛡️ Shield +1"},{id:"double",name:"✨ Doppel-Orbs",en:"✨ Double orbs"},
-  {id:"dash_cd",name:"⚡ Turbo-Dash",en:"⚡ Turbo dash"},{id:"flow",name:"🌊 Flow-Meister",en:"🌊 Flow master"},{id:"nearmiss",name:"🎯 Risiko-Profi",en:"🎯 Risk pro"},
-  {id:"orbs",name:"🟡 Mehr Orbs",en:"🟡 More orbs"}
-];
-var curChoices=[];
-/* ⚠️ ZWEI MESSUNGEN, ZWEI FEHLER an derselben Zeile:
-   1. `UPGRADES.slice().sort(function(){return Math.random()-0.5;})` ist kein Mischen.
-      Ein Zufallsvergleich in sort() liefert keine gleichverteilte Permutation. Ueber
-      300.000 Angebote kam "🧲 Magnet" in 51,20 % vor und "🌊 Flow-Meister" in 33,93 %
-      — bei sieben Upgrades auf drei Plaetzen muessten es 42,9 % je sein. Fisher-Yates
-      liefert gemessen 42,78 bis 42,96 %.
-   2. Zwei Upgrades koennen LEER laufen: `magnet` ist ein Schalter (ein zweiter Magnet
-      tut nichts), und `dash_cd` ist bei 0,012 gedeckelt — ab dem fuenften Griff bringt
-      er fast nichts, ab dem sechsten gar nichts. Ausgerechnet der Magnet wurde am
-      haeufigsten angeboten, also war der haeufigste Vorschlag der einzige, der ein
-      Blindgaenger sein konnte. Wer nichts mehr bewirkt, kommt gar nicht erst in den Topf. */
-function mische(a){a=a.slice();
-  for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}
-  return a;}
-function upgradeWirkt(u){
-  if(u.id==="magnet")return !magnet;
-  if(u.id==="dash_cd")return dashRecharge<0.012;
-  return true;}
-function offerUpgrade(){
-  choosing=true;
-  var topf=UPGRADES.filter(upgradeWirkt);
-  if(topf.length<3)topf=UPGRADES;          /* nie weniger als drei Knoepfe anbieten */
-  curChoices=mische(topf).slice(0,3);
-  var box=document.getElementById("upg");
-  box.innerHTML="<div style='font-weight:800;margin-bottom:12px'>"+tr("upgrade")+"</div>"+
-    curChoices.map(function(u,i){return "<button class='btn' data-i='"+i+"' style='margin:6px;display:block;width:100%'>["+(i+1)+"] "+((lang==="en"&&u.en)?u.en:u.name)+"</button>";}).join("");
-  box.classList.remove("hide");
-  box.querySelectorAll("button").forEach(function(b){b.onclick=function(){applyUpgrade(+b.getAttribute("data-i"));};});
-}
-function applyUpgrade(i){
-  if(i<0||i>=curChoices.length)return;
-  var id=curChoices[i].id;
-  if(id==="magnet")magnet=true;
-  else if(id==="shield")shield++;
-  else if(id==="double")orbValue++;
-  else if(id==="dash_cd")dashRecharge=Math.min(0.012,dashRecharge+0.002);
-  else if(id==="flow")comboTime+=90;
-  else if(id==="nearmiss")nearWindow+=0.7;
-  else if(id==="orbs")window._orbBoost=(window._orbBoost||0)+1;
-  choosing=false;document.getElementById("upg").classList.add("hide");
-  beep(520,.12,"triangle",.08);
-}
-
-function reset(){keyL=false;keyR=false; /* 🩹 Schwarm-P3: Geister-Lenkung nach Restart */
-  if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);
-  score=0;speed=0.6;targetX=0;shipX=0;shake=0;tick=0;lastSpawn=0;lastGate=0; /* F1: sonst bleibt der Canyon nach „Nochmal" 30-60s leer (Spawn-Drossel vergleicht tick gegen alten Wert) */
-  shield=0;magnet=false;orbValue=1;orbsCollected=0;nextUp=6;choosing=false;paused=false;window._orbBoost=0;
-  document.getElementById("pause").classList.add("hide");
-  combo=0;comboTimer=0;comboTime=180;nearWindow=1.6;dashCharge=0;dashActive=false;dashTimer=0;dashRecharge=0.0035;
-  biomeIndex=0;phaseTimer=1320;gauntlet=0;gauntTimer=600;applyBiome(0);
-  document.getElementById("combo").textContent="";document.getElementById("dashfill").style.width="0";
-  document.getElementById("upg").classList.add("hide");
-  pillars.forEach(function(p){p.active=false;p.m.position.z=-200;});
-  orbs.forEach(function(o){o.active=false;o.m.position.z=-200;});
-  gates.forEach(function(g){g.active=false;g.scored=false;g.m.position.z=-200;});
-}
-function start(){reset();running=true;document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");startMusic();}
-function gameOver(){
-  running=false;shake=1.2;flash();stopMusic();
-  var isRec=score>best; /* F6: VOR dem best-Update merken (sonst „Neuer Rekord" auch bei Gleichstand) */
-  if(isRec){best=score;lsSet("aban_neon_best",best);}
-  xp+=score;try{localStorage.setItem("aban_neon_xp",xp);}catch(e){}renderSkins();
-  document.getElementById("best").textContent=best;
-  document.getElementById("finalScore").textContent=score;
-  document.getElementById("verdict").textContent=(isRec&&score>0)?tr("newRec"):tr("verdicts")[Math.min(3,(score/15)|0)];
-  var _sc=document.getElementById("stCrys");if(_sc)_sc.innerHTML="💎 <b>+"+score+" Kristalle</b> — bring sie zurück zur Wildnis!"; /* Stations-Inszenierung (nur wenn Element existiert) */
-  if(STATION)stationPost({t:"stationDone",score:score}); /* 🌲 Wildnis-Station: Score melden (Kristall-Belohnung) */
-  setTimeout(function(){if(!running)document.getElementById("over").classList.remove("hide");},340); // Crash-Shake/Flash erst sichtbar lassen (Guard: Space-Restart in der Lücke)
-}
-function flash(){var f=document.getElementById("flash");f.style.opacity=".6";setTimeout(function(){f.style.opacity="0";},80);}
-
-// Input
-function setTarget(clientX){targetX=((clientX/W)*2-1)*7;}
-window.addEventListener("mousemove",function(e){if(IS_TOUCH)return;if(running&&!choosing&&!paused)setTarget(e.clientX);}); /* 🩹 Schwarm-P1: synthetische mousemove nach Tap lenkte den Gleiter seitwärts */
-window.addEventListener("touchmove",function(e){if(e.touches[0]){if(Math.hypot(e.touches[0].clientX-tchX,e.touches[0].clientY-tchY)>12)tchMoved=true;if(running&&!choosing&&!paused&&tchMoved){setTarget(e.touches[0].clientX);e.preventDefault();}}},{passive:false}); /* F2+P7: kein Lenken bei Upgrade/Pause; Lenken erst ab echter Bewegung (>12px) — Dash-Tipp mit Mini-Jitter springt nicht mehr seitwärts */
-var keyL=false,keyR=false;
-window.addEventListener("keydown",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if((k===" "||k==="enter")&&!running)start();else if((k===" "||k==="arrowup")&&running&&!choosing&&!paused)doDash();if((k==="escape"||k==="p")&&running&&!choosing&&document.getElementById("settings").classList.contains("hide"))togglePause();if(choosing&&(k==="1"||k==="2"||k==="3"))applyUpgrade(+k-1);});
-// Touch: Antippen LENKT (erster Kontakt = Ziel), Dash nur bei kurzem Tipp ohne Wischen
-var tchT=0,tchX=0,tchY=0,tchMoved=false;
-window.addEventListener("touchstart",function(e){if(!e.touches[0])return;tchT=performance.now();tchX=e.touches[0].clientX;tchY=e.touches[0].clientY;tchMoved=false;window._tchBtn=!!(e.target&&e.target.closest&&e.target.closest("button,a")); /* 🩹 Schwarm-P2: Tipp auf HUD-Knopf darf keinen Dash feuern */
-  try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();if(actx.state==="suspended")actx.resume();if(typeof musSync==="function")musSync();}catch(_){} /* F2+P7: Audio-Unlock beim ersten Touch — actx LAZY erzeugen (war vorher no-op solange null) + Musik anstossen */
-  /* F2: KEIN sofortiges setTarget mehr — reiner Tipp (Dash) zieht nicht seitwärts; Lenken erfolgt im touchmove */},{passive:true});
-window.addEventListener("touchend",function(){if(running&&!choosing&&!paused&&!tchMoved&&!window._tchBtn&&performance.now()-tchT<200)doDash();},{passive:true});
-window.addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;});
-
-// Audio (WebAudio, kein Asset)
-var actx=null,muted=false; try{muted=localStorage.getItem("aban_neon_muted")==="1";}catch(e){}
-(function(){var mb=document.getElementById("muteBtn");function ap(){mb.textContent=muted?"🔇":"🔊";try{localStorage.setItem("aban_neon_muted",muted?"1":"0");}catch(e){}try{musSync();}catch(e){}}ap();mb.onclick=function(){muted=!muted;ap();};addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="m"){muted=!muted;ap();}});})();
-function beep(freq,dur,type,vol){if(muted)return;try{if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();var o=actx.createOscillator(),g=actx.createGain();o.type=type||"sine";o.frequency.value=freq;g.gain.value=vol||.06;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+(dur||.12));o.stop(actx.currentTime+(dur||.12));}catch(e){}}
-
-// Prozedurale Hintergrundmusik (WebAudio, kein Asset) — treibender Neon-Loop, Tempo steigt mit Speed.
-var music={timer:null,next:0,step:0,master:null};
-var MSCALE=[0,3,5,7,10]; // Moll-Pentatonik
-function mfreq(s){return 220*Math.pow(2,s/12);}
-function mtone(f,t,d,type,v){try{var o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(v,t+0.012);g.gain.exponentialRampToValueAtTime(0.0001,t+d);o.connect(g);g.connect(music.master||actx.destination);o.start(t);o.stop(t+d+0.03);}catch(e){}}
-function schedMusic(){
-  if(!actx||muted||paused||!running){if(actx)music.next=actx.currentTime;return;}
-  while(music.next<actx.currentTime+0.25){
-    var t=music.next, bpm=110+Math.min(50,speed*40), beat=60/bpm/2;
-    if(music.step%4===0)mtone(mfreq(MSCALE[0]-12),t,beat*4*0.9,"sawtooth",0.05);
-    var n=MSCALE[(music.step*2)%MSCALE.length]+((music.step%8)<4?0:12);
-    mtone(mfreq(n),t,beat*0.8,"triangle",0.04);
-    music.next+=beat;music.step++;
-  }
-}
-var MUS=new Audio("/audio/lemonade.mp3");MUS.loop=true;MUS.volume=0.3;MUS.preload="none";
-function startMusic(){if(!muted)MUS.play().catch(function(){});}
-function stopMusic(){MUS.pause();}
-function musSync(){if(muted||!running||paused)MUS.pause();else MUS.play().catch(function(){});}
-
-document.getElementById("startBtn").onclick=function(){dailyMode=false;start();};
-document.getElementById("dailyBtn").onclick=function(){dailyMode=true;start();};
-document.getElementById("againBtn").onclick=start;
-document.getElementById("resumeBtn").onclick=function(){if(paused)togglePause();};
-document.getElementById("setBtn").onclick=openSettings;
-document.getElementById("setCloseBtn").onclick=closeSettings;
-document.getElementById("shareBtn").onclick=function(){
-  var tag=dailyMode?(tr("dailyTag")+" #"+dayNo):tr("endless");
-  var txt="Neon-Flug 🚀 "+tag+" — "+score+" "+tr("pts")+" ("+tr("best")+" "+best+")\n"+tr("playFree")+": abannews.com/neon-flug.html";
-  if(navigator.share){navigator.share({text:txt}).catch(function(){});}
-  else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent=tr("copied");});}
-};
-
-var spawnZ=-160;
-function spawn(){
-  // pillar row with a gap (in der Tor-Welle: engere Lücke, keine Orbs)
-  var tight=gauntlet>0;
-  var gap=(rnd()*10-5);
-  var off=tight?2.9:4;
-  var freePillars=pillars.filter(function(p){return !p.active;});
-  for(var s=0;s<2&&freePillars.length;s++){
-    var p=freePillars.pop();var lane=gap+(s===0?-off:off)+(rnd()*(tight?1:2)-(tight?0.5:1));
-    p.m.position.set(lane,p.h/2-2,spawnZ);p.active=true;p.scored=false;
-  }
-  if(tight)return;
-  var fo=orbs.filter(function(o){return !o.active;});
-  var orbProb=Math.min(0.99,0.8+0.12*(window._orbBoost||0));
-  if(fo.length&&rnd()<orbProb){var o=fo[0];o.m.position.set(gap+(rnd()*2-1),0,spawnZ-6);o.active=true;}
-}
-
-// ---- Bloom-Post-Processing (Neon-Glow) ----
-var bvert="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
-var rtOpt={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter};
-var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)?new THREE.WebGLMultisampleRenderTarget(W,H,rtOpt):new THREE.WebGLRenderTarget(W,H,rtOpt);
-var bw=Math.max(1,W>>1),bh=Math.max(1,H>>1);
-var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
-var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.80}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
-var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.55}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);vec3 col=b.rgb+g.rgb*strength;gl_FragColor=vec4(vec3(1.0)-exp(-col*0.95),1.0);}"}); /* exp-Kurve 1.2->0.95: zweites Tonemap nach ACES wusch alles weiss */
-var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
-function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
-function renderBloom(){
-  renderer.setRenderTarget(rtScene);renderer.render(scene,camera);
-  brightMat.uniforms.tDiffuse.value=rtScene.texture;blit(brightMat,rtA);
-  blurMat.uniforms.res.value.set(bw,bh);
-  blurMat.uniforms.dir.value.set(1,0);blurMat.uniforms.tDiffuse.value=rtA.texture;blit(blurMat,rtB);
-  blurMat.uniforms.dir.value.set(0,1);blurMat.uniforms.tDiffuse.value=rtB.texture;blit(blurMat,rtA);
-  compMat.uniforms.tBase.value=rtScene.texture;compMat.uniforms.tBloom.value=rtA.texture;blit(compMat,null);
-  renderer.setRenderTarget(null);
-}
-
-var lastSpawn=0,lastGate=0;
-function loop(t){
-  requestAnimationFrame(loop);
-  tick++;
-  // ship movement
-  if(running&&!choosing&&!paused){
-    if(keyL)targetX-=0.4;if(keyR)targetX+=0.4;
-    targetX=Math.max(-7.5,Math.min(7.5,targetX));
-    shipX+=(targetX-shipX)*0.18;
-    ship.position.x=shipX;
-    ship.rotation.z=(shipX-targetX)*0.12 - (targetX-shipX)*0.25;
-    ship.position.y=Math.sin(tick*0.08)*0.25;
-    speed=Math.min(2.6,speed+0.0006);
-    if(dashActive){dashTimer--;if(dashTimer<=0)dashActive=false;}else{dashCharge=Math.min(1,dashCharge+dashRecharge);}
-    var cs=speed+(dashActive?0.9:0);
-    if(combo>0){comboTimer--;if(comboTimer<=0)combo=0;}
-    phaseTimer--;if(phaseTimer<=0){phaseTimer=1320;biomeIndex++;var bb=applyBiome(biomeIndex);speed=Math.min(2.6,speed+0.05);announce("» "+bb.name+" «",bb.accent);beep(180,.4,"sawtooth",.1);}
-    // Tor-Welle (Boss-artiger Rhythmus-Peak): dichte Engstellen-Sektion, angekündigt.
-    gauntTimer--;if(gauntTimer<=0&&gauntlet<=0&&tick>200){gauntlet=150;gauntTimer=960;announce("⚠ "+tr("gauntlet"),0xff4d6d);beep(140,.5,"sawtooth",.1);}
-    if(gauntlet>0)gauntlet--;
-    if(tick>80&&tick-lastSpawn>(gauntlet>0?14:Math.max(18,42-speed*8))){spawn();lastSpawn=tick;}
-    // move pillars
-    pillars.forEach(function(p){if(!p.active)return;p.m.position.z+=cs;p.m.rotation.y+=0.005;
-      var pdx=Math.abs(p.m.position.x-shipX);
-      if(!p.scored&&p.m.position.z>1&&p.m.position.z<12){
-        if(pdx>1.5&&pdx<1.5+nearWindow){p.scored=true;nearMiss();}
-        else if(dashActive&&pdx<1.5+nearWindow){p.scored=true;nearMiss();}
-      }
-      if(p.m.position.z>14){p.active=false;p.m.position.z=-200;}
-      else if(Math.abs(p.m.position.z)<1.6&&pdx<1.5){
-        if(dashActive){/* Dash = unverwundbar */}
-        else if(shield>0){shield--;p.active=false;p.m.position.z=-200;burst(shipX,0,0,0x5ef2ff);beep(300,.2,"square",.1);shake=0.8;}
-        else{burst(shipX,0,0,0xff4d6d);beep(90,.3,"sawtooth",.12);gameOver();}
-      }
-    });
-    // orbs
-    orbs.forEach(function(o){if(!o.active)return;o.m.position.z+=cs;o.m.rotation.x+=0.06;o.m.rotation.y+=0.05;
-      if(magnet&&o.m.position.z>-60){o.m.position.x+=(shipX-o.m.position.x)*0.05;}
-      if(o.m.position.z>14){o.active=false;o.m.position.z=-200;}
-      else if(Math.abs(o.m.position.z)<1.4&&Math.abs(o.m.position.x-shipX)<1.4){o.active=false;o.m.position.z=-200;combo++;comboTimer=comboTime;score+=orbValue*mult();orbsCollected++;dashCharge=Math.min(1,dashCharge+0.34);burst(shipX,0,0,0xffd166);beep(660+combo*8,.1,"triangle",.07);if(orbsCollected>=nextUp){nextUp+=6;offerUpgrade();}}
-    });
-    // Bonus-Ringe (Skill-Event)
-    if(tick-lastGate>Math.max(280,520-speed*40)){var fg=gates.filter(function(g){return !g.active;});if(fg.length){var acc=BIOMES[biomeIndex%BIOMES.length].accent;var g0=fg[0];g0.m.position.set((rnd()*10-5),0.4,spawnZ-10);g0.m.material.color.setHex(acc);g0.m.material.emissive.setHex(acc);g0.active=true;g0.scored=false;}lastGate=tick;}
-    arches.forEach(function(a){a.position.z+=cs;if(a.position.z>16)a.position.z-=360;});
-    gridMesh.material.uniforms.uT.value+=cs*0.021;
-    for(var _tj=trailN-1;_tj>0;_tj--){trailP[_tj*3]=trailP[(_tj-1)*3];trailP[_tj*3+1]=trailP[(_tj-1)*3+1];trailP[_tj*3+2]=trailP[(_tj-1)*3+2]+cs*0.5;}
-    trailP[0]=ship.position.x;trailP[1]=ship.position.y-0.1;trailP[2]=ship.position.z+0.7;
-    trailG.attributes.position.needsUpdate=true;
-    gates.forEach(function(g){if(!g.active)return;g.m.position.z+=cs;g.m.rotation.z+=0.02;
-      var gdx=Math.abs(g.m.position.x-shipX);
-      if(!g.scored&&Math.abs(g.m.position.z)<1.4&&gdx<2.2){g.scored=true;var bo=5*mult();combo+=3;comboTimer=comboTime;score+=bo;dashCharge=Math.min(1,dashCharge+0.5);var ac=BIOMES[biomeIndex%BIOMES.length].accent;burst(shipX,0.4,0,ac);announce("PERFEKT! +"+bo,ac);flash();beep(990,.14,"square",.08);}
-      if(g.m.position.z>14){g.active=false;g.m.position.z=-200;}
-    });
-    document.getElementById("score").textContent=score;
-    var cb=document.getElementById("combo");cb.textContent=combo>0?("COMBO "+combo+"  ×"+mult()):"";cb.style.color=combo>0?hex2css(BIOMES[biomeIndex%BIOMES.length].accent):"#fff";
-    document.getElementById("dashfill").style.width=(dashCharge*100)+"%";
-  }
-  // trail
-  for(var i=trail.length-1;i>0;i--){trail[i].x=trail[i-1].x;trail[i].y=trail[i-1].y;trail[i].z=trail[i-1].z;}
-  trail[0].x=ship.position.x;trail[0].y=ship.position.y;trail[0].z=ship.position.z+1.2;
-  for(i=0;i<TRN;i++){tpos[i*3]=trail[i].x;tpos[i*3+1]=trail[i].y;tpos[i*3+2]=trail[i].z+i*0.05;}
-  trailGeo.attributes.position.needsUpdate=true;
-  // bursts
-  for(i=bursts.length-1;i>=0;i--){var b=bursts[i];var arr=b.pts.geometry.attributes.position.array;
-    for(var k=0;k<arr.length/3;k++){arr[k*3]+=b.vel[k][0];arr[k*3+1]+=b.vel[k][1];arr[k*3+2]+=b.vel[k][2];}
-    b.pts.geometry.attributes.position.needsUpdate=true;b.life-=0.04;b.pts.material.opacity=Math.max(0,b.life);
-    if(b.life<=0){scene.remove(b.pts);b.pts.geometry.dispose();b.pts.material.dispose();bursts.splice(i,1);}} /* GPU-Leak fix: Geometrie+Material entsorgen (map ist geteilt → bleibt) */
-  // scenery scroll
-  gridMesh.material.uniforms.uT.value+=(running?speed:0.15)*0.011;
-  // Bergketten-Parallax: langsamer als die Welt (fern), nahtloser Wrap über 2 Segmente
-  var lsp=((running&&!choosing&&!paused)?(speed+(dashActive?0.9:0)):0.12)*0.3;
-  for(var _li=0;_li<landCorr.length;_li++){var lc=landCorr[_li];lc.position.z+=lsp;if(lc.position.z>240)lc.position.z-=2*LSEG;}
-  glow.position.set(ship.position.x,2,ship.position.z+2);
-  // camera shake + follow
-  if(shake>0)shake-=0.04;
-  camera.position.x+=((shipX*0.4)-camera.position.x)*0.08 + (Math.random()-.5)*shake;
-  camera.position.y=3.2+(Math.random()-.5)*shake;
-  camera.lookAt(shipX*0.5,0,-10);
-  var tf=70+(dashActive?14:0)+Math.min(16,(speed-0.6)*10);
-  camera.fov+=(tf-camera.fov)*0.1;camera.updateProjectionMatrix();
-  // color cycle
-  var hue=(tick*0.2)%360;
-  trailMat.color.setHSL(((hue)%360)/360,.8,.6);
-  renderBloom();
-}
-requestAnimationFrame(loop);
-
-window.addEventListener("resize",function(){W=window.innerWidth;H=window.innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);rtScene.setSize(W,H);bw=Math.max(1,W>>1);bh=Math.max(1,H>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
-
-/* ===================== 🌲 Stations-Modus (Wildnis-Fusion): läuft als Iframe-Station in neon-wildnis =====================
-   Ausserhalb des Iframes (window.parent===window) ändert sich NICHTS am Verhalten. */
-var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
-function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
-if(STATION){
-  /* Arcade-Links ausblenden (würden im Iframe navigieren) */
-  document.querySelectorAll('a[href="/spiele.html"]').forEach(function(a){a.style.display="none";});
-  /* '← Wildnis'-Knopf (immer sichtbar) */
-  var _wb=document.createElement("button");_wb.id="stationBack";_wb.textContent="← Wildnis";
-  _wb.style.cssText="position:fixed;top:8px;left:10px;z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:14px;padding:10px 16px;font-weight:800;font-size:1rem;cursor:pointer";
-  _wb.onclick=function(){stationPost("mini-back");};
-  document.body.appendChild(_wb);
-  /* HUD nach rechts/unten aus dem Schatten des Wildnis-Knopfs (Score war sonst verdeckt) */
-  document.getElementById("hud").style.paddingLeft="128px";
-  /* Game-Over als Stations-Moment inszenieren: grosser Score + Kristall-Zeile */
-  var _fs=document.getElementById("finalScore");_fs.style.fontSize="3.4rem";
-  var _cy=document.createElement("p");_cy.id="stCrys";
-  _cy.style.cssText="color:#8ef7d2;font-weight:800;font-size:1.05rem;margin:.2rem 0;text-shadow:0 2px 10px rgba(0,0,0,.6)";
-  _fs.parentNode.insertBefore(_cy,_fs.nextSibling);
-  /* '← Zurück zur Wildnis' im Game-Over-Screen */
-  var _ob=document.createElement("button");_ob.className="btn ghost";_ob.textContent="← Zurück zur Wildnis";
-  _ob.onclick=function(){stationPost("mini-back");};
-  var _ag=document.getElementById("againBtn");_ag.parentNode.insertBefore(_ob,_ag.nextSibling);
-  /* Startscreen überspringen — Auto-Start */
-  dailyMode=false;start();
-}
-})();
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="aban-nav" content="off" />
+    <meta name="theme-color" content="#101b25" />
+    <title>Neon-Flug · Aether Run — Online-Koop für zwei</title>
+    <meta
+      name="description"
+      content="Zwei Gleiter, drei Welten, eine gemeinsame Mission. Spiele Neon-Flug online mit einem Freund: Raum teilen, zusammen fliegen und einander retten."
+    />
+    <link rel="canonical" href="https://abannews.com/neon-flug" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/js/neon-flug/flight.css" />
+  </head>
+  <body>
+    <div id="scene" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div id="vignette" aria-hidden="true"></div>
+    <div id="boot" role="status">FLUGSYSTEME WERDEN GESTARTET<span></span></div>
+    <header class="masthead">
+      <a href="/spiele.html" class="wordmark">ABAN<span> / </span>ARCADE</a>
+      <div class="mast-right">
+        <span class="status-dot"></span
+        ><span id="connectionLabel">ONLINE-KOOP · 2 SPIELER</span
+        ><button
+          type="button"
+          id="soundBtn"
+          class="icon"
+          aria-label="Ton einschalten"
+          title="Ton ein/aus"
+        >
+          ♪<span id="soundState"> AUS</span></button
+        ><button
+          type="button"
+          id="settingsBtn"
+          class="icon"
+          aria-label="Einstellungen öffnen"
+        >
+          ⚙
+        </button>
+      </div>
+    </header>
+    <main id="menu" class="screen menu-screen">
+      <div class="menu-art" aria-hidden="true"></div>
+      <div class="menu-shade" aria-hidden="true"></div>
+      <section class="hero-copy">
+        <p class="eyebrow">
+          <span class="little-line"></span> NEON-FLUG / ONLINE-KOOP
+        </p>
+        <h1>AETHER<br /><span>RUN.</span></h1>
+        <p class="hero-description">
+          Allein ein Flug.<br />Zusammen eine Reise.
+        </p>
+        <p class="hero-detail">
+          Zwei Gleiter. Drei Leuchtfeuer. Und jemand,<br />der dich auffängt,
+          wenn es darauf ankommt.
+        </p>
+        <div id="levelPicker" class="campaign-select" hidden>
+          <label for="startChapter">EURE FLUGROUTE</label
+          ><select id="startChapter">
+            <option value="0">01 · Lichtschlucht</option>
+            <option value="1">02 · Sturmkanal</option>
+            <option value="2">03 · Nachtkern</option>
+          </select>
+        </div>
+        <div class="hero-actions">
+          <button type="button" id="hostBtn" class="primary">
+            Gemeinsam starten <span>→</span></button
+          ><button type="button" id="joinToggle" class="secondary">
+            Raum beitreten <span>＋</span>
+          </button>
+        </div>
+        <form id="joinForm" hidden>
+          <label for="roomInput">RAUMCODE DEINES PARTNERS</label>
+          <div class="join-row">
+            <input
+              type="text"
+              id="roomInput"
+              maxlength="4"
+              minlength="4"
+              pattern="[A-Za-z]{4}"
+              autocomplete="off"
+              autocapitalize="characters"
+              placeholder="ABCD"
+              required
+            /><button class="primary" type="submit">Beitreten →</button>
+          </div>
+        </form>
+        <button type="button" id="trainingBtn" class="text-btn">
+          Erst die Steuerung kennenlernen <span>→</span>
+        </button>
+      </section>
+      <div class="hero-side">
+        <span>01 — 03</span>
+        <div class="vertical-line"></div>
+        <span class="vertical-label">STAY CLOSE. GO FURTHER.</span>
+      </div>
+      <footer class="hero-footer">
+        <div>
+          <span class="tiny-label">DIE MISSION</span
+          ><strong>Drei Welten. Ein Team.</strong>
+        </div>
+        <div class="world-preview">
+          <span class="world-dot sunset"></span> Lichtschlucht
+          <span class="sep">/</span
+          ><span class="world-dot storm"></span> Sturmkanal
+          <span class="sep">/</span
+          ><span class="world-dot night"></span> Nachtkern
+        </div>
+        <a href="#" id="creditsBtn">Credits &amp; Infos →</a>
+      </footer>
+    </main>
+    <section id="lobby" class="screen panel-screen" hidden>
+      <div class="panel lobby-panel">
+        <p class="eyebrow">DER FLUG BEGINNT ZU ZWEIT</p>
+        <h2>Dein Flügelmann<br />fehlt noch.</h2>
+        <p id="lobbyStatus" class="muted" role="status">Raum wird erstellt …</p>
+        <div class="room-code" id="roomCode">····</div>
+        <div class="button-row">
+          <button type="button" id="copyBtn" class="secondary">
+            Einladungslink kopieren →</button
+          ><button type="button" id="shareBtn" class="secondary">Teilen</button>
+        </div>
+        <div class="pilots">
+          <div class="pilot-card">
+            <span class="pilot-icon cyan">1</span>
+            <div>
+              <strong>PILOT 01</strong
+              ><span id="pilot0Status">Verbindet …</span>
+            </div>
+          </div>
+          <div class="pilot-card">
+            <span class="pilot-icon amber">2</span>
+            <div>
+              <strong>PILOT 02</strong
+              ><span id="pilot1Status">Wartet auf Mitspieler</span>
+            </div>
+          </div>
+        </div>
+        <button type="button" id="readyBtn" class="primary" disabled>
+          Bereit zum Abflug →</button
+        ><button type="button" class="text-btn exitBtn">
+          Zurück zum Hangar
+        </button>
+        <p class="small muted">
+          Der Link verbindet euch direkt. Kein Konto nötig.<br />Du spielst auf
+          deinem Gerät, dein Partner auf seinem.
+        </p>
+      </div>
+    </section>
+    <section id="briefing" class="screen panel-screen" hidden>
+      <div class="panel brief-panel">
+        <p class="eyebrow" id="chapterLabel">KAPITEL 01 / 03</p>
+        <h2 id="chapterName">Lichtschlucht.</h2>
+        <p id="chapterSubtitle" class="muted"></p>
+        <div class="brief-grid">
+          <div>
+            <span class="instruction-number">01</span>
+            <h3>Finde deine Linie.</h3>
+            <p>← → oder A/D zum Lenken.<br />Am Handy: Finger ziehen.</p>
+          </div>
+          <div>
+            <span class="instruction-number">02</span>
+            <h3>Vertraue dem Schub.</h3>
+            <p>
+              Leertaste oder Dash-Knopf.<br />Der Dash schützt kurz vor
+              Treffern.
+            </p>
+          </div>
+          <div>
+            <span class="instruction-number">03</span>
+            <h3>Bleib an seiner Seite.</h3>
+            <p>
+              Partner ausgefallen? Nah heranfliegen und E oder „Retten“ 2
+              Sekunden halten.
+            </p>
+          </div>
+        </div>
+        <p class="brief-note">
+          Sammelt Ringe, um Medaillen zu verdienen. Das Ziel erreicht ihr durch
+          gemeinsames Überleben.
+        </p>
+        <button type="button" id="launchBtn" class="primary">
+          Ich bin bereit →
+        </button>
+        <p id="briefReady" class="small muted" role="status">
+          Beide Piloten müssen bestätigen.
+        </p>
+      </div>
+    </section>
+    <div id="hud" hidden>
+      <div class="hud-top">
+        <div class="chapter-hud">
+          <span id="hudChapter" class="tiny-label">01 / LICHTSCHLUCHT</span
+          ><strong id="distance">00%</strong>
+        </div>
+        <div class="progress-track">
+          <i id="progressFill"></i><span>LEUCHTFEUER</span>
+        </div>
+        <button
+          type="button"
+          id="pauseBtn"
+          class="glass-button"
+          aria-label="Spiel pausieren"
+        >
+          II
+        </button>
+      </div>
+      <div class="team-hud">
+        <div class="health-block">
+          <span class="pilot-tag cyan">1</span>
+          <div>
+            <span id="youLabel" class="tiny-label">DU</span
+            ><strong id="hp0">◆ ◆ ◆</strong>
+          </div>
+        </div>
+        <span class="team-divider"></span>
+        <div class="health-block">
+          <span class="pilot-tag amber">2</span>
+          <div>
+            <span id="partnerLabel" class="tiny-label">PARTNER</span
+            ><strong id="hp1">◆ ◆ ◆</strong>
+          </div>
+        </div>
+        <div class="score-hud">
+          <span class="tiny-label">TEAM-PUNKTE</span
+          ><strong id="score">0</strong>
+        </div>
+      </div>
+      <div id="notice" role="status"></div>
+      <div id="rescueNotice" hidden role="status"></div>
+      <div class="bottom-hud">
+        <span id="controlHint"
+          >A / D &nbsp; LENKEN <span class="key">SPACE</span> DASH
+          <span class="key">E</span> RETTEN</span
+        >
+        <div class="flight-actions">
+          <button type="button" id="rescueBtn" class="rescue-button">
+            ↟ <span>RETTEN</span></button
+          ><button type="button" id="dashBtn" class="dash-button">
+            <span id="dashText">DASH</span><i id="dashFill"></i>
+          </button>
+        </div>
+      </div>
+      <span id="trainingLabel" hidden
+        >TRAININGSFLUG · PARTNER IM AUTOPILOT</span
+      >
+    </div>
+    <section id="pauseScreen" class="screen panel-screen" hidden>
+      <div class="panel narrow">
+        <p class="eyebrow">DURCHATMEN</p>
+        <h2 id="pauseTitle">Wir warten<br />aufeinander.</h2>
+        <p id="pauseReason" class="muted">
+          Der Flug ist für euch beide pausiert.
+        </p>
+        <button type="button" id="resumeBtn" class="primary">
+          Gemeinsam weiter →</button
+        ><button type="button" class="text-btn exitBtn">Flug verlassen</button>
+      </div>
+    </section>
+    <section id="resultScreen" class="screen panel-screen" hidden>
+      <div class="panel result-panel">
+        <p class="eyebrow" id="resultTag">LEUCHTFEUER AKTIVIERT</p>
+        <h2 id="resultTitle">Ein Licht.<br />Dank euch.</h2>
+        <div id="medal" class="medal" role="img" aria-label="Medaille">✦</div>
+        <p id="resultDescription" class="muted"></p>
+        <div class="result-stats">
+          <div>
+            <span class="tiny-label">TEAM-PUNKTE</span
+            ><strong id="resultScore">0</strong>
+          </div>
+          <div>
+            <span class="tiny-label">ENERGIERINGE</span
+            ><strong id="resultRings">0</strong>
+          </div>
+          <div>
+            <span class="tiny-label">BESTWERT</span
+            ><strong id="resultBest">0</strong>
+          </div>
+        </div>
+        <button type="button" id="nextBtn" class="primary">
+          Nächstes Leuchtfeuer →
+        </button>
+        <p id="resultReady" class="small muted" role="status"></p>
+        <button type="button" class="text-btn exitBtn">
+          Zurück zum Hangar
+        </button>
+      </div>
+    </section>
+    <dialog id="settings">
+      <button
+        type="button"
+        class="close-dialog"
+        data-close="settings"
+        aria-label="Einstellungen schliessen"
+      >
+        ×
+      </button>
+      <p class="eyebrow">DEIN COCKPIT</p>
+      <h2>Einstellungen.</h2>
+      <label
+        >Musik
+        <input
+          id="musicVolume"
+          type="range"
+          min="0"
+          max="100"
+          value="35" /></label
+      ><label
+        >Effekte
+        <input
+          id="effectsVolume"
+          type="range"
+          min="0"
+          max="100"
+          value="55" /></label
+      ><label
+        >Grafik
+        <select id="quality">
+          <option value="auto">Automatisch</option>
+          <option value="low">Sparsam</option>
+          <option value="high">Hoch</option>
+        </select></label
+      ><label class="check-label"
+        ><input id="reduceMotion" type="checkbox" /> Weniger Kamerabewegung und
+        Effekte</label
+      >
+      <p id="storageNotice" class="small muted"></p>
+      <button type="button" class="primary" data-close="settings">
+        Zurück zum Flug
+      </button>
+    </dialog>
+    <dialog id="credits">
+      <button
+        type="button"
+        class="close-dialog"
+        data-close="credits"
+        aria-label="Infos schliessen"
+      >
+        ×
+      </button>
+      <p class="eyebrow">AETHER RUN / NEON-FLUG</p>
+      <h2>Für zwei gemacht.</h2>
+      <p>
+        Eine Koop-Kampagne in drei Kapiteln. Ihr lenkt zwei Gleiter, sammelt
+        Energie und rettet einander. Euer Fortschritt wird auf diesem Gerät
+        gespeichert.
+      </p>
+      <p>
+        Verbindung über PeerJS/WebRTC mit öffentlichen Vermittlungs- und
+        Relay-Diensten. In manchen Netzwerken ist keine Verbindung möglich; ihr
+        erhaltet eine Fehlermeldung statt eines gestarteten Spiels.
+      </p>
+      <p>
+        Grafik und prozedurale Klänge: ABAN Arcade. 3D-Darstellung: Three.js
+        (MIT). Verbindung: PeerJS (MIT). Hintergrundmotiv mit KI erstellt.
+      </p>
+      <p>
+        <a href="/datenschutz.html">Datenschutz</a> ·
+        <a href="/impressum.html">Impressum</a>
+      </p>
+    </dialog>
+    <div id="rotateHint" hidden>
+      <span>↻</span>
+      <h2>Mehr Platz für euren Flug.</h2>
+      <p>Dreh dein Handy ins Querformat.</p>
+      <button type="button" id="rotateBtn" class="primary">
+        Vollbild versuchen →</button
+      ><button type="button" class="text-btn exitBtn">Zurück zum Hangar</button>
+    </div>
+    <div id="fatal" hidden role="alert">
+      <h2>Der Gleiter wartet.</h2>
+      <p id="fatalText">
+        Die 3D-Darstellung konnte nicht starten. Prüfe, ob WebGL im Browser
+        aktiviert ist.
+      </p>
+      <button type="button" class="primary" onclick="location.reload()">
+        Erneut versuchen →</button
+      ><a href="/spiele.html">Zur Spieleübersicht</a>
+    </div>
+    <script src="/js/vendor/three.min.js"></script>
+    <script src="/js/vendor/peerjs.min.js"></script>
+    <script src="/js/mp.js"></script>
+    <script type="module" src="/js/neon-flug/flight.mjs"></script>
+  </body>
 </html>

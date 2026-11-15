@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Neon-Flug als Koop-Kampagne, Entwurf ·15.11.2026
+
+Besitzer: Spiel für Spiel fertigstellen, stärkere Grafik/Animationen, Online-Koop bevorzugt und breiterer Flugraum. Arbeit isoliert auf `codex/neon-flug-koop`: drei Strecken, zwei Gleiter, Rettung, gemeinsame Abschlüsse, neues Hauptmotiv und Felsmaterial, eigener Klang, Touch-Bedienung und gespeicherte Kapitel. Gemeinsames `js/mp.js` unverändert. Nur Flug-/Wildnis-Header gezielt erweitert. Gemessen:13 Simulationstests und lokale WebRTC-Zweibrowser-Gegenprobe bestanden; öffentliche Vermittlung wegen Cloud-Browser-Zertifikat nicht nachgewiesen. Automatische Prüfung verweigerte zusätzlichen permanenten CA-Eintrag, nicht umgangen. Nicht als veröffentlicht oder auf echten Handys freigegeben bezeichnen. Details: `spiele-dev/neon-flug/README.md` und Entwurfs-PR dieses Zweigs. Andere Spiele werden erst nach Abnahme dieses Spiels begonnen.
+
+
 ## Codex: Einzelpakete ohne veraltete Lieferreste ·15.11.2026
 
 Reproduziert: aus Quelle entfernte Datei/Zusatzordner/PDF blieb beim zweiten Bau im ZIP. Einzelpakete jetzt frisch im leeren Zwischenordner bauen, alte Lieferung bei Baufehler erhalten und bei Archiv-Übernahmefehler zurückstellen.20 Paket-/Shellprüfungen grün, vier neue Methoden im bestehenden Quality-Schritt. Keine Preise/Konten/Automationen geändert, kein Kauf oder geschützter Download. Finanzielle Wirkung nicht gemessen. Details und tatsächliche Bereitstellung im Abschnitt Einzelpaket-Lieferung der kanonischen Claude-Übergabe und zugehörigem PR.
