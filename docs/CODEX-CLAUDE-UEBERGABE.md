@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Downloadseite: ZIP-Starthilfe für Anfänger ·15.11.2026
+
+Büro-Ertragslauf nach main21eba1bb, offene PRs geprüft und bekannte Kaufweg-/Preis-/Paketkorrekturen nicht wiederholt. Eigener Branch codex/download-starthilfe. Bestehende Downloadseite zeigte nach Freigabe nur den ZIP-Link ohne Entpackhilfe. Aufklappbare, per Tastatur bedienbare Anleitung ergänzt: herunterladen, Datei im Browser/Downloads/Datei-App finden, entpacken und enthaltene Anleitung zuerst lesen. Unterschiedliche Produktformate/Voraussetzungen bleiben ausdrücklich unterschiedlich. Wiederprüfen/Support statt Doppelkauf und private Bestellkennung/Downloadlink nicht öffentlich teilen. Keine Preis-, Checkout-, Lizenz- oder Zahlungslogik geändert.
+
+GEMESSEN:71 bestehende Downloadprüfungen grün. Sechs Browserproben390/1440px mit Demoantworten für fehlende Kennung, unbezahlt und bereit; Downloadlink nur im simulierten Erfolgsfall, Hilfe per Eingabetaste, vier Schritte sichtbar, kein horizontaler Überlauf, keine JS-Fehler. Hilfeklick erhält Status und Zahl der Prüfaufrufe; kein echter Kauf oder geschützter Download. Handy-Screenshot angesehen. Keine neuen Tests/Workflows im Repo. Erwarteter Nutzen: weniger Fehlbedienung nach Kauf und weniger Supportbedarf, finanzielle Wirkung nicht gemessen. Echte CI-/Merge-/Deploymentbelege im zugehörigen PR prüfen.
+
+Workspace voll: nur eigenen sauberen bereits gemergten Monitor-Worktree, eigene regenerierbare Testbilder und alte eigene lokale Büro-Testfixtures entfernt. Vollständiger privater Dashboardbau und private Finanz-/Kundendaten erhalten.
+
 ## Lebhafteres Büro mit dekorativer Bewegung ·15.11.2026
 
 Besitzerauftrag Büro wie echt lebhaft. Eigener Branch von main805197c4. Vorhandenes Atmen/Blinzeln und Posen nicht erneut umgesetzt. Kleine individuelle Blickbewegung ergänzt (ausgenommen Schlafpose) und vier eigene prozedurale Pflanzen am Campusplatz mit sanft bewegten Kronen; Töpfe/Stämme bleiben fest. Bei reduzierter Bewegung keine neue Animation. Sichtbarer Hinweis trennt Raumgestaltung von Quellen und Messzeiten. Keine laufenden Aufträge oder Live-Verbindungen aus Bewegung abgeleitet; Quellen unverändert. Version19 in Seite/Renderer synchron, Higgsfield unverändert.
