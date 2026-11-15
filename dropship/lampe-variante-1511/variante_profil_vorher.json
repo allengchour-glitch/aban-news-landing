@@ -1,0 +1,9 @@
+{
+ "id": "gid://shopify/ProductVariant/55889781162369",
+ "title": "3W-16 Farben, Stecker quadratisch, 1 PC",
+ "availableForSale": true,
+ "deliveryProfile": {
+  "id": "gid://shopify/DeliveryProfile/132495966593",
+  "name": "Shopify Collective"
+ }
+}

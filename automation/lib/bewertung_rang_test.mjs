@@ -21,6 +21,10 @@ t('Bewegungen: erst bewertet, dann Bestseller, ohne Doppelte, Positionen lücken
 });
 t('Bewegungen: Bestseller-Anteil ist begrenzt', () => assert.equal(bewegungen([], Array.from({ length: 300 }, (_, i) => `b${i}`), { nachBestseller: 50 }).length, 50));
 t('Positionen sind Zeichenketten (UnsignedInt64 in der API)', () => assert.equal(typeof bewegungen(['a'], [])[0].newPosition, 'string'));
+t('Schaufenster-Pins zuerst (bewertung_zuerst.mjs: [...pins, ...bewertet]): ein bewerteter Pin steht nur auf seinem Pin-Platz', () => {
+  const m = bewegungen(['p2', 'p1', ...['r1', 'p1', 'r2']], ['b1', 'p2', 'r1']);
+  assert.deepEqual(m.map(x => x.id), ['p2', 'p1', 'r1', 'r2', 'b1']); assert.deepEqual(m.slice(0, 2).map(x => x.newPosition), ['0', '1']);
+});
 
 t('Judge.me-Feld: gültig', () => assert.deepEqual(bewertungAus('{"number_of_reviews":7,"average_rating":"4.86"}'), { a: 4.86, c: 7 }));
 t('Judge.me-Feld: null Bewertungen → null', () => assert.equal(bewertungAus('{"number_of_reviews":0,"average_rating":"0.00"}'), null));

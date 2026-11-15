@@ -1,0 +1,477 @@
+{
+  "version": 1,
+  "stand": "2026-11-15",
+  "beschreibung": "Weihnachts-Schaufenster: je Kategorie bis zu 4 handverlesene Produkte. modus «reihenfolge»: verfuegbar_zuerst.mjs und bewertung_zuerst.mjs halten sie auf den Plätzen 1 bis 4 (in dieser Reihenfolge), solange sie aktiv, im Onlineshop veröffentlicht, Mitglied und lieferbar sind; ein ausverkauftes rückt nach hinten und wird gemeldet. modus «kopf»: nur Vorschlag für das Collection-Metafeld luxe.kopf_produkte (Kopf-Fotos), die Sortierung wird nicht angefasst. Datei löschen = Verhalten wie vorher.",
+  "kategorien": {
+    "weihnachten-2026": {
+      "modus": "reihenfolge",
+      "datum": "2026-11-11",
+      "grund": "Weihnachtsdeko mit Lifestyle-Fotos ohne Text; drei davon mit Bewertungen (5 Sterne, je 2).",
+      "sortierung_beim_waehlen": "MANUAL",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/16604954591623",
+          "handle": "weihnachtsgirlande-handschuh-design-mit-lichte-647500",
+          "titel": "Weihnachtsgirlande Handschuh-Design mit Lichtern",
+          "grund": "Girlande in Fäustlingsform mit Lichtern, Foto mit Person, kein Text; 5★×2",
+          "bewertung": "5★ × 2",
+          "platz_beim_waehlen": 4,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2d498341-89e6-425a-877d-a70370c3a747.jpg",
+          "titelbild_px": "1001x1001"
+        },
+        {
+          "id": "gid://shopify/Product/16604837052807",
+          "handle": "weisser-weihnachtsmann-hut-aus-plusch-620300",
+          "titel": "Weihnachtsmann-Mütze aus Plüsch, Rot oder Schwarz",
+          "grund": "Weihnachtsmütze am Christbaum, kein Text; 5★×2",
+          "bewertung": "5★ × 2",
+          "platz_beim_waehlen": 3,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e935f086-47d7-4aa0-b466-8753dd8d5de9.png",
+          "titelbild_px": "1600x1600"
+        },
+        {
+          "id": "gid://shopify/Product/16655206252935",
+          "handle": "mini-drehende-lebkuchenmann-musikbox-fur-den-s-631200",
+          "titel": "Mini drehende Lebkuchenmann-Musikbox für den Schreibtisch",
+          "grund": "Leuchtende Musikbox (Lebkuchenhaus) vor Christbaum, kein Text",
+          "bewertung": null,
+          "platz_beim_waehlen": 11,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d698c88c-fd7c-4be3-a24e-7c99568a4071.jpg",
+          "titelbild_px": "1200x1200"
+        },
+        {
+          "id": "gid://shopify/Product/15452602532225",
+          "handle": "weihnachts-kerzenleuchten-793600",
+          "titel": "Weihnachts-Kerzenleuchten",
+          "grund": "Laterne mit Schneeflocken, Freisteller, kein Text; 5★×2",
+          "bewertung": "5★ × 2",
+          "platz_beim_waehlen": 2,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5bded409-5995-47c6-9566-3f7eebba50ac.jpg",
+          "titelbild_px": "800x800"
+        }
+      ]
+    },
+    "premium-geschenke": {
+      "modus": "reihenfolge",
+      "datum": "2026-11-11",
+      "grund": "Geschenke mit gehobener Anmutung, Freisteller ohne Text; die heutige Nr. 1 (goldene Uhr) gleicht einer bekannten Markenuhr.",
+      "sortierung_beim_waehlen": "MANUAL",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/16610052637063",
+          "handle": "bar-set-mit-golddraht-glas-626600",
+          "titel": "Bar-Set mit Golddraht-Glas",
+          "grund": "Karaffe und zwei Gläser mit Golddraht, Freisteller",
+          "bewertung": null,
+          "platz_beim_waehlen": 52,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f063c370-68c0-4a22-b95e-06ae6c3a3a34_fine.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15450853245313",
+          "handle": "flammen-aroma-diffusor-fur-zuhause-910208",
+          "titel": "Flammen Aroma Diffusor für Zuhause",
+          "grund": "Aroma-Diffusor, Freisteller; 5★×4",
+          "bewertung": "5★ × 4",
+          "platz_beim_waehlen": 5,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30faa498-ccb1-4b4d-a32d-5566ef206ae2.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/16604951314823",
+          "handle": "led-kerzen-weihnachtsdeko-618300",
+          "titel": "LED-Kerzen Weihnachtsdeko",
+          "grund": "LED-Kerzen mit Tannengrün, weihnachtlich, Freisteller",
+          "bewertung": null,
+          "platz_beim_waehlen": 71,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dd5cfd2b-7194-438c-8095-dd180c5499d5.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/16655083995527",
+          "handle": "grosser-dicker-warmer-split-schal-658200",
+          "titel": "Grosser, dicker, warmer Split-Schal",
+          "grund": "Warmer Umhang-Schal, Freisteller, passt zum Winter",
+          "bewertung": null,
+          "platz_beim_waehlen": 15,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a143a597-1dab-4906-afb4-6c565fe111a7.jpg",
+          "titelbild_px": "1000x1000"
+        }
+      ]
+    },
+    "geschenke-fuer-sie": {
+      "modus": "reihenfolge",
+      "datum": "2026-11-11",
+      "grund": "Schmuck und Uhren, saubere Fotos; drei mit Bewertungen. Nicht genommen: Uhr mit «H»-Armreif (Nachbildung einer Marke), Make-up-Set (Markendesign).",
+      "sortierung_beim_waehlen": "MANUAL",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/15525502157185",
+          "handle": "quarzuhr-fur-damen-mit-farbverlauf-a9cdbd",
+          "titel": "Quarzuhr für Damen mit Farbverlauf",
+          "grund": "Damenuhr mit Farbverlauf am Handgelenk; 5★×6",
+          "bewertung": "5★ × 6",
+          "platz_beim_waehlen": 1,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3075714942565.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/16607162466695",
+          "handle": "geometrisches-schneeflocken-armband-617900",
+          "titel": "Geometrisches Schneeflocken-Armband",
+          "grund": "Armband mit Schneeflocken-Gliedern, weihnachtlich",
+          "bewertung": null,
+          "platz_beim_waehlen": 59,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a5e7412a-c7a1-4306-ba62-1ad9cbbe8d99.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15502192443777",
+          "handle": "quadratische-damenuhr-mit-strasssteinen-333440",
+          "titel": "Quadratische Damenuhr mit Strasssteinen",
+          "grund": "Silberne Damenuhr, Freisteller; 5★×3",
+          "bewertung": "5★ × 3",
+          "platz_beim_waehlen": 5,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/59b64a0b-ca35-4baf-8036-6dd39458f806.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15523906322817",
+          "handle": "zirkon-armband-im-japandi-stil-622000",
+          "titel": "Zirkon-Armband im Japandi-Stil",
+          "grund": "Armband mit grünen Steinen auf Schmuckkissen; 5★×2",
+          "bewertung": "5★ × 2",
+          "platz_beim_waehlen": 11,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/09681491-5913-41dd-9ae1-754155798b86.jpg",
+          "titelbild_px": "1000x1000"
+        }
+      ]
+    },
+    "geschenke-fuer-ihn": {
+      "modus": "reihenfolge",
+      "datum": "2026-11-15",
+      "grund": "Lederrucksack, Bar-Set, Ladestation, Manschettenknöpfe; eine mit Bewertungen. Nicht genommen: Uhren mit Markenlogo oder im Stil bekannter Markenuhren (goldene Achteck-Uhr, «Motor»-Uhr, FOXBOX-Taucheruhr 058624: Prüfer-Fund 15.11.), Tiki-Tasse (verwischter Fleck im Bild), Rucksäcke mit Massangaben im Bild.",
+      "sortierung_beim_waehlen": "MANUAL",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/16647277052295",
+          "handle": "grosser-rindsleder-rucksack-fur-herren-909760",
+          "titel": "Grosser Rindsleder-Rucksack für Herren",
+          "grund": "Lederrucksack vor Holzwand, kein Text",
+          "bewertung": null,
+          "platz_beim_waehlen": 25,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1839a943-f1df-46f5-9829-3f0833d4cc9b.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/16610052637063",
+          "handle": "bar-set-mit-golddraht-glas-626600",
+          "titel": "Bar-Set mit Golddraht-Glas",
+          "grund": "Karaffe und zwei Gläser, Freisteller",
+          "bewertung": null,
+          "platz_beim_waehlen": 46,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f063c370-68c0-4a22-b95e-06ae6c3a3a34_fine.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15450836861313",
+          "handle": "3-in-1-wireless-ladestation-fur-apple-android-710200",
+          "titel": "3-in-1 Wireless Ladestation für iPhone & Android",
+          "grund": "Ladestation, Freisteller; 5★×3",
+          "bewertung": "5★ × 3",
+          "platz_beim_waehlen": 8,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2239511185644.png",
+          "titelbild_px": "640x640"
+        },
+        {
+          "id": "gid://shopify/Product/15501883146625",
+          "handle": "elegante-manschettenknopfe-fur-herren-179968",
+          "titel": "Elegante Manschettenknöpfe für Herren",
+          "grund": "Manschettenknöpfe mit Uhrwerk-Optik, Freisteller, kein Text, kein Logo",
+          "bewertung": null,
+          "platz_beim_waehlen": 171,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617940111062.jpg",
+          "titelbild_px": "800x800"
+        }
+      ]
+    },
+    "geschenke-fuer-kinder": {
+      "modus": "reihenfolge",
+      "datum": "2026-11-11",
+      "grund": "Bastel- und Lernspielzeug mit sauberen Fotos. Die bewerteten Spielzeuge (Drohne, Auto, Projektor) haben Text oder Masslinien im Titelbild.",
+      "sortierung_beim_waehlen": "MANUAL",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/16603866857863",
+          "handle": "weihnachts-bastelset-619500",
+          "titel": "Weihnachts-Bastelset",
+          "grund": "Kind mit Weihnachtsmütze bastelt Perlenanhänger, kein Text",
+          "bewertung": null,
+          "platz_beim_waehlen": 59,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48d1736f-6957-4150-8312-280aec595500_trans.jpg",
+          "titelbild_px": "750x591"
+        },
+        {
+          "id": "gid://shopify/Product/16604955148679",
+          "handle": "holz-steckbrett-puzzle-fur-kinder-710720",
+          "titel": "Holz-Steckbrett-Puzzle für Kinder",
+          "grund": "Steckbrett aus Holz mit Vorlagekarten, kein Text",
+          "bewertung": null,
+          "platz_beim_waehlen": 53,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0e5a5167-2dc8-482a-865b-95c0ba569302.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/16605817831815",
+          "handle": "interaktives-diy-graffiti-deckenmalset-625600",
+          "titel": "Interaktives DIY-Graffiti-Deckenmalset",
+          "grund": "Decke zum Ausmalen mit Stiften, kein Text",
+          "bewertung": null,
+          "platz_beim_waehlen": 52,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/70368e81-8d5a-4fa9-a331-2a181863ceab.jpg",
+          "titelbild_px": "1000x1000"
+        },
+        {
+          "id": "gid://shopify/Product/16656658039175",
+          "handle": "baustein-puzzle-fur-kinder-4-6-jahre-625400",
+          "titel": "Baustein-Puzzle für Kinder 4–6 Jahre",
+          "grund": "Holzpuzzle mit Zahlen und Buchstaben, kein Text",
+          "bewertung": null,
+          "platz_beim_waehlen": 7,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3a34c732-486f-49d8-a3ce-0f6811c7af74.png",
+          "titelbild_px": "544x556"
+        }
+      ]
+    },
+    "kleine-geschenke-mitbringsel": {
+      "modus": "reihenfolge",
+      "datum": "2026-11-11",
+      "grund": "Wichtelgeschenke unter CHF 20 (alle Varianten), drei mit Bewertungen, eins weihnachtlich.",
+      "sortierung_beim_waehlen": "MANUAL",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/16639069880711",
+          "handle": "moos-pluschspielzeug-weihnachts-rentier-619400",
+          "titel": "Moos-Plüschspielzeug Weihnachts-Rentier",
+          "grund": "Plüsch-Rentier im Schnee, weihnachtlich, kein Text",
+          "bewertung": null,
+          "platz_beim_waehlen": 38,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/081dbee2-ade8-4e9e-8913-03c993cd84f8.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15458467479937",
+          "handle": "schokoladen-ohrring-haarstecker-609700",
+          "titel": "Haarspange Keks",
+          "grund": "Haarspange Keks; 4,88★×8",
+          "bewertung": "4.88★ × 8",
+          "platz_beim_waehlen": 6,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dcf51c7a-c214-4fa7-b9c8-c598ec08307a.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15455958073729",
+          "handle": "led-tintenfisch-nachtlicht-1d969a",
+          "titel": "LED-Tintenfisch Nachtlicht",
+          "grund": "Quallen-Lampe; 4,75★×8",
+          "bewertung": "4.75★ × 8",
+          "platz_beim_waehlen": 11,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9684093817792.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15450833518977",
+          "handle": "cupid-herz-engel-flugel-halskette-mit-zirkonia-879744",
+          "titel": "Cupid Herz Engel Flügel Halskette mit Zirkonia",
+          "grund": "Halskette Herz mit Engelsflügeln; 5★×2",
+          "bewertung": "5★ × 2",
+          "platz_beim_waehlen": 15,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f2d5801f-1d8c-49e3-b129-88c38c8386e9.jpg",
+          "titelbild_px": "800x800"
+        }
+      ]
+    },
+    "🎁-geschenke-bis-chf-30": {
+      "modus": "reihenfolge",
+      "datum": "2026-11-11",
+      "grund": "Lichterkette als Weihnachtsbild, dazu bewährte Kleingeschenke; andere Wahl als «kleine Mitbringsel», damit sich die Seiten unterscheiden.",
+      "sortierung_beim_waehlen": "MANUAL",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/16603400372615",
+          "handle": "led-schneeflocken-string-mit-farbwechsel-607700",
+          "titel": "LED-Schneeflocken-Lichterkette mit Farbwechsel",
+          "grund": "Schneeflocken-Lichterkette am Vorhang, kein Text; 5★×1",
+          "bewertung": "5★ × 1",
+          "platz_beim_waehlen": 25,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5ff6eb21-0945-42d0-bc2a-3b08cfae9f56.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15483934900609",
+          "handle": "beruhigendes-kuscheltier-608200",
+          "titel": "Beruhigendes Kuscheltier",
+          "grund": "Plüschhase mit Licht im Bett; 5★×8",
+          "bewertung": "5★ × 8",
+          "platz_beim_waehlen": 1,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e6c0dc98-1fc9-41e7-b435-5383fe21d05a_fine.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15450830635393",
+          "handle": "brief-halskette-mit-umschlag-anhanger-156352",
+          "titel": "Brief-Halskette mit Umschlag-Anhänger",
+          "grund": "Halskette mit Brief-Anhänger, Freisteller; 5★×1",
+          "bewertung": "5★ × 1",
+          "platz_beim_waehlen": 20,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/834fdbf3-999b-4ff5-b0c7-c3f8ccd8d3bf.jpg",
+          "titelbild_px": "1000x1000"
+        },
+        {
+          "id": "gid://shopify/Product/15449425478017",
+          "handle": "automatischer-kaffeebecher-72c4e0",
+          "titel": "Automatischer Kaffeebecher",
+          "grund": "Rührbecher, Freisteller; 4,83★×6",
+          "bewertung": "4.83★ × 6",
+          "platz_beim_waehlen": 7,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a06b7e2a-28b6-4ac0-a63d-eaf0b4f016bd.jpg",
+          "titelbild_px": "1920x1920"
+        }
+      ]
+    },
+    "weihnachtspyjama-familie": {
+      "modus": "kopf",
+      "datum": "2026-11-11",
+      "grund": "Sortierung BEST_SELLING bleibt; nur Vorschlag für die Kopf-Fotos (luxe.kopf_produkte). Fotos ohne aufgedruckten Text.",
+      "sortierung_beim_waehlen": "BEST_SELLING",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/15447961764225",
+          "handle": "loungewear-pyjama-set-fur-die-ganze-familie-603800",
+          "titel": "Loungewear Pyjama-Set für die ganze Familie",
+          "grund": "Familie im Norweger-Pyjama vor Christbaum",
+          "bewertung": null,
+          "platz_beim_waehlen": 26,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f99d761-4776-4fe0-a624-6cb27cd744c9.jpg",
+          "titelbild_px": "1066x1066"
+        },
+        {
+          "id": "gid://shopify/Product/15447974740353",
+          "handle": "gestreiftes-familien-set-fur-weihnachten-246528",
+          "titel": "Gestreiftes Familien-Set für Weihnachten",
+          "grund": "Familie in Ringel-Pyjamas, Spiegel-Foto",
+          "bewertung": null,
+          "platz_beim_waehlen": 1,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/713e0a8e-63d9-4a71-bb04-bffa1288080b.jpg",
+          "titelbild_px": "1350x1500"
+        },
+        {
+          "id": "gid://shopify/Product/15447971660161",
+          "handle": "weihnachts-elch-pyjama-fur-die-ganze-familie-884416",
+          "titel": "Weihnachts-Elch Pyjama für die ganze Familie",
+          "grund": "Elch-Pyjamas als Set gelegt",
+          "bewertung": null,
+          "platz_beim_waehlen": 4,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1736665909340278784.jpg",
+          "titelbild_px": "880x847"
+        },
+        {
+          "id": "gid://shopify/Product/15447966679425",
+          "handle": "kariertes-familien-pyjama-set-mit-hirschgeweih-616100",
+          "titel": "Kariertes Familien-Pyjama-Set mit Hirschgeweih",
+          "grund": "Karo-Pyjamas mit Rentier, Freisteller",
+          "bewertung": null,
+          "platz_beim_waehlen": 18,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/276b249c-3192-4912-a09e-8d9b7531f8ae.jpg",
+          "titelbild_px": "919x919"
+        }
+      ]
+    },
+    "weihnachtspullover": {
+      "modus": "kopf",
+      "datum": "2026-11-15",
+      "grund": "Sortierung BEST_SELLING bleibt; nur Vorschlag für die Kopf-Fotos. Nur Bilder, die zum Titel passen: ohne Schriftzug, ohne Lizenzmotiv, keine «Hoodies» ohne Kapuze, kein Plüsch-Relief bei Digitaldruck (Prüfer-Fund 15.11.). Drei Einträge; den vierten Platz füllt das Snippet aus der Sammlung.",
+      "sortierung_beim_waehlen": "BEST_SELLING",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/16614560104839",
+          "handle": "weihnachtsbaum-print-pullover-mit-langen-armel-624500",
+          "titel": "Weihnachtsbaum-Print Pullover mit langen Ärmeln",
+          "grund": "Norweger-Muster, am Christbaum getragen",
+          "bewertung": null,
+          "platz_beim_waehlen": 2,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3415170e-64fc-4c72-8dc8-f7623f0fdd55.jpg",
+          "titelbild_px": "800x800"
+        },
+        {
+          "id": "gid://shopify/Product/15449499107713",
+          "handle": "weihnachtskatze-pullover-612800",
+          "titel": "Weihnachtskatze Pullover",
+          "grund": "Roter Pullover mit Katzen-Weihnachtsbaum am Christbaum getragen, Bild passt zum Titel",
+          "bewertung": null,
+          "platz_beim_waehlen": 15,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5977d098-b710-4478-bf7b-647522704608.jpg",
+          "titelbild_px": "640x640"
+        },
+        {
+          "id": "gid://shopify/Product/15449435931009",
+          "handle": "weihnachts-pullover-rot-620300",
+          "titel": "Weihnachts-Pullover Rot",
+          "grund": "Roter Pullover mit Christbaum-Motiv getragen, Bild passt zum Titel (kleine Aufschrift im Druck gehört zum Produkt)",
+          "bewertung": null,
+          "platz_beim_waehlen": 21,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/db515ebf-45b5-4a4d-a940-23ef82e39c61.jpg",
+          "titelbild_px": "800x800"
+        }
+      ]
+    },
+    "adventskalender": {
+      "modus": "kopf",
+      "datum": "2026-11-11",
+      "grund": "Sortierung BEST_SELLING bleibt; nur Vorschlag für die Kopf-Fotos. Fast alle anderen Titelbilder zeigen Verpackungstext.",
+      "sortierung_beim_waehlen": "BEST_SELLING",
+      "produkte": [
+        {
+          "id": "gid://shopify/Product/16608446775687",
+          "handle": "weihnachtskalender-aus-mdf-24-tages-slot-639300",
+          "titel": "Weihnachtskalender aus MDF – mit 24 Tagesfächern",
+          "grund": "Holzhaus mit 24 Schubladen und Licht",
+          "bewertung": null,
+          "platz_beim_waehlen": 10,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8c92451e-4612-423b-ac87-c41048f1c34a.png",
+          "titelbild_px": "1920x1920"
+        },
+        {
+          "id": "gid://shopify/Product/16603866694023",
+          "handle": "adventskalender-geschenkbox-603200",
+          "titel": "Adventskalender Geschenkbox",
+          "grund": "Rosa Schachteln mit Zahlen",
+          "bewertung": null,
+          "platz_beim_waehlen": 23,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/34b1b278-9f7a-4b5a-826d-0fe416448b74.png",
+          "titelbild_px": "790x790"
+        },
+        {
+          "id": "gid://shopify/Product/16607140512135",
+          "handle": "weihnachtskalender-mit-highland-cow-pvc-618200",
+          "titel": "Adventskalender «Hochlandrind» aus PVC",
+          "grund": "24 Hochlandrind-Figuren",
+          "bewertung": null,
+          "platz_beim_waehlen": 12,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c1e4d256-3587-4ee6-9a9d-ca4822ed9389.png",
+          "titelbild_px": "1920x1920"
+        },
+        {
+          "id": "gid://shopify/Product/16604832858503",
+          "handle": "adventskalender-set-aus-satin-geschenkbeutel-622900",
+          "titel": "Adventskalender-Set aus Satin-Geschenkbeutel",
+          "grund": "Satinbeutel mit Zahl",
+          "bewertung": null,
+          "platz_beim_waehlen": 18,
+          "titelbild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/73cb7b0c-cb9d-4c72-9dab-97756f907bcd.jpg",
+          "titelbild_px": "800x800"
+        }
+      ]
+    }
+  }
+}

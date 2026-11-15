@@ -1,0 +1,9 @@
+{%- comment -%}
+  lx-ankuendigung-stabil (11.11.2026): Ankuendigungsleiste am Desktop ohne Layoutsprung.
+  GEMESSEN (Wiedergabe herren-poloshirts 1440x900): die Leiste ist beim ersten Zeichnen 43 px hoch (Text 1 Zeile) und springt
+  nach dem Laden weiterer Stile/Schrift auf 55 px (Text 2 Zeilen); der ganze Inhalt rutscht 12 px (CLS je Lauf bis 0,19).
+  Mit dieser Regel im <head>: Leiste von Anfang an 55 px, CLS 0,0022 bis 0,0029 (3 Laeufe) statt 0,0102 bis 0,0329.
+  Nur Desktop: eine Handy-Regel (min-height 47px) wurde gemessen und verworfen (CLS hoeher, 0,055).
+  Wirkt nur VOR der Leiste: layout/theme.liquid, direkt vor </head>: render 'lx-ankuendigung-stabil'.
+{%- endcomment -%}
+<style id="lx-ankuendigung-stabil">@media (min-width:750px){.announcement-bar__slides{min-height:24px}}</style>

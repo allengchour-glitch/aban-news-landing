@@ -1,0 +1,32 @@
+name: Merchant-Autofeed schalten
+
+# Schaltet Googles Autofeed (Produkt-Crawling von luxestyle.ch) im Merchant Center. Nur von Hand.
+# Vorgabe ist «pruefen» (liest nur). Begründung und Messung: dropship/merchant-fehler-1111/README.md.
+on:
+  workflow_dispatch:
+    inputs:
+      modus:
+        description: 'pruefen = nur lesen, aus = Autofeed abschalten, ein = Rücknahme'
+        default: pruefen
+
+permissions:
+  contents: read
+
+jobs:
+  autofeed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: automation/merchant_autofeed.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet google-auth requests
+      - name: Autofeed
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          MODUS: ${{ inputs.modus }}
+        run: python3 automation/merchant_autofeed.py

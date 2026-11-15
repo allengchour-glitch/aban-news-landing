@@ -12,17 +12,43 @@
  * Aufruf:  MENUE=1 node automation/bewertung_zuerst.mjs                     (alle Collections im Hauptmenü, Trockenlauf)
  *          HANDLES=haustier-hunde,solar-energie LIVE=1 node automation/bewertung_zuerst.mjs
  * Schalter: MIN_MITGLIEDER=10 · MAX_OBEN=120 · NEU=1 (Bulk-Zwischenspeicher ignorieren)
+ *
+ * SCHAUFENSTER-PINS (11.11.2026): Kategorien mit modus «reihenfolge» in der Pin-Datei (PINS=…, Vorgabe dropship/kategorie-schaufenster-pins.json) bekommen
+ * zuerst ihre gepinnten Produkte (Plätze 1 bis 4, Pin-Reihenfolge), dann die Bewerteten, dann die Bestseller. Ein Pin zählt nur, wenn er Mitglied, aktiv und
+ * verfügbar ist (frisch gelesen, gleiche Regel wie verfuegbar_zuerst.mjs); sonst «PIN-BEFUND» und er wird nicht nach vorn gezogen.
+ * Dieses Werkzeug läuft von Hand: ist die Pin-Datei fehlerhaft, bricht es vor jedem Schreiben ab (Exit 1). Fehlt sie: Verhalten wie vorher.
  */
 import { readFileSync, writeFileSync, existsSync, statSync, appendFileSync } from 'node:fs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { mitglieder } from './kategorie_pruefer.mjs';
 import { rangliste, bewegungen, bewertungAus } from './lib/bewertung_rang.mjs';
+import { pinKopf, pinBefunde, mitSichtbarkeit, befundeMitSichtbarkeit } from './lib/verfuegbar_rang.mjs';
+import { ladePins, PIN_STANDARD, onlineStoreId } from './lib/schaufenster_pins.mjs';
 
 const LIVE = process.env.LIVE === '1', ZURUECK = process.env.BEST_SELLING === '1';
 const MIN = Number(process.env.MIN_MITGLIEDER || 10), MAX_OBEN = Number(process.env.MAX_OBEN || 120);
-const CACHE = '/tmp/bewertung_bulk.jsonl';
+const CACHE = process.env.BULK_CACHE || '/tmp/bewertung_bulk.jsonl';   // BULK_CACHE: eigener Pfad (Tests, damit sie keinen echten Zwischenspeicher überschreiben)
 const schlaf = ms => new Promise(r => setTimeout(r, ms));
+
+/**
+ * Frischer Zustand der gepinnten Produkte: Mitgliedschaft (inCollection) und Bestand wie in verfuegbar_zuerst.mjs (null = nicht aktiv, Infinity = ohne Bestandsführung).
+ * osId (Kanal «Online Store», 15.11.2026): ist er gegeben, zählt ein nicht veröffentlichter Pin wie «nicht aktiv» (Befund «nicht im Onlineshop»); ohne osId keine Prüfung.
+ */
+export async function pinZustand(q, pins, collectionId, osId = null) {
+  if (!pins.length) return { kopf: [], befunde: [] };
+  const n = osId
+    ? (await q(`query($ids:[ID!]!,$c:ID!,$p:ID!){nodes(ids:$ids){... on Product{id status totalInventory tracksInventory inCollection(id:$c) publishedOnPublication(publicationId:$p)}}}`, { ids: pins, c: collectionId, p: osId })).nodes
+    : (await q(`query($ids:[ID!]!,$c:ID!){nodes(ids:$ids){... on Product{id status totalInventory tracksInventory inCollection(id:$c)}}}`, { ids: pins, c: collectionId })).nodes;
+  const ids = [], bestand = new Map(), unsichtbar = new Set();
+  for (const p of n) {
+    if (!p || !p.inCollection) continue;
+    ids.push(p.id); bestand.set(p.id, p.status !== 'ACTIVE' ? null : (p.tracksInventory ? p.totalInventory : Infinity));
+    if (osId && p.publishedOnPublication === false) unsichtbar.add(p.id);
+  }
+  const b = mitSichtbarkeit(bestand, unsichtbar);
+  return { kopf: pinKopf(ids, b, pins), befunde: befundeMitSichtbarkeit(pinBefunde(ids, b, pins), bestand, unsichtbar) };
+}
 
 async function bulkProdukte(q) {
   if (process.env.NEU !== '1' && existsSync(CACHE) && Date.now() - statSync(CACHE).mtimeMs < 6 * 3600 * 1000) { console.log('Bulk-Datei aus dem Zwischenspeicher (< 6 h)'); return readFileSync(CACHE, 'utf8'); }
@@ -47,6 +73,15 @@ async function main() {
     body: JSON.stringify({ client_id: process.env.SHOPIFY_CLIENT_ID, client_secret: CS, grant_type: 'client_credentials' }) });
   const tok = (await r.json()).access_token; if (!tok) { console.error('Kein Shopify-Token'); process.exit(1); }
   const q = (a, b) => shopifyGql(SHOP, '2025-01', tok, a, b);
+
+  const pinsDatei = ladePins(process.env.PINS || PIN_STANDARD);
+  if (pinsDatei.fehler.length) { for (const f of pinsDatei.fehler) console.error(`PIN-DATEI-FEHLER: ${f}`); console.error('Abbruch vor jedem Schreiben: Pin-Datei korrigieren (oder PINS=<andere Datei>).'); process.exit(1); }
+  console.log(pinsDatei.fehlt ? `Pins: keine Datei ${pinsDatei.pfad} — Verhalten wie vorher` : `Pins: ${pinsDatei.pfad} · ${pinsDatei.reihenfolge.size} Kategorien mit festem Kopf`);
+  let osId = null;
+  if (pinsDatei.reihenfolge.size) {
+    try { osId = await onlineStoreId(q); } catch (e) { console.log(`Pins: Kanal «Online Store» nicht lesbar (${e.message})`); }
+    if (!osId) console.log('Pins: Sichtbarkeit im Onlineshop wird NICHT geprüft (Kanal nicht gefunden)');
+  }
 
   const jsonl = await bulkProdukte(q);
   const produkte = [], bewertet = new Map();
@@ -84,15 +119,18 @@ async function main() {
       if (mit.length < MIN) { stat.klein++; continue; }
       const oben = rangliste(bewertet, mit, { max: MAX_OBEN });
       if (!oben.length) { stat.ohneBewertete++; console.log(`${h}: ${mit.length} Mitglieder, keins mit ≥ 4 Sternen`); continue; }
+      const pins = pinsDatei.reihenfolge.get(h) || [];
+      const pz = await pinZustand(q, pins, c.id, osId);
+      for (const b of pz.befunde) console.log(`PIN-BEFUND ${h}: ${b.id} ${b.grund} — wird nicht nach vorn gezogen`);
       const kopf = oben.slice(0, 3).map(id => { const p = produkte.find(x => x.id === id), b = bewertet.get(id); return `${b.a}★×${b.c} ${p.handle.slice(0, 26)}`; }).join(' | ');
-      console.log(`${h}: ${mit.length} Mitglieder · ${oben.length} bewertet nach vorn · ${kopf}`);
+      console.log(`${h}: ${mit.length} Mitglieder${pins.length ? ` · ${pz.kopf.length}/${pins.length} Pins zuerst` : ''} · ${oben.length} bewertet nach vorn · ${kopf}`);
       if (!LIVE) continue;
       const bs = (await q(`query($id:ID!){collection(id:$id){products(first:100,sortKey:BEST_SELLING){nodes{id}}}}`, { id: c.id })).collection.products.nodes.map(n => n.id);
       if (c.sortOrder !== 'MANUAL') {
         const u = (await q(`mutation($i:CollectionInput!){collectionUpdate(input:$i){userErrors{message}}}`, { i: { id: c.id, sortOrder: 'MANUAL' } })).collectionUpdate;
         if (u.userErrors.length) { console.log(`   ✗ sortOrder: ${JSON.stringify(u.userErrors)}`); stat.fehler++; continue; }
       }
-      const moves = bewegungen(oben, bs);
+      const moves = bewegungen([...pz.kopf, ...oben], bs);   // Pins zuerst; bewegungen() entfernt Doppelte (ein bewerteter Pin steht nur auf seinem Pin-Platz)
       const rr = (await q(`mutation($id:ID!,$m:[MoveInput!]!){collectionReorderProducts(id:$id,moves:$m){job{id} userErrors{message}}}`, { id: c.id, m: moves })).collectionReorderProducts;
       if (rr.userErrors.length) { console.log(`   ✗ reorder: ${JSON.stringify(rr.userErrors)}`); stat.fehler++; continue; }
       appendFileSync('dropship/kategorien_ledger.txt', `${new Date().toISOString()} · bewertung-zuerst ${h} ${oben.length}\n`);

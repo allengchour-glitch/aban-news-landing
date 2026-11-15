@@ -70,7 +70,53 @@ Entscheid des Besitzers.
 - `MODUS=quellen` (Vorgabe bei Push) listet die Datenquellen und die Herkunft der Proben in `PROBEN`; `modus=bilder` (Handstart)
   liest alle Artikel (rund 15 Minuten). Konto-Nummern werden nie ausgegeben.
 - Seit 21:41 UTC wiederholt der Leser Netz-Zeitüberschreitungen (vorher brach der Lauf 43104452470 an einer ab).
+- `modus=autofeed` (Handstart, rund 5 Minuten): Autofeed-Schalter, Autofeed-Zeilen gegen das Schaufenster-Manifest,
+  Klicks je Herkunft (28 Tage), Bildproben (`BILDPROBEN`). Offline-Test: `python3 -I automation/merchant_bildprobleme_test.py`.
+- Schalter: `merchant-autofeed.yml` (`automation/merchant_autofeed.py`), Modi `pruefen` (Vorgabe), `aus`, `ein`; liest nach dem
+  Schreiben frisch zurück.
 - Auswertung: `python3 -I dropship/merchant-fehler-1111/fehler_auswerten.py <lauf.log> <aus.json>` (gruppiert die FEHLER-Zeilen nach Code und Attribut, nennt die Quelle je Angebot). Das Log am Ende zeigt die «Zeilen je Angebotsformat» (Shopify-App gegen Autofeed).
+
+## Nachmessung 15.11. (Lauf 43748361054, Handstart vom Konto des Besitzers 18:43 UTC, `modus=bilder`)
+
+GEMESSEN (Log ausgewertet mit `fehler_auswerten.py` und `dropship/bildfix-1111/google_liste.mjs`):
+
+| Wert | 11.11. | 15.11. |
+|---|---|---|
+| Zeilen gesamt | 321 841 bis 322 111 | 326 608 |
+| fehlender Versand (Liechtenstein-Dienst seit 11.11. 18:57 UTC) | 256 124 | **979** |
+| Bildangebote (verschieden) | 313 (18:53), 198 (21:54) | 192 |
+| Preis fehlt / Verfügbarkeit fehlt / «Hot Sale» | 1 141 / 49 / 18 | 574 / 50 / 18 |
+| Zeilen Autofeed / Shopify-App | (nicht gezählt) | 189 835 / 136 771 |
+
+**Herkunft der übrigen Fehler:** 147 der 192 Bildangebote (alle 75 «zu klein», 72 von 116 Einblendungen), alle
+624 fehlenden Pflichtangaben und alle 18 «Hot Sale» stammen aus dem **Autofeed**. Aus der Shopify-App kommen 45
+Bildangebote in 29 Produkten; 27 davon wurden am 11.11. bereinigt. Ein Teil davon ist wohl ein alter Stand bei Google
+(das Ladepad zeigt heute ein sauberes Bild, Google meldet weiter eine Einblendung; der Autofeed meldet «zu klein» für
+Bilder mit 1024 und 1254 Pixeln). Ein Teil sind Zusammenstellungen, die Google als Einblendung werten kann (Handy mit
+App-Bildschirm, Zubehör als Einzelteile mit Symbolen, Lippen-Nahaufnahme als Einschub). Zwei App-Produkte sind neu
+(Plüsch-Zwergspitz wartet auf den Abruf, Mini-Drohne «drone.png» noch nicht bereinigt).
+
+### Autofeed gegen das Schaufenster (Modus `autofeed`, Läufe 43769734396 und 43770221277, 15.11. 22:31 bis 22:41 UTC)
+
+GEMESSEN, nur gelesen:
+
+- **Schalter:** `enableProducts=true`, `eligible=true`.
+- **Schaufenster:** 31 280 Produkte vom Google-Kanal genommen (letzte Aktion im Manifest nicht «auf»).
+- **Zeilen:** Shopify-App 136 766 (25 511 Produkte), Autofeed 187 444 mit Produkt-ID (8 681 Produkte) und 2 347 mit reiner Nummer.
+- **8 398 der 8 681 Autofeed-Produkte (96,7 %) hat das Schaufenster absichtlich vom Google-Kanal genommen.**
+  8 676 Produkte gibt es nur im Autofeed; davon sind 8 396 gesperrt.
+- **Besucher in 28 Tagen** (18.10. bis 14.11., `product_performance_view`): Autofeed mit Produkt-ID 0 Klicks und
+  0 Einblendungen; Autofeed mit reiner Nummer 2 Klicks (1 Angebot); Shopify-App 4 Klicks bei 52 Einblendungen.
+- **Bildproben:**
+  - Garagentor: Google hat das neue Bild, die Einblendungsmeldung ist weg.
+  - Ladepad und Focallure: Google hat noch die alten Bilder (`1081987260836.jpg`, `1614838998292.jpg`), obwohl der Shop seit dem 11.11. die neuen zeigt.
+  - Die zwei Autofeed-Proben tragen ebenfalls alte Bilder.
+- In der App stehen noch 3 349 Zeilen (2 104 Produkte), die laut Manifest gesperrt sein sollten (Abwahl nur versucht
+  oder bei Google noch nicht angekommen). Nicht weiter untersucht.
+
+**Folgerung:** Der Autofeed holt fast nur Produkte zurück, die das Schaufenster bewusst weggelassen hat. Er bringt
+damit die meisten Fehler (alte Preise und Bilder), aber in 28 Tagen nur 2 Klicks. Abgeschaltet mit
+`merchant-autofeed.yml` (Modus `aus`). Rücknahme: derselbe Workflow mit Modus `ein`.
 
 ## Plan 14. und 16.11. (vom Besitzer am 11.11. freigegeben, Sparmodus)
 
