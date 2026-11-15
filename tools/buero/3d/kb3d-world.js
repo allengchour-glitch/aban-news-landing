@@ -1,4 +1,4 @@
-/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-16).
+/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-17).
    Sieben eigene Pavillons (je rund 10,4 × 8 m) stehen in zwei Spalten mit Gassen dazwischen: Chefbüro und Krypto, Shop und Versand, dann der
    Campusplatz mit dem Zentralmonitor, danach Social Media, Entwicklerbüro und das YouTube-Studio. Jeder Raum hat eine hohe Rückwand im Norden
    mit einem grossen Liveboard (Monitor mit Zahlen aus den Zeilen dieses Raums) und davor genug Platz zwischen den Schreibtischen.
@@ -56,7 +56,7 @@
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
   var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
   SEATS.forEach(function (s) { var r = ROOMS[s.room]; s.x = r.x0 + s.u; s.z = r.z0 + s.v; });
-  K.DESIGN_VERSION = 'campus-einheitlich-16';
+  K.DESIGN_VERSION = 'campus-einheitlich-17';
   K.SEATS = SEATS;
   K.ROOMS = ROOMS;
   K.ROOM_SIZE = [RW, RD];
@@ -436,9 +436,18 @@
     endRoom();
 
     /* =============================== CAMPUSPLATZ =============================== */
-    // Zentralmonitor: breites, niedriges Brett auf zwei Pfosten (weit genug von den Räumen, damit er sie nicht verdeckt)
-    var CZ = 11.0, CW = 8.8, CH = 4.4, CY = 2.75;
-    gehaeuse(0, 0.12, CZ, 10.1, 0.32, 1.4, 0.14, '#335254');
+    // Kontrollplatz: ruhige Bühne und breitere Monitorwand, Daten/Hittests unverändert.
+    B.cyl(0, GY + 0.035, 11.8, 6.6, 6.6, 0.07, 72, '#365751');
+    B.cyl(0, GY + 0.075, 11.8, 6.43, 6.43, 0.03, 72, '#7fc3b0', 0.12);
+    B.cyl(0, GY + 0.1, 11.8, 6.25, 6.25, 0.025, 72, '#d1d7c8');
+    var CZ = 11.0, CW = 11.0, CH = 4.8, CY = 3.1;
+    gehaeuse(0, 0.22, CZ, 12.1, 0.32, 1.6, 0.14, '#335254');
+    [-6.1, 6.1].forEach(function(x){
+      gehaeuse(x, 3.1, CZ - 0.3, 0.3, 6.0, 0.42, 0.08, '#345c5b');
+      B.box(x, 3.1, CZ - 0.06, 0.065, 5.5, 0.04, '#9bd4bf', 0.22);
+    });
+    gehaeuse(0, 6.02, CZ - 0.3, 12.45, 0.26, 0.48, 0.08, '#345c5b');
+    B.box(0, 5.87, CZ - 0.02, 11.9, 0.055, 0.12, '#bce3d0', 0.24);
     B.box(-4.2, 1.1, CZ - 0.06, 0.18, 2.0, 0.3, '#819998'); B.box(4.2, 1.1, CZ - 0.06, 0.18, 2.0, 0.3, '#819998');
     var zentralB = new K.Builder();
     gehaeuse(0, CY, CZ - 0.02, CW + 0.62, CH + 0.62, 0.28, 0.22, '#9db0ab', 0, zentralB);
@@ -458,7 +467,7 @@
       place('planter', x, 0, 8.5, 0, 0.72);
     });
     place('planter', -4.8, 0, 8.6, 0, 0.7); place('planter', 4.8, 0, 8.6, 0, 0.7);
-    stat(quad({ x: 0, y: 0.026, z: 13.3, rx: -PI / 2, w: 5.0, h: 0.7, tex: tex('campusplatz', function () { return T.sign('CAMPUSPLATZ', '#345d59', '#d9e5de', '#d9e5de'); }) }));
+    stat(quad({ x: 0, y: GY + 0.13, z: 16.0, rx: -PI / 2, w: 5.0, h: 0.7, tex: tex('campusplatz', function () { return T.sign('KONTROLLPLATZ', '#345d59', '#d9e5de', '#d9e5de'); }) }));
     // Türkise Randlinien der Plattform
     B.floor(-13.2, 6.9, 13.2, 7.02, GY + 0.01, '#68b8ad', 0.2);
     B.floor(-13.2, 14.0, 13.2, 14.12, GY + 0.01, '#68b8ad', 0.2);
@@ -558,7 +567,7 @@
     });
 
     /* ---------- Kamera-Ansichten: Mitte des Raums, Abstand passend zur Raumgrösse ---------- */
-    W.views = { alle: { tx: 1.5, ty: 0.4, tz: 12.5, dist: 68 }, 'Campusplatz': { tx: 0, ty: 1.4, tz: 10.6, dist: 25 } };
+    W.views = { alle: { tx: 1.5, ty: 0.4, tz: 12.5, dist: 68 }, 'Campusplatz': { tx: 0, ty: 2.0, tz: 11.4, dist: 27 } };
     Object.keys(ROOMS).forEach(function (n) { var d = ROOMS[n]; W.views[n] = { tx: d.x0 + 5.2, ty: 0.7, tz: d.z0 + 4.4, dist: 15.5 }; });
     return W;
   };
