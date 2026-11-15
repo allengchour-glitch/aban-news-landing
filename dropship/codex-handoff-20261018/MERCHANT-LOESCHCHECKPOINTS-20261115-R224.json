@@ -1,0 +1,93 @@
+{
+  "scope": "exactly two approved Merchant deletes, no Shopify/source delete",
+  "ownerConfirmation": {
+    "ownerText": "bedtätige",
+    "source": "explicit reply to R223 final request for the exactly two named Merchant-entry deletions",
+    "recordedAtUTC": "2026-11-14T23:55:45.258210+00:00",
+    "dateZurich": "2026-11-15",
+    "approvedScope": [
+      {
+        "data_source": "accounts/5797470070/dataSources/10667445201",
+        "product_id": "shopify_ZZ_15516154462593_56177866178945",
+        "content_language": "de",
+        "feed_label": "CHF_99383214465"
+      },
+      {
+        "data_source": "accounts/5797470070/dataSources/10667445201",
+        "product_id": "shopify_ZZ_15516156395905_56177868177793",
+        "content_language": "de",
+        "feed_label": "CHF_99383214465"
+      }
+    ],
+    "approvalGranted": true,
+    "noRepeatedApprovalNeededForSamePair": true
+  },
+  "checkpoint": {
+    "ownerConfirmation": "owner-confirmation.json",
+    "approvalGranted": true,
+    "sourceTypeEvidence": {
+      "input": "API",
+      "profileReadAtUTC": "2026-11-14T22:34:18",
+      "profileResponseCached": true,
+      "exactProductSourceIdsReadFresh": true,
+      "serverActionContractRequiresAPIInput": true
+    },
+    "operations": [
+      {
+        "request": {
+          "account": "5797470070",
+          "connector": "google_merchant",
+          "action": "delete_product",
+          "params": {
+            "data_source": "accounts/5797470070/dataSources/10667445201",
+            "product_id": "shopify_ZZ_15516154462593_56177866178945",
+            "content_language": "de",
+            "feed_label": "CHF_99383214465"
+          }
+        },
+        "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516154462593_56177866178945",
+        "beforeSnapshot": "offer0Before.json",
+        "state": "confirmed_absent_google_item_not_found",
+        "sentAtUTC": "2026-11-14T23:56:55.678190+00:00",
+        "responseAtUTC": "2026-11-14T23:57:08.253160+00:00",
+        "responseFile": "write0.json",
+        "verifiedAtUTC": "2026-11-14T23:58:09.504459+00:00",
+        "rawReadback": "after0.json",
+        "rawWrapperErrorCode": "INVALID_ARGUMENT",
+        "semanticGoogleResponse": "404 ITEM_NOT_FOUND for exact resource",
+        "knownLiveSameSourceControl": "controlAfter.json"
+      },
+      {
+        "request": {
+          "account": "5797470070",
+          "connector": "google_merchant",
+          "action": "delete_product",
+          "params": {
+            "data_source": "accounts/5797470070/dataSources/10667445201",
+            "product_id": "shopify_ZZ_15516156395905_56177868177793",
+            "content_language": "de",
+            "feed_label": "CHF_99383214465"
+          }
+        },
+        "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15516156395905_56177868177793",
+        "beforeSnapshot": "offer1Before.json",
+        "state": "confirmed_absent_google_item_not_found",
+        "sentAtUTC": "2026-11-14T23:57:08.253175+00:00",
+        "responseAtUTC": "2026-11-14T23:57:31.664984+00:00",
+        "responseFile": "write1.json",
+        "verifiedAtUTC": "2026-11-14T23:58:09.504509+00:00",
+        "rawReadback": "after1.json",
+        "rawWrapperErrorCode": "INVALID_ARGUMENT",
+        "semanticGoogleResponse": "404 ITEM_NOT_FOUND for exact resource",
+        "knownLiveSameSourceControl": "controlAfter.json"
+      }
+    ],
+    "blindRetries": 0,
+    "writesSent": 2,
+    "bothDeletionsConfirmed": true,
+    "shopifyProductsPreserved": true,
+    "sameSourceKnownLiveControlSuccess": true,
+    "sourceProfileCachedObservationNotRecastAsLive": true
+  },
+  "completedDoNotBlindlyRepeat": true
+}

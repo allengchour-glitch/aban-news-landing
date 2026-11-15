@@ -1,3 +1,11 @@
+# R224 – Zwei freigegebene alte Merchant-Einträge entfernt, 15.11.2026 Zürich
+
+Explizite Paarbestätigung «bedtätige» ausgeführt: zwei gezielte delete_product-Aktionen, danach für beide exakten Google-Ressourcen404/ITEM_NOT_FOUND und lebende Kontrollressource derselbenQuelle bestätigt. Shopify-DRAFT-Produkte und Quelle bleiben erhalten;0Blindretries. R223-Freigabe nicht mehr offen und für dasselbe Paar nicht erneut anfragen. KeineTagesreports/Automation/anderenServicewrites.
+
+[Bericht](MERCHANT-ALTE-ANGEBOTE-ENTFERNT-20261115-R224.md) · [Belege](MERCHANT-ALTE-ANGEBOTE-ENTFERNT-20261115-R224.json) · [Checkpoints](MERCHANT-LOESCHCHECKPOINTS-20261115-R224.json).24IDs/Historien und bestehenderZeitplan erhalten; Claude-Empfang unbekannt.
+
+---
+
 # R223 – Zwei alte Merchant-Angebote zur Bereinigung vorbereitet, 14.11.2026
 
 API-Quelle/de/Feedlabel, Shopify-DRAFT, fehlende alte Varianten, echte404-Zielseiten und aktuelle Google-Ablehnungen für genau zwei Kinderuhr-Angebote bestätigt. Vollständige Vorher-Snapshots und konkrete Delete-Requests gesichert; Paarbestätigung angefragt und noch offen,0Writes. Vier bestehende DE/FR-Nagellackzustände positiv bestätigt, kein erneuter Bildwechsel. AUTOFEED-Einzellöschung in geprüfter API-Doku nicht gedeckt; französische Textfassung nur Entwurf.

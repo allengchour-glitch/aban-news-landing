@@ -2561,3 +2561,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 | Grenzen / Gedächtnis |24stabileIDs/Historien und Tagesgrenzen fortgeführt | Revision223,0Plattformwrites, keine neuen Tagesreports/Kaufwatch/Posts/Renders/Workflowstarts/Automation. Claude-Kenntnisnahme unbekannt. |
 
 [Bericht](MERCHANT-WEITERARBEIT-20261114-R223.md) · [Belege](MERCHANT-WEITERARBEIT-20261114-R223.json) · [Freigabepaket](MERCHANT-ALTE-ANGEBOTE-FREIGABE-20261114-R223.json).
+
+## 15.11.2026
+
+### R224 – Bestätigtes Merchant-Paar entfernt
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Freigabe / Vorherprüfung | Konkrete Inhaberantwort «bedtätige» gespeichert; Shop/CHF, Merchant5797470070 und Metricool6227837/sechs Kanäle geprüft; genaueAngebote/Shopify-DRAFT/fehlendealteVarianten/404 frisch gegengeprüft | Gleicher freigegebener Umfang; vollständige Vorherdaten gesichert. Kein erneutes Freigabeverlangen. Quellenprofilantwort als Cache14.11.22:34:18 UTC gekennzeichnet, direkte Produkt-/Quell-ID-Reads frisch. |
+| Merchant | Genau zwei freigegebene delete_product-Aktionen für Kinderuhr-Angebote in API10667445201/de/CHF_99383214465 ausgeführt | Beide Löschungen bestätigt und danach exakteGoogleRessourcen404/ITEM_NOT_FOUND. ZweiWrites,0blindeWiederholungen. KeineAUTOFEED-/globaleQuellenänderung. |
+| Nachprüfung | Bekanntes lebendes Nagellack-Angebot aus derselbenQuelle erfolgreich gelesen; beide Shopify-Produkte nativ zurückgelesen | Quelle/Kontozugriff weiterhin vorhanden; beide Shopify-Produkte unverändert DRAFT, alteVariantenweiternull. Keine Shopprodukte oder Preise geändert. |
+| Tagesgrenzen / Gedächtnis | Neuen15.11.-Datumsblock Zürich angelegt,24IDs/Historien und R223-Vorbereitung erhalten; Abschluss/Freigabe fortgeschrieben | Revision224. Keine Tages-Kennzahlen-/Klaviyo-/GSC-/Kaufwatchreports, Socialposts, Renders, Workflowstarts, Deployments, Merges oder neueAutomation. Übrige offeneMerchantfälle getrennt, keineglobale0Fehler-/Umsatzbehauptung; Claude-Kenntnisnahme unbekannt. |
+
+[Bericht](MERCHANT-ALTE-ANGEBOTE-ENTFERNT-20261115-R224.md) · [Belege](MERCHANT-ALTE-ANGEBOTE-ENTFERNT-20261115-R224.json) · [Checkpoints](MERCHANT-LOESCHCHECKPOINTS-20261115-R224.json).
