@@ -1,0 +1,162 @@
+{%- comment -%}
+  lx-kopf-kompakt (11.11.2026): kompakter Kategorie-Kopf. Ersetzt den Inhalt von lux_hero in templates/collection.json
+  (Aufruf im Custom-Liquid-Abschnitt: render 'lx-kopf-kompakt'). Plan und Gegenpruefung: dropship/kategorie-banner-v2/README.md.
+  Handy (bis 749 px): heller Kopf ohne Fotos, H1 23 px, Polster hoechstens 8 px. Die Beschreibung bleibt vollstaendig im HTML:
+  sichtbar ist der erste Absatz auf 1 Zeile, der Rest liegt in einem <details> («Mehr anzeigen»). Eingeklappte Links bekommen
+  keinen Tastaturfokus; Chrome findet den Text trotzdem mit der Seitensuche.
+  Steht im ersten Absatz ein Link, ist der sichtbare Anriss eine reine Textkopie (aria-hidden) und der echte Absatz liegt im <details>.
+  Kopffotos werden am Handy nicht geladen (<picture> mit 1-px-GIF fuer max-width 749px).
+  Desktop: Fotostreifen wie bisher (bis 4 Produktfotos, srcset, sizes 25vw), Hoehe 230 bis 300 px, Anriss 2 Zeilen.
+  Fotos: zuerst Collection-Metafeld luxe.kopf_produkte (Liste von Produkten), dann die ersten 24 Produkte der Sammlung;
+  nur lieferbare Produkte mit Hauptbild ab 500 px Breite, kein Produkt doppelt. Ausnahme schuhe: eigenes Theme-Bild.
+  Liquid schneidet keine Zeichenketten; die Zeilen begrenzt CSS. Markierungsbloecke ls-verwandt und gd2 bleiben unveraendert.
+  12.11.2026 (Pruefrunde): Kuerzung, Hoehendeckel und Lage des Knopfs nur in Browsern mit :has() (@supports selector(:has(*)));
+  ohne :has() steht der erste Absatz ganz da, und bei nur einem Absatz faellt der Knopf weg (lx-kk__beschr--nur-anriss).
+  Tippflaeche des Knopfs am Handy per ::before vergroessert. Zweiter Knopf «Weniger anzeigen» am Ende des Rests (nur mit JS).
+  15.11.2026 (Korrektur): ohne :has() blendet ein Skript beim Oeffnen die Textkopie des Link-Falls aus (Klasse lx-kk--offen),
+  sonst stuende der erste Absatz doppelt da. Ohne :has() UND ohne JS bleibt die Kopie stehen (nicht loesbar ohne beides).
+{%- endcomment -%}
+{%- liquid
+  assign lx_gif = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
+  assign lx_banner_liste = 'schuhe' | split: ','
+  assign lx_n = 0
+  assign lx_ids = '|'
+  assign lx_besch = collection.description
+  assign lx_erster = ''
+  assign lx_erster_text = ''
+  assign lx_rest = ''
+  assign lx_anriss_text = false
+  if lx_besch != blank
+    assign lx_rest = lx_besch
+    if lx_besch contains '</p>'
+      assign lx_teile = lx_besch | split: '</p>'
+      assign lx_anfang = lx_teile.first | strip | slice: 0, 3
+      if lx_anfang == '<p>' or lx_anfang == '<p '
+        assign lx_erster = lx_teile.first | append: '</p>'
+        assign lx_erster_text = lx_erster | strip_html | replace: '&nbsp;', ' ' | strip
+        if lx_erster_text == blank
+          assign lx_erster = ''
+        else
+          assign lx_rest = lx_besch | remove_first: lx_erster
+          if lx_erster contains '<a '
+            assign lx_anriss_text = true
+          endif
+        endif
+      endif
+    endif
+  endif
+  assign lx_rest_text = lx_rest | strip_html | strip
+  assign lx_details = false
+  assign lx_kurz = false
+  assign lx_nur_anriss = false
+  if lx_rest_text != blank or lx_anriss_text
+    assign lx_details = true
+  elsif lx_erster_text.size > 38
+    assign lx_details = true
+    assign lx_nur_anriss = true
+    if lx_erster_text.size <= 150
+      assign lx_kurz = true
+    endif
+  endif
+-%}
+{%- capture lx_bilder -%}
+  {%- if lx_banner_liste contains collection.handle -%}
+    <picture class="lx-kk__eins"><source media="(max-width: 749px)" srcset="{{ lx_gif }}"><img src="{{ 'kategorie-banner-' | append: collection.handle | append: '.jpg' | asset_url }}" alt="" loading="eager" fetchpriority="high" width="2000" height="640"></picture>
+  {%- else -%}
+    {%- assign lx_kp = collection.metafields.luxe.kopf_produkte.value -%}
+    {%- if lx_kp != blank -%}
+      {%- for p in lx_kp -%}
+        {%- if lx_n < 4 and p != blank and p.available and p.featured_image != blank and p.featured_image.width >= 500 -%}
+          {%- assign lx_key = '|' | append: p.id | append: '|' -%}
+          {%- unless lx_ids contains lx_key -%}
+            {%- assign lx_ids = lx_ids | append: p.id | append: '|' -%}
+            {%- assign lx_n = lx_n | plus: 1 -%}
+            <picture><source media="(max-width: 749px)" srcset="{{ lx_gif }}"><img src="{{ p.featured_image | image_url: width: 720 }}" srcset="{{ p.featured_image | image_url: width: 360 }} 360w, {{ p.featured_image | image_url: width: 540 }} 540w, {{ p.featured_image | image_url: width: 720 }} 720w, {{ p.featured_image | image_url: width: 1080 }} 1080w" sizes="(min-width: 750px) 25vw, 1px" alt="" loading="{% if lx_n <= 2 %}eager{% else %}lazy{% endif %}" width="720" height="720"></picture>
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+    {%- for p in collection.products limit: 24 -%}
+      {%- if lx_n < 4 and p.available and p.featured_image != blank and p.featured_image.width >= 500 -%}
+        {%- assign lx_key = '|' | append: p.id | append: '|' -%}
+        {%- unless lx_ids contains lx_key -%}
+          {%- assign lx_ids = lx_ids | append: p.id | append: '|' -%}
+          {%- assign lx_n = lx_n | plus: 1 -%}
+          <picture><source media="(max-width: 749px)" srcset="{{ lx_gif }}"><img src="{{ p.featured_image | image_url: width: 720 }}" srcset="{{ p.featured_image | image_url: width: 360 }} 360w, {{ p.featured_image | image_url: width: 540 }} 540w, {{ p.featured_image | image_url: width: 720 }} 720w, {{ p.featured_image | image_url: width: 1080 }} 1080w" sizes="(min-width: 750px) 25vw, 1px" alt="" loading="{% if lx_n <= 2 %}eager{% else %}lazy{% endif %}" width="720" height="720"></picture>
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+<style>
+.lx-kk{position:relative;overflow:hidden;isolation:isolate;background:#2c2118;color:#fff;min-height:230px;display:flex;align-items:center}
+.lx-kk__bilder{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:-2}
+.lx-kk__bilder picture{display:block;min-width:0;height:100%}
+.lx-kk__bilder picture.lx-kk__eins{grid-column:1/-1}
+.lx-kk__bilder img{width:100%;height:100%;object-fit:cover;display:block}
+.lx-kk::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(24,17,10,.88) 0%,rgba(24,17,10,.66) 50%,rgba(24,17,10,.34) 100%)}
+.lx-kk__text{width:100%;max-width:var(--page-width,1200px);margin:0 auto;padding:1.6rem 1.5rem 1.5rem;box-sizing:border-box}
+.lx-kk h1.lx-kk__h1{margin:0 0 .5rem;color:#fff!important;font-size:clamp(2.2rem,4.6vw,3.3rem);line-height:1.08;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.lx-kk__beschr{position:relative;max-width:62rem}
+.lx-kk__beschr,.lx-kk__beschr p,.lx-kk__beschr li,.lx-kk__beschr h2,.lx-kk__beschr h3,.lx-kk__beschr strong{color:#f4ede0!important;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.lx-kk__beschr a{color:#fff!important;text-decoration:underline}
+.lx-kk__anriss,.lx-kk__anriss>p{margin:0}
+.lx-kk__mehr>summary{display:inline-block;cursor:pointer;list-style:none;margin-top:.35rem;padding:0;font-weight:600;text-decoration:underline;text-underline-offset:3px;color:#fff}
+.lx-kk__mehr>summary::-webkit-details-marker{display:none}
+.lx-kk__mehr>summary:focus-visible,.lx-kk__schliessen:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.lx-kk__mehr .lx-kk__zu,.lx-kk__mehr[open] .lx-kk__auf{display:none}
+.lx-kk__mehr[open] .lx-kk__zu{display:inline}
+.lx-kk__rest{margin-top:.6rem}
+.lx-kk__rest>:first-child{margin-top:0}
+.lx-kk__schliessen{display:none;font:inherit;font-weight:600;color:inherit;background:none;border:0;margin:.4rem 0 0;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.lx-kk-js .lx-kk__mehr[open] .lx-kk__schliessen{display:inline-block}
+.lx-kk--offen p.lx-kk__anriss{display:none}
+@media (min-width:750px){.lx-kk__beschr--kurz .lx-kk__mehr{display:none}}
+@supports selector(:has(*)){
+.lx-kk{max-height:300px}
+.lx-kk:has(details[open]){max-height:none}
+.lx-kk__anriss>p,p.lx-kk__anriss{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.lx-kk:has(details[open]) .lx-kk__anriss>p{display:block;-webkit-line-clamp:unset;line-clamp:none;overflow:visible}
+.lx-kk:has(details[open]) p.lx-kk__anriss{display:none}
+}
+@supports not selector(:has(*)){.lx-kk__beschr--nur-anriss .lx-kk__mehr{display:none}}
+@media (max-width:749px){
+.lx-kk{background:transparent;color:inherit;min-height:0;max-height:none;display:block;overflow:visible}
+.lx-kk::before,.lx-kk__bilder{display:none}
+.lx-kk__text{padding:8px 0 6px}
+.lx-kk h1.lx-kk__h1{font-size:23px;line-height:1.15;margin:0 0 2px;color:#1f1a12!important;text-shadow:none;letter-spacing:0}
+.lx-kk__beschr,.lx-kk__beschr p,.lx-kk__beschr li,.lx-kk__beschr h2,.lx-kk__beschr h3,.lx-kk__beschr strong{color:#3a3226!important;text-shadow:none}
+.lx-kk__beschr,.lx-kk__beschr p,.lx-kk__beschr li{font-size:14px;line-height:1.4}
+.lx-kk__beschr a{color:#1f1a12!important}
+.lx-kk__mehr>summary{position:relative;margin:2px 0 0;padding:0;font-size:14px;line-height:1.4;color:#1f1a12}
+.lx-kk__mehr>summary::before{content:"";position:absolute;inset:-6px -6px}
+.lx-kk__schliessen{font-size:14px;line-height:1.4;color:#1f1a12}
+}
+@media (max-width:749px){@supports selector(:has(*)){
+.lx-kk__anriss>p,p.lx-kk__anriss{-webkit-line-clamp:1;line-clamp:1}
+.lx-kk__beschr:not(.lx-kk__beschr--ohne-anriss) .lx-kk__mehr:not([open])>summary{position:absolute;right:0;bottom:0;margin:0;padding:0 0 0 2.4em;background:linear-gradient(90deg,rgb(var(--color-background-rgb,250 247 242) / 0),var(--color-background,#faf7f2) 2em)}
+}}
+</style>
+<div class="lx-kk{% if lx_n == 0 %} lx-kk--ohne-bild{% endif %}">
+  <div class="lx-kk__bilder" aria-hidden="true">{{ lx_bilder }}</div>
+  <div class="lx-kk__text">
+    <h1 class="lx-kk__h1">{{ collection.title }}</h1>
+    {%- if lx_besch != blank -%}
+      <div class="lx-kk__beschr rte{% if lx_kurz %} lx-kk__beschr--kurz{% endif %}{% if lx_erster == blank %} lx-kk__beschr--ohne-anriss{% endif %}{% if lx_nur_anriss %} lx-kk__beschr--nur-anriss{% endif %}">
+        {%- if lx_erster != blank -%}
+          {%- if lx_anriss_text -%}
+            <p class="lx-kk__anriss" aria-hidden="true">{{ lx_erster_text }}</p>
+          {%- else -%}
+            <div class="lx-kk__anriss">{{ lx_erster }}</div>
+          {%- endif -%}
+        {%- endif -%}
+        {%- if lx_details -%}
+          <details class="lx-kk__mehr"><summary><span class="lx-kk__auf">{% if lx_erster == blank %}Beschreibung anzeigen{% else %}Mehr anzeigen{% endif %}</span><span class="lx-kk__zu">Weniger anzeigen</span></summary><div class="lx-kk__rest">{% if lx_anriss_text %}{{ lx_erster }}{% endif %}{{ lx_rest }}</div>{% if lx_rest_text != blank %}<button type="button" class="lx-kk__schliessen">Weniger anzeigen</button>{% endif %}</details>
+        {%- else -%}
+          {{ lx_rest }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+<script>(function(){document.documentElement.classList.add('lx-kk-js');var k=document.currentScript&&document.currentScript.previousElementSibling;if(!k||!k.classList.contains('lx-kk'))return;k.querySelectorAll('details.lx-kk__mehr').forEach(function(d){d.addEventListener('toggle',function(){k.classList.toggle('lx-kk--offen',d.open);});});k.querySelectorAll('.lx-kk__schliessen').forEach(function(b){b.addEventListener('click',function(){var d=b.closest('details');if(!d)return;d.open=false;var s=d.querySelector('summary');if(!s)return;s.focus({preventScroll:true});var r=s.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)s.scrollIntoView({block:'center'});});});})();</script>

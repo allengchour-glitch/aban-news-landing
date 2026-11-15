@@ -1,0 +1,184 @@
+{
+  "sections": {
+    "main": {
+      "type": "lx-main-collection-kompakt",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "horizontal",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": true,
+            "enable_sorting": true,
+            "enable_grid_density": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 8,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_4nY4eT": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_EzJzMm": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title_4nY4eT",
+            "price_EzJzMm"
+          ]
+        }
+      },
+      "custom_css": [],
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": true,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 32,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 0,
+        "padding-block-end": 32
+      }
+    },
+    "lux_faq": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width:820px;margin:0 auto;font-size:15px;line-height:1.6;color:#333\"><h2 style=\"font-size:20px;margin:0 0 6px\">Häufige Fragen zu {{ collection.title }}</h2><p style=\"color:#666;margin:0 0 8px\">Kuratierte Auswahl, faire Preise, Lieferdatum beim Artikel und in der Kasse – bei LuxeStyle.</p><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">🚚 Wie lange dauert der Versand in die Schweiz?</summary><p style=\"margin:8px 0 0;color:#555\">Ab Schweizer Lager meist 2–3 Werktage, im Direktversand 10–20 Werktage; das genaue Datum steht beim Artikel und in der Kasse — immer mit Sendungsverfolgung. Gratis-Versand ab CHF 50 nach Rabatt, sonst CHF 7.00.</p></details><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">💳 Welche Zahlungsmethoden gibt es?</summary><p style=\"margin:8px 0 0;color:#555\">TWINT, Visa, Mastercard und weitere – sicher und SSL-verschlüsselt.</p></details><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">↩️ Wie funktioniert die Rückgabe?</summary>{% if collection.handle contains 'selbst-gestalten' or collection.handle == 'sg-bekleidung' or collection.handle == 'sg-taschen' or collection.handle == 'sg-wohnen' or collection.handle == 'sg-trinken' or collection.handle == 'sg-accessoires' %}<p style=\"margin:8px 0 0;color:#555\">Selbst gestaltete Artikel werden erst nach deiner Bestellung für dich gedruckt und können nicht zurückgegeben oder umgetauscht werden. Bei Druckfehlern, Beschädigung, falscher Lieferung oder Verlust ersetzen wir sie oder erstatten dir den Kaufbetrag. Bitte melde dich innerhalb von 30 Tagen nach Erhalt (Paket nicht angekommen: bis 30 Tage nach dem voraussichtlichen Lieferdatum) unter info@luxestyle.ch, mit Bestellnummer und Foto. Deine gesetzlichen Rechte bei Mängeln bleiben unberührt. <a href=\"/policies/refund-policy#selbst-gestaltete-artikel\">Alle Regeln und Ausnahmen</a></p>{% elsif collection.handle == 'sg-alle' %}<p style=\"margin:8px 0 0;color:#555\">Wir gewähren ein freiwilliges 30-Tage-Rückgaberecht, ausgenommen selbst gestaltete Artikel: Dort gibt es bei Druckfehlern, Beschädigung, falscher Lieferung oder Verlust Ersatz oder Erstattung (<a href=\"/policies/refund-policy#selbst-gestaltete-artikel\">Regeln</a>). Eine kurze Nachricht an info@luxestyle.ch genügt.</p>{% else %}<p style=\"margin:8px 0 0;color:#555\">Wir gewähren ein freiwilliges 30-Tage-Rückgaberecht. Eine kurze Nachricht an info@luxestyle.ch genügt.</p>{% endif %}</details><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">📏 Wie finde ich die richtige Grösse?</summary><p style=\"margin:8px 0 0;color:#555\">Bei Mode- und Schuh-Artikeln findest du eine cm-Grössentabelle direkt auf der jeweiligen Produktseite.</p></details><details style=\"border-top:1px solid #ececec;padding:11px 0\"><summary style=\"cursor:pointer;font-weight:600;list-style:none\">🇨🇭 Warum bei LuxeStyle kaufen?</summary><p style=\"margin:8px 0 0;color:#555\">Schweizer Online-Shop mit kuratierter Auswahl, fairen Preisen, sicherer Zahlung und persönlichem Support auf Deutsch.</p></details></div>",
+        "section_width": "page-width",
+        "padding-block-start": 28,
+        "padding-block-end": 28
+      }
+    },
+    "lux_breadcrumb": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'lx-kopf-pfad' %}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "lux_subchips": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'lx-kopf-chips' %}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "luxe_review_assets": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<script src=\"{{ 'luxe-product-reviews.js' | asset_url }}\" defer></script>\n<style>.lx-review-badge{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;margin:8px 0;color:inherit;font-size:12px;line-height:1.5;overflow-wrap:anywhere}.lx-review-badge[hidden]{display:none!important}.lx-review-badge .lx-review-stars{display:block;width:90px;height:18px;flex:0 0 90px}</style>",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "lux_hero": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'lx-kopf-kompakt' %}",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "lux_breadcrumb",
+    "lux_hero",
+    "lux_subchips",
+    "luxe_review_assets",
+    "main",
+    "lux_faq"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+ "id": "gid://shopify/ProductVariant/55889781162369",
+ "title": "3W-16 Farben, Stecker quadratisch, 1 PC",
+ "sku": "CJ-CJYD188109102BY",
+ "availableForSale": true,
+ "inventoryPolicy": "CONTINUE",
+ "inventoryQuantity": 12337,
+ "inventoryItem": {
+  "id": "gid://shopify/InventoryItem/55242207920513",
+  "tracked": true
+ }
+}
