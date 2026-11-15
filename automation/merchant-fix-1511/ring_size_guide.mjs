@@ -31,6 +31,9 @@ async function main(){
   const d=(await gql('mutation($p:ID!,$o:OptionUpdateInput!){productOptionUpdate(productId:$p,option:$o){userErrors{field message} product{id}}}',{p:product.id,o:{id:size.id,name:'Ringgrösse (Hersteller)'}})).productOptionUpdate;
   if(d.userErrors.length)throw Error(JSON.stringify(d.userErrors));
  }
+ // Flush the product representation after renaming its option; content stays identical.
+ const refresh=await read();const touched=(await gql('mutation($p:ProductUpdateInput!){productUpdate(product:$p){product{id} userErrors{field message}}}',{p:{id:refresh.id,descriptionHtml:refresh.descriptionHtml}})).productUpdate;
+ if(touched.userErrors.length)throw Error(JSON.stringify(touched.userErrors));
  const after=await read();if(!after.options.some(o=>o.name==='Ringgrösse (Hersteller)'))throw Error('Grössenbezeichnung nicht bestätigt');fs.writeFileSync(`${dir}/after.json`,JSON.stringify(after,null,2));
  if(!after.descriptionHtml.includes(MARKER)||!after.descriptionHtml.includes('/pages/'+PAGE)||after.status!==product.status||after.title!==product.title||JSON.stringify(after.variants)!==JSON.stringify(product.variants))throw Error('Rücklesen stimmt nicht mit Ziel überein');
  const d=(await gql('query($id:ID!){page(id:$id){id handle body isPublished}}',{id:page.id})).page;if(!d.isPublished||!d.body.includes('EU-Grössentabelle')&&!d.body.includes('EU-Grösse'))throw Error('Seite nicht bestätigt');
