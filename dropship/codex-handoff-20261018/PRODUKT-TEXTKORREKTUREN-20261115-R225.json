@@ -1,0 +1,1238 @@
+{
+  "atUTC": "2026-11-15T00:30:11.747991+00:00",
+  "shop": "luxestyle.ch",
+  "shopCurrency": "CHF",
+  "shopifyMutationCalls": 3,
+  "productsChanged": 2,
+  "blindRetries": 0,
+  "lace": {
+    "plan": {
+      "operation": "productUpdate",
+      "id": "gid://shopify/Product/15448020582785",
+      "expectedUpdatedAt": "2026-10-26T05:19:10Z",
+      "expectedDescriptionHtmlSHA256": "d0fb4dc51ee9cb5a484ef09a293146ab9016f5f0e6030ae83465a8268414cc46",
+      "expectedSEO": {
+        "title": "Elegantes Langarmshirt mit Spitze | LuxeStyle CH",
+        "description": "Elegantes Langarmshirt mit Spitze bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "productInput": {
+        "id": "gid://shopify/Product/15448020582785",
+        "descriptionHtml": "<p>Dieses stilvolle Langarmshirt für Damen vereint Eleganz mit lässigem Chic. Das Oberteil in Off-White präsentiert sich mit einem Rundhalsausschnitt und einem asymmetrischen Spitzeneinsatz, der dem Design eine besondere Note verleiht. Gefertigt aus hochwertiger Polyesterfaser, bietet es einen angenehmen Tragekomfort und eine lockere Passform. Es ist die ideale Wahl für diverse Freizeitaktivitäten und lässt sich vielseitig kombinieren.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Rundhalsausschnitt</li>\n<li>Asymmetrischer Spitzeneinsatz</li>\n<li>Lockerer Schnitt</li>\n<li>Pullover-Stil</li>\n<li>Aus Polyesterfaser gefertigt</li>\n<li>Reguläre Länge (50cm &lt; Länge ≤ 65cm)</li>\n<li>Lange Ärmel</li>\n<li>Ideal für die Freizeit</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Muster:</strong> Spitzen-Muster</li>\n<li>\n<strong>Material:</strong> Polyester</li>\n<li>\n<strong>Grösse:</strong> S, M, L</li>\n<li>\n<strong>Farbe:</strong> Off-White</li>\n</ul>\n</div><!--gdetails-->\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "seo": {
+          "description": "Langarmshirt in Off-White mit Rundhalsausschnitt und asymmetrischem Spitzeneinsatz. Wähle S, M oder L und entdecke die Details bei LuxeStyle."
+        }
+      },
+      "scope": [
+        "body_color_single_offwhite_from_exact_cj_3sku",
+        "remove_duplicate_size_line_keep_first",
+        "seo_description_neutral_no_discount_claim"
+      ],
+      "authorization": "Current explicit owner continue/check/fix instruction plus prior website SEO live authorization. No price/settings/feed/campaign writes.",
+      "protected": [
+        "title",
+        "handle",
+        "status",
+        "variants",
+        "sku",
+        "price",
+        "inventory",
+        "options",
+        "tags",
+        "media",
+        "seo.title",
+        "shipping_settings",
+        "customer_account_domain"
+      ],
+      "sourceSKU": "CJCS295862003CX",
+      "all3SourceSKUs": [
+        "CJCS295862001AZ",
+        "CJCS295862002BY",
+        "CJCS295862003CX"
+      ],
+      "sourcePID": "2606280723091617600",
+      "timestampUTC": "2026-11-15T00:10:05.507388+00:00"
+    },
+    "before": {
+      "id": "gid://shopify/Product/15448020582785",
+      "title": "Elegantes Langarmshirt mit Spitze",
+      "handle": "elegantes-langarmshirt-mit-spitze-617600",
+      "status": "ACTIVE",
+      "vendor": "LuxeStyle",
+      "productType": "Damenmode",
+      "updatedAt": "2026-10-26T05:19:10Z",
+      "descriptionHtml": "<p>Dieses stilvolle Langarmshirt für Damen vereint Eleganz mit lässigem Chic. Das Oberteil in Off-White präsentiert sich mit einem Rundhalsausschnitt und einem asymmetrischen Spitzeneinsatz, der dem Design eine besondere Note verleiht. Gefertigt aus hochwertiger Polyesterfaser, bietet es einen angenehmen Tragekomfort und eine lockere Passform. Es ist die ideale Wahl für diverse Freizeitaktivitäten und lässt sich vielseitig kombinieren.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Rundhalsausschnitt</li>\n<li>Asymmetrischer Spitzeneinsatz</li>\n<li>Lockerer Schnitt</li>\n<li>Pullover-Stil</li>\n<li>Aus Polyesterfaser gefertigt</li>\n<li>Reguläre Länge (50cm &lt; Länge ≤ 65cm)</li>\n<li>Lange Ärmel</li>\n<li>Ideal für die Freizeit</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Muster:</strong> Spitzen-Muster</li>\n<li>\n<strong>Material:</strong> Polyester</li>\n<li>\n<strong>Grösse:</strong> S, M, L</li>\n<li>\n<strong>Grössen:</strong> S, M, L</li>\n<li>\n<strong>Farbe:</strong> verschiedene Farben</li>\n</ul>\n</div><!--gdetails-->\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Elegantes Langarmshirt mit Spitze | LuxeStyle CH",
+        "description": "Elegantes Langarmshirt mit Spitze bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "damen",
+        "dropship",
+        "koll-shirts",
+        "mode",
+        "rueckhol-0907",
+        "shirt",
+        "sort-damen-t-shirts",
+        "sort-damen-t-shirts-langarm"
+      ],
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17879426793857",
+          "name": "Grösse",
+          "values": [
+            "S",
+            "M",
+            "L"
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55873968636289",
+            "title": "S",
+            "sku": "CJ-CJCS295862001AZ",
+            "price": "18.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55226190430593",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "S"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55873968669057",
+            "title": "M",
+            "sku": "CJ-CJCS295862002BY",
+            "price": "18.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55226190463361",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "M"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55873968701825",
+            "title": "L",
+            "sku": "CJ-CJCS295862003CX",
+            "price": "18.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55226190496129",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "L"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69853140386177",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140386177",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5bd0094b-938b-4ec4-b176-6a34b3198785.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140484481",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140484481",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2002567a-e481-4141-b747-138345f7460e.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 2",
+              "width": 780,
+              "height": 780
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140517249",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140517249",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec6cb94d-5cd8-4b1e-a9c1-6211d9e67983.jpg?v=1783119652",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 3",
+              "width": 1920,
+              "height": 1920
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140550017",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140550017",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04b64888-ac8a-4a37-807a-bfeeb8325d72.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 4",
+              "width": 1920,
+              "height": 1920
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140582785",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140582785",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec79ab49-d150-41ce-94ae-3c9f31ca3f77.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 5",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "firstWrite": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Mutation executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize what changed in a helpful, readable way."
+        },
+        {
+          "type": "text",
+          "text": "{\"data\":{\"productUpdate\":{\"product\":{\"id\":\"gid://shopify/Product/15448020582785\",\"updatedAt\":\"2026-11-15T00:10:22Z\",\"descriptionHtml\":\"<p>Dieses stilvolle Langarmshirt für Damen vereint Eleganz mit lässigem Chic. Das Oberteil in Off-White präsentiert sich mit einem Rundhalsausschnitt und einem asymmetrischen Spitzeneinsatz, der dem Design eine besondere Note verleiht. Gefertigt aus hochwertiger Polyesterfaser, bietet es einen angenehmen Tragekomfort und eine lockere Passform. Es ist die ideale Wahl für diverse Freizeitaktivitäten und lässt sich vielseitig kombinieren.</p><h3>Das zeichnet es aus</h3><ul>\\n<li>Rundhalsausschnitt</li>\\n<li>Asymmetrischer Spitzeneinsatz</li>\\n<li>Lockerer Schnitt</li>\\n<li>Pullover-Stil</li>\\n<li>Aus Polyesterfaser gefertigt</li>\\n<li>Reguläre Länge (50cm &lt; Länge ≤ 65cm)</li>\\n<li>Lange Ärmel</li>\\n<li>Ideal für die Freizeit</li>\\n</ul>\\n<div style=\\\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\\\">\\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\\n\\n<div class=\\\"ls-produktdetails\\\">\\n<!--ls-feed-details--><h4>Produktdetails</h4>\\n<ul>\\n<li>\\n<strong>Muster:</strong> Spitzen-Muster</li>\\n<li>\\n<strong>Material:</strong> Polyester</li>\\n<li>\\n<strong>Grösse:</strong> S, M, L</li>\\n<li>\\n<strong>Farbe:</strong> Off-White</li>\\n</ul>\\n</div><!--gdetails-->\\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\\\"/collections/damen-mode\\\">Damenmode</a> · <a href=\\\"/collections/bestseller-premium-heroes\\\">Bestseller</a></p>\",\"seo\":{\"title\":null,\"description\":\"Langarmshirt in Off-White mit Rundhalsausschnitt und asymmetrischem Spitzeneinsatz. Wähle S, M oder L und entdecke die Details bei LuxeStyle.\"}},\"userErrors\":[]}}}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "data": {
+          "productUpdate": {
+            "product": {
+              "id": "gid://shopify/Product/15448020582785",
+              "updatedAt": "2026-11-15T00:10:22Z",
+              "descriptionHtml": "<p>Dieses stilvolle Langarmshirt für Damen vereint Eleganz mit lässigem Chic. Das Oberteil in Off-White präsentiert sich mit einem Rundhalsausschnitt und einem asymmetrischen Spitzeneinsatz, der dem Design eine besondere Note verleiht. Gefertigt aus hochwertiger Polyesterfaser, bietet es einen angenehmen Tragekomfort und eine lockere Passform. Es ist die ideale Wahl für diverse Freizeitaktivitäten und lässt sich vielseitig kombinieren.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Rundhalsausschnitt</li>\n<li>Asymmetrischer Spitzeneinsatz</li>\n<li>Lockerer Schnitt</li>\n<li>Pullover-Stil</li>\n<li>Aus Polyesterfaser gefertigt</li>\n<li>Reguläre Länge (50cm &lt; Länge ≤ 65cm)</li>\n<li>Lange Ärmel</li>\n<li>Ideal für die Freizeit</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Muster:</strong> Spitzen-Muster</li>\n<li>\n<strong>Material:</strong> Polyester</li>\n<li>\n<strong>Grösse:</strong> S, M, L</li>\n<li>\n<strong>Farbe:</strong> Off-White</li>\n</ul>\n</div><!--gdetails-->\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+              "seo": {
+                "title": null,
+                "description": "Langarmshirt in Off-White mit Rundhalsausschnitt und asymmetrischem Spitzeneinsatz. Wähle S, M oder L und entdecke die Details bei LuxeStyle."
+              }
+            },
+            "userErrors": []
+          }
+        }
+      },
+      "isError": false
+    },
+    "firstNativeAfter": {
+      "id": "gid://shopify/Product/15448020582785",
+      "title": "Elegantes Langarmshirt mit Spitze",
+      "handle": "elegantes-langarmshirt-mit-spitze-617600",
+      "status": "ACTIVE",
+      "vendor": "LuxeStyle",
+      "productType": "Damenmode",
+      "updatedAt": "2026-11-15T00:10:22Z",
+      "descriptionHtml": "<p>Dieses stilvolle Langarmshirt für Damen vereint Eleganz mit lässigem Chic. Das Oberteil in Off-White präsentiert sich mit einem Rundhalsausschnitt und einem asymmetrischen Spitzeneinsatz, der dem Design eine besondere Note verleiht. Gefertigt aus hochwertiger Polyesterfaser, bietet es einen angenehmen Tragekomfort und eine lockere Passform. Es ist die ideale Wahl für diverse Freizeitaktivitäten und lässt sich vielseitig kombinieren.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Rundhalsausschnitt</li>\n<li>Asymmetrischer Spitzeneinsatz</li>\n<li>Lockerer Schnitt</li>\n<li>Pullover-Stil</li>\n<li>Aus Polyesterfaser gefertigt</li>\n<li>Reguläre Länge (50cm &lt; Länge ≤ 65cm)</li>\n<li>Lange Ärmel</li>\n<li>Ideal für die Freizeit</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Muster:</strong> Spitzen-Muster</li>\n<li>\n<strong>Material:</strong> Polyester</li>\n<li>\n<strong>Grösse:</strong> S, M, L</li>\n<li>\n<strong>Farbe:</strong> Off-White</li>\n</ul>\n</div><!--gdetails-->\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": null,
+        "description": "Langarmshirt in Off-White mit Rundhalsausschnitt und asymmetrischem Spitzeneinsatz. Wähle S, M oder L und entdecke die Details bei LuxeStyle."
+      },
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "damen",
+        "dropship",
+        "koll-shirts",
+        "mode",
+        "rueckhol-0907",
+        "shirt",
+        "sort-damen-t-shirts",
+        "sort-damen-t-shirts-langarm"
+      ],
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17879426793857",
+          "name": "Grösse",
+          "values": [
+            "S",
+            "M",
+            "L"
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55873968636289",
+            "title": "S",
+            "sku": "CJ-CJCS295862001AZ",
+            "price": "18.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55226190430593",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "S"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55873968669057",
+            "title": "M",
+            "sku": "CJ-CJCS295862002BY",
+            "price": "18.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55226190463361",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "M"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55873968701825",
+            "title": "L",
+            "sku": "CJ-CJCS295862003CX",
+            "price": "18.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55226190496129",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "L"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69853140386177",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140386177",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5bd0094b-938b-4ec4-b176-6a34b3198785.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140484481",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140484481",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2002567a-e481-4141-b747-138345f7460e.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 2",
+              "width": 780,
+              "height": 780
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140517249",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140517249",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec6cb94d-5cd8-4b1e-a9c1-6211d9e67983.jpg?v=1783119652",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 3",
+              "width": 1920,
+              "height": 1920
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140550017",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140550017",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04b64888-ac8a-4a37-807a-bfeeb8325d72.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 4",
+              "width": 1920,
+              "height": 1920
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140582785",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140582785",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec79ab49-d150-41ce-94ae-3c9f31ca3f77.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 5",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "correctiveWrite": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Mutation executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize what changed in a helpful, readable way."
+        },
+        {
+          "type": "text",
+          "text": "{\"data\":{\"productUpdate\":{\"product\":{\"id\":\"gid://shopify/Product/15448020582785\",\"updatedAt\":\"2026-11-15T00:10:47Z\",\"seo\":{\"title\":\"Elegantes Langarmshirt mit Spitze | LuxeStyle CH\",\"description\":\"Langarmshirt in Off-White mit Rundhalsausschnitt und asymmetrischem Spitzeneinsatz. Wähle S, M oder L und entdecke die Details bei LuxeStyle.\"}},\"userErrors\":[]}}}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "data": {
+          "productUpdate": {
+            "product": {
+              "id": "gid://shopify/Product/15448020582785",
+              "updatedAt": "2026-11-15T00:10:47Z",
+              "seo": {
+                "title": "Elegantes Langarmshirt mit Spitze | LuxeStyle CH",
+                "description": "Langarmshirt in Off-White mit Rundhalsausschnitt und asymmetrischem Spitzeneinsatz. Wähle S, M oder L und entdecke die Details bei LuxeStyle."
+              }
+            },
+            "userErrors": []
+          }
+        }
+      },
+      "isError": false
+    },
+    "finalNative": {
+      "id": "gid://shopify/Product/15448020582785",
+      "title": "Elegantes Langarmshirt mit Spitze",
+      "handle": "elegantes-langarmshirt-mit-spitze-617600",
+      "status": "ACTIVE",
+      "vendor": "LuxeStyle",
+      "productType": "Damenmode",
+      "updatedAt": "2026-11-15T00:10:47Z",
+      "descriptionHtml": "<p>Dieses stilvolle Langarmshirt für Damen vereint Eleganz mit lässigem Chic. Das Oberteil in Off-White präsentiert sich mit einem Rundhalsausschnitt und einem asymmetrischen Spitzeneinsatz, der dem Design eine besondere Note verleiht. Gefertigt aus hochwertiger Polyesterfaser, bietet es einen angenehmen Tragekomfort und eine lockere Passform. Es ist die ideale Wahl für diverse Freizeitaktivitäten und lässt sich vielseitig kombinieren.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Rundhalsausschnitt</li>\n<li>Asymmetrischer Spitzeneinsatz</li>\n<li>Lockerer Schnitt</li>\n<li>Pullover-Stil</li>\n<li>Aus Polyesterfaser gefertigt</li>\n<li>Reguläre Länge (50cm &lt; Länge ≤ 65cm)</li>\n<li>Lange Ärmel</li>\n<li>Ideal für die Freizeit</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Muster:</strong> Spitzen-Muster</li>\n<li>\n<strong>Material:</strong> Polyester</li>\n<li>\n<strong>Grösse:</strong> S, M, L</li>\n<li>\n<strong>Farbe:</strong> Off-White</li>\n</ul>\n</div><!--gdetails-->\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/damen-mode\">Damenmode</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Elegantes Langarmshirt mit Spitze | LuxeStyle CH",
+        "description": "Langarmshirt in Off-White mit Rundhalsausschnitt und asymmetrischem Spitzeneinsatz. Wähle S, M oder L und entdecke die Details bei LuxeStyle."
+      },
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "damen",
+        "dropship",
+        "koll-shirts",
+        "mode",
+        "rueckhol-0907",
+        "shirt",
+        "sort-damen-t-shirts",
+        "sort-damen-t-shirts-langarm"
+      ],
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17879426793857",
+          "name": "Grösse",
+          "values": [
+            "S",
+            "M",
+            "L"
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55873968636289",
+            "title": "S",
+            "sku": "CJ-CJCS295862001AZ",
+            "price": "18.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55226190430593",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "S"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55873968669057",
+            "title": "M",
+            "sku": "CJ-CJCS295862002BY",
+            "price": "18.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55226190463361",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "M"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55873968701825",
+            "title": "L",
+            "sku": "CJ-CJCS295862003CX",
+            "price": "18.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55226190496129",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "L"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69853140386177",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140386177",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5bd0094b-938b-4ec4-b176-6a34b3198785.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140484481",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140484481",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2002567a-e481-4141-b747-138345f7460e.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 2",
+              "width": 780,
+              "height": 780
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140517249",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140517249",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec6cb94d-5cd8-4b1e-a9c1-6211d9e67983.jpg?v=1783119652",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 3",
+              "width": 1920,
+              "height": 1920
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140550017",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140550017",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04b64888-ac8a-4a37-807a-bfeeb8325d72.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 4",
+              "width": 1920,
+              "height": 1920
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69853140582785",
+            "image": {
+              "id": "gid://shopify/ImageSource/69853140582785",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec79ab49-d150-41ce-94ae-3c9f31ca3f77.jpg?v=1783119651",
+              "altText": "Elegantes Langarmshirt mit Spitze – Ansicht 5",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "nativeChecks": {
+      "bodyMatches": true,
+      "seoDescription": true,
+      "seoTitlePreserved": true,
+      "protected": true,
+      "changedAt": "2026-11-15T00:10:47Z"
+    },
+    "publicChecks": {
+      "atUTC": "2026-11-15T00:13:11.489346+00:00",
+      "url": "https://luxestyle.ch/products/elegantes-langarmshirt-mit-spitze-617600?variant=55873968701825",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/products/elegantes-langarmshirt-mit-spitze-617600?variant=55873968701825",
+      "title": "\n  Elegantes Langarmshirt mit Spitze | LuxeStyle CH\n",
+      "h1": "Elegantes Langarmshirt mit Spitze",
+      "canonical": "https://luxestyle.ch/products/elegantes-langarmshirt-mit-spitze-617600",
+      "meta": "Langarmshirt in Off-White mit Rundhalsausschnitt und asymmetrischem Spitzeneinsatz. Wähle S, M oder L und entdecke die Details bei LuxeStyle.",
+      "og": "Langarmshirt in Off-White mit Rundhalsausschnitt und asymmetrischem Spitzeneinsatz. Wähle S, M oder L und entdecke die Details bei LuxeStyle.",
+      "checks": {
+        "http200": true,
+        "titlePreserved": true,
+        "h1Preserved": true,
+        "canonicalPreserved": true,
+        "metaDescription": true,
+        "ogDescription": true,
+        "productBodyMatches": true,
+        "colorCorrect": true,
+        "sizeOnce": true,
+        "idsPriceAvailable": true
+      },
+      "allPassed": true,
+      "htmlSha256": "74cbd24b26dcd2d85fc958f262e2f11eb21052fcd4ebd77d161c83ee66bee9aa",
+      "titleNormalized": "Elegantes Langarmshirt mit Spitze | LuxeStyle CH",
+      "qaCorrection": "Whitespace in title and binary-float cent conversion corrected offline; same saved HTTP response, no platform change or repeated HTTP fetch."
+    },
+    "checkpoint": {
+      "state": "confirmed_native_readback",
+      "mutationAttempts": 2,
+      "blindRetries": 0,
+      "firstWriteOutcome": "body_and_description_applied_omitted_SEO_title_cleared",
+      "correctionOutcome": "original_SEO_title_restored_both_fields_sent",
+      "checkpointNote": "second inflight local log failed NameError false; actual correction tool response and fresh native read are saved",
+      "checks": {
+        "bodyMatches": true,
+        "seoDescription": true,
+        "seoTitlePreserved": true,
+        "protected": true,
+        "changedAt": "2026-11-15T00:10:47Z"
+      }
+    },
+    "note": "First confirmed write cleared omitted seo.title. Fresh native read detected it; separate exact corrective write restored the original title, both SEO members sent. Not a blind retry. Original/QA snapshots retained."
+  },
+  "shaker": {
+    "plan": {
+      "atUTC": "2026-11-15T00:15:52.384057+00:00",
+      "scope": "native_product_factual_copy_only_no_google_approval_or_compliance_claim",
+      "input": {
+        "id": "gid://shopify/Product/15523818045825",
+        "title": "Elektrischer Milchshaker, drei Ausführungen",
+        "descriptionHtml": "<!-- ls-var-v1 --><p>Elektrischer Milchshaker in drei Ausführungen. Wähle die gewünschte Ausführung im Auswahlfeld.</p><h3>Ausführungen im Vergleich</h3><p>Die Varianten unterscheiden sich gemäss Lieferantenbeschreibung wie folgt:</p><ul><li><strong>Milchgelb:</strong> Digitalanzeige und vier Schüttelstufen.</li><li><strong>Milchweiss:</strong> Digitalanzeige und vier Schüttelstufen.</li><li><strong>Milchweiss Basis-Stil:</strong> drei Schüttelstufen.</li></ul><p><strong>Material:</strong> Kunststoff.</p><p><strong>Lieferumfang gemäss Lieferant:</strong> ein Milchshaker und ein Ladekabel.</p><!-- ls-xsell-v1 --><p><strong>Passende Kategorien:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "seo": {
+          "title": "Elektrischer Milchshaker: 3 Ausführungen | LuxeStyle",
+          "description": "Elektrischer Milchshaker in Milchgelb, Milchweiss oder als Basis-Ausführung. Varianten, Schüttelstufen und Lieferumfang bei LuxeStyle vergleichen."
+        }
+      },
+      "expectedUpdatedAt": "2026-11-04T02:32:26Z",
+      "beforeSHA256": "259b8dbbdc82e528e586b4c494611f12d8ac049e2fea5f8891f5be5fd63007d6",
+      "source": {
+        "pid": "2408080235051619200",
+        "sku": [
+          "CJYD210486101AZ",
+          "CJYD210486102BY",
+          "CJYD210486103CX"
+        ],
+        "sourceFields": {
+          "description": "\n <p><b>Product information:</b><br/>Power: 11<br/> Power type: USB/lithium battery/type-c<br/> Color: Milky White yellow upgraded constant temperature model [digital display 4-speed shaking milk] anti-dumping, Milky White upgraded constant temperature model [digital display 4-speed shaking milk] anti-dumping, Milky White-basic model [Level 3 shaking milk] anti-dumping<br/> Material: polypropylene (pp)</p>\n <p><br/></p>\n <b>Packing list:&nbsp;</b><div><p>Milk shaker * 1+charging cable * 1</p><p><br/></p>\n \n <b>Product Image:</b>&nbsp;</div><p><br/></p><div><br/></div><div>&nbsp; <br/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/beff93bc-b3bc-409b-a8c5-f1aafa18e499_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/7bd757c7-3f38-4529-8bce-2f669724b1db_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/e9712268-a93c-455a-b9f8-3cbb9449abb6_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/cbb197fd-43c7-4763-9443-c2f05d935a40_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/23eedc8a-abc2-402e-bd59-06c6a972ad34_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/47a82daf-1ba3-4151-a371-22deaae5c5de_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/edabe720-1655-40a1-8d1e-24909e855c3b_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/9db9a238-7c12-465b-b86a-39f5f1f71b59_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/f9b49664-041a-4e42-8a32-c6a592fb9aa8_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/3c5ac82b-cbde-4313-b35a-dc9eece92227_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/d710b28f-582d-4e22-83fc-67a11b5df365_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/861a0d95-3d37-45fc-96ec-fd1709204c72_trans.jpeg\"/>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/19e2ef05-0819-4d76-b79a-f5e51626fe12_trans.jpeg\"/>\n</div>",
+          "variants": [
+            {
+              "sku": "CJYD210486101AZ",
+              "variantNameEn": "Baby Electric Constant Temperature Milk Shaker Mixer Milky Yellow",
+              "variantKey": "Milky Yellow"
+            },
+            {
+              "sku": "CJYD210486102BY",
+              "variantNameEn": "Baby Electric Constant Temperature Milk Shaker Mixer Milky White",
+              "variantKey": "Milky White"
+            },
+            {
+              "sku": "CJYD210486103CX",
+              "variantNameEn": "Baby Electric Constant Temperature Milk Shaker Mixer Milky White Basic Style",
+              "variantKey": "Milky White Basic Style"
+            }
+          ]
+        }
+      },
+      "facts": {
+        "variantCount": 3,
+        "upgradedModels": {
+          "milk_yellow": "digital display 4-speed",
+          "milk_white": "digital display 4-speed"
+        },
+        "basicModel": "3-speed per product description",
+        "packing": "Milk shaker *1 + charging cable *1"
+      },
+      "removedUnprovenOrOvergeneralized": [
+        "constant_temperature_for_all_variants",
+        "11W_unit_not_present_in_CJ_power_field",
+        "leak_prevention_guarantee",
+        "instruction_manual_not_in_packing_list",
+        "all_versions_4_speed_implication",
+        "Milchspeck_translation_error",
+        "generic_checked_and_10_20_days_trust_block"
+      ],
+      "protected": [
+        "id",
+        "handle",
+        "status",
+        "vendor",
+        "productType",
+        "tags",
+        "options",
+        "variants",
+        "media",
+        "existing_ls_var_v1_and_ls_xsell_v1_markers"
+      ],
+      "merchantState": "Old variant56215831413121 currently local_requirements_policy_violation; no resolution/review request or feed change. Exact safety/compliance documents not supplied by CJ record."
+    },
+    "before": {
+      "id": "gid://shopify/Product/15523818045825",
+      "title": "Elektrischer Milchshaker mit konstanter Temperatur",
+      "handle": "elektrischer-milchshaker-mit-konstanter-temper-619200",
+      "status": "ACTIVE",
+      "vendor": "LuxeStyle",
+      "productType": "Aufbewahrung & Organizer",
+      "updatedAt": "2026-11-04T02:32:26Z",
+      "descriptionHtml": "<!-- ls-var-v1 --><p>Der Milchshaker hilft dir, Babymilch schnell und gleichmässig zu rühren, ohne dass die Temperatur sinkt. Er arbeitet mit 11 W Leistung und lässt sich über USB, Lithiumbatterie oder Type‑C aufladen. Das Gerät ist in Milchspeck‑weiss‑gelb erhältlich. Das verbesserte Modell zeigt die Temperatur digital an und bietet vier Geschwindigkeiten zum Schütteln. Es verhindert Auslaufen und besteht aus strapazierfähigem Polypropylen. Im Lieferumfang enthalten: Milchshaker, Ladekabel, Anleitung.</p><h3>Das zeichnet es aus</h3><ul>\n<li>11 W Leistung</li>\n<li>USB/Type‑C Aufladung</li>\n<li>Digitale Temperaturanzeige</li>\n<li>4‑Geschwindigkeits‑Schütteln</li>\n<li>Anti‑Dumping‑Funktion</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 493 g</li>\n<li>\n<strong>Leistung:</strong> 11</li>\n<li>\n<strong>Stromversorgung:</strong> Batterie/Akku</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle CH",
+        "description": "Der Milchshaker hilft dir, Babymilch schnell und gleichmässig zu rühren, ohne dass die Temperatur sinkt. 11 W Leistung."
+      },
+      "tags": [
+        "aufbewahrung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "organizer",
+        "sort-kuechengeraete",
+        "sort-kuechengeraete-weitere",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17973671461249",
+          "name": "Farbe",
+          "values": [
+            "Milchgelb",
+            "Milchweiß",
+            "Milchweiß Basis-Stil"
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67948168413575",
+            "title": "Milchgelb",
+            "sku": "CJYD210486101AZ",
+            "price": "29.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69934517322119",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Milchgelb"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67948168446343",
+            "title": "Milchweiß",
+            "sku": "CJYD210486102BY",
+            "price": "29.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69934517354887",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Milchweiß"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67948168479111",
+            "title": "Milchweiß Basis-Stil",
+            "sku": "CJYD210486103CX",
+            "price": "29.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69934517387655",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Milchweiß Basis-Stil"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70766898676097",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898676097",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0028f3de-e83a-4de0-be44-1c875d155a3d_trans.jpg?v=1788383356",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898741633",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898741633",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/164c0080-86e3-4b70-bcd6-1b59c09da522_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 2 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898774401",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898774401",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/42c98981-914b-4f75-8ffe-343dafe0c2ae_trans.jpg?v=1788383356",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 3 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898807169",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898807169",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11758df6-694b-4727-bd21-ee311321c1f2_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 4 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898839937",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898839937",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c6f5eaea-aefb-488c-bf01-02581afea1c6_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 5 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898872705",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898872705",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/17cbaf2d-abd4-433e-9aa9-fc4a2415fa42_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 6 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898905473",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898905473",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/847bf207-951c-4230-be1d-05e0e6d15f43_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 7 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898938241",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898938241",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2a8ebf9-eeb2-4851-95d1-5ac66fd9778b_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 8 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "write": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Mutation executed successfully. IMPORTANT: Present the results clearly to the user. Do NOT dump raw JSON — summarize what changed in a helpful, readable way."
+        },
+        {
+          "type": "text",
+          "text": "{\"data\":{\"productUpdate\":{\"product\":{\"id\":\"gid://shopify/Product/15523818045825\",\"title\":\"Elektrischer Milchshaker, drei Ausführungen\",\"updatedAt\":\"2026-11-15T00:17:22Z\",\"descriptionHtml\":\"<!-- ls-var-v1 --><p>Elektrischer Milchshaker in drei Ausführungen. Wähle die gewünschte Ausführung im Auswahlfeld.</p><h3>Ausführungen im Vergleich</h3><p>Die Varianten unterscheiden sich gemäss Lieferantenbeschreibung wie folgt:</p><ul>\\n<li>\\n<strong>Milchgelb:</strong> Digitalanzeige und vier Schüttelstufen.</li>\\n<li>\\n<strong>Milchweiss:</strong> Digitalanzeige und vier Schüttelstufen.</li>\\n<li>\\n<strong>Milchweiss Basis-Stil:</strong> drei Schüttelstufen.</li>\\n</ul><p><strong>Material:</strong> Kunststoff.</p><p><strong>Lieferumfang gemäss Lieferant:</strong> ein Milchshaker und ein Ladekabel.</p><!-- ls-xsell-v1 --><p><strong>Passende Kategorien:</strong> <a href=\\\"/collections/wohnen-dekoration\\\">Wohnen &amp; Deko</a> · <a href=\\\"/collections/bestseller-premium-heroes\\\">Bestseller</a></p>\",\"seo\":{\"title\":\"Elektrischer Milchshaker: 3 Ausführungen | LuxeStyle\",\"description\":\"Elektrischer Milchshaker in Milchgelb, Milchweiss oder als Basis-Ausführung. Varianten, Schüttelstufen und Lieferumfang bei LuxeStyle vergleichen.\"}},\"userErrors\":[]}}}",
+          "annotations": {
+            "audience": [
+              "assistant"
+            ]
+          }
+        }
+      ],
+      "structuredContent": {
+        "data": {
+          "productUpdate": {
+            "product": {
+              "id": "gid://shopify/Product/15523818045825",
+              "title": "Elektrischer Milchshaker, drei Ausführungen",
+              "updatedAt": "2026-11-15T00:17:22Z",
+              "descriptionHtml": "<!-- ls-var-v1 --><p>Elektrischer Milchshaker in drei Ausführungen. Wähle die gewünschte Ausführung im Auswahlfeld.</p><h3>Ausführungen im Vergleich</h3><p>Die Varianten unterscheiden sich gemäss Lieferantenbeschreibung wie folgt:</p><ul>\n<li>\n<strong>Milchgelb:</strong> Digitalanzeige und vier Schüttelstufen.</li>\n<li>\n<strong>Milchweiss:</strong> Digitalanzeige und vier Schüttelstufen.</li>\n<li>\n<strong>Milchweiss Basis-Stil:</strong> drei Schüttelstufen.</li>\n</ul><p><strong>Material:</strong> Kunststoff.</p><p><strong>Lieferumfang gemäss Lieferant:</strong> ein Milchshaker und ein Ladekabel.</p><!-- ls-xsell-v1 --><p><strong>Passende Kategorien:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+              "seo": {
+                "title": "Elektrischer Milchshaker: 3 Ausführungen | LuxeStyle",
+                "description": "Elektrischer Milchshaker in Milchgelb, Milchweiss oder als Basis-Ausführung. Varianten, Schüttelstufen und Lieferumfang bei LuxeStyle vergleichen."
+              }
+            },
+            "userErrors": []
+          }
+        }
+      },
+      "isError": false
+    },
+    "after": {
+      "id": "gid://shopify/Product/15523818045825",
+      "title": "Elektrischer Milchshaker, drei Ausführungen",
+      "handle": "elektrischer-milchshaker-mit-konstanter-temper-619200",
+      "status": "ACTIVE",
+      "vendor": "LuxeStyle",
+      "productType": "Aufbewahrung & Organizer",
+      "updatedAt": "2026-11-15T00:17:22Z",
+      "descriptionHtml": "<!-- ls-var-v1 --><p>Elektrischer Milchshaker in drei Ausführungen. Wähle die gewünschte Ausführung im Auswahlfeld.</p><h3>Ausführungen im Vergleich</h3><p>Die Varianten unterscheiden sich gemäss Lieferantenbeschreibung wie folgt:</p><ul>\n<li>\n<strong>Milchgelb:</strong> Digitalanzeige und vier Schüttelstufen.</li>\n<li>\n<strong>Milchweiss:</strong> Digitalanzeige und vier Schüttelstufen.</li>\n<li>\n<strong>Milchweiss Basis-Stil:</strong> drei Schüttelstufen.</li>\n</ul><p><strong>Material:</strong> Kunststoff.</p><p><strong>Lieferumfang gemäss Lieferant:</strong> ein Milchshaker und ein Ladekabel.</p><!-- ls-xsell-v1 --><p><strong>Passende Kategorien:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Elektrischer Milchshaker: 3 Ausführungen | LuxeStyle",
+        "description": "Elektrischer Milchshaker in Milchgelb, Milchweiss oder als Basis-Ausführung. Varianten, Schüttelstufen und Lieferumfang bei LuxeStyle vergleichen."
+      },
+      "tags": [
+        "aufbewahrung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "organizer",
+        "sort-kuechengeraete",
+        "sort-kuechengeraete-weitere",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17973671461249",
+          "name": "Farbe",
+          "values": [
+            "Milchgelb",
+            "Milchweiß",
+            "Milchweiß Basis-Stil"
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67948168413575",
+            "title": "Milchgelb",
+            "sku": "CJYD210486101AZ",
+            "price": "29.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69934517322119",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Milchgelb"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67948168446343",
+            "title": "Milchweiß",
+            "sku": "CJYD210486102BY",
+            "price": "29.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69934517354887",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Milchweiß"
+              }
+            ]
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67948168479111",
+            "title": "Milchweiß Basis-Stil",
+            "sku": "CJYD210486103CX",
+            "price": "29.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69934517387655",
+              "tracked": false
+            },
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Milchweiß Basis-Stil"
+              }
+            ]
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70766898676097",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898676097",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0028f3de-e83a-4de0-be44-1c875d155a3d_trans.jpg?v=1788383356",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898741633",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898741633",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/164c0080-86e3-4b70-bcd6-1b59c09da522_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 2 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898774401",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898774401",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/42c98981-914b-4f75-8ffe-343dafe0c2ae_trans.jpg?v=1788383356",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 3 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898807169",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898807169",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11758df6-694b-4727-bd21-ee311321c1f2_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 4 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898839937",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898839937",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c6f5eaea-aefb-488c-bf01-02581afea1c6_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 5 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898872705",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898872705",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/17cbaf2d-abd4-433e-9aa9-fc4a2415fa42_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 6 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898905473",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898905473",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/847bf207-951c-4230-be1d-05e0e6d15f43_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 7 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70766898938241",
+            "image": {
+              "id": "gid://shopify/ImageSource/70766898938241",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2a8ebf9-eeb2-4851-95d1-5ac66fd9778b_trans.jpg?v=1788383357",
+              "altText": "Elektrischer Milchshaker mit konstanter Temperatur – Bild 8 | LuxeStyle",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "nativeChecks": {
+      "hasNoMutationErrors": true,
+      "title": true,
+      "seo": true,
+      "nativeMatchesReturnedHTML": true,
+      "protectedFieldsUnchanged": true,
+      "protectedFields": [
+        "id",
+        "handle",
+        "status",
+        "vendor",
+        "productType",
+        "tags",
+        "options",
+        "variants",
+        "media"
+      ]
+    },
+    "publicChecks": {
+      "atUTC": "2026-11-15T00:19:24.367261+00:00",
+      "url": "https://luxestyle.ch/products/elektrischer-milchshaker-mit-konstanter-temper-619200?variant=67948168413575",
+      "httpStatus": 200,
+      "title": "Elektrischer Milchshaker: 3 Ausführungen | LuxeStyle",
+      "h1": "Elektrischer Milchshaker, drei Ausführungen",
+      "canonical": "https://luxestyle.ch/products/elektrischer-milchshaker-mit-konstanter-temper-619200",
+      "meta": "Elektrischer Milchshaker in Milchgelb, Milchweiss oder als Basis-Ausführung. Varianten, Schüttelstufen und Lieferumfang bei LuxeStyle vergleichen.",
+      "og": "Elektrischer Milchshaker in Milchgelb, Milchweiss oder als Basis-Ausführung. Varianten, Schüttelstufen und Lieferumfang bei LuxeStyle vergleichen.",
+      "checks": {
+        "http200": true,
+        "titleMatches": true,
+        "h1Matches": true,
+        "canonicalPreserved": true,
+        "metaDescription": true,
+        "ogDescription": true,
+        "publicBodyMatchesNative": true,
+        "inputBodyDOMEquivalentToNative": true,
+        "basicThreeSteps": true,
+        "upgradedOnlyFour": true,
+        "unsupportedClaimsRemoved": true,
+        "idsPriceAvailable": true
+      },
+      "allPassed": true,
+      "htmlSha256": "606ea95b2de337c1936eac63aa839acfef57cb3700df58f58c35411783d9aea8",
+      "merchantPolicyResolutionClaimed": false
+    },
+    "note": "One confirmed write. Shopify list whitespace normalized; native after matches normalized returned HTML and public product JSON. Old Merchant legal issue remains unresolved."
+  },
+  "unchangedScope": [
+    "variant IDs/SKUs/options/prices/tracking/policy/availability",
+    "product handles/status/tags/vendor/productType",
+    "media IDs/URLs/order",
+    "existing category link destinations",
+    "shipping/checkout/discount settings",
+    "account.luxestyle.com.co"
+  ],
+  "invariantForFutureSEOInput": "Send both seo.title and seo.description from fresh before-state whenever changing a SEOInput member; omitted member cleared on the observed API. Re-read both after mutation.",
+  "supplierSourceTextReads": {
+    "lace": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "🔍 Product detail loaded.\n\n{\n  \"pid\": \"2606280723091617600\",\n  \"productName\": \"[\\\"跨境速卖通亚马逊外贸批发欧美女装时尚圆领不对称拼接蕾丝上衣\\\",\\\"跨境速卖通亚马逊外贸\\\",\\\"批发欧美女装时尚圆领\\\"]\",\n  \"productNameSet\": [\n    \"跨境速卖通亚马逊外贸批发欧美女装时尚圆领不对称拼接蕾丝上衣\",\n    \"跨境速卖通亚马逊外贸\",\n    \"批发欧美女装时尚圆领\"\n  ],\n  \"productNameEn\": \"Fashionable Round-neck Asymmetrical Lace-panel Top\",\n  \"productSku\": \"CJCS2958620\",\n  \"bigImage\": \"https://oss-cf.cjdropshipping.com/product/2026/06/28/07/2002567a-e481-4141-b747-138345f7460e.jpg\",\n  \"productImage\": \"[\\\"https://oss-cf.cjdropshipping.com/product/2026/06/28/07/2002567a-e481-4141-b747-138345f7460e.jpg\\\",\\\"https://cf.cjdropshipping.com/quick/product/ec6cb94d-5cd8-4b1e-a9c1-6211d9e67983.jpg\\\",\\\"https://cf.cjdropshipping.com/quick/product/04b64888-ac8a-4a37-807a-bfeeb8325d72.jpg\\\",\\\"https://cf.cjdropshipping.com/quick/product/ec79ab49-d150-41ce-94ae-3c9f31ca3f77.jpg\\\",\\\"https://cf.cjdropshipping.com/quick/product/5bd0094b-938b-4ec4-b176-6a34b3198785.jpg\\\"]\",\n  \"productImageSet\": [\n    \"https://cf.cjdropshipping.com/quick/product/5bd0094b-938b-4ec4-b176-6a34b3198785.jpg\",\n    \"https://oss-cf.cjdropshipping.com/product/2026/06/28/07/2002567a-e481-4141-b747-138345f7460e.jpg\",\n    \"https://cf.cjdropshipping.com/quick/product/ec6cb94d-5cd8-4b1e-a9c1-6211d9e67983.jpg\",\n    \"https://cf.cjdropshipping.com/quick/product/04b64888-ac8a-4a37-807a-bfeeb8325d72.jpg\",\n    \"https://cf.cjdropshipping.com/quick/product/ec79ab49-d150-41ce-94ae-3c9f31ca3f77.jpg\"\n  ],\n  \"productWeight\": \"230.00-270.00\",\n  \"productUnit\": null,\n  \"productType\": \"ORDINARY_PRODUCT\",\n  \"categoryId\": \"2502190153531612600\",\n  \"categoryName\": \"Women's Clothing > Tops & Sets > Women's Long-Sleeved Shirts\",\n  \"entryCode\": \"6104330000\",\n  \"entryName\": \"涤纶女式上衣\",\n  \"entryNameEn\": \"Women's Polyester Tops\",\n  \"materialName\": \"[\\\"布料\\\"]\",\n  \"materialNameSet\": [\n    \"布料\"\n  ],\n  \"materialNameEn\": \"[\\\"Cloth\\\"]\",\n  \"materialNameEnSet\": [\n    \"Cloth\"\n  ],\n  \"materialKey\": \"[\\\"FABRIC\\\"]\",\n  \"materialKeySet\": [\n    \"FABRIC\"\n  ],\n  \"packingWeight\": \"250.00-290.00\",\n  \"packingName\": \"[\\\"塑料袋\\\"]\",\n  \"packingNameSet\": [\n    \"塑料袋\"\n  ],\n  \"packingNameEn\": \"[\\\"Plastic bags\\\"]\",\n  \"packingNameEnSet\": [\n    \"Plastic bags\"\n  ],\n  \"packingKey\": \"[\\\"PLASTIC_BAG\\\"]\",\n  \"packingKeySet\": [\n    \"PLASTIC_BAG\"\n  ],\n  \"productKey\": \"[\\\"颜色\\\",\\\"尺码\\\"]\",\n  \"productKeySet\": [\n    \"颜色\",\n    \"尺码\"\n  ],\n  \"productKeyEn\": \"Color-Size\",\n  \"productKeyEnSet\": [\n    \"Color\",\n    \"Size\"\n  ],\n  \"productPro\": \"[\\\"服装\\\"]\",\n  \"productProSet\": [\n    \"服装\"\n  ],\n  \"productProEn\": \"[\\\"Clothes\\\"]\",\n  \"productProEnSet\": [\n    \"Clothes\"\n  ],\n  \"sellPrice\": \"7.63\",\n  \"sourceFrom\": 1,\n  \"description\": \"<p><b>Product information:</b><br/>Pattern: As shown in the picture<br/>Color: Off-white<br/>Size: S, M, L<br/>Fit: Loose fit<br/>Style: Elegant and casual<br/>Trendy Elements: Solid color<br/>Design: Pullover style<br/>Fabric: Polyester fiber<br/>Occasion: Casual wear<br/>Sleeve type: Regular sleeve<br/>Target audience: General public<br/>Main fabric composition: Polyester fiber<br/>Length: Regular length (50cm &lt; length ≤ 65cm)<br/>Sleeve length: Long sleeve<br/>Style: Casual<br/>Craftsmanship: Lace trim</p> \\n<b>Note:</b> \\n1. Asian sizes are 1 to 2 sizes smaller than European and American people. Choose the larger size if your size between two sizes. Please allow 2-3cm differences due to manual measurement. 2. Please check the size chart carefully before you buy the item, if you don't know how to choose size, please contact our customer service. 3.As you know, the different computers display colors differently, the color of the actual item may vary slightly from the following images. \\n \\n<br/> \\n<b>Packing list: </b> \\n<br/>Polyester women's top*1pc \\n<br/> \\n \\n<b>Product Image:</b> \\n<br/> \\n<img src=\\\"https://oss-cf.cjdropshipping.com/product/2026/06/28/07/e8435aac-67bd-4a0b-b4d8-0bfce32cad63_trans.jpeg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/668bd594-52be-46d7-a0e2-9ecc562afd39.jpg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/01c9aa7f-44bc-479e-8cde-3d0ef99e4692.jpg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/5d9bf8e7-2055-4457-9478-1b3eac9efd1a.jpg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/8aa54d73-6873-40f6-9ccc-8eb5b2a2f455.jpg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/04b64888-ac8a-4a37-807a-bfeeb8325d72.jpg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/19b23b64-895a-43df-ac7e-69a77079ddb2.jpg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/aa829bfd-e15b-477b-adc0-19c0d569f839.jpg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/3103b5af-0229-429f-b364-38bcc44f74ff.jpg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/ec6cb94d-5cd8-4b1e-a9c1-6211d9e67983.jpg\\\"/> \\n<img src=\\\"https://cf.cjdropshipping.com/quick/product/b106b80d-5387-4aa0-a566-d5d1bc160102.jpg\\\"/>\",\n  \"variants\": [\n    {\n      \"vid\": \"2606280723091618300\",\n      \"pid\": \"2606280723091617600\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Fashionable Round-neck Asymmetrical Lace-panel Top Milky White S\",\n      \"variantImage\": \"https://cf.cjdropshipping.com/quick/product/ec6cb94d-5cd8-4b1e-a9c1-6211d9e67983.jpg\",\n      \"variantSku\": \"CJCS295862001AZ\",\n      \"barcode\": \"1600014753060\",\n      \"variantUnit\": \"个\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Milky White-S\",\n      \"variantLength\": 300,\n      \"variantWidth\": 200,\n      \"variantHeight\": 30,\n      \"variantVolume\": 1800000,\n      \"variantWeight\": 250.0,\n      \"variantSellPrice\": 7.63,\n      \"createTime\": 1782631389000,\n      \"variantStandard\": \"long=300,width=200,height=30\",\n      \"variantSugSellPrice\": 48.61,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    },\n    {\n      \"vid\": \"2606280723091618700\",\n      \"pid\": \"2606280723091617600\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Fashionable Round-neck Asymmetrical Lace-panel Top Milky White M\",\n      \"variantImage\": \"https://cf.cjdropshipping.com/quick/product/ec6cb94d-5cd8-4b1e-a9c1-6211d9e67983.jpg\",\n      \"variantSku\": \"CJCS295862002BY\",\n      \"barcode\": \"1600014753061\",\n      \"variantUnit\": \"个\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Milky White-M\",\n      \"variantLength\": 300,\n      \"variantWidth\": 200,\n      \"variantHeight\": 30,\n      \"variantVolume\": 1800000,\n      \"variantWeight\": 270.0,\n      \"variantSellPrice\": 7.63,\n      \"createTime\": 1782631389000,\n      \"variantStandard\": \"long=300,width=200,height=30\",\n      \"variantSugSellPrice\": 48.61,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    },\n    {\n      \"vid\": \"2606280723091619200\",\n      \"pid\": \"2606280723091617600\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Fashionable Round-neck Asymmetrical Lace-panel Top Milky White L\",\n      \"variantImage\": \"https://cf.cjdropshipping.com/quick/product/ec6cb94d-5cd8-4b1e-a9c1-6211d9e67983.jpg\",\n      \"variantSku\": \"CJCS295862003CX\",\n      \"barcode\": \"1600014753062\",\n      \"variantUnit\": \"个\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Milky White-L\",\n      \"variantLength\": 300,\n      \"variantWidth\": 200,\n      \"variantHeight\": 30,\n      \"variantVolume\": 1800000,\n      \"variantWeight\": 290.0,\n      \"variantSellPrice\": 7.63,\n      \"createTime\": 1782631389000,\n      \"variantStandard\": \"long=300,width=200,height=30\",\n      \"variantSugSellPrice\": 48.61,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    }\n  ],\n  \"addMarkStatus\": 0,\n  \"createrTime\": \"2026-06-28T07:23:09+08:00\",\n  \"productVideo\": null,\n  \"status\": \"3\",\n  \"suggestSellPrice\": \"48.61\",\n  \"listedNum\": 3,\n  \"supplierName\": null,\n  \"supplierId\": null,\n  \"customizationVersion\": null,\n  \"customizationJson1\": null,\n  \"customizationJson2\": null,\n  \"customizationJson3\": null,\n  \"customizationJson4\": null,\n  \"isTestProduct\": false,\n  \"productUrl\": \"https://www.cjdropshipping.com/product/fashionable-round-neck-asymmetrical-lace-panel-top-p-2606280723091617600.html\"\n}"
+          }
+        ],
+        "structuredContent": null,
+        "isError": false
+      }
+    },
+    "shaker": {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "🔍 Product detail loaded.\n\n{\n  \"pid\": \"2408080235051619200\",\n  \"productName\": \"[\\\"婴儿电动恒温摇奶器宝宝冲奶机搅拌摇匀智能暖奶器调奶温奶器批发\\\",\\\"婴儿电动恒温摇奶器宝宝\\\",\\\"冲奶机搅拌摇匀智能\\\"]\",\n  \"productNameSet\": [\n    \"婴儿电动恒温摇奶器宝宝冲奶机搅拌摇匀智能暖奶器调奶温奶器批发\",\n    \"婴儿电动恒温摇奶器宝宝\",\n    \"冲奶机搅拌摇匀智能\"\n  ],\n  \"productNameEn\": \"Baby Electric Constant Temperature Milk Shaker Mixer\",\n  \"productSku\": \"CJYD2104861\",\n  \"bigImage\": \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/164c0080-86e3-4b70-bcd6-1b59c09da522_trans.jpeg\",\n  \"productImage\": \"[\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/164c0080-86e3-4b70-bcd6-1b59c09da522_trans.jpeg\\\",\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/0028f3de-e83a-4de0-be44-1c875d155a3d_trans.jpeg\\\",\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/17cbaf2d-abd4-433e-9aa9-fc4a2415fa42_trans.jpeg\\\",\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/11758df6-694b-4727-bd21-ee311321c1f2_trans.jpeg\\\",\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/42c98981-914b-4f75-8ffe-343dafe0c2ae_trans.jpeg\\\",\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/847bf207-951c-4230-be1d-05e0e6d15f43_trans.jpeg\\\",\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/c6f5eaea-aefb-488c-bf01-02581afea1c6_trans.jpeg\\\",\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/c2a8ebf9-eeb2-4851-95d1-5ac66fd9778b_trans.jpeg\\\"]\",\n  \"productImageSet\": [\n    \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/0028f3de-e83a-4de0-be44-1c875d155a3d_trans.jpeg\",\n    \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/164c0080-86e3-4b70-bcd6-1b59c09da522_trans.jpeg\",\n    \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/42c98981-914b-4f75-8ffe-343dafe0c2ae_trans.jpeg\",\n    \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/11758df6-694b-4727-bd21-ee311321c1f2_trans.jpeg\",\n    \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/c6f5eaea-aefb-488c-bf01-02581afea1c6_trans.jpeg\",\n    \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/17cbaf2d-abd4-433e-9aa9-fc4a2415fa42_trans.jpeg\",\n    \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/847bf207-951c-4230-be1d-05e0e6d15f43_trans.jpeg\",\n    \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/c2a8ebf9-eeb2-4851-95d1-5ac66fd9778b_trans.jpeg\"\n  ],\n  \"productWeight\": \"493.00\",\n  \"productUnit\": null,\n  \"productType\": \"ORDINARY_PRODUCT\",\n  \"categoryId\": \"56845C3D-4D9E-4729-B5D4-6D7DE310C031\",\n  \"categoryName\": \"Home, Garden & Furniture > Home Storage > Kitchen Storage\",\n  \"entryCode\": \"3924100000\",\n  \"entryName\": \"塑料摇奶器\",\n  \"entryNameEn\": \"Plastic milk shaker\",\n  \"materialName\": \"[\\\"塑料\\\"]\",\n  \"materialNameSet\": [\n    \"塑料\"\n  ],\n  \"materialNameEn\": \"[\\\"Plastic\\\"]\",\n  \"materialNameEnSet\": [\n    \"Plastic\"\n  ],\n  \"materialKey\": \"[\\\"PLASTIC\\\"]\",\n  \"materialKeySet\": [\n    \"PLASTIC\"\n  ],\n  \"packingWeight\": \"503.00\",\n  \"packingName\": \"[\\\"塑料袋\\\"]\",\n  \"packingNameSet\": [\n    \"塑料袋\"\n  ],\n  \"packingNameEn\": \"[\\\"Plastic bags\\\"]\",\n  \"packingNameEnSet\": [\n    \"Plastic bags\"\n  ],\n  \"packingKey\": \"[\\\"PLASTIC_BAG\\\"]\",\n  \"packingKeySet\": [\n    \"PLASTIC_BAG\"\n  ],\n  \"productKey\": \"[\\\"颜色\\\"]\",\n  \"productKeySet\": [\n    \"颜色\"\n  ],\n  \"productKeyEn\": \"Color\",\n  \"productKeyEnSet\": [\n    \"Color\"\n  ],\n  \"productPro\": \"[\\\"内置电池\\\"]\",\n  \"productProSet\": [\n    \"内置电池\"\n  ],\n  \"productProEn\": \"[\\\"BATTERY\\\"]\",\n  \"productProEnSet\": [\n    \"BATTERY\"\n  ],\n  \"sellPrice\": \"9.32-13.36\",\n  \"sourceFrom\": 1,\n  \"description\": \"\\n <p><b>Product information:</b><br/>Power: 11<br/> Power type: USB/lithium battery/type-c<br/> Color: Milky White yellow upgraded constant temperature model [digital display 4-speed shaking milk] anti-dumping, Milky White upgraded constant temperature model [digital display 4-speed shaking milk] anti-dumping, Milky White-basic model [Level 3 shaking milk] anti-dumping<br/> Material: polypropylene (pp)</p>\\n <p><br/></p>\\n <b>Packing list:&nbsp;</b><div><p>Milk shaker * 1+charging cable * 1</p><p><br/></p>\\n \\n <b>Product Image:</b>&nbsp;</div><p><br/></p><div><br/></div><div>&nbsp; <br/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/beff93bc-b3bc-409b-a8c5-f1aafa18e499_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/7bd757c7-3f38-4529-8bce-2f669724b1db_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/e9712268-a93c-455a-b9f8-3cbb9449abb6_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/cbb197fd-43c7-4763-9443-c2f05d935a40_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/23eedc8a-abc2-402e-bd59-06c6a972ad34_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/47a82daf-1ba3-4151-a371-22deaae5c5de_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/edabe720-1655-40a1-8d1e-24909e855c3b_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/9db9a238-7c12-465b-b86a-39f5f1f71b59_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/f9b49664-041a-4e42-8a32-c6a592fb9aa8_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/3c5ac82b-cbde-4313-b35a-dc9eece92227_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/d710b28f-582d-4e22-83fc-67a11b5df365_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/861a0d95-3d37-45fc-96ec-fd1709204c72_trans.jpeg\\\"/>\\n <img src=\\\"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/19e2ef05-0819-4d76-b79a-f5e51626fe12_trans.jpeg\\\"/>\\n</div>\",\n  \"variants\": [\n    {\n      \"vid\": \"2408080235051619400\",\n      \"pid\": \"2408080235051619200\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Baby Electric Constant Temperature Milk Shaker Mixer Milky Yellow\",\n      \"variantImage\": \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/847bf207-951c-4230-be1d-05e0e6d15f43_trans.jpeg\",\n      \"variantSku\": \"CJYD210486101AZ\",\n      \"barcode\": \"1600004416994\",\n      \"variantUnit\": \"件\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Milky Yellow\",\n      \"variantLength\": 146,\n      \"variantWidth\": 148,\n      \"variantHeight\": 173,\n      \"variantVolume\": 3738184,\n      \"variantWeight\": 503.0,\n      \"variantSellPrice\": 13.36,\n      \"createTime\": 1723084505000,\n      \"variantStandard\": \"long=146,width=148,height=173\",\n      \"variantSugSellPrice\": 80.43,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    },\n    {\n      \"vid\": \"2408080235051619500\",\n      \"pid\": \"2408080235051619200\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Baby Electric Constant Temperature Milk Shaker Mixer Milky White\",\n      \"variantImage\": \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/c6f5eaea-aefb-488c-bf01-02581afea1c6_trans.jpeg\",\n      \"variantSku\": \"CJYD210486102BY\",\n      \"barcode\": \"1600004416995\",\n      \"variantUnit\": \"件\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Milky White\",\n      \"variantLength\": 146,\n      \"variantWidth\": 148,\n      \"variantHeight\": 173,\n      \"variantVolume\": 3738184,\n      \"variantWeight\": 503.0,\n      \"variantSellPrice\": 13.36,\n      \"createTime\": 1723084505000,\n      \"variantStandard\": \"long=146,width=148,height=173\",\n      \"variantSugSellPrice\": 80.43,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    },\n    {\n      \"vid\": \"2408080235051619700\",\n      \"pid\": \"2408080235051619200\",\n      \"variantName\": null,\n      \"variantNameEn\": \"Baby Electric Constant Temperature Milk Shaker Mixer Milky White Basic Style\",\n      \"variantImage\": \"https://oss-cf.cjdropshipping.com/product/2024/08/08/02/c2a8ebf9-eeb2-4851-95d1-5ac66fd9778b_trans.jpeg\",\n      \"variantSku\": \"CJYD210486103CX\",\n      \"barcode\": \"1600004416996\",\n      \"variantUnit\": \"件\",\n      \"variantProperty\": \"[]\",\n      \"variantKey\": \"Milky White Basic Style\",\n      \"variantLength\": 146,\n      \"variantWidth\": 148,\n      \"variantHeight\": 173,\n      \"variantVolume\": 3738184,\n      \"variantWeight\": 503.0,\n      \"variantSellPrice\": 9.32,\n      \"createTime\": 1723084505000,\n      \"variantStandard\": \"long=146,width=148,height=173\",\n      \"variantSugSellPrice\": 56.11,\n      \"combineNum\": null,\n      \"inventoryNum\": null,\n      \"combineVariants\": null,\n      \"inventories\": null\n    }\n  ],\n  \"addMarkStatus\": 0,\n  \"createrTime\": \"2024-08-08T02:35:05+08:00\",\n  \"productVideo\": null,\n  \"status\": \"3\",\n  \"suggestSellPrice\": \"56.11 - 80.43\",\n  \"listedNum\": 29,\n  \"supplierName\": null,\n  \"supplierId\": null,\n  \"customizationVersion\": null,\n  \"customizationJson1\": null,\n  \"customizationJson2\": null,\n  \"customizationJson3\": null,\n  \"customizationJson4\": null,\n  \"isTestProduct\": false,\n  \"productUrl\": \"https://www.cjdropshipping.com/product/baby-electric-constant-temperature-milk-shaker-mixer-p-2408080235051619200.html\"\n}"
+          }
+        ],
+        "structuredContent": null,
+        "isError": false
+      }
+    }
+  },
+  "rightsScope": "Existing media unchanged; no new image/video edits or licence claims."
+}

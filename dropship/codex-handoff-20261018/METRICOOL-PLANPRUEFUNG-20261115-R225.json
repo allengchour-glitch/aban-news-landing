@@ -1,0 +1,5259 @@
+{
+  "atUTC": "2026-11-15T00:25:22.325257+00:00",
+  "brandId": "6227837",
+  "timezone": "Europe/Zurich",
+  "reads": [
+    {
+      "window": [
+        "2026-11-15T01:18:00+01:00",
+        "2026-11-17T01:18:00+01:00"
+      ],
+      "atUTC": "2026-11-15T00:24:51.394Z",
+      "rows": 12,
+      "rawSha256": "30122f06309985e1d93ed1387108d5b04fbb6962e5b40987f66ac520644b150a"
+    },
+    {
+      "window": [
+        "2026-11-17T01:18:00+01:00",
+        "2026-11-19T01:18:00+01:00"
+      ],
+      "atUTC": "2026-11-15T00:24:51.728Z",
+      "rows": 13,
+      "rawSha256": "6f329c9899842fcd71448f168ba94a0d82667d9fb2dc12d5503ec40d25bf1669"
+    },
+    {
+      "window": [
+        "2026-11-19T01:18:00+01:00",
+        "2026-11-21T01:18:00+01:00"
+      ],
+      "atUTC": "2026-11-15T00:24:52.019Z",
+      "rows": 9,
+      "rawSha256": "975481d58efccc18ed5903e2d780ca9b5db67747c312f5b495605126a3ce9355"
+    },
+    {
+      "window": [
+        "2026-11-21T01:18:00+01:00",
+        "2026-11-23T00:00:00+01:00"
+      ],
+      "atUTC": "2026-11-15T00:24:52.261Z",
+      "rows": 8,
+      "rawSha256": "85524ec64f8d09a2436d8fbad9a2f462418cc871258d827d54f951aed255487a"
+    }
+  ],
+  "reasonForRecheck": "Delegated first pass retained summary only; original rows needed for independent matrix/collision verification. No repeated performance report.",
+  "rawDeliveredRows": 42,
+  "uniqueObjects": 42,
+  "overlapDuplicates": [],
+  "channelSummary": {
+    "instagram": {
+      "scheduledGlobal": 9,
+      "draft": 2,
+      "providerStatuses": {
+        "PENDING": 11
+      },
+      "channelAP": [
+        {
+          "id": 420726136,
+          "uuid": "6199136659928140012",
+          "date": {
+            "dateTime": "2026-11-15T16:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": true
+        },
+        {
+          "id": 422280155,
+          "uuid": "-3833193365444016309",
+          "date": {
+            "dateTime": "2026-11-15T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": true
+        },
+        {
+          "id": 424392702,
+          "uuid": "7991040995405613204",
+          "date": {
+            "dateTime": "2026-11-16T16:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": true
+        },
+        {
+          "id": 427969190,
+          "uuid": "4156060813550767248",
+          "date": {
+            "dateTime": "2026-11-16T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": false,
+            "type": "REEL",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": false
+        },
+        {
+          "id": 423483793,
+          "uuid": "4659816415037836014",
+          "date": {
+            "dateTime": "2026-11-18T10:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": false,
+            "type": "REEL",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": false
+        },
+        {
+          "id": 424393422,
+          "uuid": "8906814597211638530",
+          "date": {
+            "dateTime": "2026-11-17T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": true
+        },
+        {
+          "id": 425725034,
+          "uuid": "5511347900019396585",
+          "date": {
+            "dateTime": "2026-11-18T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": true
+        },
+        {
+          "id": 425725555,
+          "uuid": "4792908094992761420",
+          "date": {
+            "dateTime": "2026-11-19T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": true
+        },
+        {
+          "id": 425726329,
+          "uuid": "108318075245381964",
+          "date": {
+            "dateTime": "2026-11-20T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": true
+        },
+        {
+          "id": 426962036,
+          "uuid": "4464007380148308511",
+          "date": {
+            "dateTime": "2026-11-21T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": true
+        },
+        {
+          "id": 426962393,
+          "uuid": "2057359447521839535",
+          "date": {
+            "dateTime": "2026-11-22T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "autoPublish": true,
+            "type": "POST",
+            "showReelOnFeed": true,
+            "isAiGenerated": false
+          },
+          "autoPublishExplicitValue": true
+        }
+      ]
+    },
+    "facebook": {
+      "scheduledGlobal": 9,
+      "draft": 2,
+      "providerStatuses": {
+        "PENDING": 11
+      },
+      "channelAP": [
+        {
+          "id": 420728374,
+          "uuid": "7768651932591999367",
+          "date": {
+            "dateTime": "2026-11-15T16:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "POST"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 422280155,
+          "uuid": "-3833193365444016309",
+          "date": {
+            "dateTime": "2026-11-15T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "POST"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 424392702,
+          "uuid": "7991040995405613204",
+          "date": {
+            "dateTime": "2026-11-16T16:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "POST"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 427969232,
+          "uuid": "6680239273933357186",
+          "date": {
+            "dateTime": "2026-11-16T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "REEL",
+            "title": "Sternenlicht-Projektor im Detail"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 423483793,
+          "uuid": "4659816415037836014",
+          "date": {
+            "dateTime": "2026-11-18T10:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "REEL",
+            "title": "Knoblauch und Zwiebeln per Druck hacken"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 424393422,
+          "uuid": "8906814597211638530",
+          "date": {
+            "dateTime": "2026-11-17T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "POST"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425725034,
+          "uuid": "5511347900019396585",
+          "date": {
+            "dateTime": "2026-11-18T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "POST"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425725555,
+          "uuid": "4792908094992761420",
+          "date": {
+            "dateTime": "2026-11-19T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "POST"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425726329,
+          "uuid": "108318075245381964",
+          "date": {
+            "dateTime": "2026-11-20T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "POST"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 426962036,
+          "uuid": "4464007380148308511",
+          "date": {
+            "dateTime": "2026-11-21T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "POST"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 426962393,
+          "uuid": "2057359447521839535",
+          "date": {
+            "dateTime": "2026-11-22T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "type": "POST"
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        }
+      ]
+    },
+    "tiktok": {
+      "scheduledGlobal": 8,
+      "draft": 2,
+      "providerStatuses": {
+        "PENDING": 10
+      },
+      "channelAP": [
+        {
+          "id": 422295156,
+          "uuid": "-6967517640837021033",
+          "date": {
+            "dateTime": "2026-11-15T12:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 424392795,
+          "uuid": "-580082399036486516",
+          "date": {
+            "dateTime": "2026-11-16T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Weihnachtskugeln beflockt – 9 Stück",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 423484773,
+          "uuid": "-8305910546945982140",
+          "date": {
+            "dateTime": "2026-11-18T12:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Knoblauch hacken per Druck",
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 424393289,
+          "uuid": "-326770756211684563",
+          "date": {
+            "dateTime": "2026-11-17T16:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Retro Keramik-Kaffeetasse mit Tiermotiv",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425725162,
+          "uuid": "-4254912497617780595",
+          "date": {
+            "dateTime": "2026-11-18T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Weihnachtsstrumpf mit Samt-Optik",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 427969295,
+          "uuid": "3614365779669041576",
+          "date": {
+            "dateTime": "2026-11-17T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Sternenlicht im Detail",
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425725709,
+          "uuid": "-1560468010126717309",
+          "date": {
+            "dateTime": "2026-11-19T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "LED-Schminkspiegel, wiederaufladbar & tragbar",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425726186,
+          "uuid": "5095221239706765903",
+          "date": {
+            "dateTime": "2026-11-20T15:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Lichterbaum-Musikbox 10x10x20 cm",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 426962130,
+          "uuid": "1244897565051602488",
+          "date": {
+            "dateTime": "2026-11-21T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Schmuckkästchen 3D Holzpuzzle",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 427963228,
+          "uuid": "-5766619704983925146",
+          "date": {
+            "dateTime": "2026-11-22T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "privacyOption": "PUBLIC_TO_EVERYONE",
+            "commercialContentOwnBrand": true,
+            "title": "Christbaumdecke mit goldenen Pailletten-Schneeflocken",
+            "autoAddMusic": true,
+            "photoCoverIndex": 0
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        }
+      ]
+    },
+    "pinterest": {
+      "scheduledGlobal": 8,
+      "draft": 0,
+      "providerStatuses": {
+        "PENDING": 8
+      },
+      "channelAP": [
+        {
+          "id": 423622854,
+          "uuid": "6213007717183669914",
+          "date": {
+            "dateTime": "2026-11-15T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "Kosmetik-Organizer für den Schminktisch | LuxeStyle",
+            "pinLink": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=luxe_photo_kosmetik_organizer_20261101",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 424393081,
+          "uuid": "-8863891854936750949",
+          "date": {
+            "dateTime": "2026-11-16T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "boardId": "1111333714239114033",
+            "pinTitle": "Beflockte Weihnachtskugeln im 9er-Set: Weinrot, Dunkelgrün oder Kaffeefarbe",
+            "pinLink": "https://luxestyle.ch/products/weihnachtskugeln-beflockt-9-stuck-625300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtskugeln-beflockt-9-stuck-625300",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 424393614,
+          "uuid": "9119250214596987223",
+          "date": {
+            "dateTime": "2026-11-17T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "Retro-Keramiktasse mit Tiermotiv: Schwalbe oder Schmetterling",
+            "pinLink": "https://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_retro-keramik-kaffeetasse-mit-tiermotiv-621800",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425725272,
+          "uuid": "-5899965466644493317",
+          "date": {
+            "dateTime": "2026-11-18T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "boardId": "1111333714239114033",
+            "pinTitle": "Weihnachtsstrumpf mit Samt-Optik in Rot oder Grün mit goldgelber Quaste",
+            "pinLink": "https://luxestyle.ch/products/weihnachtsstrumpf-mit-samt-optik-639700?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtsstrumpf-mit-samt-optik-639700",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425725932,
+          "uuid": "6443070221295305315",
+          "date": {
+            "dateTime": "2026-11-19T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "Tragbarer LED-Schminkspiegel: faltbar, 20 LED, drei Farbmodi",
+            "pinLink": "https://luxestyle.ch/products/led-schminkspiegel-wiederaufladbar-tragbar-639500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_led-schminkspiegel-wiederaufladbar-tragbar-639500",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425726479,
+          "uuid": "-457707186698434580",
+          "date": {
+            "dateTime": "2026-11-20T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "boardId": "1111333714239114033",
+            "pinTitle": "Lichterbaum-Musikbox mit bunten Lichtern und rotem Stern, 20 cm hoch",
+            "pinLink": "https://luxestyle.ch/products/lichterbaum-musikbox-10x10x20-cm-604200?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_lichterbaum-musikbox-10x10x20-cm-604200",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 426962209,
+          "uuid": "1277216616076757571",
+          "date": {
+            "dateTime": "2026-11-21T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "boardId": "1111333714239114020",
+            "pinTitle": "Schmuckkästchen als 3D-Holzpuzzle zum Selberbauen: DIY-Geschenkidee aus Holz",
+            "pinLink": "https://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_schmuckkastchen-3d-holzpuzzle-611300",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 427963279,
+          "uuid": "-2010279446251812932",
+          "date": {
+            "dateTime": "2026-11-22T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "boardId": "1111333714239114033",
+            "pinTitle": "Christbaumdecke mit goldenen Pailletten-Schneeflocken, 90 cm",
+            "pinLink": "https://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_christbaumdecke-mit-goldenen-pailletten-schnee-634500",
+            "pinNewFormat": true,
+            "isAiGenerated": false,
+            "isAiGeneratedPerson": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        }
+      ]
+    },
+    "threads": {
+      "scheduledGlobal": 7,
+      "draft": 2,
+      "providerStatuses": {
+        "PENDING": 9
+      },
+      "channelAP": [
+        {
+          "id": 424392566,
+          "uuid": "-8080777271331700055",
+          "date": {
+            "dateTime": "2026-11-16T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 427969120,
+          "uuid": "8935974072695279179",
+          "date": {
+            "dateTime": "2026-11-15T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 423484712,
+          "uuid": "-8339089096074181290",
+          "date": {
+            "dateTime": "2026-11-18T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 424393187,
+          "uuid": "-2055061205905158476",
+          "date": {
+            "dateTime": "2026-11-17T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 424393691,
+          "uuid": "-2256568300747601062",
+          "date": {
+            "dateTime": "2026-11-18T14:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425725415,
+          "uuid": "2120727659527094958",
+          "date": {
+            "dateTime": "2026-11-19T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 425726070,
+          "uuid": "-6491658134482960242",
+          "date": {
+            "dateTime": "2026-11-20T14:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 426961960,
+          "uuid": "-325577156053548845",
+          "date": {
+            "dateTime": "2026-11-21T14:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 426962312,
+          "uuid": "7447187506709285656",
+          "date": {
+            "dateTime": "2026-11-22T11:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": false,
+          "globalAP": true,
+          "provider": {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "replyControl": "EVERYONE",
+            "type": "POST",
+            "shareAsInstagramStory": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        }
+      ]
+    },
+    "youtube": {
+      "scheduledGlobal": 0,
+      "draft": 2,
+      "providerStatuses": {
+        "PENDING": 2
+      },
+      "channelAP": [
+        {
+          "id": 423484839,
+          "uuid": "-3731207601091163105",
+          "date": {
+            "dateTime": "2026-11-18T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "küchengadget",
+              "knoblauch",
+              "kochen",
+              "schweiz"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        },
+        {
+          "id": 427969354,
+          "uuid": "-7647174116509334899",
+          "date": {
+            "dateTime": "2026-11-19T19:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "globalDraft": true,
+          "globalAP": false,
+          "provider": {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          "channelData": {
+            "title": "Sternenlicht-Projektor im Detail #Shorts",
+            "type": "short",
+            "privacy": "public",
+            "tags": [
+              "sternlicht",
+              "lichtmomente",
+              "luxestyle"
+            ],
+            "madeForKids": false,
+            "isAiGeneratedContent": false
+          },
+          "autoPublishExplicitValue": "not_a_delivered_field"
+        }
+      ]
+    }
+  },
+  "dailyGlobalScheduleMatrix": {
+    "2026-11-15": {
+      "instagram": 2,
+      "facebook": 2,
+      "tiktok": 1,
+      "pinterest": 1,
+      "threads": 0,
+      "youtube": 0
+    },
+    "2026-11-16": {
+      "instagram": 1,
+      "facebook": 1,
+      "tiktok": 1,
+      "pinterest": 1,
+      "threads": 1,
+      "youtube": 0
+    },
+    "2026-11-17": {
+      "instagram": 1,
+      "facebook": 1,
+      "tiktok": 1,
+      "pinterest": 1,
+      "threads": 1,
+      "youtube": 0
+    },
+    "2026-11-18": {
+      "instagram": 1,
+      "facebook": 1,
+      "tiktok": 1,
+      "pinterest": 1,
+      "threads": 1,
+      "youtube": 0
+    },
+    "2026-11-19": {
+      "instagram": 1,
+      "facebook": 1,
+      "tiktok": 1,
+      "pinterest": 1,
+      "threads": 1,
+      "youtube": 0
+    },
+    "2026-11-20": {
+      "instagram": 1,
+      "facebook": 1,
+      "tiktok": 1,
+      "pinterest": 1,
+      "threads": 1,
+      "youtube": 0
+    },
+    "2026-11-21": {
+      "instagram": 1,
+      "facebook": 1,
+      "tiktok": 1,
+      "pinterest": 1,
+      "threads": 1,
+      "youtube": 0
+    },
+    "2026-11-22": {
+      "instagram": 1,
+      "facebook": 1,
+      "tiktok": 1,
+      "pinterest": 1,
+      "threads": 1,
+      "youtube": 0
+    }
+  },
+  "dailyDraftMatrix": {
+    "2026-11-15": {
+      "instagram": 0,
+      "facebook": 0,
+      "tiktok": 0,
+      "pinterest": 0,
+      "threads": 1,
+      "youtube": 0
+    },
+    "2026-11-16": {
+      "instagram": 1,
+      "facebook": 1,
+      "tiktok": 0,
+      "pinterest": 0,
+      "threads": 0,
+      "youtube": 0
+    },
+    "2026-11-17": {
+      "instagram": 0,
+      "facebook": 0,
+      "tiktok": 1,
+      "pinterest": 0,
+      "threads": 0,
+      "youtube": 0
+    },
+    "2026-11-18": {
+      "instagram": 1,
+      "facebook": 1,
+      "tiktok": 1,
+      "pinterest": 0,
+      "threads": 1,
+      "youtube": 1
+    },
+    "2026-11-19": {
+      "instagram": 0,
+      "facebook": 0,
+      "tiktok": 0,
+      "pinterest": 0,
+      "threads": 0,
+      "youtube": 1
+    },
+    "2026-11-20": {
+      "instagram": 0,
+      "facebook": 0,
+      "tiktok": 0,
+      "pinterest": 0,
+      "threads": 0,
+      "youtube": 0
+    },
+    "2026-11-21": {
+      "instagram": 0,
+      "facebook": 0,
+      "tiktok": 0,
+      "pinterest": 0,
+      "threads": 0,
+      "youtube": 0
+    },
+    "2026-11-22": {
+      "instagram": 0,
+      "facebook": 0,
+      "tiktok": 0,
+      "pinterest": 0,
+      "threads": 0,
+      "youtube": 0
+    }
+  },
+  "gapsGlobalSchedule": {
+    "instagram": [],
+    "facebook": [],
+    "tiktok": [],
+    "pinterest": [],
+    "threads": [
+      "2026-11-15"
+    ],
+    "youtube": [
+      "2026-11-15",
+      "2026-11-16",
+      "2026-11-17",
+      "2026-11-18",
+      "2026-11-19",
+      "2026-11-20",
+      "2026-11-21",
+      "2026-11-22"
+    ]
+  },
+  "duplicateSignals": {
+    "uuid": [],
+    "text_media": [],
+    "media": []
+  },
+  "mediaByteOrPerceptualComparison": "not performed in this pass; new URLs alone do not prove new content",
+  "statusScope": "Scheduler PENDING only, not published. Required channel conditions beyond delivered fields are unknown; no posts reapproved in this read.",
+  "ownWrites": 0,
+  "objects": [
+    {
+      "id": 420726136,
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-08T14:06:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wann kommt meine Bestellung? Ehrlich erklärt: so liefern wir.\n\nDirektversand aus Asien: Lieferung 10–20 Werktage (Richtwert), das voraussichtliche Datum steht auf der Produktseite.\nArtikel ab Schweizer Lager: das Lieferdatum steht beim Artikel.\nVersand in der Schweiz: CHF 7, ab CHF 50 gratis (nach Rabatt).\nBezahlen mit TWINT, Klarna (auf Rechnung), Karte oder PayPal.\nFragen? info@luxestyle.ch\n\nLink in Bio: luxestyle.ch\n\n#luxestyle #lieferzeit #versandkosten",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8649031366919954208.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-10525866850040182559.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-5937764926957888011.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11054545028309904617.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-715770748360395517.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-6830001153348712071.jpeg"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Ehrlich erklärt: so liefern wir",
+        "Direktversand: Lieferung 10 bis 20 Werktage",
+        "Ab Schweizer Lager: das Lieferdatum steht beim Artikel",
+        "Versand in der Schweiz CHF 7, ab CHF 50 gratis",
+        "Bezahlen mit TWINT, Klarna auf Rechnung, Karte oder PayPal",
+        "Fragen? info@luxestyle.ch"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "6199136659928140012",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 420728374,
+      "publicationDate": {
+        "dateTime": "2026-11-15T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-08T14:10:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wann kommt meine Bestellung? Ehrlich erklärt: so liefern wir.\n\nDirektversand aus Asien: Lieferung 10–20 Werktage (Richtwert), das voraussichtliche Datum steht auf der Produktseite.\nArtikel ab Schweizer Lager: das Lieferdatum steht beim Artikel.\nVersand in der Schweiz: CHF 7, ab CHF 50 gratis (nach Rabatt).\nBezahlen mit TWINT, Klarna (auf Rechnung), Karte oder PayPal.\n\nAlle Angaben zu Versand und Lieferung: https://luxestyle.ch/pages/versand-lieferung?utm_source=facebook&utm_medium=social&utm_campaign=b1&utm_content=20261115_lieferung_karussell\nFragen? info@luxestyle.ch",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8808613750372457641.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-3732019929199296160.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-12846673326889062375.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-13299759094011764740.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-7529314369443481530.jpeg",
+        "https://static.metricool.com/planner/202611/6227837-file-11578256048113063366.jpeg"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Ehrlich erklärt: so liefern wir",
+        "Direktversand: Lieferung 10 bis 20 Werktage",
+        "Ab Schweizer Lager: das Lieferdatum steht beim Artikel",
+        "Versand in der Schweiz CHF 7, ab CHF 50 gratis",
+        "Bezahlen mit TWINT, Klarna auf Rechnung, Karte oder PayPal",
+        "Fragen? info@luxestyle.ch"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "7768651932591999367",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 422280155,
+      "publicationDate": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:13:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Die Wichtelrunde steht an und dir fehlt noch eine Idee? 🎁\nDer Stick speichert Daten und öffnet Flaschen. Die Speichergrössen von 4 bis 128 GB sind Angaben des Lieferanten; vor dem Öffnen einer Flasche den Stick einfach vom Rechner abziehen.\n\nUSB-Stick Flaschenöffner aus Metall · CHF 15.90\nLieferung 10–20 Werktage\nGratis Versand ab CHF 50 nach Rabatt · TWINT & Klarna\n🔗 Link in Bio: luxestyle.ch\n\n#usbstick #flaschenoeffner #wichtelgeschenk #weihnachtsgeschenk #schweiz",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+        "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "USB-Stick Flaschenöffner aus Metall",
+        "USB-Stick Flaschenöffner aus Metall"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-3833193365444016309",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 422295156,
+      "publicationDate": {
+        "dateTime": "2026-11-15T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-09T20:26:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Wichtelgeschenk unter CHF 20? Dieser Panda wartet schon 🐼\n\nPlüsch Panda, 15 cm, empfohlen ab 3 Jahren · CHF 19.90\nSchweiz: ab Schweizer Lager · Lieferdatum beim Artikel\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#wichteln #pluschpanda #geschenkidee #schweiz",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Text-Video: Plüsch Panda 15 cm, CHF 19.90"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-6967517640837021033",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 423622854,
+      "publicationDate": {
+        "dateTime": "2026-11-15T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T21:07:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Mehr Überblick auf deinem Schminktisch. Dieser Kosmetik-Organizer bringt deine Auswahl gestaffelt in Szene. Produkt und aktuelle Angaben ansehen.",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Gestaffelter Kosmetik-Organizer mit dekorativ platzierten Flaschen und Pflegeprodukten."
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114020",
+        "pinTitle": "Kosmetik-Organizer für den Schminktisch | LuxeStyle",
+        "pinLink": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=luxe_photo_kosmetik_organizer_20261101",
+        "pinNewFormat": true,
+        "isAiGenerated": false,
+        "isAiGeneratedPerson": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "6213007717183669914",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 424392566,
+      "publicationDate": {
+        "dateTime": "2026-11-16T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Weinrot, Dunkelgrün oder Kaffeefarbe: Welche Farbe hängt bei dir am Baum? Die beflockten Weihnachtskugeln gibt es als Set mit 9 Stück aus Kunststoff.\n\nhttps://luxestyle.ch/products/weihnachtskugeln-beflockt-9-stuck-625300",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_21e538e2-0bff-4fa8-802d-27418b633347.jpg?v=1794397357"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 1"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-8080777271331700055",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 424392702,
+      "publicationDate": {
+        "dateTime": "2026-11-16T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Weinrot, Dunkelgrün oder Kaffeefarbe: Welche Farbe passt an deinen Baum? 🎄\n\nDiese Weihnachtskugeln sind beflockt und kommen als Set mit 9 Stück. Jede Kugel trägt ein Zierband mit glitzernden Steinchen. Oben sitzt eine goldfarbene Kappe mit Band zum Aufhängen. Im Set liegen runde und spitz zulaufende Formen.\n\nDie Kugeln sind aus Kunststoff. Sie eignen sich als Deko für die Zweige am Weihnachtsbaum oder als Akzent in einem Kranz.\n\nCHF 18.90 pro Set. Ein Set enthält eine Farbe. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtskugeln #weihnachtsdeko #christbaumschmuck #adventsdeko\n\nShop: luxestyle.ch/ig",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1.jpg?v=1794397307",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2.jpg?v=1794397314",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3.jpg?v=1794397322"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 1",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 2",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 3"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "7991040995405613204",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 424392795,
+      "publicationDate": {
+        "dateTime": "2026-11-16T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Weinrot, Dunkelgrün oder Kaffeefarbe: Welche Kugeln hängst du auf?\n\nWeihnachtskugeln, beflockt, 9 Stück im Set. Jede Kugel trägt ein Zierband mit glitzernden Steinchen und eine goldfarbene Kappe. Material: Kunststoff. CHF 18.90 pro Set, ein Set enthält eine Farbe. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtskugeln #weihnachtsdeko #christbaumschmuck\n\nShop: luxestyle.ch/tt",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1.jpg?v=1794397333",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2.jpg?v=1794397340",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3.jpg?v=1794397347"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 1",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 2",
+        "Weihnachtskugeln beflockt – 9 Stück, Bild 3"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Weihnachtskugeln beflockt – 9 Stück",
+        "autoAddMusic": true,
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-580082399036486516",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 424393081,
+      "publicationDate": {
+        "dateTime": "2026-11-16T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Weihnachtskugeln, beflockt, 9 Stück im Set: Deko für die Zweige am Weihnachtsbaum oder als Akzent in einem Kranz. Jede Kugel trägt ein Zierband mit glitzernden Steinchen und eine goldfarbene Kappe. Material: Kunststoff. Drei Farben zur Auswahl: Weinrot, Dunkelgrün und Kaffeefarbe. Im Set liegen runde und spitz zulaufende Formen.",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin.png?v=1794397368"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Neun weinrote Weihnachtskugeln liegen in einem Karton mit neun Fächern. Jede Kugel hat ein Zierband mit hellen Steinchen und eine goldfarbene Kappe. Darunter steht auf hellem Grund «9 beflockte Weihnachtskugeln» und luxestyle.ch."
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114033",
+        "pinTitle": "Beflockte Weihnachtskugeln im 9er-Set: Weinrot, Dunkelgrün oder Kaffeefarbe",
+        "pinLink": "https://luxestyle.ch/products/weihnachtskugeln-beflockt-9-stuck-625300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtskugeln-beflockt-9-stuck-625300",
+        "pinNewFormat": true,
+        "isAiGenerated": false,
+        "isAiGeneratedPerson": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-8863891854936750949",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 427969120,
+      "publicationDate": {
+        "dateTime": "2026-11-15T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Eine Rose im Glas mit warmem LED-Licht 🌹 In sechs Farben wählbar, Betrieb mit AAA-Batterie (nicht enthalten). Lieferung 10–20 Werktage, Versand ab CHF 50 gratis nach Rabatt.\n\nluxestyle.ch",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+      ],
+      "autoPublish": false,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Rose unter Glasglocke mit warmem LED-Licht auf Holzsockel, in Rot, Gold und Blau"
+      ],
+      "shortener": false,
+      "draft": true,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": false,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "8935974072695279179",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 427969190,
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Licht im Detail. Entdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung über den Link im Profil.\n\n#sternlicht #lichtmomente #wohnen #luxestyle",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+      ],
+      "autoPublish": false,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Sternenlicht-Projektor und reale Sternen- und Galaxieprojektionen im Hochkantvideo"
+      ],
+      "shortener": false,
+      "draft": true,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": false,
+        "type": "REEL",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "4156060813550767248",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 427969232,
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Licht im Detail. Entdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung auf der Produktseite:\n\nhttps://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_entwurf_202611&utm_content=luxe_sternenprojektor_master_20261018_r176_facebook\n\n#sternlicht #lichtmomente #wohnen #luxestyle",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+      ],
+      "autoPublish": false,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Sternenlicht-Projektor und reale Sternen- und Galaxieprojektionen im Hochkantvideo"
+      ],
+      "shortener": false,
+      "draft": true,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "Sternenlicht-Projektor im Detail"
+      },
+      "instagramData": {
+        "autoPublish": false,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "6680239273933357186",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 423483793,
+      "publicationDate": {
+        "dateTime": "2026-11-18T10:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T18:56:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Knoblauch und Zwiebeln per Druck hacken: der Knoblauch- und Zwiebelhacker arbeitet mit einem einfachen Druckmechanismus.\n\nEr zerkleinert Zwiebeln, Knoblauch und anderes Gemüse. Die Klingen sind aus Edelstahl, der mehrschichtige Aufbau macht die Reinigung leichter. Kompakt: 6 x 16 cm.\n\nShop: luxestyle.ch/ig\n\n#küchengadget #knoblauch #kochen #schweiz",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+      ],
+      "autoPublish": false,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Text-Video: Knoblauch und Zwiebeln per Druck hacken mit dem Knoblauch- und Zwiebelhacker"
+      ],
+      "shortener": false,
+      "draft": true,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "REEL",
+        "title": "Knoblauch und Zwiebeln per Druck hacken"
+      },
+      "instagramData": {
+        "autoPublish": false,
+        "type": "REEL",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "4659816415037836014",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 423484712,
+      "publicationDate": {
+        "dateTime": "2026-11-18T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T18:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Knoblauch hacken per Druck: der Knoblauch- und Zwiebelhacker zerkleinert auch Zwiebeln und anderes Gemüse.\n\nShop: luxestyle.ch/ig",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4"
+      ],
+      "autoPublish": false,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Text-Video: Knoblauch und Zwiebeln per Druck hacken mit dem Knoblauch- und Zwiebelhacker"
+      ],
+      "shortener": false,
+      "draft": true,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": false,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-8339089096074181290",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 423484773,
+      "publicationDate": {
+        "dateTime": "2026-11-18T12:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T18:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Knoblauch und Zwiebeln per Druck hacken: der Knoblauch- und Zwiebelhacker mit Edelstahlklingen. Zerkleinert auch anderes Gemüse.\n\nShop: luxestyle.ch/tt\n\n#küchengadget #knoblauch #kochen #schweiz",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4"
+      ],
+      "autoPublish": false,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Text-Video: Knoblauch und Zwiebeln per Druck hacken mit dem Knoblauch- und Zwiebelhacker"
+      ],
+      "shortener": false,
+      "draft": true,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": false,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Knoblauch hacken per Druck",
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-8305910546945982140",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 423484839,
+      "publicationDate": {
+        "dateTime": "2026-11-18T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-10T18:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Der Knoblauch- und Zwiebelhacker zerkleinert Zwiebeln, Knoblauch und anderes Gemüse per Druck. Edelstahlklingen, mehrschichtiger Aufbau für leichte Reinigung.\n\nShop: luxestyle.ch/yt\n\n#küchengadget #knoblauch #kochen #Shorts",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4"
+      ],
+      "autoPublish": false,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Text-Video: Knoblauch und Zwiebeln per Druck hacken mit dem Knoblauch- und Zwiebelhacker"
+      ],
+      "shortener": false,
+      "draft": true,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": false,
+        "isAiGenerated": false
+      },
+      "youtubeData": {
+        "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "tags": [
+          "küchengadget",
+          "knoblauch",
+          "kochen",
+          "schweiz"
+        ],
+        "madeForKids": false,
+        "isAiGeneratedContent": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-3731207601091163105",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 424393187,
+      "publicationDate": {
+        "dateTime": "2026-11-17T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Schwalbe oder Schmetterling? Die Retro-Keramiktasse mit Tiermotiv gibt es in Braun mit Schwalben und in Weiss mit Schmetterlingen. Welche würdest du nehmen?\n\nhttps://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_b7d0012d-ac66-44b7-b2fb-c2241bf1f06a.jpg?v=1794397437"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 1"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-2055061205905158476",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 424393289,
+      "publicationDate": {
+        "dateTime": "2026-11-17T16:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Schwalbe oder Schmetterling: Welche Tasse wäre deine?\n\nRetro-Keramiktasse mit Tiermotiv. Zwei Motive: Schwalbe · Braun und Schmetterling · Weiss. Gewellter Henkel, kommt in einer Geschenkbox. Je CHF 17.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#keramiktasse #kaffeetasse #retro #tassenliebe\n\nShop: luxestyle.ch/tt",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_d1b07451-b0b9-4a81-8d8d-b0320b7e39d4.jpg?v=1794397405",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_4444b6f7-a436-4b33-be29-a341d8dbc51d.jpg?v=1794397412",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_293b22f6-d6f6-44ff-b046-74e64d8c35ea.jpg?v=1794397419"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 1",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 2",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 3"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Retro Keramik-Kaffeetasse mit Tiermotiv",
+        "autoAddMusic": true,
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-326770756211684563",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 424393422,
+      "publicationDate": {
+        "dateTime": "2026-11-17T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Schwalbe oder Schmetterling? ☕\n\nDie Retro-Keramiktasse mit Tiermotiv gibt es in zwei Ausführungen: Schwalbe · Braun und Schmetterling · Weiss. Der Henkel ist gewellt, der Rand unregelmässig geformt. Gedacht für den Kaffee zu Hause oder im Büro. Die Tasse kommt in einer Geschenkbox.\n\nBeide Motive kosten je CHF 17.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\nWelches Motiv ist deins?\n\n#keramiktasse #kaffeetasse #retrodesign #tassenliebe\n\nShop: luxestyle.ch/ig",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 1",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 2",
+        "Retro Keramik-Kaffeetasse mit Tiermotiv, Bild 3"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "8906814597211638530",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 424393614,
+      "publicationDate": {
+        "dateTime": "2026-11-17T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:57:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Keramiktasse im Retro-Design mit Tiermotiv. Zwei Ausführungen: Schwalbe · Braun und Schmetterling · Weiss. Handgefertigt, der Henkel ist gewellt. Für den Kaffee zu Hause oder im Büro. Die Tasse kommt in einer Geschenkbox.",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_e17bf436-d4bd-4b11-8300-2e17b5b11b42.png?v=1794397450"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Braune Keramiktasse mit dunklen Schwalbenmotiven und gewelltem Henkel, gefüllt mit Milchkaffee, auf einem Holztisch. Darunter der Schriftzug «Retro-Tasse mit Tiermotiv» und luxestyle.ch."
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114020",
+        "pinTitle": "Retro-Keramiktasse mit Tiermotiv: Schwalbe oder Schmetterling",
+        "pinLink": "https://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_retro-keramik-kaffeetasse-mit-tiermotiv-621800",
+        "pinNewFormat": true,
+        "isAiGenerated": false,
+        "isAiGeneratedPerson": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "9119250214596987223",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 424393691,
+      "publicationDate": {
+        "dateTime": "2026-11-18T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-11T13:58:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Rot mit grünem Umschlag oder Grün mit rotem? Der Weihnachtsstrumpf mit Samt-Optik hat eine goldgelbe Quaste und eine Schlaufe zum Aufhängen.\n\nhttps://luxestyle.ch/products/weihnachtsstrumpf-mit-samt-optik-639700",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_6445e26c-8094-4373-9304-9f483b0acad5.jpg?v=1794397510"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 1"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-2256568300747601062",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425725034,
+      "publicationDate": {
+        "dateTime": "2026-11-18T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Rot oder Grün: welche Farbe hängst du auf? 🎄\n\nDer Weihnachtsstrumpf mit Samt-Optik kommt in zwei Farben. Der rote hat einen grünen Umschlag, der grüne einen roten. Der Umschlag läuft spitz zu. Am Rand sitzt eine Kordel in Rot und Gold, vorn am Umschlag hängt eine goldgelbe Quaste. Oben ist eine Schlaufe zum Aufhängen.\n\nGrösse laut Produktseite: rund 25 × 48 cm (10 × 19 Zoll).\nRot oder Grün, je CHF 15.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsstrumpf #weihnachtsdeko #advent #dekoideen\n\nShop: luxestyle.ch/ig",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 1",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 2",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 3"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "5511347900019396585",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425725162,
+      "publicationDate": {
+        "dateTime": "2026-11-18T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Rot oder Grün? Wisch durch und sag es uns. 🎄\n\nWeihnachtsstrumpf mit Samt-Optik: spitz zulaufender Umschlag in der Gegenfarbe, Kordel in Rot und Gold, goldgelbe Quaste und Schlaufe zum Aufhängen. Je Farbe CHF 15.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsstrumpf #weihnachtsdeko #advent\n\nShop: luxestyle.ch/tt",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_5f063c5e-dee5-4117-a1b7-abce6b3b9f71.jpg?v=1794397488",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_cffdfa7c-d91a-48ff-9b57-ca3102183d53.jpg?v=1794397492",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_d49ebb5a-d861-445d-ba18-f8e97bbd1e0d.jpg?v=1794397497"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 1",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 2",
+        "Weihnachtsstrumpf mit Samt-Optik, Bild 3"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Weihnachtsstrumpf mit Samt-Optik",
+        "autoAddMusic": true,
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-4254912497617780595",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425725272,
+      "publicationDate": {
+        "dateTime": "2026-11-18T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Weihnachtsstrumpf mit Samt-Optik als Deko für die Weihnachtszeit. Es gibt ihn in Rot mit grünem Umschlag oder in Grün mit rotem Umschlag. Der Umschlag läuft spitz zu und trägt eine Kordel in Rot und Gold sowie eine goldgelbe Quaste. Oben sitzt eine Schlaufe zum Aufhängen. Grösse laut Produktseite: rund 25 × 48 cm (10 × 19 Zoll).",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_434d7e37-d0a7-4b5d-bc43-4f952858dade.png?v=1794397523"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Zwei Weihnachtsstrümpfe mit Samt-Optik nebeneinander auf hellem Grund: links ein roter mit grünem Umschlag, rechts ein grüner mit rotem Umschlag. Beide haben eine Kordel in Rot und Gold am Umschlag, eine goldgelbe Quaste und oben eine Schlaufe. Darunter steht «Weihnachtsstrumpf mit Samt-Optik»."
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114033",
+        "pinTitle": "Weihnachtsstrumpf mit Samt-Optik in Rot oder Grün mit goldgelber Quaste",
+        "pinLink": "https://luxestyle.ch/products/weihnachtsstrumpf-mit-samt-optik-639700?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtsstrumpf-mit-samt-optik-639700",
+        "pinNewFormat": true,
+        "isAiGenerated": false,
+        "isAiGeneratedPerson": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-5899965466644493317",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 427969295,
+      "publicationDate": {
+        "dateTime": "2026-11-17T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Licht im Detail: der Sternenlicht-Projektor für Schlafzimmer. Welche Ausführung welche Scheiben mitbringt, steht beim Artikel.\n\nShop: luxestyle.ch/tt\n\n#sternlicht #lichtmomente #luxestyle",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+      ],
+      "autoPublish": false,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Sternenlicht-Projektor und reale Sternen- und Galaxieprojektionen im Hochkantvideo"
+      ],
+      "shortener": false,
+      "draft": true,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": false,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Sternenlicht im Detail",
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "3614365779669041576",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425725415,
+      "publicationDate": {
+        "dateTime": "2026-11-19T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Der LED-Schminkspiegel ist tragbar und faltbar. Ein Knopf schaltet zwischen drei Farbmodi um. Rosa, Violett, Weiss oder Schwarz: welche Farbe würdest du nehmen?\n\nhttps://luxestyle.ch/products/led-schminkspiegel-wiederaufladbar-tragbar-639500",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fb120a45-22f1-4844-aefd-f6be8ba24795.jpg?v=1794397616"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 1"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "2120727659527094958",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425725555,
+      "publicationDate": {
+        "dateTime": "2026-11-19T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Schminklicht zum Mitnehmen ✨\n\nDer LED-Schminkspiegel ist tragbar und faltbar. Aufgeklappt hast du zwei Spiegelflächen, eine davon mit Lichtrahmen. 20 LED sorgen für die Beleuchtung. Ein Knopf schaltet zwischen drei Farbmodi um, darunter Weisslicht und Warmweiss. Dazu kommt eine 2-fache Vergrösserung.\n\nVier Farben: Rosa, Violett, Weiss und Schwarz. Jede kostet CHF 15.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\nWelche Farbe wäre deine?\n\n#schminkspiegel #ledspiegel #makeup #geschenkidee\n\nShop: luxestyle.ch/ig",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 1",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 2",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 3",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 4"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "4792908094992761420",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425725709,
+      "publicationDate": {
+        "dateTime": "2026-11-19T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Rosa, Violett, Weiss oder Schwarz: welche Farbe wäre deine?\n\nLED-Schminkspiegel zum Mitnehmen: tragbar und faltbar. 20 LED, drei Farbmodi per Knopf und 2-fache Vergrösserung. CHF 15.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#schminkspiegel #ledspiegel #makeup #geschenkidee\n\nShop: luxestyle.ch/tt",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_a328ba01-eaa9-4b63-a89b-e6afc9c921ab.jpg?v=1794397567",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_c2ab9d27-454c-4b45-81ae-57953d61f5e3.jpg?v=1794397578",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_4f8fa066-da06-4efb-a9bb-a86fe0548dca.jpg?v=1794397586",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4.jpg?v=1794397605"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 1",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 2",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 3",
+        "LED-Schminkspiegel, wiederaufladbar & tragbar, Bild 4"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "LED-Schminkspiegel, wiederaufladbar & tragbar",
+        "autoAddMusic": true,
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-1560468010126717309",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425725932,
+      "publicationDate": {
+        "dateTime": "2026-11-19T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "LED-Schminkspiegel zum Mitnehmen: tragbar und faltbar. Aufgeklappt hast du zwei Spiegelflächen, eine davon mit Lichtrahmen. 20 LED, drei Farbmodi per Knopf (darunter Weisslicht und Warmweiss) und eine 2-fache Vergrösserung. Erhältlich in Rosa, Violett, Weiss und Schwarz. Eine Geschenkidee für viele Gelegenheiten.",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_a06cee9e-c933-4b58-af63-8eb95eccbf13.png?v=1794397635"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Rosa Schminkspiegel zum Aufklappen auf weissem Grund: zwei Spiegelflächen, die untere mit leuchtendem weissem Rahmen und rundem Lampensymbol. Daneben derselbe Spiegel halb geöffnet von aussen, mit einer Buchse am Gehäuse. Unten der Schriftzug «Tragbarer LED-Schminkspiegel» und luxestyle.ch."
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114020",
+        "pinTitle": "Tragbarer LED-Schminkspiegel: faltbar, 20 LED, drei Farbmodi",
+        "pinLink": "https://luxestyle.ch/products/led-schminkspiegel-wiederaufladbar-tragbar-639500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_led-schminkspiegel-wiederaufladbar-tragbar-639500",
+        "pinNewFormat": true,
+        "isAiGenerated": false,
+        "isAiGeneratedPerson": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "6443070221295305315",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425726070,
+      "publicationDate": {
+        "dateTime": "2026-11-20T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T14:59:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein kleiner Tannenbaum, der leuchtet und eine Musikbox ist: die Lichterbaum-Musikbox mit bunten Lichtern und rotem Stern, 20 cm hoch. Wo würde sie bei dir stehen: im Wohnzimmer oder im Schlafzimmer?\n\nhttps://luxestyle.ch/products/lichterbaum-musikbox-10x10x20-cm-604200",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_379fa65f-be7c-4756-8f4d-46d3d4ab9b12.jpg?v=1794397712"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 1"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-6491658134482960242",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425726186,
+      "publicationDate": {
+        "dateTime": "2026-11-20T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Dieser kleine Tannenbaum ist eine Musikbox. 🎄\n\nLichterbaum-Musikbox: bunte Lichter rund um den Baum, roter Stern an der Spitze, kleine Häuser zwischen den Zweigen. Grösse 10 × 10 × 20 cm. CHF 27.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsdeko #musikbox #lichterbaum #wohndeko\n\nShop: luxestyle.ch/tt",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_af91f71b-dcd8-4cc7-bc9b-725d431eb159.jpg?v=1794397686",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_0aa9b38a-f560-4df5-830e-f786d62d91dc.jpg?v=1794397694",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_a5dcac33-e11d-49eb-b2ff-fcd77ae6b94f.jpg?v=1794397701"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 1",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 2",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 3"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Lichterbaum-Musikbox 10x10x20 cm",
+        "autoAddMusic": true,
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "5095221239706765903",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425726329,
+      "publicationDate": {
+        "dateTime": "2026-11-20T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein Tannenbaum, der leuchtet und zugleich eine Musikbox ist: die Lichterbaum-Musikbox. 🎄\n\nEine Lichterkette mit bunten Lichtern zieht sich um den Baum. An der Spitze sitzt ein roter Stern. Zwischen den verschneiten Zweigen stehen kleine Häuser.\n\nDie Musikbox misst 10 × 10 × 20 cm und ist als festliche Deko für Wohnzimmer und Schlafzimmer gedacht.\n\nLichterbaum-Musikbox · CHF 27.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsdeko #musikbox #lichterbaum #wohndeko #luxestyle\n\nShop: luxestyle.ch/ig",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 1",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 2",
+        "Lichterbaum-Musikbox 10x10x20 cm, Bild 3"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "108318075245381964",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 425726479,
+      "publicationDate": {
+        "dateTime": "2026-11-20T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-12T15:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Die Lichterbaum-Musikbox ist eine Musikbox in Form eines Tannenbaums. Eine Lichterkette mit bunten Lichtern zieht sich um den Baum, an der Spitze sitzt ein roter Stern, zwischen den verschneiten Zweigen stehen kleine Häuser. Masse: 10 × 10 × 20 cm. Gedacht als festliche Deko für Wohnzimmer und Schlafzimmer.",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_84fbb61d-4b67-44cc-8f46-b81f7788ed75.png?v=1794397723"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Grüner Deko-Tannenbaum mit rotem Stern an der Spitze, bunten Lichtpunkten, rotem Band und kleinen Häusern steht auf einem Holztisch. Im Hintergrund unscharf ein Wohnzimmer mit Kamin, Lampe und Sofa. Darunter der Schriftzug «Lichterbaum-Musikbox»."
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114033",
+        "pinTitle": "Lichterbaum-Musikbox mit bunten Lichtern und rotem Stern, 20 cm hoch",
+        "pinLink": "https://luxestyle.ch/products/lichterbaum-musikbox-10x10x20-cm-604200?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_lichterbaum-musikbox-10x10x20-cm-604200",
+        "pinNewFormat": true,
+        "isAiGenerated": false,
+        "isAiGeneratedPerson": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-457707186698434580",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 427969354,
+      "publicationDate": {
+        "dateTime": "2026-11-19T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:40:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Licht im Detail: ein Blick auf den Sternenlicht-Projektor. Die gewünschte Ausführung auf der Produktseite prüfen:\n\nhttps://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_entwurf_202611&utm_content=luxe_sternenprojektor_master_20261018_r176_youtube\n\n#Shorts #Sternenlicht #LuxeStyle",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "youtube",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+      ],
+      "autoPublish": false,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Sternenlicht-Projektor und reale Sternen- und Galaxieprojektionen im Hochkantvideo"
+      ],
+      "shortener": false,
+      "draft": true,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": false,
+        "isAiGenerated": false
+      },
+      "youtubeData": {
+        "title": "Sternenlicht-Projektor im Detail #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "tags": [
+          "sternlicht",
+          "lichtmomente",
+          "luxestyle"
+        ],
+        "madeForKids": false,
+        "isAiGeneratedContent": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-7647174116509334899",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 426961960,
+      "publicationDate": {
+        "dateTime": "2026-11-21T14:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Ein Schmuckkästchen, das du selbst zusammensetzt: Dieses 3D-Holzpuzzle wird zum Kästchen mit Fächern und Schublade. Würdest du es selbst bauen oder lieber verschenken?\n\nhttps://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_dd164b90-30e9-4b45-9294-d3d22efe2075.jpg?v=1794397799"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Schmuckkästchen 3D Holzpuzzle, Bild 1"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-325577156053548845",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 426962036,
+      "publicationDate": {
+        "dateTime": "2026-11-21T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Erst puzzeln, dann Schmuck verstauen 🧩\n\nDieses Schmuckkästchen ist ein 3D-Holzpuzzle zum Selberbauen. Du setzt es selbst aus Holzteilen zusammen.\n\nFertig gebaut lässt sich der Deckel aufklappen. Dann zeigen sich mehrere Fächer, unten sitzt eine Schublade. So haben kleine Kostbarkeiten ihren Platz. Mit den durchbrochenen Mustern ist das Kästchen auch ein Dekostück.\n\nEine Geschenkidee für alle, die gern basteln. CHF 14.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\nWas würdest du darin aufbewahren?\n\n#holzpuzzle #schmuckkästchen #diy #basteln #geschenkidee\n\nShop: luxestyle.ch/ig",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_4fab7970-9b5d-4b50-a6db-b2ae427b77b2.jpg?v=1794397733",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_2159e5b8-0cb4-4ff4-8fc4-0e40d8af6c44.jpg?v=1794397740",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_e6a5748e-b490-42d0-92c5-8a97d398df2a.jpg?v=1794397748",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_b5d8a122-d25b-497c-8333-3eaf2360ba9a.jpg?v=1794397756"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Schmuckkästchen 3D Holzpuzzle, Bild 1",
+        "Schmuckkästchen 3D Holzpuzzle, Bild 2",
+        "Schmuckkästchen 3D Holzpuzzle, Bild 3",
+        "Schmuckkästchen 3D Holzpuzzle, Bild 4"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "4464007380148308511",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 426962130,
+      "publicationDate": {
+        "dateTime": "2026-11-21T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Würdest du dein Schmuckkästchen selbst bauen? 🧩\n\nAus diesem 3D-Holzpuzzle baust du ein Schmuckkästchen. Fertig gebaut zeigt es mehrere Fächer und unten eine Schublade. CHF 14.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#holzpuzzle #schmuckkästchen #diy #basteln\n\nShop: luxestyle.ch/tt",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_1.jpg?v=1794397766",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_2.jpg?v=1794397773",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_3.jpg?v=1794397781",
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_4.jpg?v=1794397788"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Schmuckkästchen 3D Holzpuzzle, Bild 1",
+        "Schmuckkästchen 3D Holzpuzzle, Bild 2",
+        "Schmuckkästchen 3D Holzpuzzle, Bild 3",
+        "Schmuckkästchen 3D Holzpuzzle, Bild 4"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Schmuckkästchen 3D Holzpuzzle",
+        "autoAddMusic": true,
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "1244897565051602488",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 426962209,
+      "publicationDate": {
+        "dateTime": "2026-11-21T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Schmuckkästchen als 3D-Holzpuzzle: Du setzt das Kästchen selbst aus Holzteilen zusammen. Fertig gebaut lässt sich der Deckel aufklappen, dann zeigen sich mehrere Fächer und unten eine Schublade für kleine Kostbarkeiten. Mit den durchbrochenen Mustern ist es auch ein dekoratives Stück. Ein DIY-Projekt für alle, die gern basteln, und eine persönliche Geschenkidee.",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_07eb0b8b-650b-45f7-a428-1d44e9f8cf69.png?v=1794397810"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Zwei Fotos eines hellen Holzkästchens auf weissem Grund. Oben steht es geschlossen von vorn: durchbrochene Muster, ein Verschluss in der Mitte, geschwungene Füsse und ein Zahnrad an der rechten Seite. Unten ist es geöffnet: aufgeklappter Deckel, Fächer links, rechts und in der Mitte, vorn eine herausgezogene Schublade. Darunter der Schriftzug «Schmuckkästchen als 3D-Holzpuzzle» und luxestyle.ch."
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114020",
+        "pinTitle": "Schmuckkästchen als 3D-Holzpuzzle zum Selberbauen: DIY-Geschenkidee aus Holz",
+        "pinLink": "https://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_schmuckkastchen-3d-holzpuzzle-611300",
+        "pinNewFormat": true,
+        "isAiGenerated": false,
+        "isAiGeneratedPerson": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "1277216616076757571",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 426962312,
+      "publicationDate": {
+        "dateTime": "2026-11-22T11:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Was kommt bei dir zuerst unter den Weihnachtsbaum? Unsere Christbaumdecke aus Plüsch misst 90 cm im Durchmesser, trägt goldene Pailletten-Schneeflocken und liegt rund um den Baumständer.\n\nhttps://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "threads",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_9c250021-1144-44f0-8754-aae799863819.jpg?v=1794416156"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Christbaumdecke mit goldenen Pailletten-Schneeflocken, Bild 1"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "7447187506709285656",
+      "threadsData": {
+        "replyControl": "EVERYONE",
+        "type": "POST",
+        "shareAsInstagramStory": false
+      },
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 426962393,
+      "publicationDate": {
+        "dateTime": "2026-11-22T17:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-13T14:27:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Was liegt bei dir unter dem Baum, bevor die Geschenke kommen? 🎄\n\nDie Christbaumdecke mit goldenen Pailletten-Schneeflocken liegt rund um den Baumständer. Sie ist aus Plüsch und misst 90 cm im Durchmesser. In der Mitte hat sie eine runde Öffnung für den Stamm.\n\nCHF 23.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsdeko #christbaumdecke #weihnachtsbaum #weihnachten #wohnideen\n\nShop: luxestyle.ch/ig",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "facebook",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        },
+        {
+          "network": "instagram",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_c826eaba-25ba-4c24-b7d4-7128ba921dc4.jpg?v=1794416132"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Christbaumdecke mit goldenen Pailletten-Schneeflocken, Bild 1"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "facebookData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "type": "POST",
+        "showReelOnFeed": true,
+        "isAiGenerated": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "2057359447521839535",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 427963228,
+      "publicationDate": {
+        "dateTime": "2026-11-22T18:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Goldene Schneeflocken für unter den Baum 🎄\n\nChristbaumdecke mit goldenen Pailletten-Schneeflocken: aus Plüsch, 90 cm Durchmesser, mit runder Öffnung für den Stamm. Sie liegt rund um den Baumständer. CHF 23.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsdeko #christbaumdecke #weihnachtsbaum #weihnachten\n\nShop: luxestyle.ch/tt",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "tiktok",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_85d3b77c-b261-4230-9a3f-377da8b64cd8.jpg?v=1794416143"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Christbaumdecke mit goldenen Pailletten-Schneeflocken, Bild 1"
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "tiktokData": {
+        "privacyOption": "PUBLIC_TO_EVERYONE",
+        "commercialContentOwnBrand": true,
+        "title": "Christbaumdecke mit goldenen Pailletten-Schneeflocken",
+        "autoAddMusic": true,
+        "photoCoverIndex": 0
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-5766619704983925146",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    },
+    {
+      "id": 427963279,
+      "publicationDate": {
+        "dateTime": "2026-11-22T20:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "creationDate": {
+        "dateTime": "2026-11-14T13:30:00",
+        "timezone": "Europe/Zurich"
+      },
+      "text": "Runde Christbaumdecke aus Plüsch mit einem Muster aus goldenen Pailletten-Schneeflocken. Sie misst 90 cm im Durchmesser und hat in der Mitte eine runde Öffnung, durch die der Stamm des Weihnachtsbaums kommt. Unter dem Baum liegt sie rund um den Baumständer. Gewicht laut Produktseite ca. 320 g.",
+      "firstCommentText": "",
+      "providers": [
+        {
+          "network": "pinterest",
+          "status": "PENDING",
+          "detailedStatus": "Pending"
+        }
+      ],
+      "media": [
+        "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_8ac59cdd-b763-4ee3-9013-3e975e192bae.png?v=1794416167"
+      ],
+      "autoPublish": true,
+      "saveExternalMediaFiles": false,
+      "mediaAltText": [
+        "Runde, weisse Plüschdecke mit goldenen Schneeflocken auf dunklem Holzboden unter einem Tannenbaum. Durch die runde Öffnung in der Mitte sind der Stamm und ein dunkler Baumständer zu sehen. Am Baum hängen zwei weisse Kugeln mit silbernem Glitzermuster und eine silberne Kugel. Unten steht auf hellem Band «Christbaumdecke mit goldenen Pailletten», darunter «90 cm Durchmesser» und «luxestyle.ch»."
+      ],
+      "shortener": false,
+      "draft": false,
+      "imageVariants": false,
+      "twitterData": {
+        "type": "POST"
+      },
+      "instagramData": {
+        "autoPublish": true,
+        "isAiGenerated": false
+      },
+      "pinterestData": {
+        "boardId": "1111333714239114033",
+        "pinTitle": "Christbaumdecke mit goldenen Pailletten-Schneeflocken, 90 cm",
+        "pinLink": "https://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_christbaumdecke-mit-goldenen-pailletten-schnee-634500",
+        "pinNewFormat": true,
+        "isAiGenerated": false,
+        "isAiGeneratedPerson": false
+      },
+      "hasNotReadNotes": false,
+      "uuid": "-2010279446251812932",
+      "brandTags": [],
+      "verifiedQueryBrandId": "6227837"
+    }
+  ],
+  "independentOfflineReview": {
+    "reviewType": "offline independent QA; no API reads or platform writes",
+    "sourceDirectory": "/dev/shm/luxestyle-review/r225/metricool-queue-root",
+    "sourceFiles": [
+      "window0.json",
+      "window1.json",
+      "window2.json",
+      "window3.json"
+    ],
+    "summary": {
+      "rawDeliveredRows": 42,
+      "uniqueObjectIds": 42,
+      "uniqueObjectUUIDs": 42,
+      "providerStates": 51,
+      "allProviderStatesPending": true,
+      "perChannelCounts": {
+        "instagram": {
+          "states": 11,
+          "globalScheduled_dFalse_apTrue": 9,
+          "draftTrue": 2
+        },
+        "facebook": {
+          "states": 11,
+          "globalScheduled_dFalse_apTrue": 9,
+          "draftTrue": 2
+        },
+        "tiktok": {
+          "states": 10,
+          "globalScheduled_dFalse_apTrue": 8,
+          "draftTrue": 2
+        },
+        "pinterest": {
+          "states": 8,
+          "globalScheduled_dFalse_apTrue": 8,
+          "draftTrue": 0
+        },
+        "threads": {
+          "states": 9,
+          "globalScheduled_dFalse_apTrue": 7,
+          "draftTrue": 2
+        },
+        "youtube": {
+          "states": 2,
+          "globalScheduled_dFalse_apTrue": 0,
+          "draftTrue": 2
+        }
+      },
+      "dailyMatrix": {
+        "2026-11-15": {
+          "instagram": {
+            "globalScheduled_dFalse_apTrue": 2,
+            "draftTrue": 0,
+            "states": 2
+          },
+          "facebook": {
+            "globalScheduled_dFalse_apTrue": 2,
+            "draftTrue": 0,
+            "states": 2
+          },
+          "tiktok": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "pinterest": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "threads": {
+            "globalScheduled_dFalse_apTrue": 0,
+            "draftTrue": 1,
+            "states": 1
+          },
+          "youtube": {
+            "globalScheduled_dFalse_apTrue": 0,
+            "draftTrue": 0,
+            "states": 0
+          }
+        },
+        "2026-11-16": {
+          "instagram": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 1,
+            "states": 2
+          },
+          "facebook": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 1,
+            "states": 2
+          },
+          "tiktok": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "pinterest": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "threads": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "youtube": {
+            "globalScheduled_dFalse_apTrue": 0,
+            "draftTrue": 0,
+            "states": 0
+          }
+        },
+        "2026-11-17": {
+          "instagram": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "facebook": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "tiktok": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 1,
+            "states": 2
+          },
+          "pinterest": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "threads": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "youtube": {
+            "globalScheduled_dFalse_apTrue": 0,
+            "draftTrue": 0,
+            "states": 0
+          }
+        },
+        "2026-11-18": {
+          "instagram": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 1,
+            "states": 2
+          },
+          "facebook": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 1,
+            "states": 2
+          },
+          "tiktok": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 1,
+            "states": 2
+          },
+          "pinterest": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "threads": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 1,
+            "states": 2
+          },
+          "youtube": {
+            "globalScheduled_dFalse_apTrue": 0,
+            "draftTrue": 1,
+            "states": 1
+          }
+        },
+        "2026-11-19": {
+          "instagram": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "facebook": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "tiktok": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "pinterest": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "threads": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "youtube": {
+            "globalScheduled_dFalse_apTrue": 0,
+            "draftTrue": 1,
+            "states": 1
+          }
+        },
+        "2026-11-20": {
+          "instagram": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "facebook": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "tiktok": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "pinterest": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "threads": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "youtube": {
+            "globalScheduled_dFalse_apTrue": 0,
+            "draftTrue": 0,
+            "states": 0
+          }
+        },
+        "2026-11-21": {
+          "instagram": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "facebook": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "tiktok": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "pinterest": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "threads": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "youtube": {
+            "globalScheduled_dFalse_apTrue": 0,
+            "draftTrue": 0,
+            "states": 0
+          }
+        },
+        "2026-11-22": {
+          "instagram": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "facebook": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "tiktok": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "pinterest": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "threads": {
+            "globalScheduled_dFalse_apTrue": 1,
+            "draftTrue": 0,
+            "states": 1
+          },
+          "youtube": {
+            "globalScheduled_dFalse_apTrue": 0,
+            "draftTrue": 0,
+            "states": 0
+          }
+        }
+      },
+      "gapsInGlobalSchedule": {
+        "instagram": [],
+        "facebook": [],
+        "tiktok": [],
+        "pinterest": [],
+        "threads": [
+          "2026-11-15"
+        ],
+        "youtube": [
+          "2026-11-15",
+          "2026-11-16",
+          "2026-11-17",
+          "2026-11-18",
+          "2026-11-19",
+          "2026-11-20",
+          "2026-11-21",
+          "2026-11-22"
+        ]
+      },
+      "collisions": {
+        "sameChannelUuid": [],
+        "sameChannelMediaArray": [],
+        "sameChannelExactTextAndMedia": [],
+        "sameChannelAnyMediaUrl": []
+      },
+      "channelFieldChecks": {
+        "instagram": {
+          "states": 11,
+          "explicitChannelAutoPublishFieldCount": 11,
+          "explicitChannelAutoPublishValues": {
+            "True": 9,
+            "False": 2
+          },
+          "deliveredChannelData": {
+            "present": 11
+          },
+          "typeCounts": {
+            "POST": 9,
+            "REEL": 2
+          },
+          "channelVsGlobalAutoPublishMismatches": []
+        },
+        "facebook": {
+          "states": 11,
+          "explicitChannelAutoPublishFieldCount": 0,
+          "explicitChannelAutoPublishValues": {},
+          "deliveredChannelData": {
+            "present": 11
+          },
+          "formats": {
+            "POST": 9,
+            "REEL": 2
+          },
+          "channelAutoPublish": "not present in facebookData objects"
+        },
+        "tiktok": {
+          "states": 10,
+          "explicitChannelAutoPublishFieldCount": 0,
+          "explicitChannelAutoPublishValues": {},
+          "deliveredChannelData": {
+            "present": 10
+          },
+          "channelAutoPublish": "not present in tiktokData objects",
+          "draftChannelFields": [
+            {
+              "id": 423484773,
+              "date": {
+                "dateTime": "2026-11-18T12:00:00",
+                "timezone": "Europe/Zurich"
+              },
+              "tiktokData": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Knoblauch hacken per Druck",
+                "photoCoverIndex": 0
+              }
+            },
+            {
+              "id": 427969295,
+              "date": {
+                "dateTime": "2026-11-17T19:00:00",
+                "timezone": "Europe/Zurich"
+              },
+              "tiktokData": {
+                "privacyOption": "PUBLIC_TO_EVERYONE",
+                "commercialContentOwnBrand": true,
+                "title": "Sternenlicht im Detail",
+                "photoCoverIndex": 0
+              }
+            }
+          ]
+        },
+        "pinterest": {
+          "states": 8,
+          "explicitChannelAutoPublishFieldCount": 0,
+          "explicitChannelAutoPublishValues": {},
+          "deliveredChannelData": {
+            "present": 8
+          },
+          "boardIdCounts": {
+            "1111333714239114020": 4,
+            "1111333714239114033": 4
+          },
+          "allHaveBoardId": true,
+          "expectedReferenceBoardId": "1111333714239531706",
+          "referenceBoardIdOccurrences": 0
+        },
+        "threads": {
+          "states": 9,
+          "explicitChannelAutoPublishFieldCount": 0,
+          "explicitChannelAutoPublishValues": {},
+          "deliveredChannelData": {
+            "present": 9
+          },
+          "channelAutoPublish": "not present in threadsData objects"
+        },
+        "youtube": {
+          "states": 2,
+          "explicitChannelAutoPublishFieldCount": 0,
+          "explicitChannelAutoPublishValues": {},
+          "deliveredChannelData": {
+            "present": 2
+          },
+          "draftRows": [
+            {
+              "id": 423484839,
+              "uuid": "-3731207601091163105",
+              "date": {
+                "dateTime": "2026-11-18T18:00:00",
+                "timezone": "Europe/Zurich"
+              },
+              "draft": true,
+              "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+              "madeForKids": false,
+              "type": "short",
+              "privacy": "public"
+            },
+            {
+              "id": 427969354,
+              "uuid": "-7647174116509334899",
+              "date": {
+                "dateTime": "2026-11-19T19:00:00",
+                "timezone": "Europe/Zurich"
+              },
+              "draft": true,
+              "title": "Sternenlicht-Projektor im Detail #Shorts",
+              "madeForKids": false,
+              "type": "short",
+              "privacy": "public"
+            }
+          ]
+        }
+      },
+      "unknowns": [
+        "PUBLISHED state / external publication confirmation",
+        "channel-specific autoPublish for facebookData, tiktokData, pinterestData, threadsData, youtubeData (field not delivered)",
+        "channel eligibility/format gates not represented in delivered fields",
+        "byte-level or perceptual media comparison",
+        "whether each draft will be promoted or approved",
+        "expected Pinterest board interpretation; observed board IDs differ from supplied reference ID"
+      ],
+      "rawWindows": [
+        {
+          "file": "window0.json",
+          "window": [
+            "2026-11-15T01:18:00+01:00",
+            "2026-11-17T01:18:00+01:00"
+          ],
+          "rows": 12,
+          "sha256": "d612c02d9c32d5e6d8ceafcea82af2e704ad1487ef9a624892e148b7482b9f49"
+        },
+        {
+          "file": "window1.json",
+          "window": [
+            "2026-11-17T01:18:00+01:00",
+            "2026-11-19T01:18:00+01:00"
+          ],
+          "rows": 13,
+          "sha256": "03b64cc57ec9252a277a14edbf813c7657bf0cafc38b072adf78f0ec28ce2021"
+        },
+        {
+          "file": "window2.json",
+          "window": [
+            "2026-11-19T01:18:00+01:00",
+            "2026-11-21T01:18:00+01:00"
+          ],
+          "rows": 9,
+          "sha256": "7c3d3fe92c75ceb307db6328e01f622c3904ff8784d4c74669a4397af245b94c"
+        },
+        {
+          "file": "window3.json",
+          "window": [
+            "2026-11-21T01:18:00+01:00",
+            "2026-11-23T00:00:00+01:00"
+          ],
+          "rows": 8,
+          "sha256": "1566216e49806006fb68799ee7550a7a478e9dbf8d7ba36bb4a13a5202cbbfcf"
+        }
+      ],
+      "crossCheckAgainstRootProof": {
+        "dailyMatrixMatchesRoot": true,
+        "perChannelGlobalCountsMatchRoot": true,
+        "rootDuplicateSignalsAllEmpty": true,
+        "independentChecks": {
+          "sameChannelUUID": true,
+          "sameChannelMediaArrays": true,
+          "sameChannelAnyMediaURL": true,
+          "sameChannelTextAndMedia": true
+        }
+      }
+    },
+    "providerRows": [
+      {
+        "id": 420726136,
+        "uuid": "6199136659928140012",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-15T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8649031366919954208.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-10525866850040182559.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-5937764926957888011.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-11054545028309904617.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-715770748360395517.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-6830001153348712071.jpeg"
+        ]
+      },
+      {
+        "id": 420728374,
+        "uuid": "7768651932591999367",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-15T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "POST"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8808613750372457641.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-3732019929199296160.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-12846673326889062375.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-13299759094011764740.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-7529314369443481530.jpeg",
+          "https://static.metricool.com/planner/202611/6227837-file-11578256048113063366.jpeg"
+        ]
+      },
+      {
+        "id": 422280155,
+        "uuid": "-3833193365444016309",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-15T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "POST"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+        ]
+      },
+      {
+        "id": 422280155,
+        "uuid": "-3833193365444016309",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-15T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://static.metricool.com/planner/202610/6227837-file-16715725702288964276.jpeg",
+          "https://static.metricool.com/planner/202610/6227837-file-11100010229931197892.jpeg"
+        ]
+      },
+      {
+        "id": 422295156,
+        "uuid": "-6967517640837021033",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-15T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Plüsch Panda 15 cm · Wichtelgeschenk",
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://static.metricool.com/video/4801419/202611/b28966ba2aed47f1.mp4"
+        ]
+      },
+      {
+        "id": 423622854,
+        "uuid": "6213007717183669914",
+        "network": "pinterest",
+        "date": {
+          "dateTime": "2026-11-15T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "pinterestData",
+        "channelData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Kosmetik-Organizer für den Schminktisch | LuxeStyle",
+          "pinLink": "https://luxestyle.ch/products/bambus-kosmetik-organizer-premium?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=luxe_photo_kosmetik_organizer_20261101",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15347476534464357609.jpeg"
+        ]
+      },
+      {
+        "id": 424392566,
+        "uuid": "-8080777271331700055",
+        "network": "threads",
+        "date": {
+          "dateTime": "2026-11-16T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "threadsData",
+        "channelData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_21e538e2-0bff-4fa8-802d-27418b633347.jpg?v=1794397357"
+        ]
+      },
+      {
+        "id": 424392702,
+        "uuid": "7991040995405613204",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-16T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "POST"
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1.jpg?v=1794397307",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2.jpg?v=1794397314",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3.jpg?v=1794397322"
+        ]
+      },
+      {
+        "id": 424392702,
+        "uuid": "7991040995405613204",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-16T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1.jpg?v=1794397307",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2.jpg?v=1794397314",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3.jpg?v=1794397322"
+        ]
+      },
+      {
+        "id": 424392795,
+        "uuid": "-580082399036486516",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-16T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Weihnachtskugeln beflockt – 9 Stück",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1.jpg?v=1794397333",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2.jpg?v=1794397340",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3.jpg?v=1794397347"
+        ]
+      },
+      {
+        "id": 424393081,
+        "uuid": "-8863891854936750949",
+        "network": "pinterest",
+        "date": {
+          "dateTime": "2026-11-16T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "pinterestData",
+        "channelData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Beflockte Weihnachtskugeln im 9er-Set: Weinrot, Dunkelgrün oder Kaffeefarbe",
+          "pinLink": "https://luxestyle.ch/products/weihnachtskugeln-beflockt-9-stuck-625300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtskugeln-beflockt-9-stuck-625300",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin.png?v=1794397368"
+        ]
+      },
+      {
+        "id": 427969120,
+        "uuid": "8935974072695279179",
+        "network": "threads",
+        "date": {
+          "dateTime": "2026-11-15T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "threadsData",
+        "channelData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ]
+      },
+      {
+        "id": 427969190,
+        "uuid": "4156060813550767248",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": false,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ]
+      },
+      {
+        "id": 427969232,
+        "uuid": "6680239273933357186",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "REEL",
+          "title": "Sternenlicht-Projektor im Detail"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ]
+      },
+      {
+        "id": 423483793,
+        "uuid": "4659816415037836014",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-18T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "REEL",
+          "title": "Knoblauch und Zwiebeln per Druck hacken"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+        ]
+      },
+      {
+        "id": 423483793,
+        "uuid": "4659816415037836014",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-18T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": false,
+          "type": "REEL",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15643246967854019534.mp4"
+        ]
+      },
+      {
+        "id": 423484712,
+        "uuid": "-8339089096074181290",
+        "network": "threads",
+        "date": {
+          "dateTime": "2026-11-18T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "threadsData",
+        "channelData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-10918844586170526210.mp4"
+        ]
+      },
+      {
+        "id": 423484773,
+        "uuid": "-8305910546945982140",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-18T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Knoblauch hacken per Druck",
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-2826380762680141264.mp4"
+        ]
+      },
+      {
+        "id": 423484839,
+        "uuid": "-3731207601091163105",
+        "network": "youtube",
+        "date": {
+          "dateTime": "2026-11-18T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "youtubeData",
+        "channelData": {
+          "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "küchengadget",
+            "knoblauch",
+            "kochen",
+            "schweiz"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-10671900187401818111.mp4"
+        ]
+      },
+      {
+        "id": 424393187,
+        "uuid": "-2055061205905158476",
+        "network": "threads",
+        "date": {
+          "dateTime": "2026-11-17T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "threadsData",
+        "channelData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_b7d0012d-ac66-44b7-b2fb-c2241bf1f06a.jpg?v=1794397437"
+        ]
+      },
+      {
+        "id": 424393289,
+        "uuid": "-326770756211684563",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-17T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Retro Keramik-Kaffeetasse mit Tiermotiv",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_d1b07451-b0b9-4a81-8d8d-b0320b7e39d4.jpg?v=1794397405",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_4444b6f7-a436-4b33-be29-a341d8dbc51d.jpg?v=1794397412",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_293b22f6-d6f6-44ff-b046-74e64d8c35ea.jpg?v=1794397419"
+        ]
+      },
+      {
+        "id": 424393422,
+        "uuid": "8906814597211638530",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-17T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "POST"
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+        ]
+      },
+      {
+        "id": 424393422,
+        "uuid": "8906814597211638530",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-17T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+        ]
+      },
+      {
+        "id": 424393614,
+        "uuid": "9119250214596987223",
+        "network": "pinterest",
+        "date": {
+          "dateTime": "2026-11-17T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "pinterestData",
+        "channelData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Retro-Keramiktasse mit Tiermotiv: Schwalbe oder Schmetterling",
+          "pinLink": "https://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_retro-keramik-kaffeetasse-mit-tiermotiv-621800",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_e17bf436-d4bd-4b11-8300-2e17b5b11b42.png?v=1794397450"
+        ]
+      },
+      {
+        "id": 424393691,
+        "uuid": "-2256568300747601062",
+        "network": "threads",
+        "date": {
+          "dateTime": "2026-11-18T14:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "threadsData",
+        "channelData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_6445e26c-8094-4373-9304-9f483b0acad5.jpg?v=1794397510"
+        ]
+      },
+      {
+        "id": 425725034,
+        "uuid": "5511347900019396585",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-18T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "POST"
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+        ]
+      },
+      {
+        "id": 425725034,
+        "uuid": "5511347900019396585",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-18T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+        ]
+      },
+      {
+        "id": 425725162,
+        "uuid": "-4254912497617780595",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-18T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Weihnachtsstrumpf mit Samt-Optik",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_5f063c5e-dee5-4117-a1b7-abce6b3b9f71.jpg?v=1794397488",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_cffdfa7c-d91a-48ff-9b57-ca3102183d53.jpg?v=1794397492",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_d49ebb5a-d861-445d-ba18-f8e97bbd1e0d.jpg?v=1794397497"
+        ]
+      },
+      {
+        "id": 425725272,
+        "uuid": "-5899965466644493317",
+        "network": "pinterest",
+        "date": {
+          "dateTime": "2026-11-18T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "pinterestData",
+        "channelData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Weihnachtsstrumpf mit Samt-Optik in Rot oder Grün mit goldgelber Quaste",
+          "pinLink": "https://luxestyle.ch/products/weihnachtsstrumpf-mit-samt-optik-639700?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_weihnachtsstrumpf-mit-samt-optik-639700",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_434d7e37-d0a7-4b5d-bc43-4f952858dade.png?v=1794397523"
+        ]
+      },
+      {
+        "id": 427969295,
+        "uuid": "3614365779669041576",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Sternenlicht im Detail",
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ]
+      },
+      {
+        "id": 425725415,
+        "uuid": "2120727659527094958",
+        "network": "threads",
+        "date": {
+          "dateTime": "2026-11-19T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "threadsData",
+        "channelData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fb120a45-22f1-4844-aefd-f6be8ba24795.jpg?v=1794397616"
+        ]
+      },
+      {
+        "id": 425725555,
+        "uuid": "4792908094992761420",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-19T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "POST"
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+        ]
+      },
+      {
+        "id": 425725555,
+        "uuid": "4792908094992761420",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-19T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+        ]
+      },
+      {
+        "id": 425725709,
+        "uuid": "-1560468010126717309",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-19T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "LED-Schminkspiegel, wiederaufladbar & tragbar",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_a328ba01-eaa9-4b63-a89b-e6afc9c921ab.jpg?v=1794397567",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_c2ab9d27-454c-4b45-81ae-57953d61f5e3.jpg?v=1794397578",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_4f8fa066-da06-4efb-a9bb-a86fe0548dca.jpg?v=1794397586",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_4.jpg?v=1794397605"
+        ]
+      },
+      {
+        "id": 425725932,
+        "uuid": "6443070221295305315",
+        "network": "pinterest",
+        "date": {
+          "dateTime": "2026-11-19T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "pinterestData",
+        "channelData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Tragbarer LED-Schminkspiegel: faltbar, 20 LED, drei Farbmodi",
+          "pinLink": "https://luxestyle.ch/products/led-schminkspiegel-wiederaufladbar-tragbar-639500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_led-schminkspiegel-wiederaufladbar-tragbar-639500",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_a06cee9e-c933-4b58-af63-8eb95eccbf13.png?v=1794397635"
+        ]
+      },
+      {
+        "id": 425726070,
+        "uuid": "-6491658134482960242",
+        "network": "threads",
+        "date": {
+          "dateTime": "2026-11-20T14:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "threadsData",
+        "channelData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_379fa65f-be7c-4756-8f4d-46d3d4ab9b12.jpg?v=1794397712"
+        ]
+      },
+      {
+        "id": 425726186,
+        "uuid": "5095221239706765903",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-20T15:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Lichterbaum-Musikbox 10x10x20 cm",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_af91f71b-dcd8-4cc7-bc9b-725d431eb159.jpg?v=1794397686",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_0aa9b38a-f560-4df5-830e-f786d62d91dc.jpg?v=1794397694",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_a5dcac33-e11d-49eb-b2ff-fcd77ae6b94f.jpg?v=1794397701"
+        ]
+      },
+      {
+        "id": 425726329,
+        "uuid": "108318075245381964",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-20T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "POST"
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+        ]
+      },
+      {
+        "id": 425726329,
+        "uuid": "108318075245381964",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-20T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+        ]
+      },
+      {
+        "id": 425726479,
+        "uuid": "-457707186698434580",
+        "network": "pinterest",
+        "date": {
+          "dateTime": "2026-11-20T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "pinterestData",
+        "channelData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Lichterbaum-Musikbox mit bunten Lichtern und rotem Stern, 20 cm hoch",
+          "pinLink": "https://luxestyle.ch/products/lichterbaum-musikbox-10x10x20-cm-604200?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_lichterbaum-musikbox-10x10x20-cm-604200",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_84fbb61d-4b67-44cc-8f46-b81f7788ed75.png?v=1794397723"
+        ]
+      },
+      {
+        "id": 427969354,
+        "uuid": "-7647174116509334899",
+        "network": "youtube",
+        "date": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": true,
+        "globalAutoPublish": false,
+        "channelField": "youtubeData",
+        "channelData": {
+          "title": "Sternenlicht-Projektor im Detail #Shorts",
+          "type": "short",
+          "privacy": "public",
+          "tags": [
+            "sternlicht",
+            "lichtmomente",
+            "luxestyle"
+          ],
+          "madeForKids": false,
+          "isAiGeneratedContent": false
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ]
+      },
+      {
+        "id": 426961960,
+        "uuid": "-325577156053548845",
+        "network": "threads",
+        "date": {
+          "dateTime": "2026-11-21T14:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "threadsData",
+        "channelData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_dd164b90-30e9-4b45-9294-d3d22efe2075.jpg?v=1794397799"
+        ]
+      },
+      {
+        "id": 426962036,
+        "uuid": "4464007380148308511",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-21T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "POST"
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_4fab7970-9b5d-4b50-a6db-b2ae427b77b2.jpg?v=1794397733",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_2159e5b8-0cb4-4ff4-8fc4-0e40d8af6c44.jpg?v=1794397740",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_e6a5748e-b490-42d0-92c5-8a97d398df2a.jpg?v=1794397748",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_b5d8a122-d25b-497c-8333-3eaf2360ba9a.jpg?v=1794397756"
+        ]
+      },
+      {
+        "id": 426962036,
+        "uuid": "4464007380148308511",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-21T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_4fab7970-9b5d-4b50-a6db-b2ae427b77b2.jpg?v=1794397733",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_2159e5b8-0cb4-4ff4-8fc4-0e40d8af6c44.jpg?v=1794397740",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_e6a5748e-b490-42d0-92c5-8a97d398df2a.jpg?v=1794397748",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4_b5d8a122-d25b-497c-8333-3eaf2360ba9a.jpg?v=1794397756"
+        ]
+      },
+      {
+        "id": 426962130,
+        "uuid": "1244897565051602488",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-21T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Schmuckkästchen 3D Holzpuzzle",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_1.jpg?v=1794397766",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_2.jpg?v=1794397773",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_3.jpg?v=1794397781",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_864_4.jpg?v=1794397788"
+        ]
+      },
+      {
+        "id": 426962209,
+        "uuid": "1277216616076757571",
+        "network": "pinterest",
+        "date": {
+          "dateTime": "2026-11-21T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "pinterestData",
+        "channelData": {
+          "boardId": "1111333714239114020",
+          "pinTitle": "Schmuckkästchen als 3D-Holzpuzzle zum Selberbauen: DIY-Geschenkidee aus Holz",
+          "pinLink": "https://luxestyle.ch/products/schmuckkastchen-3d-holzpuzzle-611300?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w1611_schmuckkastchen-3d-holzpuzzle-611300",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_07eb0b8b-650b-45f7-a428-1d44e9f8cf69.png?v=1794397810"
+        ]
+      },
+      {
+        "id": 426962312,
+        "uuid": "7447187506709285656",
+        "network": "threads",
+        "date": {
+          "dateTime": "2026-11-22T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "threadsData",
+        "channelData": {
+          "replyControl": "EVERYONE",
+          "type": "POST",
+          "shareAsInstagramStory": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_9c250021-1144-44f0-8754-aae799863819.jpg?v=1794416156"
+        ]
+      },
+      {
+        "id": 426962393,
+        "uuid": "2057359447521839535",
+        "network": "facebook",
+        "date": {
+          "dateTime": "2026-11-22T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "facebookData",
+        "channelData": {
+          "type": "POST"
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_c826eaba-25ba-4c24-b7d4-7128ba921dc4.jpg?v=1794416132"
+        ]
+      },
+      {
+        "id": 426962393,
+        "uuid": "2057359447521839535",
+        "network": "instagram",
+        "date": {
+          "dateTime": "2026-11-22T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "instagramData",
+        "channelData": {
+          "autoPublish": true,
+          "type": "POST",
+          "showReelOnFeed": true,
+          "isAiGenerated": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_c826eaba-25ba-4c24-b7d4-7128ba921dc4.jpg?v=1794416132"
+        ]
+      },
+      {
+        "id": 427963228,
+        "uuid": "-5766619704983925146",
+        "network": "tiktok",
+        "date": {
+          "dateTime": "2026-11-22T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "tiktokData",
+        "channelData": {
+          "privacyOption": "PUBLIC_TO_EVERYONE",
+          "commercialContentOwnBrand": true,
+          "title": "Christbaumdecke mit goldenen Pailletten-Schneeflocken",
+          "autoAddMusic": true,
+          "photoCoverIndex": 0
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_85d3b77c-b261-4230-9a3f-377da8b64cd8.jpg?v=1794416143"
+        ]
+      },
+      {
+        "id": 427963279,
+        "uuid": "-2010279446251812932",
+        "network": "pinterest",
+        "date": {
+          "dateTime": "2026-11-22T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "status": "PENDING",
+        "globalDraft": false,
+        "globalAutoPublish": true,
+        "channelField": "pinterestData",
+        "channelData": {
+          "boardId": "1111333714239114033",
+          "pinTitle": "Christbaumdecke mit goldenen Pailletten-Schneeflocken, 90 cm",
+          "pinLink": "https://luxestyle.ch/products/christbaumdecke-mit-goldenen-pailletten-schnee-634500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_christbaumdecke-mit-goldenen-pailletten-schnee-634500",
+          "pinNewFormat": true,
+          "isAiGenerated": false,
+          "isAiGeneratedPerson": false
+        },
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_8ac59cdd-b763-4ee3-9013-3e975e192bae.png?v=1794416167"
+        ]
+      }
+    ]
+  },
+  "identity": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "networksData": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "googleAdsData": "7198263241",
+      "tiktokAdsData": "7691398659300179974"
+    },
+    "atUTC": "2026-11-15T00:24:50.005Z"
+  },
+  "pinterestBoardProvenance": {
+    "queuedBoardIds": [
+      "1111333714239114020",
+      "1111333714239114033"
+    ],
+    "olderOwnerReferenceBoard": "1111333714239531706",
+    "historicalVerifiedGiftBoard": {
+      "id": 423622854,
+      "uuid": "6213007717183669914",
+      "plannedAt": "2026-11-15T20:00:00+01:00",
+      "timezone": "Europe/Zurich",
+      "status": "PENDING",
+      "draft": false,
+      "autoPublish": true,
+      "boardId": "1111333714239114020",
+      "boardName": "Geschenkideen Schweiz",
+      "boardOwner": "luxestyleCH",
+      "platformId": null,
+      "publicationUrl": null,
+      "writes": 1,
+      "retries": 0
+    },
+    "historicalVerificationDate": "2026-11-10",
+    "currentAccountBoardEnumeration": "unknown_not_exposed_by_available_Metricool_tools",
+    "interpretation": "Different ID from older reference does not prove wrong account/board. R174 gift-board evidence is dated; no new scheduling or existing-board changes made. Other current board ownership not newly verified."
+  }
+}

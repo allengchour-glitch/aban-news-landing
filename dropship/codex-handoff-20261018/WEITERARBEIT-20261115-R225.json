@@ -1,0 +1,72 @@
+{
+  "revision": 225,
+  "startedAtUTC": "2026-11-15T00:04:34Z",
+  "recordedAtUTC": "2026-11-15T00:36:46.246709+00:00",
+  "dateZurich": "2026-11-15",
+  "trigger": "owner_continue_find_eight_hours_work_check_fix",
+  "actualShopifyMutationCalls": 3,
+  "actualProductsChanged": 2,
+  "shopifyCorrectionDetail": "Lace first SEOInput omitted title, detected native null then explicitly restored original title in second exact write. Shaker one write. All returned userErrors empty; public/native checks passed.",
+  "actualMerchantMutationCalls": 0,
+  "r224DeletesNotRepeated": true,
+  "ownNewSocialPosts": 0,
+  "ownSocialWritesOrDeletes": 0,
+  "themeWrites": 0,
+  "queueReads": {
+    "delegatedSummaryPass": 4,
+    "rootDetailCountercheck": 4,
+    "reason": "The first retained only summary; root preserved all original rows and independently recomputed exact matrix/collisions. Not performance reports."
+  },
+  "queueObjects": 42,
+  "queueChannelStates": 51,
+  "queueGlobalScheduleCoverageDates": "2026-11-15..2026-11-22",
+  "queueGaps": {
+    "instagram": [],
+    "facebook": [],
+    "tiktok": [],
+    "pinterest": [],
+    "threads": [
+      "2026-11-15"
+    ],
+    "youtube": [
+      "2026-11-15",
+      "2026-11-16",
+      "2026-11-17",
+      "2026-11-18",
+      "2026-11-19",
+      "2026-11-20",
+      "2026-11-21",
+      "2026-11-22"
+    ]
+  },
+  "queueCollisionScope": "No same-channel exact UUID/text+media/media-array collision in this retained queue. Media re-encoding/content identity and older history not rechecked; no global no-duplicates claim.",
+  "boundedMerchantPage": {
+    "rows": 12,
+    "morePages": true,
+    "overlayRows": 11,
+    "gunPartsPolicyRows": 1,
+    "catalogCount": "unknown"
+  },
+  "existingGoogleApprovalsObserved": [
+    "gray_station_de_CH_LI_6_contexts",
+    "lace_shirt_de_CH_LI_6_contexts"
+  ],
+  "newMerchantLegalResolution": false,
+  "publicLandingPagesChecked": 4,
+  "themeSourceFilesChecked": 2,
+  "personalizerLiveDesignerObserved": "v6.4.0",
+  "responsiveQA": "unknown_actual_viewport_not_390",
+  "printfulCandidate": "stopped_at_ID_confirm_and_checkpoint_contract_boundary_no_source_changes",
+  "metricsFlowGSCOrderReportsRead": 0,
+  "dailyReadPolicyPreserved": true,
+  "newAutomationOrFrequencyChange": false,
+  "eightHours": "capacity_plan_480_estimated_minutes_only_no_background_service_no_elapsed_eight_hours_claim",
+  "paidRendersInstallsMergeDeployWorkflowStarts": 0,
+  "customerContacts": 0,
+  "discountBudgetShippingFlowDNSChanges": 0,
+  "shippingThresholdsAndAccountDomainPreserved": true,
+  "purchaseWatchEndedPreserved": true,
+  "claudeReceipt": "unknown_no_new_receipt",
+  "cheapSubagents": "three gpt-6-luna read-only/isolated-preparation agents; no measured token/cost saving",
+  "sourceAndShopErrors": "Data/API failures retained as unknown; explicit Google ITEM_NOT_FOUND exact resource scope only. Local checkpoint/QA-parser errors recorded and corrected without blind platform write repetition."
+}

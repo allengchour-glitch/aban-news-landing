@@ -1,0 +1,59 @@
+{
+  "dateZurich": "2026-11-15",
+  "report": "# Public responsive QA stopped at viewport gate\n\nA fresh bounded public fetch confirmed the live product URL and current server-rendered product page for product `15422823465345`, variant `55777979629953`: HTTP 200, title `Keramik-Tasse – Selbst gestalten | LuxeStyle CH`, active page's theme ID `213991391623`, and designer script `lspod-designer-v6-6.4.0.js?v=e7e30bc231e6817f` with the displayed integrity hash. The page source also contains the old theme-local `lspod-designer-v5-safe.js` asset; the page exposes the v6.4.0 designer script as current. Saved HTML SHA256: `5de91bc7a2eea4b73f81d8a906aae6a61432dd52ab0cb994a6765aa9f3bb247e`.\n\nFirecrawl interaction was requested with `scrapeOptions.screenshotOptions.viewport={width:390,height:844}`. Firecrawl reported actual `window.innerWidth=1920`, `window.innerHeight=993`, `visualViewport=1910×993`, and `documentElement.clientWidth=1910`. The 390px viewport therefore failed the user's gate. I stopped immediately: no 375px or desktop follow-up, no editor/print-preview interaction, and no claim about responsive usability. No product mutation, cart, checkout, upload, submit, or order activity occurred. The requested viewport screenshot was not used as evidence because it did not reflect 390×844.\n\nThe interaction result exposed `sessionId` but no `scrapeId`; two best-effort stop calls returned 404. This does not change the viewport result. Machine-readable evidence is in `viewport-390-result.json`; the live public HTML is in `public-product.html`.\n",
+  "viewportResult": {
+    "task": "personalizer-fullscreen-20261029",
+    "targetProductId": "gid://shopify/Product/15422823465345",
+    "publicUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?variant=55777979629953",
+    "publicFetch": {
+      "source": "Python urllib live GET, Chrome user agent, 15s timeout",
+      "httpStatus": 200,
+      "finalUrlUnchanged": true,
+      "pageTitle": "Keramik-Tasse – Selbst gestalten | LuxeStyle CH",
+      "productIdExposed": "15422823465345",
+      "variantId": "55777979629953",
+      "publishedThemeId": "213991391623",
+      "currentDesignerScript": "https://abannews.com/pod/v6/lspod-designer-v6-6.4.0.js?v=e7e30bc231e6817f",
+      "integrity": "sha256-5+MLwjHmgX9w4svYCJ9XyCrV6nwoVYVwkiN5jBatuTA=",
+      "oldThemeAssetAlsoPresent": "//luxestyle.ch/cdn/shop/t/29/assets/lspod-designer-v5-safe.js?v=83768018118847241691794663742",
+      "htmlBytes": 1117256,
+      "htmlSha256": "5de91bc7a2eea4b73f81d8a906aae6a61432dd52ab0cb994a6765aa9f3bb247e"
+    },
+    "responsiveCheck": {
+      "requestedInitialScreenshotViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "actualWindowInnerWidth": 1920,
+      "actualWindowInnerHeight": 993,
+      "visualViewport": {
+        "width": 1910,
+        "height": 993,
+        "scale": 1
+      },
+      "documentElementClientWidth": 1910,
+      "documentElementScrollWidth": 1910,
+      "currentUrlUnchanged": true,
+      "ctaVisible": true,
+      "currentDesignerVersionReportedByInteract": "v6.4.0",
+      "result": "STOPPED; viewport request ignored/deviated; no 375px or desktop follow-up and no editor interaction"
+    },
+    "interact": {
+      "conversationId": "9692371c-d763-80a3-a19d-681a557462be",
+      "sessionId": "[redacted ephemeral browser control]",
+      "sessionStopAttempts": [
+        {
+          "providedId": "sessionId",
+          "error": "404"
+        },
+        {
+          "providedId": "prior scrape metadata scrapeId",
+          "error": "404"
+        }
+      ],
+      "noProductMutationCartCheckoutUploadOrSubmit": true
+    }
+  },
+  "rootInterpretation": "Current exact public canary serves v6.4.0. This supersedes the historical v6.3.1 candidate for any dependent rollout decision; do not execute the R148 full apply from stale memory. Requested390x844 was not actual (1920x993), so no responsive/editor/print-preview GO. No page/Shopify/cart/checkout/upload change. Session stop was not confirmed (404, no valid scrapeId returned).",
+  "ownProductOrWorkflowWrites": 0
+}

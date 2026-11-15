@@ -1,0 +1,57 @@
+{
+  "sampleSize": 4,
+  "pages": [
+    {
+      "url": "https://luxestyle.ch/collections/beauty-selfcare",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/collections/beauty-selfcare",
+      "title": "Beauty & Self-Care kaufen | LuxeStyle Schweiz",
+      "h1": [
+        "Beauty & Self-Care"
+      ],
+      "canonical": "https://luxestyle.ch/collections/beauty-selfcare",
+      "metaDescription": "Beauty & Self-Care bei LuxeStyle: Pflege, Zubehör und Kosmetik-Organizer für deine Routine entdecken. Varianten und Anwendung direkt am Artikel prüfen.",
+      "responseWasTruncated": false
+    },
+    {
+      "url": "https://luxestyle.ch/collections/damen-mode",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/collections/damen-mode",
+      "title": "Damenmode: Blusen, Kleider, Schuhe & Taschen | LuxeStyle",
+      "h1": [
+        "Damen-Mode"
+      ],
+      "canonical": "https://luxestyle.ch/collections/damen-mode",
+      "metaDescription": "Damenmode bei LuxeStyle: Kleider, Blusen, Hosen, Röcke, Strick und Schuhe entdecken. Farben, Grössen und Ausführungen direkt am Artikel vergleichen.",
+      "responseWasTruncated": false
+    },
+    {
+      "url": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+      "title": "Herrenuhren & Schmuck kaufen | LuxeStyle Schweiz",
+      "h1": [
+        "Herrenuhren & Schmuck"
+      ],
+      "canonical": "https://luxestyle.ch/collections/herrenuhren-schmuck",
+      "metaDescription": "Herrenuhren & Schmuck online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite.",
+      "responseWasTruncated": false
+    },
+    {
+      "url": "https://luxestyle.ch/collections/baby-kleinkind",
+      "httpStatus": 200,
+      "finalUrl": "https://luxestyle.ch/collections/baby-kleinkind",
+      "title": "Baby & Kleinkind kaufen | LuxeStyle Schweiz",
+      "h1": [
+        "Baby & Kleinkind"
+      ],
+      "canonical": "https://luxestyle.ch/collections/baby-kleinkind",
+      "metaDescription": "Baby & Kleinkind: Spielzeug, Plüsch, Body, Lätzchen, Pflege & Ausstattung für die Kleinsten. Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe.",
+      "responseWasTruncated": false
+    }
+  ],
+  "themeSourceReview": "# R225 read-only MAIN theme source check\n\n## Theme identity and collection template\n\nFresh Shopify Admin GraphQL read reports MAIN theme ID `gid://shopify/OnlineStoreTheme/213991391623`, name `LuxeStyle – SEO 14.11.2026`, role `MAIN`, updated `2026-11-14T15:08:04Z`.\n\nFresh collection read for Beauty & Self-Care (`gid://shopify/Collection/687698313601`) returned `templateSuffix: null`, native image URL `.../4001638579995_R00.jpg?v=1794693427`, and native `altText: Grüne Pipettenflasche mit rotem Etikett auf weissem Hintergrund`.\n\nOn this exact MAIN theme, `templates/collection.json` assigns the collection's `lux_hero` custom-liquid section before `main`. The saved liquid comment describes the hero as a strip made from the collection's first product photos (with a separate static image only for `schuhe`). Its code chooses up to four `collection.products` featured images; each `<img>` has `alt=\"\"`, and the containing `.lx-hero__bilder` has `aria-hidden=\"true\"`. The hero separately renders the collection title and description. The standard `sections/main-collection.liquid` renders the product grid from `collection.products` and contains no `collection.image` reference.\n\n## Finding\n\nThe collection image's absence from body `<img>` markup is intentional in the current collection design: the hero is built from product photos, while the native collection image is not part of the visible hero or grid. Its alt text is still stored natively and the image is exposed as `og:image` metadata. This does not establish a template bug. Do not add a collection-image hero solely to surface its alt text. No code change is indicated by this source check.\n\n## Read-only boundary\n\nInspected only `templates/collection.json` and its referenced `sections/main-collection.liquid` on the freshly verified MAIN theme. Shopify reads only; `theme_bash` returned no pending edits. No theme commit, publish, product or collection mutation, GSC/performance read, or index request.\n",
+  "finding": "Native collection image is intentionally not rendered in body; product-photo hero is decorative/aria-hidden. No new theme fix justified.",
+  "ownThemeWrites": 0,
+  "newGSCOrIndexRequests": 0
+}

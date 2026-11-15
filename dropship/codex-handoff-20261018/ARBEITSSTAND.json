@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 224,
-  "updatedAt": "2026-11-15T00:00:30.688613+00:00",
+  "revision": 225,
+  "updatedAt": "2026-11-15T00:36:46.246709+00:00",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -578,12 +578,12 @@
       "id": "product-attribute-completeness",
       "priority": 5,
       "priorityKind": "SETZUNG",
-      "state": "r205_projector_admin_active_policy_tracking_verified_copy_draft_unchanged",
+      "state": "r225_two_exact_cj_bound_product_text_corrections_live",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
-      "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R205_OWNER_RECONNECTED_IDENTITY_VERIFIED_TWO_EXACT_SHOP_COLLECTION_RELEASES_AND_ADMIN_GATES",
-      "lastEvidence": "FrischerLuxeStyle-Adminread bestätigtProjektorACTIVE/12Tags/7Varianten, alletracked=false/policyCONTINUE/availableForSale=true. A68122445283719/CJSN139239101AZ/CHF34.90. HTMLhash wieR201, genau2Ersetzungen reproduzieren Entwurfhash/restlicheBytes unverändert. KeineProduktänderung;0Bestand kein Ausverkaufsnachweis.",
-      "nextAllowedStep": "R201-Zweistellendiff zur konkreten Freigabe erhalten; unmittelbar vor Umsetzung neue Admin-Vorherwerte/Identität lesen. Keine unbewiesenen Zubehör-/Material-/Lieferzeitangaben. AlteCJPreisaufgabe und andere Produktentwürfe erhalten.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+      "lastEvidence": "Zwei Produkte mit exakten CJ-SKUs textlich korrigiert: ShirtFarbe/Doppelgrösse/SEO; MilchshakerDreivariantenvergleich/Packumfang/neutraleSEO. DreiShopwritesinklusivegezielterSEOTitelwiederherstellung; native/öffentlicheQA passend, Preise/Varianten/Medien/Tags unverändert. KeineglobaleAttributquote.",
+      "nextAllowedStep": "Belegte zweiTextkorrekturen erhalten. Vor weiteren gezielten Produkttextänderungen alle Quellen-/Varianten-/Schutzfelder frisch lesen und konkreten Diff prüfen. Bei SEOInput immer beidefrischenSEOFelder mitsenden und zurücklesen, da ein weggelassenes Mitglied hiergeleert wurde. Keine fehlenden Massen/Materialien/Leistungswerte ergänzen.",
       "blockers": [
         "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
         "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
@@ -1135,6 +1135,20 @@
           "sha256": "1a8d3aad544f23ac40251529c9a3b89ec12d99d38ff254821a7e07eae0feee6e",
           "gitBlobSha": "5e1bb86fe19c5cca816a3fbea501c5f951bc0d21",
           "readAt": "2026-11-14T11:37:14.597405+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -1953,6 +1967,66 @@
               "gitBlobSha": "5e1bb86fe19c5cca816a3fbea501c5f951bc0d21"
             }
           ]
+        },
+        {
+          "at": "2026-11-15T00:36:46.246709+00:00",
+          "sourceRevision": 224,
+          "previousTaskState": {
+            "state": "r205_projector_admin_active_policy_tracking_verified_copy_draft_unchanged",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R205_OWNER_RECONNECTED_IDENTITY_VERIFIED_TWO_EXACT_SHOP_COLLECTION_RELEASES_AND_ADMIN_GATES",
+            "lastEvidence": "FrischerLuxeStyle-Adminread bestätigtProjektorACTIVE/12Tags/7Varianten, alletracked=false/policyCONTINUE/availableForSale=true. A68122445283719/CJSN139239101AZ/CHF34.90. HTMLhash wieR201, genau2Ersetzungen reproduzieren Entwurfhash/restlicheBytes unverändert. KeineProduktänderung;0Bestand kein Ausverkaufsnachweis.",
+            "nextAllowedStep": "R201-Zweistellendiff zur konkreten Freigabe erhalten; unmittelbar vor Umsetzung neue Admin-Vorherwerte/Identität lesen. Keine unbewiesenen Zubehör-/Material-/Lieferzeitangaben. AlteCJPreisaufgabe und andere Produktentwürfe erhalten.",
+            "blockers": [
+              "Exakte Lieferanten-/Modellbelege für vier ausgewählte LX-Produkte weiter fehlend; keine erfundenen Attribute",
+              "Gemeinsamer dauerhafter Ledgerpfad, begrenzte Erstinitialisierung und Ausgangshistorie vor echtem Lauf belegen; kein automatisches Neuanlegen oder Zurücksetzen",
+              "Dokumentierte fachliche Quellen-Altersregel und frisch bestätigte konkrete Eingaben fehlen; keine Standard-TTL gesetzt",
+              "Native Runtime-Credentials/App-Grant und genaue unterstützte Antwortversion nicht im echten Runner belegt; Connector-Lesezugriff ersetzt dies nicht",
+              "Vollständige CI/Node22 weiterhin an bestehender Umweltgrenze unbestätigt; keine produktive Integration",
+              "Schneestiefel-Material/Fusslängen und Originalzuordnung der vier LX-Produkte weiterhin offen",
+              "Aktuelle globale Qualitätsquote mangels vollständiger Attribut-/Varianten-/Quellenabdeckung unbekannt; Vormittagszählung ist kein Qualitätsnachweis",
+              "R42 Leinwandset: PS/Kunststoff versus Holz und30×40 versus40×60 widersprüchlich; genaue CJ-SKU-Spezifikation fehlt. Einzelbild:80×160, Druckverfahren/Gewicht und tatsächlicher Rahmenumfang nicht unabhängig belegt. Motivfoto ersetzt keine Material-/Massquelle.",
+              "R65: Farb-Motivtext nur für Typ A bildlich passend, Typ B/C anders. Exakter neutraler Body-/SEO-Diff noch nicht genehmigt oder angewendet. Alte Variante/SKU aus R42 ist keine heutige Lieferantenbindung; heutige sechs CJJT-Ausführungen separat belegen.",
+              "R81: Historischer Export enthält keine vollständigen aktuellen Varianten-/Inventory-/Storefrontdaten; 56’630 ist keine aktuelle Qualitätsquote.",
+              "R81: material.mjs besteht Basistests, aber nur 11/23 zusätzliche Konflikttests; Live-Materialnachträge sind gesperrt.",
+              "R82: Die 56’630-ID-Queue basiert auf einem historischen ACTIVE-Export; aktuelle Liveabdeckung pro Produkt bleibt vor jedem Write erforderlich.",
+              "R82: Beim L-Modell sind «Modell: Taschen/Schachtel» sowie englische Tiermaterialtexte in Bildern ohne SKU-Quelle beziehungsweise Bearbeitungsrechte offen.",
+              "R82: Vorhandene Helfer reichen nicht für allgemeine Mehrfeld-Livebatches; exakte Allowlist, Konfliktprüfung, kein Mutation-Retry und vollständiger Readback sind Pflicht.",
+              "R83: Für die fünf P0-Produkte fehlt lokal jede unabhängige SKU-spezifische Lieferantenquelle; Storefront und historische Merchant-Dateien sind keine Spezifikations- oder Rechtebelege.",
+              "R83: Alle fünf P0-Produkte tragen rueckhol-0907 und sind gemäss aktueller Inhabervorgabe für neue Socialausspielung blockiert.",
+              "R84: Seifenspender15483793244545 bleibt wegen gemischter Gerätebilder, Einzel-/Mehrstückbindung, Akku-/4×AAA-Widerspruch und fehlender Varianten-Medienbindung BLOCKED_NO_WRITE.",
+              "R84: Alkoholmeter15512184586625 bleibt wegen unbelegter Skalen, Messbereiche, Setbestandteile und SKU-Zuordnung BLOCKED_NO_WRITE.",
+              "R94: Beide alten Handles enthalten widersprüchliche historische Begriffe; Änderung nur mit frischer Redirect-/Canonical-/Historiengegenprobe.",
+              "R94: Produkt16611936010631 trägt weiterhin Tag decke und eine allgemeine Tierbekleidungs-Kategorie; Collection-/Leaf-Auswirkungen vor getrenntem Write prüfen.",
+              "R95: Beide alten Handles enthalten historische Begriffe; Änderung nur mit frischer Redirect-/Canonical-Gegenprobe.",
+              "R95: Produkt15450837188993 trägt rueckhol-0907; neue Social-Ausspielung bleibt blockiert.",
+              "R95: Bilddarstellungen von Trommeln belegen keinen zugesicherten Lieferumfang; Lieferumfang bleibt quellenabhängig.",
+              "R96: Produkt16607464391047 hat weiterhin Produkttyp Spielzeug & Spiele; vor einem Strukturwrite Smart-Collection-, Template- und Kategorieseitenwirkungen frisch prüfen.",
+              "R96: Produkt16611664888199 zeigt ungebundene schwarze, beige und abweichende blaue Galeriebilder; keine Löschung oder neue Variantenbindung ohne exakte SKU-/Ausführungsquelle.",
+              "R96: Die Handles von Produkt16606106255751 und16611664888199 enthalten sachlich falsche Kissenbezug- beziehungsweise Studenten-/Wasserabweisend-Begriffe; Änderung nur in getrenntem Redirect-/Canonical-Lauf. Der Haustierpullover-Handle bleibt passend.",
+              "R97: Die historischen Handles von Produkt16606107500935,16650219651463 und15524856496513 bleiben unverändert; Änderung nur in getrenntem Redirect-/Canonical-Lauf.",
+              "R97: Aktuelle Taxonomiekategorien blieben unverändert; Collection-, Template- und Kategorieseitenwirkungen vor einem Strukturwrite frisch prüfen.",
+              "R97: Beim Strickoberteil15524856496513 ist eine dunkle Galerieansicht keine auswählbare aktuelle Farbe; doppelte Variantenbilder und Medienbindungen ohne SKU-/Ausführungsquelle weder löschen noch ändern.",
+              "R99: Die historischen Handles von Produkt15448913281409,15493835751809 und15493851480449 enthalten Leder-, Samt-/Stickerei- beziehungsweise Harzbegriffe; Änderung nur in getrenntem Redirect-/Canonical-Lauf.",
+              "R99: Rucksack-Sortiertags enthalten weiter Leder-/Herrenbegriffe; Kissenbezug und Armband behalten geschützte Google-Shopping-Materialmetafelder. Vor Struktur-/Feedwrite Collection-, Merchant- und Rankingwirkung frisch prüfen.",
+              "R99: Alle drei Produkte tragen rueckhol-0907; neue Social-Ausspielung bleibt blockiert.",
+              "R100: 27 eindeutig zuordenbare CSV-Produkte benötigen noch eine aktuelle produktgenaue Alters-/Artikel-/GTIN-Quelle; CSV selbst liefert keinen Alterswert.",
+              "R100: 28 als fr markierte Zeilen enthalten deutschen Text; Feed-/Sprachursache und zulässige Übersetzungsquelle sind unbekannt.",
+              "R100: Kandidat15470033633665 blieb wegen HTTP404 der vermuteten Herstellerseite ohne Write; eine unbekannte Merchant-ID ist nicht auf Shopify abgebildet.",
+              "R104: Sieben R103-Overlay-SKUs CJSD108550101AZ, CJ-CJYD188109128BY, CJYD242312502BY, CJ-CJJT163260416PK, CJSY114580804DW, CJ-CJJT149562611KP und CJ-CJJT149562613MN bleiben mangels exakter CJ-Varianten-/Farb-/Mengen-/Medienbindung BLOCKED_NO_WRITE.",
+              "R105: Für die Produkte15500282003841,16638316020103 und16610538324359 fehlt im vorhandenen Repo/Ledger eine exakte CJ-Lieferantenquelle; Material-, Gewichts-, Passform-, Schutz- und Lieferclaims dürfen nicht ergänzt werden.",
+              "R105: Die Handles beige-maxi-kleid-600600 und indoor-fitness-schuhe-fur-manner-weiss-black-g-623100 enthalten historische falsche Farbwörter; Änderung nur in einem getrennten Redirect-/Canonical-sicheren Lauf.",
+              "R106: Produkt16610538324359 behält den historischen Midi-Handle und Tag sort-damen-kleider-midi; Änderung erst nach getrennter Redirect-, Canonical-, Collection- und Rankinggegenprobe.",
+              "R106: Für Produkt16610538324359 fehlt eine exakte CJ-Lieferantenquelle; Material, Gewicht, Passform und Lieferzeit bleiben ohne Nachtrag.",
+              "R107: Pumps behalten historischen Zehenschutz-Handle, Tag such-sicherheitsschuhe und Taxonomie Ballerinas; Änderung nur nach Redirect-, Canonical-, Collection- und Merchant-Gegenprobe.",
+              "R107: Fünf-Zehen-Schuhe behalten historischen Beige/Grün/Fünf-Finger-Handle und Produkttyp Herrenschuhe; Änderung nur nach getrennter Strukturgegenprobe.",
+              "R107 coordination: Kein gemeinsamer Claude-Live-Lock oder bestätigter Claude-Receipt; Remote-Heads und Shopify updatedAt vor R108 erneut lesen.",
+              "Projektor: auswahl-offen; keine aktuelle Zielvariante, kein Motivset und keine gefilmte physische Einheit gebunden.",
+              "Projektor- und Musikrechte sowie professionelle native Hochkantquellen fehlen.",
+              "R169: Futterspender hat kein echtes Produktvideo und keine nachgewiesenen kommerziellen Bildbearbeitungs-/Werberechte für Social.",
+              "R173: Claim-sicherer Futterspenderstand ist live; künftige Paralleländerungen bleiben ohne frischen updatedAt-/Schutzfelddiff unbekannt und dürfen nicht blind überschrieben werden."
+            ]
+          }
         }
       ],
       "additionalProductCleanups": [
@@ -2922,18 +2996,14 @@
       "id": "merchant-overlay-gray-15447560978817",
       "priority": 10,
       "priorityKind": "SETZUNG",
-      "state": "r202_gray_single_cj_source_four_images_unverified_candidate_no_write",
+      "state": "r225_existing_merchant_image_approval_and_source_confirmed_no_own_media_write",
       "title": "Graues Ladestationsbild ohne Zusatztext prüfen",
-      "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R202_OWNER_CONTINUATION_READONLY_DELIVERY_CJ_MERCHANT_SOURCE_AND_REVIEW_TOOL",
-      "lastEvidence": "Ein aktueller CJ-Read bestätigt CJSJ290134301AZ/Gray-Single. Vier Originalquellen geprüft. Bild4 zeigt ein Gerät ohne zusätzlichen Werbetext; Farbbindung/Rechte offen.13:17 ist Telefonbildschirm,DeepSpaceGray separater Text; kein genauer Google-Trigger behauptet. Rootbilder1/4 gegengeprüft. Kein aktueller Shopstatus/Preis oder Googleimage_link bestätigt, keine Ersetzung.",
-      "nextAllowedStep": "Exakte Merchant-Primärquelle/image_link und eine neutrale echte Gray-Single-Aufnahme mit Farbe/SKU und kommerziellen Rechten sichern. Kein Silberersatz, keine Retusche oder erfundene Zubehörmenge; vor späterem gezieltem Write korrekte Shopidentität/Variantenread.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+      "lastEvidence": "Exaktes deutsches Gray-Angebot ausAPI10667445201 führt bereits dastextfreieHiggsfield-Bild undkeineitemLevelIssues; CH/LI in6geliefertenKontextenapproved. Produkt/VarianteACTIVE/CHF196.90/kaufbar, trackedfalse/CONTINUE. KeineeigeneBild-/Feedänderung; Rechte nichtneu bewiesen.",
+      "nextAllowedStep": "Keine erneute Bild-/Feedkorrektur ohne neuen konkreten Befund. Vor jeder neuen Medien-/Socialverwendung Rechte/Farbtreue/Produkt-/Tagprüfung erneut belegen; rueckhol-0907 bleibt Socialsperre. Vorhandene Googlefreigabe ist kein Rechtenachweis.",
       "blockers": [
-        "Brauchbare graue Bildquelle und Rechte nicht belegt",
-        "Tatsächliche Feed-Bildroute offen",
-        "R141: Für die drei exakt geprüften Varianten existiert kein passendes overlayfreies Ersatzbild mit belegten kommerziellen Rechten.",
-        "R141: Tatsächlich eingereichte image_link-URLs und aktive Merchant-Source bleiben für diese Offers unbekannt.",
-        "R141: Aktuelle12er-Teilmessung und historischer9er-Scope haben verschiedene Abgrenzungen und dürfen nicht addiert werden."
+        "Neue kommerzielle Medienrechte/Farbabnahme heute nicht unabhängig geprüft; Googleapproval ersetzt diese nicht. rueckhol-0907 sperrt neue Socialausspielung."
       ],
       "acceptance": [
         "Modell, Farbe, Form und Variantenmitgliedschaft nachgewiesen",
@@ -2962,6 +3032,20 @@
           "sha256": "1f0371b31aec1bd4d64ab6011157fb7698135dfef5af45fe5a8ab9f354578aba",
           "gitBlobSha": "4efb8b86bdaa860e2efa0e34d798c0d4e8a6b103",
           "readAt": "2026-11-14T10:30:10.538871+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3014,6 +3098,24 @@
               "gitBlobSha": "4efb8b86bdaa860e2efa0e34d798c0d4e8a6b103"
             }
           ]
+        },
+        {
+          "at": "2026-11-15T00:36:46.246709+00:00",
+          "sourceRevision": 224,
+          "previousTaskState": {
+            "state": "r202_gray_single_cj_source_four_images_unverified_candidate_no_write",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R202_OWNER_CONTINUATION_READONLY_DELIVERY_CJ_MERCHANT_SOURCE_AND_REVIEW_TOOL",
+            "lastEvidence": "Ein aktueller CJ-Read bestätigt CJSJ290134301AZ/Gray-Single. Vier Originalquellen geprüft. Bild4 zeigt ein Gerät ohne zusätzlichen Werbetext; Farbbindung/Rechte offen.13:17 ist Telefonbildschirm,DeepSpaceGray separater Text; kein genauer Google-Trigger behauptet. Rootbilder1/4 gegengeprüft. Kein aktueller Shopstatus/Preis oder Googleimage_link bestätigt, keine Ersetzung.",
+            "nextAllowedStep": "Exakte Merchant-Primärquelle/image_link und eine neutrale echte Gray-Single-Aufnahme mit Farbe/SKU und kommerziellen Rechten sichern. Kein Silberersatz, keine Retusche oder erfundene Zubehörmenge; vor späterem gezieltem Write korrekte Shopidentität/Variantenread.",
+            "blockers": [
+              "Brauchbare graue Bildquelle und Rechte nicht belegt",
+              "Tatsächliche Feed-Bildroute offen",
+              "R141: Für die drei exakt geprüften Varianten existiert kein passendes overlayfreies Ersatzbild mit belegten kommerziellen Rechten.",
+              "R141: Tatsächlich eingereichte image_link-URLs und aktive Merchant-Source bleiben für diese Offers unbekannt.",
+              "R141: Aktuelle12er-Teilmessung und historischer9er-Scope haben verschiedene Abgrenzungen und dürfen nicht addiert werden."
+            ]
+          }
         }
       ],
       "run141": {
@@ -3049,14 +3151,14 @@
       "id": "merchant-url-15448020582785",
       "priority": 20,
       "priorityKind": "SETZUNG",
-      "state": "offen",
+      "state": "r225_existing_google_approval_link_verified_and_native_copy_corrected",
       "title": "Frühere Google-Erreichbarkeitsmeldung abgleichen",
-      "lastEvidenceDate": "2026-10-29",
-      "belegArt": "GEMESSEN",
-      "lastEvidence": "Historischer Vorbefund: Aktuelle Shopify-URL HTTP 200; eingereichter Google-Link fehlt im Export. Neuer enger API-Read auf Item shopify_ZZ_15448020582785_55873968701825 mit entdeckten Link-/Canonical-/Quellenfeldern endete mit MCP -32603 request timed out. Kein URL-/Quellenbeleg, kein Retry. Zwanzig historische CSV-Zeilen in zehn Kontexten enthalten keinen Crawl-HTTP-Code; der Timeout ist keine leere Datenmenge oder 404.",
-      "nextAllowedStep": "In authentifiziertem Merchant-Einzelartikel genau eingereichten Link, aktive Datenquelle und Crawlfehler lesen; aktuelle Zielseite/Canonical dagegen prüfen. Kein geratener URL-Write und keine blinde Wiederholung des Timeout-Requests.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+      "lastEvidence": "Exaktes deutsches Angebot ausAPI10667445201/CHF18.90 aktuellCH/LIin6Kontextenapproved/keineIssues. TatsächlicherGoogleLinkHTTP200/Canonicalpassend und aktuelleVarianteLgebunden;historischerURLFehlerheutenichtvorhanden. NativeShirttexte zusätzlichwieR225korrigiert;keineMerchantURLÄnderung.",
+      "nextAllowedStep": "BestehendenLink/HandleundFreigabeerhalten;keinenURL-/QuellenwriteohnenenaktuellenbelegtenFehler. NativeShirtkorrekturistumgesetzt,keinerneuterSchreibbedarf. WeitereMerchantÜbernahme/GoogleCrawldatengesondertlesen,nichtausShopifyWriteableiten.",
       "blockers": [
-        "Merchant-Ziel-URL und Googlebot-Nachweis fehlen"
+        "Historischer Linkfehler ist aktuell nicht reproduziert; spätere Google-/Feedübernahme der nativen Textkorrektur noch nicht geprüft."
       ],
       "acceptance": [
         "Tatsächlich eingereichte URL nachgewiesen",
@@ -3077,6 +3179,20 @@
           "path": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-BELEGE-20261029.json",
           "gitBlobSha": "62963fb29c7fbdb8c6afcf233851df93fec0aeaa",
           "readAt": "2026-10-29T08:30:18Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3090,7 +3206,23 @@
         "result": "unknown_timeout_-32603",
         "retries": 0,
         "report": "dropship/codex-handoff-20261018/MERCHANT-CONSOLE-20261029.md"
-      }
+      },
+      "evidenceHistory": [
+        {
+          "at": "2026-11-15T00:36:46.246709+00:00",
+          "sourceRevision": 224,
+          "previousTaskState": {
+            "state": "offen",
+            "lastEvidenceDate": "2026-10-29",
+            "belegArt": "GEMESSEN",
+            "lastEvidence": "Historischer Vorbefund: Aktuelle Shopify-URL HTTP 200; eingereichter Google-Link fehlt im Export. Neuer enger API-Read auf Item shopify_ZZ_15448020582785_55873968701825 mit entdeckten Link-/Canonical-/Quellenfeldern endete mit MCP -32603 request timed out. Kein URL-/Quellenbeleg, kein Retry. Zwanzig historische CSV-Zeilen in zehn Kontexten enthalten keinen Crawl-HTTP-Code; der Timeout ist keine leere Datenmenge oder 404.",
+            "nextAllowedStep": "In authentifiziertem Merchant-Einzelartikel genau eingereichten Link, aktive Datenquelle und Crawlfehler lesen; aktuelle Zielseite/Canonical dagegen prüfen. Kein geratener URL-Write und keine blinde Wiederholung des Timeout-Requests.",
+            "blockers": [
+              "Merchant-Ziel-URL und Googlebot-Nachweis fehlen"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "schema-hammock-15450856292737",
@@ -3414,15 +3546,15 @@
       "id": "merchant-local-15523818045825",
       "priority": 50,
       "priorityKind": "SETZUNG",
-      "state": "blockiert",
+      "state": "r225_native_variant_copy_corrected_old_merchant_legal_issue_unresolved",
       "title": "Genaue lokale Anforderung beim Milchshaker klären",
-      "lastEvidenceDate": "2026-10-28",
-      "belegArt": "QUELLE",
-      "lastEvidence": "Generische Klasse Local Requirements belegt keine konkrete Stecker- oder Rechtsursache. Produktbeschreibung ist kein unabhängiger Funktionsnachweis.",
-      "nextAllowedStep": "Konkreten Merchant-Fehlertext und exaktes Liefermodell samt Netzteil-/Funktionsunterlagen lesen; belegte Faktenmatrix vorbereiten.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+      "lastEvidence": "Aktuelle3CJYD2104861-SKUs/Varianten/29.90gebunden. NativeProdukttextebelegtkorrigiert;alteMerchantVariante56215831413121weiterLocalRequirements/disapprovedCHLI6Kontexte.3aktuelleZZ/de/CHF-RessourcenGoogleITEM_NOT_FOUND,keinBelegfürGesamtabwesenheit. CJBeschreibungkeineSicherheits-/Konformitätsunterlage.",
+      "nextAllowedStep": "NativeTextkorrekturerhalten. Modell-/SicherheitsunterlagenundtatsächlicheGoogleEinzelbegründungbeibringen,danachaktuelleFeed-/Variantenzuordnungprüfen. KeineErsatz-NeuangebotezumUmgehenderAblehnung,keinepauschaleKanalaktivierungoderunbelegteNetzteil-/Funktionsbehauptung.",
       "blockers": [
-        "Exakter Richtlinienhinweis fehlt",
-        "Modell-, Strom- und Funktionsbelege fehlen"
+        "Exakte Modell-/Sicherheitsunterlagen und konkrete GoogleEinzelursache fehlen.",
+        "Aktuelle Varianten nicht unter den drei geprüften de/CHF/ZZ-Ressourcen; andereFeed-/Sprachschemen nicht vollständig geprüft."
       ],
       "acceptance": [
         "Ursache anhand tatsächlicher Google-Meldung und Modellbeleg eingegrenzt",
@@ -3433,6 +3565,20 @@
           "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-ABGLEICH-20261028.md",
           "gitBlobSha": "f11aa5e23ab03a0a5f4c1f6524136526f43b15c8",
           "readAt": "2026-10-28T22:52:28.185Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -3440,18 +3586,35 @@
       "product": {
         "productId": "15523818045825",
         "variantId": "56215831413121"
-      }
+      },
+      "evidenceHistory": [
+        {
+          "at": "2026-11-15T00:36:46.246709+00:00",
+          "sourceRevision": 224,
+          "previousTaskState": {
+            "state": "blockiert",
+            "lastEvidenceDate": "2026-10-28",
+            "belegArt": "QUELLE",
+            "lastEvidence": "Generische Klasse Local Requirements belegt keine konkrete Stecker- oder Rechtsursache. Produktbeschreibung ist kein unabhängiger Funktionsnachweis.",
+            "nextAllowedStep": "Konkreten Merchant-Fehlertext und exaktes Liefermodell samt Netzteil-/Funktionsunterlagen lesen; belegte Faktenmatrix vorbereiten.",
+            "blockers": [
+              "Exakter Richtlinienhinweis fehlt",
+              "Modell-, Strom- und Funktionsbelege fehlen"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r224_two_approved_orphan_merchant_deletes_confirmed_absent",
+      "state": "r225_bounded_product_merchant_seo_queue_source_work_and_eight_hour_packet",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-15",
-      "belegArt": "EXPLICIT_OWNER_APPROVAL_TWO_DELETES_GOOGLE_NOTFOUND_WITH_LIVE_CONTROL",
-      "lastEvidence": "Nach ausdrücklicher Paarbestätigung zwei alte deutsche Kinderuhr-Merchant-Angebote aus API10667445201 gelöscht. Beide exakten Google-Ressourcen frisch404/ITEM_NOT_FOUND, bekanntes lebendes Angebot derselbenQuelle alsAuth-/Quellenkontrolle lesbar. Shopify-DRAFT-Produkte nativ unverändert. ZweiWrites/0Retries, keineQuelleoderShopprodukteentfernt. Datum15.11.Zürich; keineTagesreports gelesen.",
-      "nextAllowedStep": "Die konkrete Paarfreigabe liegt vor und beide Löschungen sind abgeschlossen; nicht erneut um dieselbe Freigabe bitten und keine blinden Wiederholungen. Bei späterer Wiederaufnahme exakt dieselben IDs/Quelle/Shopzustände frisch lesen und verursachenden Sync prüfen, bevor ein weiterer Write erwogen wird. Shopify-DRAFT-Produkte erhalten. AUTOFEED-Workout bleibt an legitime native Einzelartikel-Editormethode gebunden; Mengenangabe nur mit belegtem Nettoinhalt, FR-Sprachentwurf nur mit konsistenter Storefront-/Merchant-Gegenprobe.",
+      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+      "lastEvidence": "ZweiShopprodukttextemit3Writeslivegeprüft,12erMerchantstichprobe/alteEinzelfälleund4SEOLandeseiten/2Themequelldateiengeprüft.42QueueobjektemitTagesmatrixundQuellfeldernbelegt. PrintfulSemantikgrenzeundv6.4.0/MobileQAblockerkonkretisiert. AchtStundenKapazitätsplan,nichtachtStundenAusführung. R224Freigabeabgeschlossen/Historieerhalten.",
+      "nextAllowedStep": "R225AchtStundenpaketnachVoraussetzungenfortsetzen,blockierteSchrittestoppenundunabhängigenRestbearbeiten. KeineEndlosschleifen/zusätzlichenLäufe. Bestehende08/14/19Zeitenerhalten;keineTagesreportsnurfürProtokolloderabgeschlosseneKaufwatch. R224Paarfreigabenichterneutanfragen;ClaudeEmpfangnurmitQuittungbehaupten.",
       "blockers": [
         "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
         "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
@@ -4366,6 +4529,20 @@
           "sha256": "954414eac131adbf0cfecd908207f03f61af82aa3309d6de0b8a94713ed54854",
           "gitBlobSha": "649cd6244cefcbe53e0016f93ee743f8c8d5f41e",
           "bytes": 3692
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -6526,6 +6703,39 @@
               "bytes": 3692
             }
           ]
+        },
+        {
+          "at": "2026-11-15T00:36:46.246709+00:00",
+          "sourceRevision": 224,
+          "previousTaskState": {
+            "state": "r224_two_approved_orphan_merchant_deletes_confirmed_absent",
+            "lastEvidenceDate": "2026-11-15",
+            "belegArt": "EXPLICIT_OWNER_APPROVAL_TWO_DELETES_GOOGLE_NOTFOUND_WITH_LIVE_CONTROL",
+            "lastEvidence": "Nach ausdrücklicher Paarbestätigung zwei alte deutsche Kinderuhr-Merchant-Angebote aus API10667445201 gelöscht. Beide exakten Google-Ressourcen frisch404/ITEM_NOT_FOUND, bekanntes lebendes Angebot derselbenQuelle alsAuth-/Quellenkontrolle lesbar. Shopify-DRAFT-Produkte nativ unverändert. ZweiWrites/0Retries, keineQuelleoderShopprodukteentfernt. Datum15.11.Zürich; keineTagesreports gelesen.",
+            "nextAllowedStep": "Die konkrete Paarfreigabe liegt vor und beide Löschungen sind abgeschlossen; nicht erneut um dieselbe Freigabe bitten und keine blinden Wiederholungen. Bei späterer Wiederaufnahme exakt dieselben IDs/Quelle/Shopzustände frisch lesen und verursachenden Sync prüfen, bevor ein weiterer Write erwogen wird. Shopify-DRAFT-Produkte erhalten. AUTOFEED-Workout bleibt an legitime native Einzelartikel-Editormethode gebunden; Mengenangabe nur mit belegtem Nettoinhalt, FR-Sprachentwurf nur mit konsistenter Storefront-/Merchant-Gegenprobe.",
+            "blockers": [
+              "Claude-Code-Kenntnisnahme/Übernahme unbestätigt; receiptState unknown_no_claude_receipt.",
+              "Dokumentierte08/14/19-Zeiten sind kein Ausführungsbeleg eines Schedulers.",
+              "R174: Der konkrete statische Organizer-Pin erfüllt die geprüften Pinterest-Gates; Projektor-Master-, Video-, Bio- und übrige kanalbezogene Gates blockieren weiterhin die davon getrennten Social-Writes.",
+              "DNS/Theme/Merchant/CJ/Printful/Personalisierung bleiben an spezialisierte Zugriffe, Quellen oder Rechte gebunden.",
+              "R167: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R168: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Availability-Zielzustand beweist keine Verursachung.",
+              "R169: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R169: Rollende Metricool-Abdeckung ist ab15.11. unvollständig; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R170: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt; bestehender Link beweist keine Codex-/Claude-Verursachung.",
+              "R171: Claude-Artefakt ist login-gesperrt; Inhalt und Kenntnisnahme bleiben unknown_no_claude_receipt. Widersprüchliche strukturierte Extraktion ist kein Beleg.",
+              "R172: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R172: Rollende Metricool-Abdeckung endet am15.11.; Qualitäts-/Rechte-/Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R173: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R173:0 freigabefähige Socialobjekte; Projektor-A–G-Bindung, Rechte, native Takes und professionelle Master-MP4 fehlen.",
+              "R174: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R174: Pinterest-Pin ist PENDING/terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben unbekannt.",
+              "R175: Tatsächliche Claude-Code-Kenntnisnahme bleibt unknown_no_claude_receipt.",
+              "R175: Aktive Metricool-Abdeckung endet am15.11.; Qualitäts-, Rechte-, Produktbindungs- und Kanalgates verhindern sichere Ersatzposts.",
+              "R175: Beauty-Collection- und Klaviyo-Betrefftexte sind Freigabeentwürfe, keine ausgeführten Änderungen.",
+              "R175: CJ-Runtime und vier benannte lokale Master-/Quellreferenzen waren in diesem Lauf nicht nutzbar; dies beweist keinen fehlenden Connector."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -15593,12 +15803,12 @@
       "id": "printful-sync-variant-identity",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "lokal_gepruefter_entwurf",
+      "state": "r225_fresh_main_contract_boundary_old_candidate_not_safe_to_apply",
       "title": "Printful-Auftragsvariante an historischer Bestell-SKU sichern",
-      "lastEvidenceDate": "2026-11-01",
-      "belegArt": "LOKAL_KORRIGIERT_OFFLINE_GEMESSEN",
-      "lastEvidence": "01.11. interaktiv nach «weiter» lokal fortgeführt, gegen frisch gepinnten main a431bf27. Synthetischer Vorherfehler: zwei Läufe erzeugten zwei Anbieteraufträge trotz vier abgewiesener Shopify-Marker. Neuer kombinierter Reviewpatch bindet externe ID, Shop/Store/Order, Quellen-/Intenthash einschliesslich confirm und vorhandenen Ready-Beleg; CAS-Claim und frische Quelle/Claim vor POST. Unklarer POST bleibt für erneutes Senden gesperrt; genauer Anbieterabgleich und kontrollierte Markerquittierung. Unbekannte Designprüfung, unvollständige Positionen und fehlende Lieferdaten blockieren. 79/79 Mocktests unabhängig bestätigt, Mutation erkannt, vier Dateien bytegenau zurückgespielt. Keine echten Bestellabfragen/Writes, Migration, Merge, Deployment oder Sync.",
-      "nextAllowedStep": "Kombinierten Vier-Dateien-Diff und CI-Anbindung erneut gegen aktuellen main prüfen; Node22/Voll-CI in legitimer geeigneter Umgebung abschliessen. Vor produktivem Einsatz eigenen Printful-/Shop-Grant, API-Version und begrenzten belegten Altauftragsabgleich/Ready-Migrationsscope nachweisen; kein automatisches Initialisieren oder erneutes Senden bei unknown. Vollständige Druckgeometrie und EDM-/Bestellfreigabe separat belegen.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+      "lastEvidence": "Freshmain9a03e4f/Quelldatei-/WorkflowSHAgeprüft;altes4Dateienpatchpassteinhaltlichnicht.181synthetischeMocksinderlokalenKopie,späterOriginalsource/testGleichheitmitfrischemMaingeprüft;keinFullCI/LiveSync. LXexternal_id/Entwurf→Prüfung→ConfirmweichtvomNov1Helperab;Ready/CASQuery-/Migrationbasisfehlt. KeineQuellenänderung.",
+      "nextAllowedStep": "AltenVierDateienpatchnichtanwenden. Zuerst aktuellenLX-ID-/Entwurf-/Confirm-Vertrag erhalten undkontrolliertenReady-/Query-/Migrationsscope konkretentwerfen;erst danach begrenztenneuenDiffmiterhaltenenMocktestsundWorkflow-Sparse-/CI-Anbindungprüfen. ProduktivweiterownGrants/Version/Altauftragsbeleg/Sicherheitsfreigabevorweisen;keinSendbeiunknown.",
       "blockers": [
         "Nur lokaler Reviewentwurf, keine produktive Integration; Node22/Voll-CI unbestätigt, GraphQL-Validator skipped",
         "Kein belegter begrenzter Ready-/Migrations-Cutover; kein Checkpoint oder Register initialisiert",
@@ -15661,6 +15871,20 @@
           "path": "dropship/codex-handoff-20261018/SYNC-CI-TESTS-20261101.patch",
           "gitBlobSha": "a8b55dd9052e363dcc87c26029102004c6406811",
           "readAt": "2026-11-01T08:48:31Z"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -15675,6 +15899,24 @@
             "external_id/Idempotenz und Shopify-userErrors-Quittierung bleiben offen; fehlende Designprüfung kann PASS ergeben; maximal50 Positionen",
             "Printful-Laufzeit-Key und Store-ID hier nicht konfiguriert; kein authentifizierter Lieferantenkatalogbeleg für Material/Modell"
           ]
+        },
+        {
+          "at": "2026-11-15T00:36:46.246709+00:00",
+          "sourceRevision": 224,
+          "previousTaskState": {
+            "state": "lokal_gepruefter_entwurf",
+            "lastEvidenceDate": "2026-11-01",
+            "belegArt": "LOKAL_KORRIGIERT_OFFLINE_GEMESSEN",
+            "lastEvidence": "01.11. interaktiv nach «weiter» lokal fortgeführt, gegen frisch gepinnten main a431bf27. Synthetischer Vorherfehler: zwei Läufe erzeugten zwei Anbieteraufträge trotz vier abgewiesener Shopify-Marker. Neuer kombinierter Reviewpatch bindet externe ID, Shop/Store/Order, Quellen-/Intenthash einschliesslich confirm und vorhandenen Ready-Beleg; CAS-Claim und frische Quelle/Claim vor POST. Unklarer POST bleibt für erneutes Senden gesperrt; genauer Anbieterabgleich und kontrollierte Markerquittierung. Unbekannte Designprüfung, unvollständige Positionen und fehlende Lieferdaten blockieren. 79/79 Mocktests unabhängig bestätigt, Mutation erkannt, vier Dateien bytegenau zurückgespielt. Keine echten Bestellabfragen/Writes, Migration, Merge, Deployment oder Sync.",
+            "nextAllowedStep": "Kombinierten Vier-Dateien-Diff und CI-Anbindung erneut gegen aktuellen main prüfen; Node22/Voll-CI in legitimer geeigneter Umgebung abschliessen. Vor produktivem Einsatz eigenen Printful-/Shop-Grant, API-Version und begrenzten belegten Altauftragsabgleich/Ready-Migrationsscope nachweisen; kein automatisches Initialisieren oder erneutes Senden bei unknown. Vollständige Druckgeometrie und EDM-/Bestellfreigabe separat belegen.",
+            "blockers": [
+              "Nur lokaler Reviewentwurf, keine produktive Integration; Node22/Voll-CI unbestätigt, GraphQL-Validator skipped",
+              "Kein belegter begrenzter Ready-/Migrations-Cutover; kein Checkpoint oder Register initialisiert",
+              "CAS/frische Gegenproben sind kein atomarer Lock zwischen Printful und Shopify; alte Writer vor Cutover gesondert prüfen",
+              "Runtime-Credentials/App-Grants/API-Version und echte Lieferanten-/Druckflächen-/Rechtebelege offen; positiver Legacy-ID-Fallback-Modulfall nicht gesondert getestet",
+              "Claude-Kenntnisnahme unbekannt"
+            ]
+          }
         }
       ]
     },
@@ -16190,13 +16432,13 @@
       "id": "personalizer-fullscreen-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r148_v631_canary_live_full_blocked_responsive_e2e_unknown",
+      "state": "r225_live_v640_observed_mobile_viewport_qa_unknown_old_v631_plan_stale",
       "title": "Selbst gestalten: vollständige Lieferantenreferenz, echte Auswahl und Bewertungen",
-      "lastEvidenceDate": "2026-11-08",
-      "belegArt": "R148_GUARDED_FULL_PLAN_AND_EXACT_ONE_PRODUCT_V631_CANARY_WITH_ADMIN_PUBLIC_READBACK_FULL_STOPPED_ON_RESPONSIVE_E2E_UNKNOWN",
-      "lastEvidence": "Preflight band main924c022b und bestätigte v6.3.0/v6.3.1 hash-/headergleich. Plan/full Run42508494486 SUCCESS ergab exakt19 Produkte:16 Editor-URLs/Query/SRI changed und3 Sperrprodukte bytegleich unchanged. Canary-Apply Run42508762409 SUCCESS änderte ausschliesslich Tasse15422823465345; Ledger applied, Readback-SHA7f6561665dc660fbadc248d6da5af5e2effdb359aa1dda337a2e615d076bc85c. Admin/Public bestätigen LuxeStyle/luxestyle.ch/CHF, ACTIVE/kaufbar,3 tracked CONTINUE Varianten, genau einen v6.3.1-Tag mit Asset-SHA1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0 und korrekter SRI; v6.3.0 auf Canary entfernt. Lokale Chromium-E2E endeten vor QA mit Exit137/Page-Crash. Isolierter Firecrawl-Read öffnete Editor, erstellte Text/Druckvorschau und lud2 Blob-Bilder ohne Cart/Checkout/Upload, ignorierte aber den Mobile-Viewport und lief1920x993. Abschliessender exakter390px-Harness brach im Browser-Interception-Layer mit Invalid InterceptionId ab; kein Blind-Retry. Responsive Mobile-E2E bleibt UNKNOWN. Kein Full-Plan nach Canary und kein Full-Apply. Mix:1 Canary v6.3.1,15 Editorprodukte v6.3.0,3 Sperrprodukte unverändert.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+      "lastEvidence": "FrischeexakteTassenproduktseitezeigtEditorv6.4.0undMAIN213991391623. Explizite390x844Vorgabewurde1920x993:sofortigerStop,keineEditor/Druckvorschau/Cart/Checkout/Uploadaktion. MobileQAunknown;keinRollout/Workflow. Historischev6.3.1Canary-/FullscopeAnnahmenkeineheutigeRolloutbasis.",
       "previewUrl": "https://luxestyle.ch/products/keramik-tasse-selbst-gestalten?preview_theme_id=213482963335&variant=55777979629953",
-      "nextAllowedStep": "Canary nicht erneut schreiben. In einer ressourcenfähigen Browserumgebung exakt die live Tasse15422823465345 bei375/390px und Desktop öffnen, Editor/Proportion/Druckvorschau/Lesbarkeit ohne Cart/Checkout/Upload prüfen und Screenshots/DOM belegen. Erst bei vollständigem GO aktuellen main-Head erneut binden und plan/full dispatchen; erwartet exakt15 changed und4 unchanged. Nur danach apply/full mit V63_FULL_19_SAFE und vollständigem19-Produkte-Readback. Jeder UNKNOWN/rejected Zustand stoppt ohne Retry. PR2975 bleibt Draft; MAIN und /fr nicht als live behoben ausgeben.",
+      "nextAllowedStep": "R148-v6.3.1-Fullplan/Applynichtausführen. Zuerstheutigenv6.4.0Rollout-/Quellstand/ProduktscopegegenaktuellenmainbelegenundinressourcenfähigemBrowser390/375/DesktopmitwirklichgemessenemViewportabnehmen. KeinCanaryRewriteoderDowngrade;UNKNOWNstoppt. Keinealte19erMischungalsheuteverifiziertausgeben.",
       "pendingProducts": [
         {
           "requestedProduct": "Printful-Gummi-Hülle für AirPods/AirPods Pro",
@@ -16454,13 +16696,9 @@
         }
       ],
       "blockers": [
-        "DTF-Live-Runtime wegen Envoy-/Lade-Timeout unbekannt; Server-HTML belegt nur den ausgelieferten Fail-closed-Code.",
-        "Dad Cap: Stickplatzierung/Produktionsoptionen nicht vollständig geprüft; Magnet: Produktion und Schweiz-Lieferung nicht bestätigt.",
-        "Offizieller Printful-EDM weiter ohne bestätigte product_templates/read+write/embedded_designer-Scopes und Domainbindung.",
-        "Dynamische Overlay-/Mockup-Rechte und physische Produktionsabnahme sind nicht katalogweit belegt.",
-        "22 DRAFT-Produkte/153 Varianten bleiben gesperrt; der lokale Liverollout erweitert deren Status nicht.",
-        "R146: Die19 Shopify-Beschreibungen verweisen weiter auf v6.3.0. Plan, Tassen-Canary, mobile/desktop E2E und Full-Apply fehlen; v6.3.1 ist öffentlich bereitgestellt, aber noch nicht im Produkteditor aktiviert.",
-        "R146: Ausführungsumgebung war nach Asset-Readback unavailable. Kein Workflow-Dispatch oder Shopify-Write; aktuellen main-Head vor Fortsetzung neu binden."
+        "Tatsächlicher390pxViewport nicht erreicht; responsiveE2Eabnahmeunbekannt.",
+        "AktuellerEditorv6.4.0machtaltenv6.3.1Fullplanüberholt; heutigerRolloutscopeerstneu zu binden.",
+        "Sessionstop mangelsgültigerScrapeIDnichtbestätigt;404keineFreigabequittung."
       ],
       "acceptance": [
         "Konkreter nativer Previewlink mit erhaltenem MAIN und vollständigen realen Varianten des ausgewählten Produkts",
@@ -16705,6 +16943,20 @@
           "sha256": "561e8c64aabd8de838fe42468242923b67c0dad0726ba45714ca27a667af63e6",
           "readAt": "2026-11-08T14:25:46+01:00",
           "durability": "local_runtime_evidence"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -17024,6 +17276,26 @@
           "previousLastEvidence": "PR2944/2950/2953/2956 sind gemergt; PR2956 Head f661f38d, Merge4392cb87. Öffentlicher Deploy42482820662, finaler19-Produkte-Plan42483190027 und Apply42483371177 sind success; Apply changed=19. Begrenzter Printful-Scope:18 ACTIVE Produkte/244 Varianten exakt, davon16/240 editorbereit und2/4 gesperrt; externer Mister-DTF-Transfer zusätzlich gesperrt.9/16 Editorprodukte haben eine echte proportional geprüfte Produktprojektion,7 bewusst nur exakte Druckdatei/-fläche. Editor SHA256 e58e5c277e9ff45ec5680150d96657b7f1cac0c66a777f46ce1fd65d2166c76b, SRI und öffentliche ACAO/CORP/immutable-Header passend. Notebook-Live-DOM PASS: v6.3.0, Standardausführung statt Roh-ID, zwei1725x2625-Druckflächen, keine Produktprojektion,390px ohne Overflow,0 Cart. T-Shirt Asset/Init live. DTF Runtime wegen Envoy-/Timeout unbekannt; Server HTTP200/974139B enthält Sperrmarkup, scoped CTA und Fail-closed-Code. Keine vollständige visuelle Drei-Blocker-Abnahme behauptet; keine echte Upload-/Cart-/Checkout-/Orderaktion. R143: PR2965 als ec00032c gemergt. Neue Generatorausgaben verwenden 325/444 ml, Rundumdruck, Auf Bestellung, Gestaltungswerkzeug und CHF50; sichtbare deutsche v6-Schriftlabels wurden übersetzt, technische Fontfamilien und EN-Locale blieben gleich. Das änderte den live wirksamen v5-Editor nicht; dessen englische Schriftlabels bleiben offen. R144: Media69634683011457 wurde separat live von Product mockup auf Produktvorschau korrigiert und öffentlich zurückgelesen; MAIN-/v5-Code blieb unverändert.",
           "previousNextAllowedStep": "Live-v5-Schriftlabels als engen Theme-Diff gegen den aktuellen MAIN-/Asset-Hash vorbereiten; der konkrete Media-Alttext ist bereits live deutsch und darf nicht nochmals blind geschrieben werden. v5-Funktion, Proportion und Druckvorschau byte- bzw. browsergenau prüfen und nur mit zulässigem Theme-Write anwenden/rücklesen. Die16 Editorprodukte und drei sichtbaren Sperren erhalten. DTF/EDM und neue Produkte erst nach aktueller Provider-, Varianten-, Produktions-, Schweiz-Liefer- und Rechtegegenprobe; keine DRAFT-Aktivierung oder erfundene Projektion.",
           "previousBlockersRetainedInCurrentTask": true
+        },
+        {
+          "at": "2026-11-15T00:36:46.246709+00:00",
+          "sourceRevision": 224,
+          "previousTaskState": {
+            "state": "r148_v631_canary_live_full_blocked_responsive_e2e_unknown",
+            "lastEvidenceDate": "2026-11-08",
+            "belegArt": "R148_GUARDED_FULL_PLAN_AND_EXACT_ONE_PRODUCT_V631_CANARY_WITH_ADMIN_PUBLIC_READBACK_FULL_STOPPED_ON_RESPONSIVE_E2E_UNKNOWN",
+            "lastEvidence": "Preflight band main924c022b und bestätigte v6.3.0/v6.3.1 hash-/headergleich. Plan/full Run42508494486 SUCCESS ergab exakt19 Produkte:16 Editor-URLs/Query/SRI changed und3 Sperrprodukte bytegleich unchanged. Canary-Apply Run42508762409 SUCCESS änderte ausschliesslich Tasse15422823465345; Ledger applied, Readback-SHA7f6561665dc660fbadc248d6da5af5e2effdb359aa1dda337a2e615d076bc85c. Admin/Public bestätigen LuxeStyle/luxestyle.ch/CHF, ACTIVE/kaufbar,3 tracked CONTINUE Varianten, genau einen v6.3.1-Tag mit Asset-SHA1e15aab9486f0b60385251889a07b4b293a74819437cd3702377ee079760adb0 und korrekter SRI; v6.3.0 auf Canary entfernt. Lokale Chromium-E2E endeten vor QA mit Exit137/Page-Crash. Isolierter Firecrawl-Read öffnete Editor, erstellte Text/Druckvorschau und lud2 Blob-Bilder ohne Cart/Checkout/Upload, ignorierte aber den Mobile-Viewport und lief1920x993. Abschliessender exakter390px-Harness brach im Browser-Interception-Layer mit Invalid InterceptionId ab; kein Blind-Retry. Responsive Mobile-E2E bleibt UNKNOWN. Kein Full-Plan nach Canary und kein Full-Apply. Mix:1 Canary v6.3.1,15 Editorprodukte v6.3.0,3 Sperrprodukte unverändert.",
+            "nextAllowedStep": "Canary nicht erneut schreiben. In einer ressourcenfähigen Browserumgebung exakt die live Tasse15422823465345 bei375/390px und Desktop öffnen, Editor/Proportion/Druckvorschau/Lesbarkeit ohne Cart/Checkout/Upload prüfen und Screenshots/DOM belegen. Erst bei vollständigem GO aktuellen main-Head erneut binden und plan/full dispatchen; erwartet exakt15 changed und4 unchanged. Nur danach apply/full mit V63_FULL_19_SAFE und vollständigem19-Produkte-Readback. Jeder UNKNOWN/rejected Zustand stoppt ohne Retry. PR2975 bleibt Draft; MAIN und /fr nicht als live behoben ausgeben.",
+            "blockers": [
+              "DTF-Live-Runtime wegen Envoy-/Lade-Timeout unbekannt; Server-HTML belegt nur den ausgelieferten Fail-closed-Code.",
+              "Dad Cap: Stickplatzierung/Produktionsoptionen nicht vollständig geprüft; Magnet: Produktion und Schweiz-Lieferung nicht bestätigt.",
+              "Offizieller Printful-EDM weiter ohne bestätigte product_templates/read+write/embedded_designer-Scopes und Domainbindung.",
+              "Dynamische Overlay-/Mockup-Rechte und physische Produktionsabnahme sind nicht katalogweit belegt.",
+              "22 DRAFT-Produkte/153 Varianten bleiben gesperrt; der lokale Liverollout erweitert deren Status nicht.",
+              "R146: Die19 Shopify-Beschreibungen verweisen weiter auf v6.3.0. Plan, Tassen-Canary, mobile/desktop E2E und Full-Apply fehlen; v6.3.1 ist öffentlich bereitgestellt, aber noch nicht im Produkteditor aktiviert.",
+              "R146: Ausführungsumgebung war nach Asset-Readback unavailable. Kein Workflow-Dispatch oder Shopify-Write; aktuellen main-Head vor Fortsetzung neu binden."
+            ]
+          }
         }
       ],
       "liveThemeId": "212971061639",
@@ -17308,12 +17580,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r221_selfcare_metadata_live_organizer_already_present",
+      "state": "r225_four_landing_pages_and_intentional_collection_image_rendering_verified",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
-      "lastEvidenceDate": "2026-11-14",
-      "belegArt": "SHOPIFY_NATIVE_AND_PUBLIC_METADATA_IMAGE_HASH_COUNTERCHECK",
-      "lastEvidence": "Eine bestätigte collectionUpdate-Mutation an beauty-selfcare änderte seo.description und image.altText. Native und öffentliche Meta-/OG-Rücklesung passend; dasselbe Bild per ID/Dateipfad/Bytehash bestätigt. R175-Organizer-Link bereits einmal live vorhanden, kein eigener neuer Link. Keine Ranking-/Verkaufswirkung gemessen.",
-      "nextAllowedStep": "R219/R220/R221 als umgesetzt erhalten. Öffentliche Verwendung des nativen Kollektions-Alttextes gezielt prüfen, bevor eine zusätzliche Themeänderung erwogen wird; neue SEO-Arbeit nur mit frischem konkretem Befund. Vorhandenen Organizer-Link nicht duplizieren.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+      "lastEvidence": "VierbestehendeLandeseitenHTTP200/passenderTitle/H1/Canonical. MAIN213991391623/Collectiontemplateundmain-collectiongelesen: Hero nutztabsichtlichdekorativeProduktfotos/aria-hidden,nativesKollektionsbildnurOG. KeinAlttextfehler/keineThemeänderung;R219–R221erhalten.",
+      "nextAllowedStep": "KeineHero-/ThemeänderungnurfürdasabsichtlichnichgerenderteKollektionsbild. R219/R220/R221undR225Produktkorrekturenerhalten;neueSEO-ArbeitnuranfrischenkonkretenQuellenbefundbinden,keinebekanntenIndexierungszieleerneutalsneuherausgeben.",
       "blockers": [
         "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
         "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
@@ -17924,6 +18196,20 @@
           "sha256": "ceb2da5f5e9fd29934c18ca41c59fd7e035d7f983baa12c26b7edac5903f13c5",
           "gitBlobSha": "a68ce46d872d5d5b0d3edfaad6bd56132d28c56f",
           "bytes": 43318
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -19265,6 +19551,24 @@
               "bytes": 43318
             }
           ]
+        },
+        {
+          "at": "2026-11-15T00:36:46.246709+00:00",
+          "sourceRevision": 224,
+          "previousTaskState": {
+            "state": "r221_selfcare_metadata_live_organizer_already_present",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "SHOPIFY_NATIVE_AND_PUBLIC_METADATA_IMAGE_HASH_COUNTERCHECK",
+            "lastEvidence": "Eine bestätigte collectionUpdate-Mutation an beauty-selfcare änderte seo.description und image.altText. Native und öffentliche Meta-/OG-Rücklesung passend; dasselbe Bild per ID/Dateipfad/Bytehash bestätigt. R175-Organizer-Link bereits einmal live vorhanden, kein eigener neuer Link. Keine Ranking-/Verkaufswirkung gemessen.",
+            "nextAllowedStep": "R219/R220/R221 als umgesetzt erhalten. Öffentliche Verwendung des nativen Kollektions-Alttextes gezielt prüfen, bevor eine zusätzliche Themeänderung erwogen wird; neue SEO-Arbeit nur mit frischem konkretem Befund. Vorhandenen Organizer-Link nicht duplizieren.",
+            "blockers": [
+              "Spezialwerkzeug theme_publish in aktueller Sitzung nicht verfügbar.",
+              "Allgemeiner themePublish wird vor Ausführung automatisch blockiert.",
+              "R158-Fixes bleiben bis bestätigtem Rollen-/Live-Readback nicht produktiv.",
+              "R169: Interner Kollektionslink ist ein Freigabeentwurf und nicht live; Produkttiteldrift erfordert frischen Preflight.",
+              "R170: Linkziel bereits durch unbekannte Paralleländerung erfüllt; Verursacher unbekannt, deshalb keinen zweiten Link anlegen."
+            ]
+          }
         }
       ],
       "visibilitySupplementR49": {
@@ -22013,12 +22317,12 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r214_fresh_48_rows_unchanged_9_windowholds_7day_gaps_and_published_states_known",
+      "state": "r225_42_queue_objects_exact_field_collisions_absent_global_matrix_15_22",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
-      "lastEvidenceDate": "2026-11-14",
-      "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
-      "lastEvidence": "Vier frische2Tagesfenster liefern48Objekte/39aktive/9Drafts bis21Nov bytegleichR213, keine neuenMedien.9Fensterholds Draft/APaus. IGFBTTPin täglich abgedeckt; Threads15Nov/YT15–21NovLücken. R21331URL/21Datei-Doppelprüfung datiert wiederverwendet, keine neue Dublettenbehauptung oder Löschung. Zehn bereitsgelieferte PUBLISHED-Kanalzustände bestätigt, keine eigenen Posts.",
-      "nextAllowedStep": "Neue andereSessionVideolieferung konkret lokalisieren, Materialrechte/Musik/Produkt/Tags und altenMasterLedger vor Verwendung belegen. Bestehenden passenden Draft verwenden, keine Kopien. Für Threads/YT-Lücken nächster echter Produktionsschritt, keine alten Holds pauschalaktivieren.",
+      "lastEvidenceDate": "2026-11-15",
+      "belegArt": "R225_VERIFIED_BOUNDED_LIVE_TEXT_AND_READ_ONLY_SOURCE_WORK",
+      "lastEvidence": "42belegteObjekte/51Providerzuständebisvollen22Novtag;globaleTermineIG9FB9TT8Pin8Threads7YT0,gesonderteDrafts2/2/2/0/2/2. KeinegleichenUUID/TextMedien/MedienlistenjeKanalimFenster. Threads15/YT15–22Lücken;bytebasierteFilm-/Gesamthistoriehiernichtneuverifiziert. KeineeigenenPosts/Writes.",
+      "nextAllowedStep": "VorhandeneTermine/Holdserhalten. NeueFilm-/BildlieferungweiterkonkretmitProdukt/Tags/Rechten/Musik/Ledgerbinden,keineKopienfürLücken. VorneuenPinterestWritesaktuellesKontoboardfrischverifizieren;R174Giftboardhistorischbelegt,anderesQueueboardheutenichtneuverifiziert. IGexpliziteAPWertepassend;fehlendeanderekanalspezifischeAPFelder/PUBLISHEDnichtausglobalemPENDINGableiten.",
       "blockers": [
         "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
         "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
@@ -22386,6 +22690,20 @@
           "sha256": "e727b27b1289617167502f71b82669942018dc65aa051844f533945bcf504a3a",
           "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198",
           "readAt": "2026-11-14T18:20:39.154619+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780,
+          "readAt": "2026-11-15T00:36:46.246709+00:00"
         }
       ],
       "requiresFreshVerification": true,
@@ -23018,6 +23336,37 @@
               "gitBlobSha": "ed4918e805c98a596645c02f8d97c6fad3ac9198"
             }
           ]
+        },
+        {
+          "at": "2026-11-15T00:36:46.246709+00:00",
+          "sourceRevision": 224,
+          "previousTaskState": {
+            "state": "r214_fresh_48_rows_unchanged_9_windowholds_7day_gaps_and_published_states_known",
+            "lastEvidenceDate": "2026-11-14",
+            "belegArt": "R214_FRESH_SHOP_CJ_SOURCE_REDIRECT_AND_7DAY_PLANNING_READONLY",
+            "lastEvidence": "Vier frische2Tagesfenster liefern48Objekte/39aktive/9Drafts bis21Nov bytegleichR213, keine neuenMedien.9Fensterholds Draft/APaus. IGFBTTPin täglich abgedeckt; Threads15Nov/YT15–21NovLücken. R21331URL/21Datei-Doppelprüfung datiert wiederverwendet, keine neue Dublettenbehauptung oder Löschung. Zehn bereitsgelieferte PUBLISHED-Kanalzustände bestätigt, keine eigenen Posts.",
+            "nextAllowedStep": "Neue andereSessionVideolieferung konkret lokalisieren, Materialrechte/Musik/Produkt/Tags und altenMasterLedger vor Verwendung belegen. Bestehenden passenden Draft verwenden, keine Kopien. Für Threads/YT-Lücken nächster echter Produktionsschritt, keine alten Holds pauschalaktivieren.",
+            "blockers": [
+              "Keine professionelle, variantengebundene und kommerziell rechtegeprüfte Master-MP4.",
+              "Instagram-/TikTok-Bioziele werden von den verfügbaren Brand-/Scheduler-Daten nicht geliefert.",
+              "R174: Der konkrete Organizer-Pin ist auf dem verifizierten Board terminiert; tatsächliche Auslieferung, Plattform-ID und Publikations-URL bleiben bis zum fälligen UUID-Readback unbekannt.",
+              "Kanalbezogenes Auto-Publish ist ausser Instagram im Payload unbekannt.",
+              "Vollständige Master-/Kanalhistorie und Plattformzustände sind aus der Zukunftsplanung nicht geliefert.",
+              "R174: Pinterest15.11 ist durch genau einen qualifizierten PENDING-Termin belegt; übrige Kanal-/Tageslücken dürfen weiterhin nicht mit minderwertigen oder duplizierten Ersatzposts gefüllt werden.",
+              "R169: Pin422791720/UUID2095739444122305341 verwendet Board1111333714239114033; Name/Eigentum nach exakter öffentlicher Gegenprobe unbekannt.",
+              "R169: Planlücken15.11. Pinterest/YouTube und16.–18.11. alle sechs Kanäle; kein qualifizierter Ersatzinhalt.",
+              "R172: Aktive Planlücken15.11 Pinterest/YouTube und16.–18.11 alle sechs Kanäle; kein qualifizierter Ersatzinhalt.",
+              "R172: Vier Knoblauchhacker-Drafts/fünf Zustände am18.11 sind keine Abdeckung und ohne Produkt-/Rechte-/Audio-/Qualitätsnachweis gesperrt.",
+              "R172: Ein globaler PUBLISHED-/PENDING-Zähler ersetzt keine kanalbezogene Plattform-ID/Publikations-URL; fehlende Lieferung bleibt unbekannt.",
+              "R173: Produkt15450838139265 trägt `rueckhol-0907`; vier bytegleiche Knoblauchhacker-Drafts bleiben unabhängig von Technik/Rechten für neue Ausspielung blockiert.",
+              "R173: MP4 4684d4e7…af8e9 ist10.6s/25fps statt15–20s/30fps; exakte Variante, kommerzielle Rechte, Pflichtmusiknachweis und Ledger fehlen.",
+              "R174: PENDING ist kein Publikationsbeleg; Plattform-ID und Publikations-URL sind bis zur Auslieferung unbekannt.",
+              "R174: Historienprüfung01.–18.11. lieferte0 Treffer im begrenzten Scope; ältere, versteckte oder serverseitig trunkierte Pinterest-Historie bleibt unbekannt.",
+              "R175: R174-Pin bleibt PENDING; Plattform-ID/Publikations-URL und tatsächliche Auslieferung sind noch unbekannt.",
+              "R175: Board1111333714239114033 ist nach aktuellem Read weiterhin in Name und Eigentum unbekannt.",
+              "R175: Aktive Lücken ab15.11 dürfen nicht mit unqualifizierten Drafts, wiederholten Altclips oder einfachen Slideshows gefüllt werden."
+            ]
+          }
         }
       ],
       "latestScheduleReadR67": {
@@ -27525,6 +27874,70 @@
           "sha256": "954414eac131adbf0cfecd908207f03f61af82aa3309d6de0b8a94713ed54854",
           "gitBlobSha": "649cd6244cefcbe53e0016f93ee743f8c8d5f41e",
           "bytes": 3692
+        }
+      ],
+      "taskCount": 24,
+      "receiptState": "unknown_no_new_receipt"
+    },
+    {
+      "revision": 225,
+      "at": "2026-11-15T00:36:46.246709+00:00",
+      "actor": "codex",
+      "summary": "ZweiProductTextkorrekturenlive(3ShopwritesinklSEOTitelkorrektur);Merchant/SEO/Queuebegrenztgeprüft. PrintfulSemantik-/ReadyGrenzeundaktuellerEditorv6.4.0stattv6.3.1belegt. KeinMerchant/Social/ThemeWrite,keineReports/Orders/Automation. AchtStundenKapazitätsplanvorbereitet,keineachtStundenAusführungbehauptet.",
+      "sources": [
+        {
+          "path": "dropship/codex-handoff-20261018/ARBEITSPAKET-ACHT-STUNDEN-20261115-R225.md",
+          "sha256": "7da908b7c81af84d8cb578e4e1a22787a1fecd1d96d8d6f9756638a3f255c9bc",
+          "gitBlobSha": "8a687ce8940a57a6e2247dff8a6db36c7acdcb07",
+          "bytes": 4329
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/MERCHANT-PRUEFUNG-20261115-R225.json",
+          "sha256": "30172b0ade4a4efe3bd513ef7b012101a6ce7491e11f04b97117a5f85e5087a2",
+          "gitBlobSha": "cf1eb6259e31053212f7574eae1c52beaf12be2a",
+          "bytes": 50801
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/METRICOOL-PLANPRUEFUNG-20261115-R225.json",
+          "sha256": "2e0f7c4ac5a9515ec4d328a0265de3682cdafcc7d9d73a1c82a14b964e2689eb",
+          "gitBlobSha": "ab321f3ddecb99b93175d574cf3975e70465313b",
+          "bytes": 180577
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PERSONALIZER-PRUEFUNG-20261115-R225.json",
+          "sha256": "27c81b1e78ed8d43ad077215c99b1fc7943485649f588547dc53b03eed396934",
+          "gitBlobSha": "290928a322c3d44f5a4d37be2e2ed09a7552e6c7",
+          "bytes": 4100
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRINTFUL-REVIEW-20261115-R225.json",
+          "sha256": "523b20ce3eebdee6ddee86fd684d05b766787733b13b635f40718544470857cb",
+          "gitBlobSha": "cd1890e9496d178171c561864b8bd84c86c6ce3a",
+          "bytes": 14806
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/PRODUKT-TEXTKORREKTUREN-20261115-R225.json",
+          "sha256": "a434d8f3632579a4c680723f7efe211c8ad84f63451fce32c19d3b454b078f12",
+          "gitBlobSha": "4b975e0a18001c0c3c0fb93e976a5719fe1a6182",
+          "bytes": 81678
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/SEO-LANDESEITEN-20261115-R225.json",
+          "sha256": "1e45496a2b9786c95b6887c9f0d7d634228d11ae612a9adbe8bad553fd8a4014",
+          "gitBlobSha": "20832f6bb39f7cd4abfc1ca1b1a53aeff293571c",
+          "bytes": 4573
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.json",
+          "sha256": "14d59c776f6ebb628196c5788c49fe3e7ca1afd3c74f697282dd6d73a4c92dd1",
+          "gitBlobSha": "a8114b07657b35b41c5c31c68b5dfc349188ed62",
+          "bytes": 2957
+        },
+        {
+          "path": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R225.md",
+          "sha256": "003ffc85bec844c3cbf2ed6d33f47ed1ec9b7272c94317f7cd047858e8cfd25c",
+          "gitBlobSha": "7f9bb065df7712393c6aa131613eb62e4ea88a4a",
+          "bytes": 4780
         }
       ],
       "taskCount": 24,
@@ -52751,5 +53164,77 @@
         "bytes": 3692
       }
     ]
+  },
+  "run225": {
+    "revision": 225,
+    "startedAtUTC": "2026-11-15T00:04:34Z",
+    "recordedAtUTC": "2026-11-15T00:36:46.246709+00:00",
+    "dateZurich": "2026-11-15",
+    "trigger": "owner_continue_find_eight_hours_work_check_fix",
+    "actualShopifyMutationCalls": 3,
+    "actualProductsChanged": 2,
+    "shopifyCorrectionDetail": "Lace first SEOInput omitted title, detected native null then explicitly restored original title in second exact write. Shaker one write. All returned userErrors empty; public/native checks passed.",
+    "actualMerchantMutationCalls": 0,
+    "r224DeletesNotRepeated": true,
+    "ownNewSocialPosts": 0,
+    "ownSocialWritesOrDeletes": 0,
+    "themeWrites": 0,
+    "queueReads": {
+      "delegatedSummaryPass": 4,
+      "rootDetailCountercheck": 4,
+      "reason": "The first retained only summary; root preserved all original rows and independently recomputed exact matrix/collisions. Not performance reports."
+    },
+    "queueObjects": 42,
+    "queueChannelStates": 51,
+    "queueGlobalScheduleCoverageDates": "2026-11-15..2026-11-22",
+    "queueGaps": {
+      "instagram": [],
+      "facebook": [],
+      "tiktok": [],
+      "pinterest": [],
+      "threads": [
+        "2026-11-15"
+      ],
+      "youtube": [
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22"
+      ]
+    },
+    "queueCollisionScope": "No same-channel exact UUID/text+media/media-array collision in this retained queue. Media re-encoding/content identity and older history not rechecked; no global no-duplicates claim.",
+    "boundedMerchantPage": {
+      "rows": 12,
+      "morePages": true,
+      "overlayRows": 11,
+      "gunPartsPolicyRows": 1,
+      "catalogCount": "unknown"
+    },
+    "existingGoogleApprovalsObserved": [
+      "gray_station_de_CH_LI_6_contexts",
+      "lace_shirt_de_CH_LI_6_contexts"
+    ],
+    "newMerchantLegalResolution": false,
+    "publicLandingPagesChecked": 4,
+    "themeSourceFilesChecked": 2,
+    "personalizerLiveDesignerObserved": "v6.4.0",
+    "responsiveQA": "unknown_actual_viewport_not_390",
+    "printfulCandidate": "stopped_at_ID_confirm_and_checkpoint_contract_boundary_no_source_changes",
+    "metricsFlowGSCOrderReportsRead": 0,
+    "dailyReadPolicyPreserved": true,
+    "newAutomationOrFrequencyChange": false,
+    "eightHours": "capacity_plan_480_estimated_minutes_only_no_background_service_no_elapsed_eight_hours_claim",
+    "paidRendersInstallsMergeDeployWorkflowStarts": 0,
+    "customerContacts": 0,
+    "discountBudgetShippingFlowDNSChanges": 0,
+    "shippingThresholdsAndAccountDomainPreserved": true,
+    "purchaseWatchEndedPreserved": true,
+    "claudeReceipt": "unknown_no_new_receipt",
+    "cheapSubagents": "three gpt-6-luna read-only/isolated-preparation agents; no measured token/cost saving",
+    "sourceAndShopErrors": "Data/API failures retained as unknown; explicit Google ITEM_NOT_FOUND exact resource scope only. Local checkpoint/QA-parser errors recorded and corrected without blind platform write repetition."
   }
 }

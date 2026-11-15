@@ -1,3 +1,15 @@
+# R225 – Zwei Produktseiten korrigiert, weitere Arbeit eingegrenzt – 15.11.2026 Zürich
+
+Spitzen-Shirt und Milchshaker anhand exakter CJ-SKUs live korrigiert. Drei Shopify-Writes einschliesslich der Wiederherstellung des beim ersten Aufruf geleerten SEO-Titels. Native und öffentliche Rücklesung stimmen; Preise, Varianten, Medien, Tags und Handles sind erhalten. Ladestation und Shirt wurden bei Google bereits genehmigt vorgefunden. Die Merchant-Stichprobe umfasst zwölf Ablehnungen und ist kein Katalogzensus.
+
+42 Metricool-Objekte bis zum ganzen 22. November gesichert: globale Termine auf Instagram, Facebook, TikTok und Pinterest je Datum. Threads fehlt am 15. November, YouTube am 15.–22. November. Keine exakten Kollisionen im geprüften Fenster; Dateiinhalte und gesamte Historie wurden hier nicht erneut verglichen.
+
+Auf der Tasse wurde Editor v6.4.0 vorgefunden: den alten v6.3.1-Fullplan nicht ausführen. Mobile QA bleibt wegen abweichendem tatsächlichem Viewport unbekannt. Der alte Printful-Patch passt nicht zum heutigen Bestellkennungs- und Bestätigungsablauf und wurde nicht übernommen. Ein Arbeitspaket für rund acht Stunden ist vorbereitet; es wurde kein neuer Hintergrunddienst gestartet. R224s Paarlöschungen bleiben abgeschlossen. 24 Aufgaben-IDs, Historie und Tagesgrenzen erhalten; Claude-Empfang unbekannt.
+
+[Bericht und Tagestabelle](WEITERARBEIT-20261115-R225.md) · [Belege](WEITERARBEIT-20261115-R225.json) · [Acht-Stunden-Arbeitspaket](ARBEITSPAKET-ACHT-STUNDEN-20261115-R225.md).
+
+---
+
 # R224 – Zwei freigegebene alte Merchant-Einträge entfernt, 15.11.2026 Zürich
 
 Explizite Paarbestätigung «bedtätige» ausgeführt: zwei gezielte delete_product-Aktionen, danach für beide exakten Google-Ressourcen404/ITEM_NOT_FOUND und lebende Kontrollressource derselbenQuelle bestätigt. Shopify-DRAFT-Produkte und Quelle bleiben erhalten;0Blindretries. R223-Freigabe nicht mehr offen und für dasselbe Paar nicht erneut anfragen. KeineTagesreports/Automation/anderenServicewrites.

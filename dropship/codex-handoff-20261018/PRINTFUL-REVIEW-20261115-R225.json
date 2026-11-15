@@ -1,0 +1,239 @@
+{
+  "dateZurich": "2026-11-15",
+  "scope": "read-only pinned source, isolated synthetic mock review, no runtime/API/orders/workflow/code-deploy changes",
+  "initialCachedSourceReview": {
+    "task": "printful-sync-variant-identity R225 read-only review",
+    "sourceTask": {
+      "state": "lokal_gepruefter_entwurf",
+      "lastEvidenceDate": "2026-11-01",
+      "nextAllowedStep": "Recheck combined four-file diff and CI against main; Node22/full CI, runtime grants, bounded legacy Ready migration and production evidence remain open."
+    },
+    "comparison": {
+      "repository": "/workspace/luxestyle-review/r124",
+      "cachedMain": {
+        "ref": "origin/main",
+        "commit": "a58f950030880f94fe7472dd1f8d30632aef3b8b",
+        "commitDate": "2026-11-10T10:39:10+01:00",
+        "subject": "Suchanfragen-Push: Liste «Neu abrufen lassen» (zehn verbesserte Seiten), Trinkbrunnen-Befund, Gedächtnis (#3066)",
+        "isAncestorOfSourceBase": true
+      },
+      "freshnessLimit": "No fetch or clone performed; origin/main is only the latest locally cached main ref, five calendar days older than the 2026-11-15 R225 Core4 baseline."
+    },
+    "candidateFourFilesFrom2026_11_01": {
+      "baseCommit": "a431bf27d5e7af6b7f35ff9506380fee3f1c27a8",
+      "expected": [
+        {
+          "path": "automation/printful_sync.mjs",
+          "sha256": "73bc9a7e5e76b933809370ee7d78b7c31c292c14eee57ade52c6a6ced60488b5",
+          "mainState": "present, content differs; main sha256 8b87ef499c5b32077c8d437f3822a63419e1a8da963d7dbc94b7b2066135cceb"
+        },
+        {
+          "path": "automation/printful_sync_test.mjs",
+          "sha256": "5baf34a0412d6458b4192214c14ca2cd2134544780e835732eec972807a41517",
+          "mainState": "present, content differs; main sha256 1703c1adfabeba89fc56706072196f8e1cf706370a7e24987abdf2dba91f75a2"
+        },
+        {
+          "path": "automation/lib/printful_idempotenz.mjs",
+          "sha256": "06d5943e60ffd47fac772d47c94b693428c22b5b164517f54640bc40b8ce3369",
+          "mainState": "absent"
+        },
+        {
+          "path": "automation/printful_idempotenz_test.mjs",
+          "sha256": "a46144660f124564010d42aaea016b3eb5509fd71df32218d92c842cc52906bc",
+          "mainState": "absent"
+        }
+      ],
+      "printfulPatchCheck": "git apply --check against sparse cached origin/main fails on printful_sync.mjs and printful_sync_test.mjs context. Do not apply the November 1 patch directly; its source/test base is stale relative to main's Nov 5 Printful bestellweg v2.",
+      "presentMainFacts": [
+        "Current main's printful-sync test is already invoked by .github/workflows/luxestyle-automation-tests.yml.",
+        "The candidate new standalone printful_idempotenz_test.mjs is not invoked by that workflow.",
+        "The production .github/workflows/printful-sync.yml sparse-checkout lists printful_sync.mjs, printful_platzierung.mjs, printful_bestellweg.mjs, shopify_secret.mjs and a permission file, but not candidate import automation/lib/printful_idempotenz.mjs. An unchanged workflow would therefore not have the new module at runtime."
+      ]
+    },
+    "otherSourcePatches": {
+      "cjSkuPatchCheck": "git apply --check succeeds against the sparse cached main files.",
+      "ciPatchCheck": "git apply --check succeeds against the sparse cached main workflow.",
+      "ciPatchMeaning": "SYNC-CI-TESTS adds two CJ tests (cj_sku_nachziehen_schutz_test.mjs and cj_varianten_preis_sku_test.mjs); it does not add a run command for the Printful idempotency unit test."
+    },
+    "runtimeAndVerification": {
+      "node": "v24.22.1",
+      "packageEngines": "No engines field in package.json; no Node-version restriction stated there.",
+      "packageDependencies": "Root package has only optional site-QA devDependencies, not required by these Node mock tests; node_modules is absent. No install performed.",
+      "mockRun": "Ran the cached origin/main automation/printful_sync_test.mjs from an isolated sparse copy under Node24: 181 ok, 0 Fehler. Its hard-coded /tmp summary-file paths were redirected only in the scratch copy to /dev/shm because /tmp is full.",
+      "testScope": "Local fake-fetch/mock test only; no external requests, actual credentials, Printful/Shopify orders, workflow start, deployment, merge, install, or source edits. This 181-case run is against cached main code, not the November 1 candidate and not a live run."
+    },
+    "outcome": "No production-ready diff. The candidate is a historical patch requiring a rebase and refreshed review against main; add explicit production sparse-checkout and unit-test CI links if the helper/test are carried forward."
+  },
+  "freshPinnedRemoteReview": {
+    "task": "R225 follow-up: fresh remote main review",
+    "method": "GitHub REST ref GET and contents reads pinned to the returned main SHA; no git fetch/clone; read-only.",
+    "remoteHead": {
+      "ref": "refs/heads/main",
+      "sha": "9a03e4f00e5531b089388bfb88a265d1566e8f12",
+      "commitDate": "2026-11-15T00:07:38Z",
+      "subject": "Merge pull request #3140 from allengchour-glitch/codex/monitor-leistung-klar",
+      "verified": true,
+      "api": "GET https://api.github.com/repos/allengchour-glitch/aban-news-landing/git/ref/heads/main"
+    },
+    "pinnedFiles": [
+      {
+        "path": "automation/printful_sync.mjs",
+        "blobSha": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620",
+        "status": "read"
+      },
+      {
+        "path": "automation/printful_sync_test.mjs",
+        "blobSha": "a415b3ecbcf74336565ffd8f16cecd6521fed384",
+        "status": "read"
+      },
+      {
+        "path": "automation/lib/printful_idempotenz.mjs",
+        "blobSha": null,
+        "status": "404_NOT_FOUND"
+      },
+      {
+        "path": "automation/printful_idempotenz_test.mjs",
+        "blobSha": null,
+        "status": "404_NOT_FOUND"
+      },
+      {
+        "path": ".github/workflows/printful-sync.yml",
+        "blobSha": "5e90f9cf27ade2fa22aeaea18638f3408341a1bc",
+        "status": "read"
+      },
+      {
+        "path": ".github/workflows/luxestyle-automation-tests.yml",
+        "blobSha": "d1438850f4ec03e3ae20456af7cd6924febd77a7",
+        "status": "read"
+      },
+      {
+        "path": "package.json",
+        "blobSha": "2d2def4f67faa598af26f90cdc147e800bae43b6",
+        "status": "read"
+      }
+    ],
+    "sourceEquality": {
+      "printfulSync": {
+        "remoteBlob": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620",
+        "cachedMockBlob": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620",
+        "equal": true,
+        "sha256": "8b87ef499c5b32077c8d437f3822a63419e1a8da963d7dbc94b7b2066135cceb"
+      },
+      "printfulSyncTest": {
+        "remoteBlob": "a415b3ecbcf74336565ffd8f16cecd6521fed384",
+        "cachedMockBlob": "a415b3ecbcf74336565ffd8f16cecd6521fed384",
+        "equal": true
+      },
+      "priorLocalMockRun": "181 ok, 0 Fehler on locally cached main code, Node24.22.1, isolated fake fetch only; its two hardcoded temp summary paths were redirected in the scratch copy. Not a live execution and not a new run against the fresh head. Because the production source blob equals the cached mock source, no test rerun was done."
+    },
+    "patchChecks": {
+      "printfulFourFilePatch": {
+        "result": "FAIL",
+        "command": "git apply --check",
+        "details": [
+          "automation/printful_sync.mjs context at line 7 does not apply",
+          "automation/printful_sync_test.mjs context at line 6 does not apply"
+        ],
+        "sourceState": "Fresh remote source blobs are byte-identical to the cached main sources; both candidate new module files return Contents API 404."
+      },
+      "automationTestsWorkflowPatch": {
+        "result": "PASS",
+        "command": "git apply --check SYNC-CI-TESTS-20261101.patch against exact fresh workflow content",
+        "freshWorkflowBlob": "d1438850f4ec03e3ae20456af7cd6924febd77a7"
+      },
+      "productionSparseCheckout": {
+        "workflowBlob": "5e90f9cf27ade2fa22aeaea18638f3408341a1bc",
+        "newModuleListed": false,
+        "notes": "Workflow sparse checkout includes printful_sync.mjs, printful_platzierung.mjs, printful_bestellweg.mjs and shopify_secret.mjs, but not the proposed printful_idempotenz.mjs."
+      },
+      "ciUnitTest": {
+        "workflowBlob": "d1438850f4ec03e3ae20456af7cd6924febd77a7",
+        "printfulSyncTestInvoked": true,
+        "printfulIdempotencyTestInvoked": false,
+        "ciPatchAdds": [
+          "automation/cj_sku_nachziehen_schutz_test.mjs",
+          "automation/cj_varianten_preis_sku_test.mjs"
+        ]
+      }
+    },
+    "package": {
+      "blobSha": "2d2def4f67faa598af26f90cdc147e800bae43b6",
+      "enginesField": null,
+      "devDependencies": [
+        "html-validate",
+        "prettier",
+        "playwright",
+        "lighthouse"
+      ],
+      "note": "No package engine restriction. No package/install or test run at this head."
+    },
+    "conclusion": "The Nov 1 Printful four-file patch still cannot be applied directly to current main; a source rebase/review and workflow sparse-checkout + unit-test CI integration remain necessary. The prior 181-case local mock result must remain attributed to the cached main source/test, not described as current-head testing."
+  },
+  "rebaseBoundary": {
+    "task": "R225 local Printful review draft rebase",
+    "status": "bounded_rebase_stopped_at_semantic_safety_boundary",
+    "scope": "Read-only comparison and local report only; no source files changed; no remote writes, order reads, grant reads, workflow runs, installs, merge, or deployment.",
+    "remote": {
+      "ref": "refs/heads/main",
+      "commit": "9a03e4f00e5531b089388bfb88a265d1566e8f12",
+      "commitDate": "2026-11-15T00:07:38Z"
+    },
+    "exactRemoteSource": {
+      "automation/printful_sync.mjs": {
+        "gitBlob": "2c873b0ddc6a6e29c811ce511c72e9f6ff923620",
+        "sha256": "8b87ef499c5b32077c8d437f3822a63419e1a8da963d7dbc94b7b2066135cceb"
+      },
+      "automation/printful_sync_test.mjs": {
+        "gitBlob": "a415b3ecbcf74336565ffd8f16cecd6521fed384",
+        "equalToPreviouslyMockedSource": true
+      },
+      "automation/lib/printful_idempotenz.mjs": {
+        "status": "404_NOT_FOUND"
+      },
+      "automation/printful_idempotenz_test.mjs": {
+        "status": "404_NOT_FOUND"
+      },
+      ".github/workflows/printful-sync.yml": {
+        "gitBlob": "5e90f9cf27ade2fa22aeaea18638f3408341a1bc"
+      },
+      ".github/workflows/luxestyle-automation-tests.yml": {
+        "gitBlob": "d1438850f4ec03e3ae20456af7cd6924febd77a7"
+      },
+      "package.json": {
+        "gitBlob": "2d2def4f67faa598af26f90cdc147e800bae43b6",
+        "engines": null
+      }
+    },
+    "blockingMismatches": [
+      {
+        "issue": "Create-and-confirm ordering",
+        "evidence": "Fresh main creates a Printful draft at automation/printful_sync.mjs:301-302, marks the Shopify order, reads back file review and costs at lines 321-341, and only then calls /orders/<id>/confirm at lines 343-345. The Nov 1 helper candidate posts /orders?confirm=1 when payload.confirm is true (idempotency-module-hunk.txt:132), confirming during creation before the existing file/cost review gate.",
+        "decisionNeeded": "Define a two-stage claim/create-draft/review/confirm state machine before altering synchronization semantics; preserve existing gates."
+      },
+      {
+        "issue": "Provider external ID migration",
+        "evidence": "Fresh main uses externalId(order.name, order.id) from printful_bestellweg.mjs:383-390 (for ordinary names, LX + sanitized order name; collision-ambiguous names append Shopify numeric ID). Candidate helper uses externeBestellId(shop, order.id), a shop-hash plus Shopify numeric ID, at idempotency-module-hunk.txt:79. The IDs do not identify the same existing Printful orders.",
+        "decisionNeeded": "Specify how existing LX external IDs are reconciled before any new ID scheme is adopted, including how duplicate prevention is demonstrated for old and new IDs."
+      },
+      {
+        "issue": "Shopify checkpoint/CAS schema and complete source snapshot",
+        "evidence": "Fresh main ORDERS_Q at printful_sync.mjs:124-133 has no pfCheckpoint/pfOrderId fields or compareDigest; lineItems fetches first:50 and only requests hasNextPage without following it. Candidate requires a pre-existing Ready checkpoint, checkpoint claim/readback, provider order linkage, and full order hash. Prior review says no Ready checkpoint/migration was initialized.",
+        "decisionNeeded": "Approve a schema-supported checkpoint and CAS design, define full pagination/identity fields, and provide a reviewed legacy reconciliation/migration scope; no auto-initialization."
+      },
+      {
+        "issue": "Workflow scope expansion",
+        "evidence": "Fresh printful-sync workflow sparse checkout lacks automation/lib/printful_idempotenz.mjs (remote-main-review-r225.json); automation-tests workflow does invoke printful_sync_test.mjs but does not invoke the new standalone idempotency test. The separate CI-only patch passes against the fresh workflow blob, but would reference a test/module pair absent from main until the semantic rebase is complete.",
+        "decisionNeeded": "Once the reworked implementation and its tests exist, include the helper in production sparse checkout and add the standalone test to CI in the same candidate."
+      }
+    ],
+    "validation": {
+      "patchApplyCheck": "The four-file Nov 1 patch fails on current source context; helper and helper-test paths are absent on remote main.",
+      "freshSourceEquality": "Current sync and adapter test blobs are byte-identical to the cached-main sources used for the prior isolated mock run.",
+      "mockRun": "No new run: the candidate could not be safely rebased without changing the state machine and migration assumptions. Historical result remains 181 ok / 0 errors under Node 24.22.1 with fake fetch on source identical to the fresh remote sync and test blobs; this is not represented as a fresh-head test.",
+      "workflowPatch": "CI workflow-only patch apply-check passed against blob d1438850f4ec03e3ae20456af7cd6924febd77a7; not applied or executed."
+    },
+    "candidateDiff": "none",
+    "nonProductionStatement": "No product fix, merge candidate, or production approval is claimed."
+  },
+  "rootInterpretation": "181 synthetic checks ran today on an isolated cached-main copy under Node24, with two temporary summary paths redirected. Subsequent original source/test blob equality to fresh main is verified. This is not full CI or real order execution; no test rerun was needed for equal source. The old four-file candidate is not safely rebased: external_id and confirm contract differ, required query/Ready migration state absent. No source/workflow patch applied."
+}
