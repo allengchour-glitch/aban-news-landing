@@ -1,0 +1,49 @@
+name: Merchant-Bildlinks korrigieren 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/patch_images.py
+      - dropship/merchant-fix-1511/IMAGE-MODUS
+      - .github/workflows/merchant-image-patch-1511.yml
+permissions:
+  contents: read
+concurrency:
+  group: merchant-image-patch-1511
+  cancel-in-progress: false
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant-fix-1511/patch_images.py
+            dropship/merchant-fix-1511/IMAGE-MODUS
+            dropship/merchant-fix-1511/audit/image-patch-plan.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet requests google-auth
+      - name: Bildlinks gezielt abgleichen
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          mode=$(tr -d '[:space:]' < dropship/merchant-fix-1511/IMAGE-MODUS)
+          case "$mode" in
+            pruefen) LIVE=0 LIMIT=1 python automation/merchant-fix-1511/patch_images.py ;;
+            pilot) LIVE=1 LIMIT=1 python automation/merchant-fix-1511/patch_images.py ;;
+            schreiben) LIVE=1 LIMIT=100 python automation/merchant-fix-1511/patch_images.py ;;
+            *) exit 1 ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-image-patch
+          path: merchant-image-patch/
+          retention-days: 30
