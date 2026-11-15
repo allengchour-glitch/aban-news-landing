@@ -1,5 +1,6 @@
+import { ROLES, loadout } from "./profile.mjs";
 // Autoritative, zeitbasierte Koop-Simulation. Darstellung und Netzwerk bleiben getrennt.
-export const VERSION = 1;
+export const VERSION = 2;
 export const FLIGHT_LIMIT = 9;
 export const LANE_WIDTH = 7;
 export const LEVELS = [
@@ -45,7 +46,7 @@ export function route(level) {
     a.push({
       id: a.length,
       t,
-      type: danger ? "hazard" : "ring",
+      type: t > 15 && a.length % 7 === 5 ? "duet" : danger ? "hazard" : "ring",
       x: lane * LANE_WIDTH,
       moving: danger && level > 0 && rnd() < 0.3,
       phase: rnd() * Math.PI * 2,
@@ -56,7 +57,9 @@ export function route(level) {
 export function eventX(e, time) {
   return e.x + (e.moving ? Math.sin(time * 1.4 + e.phase) * 1.6 : 0);
 }
-const pilot = (i) => ({
+const pilot = (i, setup) => ({
+  ...loadout(setup),
+  lastDash: -100,
   x: i ? 3.2 : -3.2,
   hp: 3,
   inv: 0,
@@ -66,13 +69,18 @@ const pilot = (i) => ({
   down: 0,
   rescue: 0,
 });
-export function createState(level = 0) {
+export function createState(level = 0, setups = []) {
   return {
     version: VERSION,
     phase: "briefing",
     level,
     t: 0,
-    players: [pilot(0), pilot(1)],
+    players: [pilot(0, setups[0]), pilot(1, setups[1])],
+    resonance: 0,
+    overdrive: 0,
+    duets: 0,
+    rescues: 0,
+    syncs: 0,
     score: 0,
     combo: 0,
     events: [],
@@ -86,10 +94,35 @@ export function start(s) {
 export function dash(s, i) {
   const p = s.players[i];
   if (s.phase !== "playing" || p.hp <= 0 || p.cooldown > 0) return false;
-  p.dash = 0.6;
-  p.inv = Math.max(p.inv, 0.6);
-  p.cooldown = 6;
+  const role = ROLES[p.role];
+  p.dash = role.dash;
+  p.inv = Math.max(p.inv, role.dash);
+  p.cooldown = role.cooldown - (p.mod === "capacitor" ? 0.7 : 0);
+  p.lastDash = s.t;
+  const partner = s.players[1 - i];
+  if (partner.hp > 0 && s.t - partner.lastDash <= 0.35) {
+    s.syncs++;
+    charge(s, 15);
+    s.notice = "ZWILLINGSSCHUB";
+    p.inv = Math.max(p.inv, 1.2);
+    partner.inv = Math.max(partner.inv, 1.2);
+  }
   return true;
+}
+export function charge(s, value) {
+  if (s.overdrive > 0) return;
+  s.resonance = Math.min(100, s.resonance + value);
+  if (s.resonance >= 100) {
+    s.resonance = 0;
+    s.overdrive = 5;
+    s.notice = "RESONANZFLUG";
+    s.players.forEach((p) => {
+      if (p.hp > 0) {
+        p.inv = Math.max(p.inv, 1.2);
+        p.cooldown = 0;
+      }
+    });
+  }
 }
 export function hit(s, i) {
   const p = s.players[i];
@@ -106,6 +139,7 @@ export function hit(s, i) {
 export function step(s, inputs, dt) {
   if (s.phase !== "playing") return;
   dt = clamp(Number.isFinite(dt) ? dt : 0, 0, 0.05);
+  s.overdrive = Math.max(0, s.overdrive - dt);
   const old = s.t;
   s.t += dt;
   for (let i = 0; i < 2; i++) {
@@ -119,6 +153,7 @@ export function step(s, inputs, dt) {
       p.cooldown - dt * (Math.abs(p.x - q.x) < 2.8 ? 1.35 : 1),
     );
     if (p.hp > 0) {
+      const speed = ROLES[p.role].speed;
       const target = Number.isFinite(v.target)
         ? clamp(v.target, -FLIGHT_LIMIT, FLIGHT_LIMIT)
         : null;
@@ -126,22 +161,26 @@ export function step(s, inputs, dt) {
       p.x = clamp(
         p.x +
           (target === null
-            ? axis * 14 * dt
-            : clamp(target - p.x, -14 * dt, 14 * dt)),
+            ? axis * speed * dt
+            : clamp(target - p.x, -speed * dt, speed * dt)),
         -FLIGHT_LIMIT,
         FLIGHT_LIMIT,
       );
     } else {
       p.down = Math.max(0, p.down - dt);
       const rescue =
-        q.hp > 0 && inputs[1 - i]?.rescue && Math.abs(p.x - q.x) < 2.6;
+        q.hp > 0 &&
+        inputs[1 - i]?.rescue &&
+        Math.abs(p.x - q.x) < (q.role === "medic" ? 3.2 : 2.6);
       p.rescue = rescue ? p.rescue + dt : Math.max(0, p.rescue - dt * 0.5);
-      if (p.rescue >= 2) {
-        p.hp = 2;
+      if (p.rescue >= ROLES[q.role].rescue) {
+        p.hp = q.mod === "anchor" ? 3 : 2;
         p.inv = 3;
         p.down = 0;
         p.rescue = 0;
         s.notice = "RETTUNG ERFOLGREICH";
+        s.rescues++;
+        charge(s, 25);
       } else if (p.down <= 0) s.phase = "failed";
     }
   }
@@ -154,22 +193,42 @@ export function step(s, inputs, dt) {
     if (e.t <= old || e.t > s.t) continue;
     s.events.push(e.id);
     const x = eventX(e, s.t);
+    if (e.type === "duet") {
+      const [a, b] = s.players;
+      const success =
+        a.hp > 0 &&
+        b.hp > 0 &&
+        ((Math.abs(a.x + LANE_WIDTH) < 2.4 &&
+          Math.abs(b.x - LANE_WIDTH) < 2.4) ||
+          (Math.abs(b.x + LANE_WIDTH) < 2.4 &&
+            Math.abs(a.x - LANE_WIDTH) < 2.4));
+      if (success) {
+        s.duets++;
+        s.score += s.overdrive > 0 ? 1000 : 500;
+        a.rings++;
+        b.rings++;
+        charge(s, 25);
+        if (s.notice !== "RESONANZFLUG") s.notice = "DOPPELRING · ZUSAMMEN";
+      }
+      continue;
+    }
     for (let i = 0; i < 2; i++) {
       const p = s.players[i];
       if (p.hp <= 0) continue;
       const d = Math.abs(p.x - x);
       if (e.type === "hazard" && d < 2.8) hit(s, i);
-      if (e.type === "ring" && d < 2.1) {
+      if (e.type === "ring" && d < (p.mod === "focus" ? 2.7 : 2.1)) {
         p.rings++;
         s.combo++;
-        s.score += 100 + Math.min(s.combo, 10) * 10;
+        s.score +=
+          (100 + Math.min(s.combo, 10) * 10) * (s.overdrive > 0 ? 2 : 1);
       }
     }
   }
   if (s.phase === "playing" && s.t >= LEVELS[s.level].duration) {
     s.phase = s.level === 2 ? "victory" : "result";
     const total =
-      routeCache[s.level].filter((e) => e.type === "ring").length * 2;
+      routeCache[s.level].filter((e) => e.type !== "hazard").length * 2;
     const ratio = s.players.reduce((n, p) => n + p.rings, 0) / total;
     s.medal = ratio > 0.65 ? 3 : ratio > 0.35 ? 2 : 1;
   }
@@ -192,6 +251,11 @@ export function validSnapshot(s) {
     s.t >= 0 &&
     s.t <= 110 &&
     Number.isFinite(s.score) &&
+    ["resonance", "overdrive", "duets", "rescues", "syncs"].every(
+      (k) => Number.isFinite(s[k]) && s[k] >= 0,
+    ) &&
+    s.resonance <= 100 &&
+    s.overdrive <= 5 &&
     Array.isArray(s.players) &&
     s.players.length === 2 &&
     s.players.every(
@@ -199,6 +263,9 @@ export function validSnapshot(s) {
         ["x", "hp", "inv", "dash", "cooldown", "rings", "down", "rescue"].every(
           (k) => Number.isFinite(p[k]),
         ) &&
+        Number.isFinite(p.lastDash) &&
+        Object.hasOwn(ROLES, p.role) &&
+        ["none", "capacitor", "focus", "anchor"].includes(p.mod) &&
         Math.abs(p.x) <= FLIGHT_LIMIT &&
         p.hp >= 0 &&
         p.hp <= 3,

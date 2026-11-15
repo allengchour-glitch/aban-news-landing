@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Neon-Flug – Resonanz, öffentliche Raumsuche und Rollen ·15.11.2026
+
+Erweiterung des ungemergten Zweigs `codex/neon-flug-koop` / PR3156: Resonanzband, Doppelringe, synchroner Dash, begrenzter Overdrive, öffentliche Raumsuche, Rufnamen, drei Rollen, lokale Flug-XP und drei freischaltbare Module. Shared-MP unverändert; Protokoll und Raumpräfix auf v2, damit alte Clients nicht in neue Flüge geraten. Keine erfundenen Spielerzahlen, keine globale Account-/Ranglistenbehauptung. Öffentlicher Verbindungsnachweis weiterhin durch das bereits gemeldete Cloud-Zertifikatsproblem blockiert, keine erneute CA-Änderung. Gemessen:24 Simulations-/Profilprüfungen sowie lokale Zwei-Browser-Suche, Belegungsanzeige, synchroner Schub und Modulübernahme geprüft. Abnahme und aktuelle Testergebnisse im Entwurfs-PR; nicht veröffentlicht.
+
+
 ## Codex: Neon-Flug als Koop-Kampagne, Entwurf ·15.11.2026
 
 Besitzer: Spiel für Spiel fertigstellen, stärkere Grafik/Animationen, Online-Koop bevorzugt und breiterer Flugraum. Arbeit isoliert auf `codex/neon-flug-koop`: drei Strecken, zwei Gleiter, Rettung, gemeinsame Abschlüsse, neues Hauptmotiv und Felsmaterial, eigener Klang, Touch-Bedienung und gespeicherte Kapitel. Gemeinsames `js/mp.js` unverändert. Nur Flug-/Wildnis-Header gezielt erweitert. Gemessen:13 Simulationstests und lokale WebRTC-Zweibrowser-Gegenprobe bestanden; öffentliche Vermittlung wegen Cloud-Browser-Zertifikat nicht nachgewiesen. Automatische Prüfung verweigerte zusätzlichen permanenten CA-Eintrag, nicht umgangen. Nicht als veröffentlicht oder auf echten Handys freigegeben bezeichnen. Details: `spiele-dev/neon-flug/README.md` und Entwurfs-PR dieses Zweigs. Andere Spiele werden erst nach Abnahme dieses Spiels begonnen.

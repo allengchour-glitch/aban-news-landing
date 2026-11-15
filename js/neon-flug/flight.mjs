@@ -1,4 +1,14 @@
 import {
+  ROLES,
+  MODULES,
+  nickname,
+  loadout,
+  profile,
+  award,
+  rank,
+} from "./profile.mjs";
+import { GAME, findRooms, advertise, publicSession } from "./directory.mjs";
+import {
   VERSION,
   LEVELS,
   FLIGHT_LIMIT,
@@ -44,6 +54,136 @@ let settings = {
 let records = read("aether-records", { best: [0, 0, 0], medals: [0, 0, 0] });
 if (!Array.isArray(records.best) || !Array.isArray(records.medals))
   records = { best: [0, 0, 0], medals: [0, 0, 0] };
+let pilotProfile = profile(read("aether-pilot", {}));
+let pilotSetups = [loadout(pilotProfile), loadout(null)],
+  pilotNames = [pilotProfile.name, "Mitspieler"];
+let cancelScan = null,
+  stopAdvert = null,
+  scanId = 0,
+  xpMessage = "",
+  previousNotice = "",
+  resonanceSound = false;
+function helloPacket() {
+  return { t: "hello", name: pilotProfile.name, setup: loadout(pilotProfile) };
+}
+function newState(level = 0) {
+  return createState(level, pilotSetups);
+}
+function refreshProfile() {
+  $("pilotRank").textContent = "Rang " + rank(pilotProfile.xp);
+  $("profileProgress").textContent =
+    `${pilotProfile.name} · Flugrang ${rank(pilotProfile.xp)} · ${pilotProfile.xp} XP · ${pilotProfile.missions} abgeschlossene Kapitel`;
+  $("pilotName").value = pilotProfile.name;
+  $("pilotRole").value = pilotProfile.role;
+  $("roleDetail").textContent = ROLES[pilotProfile.role].tag;
+  const select = $("pilotModule");
+  select.replaceChildren();
+  for (const [id, m] of Object.entries(MODULES)) {
+    const o = document.createElement("option");
+    o.value = id;
+    o.textContent = m.name + (m.xp > pilotProfile.xp ? ` · ab ${m.xp} XP` : "");
+    o.disabled = m.xp > pilotProfile.xp;
+    select.append(o);
+  }
+  select.value = pilotProfile.mod;
+  $("moduleDetail").textContent = MODULES[pilotProfile.mod].tag;
+}
+function saveProfile() {
+  pilotProfile = profile({
+    ...pilotProfile,
+    name: $("pilotName").value,
+    role: $("pilotRole").value,
+    mod: $("pilotModule").value,
+  });
+  write("aether-pilot", pilotProfile);
+  if (session && canEquip()) {
+    if (host) applyEquipment(local, loadout(pilotProfile), pilotProfile.name);
+    else
+      send({
+        t: "equipment",
+        setup: loadout(pilotProfile),
+        name: pilotProfile.name,
+      });
+  }
+  refreshProfile();
+}
+function canEquip() {
+  return (
+    ["briefing", "resultScreen"].includes(screen) &&
+    ["briefing", "result", "failed", "victory"].includes(state.phase)
+  );
+}
+function applyEquipment(i, setup, name) {
+  pilotSetups[i] = loadout(setup);
+  pilotNames[i] = nickname(name);
+  if (state.phase === "briefing")
+    Object.assign(state.players[i], pilotSetups[i]);
+  stageReady = [false, false];
+  updateReadyLabels();
+  sendSnapshot();
+}
+$("upgradeBtn").onclick = () => {
+  refreshProfile();
+  $("hangar").showModal();
+};
+$("hangarBtn").onclick = () => {
+  refreshProfile();
+  $("hangar").showModal();
+};
+for (const id of ["pilotName", "pilotRole", "pilotModule"])
+  $(id).addEventListener("change", saveProfile);
+function stopScan() {
+  scanId++;
+  if (cancelScan) {
+    cancelScan();
+    cancelScan = null;
+  }
+  $("refreshRooms").disabled = false;
+}
+function searchRooms() {
+  stopScan();
+  show("matchScreen");
+  const id = scanId;
+  $("roomList").replaceChildren();
+  $("refreshRooms").disabled = true;
+  $("matchStatus").textContent =
+    "Erreichbare öffentliche Flüge werden gesucht …";
+  let count = 0;
+  cancelScan = findRooms({
+    found: (r) => {
+      if (id !== scanId || screen !== "matchScreen") return;
+      count++;
+      const li = document.createElement("li");
+      li.className = "room-item";
+      const info = document.createElement("div"),
+        name = document.createElement("strong"),
+        detail = document.createElement("span");
+      name.textContent = r.name;
+      detail.textContent = r.full
+        ? "2 / 2 Piloten · im Flug"
+        : "1 / 2 Piloten · wartet auf dich";
+      info.append(name, detail);
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "secondary";
+      b.textContent = r.full ? "Besetzt" : "Mitfliegen →";
+      b.disabled = r.full;
+      b.onclick = () => connect(false, r.code);
+      li.append(info, b);
+      $("roomList").append(li);
+    },
+    done: () => {
+      if (id !== scanId || screen !== "matchScreen") return;
+      $("refreshRooms").disabled = false;
+      $("matchStatus").textContent = count
+        ? `${count} erreichbare öffentliche Flüge gefunden.`
+        : "Kein erreichbarer Flug gefunden. Öffne einen öffentlichen Raum oder lade einen Freund ein. Eine eingeschränkte Verbindung kann die Suche verhindern.";
+    },
+  });
+}
+$("findBtn").onclick = searchRooms;
+$("refreshRooms").onclick = searchRooms;
+$("publicHostBtn").onclick = () => connect(true, undefined, true);
 let view;
 try {
   view = new FlightView($("scene"));
@@ -84,15 +224,24 @@ let pointer = null,
   prevPhase = "",
   oldRings = [0, 0],
   oldHp = [3, 3],
+  lastPanelFrame = 0,
   lastFrame = performance.now(),
   accumulator = 0,
   previousScores = [0, 0, 0],
   trainingGuide = false,
   rescueHeld = false;
-const screens = ["menu", "lobby", "briefing", "pauseScreen", "resultScreen"];
+const screens = [
+  "menu",
+  "matchScreen",
+  "lobby",
+  "briefing",
+  "pauseScreen",
+  "resultScreen",
+];
 function show(name) {
   screen = name;
   if (name === "menu") {
+    refreshProfile();
     const unlocked = Math.min(2, Number(records.unlocked) || 0);
     $("levelPicker").hidden = unlocked === 0;
     for (const o of $("startChapter").options)
@@ -133,6 +282,8 @@ function sendSnapshot() {
       s: snapshot(state),
       ready: stageReady,
       training: false,
+      setups: pilotSetups,
+      names: pilotNames,
     });
 }
 function saveSettings() {
@@ -197,6 +348,11 @@ function release() {
   rescueHeld = false;
 }
 function closeSession() {
+  stopScan();
+  if (stopAdvert) {
+    stopAdvert();
+    stopAdvert = null;
+  }
   if (session) {
     const old = session;
     session = null;
@@ -242,6 +398,9 @@ function setLobbyStatus(text) {
   $("lobbyStatus").textContent = text;
 }
 function lobbyUI() {
+  for (let i = 0; i < 2; i++)
+    $("pilot" + i + "Name").textContent =
+      pilotNames[i] + " · " + ROLES[pilotSetups[i].role].name;
   const s = host ? lobbyReady : [lobbyReady[0], lobbyReady[1]];
   $("pilot0Status").textContent = s[0]
     ? "Bereit"
@@ -262,7 +421,7 @@ function lobbyUI() {
   if (connected && hello)
     setLobbyStatus("Ihr seid verbunden. Bestätigt beide eure Bereitschaft.");
 }
-function connect(asHost, code) {
+function connect(asHost, code, publicRoom = false) {
   enableAudio();
   closeSession();
   training = false;
@@ -270,7 +429,13 @@ function connect(asHost, code) {
   local = asHost ? 0 : 1;
   lobbyReady = [false, false];
   stageReady = [false, false];
-  state = createState();
+  pilotSetups = asHost
+    ? [loadout(pilotProfile), loadout(null)]
+    : [loadout(null), loadout(pilotProfile)];
+  pilotNames = asHost
+    ? [pilotProfile.name, "Mitspieler"]
+    : ["Mitspieler", pilotProfile.name];
+  state = newState();
   stageKey = "";
   storedKey = "";
   previousScores = [0, 0, 0];
@@ -284,18 +449,32 @@ function connect(asHost, code) {
     if (!window.MP)
       throw Error("Das Verbindungsmodul fehlt. Bitte lade die Seite erneut.");
     session = asHost
-      ? window.MP.host("aether-v1")
-      : window.MP.join("aether-v1", code);
+      ? publicRoom
+        ? publicSession()
+        : window.MP.host(GAME)
+      : window.MP.join(GAME, code);
   } catch (e) {
     setLobbyStatus(e.message);
     return;
   }
   lastInputAt = performance.now();
   const own = session;
+  if (publicRoom && asHost)
+    stopAdvert = advertise(own, () => ({
+      name: pilotProfile.name,
+      full: connected || screen !== "lobby",
+    }));
   $("roomCode").textContent = own.code;
   session.onMessage((m) => {
     if (session !== own) return;
-    receive(m);
+    try {
+      receive(m);
+    } catch (error) {
+      console.error(
+        "Koop-Nachricht konnte nicht verarbeitet werden:",
+        error.message,
+      );
+    }
   });
   session.onStatus((st) => {
     if (session !== own) return;
@@ -310,7 +489,7 @@ function connect(asHost, code) {
       connected = true;
       netLost = false;
       hello = false;
-      send({ t: "hello" });
+      send(helloPacket());
       lobbyUI();
       if (state.phase === "paused") {
         $("pauseReason").textContent =
@@ -344,7 +523,7 @@ function connect(asHost, code) {
     .then(() => {
       if (session !== own) return;
       connected = true;
-      send({ t: "hello" });
+      send(helloPacket());
       lobbyUI();
     })
     .catch((e) => {
@@ -356,9 +535,15 @@ function connect(asHost, code) {
     });
   networkTimer = setInterval(() => {
     if (session !== own || !connected) return;
-    if (!hello) send({ t: "hello" });
+    if (!hello) send(helloPacket());
     if (host) {
-      if (screen === "lobby") send({ t: "lobby", ready: lobbyReady });
+      if (screen === "lobby")
+        send({
+          t: "lobby",
+          ready: lobbyReady,
+          names: pilotNames,
+          setups: pilotSetups,
+        });
       else sendSnapshot();
     }
   }, 150);
@@ -366,18 +551,34 @@ function connect(asHost, code) {
 function receive(m) {
   if (!m || m.v !== VERSION || typeof m.t !== "string") return;
   if (m.t === "hello") {
+    if (screen === "lobby") {
+      pilotSetups[1 - local] = loadout(m.setup);
+      pilotNames[1 - local] = nickname(m.name);
+    }
     hello = true;
-    send({ t: "welcome" });
+    send({
+      t: "welcome",
+      name: pilotProfile.name,
+      setup: loadout(pilotProfile),
+    });
     lobbyUI();
     if (host && screen !== "lobby") sendSnapshot();
     return;
   }
   if (m.t === "welcome") {
+    if (screen === "lobby") {
+      pilotSetups[1 - local] = loadout(m.setup);
+      pilotNames[1 - local] = nickname(m.name);
+    }
     hello = true;
     lobbyUI();
     return;
   }
   if (host) {
+    if (m.t === "equipment" && canEquip()) {
+      applyEquipment(1, m.setup, m.name);
+      return;
+    }
     if (m.t === "ready" && screen === "lobby") {
       lobbyReady[1] = true;
       lobbyUI();
@@ -419,9 +620,17 @@ function receive(m) {
       m.ready.length === 2 &&
       screen === "lobby"
     ) {
+      if (Array.isArray(m.names) && m.names.length === 2)
+        pilotNames = m.names.map(nickname);
+      if (Array.isArray(m.setups) && m.setups.length === 2)
+        pilotSetups = m.setups.map(loadout);
       lobbyReady = m.ready.map(Boolean);
       lobbyUI();
     } else if (m.t === "state" && validSnapshot(m.s)) {
+      if (Array.isArray(m.setups) && m.setups.length === 2)
+        pilotSetups = m.setups.map(loadout);
+      if (Array.isArray(m.names) && m.names.length === 2)
+        pilotNames = m.names.map(nickname);
       lastSnapshot = performance.now();
       const old = state;
       state = {
@@ -444,7 +653,7 @@ function receive(m) {
 function tryLobbyStart() {
   if (host && connected && hello && lobbyReady.every(Boolean)) {
     stageReady = [false, false];
-    state = createState(
+    state = newState(
       clamp(
         Number($("startChapter").value) || 0,
         0,
@@ -503,6 +712,7 @@ for (const id of ["launchBtn", "nextBtn", "resumeBtn"])
 function updateReadyLabels() {
   const ready = stageReady[local],
     other = stageReady[1 - local];
+  $("upgradeBtn").disabled = ready;
   $("launchBtn").disabled = ready;
   $("nextBtn").disabled = ready;
   $("resumeBtn").disabled = ready || (!training && (!connected || netLost));
@@ -539,7 +749,7 @@ function tryAdvance() {
       exit();
       return;
     }
-    state = createState(phase === "failed" ? state.level : state.level + 1);
+    state = newState(phase === "failed" ? state.level : state.level + 1);
     release();
   }
   phaseUI();
@@ -571,7 +781,9 @@ $("trainingBtn").onclick = () => {
   local = 0;
   training = true;
   connected = false;
-  state = createState();
+  pilotSetups = [loadout(pilotProfile), loadout(null)];
+  pilotNames = [pilotProfile.name, "Autopilot"];
+  state = newState();
   stageReady = [false, false];
   storedKey = "";
   stageKey = "";
@@ -586,6 +798,15 @@ function storeResult() {
   )
     return;
   storedKey = key();
+  const progress = award(pilotProfile, state);
+  pilotProfile = progress.profile;
+  write("aether-pilot", pilotProfile);
+  xpMessage =
+    `+${progress.gained} Flug-XP · Rang ${rank(pilotProfile.xp)}` +
+    (progress.unlocked.length
+      ? " · Neu: " + progress.unlocked.map((k) => MODULES[k].name).join(", ")
+      : "");
+
   previousScores[state.level] = state.score;
   records.best[state.level] = Math.max(
     Number(records.best[state.level]) || 0,
@@ -617,6 +838,7 @@ function storeResult() {
 function phaseUI() {
   const l = LEVELS[state.level];
   if (stageKey !== key()) {
+    previousNotice = "";
     stageKey = key();
     oldRings = state.players.map((p) => p.rings);
     oldHp = state.players.map((p) => p.hp);
@@ -635,6 +857,7 @@ function phaseUI() {
     audio.silence();
   } else if (["result", "failed", "victory"].includes(state.phase)) {
     storeResult();
+    $("upgradeBtn").hidden = training;
     const fail = state.phase === "failed",
       win = state.phase === "victory";
     $("resultTag").textContent = fail
@@ -657,6 +880,11 @@ function phaseUI() {
       : win
         ? "Ihr habt die Schlucht durchquert, den Sturm bezwungen und den Nachtkern entzündet. Zusammen."
         : l.subtitle + " Das nächste Kapitel wartet.";
+    $("xpResult").textContent = training
+      ? "Training · keine Flug-XP"
+      : fail
+        ? "Ein neuer Anlauf zählt. Eure Ausrüstung bleibt erhalten."
+        : xpMessage;
     $("resultScore").textContent = state.score.toLocaleString("de-CH");
     $("resultRings").textContent = state.players.reduce(
       (n, p) => n + p.rings,
@@ -799,6 +1027,10 @@ function autopilot() {
     state.players[0].hp === 0
       ? state.players[0].x
       : (soon.find((e) => e.type === "ring")?.x ?? 2);
+  const duet = soon.find((e) => e.type === "duet");
+  if (duet && state.players[0].hp > 0) target = state.players[0].x < 0 ? 7 : -7;
+  if (state.players[0].dash > 0 && state.players[1].cooldown <= 0)
+    dash(state, 1);
   const hazard = soon.find((e) => e.type === "hazard");
   if (hazard && Math.abs(target - eventX(hazard, state.t)) < 2.5)
     target = target < 0 ? 5 : -5;
@@ -806,6 +1038,21 @@ function autopilot() {
   if (state.players[1].hp === 0) state.players[1].down = 20;
 }
 function hud(dt) {
+  const over = state.overdrive > 0;
+  document.body.classList.toggle("overdrive", over);
+  $("resonanceFill").style.width = (over ? 100 : state.resonance) + "%";
+  $("resonanceValue").textContent = over
+    ? "OVERDRIVE " + Math.ceil(state.overdrive) + "s"
+    : Math.floor(state.resonance) + "%";
+  const noticeKey =
+    state.notice + ":" + state.duets + ":" + state.syncs + ":" + state.rescues;
+  if (state.notice && noticeKey !== previousNotice) {
+    notice(state.notice);
+    previousNotice = noticeKey;
+    if (state.notice === "ZWILLINGSSCHUB" || state.notice === "RESONANZFLUG")
+      audio.effect("rescue");
+  }
+
   const p = state.players[local],
     q = state.players[1 - local];
   $("hudChapter").textContent =
@@ -841,7 +1088,10 @@ function hud(dt) {
     oldRings[i] = state.players[i].rings;
     oldHp[i] = state.players[i].hp;
   }
-  $("dashFill").style.width = Math.max(0, 1 - p.cooldown / 6) * 100 + "%";
+  const fullCooldown =
+    ROLES[p.role].cooldown - (p.mod === "capacitor" ? 0.7 : 0);
+  $("dashFill").style.width =
+    Math.max(0, 1 - p.cooldown / fullCooldown) * 100 + "%";
   $("dashText").textContent =
     p.cooldown > 0 ? Math.ceil(p.cooldown) + "s" : "DASH";
   $("dashBtn").disabled = p.cooldown > 0 || p.hp <= 0;
@@ -851,7 +1101,7 @@ function hud(dt) {
     $("rescueNotice").textContent =
       p.hp <= 0
         ? `Dein Partner kann dich retten. Noch ${Math.ceil(p.down)} Sekunden.`
-        : `Flieg zum Partner und halte E / RETTEN · ${Math.floor((q.rescue / 2) * 100)}%`;
+        : `Flieg zum Partner und halte E / RETTEN · ${Math.floor((q.rescue / ROLES[p.role].rescue) * 100)}%`;
   if (noticeTimer > 0) {
     noticeTimer -= dt;
     if (noticeTimer <= 0) $("notice").style.opacity = 0;
@@ -892,12 +1142,18 @@ function frame(now) {
     sendInput();
     lastSent = now;
   }
-  if (state.phase !== prevPhase && screen !== "menu" && screen !== "lobby") {
+  if (
+    state.phase !== prevPhase &&
+    screen !== "menu" &&
+    screen !== "lobby" &&
+    screen !== "matchScreen"
+  ) {
     stageReady = [false, false];
     phaseUI();
     sendSnapshot();
   }
   if (screen === "game" || screen === "pauseScreen") hud(dt);
+  else document.body.classList.remove("overdrive");
   audio.update(screen === "game" && state.phase === "playing", state.level);
   const renderState =
     !host && state.phase === "playing"
@@ -909,8 +1165,14 @@ function frame(now) {
           ),
         }
       : state;
-  if (screen !== "menu" && screen !== "lobby")
+  if (
+    screen !== "menu" &&
+    screen !== "lobby" &&
+    (screen === "game" || now - lastPanelFrame > 250)
+  ) {
     view.update(renderState, local, screen, dt);
+    lastPanelFrame = now;
+  }
   requestAnimationFrame(frame);
 }
 saveSettings();

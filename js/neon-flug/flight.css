@@ -1139,3 +1139,209 @@ body.reduced-motion * {
   font-size: 11px;
   min-height: 44px;
 }
+.room-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: grid;
+  gap: 9px;
+  max-height: 230px;
+  overflow: auto;
+}
+.room-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: #0b1b2999;
+}
+.room-item strong {
+  font-size: 14px;
+  display: block;
+}
+.room-item span {
+  font-size: 10px;
+  color: var(--muted);
+  display: block;
+  margin-top: 6px;
+}
+.room-item button {
+  min-height: 44px;
+}
+.match-panel {
+  max-width: 650px;
+}
+.hangar-dialog {
+  width: min(92vw, 600px);
+}
+.hangar-dialog input[type="text"] {
+  min-height: 44px;
+  max-width: 55%;
+  background: #0d1b29;
+  color: var(--paper);
+  border: 1px solid var(--line);
+  padding: 10px;
+}
+.hangar-dialog select {
+  max-width: 60%;
+}
+.xp-result {
+  font-size: 13px;
+  color: var(--cyan);
+  line-height: 1.7;
+}
+.resonance-hud {
+  position: absolute;
+  left: 4.5vw;
+  top: 270px;
+  width: 280px;
+  padding: 15px;
+  background: #081826bb;
+  border: 1px solid var(--line);
+}
+.resonance-hud > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.resonance-hud strong {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--cyan);
+}
+.resonance-track {
+  height: 3px;
+  margin: 12px 0 9px;
+  background: #ffffff22;
+}
+.resonance-track i {
+  height: 3px;
+  display: block;
+  background: var(--cyan);
+  width: 0;
+  transition: width 0.25s;
+}
+.resonance-hud > span {
+  font-size: 9px;
+  color: var(--muted);
+}
+#hangarBtn {
+  padding-bottom: 0;
+  min-height: 30px;
+}
+#trainingBtn {
+  padding-top: 10px;
+}
+.hero-actions {
+  max-width: 600px;
+}
+.hero-actions button {
+  gap: 13px;
+  padding-inline: 17px;
+}
+#hostBtn {
+  background: #102331c9;
+  color: var(--paper);
+  border-color: var(--line);
+}
+body.overdrive .resonance-hud {
+  border-color: var(--amber);
+  box-shadow: 0 0 30px #e3ae7733;
+}
+body.overdrive .resonance-track i {
+  background: var(--amber);
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  .resonance-hud {
+    top: auto;
+    bottom: 85px;
+    width: 220px;
+    padding: 10px;
+  }
+  .resonance-hud > span {
+    font-size: 8px;
+  }
+  .resonance-track {
+    margin: 8px 0;
+  }
+  .room-list {
+    max-height: 140px;
+  }
+  #hangarBtn {
+    position: absolute;
+    left: 390px;
+    bottom: 130px;
+  }
+  .hero-actions {
+    max-width: 700px;
+  }
+  .hero-actions button {
+    padding: 11px 12px;
+    font-size: 11px;
+    gap: 7px;
+  }
+  .result-panel .xp-result {
+    font-size: 11px;
+    margin: 8px 0;
+  }
+  .brief-panel .brief-note {
+    font-size: 10px;
+  }
+  .hero-copy {
+    max-width: 760px;
+  }
+}
+@media (max-width: 700px) and (orientation: portrait) {
+  .hero-copy {
+    padding-bottom: 150px;
+  }
+  .hero-actions button {
+    width: 250px;
+  }
+  .hero-footer {
+    position: relative;
+    margin-top: 0;
+    padding-bottom: 20px;
+    left: auto;
+    right: auto;
+    margin-inline: 7vw;
+  }
+  .resonance-hud {
+    top: 220px;
+    width: 220px;
+  }
+  .room-item {
+    padding: 12px;
+  }
+  .room-item button {
+    font-size: 10px;
+    padding: 10px;
+  }
+  .hangar-dialog label {
+    gap: 10px;
+    font-size: 12px;
+  }
+}
+
+#upgradeBtn {
+  margin-left: 8px;
+  min-height: 48px;
+}
+.pilot-card strong {
+  display: block;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.pilot-card {
+  min-width: 0;
+}
+/* Lange Briefings und Ausrüstung bleiben auch auf flachen Handybildschirmen erreichbar. */
+.panel-screen {
+  align-items: flex-start;
+}
+.panel-screen .panel {
+  margin-block: auto;
+  flex-shrink: 0;
+}

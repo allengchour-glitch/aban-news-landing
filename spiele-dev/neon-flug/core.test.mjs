@@ -133,3 +133,70 @@ test("Am Rand stehen bleiben umgeht die Hindernisse nicht", () => {
   tick(s, 91, [{ target: -9 }, { target: 9 }]);
   assert.equal(s.phase, "failed");
 });
+
+test("Doppelringe belohnen Aufteilung, nicht zwei Piloten auf derselben Seite", () => {
+  const event = routeCache[0].find((e) => e.type === "duet");
+  for (const together of [false, true]) {
+    const s = createState();
+    start(s);
+    s.t = event.t - 0.005;
+    s.players[0].x = -7;
+    s.players[1].x = together ? -7 : 7;
+    step(s, [{}, {}], 0.01);
+    assert.equal(s.duets, together ? 0 : 1);
+    assert.equal(s.resonance, together ? 0 : 25);
+  }
+});
+test("Zwillingsschub verlangt beide lebenden Piloten und ein enges Zeitfenster", () => {
+  const s = createState();
+  start(s);
+  assert(dash(s, 0));
+  tick(s, 0.2);
+  assert(dash(s, 1));
+  assert.equal(s.syncs, 1);
+  assert.equal(s.resonance, 15);
+  assert(!dash(s, 1));
+  const late = createState();
+  start(late);
+  dash(late, 0);
+  tick(late, 0.5);
+  dash(late, 1);
+  assert.equal(late.syncs, 0);
+});
+test("Vollständige Resonanz erzeugt begrenzten Overdrive, nicht dauernde Unverwundbarkeit", async () => {
+  const { charge } = await import("../../js/neon-flug/core.mjs");
+  const s = createState();
+  start(s);
+  charge(s, 100);
+  assert.equal(s.overdrive, 5);
+  assert.equal(s.resonance, 0);
+  charge(s, 100);
+  assert.equal(s.resonance, 0);
+  tick(s, 6);
+  assert.equal(s.overdrive, 0);
+  assert.equal(s.players[0].inv, 0);
+});
+test("Retter und Rettungsanker verändern die tatsächliche Rettung", () => {
+  const s = createState(0, [{}, { role: "medic", mod: "anchor" }]);
+  start(s);
+  Object.assign(s.players[0], { x: 0, hp: 0, down: 20 });
+  s.players[1].x = 2.9;
+  tick(s, 1.3, [{}, { rescue: true }]);
+  assert.equal(s.players[0].hp, 3);
+  assert.equal(s.rescues, 1);
+  assert.equal(s.resonance, 25);
+});
+test("Rollen und Module bleiben Teil des validierten Snapshots", () => {
+  const s = createState(1, [
+    { role: "pulse", mod: "capacitor" },
+    { role: "medic" },
+  ]);
+  start(s);
+  dash(s, 0);
+  assert.equal(s.players[0].dash, 0.8);
+  assert(Math.abs(s.players[0].cooldown - 4.7) < 0.001);
+  assert(validSnapshot(snapshot(s)));
+  const bad = snapshot(s);
+  bad.players[0].role = "__proto__";
+  assert(!validSnapshot(bad));
+});

@@ -1,4 +1,4 @@
-import { LEVELS, routeCache, eventX, clamp } from "./core.mjs";
+import { LEVELS, routeCache, eventX, clamp, LANE_WIDTH } from "./core.mjs";
 const T = window.THREE;
 function mesh(g, m, x = 0, y = 0, z = 0) {
   const a = new T.Mesh(g, m);
@@ -399,6 +399,22 @@ export class FlightView {
     this.scene.add(this.arch);
     this.ships = [ship(0x80e9e3, this.tex), ship(0xffab69, this.tex)];
     for (const a of this.ships) this.scene.add(a);
+    const linkGeo = new T.BufferGeometry();
+    linkGeo.setAttribute(
+      "position",
+      new T.BufferAttribute(new Float32Array(33 * 3), 3),
+    );
+    this.link = new T.Line(
+      linkGeo,
+      new T.LineBasicMaterial({
+        color: 0x85e7dd,
+        transparent: true,
+        opacity: 0.5,
+        blending: T.AdditiveBlending,
+        depthWrite: false,
+      }),
+    );
+    this.scene.add(this.link);
     this.trails = [];
     for (let i = 0; i < 2; i++) {
       const geom = new T.BufferGeometry(),
@@ -549,7 +565,7 @@ export class FlightView {
     this.events = [];
     for (const e of routeCache[i]) {
       const g = new T.Group();
-      if (e.type === "ring") {
+      if (e.type === "ring" || e.type === "duet") {
         g.add(mesh(new T.TorusGeometry(2, 0.11, 8, 40), this.ringMat));
         g.add(mesh(new T.TorusGeometry(1.85, 0.055, 6, 48), this.ringGlow));
         const halo = new T.Sprite(
@@ -597,6 +613,12 @@ export class FlightView {
           g.add(q);
         }
         g.add(mesh(new T.ConeGeometry(0.45, 0.65, 3), this.warnMat, 0, 4, 0));
+      }
+      if (e.type === "duet") {
+        const pair = g.clone(true);
+        for (const child of g.children) child.position.x -= LANE_WIDTH;
+        for (const child of pair.children) child.position.x += LANE_WIDTH;
+        g.add(pair);
       }
       g.userData.event = e;
       this.scene.add(g);
@@ -653,7 +675,7 @@ export class FlightView {
       const e = g.userData.event,
         z = -(e.t - tm) * 22;
       g.visible = playing && z < 16 && z > -330;
-      g.position.set(eventX(e, tm), 0.7, z);
+      g.position.set(e.type === "duet" ? 0 : eventX(e, tm), 0.7, z);
       if (e.type === "ring") g.rotation.z = this.reduced ? 0 : tm * 0.3 + e.id;
     });
     this.beacon.visible = playing;
@@ -687,7 +709,7 @@ export class FlightView {
         Math.floor(this.clock * 12) % 2
       );
       g.rotation.z += p && p.hp === 0 ? 0.7 : 0;
-      const boost = p?.dash > 0;
+      const boost = p?.dash > 0 || s?.overdrive > 0;
       g.children.forEach((c) => {
         if (c.name === "flame") {
           c.scale.y = boost ? 2.4 : 1 + Math.sin(this.clock * 35) * 0.12;
@@ -701,6 +723,29 @@ export class FlightView {
       a.setXYZ(0, g.position.x, g.position.y, g.position.z + 1.7);
       a.needsUpdate = true;
       this.trails[i].visible = playing && p?.hp > 0;
+    }
+    this.link.visible = playing && !!s;
+    if (s) {
+      const a = this.ships[0].position,
+        b = this.ships[1].position,
+        points = this.link.geometry.attributes.position;
+      for (let j = 0; j < 33; j++) {
+        const f = j / 32;
+        points.setXYZ(
+          j,
+          a.x + (b.x - a.x) * f,
+          0.8 +
+            Math.sin(f * Math.PI) * (0.35 + Math.sin(this.clock * 4) * 0.05),
+          a.z + (b.z - a.z) * f,
+        );
+      }
+      points.needsUpdate = true;
+      const danger = s.players.some((p) => p.hp === 0);
+      this.link.material.color.set(
+        danger ? 0xff946b : s.overdrive > 0 ? 0xffd894 : 0x85e7dd,
+      );
+      this.link.material.opacity =
+        s.overdrive > 0 ? 0.95 : 0.22 + (s.resonance || 0) * 0.005;
     }
     if (this.rain.visible) {
       this.rain.position.y = -(this.clock * 18) % 12;
@@ -724,7 +769,7 @@ export class FlightView {
     this.camera.position.x += (targetX - this.camera.position.x) * dt * 3;
     this.camera.position.y = playing ? 4.3 : 5.5;
     this.camera.position.z = playing ? 13 : 16;
-    const dash = s?.players[local]?.dash > 0;
+    const dash = s?.players[local]?.dash > 0 || s?.overdrive > 0;
     this.camera.fov +=
       ((dash && !this.reduced ? 78 : 70) - this.camera.fov) *
       Math.min(1, dt * 5);

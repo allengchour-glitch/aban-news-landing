@@ -69,8 +69,11 @@
           </select>
         </div>
         <div class="hero-actions">
+          <button type="button" id="findBtn" class="primary">
+            Mitspieler finden <span>→</span>
+          </button>
           <button type="button" id="hostBtn" class="primary">
-            Gemeinsam starten <span>→</span></button
+            Freunde einladen <span>→</span></button
           ><button type="button" id="joinToggle" class="secondary">
             Raum beitreten <span>＋</span>
           </button>
@@ -91,6 +94,9 @@
             /><button class="primary" type="submit">Beitreten →</button>
           </div>
         </form>
+        <button type="button" id="hangarBtn" class="text-btn">
+          Dein Pilot · <span id="pilotRank">Rang 1</span> →
+        </button>
         <button type="button" id="trainingBtn" class="text-btn">
           Erst die Steuerung kennenlernen <span>→</span>
         </button>
@@ -115,6 +121,34 @@
         <a href="#" id="creditsBtn">Credits &amp; Infos →</a>
       </footer>
     </main>
+    <section id="matchScreen" class="screen panel-screen" hidden>
+      <div class="panel match-panel">
+        <p class="eyebrow">OFFENE FLÜGE</p>
+        <h2>Dein nächster<br />Flügelmann.</h2>
+        <p class="muted">
+          Suche einen offenen Flug oder öffne selbst einen Raum für einen neuen
+          Mitspieler.
+        </p>
+        <p id="matchStatus" role="status" class="small muted">
+          Suche wird vorbereitet …
+        </p>
+        <ul id="roomList" class="room-list" aria-label="Erreichbare Flüge"></ul>
+        <div class="button-row">
+          <button type="button" id="refreshRooms" class="secondary">
+            Erneut suchen</button
+          ><button type="button" id="publicHostBtn" class="primary">
+            Öffentlichen Flug öffnen →
+          </button>
+        </div>
+        <p class="small muted">
+          Angezeigt werden nur erreichbare öffentliche Räume. Private
+          Einladungen erscheinen hier nicht.
+        </p>
+        <button type="button" class="text-btn exitBtn">
+          Zurück zum Hangar
+        </button>
+      </div>
+    </section>
     <section id="lobby" class="screen panel-screen" hidden>
       <div class="panel lobby-panel">
         <p class="eyebrow">DER FLUG BEGINNT ZU ZWEIT</p>
@@ -130,14 +164,14 @@
           <div class="pilot-card">
             <span class="pilot-icon cyan">1</span>
             <div>
-              <strong>PILOT 01</strong
+              <strong id="pilot0Name">PILOT 01</strong
               ><span id="pilot0Status">Verbindet …</span>
             </div>
           </div>
           <div class="pilot-card">
             <span class="pilot-icon amber">2</span>
             <div>
-              <strong>PILOT 02</strong
+              <strong id="pilot1Name">PILOT 02</strong
               ><span id="pilot1Status">Wartet auf Mitspieler</span>
             </div>
           </div>
@@ -174,7 +208,7 @@
           </div>
           <div>
             <span class="instruction-number">03</span>
-            <h3>Bleib an seiner Seite.</h3>
+            <h3>Werdet ein Team.</h3>
             <p>
               Partner ausgefallen? Nah heranfliegen und E oder „Retten“ 2
               Sekunden halten.
@@ -182,8 +216,10 @@
           </div>
         </div>
         <p class="brief-note">
-          Sammelt Ringe, um Medaillen zu verdienen. Das Ziel erreicht ihr durch
-          gemeinsames Überleben.
+          Doppelringe: teilt euch auf beide Seiten auf. Dash fast gleichzeitig:
+          Zwillingsschub. Bei voller Resonanz fliegt ihr im gemeinsamen
+          Overdrive. Sammelt Ringe, um Medaillen zu verdienen. Das Ziel erreicht
+          ihr durch gemeinsames Überleben.
         </p>
         <button type="button" id="launchBtn" class="primary">
           Ich bin bereit →
@@ -232,6 +268,14 @@
           ><strong id="score">0</strong>
         </div>
       </div>
+      <div class="resonance-hud">
+        <div>
+          <span class="tiny-label">TEAM-RESONANZ</span
+          ><strong id="resonanceValue">0%</strong>
+        </div>
+        <div class="resonance-track"><i id="resonanceFill"></i></div>
+        <span id="resonanceHint">Doppelringe · Zwillingsschub · Rettung</span>
+      </div>
       <div id="notice" role="status"></div>
       <div id="rescueNotice" hidden role="status"></div>
       <div class="bottom-hud">
@@ -269,6 +313,7 @@
         <h2 id="resultTitle">Ein Licht.<br />Dank euch.</h2>
         <div id="medal" class="medal" role="img" aria-label="Medaille">✦</div>
         <p id="resultDescription" class="muted"></p>
+        <p id="xpResult" class="xp-result" role="status"></p>
         <div class="result-stats">
           <div>
             <span class="tiny-label">TEAM-PUNKTE</span
@@ -286,12 +331,58 @@
         <button type="button" id="nextBtn" class="primary">
           Nächstes Leuchtfeuer →
         </button>
+        <button type="button" id="upgradeBtn" class="secondary">
+          Pilot verbessern →
+        </button>
         <p id="resultReady" class="small muted" role="status"></p>
         <button type="button" class="text-btn exitBtn">
           Zurück zum Hangar
         </button>
       </div>
     </section>
+    <dialog id="hangar" class="hangar-dialog">
+      <button
+        type="button"
+        class="close-dialog"
+        data-close="hangar"
+        aria-label="Hangar schliessen"
+      >
+        ×
+      </button>
+      <p class="eyebrow">DEIN PILOT / DEINE LINIE</p>
+      <h2>Wachse mit<br />deinem Team.</h2>
+      <p id="profileProgress" class="muted"></p>
+      <label
+        >Rufname
+        <input
+          type="text"
+          id="pilotName"
+          maxlength="18"
+          autocomplete="nickname"
+          placeholder="Dein Rufname" /></label
+      ><label
+        >Deine Rolle
+        <select id="pilotRole">
+          <option value="navigator">Navigator</option>
+          <option value="medic">Retter</option>
+          <option value="pulse">Impuls</option>
+        </select></label
+      >
+      <p id="roleDetail" class="small muted"></p>
+      <label
+        >Ein aktives Modul
+        <select id="pilotModule"></select
+      ></label>
+      <p id="moduleDetail" class="small muted"></p>
+      <p class="small muted">
+        Gemeinsame Levelabschlüsse geben Flug-XP. Doppelringe und Rettungen
+        bringen zusätzliche XP. Ein Modul ist gleichzeitig aktiv. Fortschritt
+        wird auf diesem Gerät gespeichert.
+      </p>
+      <button type="button" class="primary" data-close="hangar">
+        Ausrüstung übernehmen →
+      </button>
+    </dialog>
     <dialog id="settings">
       <button
         type="button"
