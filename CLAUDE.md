@@ -94,11 +94,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   auswerten. **Beim Hauptmodell bleiben:** jedes Urteil (Bildqualität, Rechtliches, Lieferbarkeit), Code mit
   Geldwirkung, Shop-/Theme-Schreibzugriffe, Reviews. Ein Haiku-Befund ist eine **Behauptung** — Zahlen, die in eine
   Entscheidung gehen, am Rohergebnis stichprobenartig gegenprüfen (Messgerät zuerst prüfen).
-  **Unteragenten auf Opus (Besitzer 15.11. mit dem TikTok-Tipp «Fable plant, Opus führt aus» und «mache das»):**
-  `.claude/settings.json` setzt `CLAUDE_CODE_SUBAGENT_MODEL=opus`, bewusst OHNE `CLAUDE_CODE_SUBAGENT_MODEL_FORCE`
-  (sonst liefen auch die Haiku-Aufträge oben auf Opus). Laut Doku (code.claude.com, gelesen 15.11.) gilt der Wert für
-  jeden Unteragenten ohne eigene Modellangabe, nicht aber für die eingebauten Explore- und Plan-Agenten: läuft die
-  Sitzung auf Fable, diese mit `model: "opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
+  **Modell-Leiter für Unteragenten (Besitzer 15.11.: TikTok-Tipp «Fable plant, Opus führt aus» mit «mache das», dann
+  «nutze auch sonnet model» und «und haiku»; Auslegung meine, nicht bestätigt):** Haiku für Mechanisches (wie oben),
+  **Sonnet als Vorgabe** für Standardarbeit mit klarem Auftrag (Code nach Vorgabe mit Tests, Texte entwerfen, Dateien
+  und Läufe zusammenfassen, übersetzen), **Opus ausdrücklich** (`model: "opus"`) für jedes Urteil, Code mit Geldwirkung,
+  Shop- und Theme-Schreibzugriffe und Prüfer; Fable nur als Hauptmodell (stellt der Besitzer per `/model`). Technisch:
+  `.claude/settings.json` setzt `CLAUDE_CODE_SUBAGENT_MODEL=sonnet`, bewusst OHNE `CLAUDE_CODE_SUBAGENT_MODEL_FORCE`
+  (sonst würde jede Modellangabe überschrieben). Laut Doku (code.claude.com, gelesen 15.11.) gilt die Vorgabe für
+  Unteragenten ohne eigene Modellangabe, nicht für die eingebauten Explore- und Plan-Agenten: die erben das
+  Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
 **📌 2026-11-11 spät, nach 22 Uhr bis 23:15 UTC (🖼️ Kategorie-Bilder: 24 Sammlungen mit geprüftem Bild oder Alt-Text LIVE · 🛒 7 bewährte Produkte für Google bereinigt, Uhr als SKMEI · 📦 #1034 versendet gemeldet · 🛡️ Bild-Wächter gehärtet · 🎬 Scroll-Szene, Handy-Kopf, Weihnachts-Schaufenster im Bau; Besitzer «kat.banner optimieren und so», «kannst du ausführen drücken bei allem die es stimmt bei update», Kurzvideo cszEzZHQUgY «coole website», «10k website luxestyle», «aber sonst verbessern wie 10k webseite?», «selbstgestalten unbedingt»; Antworten auf Auswahlfragen: Scroll-Szene «Beides zusammen» (Produktseite und Startseite), Handy-Kopf «Jetzt umsetzen», Uhr «Hersteller SKMEI, dann Google», Schaufenster «Ja, Weihnachten jetzt»; PRs #3120 gemergt `d59084bd92`, #3124 gemergt `5de510f06c`, #3125 offen; Doku `dropship/kategorie-banner-v2/README.md`, `dropship/google-korrektur-1111/README.md`):**
