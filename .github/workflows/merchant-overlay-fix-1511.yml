@@ -36,6 +36,7 @@ jobs:
           case "$mode" in
             pruefen) LIVE=0 node dropship/bildfix-1111/ersetzen.mjs dropship/merchant-fix-1511/audit/overlay-replacement-plan.json merchant-overlay-fix ;;
             schreiben) LIVE=1 node dropship/bildfix-1111/ersetzen.mjs dropship/merchant-fix-1511/audit/overlay-replacement-plan.json merchant-overlay-fix ;;
+            fertig) echo 'Bereits bestätigte Bildkorrekturen; kein erneutes Schreiben' ;;
             *) exit 1 ;;
           esac
       - uses: actions/upload-artifact@v4

@@ -5,6 +5,7 @@ on:
     paths:
       - automation/merchant-fix-1511/patch_images.py
       - dropship/merchant-fix-1511/IMAGE-MODUS
+      - dropship/merchant-fix-1511/audit/image-patch-plan.json
       - .github/workflows/merchant-image-patch-1511.yml
 permissions:
   contents: read
