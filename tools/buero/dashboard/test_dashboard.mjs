@@ -215,6 +215,46 @@ for (const [name, breite, hoehe] of [['desktop', 1280, 900], ['handy', 390, 844]
   const liste = await p.evaluate(() => document.querySelectorAll('#kb-pane-liste .kb-row').length);
   pruefe(liste === BUERO_ZEILEN && liste > 0, T('Büro, Ansicht «Liste»: so viele Zeilen wie die Daten haben'), [liste, BUERO_ZEILEN]);
 
+  // Büro: Tabelle «Kanäle laut Metricool» (Kurzbericht Version 2, steht in der Ansicht «Liste» und im 2D-Büro).
+  // Ohne Bericht bleibt sie leer und unsichtbar; mit Bericht trägt sie eine Zeile je Kanal, und die Social-Zeilen nennen ihn.
+  const MC2 = daten.buero.map((r) => r.metricool).find((m) => m && m.version === 2 && Array.isArray(m.kanaele)) || null;
+  const kanalTabelle = (pane) => p.evaluate((sel) => [...document.querySelectorAll(sel + ' .kb-kanalwrap')].map((w) => ({
+    zeilen: [...w.querySelectorAll('.kb-kanaele tbody tr')].map((tr) => [...tr.children].map((c) => c.textContent)),
+    sichtbar: w.getClientRects().length > 0,
+    zeit: (w.querySelector('[data-draw="kanal-zeit"]') || {}).textContent,
+    // Die Zeile mit der Abfragezeit muss ganz im Bild stehen (am Handy scrollt nur die Tabelle seitlich, nicht die Zeile).
+    zeitImBild: (() => { const z = w.querySelector('.kb-kanalzeit'); if (!z || !z.getClientRects().length) return null; const r = z.getBoundingClientRect(), b = w.getBoundingClientRect(); return r.right <= b.right + 1 && z.scrollWidth <= z.clientWidth + 1; })()
+  })), pane);
+  const sollZeilen = MC2 ? MC2.kanaele.map((k) => [k.kanal, String(k.follower), String(k.aufrufe), String(k.heute), String(k.geplant), k.naechste_fest + ' + ' + k.naechste_entwurf]) : [];
+  const kl = await kanalTabelle('#kb-pane-liste');
+  if (MC2) {
+    pruefe(kl.length === 1 && kl[0].sichtbar && JSON.stringify(kl[0].zeilen) === JSON.stringify(sollZeilen), T('Liste: die Kanal-Tabelle zeigt jeden Metricool-Kanal mit seinen Zahlen'), [kl, sollZeilen]);
+    pruefe(kl.length === 1 && kl[0].zeit === MC2.auswertung + ', Abfrage ' + MC2.gemessen_text && kl[0].zeitImBild === true, T('Liste: die Tabelle nennt Auswertungszeitraum und Abfragezeit, ganz im Bild'), kl.map((t) => [t.zeit, t.zeitImBild]));
+    const social = await p.evaluate(() => Object.fromEntries(['social_meta', 'social_pinterest', 'yt_wachstum'].map((id) => {
+      const f = document.querySelector('#kb-pane-liste [data-field="befund"][data-where="id=' + id + '"]');
+      const n = document.querySelector('#kb-pane-liste [data-field="name"][data-where="id=' + id + '"]');
+      return [id, { befund: f ? f.textContent : null, name: n ? n.textContent : null }];
+    })));
+    const yt = MC2.kanaele.find((k) => k.kanal === 'YouTube');
+    pruefe(social.social_meta.name === 'Beiträge planen' && social.social_meta.befund.startsWith(MC2.geplante_eintraege + ' Einträge gehen im Zeitraum ' + MC2.zeitraum), T('Liste: «Beiträge planen» nennt die geplanten Einträge aus Metricool'), social.social_meta);
+    pruefe(social.social_pinterest.name === 'Kanalentwicklung' && social.social_pinterest.befund.startsWith('Aufrufe ' + MC2.auswertung + ': '), T('Liste: «Kanalentwicklung» nennt die Aufrufe je Kanal'), social.social_pinterest);
+    if (yt) pruefe(social.yt_wachstum.befund && social.yt_wachstum.befund.startsWith('YouTube' + (yt.konto ? ' ' + yt.konto : '') + ': ' + yt.follower + ' Abonnenten'), T('Liste: die YouTube-Zeile nennt den Kanal laut Metricool'), social.yt_wachstum);
+  } else {
+    pruefe(kl.length === 1 && !kl[0].sichtbar && kl[0].zeilen.length === 0, T('Liste: ohne Metricool-Bericht bleibt die Kanal-Tabelle leer und unsichtbar'), kl);
+  }
+  // Ohne __alleZeichnen: der Wechsel der Ansicht muss die Tabelle selbst neu zeichnen (die Laufzeit überspringt verborgene Teile).
+  await p.locator('#kb-tab-buero').click();
+  const kb = await kanalTabelle('#kb-pane-buero');
+  pruefe(kb.length === 1 && kb[0].sichtbar === Boolean(MC2) && JSON.stringify(kb[0].zeilen) === JSON.stringify(sollZeilen), T('2D-Büro: die Kanal-Tabelle im Raum Social Media ' + (MC2 ? 'zeigt jeden Kanal' : 'bleibt leer und unsichtbar')), kb);
+  const kbBreite = await p.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
+  pruefe(kbBreite[0] <= kbBreite[1] + 1, T('2D-Büro mit Kanal-Tabelle: kein seitliches Scrollen'), kbBreite);
+  if (MC2) pruefe(kb.length === 1 && kb[0].zeitImBild === true, T('2D-Büro: die Zeile mit der Abfragezeit steht ganz im Bild'), kb.map((t) => t.zeitImBild));
+  await p.evaluate(() => window.__alleZeichnen());
+  if (MC2 && BILDER) await p.locator('#kb-pane-buero .kb-kanalwrap').scrollIntoViewIfNeeded();
+  await bild(p, name + '-1b-kanaele.png');
+  await p.locator('#kb-tab-liste').click();
+  await p.evaluate(() => window.__alleZeichnen());
+
   // ---- Offene Punkte ----
   await p.locator('#lx-tab-offen').click();
   await p.waitForTimeout(150);

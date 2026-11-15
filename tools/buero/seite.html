@@ -40,6 +40,14 @@
 .kb-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
 .kb-card > h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
 .kb-sub { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.kb-kanalwrap { margin-top: 0.5rem; }
+.kb-kanalwrap:has(tbody:empty) { display: none; }
+.kb-kanalzeit { margin: 0 0 0.25rem; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.kb-kanalscroll { overflow-x: auto; }
+.kb-kanaele { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); }
+.kb-kanaele th, .kb-kanaele td { padding: 0.25rem 0.4rem; text-align: right; white-space: nowrap; border-top: 1px solid var(--color-border-line); font-variant-numeric: tabular-nums; }
+.kb-kanaele thead th { font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); white-space: normal; }
+.kb-kanaele th:first-child { text-align: left; }
 .kb-list { list-style: none; margin: var(--cds-gap-xs) 0 0; padding: 0; min-height: 3rem; }
 
 /* Zeilen der Liste */
@@ -621,6 +629,13 @@
       <h2 id="r-social">Social Media</h2>
       <p class="kb-sub">Beiträge planen und Ergebnisse auswerten – direkt in Metricool.</p>
       <div class="kb-floor dash-skeleton" data-draw="raum" data-bereich="Social Media" data-source="buero"></div>
+      <div class="kb-kanalwrap">
+        <p class="kb-kanalzeit">Kanäle laut Metricool. Aufrufe <b data-draw="kanal-zeit" data-source="buero">—</b></p>
+        <div class="kb-kanalscroll"><table class="kb-kanaele" aria-label="Kanäle laut Metricool">
+        <thead><tr><th scope="col">Kanal</th><th scope="col">Follower</th><th scope="col">Aufrufe</th><th scope="col">Heute</th><th scope="col">Geplant</th><th scope="col">Nächste Woche fest + Entwurf</th></tr></thead>
+        <tbody data-draw="kanaele" data-source="buero"></tbody>
+      </table></div>
+      </div>
       <div class="kb-detail" data-draw="detail" data-bereich="Social Media" data-source="buero"></div>
     </section>
 
@@ -688,6 +703,13 @@
       <h2 id="h-social">Social Media</h2>
       <p class="kb-sub">Veröffentlichungsabläufe und ihre belegten Einstellungen.</p>
       <ul class="kb-list dash-skeleton" data-draw="rows" data-bereich="Social Media" data-source="buero"></ul>
+      <div class="kb-kanalwrap">
+        <p class="kb-kanalzeit">Kanäle laut Metricool. Aufrufe <b data-draw="kanal-zeit" data-source="buero">—</b></p>
+        <div class="kb-kanalscroll"><table class="kb-kanaele" aria-label="Kanäle laut Metricool">
+        <thead><tr><th scope="col">Kanal</th><th scope="col">Follower</th><th scope="col">Aufrufe</th><th scope="col">Heute</th><th scope="col">Geplant</th><th scope="col">Nächste Woche fest + Entwurf</th></tr></thead>
+        <tbody data-draw="kanaele" data-source="buero"></tbody>
+      </table></div>
+      </div>
     </section>
 
     <section class="kb-card" aria-labelledby="h-dev">
@@ -926,6 +948,21 @@
     return ORDER.indexOf(r.status) < 0 ? 'gelb' : r.status;
   }
 
+  // Metricool-Kurzbericht Version 2: Zahlen je Kanal (make_buero.py prüft die Form, die Seite nur das Nötigste).
+  function mc2(r) {
+    var m = r && r.metricool;
+    return m && m.version === 2 && Array.isArray(m.kanaele) && m.naechste_woche && isFinite(Date.parse(m.gemessen)) ? m : null;
+  }
+  function mcKanal(m, name) { return m.kanaele.filter(function (k) { return k.kanal === name; })[0] || null; }
+  function mcSatz(k, m) {
+    return k.kanal + (k.konto ? ' ' + k.konto : '') + ': ' + k.follower + (k.kanal === 'YouTube' ? ' Abonnenten, ' : ' Follower, ') + k.aufrufe + ' Aufrufe (' + m.auswertung + '). Heute ' + k.heute + ' erschienen, ' + k.geplant + ' weitere fest geplant' + (k.naechster ? ', der nächste am ' + k.naechster : '') + '. Nächste Woche: ' + k.naechste_fest + ' fest, ' + k.naechste_entwurf + ' als Entwurf.';
+  }
+  function mcBericht() {
+    var g = dash.data('buero'), m = null;
+    if (g.status === 'ok' && Array.isArray(g.data)) g.data.forEach(function (r) { m = m || mc2(r); });
+    return m;
+  }
+
   function arbeitsansicht(original) {
     var r = Object.assign({}, original);
     var namen = {auswahl:'Produkte auswählen',schaufenster:'Produkte bei Google',waechter:'Lieferbarkeit prüfen',autopilot:'Sortiment verbessern',fortura:'Bestand abgleichen',printful:'Versand verfolgen'};
@@ -939,6 +976,30 @@
       r.gemessen = m.gemessen; r.gemessen_text = m.instagram_stand + ' · Abfrage ' + m.gemessen; r.frisch_h = 24;
       r.ereignis = plan ? m.geplante_eintraege + ' Planungseinträge' : m.instagram_follower + ' Instagram-Follower';
       r.befund = plan ? m.geplante_eintraege + ' Planungseinträge für ' + m.zeitraum + '. Ein Eintrag kann mehrere Kanäle bedienen.' : m.instagram_follower + ' Instagram-Follower, Stand ' + m.instagram_stand + '.';
+    }
+    var m2 = mc2(r);
+    if (m2 && r.bereich === 'Social Media') {
+      var plan2 = r.id === 'social_meta', nw = m2.naechste_woche;
+      r.name = r.kurz = plan2 ? 'Beiträge planen' : 'Kanalentwicklung';
+      r.gemessen = m2.gemessen; r.gemessen_text = 'Metricool, Abfrage ' + m2.gemessen_text; r.frisch_h = 24; r.ereignis_iso = m2.gemessen;
+      if (plan2) {
+        r.status = nw.entwuerfe > 0 ? 'du' : m2.geplante_eintraege > 0 ? 'gruen' : 'gelb';
+        r.ereignis = m2.geplante_eintraege + ' Einträge geplant';
+        r.befund = m2.geplante_eintraege + ' Einträge gehen im Zeitraum ' + m2.zeitraum + ' automatisch raus: ' + m2.kanaele.map(function (k) { return k.kanal + ' ' + k.geplant; }).join(', ') + '. Ein Eintrag kann mehrere Kanäle bedienen. Nächste Woche (' + nw.zeitraum + '): ' + nw.fest + ' fest eingeplant, ' + nw.entwuerfe + ' noch Entwurf.';
+        r.naechster_schritt = nw.entwuerfe > 0 ? 'Die ' + nw.entwuerfe + ' Entwürfe der nächsten Woche in Metricool prüfen und freigeben.' : 'Planung der nächsten Woche in Metricool prüfen.';
+      } else {
+        r.status = 'gruen';
+        r.ereignis = m2.kanaele.reduce(function (s, k) { return s + k.aufrufe; }, 0) + ' Aufrufe';
+        r.befund = 'Aufrufe ' + m2.auswertung + ': ' + m2.kanaele.map(function (k) { return k.kanal + ' ' + k.aufrufe; }).join(', ') + '. Follower: ' + m2.kanaele.map(function (k) { return k.kanal + ' ' + k.follower; }).join(', ') + '. Bei Pinterest sind es Impressionen; die jüngsten Tage können bei einzelnen Kanälen noch fehlen.';
+        r.naechster_schritt = 'Die stärksten Beiträge in Metricool ansehen und ihr Format wiederholen.';
+      }
+    }
+    var yk = m2 && r.id === 'yt_wachstum' ? mcKanal(m2, 'YouTube') : null;
+    if (yk) {
+      r.status = yk.geplant > 0 ? 'gruen' : 'gelb';
+      r.gemessen = m2.gemessen; r.gemessen_text = 'Metricool, Abfrage ' + m2.gemessen_text; r.frisch_h = 24; r.ereignis_iso = m2.gemessen;
+      r.ereignis = yk.follower + ' Abonnenten'; r.befund = mcSatz(yk, m2) + (m2.youtube_hinweis ? ' ' + m2.youtube_hinweis : '');
+      r.naechster_schritt = yk.naechste_fest > 0 ? 'Ergebnisse der Shorts vergleichen und das stärkste Format wiederholen.' : 'Für nächste Woche ist noch kein Short fest eingeplant. Entwürfe in Metricool freigeben oder neue Shorts planen.';
     }
     return r;
   }
@@ -1290,6 +1351,27 @@
     var hint=document.createElement('p');hint.className='kb-chef-auto';hint.textContent='Die Anzeige zeigt gemessene Ablaufstände. Ein beendeter Prüflauf bestätigt keine Verkäufe und keinen ständig arbeitenden Agenten. Kontolinks benötigen gegebenenfalls eine Anmeldung.';el.appendChild(hint);
   });
 
+  // Kanäle auf einen Blick: Zahlen je Kanal aus dem Metricool-Kurzbericht (Version 2). Ohne Bericht bleibt die Tabelle leer und unsichtbar.
+  dash.draw('kanaele', function (el) {
+    var m = mcBericht();
+    el.replaceChildren();
+    if (!m) return;
+    m.kanaele.forEach(function (k) {
+      var tr = document.createElement('tr');
+      [k.kanal, k.follower, k.aufrufe, k.heute, k.geplant, k.naechste_fest + ' + ' + k.naechste_entwurf].forEach(function (v, i) {
+        var c = document.createElement(i ? 'td' : 'th');
+        if (!i) c.scope = 'row';
+        c.textContent = String(v);
+        tr.appendChild(c);
+      });
+      el.appendChild(tr);
+    });
+  });
+  dash.draw('kanal-zeit', function (el) {
+    var m = mcBericht();
+    el.textContent = m ? m.auswertung + ', Abfrage ' + m.gemessen_text : '—';
+  });
+
   dash.draw('n', function (el) {
     var data = rows();
     if (!data) { el.textContent = '—'; return; }
@@ -1519,6 +1601,7 @@
       b.tabIndex = an ? 0 : -1;
     });
     document.querySelectorAll('.kb-pane').forEach(function (p) { p.hidden = p.dataset.pane !== name; });
+    dash.draw('kanaele'); dash.draw('kanal-zeit');
   }
   document.querySelectorAll('.kb-tab').forEach(function (b) {
     b.addEventListener('click', function () { zeige(b.dataset.tab); });
