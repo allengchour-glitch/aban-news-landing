@@ -33,6 +33,7 @@ const fields=`id title handle status updatedAt options{id name position optionVa
 async function main(){
   const dir='merchant-fix-result';fs.mkdirSync(dir,{recursive:true});
   const live=process.env.LIVE==='1';
+  const renames=process.env.ROLLBACK==='1'?Object.fromEntries(Object.entries(RENAMES).map(([a,b])=>[b,a])):RENAMES;
   const shop=(process.env.SHOPIFY_SHOP||'au3j0y-hq.myshopify.com').replace(/^https?:\/\//,'').replace(/\/$/,'');
   if(!/^[a-z0-9-]+\.myshopify\.com$/i.test(shop))throw new Error('Ungültige Shop-Domain');
   // Statische Admin-Tokens können abgelaufen sein; eingerichteten Client-Grant bevorzugen.
@@ -51,7 +52,7 @@ async function main(){
     if(!j.data)throw new Error('GraphQL ohne Daten');return j.data;
   }
   const read=async()=> (await gql(`query($handle:String!){productByIdentifier(identifier:{handle:$handle}){${fields}}}`,{handle:HANDLE})).productByIdentifier;
-  const before=await read();const work=plan(before);fs.writeFileSync(path.join(dir,'before.json'),JSON.stringify(before,null,2));fs.writeFileSync(path.join(dir,'plan.json'),JSON.stringify(work,null,2));
+  const before=await read();const work=plan(before,renames);fs.writeFileSync(path.join(dir,'before.json'),JSON.stringify(before,null,2));fs.writeFileSync(path.join(dir,'plan.json'),JSON.stringify(work,null,2));
   console.log(`Produkt ${HANDLE}: ${before.variants.nodes.length} Varianten, ${work.changes.length} Farbwerte zu ändern`);
   for(const c of work.changes)console.log(`${c.old} → ${c.name}`);
   // Zusätzliche Versanddiagnose bleibt lesend, auch im Live-Modus.
@@ -72,7 +73,7 @@ async function main(){
   fs.writeFileSync(path.join(dir,'inflight.json'),JSON.stringify({productId:work.productId,updatedAt:before.updatedAt,changes:work.changes},null,2));
   const d=await gql(`mutation($productId:ID!,$option:OptionUpdateInput!,$values:[OptionValueUpdateInput!]){productOptionUpdate(productId:$productId,option:$option,optionValuesToUpdate:$values,variantStrategy:LEAVE_AS_IS){userErrors{field message code} product{id}}}`,{productId:work.productId,option:{id:work.optionId},values:work.changes.map(({id,name})=>({id,name}))});
   if(d.productOptionUpdate.userErrors.length)throw new Error('Mutation: '+JSON.stringify(d.productOptionUpdate.userErrors));
-  const after=await read();fs.writeFileSync(path.join(dir,'after.json'),JSON.stringify(after,null,2));verify(before,after);
+  const after=await read();fs.writeFileSync(path.join(dir,'after.json'),JSON.stringify(after,null,2));verify(before,after,renames);
   fs.writeFileSync(path.join(dir,'verified.json'),JSON.stringify({verified:true,handle:HANDLE,optionValuesChanged:work.changes.length,variantsPreserved:after.variants.nodes.length},null,2));console.log('BESTÄTIGT: 3 Farbwerte neutralisiert; Varianten-IDs, SKUs, Preise und Zuordnungen unverändert');
 }
 if(process.argv[1] && fileURLToPath(import.meta.url)===path.resolve(process.argv[1]))main().catch(e=>{console.error(e.message);process.exitCode=1;});

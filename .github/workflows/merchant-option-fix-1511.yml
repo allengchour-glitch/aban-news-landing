@@ -38,6 +38,7 @@ jobs:
           case "$mode" in
             pruefen) LIVE=0 node automation/merchant-fix-1511/fix.mjs ;;
             schreiben) LIVE=1 node automation/merchant-fix-1511/fix.mjs ;;
+            zurueck) LIVE=1 ROLLBACK=1 node automation/merchant-fix-1511/fix.mjs ;;
             *) echo 'Ungültiger Modus'; exit 1 ;;
           esac
       - uses: actions/upload-artifact@v4
