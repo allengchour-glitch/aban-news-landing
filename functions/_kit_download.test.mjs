@@ -43,6 +43,19 @@ for(const config of [{STRIPE_API_KEY:'demo-key'},{...env,DOWNLOAD_SALT:'  '},{DO
 for(const payment_status of ['unpaid','no_payment_required']){
  const r=await request({body:{...paid,payment_status}});assert.equal(r.status,402);assert.ok(!r.data.url);assert.equal(r.assetCalls,0);checks++;
 }
+// Unbekannter Anbieterstatus ist keine bestätigte unvollständige Zahlung.
+for(const payment_status of ['', 'pending', 'PAID', 'paid ', 'failed', 'unknown']){
+ const r=await request({body:{...paid,payment_status}});
+ assert.equal(r.status,502,'Unbekannter Status: '+JSON.stringify(payment_status));
+ assert.equal(r.assetCalls,0);assert.ok(!r.data.url);assert.ok(!r.data.status);
+ assert.doesNotMatch(r.data.error,/nicht abgeschlossen/);checks++;
+}
+{
+ const gestort=await request({body:{...paid,payment_status:'unknown'}});
+ assert.equal(gestort.status,502);assert.equal(gestort.assetCalls,0);
+ const erneut=await request();assert.equal(erneut.status,200);
+ assert.equal(erneut.assetCalls,1);assert.equal(erneut.data.ok,true);checks++;
+}
 for(const status of [401,403,429,500]){
  const r=await request({status});assert.equal(r.status,503);assert.ok(!r.data.url);assert.equal(r.calls,1);checks++;
 }

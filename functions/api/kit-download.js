@@ -52,7 +52,10 @@ export async function onRequestGet(context) {
     if (r.status === 404) return json({ error: "Zahlung nicht gefunden." }, 404);
     if (!r.ok) return json({ error: "Zahlung derzeit nicht prüfbar. Bitte später erneut prüfen." }, 503);
     session = await Promise.race([r.json(), deadline]);
-    if (!session || typeof session !== "object" || typeof session.payment_status !== "string") {
+    // Nur dokumentierte Stripe-Statuswerte erlauben eine Zahlungsentscheidung.
+    // Eine defekte Antwort darf keinen fehlgeschlagenen Kauf vortäuschen.
+    if (!session || typeof session !== "object" || Array.isArray(session)
+        || !["paid", "unpaid", "no_payment_required"].includes(session.payment_status)) {
       return json({ error: "Verifizierung fehlgeschlagen." }, 502);
     }
   } catch (e) {

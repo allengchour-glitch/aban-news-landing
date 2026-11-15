@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Kit-Download: unbekannter Zahlungsstatus ist eine Prüfungsstörung ·15.11.2026
+
+Von main00bf41c auf eigenem Branch codex/download-zahlungsstatus. Regeln, Übergaben und offene Arbeiten geprüft. Reproduziert am bestehenden Download-Endpunkt mit simuliertem HTTP200 und leerem payment_status: bisher HTTP402/Zahlung nicht abgeschlossen, obwohl keine bekannte Zahlungsentscheidung vorliegt. Neue Regression am alten Code rot. Kein echter Käuferfall oder Anbieterfehler behauptet.
+
+functions/api/kit-download.js akzeptiert nur die bekannten Statuswerte paid/unpaid/no_payment_required für die Zahlungsentscheidung. Unbekannte, leere oder falsch geschriebene Werte werden als502/Verifizierung fehlgeschlagen behandelt; kein Dateizugriff und kein Downloadlink. Bestehende Freigaberegel (nur paid), bekannte Nichtfreigaben, Fristen und manuelle Wiederaufnahme unverändert. Sieben neue Gegenproben; insgesamt71 Downloadprüfungen grün einschliesslich bestehender Browserlogik. Erholung nach Störung gibt bei danach bestätigter Zahlung regulär frei. Ausschliesslich erfundene Sessions, simulierte Anbieter- und Dateikopfantworten; keine echten Zahlungen, Schlüssel oder geschützten ZIP-Inhalte.
+
+Stripe-Dokumentationsskill gelesen; vorhandene Dokusuche lieferte schliesslich die offizielle Fulfillment-Anleitung https://docs.stripe.com/checkout/fulfillment?ui=elements zur serverseitigen payment_status-Prüfung. Kein CLI installiert; kein Login/Installation oder Kontozugriff ausgelöst. Echte CI, Merge und Produktion im zugehörigen PR prüfen. Nutzen: keine falsche Zahlungsablehnung aufgrund einer unverständlichen Anbieterantwort; weniger unnötige Nacharbeit und Fehlanreiz zum Neukauf. Finanzielle Wirkung nicht gemessen. Nächster Schritt: tatsächliche Checkout-/Lieferzuordnung eines vorhandenen Produkts lesend belegen, ohne Testkauf.
+
 ## Monitor-Angebot: Lieferumfang und Einrichtung vor Buchung klären ·15.11.2026
 
 Von main520ebab auf eigenem Branch codex/monitor-leistung-klar. Regeln, Übergaben, Arbeitsteilung und offene PRs geprüft. Bestehender Report-Generator und frühere Offline-/Fehlerkorrekturen erhalten. Verkaufsseite im aktuellen main versprach monatlichen automatischen Mailversand, eindeutiges Ja/Nein und echte Kundensuchfragen. Gegenbeleg: monitor/README.md nennt fehlende Abonnentenzuordnung/Versandanbindung; sichtbarkeit-monitor.yml hat pausierten Cron und erwartet private Abodatei. Ein Zahlungslink ist kein Dienstnachweis.
