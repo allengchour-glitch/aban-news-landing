@@ -46,8 +46,13 @@ def lesen(h, name):
     r = requests.get(f"{BASIS}/{name}/autofeedSettings", headers=h, timeout=30)
     if r.status_code != 200:
         print(f"ABBRUCH: Lesen HTTP {r.status_code} " + r.text[:200].replace(name, "<konto>")); sys.exit(4)
-    j = r.json()
-    return j.get("enableProducts"), j.get("eligible")
+    return werte(r.json())
+
+
+def werte(j):
+    """Schalter aus der Antwort. Die Merchant API lässt Felder mit dem Wert false weg (proto3-JSON): ein fehlendes
+    enableProducts heisst also «aus» (gemessen 15.11.: nach dem Abschalten fehlte das Feld beim Rücklesen)."""
+    return bool(j.get("enableProducts", False)), bool(j.get("eligible", False))
 
 
 def main():
