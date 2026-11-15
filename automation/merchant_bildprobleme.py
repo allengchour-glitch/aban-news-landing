@@ -291,6 +291,68 @@ def quellen(h, name):
     return 0
 
 
+
+def laender(h, name):
+    """MODUS=laender (15.11.2026): Welche Länder und Berichtskontexte machen Artikel «eingeschränkt»?
+
+    Anlass: Merchant Center meldete am 15.11. 22:24 UTC «Für einige Länder fehlen Versandinformationen» bei 261 181
+    Produkten (80 %), die Reports-Abfrage von 18:43 UTC zählte den Code aber nur 979-mal. Gibt nur Zählungen aus
+    (keine Kontonummer, keine Titel): Status je Herkunft, je Problemcode die Länder und Berichtskontexte.
+    """
+    zeilen = suchen(h, name, "SELECT offer_id, feed_label, language_code, aggregated_reporting_context_status, item_issues FROM product_view")
+    status = Counter(); feed = Counter(); codes = Counter(); code_land = Counter(); code_ctx = Counter()
+    limitiert_codes = Counter(); limitiert_ohne_problem = Counter()
+    for z in zeilen:
+        pv = z.get("productView") or {}
+        her = herkunft(pv.get("offerId", ""))
+        st = pv.get("aggregatedReportingContextStatus") or "?"
+        status[(her, st)] += 1
+        feed[(her, pv.get("feedLabel") or "?", pv.get("languageCode") or "?")] += 1
+        issues = pv.get("itemIssues") or []
+        if st == "ELIGIBLE_LIMITED" and not issues:
+            limitiert_ohne_problem[her] += 1
+        for iss in issues:
+            code = (iss.get("type") or {}).get("code") or "?"
+            codes[(her, code)] += 1
+            if st == "ELIGIBLE_LIMITED":
+                limitiert_codes[(her, code)] += 1
+            for ctx in (iss.get("severity") or {}).get("severityPerReportingContext") or []:
+                rc = ctx.get("reportingContext") or "?"
+                for art, feld in (("gesperrt", "disapprovedCountries"), ("abgewertet", "demotedCountries")):
+                    for land in ctx.get(feld) or []:
+                        code_land[(code, art, land)] += 1
+                        code_ctx[(code, art, rc)] += 1
+    print("STATUS je Herkunft (Zeilen):")
+    for (her, st), n in sorted(status.items(), key=lambda x: -x[1]):
+        print(f"  {n:7d}  {her:12s} {st}")
+    print("FEEDLABEL je Herkunft:")
+    for (her, fl, sp), n in sorted(feed.items(), key=lambda x: -x[1])[:30]:
+        print(f"  {n:7d}  {her:12s} {fl} {sp}")
+    print("CODES je Herkunft (alle):")
+    for (her, c), n in codes.most_common(40):
+        print(f"  {n:7d}  {her:12s} {c}")
+    print("CODES bei «eingeschränkt» (ELIGIBLE_LIMITED):")
+    for (her, c), n in limitiert_codes.most_common(30):
+        print(f"  {n:7d}  {her:12s} {c}")
+    print("Eingeschränkt ohne einen Artikelproblem-Eintrag:", dict(limitiert_ohne_problem))
+    print("LAND je Code (gesperrt/abgewertet):")
+    for (c, art, land), n in code_land.most_common(60):
+        print(f"  {n:7d}  {c}  {art}  {land}")
+    print("BERICHTSKONTEXT je Code:")
+    for (c, art, rc), n in code_ctx.most_common(40):
+        print(f"  {n:7d}  {c}  {art}  {rc}")
+    print(f"ERGEBNIS laender: {len(zeilen)} Zeilen gelesen")
+    with open("bildprobleme.json", "w") as f:
+        json.dump({"gelesen": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "modus": "laender",
+                   "status": {f"{a}|{b}": n for (a, b), n in status.items()},
+                   "feed": {f"{a}|{b}|{c}": n for (a, b, c), n in feed.items()},
+                   "codes": {f"{a}|{b}": n for (a, b), n in codes.items()},
+                   "eingeschraenkt_codes": {f"{a}|{b}": n for (a, b), n in limitiert_codes.items()},
+                   "land": {f"{a}|{b}|{c}": n for (a, b, c), n in code_land.items()},
+                   "kontext": {f"{a}|{b}|{c}": n for (a, b, c), n in code_ctx.items()}}, f, ensure_ascii=False, indent=1)
+    return 0
+
+
 def main():
     h = anmelden()
     name = konto(h)
@@ -298,6 +360,8 @@ def main():
         return quellen(h, name)
     if os.environ.get("MODUS", "bilder") == "autofeed":
         return autofeed(h, name)
+    if os.environ.get("MODUS", "bilder") == "laender":
+        return laender(h, name)
     zeilen = suchen(h, name, "SELECT id, offer_id, title, item_issues FROM product_view")
     codes, treffer, fehler, attribute = Counter(), [], [], Counter()
     beispiel = None
