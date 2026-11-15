@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Lebhafteres Büro mit dekorativer Bewegung ·15.11.2026
+
+Besitzerauftrag Büro wie echt lebhaft. Eigener Branch von main805197c4. Vorhandenes Atmen/Blinzeln und Posen nicht erneut umgesetzt. Kleine individuelle Blickbewegung ergänzt (ausgenommen Schlafpose) und vier eigene prozedurale Pflanzen am Campusplatz mit sanft bewegten Kronen; Töpfe/Stämme bleiben fest. Bei reduzierter Bewegung keine neue Animation. Sichtbarer Hinweis trennt Raumgestaltung von Quellen und Messzeiten. Keine laufenden Aufträge oder Live-Verbindungen aus Bewegung abgeleitet; Quellen unverändert. Version19 in Seite/Renderer synchron, Higgsfield unverändert.
+
+GEMESSEN:43 Dashboardbauprüfungen grün, vollständiges Drei-Seiten-Dokument241952Byte;3D-Code206383Byte. JS-Syntax geprüft. Vier WebGL-Gegenproben390/1440px mit normaler/reduzierter Bewegung: vier Kronen bewegen sich bzw. bleiben fest, Quelldaten unverändert, keine JS-Fehler; Desktop-/Handy-Screenshots angesehen. Erste Bildaufnahme wartete bei Animation auf Elementstabilität und lief aus; Aufnahme auf Seitenbild mit Elementausschnitt umgestellt, alle funktionalen Assertions beibehalten und Gesamtlauf erfolgreich wiederholt. Testdaten sind kein aktueller Geschäftsnachweis. Keine Test-/Workflowänderung. Echte CI-/Merge-/Produktionsbelege im zugehörigen PR prüfen. Privater Claude-Upload bleibt separat: vollständiger aktueller Bau plus passender3D-Code Version19. Finanzielle Wirkung nicht gemessen.
+
 ## Büro-Monitore: realistischeres Gehäuse und frontale Leseansicht ·15.11.2026
 
 Besitzerauftrag Monitor verbessern, alles wie echt. Von main4914a888 auf eigenem Branch codex/buero-monitor-realistisch. Bestehende Quellen/Messzeiten/Statusmodelle unverändert; keine Live-Anbindung oder laufende Arbeit erfunden. Gehäuse der Wand-/Zentralmonitore mit abgestimmter Rauheit/Glanz, neutralem Bedienknopf und schmaler Belüftungs-/Bedienleiste. Schreibtischmonitore erhalten Rückgehäuse und unbeleuchteten Bedienknopf. Keine neuen Betriebsleuchten oder schaltbaren Hardwarefunktionen behauptet.

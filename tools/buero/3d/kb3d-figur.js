@@ -300,6 +300,8 @@
     }
     // Nur die Oberkörperhaltung atmet; Beine und Sitzposition bleiben fest verankert.
     lean += bewegung * 0.0035 * sin(1.3 * tt + ph);
+    // Kleine, individuelle Blickbewegung als reine Darstellung, kein Arbeitssignal.
+    if (name !== 'sleep') hy += bewegung * 0.025 * sin(0.22 * tt + ph * 1.7);
     var werte = [lean, hx, hy, hz, eye, mo, mw, uN, aN, fN, uP, aP, fP, sip,
       bewegung * 0.005 * sin(0.7 * tt + ph)];
     for (var i = 0; i < werte.length; i++) v[i] = werte[i];
