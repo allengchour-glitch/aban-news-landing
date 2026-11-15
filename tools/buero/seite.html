@@ -508,10 +508,15 @@
 
 
   <section class="kb-arbeitslinks" aria-label="Messdaten im Büro">
+    <a class="kb-aktion kb-erledigen" data-auftrag-direkt="tagesrunde" hidden>Jetzt erledigen</a>
     <button type="button" class="kb-aktion" data-open-metrics aria-expanded="false" aria-controls="kb-quellen">Google &amp; Shop-Zahlen</button>
     <button type="button" class="kb-aktion" data-cmd="view:Chefbüro" data-open-money>Finanzmonitor</button>
     <button type="button" class="kb-aktion" data-cmd="view:Chefbüro" data-open-projects>Projektstand</button>
     <button type="button" class="kb-aktion" data-open-orders hidden aria-expanded="false" aria-controls="kb-auftraege">Arbeitsaufträge</button>
+  </section>
+  <section aria-label="Fertige Schnellaufträge">
+    <p class="kb-note">Fertiger Auftrag, nichts tippen. Öffnet ChatGPT; falls nötig dort senden. Noch keine Ausführung.</p>
+    <details><summary>Weitere Aufgaben erledigen</summary><div class="kb-arbeitslinks" data-schnellauftraege></div></details>
   </section>
   <section class="kb-quellen" id="kb-quellen" hidden aria-label="Privater Google- und Shop-Monitor">
     <button type="button" data-close-metrics>Schließen</button><div data-quellen-inhalt></div>
@@ -1022,6 +1027,12 @@
     requestAnimationFrame(function(){box.querySelector('[data-auftrag-name]').focus({preventScroll:true});box.scrollIntoView({block:'start',behavior:'auto'});});
   }
   function auftraegeEinrichten() {
+    var schnell=root.querySelector('[data-schnellauftraege]');
+    auftragsKatalog.forEach(function(job){
+      if(job.id==='tagesrunde')return;
+      var link=document.createElement('a');link.className='kb-aktion';link.textContent=job.titel;
+      link.dataset.auftragDirekt=job.id;erledigenLink(link,job);schnell.appendChild(link);
+    });
     root.querySelectorAll('[data-auftrag-direkt]').forEach(function(link){
       var job=auftragsKatalog.find(function(a){return a.id===link.dataset.auftragDirekt;});
       if(!job)return;
