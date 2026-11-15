@@ -1,0 +1,12 @@
+const shop = process.env.SHOPIFY_SHOP;
+const tok = (await (await fetch(`https://${shop}/admin/oauth/access_token`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ client_id: process.env.SHOPIFY_CLIENT_ID, client_secret: process.env.SHOPIFY_CLIENT_SECRET, grant_type: 'client_credentials' }) })).json()).access_token;
+const gql = async (query, variables) => { const r = await (await fetch(`https://${shop}/admin/api/2025-01/graphql.json`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Access-Token': tok }, body: JSON.stringify({ query, variables }) })).json(); if (r.errors) throw new Error(JSON.stringify(r.errors)); return r.data; };
+const alle = async id => { const m = {}; let after = null; do { const d = await gql(`query($id:ID!,$a:String){theme(id:$id){name role files(first:250,after:$a){pageInfo{hasNextPage endCursor} nodes{filename checksumMd5 updatedAt}}}}`, { id, a: after }); for (const n of d.theme.files.nodes) m[n.filename] = n; after = d.theme.files.pageInfo.hasNextPage ? d.theme.files.pageInfo.endCursor : null; if (!m.__meta) m.__meta = { name: d.theme.name, role: d.theme.role }; } while (after); return m; };
+const M = await alle('gid://shopify/OnlineStoreTheme/213991391623'), E = await alle('gid://shopify/OnlineStoreTheme/214040805767');
+console.log('MAIN', M.__meta.name, M.__meta.role, Object.keys(M).length - 1, 'Dateien | Entwurf', E.__meta.name, E.__meta.role, Object.keys(E).length - 1);
+const nur = (a, b) => Object.keys(a).filter(f => f !== '__meta' && !b[f]);
+const versch = Object.keys(M).filter(f => f !== '__meta' && E[f] && M[f].checksumMd5 !== E[f].checksumMd5);
+const zeile = f => `${f.padEnd(52)} MAIN ${M[f]?.updatedAt ?? '-'}  ENTWURF ${E[f]?.updatedAt ?? '-'}`;
+console.log('\nNur in MAIN (fehlen im Entwurf):', nur(M, E).length); nur(M, E).forEach(f => console.log('  ' + zeile(f)));
+console.log('\nNur im Entwurf:', nur(E, M).length); nur(E, M).forEach(f => console.log('  ' + zeile(f)));
+console.log('\nVerschieden:', versch.length); versch.forEach(f => console.log('  ' + zeile(f)));

@@ -1,0 +1,29 @@
+MAIN LuxeStyle – SEO 14.11.2026 MAIN 554 Dateien | Entwurf LuxeStyle – Kaufhinweis 15.11.2026 UNPUBLISHED 548
+
+Nur in MAIN (fehlen im Entwurf): 6
+  assets/lx-story.js                                   MAIN 2026-11-15T21:13:01Z  ENTWURF -
+  sections/lx-story-platz.liquid                       MAIN 2026-11-15T21:13:12Z  ENTWURF -
+  sections/lx-story-testseite.liquid                   MAIN 2026-11-15T21:29:49Z  ENTWURF -
+  sections/lx-story.liquid                             MAIN 2026-11-15T21:29:48Z  ENTWURF -
+  snippets/lx-story-stil.liquid                        MAIN 2026-11-15T21:29:48Z  ENTWURF -
+  templates/index.lxstory.json                         MAIN 2026-11-15T21:13:14Z  ENTWURF -
+
+Nur im Entwurf: 0
+
+Verschieden: 16
+  assets/luxe-edit.css                                 MAIN 2026-11-14T13:42:22Z  ENTWURF 2026-11-15T10:57:09Z
+  assets/luxestyle-manifest.json                       MAIN 2026-11-14T13:43:55Z  ENTWURF 2026-11-15T10:57:09Z
+  blocks/buy-buttons.liquid                            MAIN 2026-11-14T13:42:22Z  ENTWURF 2026-11-15T09:38:48Z
+  layout/theme.liquid                                  MAIN 2026-11-15T22:15:06Z  ENTWURF 2026-11-15T18:15:11Z
+  locales/de.schema.json                               MAIN 2026-11-14T13:42:22Z  ENTWURF 2026-11-15T10:57:08Z
+  locales/en.default.schema.json                       MAIN 2026-11-14T13:42:22Z  ENTWURF 2026-11-15T10:57:08Z
+  sections/footer-group.json                           MAIN 2026-11-14T13:42:22Z  ENTWURF 2026-11-15T09:38:48Z
+  sections/luxe-edit-home.liquid                       MAIN 2026-11-14T13:42:22Z  ENTWURF 2026-11-15T10:57:08Z
+  sections/lx-scroll-szene.liquid                      MAIN 2026-11-15T21:09:30Z  ENTWURF 2026-11-15T09:34:39Z
+  sections/main-collection.liquid                      MAIN 2026-11-15T21:58:46Z  ENTWURF 2026-11-15T09:34:39Z
+  snippets/cart-summary.liquid                         MAIN 2026-11-14T13:42:22Z  ENTWURF 2026-11-15T15:52:32Z
+  snippets/lx-kopf-kompakt.liquid                      MAIN 2026-11-15T22:20:35Z  ENTWURF 2026-11-15T09:34:39Z
+  snippets/lx-kopf-pfad.liquid                         MAIN 2026-11-15T22:20:35Z  ENTWURF 2026-11-15T09:34:39Z
+  templates/collection.json                            MAIN 2026-11-15T21:58:46Z  ENTWURF 2026-11-15T09:34:39Z
+  templates/index.json                                 MAIN 2026-11-14T13:42:22Z  ENTWURF 2026-11-15T11:01:03Z
+  templates/index.lxszene.json                         MAIN 2026-11-15T21:09:30Z  ENTWURF 2026-11-15T09:34:39Z

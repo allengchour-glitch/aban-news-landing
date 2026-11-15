@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       modus:
-        description: 'bilder = alle Artikel lesen (rund 15 Minuten), quellen = Datenquellen und Proben (kurz), autofeed = Autofeed gegen das Schaufenster zählen (rund 5 Minuten)'
+        description: 'bilder = alle Artikel lesen (rund 15 Minuten), quellen = Datenquellen und Proben (kurz), autofeed = Autofeed gegen das Schaufenster zählen (rund 5 Minuten), laender = Länder und Berichtskontexte je Problemcode zählen (rund 15 Minuten), versand = Versanddienste des Kontos lesen (kurz)'
         default: bilder
   push:
     branches: [claude/merchant-fehler-1111]
