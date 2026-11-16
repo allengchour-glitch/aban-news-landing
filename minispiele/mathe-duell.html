@@ -162,6 +162,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   var WIN=4; /* best of 7 */
@@ -299,6 +300,7 @@
     el.endTitle.textContent='Spieler '+winner+' gewinnt!';
     el.endText.textContent='Endstand  🔴 '+scores[1]+' : '+scores[2]+' 🔵';
     el.end.classList.add('show');
+    window.MiniMix && MiniMix.finish(winner);
   }
 
   function resetGame(){

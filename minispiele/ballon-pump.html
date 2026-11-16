@@ -152,6 +152,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -292,6 +293,7 @@
     gid("winText").innerHTML = "Endstand <b>"+scores[0]+" : "+scores[1]+"</b><br>Nerven aus Stahl!";
     gid("roundOverlay").classList.add("hidden");
     gid("winOverlay").classList.remove("hidden");
+    if(window.MiniMix) window.MiniMix.finish(w+1);
   }
 
   function resetMatch(){

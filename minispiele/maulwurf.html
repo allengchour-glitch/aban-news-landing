@@ -153,6 +153,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -294,6 +295,7 @@
     document.getElementById('endTitle').textContent=title;
     document.getElementById('endEmoji').textContent=emoji;
     endScreen.classList.remove('hidden');
+    if(window.MiniMix) window.MiniMix.finish(scores[1]>scores[2]?1:scores[2]>scores[1]?2:0);
   }
 
   document.getElementById('startBtn').addEventListener('click',startGame);

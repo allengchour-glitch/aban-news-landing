@@ -119,6 +119,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   var pads=[document.getElementById('g'),document.getElementById('r'),document.getElementById('y'),document.getElementById('b')];
@@ -249,6 +250,7 @@
     }
     txt.innerHTML='🔵 Spieler 1: <b>'+best[0]+'</b> Farben<br>🔴 Spieler 2: <b>'+best[1]+'</b> Farben';
     over.classList.remove('hidden');
+    if(window.MiniMix) window.MiniMix.finish(best[0]>best[1]?1:best[1]>best[0]?2:0);
   }
 
   function startGame(){

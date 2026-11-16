@@ -1,5 +1,11 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Minispiele als ein Rundenspiel ·16.11.2026
+
+Besitzerwahl: «Ein Rundenspiel – mehrere Minispiele nacheinander». `/minispiele/` bietet jetzt 3/5/7 verschiedene Disziplinen aus 20, Namen, gemeinsame Rundenwertung und Gesamtsieger. Sieg3, Remis je1, Abbruch0; lokales Zwei-Personen-Spiel an einem Gerät. Reload erhält den Zwischenstand; laufende Runde beginnt ungewertet neu. Ergebnisannahme prüft Fenster/Ursprung/Disziplin/Rundenschlüssel und zählt einmal. Einzelspiele und Lebenspfad unverändert spielbar. Arcade: vier sichtbare Hauptkarten, neun weitere aufklappbar; Traumhaus-Code und Hero nicht angefasst.
+
+GEMESSEN:134 Node-Prüfungen,17 Mix-Browserbedingungen mit drei wirklich erspielten Ergebnissen und17 Übersichtsbedingungen grün; drei Bildschirmgrößen ohne Überlauf. Zeitsteuerung/VM-Spielstände ausdrücklich Fixtures, keine reale Handy-FPS- oder Internet-Koop-Messung. Details/Belege: `spiele-dev/minispiele-mix/README.md`. Gesamt-CI lokal durch schreibgeschütztes HOME blockiert; echte CI und öffentliche Bereitstellung im zugehörigen PR. Bestehende Live-Freigabe gilt; kein Shop-/Social-/Secret-Eingriff.
+
 ## Codex: Monitorzentrale bedienbarer ·16.11.2026
 
 Design22 ergänzt die direkte Auswahl der acht vorhandenen Monitore, hält Tastaturfokus beim Wechsel und zeigt Bot-Aktionen nur im Bot-Monitor. Vorher lokal nachgestellt: im Handy-Vollbild Bildschirmhöhe0, letzte Karte ausserhalb844px, Scrollen gesperrt. Jetzt Bildschirm mit Mindesthöhe und gesamter Monitor scrollbar. Messstand steht über den Karten, Büro-Uhr getrennt darunter. Keine neue Quelle, Abfragefrequenz oder Kontoaktion.44 Bau-,31 Mutations- und21 Botprüfungen grün; erweiterter Browserlauf390/1440 prüft alle Monitorziele, Fokus, Rückkehr/Escape, natives/CSS-Vollbild und einmaligen abgefangenen Bot-Abruf. Finanzielle Wirkung und echte Handy-Leistung ungemessen. Vollständiges privates Drei-Seiten-Paket inklusive kb-stil.css durch Claude übertragen, Daten/Eingaben erhalten; private Bereitstellung erst nach Quittung bestätigt. Details in der kanonischen Übergabe, echte CI und Web-Bereitstellung im zugehörigen PR.

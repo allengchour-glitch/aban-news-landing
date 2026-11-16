@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Minispiele-Mix: gemeinsame Rundenwertung ·16.11.2026
+
+Besitzerwahl: «Ein Rundenspiel – mehrere Minispiele nacheinander». `/minispiele/` bietet jetzt 3/5/7 verschiedene Disziplinen aus 20, Namen, gemeinsame Rundenwertung und Gesamtsieger. Sieg3, Remis je1, Abbruch0; lokales Zwei-Personen-Spiel an einem Gerät. Reload erhält den Zwischenstand; laufende Runde beginnt ungewertet neu. Ergebnisannahme prüft Fenster/Ursprung/Disziplin/Rundenschlüssel und zählt einmal. Einzelspiele und Lebenspfad unverändert spielbar. Arcade: vier sichtbare Hauptkarten, neun weitere aufklappbar; Traumhaus-Code und Hero nicht angefasst.
+
+GEMESSEN:134 Node-Prüfungen,17 Mix-Browserbedingungen mit drei wirklich erspielten Ergebnissen und17 Übersichtsbedingungen grün; drei Bildschirmgrößen ohne Überlauf. Zeitsteuerung/VM-Spielstände ausdrücklich Fixtures, keine reale Handy-FPS- oder Internet-Koop-Messung. Details/Belege: `spiele-dev/minispiele-mix/README.md`. Gesamt-CI lokal durch schreibgeschütztes HOME blockiert; echte CI und öffentliche Bereitstellung im zugehörigen PR. Bestehende Live-Freigabe gilt; kein Shop-/Social-/Secret-Eingriff.
+
 ## Monitorzentrale: direkte Auswahl und nutzbares Vollbild ·16.11.2026
 
 Folgeauftrag «verbessere», eigener Branch codex/buero-monitor-navigation von main74bf01d. Aktuelle Regeln, Übergaben und offene Büro-PRs gelesen; keine offene Änderung an den Büro-Quellen. Design22: direkter Wechsel Zentral + sieben Räume über bestehendes monitor:-Kommando. Pfeile/Auswahl bleiben synchron; Fokus bleibt beim Bedienelement statt nach jedem Wechsel auf Zurück zu springen. Bot-Aktionen nur im Krypto-Monitor. Messstand über den Textkarten, Schweizer Büro-Uhr getrennt darunter; Daten/Quellen/Abfragen bleiben erhalten.

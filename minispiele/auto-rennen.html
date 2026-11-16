@@ -120,6 +120,7 @@
   <button type="button" class="bigbtn" id="startBtn">🚦 Start</button>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script id="game-logic">
 /* Fahrmodell: Gas halten, Drehzahl beobachten, dann hochschalten. */
 var GameLogic = (function(){
@@ -219,6 +220,7 @@ var GameLogic = (function(){
     msg.textContent=name; ovTitle.textContent=name;
     ovText.textContent='Revanche? Gas halten und im grünen Bereich schalten.';
     document.querySelector('.trophy').textContent='🏆'; startBtn.textContent='🔁 Nochmal';
+    if(window.MiniMix) window.MiniMix.finish(which==='red'?1:which==='blue'?2:0);
   }
   function bindGas(el,which){
     el.addEventListener('pointerdown',function(e){

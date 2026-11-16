@@ -27,6 +27,7 @@ const out=process.env.ARCADE_HUB_OUT||'/tmp/arcade-hub';
           check('Direktstart '+file,links.includes('/'+file));
         }
       }else{
+        await page.locator('#einzeln summary').click();
         const text=await page.locator('body').innerText();
         for(const word of ['Schalt-Rennen','Ausdauer','Takt'])check('Aktuelle Regel '+word,text.includes(word));
       }

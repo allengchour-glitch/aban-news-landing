@@ -177,6 +177,7 @@
     </div>
   </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script id="game-logic">
 /* Ausdauer wird nur beim Loslassen regeneriert; Erschöpfung sperrt die Kraft. */
 var GameLogic = (function(){
@@ -241,6 +242,7 @@ var GameLogic = (function(){
       phase='idle'; $('endTitle').textContent='Spieler '+(wins[0]>wins[1]?'1 (Rot)':'2 (Blau)')+' gewinnt!';
       $('endText').textContent='Endstand: Rot '+wins[0]+' : '+wins[1]+' Blau';
       $('endO').classList.remove('hidden');
+      window.MiniMix && MiniMix.finish(wins[0]>wins[1]?1:2);
     } else {
       $('status').textContent=(result?(result===1?'Rot':'Blau')+' gewinnt die Runde!':'Gleichstand – Runde wiederholen!')+' Neue Runde …';
       phaseEnd=performance.now()+1400;

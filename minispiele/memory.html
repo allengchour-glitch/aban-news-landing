@@ -195,6 +195,7 @@
     </div>
   </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -341,6 +342,7 @@
       confetti();
     }
     overlay.classList.add("show");
+    window.MiniMix && MiniMix.finish(scores[1] === scores[2] ? 0 : winner);
   }
 
   document.getElementById("again").addEventListener("click", newGame);

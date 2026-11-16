@@ -141,6 +141,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -244,6 +245,7 @@
     if (p1 > p2){ trophy.textContent = "🏆"; title.textContent = "🔴 Spieler 1 gewinnt!"; }
     else if (p2 > p1){ trophy.textContent = "🏆"; title.textContent = "🔵 Spieler 2 gewinnt!"; }
     else { trophy.textContent = "🤝"; title.textContent = "Unentschieden!"; }
+    if(window.MiniMix) window.MiniMix.finish(p1>p2?1:p2>p1?2:0);
   }
 
   window.restart = function(){

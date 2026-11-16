@@ -78,6 +78,7 @@
     </div>
   </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -211,6 +212,7 @@
     var a=towers[1].length, b=towers[2].length;
     var win;
     if(a>b) win=1; else if(b>a) win=2; else if(towerPrecision(1)>towerPrecision(2))win=1;else if(towerPrecision(2)>towerPrecision(1))win=2;else win=0;
+    if(window.MiniMix) window.MiniMix.finish(win);
     setTimeout(function(){
       if(win===0){
         ovEmoji.textContent="🤝";

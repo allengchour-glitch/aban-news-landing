@@ -137,6 +137,7 @@
     <button class="btn" id="againBtn">🔁 Nochmal</button>
   </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -234,6 +235,7 @@
 
   function finish(winner,line){
     over=true;
+    window.MiniMix && MiniMix.finish(winner==='X'?1:winner==='O'?2:0);
     cardX.classList.remove('active');
     cardO.classList.remove('active');
     if(winner){

@@ -87,6 +87,7 @@
     </div>
   </div>
 </div>
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -173,6 +174,7 @@
 
   function endGame(){
     state = "over";
+    window.MiniMix && MiniMix.finish(winner);
     scEl[1].classList.remove("turn"); scEl[2].classList.remove("turn");
     var nm = winner === 1 ? "🔴 Rot" : "🔵 Blau";
     var cls = winner === 1 ? "winP1" : "winP2";
