@@ -1,0 +1,2769 @@
+{
+  "scope": "Browser-Fixtures Desktop/Mobil; keine FPS/kein echter Netztransport",
+  "checks": [
+    {
+      "name": "desktop Vorschau Standard",
+      "passed": true,
+      "data": {
+        "margin": 0.1837763957921763,
+        "finite": true,
+        "count": 40140,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Mann",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 45084,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 0",
+      "passed": true,
+      "data": {
+        "margin": 0.1837763957921763,
+        "finite": true,
+        "count": 40140,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 1",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 48372,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 2",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 40836,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 3",
+      "passed": true,
+      "data": {
+        "margin": 0.1724291245545746,
+        "finite": true,
+        "count": 38928,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 4",
+      "passed": true,
+      "data": {
+        "margin": 0.16383118920276074,
+        "finite": true,
+        "count": 40035,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 5",
+      "passed": true,
+      "data": {
+        "margin": 0.1644378049300913,
+        "finite": true,
+        "count": 41748,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 6",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 40872,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 7",
+      "passed": true,
+      "data": {
+        "margin": 0.16364300527937703,
+        "finite": true,
+        "count": 48696,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 8",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 39396,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 9",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 40056,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Haar 0",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 37056,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Haar 1",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 35712,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Haar 2",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 34200,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Haar 3",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 34200,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Haar 4",
+      "passed": true,
+      "data": {
+        "margin": 0.16405125603434623,
+        "finite": true,
+        "count": 35124,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Oberteil 0",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 33768,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Oberteil 1",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 36768,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Oberteil 2",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 36768,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Oberteil 3",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 35208,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Oberteil 4",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 36288,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Oberteil 5",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 34356,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Oberteil 6",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 34524,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Oberteil 7",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 42084,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop vier Standhöhen f",
+      "passed": true,
+      "data": [
+        {
+          "stage": 0,
+          "feet": [
+            -2.3579835861653464e-8,
+            -2.3579835861653464e-8
+          ],
+          "scale": 1.0989,
+          "head": 1.2864,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 1,
+          "feet": [
+            -2.867817872065359e-8,
+            -2.867817872065359e-8
+          ],
+          "scale": 1.3365000000000002,
+          "head": 1.0943999999999998,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 2,
+          "feet": [
+            -3.186464314630655e-8,
+            -3.186464314630655e-8
+          ],
+          "scale": 1.4850000000000003,
+          "head": 0.96,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 3,
+          "feet": [
+            -3.059005748706767e-8,
+            -3.059005748706767e-8
+          ],
+          "scale": 1.4256000000000002,
+          "head": 0.9792,
+          "stoop": 0.22,
+          "hair": [
+            0.6157824834228373,
+            0.6279561362132946,
+            0.6421969953206059
+          ],
+          "eyes": 0.84
+        }
+      ]
+    },
+    {
+      "name": "desktop Altersunterschiede f",
+      "passed": true,
+      "data": [
+        {
+          "stage": 0,
+          "feet": [
+            -2.3579835861653464e-8,
+            -2.3579835861653464e-8
+          ],
+          "scale": 1.0989,
+          "head": 1.2864,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 1,
+          "feet": [
+            -2.867817872065359e-8,
+            -2.867817872065359e-8
+          ],
+          "scale": 1.3365000000000002,
+          "head": 1.0943999999999998,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 2,
+          "feet": [
+            -3.186464314630655e-8,
+            -3.186464314630655e-8
+          ],
+          "scale": 1.4850000000000003,
+          "head": 0.96,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 3,
+          "feet": [
+            -3.059005748706767e-8,
+            -3.059005748706767e-8
+          ],
+          "scale": 1.4256000000000002,
+          "head": 0.9792,
+          "stoop": 0.22,
+          "hair": [
+            0.6157824834228373,
+            0.6279561362132946,
+            0.6421969953206059
+          ],
+          "eyes": 0.84
+        }
+      ]
+    },
+    {
+      "name": "desktop Rig/Blinzeln/Gang f",
+      "passed": true,
+      "data": {
+        "drift": 2.220446049250313e-16,
+        "moved": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "desktop vier Standhöhen m",
+      "passed": true,
+      "data": [
+        {
+          "stage": 0,
+          "feet": [
+            -2.3579835861653464e-8,
+            -2.3579835861653464e-8
+          ],
+          "scale": 1.0989,
+          "head": 1.2864,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 1,
+          "feet": [
+            -2.867817872065359e-8,
+            -2.867817872065359e-8
+          ],
+          "scale": 1.3365000000000002,
+          "head": 1.0943999999999998,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 2,
+          "feet": [
+            -3.186464314630655e-8,
+            -3.186464314630655e-8
+          ],
+          "scale": 1.4850000000000003,
+          "head": 0.96,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 3,
+          "feet": [
+            -3.059005748706767e-8,
+            -3.059005748706767e-8
+          ],
+          "scale": 1.4256000000000002,
+          "head": 0.9792,
+          "stoop": 0.22,
+          "hair": [
+            0.7381449397163746,
+            0.6406470812390399,
+            0.6457875874017343
+          ],
+          "eyes": 0.84
+        }
+      ]
+    },
+    {
+      "name": "desktop Altersunterschiede m",
+      "passed": true,
+      "data": [
+        {
+          "stage": 0,
+          "feet": [
+            -2.3579835861653464e-8,
+            -2.3579835861653464e-8
+          ],
+          "scale": 1.0989,
+          "head": 1.2864,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 1,
+          "feet": [
+            -2.867817872065359e-8,
+            -2.867817872065359e-8
+          ],
+          "scale": 1.3365000000000002,
+          "head": 1.0943999999999998,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 2,
+          "feet": [
+            -3.186464314630655e-8,
+            -3.186464314630655e-8
+          ],
+          "scale": 1.4850000000000003,
+          "head": 0.96,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 3,
+          "feet": [
+            -3.059005748706767e-8,
+            -3.059005748706767e-8
+          ],
+          "scale": 1.4256000000000002,
+          "head": 0.9792,
+          "stoop": 0.22,
+          "hair": [
+            0.7381449397163746,
+            0.6406470812390399,
+            0.6457875874017343
+          ],
+          "eyes": 0.84
+        }
+      ]
+    },
+    {
+      "name": "desktop Rig/Blinzeln/Gang m",
+      "passed": true,
+      "data": {
+        "drift": 2.220446049250313e-16,
+        "moved": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "Geometriebudget native Varianten",
+      "passed": true,
+      "data": [
+        {
+          "name": "Standard",
+          "calls": 32,
+          "triangles": 13380,
+          "size": [
+            1.1340491975777336,
+            2.261036818265915,
+            1.029954610912139
+          ]
+        },
+        {
+          "name": "Mann",
+          "calls": 32,
+          "triangles": 15028,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Accessoire 0",
+          "calls": 32,
+          "triangles": 13380,
+          "size": [
+            1.1340491975777336,
+            2.261036818265915,
+            1.029954610912139
+          ]
+        },
+        {
+          "name": "Accessoire 1",
+          "calls": 33,
+          "triangles": 16124,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 2",
+          "calls": 33,
+          "triangles": 13612,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 3",
+          "calls": 32,
+          "triangles": 12976,
+          "size": [
+            1.1268780909582343,
+            2.3320000236034395,
+            0.9780585843686582
+          ]
+        },
+        {
+          "name": "Accessoire 4",
+          "calls": 33,
+          "triangles": 13345,
+          "size": [
+            1.1186056529866522,
+            2.32672002863884,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 5",
+          "calls": 32,
+          "triangles": 13916,
+          "size": [
+            1.1186056529866522,
+            2.283553366422653,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 6",
+          "calls": 32,
+          "triangles": 13624,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 7",
+          "calls": 32,
+          "triangles": 16232,
+          "size": [
+            1.1186056529866522,
+            2.4164800689220427,
+            0.9398156360679748
+          ]
+        },
+        {
+          "name": "Accessoire 8",
+          "calls": 32,
+          "triangles": 13132,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 9",
+          "calls": 31,
+          "triangles": 13352,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Haar 0",
+          "calls": 30,
+          "triangles": 12352,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Haar 1",
+          "calls": 30,
+          "triangles": 11904,
+          "size": [
+            1.006502107567492,
+            2.215840008497238,
+            1.0394667605475991
+          ]
+        },
+        {
+          "name": "Haar 2",
+          "calls": 29,
+          "triangles": 11400,
+          "size": [
+            0.9645450468388979,
+            2.215840008497238,
+            0.9132358267420504
+          ]
+        },
+        {
+          "name": "Haar 3",
+          "calls": 29,
+          "triangles": 11400,
+          "size": [
+            0.9640983982092137,
+            2.215840008497238,
+            0.9130138811368096
+          ]
+        },
+        {
+          "name": "Haar 4",
+          "calls": 29,
+          "triangles": 11708,
+          "size": [
+            0.9646952468807461,
+            2.310880043745041,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 0",
+          "calls": 29,
+          "triangles": 11256,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 1",
+          "calls": 30,
+          "triangles": 12256,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 2",
+          "calls": 31,
+          "triangles": 12256,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 3",
+          "calls": 29,
+          "triangles": 11736,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 4",
+          "calls": 31,
+          "triangles": 12096,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 5",
+          "calls": 29,
+          "triangles": 11452,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 6",
+          "calls": 30,
+          "triangles": 11508,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 7",
+          "calls": 30,
+          "triangles": 14028,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chibi-Familie Bodenkontakt",
+      "passed": true,
+      "data": [
+        {
+          "native": true,
+          "minY": -1.88827514735479e-8
+        },
+        {
+          "native": true,
+          "minY": -1.1801719657089649e-8
+        }
+      ]
+    },
+    {
+      "name": "desktop gespeicherter Look nach Reload",
+      "passed": true
+    },
+    {
+      "name": "desktop übertragene Koop-Looks",
+      "passed": true,
+      "data": [
+        {
+          "cfg": {
+            "g": "f",
+            "style": 8,
+            "skin": 4,
+            "hair": 7,
+            "pants": 5,
+            "cloth": 6,
+            "hstyle": 3,
+            "outfit": 2,
+            "top": 6
+          },
+          "hash": 163155929,
+          "meshes": 32,
+          "native": true
+        },
+        {
+          "cfg": {
+            "g": "m",
+            "style": 2,
+            "skin": 1,
+            "hair": 7,
+            "pants": 5,
+            "cloth": 6,
+            "hstyle": 3,
+            "outfit": 2,
+            "top": 3
+          },
+          "hash": 852224182,
+          "meshes": 30,
+          "native": true
+        }
+      ]
+    },
+    {
+      "name": "desktop reproduzierbare Koop-Geometrie",
+      "passed": true
+    },
+    {
+      "name": "mobil Vorschau Standard",
+      "passed": true,
+      "data": {
+        "margin": 0.18519798131379306,
+        "finite": true,
+        "count": 23844,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Mann",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 25788,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 0",
+      "passed": true,
+      "data": {
+        "margin": 0.18519798131379306,
+        "finite": true,
+        "count": 23844,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 1",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 27636,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 2",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 24708,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 3",
+      "passed": true,
+      "data": {
+        "margin": 0.17384608260856527,
+        "finite": true,
+        "count": 23616,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 4",
+      "passed": true,
+      "data": {
+        "margin": 0.16528099395192275,
+        "finite": true,
+        "count": 24123,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 5",
+      "passed": true,
+      "data": {
+        "margin": 0.1659259795196203,
+        "finite": true,
+        "count": 24804,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 6",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 24912,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 7",
+      "passed": true,
+      "data": {
+        "margin": 0.1650771420977698,
+        "finite": true,
+        "count": 27816,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 8",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 23340,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Accessoire 9",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 23856,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Haar 0",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 22368,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Haar 1",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631253,
+        "finite": true,
+        "count": 21648,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Haar 2",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 20808,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Haar 3",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 20808,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Haar 4",
+      "passed": true,
+      "data": {
+        "margin": 0.16551021357454776,
+        "finite": true,
+        "count": 21228,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Oberteil 0",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 20520,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Oberteil 1",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 22008,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Oberteil 2",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 22008,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Oberteil 3",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 21480,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Oberteil 4",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 21864,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Oberteil 5",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 20964,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Oberteil 6",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 21084,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil Vorschau Oberteil 7",
+      "passed": true,
+      "data": {
+        "margin": 0.16695146367631275,
+        "finite": true,
+        "count": 24300,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobil vier Standhöhen f",
+      "passed": true,
+      "data": [
+        {
+          "stage": 0,
+          "feet": [
+            -2.3579835861653464e-8,
+            -2.3579835861653464e-8
+          ],
+          "scale": 1.0989,
+          "head": 1.2864,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 1,
+          "feet": [
+            -2.867817872065359e-8,
+            -2.867817872065359e-8
+          ],
+          "scale": 1.3365000000000002,
+          "head": 1.0943999999999998,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 2,
+          "feet": [
+            -3.186464314630655e-8,
+            -3.186464314630655e-8
+          ],
+          "scale": 1.4850000000000003,
+          "head": 0.96,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 3,
+          "feet": [
+            -3.059005748706767e-8,
+            -3.059005748706767e-8
+          ],
+          "scale": 1.4256000000000002,
+          "head": 0.9792,
+          "stoop": 0.22,
+          "hair": [
+            0.6157824834228373,
+            0.6279561362132946,
+            0.6421969953206059
+          ],
+          "eyes": 0.84
+        }
+      ]
+    },
+    {
+      "name": "mobil Altersunterschiede f",
+      "passed": true,
+      "data": [
+        {
+          "stage": 0,
+          "feet": [
+            -2.3579835861653464e-8,
+            -2.3579835861653464e-8
+          ],
+          "scale": 1.0989,
+          "head": 1.2864,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 1,
+          "feet": [
+            -2.867817872065359e-8,
+            -2.867817872065359e-8
+          ],
+          "scale": 1.3365000000000002,
+          "head": 1.0943999999999998,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 2,
+          "feet": [
+            -3.186464314630655e-8,
+            -3.186464314630655e-8
+          ],
+          "scale": 1.4850000000000003,
+          "head": 0.96,
+          "stoop": 0,
+          "hair": [
+            0.04231141061442144,
+            0.023153366173251363,
+            0.010329823026364548
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 3,
+          "feet": [
+            -3.059005748706767e-8,
+            -3.059005748706767e-8
+          ],
+          "scale": 1.4256000000000002,
+          "head": 0.9792,
+          "stoop": 0.22,
+          "hair": [
+            0.6157824834228373,
+            0.6279561362132946,
+            0.6421969953206059
+          ],
+          "eyes": 0.84
+        }
+      ]
+    },
+    {
+      "name": "mobil Rig/Blinzeln/Gang f",
+      "passed": true,
+      "data": {
+        "drift": 2.220446049250313e-16,
+        "moved": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobil vier Standhöhen m",
+      "passed": true,
+      "data": [
+        {
+          "stage": 0,
+          "feet": [
+            -2.3579835861653464e-8,
+            -2.3579835861653464e-8
+          ],
+          "scale": 1.0989,
+          "head": 1.2864,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 1,
+          "feet": [
+            -2.867817872065359e-8,
+            -2.867817872065359e-8
+          ],
+          "scale": 1.3365000000000002,
+          "head": 1.0943999999999998,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 2,
+          "feet": [
+            -3.186464314630655e-8,
+            -3.186464314630655e-8
+          ],
+          "scale": 1.4850000000000003,
+          "head": 0.96,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 3,
+          "feet": [
+            -3.059005748706767e-8,
+            -3.059005748706767e-8
+          ],
+          "scale": 1.4256000000000002,
+          "head": 0.9792,
+          "stoop": 0.22,
+          "hair": [
+            0.7381449397163746,
+            0.6406470812390399,
+            0.6457875874017343
+          ],
+          "eyes": 0.84
+        }
+      ]
+    },
+    {
+      "name": "mobil Altersunterschiede m",
+      "passed": true,
+      "data": [
+        {
+          "stage": 0,
+          "feet": [
+            -2.3579835861653464e-8,
+            -2.3579835861653464e-8
+          ],
+          "scale": 1.0989,
+          "head": 1.2864,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 1,
+          "feet": [
+            -2.867817872065359e-8,
+            -2.867817872065359e-8
+          ],
+          "scale": 1.3365000000000002,
+          "head": 1.0943999999999998,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 2,
+          "feet": [
+            -3.186464314630655e-8,
+            -3.186464314630655e-8
+          ],
+          "scale": 1.4850000000000003,
+          "head": 0.96,
+          "stoop": 0,
+          "hair": [
+            0.4793201830913402,
+            0.06847816983662762,
+            0.023153366173251363
+          ],
+          "eyes": 1
+        },
+        {
+          "stage": 3,
+          "feet": [
+            -3.059005748706767e-8,
+            -3.059005748706767e-8
+          ],
+          "scale": 1.4256000000000002,
+          "head": 0.9792,
+          "stoop": 0.22,
+          "hair": [
+            0.7381449397163746,
+            0.6406470812390399,
+            0.6457875874017343
+          ],
+          "eyes": 0.84
+        }
+      ]
+    },
+    {
+      "name": "mobil Rig/Blinzeln/Gang m",
+      "passed": true,
+      "data": {
+        "drift": 2.220446049250313e-16,
+        "moved": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobil gespeicherter Look nach Reload",
+      "passed": true
+    },
+    {
+      "name": "mobil übertragene Koop-Looks",
+      "passed": true,
+      "data": [
+        {
+          "cfg": {
+            "g": "f",
+            "style": 8,
+            "skin": 4,
+            "hair": 7,
+            "pants": 5,
+            "cloth": 6,
+            "hstyle": 3,
+            "outfit": 2,
+            "top": 6
+          },
+          "hash": 3039075155,
+          "meshes": 32,
+          "native": true
+        },
+        {
+          "cfg": {
+            "g": "m",
+            "style": 2,
+            "skin": 1,
+            "hair": 7,
+            "pants": 5,
+            "cloth": 6,
+            "hstyle": 3,
+            "outfit": 2,
+            "top": 3
+          },
+          "hash": 4160988395,
+          "meshes": 30,
+          "native": true
+        }
+      ]
+    },
+    {
+      "name": "mobil reproduzierbare Koop-Geometrie",
+      "passed": true
+    },
+    {
+      "name": "Keine JS-/Shaderfehler",
+      "passed": true,
+      "data": []
+    }
+  ],
+  "profiles": [
+    {
+      "profile": "desktop",
+      "previews": [
+        {
+          "name": "Standard",
+          "margin": 0.1837763957921763,
+          "finite": true,
+          "count": 40140,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Mann",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 45084,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 0",
+          "margin": 0.1837763957921763,
+          "finite": true,
+          "count": 40140,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 1",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 48372,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 2",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 40836,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 3",
+          "margin": 0.1724291245545746,
+          "finite": true,
+          "count": 38928,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 4",
+          "margin": 0.16383118920276074,
+          "finite": true,
+          "count": 40035,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 5",
+          "margin": 0.1644378049300913,
+          "finite": true,
+          "count": 41748,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 6",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 40872,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 7",
+          "margin": 0.16364300527937703,
+          "finite": true,
+          "count": 48696,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 8",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 39396,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 9",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 40056,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 0",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 37056,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 1",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 35712,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 2",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 34200,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 3",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 34200,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 4",
+          "margin": 0.16405125603434623,
+          "finite": true,
+          "count": 35124,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 0",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 33768,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 1",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 36768,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 2",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 36768,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 3",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 35208,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 4",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 36288,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 5",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 34356,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 6",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 34524,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 7",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 42084,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        }
+      ],
+      "ages": [
+        [
+          {
+            "stage": 0,
+            "feet": [
+              -2.3579835861653464e-8,
+              -2.3579835861653464e-8
+            ],
+            "scale": 1.0989,
+            "head": 1.2864,
+            "stoop": 0,
+            "hair": [
+              0.04231141061442144,
+              0.023153366173251363,
+              0.010329823026364548
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 1,
+            "feet": [
+              -2.867817872065359e-8,
+              -2.867817872065359e-8
+            ],
+            "scale": 1.3365000000000002,
+            "head": 1.0943999999999998,
+            "stoop": 0,
+            "hair": [
+              0.04231141061442144,
+              0.023153366173251363,
+              0.010329823026364548
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 2,
+            "feet": [
+              -3.186464314630655e-8,
+              -3.186464314630655e-8
+            ],
+            "scale": 1.4850000000000003,
+            "head": 0.96,
+            "stoop": 0,
+            "hair": [
+              0.04231141061442144,
+              0.023153366173251363,
+              0.010329823026364548
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 3,
+            "feet": [
+              -3.059005748706767e-8,
+              -3.059005748706767e-8
+            ],
+            "scale": 1.4256000000000002,
+            "head": 0.9792,
+            "stoop": 0.22,
+            "hair": [
+              0.6157824834228373,
+              0.6279561362132946,
+              0.6421969953206059
+            ],
+            "eyes": 0.84
+          }
+        ],
+        [
+          {
+            "stage": 0,
+            "feet": [
+              -2.3579835861653464e-8,
+              -2.3579835861653464e-8
+            ],
+            "scale": 1.0989,
+            "head": 1.2864,
+            "stoop": 0,
+            "hair": [
+              0.4793201830913402,
+              0.06847816983662762,
+              0.023153366173251363
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 1,
+            "feet": [
+              -2.867817872065359e-8,
+              -2.867817872065359e-8
+            ],
+            "scale": 1.3365000000000002,
+            "head": 1.0943999999999998,
+            "stoop": 0,
+            "hair": [
+              0.4793201830913402,
+              0.06847816983662762,
+              0.023153366173251363
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 2,
+            "feet": [
+              -3.186464314630655e-8,
+              -3.186464314630655e-8
+            ],
+            "scale": 1.4850000000000003,
+            "head": 0.96,
+            "stoop": 0,
+            "hair": [
+              0.4793201830913402,
+              0.06847816983662762,
+              0.023153366173251363
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 3,
+            "feet": [
+              -3.059005748706767e-8,
+              -3.059005748706767e-8
+            ],
+            "scale": 1.4256000000000002,
+            "head": 0.9792,
+            "stoop": 0.22,
+            "hair": [
+              0.7381449397163746,
+              0.6406470812390399,
+              0.6457875874017343
+            ],
+            "eyes": 0.84
+          }
+        ]
+      ],
+      "motions": [
+        {
+          "drift": 2.220446049250313e-16,
+          "moved": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "closed": [
+            0.12,
+            0.12
+          ],
+          "opened": [
+            1,
+            1
+          ],
+          "walking": [
+            0.7425784202528833,
+            -0.7425784202528833,
+            -0.5940627362023067,
+            0.5940627362023067
+          ],
+          "stopped": [
+            1.6416472206533473e-7,
+            -1.6416472206533473e-7,
+            -1.3133177765226785e-7,
+            1.3133177765226785e-7
+          ]
+        },
+        {
+          "drift": 2.220446049250313e-16,
+          "moved": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "closed": [
+            0.12,
+            0.12
+          ],
+          "opened": [
+            1,
+            1
+          ],
+          "walking": [
+            0.7425784202528833,
+            -0.7425784202528833,
+            -0.5940627362023067,
+            0.5940627362023067
+          ],
+          "stopped": [
+            1.6416472206533473e-7,
+            -1.6416472206533473e-7,
+            -1.3133177765226785e-7,
+            1.3133177765226785e-7
+          ]
+        }
+      ],
+      "ageDraws": [
+        {
+          "name": "Kind",
+          "calls": 32,
+          "triangles": 13380,
+          "size": [
+            1.518106298829409,
+            2.5933533791227052,
+            1.3787590394436438
+          ]
+        },
+        {
+          "name": "Teenager",
+          "calls": 32,
+          "triangles": 13380,
+          "size": [
+            1.5707715435649188,
+            2.9147144929651745,
+            1.4265901315744034
+          ]
+        },
+        {
+          "name": "Erwachsen",
+          "calls": 32,
+          "triangles": 13380,
+          "size": [
+            1.5309664167299404,
+            3.052399704658986,
+            1.3904387247313874
+          ]
+        },
+        {
+          "name": "Senior",
+          "calls": 32,
+          "triangles": 13380,
+          "size": [
+            1.5534711991463217,
+            3.038715385183351,
+            1.511363460494019
+          ]
+        }
+      ],
+      "draws": [
+        {
+          "name": "Standard",
+          "calls": 32,
+          "triangles": 13380,
+          "size": [
+            1.1340491975777336,
+            2.261036818265915,
+            1.029954610912139
+          ]
+        },
+        {
+          "name": "Mann",
+          "calls": 32,
+          "triangles": 15028,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Accessoire 0",
+          "calls": 32,
+          "triangles": 13380,
+          "size": [
+            1.1340491975777336,
+            2.261036818265915,
+            1.029954610912139
+          ]
+        },
+        {
+          "name": "Accessoire 1",
+          "calls": 33,
+          "triangles": 16124,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 2",
+          "calls": 33,
+          "triangles": 13612,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 3",
+          "calls": 32,
+          "triangles": 12976,
+          "size": [
+            1.1268780909582343,
+            2.3320000236034395,
+            0.9780585843686582
+          ]
+        },
+        {
+          "name": "Accessoire 4",
+          "calls": 33,
+          "triangles": 13345,
+          "size": [
+            1.1186056529866522,
+            2.32672002863884,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 5",
+          "calls": 32,
+          "triangles": 13916,
+          "size": [
+            1.1186056529866522,
+            2.283553366422653,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 6",
+          "calls": 32,
+          "triangles": 13624,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 7",
+          "calls": 32,
+          "triangles": 16232,
+          "size": [
+            1.1186056529866522,
+            2.4164800689220427,
+            0.9398156360679748
+          ]
+        },
+        {
+          "name": "Accessoire 8",
+          "calls": 32,
+          "triangles": 13132,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Accessoire 9",
+          "calls": 31,
+          "triangles": 13352,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Haar 0",
+          "calls": 30,
+          "triangles": 12352,
+          "size": [
+            1.1186056529866522,
+            2.215840008497238,
+            0.938812601132285
+          ]
+        },
+        {
+          "name": "Haar 1",
+          "calls": 30,
+          "triangles": 11904,
+          "size": [
+            1.006502107567492,
+            2.215840008497238,
+            1.0394667605475991
+          ]
+        },
+        {
+          "name": "Haar 2",
+          "calls": 29,
+          "triangles": 11400,
+          "size": [
+            0.9645450468388979,
+            2.215840008497238,
+            0.9132358267420504
+          ]
+        },
+        {
+          "name": "Haar 3",
+          "calls": 29,
+          "triangles": 11400,
+          "size": [
+            0.9640983982092137,
+            2.215840008497238,
+            0.9130138811368096
+          ]
+        },
+        {
+          "name": "Haar 4",
+          "calls": 29,
+          "triangles": 11708,
+          "size": [
+            0.9646952468807461,
+            2.310880043745041,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 0",
+          "calls": 29,
+          "triangles": 11256,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 1",
+          "calls": 30,
+          "triangles": 12256,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 2",
+          "calls": 31,
+          "triangles": 12256,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 3",
+          "calls": 29,
+          "triangles": 11736,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 4",
+          "calls": 31,
+          "triangles": 12096,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 5",
+          "calls": 29,
+          "triangles": 11452,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 6",
+          "calls": 30,
+          "triangles": 11508,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        },
+        {
+          "name": "Oberteil 7",
+          "calls": 30,
+          "triangles": 14028,
+          "size": [
+            0.9646952468807461,
+            2.215840008497238,
+            0.9133104621636567
+          ]
+        }
+      ],
+      "family": {
+        "calls": 74,
+        "triangles": 15168,
+        "size": [
+          3.0946024158388106,
+          1.7726720067977908,
+          0.6989449628259677
+        ]
+      }
+    },
+    {
+      "profile": "mobil",
+      "previews": [
+        {
+          "name": "Standard",
+          "margin": 0.18519798131379306,
+          "finite": true,
+          "count": 23844,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Mann",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 25788,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 0",
+          "margin": 0.18519798131379306,
+          "finite": true,
+          "count": 23844,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 1",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 27636,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 2",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 24708,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 3",
+          "margin": 0.17384608260856527,
+          "finite": true,
+          "count": 23616,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 4",
+          "margin": 0.16528099395192275,
+          "finite": true,
+          "count": 24123,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 5",
+          "margin": 0.1659259795196203,
+          "finite": true,
+          "count": 24804,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 6",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 24912,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 7",
+          "margin": 0.1650771420977698,
+          "finite": true,
+          "count": 27816,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 8",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 23340,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 9",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 23856,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 0",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 22368,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 1",
+          "margin": 0.16695146367631253,
+          "finite": true,
+          "count": 21648,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 2",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 20808,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 3",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 20808,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Haar 4",
+          "margin": 0.16551021357454776,
+          "finite": true,
+          "count": 21228,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 0",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 20520,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 1",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 22008,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 2",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 22008,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 3",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 21480,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 4",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 21864,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 5",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 20964,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 6",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 21084,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Oberteil 7",
+          "margin": 0.16695146367631275,
+          "finite": true,
+          "count": 24300,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        }
+      ],
+      "ages": [
+        [
+          {
+            "stage": 0,
+            "feet": [
+              -2.3579835861653464e-8,
+              -2.3579835861653464e-8
+            ],
+            "scale": 1.0989,
+            "head": 1.2864,
+            "stoop": 0,
+            "hair": [
+              0.04231141061442144,
+              0.023153366173251363,
+              0.010329823026364548
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 1,
+            "feet": [
+              -2.867817872065359e-8,
+              -2.867817872065359e-8
+            ],
+            "scale": 1.3365000000000002,
+            "head": 1.0943999999999998,
+            "stoop": 0,
+            "hair": [
+              0.04231141061442144,
+              0.023153366173251363,
+              0.010329823026364548
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 2,
+            "feet": [
+              -3.186464314630655e-8,
+              -3.186464314630655e-8
+            ],
+            "scale": 1.4850000000000003,
+            "head": 0.96,
+            "stoop": 0,
+            "hair": [
+              0.04231141061442144,
+              0.023153366173251363,
+              0.010329823026364548
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 3,
+            "feet": [
+              -3.059005748706767e-8,
+              -3.059005748706767e-8
+            ],
+            "scale": 1.4256000000000002,
+            "head": 0.9792,
+            "stoop": 0.22,
+            "hair": [
+              0.6157824834228373,
+              0.6279561362132946,
+              0.6421969953206059
+            ],
+            "eyes": 0.84
+          }
+        ],
+        [
+          {
+            "stage": 0,
+            "feet": [
+              -2.3579835861653464e-8,
+              -2.3579835861653464e-8
+            ],
+            "scale": 1.0989,
+            "head": 1.2864,
+            "stoop": 0,
+            "hair": [
+              0.4793201830913402,
+              0.06847816983662762,
+              0.023153366173251363
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 1,
+            "feet": [
+              -2.867817872065359e-8,
+              -2.867817872065359e-8
+            ],
+            "scale": 1.3365000000000002,
+            "head": 1.0943999999999998,
+            "stoop": 0,
+            "hair": [
+              0.4793201830913402,
+              0.06847816983662762,
+              0.023153366173251363
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 2,
+            "feet": [
+              -3.186464314630655e-8,
+              -3.186464314630655e-8
+            ],
+            "scale": 1.4850000000000003,
+            "head": 0.96,
+            "stoop": 0,
+            "hair": [
+              0.4793201830913402,
+              0.06847816983662762,
+              0.023153366173251363
+            ],
+            "eyes": 1
+          },
+          {
+            "stage": 3,
+            "feet": [
+              -3.059005748706767e-8,
+              -3.059005748706767e-8
+            ],
+            "scale": 1.4256000000000002,
+            "head": 0.9792,
+            "stoop": 0.22,
+            "hair": [
+              0.7381449397163746,
+              0.6406470812390399,
+              0.6457875874017343
+            ],
+            "eyes": 0.84
+          }
+        ]
+      ],
+      "motions": [
+        {
+          "drift": 2.220446049250313e-16,
+          "moved": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "closed": [
+            0.12,
+            0.12
+          ],
+          "opened": [
+            1,
+            1
+          ],
+          "walking": [
+            0.7425784202528833,
+            -0.7425784202528833,
+            -0.5940627362023067,
+            0.5940627362023067
+          ],
+          "stopped": [
+            1.6416472206533473e-7,
+            -1.6416472206533473e-7,
+            -1.3133177765226785e-7,
+            1.3133177765226785e-7
+          ]
+        },
+        {
+          "drift": 2.220446049250313e-16,
+          "moved": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "closed": [
+            0.12,
+            0.12
+          ],
+          "opened": [
+            1,
+            1
+          ],
+          "walking": [
+            0.7425784202528833,
+            -0.7425784202528833,
+            -0.5940627362023067,
+            0.5940627362023067
+          ],
+          "stopped": [
+            1.6416472206533473e-7,
+            -1.6416472206533473e-7,
+            -1.3133177765226785e-7,
+            1.3133177765226785e-7
+          ]
+        }
+      ],
+      "ageDraws": [
+        {
+          "name": "Kind",
+          "calls": 32,
+          "triangles": 7948,
+          "size": [
+            1.5122377125368347,
+            2.5933533791227052,
+            1.3758276214444938
+          ]
+        },
+        {
+          "name": "Teenager",
+          "calls": 32,
+          "triangles": 7948,
+          "size": [
+            1.5646993677519085,
+            2.9147144929651745,
+            1.4235570185579374
+          ]
+        },
+        {
+          "name": "Erwachsen",
+          "calls": 32,
+          "triangles": 7948,
+          "size": [
+            1.5250481167172598,
+            3.052399704658986,
+            1.3874824742280092
+          ]
+        },
+        {
+          "name": "Senior",
+          "calls": 32,
+          "triangles": 7948,
+          "size": [
+            1.5431812897844421,
+            3.038715385183351,
+            1.5090626932342714
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "status": "passed"
+}

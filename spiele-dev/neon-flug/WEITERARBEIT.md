@@ -1,5 +1,7 @@
 # Neon Flug v4 – Freeze / Übergabe an Parent und Claude Code
 
+**Veröffentlichungsnachtrag Parent:** PR3217 gemergt (e023cc01f), Hauptseitenlauf43929567774 erfolgreich, vier Einrichtungs-/Secret-Schritte übersprungen. Sechs relevante CI-Prüfungen am Head4008cc562 und14/14 normale öffentliche HTTPS-Prüfungen bestanden. Belege `belege-v4/veroeffentlichung.json` und `belege-v4/produktion.json`. Die folgenden Agenten-/Freeze-Angaben beschreiben die Implementierungsübergabe vor dieser Veröffentlichung.
+
 Stand 16.11.2026, Arbeitszweig `codex/neon-flug-ringe-belohnung`, Basis `c3088227d`, Worktree `/workspace/aban-neon-flug-belohnung`. Keine Commits, kein Staging, Push, Merge oder Deploy durch diesen Agenten. Parent übernimmt Review, gezieltes Staging, CI und Veröffentlichung. Vorschau läuft auf Port 8186. Keine weiteren Agenten gestartet.
 
 ## Implementiert

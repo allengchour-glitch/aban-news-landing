@@ -1,5 +1,16 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Spieleabschluss: Neon live, neue Lebenspfad-Figur geprüft ·16.11.2026
+
+Aktiver Besitzerauftrag «mach die2 fertig», danach «teile dann memory»; zuletzt «token sparen». Die frühere Pause ist aufgehoben. Keine weiteren Erweiterungen: Veröffentlichung und gemeinsame Übergabe abschließen. Kanonischer aktueller Stand: `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`; ältere Pausen-/WIP-Abschnitte unten sind Historie.
+
+Neon Flug PR3217 live: Head4008cc562, Mergee023cc01f, Hauptseitenlauf43929567774 erfolgreich, sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen,14/14 normale HTTPS-Prüfungen bestanden. Höhensteuerung/Touch, verschwindende Ringe, Belohnungen, optionales Neon-Schießen;66 Node+90 Browserbedingungen grün. Belege `spiele-dev/neon-flug/belege-v4/`.
+
+Lebenspfad PR3218: gewählte kleine niedliche Figur mit großem Kopf, eigenem Geometriemodul und passender Familie fertig implementiert. GEMESSEN71 Browserbedingungen, neun GLB-Vorschauen, fünf Layoutgrößen/sieben Stand- und Emotefixtures bestanden. Replay26 Kontrollpunkte/Endzustand/31 RNG-Aufrufe unverändert. Portrait,25 Varianten, Alter, Familie und Spielkamera wirklich angesehen. Default32 statt60 Zeichenaufrufe,13.380 statt10.316 Dreiecke; keine FPS-Zusage. Veröffentlichung noch ausstehend; tatsächlichen Abschluss oben in der kanonischen Übergabe lesen.
+
+Keine neue Higgsfield-Ausführung; native Geometrie lokal gebaut. Internet-/NAT-/physische Handy-Leistung nicht neu belegt. Lokale Gesamt-CI vor Start durch read-only HOME blockiert; echte CI separat. Traumhaus unverändert vom anderen Bearbeiter integriert. Keine Shop-/Social-/Konto-/Secret-Aktion.
+
+
 ## Neon Flug: vier Richtungen, Ringe und Schießmodus ·16.11.2026
 
 Besitzer wollte mehr Animation, verschwindende Sammelringe, Belohnungen, Neon-Schießen und ausdrücklich «hoch runter auch». Umgesetzt: echte X/Y-Steuerung perWASD/Pfeilen/Touchstick mit Koop/Kollisionen, einmalige Ringwertung und Entfernung in beiden Renderern, begrenzte Trails/Partikel,60-Sekunden-Drohnenmodus innerhalb derselben Spielkarte, Wärme/Cooldown und einmalige XP-Abrechnung. Klassische Kampagne bleibt Standard; Protokoll/Räumev4, mp.js unverändert. Bei Quota bleiben XP/Claims innerhalb der Sitzung erhalten, verspätete Locks überschreiben keine neue Runde.

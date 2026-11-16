@@ -1,0 +1,88 @@
+{
+  "kind": "Neun echte GLB-Vorschauen mit posierten Vertices; keine Spielfigur-Normalisierung",
+  "cases": [
+    {
+      "id": "hero",
+      "vertices": 10251,
+      "margin": 0.17130116551007823,
+      "zMin": 0.9471949976236499,
+      "zMax": 0.9618480527167599,
+      "finite": true,
+      "pixelColors": 4213
+    },
+    {
+      "id": "warrior",
+      "vertices": 11840,
+      "margin": 0.1549296871849315,
+      "zMin": 0.9471836211704808,
+      "zMax": 0.9647823408326224,
+      "finite": true,
+      "pixelColors": 4639
+    },
+    {
+      "id": "mage",
+      "vertices": 11327,
+      "margin": 0.16725342241955055,
+      "zMin": 0.9510287452774532,
+      "zMax": 0.9617526454807324,
+      "finite": true,
+      "pixelColors": 3847
+    },
+    {
+      "id": "ninja",
+      "vertices": 9879,
+      "margin": 0.16829843468741912,
+      "zMin": 0.9459063554754539,
+      "zMax": 0.9611112506422721,
+      "finite": true,
+      "pixelColors": 2628
+    },
+    {
+      "id": "schoolgirl",
+      "vertices": 10243,
+      "margin": 0.15065228205294756,
+      "zMin": 0.948205349452312,
+      "zMax": 0.958274876189966,
+      "finite": true,
+      "pixelColors": 3518
+    },
+    {
+      "id": "girl",
+      "vertices": 10623,
+      "margin": 0.15008122607544838,
+      "zMin": 0.9417246139071208,
+      "zMax": 0.9522632663236282,
+      "finite": true,
+      "pixelColors": 5278
+    },
+    {
+      "id": "boy",
+      "vertices": 9574,
+      "margin": 0.1594766092657336,
+      "zMin": 0.9417173741243657,
+      "zMax": 0.9540781718210309,
+      "finite": true,
+      "pixelColors": 4570
+    },
+    {
+      "id": "girl2",
+      "vertices": 9982,
+      "margin": 0.22536311116344832,
+      "zMin": 0.9416717308358185,
+      "zMax": 0.9574640013423344,
+      "finite": true,
+      "pixelColors": 5089
+    },
+    {
+      "id": "boy2",
+      "vertices": 9657,
+      "margin": 0.1783307813494257,
+      "zMin": 0.9417361946895677,
+      "zMax": 0.9558254006037611,
+      "finite": true,
+      "pixelColors": 7582
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

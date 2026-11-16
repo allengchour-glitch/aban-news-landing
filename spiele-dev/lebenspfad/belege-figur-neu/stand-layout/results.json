@@ -1,0 +1,313 @@
+{
+  "scope": "UI-Start echtes Solo; fünf HUD-Größen; explizite chapter/pos-Standfixtures; keine Kampagne",
+  "views": [
+    {
+      "width": 360,
+      "height": 640,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    },
+    {
+      "width": 640,
+      "height": 360,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    }
+  ],
+  "feet": [
+    {
+      "label": "chapter-0-fixture",
+      "tile": 0,
+      "stage": 0,
+      "emote": null,
+      "surface": 0.41000000000000003,
+      "feet": [
+        0.40999997642016417,
+        0.40999997642016417
+      ],
+      "clearance": [
+        -2.3579835861653464e-8,
+        -2.3579835861653464e-8
+      ],
+      "followers": []
+    },
+    {
+      "label": "chapter-1-fixture",
+      "tile": 18,
+      "stage": 1,
+      "emote": null,
+      "surface": 0.41000000000000003,
+      "feet": [
+        0.4099999713218213,
+        0.4099999713218213
+      ],
+      "clearance": [
+        -2.867817872065359e-8,
+        -2.867817872065359e-8
+      ],
+      "followers": []
+    },
+    {
+      "label": "chapter-3-fixture",
+      "tile": 54,
+      "stage": 2,
+      "emote": null,
+      "surface": 0.41000000000000003,
+      "feet": [
+        0.4099999681353569,
+        0.4099999681353569
+      ],
+      "clearance": [
+        -3.186464314630655e-8,
+        -3.186464314630655e-8
+      ],
+      "followers": []
+    },
+    {
+      "label": "chapter-6-fixture",
+      "tile": 108,
+      "stage": 3,
+      "emote": null,
+      "surface": 0.41000000000000003,
+      "feet": [
+        0.40999996940994254,
+        0.40999996940994254
+      ],
+      "clearance": [
+        -3.059005748706767e-8,
+        -3.059005748706767e-8
+      ],
+      "followers": []
+    },
+    {
+      "label": "raised-fixture",
+      "tile": 0,
+      "stage": 0,
+      "emote": null,
+      "surface": 0.41000000000000003,
+      "feet": [
+        0.40999996940994254,
+        0.40999996940994254
+      ],
+      "clearance": [
+        -3.059005748706767e-8,
+        -3.059005748706767e-8
+      ],
+      "followers": []
+    },
+    {
+      "label": "raised-emote-active-fixture",
+      "tile": 0,
+      "stage": 0,
+      "emote": {
+        "t": 0.05
+      },
+      "surface": 0.41000000000000003,
+      "feet": [
+        0.58144888014789,
+        0.58144888014789
+      ],
+      "clearance": [
+        0.17144888014788995,
+        0.17144888014788995
+      ],
+      "followers": []
+    },
+    {
+      "label": "raised-emote-cleared-fixture",
+      "tile": 0,
+      "stage": 0,
+      "emote": null,
+      "surface": 0.41000000000000003,
+      "feet": [
+        0.40999997642016417,
+        0.40999997642016417
+      ],
+      "clearance": [
+        -2.3579835861653464e-8,
+        -2.3579835861653464e-8
+      ],
+      "followers": []
+    }
+  ],
+  "errors": [],
+  "players": [
+    {
+      "name": "Rot",
+      "bot": false
+    }
+  ],
+  "raised": {
+    "i": 0,
+    "y": 0.41000000000000003
+  },
+  "pass": true
+}

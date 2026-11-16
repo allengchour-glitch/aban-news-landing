@@ -1,23 +1,26 @@
-# Lebenspfad: Figurenentwurf – gesicherter Zwischenstand
+# Lebenspfad: neue niedliche Figur – Implementierung abgeschlossen
 
-Letzter Besitzerwunsch: «langsam speichern alles und token sparen». Entwicklung kontrolliert pausiert; **Entwurf nicht fertig geprüft und nicht veröffentlicht**. Der Agent wurde beendet. Worktree `/workspace/aban-lebenspfad-figur`, Branch `codex/lebenspfad-figur-neu`, Basis `e6cb011254fd88ef4947dc5b287ad8a43193a9e4`.
+Besitzerwahl: **kleine niedliche Figur, großer Kopf, kompakter Körper, verspielt**. Auftrag «mach die2 fertig», danach «teile dann memory», zuletzt «token sparen». Keine weiteren Erweiterungen. Parent übernimmt Veröffentlichung/Memory; aktueller Gesamtstand in `../CLAUDE-SPIELE-AKTUELL.md`. PR3218.
 
-Verbindlich gewählter Stil: **kleine niedliche Figur, großer Kopf, kompakter Körper, verspielt**. Diese Wahl ersetzt die vorherige allgemeine Comic-Annahme.
+## Ergebnis
 
-## Gesichert
+Eigene native Geometrie in `js/lebenspfad/character-art.js`: modellierter Kopf, integrierte Nase und Wangenfarbe, große Augen, Haare/Accessoires, passende Kleidung und Sneaker. Saubere Taillen-/Haarübergänge und geglättete Vordernaht. Materialbündelung erhält bewegliche Rig-Teile. Familie verwendet denselben Hersteller, feste Varianten ohne Spielzufallswerte und korrekte Sohlenhöhe. Vorhandene Farbwahlen, vier Alter, Blinzeln/Gang, Speichern und Koop-Looks bleiben erhalten. Neun Spezial-GLBs unverändert wählbar. Keine zusätzlichen Downloads für native Figuren; kein Higgsfield-Anschluss genutzt.
 
-- Neues lokales Geometriemodul `js/lebenspfad/character-art.js` und dessen HTML-Einbindung. Native Figurenkonstruktion ist in den neuen Hersteller ausgelagert; alte Vorlage bleibt über die Basisrevision rekonstruierbar.
-- `figur-neu-runtime.patch` sichert den Zwischenpatch zusätzlich. Im aktuellen Branch ist die HTML-Integration bereits enthalten: Patch nicht nochmals blind anwenden.
-- `figur-portrait-qa.cjs` sowie Vorher-/Entwurfaufnahmen unter `belege-figur-neu/vorher/` und `entwurf1/`. Beide Ergebnisdateien enthalten keine JS-Fehler. Das ist nur eine begrenzte Portraitprobe; Parent hat den neuen Entwurf noch nicht gestalterisch freigegeben.
-- Syntax von Modul und Portraitskript durch Parent geprüft, Diffprüfung sauber. Die vorgeschriebene Gesamt-CI scheitert vor Start am read-only HOME; Log `belege-figur-neu/ci-simulation.txt`.
-- Preview8187 mit echten `_headers`; Playwright unter `/tmp/aban-games-audit/node_modules/playwright`, Chromium `/tmp/aban-browsers/chromium-1255/chrome-linux64/chrome`. Temporäre Pfade sind nicht dauerhaft vorauszusetzen.
+## GEMESSENE Prüfung
 
-## Wiederaufnahme
+- `figur-neu-qa.cjs`:71/71 Browserbedingungen grün.25 Varianten jeweils Desktop/Mobil, vier Alter, Rig/Blinzeln/Gang, Familie, Save/Reload, deterministische Koop-Looks. Keine JS-/Shaderfehler. `belege-figur-neu/pruefung/ergebnis.json`.
+- `charakter-glb-qa.cjs`:9/9 echte GLB-Vorschauen sichtbar und vollständig eingerahmt. `belege-figur-neu/glb/ergebnis.json`.
+- `layout-qa.cjs`: fünf Layoutgrößen und sieben Stand-/Emotefixtures grün. Messung nutzt tatsächliche Rig-Beinunterkanten statt alter SphereGeometry-Form. Leere Füße bleiben rot; Grenzwert unverändert. `belege-figur-neu/stand-layout/results.json`.
+- `familie-qa.cjs`: vier Familienstandfälle und Verbindungsweg bestanden. `belege-figur-neu/familienstand/ergebnis.json`.
+- `lockstep-qa.cjs`:26 Kontrollpunkte, kompletter Endzustand und31 RNG-Aufrufe identisch zur Atmosphäreversion; Parent separat verglichen. `belege-figur-neu/{lockstep,replay-vergleich}.json`.
+- Reproduzierter Streifen-NaN durch doppelte Profilhöhe korrigiert; negative Probe in `gegenprobe-streifen-nan.json`. Veraltete Standsonde separat als `gegenprobe-alte-standsonde.json` erhalten.
+- Parent und Agent haben finale Portraits/Profil,25 Varianten, Altersbogen, Familie und Spielkamera tatsächlich angesehen. Endbilder in `final/` und `pruefung/`, historische Bilder in `vorher/` und `entwurf1/`.
+- Defaultfigur Desktop ohne Brett/Schatten:32 statt60 Zeichenaufrufe,13.380 statt10.316 Dreiecke.25 Varianten29–33 Calls und11.256–16.232 Dreiecke. Keine FPS-/physische Handy-Zusage.
 
-1. Frisches main und Neon-PR3217 lesen; normale Merge-Integration, kein Force-Push. Den gesicherten Entwurf erhalten.
-2. Neue Portraits wirklich ansehen: Gesicht, Augen, Haare, Körper-/Kleiderformen, Farbtrennung und Profil. Gegen die ausdrücklich gewählte niedliche Stilrichtung prüfen und weiter verfeinern.
-3. Erst danach alle vier Altersstufen, Outfit-/Haut-/Haarvarianten, native Familie, Spezial-GLBs und normale Spielkamera prüfen. Aktuell kein vollständiger Funktions-/Bildnachweis dafür.
-4. Sohlen/Standhöhe, Animationen, Speichern/Laden und Online-Look/Replay prüfen. Die alten Funktionen dürfen durch den neuen Hersteller keine Daten oder Bewegungen verlieren.
-5. Quellenhash, Dokumentation und begrenzte aussagekräftige Belege aktualisieren. Draft-PR erst nach vollständiger Prüfung zur Veröffentlichung freigeben; echte CI, Hauptseiten-Deploy und normale öffentliche HTTPS-Prüfung gehören dazu.
+Lokale Gesamt-CI startet wegen read-only HOME nicht (`ci-simulation-final.txt`). Syntax und Diff sauber; direkte HTML-Validierung unverändert fünf alte Fehler/37 Warnungen. Echte PR-CI/Deploy/öffentlicher TLS-Quellenabgleich werden durch Parent separat belegt. Netz-Looks/Replay sind Fixtures, kein öffentlicher Internet-/NAT-Test.
 
-Keine Änderung an Traumhaus, Shop, Social, Konten oder Secrets. Projektübergreifender Stand: `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Mix Arena und Lebenspfad-Atmosphäre sind bereits live; Neonv4 ist separat als geprüfter Draft gespeichert.
+## Reproduktion und Freeze
+
+Browserwerkzeuge lokal: `PLAYWRIGHT_MODULE=/tmp/aban-games-audit/node_modules/playwright`, Chromium unter `/tmp/aban-browsers/`. Preview `LP_BASE=http://127.0.0.1:8187`; Ergebnisverzeichnis über `LP_OUT`. Diese temporären Pfade bei einer neuen Sitzung frisch prüfen. Bestehende Testdateien und Rohberichte enthalten den genauen Umfang.
+
+`FREEZE-FIGUR.sha256` sichert Laufzeit und neue/geänderte Tests. Die historische `figur-neu-runtime.patch` ist schon integriert und darf nicht erneut angewandt werden. Keine weiteren Quelländerungen nach Freeze. Traumhaus-Arbeit unverändert übernommen; kein Shop-/Social-/Konto-/Secret-Eingriff. Neonv4 ist bereits live und14/14 öffentlich geprüft.

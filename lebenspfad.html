@@ -359,7 +359,7 @@ window.LP_EVENTS=[[{"t":"Der neue Spielplatz","x":"Ein brandneuer Spielplatz wir
 <script src="/js/lebenspfad/scenery.js?v=3451c0e2267c"></script>
 <script src="/js/lebenspfad/waterside.js?v=b9e001825ed7"></script>
 <script src="/js/lebenspfad/atmosphere.js?v=554f3af1f405"></script>
-<script src="/js/lebenspfad/character-art.js?v=04f0e0277fe0"></script>
+<script src="/js/lebenspfad/character-art.js?v=31fb0c059ce5"></script>
 <script src="/js/vendor/RGBELoader.js"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script>
@@ -1549,13 +1549,12 @@ function syncFam(i){
       dg.userData.tail=tail;dg.userData.dog=true;
       [[0.18,0.1],[0.18,-0.1],[-0.18,0.1],[-0.18,-0.1]].forEach(function(lg2){var leg=new THREE.Mesh(new THREE.BoxGeometry(0.07,0.14,0.07),mat(0x9a6c3a));leg.position.set(lg2[0],0.07,lg2[1]);dg.add(leg);});
       dg.position.copy(pw.position);scene.add(dg);pw.followers.push(dg);continue;}
-    var g=new THREE.Group(),scale=isPartner?0.8:0.5;
-    if(pawnTpl){var m=pawnTpl.clone(true);
-      var col=new THREE.Color(isPartner?0xfff0f5:0xfff8e0);
-      m.traverse(function(n){if(n.isMesh&&n.material){n.material=n.material.clone();n.material.color.lerp(col,0.35);}});
-      m.scale.multiplyScalar(scale);g.add(m);}
-    else{var b=new THREE.Mesh(new THREE.CylinderGeometry(0.22*scale,0.36*scale,0.8*scale,8),mat(isPartner?0xffd8e8:0xffe8b0));b.position.y=0.4*scale;b.castShadow=true;g.add(b);
-      var h=new THREE.Mesh(new THREE.SphereGeometry(0.26*scale,8,6),mat(isPartner?0xffd8e8:0xffe8b0));h.position.y=0.95*scale;g.add(h);}
+    var g=new THREE.Group(),scale=isPartner?0.8:0.5,baseCfg=pw.userData.cfg||loadChar(i);
+    // Gleiche native Formsprache; feste optische Varianten ohne Spielzufallswerte.
+    var famCfg=sanCfg(Object.assign({},baseCfg,{meshy:null,hair:baseCfg.hair>=0?baseCfg.hair:Math.max(0,HAIRS.indexOf(pw.userData.hairBaseHex)),g:isPartner?(baseCfg.g==='f'?'m':'f'):(idx%2?'f':'m'),style:9,hstyle:isPartner?3:1,top:isPartner?2:4,outfit:2}));
+    var m=LPCharacterArt(THREE,isPartner?0x70b9c4:0xf2bd62,famCfg,{skin:SKINTONES,hair:HAIRS,pants:PANTS,clothes:CLOTHES,eyes:EYECOLORS},true);
+    m.userData.ageScale=m.userData.ageScaleT=scale/1.35;m.userData.headScale=m.userData.headScaleT=isPartner?1:1.24;
+    animWalk(m,false,0);m.position.y=.12*m.scale.y;g.add(m);g.userData.person=m;
     g.position.copy(pw.position);scene.add(g);pw.followers.push(g);}
   while(pw.followers.length>want){var f=pw.followers.pop();scene.remove(f);}
   // Auto-Besitz: Familie sitzt im Auto (kleine Köpfe) statt hinterherzulaufen
@@ -1612,7 +1611,7 @@ function updFam(dt){
       f.position.y=fieldSurfaceAt(f.position.x,f.position.z)+bounce;
       if(f.userData.tail){f.userData.tail.rotation.y=Math.sin(performance.now()*0.014)*0.7; // Schwanzwedeln (immer!)
         if(d>0.3)f.rotation.y=Math.atan2(tx-f.position.x,tz-f.position.z);else f.rotation.y+=dt*0.4;}
-      else f.rotation.y+=dt;}}}
+      else{f.rotation.y+=dt;if(f.userData.person){var person=f.userData.person;animWalk(person,d>0.3,dt);person.position.y=.12*person.scale.y;}}}}}
 // Aktiv-Marker: bobbing Pfeil über der Figur, die dran ist
 var turnArrow=(function(){var cv=document.createElement("canvas");cv.width=cv.height=128;var cx=cv.getContext("2d");
   cx.fillStyle="#fff";cx.beginPath();cx.moveTo(64,116);cx.lineTo(16,36);cx.lineTo(112,36);cx.closePath();cx.fill();

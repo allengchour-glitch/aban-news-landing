@@ -21,13 +21,15 @@
   function oval(parent,mat,x,y,z,rx,ry,rz){return add(parent,new T.SphereGeometry(1,small,coarse?8:12),mat,x,y,z,rx,ry,rz);}
   function tube(parent,points,r,mat,segments){return add(parent,new T.TubeGeometry(new T.CatmullRomCurve3(points.map(function(p){return new T.Vector3(p[0],p[1],p[2]);})),segments||12,r,coarse?5:7,false),mat);}
   function lerp(a,b,t){return a+(b-a)*t;}
-  function profile(rows,y){var k=0;while(k<rows.length-2&&y>rows[k+1][0])k++;var a=rows[k],b=rows[k+1],t=Math.max(0,Math.min(1,(y-a[0])/(b[0]-a[0])));return [y,lerp(a[1],b[1],t),lerp(a[2],b[2],t),lerp(a[3]||0,b[3]||0,t)];}
+  function profile(rows,y){var k=0;while(k<rows.length-2&&y>=rows[k+1][0])k++;var a=rows[k],b=rows[k+1],t=Math.max(0,Math.min(1,(y-a[0])/(b[0]-a[0]||1)));return [y,lerp(a[1],b[1],t),lerp(a[2],b[2],t),lerp(a[3]||0,b[3]||0,t)];}
   // Elliptische Querschnitte: geschlossene, kontinuierliche Körper-/Kleidungsformen.
   function loft(rows,segments,deform){var p=[],indices=[],uv=[];segments=segments||n;
    for(var i=0;i<rows.length;i++)for(var j=0;j<=segments;j++){var a=j/segments*Math.PI*2,row=rows[i],x=Math.sin(a)*row[1],y=row[0],z=Math.cos(a)*row[2]+(row[3]||0);
     var v=deform?deform(x,y,z,a):[x,y,z];p.push(v[0],v[1],v[2]);uv.push(j/segments,i/(rows.length-1));
     if(i<rows.length-1&&j<segments){var q=i*(segments+1)+j,b=q+segments+1;indices.push(q,q+1,b,q+1,b+1,b);}}
-   var g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();return g;}
+   var g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();smoothSeam(g,segments,rows.length);return g;}
+  // Die UV-Naht liegt vorne: beide Randnormalen müssen identisch sein.
+  function smoothSeam(g,segments,rows){var a=g.attributes.normal;for(var i=0;i<rows;i++){var l=i*(segments+1),r=l+segments,v=new T.Vector3(a.getX(l)+a.getX(r),a.getY(l)+a.getY(r),a.getZ(l)+a.getZ(r)).normalize();a.setXYZ(l,v.x,v.y,v.z);a.setXYZ(r,v.x,v.y,v.z);}}
   function patch(parent,mat,points){var shape=new T.Shape();points.forEach(function(p,i){if(i)shape.lineTo(p[0],p[1]);else shape.moveTo(p[0],p[1]);});shape.closePath();var g=new T.ExtrudeGeometry(shape,{depth:.012,bevelEnabled:true,bevelSegments:1,steps:1,bevelSize:.007,bevelThickness:.006});return add(parent,g,mat,0,0,.205);}
 
   // Kurze Beine mit Knie-/Knöchelverjüngung und geformten Sneakern; Sohle exakt -0,12.
@@ -38,11 +40,13 @@
    add(g,loft([[-.49,.14,.21,.07],[-.44,.145,.22,.07],[-.39,.13,.19,.06],[-.34,.10,.115,.005],[-.30,.085,.09,0],[-.29,0,0]],small),trim);
    for(var i=0;i<2;i++)tube(g,[[-.065,-.375-i*.035,.14+i*.025],[0,-.362-i*.035,.165+i*.025],[.065,-.375-i*.035,.14+i*.025]],.009,white,4);
   });
-  var torsoRows=[[.35,0,0],[.37,.19,.14],[.43,.225,.165],[.55,.24,.18],[.70,.255,.20],[.84,.285,.205],[.94,.29,.19],[1.01,.21,.145],[1.04,.115,.10],[1.045,0,0]];
+  var skirt=female&&cfg.outfit!==2;
+  var torsoRows=[[.35,0,0],[.37,.19,.14],[.43,.225,.165],[.55,.24,.18],[.70,.255,.20],[.84,.285,.205],[.94,.29,.19],[1.01,.255,.15],[1.04,.16,.10],[1.045,0,0]];
+  if(skirt)torsoRows=[[.57,0,0],[.57,.245,.185]].concat(torsoRows.filter(function(r){return r[0]>.57;}));
   var body=add(root,loft(torsoRows),cloth);body.name='tailored-torso';
   add(root,loft([[.96,.10,.08],[1.04,.11,.09],[1.10,.105,.09],[1.12,0,0]],small),skin);
   tube(root,[[-.13,1.01,.10],[-.09,.98,.15],[0,.965,.17],[.09,.98,.15],[.13,1.01,.10]],.021,trim,12);
-  var la=group(root,'arm-left',-.29,.94,0),ra=group(root,'arm-right',.29,.94,0);
+  var la=group(root,'arm-left',-.27,.94,0),ra=group(root,'arm-right',.27,.94,0);
   [la,ra].forEach(function(g,side){
    add(g,loft([[-.37,.06,.06],[-.29,.078,.075],[-.18,.09,.082],[-.08,.095,.09],[.015,.08,.08]],small),skin);
    add(g,loft([[-.19,.095,.09],[-.17,.105,.10],[-.04,.115,.11],[.035,.08,.08],[.06,0,0]],small),cloth);
@@ -58,7 +62,9 @@
    for(var by=.54;by<.85;by+=.12)oval(root,gold,0,by,.21,.021,.021,.012);
   }else if(top===3){
    // Farbbänder auf genau derselben Geometrie, ohne neue Dicke/Zeichenaufrufe.
-   var geo=body.geometry.toNonIndexed(),col=[],a=geo.attributes.position;
+   var stripeY=torsoRows.map(function(r){return r[0];});for(var band=.35;band<1.045;band+=1/15)if(band>torsoRows[0][0])stripeY.push(band);
+   stripeY.sort(function(a,b){return a-b;});var stripeGeo=loft(stripeY.map(function(y){return profile(torsoRows,y);}));
+   var geo=stripeGeo.toNonIndexed(),col=[],a=geo.attributes.position;stripeGeo.dispose();
    for(var i=0;i<a.count;i+=3){var y=(a.getY(i)+a.getY(i+1)+a.getY(i+2))/3,c=linear((Math.floor((y-.35)*15)&1)?bodyHex:0xf4eee2);for(var j=0;j<3;j++)col.push(c.r,c.g,c.b);}
    geo.setAttribute('color',new T.Float32BufferAttribute(col,3));body.geometry.dispose();body.geometry=geo;var striped=material(0xffffff);striped.vertexColors=true;body.material=striped;
   }else if(top===4){
@@ -72,19 +78,25 @@
    patch(root,trim,[[-.13,.52],[-.10,.64],[.10,.64],[.13,.52]]);
    [-1,1].forEach(function(s){tube(root,[[s*.06,.96,.18],[s*.05,.80,.215]],.010,white,4);});
   }else if(top===7){for(var row=0;row<3;row++)for(var k=-1;k<=1;k++)oval(root,white,k*.105,.58+row*.12,.20-.02*Math.abs(k),.021,.021,.007);}
-  if(female&&cfg.outfit!==2){var long=cfg.outfit===1,y=long?.14:.32;
-   add(root,loft([[y,0,0],[y,.34,.23],[y+.035,.345,.235],[.46,.29,.205],[.62,.23,.175],[.66,.225,.17]],n,function(x,y,z,a){var f=1+.025*Math.cos(a*8);return [x*f,y,z*f];}),trim);
-   tube(root,[[-.17,.62,.13],[0,.61,.178],[.17,.62,.13]],.015,cloth,10);
+  if(skirt){var long=cfg.outfit===1,y=long?.14:.32;
+   add(root,loft([[y,0,0],[y,.34,.23],[y+.035,.345,.235],[.46,.29,.205],[.54,.255,.19],[.57,.245,.185]],n,function(x,y,z,a){var f=1+.025*Math.cos(a*8)*Math.max(0,(.57-y)/(.57-.32));return [x*f,y,z*f];}),trim);
+
   }
 
   // Ein einziger modellierter Kopf mit breiten Wangen, kurzem Kinn und integrierter Nase.
   var faceRows=[[0,0,0],[.018,.13,.11],[.055,.23,.18],[.12,.32,.23],[.22,.385,.275],[.34,.41,.30],[.46,.405,.302],[.59,.38,.28],[.70,.32,.235],[.79,.21,.16],[.83,.09,.07],[.84,0,0]];
+  var faceCurve=new T.CatmullRomCurve3(faceRows.map(function(r){return new T.Vector3(r[1],r[0],r[2]);}));
+  faceRows=faceCurve.getPoints(42).map(function(v){return [v.y,Math.max(0,v.x),Math.max(0,v.z)];});
   function nose(x,y){return .082*Math.exp(-x*x/.0025-(y-.295)*(y-.295)/.0035)+.018*Math.exp(-x*x/.002-(y-.38)*(y-.38)/.008);}
   function front(x,y){var r=profile(faceRows,y);return r[2]*Math.sqrt(Math.max(.01,1-x*x/(r[1]*r[1]||1)))+nose(x,y);}
-  var headMesh=add(head,loft(faceRows,n,function(x,y,z,a){if(Math.cos(a)>0)z+=nose(x,y)*Math.pow(Math.cos(a),8);return [x,y,z];}),skin);headMesh.name='sculpted-head';
+  var faceDense=[];for(var fy=0;fy<.84;fy+=.02)faceDense.push(profile(faceRows,fy));faceDense.push(faceRows[faceRows.length-1]);
+  var faceGeo=loft(faceDense,coarse?24:32,function(x,y,z,a){if(Math.cos(a)>0)z+=nose(x,y)*Math.pow(Math.cos(a),8);return [x,y,z];});
+  // Erröten ist Teil der Hautoberfläche, ohne aufgesetzte Wangenkörper.
+  var faceColors=[],fp=faceGeo.attributes.position,baseSkin=linear(skinHex),rosy=linear(0xd97875);
+  for(var fi=0;fi<fp.count;fi++){var fx=fp.getX(fi),fy=fp.getY(fi),fz=fp.getZ(fi),weight=fz>0?.24*Math.exp(-Math.pow((Math.abs(fx)-.245)/.085,2)-Math.pow((fy-.255)/.058,2)):0,fc=baseSkin.clone().lerp(rosy,weight);faceColors.push(fc.r,fc.g,fc.b);}
+  faceGeo.setAttribute('color',new T.Float32BufferAttribute(faceColors,3));var faceMat=skin.clone();faceMat.color.setHex(0xffffff);faceMat.vertexColors=true;
+  var headMesh=add(head,faceGeo,faceMat);headMesh.name='sculpted-head';
   [-1,1].forEach(function(s){oval(head,skin,s*.39,.33,0,.060,.085,.055);oval(head,blush,s*.423,.33,.025,.020,.045,.022);
-   // Wangenfarbe als dünne, gewölbte Fläche auf der modellierten Wange.
-   oval(head,blush,s*.255,.235,front(s*.255,.235)+.002,.055,.025,.009);
    tube(head,[[s*.205,.56,front(s*.205,.56)+.012],[s*.145,.578,front(s*.145,.578)+.016],[s*.10,.566,front(s*.10,.566)+.014]],.017,hair,8);
   });
   var mouth=group(head,'smile',0,0,0);
@@ -108,8 +120,10 @@
      if(female&&(hs===2||hs===3))end+=(hs===2?.78:.42)*(1-frontness);if(covered)end=Math.min(end,1.95);}
     var phi=i/rows*end,x=.435*Math.sin(phi)*Math.sin(theta),y=.435+.455*Math.cos(phi),z=-.035+.345*Math.sin(phi)*c;
     if(!cap&&female&&hs===2&&i>rows*.65)y-=(1-frontness)*.14*(i/rows-.65)/.35;
+    // Haaransatz liegt vor der Kopfoberfläche, auch bei langem Haar/Bob.
+    if(!cap&&y>0&&y<.84){var section=profile(faceRows,y);if(Math.abs(x)<section[1]){var depth=section[2]*Math.sqrt(Math.max(0,1-x*x/(section[1]*section[1])));z=c>=0?Math.max(z,depth+.024):Math.min(z,-depth-.024);}}
     p.push(x,y,z);if(i<rows&&j<cols){var a=i*(cols+1)+j,b=a+cols+1;idx.push(a,b,a+1,a+1,b,b+1);}}
-   var geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(p,3));geo.setIndex(idx);geo.computeVertexNormals();return geo;}
+   var geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(p,3));geo.setIndex(idx);geo.computeVertexNormals();smoothSeam(geo,cols,rows+1);return geo;}
   add(head,hairShell(false),hair);
   if(female&&hs===0){[-1,1].forEach(function(s){tube(head,[[s*.32,.43,-.09],[s*.42,.24,-.10],[s*.42,.07,-.06],[s*.37,-.035,-.02]],.095,hair,12);oval(head,trim,s*.39,.29,-.08,.105,.030,.105);});}
   if(female&&hs===1){tube(head,[[0,.59,-.27],[.03,.38,-.39],[.05,.10,-.39],[.015,-.08,-.29]],.12,hair,14);oval(head,trim,0,.52,-.33,.12,.035,.09);}
@@ -133,7 +147,7 @@
     var geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(pos,3));geo.setAttribute('normal',new T.Float32BufferAttribute(norm,3));geo.setAttribute('uv',new T.Float32BufferAttribute(uv,2));if(hasColor)geo.setAttribute('color',new T.Float32BufferAttribute(colors,3));geo.computeBoundingBox();geo.computeBoundingSphere();
     var m=new T.Mesh(geo,b.material);m.name=b.name||'merged';m.castShadow=true;m.receiveShadow=true;g.add(m);result.push(m);});return result;}
   rig.forEach(batch);var headMeshes=batch(head);batch(root);
-  root.userData={characterArt:true,cfg:cfg,headGroup:head,head:headMeshes.find(function(m){return m.material===skin;}),mouth:mouth,eyes:eyes,eyeOpen:1,
+  root.userData={characterArt:true,cfg:cfg,headGroup:head,head:headMeshes.find(function(m){return m.material===faceMat;}),mouth:mouth,eyes:eyes,eyeOpen:1,
    hairMat:hair,hairBaseHex:hairHex,limbs:{ll:ll,rl:rl,la:la,ra:ra},walk:0,blinkT:2.6,
    ageScale:1,ageScaleT:1,headScale:1,headScaleT:1,headStoop:0,headStoopT:0,headBase:.96,tallY:1.1,slimX:.96};
   head.scale.setScalar(.96);root.scale.set(.96,1.1,.96);
