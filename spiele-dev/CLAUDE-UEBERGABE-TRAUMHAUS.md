@@ -10,7 +10,8 @@ Der Besitzer möchte Traumhaus als Hauptspiel weiter ausbauen: grosse zusammenh�
 | --- | --- |
 | Nordstadt und Missionen | [PR #3209](https://github.com/allengchour-glitch/aban-news-landing/pull/3209), Main-Commit `c3088227d`; veröffentlicht und öffentlich geprüft. |
 | Stadtbild | [PR #3211](https://github.com/allengchour-glitch/aban-news-landing/pull/3211), Branch `codex/traumhaus-stadtbild-20261116`, Head `dbb7ba3680829ae50f411927a8f38be37d0778fb`. Alle vier PR-Prüfungen bestanden; gemergt als `1667fc056033e756cf55a52574c35da0c10c8f72`. Produktionslauf `43919014522` erfolgreich; Spielseite und beide JS-Dateien frisch mit HTTP 200 und neuen Stadtbild-Markern geprüft. ZIP und Vergleichsbilder im bestehenden Drive-Projektordner rückgelesen. |
-| Aktuelle Entwicklung | Branch `codex/traumhaus-kamera-20261116` von `1667fc056`: Kamerakorrektur lokal implementiert und geprüft: kein dauerhafter Belohnungs-Pitch, sanfter Hochhauswinkel. Himmel/Wolken begleiten nun die Kamera; Sterne im Zentrum und Nordpark geprüft. Statisches Instanz-Culling implementiert: zehn pixelgleiche A/B-Ansichten, Nordstadt 151 auf 74 Zeichenaufrufe. Kamera, Touch, Himmel und Filter lokal geprüft; noch nicht veröffentlicht. |
+| Kamera und Leistung | PR #3212, Merge `ab10d8f15ba42728b40563d4a2a1d6d85cfbb97d`. Vier PR-Prüfungen grün; Produktionslauf `43922995107` erfolgreich; Spielseite und Sichtmodul frisch mit HTTP 200 und neuen Kamera-/Himmel-/Filtermarkern geprüft. Lokale Kamera-/Touch-/Himmel-/Filterprüfungen bestanden, ZIP in Drive rückgelesen. |
+| Aktueller Fokus | Branch `codex/traumhaus-strassen-20261116` von `ab10d8f15`. Neuester Besitzerauftrag: Strassen prüfen und verbessern. [PR #3216](https://github.com/allengchour-glitch/aban-news-landing/pull/3216), als Entwurf erstellt. Strassenkorrekturen und Fahrzeugpausen lokal vollständig geprüft; siehe [Strassenbericht](TRAUMHAUS-STRASSEN.md). Vier Ringmündungen, Bahnhof, schräge Anschlüsse, Strand, Nordstadt-Markierungen und Rennkurs korrigiert. Acht Hoftiere in bestehender Koppel. Veröffentlichung nach grünen PR-Prüfungen; Produktionsnachweis noch offen. |
 
 Vor Weiterarbeit diesen Stand frisch gegen `git status`, `origin/main`, offene PRs und deren Dateien prüfen. Andere Sitzungen arbeiten parallel im Repository. Keine fremden Änderungen überschreiben oder einen vorhandenen Zweig blind auf `origin/main` zurücksetzen.
 
@@ -21,7 +22,7 @@ Vor Weiterarbeit diesen Stand frisch gegen `git status`, `origin/main`, offene P
 - `js/traumhaus-sicht.js`: gezielter Sichtfeldfilter für registrierte statische Instanzgruppen, nur im Hauptbild ohne Schattenkarte.
 - `js/traumhaus-stadtbild.js`: neue Grün- und Sitzmodule, Platzierung mit Freiraumprüfung, Instancing und Entfernungsausblendung.
 - `js/traumhaus-missionen.js`: reine Missionszustände und Übergänge, ohne DOM oder eigene Geldauszahlung. `js/traumhaus-missionen.css` und `js/traumhaus-stadt.css` enthalten die dazugehörige Oberfläche.
-- [Missionen-Bericht](TRAUMHAUS-MISSIONEN.md), [Stadtbild-Bericht](TRAUMHAUS-STADTBILD.md) und [Stadtleben/Recherchen](TRAUMHAUS-STADTLEBEN.md): Funktionsumfang, Gestaltungsgrundlagen und Prüfungen.
+- [Strassenbericht](TRAUMHAUS-STRASSEN.md), [Missionen-Bericht](TRAUMHAUS-MISSIONEN.md), [Stadtbild-Bericht](TRAUMHAUS-STADTBILD.md) und [Stadtleben/Recherchen](TRAUMHAUS-STADTLEBEN.md): Funktionsumfang, Gestaltungsgrundlagen und Prüfungen.
 - [Traumhaus-Runbook](RUNBOOK-TRAUMHAUS.md) und `spiele-dev/tools/`: bestehende Messwerkzeuge und bekannte Fallen. Alte Grössenangaben und Wiederherstellungsbefehle im Runbook nicht ungeprüft übernehmen; aktueller Arbeitsbaum und `AGENTS.md` haben Vorrang.
 
 ## Bestehende Spielregeln erhalten
@@ -46,11 +47,19 @@ GEMESSEN im vollständigen Regressionslauf:
 
 GEMESSEN im isolierten Stadtmodulvergleich bei gleicher Kamera: Zeichenaufrufe 61 → 60, Materialien 9 → 9, gesamte Modulgeometrie 42’676 → 47’792 Dreiecke. Dieser Vergleich umfasst weder das ganze Spiel noch die zusätzlichen Grünmodule. Die Gebäudezahl und Gebäudekollider blieben identisch. Altstadt, Nordstadt und Seepark sowie Regen bei Tag und Nacht wurden visuell verglichen.
 
-Die Tests nutzen Chromium mit Software-WebGL. **60 FPS auf einem echten Handy sind nicht nachgewiesen.** Vom Gerät des Besitzers ist nur «Handy» bekannt. Simulierte Fahrzeugfahrten, Funktionsproben und isolierte Zeichenbudgets nicht als menschliche Handy-Spieltests darstellen. Die bestehende Kollisionskamera verkürzt den Blick an engen Hochhäusern weiterhin; genau das wird als Nächstes untersucht.
+Die Tests nutzen Chromium mit Software-WebGL. **60 FPS auf einem echten Handy sind nicht nachgewiesen.** Vom Gerät des Besitzers ist nur «Handy» bekannt. Simulierte Fahrzeugfahrten, Funktionsproben und isolierte Zeichenbudgets nicht als menschliche Handy-Spieltests darstellen. Die Kollisionskamera verkürzt den Blick an engen Hochhäusern weiterhin bei Bedarf; die anschliessenden Verbesserungen stehen im Kamera-Bericht.
 
 ## Aktuelle Kamera-/Renderprüfung
 
 Siehe [Kamera und Leistung](TRAUMHAUS-KAMERA-LEISTUNG.md). Elf Belohnungsimpulse lassen die Benutzerwinkel unverändert; native Zwei-Finger-Geste gibt der manuellen Kamera sofort Vorrang. Himmelskuppel/Wolken/Sterne begleiten die Kamera bis in die Aussenstadt, auch beim Fotografieren. Zwölf Filtertests bestanden; zehn A/B-Ansichten pixelidentisch. Nordstadt151→74 Zeichenaufrufe/160’999→82’915 Dreiecke. Offene Leistungsgrenze: Egoansicht Seepark2’241 Zeichenaufrufe.
+
+## Aktuelle Strassenprüfung
+
+GEMESSEN: Vier Ringmündungen mit 180 Fahrbahn- und 56 Gehwegproben frei. Bahnhof: 104 Bodenproben, beide Spuren je 15,51 Meter bei 23 km/h ohne Stillstand. Strand: 560 Proben ohne Pflanzenfreigabe oder feste Blockade. Rennnaht 0,687 → 0 Meter, Randsteintreffer in Zufahrt 128 → 0. Bauplan und 148 Stadtmodul-Kollider identisch. Der geometrische Schnitt wird nur beim Bau ausgeführt; neun Geometriefälle, unabhängige 15’808 Punktproben und Originalcode-Gegentest bestanden. Vollwelt: 174 Aufrufe, neun veränderte Meshes, zusammen 9,9 Millisekunden auf der Test-CPU. Final 16’776 Strassenproben, 80 GPS-Routen, 3’613 ÖV-Spurproben und 22 Ausstiegspunkte frei. Alle fünf ÖV-Linien mit tatsächlichem Ein-/Mit-/Aussteigen geprüft. Rennen: zwei Runden, 16 Checkpoints und 1’339,7 Meter gefahren, keine Strafzeit. Vier Tierläufe über je 200 Sekunden und realer Koppelabgleich bestanden. Tages-, Nacht- und Regenbilder geprüft. Die letzte Nordring-Ortstafel steht jetzt neben der Bauernhoffahrbahn: alle 23 betroffenen Schilder/Haltestellen erhalten, Hüllen gegen 195 Asphaltpolygone und 407 Gebäudevolumen geprüft; im frischen Browserbild 1,93 Meter Abstand zur nächsten Viertelfahrbahn, keine Konflikte.
+
+Zusätzlich behoben: Bei Ergebnisdialog, Stadtpanel, Karte oder Renncountdown löste künstliches Dauerbremsen den Rückwärtsgang aus. Expliziter Pausenzweig verhindert dies. Alle 16 Kombinationen aus vier Sperren und 30/60/120 Hz beziehungsweise einem 0,4-Sekunden-Schritt bleiben exakt stehen; normales Fahren, Bremsen und Rückwärtsfahren sind im Vorher-/Nachhervergleich unverändert.
+
+Testfallen: Parkplatz wird verzögert gebaut, gemeinsame Zufahrtsdaten müssen davor verfügbar sein. Schnitthelfer darf eigene Mittelstriche nicht als Gehwegrand behandeln. Vor ÖV-/Rennprobe Missions-Ergebnisdialog schliessen; er pausiert absichtlich Aktionen. THREE-Sprite-Raycasts brauchen eine Kamera oder einen Meshfilter. Diese im Testlauf gefundenen Probleme nicht als offene Spielregressionen behandeln.
 
 ## Prüfungen fortsetzen
 
@@ -78,4 +87,15 @@ Repository-Regeln: `AGENTS.md` lesen, keine Änderungen an fremden Projekten. Ä
 
 ## Higgsfield – aktueller Auftrag
 
-Der Besitzer hat Higgsfield ausdrücklich einbezogen. Erste Generierung: Modell `tripo_3d`, Parkuhr als kleiner Orientierungspunkt, Zielbudget 1’500 Flächen, Textur standard, PBR aus. Kostenvoranschlag 5 Credits; Auftrag `6f107f39-ce69-42da-8c11-40a497a69890` wurde angenommen, ist jedoch mit Status `failed` beendet. Kein GLB erhalten; Kostenabrechnung beziehungsweise Rückerstattung nicht bestätigt. Nicht erneut absenden. Die leichte Nordpark-Grafik für eine Stadttafel läuft unter Auftrag `7c02cc48-8fe3-417e-8b68-6a698e6a21cf`, Modell `gpt_image_2_6`, Kostenschätzung 0,5 Credits. Auch diesen Auftrag vor jeder Wiederholung zuerst prüfen.
+Der Besitzer hat Higgsfield ausdrücklich einbezogen. Erste Generierung: Modell `tripo_3d`, Parkuhr als kleiner Orientierungspunkt, Zielbudget 1’500 Flächen, Textur standard, PBR aus. Kostenvoranschlag 5 Credits; Auftrag `6f107f39-ce69-42da-8c11-40a497a69890` wurde angenommen, ist jedoch mit Status `failed` beendet. Kein GLB erhalten; Kostenabrechnung beziehungsweise Rückerstattung nicht bestätigt. Nicht erneut absenden. Die leichte Nordpark-Grafik für eine Stadttafel wurde gestartet unter Auftrag `7c02cc48-8fe3-417e-8b68-6a698e6a21cf`, Modell `gpt_image_2_6`, Kostenschätzung 0,5 Credits. Auch dieser Auftrag ist mit Status `failed` beendet. Kein Bild erhalten, keine konkretere Ursache vom Dienst. Keine weiteren Generierungen gestartet und keine Erstattung behauptet. Beide Aufträge vor jedem weiteren Generierungsversuch im Higgsfield-Konto prüfen. Es wurde kein Higgsfield-Asset ins Spiel eingebaut.
+
+## Nächste Arbeit durch Claude Code
+
+Letzter Besitzerauftrag: dieses Paket fertigstellen; anschliessend nur weitere Verbesserungen suchen und für Claude Code dokumentieren. Keine weitere Umsetzung neuer Vorschläge in dieser Sitzung. Die priorisierte, noch nicht umgesetzte Liste steht in [Nächste Schritte](TRAUMHAUS-CLAUDE-NAECHSTE-SCHRITTE.md). Der Traumhaus-Verweis im gemeinsamen `SHARED-MEMORY.md` und der eigene Abschnitt in `docs/CODEX-CLAUDE-UEBERGABE.md` führen zu dieser Datei. Nach abgeschlossenen Paketen und erfolgreicher Veröffentlichung aktualisieren.
+
+## Zurückgestellte, belegte Kandidaten
+
+- Egoansicht Seepark: Profillauf2’293 Aufrufe vollständig zugeordnet. Frachtschiff `th15_frachtschiff.glb` allein424 Aufrufe bei18Materialien, Landbus `th40_bus.glb`176. Bündelung ist noch nicht bildlich gegengeprüft, daher nicht umgesetzt.
+- Einstieg erklärt die Bauabnahme als einziges Ziel, obwohl Stadtmissionen vorhanden sind. Pokalmenü könnte einen sichtbaren Spielen-Hinweis erhalten.
+- Rennknopf sagt aus der Ferne Rennen starten, setzt tatsächlich nurGPS. SituationsabhängigeBeschriftung wäre klarer.
+- Higgsfield lieferte in beiden dokumentierten Aufträgen keinen fertigen Asset. Kein Modell oder Bild als fertig melden.
