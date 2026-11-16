@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Ein gemeinsames Arena-Spiel",
+      "ok": true
+    },
+    {
+      "name": "Trainingskatalog bleibt anfangs geschlossen",
+      "ok": true
+    },
+    {
+      "name": "Lobby ohne Überlauf 390",
+      "ok": true
+    },
+    {
+      "name": "Lobby ohne Überlauf 640",
+      "ok": true
+    },
+    {
+      "name": "Lobby ohne Überlauf 1280",
+      "ok": true
+    },
+    {
+      "name": "Figur lässt sich wechseln",
+      "ok": true
+    },
+    {
+      "name": "Namen/Figur und drei verschiedene Kategorien übernommen",
+      "ok": true
+    },
+    {
+      "name": "Rundenkarte hat drei Stationen",
+      "ok": true
+    },
+    {
+      "name": "Countdown endet in einer einzigen Disziplin",
+      "ok": true
+    },
+    {
+      "name": "Originalsieg übernimmt Punkte und räumt Spielfenster auf",
+      "ok": true
+    },
+    {
+      "name": "Ergebnis und Namen überstehen Reload",
+      "ok": true
+    },
+    {
+      "name": "Originales Rhythmusergebnis zählt für Spieler 2",
+      "ok": true
+    },
+    {
+      "name": "Echte drei Siege ergeben Finale 6:3",
+      "ok": true
+    },
+    {
+      "name": "Vollständiges Match bringt 100 XP und ersten Erfolg",
+      "ok": true
+    },
+    {
+      "name": "Finale erneut öffnen belohnt nicht doppelt",
+      "ok": true
+    },
+    {
+      "name": "Revanche behält Reihenfolge, aber neue ID und leere Wertung",
+      "ok": true
+    },
+    {
+      "name": "Unterbrechen verwirft keine bisherigen Punkte und wertet laufende Runde nicht",
+      "ok": true
+    },
+    {
+      "name": "Arena-Pass zeigt Level 2",
+      "ok": true
+    },
+    {
+      "name": "Altes v1-Match wird mit Punkten migriert",
+      "ok": true
+    },
+    {
+      "name": "Kurzes Querformat behält volle Spielfeldhöhe",
+      "ok": true
+    },
+    {
+      "name": "Echter Kinder-Zurückknopf unterbricht statt Runde abzuwerten",
+      "ok": true
+    },
+    {
+      "name": "Unterbrochene Runde nach Reload wieder bereit",
+      "ok": true
+    },
+    {
+      "name": "Gesperrter Speicher lässt Match weiterlaufen und meldet Grenze",
+      "ok": true
+    },
+    {
+      "name": "Keine JavaScript-Fehler",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "scope": "Reihenfolge als Speicher-Fixture, drei tatsächliche Ergebnisse durch Eingaben, kontrollierte Browserzeit in zwei Zeitspielen. Unterbrechen, Migration, Revanche, Profil und Speicherfehler geprüft."
+}
