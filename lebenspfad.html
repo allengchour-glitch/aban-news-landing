@@ -352,6 +352,9 @@ window.LP_EVENTS=[[{"t":"Der neue Spielplatz","x":"Ein brandneuer Spielplatz wir
 </script>
 <script src="/js/lebenspfad/static-batches.js?v=21a6746ebc35"></script>
 <script src="/js/lebenspfad/instance-chunks.js?v=cc75ebe983ee"></script>
+<script src="/js/lebenspfad/terrain.js?v=8b0ee54ed0ad"></script>
+<script src="/js/lebenspfad/scenery.js?v=f5d13f602073"></script>
+<script src="/js/lebenspfad/waterside.js?v=b9e001825ed7"></script>
 <script src="/js/vendor/RGBELoader.js"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script>
@@ -558,11 +561,25 @@ sunL.shadow.normalBias=0.7; // 📱 killt Schatten-Akne (weisse Kratzer auf Feld
 sunL.shadow.camera.near=1;sunL.shadow.camera.far=260;sunL.shadow.camera.left=-70;sunL.shadow.camera.right=70;sunL.shadow.camera.top=70;sunL.shadow.camera.bottom=-70;
 sunL.target.position.set(0,0,0);scene.add(sunL.target); // ☀️ Sonne + Schatten-Kamera folgen dem Spieler (board-weite Erdung)
 // ===================== Bunte Landschaft: Terrain mit Kapitel-Farbverlauf =====================
+// Uferflächen bleiben von Hauptweg, Nebenrouten und Kapitelbauwerken frei.
+var lpBasins=[{x:-60,z:58,rx:10,rz:10,y:.12,legacy:true},{x:150,z:-55,rx:12,rz:12,y:.12,legacy:true}];
+var lpBuildings=[["lp_schule.glb",8,1,-5,-10,.5],["lp_uni.glb",8.5,2,5,-11,-.3],["lp_buero.glb",10,4,-4,-12,.3],["lp_parkbank.glb",4.5,7,4,-7,-.5]];
+var lpProps=[["lp_prop_kinderwagen.glb",2.6,0,6,-6,.3],["lp_prop_abschlusshut.glb",2.9,3,6,-9,-.4],["lp_prop_cabrio.glb",4,4,7,-6,.5],["lp_prop_hochzeitsbogen.glb",5.2,5,-6,-8,0],["lp_prop_haus.glb",5.2,6,5,-9,.4],["lp_prop_herz.glb",3.4,7,-6,-7,.2]];
+var lpLandscapeAnchors=[];
+lpBuildings.concat(lpProps).forEach(function(v){var f=pathPts[v[2]*18+8];lpLandscapeAnchors.push({x:f.x+v[3],z:f.z+v[4],r:Math.max(4,v[1]*.65)+2});});
+for(var ci=0;ci<8;ci++){var f=pathPts[ci*18];lpLandscapeAnchors.push({x:f.x,z:f.z-5,r:6});}
+[[0,7,-8],[1,8,7],[2,-7,-8],[3,7,8],[4,-8,-7],[5,7,-8],[6,-7,8],[7,8,-8]].forEach(function(v){var f=pathPts[v[0]*18+9];lpLandscapeAnchors.push({x:f.x+v[1],z:f.z+v[2],r:v[0]===3?10:6.5});});
+[[1,8,-5,-10],[2,8,5,-11],[4,8,-4,-12],[7,8,4,-7],[5,8,4,-9],[1,4,-9,-9],[5,4,-8,9]].forEach(function(v){var f=pathPts[v[0]*18+v[1]];lpLandscapeAnchors.push({x:f.x+v[2],z:f.z+v[3],r:6});});
+[0,2,4,6].forEach(function(ci){var f=pathPts[ci*18+8];for(var t=0;t<48;t++){var a=-Math.PI/2+t*2.39996,r=13+(t%4)*2.2,x=f.x+Math.cos(a)*r,z=f.z+Math.sin(a)*r,rx=5.2,rz=4.4;
+  if(pathPts.some(function(p){return Math.hypot(x-p.x,z-p.z)<rx+5.8;})||lpLandscapeAnchors.some(function(p){return Math.hypot(x-p.x,z-p.z)<rx+p.r;})||lpBasins.some(function(p){return Math.hypot(x-p.x,z-p.z)<p.rx+rx+3;}))continue;
+  lpBasins.push({x:x,z:z,rx:rx,rz:rz,y:.04,chapter:ci});break;}});
+var _lpTerrain=window.LPLandscapeTerrain?LPLandscapeTerrain(THREE,{pathPoints:pathPts,chapters:CHAPTERS,basins:lpBasins}):null;window._lpTerrain=_lpTerrain;
 function hsh(ix,iz){var n=ix*374761393+iz*668265263;n=(n^(n>>13))*1274126177;return ((n^(n>>16))>>>0)/4294967295;}
 function vnoise(x,z){var ix=Math.floor(x),iz=Math.floor(z),fx=x-ix,fz=z-iz;
   var A=hsh(ix,iz),B=hsh(ix+1,iz),C=hsh(ix,iz+1),D=hsh(ix+1,iz+1),ux=fx*fx*(3-2*fx),uz=fz*fz*(3-2*fz);
   return A*(1-ux)*(1-uz)+B*ux*(1-uz)+C*(1-ux)*uz+D*ux*uz;}
 function terrainH(x,z){
+  if(_lpTerrain)return _lpTerrain.surfaceHeightAt(x,z);
   var h=(vnoise(x*0.02+7,z*0.02+7)*0.6+vnoise(x*0.06,z*0.06)*0.4-0.5)*2*5;
   // Pfad-Korridor flach halten
   var best=1e9;for(var i=0;i<pathPts.length;i+=2){var d=(x-pathPts[i].x)*(x-pathPts[i].x)+(z-pathPts[i].z)*(z-pathPts[i].z);if(d<best)best=d;}
@@ -570,24 +587,12 @@ function terrainH(x,z){
   if(best<10)h*=Math.max(0,(best-4)/6);
   return h;}
 (function(){
-  var geo=new THREE.PlaneGeometry(560,220,200,80);geo.rotateX(-Math.PI/2);geo.translate(20,0,0);
-  var pos=geo.attributes.position,cols=new Float32Array(pos.count*3);
-  var tmp=new THREE.Color(),g1=new THREE.Color(),g2=new THREE.Color();
-  for(var i=0;i<pos.count;i++){var x=pos.getX(i),z=pos.getZ(i),h=terrainH(x,z);
-    pos.setY(i,h-0.35);
-    // Kapitel-Farbe entlang X weich mischen ("alle Farben wie echt")
-    var t=Math.max(0,Math.min(CHAPTERS.length-1.001,(x+160)/46));
-    var ci=Math.floor(t),f=t-ci;
-    g1.setHex(CHAPTERS[ci].ground).convertSRGBToLinear();g2.setHex(CHAPTERS[Math.min(CHAPTERS.length-1,ci+1)].ground).convertSRGBToLinear();
-    tmp.copy(g1).lerp(g2,f);
-    var shade=0.82+Math.max(0,Math.min(1,(h+5)/10))*0.28;
-    // Gras-Flecken: deterministischer Jitter + sanfte grosse Wellen
-    var jit=0.93+0.09*Math.abs(Math.sin(x*12.9898+z*78.233))+0.05*Math.sin(x*0.35)*Math.sin(z*0.42);
-    tmp.multiplyScalar(shade*jit);
-    cols[i*3]=tmp.r;cols[i*3+1]=tmp.g;cols[i*3+2]=tmp.b;}
-  geo.setAttribute("color",new THREE.BufferAttribute(cols,3));geo.computeVertexNormals();
-  var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,flatShading:false}));
-  m.receiveShadow=true;scene.add(m);if(window.LPStaticBatches&&LPStaticBatches.split)window._lpTerrainBatches=LPStaticBatches.split(THREE,m,{chunkSize:48});})();
+  var geo,material;
+  if(_lpTerrain){geo=_lpTerrain.geometry;material=_lpTerrain.material;}
+  else{geo=new THREE.PlaneGeometry(560,220,160,64);geo.rotateX(-Math.PI/2);geo.translate(20,0,0);var pos=geo.attributes.position;for(var i=0;i<pos.count;i++)pos.setY(i,terrainH(pos.getX(i),pos.getZ(i))-.35);geo.computeVertexNormals();material=mat(0x7d9d70);}
+  var m=new THREE.Mesh(geo,material);m.receiveShadow=true;scene.add(m);
+  if(window.LPStaticBatches&&LPStaticBatches.split)window._lpTerrainBatches=LPStaticBatches.split(THREE,m,{chunkSize:48});
+})();
 // ===================== Felder auf dem Pfad =====================
 // Feld-Typen: e=Ereignis, g+=Geld, g-=Kosten, h=Glück, w=Wissen, f=Freunde, m=Meilenstein (Kapitelende)
 var FTYPE_COL={e:0xffffff,"g+":0xffc21f,"g-":0xff4d4d,h:0xff5db8,w:0x2f7dff,f:0x1fd97a,m:0xff8c1f,q:0x8a5aff,x:0x1fc4c8,r:0xff7a2a,z:0xd94fd0};
@@ -746,45 +751,45 @@ function updDekoCoins(t){for(var i=0;i<dekoCoins.length;i++){var c=dekoCoins[i];
   zl.position.set(fz.x,3.6,fz.z);scene.add(zl);})();
 // Teiche mit Wellen (ThinMatrix-Rezept) — abseits des Pfads
 var ponds=[];
-[[ -60,58,10],[150,-55,12]].forEach(function(pp){
-  var g=new THREE.CircleGeometry(pp[2],20);g.rotateX(-Math.PI/2);
-  var m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:0x3a8ac8,emissive:0x1a4a80,emissiveIntensity:0.25,flatShading:true,transparent:true,opacity:0.9}));
-  m.position.set(pp[0],0.12,pp[1]);scene.add(m);
+lpBasins.forEach(function(pp){
+  var g=new THREE.CircleGeometry(1,32);g.rotateX(-Math.PI/2);g.scale(pp.rx,1,pp.rz);
+  var m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:new THREE.Color(0x438f98).convertSRGBToLinear(),roughness:.28,metalness:.08,flatShading:false}));
+  m.position.set(pp.x,pp.y,pp.z);scene.add(m);
   var base=[];var pos2=g.attributes.position;
   for(var i2=0;i2<pos2.count;i2++)base.push([pos2.getX(i2),pos2.getZ(i2)]);
-  ponds.push({m:m,base:base});});
+  ponds.push({m:m,base:base,rx:pp.rx,rz:pp.rz,y:pp.y});});
 ponds.forEach(function(pd){var gN=16,gg=new THREE.BufferGeometry(),gp2=new Float32Array(gN*3);
-  for(var gi2=0;gi2<gN;gi2++){var ga=Math.random()*6.283,gr3=Math.random()*10;
-    gp2[gi2*3]=pd.m.position.x+Math.cos(ga)*gr3;gp2[gi2*3+1]=0.28;gp2[gi2*3+2]=pd.m.position.z+Math.sin(ga)*gr3;}
+  for(var gi2=0;gi2<gN;gi2++){var ga=gi2*2.39996,gr3=Math.sqrt((gi2+.5)/gN)*.78;
+    gp2[gi2*3]=pd.m.position.x+Math.cos(ga)*gr3*pd.rx;gp2[gi2*3+1]=pd.y+.035;gp2[gi2*3+2]=pd.m.position.z+Math.sin(ga)*gr3*pd.rz;}
   gg.setAttribute("position",new THREE.BufferAttribute(gp2,3));
   pd.sparkle=new THREE.Points(gg,new THREE.PointsMaterial({color:0xffffff,size:0.5,map:softDotTex(),transparent:true,opacity:0.8,blending:THREE.AdditiveBlending,depthWrite:false}));
   scene.add(pd.sparkle);});
 var _pFrame=0;
-function updPonds(t){_pFrame++;if(_pFrame%2)return;
+function updPonds(t){if(!OPT.motion)return;_pFrame++;if(_pFrame%2)return;
   for(var pi2=0;pi2<ponds.length;pi2++){var pd=ponds[pi2],p3=pd.m.geometry.attributes.position;
     for(var i3=0;i3<p3.count;i3++){var b3=pd.base[i3];
-      p3.setY(i3,Math.sin(t*1.5+(b3[0]+b3[1])*0.5)*0.1+Math.sin(t*2.3+b3[0]*0.8)*0.06);}
+      p3.setY(i3,Math.sin(t*1.5+(b3[0]+b3[1])*0.5)*0.024+Math.sin(t*2.3+b3[0]*0.8)*0.015);}
     p3.needsUpdate=true;pd.m.geometry.computeVertexNormals();
     if(pd.sparkle)pd.sparkle.material.opacity=0.4+0.4*Math.sin(t*2.2+pi2*2);}}
 // Enten auf den Teichen (bobben auf der Welle)
 var ducks=[];
-ponds.forEach(function(pd,pi){for(var d3=0;d3<3;d3++){
+ponds.forEach(function(pd,pi){for(var d3=0;d3<2;d3++){
   var g=new THREE.Group();
   var body=new THREE.Mesh(new THREE.SphereGeometry(0.42,8,6),mat(0xfffdf0,0xf0e8d0,0.1));body.scale.set(1.3,0.8,1);g.add(body);
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.22,8,6),mat(0xfffdf0,0xf0e8d0,0.1));head.position.set(0.42,0.35,0);g.add(head);
   var beak=new THREE.Mesh(new THREE.ConeGeometry(0.09,0.24,5),mat(0xff9a2a,0xff9a2a,0.3));beak.rotation.z=-Math.PI/2;beak.position.set(0.66,0.33,0);g.add(beak);
   g.position.set(pd.m.position.x+(Math.random()-0.5)*8,0.35,pd.m.position.z+(Math.random()-0.5)*8);
-  scene.add(g);ducks.push({g:g,c:pd.m.position,a:Math.random()*6.28,ph:Math.random()*6.28});}});
+  scene.add(g);ducks.push({g:g,c:pd.m.position,rx:pd.rx*.43,rz:pd.rz*.43,a:Math.random()*6.28,ph:Math.random()*6.28});}});
 var quackCD=0;
 function updDucks(dt,t){
   if(quackCD>0)quackCD-=dt;
   if(G&&running&&quackCD<=0&&G.phase==="moving"){var pw2=pawns[G.turn];
     for(var q2=0;q2<ponds.length;q2++){var dd2=Math.hypot(pw2.position.x-ponds[q2].m.position.x,pw2.position.z-ponds[q2].m.position.z);
       if(dd2<16){quackCD=4;beep(340,.09,"square",.045);setTimeout(function(){beep(300,.11,"square",.04);},140);break;}}}for(var i=0;i<ducks.length;i++){var d=ducks[i];
-  d.a+=dt*0.25;
-  d.g.position.x=d.c.x+Math.cos(d.a+d.ph)*(3.5+Math.sin(d.ph)*2);
-  d.g.position.z=d.c.z+Math.sin(d.a+d.ph)*(3.5+Math.cos(d.ph)*2);
-  d.g.position.y=0.32+Math.sin(t*1.5+d.ph)*0.09;
+  if(OPT.motion)d.a+=dt*0.18;
+  d.g.position.x=d.c.x+Math.cos(d.a+d.ph)*d.rx;
+  d.g.position.z=d.c.z+Math.sin(d.a+d.ph)*d.rz;
+  d.g.position.y=d.c.y+.20+(OPT.motion?Math.sin(t*1.5+d.ph)*.025:0);
   d.g.rotation.y=-(d.a+d.ph)-Math.PI/2;}}
 // Luftballons am START (schwankende bunte Kugeln an Schnüren)
 var balloons=[];
@@ -817,12 +822,12 @@ function updBalloons(t){for(var i=0;i<balloons.length;i++){var bl=balloons[i];
   var tx=crispTex(cv);
   var pl=new THREE.Mesh(new THREE.PlaneGeometry(3.1,4.65),new THREE.MeshBasicMaterial({map:tx,transparent:true,opacity:0.9,depthWrite:false}));
   pl.rotation.x=-Math.PI/2;pl.rotation.z=0.5;
-  pl.position.set(f2.x+4.6,terrainH(f2.x+4.6,f2.z+6.4)-0.2,f2.z+6.4);
+  pl.position.set(f2.x+4.6,terrainH(f2.x+4.6,f2.z+6.4)-.33,f2.z+6.4);
   scene.add(pl);})();
 // Kapitel-Bauwerke: jedes Lebenskapitel bekommt sein Wahrzeichen am Pfadrand
 (function(){
   function at(ci,dx,dz){var f=fields[ci*FIELDS_PER+9];var g=new THREE.Group();
-    g.position.set(f.x+dx,terrainH(f.x+dx,f.z+dz),f.z+dz);scene.add(g);return g;}
+    g.position.set(f.x+dx,terrainH(f.x+dx,f.z+dz)-.35,f.z+dz);g.userData.lpGround=true;scene.add(g);return g;}
   function box(g,w,h,d,c,x,y,z,e){var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c,e!==undefined?e:c,e!==undefined?0.3:0.12));
     m.position.set(x,y,z);m.castShadow=true;g.add(m);return m;}
   function cone(g,r,h,c,x,y,z,seg){var m=new THREE.Mesh(new THREE.ConeGeometry(r,h,seg||4),mat(c,c,0.15));
@@ -909,63 +914,16 @@ function updFlies(dt,t){if(!OPT.motion){for(var fh=0;fh<flies.length;fh++)flies[
 // Schneemänner (Winterkapitel) + Sonnenblumen (Sommer)
 (function(){
   for(var sm=0;sm<3;sm++){var bx=7*46-160+10+sm*14,bz=(sm%2?26:-24)+Math.random()*6;var h0=terrainH(bx,bz);
-    var g=new THREE.Group();g.position.set(bx,h0,bz);
+    var g=new THREE.Group();g.position.set(bx,h0-.35,bz);
     [[1.0,0.75],[1.75,0.55],[2.35,0.38]].forEach(function(sph){var b=new THREE.Mesh(new THREE.SphereGeometry(sph[1],10,8),mat(0xf8f8ff,0xd8e8f0,0.15));b.position.y=sph[0];b.castShadow=true;g.add(b);});
     var nose=new THREE.Mesh(new THREE.ConeGeometry(0.09,0.5,6),mat(0xff9a4a,0xff9a4a,0.3));nose.rotation.x=Math.PI/2;nose.position.set(0,2.35,0.42);g.add(nose);
     scene.add(g);}
   for(var sf=0;sf<10;sf++){var sx2=3*46-160+Math.random()*80,sz2=(Math.random()-0.5)*70;
-    if(Math.abs(sz2)<9)continue;var h2=terrainH(sx2,sz2);
+    if(Math.abs(sz2)<9)continue;var h2=terrainH(sx2,sz2)-.35;
     var st3=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,1.6,5),mat(0x4a8a3a));st3.position.set(sx2,h2+0.8,sz2);scene.add(st3);
     var bl3=new THREE.Mesh(new THREE.SphereGeometry(0.34,8,6),mat(0xffd166,0xffcf6e,0.5));bl3.position.set(sx2,h2+1.7,sz2);scene.add(bl3);
     var ct3=new THREE.Mesh(new THREE.SphereGeometry(0.16,6,5),mat(0x6a4a2a));ct3.position.set(sx2,h2+1.72,sz2+0.28);scene.add(ct3);}})();
-// ===================== Deko pro Kapitel (bunt, instanziert) =====================
-(function(){
-  var _d=new THREE.Object3D();
-  // Bäume: Stamm+Krone in Kapitel-Farbvarianten
-  var N=IS_COARSE?150:240;
-  var trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.22,0.3,1.6,5),mat(0x8a5a3a),N);
-  var crown=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1.15,1),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:false}),N);
-  var cTmp=new THREE.Color();
-  var placed=0,guard=0;
-  while(placed<N&&guard++<3000){
-    var x=-175+Math.random()*400,z=(Math.random()-0.5)*190;
-    var nearP=false;for(var i=0;i<pathPts.length;i+=2){if(Math.hypot(x-pathPts[i].x,z-pathPts[i].z)<7){nearP=true;break;}}
-    if(nearP)continue;
-    var h=terrainH(x,z),ci=Math.max(0,Math.min(CHAPTERS.length-1,Math.floor((x+160)/46)));
-    var s=0.7+Math.random()*1.6;
-    _d.position.set(x,h+0.8*s,z);_d.scale.set(s,s,s);_d.rotation.set(0,Math.random()*3.14,0);_d.updateMatrix();
-    trunk.setMatrixAt(placed,_d.matrix);
-    _d.position.y=h+(1.7+Math.random()*0.5)*s;_d.updateMatrix();crown.setMatrixAt(placed,_d.matrix);
-    // Kronen-Farben: sattes Grün → Herbst-Orange → Winter-Rosa, mit Varianz
-    cTmp.setHex(CHAPTERS[ci].ground).offsetHSL((Math.random()-0.5)*0.12,0.28,Math.random()*0.06);
-    if(ci>=6)cTmp.setHex(ci===7?0xf0d8e8:0xe08a3a).offsetHSL((Math.random()-0.5)*0.06,0,Math.random()*0.1);
-    crown.setColorAt(placed,cTmp);placed++;}
-  var cap2=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.7,1),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:false}),N);
-  var _cd=new THREE.Object3D(),_cc=new THREE.Color();
-  for(var ci4=0;ci4<placed;ci4++){var mtx=new THREE.Matrix4();crown.getMatrixAt(ci4,mtx);
-    var pos4=new THREE.Vector3(),qq=new THREE.Quaternion(),sc4=new THREE.Vector3();mtx.decompose(pos4,qq,sc4);
-    _cd.position.set(pos4.x+0.2*sc4.x,pos4.y+0.75*sc4.y,pos4.z);_cd.scale.copy(sc4);_cd.rotation.set(0,0,0);_cd.updateMatrix();
-    cap2.setMatrixAt(ci4,_cd.matrix);
-    crown.getColorAt?crown.getColorAt(ci4,_cc):_cc.setHex(0x54c445);_cc.offsetHSL(0,0.02,0.14);
-    cap2.setColorAt(ci4,_cc);}
-  cap2.count=placed;cap2.instanceMatrix.needsUpdate=true;if(cap2.instanceColor)cap2.instanceColor.needsUpdate=true;
-  cap2.castShadow=true;scene.add(cap2);
-  trunk.count=placed;crown.count=placed;
-  trunk.instanceMatrix.needsUpdate=true;crown.instanceMatrix.needsUpdate=true;if(crown.instanceColor)crown.instanceColor.needsUpdate=true;
-  trunk.castShadow=true;crown.castShadow=true;scene.add(trunk);scene.add(crown);
-  // Blumen-Punkte (alle Farben)
-  var FN=IS_COARSE?420:700,fg=new THREE.BufferGeometry(),fp=new Float32Array(FN*3),fc=new Float32Array(FN*3);
-  for(var f2=0;f2<FN;f2++){var fx=-175+Math.random()*400,fz=(Math.random()-0.5)*190;
-    fp[f2*3]=fx;fp[f2*3+1]=terrainH(fx,fz)+0.15;fp[f2*3+2]=fz;
-    cTmp.setHSL(Math.random(),0.85,0.62);fc[f2*3]=cTmp.r;fc[f2*3+1]=cTmp.g;fc[f2*3+2]=cTmp.b;}
-  fg.setAttribute("position",new THREE.BufferAttribute(fp,3));fg.setAttribute("color",new THREE.BufferAttribute(fc,3));
-  scene.add(new THREE.Points(fg,new THREE.PointsMaterial({vertexColors:true,size:0.62,map:softDotTex(),transparent:true,alphaTest:0.3,depthWrite:false})));
-  // Wolken
-  for(var w2=0;w2<14;w2++){var cl=new THREE.Group();
-    for(var b2=0;b2<3;b2++){var puff=new THREE.Mesh(new THREE.IcosahedronGeometry(2.2+Math.random()*2,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true,transparent:true,opacity:0.92}));
-      puff.position.set(b2*2.6-2.6,Math.random()*0.8,Math.random()*1.4);cl.add(puff);}
-    cl.position.set(-170+Math.random()*400,26+Math.random()*14,(Math.random()-0.5)*160);scene.add(cl);}
-})();
+// Baumgruppen und Felsen werden nach den Landmarken als räumlich geteilte Landschaft gebaut.
 // ===================== Liebevolle Details: Feld-Icons, Konfetti, Jahreszeiten =====================
 var lpEmojiTextures=Object.create(null);
 function emojiSprite(em,size){if(lpEmojiTextures[em]){var cached=new THREE.Sprite(new THREE.SpriteMaterial({map:lpEmojiTextures[em],transparent:true}));cached.scale.setScalar(size||1.4);return cached;}var cv=document.createElement("canvas");cv.width=cv.height=256; // hochauflösend, sonst pixelige Icons (🧾-Falle)
@@ -1023,7 +981,7 @@ var _seasCol=new THREE.Color(0xfff2a8),_seasSunTgt=new THREE.Color(),_hemiSky=ne
 // dezente jahreszeitliche Licht-Tönung (Lesbarkeit bleibt — sehr sanfter Lerp)
 var SEASON_SUN={spring:0xfff0dc,summer:0xfff2d0,autumn:0xffe0b0,winter:0xeaf0ff};
 // 🌤️ Tageslicht-Bogen pro Lebensabschnitt: Intensität + Himmel/Boden-Ton (Herbst/Lebensabend goldener, Winter kühl-gedämpft)
-var SEASON_SUN_I={spring:1.05,summer:1.15,autumn:1.04,winter:0.94};
+var SEASON_SUN_I={spring:.86,summer:.94,autumn:.84,winter:.80};
 var SEASON_HEMI={spring:[0xd6e6ff,0x3a5238],summer:[0xdbecff,0x466a3a],autumn:[0xffe6c8,0x5a4630],winter:[0xe8f0ff,0x8290a0]};
 function updSeason(dt,ch){seasonPts.visible=OPT.motion;
   var s=seasonOf(ch);_seasonNow=s;
@@ -1085,29 +1043,23 @@ if(THREE.GLTFLoader){
   // lp_pawn.glb-Ersatz bewusst AUS: die prozeduralen Menschen (Haut/Haar/Jacke/Gesicht)
   // sind ausgeprägter und tragen die Spielerfarbe deutlicher.
   // Kapitel-Gebäude (Blender, game-ready): Schule, Uni, Büroturm, Parkbank+Laterne
-  [["lp_schule.glb",8,1,-5,-10,0.5],["lp_uni.glb",8.5,2,5,-11,-0.3],
-   ["lp_buero.glb",10,4,-4,-12,0.3],["lp_parkbank.glb",4.5,7,4,-7,-0.5]].forEach(function(spec){
+  lpBuildings.forEach(function(spec){
     new THREE.GLTFLoader().load("/models/"+spec[0],function(g){
       var o=fitModel(g.scene,spec[1]),fd=fields[spec[2]*FIELDS_PER+8];
       var ox=fd.x+spec[3],oz=fd.z+spec[4];
-      o.position.x+=ox;o.position.z+=oz;o.position.y+=Math.max(0,terrainH(ox,oz));
-      o.rotation.y=spec[5];scene.add(o);
+      o.position.x+=ox;o.position.z+=oz;o.position.y+=terrainH(ox,oz)-.35;
+      o.rotation.y=spec[5];o.userData.lpGround=true;scene.add(o);
       var bl=new THREE.Mesh(new THREE.CircleGeometry(spec[1]*0.42,18),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.15,depthWrite:false}));
       bl.rotation.x=-Math.PI/2;bl.position.set(ox,0.032,oz);scene.add(bl);
     },undefined,function(){});
   });
   // 🏆 Meshy-Meilenstein-Deko (KI-generiert, Blender-poliert) — je Lebensphase ein Prop, seitlich vom Pfad
-  [["lp_prop_kinderwagen.glb",2.6,0, 6,-6, 0.3],
-   ["lp_prop_abschlusshut.glb",2.9,3, 6,-9,-0.4],
-   ["lp_prop_cabrio.glb",4.0,4, 7,-6, 0.5],
-   ["lp_prop_hochzeitsbogen.glb",5.2,5,-6,-8, 0.0],
-   ["lp_prop_haus.glb",5.2,6, 5,-9, 0.4],
-   ["lp_prop_herz.glb",3.4,7,-6,-7, 0.2]].forEach(function(spec){
+  lpProps.forEach(function(spec){
     new THREE.GLTFLoader().load("/models/"+spec[0],function(g){
       var o=fitModel(g.scene,spec[1]),fd=fields[spec[2]*FIELDS_PER+8];
       var ox=fd.x+spec[3],oz=fd.z+spec[4];
-      o.position.x+=ox;o.position.z+=oz;o.position.y+=Math.max(0,terrainH(ox,oz));
-      o.rotation.y=spec[5];scene.add(o);
+      o.position.x+=ox;o.position.z+=oz;o.position.y+=terrainH(ox,oz)-.35;
+      o.rotation.y=spec[5];o.userData.lpGround=true;scene.add(o);
       var bl=new THREE.Mesh(new THREE.CircleGeometry(spec[1]*0.4,18),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.15,depthWrite:false}));
       bl.rotation.x=-Math.PI/2;bl.position.set(ox,0.033,oz);scene.add(bl);
     },undefined,function(){});
@@ -1115,8 +1067,8 @@ if(THREE.GLTFLoader){
   new THREE.GLTFLoader().load("/models/lp_haus.glb",function(g){
     var hs=fitModel(g.scene,7.5),fh=fields[5*FIELDS_PER+8];
     var hx=fh.x+4,hz=fh.z-9;
-    hs.position.x+=hx;hs.position.z+=hz;hs.position.y+=Math.max(0,terrainH(hx,hz));
-    hs.rotation.y=0.4;scene.add(hs);
+    hs.position.x+=hx;hs.position.z+=hz;hs.position.y+=terrainH(hx,hz)-.35;
+    hs.rotation.y=0.4;hs.userData.lpGround=true;scene.add(hs);
     var hb=new THREE.Mesh(new THREE.CircleGeometry(4.2,20),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.16,depthWrite:false}));
     hb.rotation.x=-Math.PI/2;hb.position.set(hx,0.035,hz);scene.add(hb);
   },undefined,function(){});
@@ -2620,7 +2572,7 @@ function updIdleLife(dt){
 // ===================== 🌬️ Deko-Regungen: Windrad dreht · Fahne weht (dezent, an Stationen) =====================
 (function(){
   // Windrad im „Vorort"-Kapitel (5), seitlich abseits des Pfads
-  var f=fields[Math.min(NFIELDS-1,5*FIELDS_PER+9)],wx=f.x+13,wz=f.z-11,wy=Math.max(0,terrainH(wx,wz));
+  var f=fields[Math.min(NFIELDS-1,5*FIELDS_PER+9)],wx=f.x+13,wz=f.z-11,wy=terrainH(wx,wz)-.35;
   var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.12,0.17,5.2,8),mat(0xf0ead8));pole.position.set(wx,wy+2.6,wz);pole.castShadow=true;scene.add(pole);
   var hub=new THREE.Group();hub.position.set(wx,wy+4.8,wz);scene.add(hub);
   var cap=new THREE.Mesh(new THREE.SphereGeometry(0.28,10,8),mat(0xff8c5a));hub.add(cap);
@@ -2628,7 +2580,7 @@ function updIdleLife(dt){
     bl.position.y=1.15;var bp=new THREE.Group();bp.rotation.z=b*Math.PI/2;bp.add(bl);hub.add(bp);}
   window._lpWindmill=hub;
   // Fahne am Mast im „Ausbildung"-Kapitel (3)
-  var f2=fields[Math.min(NFIELDS-1,3*FIELDS_PER+8)],fx2=f2.x-12,fz2=f2.z+10,fy2=Math.max(0,terrainH(fx2,fz2));
+  var f2=fields[Math.min(NFIELDS-1,3*FIELDS_PER+8)],fx2=f2.x-12,fz2=f2.z+10,fy2=terrainH(fx2,fz2)-.35;
   var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.08,0.1,6.2,6),mat(0xd8d0c0));mast.position.set(fx2,fy2+3.1,fz2);mast.castShadow=true;scene.add(mast);
   var fg=new THREE.Group();fg.position.set(fx2+0.1,fy2+5.5,fz2);scene.add(fg);var seg=[];
   for(var s=0;s<5;s++){var q=new THREE.Mesh(new THREE.PlaneGeometry(0.52,1.1),new THREE.MeshStandardMaterial({color:0xff5d7d,side:THREE.DoubleSide,flatShading:true,envMapIntensity:0.3}));
@@ -2646,8 +2598,9 @@ function updIdleLife(dt){
       var x=fd.x+Math.cos(a)*r,z=fd.z+Math.sin(a)*r,ok=true;
       for(var q=0;q<fields.length;q++){var dx=fields[q].x-x,dz=fields[q].z-z;
         if(dx*dx+dz*dz<30){ok=false;break;}}
-      if(ok)return new THREE.Vector3(x,Math.max(0,terrainH(x,z))-0.05,z);}
-    var x2=fd.x+16,z2=fd.z-16;return new THREE.Vector3(x2,Math.max(0,terrainH(x2,z2))-0.05,z2);}
+      if(lpBasins.some(function(p){return Math.hypot((x-p.x)/p.rx,(z-p.z)/p.rz)<1.6;}))ok=false;
+      if(ok)return new THREE.Vector3(x,terrainH(x,z)-.35,z);}
+    var x2=fd.x+16,z2=fd.z-16;return new THREE.Vector3(x2,terrainH(x2,z2)-.35,z2);}
   function grp(ci,slot){var g=new THREE.Group();var p=at(ci,slot);g.position.copy(p);scene.add(g);return g;}
   function box(g,w,h,d,c,x,y,z){var m2=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));m2.position.set(x,y,z);m2.castShadow=true;g.add(m2);return m2;}
   function ball(g,r,c,x,y,z){var m2=new THREE.Mesh(new THREE.SphereGeometry(r,10,8),mat(c));m2.position.set(x,y,z);m2.castShadow=true;g.add(m2);return m2;}
@@ -2730,11 +2683,11 @@ if(THREE.GLTFLoader){
     cb(o);},undefined,function(){});}
   // Riesenrad neben der Schule (Kapitel 2)
   loadLm("/models/lp_riesenrad.glb",2.2,function(o){
-    var f=fields[1*FIELDS_PER+4];o.position.set(f.x-9,terrainH(f.x-9,f.z-9),f.z-9);
+    var f=fields[1*FIELDS_PER+4];o.position.set(f.x-9,terrainH(f.x-9,f.z-9)-.35,f.z-9);
     scene.add(o);lmWheel=o.getObjectByName("Wheel");});
   // Windmühle am Garten (Kapitel 6)
   loadLm("/models/lp_windmuehle.glb",2.4,function(o){
-    var f=fields[5*FIELDS_PER+4];o.position.set(f.x-8,terrainH(f.x-8,f.z+9),f.z+9);
+    var f=fields[5*FIELDS_PER+4];o.position.set(f.x-8,terrainH(f.x-8,f.z+9)-.35,f.z+9);
     o.rotation.y=0.8;scene.add(o);lmBlades=o.getObjectByName("Blades");});
   // Heißluftballon zieht über das ganze Brett
   loadLm("/models/lp_ballon.glb",2.0,function(o){
@@ -2750,129 +2703,12 @@ function updLandmarks(dt,t){
     lmBalloon.position.y=24+Math.sin(t*0.4)*2.5;
     lmBalloon.rotation.y+=dt*0.1;}
 }
-// ===================== Max-Polish: dichte Pastell-Spielbrett-Welt (alles instanziert & statisch) =====================
+// ===================== Zusammenhängende Landschaft statt zufälliger Streudeko =====================
 var driftBalloons=[];
-(function(){
-  // Sperrzonen: Felder, Kapitel-Bauwerke, GLB-Gebäude, Landmarken, Hüpfkästchen — dort keine Streu-Deko
-  var anchors=[];
-  [[0,7,-8],[1,8,7],[2,-7,-8],[3,7,8],[4,-8,-7],[5,7,-8],[6,-7,8],[7,8,-8]].forEach(function(s){var f=fields[s[0]*FIELDS_PER+9];anchors.push([f.x+s[1],f.z+s[2],5]);});
-  [[1,-5,-10],[2,5,-11],[4,-4,-12],[7,4,-7]].forEach(function(s){var f=fields[s[0]*FIELDS_PER+8];anchors.push([f.x+s[1],f.z+s[2],6]);});
-  (function(){var f=fields[5*FIELDS_PER+8];anchors.push([f.x+4,f.z-9,5]);})(); // lp_haus
-  (function(){var f=fields[NFIELDS-1];anchors.push([f.x,f.z-6,5]);})(); // Lebensbaum
-  for(var lc=0;lc<CHAPTERS.length;lc++){var lf=fields[lc*FIELDS_PER];anchors.push([lf.x,lf.z-5,4.5]);} // Landmarken
-  anchors.push([fields[5].x+4.6,fields[5].z+6.4,3.5]); // Hüpfkästchen
-  function blocked(x,z){
-    for(var q=0;q<fields.length;q++){var dx=fields[q].x-x,dz=fields[q].z-z;if(dx*dx+dz*dz<23)return true;}
-    for(var a2=0;a2<anchors.length;a2++){var ax=anchors[a2][0]-x,az=anchors[a2][1]-z,ar=anchors[a2][2];if(ax*ax+az*az<ar*ar)return true;}
-    return false;}
-  function gy(x,z){return terrainH(x,z)-0.32;} // echte Bodenhöhe (Terrain-Verts liegen bei terrainH-0.35)
-  function nearSpot(minD,maxD){ // Kandidat NAHE am Pfad — der Blick folgt dem Pfad, dort muss es leben
-    for(var t=0;t<50;t++){
-      var pi=(Math.random()*pathPts.length)|0,a=Math.random()*6.283,r=minD+Math.random()*(maxD-minD);
-      var x=pathPts[pi].x+Math.cos(a)*r,z=pathPts[pi].z+Math.sin(a)*r;
-      if(x<-176||x>218||Math.abs(z)>100)continue;
-      if(blocked(x,z))continue;
-      var best=1e9;for(var i=0;i<pathPts.length;i+=2){var dx=x-pathPts[i].x,dz=z-pathPts[i].z,d=dx*dx+dz*dz;if(d<best)best=d;}
-      if(best<minD*minD*0.7)continue; // nicht doch auf einem anderen Pfad-Stück gelandet
-      return {x:x,z:z};}
-    return null;}
-  var _o=new THREE.Object3D(),_c=new THREE.Color();
-  var PASTELL=[0xffc4d8,0xbfe8cf,0xd8c8f5,0xfff0b8,0xc8e8f8];
-  function chapCol(x){return CHAPTERS[Math.max(0,Math.min(CHAPTERS.length-1,Math.floor((x+160)/46)))];}
-  // --- Büsche: Kugel-Klumpen in Kapitel- + Pastellfarben (rosa/mint/flieder) ---
-  var NB=IS_COARSE?150:210,put=0,gd=0;
-  var bush=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.62,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),NB);
-  while(put<NB&&gd++<NB*40){
-    var s=Math.random()<0.7?nearSpot(4.6,11):nearSpot(11,17); // 30% weiter draussen — füllt die Mittel-Distanz
-    if(!s)continue;
-    var sc=0.7+Math.random()*1.1;
-    _o.position.set(s.x,gy(s.x,s.z)+0.34*sc,s.z);_o.scale.set(sc,sc*0.72,sc);_o.rotation.set(0,Math.random()*3.14,0);_o.updateMatrix();
-    bush.setMatrixAt(put,_o.matrix);
-    if(put%4===0)_c.setHex(PASTELL[(Math.random()*PASTELL.length)|0]).offsetHSL(0,0.06,-0.04-Math.random()*0.04);
-    else _c.setHex(chapCol(s.x).ground).offsetHSL((Math.random()-0.5)*0.1,0.14,0.03+Math.random()*0.07);
-    bush.setColorAt(put,_c);put++;}
-  bush.count=put;bush.instanceMatrix.needsUpdate=true;if(bush.instanceColor)bush.instanceColor.needsUpdate=true;
-  bush.castShadow=true;scene.add(bush);
-  // --- Pilze: cremefarbener Stiel + bunter Hut ---
-  var NM=IS_COARSE?44:58;
-  var stemI=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.09,0.14,0.36,6),mat(0xf5ecd8,0xe8dcc0,0.08),NM);
-  var capI=new THREE.InstancedMesh(new THREE.ConeGeometry(0.3,0.3,9),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),NM);
-  var CAPC=[0xff6a7a,0xff9ab8,0x7fd8b0,0xffb37a,0xc8a8ff];
-  put=0;gd=0;
-  while(put<NM&&gd++<NM*40){var s2=nearSpot(3.6,9);if(!s2)continue;
-    var sc2=0.8+Math.random()*0.9,y0=gy(s2.x,s2.z);
-    _o.position.set(s2.x,y0+0.18*sc2,s2.z);_o.scale.setScalar(sc2);_o.rotation.set(0,Math.random()*3.14,0);_o.updateMatrix();stemI.setMatrixAt(put,_o.matrix);
-    _o.position.y=y0+0.45*sc2;_o.updateMatrix();capI.setMatrixAt(put,_o.matrix);
-    _c.setHex(CAPC[(Math.random()*CAPC.length)|0]);capI.setColorAt(put,_c);put++;}
-  stemI.count=put;capI.count=put;stemI.instanceMatrix.needsUpdate=true;capI.instanceMatrix.needsUpdate=true;
-  if(capI.instanceColor)capI.instanceColor.needsUpdate=true;scene.add(stemI);scene.add(capI);
-  // --- Steinchen (warmgrau, halb versenkt) ---
-  var NS=IS_COARSE?70:100;
-  var stoneI=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.3,0),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),NS);
-  put=0;gd=0;
-  while(put<NS&&gd++<NS*40){var s3=nearSpot(3.2,8.5);if(!s3)continue;
-    var sc3=0.4+Math.random()*0.6; // klein halten — grosse helle Brocken wirkten wie Müll
-    _o.position.set(s3.x,gy(s3.x,s3.z)+0.08*sc3,s3.z);_o.scale.set(sc3,sc3*0.55,sc3);_o.rotation.set(Math.random()*0.4,Math.random()*3.14,0);_o.updateMatrix();
-    stoneI.setMatrixAt(put,_o.matrix);
-    _c.setHSL(0.08+Math.random()*0.04,0.14,0.42+Math.random()*0.14);stoneI.setColorAt(put,_c);put++;}
-  stoneI.count=put;stoneI.instanceMatrix.needsUpdate=true;if(stoneI.instanceColor)stoneI.instanceColor.needsUpdate=true;scene.add(stoneI);
-  // --- Gras-Büschel (Kapitel-Grün, leicht geneigt) ---
-  var NG=IS_COARSE?180:240;
-  var tuftI=new THREE.InstancedMesh(new THREE.ConeGeometry(0.17,0.55,5),new THREE.MeshStandardMaterial({color:0xffffff,flatShading:true}),NG);
-  put=0;gd=0;
-  while(put<NG&&gd++<NG*40){var s4=nearSpot(3.0,9.5);if(!s4)continue;
-    var sc4=0.7+Math.random()*0.9;
-    _o.position.set(s4.x,gy(s4.x,s4.z)+0.24*sc4,s4.z);_o.scale.setScalar(sc4);
-    _o.rotation.set((Math.random()-0.5)*0.3,Math.random()*3.14,(Math.random()-0.5)*0.3);_o.updateMatrix();
-    tuftI.setMatrixAt(put,_o.matrix);
-    _c.setHex(chapCol(s4.x).ground).offsetHSL(0.015,0.12,0.03+Math.random()*0.1);tuftI.setColorAt(put,_c);put++;}
-  tuftI.count=put;tuftI.instanceMatrix.needsUpdate=true;if(tuftI.instanceColor)tuftI.instanceColor.needsUpdate=true;scene.add(tuftI);
-  // --- Zäunchen: weisse Lattenzäune flankieren den Pfad vor jedem Kapitel-Meilenstein ---
-  var fence=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),mat(0xf7f0e0,0xd8c8a8,0.05),7*2*5);
-  var fi=0;
-  for(var fc2=1;fc2<CHAPTERS.length;fc2++){
-    var iA=fc2*FIELDS_PER-4,iB=fc2*FIELDS_PER-2;
-    var ax2=fields[iA].x,az2=fields[iA].z,bx2=fields[iB].x,bz2=fields[iB].z;
-    var mx2=(ax2+bx2)/2,mz2=(az2+bz2)/2,dl=Math.hypot(bx2-ax2,bz2-az2)||1;
-    var ux=(bx2-ax2)/dl,uz=(bz2-az2)/dl,px2=-uz,pz2=ux,ry=-Math.atan2(uz,ux);
-    for(var sd=-1;sd<=1;sd+=2){
-      var cx3=mx2+px2*sd*3.2,cz3=mz2+pz2*sd*3.2;
-      for(var pp2=0;pp2<4;pp2++){var t2=-2.4+pp2*1.6,x3=cx3+ux*t2,z3=cz3+uz*t2;
-        _o.position.set(x3,gy(x3,z3)+0.46,z3);_o.scale.set(0.13,0.82,0.13);_o.rotation.set(0,ry,0);_o.updateMatrix();fence.setMatrixAt(fi++,_o.matrix);}
-      _o.position.set(cx3,gy(cx3,cz3)+0.72,cz3);_o.scale.set(5.3,0.09,0.09);_o.rotation.set(0,ry,0);_o.updateMatrix();fence.setMatrixAt(fi++,_o.matrix);}}
-  fence.count=fi;fence.instanceMatrix.needsUpdate=true;fence.castShadow=true;scene.add(fence);
-  // --- Deko-Trampelpfade: Trittsteine vom Pfad zu den Kapitel-Bauwerken ---
-  var tramp=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.3,0.34,0.07,7),mat(0xf0e2c8,0x000000,0),8*7);
-  var ti2=0;
-  [[0,7,-8],[1,8,7],[2,-7,-8],[3,7,8],[4,-8,-7],[5,7,-8],[6,-7,8],[7,8,-8]].forEach(function(sp2){
-    var f3=fields[sp2[0]*FIELDS_PER+9];
-    for(var st5=1;st5<=7;st5++){var k2=st5/8;
-      var x4=f3.x+sp2[1]*k2+(Math.random()-0.5)*0.5+Math.sin(k2*3.14)*0.7;
-      var z4=f3.z+sp2[2]*k2+(Math.random()-0.5)*0.5;
-      _o.position.set(x4,gy(x4,z4)+0.06,z4);_o.scale.setScalar(0.8+Math.random()*0.4);_o.rotation.set(0,Math.random()*3.14,0);_o.updateMatrix();
-      tramp.setMatrixAt(ti2++,_o.matrix);}});
-  tramp.count=ti2;tramp.instanceMatrix.needsUpdate=true;scene.add(tramp);
-  // --- Blumen-Tupfer direkt am Wegesrand (weiche Sprite-Textur) ---
-  function pflowerTex(col){var cv=document.createElement("canvas");cv.width=cv.height=48;var c2=cv.getContext("2d");
-    c2.fillStyle=col;for(var p2=0;p2<5;p2++){var a3=p2/5*6.283;c2.beginPath();c2.arc(24+Math.cos(a3)*9,24+Math.sin(a3)*9,7,0,6.283);c2.fill();}
-    c2.fillStyle="#ffe08a";c2.beginPath();c2.arc(24,24,6,0,6.283);c2.fill();return new THREE.CanvasTexture(cv);}
-  [["#ff9ab8",90],["#ffffff",80],["#ffd166",70],["#b89aff",60]].forEach(function(fc3){
-    var pts2=[],tr2=0,n3=IS_COARSE?Math.round(fc3[1]*0.7):fc3[1];
-    while(pts2.length/3<n3&&tr2++<n3*40){var s5=nearSpot(2.8,8);if(!s5)continue;pts2.push(s5.x,gy(s5.x,s5.z)+0.32,s5.z);}
-    var gg2=new THREE.BufferGeometry();gg2.setAttribute("position",new THREE.BufferAttribute(new Float32Array(pts2),3));
-    scene.add(new THREE.Points(gg2,new THREE.PointsMaterial({map:pflowerTex(fc3[0]),size:0.9,transparent:true,alphaTest:0.35,depthWrite:false})));});
-  // --- 🎈 Party-Ballons schweben übers Brett ---
-  var BCOL=[0xff5d7d,0xffd166,0x5ea8ff,0xff9ad9];
-  for(var b5=0;b5<4;b5++){
-    var g5=new THREE.Group();
-    var bal=new THREE.Mesh(new THREE.SphereGeometry(0.6,10,8),mat(BCOL[b5],BCOL[b5],0.4));bal.scale.y=1.18;g5.add(bal);
-    var kn=new THREE.Mesh(new THREE.ConeGeometry(0.12,0.2,6),mat(BCOL[b5],BCOL[b5],0.3));kn.position.y=-0.78;kn.rotation.x=Math.PI;g5.add(kn);
-    var lg5=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-0.85,0),new THREE.Vector3(0.14,-2.7,0)]);
-    g5.add(new THREE.Line(lg5,new THREE.LineBasicMaterial({color:0x9a9aa6})));
-    g5.position.set(-130+b5*88,8.5+b5,(b5%2?-1:1)*(13+b5*4));
-    scene.add(g5);
-    driftBalloons.push({g:g5,ph:b5*1.7,cx:g5.position.x,cz:g5.position.z,i:b5});}
-})();
+var _lpScenery=null,_lpWaterside=null;
+if(window.LPScenery){var sceneryFields=fields.map(function(f){return {x:f.x,z:f.z,radius:f.disc.geometry.parameters.radiusTop};});lpBasins.forEach(function(p){sceneryFields.push({x:p.x,z:p.z,radius:Math.max(p.rx,p.rz)+1});});
+  _lpScenery=LPScenery(THREE,{scene:scene,fields:sceneryFields,terrainHeight:terrainH,chapters:CHAPTERS,coarse:IS_COARSE});window._lpScenery=_lpScenery;}
+if(window.LPWaterside){_lpWaterside=LPWaterside(THREE,{scene:scene,basins:lpBasins,fields:fields,terrainHeight:terrainH});window._lpWaterside=_lpWaterside;}
 function updDriftBalloons(dt,t){
   if(!OPT.motion)return; // reduzierte Bewegung: Ballons stehen still
   for(var i=0;i<driftBalloons.length;i++){var b=driftBalloons[i];

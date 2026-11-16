@@ -1,0 +1,388 @@
+{
+  "checks": [
+    "Echter Einzelspieler ohne Robo, kurzer Modus",
+    "Echter gespeicherter Zwischenstand nach Neuladen identisch fortgesetzt",
+    "Ohne Teleport vom Start zum Lebensabend: Karten, Gabelungen, Alterung, Auswertung und Biografie",
+    "Abschluss genau einmal in lokaler Statistik gespeichert",
+    "Neues Leben startet wieder auf Feld 0 mit bedienbarem Würfel"
+  ],
+  "errors": [],
+  "turns": [
+    {
+      "phase": "idle",
+      "round": 1,
+      "tile": 0,
+      "done": false,
+      "dead": false,
+      "bio": 0,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "—",
+      "opts": []
+    },
+    {
+      "phase": "idle",
+      "round": 2,
+      "tile": 2,
+      "done": false,
+      "dead": false,
+      "bio": 1,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Der geheimnisvolle Wald",
+      "seq": 1,
+      "opts": [
+        "Den Pfad erkunden+2 ❤️ · +2 🧠",
+        "Lieber auf dem Hauptweg bleiben+1 ❤️"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 3,
+      "tile": 8,
+      "done": false,
+      "dead": false,
+      "bio": 1,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🛤️ Spielplatz oder Schulweg?",
+      "seq": 2,
+      "opts": [
+        "🎒 Schulwegdirekt und schnell — brav zur Schule",
+        "🛝 Spielplatz-Runde7 bunte Felder · viel ❤️ & 👥 · ein bisschen länger"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 4,
+      "tile": 13,
+      "done": false,
+      "dead": false,
+      "bio": 1,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🏁 Best-of-3-Sprint!",
+      "seq": 3,
+      "opts": [
+        "Weiter ▶"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 5,
+      "tile": 16,
+      "done": false,
+      "dead": false,
+      "bio": 1,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🏁 Best-of-3-Sprint!",
+      "seq": 3,
+      "opts": [
+        "Weiter ▶"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 6,
+      "tile": 19,
+      "done": false,
+      "dead": false,
+      "bio": 1,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "—",
+      "opts": []
+    },
+    {
+      "phase": "idle",
+      "round": 7,
+      "tile": 24,
+      "done": false,
+      "dead": false,
+      "bio": 1,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "—",
+      "opts": []
+    },
+    {
+      "phase": "idle",
+      "round": 8,
+      "tile": 25,
+      "done": false,
+      "dead": false,
+      "bio": 2,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🧠 Das Gerüchte-Netzwerk",
+      "seq": 1,
+      "opts": [
+        "Gerücht verbreiten+2 ❤️ · -1 🧠 · +1 👥",
+        "Wahrheit recherchieren+3 🧠"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 9,
+      "tile": 31,
+      "done": false,
+      "dead": false,
+      "bio": 3,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Geburtstagsparty",
+      "seq": 2,
+      "opts": [
+        "Heimlich zur Party schleichen+5 ❤️ · -3 🧠 · +3 👥",
+        "Den Eltern gehorchen-2 ❤️ · +3 🧠 · -1 👥",
+        "Verhandeln und Kompromiss finden+2 ❤️ · +1 🧠 · +1 👥"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 10,
+      "tile": 35,
+      "done": false,
+      "dead": false,
+      "bio": 4,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🚗 Ein eigenes Auto?",
+      "seq": 3,
+      "opts": [
+        "🚗 Kaufen — ab jetzt wird gefahren!−6 💰 · +2 ❤️ · deine Figur fährt Auto · Turbo: 6 = +1 Feld",
+        "🚲 Erstmal das Fahrrad+1 ❤️ · +1 🧠 · spart Geld"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 11,
+      "tile": 76,
+      "done": false,
+      "dead": false,
+      "bio": 5,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welches Tier gibt uns Milch?",
+      "seq": 4,
+      "opts": [
+        "🅰 Kuh",
+        "🅱 Huhn",
+        "🅲 Katze"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 12,
+      "tile": 77,
+      "done": false,
+      "dead": false,
+      "bio": 5,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welches Tier gibt uns Milch?",
+      "seq": 4,
+      "opts": [
+        "🅰 Kuh",
+        "🅱 Huhn",
+        "🅲 Katze"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 13,
+      "tile": 84,
+      "done": false,
+      "dead": false,
+      "bio": 5,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welches Tier gibt uns Milch?",
+      "seq": 4,
+      "opts": [
+        "🅰 Kuh",
+        "🅱 Huhn",
+        "🅲 Katze"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 14,
+      "tile": 85,
+      "done": false,
+      "dead": false,
+      "bio": 6,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welches Tier gibt uns Milch?",
+      "seq": 4,
+      "opts": [
+        "🅰 Kuh",
+        "🅱 Huhn",
+        "🅲 Katze"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 15,
+      "tile": 126,
+      "done": false,
+      "dead": false,
+      "bio": 7,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Ehrenamt als Vorlesepate",
+      "seq": 5,
+      "opts": [
+        "Werde Vorlesepate+3 ❤️ · +1 🧠 · +2 👥",
+        "Priorisiere deine Ruhe+1 ❤️"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 16,
+      "tile": 133,
+      "done": false,
+      "dead": false,
+      "bio": 8,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "seq": 7,
+      "opts": [
+        "🤝 Ja, tauschen!−4 💰 · +2 ❤️",
+        "🙅 Nein dankealles bleibt, wie es ist"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 17,
+      "tile": 138,
+      "done": false,
+      "dead": false,
+      "bio": 8,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "seq": 7,
+      "opts": [
+        "🤝 Ja, tauschen!−4 💰 · +2 ❤️",
+        "🙅 Nein dankealles bleibt, wie es ist"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 18,
+      "tile": 140,
+      "done": false,
+      "dead": false,
+      "bio": 8,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "seq": 7,
+      "opts": [
+        "🤝 Ja, tauschen!−4 💰 · +2 ❤️",
+        "🙅 Nein dankealles bleibt, wie es ist"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "card": "❤️ Der geheimnisvolle Wald",
+      "choice": "Den Pfad erkunden+2 ❤️ · +2 🧠"
+    },
+    {
+      "card": "🛤️ Spielplatz oder Schulweg?",
+      "choice": "🎒 Schulwegdirekt und schnell — brav zur Schule"
+    },
+    {
+      "card": "🏁 Best-of-3-Sprint!",
+      "choice": "Weiter ▶"
+    },
+    {
+      "card": "🧠 Das Gerüchte-Netzwerk",
+      "choice": "Gerücht verbreiten+2 ❤️ · -1 🧠 · +1 👥"
+    },
+    {
+      "card": "❤️ Geburtstagsparty",
+      "choice": "Heimlich zur Party schleichen+5 ❤️ · -3 🧠 · +3 👥"
+    },
+    {
+      "card": "🚗 Ein eigenes Auto?",
+      "choice": "🚗 Kaufen — ab jetzt wird gefahren!−6 💰 · +2 ❤️ · deine Figur fährt Auto · Turbo: 6 = +1 Feld"
+    },
+    {
+      "card": "❓ Welches Tier gibt uns Milch?",
+      "choice": "🅰 Kuh"
+    },
+    {
+      "card": "❤️ Ehrenamt als Vorlesepate",
+      "choice": "Werde Vorlesepate+3 ❤️ · +1 🧠 · +2 👥"
+    },
+    {
+      "card": "🛤️ Weltreise oder Schaukelstuhl?",
+      "choice": "🪑 Gemütlich bleibender kurze, vertraute Weg"
+    },
+    {
+      "card": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "choice": "🤝 Ja, tauschen!−4 💰 · +2 ❤️"
+    }
+  ],
+  "ended": true,
+  "final": {
+    "phase": "landed",
+    "round": 18,
+    "tile": 143,
+    "done": true,
+    "dead": false,
+    "bio": 9,
+    "end": true,
+    "roll": false,
+    "rad": false,
+    "card": false,
+    "title": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+    "seq": 7,
+    "opts": [
+      "🤝 Ja, tauschen!−4 💰 · +2 ❤️",
+      "🙅 Nein dankealles bleibt, wie es ist"
+    ]
+  }
+}

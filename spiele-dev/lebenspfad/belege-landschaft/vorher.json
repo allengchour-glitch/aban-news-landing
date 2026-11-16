@@ -1,0 +1,665 @@
+{
+  "kind": "Kapitel-/Kamerafixtures, keine Kampagne",
+  "views": [
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 1,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 272,
+        "triangles": 52966,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 2,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 271,
+        "triangles": 52047,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 3,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 306,
+        "triangles": 55436,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 4,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 300,
+        "triangles": 73347,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 5,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 286,
+        "triangles": 61594,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 6,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 327,
+        "triangles": 63806,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 7,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 278,
+        "triangles": 62527,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 8,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 306,
+        "triangles": 58237,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 1,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 201,
+        "triangles": 43745,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 2,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 188,
+        "triangles": 38769,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 3,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 217,
+        "triangles": 43406,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 4,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 194,
+        "triangles": 49991,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 5,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 203,
+        "triangles": 49376,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 6,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 232,
+        "triangles": 51002,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 7,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 182,
+        "triangles": 46155,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 8,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 199,
+        "triangles": 44472,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 32000
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 10,
+          "sourceInstances": 1512,
+          "chunkedMeshes": 10,
+          "chunkedInstances": 1512,
+          "skippedMeshes": 0,
+          "batches": 206,
+          "triangles": 58366,
+          "totalTriangles": 58366
+        }
+      },
+      "fields": 175,
+      "seed": 1
+    }
+  ],
+  "errors": [],
+  "initial": {
+    "badVertices": 0,
+    "graphics": {
+      "profile": "auto",
+      "pixelRatio": 0.55,
+      "shadows": false,
+      "calls": 272,
+      "triangles": 52387,
+      "terrain": {
+        "sourceMeshes": 1,
+        "batchedMeshes": 1,
+        "batches": 78,
+        "triangles": 32000
+      },
+      "board": {
+        "sourceMeshes": 746,
+        "batchedMeshes": 418,
+        "batches": 39,
+        "triangles": 32424
+      },
+      "instances": {
+        "sourceMeshes": 10,
+        "sourceInstances": 1512,
+        "chunkedMeshes": 10,
+        "chunkedInstances": 1512,
+        "skippedMeshes": 0,
+        "batches": 206,
+        "triangles": 58366,
+        "totalTriangles": 58366
+      }
+    },
+    "fields": 175,
+    "seed": 1
+  },
+  "performance": {
+    "rafPerSecond": 13.69907694315549,
+    "median": 66.70000000000073,
+    "p95": 100,
+    "profile": "auto",
+    "pixelRatio": 0.55,
+    "shadows": false,
+    "calls": 271,
+    "triangles": 52375,
+    "terrain": {
+      "sourceMeshes": 1,
+      "batchedMeshes": 1,
+      "batches": 78,
+      "triangles": 32000
+    },
+    "board": {
+      "sourceMeshes": 746,
+      "batchedMeshes": 418,
+      "batches": 39,
+      "triangles": 32424
+    },
+    "instances": {
+      "sourceMeshes": 10,
+      "sourceInstances": 1512,
+      "chunkedMeshes": 10,
+      "chunkedInstances": 1512,
+      "skippedMeshes": 0,
+      "batches": 206,
+      "triangles": 58366,
+      "totalTriangles": 58366
+    }
+  },
+  "passed": true
+}

@@ -1,5 +1,12 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Lebenspfad: Landschaft und Umgebung ·16.11.2026
+
+Benutzerfolgeauftrag nach PR3179: Landschaft/Umgebung schöner. Neue lokale Module terrain.js, scenery.js, waterside.js für facettierte Hügel, acht Biome, Bodenkorn, Baumgruppen und niedrige Sträucher; bepflanzte Teichufer mit Steg. Unruhige Streudekorationen reduziert. Bodenauflage aus echten Dreiecken statt nur analytischer Kurve; gemeinsamer Bauwerk-Katalog hält neue Teiche frei. Haus-/Teichüberschneidung durch echte Kapitelaufnahme bestätigt und korrigiert. Wertung, Spiel-Zufall und Netzwerkprotokoll bleiben erhalten.
+
+GEMESSEN:20 neue Modul-Prüfgruppen,16 Kapitelansichten1280×800/390×844,175 freie Felder und19 geprüfte geladene Bauwerk-/Requisitengruppen. Fünf Layoutgrößen mit25 HUD-Treffern/15 Überlappungspaaren sowie16-Wurf-/neun-Wahl-Replay mit26 Kontrollpunkten erneut grün. Transportattrappen, keine echte PeerJS-/NAT-Zusage. Cloud-Softwareprobe13,70→12,09rAF/s bei gleichem Renderverhältnis0,55; Calls/Dreiecke sinken, Median wird langsamer, keine Performanceverbesserung behaupten. Dateien/Bilder/Grenzen: spiele-dev/lebenspfad/LANDSCHAFT.md. Spiele-Veröffentlichung bereits freigegeben; reale PR-, Deploy- und HTTPS-Nachweise separat bestätigen. Lokale Gesamt-CI wegen schreibgeschütztem HOME nicht gestartet, keine Umgehung. Keine Änderung an Shop/Social/Konten/Secrets.
+
+
 ## Lebenspfad: Gestaltung, Lebensbuch und lokale Pause ·16.11.2026
 
 Benutzerauftrag: Lebenspfad verbessern; frühere Freigabe der Spiele-Veröffentlichung gilt. Kein Shop-/Social-/Kontoeingriff. Papierfarbene Oberfläche mit kompaktem Handy-Lebensbuch, tatsächlichem Routenfortschritt/Biografie, anpassbare alternde lokale Standardfiguren und Standhöhe auf Felddeckeln. Terrain und statische Instanzen räumlich geteilt, kompatible Brettteile gebündelt, Feldzeichen-Texturen geteilt; automatische Auflösung und gespeicherte Grafikprofile. Nachgestellter Pausenfehler korrigiert: lokales Menü/Lebensbuch halten Simulation, Drehrad, Quiz-Frist und Musik an, Online-Infos halten Lockstep nicht an.

@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Lebenspfad: Landschaft und Umgebung ·16.11.2026
+
+Auf Folgeauftrag Landschaft verbessert: zusammenhängende Hügel, acht gedämpfte Biome, Bodenkorn, deterministische Baumgruppen/Sträucher, bepflanzte Teichufer und Holzsteg. Zufällige Pastell-Streudeko reduziert; Gebäude verwenden die tatsächliche Terrain-Dreiecksoberfläche. Bestätigte Haus-/Teichüberschneidung im Bilddurchgang durch gemeinsame Gebäudespezifikationen behoben. GEMESSEN:20 neue Modul-Prüfgruppen,16 Desktop-/Handy-Kapitelansichten,175 freie Felder/Nebenrouten und19 geladene Gebäude-/Requisitengruppen; Layout und Zweiclient-Lockstep-Replay erneut bestanden. Softwareprobe13,70→12,09rAF/s bei gleichem Renderverhältnis0,55; weniger Calls/Dreiecke, aber keine Beschleunigung/Handy-Zusage. Details/Bilder/Grenzen: spiele-dev/lebenspfad/LANDSCHAFT.md. Bereits freigegebene Spiele-Veröffentlichung nach realer PR-CI, Hauptseitenlauf und HTTPS-Quellenvergleich; lokale Gesamt-CI startet wegen schreibgeschütztem HOME nicht. Kein Shop-/Social-/Konto-Eingriff.
+
 ## Claude (Shop-Sitzung): Social-Analyse und Besitzer-Entscheide zu Metricool ·16.11.2026
 
 Analyse aller Kanäle seit 22.09. in `dropship/social-analyse-1611/README.md` (Rohdaten, Prüfurteile). Kurz: Social bringt Aufrufe, aber kaum Shop-Besuche (20 Sitzungen in 7 Tagen, 0 Käufe in 45 Tagen); Fotos, Karussells, Threads und Facebook-Feed erreichen fast niemanden.
