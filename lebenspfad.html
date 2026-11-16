@@ -359,6 +359,7 @@ window.LP_EVENTS=[[{"t":"Der neue Spielplatz","x":"Ein brandneuer Spielplatz wir
 <script src="/js/lebenspfad/scenery.js?v=3451c0e2267c"></script>
 <script src="/js/lebenspfad/waterside.js?v=b9e001825ed7"></script>
 <script src="/js/lebenspfad/atmosphere.js?v=554f3af1f405"></script>
+<script src="/js/lebenspfad/character-art.js?v=04f0e0277fe0"></script>
 <script src="/js/vendor/RGBELoader.js"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script>
@@ -1238,215 +1239,8 @@ function pawnStripeMap(base,accent){
 function mkPawn(color,cfg){var g=mkPawnMesh(color,cfg);scene.add(g);return g;}
 function mkPawnMesh(color,cfg,onReady){
   if(cfg&&cfg.meshy&&meshyIdx(cfg.meshy)>=0)return mkMeshyPawn(color,cfg,onReady);
-  // Runde, knuffige Minifigur (Rayman/Pastell-Look): Kugel-Kopf, Kapsel-Rumpf & -Glieder, weiche Silhouette ohne harte Kanten
-  cfg=cfg||{g:"m",style:0,skin:0};
-  var bodyHex=(cfg.cloth!=null&&cfg.cloth>=0)?CLOTHES[cfg.cloth%CLOTHES.length]:color; // 👕 wählbare Kleiderfarbe
-  var g=new THREE.Group(),cm=smat(bodyHex,bodyHex,0.10),skin=smat(SKINTONES[cfg.skin%SKINTONES.length],0x3a2a1a,0.04);
-  var pantsHex=PANTS[Math.max(0,cfg.pants|0)%PANTS.length];var pants=smat(pantsHex); // |0 fängt undefined/NaN ab
-  var hairHex=(cfg.hair!=null&&cfg.hair>=0)?HAIRS[cfg.hair%HAIRS.length]:HAIRS[(cfg.style*2+cfg.skin+(cfg.g==="m"?1:0))%HAIRS.length];var hair=smat(hairHex);
-  var HSEG=IS_COARSE?10:14,LSEG=IS_COARSE?8:10; // Kugel-/Kapsel-Segmente (rund genug, aber sparsam: 2-4 Figuren)
-  // Kapsel-Glied: Pivot oben, Kapsel hängt runde herab (schwingt beim Laufen)
-  function limb(r,H,px,py,m2){var pivot=new THREE.Group();pivot.position.set(px,py,0);
-    var mesh=new THREE.Mesh(capsuleGeo(r,H-2*r,LSEG),m2||cm);mesh.position.y=-H/2;mesh.castShadow=true;
-    pivot.add(mesh);g.add(pivot);return pivot;}
-  var ll=limb(0.125,0.52,-0.14,0.5,pants),rl=limb(0.125,0.52,0.14,0.5,pants);
-  // Schuhe: weiche Ei-Form an den Bein-Enden (statt Klotz)
-  [ll,rl].forEach(function(lp3){var shoe=new THREE.Mesh(new THREE.SphereGeometry(0.14,LSEG,LSEG),smat(0x3a3040));
-    shoe.scale.set(1,0.6,1.32);shoe.position.set(0,-0.53,0.05);shoe.castShadow=true;lp3.add(shoe);});
-  // Rumpf: runder Kapsel-/Ei-Körper (vorne/hinten leicht abgeflacht)
-  var torso=new THREE.Mesh(capsuleGeo(0.29,0.2,HSEG),cm);torso.scale.set(1,1,0.72);torso.position.y=0.82;torso.castShadow=true;g.add(torso);
-  // 👗 Kleidungs-Stil (cfg.top): saubere, den Rumpf umhüllende Overlays (kein Clipping/Überlappen)
-  (function(){var top=(cfg.top==null?0:cfg.top);if(!top)return;
-    var acc=CLOTHES[(((cfg.cloth>=0?cfg.cloth:0)+5)%CLOTHES.length)],dark=new THREE.Color(bodyHex).multiplyScalar(0.66).getHex(),white=0xf4f4f8;
-    // Hülle, die knapp AUSSEN um den Rumpf sitzt (Rumpf: r=0.29, z-scale 0.72) -> nie im Körper, nie schwebend
-    function shell(cylH,y,mat){var m=new THREE.Mesh(capsuleGeo(0.302,cylH,HSEG),mat);m.scale.set(1.02,1,0.75);m.position.y=y;m.castShadow=true;g.add(m);return m;}
-    function button(y){var b=new THREE.Mesh(new THREE.SphereGeometry(0.021,8,8),smat(0x2b2b32));b.scale.set(1,1,0.5);b.position.set(0,y,0.222);g.add(b);}
-    function vneck(y,col){var v=new THREE.Mesh(new THREE.ConeGeometry(0.12,0.24,3),col);v.rotation.x=Math.PI;v.scale.set(1,1,0.28);v.position.set(0,y,0.208);g.add(v);} // Shirt-Dreieck im Ausschnitt
-    if(top===1){        // 🦺 Weste über dem Shirt
-      shell(0.10,0.86,smat(dark));vneck(0.98,cm);button(0.86);button(0.77);
-    }else if(top===2){  // 🧥 Jacke mit Kragen
-      shell(0.13,0.86,smat(acc));vneck(1.0,cm);
-      [-1,1].forEach(function(s){var lap=new THREE.Mesh(new THREE.BoxGeometry(0.08,0.17,0.03),smat(new THREE.Color(acc).multiplyScalar(0.78).getHex()));lap.position.set(s*0.075,1.0,0.216);lap.rotation.z=s*0.5;g.add(lap);});
-      button(0.9);button(0.8);button(0.7);
-    }else if(top===3){  // Streifen direkt auf dem Shirt, ohne zusätzliche Körperhüllen.
-      var stripeMat=smat(0xffffff,bodyHex,0.06);stripeMat.map=pawnStripeMap(bodyHex,acc);torso.material=stripeMat;
-    }else if(top===4){  // 👖 Latzhose: Bib + Träger über die Schultern + Clips
-      var bib=new THREE.Mesh(new THREE.BoxGeometry(0.23,0.3,0.05),pants);bib.scale.set(1,1,1);bib.position.set(0,0.78,0.208);g.add(bib);
-      [-1,1].forEach(function(s){var str=new THREE.Mesh(new THREE.BoxGeometry(0.055,0.44,0.05),pants);str.position.set(s*0.095,0.98,0.19);str.rotation.x=-0.22;g.add(str);
-        var clip=new THREE.Mesh(new THREE.SphereGeometry(0.028,8,8),smat(0xd7d7de));clip.scale.set(1,1,0.6);clip.position.set(s*0.095,0.9,0.23);g.add(clip);});
-    }else if(top===5){  // 🧣 Schal um den Hals + zwei hängende Enden
-      var neck=new THREE.Mesh(new THREE.TorusGeometry(0.155,0.052,8,20),smat(acc));neck.rotation.x=Math.PI/2;neck.scale.set(1,0.82,1);neck.position.set(0,1.06,0.015);g.add(neck);
-      [[-0.05,0.185,0.9],[0.055,0.2,1.0]].forEach(function(e){var en=new THREE.Mesh(new THREE.BoxGeometry(0.085,0.24,0.05),smat(acc));en.position.set(e[0],e[2]-0.15,e[1]);en.rotation.z=e[0]*1.3;g.add(en);});
-    }else if(top===6){  // 🧥 Hoodie: farbiger Pulli + Kapuze hinten + Bauchtasche + Kordeln
-      shell(0.12,0.86,smat(dark));
-      var hood=new THREE.Mesh(new THREE.SphereGeometry(0.2,HSEG,10,0,6.283,1.35,1.25),smat(dark));hood.scale.set(1.12,1,0.92);hood.position.set(0,1.12,-0.12);g.add(hood);
-      var pk=new THREE.Mesh(new THREE.BoxGeometry(0.24,0.12,0.05),smat(new THREE.Color(dark).multiplyScalar(0.86).getHex()));pk.position.set(0,0.7,0.216);g.add(pk);
-      [-1,1].forEach(function(s){var cd=new THREE.Mesh(new THREE.CylinderGeometry(0.012,0.012,0.16,5),smat(white));cd.position.set(s*0.05,0.98,0.212);g.add(cd);});
-    }else if(top===7){  // ⚪ Punkte-Muster (folgt der Rundung)
-      var dm=smat(white);for(var ry=0;ry<3;ry++)for(var cc2=0;cc2<3;cc2++){var a2=(cc2-1)*0.55,dx=Math.sin(a2)*0.235,dz=Math.cos(a2)*0.215;var dt=new THREE.Mesh(new THREE.SphereGeometry(0.027,8,8),dm);dt.scale.set(1,1,0.5);dt.position.set(dx,0.72+ry*0.13,dz);g.add(dt);}
-    }
-  })();
-  var belt=new THREE.Mesh(new THREE.CylinderGeometry(0.285,0.285,0.1,HSEG),smat(0x4a3a28));belt.scale.set(1,1,0.72);belt.position.y=0.56;g.add(belt);
-  if(cfg.g==="f"&&(cfg.outfit==null||cfg.outfit!==2)){ // 👗 Outfit: 0/none=Rock · 1=langes Kleid · 2=Hose (kein Rock)
-    var isDress=(cfg.outfit===1);
-    var skHex=new THREE.Color(bodyHex).multiplyScalar(0.82).getHex(); // Rock/Kleid folgt der Kleiderfarbe
-    var skirt=new THREE.Mesh(new THREE.ConeGeometry(isDress?0.5:0.46,isDress?0.82:0.52,HSEG),smat(skHex,bodyHex,0.06));
-    skirt.position.y=isDress?0.58:0.44;skirt.castShadow=true;g.add(skirt);}
-  var la=limb(0.092,0.5,-0.33,1.04,skin),ra=limb(0.092,0.5,0.33,1.04,skin);
-  // 👕 Menschliche Schultern: flache Schulterkappe + kurzer Ärmel statt dicker Kugel
-  [la,ra].forEach(function(ap4){
-    var cap=new THREE.Mesh(new THREE.SphereGeometry(0.105,LSEG,LSEG),cm);cap.scale.set(0.92,0.6,0.92);cap.position.y=0.0;ap4.add(cap);
-    var sleeve=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.107,0.15,LSEG),cm);sleeve.position.y=-0.1;ap4.add(sleeve);
-  });
-  // Hände (weiche Haut-Kugeln an den Arm-Enden)
-  [la,ra].forEach(function(ap3){var hand=new THREE.Mesh(new THREE.SphereGeometry(0.105,LSEG,LSEG),skin);
-    hand.position.y=-0.5;ap3.add(hand);});
-  // 🧑 Menschlicher Kopf statt Kugel: ovaler Schädel + Wangen/Kiefer-Partie mit Kinn + Ohren
-  var head=new THREE.Mesh(new THREE.SphereGeometry(0.31,HSEG,HSEG),skin);head.position.y=1.4;head.scale.set(0.94,1.06,0.92);head.castShadow=true;g.add(head);
-  var jaw=new THREE.Mesh(new THREE.SphereGeometry(0.27,HSEG,HSEG),skin);jaw.scale.set(0.86,0.8,0.88);jaw.position.set(0,1.26,0.015);jaw.castShadow=true;g.add(jaw); // Unterkiefer/Wangen (verjüngt nach unten)
-  var chin=new THREE.Mesh(new THREE.SphereGeometry(0.085,LSEG,LSEG),skin);chin.scale.set(1.25,0.75,0.9);chin.position.set(0,1.155,0.12);g.add(chin); // Kinn
-  [-1,1].forEach(function(es){var ear=new THREE.Mesh(new THREE.SphereGeometry(0.075,LSEG,LSEG),skin);ear.scale.set(0.45,0.95,0.65);ear.position.set(es*0.283,1.395,-0.01);g.add(ear);
-    var earIn=new THREE.Mesh(new THREE.SphereGeometry(0.04,8,8),smat(new THREE.Color(SKINTONES[cfg.skin%SKINTONES.length]).multiplyScalar(0.88).getHex()));earIn.scale.set(0.4,0.8,0.6);earIn.position.set(es*0.297,1.39,0.0);g.add(earIn);}); // Ohren + Ohrmuschel
-  var coveredHair=cfg.style===0||cfg.style===3||cfg.style===7;
-  if(cfg.style===0){ // 🧢 Basecap (Team-Farbe)
-    var cap=new THREE.Mesh(new THREE.SphereGeometry(0.325,HSEG,12,0,6.283,0,1.25),cm);cap.position.y=1.45;g.add(cap);
-    var schirm=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.05,HSEG,1,false,0,Math.PI),cm);
-    schirm.rotation.y=-Math.PI/2;schirm.position.set(0,1.5,0.2);g.add(schirm);}
-  else if(cfg.style===7){ // 🧶 Wollmütze bedeckt das Haar (Haarfarbe = Bommel)
-    var beanie=new THREE.Mesh(new THREE.SphereGeometry(0.34,HSEG,14,0,6.283,0,1.55),smat(pantsHex,pantsHex,0.1));beanie.position.y=1.42;g.add(beanie);
-    var brim2=new THREE.Mesh(new THREE.TorusGeometry(0.32,0.055,10,HSEG),smat(new THREE.Color(pantsHex).multiplyScalar(0.8).getHex()));brim2.rotation.x=Math.PI/2;brim2.position.y=1.33;g.add(brim2);
-    var bommel=new THREE.Mesh(new THREE.SphereGeometry(0.09,LSEG,LSEG),hair);bommel.position.y=1.75;g.add(bommel);}
-  else{ // Haar-Deckel (weiche Halbkugel), wenn keine Kappe/Mütze
-    var hairTop=new THREE.Mesh(new THREE.SphereGeometry(0.325,HSEG,14,0,6.283,0,1.3),hair);hairTop.position.y=1.43;g.add(hairTop);}
-  if(cfg.style===4){ // 👑 Krone (Gold mit Zacken + Edelsteinen)
-    var crown=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.28,0.12,HSEG),smat(0xffd54a,0xd9a520,0.55));crown.position.y=1.64;g.add(crown);
-    for(var ck=0;ck<7;ck++){var a2=ck/7*6.283,spk=new THREE.Mesh(new THREE.ConeGeometry(0.05,0.13,8),smat(0xffd54a,0xd9a520,0.55));
-      spk.position.set(Math.cos(a2)*0.26,1.75,Math.sin(a2)*0.26);g.add(spk);
-      var gem=new THREE.Mesh(new THREE.SphereGeometry(0.03,LSEG,LSEG),smat([0xff5a7a,0x5affa0,0x5a9aff][ck%3],0,0.6));gem.position.set(Math.cos(a2)*0.28,1.66,Math.sin(a2)*0.28);g.add(gem);}}
-  if(cfg.style===5){ // 🎧 Kopfhörer (Bügel + zwei Ohrmuscheln in Team-Farbe)
-    var band3=new THREE.Mesh(new THREE.TorusGeometry(0.31,0.036,8,HSEG,Math.PI),smat(0x2a2e38));band3.rotation.z=Math.PI;band3.position.y=1.5;g.add(band3);
-    [[-0.31],[0.31]].forEach(function(ep){var cup=new THREE.Mesh(capsuleGeo(0.1,0.02,LSEG),cm);
-      cup.rotation.z=Math.PI/2;cup.position.set(ep[0],1.4,0);g.add(cup);});}
-  if(cfg.style===6){ // 🕶️ Sonnenbrille (runde dunkle Gläser)
-    var sm=smat(0x14161e,0x000000,0.2);
-    [[-0.115],[0.115]].forEach(function(sp2){var lens=new THREE.Mesh(new THREE.SphereGeometry(0.088,LSEG,LSEG),sm);lens.scale.set(1,0.82,0.4);lens.position.set(sp2[0],1.42,0.265);g.add(lens);});
-    var sbr=new THREE.Mesh(new THREE.CylinderGeometry(0.014,0.014,0.11,8),sm);sbr.rotation.z=Math.PI/2;sbr.position.set(0,1.44,0.28);g.add(sbr);}
-  if(cfg.style===8){ // 🎀 Schleife (seitlich, Team-Farbe)
-    var kx=cfg.g==="f"?0.3:0.24;
-    [[-0.07,kx],[0.07,kx]].forEach(function(bp){var lp5=new THREE.Mesh(new THREE.SphereGeometry(0.075,LSEG,LSEG),cm);lp5.scale.set(1,0.62,0.55);lp5.position.set(kx+bp[0],1.5,0.05);g.add(lp5);});
-    var knot=new THREE.Mesh(new THREE.SphereGeometry(0.045,LSEG,LSEG),smat(new THREE.Color(color).multiplyScalar(0.8).getHex()));knot.position.set(kx,1.5,0.06);g.add(knot);}
-  if(cfg.style===1){ // 🌸 Blumenkranz
-    var kranz=new THREE.Mesh(new THREE.TorusGeometry(0.28,0.05,8,HSEG),smat(0x4a8a3a,0x2a5a20,0.15));
-    kranz.rotation.x=Math.PI/2;kranz.position.y=1.6;g.add(kranz);
-    [0xff9ab8,0xffd166,0xffffff,0xff9ab8,0xffd166].forEach(function(fc,fi){var a=fi/5*6.283;
-      var fl=new THREE.Mesh(new THREE.SphereGeometry(0.06,LSEG,LSEG),smat(fc,fc,0.35));
-      fl.position.set(Math.cos(a)*0.28,1.61,Math.sin(a)*0.28);g.add(fl);});}
-  if(cfg.style===2){ // 👓 Brille (runde Fassung)
-    var gm=smat(0x2a3040,0x000000,0);
-    [[-0.11],[0.11]].forEach(function(gp2){var ring=new THREE.Mesh(new THREE.TorusGeometry(0.085,0.022,8,16),gm);
-      ring.position.set(gp2[0],1.42,0.265);g.add(ring);});
-    var bridge=new THREE.Mesh(new THREE.CylinderGeometry(0.013,0.013,0.09,6),gm);bridge.rotation.z=Math.PI/2;bridge.position.set(0,1.43,0.28);g.add(bridge);}
-  if(cfg.style===3){ // 🎩 Hut (braun mit Team-Band, runde Krempe)
-    var hm=smat(0x6a4a2a,0x2a1a0a,0.08);
-    var brim=new THREE.Mesh(new THREE.CylinderGeometry(0.43,0.43,0.05,HSEG),hm);brim.position.y=1.56;g.add(brim);
-    var top=new THREE.Mesh(new THREE.CylinderGeometry(0.24,0.27,0.32,HSEG),hm);top.position.y=1.74;g.add(top);
-    var band=new THREE.Mesh(new THREE.CylinderGeometry(0.275,0.28,0.09,HSEG),cm);band.position.y=1.63;g.add(band);}
-  if(cfg.g==="f"){ // 💇 Frisur (cfg.hstyle): 0 Zöpfe · 1 Pferdeschwanz · 2 lange offene Haare · 3 Bob · 4 Dutt
-    var hst=(cfg.hstyle==null?0:cfg.hstyle);
-    if(hst===1){ // Pferdeschwanz
-      var back1=new THREE.Mesh(new THREE.SphereGeometry(0.24,HSEG,12),hair);back1.scale.set(1,0.66,0.6);back1.position.set(0,1.44,-0.1);g.add(back1);
-      var pt=new THREE.Mesh(new THREE.SphereGeometry(0.12,LSEG,LSEG),hair);pt.scale.set(0.85,2.1,0.85);pt.position.set(0,1.22,-0.24);g.add(pt);
-      var tie=new THREE.Mesh(new THREE.SphereGeometry(0.055,LSEG,LSEG),cm);tie.position.set(0,1.5,-0.19);g.add(tie);
-    }else if(hst===2){ // lange offene Haare
-      var lo=new THREE.Mesh(new THREE.SphereGeometry(0.31,HSEG,14),hair);lo.scale.set(1.03,1.2,0.72);lo.position.set(0,1.14,-0.13);g.add(lo);
-    }else if(hst===3){ // Bob (kurz, rund)
-      var bob=new THREE.Mesh(new THREE.SphereGeometry(0.3,HSEG,12),hair);bob.scale.set(1.06,0.92,0.95);bob.position.set(0,1.4,-0.05);g.add(bob);
-    }else if(hst===4&&!coveredHair){ // Dutt ohne Kopfbedeckung
-      var bb=new THREE.Mesh(new THREE.SphereGeometry(0.26,HSEG,12),hair);bb.scale.set(1,0.6,0.62);bb.position.set(0,1.44,-0.08);g.add(bb);
-      var bun=new THREE.Mesh(new THREE.SphereGeometry(0.135,LSEG,LSEG),hair);bun.position.set(0,1.73,-0.01);g.add(bun);
-      var bt=new THREE.Mesh(new THREE.TorusGeometry(0.09,0.02,6,12),cm);bt.position.set(0,1.73,-0.01);g.add(bt);
-    }else if(hst===4){
-      var tucked=new THREE.Mesh(new THREE.SphereGeometry(0.25,HSEG,12),hair);tucked.scale.set(1,.6,.62);tucked.position.set(0,1.40,-.1);g.add(tucked);
-    }else{ // 0: Zöpfe seitlich + langes Haar hinten
-      [[-0.31],[0.31]].forEach(function(zp){var z1=new THREE.Mesh(new THREE.SphereGeometry(0.11,LSEG,LSEG),hair);
-        z1.position.set(zp[0],1.34,-0.05);z1.scale.set(0.92,1.5,0.92);g.add(z1);
-        var tie=new THREE.Mesh(new THREE.SphereGeometry(0.05,LSEG,LSEG),cm);tie.position.set(zp[0],1.45,-0.04);g.add(tie);});
-      var lang=new THREE.Mesh(new THREE.SphereGeometry(0.25,HSEG,14),hair);lang.scale.set(0.92,0.82,0.6);lang.position.set(0,1.33,-0.15);g.add(lang);}
-  }
-  else{var backhair=new THREE.Mesh(new THREE.SphereGeometry(0.27,HSEG,12),hair);backhair.scale.set(1,0.66,0.6);backhair.position.set(0,1.44,-0.1);g.add(backhair);}
-  // 🙂 freundlicher Lächel-Mund: weicher, glatter Bogen + zarte Unterlippe + Mundwinkel-Grübchen (crisp)
-  var mouth=new THREE.Mesh(new THREE.TorusGeometry(0.053,0.016,10,26,Math.PI),new THREE.MeshBasicMaterial({color:0xc85a52}));
-  mouth.rotation.z=Math.PI;mouth.scale.set(1.18,0.92,0.6);mouth.position.set(0,1.352,0.30);mouth.userData.noOutline=true;g.add(mouth);
-  var lip=new THREE.Mesh(new THREE.SphereGeometry(0.042,10,8),new THREE.MeshBasicMaterial({color:0xe38079}));
-  lip.scale.set(1.15,0.4,0.4);lip.position.set(0,1.338,0.305);lip.userData.noOutline=true;g.add(lip);
-  [-1,1].forEach(function(s){var dp=new THREE.Mesh(new THREE.SphereGeometry(0.013,6,6),new THREE.MeshBasicMaterial({color:0xff9fa0,transparent:true,opacity:0.5}));dp.position.set(s*0.064,1.352,0.30);dp.userData.noOutline=true;g.add(dp);});
-  // winziges, dezentes Näschen (Chibi: klein, kein Blob)
-  var nose=new THREE.Mesh(new THREE.SphereGeometry(0.022,LSEG,LSEG),smat(new THREE.Color(SKINTONES[cfg.skin%SKINTONES.length]).multiplyScalar(0.94).getHex()));
-  nose.scale.set(1,0.82,0.7);nose.position.set(0,1.402,0.305);nose.userData.noOutline=true;g.add(nose);
-  // weiche Stirn-Haarlinie (Pony-Ansatz), sanft über der Stirn
-  if(!coveredHair){var fringe=new THREE.Mesh(new THREE.SphereGeometry(cfg.g==="f"?0.3:0.285,HSEG,12),hair);fringe.scale.set(1,0.4,0.5);fringe.position.set(0,1.55,0.15);g.add(fringe);}
-  // ===== Anime-Haar: sauber & stimmig (Frau: weiche Seiten-Strähnen + gescheitelter Pony · Mann: ordentlich kurz) =====
-  if(cfg.g==="f"){
-    // weiche Seiten-Strähnen (etwas kürzer/runder, leicht nach aussen -> rahmt das Gesicht freundlich)
-    if((cfg.hstyle|0)!==3&&(cfg.hstyle|0)!==4)[-1,1].forEach(function(sd){var lock=new THREE.Mesh(new THREE.ConeGeometry(0.115,0.4,LSEG),hair);
-      lock.position.set(sd*0.285,1.26,-0.02);lock.rotation.z=sd*0.16;lock.scale.set(1,1,0.6);g.add(lock);});
-    // sanft in der Mitte gescheitelter Pony (Spitzen leicht nach aussen)
-    if(!coveredHair)[-0.16,-0.055,0.055,0.16].forEach(function(bx){var bang=new THREE.Mesh(new THREE.ConeGeometry(0.07,0.2,LSEG),hair);
-      bang.rotation.x=Math.PI;bang.rotation.z=bx*0.9;bang.position.set(bx,1.56,0.185);bang.scale.set(1,1,0.5);g.add(bang);});
-  }else{
-    // Mann: ordentlich kurz — weiche Stirnfransen (leicht seitlich gescheitelt) statt wilder Stacheln
-    if(!coveredHair){[-0.17,-0.06,0.06,0.17].forEach(function(bx){var tuft=new THREE.Mesh(new THREE.ConeGeometry(0.078,0.17,LSEG),hair);
-      tuft.rotation.x=Math.PI-0.35;tuft.rotation.z=bx*0.7;tuft.position.set(bx,1.55,0.17);tuft.scale.set(1,1,0.55);g.add(tuft);});
-    // dezente weiche Tolle in der Mitte (etwas Volumen oben, kein Stachel-Igel)
-    var quiff=new THREE.Mesh(new THREE.SphereGeometry(0.13,HSEG,12),hair);quiff.scale.set(1,0.5,0.72);quiff.position.set(0,1.62,0.05);g.add(quiff);}
-  }
-  g.userData.head=head;g.userData.mouth=mouth;g.userData.cfg=cfg;
-  // ===== Grosse Anime-Augen: Weisses + grosse Iris + Iris-Schatten + Pupille + Glanzlichter + Lidlinie =====
-  // (Frau grösser/runder mit Wimpern-Betonung, Mann etwas kleiner/schmaler). Als Group -> Blinzeln = scale.y.
-  function eb(c){return new THREE.MeshBasicMaterial({color:c});}
-  var irisHex=EYECOLORS[(cfg.style+cfg.skin+(cfg.g==="m"?1:0))%EYECOLORS.length];
-  var big=cfg.g==="f";
-  function mkEye(sx){
-    var eg=new THREE.Group();eg.position.set(sx*.118,1.435,0);eg.userData.noOutline=true;
-    var ww=big?.092:.082,hh=big?.112:.100;
-    var geo=new THREE.PlaneGeometry(ww*2,hh*2,8,8),pos=geo.attributes.position;
-    for(var ei=0;ei<pos.count;ei++){
-      var ex=pos.getX(ei)+sx*.118,ey=pos.getY(ei)+.035;
-      pos.setZ(ei,.31*.92*Math.sqrt(Math.max(.05,1-ex*ex/(.31*.94*.31*.94)-ey*ey/(.31*1.06*.31*1.06)))+.014);
-    }
-    geo.computeVertexNormals();var eye=new THREE.Mesh(geo,pawnEyeMaterial(irisHex,big));eye.userData.noOutline=true;eg.add(eye);
-    return eg;
-  }
-  g.userData.eyes=[];
-  [-1,1].forEach(function(sx){var ey=mkEye(sx);g.add(ey);g.userData.eyes.push(ey);});
-  g.userData.eyeOpen=1;
-  // 🌸 dezente Wangen-Röte (Chibi-Charme) — weiche transparente Pastell-Ovale
-  [-1,1].forEach(function(cs){var blush=new THREE.Mesh(new THREE.SphereGeometry(0.045,LSEG,LSEG),
-    new THREE.MeshBasicMaterial({color:0xff9fb0,transparent:true,opacity:0.45}));
-    blush.scale.set(1.25,0.82,0.28);blush.position.set(cs*0.205,1.372,0.236);blush.userData.noOutline=true;g.add(blush);});
-  // Augenbrauen (Frau: dünn/geschwungen · Mann: kräftiger/gerader)
-  [[-0.118,-1],[0.118,1]].forEach(function(bp2){var brow=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),eb(0x4a3a30));
-    brow.scale.set(big?0.07:0.088,big?0.015:0.02,0.03);brow.position.set(bp2[0],1.53,0.255);
-    brow.rotation.z=bp2[1]*(big?0.16:0.06);brow.userData.noOutline=true;g.add(brow);});
-  g.userData.blinkT=1+Math.random()*3;
-  g.userData.limbs={ll:ll,rl:rl,la:la,ra:ra};g.userData.walk=0;
-  // Anime-Kontur: dunkler Inverted-Hull-Umriss in Team-Farbe (VOR dem Bündeln -> Outline-Kinder wandern mit)
-  addOutline(g,color);
-  // ===== Altern (Pass B3): Kopf-Cluster in ein Pivot bündeln, damit „grosser Kopf" (Kind) sauber mitskaliert =====
-  // Auch Groups (die neuen Augen-Gruppen) bündeln, damit Augen mit Kopf skalieren/nicken/beugen.
-  var HEADY=1.3,hg=new THREE.Group();hg.position.set(0,HEADY,0);
-  var kids=g.children.slice();
-  for(var hi=0;hi<kids.length;hi++){var ch2=kids[hi];if((ch2.isMesh||ch2.isGroup)&&ch2!==hg&&ch2.position.y>=1.15){ch2.position.y-=HEADY;hg.add(ch2);}}
-  g.add(hg);
-  g.userData.headGroup=hg;g.userData.hairMat=hair;g.userData.hairBaseHex=hairHex;
-  g.userData.ageScale=1;g.userData.ageScaleT=1;g.userData.headScale=1;g.userData.headScaleT=1;g.userData.headStoop=0;g.userData.headStoopT=0;
-  // 🧍 Menschlichere Proportionen: kleinerer Kopf + schlankerer, längerer Körper.
-  // Basis-Faktoren wandern in userData, damit animLife/agePawn sie NICHT überschreiben, sondern mitführen.
-  var HEADB=0.82,TALLY=1.1,SLIMX=0.96;
-  hg.scale.setScalar(HEADB);
-  g.userData.headBase=HEADB;g.userData.tallY=TALLY;g.userData.slimX=SLIMX;
-  g.scale.set(SLIMX,TALLY,SLIMX);
-  return g;}
+  return LPCharacterArt(THREE,color,cfg,{skin:SKINTONES,hair:HAIRS,pants:PANTS,clothes:CLOTHES,eyes:EYECOLORS},IS_COARSE);
+}
 // Lebensalter aus Kapitel: 0 Kind (Kap.1) · 1 Teen (Kap.2–3) · 2 Erwachsen (Kap.4–6) · 3 Senior (Kap.7–8)
 function ageStage(ch){return ch<=0?0:(ch<=2?1:(ch<=5?2:3));}
 var AGE_BODY=[0.74,0.9,1.0,0.96],AGE_HEAD=[1.34,1.14,1.0,1.02],AGE_STOOP=[0,0,0,0.22],AGE_NAME=["Kind","Teenager","Erwachsen","Senior"];
@@ -1456,8 +1250,8 @@ function agePawn(i,animated){
   pw.userData.ageStage=st;
   pw.userData.ageScaleT=AGE_BODY[st];pw.userData.headScaleT=AGE_HEAD[st];pw.userData.headStoopT=AGE_STOOP[st];
   if(pw.userData.meshy){pw.userData.ageScaleT=1.05;pw.userData.headScaleT=1;pw.userData.headStoopT=0;} // Meshy-Figuren bleiben ihre Groesse (nicht zu Kind schrumpfen)
-  if(pw.userData.hairMat){pw.userData.hairMat.color.setHex(pw.userData.hairBaseHex); // Senior: Haare ergrauen/weiss
-    if(st===3)pw.userData.hairMat.color.lerp(new THREE.Color(0xeceff2),0.72);}
+  if(pw.userData.hairMat){pw.userData.hairMat.color.setHex(pw.userData.hairBaseHex);if(pw.userData.characterArt)pw.userData.hairMat.color.convertSRGBToLinear(); // Senior: Haare ergrauen/weiss
+    if(st===3){var grey=new THREE.Color(0xeceff2);if(pw.userData.characterArt)grey.convertSRGBToLinear();pw.userData.hairMat.color.lerp(grey,0.72);}}
   pw.userData.eyeOpen=(st===3)?0.84:1; // Senior: Augen sanfter/schmaler
   if(!animated||prev===undefined){ // Sofort setzen (Spielstart / Debug), keine Feier
     pw.userData.ageScale=AGE_BODY[st];pw.userData.headScale=AGE_HEAD[st];pw.userData.headStoop=AGE_STOOP[st];

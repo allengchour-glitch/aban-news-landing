@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Spiele: auf Besitzerwunsch sichern und pausieren ·16.11.2026
+
+Letzter Auftrag «langsam speichern alles und token sparen». Mix Arena PR3213 und Lebenspfad-Atmosphäre PR3214 sind live/öffentlich geprüft. Neonv4 ist als DraftPR3217 gepusht,66 Node+90 Browserbedingungen bestanden, noch nicht gemergt/live. Neue Lebenspfad-Figur: Besitzer wählte **klein/niedlich, großer Kopf, kompakter Körper, verspielt**. Geometriemodul, lokale HTML-Integration, Portraitprobe und Vorher-/Entwurfbilder sind im Branch `codex/lebenspfad-figur-neu` gesichert; vollständige Bild-/Alters-/Gameplayprüfung fehlt, nicht veröffentlichen. Agenten beendet. Weiterarbeiten anhand `spiele-dev/CLAUDE-SPIELE-AKTUELL.md` und `spiele-dev/lebenspfad/FIGUR-NEU.md`; nichts erneut blind anwenden. Keine neuen Erweiterungen während der Pause.
+
+
 ## Lebenspfad: Atmosphäre und eigene Objekte ·16.11.2026
 
 Besitzerauftrag mit bestehender Live-Freigabe: acht abgestimmte Licht-/Himmelspaletten, korrekt kodierter Nebel, zwei feste Bergzüge und drei selbst modellierte Blender-GLBs. Willkommenstor am Start, Erinnerungsplatz im Familienkapitel, Sternwarte im Lebensabend; sichere Terrainplätze, auch mobil im Bild. Drei Assets zusammen254.156Bytes, fünf Materialien je Modell. Higgsfield-Anschluss hier nicht verfügbar; lokal mit Blender4.3.2 erzeugt, reproduzierbares bpy-Rezept und geprüfter Reimport liegen bei.

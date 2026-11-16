@@ -1,0 +1,64 @@
+{
+  "errors": [],
+  "frontal": {
+    "calls": 60,
+    "triangles": 10316,
+    "size": [
+      0.9084144258499145,
+      2.005055239070952,
+      0.9317760169029236
+    ],
+    "cfg": {
+      "g": "f",
+      "style": 0,
+      "skin": 0,
+      "hair": -1,
+      "pants": 0,
+      "cloth": -1,
+      "hstyle": 0,
+      "outfit": 0,
+      "top": 0
+    }
+  },
+  "dreiviertel": {
+    "calls": 60,
+    "triangles": 10316,
+    "size": [
+      1.223269590356141,
+      2.005055239070952,
+      1.234143980396111
+    ],
+    "cfg": {
+      "g": "f",
+      "style": 0,
+      "skin": 0,
+      "hair": -1,
+      "pants": 0,
+      "cloth": -1,
+      "hstyle": 0,
+      "outfit": 0,
+      "top": 0
+    }
+  },
+  "profil": {
+    "calls": 60,
+    "triangles": 10316,
+    "size": [
+      0.9317760169029238,
+      2.005055239070952,
+      0.9084144258499147
+    ],
+    "cfg": {
+      "g": "f",
+      "style": 0,
+      "skin": 0,
+      "hair": -1,
+      "pants": 0,
+      "cloth": -1,
+      "hstyle": 0,
+      "outfit": 0,
+      "top": 0
+    }
+  },
+  "passed": true
+}
