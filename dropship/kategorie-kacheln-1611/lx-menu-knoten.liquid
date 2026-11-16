@@ -1,0 +1,81 @@
+{%- comment -%}
+  lx-menu-knoten (16.11.2026, Claude): findet die aktuelle Sammlung im Menü auch dann,
+  wenn der Menüeintrag als normaler Link (http_link) auf /collections/<handle> gespeichert ist.
+  Codex' Abschnitte lx-collection-welten und lx-collection-details lasen nur collection_link;
+  34 Übersichtsseiten (Damen, Herren, Geschenke …) bekamen darum keine Kacheln.
+  Ausgabe (eine Zeile, nichts sonst): K=<kind>,<kind>;E=<eltern>;G=<geschwister>,<geschwister>
+  K = Kinder aller Einträge, die auf diese Sammlung zeigen (vereinigt, Menüreihenfolge),
+  E und G = Eltern-Eintrag und dessen Kinder beim ERSTEN Treffer in Menüreihenfolge.
+  Nur Links der Form …/collections/<handle> zählen (kein Unterpfad); Seiten, Blogs, Produkte nicht.
+  Aufruf: capture x; render 'lx-menu-knoten', menu: section.settings.menu, ziel: collection.handle; endcapture
+{%- endcomment -%}
+{%- liquid
+  assign k_liste = ''
+  assign e_handle = ''
+  assign g_liste = ''
+  assign gefunden = false
+  if menu != blank and ziel != blank
+    for a in menu.links
+      assign ah = ''
+      if a.url contains '/collections/'
+        assign rest = a.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+        unless rest contains '/'
+          assign ah = rest | url_decode | downcase
+        endunless
+      endif
+      assign a_kinder = ''
+      for b in a.links
+        if b.url contains '/collections/'
+          assign rest = b.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+          unless rest contains '/'
+            assign bh = rest | url_decode | downcase
+            assign a_kinder = a_kinder | append: bh | append: ','
+          endunless
+        endif
+      endfor
+      if ah != '' and ah == ziel
+        assign k_liste = k_liste | append: a_kinder
+      endif
+      for b in a.links
+        assign bh = ''
+        if b.url contains '/collections/'
+          assign rest = b.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+          unless rest contains '/'
+            assign bh = rest | url_decode | downcase
+          endunless
+        endif
+        assign b_kinder = ''
+        for c in b.links
+          if c.url contains '/collections/'
+            assign rest = c.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+            unless rest contains '/'
+              assign ch = rest | url_decode | downcase
+              assign b_kinder = b_kinder | append: ch | append: ','
+            endunless
+          endif
+        endfor
+        for c in b.links
+          if gefunden == false and c.url contains '/collections/'
+            assign rest = c.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+            unless rest contains '/'
+              assign ch = rest | url_decode | downcase
+              if ch == ziel
+                assign gefunden = true
+                assign e_handle = bh
+                assign g_liste = b_kinder
+              endif
+            endunless
+          endif
+        endfor
+        if bh != '' and bh == ziel
+          assign k_liste = k_liste | append: b_kinder
+          if gefunden == false
+            assign gefunden = true
+            assign e_handle = ah
+            assign g_liste = a_kinder
+          endif
+        endif
+      endfor
+    endfor
+  endif
+-%}K={{ k_liste }};E={{ e_handle }};G={{ g_liste }}
