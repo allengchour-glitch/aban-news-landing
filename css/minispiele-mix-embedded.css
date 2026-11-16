@@ -62,3 +62,13 @@ html.mix-embedded .mix-player-label {
 /* Die Arena hat eigene Navigation und Fußlinks. Nur bei voller Spielhöhe bleibt der Original-Rückweg sichtbar. */
 html.mix-embedded body > footer { display: none; }
 html.mix-embedded.mix-has-bar button.mix-back { visibility: hidden; }
+
+/* Freistehende Hinweise brauchen auf dem dunklen Arenarahmen einen hellen Kontrast. */
+html.mix-embedded[data-mix-game="memory"] #turn,
+html.mix-embedded[data-mix-game="hoch-tief"] :is(#round, #turn),
+html.mix-embedded[data-mix-game="elfmeter"] #hint,
+html.mix-embedded[data-mix-game="simon"] #status,
+html.mix-embedded[data-mix-game="quiz-buzzer"] #status,
+html.mix-embedded[data-mix-game="vier-gewinnt"] .hint {
+  color: #ddd6f3;
+}

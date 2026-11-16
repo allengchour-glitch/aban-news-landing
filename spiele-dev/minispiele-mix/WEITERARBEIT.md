@@ -13,21 +13,22 @@ Besitzer am 16.11.2026: «verbessere mehr alles wie ein komplettes spiel», ansc
 - Reines `MixProgress`: 20XP pro gewerteter Runde plus40 für vollständig gespieltes Match, Level alle100XP, vier Erfolge, Eule abLevel3/Drache abLevel5. Keine Belohnung durch reine Abbrüche, idempotente Match-Abrechnung.
 - Neues Speicherfeld `aban_mix_arena_v2` hält Run, Profil und Einstellungen in einer gemeinsamen Speicherung. Alter `aban_mini_mix_v1` wird beim ersten Laden gelesen und bleibt erhalten.
 - Aktive Runde lässt sich unterbrechen und beginnt danach ungewertet neu; alte Punkte bleiben. Nur eine Disziplin gleichzeitig geladen. Bei verborgenem Tab wird die Runde ebenfalls unterbrochen.
-- Katalog/Einbettung fertig: alle20 Anleitungen, sichere Namenslabels, Klangschalter, Originalstart per Countdown und sanftes Styling. Ein zusätzlicher Agent korrigiert derzeit kurze Querformat-Layouts in einer eigenen CSS-Datei. Keine Spielregeln geändert.
+- Katalog/Einbettung fertig: alle20 Anleitungen, sichere Namenslabels, Klangschalter, Originalstart per Countdown und sanftes Styling. Neun kurze Querformat-Layouts sind in einer eigenen CSS-Datei korrigiert und mit echten Touch-/Randfeld-Aktionen geprüft. Keine Spielregeln geändert.
 
-## Nächste Schritte
+## Abgeschlossene Prüfung und nächster Schritt
 
-1. Ergebnis des Einbettungs-Agenten integrieren, Simon-Klang an Arena-Schalter koppeln, Hashreferenzen erneuern.
-2. Echte Eingaben für mindestens drei aufeinanderfolgende Disziplinen; Profil/Reload/Revanche/Unterbrechen/Fehlerpfade prüfen. Alle20 eingebetteten Seiten laden und mobile Darstellung untersuchen.
-3. Bestehende Originalabschluss-Prüfungen erhalten. Neue Regeln/Spielstände/Abrechnung mit Gegenproben testen. HTML-/Diffprüfung und verlangte CI-Simulation durchführen.
-4. README, Memory und Übergabe aktualisieren; gezielt stagen, Draft-PR, sechs echte CI-Prüfungen, exakten geprüften Head mergen, Hauptseiten-Deploy und öffentliche Quellen/Assets prüfen.
+GEMESSEN:194/194 Node-Prüfungen,24/24 Arena-Browserbedingungen mit drei echten Ergebnissen,139/139 Einbettungsbedingungen in zwei Touchformaten,7/7 Fehler-/Wiederherstellungsbedingungen und17/17 Arcade-Bedingungen grün. Finale zeigt100XP, Level2 und Erstabschluss; Wiederaufruf gibt keine zweite Belohnung. Neun zuvor abgeschnittene Querformat-Bretter/Aktionsflächen passen jetzt in640×360 und nehmen echte Randfeld-/Touch-Eingaben an. Die Bilder wurden gesichtet. Kein vollständiger20-Partien- oder physischer Handy-FPS-Test.
 
-## Bisherige Messung
+Kleine Rohbelege und drei Screenshots in `belege-arena/`. Vorschau Port8184, Playwright `/tmp/aban-games-audit/node_modules/playwright`, Chromium `/tmp/aban-browsers/chromium-1255/chrome-linux64/chrome`. Lokale Gesamt-CI stoppt vor Start an schreibgeschütztem `/home/agent`; echte GitHub-Prüfungen erforderlich. Öffentlicher Prüfer erwartet42 normale TLS-Abrufe für22 Seiten, zwei Aliasse und neun versionierte/unversionierte Assets.
 
-194/194 Node-Prüfungen,24/24 Arena-Browserbedingungen mit drei echten Ergebnissen und121/121 Einbettungsbedingungen in zwei Touchformaten grün. Visuell bestätigter Restfehler: mehrere Brettspiele ragen im640×360-Querformat unter den Bildrand, obwohl Rückkehr/Scrolling funktionieren. Korrektur läuft; danach neu messen. Index-HTML gültig. Vorschau: Port8184 mit `spiele-dev/neon-flug/server.cjs`. Playwright unter `/tmp/aban-games-audit/node_modules/playwright`, Chromium `/tmp/aban-browsers/chromium-1255/chrome-linux64/chrome`.
+Nächster Schritt: frisch gelesene Traumhaus-Änderungen aus main unverändert übernehmen; Draft-PR, sechs echte CI-Prüfungen, exakt geprüften Head mergen, Hauptseiten-Deploy und öffentliche Quellen/Assets prüfen. Erst nach deren Erfolg als live melden.
 
 Vorherige Runde: öffentliches Chromium vertraute dem Umgebungsproxy-Zertifikat nicht, während normales System-Curl TLS verifiziert. TLS nicht ausschalten; öffentlichen Browsernachweis nur behaupten, wenn tatsächlich erfolgreich.
 
 ## Folgeauftrag Lebenspfad
 
 Besitzer: «lebenspfad mit higgsfield und co verb.», bestätigt mit «ja». Parallel eigener Worktree `/workspace/aban-lebenspfad-atmosphaere`, Branch `codex/lebenspfad-atmosphaere`. Direkter Higgsfield/3D-Jutsu-Anschluss trotz Toolsuche nicht verfügbar; lokales Blender vorhanden. Agent arbeitet an tatsächlicher Web-3D-Licht-/Atmosphärenverbesserung und dokumentiert in `spiele-dev/lebenspfad/ATMOSPHAERE.md`. Keine Higgsfield-Ausführung oder bezahlte Generierung behaupten. Arena zuerst fertigstellen und veröffentlichen, danach Lebenspfad übernehmen.
+
+## Folgeauftrag Neon Flug
+
+Besitzer: mehr Animation, eingesammelte Ringe entfernen, Belohnungen, optional Neon-Schießen und ausdrücklich «hoch runter auch». Eigener Worktree `/workspace/aban-neon-flug-belohnung`, Branch `codex/neon-flug-ringe-belohnung`. Agent bearbeitet echte zweiachsige Bewegung samt Eingaben/Kollisionen/Koop und beide Renderer, Ringeffekte, vorhandene XP-Abrechnung und separaten Kampfmodus innerhalb derselben Spielkarte. Noch nicht veröffentlicht. Dessen fortlaufender Stand: `spiele-dev/neon-flug/WEITERARBEIT.md`.

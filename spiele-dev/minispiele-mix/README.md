@@ -1,36 +1,54 @@
-# Minispiele-Mix
+# Mix Arena: ein vollständiger Minispiele-Abend
 
-Besitzerentscheidung vom 16.11.2026: «Ein Rundenspiel – mehrere Minispiele nacheinander». `/minispiele/` startet deshalb jetzt einen zusammenhängenden Mix. Die bisherige Sammlung bleibt als aufklappbarer Übungsbereich erreichbar. Die Arcade zeigt vier Hauptkarten; neun weitere Einstiege stehen unter «Weitere Spielwelten & einzelne Disziplinen». Traumhaus-Code und Hauptspiel-Hero sind unverändert.
+Besitzerauftrag vom16.11.2026: «Ein Rundenspiel – mehrere Minispiele nacheinander», danach «verbessere mehr alles wie ein komplettes spiel». Die gemeinsame Arena unter `/minispiele/` verbindet die20 Disziplinen mit eigenen Figuren, Einführung, Rundenkarte, Gesamtwertung, Fortschritt und Revanche. Zwei Personen spielen an einem Gerät. Die einzelne Trainingshalle bleibt aufklappbar; die Arcade behält vier sichtbare Hauptkarten.
 
-## Ablauf
+## Spielablauf
 
-- Zwei Spieler an einem Gerät, Namen frei wählbar. Kein neuer Online-Modus.
-- Drei, fünf oder sieben zufällig gemischte Disziplinen aus zwanzig, ohne Wiederholung im selben Mix.
-- Ein Sieg zählt drei Punkte, ein Remis je einen Punkt. Abbrechen gibt keine Punkte.
-- Einführung → Disziplin → tatsächliches Ergebnis → Zwischenstand → nächste Runde → Gesamtsieger. Die jeweils ursprünglichen Spielernummern bleiben maßgeblich; Farben und Bildschirmseiten unterscheiden sich zwischen den Disziplinen.
-- Der Mix wird ausschließlich im eigenen Speicherfeld `aban_mini_mix_v1` gesichert. Beim Neuladen bleibt die Wertung erhalten; eine unterbrochene Disziplin beginnt ungewertet neu.
-- Eine eingebettete Disziplin läuft gleichzeitig. Danach wird ihr iframe entfernt und damit ihre Ausführung beendet. Ergebnisnachrichten müssen zum aktuellen Fenster, Ursprung, Spiel und einmaligen Rundenschlüssel passen. Doppelte Meldungen zählen nicht erneut.
-- Der kleine Ergebnis-Loader bleibt außerhalb des Mix inaktiv. Einzelspiele und Lebenspfad behalten ihre bisherigen Abschlüsse und Wertungen.
+1. Namen, Figuren und3/5/7 Runden wählen. Die ersten drei Disziplinen enthalten Kopf, Tempo und Geschick; keine Disziplin kommt im selben Match doppelt vor.
+2. Vor jeder Disziplin stehen Ziel, zwei konkrete Tipps und die tatsächlichen P1/P2-Steuerungen. Die Figuren-/Namenkarten bleiben eindeutig, auch wenn Farben oder Seiten innerhalb der ursprünglichen Spiele wechseln.
+3. Ein gemeinsamer Countdown führt direkt in das Originalspiel. Sichere Namenslabels verwenden ausschließlich Text; vorhandene Startknöpfe werden einmal betätigt. Nur ein iframe läuft gleichzeitig.
+4. Sieg gibt3 Punkte, Remis je1 Punkt. Abgeschlossene Originalspiele melden ihre echten Ergebnisse; passende Quelle, Ursprung, Rundenschlüssel und Disziplin sind erforderlich. Doppelte oder alte Meldungen werden verworfen.
+5. Finale mit Pokal/Gleichstand, Aufstellung aller Rundenergebnisse und Arena-XP. Revanche behält Namen, Figuren und Disziplinreihenfolge, setzt die Punkte zurück und erhält eine neue Match-ID.
 
-## Prüfung
+## Unterbrechen und Wiederherstellen
 
-GEMESSEN am lokalen Stand mit Inhaltsversionen aller fünf neuen Assets:
+Die gemeinsame Speicherung `aban_mix_arena_v2` enthält Partie, Geräteprofil und Einstellungen in einem Schreibvorgang. Der bisherige Schlüssel `aban_mini_mix_v1` bleibt erhalten und wird beim ersten Start migriert. Eine laufende Runde beginnt nach Neuladen ungewertet von vorn; fertige Ergebnisse bleiben erhalten.
 
-- **134/134 Node-Prüfungen**: sieben Mix-Regel-/Nachrichtenprüfungen, 105 Originalfunktionsprüfungen der zwanzig Abschlüsse sowie vorhandene Mechanik- und Inventarprüfungen. Die VM-Zugänge setzen definierte Spielstände und führen danach die vollständige ursprüngliche Abschlusslogik aus; sie sind keine Browsernachweise.
-- **17/17 Mix-Browserbedingungen**: echter Drei-gewinnt-Sieg durch Touch, tatsächliches Rhythmusergebnis und tatsächlicher Rennzieleinlauf, Gesamtwertung 6:3, Fortsetzen nach Neuladen, Abbruch ohne Punkte, Runden-Neustart nach Reload und keine JavaScript-Fehler. Nur die Reihenfolge wird als Speicher-Fixture vorgegeben; zwei Zeitspiele verwenden kontrollierte Browserzeit. Kein Ergebnis wird direkt gesetzt.
-- **17/17 Übersichts-Browserbedingungen**: bestehende Direktstarts erreichbar, Traumhaus-Hero erhalten, Regeltexte auffindbar, kein horizontaler Überlauf bei 390×844, 640×360 und 1280×800. Vier Hauptkarten sichtbar, zwanzig Übungslinks aufklappbar.
-- HTML-Validierung von `spiele.html` und `minispiele/index.html` sowie `git diff --check` sauber. Handy-/Desktopbilder angesehen.
-- `https-qa.py` baut die 22 betroffenen HTML-Seiten mit dem echten `inject-engine.mjs`. Vier Gegenproben erkennen geänderte Spiellogik, Zusatzskripte und fehlenden Mix-Loader. Nach Bereitstellung: 34 normale HTTPS-Abrufe für Seiten/Aliasse und bytegenaue Assets mit/ohne Inhaltsversion; Vergleich der Skripte, Styles, CSP und Frame-Regeln.
+Unterbrechen oder ein verborgener Tab entfernen die laufende Disziplin. Das ist ein Neustart der aktuellen Runde, keine Simulation einer angehaltenen Spieluhr. Nur die ausdrücklich gewählte Aktion «Runde auslassen» schreibt einen Abschluss ohne Punkte. Ladefehler bieten Wiederholen und Rückkehr. Bei gesperrtem Speicher läuft das Match im Arbeitsspeicher weiter und meldet die fehlende Sicherung.
 
-Rohbelege liegen unter [belege](belege). Die ersten Browserversuche scheiterten an zu breiten bzw. durch CSS-Großschreibung beeinflussten Testselektoren; die anschließenden vollständigen Läufe sind grün. Die Gesamt-CI-Simulation stoppt vor ihrem Prüflauf, weil `/home/agent` schreibgeschützt ist. Echte GitHub-Prüfungen und öffentliche Bereitstellung werden im zugehörigen PR dokumentiert. Kein physischer Handy-FPS-, öffentlicher Browser- oder Internet-Koop-Nachweis.
+## Arena-Pass und Klänge
+
+- 20 XP pro gewerteter Runde, zusätzlich40 XP für ein Match ohne Auslassen. Alle100 XP steigt das gemeinsame Geräteprofil ein Level auf.
+- Vier Grundfiguren; Eule abLevel3 und Drache abLevel5. Freischaltungen sind kosmetisch.
+- Vier Erfolge: erstes vollständiges Match, zehn verschiedene Disziplinen, sieben Runden ohne Auslassen und höchstens ein Punkt Abstand im Finale.
+- Ein Match wird einmal abgerechnet; die jüngsten100 Match-IDs werden zur Wiederholungsabwehr gehalten. Keine serverseitig gesicherten Konten oder manipulationssichere Rangliste behauptet.
+- Kurze synthetische Spielklänge sind abschaltbar und zunächst aus. Auch die vorhandenen Simon-Töne folgen im Mix dem Schalter; Einzelspiel/Lebenspfad bleiben unverändert. Kein Musikdownload und keine neuen Hintergrund-Audioschleifen.
+
+## Gestaltung und Einbettung
+
+Eigene leichte SVG-Arena statt großer Hintergrundvideos. Gemeinsame dunkle Rahmen, ausreichend große Bedienelemente, Figurenwahl und ruhige Übergänge; reduzierte Bewegung wird respektiert. Bilder und Systemschriften benötigen keine externen Dienste.
+
+Die eingebettete Ergebnisbrücke bleibt außerhalb gültiger Mix-Runden vollständig DOM-passiv. Originalfarben und Spiellogik bleiben erhalten. Der doppelte Zurückknopf ist nur verborgen, wenn die Shell selbst Unterbrechen anbietet; bei kurzem Querformat bleibt der echte Kind-Rückweg sichtbar. Doppelte Fußlinks entfallen im iframe, sie stehen im Arenamenü. Freistehende Hinweise haben auf dem dunklen Rahmen hellen Kontrast.
+
+Die visuelle Prüfung zeigte zunächst abgeschnittene Brett-/Aktionsflächen bei640×360. Das eigene [Querformat-Stylesheet](../../css/minispiele-mix-landscape.css) ordnet neun Disziplinen gezielt nebeneinander an. Canvas-Größen bleiben an die Original-Resize-Handler gekoppelt. Details und gemessene Grenzen in [landscape-notes.md](landscape-notes.md).
+
+## Reproduzieren und Nachweise
 
 ```bash
 node --test spiele-dev/minispiele-mix/*.test.cjs spiele-dev/minispiele-identitaet/mechanik.test.cjs spiele-dev/arcade-einzigartig/inventar-test.cjs
-PORT=8183 node spiele-dev/neon-flug/server.cjs
-MIX_BASE=http://127.0.0.1:8183 node spiele-dev/minispiele-mix/browser.cjs
+PORT=8184 node spiele-dev/neon-flug/server.cjs
+node spiele-dev/minispiele-mix/arena-browser.cjs
+node spiele-dev/minispiele-mix/embedded-browser.cjs
+node spiele-dev/minispiele-mix/recovery-browser.cjs
 MIX_PREFLIGHT=1 RELEASE_COMMIT=local python3 spiele-dev/minispiele-mix/https-qa.py
 # Nach erfolgreichem Hauptseiten-Deploy:
-RELEASE_COMMIT=<Merge-Commit> python3 spiele-dev/minispiele-mix/https-qa.py
+RELEASE_COMMIT=<Deploy-Commit> python3 spiele-dev/minispiele-mix/https-qa.py
 ```
 
-Playwright/Chromium werden aus der vorhandenen Prüfumgebung verwendet. `PLAYWRIGHT_MODULE`, `MIX_BASE` und `MIX_OUT` erlauben getrennte Modul-, Server- und Belegpfade. Der Übersichts-Test verwendet `ARCADE_BASE` und `ARCADE_HUB_OUT`.
+`PLAYWRIGHT_MODULE`, `MIX_BASE` und `MIX_OUT` erlauben vorhandene Playwright-Installationen, andere Previewports und getrennte Belegordner. `browser.cjs` bleibt als Einstieg zur neuen vollständigen Arena-Prüfung erhalten.
+
+GEMESSEN am abschließenden Stand mit Inhaltsversionen:194/194 Node-Prüfungen,24/24 Arena-Browserbedingungen,139/139 Einbettungsbedingungen,7/7 Wiederherstellungsbedingungen und17/17 Arcade-Bedingungen grün. Der Durchlauf spielt Drei gewinnt, Tipp-Duell und Schalt-Rennen tatsächlich bis zum6:3-Finale. Nur die Reihenfolge ist als Speicher-Fixture vorgegeben; zwei Zeitspiele verwenden kontrollierte Browserzeit. Die20 Einbettungen prüfen Laden, echte Rückkehr und Überlauf in zwei Touchformaten, zusätzlich neun kurze Querlayouts mit echten Randfeld-/Touch-Aktionen; sie ersetzen keine20 vollständigen Partien. Netzwerk404 im Wiederherstellungstest ist gezielt erzeugt, danach wird die echte Seite gespielt. Tonprobe: Haupt- und Simon-Audiokontext laufen bei aktivem Klang; Stummschalten setzt den aktiven Kindschalter zurück. Das ist kein Hörqualitätsnachweis.
+
+HTML- und Diffprüfungen sind sauber. Die verlangte lokale Gesamt-CI-Simulation stoppt am schreibgeschützten `/home/agent`. Echte CI, Bereitstellung und öffentliche Quellenprüfung stehen im zugehörigen PR und im fortlaufenden [Claude-Arbeitsstand](WEITERARBEIT.md). Historische Belege des ersten Minispiele-Mix bleiben unter `belege/`; neue Arena-Belege stehen unter `belege-arena/`.
+
+Der öffentliche Quellenprüfer baut22 HTML-Seiten mit dem echten Seiten-Injektor und prüft Seiten/Aliasse, bytegleiche Assets, Skriptreihenfolge, Styles und Sicherheitsheader über normale TLS-Verbindungen. Keine TLS-Ausnahme. Kein physischer Handy-FPS-, Safari- oder Internet-Koop-Nachweis; dies ist ein lokales Zwei-Personen-Spiel.

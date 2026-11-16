@@ -88,8 +88,15 @@
     document.documentElement.setAttribute('data-mix-game',slug);
     var css=document.createElement('link');
     css.rel='stylesheet';
-    css.href='/css/minispiele-mix-embedded.css';
+    css.href='/css/minispiele-mix-embedded.css?v=83a47abf40da';
     document.head.appendChild(css);
+    var landscape=document.createElement('link');
+    landscape.rel='stylesheet';
+    landscape.href='/css/minispiele-mix-landscape.css?v=d5bd7446b6f5';
+    landscape.addEventListener('load',function(){
+      requestAnimationFrame(function(){window.dispatchEvent(new Event('resize'));});
+    });
+    document.head.appendChild(landscape);
     game.labels.forEach(decorateLabel);
     var back=document.querySelector(game.back||'button.back');
     if(back&&back.children.length===0&&back.textContent.trim()==='← Zurück'){

@@ -1,5 +1,11 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Mix Arena: vollständiger Spieleabend ·16.11.2026
+
+Besitzer: «verbessere mehr alles wie ein komplettes spiel» und fortlaufend fürClaudeCode sichern. Minispiele-Mix wird Mix Arena: Figurenwahl, Kategorienmix, konkrete Steuerkarten, Countdown, gemeinsame Rundenkarte, XP/Level/Erfolge, Revanche mit gleicher Reihenfolge, Migration und atomare Run-/Profilspeicherung. Unterbrechen startet aktuelle Runde ungewertet neu; alte Punkte bleiben. Grundstand auf `codex/minispiele-komplettes-spiel` regelmäßig gesichert.194 Node-,24 Arena-,139 Einbettungs-,7 Recovery- und17 Arcadebedingungen am versionierten Abschlussstand grün; neun Querformatkorrekturen mit echten Randfeld-/Touch-Eingaben bestätigt. Veröffentlichung/Endnachweise im PR, kanonisch `spiele-dev/minispiele-mix/WEITERARBEIT.md`.
+
+Weitere ausdrückliche Aufträge parallel: Lebenspfad mit eigener Atmosphäre und passenden selbstgebauten Objekten (`codex/lebenspfad-atmosphaere`); direkter Higgsfield-Anschluss fehlt hier, lokales Blender baut GLB-Vorlagen. Neon Flug: eingesammelte Ringe sichtbar entfernen, mehr Animation/Belohnungen, freie Oben-/Unten-Steuerung und zusätzlicher Neon-Schießen-Modus (`codex/neon-flug-ringe-belohnung`). Diese beiden Erweiterungen sind noch in Arbeit, nicht als live behaupten. Traumhaus bleibt beim anderen Bearbeiter. Keine Shop-/Social-/Kontoeingriffe.
+
 ## Minispiele als ein Rundenspiel ·16.11.2026
 
 Besitzerwahl: «Ein Rundenspiel – mehrere Minispiele nacheinander». `/minispiele/` bietet jetzt 3/5/7 verschiedene Disziplinen aus 20, Namen, gemeinsame Rundenwertung und Gesamtsieger. Sieg3, Remis je1, Abbruch0; lokales Zwei-Personen-Spiel an einem Gerät. Reload erhält den Zwischenstand; laufende Runde beginnt ungewertet neu. Ergebnisannahme prüft Fenster/Ursprung/Disziplin/Rundenschlüssel und zählt einmal. Einzelspiele und Lebenspfad unverändert spielbar. Arcade: vier sichtbare Hauptkarten, neun weitere aufklappbar; Traumhaus-Code und Hero nicht angefasst.

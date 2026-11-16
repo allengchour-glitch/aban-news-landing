@@ -1,0 +1,1414 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "drei-gewinnt 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "❌ P1 · Ada",
+          "⭕ P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "drei-gewinnt 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "drei-gewinnt 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "vier-gewinnt 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "vier-gewinnt 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "vier-gewinnt 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "memory 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "memory 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "memory 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "schere-stein-papier 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🌸 P2 · Lin",
+          "💧 P1 · Ada"
+        ],
+        "back": [
+          {
+            "w": 182.921875,
+            "h": 46,
+            "x": 8,
+            "y": 8
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "schere-stein-papier 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "schere-stein-papier 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "reaktions-duell 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "P1 · Ada",
+          "P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "reaktions-duell 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "reaktions-duell 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "tap-duell 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin",
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 201.25,
+            "h": 46,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "tap-duell 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "tap-duell 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "pong 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔵 P2 · Lin (oben)",
+          "🔴 P1 · Ada (unten)"
+        ],
+        "back": [
+          {
+            "w": 180.5,
+            "h": 68,
+            "x": 12,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "pong 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "pong 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "tauziehen 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "P2 · Lin (Blau)",
+          "P1 · Ada (Rot)"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "tauziehen 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "tauziehen 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "mathe-duell 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔵 P2 · Lin",
+          "🔴 P1 · Ada"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "mathe-duell 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "mathe-duell 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "farb-klick 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🟠 P2 · Lin",
+          "🟢 P1 · Ada"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 14,
+            "y": 14
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "farb-klick 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "farb-klick 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "elfmeter 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 42,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "elfmeter 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "elfmeter 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "hoch-tief 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "hoch-tief 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "hoch-tief 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "simon 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔵 P1 · Ada",
+          "🔴 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 42,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "simon 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "simon 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "schlange-duell 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔵 P1 · Ada",
+          "🩷 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "schlange-duell 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "schlange-duell 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "ballon-pump 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "ballon-pump 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "ballon-pump 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 8,
+            "y": 32
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "auto-rennen 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "maulwurf 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔵 P2 · Lin",
+          "🔴 P1 · Ada"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "maulwurf 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "maulwurf 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "quiz-buzzer 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "quiz-buzzer 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "quiz-buzzer 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "stapel-turm 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 193.25,
+            "h": 46,
+            "x": 10,
+            "y": 8
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "stapel-turm 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "stapel-turm 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "punkte-jagd 390 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 390,
+        "height": 790,
+        "scrollWidth": 390,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "punkte-jagd 390 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "punkte-jagd 390 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "drei-gewinnt 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "❌ P1 · Ada",
+          "⭕ P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 30,
+            "y": 19.875
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "drei-gewinnt 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "drei-gewinnt Querformat-Spielfeld vollständig sichtbar",
+      "ok": true,
+      "box": {
+        "x": 276,
+        "y": 16,
+        "right": 604,
+        "bottom": 344,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "name": "drei-gewinnt echte Querformat-Eingaben funktionieren",
+      "ok": true,
+      "actions": [
+        "Letzte Zelle per Touch gesetzt; Brett leeren funktioniert.",
+        "Unterbrechen per Touch kehrt ohne Rundensieg zurück."
+      ]
+    },
+    {
+      "name": "drei-gewinnt 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "vier-gewinnt 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 15,
+            "y": 18
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "vier-gewinnt 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "vier-gewinnt Querformat-Spielfeld vollständig sichtbar",
+      "ok": true,
+      "box": {
+        "x": 247,
+        "y": 18,
+        "right": 625,
+        "bottom": 342,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "name": "vier-gewinnt echte Querformat-Eingaben funktionieren",
+      "ok": true,
+      "actions": [
+        {
+          "text": "Touch-Spalten links/rechts ergeben rot/gelb in Spalten 0/6; Mitte bleibt leer.",
+          "rgb": [
+            [
+              249,
+              125,
+              112
+            ],
+            [
+              214,
+              237,
+              255
+            ],
+            [
+              255,
+              225,
+              124
+            ]
+          ]
+        },
+        "Unterbrechen per Touch kehrt ohne Rundensieg zurück."
+      ]
+    },
+    {
+      "name": "vier-gewinnt 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "memory 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 30,
+            "y": 16
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "memory 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "memory Querformat-Spielfeld vollständig sichtbar",
+      "ok": true,
+      "box": {
+        "x": 276,
+        "y": 16,
+        "right": 604,
+        "bottom": 344,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "name": "memory echte Querformat-Eingaben funktionieren",
+      "ok": true,
+      "actions": [
+        "Letzte Memory-Karte per Touch aufgedeckt.",
+        "Unterbrechen per Touch kehrt ohne Rundensieg zurück."
+      ]
+    },
+    {
+      "name": "memory 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "schere-stein-papier 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🌸 P2 · Lin",
+          "💧 P1 · Ada"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 8,
+            "y": 8
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "schere-stein-papier 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "schere-stein-papier 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "reaktions-duell 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "P1 · Ada",
+          "P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "reaktions-duell 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "reaktions-duell 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "tap-duell 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin",
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "tap-duell 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "tap-duell 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "pong 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔵 P2 · Lin (oben)",
+          "🔴 P1 · Ada (unten)"
+        ],
+        "back": [
+          {
+            "w": 190,
+            "h": 44,
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "pong 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "pong Querformat-Spielfeld vollständig sichtbar",
+      "ok": true,
+      "box": {
+        "x": 214,
+        "y": 12,
+        "right": 628,
+        "bottom": 348,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "name": "pong echte Querformat-Eingaben funktionieren",
+      "ok": true,
+      "actions": [
+        {
+          "text": "Beide Canvas-Hälften erhalten echte Touch-Eingaben; vorhandener Handler verarbeitet sie.",
+          "touches": [
+            {
+              "y": 42,
+              "prevented": true
+            },
+            {
+              "y": 312,
+              "prevented": true
+            }
+          ]
+        },
+        "Unterbrechen per Touch kehrt ohne Rundensieg zurück."
+      ]
+    },
+    {
+      "name": "pong 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "tauziehen 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "P2 · Lin (Blau)",
+          "P1 · Ada (Rot)"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "tauziehen 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "tauziehen 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "mathe-duell 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔵 P2 · Lin",
+          "🔴 P1 · Ada"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "mathe-duell 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "mathe-duell 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "farb-klick 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🟠 P2 · Lin",
+          "🟢 P1 · Ada"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 14,
+            "y": 14
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "farb-klick 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "farb-klick 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "elfmeter 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "elfmeter 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "elfmeter Querformat-Spielfeld vollständig sichtbar",
+      "ok": true,
+      "box": {
+        "x": 239.0625,
+        "y": 20,
+        "right": 616.921875,
+        "bottom": 279.984375,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "name": "elfmeter echte Querformat-Eingaben funktionieren",
+      "ok": true,
+      "actions": [
+        "Rechte Schützenwahl und linke Torwartwahl per Touch starten den Schuss.",
+        "Unterbrechen per Touch kehrt ohne Rundensieg zurück."
+      ]
+    },
+    {
+      "name": "elfmeter 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "hoch-tief 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 197.25,
+            "h": 46,
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "hoch-tief 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "hoch-tief Querformat-Spielfeld vollständig sichtbar",
+      "ok": true,
+      "box": {
+        "x": 275,
+        "y": 45.984375,
+        "right": 615,
+        "bottom": 221.984375,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "name": "hoch-tief echte Querformat-Eingaben funktionieren",
+      "ok": true,
+      "actions": [
+        "Tiefer deckt nächste Karte auf, zeigt Feedback und sperrt kurz die Tipps.",
+        "Unterbrechen per Touch kehrt ohne Rundensieg zurück."
+      ]
+    },
+    {
+      "name": "hoch-tief 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "simon 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔵 P1 · Ada",
+          "🔴 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 30,
+            "y": 16
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "simon 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "simon Querformat-Spielfeld vollständig sichtbar",
+      "ok": true,
+      "box": {
+        "x": 276,
+        "y": 16,
+        "right": 604,
+        "bottom": 344,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "name": "simon echte Querformat-Eingaben funktionieren",
+      "ok": true,
+      "actions": [
+        "Unteres rechtes Simon-Pad reagiert in der Eingabephase.",
+        "Unterbrechen per Touch kehrt ohne Rundensieg zurück."
+      ]
+    },
+    {
+      "name": "simon 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "schlange-duell 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔵 P1 · Ada",
+          "🩷 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "schlange-duell 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "schlange-duell 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "ballon-pump 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "ballon-pump 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "ballon-pump 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 4,
+            "y": 4
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "auto-rennen 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "maulwurf 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔵 P2 · Lin",
+          "🔴 P1 · Ada"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "maulwurf 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "maulwurf 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "quiz-buzzer 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "quiz-buzzer 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "quiz-buzzer Querformat-Spielfeld vollständig sichtbar",
+      "ok": true,
+      "box": {
+        "x": 208,
+        "y": 12,
+        "right": 628,
+        "bottom": 189.78125,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "name": "quiz-buzzer echte Querformat-Eingaben funktionieren",
+      "ok": true,
+      "actions": [
+        "Buzzer 1 und richtige Antwort Blau per Touch geben Spieler 1 einen Punkt.",
+        "Unterbrechen per Touch kehrt ohne Rundensieg zurück."
+      ]
+    },
+    {
+      "name": "quiz-buzzer 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "stapel-turm 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 30.03125,
+            "y": 12
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "stapel-turm 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "stapel-turm Querformat-Spielfeld vollständig sichtbar",
+      "ok": true,
+      "box": {
+        "x": 208,
+        "y": 12,
+        "right": 628,
+        "bottom": 348,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "name": "stapel-turm echte Querformat-Eingaben funktionieren",
+      "ok": true,
+      "actions": [
+        "Canvas-Touch setzt je einen Block für beide Spieler.",
+        "Unterbrechen per Touch kehrt ohne Rundensieg zurück."
+      ]
+    },
+    {
+      "name": "stapel-turm 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "punkte-jagd 640 eingebettet ohne Breitenüberlauf",
+      "ok": true,
+      "metrics": {
+        "width": 640,
+        "height": 360,
+        "scrollWidth": 640,
+        "labels": [
+          "🔴 P1 · Ada",
+          "🔵 P2 · Lin"
+        ],
+        "back": [
+          {
+            "w": 143.9375,
+            "h": 44,
+            "x": 10,
+            "y": 10
+          }
+        ],
+        "unstarted": false
+      }
+    },
+    {
+      "name": "punkte-jagd 640 Rückkehrknopf erreichbar",
+      "ok": true
+    },
+    {
+      "name": "punkte-jagd 640 unterbricht wirklich ohne Wertung",
+      "ok": true
+    },
+    {
+      "name": "Alle eingebetteten Disziplinen ohne JS-Fehler",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "scope": "Alle20 aktiven Mix-Frames in zwei Touch-Formaten, echte Unterbrechen-Knöpfe. Nur Reihenfolge als Fixture; keine Sieg-/FPS-Messung."
+}

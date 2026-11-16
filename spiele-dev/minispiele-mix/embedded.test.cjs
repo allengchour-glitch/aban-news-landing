@@ -122,8 +122,9 @@ test('DOMReady: vorher keine DOM-Abfrage, kein CSS, kein Start; danach genau ein
   c.dom.ready();
   c.dom.ready();
   const links = c.dom.document.head.children.filter(n => n.href);
-  assert.equal(links.length, 1);
-  assert.equal(links[0].href, '/css/minispiele-mix-embedded.css');
+  assert.equal(links.length, 2);
+  assert.match(links[0].href, /^\/css\/minispiele-mix-embedded\.css(?:\?v=[a-f0-9]+)?$/);
+  assert.match(links[1].href, /^\/css\/minispiele-mix-landscape\.css(?:\?v=[a-f0-9]+)?$/);
   assert.equal(links[0].rel, 'stylesheet');
   assert.equal(c.dom.document.documentElement.classList.contains('mix-embedded'), true);
   assert.equal(c.dom.document.listenerCount('DOMContentLoaded'), 0);
@@ -131,7 +132,7 @@ test('DOMReady: vorher keine DOM-Abfrage, kein CSS, kein Start; danach genau ein
   lateDOM.document.readyState = 'complete';
   load('pong', {dom: lateDOM});
   assert.equal(lateDOM.document.listenerCount('DOMContentLoaded'), 0);
-  assert.equal(lateDOM.document.head.children.filter(n => n.href).length, 1);
+  assert.equal(lateDOM.document.head.children.filter(n => n.href).length, 2);
 });
 
 for (const game of catalog) {
