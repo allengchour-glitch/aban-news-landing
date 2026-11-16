@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: englische Kaufkarten mit eigenem Ersatzkatalog ·16.11.2026
+
+EN-Shop zeigte bei Hänger/503 auf390/1440px0 statt22 Karten. Jetzt sofortige eigene Ersatzanzeige aus unverändertem EN-Katalog, frischer Abruf/Fokus erhalten. Sieben Generatorprüfungen und sechs Browserfälle grün, drei neue Englischprüfungen am alten Generator rot. Generierte EN-Datei im vorhandenen Katalog-Commitablauf ergänzt; Stripe-Workflow nicht gestartet, keine Preis-/Konto-/Secretänderung oder neue Automation. Details/Bereitstellung im kanonischen Abschnitt Englischer Shop und zugehörigem PR; finanzielle Wirkung nicht gemessen.
+
 ## Codex: Standard-Deployment ohne Projekt-/Secret-Einrichtung ·16.11.2026
 
 Bestehender Hauptseiten-Workflow trennt die vier Einrichtungsschritte jetzt per manueller Option einrichten (Vorgabe false). Normale Auslöser/Frequenz und Upload erhalten; keine neue Automation. Vier statische Gegenproben grün, am alten Code fünf Fehlschläge, YAML lesbar. Ziel ist ein erlaubter Release des bereits übernommenen Paketbau-Fixes ohne Secret-/Kontoänderungen. Tatsächliche CI-/Merge-/Bereitstellungsbelege im zugehörigen PR und kanonischen Abschnitt Hauptseiten-Deployment lesen; kein Live-Erfolg vor Quellenantwort.

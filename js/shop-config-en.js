@@ -1,0 +1,160 @@
+// Automatisch aus data/shop-products-en.json erzeugt; nicht von Hand pflegen.
+// Ohne Konto- oder Preisänderung: Ersatzanzeige für einen fehlgeschlagenen Produktabruf.
+// Aktualisieren: python3 tools/shop_jsonld.py
+window.ABAN_SHOP_EN = [
+  {
+    "slug": "en-alle-kits",
+    "title": "All AI Starter Kits (Bundle)",
+    "desc": "Every industry kit together — much cheaper than buying separately.",
+    "price": "€39",
+    "buy": "https://buy.stripe.com/aFa9AVgOOa7icQL0wd5wI0Y",
+    "bundle": true
+  },
+  {
+    "slug": "en-aerzte",
+    "title": "AI Starter Kit for Doctors \u0026 Practices",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/8x26oJgOO93e6snen35wI0r"
+  },
+  {
+    "slug": "en-handwerker",
+    "title": "AI Starter Kit for Trades",
+    "desc": "Write quotes, emails and review replies faster.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/4gMaEZ2XY5R23gbceV5wI0s"
+  },
+  {
+    "slug": "en-steuerberater",
+    "title": "AI Starter Kit for Tax Advisors",
+    "desc": "Client communication, standard letters, research.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/fZu5kF4224MY2c72El5wI0t"
+  },
+  {
+    "slug": "en-anwaelte",
+    "title": "AI Starter Kit for Law Firms",
+    "desc": "Drafts, long documents, client texts — with clear limits.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/14A9AV8ii2EQeYTfr75wI0u"
+  },
+  {
+    "slug": "en-gastronomie",
+    "title": "AI Starter Kit for Restaurants",
+    "desc": "Reviews, social posts, menu copy.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/aFa6oJdCCfrC8AvceV5wI0v"
+  },
+  {
+    "slug": "en-coaches",
+    "title": "AI Starter Kit for Coaches \u0026 Consultants",
+    "desc": "Offers, posts, session prep — no hype.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/aFa7sN0PQgvG2c76UB5wI0w"
+  },
+  {
+    "slug": "en-immobilienmakler",
+    "title": "AI Starter Kit for Real Estate Agents",
+    "desc": "Listings, enquiry replies, exposés faster.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/cNi28t1TUcfq7wr0wd5wI0x"
+  },
+  {
+    "slug": "en-friseure",
+    "title": "AI Starter Kit for Hair Salons",
+    "desc": "Social posts, reviews, appointment emails.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/4gMcN75664MY6sn2El5wI0y"
+  },
+  {
+    "slug": "en-fotografen",
+    "title": "AI Starter Kit for Photographers",
+    "desc": "Offers, image captions, client communication.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/9B65kFbuu5R22c70wd5wI0z"
+  },
+  {
+    "slug": "en-architekten",
+    "title": "AI Starter Kit for Architects",
+    "desc": "Texts, tenders, research — with clear limits.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/eVq00lcyy4MY9Ezfr75wI0A"
+  },
+  {
+    "slug": "en-fitnessstudios",
+    "title": "AI Starter Kit for Gyms",
+    "desc": "Social, member emails, class descriptions.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/dRm3cx1TU6V64kf7YF5wI0B"
+  },
+  {
+    "slug": "en-kosmetikstudios",
+    "title": "AI Starter Kit for Beauty \u0026 Nail Salons",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/28E14p1TUgvGdUPen35wI0D"
+  },
+  {
+    "slug": "en-kfz-werkstaetten",
+    "title": "AI Starter Kit for Auto Repair Shops",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/28E4gB566bbm1834Mt5wI0E"
+  },
+  {
+    "slug": "en-maler",
+    "title": "AI Starter Kit for Painters \u0026 Decorators",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/3cIbJ3eGGcfqeYT1Ah5wI0F"
+  },
+  {
+    "slug": "en-hotels",
+    "title": "AI Starter Kit for Hotels \u0026 Guesthouses",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/3cIaEZ4227Za5oj6UB5wI0G"
+  },
+  {
+    "slug": "en-physiotherapeuten",
+    "title": "AI Starter Kit for Physiotherapy Practices",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/fZudRb1TU6V62c7gvb5wI0H"
+  },
+  {
+    "slug": "en-reinigungsfirmen",
+    "title": "AI Starter Kit for Cleaning Companies",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/4gM3cxcyycfq7wrfr75wI0I"
+  },
+  {
+    "slug": "en-garten-landschaftsbau",
+    "title": "AI Starter Kit for Landscaping \u0026 Gardening",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/cNi28taqq6V66sn1Ah5wI0J"
+  },
+  {
+    "slug": "en-goldschmiede",
+    "title": "AI Starter Kit for Goldsmiths \u0026 Jewellers",
+    "desc": "Cheat sheet + proven prompts + data-protection checklist.",
+    "price": "€12",
+    "buy": "https://buy.stripe.com/14A14paqq5R24kf7YF5wI0K"
+  },
+  {
+    "slug": "en-prompt-bibliothek",
+    "title": "AI Prompt Library for Solo Professionals",
+    "desc": "100+ proven copy-paste prompts — outreach, clients, marketing, admin \u0026 research. Cross-industry, honest, no hype.",
+    "price": "€14",
+    "buy": "https://buy.stripe.com/dRm00l9mmcfqaIDceV5wI0Z"
+  },
+  {
+    "slug": "en-vorlagen-set",
+    "title": "Ready-made Text Templates for Solo Professionals",
+    "desc": "40 ready-to-use templates for quotes, emails, invoices \u0026 rejections. Copy, replace placeholders, send.",
+    "price": "€14",
+    "buy": "https://buy.stripe.com/28E6oJ0PQ6V61836UB5wI10"
+  }
+];

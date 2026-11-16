@@ -4,8 +4,8 @@
 Ersatzkatalog und Suchmaschinenliste dürfen nicht vom regulären Shop abweichen. Der bestehende
 Stripe-Katalogworkflow ruft dieses Werkzeug nach dem Abgleich auf; es selbst liest nur lokale Dateien.
 
-    python3 tools/shop_jsonld.py            # schreibt shop.html und js/shop-config.js (idempotent)
-    python3 tools/shop_jsonld.py --pruefen  # Exit 1, wenn eine der beiden Anzeigen veraltet ist
+    python3 tools/shop_jsonld.py            # schreibt shop.html und beide Sprach-Ersatzkataloge (idempotent)
+    python3 tools/shop_jsonld.py --pruefen  # Exit 1, wenn eine der Anzeigen veraltet ist
 """
 import json
 import re
@@ -15,6 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SHOP, DATEN = ROOT / "shop.html", ROOT / "data" / "shop-products.json"
 FALLBACK = ROOT / "js" / "shop-config.js"
+EN_DATEN = ROOT / "data" / "shop-products-en.json"
+EN_FALLBACK = ROOT / "js" / "shop-config-en.js"
 
 
 def preis(text: str):
@@ -47,13 +49,13 @@ def neu_schreiben(html: str, produkte: list) -> str:
     return html[:b.start(2)] + itemlist(produkte) + html[b.end(2):]
 
 
-def ersatzkatalog(produkte: list) -> str:
+def ersatzkatalog(produkte: list, quelle="data/shop-products.json", variable="ABAN_SHOP") -> str:
     daten = json.dumps(produkte, ensure_ascii=False, indent=2)
     for zeichen in ("<", ">", "&", "\u2028", "\u2029"):
         daten = daten.replace(zeichen, "\\u" + format(ord(zeichen), "04x"))
-    return ("// Automatisch aus data/shop-products.json erzeugt; nicht von Hand pflegen.\n"
+    return (f"// Automatisch aus {quelle} erzeugt; nicht von Hand pflegen.\n"
             "// Ohne Konto- oder Preisänderung: Ersatzanzeige für einen fehlgeschlagenen Produktabruf.\n"
-            "// Aktualisieren: python3 tools/shop_jsonld.py\nwindow.ABAN_SHOP = " + daten + ";\n")
+            "// Aktualisieren: python3 tools/shop_jsonld.py\nwindow." + variable + " = " + daten + ";\n")
 
 
 def main() -> int:
@@ -61,7 +63,9 @@ def main() -> int:
     produkte = json.loads(DATEN.read_text(encoding="utf-8"))
     neu = neu_schreiben(html, produkte)
     ersatz = ersatzkatalog(produkte)
-    dateien = [(SHOP, neu), (FALLBACK, ersatz)]
+    en_produkte = json.loads(EN_DATEN.read_text(encoding="utf-8"))
+    en_ersatz = ersatzkatalog(en_produkte, "data/shop-products-en.json", "ABAN_SHOP_EN")
+    dateien = [(SHOP, neu), (FALLBACK, ersatz), (EN_FALLBACK, en_ersatz)]
     veraltet = [pfad.name for pfad, text in dateien
                 if not pfad.exists() or pfad.read_text(encoding="utf-8") != text]
     if "--pruefen" in sys.argv:
@@ -70,7 +74,7 @@ def main() -> int:
     for pfad, text in dateien:
         if pfad.name in veraltet:
             pfad.write_text(text, encoding="utf-8")
-    print(f"→ shop.html und shop-config.js: {len(produkte)} Katalogeinträge aus derselben Quelle")
+    print(f"→ Shop-Anzeigen: {len(produkte)} DE- und {len(en_produkte)} EN-Katalogeinträge aus ihren eigenen Quellen")
     return 0
 
 
