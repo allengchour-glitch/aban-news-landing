@@ -1,0 +1,503 @@
+{
+ "stand": "2026-11-16 ca. 09:00 UTC",
+ "analyse": {
+  "kurzfassung": "Zur Frage des Besitzers: Die andere Sitzung (Handy, «metricool analyse …») hat am 09.11. nur die Basis 12.10. bis 09.11. ausgewertet (dropship/social-woche-1611/PLAN.md). Die Auswertung der neuen Woche hat sie auf den 16.11. gelegt. Im Repo gab es sie bis jetzt nicht, das hier ist sie. Ausserdem korrigiert sie einen Punkt der Analyse vom 09.11.: TikTok bestand in der Basis nicht «fast nur aus Fotobeiträgen». Das Typfeld zeigt 44 Videos und 7 Fotos.\n\nErgebnis: Die Woche 10. bis 15.11. hat mehr Aufrufe gebracht, aber nicht mehr Wirkung.\n- **Gesamtaufrufe:** TikTok hatte 671 Aufrufe je Tag gegen 470 in der Basis. Das kommt nur von der grösseren Menge. Je Beitrag liegt der Median bei 248 gegen 270, alle 16 Beiträge zwischen 241 und 265.\n- **Sehdauer:** Die Zuschauer schauen kürzer. TikTok 1,42 s gegen 2,25 s. Auf Instagram fiel der Anteil, der in den ersten 3 Sekunden wegwischt, von 80 % auf 90,9 %, die Reichweite der Reels von Median 49 auf 26 (n=5). Sehdauer und Wegwisch-Anteil hängen kaum vom Alter eines Beitrags ab, sie sind darum belastbarer als die Reichweite.\n- **Facebook-Reels:** Sie fielen auf Median 5 Aufrufe, zwei Reels blieben auch nach 5 bis 6 Tagen bei 0.\n- **Klarer Gewinn nur auf TikTok:** Dasselbe Produkt als Text-Video statt Foto brachte im Median 250 statt 185 Aufrufe (n=6).\n\nBei allen Kanälen bleibt ein fester kleiner Rahmen: TikTok rund 250, Instagram-Reels 10 bis 140, Feed-Posts 1 bis 15 Konten. Seit dem 30.09. ist kein organischer Beitrag ausgebrochen. Die drei Mode-Videos mit 26 000 bis 39 000 Aufrufen gehören sehr wahrscheinlich zum bezahlten TikTok-Test (gleiche Produkte, gleiche Tage; Hypothese).\n\nShop: Social brachte in 7 Tagen 20 von 2 336 Sitzungen, keine Kasse. In 45 Tagen gab es keinen einzigen Kauf aus Social. Die Kurzlinks /tt und /yt brachten in 45 Tagen 0 Besuche. 5 von 20 Bestellungen kamen dagegen über chatgpt.com.\n\nPlaner: 71 von 76 Beiträgen sind veröffentlicht, ohne Fehler. Für die Woche ab 16.11. veröffentlichen sich aber vor allem die schwächsten Formate automatisch: Fotos und Karussells auf Instagram/Facebook, TikTok-Fotos, Threads. Die Videos stehen fast alle als Entwürfe.\n\nFazit: Mehr Beiträge je Tag lohnt sich nicht. Für Käufe ist Social derzeit kein Hebel. Ob der Aufwand gesenkt wird, entscheidet der Besitzer.",
+  "je_kanal": [
+   {
+    "kanal": "Instagram",
+    "lage": "GEMESSEN: 80 Reels und 141 Feed-Posts seit 22.09. Reels erreichen 4 bis 198 Konten (Median Basis 49), Feed-Posts 0 bis 30 (Median Basis 11,5). Interaktion praktisch null: 80 Reels zusammen 17 Likes, 2 Shares, 1 Save. Follower fielen von 171 (02.11.) auf 166 (15.11.): 7 gewonnen, 12 verloren. Story-Kennzahlen liefert Metricool nicht (0 Zeilen), Profilbesuche und Link-Taps sind nicht abfragbar. Die Kristall-Reels vom 13.11. erschienen nie: sie waren Entwürfe ohne autoPublish.",
+    "trend_woche_1015": "Reels n=5, Alter 43 bis 142 h. Reichweite Median 26 gegen 49 (Basis n=29, Alter 9 bis 30 Tage). Wegwisch-Anteil in den ersten 3 s: Median 90,9 % gegen 80,0 %. Sehdauer 2,5 s gegen 3,1 s. 0 Interaktionen. Feed-Posts Median 8 gegen 11,5. Konto-Views 678 gegen 647 in der Vorwoche, also gleich. Die Reichweite ist wegen des Alters nur unter Vorbehalt vergleichbar, der Wegwisch-Anteil eher schon (Hypothese)."
+   },
+   {
+    "kanal": "Facebook",
+    "lage": "GEMESSEN: Die Seite hat 6 Follower (15.09. waren es 9). Feed-Beiträge erreichen über zwei Monate praktisch niemanden: Median 0 bis 2 Impressionen, 0 Reaktionen, 4 Klicks auf 107 Beiträge. Reels trugen im Oktober die Reichweite: Basis Median 86 Aufrufe, Spitzen bis 275. Seither fallen sie. Die Reel-Reichweite liefert Metricool nicht (immer 0).",
+    "trend_woche_1015": "Reels n=5, Median 5 Aufrufe gegen 86 in der Basis. Mikrobagger und «5 Geschenke» haben nach 121 bis 142 h 0 Aufrufe, Rose 47 nach 110 h. Feed n=8, Median 2 Impressionen. Erstmals Seitenaufrufe: 13 in der Woche, Ursache unbelegt. Das Alter erklärt den Abfall nicht, denn die ältesten Woche-Reels stehen bei 0."
+   },
+   {
+    "kanal": "TikTok",
+    "lage": "GEMESSEN: 116 Beiträge seit 23.09., fast alle bei 240 bis 310 Aufrufen. 96 bis 99 % kommen aus «Für dich», Follow, Profil und Suche tragen nichts bei. Follower 557 (12.10.) auf 569 (15.11.), Profilaufrufe rund 2 bis 3 je Tag. Ausreisser: drei Mode-Videos vom 30.09. mit 26 593 bis 39 300 Aufrufen. Hypothese: Das war der bezahlte Test lernen-okt26 mit denselben drei Produkten, Shop-Sitzungen ab 01.10. Die schwächsten Beiträge sind Fotos (132 bis 163).",
+    "trend_woche_1015": "16 Beiträge, 2,7 je Tag: 14 stumme Text-Videos und 2 CJ-Clips. Aufrufe Median 248 gegen 270 (n=51), Summe 4 026, also 671 je Tag gegen 470. Sehdauer 1,42 s (17 % der Länge) gegen 2,25 s (23,5 %). Likes 10, Kommentare 0, Shares 0. Gleiches Produkt als Foto (03. bis 08.11.) und als Text-Video (10. bis 15.11.): Median 185 gegen 250,5 (n=6, 4 höher, 1 gleich, 1 tiefer). Das Alter verzerrt kaum, denn Panda hatte nach 21 h schon 265. Follower +1."
+   },
+   {
+    "kanal": "YouTube Shorts",
+    "lage": "GEMESSEN: 13 Abonnenten (12.10. waren es 10). Shorts der Basis: Median 93 Aufrufe (n=27), Spitzen Hundenapf 1 253, Medizin-Box 1 230, Pinselreiniger 996. Sehdauer 1 bis 2 s je Aufruf. Die Reichweite kommt fast nur aus dem Shorts-Feed. Die Videoliste in Metricool endet am 10.11.",
+    "trend_woche_1015": "Laut Planer 10 Shorts veröffentlicht, messbar sind nur 2: Traktor 181 und Bagger 74 Aufrufe, 0 Likes. Kanalaufrufe 10. bis 13.11.: 792, also 198 je Tag, etwa wie der Basisschnitt von 205 je Tag. 0 neue Abonnenten. Je Short nicht bewertbar (n=2)."
+   },
+   {
+    "kanal": "Pinterest",
+    "lage": "GEMESSEN: 4 Follower. Das Konto hat rund 1 000 Impressionen je Tag, aber nur rund 1 ausgehenden Klick je Tag. Einzelne Pins erreichen meist unter 10 Impressionen, der beste alte Pin 414. Die Konto-Impressionen passen nicht zur Summe der Pins. Quelle unbekannt, Hypothese: Katalog-Pins oder ältere Pins.",
+    "trend_woche_1015": "16 neue Pins, zusammen 37 Impressionen, 0 Klicks, 0 Speichern (Alter 1 bis 6 Tage). Konto 992 Impressionen je Tag gegen 1 647 und 14 Pin-Klicks je Tag gegen 24. Der Basisschnitt ist durch Spitzen am 16. bis 19.10. erhöht, Tagesmedian 1 026 gegen 867. Im Shop 7 Pinterest-Sitzungen in 7 Tagen."
+   },
+   {
+    "kanal": "Threads",
+    "lage": "GEMESSEN: 3 Follower, unverändert. 15 Posts seit 25.09., Median 2 Aufrufe, in der ganzen Zeit 1 Like. Ohne Reichweite.",
+    "trend_woche_1015": "5 Video-Posts. Lederarmband 4 Aufrufe, «5 Geschenke» 1, drei Posts ohne Wert (leer, nicht 0). 0 Interaktionen. Keine Änderung."
+   },
+   {
+    "kanal": "Shop (Wirkung von Social)",
+    "lage": "GEMESSEN (ShopifyQL): Social brachte in 45 Tagen rund 760 Sitzungen und 0 Käufe. Davon waren 402 TikTok-Sitzungen fast nur der bezahlte Test vom 01. bis 04.10. (414 UTM-Sitzungen, 6 Kassenstarts, 0 Käufe). Die Bestellquellen in 45 Tagen: chatgpt.com 5, Google 4, ohne Angabe 13, aus Social 0.",
+    "trend_woche_1015": "7 Tage: Social 20 von 2 336 Sitzungen (Facebook 10, Pinterest 7, Instagram 3, TikTok 0, YouTube und Threads 0). Davon 1 Warenkorb, 0 Kasse. Tagesverlauf 10. bis 16.11.: 2, 4, 2, 2, 4, 1, 1, gleich wie seit dem 21.10. Die Woche mit mehr Beiträgen hat keinen sichtbaren Mehrverkehr gebracht."
+   }
+  ],
+  "was_wirkt": [
+   "Bewegte Kurzvideos von Produkten mit sichtbarer Wirkung aus den Themen Gadget, Haustier und Wohnen (GEMESSEN, Themenzuordnung grob): Instagram-Reels Gadget Median 114 Reichweite (n=11), YouTube Hundenapf 1 253 und Medizin-Box 1 230 Aufrufe, Facebook im Oktober Nachtlicht 275 und Notiztafel 231.",
+   "Video statt Foto auf TikTok (GEMESSEN, n=6 gleiche Produkte): Median 250,5 statt 185 Aufrufe. Das Text-Video hebt die schwachen Beiträge (130 bis 160) auf rund 250 an, nicht darüber.",
+   "CJ-Produktclips halten am längsten (GEMESSEN, n=2 je Kanal): TikTok in der Basis 2,92 s (38,5 % der Länge), Instagram Wasser-Speaker mit 60,6 % Retention und 134 Reichweite.",
+   "Reels statt Feed-Posts auf Instagram (GEMESSEN): Reels-Basis Median 49 Reichweite gegen 11,5 bei Feed-Posts.",
+   "Mehr Beiträge erhöhen die Summe der Aufrufe auf TikTok und YouTube etwa im gleichen Verhältnis (GEMESSEN: TikTok 671 gegen 470 Aufrufe je Tag). Das ist Reichweite, kein Verkehr und kein Kauf.",
+   "Bezahlte Ausspielung bringt Shop-Besuche (GEMESSEN): Der TikTok-Test vom 01. bis 04.10. brachte 414 Sitzungen und 6 Kassenstarts, aber 0 Käufe."
+  ],
+  "was_nicht_wirkt": [
+   "Mehr Beiträge je Tag (GEMESSEN): TikTok je Beitrag 248 gegen 270, die Social-Sitzungen im Shop bleiben bei 1 bis 4 je Tag, die Käufe bei 0.",
+   "Feed-Fotos und Karussells auf Instagram/Facebook (GEMESSEN): Instagram Reichweite Median 8 bis 11,5, 0 Follows aus 141 Posts; Facebook Median 1 bis 2 Impressionen, 4 Klicks auf 107 Beiträge.",
+   "TikTok-Fotobeiträge (GEMESSEN): Median 207 in der Basis, die drei schwächsten aller 116 Beiträge sind Fotos (132, 153, 163).",
+   "Stumme Text-Videos halten kürzer (GEMESSEN; die Ursache ist eine Hypothese, weil Format, Ton und Thema vermischt sind): TikTok 1,38 s gegen 2,42 s bei den Oktober-Videos, Instagram wischen 89 bis 91 % in den ersten 3 s weg.",
+   "Facebook-Reels seit Ende Oktober (GEMESSEN): Woche Median 5, zwei Reels mit 0 Aufrufen nach über 5 Tagen.",
+   "Threads (GEMESSEN): 3 Follower, Median 2 Aufrufe je Post.",
+   "Neue Pinterest-Pins der Woche (GEMESSEN): 16 Pins mit zusammen 37 Impressionen, 0 Klicks (noch jung).",
+   "Bio-Kurzlinks als Klickweg (GEMESSEN): /tt und /yt in 45 Tagen 0 Sitzungen, /ig 2 Sitzungen.",
+   "Organische Mode-Inhalte (GEMESSEN): Instagram Mode-Reels Median 23 Reichweite. Die TikTok-Mode-Treffer vom 30.09. sind sehr wahrscheinlich bezahlt (Hypothese).",
+   "Weihnachts- und Wichtel-Sammelbeiträge (GEMESSEN): «5 Geschenke bis CHF 30» auf Instagram 11 Reichweite, auf Facebook 0 Aufrufe, auf Threads 1 Aufruf."
+  ],
+  "shop_bezug": "GEMESSEN (ShopifyQL, 16.11. ca. 08:00 UTC, nur gelesen):\n- **7 Tage:** Social brachte 20 von 2 336 Sitzungen: Facebook 10, Pinterest 7, Instagram 3, TikTok 0, YouTube und Threads 0. Davon 1 Warenkorb, 0 Kasse, 0 Kauf. Seit dem 21.10. sind es 1 bis 4 Social-Sitzungen je Tag, auch in der Woche mit 2,7 TikTok-Beiträgen je Tag.\n- **45 Tage:** 0 Käufe aus Social. Die 402 TikTok-Sitzungen stammen fast ganz aus dem bezahlten Test vom 01. bis 04.10. (6 Kassenstarts, 0 Käufe). Die 306 Facebook-Sitzungen brachten 0 Warenkörbe und kamen aus vielen Ländern; ob Menschen oder Bots, ist unbekannt.\n- **Bestellungen in 45 Tagen:** 20 Zeilen, davon 0 mit Social-Quelle und 5 mit utm_source chatgpt.com.\n- **Rechnung (Hypothese):** Rund 9 000 Aufrufe und Impressionen in der Woche ergaben rund 20 Besuche, also etwa 0,2 %.\n- **Klickweg:** /tt und /yt brachten in 45 Tagen 0 Sitzungen, /ig 2. Ursache (Hypothese): Der TikTok-Bio-Link ist bei unter 1 000 Followern nur Text, Links in Shorts-Beschreibungen sind nicht klickbar.\n- **Grenzen:** Eine Zuordnung zu einzelnen Beiträgen ist unmöglich, weil utm_content keinen Beitragsbezug trägt. Wie viel vom Direktverkehr (2 257 Sitzungen in 7 Tagen) eigentlich Social ohne UTM ist, ist unbekannt.",
+  "planer_zustand": "GEMESSEN (getScheduledPosts, nur gelesen, 16.11. ca. 09:00 Zürich):\n\n**Woche 10. bis 15.11.:**\n- 60 Beiträge in 76 Netzwerk-Zeilen (mehr als die geplanten rund 38). 71 sind PUBLISHED, 0 ERROR.\n- 5 Entwürfe sind abgelaufen und erschienen nie: Kristallspitzen am 13.11. auf FB, IG, TikTok und YouTube, Rose-Threads am 15.11. Sie waren ohne autoPublish angelegt.\n- Die drei Gemüsehobel-Clips für den 13.11. (YouTube, TikTok, IG/FB-Reel) fehlen ganz im Planer. Neue Hobel-Entwürfe für den 17.11. wurden am 16.11. gegen 08:20 Zürcher Zeit angelegt. Von wem, ist unbekannt.\n- TikTok hatte nur an 4 von 6 Tagen 3 Beiträge, YouTube am 15.11. keinen.\n- Die Plattformen haben die Beiträge angenommen (PUBLISHED). Über die Ausspielung sagt das nichts.\n\n**16. bis 23.11. (58 Zeilen):**\n- Mit autoPublish: 44 Zeilen. Das sind 8 Foto-/Karussell-Beiträge auf Facebook und Instagram, 8 TikTok-Fotos (alle mit autoAddMusic, also Bibliotheks-Sound), 8 Pins, 8 Threads, 2 TikTok-Videos und 2 Shorts.\n- Als Entwurf: 14 Zeilen, darunter alle Reels (Sternenlicht, Gemüsehobel, Knoblauchhacker; der Hacker steht auf der Halteliste wegen Musik).\n- Ab 20.11. gibt es keine Videos und keine Shorts mehr. Damit veröffentlichen sich in dieser Woche vor allem die Formate, die nach den Messungen am schwächsten sind. Das Paket vom 11.11. widerspricht dem Schluss der Analyse vom 09.11. («keine Feed-Fotos/Karussells»).\n- **Abstandsregel:** Am 16.11. liegen auf TikTok 18:00 (Weihnachtskugeln-Foto) und 18:30 («3 Ideen Hund und Katze», ohne TikTok-Titel) nur 30 Minuten auseinander, beide mit autoPublish. Das bricht die Regel von 3 Stunden.\n- Die Sternenlicht-Entwürfe für IG/FB am 16.11. 19:00 verfallen, wenn sie heute niemand freigibt. Warum die Freigabe sie nicht einplante, ist unbekannt (Hypothese: nach dem Lauf um 05:41 UTC angelegt).",
+  "empfehlungen": [
+   {
+    "massnahme": "Keine neuen Karussells, Feed-Fotos oder TikTok-Fotoserien mehr bauen. Die Bauzeit in wenige kurze Videos mit sichtbarer Wirkung stecken (Gadget, Haustier, Wohnen), auf TikTok das Produkt als Text-Video oder CJ-Clip statt als Fotoserie. Bereits eingeplante Fotobeiträge laufen lassen.",
+    "begruendung": "Instagram-Feed Median 8 bis 11,5 Reichweite gegen Reels 49. Facebook-Feed Median 1 bis 2 Impressionen. TikTok-Foto gegen Text-Video beim gleichen Produkt 185 gegen 250,5 (n=6). Der Schluss vom 09.11. sagte dasselbe, das Paket vom 11.11. baute trotzdem Karussells.",
+    "wer": "Claude autonom",
+    "erwartung": "Weniger Bauaufwand. Auf TikTok rund 60 Aufrufe mehr je Beitrag (Hypothese aus n=6), auf Instagram mehr Reichweite je Beitrag. Ein messbarer Kaufeffekt ist nicht zu erwarten."
+   },
+   {
+    "massnahme": "Messung alterfest machen (nur lesen): Jeden Beitrag einmal nach 48 h und einmal nach 7 Tagen lesen und als Zeile ablegen. Die Woche 10. bis 15.11. am Fr 20.11. erneut lesen, dann sind die Instagram- und Facebook-Reels 5 bis 10 Tage alt. Wegwisch-Anteil und Sehdauer als Hauptmass führen.",
+    "begruendung": "Die Woche-Reels waren 43 bis 142 h alt, die Basis 9 bis 30 Tage. Ob Instagram-Reels nach 2 Tagen noch wachsen, ist unbekannt. TikTok erreicht seinen Endwert offenbar nach rund einem Tag (Panda 265 nach 21 h).",
+    "wer": "Claude autonom",
+    "erwartung": "Faire Vergleiche ab der nächsten Woche. Am 20.11. ist klar, ob der Abfall der Reels mit dem Alter verschwindet."
+   },
+   {
+    "massnahme": "Bei Pinterest-Pins und Facebook-Beiträgen (die einzigen klickbaren Links) in neuen Entwürfen utm_content mit dem Produkt-Handle setzen.",
+    "begruendung": "Shopify zählt heute keine Besuche je Beitrag. utm_content trägt keinen Beitragsbezug, Pinterest hat aber rund 1 ausgehenden Klick je Tag.",
+    "wer": "Claude autonom",
+    "erwartung": "Nach 2 bis 3 Wochen eine Liste, welche Produkte aus Social überhaupt Besuche bringen. Die Zahlen bleiben klein (einstellig je Woche)."
+   },
+   {
+    "massnahme": "Abstandsverstoss TikTok 16.11. 18:00 und 18:30 klären: Herkunft von «3 Ideen Hund und Katze» lesen. Wenn eine Claude-Sitzung ihn angelegt hat, den Beitrag vor 17:00 Zürich auf 21:00 verschieben, vorher und nachher frisch lesen und nicht blind wiederholen (Lehre «Request cancelled» vom 09.11.). Wenn ihn der Besitzer angelegt hat, nicht anfassen.",
+    "begruendung": "Beide Beiträge haben autoPublish und liegen 30 Minuten auseinander. Die Regel verlangt 3 Stunden. Die Freigabe-Automation fasst eingeplante Beiträge nicht an.",
+    "wer": "Claude autonom",
+    "erwartung": "Kein gegenseitiges Verdrängen am Abend. Die Wirkung ist klein, aber die Regel bleibt gewahrt."
+   },
+   {
+    "massnahme": "Grundsatzentscheid zum Social-Aufwand: Vorschlag ist, das Volumen zu senken (TikTok 1 bis 2 je Tag, YouTube 1, Instagram/Facebook nur noch Reels, Threads und Facebook-Feed pausieren) und die frei werdende Zeit in Shop-Sichtbarkeit zu stecken (Google, ChatGPT-Sammlungen).",
+    "begruendung": "In 45 Tagen 0 Käufe aus Social. In 7 Tagen 20 Social-Besuche, die Woche mit mehr Beiträgen brachte keinen Mehrverkehr. 5 von 20 Bestellungen kamen über chatgpt.com.",
+    "wer": "Besitzer",
+    "erwartung": "Mehr Zeit für Kanäle, die nachweislich Käufe bringen. Ein Umsatzverlust ist nach den Daten nicht zu erwarten (Hypothese)."
+   },
+   {
+    "massnahme": "Ton entscheiden. (a) Gilt «musik ist scheisse» auch für den TikTok-Bibliotheks-Sound (autoAddMusic) an den 8 TikTok-Fotos vom 16. bis 23.11.? (b) Darf ein kleiner Test laufen: 3 Videos mit ruhiger Musik oder Stimme gegen 3 stumme, gleiches Thema, gleiche Uhrzeit?",
+    "begruendung": "Die stummen Text-Videos halten messbar kürzer (TikTok 1,38 s gegen 2,42 s, Instagram 90,9 % gegen 80 % Wegwischen). Ob das am Ton liegt, ist nicht belegt.",
+    "wer": "Besitzer",
+    "erwartung": "Mit dem Test klärt sich in einer Woche, ob der Ton die Sehdauer bewegt. Ohne Test bleibt die Ursache offen."
+   },
+   {
+    "massnahme": "Abgelaufene Entwürfe im Metricool-Planer löschen: Kristallspitzen 13.11. (4 Netzwerke) und Rose-Threads 15.11. Die Schnittstelle kann nicht löschen.",
+    "begruendung": "Die Entwürfe liegen in der Vergangenheit und gehen nie mehr raus. Sie verwirren aber Zählungen und Abstandsprüfungen.",
+    "wer": "Besitzer",
+    "erwartung": "Ein sauberer Planer. Eine Wirkung auf die Reichweite gibt es nicht."
+   },
+   {
+    "massnahme": "Klickweg TikTok/YouTube bewusst entscheiden: entweder hinnehmen, dass TikTok und Shorts nur Reichweite ohne Shop-Verkehr bringen, oder prüfen lassen, ob ein TikTok-Business-Konto den Bio-Link klickbar macht. Das ist nicht geprüft, der Entscheid vom 03.11. war «nein».",
+    "begruendung": "/tt und /yt brachten in 45 Tagen 0 Sitzungen. TikTok liefert 4 026 Aufrufe in der Woche, im Shop kamen davon 0 Besuche an.",
+    "wer": "Besitzer",
+    "erwartung": "Mit klickbarem Link vielleicht einige Besuche je Woche (Hypothese). Ohne ihn bleibt TikTok für Käufe wirkungslos."
+   }
+  ],
+  "behauptungen": [
+   {
+    "id": "B1",
+    "aussage": "TikTok Woche 10. bis 15.11.: Median 248 Aufrufe je Beitrag (n=16, Spanne 241 bis 265) gegen 270 in der Basis 12.10. bis 09.11. (n=51). Summe 4 026 gegen 13 629, also 671 gegen 470 Aufrufe je Tag.",
+    "quelle": "Metricool TikTok posts, Feld TKPO07 (Views), Beiträge 10. bis 15.11. gegen 12.10. bis 09.11., gelesen 16.11. ca. 08:00 UTC",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/tiktok.json"
+   },
+   {
+    "id": "B2",
+    "aussage": "TikTok mittlere Sehdauer je Aufruf: Woche Median 1,42 s (17,2 % der Länge) gegen Basis 2,25 s (23,5 %). Text-Videos 1,38 s, Oktober-Produktvideos 2,42 s, CJ-Clips der Basis 2,92 s (n=2).",
+    "quelle": "Metricool TikTok posts, TKPO14 (Gesamtsehzeit) geteilt durch TKPO07 je Beitrag, gleiche Zeiträume",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/tiktok.json"
+   },
+   {
+    "id": "B3",
+    "aussage": "TikTok, gleiches Produkt als Foto (03. bis 08.11.) und als Text-Video (10. bis 15.11.): Median 185 gegen 250,5 Aufrufe (n=6; Waschbär 132/258, Hochlandrind 153/243, Hoodie-Decke 163/255, Panda 207/265, Laptop-Rucksack 244/246, Damenuhr 260/246).",
+    "quelle": "Metricool TikTok posts, TKPO07 und Typfeld TKPO22 (PHOTO/VIDEO), Paarung nach Produktname",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/tiktok.json"
+   },
+   {
+    "id": "B4",
+    "aussage": "TikTok-Typfeld in der Basis 12.10. bis 09.11.: 44 Videos und 7 Fotos. Die Aussage der Analyse vom 09.11. «fast alles Fotobeiträge» stimmt nicht.",
+    "quelle": "Metricool TikTok posts, TKPO22 (type), 12.10. bis 09.11.",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/tiktok.json"
+   },
+   {
+    "id": "B5",
+    "aussage": "Instagram-Reels Woche (n=5, Alter 43 bis 142 h): Reichweite Median 26 gegen 49 in der Basis (n=29). Wegwisch-Anteil in den ersten 3 s Median 90,9 % gegen 80,0 %. 0 Likes, Kommentare, Saves und Shares in der Woche.",
+    "quelle": "Metricool Instagram Reels, IGRE11 (Reach), IGRE30 (Skip-Rate), IGRE28, Reels 10. bis 15.11. gegen 12.10. bis 09.11.",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/instagram.json"
+   },
+   {
+    "id": "B6",
+    "aussage": "Instagram-Feed-Posts: Reichweite Median 8 (Woche, n=8) und 11,5 (Basis, n=60), Höchstwert 30. 0 Follows aus allen 141 Posts seit 22.09.",
+    "quelle": "Metricool Instagram Posts, IGPO-Felder Reach/Follows, 22.09. bis 15.11.",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/instagram.json"
+   },
+   {
+    "id": "B7",
+    "aussage": "Facebook-Reels: Woche Median 5 Videoaufrufe (n=5) gegen 86 in der Basis (n=31). Mikrobagger (10.11.) und «5 Geschenke» (11.11.) haben nach 142 bzw. 121 h 0 Aufrufe.",
+    "quelle": "Metricool Facebook Reels, FBRE10 (Video Views), 10. bis 15.11. gegen 12.10. bis 09.11.",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/facebook.json"
+   },
+   {
+    "id": "B8",
+    "aussage": "Facebook-Feed 03.10. bis 15.11.: 107 Beiträge, Impressionen Median 0 bis 2 je Zeitraum, 0 Reaktionen, 4 Klicks insgesamt. Seite 6 Follower (15.09. waren es 9).",
+    "quelle": "Metricool Facebook Posts FBPO11/12/13/23, Evolution FBEV17",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/facebook.json"
+   },
+   {
+    "id": "B9",
+    "aussage": "YouTube: Die Metricool-Videoliste enthält von 10 laut Planer veröffentlichten Wochen-Shorts nur 2 (Traktor 181, Bagger 74 Aufrufe). Kanalaufrufe 10. bis 13.11.: 792, also 198 je Tag gegen 205 im Basisschnitt.",
+    "quelle": "Metricool YouTube Videoliste (YTVV) und Evolution (YTEV02), 15.09. bis 16.11.; Planer getScheduledPosts 10. bis 15.11.",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/youtube_pinterest_threads.json"
+   },
+   {
+    "id": "B10",
+    "aussage": "Pinterest Woche: 16 neue Pins mit zusammen 37 Impressionen, 0 Klicks, 0 Speichern. Konto 10. bis 13.11. 992 Impressionen je Tag gegen 1 647 und 3 ausgehende Klicks in 4 Tagen.",
+    "quelle": "Metricool Pinterest Pinliste (PIPO) und Evolution (PIEV01/05/06), 10. bis 15.11. gegen 12.10. bis 09.11.",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/youtube_pinterest_threads.json"
+   },
+   {
+    "id": "B11",
+    "aussage": "Shop 7 Tage: Social 20 von 2 336 Sitzungen (Facebook 10, Pinterest 7, Instagram 3, TikTok 0), 1 Warenkorb, 0 Kasse. 45 Tage: 0 Käufe aus Social, 5 von 20 Bestellungen mit utm_source chatgpt.com.",
+    "quelle": "ShopifyQL sessions nach referrer_source/referrer_name (7, 14, 45 Tage) und sales nach order_utm_source, gelesen 16.11. ca. 08:00 UTC",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/shop.json"
+   },
+   {
+    "id": "B12",
+    "aussage": "Kurzlinks: utm tiktok/bio (/tt) und youtube/bio (/yt) in 45 Tagen 0 Sitzungen, instagram/bio/ig_kurzlink 2 Sitzungen, 0 Warenkorb.",
+    "quelle": "ShopifyQL sessions nach utm_source/utm_medium/utm_content, 7 und 45 Tage",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/shop.json"
+   },
+   {
+    "id": "B13",
+    "aussage": "Planer 10. bis 15.11.: 71 von 76 Netzwerk-Zeilen PUBLISHED, 0 ERROR. 5 abgelaufene Entwürfe ohne autoPublish (Kristallspitzen 13.11. auf 4 Netzwerken, Rose-Threads 15.11.).",
+    "quelle": "Metricool getScheduledPosts, Zwei-Tage-Fenster 10. bis 15.11., Felder status, autoPublish, draft",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/planer.json"
+   },
+   {
+    "id": "B14",
+    "aussage": "Planer 16. bis 23.11.: autoPublish an bei 8 Facebook-/Instagram-Fotos und -Karussells, 8 TikTok-Fotos (autoAddMusic), 8 Pins, 8 Threads, 2 TikTok-Videos und 2 Shorts; alle Reels nur Entwurf. TikTok 16.11. 18:00 und 18:30 beide autoPublish (30 Minuten Abstand).",
+    "quelle": "Metricool getScheduledPosts 16. bis 23.11., Felder netzwerk, typ, autoPublish, draft, tiktokData.autoAddMusic",
+    "rohdaten_pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/social1611/planer.json"
+   }
+  ],
+  "offen": [
+   "Ob Instagram- und Facebook-Reels nach 2 Tagen noch wachsen: Es gibt keine Zeitreihe je Beitrag. Der Vergleich der Reichweite Woche gegen Basis bleibt darum unsicher (Wiederholung am 20.11.).",
+   "Ob die CJ-Clips der Woche (Rose, Wellenlicht) Musik trugen: Laut Gedächtnis stammen die Videodateien unverändert vom 04.11. (mit Mixkit-Musik). Die Instagram-Messung nannte sie «ohne Musik». Damit ist die Erklärung «weil die Musik fehlt» für den Abfall der CJ-Clips nicht belegt.",
+   "Ob die drei TikTok-Mode-Ausreisser vom 30.09. (26 593 bis 39 300 Aufrufe) bezahlt ausgespielt wurden: Hypothese, weil es dieselben Produkte und Tage wie der Test lernen-okt26 sind. Der TikTok-Ads-Connector ist in dieser Sitzung nicht angemeldet.",
+   "YouTube: 8 der 10 Wochen-Shorts fehlen in der Metricool-Videoliste (sie endet am 10.11.), die Tageswerte für 14. und 15.11. sind leer.",
+   "Story-Kennzahlen (Instagram/Facebook): Metricool liefert 0 Zeilen, obwohl 4 Stories veröffentlicht wurden.",
+   "Profilbesuche und Link-Taps auf Instagram und Facebook: in Metricool eingestellt, nicht messbar.",
+   "Gemüsehobel 13.11.: Wohin die drei geplanten Beiträge verschwanden und welche Sitzung am 16.11. gegen 08:20 Zürcher Zeit neue Hobel-Entwürfe anlegte. Es arbeitet offenbar parallel eine weitere Sitzung in Metricool.",
+   "Herkunft des Beitrags «3 Ideen Hund und Katze» (16.11. 18:30, TikTok und YouTube, ohne TikTok-Titel, Medium aus static.metricool.com): Claude-Sitzung oder Besitzer.",
+   "Warum die Sternenlicht-Entwürfe für IG/FB am 16.11. 19:00 nicht freigegeben wurden. Hypothese: nach dem Freigabe-Lauf um 05:41 UTC angelegt. Ohne Freigabe heute verfallen sie.",
+   "Pinterest: Woher die rund 1 000 Konto-Impressionen je Tag kommen, wenn die Metricool-Pins nur einstellige Werte haben. Hypothese: Katalog-Pins oder ältere Pins.",
+   "Ob die Facebook-Sitzungen im Shop (viele Länder, 0 Warenkörbe) Menschen oder Bots sind.",
+   "Wie viel Social-Verkehr ohne UTM im Direktverkehr steckt (In-App-Browser).",
+   "Ob ein TikTok-Business-Konto den Bio-Link bei unter 1 000 Followern klickbar macht: nicht geprüft."
+  ]
+ },
+ "gegenpruefung": [
+  {
+   "id": "B1",
+   "haelt": true,
+   "korrektur": "Die Zahlen stimmen, aber der Satz \"671 gegen 470 Aufrufe je Tag\" täuscht. Die 470 teilen 13 629 durch 29 Kalendertage, die Basis enthält aber eine Pause ohne Beiträge vom 26.10. bis 02.11. Nur 19 Tage hatten Beiträge, das macht rund 717 Aufrufe je Posting-Tag gegen 671 in der neuen Woche. Je Beitrag liegt die Woche mit 248 gegen 270 gut 8 % tiefer, je Posting-Tag ebenfalls leicht tiefer. Es gibt also keinen Zuwachs (Hypothese: kein Effekt der neuen Videoart). Die Woche besteht nur aus Text-Videos und CJ-Clips, die Basis fast nur aus AUTO-Beiträgen. Bei 4 der 16 Beiträge (14. bis 15.11., Alter 21 bis 48 h) steht Reichweite 0, die Daten sind dort noch nicht vollständig.",
+   "nachgemessen": "Ich habe zweimal selbst bei Metricool nachgefragt (TKPO07). Woche 10. bis 15.11.: 16 Beiträge, Aufrufe sortiert 241, 243, 243, 245, 245, 246, 246, 246, 250, 255, 257, 258, 260, 263, 263, 265. Median 248, Summe 4 026, Spanne 241 bis 265, das sind 671 je Tag bei 6 Tagen. Basis 12.10. bis 09.11.: 51 Beiträge, Summe 13 629, Median 270 laut Rohdatei, Spanne 132 bis 510. 13 629 durch 29 Tage ergibt 470, durch 28 ergibt 487, durch 19 Posting-Tage ergibt 717. Die Live-Abfrage und tiktok.json stimmen überein. Das Alter der Beiträge liegt zwischen 21 und 143 h. Die Aufrufe sind unabhängig vom Alter fast flach, deshalb verzerrt das Alter den Vergleich kaum."
+  },
+  {
+   "id": "B2",
+   "haelt": true,
+   "nachgemessen": "Beide Zeiträume frisch bei Metricool abgefragt (TKPO02/06/07/14, Marke 6227837) und selbst gerechnet: Mittlere Sehdauer je Aufruf = TKPO14 / TKPO07.\n- Woche 10.–15.11.: 16 Beiträge, alle Zeilen gleich wie in tiktok.json. Median 1,415 s (Datei 1,42) und Median 17,2 % der Länge. Text-Videos n=14: 1,375 s (1,38). Die zwei CJ-Clips der Woche: 1,43 und 1,90 s.\n- Basis 12.10.–09.11.: 51 Beiträge, ebenfalls gleich wie in der Datei. Median 2,25 s und 23,5 % der Länge. Die 36 Oktober-Produktvideos (Typ AUTO) haben Median 2,42 s. Die zwei CJ-Clips der Basis (Duftbefeuchter 3,02 s, Speaker 2,81 s) ergeben Median 2,92 s, n=2.\nEinschränkungen, die den Kern nicht kippen:\n1. Die Basis enthält 7 Foto-Beiträge ohne Videolänge (Dauer 0). Dort ist die Sehdauer nicht aussagekräftig. Ein Foto (Damenuhr) hat einen Ausreisser mit 15,9 s. Nur Videos der Basis (n=44) haben Median 2,42 s gegen 1,42 s in der Woche, der Rückgang bleibt.\n2. Die Prozentangabe der Basis (23,5 %) ist ein Median über 44 Videos mit Dauer über 0.\n3. Gepoolt (Summe Sehzeit / Summe Aufrufe) ist der Unterschied deutlich: 3,15 s in der Basis gegen 1,5 s in der Woche. Der Pool-Wert der Basis wird aber vom Foto-Ausreisser verzerrt.\n4. Beitragsalter: Der jüngste Beitrag (15.11.) war rund 21 Stunden alt. Die Sehdauer je Aufruf hängt kaum vom Alter ab, bei diesem Beitrag ist sie aber mit 0,99 s am niedrigsten. Die Aussage ist also im Kern belegt.\n5. Der Metricool-Schnitt TKPO15 wird bei kleinen Werten auf 0 gerundet. Ich habe ihn nicht verwendet.\nHypothese, nicht gemessen: Der Rückgang hängt mit den kürzeren (8 s), stummen Text-Videos zusammen."
+  },
+  {
+   "id": "B3",
+   "haelt": true,
+   "korrektur": "Die Zahlen stimmen, die Deutung \"Text-Video besser als Foto\" ist zu stark. Von 6 Paaren liegt das Video bei 4 vorn, 1 gleich (246/244) und bei 1 hinten (Damenuhr 246 gegen 260). Das ist bei n=6 nicht signifikant. Die Text-Videos sind ein Plateau: 16 Videos vom 10. bis 15.11. liegen alle zwischen 241 und 265 Aufrufen (Median 248). Die Foto-Aufrufe streuen von 132 bis 260. Der Unterschied kommt vor allem von schwachen Fotos (132, 153, 163), nicht von stärkeren Videos. Die früheren Videos (12.10. bis 09.11.) hatten einen Median von 271,5, also mehr als die Text-Videos. Das Alter erklärt den Abstand nicht, denn die Fotos waren 213 bis 303 Stunden alt und die Videos 21 bis 143 Stunden. Fotos erschienen überwiegend um 17:00, Videos zu wechselnden Zeiten. Das Alter der jüngsten Text-Videos (21 bis 48 Stunden) schliesst nicht aus, dass sie noch zulegen. Formulierung besser: \"gleiches Produkt als Text-Video im Mittel etwas höher (250,5 gegen 185), aber nicht abgesichert; Videos wirken wie auf rund 250 gedeckelt.\"",
+   "nachgemessen": "Frisch aus Metricool abgefragt (TKPO02, TKPO07, TKPO22, 03. bis 09.11.). Die Fotowerte stimmen mit tiktok.json überein: Hochlandrind 153, Hoodie 163, Panda 207, Damenuhr 260, Waschbär 132, Laptop-Rucksack 244. Die Videowerte vom 04. bis 07.11. (263, 261, 283, 276) stimmen ebenfalls. Aus tiktok.json nachgerechnet: Foto-Median der 6 Paare (132, 153, 163, 207, 244, 260) = 185. Video-Median der 6 Paare (243, 246, 246, 255, 258, 265) = 250,5. Alle 16 Videos vom 10. bis 15.11. liegen bei 241 bis 265, Median 248. Alle Videos vom 12.10. bis 09.11. zusammen haben Median 271,5. Es gibt ein siebtes Foto (Canvas-Schultertasche, 17.10., 244 Aufrufe), das nicht in der Paarung steht. Die Aufrufe der Posts vom 14. und 15.11. sind noch jung (21 bis 48 Stunden), ihre Reichweite steht noch auf 0."
+  },
+  {
+   "id": "B4",
+   "haelt": true,
+   "nachgemessen": "Eigene Neumessung (Metricool getAnalyticsDataByMetrics, Marke 6227837, 12.10. bis 09.11., Felder TKPO01/TKPO02/TKPO22): 51 Zeilen, davon 44 VIDEO und 7 PHOTO. Die Zählung habe ich von Hand an den Zeilen nachgezählt: Nov 10, Okt 25 3, Okt 24 3, Okt 23 3, Okt 22 4, Okt 21 4, Okt 20 4, Okt 19 4, Okt 18 2, Okt 17 1, Okt 15 1, Okt 14 4, Okt 13 4, Okt 12 4 = 51. Die 7 Fotos sind 17.10. und 03. bis 08.11. Das passt zu tiktok.json: gleiche Zeitfenstergrenzen ergeben 51 = 44 VIDEO + 7 PHOTO. Nach Kind sind es 36 AUTO, 4 DETAIL, 2 REEL_STIMME, 2 CJCLIP und 7 PHOTO. Videos machen 86 % aus, Fotos 14 %. Die Aussage von 09.11. «fast alles Fotobeiträge» ist damit für TikTok widerlegt. Einschränkungen: Das Typfeld unterscheidet nur VIDEO und PHOTO. 36 der Videos sind laut Kind \"AUTO\", also vermutlich nicht über Metricool geplant. Ob die Analyse vom 09.11. sich auf geplante Beiträge bezog, ist unbekannt. Die Zahl gilt für TikTok, nicht für Instagram."
+  },
+  {
+   "id": "B5",
+   "haelt": true,
+   "nachgemessen": "Frisch bei Metricool abgefragt (IGRE02/03/11/23/24/28/30, 10.–15.11.): genau 5 Reels, Werte identisch mit instagram.json. Reichweite 11, 26, 27, 11, 73, Median 26. Wegwisch-Anteil 72,7, 92,0, 93,3, 90,9, 89,2, Median 90,9. Likes, Kommentare, Saves und Shares ergeben 0. Die Basis aus der Datei (12.10.–09.11.) hat n=29, Reichweite Median 49, Wegwisch-Anteil Median 80,0, und 8 Interaktionen (5 Likes-Beiträge, 3 Likes bei einem davon, plus 1 Share bei einem anderen Reel nur ausserhalb der Basis). Alles stimmt. Einschränkungen, die die Aussage nicht kippen: n=5 ist klein. Die Alter 43–142 h liegen unter denen der Basis. Die vier Reels vom 4.–7.11. (Alter 208–288 h) haben Reichweite-Median 94,5 und Wegwisch-Median 84,4. Der Basis-Median 49 stammt zu 25 von 29 Reels aus dem Oktober. Das Wegwisch-Mass hängt kaum vom Alter ab, bei der Reichweite ist der Altersvorteil der Basis möglich (ob Reichweite nach 2 Tagen noch wächst, unbekannt). Formate in der Woche sind gemischt (Text-Video, CJ-Clip). Die Wegwisch-Verschlechterung (90,9 gegen 80,0) ist klar, die Reichweiten-Differenz (26 gegen 49) ist nur grob belastbar."
+  },
+  {
+   "id": "B6",
+   "haelt": true,
+   "nachgemessen": "Rohdaten (instagram.json, feed_posts n=141, 22.09.-15.11.) nachgerechnet: Woche 10.-15.11. n=8, Reichweite sortiert 1,5,6,7,9,11,12,12, Median 8,0, Follows 0. Basis 12.10.-09.11. n=60, Median 11,5, Max 30, Follows 0. Gesamt Follows 0, Gesamt-Reichweite Max 30. Selbst neu bei Metricool abgefragt (IGPO02/07/14/28/29, brandId 6227837): 01.-15.11. 17 Posts, die 8 der Woche mit identischer Reichweite (7,11,9,12,12,6,5,1), Follows überall 0; 15.09.-01.11. 124 Zeilen, Follows überall 0, Höchstwert Reichweite 30 (26.10. 18:11), keine Zeile über 30. Anzahl ca. 141 passt (Überlappung 01.11. ein Post). Einschränkungen: Wochenwert n=8 ist klein und die jüngsten Posts (14.-15.11., 18-47 h alt, Reichweite 1-6) hatten noch kaum Zeit, der Wochenmedian ist daher eher nach unten verzerrt (GEMESSEN: Alter 18-136 h). Zudem sind 0 Follows laut IGPO29 gemessen; dass Posts nie Follower bringen, ist Deutung, denn Kontoebene zeigt Follower-Zugewinne (2-3 an einzelnen Tagen), die nur nicht Posts zugeordnet werden (Hypothese). Reichweite ist hier korrekt von Views (IGPO28, 12-48) getrennt.\""
+  },
+  {
+   "id": "B7",
+   "haelt": true,
+   "nachgemessen": "Rohdaten facebook.json (reels) nachgerechnet und FBRE10 frisch aus Metricool abgefragt (Brand 6227837). Woche 10.–15.11.: 5 Reels mit Aufrufen 0 (Mikrobagger 10.11. 11:04), 0 (5 Geschenke 11.11. 08:02), 47 (Rose 11.11.), 13 (Wellenlicht 12.11.), 5 (Lederarmband 14.11.); Median 5, n=5. Basis 12.10.–09.11.: 31 Reels, sortiert 1,1,1,4,7,9,13,24,25,45,48,52,73,76,79,86,88,... 275; Median 86 (16. Wert), n=31. Alter zum 16.11. 08:00 UTC: Mikrobagger rund 142 h, 5 Geschenke rund 121 h, beide 0. Die frische Metricool-Abfrage liefert dieselben Zahlen wie die Rohdatei. Einschränkungen (Hypothese bzw. unbekannt): Die Reichweite FBRE11 ist bei allen Reels 0, Metricool liefert sie nicht. Aufrufe sind deshalb die einzige Kennzahl, und ob 0 echt ist oder eine Datenlücke, ist unbekannt. Das Reel vom 14.11. ist erst 43 h alt. Die Basis enthält zwei Ausreisser im Bereich 1 bis 4 und schwache Reels von Anfang Oktober. Vergleich mit Musik gegen ohne Musik und Stimme: Ursache nicht belegt, nur Zeitgleichheit. n=5 ist klein. Der Kern (Woche deutlich unter Basis, zwei Reels mit 0 nach 5 Tagen) hält."
+  },
+  {
+   "id": "B8",
+   "haelt": false,
+   "korrektur": "Kern stimmt, aber der Zeitraum ist falsch. Die 107 Beiträge gelten für 22.09. bis 15.11.2026, nicht ab 03.10. Ab 03.10. sind es 64 Beiträge. Die 4 Klicks gelten ebenfalls für die 107 Beiträge: 3 Klicks (06.11., 0 Linkklicks) und 1 Klick (26.09., 1 Linkklick). Im Fenster ab 03.10. sind es nur 3 Klicks. Der Median der Impressionen ist 0 (03.10.–09.11., 56 Beiträge) bzw. 1 (22.09.–02.10., 43 Beiträge), in der Woche 10.–15.11. 2 (8 Beiträge). Korrigierte Fassung: Facebook-Feed 22.09.–15.11.: 107 Beiträge (64 seit 03.10.), 270 Impressionen insgesamt, Median 0 bis 2 je Zeitraum, 0 Reaktionen, 0 Shares, 4 Klicks, 6 Kommentare (alle zwischen 22. und 25.09.). Reichweite und Impressionen sind bei einzelnen Ausreissern höher: 75 Impressionen (05.10.) und 59 (07.10.). Die 82 Facebook-Reels sind in der Aussage nicht enthalten. Sie haben laut facebook.json nur wenige Videoviews (Beispiele 5 und 13), die Reichweite fehlt dort (unbekannt).",
+   "nachgemessen": "Rohdatei facebook.json neu gerechnet. Feed: 107 Beiträge, erster 2026-09-22, letzter 2026-11-15. Seit 03.10.: 64 Beiträge. Summen über alle 107: Impressionen 270, Reichweite 139, Reaktionen 0, Shares 0, Klicks 4 (davon Linkklicks 1), Kommentare 6. Mediane je Zeitraum: 15.09.–02.10. = 1 (43 Beiträge, Summe 70), 03.10.–09.11. = 0 (56 Beiträge, Summe 177), 10.–15.11. = 2 (8 Beiträge, Summe 23). Live bei Metricool neu abgefragt (nur lesend): FBEV17 vom 15.09. bis 15.11. zeigt 9 Follower am 15.09., 8 am 16.09., 7 ab 17.09., 6 ab 07.10. (kurz 7), 6 an jedem Tag seit 26.10. bis 15.11. FBPO07/10/11/12/13/23 vom 03.10. bis 16.11. liefern genau 64 Zeilen (Rohdatei ebenfalls 64). Reaktionen in allen Zeilen 0, Klicks nur eine Zeile mit 3, Ausreisser 75 und 59 Impressionen."
+  },
+  {
+   "id": "B9",
+   "haelt": true,
+   "korrektur": "Die Zahlen stimmen, die Einordnung ist irreführend. Die Aussage 198 je Tag gegen 205 im Basisschnitt wirkt wie «kein Effekt». Der Basis-Mittelwert wird aber von zwei Spitzentagen vom 23. und 24.10. getragen (1 094 und 1 310 Aufrufe, vor allem durch zwei Videos mit 996 und 1 253 Aufrufen). Der Median der Basis liegt bei 55 je Tag. Vom 27.10. bis 09.11. waren es im Mittel nur 48 je Tag, Median 6,5. Die Woche mit 198 je Tag liegt damit klar über dem typischen Tag der Basis. Die Woche ist nicht schlechter, sondern deutlich besser als der Alltag. Dazu fehlen die Kanalwerte für 14. und 15.11 (Metricool liefert dafür noch nichts), «10.–13.» ist also nur 4 Tage Stichprobe. Die Videoliste fehlt für 5 der 10 Shorts nicht nur bei den Aufrufen, sondern sie sind dort gar nicht aufgeführt. Ob die Shorts auf YouTube wirklich live sind, ist damit nicht belegt (Planer-Status PUBLISHED ist keine YouTube-Messung). Mögliche Ursachen wie Sync-Verzug oder Veröffentlichung nicht erfolgt sind unbekannt.",
+   "nachgemessen": "Frisch abgefragt (Metricool, Marke 6227837, 09.–16.11.): Videoliste YTVV (Datum, Titel, Aufrufe) enthält nur 6 Videos, ältestes 03.10.. Aus dem Zeitraum 10.–14.11. stehen nur zwei Videos drin: Bagger vom 10.11. mit 74 Aufrufen und Traktor vom 10.11. mit 181 Aufrufen. Kein Video vom 11.–14.11. (Liste endet am 10.11.). Planer (Rohdatei planer.json): YouTube-Shorts mit Status PUBLISHED vom 10. bis 14.11.: 2+3+2+1+2 = 10. Dazu ein Entwurf am 13.11.. Kanal-Evolution YTEV02 frisch: 10.11. 256, 11.11. 171, 12.11. 261, 13.11. 104, Summe 792, Schnitt 198 je Tag. 09.11. 4. YTEV04 meldet nur am 10.11. 2 Videos, an den anderen Tagen null. Basis 12.10.–09.11. nachgerechnet: 29 Tage, Summe 5 949, Schnitt 205,1, Median 55. Für 27.10.–09.11. (14 Tage): Schnitt 48,1, Median 6,5. Vom 10.11. summieren die zwei gelisteten Videos 255 von 256 Kanalaufrufen. Die 536 Aufrufe vom 11.–13.11. stammen aus nicht gelisteten oder älteren Videos (Herkunft unbekannt)."
+  },
+  {
+   "id": "B10",
+   "haelt": true,
+   "korrektur": "Die Zahlen stimmen, der Vergleich mit 1 647 ist aber irreführend. Der Basis-Schnitt wird von der Spitze vom 15. bis 19.10. getragen (3 268 bis 8 475 je Tag). Der Median der Basis liegt bei 1 026, die Woche liegt dagegen bei 866,5 (−16 %). Gegen die letzten 15 Tage vor der Woche (26.10. bis 09.11., 682 je Tag, Median 444) liegt die Woche mit 992 je Tag höher, ebenso die Pin-Klicks mit 14,0 gegen 9,6 je Tag. Das ist eine Rückkehr auf die Nach-Spitzen-Lage, kein Einbruch durch die neue Woche. Die 37 Impressionen der 16 neuen Pins sind nur rund 1 % der 3 966 Konto-Impressionen vom 10. bis 13.11. Die Impressionen kommen also von älteren Pins. Die Pins vom 14. und 15.11. haben noch keine Konto-Tageswerte (null) und sind zu jung für ein Urteil. Die Outbound-Zahlen sind zu klein für eine Deutung (3 gegen 1,3 je Tag, Median 1,0 gegen 0,5, Hypothese: Rauschen).",
+   "nachgemessen": "Metricool live neu abgefragt am 16.11. (Marke 6227837, Pinterest). Pinliste PIPO 10.11. bis 16.11.: 16 Pins, Impressionen zusammen 2+2+2+2+2+5+5+5+6+0+6+0+0+0+0+0 = 37, Speichern 0, Pin-Klicks 0, Outbound 0, Videoaufrufe nur 2 bei einem Pin. Evolution PIEV11/14/15/16 (nur in der Periode veröffentlichte Pins) je 0 an allen Tagen. PIEV02 ergibt 2+2+5+3+1+3 = 16 Pins, was zur Pinliste passt. Konto 10. bis 13.11. Impressionen 863+870+713+1520 = 3 966, also 991,5 je Tag. Ausgehende Klicks 2+1+0+0 = 3, Pin-Klicks 56, Speichern 7 (PIEV06, PIEV05, PIEV07 frisch gelesen, gleich den Rohdaten). Basis 12.10. bis 09.11. nachgerechnet: 29 Tage, 47 762 Impressionen, 1 647 je Tag, Median 1 026, Outbound 39 (1,3 je Tag), Pin-Klicks 706. Gleiche Quelle, kein unabhängiger Zweitweg. Tage 14. und 15.11. liefern für Impressionen, Klicks, Outbound und Speichern null (unbekannt).\""
+  },
+  {
+   "id": "B11",
+   "haelt": true,
+   "nachgemessen": "Ich habe die Abfragen am 16.11. selbst mit ShopifyQL neu gefahren. 7 Tage nach referrer_source: direct 2257, search 59, social 20, zusammen 2336. Social hat 1 Warenkorb und 0 Kasse. Nach referrer_name aufgeteilt ist Social: Facebook 10, Pinterest 7 (1 Warenkorb), Instagram 3, TikTok taucht nicht auf, also 0. Das stimmt mit shop.json überein. 45 Tage nach order_utm_source: 20 Bestellungen, 5 davon chatgpt.com, 15 ohne UTM. Nach order_utm_medium ergibt sich dieselbe Aufteilung. Keine Bestellung hat Instagram, TikTok, Facebook, Pinterest, YouTube oder Threads als UTM-Quelle. Einschränkungen: «0 Käufe aus Social» gilt nur nach UTM-Zuordnung, denn die 15 Bestellungen ohne UTM sind nicht zuordenbar. Die Stichprobe ist klein (20 Sitzungen). Bei «7 Tage» zählt der heutige Tag nur teilweise mit."
+  },
+  {
+   "id": "B12",
+   "haelt": true,
+   "nachgemessen": "Eigene ShopifyQL-Abfrage 16.11.2026 (FROM sessions, Gruppierung nach utm_source, utm_medium, utm_content, letzte 45 Tage, alle Länder, 24 Zeilen, 5 539 Sitzungen): Es gibt keine Zeile mit utm_medium=bio für tiktok und keine für youtube, also 0 Sitzungen über /tt und /yt. Nur eine Zeile mit utm_medium=bio: instagram/bio/ig_kurzlink mit 2 Sitzungen und 0 Warenkörben. Das stimmt mit shop.json überein (utm_45d: instagram bio profil ig_kurzlink 2, 0, 0, 0). Nicht in die Aussage gehört die separate Zeile ig/social/link_in_bio mit 3 Sitzungen und 0 Warenkörben, ein anderer Link. Zwei Einschränkungen: Der Zeitraum von 45 Tagen reicht über die Linkeinführung hinaus (/ig und /tt sind seit 03. und 09.11. belegt, /yt seit 09.11. angelegt), der tatsächlich wirksame Zeitraum ist also kürzer, nur rund 1 bis 3 Wochen. Ob die Links 0 Treffer haben, weil sie nicht angeklickt werden oder weil Plattformen sie nicht weiterreichen (z. B. TikTok-Bio ohne klickbaren Link, YouTube-Shorts-Links nicht klickbar), ist eine Hypothese und nicht gemessen. Die Aussage trägt für Sitzungen und Warenkörbe im Kern. Die Zeile «0 Warenkorb» für TikTok und YouTube ist trivial, weil dort 0 Sitzungen stehen."
+  },
+  {
+   "id": "B13",
+   "haelt": true,
+   "nachgemessen": "Ich habe den Planer für alle sechs Tage (10., 11., 12., 13., 14., 15.11.) frisch aus Metricool gelesen (getScheduledPosts, Marke 6227837, Europe/Zurich, je ein Tagesfenster). Gezählt wurden die Zeilen je Netzwerk. Zeilen je Tag: 10.11. 13, 11.11. 17, 12.11. 13, 13.11. 13, 14.11. 13, 15.11. 7. Das ergibt 76. Das stimmt mit planer.json überein, auch Tag für Tag. 71 Zeilen stehen auf PUBLISHED mit autoPublish true und draft false. Dazu gehören 10.11. (13 von 13), 11.11. (17 von 17), 12.11. (13 von 13), 13.11. (9 von 13), 14.11. (13 von 13) und 15.11. (6 von 7). 5 Zeilen stehen auf PENDING mit autoPublish false und draft true. Das sind Kristallspitzen am 13.11. auf Facebook-Reel und Instagram-Reel (09:00), TikTok (12:00) und YouTube-Short (16:00), Beitrags-IDs 426612259, 426613048, 426613069, sowie Rose-Threads am 15.11. um 11:00 (ID 427969120). Alle fünf liegen mit ihrem Termin in der Vergangenheit (jetzt 16.11.), sind also nie rausgegangen. Eine Zeile mit Status ERROR gibt es nicht. Eine Fehlerangabe (detailedStatus) steht bei keiner Zeile. Die Messung ist eine Momentaufnahme vom 16.11. morgens. Der Status PUBLISHED ist Metricools eigene Angabe. Ich habe nicht nachgeprüft, ob die Beiträge bei den Plattformen tatsächlich sichtbar sind, obwohl die publicUrl-Felder gesetzt sind."
+  },
+  {
+   "id": "B14",
+   "haelt": true,
+   "nachgemessen": "Live neu gelesen mit getScheduledPosts (Marke 6227837, Europe/Zurich, 16.11. bis 23.11., in vier Zwei-Tages-Fenstern, nur lesend). Mit planer.json verglichen: 58 Einträge in diesem Zeitraum, deckt sich mit der Live-Lesung. Befunde: (1) FB+IG-Fotos/Karussells: 8 Beiträge mit autoPublish, je einer um 16:00 oder 17:00 vom 16. bis 23.11. Jeder Beitrag trägt Facebook und Instagram zusammen. Ein weiterer Instagram-Foto-Entwurf (Krallenschleifer, 16.11. 14:00) ist Entwurf. (2) TikTok-Fotos: 8, alle autoPublish, alle tiktokData.autoAddMusic=true (16.11. 18:00, 17.11. 16:00, 18.11. 18:00, 19.11. 18:00, 20.11. 15:00, 21.11. 18:00, 22.11. 18:00, 23.11. 18:00). (3) Pins: 8 (je 20:00, 16. bis 23.11.), autoPublish. (4) Threads: 8 autoPublish, dazu 1 Threads-Entwurf (18.11. 11:00). (5) TikTok-Videos mit autoPublish: 2 (16.11. 18:30 und 19.11. 19:30). YouTube-Shorts mit autoPublish: 2 (16.11. 18:30 und 17.11. 18:30). Der Beitrag vom 16.11. 18:30 trägt TikTok und YouTube zugleich, es sind also 3 Beiträge und 4 Plattform-Slots. (6) FB/IG-Reels: 4 Beiträge (16.11. 19:00 IG, 16.11. 19:00 FB, 17.11. 20:00 FB+IG, 18.11. 10:00 FB+IG), alle draft=true und autoPublish=false. Weitere Entwürfe: TikTok-Videos 17.11. 13:00 (Gemüsehobel), 17.11. 19:00 (Sternenlicht) und 18.11. 12:00 (Knoblauchhacker), Shorts 17.11. 13:00, 18.11. 18:00 und 19.11. 19:00. (7) TikTok am 16.11.: Foto 18:00 und Video 18:30, beide autoPublish=true, Abstand 30 Minuten. Zählung: 8+8+8+8+2+2 autoPublish wie behauptet. Kleinigkeiten, die den Kern nicht ändern: Die Aussage nennt je einen Entwurf bei Instagram-Foto und Threads nicht. «Alle Reels nur Entwurf» stimmt für FB/IG-Reels. Ungemessen: ob die Beiträge tatsächlich veröffentlicht werden."
+  }
+ ],
+ "kritik": {
+  "luecken": [
+   "Ursache der abgelaufenen Entwürfe nicht gefunden (GEMESSEN, GitHub Actions `metricool-freigabe.yml`): Die tägliche Freigabe soll um 05:41 UTC laufen, lief aber am 12.11. um 13:58, am 13.11. um 13:26, am 14.11. um 12:29 und am 15.11. um 12:57 UTC. Wegen des Tors «Termin mindestens 2 h voraus» kann sie Entwürfe mit einem Termin am selben Vormittag nie einplanen. Das Protokoll vom 13.11. zeigt fünfmal HALTEN mit «Termin in der Vergangenheit»: Kristallspitzen 09:00, 12:00 und 16:00, Hobel-YouTube 13:00 und Hobel-TikTok 15:00. Am 15.11. traf es Rose-Threads 11:00 gleich. Die Analyse erklärt das falsch mit «ohne autoPublish angelegt» (das trifft auf jeden Entwurf zu). Folge für morgen: Hobel YouTube und TikTok sind auf Di 17.11. 13:00 gesetzt. Einplanen kann sie nur der heutige Lauf (etwa 13 UTC). Der Lauf vom 17.11. kommt zu spät.",
+   "Hin und Her zwischen der Freigabe und einem unbekannten Akteur übersehen (GEMESSEN, Freigabe-Protokolle 13.11. und 15.11. sowie creationDate im Planer): Die Sternenlicht-Beiträge (IG/FB 16.11., TikTok 17.11., YouTube 19.11.) wurden am 13.11. als FREI eingeplant. Danach standen sie wieder als Entwurf da, am 15.11. um 12:58 UTC wurden sie erneut eingeplant. Die heutigen Entwürfe tragen das Anlagedatum 15.11. 19:07 Zürich. Rose-Threads: am 13.11. eingeplant, am 14.11. wieder Entwurf, am 15.11. abgelaufen. Hobel: laut SHARED-MEMORY/PR #3165 von einer Claude-Sitzung am 15.11. um etwa 23:47 UTC mit autoPublish eingeplant (ids 429390094, 429390445, 429395222). Heute sind es Entwürfe mit neuen ids (429675848, 429676883), angelegt 16.11. um 08:20/08:22. Wer zurückstuft, ist unbekannt, denn alle Beiträge tragen dieselbe Kontoadresse. Der heutige Lauf wird die Sternenlicht- und Hobel-Entwürfe sehr wahrscheinlich wieder einplanen und damit eine gewollte Zurückhaltung aufheben. Dagegen hilft nur die Halteliste. Nach dem Stand vom 15.11. enthält sie nur die 4 Hacker-uuids.",
+   "Musik in der Messwoche nicht geprüft: Laut `dropship/tiktok-cj-videos-0311/cj_clips.json` trägt der Rose-Clip `mixkit-violin-uplift-675`, also eines der zwei Stücke, die der Besitzer am 10.11. abgelehnt hat. Der Wellenlicht-Clip trägt `mixkit-dreamy-jazz-645`. Beide wurden am 11. und 12.11. veröffentlicht. Die Woche war also nicht stumm. An der veröffentlichten Datei ist das nicht nachgemessen (unbekannt), SHARED-MEMORY Zeile 199 nennt die Dateien aber unverändert. Die Freigabe hat ausserdem am 13.11. das Hobel-Reel IG/FB 20:00 mit dem abgelehnten Stück `new-york-427` eingeplant (Protokoll: FREI id 426613103). Im Planer ist es heute weg und nicht veröffentlicht (GEMESSEN). Die acht Tore enthalten keine Musikprüfung.",
+   "Den Stapel vom 15.11. 14:23–14:31 Zürich übersehen (GEMESSEN, getScheduledPosts): «3 Ideen für Hund und Katze» (TikTok und YouTube 16.11. 18:30), Medizin-Box-Short (17.11. 18:30) und «Wasserwellen TikTok Wiederholung» (19.11. 19:30, Kampagne `repost_20261119`). Alle sind direkt mit autoPublish angelegt, also an den acht Freigabe-Toren vorbei. Im Repo steht dazu nichts. Ob die Videos Musik tragen, ist unbekannt. Die Wiederholung dürfte das TikTok vom 14.10. sein (510 Aufrufe, Hypothese), damit drohen Doppelinhalt und ein Musik-Konflikt. Ein zweiter Abstandsverstoss wird nicht genannt: TikTok 19.11. Schminkspiegel-Foto 18:00 gegen Wasserwellen-Wiederholung 19:30 (90 Minuten, beide autoPublish).",
+   "Die Frage des Besitzers ist nur halb beantwortet: Die Sitzung «metricool analyse und videos/fotos für sozial medi…» ist seit 09.11. 20:28 UTC ARCHIVIERT (GEMESSEN, list_sessions). Sie wird die Auswertung vom 16.11. also nie liefern und kann den Stapel vom 15.11. nicht angelegt haben.",
+   "YouTube mit dem falschen Mass verglichen: Die Basis-Tagesaufrufe haben im Mittel 205, im Median aber nur 55 (das Mittel kommt von den Spitzen am 12.–14.10. und 23.–24.10.). Vom 26.10. bis 09.11. lagen viele Tage bei 2 bis 8 Aufrufen. In der Woche waren es 256, 171, 261 und 104, Median 213,5 (n=4 Tage). Das ist der einzige Kanal, auf dem die Tagesreichweite mit mehr Beiträgen (2 Shorts je Tag) deutlich stieg (Hypothese: Menge). Ausserdem widerspricht sich die Rohdatei: kennzahlen nennt für die Basis n=26 und Median 109,5, die Analyse n=27 und Median 93.",
+   "Pinterest-Quelle nicht getrennt (GEMESSEN): 10 der 16 Wochen-Pins haben keinen Titel und erscheinen täglich um etwa 04:4x UTC. Der Metricool-Planer enthält nur 6 Wochen-Pins, die übrigen kommen also aus einer anderen Automation oder dem Katalog (unbekannt, Hypothese: Pinterest-Kanal von Shopify). Die Pinterest-Sitzungen im Shop tragen `utm_source=Pinterest/organic` ohne content (5 in 7 Tagen). Sie stammen wahrscheinlich von dieser Quelle, nicht von den Metricool-Pins (Hypothese).",
+   "Widersprüche in den Shopdaten nicht bemerkt (GEMESSEN, shop.json): Die Bestellquellen ergeben 4+3+5+13 = 25 bei 20 Bestellungen. Die Sitzungszeile chatgpt zeigt in 45 Tagen 6 Sitzungen und 0 abgeschlossene Kassen, gleichzeitig tragen 5 Bestellungen `utm_source=chatgpt.com`. Kanäle auf Sitzungsebene sind also nicht verlässlich, «5 von 20 über ChatGPT» ist nicht belastbar. Ausserdem sind Retourenzeilen enthalten (#1021 und #1004 negativ, #1027 mit 0).",
+   "Schweiz und alle Länder vermischt: Global hatte «direkt» in 7 Tagen 2 257 Sitzungen, in den 7 Tagen davor 706. In der Schweiz waren es 259 gegen 281 (GEMESSEN). Der Anstieg kam also von ausserhalb der Schweiz (Hypothese: Bots). Aussagekräftiger ist der Schweizer Anteil: Social 9 von rund 309 CH-Sitzungen. Die 306 Facebook-Sitzungen in 45 Tagen kamen aus vielen Ländern und brachten 0 Warenkörbe, obwohl die Facebook-Beiträge kaum jemanden erreichen. Hypothese: Crawler oder Link-Vorschauen. Die «rund 760 Social-Sitzungen» sind damit zu hoch.",
+   "Regelprüfung der Woche 16.–23.11. fehlt in der Analyse. Selbst stichprobenartig GEMESSEN: TikTok-Eigenwerbung (`commercialContentOwnBrand`) ist bei 5 von 5 gelesenen TikTok-Beiträgen gesetzt (Weihnachtskugeln, 3 Ideen, Wasserwellen-Wiederholung, Hobel, Sternenlicht). Das Karussell «Lieferung ehrlich erklärt» vom 15.11. nennt keinen Weihnachts-Bestellschluss. Nicht geprüft (unbekannt): Hashtag-Zahl der übrigen Instagram-Beiträge, Preis und Lieferzeit im Bild der Wiederholungs-Videos, Musik in «3 Ideen».",
+   "Saison und Vergleichsmass fehlen: kein Kontrollzeitraum, kein Hinweis auf die Konkurrenz im Q4-Feed vor Black Friday (27.11.). Kein Ersatzmass für Wirkung ohne Klick, etwa Markensuchen «luxestyle» in der Search Console. Unterstützte Conversions fehlen ebenfalls (Shopify rechnet nach Last Click).",
+   "Falsches Zeitfenster für die Kurzlinks: Es gibt /ig erst seit 03.11. und /yt erst seit 09.11. «In 45 Tagen 0 Sitzungen» vermischt also Tage, an denen der Link gar nicht existierte."
+  ],
+  "fragwuerdige_schluesse": [
+   {
+    "schluss": "Sehdauer und Wegwisch-Anteil hängen kaum vom Alter eines Beitrags ab und sind darum belastbarer als die Reichweite.",
+    "einwand": "Das ist nicht gemessen, denn es gibt keine Zeitreihe je Beitrag. TikTok in der Woche: Spearman zwischen Alter und Sehdauer +0,29 (n=16, aus tiktok.json gerechnet); der jüngste Beitrag (Panda, 21 h) hat mit 0,99 s die kürzeste Sehdauer. Instagram: Das jüngste Reel (Lederarmband, 43 h) hat mit 72,7 % den tiefsten Wegwisch-Anteil der Woche. Der Satz ist also eine Annahme, die erst die Messung nach 48 h und 7 Tagen prüfen kann."
+   },
+   {
+    "schluss": "Stumme Text-Videos halten kürzer, möglicherweise wegen des fehlenden Tons (Grundlage des Ton-Tests).",
+    "einwand": "In derselben Woche liefen die CJ-Clips mit Musik (laut cj_clips.json Rose mit violin-uplift-675, Wellen mit dreamy-jazz-645) genauso schwach. TikTok: 1,43 s und 1,90 s gegen 1,375 s im Median der Text-Videos. Instagram: Wegwischen 93,3 % und 92,0 % gegen 89–91 %. Die Basis-CJ-Clips vom 05. und 07.11. hatten noch 3,02 und 2,81 s und 74,8 und 61,5 %. Wahrscheinlicher ist eine Wirkung des Zeitraums (Alter, Algorithmus, Saison; Hypothese) als der Ton. Hinzu kommt die Länge: Text-Videos 8 s, Oktober-Videos 11 s."
+   },
+   {
+    "schluss": "TikTok: 248 gegen 270 Aufrufe je Beitrag, und das Text-Video ist dem Foto mit 250,5 gegen 185 überlegen.",
+    "einwand": "113 der 116 TikTok-Beiträge liegen bei 241 bis 307 Aufrufen, 96 bis 99 % davon aus «Für dich». Das ist die Grundausspielung, ±20 Aufrufe sind Rauschen. Der Foto-gegen-Video-Vergleich mit n=6 vermischt Kalenderwoche und Ton: Die Fotos vom 04.–09.11. trugen Bibliotheks-Sound (autoAddMusic), die Text-Videos waren stumm. Im gleichen Zeitraum vergleicht sich sauberer: Basis-Fotos 207 (n=7) gegen Basis-Videos rund 270. Die Richtung stimmt, der Effekt bleibt klein, ein Ausbruch über die Grundausspielung hinaus ist nie belegt."
+   },
+   {
+    "schluss": "Instagram-Reels: Reichweite in der Woche Median 26 gegen 49 in der Basis.",
+    "einwand": "Die Basis besteht zu 25 von 29 aus automatischen Reels vom 12.–25.10. (anderes Format, mit Musik). Dazu kommt eine Pause ohne Reels vom 26.10. bis 03.11. Die Reels direkt davor (04.–07.11.) hatten einen Median von 94,5 (n=4). Verglichen werden damit Format und Zeitraum zugleich, bei n=5 und einem Alter von 43 bis 142 h gegen 208 bis 841 h. Das Konto selbst blieb gleich (678 gegen 647 Views): Die Reichweite hat sich verschoben, eingebrochen ist sie nicht."
+   },
+   {
+    "schluss": "YouTube: Kanalaufrufe in der Woche mit 198 je Tag etwa wie der Basisschnitt von 205.",
+    "einwand": "Der Mittelwert wird von Spitzen getrieben. Im Tagesmedian steht die Basis bei 55, die Woche bei 213,5 (n=4); vom 26.10. bis 09.11. lagen viele Tage bei 2 bis 8. YouTube ist der einzige Kanal, auf dem mehr Beiträge sichtbar mehr Reichweite brachten (Hypothese)."
+   },
+   {
+    "schluss": "Mehr Beiträge je Tag lohnen sich nicht.",
+    "einwand": "Auf TikTok (671 gegen 470 Aufrufe je Tag) und YouTube wächst die Gesamtreichweite mit der Menge. Belegt ist nur, dass keine Shop-Besuche dazukommen. Der naheliegende Grund ist, dass TikTok und Shorts keinen klickbaren Weg haben (Hypothese). Richtig wäre: Mehr Beiträge bringen Aufrufe, aber keine Besuche."
+   },
+   {
+    "schluss": "Für Käufe ist Social derzeit kein Hebel (0 Käufe aus Social in 45 Tagen).",
+    "einwand": "Organisch kamen rund 20 Sitzungen je Woche, zum Teil wohl Bots. Bei etwa 1 % Kaufquote ist in 45 Tagen weniger als ein Kauf zu erwarten, eine 0 sagt darum fast nichts. Aussagekräftig ist nur der bezahlte Test: 414 Sitzungen, 6 Kassenstarts, 0 Käufe. Shopify rechnet nach Last Click, und der Vergleich mit ChatGPT beruht auf widersprüchlicher Zuordnung (6 Sitzungen gegen 5 Bestellungen). Haltbar ist «nicht belegt», nicht «kein Hebel»."
+   },
+   {
+    "schluss": "Rund 9 000 Aufrufe und Impressionen ergaben rund 20 Besuche, also etwa 0,2 %.",
+    "einwand": "Der Nenner enthält Kanäle ohne klickbaren Link (TikTok, Shorts) und Pinterest-Impressionen, die vor allem von einer anderen Quelle stammen. Im Zähler stecken Facebook-Sitzungen, die wohl Crawler sind. Diese Quote misst nichts."
+   },
+   {
+    "schluss": "Die Kristallspitzen vom 13.11. erschienen nie, weil sie Entwürfe ohne autoPublish waren.",
+    "einwand": "GEMESSEN im Freigabe-Protokoll vom 13.11. (Lauf um 13:26 UTC): HALTEN, weil der Termin vorbei oder weniger als 2 h entfernt war. Die Entwürfe waren um 08:07 für 09:00 angelegt worden. Ursache ist die Verspätung des Laufs um 7 bis 8 h zusammen mit dem 2-Stunden-Tor."
+   },
+   {
+    "schluss": "Die Sternenlicht-Entwürfe verfallen, wenn sie heute niemand freigibt. Hypothese: nach dem Lauf um 05:41 UTC angelegt.",
+    "einwand": "Beides falsch (GEMESSEN): Der Lauf startet in der Praxis gegen 13 UTC, und die Freigabe hat genau diese Beiträge am 13.11. und am 15.11. schon eingeplant. Danach hat sie jemand wieder auf Entwurf gestellt (Anlagedatum 15.11. 19:07). Der heutige Lauf plant sie voraussichtlich erneut ein und hebt damit eine gewollte Zurückhaltung auf."
+   },
+   {
+    "schluss": "Neue Hobel-Entwürfe für den 17.11. wurden am 16.11. gegen 08:20 angelegt, von wem ist unbekannt.",
+    "einwand": "Neu sind sie nicht. Laut Repo (PR #3165, SHARED-MEMORY) hat eine Claude-Sitzung die stille Hobel-Fassung am 15.11. um etwa 23:47 UTC mit autoPublish eingeplant, nach dem Ja des Besitzers («zu frage ja»). Um 08:20 wurde das auf Entwurf zurückgestuft. Damit ist ein vom Besitzer freigegebener Beitrag gefährdet, und die Analyse meldet es nicht als dringend."
+   },
+   {
+    "schluss": "Facebook-Reels: Das Alter erklärt den Abfall nicht, denn Mikrobagger und «5 Geschenke» stehen nach 121 bis 142 h bei 0.",
+    "einwand": "Genau 0 Aufrufe nach 5 Tagen kann auch auf eine missglückte Ausspielung oder Messung hindeuten statt auf geringe Reichweite (unbekannt). Den Status bei Facebook selbst hat niemand gelesen, und Metricool liefert für Reels ohnehin keine Reichweite (FBRE11 = 0). Die Streuung ist ausserdem riesig: Die Wasserwellen-Lampe hatte 202 Aufrufe auf Facebook und 19 auf Instagram. n=5."
+   }
+  ],
+  "empfehlungen_bewertet": [
+   {
+    "massnahme": "Keine Karussells, Feed-Fotos und TikTok-Fotoserien mehr. Stattdessen kurze Videos, auf TikTok als Text-Video oder CJ-Clip; Eingeplantes laufen lassen.",
+    "urteil": "Die Richtung ist sinnvoll (Feed Median 8–11,5, Reels 49). Die Umsetzung ist riskant und widerspricht teils Besitzerregeln: Neue Text-Videos mit Preis und Lieferhinweis auf der Schlusskarte verstossen gegen die Regel vom 02.11. Die Ausnahme galt nur für die am 09.11. freigegebenen Entwürfe; ein neues Format braucht das Ja des Besitzers. Alle bisherigen CJ-Clips tragen Mixkit-Musik (cj_clips.json). Bis zur Klärung gilt «kein neues Reel mit Hintergrundmusik, vorher Besitzer fragen»; stumm ist nur für den Hobel freigegeben. «Eingeplantes laufen lassen» schliesst 8 TikTok-Fotos mit autoAddMusic ein, deren Musikfrage offen ist. Der Video-Vorteil beruht auf n=6 über zwei verschiedene Wochen."
+   },
+   {
+    "massnahme": "Messung alterfest machen: jeden Beitrag nach 48 h und nach 7 Tagen lesen, die Woche am 20.11. erneut lesen, Wegwisch-Anteil und Sehdauer als Hauptmass.",
+    "urteil": "Sinnvoll, nur lesend, ohne Risiko. Einschränkung: Wegwisch-Anteil und Sehdauer erst dann zum Hauptmass machen, wenn diese Messung zeigt, dass sie nicht vom Alter abhängen. Heute ist das nicht belegt (TikTok rho +0,29)."
+   },
+   {
+    "massnahme": "Bei Pinterest- und Facebook-Entwürfen utm_content mit dem Produkt-Handle setzen.",
+    "urteil": "Sinnvoll, aber weitgehend schon erledigt (GEMESSEN): Die Metricool-Pins der Woche 16.11. tragen bereits `utm_content=w1611_<handle>`, der Sternenlicht-Facebook-Entwurf ebenfalls. Bei den Facebook-Beiträgen mit fast null Reichweite nützt es nichts. Den grösseren Hebel bietet die zweite Pinterest-Quelle (Pins ohne Titel gegen 04:4x UTC, Sitzungen mit `Pinterest/organic`): erst klären, woher sie kommt."
+   },
+   {
+    "massnahme": "Abstandsverstoss TikTok 16.11. 18:00/18:30: Herkunft von «3 Ideen» lesen; stammt er von Claude, das Video vor 17:00 auf 21:00 verschieben.",
+    "urteil": "Riskant. Den Urheber kann man über die Schnittstelle nicht feststellen, denn alle Beiträge tragen dieselbe Kontoadresse; der Stapel vom 15.11. 14:31 ist nicht im Repo. Ein Video per updateScheduledPost zu verschieben wiederholt die Lage vom 09.11.: Nach «Request cancelled» entstanden doppelte autoPublish-Kopien. Die 3-Stunden-Regel stammt aus der Freigabe-Automation und ist keine Besitzerregel; der Schaden von 30 Minuten Abstand ist nicht gemessen. Den zweiten Verstoss am 19.11. (18:00/19:30) nennt die Empfehlung nicht. Besser: beide Fälle dem Besitzer melden. Wenn überhaupt, nur den eigenen Foto-Beitrag verschieben, nie das Video."
+   },
+   {
+    "massnahme": "Grundsatzentscheid: Volumen senken (TikTok 1–2, YouTube 1, Instagram/Facebook nur Reels, Threads und Facebook-Feed pausieren), Zeit in Google und ChatGPT stecken.",
+    "urteil": "Als Frage an den Besitzer zulässig, die Begründung muss aber korrigiert werden. Auf YouTube stieg die Tagesreichweite mit den Shorts (Median 7 → 213), auf TikTok wächst sie mit der Menge. Weniger Beiträge kosten also Reichweite, nur nicht nachweislich Käufe. Die ChatGPT-Zahl (5 von 20) beruht auf widersprüchlicher Zuordnung (6 Sitzungen, 0 Kassen; Quellen ergeben 25 statt 20). Threads und Facebook-Feed zu pausieren ist unproblematisch."
+   },
+   {
+    "massnahme": "Ton entscheiden: (a) Gilt «musik ist scheisse» auch für autoAddMusic bei den 8 TikTok-Fotos? (b) Test mit 3 Videos mit Musik gegen 3 stumme.",
+    "urteil": "(a) ist sinnvoll und dringend, die Empfehlung nennt die Frist aber nicht: Das erste Foto (Weihnachtskugeln) erscheint heute um 18:00 Zürich mit autoAddMusic und autoPublish. Nach der Regel vom 10.11. («bis zur Klärung keine Hintergrundmusik») läge die vorsichtige Vorgabe beim Anhalten. Nach Musik zu fragen gehört auch zu den drei Wiederholungs-Videos, deren Ton unbekannt ist. (b) ist kaum aussagekräftig: TikTok liegt fest bei 240–300, Instagram-Reels streuen von 11 bis 134, da trennt n=3 gegen 3 nichts. Die Woche spricht ohnehin gegen die Ton-Erklärung, denn die CJ-Clips mit Musik waren genauso schwach. Ein Test braucht ein neues Stück nach Wahl des Besitzers; violin-uplift-675 und new-york-427 sind gesperrt."
+   },
+   {
+    "massnahme": "Abgelaufene Entwürfe im Metricool-Planer löschen (Kristallspitzen 13.11., Rose-Threads 15.11.).",
+    "urteil": "Sinnvoll und harmlos (nur der Besitzer kann löschen). Ergänzen um die Rose-Kopie 422206691 vom 09.11. Die Begründung ist falsch: Die Ursache ist die Verspätung der Freigabe um 7 bis 8 h plus das 2-Stunden-Tor, nicht «ohne autoPublish». Fehlende autonome Folgemassnahme: Entwürfe mindestens einen Tag im Voraus für Termine vor etwa 16:00 Zürich anlegen, oder die Startzeit der Freigabe absichern. Sonst verfallen sie weiter."
+   },
+   {
+    "massnahme": "Klickweg TikTok/YouTube entscheiden: hinnehmen oder prüfen, ob ein TikTok-Business-Konto den Bio-Link klickbar macht.",
+    "urteil": "Als Rückfrage erlaubt, aber nachrangig. Der Besitzer hat das Business-Konto am 03.11. abgelehnt, und es liegt kein neuer Beleg vor, nur das ohnehin erwartete «0 über /tt» (/tt seit 03.11., /yt erst seit 09.11.). Ob ein Business-Konto unter 1 000 Followern einen Link bekommt, ist nicht geprüft (unbekannt). Für YouTube ist der Kanal-Link /yt der richtige Weg; ob er wirkt, ist noch ungemessen. Die Wiederholung vom 19.11. setzt eine volle URL in einen TikTok-Text, die dort nicht anklickbar ist."
+   },
+   {
+    "massnahme": "FEHLT, sollte die Analyse aber haben: vor dem heutigen Freigabe-Lauf (etwa 13 UTC) klären, wer Sternenlicht, Rose-Threads und Hobel wieder auf Entwurf stellt. Ist das Zurückhalten gewollt, die uuids in die Halteliste `dropship/METRICOOL-HALTEN.txt`; ist es versehentlich passiert, laufen lassen. Der Freigabe ein Musik-Tor geben.",
+    "urteil": "Sinnvoll und dringend (Claude autonom, Repo-Änderung). Sonst plant die Automation heute über die Zurückstufung eines anderen Akteurs hinweg wieder ein, oder der vom Besitzer freigegebene stille Hobel-Clip verfällt am 17.11. 13:00. Am 13.11. hat die fehlende Musikprüfung schon ein Reel mit dem abgelehnten Stück eingeplant."
+   }
+  ]
+ },
+ "messungen_kurz": [
+  {
+   "kanal": "instagram",
+   "zeitraum": "22.09.2026 bis 15.11.2026 (Abfrage 15.09.–16.11.; vor dem 22.09. liefert Metricool keine Reels/Feed-Beiträge). Gemessen Mo 16.11.2026 ca. 09:00 Zürich. Woche = 10.–15.11., Basis = 12.10.–09.11. (Vor-Basis 22.09.–11.10. zusätzlich).",
+   "anzahl_beitraege": 221,
+   "anzahl_woche_1015": 13,
+   "kennzahlen": "REELS (80 gesamt: 46 Vor-Basis 22.09.–11.10., 29 Basis 12.10.–09.11., 5 Woche 10.–15.11.). Alle Zahlen GEMESSEN (Metricool IGRE-Felder), Reichweite = Konten, Median je Reel.\n- Woche 10.–15.11. (n=5): Reichweite Median 26 (Spanne 11–73, Summe 148), Views Median 32 (14–76, Summe 177), Sehdauer Median 2,5 s (1,6–2,9), Retention Median 21,2 % (12,9–36,1), Anteil Views über 3 s Median 9,1 % (6,7–27,3), Skip-Rate Median 90,9 % (72,7–93,3). Likes, Kommentare, Saves, Shares: je 0. Reels dauern 8–12 s.\n- Basis 12.10.–09.11. (n=29): Reichweite Median 49 (7–144), Views Median 52 (5–173), Sehdauer Median 3,1 s, Retention Median 27,1 %, Anteil über 3 s Median 20,0 %, Skip-Rate Median 80,0 % (48,4–100). Likes zusammen 7, Shares 1, Saves 0. Reichweite ab 100: 12 von 29.\n- Vor-Basis 22.09.–11.10. (n=46): Reichweite Median 18,5 (4–198), Views Median 25, Retention Median 30,1 %, Skip-Rate Median 80 %; 11 von 46 Reels ab 100 Reichweite.\n- Untergruppen (Format-Zuordnung ist HYPOTHESE aus Textstil und Dauer): Auto-Katalog-Reels Okt (n=21, '👀 … Link in Bio', 11 s): Reichweite Median 99 (9–144), Retention 29,1 %, Skip 78,9 %. CJ-Clips ohne Musik Woche (Rose, Wellenlicht, n=2): Reichweite 26/27, Skip 92/93,3 %, Retention 12,9/28,9 %. CJ-Clips früher (Duft 05.11., Speaker 07.11., n=2): Reichweite 116/134, Skip 74,8/61,5 %, Retention 23,8/60,6 %. Text-Videos mit Preis (Mikrobagger 10.11., 5 Geschenke 11.11., Lederarmband 14.11., n=3): Reichweite 73/11/11, Skip 89,2/90,9/72,7 %. Foto-Reels mit Stimme (Wasserwellen 04.11., Tennisarmband 06.11., n=2): Reichweite 19/73, Skip 94,1/94,5 %, Retention 27,1/14,7 %. Codex-Detailvideos (n=4, 15–20 s): Reichweite Median 24,5 (7–40), Retention 16,8 %.\n- Themen (Median Reichweite je Reel, vor 10.11., n klein): Gadget 114 (n=11), Wohnen 40 (9), Haustier 37 (17, aber Spanne 4–198), Schmuck 42,5 (2), Mode 23 (15), Küche 21 (10), Beauty 13 (7). Woche: Spielzeug 73 (1), Wohnen 26/27, Schmuck 11, Weihnachten/Geschenke 11.\nFEED-POSTS (141: 73 Vor-Basis, 60 Basis, 8 Woche): Reichweite Median Vor-Basis 8 (0–15), Basis 11,5 (7–30), Woche 8 (1–12; die zwei vom 15.11. und der vom 14.11. sind noch jung); Views Median 17 / 26 / 24,5. Likes zusammen 8 / 14 / 1, Saves 0 / 1 / 0, Follows aus Posts 0 / 0 / 0. Die Woche besteht aus Wichtel-Karussells und Bildern (8 Beiträge), Reichweite Summe 63.\nSTORIES: Metricool lieferte für 15.09.–16.11. 0 Zeilen (leere Antwort). Der Planer zeigt aber eine am 13.11. 17:00 veröffentlichte Story (Gemüsehobel): Story-Kennzahlen daher unbekannt (nicht 'null Reichweite').\nKONTO (IGEV): siehe konto_entwicklung.",
+   "konto_entwicklung": "Follower GEMESSEN (Tagesstand): 02.–03.11. 171, 04.–06.11. 169, 07.11. 167, 08.11. 166, 09.11. 168, 10.11. 167, 11.–13.11. 166, 14.11. 167, 15.11. 166. Netto −5 in 13 Tagen; gewonnen 7, verloren 12 (02.–14.11.; 15.11. ohne Wert). Konto-Views je Tag (alle Formate): 02.11. 27, 03. 37, 04. 53, 05. 176, 06. 127, 07. 191, 08. 36, 09. 66, 10. 121, 11. 93, 12. 119, 13. 70, 14. 81, 15. 128 (Tag evtl. unvollständig). Summe 02.–08.11. 647, 09.–15.11. 678. Konto-Reichweite je Tag: 9, 12, 24, 119, 78, 129, 13, 21, 80, 41, 54, 23, 25, 19. Accounts engaged je Tag 0–3. Die Spitzen 05.–07.11. fallen mit den Reels Duft, Tennisarmband, Wasser-Speaker zusammen. Profilbesuche und Website-Klicks/Link-Taps: in Metricool als 'Deprecated' markiert, nicht abfragbar = unbekannt.",
+   "probleme": [
+    "Stories: Metricool lieferte 0 Zeilen für 15.09.–16.11., obwohl der Planer am 13.11. 17:00 eine veröffentlichte Story zeigt (Story-Analytics unbekannt).",
+    "Profilbesuche und Website-Klicks/Link-Taps sind in Metricool als deprecated markiert, nicht abfragbar; keine Verbindung zu Käufen messbar.",
+    "Reels und Feed-Posts erst ab 22.09.2026 vorhanden (Abfrage ab 15.09. liefert davor nichts).",
+    "Format-Zuordnung (Auto-Katalog, CJ-Clip, Text-Video, Foto-Reel mit Stimme, Codex-Detail) und Themen sind meine Zuordnung nach Caption und Dauer, keine Metricool-Angabe; Spalten bei Beitrags-Abfragen in Anfrage-Reihenfolge gelesen und an Reels per Retention=Sehdauer/Dauer und Skip+Viewrate=100 geprüft.",
+    "Feed-Kommentare stehen bei vielen Posts auf genau 2 (vermutlich eigener Auto-Kommentar, Hypothese); Interaktionen sind daher bei Feed-Posts nicht rein organisch.",
+    "Reels vom 08.11. (Kristall-Set) und 13.11. (Gemüsehobel) fehlen in der Analyse; Gründe nicht geklärt.",
+    "Alter der Woche-Reels 19–119 h gegen 9–30 Tage Basis: Vergleich nur mit Vorsicht, n=5.",
+    "Evolution 15.11. unvollständig (kein Gewonnen/Verloren-Wert), Tagesvolumen evtl. nicht abgeschlossen. Rohdatei-Kürzungen: Text auf 120 Zeichen."
+   ]
+  },
+  {
+   "kanal": "facebook",
+   "zeitraum": "2026-09-15 bis 2026-11-16 (Abfrage ca. 08:00 UTC). Feed-Beiträge 03.10.–15.11. (107 Zeilen), Reels 22.09.–14.11. (82 Zeilen)",
+   "anzahl_beitraege": 189,
+   "anzahl_woche_1015": 13,
+   "kennzahlen": "GEMESSEN (Metricool, brandId 6227837). Alter gerechnet bis 16.11. 09:00 Zürich.\n\nFEED-BEITRÄGE (Fotos/Alben, FBPO-Felder), Impressionen je Beitrag:\n- Basis 12.10.–09.11.: 25 Beiträge, Median 1, Mittel 1,3, Maximum 9, Summe 33; Reichweite Median 1, Summe 22; 12 von 25 mit 0 Impressionen. Reaktionen insgesamt 0, Shares 0, Klicks 0 (ganzer Zeitraum: 4 Klicks, 0 Reaktionen, 6 Kommentare auf 107 Feed-Beiträgen).\n- Woche 10.–15.11.: 8 Beiträge (15 Alben + 2 Fotos zählen ab 01.11.), Median 2, Mittel 2,9, Maximum 8, Summe 23; Reichweite Median 2, Summe 18; 1 von 8 mit 0. Alter 21–124 h. Reaktionen/Shares/Klicks/Linkklicks 0.\n- Zum Vergleich früher: 22.–30.09. 33 Beiträge, Median 1, Summe 67; 01.–11.10. 41 Beiträge, Median 0, Summe 147 (zwei Ausreisser 75 und 59 Impressionen). Facebook-Feed ist über den ganzen Zeitraum praktisch ohne Reichweite.\n\nREELS (FBRE-Felder; Feld «Reel Reach» liefert durchgehend 0 = unbekannt), Videoaufrufe je Reel:\n- 22.–30.09.: 18 Reels, Median 1,5, Summe 34.\n- 01.–11.10.: 28 Reels, Median 15, Mittel 75, Summe 2 098 (Anstieg ab 06.10.).\n- Basis 12.10.–09.11.: 31 Reels, Median 86, Mittel 94, Spanne 1–275, Summe 2 903, kein Reel mit 0. 27 davon 12.–25.10. (Median 88, Summe 2 538); 4 vom 04.–09.11. (Median 80, 4–202, Summe 365).\n- Woche 10.–15.11.: 5 Reels, Median 5, Mittel 13, Spanne 0–47, Summe 65, 2 von 5 mit 0 Aufrufen. Einzeln: Rose 11.11. 47 (ca. 110 h alt), Wellenlicht 12.11. 13 (ca. 95 h), Lederarmband 14.11. 5 (ca. 43 h), Mikrobagger 10.11. 0 (ca. 142 h), «5 Geschenke bis 30» 11.11. 0 (ca. 121 h).\n- Zum Vergleich ähnliche CJ-Clips der Vorwoche: Duftbefeuchter 05.11. 86, Speaker 07.11. 73, Wasserwellen-Lampe 04.11. 202, Tennisarmband 06.11. 4 (alle über 8 Tage alt).\n- Spitzen im Oktober (alle Autopilot-Produktreels, Alter über 3 Wochen): Charger-Nachtlicht 275, Notiztafel 231, Katzenstreu-Matte 212, Haarglätter 210, Vorratsbox 205, Heizplatte 202. Likes insgesamt in 82 Reels: 8, Kommentare: nicht ausgewiesen.\n\nKONTO-TAGESREIHE (Evolution):\n- Facebook-Follower (FBEV17): 9 am 15.09., 8 am 16.09., 7 bis 25.10., 6 ab 29.10. bis 15.11. Gewonnen im Zeitraum: 1 (Basis) bzw. 0 (Woche); Verlust-Feld zeigt 0 (Rückgang von 9 auf 6 daher nicht durch «Followers Lost» erklärt = unbekannt).\n- Seitenaufrufe (FBEV03): 12.10.–09.11. 0; 18.09. 2; Woche 10.–15.11. 13 (11.11. 3, 13.11. 4, 15.11. 6) = erste Seitenaufrufe seit Messbeginn in dieser Reihe.\n- Seiten-Medienaufrufe (FBEV49, Tagessumme): 06.–11.10. rund 2 330 (bis 441 je Tag), 12.10.–09.11. rund 3 160 (meine Abschrift der Tagesreihe, einzelne kleine Tage fehlen), Woche 10.–15.11. 137 (Maximum 61 am 11.11., danach 27, 21, 6, 17). Seit 26.10. fast durchgehend einstellig bis zweistellig, ausser 04.–05.11. (211, 98), 07.11. (86).\n- Klicks/Link-Klicks auf Beiträge insgesamt 4–6, Website-Klick-Metrik ist eingestellt (deprecated).",
+   "konto_entwicklung": "Follower 9 (15.09.) → 7 (ab 26.09.) → 6 (ab 29.10. bis 15.11.), kein Zuwachs in der Woche 10.–15.11. Seitenaufrufe: 13 in der Woche (3 am 11.11., 4 am 13.11., 6 am 15.11.), vorher praktisch 0 (nur 2 am 18.09.). Seiten-Medienaufrufe/Tag: Oktober bis 441, ab 26.10. meist unter 30, Woche 10.–15.11. 137 gesamt. Stories zählt Facebook mit eigenen Feldern (FBST) ohne Kennzahlen, nicht ausgewertet.",
+   "probleme": [
+    "Die Feed-Abfrage (56 000 Zeichen) landete in einer Datei, die Reel-Abfrage kam inline; die Reel-Zeilen und Beitragstexte habe ich daraus von Hand in facebook.json übertragen (Texte durch Themenstichwort ersetzt, Zahlen übernommen). Ein Übertragungsfehler bei einzelnen Reels ist möglich, Stichproben stimmten mit den Tagesreihen überein (z. B. Speaker 73, Tennisarmband 4).",
+    "Die Tagesreihe (Evolution) habe ich nur teilweise abgeschrieben (rund 40 von 61 Tagen); Summen für Medienaufrufe in der Basis sind daher untere Schätzwerte und nicht in facebook.json gespeichert.",
+    "Reel-Reichweite (FBRE11) liefert durchgehend 0; Videoaufrufe sind die einzige brauchbare Reel-Zahl. Link-Klicks, Reaktionen je Reel nur Likes (Kommentare nicht erfasst).",
+    "Das Format der Beiträge (Text-Video, CJ-Clip, Standbild-Reel) ist in Metricool nicht abfragbar; Gruppenvergleich nach Format deshalb nicht möglich.",
+    "Die Woche 10.–15.11. hat nur 5 Reels und 8 Feed-Beiträge, die jüngsten 21–43 h alt: Vergleich mit der Basis nur mit grosser Vorsicht. Planung nannte rund 38 Beiträge in der Woche, auf Facebook gemessen sind 13 (davon Stories nicht enthalten).",
+    "Zeitgrenze der Abfrage 2026-09-15; Reels in Metricool erst ab 22.09., Feed ab 03.10. gemeldet; frühere Daten fehlen.",
+    "Nichts geschrieben, geplant oder geändert (nur lesende Abfragen)."
+   ]
+  },
+  {
+   "kanal": "tiktok",
+   "zeitraum": "23.09.2026 (erster Beitrag, davor keine Daten) bis 15.11.2026; Stand der Abfrage 16.11. ca. 08:00 UTC. Zeitstempel der Beiträge sind UTC (Schweiz = +1 h). Schwerpunkt: Woche 10.-15.11. gegen Basis 12.10.-09.11.",
+   "anzahl_beitraege": 116,
+   "anzahl_woche_1015": 16,
+   "kennzahlen": "Alle Werte GEMESSEN (Metricool, Konnektor posts/evolution), Typ-Zuordnung (Text-Video, CJ-Clip) von mir aus Text, Dauer und Planung abgeleitet.\n\nWOCHE 10.-15.11.: 16 Beiträge, 4026 Aufrufe, Median 248 je Beitrag (Spanne 241-265), Median Reichweite 237,5 (Reichweite der Beiträge vom 14./15.11. noch 0 bzw. nicht geliefert), Likes 10, Kommentare 0, Shares 0. Anteil Für dich Median 99,0 % (Spanne 98,4-99,6 %). Mittlere Sehdauer (Gesamtzeit/Aufrufe) Median 1,42 s, das sind 17 % der Videolänge.\n - 14 Text-Videos (stumm, 8 s, einmal 11 s): Median 246 Aufrufe (241-265), Summe 3509, Median Sehdauer 1,38 s (17,2 % der Dauer), Für dich 98,8 %, Likes 6.\n - 2 CJ-Produktclips (Rose 11.11., Wellenlicht 12.11.): 260 und 257 Aufrufe, Sehdauer 1,43 s und 1,90 s, Likes 4. n=2, kein Vergleich möglich.\n - Fotobeiträge, sonstige Videos: 0 in dieser Woche.\n\nBASIS 12.10.-09.11.: 51 Beiträge, 13629 Aufrufe, Median 270 (132-510), Median Reichweite 252, Likes 65, Kommentare 3, Shares 4, Median Sehdauer 2,25 s (23,5 % der Dauer), Für dich Median 97,3 %.\n - 36 automatisch erzeugte Produktvideos (Okt, «Wusstest du das schon», 7-12 s): Median 274,5 Aufrufe (256-510), Sehdauer 2,42 s (25 %), Likes 51.\n - 4 Detailvideos 15-20 s (Okt): Median 261, Sehdauer 2,58 s (14,7 %).\n - 2 CJ-Clips (Duft 05.11., Wasser-Speaker 07.11.): 283 und 276 Aufrufe, Sehdauer 2,92 s (38,5 % der Dauer).\n - 2 Reels mit Piper-Stimme (Wasserwellen 04.11., Tennisarmband 06.11.): 263 und 261 Aufrufe, Sehdauer 1,85 s.\n - 7 Fotobeiträge (17.10. und 03.-08.11.): Median 207 Aufrufe (132-260), Median Reichweite 195, Für dich 95,5 %; die drei Fotos mit 132/153/163 Aufrufen sind die schwächsten 3 der ganzen Reihe.\nVOR BASIS (23.09.-11.10.): 49 Beiträge, Median 278; davon 3 Mode-Videos vom 30.09. (Leinen-Set Provence 26593, Abendkleid Aurora 28854, Abendkleid Sirène 39300 Aufrufe, Reichweite 14-21k) = 94747 von 125480 Aufrufen insgesamt (75 %). Sonstige Ausreisser: Smart-Projektor 23.09. 562, Wasserwellen-Leuchte 14.10. 510.\n\nVERGLEICH (Median Aufrufe je Beitrag): Woche 248 gegen Basis 270 (-8 %); Text-Videos 246 gegen automatische Produktvideos 274,5. Die Spanne aller 116 Beiträge ausser den 3 Mode-Ausreissern und 3 Fotos liegt fast durchgehend bei 241-310 Aufrufen; ein Typ-Effekt ist in den Aufrufen praktisch nicht erkennbar. Sehdauer: Woche 1,42 s gegen Basis 2,25 s (-37 %).",
+   "konto_entwicklung": "GEMESSEN (evolution, Tageswerte). Follower: 12.10. 557, 25.10. 560, 02.11. 564, 09.11. 567, 14.11. 568, 15.11. 569 (+12 in 5 Wochen). Basis 12.10.-09.11. (29 Tage): gewonnen 32, verloren 19, Saldo +13, Profilaufrufe 60 (rund 2,1 je Tag), 51 Videos. Woche 10.-14.11. (15.11. Follower-Zufluss noch leer): gewonnen 5, verloren 3, Saldo +1 (Folgerstand 569 auf 568), Profilaufrufe 17 (3,4 je Tag, 7/2/2/6/0). Posting-Pause 26.10.-02.11. (0 Beiträge): Follower 560 auf 564, Profilaufrufe 10 in 8 Tagen, also kein erkennbarer Einbruch ohne Beiträge. Zum Vergleich Profilaufrufe nach den Mode-Videos: 01.-04.10. 78, 87, 109, 84 je Tag, danach wieder 1-9. Tagesaufrufe Konto (evolution) 10.-14.11.: 766, 1012, 748, 505, 730, also 245-255 je Video, wie bei den Beiträgen.",
+   "probleme": [
+    "Gesamtzahl 116 Beiträge von 23.09. bis 15.11.; Zeitraum 15.09.-22.09. enthält keine Beiträge (Konto-Evolution nur leere Tage).",
+    "Antworten der Schnittstelle gingen inline und wurden nicht als Datei abgelegt: die Rohdaten (tiktok.json) habe ich von Hand in ein Skript übertragen (Text je Beitrag gekürzt, Zahlen übernommen). Tippfehler nicht ausgeschlossen; Stichprobe der Summen: Evolution-Aufrufe 10.-14.11. (766+1012+748+505+730=3761) = Summe der Beitrags-Aufrufe derselben Tage (3761), 12.10.-09.11. Summe 13629 gleich Evolution (13629). Beide Summen stimmen.",
+    "Reichweite (TKPO11) ist bei den Beiträgen vom 14./15.11. noch 0 und wurde bei Medianen der Reichweite ausgelassen; auch Sehdauer und Quellenanteile der jüngsten Beiträge sind womöglich noch nicht final.",
+    "TKPO15 (durchschnittliche Sehdauer) kommt nur als ganze Sekunden; ich habe stattdessen TKPO14 (Gesamtzeit) durch TKPO07 geteilt. TKPO13 (Anteil, der das ganze Video sah) liegt bei 0,0001 bis 0,002: Einheit nicht eindeutig, nicht ausgewertet. TKPO18 (Hashtag) liefert nur null; TKPO17/19/20/21 nur für Beiträge ab 03.11. abgefragt.",
+    "Typ-Zuordnung (Text-Video, CJ-Clip, automatisches Produktvideo, Detailvideo, Piper-Reel) ist meine Ableitung aus Text, Dauer und Planungsangaben, das Feld Typ der Schnittstelle kennt nur VIDEO oder PHOTO. Die Beiträge vom 12.-25.10. sind laut Text die automatisch erzeugten Produktvideos, die vier Detailvideos mit Link sind separat gezählt.",
+    "Zeitstempel der Schnittstelle sind UTC (Beleg: Rose geplant 15:00 Zürcher Zeit, erschienen 14:02 UTC). Die Alter-Angabe in tiktok.json bezieht sich auf 16.11. 08:00 UTC.",
+    "Abweichung zur Aufgabe: Fotobeiträge und Videos mit Stimme sind nicht Teil der Woche 10.-15.11., daher kein Wochenvergleich je Typ ausser Text-Video gegen Basis; CJ-Clips nur n=2 je Zeitraum.",
+    "Keine Schreibzugriffe: nur getAnalyticsDataByMetrics, getAnalyticsAvailableMetrics und ein lesender getScheduledPosts-Aufruf; keine Kundennamen oder Adressen verwendet."
+   ]
+  },
+  {
+   "kanal": "youtube_pinterest_threads",
+   "zeitraum": "Abfrage 15.09.–16.11.2026 (Marke 6227837), Tageswerte 12.10.–15.11.; Woche 10.–15.11. gegen Basis 12.10.–09.11. Stand Mo 16.11.2026 ca. 08:00 UTC",
+   "anzahl_beitraege": 91,
+   "anzahl_woche_1015": 23,
+   "kennzahlen": "YOUTUBE (GEMESSEN, Metricool). Kanal: Abonnenten 10 am 12.10. auf 13 am 11.–13.11. (Basis: +6 gewonnen, -3 verloren; Woche 10.–13.11.: 0 gewonnen, 0 verloren, Tage 14./15.11. ohne Wert). Kanal-Aufrufe je Tag (Konto-Evolution): Basis 5949 in 29 Tagen = 205 je Tag (Tagesmedian 55); Woche 10.–13.11. 792 in 4 Tagen = 198 je Tag (Tagesmedian 214); 14./15.11. noch ohne Wert. Pro Short (Aufrufe im Abfragefenster, Alter beim Messen mind. 5 Tage): 15.09.–11.10. 31 Shorts, Median 170, Spanne 20–1230, Likes 53; Basis 12.10.–09.11. 26 Shorts, Median 110, Spanne 3–1253, Summe 5978, Likes 54, Sehdauer im Mittel ca. 2 Sekunden je Aufruf (Median); davon 12.–24.10. 21 Shorts Median 126, 25.10.–09.11. nur 5 Shorts Median 65 (Spanne 37–378). Woche 10.–15.11.: in der Videoliste nur 2 Shorts (beide 10.11.): 74 und 181 Aufrufe (Alter rund 138 und 144 Stunden), 0 Likes, 0 Kommentare, 0 Shares, Sehdauer 1–2 s. Laut Planer wurden am 11.11. drei Shorts veröffentlicht (Rose, Hochlandrind, 5 Geschenke bis CHF 30); sie fehlen in der Videoliste (unbekannt warum). Verkehrsquellen 10.–16.11.: Shorts-Feed 4390, YouTube-Suche 304, Kanalseite 42, andere Seite 17, extern 4, Abonnentenfeed 1 (Einheit unklar, Skala passt nicht zu Tageswerten, nur Anteilsbild). PINTEREST (GEMESSEN). Follower 3 (12.10.) auf 4 (ab 15.10.), seither konstant, Woche +0. Konto-Impressionen je Tag: Basis 47762 in 29 Tagen = 1647 je Tag (Tagesmedian 1026, Spitzen 18.10. 8475, 19.10. 4772, 17.10. 3764, 16.10. 3735, 23.10. 3207); Woche 10.–13.11. 3966 in 4 Tagen = 992 je Tag (863, 764, 713, 1520), 14./15.11. noch ohne Wert. Pin-Klicks: Basis 706 = 24 je Tag, Woche 56 in 4 Tagen = 14 je Tag. Ausgehende Klicks (zur Webseite): Basis 39 in 29 Tagen = 1,3 je Tag (Median 1), Woche 3 in 4 Tagen. Speichern: Basis 57 = 2,0 je Tag, Woche 7 in 4 Tagen = 1,8 je Tag. Pro Pin der Woche (16 Pins, 10.–15.11., 12 Produkt-/Wichtel-Pins und 4+ ohne Titel): Impressionen Summe 37, Median 2, Spanne 0–6; 0 Speichern, 0 Klicks, 0 ausgehende Klicks; 10 davon mit 6 oder weniger, 6 Pins (13.–15.11.) mit 0, Alter nur 1–6 Tage. Top-Pins gesamt: 414 Impressionen (03.10.), 130 (14.10.), 95 (29.09.). THREADS (GEMESSEN). Follower 3 durchgehend, +0 (Basis und Woche). Posts: Basis 12.10.–09.11. rund 9 Posts, Woche 10.–15.11. 5 Video-Posts. Beitragsaufrufe: Basis 15 in 29 Tagen (Median je Tag mit Wert 1,5); Woche nur 5 Aufrufe in Konto-Tageswerten (11.11. 1, 14.11. 4); Likes Basis 1 (25.10. Herrenuhr), Woche 0; Antworten, Reposts, Quotes: 0 oder kein Wert. Pro Post (15 Posts seit 25.09.): Aufrufe Median 2 (Spanne 1–7, 7 Posts mit Wert bis 09.11.); Wochenposts: Lederarmband 14.11. 4 Aufrufe, 5 Geschenke 11.11. 1 Aufruf, die drei anderen (10., 12., 13.11.) ohne Wert (kein Messwert, nicht gleich 0). ALTER: Woche-Posts 1–6 Tage alt; 14./15.11. noch kaum messbar.",
+   "konto_entwicklung": "YouTube Abonnenten: 10 (12.10.) → 12 (24.10.) → 13 (ab 08.11.), Woche 10.–13.11. +0, 14./15.11. ohne Wert. Pinterest Follower: 3 (12.10.) → 4 (ab 15.10.), Woche +0. Threads Follower: 3 durchgehend (12.10.–15.11.), +0. Profilbesuche/Websiteklicks nur bei Pinterest: ausgehende Klicks 39 in 29 Tagen (Basis), 3 in 4 Tagen (10.–13.11.). Für YouTube und Threads gibt es keinen Websiteklick-Wert in Metricool (unbekannt).",
+   "probleme": [
+    "YouTube: Videoliste (YTVP/YTVV) enthält nach dem 10.11. 15:07 keine Shorts mehr, obwohl der Planer am 11.11. drei Shorts als PUBLISHED führt (Rose FoD_2LfxjCw, Hochlandrind TdL1K__wXak, 5 Geschenke XfE1-B8iqb8); 12.–15.11. nicht geprüft. Pro-Short-Vergleich für die Woche daher nur mit 2 Shorts möglich.",
+    "YouTube-Evolution: Tageswerte 14.11. und 15.11. leer (Verzug), Woche nur 4 Tage (10.–13.11.) auswertbar.",
+    "Pinterest: Tageswerte 14./15.11. leer; Pin-Liste hat rund 480 Pins, im Rohdatei-JSON nur Woche 10.–15.11. (16 Pins) und Top-10 einzeln, der Rest nur über Konto-Evolution aggregiert. Summe der Pin-Impressionen und Konto-Impressionen stimmen nicht überein (Konto deutlich höher), Ursache unbekannt.",
+    "Pinterest: viele Pins ohne Titel in der Liste, Zuordnung zu Produkt/Kampagne nicht möglich; Alter der Pins der Woche nur 1–6 Tage.",
+    "Threads: Aufrufe für drei Wochenposts ohne Wert (null), Likes/Antworten meist leer; Wochenstichprobe nur 5 Posts; Follower 3, daher fast keine Aussagekraft.",
+    "YouTube-Verkehrsquellen-Zahlen (Shorts 4390) passen nicht zu den Tagesaufrufen (rund 800 in 4 Tagen), Einheit unklar; nur als Anteilsbild verwendet.",
+    "Abfragen mit Monatsgrenze Zeitzone (+02:00/+01:00 am 25.10.) nicht einzeln geprüft; Zeitstempel der Beiträge ohne Zeitzone angegeben (vermutlich Schweizer Zeit).",
+    "Nur lesende Abfragen (getAnalyticsDataByMetrics, getScheduledPosts für 11.11.); nichts geändert. Zweite Marke «Pias friedliche Welt» nicht berührt."
+   ]
+  },
+  {
+   "kanal": "planer",
+   "zeitraum": "Planer 10.11.–23.11.2026 (Abfrage Mo 16.11. ca. 09:00 Zürich, Zwei-Tage-Fenster, brandId 6227837, nur gelesen)",
+   "anzahl_beitraege": 107,
+   "anzahl_woche_1015": 76,
+   "kennzahlen": "GEMESSEN, je Netzwerk (Provider-Zeilen; ein Beitrag auf FB+IG zählt je Netzwerk einmal):\n10.–15.11. (76 Zeilen): Facebook 17 PUBLISHED / 0 ERROR / 0 offen / 1 Entwurf (18). Instagram 17/0/0/1 (18). TikTok 16/0/0/1 (17). YouTube 10/0/0/1 (11). Threads 5/0/0/1 (6). Pinterest 6/0/0/0 (6). Summe 71 PUBLISHED, 0 ERROR, 5 Entwürfe (Kristallspitzen 13.11. FB/IG/TikTok/YouTube, Rose-Threads 15.11.), nichts ausstehend (alle Termine vorbei). Dazu Stories: 4 Story-Beiträge (10., 12., 13., 14.11., je FB+IG) PUBLISHED, in den Zahlen enthalten.\nJe Tag veröffentlicht (FB/IG/TT/YT/Threads/Pin): Di 10.11. 3/3/3/2/1/1; Mi 11.11. 4/4/4/3/1/1; Do 12.11. 3/3/3/2/1/1; Fr 13.11. 2/2/2/1/1/1 (+ je 1 Entwurf FB, IG, TT, YT); Sa 14.11. 3/3/3/2/1/1; So 15.11. 2/2/1/0/0/1 (+ Threads-Entwurf).\n16.–23.11. (58 Zeilen): Facebook 8 PENDING mit autoPublish / 3 Entwurf (11). Instagram 8/4 (12). TikTok 10/3 (13). YouTube 2/3 (5). Threads 8/1 (9). Pinterest 8/0 (8). Summe 44 PENDING mit autoPublish an, 14 Entwürfe (autoPublish aus, draft true), 0 ERROR (noch nichts fällig).\nWoche 16.–22.11. im Detail: autoPublish an = Foto-Beiträge der Reihe Weihnachtskugeln, Retro-Tasse, Weihnachtsstrumpf, Schminkspiegel, Lichterbaum, Schmuckkästchen, Christbaumdecke, Stuhlbezug (je Threads, FB+IG, TikTok-Foto, Pinterest) plus Hund/Katze (TikTok+YouTube 16.11. 18:30), Medizin-Box-Short 17.11., Wasserwellen-TikTok 19.11. Entwurf = Krallenschleifer IG 16.11., Sternenlicht (IG/FB 16.11., TikTok 17.11., YouTube 19.11.), Gemüsehobel (YouTube/TikTok 17.11. 13:00, FB+IG-Reel 17.11. 20:00), Knoblauchhacker (Reel, Threads, TikTok, Short am 18.11.). Ab 20.11. nur Foto-Beiträge ohne Video, YouTube dort 0, Reels 0.\nVergleich Plan (38) und Messung: der Planer enthält für 10.–15.11. 60 Beiträge bzw. 76 Netzwerk-Zeilen, also mehr als die rund 38 (die frühere Zahl zählte offenbar nur die Metricool-Entwürfe der Parallelsitzung; Altbestand und Fotobeiträge kommen dazu). Veröffentlicht 71 von 76 Zeilen (93 %).\nAlter der jüngsten Beiträge zum Messzeitpunkt (nur Planer, keine Reichweite abgefragt): 15.11. 20:00 Pin ca. 13 h, 15.11. 12:00 TikTok ca. 21 h.",
+   "konto_entwicklung": "Nicht abgefragt (dieser Kanal 'planer' liest nur den Planer, keine Follower- oder Profilzahlen).",
+   "probleme": [
+    "Die Schnittstelle getScheduledPosts lieferte alle Fenster direkt als Text, nicht als Datei; die Rohdaten wurden darum von Hand in ein Skript übertragen und in planer.json als je Netzwerk eine Zeile geschrieben (134 Zeilen, 107 Beiträge). Kennzahlen wie 'Alter in Stunden' und Reichweite fehlen, weil dieser Kanal nur Status liefert.",
+    "Wegen der Übertragung von Hand sind kleine Abschreibfehler bei Zeit oder Titel nicht auszuschliessen; Status, Zahlen und ids wurden gegen die Antwort geprüft.",
+    "Fehlergründe: keine ERROR-Zeile vorhanden, darum nichts zu berichten. Gelöschte oder ersetzte Beiträge sind im Planer unsichtbar (Gemüsehobel 13.11.).",
+    "Das Fenster 20.–23.11. wurde in einer Abfrage geholt (vier Tage); die Antwort war vollständig, aber ein sehr grosses Fenster könnte Einträge abschneiden, das ist nicht geprüft.",
+    "Kein Zugriff auf den Lauf-Verlauf des Workflows 'Metricool-Freigabe' in dieser Teilaufgabe, daher keine Aussage warum Entwürfe nicht freigegeben wurden."
+   ]
+  },
+  {
+   "kanal": "shop",
+   "zeitraum": "15.09.2026 bis 16.11.2026 (ca. 08:00 UTC); Quellen-Tabellen 7, 14 und 45 Tage (45 Tage = ab ca. 02.10.)",
+   "anzahl_beitraege": 0,
+   "anzahl_woche_1015": 0,
+   "kennzahlen": "Alle Zahlen GEMESSEN (ShopifyQL). Format: Sitzungen / mit Warenkorb / Kasse erreicht / Kasse abgeschlossen.\nALLE LÄNDER 7 Tage: direct 2257/11/7/0; Google 51/4/2/1; Facebook 10/0/0/0; Pinterest 7/1/0/0; Instagram 3/0/0/0; TikTok 0. Social gesamt 20 Sitzungen (Facebook 10, Pinterest 7, Instagram 3), 1 Warenkorb, 0 Kasse.\nALLE LÄNDER 14 Tage: direct 2963/29/14/4; Google 93/7/3/2; Facebook 32/0/0/0; Pinterest 14/1/0/0; Instagram 3/0/0/0. Social 49 Sitzungen, 1 Warenkorb, 0 Kauf.\nALLE LÄNDER 45 Tage: direct 4450/72/46/13; TikTok 402/4/2/0; Facebook 306/0/0/0; Google 229/12/5/4; Pinterest 41/1/0/0; Instagram 5/0/0/0; chatgpt (unknown) 6/0/0/0.\nSCHWEIZ 7 Tage: direct 259/10/6/0; Google 41/4/2/1; Facebook 6/0/0/0; Instagram 3/0/0/0; Pinterest 0, TikTok 0.\nSCHWEIZ 14 Tage: direct 540/22/11/3; Google 79/7/3/2; Facebook 21/0/0/0; Instagram 3/0/0/0.\nSCHWEIZ 45 Tage: direct 1196/55/33/12; TikTok 397/4/2/0 (fast alles der bezahlte Test 01.-04.10.); Google 199/11/4/3; Facebook 56/0/0/0; Instagram 5/0/0/0; Pinterest 1/0/0/0.\nSocial-Sitzungen je Woche (Montag): 26.10. Facebook 26 / Pinterest 4; 02.11. Facebook 22 / Pinterest 7; 09.11. Facebook 9 / Pinterest 7 / Instagram 3; 16.11. (nur heute) Facebook 1.\nTagesverlauf Social seit 15.09.: Sept 0-14/Tag; Spitze 01.-04.10. mit 152-168/Tag (bezahlter TikTok-Test); 05.-10.10. 13-22/Tag; ab 21.10. meist 1-3/Tag; 31.10.-03.11. 11, 8, 7, 11 (Facebook); 10.-16.11.: 2, 4, 2, 2, 4, 1, 1 (rund 2/Tag, keine sichtbare Änderung durch die neue Woche).\nUTM 7 Tage (alle Länder): Pinterest/organic 5; google/product_sync 3; instagram/bio/profil/ig_kurzlink 2; tiktok/video_ad 1; shop_campaigns/paid 1; ig/social/link_in_bio 1; insgesamt 13 Sitzungen mit utm_medium, 0 Warenkörbe über 0, 0 Kasse. Keine UTM mit youtube, threads, tiktok/bio oder facebook/social in den letzten 7 Tagen.\nUTM-Quellen instagram/tiktok/youtube/facebook/pinterest/threads/ig/metricool zusammen, Tagesverlauf 10.-15.11.: 1, 1, 0, 1, 3, 1 = 7 Sitzungen (16.11.: 0).\nUTM 45 Tage: tiktok/paid/lernen-okt26 (Sirene 169, Provence 133, Aurora 112 = 414 Sitzungen, 10 Warenkörbe, 6 Kasse, 0 Kauf); facebook/social/autopilot (bild 44, reel 24, karussell 4 = 72 Sitzungen, 0 Warenkorb); Pinterest/organic 32/0; threads/social/autopost 3/0; instagram/bio/profil/ig_kurzlink 2/0.\nEinstiegsseiten Social 14 Tage: 42 Sitzungen, breit gestreut (Boho-Set 4, Startseite 4, Provence-Set 3, /collections/aus-tiktok-und-instagram 2, übrige je 1-2; mehrere /fr/-Produktseiten), 1 Warenkorb (Startseite), 0 Kauf. Einstiege 45 Tage: Sirene 166, Provence 137, Aurora 110 (alle TikTok-bezahlt), Startseite 14, Weihnachtsgirlande 11.\nBestellungen 45 Tage: 20 Zeilen/Bestellungen laut Quellen-Abfrage, 0 mit Social-Quelle (order_referrer: ohne Angabe 13, Google 4, luxestyle intern 3; UTM: chatgpt.com 5 = #1029, #1030, #1031, #1034, #1039; ohne UTM 15). Neu seit 10.11.: #1040 (CHF 59.90, ohne Quelle), #1041 (CHF 23.90, Referrer Google). Keine Social-Bestellung seit mindestens 02.10.",
+   "konto_entwicklung": "Nicht Teil dieser Shop-Messung (Follower, Profilbesuche, Websiteklicks stehen in den Kanalberichten). Shop-seitig: Social-Sitzungen je Woche Facebook 26, 22, 9 (26.10., 02.11., 09.11.), Pinterest 4, 7, 7, Instagram 0, 0, 3.",
+   "probleme": [
+    "Verweisquellen YouTube und Threads erscheinen nicht als eigene referrer_name-Zeilen; /yt-Kurzlink-UTM (youtube/bio) 0 Sitzungen in 45 Tagen sichtbar, ob nie geklickt oder nicht erfasst, ist unbekannt.",
+    "TikTok-Bio-Kurzlink /tt (utm_source=tiktok, medium=bio) in 45 Tagen nicht sichtbar; TikTok-Bio ist nur Text bei unter 1000 Follower (früher gemessen).",
+    "Fortlaufende Zahlen sind sehr klein (0-4 Social-Sitzungen/Tag): keine belastbaren Gruppenvergleiche zwischen Formaten oder Tagen möglich.",
+    "Beitragsgenaue Zuordnung unmöglich, weil utm_content bei den neuen Beiträgen keinen Beitragsbezug trägt.",
+    "45-Tage-Fenster beginnt ca. 02.10.: der Beginn des bezahlten TikTok-Tests (30.09.-01.10.) ist zum Teil abgeschnitten; Wochenreihe zeigt 530 TikTok-Sitzungen in der Woche ab 28.09.",
+    "Landing-Abfrage mit LIKE nicht möglich (ShopifyQL-Syntaxfehler), daher keine gezielte Zählung der Landungen auf /collections/aus-tiktok-und-instagram über 45 Tage; nur 14-Tage-Top-Liste (2 Sitzungen).",
+    "Bestellzeilen in der Quellen-Abfrage (20) schliessen Retouren-/Nullzeilen ein (#1021 und #1004 negativ, #1027 mit 0); Zahl echter Verkaufsbestellungen daher etwas kleiner.",
+    "Nur lesend gearbeitet; keine Kundendaten abgefragt oder gespeichert (nur Bestellnummer, Betrag, Quelle)."
+   ]
+  }
+ ]
+}

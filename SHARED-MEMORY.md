@@ -1,5 +1,16 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Claude (Shop-Sitzung): Social-Analyse und Besitzer-Entscheide zu Metricool ·16.11.2026
+
+Analyse aller Kanäle seit 22.09. in `dropship/social-analyse-1611/README.md` (Rohdaten, Prüfurteile). Kurz: Social bringt Aufrufe, aber kaum Shop-Besuche (20 Sitzungen in 7 Tagen, 0 Käufe in 45 Tagen); Fotos, Karussells, Threads und Facebook-Feed erreichen fast niemanden.
+
+**Entscheide des Besitzers (16.11. ca. 08:40 UTC, gelten für alle Sitzungen und Codex):**
+- **Nur noch Videos:** keine neuen Fotos, Karussells, Threads- oder TikTok-Fotobeiträge in Metricool anlegen. Eingeplantes läuft aus.
+- **Kein TikTok-Bibliotheks-Sound:** `autoAddMusic` nie setzen (gehört zur Musikregel vom 10.11.).
+- **Hobel und Sternenlicht** hat der Besitzer selbst auf Entwurf gestellt; sie stehen auf der Halteliste und bleiben gehalten, bis er sie freigibt.
+- **Drei Videos vom 15.11.** («3 Ideen für Hund und Katze», Medizin-Box, Wasserwellen-Wiederholung) waren direkt mit autoPublish angelegt; jetzt Entwurf und Halteliste. Gemessen: alle drei tragen durchgehend Musik. Entscheid des Besitzers offen.
+- **Regel:** Beiträge nie direkt mit autoPublish anlegen, immer als Entwurf, damit die Freigabe prüft. Wer zurückstellt, trägt die uuid in `dropship/METRICOOL-HALTEN.txt` ein.
+
 ## Lebenspfad: Gestaltung, Lebensbuch, Grafik und lokale Pause ·16.11.2026
 
 Benutzerauftrag Lebenspfad verbessern, Einzelspieler und bereits freigegebene Spiele-Veröffentlichung. Neue Papier/Teal-Oberfläche mit kompakter Handyreise, Lebensbuch aus echter Biografie, anpassbare alternde Standardfiguren, korrekte Standhöhe auf Felddeckeln. Statisches Terrain/Brett und Vegetation räumlich gebündelt, Emoji-Texturen geteilt, automatische Auflösung plus drei gespeicherte Grafikprofile. Lokale Pause hält jetzt auch Drehrad, Quiz-Frist und Musik an; Online-Lockstep läuft beim Lesen lokaler Infos weiter. GEMESSEN: echter kurzer Solo-Lauf19 Würfe/neun Entscheidungen bis Feld143, Save/Reload identisch, Abschluss einmal gezählt und Neustart möglich;18 Modul-Prüfgruppen und sieben Pause/Grafik-Prüfungen grün; Zweiclient-Replay16 Würfe/neun Entscheidungen/zwei Gabelungen mit26 gleichen Kontrollpunkten. Cloud-Softwareprobe2,87→12,50rAF/s bei Renderverhältnis1→0,55; keine reale Handy-/60FPS-Zusage. Replay ist kein realer PeerJS-/Internettest. Details und Grenzen: spiele-dev/lebenspfad/VERBESSERUNGEN.md. Lokale Gesamt-CI startet wegen schreibgeschütztem HOME nicht; reale PR-, Deploy- und HTTPS-Prüfung separat. Kein Shop-/Social-/Konto-/Secret-Eingriff.
