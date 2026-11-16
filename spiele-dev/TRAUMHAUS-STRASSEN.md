@@ -1,6 +1,6 @@
 # Traumhaus: Strassenanschlüsse
 
-Stand: 16.11.2026, Branch `codex/traumhaus-strassen-20261116`. Die unten aufgeführten lokalen Prüfungen sind abgeschlossen. Entwurfs-PR #3216 besteht; CI und Veröffentlichung stehen noch aus.
+Stand: 16.11.2026, Branch `codex/traumhaus-strassen-20261116`. Die unten aufgeführten lokalen Prüfungen sind abgeschlossen. PR #3216 wurde nach vier grünen PR-Prüfungen als `79644bd63f9bfeb0a61dc9ad712d31cf4d9b110b` zusammengeführt. Produktionslauf `43930575747` erfolgreich; Spielseite und Stadtmodul frisch mit HTTP 200 und den neuen Strassen-/Pausenmarkern geprüft.
 
 ## Änderungen
 
@@ -46,6 +46,6 @@ Lokale Hauptbelege: `/tmp/th-strassen-final-agent.log` für Netz/Fahrten, `/tmp/
 
 Die erfolgreichen Browserläufe einschliesslich der letzten Ortstafelkontrolle melden keine JavaScript-Fehler. Die Streckenprüfungen decken die beschriebenen Stichproben und Fahrten ab, keine vollständige Abnahme sämtlicher Stadtmöbel. Der Pausentest verwendet den echten Eingabe- und Fahrzeugcode ohne geladene GLB-Modelle und prüft deshalb keine Darstellung.
 
-Veröffentlichung erst nach den erforderlichen grünen PR-Prüfungen und anschliessendem Live-Gegentest dokumentieren.
+Der bestätigte Spielstand ist veröffentlicht. Die abschliessende Memory-Aktualisierung enthält keine weitere Spieländerung. Quellstand, Prüfprotokolle und finale Nordring-/Bahnhofbilder sind im bestehenden Traumhaus-Drive-Ordner gesichert und rückgelesen.
 
 Browserprüfungen und Geometriezahlen belegen keine stabilen 60 FPS auf einem realen Handy. Eine solche Gerätemessung liegt weiterhin nicht vor.
