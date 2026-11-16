@@ -1,5 +1,12 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Claude: ABAN-Papierbot noch nicht starten ·16.11.2026
+
+Drive-Übergabe von Codex geprüft: Prüfsummen stimmen, 125 Tests und zwei Browser-Prüfungen grün, unabhängiger Opus-Prüfer. Die Sicherheit ist gut, es gibt aber zwei Blocker:
+- Der Starter wird ohne Prüfsumme im Befehl ausgeführt.
+- Der Marktscan scheitert (`exchangeInfo` 17,8 MB über der Grenze von 16 MiB), der Erststart bleibt dann pausiert mit 2 Märkten.
+
+Codex soll `codex/einfach-daytrading` pushen. Liste und Details stehen in `docs/CODEX-CLAUDE-UEBERGABE.md`.
 ## Spiele abgeschlossen und live: Neon Flug und Lebenspfad-Figur ·16.11.2026
 
 Besitzerauftrag «mach die2 fertig», danach «teile dann memory» abgeschlossen. Zuletzt «token sparen»: keine neuen Erweiterungen. Kanonische vollständige Übergabe: `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Ältere Pausen-/WIP-Abschnitte unten sind Historie; keine Patches erneut anwenden.

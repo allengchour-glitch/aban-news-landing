@@ -1,5 +1,37 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Claude: ABAN-Papierbot empfangen und geprüft, noch nicht startklar ·16.11.2026
+
+Empfang der Drive-Übergabe `CLAUDE-CODE-BOT-AKTUELL.md` (Stand 17:55 UTC) bestätigt. Besitzer (Auswahlfrage): «Prüfen und ins Repo».
+
+GEMESSEN (Claude, 16.11. abends):
+- Prüfsummen: ZIP `5954af99…6ded` (1 300 133 Byte) und Bootstrap `d623973f…4611` gleich Übergabe und SHA-Datei. Starter `0d1841a3…7153`. Starter und Bootstrap im Patch byteweise gleich den Drive-Dateien.
+- Tests aus dem Paket: Bootstrap 12 von 12, Dienst-Suite (dauerstart, drive_control, remote_analysis, cloud_init, more_coins, autobot, diagnose) 99 von 99, Entscheidungsanzeige 14 von 14, die zwei Browser-Prüfungen grün. Nicht gelaufen: die Tests von `tools/trading/cloud` (Ordner fehlt im Repo).
+- Mutationsprobe Bootstrap: 5 von 9 erkannt. Ungetestet sind Root-Prüfung und Konfig-Rechte in `main()`, die Liste der erlaubten Dateien und die Präfixprüfung.
+- Unabhängiger Prüfer (Opus): Sicherheit gut. Nur `127.0.0.1:8781` mit Host-, Origin- und Token-Prüfung, kein Pfad zu Orders, Transfers oder Schlüsseln, nichts an `/opt/abannews`. Trotzdem nicht starten, bevor die zwei Blocker behoben sind.
+
+**Blocker, vor dem Start beheben:**
+1. Der Starter läuft als root ohne eigene Prüfung. Die SHA256 des Starters in den Befehl nehmen (`sha256sum -c` vor `bash`) und Anleitung und Übergabe damit nachführen.
+2. Der Marktscan beim Erststart scheitert. `exchangeInfo` hat 17 818 855 Byte (von Claude gemessen am 16.11.), die Grenze in `daytrading_markets.py` (`_get`) liegt bei 16 MiB. `daytrading_cloud_init.py` fängt den Fehler, startet nur BTC und ETH und pausiert. Der Installer meldet trotzdem Erfolg, und die vorhandene Datenbank verhindert jede spätere Erstinitialisierung. Fix: `exchangeInfo?symbols=[…]` (laut Prüfer 98 914 Byte, 20 von 20 TRADING). Im Installer zusätzlich `desiredRunning`, `continuousAnalysis`, die Marktzahl und einen leeren `error` verlangen.
+
+**Wichtig, im selben neuen Paket:**
+3. Jeder Schritt startet Node und schreibt den ganzen Zustand mit fsync neu, ohne Grenzen in der Dienstdatei. Offline-Messung des Prüfers: 12 Märkte brauchen rund 19 % eines Kerns, bei vollem Handelsbuch bis 15 s je Zyklus. Die Schreiblast schätzt er auf Terabyte je Tag (auf dem Server nicht gemessen). Sofort in die Dienstdatei: `CPUQuota=50%`, `MemoryMax=768M`, `IOWeight=10`, `Nice=10`, `TasksMax=64`. Danach nur bei Änderung speichern, die Handelsliste in eine eigene Tabelle legen, WAL nutzen.
+4. Bei grossem Buch sind die Kurse vor dem Schritt `bars` älter als 10 s, daraus entsteht eine Fehlerschleife. Den Kurs direkt vor jedem Schritt holen.
+5. Die Erstinitialisierung ist nicht atomar: in eine temporäre Datei schreiben und erst nach `full-paper` umbenennen.
+
+**Klein:**
+- Broker- und Live-Module (`pilot2_live.py` und andere) liegen ungenutzt im Serverpaket. Besser das Paket nach einer Positivliste bauen.
+- Das Steuer-Token ist für alle lokalen Prozesse lesbar.
+- Kein Socket-Timeout im Server.
+- `python3 -s` fehlt, die systemd-Härtung lässt sich erweitern.
+- Keine Rücknahme bei einem gescheiterten Update.
+- Den Node-Pfad mit `realpath` prüfen und `{"type":"module"}` mitliefern.
+- Die Rechte von `/run/aban-backup` prüfen.
+- Das Journal wächst ohne Grenze.
+
+**Repo:** Der Patch `fcb7781` (4 Commits, Basis `f095f42`) geht auf `main` nicht auf. 111 der 211 Programmdateien und `tools/trading/cloud/` fehlen in `main`, und der Zweig `codex/einfach-daytrading` liegt nicht auf GitHub. **Bitte den Zweig pushen oder als PR nach `main` stellen.** Claude prüft ihn dann und merged. Bis dahin kommt nichts aus dem Patch nach `main`.
+
+**Besitzer:** Den Starter vorerst NICHT ausführen. Nach dem Neubau prüft Claude die neuen Prüfsummen erneut und nennt den Befehl mit Starter-Prüfsumme.
 ## Spiele abgeschlossen und live: Neon Flug und Lebenspfad-Figur ·16.11.2026
 
 Besitzerauftrag «mach die2 fertig», danach «teile dann memory» abgeschlossen. Zuletzt «token sparen»: keine neuen Erweiterungen. Kanonische vollständige Übergabe: `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Ältere Pausen-/WIP-Abschnitte unten sind Historie; keine Patches erneut anwenden.
