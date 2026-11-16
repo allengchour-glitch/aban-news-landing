@@ -187,6 +187,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
 @media(prefers-reduced-motion:reduce){.album.play .polaroid{animation:none;opacity:1}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 </style>
+<link rel="stylesheet" href="/css/lebenspfad.css?v=124e3c83a8fe">
 </head>
 <body>
 <div id="lpvig"></div>
@@ -203,6 +204,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(180deg,#6ec8f5,
     <div id="progSegs" style="display:flex;height:8px;border-radius:8px;overflow:hidden;opacity:.85"></div>
     <div id="progDots" style="position:relative;height:8px"></div>
   </div>
+  <section id="journeyPanel" aria-label="Deine Lebensreise"><div class="journey-heading">Deine Lebensreise</div><div class="journey-progress" id="journeyProgress"></div><div class="journey-next" id="journeyNext"></div><div class="journey-last" id="journeyLast"></div><button type="button" id="journeyOpen" class="journey-open">Lebensbuch öffnen</button></section>
   <div id="keysHelp"></div>
 </div>
 <!-- 🌐 Online-Präsenz-Anzeige + Auto-Pause (nur im Online-Modus sichtbar) -->
@@ -348,6 +350,8 @@ window.LP_EVENTS=[[{"t":"Der neue Spielplatz","x":"Ein brandneuer Spielplatz wir
     .catch(function(e){try{_origLoad.call(self,url,onLoad,onProgress,onError);}catch(e2){if(onError)onError(e2);}});
   };})();
 </script>
+<script src="/js/lebenspfad/static-batches.js?v=21a6746ebc35"></script>
+<script src="/js/lebenspfad/instance-chunks.js?v=cc75ebe983ee"></script>
 <script src="/js/vendor/RGBELoader.js"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script>
@@ -398,11 +402,16 @@ if(DIAGON){window.addEventListener("error",function(e){
 }catch(e){}})();
 var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 var renderer=new THREE.WebGLRenderer({antialias:true}); // AA IMMER an (auch mobil): simple Szene, ohne AA Treppchen-Kanten an allen Feld-Rändern
-renderer.setPixelRatio(Math.min(devicePixelRatio,IS_COARSE?1.5:2));renderer.setSize(W,H); // 📱 Touch-Geräte: DPR-Deckel 1.5 spart Füllrate
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=IS_COARSE?THREE.PCFShadowMap:THREE.PCFSoftShadowMap; // 📱 mobil: günstigerer Schatten-Filter
-renderer.outputEncoding=THREE.sRGBEncoding;
+var lpSoftware=false;try{var lpGL=renderer.getContext(),lpExt=lpGL.getExtension("WEBGL_debug_renderer_info");lpSoftware=!!(lpExt&&/swiftshader|llvmpipe|software/i.test(lpGL.getParameter(lpExt.UNMASKED_RENDERER_WEBGL)));}catch(e){}
+var lpMode="auto";try{lpMode=JSON.parse(lsGet("lp_opt")||"{}").graphics||"auto";}catch(e){}
+var lpMaxRatio=Math.min(devicePixelRatio,IS_COARSE?1.25:1.5),lpRatio=lpMode==="details"?lpMaxRatio:Math.min(lpMaxRatio,(lpSoftware||lpMode==="light")?.65:1.25),lpTime=0,lpFrames=0;
+renderer.setPixelRatio(lpRatio);renderer.setSize(W,H);
+function applyGraphics(mode){lpMode=mode;lpRatio=mode==="details"?lpMaxRatio:Math.min(lpMaxRatio,(lpSoftware||mode==="light")?.65:1.25);renderer.setPixelRatio(lpRatio);renderer.shadowMap.enabled=mode==="details"||(!lpSoftware&&mode!=="light");scene.traverse(function(o){if(o.material){var ms=Array.isArray(o.material)?o.material:[o.material];ms.forEach(function(m){m.needsUpdate=true;});}});lpTime=0;lpFrames=0;}
+function tuneGraphics(dt){if(lpMode!=="auto"||document.hidden||!Number.isFinite(dt)||dt<=0||dt>2)return;lpTime+=Math.min(dt,.25);lpFrames++;if(lpTime<1.5)return;if(lpTime/lpFrames>.036&&lpRatio>.55){lpRatio=Math.max(.55,+(lpRatio-.1).toFixed(2));renderer.setPixelRatio(lpRatio);}lpTime=0;lpFrames=0;}
+renderer.shadowMap.enabled=lpMode==="details"||(!lpSoftware&&lpMode!=="light");renderer.shadowMap.type=IS_COARSE?THREE.PCFShadowMap:THREE.PCFSoftShadowMap; // 📱 mobil: günstigerer Schatten-Filter
+renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.95;
 // Echtes Himmelslicht (HDRI, PolyHaven CC0) -> realistische Reflexe auf allen Materialien
-if(THREE.RGBELoader&&renderer.capabilities.isWebGL2){try{new THREE.RGBELoader().load("/textures/sky_1k.hdr",function(tex){
+if(THREE.RGBELoader&&renderer.capabilities.isWebGL2&&!lpSoftware&&lpMode!=="light"){try{new THREE.RGBELoader().load("/textures/sky_1k.hdr",function(tex){
   var pm=new THREE.PMREMGenerator(renderer);pm.compileEquirectangularShader();
   var env=pm.fromEquirectangular(tex).texture;scene.environment=env;tex.dispose();pm.dispose();
   scene.traverse(function(n){if(n.isMesh){var ms=Array.isArray(n.material)?n.material:[n.material];ms.forEach(function(mm){if(mm&&mm.isMeshStandardMaterial&&mm.envMapIntensity===1)mm.envMapIntensity=0.3;});}});
@@ -426,7 +435,7 @@ function softDotTex(){var cv=document.createElement("canvas");cv.width=cv.height
 var actx=null,muted=lsGet("lp_muted")==="1";
 var OPT=(function(){try{return JSON.parse(lsGet("lp_opt")||"{}");}catch(e){return {};}})();
 if(OPT.music===undefined)OPT.music=true;if(OPT.sfx===undefined)OPT.sfx=true;
-if(OPT.tempo===undefined)OPT.tempo=1;if(OPT.motion===undefined)OPT.motion=true;
+if(OPT.tempo===undefined)OPT.tempo=1;if(OPT.motion===undefined)OPT.motion=!matchMedia("(prefers-reduced-motion: reduce)").matches;if(!OPT.graphics)OPT.graphics="auto";
 function saveOpt(){lsSet("lp_opt",JSON.stringify(OPT));}
 // 🔊 Batch 7/7: gemeinsamer SFX-Master-Bus (leichter Limiter) buendelt beep/cardRustle
 var sfxBus=null;
@@ -543,7 +552,7 @@ function chapterOf(tile){var bf=fields&&fields[tile]; // Neben-Routen-Felder ken
   return Math.min(CHAPTERS.length-1,Math.floor(tile/FIELDS_PER));}
 // ===================== Licht =====================
 var hemi=new THREE.HemisphereLight(0xd6e6ff,0x3a5238,0.60);scene.add(hemi);
-var sunL=new THREE.DirectionalLight(0xfff2d8,1.08);sunL.position.set(30,60,20);scene.add(sunL);
+var sunL=new THREE.DirectionalLight(0xfff2d8,.85);sunL.position.set(30,60,20);scene.add(sunL);
 sunL.castShadow=true;sunL.shadow.mapSize.set(IS_COARSE?512:1024,IS_COARSE?512:1024);sunL.shadow.bias=-0.0005; // 📱 mobil: kleinere Shadow-Map
 sunL.shadow.normalBias=0.7; // 📱 killt Schatten-Akne (weisse Kratzer auf Feld-Deckeln) auf Mobil-GPUs mit grober Shadow-Map
 sunL.shadow.camera.near=1;sunL.shadow.camera.far=260;sunL.shadow.camera.left=-70;sunL.shadow.camera.right=70;sunL.shadow.camera.top=70;sunL.shadow.camera.bottom=-70;
@@ -569,7 +578,7 @@ function terrainH(x,z){
     // Kapitel-Farbe entlang X weich mischen ("alle Farben wie echt")
     var t=Math.max(0,Math.min(CHAPTERS.length-1.001,(x+160)/46));
     var ci=Math.floor(t),f=t-ci;
-    g1.setHex(CHAPTERS[ci].ground);g2.setHex(CHAPTERS[Math.min(CHAPTERS.length-1,ci+1)].ground);
+    g1.setHex(CHAPTERS[ci].ground).convertSRGBToLinear();g2.setHex(CHAPTERS[Math.min(CHAPTERS.length-1,ci+1)].ground).convertSRGBToLinear();
     tmp.copy(g1).lerp(g2,f);
     var shade=0.82+Math.max(0,Math.min(1,(h+5)/10))*0.28;
     // Gras-Flecken: deterministischer Jitter + sanfte grosse Wellen
@@ -578,10 +587,11 @@ function terrainH(x,z){
     cols[i*3]=tmp.r;cols[i*3+1]=tmp.g;cols[i*3+2]=tmp.b;}
   geo.setAttribute("color",new THREE.BufferAttribute(cols,3));geo.computeVertexNormals();
   var m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,flatShading:false}));
-  m.receiveShadow=true;scene.add(m);})();
+  m.receiveShadow=true;scene.add(m);if(window.LPStaticBatches&&LPStaticBatches.split)window._lpTerrainBatches=LPStaticBatches.split(THREE,m,{chunkSize:48});})();
 // ===================== Felder auf dem Pfad =====================
 // Feld-Typen: e=Ereignis, g+=Geld, g-=Kosten, h=Glück, w=Wissen, f=Freunde, m=Meilenstein (Kapitelende)
 var FTYPE_COL={e:0xffffff,"g+":0xffc21f,"g-":0xff4d4d,h:0xff5db8,w:0x2f7dff,f:0x1fd97a,m:0xff8c1f,q:0x8a5aff,x:0x1fc4c8,r:0xff7a2a,z:0xd94fd0};
+var lpBoardObjectStart=scene.children.length;
 var fields=[];
 (function(){
   var seq=["e","g+","e","h","e","w","g-","e","f","e","g+","e","h","e","w","g-","f"]; // 17 + Meilenstein
@@ -677,6 +687,8 @@ var fields=[];
       lift(a,(hit.yoff||0)+0.045);
     }}
 })();
+/* Nur fertig aufgebaute statische Sockel/Ränder bündeln; bewegte Felddeckel bleiben einzeln. */
+if(window.LPStaticBatches){var lpDiscs=new Set(fields.map(function(f){return f.disc;}));window._lpBoardBatches=LPStaticBatches(THREE,scene.children.slice(lpBoardObjectStart).filter(function(m){return m.isMesh&&!lpDiscs.has(m);}),{chunkSize:48});}
 // Regenbogen über der Brettmitte + Sonne (Spielzeug-Himmel)
 (function(){
   var RB=[0xff4d4d,0xff9a2a,0xffd91f,0x35d95a,0x2f8cff,0x8c5aff];
@@ -955,9 +967,10 @@ function updFlies(dt,t){if(!OPT.motion){for(var fh=0;fh<flies.length;fh++)flies[
     cl.position.set(-170+Math.random()*400,26+Math.random()*14,(Math.random()-0.5)*160);scene.add(cl);}
 })();
 // ===================== Liebevolle Details: Feld-Icons, Konfetti, Jahreszeiten =====================
-function emojiSprite(em,size){var cv=document.createElement("canvas");cv.width=cv.height=256; // hochauflösend, sonst pixelige Icons (🧾-Falle)
+var lpEmojiTextures=Object.create(null);
+function emojiSprite(em,size){if(lpEmojiTextures[em]){var cached=new THREE.Sprite(new THREE.SpriteMaterial({map:lpEmojiTextures[em],transparent:true}));cached.scale.setScalar(size||1.4);return cached;}var cv=document.createElement("canvas");cv.width=cv.height=256; // hochauflösend, sonst pixelige Icons (🧾-Falle)
   var cx=cv.getContext("2d");cx.font="192px serif";cx.textAlign="center";cx.textBaseline="middle";cx.fillText(em,128,142);
-  var tx=crispTex(cv);var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true}));
+  var tx=crispTex(cv);lpEmojiTextures[em]=tx;var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true}));
   sp.scale.setScalar(size||1.4);return sp;}
 var FIELD_EMO={"g+":"💰","g-":"🧾",h:"❤️",w:"🧠",f:"👥",m:"⭐",q:"❓",x:"🔄",r:"🏁",e:"✨",z:"🎰"};
 // Grosses, von oben gut lesbares Icon auf JEDEM Feld (Bedeutung sofort klar); Farbe bleibt unterstützend.
@@ -1255,9 +1268,9 @@ function sanCfg(c){ // defensive Prüfung eines (auch fremden/Netz-)Charakter-Lo
   return null;}
 function loadChar(i){ // defensiv lesen: kaputte/fehlende Daten -> hübscher Default (jeder Spieler anders)
   try{var c=sanCfg(JSON.parse(lsGet(CHARKEYS[i]||"")||""));if(c)return c;}catch(e){}
-  /* 🎌 Frischer Charakter startet als schöne 3D-Anime-Figur (statt blockigem Toon) — „verbessere Charakter".
-     Gespeicherte/eigene Looks bleiben unberührt; per „🧍 Toon"-Pfeil jederzeit auf anpassbaren Toon wechselbar. */
-  return {g:i%2?"m":"f",style:i%4,skin:i%3,hair:-1,pants:i%PANTS.length,meshy:MESHY_CHARS[i%MESHY_CHARS.length].id};}
+  /* Eigene anpassbare Figuren passen zum Spielbrett und wachsen sichtbar mit.
+     Gespeicherte Looks und ausdrücklich gewählte Spezial-Figuren bleiben erhalten. */
+  return {g:i%2?"m":"f",style:i%4,skin:i%3,hair:-1,pants:i%PANTS.length,cloth:-1,top:i%3};}
 function saveChar(i,c){if(CHARKEYS[i])lsSet(CHARKEYS[i],JSON.stringify(c));}
 function seededChar(seed,i){ // Online-Fallback: deterministischer Look aus dem Spiel-Seed (alle Clients gleich)
   var n=(((seed>>>0)+i*2654435761)>>>0);n^=n>>>15;n=(n*2246822519)>>>0;
@@ -1619,12 +1632,12 @@ function meetDoChosen(kind){var m=window._lpMeet,el=document.getElementById("mee
   if(NET.on&&(myTurn()||window._lpMeetReply)){netSend({t:"meetact",k:kind});window._lpMeetReply=false;}beep(660,.05,"triangle",.04);} // Partner sieht dieselbe Geste (auch die Erwiderung)
 function updEmotes(dt){ /* Limb-sicher: Gruppen-Bewegung fuer ALLE Figuren, Arm-Posen nur wenn Limbs da (Toon) */
   for(var i=0;i<pawns.length;i++){var pw=pawns[i],e=pw.userData.emote;if(!e)continue;
-    e.t+=dt;var L=pw.userData.limbs;
+    e.t+=dt;var L=pw.userData.limbs,baseY=pawnStand(i);
     if(e.k==="jubel"){ // Arme hoch + Hüpfer
       if(L){L.la.rotation.x=-2.6;L.ra.rotation.x=-2.6;
         L.la.rotation.z=0.3+Math.sin(e.t*14)*0.25;L.ra.rotation.z=-0.3-Math.sin(e.t*14)*0.25;}
-      pw.position.y=Math.abs(Math.sin(e.t*7))*0.5;
-      if(e.t>1.3){pw.position.y=0;if(L){L.la.rotation.z=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
+      pw.position.y=baseY+(Math.abs(Math.sin(e.t*7))*0.5);
+      if(e.t>1.3){pw.position.y=baseY+(0);if(L){L.la.rotation.z=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
     else if(e.k==="trauer"){ // hängen lassen
       if(L){L.la.rotation.x=0.35;L.ra.rotation.x=0.35;}
       pw.rotation.x=Math.min(0.28,e.t*0.6);
@@ -1639,25 +1652,25 @@ function updEmotes(dt){ /* Limb-sicher: Gruppen-Bewegung fuer ALLE Figuren, Arm-
       if(e.t>1.1){if(L)L.ra.rotation.z=0;else pw.rotation.z=0;pw.userData.emote=null;}}
     else if(e.k==="highfive"){ // 🤝 rechter Arm hoch nach vorn + kleiner Sprung
       if(L){L.ra.rotation.x=-2.9;L.ra.rotation.z=-0.35;}
-      pw.position.y=e.t<0.9?Math.abs(Math.sin(e.t*7))*0.42:0;
-      if(e.t>1.2){pw.position.y=0;if(L){L.ra.rotation.x=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
+      pw.position.y=baseY+(e.t<0.9?Math.abs(Math.sin(e.t*7))*0.42:0);
+      if(e.t>1.2){pw.position.y=baseY+(0);if(L){L.ra.rotation.x=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
     else if(e.k==="umarmung"){ // 🫂 Arme nach vorn/innen + zueinander lehnen (Kuscheln)
       if(L){L.la.rotation.x=-1.25;L.ra.rotation.x=-1.25;L.la.rotation.z=0.55;L.ra.rotation.z=-0.55;}
-      pw.rotation.x=Math.sin(Math.min(Math.PI,e.t*1.7))*0.3;pw.position.y=Math.abs(Math.sin(e.t*3.5))*0.1;
-      if(e.t>2.0){pw.rotation.x=0;pw.position.y=0;if(L){L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
+      pw.rotation.x=Math.sin(Math.min(Math.PI,e.t*1.7))*0.3;pw.position.y=baseY+(Math.abs(Math.sin(e.t*3.5))*0.1);
+      if(e.t>2.0){pw.rotation.x=0;pw.position.y=baseY+(0);if(L){L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
     else if(e.k==="kuss"){ // 😘 kurz vorlehnen (Küsschen)
       pw.rotation.x=Math.sin(Math.min(Math.PI,e.t*2.4))*0.32;
       if(L){L.la.rotation.x=-0.55;L.ra.rotation.x=-0.55;}
       if(e.t>1.5){pw.rotation.x=0;if(L){L.la.rotation.x=0;L.ra.rotation.x=0;}pw.userData.emote=null;}}
     else if(e.k==="tanz"){ // 💃 wiegen + Arme raus
       if(L){L.la.rotation.x=-1.7;L.ra.rotation.x=-1.7;L.la.rotation.z=0.45;L.ra.rotation.z=-0.45;}
-      pw.rotation.z=Math.sin(e.t*8)*0.24;pw.position.y=Math.abs(Math.sin(e.t*6))*0.2;
-      if(e.t>2.3){pw.rotation.z=0;pw.position.y=0;if(L){L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
+      pw.rotation.z=Math.sin(e.t*8)*0.24;pw.position.y=baseY+(Math.abs(Math.sin(e.t*6))*0.2);
+      if(e.t>2.3){pw.rotation.z=0;pw.position.y=baseY+(0);if(L){L.la.rotation.x=0;L.ra.rotation.x=0;L.la.rotation.z=0;L.ra.rotation.z=0;}pw.userData.emote=null;}}
     else if(e.k==="brautwalzer"){ // 💒 Hochzeitstanz: langsame Drehung + Wiegen + Herzchen-Spur
-      pw.rotation.y+=dt*2.4;pw.rotation.z=Math.sin(e.t*4)*0.14;pw.position.y=Math.abs(Math.sin(e.t*3))*0.16;
+      pw.rotation.y+=dt*2.4;pw.rotation.z=Math.sin(e.t*4)*0.14;pw.position.y=baseY+(Math.abs(Math.sin(e.t*3))*0.16);
       if(L){L.la.rotation.x=-1.4;L.ra.rotation.x=-1.4;}
       if((e.hb|0)!==((e.t*2)|0)){e.hb=(e.t*2)|0;hearts(pw.position.x,pw.position.z);}
-      if(e.t>3.6){pw.rotation.z=0;pw.position.y=0;if(L){L.la.rotation.x=0;L.ra.rotation.x=0;}pw.userData.emote=null;}}}}
+      if(e.t>3.6){pw.rotation.z=0;pw.position.y=baseY+(0);if(L){L.la.rotation.x=0;L.ra.rotation.x=0;}pw.userData.emote=null;}}}}
 function animLife(pw,dt,moving){ // Blinzeln + Kopf immer, unabhängig vom Emote
   // Alters-Tween (weiches Wachsen am Geburtstag; bei OPT.motion aus -> fast sofort)
   var u=pw.userData,ak=Math.min(1,dt*(OPT.motion?4:24));
@@ -1889,8 +1902,9 @@ function updFam(dt){
       f.position.x+=(tx-f.position.x)*Math.min(1,dt*4.5);
       f.position.z+=(tz-f.position.z)*Math.min(1,dt*4.5);
       var d=Math.hypot(tx-f.position.x,tz-f.position.z);
-      f.position.y=d>0.3?Math.abs(Math.sin(performance.now()*0.012+j))*(f.userData.dog?0.22:0.35)
+      var bounce=d>0.3?Math.abs(Math.sin(performance.now()*0.012+j))*(f.userData.dog?0.22:0.35)
         :(f.userData.dog?Math.max(0,Math.sin(performance.now()*0.006+j))*0.11:0); // 🐕 wartet -> fröhliches Wippen
+      f.position.y=fieldSurfaceAt(f.position.x,f.position.z)+bounce;
       if(f.userData.tail){f.userData.tail.rotation.y=Math.sin(performance.now()*0.014)*0.7; // Schwanzwedeln (immer!)
         if(d>0.3)f.rotation.y=Math.atan2(tx-f.position.x,tz-f.position.z);else f.rotation.y+=dt*0.4;}
       else f.rotation.y+=dt;}}}
@@ -1918,9 +1932,6 @@ function updTurnMarker(dt){
 }
 // ===================== Zustand =====================
 var SAVE_KEY="lp_save1";
-// 🚀 Erststart: Standard-Anime-GLB im Leerlauf in den Browser-Cache holen — Figur steht beim ersten Spiel sofort statt Platzhalter
-window.addEventListener("load",function(){setTimeout(function(){
-  try{if(!lsGet(SAVE_KEY)&&window.fetch)fetch("/models/anime_hero.glb").catch(function(){});}catch(e){}},2500);});
 var G=null,running=false;
 function freshState(np,adult,mode){
   var ps=[];np=Math.max(1,Math.min(4,np|0)); // Overflow nie zulassen: max 4 Spieler
@@ -1944,7 +1955,7 @@ function routeFrac(t){var mt=progOf(t);
   return Math.min(1,(si*FIELDS_PER+off)/(SHORT_CHAPS.length*FIELDS_PER-1));}
 var pawns=[],pawnBlobs=[];
 function updPawnBlobs(){for(var i=0;i<pawns.length;i++){var b2=pawnBlobs[i];if(!b2)continue;
-  b2.position.x=pawns[i].position.x;b2.position.z=pawns[i].position.z;
+  b2.position.x=pawns[i].position.x;b2.position.z=pawns[i].position.z;b2.position.y=fieldSurface(G.players[i].tile)+.015;
   b2.material.opacity=0.22-Math.min(0.14,pawns[i].position.y*0.12);}}
 // ===================== HUD =====================
 document.getElementById("keysHelp").innerHTML=IS_COARSE?
@@ -1966,7 +1977,7 @@ function updProgMap(){var pd2=document.getElementById("progDots");pd2.innerHTML=
     var d=document.createElement("div");
     d.style.cssText="position:absolute;top:"+(-11-lane*9)+"px;width:"+sz+"px;height:"+sz+"px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px #0008"+(act?",0 0 8px 2px rgba(255,190,80,.85)":"")+";background:#"+("00000"+p.col.toString(16)).slice(-6)+";left:calc("+Math.round(100*fr)+"% - "+(sz/2)+"px);z-index:"+(act?5:1)+";transition:top .3s,width .2s,height .2s";
     pd2.appendChild(d);});}
-function updPlayers(){updProgMap();
+function updPlayers(){updProgMap();updJourney();
   var el=document.getElementById("players");el.innerHTML="";
   var _lead=-1,_lb=-Infinity;if(G.players.length>1)G.players.forEach(function(p,i){var s=lifeScore(p);if(s>_lb){_lb=s;_lead=i;}}); // 👑 Führender nach Lebenspunkten
   G.players.forEach(function(p,i){
@@ -1996,6 +2007,15 @@ function updPlayers(){updProgMap();
       d.appendChild(ir);}
     el.appendChild(d);});
 }
+function updJourney(){
+  if(!G||!G.players[G.turn])return;var p=G.players[G.turn],ci=chapterOf(p.tile),frac=routeFrac(p.tile),next=Math.min(NFIELDS-1,(ci+1)*FIELDS_PER-1),remaining=Math.max(0,Math.ceil(next-progOf(p.tile)));
+  document.getElementById("journeyProgress").textContent=Math.round(frac*100)+" % des Lebenswegs · "+AGE_NAME[ageStage(ci)];
+  document.getElementById("journeyNext").textContent=p.done?"Am Lebensabend angekommen":remaining?"Nächster Meilenstein in "+remaining+" Feld"+(remaining===1?"":"ern"):"Meilenstein erreicht";
+  document.getElementById("journeyLast").textContent=p.bio&&p.bio.length?p.bio[p.bio.length-1]:"Deine erste Geschichte wartet auf dem Pfad.";
+}
+document.getElementById("journeyOpen").onclick=function(){if(!G)return;var p=G.players[G.turn],html="<p>"+lifeScore(p)+" Lebenspunkte · "+(p.bio||[]).length+" Erinnerungen</p><ol>";
+  (p.bio||[]).forEach(function(t){html+="<li>"+String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")+"</li>";});
+  showLocalInfo("Das Lebensbuch von "+p.name,html+"</ol>");};
 function updChapter(){
   var p=G.players[G.turn],ci=chapterOf(p.tile),c=CHAPTERS[ci];
   document.getElementById("chapTxt").textContent=c.n;
@@ -2115,15 +2135,15 @@ function showWheel(n,done){
     ctx.restore();}
   // Zielwinkel: Segment n unter dem Zeiger (oben, -90°), + 4 volle Umdrehungen
   var target=-Math.PI/2-(n-0.5)*Math.PI/3+Math.PI*8;
-  var t0=performance.now(),dur=2400,lastSeg=-1,skip=false;
+  var t0=NET.on?performance.now():lpClock(),dur=2400,lastSeg=-1,skip=false;
   _radDiv.onclick=function(){skip=true;}; // 👆 Antippen springt zum Ergebnis
-  function anim(now){var k=skip?1:Math.min(1,(now-t0)/dur);var e=1-Math.pow(1-k,3);
+  function anim(now){if(lpLocalPaused()){requestAnimationFrame(anim);return;}var elapsed=(NET.on?now:lpClock())-t0;var k=skip?1:Math.min(1,elapsed/dur);var e=1-Math.pow(1-k,3);
     var rot=target*e;draw(rot);
     var seg=Math.floor(((-Math.PI/2-rot)%(Math.PI/3)+Math.PI/3)%(Math.PI/3)*0+rot/(Math.PI/3));
     if(seg!==lastSeg){lastSeg=seg;if(k<0.96)beep(420+((seg%6)+6)%6*30,.03,"square",.025);}
     if(k<1){requestAnimationFrame(anim);}
     else{beep(880,.18,"triangle",.07);buzz(40);
-      setTimeout(function(){_radDiv.style.opacity=0;_radDiv.style.transform="translate(-50%,-50%) scale(.7)";
+      lpTimer(function(){_radDiv.style.opacity=0;_radDiv.style.transform="translate(-50%,-50%) scale(.7)";
         setTimeout(function(){_radDiv.style.display="none";},350);done();},650);}}
   requestAnimationFrame(anim);
 }
@@ -2207,7 +2227,8 @@ function updMove(dt){
   var runFlat=(pw.userData.gacts&&!jump)?0.25:1; /* 🎬 Anime-Figur rennt bodennah — Run-Clip statt Hopser */
   var y=(drv&&!jump)?0.02+Math.sin(performance.now()*0.02)*0.02 // leichtes Wippen beim Fahren
         :Math.sin(k*Math.PI)*(OPT.motion?(jump?4.2:0.55*runFlat):0.2*runFlat); // Hüpf-Parabel (Zeitsprung: hoher Bogen)
-  pw.position.set(x,y+pawnOffset(G.turn).y,z);
+  var base=fieldSurface(p.tile)*(1-k)+fieldSurface(moveTo)*k+pawnClearance(pw);
+  pw.position.set(x,base+y,z);
   pw.userData.stretch=(!drv&&OPT.motion)?Math.sin(k*Math.PI)*0.9*(pw.userData.gacts&&!jump?0.2:1):0; // Stretch im Flug (Anime: kaum)
   var o=pawnOffset(G.turn);pw.position.x+=o.x;pw.position.z+=o.z;
   pw.rotation.y=Math.atan2(to.x-hopFrom.x,to.z-hopFrom.z); // in Laufrichtung schauen
@@ -2218,7 +2239,11 @@ function updMove(dt){
   animWalk(pw,true,dt);
 }
 function pawnOffset(i){var a=i/4*Math.PI*2;return {x:Math.cos(a)*0.55,y:0,z:Math.sin(a)*0.55};}
-function placePawn(i){var p=G.players[i],o=pawnOffset(i);pawns[i].position.set(fields[p.tile].x+o.x,0,fields[p.tile].z+o.z);}
+function fieldSurface(tile){var f=fields[tile];return f&&f.disc?f.disc.position.y+.13:0;}
+function fieldSurfaceAt(x,z){var y=0;for(var i=0;i<fields.length;i++){var f=fields[i];if(!f.disc)continue;var dx=x-f.x,dz=z-f.z,r=f.disc.geometry.parameters.radiusTop+.08;if(dx*dx+dz*dz<=r*r)y=Math.max(y,fieldSurface(i));}return y;}
+function pawnClearance(pw){return pw.userData.meshy||pw.userData.driving?0:.12*pw.scale.y;}
+function pawnStand(i){return fieldSurface(G.players[i].tile)+pawnClearance(pawns[i]);}
+function placePawn(i){var p=G.players[i],o=pawnOffset(i);pawns[i].position.set(fields[p.tile].x+o.x,pawnStand(i),fields[p.tile].z+o.z);}
 // ===================== Feld-Logik (Stufe 2 füllt EVENTS) =====================
 var discBounce=[];
 function updDiscBounce(dt){for(var i=discBounce.length-1;i>=0;i--){var db=discBounce[i];db.t+=dt*7;
@@ -2265,8 +2290,9 @@ function onLand(){
   if(typeof handleField==="function")handleField(p,f);
   else endTurnSoon();
 }
-function endTurnSoon(){updPlayers();saveGame();clearTimeout(window._turnTO);window._turnTO=setTimeout(nextTurn,Math.round(850/OPT.tempo));} // Schwarm-4: Timer merken — sonst Doppel-nextTurn (drop im 850ms-Fenster) und ein Spieler wird übersprungen
+function endTurnSoon(){updPlayers();saveGame();clearTimeout(window._turnTO);window._turnTO=lpTimer(nextTurn,Math.round(850/OPT.tempo),"_turnTO");} // Schwarm-4: Timer merken — sonst Doppel-nextTurn (drop im 850ms-Fenster) und ein Spieler wird übersprungen
 function nextTurn(){
+  if(lpLocalPaused()){window._turnTO=setTimeout(nextTurn,100);return;}
   if(!G)return;
   clearTimeout(window._turnTO);window._turnTO=null; // Schwarm-4: verhindert zweiten Zugwechsel durch noch laufenden endTurnSoon-Timer
   NET._turnT=Date.now(); // Aktivitäts-Uhr für „reagiert nicht"-Overlay
@@ -2308,7 +2334,7 @@ function playerDeath(p,how){
   tollBell(3);camShake=1.0;window._musDuckUntil=Date.now()+3600;buzz([120,80,120]); // 🔇 Musik während des Trauer-Moments dämpfen
   announce("⚰️ "+p.name.toUpperCase()+" IST GESTORBEN","#8a8a9a");
   showHint(how||"Das Leben ist kurz — manchmal kürzer.",3800);
-  if(pw){pw.rotation.z=Math.PI/2;pw.position.y=0.3;
+  if(pw){pw.rotation.z=Math.PI/2;pw.position.y=fieldSurface(p.tile)+0.3;
     pw.traverse(function(n){if(n.isMesh&&n.material&&n.material.color)n.material.color.lerp(new THREE.Color(0x9a9aa8),0.7);});
     // Grabstein bleibt am Todesfeld stehen — mit Namens-Epitaph
     var f=fields[p.tile],gx=f.x+1.6,gz=f.z+1.6;
@@ -2335,6 +2361,7 @@ function playerDeath(p,how){
 }
 function lifeScore(p){return p.geld+p.glueck*2+p.wissen*2+p.freunde*2+(goalMet(p)?12:0);}
 function showEnd(){
+  if(lpLocalPaused()){window._turnTO=setTimeout(showEnd,100);return;}
   running=false;lsDel(SAVE_KEY);if(NET.on)lsDel(SAVE_KEY+"_net");
   var _cb=document.getElementById("contBtn");if(_cb&&!loadGame())_cb.classList.add("hide"); // Schwarm-4: Spielstand ist weg -> „Weiterspielen" verschwindet (startete sonst heimlich ein neues Leben)
   // 🔊 Batch 7/7: Loop ausblenden, damit die Siegesfanfare frei steht
@@ -2944,6 +2971,7 @@ function updateCamera(dt){
 camera.position.set(fields[0].x,22,fields[0].z+24);camera.lookAt(fields[0].x,0,fields[0].z);
 // ===================== Debug-Hook (nur für Tests; kein Gameplay-Einfluss) =====================
 window.__lp={
+  graphics:function(){return {profile:lpMode,pixelRatio:renderer.getPixelRatio(),shadows:renderer.shadowMap.enabled,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,terrain:window._lpTerrainBatches&&window._lpTerrainBatches.stats,board:window._lpBoardBatches&&window._lpBoardBatches.stats,instances:window._lpInstanceBatches&&window._lpInstanceBatches.stats};},
   openMini:function(cb){openMiniGame(cb);},closeMini:function(){closeMiniGame();},
   end:function(){showEnd();return 1;}, // Test-Only
   chapter:function(n){if(!G||!G.players[G.turn])return null;n=Math.max(0,Math.min(CHAPTERS.length-1,n|0));
@@ -3000,11 +3028,13 @@ window.__lp={
       solo:document.getElementById("netPauseSolo").style.display!=="none",
       hud:document.getElementById("netHud").children.length};}};
 // ===================== Hauptschleife =====================
+if(window.LPInstanceChunks)window._lpInstanceBatches=LPInstanceChunks(THREE,scene.children.filter(function(m){return m.isInstancedMesh;}),{chunkSize:48});
 var last=performance.now();
 function loop(now){
   requestAnimationFrame(loop);
-  var dt=Math.min(0.05,(now-last)/1000);last=now;window._lastLoopT=now; // Schwarm-4: Lebenszeichen der Simulation (Checksum/Sync-Sender prüfen das)
-  if(running&&G){G.t+=dt;updBot(dt);updAfk(dt);updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updBirds(dt,G.t);updIdleLife(dt);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updBdayCakes(dt);updNet();
+  var rawDt=(now-last)/1000,dt=Math.min(0.05,rawDt);last=now;window._lastLoopT=now; // Schwarm-4: Lebenszeichen der Simulation (Checksum/Sync-Sender prüfen das)
+  if(lpLocalPaused())return;
+  if(running&&G){tuneGraphics(rawDt);G.t+=dt;updBot(dt);updAfk(dt);updMove(dt);updMusic(dt);updConfs(dt);updDie(dt);updLandRings(dt);updPonds(G.t);updFlies(dt,G.t);updFam(dt);updTurnMarker(dt);updDucks(dt,G.t);updBalloons(G.t);updStorks(dt);updEmotes(dt);updDiscBounce(dt);updLandmarks(dt,G.t);updPawnBlobs();updClouds(dt);updButterflies(dt,G.t);updBirds(dt,G.t);updIdleLife(dt);updDekoCoins(G.t);updDriftBalloons(dt,G.t);updBdayCakes(dt);updNet();
     if(window._lpWindmill)window._lpWindmill.rotation.z+=dt*(OPT.motion?1.15:0); // Windrad dreht
     if(window._lpFlag)for(var fq=0;fq<window._lpFlag.length;fq++){var _q=window._lpFlag[fq];
       _q.rotation.y=OPT.motion?Math.sin(G.t*3-fq*0.7)*0.45:0;_q.position.z=OPT.motion?Math.sin(G.t*3-fq*0.7)*0.05*fq:0;} // Fahne weht
@@ -3020,7 +3050,7 @@ function loop(now){
     // Felder pulsieren leicht; aktives Feld stärker
     for(var i=0;i<pawns.length;i++){if(G.phase!=="moving"||i!==G.turn){
       animWalk(pawns[i],false,dt);
-      if(!G.players[i].dead&&!pawns[i].userData.emote)pawns[i].rotation.y+=dt*(i===G.turn?0.6:0.15);}}
+      if(!G.players[i].dead&&!pawns[i].userData.emote){pawns[i].position.y=pawnStand(i);pawns[i].rotation.y+=dt*(i===G.turn?0.6:0.15);}}}
   }
   if(!running)updConfs(dt); // Finale-Konfetti auch nach Spielende animieren
   if(window._skyTarget){scene.background.lerp(window._skyTarget,Math.min(1,dt*1.2));scene.fog.color.copy(scene.background);}
@@ -4095,7 +4125,7 @@ function begin(saved,frisch){
     if(!p.items)p.items={}; // alte Spielstände (ohne Besitz-Feld) defensiv nachrüsten
     if(!p.album)p.album=[]; // 📷 Foto-Album (alte v3/v4-Saves ohne Album crashen nicht)
     var cfg=NET.on?(sanCfg(NET.cfgs&&NET.cfgs[i])||seededChar(NET.seed,i)):loadChar(i); // Look: lokal Picker, online gesyncter Picker-Look (Fallback: Seed)
-    if(p.bot)cfg={g:"m",style:2,skin:2,hair:3,pants:4,cloth:10,hstyle:0,outfit:0,top:2,meshy:"ninja"}; // 🤖 Robo = Ninja-Look
+    if(p.bot)cfg={g:"m",style:2,skin:2,hair:3,pants:4,cloth:10,hstyle:0,outfit:0,top:2}; // 🤖 Robo = Ninja-Look
     pawns.push(mkPawn(p.col,cfg));
     (function(){var cv=document.createElement("canvas");cv.width=256;cv.height=72;var c=cv.getContext("2d");
       c.font="bold 44px sans-serif";c.textAlign="center";
@@ -4107,7 +4137,7 @@ function begin(saved,frisch){
       var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
       sp.scale.set(1.7,0.48,1);sp.position.y=2.15;pawns[i].add(sp);})();
     placePawn(i);syncFam(i);agePawn(i,false); // Look passend zum Kapitel-Alter (Start = Kind)
-    if(p.dead){var pwD=pawns[i];pwD.rotation.z=Math.PI/2;pwD.position.y=0.3; // ⚰️ Schwarm-4: Tote nach Laden wieder umlegen + ausgrauen (standen sonst quicklebendig da)
+    if(p.dead){var pwD=pawns[i];pwD.rotation.z=Math.PI/2;pwD.position.y=fieldSurface(p.tile)+0.3; // ⚰️ Schwarm-4: Tote nach Laden wieder umlegen + ausgrauen (standen sonst quicklebendig da)
       pwD.traverse(function(nn){if(nn.isMesh&&nn.material&&nn.material.color)nn.material.color.lerp(new THREE.Color(0x9a9aa8),0.7);});}
     if(p.items&&p.items.auto)enableCar(i); // gespeichertes Auto wieder aufbauen
     var bl2=new THREE.Mesh(new THREE.CircleGeometry(0.55,12),new THREE.MeshBasicMaterial({color:0x2a4a2a,transparent:true,opacity:0.22}));
@@ -4132,7 +4162,12 @@ function begin(saved,frisch){
   if(!fortsetzung)showHint(G.players.length>1?"Reihum würfeln — trefft ihr euch auf einem Feld, gibt es eine Begegnung! 💫":"Würfle mit LEER oder dem Knopf!",4200);
   if(!fortsetzung&&G.goal)setTimeout(function(){announce("🎯 Ziel: "+G.goal.ic+" "+G.goal.n,"#7ad9a0");},2400); // Rundenziel zu Beginn zeigen (+12 Bonus)
 }
-var menuOpen=false;
+var menuOpen=false,lpInfoOpen=false,lpPauseAt=0,lpPauseTotal=0;
+function lpLocalPaused(){return !(typeof NET!=="undefined"&&NET&&NET.on)&&(menuOpen||lpInfoOpen||document.hidden);}
+function lpSyncPause(){var paused=lpLocalPaused(),now=performance.now();if(paused&&!lpPauseAt)lpPauseAt=now;else if(!paused&&lpPauseAt){lpPauseTotal+=now-lpPauseAt;lpPauseAt=0;}document.body.classList.toggle("lp-paused",paused);try{if(running&&OPT.music&&!muted&&MUS){if(paused)MUS.pause();else if(music.on)MUS.play().catch(function(){});}}catch(e){}}
+function lpClock(){var now=performance.now();return now-lpPauseTotal-(lpPauseAt?now-lpPauseAt:0);}
+function lpTimer(fn,ms,key,onTick){if(NET.on)return setTimeout(fn,ms);var until=lpClock()+ms;function tick(){var remaining=Math.max(0,until-lpClock());if(onTick)onTick(remaining);if(remaining<=0){fn();return;}var id=setTimeout(tick,Math.min(100,remaining));if(key)window[key]=id;}return setTimeout(tick,Math.min(100,ms));}
+document.addEventListener("visibilitychange",lpSyncPause);
 function renderMenu(){
   var r=document.getElementById("optRows");r.innerHTML="";
   [["🎵 Musik","music"],["🔔 Effekte","sfx"],["🦋 Bewegung (Schmetterlinge/Partikel)","motion"]].forEach(function(o){
@@ -4140,8 +4175,9 @@ function renderMenu(){
     d.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:14px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
     d.innerHTML="<span>"+o[0]+"</span><span>"+(OPT[o[1]]?"AN ✅":"AUS ⬜")+"</span>";
     d.onclick=function(){OPT[o[1]]=!OPT[o[1]];saveOpt();
-      if(o[1]==="music"){try{if(!OPT.music){if(!MUS.paused)MUS.pause();}else if(running&&!muted){music.on=true;MUS.play().catch(function(){});}}catch(e){}}
+      if(o[1]==="music"){try{if(!OPT.music){if(!MUS.paused)MUS.pause();}else if(running&&!muted){music.on=true;if(!lpLocalPaused())MUS.play().catch(function(){});}}catch(e){}}
       renderMenu();};r.appendChild(d);});
+  var graphicsButton=document.createElement("button");graphicsButton.className="lp-graphics";graphicsButton.textContent="Grafik: "+({auto:"Automatisch",light:"Sparsam",details:"Volle Details"}[lpMode]||"Automatisch");graphicsButton.onclick=function(){var modes=["auto","light","details"];OPT.graphics=modes[(modes.indexOf(lpMode)+1)%3];saveOpt();applyGraphics(OPT.graphics);renderMenu();};r.appendChild(graphicsButton);
   var t=document.createElement("button");
   t.style.cssText="border:2px solid #e8d8b0;background:#fffdf6;color:#3a4252;border-radius:14px;padding:11px 15px;font-weight:800;cursor:pointer;font-size:.9rem;display:flex;justify-content:space-between;box-shadow:0 3px 0 #e8d8b0";
   t.innerHTML="<span>⏩ Zug-Tempo</span><span>"+(OPT.tempo>1?"SCHNELL":"NORMAL")+"</span>";
@@ -4174,7 +4210,7 @@ function renderMenu(){
 }
 function toggleMenu(){menuOpen=!menuOpen;
   document.getElementById("menuO").classList.toggle("hide",!menuOpen);
-  if(menuOpen)renderMenu();}
+  lpSyncPause();if(menuOpen)renderMenu();}
 document.getElementById("menuBtn").onclick=toggleMenu;
 document.getElementById("resumeBtn").onclick=toggleMenu;
 addEventListener("keydown",function(e){if(e.key==="Escape"&&G&&!e.repeat)toggleMenu();});
@@ -4222,11 +4258,11 @@ function showLocalInfo(title,html){
       '<div id="liBody" style="font-size:.88rem;color:#3a4252;line-height:1.55"></div>'+
       '<button id="liClose" style="margin-top:14px;width:100%;padding:11px;border:none;border-radius:14px;background:#2f8cff;color:#fff;font-weight:900;font-size:.95rem;cursor:pointer">Alles klar ▶</button></div>';
     document.body.appendChild(ov);
-    document.getElementById("liClose").onclick=function(){ov.style.display="none";};
-    ov.onclick=function(e){if(e.target===ov)ov.style.display="none";};}
+    document.getElementById("liClose").onclick=function(){ov.style.display="none";lpInfoOpen=false;lpSyncPause();};
+    ov.onclick=function(e){if(e.target===ov){ov.style.display="none";lpInfoOpen=false;lpSyncPause();}};}
   document.getElementById("liTitle").textContent=title;
   document.getElementById("liBody").innerHTML=html;
-  ov.style.display="flex";}
+  ov.style.display="flex";lpInfoOpen=true;lpSyncPause();}
 document.getElementById("restartBtn").onclick=function(){var b=document.getElementById("restartBtn");
   if(b.dataset.armed){lsDel(SAVE_KEY);location.reload();}
   else{b.dataset.armed="1";b.textContent="Sicher? Nochmal tippen";}};
@@ -4421,13 +4457,13 @@ function quizCard(p){ // ❓ 15s-Sanduhr (Balken); reduzierte Bewegung: ohne Zei
   showCard("Quiz-Karte · richtig = +2 🧠 +2 💰","❓ "+Q.q,
     timed?'⏳ 22 Sekunden!<div id="qTimer"><div id="qBar"></div></div>':"Überleg in Ruhe — kein Zeitdruck.",opts);
   clearTimeout(window._qTO);
-  if(timed)requestAnimationFrame(function(){requestAnimationFrame(function(){var b=document.getElementById("qBar");if(b)b.style.width="0%";});});
+  if(timed&&NET.on)requestAnimationFrame(function(){requestAnimationFrame(function(){var b=document.getElementById("qBar");if(b)b.style.width="0%";});});
   if(timed){ // Online IMMER scharf (timed enthält NET.on) -> AFK erzeugt keinen Soft-Lock
-    window._qTO=setTimeout(function(){ // nur der aktive Spieler löst den Timeout aus (Online: ein Absender)
+    window._qTO=lpTimer(function(){ // nur der aktive Spieler löst den Timeout aus (Online: ein Absender)
       if(!window._cardOpts)return;
       if(NET.on&&G.turn!==NET.my)return;
       sendPick(3);
-    },22300);} /* Quiz: 22s statt 15s — nicht zu schwierig (User-Wunsch) */
+    },22300,"_qTO",function(remaining){var bar=document.getElementById("qBar");if(bar){bar.style.transition="none";bar.style.width=(remaining/22300*100)+"%";}});} /* Quiz: 22s statt 15s — nicht zu schwierig (User-Wunsch) */
 }
 function tauschCard(p){ // 🔄 Kurs schwankt: 3–5 💰 gegen 2 ❤️ oder 2 🧠
   var cost=3+((srand()*3)|0),toH=srand()<0.5,gl=toH?"❤️":"🧠",fx=toH?{geld:-cost,glueck:2}:{geld:-cost,wissen:2};

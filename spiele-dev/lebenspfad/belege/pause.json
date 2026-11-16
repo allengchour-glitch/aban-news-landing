@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "Würfeln + Menü: nach 3,6 Sekunden weder Spielzeit noch Bewegung oder Würfel fortgeschritten",
+    "Musik im Pausenmenü einschalten startet keine Wiedergabe",
+    "Alle drei Grafikprofile umschaltbar und gespeichert; Detailprofil aktiviert volle Auflösung und Schatten",
+    "Würfeln läuft nach Schließen des Menüs weiter",
+    "Quiz-Fixture bleibt länger als die volle 22-Sekunden-Frist pausiert, inklusive Balken und Kartenfolge",
+    "Quiz läuft erst nach Fortsetzen ab und löst seine Antwort einmal aus",
+    "Lebensbuch pausiert lokal und verändert keine Kartenfolge; Schließen setzt fort"
+  ],
+  "errors": [],
+  "limits": "Quiz-Fall gezielt per Test-Hook geöffnet; Würfel und Pause über echte Schaltflächen."
+}

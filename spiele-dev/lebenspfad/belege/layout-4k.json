@@ -1,0 +1,93 @@
+{
+  "at": "2026-11-16T08:24:05.935Z",
+  "scope": "Actual UI start and rolls; chapter/pos explicitly labelled fixtures; no full playthrough",
+  "views": [
+    {
+      "size": "3840x2160",
+      "hud": [
+        {
+          "selector": "#rollBtn",
+          "index": 0,
+          "text": "🎡 Drehen!",
+          "rect": {
+            "x": 1832.8203125,
+            "y": 2079,
+            "w": 174.359375,
+            "h": 55
+          },
+          "display": "block",
+          "visible": true,
+          "inside": true,
+          "centerHit": true,
+          "hit": "rollBtn"
+        },
+        {
+          "selector": "#journeyOpen",
+          "index": 0,
+          "text": "Lebensbuch öffnen",
+          "rect": {
+            "x": 30,
+            "y": 1945,
+            "w": 228,
+            "h": 44
+          },
+          "display": "inline-block",
+          "visible": true,
+          "inside": true,
+          "centerHit": true,
+          "hit": "journeyOpen"
+        },
+        {
+          "selector": "#menuBtn",
+          "index": 0,
+          "text": "☰",
+          "rect": {
+            "x": 3726,
+            "y": 10,
+            "w": 46,
+            "h": 46
+          },
+          "display": "block",
+          "visible": true,
+          "inside": true,
+          "centerHit": true,
+          "hit": "menuBtn"
+        },
+        {
+          "selector": "#emoBtn",
+          "index": 0,
+          "text": "😊",
+          "rect": {
+            "x": 3780,
+            "y": 1954,
+            "w": 46,
+            "h": 46
+          },
+          "display": "block",
+          "visible": true,
+          "inside": true,
+          "centerHit": true,
+          "hit": "emoBtn"
+        },
+        {
+          "selector": "#chatBtn",
+          "index": 0,
+          "text": "💬",
+          "rect": {
+            "x": 3780,
+            "y": 2018,
+            "w": 46,
+            "h": 46
+          },
+          "display": "block",
+          "visible": true,
+          "inside": true,
+          "centerHit": true,
+          "hit": "chatBtn"
+        }
+      ]
+    }
+  ],
+  "geometry": [],
+  "errors": []
+}

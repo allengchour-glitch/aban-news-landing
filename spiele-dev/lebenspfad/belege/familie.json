@@ -1,0 +1,115 @@
+{
+  "kind": "Geometrie-Fixture, kein echter Lebenslauf",
+  "cases": [
+    {
+      "tile": 0,
+      "outside": false,
+      "followers": [
+        {
+          "j": 0,
+          "dog": false,
+          "support": 0.63,
+          "y": 0.63,
+          "minY": 0.6300000071525574
+        },
+        {
+          "j": 1,
+          "dog": false,
+          "support": 0.63,
+          "y": 0.63,
+          "minY": 0.6299999970197678
+        },
+        {
+          "j": 2,
+          "dog": true,
+          "support": 0.63,
+          "y": 0.7291190477376581,
+          "minY": 0.729119047439635
+        }
+      ]
+    },
+    {
+      "tile": 107,
+      "outside": false,
+      "followers": [
+        {
+          "j": 0,
+          "dog": false,
+          "support": 0.7200000000000001,
+          "y": 0.7200000000000001,
+          "minY": 0.7200000071525574
+        },
+        {
+          "j": 1,
+          "dog": false,
+          "support": 0.7200000000000001,
+          "y": 0.7200000000000001,
+          "minY": 0.7199999970197679
+        },
+        {
+          "j": 2,
+          "dog": true,
+          "support": 0.7200000000000001,
+          "y": 0.8201807813282433,
+          "minY": 0.8201807810302202
+        }
+      ]
+    },
+    {
+      "tile": 143,
+      "outside": false,
+      "followers": [
+        {
+          "j": 0,
+          "dog": false,
+          "support": 0.63,
+          "y": 0.63,
+          "minY": 0.6300000071525574
+        },
+        {
+          "j": 1,
+          "dog": false,
+          "support": 0.63,
+          "y": 0.63,
+          "minY": 0.6299999970197678
+        },
+        {
+          "j": 2,
+          "dog": true,
+          "support": 0.63,
+          "y": 0.7308772581528837,
+          "minY": 0.7308772578548606
+        }
+      ]
+    },
+    {
+      "tile": 0,
+      "outside": true,
+      "followers": [
+        {
+          "j": 0,
+          "dog": false,
+          "support": 0,
+          "y": 0,
+          "minY": 7.152557435219364e-9
+        },
+        {
+          "j": 1,
+          "dog": false,
+          "support": 0,
+          "y": 0,
+          "minY": -2.980232227667301e-9
+        },
+        {
+          "j": 2,
+          "dog": true,
+          "support": 0,
+          "y": 0.10154918598973278,
+          "minY": 0.10154918569170956
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "status": "passed"
+}
