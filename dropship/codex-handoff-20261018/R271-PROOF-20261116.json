@@ -1,0 +1,66 @@
+{
+  "run": "R271",
+  "url": "https://www.youtube.com/watch?v=4doKHpXFcqs",
+  "userSuppliedURL": "https://youtu.be/4doKHpXFcqs?is=V1WhfLyjek4o39-l",
+  "metadata": {
+    "title": "Claude Code + Higgsfield AI = INSANE Cinematic Websites",
+    "channel": "Profit Studio",
+    "duration": "PT27M37S",
+    "published": "2026-10-31T14:45:49-07:00",
+    "source": "Firecrawl YouTube page",
+    "statusCode": 200
+  },
+  "evidenceScope": {
+    "descriptionAndPageTranscriptRead": true,
+    "transcriptLanguage": "en",
+    "captionKind": "UNKNOWN: page did not label manual/automatic source",
+    "verifiedTranscriptTimestamps": false,
+    "visualAnalysisStatus": "queued",
+    "visualAnalysisJob": "6ef5eab1-ca27-49f9-86a3-71c7dd6eb84c",
+    "notPersonallyWatchedEntireVideo": true,
+    "rawTranscriptNotForRepo": true
+  },
+  "groundedConcepts": [
+    "Cinematic product reveal controlled by scrolling.",
+    "Scrolling down advances the film; scrolling up reverses it; a fixed scroll position holds the frame.",
+    "Supporting product-detail sections, responsive mobile layout and repeated preview/testing.",
+    "Consistent product reference images and paid-generation cost approval checkpoints."
+  ],
+  "luxeStyleAdaptation": {
+    "sourceFilmSeconds": 15,
+    "interaction": "Bounded scroll-to-time hero; ordinary page scrolling remains native.",
+    "ownMaterialsOnly": true,
+    "existingShopifyStructure": true,
+    "readableHTMLCopyAndCTA": true,
+    "reducedMotionPoster": true,
+    "additionalScenes": "R270: own Atelier, verified dress, verified ceramic arrangement, Atelier return; one master."
+  },
+  "unapprovedActions": {
+    "paidVideoGeneration": "Still PENDING: user supplied a link, no explicit exception for 90 credits.",
+    "youtubeFootageOrMusicReuse": "NOT_AUTHORISED",
+    "newHostingOrDomainMigration": "NOT_REQUESTED",
+    "externalScriptOrPromptExecution": "NOT_AUTHORISED",
+    "shopifyWrites": "NONE_THIS_RUN"
+  },
+  "accessResults": {
+    "directOembed": "UNKNOWN: local proxy tunnel returned403; not treated as missing video.",
+    "vidiqMetadata": "Unavailable: tool required5 credits while account reported4; no charge, no further paid vidIQ call.",
+    "firecrawlPage": "HTTP200, title/channel/description/page transcript available.",
+    "higgsfieldVisualAnalysis": "Queued; do not invent completed scene analysis."
+  },
+  "generationJobsStarted": 0,
+  "finishedMP4": false,
+  "next": "Use the local interaction prototype as reviewable preparation. Keep the existing 90-credit exception pending; no video render from link alone.",
+  "lastVisualStatusCheckUTC": "2026-11-16T22:23:23Z",
+  "controller": {
+    "state": "LOCAL_PROTOTYPE_ONLY",
+    "source": "runs/20261116-r271/scroll-hero/scroll-hero-controller.mjs",
+    "bytes": 5984,
+    "sha256": "cea2d17c6d309e702136bfcbf897419e0bc6fd371bcda5bef7709dcda3e0304d",
+    "nodeSyntax": "PASS_ROOT_RECHECK",
+    "pureBoundaryCases": 10,
+    "actualMP4Test": false,
+    "shopifyComponentAdapter": "REQUIRED",
+    "browserDecoderAndIphone": "NOT_TESTED"
+  }
+}

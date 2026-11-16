@@ -3296,3 +3296,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Stand](R270-REPORT-20261116.md) · [Belege](R270-PROOF-20261116.json).
 
 [LUXESTYLE_R270_20261116]
+
+
+### R271 – YouTube-Referenz und Scroll-Interaktion
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Referenz | Verlinkte YouTube-Seite mit Beschreibung und Seitentranskript gelesen und auf LuxeStyle bezogen. | Interaktionsprinzip Scroll-vorwärts/rückwärts/Halt belegt; keine fremden Assets oder Hostinganweisungen übernommen. |
+| Szenenanalyse | Einen Higgsfield-Analyseauftrag erstellt und dieselbe ID gezielt nachgelesen. | Job 6ef5eab1-ca27-49f9-86a3-71c7dd6eb84c weiterhin queued; keine visuelle Fertiganalyse behauptet. |
+| Technikentwurf | Lokalen Scroll-Controller mit Halt-/Positionssteuerung und Poster-Fallback vorbereitet; Quelle/Syntax gegengeprüft. | Syntax und zehn reine Grenzfälle PASS. Echter MP4-Decoder, iPhone und native Theme-Anbindung offen. |
+| Zugriffe | Fehlgeschlagene oEmbed-/vidIQ-Zugänge eingegrenzt, benötigten Seiteninhalt über Firecrawl gelesen. | Proxy 403 und Creditfehler nicht als leeres/fehlendes Video gewertet. Kein Render gestartet. |
+| Befugnisse | Referenzlink gegen bestehende 90-Credit-Renderfrage abgeglichen. | Kostenfreigabe bleibt PENDING; kein Theme-/Social-/Budget-/DNS-/Hosting-Write. |
+| Projektgedächtnis | R271-Kandidat und Referenzbelege zur bisherigen Historie ergänzt. | R268/R269/R270 erhalten; Film und Einbau weiterhin offen, Claude-Empfang unbekannt. |
+
+[Bericht](R271-REPORT-20261116.md) · [Belege](R271-PROOF-20261116.json).
+
+[LUXESTYLE_R271_20261116]

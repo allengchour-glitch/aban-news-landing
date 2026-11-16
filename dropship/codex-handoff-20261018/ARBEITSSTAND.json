@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 270,
-  "updatedAt": "2026-11-16T22:11:52Z",
+  "revision": 271,
+  "updatedAt": "2026-11-16T22:25:44Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-16",
     "currentDayEvidenceKind": "R255 Produkttexte, native Reads und öffentliche/mobile QA",
-    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R260: Fünf bestätigte Writes an drei Produkten (3Text/SEO+1Bodyüberschrift+1Optionsname) mit nativer und öffentlicher/mobiler Prüfung; drei weitere Quellenblocker. Keine Kennzahl-/Flow-/GSC-/Bestellwatch-Wiederholung. R261: Acht Shopify-Mutationen (3Produkttexte/SEO,6Medienrelationen in1Batch,2CollectionWrites inkl.Titelwiederherstellung,1responsiveBodykorrektur,8Alttexte in1Batch) nativ/öffentlich geprüft. Ein gezielter Merchantfall und zwei aktuelle Theme-Dateien nur gelesen. Keine MetricoolKennzahl-/Klaviyo-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R262:2ProdukttexteSEO+1FormOptionsname nativ/öffentlich geprüft;3CJDetailreads. Theme555DateiennativeBaseline/fünfPreviewfälle,Publishverweigert. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinMerchantReadWrite. R263:4ProdukttexteSEO+2Optionsnamen nativ/öffentlich/mobil geprüft;4CJDetailreads,4kleineSuchen. Ein gezielterMerchantBildverarbeitungsfall ohneWrite. ThemerollenweiterUNPUBLISHED/MAINunverändert. AstraSchlussprüfung. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinSocial/Automation. R264:2ProdukttexteSEO+1DekorInhaltOptionsname nativ/öffentlich/mobil,AstraFaktengeprüft;4kleineSuchen/3CJDetails,1Badregalquellenblocker. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch/Merchantwiederholung;keinSocial/Automation/Higgsfieldrender. R265: Lokale Korrektur der Produktlink-Erkennung mit 184 Prüfungen und 67 von 67 erkannten Mutationen; Patch nicht in die operative Automation übernommen oder veröffentlicht. QA-Helfer nach unabhängiger Prüfung korrigiert; 18 Offline-Tests und Root-Gegenprüfung bestanden, nicht öffentlich ausgeführt. Tasche 15507734135169 bleibt wegen unbekannter exakter Lieferantenvarianten-Zuordnung blockiert. Keine Shop-, Theme-, Metricool- oder Merchant-Änderung; keine Tagesreports, Bestell- oder Kundenabfragen. R266 läuft; Ergebnis offen. R266: Kategorieseiten, Schriften und Icons im Entwurf gespeichert und eng geprüft; drei Theme-Commits, keine MAIN-Veröffentlichung. Metricool nur Identitäten und acht kleine Planungsreads; keine Kennzahlen/Klaviyo/Orders wiederholt. Ton-/Master-/Ledgerblocker bleiben erhalten. R267: Frische Shop-/Themerollen-/Pending-/16Dateiprüfung für Liveabschluss; keine Veröffentlichung, kein Publish-Retry, keine Kennzahl-, Klaviyo- oder Bestellabfrage. R268: Nach der Nutzerveröffentlichung MAIN und 16 Dateien gegengeprüft; vier öffentliche Live-Einstiege plus Desktop, AJAX-Filter und Zurücksetzen bestanden. 100 % des R266-Designblocks. Keine eigene Theme- oder Social-Publikation und keine Kennzahl-, Klaviyo- oder Bestellwatch-Wiederholung. R269: Ein Higgsfield-Bild und Shopify-Dateiupload, lokale Hero-Vorbereitung mit Quellenreview und isolierter Mock-QA. Keine Theme-Datei gespeichert oder veröffentlicht; Entwurfs-ID unbestätigt. Keine Kennzahlen/Klaviyo/Bestellwatch wiederholt. R270: Konkreter 15s-Mehrmotivfilm vorbereitet, drei kleine Produktquellen geprüft, zwei exakte Storefrontabfragen, Tagwächter/R69-Erlaubnis/Preise gelesen. Keine Videogenerierung, Themeänderung, Kennzahl-, Klaviyo- oder Bestellwatch-Wiederholung.",
+    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R260: Fünf bestätigte Writes an drei Produkten (3Text/SEO+1Bodyüberschrift+1Optionsname) mit nativer und öffentlicher/mobiler Prüfung; drei weitere Quellenblocker. Keine Kennzahl-/Flow-/GSC-/Bestellwatch-Wiederholung. R261: Acht Shopify-Mutationen (3Produkttexte/SEO,6Medienrelationen in1Batch,2CollectionWrites inkl.Titelwiederherstellung,1responsiveBodykorrektur,8Alttexte in1Batch) nativ/öffentlich geprüft. Ein gezielter Merchantfall und zwei aktuelle Theme-Dateien nur gelesen. Keine MetricoolKennzahl-/Klaviyo-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R262:2ProdukttexteSEO+1FormOptionsname nativ/öffentlich geprüft;3CJDetailreads. Theme555DateiennativeBaseline/fünfPreviewfälle,Publishverweigert. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinMerchantReadWrite. R263:4ProdukttexteSEO+2Optionsnamen nativ/öffentlich/mobil geprüft;4CJDetailreads,4kleineSuchen. Ein gezielterMerchantBildverarbeitungsfall ohneWrite. ThemerollenweiterUNPUBLISHED/MAINunverändert. AstraSchlussprüfung. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinSocial/Automation. R264:2ProdukttexteSEO+1DekorInhaltOptionsname nativ/öffentlich/mobil,AstraFaktengeprüft;4kleineSuchen/3CJDetails,1Badregalquellenblocker. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch/Merchantwiederholung;keinSocial/Automation/Higgsfieldrender. R265: Lokale Korrektur der Produktlink-Erkennung mit 184 Prüfungen und 67 von 67 erkannten Mutationen; Patch nicht in die operative Automation übernommen oder veröffentlicht. QA-Helfer nach unabhängiger Prüfung korrigiert; 18 Offline-Tests und Root-Gegenprüfung bestanden, nicht öffentlich ausgeführt. Tasche 15507734135169 bleibt wegen unbekannter exakter Lieferantenvarianten-Zuordnung blockiert. Keine Shop-, Theme-, Metricool- oder Merchant-Änderung; keine Tagesreports, Bestell- oder Kundenabfragen. R266 läuft; Ergebnis offen. R266: Kategorieseiten, Schriften und Icons im Entwurf gespeichert und eng geprüft; drei Theme-Commits, keine MAIN-Veröffentlichung. Metricool nur Identitäten und acht kleine Planungsreads; keine Kennzahlen/Klaviyo/Orders wiederholt. Ton-/Master-/Ledgerblocker bleiben erhalten. R267: Frische Shop-/Themerollen-/Pending-/16Dateiprüfung für Liveabschluss; keine Veröffentlichung, kein Publish-Retry, keine Kennzahl-, Klaviyo- oder Bestellabfrage. R268: Nach der Nutzerveröffentlichung MAIN und 16 Dateien gegengeprüft; vier öffentliche Live-Einstiege plus Desktop, AJAX-Filter und Zurücksetzen bestanden. 100 % des R266-Designblocks. Keine eigene Theme- oder Social-Publikation und keine Kennzahl-, Klaviyo- oder Bestellwatch-Wiederholung. R269: Ein Higgsfield-Bild und Shopify-Dateiupload, lokale Hero-Vorbereitung mit Quellenreview und isolierter Mock-QA. Keine Theme-Datei gespeichert oder veröffentlicht; Entwurfs-ID unbestätigt. Keine Kennzahlen/Klaviyo/Bestellwatch wiederholt. R270: Konkreter 15s-Mehrmotivfilm vorbereitet, drei kleine Produktquellen geprüft, zwei exakte Storefrontabfragen, Tagwächter/R69-Erlaubnis/Preise gelesen. Keine Videogenerierung, Themeänderung, Kennzahl-, Klaviyo- oder Bestellwatch-Wiederholung. R271: Verlinkte Referenzseite/Transkript gelesen, eine visuelle Analyse bleibt queued; lokaler Scroll-Entwurf mit Syntax/10Grenzfällen. Keine Videogenerierung oder Themeänderung; keine Kennzahlen-/Klaviyo-/Bestellwatch-Wiederholung.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-16",
@@ -8277,12 +8277,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r270_multishot_15s_plan_refs_quotes_ready_paid_exception_pending",
+      "state": "r271_scroll_reference_local_controller_ready_render_exception_pending",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "VORBEREITET_R270_ACTUAL_REFS_PRICE_PREFLIGHT_NO_RENDER",
-      "lastEvidence": "R270: Ein 15s-Websitefilm mit vier Szenen aus drei 5s-Takes vorbereitet. Zwei aktuelle Produktquellen/Storefront/Tags geprüft; Altvideo nicht übernommen. R69-Website-Materialerlaubnis frisch bestätigt. Je 30 Credits im 4K-Modus, zusammen 90; keine neue MP4 und kein Render.",
-      "nextAllowedStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung.",
+      "belegArt": "VORBEREITET_R271_PAGE_TRANSCRIPT_LOCAL_CONTROLLER",
+      "lastEvidence": "R271: YouTube-Tutorial mit Seitentranskript belegt Scroll-Steuerung des Films. Lokaler Controller/Integrationsvertrag vorbereitet; Syntax und10reineGrenzfälle bestanden. Visuelle Analyse queued, Renderfreigabe90Credits weiter offen. Keine neue MP4 oder native Integration.",
+      "nextAllowedStep": "Bestehende Analyse-ID nachlesen. Renderausnahme für drei Takes bis90Credits weiterhin klären; danach Filmquellen/Preise frisch prüfen, einen15s-Master produzieren und den nativen Theme-Adapter samt echten mobilen/Decoderprüfungen ausführen.",
       "blockers": [
         "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
         "Becherhalter: genaue Passform/Montage und Material offen.",
@@ -17085,6 +17085,38 @@
               "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen."
             ]
           }
+        },
+        {
+          "archivedByRun": "R271",
+          "recordedAt": "2026-11-16T22:25:44Z",
+          "previous": {
+            "state": "r270_multishot_15s_plan_refs_quotes_ready_paid_exception_pending",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "VORBEREITET_R270_ACTUAL_REFS_PRICE_PREFLIGHT_NO_RENDER",
+            "lastEvidence": "R270: Ein 15s-Websitefilm mit vier Szenen aus drei 5s-Takes vorbereitet. Zwei aktuelle Produktquellen/Storefront/Tags geprüft; Altvideo nicht übernommen. R69-Website-Materialerlaubnis frisch bestätigt. Je 30 Credits im 4K-Modus, zusammen 90; keine neue MP4 und kein Render.",
+            "nextAllowedStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung.",
+            "blockers": [
+              "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+              "Becherhalter: genaue Passform/Montage und Material offen.",
+              "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+              "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+              "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+              "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt.",
+              "R261 Reibe Stil3 ohne exakt belegtes Galerie-Einzelbild; keine falsche Zuordnung.",
+              "R261 Brettmaterial widersprüchlich; kein Titan-/Food-Grade-/Antibakteriellnachweis.",
+              "R261 Reflexionstasse: zwölf CJ-Motive, exakte bestehende Variante ungeklärt; ein Verbindungsread0 ist keine leere Historie.",
+              "R261 Merchant-Waage weiterhin DISAPPROVED; OG101.90 vs Auswahl127.90CHF separat belegt, Google-Ursache unbekannt.",
+              "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
+              "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
+              "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
+              "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
+              "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
+              "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur.",
+              "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen.",
+              "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen.",
+              "R270: Konkrete Ausnahme von der bestehenden Keine-kostenpflichtigen-Video-Renders-Vorgabe für genau drei Takes bis höchstens 90 Credits steht aus."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -20015,6 +20047,26 @@
         "nativeIntegration": false,
         "direction": "Mehrere bewegte Motive; R269-Still-only-Einbau durch neue Anweisung überholt, Bild als Poster/Referenz erhalten.",
         "nextStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung."
+      },
+      "run271": {
+        "report": "dropship/codex-handoff-20261018/R271-REPORT-20261116.md",
+        "proof": "dropship/codex-handoff-20261018/R271-PROOF-20261116.json",
+        "reference": "https://www.youtube.com/watch?v=4doKHpXFcqs",
+        "referenceEvidence": "Page description and transcript; not full visual watch.",
+        "visualAnalysis": {
+          "id": "6ef5eab1-ca27-49f9-86a3-71c7dd6eb84c",
+          "state": "queued",
+          "lastCheckedUTC": "2026-11-16T22:23:23Z"
+        },
+        "controller": "dropship/codex-handoff-20261018/runs/20261116-r271/scroll-hero/scroll-hero-controller.mjs",
+        "controllerState": "LOCAL_PROTOTYPE_ONLY_SYNTAX_AND_10_BOUNDARIES",
+        "targetSourceFilmSeconds": 15,
+        "interaction": "scroll_to_video_time_forward_reverse_hold",
+        "paidException": "PENDING_90_CREDITS_AS_R270",
+        "renderJobsSubmitted": 0,
+        "newMP4": false,
+        "nativeIntegration": false,
+        "nextStep": "Bestehende Analyse-ID nachlesen. Renderausnahme für drei Takes bis90Credits weiterhin klären; danach Filmquellen/Preise frisch prüfen, einen15s-Master produzieren und den nativen Theme-Adapter samt echten mobilen/Decoderprüfungen ausführen."
       }
     },
     {
@@ -28745,13 +28797,13 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r270_multishot_15s_plan_refs_quotes_ready_paid_exception_pending",
+      "state": "r271_scroll_reference_local_controller_ready_render_exception_pending",
       "title": "Mobile Website im Stil der App weiterentwickelt",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "VORBEREITET_R270_ACTUAL_REFS_PRICE_PREFLIGHT_NO_RENDER",
-      "lastEvidence": "R270: Ein 15s-Websitefilm mit vier Szenen aus drei 5s-Takes vorbereitet. Zwei aktuelle Produktquellen/Storefront/Tags geprüft; Altvideo nicht übernommen. R69-Website-Materialerlaubnis frisch bestätigt. Je 30 Credits im 4K-Modus, zusammen 90; keine neue MP4 und kein Render.",
+      "belegArt": "VORBEREITET_R271_PAGE_TRANSCRIPT_LOCAL_CONTROLLER",
+      "lastEvidence": "R271: YouTube-Tutorial mit Seitentranskript belegt Scroll-Steuerung des Films. Lokaler Controller/Integrationsvertrag vorbereitet; Syntax und10reineGrenzfälle bestanden. Visuelle Analyse queued, Renderfreigabe90Credits weiter offen. Keine neue MP4 oder native Integration.",
       "previewUrl": "https://au3j0y-hq.myshopify.com/?preview_theme_id=214040805767",
-      "nextAllowedStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung.",
+      "nextAllowedStep": "Bestehende Analyse-ID nachlesen. Renderausnahme für drei Takes bis90Credits weiterhin klären; danach Filmquellen/Preise frisch prüfen, einen15s-Master produzieren und den nativen Theme-Adapter samt echten mobilen/Decoderprüfungen ausführen.",
       "blockers": [
         "Zwei zusätzliche Theme-Versandrechendiffs ausserhalb der ursprünglichen sieben Dateien; Actor und tatsächliche Rabatt-/Checkoutlogik offen.",
         "Theme214040805767 weiterUNPUBLISHED; Publisher-Scope-Verweigerung ausR234/R235 nicht erneut ausgelöst.",
@@ -29960,6 +30012,25 @@
               "Shellrate-limit ist keine leere Quelle oder404; gültige native Dateigegenprobe nach Wartefrist liegt vor, keine weiteren Shellversuche nötig.",
               "Kein pauschaler Quelle-/Gesamttheme-Rollback oder Versand-/Rabattänderung aus dem hypothetischen Rechenfall ableiten.",
               "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen."
+            ]
+          }
+        },
+        {
+          "archivedByRun": "R271",
+          "recordedAt": "2026-11-16T22:25:44Z",
+          "previous": {
+            "state": "r270_multishot_15s_plan_refs_quotes_ready_paid_exception_pending",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "VORBEREITET_R270_ACTUAL_REFS_PRICE_PREFLIGHT_NO_RENDER",
+            "lastEvidence": "R270: Ein 15s-Websitefilm mit vier Szenen aus drei 5s-Takes vorbereitet. Zwei aktuelle Produktquellen/Storefront/Tags geprüft; Altvideo nicht übernommen. R69-Website-Materialerlaubnis frisch bestätigt. Je 30 Credits im 4K-Modus, zusammen 90; keine neue MP4 und kein Render.",
+            "nextAllowedStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung.",
+            "blockers": [
+              "Zwei zusätzliche Theme-Versandrechendiffs ausserhalb der ursprünglichen sieben Dateien; Actor und tatsächliche Rabatt-/Checkoutlogik offen.",
+              "Theme214040805767 weiterUNPUBLISHED; Publisher-Scope-Verweigerung ausR234/R235 nicht erneut ausgelöst.",
+              "Shellrate-limit ist keine leere Quelle oder404; gültige native Dateigegenprobe nach Wartefrist liegt vor, keine weiteren Shellversuche nötig.",
+              "Kein pauschaler Quelle-/Gesamttheme-Rollback oder Versand-/Rabattänderung aus dem hypothetischen Rechenfall ableiten.",
+              "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen.",
+              "R270: Konkrete Ausnahme von der bestehenden Keine-kostenpflichtigen-Video-Renders-Vorgabe für genau drei Takes bis höchstens 90 Credits steht aus."
             ]
           }
         }
@@ -31235,6 +31306,26 @@
         "nativeIntegration": false,
         "direction": "Mehrere bewegte Motive; R269-Still-only-Einbau durch neue Anweisung überholt, Bild als Poster/Referenz erhalten.",
         "nextStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung."
+      },
+      "run271": {
+        "report": "dropship/codex-handoff-20261018/R271-REPORT-20261116.md",
+        "proof": "dropship/codex-handoff-20261018/R271-PROOF-20261116.json",
+        "reference": "https://www.youtube.com/watch?v=4doKHpXFcqs",
+        "referenceEvidence": "Page description and transcript; not full visual watch.",
+        "visualAnalysis": {
+          "id": "6ef5eab1-ca27-49f9-86a3-71c7dd6eb84c",
+          "state": "queued",
+          "lastCheckedUTC": "2026-11-16T22:23:23Z"
+        },
+        "controller": "dropship/codex-handoff-20261018/runs/20261116-r271/scroll-hero/scroll-hero-controller.mjs",
+        "controllerState": "LOCAL_PROTOTYPE_ONLY_SYNTAX_AND_10_BOUNDARIES",
+        "targetSourceFilmSeconds": 15,
+        "interaction": "scroll_to_video_time_forward_reverse_hold",
+        "paidException": "PENDING_90_CREDITS_AS_R270",
+        "renderJobsSubmitted": 0,
+        "newMP4": false,
+        "nativeIntegration": false,
+        "nextStep": "Bestehende Analyse-ID nachlesen. Renderausnahme für drei Takes bis90Credits weiterhin klären; danach Filmquellen/Preise frisch prüfen, einen15s-Master produzieren und den nativen Theme-Adapter samt echten mobilen/Decoderprüfungen ausführen."
       }
     },
     {
@@ -46087,15 +46178,15 @@
       "id": "website-main-film-20261103",
       "priority": 65,
       "priorityKind": "SETZUNG",
-      "state": "r270_multishot_15s_plan_refs_quotes_ready_paid_exception_pending",
+      "state": "r271_scroll_reference_local_controller_ready_render_exception_pending",
       "title": "Einen professionellen Hauptfilm für die LuxeStyle-Startseite herstellen",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "VORBEREITET_R270_ACTUAL_REFS_PRICE_PREFLIGHT_NO_RENDER",
-      "lastEvidence": "R270: Ein 15s-Websitefilm mit vier Szenen aus drei 5s-Takes vorbereitet. Zwei aktuelle Produktquellen/Storefront/Tags geprüft; Altvideo nicht übernommen. R69-Website-Materialerlaubnis frisch bestätigt. Je 30 Credits im 4K-Modus, zusammen 90; keine neue MP4 und kein Render.",
+      "belegArt": "VORBEREITET_R271_PAGE_TRANSCRIPT_LOCAL_CONTROLLER",
+      "lastEvidence": "R271: YouTube-Tutorial mit Seitentranskript belegt Scroll-Steuerung des Films. Lokaler Controller/Integrationsvertrag vorbereitet; Syntax und10reineGrenzfälle bestanden. Visuelle Analyse queued, Renderfreigabe90Credits weiter offen. Keine neue MP4 oder native Integration.",
       "ownerPurpose": "LuxeStyle als Marke zeigen; ausdrücklich im Chat bestätigt. Keine fertige kreative/Produkt-/Rechteabnahme daraus ableiten.",
       "proposedMasterId": "luxe_website_brand_master_20261103",
       "preservedSocialMasterId": "luxe_sternenprojektor_master_20261018",
-      "nextAllowedStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung.",
+      "nextAllowedStep": "Bestehende Analyse-ID nachlesen. Renderausnahme für drei Takes bis90Credits weiterhin klären; danach Filmquellen/Preise frisch prüfen, einen15s-Master produzieren und den nativen Theme-Adapter samt echten mobilen/Decoderprüfungen ausführen.",
       "blockers": [
         "Kreative Abnahme des tatsächlichen fertigen Schnitts steht aus; keine Ablehnung oder fehlende Erstellungserlaubnis behaupten.",
         "Einbindung in die aktuelle Website nicht ausgeführt oder geprüft.",
@@ -46158,6 +46249,23 @@
               "Bestehende Website-Quellen sind nach ausdrücklichem Auftrag genutzt; unabhängige kommerzielle Drittanbieter-Lizenzbestätigung bleibt unbekannt, keine Socialfreigabe ableiten."
             ]
           }
+        },
+        {
+          "archivedByRun": "R271",
+          "recordedAt": "2026-11-16T22:25:44Z",
+          "previous": {
+            "state": "r270_multishot_15s_plan_refs_quotes_ready_paid_exception_pending",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "VORBEREITET_R270_ACTUAL_REFS_PRICE_PREFLIGHT_NO_RENDER",
+            "lastEvidence": "R270: Ein 15s-Websitefilm mit vier Szenen aus drei 5s-Takes vorbereitet. Zwei aktuelle Produktquellen/Storefront/Tags geprüft; Altvideo nicht übernommen. R69-Website-Materialerlaubnis frisch bestätigt. Je 30 Credits im 4K-Modus, zusammen 90; keine neue MP4 und kein Render.",
+            "nextAllowedStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung.",
+            "blockers": [
+              "Kreative Abnahme des tatsächlichen fertigen Schnitts steht aus; keine Ablehnung oder fehlende Erstellungserlaubnis behaupten.",
+              "Einbindung in die aktuelle Website nicht ausgeführt oder geprüft.",
+              "Bestehende Website-Quellen sind nach ausdrücklichem Auftrag genutzt; unabhängige kommerzielle Drittanbieter-Lizenzbestätigung bleibt unbekannt, keine Socialfreigabe ableiten.",
+              "R270: Konkrete Ausnahme von der bestehenden Keine-kostenpflichtigen-Video-Renders-Vorgabe für genau drei Takes bis höchstens 90 Credits steht aus."
+            ]
+          }
         }
       ],
       "websiteFilmR69": {
@@ -46211,6 +46319,26 @@
         "nativeIntegration": false,
         "direction": "Mehrere bewegte Motive; R269-Still-only-Einbau durch neue Anweisung überholt, Bild als Poster/Referenz erhalten.",
         "nextStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung."
+      },
+      "run271": {
+        "report": "dropship/codex-handoff-20261018/R271-REPORT-20261116.md",
+        "proof": "dropship/codex-handoff-20261018/R271-PROOF-20261116.json",
+        "reference": "https://www.youtube.com/watch?v=4doKHpXFcqs",
+        "referenceEvidence": "Page description and transcript; not full visual watch.",
+        "visualAnalysis": {
+          "id": "6ef5eab1-ca27-49f9-86a3-71c7dd6eb84c",
+          "state": "queued",
+          "lastCheckedUTC": "2026-11-16T22:23:23Z"
+        },
+        "controller": "dropship/codex-handoff-20261018/runs/20261116-r271/scroll-hero/scroll-hero-controller.mjs",
+        "controllerState": "LOCAL_PROTOTYPE_ONLY_SYNTAX_AND_10_BOUNDARIES",
+        "targetSourceFilmSeconds": 15,
+        "interaction": "scroll_to_video_time_forward_reverse_hold",
+        "paidException": "PENDING_90_CREDITS_AS_R270",
+        "renderJobsSubmitted": 0,
+        "newMP4": false,
+        "nativeIntegration": false,
+        "nextStep": "Bestehende Analyse-ID nachlesen. Renderausnahme für drei Takes bis90Credits weiterhin klären; danach Filmquellen/Preise frisch prüfen, einen15s-Master produzieren und den nativen Theme-Adapter samt echten mobilen/Decoderprüfungen ausführen."
       }
     },
     {
@@ -50588,6 +50716,16 @@
         "dropship/codex-handoff-20261018/R270-PROOF-20261116.json",
         "dropship/codex-handoff-20261018/runs/20261116-r270/RENDER-PLAN.json"
       ]
+    },
+    {
+      "revision": 271,
+      "at": "2026-11-16T22:25:44Z",
+      "summary": "R271: YouTube-Referenz für filmische Scroll-Website per Beschreibung/Seitentranskript ausgewertet; visuelle Higgsfield-Analysequeued. Kleiner lokaler Scroll-Controller/Vertrag mit Syntax und10Grenzfällen vorbereitet. Keine Kostenfreigabe aus Link abgeleitet, keine Render-/Theme-/Hostingausführung.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R271-REPORT-20261116.md",
+        "dropship/codex-handoff-20261018/R271-PROOF-20261116.json",
+        "dropship/codex-handoff-20261018/runs/20261116-r271/scroll-hero/scroll-hero-controller.mjs"
+      ]
     }
   ],
   "salesGoal": {
@@ -51940,7 +52078,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 270,
+    "latestCanonicalRevision": 271,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -53005,6 +53143,11 @@
     "run270": {
       "atUtc": "2026-11-16T22:11:52Z",
       "report": "dropship/codex-handoff-20261018/R270-REPORT-20261116.md",
+      "receipt": "unknown"
+    },
+    "run271": {
+      "atUtc": "2026-11-16T22:25:44Z",
+      "report": "dropship/codex-handoff-20261018/R271-REPORT-20261116.md",
       "receipt": "unknown"
     }
   },
@@ -79071,5 +79214,25 @@
     "nativeIntegration": false,
     "direction": "Mehrere bewegte Motive; R269-Still-only-Einbau durch neue Anweisung überholt, Bild als Poster/Referenz erhalten.",
     "nextStep": "Einmalige ausdrückliche Ausnahme für höchstens 90 Credits für genau drei Quelltakes einholen; danach frische Quell-/Preisgegenprobe, Jobs und tatsächliche MP4s prüfen, genau einen 15s-Master schneiden. Keine zusätzlichen bezahlten Retries, keine automatische Themeveröffentlichung."
+  },
+  "run271": {
+    "report": "dropship/codex-handoff-20261018/R271-REPORT-20261116.md",
+    "proof": "dropship/codex-handoff-20261018/R271-PROOF-20261116.json",
+    "reference": "https://www.youtube.com/watch?v=4doKHpXFcqs",
+    "referenceEvidence": "Page description and transcript; not full visual watch.",
+    "visualAnalysis": {
+      "id": "6ef5eab1-ca27-49f9-86a3-71c7dd6eb84c",
+      "state": "queued",
+      "lastCheckedUTC": "2026-11-16T22:23:23Z"
+    },
+    "controller": "dropship/codex-handoff-20261018/runs/20261116-r271/scroll-hero/scroll-hero-controller.mjs",
+    "controllerState": "LOCAL_PROTOTYPE_ONLY_SYNTAX_AND_10_BOUNDARIES",
+    "targetSourceFilmSeconds": 15,
+    "interaction": "scroll_to_video_time_forward_reverse_hold",
+    "paidException": "PENDING_90_CREDITS_AS_R270",
+    "renderJobsSubmitted": 0,
+    "newMP4": false,
+    "nativeIntegration": false,
+    "nextStep": "Bestehende Analyse-ID nachlesen. Renderausnahme für drei Takes bis90Credits weiterhin klären; danach Filmquellen/Preise frisch prüfen, einen15s-Master produzieren und den nativen Theme-Adapter samt echten mobilen/Decoderprüfungen ausführen."
   }
 }

@@ -1,3 +1,9 @@
+# R271 – Referenz für einen filmischen Scroll-Aufmacher geprüft – 16.11.2026
+
+Der neue YouTube-Link erklärt eine Scroll-Steuerung der Filmposition: vorwärts, rückwärts und Halt. Beschreibung und Seitentranskript gelesen; ergänzende visuelle Analyse noch queued. Lokaler Scroll-Controller und Integrationsvertrag vorbereitet, Syntax und zehn reine Grenzfälle bestanden. **Keine MP4, kein Shopify-Einbau und kein Ja zu 90 Credits.** Der R270-Master bleibt vorbereitet; der Link erweitert keine Kosten-/Medien-/Hostingbefugnis. [Referenzabgleich](R271-REPORT-20261116.md) · [Belege](R271-PROOF-20261116.json). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.
+
+---
+
 # R270 – 15-Sekunden-Film mit mehr Szenen vorbereitet – 16.11.2026
 
 Die neue Richtung lautet: Atelier → echtes Blumen-Midikleid → Keramik-Stillleben → Atelier. Ein einziger 15-Sekunden-Master aus drei getrennten 5-Sekunden-Quelltakes. Aktuelle Produkt-/Variantenbilder, Kaufbarkeit und Website-Materialerlaubnis geprüft; ein nicht eindeutig passendes Altvideo ausgeschlossen. Drei frische 4K-Offerten bestätigen je 30, zusammen 90 Credits. **Kein Render gestartet und keine neue MP4.** Die frühere Keine-kostenpflichtigen-Video-Renders-Vorgabe benötigt eine konkrete Ausnahme. R269 bleibt Bild-/Posterquelle; der Still-only-Einbau ist durch den neuen Wunsch überholt. [Storyboard und Stand](R270-REPORT-20261116.md) · [Belege](R270-PROOF-20261116.json). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.

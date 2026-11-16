@@ -1,0 +1,29 @@
+{
+  "status": "PASS_LOCAL_PREPARATION_ONLY",
+  "atUTC": "2026-11-16T22:22:20.828874+00:00",
+  "nodeSyntax": "PASS",
+  "pureBoundaryCases": 10,
+  "actualVideo": false,
+  "browserDecodeTested": false,
+  "iPhoneTested": false,
+  "themeComponentAdapter": "REQUIRED_BEFORE_PRODUCTION",
+  "shopifyWrites": 0,
+  "paidRenders": 0,
+  "files": [
+    {
+      "file": "scroll-hero-controller.mjs",
+      "bytes": 5984,
+      "sha256": "cea2d17c6d309e702136bfcbf897419e0bc6fd371bcda5bef7709dcda3e0304d"
+    },
+    {
+      "file": "TECHNISCHER-ENTWURF.md",
+      "bytes": 6018,
+      "sha256": "c72dcbbdd71cfd79644ac607b9fdd692fa81f866f5e9696684999aab094c0333"
+    }
+  ],
+  "readEvidence": [
+    "R266/native AGENTS snapshot",
+    "R269/source/assets/luxe-edit.js",
+    "Shopify read-only /skills/editing-themes/references/motion.md"
+  ]
+}
