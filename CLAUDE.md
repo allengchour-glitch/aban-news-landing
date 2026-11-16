@@ -105,6 +105,15 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
+**📌 2026-11-16 abends (🤖 ABAN-Papierbot: Codex-Übergabe aus Drive geprüft, NICHT startklar, nichts nach `main`; Besitzer: Drive-Link `CLAUDE-CODE-BOT-AKTUELL.md`, Auswahl «Prüfen und ins Repo», dann «nutze model für token sparen»; Doku `docs/CODEX-CLAUDE-UEBERGABE.md` Abschnitt «ABAN-Papierbot»):**
+- **GEMESSEN:**
+  - Prüfsummen: ZIP `5954af99…` und Bootstrap `d623973f…` gleich Übergabe und SHA-Datei.
+  - Tests: 12 + 99 + 14 grün, dazu 2 Browser-Prüfungen.
+  - Mutationsprobe Bootstrap: 5 von 9 (vier Testlücken).
+  - Opus-Prüfer: sicher, nur lokal, keine echten Orders. Aber zwei Blocker: Der Starter läuft ohne Prüfsumme im Befehl, und der Marktscan scheitert (`exchangeInfo` 17 818 855 Byte, Grenze 16 MiB). Der Erststart bleibt dann pausiert mit BTC und ETH, und die Datenbank sperrt eine spätere Erstinitialisierung.
+- **Repo:** Der Patch `fcb7781` geht auf `main` nicht auf. 111 von 211 Programmdateien und `tools/trading/cloud/` fehlen, und Codex hat `codex/einfach-daytrading` nie gepusht. Auftrag an Codex: Zweig pushen und die Blocker beheben. Danach prüft Claude die neuen Prüfsummen und nennt dem Besitzer den Befehl mit Starter-Prüfsumme.
+- **Lehre:** Drive-Downloads landen über den Anschluss als Datei im Ordner `tool-results`, nicht im Gesprächsverlauf. So lassen sich auch grosse ZIPs prüfen.
+
 **📌 2026-11-16 nachmittags (📲 Social-Pflege und Aufräumen: 26 stumme Videos eingeplant, Liste mit 411 alten Beiträgen für PC-Claude · Freigabe erkennt Produkte über den Link; Besitzer «codex in max modus heute, metricool analyise inkl sozial pflege», «heute voll gas codex, inklusive alte post löschen in sozial und repost, zb alle plüsch tiere löschen und nur 1 machen oder mit schlechte musik»; PRs #3192, #3193, #3195 `62fb79cc`, #3203; Doku `dropship/social-pflege-1611/README.md`, `dropship/social-aufraeumen-1611/README.md`):**
 - **Entscheide des Besitzers (gezielte Fragen):**
   - Hobel freigeben.
