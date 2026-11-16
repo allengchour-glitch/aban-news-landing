@@ -1,0 +1,96 @@
+{
+ "zeit": "2026-11-15T23:47:18.410Z",
+ "quelle": "6cbba761cbfabffe6f8037fe4732080c",
+ "ergebnis": [
+  [
+   "M01",
+   "ERKANNT",
+   "M01 Handy-Sperre im Skript fehlt",
+   "FEHLER schmuck m664: Handy: keine Bewegungsklasse, kein Knopf [\"lx-kb-an\",\"lx-kb-drift\"]"
+  ],
+  [
+   "M02",
+   "ERKANNT",
+   "M02 Poster ohne Handy-Platzhalter",
+   "FEHLER schmuck m664: Handy: kein Clip, kein Poster geladen [[],[[\"lx-story-s03-quer-v1.webp\",200],[\"lx-story-s03-quer-v1.webp\",200],[\"lx-story-s03-quer-v1.webp\",200],[\"lx-story-s03-quer-v1.webp\",200],[\"lx-story-s03-quer-"
+  ],
+  [
+   "M03",
+   "ERKANNT",
+   "M03 Textabstand neben dem Clip fehlt",
+   "FEHLER schmuck d1100: Text endet vor dem deckenden Teil des Clips [1036,730]"
+  ],
+  [
+   "M04",
+   "ERKANNT",
+   "M04 Ken Burns zu stark (1,12)",
+   "FEHLER damen-mode d: Ken-Burns-Keyframes: Massstab höchstens 1,08 (aus dem Stylesheet) {\"lxkb-a\":1.12,\"lxkb-b\":1.07,\"lxkb-c\":1.06,\"lxkb-d\":1.08,\"lxkb-glanz\":1,\"lxkb-p\":1,\"lxkb-schein\":1}"
+  ],
+  [
+   "M05",
+   "ERKANNT",
+   "M05 reduzierte Bewegung im Skript ignoriert",
+   "FEHLER reduziert, Clipseite: Standbild, kein Video geladen [[{\"ok\":true,\"src\":\"lx-story-s03-quer-v1.webp\"},{\"ok\":true,\"src\":\"lx-story-s03-quer-v1.webp\"}],[[\"lx-story-s03-quer-v1.mp4\",206,471013]]] | FEHLER reduziert, Cli"
+  ],
+  [
+   "M07",
+   "ERKANNT",
+   "M07 Datensparmodus ignoriert",
+   "FEHLER Datensparmodus: nur Poster, kein Video [{\"paused\":false,\"t\":0.61,\"rs\":4,\"frames\":113,\"src\":\"lx-story-s03-quer-v1.mp4\",\"op\":\"1\"},[[\"lx-story-s03-quer-v1.mp4\",206,471013]]] | FEHLER Datensparmodus: Knopf versteckt ("
+  ],
+  [
+   "M08",
+   "ERKANNT",
+   "M08 Autoplay-Sperre nicht abgefangen",
+   "FEHLER Autoplay gesperrt: Video entfernt, Poster bleibt, Knopf versteckt [{\"paused\":true,\"t\":0,\"rs\":4,\"frames\":4,\"src\":\"lx-story-s03-quer-v1.mp4\",\"op\":\"0\"},{\"hidden\":true,\"label\":\"Bewegung anhalten\",\"sichtbar\":false,\"r\":"
+  ],
+  [
+   "M09",
+   "ERKANNT",
+   "M09 Clip ausserhalb des Bildes nicht pausiert",
+   "FEHLER ausserhalb des Bildes: Clip pausiert {\"paused\":false,\"t\":2.36,\"rs\":4,\"frames\":155,\"src\":\"lx-story-s03-quer-v1.mp4\",\"op\":\"1\"}"
+  ],
+  [
+   "M10",
+   "ERKANNT",
+   "M10 Verfuegbarkeit nicht geprueft",
+   "FEHLER ausverkauft: Liquid gibt weder Bühne noch Textabstand aus  | FEHLER ausverkauft: Fotostreifen mit Ken Burns, kein Clip geladen [[[\"lx-story-s03-quer-v1.webp\",200]]]"
+  ],
+  [
+   "M11",
+   "ERKANNT",
+   "M11 Bewegung ohne Skript (Ken Burns nicht an Klasse gebunden)",
+   "FEHLER ohne JavaScript schmuck: Fotostreifen wie heute, nichts bewegt sich {\"klassen\":[],\"buehneImKopf\":false,\"buehneVersteckt\":1,\"video\":null,\"knopf\":null,\"fotoTransform\":\"matrix(1.00453, 0, 0, 1.00453, -0.309734, -0.23"
+  ],
+  [
+   "M12",
+   "ERKANNT",
+   "M12 Parallaxe schon oben (cover statt exit)",
+   "FEHLER damen-mode d: oben (Scroll 0) keine Parallaxe-Verschiebung \"0px 17.2235%\""
+  ],
+  [
+   "M13",
+   "ERKANNT",
+   "M13 Knopf merkt die Wahl nicht",
+   "FEHLER Knopf (Maus): hält an, Beschriftung wechselt, Wahl gemerkt [{\"paused\":true,\"t\":0.49,\"rs\":4,\"frames\":110,\"src\":\"lx-story-s03-quer-v1.mp4\",\"op\":\"1\"},\"Bewegung fortsetzen\",null] | FEHLER Knopf: nach dem Neuladen blei"
+  ],
+  [
+   "M14",
+   "ERKANNT",
+   "M14 Rueckfall-Skript fehlt",
+   "FEHLER Rückfall ohne scroll-gebundene CSS: Skript setzt die Parallaxe {\"var\":\"\",\"tr\":\"0px\",\"anim\":\"none\"}"
+  ],
+  [
+   "M16",
+   "UEBERLEBT",
+   "M16 Ken Burns startet vor dem Laden der Kopffotos (LCP)",
+   ""
+  ],
+  [
+   "M15",
+   "ERKANNT",
+   "M15 Clip auch ab 750 px",
+   "FEHLER schmuck d800: Clip-Bühne nicht im Kopf true | FEHLER schmuck d800: kein Video geladen [[\"lx-story-s03-quer-v1.mp4\",206,471013]]"
+  ]
+ ]
+}

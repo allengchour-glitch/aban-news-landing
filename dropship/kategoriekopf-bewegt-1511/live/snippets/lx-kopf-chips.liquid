@@ -1,0 +1,278 @@
+{%- comment -%}
+  lx-kopf-chips (11.11.2026): kompakte Fassung von lux_subchips (templates/collection.json). Aufruf: render 'lx-kopf-chips'.
+  Inhalt und Logik unveraendert: Unterfilter aus dem Collection-Metafeld lux.unterfilter (sonst vom Eltern-Metafeld lux.eltern),
+  Tag-Filter (Welt-Liste, native Tag-URLs, Mehrfach-Filter), Nachbar-Kategorien aus dem Hauptmenue.
+  Neu ist nur die Darstellung:
+  - Handy (bis 749 px): alles in EINER waagrecht scrollenden Zeile (Unterfilter, Tag-Filter, Nachbar-Kategorien).
+  - Desktop: Zeile A = Unterfilter und Tag-Filter, Zeile B = Nachbar-Kategorien; je etwa eine Zeile, der Rest ist bis zum Klick auf
+    «Alle anzeigen» ausgeblendet (display:none, darum ohne Tastaturfokus). Die aktuelle Kategorie und aktive Filter bleiben immer sichtbar.
+  Die Breite wird aus der Zeichenzahl geschaetzt (Liquid kennt keine Pixel); 1 bis 2 Zeilen je nach Fensterbreite.
+  12.11.2026 (Pruefrunde): Ausblenden am Desktop nur mit JavaScript (Klasse lx-kc-js am <html>, gesetzt VOR der Leiste); ohne JS
+  sind alle Chips sichtbar und der Knopf fehlt. Handy: liegt der aktive Filter (sonst die aktuelle Unterkategorie, sonst die
+  aktuelle Nachbar-Kategorie) ausserhalb des Bildes, rollt das Skript die Zeile beim Laden dorthin (Reihenfolge im HTML unveraendert).
+{%- endcomment -%}
+{%- liquid
+  assign chips = ''
+  for link in linklists.main-menu.links
+    if link.url == collection.url and link.links.size > 1
+      assign chips = link.links
+    endif
+    for sub in link.links
+      if sub.url == collection.url and link.links.size > 1
+        assign chips = link.links
+      endif
+    endfor
+  endfor
+  assign lx_uf = collection.metafields.lux.unterfilter.value
+  assign lx_kopf = collection
+  if lx_uf == blank
+    assign lx_el = collection.metafields.lux.eltern.value
+    if lx_el != blank
+      assign lx_uf = lx_el.metafields.lux.unterfilter.value
+      assign lx_kopf = lx_el
+    endif
+  endif
+  assign welt = ''
+  assign menuetitel = ''
+  for link in linklists.main-menu.links
+    if link.url == collection.url
+      assign welt = link.title
+    endif
+    for sub in link.links
+      if sub.url == collection.url and welt == ''
+        assign welt = link.title
+      endif
+      for sub2 in sub.links
+        if sub2.url == collection.url and welt == ''
+          assign welt = link.title
+        endif
+      endfor
+    endfor
+  endfor
+  for ch in chips
+    assign menuetitel = menuetitel | append: '|' | append: ch.title | downcase
+  endfor
+  case welt
+    when 'Damen'
+      assign erlaubt = 'neu,damen,kleid,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,schmuck,uhren,sport,geschenk,ch-lager'
+    when 'Herren'
+      assign erlaubt = 'neu,herren,jacke,pullover,hemd,schuhe,sneaker,stiefel,guertel,taschen,rucksack,uhren,sport,geschenk,ch-lager'
+    when 'Schuhe'
+      assign erlaubt = 'neu,damen,herren,kinder,sneaker,stiefel,sport,ch-lager'
+    when 'Schmuck & Uhren'
+      assign erlaubt = 'neu,damen,herren,halskette,armband,ring,uhren,geschenk,ch-lager'
+    when 'Beauty & Parfüm'
+      assign erlaubt = 'neu,damen,herren,beauty,hautpflege,naegel,geschenk,ch-lager'
+    when 'Wohnen & Garten'
+      assign erlaubt = 'neu,wohnen,kueche,aufbewahrung,kissen,werkzeug,geschenk,ch-lager'
+    when 'Küche'
+      assign erlaubt = 'neu,kueche,aufbewahrung,gadget,elektronik,geschenk,ch-lager'
+    when 'Geschirr'
+      assign erlaubt = 'neu,kueche,geschenk,ch-lager'
+    when 'Technik & Gaming'
+      assign erlaubt = 'neu,elektronik,gadget,ladegeraet,gaming,auto,uhren,geschenk,ch-lager'
+    when 'Kinder & Haustier'
+      assign erlaubt = 'neu,kinder,baby,spielzeug,haustier,schuhe,geschenk,ch-lager'
+    when 'Sport & Party'
+      assign erlaubt = 'neu,sport,kostuem,halloween,damen,herren,kinder,geschenk,ch-lager'
+    when 'Herbst & Übergang'
+      assign erlaubt = 'neu,damen,herren,kinder,jacke,pullover,stiefel,ch-lager'
+    else
+      assign erlaubt = ''
+  endcase
+  assign filterpaare = 'neu|✨ Neu,damen|Damen,herren|Herren,kinder|Kinder,baby|Baby,kleid|Kleider,jacke|Jacken,pullover|Pullover,hemd|Hemden,schuhe|Schuhe,sneaker|Sneaker,stiefel|Stiefel,guertel|Gürtel,taschen|Taschen,rucksack|Rucksäcke,schmuck|Schmuck,halskette|Halsketten,armband|Armbänder,ring|Ringe,uhren|Uhren,beauty|Beauty,hautpflege|Hautpflege,naegel|Nägel,elektronik|Elektronik,gadget|Gadgets,ladegeraet|Laden & Strom,gaming|Gaming,kueche|Küche,wohnen|Wohnen,aufbewahrung|Aufbewahrung,kissen|Kissen,werkzeug|Werkzeug,auto|Auto,haustier|Haustier,spielzeug|Spielzeug,sport|Sport,kostuem|Kostüme,halloween|🎃 Halloween,geschenk|Geschenkidee,ch-lager|⚡ Ab CH-Lager' | split: ','
+  comment
+    Breitenschaetzung Desktop (px): Pille ~8,3 px je Zeichen + 38 px, Reiter (Grossbuchstaben) ~9 px je Zeichen + 28 px (gemessen 11.11. an herren-poloshirts 1440 px).
+    Zeile A und B je 1 000 px Budget; muss etwas ausgeblendet werden, bleiben 150 px fuer den Knopf frei.
+  endcomment
+  assign lx_budget = 1000
+  assign lx_a_gesamt = 0
+  assign lx_a_teile = 0
+  if lx_uf != blank and lx_uf.size > 0
+    assign lx_a_gesamt = lx_kopf.title.size | times: 83 | divided_by: 10 | plus: 12
+    assign lx_a_gesamt = lx_a_gesamt | plus: 72
+    for f in lx_uf
+      assign k = f.title.size | times: 83 | divided_by: 10 | plus: 38
+      assign lx_a_gesamt = lx_a_gesamt | plus: k
+      assign lx_a_teile = lx_a_teile | plus: 1
+    endfor
+  endif
+-%}
+{%- liquid
+  assign lx_fliste = ''
+  assign lx_f_gesamt = 0
+  for paar in filterpaare
+    assign teile = paar | split: '|'
+    assign t = teile[0]
+    assign tl = teile[1] | downcase | remove: '✨ ' | remove: '🎃 ' | remove: '⚡ '
+    assign tl_pipe = '|' | append: tl
+    assign ok = true
+    if erlaubt != ''
+      assign erl = erlaubt | split: ','
+      unless erl contains t
+        assign ok = false
+      endunless
+    endif
+    if menuetitel contains tl_pipe
+      assign ok = false
+    endif
+    if ok and collection.all_tags contains t
+      assign akt = false
+      if current_tags contains t
+        assign akt = true
+      endif
+      if akt
+        assign rest = ''
+        for ct in current_tags
+          if ct != t
+            assign rest = rest | append: '+' | append: ct
+          endif
+        endfor
+        assign rest = rest | remove_first: '+'
+        if rest == ''
+          assign ziel = collection.url
+        else
+          assign ziel = collection.url | append: '/' | append: rest
+        endif
+      else
+        assign plus = ''
+        for ct in current_tags
+          assign plus = plus | append: ct | append: '+'
+        endfor
+        assign plus = plus | append: t
+        assign ziel = collection.url | append: '/' | append: plus
+      endif
+      assign lx_fliste = lx_fliste | append: teile[1] | append: '§' | append: ziel | append: '§' | append: akt | append: '¶'
+      assign k = teile[1].size | times: 83 | divided_by: 10 | plus: 38
+      assign lx_f_gesamt = lx_f_gesamt | plus: k
+    endif
+  endfor
+-%}
+{%- liquid
+  assign lx_hat_f = false
+  if lx_fliste != ''
+    assign lx_hat_f = true
+  endif
+  assign lx_hat_a = false
+  if lx_a_teile > 0 or lx_hat_f
+    assign lx_hat_a = true
+  endif
+  assign lx_hat_b = false
+  if chips != '' and chips.size > 1
+    assign lx_hat_b = true
+  endif
+-%}
+{%- if lx_hat_a or lx_hat_b -%}
+<style>
+.lx-kc{max-width:min(var(--page-width,1200px),100%);width:100%;min-width:0;margin:0 auto;padding:.45rem 1.5rem .25rem;box-sizing:border-box}
+.lx-kc__zeile{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;min-width:0}
+.lx-kc__zeile+.lx-kc__zeile{margin-top:.4rem}
+.lx-kc__label{font-size:.9rem;font-weight:700;color:#3d2f18;white-space:nowrap}
+.lx-kc__u,.lx-kc__f{white-space:nowrap;font-size:.92rem;font-weight:600;padding:.38rem .9rem;border-radius:999px;text-decoration:none;border:1px solid #bfae8c;background:#fff;color:#2f2414;transition:background .35s ease,border-color .35s ease,color .35s ease}
+.lx-kc__u:hover{border-color:#8b7355;color:#1f1a12}
+.lx-kc__u[aria-current="page"]{background:#8b7355;border-color:#8b7355;color:#fff}
+.lx-kc__f{border-color:#9db5a3;background:#f7faf7;color:#1f3a27}
+.lx-kc__f--akt{border-color:#2f5a3b;background:#2f5a3b;color:#fff;font-weight:700}
+.lx-kc__zeile--b{gap:.2rem 1.6rem;border-bottom:1px solid #cdbd9f}
+.lx-kc__t{font-size:.86rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:#2f2414;padding:.42rem 0;border-bottom:2px solid transparent;white-space:nowrap;transition:color .35s ease,border-color .35s ease}
+.lx-kc__t:hover{color:#1f1a12;border-bottom-color:#cdbd9f}
+.lx-kc__t[aria-current="page"]{color:#1f1a12;font-weight:800;border-bottom:3px solid #8b7355}
+.lx-kc__trenn{display:none}
+.lx-kc__auf{font:inherit;font-size:.86rem;font-weight:700;color:#6b4f1d;background:none;border:0;padding:.42rem .2rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;display:none}
+.lx-kc__auf:focus-visible,.lx-kc a:focus-visible{outline:2px solid #8b7355;outline-offset:2px}
+@media (min-width:750px){.lx-kc-js .lx-kc__zeile:not(.ist-offen)>.lx-kc__x{display:none}.lx-kc-js .lx-kc__auf{display:inline-block}}
+@media (max-width:749px){
+.lx-kc{padding:2px 0 4px;margin-inline:calc(-1 * var(--page-margin,16px));max-width:none;width:auto}
+.lx-kc__reihe{display:flex;align-items:center;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px var(--page-margin,16px) 4px;scroll-padding-inline:var(--page-margin,16px)}
+.lx-kc__reihe::-webkit-scrollbar{display:none}
+.lx-kc__zeile,.lx-kc__zeile--b{display:contents}
+.lx-kc__auf{display:none}
+.lx-kc__u,.lx-kc__f{flex:0 0 auto;font-size:13.5px;line-height:1.2;padding:6px 12px}
+.lx-kc__label{flex:0 0 auto;font-size:13px}
+.lx-kc__label--gleich{display:none}
+.lx-kc__t{flex:0 0 auto;font-size:12px;letter-spacing:.05em;padding:7px 4px 5px}
+.lx-kc__trenn{display:block;flex:0 0 1px;align-self:stretch;margin:5px 4px;background:#d9cdb8}
+}
+</style>
+<script>document.documentElement.classList.add('lx-kc-js')</script>
+<nav class="lx-kc" aria-label="Unterkategorien und Filter">
+  <div class="lx-kc__reihe">
+    {%- if lx_hat_a -%}
+      {%- assign lx_platz = lx_budget -%}
+      {%- assign lx_summe = 0 -%}
+      {%- assign lx_x = 0 -%}
+      {%- assign lx_ges = lx_a_gesamt | plus: lx_f_gesamt -%}
+      {%- if lx_hat_f -%}{%- assign lx_ges = lx_ges | plus: 70 -%}{%- endif -%}
+      {%- if lx_ges > lx_budget -%}{%- assign lx_platz = lx_budget | minus: 150 -%}{%- endif -%}
+      <div class="lx-kc__zeile lx-kc__zeile--a" id="lx-kc-a">
+        {%- if lx_a_teile > 0 -%}
+          <span class="lx-kc__label{% if lx_kopf.id == collection.id %} lx-kc__label--gleich{% endif %}">{{ lx_kopf.title | escape }}:</span>
+          <a class="lx-kc__u" href="{{ lx_kopf.url }}"{% if lx_kopf.id == collection.id %} aria-current="page"{% endif %}>Alle</a>
+          {%- assign lx_summe = lx_kopf.title.size | times: 83 | divided_by: 10 | plus: 84 -%}
+          {%- for f in lx_uf -%}
+            {%- assign k = f.title.size | times: 83 | divided_by: 10 | plus: 38 -%}
+            {%- assign lx_summe = lx_summe | plus: k -%}
+            {%- assign lx_ist_x = false -%}
+            {%- if lx_summe > lx_platz and f.id != collection.id -%}{%- assign lx_ist_x = true -%}{%- assign lx_x = lx_x | plus: 1 -%}{%- endif -%}
+            <a class="lx-kc__u{% if lx_ist_x %} lx-kc__x{% endif %}" href="{{ f.url }}"{% if f.id == collection.id %} aria-current="page"{% endif %}>{{ f.title | escape }}</a>
+          {%- endfor -%}
+        {%- endif -%}
+        {%- if lx_hat_f -%}
+          {%- if lx_a_teile > 0 -%}<span class="lx-kc__trenn" aria-hidden="true"></span>{%- endif -%}
+          {%- if lx_a_teile == 0 -%}<span class="lx-kc__label">Filtern:</span>{%- endif -%}
+          {%- if lx_a_teile == 0 -%}{%- assign lx_summe = 70 -%}{%- endif -%}
+          {%- assign lx_fl = lx_fliste | split: '¶' -%}
+          {%- for stueck in lx_fl -%}
+            {%- assign lx_t = stueck | split: '§' -%}
+            {%- assign k = lx_t[0].size | times: 83 | divided_by: 10 | plus: 38 -%}
+            {%- assign lx_summe = lx_summe | plus: k -%}
+            {%- assign lx_ist_x = false -%}
+            {%- if lx_summe > lx_platz and lx_t[2] != 'true' -%}{%- assign lx_ist_x = true -%}{%- assign lx_x = lx_x | plus: 1 -%}{%- endif -%}
+            <a href="{{ lx_t[1] }}" rel="nofollow" class="lx-kc__f{% if lx_t[2] == 'true' %} lx-kc__f--akt{% endif %}{% if lx_ist_x %} lx-kc__x{% endif %}">{{ lx_t[0] }}{% if lx_t[2] == 'true' %} ✕{% endif %}</a>
+          {%- endfor -%}
+        {%- endif -%}
+        {%- if lx_x > 0 -%}
+          <button type="button" class="lx-kc__auf" aria-expanded="false" aria-controls="lx-kc-a" data-auf="Alle anzeigen (+{{ lx_x }})" data-zu="Weniger anzeigen">Alle anzeigen (+{{ lx_x }})</button>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if lx_hat_b -%}
+      {%- if lx_hat_a -%}<span class="lx-kc__trenn" aria-hidden="true"></span>{%- endif -%}
+      {%- assign lx_seen = '|' -%}
+      {%- assign lx_n = 0 -%}
+      {%- assign lx_ges_b = 0 -%}
+      {%- for ch in chips -%}
+        {%- assign lx_key = '|' | append: ch.url | append: '|' -%}
+        {%- unless lx_seen contains lx_key -%}
+          {%- assign lx_seen = lx_seen | append: ch.url | append: '|' -%}
+          {%- assign lx_n = lx_n | plus: 1 -%}
+          {%- assign k = ch.title.size | times: 90 | divided_by: 10 | plus: 28 -%}
+          {%- assign lx_ges_b = lx_ges_b | plus: k -%}
+        {%- endunless -%}
+      {%- endfor -%}
+      {%- assign lx_platz_b = lx_budget -%}
+      {%- if lx_ges_b > lx_budget -%}{%- assign lx_platz_b = lx_budget | minus: 190 -%}{%- endif -%}
+      <div class="lx-kc__zeile lx-kc__zeile--b" id="lx-kc-b">
+        {%- assign lx_seen = '|' -%}
+        {%- assign lx_summe = 0 -%}
+        {%- assign lx_x = 0 -%}
+        {%- for ch in chips -%}
+          {%- assign lx_key = '|' | append: ch.url | append: '|' -%}
+          {%- unless lx_seen contains lx_key -%}
+            {%- assign lx_seen = lx_seen | append: ch.url | append: '|' -%}
+            {%- assign k = ch.title.size | times: 90 | divided_by: 10 | plus: 28 -%}
+            {%- assign lx_summe = lx_summe | plus: k -%}
+            {%- assign lx_ist_x = false -%}
+            {%- if lx_summe > lx_platz_b and ch.url != collection.url -%}{%- assign lx_ist_x = true -%}{%- assign lx_x = lx_x | plus: 1 -%}{%- endif -%}
+            <a class="lx-kc__t{% if lx_ist_x %} lx-kc__x{% endif %}" href="{{ ch.url }}"{% if ch.url == collection.url %} aria-current="page"{% endif %}>{{ ch.title }}</a>
+          {%- endunless -%}
+        {%- endfor -%}
+        {%- if lx_x > 0 -%}
+          <button type="button" class="lx-kc__auf" aria-expanded="false" aria-controls="lx-kc-b" data-auf="Alle {{ lx_n }} Kategorien" data-zu="Weniger anzeigen">Alle {{ lx_n }} Kategorien</button>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</nav>
+<script>(function(){var n=document.currentScript&&document.currentScript.previousElementSibling;if(!n||!n.classList.contains('lx-kc'))return;n.querySelectorAll('.lx-kc__auf').forEach(function(b){b.addEventListener('click',function(){var z=b.parentNode,o=z.classList.toggle('ist-offen');b.setAttribute('aria-expanded',o?'true':'false');b.textContent=o?b.getAttribute('data-zu'):b.getAttribute('data-auf');});});var r=n.querySelector('.lx-kc__reihe'),gesetzt=-1;if(!r)return;function zeigen(){if(r.scrollLeft!==(gesetzt<0?0:gesetzt))return;if(r.scrollWidth<=r.clientWidth+1)return;var z=r.querySelector('.lx-kc__f--akt')||r.querySelector('.lx-kc__u[aria-current]')||r.querySelector('.lx-kc__t[aria-current]');if(!z)return;var rr=r.getBoundingClientRect(),zr=z.getBoundingClientRect();if(zr.left>=rr.left&&zr.right<=rr.right)return;r.scrollLeft+=zr.left-rr.left-(parseFloat(getComputedStyle(r).paddingLeft)||16)-28;gesetzt=r.scrollLeft;}zeigen();addEventListener('load',zeigen,{once:true});})();</script>
+{%- endif -%}

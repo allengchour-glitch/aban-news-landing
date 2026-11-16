@@ -1,0 +1,23 @@
+{%- comment -%}
+  LuxeStyle Scroll-Geschichte: Hilfsabschnitt NUR für die Testvorlage index.lxstory (15.11.2026). Neue Datei.
+  Warum: layout/theme.liquid lädt luxe-edit.css/.js nur für die Startseite ohne Suffix, und luxe-edit-home zeigt bei einem
+  Suffix eigene Kopfzeile, Ankündigung und Fusszeile. Dieser Abschnitt stellt in der Testvorlage den Zustand der echten
+  Startseite her, damit Bildschirmfotos und Ladezeit vergleichbar sind. Ausserhalb von «index.lxstory» gibt er nichts aus.
+  Beim Umschalten in templates/index.json wird er NICHT gebraucht.
+{%- endcomment -%}
+{%- if template.name == 'index' and template.suffix == 'lxstory' -%}
+<script>document.body.classList.add('lx-editorial-home');</script>
+{{ 'luxe-edit.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'luxe-edit.js' | asset_url }}" defer></script>
+<style>
+  .lx-home > .lx-skip, .lx-home > .lx-announcement, .lx-home > .lx-header, .lx-home > .lx-footer { display:none!important; }
+  body.lx-editorial-home #lx-cookie-banner { bottom:calc(16px + var(--lx-standard-preview-inset,0px))!important; }
+  @media (max-width:760px) {
+    body.lx-editorial-home #lx-cookie-banner { bottom:calc(82px + env(safe-area-inset-bottom,0px) + var(--lx-standard-preview-inset,0px))!important; }
+    body.lx-editorial-home > footer { padding-bottom:calc(82px + env(safe-area-inset-bottom,0px) + var(--lx-standard-preview-inset,0px)); }
+  }
+</style>
+{%- endif -%}
+{% schema %}
+{ "name": "Story-Testseite", "tag": "div", "settings": [] }
+{% endschema %}

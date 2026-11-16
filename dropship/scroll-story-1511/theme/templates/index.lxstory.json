@@ -1,0 +1,189 @@
+{
+  "sections": {
+    "lx_story_test": {
+      "type": "lx-story-testseite",
+      "settings": {}
+    },
+    "lx_story_platz": {
+      "type": "lx-story-platz",
+      "settings": {
+        "kapitel": 6
+      }
+    },
+    "luxe_home": {
+      "type": "luxe-edit-home",
+      "settings": {
+        "more_products": [
+          "led-leucht-brustgeschirr-reissfest-933632",
+          "handgemachte-3d-liebesnagel-blue-ice-652096",
+          "elektrischer-nagelpolierer-mit-licht-545984",
+          "outdoor-schultertasche-fur-freizeit-kessel-329792",
+          "rosenquarz-gua-sha-set",
+          "lederarmband-mit-verschluss-unisex-604800",
+          "hufttasche-fur-hundetraining-625200",
+          "hundennasenmatte-aus-fleece-energie-intelligen-622000"
+        ],
+        "worlds_text_color": "#ffffff",
+        "worlds_kids_image": "shopify://shop_images/luxestyle-einkaufswelt-kinder-baby-20261115.png",
+        "worlds_jewellery_image": "shopify://shop_images/luxestyle-einkaufswelt-schmuck-20261115.png",
+        "worlds_women_image": "shopify://shop_images/luxestyle-einkaufswelt-damenmode-20261115.png",
+        "worlds_men_image": "shopify://shop_images/luxestyle-einkaufswelt-herrenmode-20261115.png",
+        "worlds_shoes_image": "shopify://shop_images/luxestyle-einkaufswelt-schuhe-20261115.png",
+        "worlds_home_image": "shopify://shop_images/luxestyle-einkaufswelt-wohnen-20261115.png",
+        "worlds_gifts_image": "shopify://shop_images/luxestyle-einkaufswelt-geschenke-20261115.png",
+        "worlds_design_image": "shopify://shop_images/luxestyle-einkaufswelt-selbst-gestalten-20261115.png",
+        "worlds_bags_image": "shopify://shop_images/luxestyle-einkaufswelt-taschen-20261115.png",
+        "worlds_watches_image": "shopify://shop_images/luxestyle-einkaufswelt-uhren-20261115.png",
+        "worlds_kitchen_image": "shopify://shop_images/luxestyle-einkaufswelt-kueche-20261115.png",
+        "worlds_electronics_image": "shopify://shop_images/luxestyle-einkaufswelt-elektronik-20261115.png",
+        "worlds_gaming_image": "shopify://shop_images/luxestyle-einkaufswelt-gaming-20261115.png",
+        "worlds_dogs_image": "shopify://shop_images/luxestyle-einkaufswelt-hundewelt-pullover-20261115.png",
+        "worlds_beauty_image": "shopify://shop_images/luxestyle-einkaufswelt-beauty-20261115.png",
+        "worlds_sport_image": "shopify://shop_images/luxestyle-einkaufswelt-sport-20261115.png"
+      }
+    },
+    "lx_story": {
+      "type": "lx-story",
+      "blocks": {
+        "kapitel_1": {
+          "type": "kapitel",
+          "settings": {
+            "wort": "Licht",
+            "zeile": "Warmes Licht für lange Winterabende.",
+            "wort_fr": "Lumière",
+            "zeile_fr": "Une lumière chaleureuse pour les longues soirées d’hiver.",
+            "produkt": "led-tulpen-planet-nachtlicht-fur-tisch-618400",
+            "variante": "67679802950023",
+            "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s01-quer-v1.mp4?v=1794776989",
+            "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s01-hoch-v1.mp4?v=1794776982",
+            "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s01-quer-v1.webp?v=1794777067",
+            "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s01-hoch-v1.webp?v=1794777064",
+            "fokus_quer": "50% 40%",
+            "fokus_hoch": "50% 30%",
+            "variante_zeigen": true,
+            "bis": ""
+          }
+        },
+        "kapitel_2": {
+          "type": "kapitel",
+          "settings": {
+            "wort": "Schmuck",
+            "zeile": "Ein Funkeln für jeden Tag.",
+            "wort_fr": "Bijoux",
+            "zeile_fr": "Un éclat pour chaque jour.",
+            "produkt": "dreifachklinken-tennisarmband-mit-zirkon-613400",
+            "variante": "67672760975751",
+            "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s03-quer-v1.mp4?v=1794777004",
+            "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s03-hoch-v1.mp4?v=1794776997",
+            "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s03-quer-v1.webp?v=1794777075",
+            "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s03-hoch-v1.webp?v=1794777071",
+            "fokus_quer": "50% 55%",
+            "fokus_hoch": "50% 30%",
+            "variante_zeigen": false,
+            "bis": ""
+          }
+        },
+        "kapitel_3": {
+          "type": "kapitel",
+          "settings": {
+            "wort": "Wohnen",
+            "zeile": "Kleine Dinge, die ein Zuhause festlich machen.",
+            "wort_fr": "Maison",
+            "zeile_fr": "De petites choses qui rendent la maison festive.",
+            "produkt": "weihnachtskugeln-beflockt-9-stuck-625300",
+            "variante": "67843689152903",
+            "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s05-quer-v1.mp4?v=1794777017",
+            "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s05-hoch-v1.mp4?v=1794777010",
+            "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s05-quer-v1.webp?v=1794777082",
+            "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s05-hoch-v1.webp?v=1794777078",
+            "fokus_quer": "50% 50%",
+            "fokus_hoch": "50% 30%",
+            "variante_zeigen": true,
+            "bis": "2027-01-06"
+          }
+        },
+        "kapitel_4": {
+          "type": "kapitel",
+          "settings": {
+            "wort": "Reisen",
+            "zeile": "Für Wochenenden und lange Wege.",
+            "wort_fr": "Voyage",
+            "zeile_fr": "Pour les week-ends et les longs trajets.",
+            "produkt": "reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c",
+            "variante": "67726147944839",
+            "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s06-quer-v1.mp4?v=1794777031",
+            "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s06-hoch-v1.mp4?v=1794777023",
+            "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s06-quer-v1.webp?v=1794777089",
+            "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s06-hoch-v1.webp?v=1794777085",
+            "fokus_quer": "50% 50%",
+            "fokus_hoch": "50% 30%",
+            "variante_zeigen": true,
+            "bis": ""
+          }
+        },
+        "kapitel_5": {
+          "type": "kapitel",
+          "settings": {
+            "wort": "Küche",
+            "zeile": "Für den ersten Kaffee am Morgen.",
+            "wort_fr": "Cuisine",
+            "zeile_fr": "Pour le premier café du matin.",
+            "produkt": "retro-vogel-keramikbecher-mit-ballgriff-637200",
+            "variante": "67675894710663",
+            "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s09-quer-v1.mp4?v=1794785116",
+            "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s09-hoch-v1.mp4?v=1794785123",
+            "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s09-quer-v1.webp?v=1794785142",
+            "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s09-hoch-v1.webp?v=1794785146",
+            "fokus_quer": "50% 50%",
+            "fokus_hoch": "50% 30%",
+            "variante_zeigen": true,
+            "bis": ""
+          }
+        },
+        "kapitel_6": {
+          "type": "kapitel",
+          "settings": {
+            "wort": "Geschenke",
+            "zeile": "Etwas Schönes zum Verschenken.",
+            "wort_fr": "Cadeaux",
+            "zeile_fr": "Une belle idée à offrir.",
+            "produkt": "ewige-rose-mit-led-licht-718080",
+            "variante": "55881738092929",
+            "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s11-quer-v1.mp4?v=1794785130",
+            "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s11-hoch-v1.mp4?v=1794785136",
+            "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s11-quer-v1.webp?v=1794785150",
+            "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s11-hoch-v1.webp?v=1794785154",
+            "fokus_quer": "50% 50%",
+            "fokus_hoch": "50% 30%",
+            "variante_zeigen": true,
+            "bis": ""
+          }
+        }
+      },
+      "block_order": [
+        "kapitel_1",
+        "kapitel_2",
+        "kapitel_3",
+        "kapitel_4",
+        "kapitel_5",
+        "kapitel_6"
+      ],
+      "settings": {
+        "platz": "nach_hero",
+        "titel": "Sechs Kapitel aus unserem Sortiment",
+        "titel_fr": "Six chapitres de notre sélection"
+      }
+    },
+    "luxe_reviews": {
+      "type": "luxe-home-reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "lx_story_test",
+    "lx_story_platz",
+    "luxe_home",
+    "lx_story",
+    "luxe_reviews"
+  ]
+}

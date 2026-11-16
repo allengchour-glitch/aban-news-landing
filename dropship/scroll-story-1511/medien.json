@@ -1,0 +1,50 @@
+{
+ "S01": {
+  "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s01-hoch-v1.mp4?v=1794776982",
+  "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s01-quer-v1.mp4?v=1794776989",
+  "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s01-hoch-v1.webp?v=1794777064",
+  "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s01-quer-v1.webp?v=1794777067"
+ },
+ "S03": {
+  "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s03-hoch-v1.mp4?v=1794776997",
+  "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s03-quer-v1.mp4?v=1794777004",
+  "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s03-hoch-v1.webp?v=1794777071",
+  "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s03-quer-v1.webp?v=1794777075"
+ },
+ "S05": {
+  "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s05-hoch-v1.mp4?v=1794777010",
+  "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s05-quer-v1.mp4?v=1794777017",
+  "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s05-hoch-v1.webp?v=1794777078",
+  "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s05-quer-v1.webp?v=1794777082"
+ },
+ "S06": {
+  "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s06-hoch-v1.mp4?v=1794777023",
+  "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s06-quer-v1.mp4?v=1794777031",
+  "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s06-hoch-v1.webp?v=1794777085",
+  "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s06-quer-v1.webp?v=1794777089"
+ },
+ "S08": {
+  "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s08-hoch-v1.mp4?v=1794777037",
+  "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s08-quer-v1.mp4?v=1794777045",
+  "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s08-hoch-v1.webp?v=1794777092",
+  "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s08-quer-v1.webp?v=1794777096"
+ },
+ "S10": {
+  "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s10-hoch-v1.mp4?v=1794777051",
+  "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s10-quer-v1.mp4?v=1794777058",
+  "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s10-hoch-v1.webp?v=1794777100",
+  "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s10-quer-v1.webp?v=1794777103"
+ },
+ "S09": {
+  "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s09-quer-v1.mp4?v=1794785116",
+  "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s09-hoch-v1.mp4?v=1794785123",
+  "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s09-quer-v1.webp?v=1794785142",
+  "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s09-hoch-v1.webp?v=1794785146"
+ },
+ "S11": {
+  "video_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s11-quer-v1.mp4?v=1794785130",
+  "video_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s11-hoch-v1.mp4?v=1794785136",
+  "poster_quer": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s11-quer-v1.webp?v=1794785150",
+  "poster_hoch": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/lx-story-s11-hoch-v1.webp?v=1794785154"
+ }
+}

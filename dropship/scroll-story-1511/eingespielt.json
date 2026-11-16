@@ -1,0 +1,21 @@
+{
+ "theme": "gid://shopify/OnlineStoreTheme/213991391623",
+ "zeit": "2026-11-16T01:25:38.801Z",
+ "dateien": {
+  "assets/lx-story.js": "efa7750adce4336326eaf68f25794d4d",
+  "sections/lx-story.liquid": "de87f27cef5bb532031cd9ee3b23f1db",
+  "sections/lx-story-platz.liquid": "6b28ddee4c4a829b00149d6228c1d436",
+  "sections/lx-story-testseite.liquid": "a98b0867e73e09d12ea61e40400abe57",
+  "templates/index.lxstory.json": "5fdb956c5a64cd5424211356304fd895"
+ },
+ "fremd": {
+  "templates/index.json": "aa3d177234272df6acedab60272a5396",
+  "layout/theme.liquid": "62a77592ae9e0648d2ccec60bdf23979",
+  "sections/luxe-edit-home.liquid": "8ef120629f6ad0c04eb13fd9acbf6ae8",
+  "assets/luxe-edit.css": "22b0bd13a138d14e9666d71e6c70c9e8",
+  "assets/luxe-edit.js": "4aa19e8ff7993e0e8badad2f02cade4b",
+  "templates/index.lxszene.json": "24adbaa2fecd273a513a3f41985787c0",
+  "sections/lx-scroll-szene.liquid": "e343ce7b160460b302296433dc03e391",
+  "assets/lx-scroll-szene.js": "867a6d890c993a35028c4b95e4f3c6bd"
+ }
+}

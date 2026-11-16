@@ -1,0 +1,18 @@
+{
+ "zeit": "2026-11-16T02:33:31.967Z",
+ "quelle": "1dbd90d144ef65d153d829ea39d84dad",
+ "ergebnis": [
+  [
+   "K2a",
+   "ERKANNT",
+   "Anhalten stoppt die CSS-Parallaxe nicht",
+   "FEHLER K2 CSS-Pfad: angehalten, Kopf halb herausgescrollt: keine Parallaxe (Versatz 0) \"0px 14.9674%\""
+  ],
+  [
+   "K2b",
+   "ERKANNT",
+   "Anhalten friert den Skript-Rueckfall ein",
+   "FEHLER K2 Skript-Rückfall: Anhalten setzt die Parallaxe auf 0, auch die Variable (friert nicht ein) [\"0px 34.4px\",{\"v\":\"34.4px\",\"tr\":\"none\"}] | FEHLER K2 Skript-Rückfall: fortgesetzt (nach Scrollen im Halt): Parallaxe sofort wieder da {\"v\":"
+  ]
+ ]
+}

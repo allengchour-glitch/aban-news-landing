@@ -1,0 +1,201 @@
+{%- comment -%}
+  lx-kopf-bewegt (15.11.2026): bewegter Hintergrund fuer den kompakten Kategoriekopf. TESTFASSUNG, nur ueber
+  templates/collection.lxbewegt.json erreichbar. lx-kopf-kompakt bleibt unveraendert. Aufruf im Abschnitt lux_hero:
+    render 'lx-kopf-bewegt', teil: 'kopf'   Stil, steht VOR dem Kopf (gilt vor dem ersten Zeichnen)
+    render 'lx-kopf-kompakt'                unveraendert
+    render 'lx-kopf-bewegt', teil: 'fuss'   Clip-Buehne (versteckt) und kleines Skript
+  Desktop ab 750 px: Fotos driften langsam (Ken Burns 17 bis 28 s, Massstab hoechstens 1,08), der Fotostreifen
+  laeuft beim Herausscrollen langsamer mit (Parallaxe; scroll-gebundene CSS-Animation, sonst kleiner Skript-Rueckfall).
+  Desktop ab 1100 px, Kategorie mit Clip: stummer Produktclip rechts, Poster zuerst, Video erst nach dem Laden der Seite.
+  Kein Clip, wenn das Clip-Produkt nicht mehr kaufbar ist. Handy: keine Fotos, kein Clip, nur ein einmaliger Schimmer
+  hinter dem Titel (2,4 s, keine Hoehe). Ohne JavaScript: Desktop wie heute. Reduzierte Bewegung: keine Bewegung,
+  Clipseiten zeigen das Standbild. Knopf «Bewegung anhalten» (WCAG 2.2.2), die Wahl bleibt im Browser gespeichert.
+  Clip und Poster ueber den Shop-Pfad /cdn/shop/files/ (gleiche Herkunft, keine zweite Verbindung zu cdn.shopify.com).
+  Bewegung nur ueber transform/translate/opacity: keine Layoutverschiebung. Ken Burns startet erst, wenn die Seite und alle
+  Kopffotos geladen sind (Klasse lx-kb-drift): sonst wird ein spaeter geladenes, schon vergroessertes Foto zum LCP-Element.
+  16.11.2026 (Korrekturrunde): Fotos per overflow:clip beschnitten (overflow:hidden setzte die Mindesthoehe des Rasterelements
+  auf 0 und aenderte den Ausschnitt; clip-path nur als Rueckfall, es aendert die Bildglaettung). Clip nur, wenn das Produkt Mitglied der Sammlung ist und die hinterlegte Ausfuehrung
+  kaufbar ist; Weihnachtskugeln nur bis 06.01.2027. Buehne in <template>: ohne JavaScript wird nichts geladen, der Textabstand
+  haengt an der Klasse lx-kb-clip. Anhalten stellt die Parallaxe auf 0 (CSS-Pfad und Skript-Rueckfall). Unter 1100 px pausiert
+  das Video. Ein abgebrochenes play() (AbortError) entfernt den Clip nicht. Clips 960x720 (eigene Dateien lx-kb-*).
+  16.11.2026 (Nachpruefung): Knopf auch sichtbar, wenn die Fotos nach Verkleinern oder Clip-Fehler wieder driften (WCAG 2.2.2);
+  Clip s01 hoechstens 360 px breit, Ausschnitt 50% 53% (sonst fehlte ab 1250 px der Sockel); Schimmer am Handy geht wieder weg.
+{%- endcomment -%}
+{%- liquid
+  assign lxkb_id = ''
+  assign lxkb_wmax = ''
+  case collection.handle
+    when 'schmuck', 'sub-armbaender', 'gliederarmbaender', 'zirkonia-strassarmbaender'
+      assign lxkb_id = 's03'
+    when 'sub-beleuchtung', 'nachtlichter-ambiente', 'wohnen-dekoration'
+      assign lxkb_id = 's01'
+    when 'weihnachten-2026'
+      assign lxkb_id = 's05'
+    when 'damen-reisetaschen', 'herren-reisetaschen', 'sub-reise'
+      assign lxkb_id = 's06'
+    when 'geschirr-tisch', 'kaffee-tee-trinken'
+      assign lxkb_id = 's09'
+  endcase
+  assign lxkb_f = '/cdn/shop/files/lx-kb-'
+  assign lxkb_bis = 0
+  case lxkb_id
+    when 's01'
+      assign lxkb_p = 'led-tulpen-planet-nachtlicht-fur-tisch-618400'
+      assign lxkb_var = '67679802950023'
+      assign lxkb_v = lxkb_f | append: 's01-quer-960.mp4?v=1794789685'
+      assign lxkb_b = lxkb_f | append: 's01-quer-960.webp?v=1794789691'
+      assign lxkb_pos = '50% 53%'
+      assign lxkb_z = '1'
+      assign lxkb_wmax = '360px'
+    when 's03'
+      assign lxkb_p = 'dreifachklinken-tennisarmband-mit-zirkon-613400'
+      assign lxkb_var = '67672760975751'
+      assign lxkb_v = lxkb_f | append: 's03-quer-960.mp4?v=1794789695'
+      assign lxkb_b = lxkb_f | append: 's03-quer-960.webp?v=1794789701'
+      assign lxkb_pos = '50% 62%'
+      assign lxkb_z = '1.45'
+    when 's05'
+      assign lxkb_p = 'weihnachtskugeln-beflockt-9-stuck-625300'
+      assign lxkb_var = '67843689152903'
+      assign lxkb_bis = 20270106
+      assign lxkb_v = lxkb_f | append: 's05-quer-960.mp4?v=1794789706'
+      assign lxkb_b = lxkb_f | append: 's05-quer-960.webp?v=1794789712'
+      assign lxkb_pos = '54% 46%'
+      assign lxkb_z = '1.12'
+    when 's06'
+      assign lxkb_p = 'reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c'
+      assign lxkb_var = '67726147944839'
+      assign lxkb_v = lxkb_f | append: 's06-quer-960.mp4?v=1794789716'
+      assign lxkb_b = lxkb_f | append: 's06-quer-960.webp?v=1794789722'
+      assign lxkb_pos = '50% 46%'
+      assign lxkb_z = '1.1'
+    when 's09'
+      assign lxkb_p = 'retro-vogel-keramikbecher-mit-ballgriff-637200'
+      assign lxkb_var = '67675894710663'
+      assign lxkb_v = lxkb_f | append: 's09-quer-960.mp4?v=1794789727'
+      assign lxkb_b = lxkb_f | append: 's09-quer-960.webp?v=1794789733'
+      assign lxkb_pos = '30% 62%'
+      assign lxkb_z = '1.35'
+  endcase
+  if lxkb_id != ''
+    assign lxkb_ok = false
+    assign lxkb_prod = all_products[lxkb_p]
+    if lxkb_prod != blank and lxkb_prod.available == true
+      assign lxkb_vnr = lxkb_var | plus: 0
+      for lxkb_va in lxkb_prod.variants
+        if lxkb_va.id == lxkb_vnr and lxkb_va.available == true
+          assign lxkb_ok = true
+          break
+        endif
+      endfor
+      if lxkb_ok
+        assign lxkb_ok = false
+        for lxkb_c in lxkb_prod.collections
+          if lxkb_c.handle == collection.handle
+            assign lxkb_ok = true
+            break
+          endif
+        endfor
+      endif
+    endif
+    if lxkb_ok and lxkb_bis > 0
+      assign lxkb_heute = 'now' | date: '%Y%m%d' | plus: 0
+      if lxkb_heute > lxkb_bis
+        assign lxkb_ok = false
+      endif
+    endif
+    unless lxkb_ok
+      assign lxkb_id = ''
+      assign lxkb_wmax = ''
+    endunless
+  endif
+-%}
+{%- if teil == 'kopf' -%}
+<style>
+.lx-kb,.lx-kb-knopf{display:none}
+@media (min-width:750px){
+.lx-kk.lx-kb-an .lx-kk__bilder picture{overflow:clip}
+@supports not (overflow:clip){.lx-kk.lx-kb-an .lx-kk__bilder picture{clip-path:inset(0)}}
+.lx-kk.lx-kb-drift .lx-kk__bilder img{animation:lxkb-a 21s ease-in-out infinite alternate;will-change:transform;backface-visibility:hidden}
+.lx-kk.lx-kb-drift .lx-kk__bilder picture:nth-child(2) img{animation-name:lxkb-b;animation-duration:25s}
+.lx-kk.lx-kb-drift .lx-kk__bilder picture:nth-child(3) img{animation-name:lxkb-c;animation-duration:17s}
+.lx-kk.lx-kb-drift .lx-kk__bilder picture:nth-child(4) img{animation-name:lxkb-d;animation-duration:28s}
+.lx-kk.lx-kb-drift .lx-kk__bilder picture.lx-kk__eins img{animation-name:lxkb-b;animation-duration:26s}
+.lx-kk.lx-kb-an::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(105deg,transparent 38%,rgba(255,236,204,.12) 50%,transparent 62%);transform:translateX(-100%);animation:lxkb-glanz 2.4s .6s ease-out 1 forwards}
+.lx-kk.lx-kb-halt .lx-kk__bilder img,.lx-kk.lx-kb-weg .lx-kk__bilder img{animation-play-state:paused}
+.lx-kk.lx-kb-halt .lx-kk__bilder,.lx-kk.lx-kb-halt .lx-kb__clip{animation:none!important;translate:none!important}
+.lx-kk .lx-kb-knopf{display:flex;position:absolute;right:12px;bottom:12px;z-index:2;width:34px;height:34px;box-sizing:border-box;align-items:center;justify-content:center;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(20,14,8,.62);color:#fff;cursor:pointer}
+.lx-kk .lx-kb-knopf[hidden]{display:none}
+.lx-kk .lx-kb-knopf:hover{background:rgba(20,14,8,.85)}
+.lx-kk .lx-kb-knopf:focus-visible{outline:2px solid #f1dfb3;outline-offset:2px}
+.lx-kb-knopf svg{width:13px;height:13px;fill:currentColor}
+.lx-kk.lx-kb-halt .lx-kb-i1,.lx-kk:not(.lx-kb-halt) .lx-kb-i2{display:none}
+@keyframes lxkb-a{to{transform:scale(1.08) translate3d(-1.6%,-1.2%,0)}}
+@keyframes lxkb-b{to{transform:scale(1.07) translate3d(1.5%,.8%,0)}}
+@keyframes lxkb-c{to{transform:scale(1.06) translate3d(-1%,1.2%,0)}}
+@keyframes lxkb-d{to{transform:scale(1.08) translate3d(1.2%,-1.4%,0)}}
+@keyframes lxkb-glanz{to{transform:translateX(100%)}}
+@keyframes lxkb-p{to{translate:0 30%}}
+}
+@supports (animation-timeline:view()){@media (min-width:750px){
+.lx-kk.lx-kb-an{view-timeline:--lxkb block}
+.lx-kk.lx-kb-an .lx-kk__bilder,.lx-kk.lx-kb-an .lx-kb__clip{animation:lxkb-p linear both;animation-timeline:--lxkb;animation-range:exit 0% exit 100%}
+}}
+@supports not (animation-timeline:view()){@media (min-width:750px){
+.lx-kk.lx-kb-an .lx-kk__bilder,.lx-kk.lx-kb-an .lx-kb__clip{translate:0 var(--lxkb-y,0px)}
+}}
+@media (min-width:1100px){
+.lx-kk{--lxkb-w:clamp(320px,30vw,460px)}
+{%- if lxkb_wmax != '' %}
+.lx-kk{--lxkb-w:clamp(320px,30vw,{{ lxkb_wmax }})}
+{%- endif %}
+.lx-kk .lx-kb{display:block;position:absolute;inset:0;pointer-events:none}
+.lx-kk.lx-kb-clip .lx-kk__bilder{opacity:0}
+.lx-kk.lx-kb-clip .lx-kk__bilder img{animation:none!important}
+.lx-kb__amb{position:absolute;top:-24px;left:-24px;width:calc(100% + 48px);height:calc(100% + 48px);z-index:-2;object-fit:cover;object-position:var(--lxkb-pos,50% 50%);filter:blur(28px) saturate(1.15);opacity:.42}
+.lx-kb__clip{position:absolute;top:0;bottom:0;right:0;width:var(--lxkb-w);max-height:300px;z-index:-1;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 42%);mask-image:linear-gradient(90deg,transparent 0,#000 42%)}
+.lx-kb__clip img,.lx-kb__clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--lxkb-pos,50% 50%);transform:scale(var(--lxkb-z,1));transform-origin:var(--lxkb-pos,50% 50%)}
+.lx-kb__clip video{opacity:0;transition:opacity .9s ease}
+.lx-kb--spielt .lx-kb__clip video{opacity:1}
+{%- if lxkb_id != '' %}
+.lx-kk.lx-kb-clip .lx-kk__text{padding-right:calc(var(--lxkb-w) * .9 + 1rem)}
+{%- endif %}
+}
+@media (max-width:749px) and (prefers-reduced-motion:no-preference){
+.lx-kk::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 32% 50% at 32% 50%,rgba(201,169,110,.26),rgba(201,169,110,0) 100%);opacity:0;animation:lxkb-schein 2.4s .2s ease-out 1 forwards}
+@keyframes lxkb-schein{50%{opacity:1}to{opacity:0}}
+}
+@media (prefers-reduced-motion:reduce){.lx-kk .lx-kk__bilder,.lx-kk .lx-kk__bilder img,.lx-kk::after,.lx-kb__clip{animation:none!important}}
+</style>
+{%- elsif teil == 'fuss' -%}
+{%- if lxkb_id != '' -%}
+<template class="lx-kb-vorlage"><div class="lx-kb" aria-hidden="true" data-lx-kb="{{ lxkb_id }}" data-video="{{ lxkb_v }}" style="--lxkb-pos:{{ lxkb_pos }};--lxkb-z:{{ lxkb_z }}"><img class="lx-kb__amb" src="{{ lxkb_b }}" alt="" width="960" height="720" decoding="async"><div class="lx-kb__clip"><img class="lx-kb__poster" src="{{ lxkb_b }}" alt="" width="960" height="720" decoding="async"></div></div></template>
+{%- endif -%}
+<script>(function(){var s=document.currentScript,sec=s&&s.parentNode,k=sec&&sec.querySelector('.lx-kk'),w=window;if(!k||k.hasAttribute('data-lx-kb-an'))return;k.setAttribute('data-lx-kb-an','');
+function mm(q){return !!(w.matchMedia&&w.matchMedia(q).matches);}
+if(!mm('(min-width: 750px)'))return;
+var tp=sec.querySelector('template.lx-kb-vorlage'),st=tp&&tp.content&&mm('(min-width: 1100px)')?tp.content.querySelector('.lx-kb'):null,clip=!!st,fotos=k.querySelectorAll('.lx-kk__bilder img').length;
+if(clip){st=document.importNode(st,true);k.appendChild(st);k.classList.add('lx-kb-clip');}
+if(mm('(prefers-reduced-motion: reduce)')||(!clip&&!fotos))return;
+var halt=false,sicht=true,breit=true,v=null,pr=null,fr=/^fr/i.test(document.documentElement.lang||''),tA=fr?'Mettre l’animation en pause':'Bewegung anhalten',tB=fr?'Reprendre l’animation':'Bewegung fortsetzen';
+try{halt=w.localStorage.getItem('lx-kb-halt')==='1';}catch(e){}
+k.classList.add('lx-kb-an');
+var b=document.createElement('button');b.type='button';b.className='lx-kb-knopf';b.hidden=clip;
+b.innerHTML='<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path class="lx-kb-i1" d="M3 2h3v10H3zM8 2h3v10H8z"/><path class="lx-kb-i2" d="M4 2l8 5-8 5z"/></svg>';
+function aus(){if(v){v.removeAttribute('src');v.load();if(v.parentNode)v.parentNode.removeChild(v);v=null;}st.classList.remove('lx-kb--spielt');b.hidden=breit;}
+function los(){if(!v)return;if(halt||!sicht||!breit){v.pause();return;}var p=v.play();if(p&&p.catch)p.catch(function(e){if(!e||e.name!=='AbortError')aus();});}
+function zeig(){var t=halt?tB:tA;b.setAttribute('aria-label',t);b.title=t;k.classList.toggle('lx-kb-halt',halt);los();if(pr)pr();}
+b.addEventListener('click',function(){halt=!halt;try{w.localStorage.setItem('lx-kb-halt',halt?'1':'0');}catch(e){}zeig();});
+k.appendChild(b);zeig();
+if(clip&&w.matchMedia){var mq=w.matchMedia('(min-width: 1100px)'),mw=function(){breit=mq.matches;if(!breit)b.hidden=false;los();};breit=mq.matches;if(mq.addEventListener)mq.addEventListener('change',mw);else if(mq.addListener)mq.addListener(mw);}
+function start(){var c=navigator.connection;if(!clip||v||(c&&(c.saveData||/2g/.test(c.effectiveType||''))))return;
+v=document.createElement('video');v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.playsInline=true;v.setAttribute('playsinline','');v.loop=true;v.preload='metadata';v.setAttribute('aria-hidden','true');v.setAttribute('tabindex','-1');v.disablePictureInPicture=true;
+v.addEventListener('playing',function(){st.classList.add('lx-kb--spielt');b.hidden=false;});v.addEventListener('error',aus);
+v.src=st.getAttribute('data-video');st.querySelector('.lx-kb__clip').appendChild(v);if(halt)b.hidden=false;los();}
+function drift(){var im=k.querySelectorAll('.lx-kk__bilder img'),n=0,i;function eins(){if(--n<=0)k.classList.add('lx-kb-drift');}for(i=0;i<im.length;i++)if(!im[i].complete){n++;im[i].addEventListener('load',eins);im[i].addEventListener('error',eins);}if(!n)k.classList.add('lx-kb-drift');}
+function spaeter(){drift();setTimeout(function(){(w.requestIdleCallback||function(f){f();})(start,{timeout:1500});},300);}
+if(document.readyState==='complete')spaeter();else w.addEventListener('load',spaeter);
+if('IntersectionObserver' in w)new IntersectionObserver(function(e){sicht=e[e.length-1].isIntersecting;k.classList.toggle('lx-kb-weg',!sicht);los();},{rootMargin:'120px 0px'}).observe(k);
+if(!(w.CSS&&CSS.supports&&CSS.supports('animation-timeline','view()'))){var t=0,py='',r=function(){t=0;var y='0px';if(!halt){var q=k.getBoundingClientRect(),d=Math.max(0,-q.top),h=Math.max(1,q.height);y=(Math.min(1,d/h)*.3*h).toFixed(1)+'px';}if(y!==py){py=y;k.style.setProperty('--lxkb-y',y);}};pr=r;w.addEventListener('scroll',function(){if(!t)t=w.requestAnimationFrame(r);},{passive:true});r();}
+})();</script>
+{%- endif -%}

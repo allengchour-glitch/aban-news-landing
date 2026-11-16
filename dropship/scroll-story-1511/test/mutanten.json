@@ -1,0 +1,208 @@
+[
+ [
+  "M01 Video vor dem ersten Scrollen",
+  "assets/lx-story.js",
+  "if (gescrollt) setzeAktiv(i);",
+  "setzeAktiv(i);"
+ ],
+ [
+  "M02 alle Poster sofort",
+  "sections/lx-story.liquid",
+  "{%- if n == 0 -%}\n              <source",
+  "{%- if n < 9 -%}\n              <source"
+ ],
+ [
+  "M03 aktives Kapitel falsch",
+  "assets/lx-story.js",
+  "if (rects[i].top <= linie && rects[i].bottom > linie) return i;",
+  "if (rects[i].top <= linie) return i;"
+ ],
+ [
+  "M04 Hintergrund ohne Zoom",
+  "assets/lx-story.js",
+  "var z = 1.24 - 0.24 * k;",
+  "var z = 1.24;"
+ ],
+ [
+  "M05 Text ohne Parallaxe",
+  "assets/lx-story.js",
+  "var ty = -t * 0.32 * vh;",
+  "var ty = 0;"
+ ],
+ [
+  "M06 reduzierte Bewegung im JS ignoriert",
+  "assets/lx-story.js",
+  "if (reduziert) { el.setAttribute('data-rueckfall', 'bewegung'); return; }",
+  "if (false) {}"
+ ],
+ [
+  "M07 reduzierte Bewegung im CSS ignoriert",
+  "sections/lx-story.liquid",
+  "@media (prefers-reduced-motion:reduce){\n.lx-story .lx-story__buehne,.lx-story .lx-story__steuer{display:none}",
+  "@media (prefers-reduced-motion:reduce){\n.lx-story .lx-story__buehnex,.lx-story .lx-story__steuerx{display:none}"
+ ],
+ [
+  "M08 Verfügbarkeit nicht geprüft",
+  "sections/lx-story.liquid",
+  "if v == nil or v.available == false",
+  "if v == nil"
+ ],
+ [
+  "M09 Karte ohne Ausführung",
+  "sections/lx-story.liquid",
+  "href=\"{{ v.url }}\"",
+  "href=\"{{ p.url }}\""
+ ],
+ [
+  "M10 Autoplay-Sperre ignoriert",
+  "assets/lx-story.js",
+  "if (f && f.name === 'NotAllowedError') rueckfall('autoplay');",
+  ""
+ ],
+ [
+  "M11 Platzhalter nicht ersetzt",
+  "sections/lx-story.liquid",
+  "if(p&&p.parentNode){p.parentNode.replaceChild(w,p)}else ",
+  ""
+ ],
+ [
+  "M12 Video im falschen Format",
+  "assets/lx-story.js",
+  "v.src = v.getAttribute(quer ? 'data-vq' : 'data-vh');",
+  "v.src = v.getAttribute('data-vq');"
+ ],
+ [
+  "M13 Karte gegenläufig zum Text (alter Fehler)",
+  "assets/lx-story.js",
+  "textY: ty, karteY: ty,",
+  "textY: ty, karteY: -ty * 0.3,"
+ ],
+ [
+  "M14 Pause/Punkte unter den Kapiteln",
+  "sections/lx-story.liquid",
+  "margin-bottom:-100svh;z-index:3;pointer-events:none",
+  "margin-bottom:-100svh;z-index:0;pointer-events:none"
+ ],
+ [
+  "M15 Stil im body statt im Kopf",
+  "sections/lx-story.liquid",
+  "<section class=\"lx-story\"",
+  "<style>.lx-story-x{}</style><section class=\"lx-story\""
+ ],
+ [
+  "M16 keine Ruhezeit (Zwischenvideos laden)",
+  "assets/lx-story.js",
+  "      ruheStarten(i);                                       // schnelles Durchscrollen lädt keine Zwischenvideos",
+  "      videoLaden(i, true);"
+ ],
+ [
+  "M17 entfernte Videos nicht freigegeben",
+  "assets/lx-story.js",
+  "if (Math.abs(j - i) > 1) entladen(j);",
+  ""
+ ],
+ [
+  "M18 kein Vorhang",
+  "assets/lx-story.js",
+  "auf: i === 0 ? 1 : klemme((0.92 * vh - r.top) / (0.62 * vh), 0, 1),",
+  "auf: 1,"
+ ],
+ [
+  "M19 reduzierte Bewegung zur Laufzeit ignoriert",
+  "assets/lx-story.js",
+  "var aufRed = function (e) { if (e.matches) {",
+  "var aufRed = function (e) { if (false) {"
+ ],
+ [
+  "M20 Steuerleiste am Ende nicht ausgeblendet",
+  "assets/lx-story.js",
+  "if (e2 !== ende) { ende = e2; el.toggleAttribute('data-ende', ende); }",
+  ""
+ ],
+ [
+  "M21 Platzhalterhöhe alte Formel",
+  "sections/lx-story-platz.liquid",
+  "return 'calc('+(n-1)+' * '+(h?125:135)+s+' + '+(h?110:115)+s+')'",
+  "return 'calc('+n+' * '+(h?125:135)+s+')'"
+ ],
+ [
+  "M22 Ablaufdatum ignoriert",
+  "sections/lx-story.liquid",
+  "if bis > 0 and heute > bis",
+  "if false"
+ ],
+ [
+  "M23 Ausführungszeile immer",
+  "sections/lx-story.liquid",
+  "{%- if block.settings.variante_zeigen != false and v.title != 'Default Title' -%}",
+  "{%- if v.title != 'Default Title' -%}"
+ ],
+ [
+  "M24 Kapitelabstand von der Kopfzeilen-Messung abhängig",
+  "sections/lx-story.liquid",
+  [
+   [
+    "padding:calc(88px + 22vh) clamp(22px,5.5vw,96px) 22vh",
+    "padding:calc(var(--lx-oben) + 22vh) clamp(22px,5.5vw,96px) 22vh"
+   ],
+   [
+    "@media (hover:none) and (pointer:coarse){.lx-story{--lx-story-kopf:59px}}",
+    ""
+   ]
+  ]
+ ],
+ [
+  "M25 Tastaturfokus ohne Kapitelmitte",
+  "assets/lx-story.js",
+  "an(el, 'focusin', function (e) {",
+  "an(el, 'focusin-aus', function (e) {"
+ ],
+ [
+  "M26 Kapitel fangen Klicks ab",
+  "sections/lx-story.liquid",
+  "clamp(22px,5.5vw,96px) 22vh;pointer-events:none}",
+  "clamp(22px,5.5vw,96px) 22vh;pointer-events:auto}"
+ ],
+ [
+  "M27 kein Platzhalter beim Laden",
+  "sections/lx-story-platz.liquid",
+  "if(!f()){mo=",
+  "if(false){mo="
+ ],
+ [
+  "M28 Punkte und Pause zu früh weg (alter Schwellwert)",
+  "assets/lx-story.js",
+  "var e2 = g >= 0.999;",
+  "var e2 = g > 0.97;"
+ ],
+ [
+  "M29 Pause am Ende mit ausgeblendet",
+  "sections/lx-story.liquid",
+  ".lx-story[data-ende] .lx-story__punkte,.lx-story[data-ende] .lx-story__fortschritt{opacity:0;visibility:hidden",
+  ".lx-story[data-ende] .lx-story__steuer,.lx-story[data-ende] .lx-story__fortschritt{opacity:0;visibility:hidden"
+ ],
+ [
+  "M30 Ruhezeit ohne frischen Blick auf die Lage (alter Stand)",
+  "assets/lx-story.js",
+  "if (aktivIndex(kapitel.map(function (k) { return k.getBoundingClientRect(); }), (window.innerHeight || 1) * 0.55) !== i) { beimScrollen(); return; }",
+  ""
+ ],
+ [
+  "M31 Sprung per Punkt lädt Zwischenkapitel",
+  "assets/lx-story.js",
+  "if (sprung >= 0 && sprung !== i && Date.now() - sprungZeit < 3000) { ruheStarten(i); return; }",
+  ""
+ ],
+ [
+  "M32 Sprung ohne Frist (bleibt hängen)",
+  "assets/lx-story.js",
+  "Date.now() - sprungZeit < 3000",
+  "true"
+ ],
+ [
+  "M33 Mausrad bricht Sprung nicht ab",
+  "assets/lx-story.js",
+  "an(window, 'wheel', abbruch, { passive: true }); ",
+  ""
+ ]
+]

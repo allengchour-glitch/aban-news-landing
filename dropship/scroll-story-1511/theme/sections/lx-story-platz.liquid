@@ -1,0 +1,17 @@
+{%- comment -%}
+  LuxeStyle Scroll-Geschichte: Platzhalter 2.0 (15.11.2026). Neue Datei. Steht in der Vorlage VOR luxe_home.
+  Warum: Die Geschichte soll direkt nach dem Hero stehen, luxe-edit-home ist aber ein einziger Abschnitt (darf nicht geändert werden).
+  Ohne Platzhalter würde die Geschichte erst nach dem ersten Zeichnen hinter den Hero geschoben (gemessen: Layout-Verschiebung 0,089
+  auf dem Desktop). Dieses Skript setzt beim Einlesen des Heros sofort einen gleich hohen, dunklen Platzhalter dahinter; der Abschnitt
+  lx-story ersetzt ihn später an derselben Stelle. Bleibt die Geschichte aus, wird der Platzhalter entfernt.
+  Höhe = (Kapitel - 1) mal Kapitelhöhe plus das kürzere letzte Kapitel (wie im Stil von lx-story). Stil im {% stylesheet %} (Kopf).
+{%- endcomment -%}
+{%- assign n = section.settings.kapitel | default: 6 -%}
+<script>(function(){if(document.querySelector('.lx-story-platzhalter'))return;var n={{ n | json }},s=window.CSS&&CSS.supports&&CSS.supports('height','1svh')?'svh':'vh';function hoehe(){var h=window.matchMedia&&matchMedia('(max-width: 749px)').matches;return 'calc('+(n-1)+' * '+(h?125:135)+s+' + '+(h?110:115)+s+')'}window.lxStoryPlatzHoehe=hoehe;var mo;function f(){var h=document.querySelector('.lx-home .lx-hero');if(!h||!h.parentNode)return false;var p=document.createElement('div');p.className='lx-story-platzhalter';p.setAttribute('aria-hidden','true');p.style.height=hoehe();h.parentNode.insertBefore(p,h.nextSibling);return true}function weg(){var p=document.querySelector('.lx-story-platzhalter');if(p&&p.parentNode)p.parentNode.removeChild(p)}if(!f()){mo=new MutationObserver(function(){if(f())mo.disconnect()});mo.observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',function(){mo.disconnect()})}window.addEventListener('load',function(){if(!document.querySelector('[data-lx-story-platz]'))weg()})})();</script>
+{% stylesheet %}
+.lx-story-abschnitt:not([data-lx-story-platz]){display:none}
+.lx-story-platzhalter{display:block;background:#110e0b}
+{% endstylesheet %}
+{% schema %}
+{ "name": "Story-Platzhalter", "tag": "div", "settings": [ { "type": "number", "id": "kapitel", "label": "Anzahl Kapitel (Höhe des Platzhalters)", "default": 6 } ] }
+{% endschema %}

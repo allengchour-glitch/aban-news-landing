@@ -1,0 +1,129 @@
+{
+ "top": [
+  "premium-geschenke",
+  "damen-mode",
+  "fur-ihn",
+  "schuhe",
+  "sub-taschen",
+  "schmuck",
+  "uhren",
+  "beauty-pflege",
+  "kueche-kochen",
+  "geschirr-tisch",
+  "wohnen-dekoration",
+  "elektronik-technik",
+  "auto-kfz-zubehoer",
+  "gaming",
+  "sub-baby-kids",
+  "sub-haustier",
+  "bestseller",
+  "jacken-outdoor",
+  "fitness-training",
+  "retro-vintage"
+ ],
+ "out": {
+  "S01": {
+   "handle": "led-tulpen-planet-nachtlicht-fur-tisch-618400",
+   "title": "LED Tulpen-Planet Nachtlicht für Tisch",
+   "status": "ACTIVE",
+   "type": "Beleuchtung",
+   "collections": [
+    "bestseller-unter-50",
+    "wohnen-dekoration",
+    "neu-eingetroffen",
+    "beleuchtung-lampen",
+    "sub-beleuchtung",
+    "🎁-geschenke-bis-chf-30-alt-20261010",
+    "geschenke-fuer-kinder",
+    "licht-nachtlicht-projektor",
+    "🎁-geschenke-bis-chf-30",
+    "nachtlichter-ambiente",
+    "aus-tiktok-und-instagram",
+    "shop-licht-wohnen"
+   ]
+  },
+  "S03": {
+   "handle": "dreifachklinken-tennisarmband-mit-zirkon-613400",
+   "title": "Tennisarmband mit dekorativem Besatz",
+   "status": "ACTIVE",
+   "type": "Schmuck",
+   "collections": [
+    "bestseller-unter-50",
+    "geschenke-unter-30",
+    "neu-eingetroffen",
+    "sub-armbaender",
+    "schmuck-uhren",
+    "schmuck",
+    "mengenrabatt-ab-3-stueck",
+    "gliederarmbaender",
+    "zirkonia-strassarmbaender",
+    "aus-tiktok-und-instagram"
+   ]
+  },
+  "S05": {
+   "handle": "weihnachtskugeln-beflockt-9-stuck-625300",
+   "title": "Weihnachtskugeln beflockt – 9 Stück",
+   "status": "ACTIVE",
+   "type": "Partydeko & Ballone",
+   "collections": [
+    "bestseller-unter-50",
+    "wohnen-dekoration",
+    "weihnachten-2026",
+    "unter-chf-25",
+    "geschenke-unter-30",
+    "kleine-geschenke-mitbringsel",
+    "neu-eingetroffen",
+    "🎁-geschenke-bis-chf-30-alt-20261010",
+    "party-deko-ch",
+    "fortura-weihnachten",
+    "🎁-geschenke-bis-chf-30",
+    "aus-tiktok-und-instagram"
+   ]
+  },
+  "S06": {
+   "handle": "reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c",
+   "title": "Reisebeutel aus Rindsleder 44x20x28 cm",
+   "status": "ACTIVE",
+   "type": "Taschen",
+   "collections": [
+    "neu-eingetroffen",
+    "sub-reise",
+    "damen-reisetaschen",
+    "herren-reisetaschen"
+   ]
+  },
+  "S08": {
+   "handle": "gusseisen-teekanne-sandguss-unbeschichtet-609800",
+   "title": "Gusseisen Teekanne Sandguss (unbeschichtet)",
+   "status": "ACTIVE",
+   "type": "Küche & Bar",
+   "collections": [
+    "bestseller-unter-50",
+    "geschenke-unter-50-franken",
+    "geschenke-unter-100-franken",
+    "neu-eingetroffen",
+    "sub-kueche",
+    "teekannen-kaffeeservice",
+    "kaffee-tee-trinken",
+    "geschirr-tisch"
+   ]
+  },
+  "S10": {
+   "handle": "kristallspitzen-set-8-teilig-holzbox",
+   "title": "Kristallspitzen-Set 8-teilig in Holzbox",
+   "status": "ACTIVE",
+   "type": "Wohnen & Deko",
+   "collections": [
+    "bestseller-unter-50",
+    "bestseller-premium-heroes",
+    "luxestyle-premium",
+    "viral-hits",
+    "hype-jetzt",
+    "mengenrabatt-ab-2-stueck",
+    "deko-objekte-accessoires",
+    "aus-tiktok-und-instagram",
+    "startseite-pool-trends"
+   ]
+  }
+ }
+}
