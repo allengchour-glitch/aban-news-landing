@@ -120,3 +120,5 @@ Tests:
 - Workflow 51 (vorher 45), mit einem echten Lauf des Schritts «Nachprüfen» für die Exits 0, 3 und 5.
 - Mutationsprobe: 30 von 30 absichtlichen Fehlern erkannt, 0 überlebt (zwei Muster nach der letzten Änderung erneuert und einzeln nachgefahren).
 
+**LIVE 16.11.2026 (nach dem Merge von PR #3173):** Handstart `plan` um 02:33 UTC: Exit 0, 0 Abwahlen, 28 Aufnahmen. Handstart `aufnehmen` um 02:36 UTC: «AUFNEHMEN: 28 von 28», «danach höchstens 78000 (jetzt 77792, unklar 0, dazu 208)», «erfolgreich 28, Fehler 0, 9 s». Die Nachprüfung zwei Minuten später: 78 000 Varianten auf Google, Defekt 0, auf Google ausserhalb des Schaufensters 0, Exit 0. Das Manifest liegt auf `main` (`1f0be3111f`, 28 Zeilen «auf»), und seine Produkte sind von 31 280 auf 31 252 gesunken. 55 Manifest-Produkte sind nicht mehr aktiv; sie werden nicht angefasst.
+
