@@ -1,0 +1,50 @@
+{
+  "environment": "Chromium-Emulation; CPU-Drosselung ist kein echtes Handy",
+  "complete": true,
+  "results": [
+    {
+      "quality": "auto",
+      "cpu": 1,
+      "viewport": "844x390",
+      "deviceScaleFactor": 3,
+      "checksPassed": true,
+      "wallSeconds": 8.00920000000298,
+      "simulationSeconds": 8.000000000000027,
+      "fps": 52.68940718172139,
+      "p50": 16.699999999999818,
+      "p95": 33.399999999999636,
+      "phase": "playing",
+      "graphics": {
+        "calls": null,
+        "triangles": null,
+        "pixelRatio": 1.25,
+        "width": 1055,
+        "height": 488,
+        "backend": "Canvas2D · perspektivischer Schnellmodus"
+      },
+      "errors": []
+    },
+    {
+      "quality": "low",
+      "cpu": 4,
+      "viewport": "844x390",
+      "deviceScaleFactor": 3,
+      "checksPassed": true,
+      "wallSeconds": 8.01589999999851,
+      "simulationSeconds": 8.016666666666694,
+      "fps": 59.631482428684095,
+      "p50": 16.699999999999818,
+      "p95": 16.700000000000728,
+      "phase": "playing",
+      "graphics": {
+        "calls": null,
+        "triangles": null,
+        "pixelRatio": 0.8,
+        "width": 675,
+        "height": 312,
+        "backend": "Canvas2D · perspektivischer Schnellmodus"
+      },
+      "errors": []
+    }
+  ]
+}

@@ -115,6 +115,18 @@
   .big:active{transform:translateY(3px);box-shadow:0 3px 8px rgba(255,140,42,.35)}
   .sieger{font-size:58px;margin-bottom:6px}
   .flash{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0}
+  @media(max-height:640px){
+    #wrap{padding-top:64px;gap:4px}.haelfte{min-height:0}
+    .kopf{margin-bottom:2px}.name{font-size:16px}.punkte{font-size:18px;padding:0 12px}
+    .anweisung{font-size:11px;margin-bottom:2px}.zielwort{font-size:32px;margin-bottom:6px}
+    .knoepfe{gap:6px;width:86%}.fbtn{aspect-ratio:auto;height:46px;min-height:44px}
+    .info{font-size:12px;margin-top:6px;height:17px}.mitte{height:32px}
+  }
+  @media(max-height:440px) and (min-width:600px){
+    #wrap{display:grid;grid-template-columns:1fr 42px 1fr}
+    .mitte{height:100%;flex-direction:column;gap:8px}.dots{flex-direction:column}
+    .mitte b{font-size:12px;text-align:center}
+  }
 </style>
 </head>
 <body>

@@ -70,7 +70,7 @@
     transition: transform .1s, box-shadow .15s;
   }
   .choice:active { transform: translateY(3px) scale(.96); box-shadow: 0 2px 6px rgba(40,90,150,.15); }
-  .choice.picked { background: #fff8dd; box-shadow: 0 0 0 4px #ffcf3a, 0 6px 16px rgba(255,140,42,.35); }
+  .choice:disabled { cursor: default; }
 
   .status { font-size: 15px; font-weight: 700; min-height: 20px; text-align: center; }
   .bighand { font-size: 68px; height: 76px; }
@@ -200,7 +200,9 @@
     var box = player===1 ? els.ch1 : els.ch2;
     var btns = box.querySelectorAll(".choice");
     for(var i=0;i<btns.length;i++){
-      btns[i].classList.toggle("picked", btns[i].getAttribute("data-c")===pick[player]);
+      // Alle drei gleich sperren, damit die verdeckte Wahl geheim bleibt.
+      btns[i].disabled = !!pick[player];
+      btns[i].blur();
     }
   }
 

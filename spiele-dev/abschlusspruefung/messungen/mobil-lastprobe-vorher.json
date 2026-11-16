@@ -1,0 +1,50 @@
+{
+  "environment": "Chromium-Emulation; CPU-Drosselung ist kein echtes Handy",
+  "sourceLog": "/tmp/aban-mobil-final.log",
+  "results": [
+    {
+      "quality": "auto",
+      "cpu": 1,
+      "viewport": "844x390",
+      "deviceScaleFactor": 3,
+      "checksPassed": true,
+      "wallSeconds": 8.029900000005961,
+      "simulationSeconds": 8.033333333333362,
+      "fps": 53.176253751563905,
+      "p50": 16.699999999999818,
+      "p95": 33.30000000000109,
+      "phase": "playing",
+      "graphics": {
+        "calls": null,
+        "triangles": null,
+        "pixelRatio": 1.25,
+        "width": 1055,
+        "height": 488,
+        "backend": "Canvas2D · perspektivischer Schnellmodus"
+      },
+      "errors": []
+    },
+    {
+      "quality": "low",
+      "cpu": 4,
+      "viewport": "844x390",
+      "deviceScaleFactor": 3,
+      "checksPassed": true,
+      "wallSeconds": 8.15260000000149,
+      "simulationSeconds": 8.15000000000005,
+      "fps": 12.879326840514782,
+      "p50": 66.70000000000073,
+      "p95": 116.60000000000036,
+      "phase": "playing",
+      "graphics": {
+        "calls": null,
+        "triangles": null,
+        "pixelRatio": 0.8,
+        "width": 675,
+        "height": 312,
+        "backend": "Canvas2D · perspektivischer Schnellmodus"
+      },
+      "errors": []
+    }
+  ]
+}

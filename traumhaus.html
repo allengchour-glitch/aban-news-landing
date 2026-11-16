@@ -17023,6 +17023,7 @@ document.addEventListener("visibilitychange",function(){
   joy.addEventListener("pointermove",function(e){if(jid===e.pointerId)joyMove(e);});
   function joyEnd(e){if(jid!==e.pointerId)return;jid=null;steer.x=0;steer.z=0;joyEdge=false;setKnob(0,0);}
   joy.addEventListener("pointerup",joyEnd);joy.addEventListener("pointercancel",joyEnd);
+  joy.addEventListener("lostpointercapture",joyEnd);
 })();
 function steerVec(si){
   /* ⚠️ Frueher: „Gast: Host rechnet" -> null. Das hiess, die eigene Figur des
@@ -17647,13 +17648,15 @@ addEventListener("mousemove",function(e){
     else{camAT=null;window._camHandT=performance.now();camA-=dx*0.005;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.004));}
     updCam();}
   if(buildMode)ghostFollow(e.clientX,e.clientY);});
-addEventListener("mouseup",function(e){dragging=false;
+addEventListener("mouseup",function(e){
+  if(!dragging||e.button!==dragBtn)return;
+  dragging=false;
   if(performance.now()-(window._lastTouch||0)<600)return; /* 🩹 Schwarm-4: nachgereichtes Kompatibilitaets-mouseup */
   var _gezogen=zugEnde();
-  if(!_gezogen&&performance.now()-downT<260&&Math.hypot(e.clientX-downX,e.clientY-downY)<8){var _tx=e.clientX,_ty=e.clientY;bauGeld(function(){tapAt(_tx,_ty);});}
+  if(dragBtn===0&&!_gezogen&&performance.now()-downT<260&&Math.hypot(e.clientX-downX,e.clientY-downY)<8){var _tx=e.clientX,_ty=e.clientY;bauGeld(function(){tapAt(_tx,_ty);});}
   bauZugEnde();});
 renderer.domElement.addEventListener("contextmenu",function(e){e.preventDefault();});
-addEventListener("wheel",function(e){
+renderer.domElement.addEventListener("wheel",function(e){
   var alt=camRT;camRT=Math.max(7,Math.min(ZOOM_MAX,camRT*Math.pow(1.0018,e.deltaY)));
   if(!followSim&&e.deltaY<0&&camRT<alt){ // Reinzoomen zieht sanft zum Punkt unterm Cursor
     mouse.x=(e.clientX/innerWidth)*2-1;mouse.y=-(e.clientY/innerHeight)*2+1;
@@ -17675,14 +17678,17 @@ addEventListener("wheel",function(e){
    `targetTouches` enthaelt nur die Finger, die auf DIESEM Element begonnen haben.
    Der Daumen auf dem Joystick zaehlt damit nicht mehr mit; die echte Zwei-Finger-Geste
    auf der Leinwand bleibt unveraendert (eigene Pruefung im Werkzeug). */
+/* Eine Kneifgeste bleibt bis zum letzten Loslassen eine Kamerageste. Sonst wird
+   ihr Ende zum Bau-Tipp, und der verbleibende Finger kann die Kamera nicht drehen. */
+var touchKamera=false;
 renderer.domElement.addEventListener("touchstart",function(e){
   window._lastTouch=performance.now();
   var tt=e.targetTouches;
-  if(tt.length===1){dragging=true;lx=tt[0].clientX;ly=tt[0].clientY;downT=performance.now();downX=lx;downY=ly;
+  if(tt.length===1){touchKamera=false;dragging=true;lx=tt[0].clientX;ly=tt[0].clientY;downT=performance.now();downX=lx;downY=ly;
     window._altKlick=false;bauZugBeginn();
     _paintSet=new Set();_paintHinted=false;paintFloorAt(lx,ly);zugStart(lx,ly);
     if(buildMode)ghostFollow(lx,ly);} /* 🩹 Schwarm-4: Vorschau folgte nur der Maus — auf dem Handy klebte der Geist im Ursprung */
-  else if(tt.length===2){pinchD=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);
+  else if(tt.length===2){touchKamera=true;pinchD=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);
     pinchW=Math.atan2(tt[1].clientY-tt[0].clientY,tt[1].clientX-tt[0].clientX);
     if(_zug)zugAbbrechen();}   /* zweiter Finger: der Zug war keiner, sondern der Anfang einer Kamerageste */
 },{passive:true});
@@ -17691,8 +17697,8 @@ renderer.domElement.addEventListener("touchmove",function(e){
   var tt=e.targetTouches;
   if(tt.length===1&&dragging){var dx=tt[0].clientX-lx,dy=tt[0].clientY-ly;lx=tt[0].clientX;ly=tt[0].clientY;
     if(buildMode)ghostFollow(lx,ly); /* 🩹 Schwarm-4: Vorschau zieht mit dem Finger mit */
-    if(_zug&&zugBewegt(lx,ly)){/* 🧱 Wand/Zimmer ziehen */}
-    else if(paintFloorAt(lx,ly)){/* 🎨 Boden-Malen — Kamera drehen geht weiter mit 2 Fingern */}
+    if(!touchKamera&&_zug&&zugBewegt(lx,ly)){/* 🧱 Wand/Zimmer ziehen */}
+    else if(!touchKamera&&paintFloorAt(lx,ly)){/* 🎨 Boden-Malen — Kamera drehen geht weiter mit 2 Fingern */}
     else{camAT=null;window._camHandT=performance.now();camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}}
   else if(tt.length===2){var nd=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);
     camRT=Math.max(7,Math.min(ZOOM_MAX,camRT-(nd-pinchD)*0.06));pinchD=nd;
@@ -17703,14 +17709,17 @@ renderer.domElement.addEventListener("touchmove",function(e){
     if(dw>Math.PI)dw-=2*Math.PI;if(dw<-Math.PI)dw+=2*Math.PI;
     if(Math.abs(dw)<0.5){camAT=null;camA-=dw;}pinchW=nw;updCam();}
   e.preventDefault();},{passive:false});
-renderer.domElement.addEventListener("touchend",function(e){dragging=false;
+renderer.domElement.addEventListener("touchend",function(e){
   window._lastTouch=performance.now(); /* 🩹 Schwarm-4: blockt die nachgereichten Maus-Events */
-  if(e.targetTouches&&e.targetTouches.length)return;   /* ein Finger liegt noch: Geste laeuft weiter */
+  if(e.targetTouches&&e.targetTouches.length){
+    if(e.targetTouches.length===1){dragging=true;lx=e.targetTouches[0].clientX;ly=e.targetTouches[0].clientY;}
+    return;}   /* verbleibenden Finger ohne Sprung weiterfuehren */
+  dragging=false;
   var _gezogen=zugEnde();
-  if(!_gezogen&&e.changedTouches[0]&&performance.now()-downT<300){var t=e.changedTouches[0];
+  if(!touchKamera&&!_gezogen&&e.changedTouches[0]&&performance.now()-downT<300){var t=e.changedTouches[0];
     if(Math.hypot(t.clientX-downX,t.clientY-downY)<12)bauGeld(function(){tapAt(t.clientX,t.clientY);});}
-  bauZugEnde();});
-renderer.domElement.addEventListener("touchcancel",function(){dragging=false;zugAbbrechen();bauZugEnde();});
+  touchKamera=false;bauZugEnde();});
+renderer.domElement.addEventListener("touchcancel",function(){dragging=false;touchKamera=false;zugAbbrechen();bauZugEnde();});
 
 // ===================== Bau-Interaktion =====================
 var ray=new THREE.Raycaster(),mouse=new THREE.Vector2(),groundPlane=new THREE.Plane(new THREE.Vector3(0,1,0),0);

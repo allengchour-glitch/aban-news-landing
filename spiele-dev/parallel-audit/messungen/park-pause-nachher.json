@@ -1,0 +1,16 @@
+{
+  "base": "http://127.0.0.1:8112",
+  "results": [
+    {
+      "game": "neon-park",
+      "checks": [
+        "390×540: Solo-Pause stoppt weitere Render-Aufrufe",
+        "Echter mobiler Weiter-Tap schliesst Pause; Welt rendert wieder"
+      ],
+      "errors": [],
+      "csp": [],
+      "console": [],
+      "ok": true
+    }
+  ]
+}

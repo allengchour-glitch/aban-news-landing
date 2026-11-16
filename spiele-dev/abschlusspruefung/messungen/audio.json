@@ -1,0 +1,775 @@
+{
+  "zeit": "2026-11-15T23:40:27.522Z",
+  "url": "http://127.0.0.1:8113",
+  "checks": [
+    {
+      "name": "Port 8113 liefert die geprüfte lokale Audio-Datei",
+      "ok": true,
+      "details": {
+        "file": "/tmp/aban-neon-coop/js/neon-flug/audio.mjs",
+        "localSHA256": "a88024c6016d121a7a1c2e4c7438ec68a15b6d4db7bbe0f10eb7fd7e20d16f81",
+        "servedSHA256": "a88024c6016d121a7a1c2e4c7438ec68a15b6d4db7bbe0f10eb7fd7e20d16f81"
+      }
+    },
+    {
+      "name": "Echte CSP und Permissions-Policy",
+      "ok": true
+    },
+    {
+      "name": "Kein Autoplay vor Interaktion",
+      "ok": true,
+      "details": {
+        "contexts": 0,
+        "events": 0,
+        "label": "Ton einschalten",
+        "phase": "briefing"
+      }
+    },
+    {
+      "name": "Training bleibt ohne Ton-Aktivierung stumm",
+      "ok": true,
+      "details": {
+        "contexts": 1,
+        "state": "suspended",
+        "time": 0,
+        "events": 0,
+        "label": "Ton einschalten",
+        "phase": "playing"
+      }
+    },
+    {
+      "name": "Ton per UI aktiviert, Signal vorhanden",
+      "ok": true,
+      "details": {
+        "state": "running",
+        "time": 0.9200907029478458,
+        "peak": 0.015747562050819397,
+        "rms": 0.003632343803774426
+      }
+    },
+    {
+      "name": "Pause friert Audio-Uhr ein",
+      "ok": true,
+      "details": {
+        "before": {
+          "contexts": 1,
+          "state": "suspended",
+          "time": 1.3815873015873017,
+          "events": 3,
+          "label": "Ton ausschalten",
+          "phase": "paused"
+        },
+        "after": {
+          "contexts": 1,
+          "state": "suspended",
+          "time": 1.3815873015873017,
+          "events": 3,
+          "label": "Ton ausschalten",
+          "phase": "paused"
+        }
+      }
+    },
+    {
+      "name": "Fortsetzen liefert wieder Signal",
+      "ok": true,
+      "details": {
+        "state": "running",
+        "time": 2.1420408163265305,
+        "peak": 0.03407754376530647,
+        "rms": 0.007241049747096332
+      }
+    },
+    {
+      "name": "UI Musik=0: keine neuen Musik-Oszillatoren, Dash bleibt aktiv",
+      "ok": true,
+      "details": {
+        "music": [],
+        "effects": [
+          {
+            "frequency": 165,
+            "start": 2.632562358276644,
+            "volume": 0.17,
+            "type": "triangle",
+            "duration": 0.2
+          },
+          {
+            "frequency": 440,
+            "start": 2.692562358276644,
+            "volume": 0.0595,
+            "type": "sine",
+            "duration": 0.3499999999999999
+          },
+          {
+            "frequency": 262,
+            "start": 2.632562358276644,
+            "volume": 0.09350000000000001,
+            "type": "sine",
+            "duration": 0.7999999999999996
+          },
+          {
+            "frequency": 330,
+            "start": 2.752562358276644,
+            "volume": 0.09350000000000001,
+            "type": "sine",
+            "duration": 0.7999999999999996
+          },
+          {
+            "frequency": 392,
+            "start": 2.872562358276644,
+            "volume": 0.09350000000000001,
+            "type": "sine",
+            "duration": 0.7999999999999996
+          },
+          {
+            "frequency": 523,
+            "start": 2.992562358276644,
+            "volume": 0.09350000000000001,
+            "type": "sine",
+            "duration": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "name": "UI Effekte=0: kein Dash-Oszillator, Musik bleibt aktiv",
+      "ok": true,
+      "details": {
+        "music": [
+          {
+            "frequency": 220,
+            "start": 8.751020408163265,
+            "volume": 0.06,
+            "type": "sine",
+            "duration": 0.8500000000000003
+          },
+          {
+            "frequency": 55,
+            "start": 8.751020408163265,
+            "volume": 0.09,
+            "type": "triangle",
+            "duration": 1.3000000000000014
+          },
+          {
+            "frequency": 261.62,
+            "start": 9.200907029478458,
+            "volume": 0.06,
+            "type": "sine",
+            "duration": 0.8500000000000003
+          }
+        ],
+        "effects": []
+      }
+    },
+    {
+      "name": "Globales Mute stoppt Audio-Uhr",
+      "ok": true,
+      "details": {
+        "before": {
+          "contexts": 1,
+          "state": "suspended",
+          "time": 9.691428571428572,
+          "events": 1,
+          "label": "Ton einschalten",
+          "phase": "playing"
+        },
+        "after": {
+          "contexts": 1,
+          "state": "suspended",
+          "time": 9.691428571428572,
+          "events": 1,
+          "label": "Ton einschalten",
+          "phase": "playing"
+        }
+      }
+    },
+    {
+      "name": "Dash hebt Mute nicht auf",
+      "ok": true,
+      "details": {
+        "contexts": 1,
+        "state": "suspended",
+        "time": 9.691428571428572,
+        "events": 1,
+        "label": "Ton einschalten",
+        "phase": "playing"
+      }
+    },
+    {
+      "name": "Fortsetzen hebt Mute nicht auf",
+      "ok": true,
+      "details": {
+        "contexts": 1,
+        "state": "suspended",
+        "time": 9.691428571428572,
+        "events": 1,
+        "label": "Ton einschalten",
+        "phase": "playing"
+      }
+    },
+    {
+      "name": "Explizites Entstummen funktioniert",
+      "ok": true
+    },
+    {
+      "name": "Flug verlassen suspendiert Audio",
+      "ok": true
+    },
+    {
+      "name": "Lautstärken bleiben nach Reload erhalten; Ton startet AUS",
+      "ok": true
+    },
+    {
+      "name": "Keine JavaScript-Laufzeitfehler",
+      "ok": true,
+      "details": []
+    },
+    {
+      "name": "Offline tone0: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 48000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline ring0: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 192000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline hit0: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 192000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline dash0: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 192000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline rescue0: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 192000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline win0: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 192000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline music0: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 1440000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline both0: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 1440000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline disabled: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 1440000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline inactive: exakt stumm",
+      "ok": true,
+      "details": {
+        "peak": 0,
+        "rms": 0,
+        "nonzero": 0,
+        "clipped": 0,
+        "samples": 192000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Messgerät: positives Signal und steigende Lautstärke",
+      "ok": true
+    },
+    {
+      "name": "Getrennte Kanäle: Musik=0 verändert Dash nicht",
+      "ok": true,
+      "details": {
+        "effectsOnly": {
+          "peak": 0.023659303784370422,
+          "rms": 0.0017746182086513503,
+          "nonzero": 22079,
+          "clipped": 0,
+          "samples": 192000,
+          "sampleRate": 48000
+        },
+        "dash": {
+          "peak": 0.023659303784370422,
+          "rms": 0.0017746182086513503,
+          "nonzero": 22079,
+          "clipped": 0,
+          "samples": 192000,
+          "sampleRate": 48000
+        }
+      }
+    },
+    {
+      "name": "Musik 100 stärker als 35",
+      "ok": true
+    },
+    {
+      "name": "Offline ring: positives Signal, 100 stärker als 55",
+      "ok": true
+    },
+    {
+      "name": "Offline hit: positives Signal, 100 stärker als 55",
+      "ok": true
+    },
+    {
+      "name": "Offline dash: positives Signal, 100 stärker als 55",
+      "ok": true
+    },
+    {
+      "name": "Offline rescue: positives Signal, 100 stärker als 55",
+      "ok": true
+    },
+    {
+      "name": "Offline win: positives Signal, 100 stärker als 55",
+      "ok": true
+    },
+    {
+      "name": "Offline mixDefault: Signal ohne Samples >= 1",
+      "ok": true,
+      "details": {
+        "peak": 0.09747716784477234,
+        "rms": 0.012573380446713923,
+        "nonzero": 1313279,
+        "clipped": 0,
+        "samples": 1440000,
+        "sampleRate": 48000
+      }
+    },
+    {
+      "name": "Offline mix100: Signal ohne Samples >= 1",
+      "ok": true,
+      "details": {
+        "peak": 0.208894744515419,
+        "rms": 0.024921546471856824,
+        "nonzero": 1313279,
+        "clipped": 0,
+        "samples": 1440000,
+        "sampleRate": 48000
+      }
+    }
+  ],
+  "grenzen": "Chromium headless; keine Hörprobe, kein Mikrofon, keine Aussage über subjektive Klangqualität.",
+  "browser": "159.0.8154.6",
+  "source": {
+    "file": "/tmp/aban-neon-coop/js/neon-flug/audio.mjs",
+    "localSHA256": "a88024c6016d121a7a1c2e4c7438ec68a15b6d4db7bbe0f10eb7fd7e20d16f81",
+    "servedSHA256": "a88024c6016d121a7a1c2e4c7438ec68a15b6d4db7bbe0f10eb7fd7e20d16f81"
+  },
+  "headers": {
+    "connection": "keep-alive",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Sun, 15 Nov 2026 23:40:28 GMT",
+    "keep-alive": "timeout=5",
+    "transfer-encoding": "chunked",
+    "cache-control": "public, max-age=300, must-revalidate",
+    "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' blob: https://0.peerjs.com wss://0.peerjs.com https://peerjs.92k.de wss://peerjs.92k.de https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+    "cross-origin-resource-policy": "same-site",
+    "permissions-policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "SAMEORIGIN",
+    "x-permitted-cross-domain-policies": "none",
+    "x-xss-protection": "1; mode=block"
+  },
+  "ui": {
+    "aktiv": {
+      "state": "running",
+      "time": 0.9200907029478458,
+      "peak": 0.015747562050819397,
+      "rms": 0.003632343803774426
+    },
+    "weiter": {
+      "state": "running",
+      "time": 2.1420408163265305,
+      "peak": 0.03407754376530647,
+      "rms": 0.007241049747096332
+    },
+    "nurEffekte": {
+      "music": [],
+      "effects": [
+        {
+          "frequency": 165,
+          "start": 2.632562358276644,
+          "volume": 0.17,
+          "type": "triangle",
+          "duration": 0.2
+        },
+        {
+          "frequency": 440,
+          "start": 2.692562358276644,
+          "volume": 0.0595,
+          "type": "sine",
+          "duration": 0.3499999999999999
+        },
+        {
+          "frequency": 262,
+          "start": 2.632562358276644,
+          "volume": 0.09350000000000001,
+          "type": "sine",
+          "duration": 0.7999999999999996
+        },
+        {
+          "frequency": 330,
+          "start": 2.752562358276644,
+          "volume": 0.09350000000000001,
+          "type": "sine",
+          "duration": 0.7999999999999996
+        },
+        {
+          "frequency": 392,
+          "start": 2.872562358276644,
+          "volume": 0.09350000000000001,
+          "type": "sine",
+          "duration": 0.7999999999999996
+        },
+        {
+          "frequency": 523,
+          "start": 2.992562358276644,
+          "volume": 0.09350000000000001,
+          "type": "sine",
+          "duration": 0.8
+        }
+      ]
+    },
+    "nurMusik": {
+      "music": [
+        {
+          "frequency": 220,
+          "start": 8.751020408163265,
+          "volume": 0.06,
+          "type": "sine",
+          "duration": 0.8500000000000003
+        },
+        {
+          "frequency": 55,
+          "start": 8.751020408163265,
+          "volume": 0.09,
+          "type": "triangle",
+          "duration": 1.3000000000000014
+        },
+        {
+          "frequency": 261.62,
+          "start": 9.200907029478458,
+          "volume": 0.06,
+          "type": "sine",
+          "duration": 0.8500000000000003
+        }
+      ],
+      "effects": []
+    },
+    "muteNachDash": {
+      "contexts": 1,
+      "state": "suspended",
+      "time": 9.691428571428572,
+      "events": 1,
+      "label": "Ton einschalten",
+      "phase": "playing"
+    },
+    "muteNachWeiter": {
+      "contexts": 1,
+      "state": "suspended",
+      "time": 9.691428571428572,
+      "events": 1,
+      "label": "Ton einschalten",
+      "phase": "playing"
+    }
+  },
+  "offline": {
+    "tone0": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 48000,
+      "sampleRate": 48000
+    },
+    "tone0.03": {
+      "peak": 0.007791562937200069,
+      "rms": 0.001385541058190952,
+      "nonzero": 16799,
+      "clipped": 0,
+      "samples": 48000,
+      "sampleRate": 48000
+    },
+    "tone0.06": {
+      "peak": 0.0154359620064497,
+      "rms": 0.002558768668532946,
+      "nonzero": 16799,
+      "clipped": 0,
+      "samples": 48000,
+      "sampleRate": 48000
+    },
+    "tone0.12": {
+      "peak": 0.030828183516860008,
+      "rms": 0.004773921734793279,
+      "nonzero": 16799,
+      "clipped": 0,
+      "samples": 48000,
+      "sampleRate": 48000
+    },
+    "ring0": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "ring55": {
+      "peak": 0.028124336153268814,
+      "rms": 0.0020099241646184744,
+      "nonzero": 17279,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "ring100": {
+      "peak": 0.050092536956071854,
+      "rms": 0.0035151616020034364,
+      "nonzero": 17279,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "hit0": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "hit55": {
+      "peak": 0.040770795196294785,
+      "rms": 0.0022818414043350136,
+      "nonzero": 21599,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "hit100": {
+      "peak": 0.07215917855501175,
+      "rms": 0.0038971234609937984,
+      "nonzero": 21599,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "dash0": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "dash55": {
+      "peak": 0.023659303784370422,
+      "rms": 0.0017746182086513503,
+      "nonzero": 22079,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "dash100": {
+      "peak": 0.04290683940052986,
+      "rms": 0.0030811078702752273,
+      "nonzero": 22079,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "rescue0": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "rescue55": {
+      "peak": 0.05253124237060547,
+      "rms": 0.006640350620213926,
+      "nonzero": 58079,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "rescue100": {
+      "peak": 0.09215375781059265,
+      "rms": 0.011550899287472194,
+      "nonzero": 58079,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "win0": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "win55": {
+      "peak": 0.05253124237060547,
+      "rms": 0.006640350621057037,
+      "nonzero": 58079,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "win100": {
+      "peak": 0.09215375781059265,
+      "rms": 0.011550899284608224,
+      "nonzero": 58079,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "music0": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 1440000,
+      "sampleRate": 48000
+    },
+    "music35": {
+      "peak": 0.03888433426618576,
+      "rms": 0.00596951756612846,
+      "nonzero": 1313279,
+      "clipped": 0,
+      "samples": 1440000,
+      "sampleRate": 48000
+    },
+    "music100": {
+      "peak": 0.10871836543083191,
+      "rms": 0.015724925762965986,
+      "nonzero": 1313279,
+      "clipped": 0,
+      "samples": 1440000,
+      "sampleRate": 48000
+    },
+    "mixDefault": {
+      "peak": 0.09747716784477234,
+      "rms": 0.012573380446713923,
+      "nonzero": 1313279,
+      "clipped": 0,
+      "samples": 1440000,
+      "sampleRate": 48000
+    },
+    "mix100": {
+      "peak": 0.208894744515419,
+      "rms": 0.024921546471856824,
+      "nonzero": 1313279,
+      "clipped": 0,
+      "samples": 1440000,
+      "sampleRate": 48000
+    },
+    "both0": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 1440000,
+      "sampleRate": 48000
+    },
+    "disabled": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 1440000,
+      "sampleRate": 48000
+    },
+    "inactive": {
+      "peak": 0,
+      "rms": 0,
+      "nonzero": 0,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    },
+    "effectsOnly": {
+      "peak": 0.023659303784370422,
+      "rms": 0.0017746182086513503,
+      "nonzero": 22079,
+      "clipped": 0,
+      "samples": 192000,
+      "sampleRate": 48000
+    }
+  },
+  "ok": true
+}

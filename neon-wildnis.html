@@ -4242,8 +4242,18 @@ function updDayNight(dt){
 }
 
 // ---------- Steuerung ----------
-var keys={};
-addEventListener("keydown",function(e){keys[e.key.toLowerCase()]=1;
+var keys={},stopHeldAttack=null;
+function resetControls(){
+  keys={};stickEnd();rotId=null;pinchIds=null;mDrag=false;
+  if(stopHeldAttack)stopHeldAttack();
+}
+addEventListener("blur",resetControls);
+document.addEventListener("visibilitychange",function(){if(document.hidden)resetControls();});
+addEventListener("keydown",function(e){
+  if(e.target&&(e.target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)))return;
+  if(e.key==="Escape"&&e.repeat)return;
+  if(paused&&e.key!=="Escape")return;
+  keys[e.key.toLowerCase()]=1;
   if(e.key.toLowerCase()==="e"){harvest();}
   if(e.key.toLowerCase()==="q"){useSkill();}
   if(e.key.toLowerCase()==="f"){doThrow();}
@@ -4320,6 +4330,7 @@ function bindTap(id,fn){var b=document.getElementById(id);if(!b)return;b.addEven
     b.classList.add("pressed");setTimeout(function(){b.classList.remove("pressed");},150);
     harvest();clearInterval(iv);iv=setInterval(fire,240);},{passive:false});
   function _hstop(){clearInterval(iv);iv=null;}
+  stopHeldAttack=_hstop;
   b.addEventListener("touchend",_hstop);b.addEventListener("touchcancel",_hstop);
   b.addEventListener("click",function(e){if(performance.now()-(b.__t||0)>500)harvest();});
 })();
@@ -4836,7 +4847,7 @@ function updPrompt(){
 }
 
 // ---------- Start / Pause ----------
-function togglePause(){if(!running)return;paused=!paused;var ov=document.getElementById("ov");
+function togglePause(){if(!running)return;resetControls();paused=!paused;var ov=document.getElementById("ov");
   if(paused){ov.classList.remove("hide");ov.querySelector("h1").textContent="PAUSE";document.getElementById("startBtn").textContent="▶ Weiter";document.getElementById("newBtn").classList.remove("hide");document.getElementById("charLbl").classList.add("hide");document.getElementById("charPick").classList.add("hide");["charNav","charPrev","charPrevEmoji"].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.add("hide");});saveGame();}
   else{ov.classList.add("hide");}}
 // ===================== 🌐 KOOP (js/mp.js, WebRTC-P2P) =====================

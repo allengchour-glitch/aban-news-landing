@@ -1,0 +1,32 @@
+{
+  "base": "http://127.0.0.1:8113",
+  "public": true,
+  "tlsVerification": true,
+  "checks": [
+    {
+      "name": "Zwei echte Clients über öffentliche Vermittlung verbunden",
+      "ok": false
+    }
+  ],
+  "errors": [
+    "WebSocket connection to 'wss://0.peerjs.com/peerjs?key=[redacted]&id=[redacted]&token=[redacted]&version=1.5.4' failed: Error in connection establishment: net::ERR_CERT_AUTHORITY_INVALID",
+    "WebSocket connection to 'wss://peerjs.92k.de/peerjs?key=[redacted]&id=[redacted]&token=[redacted]&version=1.5.4' failed: Error in connection establishment: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID",
+    "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+  ],
+  "requests": [
+    {
+      "host": "0.peerjs.com",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    },
+    {
+      "host": "peerjs.92k.de",
+      "error": "net::ERR_CERT_AUTHORITY_INVALID"
+    }
+  ],
+  "connected": false,
+  "failure": "TimeoutError",
+  "status": "Kein Kontakt zum Vermittlungs-Server — Internet prüfen.",
+  "guestStatus": "Kein Kontakt zum Vermittlungs-Server — Internet prüfen.",
+  "result": "BLOCKIERT_TLS_UMGEBUNG"
+}

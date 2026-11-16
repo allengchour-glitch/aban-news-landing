@@ -165,14 +165,8 @@
 
   /* Ein Handler für Touch + Maus, doppeltes Zählen vermeiden */
   function bindHalf(el, which){
-    var touched=false;
-    el.addEventListener('touchstart', function(e){
-      touched=true; e.preventDefault();
-      var n=e.changedTouches?e.changedTouches.length:1;
-      for(var i=0;i<n;i++) tap(which);
-    }, {passive:false});
-    el.addEventListener('mousedown', function(e){
-      if(touched){ touched=false; return; }
+    el.addEventListener('pointerdown', function(e){
+      if(e.pointerType==='mouse' && e.button!==0) return;
       e.preventDefault(); tap(which);
     });
   }

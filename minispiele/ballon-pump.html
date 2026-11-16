@@ -77,6 +77,18 @@
   .roundinfo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:40;
     background:#fffdf6;color:#3a7dd8;font-weight:900;font-size:15px;padding:7px 16px;border-radius:14px;
     box-shadow:0 4px 14px rgba(40,90,150,.22);pointer-events:none;white-space:nowrap;}
+  @media(max-height:640px){
+    .arena{padding-top:60px;min-height:0}
+    .half{min-height:0}.roundinfo{top:calc(50% + 30px)}
+    .who{font-size:18px}.score{font-size:14px;margin-bottom:2px}
+    .balloon{font-size:46px}.fillbar{margin-top:5px}
+    .filltxt{margin-top:3px}.statusmsg{font-size:18px;height:22px;margin-top:3px}
+    .controls{margin-top:7px;gap:8px}
+    .pumpbtn,.stopbtn{min-height:46px;min-width:116px;padding:8px 12px;font-size:18px}
+  }
+  @media(max-height:440px) and (min-width:600px){
+    .arena{flex-direction:row}.half.top{border-bottom:0;border-right:5px dashed #fffdf6}
+  }
 </style>
 </head>
 <body>
@@ -184,6 +196,7 @@
     if(s.fill>=s.limit){
       s.fill=s.limit;
       s.status="burst";
+      render(p);
       burstAnim(p);
       el.msg[p].textContent="Peng! 💥";
       lock(p);

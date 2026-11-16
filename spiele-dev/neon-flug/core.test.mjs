@@ -1,0 +1,306 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {
+  createState,
+  start,
+  step,
+  hit,
+  dash,
+  route,
+  routeCache,
+  LEVELS,
+  snapshot,
+  validSnapshot,
+} from "../../js/neon-flug/core.mjs";
+const safeInput = (s) => {
+  const e = routeCache[s.level].find(
+    (e) => e.type === "hazard" && e.t > s.t && e.t < s.t + 1.3,
+  );
+  const target = e ? (e.x >= 0 ? -8 : 8) : null;
+  return s.players.map((p) => ({ target: target ?? p.x }));
+};
+const tick = (s, seconds, inputs) => {
+  for (let t = 0; t < seconds; t += 1 / 120)
+    step(s, inputs || safeInput(s), 1 / 120);
+};
+test("Ohne bestätigten Start läuft die Mission nicht", () => {
+  const s = createState();
+  tick(s, 1);
+  assert.equal(s.t, 0);
+});
+test("Routen reproduzierbar und für jedes Level eigenständig", () => {
+  assert.deepEqual(route(0), route(0));
+  assert.notDeepEqual(route(0), route(1));
+  assert(
+    route(0)
+      .filter((e) => e.t < 13)
+      .every((e) => e.type === "ring"),
+  );
+});
+test("30 und 120 Hz führen zum gleichen Kampagnenabschluss", () => {
+  for (const hz of [30, 120]) {
+    const s = createState();
+    start(s);
+    for (let i = 0; i < hz * 91; i++) step(s, safeInput(s), 1 / hz);
+    assert.equal(s.phase, "result");
+    assert.equal(s.medal, 1);
+  }
+});
+test("Ein Treffer ist nicht in mehreren Frames mehrfach tödlich", () => {
+  const s = createState();
+  start(s);
+  assert(hit(s, 0));
+  assert.equal(s.players[0].hp, 2);
+  assert(!hit(s, 0));
+  assert.equal(s.players[0].hp, 2);
+});
+test("Dash schützt und lädt nicht unmittelbar erneut", () => {
+  const s = createState();
+  start(s);
+  assert(dash(s, 0));
+  assert(!dash(s, 0));
+  assert(!hit(s, 0));
+  tick(s, 0.7);
+  assert(!dash(s, 0));
+});
+test("Rettung verlangt lebenden Partner, Nähe und gehaltene Eingabe", () => {
+  const s = createState();
+  start(s);
+  Object.assign(s.players[0], { hp: 0, down: 20, x: -2 });
+  s.players[1].x = -1;
+  tick(s, 1, [{}, { rescue: false }]);
+  assert.equal(s.players[0].hp, 0);
+  tick(s, 2.1, [{}, { rescue: true }]);
+  assert.equal(s.players[0].hp, 2);
+  assert(s.players[0].inv > 0);
+});
+test("Rettung aus der Ferne wirkt nicht", () => {
+  const s = createState();
+  start(s);
+  Object.assign(s.players[0], { hp: 0, down: 20, x: -6 });
+  s.players[1].x = 6;
+  tick(s, 3, [{}, { rescue: true }]);
+  assert.equal(s.players[0].hp, 0);
+});
+test("Wenn beide ausfallen, endet der gemeinsame Flug", () => {
+  const s = createState();
+  start(s);
+  s.players.forEach((p) => Object.assign(p, { hp: 0, down: 20 }));
+  step(s, [{}, {}], 0.016);
+  assert.equal(s.phase, "failed");
+});
+test("Rettungsfrist läuft ab und Pause hält Zeit und Eingaben an", () => {
+  const s = createState();
+  start(s);
+  Object.assign(s.players[0], { hp: 0, down: 0.1 });
+  tick(s, 0.2);
+  assert.equal(s.phase, "failed");
+  s.phase = "paused";
+  const old = snapshot(s);
+  tick(s, 5, [{ axis: 1 }, { axis: -1 }]);
+  assert.deepEqual(snapshot(s), old);
+});
+test("Ungültige Eingaben beschädigen keine Koordinaten", () => {
+  const s = createState();
+  start(s);
+  tick(s, 1, [{ axis: Infinity, target: NaN }, { axis: 999 }]);
+  assert(Number.isFinite(s.players[0].x));
+  assert(s.players[1].x <= 9);
+  step(s, [{}, {}], NaN);
+  assert(Number.isFinite(s.t));
+});
+test("Snapshots sind unabhängig und prüfen Protokoll und Zahlen", () => {
+  const s = createState();
+  const p = snapshot(s);
+  p.players[0].hp = 0;
+  assert.equal(s.players[0].hp, 3);
+  assert(validSnapshot(snapshot(s)));
+  assert(!validSnapshot({ ...p, level: 99 }));
+  assert(!validSnapshot({ ...p, t: NaN }));
+});
+test("Nur das letzte Leuchtfeuer führt zum Kampagnensieg", () => {
+  for (let level = 0; level < 3; level++) {
+    const s = createState(level);
+    start(s);
+    tick(s, LEVELS[level].duration + 1);
+    assert.equal(s.phase, level === 2 ? "victory" : "result");
+  }
+});
+
+test("Am Rand stehen bleiben umgeht die Hindernisse nicht", () => {
+  const s = createState();
+  start(s);
+  tick(s, 91, [{ target: -9 }, { target: 9 }]);
+  assert.equal(s.phase, "failed");
+});
+
+test("Doppelringe belohnen Aufteilung, nicht zwei Piloten auf derselben Seite", () => {
+  const event = routeCache[0].find((e) => e.type === "duet");
+  for (const together of [false, true]) {
+    const s = createState();
+    start(s);
+    s.t = event.t - 0.005;
+    s.players[0].x = -7;
+    s.players[1].x = together ? -7 : 7;
+    step(s, [{}, {}], 0.01);
+    assert.equal(s.duets, together ? 0 : 1);
+    assert.equal(s.resonance, together ? 0 : 25);
+  }
+});
+test("Zwillingsschub verlangt beide lebenden Piloten und ein enges Zeitfenster", () => {
+  const s = createState();
+  start(s);
+  assert(dash(s, 0));
+  tick(s, 0.2);
+  assert(dash(s, 1));
+  assert.equal(s.syncs, 1);
+  assert.equal(s.resonance, 15);
+  assert(!dash(s, 1));
+  const late = createState();
+  start(late);
+  dash(late, 0);
+  tick(late, 0.5);
+  dash(late, 1);
+  assert.equal(late.syncs, 0);
+});
+test("Vollständige Resonanz erzeugt begrenzten Overdrive, nicht dauernde Unverwundbarkeit", async () => {
+  const { charge } = await import("../../js/neon-flug/core.mjs");
+  const s = createState();
+  start(s);
+  charge(s, 100);
+  assert.equal(s.overdrive, 5);
+  assert.equal(s.resonance, 0);
+  charge(s, 100);
+  assert.equal(s.resonance, 0);
+  tick(s, 6);
+  assert.equal(s.overdrive, 0);
+  assert.equal(s.players[0].inv, 0);
+});
+test("Retter und Rettungsanker verändern die tatsächliche Rettung", () => {
+  const s = createState(0, [{}, { role: "medic", mod: "anchor" }]);
+  start(s);
+  Object.assign(s.players[0], { x: 0, hp: 0, down: 20 });
+  s.players[1].x = 2.9;
+  tick(s, 1.3, [{}, { rescue: true }]);
+  assert.equal(s.players[0].hp, 3);
+  assert.equal(s.rescues, 1);
+  assert.equal(s.resonance, 25);
+});
+test("Rollen und Module bleiben Teil des validierten Snapshots", () => {
+  const s = createState(1, [
+    { role: "pulse", mod: "capacitor" },
+    { role: "medic" },
+  ]);
+  start(s);
+  dash(s, 0);
+  assert.equal(s.players[0].dash, 0.8);
+  assert(Math.abs(s.players[0].cooldown - 4.7) < 0.001);
+  assert(validSnapshot(snapshot(s)));
+  const bad = snapshot(s);
+  bad.players[0].role = "__proto__";
+  assert(!validSnapshot(bad));
+});
+
+test("Goldener Bonusring gibt Punkte, Resonanz und einen gezählten Bonus", () => {
+  const e = routeCache[0].find((e) => e.type === "ring" && e.bonus),
+    s = createState();
+  start(s);
+  s.t = e.t - 0.005;
+  s.players[0].x = e.x;
+  s.players[1].x = e.x > 0 ? -9 : 9;
+  step(s, [{}, {}], 0.01);
+  assert.equal(s.bonuses, 1);
+  assert(s.score >= 400);
+  assert.equal(s.resonance, 10);
+});
+test("Fünfte Sammlung löst eine Bonuskette aus; Treffer unterbricht die Kette", () => {
+  const e = routeCache[0].find((e) => e.type === "ring" && !e.bonus),
+    s = createState();
+  start(s);
+  s.t = e.t - 0.005;
+  s.combo = 4;
+  s.players[0].x = e.x;
+  s.players[1].x = e.x > 0 ? -9 : 9;
+  step(s, [{}, {}], 0.01);
+  assert.equal(s.combo, 5);
+  assert.equal(s.bonuses, 1);
+  hit(s, 0);
+  assert.equal(s.combo, 0);
+});
+test("Späte Module wirken tatsächlich auf Schutz und Bewegung", () => {
+  const a = createState(0, [
+    { role: "navigator", mod: "vector" },
+    { mod: "guard" },
+  ]);
+  start(a);
+  const x = a.players[0].x;
+  step(a, [{ axis: 1 }, {}], 0.05);
+  assert(Math.abs(a.players[0].x - x - 0.875) < 0.001);
+  hit(a, 1);
+  assert.equal(a.players[1].inv, 2.6);
+});
+
+test("Fokusfeld sammelt einen Ring ausserhalb des normalen Sammelradius", () => {
+  const e = routeCache[0].find((e) => e.type === "ring" && !e.bonus);
+  for (const mod of ["none", "focus"]) {
+    const s = createState(0, [{ mod }, {}]);
+    start(s);
+    s.t = e.t - 0.005;
+    s.players[0].x = e.x + (e.x > 0 ? -2.5 : 2.5);
+    s.players[1].x = e.x > 0 ? -9 : 9;
+    step(s, [{}, {}], 0.01);
+    assert.equal(s.players[0].rings, mod === "focus" ? 1 : 0);
+  }
+});
+test("Resonanzkern wirkt teamweit einmalig; Schubspule und Teamkanal verändern die Nachladezeit", async () => {
+  const { charge } = await import("../../js/neon-flug/core.mjs");
+  const a = createState(0, [{ mod: "resonance" }, { mod: "resonance" }]);
+  charge(a, 10);
+  assert.equal(a.resonance, 12.5);
+  const b = createState(0, [{ role: "pulse", mod: "coil" }, {}]);
+  start(b);
+  dash(b, 0);
+  assert(Math.abs(b.players[0].cooldown - 4.2) < 1e-9);
+  const c = createState(0, [{}, { mod: "link" }]);
+  start(c);
+  c.players.forEach((p) => (p.x = 0));
+  dash(c, 0);
+  step(c, [{}, {}], 0.05);
+  assert(Math.abs(c.players[0].cooldown - 5.915) < 1e-9);
+});
+test("Rettungsimpuls gibt dem geretteten Partner länger Schutz", () => {
+  const s = createState(0, [{}, { role: "medic", mod: "savior" }]);
+  start(s);
+  Object.assign(s.players[0], { hp: 0, down: 20, x: 0 });
+  s.players[1].x = 0;
+  tick(s, 1.3, [{}, { rescue: true }]);
+  assert.equal(s.players[0].hp, 2);
+  assert(s.players[0].inv > 4.8);
+});
+
+test("Zielankunft wartet auf den ausgefallenen Partner und lässt ihn retten", () => {
+  const s = createState();
+  start(s);
+  s.t = LEVELS[0].duration - 0.01;
+  Object.assign(s.players[0], { x: 0, hp: 0, down: 20 });
+  s.players[1].x = 0;
+  step(s, [{}, {}], 0.02);
+  assert.equal(s.phase, "playing");
+  assert.equal(s.t, LEVELS[0].duration);
+  const score = s.score;
+  tick(s, 0.5, [{}, {}]);
+  assert.equal(s.t, LEVELS[0].duration);
+  assert.equal(s.score, score);
+  tick(s, 2.1, [{}, { rescue: true }]);
+  assert.equal(s.players[0].hp, 2);
+  assert.equal(s.phase, "result");
+});
+test("Am Ziel abgelaufene Rettungsfrist ergibt Niederlage statt kostenlosen Abschluss", () => {
+  const s = createState(2);
+  start(s);
+  s.t = LEVELS[2].duration - 0.01;
+  Object.assign(s.players[0], { hp: 0, down: 0.1 });
+  tick(s, 0.2, [{}, {}]);
+  assert.equal(s.phase, "failed");
+  assert.equal(s.t, LEVELS[2].duration);
+});

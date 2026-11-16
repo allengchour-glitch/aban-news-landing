@@ -1,0 +1,950 @@
+{
+  "base": "http://127.0.0.1:8112",
+  "root": "/tmp/aban-neon-coop",
+  "games": {
+    "jump": {
+      "blur": {
+        "x": 4.554166666666666,
+        "y": 1.68,
+        "vx": 9.500000000000002,
+        "elapsed": 0.13333333333333333,
+        "inp": [
+          {
+            "L": false,
+            "R": false,
+            "J": false
+          },
+          {
+            "L": false,
+            "R": false,
+            "J": false
+          }
+        ],
+        "paused": true,
+        "platform": [
+          {
+            "x": 41,
+            "y": 3.069385491517772
+          }
+        ]
+      },
+      "frozen": {
+        "x": 4.554166666666666,
+        "y": 1.68,
+        "vx": 9.500000000000002,
+        "elapsed": 0.13333333333333333,
+        "inp": [
+          {
+            "L": false,
+            "R": false,
+            "J": false
+          },
+          {
+            "L": false,
+            "R": false,
+            "J": false
+          }
+        ],
+        "paused": true,
+        "platform": [
+          {
+            "x": 41,
+            "y": 3.069385491517772
+          }
+        ]
+      },
+      "resumed": {
+        "x": 4.912499999999999,
+        "y": 1.246666666666668,
+        "vx": 6.000000000000009,
+        "elapsed": 0.18333333333333324,
+        "inp": [
+          {
+            "L": false,
+            "R": false,
+            "J": false
+          },
+          {
+            "L": false,
+            "R": false,
+            "J": false
+          }
+        ],
+        "paused": false,
+        "platform": [
+          {
+            "x": 41,
+            "y": 3.274928245965744
+          }
+        ]
+      },
+      "repeat": {
+        "x": 4.912499999999999,
+        "y": 1.246666666666668,
+        "vx": 6.000000000000009,
+        "elapsed": 0.18333333333333324,
+        "inp": [
+          {
+            "L": false,
+            "R": false,
+            "J": false
+          },
+          {
+            "L": false,
+            "R": false,
+            "J": false
+          }
+        ],
+        "paused": true,
+        "platform": [
+          {
+            "x": 41,
+            "y": 3.274928245965744
+          }
+        ]
+      },
+      "errors": [],
+      "render": {
+        "errors": [],
+        "consoleErrors": [],
+        "failed": [],
+        "titleTop": 41
+      }
+    },
+    "racer": {
+      "timing": {
+        "30": {
+          "dist": 44.86760539122598,
+          "shipX": 6.17218122283548,
+          "offset": 0,
+          "keyL": false,
+          "keyR": false,
+          "brake": false,
+          "steer": 0,
+          "paused": false
+        },
+        "60": {
+          "dist": 44.817965437153454,
+          "shipX": 6.165883846243534,
+          "offset": 0,
+          "keyL": false,
+          "keyR": false,
+          "brake": false,
+          "steer": 0,
+          "paused": false
+        },
+        "120": {
+          "dist": 44.79319261908415,
+          "shipX": 6.162740492718802,
+          "offset": 0,
+          "keyL": false,
+          "keyR": false,
+          "brake": false,
+          "steer": 0,
+          "paused": false
+        }
+      },
+      "road": [
+        {
+          "dist": 0,
+          "back": 22.5,
+          "cameraZ": 11,
+          "front": -247.5,
+          "gaps": false,
+          "aligned": true,
+          "marks": true
+        },
+        {
+          "dist": 4.999,
+          "back": 27.499,
+          "cameraZ": 11,
+          "front": -242.501,
+          "gaps": false,
+          "aligned": true,
+          "marks": true
+        },
+        {
+          "dist": 5,
+          "back": 22.5,
+          "cameraZ": 11,
+          "front": -247.5,
+          "gaps": false,
+          "aligned": true,
+          "marks": true
+        },
+        {
+          "dist": 9.999,
+          "back": 27.499000000000002,
+          "cameraZ": 11,
+          "front": -242.501,
+          "gaps": false,
+          "aligned": true,
+          "marks": true
+        },
+        {
+          "dist": 10,
+          "back": 22.5,
+          "cameraZ": 11,
+          "front": -247.5,
+          "gaps": false,
+          "aligned": true,
+          "marks": true
+        },
+        {
+          "dist": 10.001,
+          "back": 22.500999999999998,
+          "cameraZ": 11,
+          "front": -247.499,
+          "gaps": false,
+          "aligned": true,
+          "marks": true
+        },
+        {
+          "dist": 249.999,
+          "back": 27.498999999999995,
+          "cameraZ": 11,
+          "front": -242.501,
+          "gaps": false,
+          "aligned": true,
+          "marks": true
+        },
+        {
+          "dist": 250,
+          "back": 22.5,
+          "cameraZ": 11,
+          "front": -247.5,
+          "gaps": false,
+          "aligned": true,
+          "marks": true
+        },
+        {
+          "dist": 1000,
+          "back": 22.5,
+          "cameraZ": 11,
+          "front": -247.5,
+          "gaps": false,
+          "aligned": true,
+          "marks": true
+        }
+      ],
+      "blur": {
+        "dist": 4.234749543156763,
+        "shipX": 1.4183148932401535,
+        "offset": 0.8129535999999877,
+        "keyL": false,
+        "keyR": false,
+        "brake": false,
+        "steer": 0,
+        "paused": true
+      },
+      "frozen": {
+        "dist": 4.234749543156763,
+        "shipX": 1.4183148932401535,
+        "offset": 0.8129535999999877,
+        "keyL": false,
+        "keyR": false,
+        "brake": false,
+        "steer": 0,
+        "paused": true
+      },
+      "resumed": {
+        "dist": 6.374146372984613,
+        "shipX": 1.7237476857341547,
+        "offset": 0.8129535999999877,
+        "keyL": false,
+        "keyR": false,
+        "brake": false,
+        "steer": 0,
+        "paused": false
+      },
+      "repeat": {
+        "dist": 6.374146372984613,
+        "shipX": 1.7237476857341547,
+        "offset": 0.8129535999999877,
+        "keyL": false,
+        "keyR": false,
+        "brake": false,
+        "steer": 0,
+        "paused": true
+      },
+      "errors": [],
+      "render": {
+        "errors": [],
+        "consoleErrors": [],
+        "failed": [],
+        "titleTop": 98.515625
+      },
+      "hud": [
+        {
+          "station": false,
+          "large": false,
+          "width": 320,
+          "rects": {
+            "#spd": {
+              "left": 10,
+              "right": 128,
+              "top": 10,
+              "bottom": 45.3125,
+              "width": 118,
+              "height": 35.3125,
+              "overflow": false
+            },
+            "#coinpanel": {
+              "left": 136,
+              "right": 254,
+              "top": 10,
+              "bottom": 49,
+              "width": 118,
+              "height": 39,
+              "overflow": false
+            },
+            ".best": {
+              "left": 10,
+              "right": 254,
+              "top": 57,
+              "bottom": 112.40625,
+              "width": 244,
+              "height": 55.40625,
+              "overflow": false
+            },
+            "#muteBtn": {
+              "left": 264,
+              "right": 310,
+              "top": 10,
+              "bottom": 56,
+              "width": 46,
+              "height": 46,
+              "overflow": false
+            },
+            "#shieldwrap": {
+              "left": 10,
+              "right": 209,
+              "top": 120.40625,
+              "bottom": 150.40625,
+              "width": 199,
+              "height": 30,
+              "overflow": false
+            },
+            "#pauseBtn": {
+              "left": 266,
+              "right": 310,
+              "top": 64,
+              "bottom": 108,
+              "width": 44,
+              "height": 44,
+              "overflow": false
+            }
+          },
+          "overlaps": []
+        },
+        {
+          "station": false,
+          "large": true,
+          "width": 320,
+          "rects": {
+            "#spd": {
+              "left": 10,
+              "right": 128,
+              "top": 10,
+              "bottom": 45.3125,
+              "width": 118,
+              "height": 35.3125,
+              "overflow": false
+            },
+            "#coinpanel": {
+              "left": 136,
+              "right": 254,
+              "top": 10,
+              "bottom": 95,
+              "width": 118,
+              "height": 85,
+              "overflow": false
+            },
+            ".best": {
+              "left": 10,
+              "right": 254,
+              "top": 103,
+              "bottom": 158.40625,
+              "width": 244,
+              "height": 55.40625,
+              "overflow": false
+            },
+            "#muteBtn": {
+              "left": 264,
+              "right": 310,
+              "top": 10,
+              "bottom": 56,
+              "width": 46,
+              "height": 46,
+              "overflow": false
+            },
+            "#shieldwrap": {
+              "left": 10,
+              "right": 209,
+              "top": 166.40625,
+              "bottom": 196.40625,
+              "width": 199,
+              "height": 30,
+              "overflow": false
+            },
+            "#pauseBtn": {
+              "left": 266,
+              "right": 310,
+              "top": 64,
+              "bottom": 108,
+              "width": 44,
+              "height": 44,
+              "overflow": false
+            }
+          },
+          "overlaps": []
+        },
+        {
+          "station": false,
+          "large": false,
+          "width": 360,
+          "rects": {
+            "#spd": {
+              "left": 10,
+              "right": 148,
+              "top": 10,
+              "bottom": 45.3125,
+              "width": 138,
+              "height": 35.3125,
+              "overflow": false
+            },
+            "#coinpanel": {
+              "left": 156,
+              "right": 294,
+              "top": 10,
+              "bottom": 49,
+              "width": 138,
+              "height": 39,
+              "overflow": false
+            },
+            ".best": {
+              "left": 10,
+              "right": 294,
+              "top": 57,
+              "bottom": 112.40625,
+              "width": 284,
+              "height": 55.40625,
+              "overflow": false
+            },
+            "#muteBtn": {
+              "left": 304,
+              "right": 350,
+              "top": 10,
+              "bottom": 56,
+              "width": 46,
+              "height": 46,
+              "overflow": false
+            },
+            "#shieldwrap": {
+              "left": 10,
+              "right": 209,
+              "top": 120.40625,
+              "bottom": 150.40625,
+              "width": 199,
+              "height": 30,
+              "overflow": false
+            },
+            "#pauseBtn": {
+              "left": 306,
+              "right": 350,
+              "top": 64,
+              "bottom": 108,
+              "width": 44,
+              "height": 44,
+              "overflow": false
+            }
+          },
+          "overlaps": []
+        },
+        {
+          "station": false,
+          "large": true,
+          "width": 360,
+          "rects": {
+            "#spd": {
+              "left": 10,
+              "right": 148,
+              "top": 10,
+              "bottom": 45.3125,
+              "width": 138,
+              "height": 35.3125,
+              "overflow": false
+            },
+            "#coinpanel": {
+              "left": 156,
+              "right": 294,
+              "top": 10,
+              "bottom": 95,
+              "width": 138,
+              "height": 85,
+              "overflow": false
+            },
+            ".best": {
+              "left": 10,
+              "right": 294,
+              "top": 103,
+              "bottom": 158.40625,
+              "width": 284,
+              "height": 55.40625,
+              "overflow": false
+            },
+            "#muteBtn": {
+              "left": 304,
+              "right": 350,
+              "top": 10,
+              "bottom": 56,
+              "width": 46,
+              "height": 46,
+              "overflow": false
+            },
+            "#shieldwrap": {
+              "left": 10,
+              "right": 209,
+              "top": 166.40625,
+              "bottom": 196.40625,
+              "width": 199,
+              "height": 30,
+              "overflow": false
+            },
+            "#pauseBtn": {
+              "left": 306,
+              "right": 350,
+              "top": 64,
+              "bottom": 108,
+              "width": 44,
+              "height": 44,
+              "overflow": false
+            }
+          },
+          "overlaps": []
+        },
+        {
+          "station": true,
+          "large": false,
+          "width": 320,
+          "rects": {
+            "#spd": {
+              "left": 10,
+              "right": 128,
+              "top": 62,
+              "bottom": 97.3125,
+              "width": 118,
+              "height": 35.3125,
+              "overflow": false
+            },
+            "#coinpanel": {
+              "left": 136,
+              "right": 254,
+              "top": 62,
+              "bottom": 101,
+              "width": 118,
+              "height": 39,
+              "overflow": false
+            },
+            ".best": {
+              "left": 10,
+              "right": 254,
+              "top": 109,
+              "bottom": 164.40625,
+              "width": 244,
+              "height": 55.40625,
+              "overflow": false
+            },
+            "#muteBtn": {
+              "left": 264,
+              "right": 310,
+              "top": 10,
+              "bottom": 56,
+              "width": 46,
+              "height": 46,
+              "overflow": false
+            },
+            "#shieldwrap": {
+              "left": 10,
+              "right": 209,
+              "top": 172.40625,
+              "bottom": 202.40625,
+              "width": 199,
+              "height": 30,
+              "overflow": false
+            },
+            "#pauseBtn": {
+              "left": 266,
+              "right": 310,
+              "top": 64,
+              "bottom": 108,
+              "width": 44,
+              "height": 44,
+              "overflow": false
+            },
+            "#stationBack": {
+              "left": 10,
+              "right": 121.1875,
+              "top": 8,
+              "bottom": 48,
+              "width": 111.1875,
+              "height": 40,
+              "overflow": false
+            }
+          },
+          "overlaps": []
+        },
+        {
+          "station": true,
+          "large": true,
+          "width": 320,
+          "rects": {
+            "#spd": {
+              "left": 10,
+              "right": 128,
+              "top": 62,
+              "bottom": 97.3125,
+              "width": 118,
+              "height": 35.3125,
+              "overflow": false
+            },
+            "#coinpanel": {
+              "left": 136,
+              "right": 254,
+              "top": 62,
+              "bottom": 147,
+              "width": 118,
+              "height": 85,
+              "overflow": false
+            },
+            ".best": {
+              "left": 10,
+              "right": 254,
+              "top": 155,
+              "bottom": 210.40625,
+              "width": 244,
+              "height": 55.40625,
+              "overflow": false
+            },
+            "#muteBtn": {
+              "left": 264,
+              "right": 310,
+              "top": 10,
+              "bottom": 56,
+              "width": 46,
+              "height": 46,
+              "overflow": false
+            },
+            "#shieldwrap": {
+              "left": 10,
+              "right": 209,
+              "top": 218.40625,
+              "bottom": 248.40625,
+              "width": 199,
+              "height": 30,
+              "overflow": false
+            },
+            "#pauseBtn": {
+              "left": 266,
+              "right": 310,
+              "top": 64,
+              "bottom": 108,
+              "width": 44,
+              "height": 44,
+              "overflow": false
+            },
+            "#stationBack": {
+              "left": 10,
+              "right": 121.1875,
+              "top": 8,
+              "bottom": 48,
+              "width": 111.1875,
+              "height": 40,
+              "overflow": false
+            }
+          },
+          "overlaps": []
+        },
+        {
+          "station": true,
+          "large": false,
+          "width": 360,
+          "rects": {
+            "#spd": {
+              "left": 10,
+              "right": 148,
+              "top": 62,
+              "bottom": 97.3125,
+              "width": 138,
+              "height": 35.3125,
+              "overflow": false
+            },
+            "#coinpanel": {
+              "left": 156,
+              "right": 294,
+              "top": 62,
+              "bottom": 101,
+              "width": 138,
+              "height": 39,
+              "overflow": false
+            },
+            ".best": {
+              "left": 10,
+              "right": 294,
+              "top": 109,
+              "bottom": 164.40625,
+              "width": 284,
+              "height": 55.40625,
+              "overflow": false
+            },
+            "#muteBtn": {
+              "left": 304,
+              "right": 350,
+              "top": 10,
+              "bottom": 56,
+              "width": 46,
+              "height": 46,
+              "overflow": false
+            },
+            "#shieldwrap": {
+              "left": 10,
+              "right": 209,
+              "top": 172.40625,
+              "bottom": 202.40625,
+              "width": 199,
+              "height": 30,
+              "overflow": false
+            },
+            "#pauseBtn": {
+              "left": 306,
+              "right": 350,
+              "top": 64,
+              "bottom": 108,
+              "width": 44,
+              "height": 44,
+              "overflow": false
+            },
+            "#stationBack": {
+              "left": 10,
+              "right": 121.1875,
+              "top": 8,
+              "bottom": 48,
+              "width": 111.1875,
+              "height": 40,
+              "overflow": false
+            }
+          },
+          "overlaps": []
+        },
+        {
+          "station": true,
+          "large": true,
+          "width": 360,
+          "rects": {
+            "#spd": {
+              "left": 10,
+              "right": 148,
+              "top": 62,
+              "bottom": 97.3125,
+              "width": 138,
+              "height": 35.3125,
+              "overflow": false
+            },
+            "#coinpanel": {
+              "left": 156,
+              "right": 294,
+              "top": 62,
+              "bottom": 147,
+              "width": 138,
+              "height": 85,
+              "overflow": false
+            },
+            ".best": {
+              "left": 10,
+              "right": 294,
+              "top": 155,
+              "bottom": 210.40625,
+              "width": 284,
+              "height": 55.40625,
+              "overflow": false
+            },
+            "#muteBtn": {
+              "left": 304,
+              "right": 350,
+              "top": 10,
+              "bottom": 56,
+              "width": 46,
+              "height": 46,
+              "overflow": false
+            },
+            "#shieldwrap": {
+              "left": 10,
+              "right": 209,
+              "top": 218.40625,
+              "bottom": 248.40625,
+              "width": 199,
+              "height": 30,
+              "overflow": false
+            },
+            "#pauseBtn": {
+              "left": 306,
+              "right": 350,
+              "top": 64,
+              "bottom": 108,
+              "width": 44,
+              "height": 44,
+              "overflow": false
+            },
+            "#stationBack": {
+              "left": 10,
+              "right": 121.1875,
+              "top": 8,
+              "bottom": 48,
+              "width": 111.1875,
+              "height": 40,
+              "overflow": false
+            }
+          },
+          "overlaps": []
+        }
+      ]
+    },
+    "dungeon": {
+      "rain": {
+        "30": 11.000000000000007,
+        "60": 11.000000000000044,
+        "120": 11.000000000000167
+      },
+      "blur": {
+        "running": true,
+        "px": 0.6200000000000029,
+        "py": 0,
+        "pz": 0,
+        "vy": 0,
+        "runT": 1.6333333333333309,
+        "keys": {},
+        "jHeld": false,
+        "jBuf": 0,
+        "paused": true
+      },
+      "frozen": {
+        "running": true,
+        "px": 0.6200000000000029,
+        "py": 0,
+        "pz": 0,
+        "vy": 0,
+        "runT": 1.6333333333333309,
+        "keys": {
+          "d": 0
+        },
+        "jHeld": false,
+        "jBuf": 0,
+        "paused": true
+      },
+      "resumed": {
+        "running": true,
+        "px": 0.6200000000000029,
+        "py": 0,
+        "pz": 0,
+        "vy": 0,
+        "runT": 1.6833333333333307,
+        "keys": {
+          "escape": 0
+        },
+        "jHeld": false,
+        "jBuf": 0,
+        "paused": false
+      },
+      "repeat": {
+        "running": true,
+        "px": 0.6200000000000029,
+        "py": 0,
+        "pz": 0,
+        "vy": 0,
+        "runT": 1.6833333333333307,
+        "keys": {
+          "escape": 0
+        },
+        "jHeld": false,
+        "jBuf": 0,
+        "paused": true
+      },
+      "errors": [],
+      "render": {
+        "errors": [],
+        "consoleErrors": [],
+        "failed": [],
+        "titleTop": 32
+      }
+    },
+    "survivor": {
+      "blur": {
+        "x": 1,
+        "z": 0,
+        "t": 0.13333333333333333,
+        "keys": {},
+        "paused": true,
+        "musicPaused": true,
+        "buildMenuOpen": false,
+        "phase": "combat"
+      },
+      "frozen": {
+        "x": 1,
+        "z": 0,
+        "t": 0.13333333333333333,
+        "keys": {
+          "d": false
+        },
+        "paused": true,
+        "musicPaused": true,
+        "buildMenuOpen": false,
+        "phase": "combat"
+      },
+      "resumed": {
+        "x": 1,
+        "z": 0,
+        "t": 0.18333333333333324,
+        "keys": {
+          "escape": false
+        },
+        "paused": false,
+        "musicPaused": false,
+        "buildMenuOpen": false,
+        "phase": "combat"
+      },
+      "repeat": {
+        "x": 1,
+        "z": 0,
+        "t": 0.18333333333333324,
+        "keys": {
+          "escape": true
+        },
+        "paused": true,
+        "musicPaused": true,
+        "buildMenuOpen": false,
+        "phase": "combat"
+      },
+      "build": {
+        "x": 1,
+        "z": 0,
+        "t": 0.18333333333333324,
+        "keys": {
+          "escape": true
+        },
+        "paused": true,
+        "musicPaused": true,
+        "buildMenuOpen": true,
+        "phase": "build"
+      },
+      "errors": [],
+      "render": {
+        "errors": [],
+        "consoleErrors": [],
+        "failed": [],
+        "titleTop": 55
+      }
+    }
+  },
+  "checks": 74,
+  "failures": 0
+}
