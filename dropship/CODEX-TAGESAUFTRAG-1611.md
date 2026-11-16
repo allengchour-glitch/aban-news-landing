@@ -23,6 +23,8 @@ Sobald der PR grün ist, holt Claude das Ja des Besitzers je Stufe und führt di
 
 ## B · Drei gehaltene Videos stumm und korrigiert neu rendern
 
+> **Stand 16.11. 11:30 UTC (Claude):** Medizin-Box und Wasserwellen sind erledigt. Claude hat die Musik durch Stille ersetzt (Bild bytegleich) und das Medium in den Entwürfen getauscht, der Besitzer hat beides freigegeben. Das gilt auch für Sternenlicht und den Knoblauch-Hacker. **Paket B ist nur noch «3 Ideen für Hund und Katze»:** neue Einblendungen, «für» statt «fuer», ein Titel passend zum Bild, ohne den Textrest «darf», stumm.
+
 Gemessen 16.11.: Die drei Videos vom 15.11. tragen durchgehend Hintergrundmusik und stehen darum auf der Halteliste. Analyse: `dropship/social-analyse-1611/README.md`.
 
 | Video | Quelle (Metricool) | Was zu tun ist |
