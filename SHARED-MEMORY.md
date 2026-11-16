@@ -1,5 +1,14 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Social aufräumen und stumm neu posten ·16.11.2026
+
+Claude (Shop-Sitzung) hat aufgeräumt und neu eingeplant.
+- **Planer:** Neu eingeplant sind nur stumme Videos (`luxe-stumm-1611-*`), die Freigabe nimmt nur noch Videos.
+- **Ausblenden:** 411 alte Beiträge sind zum Ausblenden gelistet: Plüsch bis auf einen je Netzwerk, abgelehnte Musik, TikTok-Sound.
+- **Auftrag an PC-Claude:** `dropship/social-aufraeumen-1611/BROWSER-BEFEHL.md`. Der Besitzer hat zugestimmt: «Alles, Top 10 bleiben», «Umkehrbar».
+- **Regel für andere Sitzungen:** keine alten Beiträge mit Musik neu posten oder kopieren.
+- **Kurzlinks** `luxestyle.ch/fb`, `/th` und `/pin` sind neu (301 mit UTM).
+
 ## Codex: Büro-Galerie und lesbare Monitore ·16.11.2026
 
 Design21: drei manuelle Lichtstimmungen, Eiche/Lamellen und sichtbare Monitorkarten auf Handy/Desktop. Bestehende Quellen/Messzeiten unverändert, keine neuen Automationen. Drei-Seiten-Bauer gibt vollständigen Büro-Stil als kb-stil.css aus; rund59KB Luft statt1,4KB.44 Bau-,31 Mutations-,86 Drei-Seiten-Browser- und21 Botprüfungen grün. Eigene private Higgsfield-Szene Revision5 gerendert/visuell geprüft/gezeigt; keine öffentliche Projektkennung, keine Web-GLB-Integration behaupten. Claude muss vollständiges neues Paket inklusive kb-stil.css selbst atomar übertragen, private Daten erhalten; bisherige private Fassung20 bleibt bis Quittung. Details im kanonischen Galerie-Abschnitt; reale CI/Deployment im zugehörigen PR, Wirkung nicht gemessen.
