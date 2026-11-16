@@ -1,0 +1,206 @@
+{
+  "scope": "UI-Start echtes Solo; fünf HUD-Größen; explizite chapter/pos-Standfixtures; keine Kampagne",
+  "views": [
+    {
+      "width": 360,
+      "height": 640,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    },
+    {
+      "width": 640,
+      "height": 360,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "controls": [
+        {
+          "selector": "#rollBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#journeyOpen",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#menuBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#emoBtn",
+          "inside": true,
+          "centerHit": true
+        },
+        {
+          "selector": "#chatBtn",
+          "inside": true,
+          "centerHit": true
+        }
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
+    }
+  ],
+  "feet": [
+    {
+      "label": "chapter-0-fixture",
+      "tile": 0,
+      "stage": 0,
+      "emote": null,
+      "surface": 0.41000000000000003,
+      "feet": [],
+      "clearance": [],
+      "followers": []
+    }
+  ],
+  "errors": [],
+  "players": [
+    {
+      "name": "Rot",
+      "bot": false
+    }
+  ],
+  "pass": false,
+  "failure": "Error: chapter-0-fixture: Füße nicht auf Feld: \n    at assert (/workspace/aban-lebenspfad-figur/spiele-dev/lebenspfad/layout-qa.cjs:8:42)\n    at checkFeet (/workspace/aban-lebenspfad-figur/spiele-dev/lebenspfad/layout-qa.cjs:72:71)\n    at /workspace/aban-lebenspfad-figur/spiele-dev/lebenspfad/layout-qa.cjs:54:80"
+}

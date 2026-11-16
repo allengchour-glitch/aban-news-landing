@@ -32,6 +32,21 @@ GEMESSEN (Claude, 16.11. abends):
 **Repo:** Der Patch `fcb7781` (4 Commits, Basis `f095f42`) geht auf `main` nicht auf. 111 der 211 Programmdateien und `tools/trading/cloud/` fehlen in `main`, und der Zweig `codex/einfach-daytrading` liegt nicht auf GitHub. **Bitte den Zweig pushen oder als PR nach `main` stellen.** Claude prüft ihn dann und merged. Bis dahin kommt nichts aus dem Patch nach `main`.
 
 **Besitzer:** Den Starter vorerst NICHT ausführen. Nach dem Neubau prüft Claude die neuen Prüfsummen erneut und nennt den Befehl mit Starter-Prüfsumme.
+## Spiele abgeschlossen und live: Neon Flug und Lebenspfad-Figur ·16.11.2026
+
+Besitzerauftrag «mach die2 fertig», danach «teile dann memory» abgeschlossen. Zuletzt «token sparen»: keine neuen Erweiterungen. Kanonische vollständige Übergabe: `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Ältere Pausen-/WIP-Abschnitte unten sind Historie; keine Patches erneut anwenden.
+
+Neon Flug PR3217: Mergee023cc01f, Hauptseitenlauf43929567774 erfolgreich,14/14 normale öffentliche HTTPS-Prüfungen. Höhensteuerung/Touch, verschwindende Ringe, Belohnungen und optionales Schießen;66 Node+90 Browserbedingungen grün. Lebenspfad-Figur PR3218: Mergee93f2930e, Hauptseitenlauf43932279011 erfolgreich,11/11 HTTPS-Prüfungen. Gewählte kleine niedliche Figur, großer Kopf, passende Familie.71 Browserbedingungen,9 GLBs,5 Layoutgrößen/7 Stand-/Emotefixtures bestanden;26 Replaypunkte/Endzustand/31 RNG unverändert. Beide Releases mit jeweils sechs relevanten echten CI-Prüfungen grün und vier übersprungenen Einrichtungsschritten.
+
+Dauerhafte Belege: `spiele-dev/neon-flug/belege-v4/` und `spiele-dev/lebenspfad/belege-figur-neu/VEROEFFENTLICHUNG.md`. Keine öffentliche Internet-/NAT-/Handy-FPS-Zusage; lokale Gesamt-CI durch read-only HOME blockiert, echte GitHub-CI getrennt grün. Keine neue Higgsfield-Ausführung. Traumhaus unverändert vom anderen Bearbeiter integriert. Keine Shop-/Social-/Konto-/Secret-Aktion. Agenten beendet; Claude-Empfang unbekannt.
+
+## Neon Flug: vier Richtungen, Ringe und Schießmodus ·16.11.2026
+
+Besitzer wollte mehr Animation, verschwindende Sammelringe, Belohnungen, Neon-Schießen und ausdrücklich «hoch runter auch». Umgesetzt: echte X/Y-Steuerung perWASD/Pfeilen/Touchstick mit Koop/Kollisionen, einmalige Ringwertung und Entfernung in beiden Renderern, begrenzte Trails/Partikel,60-Sekunden-Drohnenmodus innerhalb derselben Spielkarte, Wärme/Cooldown und einmalige XP-Abrechnung. Klassische Kampagne bleibt Standard; Protokoll/Räumev4, mp.js unverändert. Bei Quota bleiben XP/Claims innerhalb der Sitzung erhalten, verspätete Locks überschreiben keine neue Runde.
+
+GEMESSEN66 Node+90 Browser-/Rendererbedingungen grün: echte Tastatur/Touch, lokales WebRTC zwischen zwei Fenstern, Ring-Pixelgegenproben, drei HUD-Formate, Höhenränder/3D und Speicherfehler. Korrekte3D-/HUD-Bilder angesehen; Testfinale beschleunigt. Canvas-Kurzprobe41,5–45,1rAF/s, Simulationszeit korrekt; keine physische Handy-/Internet-Koop-/WebGL-FPS-Zusage. HTML/Syntax/Diff sauber, Gesamt-CI vor Start durch read-only HOME blockiert. Quellen+Belege gesichert, echte PR-CI/Veröffentlichung folgen. Kanonisch `spiele-dev/neon-flug/WEITERARBEIT.md` und `PRUEFUNG-v4.json`.
+
+Bereits LIVE: Mix Arena PR3213, Merge78f14f5fb, Hauptseitenlauf43924427755,42/42 normale HTTPS-Prüfungen; Lebenspfad-Atmosphäre/eigeneObjekte PR3214, Mergee6cb01125, Lauf43925206449,9/9 HTTPS-Prüfungen. Je sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen; Releasebelege in den jeweiligen Belegordnern. Neuer Besitzerentscheid zur Lebenspfad-Figur: **klein/niedlich, großer Kopf, kompakter Körper, verspielt**. Umsetzung getrennt auf `codex/lebenspfad-figur-neu`, noch nicht live. Fortlaufend `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Traumhaus bleibt fremde Sitzung; keine Shop-/Social-/Konto-/Secret-Aktionen.
 
 ## Büro: mehr Arbeitsinhalt und räumliche Details ·16.11.2026
 
@@ -42,6 +57,10 @@ Vorher lokal nachgestellt: geöffnete Quellenangabe blieb beim Neuzeichnen offen
 GEMESSEN:17 Modell-,21 Bot- und44 Bauprüfungen sowie31/31 Bau-Mutationen grün. Synthetische Browserdaten unter tools/buero/pruefung/monitorinhalt.json; panorama.py --inhalt verlangt diese sechs Einträge und prüft Filter, Klartext, Fokus sowie die bestehende Monitor-/Vollbildbedienung auf390/1440px. Vollständige Browser-, echte CI- und Bereitstellungsbelege im zugehörigen PR; Software-WebGL ist kein physischer Handy-Leistungsnachweis. Finanzielle Wirkung nicht gemessen. Nutzen: Prüfbedarf und belegte nächste Schritte schneller erkennen.
 
 Claude: vollständigen Drei-Seiten-Bau inklusive kb-stil.css übernehmen, nicht die rohe seite.html. Vorhandene Dateien/Versionen frisch lesen, private Datensätze, Benutzereingaben und Messzeiten erhalten, atomar mit Versionsbedingungen übertragen und rücklesen. Neue private Bereitstellung erst nach Quittung behaupten. Öffentliche Web-Bereitstellung separat nachweisen.
+
+## Spiele: auf Besitzerwunsch sichern und pausieren ·16.11.2026
+
+Letzter Auftrag «langsam speichern alles und token sparen». Mix Arena PR3213 und Lebenspfad-Atmosphäre PR3214 sind live/öffentlich geprüft. Neonv4 ist als DraftPR3217 gepusht,66 Node+90 Browserbedingungen bestanden, noch nicht gemergt/live. Neue Lebenspfad-Figur: Besitzer wählte **klein/niedlich, großer Kopf, kompakter Körper, verspielt**. Geometriemodul, lokale HTML-Integration, Portraitprobe und Vorher-/Entwurfbilder sind im Branch `codex/lebenspfad-figur-neu` gesichert; vollständige Bild-/Alters-/Gameplayprüfung fehlt, nicht veröffentlichen. Agenten beendet. Weiterarbeiten anhand `spiele-dev/CLAUDE-SPIELE-AKTUELL.md` und `spiele-dev/lebenspfad/FIGUR-NEU.md`; nichts erneut blind anwenden. Keine neuen Erweiterungen während der Pause.
 
 
 ## Lebenspfad: Atmosphäre und eigene Objekte ·16.11.2026
@@ -787,3 +806,12 @@ Diese Datei nach abgeschlossenen Codex-Arbeiten aktualisieren. Ein 21:00-Start v
 - Neu für die Auffrischung: `messen.py`, `aktualisieren.py`, `--werte` und `--web-zeilen` (Anleitung: `docs/KI-BUERO-SEITE.md`, Abschnitt «Auffrischen»). Gemessene Lage: der Bestellwächter-Wecker ist am 08.11. 19:21 am Nutzungslimit gescheitert (Zeile rot), sechs bezahlte Bestellungen (#1034–#1039) stehen in Shopify noch auf «nicht versendet».
 - **Fund an Deiner Fassung:** der Shop-Raum hat sechs 3D-Plätze, aber sieben Zeilen (`bewertungen` hat keinen Platz in 3D); `tools/buero/pruefung/test.js` und `test3d.js` erwarten noch feste Zahlen der Fassung vom 05.11. und schlagen schon auf Deinen Standarddaten fehl. Beides nicht behoben (Deine Dateien); die Rauchprobe `tools/buero/pruefung/rauchprobe.js` ersetzt die Tests bis dahin.
 - Zusätzlich wieder an: der tägliche Spam-Wächter für Instagram und Facebook (`social-comment-moderate.yml`, 12:23 UTC, blendet nur aus und lässt sich zurückholen; Besitzer «ja» vom 06.11.). Antworten auf Kommentare bleiben ohne Zeitplan.
+
+
+## Traumhaus: Abschluss und regelmässige Memory-Übergabe · 16.11.2026
+
+Letzter Besitzerauftrag: laufende Verbesserungen langsam fertigstellen, Memory regelmässig teilen und danach nur nächste Verbesserungen für Claude Code suchen. Kanonischer Stand: [Traumhaus-Übergabe](../spiele-dev/CLAUDE-UEBERGABE-TRAUMHAUS.md); [Strassenbericht](../spiele-dev/TRAUMHAUS-STRASSEN.md); [priorisierte Vorschläge](../spiele-dev/TRAUMHAUS-CLAUDE-NAECHSTE-SCHRITTE.md).
+
+Bereits öffentlich geprüft: Nordstadt/Missionen PR3209, Stadtbild PR3211, Kamera/Renderfilter PR3212. Auch PR3216 ist veröffentlicht: Strassenrunde und Pausenfix, Merge79644bd63, vier PR-Prüfungen grün, Produktionslauf43930575747 erfolgreich. Spielseite und Stadtmodul frisch HTTP200 mit neuen Markern; ZIP und Vergleichsbilder in Drive rückgelesen. GEMESSEN: 16’776 Strassenpunkte, 80 GPS-Routen, alle fünf ÖV-Linien mit Ein-/Mit-/Aussteigen, 16 Renncheckpoints über zwei Runden, 16 Fahrzeug-Pausenfälle. Drei alte Hoftiere in die bestehende Koppel integriert, Tierzahl erhalten. Letzte Ortstafel steht im geladenen Bild 1,93 Meter neben der Fahrbahn. Kein realer Handy-60-FPS-Nachweis.
+
+Die nächsten Vorschläge betreffen gemessene Ego-Renderlast, Auffindbarkeit der Missionen und situationsgerechte Rennbeschriftung. Keine weitere Umsetzung dieser Vorschläge in dieser Sitzung. Beide Higgsfield-Generierungen sind fehlgeschlagen; kein Asset eingebaut. Auftragskennungen und Wiederaufnahmehinweise in der kanonischen Übergabe. Speicherung ist keine Bestätigung, dass Claude die Übergabe bereits gelesen hat.

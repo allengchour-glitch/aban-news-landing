@@ -1,0 +1,15 @@
+{
+  "pr": 3217,
+  "testedHead": "4008cc562249852a45f7c014175a3c709ab202a5",
+  "mergeCommit": "e023cc01f382e62e26420c90d001a9097baf6af5",
+  "deployRun": 43929567774,
+  "deploy": "success",
+  "setupStepsSkipped": [
+    "Pages-Projekt anlegen (idempotent)",
+    "Anthropic-Key ins Pages-Projekt schreiben (falls GitHub-Secret gesetzt)",
+    "Etsy-Schlüssel ins Pages-Projekt schreiben (für /api/etsy-auth, falls gesetzt)",
+    "Pinterest-App ins Pages-Projekt schreiben (für /api/pinterest-auth, falls gesetzt)"
+  ],
+  "normalTlsChecks": 14,
+  "passed": true
+}

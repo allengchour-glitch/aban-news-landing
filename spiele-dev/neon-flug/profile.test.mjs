@@ -26,7 +26,12 @@ test("Rufnamen werden begrenzt und Kontrollzeichen entfernt", () => {
   assert.equal(nickname({}), "Pilot");
 });
 test("Abschluss vergibt nachvollziehbare XP und schaltet das erste Modul frei", () => {
-  const r = award(profile(null), { phase: "result", duets: 2, rescues: 1 });
+  const r = award(profile(null), {
+    phase: "result",
+    runId: "test-result",
+    duets: 2,
+    rescues: 1,
+  });
   assert.equal(r.gained, 170);
   assert(r.unlocked.includes("capacitor"));
   assert.equal(r.profile.missions, 1);
@@ -51,6 +56,7 @@ test("Levelaufstiege folgen der XP-Leiter und gehen nach Level zehn weiter", asy
 test("Bonus-XP erzeugen echten Levelaufstieg und bleiben begrenzt", () => {
   const r = award(profile(null), {
     phase: "result",
+    runId: "test-result",
     bonuses: 100,
     duets: 100,
     rescues: 100,

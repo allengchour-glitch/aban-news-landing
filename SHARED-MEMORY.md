@@ -7,10 +7,29 @@ Drive-Übergabe von Codex geprüft: Prüfsummen stimmen, 125 Tests und zwei Brow
 - Der Marktscan scheitert (`exchangeInfo` 17,8 MB über der Grenze von 16 MiB), der Erststart bleibt dann pausiert mit 2 Märkten.
 
 Codex soll `codex/einfach-daytrading` pushen. Liste und Details stehen in `docs/CODEX-CLAUDE-UEBERGABE.md`.
+## Spiele abgeschlossen und live: Neon Flug und Lebenspfad-Figur ·16.11.2026
+
+Besitzerauftrag «mach die2 fertig», danach «teile dann memory» abgeschlossen. Zuletzt «token sparen»: keine neuen Erweiterungen. Kanonische vollständige Übergabe: `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Ältere Pausen-/WIP-Abschnitte unten sind Historie; keine Patches erneut anwenden.
+
+Neon Flug PR3217: Mergee023cc01f, Hauptseitenlauf43929567774 erfolgreich,14/14 normale öffentliche HTTPS-Prüfungen. Höhensteuerung/Touch, verschwindende Ringe, Belohnungen und optionales Schießen;66 Node+90 Browserbedingungen grün. Lebenspfad-Figur PR3218: Mergee93f2930e, Hauptseitenlauf43932279011 erfolgreich,11/11 HTTPS-Prüfungen. Gewählte kleine niedliche Figur, großer Kopf, passende Familie.71 Browserbedingungen,9 GLBs,5 Layoutgrößen/7 Stand-/Emotefixtures bestanden;26 Replaypunkte/Endzustand/31 RNG unverändert. Beide Releases mit jeweils sechs relevanten echten CI-Prüfungen grün und vier übersprungenen Einrichtungsschritten.
+
+Dauerhafte Belege: `spiele-dev/neon-flug/belege-v4/` und `spiele-dev/lebenspfad/belege-figur-neu/VEROEFFENTLICHUNG.md`. Keine öffentliche Internet-/NAT-/Handy-FPS-Zusage; lokale Gesamt-CI durch read-only HOME blockiert, echte GitHub-CI getrennt grün. Keine neue Higgsfield-Ausführung. Traumhaus unverändert vom anderen Bearbeiter integriert. Keine Shop-/Social-/Konto-/Secret-Aktion. Agenten beendet; Claude-Empfang unbekannt.
+
+## Neon Flug: vier Richtungen, Ringe und Schießmodus ·16.11.2026
+
+Besitzer wollte mehr Animation, verschwindende Sammelringe, Belohnungen, Neon-Schießen und ausdrücklich «hoch runter auch». Umgesetzt: echte X/Y-Steuerung perWASD/Pfeilen/Touchstick mit Koop/Kollisionen, einmalige Ringwertung und Entfernung in beiden Renderern, begrenzte Trails/Partikel,60-Sekunden-Drohnenmodus innerhalb derselben Spielkarte, Wärme/Cooldown und einmalige XP-Abrechnung. Klassische Kampagne bleibt Standard; Protokoll/Räumev4, mp.js unverändert. Bei Quota bleiben XP/Claims innerhalb der Sitzung erhalten, verspätete Locks überschreiben keine neue Runde.
+
+GEMESSEN66 Node+90 Browser-/Rendererbedingungen grün: echte Tastatur/Touch, lokales WebRTC zwischen zwei Fenstern, Ring-Pixelgegenproben, drei HUD-Formate, Höhenränder/3D und Speicherfehler. Korrekte3D-/HUD-Bilder angesehen; Testfinale beschleunigt. Canvas-Kurzprobe41,5–45,1rAF/s, Simulationszeit korrekt; keine physische Handy-/Internet-Koop-/WebGL-FPS-Zusage. HTML/Syntax/Diff sauber, Gesamt-CI vor Start durch read-only HOME blockiert. Quellen+Belege gesichert, echte PR-CI/Veröffentlichung folgen. Kanonisch `spiele-dev/neon-flug/WEITERARBEIT.md` und `PRUEFUNG-v4.json`.
+
+Bereits LIVE: Mix Arena PR3213, Merge78f14f5fb, Hauptseitenlauf43924427755,42/42 normale HTTPS-Prüfungen; Lebenspfad-Atmosphäre/eigeneObjekte PR3214, Mergee6cb01125, Lauf43925206449,9/9 HTTPS-Prüfungen. Je sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen; Releasebelege in den jeweiligen Belegordnern. Neuer Besitzerentscheid zur Lebenspfad-Figur: **klein/niedlich, großer Kopf, kompakter Körper, verspielt**. Umsetzung getrennt auf `codex/lebenspfad-figur-neu`, noch nicht live. Fortlaufend `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Traumhaus bleibt fremde Sitzung; keine Shop-/Social-/Konto-/Secret-Aktionen.
 
 ## Codex: Büro-Arbeitsstände und Raumdetails ·16.11.2026
 
 Design23 ergänzt vier getrennte Gruppen/Filter geladener Arbeitsstände, vollständiges Zentraljournal, nächsten Schritt und aufklappbare Quelle/Messzeit. Kein Verkaufs-/Gewinnzähler. Reproduzierter Quellenfokus-Verlust korrigiert. Statische Monitorwände, Medienmöbel, Kabelwannen und Bankdetails; keine neue Quelle, Frequenz, Kontoaktion oder Higgsfield-Revision.17 Modell-,21 Bot-,44 Bau- und31 Mutationsprüfungen grün; Browser-/CI-/Bereitstellungsbelege im zugehörigen PR. Nutzen: offene Arbeit schneller erkennen, finanzielle Wirkung ungemessen. Claude übernimmt vollständigen Drei-Seiten-Bau mit kb-stil.css unter Erhalt privater Daten/Eingaben; privater Upload erst nach Quittung bestätigt. Details in der kanonischen Übergabe.
+
+## Spiele: auf Besitzerwunsch sichern und pausieren ·16.11.2026
+
+Letzter Auftrag «langsam speichern alles und token sparen». Mix Arena PR3213 und Lebenspfad-Atmosphäre PR3214 sind live/öffentlich geprüft. Neonv4 ist als DraftPR3217 gepusht,66 Node+90 Browserbedingungen bestanden, noch nicht gemergt/live. Neue Lebenspfad-Figur: Besitzer wählte **klein/niedlich, großer Kopf, kompakter Körper, verspielt**. Geometriemodul, lokale HTML-Integration, Portraitprobe und Vorher-/Entwurfbilder sind im Branch `codex/lebenspfad-figur-neu` gesichert; vollständige Bild-/Alters-/Gameplayprüfung fehlt, nicht veröffentlichen. Agenten beendet. Weiterarbeiten anhand `spiele-dev/CLAUDE-SPIELE-AKTUELL.md` und `spiele-dev/lebenspfad/FIGUR-NEU.md`; nichts erneut blind anwenden. Keine neuen Erweiterungen während der Pause.
 
 
 ## Lebenspfad: Atmosphäre und eigene Objekte ·16.11.2026
@@ -442,6 +461,11 @@ Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. D
 ---
 
 ## 🎮 SPIELE-STAND (Traumhaus-Session, 2026-08-12)
+
+**Aktuell, 16.11.2026:** Kanonisch ist jetzt [CLAUDE-UEBERGABE-TRAUMHAUS.md](spiele-dev/CLAUDE-UEBERGABE-TRAUMHAUS.md), danach [Strassenprüfung](spiele-dev/TRAUMHAUS-STRASSEN.md). Nordstadt/Missionen, Stadtbild sowie Kamera/Renderfilter sind veröffentlicht (PR3209/3211/3212). Auch Strassenanschlüsse, Rennkurs, Beschilderung und Fahrzeugpause sind veröffentlicht: PR3216, Merge79644bd63, vier PR-Prüfungen grün, Produktionslauf43930575747 erfolgreich, Spielseite/Stadtmodul frisch HTTP200 mit neuen Markern. GEMESSEN: 16’776 Strassenpunkte, 80 GPS-Routen, fünf ÖV-Linien, zwei Rennrunden und 16 Pausenfälle bestanden. Keine echte Handy-60-FPS-Messung.
+
+**Letzter Besitzerauftrag:** fertigstellen, Memory regelmässig teilen; danach nur Verbesserungen für Claude Code sammeln. [Priorisierte nächste Schritte](spiele-dev/TRAUMHAUS-CLAUDE-NAECHSTE-SCHRITTE.md) sind Vorschläge, keine bereits ausgeführten Umbauten. Quellen/Testnachweise zusätzlich im bestehenden Traumhaus-Drive-Ordner sichern. Claude-Empfang unbekannt. Die Angaben vom August unten sind historisch.
+
 > Fuer die Modell-/Terrain-Session: **`spiele-dev/RUNBOOK-TRAUMHAUS.md` zuerst lesen.**
 - **Spielschleife steht:** Bauabnahme alle 4 Tage (Inspektor kommt zu Fuss), 6 Wohnstufen
   Huette→Palast, +12 %/Stufe auf alle Einnahmen, Luxus-Moebel schalten frei. Koop-synchron.

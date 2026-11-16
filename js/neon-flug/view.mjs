@@ -1,5 +1,19 @@
+import {
+  FlightMotion,
+  EFFECT_LIMIT,
+  TRAIL_LIMIT,
+  cameraOffset,
+} from "./motion.mjs";
 import { AdaptiveScale } from "./timing.mjs";
-import { LEVELS, routeCache, eventX, clamp, LANE_WIDTH } from "./core.mjs";
+import {
+  LEVELS,
+  eventsFor,
+  duration,
+  eventX,
+  clamp,
+  LANE_WIDTH,
+  MAX_SHOTS,
+} from "./core.mjs";
 const T = window.THREE;
 function mesh(g, m, x = 0, y = 0, z = 0) {
   const a = new T.Mesh(g, m);
@@ -261,6 +275,7 @@ export class FlightView {
     this.local = 0;
     this.oldPositions = [-2, 2];
     this.effects = [];
+    this.motion = new FlightMotion();
     this.scene.add(new T.HemisphereLight(0x809db6, 0x251a19, 0.65));
     this.sunLight = new T.DirectionalLight(0xffb67c, 1.3);
     this.sunLight.position.set(-28, 30, -65);
@@ -466,11 +481,11 @@ export class FlightView {
     this.trails = [];
     for (let i = 0; i < 2; i++) {
       const geom = new T.BufferGeometry(),
-        pos = new Float32Array(42 * 3),
-        col = new Float32Array(42 * 3);
-      for (let j = 0; j < 42; j++) {
+        pos = new Float32Array(TRAIL_LIMIT * 3),
+        col = new Float32Array(TRAIL_LIMIT * 3);
+      for (let j = 0; j < TRAIL_LIMIT; j++) {
         let c = new T.Color(i ? 0xffad71 : 0x7ce7ed).multiplyScalar(
-          (1 - j / 42) * 0.8,
+          (1 - j / TRAIL_LIMIT) * 0.8,
         );
         c.toArray(col, j * 3);
         pos[j * 3 + 2] = 1 + j * 0.5;
@@ -507,6 +522,14 @@ export class FlightView {
       metalness: 0.6,
     });
     this.warnMat = new T.MeshBasicMaterial({ color: 0xff7867 });
+    const shotGeometry = new T.BoxGeometry(0.12, 0.12, 4);
+    const shotMaterial = new T.MeshBasicMaterial({ color: 0xb4ffef });
+    this.shots = Array.from({ length: MAX_SHOTS }, () => {
+      const m = mesh(shotGeometry, shotMaterial);
+      m.visible = false;
+      this.scene.add(m);
+      return m;
+    });
     this.beacon = new T.Group();
     const beam = mesh(
       new T.CylinderGeometry(0.14, 0.8, 120, 20),
@@ -596,9 +619,10 @@ export class FlightView {
     this.renderer.setPixelRatio(this.baseRatio);
     this.dust.visible = !this.low;
   }
-  setLevel(i) {
-    if (this.level === i) return;
+  setLevel(i, mode = "classic") {
+    if (this.level === i && this.flightMode === mode) return;
     this.level = i;
+    this.flightMode = mode;
     const l = LEVELS[i];
     this.scene.fog.color.set(l.fog);
     this.skyUniforms.top.value.set(l.sky);
@@ -618,7 +642,7 @@ export class FlightView {
       });
     }
     this.events = [];
-    for (const e of routeCache[i]) {
+    for (const e of eventsFor({ level: i, mode })) {
       const g = new T.Group();
       if (e.type === "ring" || e.type === "duet") {
         g.add(mesh(new T.TorusGeometry(2, 0.11, 8, 40), this.ringMat));
@@ -651,13 +675,18 @@ export class FlightView {
           q.rotation.z = (j * Math.PI) / 2;
           g.add(q);
         }
+      } else if (e.type === "drone") {
+        const hull = mesh(new T.OctahedronGeometry(1.5, 0), this.warnMat);
+        hull.scale.y = 0.65;
+        g.add(hull);
+        g.add(mesh(new T.BoxGeometry(3.4, 0.15, 0.3), this.hazardMat));
       } else {
         g.add(
           mesh(
-            new T.CylinderGeometry(1.1, 1.7, 8, 6),
+            new T.CylinderGeometry(1.1, 1.7, 3.4, 6),
             this.hazardMat,
             0,
-            -0.8,
+            0,
             0,
           ),
         );
@@ -672,7 +701,7 @@ export class FlightView {
           q.rotation.x = Math.PI / 2;
           g.add(q);
         }
-        g.add(mesh(new T.ConeGeometry(0.45, 0.65, 3), this.warnMat, 0, 4, 0));
+        g.add(mesh(new T.ConeGeometry(0.45, 0.65, 3), this.warnMat, 0, 1.7, 0));
       }
       if (e.type === "duet") {
         const pair = g.clone(true);
@@ -686,9 +715,9 @@ export class FlightView {
       this.events.push(g);
     }
   }
-  burst(x, color) {
-    if (this.low) return;
-    for (let i = 0; i < 12; i++) {
+  burst(x, color, y = 0, z = 0) {
+    if (this.low || this.reduced) return;
+    for (let i = 0; i < 12 && this.effects.length < EFFECT_LIMIT; i++) {
       const sprite = new T.Sprite(
         new T.SpriteMaterial({
           map: this.tex,
@@ -698,7 +727,7 @@ export class FlightView {
           depthWrite: false,
         }),
       );
-      sprite.position.set(x, 0.7, 0);
+      sprite.position.set(x, 0.7 + y, z);
       sprite.scale.setScalar(0.3);
       this.scene.add(sprite);
       this.effects.push({
@@ -715,10 +744,18 @@ export class FlightView {
       const scale = this.adaptive.sample(dt);
       if (scale !== null) this.renderer.setPixelRatio(this.baseRatio * scale);
     }
-    dt = Math.min(dt, 0.1);
+    dt = s?.phase === "paused" ? 0 : clamp(dt, 0, 0.15);
+    if (this.motion.run !== s?.runId || this.reduced) {
+      for (const e of this.effects) {
+        this.scene.remove(e.sprite);
+        e.sprite.material.dispose();
+      }
+      this.effects.length = 0;
+    }
+    this.motion.update(s, dt, this.reduced, (...args) => this.burst(...args));
     this.clock += dt;
     this.local = local;
-    this.setLevel(s?.level || 0);
+    this.setLevel(s?.level || 0, s?.mode || "classic");
     const playing =
       s &&
       ["playing", "paused", "result", "failed", "victory"].includes(s.phase);
@@ -756,25 +793,31 @@ export class FlightView {
     this.events.forEach((g) => {
       const e = g.userData.event,
         z = -(e.t - tm) * 22;
-      g.visible = playing && z < 16 && z > -330;
-      g.position.set(e.type === "duet" ? 0 : eventX(e, tm), 0.7, z);
+      g.visible =
+        playing &&
+        z < 8 &&
+        z > -330 &&
+        !s.collected.includes(e.id) &&
+        !s.destroyed.includes(e.id);
+      g.position.set(e.type === "duet" ? 0 : eventX(e, tm), 0.7 + e.y, z);
       if (e.type === "ring") g.rotation.z = this.reduced ? 0 : tm * 0.3 + e.id;
     });
     this.beacon.visible = playing;
-    this.beacon.position.set(
-      0,
-      -0.5,
-      -Math.max(-20, (LEVELS[this.level].duration - tm) * 22),
-    );
-    this.beacon.rotation.y = tm * 0.1;
+    this.beacon.position.set(0, -0.5, -Math.max(-20, (duration(s) - tm) * 22));
+    this.beacon.rotation.y = this.reduced ? 0 : tm * 0.1;
+    this.shots.forEach((m, i) => {
+      const shot = s?.shots[i];
+      m.visible = playing && !!shot;
+      if (shot) m.position.set(shot.x, shot.y + 0.7, shot.z);
+    });
     for (let i = 0; i < 2; i++) {
       const p = s?.players[i],
         g = this.ships[i],
         target = p ? p.x : i ? 2.7 : -2.7;
       const prev = g.position.x;
-      g.position.x += (target - g.position.x) * Math.min(1, dt * 18);
-      g.position.y = 0.65 + Math.sin(this.clock * 2.3 + i) * 0.07;
-      g.position.z = i === local ? 1.2 : -4.8;
+      g.position.x = target;
+      g.position.y = 0.7 + (p?.y || 0);
+      g.position.z = 0;
       g.rotation.z +=
         (clamp(
           ((g.position.x - prev) / Math.max(dt, 0.001)) * -0.024,
@@ -782,25 +825,37 @@ export class FlightView {
           0.28,
         ) -
           g.rotation.z) *
-        Math.min(1, dt * 9);
-      g.rotation.x = Math.sin(this.clock * 1.4) * 0.025;
+        (1 - Math.exp(-dt * 9));
+      g.rotation.x = this.reduced ? 0 : Math.sin(this.clock * 1.4) * 0.025;
+      if (this.reduced) g.rotation.z = 0;
       g.visible = true;
       g.getObjectByName("guard").visible = !!p && p.hp > 0 && p.inv > 0;
-      if (p && p.hp === 0) g.rotation.z = 0.6;
+      if (p && p.hp === 0 && !this.reduced) g.rotation.z = 0.6;
       const boost = p?.dash > 0 || s?.overdrive > 0;
       g.children.forEach((c) => {
         if (c.name === "flame") {
-          c.scale.y = boost ? 2.4 : 1 + Math.sin(this.clock * 35) * 0.12;
+          c.scale.y = boost
+            ? 2.4
+            : this.reduced
+              ? 1
+              : 1 + Math.sin(this.clock * 24) * 0.12;
         }
         if (c.name === "engineGlow") c.scale.setScalar(boost ? 4 : 2.3);
       });
       const a = this.trails[i].geometry.attributes.position;
-      for (let j = 41; j > 0; j--) {
-        a.setXYZ(j, a.getX(j - 1), a.getY(j - 1), a.getZ(j - 1) + dt * 22);
+      const trail = this.motion.trails[i];
+      for (let j = 0; j < TRAIL_LIMIT; j++) {
+        const point = trail[Math.max(0, trail.length - 1 - j)];
+        a.setXYZ(
+          j,
+          point?.x || 0,
+          0.7 + (point?.y || 0),
+          point ? 1.7 + (this.motion.time - point.t) * 18 : 0,
+        );
       }
-      a.setXYZ(0, g.position.x, g.position.y, g.position.z + 1.7);
       a.needsUpdate = true;
-      this.trails[i].visible = playing && p?.hp > 0;
+      this.trails[i].geometry.setDrawRange(0, trail.length);
+      this.trails[i].visible = playing && p?.hp > 0 && !this.reduced;
     }
     this.link.visible = playing && !!s;
     if (s) {
@@ -812,8 +867,10 @@ export class FlightView {
         points.setXYZ(
           j,
           a.x + (b.x - a.x) * f,
-          0.8 +
-            Math.sin(f * Math.PI) * (0.35 + Math.sin(this.clock * 4) * 0.05),
+          a.y +
+            (b.y - a.y) * f +
+            Math.sin(f * Math.PI) *
+              (this.reduced ? 0.35 : 0.35 + Math.sin(this.clock * 4) * 0.05),
           a.z + (b.z - a.z) * f,
         );
       }
@@ -825,6 +882,8 @@ export class FlightView {
       this.link.material.opacity =
         s.overdrive > 0 ? 0.95 : 0.22 + (s.resonance || 0) * 0.005;
     }
+    this.rain.visible = this.level === 1 && !this.reduced;
+    this.dust.visible = !this.low && !this.reduced;
     if (this.rain.visible) {
       this.rain.position.y = -(this.clock * 18) % 12;
       this.rain.position.z = (this.clock * 20) % 20;
@@ -843,14 +902,27 @@ export class FlightView {
       }
     }
     const x = s?.players[local]?.x || 0;
-    const targetX = playing ? x * 0.16 : Math.sin(this.clock * 0.08) * 1.5;
+    const targetX = playing
+      ? cameraOffset(x, innerWidth, innerHeight)
+      : Math.sin(this.clock * 0.08) * 1.5;
     this.camera.position.x += (targetX - this.camera.position.x) * dt * 3;
     this.camera.position.y = playing ? 4.3 : 5.5;
     this.camera.position.z = playing ? 13 : 16;
     const dash = s?.players[local]?.dash > 0 || s?.overdrive > 0;
-    this.camera.fov +=
-      ((dash && !this.reduced ? 78 : 70) - this.camera.fov) *
-      Math.min(1, dt * 5);
+    const baseFov = Math.max(
+      70,
+      (2 *
+        Math.atan(
+          (Math.tan((35 * Math.PI) / 180) * 1.7) / (innerWidth / innerHeight),
+        ) *
+        180) /
+        Math.PI,
+    );
+    this.boostFov =
+      (this.boostFov || 0) +
+      ((dash && !this.reduced ? 8 : 0) - (this.boostFov || 0)) *
+        (1 - Math.exp(-dt * 5));
+    this.camera.fov = Math.min(150, baseFov + this.boostFov);
     this.camera.updateProjectionMatrix();
     this.camera.lookAt(targetX * 0.5, 1.8, -35);
     if (mode === "briefing" && !this.warmed) {

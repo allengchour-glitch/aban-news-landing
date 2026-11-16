@@ -703,7 +703,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <script src="/js/vendor/peerjs.min.js"></script>
 <script src="/js/mp.js"></script>
 <link rel="stylesheet" href="/js/traumhaus-stadt.css?v=3">
-<script src="/js/traumhaus-stadt.js?v=4"></script>
+<script src="/js/traumhaus-stadt.js?v=5"></script>
 <script src="/js/traumhaus-stadtbild.js?v=1"></script>
 <script src="/js/traumhaus-sicht.js?v=1"></script>
 <link rel="stylesheet" href="/js/traumhaus-missionen.css?v=1">
@@ -1052,6 +1052,8 @@ var RX=GW*CS/2+6,RL=2*RX+48; // Querstrassen-Abstand (x) + Strassenlänge — sk
      Sperrlinie ±0,3 | Spur 1,8 | Leitlinie 3,1 | Spur 4,4 | Randlinie 5,75 | Parkstreifen bis 7,9 (Bordstein 8,05)
    Zwei Spuren a 2,7 m, ein Parkstreifen von 2,15 m — ein Pkw ist 1,9 m breit. */
 var HS_INNEN=1.8,HS_AUSSEN=4.4,HS_LEIT=3.1,HS_PARK=5.75,HS_BORD=7.9;
+/* Gemeinsame Zufahrtsdaten stehen vor Strassenbau und verzoegertem Parkplatzbau bereit. */
+var BAHNHOF_ZUFAHRT={ein:34.5,aus:40,breite:5};
 /* 🏗️ BAUFENSTER (User: „das bauland kann 1/4 von mitte sein, du kannst der rest
    fuellen mit sachen wo n stadt passen"). Das Gitter bleibt 72 x 46 Zellen — daran
    haengen Saves, Wegfindung, Sim-Logik und die Strassenlage (RX). Neu GEBAUT wird
@@ -1175,8 +1177,8 @@ function wegVonStrasse(x,z){
        Haeuschens (-89|-42). Ersatz auf der West-Gehwegplatte (Buffer #d4d1c8 x -85,5…-70,5): (-84,1|-6) frei;
        (-84,1|46) statt 44,5 (dort liegt die Zebra-Rampenplatte z 44,4…44,7), Plattenstueck 44,7…47,1;
        (-84,1|-46,7) statt -44,5 (Rampe -44,7…-44,4, weisse Markierung -46,2…-45,6), Platte bis -47,1.
-       Die uebrigen Punkte der Reihe bleiben bei wegVonStrasse (z -58 laege sonst in der Sued-Hauptstrasse,
-       z -32 in der Strandzufahrt-Luecke). Ostseite (89|-6)/(89|20) rechnerisch ebenso in Haeuschen — dort erst
+       Der Punkt z -32 stand auf der Strandzufahrt: jetzt fest auf dem freien Gehweg (-84,1|-38).
+       Die uebrigen Punkte der Reihe bleiben bei wegVonStrasse. Ostseite (89|-6)/(89|20) rechnerisch ebenso in Haeuschen — dort erst
        messen (th-umfeld 76 -14 95 26), nicht Teil dieser Runde.
      · Ring NORD (z -93): raus(z,-100,9.5) machte daraus z -90,5 = Flussmitte (machWasser z -94…-87) — sieben
        Masten im Wasser. Jetzt fest auf der Gehweg-MITTE z -94,4 (ringTrottoirs: RGZ_N+5,6, Platte -95,4…-93,4):
@@ -1191,8 +1193,8 @@ function wegVonStrasse(x,z){
        dem Sand; th-umfeld x -122…-116 / z -84…104 ist bei x -119 frei (nur z -34…-27 belegt, Strandzufahrt).
        Ring OST bleibt bei wegVonStrasse: (119|22) laege sonst im Kasten der th48_markthalle. */
   for(var z=-84;z<=84;z+=26){pts.push([RXl,z]);
-    if(z===-58)pts.push([-84.1,-46.7,1]);else if(z===-6)pts.push([-84.1,-6,1]);else if(z===46)pts.push([-84.1,46,1]);
-    else pts.push([-RXl,z]);}                                        // Querstrassen (West: 3 Punkte fest)
+    if(z===-58)pts.push([-84.1,-46.7,1]);else if(z===-32)pts.push([-84.1,-38,1]);else if(z===-6)pts.push([-84.1,-6,1]);else if(z===46)pts.push([-84.1,46,1]);
+    else pts.push([-RXl,z]);}                                        // Querstrassen (West: vier Punkte fest)
   /* ⚠️ Runde 102, Ring SUED x -70: wegVonStrasse schob [-70,125] nur auf z 127,5 — es kennt die sechs
      Diagonal-Zubringer aus landstrasse() nicht (dieselbe Luecke wie bei den Tuermen, Runde 93). Genau dort
      muendet der Zubringer 120° (Belag bei z 127,5 x -78,45…-68,75): der Mast stand 1,25 m innerhalb der
@@ -2236,6 +2238,8 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        Strassenende, die Zubringer (z bis ±120) waren ungeschuetzt — dort standen dann
        Blumen und Schilf auf dem Asphalt (User-Screenshot). */
     if(Math.abs(Math.abs(x)-RX)<9.5+pad&&Math.abs(z)<122)return false;
+    /* Strandzufahrt: 10 m Asphalt plus Reserve fuer Kronen und gestreute Blueten. */
+    if(Math.abs(z+30)<10+pad&&x>-139-pad&&x<-73+pad)return false;
     if(Math.abs(Math.abs(x)-112)<9.5+pad&&z>-108&&z<126)return false;           // Ringstrasse
     if((Math.abs(z+100)<9.5+pad||Math.abs(z-118)<9.5+pad)&&Math.abs(x)<120)return false;
     if(z>88&&z<118&&Math.abs(x)<80)return false;                               // Bahnhofsviertel
@@ -2528,9 +2532,9 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var INS1=14.6;                                         /* Warteplatz-Insel x 11…14,6 */
       var RB=2.8,RT=4.5,R0=14.8,NS=9,NN=6;                   /* Stellplaetze: Sued 9, Nord 6 (vor den Zufahrten) */
       /* x 40…43 hinter der Suedreihe bleibt Reststreifen: dort steht die Laterne (41,7|91,6) aus der Laternenkette */
-      var EIN=34.5,AUS=40,BB=5;                              /* Zufahrtsbaender x 32…37 und 37,5…42,5 */
+      var EIN=BAHNHOF_ZUFAHRT.ein,AUS=BAHNHOF_ZUFAHRT.aus,BB=BAHNHOF_ZUFAHRT.breite;
       var ZS=PZ-(PD/2-RT/2),ZN=PZ+(PD/2-RT/2);               /* Mitte der Sued- und der Nordreihe */
-      window._bahnPP={PX:PX,PZ:PZ,PW:PW,PD:PD,INS0:PX-PW/2,INS1:INS1,R0:R0,RB:RB,RT:RT,NS:NS,ZS:ZS,ZN:ZN,
+      window._bahnPP={PX:PX,PZ:PZ,PW:PW,PD:PD,INS0:PX-PW/2,INS1:INS1,R0:R0,RB:RB,RT:RT,NS:NS,ZS:ZS,ZN:ZN,zufahrten:[[EIN,BB],[AUS,BB]],
         platz:function(seite,idx){return [R0+RB/2+idx*RB,seite<0?ZS:ZN];}};   /* Mitte eines Stellplatzes — fuer Wagen anderer Abschnitte */
       var pl=new THREE.Mesh(new THREE.PlaneGeometry(PX+PW/2-INS1,PD),strMatH.clone());
       pl.rotation.x=-Math.PI/2;pl.position.set((INS1+PX+PW/2)/2,-0.004,PZ);pl.receiveShadow=true;scene.add(pl);
@@ -2595,10 +2599,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       bord((L1+X1+KB)/2,Z1+KB/2,X1+KB-L1,KB);
       /* Insel-Kante zwischen Warteplatz und Stellflaeche */
       var ik=new THREE.Mesh(new THREE.BoxGeometry(0.2,0.14,PD),kM);ik.position.set(INS1+0.1,0.07,PZ);ik.receiveShadow=true;scene.add(ik);
-      /* Zufahrtsbaender vom Platz bis zur Ringstrassen-Fahrbahn (z 113,5) + Pfeile: EIN hinein (Sued), AUS hinaus (Nord) */
-      [EIN,AUS].forEach(function(zx,zi){var lg=113.6-Z1;
-        var band=new THREE.Mesh(new THREE.PlaneGeometry(BB,lg),strMatH.clone());
-        band.rotation.x=-Math.PI/2;band.position.set(zx,-0.0035,Z1+lg/2);band.receiveShadow=true;scene.add(band);
+      /* Gemeinsamer Asphalt ohne Grasritze zwischen Ein- und Ausfahrt; Pfeile trennen die Richtungen. */
+      var lg=113.6-Z1,band=new THREE.Mesh(new THREE.PlaneGeometry(AUS-EIN+BB,lg),strMatH.clone());
+      band.rotation.x=-Math.PI/2;band.position.set((EIN+AUS)/2,-0.0035,Z1+lg/2);band.receiveShadow=true;scene.add(band);
+      var trenn=new THREE.Mesh(new THREE.PlaneGeometry(0.15,lg-1),mM);
+      trenn.rotation.x=-Math.PI/2;trenn.position.set((EIN+AUS)/2,0.005,Z1+lg/2);scene.add(trenn);
+      [EIN,AUS].forEach(function(zx,zi){
         var pf=new THREE.Mesh(new THREE.PlaneGeometry(0.5,2.4),mM);
         pf.rotation.x=-Math.PI/2;pf.position.set(zx,0.005,Z1+3.0);scene.add(pf);
         var sp=new THREE.Mesh(new THREE.PlaneGeometry(1.3,0.5),mM);
@@ -4027,7 +4033,7 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
        x = ±112·tan30 = ±64,7 (Ost), x = ±118/tan60 = ±68,1 (Sued) und x = ±100/tan60 = ±57,7 (Nord) —
        und die Ring-Gehwege liefen dort als 5-cm-Platte quer ueber ihre Fahrbahn. Schraeg gekreuzt ist
        die Muendung 2·4,8/sin60 = 11,1 m breit; halbe Breite + Bordstein = 5,9. Dazu die Ein- und
-       Ausfahrt des Bahnhofs-Parkplatzes (x 11 / 25) im inneren Sued-Gehweg. */
+       Ausfahrt des Bahnhofs-Parkplatzes im inneren Sued-Gehweg. */
     /* ⚠️ NACHGEMESSEN (th-kante nach Teil 4): die Luecke gehoert NUR in den AEUSSEREN Gehweg — der
        Zubringer-Belag beginnt in der Ringmitte, der innere Gehweg wird nie gekreuzt (Loch bei (±58|-96),
        (108|70)). Und sie ist dort zentriert, wo die Speiche die GEHWEGLINIE schneidet, nicht die
@@ -4048,18 +4054,30 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
     var QZN=[[-RX,5.3,{breite:9.0,rand:4.5}],[RX,5.3,{breite:9.0,rand:4.5}]],STR=[[-30,5.2,{breite:10.0,rand:5.0}]];
     mitLuecken(-AUS,AUS,ZMN,true,-105.6,0.052);                                   // Ring Nord aussen
     mitLuecken(-INN,INN,QZN,true,-94.4,0.052);                                    // Ring Nord innen: Muendungen der Zubringer N
-    mitLuecken(-INN,INN,QZ.concat([[11,3.4],[25,3.4]]),true,112.4,0.052);         // Ring Sued innen (Bahnhof-Zufahrt)
+    /* Die Gehwegluecken folgen denselben Zufahrtsdaten wie der Parkplatz-Asphalt. */
+    var bahnLuecken=[BAHNHOF_ZUFAHRT.ein,BAHNHOF_ZUFAHRT.aus].map(function(x){return [x,BAHNHOF_ZUFAHRT.breite/2+0.12];});
+    mitLuecken(-INN,INN,QZ.concat(bahnLuecken),true,112.4,0.052);                 // Ring Sued innen (Bahnhof-Zufahrt)
     mitLuecken(-AUS,AUS,ZMS,true,123.6,0.052);                                    // Ring Sued aussen
     var zA0=RGZ_N-5.6, zA1=RGZ_S+5.6, zI0=RGZ_N+5.6, zI1=RGZ_S-5.6;
     /* Die Strandzufahrt (z = -30) quert den West-Ring — beide West-Gehwege
        brauchen dort ebenfalls eine Luecke, sonst endet auch sie an einer Kante. */
     mitLuecken(zA0,zA1,STR,false,-117.6,0.054);                     // Ring West aussen (Strandzufahrt)
-    mitLuecken(zI0,zI1,STR,false,-106.4,0.054);                     // Ring West innen
+    var hauptLuecken=[[-(SZ9+12),8.18],[SZ9+12,8.18]];
+    mitLuecken(zI0,zI1,STR.concat(hauptLuecken),false,-106.4,0.054); // Ring West innen
     /* 🚧 OST-AUSFALLSTRASSE (Runde 98, probe-stufen „Loch" (119|±4,5), Strahl laengs z 0): der Gewerbe-Anschluss
        beginnt bei (112|0) in der Ringmitte — aber der aeussere Ring-Gehweg (5,4 cm) und sein 12-cm-Stein liefen
        quer ueber die Einfahrt (x 116,6…118,6). Wer den Ring nach Osten verliess, fuhr gegen eine Kante; th-kante
        sah keine Einmuendung, weil dort keine Luecke war. Jetzt eine Muendung wie an den Zubringern. */
-    mitLuecken(zI0,zI1,[],false,106.4,0.054);  mitLuecken(zA0,zA1,ZMO.concat([[0,7.16,{breite:9.0,rand:4.5}]]),false,117.6,0.054);  // Ring Ost: Luecke nur aussen (Bordsteine kommen aus stueck)
+    mitLuecken(zI0,zI1,hauptLuecken,false,106.4,0.054);
+    mitLuecken(zA0,zA1,ZMO.concat([[0,7.16,{breite:9.0,rand:4.5}]]),false,117.6,0.054);
+    /* Die vier Hauptstrassen haben bereits Asphalt bis zum Ring. Ihre seitlichen
+       Gehwege und Bordsteine schliessen jetzt ebenfalls bis an dessen Innenkante an. */
+    var hauptEnde=RL/2,gehwegAnfang=INN-1,bordEnde=RGX-4.5-0.26;
+    if(gehwegAnfang>hauptEnde)[-1,1].forEach(function(sx){
+      [-(SZ9+12),SZ9+12].forEach(function(zc){[-1,1].forEach(function(sz){
+        tr(gehwegAnfang-hauptEnde,2.2,sx*(hauptEnde+gehwegAnfang)/2,zc+sz*9.1,0.06);
+        bordsteinKante("z",zc+sz*7.92,sz,Math.min(sx*hauptEnde,sx*bordEnde),Math.max(sx*hauptEnde,sx*bordEnde),[],{b:2.2,m:tMat,h:0.06});
+      });});});
     /* Ost-Ausfallstrasse (Runde 98): Gehwegluecke 7,16 statt 4,76 = bis an die Aussenkante der abgesenkten Platte des
        Anschlusses (4,5 + 0,26 Stein + 2,4). Mit 4,76 stieg der Ring-Gehweg mitten auf der Landung wieder auf 5,4 cm, und
        zwischen ihm und der Rampe des Anschlusses lag eine 0,8 m breite 3-cm-Mulde (probe-stufen, Profil bei x 119,7).
@@ -4596,14 +4614,16 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
          dort KEINE Luecke eintragen, linie() zoege das Stueck davor sonst bis 71,1 ueber das Ende hinaus. */
       linie(-SZr-11,SZr+11,[[-SZr,8.5],[SZr,8.5],[-SZr+16,2.9],[SZr-16,2.9]],false,xc+o);});});
     /* Ring (9 m -> Rand ±3.75). Nord/Sued: Luecken an den Zubringern x=±RX und
-       (Sued) an Parkplatz-Ein-/Ausfahrt x=11/25; West: Luecke Strandzufahrt z=-30;
+       (Sued) an den aktuellen Parkplatz-Zufahrten; West: Luecke Strandzufahrt z=-30;
        Ecken bleiben frei (Radius 4.5). */
     var N=-100,S=118,X=112,E=6.5;
     [-3.75,3.75].forEach(function(o){
       linie(-X+E,X-E,[[-RX,6],[RX,6]],true,N+o);
-      linie(-X+E,X-E,[[-RX,6],[RX,6],[11,3.4],[25,3.4]],true,S+o);
-      linie(N+E,S-E,[[-30,5.5]],false,-X+o);
-      linie(N+E,S-E,[],false,X+o);});
+      var ppLuecken=o<0?[BAHNHOF_ZUFAHRT.ein,BAHNHOF_ZUFAHRT.aus].map(function(x){return [x,BAHNHOF_ZUFAHRT.breite/2+0.3];}):[];
+      linie(-X+E,X-E,[[-RX,6],[RX,6]].concat(ppLuecken),true,S+o);
+      var hauptLuecken=[[-SZr,8.3],[SZr,8.3]];
+      linie(N+E,S-E,[[-30,5.5]].concat(o>0?hauptLuecken:[]),false,-X+o);
+      linie(N+E,S-E,o<0?hauptLuecken:[],false,X+o);});
     /* ── Leitplanken ── */
     var holmM=_standardMat({color:0xb4b9c0,roughness:0.35,metalness:0.65});
     var pfPos=[];
@@ -6878,12 +6898,8 @@ setTimeout(function baueTiere(){
   [["an_rabbit.glb",0.42,1.9,0.18],["an_rabbit.glb",0.42,1.7,0.18],["an_deer.glb",1.05,1.1,0.05],["an_deer.glb",1.05,0.9,0.05]].forEach(function(td,i){
     ladeTier(td[0],td[1],function(w){if(!w)return;scene.add(w);
       window._tiere.land.push({mesh:w,x:(i%2?-1:1)*(74+i*5),z:(i<2?-1:1)*(28+i*8),head:i*1.7,sp:td[2],turnT:2+i,walkT:i,hop:td[3],yaw:Math.PI});});});
-  // Bauernhof-Tiere grasen bei der Scheune (ortsgebunden, langsam)
-  [["an_cow.glb",1.15,0.4],["an_pig.glb",0.7,0.5],["an_chicken.glb",0.4,0.7]].forEach(function(fa,i){
-    ladeTier(fa[0],fa[1],function(w){if(!w)return;scene.add(w);
-      window._tiere.land.push({mesh:w,x:-94+i*4,z:-32-i*3,head:i*2.1,sp:fa[2],turnT:3+i,walkT:i,yaw:Math.PI,home:{x:-93,z:-33,r:7}});});});
-  /* Zweite Herde in der neuen Koppel des Bauernhof-Viertels (Charge 38). Eine leere
-     Koppel liest sich als vergessener Zaun — erst die Tiere machen sie zur Weide.
+  /* Alle acht Hoftiere leben in der bestehenden Koppel. Die alte Dreierherde bei
+     (-93|-33) stand auf der Strandzufahrt und wanderte dort regelmaessig auf den Asphalt.
      ⚠️ ERST WARTEN, DANN SETZEN. Die Koordinaten standen fest auf (30,5|-177) — dem
      WUNSCHORT des Bauernhofs. Der weicht beim Setzen aus und steht auf z = -246, die
      Koppel also auf z = -227; die Herde stand 50 m daneben. Dieselbe Falle wie bei der
@@ -6894,12 +6910,16 @@ setTimeout(function baueTiere(){
     var bh=null,V=(window._viertelSolver||{}).VIERTEL||[];
     for(var b=0;b<V.length;b++)if(V[b].name==="Bauernhof")bh=V[b];
     var BHDX=(bh?bh.x:-40)+40, BHDZ=(bh?bh.z:-196)+196;
-    var KX=30.5+BHDX, KZ=-177+BHDZ;
-    [["an_cow.glb",1.15,0.4],["an_cow.glb",1.15,0.35],["an_pig.glb",0.7,0.5],
-     ["an_chicken.glb",0.4,0.7],["an_chicken.glb",0.4,0.75]].forEach(function(fa,i){
-      ladeTier(fa[0],fa[1],function(w){if(!w)return;scene.add(w);
-        window._tiere.land.push({mesh:w,x:KX-7.5+i*3,z:KZ-6+i*2.5,head:i*1.3,sp:fa[2],
-          turnT:2.5+i,walkT:i*0.7,yaw:Math.PI,home:{x:KX,z:KZ,r:9}});});});
+    var KX=30.5+BHDX, KZ=-177+BHDZ, HX=KX+2;
+    /* Zaun: KX ±12,5 / KZ ±9. Die Weidegruppe liegt 2 m weiter oestlich, weg
+       vom Futtertrog (KX-6,5|KZ-1). 5,5 m Heimradius lassen Platz zum Wenden;
+       das 4 × 3-m-Raster haelt auch die drei Kuehe beim Erscheinen auseinander. */
+    [["an_cow.glb",1.15,0.4,-4,-3],["an_cow.glb",1.15,0.35,0,-3],["an_pig.glb",0.7,0.5,-4,0],
+     ["an_chicken.glb",0.4,0.7,-4,3],["an_chicken.glb",0.4,0.75,0,3],
+     ["an_cow.glb",1.15,0.4,4,-3],["an_pig.glb",0.7,0.5,4,0],["an_chicken.glb",0.4,0.7,4,3]].forEach(function(fa,i){
+      ladeTier(fa[0],fa[1],function(w){if(!w)return;w.position.set(HX+fa[3],0,KZ+fa[4]);scene.add(w);
+        window._tiere.land.push({mesh:w,x:w.position.x,z:w.position.z,head:i*1.3,sp:fa[2],
+          turnT:2.5+i,walkT:i*0.7,yaw:Math.PI,home:{x:HX,z:KZ,r:5.5}});});});
   },1200);
 },0);
 // ---- Echte Gebaeude (Kenney/CC0 bd_*.glb aus der Repo-Bibliothek) ----
@@ -7450,6 +7470,54 @@ setTimeout(function baueGebaeude(){
          beide mit Trottoir und Mittelstreifen — befahrbar wie die uebrigen Strassen. */
       (function anbindung(){
         var a=cfg.anschluss,ax=a[0],az=a[1];
+        var randTeile=[];
+        /* Fahrbahnen schneiden die vorhandenen Randmeshes geometrisch aus. UV und Normalen
+           bleiben erhalten; keine zusaetzlichen Materialien oder Zeichenaufrufe. Nur beim Bau. */
+        if(!window._strassenAussparen)window._strassenAussparen=function(m,flaechen){
+          var g=m.geometry;if(!g||!g.attributes.position)return;
+          m.updateWorldMatrix(true,false);
+          var box=new THREE.Box3().setFromObject(m),polys=[];
+          flaechen.forEach(function(P){
+            var x0=Infinity,x1=-Infinity,z0=Infinity,z1=-Infinity,ar=0;
+            P.forEach(function(p,i){var q=P[(i+1)%P.length];x0=Math.min(x0,p[0]);x1=Math.max(x1,p[0]);
+              z0=Math.min(z0,p[1]);z1=Math.max(z1,p[1]);ar+=p[0]*q[1]-q[0]*p[1];});
+            if(x1<=box.min.x||x0>=box.max.x||z1<=box.min.z||z0>=box.max.z||Math.abs(ar)<1e-8)return;
+            polys.push({p:P,s:Math.sign(ar),x0:x0,x1:x1,z0:z0,z1:z1});});
+          if(!polys.length)return;
+          var pos=g.attributes.position,nor=g.attributes.normal,uv=g.attributes.uv,ix=g.index,
+              outP=[],outN=[],outU=[],v=new THREE.Vector3(),inv=new THREE.Matrix4().copy(m.matrixWorld).invert(),geschnitten=false;
+          function punkt(i){v.fromBufferAttribute(pos,i).applyMatrix4(m.matrixWorld);
+            return [v.x,v.y,v.z,nor?nor.getX(i):0,nor?nor.getY(i):1,nor?nor.getZ(i):0,uv?uv.getX(i):0,uv?uv.getY(i):0];}
+          function seite(V,A,B,s){return ((B[0]-A[0])*(V[2]-A[1])-(B[1]-A[1])*(V[0]-A[0]))*s;}
+          function halb(P,A,B,s,innen){var O=[];
+            for(var i=0;i<P.length;i++){var U=P[i],V=P[(i+1)%P.length],du=seite(U,A,B,s),dv=seite(V,A,B,s),
+                iu=innen?du>=0:du<=0,iv=innen?dv>=0:dv<=0;
+              if(iu)O.push(U);
+              if(iu!==iv){var t=du/(du-dv),W=[];for(var j=0;j<U.length;j++)W.push(U[j]+(V[j]-U[j])*t);O.push(W);}}
+            return O;}
+          function dreieck(A,B,C){var ux=B[0]-A[0],uy=B[1]-A[1],uz=B[2]-A[2],vx=C[0]-A[0],vy=C[1]-A[1],vz=C[2]-A[2];
+            if(Math.hypot(uy*vz-uz*vy,uz*vx-ux*vz,ux*vy-uy*vx)<1e-10)return;
+            [A,B,C].forEach(function(P){v.set(P[0],P[1],P[2]).applyMatrix4(inv);outP.push(v.x,v.y,v.z);
+              outN.push(P[3],P[4],P[5]);outU.push(P[6],P[7]);});}
+          for(var k=0;k<(ix?ix.count:pos.count);k+=3){
+            var teile=[[punkt(ix?ix.getX(k):k),punkt(ix?ix.getX(k+1):k+1),punkt(ix?ix.getX(k+2):k+2)]];
+            polys.forEach(function(F){var rest=[];
+              teile.forEach(function(P){
+                var x0=Infinity,x1=-Infinity,z0=Infinity,z1=-Infinity;
+                P.forEach(function(p){x0=Math.min(x0,p[0]);x1=Math.max(x1,p[0]);z0=Math.min(z0,p[2]);z1=Math.max(z1,p[2]);});
+                if(x1<=F.x0||x0>=F.x1||z1<=F.z0||z0>=F.z1){rest.push(P);return;}
+                var innen=P;
+                for(var e=0;e<F.p.length&&innen.length>=3;e++){
+                  var A=F.p[e],B=F.p[(e+1)%F.p.length],aussen=halb(innen,A,B,F.s,false);
+                  if(aussen.length>=3)rest.push(aussen);innen=halb(innen,A,B,F.s,true);}
+                if(innen.length>=3)geschnitten=true;});teile=rest;});
+            teile.forEach(function(P){for(var j=1;j<P.length-1;j++)dreieck(P[0],P[j],P[j+1]);});}
+          if(!geschnitten)return;
+          var neu=new THREE.BufferGeometry();neu.setAttribute("position",new THREE.Float32BufferAttribute(outP,3));
+          neu.setAttribute("normal",new THREE.Float32BufferAttribute(outN,3));
+          if(uv)neu.setAttribute("uv",new THREE.Float32BufferAttribute(outU,2));
+          neu.computeBoundingBox();neu.computeBoundingSphere();m.geometry=neu;g.dispose();
+        };
         /* 🛣️ GERADE WEITER (Runde 95, Bild k19-camping-zufahrt): beginnt der Anschluss am ENDE der Strasse
            eines Nachbarn (Camping hinter dem Freizeitpark, Technikpark hinter dem Flughafen), ist das keine
            Einmuendung — mit den 7 m Vorlauf fuer eine kreuzende Fahrbahn fehlten Gehweg und Bordstein auf
@@ -7469,7 +7537,7 @@ setTimeout(function baueGebaeude(){
           /* Ursprung am Knick (sonst blendet lodAufbau die Stuecke aus, s. eckBogen) */
           function sh(P){var S=new THREE.Shape();P.forEach(function(p,i){if(i)S.lineTo(p[0]-kx,-(p[1]-kz));else S.moveTo(p[0]-kx,-(p[1]-kz));});return S;}
           function teil(P,mat,y,tiefe){var g=tiefe?new THREE.ExtrudeGeometry(sh(P),{depth:tiefe,bevelEnabled:false}):new THREE.ShapeGeometry(sh(P));
-            var m=new THREE.Mesh(g,mat);m.rotation.x=-Math.PI/2;m.position.set(kx,y,kz);m.receiveShadow=true;m.userData.r98=1;scene.add(m);}
+            var m=new THREE.Mesh(g,mat);m.rotation.x=-Math.PI/2;m.position.set(kx,y,kz);m.receiveShadow=true;m.userData.r98=1;scene.add(m);if(tiefe)randTeile.push(m);}
           teil([[kx,kz]].concat(bg(SW/2,wV,wV+d)),window._lAsphM,-0.0098);
           teil(bg(SW/2,wV,wV+d).concat(bg(SW/2+0.26,wV+d,wV)),_bordM||betMat(0xbfbcb2,0.85),0,0.12);
           teil(bg(SW/2+0.2,wV,wV+d).concat(bg(SW/2+TW+0.2,wV+d,wV)),twM,0,0.06);
@@ -7493,6 +7561,10 @@ setTimeout(function baueGebaeude(){
              Viertelstrasse -0,003) und ueber Viertel-Platten (-0,012): in der Kreuzung verdeckt ihn die
              andere Fahrbahn, dazwischen ist er da. */
           st.rotation.x=-Math.PI/2;st.position.set(mx,-0.0098,mz);st.receiveShadow=true;scene.add(st);
+          var fw=waag?len:SW,fd=waag?SW:len;
+          (window._anschlussFlaechen=window._anschlussFlaechen||[]).push([
+            [mx-fw/2,mz-fd/2],[mx+fw/2,mz-fd/2],[mx+fw/2,mz+fd/2],[mx-fw/2,mz+fd/2]]);
+          var randStart=scene.children.length;
           /* ⚠️ Kreuzt das Stueck die Landstrasse (r 200)? Dann enden die Gehwege 5,7 m vor
              der Fahrbahnmitte statt quer ueber den Asphalt zu laufen, und der Ring bekommt
              an der Stelle eine Luecke in seinen Mittelstrichen (Bild (200|0), Runde 92). */
@@ -7565,6 +7637,7 @@ setTimeout(function baueGebaeude(){
               t.position.set(waag?tm:mx+o,0.03,waag?mz+o:tm);t.receiveShadow=true;scene.add(t);});
             /* Runde 98: echte Rampen (6 → 3 cm zur Landstrasse hin) statt flacher 3-cm-Stuecke */
             rampen.forEach(function(t9,ri){_keil(waag?"z":"x",t9[0],t9[1],waag?mz+o:mx+o,ri===0?0.06:0.03,ri===0?0.03:0.06,TW,twM);});});
+          randTeile=randTeile.concat(scene.children.slice(randStart));   /* nur Gehweg/Bordstein, eigene Markierungen bleiben */
           for(var m2=0;m2<Math.floor(len/9);m2++){            // Mittelstreifen
             var off=-len/2+5+m2*9;
             /* ⚠️ Nicht durch fremde Kreuzungen: der Anschluss von Gewerbe Ost kreuzt die
@@ -7600,6 +7673,14 @@ setTimeout(function baueGebaeude(){
         else if(laengs&&Math.abs(VZ-az)<=2){var ex8=VX-Math.sign(VX-ax)*(laenge/2-0.5);if(Math.abs(ex8-ax)>2)segment(ax,az,ex8,VZ,vorlauf,0,false,!!cfg.anschlussT,null,cfg.vorlaufBord);}   /* gerade, auf der Strassenlinie */
         else if(!laengs&&Math.abs(VX-ax)<=2){var ez8=VZ-Math.sign(VZ-az)*(laenge/2-0.5);if(Math.abs(ez8-az)>2)segment(ax,az,VX,ez8,vorlauf,0,false,!!cfg.anschlussT,null,cfg.vorlaufBord);}
         else segment(ax,az,VX,VZ,vorlauf,4.7,true,!!cfg.anschlussT,null,cfg.vorlaufBord);   /* gerade, senkrecht in die Strasse */
+        /* Erst nach dem synchronen Weltbau: auch spaetere Nachbarstrassen und der
+           Zubringer 300 Grad an der Bauernhofzufahrt muessen bereits bekannt sein. */
+        setTimeout(function(){var F=(window._zubFahrbahnen||[]).concat(window._anschlussFlaechen||[]);
+          viertelBaender().forEach(function(b){if(b.n.indexOf("Viertelstr. ")!==0)return;
+            var x0=b.a==="z"?b.von:b.c-b.h,x1=b.a==="z"?b.bis:b.c+b.h,
+                z0=b.a==="z"?b.c-b.h:b.von,z1=b.a==="z"?b.c+b.h:b.bis;
+            F.push([[x0,z0],[x1,z0],[x1,z1],[x0,z1]]);});
+          randTeile.forEach(function(m){window._strassenAussparen(m,F);});},0);
       })();}
     /* 4) Bebauung: zwei Reihen laengs der Strasse. Je Seite ein eigener Laufcursor —
        damit stimmt der Abstand zum Nachbarn auch bei unterschiedlich breiten Gebaeuden. */
@@ -8617,6 +8698,12 @@ setTimeout(function baueGebaeude(){
          Bergwelt-Ladung offen stand. */
       (function zubringerAusbau(){
         var r0=118, r1=R+HB;
+        /* Exakt die bereits gebauten Asphalt-Quads: Ring zuerst (N Quads), danach
+           die sechs Zubringer samt schraeger Einmuendung und Aufweitung. */
+        window._zubFahrbahnen=[];
+        for(var f9=N*12;f9<pos.length;f9+=12){var F9=[];
+          for(var v9=0;v9<4;v9++)F9.push([pos[f9+v9*3],pos[f9+v9*3+2]]);
+          window._zubFahrbahnen.push(F9);}
         /* ⚠️ BANKETT UND PFOSTEN ENDEN VOR DER LANDSTRASSE (Runde 94, th-strassen: 4…6 Leitpfosten im
            Landstrassen-Band): r1 = R+HB ist die AUSSENKANTE des Rings — Kies und Pfosten liefen bis dorthin
            quer durch die Ring-Fahrbahn (der Kies liegt unter dem Ring-Belag, die Pfosten standen darauf).
@@ -8646,7 +8733,7 @@ setTimeout(function baueGebaeude(){
                        [ra/KM,0], [ra/KM,1.5/KM], [rb/KM,1.5/KM], [rb/KM,0]);}
           });
         });
-        mesh(zp,zi,kiesMat(0x9a9384,0.98),zuv);   /* Kies ohne Plattenfugen (Runde 94) */
+        var bankett=mesh(zp,zi,kiesMat(0x9a9384,0.98),zuv);   /* Kies ohne Plattenfugen (Runde 94) */
         /* Leitpfosten entlang der Zubringer, als EINE InstancedMesh.
            ⚠️ InstancedMesh prueft die Sichtbarkeit gegen die Bounding-Sphere
            EINER Geometrie am Objektursprung. Bei ueber die halbe Karte
@@ -8678,14 +8765,45 @@ setTimeout(function baueGebaeude(){
            Bauernhof-Gebaeude. Ein `setTimeout(…,0)` laeuft nach dem ganzen
            Block, dann sind alle Kollider da und die Pruefung greift. */
         setTimeout(function(){
+        /* Kies liegt hoeher als der Anschluss-Asphalt. Nur die tatsaechliche
+           Fahrbahn ausschneiden, nicht einen pauschalen Abstand zum Viertel. */
+        var fahrbahnen=(window._anschlussFlaechen||[]).slice();
+        viertelBaender().forEach(function(b){if(b.n.indexOf("Viertelstr. ")!==0)return;
+          var x0=b.a==="z"?b.von:b.c-b.h,x1=b.a==="z"?b.bis:b.c+b.h,
+              z0=b.a==="z"?b.c-b.h:b.von,z1=b.a==="z"?b.c+b.h:b.bis;
+          fahrbahnen.push([[x0,z0],[x1,z0],[x1,z1],[x0,z1]]);});
+        window._strassenAussparen(bankett,fahrbahnen);
         /* Radial ausweichen, bis der Platz frei ist — lieber ein Schild zehn
            Meter frueher als eines in einer Wand. Findet sich gar nichts, wird
            nicht gesetzt: ein fehlendes Schild faellt weniger auf als eines,
            das aus einem Dach ragt. */
-        function frei(A,rr,q){
-          for(var t=0;t<7;t++){
-            var d=[0,-6,6,-12,12,-18,18][t], p=P(A,rr+d,q);
-            if(!inSolid(p[0],p[1]))return p;
+        /* Halbe Modellmasse aus den GLBs, in die Welt gedreht, plus 25 cm Luft.
+           Fahrbahnen besitzen keine Kollider: inSolid allein stellte die Ortstafel
+           des 300-Grad-Zubringers mitten auf den Bauernhofanschluss. */
+        var schildStrassen=fahrbahnen.slice();
+        for(var si9=0;si9<pos.length;si9+=12){var sf9=[];
+          for(var sp9=0;sp9<4;sp9++)sf9.push([pos[si9+sp9*3],pos[si9+sp9*3+2]]);
+          schildStrassen.push(sf9);}   /* echte Landring- und Zubringer-Asphaltquads */
+        function schildHuelle(ry,hx,hz){var c=Math.abs(Math.cos(ry)),s=Math.abs(Math.sin(ry));
+          var h=[c*hx+s*hz+0.25,s*hx+c*hz+0.25],co=Math.cos(ry),sn=Math.sin(ry);
+          h.poly=[[-1,-1],[1,-1],[1,1],[-1,1]].map(function(p){var x=p[0]*(hx+0.25),z=p[1]*(hz+0.25);
+            return [co*x+sn*z,-sn*x+co*z];});return h;}
+        function schildSchneidet(P,Q){
+          for(var k=0;k<2;k++){var K=k?Q:P;
+            for(var e=0;e<K.length;e++){var a=K[e],b=K[(e+1)%K.length],nx=a[1]-b[1],nz=b[0]-a[0],
+                p0=Infinity,p1=-Infinity,q0=Infinity,q1=-Infinity;
+              P.forEach(function(p){var d=p[0]*nx+p[1]*nz;p0=Math.min(p0,d);p1=Math.max(p1,d);});
+              Q.forEach(function(p){var d=p[0]*nx+p[1]*nz;q0=Math.min(q0,d);q1=Math.max(q1,d);});
+              if(p1<=q0+1e-8||q1<=p0+1e-8)return false;}}
+          return true;}
+        function frei(A,rr,q,huelle){
+          var h=huelle||schildHuelle(0,0,0),suche=[0,-6,6,-12,12,-18,18,-24,24,-30,30];
+          for(var t=0;t<suche.length;t++){
+            var p=P(A,rr+suche[t],q),grundriss=h.poly.map(function(v){return [p[0]+v[0],p[1]+v[1]];});
+            var aufStrasse=schildStrassen.some(function(F){return schildSchneidet(grundriss,F);});
+            var imBau=WORLD_SOLIDS.some(function(s){return p[0]+h[0]>s.x-s.hw&&p[0]-h[0]<s.x+s.hw&&
+              p[1]+h[1]>s.z-s.hd&&p[1]-h[1]<s.z+s.hd;});
+            if(!aufStrasse&&!imBau&&!inSolid(p[0],p[1]))return p;
           }
           return null;
         }
@@ -8712,7 +8830,7 @@ setTimeout(function baueGebaeude(){
              bei r 191 ist die Fahrbahn schon 5,56 statt 4,2 halbbreit, ein
              Schild auf HB + 1,7 = 5,9 stuende damit fast auf dem Belag. */
           var hb9=window._zubBreite(191)+1.7;
-          var a1=frei(A,191,-hb9), a2=frei(A,191,hb9);
+          var a1=frei(A,191,-hb9,schildHuelle(hin,0.451,0.091)),a2=frei(A,191,hb9,schildHuelle(her,0.451,0.091));
           stell("th39_vorfahrt.glb",2.30,a1,hin);
           stell("th39_vorfahrt.glb",2.30,a2,her);
           /* ⚠️ Fester Radius scheitert hier PRINZIPIELL: die Zubringer-Achsen haben
@@ -8727,11 +8845,11 @@ setTimeout(function baueGebaeude(){
             if(z>=-101-pad&&z<=119+pad){if(x>=-119.2-pad&&x<=-104.8+pad)return true;
               if(x>=104.8-pad&&x<=119.2+pad)return true;}
             return false;}
-          function freiAusserhalb(qq,pad){var rr=[125,133,143,153,163,172],p=null;
-            for(var ri=0;ri<rr.length;ri++){p=frei(A,rr[ri],qq);
+          function freiAusserhalb(qq,pad,huelle){var rr=[125,133,143,153,163,172,182],p=null;
+            for(var ri=0;ri<rr.length;ri++){p=frei(A,rr[ri],qq,huelle);
               if(p&&!imRingBand(p,pad))return p;}
-            return p;}
-          var o1=freiAusserhalb(-(HB+2.0),1.0);          // Ortstafel am Stadtrand
+            return null;}
+          var o1=freiAusserhalb(-(HB+2.0),1.0,schildHuelle(her,0.791,0.080));   // Ortstafel am Stadtrand
           /* ⚠️ DIE ORTSTAFEL BLEIBT LEER — nach fuenf gemessenen Anlaeufen bewusst.
              Ihre Tafelflaeche (Material StWeiss) nimmt keine flache Projektion an: die
              Schrift landet auf einem schmalen Streifen und wird zu einem dunklen Balken
@@ -8755,7 +8873,7 @@ setTimeout(function baueGebaeude(){
                r 200 mit Halbbreite 4,2, also von 195,8 bis 204,2. Ein seitlicher
                Versatz hilft dagegen nichts — der Ring ist ein Kreis, der Radius
                des Punktes bleibt ~197. Nur ein kleinerer Radius kommt frei. */
-            var w1=frei(A,186,window._zubBreite(186)+2.6);
+            var w1=frei(A,186,window._zubBreite(186)+2.6,schildHuelle(hin,1.695,0.201));
             stell("th39_wegweiser.glb",3.05,w1,hin);
           }
         });
@@ -8780,9 +8898,10 @@ setTimeout(function baueGebaeude(){
               if(x>=-115.4&&x<=115.4){if(z>=-109.6&&z<=-90.4)return true;if(z>=108.4&&z<=127.6)return true;}
               if(z>=-103.4&&z<=121.4){if(x>=-121.6&&x<=-102.4)return true;if(x>=102.4&&x<=121.6)return true;}
               return false;}
-            for(var ri=0;ri<rr.length;ri++){var q=frei(A,rr[ri],HB+3.2);
+            var huelle=schildHuelle(-A.aa,2.38,0.90);   /* Haltemast liegt seitlich ausserhalb des Haeuschens */
+            for(var ri=0;ri<rr.length;ri++){var q=frei(A,rr[ri],HB+3.2,huelle);
               if(q&&!imBand(q)){p=q;return;}}
-            p=frei(A,172,HB+3.2);})();
+            var rest=frei(A,182,HB+3.2,huelle);p=rest&&!imBand(rest)?rest:null;})();
           if(!p)return;
           stell("th39_bushalt.glb",2.84,p,-A.aa,function(w){
             window._bushalte.push({gr:gr, w:w});});
@@ -15975,11 +16094,14 @@ function autoFahr(dt){
      sich weich HINTER das Auto, damit "links" auf dem Bildschirm auch links ist — ausser
      der Spieler hat sie gerade selbst gedreht (2,5 s Schonfrist). */
   var gas=Math.max(fahrGas,Math.max(0,-steer.z)),brk=Math.max(fahrBremse,Math.max(0,steer.z)),lenk=steer.x;
-  if(fahrBremse)gas=0;if(MINI_ERG.on||document.getElementById("stadtPanel").style.display==="flex"||document.getElementById("bigmapWrap").style.display==="flex"||(RENNEN&&RENNEN.an&&RENNEN.start>0)){gas=0;brk=1;carSpeed=0;}
+  var fahrtGesperrt=MINI_ERG.on||document.getElementById("stadtPanel").style.display==="flex"||document.getElementById("bigmapWrap").style.display==="flex"||(RENNEN&&RENNEN.an&&RENNEN.start>0);
+  if(fahrBremse)gas=0;if(fahrtGesperrt){gas=0;brk=1;carSpeed=0;lenk=0;}
   if(gas<0.12)gas=0;if(brk<0.12)brk=0;if(Math.abs(lenk)<0.12)lenk=0;
   if(nitro>0)nitro-=dt;
   var vmax=13+(nitro>0?12:0);
-  if(gas>0){var ziel=vmax*Math.max(0.45,gas);
+  /* Ein Menue oder der Startcountdown haelt den Wagen an, ohne den Rueckwaertsgang zu aktivieren. */
+  if(fahrtGesperrt){carSpeed=0;carStandT=0;}
+  else if(gas>0){var ziel=vmax*Math.max(0.45,gas);
     if(carSpeed<ziel)carSpeed=Math.min(ziel,carSpeed+(nitro>0?15:8)*dt);
     else carSpeed=Math.max(ziel,carSpeed-6*dt);}
   else if(brk>0){
