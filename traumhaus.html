@@ -16636,6 +16636,7 @@ function simGestenTakt(s,dt,now){
     if(f===1)g.von=null;}
 }
 function updSim(s,si,dt,now){
+  if((!MPs||mpHost)&&si===meinSi()&&!fahren&&s._oev===undefined&&document.getElementById("stadtPanel").style.display==="flex"){s._manualT=performance.now();return;}
   if(s._oev!==undefined){s.state="oev";s.pose="stand";}
   else if(MPs&&!mpHost){ // Gast
     var _mein=(si===meinSi()),_sv=_mein?steerVec(si):null;
@@ -17349,7 +17350,7 @@ function egoToggle(){
 updCam();
 // ---- Direkte Steuerung: Joystick + WASD ----
 var steer={x:0,z:0},steerKeys={},steerNetT=0,steerWasActive=false,shiftHeld=false,joyEdge=false;
-function steerActive(){return Math.abs(steer.x)>0.12||Math.abs(steer.z)>0.12;}
+function steerActive(){if(document.getElementById("stadtPanel").style.display==="flex")return false;return Math.abs(steer.x)>0.12||Math.abs(steer.z)>0.12;}
 function updSteerKeys(){
   var x=0,z=0;
   if(steerKeys.a||steerKeys.arrowleft)x-=1;if(steerKeys.d||steerKeys.arrowright)x+=1;
@@ -18405,7 +18406,7 @@ function stadtMenue(art){
   if(!STADT||!OEV.lines.length){box.textContent="Das Verkehrsnetz wird vorbereitet … öffne es gleich noch einmal.";}
   else if(art==="oev")OEV.lines.forEach(function(line,idx){var card=document.createElement("details");card.className="oev-linie";var h=document.createElement("summary"),mark=document.createElement("span");mark.className="linie-marke";mark.style.background="#"+line.color.toString(16).padStart(6,"0");mark.textContent=line.id;h.appendChild(mark);h.appendChild(document.createTextNode(line.name));card.appendChild(h);var list=document.createElement("ul");Array.from(new Set(line.ids)).forEach(function(k){var st=OEV.stops[k],li=document.createElement("li"),tx=document.createElement("span");tx.textContent=st.name;var eta=document.createElement("small");eta.dataset.etaLinie=idx;eta.dataset.etaHalt=k;eta.textContent="Fahrplan wird geladen …";tx.appendChild(eta);var b=document.createElement("button");b.textContent="GPS zur Haltestelle";b.onclick=function(){var p=oevStand(line),me=spielerPos();if(p.halt&&p.stop===k&&Math.hypot(me.x-p.x,me.z-p.z)<32){if(!oevEinsteigen(idx))hint("Zum Einsteigen aus dem Auto steigen und die Aktion beenden.");}else{st.walk=stadtSichererHalt(st);if(st.walk){gpsSetz(st.walk.x,st.walk.z);el.style.display="none";}else hint("Haltestelle wird noch freigeräumt.");}};b.dataset.linie=idx;b.dataset.halt=k;li.appendChild(tx);li.appendChild(b);list.appendChild(li);});card.appendChild(list);box.appendChild(card);});
   else{var info=document.createElement("p");info.textContent=RENNEN.best?"Dein Bestwert: "+RENNEN.best.toFixed(2)+" s":"Dein erster Bestwert wartet auf dich.";box.appendChild(info);var row=document.createElement("div");row.className="stadt-schnell";[["GPS zum Motorsportpark",function(){gpsSetz(770,320);el.style.display="none";}],["Leihwagen & Rennen starten",rennenStart]].forEach(function(a){var b=document.createElement("button");b.textContent=a[0];b.onclick=a[1];row.appendChild(b);});box.appendChild(row);}
-  el.style.display="flex";el.firstElementChild.scrollTop=0;document.getElementById("stadtZu").focus();
+  el.style.display="flex";el.firstElementChild.scrollTop=0;box.scrollTop=0;document.getElementById("stadtZu").focus();
 }
 function rennenStart(){
   if(!STADT)return;if(MPs&&!mpHost){hint("Der Gastgeber fährt; du kannst als Beifahrer mitfahren.");return;}
@@ -18463,6 +18464,7 @@ try{var la=JSON.parse(localStorage.getItem("th_stadtalbum_v1")||"{}");FOTOORTE.f
 function lebenMotiv(name){var p=WORLD_POIS.find(function(q){return q[3]===name;});if(!p)return null;return {name:name,x:p[0],z:p[1],symbol:p[2]};}
 function lebenNah(m){var p=spielerPos();return Math.hypot(p.x-m.x,p.z-m.z)<35&&!fahren&&!OEV.ride&&!buildMode;}
 function lebenZiel(name){
+  if(RALLY.an||RENNEN.an){hint("Beende zuerst die aktuelle Tour oder das Rennen.");return;}
   var m=lebenMotiv(name);if(!m)return;var best=null,me=spielerPos();
   /* POIs koennen im Gebaeude oder Brunnen liegen: GPS endet auf freiem Boden. */
   for(var r=12;r<=28;r+=8)for(var i=0;i<16;i++){var a=i*Math.PI/8,x=m.x+Math.cos(a)*r,z=m.z+Math.sin(a)*r;if(imWasser(x,z)||inSolid(x,z)||imBau(x,z))continue;var d=Math.hypot(x-me.x,z-me.z);if(!best||d<best.d)best={x:x,z:z,d:d};}
@@ -18495,7 +18497,7 @@ function lebenMenue(){
     var b=document.createElement("button");b.textContent=LEBEN.ziel===name&&m&&lebenNah(m)?"📷 Jetzt aufnehmen":f?"Motiv nochmals besuchen":"GPS zum Motiv";b.disabled=!m;b.onclick=function(){if(LEBEN.ziel===name&&lebenNah(m))lebenFoto();else lebenZiel(name);};card.appendChild(b);grid.appendChild(card);
   });box.appendChild(grid);
   var settings=document.createElement("label");settings.className="stadt-ruhe";var cb=document.createElement("input");cb.type="checkbox";cb.checked=LEBEN.ruhig;cb.onchange=function(){LEBEN.ruhig=cb.checked;try{localStorage.setItem("th_stadtruhe_v1",cb.checked?"1":"0");}catch(e){}};settings.appendChild(cb);settings.appendChild(document.createTextNode("Ruhige Stadtanimationen (weniger Arm- und Beinbewegungen)"));box.appendChild(settings);
-  el.style.display="flex";el.firstElementChild.scrollTop=0;document.getElementById("stadtZu").focus();
+  el.style.display="flex";el.firstElementChild.scrollTop=0;box.scrollTop=0;document.getElementById("stadtZu").focus();
 }
 document.getElementById("lebenMenue").onclick=lebenMenue;
 
@@ -18529,7 +18531,7 @@ document.addEventListener("keydown",function(e){if(!MINI_ERG.on)return;e.stopPro
 var RALLY={an:false,zeitrennen:false,route:[],i:0,t:0,dauer:0,vergangen:0,best:0,altGPS:null,_hud:0,ziel:null};
 try{var rb=+localStorage.getItem("th_rally_best_v1");if(isFinite(rb)&&rb>0&&rb<=1000)RALLY.best=rb;}catch(e){}
 function rallyStart(zeitrennen){
-  if(!running||HETZE.an||TANZ.on||KOCH.on||ANGEL.on||MG.on){hint("Beende zuerst deine aktuelle Aktion.");return false;}
+  if(!running||RENNEN.an||HETZE.an||TANZ.on||KOCH.on||ANGEL.on||MG.on){hint("Beende zuerst deine aktuelle Aktion.");return false;}
   if(RALLY.an)rallyEnde(false);
   var p=spielerPos(),x=p.x,z=p.z,route=[],weg=0;
   var pool=WORLD_POIS.filter(function(o){var d=Math.hypot(o[0]-x,o[1]-z);return d>28&&d<200;});
@@ -18568,7 +18570,7 @@ function rallyEnde(fertig,abgelaufen){
 }
 function rallyTakt(dt){
   if(!RALLY.an)return;
-  var pause=buildMode||document.hidden||MINI_ERG.on||TANZ.on||KOCH.on||ANGEL.on||MG.on||document.getElementById("achPanel").style.display==="flex"||document.getElementById("bigmapWrap").style.display==="flex";
+  var pause=buildMode||document.hidden||document.getElementById("stadtPanel").style.display==="flex"||MINI_ERG.on||TANZ.on||KOCH.on||ANGEL.on||MG.on||document.getElementById("achPanel").style.display==="flex"||document.getElementById("bigmapWrap").style.display==="flex";
   var hud=document.getElementById("rallyHud");hud.style.display=pause?"none":"flex";if(pause)return;
   RALLY.vergangen+=dt;if(RALLY.zeitrennen)RALLY.t=Math.max(0,RALLY.t-dt);
   if(RALLY.zeitrennen&&RALLY.t<=0){rallyEnde(false,true);return;}

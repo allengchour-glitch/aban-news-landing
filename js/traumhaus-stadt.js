@@ -90,7 +90,7 @@ function createLife(T,scene,solid){
   var tmp=new T.Object3D(),box=new T.BoxGeometry(1,1,1),rows=[],crowd=[],clock=0,last=-1;
   function part(x,y,z,w,h,d,c,rot){rows.push({x:x,y:y,z:z,w:w,h:h,d:d,c:c,r:rot||0});}
   /* Freie Sichtachsen vom Bus bis zum Forum, mit Grueninseln an den Raendern. */
-  [[658,98],[702,98],[658,142],[702,142],[576,76],[624,76],[736,164],[784,164]].forEach(function(p,i){
+  [[658,98],[702,98],[658,142],[702,142],[600,40],[680,200],[760,120],[760,40]].forEach(function(p,i){
     part(p[0],.35,p[1],4,.6,4,0x9caaa0);part(p[0],2,p[1],.35,3.2,.35,0x735940);
     part(p[0],4.1,p[1],3.7,2.4,3.7,i%2?0x668f68:0x447653);solid(p[0],p[1],4,4);
   });
