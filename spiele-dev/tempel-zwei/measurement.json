@@ -1,0 +1,29 @@
+{
+  "environment": "Headless Chromium / WebGL-Software, 960×540. Draw-Aufrufe über WebGL-Prototypen gezählt; keine Hardware-FPS-Aussage.",
+  "results": [
+    {
+      "version": "9dc1306ad",
+      "phase": "lobby",
+      "drawCalls": 850,
+      "elapsedMs": 1550
+    },
+    {
+      "version": "9dc1306ad",
+      "phase": "solo-pause",
+      "drawCalls": 884,
+      "elapsedMs": 1547
+    },
+    {
+      "version": "working-tree",
+      "phase": "lobby",
+      "drawCalls": 0,
+      "elapsedMs": 1541
+    },
+    {
+      "version": "working-tree",
+      "phase": "solo-pause",
+      "drawCalls": 0,
+      "elapsedMs": 1506
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+PASS Kopierter Link enthält echten Code und erhält lokalen Testmodus
+PASS Lobby wächst beim Warten scrollbar ab sichtbarem Titel
+PASS Abgebrochene Suche startet echten Solo-Modus
+PASS Solo braucht ebenfalls zwei Platten
+PASS Parken und Q-Wechsel lösen Raum 1
+PASS Solo durchquert Tor 1
+PASS Eine native Leertaste am Aktionsknopf führt genau eine Aktion aus
+PASS Beide Elementkräfte und Hebel im Solo aktivierbar
+PASS Solo durchquert Tor 2
+PASS Solo kann Gleichklang nach abgelaufenem Impuls neu versuchen
+PASS E, Q, E mit zwei vorbereiteten Figuren löst das echte 1,2-s-Fenster
+PASS Solo durchquert Tor 3
+PASS Wächter setzt nur zum Raum-4-Eingang zurück, drei Siegel bleiben offen
+PASS Solo-Wächter mit hinterer Schattenplatte und Rollenwechsel lösbar
+PASS Solo durchquert Tor 4
+PASS Solo-Sieg wartet auf die zweite Figur
+PASS Vier Solo-Rätsel führen zum gemeinsamen Herz-Abschluss
+PASS Nochmal führt in eine frische Lobby ohne alte Raum-Einladung
+PASS 360×640: Aufgabenpanel liegt über den Figurenlabels
+PASS 844×390: Aufgabenpanel liegt zwischen den beiden Daumenbereichen
+PASS Fehlendes Cover lässt sichtbare SVG-Illustration und Startknopf nutzbar
+PASS Keine JavaScript-Fehler im Solo

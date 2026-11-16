@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "source": "Erste Probe vor adaptiver Auflösung und begrenzten Fackellichtern; Sitzungsprotokoll",
+    "head": "5806c4e92",
+    "seconds": 8.11460000000149,
+    "frames": 139,
+    "fps": 17.129618219009497,
+    "p50": 50.100000000000364,
+    "p95": 83.30000000000018,
+    "pixelRatio": 1
+  },
+  "after": {
+    "seconds": 8.0035,
+    "frames": 234,
+    "fps": 29.236843420455347,
+    "p50": 33.30000000000018,
+    "p95": 50.099999999998545,
+    "state": {
+      "room": 1,
+      "gems": 0,
+      "won": false,
+      "result": null,
+      "paused": false,
+      "online": false,
+      "slot": 0,
+      "running": true,
+      "gates": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "sync": [
+        0,
+        0
+      ],
+      "vines": true,
+      "plant": false,
+      "levers": [
+        false,
+        false
+      ],
+      "render": {
+        "calls": 39,
+        "triangles": 28486,
+        "pixelRatio": 0.55
+      },
+      "eye": 0,
+      "blind": false,
+      "altF": false,
+      "altW": false,
+      "g4": false,
+      "a": {
+        "x": -2,
+        "z": -1.507840000000002
+      },
+      "b": {
+        "x": 2,
+        "z": 2
+      }
+    },
+    "environment": "Headless Chromium, SwiftShader,960x540; kein Hardware-Handytest"
+  },
+  "limits": "Kurze lokale Software-WebGL-Proben, keine Handy-FPS-Zusage"
+}

@@ -1,0 +1,440 @@
+{
+  "domain": "https://abannews.com",
+  "sourceHead": "33956668888f6745bb743e683e08ee6cb7f0dbaa",
+  "checks": [
+    {
+      "path": "neon-abyss.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1
+    },
+    {
+      "path": "neon-colossus.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1
+    },
+    {
+      "path": "neon-dungeon.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 2,
+      "preservedScripts": 2,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "neon-duo.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1
+    },
+    {
+      "path": "neon-flug.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 0,
+      "preservedScripts": 0,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "neon-jump.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 3,
+      "preservedScripts": 3,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "neon-park.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "neon-racer.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 4,
+      "preservedScripts": 4,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "neon-realm.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 2,
+      "preservedScripts": 2
+    },
+    {
+      "path": "neon-survivor.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 4,
+      "preservedScripts": 4,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "neon-wildnis.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 3,
+      "preservedScripts": 2,
+      "buildTransformation": {
+        "before": "<img src=\"'+r.img+'\" width=\"32\" height=\"32\"",
+        "after": "<img fetchpriority=\"high\" decoding=\"async\" src=\"'+r.img+'\" width=\"32\" height=\"32\"",
+        "reason": "Publikations-Build ergänzt fetchpriority/decoding am Bild; übriger Skripttext muss identisch sein"
+      },
+      "preservedAfterDocumentedBuildTransformation": 3
+    },
+    {
+      "path": "neon-zusammen.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 2,
+      "preservedScripts": 2,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "lebenspfad.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 4,
+      "preservedScripts": 4
+    },
+    {
+      "path": "traumhaus.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 2,
+      "preservedScripts": 2
+    },
+    {
+      "path": "wort-des-tages.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 2,
+      "preservedScripts": 2
+    },
+    {
+      "path": "wortbruecke.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 2,
+      "preservedScripts": 2
+    },
+    {
+      "path": "minispiele/auto-rennen.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/ballon-pump.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/drei-gewinnt.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/elfmeter.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/farb-klick.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/hoch-tief.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/mathe-duell.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/maulwurf.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/memory.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/pong.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/punkte-jagd.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/quiz-buzzer.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/reaktions-duell.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/schere-stein-papier.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/schlange-duell.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/simon.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/stapel-turm.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/tap-duell.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/tauziehen.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "minispiele/vier-gewinnt.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "spiele.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 2,
+      "preservedScripts": 2
+    },
+    {
+      "path": "minispiele/index.html",
+      "http": "200",
+      "ok": true,
+      "inlineScripts": 1,
+      "preservedScripts": 1,
+      "ownFrameAllowed": true,
+      "sameOriginOnly": true
+    },
+    {
+      "path": "js/neon-flug/scenery.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "fa6edd597ded26daa8280ded21000922d6a49947dc4f7bad09d0f089e86f87d7",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "js/neon-flug/hybrid-view.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "5327f866e114a9f65aeb16507a7cf017f4aa917b0314ac02063509144eee5a3d",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "js/neon-flug/fast-view.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "af38f71d373b35bdcae9cd9300becc80683a447862fbc6f054b173b24b83ca29",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "js/neon-flug/timing.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "c3edc016816f2d2ab2982f82382cae0a69de45905311f0537586e88bf1481f74",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "js/neon-flug/directory.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "9a435d05a92d9a52c190f93221752f718f205a65e22bc0184f63352c1e4bcea8",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "js/neon-flug/profile.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "d0668135b3d72ab3bdf695a9ce53fdee902fcf14e68dae2dea2b07381ac31d3c",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "js/neon-flug/flight.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "2a784db4c931b4ae642590aedc13272719c260e1f83fc3d39ab28878ab250aaf",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "js/neon-flug/audio.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "a88024c6016d121a7a1c2e4c7438ec68a15b6d4db7bbe0f10eb7fd7e20d16f81",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "js/neon-flug/view.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "14e7e6b6164766a544dc3e99c208328507da80c990af76c285c8f623f69b8104",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "js/neon-flug/flight.css",
+      "http": "200",
+      "ok": true,
+      "sha256": "25f60148551f9ab6886d902ae109fadcb5745afcc6de302ba4a4b7860a41831b",
+      "byteIdentical": true
+    },
+    {
+      "path": "js/neon-flug/core.mjs",
+      "http": "200",
+      "ok": true,
+      "sha256": "c8222669520186aa4a839c3712757a7e2139d1ed9c8626e10285bf226547c401",
+      "byteIdentical": true,
+      "moduleMime": true
+    },
+    {
+      "path": "assets/neon-flug/aether-cover-v1.webp",
+      "http": "200",
+      "ok": true,
+      "sha256": "9f15a02562774db66006f49c09cad62e8496b5a1f6f43c0ed4d8c6a3ddaa3c76",
+      "byteIdentical": true
+    },
+    {
+      "path": "assets/neon-flug/basalt-v1.webp",
+      "http": "200",
+      "ok": true,
+      "sha256": "304e42ebfeaa02f4d2fcc2fe1b34912ee7ce002cbaa086b0deafcd8de3b849ea",
+      "byteIdentical": true
+    }
+  ],
+  "passed": true,
+  "limits": "HTTPS/Quellen-/Headervergleich mit normaler TLS-Prüfung; kein öffentlicher Browser-Koop-Nachweis",
+  "productionMergeCommit": "218c7e4d987106ce55c7cba34b87ce515970a96e",
+  "deploymentRun": 43777503558,
+  "comparisonNote": "Einzelne exakt bestätigte Bildattribut-Ergänzung des Builds in Wildnis; ursprünglicher Rohvergleich separat erhalten."
+}

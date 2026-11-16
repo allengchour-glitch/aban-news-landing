@@ -1,0 +1,80 @@
+// Vergleich derselben lokalen Seite: Baseline aus Git, aktueller Quelltext vom Header-Server.
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
+const { execFileSync } = require("node:child_process");
+const fs = require("node:fs");
+(async () => {
+  const b = await chromium.launch();
+  const results = [];
+  for (const baseline of [true, false]) {
+    const p = await b.newPage({ viewport: { width: 960, height: 540 } });
+    await p.addInitScript(() => {
+      window.__draws = 0;
+      for (const C of [
+        window.WebGLRenderingContext,
+        window.WebGL2RenderingContext,
+      ])
+        if (C)
+          for (const name of ["drawArrays", "drawElements"]) {
+            const f = C.prototype[name];
+            C.prototype[name] = function (...args) {
+              window.__draws++;
+              return f.apply(this, args);
+            };
+          }
+    });
+    if (baseline) {
+      const source = execFileSync(
+        "git",
+        ["show", "9dc1306ad:neon-zusammen.html"],
+        { encoding: "utf8" },
+      );
+      await p.route("**/neon-zusammen.html?*", async (r) => {
+        const response = await r.fetch();
+        await r.fulfill({ response, body: source });
+      });
+    }
+    await p.goto("http://localhost:8120/neon-zusammen.html?station=1");
+    await p.waitForFunction(() => window.__zs);
+    await p.waitForTimeout(500);
+    const t0 = Date.now(),
+      n0 = await p.evaluate(() => __draws);
+    await p.waitForTimeout(1500);
+    const n1 = await p.evaluate(() => __draws);
+    results.push({
+      version: baseline ? "9dc1306ad" : "working-tree",
+      phase: "lobby",
+      drawCalls: n1 - n0,
+      elapsedMs: Date.now() - t0,
+    });
+    await p.click("#startBtn");
+    await p.waitForTimeout(500);
+    await p.click("#pauseBtn");
+    const t1 = Date.now(),
+      n2 = await p.evaluate(() => __draws);
+    await p.waitForTimeout(1500);
+    results.push({
+      version: baseline ? "9dc1306ad" : "working-tree",
+      phase: "solo-pause",
+      drawCalls: (await p.evaluate(() => __draws)) - n2,
+      elapsedMs: Date.now() - t1,
+    });
+    await p.close();
+  }
+  await b.close();
+  fs.writeFileSync(
+    __dirname + "/measurement.json",
+    JSON.stringify(
+      {
+        environment:
+          "Headless Chromium / WebGL-Software, 960×540. Draw-Aufrufe über WebGL-Prototypen gezählt; keine Hardware-FPS-Aussage.",
+        results,
+      },
+      null,
+      2,
+    ),
+  );
+  console.log(results);
+})().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

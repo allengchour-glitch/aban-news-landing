@@ -1,6 +1,6 @@
 # Abschlussprüfung und Veröffentlichungsstand
 
-GEMESSEN am 15./16.11.2026: erneute Prüfung der Spiele-Änderungen. Der Besitzer hat anschliessend die Veröffentlichung dieses Spiele-Stands freigegeben. Die tatsächliche Bereitstellung wird nach dem Deployment separat auf der öffentlichen Domain geprüft; dieser Bericht allein ist kein Deployment-Nachweis.
+GEMESSEN am 15./16.11.2026: erneute Prüfung der Spiele-Änderungen. Der Besitzer hat anschliessend die Veröffentlichung dieses Spiele-Stands freigegeben. Die Bereitstellung ist jetzt separat bestätigt: Produktionscommit218c7e4d987106ce55c7cba34b87ce515970a96e, erfolgreicher Deploy43777503558,51 öffentliche HTTPS-Antworten geprüft. [Produktionsmessung](messungen/produktion.json) enthält Datei-Hashes, Header und die einzeln dokumentierte Build-Attribut-Ergänzung in Wildnis.
 
 ## Bestanden
 
