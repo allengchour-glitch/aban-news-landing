@@ -512,6 +512,21 @@
 .kb3-viewer.is-monitor .kb3-live-text ul{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px}
 .kb3-viewer.is-monitor .kb3-live-text li{padding:16px;border:1px solid var(--color-border-line);border-radius:14px;background:var(--color-bg);align-content:start;font-size:16px;line-height:1.5}
 .kb3-viewer.is-monitor .kb3-live-text .ll-ereignis{font-size:14px;line-height:1.55}
+.kb3-monitor-tools{padding:16px;border:1px solid var(--color-border-line);border-radius:16px;background:var(--color-panel)}
+.kb3-monitor-kopf{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%}
+.kb3-monitor-kopf strong{font-size:19px;letter-spacing:-.025em}
+.kb3-monitor-wahl{display:flex;align-items:center;gap:10px;flex:1;min-width:0;font-size:13px;font-weight:600}
+.kb3-monitor-wahl select{flex:1;min-width:0;min-height:46px;padding:10px 12px;border:1px solid var(--color-border-line);border-radius:10px;background:var(--color-bg);color:var(--color-fg);font:inherit;font-size:16px}
+.kb3-monitor-tools .kb3-tool{min-height:44px}
+.kb3-monitor-bot{display:flex;gap:8px;flex-wrap:wrap;width:100%;padding-top:10px;border-top:1px solid var(--color-border-line)}
+.kb3-monitor-bot[hidden]{display:none}
+.kb3-viewer.is-monitor .kb3-live-text .ll-messstand{padding:10px 0 14px;border-bottom:1px solid var(--color-border-line);color:var(--color-fg)}
+.kb3-viewer.is-monitor .kb3-live-text .ll-uhr{font-size:12px;margin-top:10px}
+/* Im Vollbild bleibt der gesamte Monitor scrollbar, auch wenn Karten lang sind. */
+.kb3-viewer.is-fullscreen.is-monitor{overflow-y:auto;overscroll-behavior:contain}
+.kb3-viewer.is-fullscreen.is-monitor>*{flex-shrink:0}
+.kb3-viewer.is-fullscreen.is-monitor .kb3-stage{flex:none;height:clamp(150px,30dvh,320px);width:100%}
+@media(max-width:640px){.kb3-monitor-tools{padding:12px;gap:8px}.kb3-monitor-kopf{align-items:flex-start;flex-direction:column}.kb3-monitor-kopf strong{font-size:17px}.kb3-monitor-wahl{flex-basis:100%}.kb3-monitor-tools>[data-cmd="fullscreen"]{margin-left:auto}.kb3-viewer.is-monitor .kb3-live-text{padding:14px}}
 .kb3-stage{border-radius:20px;border-color:#758b812e;background:radial-gradient(ellipse at 50% 25%,#f1eade,#d9e0d4 65%,#a7b9b1);box-shadow:inset 0 0 65px #173d4110}
 .kb3-viewer{background:linear-gradient(135deg,var(--color-bg),var(--color-panel));border:1px solid var(--color-border-line)}
 .kb3-viewer-head{gap:12px;padding-bottom:8px}.kb3-room-label select{min-height:48px;border-radius:12px}
@@ -522,7 +537,7 @@
 @media(prefers-reduced-motion:reduce){.kb3-tool,.kb3-chip{transition:none}}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-21">
+<div class="kb" data-design="campus-einheitlich-22">
   <header class="kb-head">
     <span class="kb-eyebrow">Arbeitsstand</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -571,7 +586,18 @@
   <div class="kb-pane" id="kb-pane-3d" data-pane="3d" role="tabpanel" aria-labelledby="kb-tab-3d">
     <p class="kb-hint kb-bedienhilfe">Raum auswählen · Monitor antippen · Figur für Einzelheiten wählen</p>
     <div class="kb3-viewer" tabindex="-1" aria-label="Interaktives Büro">
-    <div class="kb3-monitor-tools" hidden role="group" aria-label="Monitoransicht"><strong data-monitor-titel>Zentralmonitor</strong><button type="button" class="kb3-tool" data-cmd="bot">KI-Bot lesen / aktualisieren</button><a class="kb3-tool" href="https://abannews.com/ki-bot-tagebuch" target="_blank" rel="noopener noreferrer">Bot-Tagebuch öffnen</a><button type="button" class="kb3-tool" data-cmd="monitorPrev" aria-label="Vorheriger Liveboard-Raum">‹ Raum</button><button type="button" class="kb3-tool" data-cmd="monitorNext" aria-label="Nächster Liveboard-Raum">Raum ›</button><span class="kb3-nur-zentral"></span><button type="button" class="kb3-tool" data-cmd="monitorBack">← Zurück zum Büro</button><button type="button" class="kb3-tool" data-alles-anzeigen data-nur-zentral>Alle Bereiche öffnen</button><button type="button" class="kb3-tool" data-cmd="fullscreen" aria-pressed="false">Vollbild</button></div>
+    <div class="kb3-monitor-tools" hidden role="group" aria-label="Monitoransicht">
+      <div class="kb3-monitor-kopf"><strong data-monitor-titel>Zentralmonitor</strong><button type="button" class="kb3-tool" data-cmd="monitorBack">← Zurück zum Büro</button></div>
+      <label class="kb3-monitor-wahl">Monitor
+        <select data-monitor-wahl aria-label="Monitor direkt auswählen">
+          <option value="Zentral">Alle Räume · Zentrale</option><option value="Chefbüro">Chefbüro</option><option value="Krypto">KI-Bot · Schattenkonto</option><option value="Shop">Shop</option><option value="Versand">Versand</option><option value="Social Media">Social Media</option><option value="Entwicklerbüro">Entwicklung</option><option value="YouTube-Studio">YouTube-Studio</option>
+        </select>
+      </label>
+      <button type="button" class="kb3-tool" data-cmd="monitorPrev" aria-label="Vorheriger Liveboard-Raum">←</button><button type="button" class="kb3-tool" data-cmd="monitorNext" aria-label="Nächster Liveboard-Raum">→</button>
+      <button type="button" class="kb3-tool" data-cmd="fullscreen" aria-pressed="false">Vollbild</button>
+      <button type="button" class="kb3-tool" data-alles-anzeigen data-nur-zentral>Alle Bereiche öffnen</button>
+      <div class="kb3-monitor-bot" data-monitor-bot hidden><button type="button" class="kb3-tool" data-cmd="bot">KI-Bot lesen / aktualisieren</button><a class="kb3-tool" href="https://abannews.com/ki-bot-tagebuch" target="_blank" rel="noopener noreferrer">Bot-Tagebuch öffnen</a></div>
+    </div>
     <div class="kb3-viewer-head">
       <button type="button" class="kb3-tool" data-cmd="bot">KI-Bot-Dashboard</button>
       <label class="kb3-room-label">Raum <select class="kb3-room-select" aria-label="Büroraum auswählen">
@@ -1706,8 +1732,10 @@
     if (!mo) { box.hidden = true; return; }
     function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
     var farben = lampHex(), m = name === 'Zentral' ? null : mo[name], u = mo.__uebersicht;
-    var kopf = el('h3', '', name === 'Zentral' ? 'Alle Räume im Blick · ' + (u ? u.zeit : '') : (m ? m.titel + ' · ' + m.zeit : name));
+    var kopf = el('h3', '', name === 'Zentral' ? 'Alle Räume im Blick' : (m ? m.titel : name));
     box.appendChild(kopf);
+    var stand = (m || u || {}).stand;
+    box.appendChild(el('p', 'll-messstand', stand ? 'Messstand ' + stand : 'Messstand unbekannt.'));
     var ul = el('ul'), liste = m ? m.zeilen : u ? (u.abgeschlossen || []).slice(0, 4).concat(u.meldungen || []).slice(0, 8) : [];
     liste.forEach(function (z) {
       var li = el('li'), l = el('span', 'll-lampe', LL_ZEICHEN[z.state] || '○'); l.style.color = farben[z.state] || farben.alt;
@@ -1718,8 +1746,8 @@
     });
     if (!liste.length) box.appendChild(el('p', '', 'Noch keine datierte Arbeitsmeldung geladen.'));
     box.appendChild(ul);
-    var stand = (m || u || {}).stand;
-    box.appendChild(el('p', '', stand ? 'Messstand ' + stand : 'Messstand unbekannt.'));
+    var zeit = (m || u || {}).zeit;
+    if (zeit) box.appendChild(el('p', 'll-uhr', 'Büro-Uhr · ' + zeit + ' · Zürich. Die Uhr ist keine neue Messung.'));
     box.hidden = false;
   }
   function beschriftung3d(ent) {
@@ -1788,6 +1816,21 @@
     }
   });
   if(root)root.querySelectorAll('.kb3-room-select').forEach(function(s){s.addEventListener('change',function(){if(made3d && made3d.cmd)made3d.cmd('view:'+s.value);});});
+  if(viewer)viewer.querySelector('[data-monitor-wahl]').addEventListener('change',function(e){if(made3d)made3d.cmd('monitor:'+e.target.value);});
+  function monitorAnsicht(an, name) {
+    var vorher = viewer.classList.contains('is-monitor');
+    viewer.classList.toggle('is-monitor', an);root.classList.toggle('kb-monitor-offen', an);
+    var tools = viewer.querySelector('.kb3-monitor-tools'), zentral = !name || name === 'Zentral';
+    tools.hidden = !an;
+    tools.querySelector('[data-monitor-titel]').textContent = zentral ? 'Zentralmonitor' : 'Monitor · ' + (name === 'Entwicklerbüro' ? 'Entwicklung' : name);
+    tools.querySelector('[data-monitor-wahl]').value = name || 'Zentral';
+    tools.querySelector('[data-monitor-bot]').hidden = name !== 'Krypto';
+    tools.querySelectorAll('[data-nur-zentral]').forEach(function(b){b.hidden = !zentral;});
+    liveText(an ? (name || 'Zentral') : null);
+    if (an && !vorher) tools.querySelector('[data-monitor-wahl]').focus({preventScroll:true});
+    else if (!an) viewer.querySelector('.kb3-canvas').focus({preventScroll:true});
+    else if (document.activeElement.closest('[hidden]')) tools.querySelector('[data-monitor-wahl]').focus({preventScroll:true});
+  }
   function befehl3d(knopf) {
     var cmd = knopf.getAttribute('data-cmd');
     if (cmd === 'fullscreen') { vollbildWechsel(); return; }
@@ -1813,7 +1856,7 @@
       }
       var reduziert = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
       var desktopControls=window.matchMedia('(min-width:641px) and (pointer:fine)').matches;
-      var m = K3.Buero.mount(el, { desktopControls:desktopControls, initialView:window.matchMedia('(max-width:640px)').matches?'Campusplatz':'alle', instructionsId:desktopControls?'kb3-desktop-hilfe':'kb3-touch-hilfe', colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { if(id==='__campus'){if(made3d)made3d.cmd('monitor:Zentral');return;}if(id&&id.indexOf('__live:')===0){if(made3d)made3d.cmd('monitor:'+id.slice(7));return;}if(id==='__geldmanager'){root.querySelector('[data-open-money]').click();return;}waehle(id, true); }, onMonitorMode:function(an,name){viewer.classList.toggle('is-monitor',an);root.classList.toggle('kb-monitor-offen',an);var tools=viewer.querySelector('.kb3-monitor-tools');tools.hidden=!an;var zentral=!name||name==='Zentral';var ti=tools.querySelector('[data-monitor-titel]');if(ti)ti.textContent=zentral?'Zentralmonitor':'Liveboard · '+(name==='Entwicklerbüro'?'Entwicklung':name);var nz=tools.querySelector('.kb3-nur-zentral');if(nz)nz.hidden=!zentral;tools.querySelectorAll('[data-nur-zentral]').forEach(function(b){b.hidden=!zentral;});liveText(an?(name||'Zentral'):null);if(an)tools.querySelector('[data-cmd=monitorBack]').focus({preventScroll:true});else viewer.querySelector('.kb3-canvas').focus({preventScroll:true});}, onBot:function(){if(made3d&&made3d.monitorName()==='Krypto')liveText('Krypto');}, onFail: ohne3d, onView: raumKnopf });
+      var m = K3.Buero.mount(el, { desktopControls:desktopControls, initialView:window.matchMedia('(max-width:640px)').matches?'Campusplatz':'alle', instructionsId:desktopControls?'kb3-desktop-hilfe':'kb3-touch-hilfe', colors: lampHex(), reduced: reduziert, makeLabel: beschriftung3d, onPick: function (id) { if(id==='__campus'){if(made3d)made3d.cmd('monitor:Zentral');return;}if(id&&id.indexOf('__live:')===0){if(made3d)made3d.cmd('monitor:'+id.slice(7));return;}if(id==='__geldmanager'){root.querySelector('[data-open-money]').click();return;}waehle(id, true); }, onMonitorMode:monitorAnsicht, onBot:function(){if(made3d&&made3d.monitorName()==='Krypto')liveText('Krypto');}, onFail: ohne3d, onView: raumKnopf });
       made3d = m && m.ok ? m : null;
       if(made3d)root.querySelectorAll('.kb3-licht [data-cmd]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.cmd==='licht:'+made3d.licht()));});
       if(made3d)root.querySelectorAll('[data-cmd=move],[data-cmd=rotate]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.cmd===(desktopControls?'move':'rotate')));});

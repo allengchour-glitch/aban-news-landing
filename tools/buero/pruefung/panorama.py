@@ -1,4 +1,4 @@
-"""Büro-Licht und lesbare Monitore mit lokalen Prüfdaten, ohne externe Abrufe.
+"""Büro-Licht und Monitorbedienung mit lokalen Prüfdaten, ohne externe Abrufe.
 
 Aufruf: python3 panorama.py <Prüfordner mit harness.html und kb3d-*.js> <Bildordner>
 Prüfordner: seite.html und buero.json kopieren, harness.py ausführen, 3D-Dateien bauen.
@@ -14,14 +14,16 @@ code=(r/'kb3d-code.js').read_text()+"\nvar mountAlt=KB3D.Buero.mount;KB3D.Buero.
 with sync_playwright() as pw:
  b=pw.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox','--use-gl=angle','--use-angle=swiftshader-webgl','--enable-unsafe-swiftshader','--disable-dev-shm-usage'])
  for width in (1440,390):
-  p=b.new_page(viewport={'width':width,'height':1050},reduced_motion='reduce');errors=[];p.on('pageerror',lambda e:errors.append(str(e)))
+  p=b.new_page(viewport={'width':width,'height':844},reduced_motion='reduce');errors=[];botabrufe=[];p.on('pageerror',lambda e:errors.append(str(e)))
+  p.set_default_timeout(90000)
   def route(rt):
    name=urlparse(rt.request.url).path.lstrip('/');f=r/name
+   if name=='data/ki-bot-schatten.json':botabrufe.append(name)
    if name=='kb3d-code.js':rt.fulfill(body=code,content_type='application/javascript')
    elif f.is_file():rt.fulfill(path=str(f))
    else:rt.abort()
   p.route('**/*',route);p.goto('http://127.0.0.1:8765/harness.html');p.evaluate('__runAll()');p.locator('#kb-tab-3d').click();p.evaluate('dash.draw("szene3d")')
-  assert p.evaluate('KB3D.DESIGN_VERSION')=='campus-einheitlich-21'
+  assert p.evaluate('KB3D.DESIGN_VERSION')=='campus-einheitlich-22'
   original=p.evaluate('JSON.stringify(__ROWS)');p.locator('.kb3-room-select').select_option('Campusplatz')
   for light in ('tag','galerie','abend'):
    p.locator('[data-cmd="licht:'+light+'"]').click()
@@ -31,17 +33,50 @@ with sync_playwright() as pw:
    assert p.evaluate('__office.licht()')==light
    assert p.locator('.kb3-licht [aria-pressed=true]').count()==1
    p.locator('.kb3-stage').screenshot(path=str(bilder/f'buero-{width}-{light}.png'))
+  kamera=p.evaluate('JSON.stringify(__office.debug.cam.g)')
   p.locator('[data-cmd="monitor"]').first.click();p.wait_for_timeout(100)
   assert p.evaluate('__office.monitorName()')=='Zentral'
   assert not p.locator('.kb3-licht').is_visible()
   assert p.locator('[data-live-text]').evaluate('(n)=>n.clientHeight>100 && getComputedStyle(n).position==="static"')
   assert p.locator('[data-live-text] li').count()>0
+  auswahl=p.locator('[data-monitor-wahl]')
+  assert auswahl.evaluate('(n)=>n===document.activeElement')
+  assert not p.locator('[data-monitor-bot]').is_visible()
+  for raum in ('Shop','Versand','Social Media','Entwicklerbüro','YouTube-Studio','Chefbüro','Krypto','Zentral'):
+   auswahl.focus();auswahl.select_option(raum)
+   assert p.evaluate('__office.monitorName()')==raum
+   assert auswahl.evaluate('(n)=>n===document.activeElement'),raum
+   assert p.locator('[data-monitor-bot]').is_visible()==(raum=='Krypto')
+   assert p.locator('[data-live-text] .ll-messstand').is_visible()
+   assert 'Büro-Uhr' not in p.locator('[data-live-text] h3').inner_text()
+  for cmd in ('monitorNext','monitorPrev'):
+   knopf=p.locator('[data-cmd='+cmd+']');knopf.click()
+   assert knopf.evaluate('(n)=>n===document.activeElement')
+   assert auswahl.input_value()==p.evaluate('__office.monitorName()')
+  assert len(botabrufe)==1,botabrufe
+  auswahl.select_option('Krypto');auswahl.select_option('Zentral')
+  assert len(botabrufe)==1,botabrufe
+  if width==390:
+   p.evaluate('()=>{document.querySelector(".kb3-viewer").requestFullscreen=()=>Promise.reject(new Error("Prüfung des CSS-Vollbilds"));}')
+  voll=p.locator('.kb3-monitor-tools [data-cmd=fullscreen]');voll.click()
+  assert p.locator('.kb3-viewer').evaluate('(n)=>n.classList.contains("is-fullscreen")')
+  p.locator('.kb3-viewer').evaluate('(n)=>n.scrollTop=n.scrollHeight')
+  assert p.locator('[data-live-text] li').last.evaluate('(n)=>n.getBoundingClientRect().bottom<=innerHeight'),width
+  p.locator('.kb3-viewer').evaluate('(n)=>n.scrollTop=0')
+  assert p.locator('.kb3-stage').evaluate('(n)=>n.clientHeight>=150'),width
+  p.screenshot(path=str(bilder/f'buero-{width}-vollbild.png'))
+  voll.click()
+  assert p.evaluate('document.documentElement.style.overflow')!='hidden'
   p.locator('.kb3-viewer').screenshot(path=str(bilder/f'buero-{width}-monitor.png'))
   p.locator('[data-cmd=monitorBack]').click();assert p.locator('.kb3-licht').is_visible()
+  assert kamera==p.evaluate('JSON.stringify(__office.debug.cam.g)')
+  p.locator('[data-cmd="monitor"]').first.click();auswahl.select_option('Shop');p.keyboard.press('Escape')
+  assert not p.evaluate('__office.monitorName()')
+  assert kamera==p.evaluate('JSON.stringify(__office.debug.cam.g)')
   p.evaluate('__office.cmd("licht:unbekannt")');assert p.evaluate('__office.licht()')=='abend'
   assert original==p.evaluate('JSON.stringify(__ROWS)')
   assert p.evaluate('document.documentElement.scrollWidth<=innerWidth'),width
   assert not errors,errors
-  print(width,'3 Lichtstimmungen, sichtbare Auswahl, Monitor/Rückkehr, ungültige Wahl, Daten unverändert, kein Überlauf/JS-Fehler: grün')
+  print(width,'3 Lichtstimmungen, 8 Monitorziele, Fokus/Zurück/Escape, Vollbild scrollbar, Bot-Abruf einmalig, Daten unverändert, kein Überlauf/JS-Fehler: grün',flush=True)
   p.close()
  b.close()

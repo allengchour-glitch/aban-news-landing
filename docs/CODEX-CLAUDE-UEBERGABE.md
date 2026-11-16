@@ -1,5 +1,14 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Monitorzentrale: direkte Auswahl und nutzbares Vollbild ·16.11.2026
+
+Folgeauftrag «verbessere», eigener Branch codex/buero-monitor-navigation von main74bf01d. Aktuelle Regeln, Übergaben und offene Büro-PRs gelesen; keine offene Änderung an den Büro-Quellen. Design22: direkter Wechsel Zentral + sieben Räume über bestehendes monitor:-Kommando. Pfeile/Auswahl bleiben synchron; Fokus bleibt beim Bedienelement statt nach jedem Wechsel auf Zurück zu springen. Bot-Aktionen nur im Krypto-Monitor. Messstand über den Textkarten, Schweizer Büro-Uhr getrennt darunter; Daten/Quellen/Abfragen bleiben erhalten.
+
+Vorher-Browser390×844 mit lokalen Prüfdaten: Bühne0px, letzte Karte bis946,95px, Inhalt1065px bei sichtbarem Überlauf und gesperrtem Dokument-Scrollen. Jetzt gesamter Vollbild-Monitor scrollbar, Bühne mindestens150px. Erweiterter bestehender panorama.py:390/1440, acht Ziele, Fokus/Pfeile, Kamera-Rückkehr, Escape, natives Vollbild plus CSS-Fallback, letzte Karte erreichbar, Bot-Endpunkt einmal abgefangen auch nach Wiederbesuch, Daten unverändert, kein Überlauf/JS-Fehler. Browserbilder ausserhalb Git angesehen.44 Bauprüfungen,31/31 vorhandene Mutationen,21 Botprüfungen und vollständiger Modell-/öffentlicher Bau grün. Drei-Seiten-Browserprüfung und echte PR-/Deploymentbelege im zugehörigen PR. Keine reale Handy-Leistungs- oder Ertragsmessung.
+
+Claude: vollständigen neuen Drei-Seiten-Bau mit aktuellem HTML, kb-stil.css, 3D-Code, Modellpaketen und Geldmanager übernehmen; keine Rohdatei als index.html. Vorher vorhandene Dateien/Versionen frisch lesen, private Änderungen/Eingaben/Messzeiten/Datensätze erhalten, atomar mit Versionsbedingungen übertragen, danach rücklesen. Ohne neue Quittung keine private Bereitstellung behaupten. Higgsfield-Gestaltung bleibt die zuvor bestätigte private Revision5; diese Bedienungsänderung erfordert keine neue Szene.
+
+
 ## Arcade: neun eigene Spielkerne ·16.11.2026
 
 Besitzerauftrag: «Traumhaus macht schon jemand», «du machst alles andere bis jedes Spiel einzigartig ist»; bestehende Freigabe «mach alles live». Traumhaus-Code und Hauptspiel-Hero bleiben beim anderen Bearbeiter. Inventar:31 andere aktive Spiele, vier alte Weiterleitungen nicht doppelt zählen. Neun Spiele überarbeitet: Prisma Rallye (Pol-/Spur-Kombination, Energie, Ziel/Medaille), Lichtschienen (Gleitfahrt/Team-Impulse), Lichterpremiere (vier Regie-Fahrten), Nexus-Wacht (Reaktor/Reparatur/Verteidigung), drei Kolossprüfungen, Rhythmus-Tipp-Duell, Schalt-Rennen, Ausdauer-Tauziehen und Turm-Präzisionsentscheid.22 bereits verschiedene Spielkerne erhalten, keine weltweite Neuheit klassischer Regeln behaupten. Fünf Direktstarts im Hub; Jump bleibt lokaler Koop. Neue Online-Protokolle park-premiere1, survivor-reactor1 und dungeon-trials1 trennen alte Tabs sicher ab; gemeinsames mp.js unverändert.
