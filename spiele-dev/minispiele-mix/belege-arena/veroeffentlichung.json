@@ -1,0 +1,10 @@
+{
+  "pr": 3213,
+  "testedHead": "02af489da6ba6998bb89780e128192355ecc3f54",
+  "mergeCommit": "78f14f5fb37c3a02cc4690406a1fa49adc676f62",
+  "deployRun": 43924427755,
+  "deploy": "success",
+  "setupStepsSkipped": 4,
+  "normalTlsChecks": 42,
+  "passed": true
+}

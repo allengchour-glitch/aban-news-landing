@@ -1,0 +1,417 @@
+{
+  "releaseCommit": "78f14f5fb37c3a02cc4690406a1fa49adc676f62",
+  "sourceHead": "02af489da6ba6998bb89780e128192355ecc3f54",
+  "builderSha256": "370f29431897c4903b2c566e440fd055272fbadc605f473b1d8e255317d3f19d",
+  "controls": {
+    "allBuiltPagesHaveScripts": true,
+    "changedGameValueRejected": true,
+    "extraScriptRejected": true,
+    "missingMixLoaderRejected": true
+  },
+  "checks": [
+    {
+      "file": "spiele.html",
+      "uri": "spiele.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/auto-rennen.html",
+      "uri": "minispiele/auto-rennen.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/ballon-pump.html",
+      "uri": "minispiele/ballon-pump.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/drei-gewinnt.html",
+      "uri": "minispiele/drei-gewinnt.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/elfmeter.html",
+      "uri": "minispiele/elfmeter.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/farb-klick.html",
+      "uri": "minispiele/farb-klick.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/hoch-tief.html",
+      "uri": "minispiele/hoch-tief.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/index.html",
+      "uri": "minispiele/index.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/mathe-duell.html",
+      "uri": "minispiele/mathe-duell.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/maulwurf.html",
+      "uri": "minispiele/maulwurf.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/memory.html",
+      "uri": "minispiele/memory.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/pong.html",
+      "uri": "minispiele/pong.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/punkte-jagd.html",
+      "uri": "minispiele/punkte-jagd.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/quiz-buzzer.html",
+      "uri": "minispiele/quiz-buzzer.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/reaktions-duell.html",
+      "uri": "minispiele/reaktions-duell.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/schere-stein-papier.html",
+      "uri": "minispiele/schere-stein-papier.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/schlange-duell.html",
+      "uri": "minispiele/schlange-duell.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/simon.html",
+      "uri": "minispiele/simon.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/stapel-turm.html",
+      "uri": "minispiele/stapel-turm.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/tap-duell.html",
+      "uri": "minispiele/tap-duell.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/tauziehen.html",
+      "uri": "minispiele/tauziehen.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/vier-gewinnt.html",
+      "uri": "minispiele/vier-gewinnt.html",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "spiele.html",
+      "uri": "spiele",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "minispiele/index.html",
+      "uri": "minispiele/",
+      "http": "200",
+      "ok": true,
+      "scriptsExact": true,
+      "externalOrderExact": true,
+      "stylesExact": true,
+      "securityExact": true
+    },
+    {
+      "file": "js/minispiele-mix/app.js",
+      "uri": "js/minispiele-mix/app.js",
+      "http": "200",
+      "ok": true,
+      "sha256": "b9d24b838ef41eab32ae6234f43dde0edcc69f222848866fa08bc675bfd043df",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "js/minispiele-mix/app.js",
+      "uri": "js/minispiele-mix/app.js?v=b9d24b838ef4",
+      "http": "200",
+      "ok": true,
+      "sha256": "b9d24b838ef41eab32ae6234f43dde0edcc69f222848866fa08bc675bfd043df",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "js/minispiele-mix/catalog.js",
+      "uri": "js/minispiele-mix/catalog.js",
+      "http": "200",
+      "ok": true,
+      "sha256": "10ac4388224ffda0ec2031112c4d6b2e41e55d6c924b1b4e0c3dcee49bdd856a",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "js/minispiele-mix/catalog.js",
+      "uri": "js/minispiele-mix/catalog.js?v=10ac4388224f",
+      "http": "200",
+      "ok": true,
+      "sha256": "10ac4388224ffda0ec2031112c4d6b2e41e55d6c924b1b4e0c3dcee49bdd856a",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "js/minispiele-mix/core.js",
+      "uri": "js/minispiele-mix/core.js",
+      "http": "200",
+      "ok": true,
+      "sha256": "0f76a1d297ba229f8db2b7dd10f608963876eba6f21b72dfbbc3b3c0eaa9fd50",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "js/minispiele-mix/core.js",
+      "uri": "js/minispiele-mix/core.js?v=0f76a1d297ba",
+      "http": "200",
+      "ok": true,
+      "sha256": "0f76a1d297ba229f8db2b7dd10f608963876eba6f21b72dfbbc3b3c0eaa9fd50",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "js/minispiele-mix/progress.js",
+      "uri": "js/minispiele-mix/progress.js",
+      "http": "200",
+      "ok": true,
+      "sha256": "82f6acbece4572726e6e96dec91a954453ef2009f2cc2d0ce3f7f7f57d59c383",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "js/minispiele-mix/progress.js",
+      "uri": "js/minispiele-mix/progress.js?v=82f6acbece45",
+      "http": "200",
+      "ok": true,
+      "sha256": "82f6acbece4572726e6e96dec91a954453ef2009f2cc2d0ce3f7f7f57d59c383",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "js/minispiele-mix/result.js",
+      "uri": "js/minispiele-mix/result.js",
+      "http": "200",
+      "ok": true,
+      "sha256": "ed5628fb888b88f7e23b1d2cc76f945d9ce75dd185ad8e64bba5822265dc7093",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "js/minispiele-mix/result.js",
+      "uri": "js/minispiele-mix/result.js?v=ed5628fb888b",
+      "http": "200",
+      "ok": true,
+      "sha256": "ed5628fb888b88f7e23b1d2cc76f945d9ce75dd185ad8e64bba5822265dc7093",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "css/minispiele-mix.css",
+      "uri": "css/minispiele-mix.css",
+      "http": "200",
+      "ok": true,
+      "sha256": "f679f96ff6a1f2d629513a2c9a6f4ed892dc780a126c4a88bc0e89e8948ff119",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "css/minispiele-mix.css",
+      "uri": "css/minispiele-mix.css?v=f679f96ff6a1",
+      "http": "200",
+      "ok": true,
+      "sha256": "f679f96ff6a1f2d629513a2c9a6f4ed892dc780a126c4a88bc0e89e8948ff119",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "css/minispiele-mix-embedded.css",
+      "uri": "css/minispiele-mix-embedded.css",
+      "http": "200",
+      "ok": true,
+      "sha256": "83a47abf40daebe54f617919f63c8260e274268cccfa8103293b48c2c7c2a0de",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "css/minispiele-mix-embedded.css",
+      "uri": "css/minispiele-mix-embedded.css?v=83a47abf40da",
+      "http": "200",
+      "ok": true,
+      "sha256": "83a47abf40daebe54f617919f63c8260e274268cccfa8103293b48c2c7c2a0de",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "css/minispiele-mix-landscape.css",
+      "uri": "css/minispiele-mix-landscape.css",
+      "http": "200",
+      "ok": true,
+      "sha256": "d5bd7446b6f5ae14590ca4c99c789359823811e98c40477a277d9f76cd6b74ec",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "css/minispiele-mix-landscape.css",
+      "uri": "css/minispiele-mix-landscape.css?v=d5bd7446b6f5",
+      "http": "200",
+      "ok": true,
+      "sha256": "d5bd7446b6f5ae14590ca4c99c789359823811e98c40477a277d9f76cd6b74ec",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "assets/minispiele-mix/arena.svg",
+      "uri": "assets/minispiele-mix/arena.svg",
+      "http": "200",
+      "ok": true,
+      "sha256": "148dbc2f9517f766ec6ee033a280986ae5fb33af8bedc92acc27924156e59a67",
+      "bytesExact": true,
+      "mimeCorrect": true
+    },
+    {
+      "file": "assets/minispiele-mix/arena.svg",
+      "uri": "assets/minispiele-mix/arena.svg?v=148dbc2f9517",
+      "http": "200",
+      "ok": true,
+      "sha256": "148dbc2f9517f766ec6ee033a280986ae5fb33af8bedc92acc27924156e59a67",
+      "bytesExact": true,
+      "mimeCorrect": true
+    }
+  ],
+  "passed": true,
+  "limits": "Normale TLS-Prüfung und exakte Build-Skripte/Styles/Header/Assets. Kein öffentlicher Browser-, Internet-Koop- oder Handy-FPS-Test."
+}

@@ -1,5 +1,9 @@
 # Claude Code: Arbeitsstand der Mix Arena
 
+## Veröffentlichung bestätigt
+
+PR3213: sechs echte relevante Head-Prüfungen grün, Merge78f14f5fb, Hauptseitenlauf43924427755 erfolgreich.42/42 öffentliche Quellen-/Asset-/Headerprüfungen mit normalem TLS bestanden, vier Einrichtungsschritte übersprungen. Live https://abannews.com/minispiele/ . Belege: `belege-arena/veroeffentlichung.json`, `produktion.json`. Der folgende Arbeitsverlauf dokumentiert die vorherige Umsetzung; aktueller projektübergreifender Stand in `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`.
+
 ## Auftrag und Grenzen
 
 Besitzer am 16.11.2026: «verbessere mehr alles wie ein komplettes spiel», anschließend «mache ohne pause verbesserung … speichere regelmässig für claude code». Bestehende Live- und Mehragenten-Freigabe gilt weiter. Traumhaus wird von einer anderen Sitzung bearbeitet. Keine Shop-, Social-, Konto- oder Secret-Änderungen.

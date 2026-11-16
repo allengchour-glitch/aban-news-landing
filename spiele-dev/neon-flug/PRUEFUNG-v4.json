@@ -1,0 +1,921 @@
+{
+  "status": "GEMESSEN",
+  "base": "c3088227d",
+  "branch": "codex/neon-flug-ringe-belohnung",
+  "node": {
+    "passed": 66,
+    "failed": 0
+  },
+  "browserCount": 90,
+  "suites": {
+    "features-browser": {
+      "checks": [
+        {
+          "name": "Canvas entfernt normal-Ring auf repliziertem Zustand",
+          "ok": true,
+          "details": {
+            "type": "normal",
+            "drawnBefore": 1,
+            "drawnAfter": 0,
+            "changedPixels": 3550,
+            "collected": true
+          }
+        },
+        {
+          "name": "Canvas entfernt bonus-Ring auf repliziertem Zustand",
+          "ok": true,
+          "details": {
+            "type": "bonus",
+            "drawnBefore": 1,
+            "drawnAfter": 0,
+            "changedPixels": 3552,
+            "collected": true
+          }
+        },
+        {
+          "name": "Canvas entfernt duet-Ring auf repliziertem Zustand",
+          "ok": true,
+          "details": {
+            "type": "duet",
+            "drawnBefore": 2,
+            "drawnAfter": 0,
+            "changedPixels": 7114,
+            "collected": true
+          }
+        },
+        {
+          "name": "Partikelpool maximal 96; reduced-motion leert Zusatzeffekte",
+          "ok": true
+        },
+        {
+          "name": "Pfeil hoch bewegt echte Höhe und löst keinen Dash aus",
+          "ok": true,
+          "details": {
+            "before": 0,
+            "after": 3
+          }
+        },
+        {
+          "name": "S bewegt echte Höhe abwärts",
+          "ok": true,
+          "details": {
+            "y": -2.941666666666666
+          }
+        },
+        {
+          "name": "D bewegt horizontal",
+          "ok": true
+        },
+        {
+          "name": "Training ohne XP und ohne Kampagnenfreischaltung",
+          "ok": true
+        },
+        {
+          "name": "Trainingsergebnis bleibt nach Reload ohne XP",
+          "ok": true
+        },
+        {
+          "name": "Standard erstellt keinen WebGL-Kontext",
+          "ok": true
+        },
+        {
+          "name": "Touchstick steuert beide Achsen mit realen Touch-Events",
+          "ok": true,
+          "details": {
+            "before": {
+              "x": -3.2,
+              "y": 0
+            },
+            "after": {
+              "x": -0.27729197109560466,
+              "y": 2.922708028904396
+            }
+          }
+        },
+        {
+          "name": "Touch-Ende stoppt beide Achsen",
+          "ok": true
+        },
+        {
+          "name": "Feuerknopf schiesst per Touch",
+          "ok": true
+        },
+        {
+          "name": "Host wählt denselben optionalen Modus für beide",
+          "ok": true
+        },
+        {
+          "name": "Gast-W-Eingabe verändert Höhe am autoritativen Host",
+          "ok": true,
+          "details": {
+            "hostY": 2.3249999999999997
+          }
+        },
+        {
+          "name": "Gastfeuer wird vom Host simuliert und repliziert",
+          "ok": true
+        },
+        {
+          "name": "Drohnenabschuss und Trefferfeedback synchron",
+          "ok": true
+        },
+        {
+          "name": "Schießabschluss vergibt XP ohne klassische Kapitel freizuschalten",
+          "ok": true,
+          "details": {
+            "xp": 125,
+            "kills": 1
+          }
+        },
+        {
+          "name": "Wiederholtes Ergebnis vergibt kein zweites XP",
+          "ok": true
+        },
+        {
+          "name": "Ergebnisreload nach Verbindungsende vergibt kein zweites XP",
+          "ok": true
+        },
+        {
+          "name": "Keine JavaScript-Fehler",
+          "ok": true,
+          "details": []
+        },
+        {
+          "name": "Auch Koop ohne WebGL",
+          "ok": true
+        }
+      ],
+      "errors": []
+    },
+    "review-browser": {
+      "checks": [
+        {
+          "name": "390×844: HUD getrennt, Feuer erreichbar",
+          "ok": true,
+          "details": {
+            "f": {
+              "x": 33.546875,
+              "y": 303,
+              "right": 221.546875,
+              "bottom": 324,
+              "width": 188,
+              "height": 21
+            },
+            "team": {
+              "x": 17.546875,
+              "y": 145,
+              "right": 272.171875,
+              "bottom": 203,
+              "width": 254.625,
+              "height": 58
+            },
+            "actions": {
+              "x": 17.546875,
+              "y": 770,
+              "right": 372.453125,
+              "bottom": 829,
+              "width": 354.90625,
+              "height": 59
+            },
+            "fire": {
+              "x": 17.546875,
+              "y": 770,
+              "right": 137.015625,
+              "bottom": 829,
+              "width": 119.46875,
+              "height": 59
+            },
+            "resonance": {
+              "x": 17.546875,
+              "y": 220,
+              "right": 237.546875,
+              "bottom": 340,
+              "width": 220,
+              "height": 120
+            },
+            "noOverlap": true,
+            "fireReachable": true
+          }
+        },
+        {
+          "name": "390×844: Touch-Feuer funktioniert",
+          "ok": true
+        },
+        {
+          "name": "640×360: HUD getrennt, Feuer erreichbar",
+          "ok": true,
+          "details": {
+            "f": {
+              "x": 37.796875,
+              "y": 255,
+              "right": 239.796875,
+              "bottom": 273,
+              "width": 202,
+              "height": 18
+            },
+            "team": {
+              "x": 28.796875,
+              "y": 115,
+              "right": 302.6875,
+              "bottom": 168,
+              "width": 273.890625,
+              "height": 53
+            },
+            "actions": {
+              "x": 265.96875,
+              "y": 296,
+              "right": 611.203125,
+              "bottom": 348,
+              "width": 345.234375,
+              "height": 52
+            },
+            "fire": {
+              "x": 265.96875,
+              "y": 296,
+              "right": 383.75,
+              "bottom": 348,
+              "width": 117.78125,
+              "height": 52
+            },
+            "resonance": {
+              "x": 28.796875,
+              "y": 216,
+              "right": 248.796875,
+              "bottom": 282,
+              "width": 220,
+              "height": 66
+            },
+            "noOverlap": true,
+            "fireReachable": true
+          }
+        },
+        {
+          "name": "640×360: Touch-Feuer funktioniert",
+          "ok": true
+        },
+        {
+          "name": "960×540: HUD getrennt, Feuer erreichbar",
+          "ok": true,
+          "details": {
+            "f": {
+              "x": 54.1875,
+              "y": 424,
+              "right": 252.1875,
+              "bottom": 444,
+              "width": 198,
+              "height": 20
+            },
+            "team": {
+              "x": 43.1875,
+              "y": 115,
+              "right": 376.140625,
+              "bottom": 171,
+              "width": 332.953125,
+              "height": 56
+            },
+            "actions": {
+              "x": 571.578125,
+              "y": 476,
+              "right": 916.8125,
+              "bottom": 528,
+              "width": 345.234375,
+              "height": 52
+            },
+            "fire": {
+              "x": 571.578125,
+              "y": 476,
+              "right": 689.359375,
+              "bottom": 528,
+              "width": 117.78125,
+              "height": 52
+            },
+            "resonance": {
+              "x": 43.1875,
+              "y": 351,
+              "right": 263.1875,
+              "bottom": 455,
+              "width": 220,
+              "height": 104
+            },
+            "noOverlap": true,
+            "fireReachable": true
+          }
+        },
+        {
+          "name": "960×540: Touch-Feuer funktioniert",
+          "ok": true
+        },
+        {
+          "name": "Spätes WebLock überschreibt weder neuen Run noch Rolle/Name",
+          "ok": true
+        },
+        {
+          "name": "Abgelehnter Lock bleibt idempotent und ohne Rejection",
+          "ok": true
+        },
+        {
+          "name": "Quota-Fallback behält RAM-XP/Claims trotz lesbarem altem Profil",
+          "ok": true
+        },
+        {
+          "name": "Zweiter Run nach Quota erhält ersten RAM-Fortschritt ohne Doppel-XP",
+          "ok": true
+        },
+        {
+          "name": "Keine JavaScript-Fehler bei Reviewgegenproben",
+          "ok": true,
+          "details": []
+        }
+      ],
+      "errors": []
+    },
+    "bounds-webgl": {
+      "checks": [
+        {
+          "name": "Höhenrand -3, 960×540: Canvas sichtbar",
+          "ok": true,
+          "details": [
+            {
+              "left": 115.27384615384612,
+              "right": 290.73230769230764,
+              "top": 371.34055384615385,
+              "bottom": 488.31286153846156
+            },
+            {
+              "left": 773.2430769230768,
+              "right": 948.7015384615383,
+              "top": 371.34055384615385,
+              "bottom": 488.31286153846156
+            }
+          ]
+        },
+        {
+          "name": "Höhenrand -3, 960×540: WebGL sichtbar und über Wasser",
+          "ok": true,
+          "details": {
+            "ships": [
+              {
+                "left": 101.0762632080467,
+                "right": 345.59524567636464,
+                "top": 399.6676765071942,
+                "bottom": 511.1857191395239,
+                "worldBottom": -2.6700000047683714
+              },
+              {
+                "left": 670.8381991327486,
+                "right": 939.5816912221677,
+                "top": 397.1552838435084,
+                "bottom": 504.60217356739224,
+                "worldBottom": -2.6700000047683714
+              }
+            ],
+            "ring": {
+              "left": 244.93142681562145,
+              "right": 376.5193414134874,
+              "top": 379.38721463560046,
+              "bottom": 505.6409802608837,
+              "worldBottom": -4.4500000953674315
+            }
+          }
+        },
+        {
+          "name": "Höhenrand 3, 960×540: Canvas sichtbar",
+          "ok": true,
+          "details": [
+            {
+              "left": 115.27384615384612,
+              "right": 290.73230769230764,
+              "top": 152.01747692307694,
+              "bottom": 268.9897846153846
+            },
+            {
+              "left": 773.2430769230768,
+              "right": 948.7015384615383,
+              "top": 152.01747692307694,
+              "bottom": 268.9897846153846
+            }
+          ]
+        },
+        {
+          "name": "Höhenrand 3, 960×540: WebGL sichtbar und über Wasser",
+          "ok": true,
+          "details": {
+            "ships": [
+              {
+                "left": 89.18213473464965,
+                "right": 342.8613189479348,
+                "top": 251.23179848275655,
+                "bottom": 287.4146771254846,
+                "worldBottom": 3.3299999952316286
+              },
+              {
+                "left": 674.6708776639615,
+                "right": 953.536262785027,
+                "top": 251.2093292520178,
+                "bottom": 286.4410875683282,
+                "worldBottom": 3.3299999952316286
+              }
+            ],
+            "ring": {
+              "left": 239.14488314557565,
+              "right": 374.06996932937165,
+              "top": 202.70525774175508,
+              "bottom": 332.2327977399557,
+              "worldBottom": 1.5499999046325685
+            }
+          }
+        },
+        {
+          "name": "Höhenrand -3, 844×390: Canvas sichtbar",
+          "ok": true,
+          "details": [
+            {
+              "left": 159.056,
+              "right": 285.776,
+              "top": 268.19040000000007,
+              "bottom": 352.67040000000003
+            },
+            {
+              "left": 634.256,
+              "right": 760.976,
+              "top": 268.19040000000007,
+              "bottom": 352.67040000000003
+            }
+          ]
+        },
+        {
+          "name": "Höhenrand -3, 844×390: WebGL sichtbar und über Wasser",
+          "ok": true,
+          "details": {
+            "ships": [
+              {
+                "left": 89.33786626596087,
+                "right": 304.15381895145066,
+                "top": 288.65406984647916,
+                "bottom": 369.21899667202536,
+                "worldBottom": -2.6700000047683714
+              },
+              {
+                "left": 590.0791863530412,
+                "right": 826.4577478795135,
+                "top": 286.8170993494193,
+                "bottom": 364.40483357350075,
+                "worldBottom": -2.6700000047683714
+              }
+            ],
+            "ring": {
+              "left": 215.71875125618584,
+              "right": 331.4063460546183,
+              "top": 274.0047637340805,
+              "bottom": 365.20195421289986,
+              "worldBottom": -4.4500000953674315
+            }
+          }
+        },
+        {
+          "name": "Höhenrand 3, 844×390: Canvas sichtbar",
+          "ok": true,
+          "details": [
+            {
+              "left": 159.056,
+              "right": 285.776,
+              "top": 109.79040000000003,
+              "bottom": 194.27040000000002
+            },
+            {
+              "left": 634.256,
+              "right": 760.976,
+              "top": 109.79040000000003,
+              "bottom": 194.27040000000002
+            }
+          ]
+        },
+        {
+          "name": "Höhenrand 3, 844×390: WebGL sichtbar und über Wasser",
+          "ok": true,
+          "details": {
+            "ships": [
+              {
+                "left": 140.1437392582539,
+                "right": 323.2218520296311,
+                "top": 181.44527386361875,
+                "bottom": 207.581636548868,
+                "worldBottom": 3.3299999952316286
+              },
+              {
+                "left": 562.8472201760948,
+                "right": 764.3418903347125,
+                "top": 181.42884521561112,
+                "bottom": 206.86970747632515,
+                "worldBottom": 3.3299999952316286
+              }
+            ],
+            "ring": {
+              "left": 248.3712461050821,
+              "right": 345.817081838679,
+              "top": 146.39506019561233,
+              "bottom": 239.9514715014911,
+              "worldBottom": 1.5499999046325685
+            }
+          }
+        },
+        {
+          "name": "Höhenrand -3, 1280×800: Canvas sichtbar",
+          "ok": true,
+          "details": [
+            {
+              "left": 33.87076923076923,
+              "right": 289.08307692307693,
+              "top": 545.0771692307692,
+              "bottom": 715.2187076923076
+            },
+            {
+              "left": 990.9169230769232,
+              "right": 1246.1292307692308,
+              "top": 545.0771692307692,
+              "bottom": 715.2187076923076
+            }
+          ]
+        },
+        {
+          "name": "Höhenrand -3, 1280×800: WebGL sichtbar und über Wasser",
+          "ok": true,
+          "details": {
+            "ships": [
+              {
+                "left": 53.33049313420368,
+                "right": 412.70167307300284,
+                "top": 579.7446862995776,
+                "bottom": 731.1310491017275,
+                "worldBottom": -2.6700000047683714
+              },
+              {
+                "left": 867.2983269269971,
+                "right": 1226.6695068657964,
+                "top": 579.7446862995776,
+                "bottom": 731.1310491017275,
+                "worldBottom": -2.6700000047683714
+              }
+            ],
+            "ring": {
+              "left": 264.57674327887383,
+              "right": 447.5175622193948,
+              "top": 551.8126703924045,
+              "bottom": 725.462186355381,
+              "worldBottom": -4.4500000953674315
+            }
+          }
+        },
+        {
+          "name": "Höhenrand 3, 1280×800: Canvas sichtbar",
+          "ok": true,
+          "details": [
+            {
+              "left": 33.87076923076923,
+              "right": 289.08307692307693,
+              "top": 226.06178461538462,
+              "bottom": 396.2033230769231
+            },
+            {
+              "left": 990.9169230769232,
+              "right": 1246.1292307692308,
+              "top": 226.06178461538462,
+              "bottom": 396.2033230769231
+            }
+          ]
+        },
+        {
+          "name": "Höhenrand 3, 1280×800: WebGL sichtbar und über Wasser",
+          "ok": true,
+          "details": {
+            "ships": [
+              {
+                "left": 35.18345621676076,
+                "right": 408.1013925871521,
+                "top": 373.81834662217443,
+                "bottom": 423.5157135808025,
+                "worldBottom": 3.3299999952316286
+              },
+              {
+                "left": 871.8986074128479,
+                "right": 1244.8165437832392,
+                "top": 373.81834662217443,
+                "bottom": 423.5157135808025,
+                "worldBottom": 3.3299999952316286
+              }
+            ],
+            "ring": {
+              "left": 255.41777011858392,
+              "right": 442.9789881835751,
+              "top": 306.76098261137344,
+              "bottom": 485.74972932804565,
+              "worldBottom": 1.5499999046325685
+            }
+          }
+        },
+        {
+          "name": "WebGL entfernt normal-Ring aus Replica",
+          "ok": true,
+          "details": {
+            "type": "normal",
+            "before": true,
+            "after": false
+          }
+        },
+        {
+          "name": "WebGL entfernt bonus-Ring aus Replica",
+          "ok": true,
+          "details": {
+            "type": "bonus",
+            "before": true,
+            "after": false
+          }
+        },
+        {
+          "name": "WebGL entfernt duet-Ring aus Replica",
+          "ok": true,
+          "details": {
+            "type": "duet",
+            "before": true,
+            "after": false
+          }
+        },
+        {
+          "name": "WebGL zeigt Drohne/Projektil und entfernt zerstörte Drohne",
+          "ok": true
+        },
+        {
+          "name": "WebGL erhält Sparmodus-Dustsperre und reduced-motion-Trailsperre",
+          "ok": true
+        },
+        {
+          "name": "Keine WebGL-JavaScript-Fehler",
+          "ok": true,
+          "details": []
+        }
+      ],
+      "errors": []
+    },
+    "browser-results": {
+      "checks": [
+        {
+          "name": "Gast-Eingabe am Host angekommen",
+          "ok": true
+        },
+        {
+          "name": "Beide verbunden und im selben Level",
+          "ok": true
+        },
+        {
+          "name": "Gast pausiert beide",
+          "ok": true
+        },
+        {
+          "name": "Level 1 synchron abgeschlossen",
+          "ok": true
+        },
+        {
+          "name": "Level 2 synchron abgeschlossen",
+          "ok": true
+        },
+        {
+          "name": "Level 3 synchron abgeschlossen",
+          "ok": true
+        },
+        {
+          "name": "Bestwerte auf Gast gespeichert",
+          "ok": true
+        },
+        {
+          "name": "Ergebnis bleibt nach Abreise des Partners sichtbar",
+          "ok": true
+        },
+        {
+          "name": "Nach Kampagnensieg ist die Rückkehr ohne Partner möglich",
+          "ok": true
+        },
+        {
+          "name": "Keine Konsolenfehler",
+          "ok": true
+        }
+      ],
+      "errors": []
+    },
+    "matchmaking-results": {
+      "checks": [
+        {
+          "name": "Suchliste zeigt den tatsächlichen Gastgeber",
+          "ok": true
+        },
+        {
+          "name": "Mitfliegen verbindet per WebRTC",
+          "ok": true
+        },
+        {
+          "name": "Belegter Raum wird nicht als freier Platz angeboten",
+          "ok": true
+        },
+        {
+          "name": "Abgebrochene Suche öffnet keine alte Ansicht",
+          "ok": true
+        },
+        {
+          "name": "Gewählte Rolle bleibt in der gemeinsamen Simulation",
+          "ok": true
+        },
+        {
+          "name": "Zwillingsschub wird bei beiden Piloten synchron angezeigt",
+          "ok": true
+        },
+        {
+          "name": "Kapitelabschluss verbessert das lokale Pilotenprofil",
+          "ok": true
+        },
+        {
+          "name": "Erstes Modul nach verdienter Erfahrung verfügbar",
+          "ok": true
+        },
+        {
+          "name": "Noch gesperrtes Modul bleibt gesperrt",
+          "ok": true
+        },
+        {
+          "name": "Verdientes Modul wird im nächsten Kapitel wirksam",
+          "ok": true
+        },
+        {
+          "name": "Verdientes Profil und gewähltes Modul überstehen Neuladen",
+          "ok": true
+        },
+        {
+          "name": "Keine JavaScript-Fehler",
+          "ok": true
+        }
+      ],
+      "errors": []
+    },
+    "gameplay-audit-results": {
+      "checks": [
+        {
+          "name": "Trainingshinweis überschreibt keine Rückmeldung zum Team-Manöver",
+          "ok": true
+        },
+        {
+          "name": "Auch der Autopilot hat im Training eine echte ablaufende Rettungsfrist",
+          "ok": true
+        },
+        {
+          "name": "Zielankunft schenkt keinen Sieg mit ausgefallenem Partner",
+          "ok": true
+        },
+        {
+          "name": "Partner lässt sich am Ziel mit echter Rettungseingabe zurückholen",
+          "ok": true
+        },
+        {
+          "name": "Trainingsrettung und Trainingsabschluss geben keine Kampagnen-XP",
+          "ok": true
+        },
+        {
+          "name": "Keine JavaScript-Fehler im Rettungsablauf",
+          "ok": true
+        }
+      ],
+      "errors": []
+    },
+    "scenery-results": {
+      "checks": [
+        {
+          "name": "Keine grossen Bildsprünge an ehemaligen und neuen Recycling-Grenzen",
+          "ok": true
+        },
+        {
+          "name": "Wände bewegen sich über eine normale Flugstrecke tatsächlich weiter",
+          "ok": true
+        }
+      ],
+      "changes": [
+        {
+          "distance": 20,
+          "difference": 0.6117002321999219
+        },
+        {
+          "distance": 32,
+          "difference": 0.5971417569027749
+        },
+        {
+          "distance": 40,
+          "difference": 0.5904358346552636
+        },
+        {
+          "distance": 60,
+          "difference": 0.5347207853415178
+        },
+        {
+          "distance": 80,
+          "difference": 0.4730240016552866
+        },
+        {
+          "distance": 140,
+          "difference": 0.45424828149067753
+        }
+      ],
+      "maxBoundaryDifference": 0.6117002321999219,
+      "movement": 5.180621652067959
+    },
+    "ui": {
+      "checks": [
+        {
+          "name": "Handymenü ohne horizontalen Überlauf",
+          "ok": true
+        },
+        {
+          "name": "Drehhinweis im Hochformat",
+          "ok": true
+        },
+        {
+          "name": "Ziehen lenkt eigenen Gleiter",
+          "ok": true
+        },
+        {
+          "name": "Touch-Dash lädt nach",
+          "ok": true
+        },
+        {
+          "name": "Pause stoppt Simulation",
+          "ok": true
+        },
+        {
+          "name": "Training vergibt keinen Kampagnenfortschritt",
+          "ok": true
+        },
+        {
+          "name": "Grafikeinstellungen bleiben gespeichert",
+          "ok": true
+        },
+        {
+          "name": "Keine WCAG-Meldung im Menü",
+          "ok": true
+        },
+        {
+          "name": "Keine unerwarteten JavaScript-Fehler",
+          "ok": true
+        }
+      ],
+      "errors": []
+    }
+  },
+  "performance": [
+    {
+      "environment": "Chromium; Renderer, Auflösung und rAF-Bildtakt beachten",
+      "seconds": 4.548899999991059,
+      "frames": 205,
+      "fps": 45.06584009329792,
+      "p50": 16.699999999999818,
+      "p95": 33.400000000000546,
+      "simulationSeconds": 4.549999999999985,
+      "phase": "playing",
+      "graphics": {
+        "calls": null,
+        "triangles": null,
+        "pixelRatio": 1,
+        "width": 960,
+        "height": 540,
+        "backend": "Canvas2D · perspektivischer Schnellmodus"
+      }
+    },
+    {
+      "environment": "Chromium; Renderer, Auflösung und rAF-Bildtakt beachten",
+      "seconds": 4.549599999994039,
+      "frames": 189,
+      "fps": 41.54211359245816,
+      "p50": 16.699999999999818,
+      "p95": 33.40000000000009,
+      "simulationSeconds": 4.549999999999985,
+      "phase": "playing",
+      "graphics": {
+        "calls": null,
+        "triangles": null,
+        "pixelRatio": 1,
+        "width": 960,
+        "height": 540,
+        "backend": "Canvas2D · perspektivischer Schnellmodus"
+      }
+    }
+  ],
+  "boundaries": {
+    "realInputs": "Tastatur + Chrome Touch-Protokoll; echte lokale WebRTC-DataChannels in zwei Fenstern",
+    "debug": "Matchfinale beschleunigt; Ring-Renderer und Storage-Race mit expliziten Simulationsfixtures",
+    "webgl": "18 bestandene Funktions-/Projektionsprüfungen. Drei synchron direkt nach render() gesicherte 3D-PNGs wurden vom Agenten und Parent angesehen: Höhen -3/+3 vollständig im Bild, unterer Ring über Wasser, Drohnen sichtbar. Keine WebGL-FPS-Freigabe. Alte bounds-3d-PNGs bleiben ungültige schwarze Capture-Artefakte.",
+    "publication": "Kein Commit/Push/Merge/Deploy durch Agent; Parent übernimmt."
+  },
+  "visualReview": {
+    "status": "ANGESEHEN – Agent und Parent",
+    "files": [
+      "/tmp/neon-flug-v4-qa/webgl-height--3.png",
+      "/tmp/neon-flug-v4-qa/webgl-height-3.png",
+      "/tmp/neon-flug-v4-qa/webgl-drones.png"
+    ],
+    "notes": "Echte WebGL-Bilder, keine Attrappe. Capture per canvas.toDataURL() im selben Evaluate-Task unmittelbar nach high.update(). Bildpunkt abgeschlossen."
+  }
+}
