@@ -1,0 +1,52 @@
+{
+  "seconds": 8.05689999999851,
+  "frames": 240,
+  "fps": 29.78813191178299,
+  "p50": 33.30000000000018,
+  "p95": 50,
+  "state": {
+    "room": 1,
+    "gems": 0,
+    "won": false,
+    "result": null,
+    "paused": false,
+    "online": false,
+    "slot": 0,
+    "running": true,
+    "gates": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "sync": [
+      0,
+      0
+    ],
+    "vines": true,
+    "plant": false,
+    "levers": [
+      false,
+      false
+    ],
+    "render": {
+      "calls": 39,
+      "triangles": 28486,
+      "pixelRatio": 0.55
+    },
+    "eye": 0,
+    "blind": false,
+    "altF": false,
+    "altW": false,
+    "g4": false,
+    "a": {
+      "x": -2,
+      "z": -1.8701800000000017
+    },
+    "b": {
+      "x": 2,
+      "z": 2
+    }
+  },
+  "environment": "Headless Chromium, SwiftShader,960x540; kein Hardware-Handytest"
+}

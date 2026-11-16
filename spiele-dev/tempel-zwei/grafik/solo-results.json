@@ -1,0 +1,95 @@
+{
+  "environment": "Chromium, tatsächliche Header, Port 8130; UI-/Tastatur-/Touch-Eingaben und Positionsfixtures; abschließende Hochformatkamera.",
+  "checks": [
+    {
+      "name": "Kopierter Link enthält echten Code und erhält lokalen Testmodus",
+      "ok": true
+    },
+    {
+      "name": "Lobby wächst beim Warten scrollbar ab sichtbarem Titel",
+      "ok": true
+    },
+    {
+      "name": "Abgebrochene Suche startet echten Solo-Modus",
+      "ok": true
+    },
+    {
+      "name": "Solo braucht ebenfalls zwei Platten",
+      "ok": true
+    },
+    {
+      "name": "Parken und Q-Wechsel lösen Raum 1",
+      "ok": true
+    },
+    {
+      "name": "Solo durchquert Tor 1",
+      "ok": true
+    },
+    {
+      "name": "Eine native Leertaste am Aktionsknopf führt genau eine Aktion aus",
+      "ok": true
+    },
+    {
+      "name": "Beide Elementkräfte und Hebel im Solo aktivierbar",
+      "ok": true
+    },
+    {
+      "name": "Solo durchquert Tor 2",
+      "ok": true
+    },
+    {
+      "name": "Solo kann Gleichklang nach abgelaufenem Impuls neu versuchen",
+      "ok": true
+    },
+    {
+      "name": "E, Q, E mit zwei vorbereiteten Figuren löst das echte 1,2-s-Fenster",
+      "ok": true
+    },
+    {
+      "name": "Solo durchquert Tor 3",
+      "ok": true
+    },
+    {
+      "name": "Wächter setzt nur zum Raum-4-Eingang zurück, drei Siegel bleiben offen",
+      "ok": true
+    },
+    {
+      "name": "Solo-Wächter mit hinterer Schattenplatte und Rollenwechsel lösbar",
+      "ok": true
+    },
+    {
+      "name": "Solo durchquert Tor 4",
+      "ok": true
+    },
+    {
+      "name": "Solo-Sieg wartet auf die zweite Figur",
+      "ok": true
+    },
+    {
+      "name": "Vier Solo-Rätsel führen zum gemeinsamen Herz-Abschluss",
+      "ok": true
+    },
+    {
+      "name": "Nochmal führt in eine frische Lobby ohne alte Raum-Einladung",
+      "ok": true
+    },
+    {
+      "name": "360×640: Aufgabenpanel liegt über den Figurenlabels",
+      "ok": true
+    },
+    {
+      "name": "844×390: Aufgabenpanel liegt zwischen den beiden Daumenbereichen",
+      "ok": true
+    },
+    {
+      "name": "Fehlendes Cover lässt sichtbare SVG-Illustration und Startknopf nutzbar",
+      "ok": true
+    },
+    {
+      "name": "Keine JavaScript-Fehler im Solo",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

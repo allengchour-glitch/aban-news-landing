@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Tempel der Zwei: überarbeitete Spielgrafik ·16.11.2026
+
+Neue prozedurale Architektur, eigene animierte Elementarwächter und gestaltete Requisiten in neon-zusammen.html und js/tempel-zwei/. Keine Änderung an Backend, Netzprotokoll, Shop oder Social. GEMESSEN:33 Koop- und22 Solo-/UI-Prüfungen grün; echte Zweiclient-Tastaturaufnahme des ersten Siegels, keine Positionsfixtures darin. Vier Kammeransichten geprüft; abgeschnittenes Aqua-Namensschild im Hochformat korrigiert. Software-Probe29,8→28,6rAF/s bei gleichem Renderverhältnis0,55, Median33,3ms und95.Perzentil≈50ms; keine Beschleunigung oder reale Handy-Leistung behauptet. Quellen und Grenzen: spiele-dev/tempel-zwei/GRAFIK.md. Laufender Benutzerauftrag erlaubt Veröffentlichung; tatsächlicher Live-Nachweis erfolgt separat nach grünem Hauptseitenlauf und HTTPS-Quellenvergleich.
+
+
 ## Codex: englische Kaufkarten mit eigenem Ersatzkatalog ·16.11.2026
 
 EN-Shop zeigte bei Hänger/503 auf390/1440px0 statt22 Karten. Jetzt sofortige eigene Ersatzanzeige aus unverändertem EN-Katalog, frischer Abruf/Fokus erhalten. Sieben Generatorprüfungen und sechs Browserfälle grün, drei neue Englischprüfungen am alten Generator rot. Generierte EN-Datei im vorhandenen Katalog-Commitablauf ergänzt; Stripe-Workflow nicht gestartet, keine Preis-/Konto-/Secretänderung oder neue Automation. Details/Bereitstellung im kanonischen Abschnitt Englischer Shop und zugehörigem PR; finanzielle Wirkung nicht gemessen.

@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Tempel der Zwei: überarbeitete Spielgrafik ·16.11.2026
+
+Neue prozedurale Architektur, eigene animierte Elementarwächter und gestaltete Requisiten in neon-zusammen.html und js/tempel-zwei/. Keine Änderung an Backend, Netzprotokoll, Shop oder Social. GEMESSEN:33 Koop- und22 Solo-/UI-Prüfungen grün; echte Zweiclient-Tastaturaufnahme des ersten Siegels, keine Positionsfixtures darin. Vier Kammeransichten geprüft; abgeschnittenes Aqua-Namensschild im Hochformat korrigiert. Software-Probe29,8→28,6rAF/s bei gleichem Renderverhältnis0,55, Median33,3ms und95.Perzentil≈50ms; keine Beschleunigung oder reale Handy-Leistung behauptet. Quellen und Grenzen: spiele-dev/tempel-zwei/GRAFIK.md. Laufender Benutzerauftrag erlaubt Veröffentlichung; tatsächlicher Live-Nachweis erfolgt separat nach grünem Hauptseitenlauf und HTTPS-Quellenvergleich.
+
+
 ## Englischer Shop: Kaufkarten trotz hängender Katalogantwort ·16.11.2026
 
 Ertragslauf von aktuellem maina688264 auf isoliertem codex/en-shop-ersatzanzeige. Regeln, aktuelle Übergaben/Arbeitsteilung und offene PRs gelesen; keine Überschneidung mit Claude-Shop-/Merchant-/Editor-Arbeiten. Bereits korrigierte deutsche Ersatzanzeige nicht neu implementiert. Am echten en/shop.html mit lokal blockiertem/simuliertem JSON-Abruf reproduziert:390/1440px jeweils0 Kaufkarten bei Hänger und HTTP503,22 beim normalen Abruf. Kein echter Käufer oder Umsatzverlust belegt. Erste Vorherprobe meldete beim Schliessen der absichtlich offenen Route einen Playwright-Abbruch; die sechs Kartenzählungen waren bestätigt. Test räumt offene Route nun vor Schliessen auf; keine Produktänderung zur Umgehung.
