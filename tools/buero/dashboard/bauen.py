@@ -8,10 +8,10 @@ Abschnitte seiner `index.html` (so sieht es der Dashboard-Typ vor: Abschnitte, a
     Offene Punkte   tools/buero/dashboard/offen.html           Zeichnungen umbenannt (op-zahl, op-balken, op-tabelle)
     Suchanfragen    dropship/keywordliste-1011/seite.html     unverändert
 
-Stil und Skript der zwei neuen Seiten liegen in eigenen Dateien (lx-offen.css/.js, lx-suche.css/.js), weil ein Dokument des
+Der Büro-Stil und Stil/Skript der zwei weiteren Seiten liegen in eigenen Dateien (lx-offen.css/.js, lx-suche.css/.js), weil ein Dokument des
 Dashboards höchstens 256 KB fassen darf und die Büro-Seite allein rund 204 KB hat.
 
-    python3 -I tools/buero/dashboard/bauen.py <Ausgabeordner>               # index.html und die vier lx-Dateien
+    python3 -I tools/buero/dashboard/bauen.py <Ausgabeordner>               # index.html, kb-stil.css und die vier lx-Dateien
     python3 -I tools/buero/dashboard/bauen.py <Ausgabeordner> --dokumente   # dazu dok/<Name>.json = {text, edit} zum Hochladen
 
 Die drei Quellen bleiben einzeln prüfbar (ihre eigenen Tests laufen weiter). Wer `seite.html` roh als `index.html` ins
@@ -133,10 +133,16 @@ def huelle_namen_pruefen(belegt):
 
 
 def bauen():
-    """→ {Dateiname: Text} für das Dashboard (index.html und die vier lx-Dateien)."""
+    """→ {Dateiname: Text} für das Dashboard (index.html, kb-stil.css und die vier lx-Dateien)."""
     buero = QUELLE_BUERO.read_text(encoding="utf-8")
     if not buero.startswith(META):
         raise Baufehler(f"Büro: die Seite beginnt nicht mit {META}")
+    # Eigene Stil-Datei schafft Platz, ohne sichtbare Inhalte oder Skripte zu kürzen.
+    b_stile = re.findall(r"(?s)<style>(.*?)</style>", buero)
+    if len(b_stile) != 1:
+        raise Baufehler("Büro: erwartet genau einen Stilblock")
+    b_stil = b_stile[0]
+    buero = buero.replace('<style>' + b_stil + '</style>', '<link rel="stylesheet" href="kb-stil.css">', 1)
     o_stil, o_geruest, o_skript = teile(QUELLE_OFFEN.read_text(encoding="utf-8"), "Offene Punkte")
     s_stil, s_geruest, s_skript = teile(QUELLE_SUCHE.read_text(encoding="utf-8"), "Suchanfragen")
     o_geruest, o_skript = zeichnungen_umbenennen(o_geruest, o_skript, OFFEN_ZEICHNUNGEN, "Offene Punkte")
@@ -187,7 +193,7 @@ def bauen():
         huelle_skript,
         "",
     ])
-    dateien = {"index.html": index, "lx-offen.css": o_stil, "lx-offen.js": o_skript, "lx-suche.css": s_stil, "lx-suche.js": s_skript}
+    dateien = {"index.html": index, "kb-stil.css": b_stil, "lx-offen.css": o_stil, "lx-offen.js": o_skript, "lx-suche.css": s_stil, "lx-suche.js": s_skript}
     for name, text in dateien.items():
         groesse = len(json.dumps({"text": text, "edit": {"via": "claude", "at": "2026-01-01T00:00:00Z"}}, ensure_ascii=False).encode("utf-8"))
         if groesse > MAX_DOKUMENT:

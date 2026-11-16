@@ -105,6 +105,41 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
+**📌 2026-11-16 nachmittags (📲 Social-Pflege und Aufräumen: 26 stumme Videos eingeplant, Liste mit 411 alten Beiträgen für PC-Claude · Freigabe erkennt Produkte über den Link; Besitzer «codex in max modus heute, metricool analyise inkl sozial pflege», «heute voll gas codex, inklusive alte post löschen in sozial und repost, zb alle plüsch tiere löschen und nur 1 machen oder mit schlechte musik»; PRs #3192, #3193, #3195 `62fb79cc`, #3203; Doku `dropship/social-pflege-1611/README.md`, `dropship/social-aufraeumen-1611/README.md`):**
+- **Entscheide des Besitzers (gezielte Fragen):**
+  - Hobel freigeben.
+  - Zehn Musik-Videos «Ton weg, einplanen».
+  - 15 Foto-Entwürfe halten.
+  - Aufräumen: «Alles, Top 10 bleiben», «Umkehrbar».
+  - Plüsch-Vorschlag übernommen (je Netzwerk einer).
+  - Rose, Duftbefeuchter, Wasser-Speaker und Tennisarmband stumm neu posten.
+- **LIVE:**
+  - **Stumme Fassungen (Bild bytegleich, −91 dB, GEMESSEN):** `luxe-stumm-1611-{stern,hacker,medizin,welle,rose,duft,speaker,tennis}.mp4`.
+  - **14 Videos eingeplant:** zwei Freigabe-Läufe, Kontrolle OK. Danach frisch gelesen: 0 doppelte uuid, 0 `autoAddMusic`, 0 Abstand unter 3 h.
+  - **12 Entwürfe für 21. bis 24.11.:** Trockenlauf 12 von 12 frei. Der Handstart (Lauf 43881855556) hing in der GitHub-Warteschlange (Störung 14:34 UTC). Sonst plant der Tageslauf am 17.11.
+  - **Wegweiser:** 19 kommende Produkte auf Seite 1.
+  - **Kurzlinks:** `/fb`, `/th` und `/pin` (301 mit UTM).
+- **Freigabe (`metricool_freigabe.py`):**
+  - Nur noch Videos.
+  - TikTok-Sound immer aus.
+  - Bestand 0 heisst nicht ausverkauft.
+  - Neu: Ein Produktlink im Text geht vor dem Wortvergleich. Der Wortvergleich erkannte bei Wasserwellen auch Speaker und Rose.
+  - Test 148, Mutationsprobe 62 von 62.
+- **Aufräumen (zwei Workflows, nur lesend):**
+  - Inventur aller sechs Netzwerke: 1 595 Beiträge.
+  - Den Ton jedes Videos direkt gelesen und gegen alle `luxe-*`-Referenzen geeicht, auch die aus der git-Geschichte. Zweite Methode als Gegenprüfung: Fingerabdruck.
+  - 687 Vorschaubilder gesichtet.
+  - Ergebnis `dropship/social-aufraeumen-1611/BROWSER-BEFEHL.md`: 411 Beiträge umkehrbar ausblenden. Fast alle (346) tragen abgelehnte Musik, meist eigene Produktionen. Die Top 10 (drei TikToks mit 39 300, 28 900 und 26 600 Aufrufen) bleiben.
+  - **Ausführen kann nur PC-Claude mit dem Ja des Besitzers.** Das Ja liegt vor. Der Auftrag muss an PC-Claude gegeben werden.
+- **Codex:**
+  - Hat aus dem Tagesauftrag `dropship/CODEX-TAGESAUFTRAG-1611.md` nichts begonnen.
+  - Arbeitet auf direkte Aufträge des Besitzers: Produkttexte R257/R258 live, Spiele.
+  - Der Besitzer wurde gefragt, ob Codex den Text hat. Keine weitere stündliche Prüfung gesetzt.
+- **Lehren:**
+  - (1) Die REST-Anlage `POST /v2/scheduler/posts` gibt HTTP 403. Neue Entwürfe über das Metricool-Werkzeug `createScheduledPost` anlegen.
+  - (2) «Originalton» heisst nur «keine Bibliotheksmusik». Die Musik steckt in der Datei und lässt sich nur am Ton messen.
+  - (3) Die eigenen Stücke lagen nur noch in der git-Geschichte. Ohne sie blieb die Hälfte «unbekannt».
+  - (4) `curl` in `while read` frisst die Eingabe: `</dev/null`.
 **📌 2026-11-16 vormittags (📲 Social-Analyse aller Kanäle · Besitzer-Entscheide zu Metricool umgesetzt; Besitzer «kannst du gsnzen sozial post anschauen und analysieren oder hst das der andere session schon gemacht»; Doku `dropship/social-analyse-1611/README.md`, Halteliste PR #3180 gemergt `9899714f87`):**
 - **Antwort:** Die Handy-Sitzung «metricool analyse …» hat nur bis 09.11. ausgewertet und ist seit dem 09.11. archiviert. Neu: Workflow mit 22 Agenten (6 Messungen, Analyse, 14 Nachmessungen, 13 gehalten, 1 mit korrigiertem Zeitraum, Gegenleserin), nur lesend.
 - **GEMESSEN:** Social 20 von 2 336 Sitzungen in 7 Tagen (Schweiz 9), 1 Warenkorb, 0 Kassen, 0 Käufe in 45 Tagen (bei so wenig Besuchen schwacher Beleg). TikTok rund 250 Aufrufe je Beitrag fast unabhängig vom Inhalt, mehr Beiträge = mehr Aufrufe insgesamt, Sehdauer in der Woche 1,4 statt 2,3 s. YouTube-Tagesaufrufe stiegen mit 2 Shorts je Tag (Median 55 → 213). Instagram-Feed Median 8 bis 11,5 Konten, Facebook-Feed fast 0, Threads Median 2, neue Pins 37 Impressionen. Kurzlinks `/tt` und `/yt` 0 Besuche. Planer 10.–15.11.: 71 von 76 PUBLISHED, 0 ERROR, 5 Entwürfe verfallen (Freigabe läuft praktisch gegen 13 UTC). Rosen-Clip 11.11. lief mit dem abgelehnten «violin-uplift».
