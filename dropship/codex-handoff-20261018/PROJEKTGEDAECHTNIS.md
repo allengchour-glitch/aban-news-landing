@@ -1,3 +1,9 @@
+# R270 – 15-Sekunden-Film mit mehr Szenen vorbereitet – 16.11.2026
+
+Die neue Richtung lautet: Atelier → echtes Blumen-Midikleid → Keramik-Stillleben → Atelier. Ein einziger 15-Sekunden-Master aus drei getrennten 5-Sekunden-Quelltakes. Aktuelle Produkt-/Variantenbilder, Kaufbarkeit und Website-Materialerlaubnis geprüft; ein nicht eindeutig passendes Altvideo ausgeschlossen. Drei frische 4K-Offerten bestätigen je 30, zusammen 90 Credits. **Kein Render gestartet und keine neue MP4.** Die frühere Keine-kostenpflichtigen-Video-Renders-Vorgabe benötigt eine konkrete Ausnahme. R269 bleibt Bild-/Posterquelle; der Still-only-Einbau ist durch den neuen Wunsch überholt. [Storyboard und Stand](R270-REPORT-20261116.md) · [Belege](R270-PROOF-20261116.json). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.
+
+---
+
 # R269 – Neues Higgsfield-Titelbild fertig, Einbau noch offen – 16.11.2026
 
 Ein Max-Qualitätsmotiv ist erzeugt und in Shopify Files READY gespeichert. Ein eingefrorener Fünf-Dateien-Kandidat ersetzt die Video-Produktwand durch einen einzelnen Still-Hero; Titel und CTA-Ziele bleiben erhalten. Quellenreview und isolierte Mock-Voransicht auf 320/360/390/1440 Pixeln bestanden. **Noch kein Theme-Save, nativer Render oder Live-Wechsel.** Die Kopierantwort enthält keine bestätigte Entwurfs-ID; Inhaber um aktuelle Theme-Kopie gebeten. [Stand und nächster Schritt](R269-REPORT-20261116.md) · [Belege](R269-PROOF-20261116.json). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.

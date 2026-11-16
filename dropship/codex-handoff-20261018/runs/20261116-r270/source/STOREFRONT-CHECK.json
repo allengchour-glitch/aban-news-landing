@@ -1,0 +1,26 @@
+[
+  {
+    "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+    "productId": 15448587075969,
+    "priceCurrency": "Shop identity CHF",
+    "variant": {
+      "id": 55876172906881,
+      "title": "Aprikose / S",
+      "available": true,
+      "price": 3990,
+      "sku": "CJ-CJLY296508601AZ"
+    }
+  },
+  {
+    "handle": "keramik-vorratsdose-fur-die-kuche-886976",
+    "productId": 15524879008129,
+    "priceCurrency": "Shop identity CHF",
+    "variant": {
+      "id": 68122741014919,
+      "title": "Kirschblüte 700ml",
+      "available": true,
+      "price": 2490,
+      "sku": "CJYD205154101AZ"
+    }
+  }
+]

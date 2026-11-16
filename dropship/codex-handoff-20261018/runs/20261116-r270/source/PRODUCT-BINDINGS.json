@@ -1,0 +1,168 @@
+[
+  {
+    "id": "gid://shopify/Product/15448587075969",
+    "title": "Midikleid mit Zopfmuster und Blumenprint",
+    "status": "ACTIVE",
+    "tags": [
+      "auto-entwurf-0926",
+      "bild-ok",
+      "cj-real",
+      "damen",
+      "dropship",
+      "fokus-damenmode",
+      "gfeed-anstupsen-260929",
+      "hype-jetzt",
+      "kategorie-kleid",
+      "kleid",
+      "kleider",
+      "kunden-liebling",
+      "mode",
+      "sort-damen-kleider",
+      "sort-damen-kleider-blumen",
+      "sort-damen-kleider-midi"
+    ],
+    "onlineStoreUrl": "https://luxestyle.ch/products/midikleid-mit-zopfmuster-und-blumenprint-600200",
+    "chosenVariant": {
+      "id": "gid://shopify/ProductVariant/55876172906881",
+      "title": "Aprikose / S",
+      "price": "39.90",
+      "availableForSale": true,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "sku": "CJ-CJLY296508601AZ",
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70544519037313",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96d12900-9474-44ca-8364-d91e975014ba_0e040f68-9668-479d-8aca-731f42a9d896.jpg?v=1786819403",
+              "width": 1440,
+              "height": 1920
+            }
+          }
+        ]
+      },
+      "inventoryItem": {
+        "tracked": false
+      },
+      "selectedOptions": [
+        {
+          "name": "Farbe",
+          "value": "Aprikose"
+        },
+        {
+          "name": "Grösse",
+          "value": "S"
+        }
+      ]
+    },
+    "media": [
+      {
+        "id": "gid://shopify/MediaImage/77434953564551",
+        "type": "IMAGE",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-midikleid-06.jpg?v=1790879810",
+          "altText": "Tati trägt das Midikleid mit Zopfmuster und Blumenprint",
+          "width": 1600,
+          "height": 2133
+        }
+      },
+      {
+        "id": "gid://shopify/MediaImage/77434953531783",
+        "type": "IMAGE",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tati-model-midikleid-05.jpg?v=1790879809",
+          "altText": "Tati trägt das Midikleid mit Zopfmuster und Blumenprint",
+          "width": 1600,
+          "height": 2133
+        }
+      },
+      {
+        "id": "gid://shopify/Video/77435013759367",
+        "type": "VIDEO",
+        "sourceCount": 4
+      }
+    ]
+  },
+  {
+    "id": "gid://shopify/Product/15524879008129",
+    "title": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml",
+    "status": "ACTIVE",
+    "tags": [
+      "aufbewahrung",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "haushalt",
+      "neuheit",
+      "organizer",
+      "sort-vorratsdosen",
+      "varianten-nachgezogen-1025",
+      "wohnen"
+    ],
+    "onlineStoreUrl": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976",
+    "chosenVariant": {
+      "id": "gid://shopify/ProductVariant/68122741014919",
+      "title": "Kirschblüte 700ml",
+      "price": "24.90",
+      "availableForSale": true,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "sku": "CJYD205154101AZ",
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70800736780673",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg?v=1788517063",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ]
+      },
+      "inventoryItem": {
+        "tracked": false
+      },
+      "selectedOptions": [
+        {
+          "name": "Dekor und Inhalt",
+          "value": "Kirschblüte 700ml"
+        }
+      ]
+    },
+    "media": [
+      {
+        "id": "gid://shopify/MediaImage/70800736420225",
+        "type": "IMAGE",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/82466e8f-8072-4a4f-8a92-bdc497a3f10b.jpg?v=1788517063",
+          "altText": "Keramik-Vorratsdose für die Küche | LuxeStyle",
+          "width": 746,
+          "height": 830
+        }
+      },
+      {
+        "id": "gid://shopify/MediaImage/70800736452993",
+        "type": "IMAGE",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c457501c-bfd4-4204-bdf5-bfb629d0c059.jpg?v=1788517064",
+          "altText": "Keramik-Vorratsdose für die Küche – Bild 2 | LuxeStyle",
+          "width": 800,
+          "height": 800
+        }
+      },
+      {
+        "id": "gid://shopify/MediaImage/70800736485761",
+        "type": "IMAGE",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be03d88a-60a5-4dd4-8f06-a1b40067d2e1.jpg?v=1788517064",
+          "altText": "Keramik-Vorratsdose für die Küche – Bild 3 | LuxeStyle",
+          "width": 750,
+          "height": 834
+        }
+      }
+    ]
+  }
+]

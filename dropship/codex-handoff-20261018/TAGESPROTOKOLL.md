@@ -3280,3 +3280,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R269-REPORT-20261116.md) · [Belege](R269-PROOF-20261116.json).
 
 [LUXESTYLE_R269_20261116]
+
+
+### R270 – Bewegter 15-Sekunden-Aufmacher mit mehreren Motiven
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Filmplanung | Vier Szenen und drei getrennte, einzeln referenzierte 5-Sekunden-Takes geplant; visuelles Storyboard erstellt und geprüft. | Atelier → Mode → Wohnen → Atelier; 15 Sekunden Ziel. Keine neue MP4, kein Render gestartet. |
+| Produktquellen | Zwei aktuelle Produkt-/Variantenquellen und Storefront-Kaufbarkeit geprüft; aktuellen Tagwächter angewendet. | Beide ACTIVE, Tags vorhanden, keine Sperrtagtreffer. Bildzuordnung gewählt; keine Liefer-/Bestandsversprechen. |
+| Quellenqualität | Vorhandenes Kleidvideo technisch und in echten Frames geprüft; Textbilder der Keramik verglichen. | Video wegen nicht eindeutiger Variantenbindung ausgeschlossen. Aktuelle direkt gebundene beziehungsweise textfreie Quellen ausgewählt. |
+| Higgsfield-Preflight | Modelle/Referenzgrenzen und drei konkrete 5-Sekunden-4K-Offerten gelesen. | Je 30, zusammen 90 Credits. Paid-Video-Ausnahme weiterhin erforderlich; keine bezahlten Jobs ausgelöst. |
+| Befugnisse | Frühere ausdrückliche Website-Materialanweisung R69 frisch gegengeprüft. | Website-Quellen dürfen für diesen Website-Markenfilm bearbeitet werden; keine erneute pauschale Bildfreigabe. Keine Social-Freigabe daraus abgeleitet. |
+| Projektgedächtnis | Neue Filmrichtung an bestehende Aufgaben und Historie angefügt. | R268 bleibt abgeschlossen; R269-Still-Kandidat nur noch Poster-/Zwischenstand. Render und Theme-Einbau bleiben offen. |
+
+[Stand](R270-REPORT-20261116.md) · [Belege](R270-PROOF-20261116.json).
+
+[LUXESTYLE_R270_20261116]

@@ -1,0 +1,82 @@
+{
+  "status": "PASS_READ_ONLY_CONSTRAINT_REVIEW",
+  "scope": "R270: 15-Sekunden-Website-Hero mit mehreren Szenen; keine Generierung und keine Uploads.",
+  "ownerWebsiteMaterialEvidence": {
+    "reportPath": "dropship/codex-handoff-20261018/MARKENFILM-20261103-R69.md",
+    "reportBlobSha": "cb403f0acda6000c21727904e233fbf7b54d9d29",
+    "proofPath": "dropship/codex-handoff-20261018/MARKENFILM-BELEGE-20261103-R69.json",
+    "proofBlobSha": "46e8a65183ca4a45240231388b16c9ba0f09488d",
+    "quote": "keine orginalmatrial nur webseite mit allem drin wo du hast nur geschnitten und berbeitet",
+    "permittedScope": "Vorhandene Website-Quellen für den Website-Markenfilm wiederverwenden, schneiden und bearbeiten. Neue Originaldrehs sind dafür kein pauschaler Blocker.",
+    "notInferred": [
+      "Unabhängige kommerzielle Drittanbieter-Lizenzbescheinigung",
+      "Social-Freigabe",
+      "Erfundene Produktbewegung oder Produkteigenschaften",
+      "Kostenpflichtige KI-Renderausnahme"
+    ],
+    "websiteAudio": "R69-Websitefassung ausdrücklich stumm, kein Voiceover. Den getrennten Social-Musik-Blocker nicht pauschal übertragen."
+  },
+  "pricesFromRootPreflight": [
+    {
+      "model": "kling3_0",
+      "duration": 15,
+      "mode": "pro",
+      "sound": "off",
+      "creditsExact": 26.25,
+      "referenceScope": "start_image/end_image; geeignet für mehrere Ansichten der eigenen Atelierwelt"
+    },
+    {
+      "model": "kling3_0",
+      "duration": 15,
+      "mode": "4k",
+      "sound": "off",
+      "creditsExact": 90,
+      "referenceScope": "start_image/end_image; keine belegte Liste mehrerer Produktreferenzen"
+    },
+    {
+      "model": "seedance_2_5",
+      "duration": 15,
+      "mode": "omni_reference",
+      "resolution": "1080p",
+      "audio": false,
+      "creditsExact": 240,
+      "referenceScope": "Mehrere Bild-/Videoreferenzen unterstützt; Quellen und konkrete Produktidentität vorher prüfen"
+    },
+    {
+      "model": "seedance_2_5",
+      "duration": 15,
+      "mode": "omni_reference",
+      "resolution": "4k",
+      "audio": false,
+      "creditsExact": 420,
+      "referenceScope": "Mehrere Bild-/Videoreferenzen unterstützt; teurerer anderer Auftrag"
+    }
+  ],
+  "recommendedDecision": "Bevorzugter kontrollierbarer Aufbau: drei getrennte 5-Sekunden-Kling-Takes mit je eigenem verifiziertem Startbild (Atelier A, Produkt B, Produkt C), danach lokaler präziser Schnitt zu EINEM 15-Sekunden-Master. A0–3+B0–4+C0–4+A1–5 ergibt15Sekunden. So sind mehrere echte Produktreferenzen über getrennte Jobs möglich, ohne Kling ein nicht vorhandenes Multi-Referenzschema zuzuschreiben. Die vermutete 5s-4K-Offerte30×3=90 muss Root frisch bestätigen; der bekannte15s-Klingpreis90 allein beweist diese Einzelpreise noch nicht.",
+  "paidGenerationGate": "Die frühere ausdrückliche Keine-kostenpflichtigen-Video-Renders-Vorgabe ist durch den Wunsch nach Bewegung nicht eindeutig als Kostenfreigabe aufgehoben. Konkrete Ausnahme vor Einreichung nötig; keine kostenlose Ersatzroute oder Retry auf Credits ohne Auftrag.",
+  "suggestedSingleApprovalQuestion": "Für drei 5-sekündige 4K-Quelltakes und den daraus geschnittenen einen 15-Sekunden-Film ist eine kostenpflichtige Renderausnahme nötig. Darf ich genau diese drei Takes bis zusammen maximal90Credits rendern?",
+  "approvalLimits": [
+    "Keine weiteren Takes oder bezahlten Retries in der Freigabe enthalten; unklare oder teilweise Batchantworten gezielt auflösen.",
+    "90 Credits nicht auf Seedance420 übertragen.",
+    "Vorhandene Website-Materialerlaubnis nicht nochmals pauschal abfragen.",
+    "Fertige MP4, Produkt-/Bildidentität, Loop, mobile Ausschnitte und native Shopify-Einbindung separat prüfen."
+  ],
+  "performed": {
+    "externalReadCalls": 2,
+    "externalWrites": 0,
+    "generationJobs": 0,
+    "uploads": 0
+  },
+  "threeTakePlan": {
+    "sourceJobs": 3,
+    "requestedSourceDurationSecondsEach": 5,
+    "quoteState": "PENDING_ROOT_5_SECOND_PREFLIGHT",
+    "proposedTotalCreditsCap": 90,
+    "finalMasterSeconds": 15,
+    "edit": "A0–3 + B0–4 + C0–4 + A1–5",
+    "loop": "A hat dasselbe bestätigte Anfangs-/Endbild. Nahtlosigkeit ist ein Ziel, kein Beleg; erste/letzte tatsächliche MP4-Frames prüfen und nötigenfalls eine kurze Schnittblende nutzen.",
+    "productMotion": "Nur minimale frontale Kamera- und Lichtbewegung; keine unbelegten Rückseiten, Rotation, Logoänderung, neue Funktion oder Produkteigenschaft.",
+    "technicalGate": "Tatsächliche FPS und Länge aller Dateien messen. Finales30fps/450Frames-Master erst nach Export-/Dekodierungsprüfung als solches bezeichnen.",
+    "masterIdentity": "EinPublikationsmaster; dreiRohquelltakes sind keineSerie von dreiSocialfilmen."
+  }
+}

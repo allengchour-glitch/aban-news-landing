@@ -1,0 +1,380 @@
+{
+  "run": "R270",
+  "baseRevision": 269,
+  "baseCommit": "6a42a22584026c2179200cced3933f5dab6e2785",
+  "request": "Das Bild soll15Sekunden bewegen; mehr Bilder beziehungsweise Videos.",
+  "plan": {
+    "run": "R270",
+    "masterId": "luxe-home-atelier-multishot-20261116",
+    "state": "STORYBOARD_AND_PREFLIGHT_ONLY",
+    "durationTargetSeconds": 15,
+    "renderJobsSubmitted": 0,
+    "finishedMP4": false,
+    "preferredDirectionAssumption": "Weitere echte Website-Produkte zwischen Atelier-Start und Atelier-Rückkehr. Kreative Präferenzfrage im Chat noch offen.",
+    "sourceTakes": [
+      {
+        "index": 0,
+        "id": "A_ATELIER",
+        "params": {
+          "model": "kling3_0",
+          "duration": 5,
+          "mode": "4k",
+          "sound": "off",
+          "aspect_ratio": "16:9",
+          "count": 1,
+          "medias": [
+            {
+              "role": "start_image",
+              "value": "41cbd665-4460-49b0-bd5f-b066df8dd044"
+            },
+            {
+              "role": "end_image",
+              "value": "41cbd665-4460-49b0-bd5f-b066df8dd044"
+            }
+          ],
+          "prompt": "Five-second premium silent cinematic take of the supplied silk/travertine/amber atelier. Preserve exact architectural layout, silk ribbon, amber orb, bronze base, material colours and lighting. A small slow camera arc and restrained physically plausible silk flutter, gentle sunlight and reflections. Return to the provided composition for the final frame. No new objects, no text or logos, no narration or audio. This is one source take in a 15-second homepage film. Keep central subject portrait-safe and lower-left quiet."
+        },
+        "quoteCredits": 30
+      },
+      {
+        "index": 1,
+        "id": "B_MODE",
+        "productId": "15448587075969",
+        "variantId": "55876172906881",
+        "params": {
+          "model": "kling3_0",
+          "duration": 5,
+          "mode": "4k",
+          "sound": "off",
+          "aspect_ratio": "16:9",
+          "count": 1,
+          "medias": [
+            {
+              "role": "start_image",
+              "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96d12900-9474-44ca-8364-d91e975014ba_0e040f68-9668-479d-8aca-731f42a9d896.jpg?v=1786819403"
+            }
+          ],
+          "prompt": "Five-second silent premium editorial product take using the exact supplied floral midi dress photo. Preserve exact garment shape, strap width, neckline, waist, length, cream base and every printed flower placement. Keep the existing light plain background. Very subtle fabric movement and moving studio light; tiny frontal camera slide only, never rotate to an unseen back. No model, person or mannequin added. No new straps, seams, accessories, text, logos or feature demonstrations. No dramatic zoom, montage or collage. Natural physically restrained motion, centre subject safe for portrait crop. One source take for a 15-second brand homepage film."
+        },
+        "quoteCredits": 30
+      },
+      {
+        "index": 2,
+        "id": "C_WOHNEN",
+        "productId": "15524879008129",
+        "variantId": "68122741014919",
+        "params": {
+          "model": "kling3_0",
+          "duration": 5,
+          "mode": "4k",
+          "sound": "off",
+          "aspect_ratio": "16:9",
+          "count": 1,
+          "medias": [
+            {
+              "role": "start_image",
+              "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be03d88a-60a5-4dd4-8f06-a1b40067d2e1.jpg?v=1788517064"
+            }
+          ],
+          "prompt": "Five-second silent premium still-life product film from the supplied ceramic storage-jar arrangement photo. Preserve all actual visible ceramic forms, lid positions, handles, scale relationships, dark brown rims and blue floral/spiral decorations exactly. The small floral jar at front left is the main subject. A restrained lateral camera drift within the same visible front view and subtle natural changes in window light. Do not open lids, add hands or items, spin jars to unseen sides, change decoration, create pouring or invent functions. No text, logos or quantity/pack-size messaging. Warm taupe setting, photographic realism, no photo-zoom slideshow. One source take for a 15-second homepage film."
+        },
+        "quoteCredits": 30
+      }
+    ],
+    "budget": {
+      "quotedTotalCredits": 90,
+      "scope": "Genau drei einzelne 5-Sekunden-Takes im Kling-4K-Modus; kostenloser lokaler Schnitt zu einem Master.",
+      "paidVideoRestriction": "Ausdrückliche ältere Vorgabe: keine kostenpflichtigen Video-Renders.",
+      "exceptionApproval": "PENDING",
+      "extraPaidRetriesApproved": false
+    },
+    "editDecisionList": [
+      {
+        "from": 0,
+        "to": 3,
+        "take": "A_ATELIER",
+        "sourceIn": 0,
+        "sourceOut": 3
+      },
+      {
+        "from": 3,
+        "to": 7,
+        "take": "B_MODE",
+        "sourceIn": 0,
+        "sourceOut": 4
+      },
+      {
+        "from": 7,
+        "to": 11,
+        "take": "C_WOHNEN",
+        "sourceIn": 0,
+        "sourceOut": 4
+      },
+      {
+        "from": 11,
+        "to": 15,
+        "take": "A_ATELIER",
+        "sourceIn": 1,
+        "sourceOut": 5
+      }
+    ],
+    "productBindings": [
+      {
+        "productId": "15448587075969",
+        "variantId": "55876172906881",
+        "variant": "Aprikose / S",
+        "priceCHF": "39.90",
+        "availableForSale": true,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "source": "Aktuelles direkt zugeordnetes Variantenbild; vorhandenes Kleidvideo wegen sichtbarer Muster-/Schnittabweichung nicht ausgewählt."
+      },
+      {
+        "productId": "15524879008129",
+        "variantId": "68122741014919",
+        "variant": "Kirschblüte 700ml",
+        "priceCHF": "24.90",
+        "availableForSale": true,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "source": "Aktuelles textfreies Familien-/Galeriebild, kleine geblümte Dose vorne links entspricht der geprüften Variante. Keine Set-/Lieferumfangsbehauptung."
+      }
+    ],
+    "rights": {
+      "websiteReuseAuthority": "R69: ausdrückliche Inhaberanweisung zum Schneiden/Bearbeiten vorhandener Website-Bilder für den Website-Markenfilm.",
+      "sourcePath": "dropship/codex-handoff-20261018/MARKENFILM-BELEGE-20261103-R69.json",
+      "sourceBlob": "46e8a65183ca4a45240231388b16c9ba0f09488d",
+      "independentThirdPartyLicense": "UNKNOWN",
+      "socialApproval": false
+    },
+    "audio": {
+      "generate": false,
+      "scope": "Website-Markenfilm stumm gemäss R69; kein Voiceover, keine Musik hinzugefügt."
+    },
+    "qualityGates": [
+      "Tatsächliche MP4s und ihre Dauer/Dimensionen/FPS erst nach Render prüfen.",
+      "Jeden Take auf Produktform, Farbe, Muster und unerwünschte neue Elemente prüfen; kein unbelegter Rückseitenwechsel oder Handlung.",
+      "Loop ist ein Ziel, erst nach Prüfung der Anfangs-/Endframes und finale Schnittabnahme bestätigt.",
+      "Ein einziger fertiger 15s-Master, kein Fotozoom-Ersatz und keine Serie unabhängiger Clips.",
+      "Für Website: Poster, Pause/Play, Reduced-motion-Still und mobile Ausschnitte am fertigen Film prüfen."
+    ],
+    "themeState": {
+      "main": "214169584007",
+      "readAtMainUpdated": "2026-11-16T21:55:08Z",
+      "currentLiveHero": "Alter Video-/Posterpfad noch aktiv; R269-Still-Kandidat nicht eingebaut.",
+      "writesThisRun": 0
+    },
+    "next": "Konkrete einmalige Ausnahme für höchstens90Credits einholen; danach frische Referenz-/Preisgegenprobe, genau drei bestätigte Jobs, fertige MP4s prüfen und einmal15s zusammenschneiden."
+  },
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    },
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich"
+  },
+  "main": {
+    "id": "gid://shopify/OnlineStoreTheme/214169584007",
+    "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+    "role": "MAIN",
+    "updatedAt": "2026-11-16T21:55:08Z"
+  },
+  "quotes": [
+    {
+      "id": "A_ATELIER",
+      "params": {
+        "model": "kling3_0",
+        "duration": 5,
+        "mode": "4k",
+        "sound": "off",
+        "aspect_ratio": "16:9",
+        "count": 1,
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "41cbd665-4460-49b0-bd5f-b066df8dd044"
+          },
+          {
+            "role": "end_image",
+            "value": "41cbd665-4460-49b0-bd5f-b066df8dd044"
+          }
+        ],
+        "prompt": "Five-second premium silent cinematic take of the supplied silk/travertine/amber atelier. Preserve exact architectural layout, silk ribbon, amber orb, bronze base, material colours and lighting. A small slow camera arc and restrained physically plausible silk flutter, gentle sunlight and reflections. Return to the provided composition for the final frame. No new objects, no text or logos, no narration or audio. This is one source take in a 15-second homepage film. Keep central subject portrait-safe and lower-left quiet."
+      },
+      "credits": 30,
+      "noJobSubmitted": true
+    },
+    {
+      "id": "B_MODE",
+      "params": {
+        "model": "kling3_0",
+        "duration": 5,
+        "mode": "4k",
+        "sound": "off",
+        "aspect_ratio": "16:9",
+        "count": 1,
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96d12900-9474-44ca-8364-d91e975014ba_0e040f68-9668-479d-8aca-731f42a9d896.jpg?v=1786819403"
+          }
+        ],
+        "prompt": "Five-second silent premium editorial product take using the exact supplied floral midi dress photo. Preserve exact garment shape, strap width, neckline, waist, length, cream base and every printed flower placement. Keep the existing light plain background. Very subtle fabric movement and moving studio light; tiny frontal camera slide only, never rotate to an unseen back. No model, person or mannequin added. No new straps, seams, accessories, text, logos or feature demonstrations. No dramatic zoom, montage or collage. Natural physically restrained motion, centre subject safe for portrait crop. One source take for a 15-second brand homepage film."
+      },
+      "credits": 30,
+      "noJobSubmitted": true
+    },
+    {
+      "id": "C_WOHNEN",
+      "params": {
+        "model": "kling3_0",
+        "duration": 5,
+        "mode": "4k",
+        "sound": "off",
+        "aspect_ratio": "16:9",
+        "count": 1,
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be03d88a-60a5-4dd4-8f06-a1b40067d2e1.jpg?v=1788517064"
+          }
+        ],
+        "prompt": "Five-second silent premium still-life product film from the supplied ceramic storage-jar arrangement photo. Preserve all actual visible ceramic forms, lid positions, handles, scale relationships, dark brown rims and blue floral/spiral decorations exactly. The small floral jar at front left is the main subject. A restrained lateral camera drift within the same visible front view and subtle natural changes in window light. Do not open lids, add hands or items, spin jars to unseen sides, change decoration, create pouring or invent functions. No text, logos or quantity/pack-size messaging. Warm taupe setting, photographic realism, no photo-zoom slideshow. One source take for a 15-second homepage film."
+      },
+      "credits": 30,
+      "noJobSubmitted": true
+    }
+  ],
+  "chosenProducts": [
+    {
+      "id": "gid://shopify/Product/15448587075969",
+      "status": "ACTIVE",
+      "tags": [
+        "auto-entwurf-0926",
+        "bild-ok",
+        "cj-real",
+        "damen",
+        "dropship",
+        "fokus-damenmode",
+        "gfeed-anstupsen-260929",
+        "hype-jetzt",
+        "kategorie-kleid",
+        "kleid",
+        "kleider",
+        "kunden-liebling",
+        "mode",
+        "sort-damen-kleider",
+        "sort-damen-kleider-blumen",
+        "sort-damen-kleider-midi"
+      ],
+      "variant": {
+        "id": "gid://shopify/ProductVariant/55876172906881",
+        "title": "Aprikose / S",
+        "price": "39.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "sku": "CJ-CJLY296508601AZ",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/70544519037313",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96d12900-9474-44ca-8364-d91e975014ba_0e040f68-9668-479d-8aca-731f42a9d896.jpg?v=1786819403",
+                "width": 1440,
+                "height": 1920
+              }
+            }
+          ]
+        },
+        "inventoryItem": {
+          "tracked": false
+        },
+        "selectedOptions": [
+          {
+            "name": "Farbe",
+            "value": "Aprikose"
+          },
+          {
+            "name": "Grösse",
+            "value": "S"
+          }
+        ]
+      },
+      "url": "https://luxestyle.ch/products/midikleid-mit-zopfmuster-und-blumenprint-600200"
+    },
+    {
+      "id": "gid://shopify/Product/15524879008129",
+      "status": "ACTIVE",
+      "tags": [
+        "aufbewahrung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "neuheit",
+        "organizer",
+        "sort-vorratsdosen",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "variant": {
+        "id": "gid://shopify/ProductVariant/68122741014919",
+        "title": "Kirschblüte 700ml",
+        "price": "24.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "sku": "CJYD205154101AZ",
+        "media": {
+          "nodes": [
+            {
+              "id": "gid://shopify/MediaImage/70800736780673",
+              "image": {
+                "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg?v=1788517063",
+                "width": 800,
+                "height": 800
+              }
+            }
+          ]
+        },
+        "inventoryItem": {
+          "tracked": false
+        },
+        "selectedOptions": [
+          {
+            "name": "Dekor und Inhalt",
+            "value": "Kirschblüte 700ml"
+          }
+        ]
+      },
+      "url": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976"
+    }
+  ],
+  "policyHelperBlob": "3adab7369f90945769331910525c08b3778b4371",
+  "websiteReuseAuthority": {
+    "source": "MARKENFILM-BELEGE-20261103-R69.json",
+    "gitBlob": "46e8a65183ca4a45240231388b16c9ba0f09488d",
+    "ownerWebsiteReuse": true,
+    "independentThirdPartyLicense": "UNKNOWN",
+    "socialApproval": false
+  },
+  "renderJobsSubmitted": 0,
+  "finishedMP4": false,
+  "paidException": "PENDING_NOT_AUTHORISED",
+  "referencePreflightLibraryImports": "Possible under tool contract; not independently enumerated.",
+  "themeWrites": 0,
+  "metricsRepeated": false,
+  "newOrdersQueried": false,
+  "claudeReceipt": "UNKNOWN",
+  "optionalCreativePreference": "Asked asynchronously; using actual shop products as the stated working assumption until clarified.",
+  "rejectedMedia": {
+    "dressVideo": "Current associated8.2s/810x1080/30fps MP4 inspected; visible pattern/cut not bound unambiguously to selected variant. Not used.",
+    "jarTextImages": "Annotation-bearing references not selected; existing clean family photograph selected."
+  }
+}
