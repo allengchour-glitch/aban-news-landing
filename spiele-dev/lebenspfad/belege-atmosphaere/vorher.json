@@ -1,0 +1,1209 @@
+{
+  "kind": "GEMESSEN: feste Kapitel/Kamera, Sparsam-Profil, Animation aus; kein Kampagnen-/Hardwaretest",
+  "views": [
+    {
+      "profile": "desktop",
+      "chapter": 0,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 120,
+        "triangles": 21068,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2108,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2108,
+          "skippedMeshes": 0,
+          "batches": 136,
+          "triangles": 43710,
+          "totalTriangles": 43710
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        -159.45,
+        16.5,
+        -21
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.4313725696749079,
+          0.7843137322347841,
+          0.96078431119627
+        ]
+      },
+      "sun": {
+        "position": [
+          -129.45,
+          60,
+          -16
+        ],
+        "color": [
+          1,
+          0.9411793814510068,
+          0.8627392763136733
+        ],
+        "intensity": 0.8599962886499664
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 21,
+      "seed": 1
+    },
+    {
+      "profile": "desktop",
+      "chapter": 1,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 189,
+        "triangles": 34116,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2108,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2108,
+          "skippedMeshes": 0,
+          "batches": 136,
+          "triangles": 43710,
+          "totalTriangles": 43710
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        -90.44474439162023,
+        16.5,
+        14.501332855299056
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.3843137422136555,
+          0.7607843220872187,
+          0.9490196120239992
+        ]
+      },
+      "sun": {
+        "position": [
+          -60.44474439162023,
+          60,
+          19.501332855299058
+        ],
+        "color": [
+          1,
+          0.9411764725346616,
+          0.8627450941463634
+        ],
+        "intensity": 0.8599999975183067
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 24,
+      "seed": 1
+    },
+    {
+      "profile": "desktop",
+      "chapter": 2,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 222,
+        "triangles": 43568,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2108,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2108,
+          "skippedMeshes": 0,
+          "batches": 136,
+          "triangles": 43710,
+          "totalTriangles": 43710
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        -44.44434160500479,
+        16.5,
+        15.498467673740233
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.49803917527127123,
+          0.8156862549991128,
+          0.9411764733754788
+        ]
+      },
+      "sun": {
+        "position": [
+          -14.444341605004787,
+          60,
+          20.498467673740233
+        ],
+        "color": [
+          1,
+          0.9490143633208983,
+          0.8157177416484446
+        ],
+        "intensity": 0.9399465058582263
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 26,
+      "seed": 1
+    },
+    {
+      "profile": "desktop",
+      "chapter": 3,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 197,
+        "triangles": 66948,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2108,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2108,
+          "skippedMeshes": 0,
+          "batches": 136,
+          "triangles": 43710,
+          "totalTriangles": 43710
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        1.5390888578741921,
+        16.5,
+        15.99713416417981
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.9999998216164968,
+          0.8235294089774567,
+          0.501960940399279
+        ]
+      },
+      "sun": {
+        "position": [
+          31.53908885787419,
+          60,
+          20.997134164179812
+        ],
+        "color": [
+          1,
+          0.9490196043362471,
+          0.8156862955511481
+        ],
+        "intensity": 0.9399999642297109
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 27,
+      "seed": 1
+    },
+    {
+      "profile": "desktop",
+      "chapter": 4,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 186,
+        "triangles": 47346,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2108,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2108,
+          "skippedMeshes": 0,
+          "batches": 136,
+          "triangles": 43710,
+          "totalTriangles": 43710
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        47.55525560837976,
+        16.5,
+        15.498667144700937
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.9999999999999368,
+          0.6901961258144858,
+          0.40000003623420166
+        ]
+      },
+      "sun": {
+        "position": [
+          77.55525560837975,
+          60,
+          20.498667144700935
+        ],
+        "color": [
+          1,
+          0.9490196078407921,
+          0.8156862745238738
+        ],
+        "intensity": 0.9399999999760812
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 27,
+      "seed": 1
+    },
+    {
+      "profile": "desktop",
+      "chapter": 5,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 218,
+        "triangles": 48905,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2108,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2108,
+          "skippedMeshes": 0,
+          "batches": 136,
+          "triangles": 43710,
+          "totalTriangles": 43710
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        93.55565839499522,
+        16.5,
+        14.50153232625976
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.9999999999999991,
+          0.6039215992871299,
+          0.36078432766171303
+        ]
+      },
+      "sun": {
+        "position": [
+          123.55565839499522,
+          60,
+          19.50153232625976
+        ],
+        "color": [
+          1,
+          0.8784785732608833,
+          0.6902799908080315
+        ],
+        "intensity": 0.8400668676751266
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 28,
+      "seed": 1
+    },
+    {
+      "profile": "desktop",
+      "chapter": 6,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 181,
+        "triangles": 44537,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2108,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2108,
+          "skippedMeshes": 0,
+          "batches": 136,
+          "triangles": 43710,
+          "totalTriangles": 43710
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        139.53908885787416,
+        16.5,
+        14.002865835820144
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.8784314157512708,
+          0.4705882826772426,
+          0.2823529690488956
+        ]
+      },
+      "sun": {
+        "position": [
+          169.53908885787416,
+          60,
+          19.002865835820142
+        ],
+        "color": [
+          1,
+          0.8784314041110383,
+          0.6901961345416278
+        ],
+        "intensity": 0.8400000447128597
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 28,
+      "seed": 1
+    },
+    {
+      "profile": "desktop",
+      "chapter": 7,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 198,
+        "triangles": 63524,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2108,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2108,
+          "skippedMeshes": 0,
+          "batches": 136,
+          "triangles": 43710,
+          "totalTriangles": 43710
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        188.56087923860733,
+        16.5,
+        17.343440555964264
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.9607842844594644,
+          0.8509802569756421,
+          0.9098036985892767
+        ]
+      },
+      "sun": {
+        "position": [
+          218.56087923860733,
+          60,
+          22.343440555964264
+        ],
+        "color": [
+          0.9177021263207056,
+          0.9411345144210154,
+          0.9997928413576659
+        ],
+        "intensity": 0.8000267470999555
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 29,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 0,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 112,
+        "triangles": 15168,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1526,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1526,
+          "skippedMeshes": 0,
+          "batches": 130,
+          "triangles": 31193,
+          "totalTriangles": 31193
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        -159.45,
+        23.925,
+        -16.5
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.43137256201314916,
+          0.784313729732985,
+          0.9607843121344445
+        ]
+      },
+      "sun": {
+        "position": [
+          -129.45,
+          60,
+          -16
+        ],
+        "color": [
+          1,
+          0.9411787813907057,
+          0.8627404764342749
+        ],
+        "intensity": 0.8599970537268502
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 21,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 1,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 118,
+        "triangles": 19610,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1526,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1526,
+          "skippedMeshes": 0,
+          "batches": 130,
+          "triangles": 31193,
+          "totalTriangles": 31193
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        -90.44474439162023,
+        23.925,
+        19.001332855299058
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.3843137422136528,
+          0.7607843220872176,
+          0.9490196120239998
+        ]
+      },
+      "sun": {
+        "position": [
+          -60.44474439162023,
+          60,
+          19.501332855299058
+        ],
+        "color": [
+          1,
+          0.9411764721334152,
+          0.8627450949488559
+        ],
+        "intensity": 0.8599999980298957
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 22,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 2,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 157,
+        "triangles": 29729,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1526,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1526,
+          "skippedMeshes": 0,
+          "batches": 130,
+          "triangles": 31193,
+          "totalTriangles": 31193
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        -44.44434160500479,
+        23.925,
+        19.998467673740233
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.49803917527127123,
+          0.8156862549991128,
+          0.9411764733754788
+        ]
+      },
+      "sun": {
+        "position": [
+          -14.444341605004787,
+          60,
+          20.498467673740233
+        ],
+        "color": [
+          1,
+          0.9490143633206297,
+          0.8157177416489813
+        ],
+        "intensity": 0.9399465058585686
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 24,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 3,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 130,
+        "triangles": 32465,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1526,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1526,
+          "skippedMeshes": 0,
+          "batches": 130,
+          "triangles": 31193,
+          "totalTriangles": 31193
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        1.5390888578741921,
+        23.925,
+        20.497134164179812
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.9999998216164968,
+          0.8235294089774567,
+          0.501960940399279
+        ]
+      },
+      "sun": {
+        "position": [
+          31.53908885787419,
+          60,
+          20.997134164179812
+        ],
+        "color": [
+          1,
+          0.9490196043362471,
+          0.8156862955511484
+        ],
+        "intensity": 0.9399999642297113
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 25,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 4,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 132,
+        "triangles": 32878,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1526,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1526,
+          "skippedMeshes": 0,
+          "batches": 130,
+          "triangles": 31193,
+          "totalTriangles": 31193
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        47.55525560837976,
+        23.925,
+        19.998667144700935
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.9999999999999368,
+          0.6901961258144858,
+          0.40000003623420166
+        ]
+      },
+      "sun": {
+        "position": [
+          77.55525560837975,
+          60,
+          20.498667144700935
+        ],
+        "color": [
+          1,
+          0.9490196078407921,
+          0.8156862745238738
+        ],
+        "intensity": 0.9399999999760812
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 25,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 5,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 136,
+        "triangles": 34723,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1526,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1526,
+          "skippedMeshes": 0,
+          "batches": 130,
+          "triangles": 31193,
+          "totalTriangles": 31193
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        93.55565839499522,
+        23.925,
+        19.00153232625976
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.9999999999999991,
+          0.6039215992871299,
+          0.36078432766171303
+        ]
+      },
+      "sun": {
+        "position": [
+          123.55565839499522,
+          60,
+          19.50153232625976
+        ],
+        "color": [
+          1,
+          0.8784785732608833,
+          0.6902799908080315
+        ],
+        "intensity": 0.8400668676751266
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 25,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 6,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 128,
+        "triangles": 28641,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1526,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1526,
+          "skippedMeshes": 0,
+          "batches": 130,
+          "triangles": 31193,
+          "totalTriangles": 31193
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        139.53908885787416,
+        23.925,
+        18.502865835820142
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.8784314157512708,
+          0.4705882826772426,
+          0.2823529690488956
+        ]
+      },
+      "sun": {
+        "position": [
+          169.53908885787416,
+          60,
+          19.002865835820142
+        ],
+        "color": [
+          1,
+          0.8784314041110383,
+          0.6901961345416278
+        ],
+        "intensity": 0.8400000447128597
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 27,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 7,
+      "graphics": {
+        "profile": "light",
+        "pixelRatio": 0.65,
+        "shadows": false,
+        "calls": 127,
+        "triangles": 29260,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1526,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1526,
+          "skippedMeshes": 0,
+          "batches": 130,
+          "triangles": 31193,
+          "totalTriangles": 31193
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        188.56087923860733,
+        23.925,
+        21.843440555964264
+      ],
+      "fog": {
+        "near": 130,
+        "far": 430,
+        "color": [
+          0.9607842844594644,
+          0.8509802569756421,
+          0.9098036985892767
+        ]
+      },
+      "sun": {
+        "position": [
+          218.56087923860733,
+          60,
+          22.343440555964264
+        ],
+        "color": [
+          0.9177021263207056,
+          0.9411345144210154,
+          0.9997928413576659
+        ],
+        "intensity": 0.8000267470999555
+      },
+      "atmosphere": null,
+      "models": 22,
+      "programs": 27,
+      "seed": 1
+    }
+  ],
+  "errors": [],
+  "desktop": {
+    "rafPerSecond": 11.982928430717099,
+    "median": 83.30000000000109,
+    "p95": 133.39999999999964,
+    "frames": 73,
+    "graphics": {
+      "profile": "light",
+      "pixelRatio": 0.65,
+      "shadows": false,
+      "calls": 120,
+      "triangles": 21068,
+      "terrain": {
+        "sourceMeshes": 1,
+        "batchedMeshes": 1,
+        "batches": 78,
+        "triangles": 20480
+      },
+      "board": {
+        "sourceMeshes": 508,
+        "batchedMeshes": 195,
+        "batches": 21,
+        "triangles": 25696
+      },
+      "instances": {
+        "sourceMeshes": 9,
+        "sourceInstances": 2108,
+        "chunkedMeshes": 9,
+        "chunkedInstances": 2108,
+        "skippedMeshes": 0,
+        "batches": 136,
+        "triangles": 43710,
+        "totalTriangles": 43710
+      }
+    },
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "coarse": false,
+    "camera": [
+      -159.45,
+      16.5,
+      -21
+    ],
+    "fog": {
+      "near": 130,
+      "far": 430,
+      "color": [
+        0.4313727510946486,
+        0.7843137394264095,
+        0.9607841506718842
+      ]
+    },
+    "sun": {
+      "position": [
+        -129.45,
+        60,
+        -16
+      ],
+      "color": [
+        0.9999999632022671,
+        0.9411817115861252,
+        0.8627137132172831
+      ],
+      "intensity": 0.86005343155407
+    },
+    "atmosphere": null,
+    "models": 22,
+    "programs": 30,
+    "seed": 1,
+    "lights": [
+      "HemisphereLight",
+      "DirectionalLight",
+      "PointLight"
+    ]
+  },
+  "touch": {
+    "rafPerSecond": 28.80692698359837,
+    "median": 33.30000000000109,
+    "p95": 50,
+    "frames": 173,
+    "graphics": {
+      "profile": "light",
+      "pixelRatio": 0.65,
+      "shadows": false,
+      "calls": 112,
+      "triangles": 15168,
+      "terrain": {
+        "sourceMeshes": 1,
+        "batchedMeshes": 1,
+        "batches": 78,
+        "triangles": 20480
+      },
+      "board": {
+        "sourceMeshes": 508,
+        "batchedMeshes": 195,
+        "batches": 21,
+        "triangles": 25696
+      },
+      "instances": {
+        "sourceMeshes": 9,
+        "sourceInstances": 1526,
+        "chunkedMeshes": 9,
+        "chunkedInstances": 1526,
+        "skippedMeshes": 0,
+        "batches": 130,
+        "triangles": 31193,
+        "totalTriangles": 31193
+      }
+    },
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "coarse": true,
+    "camera": [
+      -159.45,
+      23.925,
+      -16.5
+    ],
+    "fog": {
+      "near": 130,
+      "far": 430,
+      "color": [
+        0.43137273715843316,
+        0.784313749181705,
+        0.9607842956083378
+      ]
+    },
+    "sun": {
+      "position": [
+        -129.45,
+        60,
+        -16
+      ],
+      "color": [
+        0.9999449693251787,
+        0.9411764425331217,
+        0.8628367386790083
+      ],
+      "intensity": 0.8599598972800784
+    },
+    "atmosphere": null,
+    "models": 22,
+    "programs": 27,
+    "seed": 1,
+    "lights": [
+      "HemisphereLight",
+      "DirectionalLight",
+      "PointLight"
+    ]
+  },
+  "passed": true
+}
