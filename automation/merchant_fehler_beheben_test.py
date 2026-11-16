@@ -69,15 +69,16 @@ gleich(liste[1]["checkboxInputValue"]["value"], True, "Haken gesetzt")
 eine = {"inputs": [{"id": "w", "label": "Grund", "required": True, "choiceInput": {"options": [{"id": "o1", "label": "x"}]}}]}
 gleich(m.werte(eine, "b")[0], [{"inputFieldId": "w", "choiceInputValue": {"choiceInputOptionId": "o1"}}], "eine Option")
 zwei = {"inputs": [{"id": "w", "label": "Grund", "required": True, "choiceInput": {"options": [
-    {"id": "o1", "label": {"simpleValue": "Ich habe das Produkt geändert"}},
-    {"id": "o2", "label": {"simpleValue": "Das Produkt wurde fälschlich beanstandet"}}]}}]}
-gleich(m.werte(zwei, "b")[0][0]["choiceInputValue"]["choiceInputOptionId"], "o2", "Option «fälschlich»")
-unklar = {"inputs": [{"id": "w", "label": "Grund", "required": True, "choiceInput": {"options": [
-    {"id": "o1", "label": "A"}, {"id": "o2", "label": "B"}]}}]}
-gleich(m.werte(unklar, "b")[0], None, "unklare Auswahl bricht ab")
+    {"id": "o1", "label": {"simpleValue": "Mein Produkt entspricht den Richtlinienanforderungen"}},
+    {"id": "o2", "label": {"simpleValue": m.GRUND["tobacco_policy_violation"]}}]}}]}
+gleich(m.werte(zwei, "b", m.GRUND["tobacco_policy_violation"])[0][0]["choiceInputValue"]["choiceInputOptionId"], "o2",
+       "fest gewählter Grund, exakter Text")
+gleich(m.werte(zwei, "b")[0], None, "ohne festen Grund keine Auswahl")
+gleich(m.werte(zwei, "b", "ermöglicht nicht direkt")[0], None, "Teiltext genügt nicht")
 doppelt = {"inputs": [{"id": "w", "label": "Grund", "required": True, "choiceInput": {"options": [
-    {"id": "o1", "label": "fälschlich A"}, {"id": "o2", "label": "fälschlich B"}]}}]}
-gleich(m.werte(doppelt, "b")[0], None, "zwei passende Optionen brechen ab")
+    {"id": "o1", "label": "X"}, {"id": "o2", "label": "X"}]}}]}
+gleich(m.werte(doppelt, "b", "X")[0], None, "zwei gleiche Optionen brechen ab")
+gleich(set(m.GRUND) == set(m.TITEL), True, "für jeden vorgesehenen Code ein Grund")
 gleich(m.werte({"inputs": [{"id": "z", "required": True, "neu": {}}]}, "b")[0], None, "unbekanntes Pflichtfeld bricht ab")
 gleich(m.werte({"inputs": []}, "b"), ([], "keine Eingabefelder"), "ohne Felder")
 
