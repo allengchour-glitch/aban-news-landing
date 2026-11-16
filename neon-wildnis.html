@@ -194,6 +194,7 @@ canvas{display:block;touch-action:none}
   #quest{right:calc(104px + env(safe-area-inset-right))}
 }
 </style>
+<link rel="stylesheet" href="/css/wildnis.css?v=510431116396">
 </head>
 <body>
 <div id="hud" class="hide">
@@ -260,6 +261,7 @@ canvas{display:block;touch-action:none}
   <div id="charLbl">Held wählen — oder direkt starten</div>
   <canvas id="charPrev" width="300" height="368"></canvas>
   <div id="charPick"></div>
+  <label id="nwGraphicsRow" for="nwGraphics"><span>Grafik</span><select id="nwGraphics"><option value="auto">Automatisch</option><option value="light">Sparsam</option><option value="detail">Details</option></select></label>
   <button class="big" id="startBtn">▶ Los geht's</button>
   <button class="ghost hide" id="newBtn">Neue Welt starten</button>
   <div id="coopBox" style="margin-top:12px;padding:12px;border:2px solid #2a6a8a;border-radius:14px;background:rgba(10,30,45,.5)">
@@ -278,6 +280,9 @@ canvas{display:block;touch-action:none}
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
+<script src="/js/lebenspfad/instance-chunks.js?v=cc75ebe983ee"></script>
+<script src="/js/wildnis/visuals.js?v=ea479e026907"></script>
+<script src="/js/wildnis/static-instances.js?v=3849366f9dcd"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
 <script src="/js/vendor/RGBELoader.js"></script>
 <script>/* 🚑 Robust-Loader: r128-FileLoader (Stream-Reader) scheitert auf manchen Geraeten hinter dem
@@ -310,7 +315,7 @@ renderer.setSize(W,H);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=IS_MOB?THREE.PCFShadowMap:THREE.PCFSoftShadowMap; /* 📱 günstigerer Schatten-Filter mobil */
 if(IS_MOB){renderer.shadowMap.autoUpdate=false;renderer.shadowMap.needsUpdate=true;} /* Shadow-Map nur jeden 2. Frame (Cadence in frame()) */
 if(renderer.outputEncoding!==undefined)renderer.outputEncoding=THREE.sRGBEncoding;
-if(THREE.ACESFilmicToneMapping!==undefined){renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;} /* 🎬 Filmisches Tone-Mapping → weiche Highlights, satte Mitten (weg vom Spielzeug-Look). ~15% dunkler → Sonne unten kompensiert. */
+if(THREE.ACESFilmicToneMapping!==undefined){renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.98;} /* 🎬 Filmisches Tone-Mapping → weiche Highlights, satte Mitten (weg vom Spielzeug-Look). ~15% dunkler → Sonne unten kompensiert. */
 document.body.appendChild(renderer.domElement);
 /* 🖥️ Software-Renderer erkennen (SwiftShader/llvmpipe: Headless-CI, schwache VMs) → teure Optik aus.
    ?gfx=full erzwingt den High-Pfad (Screenshot-QA), ?gfx=min den Low-Pfad. Kein Gameplay-Einfluss. */
@@ -319,6 +324,30 @@ try{var _glc=renderer.getContext(),_dbgi=_glc.getExtension("WEBGL_debug_renderer
   if(_dbgi){var _rstr=String(_glc.getParameter(_dbgi.UNMASKED_RENDERER_WEBGL)||"");if(/swiftshader|llvmpipe|software/i.test(_rstr))SOFT_GPU=true;}}catch(e){}
 var _gfxq=/[?&]gfx=(full|min)/.exec(location.search);
 if(_gfxq)SOFT_GPU=(_gfxq[1]==="min");
+var nwGraphics=lsGet("nw_gfx")||"auto",nwRatio=1,nwFrameAvg=25,nwSlowFor=0,nwAdaptWait=0;
+if(["auto","light","detail"].indexOf(nwGraphics)<0)nwGraphics="auto";
+if(_gfxq)nwGraphics=_gfxq[1]==="full"?"detail":"light";
+function nwApplyGraphics(mode,persist){
+  nwGraphics=mode;nwSlowFor=0;nwAdaptWait=performance.now()+5000;
+  nwRatio=mode==="light"?.7:mode==="detail"?Math.min(devicePixelRatio||1,1.75):Math.min(devicePixelRatio||1,1.5)*(SOFT_GPU?.75:IS_MOB?.8:1);
+  renderer.setPixelRatio(nwRatio);renderer.setSize(W,H);
+  renderer.shadowMap.enabled=mode==="detail"||mode==="auto"&&!SOFT_GPU&&!IS_MOB;
+  renderer.shadowMap.needsUpdate=true;
+  if(typeof resizeBloom==="function")resizeBloom();
+  var sel=document.getElementById("nwGraphics");if(sel)sel.value=mode;
+  if(persist)lsSet("nw_gfx",mode);
+  if(typeof running!=="undefined"&&running&&paused)renderScene();
+}
+function nwAdaptGraphics(ms){
+  if(nwGraphics!=="auto"||!window._nwSceneryReady||performance.now()<nwAdaptWait)return;
+  nwFrameAvg+=(Math.min(250,ms)-nwFrameAvg)*.07;
+  nwSlowFor=nwFrameAvg>45?nwSlowFor+Math.min(ms,250):Math.max(0,nwSlowFor-ms);
+  if(nwSlowFor<1800)return;nwSlowFor=0;nwAdaptWait=performance.now()+2500;
+  if(nwRatio>.56){nwRatio=Math.max(.55,Math.round((nwRatio-.1)*100)/100);renderer.setPixelRatio(nwRatio);renderer.setSize(W,H);resizeBloom();}
+  else renderer.shadowMap.enabled=false;
+}
+nwApplyGraphics(nwGraphics,false);
+document.getElementById("nwGraphics").onchange=function(){nwApplyGraphics(this.value,true);};
 var GFX_HI=!SOFT_GPU&&!IS_MOB; /* Desktop mit echter GPU: Bloom + Terrain-Normalmap erlaubt */
 var scene=new THREE.Scene();
 /* 🎨 Tageskurve satter: Tagblau minimal wärmer, Nachtblau tiefer/satter, plus Abendrot-Ton */
@@ -434,7 +463,7 @@ if(!scene.environment&&!(THREE.RGBELoader&&renderer.capabilities.isWebGL2&&!SOFT
 
 // ---------- Seeded RNG ----------
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
-var SEED=0,rnd=Math.random; /* ⚠️ rnd = seeded (Welt-Gen). Die Strom-Position ist nach Spielstart NICHT mehr peer-synchron — deterministisch NUR synchron vor Frame 1 ODER mit eigenem mulberry32-Strom (wie rnd2). Laufzeit-Zufall IMMER Math.random! */
+var SEED=0,rnd=Math.random,nwSharedWorld=false; /* ⚠️ rnd = seeded (Welt-Gen). Die Strom-Position ist nach Spielstart NICHT mehr peer-synchron — deterministisch NUR synchron vor Frame 1 ODER mit eigenem mulberry32-Strom (wie rnd2). Laufzeit-Zufall IMMER Math.random! */
 
 // ---------- Welt-Boden (grosse Plane mit Noise-Hügeln + Vertexfarben) ----------
 var MAP=800, GROUNDSEG=120;
@@ -444,7 +473,7 @@ var _texCache={}; /* 🖼️ Textur-Cache (Schwarm P1): rep als [x,y]-Array wird
 function gtex(file,rep,srgb){
   var isArr=Array.isArray(rep),ck=isArr?(file+"|"+rep[0]+"|"+rep[1]+"|"+(srgb?1:0)):null;
   if(ck&&_texCache[ck])return _texCache[ck];
-  var t=TEXLOADER.load("/textures/"+file);t.wrapS=t.wrapT=THREE.RepeatWrapping;
+  var t=window.NWWildnisVisuals.texture(THREE,file)||TEXLOADER.load("/textures/"+file);t.wrapS=t.wrapT=THREE.RepeatWrapping;
   if(isArr)t.repeat.set(rep[0],rep[1]);else if(rep)t.repeat.set(rep,rep);
   if(srgb&&THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;
   t.anisotropy=(renderer.capabilities&&renderer.capabilities.getMaxAnisotropy)?Math.min(8,renderer.capabilities.getMaxAnisotropy()):4;t.generateMipmaps=true;
@@ -1648,7 +1677,7 @@ function loadCC0(files,onAll){
 // Klon eines CC0-Protos, skaliert auf Ziel-Welthöhe targetH
 function cc0inst(name,targetH){
   var p=cc0proto[name];if(!p)return null;
-  var m=p.clone(true);var s=targetH/(cc0h[name]||1);m.scale.setScalar(s);
+  var m=p.clone(true);m.userData.nwModel=name;var s=targetH/(cc0h[name]||1);m.scale.setScalar(s);
   if(targetH<1.3){m.traverse(function(n){if(n.isMesh)n.castShadow=false;});} /* 📱 kleine Deko wirft keinen Schatten (Draw-Kosten) */
   return m;
 }
@@ -1656,7 +1685,7 @@ function cc0inst(name,targetH){
 function cc0instW(name,targetW){
   var p=cc0proto[name];if(!p)return null;
   var b=cc0box[name];if(!b)return null;
-  var m=p.clone(true);m.scale.setScalar(targetW/b.x);
+  var m=p.clone(true);m.userData.nwModel=name;m.scale.setScalar(targetW/b.x);
   return m;
 }
 /* 🏠 Primitiv-Fallback-Haus (Box + Walmdach + Tür + Fenster): Dörfer bleiben auch OHNE
@@ -1704,11 +1733,11 @@ function roadRibbon(pts,width,cobble,normal){
 }
 function layRoads(cx,cz,rr){
   // 🧱 GANZES Dorf gepflastert: grosse Kopfstein-Scheibe unter allem (Wege/Platz liegen als Detail obendrauf)
-  if(rr){var _cbR=Math.max(2,rr/3.5),cbAll=gtex("tex_cobble.png",[_cbR,_cbR],true);
+  if(rr){var _cbR=1,cbAll=gtex("tex_cobble.png",[_cbR,_cbR],true);
     /* Scheibe mit RADIALEN Ringen: CircleGeometry hat nur Zentrum+Rand -> auf Hügeln stiess das Gelände
        mitten durch die flachen Dreiecke (User: 'auf dem hügel dorf sollte auch pflaster sein') */
-    var SEGp=48,RINGSp=Math.max(6,Math.min(14,Math.round(rr/4))),posP=[],uvP=[],colP=[],idxP=[];
-    for(var rp=0;rp<=RINGSp;rp++){var radP=rr*rp/RINGSp;
+    var paveRadius=Math.min(rr,22),SEGp=48,RINGSp=Math.max(6,Math.min(14,Math.round(paveRadius/4))),posP=[],uvP=[],colP=[],idxP=[];
+    for(var rp=0;rp<=RINGSp;rp++){var radP=paveRadius*rp/RINGSp;
       var alP=rp>=RINGSp?0:(rp>=RINGSp-1?0.45:1); /* 🌾 Rand-Ringe faden ins Gras (weicher Übergang statt harter Pflaster-Kante) */
       for(var sp2=0;sp2<=SEGp;sp2++){var ap=sp2/SEGp*6.283185,xP=Math.cos(ap)*radP,zP=Math.sin(ap)*radP;
         posP.push(xP,groundH(cx+xP,cz+zP)+0.10,zP);uvP.push(xP/7,zP/7);colP.push(1,1,1,alP);}}
@@ -2006,7 +2035,7 @@ function gardenMats(){if(_gMats)return _gMats;var L=THREE.MeshLambertMaterial,B=
   return _gMats;}
 function mkGarden(gx,gz,ang){
   ang=ang||0;var gy=groundH(gx,gz),M=gardenMats();
-  var G=new THREE.Group();G.position.set(gx,gy,gz);G.rotation.y=ang;scene.add(G);
+  var G=new THREE.Group();G.userData.nwModel="nw_garden";G.position.set(gx,gy,gz);G.rotation.y=ang;scene.add(G);
   var soilTex=(typeof gtex==="function")?gtex("tex_dirt.png",[2,1.5],true):null;
   var soil=new THREE.Mesh(new THREE.BoxGeometry(3.4,0.2,2.4),soilTex?new THREE.MeshLambertMaterial({map:soilTex}):M.soil);
   soil.position.y=0.12;soil.receiveShadow=true;G.add(soil);
@@ -2054,13 +2083,14 @@ function mkGarden(gx,gz,ang){
   corn.forEach(function(p){var po=new THREE.Mesh(new THREE.BoxGeometry(0.1,0.56,0.1),fpM);po.position.set(p[0],0.28,p[1]);po.castShadow=true;G.add(po);});
   for(var e=0;e<4;e++){var a2=corn[e],b2=corn[(e+1)%4],mx3=(a2[0]+b2[0])/2,mz3=(a2[1]+b2[1])/2,len2=Math.hypot(b2[0]-a2[0],b2[1]-a2[1]);
     var rail=new THREE.Mesh(new THREE.BoxGeometry(0.06,0.09,len2-0.1),fpM);rail.position.set(mx3,0.4,mz3);rail.rotation.y=Math.atan2(b2[0]-a2[0],b2[1]-a2[1]);G.add(rail);}
-  if(typeof regSway==="function")regSway(G,0.012,0.9); // ganz sanftes Wiegen des Gartens
+  // Beet, Zaun und Giesskanne bleiben fest; einzelne Blumen und Bäume wiegen sich separat.
 }
 // 🎉 Wimpelkette (bunte Fähnchen) über dem Dorfplatz — festlich
 function mkBunting(cx,cz,ax,az,bx,bz){
+  var decor=new THREE.Group();decor.userData.nwModel="nw_bunting";scene.add(decor);
   var COL=[0xff5a5a,0xffd166,0x5ea8ff,0x7de88a,0xc98bff,0xff9a5c];
   var poleMat=new THREE.MeshStandardMaterial({color:0x6a4526,roughness:1,flatShading:true});
-  [[ax,az],[bx,bz]].forEach(function(p){var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.12,5.2,6),poleMat);pole.position.set(p[0],groundH(p[0],p[1])+2.6,p[1]);pole.castShadow=true;scene.add(pole);});
+  [[ax,az],[bx,bz]].forEach(function(p){var pole=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.12,5.2,6),poleMat);pole.position.set(p[0],groundH(p[0],p[1])+2.6,p[1]);pole.castShadow=true;decor.add(pole);});
   var topY=Math.max(groundH(ax,az),groundH(bx,bz))+4.7,sag=1.5,N=16;
   /* 🪢 Schnur zwischen den Masten — ohne sie sahen die Fähnchen wie schwebendes Konfetti aus (Polier-Pass) */
   var ropeMat=new THREE.MeshBasicMaterial({color:0x4a3a2a});
@@ -2070,9 +2100,9 @@ function mkBunting(cx,cz,ax,az,bx,bz){
     var ddx=rx-prevX,ddy=ry-prevY,ddz=rz-prevZ,len=Math.sqrt(ddx*ddx+ddy*ddy+ddz*ddz);
     var seg=new THREE.Mesh(ropeG,ropeMat);seg.position.set(prevX,prevY,prevZ);seg.scale.set(1,len,1);
     seg.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),new THREE.Vector3(ddx/len,ddy/len,ddz/len));
-    scene.add(seg);prevX=rx;prevY=ry;prevZ=rz;}
+    decor.add(seg);prevX=rx;prevY=ry;prevZ=rz;}
   for(var i=0;i<N;i++){var f=(i+0.5)/N,x=ax+(bx-ax)*f,z=az+(bz-az)*f,y=topY-Math.sin(f*Math.PI)*sag;
-    var fl=new THREE.Mesh(new THREE.ConeGeometry(0.15,0.3,3),new THREE.MeshBasicMaterial({color:COL[i%COL.length]}));fl.position.set(x,y-0.16,z);fl.rotation.x=Math.PI;scene.add(fl);}
+    var fl=new THREE.Mesh(new THREE.ConeGeometry(0.15,0.3,3),new THREE.MeshBasicMaterial({color:COL[i%COL.length]}));fl.position.set(x,y-0.16,z);fl.rotation.x=Math.PI;decor.add(fl);}
 }
 // 🌟 Dorf-Extras: Gärten neben Häusern, Wimpelketten, zusätzliche Marktstände mit Waren
 function decoVillageExtras(vx,vz,isSpawn,houses){
@@ -2089,8 +2119,8 @@ function decoVillageExtras(vx,vz,isSpawn,houses){
     mkGarden(gx,gz,outAng);
   }
   // Wimpelketten über dem Platz (2 Achsen im grossen Dorf)
-  mkBunting(vx,vz,vx-9,vz,vx+9,vz);
-  if(isSpawn)mkBunting(vx,vz,vx,vz-9,vx,vz+9);
+  mkBunting(vx,vz,vx-9,vz-12,vx+9,vz-12);
+  if(isSpawn)mkBunting(vx,vz,vx+14,vz-9,vx+14,vz+9);
   // Zusätzliche Marktstände mit Waren (Markt-Ecke)
   var goods=["fd_pie","fd_burger","fd_sausage","pr_crate_bottles","pr_bottle"];
   var nS=isSpawn?2:1;
@@ -3584,7 +3614,7 @@ function choosePerk(){
 // 💨 Ausweichrolle (aus neon-realm): kurzer Dash mit Unverwundbarkeit
 var dodgeT=0,dodgeCd=0,dodgeVX=0,dodgeVZ=0;
 function doDodge(){
-  if(dodgeCd>0||dead||!running||buildMode)return;
+  if(dodgeCd>0||dead||!running||buildMode||paused||mapOpen||perkChoosing||stationOpen)return;
   var mx=stickV.x,my=stickV.y;
   if(keys.w||keys.arrowup)my-=1;if(keys.s||keys.arrowdown)my+=1;if(keys.a||keys.arrowleft)mx-=1;if(keys.d||keys.arrowright)mx+=1;
   var l=Math.hypot(mx,my);
@@ -4216,7 +4246,7 @@ function updDayNight(dt){
   sun.color.copy(SUN_NOON).lerp(SUN_LOW,warm*0.55); /* dezenter: volle 0.85 machten den Boden matschig-dunkel */
   if(isNight){sun.color.setHex(0xbcd0ff);hemi.color.setHex(0x5872b8);} /* Mondlicht kuehl-blau */
   else hemi.color.setHex(0xcfe0ff);
-  sun.intensity=isNight?0.34:(0.30+t*1.48);hemi.intensity=isNight?0.32:(0.44+t*0.46); /* 🎬 leicht heller — kompensiert ACES-Abdunklung */
+  sun.intensity=isNight?0.34:(0.30+t*0.92);hemi.intensity=isNight?0.32:(0.36+t*0.30); /* 🎬 leicht heller — kompensiert ACES-Abdunklung */
   if(typeof rimLight!=="undefined")rimLight.intensity=isNight?0.55:0.35;if(typeof heroLamp!=="undefined")heroLamp.intensity=isNight?0.7:0.4;
   scene.background.copy(SKY_NIGHT).lerp(SKY_DAY,t);
   if(!isNight)scene.background.lerp(SKY_DUSK,warm*0.5); /* Abendrot/Morgenrot in den Himmel mischen */
@@ -4252,6 +4282,7 @@ document.addEventListener("visibilitychange",function(){if(document.hidden)reset
 addEventListener("keydown",function(e){
   if(e.target&&(e.target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)))return;
   if(e.key==="Escape"&&e.repeat)return;
+  if(mapOpen){if(e.key==="Escape")closeWorldMap();return;}
   if(paused&&e.key!=="Escape")return;
   keys[e.key.toLowerCase()]=1;
   if(e.key.toLowerCase()==="e"){harvest();}
@@ -4353,10 +4384,12 @@ function addCollider(x,z,r,mesh){colliders.push({x:x,z:z,r:r,fade:!!mesh});
   /* 🫥 Gebäude, die zwischen Kamera & Held stehen, werden durchsichtig statt den Helden zu verdecken
      (User „eingesperrt": Haus füllte den Schirm, Held unsichtbar). Materialien klonen → jedes Haus fadet
      unabhängig (cc0inst teilt Materialien zwischen Instanzen). */
-  if(mesh){var mats=[];var _reg=function(m){m._o0=(m.opacity!==undefined?m.opacity:1);m._t0=!!m.transparent;mats.push(m);}; /* Schwarm-P3: Original-Opazität/Transparenz merken → glas/fenster nicht dauerhaft undurchsichtig machen */
+  if(mesh){var mats=[],copies=new Map();mesh.userData.nwFadeBuilding=true;
+    var _reg=function(m){m._o0=(m.opacity!==undefined?m.opacity:1);m._t0=!!m.transparent;mats.push(m);};
+    function houseMaterial(m){if(copies.has(m))return copies.get(m);var c=m.clone();copies.set(m,c);_reg(c);return c;} /* Schwarm-P3: Original-Opazität/Transparenz merken → glas/fenster nicht dauerhaft undurchsichtig machen */
     mesh.traverse(function(n){if(!n.isMesh||!n.material)return;
-      if(Array.isArray(n.material)){n.material=n.material.map(function(m){return m.clone();});n.material.forEach(_reg);}
-      else{n.material=n.material.clone();_reg(n.material);}});
+      if(Array.isArray(n.material))n.material=n.material.map(houseMaterial);
+      else n.material=houseMaterial(n.material);});
     if(mats.length)fadeBuildings.push({x:x,z:z,r:Math.max(r*1.55+1.3,r*1.85+0.8),mats:mats,cur:1,_on:false});} /* Schwarm-2 P3: Fade-Radius ≥ Klemm-Radius → kein streifender Rest ohne Fade */
 }
 function canWalk(nx,nz){ /* 🧱 grosse Gegenstaende blockieren (User-Wunsch) */
@@ -4438,7 +4471,7 @@ function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 function saveGame(){
   if(!running||NET.on)return; /* 🌐 Koop-Läufe nicht in den Solo-Save schreiben */
-  var s={seed:SEED,inv:inv,tools:tools,equip:equip,hp:hp,maxHp:maxHp,xp:xp,level:level,kills:kills,day:day,dayT:dayT,isNight:isNight,nights:nights,quest:quest,won:won,
+  var s={seed:SEED,worldFull:nwSharedWorld,inv:inv,tools:tools,equip:equip,hp:hp,maxHp:maxHp,xp:xp,level:level,kills:kills,day:day,dayT:dayT,isNight:isNight,nights:nights,quest:quest,won:won,
     px:player.position.x,pz:player.position.z,
     st:structures.map(function(o){return{t:o.type,x:o.x,z:o.z,hp:o.hp};}),
     loot:lootOpened,
@@ -4671,8 +4704,35 @@ function renderBloom(){
   compMat.uniforms.tBase.value=rtScene.texture;compMat.uniforms.tBloom.value=rtA.texture;blitQ(compMat,null);
   renderer.setRenderTarget(null);
 }
-function resizeBloom(){if(!_bloomOK)return;rtScene.setSize(W,H);bw=Math.max(1,Math.floor(W/2));bh=Math.max(1,Math.floor(H/2));rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
-function renderScene(){if(_bloomOK)renderBloom();else renderer.render(scene,camera);}
+function resizeBloom(){if(!_bloomOK)return;var size=renderer.getDrawingBufferSize(new THREE.Vector2());rtScene.setSize(size.x,size.y);bw=Math.max(1,Math.floor(size.x/2));bh=Math.max(1,Math.floor(size.y/2));rtA.setSize(bw,bh);rtB.setSize(bw,bh);}
+if(nwGraphics==="detail")resizeBloom();
+var nwLights=window.NWWildnisVisuals.lightBudget(THREE,scene,IS_MOB?4:6),nwCull=window.NWWildnisVisuals.distanceCuller(THREE,scene),nwStatic=null,nwChunks=null,nwContact=null;
+function nwBatchScenery(){
+  var blocked=new Set(),materials=new Set();
+  resources.forEach(function(r){blocked.add(r.mesh);});
+  worldProps.forEach(function(r){blocked.add(r.mesh);});
+  swayers.forEach(function(r){blocked.add(r.m);});critters.forEach(function(r){blocked.add(r.m);});
+  npcs.forEach(function(r){blocked.add(r.mesh);});loots.forEach(function(r){blocked.add(r.mesh);});
+  fadeBuildings.forEach(function(r){r.mats.forEach(function(m){materials.add(m);});});
+  var roots=[],names=/^(?:ftk_|f[nu]_|fg_|nt_|cc0_|bk_|bd_|gy_|nw_|fd_|dk2_(?:column|rocks|stones|woodframe|woodsupport)|ck_(?:wall|tower|flag))/;
+  scene.children.forEach(function(root){
+    if(!names.test(root.userData.nwModel||"")||blocked.has(root))return;
+    var dynamic=false;root.traverse(function(n){if(n.isSkinnedMesh||n.isLight||blocked.has(n)||materials.has(n.material))dynamic=true;});
+    if(!dynamic)roots.push(root);
+  });
+  if(nwStatic)nwStatic.dispose();nwStatic=window.NWStaticInstances(THREE,roots,{chunkSize:48});
+  var staticInstances=scene.children.filter(function(o){return o.isInstancedMesh&&o!==_tuftIM&&o.name!=="NWStaticInstances";});
+  if(nwChunks)nwChunks.dispose();nwChunks=window.LPInstanceChunks(THREE,staticInstances,{chunkSize:48});
+  nwChunks.roots.forEach(function(o){o.userData.nwBounded=true;});
+  if(nwContact)nwContact.dispose();nwContact=window.NWWildnisVisuals.contactPatches(THREE,scene,colliders,groundH);
+  window._nwSceneryReady=true;
+}
+function renderScene(){
+  nwLights.update(player.position,.05);if(nwContact)nwContact.mesh.visible=!renderer.shadowMap.enabled;
+  scene.fog.near=nwGraphics==="detail"?80:nwGraphics==="light"?45:60;
+  scene.fog.far=nwGraphics==="detail"?260:nwGraphics==="light"?125:165;
+  nwCull.render(player.position,scene.fog.far+35,function(){if(_bloomOK&&nwGraphics==="detail")renderBloom();else renderer.render(scene,camera);});
+}
 
 var perfNow=0,lastT=0,_mmT=0,_fnT=0; /* G9: findNear-Drossel */
 function updMinimap(){var cv=document.getElementById("minimap");if(!cv||!running)return;var ctx=cv.getContext("2d");var W=cv.width,H=cv.height,cx=W/2,cy=H/2,R=W/2;
@@ -4788,11 +4848,12 @@ function fastTravel(h){ /* 🚀 Schnellreise zu einem bekannten Ort (User: „ri
   mm.addEventListener("touchstart",function(){_mmt=performance.now();},{passive:true});}})();
 function frame(now){
   requestAnimationFrame(frame);
-  var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;perfNow=now;
+  var rawFrameMs=now-lastT;var dt=Math.min(0.05,rawFrameMs/1000)||0.016;lastT=now;perfNow=now;
   if(IS_MOB){_shTick^=1;if(_shTick===0)renderer.shadowMap.needsUpdate=true;}
   if(stationOpen){if(running&&!paused)netTick(dt);return;} /* 🎯 Station offen: Welt pausiert (kein 2. WebGL-Render!), Netz-Ticks laufen weiter (sonst Koop-Disconnect) */
-  if(!running||paused||perkChoosing||mapOpen){if(NET.on&&running)netTick(dt);renderScene();return;} /* 🗺️ Schwarm-2 P2: Weltkarte pausiert die Sim (sonst Schaden/Tod/Bewegung hinter dem Overlay) */
+  if(!running||paused||perkChoosing||mapOpen){if(NET.on&&running)netTick(dt);return;} /* 🗺️ Schwarm-2 P2: Weltkarte pausiert die Sim (sonst Schaden/Tod/Bewegung hinter dem Overlay) */
   if(hitStop>0){hitStop-=dt;if(hitStop>0){netTick(dt);renderScene();return;}} /* ⚔️ Hitstop: Treffer-Pause = Wucht */
+  nwAdaptGraphics(rawFrameMs);
   // Bewegung
   var mx=stickV.x,my=stickV.y;
   if(keys.w||keys.arrowup)my-=1;if(keys.s||keys.arrowdown)my+=1;if(keys.a||keys.arrowleft)mx-=1;if(keys.d||keys.arrowright)mx+=1;
@@ -4853,6 +4914,15 @@ function togglePause(){if(!running)return;resetControls();paused=!paused;var ov=
 // ===================== 🌐 KOOP (js/mp.js, WebRTC-P2P) =====================
 var NET={s:null,on:false,role:null,remote:null,rt:{x:0,z:0,ry:0,vx:0,vz:0,tLast:0},sendT:0};
 var NET_FORCE_SEED=null;
+var _netLobbyGen=0,_netSearch=null,_netShareT=null;
+function netStopSearch(){var s=_netSearch;_netSearch=null;if(s)try{s.abbrechen();}catch(e){}}
+function netHideShare(){if(_netShareT!==null)clearTimeout(_netShareT);_netShareT=null;var b=document.getElementById("coopShare");if(b)b.classList.add("hide");}
+function netCancelLobby(){
+  ++_netLobbyGen; /* Vor abbrechen/close entwerten: beide können synchron Callbacks auslösen. */
+  netStopSearch();netHideShare();var old=NET.s;NET.s=null;NET.on=false;
+  try{if(old)old.close();}catch(e){}hbStop();netHideRemote();netResetRemote();
+  return _netLobbyGen;
+}
 function coopStatusMsg(m){var b=document.getElementById("coopStatus");if(b)b.textContent=m;}
 // 🌐 Online-Anzeige im HUD (User-Wunsch) — zeigt Solo / Warten / Verbunden
 var _onlineState="solo",_onlineTxt="";
@@ -4891,24 +4961,27 @@ function netResetRemote(){NET.remoteDowned=false;NET.lastRemoteMelee=0;NET.rt.hp
 function netStart(role,code){
   if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
   if(NET.s&&NET.s.status==="connected"){coopStatusMsg("Schon verbunden.");return;}
-  try{if(NET.s)NET.s.close();}catch(e){}NET.s=null;netResetRemote();
+  netCancelLobby();
   NET.role=role;NET._seq=0;NET._rseq=0;coopStatusMsg("Verbinde…");
   try{NET.s=(role==="host")?MP.host("wildnis"):MP.join("wildnis",code);}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
+  var _mySess=NET.s;
   if(role==="host")coopStatusMsg("Raum-Code: "+NET.s.code+" — teile ihn mit dem Partner!");
   setOnline("waiting");
   NET.s.onStatus(function(st){
+    if(NET.s!==_mySess)return;
     if(st==="waiting"){coopStatusMsg("Warte auf Partner… Code: "+NET.s.code);setOnline("waiting");}
     else if(st==="connected"){NET._rseq=0;NET.rt.tLast=0;NET.rt.vx=NET.rt.vz=0;NET.remoteDowned=false;coopStatusMsg("✅ Verbunden!");setOnline("connected");if(NET.role==="host"&&running&&NET_FORCE_SEED!=null)try{NET.s.send({t:"start",seed:NET_FORCE_SEED});}catch(e){}sendMyChar();hbStart();}
     else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
-    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();netResetRemote();hbStop();}});
-  NET.s.onMessage(onNetMsg);
+    else if(st==="closed"){netHideShare();coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();netResetRemote();hbStop();}});
+  NET.s.onMessage(function(d){if(NET.s===_mySess&&_mySess.status!=="closed")onNetMsg(d);});
   NET.s.ready.then(function(){
+    if(NET.s!==_mySess||_mySess.status==="closed")return;
     NET.on=true;
     /* 🩹 Doppel-Start-Guard (wie beim Gast): Host konnte nach »Raum öffnen« solo starten — beim Beitritt des
        Freundes baute startGame(true) die Welt ein ZWEITES Mal auf (doppelter Boden/Dörfer/Collider, Reset).
        Läuft die Welt schon, den ECHTEN Seed schicken statt neu würfeln, damit der Gast dieselbe Welt baut. */
     if(role==="host"){NET_FORCE_SEED=running?SEED:((Math.random()*1e9)|0);NET.s.send({t:"start",seed:NET_FORCE_SEED});spawnRemote();if(!running)startGame(true);}sendMyChar();
-  }).catch(function(e){coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));});
+  }).catch(function(e){if(NET.s!==_mySess)return;coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));});
 }
 function onNetMsg(d){
   if(!d)return;
@@ -5050,32 +5123,36 @@ function netTick(dt){
 function netStartQuick(){ /* ⚡ 1-Tipp Schnell-Koop ohne Code (öffentlicher Raum, join-oder-host) */
   if(!window.MP){coopStatusMsg("Koop-Lib nicht geladen");return;}
   if(NET.s&&NET.s.status==="connected"){coopStatusMsg("Schon verbunden.");return;}
-  try{if(NET.s)NET.s.close();}catch(e){}NET.s=null;netResetRemote();
   if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}
+  var gen=netCancelLobby();
   coopStatusMsg("⚡ Suche Mitspieler…");setOnline("waiting");
   /* 🔎 Nicht stur "PUBA": erst offene Räume scannen (wartende Hosts antworten auf __lobby?), sonst freie
      Public-Räume der Reihe nach probieren — EIN volles Paar blockierte sonst den Schnell-Koop für alle. */
-  if(!MP.suche||!MP.PUBLIC){netQuickGo(["PUBA"],0);return;}
+  if(!MP.suche||!MP.PUBLIC){netQuickGo(["PUBA"],0,gen);return;}
   var _qLos=false;
-  MP.suche("wildnis",{frist:3000,
-    fund:function(f){if(_qLos||!f||f.voll)return;_qLos=true;netQuickGo([f.code],0);}, /* wartender Host gefunden → sofort dazu */
-    fertig:function(gefunden){if(_qLos)return;_qLos=true;
+  var scan=MP.suche("wildnis",{frist:3000,
+    fund:function(f){if(gen!==_netLobbyGen||_qLos||!f||f.voll)return;_qLos=true;netStopSearch();netQuickGo([f.code],0,gen);}, /* wartender Host gefunden → sofort dazu */
+    fertig:function(gefunden){if(gen!==_netLobbyGen||_qLos)return;_qLos=true;netStopSearch();
       var belegt=(gefunden||[]).map(function(f){return f.code;});
       var frei=MP.PUBLIC.filter(function(c){return belegt.indexOf(c)<0;});
-      netQuickGo(frei.length?frei:MP.PUBLIC.slice(),0);}});
+      netQuickGo(frei.length?frei:MP.PUBLIC.slice(),0,gen);}});
+  if(_qLos||gen!==_netLobbyGen){try{scan.abbrechen();}catch(e){}}else _netSearch=scan;
 }
-function netQuickGo(rooms,idx){ /* ⚡ Verbindungsaufbau für EINEN Public-Raum; bei Fehlschlag nächsten Raum probieren */
+function netQuickGo(rooms,idx,gen){ /* ⚡ Verbindungsaufbau für EINEN Public-Raum; bei Fehlschlag nächsten Raum probieren */
+  if(gen!==_netLobbyGen)return;
   if(idx>=rooms.length||idx>=3){coopStatusMsg("❌ Kein Mitspieler gefunden — nochmal tippen.");setOnline("solo");return;}
   try{NET.s=MP.quick("wildnis",rooms[idx]);}catch(e){coopStatusMsg("Fehler: "+e.message);return;}
   var _mySess=NET.s;
   NET.role="quick";NET._seq=0;NET._rseq=0; /* wird bei Verbindung auf host/join gesetzt */
   NET.s.onStatus(function(st){
+    if(NET.s!==_mySess)return;
     if(st==="waiting"){coopStatusMsg("⚡ Warte auf Mitspieler… (öffentlicher Raum)");setOnline("waiting");}
     else if(st==="connected"){NET.role=NET.s.role||NET.role;NET._rseq=0;NET.rt.tLast=0;NET.rt.vx=NET.rt.vz=0;NET.remoteDowned=false;coopStatusMsg("✅ Verbunden!");setOnline("connected");if(NET.role==="host"&&running&&NET_FORCE_SEED!=null)try{NET.s.send({t:"start",seed:NET_FORCE_SEED});}catch(e){}sendMyChar();hbStart();}
     else if(st==="lost"){coopStatusMsg("⚠️ Verbindung wackelt…");setOnline("lost");}
-    else if(st==="closed"){coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();netResetRemote();hbStop();}});
-  NET.s.onMessage(onNetMsg);
+    else if(st==="closed"){netHideShare();coopStatusMsg("❌ Getrennt");NET.on=false;setOnline("solo");netHideRemote();netResetRemote();hbStop();}});
+  NET.s.onMessage(function(d){if(NET.s===_mySess&&_mySess.status!=="closed")onNetMsg(d);});
   NET.s.ready.then(function(){
+    if(NET.s!==_mySess||_mySess.status==="closed")return;
     NET.on=true;NET.role=NET.s.role||NET.role;
     /* 🩹 Doppel-Start-Guard: »▶ Los geht's« während der Mitspieler-Suche startete solo — beim Verbinden
        darf startGame(true) die Welt nicht nochmal aufbauen; laufender Host schickt seinen echten Seed. */
@@ -5083,13 +5160,15 @@ function netQuickGo(rooms,idx){ /* ⚡ Verbindungsaufbau für EINEN Public-Raum;
     else spawnRemote(); /* Gast: wartet auf "start"-Nachricht */
     sendMyChar();
   }).catch(function(e){
-    if(NET.s===_mySess&&idx+1<rooms.length&&idx+1<3){coopStatusMsg("⚡ Raum belegt — probiere nächsten…");netQuickGo(rooms,idx+1);return;} /* nächster Public-Raum */
+    if(NET.s!==_mySess||gen!==_netLobbyGen)return;
+    if(idx+1<rooms.length&&idx+1<3){NET.s=null;try{_mySess.close();}catch(e){}coopStatusMsg("⚡ Raum belegt — probiere nächsten…");netQuickGo(rooms,idx+1,gen);return;} /* nächster Public-Raum */
     coopStatusMsg("❌ "+(e&&e.message||"Verbindung fehlgeschlagen"));setOnline("solo");});
 }
 (function(){var q=document.getElementById("coopQuick");if(q)q.onclick=netStartQuick;
   var h=document.getElementById("coopHost"),j=document.getElementById("coopJoin");
   if(h)h.onclick=function(){if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}netStart("host");
-    setTimeout(function(){var sb=document.getElementById("coopShare");if(sb&&NET.s&&NET.s.code)sb.classList.remove("hide");},600);};
+    var host=NET.s;if(!host||NET.role!=="host")return;
+    netHideShare();_netShareT=setTimeout(function(){_netShareT=null;if(NET.s!==host||host.status==="closed")return;var sb=document.getElementById("coopShare");if(sb&&host.code)sb.classList.remove("hide");},600);};
   var sb=document.getElementById("coopShare");
   if(sb)sb.onclick=function(){ // 📲 Einladungs-Link: Partner tippt drauf und ist direkt drin
     if(!(NET.s&&NET.s.code))return;
@@ -5107,13 +5186,14 @@ function netQuickGo(rooms,idx){ /* ⚡ Verbindungsaufbau für EINEN Public-Raum;
   if(j)j.onclick=function(){if(running){coopStatusMsg("Koop bitte VOR dem Start — erst »Neue Welt starten«.");return;}var c=(document.getElementById("coopCode").value||"").toUpperCase().replace(/[^A-Z]/g,"");if(c.length!==4){coopStatusMsg("Code = 4 Buchstaben");return;}netStart("join",c);};
 })();
 function startGame(fresh){
-  var sv=(NET.on||fresh)?null:loadSave(); // Koop: immer frische, geteilte Welt
+  var sv=(NET.on||fresh)?null:loadSave();
+  nwSharedWorld=!!(NET.on||NET.s||_netSearch||(sv&&sv.worldFull)); // Koop: immer frische, geteilte Welt
   window._fellPend=(sv&&sv.fell&&sv.fell.length)?sv.fell:null; /* G10: VOR loadNature parken (dessen Callback kann vor dem if(sv)-Block feuern) */
   SEED=(NET_FORCE_SEED!=null)?NET_FORCE_SEED:(sv?sv.seed:((Math.random()*1e9)|0));rnd=mulberry32(SEED);
   buildGround();buildRiver();buildGrassTufts();buildExtraFlora();loadNature(function(){placeResources();applyFellPend();buildAmbient();placeLoot();if(day>1)spawnDayCache(true);loadProps();
     // CC0-Welt-Reichtum laden, dann Natur-Vielfalt + Dörfer + Friedhof platzieren
     loadCC0(["cc0_tree_pine","cc0_tree_oak","cc0_tree_default","cc0_tree_palm","cc0_bush","cc0_flower_purple","cc0_mushroom_red","cc0_rock_large","cc0_rock_small","cc0_log_stack","cc0_barrel","cc0_crate","cc0_fence","cc0_tent","cc0_campfire","cc0_crypt","cc0_gravestone_cross","cc0_gravestone_round","cc0_coffin","building_fachwerk","building_werkstatt","building_turm","building_castle","item_relic","item_potion","mob_dragon","item_fountain","ftk_road","ftk_stall","ftk_fountain","ftk_cart","ftk_banner","ftk_lantern","ftk_watermill","ftk_tree","ck_tower","ck_wall","ck_wall_corner","ck_gate","ck_flag","ck_catapult","ck_tree","dk_sword","dk_spear","dk_shield_round","dk_shield_rect","fd_sausage","fd_pie","fd_burger","npc_ma","npc_mb","npc_mc","npc_md","npc_fa","npc_fb","npc_fc","npc_fd","fn_table","fn_chair","fn_chair2","fn_stool","fn_plant","fn_plant2","fn_bookcase","fn_bed","nw_blume_lila","nw_blume_rot","nw_blume_gelb","nw_blume_gelb_hoch","nw_fels_a","nw_fels_b","nw_stein_gross_a","nw_stein_gross_b","nw_meilenstein"].concat(NEW_ASSETS).concat(NEW_ASSETS2).filter(function(n){return DEFER_ASSETS.indexOf(n)<0;}),
-      function(){decorateWorld();iblClamp();loadCC0(DEFER_ASSETS,function(){decorateWorldLate();iblClamp();
+      function(){decorateWorld();iblClamp();loadCC0(DEFER_ASSETS,function(){decorateWorldLate();iblClamp();nwBatchScenery();
         if(window._gdPend){for(var gi2=0;gi2<npcs.length&&gi2<window._gdPend.length;gi2++){if(window._gdPend[gi2])npcs[gi2].giftDay=day;}window._gdPend=null;} /* heutige Geschenke bleiben eingelöst */});}); // 🕑 Phase 2 lädt nach Spielstart; iblClamp: EnvMap auf Spät-Materialien dezent halten
   });
   loadHero();loadSlime();
@@ -5347,8 +5427,18 @@ if(loadSave()){document.getElementById("startBtn").textContent="▶ Weiterspiele
 
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);resizeBloom();});
 // Debug-Hook (nur für automatisierte Tests; kein Gameplay-Einfluss)
+// Eine gemeinsame Welt darf nicht von Handy-/Desktop-Dichte oder Ladezeit abhängen.
+// Nur synchrone Erzeugung vereinheitlichen; Renderprofil und Laufzeit-Touch bleiben gerätespezifisch.
+function nwWorldPhase(fn){return function(){
+  if(!nwSharedWorld)return fn.apply(this,arguments);
+  var device=IS_MOB,density=VF;IS_MOB=false;VF=1;
+  try{return fn.apply(this,arguments);}finally{IS_MOB=device;VF=density;}
+};}
+placeResources=nwWorldPhase(placeResources);buildAmbient=nwWorldPhase(buildAmbient);
+placeLoot=nwWorldPhase(placeLoot);loadProps=nwWorldPhase(loadProps);
+decorateWorld=nwWorldPhase(decorateWorld);decorateWorldLate=nwWorldPhase(decorateWorldLate);
 window.__nw={
-  gfx:function(){return {ibl:GFX.ibl,bloom:_bloomOK,soft:SOFT_GPU,hi:GFX_HI,tufts:_tuftN,waterMats:_waterMats.length};}, /* Debug/QA */
+  gfx:function(){return {ibl:GFX.ibl,bloom:_bloomOK&&nwGraphics==="detail",soft:SOFT_GPU,hi:GFX_HI,profile:nwGraphics,ratio:nwRatio,shadows:renderer.shadowMap.enabled,lights:nwLights.stats(),culling:nwCull.stats(),batch:nwStatic?nwStatic.stats:null,chunks:nwChunks?nwChunks.stats:null,tufts:_tuftN,waterMats:_waterMats.length};}, /* Debug/QA */
   hero:function(){return {model:!!heroModel,pawn:pBody.visible,cur:heroRig?heroRig.cur:null,clips:heroRig?Object.keys(heroRig.actions):[]};}, /* Debug/QA: Charakter-Rig */
   colliders:function(){return (typeof colliders!=="undefined")?colliders.map(function(c){return {x:+c.x.toFixed(1),z:+c.z.toFixed(1),r:c.r};}):[];}, /* QA: alle Gebäude-Collider */
   win:function(){showWinScreen();return 1;}, // Test-Only
