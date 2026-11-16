@@ -117,12 +117,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   - Pilot, 329 Produkte: 238 nicht im Kanal «Google & YouTube» (Schaufenster). 91 bei Google: 16 tragen den Sachtext, 75 noch die alte Werbezeile. Keiner der 91 wurde seither in Shopify geändert.
   - Kontrolle, 305 Produkte: 39 bei Google (33 Werbezeile, 5 echte Beschreibung, 1 andere).
   - Gegenprobe: Drei Pilot-Seiten tragen im Shop den Sachtext als Meta-Beschreibung.
+  - Nachmessung 08:45 UTC (Lauf 43833669895, Leser behoben mit PR #3182): dieselben Zahlen. «Seit dem Pilot geändert: keine» steht jetzt im Klartext.
 - **Deutung:** Der Weg stimmt im Kern (16 genaue Treffer), die App schickt die Änderung aber langsam oder nur teilweise. Nach der vorher festgelegten Regel heisst das «nicht bestätigt». Entscheid beim Besitzer: behalten und neu messen, oder zurücknehmen.
 - **Dashboard «Offene Punkte»:** Die Wiedervorlage nannte noch das gelöschte Artefakt; nachgeführt im KI-Büro: Zeile `merchant-beschreibung` um 08:30 UTC (`datasets/offen` Version 9, Seite Version 21), die Zeilen vom 11.11. auf «älter».
 - **Lehren:**
   - (1) Ein Messgerät zuerst an einem bekannten Fall prüfen: Lauf 1 und 2 meldeten 0 von 1 859 Angeboten, weil die `id` von `product_view` drei Teile hat und nicht vier. Erst die Probe mit einem bekannten Angebot zeigte den Fehler.
   - (2) GitHub schwärzt im Protokoll jede Zeile eines mehrzeiligen Secrets, beim JSON-Schlüssel also auch «{» und «}». Ein Wörterbuch erscheint dann als `***`; Zählungen darum als Text ausgeben.
   - (3) Eine Wiedervorlage kann einen veralteten Weg nennen (hier den Bericht des Besitzers und das gelöschte Artefakt). Zuerst prüfen, was seither möglich ist.
+  - (4) Lauf 5 auf `main` brach ab: Eine lokale Variable verdeckte die neue Funktion `liste`, und der Selbsttest rief `main()` nie auf. Jetzt läuft `main()` im Selbsttest einmal mit Attrappen (Mutationsprobe 7 von 7). Ein Selbsttest, der nur Hilfsfunktionen prüft, ist kein Probelauf.
 
 **📌 2026-11-16 früh (🎬 zwei Testseiten fertig, für Kundinnen NICHT umgeschaltet: bewegter Kategoriekopf `?view=lxbewegt` und Scroll-Story `?view=lxstory`; Quellen gesichert in `dropship/kategoriekopf-bewegt-1511/` und `dropship/scroll-story-1511/` (je README); Besitzer «unterkategorien auch verbessern mit hintergründe?» und «20k franken webseite … hintergrund bewegt»):**
 - **Bewegter Kategoriekopf:** Testlink jede Kategorie mit `?view=lxbewegt` (Clip z. B. `/collections/geschirr-tisch?view=lxbewegt`, Fotostreifen `/collections/damen-mode?view=lxbewegt`). Live im MAIN-Theme `213991391623` nur `snippets/lx-kopf-bewegt.liquid` (md5 `0f2c7d9d…`, Runde 1611b: Pause-Knopf nach Fehler und Breitenwechsel, Ausschnitt s01, Schimmer endet durchsichtig) und `templates/collection.lxbewegt.json`. Ein Clip erscheint nur, wenn sein Produkt Mitglied der Sammlung ist und die Ausführung kaufbar ist (fail closed). Nachbau 130 bestanden, unabhängiger Prüfer «ok». **Umschalten (`LIVE=1 node umschalten.mjs`, eine Änderung in `templates/collection.json`) nur auf Ja des Besitzers.**
@@ -141,7 +143,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Auslegung (meine, nicht bestätigt):** «zu frage ja» heisst: Hobel-Clip ohne Musik neu schneiden und einplanen. Die zwei Links heissen: Codex' Fassung 20 ins private Dashboard bringen.
 - **Hobel (GEMESSEN):**
   - Stille Fassung `hobel-ohne-musik-1611.mp4` in Shopify Files: Bildspur bitgleich, Ton −70 LUFS.
-  - Metricool Di 17.11.: YouTube 13:00 (id 429390094), TikTok 13:00 (id 429390445), Reel Instagram/Facebook 20:00 (id 429395222). Alle mit `autoPublish`, frisch gelesen 23:47 UTC mit Status PENDING.
+  - Metricool Di 17.11.: YouTube 13:00 (id 429390094), TikTok 13:00 (id 429390445), Reel Instagram/Facebook 20:00 (id 429395222). Alle mit `autoPublish`, frisch gelesen 23:47 UTC mit Status PENDING. **[ÜBERHOLT 16.11.: GEMESSEN 08:5x UTC stehen alle drei als Entwurf ohne `autoPublish` (neue ids 429675848, 429676883, 429676896, gleiche uuid, umgestellt 07:20 bis 07:22 UTC). Laut Halteliste der Shop-Sitzung (`dropship/METRICOOL-HALTEN.txt`, PR #3180) hat der Besitzer sie selbst zurückgestellt. Nicht neu einplanen.]**
   - Doku: `dropship/tiktok-cj-videos-0311/PAKET.md`.
 - **KI-Büro (PR #3164, Doku `tools/buero/dashboard/README.md`):**
   - **Hochgeladen** 15.11. 23:48 UTC in einer atomaren Anfrage: `files/index.html` Version 19, `files/kb3d-code.js` Version 9, `files/kb-geldmanager.js` Version 2. Alle zehn Dateien zurückgelesen gleich dem Bau aus `main`. `datasets/buero` bleibt Version 8 (Messstand 11.11.).
