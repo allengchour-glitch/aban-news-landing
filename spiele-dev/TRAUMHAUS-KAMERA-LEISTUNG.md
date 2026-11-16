@@ -32,4 +32,4 @@ Lokale Prüfprotokolle: `/tmp/th-kamera-analyse-agent.log`, `/tmp/th-kamera-brow
 
 Die Browserprüfung verwendet Software-WebGL. Sie belegt weder eine Bildrate von 60 FPS auf einem echten Handy noch eine bestimmte Verbesserung der Bildrate des gesamten Spiels. Die Egoansicht am Seepark bleibt mit 2’241 Zeichenaufrufen teuer; der Filter löst diese verbleibende Last nicht vollständig.
 
-Die separat gestartete Erstellung einer Parkuhr über Higgsfield ist noch kein Spielasset. QUELLE: laufender Auftrag mit fünf Credits; ein fertiges und eingebautes Ergebnis ist für diese Phase noch nicht bestätigt.
+Die separate 3D-Parkuhr über Higgsfield endete mit Status `failed`; es liegt kein GLB vor. Die alternativ gestartete Nordpark-Grafik ist nicht Bestandteil dieser Kamera- und Leistungsänderung.
