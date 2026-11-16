@@ -8,6 +8,16 @@ GEMESSEN66 Node+90 Browser-/Rendererbedingungen grün: echte Tastatur/Touch, lok
 
 Bereits LIVE: Mix Arena PR3213, Merge78f14f5fb, Hauptseitenlauf43924427755,42/42 normale HTTPS-Prüfungen; Lebenspfad-Atmosphäre/eigeneObjekte PR3214, Mergee6cb01125, Lauf43925206449,9/9 HTTPS-Prüfungen. Je sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen; Releasebelege in den jeweiligen Belegordnern. Neuer Besitzerentscheid zur Lebenspfad-Figur: **klein/niedlich, großer Kopf, kompakter Körper, verspielt**. Umsetzung getrennt auf `codex/lebenspfad-figur-neu`, noch nicht live. Fortlaufend `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Traumhaus bleibt fremde Sitzung; keine Shop-/Social-/Konto-/Secret-Aktionen.
 
+## Büro: mehr Arbeitsinhalt und räumliche Details ·16.11.2026
+
+Besitzerauftrag «verbessere mehr inhalt und 3d optik». Eigener Branch codex/buero-inhalt-atmosphaere von mainab10d8f, vor Dokumentation auf maine6cb011 vorgezogen. Regeln, Übergaben und offene Arbeiten abgeglichen; parallele Spiele-/Shop-Arbeit bleibt erhalten. Design23 zählt die geladenen Arbeitsstände in vier getrennten Gruppen: gemeldet, prüfen, veraltet, ohne Messzeit. Filter und Verteilungsbalken helfen, offene Arbeit zu finden. Das vollständige Zentraljournal erhält auch undatierte Einträge und erfolgreiche Läufe mit noch offenem Ergebnis. Karten zeigen den übermittelten nächsten Schritt sowie aufklappbare Quelle/Messzeit als Klartext.
+
+Vorher lokal nachgestellt: geöffnete Quellenangabe blieb beim Neuzeichnen offen, verlor aber den Tastaturfokus. Jetzt bleiben Filterfokus, Quellenfokus und offene Angaben erhalten. Screenshot-Gegenprobe: sieben neu erzeugte Namensschilder waren vor dem nächsten Renderbild über dem geöffneten Monitor sichtbar; die gesamte Beschriftungsebene bleibt dort nun unmittelbar verborgen und kehrt mit der Raumansicht zurück. Statische Wandfelder/Medienmöbel, Kabelwannen, Zentralbank und Holzbänke ergänzen das vorhandene Netz. Keine neuen Modelle, Netzquellen, Bewegungen, Automationen oder Frequenzen; keine privaten Daten im Repository. Campus-, Shop- und Entwicklungsansicht als echte lokale WebGL-Bilder geprüft. Die bestehende Higgsfield-Revision5 wird durch diesen nativen Web-Durchgang nicht geändert.
+
+GEMESSEN:17 Modell-,21 Bot- und44 Bauprüfungen sowie31/31 Bau-Mutationen grün. Synthetische Browserdaten unter tools/buero/pruefung/monitorinhalt.json; panorama.py --inhalt verlangt diese sechs Einträge und prüft Filter, Klartext, Fokus sowie die bestehende Monitor-/Vollbildbedienung auf390/1440px. Vollständige Browser-, echte CI- und Bereitstellungsbelege im zugehörigen PR; Software-WebGL ist kein physischer Handy-Leistungsnachweis. Finanzielle Wirkung nicht gemessen. Nutzen: Prüfbedarf und belegte nächste Schritte schneller erkennen.
+
+Claude: vollständigen Drei-Seiten-Bau inklusive kb-stil.css übernehmen, nicht die rohe seite.html. Vorhandene Dateien/Versionen frisch lesen, private Datensätze, Benutzereingaben und Messzeiten erhalten, atomar mit Versionsbedingungen übertragen und rücklesen. Neue private Bereitstellung erst nach Quittung behaupten. Öffentliche Web-Bereitstellung separat nachweisen.
+
 
 ## Lebenspfad: Atmosphäre und eigene Objekte ·16.11.2026
 

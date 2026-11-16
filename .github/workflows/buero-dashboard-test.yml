@@ -39,6 +39,8 @@ jobs:
           python-version: '3.11'
       - name: Bot-Monitor (ohne Netz)
         run: node tools/buero/3d/kryptomonitor.test.mjs
+      - name: Arbeitsstände im Monitor (ohne Netz)
+        run: node tools/buero/3d/monitorinhalt.test.mjs
       - name: Bau-Test
         run: python3 -I tools/buero/dashboard/test_bauen.py
       - name: Mutationsprobe (nur Bau-Test, ohne Browser)

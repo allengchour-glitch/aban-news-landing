@@ -152,3 +152,36 @@ Quellen, Abruffrequenzen und Datenmodelle bleiben erhalten. Die erweiterte `pano
 Direktauswahl, Fokus, Kamera-Rückkehr, Escape, natives/CSS-Vollbild und den einmaligen Bot-Abruf.
 Alle externen Abrufe werden dabei abgefangen. Reale Handy-Leistung ist nicht gemessen.
 Privates Dashboard weiterhin als vollständigen Drei-Seiten-Bau mit `kb-stil.css` übertragen.
+
+### Arbeitsstände und Raumdetails ·16.11.2026
+
+Design `campus-einheitlich-23` zeigt das vollständige Zentraljournal und vier getrennte
+Gruppen geladener Arbeitsstände: gemeldet, prüfen, veraltet, ohne Messzeit. Filter und
+Verteilungsbalken zählen diese Einträge, keine Verkäufe oder Gewinne. Karten zeigen den
+übermittelten nächsten Schritt sowie aufklappbare Quelle und Messzeit. Filterfokus,
+Quellenfokus und geöffnete Angaben bleiben beim Neuzeichnen erhalten.
+Die Namensschilder bleiben auch direkt nach einem Daten-Neuzeichnen im vergrösserten
+Monitor verborgen; nach Rückkehr in den Raum erscheinen sie wieder.
+
+Eingerahmte Wandfelder, niedrige Medienmöbel, Kabelwannen und gegliederte Holzbänke
+ergänzen das bestehende statische Netz. Kameraziele, Datenquellen, Modellpakete,
+Bewegung und Abruffrequenzen bleiben unverändert. Keine neue Higgsfield-Revision.
+
+Reine Modellprüfung: `node tools/buero/3d/monitorinhalt.test.mjs`.
+Wiederholbare Browserprüfung mit ausschliesslich synthetischen Daten:
+
+```sh
+mkdir -p /tmp/buero-inhalt-test
+cp tools/buero/pruefung/monitorinhalt.json /tmp/buero-inhalt-test/buero.json
+cp tools/buero/seite.html /tmp/buero-inhalt-test/seite.html
+node tools/buero/3d/bauen.mjs /tmp/buero-inhalt-test
+python3 tools/buero/pruefung/harness.py /tmp/buero-inhalt-test
+python3 tools/buero/pruefung/panorama.py /tmp/buero-inhalt-test /tmp/buero-inhalt-bilder --inhalt
+```
+
+`--inhalt` verlangt die sechs mitgelieferten Prüfeinträge und prüft zusätzlich alle
+Filter, nächste Schritte, Klartext statt Quellen-HTML und Quellenfokus. Der normale
+Lauf prüft weiterhin Licht, Monitorwechsel, Vollbild und Rückkehr. Alle fremden
+Abrufe werden abgefangen; Software-WebGL belegt keine echte Handy-Leistung.
+Claude übernimmt weiterhin den vollständigen Drei-Seiten-Bau inklusive `kb-stil.css`;
+private Datensätze, Eingaben und Messstände erhalten, Übertragung erst nach Quittung bestätigen.

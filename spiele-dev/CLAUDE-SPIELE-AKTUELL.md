@@ -1,5 +1,7 @@
 # Claude Code: aktueller Spiele-Stand ·16.11.2026
 
+Besitzer hat die Pause mit «mach die 2 fertig» aufgehoben. Neon-PR3217 wird nach aktuellen echten Prüfungen veröffentlicht; der niedliche Figurenentwurf in PR3218 wird vollständig geprüft und anschließend veröffentlicht. Aktuelle Fortsetzung, keine neue Freigabe nötig.
+
 Besitzerauftrag: Spiele fortlaufend verbessern, Änderungen regelmäßig sichern, eigene PRs nach echten Prüfungen veröffentlichen. Traumhaus bearbeitet eine andere Sitzung. Kein Shop-/Social-/Konto-/Secret-Eingriff.
 
 ## Live und öffentlich geprüft

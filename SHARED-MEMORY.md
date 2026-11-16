@@ -8,6 +8,10 @@ GEMESSEN66 Node+90 Browser-/Rendererbedingungen grün: echte Tastatur/Touch, lok
 
 Bereits LIVE: Mix Arena PR3213, Merge78f14f5fb, Hauptseitenlauf43924427755,42/42 normale HTTPS-Prüfungen; Lebenspfad-Atmosphäre/eigeneObjekte PR3214, Mergee6cb01125, Lauf43925206449,9/9 HTTPS-Prüfungen. Je sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen; Releasebelege in den jeweiligen Belegordnern. Neuer Besitzerentscheid zur Lebenspfad-Figur: **klein/niedlich, großer Kopf, kompakter Körper, verspielt**. Umsetzung getrennt auf `codex/lebenspfad-figur-neu`, noch nicht live. Fortlaufend `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Traumhaus bleibt fremde Sitzung; keine Shop-/Social-/Konto-/Secret-Aktionen.
 
+## Codex: Büro-Arbeitsstände und Raumdetails ·16.11.2026
+
+Design23 ergänzt vier getrennte Gruppen/Filter geladener Arbeitsstände, vollständiges Zentraljournal, nächsten Schritt und aufklappbare Quelle/Messzeit. Kein Verkaufs-/Gewinnzähler. Reproduzierter Quellenfokus-Verlust korrigiert. Statische Monitorwände, Medienmöbel, Kabelwannen und Bankdetails; keine neue Quelle, Frequenz, Kontoaktion oder Higgsfield-Revision.17 Modell-,21 Bot-,44 Bau- und31 Mutationsprüfungen grün; Browser-/CI-/Bereitstellungsbelege im zugehörigen PR. Nutzen: offene Arbeit schneller erkennen, finanzielle Wirkung ungemessen. Claude übernimmt vollständigen Drei-Seiten-Bau mit kb-stil.css unter Erhalt privater Daten/Eingaben; privater Upload erst nach Quittung bestätigt. Details in der kanonischen Übergabe.
+
 
 ## Lebenspfad: Atmosphäre und eigene Objekte ·16.11.2026
 

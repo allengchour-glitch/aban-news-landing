@@ -47,11 +47,31 @@
   K.arbeitsJournal = function (state) {
     var ents = state && state.ents || [], gesehen = {};
     var journal = ents.map(zeileModell).sort(function (a, b) { return b.sortZeit - a.sortZeit; }).filter(function (z) { if (!z.laufId) return true; if (gesehen[z.laufId]) return false; gesehen[z.laufId] = true; return true; });
-    return { stand: messstand(ents),
+    return { stand: messstand(ents), zeilen: journal,
       abgeschlossen: journal.filter(function (z) { return z.abgeschlossen && z.state === 'gruen'; }),
       meldungen: journal.filter(function (z) { return z.gemessen && !z.abgeschlossen; }),
       blocker: journal.filter(function (z) { return z.gemessen && (z.state === 'rot' || z.state === 'gelb'); }).sort(function (a, b) { return (a.state === 'rot' ? 0 : 1) - (b.state === 'rot' ? 0 : 1) || b.sortZeit - a.sortZeit; }),
       unbekannt: journal.filter(function (z) { return !z.gemessen && z.state !== 'du'; }).length };
+  };
+
+  /* Nur geladene Arbeitsstände zählen. Fehlende Zeiten sind kein fehlerfreier Betrieb. */
+  K.monitorInhalt = function (zeilen, filter, now) {
+    now = now == null ? Date.now() : now;
+    var counts = { gemeldet: 0, aufmerksamkeit: 0, veraltet: 0, ohneZeit: 0 };
+    function gruppe(z) {
+      var t = Date.parse(z.gemessen);
+      if (!isFinite(t) || t > now + 300000) return 'ohneZeit';
+      if (z.state === 'alt') return 'veraltet';
+      if (z.state === 'rot' || z.state === 'gelb') return 'aufmerksamkeit';
+      return 'gemeldet';
+    }
+    var rang = { aufmerksamkeit: 0, veraltet: 1, ohneZeit: 2, gemeldet: 3 };
+    var alle = (zeilen || []).map(function (z, i) { var g = gruppe(z); counts[g]++; return { zeile: z, gruppe: g, platz: i }; });
+    if (!Object.prototype.hasOwnProperty.call(counts, filter)) filter = 'alle';
+    return { anzahl: alle.length, zahlen: counts, filter: filter,
+      zeilen: alle.filter(function (x) { return filter === 'alle' || x.gruppe === filter; })
+        .sort(function (a, b) { return rang[a.gruppe] - rang[b.gruppe] || a.platz - b.platz; })
+        .map(function (x) { return x.zeile; }) };
   };
 
   /* Öffentliche Modellrechnung, niemals PC-Konto oder Handelserlaubnis. */
