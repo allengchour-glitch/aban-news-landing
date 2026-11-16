@@ -1,5 +1,13 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Stumme Videos sind gewollt, Codex hielt 14 Beiträge an ·16.11.2026
+
+- **GEMESSEN:** Codex-Lauf R259 setzte 14 eingeplante Videos (Hobel, Sternenlicht, Medizin-Box, Knoblauchhacker, Wasserwellen) auf Entwurf, Grund «Canonical music mandatory».
+  - Belegt durch die Metricool-Ereignisse (`GET /v2/scheduler/posts/{uuid}/events`, Speicherungen 13:52 bis 14:23 UTC) und Codex' eigene Datei `PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json`.
+  - Die Freigabe hat alle 14 bis 14:45 UTC wieder eingeplant. Lauf R260 meldet 0 Metricool-Schreibzugriffe.
+- **Regel:** Stumm ist der Entscheid des Besitzers vom 16.11. (`dropship/VIDEO-PRAEFERENZEN.md` Regel 2, jetzt nachgeführt). Niemand ausser Claude und der Freigabe schreibt im Planer (`AGENTS.md`).
+- **Offen beim Besitzer:** den Codex-Automationsauftrag mit «Musik ist Pflicht» anpassen. Sonst hält Codex beim nächsten Lauf wieder an.
+
 ## Arcade: neun eigene Spielkerne ·16.11.2026
 
 Besitzerauftrag: «Traumhaus macht schon jemand», «du machst alles andere bis jedes Spiel einzigartig ist»; bestehende Freigabe «mach alles live». Traumhaus-Code und Hauptspiel-Hero bleiben beim anderen Bearbeiter. Inventar:31 andere aktive Spiele, vier alte Weiterleitungen nicht doppelt zählen. Neun Spiele überarbeitet: Prisma Rallye (Pol-/Spur-Kombination, Energie, Ziel/Medaille), Lichtschienen (Gleitfahrt/Team-Impulse), Lichterpremiere (vier Regie-Fahrten), Nexus-Wacht (Reaktor/Reparatur/Verteidigung), drei Kolossprüfungen, Rhythmus-Tipp-Duell, Schalt-Rennen, Ausdauer-Tauziehen und Turm-Präzisionsentscheid.22 bereits verschiedene Spielkerne erhalten, keine weltweite Neuheit klassischer Regeln behaupten. Fünf Direktstarts im Hub; Jump bleibt lokaler Koop. Neue Online-Protokolle park-premiere1, survivor-reactor1 und dungeon-trials1 trennen alte Tabs sicher ab; gemeinsames mp.js unverändert.
