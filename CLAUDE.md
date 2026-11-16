@@ -105,6 +105,36 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
+**📌 2026-11-16 kurz nach Mitternacht (🥒 Hobel-Clip ohne Musik für Di 17.11. eingeplant · 🏢 KI-Büro Fassung 20 im privaten Dashboard, Metricool-Tabelle ins Repo geholt; Besitzer «zu frage ja» mit Links auf `docs/CODEX-CLAUDE-UEBERGABE.md` und PR #3151; PR #3164 `d71d20d9e0`, Gedächtnis-PR dieses Eintrags):**
+- **Auslegung (meine, nicht bestätigt):** «zu frage ja» heisst: Hobel-Clip ohne Musik neu schneiden und einplanen. Die zwei Links heissen: Codex' Fassung 20 ins private Dashboard bringen.
+- **Hobel (GEMESSEN):**
+  - Stille Fassung `hobel-ohne-musik-1611.mp4` in Shopify Files: Bildspur bitgleich, Ton −70 LUFS.
+  - Metricool Di 17.11.: YouTube 13:00 (id 429390094), TikTok 13:00 (id 429390445), Reel Instagram/Facebook 20:00 (id 429395222). Alle mit `autoPublish`, frisch gelesen 23:47 UTC mit Status PENDING.
+  - Doku: `dropship/tiktok-cj-videos-0311/PAKET.md`.
+- **KI-Büro (PR #3164, Doku `tools/buero/dashboard/README.md`):**
+  - **Hochgeladen** 15.11. 23:48 UTC in einer atomaren Anfrage: `files/index.html` Version 19, `files/kb3d-code.js` Version 9, `files/kb-geldmanager.js` Version 2. Alle zehn Dateien zurückgelesen gleich dem Bau aus `main`. `datasets/buero` bleibt Version 8 (Messstand 11.11.).
+  - **Tabelle herausgelöst:** Die Tabelle der Social-Sitzung (Version 18, nie im Repo) ergab sich aus einem Diff zwischen dem Bau von Design 15 und Version 18. Sie besteht aus CSS, zwei Tabellen, vier Helfern und zwei Zeichnungen.
+  - **Fehler in Version 18:** Eine zerbrochene `if`/`else`-Kette nahm die Knöpfe zu Shop und Metricool weg. In Fassung 20 gibt es ohnehin keine Kontolinks.
+  - **Behoben am Handy:** Die Abfragezeit war abgeschnitten («22:17» ohne Datum). Die Zeile steht jetzt über der Tabelle.
+  - **Neu in `make_buero.py`:** `metricool_v2_pruefen` (Version 2, gilt auch für `yt_wachstum`).
+  - **Prüfungen:**
+    - Unit-Tests: 13, davon 9 neu.
+    - `test_dashboard.mjs`: 86 Prüfungen mit Testdaten, 96 mit den echten Daten.
+    - Mutationsprobe: 8 von 8 (Seite) und 7 von 7 (Prüfung) erkannt.
+    - Öffentliche Seite ohne Metricool-Daten, Tabellen dort unsichtbar.
+  - **Grösse:** Bis zur Baugrenze bleiben 1 431 Byte. Vor der nächsten grösseren Änderung den Büro-Stil auslagern.
+  - Übergabe an Codex: `docs/CODEX-CLAUDE-UEBERGABE.md` und `SHARED-MEMORY.md`.
+- **Ungemessen:**
+  - die echte Darstellung im Dashboard und am Handy;
+  - ob der KI-Bot-Knopf aus dem Dashboard `abannews.com` erreicht;
+  - die Wirkung des stillen Clips.
+- **Lehren:**
+  - (1) Eine Änderung, die nur im Dashboard steht, findet man am sichersten durch einen Diff gegen den Bau des Commits, aus dem die vorige Version kam. Hier waren es 76 geänderte Zeilen, sauber getrennt.
+  - (2) Beim Übertragen fremden Codes den Kontrollfluss lesen: Ein eingeschobenes `var …; if (…) {…}` vor einem `else` hängt das `else` um.
+  - (3) Eine Messzeit nie in einen Bereich legen, der seitlich abgeschnitten werden kann. Eine Uhrzeit ohne Datum täuscht Frische vor. Der Test prüft jetzt «ganz im Bild».
+  - (4) `Artifact read` mit einer Asset-Kennung klappte diesmal in der Cloud-Sitzung; am 11.11. war es gescheitert.
+- **Hinweis zur Shop-Sitzung:** Die Läufe von `merchant-versand.yml` um 23:12 und 23:18 UTC hat laut eigenem Verlauf nicht diese Sitzung gestartet; sie plante zu der Zeit den Hobel-Clip ein. Den Liechtenstein-Dienst führt die Shop-Sitzung (Zweig `claude/merchant-li-schreiben-1511`); hier wird dort nichts geschrieben.
+
 **📌 2026-11-15 nachts, kurz vor Mitternacht (🛍️ Startseite: alle 16 Einkaufswelten mit Higgsfield-Motiven, Codex' Theme übernommen · 🔎 Merchant: Liechtenstein-Versanddienst ist wieder weg; Besitzer «7 Dateien übernehmen (Empfohlen)», «mache es wie codex? oder verbessere?», «vergiss higgsfield nicht zu nutzen», Merchant-Mail Liechtenstein −33 %; Zweig `claude/startseite-welten-1511`, Doku `dropship/codex-theme-uebertrag-1511/README.md`, `dropship/merchant-laender-1511/README.md`; Shop-Sitzung):**
 - **Codex-Theme `214040805767` NICHT veröffentlicht**, die 7 freigegebenen Dateien einzeln auf MAIN übernommen (22:35 UTC, MD5-Basis, Sicherung, Rücknahme `ZURUECK=1 LIVE=1 node dropship/codex-theme-uebertrag-1511/uebernahme.mjs`). Das Codex-Theme ist älter als MAIN (Scroll-Story, Kategorie-Kopf, Ankündigungsleiste fehlen dort). `layout/theme.liquid`, `snippets/cart-summary.liquid` und das Manifest bewusst nicht.
 - **Einkaufswelten, Stufen 1 bis 4 LIVE (22:53, 23:02, 23:18, 23:29 UTC; Auslegung meine: «verbessere» = im Stil von Codex weiter, mit Higgsfield):** alle 16 Karten mit eigenem Motiv `luxestyle-einkaufswelt-*-20261115.png` (`gpt_image_2_6`, 4:5, Cream/Taupe, keine Schrift, keine Personen; 2 von Codex, 14 neu), angeschnittene Bannerschrift alter Bilder weg, Hover-Zoom 1,045 nur mit Maus, Handy-Karten 4:3 (**GEMESSEN: erstes Produkt 346 px weiter oben**), Titel ohne Wortbruch (`hyphens`, `clamp()`, festes `Geschenk&shy;ideen`), Hund im Pullover mit `object-position 50% 5%`, `sizes` über 1440 px 410px. Beauty und Sport: Schalter `lx_eigenes_motiv` (Motiv im Editor gewinnt, sonst die alte Szene). Nachmessung Stufe 3 durch drei unabhängige Prüfer bei 14 Breiten: «ok». Rücknahme je Stufe in umgekehrter Reihenfolge (`welten4.mjs` … `welten_bilder.mjs`, je `ZURUECK=1 LIVE=1 PHASE=theme`). **Wiedervorlage:** Geschenk-Motiv ist weihnachtlich, nach dem 06.01. ersetzen; Elektronik und Gaming zeigen beide Kopfhörer. Ungemessen: Safari/iPhone, Wirkung auf Käufe.
@@ -114,14 +144,14 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
 - **Auslegung (meine, nicht bestätigt):** «alles erlaubt» = Freigabe des Plans dieser Nacht. Geld, Reel-Musik und Änderungen mit Kundenwirkung bleiben bei den Regeln.
 - **Verpasste Wecker (erst 15.11. 22:00 UTC zugestellt):**
   - Pia Folge 1 am 12.11. veröffentlicht (`youtube.com/shorts/td8bVcUo324`). Die Pia-Sitzung hat seither drei weitere Folgen veröffentlicht, «Soja» ist auf den 16.11. 18:00 eingeplant.
-  - **Hobel-Clips 13.11. nicht veröffentlicht:** Die drei Entwürfe haben ein Datum in der Vergangenheit und tragen laut `dropship/tiktok-cj-videos-0311/cj_clips.json` das am 10.11. abgelehnte Stück «new-york-427». Nicht neu eingeplant. Vorschlag: ohne Musik neu schneiden; der Entscheid liegt beim Besitzer.
+  - **Hobel-Clips 13.11. nicht veröffentlicht:** Die drei Entwürfe haben ein Datum in der Vergangenheit und tragen laut `dropship/tiktok-cj-videos-0311/cj_clips.json` das am 10.11. abgelehnte Stück «new-york-427». Nicht neu eingeplant. Vorschlag: ohne Musik neu schneiden; der Entscheid liegt beim Besitzer. **[ERLEDIGT 16.11.: ohne Musik neu eingeplant, siehe Block «2026-11-16 kurz nach Mitternacht».]**
 - **Mails (GEMESSEN 22:1x UTC):** 25 Verläufe in den Papierkorb, 16 bleiben, keine Kundenmail. Einen Papierkorb-Aufruf (Pinterest-Empfehlung) hat der Besitzer abgelehnt; nicht wiederholt.
   - Apify-Sicherheitsvorfall: Der Besitzer soll die 2FA bei Apify neu einrichten; im Repo gibt es keine Apify-Schlüssel.
   - Die GitHub-Apps Claude und Linear wollen mehr Rechte; das Meta-Werbekonto hat kein Zahlungsmittel; ChatGPT Pro endet am 17.11. (Codex hängt daran).
   - Am 12.11. um 22:32 UTC gab es neue Anmeldungen bei Google und Shopify von einem Windows-Gerät.
 - **Modell-Leiter (PR #3159):** `.claude/settings.json` setzt `CLAUDE_CODE_SUBAGENT_MODEL=sonnet` ohne FORCE (Regel in den Kernfakten unter «Modellwahl»). Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 - **Merchant (GEMESSEN; Doku `dropship/merchant-fehler-1111/README.md`):**
-  - Fehlender Versand **256 124 → 979**.
+  - Fehlender Versand **256 124 → 979**. **[KORREKTUR 16.11.: 979 galt nur für den Abruf um 18:43 UTC. Der Dienst «Standard Liechtenstein» fehlte ab spätestens 23:12 UTC wieder; Befund und Arbeit der Shop-Sitzung im Block «kurz vor Mitternacht».]**
   - 192 Bildangebote, 147 davon aus dem Autofeed; Preis fehlt 574, Verfügbarkeit fehlt 50, «Hot Sale» 18, alle aus dem Autofeed.
   - Bei Proben hat Google noch die alten App-Bilder vom 11.11.
   - **Autofeed:** 8 398 der 8 681 Autofeed-Produkte hat das Schaufenster absichtlich vom Google-Kanal genommen. In 28 Tagen brachte der Autofeed 2 Klicks (Zeilen mit reiner Nummer, Zeilen mit Produkt-ID 0), die App 4.
@@ -130,7 +160,7 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   - Earshot: Die Installation des Fremdpakets hat der Sicherheitsprüfer gesperrt, nicht umgangen. Der Besitzer hatte der Shop-Sitzung «Nein» gesagt.
   - LEGO-Partnerprogramm.
   - Index-Wecker `trig_019nMZrhD1AcCgEKYuUYGRGE`: Lesen braucht die Freigabe des Besitzers. Er feuert erst am 11.11.2027 wieder.
-  - KI-Büro-Upload: Das Dashboard trägt weiter `index.html` v18 (Metricool-Tabelle, nicht im Repo) und `kb3d-code.js` v8.
+  - KI-Büro-Upload: Das Dashboard trägt weiter `index.html` v18 (Metricool-Tabelle, nicht im Repo) und `kb3d-code.js` v8. **[ERLEDIGT 15.11. 23:48 UTC: Fassung 20 mit der Tabelle, PR #3164.]**
 - **Lehren:**
   - (1) Die Merchant API lässt Felder mit dem Wert false weg (proto3-JSON). Ein fehlendes `enableProducts` heisst «aus»; das erste Rücklesen meldete darum fälschlich «weicht ab».
   - (2) Bei Restmeldungen zuerst die Herkunft zählen: 3 von 4 Bildmeldungen kamen aus dem Autofeed, nicht aus der App.
