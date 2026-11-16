@@ -26,6 +26,10 @@ MAX_EINSPRUCH = 40
 TITEL = {"tobacco_policy_violation": "Tabak", "live_animals_policy_violation": "lebender Tiere",
          "guns_parts_policy_violation": "Schusswaffen"}
 EINSPRUCH_KNOPF = "Meiner Meinung nach liegt kein Problem vor"
+# Pflichtgrund im Einspruch-Dialog je Code (Optionstexte gemessen im Trockenlauf 16.11. 20:20 UTC, Lauf 43948374756)
+GRUND = {"tobacco_policy_violation": "Das von mir präsentierte Produkt ermöglicht nicht direkt den Tabakkonsum oder fördert ihn",
+         "live_animals_policy_violation": "Das von mir präsentierte Produkt ist kein lebendes Tier, sondern ein tierbezogenes Produkt",
+         "guns_parts_policy_violation": "Mein Produkt entspricht den Richtlinienanforderungen"}
 
 
 def sauber(t, n=120):
@@ -72,8 +76,9 @@ def waehle_aktion(gerendert, code):
     return None, "keine Einspruch-Aktion je Produkt"
 
 
-def werte(ablauf, begruendung):
-    """Eingabewerte für den Ablauf. Gibt (liste, beschreibung) zurück oder (None, Grund) bei unklarer Auswahl."""
+def werte(ablauf, begruendung, grund=None):
+    """Eingabewerte für den Ablauf. Eine Auswahl mit mehreren Optionen wird nur mit dem exakt gleichen Text `grund`
+    beantwortet. Gibt (liste, beschreibung) zurück oder (None, Grund) bei unklarer Auswahl."""
     liste, beschr = [], []
     for f in ablauf.get("inputs") or []:
         fid = f.get("id")
@@ -88,8 +93,8 @@ def werte(ablauf, begruendung):
             if len(opts) == 1:
                 wahl = opts[0]
             else:
-                treffer = [o for o in opts if any(w in text(o.get("label")).lower()
-                                                  for w in ("kein problem", "irrtüm", "fälschlich", "falsch", "nicht zutreffend", "fehler von google"))]
+                # nur der fest gewählte Grund, exakt gleicher Text (gemessen im Trockenlauf 16.11. 20:20 UTC)
+                treffer = [o for o in opts if grund and text(o.get("label")) == grund]
                 if len(treffer) != 1:
                     return None, f"Auswahl «{text(f.get('label'))}» unklar: " + " / ".join(text(o.get("label")) for o in opts)
                 wahl = treffer[0]
@@ -206,7 +211,7 @@ def main():
             if aktion is None:
                 print(f"EINSPRUCH|{e['angebot']}|{zeile['sprache'][0]}|übersprungen: {ablauf}")
                 zeile["stand"] = f"übersprungen: {ablauf}"; ergebnis["einspruch"].append(zeile); continue
-            liste, beschr = werte(ablauf, e["begruendung"])
+            liste, beschr = werte(ablauf, e["begruendung"], GRUND.get(e["code"]))
             if liste is None:
                 print(f"EINSPRUCH|{e['angebot']}|{zeile['sprache'][0]}|übersprungen: {beschr}")
                 zeile["stand"] = f"übersprungen: {beschr}"; ergebnis["einspruch"].append(zeile); continue
