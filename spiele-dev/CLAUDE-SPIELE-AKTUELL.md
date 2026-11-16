@@ -11,7 +11,7 @@ Bei beiden Releases jeweils sechs relevante echte CI-Prüfungen grün und alle v
 
 ## In Abschlussprüfung
 
-Neon Flug, Branch `codex/neon-flug-ringe-belohnung`, Worktree `/workspace/aban-neon-flug-belohnung`: echte Höhensteuerung samt Koop/Kollisionen, sichtbar eingesammelte Ringe, begrenzte Animationen, einmalige XP-Abrechnung, optionaler60-Sekunden-Modus Neon-Schießen. HUD-Überlagerung korrigiert; Speicher-/WebLocks-Randfälle werden finalisiert. Noch nicht live. Kanonisch `spiele-dev/neon-flug/WEITERARBEIT.md`.
+Neon Flug, Branch `codex/neon-flug-ringe-belohnung`, Worktree `/workspace/aban-neon-flug-belohnung`: echte Höhensteuerung samt Koop/Kollisionen, sichtbar eingesammelte Ringe, begrenzte Animationen, einmalige XP-Abrechnung, optionaler60-Sekunden-Modus Neon-Schießen. HUD-Überlagerung korrigiert; Speicher-/WebLocks-Randfälle sind geprüft.66 Node+90 Browser-/Rendererbedingungen grün, korrekte3D-/HUD-Bilder gesichtet; echte PR-CI/Deploy stehen an. Noch nicht live. Kanonisch `spiele-dev/neon-flug/WEITERARBEIT.md`.
 
 ## Neuer Auftrag nach der Atmosphäre-Veröffentlichung
 
