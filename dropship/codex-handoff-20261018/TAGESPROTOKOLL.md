@@ -3085,3 +3085,20 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [R257-Bericht](HAENGEMATTE-LIVE-20261116-R257.md) · [Belege](HAENGEMATTE-BELEGE-20261116-R257.json) · [Guard-Entwurf](CJ-PAGINATION-ENTWURF-20261116-R257.md).
 
 [LUXESTYLE_R257_20261116]
+
+
+### R258 – Sechs weitere Produktdetails und Katalog-Arbeitsstand
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität | Core-Dateien, Revision 257 und heutigen Tagesstand frisch gelesen; 38 belegte Produktzeilen übernommen. | Task-IDs und Historie erhalten. Erledigte Tagesreports und Kaufwatch nicht wiederholt. |
+| Katalogumfang | Schema-validierte Zähler mit bekannter und nicht existenter Produkt-ID gegengeprüft; drei gezielte Suchen mit je zwei Ergebnissen. | 87’789 Produkte, 56’495 ACTIVE, 53’613 ACTIVE + cj-real; precision EXACT. Keine globale Inhalts- oder Sichtbarkeitsquote. |
+| Quellen | Sechs konkrete Angebote mit je einem gespeicherten CJ-Detailabruf und aktuellen Produktbildern geprüft. | Sechs erfolgreiche Quellenabrufe ohne Retry. Produktmasse, Funktionen und Zubehör bleiben bei fehlendem Beleg offen. Keine neue Fulfilment-Verknüpfung. |
+| Live-Texte | Zwei Leuchten, Halfter, Tränkebecken und zwei Taschen mit Titel, Beschreibung und SEO-Paar verbessert. Anschliessend zwei abweichende Tabellenangaben über den Body korrigiert. | Acht bestätigte Mutationen an sechs Produkten, alle userErrors leer und vollständig nativ zurückgelesen. Je etwa 236–247 Wörter; Standardausführung erklärt. |
+| Schutzdaten | Vorher-/Nachher-Diff der Produkt- und Angebotsdaten geprüft. | Sechs Varianten, sechs Optionen, sechs Optionswert-IDs und 35 Medien erhalten; Preise, SKUs, Inventar, Tags, Status und URLs unverändert. Kein rueckhol-Tag entfernt. |
+| Öffentlich / mobil | Sechs Seiten mit HTML/JSON und 12 Handyansichten geprüft; zwei Tabellenkorrekturen gezielt in vier weiteren Handyansichten bestätigt. | Kein horizontaler Überlauf. Gewicht der Leuchte als unbestätigt und Halftermaterial als PP oder Nylon sichtbar. Versandgewichte erhalten; keine neue Google-, Merchant- oder Umsatzwirkung behauptet. |
+| Fortsetzung | Arbeitsliste auf 44 eindeutige, belegte Produktidentitäten fortgeschrieben. | Sechs neue Live-Texte, offene Quellenfragen weiterhin offen. Globale Fertigquote unbekannt. Nächste kleine Gruppe im bisherigen Rhythmus. |
+
+[R258-Bericht](PRODUKTDETAILS-GESAMTKATALOG-20261116-R258.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R258.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv).
+
+[LUXESTYLE_R258_20261116]

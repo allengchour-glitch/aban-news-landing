@@ -1,3 +1,15 @@
+# R258 – Sechs weitere Produktdetails live – 16.11.2026
+
+Der Inhaberauftrag gilt für den Gesamtkatalog. Sechs weitere Produkte aus Beleuchtung, Taschen und Tierbedarf haben jetzt ausführlichere Angaben zu Ausführung, Material, Nutzung und Lieferumfang sowie eigene SEO-Titel und Metabeschreibungen. Fehlende Fakten sind konkret als offen benannt. Alle sechs Angebote haben genau eine Standardausführung; zusätzliche Grössen, Farben oder Sets werden nicht erfunden.
+
+Sechs initiale Produktänderungen und zwei gezielte Ergänzungen der separaten Spezifikationstabellen sind nativ bestätigt. Preise, SKUs, Optionen, Bilder, Tags, Status und Inventar sind erhalten. Die öffentliche Handyprüfung bei 360 und 390 Pixeln ist abgeschlossen. [Bericht](PRODUKTDETAILS-GESAMTKATALOG-20261116-R258.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R258.json) · [Textprüfung](PRODUKTDETAILS-TEXTABNAHME-20261116-R258.md).
+
+Shopify zählt aktuell 87’789 Produkte, davon 56’495 mit Status ACTIVE und 53’613 mit ACTIVE + cj-real. Die exakten Zähler mit positiver und negativer ID-Gegenprobe beschreiben den Umfang; sie ergeben keine Qualitäts-, Sichtbarkeits- oder Fertigquote. Die [Arbeitsliste mit 44 belegten Produkten](PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv) erhält die 38 bisherigen Zeilen und ergänzt sechs bestätigte Live-Texte. Quellenfragen bleiben offen; die übrige Bearbeitungshistorie ist unbekannt. [Katalogscope](PRODUKTDETAILS-KATALOGSCOPE-20261116-R258.json).
+
+Nächster Schritt: weitere kleine Gruppen in den bestehenden Läufen prüfen. Nach Textänderungen auch separate Spezifikationstabellen und die echte Variantenauswahl gegenlesen. Keine neue Automation oder Frequenzänderung. Tagesreports und beendete Kaufwatch wurden nicht wiederholt. Merchant, Social, Theme, Flows, DNS, Budget, Rabatte und Shop-Einstellungen wurden nicht geändert. Alle 24 Task-IDs und die Historie sind erhalten. Kenntnisnahme durch Claude ist unbekannt. Memory am Schluss des Nutzerberichts verlinken.
+
+---
+
 # R257 – Hängemattenauswahl und graues Variantenbild live – 16.11.2026
 
 Die [Hängematte](https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20) hat jetzt ca.360Wörter mit klarer Auswahlhilfe für33Ausführungen, Material, Lieferumfang und FAQ. Alle33Shop-SKUs sind anhand der gesicherten aktuellen CJ-Antwort exakt zugeordnet. Widersprüchliche Masse, Traglast/Nutzerzahl und Zubehör bleiben offen.

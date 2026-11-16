@@ -1,0 +1,48 @@
+{
+  "run": "R258",
+  "atUtc": "2026-11-16T11:29:23Z",
+  "files": [
+    {
+      "file": "PRODUKTDETAILS-BELEGE-20261116-R258.json",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R258.json",
+      "bytes": 325545,
+      "sha256": "b658bee60e0e6003336182c9ec57d07e071a390ec491c944594bf68abf501837",
+      "gitBlobSha": "aeae8c50c2d256f1c06891457178f9b7cce6ba00",
+      "readAt": "2026-11-16T11:29:23Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-GESAMTKATALOG-20261116-R258.md",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-GESAMTKATALOG-20261116-R258.md",
+      "bytes": 8018,
+      "sha256": "948e4a33ad7757d91f9a5420e02b207ba1084ce2d4ef78a45c8ed78e9711706f",
+      "gitBlobSha": "17fcbe2a60a3efa6beb249ef91098930d1ea9b12",
+      "readAt": "2026-11-16T11:29:23Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv",
+      "bytes": 18465,
+      "sha256": "54299b33b9f6e67c4e526ac646e23e0f884ab2f267516ada8f439bde3610f4a8",
+      "gitBlobSha": "b2082c1e6f112a60db841bc8277e0b39b272a4e5",
+      "readAt": "2026-11-16T11:29:23Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-KATALOGSCOPE-20261116-R258.json",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KATALOGSCOPE-20261116-R258.json",
+      "bytes": 1460,
+      "sha256": "5dff9634c2fc3022f2fc82f24a70314c3cf89e78d25ebc1e561623ec7f333e3e",
+      "gitBlobSha": "cc527ed3a285304686c63dfe84fb73c656f9f170",
+      "readAt": "2026-11-16T11:29:23Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-TEXTABNAHME-20261116-R258.md",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-TEXTABNAHME-20261116-R258.md",
+      "bytes": 7239,
+      "sha256": "4ef9dfeb481166b6eefb8a239981efda6be6211794052304d195b2c626ee3296",
+      "gitBlobSha": "0637616d7c22683245303da16b36a8573ba28752",
+      "readAt": "2026-11-16T11:29:23Z"
+    }
+  ],
+  "scope": "Exactly5new documentation artifacts; manifest and five core files excluded.",
+  "noRawSourceCostsCustomerDataOrCredentials": true
+}

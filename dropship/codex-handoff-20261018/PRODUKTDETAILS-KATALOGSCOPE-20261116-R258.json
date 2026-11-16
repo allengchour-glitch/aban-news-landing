@@ -1,0 +1,45 @@
+{
+  "run": "R258",
+  "atUtc": "2026-11-16T11:29:23Z",
+  "ownerGoal": "All products should have detailed, truthful, variant-aware information; continue through existing runs only.",
+  "identity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "allProducts": {
+    "count": 87789,
+    "precision": "EXACT"
+  },
+  "activeProducts": {
+    "count": 56495,
+    "precision": "EXACT"
+  },
+  "activeCjReal": {
+    "count": 53613,
+    "precision": "EXACT"
+  },
+  "controls": {
+    "knownId16617685451143": {
+      "count": 1,
+      "precision": "EXACT"
+    },
+    "absentId1": {
+      "count": 0,
+      "precision": "EXACT"
+    }
+  },
+  "scopeMethod": "Schema validated, exact counts without product pagination; three searches of two records each; six named source reads. Counts are neither a quality assessment nor proof of storefront visibility.",
+  "documentedWorkingRows": 44,
+  "newlyConfirmedProducts": 6,
+  "workingHistoryOutsideList": "UNKNOWN",
+  "globalCompletionPercent": "UNKNOWN",
+  "remainingErrorCount": "UNKNOWN",
+  "nextStep": "Continue another bounded group with short or misleading descriptions, preserve this 44-row history, source questions and all product identities. No mass enumeration or new schedule."
+}
