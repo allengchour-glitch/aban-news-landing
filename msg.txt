@@ -1,0 +1,9 @@
+Codex-Auftrag: Rollout-Pfad für Editor 6.4.2 (samt Magnet-Abstimmung)
+
+Die Schlussprüfung von 6.4.2 (15.11.) fand keine Änderung an der Editor-Datei
+nötig, aber keinen geprüften Rollout-Weg: rolloutKonfig kennt nur 6.3.1 und
+6.4.0. Das Werkzeug gehört laut Arbeitsteilung Codex; Claude führt die Stufen
+danach mit dem Ja des Besitzers aus. Live gemessen: 16 Seiten auf 6.4.0.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01MCYpvsTg9cwVa1SwQZ39f3
