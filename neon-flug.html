@@ -68,6 +68,16 @@
             <option value="2">03 · Nachtkern</option>
           </select>
         </div>
+        <label class="mode-picker"
+          >DEIN FLUG
+          <select id="flightMode">
+            <option value="classic">Klassische Kampagne · 3 Kapitel</option>
+            <option value="shoot">Neon-Schießen · 60 Sekunden</option>
+          </select>
+          <span
+            >Der Gastgeber wählt. Training nutzt denselben Modus ohne XP.</span
+          >
+        </label>
         <div class="hero-actions">
           <button type="button" id="findBtn" class="primary">
             Mitspieler finden <span>→</span>
@@ -153,6 +163,7 @@
       <div class="panel lobby-panel">
         <p class="eyebrow">DER FLUG BEGINNT ZU ZWEIT</p>
         <h2>Dein Flügelmann<br />fehlt noch.</h2>
+        <p id="lobbyMode" class="small">KLASSISCHE KAMPAGNE</p>
         <p id="lobbyStatus" class="muted" role="status">Raum wird erstellt …</p>
         <div class="room-code" id="roomCode">····</div>
         <div class="button-row">
@@ -196,7 +207,10 @@
           <div>
             <span class="instruction-number">01</span>
             <h3>Finde deine Linie.</h3>
-            <p>← → oder A/D zum Lenken.<br />Am Handy: Finger ziehen.</p>
+            <p>
+              WASD / Pfeile: links, rechts, hoch, runter.<br />Am Handy: Finger
+              aufsetzen und in jede Richtung ziehen.
+            </p>
           </div>
           <div>
             <span class="instruction-number">02</span>
@@ -275,15 +289,23 @@
         </div>
         <div class="resonance-track"><i id="resonanceFill"></i></div>
         <span id="resonanceHint">Doppelringe · Zwillingsschub · Rettung</span>
+        <div class="flight-feedback">
+          <span id="comboValue">KETTE ×0</span
+          ><span id="heatValue" hidden></span>
+        </div>
       </div>
       <div id="notice" role="status"></div>
+      <div id="touchStick" aria-hidden="true" hidden><i></i></div>
       <div id="rescueNotice" hidden role="status"></div>
       <div class="bottom-hud">
         <span id="controlHint"
-          >A / D &nbsp; LENKEN <span class="key">SPACE</span> DASH
-          <span class="key">E</span> RETTEN</span
+          >WASD / PFEILE &nbsp; LENKEN <span class="key">SPACE</span> DASH
+          <span class="key">E</span> RETTEN · F FEUER</span
         >
         <div class="flight-actions">
+          <button type="button" id="fireBtn" class="rescue-button" hidden>
+            FEUER · F
+          </button>
           <button type="button" id="rescueBtn" class="rescue-button">
             ↟ <span>RETTEN</span></button
           ><button type="button" id="dashBtn" class="dash-button">
@@ -313,6 +335,7 @@
         <h2 id="resultTitle">Ein Licht.<br />Dank euch.</h2>
         <div id="medal" class="medal" role="img" aria-label="Medaille">✦</div>
         <p id="resultDescription" class="muted"></p>
+        <p id="resultCombo" class="small"></p>
         <p id="xpResult" class="xp-result" role="status"></p>
         <div class="result-stats">
           <div>
@@ -462,6 +485,9 @@
       <span>↻</span>
       <h2>Mehr Platz für euren Flug.</h2>
       <p>Dreh dein Handy ins Querformat.</p>
+      <button type="button" id="portraitBtn" class="secondary">
+        Im Hochformat weiter
+      </button>
       <button type="button" id="rotateBtn" class="primary">
         Vollbild versuchen →</button
       ><button type="button" class="text-btn exitBtn">Zurück zum Hangar</button>

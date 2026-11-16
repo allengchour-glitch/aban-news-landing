@@ -1,5 +1,32 @@
 # Neon-Flug / Aether Run – Koop-Kampagne
 
+## Reviewstand v4 – 16.11.2026 (noch nicht veröffentlicht)
+
+Der Arbeitsstand auf `codex/neon-flug-ringe-belohnung` ergänzt echte Höhensteuerung (WASD/Pfeile oder relativer Zwei-Achsen-Touchstick), einmalig verschwindende Ringe einschließlich Doppelringen und einen optionalen Modus **Neon-Schießen** im selben Einstieg. Die klassische Drei-Kapitel-Kampagne bleibt Standard. Der Gastgeber bestimmt den Modus. Protokoll, Raum- und Discovery-Präfix sind jetzt **v4**; `js/mp.js` bleibt unverändert.
+
+Neon-Schießen dauert 60 Sekunden. Drohnen brauchen zwei Treffer, F oder der Feuerknopf schießen bei gehaltener Eingabe. Cooldown und Wärme begrenzen Dauerfeuer, Abkühlen gibt die Waffe wieder frei. Ringe, Schutz-Dash und Rettung bleiben erhalten. Überleben schließt das Match ab, Abschüsse geben bis zu 100 zusätzliche XP; der Modus schaltet keine klassischen Kapitel frei.
+
+Sammlungen melden Punkte und Kette im HUD. Ergebnisse zeigen beste Kette, gegebenenfalls Abschüsse und die XP-Anteile für Abschluss, Team, Sammeln und Kampf. Abschluss-IDs bleiben im lokalen Profil und verhindern erneute Belohnung nach wiederholten Ergebnissen/Handshake/Reload. Training und Niederlagen geben keine XP. Web Locks serialisieren Schreibvorgänge; bei gesperrtem Speicher erhält der RAM den Fortschritt **nur für die aktuelle Sitzung**, mit ausdrücklichem Hinweis. Nach Seitenreload kann nicht gespeicherter Fortschritt nicht wiederhergestellt werden. Keine serverseitig verifizierten Accounts.
+
+Beide Renderer verwenden echte X/Y-Koordinaten und dieselben Sammelzustände. Projektile sind auf 16 begrenzt, Sammelpartikel auf 96 und Trails auf 24 Punkte je Pilot. Trails werden alle 40 ms abgetastet. Reduzierte Bewegung unterdrückt Banking, Trails und Sammelpartikel. Bei schmaleren Formaten wird der Bildausschnitt angepasst; ein optionaler Knopf erlaubt nach dem Drehhinweis die Hochformatbedienung. Berggeometrie und Welttexturcode bleiben unverändert.
+
+GEMESSEN: 66 Node-Tests sowie 90 Browser-/Rendererprüfungen bestanden. Darunter 22 neue Eingabe-/Canvas-/WebRTC-Prüfungen, 18 WebGL-/Geometrieprüfungen und 11 gezielte HUD-/Speicher-Gegenproben. Die drei HUD-Ansichten 390×844, 640×360 und 960×540 wurden mit echten Touch-Ereignissen geprüft. WebGL-Funktionsprüfungen erfolgten nach ausdrücklicher Parent-Freigabe, getrennt von LP; sie sind keine WebGL-Performancefreigabe. Details, Messgrenzen und Dateiliste: `WEITERARBEIT.md`, Rohwerte: `PRUEFUNG-v4.json`.
+
+Zusätzliche gezielte Prüfungen:
+
+```sh
+PORT=8186 node spiele-dev/neon-flug/server.cjs
+node --test spiele-dev/neon-flug/*.test.mjs
+# Für Browser jeweils PLAYWRIGHT_MODULE, NEON_CHROME und NEON_TEST_URL setzen.
+node spiele-dev/neon-flug/features-browser.cjs
+node spiele-dev/neon-flug/review-browser.cjs
+node spiele-dev/neon-flug/bounds-webgl.cjs
+```
+
+`NEON_CHROME` benennt optional die vollständige Chromium-Binärdatei. Lokale Koop-Tests öffnen zwei echte Fenster desselben Browserprofils, damit Chromium keinen Hintergrund-Tab stilllegt. Discovery läuft über BroadcastChannel, Spielzustände über echte WebRTC-DataChannels. Das ist keine Transportattrappe. Matchabschlüsse werden im Test per Debug-Zeitraffer ausgelöst; dies ersetzt keinen manuellen Durchspielnachweis.
+
+## Vorher veröffentlichter Stand v3
+
 PR3156 wurde nach den Prüfungen zusammengeführt und auf https://abannews.com/neon-flug veröffentlicht. Produktionscommit218c7e4d987106ce55c7cba34b87ce515970a96e; erfolgreiche Auslieferung separat geprüft. Protokoll und Raumpräfix v3. Standard ist jetzt eine schnelle perspektivische Canvas-Darstellung; die aufwendigere Three.js-Fassung bleibt unter „3D · hohe Grafiklast“ wählbar. Im Standard wird kein WebGL-Kontext angelegt. Beim Zurückschalten zeichnet die verdeckte 3D-Ansicht nicht weiter.
 
 ## Spiel und Bonus-Schleife

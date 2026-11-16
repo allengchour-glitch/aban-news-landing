@@ -55,7 +55,7 @@ Object.assign(MODULES, {
   vector: {
     name: "Vektordüsen",
     xp: 1000,
-    tag: "Schnellerer Seitenwechsel zwischen Fluglinien.",
+    tag: "Schnellerer Richtungswechsel auf beiden Achsen.",
   },
   guard: {
     name: "Schutzmatrix",
@@ -114,6 +114,15 @@ export function profile(v) {
     : 0;
   const setup = loadout(v);
   return {
+    claimed: Array.isArray(v?.claimed)
+      ? [
+          ...new Set(
+            v.claimed.filter(
+              (id) => typeof id === "string" && id.length <= 100,
+            ),
+          ),
+        ]
+      : [],
     name: nickname(v?.name),
     xp,
     role: setup.role,
@@ -123,16 +132,36 @@ export function profile(v) {
 }
 export function award(v, s) {
   const p = profile(v);
-  if (!s || !["result", "victory"].includes(s.phase))
+  if (
+    !s ||
+    s.training ||
+    typeof s.runId !== "string" ||
+    !s.runId ||
+    p.claimed.includes(s.runId) ||
+    !["result", "victory"].includes(s.phase)
+  )
     return { profile: p, gained: 0, unlocked: [] };
-  const gained =
-    100 +
-    Math.min(150, (s.duets || 0) * 20 + (s.rescues || 0) * 30) +
-    Math.min(100, (s.bonuses || 0) * 10);
-  const updated = { ...p, xp: p.xp + gained, missions: p.missions + 1 };
+  const safe = (n) => (Number.isFinite(n) ? Math.max(0, n) : 0);
+  const breakdown = {
+    completion: 100,
+    team: Math.min(150, safe(s.duets) * 20 + safe(s.rescues) * 30),
+    collection: Math.min(
+      100,
+      safe(s.bonuses) * 10 + Math.floor(safe(s.bestCombo) / 5) * 5,
+    ),
+    combat: s.mode === "shoot" ? Math.min(100, safe(s.kills) * 5) : 0,
+  };
+  const gained = Object.values(breakdown).reduce((a, b) => a + b, 0);
+  const updated = {
+    ...p,
+    xp: p.xp + gained,
+    missions: p.missions + 1,
+    claimed: [...p.claimed, s.runId],
+  };
   return {
     profile: updated,
     gained,
+    breakdown,
     leveledUp: rank(updated.xp) > rank(p.xp),
     level: rank(updated.xp),
     unlocked: Object.keys(MODULES).filter(

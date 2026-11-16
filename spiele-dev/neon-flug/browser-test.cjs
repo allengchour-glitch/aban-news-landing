@@ -6,12 +6,13 @@ const out = process.env.NEON_REPORT_DIR || path.join(os.tmpdir(), "aether-qa");
 fs.mkdirSync(out, { recursive: true });
 (async () => {
   const b = await chromium.launch({
+    executablePath: process.env.NEON_CHROME,
     args: ["--no-sandbox", "--enable-unsafe-swiftshader"],
   });
   const c = await b.newContext({ viewport: { width: 1280, height: 800 } });
   c.setDefaultTimeout(20000);
   const a = await c.newPage(),
-    d = await c.newPage();
+    d = await require("./browser-window.cjs")(b, c, a);
   const errors = [];
   for (const p of [a, d]) {
     p.on("pageerror", (e) => errors.push(e.message));

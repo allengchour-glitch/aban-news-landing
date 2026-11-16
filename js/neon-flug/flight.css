@@ -1379,3 +1379,93 @@ body.overdrive .resonance-track i {
   animation: rise 0.5s ease-out;
   text-shadow: 0 0 18px #f0bc7344;
 }
+
+/* Vier Richtungen und optionaler Kampf bleiben im selben Einstieg. */
+.mode-picker {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.mode-picker select {
+  max-width: 100%;
+  padding: 9px;
+  color: #eef6f4;
+  background: #132c38;
+  border: 1px solid #72948f;
+  border-radius: 6px;
+}
+.mode-picker > span {
+  letter-spacing: 0;
+  color: #bbc9cb;
+}
+.flight-feedback {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  color: #e8f4e6;
+  font-size: 11px;
+}
+#touchStick {
+  position: fixed;
+  width: 88px;
+  height: 88px;
+  margin: -44px;
+  border: 1px solid #9ce8dbaa;
+  border-radius: 50%;
+  background: #163d4d55;
+  pointer-events: none;
+}
+#touchStick i {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 30px;
+  top: 30px;
+  border-radius: 50%;
+  background: #b2f9ea99;
+}
+#fireBtn {
+  touch-action: none;
+}
+@media (max-height: 600px) {
+  .flight-feedback {
+    font-size: 10px;
+  }
+  .mode-picker {
+    margin: 6px 0;
+  }
+}
+/* Moduswahl und aufgeklapptes Beitrittsformular brauchen echten Dokumentfluss. */
+.menu-screen .hero-copy {
+  padding-bottom: 28px;
+}
+.menu-screen .hero-footer {
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  margin: 0 4.5vw;
+  padding-bottom: 24px;
+}
+
+@media (max-height: 420px) and (orientation: landscape) {
+  .resonance-hud {
+    bottom: 78px;
+    padding: 8px;
+  }
+  #resonanceHint {
+    display: none;
+  }
+  .flight-feedback {
+    margin-top: 6px;
+    padding-top: 6px;
+  }
+  .resonance-track {
+    margin: 6px 0;
+  }
+}
