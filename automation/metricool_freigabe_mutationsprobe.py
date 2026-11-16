@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Mutationsprobe für metricool_freigabe.py: ändert den Code absichtlich an 48 Stellen und prüft, dass der Test jedes Mal rot wird.
-Aufruf: python3 automation/metricool_freigabe_mutationsprobe.py   (Ausgabe: «Mutanten: 48 | erkannt: 48 | überlebt/nicht anwendbar: 0»)"""
+"""Mutationsprobe für metricool_freigabe.py: ändert den Code absichtlich an 54 Stellen und prüft, dass der Test jedes Mal rot wird.
+Aufruf: python3 automation/metricool_freigabe_mutationsprobe.py   (Ausgabe: «Mutanten: 54 | erkannt: 54 | überlebt/nicht anwendbar: 0»)"""
 import os, shutil, subprocess, sys, tempfile
 SRC = os.path.dirname(os.path.abspath(__file__))
 W = tempfile.mkdtemp(prefix='mfmut-')
@@ -53,6 +53,15 @@ M = [
  ('medium_erreichbar if not planer_datei else (lambda u: True), halten)', 'medium_erreichbar if not planer_datei else (lambda u: True))'),
  ('    except FileNotFoundError:\n        halten = {}', '    except FileNotFoundError:\n        raise'),
  ("            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt): ' + grund)", "            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt)')"),
+]
+M += [
+ # Besitzer 16.11.: nur noch Videos, kein TikTok-Sound; Bestand 0 heisst nicht ausverkauft
+ ("        if NUR_VIDEOS and not any(ist_video(u) for u in (p.get('media') or [])):", "        if False:"),
+ ("NUR_VIDEOS = os.environ.get('NUR_VIDEOS', '1') != '0'", "NUR_VIDEOS = os.environ.get('NUR_VIDEOS', '0') != '0'"),
+ ("        b['tiktokData']['autoAddMusic'] = False", "        pass"),
+ ("        if 'tiktok' in netze and (p.get('tiktokData') or {}).get('autoAddMusic'):", "        if False:"),
+ ("        if not any(v.get('availableForSale') for v in p.get('variants', [])):\n            if p.get('tracksInventory')", "        if True:\n            if p.get('tracksInventory')"),
+ ("any(ist_video(u) for u in (p.get('media') or []))", "all(ist_video(u) for u in (p.get('media') or []))"),
 ]
 src = open(f'{SRC}/metricool_freigabe.py', encoding='utf-8').read()
 erkannt = 0; gleichwertig = []; ueberlebt = []
