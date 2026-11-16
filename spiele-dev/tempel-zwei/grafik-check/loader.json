@@ -1,0 +1,53 @@
+{
+  "url": "http://localhost:8140/js/tempel-zwei/props.js?v=a963faa848f8",
+  "http": 200,
+  "hash": "a963faa848f83e630658c1e3f9bba1605988e5bf3fcc09d124894cde333c80ce",
+  "expected": "a963faa848f83e630658c1e3f9bba1605988e5bf3fcc09d124894cde333c80ce",
+  "version": "a963faa848f8",
+  "errors": [],
+  "state": {
+    "room": 2,
+    "gems": 0,
+    "won": false,
+    "result": null,
+    "paused": false,
+    "online": false,
+    "slot": 0,
+    "running": true,
+    "gates": [
+      true,
+      false,
+      false,
+      false
+    ],
+    "sync": [
+      0,
+      0
+    ],
+    "vines": true,
+    "plant": false,
+    "levers": [
+      false,
+      false
+    ],
+    "render": {
+      "calls": 85,
+      "triangles": 31432,
+      "pixelRatio": 0.65
+    },
+    "eye": 0,
+    "blind": false,
+    "altF": false,
+    "altW": false,
+    "g4": false,
+    "a": {
+      "x": -6,
+      "z": -10
+    },
+    "b": {
+      "x": 6,
+      "z": -10
+    }
+  },
+  "passed": true
+}

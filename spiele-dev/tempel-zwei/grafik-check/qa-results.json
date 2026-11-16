@@ -1,0 +1,139 @@
+{
+  "environment": "Chromium / lokales echtes WebRTC, Signaling über BroadcastChannel. Echte _headers auf Port 8140. Positionsfixtures, UI-Aktionen und ausgewählte Tastatur-/Touch-Wege; kein vollständiger manueller Parcours.",
+  "checks": [
+    {
+      "name": "Standalone bleibt direkt im Tempel",
+      "ok": true
+    },
+    {
+      "name": "Tatsächliche CSP aus _headers aktiv",
+      "ok": true
+    },
+    {
+      "name": "Tastaturfokus ist sichtbar erreichbar",
+      "ok": true
+    },
+    {
+      "name": "Vier Buchstaben sichtbar, keine vorgetäuschte Kopierbestätigung",
+      "ok": true
+    },
+    {
+      "name": "Zwei echte Clients, Ember und Aqua",
+      "ok": true
+    },
+    {
+      "name": "Tastaturbewegung wird über DataChannel repliziert",
+      "ok": true
+    },
+    {
+      "name": "Eine Platte reicht nicht",
+      "ok": true
+    },
+    {
+      "name": "Beide Platten öffnen Tor 1 und aktualisieren beide Raumanzeigen",
+      "ok": true
+    },
+    {
+      "name": "Geöffnetes Tor ist tatsächlich durchquerbar",
+      "ok": true
+    },
+    {
+      "name": "Gemeinsamer Kristall bleibt auf beiden Clients genau einmal gezählt",
+      "ok": true
+    },
+    {
+      "name": "Aqua verbrennt keine Ranken",
+      "ok": true
+    },
+    {
+      "name": "Online-Hinweis fordert Partner statt unmöglichem Wechsel",
+      "ok": true
+    },
+    {
+      "name": "Embers Verbrennen auf beiden Seiten repliziert",
+      "ok": true
+    },
+    {
+      "name": "Online-Pause blockiert die Partneraktion nicht",
+      "ok": true
+    },
+    {
+      "name": "Wachsen und zweiter Hebel öffnen Tor 2 auf beiden Seiten",
+      "ok": true
+    },
+    {
+      "name": "Ein einzelner Gleichklangimpuls läuft ab und öffnet kein Tor",
+      "ok": true
+    },
+    {
+      "name": "Gleichklang lässt sich nach Fehlschlag gemeinsam lösen",
+      "ok": true
+    },
+    {
+      "name": "Ember bindet Blick, Aqua aktiviert Wasseraltar",
+      "ok": true
+    },
+    {
+      "name": "Hintere Schattenplatte erlaubt Rollentausch und Tor 4",
+      "ok": true
+    },
+    {
+      "name": "Echter Partner-Ping kommt an",
+      "ok": true
+    },
+    {
+      "name": "Ein Spieler allein löst keinen Sieg aus",
+      "ok": true
+    },
+    {
+      "name": "Gemeinsamer Abschluss mit identischem Ergebnis",
+      "ok": true
+    },
+    {
+      "name": "Nach Trennung bleibt echter Solo-Wechsel nutzbar",
+      "ok": true
+    },
+    {
+      "name": "Keine erfundene Onlinepräsenz nach Trennung",
+      "ok": true
+    },
+    {
+      "name": "Mobiler Daumenstick bewegt und Touch-Cancel stoppt",
+      "ok": true
+    },
+    {
+      "name": "Pause sperrt Wechsel und hat erreichbaren Fortsetzen-Knopf",
+      "ok": true
+    },
+    {
+      "name": "Mobiler Figurenwechsel reagiert",
+      "ok": true
+    },
+    {
+      "name": "Ton-Schalter meldet Status zugänglich",
+      "ok": true
+    },
+    {
+      "name": "Mobile Ziele und Bedienung überlappen nicht",
+      "ok": true
+    },
+    {
+      "name": "Wildnis-Taste navigiert beim Standalone-Einstieg",
+      "ok": true
+    },
+    {
+      "name": "iframe-Rückkehr sendet weiterhin mini-back",
+      "ok": true
+    },
+    {
+      "name": "iframe-Abschluss sendet weiterhin stationDone mit Score",
+      "ok": true
+    },
+    {
+      "name": "Keine JavaScript- oder Konsolenfehler",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "errors": []
+}

@@ -173,14 +173,19 @@ async function cross(p, z) {
   await m.waitForTimeout(300);
   await m.screenshot({ path: OUT + "/after-mobile-landscape.png" });
   check(
-    "844×390: Aufgabenpanel liegt zwischen den beiden Daumenbereichen",
+    "844×390: Aufgabenpanel verdeckt weder Steuerung noch Figurenlabels",
     await m.evaluate(() => {
-      const o = document.getElementById("objective").getBoundingClientRect(),
-        s = document.getElementById("stick").getBoundingClientRect(),
-        b = document.getElementById("bSwap").getBoundingClientRect();
-      return (
-        o.left > s.right + 8 && o.right < b.left - 8 && o.bottom < innerHeight
-      );
+      const o = document.getElementById("objective").getBoundingClientRect();
+      const overlaps = (a, b) =>
+        a.left < b.right && a.right > b.left &&
+        a.top < b.bottom && a.bottom > b.top;
+      return o.left >= 0 && o.top >= 0 &&
+        o.right <= innerWidth && o.bottom <= innerHeight &&
+        ["stick", "bAct", "bSwap", "bPing", "playerEmber", "playerAqua"].every((id) => {
+          const el = document.getElementById(id);
+          return getComputedStyle(el).display === "none" ||
+            !overlaps(o, el.getBoundingClientRect());
+        });
     }),
   );
   await mc.close();

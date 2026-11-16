@@ -39,3 +39,5 @@ GEMESSEN: [33 Koop-Prüfungen](grafik/qa-results.json) und [22 Solo-/UI-Prüfung
 | Hochformat nach Randkorrektur | [Handy](grafik/mobile.webp) |
 
 Die WebP-Dateien sind reine Formatkonvertierungen der Browser-Screenshots, ohne Retusche. Die Veröffentlichung wird durch den tatsächlichen Hauptseitenlauf und einen HTTPS-Quellenvergleich belegt; lokale Prüfungen allein sind kein Live-Nachweis.
+
+Der anschließende [Grafikdurchgang](GRAFIK-CHECK.md) prüft20 Kammeransichten und korrigiert Figuren-/Ringhöhe, verdeckende Meldungen, Schalterzeichen und die Kollision am Wächtersockel. Keine Wiederholung des bereits veröffentlichten Grafikumbaus.

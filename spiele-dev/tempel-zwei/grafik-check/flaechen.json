@@ -1,0 +1,186 @@
+{
+  "surfaces": [
+    {
+      "before": true,
+      "name": "Boden",
+      "x": 3,
+      "z": -66,
+      "y": 0,
+      "feet": -0.000017213040220065423,
+      "root": 0,
+      "ring": 0.028,
+      "contact": true,
+      "ringAbove": true
+    },
+    {
+      "before": true,
+      "name": "Ember-Platte",
+      "x": -6,
+      "z": -10,
+      "y": 0.12,
+      "feet": -0.0000058734260772741465,
+      "root": 0,
+      "ring": 0.028,
+      "contact": false,
+      "ringAbove": false
+    },
+    {
+      "before": true,
+      "name": "Aqua-Platte",
+      "x": 6,
+      "z": -10,
+      "y": 0.12,
+      "feet": -0.0000026817144707091956,
+      "root": 0,
+      "ring": 0.028,
+      "contact": false,
+      "ringAbove": false
+    },
+    {
+      "before": true,
+      "name": "Schatten links",
+      "x": -7.6,
+      "z": -68.5,
+      "y": 0.12,
+      "feet": -0.000013137827966747118,
+      "root": 0,
+      "ring": 0.028,
+      "contact": false,
+      "ringAbove": false
+    },
+    {
+      "before": true,
+      "name": "Schatten rechts",
+      "x": 7.6,
+      "z": -68.5,
+      "y": 0.12,
+      "feet": -0.00003920439378668483,
+      "root": 0,
+      "ring": 0.028,
+      "contact": false,
+      "ringAbove": false
+    },
+    {
+      "before": true,
+      "name": "Schatten hinten",
+      "x": 0,
+      "z": -80.5,
+      "y": 0.12,
+      "feet": -0.000055306690688983196,
+      "root": 0,
+      "ring": 0.028,
+      "contact": false,
+      "ringAbove": false
+    },
+    {
+      "before": true,
+      "name": "Herzpodest",
+      "x": 0,
+      "z": -94,
+      "y": 0.065,
+      "feet": -0.000012048259855679255,
+      "root": 0,
+      "ring": 0.028,
+      "contact": false,
+      "ringAbove": false
+    },
+    {
+      "before": false,
+      "name": "Boden",
+      "x": 3,
+      "z": -66,
+      "y": 0,
+      "feet": -0.00004027007635420965,
+      "root": 0,
+      "ring": 0.028,
+      "contact": true,
+      "ringAbove": true
+    },
+    {
+      "before": false,
+      "name": "Ember-Platte",
+      "x": -6,
+      "z": -10,
+      "y": 0.12,
+      "feet": 0.11999741436133082,
+      "root": 0.12,
+      "ring": 0.148,
+      "contact": true,
+      "ringAbove": true
+    },
+    {
+      "before": false,
+      "name": "Aqua-Platte",
+      "x": 6,
+      "z": -10,
+      "y": 0.12,
+      "feet": 0.1199915731586002,
+      "root": 0.12,
+      "ring": 0.148,
+      "contact": true,
+      "ringAbove": true
+    },
+    {
+      "before": false,
+      "name": "Schatten links",
+      "x": -7.6,
+      "z": -68.5,
+      "y": 0.12,
+      "feet": 0.11977162515748219,
+      "root": 0.12,
+      "ring": 0.148,
+      "contact": true,
+      "ringAbove": true
+    },
+    {
+      "before": false,
+      "name": "Schatten rechts",
+      "x": 7.6,
+      "z": -68.5,
+      "y": 0.12,
+      "feet": 0.11990654642980303,
+      "root": 0.12,
+      "ring": 0.148,
+      "contact": true,
+      "ringAbove": true
+    },
+    {
+      "before": false,
+      "name": "Schatten hinten",
+      "x": 0,
+      "z": -80.5,
+      "y": 0.12,
+      "feet": 0.11998953773535037,
+      "root": 0.12,
+      "ring": 0.148,
+      "contact": true,
+      "ringAbove": true
+    },
+    {
+      "before": false,
+      "name": "Herzpodest",
+      "x": 0,
+      "z": -94,
+      "y": 0.065,
+      "feet": 0.06499155528738976,
+      "root": 0.065,
+      "ring": 0.093,
+      "contact": true,
+      "ringAbove": true
+    }
+  ],
+  "celebrations": [
+    {
+      "before": true,
+      "minY": 0.007359328998470201,
+      "podiumTop": 0.065,
+      "ok": false
+    },
+    {
+      "before": false,
+      "minY": 0.06976319590098563,
+      "podiumTop": 0.065,
+      "ok": true
+    }
+  ]
+}

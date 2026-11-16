@@ -1,0 +1,1505 @@
+{
+  "cases": [
+    {
+      "view": {
+        "width": 1440,
+        "height": 900
+      },
+      "room": "platten",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 493.56991020804867,
+          "y": 448.23611331163715,
+          "right": 583.9228166701635,
+          "bottom": 547.3112866897811,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 1009.4523623430333,
+          "y": 448.36633751678806,
+          "right": 1118.7790500688575,
+          "bottom": 547.3638069206063,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 16,
+        "y": 701.71875,
+        "right": 316,
+        "bottom": 860
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 69,
+          "triangles": 31304,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -6,
+          "z": -10
+        },
+        "b": {
+          "x": 6,
+          "z": -10
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 1440,
+        "height": 900
+      },
+      "room": "pflanzen",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 517.3025860818371,
+          "y": 451.77694596145324,
+          "right": 609.7324858492844,
+          "bottom": 557.234812731582,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 974.7928982310206,
+          "y": 451.86084185368367,
+          "right": 1086.6090802717895,
+          "bottom": 557.2301834927555,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 16,
+        "y": 716.5,
+        "right": 316,
+        "bottom": 860
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 65,
+          "triangles": 31750,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -27
+        },
+        "b": {
+          "x": 5,
+          "z": -27
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 1440,
+        "height": 900
+      },
+      "room": "schalter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 517.4827053617103,
+          "y": 451.72610639122684,
+          "right": 609.6409643388727,
+          "bottom": 557.1655096755422,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 974.9934481012499,
+          "y": 451.81159881667,
+          "right": 1086.2247518160955,
+          "bottom": 557.1626507175058,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 16,
+        "y": 732.109375,
+        "right": 316,
+        "bottom": 860
+      },
+      "state": {
+        "room": 3,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 75,
+          "triangles": 31368,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -50
+        },
+        "b": {
+          "x": 5,
+          "z": -50
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 1440,
+        "height": 900
+      },
+      "room": "waechter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 500.0614154322983,
+          "y": 497.1286990409739,
+          "right": 595.8428353367703,
+          "bottom": 602.7743983903631,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 951.3398608257029,
+          "y": 372.1943194407407,
+          "right": 1042.7842141106873,
+          "bottom": 463.8118498022887,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 16,
+        "y": 732.109375,
+        "right": 316,
+        "bottom": 860
+      },
+      "state": {
+        "room": 4,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          true,
+          false
+        ],
+        "sync": [
+          -0.04999999999999864,
+          -0.04999999999999864
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 67,
+          "triangles": 28678,
+          "pixelRatio": 0.55
+        },
+        "eye": -0.79,
+        "blind": true,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -7.6,
+          "z": -68.5
+        },
+        "b": {
+          "x": 3,
+          "z": -73
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 360,
+        "height": 640
+      },
+      "room": "platten",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 70.20660353596149,
+          "y": 370.9388282069036,
+          "right": 105.56959944778576,
+          "bottom": 408.4776213939415,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 268.45621912041656,
+          "y": 370.9683336933122,
+          "right": 305.4201760663498,
+          "bottom": 408.4760710808358,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 155,
+        "right": 348,
+        "bottom": 293.890625
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 102,
+          "triangles": 36592,
+          "pixelRatio": 0.65
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -6,
+          "z": -10
+        },
+        "b": {
+          "x": 6,
+          "z": -10
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 360,
+        "height": 640
+      },
+      "room": "pflanzen",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 80.16662583650145,
+          "y": 372.2633824816166,
+          "right": 116.89329259630622,
+          "bottom": 412.226052084807,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 256.45708470338394,
+          "y": 372.29607027299164,
+          "right": 294.5399449814863,
+          "bottom": 412.2257040610464,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 155,
+        "right": 348,
+        "bottom": 291.5
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 90,
+          "triangles": 35446,
+          "pixelRatio": 0.65
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -27
+        },
+        "b": {
+          "x": 5,
+          "z": -27
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 360,
+        "height": 640
+      },
+      "room": "schalter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 80.17147029858297,
+          "y": 372.24730404302903,
+          "right": 116.91442347577542,
+          "bottom": 412.20534198805893,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 256.3193759709164,
+          "y": 372.27947893156625,
+          "right": 294.66006053736584,
+          "bottom": 412.20443483470126,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 155,
+        "right": 348,
+        "bottom": 278.890625
+      },
+      "state": {
+        "room": 3,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 76,
+          "triangles": 31376,
+          "pixelRatio": 0.65
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -50
+        },
+        "b": {
+          "x": 5,
+          "z": -50
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 360,
+        "height": 640
+      },
+      "room": "waechter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 72.12606471392395,
+          "y": 396.63309076654394,
+          "right": 110.2914111849062,
+          "bottom": 436.95312391555177,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 252.19637248573795,
+          "y": 346.474686326241,
+          "right": 284.9950517812723,
+          "bottom": 382.1297624962807,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 155,
+        "right": 348,
+        "bottom": 262.390625
+      },
+      "state": {
+        "room": 4,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          true,
+          false
+        ],
+        "sync": [
+          -0.03330000000000018,
+          -0.03330000000000018
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 65,
+          "triangles": 28502,
+          "pixelRatio": 0.65
+        },
+        "eye": -0.79,
+        "blind": true,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -7.6,
+          "z": -68.5
+        },
+        "b": {
+          "x": 3,
+          "z": -73
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 390,
+        "height": 844
+      },
+      "room": "platten",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 50.19334636257362,
+          "y": 421.6602213279212,
+          "right": 96.86724002704119,
+          "bottom": 471.1618140039548,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 311.61337375589414,
+          "y": 421.7028633744956,
+          "right": 360.4300416348818,
+          "bottom": 471.1638228343136,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 529.609375,
+        "right": 378,
+        "bottom": 652
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 99,
+          "triangles": 36320,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -6,
+          "z": -10
+        },
+        "b": {
+          "x": 6,
+          "z": -10
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 390,
+        "height": 844
+      },
+      "room": "pflanzen",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 63.38941881760671,
+          "y": 423.40269047070507,
+          "right": 111.73735944723286,
+          "bottom": 476.1035738213395,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 295.86232255265253,
+          "y": 423.4458002685847,
+          "right": 346.01180432415737,
+          "bottom": 476.1031178925644,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 532,
+        "right": 378,
+        "bottom": 652
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 87,
+          "triangles": 35190,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -27
+        },
+        "b": {
+          "x": 5,
+          "z": -27
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 390,
+        "height": 844
+      },
+      "room": "schalter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 63.319356387763676,
+          "y": 423.38143251726746,
+          "right": 111.83530605620419,
+          "bottom": 476.07611280756623,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 295.64212914671157,
+          "y": 423.4229566137527,
+          "right": 346.2119525964791,
+          "bottom": 476.0739269056668,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 544.609375,
+        "right": 378,
+        "bottom": 652
+      },
+      "state": {
+        "room": 3,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 72,
+          "triangles": 31112,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -50
+        },
+        "b": {
+          "x": 5,
+          "z": -50
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 390,
+        "height": 844
+      },
+      "room": "waechter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 52.74796600348672,
+          "y": 455.53024213530966,
+          "right": 103.07230315584015,
+          "bottom": 508.70041441995727,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 290.1795526387826,
+          "y": 389.39247064809354,
+          "right": 333.48335409454,
+          "bottom": 436.4112840598447,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 544.609375,
+        "right": 378,
+        "bottom": 652
+      },
+      "state": {
+        "room": 4,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          true,
+          false
+        ],
+        "sync": [
+          -0.016600000000000892,
+          -0.016600000000000892
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 64,
+          "triangles": 27822,
+          "pixelRatio": 0.55
+        },
+        "eye": -0.79,
+        "blind": true,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -7.6,
+          "z": -68.5
+        },
+        "b": {
+          "x": 3,
+          "z": -73
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 844,
+        "height": 390
+      },
+      "room": "platten",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 324.0607248062415,
+          "y": 194.28765376399588,
+          "right": 362.8663304902605,
+          "bottom": 237.21927160601902,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 547.5826540720138,
+          "y": 194.32940496972748,
+          "right": 594.6854063849661,
+          "bottom": 237.2258663137986,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 56,
+        "right": 239.875,
+        "bottom": 184.15625
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 69,
+          "triangles": 31304,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -6,
+          "z": -10
+        },
+        "b": {
+          "x": 6,
+          "z": -10
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 844,
+        "height": 390
+      },
+      "room": "pflanzen",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 334.0686484222885,
+          "y": 195.76834170059598,
+          "right": 374.3007326657676,
+          "bottom": 241.46710930351892,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 532.4879949670409,
+          "y": 195.8047464411452,
+          "right": 580.7792075378547,
+          "bottom": 241.46515514570302,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 56,
+        "right": 239.875,
+        "bottom": 173.96875
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 65,
+          "triangles": 31750,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -27
+        },
+        "b": {
+          "x": 5,
+          "z": -27
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 844,
+        "height": 390
+      },
+      "room": "schalter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 334.0307865984406,
+          "y": 195.7579316982074,
+          "right": 374.3392415616273,
+          "bottom": 241.45546586361928,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 532.3299297967347,
+          "y": 195.79671482281938,
+          "right": 580.9416454133365,
+          "bottom": 241.45615113956396,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 56,
+        "right": 239.875,
+        "bottom": 158.96875
+      },
+      "state": {
+        "room": 3,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 75,
+          "triangles": 31368,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -50
+        },
+        "b": {
+          "x": 5,
+          "z": -50
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 844,
+        "height": 390
+      },
+      "room": "waechter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 326.761302926543,
+          "y": 215.44410968814339,
+          "right": 368.1233367843069,
+          "bottom": 261.2278917389222,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 522.2163289734578,
+          "y": 161.28109745298752,
+          "right": 561.9441491419374,
+          "bottom": 200.98611954870094,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 56,
+        "right": 239.875,
+        "bottom": 158.96875
+      },
+      "state": {
+        "room": 4,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          true,
+          false
+        ],
+        "sync": [
+          -0.016700000000001186,
+          -0.016700000000001186
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 67,
+          "triangles": 28678,
+          "pixelRatio": 0.55
+        },
+        "eye": -0.79,
+        "blind": true,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -7.6,
+          "z": -68.5
+        },
+        "b": {
+          "x": 3,
+          "z": -73
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 640,
+        "height": 360
+      },
+      "room": "platten",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 229.57107661311505,
+          "y": 179.34214710885692,
+          "right": 265.43550804926826,
+          "bottom": 218.97134045601393,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 435.88603075155083,
+          "y": 179.38251737330486,
+          "right": 479.44244109176543,
+          "bottom": 218.97944740587528,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 56,
+        "right": 192,
+        "bottom": 196.75
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 69,
+          "triangles": 31304,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -6,
+          "z": -10
+        },
+        "b": {
+          "x": 6,
+          "z": -10
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 640,
+        "height": 360
+      },
+      "room": "pflanzen",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 238.8596409445323,
+          "y": 180.71277719635327,
+          "right": 275.93842774248407,
+          "bottom": 222.89830135557523,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 422.01825544667224,
+          "y": 180.74652117897918,
+          "right": 466.54886342430126,
+          "bottom": 222.89665209370045,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 56,
+        "right": 192,
+        "bottom": 197.5625
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 65,
+          "triangles": 31750,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -27
+        },
+        "b": {
+          "x": 5,
+          "z": -27
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 640,
+        "height": 360
+      },
+      "room": "schalter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 238.80701667116875,
+          "y": 180.6839105875295,
+          "right": 276.01636680129315,
+          "bottom": 222.86064661281426,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 421.8262554595057,
+          "y": 180.72330099940945,
+          "right": 466.6878656188382,
+          "bottom": 222.86526905054185,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 56,
+        "right": 192,
+        "bottom": 184.15625
+      },
+      "state": {
+        "room": 3,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 75,
+          "triangles": 31368,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -5,
+          "z": -50
+        },
+        "b": {
+          "x": 5,
+          "z": -50
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 640,
+        "height": 360
+      },
+      "room": "waechter",
+      "models": [
+        {
+          "name": "Ember",
+          "x": 232.0988868838038,
+          "y": 198.85974797570762,
+          "right": 270.2637959092103,
+          "bottom": 241.11985117915307,
+          "overlap": false
+        },
+        {
+          "name": "Aqua",
+          "x": 412.5168506982845,
+          "y": 148.87335649844815,
+          "right": 449.15155789843004,
+          "bottom": 185.52228453396216,
+          "overlap": false
+        }
+      ],
+      "panel": {
+        "x": 12,
+        "y": 56,
+        "right": 192,
+        "bottom": 171.5625
+      },
+      "state": {
+        "room": 4,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          true,
+          true,
+          false
+        ],
+        "sync": [
+          -0.00009999999999974613,
+          -0.00009999999999974613
+        ],
+        "vines": false,
+        "plant": true,
+        "levers": [
+          true,
+          true
+        ],
+        "render": {
+          "calls": 67,
+          "triangles": 28678,
+          "pixelRatio": 0.55
+        },
+        "eye": -0.79,
+        "blind": true,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -7.6,
+          "z": -68.5
+        },
+        "b": {
+          "x": 3,
+          "z": -73
+        }
+      }
+    }
+  ],
+  "errors": []
+}

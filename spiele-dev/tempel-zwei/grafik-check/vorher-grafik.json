@@ -1,0 +1,712 @@
+{
+  "results": [
+    {
+      "view": {
+        "width": 1440,
+        "height": 900
+      },
+      "actors": [
+        {
+          "name": "Ember",
+          "y": 0,
+          "feet": 2.8362096782252877e-8,
+          "ringY": 0.02800000000000004,
+          "bounds": {
+            "left": 496.1554876928932,
+            "top": 459.28471212737105,
+            "right": 583.227005948019,
+            "bottom": 544.9712885805362
+          }
+        },
+        {
+          "name": "Aqua",
+          "y": 0,
+          "feet": 2.8362096782252877e-8,
+          "ringY": 0.02800000000000004,
+          "bounds": {
+            "left": 1011.0537684592102,
+            "top": 459.4237405014223,
+            "right": 1113.9702432999743,
+            "bottom": 545.0320758690581
+          }
+        }
+      ],
+      "padTop": 0.13999999821186065,
+      "padFaceTop": 0.12,
+      "rectangles": {
+        "playerEmber": {
+          "x": 487.3046875,
+          "y": 433.03125,
+          "w": 91.609375,
+          "h": 25,
+          "text": "🔥 Ember DU",
+          "display": "block"
+        },
+        "playerAqua": {
+          "x": 1042.5703125,
+          "y": 433.109375,
+          "w": 68.296875,
+          "h": 25,
+          "text": "💧 Aqua ",
+          "display": "block"
+        },
+        "objective": {
+          "x": 16,
+          "y": 730.5,
+          "w": 300,
+          "h": 129.5,
+          "text": "EURE AUFGABE · Feuer & Wasser🔥 Ember · DURanken links verbrennen💧 AquaPflanze rechts giessen · AktionBeide Hebel öffnen das zweite Siegel.",
+          "display": "block"
+        },
+        "hint": {
+          "x": 467.515625,
+          "y": 637,
+          "w": 504.96875,
+          "h": 33,
+          "text": "🔥 Ember (✋ nah an den Ranken) · 💧 Aqua (✋ an der Pflanze) — jede Figur ihre Kraft!",
+          "display": "block"
+        },
+        "announce": {
+          "x": 0,
+          "y": 270,
+          "w": 1440,
+          "h": 30,
+          "text": "⚖️ Beide Platten gedrückt — Tor 1 öffnet sich!",
+          "display": "block"
+        },
+        "bAct": {
+          "x": 1340,
+          "y": 790,
+          "w": 76,
+          "h": 76,
+          "text": "✋Aktion",
+          "display": "flex"
+        },
+        "bSwap": {
+          "x": 1346,
+          "y": 711,
+          "w": 64,
+          "h": 64,
+          "text": "⇄Wechsel",
+          "display": "flex"
+        }
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 69,
+          "triangles": 31304,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -6,
+          "z": -10
+        },
+        "b": {
+          "x": 6,
+          "z": -10
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 360,
+        "height": 640
+      },
+      "actors": [
+        {
+          "name": "Ember",
+          "y": 0,
+          "feet": 2.8607103796929323e-8,
+          "ringY": 0.02800000000000004,
+          "bounds": {
+            "left": 71.09719621087227,
+            "top": 375.1991134611952,
+            "right": 105.42837452784053,
+            "bottom": 407.6415417652037
+          }
+        },
+        {
+          "name": "Aqua",
+          "y": 0,
+          "feet": 2.8607103796929323e-8,
+          "ringY": 0.02800000000000004,
+          "bounds": {
+            "left": 268.74934772853754,
+            "top": 375.22940098504563,
+            "right": 304.2740267155545,
+            "bottom": 407.64107589081846
+          }
+        }
+      ],
+      "padTop": 0.13999999821186065,
+      "padFaceTop": 0.12,
+      "rectangles": {
+        "playerEmber": {
+          "x": 45.875,
+          "y": 352.78125,
+          "w": 78.375,
+          "h": 22,
+          "text": "🔥 Ember DU",
+          "display": "block"
+        },
+        "playerAqua": {
+          "x": 261.5859375,
+          "y": 352.78125,
+          "w": 57.453125,
+          "h": 22,
+          "text": "💧 Aqua ",
+          "display": "block"
+        },
+        "objective": {
+          "x": 12,
+          "y": 155,
+          "w": 336,
+          "h": 117.5,
+          "text": "EURE AUFGABE · Feuer & Wasser🔥 Ember · DURanken links verbrennen💧 AquaPflanze rechts giessen · AktionBeide Hebel öffnen das zweite Siegel.",
+          "display": "block"
+        },
+        "hint": {
+          "x": 18,
+          "y": 399,
+          "w": 324,
+          "h": 48,
+          "text": "🔥 Ember (✋ nah an den Ranken) · 💧 Aqua (✋ an der Pflanze) — jede Figur ihre Kraft!",
+          "display": "block"
+        },
+        "announce": {
+          "x": 0,
+          "y": 281.59375,
+          "w": 360,
+          "h": 46,
+          "text": "⚖️ Beide Platten gedrückt — Tor 1 öffnet sich!",
+          "display": "block"
+        },
+        "bAct": {
+          "x": 260,
+          "y": 530,
+          "w": 76,
+          "h": 76,
+          "text": "✋Aktion",
+          "display": "flex"
+        },
+        "bSwap": {
+          "x": 266,
+          "y": 452,
+          "w": 64,
+          "h": 64,
+          "text": "⇄Wechsel",
+          "display": "flex"
+        }
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 102,
+          "triangles": 36592,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -6,
+          "z": -10
+        },
+        "b": {
+          "x": 6,
+          "z": -10
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 390,
+        "height": 844
+      },
+      "actors": [
+        {
+          "name": "Ember",
+          "y": 0,
+          "feet": 2.275019261865907e-8,
+          "ringY": 0.02800000000000004,
+          "bounds": {
+            "left": 51.463724359850104,
+            "top": 426.73134353960205,
+            "right": 96.59645049935433,
+            "bottom": 469.57162683837095
+          }
+        },
+        {
+          "name": "Aqua",
+          "y": 0,
+          "feet": 2.275019261865907e-8,
+          "ringY": 0.02800000000000004,
+          "bounds": {
+            "left": 312.0869961681827,
+            "top": 426.8175394420096,
+            "right": 358.7268400140018,
+            "bottom": 469.619700279996
+          }
+        }
+      ],
+      "padTop": 0.13999999821186065,
+      "padFaceTop": 0.12,
+      "rectangles": {
+        "playerEmber": {
+          "x": 30.65625,
+          "y": 404.390625,
+          "w": 78.375,
+          "h": 22,
+          "text": "🔥 Ember DU",
+          "display": "block"
+        },
+        "playerAqua": {
+          "x": 307.2734375,
+          "y": 404.4375,
+          "w": 57.453125,
+          "h": 22,
+          "text": "💧 Aqua ",
+          "display": "block"
+        },
+        "objective": {
+          "x": 12,
+          "y": 551,
+          "w": 366,
+          "h": 101,
+          "text": "EURE AUFGABE · Feuer & Wasser🔥 Ember · DURanken links verbrennen💧 AquaPflanze rechts giessen · AktionBeide Hebel öffnen das zweite Siegel.",
+          "display": "block"
+        },
+        "hint": {
+          "x": 19.5,
+          "y": 481,
+          "w": 351,
+          "h": 48,
+          "text": "🔥 Ember (✋ nah an den Ranken) · 💧 Aqua (✋ an der Pflanze) — jede Figur ihre Kraft!",
+          "display": "block"
+        },
+        "announce": {
+          "x": 0,
+          "y": 270.078125,
+          "w": 390,
+          "h": 54,
+          "text": "⚖️ Beide Platten gedrückt — Tor 1 öffnet sich!",
+          "display": "block"
+        },
+        "bAct": {
+          "x": 290,
+          "y": 734,
+          "w": 76,
+          "h": 76,
+          "text": "✋Aktion",
+          "display": "flex"
+        },
+        "bSwap": {
+          "x": 296,
+          "y": 656,
+          "w": 64,
+          "h": 64,
+          "text": "⇄Wechsel",
+          "display": "flex"
+        }
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 99,
+          "triangles": 36320,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -6,
+          "z": -10
+        },
+        "b": {
+          "x": 6,
+          "z": -10
+        }
+      }
+    },
+    {
+      "view": {
+        "width": 844,
+        "height": 390
+      },
+      "actors": [
+        {
+          "name": "Ember",
+          "y": 0,
+          "feet": 2.8595143808374246e-8,
+          "ringY": 0.02800000000000004,
+          "bounds": {
+            "left": 324.95031997794507,
+            "top": 199.12133183024747,
+            "right": 362.7734434984695,
+            "bottom": 236.24318637367148
+          }
+        },
+        {
+          "name": "Aqua",
+          "y": 0,
+          "feet": 2.8595143808374246e-8,
+          "ringY": 0.02800000000000004,
+          "bounds": {
+            "left": 548.0733620892456,
+            "top": 199.16380869031502,
+            "right": 592.8578595550453,
+            "bottom": 236.25060764390236
+          }
+        }
+      ],
+      "padTop": 0.13999999821186065,
+      "padFaceTop": 0.12,
+      "rectangles": {
+        "playerEmber": {
+          "x": 295.1953125,
+          "y": 173.53125,
+          "w": 91.609375,
+          "h": 25,
+          "text": "🔥 Ember DU",
+          "display": "block"
+        },
+        "playerAqua": {
+          "x": 542.4609375,
+          "y": 173.546875,
+          "w": 68.296875,
+          "h": 25,
+          "text": "💧 Aqua ",
+          "display": "block"
+        },
+        "objective": {
+          "x": 247,
+          "y": 265,
+          "w": 350,
+          "h": 101,
+          "text": "EURE AUFGABE · Feuer & Wasser🔥 Ember · DURanken links verbrennen💧 AquaPflanze rechts giessen · AktionBeide Hebel öffnen das zweite Siegel.",
+          "display": "block"
+        },
+        "hint": {
+          "x": 211,
+          "y": 184,
+          "w": 422,
+          "h": 48,
+          "text": "🔥 Ember (✋ nah an den Ranken) · 💧 Aqua (✋ an der Pflanze) — jede Figur ihre Kraft!",
+          "display": "block"
+        },
+        "announce": {
+          "x": 0,
+          "y": 117,
+          "w": 844,
+          "h": 24,
+          "text": "⚖️ Beide Platten gedrückt — Tor 1 öffnet sich!",
+          "display": "block"
+        },
+        "bAct": {
+          "x": 744,
+          "y": 280,
+          "w": 76,
+          "h": 76,
+          "text": "✋Aktion",
+          "display": "flex"
+        },
+        "bSwap": {
+          "x": 750,
+          "y": 202,
+          "w": 64,
+          "h": 64,
+          "text": "⇄Wechsel",
+          "display": "flex"
+        }
+      },
+      "state": {
+        "room": 2,
+        "gems": 0,
+        "won": false,
+        "result": null,
+        "paused": false,
+        "online": false,
+        "slot": 0,
+        "running": true,
+        "gates": [
+          true,
+          false,
+          false,
+          false
+        ],
+        "sync": [
+          0,
+          0
+        ],
+        "vines": true,
+        "plant": false,
+        "levers": [
+          false,
+          false
+        ],
+        "render": {
+          "calls": 69,
+          "triangles": 31304,
+          "pixelRatio": 0.55
+        },
+        "eye": 0,
+        "blind": false,
+        "altF": false,
+        "altW": false,
+        "g4": false,
+        "a": {
+          "x": -6,
+          "z": -10
+        },
+        "b": {
+          "x": 6,
+          "z": -10
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "checks": [
+    {
+      "name": "1440x900 Ember: Füße auf Platte",
+      "ok": false
+    },
+    {
+      "name": "1440x900 Ember: Ring über Stein",
+      "ok": false
+    },
+    {
+      "name": "1440x900 Ember: hint verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "1440x900 Ember: announce verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "1440x900 Ember: objective verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "1440x900 Aqua: Füße auf Platte",
+      "ok": false
+    },
+    {
+      "name": "1440x900 Aqua: Ring über Stein",
+      "ok": false
+    },
+    {
+      "name": "1440x900 Aqua: hint verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "1440x900 Aqua: announce verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "1440x900 Aqua: objective verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "360x640 Ember: Füße auf Platte",
+      "ok": false
+    },
+    {
+      "name": "360x640 Ember: Ring über Stein",
+      "ok": false
+    },
+    {
+      "name": "360x640 Ember: hint verdeckt Figur nicht",
+      "ok": false
+    },
+    {
+      "name": "360x640 Ember: announce verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "360x640 Ember: objective verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "360x640 Aqua: Füße auf Platte",
+      "ok": false
+    },
+    {
+      "name": "360x640 Aqua: Ring über Stein",
+      "ok": false
+    },
+    {
+      "name": "360x640 Aqua: hint verdeckt Figur nicht",
+      "ok": false
+    },
+    {
+      "name": "360x640 Aqua: announce verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "360x640 Aqua: objective verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "390x844 Ember: Füße auf Platte",
+      "ok": false
+    },
+    {
+      "name": "390x844 Ember: Ring über Stein",
+      "ok": false
+    },
+    {
+      "name": "390x844 Ember: hint verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "390x844 Ember: announce verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "390x844 Ember: objective verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "390x844 Aqua: Füße auf Platte",
+      "ok": false
+    },
+    {
+      "name": "390x844 Aqua: Ring über Stein",
+      "ok": false
+    },
+    {
+      "name": "390x844 Aqua: hint verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "390x844 Aqua: announce verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "390x844 Aqua: objective verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "844x390 Ember: Füße auf Platte",
+      "ok": false
+    },
+    {
+      "name": "844x390 Ember: Ring über Stein",
+      "ok": false
+    },
+    {
+      "name": "844x390 Ember: hint verdeckt Figur nicht",
+      "ok": false
+    },
+    {
+      "name": "844x390 Ember: announce verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "844x390 Ember: objective verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "844x390 Aqua: Füße auf Platte",
+      "ok": false
+    },
+    {
+      "name": "844x390 Aqua: Ring über Stein",
+      "ok": false
+    },
+    {
+      "name": "844x390 Aqua: hint verdeckt Figur nicht",
+      "ok": false
+    },
+    {
+      "name": "844x390 Aqua: announce verdeckt Figur nicht",
+      "ok": true
+    },
+    {
+      "name": "844x390 Aqua: objective verdeckt Figur nicht",
+      "ok": true
+    }
+  ],
+  "method": "Lokaler echter Renderer mit reiner Szeneninspektion; Wege per Positionsfixture"
+}
