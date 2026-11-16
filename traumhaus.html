@@ -292,8 +292,10 @@ canvas{display:block}
 @keyframes micp{0%,100%{box-shadow:0 6px 18px rgba(224,90,74,.4)}50%{box-shadow:0 6px 26px rgba(224,90,74,.85)}}
 @keyframes rotwig{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
 @media (max-width:900px) and (orientation:portrait){#rotHint{display:flex !important}}
-#emoteBar{position:fixed;right:10px;bottom:calc(122px + env(safe-area-inset-bottom));z-index:22;display:none;flex-direction:column;gap:6px}
-#emoteBar button{width:52px;height:52px;border-radius:50%;border:2px solid #e8b04a;background:rgba(255,253,246,.98);font-size:1.6rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.22);line-height:1}
+#emoteBar{position:fixed;right:calc(72px + env(safe-area-inset-right));top:max(calc(8px + env(safe-area-inset-top)),calc(100% - 320px - env(safe-area-inset-bottom)));z-index:23;display:none;flex-wrap:wrap;gap:6px;width:244px;max-width:calc(100vw - 88px - env(safe-area-inset-right));max-height:calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow-y:auto;padding:8px;box-sizing:border-box;border-radius:18px;background:rgba(255,253,246,.98);box-shadow:0 6px 24px rgba(60,40,10,.28)}
+/* Vollbild neben dem Zoom: die vierte Taste verdeckte Emotes und Nitro. */
+#vollBtn{position:absolute;right:56px;bottom:56px}
+#emoteBar button{flex:0 0 52px;width:52px;height:52px;border-radius:50%;border:2px solid #e8b04a;background:rgba(255,253,246,.98);font-size:1.6rem;cursor:pointer;box-shadow:0 4px 12px rgba(60,40,10,.22);line-height:1}
 #emoteBar button:active{transform:scale(.9)}
 #hideBtn{position:fixed;right:134px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(255,200,80,.96);box-shadow:0 6px 18px rgba(120,80,20,.34);font-size:1.4rem;cursor:pointer;display:none}
 #pingBtn{position:fixed;right:72px;bottom:calc(124px + env(safe-area-inset-bottom));z-index:22;width:52px;height:52px;border-radius:50%;border:0;background:rgba(58,208,255,.96);box-shadow:0 6px 18px rgba(20,80,120,.34);font-size:1.4rem;cursor:pointer;display:none}
@@ -431,7 +433,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <button id="growBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(122px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:12px 20px;font-weight:900;font-size:.95rem;cursor:pointer;color:#d8ffd8;background:var(--creme);box-shadow:0 6px 20px rgba(36,28,18,.28)">Ernte verkaufen (riskant)</button>
 <button id="crimeBtn" style="display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));z-index:14;border:0;border-radius:14px;padding:13px 22px;font-weight:900;font-size:1rem;cursor:pointer;color:#ffe;background:var(--tinte);color:var(--creme);box-shadow:0 8px 22px rgba(36,28,18,.4)">Krummes Ding drehen …</button>
 <button id="chatToggle" title="Chat" aria-label="Chat"><svg class="ik" aria-hidden="true"><use href="#i-chat"/></svg></button>
-<button id="emoteToggle" title="Emotes" aria-label="Emotes"><svg class="ik" aria-hidden="true"><use href="#i-smile"/></svg></button>
+<button id="emoteToggle" title="Emotes" aria-label="Emotes" aria-controls="emoteBar" aria-expanded="false"><svg class="ik" aria-hidden="true"><use href="#i-smile"/></svg></button>
 <button id="pingBtn" title="Treffpunkt setzen" aria-label="Treffpunkt setzen"><svg class="ik" aria-hidden="true"><use href="#i-pin"/></svg></button>
 <button id="hideBtn" title="Verstecken spielen" aria-label="Verstecken spielen"><svg class="ik" aria-hidden="true"><use href="#i-eyeoff"/></svg></button>
 <div id="hideHud" style="position:fixed;top:calc(100px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;background:rgba(40,30,10,.86);color:#fff;border:2px solid #ffc850;border-radius:14px;padding:6px 16px;font-weight:800;font-size:1.05rem"></div>
@@ -14961,6 +14963,7 @@ function loadSnapshot(sn){
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
   if(hideSpiel)endeVerstecken(false);
+  window._hundTok={}; /* Auch ausstehende Haustier-Ladungen gehoeren zum alten Stand. */
   window._autoTok={}; /* 🩹 Schwarm-4: laufende Auto-Ladevorgaenge des alten Stands entwerten */
   if(!sn.au&&window.autoRec){scene.remove(window.autoRec.mesh);window.autoRec=null;} // Alt-Auto raus
   Object.keys(wallMeshes).forEach(function(k){scene.remove(wallMeshes[k]);});walls={};wallMeshes={};
@@ -14974,8 +14977,8 @@ function loadSnapshot(sn){
   Object.keys(sn.gb||{}).forEach(function(k){
     var m8=/^([wf])(-?\d+),(-?\d+)(,(\d))?$/.exec(k);
     if(m8)window._gratisBau[m8[1]+(+m8[2]+mx9)+","+(+m8[3]+my9)+(m8[4]||"")]=1;});
-  (sn.furn||[]).forEach(function(f){applyFurn(f.id,f.x+mx9,f.y+my9,f.r,f.fid,f.lv);
-    var rec9=furn[furn.length-1];
+  (sn.furn||[]).forEach(function(f){var vorher=furn.length;applyFurn(f.id,f.x+mx9,f.y+my9,f.r,f.fid,f.lv);
+    var rec9=furn.length>vorher?furn[furn.length-1]:null;
     if(rec9&&f.g)rec9.gratis=1;
     if(rec9&&f.b)rec9.bezahlt=f.b;   /* bezahlte Aufwertungen ueberleben das Neuladen */
     if(rec9&&(rec9.grow||rec9.beet)&&f.w){rec9.wachs=f.w;
@@ -15189,8 +15192,11 @@ function doEmote(k){window._emoteCount=(window._emoteCount||0)+1;
 function onEmote(si,k){var s9=sims[si];if(!s9)return;simEmoji(s9,k);if(k==="❤️"||k==="😍")hearts(s9.x,s9.z);}
 (function(){var et=document.getElementById("emoteToggle"),eb=document.getElementById("emoteBar");
   EMOTES.forEach(function(e9){var b=document.createElement("button");b.textContent=e9[0];
-    b.onclick=function(){doEmote(e9[0]);};eb.appendChild(b);});
-  et.onclick=function(){eb.style.display=eb.style.display==="flex"?"none":"flex";};})();
+    b.setAttribute("aria-label",e9[1]);b.onclick=function(){doEmote(e9[0]);schliessen();};eb.appendChild(b);});
+  function schliessen(){eb.style.display="none";et.setAttribute("aria-expanded","false");}
+  et.onclick=function(){var offen=eb.style.display!=="flex";eb.style.display=offen?"flex":"none";et.setAttribute("aria-expanded",String(offen));};
+  document.addEventListener("pointerdown",function(e){if(!eb.contains(e.target)&&!et.contains(e.target))schliessen();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")schliessen();});})();
 // ---- Koop-Treffpunkt (Ping-Beacon): beide Spieler finden sich in der grossen Welt ----
 var pings=[];
 function makePing(x,z){
@@ -18350,9 +18356,10 @@ function kochTap(z){
   document.getElementById("kochSeq").textContent=shown.join(" ");
   KOCH.pos++;
   if(KOCH.pos>=KOCH.seq.length){KOCH.round++;
-    if(KOCH.round>=3)setTimeout(kochEnd,600);
-    else setTimeout(function(){if(KOCH.on)kochRound();},700);}}
+    clearTimeout(KOCH.tmr);
+    KOCH.tmr=setTimeout(function(){if(!KOCH.on)return;if(KOCH.round>=3)kochEnd();else kochRound();},KOCH.round>=3?600:700);}}
 function kochEnd(){
+  if(!KOCH.on)return;
   KOCH.on=false;clearTimeout(KOCH.tmr);
   document.getElementById("koch").style.display="none";
   var score=KOCH.total?KOCH.hits/KOCH.total:0;
@@ -18566,6 +18573,9 @@ document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
      Werte beim Wechsel loeschen und beim Zurueckwechseln neu setzen lassen. */
   var _mb9=document.getElementById("modeBtn");
   _mb9.classList.toggle("building",buildMode);
+  /* HUD sofort umschalten: bei langsamen Bildern lag es sonst noch ueber dem Katalog. */
+  ["joy","minimap","zoomBtns"].forEach(function(id){document.getElementById(id).style.display=buildMode?"none":(id==="zoomBtns"?"flex":"block");});
+  if(buildMode){["emoteBar","emoteToggle","pingBtn","micBtn","hideBtn"].forEach(function(id){document.getElementById(id).style.display="none";});document.getElementById("emoteToggle").setAttribute("aria-expanded","false");}
   if(buildMode){["left","top","bottom"].forEach(function(k){_mb9.style.removeProperty(k);});}
   else if(typeof layoutLinkeSpalte==="function")setTimeout(layoutLinkeSpalte,30);
   document.getElementById("palette").style.display=buildMode?"block":"none";
@@ -19955,6 +19965,7 @@ function loop(now){
         try{if(!localStorage.getItem("th_maptip")){localStorage.setItem("th_maptip","1");
           setTimeout(function(){hint("Tipp aufs Radar für die grosse Karte");},4000);}}catch(e){}}}
     document.getElementById("emoteToggle").style.display=(running&&!buildMode&&!fahren)?"block":"none";
+    if(!running||buildMode||fahren){document.getElementById("emoteBar").style.display="none";document.getElementById("emoteToggle").setAttribute("aria-expanded","false");}
     document.getElementById("micBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("pingBtn").style.display=(running&&!buildMode&&!fahren&&MPs)?"block":"none";
     document.getElementById("villaBtn").style.display=(running&&buildMode&&!delMode)?"block":"none"; /* 🏰 nur im Bau-Modus */
