@@ -1,0 +1,406 @@
+{
+  "checks": [
+    "Echter Einzelspieler ohne Robo, kurzer Modus",
+    "Echter gespeicherter Zwischenstand nach Neuladen identisch fortgesetzt",
+    "Ohne Teleport vom Start zum Lebensabend: Karten, Gabelungen, Alterung, Auswertung und Biografie",
+    "Abschluss genau einmal in lokaler Statistik gespeichert",
+    "Neues Leben startet wieder auf Feld 0 mit bedienbarem Würfel"
+  ],
+  "errors": [],
+  "turns": [
+    {
+      "phase": "idle",
+      "round": 1,
+      "tile": 0,
+      "done": false,
+      "dead": false,
+      "bio": 0,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "—",
+      "opts": []
+    },
+    {
+      "phase": "idle",
+      "round": 2,
+      "tile": 4,
+      "done": false,
+      "dead": false,
+      "bio": 0,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Wie nennt man das Kind einer Katze?",
+      "seq": 1,
+      "opts": [
+        "🅰 Welpe",
+        "🅱 Kätzchen",
+        "🅲 Küken"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 3,
+      "tile": 8,
+      "done": false,
+      "dead": false,
+      "bio": 0,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🛤️ Spielplatz oder Schulweg?",
+      "seq": 2,
+      "opts": [
+        "🎒 Schulwegdirekt und schnell — brav zur Schule",
+        "🛝 Spielplatz-Runde7 bunte Felder · viel ❤️ & 👥 · ein bisschen länger"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 4,
+      "tile": 10,
+      "done": false,
+      "dead": false,
+      "bio": 0,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🛤️ Spielplatz oder Schulweg?",
+      "seq": 2,
+      "opts": [
+        "🎒 Schulwegdirekt und schnell — brav zur Schule",
+        "🛝 Spielplatz-Runde7 bunte Felder · viel ❤️ & 👥 · ein bisschen länger"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 5,
+      "tile": 13,
+      "done": false,
+      "dead": false,
+      "bio": 0,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🏁 Best-of-3-Sprint!",
+      "seq": 3,
+      "opts": [
+        "Weiter ▶"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 6,
+      "tile": 14,
+      "done": false,
+      "dead": false,
+      "bio": 0,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "—",
+      "opts": []
+    },
+    {
+      "phase": "idle",
+      "round": 7,
+      "tile": 20,
+      "done": false,
+      "dead": false,
+      "bio": 1,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Liebesbrief-Desaster",
+      "seq": 1,
+      "opts": [
+        "Brief schnell verstecken+1 ❤️",
+        "⚠️ Ablenkungsmanöver starten+3 ❤️ · +2 🧠 · +2 👥 · ⚰️ Risiko 10%"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 8,
+      "tile": 24,
+      "done": false,
+      "dead": false,
+      "bio": 1,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Liebesbrief-Desaster",
+      "seq": 1,
+      "opts": [
+        "Brief schnell verstecken+1 ❤️",
+        "⚠️ Ablenkungsmanöver starten+3 ❤️ · +2 🧠 · +2 👥 · ⚰️ Risiko 10%"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 9,
+      "tile": 27,
+      "done": false,
+      "dead": false,
+      "bio": 2,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Der erste Schwarm",
+      "seq": 2,
+      "opts": [
+        "Einen Liebesbrief schreiben+3 ❤️ · -1 👥",
+        "Beste Freunde um Rat fragen+1 ❤️ · +2 👥",
+        "Nichts tun und abwarten-1 ❤️"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 10,
+      "tile": 33,
+      "done": false,
+      "dead": false,
+      "bio": 2,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Der erste Schwarm",
+      "seq": 2,
+      "opts": [
+        "Einen Liebesbrief schreiben+3 ❤️ · -1 👥",
+        "Beste Freunde um Rat fragen+1 ❤️ · +2 👥",
+        "Nichts tun und abwarten-1 ❤️"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 11,
+      "tile": 73,
+      "done": false,
+      "dead": false,
+      "bio": 2,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Der erste Schwarm",
+      "seq": 2,
+      "opts": [
+        "Einen Liebesbrief schreiben+3 ❤️ · -1 👥",
+        "Beste Freunde um Rat fragen+1 ❤️ · +2 👥",
+        "Nichts tun und abwarten-1 ❤️"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 12,
+      "tile": 79,
+      "done": false,
+      "dead": false,
+      "bio": 3,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "seq": 3,
+      "opts": [
+        "🤝 Ja, tauschen!−4 💰 · +2 ❤️",
+        "🙅 Nein dankealles bleibt, wie es ist"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 13,
+      "tile": 84,
+      "done": false,
+      "dead": false,
+      "bio": 3,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "seq": 3,
+      "opts": [
+        "🤝 Ja, tauschen!−4 💰 · +2 ❤️",
+        "🙅 Nein dankealles bleibt, wie es ist"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 14,
+      "tile": 87,
+      "done": false,
+      "dead": false,
+      "bio": 3,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "seq": 3,
+      "opts": [
+        "🤝 Ja, tauschen!−4 💰 · +2 ❤️",
+        "🙅 Nein dankealles bleibt, wie es ist"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 15,
+      "tile": 128,
+      "done": false,
+      "dead": false,
+      "bio": 4,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "💰 Die Rente verprassen",
+      "seq": 4,
+      "opts": [
+        "⚠️ Luxusauto kaufen-8 💰 · +6 ❤️ · +2 👥 · ⚰️ Risiko 5%",
+        "Extrem-Stricken lernen-1 💰 · +3 ❤️ · +3 🧠 · +1 👥"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 16,
+      "tile": 132,
+      "done": false,
+      "dead": false,
+      "bio": 4,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🛤️ Weltreise oder Schaukelstuhl?",
+      "seq": 5,
+      "opts": [
+        "🪑 Gemütlich bleibender kurze, vertraute Weg",
+        "🌍 Weltreise8 Felder · Erinnerungen fürs Leben · 🧾 kostet etwas"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 17,
+      "tile": 136,
+      "done": false,
+      "dead": false,
+      "bio": 4,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🛤️ Weltreise oder Schaukelstuhl?",
+      "seq": 5,
+      "opts": [
+        "🪑 Gemütlich bleibender kurze, vertraute Weg",
+        "🌍 Weltreise8 Felder · Erinnerungen fürs Leben · 🧾 kostet etwas"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 18,
+      "tile": 139,
+      "done": false,
+      "dead": false,
+      "bio": 5,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Das letzte Geständnis",
+      "seq": 6,
+      "opts": [
+        "Die Wahrheit sagen-2 💰 · +5 ❤️ · -3 👥",
+        "Schweigen bewahren-1 ❤️"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 19,
+      "tile": 142,
+      "done": false,
+      "dead": false,
+      "bio": 5,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Das letzte Geständnis",
+      "seq": 6,
+      "opts": [
+        "Die Wahrheit sagen-2 💰 · +5 ❤️ · -3 👥",
+        "Schweigen bewahren-1 ❤️"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "card": "❓ Wie nennt man das Kind einer Katze?",
+      "choice": "🅰 Welpe"
+    },
+    {
+      "card": "🛤️ Spielplatz oder Schulweg?",
+      "choice": "🎒 Schulwegdirekt und schnell — brav zur Schule"
+    },
+    {
+      "card": "🏁 Best-of-3-Sprint!",
+      "choice": "Weiter ▶"
+    },
+    {
+      "card": "❤️ Liebesbrief-Desaster",
+      "choice": "Brief schnell verstecken+1 ❤️"
+    },
+    {
+      "card": "❤️ Der erste Schwarm",
+      "choice": "Einen Liebesbrief schreiben+3 ❤️ · -1 👥"
+    },
+    {
+      "card": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "choice": "🤝 Ja, tauschen!−4 💰 · +2 ❤️"
+    },
+    {
+      "card": "💰 Die Rente verprassen",
+      "choice": "Extrem-Stricken lernen-1 💰 · +3 ❤️ · +3 🧠 · +1 👥"
+    },
+    {
+      "card": "🛤️ Weltreise oder Schaukelstuhl?",
+      "choice": "🪑 Gemütlich bleibender kurze, vertraute Weg"
+    },
+    {
+      "card": "❤️ Das letzte Geständnis",
+      "choice": "Die Wahrheit sagen-2 💰 · +5 ❤️ · -3 👥"
+    }
+  ],
+  "ended": true,
+  "final": {
+    "phase": "landed",
+    "round": 19,
+    "tile": 143,
+    "done": true,
+    "dead": false,
+    "bio": 6,
+    "end": true,
+    "roll": false,
+    "rad": false,
+    "card": false,
+    "title": "❤️ Das letzte Geständnis",
+    "seq": 6,
+    "opts": [
+      "Die Wahrheit sagen-2 💰 · +5 ❤️ · -3 👥",
+      "Schweigen bewahren-1 ❤️"
+    ]
+  }
+}

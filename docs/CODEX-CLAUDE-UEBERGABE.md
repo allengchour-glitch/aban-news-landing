@@ -1,5 +1,12 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Lebenspfad: Gestaltung, Lebensbuch und lokale Pause ·16.11.2026
+
+Benutzerauftrag: Lebenspfad verbessern; frühere Freigabe der Spiele-Veröffentlichung gilt. Kein Shop-/Social-/Kontoeingriff. Papierfarbene Oberfläche mit kompaktem Handy-Lebensbuch, tatsächlichem Routenfortschritt/Biografie, anpassbare alternde lokale Standardfiguren und Standhöhe auf Felddeckeln. Terrain und statische Instanzen räumlich geteilt, kompatible Brettteile gebündelt, Feldzeichen-Texturen geteilt; automatische Auflösung und gespeicherte Grafikprofile. Nachgestellter Pausenfehler korrigiert: lokales Menü/Lebensbuch halten Simulation, Drehrad, Quiz-Frist und Musik an, Online-Infos halten Lockstep nicht an.
+
+GEMESSEN: echter Solo-Kurzlauf19 Würfe/neun Kartenentscheidungen bis Feld143, Save/Reload identisch, Abschluss genau einmal und neues Leben bedienbar;18 Three-r128-Modulprüfgruppen und sieben Pause/Grafikprüfungen grün. Zweiclient-Lockstep-Replay16 Würfe/neun Entscheidungen/zwei Gabelungen mit26 gleichen Kontrollpunkten; keine echte PeerJS-/WebRTC-/NAT-Zusage. Cloud-Softwareprobe2,87→12,50rAF/s bei Renderverhältnis1→0,55, nicht als reale Handy-Leistung ausgeben. Details, Bilder, Testaufrufe und Grenzen: spiele-dev/lebenspfad/VERBESSERUNGEN.md. Lokale Shop-CI startet wegen schreibgeschütztem HOME nicht; keine Umgehung. PR-Prüfungen, Hauptseitenlauf und HTTPS-Quellenvergleich separat bestätigen, bevor Live-Erfolg gemeldet wird.
+
+
 ## Tempel der Zwei: Grafikdurchgang und Detailkorrekturen ·16.11.2026
 
 Auf Benutzerauftrag Grafik geprüft:20 Kammeransichten in fünf Formaten; Höhen von Figuren/Ringen, verdeckende Hinweise auf kleinen Handys, versunkene Schalterzeichen und durchgehbarer Wächtersockel bestätigt und korrigiert.40 Grafikbedingungen vorher20/nachher0 Fehlschläge,33 Koop- und22 Solo-/UI-Prüfungen erneut grün. Kreisförmiger Sockelkontakt mit echtem W nachgestellt; Siegesanimation bleibt über dem Podest. Cloud-Framezeiten und Zeichenaufwand unverändert, keine physische Handy-Zusage. Der geänderte Grafikloader trägt einen Inhalts-Hash wegen vorheriger vierstündiger Browsercachezeit. Details/Belege: spiele-dev/tempel-zwei/GRAFIK-CHECK.md. Lokale Shop-CI startet wegen schreibgeschütztem HOME nicht; keine Umgehung. Reale PR-Prüfung, Hauptseitenlauf und HTTPS-Nachweis separat. Kein Eingriff in Shop/Social/Secrets.

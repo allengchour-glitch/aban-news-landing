@@ -1,0 +1,383 @@
+/* Lebenspfad: Papier, Tinte und kleine goldene Wegmarken.
+   Sichtbarkeit bleibt bei .hide und der Spiellogik; keine externen Assets. */
+:root {
+  --lp-paper: #fffaf0;
+  --lp-page: #f2ebdb;
+  --lp-ink: #193f3d;
+  --lp-muted: #58675c;
+  --lp-line: #d7cbb1;
+  --lp-teal: #245d55;
+  --lp-coral: #b95942;
+  --lp-gold: #b88a37;
+  --lp-shadow: 0 12px 32px rgb(38 49 35 / 13%);
+}
+html, body { color: var(--lp-ink); font-family: "Trebuchet MS", system-ui, sans-serif; }
+button, input, summary { font: inherit; }
+button { min-width: 44px; min-height: 44px; touch-action: manipulation; }
+button, a, summary, input { -webkit-tap-highlight-color: rgb(36 93 85 / 14%); }
+button:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visible {
+  outline: 3px solid var(--lp-teal); outline-offset: 4px;
+}
+button:disabled { cursor: default; }
+input:not([type="checkbox"]) {
+  min-height: 44px; min-width: 0; max-width: 100%;
+  color: var(--lp-ink) !important; background: #fffdf7 !important;
+  border-radius: 10px !important; font-size: 16px !important;
+}
+input[type="checkbox"] { accent-color: var(--lp-teal) !important; flex-shrink: 0; }
+
+/* Die langen Menüs können vom ersten bis zum letzten Element scrollen. */
+.overlay {
+  background-color: var(--lp-page);
+  background-image: radial-gradient(ellipse at 0 0, rgb(103 136 103 / 13%), transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgb(196 146 77 / 13%), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 3px, rgb(95 75 38 / 2%) 3px 4px);
+  color: var(--lp-ink); padding: 40px 24px 28px;
+  padding-top: max(40px, env(safe-area-inset-top));
+  padding-bottom: max(28px, env(safe-area-inset-bottom));
+  overscroll-behavior: contain; scrollbar-color: #afa487 var(--lp-page);
+  scrollbar-width: thin; scroll-padding: 24px;
+}
+.overlay > * { flex-shrink: 0; max-width: 100%; }
+.overlay::before, .overlay::after { flex-basis: 0; }
+.overlay .kicker {
+  font-size: .68rem; letter-spacing: .19em; line-height: 1.65;
+  color: var(--lp-muted); font-weight: 700; margin-bottom: 12px;
+}
+.overlay h1 {
+  font-family: Georgia, "Times New Roman", serif; font-weight: 500;
+  font-size: clamp(2.5rem, 7vw, 5.25rem); letter-spacing: -.055em; line-height: 1.07;
+  color: var(--lp-ink); background: none; -webkit-text-fill-color: currentColor;
+  filter: none; text-shadow: none;
+}
+.overlay p { color: var(--lp-muted); max-width: 590px; font-size: .94rem; line-height: 1.7; }
+.overlay p b { color: var(--lp-ink); }
+.btn {
+  min-height: 48px; padding: 13px 24px; margin: 5px;
+  border: 1px solid #17483f; border-radius: 11px;
+  background: var(--lp-teal); color: #fffaf0; font-size: .95rem; font-weight: 800;
+  box-shadow: 0 3px 0 #173e38, 0 6px 16px rgb(25 63 61 / 10%);
+  transition: background .16s, box-shadow .16s;
+  white-space: normal; overflow-wrap: anywhere; line-height: 1.4;
+}
+.btn.ghost {
+  color: var(--lp-ink); background: rgb(255 250 240 / 80%);
+  border: 1px solid var(--lp-line); box-shadow: 0 2px 0 rgb(114 95 53 / 7%);
+  padding: 11px 18px; font-weight: 700; font-size: .84rem;
+}
+.btn:active { box-shadow: inset 0 2px 4px rgb(0 0 0 / 12%); }
+.foot { max-width: 650px; color: var(--lp-muted); font-size: .72rem; line-height: 1.6; }
+.foot a { color: var(--lp-teal); text-underline-offset: 3px; }
+
+/* Startseite: ein Buchdeckel, darunter die unveränderten Spieloptionen. */
+#start { padding-top: 52px; }
+#start > * { order: 3; }
+#start > .kicker { order: 0; }
+#start > h1 { order: 1; }
+#start > p { order: 2; }
+#start > #botRow { order: 4; }
+#start > #pselect { order: 5; }
+#start > #nameRow { order: 6; }
+#start > #startBtn { order: 7; }
+#start > #tutBtn { order: 8; }
+#start > #charRow { order: 9; }
+#start > label:not(#botRow) { order: 10; }
+#start > #netBox { order: 11; }
+#start > #contBtn { order: 7; }
+#start > div:has(> #syncBtn) { order: 13; }
+#start > .kicker { border-top: 1px solid var(--lp-gold); padding-top: 18px; }
+#start > p { margin: 16px 0 12px; }
+#start > div[style*="font-size:.85rem"] { color: var(--lp-muted) !important; margin: 12px 0 2px; }
+#start > #startStats { color: var(--lp-muted); font-size: .82rem; order: 14; }
+#start > .foot { order: 15; }
+#start > label, #botRow {
+  max-width: min(600px, 100%); background: rgb(255 250 240 / 80%) !important;
+  border: 1px solid var(--lp-line) !important; border-radius: 11px !important;
+  min-height: 44px; color: var(--lp-ink) !important; line-height: 1.5;
+}
+#start > label span { color: var(--lp-muted) !important; }
+.pselect { gap: 10px; margin: 10px 0 8px; }
+.pselect button {
+  width: 52px; height: 48px; border: 1px solid var(--lp-line);
+  background: var(--lp-paper); color: var(--lp-ink); border-radius: 11px;
+  box-shadow: 0 2px 0 #d8ccb2; font-size: 1.2rem;
+}
+.pselect button.on {
+  background: var(--lp-teal); border-color: var(--lp-teal); color: var(--lp-paper);
+  box-shadow: 0 3px 0 #173e38;
+}
+#nameRow { gap: 12px !important; }
+#nameRow input { border-width: 0 0 3px !important; box-shadow: 0 2px 8px rgb(65 54 26 / 5%); }
+#charRow { gap: 14px !important; max-width: 1060px; align-items: flex-start; }
+.charCard {
+  width: 238px; max-width: min(250px, 100%); padding: 14px 12px 12px;
+  background: var(--lp-paper); border-radius: 16px; gap: 8px;
+  border-width: 1px !important; border-top-width: 4px !important;
+  box-shadow: 0 4px 0 rgb(108 87 42 / 6%), var(--lp-shadow);
+}
+.charCard canvas {
+  background: #e8ecdc; border-radius: 50% 50% 12px 12px;
+  box-shadow: inset 0 0 0 1px rgb(37 83 69 / 8%);
+}
+.charCard .crow { gap: 7px; max-width: 100%; }
+.charCard .lbl { color: var(--lp-muted); font-size: .7rem; min-width: 94px; }
+.charCard button {
+  color: var(--lp-ink); border: 1px solid var(--lp-line); border-radius: 9px;
+  background-color: #fffdf7; font-size: .95rem; box-shadow: 0 2px 0 rgb(108 87 42 / 7%);
+}
+.charCard button.on {
+  border-color: var(--lp-teal); box-shadow: inset 0 0 0 1px var(--lp-teal); background-color: #e5edde;
+}
+.charCard .skin { min-width: 44px !important; min-height: 44px !important; }
+#netCharWrap .charCard { max-width: min(238px, 100%) !important; }
+#startBtn { min-width: min(300px, 100%); margin-top: 18px; }
+#tutBtn { color: var(--lp-teal); }
+#netBox, #syncPanel {
+  width: min(530px, 100%); max-width: 100% !important; padding: 20px !important;
+  border: 1px solid var(--lp-line) !important; border-radius: 16px !important;
+  background: rgb(255 250 240 / 88%); box-shadow: 0 5px 20px rgb(65 54 26 / 5%);
+}
+#netBox > div:first-child { color: var(--lp-teal) !important; font-family: Georgia, serif; font-size: 1.2rem; }
+#netSetup { gap: 10px !important; }
+#netInviteBtn, #netStartBtn { background: var(--lp-teal) !important; color: var(--lp-paper) !important; }
+#quickPlayBtn { background: #ece5d3 !important; color: var(--lp-ink) !important; border-color: var(--lp-line); box-shadow: 0 3px 0 #d3c8ae; }
+#netBox summary { min-height: 44px; padding: 12px 2px; color: var(--lp-teal) !important; }
+#netStatus, #netHint, #netConn, #syncStatus { color: var(--lp-muted) !important; line-height: 1.5; overflow-wrap: anywhere; }
+#netCodeShow { color: var(--lp-coral) !important; }
+
+/* Leichte Karten lassen die Landschaft zwischen den HUD-Inseln sichtbar. */
+#players { top: 14px; left: 14px; gap: 8px; max-width: min(290px, 29vw); }
+.pcard {
+  background: rgb(255 250 240 / 96%); border: 1px solid var(--lp-line); border-radius: 12px;
+  padding: 9px 11px; box-shadow: 0 3px 12px rgb(36 52 31 / 12%);
+}
+.pcard.on { border-color: var(--lp-teal); box-shadow: inset 3px 0 0 var(--lp-teal), 0 4px 16px rgb(36 52 31 / 17%); animation: none; }
+.pcard .nm { color: var(--lp-ink); font-size: .81rem; line-height: 1.5; }
+.pcard .st { gap: 4px; color: var(--lp-muted); }
+.pcard .st span { border-top: 0; border-right: 0; border-bottom: 0; background: #f2eedf; padding: 3px 5px; border-radius: 5px; }
+.pcard .st span b { color: var(--lp-ink); }
+.pcard .items span { background: #f2eedf; border-color: var(--lp-line); }
+#chapterTag { top: 14px; background: rgb(25 63 61 / 94%); border: 1px solid rgb(255 250 240 / 32%); border-radius: 10px; padding: 9px 20px; box-shadow: var(--lp-shadow); }
+#chapterTag b { font-family: Georgia, serif; font-weight: 500; font-size: 1.04rem; letter-spacing: .1em; text-shadow: none; }
+#chapterTag small { color: #e2d9b9; text-shadow: none; margin-top: 4px; }
+#turnTag { top: 82px; background: rgb(25 63 61 / 91%); color: var(--lp-paper); border-radius: 9px; padding: 7px 14px; font-weight: 700; text-shadow: none; }
+#turnTag small { color: #e2d9b9; line-height: 1.5; }
+#goalTag {
+  top: 138px !important; max-width: min(520px, 76vw) !important;
+  background: rgb(255 250 240 / 96%) !important; color: var(--lp-ink) !important;
+  border: 1px solid var(--lp-line); border-radius: 8px !important; padding: 6px 12px !important;
+  box-shadow: 0 2px 8px rgb(36 52 31 / 9%) !important;
+}
+#progMap {
+  bottom: 100px !important; width: min(520px, calc(100vw - 180px)) !important;
+  height: 22px !important; padding: 4px 8px; border-radius: 10px;
+  background: rgb(255 250 240 / 94%); box-shadow: 0 2px 10px rgb(36 52 31 / 15%);
+}
+#progSegs { opacity: 1 !important; height: 6px !important; }
+#rollBtn {
+  min-height: 54px; bottom: max(26px, env(safe-area-inset-bottom)); padding: 15px 38px;
+  color: var(--lp-paper); background: var(--lp-teal); border: 1px solid #173e38;
+  border-radius: 12px; box-shadow: 0 4px 0 #173e38, 0 8px 24px rgb(25 63 61 / 24%);
+  font-size: 1.08rem; letter-spacing: .01em;
+}
+#rollBtn:not(:disabled):not(.hide) { animation: lp-roll-ready 3s ease-in-out infinite; }
+@keyframes lp-roll-ready { 0%, 100% { outline: 3px solid transparent; } 50% { outline: 3px solid rgb(255 250 240 / 65%); } }
+#rollBtn:disabled { opacity: .65; }
+#menuBtn, #muteBtn, #chatBtn, #emoBtn, #chatToggle {
+  width: 46px !important; height: 46px !important; min-height: 46px;
+  border: 1px solid var(--lp-line) !important; background: rgb(255 250 240 / 97%) !important;
+  color: var(--lp-ink) !important; border-radius: 13px !important;
+  box-shadow: 0 3px 10px rgb(36 52 31 / 14%) !important;
+}
+#menuBtn { right: 68px !important; }
+#muteBtn { right: 14px !important; }
+#albumBadge { right: 122px !important; height: 44px; background: var(--lp-paper); color: var(--lp-ink); border: 1px solid var(--lp-line); box-shadow: none; }
+#albumBadge b { color: var(--lp-coral); }
+#hint { background: rgb(25 63 61 / 90%); color: var(--lp-paper); text-shadow: none; font-size: .9rem; border-radius: 9px; padding: 7px 12px; }
+#keysHelp { color: var(--lp-paper); background: rgb(25 63 61 / 80%); text-shadow: none; font-size: .66rem; }
+#lpvig { background: radial-gradient(ellipse at 50% 44%, transparent 48%, rgb(31 56 35 / 12%) 100%); }
+
+/* Echte Wegmarken und die letzte Biografiezeile, keine Zusatzwertung. */
+#journeyPanel {
+  position: fixed; left: 14px; bottom: 156px; z-index: 14;
+  width: min(260px, 25vw); max-height: min(220px, 31dvh); overflow-y: auto;
+  padding: 14px 15px; border: 1px solid var(--lp-line); border-top: 3px solid var(--lp-gold);
+  border-radius: 12px; background: rgb(255 250 240 / 96%); color: var(--lp-ink);
+  box-shadow: 0 4px 16px rgb(36 52 31 / 12%); pointer-events: auto;
+  overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #afa487 var(--lp-paper);
+  font-size: .76rem; line-height: 1.5; overflow-wrap: anywhere;
+}
+.journey-heading {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 7px;
+  color: var(--lp-ink); font-family: Georgia, serif; font-size: 1.1rem; font-weight: 500;
+}
+.journey-progress { color: var(--lp-teal); font-size: .72rem; font-weight: 800; line-height: 1.5; }
+.journey-next { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--lp-line); color: var(--lp-ink); font-size: .74rem; }
+.journey-last { margin-top: 7px; color: var(--lp-muted); font-size: .71rem; line-height: 1.55; }
+body:has(#netHud:not(.hide)) #journeyPanel { bottom: 248px; }
+
+/* Ereignisse, Regeln und Tutorial bleiben auch im Querformat erreichbar. */
+#card {
+  width: min(540px, calc(100vw - 28px)); max-height: calc(100dvh - 32px);
+  padding: 26px; background: var(--lp-paper); border: 1px solid var(--lp-line);
+  border-top: 4px solid var(--lp-gold); border-radius: 16px; box-shadow: 0 18px 64px rgb(26 44 30 / 28%);
+  overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #afa487 var(--lp-paper);
+}
+#card .kick { color: #8b6027; letter-spacing: .2em; font-size: .67rem; margin-bottom: 12px; }
+#card h3 { font-family: Georgia, serif; font-size: 1.5rem; font-weight: 500; color: var(--lp-ink); line-height: 1.25; margin-bottom: 12px; }
+#card .txt { color: #4d5b50; font-size: .93rem; line-height: 1.7; margin-bottom: 18px; }
+#card .opts { gap: 10px; }
+#card button {
+  min-height: 48px; padding: 12px 14px; border: 1px solid var(--lp-line); border-radius: 10px;
+  background: #fffdf7; color: var(--lp-ink); font-weight: 700; line-height: 1.45;
+  box-shadow: 0 2px 0 rgb(108 87 42 / 10%);
+}
+#card button small { color: #6d6149; font-size: .76rem; line-height: 1.5; }
+#card button.forkBtn { border-width: 1px; font-size: .96rem; }
+#menuO { background-color: #e9e6d8; }
+#menuO h1 { font-size: 2.7rem !important; }
+#menuO > #optRows { order: 2; }
+#menuO > .foot { order: 3; }
+#optRows { width: min(500px, 100%); min-width: 0 !important; gap: 10px !important; }
+#optRows > button {
+  background: var(--lp-paper) !important; color: var(--lp-ink) !important;
+  border: 1px solid var(--lp-line) !important; border-radius: 10px !important;
+  box-shadow: 0 2px 0 rgb(108 87 42 / 7%) !important; min-height: 48px;
+  gap: 12px; align-items: center; text-align: left; line-height: 1.45;
+}
+#optRows > button > span:last-child { flex-shrink: 0; font-size: .75rem; }
+#tutOv, #localInfoOv, #netPause, #miniOv { background: rgb(21 43 36 / 68%) !important; padding: 16px !important; overflow: auto; overscroll-behavior: contain; }
+#tutOv > div, #localInfoOv > div, #netPause > div, #miniOv > div {
+  background: var(--lp-paper) !important; border: 1px solid var(--lp-line) !important;
+  border-top: 4px solid var(--lp-gold) !important; border-radius: 16px !important;
+  max-height: calc(100dvh - 32px) !important; overflow: auto;
+  box-shadow: 0 16px 56px rgb(21 43 36 / 28%) !important;
+}
+#tutTitle, #liTitle { font-family: Georgia, serif; color: var(--lp-ink) !important; font-size: 1.4rem !important; font-weight: 500 !important; }
+#tutBody, #liBody { color: #4d5b50 !important; line-height: 1.7 !important; }
+#tutNext, #liClose { background: var(--lp-teal) !important; color: var(--lp-paper) !important; border-radius: 10px !important; }
+#tutSkip { color: var(--lp-muted) !important; }
+#meetPick { background: var(--lp-paper) !important; border-color: #c78e75 !important; max-height: calc(100dvh - 36px); overflow: auto; }
+
+/* Chat und Lebenschronik gehören zur gleichen Papierwelt. */
+#chatBox, #chatW { background: var(--lp-paper) !important; border: 1px solid var(--lp-line) !important; box-shadow: var(--lp-shadow) !important; }
+#chatW > div:first-child { background: #e8dfc6 !important; color: var(--lp-ink) !important; }
+#chatRow, #chatW > div:last-child { border-color: var(--lp-line) !important; }
+#chatIn, #omaIn { width: 0; min-width: 0; }
+#chatGo, #chatSend { background: var(--lp-teal) !important; color: var(--lp-paper) !important; }
+#chatMsgs b { color: var(--lp-coral); }
+#chatW { bottom: 88px !important; max-height: calc(100dvh - 108px); }
+#chatLog { min-height: 0; }
+#endO { padding-top: 34px; }
+#endO h1 { max-width: 740px; font-size: clamp(2.2rem, 6vw, 4.4rem); }
+#scores { max-width: 850px; gap: 12px; margin: 22px 0 12px; }
+.score { background: var(--lp-paper); border: 1px solid var(--lp-line); color: var(--lp-ink); border-radius: 12px; padding: 15px 20px; box-shadow: 0 3px 12px rgb(36 52 31 / 7%); line-height: 1.55; }
+.score.win { border-color: var(--lp-gold); box-shadow: inset 0 3px 0 var(--lp-gold), 0 3px 12px rgb(36 52 31 / 9%); }
+.score b { font-family: Georgia, serif; font-weight: 500; font-size: 1.5rem; }
+#bio { width: min(700px, 100%); max-width: 700px; max-height: 48dvh; color: #4d5b50; background: var(--lp-paper); border: 1px solid var(--lp-line); border-radius: 14px; padding: 22px 26px; box-shadow: var(--lp-shadow); line-height: 1.8; }
+#bio h4 { font-family: Georgia, serif; font-size: 1.1rem; color: var(--lp-ink); font-weight: 500; margin: 16px 0 8px; }
+.album { background: #ede5cf; border: 1px solid var(--lp-line); box-shadow: none; }
+
+@media (hover: hover) {
+  .btn:hover { background: #1b4b43; }
+  .btn.ghost:hover, .charCard button:hover, #card button:hover { background-color: #edf0e2; border-color: var(--lp-teal); }
+  #card button:hover { transform: none; }
+}
+@media (min-width: 1000px) {
+  #start {
+    display: grid; grid-template-columns: minmax(0, 540px) minmax(0, 350px);
+    column-gap: 48px; row-gap: 8px; justify-content: center;
+    align-items: start; align-content: start;
+  }
+  #start::before, #start::after { content: none; }
+  #start > * { grid-column: 1; justify-self: center; }
+  #start > .kicker { grid-column: 1 / -1; grid-row: 1; }
+  #start > h1 { grid-column: 1 / -1; grid-row: 2; }
+  #start > p { grid-column: 1 / -1; grid-row: 3; max-width: 660px; }
+  #start > #netBox { grid-column: 2; grid-row: 4 / span 11; margin-top: 12px !important; }
+  #start > #startStats { grid-column: 2; grid-row: 15; width: 100%; }
+  #start > .foot { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .overlay { padding: 30px 16px 24px; }
+  #start { padding-top: 38px; }
+  .overlay .kicker { font-size: .61rem; letter-spacing: .12em; max-width: 300px; }
+  .overlay h1 { font-size: clamp(2.3rem, 10.3vw, 3.5rem); }
+  .overlay p { font-size: .84rem; line-height: 1.65; }
+  #start > label { margin-left: 0 !important; font-size: .76rem !important; }
+  #charRow { gap: 10px !important; }
+  #netBox, #syncPanel { padding: 16px 12px !important; }
+  #netInviteBtn, #quickPlayBtn { max-width: 100% !important; font-size: .88rem !important; padding: 13px 12px !important; }
+  #players { top: 10px; left: 10px; max-width: 46vw; max-height: max(130px, calc(100dvh - 320px)); overflow-y: auto; pointer-events: auto; scrollbar-width: thin; }
+  .pcard { padding: 7px; font-size: .67rem; border-radius: 10px; }
+  .pcard .nm { font-size: .73rem; }
+  .pcard .st { gap: 4px; }
+  .pcard .st span { padding: 3px 4px; }
+  #chapterTag { top: 66px; right: 10px; left: auto; transform: none; max-width: 45vw; padding: 8px 10px; }
+  #chapterTag b { font-size: .78rem; letter-spacing: .04em; }
+  #chapterTag small { font-size: .62rem; line-height: 1.35; }
+  #turnTag { top: 146px !important; right: 10px; left: auto; transform: none; max-width: 45vw; padding: 7px 9px; font-size: .72rem; text-align: center; overflow: hidden; text-overflow: ellipsis; }
+  #goalTag { top: 200px !important; left: auto !important; right: 10px; transform: none !important; max-width: 45vw !important; font-size: .64rem !important; padding: 6px 8px !important; white-space: normal !important; line-height: 1.45; }
+  #albumBadge { top: 12px; right: 122px !important; padding: 0 8px; font-size: .75rem; }
+  #progMap { width: calc(100vw - 160px) !important; bottom: 98px !important; }
+  #rollBtn { min-height: 52px; bottom: max(24px, env(safe-area-inset-bottom)); padding: 14px 30px; font-size: 1rem; max-width: calc(100vw - 122px); }
+  #hint { bottom: 151px; font-size: .78rem; max-width: 74vw; }
+  #keysHelp { max-width: calc(100vw - 24px); width: calc(100vw - 24px); white-space: normal; text-align: center; font-size: .58rem; line-height: 1.3; padding: 2px 6px; bottom: 2px; }
+  #card { padding: 20px; }
+  #card h3 { font-size: 1.3rem; }
+  #card .txt { font-size: .86rem; }
+  #menuO h1 { font-size: 2.2rem !important; }
+  #menuO > div:has(> #resumeBtn) { display: flex; flex-wrap: wrap; justify-content: center; }
+  #bio { padding: 16px; font-size: .82rem; }
+  #endO h1 { font-size: 2.4rem; }
+  #journeyPanel { left: 10px; bottom: 152px; width: 43vw; max-height: min(148px, 23dvh); padding: 9px 10px; border-radius: 10px; }
+  .journey-heading { font-size: .92rem; margin-bottom: 5px; }
+  .journey-progress { font-size: .66rem; }
+  .journey-next { margin-top: 6px; padding-top: 6px; font-size: .67rem; }
+  .journey-last { font-size: .66rem; line-height: 1.45; }
+  body:has(#netHud:not(.hide)) #journeyPanel { left: auto; right: 10px; top: 250px; bottom: auto; }
+}
+@media (max-height: 480px) and (min-width: 641px) {
+  .overlay { padding: 22px 20px; }
+  .overlay h1 { font-size: 3rem; }
+  #start { padding-top: 28px; }
+  #players { top: 10px; left: 10px; max-width: 220px; max-height: calc(100dvh - 170px); overflow-y: auto; pointer-events: auto; scrollbar-width: thin; }
+  .pcard { padding: 6px 8px; font-size: .66rem; }
+  .pcard .nm { font-size: .72rem; }
+  #chapterTag { top: 10px; padding: 5px 14px; }
+  #turnTag { top: 64px; padding: 5px 12px; font-size: .74rem; }
+  #goalTag { top: 110px !important; max-width: 38vw !important; font-size: .65rem !important; }
+  #rollBtn { bottom: 18px; padding: 12px 25px; min-height: 48px; }
+  #progMap { bottom: 82px !important; width: min(340px, 42vw) !important; }
+  #hint { bottom: 112px; font-size: .75rem; max-width: 44vw; }
+  #keysHelp { bottom: 2px; font-size: .57rem; }
+  #card { padding: 16px 22px; width: min(600px, calc(100vw - 32px)); }
+  #card h3 { font-size: 1.25rem; }
+  #card .txt { margin-bottom: 10px; font-size: .84rem; }
+  #tutOv > div { padding: 16px !important; }
+  #tutEmo { font-size: 2rem !important; }
+  #bio { max-height: 52dvh; }
+  #journeyPanel { left: 10px; bottom: 30px; width: 210px; max-height: 122px; padding: 9px 11px; }
+  .journey-heading { font-size: .95rem; margin-bottom: 4px; }
+  .journey-next, .journey-last, .journey-progress { font-size: .67rem; }
+  body:has(#netHud:not(.hide)) #journeyPanel { bottom: 20px; max-height: 110px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+  #rollBtn:not(:disabled):not(.hide), .pcard.on, #card.on, #chatToggle.blink, #voiceBtn.on { animation: none; }
+  #card, .btn, .pcard { transition: none; }
+}
+
+.journey-open,.lp-graphics{min-height:44px;border:1px solid var(--lp-line);border-radius:8px;background:var(--lp-paper);color:var(--lp-teal);font:700 .76rem system-ui;padding:8px 11px;cursor:pointer}.journey-open{width:100%;margin-top:10px}.lp-graphics{font-size:.9rem;text-align:left}
+
+.lp-paused #qBar{transition:none!important}
+
+/* Kompakte Reise: Das Lebensbuch bleibt ohne Scrollen erreichbar. */
+@media (max-width: 640px), (max-height: 480px) {
+  #journeyPanel { max-height: none; overflow: visible; }
+  #journeyPanel .journey-next, #journeyPanel .journey-last { display: none; }
+  #journeyPanel .journey-heading { font-size: .82rem; margin-bottom: 4px; }
+  #journeyPanel .journey-progress { font-size: .62rem; }
+  #journeyPanel .journey-open { margin-top: 6px; padding: 6px 7px; font-size: .7rem; }
+  body:has(#netHud:not(.hide)) #journeyPanel { max-height: none; }
+}
