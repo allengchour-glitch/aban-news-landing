@@ -1,0 +1,8 @@
+{
+  "kind": "GEMESSEN: Vergleich mit belege-charakter/lockstep.json",
+  "checkpoints": 26,
+  "hashesIdentical": true,
+  "fullFinalIdentical": true,
+  "rngDraws": 31,
+  "finalSeed": 47926930
+}

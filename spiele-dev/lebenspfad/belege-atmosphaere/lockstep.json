@@ -1,0 +1,5934 @@
+{
+  "kind": "ONLINE LOCKSTEP REPLAY — NOT REAL NETWORK",
+  "status": "passed",
+  "base": "http://127.0.0.1:8185",
+  "seed": 2012073,
+  "measuredAt": "2026-11-16T17:47:40.813Z",
+  "limits": [
+    "Kein PeerJS, WebRTC, Signaling, TLS, Reconnect oder Paketverlust getestet.",
+    "Transport-Attrappen liefern geordnete Nachrichten; kein sync/resync erlaubt.",
+    "Kein vollständiger Spieldurchlauf; lokaler Pause-/UI-Test liegt außerhalb des Umfangs.",
+    "Nur G.t (Animationszeit) wird aus dem vollständigen Spielzustandsvergleich entfernt.",
+    "Drehrad wird über seinen vorhandenen Antipp-Handler beschleunigt."
+  ],
+  "actions": [
+    {
+      "order": 0,
+      "actor": 0,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 2012073
+    },
+    {
+      "order": 1,
+      "actor": 1,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 3760029635
+    },
+    {
+      "order": 2,
+      "actor": 0,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 3638633030
+    },
+    {
+      "order": 3,
+      "actor": 1,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 630255976
+    },
+    {
+      "order": 4,
+      "actor": 1,
+      "message": {
+        "t": "pick",
+        "k": 1,
+        "seq": 1
+      },
+      "seedBefore": 2015536551
+    },
+    {
+      "order": 5,
+      "actor": 1,
+      "message": {
+        "t": "pick",
+        "k": 1,
+        "seq": 2
+      },
+      "seedBefore": 1367402202
+    },
+    {
+      "order": 6,
+      "actor": 0,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 1367402202
+    },
+    {
+      "order": 7,
+      "actor": 1,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 2114905884
+    },
+    {
+      "order": 8,
+      "actor": 0,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 3964979886
+    },
+    {
+      "order": 9,
+      "actor": 0,
+      "message": {
+        "t": "pick",
+        "k": 0,
+        "seq": 3
+      },
+      "seedBefore": 3497824821
+    },
+    {
+      "order": 10,
+      "actor": 1,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 3157294608
+    },
+    {
+      "order": 11,
+      "actor": 0,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 4095812034
+    },
+    {
+      "order": 12,
+      "actor": 0,
+      "message": {
+        "t": "pick",
+        "k": 0,
+        "seq": 4
+      },
+      "seedBefore": 700525124
+    },
+    {
+      "order": 13,
+      "actor": 1,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 700525124
+    },
+    {
+      "order": 14,
+      "actor": 0,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 2649063446
+    },
+    {
+      "order": 15,
+      "actor": 0,
+      "message": {
+        "t": "pick",
+        "k": 0,
+        "seq": 5
+      },
+      "seedBefore": 1067933623
+    },
+    {
+      "order": 16,
+      "actor": 1,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 1067933623
+    },
+    {
+      "order": 17,
+      "actor": 1,
+      "message": {
+        "t": "pick",
+        "k": 1,
+        "seq": 6
+      },
+      "seedBefore": 3560709377
+    },
+    {
+      "order": 18,
+      "actor": 0,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 3560709377
+    },
+    {
+      "order": 19,
+      "actor": 0,
+      "message": {
+        "t": "pick",
+        "k": 0,
+        "seq": 7
+      },
+      "seedBefore": 1822665435
+    },
+    {
+      "order": 20,
+      "actor": 1,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 1822665435
+    },
+    {
+      "order": 21,
+      "actor": 1,
+      "message": {
+        "t": "pick",
+        "k": 1,
+        "seq": 8
+      },
+      "seedBefore": 3718948805
+    },
+    {
+      "order": 22,
+      "actor": 0,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 3718948805
+    },
+    {
+      "order": 23,
+      "actor": 1,
+      "message": {
+        "t": "roll"
+      },
+      "seedBefore": 3744396896
+    },
+    {
+      "order": 24,
+      "actor": 1,
+      "message": {
+        "t": "pick",
+        "k": 0,
+        "seq": 9
+      },
+      "seedBefore": 47926930
+    }
+  ],
+  "checkpoints": [
+    {
+      "label": "Online-Start: unterschiedliche Sitze, gleicher Seed",
+      "hash": "ef164a18155c75fcd5d738c910cfbc1059a8c963b73b20ac1ad607e03d8fa539",
+      "seed": 2012073,
+      "cardSeq": 0,
+      "turn": 0,
+      "round": 1,
+      "phase": "idle",
+      "tiles": [
+        0,
+        0
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 0,
+              "geld": 20,
+              "glueck": 10,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 0,
+              "geld": 20,
+              "glueck": 10,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ]
+            }
+          ],
+          "turn": 0,
+          "round": 1,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 2012073,
+        "cardSeq": 0,
+        "options": [],
+        "title": null,
+        "dice": [],
+        "draws": [],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 1: roll",
+      "hash": "4eaa80c1ea54da40da2104290f745e1aeae301072aec638087e7a27e00287c8b",
+      "seed": 3760029635,
+      "cardSeq": 0,
+      "turn": 1,
+      "round": 1,
+      "phase": "idle",
+      "tiles": [
+        1,
+        0
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 1,
+              "geld": 23,
+              "glueck": 10,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 0,
+              "geld": 20,
+              "glueck": 10,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            }
+          ],
+          "turn": 1,
+          "round": 1,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 3760029635,
+        "cardSeq": 0,
+        "options": [],
+        "title": null,
+        "dice": [
+          1
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 2: roll",
+      "hash": "04e7abf4c5d560f006b2c28e1775f858f48508144389dbb31182d611e645982f",
+      "seed": 3638633030,
+      "cardSeq": 0,
+      "turn": 0,
+      "round": 2,
+      "phase": "idle",
+      "tiles": [
+        1,
+        6
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 1,
+              "geld": 23,
+              "glueck": 10,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 6,
+              "geld": 18,
+              "glueck": 10,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            }
+          ],
+          "turn": 0,
+          "round": 2,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 3638633030,
+        "cardSeq": 0,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 3: roll",
+      "hash": "c86d7f6c8d716e99cd5d66cf1fe436a11d255e82e6d7d19c3f4b1a12725845d9",
+      "seed": 630255976,
+      "cardSeq": 0,
+      "turn": 1,
+      "round": 2,
+      "phase": "idle",
+      "tiles": [
+        3,
+        6
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 3,
+              "geld": 23,
+              "glueck": 12,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 6,
+              "geld": 18,
+              "glueck": 10,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            }
+          ],
+          "turn": 1,
+          "round": 2,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 630255976,
+        "cardSeq": 0,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 4: roll",
+      "hash": "e0ebf7d6cb5e357be66a02f2295046ab0dcf2e0218c00af2386c3c4cd35972af",
+      "seed": 2015536551,
+      "cardSeq": 1,
+      "turn": 1,
+      "round": 2,
+      "phase": "fork",
+      "tiles": [
+        3,
+        6
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 3,
+              "geld": 23,
+              "glueck": 12,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 6,
+              "geld": 18,
+              "glueck": 10,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            }
+          ],
+          "turn": 1,
+          "round": 2,
+          "phase": "fork",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 2015536551,
+        "cardSeq": 1,
+        "options": [
+          {
+            "k": 0,
+            "l": "🎒 Schulweg",
+            "sub": "direkt und schnell — brav zur Schule",
+            "hidden": false
+          },
+          {
+            "k": 1,
+            "l": "🛝 Spielplatz-Runde",
+            "sub": "7 bunte Felder · viel ❤️ & 👥 · ein bisschen länger",
+            "hidden": false
+          }
+        ],
+        "title": "🛤️ Spielplatz oder Schulweg?",
+        "dice": [
+          1,
+          6,
+          2,
+          3
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 3
+      }
+    },
+    {
+      "label": "Aktion 5: pick",
+      "hash": "551409b4fa10d59a9ad9a0f21ca1a54a80a9d76f8f5620a7fc73a55ebece35e5",
+      "seed": 1367402202,
+      "cardSeq": 2,
+      "turn": 1,
+      "round": 2,
+      "phase": "landed",
+      "tiles": [
+        3,
+        162
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 3,
+              "geld": 23,
+              "glueck": 12,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 162,
+              "geld": 18,
+              "glueck": 10,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 1,
+          "round": 2,
+          "phase": "landed",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 1367402202,
+        "cardSeq": 2,
+        "options": [
+          {
+            "k": 0,
+            "l": "Vorsichtig immer wieder daran wackeln",
+            "sub": "+2 ❤️",
+            "hidden": false
+          },
+          {
+            "k": 1,
+            "l": "Es erstmal niemandem erzählen",
+            "sub": "+1 ❤️ · -1 👥",
+            "hidden": false
+          }
+        ],
+        "title": "❤️ Der erste Wackelzahn",
+        "dice": [
+          1,
+          6,
+          2,
+          3
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 6: pick",
+      "hash": "16831b07b49e6daf316a227f14ac6e3d22b5aa16b48cfd2aa0149b8e92339cdf",
+      "seed": 1367402202,
+      "cardSeq": 2,
+      "turn": 0,
+      "round": 3,
+      "phase": "idle",
+      "tiles": [
+        3,
+        162
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 3,
+              "geld": 23,
+              "glueck": 12,
+              "wissen": 5,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 162,
+              "geld": 18,
+              "glueck": 11,
+              "wissen": 5,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 0,
+          "round": 3,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 1367402202,
+        "cardSeq": 2,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 7: roll",
+      "hash": "fbde339993939476bd25e2968a4c2122f0fb1bca9aea08658bda5c9ad76aa682",
+      "seed": 2114905884,
+      "cardSeq": 2,
+      "turn": 1,
+      "round": 3,
+      "phase": "idle",
+      "tiles": [
+        5,
+        162
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 5,
+              "geld": 23,
+              "glueck": 12,
+              "wissen": 7,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 162,
+              "geld": 18,
+              "glueck": 11,
+              "wissen": 5,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 1,
+          "round": 3,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 2114905884,
+        "cardSeq": 2,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 8: roll",
+      "hash": "20ad95572914a52441c9023a25636f2b7c43d87b4a41f7dfc33a7418fef836c7",
+      "seed": 3964979886,
+      "cardSeq": 2,
+      "turn": 0,
+      "round": 4,
+      "phase": "idle",
+      "tiles": [
+        5,
+        163
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 5,
+              "geld": 23,
+              "glueck": 12,
+              "wissen": 7,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 163,
+              "geld": 18,
+              "glueck": 13,
+              "wissen": 5,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 0,
+          "round": 4,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 3964979886,
+        "cardSeq": 2,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 9: roll",
+      "hash": "4dc1e9e44d0d7b7ebf2132f10d8e71510e3e42827c5b69feee60f5a330a0d91e",
+      "seed": 3497824821,
+      "cardSeq": 3,
+      "turn": 0,
+      "round": 4,
+      "phase": "fork",
+      "tiles": [
+        6,
+        163
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 6,
+              "geld": 23,
+              "glueck": 12,
+              "wissen": 7,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 163,
+              "geld": 18,
+              "glueck": 13,
+              "wissen": 5,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 0,
+          "round": 4,
+          "phase": "fork",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 3497824821,
+        "cardSeq": 3,
+        "options": [
+          {
+            "k": 0,
+            "l": "🎒 Schulweg",
+            "sub": "direkt und schnell — brav zur Schule",
+            "hidden": false
+          },
+          {
+            "k": 1,
+            "l": "🛝 Spielplatz-Runde",
+            "sub": "7 bunte Felder · viel ❤️ & 👥 · ein bisschen länger",
+            "hidden": false
+          }
+        ],
+        "title": "🛤️ Spielplatz oder Schulweg?",
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 4
+      }
+    },
+    {
+      "label": "Aktion 10: pick",
+      "hash": "e3eb3a19ae8df9cfd427210cc2dd74f0b93e4b4f3d30bc7b544c4739ce2ab5e0",
+      "seed": 3157294608,
+      "cardSeq": 3,
+      "turn": 1,
+      "round": 4,
+      "phase": "idle",
+      "tiles": [
+        10,
+        163
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 10,
+              "geld": 26,
+              "glueck": 12,
+              "wissen": 7,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 163,
+              "geld": 18,
+              "glueck": 13,
+              "wissen": 5,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 1,
+          "round": 4,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 3157294608,
+        "cardSeq": 3,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 11: roll",
+      "hash": "fff63e6f13de87a4fbdd8b24723ccedbd4b1cfc51676c698eea977190813e6c5",
+      "seed": 4095812034,
+      "cardSeq": 3,
+      "turn": 0,
+      "round": 5,
+      "phase": "idle",
+      "tiles": [
+        10,
+        166
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 10,
+              "geld": 26,
+              "glueck": 12,
+              "wissen": 7,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 166,
+              "geld": 18,
+              "glueck": 15,
+              "wissen": 5,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 0,
+          "round": 5,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 4095812034,
+        "cardSeq": 3,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 12: roll",
+      "hash": "f9e5d71cd6335a94db1e3a3db39800a28de65b77ebb3c62a334d7f218beb71a1",
+      "seed": 700525124,
+      "cardSeq": 4,
+      "turn": 0,
+      "round": 5,
+      "phase": "landed",
+      "tiles": [
+        11,
+        166
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 11,
+              "geld": 26,
+              "glueck": 12,
+              "wissen": 7,
+              "freunde": 5,
+              "bio": [],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 166,
+              "geld": 18,
+              "glueck": 15,
+              "wissen": 5,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 0,
+          "round": 5,
+          "phase": "landed",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 700525124,
+        "cardSeq": 4,
+        "options": [
+          {
+            "k": 0,
+            "l": "Augen zu und durch!",
+            "sub": "+3 ❤️ · +2 👥",
+            "hidden": false
+          },
+          {
+            "k": 1,
+            "l": "Lieber nicht, das ist zu hoch",
+            "sub": "-1 ❤️ · -1 👥",
+            "hidden": false
+          }
+        ],
+        "title": "❤️ Die erste Mutprobe",
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 13: pick",
+      "hash": "71fc67e4e8527c15b511471127515d849f8e63399dfc7dee94cf957041eab98e",
+      "seed": 700525124,
+      "cardSeq": 4,
+      "turn": 1,
+      "round": 5,
+      "phase": "idle",
+      "tiles": [
+        11,
+        166
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 11,
+              "geld": 26,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 7,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 166,
+              "geld": 18,
+              "glueck": 15,
+              "wissen": 5,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 1,
+          "round": 5,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 700525124,
+        "cardSeq": 4,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 14: roll",
+      "hash": "5665d88810a5996b4f29aae8f3a6f1a0c7e20f7b1fe7cf2ed6e7a9dead40fae7",
+      "seed": 2649063446,
+      "cardSeq": 4,
+      "turn": 0,
+      "round": 6,
+      "phase": "idle",
+      "tiles": [
+        11,
+        14
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 11,
+              "geld": 26,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 7,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 14,
+              "geld": 18,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 0,
+          "round": 6,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 2649063446,
+        "cardSeq": 4,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 15: roll",
+      "hash": "114b87823dea08d32be54f6873f659aa09cb0e6b06f9053a582615b2f131dd47",
+      "seed": 1067933623,
+      "cardSeq": 5,
+      "turn": 0,
+      "round": 6,
+      "phase": "landed",
+      "tiles": [
+        13,
+        14
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 13,
+              "geld": 28,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 7,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 14,
+              "geld": 18,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 0,
+          "round": 6,
+          "phase": "landed",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 1067933623,
+        "cardSeq": 5,
+        "options": [
+          {
+            "k": 0,
+            "l": "Weiter ▶",
+            "sub": "",
+            "hidden": false
+          }
+        ],
+        "title": "🏁 Auf die Plätze — fertig — los!",
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 16: pick",
+      "hash": "2cf5b2bd034a689b6d8f7af53d8145119f7acb3bb18ca3489a9629504486639c",
+      "seed": 1067933623,
+      "cardSeq": 5,
+      "turn": 1,
+      "round": 6,
+      "phase": "idle",
+      "tiles": [
+        13,
+        14
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 13,
+              "geld": 28,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 7,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 14,
+              "geld": 18,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ]
+              }
+            }
+          ],
+          "turn": 1,
+          "round": 6,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 1067933623,
+        "cardSeq": 5,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 17: roll",
+      "hash": "7fbda670fe9e9e38665e84af657592016cc69ad8548c512678c305183a93ee11",
+      "seed": 3560709377,
+      "cardSeq": 6,
+      "turn": 1,
+      "round": 6,
+      "phase": "landed",
+      "tiles": [
+        13,
+        18
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 13,
+              "geld": 28,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 7,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 18,
+              "geld": 18,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ],
+                "1": [
+                  21
+                ]
+              }
+            }
+          ],
+          "turn": 1,
+          "round": 6,
+          "phase": "landed",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 3560709377,
+        "cardSeq": 6,
+        "options": [
+          {
+            "k": 0,
+            "l": "Selbst die Führung übernehmen",
+            "sub": "+3 ❤️ · +2 🧠",
+            "hidden": false
+          },
+          {
+            "k": 1,
+            "l": "Warten, bis der Lehrer eine Lösung findet",
+            "sub": "-1 ❤️",
+            "hidden": false
+          }
+        ],
+        "title": "❤️ Wandertag-Panne",
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2,
+          4
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          },
+          {
+            "seed": 2163259818,
+            "value": 0.5036731758154929
+          },
+          {
+            "seed": 3560709377,
+            "value": 0.8290422561112791
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 18: pick",
+      "hash": "bb1275a281038cde63d2db305ec1e8f40e9b9e175583756bbe9cb2bbb955e650",
+      "seed": 3560709377,
+      "cardSeq": 6,
+      "turn": 0,
+      "round": 7,
+      "phase": "idle",
+      "tiles": [
+        13,
+        18
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 13,
+              "geld": 28,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 7,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie."
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 18,
+              "geld": 18,
+              "glueck": 14,
+              "wissen": 7,
+              "freunde": 4,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich.",
+                "ihr wartet lange, es war kalt"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ],
+                "1": [
+                  21
+                ]
+              }
+            }
+          ],
+          "turn": 0,
+          "round": 7,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 3560709377,
+        "cardSeq": 6,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2,
+          4
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          },
+          {
+            "seed": 2163259818,
+            "value": 0.5036731758154929
+          },
+          {
+            "seed": 3560709377,
+            "value": 0.8290422561112791
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 19: roll",
+      "hash": "86b3d83af1f6ded6f15e5f0f731a579b2e0778886964f94b8d9477ff9e18b352",
+      "seed": 1822665435,
+      "cardSeq": 7,
+      "turn": 0,
+      "round": 7,
+      "phase": "landed",
+      "tiles": [
+        18,
+        18
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 18,
+              "geld": 28,
+              "glueck": 17,
+              "wissen": 7,
+              "freunde": 9,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie.",
+                "traf Replay B am Wegesrand — ein Tag voller Lachen"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ],
+                "1": [
+                  11
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 18,
+              "geld": 18,
+              "glueck": 16,
+              "wissen": 7,
+              "freunde": 6,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich.",
+                "ihr wartet lange, es war kalt"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  8
+                ],
+                "1": [
+                  21
+                ]
+              }
+            }
+          ],
+          "turn": 0,
+          "round": 7,
+          "phase": "landed",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 1822665435,
+        "cardSeq": 7,
+        "options": [
+          {
+            "k": 0,
+            "l": "Den Ball einfach nehmen",
+            "sub": "-2 ❤️ · -3 👥",
+            "hidden": false
+          },
+          {
+            "k": 1,
+            "l": "Vorschlagen, ihn zu teilen",
+            "sub": "+2 ❤️ · +3 👥",
+            "hidden": false
+          },
+          {
+            "k": 2,
+            "l": "Auf den Ball verzichten",
+            "sub": "-1 ❤️ · +1 👥",
+            "hidden": false
+          }
+        ],
+        "title": "👥 Streit um ein Spielzeug",
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2,
+          4,
+          5
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          },
+          {
+            "seed": 2163259818,
+            "value": 0.5036731758154929
+          },
+          {
+            "seed": 3560709377,
+            "value": 0.8290422561112791
+          },
+          {
+            "seed": 3424899692,
+            "value": 0.7974215997382998
+          },
+          {
+            "seed": 1822665435,
+            "value": 0.4243723663967103
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 20: pick",
+      "hash": "61da550fea19a58001e884b3cd9a3e2597561c87a4ed6ad9701b889294993cd4",
+      "seed": 1822665435,
+      "cardSeq": 7,
+      "turn": 1,
+      "round": 7,
+      "phase": "idle",
+      "tiles": [
+        18,
+        18
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 18,
+              "geld": 28,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 6,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie.",
+                "traf Replay B am Wegesrand — ein Tag voller Lachen",
+                "nahm den Ball an sich"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ],
+                "1": [
+                  11
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 18,
+              "geld": 18,
+              "glueck": 16,
+              "wissen": 7,
+              "freunde": 6,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich.",
+                "ihr wartet lange, es war kalt"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  8
+                ],
+                "1": [
+                  21
+                ]
+              }
+            }
+          ],
+          "turn": 1,
+          "round": 7,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          }
+        },
+        "seed": 1822665435,
+        "cardSeq": 7,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2,
+          4,
+          5
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          },
+          {
+            "seed": 2163259818,
+            "value": 0.5036731758154929
+          },
+          {
+            "seed": 3560709377,
+            "value": 0.8290422561112791
+          },
+          {
+            "seed": 3424899692,
+            "value": 0.7974215997382998
+          },
+          {
+            "seed": 1822665435,
+            "value": 0.4243723663967103
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 21: roll",
+      "hash": "87c521432572a684cf662e8a6c2c4ae537d56424c2a133e6d52255a9aeb101cd",
+      "seed": 3718948805,
+      "cardSeq": 8,
+      "turn": 1,
+      "round": 7,
+      "phase": "landed",
+      "tiles": [
+        18,
+        22
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 18,
+              "geld": 28,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 6,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie.",
+                "traf Replay B am Wegesrand — ein Tag voller Lachen",
+                "nahm den Ball an sich"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 0,
+              "used": {
+                "0": [
+                  4
+                ],
+                "1": [
+                  11
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 22,
+              "geld": 18,
+              "glueck": 16,
+              "wissen": 7,
+              "freunde": 6,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich.",
+                "ihr wartet lange, es war kalt"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  8
+                ],
+                "1": [
+                  21
+                ]
+              }
+            }
+          ],
+          "turn": 1,
+          "round": 7,
+          "phase": "landed",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          },
+          "quizU": [
+            51
+          ]
+        },
+        "seed": 3718948805,
+        "cardSeq": 8,
+        "options": [
+          {
+            "k": 0,
+            "l": "🅰 Schall",
+            "sub": "",
+            "hidden": false
+          },
+          {
+            "k": 1,
+            "l": "🅱 Licht",
+            "sub": "",
+            "hidden": false
+          },
+          {
+            "k": 2,
+            "l": "🅲 Wind",
+            "sub": "",
+            "hidden": false
+          },
+          {
+            "k": 3,
+            "l": "",
+            "sub": "",
+            "hidden": true
+          }
+        ],
+        "title": "❓ Was ist schneller?",
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2,
+          4,
+          5,
+          4
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          },
+          {
+            "seed": 2163259818,
+            "value": 0.5036731758154929
+          },
+          {
+            "seed": 3560709377,
+            "value": 0.8290422561112791
+          },
+          {
+            "seed": 3424899692,
+            "value": 0.7974215997382998
+          },
+          {
+            "seed": 1822665435,
+            "value": 0.4243723663967103
+          },
+          {
+            "seed": 2788483710,
+            "value": 0.6492444570176303
+          },
+          {
+            "seed": 3718948805,
+            "value": 0.8658852439839393
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 22: pick",
+      "hash": "0fccb8f2fbd421af274ad87fb1a475b4e8dcee4390925d8539c09ba1117bc697",
+      "seed": 3718948805,
+      "cardSeq": 8,
+      "turn": 0,
+      "round": 8,
+      "phase": "idle",
+      "tiles": [
+        18,
+        22
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 18,
+              "geld": 28,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 6,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie.",
+                "traf Replay B am Wegesrand — ein Tag voller Lachen",
+                "nahm den Ball an sich"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  4
+                ],
+                "1": [
+                  11
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 22,
+              "geld": 20,
+              "glueck": 16,
+              "wissen": 9,
+              "freunde": 6,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich.",
+                "ihr wartet lange, es war kalt",
+                "glänzte beim großen Quiz"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  8
+                ],
+                "1": [
+                  21
+                ]
+              },
+              "quizStreak": 1
+            }
+          ],
+          "turn": 0,
+          "round": 8,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          },
+          "quizU": [
+            51
+          ]
+        },
+        "seed": 3718948805,
+        "cardSeq": 8,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2,
+          4,
+          5,
+          4
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          },
+          {
+            "seed": 2163259818,
+            "value": 0.5036731758154929
+          },
+          {
+            "seed": 3560709377,
+            "value": 0.8290422561112791
+          },
+          {
+            "seed": 3424899692,
+            "value": 0.7974215997382998
+          },
+          {
+            "seed": 1822665435,
+            "value": 0.4243723663967103
+          },
+          {
+            "seed": 2788483710,
+            "value": 0.6492444570176303
+          },
+          {
+            "seed": 3718948805,
+            "value": 0.8658852439839393
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 23: roll",
+      "hash": "ec8b01713b86ff5e654b39858224660d6fec5cc05a84f7881268f905f7617b60",
+      "seed": 3744396896,
+      "cardSeq": 8,
+      "turn": 1,
+      "round": 8,
+      "phase": "idle",
+      "tiles": [
+        24,
+        22
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 24,
+              "geld": 25,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 6,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie.",
+                "traf Replay B am Wegesrand — ein Tag voller Lachen",
+                "nahm den Ball an sich"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  4
+                ],
+                "1": [
+                  11
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 22,
+              "geld": 20,
+              "glueck": 16,
+              "wissen": 9,
+              "freunde": 6,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich.",
+                "ihr wartet lange, es war kalt",
+                "glänzte beim großen Quiz"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  8
+                ],
+                "1": [
+                  21
+                ]
+              },
+              "quizStreak": 1
+            }
+          ],
+          "turn": 1,
+          "round": 8,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          },
+          "quizU": [
+            51
+          ]
+        },
+        "seed": 3744396896,
+        "cardSeq": 8,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2,
+          4,
+          5,
+          4,
+          6
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          },
+          {
+            "seed": 2163259818,
+            "value": 0.5036731758154929
+          },
+          {
+            "seed": 3560709377,
+            "value": 0.8290422561112791
+          },
+          {
+            "seed": 3424899692,
+            "value": 0.7974215997382998
+          },
+          {
+            "seed": 1822665435,
+            "value": 0.4243723663967103
+          },
+          {
+            "seed": 2788483710,
+            "value": 0.6492444570176303
+          },
+          {
+            "seed": 3718948805,
+            "value": 0.8658852439839393
+          },
+          {
+            "seed": 3744396896,
+            "value": 0.8718103393912315
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Aktion 24: roll",
+      "hash": "b4172920478f1ffc43395ebb1ee8dc03a38a18be493809af3e6ebee811e8a113",
+      "seed": 47926930,
+      "cardSeq": 9,
+      "turn": 1,
+      "round": 8,
+      "phase": "landed",
+      "tiles": [
+        24,
+        25
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 24,
+              "geld": 25,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 6,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie.",
+                "traf Replay B am Wegesrand — ein Tag voller Lachen",
+                "nahm den Ball an sich"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  4
+                ],
+                "1": [
+                  11
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 25,
+              "geld": 20,
+              "glueck": 16,
+              "wissen": 9,
+              "freunde": 6,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich.",
+                "ihr wartet lange, es war kalt",
+                "glänzte beim großen Quiz"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  8
+                ],
+                "1": [
+                  21,
+                  0
+                ]
+              },
+              "quizStreak": 1
+            }
+          ],
+          "turn": 1,
+          "round": 8,
+          "phase": "landed",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          },
+          "quizU": [
+            51
+          ]
+        },
+        "seed": 47926930,
+        "cardSeq": 9,
+        "options": [
+          {
+            "k": 0,
+            "l": "Sofort nachsitzen und lernen",
+            "sub": "-2 ❤️ · +4 🧠",
+            "hidden": false
+          },
+          {
+            "k": 1,
+            "l": "Mit einem Freund abschreiben",
+            "sub": "+3 ❤️ · -2 🧠 · +2 👥",
+            "hidden": false
+          },
+          {
+            "k": 2,
+            "l": "Elternbrief fälschen",
+            "sub": "-5 ❤️",
+            "hidden": false
+          }
+        ],
+        "title": "❤️ Die erste 5",
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2,
+          4,
+          5,
+          4,
+          6,
+          3
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          },
+          {
+            "seed": 2163259818,
+            "value": 0.5036731758154929
+          },
+          {
+            "seed": 3560709377,
+            "value": 0.8290422561112791
+          },
+          {
+            "seed": 3424899692,
+            "value": 0.7974215997382998
+          },
+          {
+            "seed": 1822665435,
+            "value": 0.4243723663967103
+          },
+          {
+            "seed": 2788483710,
+            "value": 0.6492444570176303
+          },
+          {
+            "seed": 3718948805,
+            "value": 0.8658852439839393
+          },
+          {
+            "seed": 3744396896,
+            "value": 0.8718103393912315
+          },
+          {
+            "seed": 1465628223,
+            "value": 0.34124316251836717
+          },
+          {
+            "seed": 47926930,
+            "value": 0.011158857960253954
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    },
+    {
+      "label": "Offene Karte abgeschlossen",
+      "hash": "4a5231bdbfc56b3c57f073f1138435f38850365ed6714cdf823c9242b393813a",
+      "seed": 47926930,
+      "cardSeq": 9,
+      "turn": 0,
+      "round": 9,
+      "phase": "idle",
+      "tiles": [
+        24,
+        25
+      ],
+      "state": {
+        "state": {
+          "v": 4,
+          "mode": "voll",
+          "adult": false,
+          "players": [
+            {
+              "name": "Replay A",
+              "col": 16735613,
+              "tile": 24,
+              "geld": 25,
+              "glueck": 15,
+              "wissen": 7,
+              "freunde": 6,
+              "bio": [
+                "nahm die Herausforderung an und schaukelte so hoch wie noch nie.",
+                "traf Replay B am Wegesrand — ein Tag voller Lachen",
+                "nahm den Ball an sich"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🎒 Schulweg",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  4
+                ],
+                "1": [
+                  11
+                ]
+              }
+            },
+            {
+              "name": "Replay B",
+              "col": 6203647,
+              "tile": 25,
+              "geld": 20,
+              "glueck": 14,
+              "wissen": 13,
+              "freunde": 6,
+              "bio": [
+                "behielt das Geheimnis des Wackelzahns erst einmal für sich.",
+                "ihr wartet lange, es war kalt",
+                "glänzte beim großen Quiz",
+                "lernte fleißig nach und verbesserte sich"
+              ],
+              "alive": true,
+              "done": false,
+              "fam": {
+                "partner": false,
+                "kids": 0,
+                "askedK": false
+              },
+              "items": {},
+              "album": [
+                {
+                  "ic": "🧭",
+                  "cap": "🛝 Spielplatz-Runde",
+                  "ch": 0,
+                  "age": "Kind",
+                  "rot": -4.5
+                },
+                {
+                  "ic": "🎒",
+                  "cap": "Schulzeit",
+                  "ch": 1,
+                  "age": "Teenager",
+                  "rot": 3.6
+                }
+              ],
+              "hist": [
+                {
+                  "g": 20,
+                  "h": 10,
+                  "w": 5,
+                  "f": 5
+                }
+              ],
+              "_chSeen": 1,
+              "used": {
+                "0": [
+                  8
+                ],
+                "1": [
+                  21,
+                  0
+                ]
+              },
+              "quizStreak": 1
+            }
+          ],
+          "turn": 0,
+          "round": 9,
+          "phase": "idle",
+          "goal": {
+            "k": "geld",
+            "n": 30,
+            "ic": "💰",
+            "label": "Sammle 30 Geld"
+          },
+          "quizU": [
+            51
+          ]
+        },
+        "seed": 47926930,
+        "cardSeq": 9,
+        "options": [],
+        "title": null,
+        "dice": [
+          1,
+          6,
+          2,
+          3,
+          2,
+          1,
+          5,
+          3,
+          1,
+          3,
+          2,
+          4,
+          5,
+          4,
+          6,
+          3
+        ],
+        "draws": [
+          {
+            "seed": 85223668,
+            "value": 0.019842681474983692
+          },
+          {
+            "seed": 3760029635,
+            "value": 0.8754501200746745
+          },
+          {
+            "seed": 3638633030,
+            "value": 0.8471852703951299
+          },
+          {
+            "seed": 1281070317,
+            "value": 0.2982724264729768
+          },
+          {
+            "seed": 630255976,
+            "value": 0.1467429045587778
+          },
+          {
+            "seed": 2015536551,
+            "value": 0.46927867247723043
+          },
+          {
+            "seed": 1367402202,
+            "value": 0.31837313482537866
+          },
+          {
+            "seed": 1195346033,
+            "value": 0.2783131862524897
+          },
+          {
+            "seed": 2114905884,
+            "value": 0.49241489823907614
+          },
+          {
+            "seed": 620877771,
+            "value": 0.14455937105230987
+          },
+          {
+            "seed": 3964979886,
+            "value": 0.9231688189320266
+          },
+          {
+            "seed": 3497824821,
+            "value": 0.8144008044619113
+          },
+          {
+            "seed": 3157294608,
+            "value": 0.735114935785532
+          },
+          {
+            "seed": 1823455791,
+            "value": 0.424556385492906
+          },
+          {
+            "seed": 4095812034,
+            "value": 0.953630552161485
+          },
+          {
+            "seed": 562230841,
+            "value": 0.13090456859208643
+          },
+          {
+            "seed": 700525124,
+            "value": 0.16310371551662683
+          },
+          {
+            "seed": 1924739283,
+            "value": 0.44813828612677753
+          },
+          {
+            "seed": 2649063446,
+            "value": 0.6167831472121179
+          },
+          {
+            "seed": 876951677,
+            "value": 0.20418122340925038
+          },
+          {
+            "seed": 4238974904,
+            "value": 0.9869632553309202
+          },
+          {
+            "seed": 1067933623,
+            "value": 0.24864767282269895
+          },
+          {
+            "seed": 2163259818,
+            "value": 0.5036731758154929
+          },
+          {
+            "seed": 3560709377,
+            "value": 0.8290422561112791
+          },
+          {
+            "seed": 3424899692,
+            "value": 0.7974215997382998
+          },
+          {
+            "seed": 1822665435,
+            "value": 0.4243723663967103
+          },
+          {
+            "seed": 2788483710,
+            "value": 0.6492444570176303
+          },
+          {
+            "seed": 3718948805,
+            "value": 0.8658852439839393
+          },
+          {
+            "seed": 3744396896,
+            "value": 0.8718103393912315
+          },
+          {
+            "seed": 1465628223,
+            "value": 0.34124316251836717
+          },
+          {
+            "seed": 47926930,
+            "value": 0.011158857960253954
+          }
+        ],
+        "queue": [],
+        "forkSel": null,
+        "moveQ": 0
+      }
+    }
+  ],
+  "overlays": [
+    {
+      "client": 1,
+      "kind": "rules",
+      "phase": "idle",
+      "seed": 2012073,
+      "cardSeq": 0,
+      "simulationAdvanced": true,
+      "continuedAction": true
+    },
+    {
+      "client": 0,
+      "kind": "book",
+      "phase": "idle",
+      "seed": 3760029635,
+      "cardSeq": 0,
+      "simulationAdvanced": true,
+      "continuedAction": true
+    },
+    {
+      "client": 0,
+      "kind": "rules",
+      "phase": "fork",
+      "seed": 2015536551,
+      "cardSeq": 1,
+      "simulationAdvanced": true,
+      "continuedAction": true
+    },
+    {
+      "client": 0,
+      "kind": "book",
+      "phase": "landed",
+      "seed": 1367402202,
+      "cardSeq": 2,
+      "simulationAdvanced": true,
+      "continuedAction": true
+    }
+  ],
+  "errors": [],
+  "counts": {
+    "roll": 16,
+    "pick": 9,
+    "fork": 2
+  },
+  "sourceHash": "ced2a125bbc249e26bf933f8f8d75e9b3358386cc878c21e524b4adc99dfe6ae",
+  "sourcePolicy": "Beide Clients erhalten dieselbe zu Laufbeginn geladene HTML-Antwort.",
+  "headers": {
+    "x-content-type-options": "nosniff",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+    "x-xss-protection": "1; mode=block",
+    "x-permitted-cross-domain-policies": "none",
+    "cross-origin-resource-policy": "same-site",
+    "cache-control": "public, max-age=300, must-revalidate",
+    "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' blob: https://0.peerjs.com wss://0.peerjs.com https://peerjs.92k.de wss://peerjs.92k.de https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'",
+    "x-frame-options": "DENY",
+    "permissions-policy": "camera=(), microphone=(self), geolocation=(), interest-cohort=()",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Mon, 16 Nov 2026 17:47:41 GMT",
+    "connection": "keep-alive",
+    "keep-alive": "timeout=5",
+    "transfer-encoding": "chunked"
+  },
+  "comparatorCanaries": [
+    "RNG-Seed",
+    "cardSeq",
+    "Spieler-Geld"
+  ],
+  "rngDraws": 31,
+  "final": {
+    "state": {
+      "v": 4,
+      "mode": "voll",
+      "adult": false,
+      "players": [
+        {
+          "name": "Replay A",
+          "col": 16735613,
+          "tile": 24,
+          "geld": 25,
+          "glueck": 15,
+          "wissen": 7,
+          "freunde": 6,
+          "bio": [
+            "nahm die Herausforderung an und schaukelte so hoch wie noch nie.",
+            "traf Replay B am Wegesrand — ein Tag voller Lachen",
+            "nahm den Ball an sich"
+          ],
+          "alive": true,
+          "done": false,
+          "fam": {
+            "partner": false,
+            "kids": 0,
+            "askedK": false
+          },
+          "items": {},
+          "album": [
+            {
+              "ic": "🧭",
+              "cap": "🎒 Schulweg",
+              "ch": 0,
+              "age": "Kind",
+              "rot": -4.5
+            },
+            {
+              "ic": "🎒",
+              "cap": "Schulzeit",
+              "ch": 1,
+              "age": "Teenager",
+              "rot": 3.6
+            }
+          ],
+          "hist": [
+            {
+              "g": 20,
+              "h": 10,
+              "w": 5,
+              "f": 5
+            }
+          ],
+          "_chSeen": 1,
+          "used": {
+            "0": [
+              4
+            ],
+            "1": [
+              11
+            ]
+          }
+        },
+        {
+          "name": "Replay B",
+          "col": 6203647,
+          "tile": 25,
+          "geld": 20,
+          "glueck": 14,
+          "wissen": 13,
+          "freunde": 6,
+          "bio": [
+            "behielt das Geheimnis des Wackelzahns erst einmal für sich.",
+            "ihr wartet lange, es war kalt",
+            "glänzte beim großen Quiz",
+            "lernte fleißig nach und verbesserte sich"
+          ],
+          "alive": true,
+          "done": false,
+          "fam": {
+            "partner": false,
+            "kids": 0,
+            "askedK": false
+          },
+          "items": {},
+          "album": [
+            {
+              "ic": "🧭",
+              "cap": "🛝 Spielplatz-Runde",
+              "ch": 0,
+              "age": "Kind",
+              "rot": -4.5
+            },
+            {
+              "ic": "🎒",
+              "cap": "Schulzeit",
+              "ch": 1,
+              "age": "Teenager",
+              "rot": 3.6
+            }
+          ],
+          "hist": [
+            {
+              "g": 20,
+              "h": 10,
+              "w": 5,
+              "f": 5
+            }
+          ],
+          "_chSeen": 1,
+          "used": {
+            "0": [
+              8
+            ],
+            "1": [
+              21,
+              0
+            ]
+          },
+          "quizStreak": 1
+        }
+      ],
+      "turn": 0,
+      "round": 9,
+      "phase": "idle",
+      "goal": {
+        "k": "geld",
+        "n": 30,
+        "ic": "💰",
+        "label": "Sammle 30 Geld"
+      },
+      "quizU": [
+        51
+      ]
+    },
+    "seed": 47926930,
+    "cardSeq": 9,
+    "options": [],
+    "title": null,
+    "dice": [
+      1,
+      6,
+      2,
+      3,
+      2,
+      1,
+      5,
+      3,
+      1,
+      3,
+      2,
+      4,
+      5,
+      4,
+      6,
+      3
+    ],
+    "draws": [
+      {
+        "seed": 85223668,
+        "value": 0.019842681474983692
+      },
+      {
+        "seed": 3760029635,
+        "value": 0.8754501200746745
+      },
+      {
+        "seed": 3638633030,
+        "value": 0.8471852703951299
+      },
+      {
+        "seed": 1281070317,
+        "value": 0.2982724264729768
+      },
+      {
+        "seed": 630255976,
+        "value": 0.1467429045587778
+      },
+      {
+        "seed": 2015536551,
+        "value": 0.46927867247723043
+      },
+      {
+        "seed": 1367402202,
+        "value": 0.31837313482537866
+      },
+      {
+        "seed": 1195346033,
+        "value": 0.2783131862524897
+      },
+      {
+        "seed": 2114905884,
+        "value": 0.49241489823907614
+      },
+      {
+        "seed": 620877771,
+        "value": 0.14455937105230987
+      },
+      {
+        "seed": 3964979886,
+        "value": 0.9231688189320266
+      },
+      {
+        "seed": 3497824821,
+        "value": 0.8144008044619113
+      },
+      {
+        "seed": 3157294608,
+        "value": 0.735114935785532
+      },
+      {
+        "seed": 1823455791,
+        "value": 0.424556385492906
+      },
+      {
+        "seed": 4095812034,
+        "value": 0.953630552161485
+      },
+      {
+        "seed": 562230841,
+        "value": 0.13090456859208643
+      },
+      {
+        "seed": 700525124,
+        "value": 0.16310371551662683
+      },
+      {
+        "seed": 1924739283,
+        "value": 0.44813828612677753
+      },
+      {
+        "seed": 2649063446,
+        "value": 0.6167831472121179
+      },
+      {
+        "seed": 876951677,
+        "value": 0.20418122340925038
+      },
+      {
+        "seed": 4238974904,
+        "value": 0.9869632553309202
+      },
+      {
+        "seed": 1067933623,
+        "value": 0.24864767282269895
+      },
+      {
+        "seed": 2163259818,
+        "value": 0.5036731758154929
+      },
+      {
+        "seed": 3560709377,
+        "value": 0.8290422561112791
+      },
+      {
+        "seed": 3424899692,
+        "value": 0.7974215997382998
+      },
+      {
+        "seed": 1822665435,
+        "value": 0.4243723663967103
+      },
+      {
+        "seed": 2788483710,
+        "value": 0.6492444570176303
+      },
+      {
+        "seed": 3718948805,
+        "value": 0.8658852439839393
+      },
+      {
+        "seed": 3744396896,
+        "value": 0.8718103393912315
+      },
+      {
+        "seed": 1465628223,
+        "value": 0.34124316251836717
+      },
+      {
+        "seed": 47926930,
+        "value": 0.011158857960253954
+      }
+    ],
+    "queue": [],
+    "forkSel": null,
+    "moveQ": 0
+  }
+}

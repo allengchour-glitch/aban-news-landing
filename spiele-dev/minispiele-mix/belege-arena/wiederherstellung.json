@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Ladefehler wird verständlich angezeigt",
+      "ok": true
+    },
+    {
+      "name": "Fehler verteilt keine Punkte",
+      "ok": true
+    },
+    {
+      "name": "Nach Wiederholung ist Fehler weg und nur ein Unterbrechen-Knopf sichtbar",
+      "ok": true
+    },
+    {
+      "name": "Drehen zeigt den passenden Rückweg",
+      "ok": true
+    },
+    {
+      "name": "Nach Ladefehler normaler Originalsieg möglich",
+      "ok": true
+    },
+    {
+      "name": "Countdown abbrechen lädt keine Disziplin und erhält Punkte",
+      "ok": true
+    },
+    {
+      "name": "Ausgelassene Disziplinen geben weder Punkte noch Vollbonus",
+      "ok": true
+    }
+  ],
+  "scope": "Netzwerk-404 gezielt abgefangen, Retry danach echte Seite und echter Sieg; Bildschirmdrehung und Countdownabbruch."
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "GEMESSEN: Geometrie/Palette/Bauplätze, keine Browser-Kampagne",
+  "checks": [
+    "175 Knoten/178 Kanten und alle32 alten Bauplätze bytegleich",
+    "Drei Kunstplätze halten alle Felder, Verbindungen, Bauwerke und Gewässer frei",
+    "Zusätzliche Plätze entstehen deterministisch ohne Spielzufall",
+    "Reales Terrain unter allen Kunstplätzen bleibt eben und unter den Füßen",
+    "Berge hinter dem Gelände,576 Dreiecke,0 Zusatzlichter/Texturen/Schattenwerfer",
+    "Acht Paletten: Himmel/Nebel in derselben r128-Ausgabefarbe, positive Lichter",
+    "Kapitelübergang zeitstabil bei30/60Hz;0dt still; Sonne folgt nur dem Fokus",
+    "Modell-Bounds: Füße auf Boden, konservativer Radius, Übergröße wird abgelehnt"
+  ],
+  "sites": [
+    {
+      "key": "own:welcome",
+      "tile": 0,
+      "x": -162.99531496919872,
+      "z": -47.98125987679485,
+      "r": 3.6,
+      "cx": 0,
+      "cz": 0,
+      "score": 3.8134356417313526
+    },
+    {
+      "key": "own:memories",
+      "tile": 98,
+      "x": 90.62596346142104,
+      "z": -15.9664847419724,
+      "r": 4,
+      "cx": 0,
+      "cz": 0,
+      "score": 12.358338991667168
+    },
+    {
+      "key": "own:observatory",
+      "tile": 134,
+      "x": 185.91608427516468,
+      "z": -13.367521669855496,
+      "r": 4.2,
+      "cx": 0,
+      "cz": 0,
+      "score": 6.79501587163668
+    }
+  ],
+  "passed": true
+}

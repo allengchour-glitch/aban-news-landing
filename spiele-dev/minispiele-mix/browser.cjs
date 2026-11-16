@@ -1,32 +1,3 @@
+// Bestehender Einstieg führt jetzt die vollständige Arena-Prüfung aus.
 'use strict';
-const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
-const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
-const base=process.env.MIX_BASE||'http://127.0.0.1:8183',out=process.env.MIX_OUT||'/tmp/minispiele-mix-qa';
-const checks=[],errors=[];function check(name,ok){checks.push({name,ok:!!ok});assert(ok,name);}
-(async()=>{fs.mkdirSync(out,{recursive:true});const browser=await chromium.launch({executablePath:'/tmp/aban-browsers/chromium-1255/chrome-linux64/chrome',args:['--no-sandbox']});
-try{
- const c=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});const page=await c.newPage();page.on('pageerror',e=>errors.push(e.message));
- await page.goto(base+'/spiele.html');check('Nur vier Hauptkarten sichtbar',await page.locator('a.card:visible').count()===4);await page.locator('a.card[href="/minispiele/"]').click();
- check('Mix ist ein gemeinsamer Einstieg',await page.locator('.intro h1').innerText()==='Ein Mix.\nEin Gesamtsieg.');check('Einzelkatalog anfangs geschlossen',!(await page.locator('#einzeln').getAttribute('open'))&&await page.locator('#grid a:visible').count()===0);
- for(const size of [{width:390,height:844},{width:640,height:360},{width:1280,height:800}]){await page.setViewportSize(size);check('Lobby ohne Überlauf '+size.width,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:path.join(out,'lobby-'+size.width+'.png'),fullPage:true});}
- await page.setViewportSize({width:390,height:844});await page.locator('#einzeln summary').click();check('20 Disziplinen zum Üben erreichbar',await page.locator('#grid a:visible').count()===20);await page.locator('#einzeln summary').click();
- await page.locator('#name1').fill('Ada');await page.locator('#name2').fill('Lin');await page.locator('input[name="rounds"][value="3"]').check();await page.locator('#setup button').click();
- const random=await page.evaluate(()=>JSON.parse(localStorage.getItem('aban_mini_mix_v1')));check('UI erzeugt drei verschiedene Runden mit Namen',random.deck.length===3&&new Set(random.deck).size===3&&random.names.join(',')==='Ada,Lin');
- // Nur Reihenfolge festlegen; Siege entstehen aus den unveränderten Disziplinen und echten Eingaben.
- await page.evaluate(()=>localStorage.setItem('aban_mini_mix_v1',JSON.stringify({v:1,deck:['drei-gewinnt','tap-duell','auto-rennen'],names:['Ada','Lin'],history:[],phase:'ready'})));await page.reload();await page.locator('#resume').click();await page.locator('#action').click();
- let f=page.frameLocator('iframe');await f.locator('.cell').first().waitFor();
- for(const i of [0,3,1,4,2])await f.locator('.cell').nth(i).tap();
- await page.locator('#stageTitle').filter({hasText:'Ada holt die Runde'}).waitFor();check('Echter Drei-gewinnt-Sieg zählt drei Punkte',await page.locator('#score1').innerText()==='3'&&await page.locator('iframe').count()===0);
- await page.screenshot({path:path.join(out,'zwischenstand.png')});await page.reload();await page.locator('#resume').click();check('Zwischenstand übersteht Reload',await page.locator('#score1').innerText()==='3');await page.locator('#action').click();
- await page.clock.install();await page.clock.pauseAt(new Date());await page.locator('#action').click();f=page.frameLocator('iframe');await f.locator('#startBtn').waitFor();await f.locator('#startBtn').tap();await page.clock.runFor(1000);await f.locator('#halfBottom').tap();await page.clock.runFor(9200);
- await page.locator('#stageTitle').filter({hasText:'Lin holt die Runde'}).waitFor();check('Echtes Rhythmusergebnis zählt für Spieler 2',await page.locator('#score2').innerText()==='3');
- await page.evaluate(()=>dispatchEvent(new MessageEvent('message',{data:{type:'mini-mix-result',winner:1},origin:location.origin,source:window})));check('Fremde/doppelte Meldung ohne Wirkung',await page.locator('#score1').innerText()==='3');
- await page.locator('#action').click();await page.locator('#action').click();f=page.frameLocator('iframe');await f.locator('#startBtn').waitFor();await f.locator('#startBtn').tap();await page.keyboard.down('a');await page.clock.runFor(47000);await page.keyboard.up('a');
- await page.locator('#stageTitle').filter({hasText:'Ada holt die Runde'}).waitFor();await page.locator('#action').click();check('Drei echte Disziplinen ergeben einen Gesamtsieger',await page.locator('#stageTitle').innerText()==='Ada gewinnt den Mix!'&&await page.locator('#score1').innerText()==='6'&&await page.locator('#score2').innerText()==='3');
- await page.screenshot({path:path.join(out,'gesamtsieg.png')});await c.close();
- const b=await browser.newContext({viewport:{width:640,height:360},hasTouch:true,isMobile:true});const p=await b.newPage();p.on('pageerror',e=>errors.push(e.message));await p.goto(base+'/minispiele/');await p.locator('#setup button').click();await p.locator('#action').click();
- await p.locator('iframe').waitFor();check('Querformat gibt Disziplin volle Bildschirmhöhe',await p.locator('iframe').evaluate(e=>e.getBoundingClientRect().height)===360);
- const child=p.frames().find(f=>f!==p.mainFrame());await child.waitForFunction(()=>!!window.MiniMix);await child.evaluate(()=>parent.postMessage('mini-back',location.origin));await p.locator('#stageTitle').filter({hasText:'Runde abgebrochen'}).waitFor();check('Rückkehr verwirft nur die laufende Runde ohne Punkte',await p.locator('#score1').innerText()==='0'&&await p.locator('#score2').innerText()==='0'&&await p.locator('iframe').count()===0);
- await p.locator('#action').click();await p.locator('#action').click();await p.reload();await p.locator('#resume').click();check('Reload einer laufenden Runde setzt sie ungewertet neu an',await p.locator('#stageTag').textContent()==='Nächste Disziplin'&&await p.locator('#roundLabel').innerText()==='Runde 2 / 5');await b.close();
- check('Keine JavaScript-Fehler',errors.length===0);fs.writeFileSync(path.join(out,'result.json'),JSON.stringify({passed:true,checks,errors,scope:'Echte Drei-gewinnt-, Rhythmus- und Rennsiege, Reihenfolge als Speicher-Fixture, kontrollierte Browserzeit in zwei Zeitspielen; kein Ergebnis direkt gesetzt.'},null,2));console.log(checks.length+' Browserbedingungen grün');
-}finally{await browser.close();}})().catch(e=>{console.error(e);fs.writeFileSync(path.join(out,'failure.json'),JSON.stringify({checks,errors,error:String(e.stack)},null,2));process.exitCode=1;});
+require('./arena-browser.cjs');

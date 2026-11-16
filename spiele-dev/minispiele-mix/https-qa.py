@@ -6,7 +6,7 @@ import fnmatch, hashlib, json, os, re, subprocess, tempfile
 ROOT = Path(__file__).resolve().parents[2]
 OUT = Path(os.environ.get('MIX_LIVE_OUT', '/tmp/mix-live'))
 PAGES = ['spiele.html'] + sorted(str(p.relative_to(ROOT)) for p in (ROOT/'minispiele').glob('*.html'))
-ASSETS = sorted(str(p.relative_to(ROOT)) for p in (ROOT/'js/minispiele-mix').glob('*.js')) + ['css/minispiele-mix.css']
+ASSETS = sorted(str(p.relative_to(ROOT)) for p in (ROOT/'js/minispiele-mix').glob('*.js')) + ['css/minispiele-mix.css', 'css/minispiele-mix-embedded.css', 'css/minispiele-mix-landscape.css', 'assets/minispiele-mix/arena.svg']
 
 class Code(HTMLParser):
     def __init__(self):
@@ -67,7 +67,7 @@ def main():
         controls['missingMixLoaderRejected']=not identical(built['minispiele/index.html'],code(re.sub(r'<script src="/js/minispiele-mix/app[^>]+></script>','',index)))
         assert all(controls.values()),controls
         paths=[(f,f) for f in PAGES] + [('spiele.html','spiele'), ('minispiele/index.html','minispiele/')]
-        all_html='\n'.join((ROOT/f).read_text() for f in PAGES)
+        all_html='\n'.join((ROOT/f).read_text() for f in PAGES+ASSETS if f.endswith(('.html','.js')))
         for f in ASSETS:
             version=re.search(re.escape('/'+f)+r'\?v=([a-f0-9]+)',all_html)
             assert version, 'Inhaltsversion fehlt: '+f
@@ -98,7 +98,7 @@ def main():
                     item['securityExact']=all(security.values());item['ok'] &= identical(expected,actual) and item['securityExact']
                 else:
                     item['sha256']=hashlib.sha256(raw).hexdigest();item['bytesExact']=raw==(ROOT/f).read_bytes()
-                    item['mimeCorrect']=bool(re.search(r'^content-type:.*'+('javascript' if f.endswith('.js') else 'text/css'),headers,re.I|re.M))
+                    item['mimeCorrect']=bool(re.search(r'^content-type:.*'+('javascript' if f.endswith('.js') else r'image/svg\+xml' if f.endswith('.svg') else 'text/css'),headers,re.I|re.M))
                     item['ok'] &= item['bytesExact'] and item['mimeCorrect']
             else: item['error']=r.stderr
             checks.append(item); print(json.dumps(item,ensure_ascii=False),flush=True)
