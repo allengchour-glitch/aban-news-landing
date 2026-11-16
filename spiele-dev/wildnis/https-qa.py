@@ -1,6 +1,6 @@
 from pathlib import Path
 from html.parser import HTMLParser
-import subprocess,json,hashlib,re,os
+import subprocess,json,hashlib,re,os,tempfile
 root=Path(__file__).resolve().parents[2]
 out=Path(os.environ.get('NW_LIVE_OUT','/tmp/wildnis-live'));out.mkdir(parents=True,exist_ok=True)
 class Scripts(HTMLParser):
@@ -15,7 +15,26 @@ class Scripts(HTMLParser):
   if self.active:self.buf.append(data)
  def handle_endtag(self,tag):
   if tag=='script' and self.active:self.parts.append(''.join(self.buf));self.active=False
-source=(root/'neon-wildnis.html').read_text();a=Scripts();a.feed(source)
+source=(root/'neon-wildnis.html').read_text()
+# Genau den vorhandenen Seitenbauer verwenden: er ergänzt auch Bildliterale im JS.
+# Keine Attribute aus der Produktionsantwort entfernen oder Spielcode normalisieren.
+builder=root/'automation/inject-engine.mjs'
+with tempfile.TemporaryDirectory(prefix='wildnis-build-',dir='/tmp') as tmp:
+ built=Path(tmp)/'neon-wildnis.html';built.write_text(source)
+ subprocess.run(['node',str(builder),tmp],check=True,capture_output=True,text=True)
+ expected_html=built.read_text()
+a=Scripts();a.feed(expected_html)
+def same_scripts(html):
+ b=Scripts();b.feed(html)
+ return bool(a.parts) and a.parts==b.parts and a.external==b.external and a.styles==b.styles
+# Positiv- und echte Gegenproben vor dem ersten Netzabruf.
+assert same_scripts(expected_html)
+assert not same_scripts(source), 'Rohe Quelle darf die tatsächliche Build-Änderung nicht übergehen'
+assert 'var MAP=800' in expected_html
+assert not same_scripts(expected_html.replace('var MAP=800','var MAP=801',1)), 'Geänderter Spielwert muss auffallen'
+assert not same_scripts(expected_html.replace('</body>','<script>window.__unerwartet=true;</script></body>',1)), 'Zusätzliches Script muss auffallen'
+controls={'expectedBuild':True,'rawSourceRejected':True,'changedGameValueRejected':True,'extraScriptRejected':True}
+
 assets=['css/wildnis.css','js/wildnis/visuals.js','js/wildnis/static-instances.js','js/lebenspfad/instance-chunks.js']
 paths=[('neon-wildnis.html','neon-wildnis'),('neon-wildnis.html','neon-wildnis.html')]
 for f in assets:
@@ -32,7 +51,7 @@ for path,uri in paths:
  if item['ok']:
   live=target.read_bytes();local=(root/path).read_bytes();h=header.read_text();blocks=list(re.finditer(r'^HTTP/\S+ \d{3}[^\n]*\n',h,re.M));h=h[blocks[-1].start():] if blocks else h
   if path.endswith('.html'):
-   b=Scripts();b.feed(live.decode());item['inlineScriptsPreserved']=bool(a.parts) and all(s in b.parts for s in a.parts);item['scriptOrderPreserved']=a.external==b.external;item['stylesPreserved']=a.styles==b.styles
+   b=Scripts();b.feed(live.decode());item['inlineScriptsPreserved']=bool(a.parts) and a.parts==b.parts;item['scriptOrderPreserved']=a.external==b.external;item['stylesPreserved']=a.styles==b.styles
    # Die vorhandene genaue Wildnis-Regel erlaubt Modell-Blobs und Vermittler,
    # behält aber frame-ancestors 'none' / DENY für das eigenständige Spiel.
    block=(root/'_headers').read_text().split('\n/'+uri+'\n',1)[1].split('\n\n',1)[0]
@@ -46,6 +65,6 @@ for path,uri in paths:
  else:item['error']=r.stderr
  checks.append(item);print(json.dumps(item),flush=True)
  if r.stdout=='429':break
-report={'domain':'https://abannews.com','sourceHead':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'releaseCommit':os.environ['RELEASE_COMMIT'],'checks':checks,'passed':len(checks)==len(paths) and all(c['ok'] for c in checks),'limits':'HTTPS mit normaler TLS-Prüfung; Quellen/Header/Asset-MIME, kein öffentlicher Browser-/NAT-Koop-Test'}
+report={'domain':'https://abannews.com','sourceHead':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'releaseCommit':os.environ['RELEASE_COMMIT'],'builderSha256':hashlib.sha256(builder.read_bytes()).hexdigest(),'controls':controls,'checks':checks,'passed':len(checks)==len(paths) and all(c['ok'] for c in checks),'limits':'HTTPS mit normaler TLS-Prüfung; exakte Skripte des tatsächlichen Seitenbaus/Header/Asset-MIME, kein öffentlicher Browser-/NAT-Koop-Test'}
 (out/'production.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 raise SystemExit(0 if report['passed'] else 1)
