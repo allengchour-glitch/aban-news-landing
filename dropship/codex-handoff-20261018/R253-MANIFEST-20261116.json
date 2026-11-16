@@ -1,0 +1,152 @@
+{
+  "run": "R253",
+  "atUtc": "2026-11-16T07:37:08Z",
+  "files": [
+    {
+      "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+      "file": "ARBEITSSTAND.json",
+      "bytes": 4303798,
+      "sha256": "0551b34e5b4a5882bc7f8141be400056fcabe82e945d94dffc7c8328bfbb3a11",
+      "gitBlobSha": "8991c09d0d0f9ff2c70a0b77490a682ec6a166d7",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+      "file": "CLAUDE-DIREKTSTART-20261115-R250.md",
+      "bytes": 12225,
+      "sha256": "b8e0b6230a96baf235e31b3cde16d51177b2335c3acdfdfb7049df3dd3bf6522",
+      "gitBlobSha": "470ca3981df8e4d36301e7368eb63075e282c9f7",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261116-R253.json",
+      "file": "CONTENT-VERKAUFSPAKET-20261116-R253.json",
+      "bytes": 1941,
+      "sha256": "78034969d0db1f0288e15859eccd502421d6b89ff6f77f4341d49b5760919907",
+      "gitBlobSha": "3754817ff57a8f06ed646e7b8fffa3c1461841d8",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261116-R253.md",
+      "file": "CONTENT-VERKAUFSPAKET-20261116-R253.md",
+      "bytes": 7804,
+      "sha256": "963e7b0160d39de724f656c1fb493c035f06252b4f85d72cccf919172d76a21f",
+      "gitBlobSha": "e114e8442bdd3dce47a4fd31983dff22259a78d9",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/DNS-VIER-20261116-R253.json",
+      "file": "DNS-VIER-20261116-R253.json",
+      "bytes": 1650,
+      "sha256": "ce01717a68c7f62c24b4333a0c8127bedf39d4446cc8644e11dbabbde0f33122",
+      "gitBlobSha": "37b639c74d8d9824d3860af470e8c8652575717b",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/KENNZAHLEN-KLAVIYO-20261116-R253.json",
+      "file": "KENNZAHLEN-KLAVIYO-20261116-R253.json",
+      "bytes": 39873,
+      "sha256": "b1af04bef8fd5b672d0453e403b1044a70b320277b627a2e9ad2629e49088f54",
+      "gitBlobSha": "2fce4bd12b78d41ee544aa551ca0cf7097d2fd97",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MASTER-CAPTIONS-20261116-R253.json",
+      "file": "MASTER-CAPTIONS-20261116-R253.json",
+      "bytes": 7914,
+      "sha256": "065d88239adba380b836b21ccd3bc56bfe8260cc0a4b76647c2c65944cc164c3",
+      "gitBlobSha": "060c741c611dc92dce859d60f73e014c69aa20fd",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MASTER-CAPTIONS-20261116-R253.md",
+      "file": "MASTER-CAPTIONS-20261116-R253.md",
+      "bytes": 4639,
+      "sha256": "baf93e4cfd9ae21788287c81311b497ac2e5ef78cd305ae5f1c3bf218935e148",
+      "gitBlobSha": "2cf9c08aef6e5e7ba6da3c48cae870332de7e572",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MASTER-QUELLEN-20261116-R253.json",
+      "file": "MASTER-QUELLEN-20261116-R253.json",
+      "bytes": 12772,
+      "sha256": "f9c335be228f6874dac6dc7bfd5a95501e8386bdc73648f7f69c87bbfd12a178",
+      "gitBlobSha": "3278b1f3f3c28e50f2ee64a86d85e0067cc7a5ed",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MASTER-SCHNITT-20261116-R253.md",
+      "file": "MASTER-SCHNITT-20261116-R253.md",
+      "bytes": 9481,
+      "sha256": "961e2a5a1bc539eba1918703550e79482b047fc76b7b161d670b1d764dce2b04",
+      "gitBlobSha": "c734a8b800c5f58682e02024719a8a09d46b2ef7",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/METRICOOL-HOLDS-PLAN-20261116-R253.json",
+      "file": "METRICOOL-HOLDS-PLAN-20261116-R253.json",
+      "bytes": 60724,
+      "sha256": "712161e488cb14383d89747e9092899c5a999fc0ffb00a35fc829fe158d8946c",
+      "gitBlobSha": "3349edfbc9f0c8a391963a9bab9c0ac8d1702bfb",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/MUSIK-RECHTE-GEGENPROBE-20261116-R253.md",
+      "file": "MUSIK-RECHTE-GEGENPROBE-20261116-R253.md",
+      "bytes": 1959,
+      "sha256": "0e69fb7321198127e4090902a3f07d89d87e891e80d9eb7ba5ae84548064d1cd",
+      "gitBlobSha": "78a8e48b31b1d48816b2d16a9fe01637161875e3",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+      "file": "PROJEKTGEDAECHTNIS.md",
+      "bytes": 466943,
+      "sha256": "4e81f7aed0991a1cc48b7be7ac1baafc31629c43800ba81c01725f42f671be2a",
+      "gitBlobSha": "30f9ad0efc032fa517a4692e03bcca38a7435e4a",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/R253-MANIFEST-20261116.json",
+      "file": "R253-MANIFEST-20261116.json",
+      "bytes": 6461,
+      "sha256": "acb57b2c3c1a81896a33d8d2d14d643254d899e4aea35fc5665781f21dae643b",
+      "gitBlobSha": "7dfe3b5d3aaf4572f7f2623a32dd8c70d166865c",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/README.md",
+      "file": "README.md",
+      "bytes": 591332,
+      "sha256": "be8b0179f272c1f000b0ffa7a4b5de9f0b20448dea987b66a2d9d5ce62ebcfb7",
+      "gitBlobSha": "ec67fb8e6e288a3666efee7f1e7ac3da8390b7d8",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+      "file": "TAGESPROTOKOLL.md",
+      "bytes": 638946,
+      "sha256": "a3df414acb22458cf67e6c6aab2a56e19699ab09cfd465495ca672aaae71e53e",
+      "gitBlobSha": "604e5c5d2703a1e327159e03d2e0f0a9da7769e1",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/WELCOME-FREIGABEENTWURF-20261116-R253.md",
+      "file": "WELCOME-FREIGABEENTWURF-20261116-R253.md",
+      "bytes": 2247,
+      "sha256": "86b15df449e92a600679c0103acfb114df09b1133b001102d7d1801112d1687e",
+      "gitBlobSha": "462eaa663150ff585207a1bdb13ef66aaa67007e",
+      "readAt": "2026-11-16T07:37:08Z"
+    },
+    {
+      "path": "dropship/codex-handoff-20261018/state-update-instructions.json",
+      "file": "state-update-instructions.json",
+      "bytes": 15043,
+      "sha256": "e99d703ecf54cbee0408ca5836378fa1baf8b62b03c46a3dd385c7c8095ba17b",
+      "gitBlobSha": "56dfd942920c8282d3846fdd88db80032558f881",
+      "readAt": "2026-11-16T07:37:08Z"
+    }
+  ],
+  "privatePayloadsExcluded": true,
+  "publicationLedgerCreatedOrReset": false
+}

@@ -1,0 +1,316 @@
+{
+  "run": "R253",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "freshVariantImageCrosswalk": {
+    "capturedDate": "2026-11-16",
+    "sourceFiles": [
+      "source/shopify-current-product.json",
+      "source/cj-current-product.json"
+    ],
+    "product": {
+      "shopifyId": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-15T19:29:14Z",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "option": {
+        "id": "gid://shopify/ProductOption/17970205753729",
+        "name": "Modell und Ausstattung",
+        "position": 1,
+        "values": [
+          "A · Grundmodell · USB",
+          "B · 6 Motivscheiben · USB",
+          "C · Galaxie-Scheibe + 6 Motivscheiben · USB",
+          "D · Akku, Bluetooth, 6 Motivscheiben",
+          "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+          "F · Akku-Spieluhr · 18 Musikstücke · 6 Sternenlicht-Scheiben",
+          "G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung"
+        ]
+      }
+    },
+    "variants": [
+      {
+        "shopifyVariantId": "gid://shopify/ProductVariant/68122445283719",
+        "label": "A · Grundmodell · USB",
+        "sku": "CJSN139239101AZ",
+        "retailPriceCHF": "34.90",
+        "inventoryQuantity": 0,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "cjVariantId": "1477826312449167360",
+        "cjVariantKey": "A-USB",
+        "cjVariantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg",
+        "shopifyMediaId": "gid://shopify/MediaImage/70733173719425",
+        "shopifyVariantMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "exactImageFilenameMatch": true,
+        "cjDeclaredDimensionsMm": [
+          165,
+          155,
+          140
+        ],
+        "cjVariantWeightG": 671.0,
+        "cjSellPrice": 14.23
+      },
+      {
+        "shopifyVariantId": "gid://shopify/ProductVariant/68122445316487",
+        "label": "B · 6 Motivscheiben · USB",
+        "sku": "CJSN139239102BY",
+        "retailPriceCHF": "37.90",
+        "inventoryQuantity": 0,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "cjVariantId": "1477826312453361664",
+        "cjVariantKey": "B-USB",
+        "cjVariantImage": "https://cf.cjdropshipping.com/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg",
+        "shopifyMediaId": "gid://shopify/MediaImage/70733173686657",
+        "shopifyVariantMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6eaaa80a-1373-4805-bdb5-90f42ec9bed5.jpg?v=1788153090",
+        "exactImageFilenameMatch": true,
+        "cjDeclaredDimensionsMm": [
+          165,
+          155,
+          140
+        ],
+        "cjVariantWeightG": 671.0,
+        "cjSellPrice": 17.07
+      },
+      {
+        "shopifyVariantId": "gid://shopify/ProductVariant/68122445349255",
+        "label": "C · Galaxie-Scheibe + 6 Motivscheiben · USB",
+        "sku": "CJSN139239103CX",
+        "retailPriceCHF": "40.90",
+        "inventoryQuantity": 0,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "cjVariantId": "1477826312453361665",
+        "cjVariantKey": "C-USB",
+        "cjVariantImage": "https://cf.cjdropshipping.com/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg",
+        "shopifyMediaId": "gid://shopify/MediaImage/70733173457281",
+        "shopifyVariantMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+        "exactImageFilenameMatch": true,
+        "cjDeclaredDimensionsMm": [
+          165,
+          155,
+          140
+        ],
+        "cjVariantWeightG": 671.0,
+        "cjSellPrice": 19.26
+      },
+      {
+        "shopifyVariantId": "gid://shopify/ProductVariant/68122445382023",
+        "label": "D · Akku, Bluetooth, 6 Motivscheiben",
+        "sku": "CJSN139239104DW",
+        "retailPriceCHF": "49.90",
+        "inventoryQuantity": 0,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "cjVariantId": "1477826312453361666",
+        "cjVariantKey": "D-USB",
+        "cjVariantImage": "https://cf.cjdropshipping.com/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg",
+        "shopifyMediaId": "gid://shopify/MediaImage/70733173588353",
+        "shopifyVariantMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+        "exactImageFilenameMatch": true,
+        "cjDeclaredDimensionsMm": [
+          165,
+          155,
+          140
+        ],
+        "cjVariantWeightG": 671.0,
+        "cjSellPrice": 28.46
+      },
+      {
+        "shopifyVariantId": "gid://shopify/ProductVariant/68122445414791",
+        "label": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+        "sku": "CJSN139239105EV",
+        "retailPriceCHF": "51.90",
+        "inventoryQuantity": 0,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "cjVariantId": "1555856292877709312",
+        "cjVariantKey": "E-USB",
+        "cjVariantImage": "https://cf.cjdropshipping.com/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg",
+        "shopifyMediaId": "gid://shopify/MediaImage/70733173457281",
+        "shopifyVariantMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d886c463-aa44-4348-89db-3b6d3fa705b2.jpg?v=1788153090",
+        "exactImageFilenameMatch": true,
+        "cjDeclaredDimensionsMm": [
+          165,
+          155,
+          140
+        ],
+        "cjVariantWeightG": 671.0,
+        "cjSellPrice": 30.65
+      },
+      {
+        "shopifyVariantId": "gid://shopify/ProductVariant/68122445447559",
+        "label": "F · Akku-Spieluhr · 18 Musikstücke · 6 Sternenlicht-Scheiben",
+        "sku": "CJSN139239106FU",
+        "retailPriceCHF": "44.90",
+        "inventoryQuantity": 0,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "cjVariantId": "1555856292877709313",
+        "cjVariantKey": "F-USB",
+        "cjVariantImage": "https://cf.cjdropshipping.com/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg",
+        "shopifyMediaId": "gid://shopify/MediaImage/70733173588353",
+        "shopifyVariantMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2fb4dedd-78eb-46db-be54-23a0bca8d44e.jpg?v=1788153090",
+        "exactImageFilenameMatch": true,
+        "cjDeclaredDimensionsMm": [
+          165,
+          155,
+          140
+        ],
+        "cjVariantWeightG": 671.0,
+        "cjSellPrice": 23.86
+      },
+      {
+        "shopifyVariantId": "gid://shopify/ProductVariant/68122445480327",
+        "label": "G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung",
+        "sku": "CJSN139239107GT",
+        "retailPriceCHF": "35.90",
+        "inventoryQuantity": 0,
+        "inventoryTracked": false,
+        "inventoryPolicy": "CONTINUE",
+        "cjVariantId": "1589496316504322048",
+        "cjVariantKey": "G-USB",
+        "cjVariantImage": "https://cf.cjdropshipping.com/7b27bd25-9e6d-42bf-9eda-f354075179d3.png",
+        "shopifyMediaId": "gid://shopify/MediaImage/70733173490049",
+        "shopifyVariantMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b27bd25-9e6d-42bf-9eda-f354075179d3.png?v=1788153090",
+        "exactImageFilenameMatch": true,
+        "cjDeclaredDimensionsMm": [
+          165,
+          155,
+          140
+        ],
+        "cjVariantWeightG": 671.0,
+        "cjSellPrice": 14.93
+      }
+    ],
+    "sourceMedia": {
+      "shopifyMediaCount": 13,
+      "shopifyVideo": [
+        {
+          "id": "gid://shopify/Video/77496185356679",
+          "alt": "",
+          "mediaContentType": "VIDEO",
+          "sources": [
+            {
+              "url": "https://cdn.shopify.com/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.SD-480p-1.0Mbps-97141328.mp4",
+              "mimeType": "video/mp4",
+              "format": "mp4"
+            },
+            {
+              "url": "https://cdn.shopify.com/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.m3u8",
+              "mimeType": "application/x-mpegURL",
+              "format": "m3u8"
+            }
+          ]
+        }
+      ],
+      "cjProductVideoIds": [
+        "1602963697889193984"
+      ],
+      "cjVideoMetadataReturned": false
+    },
+    "sourceClaims": {
+      "cjDescriptionHasOverallPackList": "Night light*1 Color disc*6 Rechargeable Bluetooth rotating*1 Galaxy disc*1",
+      "warning": "Supplier pack list appears product-level, not clearly tied to A. Do not apply the complete list to A without A-specific source.",
+      "AVariantDescription": "A: Focus plug-in: basic model",
+      "AImageIdentity": "Exact image filename match between CJ A variantImage and Shopify A variant featured media. This binds the source image asset, not a physical unit or old video content."
+    }
+  },
+  "publicChecks": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "variantId": "gid://shopify/ProductVariant/68122445283719",
+    "sku": "CJSN139239101AZ",
+    "priceChf": "34.90",
+    "publicAvailable": true,
+    "productJsHttp": 200,
+    "variantPageHttp": 200,
+    "variantUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719",
+    "resolved": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719",
+    "variantPageSha256": "136fee5065b9ae9c79ed9a8157e65a37ae376c6a7181de65181216ebe838607e",
+    "actualImageReference": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+    "imageHttp": 200,
+    "imageSha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+    "imageLocal": "source/current-A-reference.jpg",
+    "meaning": "Current public orderability and image asset binding only; no physical stock, video/motif identity or rights proof."
+  },
+  "tagGate": {
+    "productId": "gid://shopify/Product/15521256604033",
+    "status": "ACTIVE",
+    "tags": [
+      "auswahl-offen",
+      "beleuchtung",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "elektronik",
+      "gadget",
+      "sort-nachtlichter",
+      "sort-nachttischlampen",
+      "tech",
+      "varianten-nachgezogen-1025"
+    ],
+    "baseBlockedTags": [],
+    "ownerExtraBlockedTags": [],
+    "emptyTags": false,
+    "tagGatePass": true,
+    "scope": "Only current ACTIVE/tag gate. No media/rights/quality/bio/board/ledger/publication approval."
+  },
+  "referenceImage": {
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+    "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+    "rootVisuallyInspected": true,
+    "observation": "Cream-coloured device with blue lit dome on stand; composite includes box and projection-motif inset. Asset match does not prove filmed A unit, included motif, package contents or commercial rights."
+  },
+  "product": {
+    "id": "15521256604033",
+    "variantId": "68122445283719",
+    "sku": "CJSN139239101AZ",
+    "priceCHF": "34.90",
+    "status": "ACTIVE",
+    "inventoryTracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "storefrontAvailableForSale": true,
+    "physicalStockOrDeliveryPromise": false
+  },
+  "technicalPlan": {
+    "durationSeconds": 18,
+    "fps": 30,
+    "frames": 540,
+    "size": [
+      1080,
+      1920
+    ],
+    "hooks": [
+      "Dein Raum. Neues Licht.",
+      "Licht im Detail."
+    ],
+    "cta": "Produkt ansehen",
+    "renderedNewMaster": false
+  },
+  "openGates": [
+    "Physical A sample and projection motif/pack contents",
+    "Commercial film/edit/advertising/upload rights",
+    "High-quality genuine A footage",
+    "Canonical music rights/build input and listening approval",
+    "Actual rendered final MP4/quality/crop approval",
+    "Fresh bio targets, confirmed Pinterest account board, ledger/history before new publication"
+  ],
+  "youtubeAudience": "madeForKids=false already freshly confirmed in existing YouTube projector draft, title preserved; not an unknown audience",
+  "catalogScope": "One exact active Shopify product and exact CJ PID, seven variants; no catalogue pagination or inferred catalog quality."
+}

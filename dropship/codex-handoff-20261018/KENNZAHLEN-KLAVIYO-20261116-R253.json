@@ -1,0 +1,1371 @@
+{
+  "run": "R253",
+  "localDate": "2026-11-16",
+  "period": "2026-11-09/2026-11-15",
+  "dailyReadAccounting": {
+    "metricoolDefinitions": 6,
+    "metricoolSmallDataCalls": 6,
+    "klaviyoFlowReports": 1,
+    "placedOrderMetricDiscoveredFirst": "W7XTVD",
+    "searchConsoleRepeated": false,
+    "broadSalesRead": false,
+    "ordersRead": false,
+    "purchaseWatchEnded": true
+  },
+  "definitions": {
+    "source": "current Metricool getAnalyticsAvailableMetrics results, one network per definition call; selected measures used in R253",
+    "capturedAtUTC": "2026-11-16 06:57 UTC",
+    "brandId": "6227837",
+    "definitions": [
+      {
+        "network": "instagram",
+        "selected": [
+          {
+            "fieldId": "IGEV09",
+            "network": "instagram",
+            "connector": "evolution",
+            "index": 9,
+            "metricName": "interactions",
+            "metricLabel": "Instagram Evolution > Feed Posts Interactions",
+            "description": "Interactions (likes, comments, saves and shares) received by feed posts only (photos and carousels). Does NOT include reels. For all content use Instagram Evolution > Total Content Interactions.",
+            "dataAggregation": "SUM"
+          },
+          {
+            "fieldId": "IGEV12",
+            "network": "instagram",
+            "connector": "evolution",
+            "index": 12,
+            "metricName": "postsViews",
+            "metricLabel": "Instagram Evolution > Feed Posts Views",
+            "description": "Number of times feed posts (photos and carousels) were displayed. Does NOT include reels or stories. Organic data.",
+            "dataAggregation": "SUM"
+          }
+        ]
+      },
+      {
+        "network": "facebook",
+        "selected": [
+          {
+            "fieldId": "FBEV34",
+            "network": "facebook",
+            "connector": "evolution",
+            "index": 34,
+            "metricName": "postsInteractions",
+            "metricLabel": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+            "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+            "dataAggregation": "SUM"
+          },
+          {
+            "fieldId": "FBEV49",
+            "network": "facebook",
+            "connector": "evolution",
+            "index": 49,
+            "metricName": "pageMediaView",
+            "metricLabel": "Facebook Evolution > Page Media View",
+            "description": "Page content views.",
+            "dataAggregation": "SUM"
+          }
+        ]
+      },
+      {
+        "network": "tiktok",
+        "selected": [
+          {
+            "fieldId": "TKEV02",
+            "network": "tiktok",
+            "connector": "evolution",
+            "index": 2,
+            "metricName": "views",
+            "metricLabel": "TikTok Evolution > Views",
+            "description": "Number of views reached by the videos published in the period",
+            "dataAggregation": "SUM"
+          },
+          {
+            "fieldId": "TKEV06",
+            "network": "tiktok",
+            "connector": "evolution",
+            "index": 6,
+            "metricName": "interactions",
+            "metricLabel": "TikTok Evolution > Interactions",
+            "description": "Number of interactions on videos: Likes, Comments and Shares.",
+            "dataAggregation": "SUM"
+          }
+        ]
+      },
+      {
+        "network": "threads",
+        "selected": [
+          {
+            "fieldId": "THEV05",
+            "network": "threads",
+            "connector": "evolution",
+            "index": 5,
+            "metricName": "interactions",
+            "metricLabel": "Threads Evolution > Interactions",
+            "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+            "dataAggregation": "SUM"
+          },
+          {
+            "fieldId": "THEV06",
+            "network": "threads",
+            "connector": "evolution",
+            "index": 6,
+            "metricName": "views",
+            "metricLabel": "Threads Evolution > Post Views",
+            "description": "Total number of times that the post is displayed.",
+            "dataAggregation": "SUM"
+          }
+        ]
+      },
+      {
+        "network": "youtube",
+        "selected": [
+          {
+            "fieldId": "YTEV02",
+            "network": "youtube",
+            "connector": "evolution",
+            "index": 2,
+            "metricName": "videoViews",
+            "metricLabel": "Youtube Evolution > Video Views",
+            "description": "Number of times the videos were watched",
+            "dataAggregation": "SUM"
+          },
+          {
+            "fieldId": "YTEV05",
+            "network": "youtube",
+            "connector": "evolution",
+            "index": 5,
+            "metricName": "gained",
+            "metricLabel": "Youtube Evolution > Followers Gained",
+            "description": "Subscribers gained in the period selected.",
+            "dataAggregation": "SUM"
+          }
+        ]
+      },
+      {
+        "network": "pinterest",
+        "selected": [
+          {
+            "fieldId": "PIEV01",
+            "network": "pinterest",
+            "connector": "evolution",
+            "index": 1,
+            "metricName": "pinterestImpressions",
+            "metricLabel": "Pinterest Evolution > Impressions in period",
+            "description": "",
+            "dataAggregation": "SUM"
+          },
+          {
+            "fieldId": "PIEV04",
+            "network": "pinterest",
+            "connector": "evolution",
+            "index": 4,
+            "metricName": "pinterestInteractions",
+            "metricLabel": "Pinterest Evolution > Interactions in period",
+            "description": "",
+            "dataAggregation": "SUM"
+          }
+        ]
+      }
+    ]
+  },
+  "metricool": {
+    "source": "raw-six-channel.json; dates in Europe/Zurich",
+    "period": "2026-11-09 through 2026-11-15 inclusive",
+    "channels": {
+      "instagram": [
+        {
+          "metric": "IGEV12",
+          "label": "Instagram Evolution > Feed Posts Views",
+          "description": "Number of times feed posts (photos and carousels) were displayed. Does NOT include reels or stories. Organic data.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 28.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 23.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 56.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 26.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 48.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": 16.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": 18.0,
+              "state": "numeric"
+            }
+          ],
+          "numeric_days": 7,
+          "null_days": 0,
+          "absent_days": 0,
+          "observed_sum": 215.0,
+          "out_of_period_rows": []
+        },
+        {
+          "metric": "IGEV09",
+          "label": "Instagram Evolution > Feed Posts Interactions",
+          "description": "Interactions (likes, comments, saves and shares) received by feed posts only (photos and carousels). Does NOT include reels. For all content use Instagram Evolution > Total Content Interactions.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261110",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261111",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261112",
+              "value": 1.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "null"
+            }
+          ],
+          "numeric_days": 1,
+          "null_days": 6,
+          "absent_days": 0,
+          "observed_sum": 1.0,
+          "out_of_period_rows": []
+        }
+      ],
+      "facebook": [
+        {
+          "metric": "FBEV49",
+          "label": "Facebook Evolution > Page Media View",
+          "description": "Page content views.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 3.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 5.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 61.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 27.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 21.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": 6.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": 17.0,
+              "state": "numeric"
+            }
+          ],
+          "numeric_days": 7,
+          "null_days": 0,
+          "absent_days": 0,
+          "observed_sum": 140.0,
+          "out_of_period_rows": [
+            {
+              "date": "20261116",
+              "value": null
+            }
+          ]
+        },
+        {
+          "metric": "FBEV34",
+          "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261110",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261111",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261112",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261113",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "null"
+            }
+          ],
+          "numeric_days": 0,
+          "null_days": 7,
+          "absent_days": 0,
+          "observed_sum": null,
+          "out_of_period_rows": [
+            {
+              "date": "20261116",
+              "value": "0.0"
+            }
+          ]
+        }
+      ],
+      "tiktok": [
+        {
+          "metric": "TKEV02",
+          "label": "TikTok Evolution > Views",
+          "description": "Number of views reached by the videos published in the period",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261110",
+              "value": 766.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 1012.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 748.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 505.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": 730.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": 265.0,
+              "state": "numeric"
+            }
+          ],
+          "numeric_days": 6,
+          "null_days": 0,
+          "absent_days": 1,
+          "observed_sum": 4026.0,
+          "out_of_period_rows": []
+        },
+        {
+          "metric": "TKEV06",
+          "label": "TikTok Evolution > Interactions",
+          "description": "Number of interactions on videos: Likes, Comments and Shares.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261110",
+              "value": 3.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 4.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 1.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": 2.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": 0.0,
+              "state": "numeric"
+            }
+          ],
+          "numeric_days": 6,
+          "null_days": 0,
+          "absent_days": 1,
+          "observed_sum": 10.0,
+          "out_of_period_rows": []
+        }
+      ],
+      "threads": [
+        {
+          "metric": "THEV06",
+          "label": "Threads Evolution > Post Views",
+          "description": "Total number of times that the post is displayed.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261110",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261111",
+              "value": 1.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261113",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261114",
+              "value": 4.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numeric_days": 2,
+          "null_days": 0,
+          "absent_days": 5,
+          "observed_sum": 5.0,
+          "out_of_period_rows": [
+            {
+              "date": "20261116",
+              "value": null
+            }
+          ]
+        },
+        {
+          "metric": "THEV05",
+          "label": "Threads Evolution > Interactions",
+          "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261110",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261111",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261112",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261113",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numeric_days": 0,
+          "null_days": 2,
+          "absent_days": 5,
+          "observed_sum": null,
+          "out_of_period_rows": [
+            {
+              "date": "20261116",
+              "value": "0.0"
+            }
+          ]
+        }
+      ],
+      "youtube": [
+        {
+          "metric": "YTEV02",
+          "label": "Youtube Evolution > Video Views",
+          "description": "Number of times the videos were watched",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 4.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 256.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 171.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 261.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 104.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numeric_days": 5,
+          "null_days": 0,
+          "absent_days": 2,
+          "observed_sum": 796.0,
+          "out_of_period_rows": []
+        },
+        {
+          "metric": "YTEV05",
+          "label": "Youtube Evolution > Followers Gained",
+          "description": "Subscribers gained in the period selected.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numeric_days": 5,
+          "null_days": 0,
+          "absent_days": 2,
+          "observed_sum": 0.0,
+          "out_of_period_rows": []
+        }
+      ],
+      "pinterest": [
+        {
+          "metric": "PIEV01",
+          "label": "Pinterest Evolution > Impressions in period",
+          "description": "",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 764.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 863.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 870.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 713.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 1520.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numeric_days": 5,
+          "null_days": 0,
+          "absent_days": 2,
+          "observed_sum": 4730.0,
+          "out_of_period_rows": []
+        },
+        {
+          "metric": "PIEV04",
+          "label": "Pinterest Evolution > Interactions in period",
+          "description": "",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 19.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 19.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 14.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 16.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 16.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numeric_days": 5,
+          "null_days": 0,
+          "absent_days": 2,
+          "observed_sum": 84.0,
+          "out_of_period_rows": []
+        }
+      ]
+    },
+    "limits": [
+      "ABSENT and null are preserved as unknown, not zero.",
+      "The Facebook response included a 2026-11-16 row outside the requested closed local-date window; excluded from all summaries.",
+      "No Instagram organic/paid aggregation was performed; selected organic feed post views are distinct from paid measures.",
+      "Platform measures are not comparable across channel definitions; no sales attribution."
+    ]
+  },
+  "offlineValidation": {
+    "validation_date": "2026-11-16",
+    "validation_type": "offline-only independent cross-check; no API calls",
+    "sources": [
+      "raw-six-channel.json",
+      "selected-definitions.json",
+      "daily-summary.json"
+    ],
+    "check_count": 70,
+    "passed": true,
+    "checks": [
+      {
+        "check": "raw_channel_count",
+        "passed": true,
+        "detail": "calls=6"
+      },
+      {
+        "check": "definition_networks_exactly_six",
+        "passed": true,
+        "detail": "['instagram', 'facebook', 'tiktok', 'threads', 'youtube', 'pinterest']"
+      },
+      {
+        "check": "summary_channel_set",
+        "passed": true,
+        "detail": "['facebook', 'instagram', 'pinterest', 'threads', 'tiktok', 'youtube']"
+      },
+      {
+        "check": "requested_period",
+        "passed": true,
+        "detail": "{'from': '2026-11-09T00:00:00+01:00', 'to': '2026-11-16T00:00:00+01:00', 'timezone': 'Europe/Zurich'}"
+      },
+      {
+        "check": "twelve_distinct_metric_ids",
+        "passed": true,
+        "detail": "count=12, unique=12"
+      },
+      {
+        "check": "instagram_call_metric_ids",
+        "passed": true,
+        "detail": "call=['IGEV12', 'IGEV09']; defs=['IGEV09', 'IGEV12']"
+      },
+      {
+        "check": "instagram_summary_metric_count",
+        "passed": true,
+        "detail": "summary=2 ids=2"
+      },
+      {
+        "check": "instagram_IGEV12_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "instagram_IGEV12_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=215.0; stored=215.0; numeric_days=7"
+      },
+      {
+        "check": "instagram_IGEV12_counts",
+        "passed": true,
+        "detail": "computed=(7, 0, 0) stored=(7, 0, 0)"
+      },
+      {
+        "check": "instagram_IGEV12_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[]; stored=[]"
+      },
+      {
+        "check": "instagram_IGEV09_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "instagram_IGEV09_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=1.0; stored=1.0; numeric_days=1"
+      },
+      {
+        "check": "instagram_IGEV09_counts",
+        "passed": true,
+        "detail": "computed=(1, 6, 0) stored=(1, 6, 0)"
+      },
+      {
+        "check": "instagram_IGEV09_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[]; stored=[]"
+      },
+      {
+        "check": "facebook_call_metric_ids",
+        "passed": true,
+        "detail": "call=['FBEV49', 'FBEV34']; defs=['FBEV34', 'FBEV49']"
+      },
+      {
+        "check": "facebook_summary_metric_count",
+        "passed": true,
+        "detail": "summary=2 ids=2"
+      },
+      {
+        "check": "facebook_FBEV49_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "facebook_FBEV49_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=140.0; stored=140.0; numeric_days=7"
+      },
+      {
+        "check": "facebook_FBEV49_counts",
+        "passed": true,
+        "detail": "computed=(7, 0, 0) stored=(7, 0, 0)"
+      },
+      {
+        "check": "facebook_FBEV49_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[{'date': '20261116', 'value': None}]; stored=[{'date': '20261116', 'value': None}]"
+      },
+      {
+        "check": "facebook_FBEV34_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "facebook_FBEV34_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=None; stored=None; numeric_days=0"
+      },
+      {
+        "check": "facebook_FBEV34_counts",
+        "passed": true,
+        "detail": "computed=(0, 7, 0) stored=(0, 7, 0)"
+      },
+      {
+        "check": "facebook_FBEV34_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[{'date': '20261116', 'value': '0.0'}]; stored=[{'date': '20261116', 'value': '0.0'}]"
+      },
+      {
+        "check": "facebook_FBEV34_all_null_unknown",
+        "passed": true,
+        "detail": "numeric_days=0 observed_sum=None"
+      },
+      {
+        "check": "tiktok_call_metric_ids",
+        "passed": true,
+        "detail": "call=['TKEV02', 'TKEV06']; defs=['TKEV02', 'TKEV06']"
+      },
+      {
+        "check": "tiktok_summary_metric_count",
+        "passed": true,
+        "detail": "summary=2 ids=2"
+      },
+      {
+        "check": "tiktok_TKEV02_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "tiktok_TKEV02_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=4026.0; stored=4026.0; numeric_days=6"
+      },
+      {
+        "check": "tiktok_TKEV02_counts",
+        "passed": true,
+        "detail": "computed=(6, 0, 1) stored=(6, 0, 1)"
+      },
+      {
+        "check": "tiktok_TKEV02_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[]; stored=[]"
+      },
+      {
+        "check": "tiktok_TKEV06_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "tiktok_TKEV06_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=10.0; stored=10.0; numeric_days=6"
+      },
+      {
+        "check": "tiktok_TKEV06_counts",
+        "passed": true,
+        "detail": "computed=(6, 0, 1) stored=(6, 0, 1)"
+      },
+      {
+        "check": "tiktok_TKEV06_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[]; stored=[]"
+      },
+      {
+        "check": "threads_call_metric_ids",
+        "passed": true,
+        "detail": "call=['THEV06', 'THEV05']; defs=['THEV05', 'THEV06']"
+      },
+      {
+        "check": "threads_summary_metric_count",
+        "passed": true,
+        "detail": "summary=2 ids=2"
+      },
+      {
+        "check": "threads_THEV06_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "threads_THEV06_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=5.0; stored=5.0; numeric_days=2"
+      },
+      {
+        "check": "threads_THEV06_counts",
+        "passed": true,
+        "detail": "computed=(2, 0, 5) stored=(2, 0, 5)"
+      },
+      {
+        "check": "threads_THEV06_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[{'date': '20261116', 'value': None}]; stored=[{'date': '20261116', 'value': None}]"
+      },
+      {
+        "check": "threads_THEV05_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "threads_THEV05_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=None; stored=None; numeric_days=0"
+      },
+      {
+        "check": "threads_THEV05_counts",
+        "passed": true,
+        "detail": "computed=(0, 2, 5) stored=(0, 2, 5)"
+      },
+      {
+        "check": "threads_THEV05_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[{'date': '20261116', 'value': '0.0'}]; stored=[{'date': '20261116', 'value': '0.0'}]"
+      },
+      {
+        "check": "threads_THEV05_all_null_unknown",
+        "passed": true,
+        "detail": "numeric_days=0 observed_sum=None"
+      },
+      {
+        "check": "youtube_call_metric_ids",
+        "passed": true,
+        "detail": "call=['YTEV02', 'YTEV05']; defs=['YTEV02', 'YTEV05']"
+      },
+      {
+        "check": "youtube_summary_metric_count",
+        "passed": true,
+        "detail": "summary=2 ids=2"
+      },
+      {
+        "check": "youtube_YTEV02_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "youtube_YTEV02_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=796.0; stored=796.0; numeric_days=5"
+      },
+      {
+        "check": "youtube_YTEV02_counts",
+        "passed": true,
+        "detail": "computed=(5, 0, 2) stored=(5, 0, 2)"
+      },
+      {
+        "check": "youtube_YTEV02_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[]; stored=[]"
+      },
+      {
+        "check": "youtube_YTEV05_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "youtube_YTEV05_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=0.0; stored=0.0; numeric_days=5"
+      },
+      {
+        "check": "youtube_YTEV05_counts",
+        "passed": true,
+        "detail": "computed=(5, 0, 2) stored=(5, 0, 2)"
+      },
+      {
+        "check": "youtube_YTEV05_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[]; stored=[]"
+      },
+      {
+        "check": "youtube_YTEV05_genuine_zero_preserved",
+        "passed": true,
+        "detail": "numeric_days=5; sum=0.0"
+      },
+      {
+        "check": "pinterest_call_metric_ids",
+        "passed": true,
+        "detail": "call=['PIEV01', 'PIEV04']; defs=['PIEV01', 'PIEV04']"
+      },
+      {
+        "check": "pinterest_summary_metric_count",
+        "passed": true,
+        "detail": "summary=2 ids=2"
+      },
+      {
+        "check": "pinterest_PIEV01_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "pinterest_PIEV01_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=4730.0; stored=4730.0; numeric_days=5"
+      },
+      {
+        "check": "pinterest_PIEV01_counts",
+        "passed": true,
+        "detail": "computed=(5, 0, 2) stored=(5, 0, 2)"
+      },
+      {
+        "check": "pinterest_PIEV01_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[]; stored=[]"
+      },
+      {
+        "check": "pinterest_PIEV04_daily_matches_raw",
+        "passed": true,
+        "detail": "daily values/states recomputed from raw metric-column order"
+      },
+      {
+        "check": "pinterest_PIEV04_numeric_only_sum",
+        "passed": true,
+        "detail": "raw_numeric_sum=84.0; stored=84.0; numeric_days=5"
+      },
+      {
+        "check": "pinterest_PIEV04_counts",
+        "passed": true,
+        "detail": "computed=(5, 0, 2) stored=(5, 0, 2)"
+      },
+      {
+        "check": "pinterest_PIEV04_out_of_period_exclusion",
+        "passed": true,
+        "detail": "raw_extra=[]; stored=[]"
+      },
+      {
+        "check": "seven_target_dates",
+        "passed": true,
+        "detail": "['20261109', '20261110', '20261111', '20261112', '20261113', '20261114', '20261115']"
+      },
+      {
+        "check": "facebook_20261116_present_outside_range_and_not_summarized",
+        "passed": true,
+        "detail": "raw_rows=[[None, '0.0', '20261116']]; excluded from 09-15 daily vectors"
+      }
+    ],
+    "channels": [
+      {
+        "network": "instagram",
+        "metric_results": [
+          {
+            "metric": "IGEV12",
+            "numeric_days": 7,
+            "null_days": 0,
+            "absent_days": 0,
+            "raw_sum_numeric_only": 215.0,
+            "out_of_period_rows_excluded": []
+          },
+          {
+            "metric": "IGEV09",
+            "numeric_days": 1,
+            "null_days": 6,
+            "absent_days": 0,
+            "raw_sum_numeric_only": 1.0,
+            "out_of_period_rows_excluded": []
+          }
+        ],
+        "row_count": 7
+      },
+      {
+        "network": "facebook",
+        "metric_results": [
+          {
+            "metric": "FBEV49",
+            "numeric_days": 7,
+            "null_days": 0,
+            "absent_days": 0,
+            "raw_sum_numeric_only": 140.0,
+            "out_of_period_rows_excluded": [
+              {
+                "date": "20261116",
+                "value": null
+              }
+            ]
+          },
+          {
+            "metric": "FBEV34",
+            "numeric_days": 0,
+            "null_days": 7,
+            "absent_days": 0,
+            "raw_sum_numeric_only": null,
+            "out_of_period_rows_excluded": [
+              {
+                "date": "20261116",
+                "value": "0.0"
+              }
+            ]
+          }
+        ],
+        "row_count": 8
+      },
+      {
+        "network": "tiktok",
+        "metric_results": [
+          {
+            "metric": "TKEV02",
+            "numeric_days": 6,
+            "null_days": 0,
+            "absent_days": 1,
+            "raw_sum_numeric_only": 4026.0,
+            "out_of_period_rows_excluded": []
+          },
+          {
+            "metric": "TKEV06",
+            "numeric_days": 6,
+            "null_days": 0,
+            "absent_days": 1,
+            "raw_sum_numeric_only": 10.0,
+            "out_of_period_rows_excluded": []
+          }
+        ],
+        "row_count": 6
+      },
+      {
+        "network": "threads",
+        "metric_results": [
+          {
+            "metric": "THEV06",
+            "numeric_days": 2,
+            "null_days": 0,
+            "absent_days": 5,
+            "raw_sum_numeric_only": 5.0,
+            "out_of_period_rows_excluded": [
+              {
+                "date": "20261116",
+                "value": null
+              }
+            ]
+          },
+          {
+            "metric": "THEV05",
+            "numeric_days": 0,
+            "null_days": 2,
+            "absent_days": 5,
+            "raw_sum_numeric_only": null,
+            "out_of_period_rows_excluded": [
+              {
+                "date": "20261116",
+                "value": "0.0"
+              }
+            ]
+          }
+        ],
+        "row_count": 3
+      },
+      {
+        "network": "youtube",
+        "metric_results": [
+          {
+            "metric": "YTEV02",
+            "numeric_days": 5,
+            "null_days": 0,
+            "absent_days": 2,
+            "raw_sum_numeric_only": 796.0,
+            "out_of_period_rows_excluded": []
+          },
+          {
+            "metric": "YTEV05",
+            "numeric_days": 5,
+            "null_days": 0,
+            "absent_days": 2,
+            "raw_sum_numeric_only": 0.0,
+            "out_of_period_rows_excluded": []
+          }
+        ],
+        "row_count": 5
+      },
+      {
+        "network": "pinterest",
+        "metric_results": [
+          {
+            "metric": "PIEV01",
+            "numeric_days": 5,
+            "null_days": 0,
+            "absent_days": 2,
+            "raw_sum_numeric_only": 4730.0,
+            "out_of_period_rows_excluded": []
+          },
+          {
+            "metric": "PIEV04",
+            "numeric_days": 5,
+            "null_days": 0,
+            "absent_days": 2,
+            "raw_sum_numeric_only": 84.0,
+            "out_of_period_rows_excluded": []
+          }
+        ],
+        "row_count": 5
+      }
+    ],
+    "errors": [],
+    "note": "No source files were modified. JSON-null and absent days are not counted as zero; out-of-period rows are excluded."
+  },
+  "rootOfflineSummaryCheck": {
+    "metrics": 12,
+    "numericOnlySums": true,
+    "unknownWhenNoNumericDays": true,
+    "sevenExpectedDates": true
+  },
+  "klaviyo": {
+    "review_date": "2026-11-16",
+    "account_id": "XWqMAD",
+    "account_name": "LuxeStyle CH",
+    "account_timezone": "Europe/Zurich",
+    "klaviyo_currency": "USD",
+    "shopify_currency": "CHF (separate system)",
+    "placed_order_metric": {
+      "name": "Placed Order",
+      "id": "W7XTVD",
+      "freshly_discovered": true
+    },
+    "report": {
+      "requested_local_dates": "2026-11-09 through 2026-11-15",
+      "requested_bounds": [
+        "2026-11-09T00:00:00+01:00",
+        "2026-11-15T23:59:59+01:00"
+      ],
+      "response": "empty results and flow_aggregation",
+      "interpretation": "unknown; do not treat as zero activity"
+    },
+    "flow_status": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft"
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "draft"
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase · Order + Review",
+        "status": "draft"
+      }
+    ],
+    "preserve": {
+      "flow_id": "Vse76a",
+      "message_id": "VPmnEB",
+      "subject": "Dein Einkauf ist noch gespeichert",
+      "instruction": "Keep neutral; no discount; no change"
+    },
+    "read_only": true,
+    "proposalReference": "WELCOME-FREIGABEENTWURF-20261116-R253.md"
+  },
+  "limits": [
+    "No views-to-sales inference.",
+    "IG feed views exclude reels/stories. Platform definitions differ; no cross-channel total or ranking.",
+    "JSON null and absent days remain unknown. Numeric zero is retained only where delivered.",
+    "Flow report results=[] and flow_aggregation=[] do not prove zero performance or absent order sync.",
+    "Shop CHF and account USD stay separate; no revenue totals combined."
+  ]
+}

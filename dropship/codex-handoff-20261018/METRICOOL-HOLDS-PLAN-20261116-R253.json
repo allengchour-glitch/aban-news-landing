@@ -1,0 +1,1788 @@
+{
+  "run": "R253",
+  "observedAtUtc": "2026-11-16T07:37:08Z",
+  "brandId": 6227837,
+  "timezone": "Europe/Zurich",
+  "coverageIncludesFinalLocalCalendarDay": "2026-11-23",
+  "before": {
+    "checked_at_local": "2026-11-16 08:02 Europe/Zurich (07:02 UTC, approximate)",
+    "identity": {
+      "brand": "Luxestyle",
+      "brandId": 6227837,
+      "link_id": "link_6af9856e4ce48191a339029c3a271c04",
+      "timezone": "Europe/Zurich"
+    },
+    "read_only": true,
+    "metric_queries": false,
+    "windows": [
+      {
+        "name": "overdue-2026-11-15_2026-11-16",
+        "from": "2026-11-15T00:00:00+01:00",
+        "to": "2026-11-16T08:03:00+01:00"
+      },
+      {
+        "name": "future-2026-11-16_2026-11-18",
+        "from": "2026-11-16T08:03:00+01:00",
+        "to": "2026-11-18T00:00:00+01:00"
+      },
+      {
+        "name": "future-2026-11-18_2026-11-20",
+        "from": "2026-11-18T00:00:00+01:00",
+        "to": "2026-11-20T00:00:00+01:00"
+      },
+      {
+        "name": "future-2026-11-20_2026-11-22",
+        "from": "2026-11-20T00:00:00+01:00",
+        "to": "2026-11-22T00:00:00+01:00"
+      },
+      {
+        "name": "future-2026-11-22_2026-11-24",
+        "from": "2026-11-22T00:00:00+01:00",
+        "to": "2026-11-24T00:00:00+01:00"
+      }
+    ],
+    "scheduled_endpoint_rows": 53,
+    "overdue_rows": 6,
+    "future_rows": 47,
+    "future_unique_uuids": 47,
+    "future_draft_false_autoPublish_true": 38,
+    "future_draft_true_autoPublish_false": 9,
+    "future_provider_statuses": {
+      "PENDING": 58
+    },
+    "future_active_channel_placements": {
+      "threads": 8,
+      "facebook": 9,
+      "instagram": 9,
+      "tiktok": 11,
+      "pinterest": 8,
+      "youtube": 3
+    },
+    "future_daily_channel_counts": {
+      "2026-11-16": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 2,
+        "pinterest_active": 1,
+        "instagram_draft": 2,
+        "youtube_active": 1,
+        "facebook_draft": 1
+      },
+      "2026-11-17": {
+        "threads_active": 1,
+        "tiktok_active": 2,
+        "facebook_active": 2,
+        "instagram_active": 2,
+        "pinterest_active": 1,
+        "youtube_active": 2,
+        "tiktok_draft": 1
+      },
+      "2026-11-18": {
+        "facebook_draft": 1,
+        "instagram_draft": 1,
+        "threads_draft": 1,
+        "tiktok_draft": 1,
+        "youtube_draft": 1,
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 1,
+        "pinterest_active": 1
+      },
+      "2026-11-19": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 2,
+        "pinterest_active": 1,
+        "youtube_draft": 1
+      },
+      "2026-11-20": {
+        "threads_active": 1,
+        "tiktok_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "pinterest_active": 1
+      },
+      "2026-11-21": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 1,
+        "pinterest_active": 1
+      },
+      "2026-11-22": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 1,
+        "pinterest_active": 1
+      },
+      "2026-11-23": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 1,
+        "pinterest_active": 1
+      }
+    },
+    "overdue_provider_statuses": {
+      "PUBLISHED": 6,
+      "PENDING": 1
+    },
+    "overdue_rows_compact": [
+      {
+        "uuid": "6199136659928140012",
+        "id": 420726136,
+        "datetime": "2026-11-15T16:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.instagram.com/p/DfxD0rljRxX/"
+          }
+        ]
+      },
+      {
+        "uuid": "7768651932591999367",
+        "id": 420728374,
+        "datetime": "2026-11-15T16:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122153422575350792"
+          }
+        ]
+      },
+      {
+        "uuid": "-3833193365444016309",
+        "id": 422280155,
+        "datetime": "2026-11-15T11:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122153363619350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.instagram.com/p/DfwhWf3DeS1/"
+          }
+        ]
+      },
+      {
+        "uuid": "-6967517640837021033",
+        "id": 422295156,
+        "datetime": "2026-11-15T12:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7708352119962733856"
+          }
+        ]
+      },
+      {
+        "uuid": "6213007717183669914",
+        "id": 423622854,
+        "datetime": "2026-11-15T20:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585814317"
+          }
+        ]
+      },
+      {
+        "uuid": "8935974072695279179",
+        "id": 427969120,
+        "datetime": "2026-11-15T11:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "publicUrl": null
+          }
+        ]
+      }
+    ],
+    "exact_same_channel_caption_and_ordered_media_duplicates": [],
+    "r252_hold_comparison": [
+      {
+        "group": "audio_holds",
+        "uuid": "-4472725258033347244",
+        "baseline_r243_id": 426613069,
+        "baseline_r252_id": null,
+        "fresh_returned": false,
+        "fresh_id": null,
+        "fresh_datetime": null,
+        "fresh_draft": null,
+        "fresh_autoPublish": null,
+        "fresh_providers": null,
+        "fresh_media": null,
+        "out_of_window_or_not_returned": true
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "-7002936161864562103",
+        "baseline_r243_id": 426613132,
+        "baseline_r252_id": 429390094,
+        "fresh_returned": true,
+        "fresh_id": 429390094,
+        "fresh_datetime": "2026-11-17T13:00:00",
+        "fresh_draft": false,
+        "fresh_autoPublish": true,
+        "fresh_providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14138555457630086945.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "1744402171830094170",
+        "baseline_r243_id": 426612259,
+        "baseline_r252_id": null,
+        "fresh_returned": false,
+        "fresh_id": null,
+        "fresh_datetime": null,
+        "fresh_draft": null,
+        "fresh_autoPublish": null,
+        "fresh_providers": null,
+        "fresh_media": null,
+        "out_of_window_or_not_returned": true
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "2172266762404316928",
+        "baseline_r243_id": 426613082,
+        "baseline_r252_id": 429390445,
+        "fresh_returned": true,
+        "fresh_id": 429390445,
+        "fresh_datetime": "2026-11-17T13:00:00",
+        "fresh_draft": false,
+        "fresh_autoPublish": true,
+        "fresh_providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3484059358275403548.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "3963843144054620883",
+        "baseline_r243_id": 427286519,
+        "baseline_r252_id": 429395222,
+        "fresh_returned": true,
+        "fresh_id": 429395222,
+        "fresh_datetime": "2026-11-17T20:00:00",
+        "fresh_draft": false,
+        "fresh_autoPublish": true,
+        "fresh_providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5330233543487375882.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "5647388074617226143",
+        "baseline_r243_id": 426613048,
+        "baseline_r252_id": null,
+        "fresh_returned": false,
+        "fresh_id": null,
+        "fresh_datetime": null,
+        "fresh_draft": null,
+        "fresh_autoPublish": null,
+        "fresh_providers": null,
+        "fresh_media": null,
+        "out_of_window_or_not_returned": true
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "8935974072695279179",
+        "baseline_r243_id": 427286591,
+        "baseline_r252_id": null,
+        "fresh_returned": true,
+        "fresh_id": 427969120,
+        "fresh_datetime": "2026-11-15T11:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "threads",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "projector_master_holds",
+        "uuid": "4156060813550767248",
+        "baseline_r243_id": 429127242,
+        "baseline_r252_id": 429127242,
+        "fresh_returned": true,
+        "fresh_id": 429127242,
+        "fresh_datetime": "2026-11-16T19:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "projector_master_holds",
+        "uuid": "6680239273933357186",
+        "baseline_r243_id": 429127259,
+        "baseline_r252_id": 429127259,
+        "fresh_returned": true,
+        "fresh_id": 429127259,
+        "fresh_datetime": "2026-11-16T19:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "projector_master_holds",
+        "uuid": "3614365779669041576",
+        "baseline_r243_id": 429127272,
+        "baseline_r252_id": 429127272,
+        "fresh_returned": true,
+        "fresh_id": 429127272,
+        "fresh_datetime": "2026-11-17T19:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "projector_master_holds",
+        "uuid": "-7647174116509334899",
+        "baseline_r243_id": 429127286,
+        "baseline_r252_id": 429127286,
+        "fresh_returned": true,
+        "fresh_id": 429127286,
+        "fresh_datetime": "2026-11-19T19:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      }
+    ],
+    "r252_future_uuid_set_unchanged": true,
+    "r252_uuid_comparison_note": "All 47 UUIDs in R252 (43 rows plus supplemental Nov 23 window) still appear in this fresh Nov 16–23 future window; no added/missing UUIDs. Six separate prior-day rows were returned.",
+    "global_autopublish_setting": "No separate account-wide setting is exposed by getBrandSettings. Per-post global autoPublish is true for all active future rows and false for drafts.",
+    "instagram_provider_specific_autopublish": "Explicitly present in each active post instagramData; all active IG rows returned true.",
+    "limitations": [
+      "getScheduledPosts returns scheduled/queue rows, not a complete publish-history or error-history API. Absence of errors here is limited to returned rows.",
+      "PENDING means queued provider state, not verified later publication.",
+      "The overdue range returns 5 UUIDs with 6 PUBLISHED provider placements and one Threads draft/PENDING row; it is not an exhaustive publication history.",
+      "No metrics, Klaviyo, or GSC data was requested or queried.",
+      "Raw response includes source account fields; kept local with restricted file permissions and not reproduced in this report."
+    ],
+    "active_instagram_provider_autopublish": [
+      {
+        "uuid": "7991040995405613204",
+        "id": 424392702,
+        "datetime": "2026-11-16T16:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "8906814597211638530",
+        "id": 424393422,
+        "datetime": "2026-11-17T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "3963843144054620883",
+        "id": 429395222,
+        "datetime": "2026-11-17T20:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "5511347900019396585",
+        "id": 425725034,
+        "datetime": "2026-11-18T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "4792908094992761420",
+        "id": 425725555,
+        "datetime": "2026-11-19T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "108318075245381964",
+        "id": 425726329,
+        "datetime": "2026-11-20T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "4464007380148308511",
+        "id": 426962036,
+        "datetime": "2026-11-21T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "2057359447521839535",
+        "id": 426962393,
+        "datetime": "2026-11-22T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "86409981883271248",
+        "id": 427963400,
+        "datetime": "2026-11-23T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      }
+    ],
+    "active_instagram_provider_autopublish_all_true": true,
+    "youtube_provider_settings": [
+      {
+        "uuid": "-1463494076488727798",
+        "id": 428891142,
+        "datetime": "2026-11-16T18:30:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "3 Ideen für Hund und Katze | LuxeStyle #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      },
+      {
+        "uuid": "-3668679867663038577",
+        "id": 428891173,
+        "datetime": "2026-11-17T18:30:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "8 Fächer, kompakt verstaut | LuxeStyle #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      },
+      {
+        "uuid": "-7002936161864562103",
+        "id": 429390094,
+        "datetime": "2026-11-17T13:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      },
+      {
+        "uuid": "-3731207601091163105",
+        "id": 423484839,
+        "datetime": "2026-11-18T18:00:00",
+        "draft": true,
+        "global_autoPublish": false,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "id": 429127286,
+        "datetime": "2026-11-19T19:00:00",
+        "draft": true,
+        "global_autoPublish": false,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "Sternenlicht-Projektor im Detail #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      }
+    ]
+  },
+  "after": {
+    "checked_at_local": "2026-11-16 08:22 Europe/Zurich approximate; post-hold readback is from confirmed-holds.json",
+    "identity": {
+      "brand": "Luxestyle",
+      "brandId": 6227837,
+      "link_id": "link_6af9856e4ce48191a339029c3a271c04",
+      "timezone": "Europe/Zurich"
+    },
+    "read_only": true,
+    "metric_queries": false,
+    "windows": [
+      {
+        "name": "overdue-2026-11-15_2026-11-16",
+        "from": "2026-11-15T00:00:00+01:00",
+        "to": "2026-11-16T08:03:00+01:00"
+      },
+      {
+        "name": "future-2026-11-16_2026-11-18",
+        "from": "2026-11-16T08:03:00+01:00",
+        "to": "2026-11-18T00:00:00+01:00"
+      },
+      {
+        "name": "future-2026-11-18_2026-11-20",
+        "from": "2026-11-18T00:00:00+01:00",
+        "to": "2026-11-20T00:00:00+01:00"
+      },
+      {
+        "name": "future-2026-11-20_2026-11-22",
+        "from": "2026-11-20T00:00:00+01:00",
+        "to": "2026-11-22T00:00:00+01:00"
+      },
+      {
+        "name": "future-2026-11-22_2026-11-24",
+        "from": "2026-11-22T00:00:00+01:00",
+        "to": "2026-11-24T00:00:00+01:00"
+      }
+    ],
+    "scheduled_endpoint_rows": 53,
+    "overdue_rows": 6,
+    "future_rows": 47,
+    "future_unique_uuids": 47,
+    "future_draft_false_autoPublish_true": 35,
+    "future_draft_true_autoPublish_false": 12,
+    "future_provider_statuses": {
+      "PENDING": 58
+    },
+    "future_active_channel_placements": {
+      "threads": 8,
+      "facebook": 8,
+      "instagram": 8,
+      "tiktok": 10,
+      "pinterest": 8,
+      "youtube": 2
+    },
+    "future_daily_channel_counts": {
+      "2026-11-16": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 2,
+        "pinterest_active": 1,
+        "instagram_draft": 2,
+        "youtube_active": 1,
+        "facebook_draft": 1
+      },
+      "2026-11-17": {
+        "threads_active": 1,
+        "tiktok_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "pinterest_active": 1,
+        "youtube_active": 1,
+        "tiktok_draft": 2,
+        "youtube_draft": 1,
+        "facebook_draft": 1,
+        "instagram_draft": 1
+      },
+      "2026-11-18": {
+        "facebook_draft": 1,
+        "instagram_draft": 1,
+        "threads_draft": 1,
+        "tiktok_draft": 1,
+        "youtube_draft": 1,
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 1,
+        "pinterest_active": 1
+      },
+      "2026-11-19": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 2,
+        "pinterest_active": 1,
+        "youtube_draft": 1
+      },
+      "2026-11-20": {
+        "threads_active": 1,
+        "tiktok_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "pinterest_active": 1
+      },
+      "2026-11-21": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 1,
+        "pinterest_active": 1
+      },
+      "2026-11-22": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 1,
+        "pinterest_active": 1
+      },
+      "2026-11-23": {
+        "threads_active": 1,
+        "facebook_active": 1,
+        "instagram_active": 1,
+        "tiktok_active": 1,
+        "pinterest_active": 1
+      }
+    },
+    "overdue_provider_statuses": {
+      "PUBLISHED": 6,
+      "PENDING": 1
+    },
+    "overdue_rows_compact": [
+      {
+        "uuid": "6199136659928140012",
+        "id": 420726136,
+        "datetime": "2026-11-15T16:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.instagram.com/p/DfxD0rljRxX/"
+          }
+        ]
+      },
+      {
+        "uuid": "7768651932591999367",
+        "id": 420728374,
+        "datetime": "2026-11-15T16:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122153422575350792"
+          }
+        ]
+      },
+      {
+        "uuid": "-3833193365444016309",
+        "id": 422280155,
+        "datetime": "2026-11-15T11:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PUBLISHED",
+            "publicUrl": "https://facebook.com/122108214291350792/posts/122153363619350792"
+          },
+          {
+            "network": "instagram",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.instagram.com/p/DfwhWf3DeS1/"
+          }
+        ]
+      },
+      {
+        "uuid": "-6967517640837021033",
+        "id": 422295156,
+        "datetime": "2026-11-15T12:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7708352119962733856"
+          }
+        ]
+      },
+      {
+        "uuid": "6213007717183669914",
+        "id": 423622854,
+        "datetime": "2026-11-15T20:00:00",
+        "draft": false,
+        "autoPublish": true,
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PUBLISHED",
+            "publicUrl": "https://www.pinterest.es/pin/1111333645585814317"
+          }
+        ]
+      },
+      {
+        "uuid": "8935974072695279179",
+        "id": 427969120,
+        "datetime": "2026-11-15T11:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "publicUrl": null
+          }
+        ]
+      }
+    ],
+    "exact_same_channel_caption_and_ordered_media_duplicates": [],
+    "r252_future_uuid_set_unchanged": true,
+    "r252_uuid_comparison_note": "All 47 UUIDs in R252 (43 rows plus supplemental Nov 23 window) still appear in this fresh Nov 16–23 future window; no added/missing UUIDs. Six separate prior-day rows were returned.",
+    "global_autopublish_setting": "No separate account-wide setting is exposed by getBrandSettings. Per-post global autoPublish is true for all active future rows and false for drafts.",
+    "instagram_provider_specific_autopublish": "Explicitly present in each active post instagramData; all active IG rows returned true.",
+    "limitations": [
+      "getScheduledPosts returns scheduled/queue rows, not a complete publish-history or error-history API. Absence of errors here is limited to returned rows.",
+      "PENDING means queued provider state, not verified later publication.",
+      "The overdue range returns 5 UUIDs with 6 PUBLISHED provider placements and one Threads draft/PENDING row; it is not an exhaustive publication history.",
+      "No metrics, Klaviyo, or GSC data was requested or queried.",
+      "Raw response includes source account fields; kept local with restricted file permissions and not reproduced in this report.",
+      "Post-hold changes are confirmed only for the three target UUIDs in confirmed-holds.json. Their PENDING states are queue states; no complete publication history was queried."
+    ],
+    "active_instagram_provider_autopublish": [
+      {
+        "uuid": "7991040995405613204",
+        "id": 424392702,
+        "datetime": "2026-11-16T16:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "8906814597211638530",
+        "id": 424393422,
+        "datetime": "2026-11-17T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "5511347900019396585",
+        "id": 425725034,
+        "datetime": "2026-11-18T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "4792908094992761420",
+        "id": 425725555,
+        "datetime": "2026-11-19T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "108318075245381964",
+        "id": 425726329,
+        "datetime": "2026-11-20T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "4464007380148308511",
+        "id": 426962036,
+        "datetime": "2026-11-21T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "2057359447521839535",
+        "id": 426962393,
+        "datetime": "2026-11-22T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      },
+      {
+        "uuid": "86409981883271248",
+        "id": 427963400,
+        "datetime": "2026-11-23T17:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "instagramData_autoPublish": true,
+        "instagram_provider_status": "PENDING"
+      }
+    ],
+    "active_instagram_provider_autopublish_all_true": true,
+    "youtube_provider_settings": [
+      {
+        "uuid": "-1463494076488727798",
+        "id": 428891142,
+        "datetime": "2026-11-16T18:30:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "3 Ideen für Hund und Katze | LuxeStyle #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      },
+      {
+        "uuid": "-3668679867663038577",
+        "id": 428891173,
+        "datetime": "2026-11-17T18:30:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "8 Fächer, kompakt verstaut | LuxeStyle #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      },
+      {
+        "uuid": "-7002936161864562103",
+        "id": 429390094,
+        "datetime": "2026-11-17T13:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      },
+      {
+        "uuid": "-3731207601091163105",
+        "id": 423484839,
+        "datetime": "2026-11-18T18:00:00",
+        "draft": true,
+        "global_autoPublish": false,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "id": 429127286,
+        "datetime": "2026-11-19T19:00:00",
+        "draft": true,
+        "global_autoPublish": false,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "Sternenlicht-Projektor im Detail #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false
+      }
+    ],
+    "source_note": "Original five-window planner responses remain in raw-responses.json. Post-hold state for exactly three UUIDs is from confirmed-holds.json fresh common Nov 17 readback; no API calls were made in this offline closeout.",
+    "pre_hold_r252_window_comparison": [
+      {
+        "group": "audio_holds",
+        "uuid": "-4472725258033347244",
+        "baseline_r243_id": 426613069,
+        "baseline_r252_id": null,
+        "fresh_returned": false,
+        "fresh_id": null,
+        "fresh_datetime": null,
+        "fresh_draft": null,
+        "fresh_autoPublish": null,
+        "fresh_providers": null,
+        "fresh_media": null,
+        "out_of_window_or_not_returned": true
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "-7002936161864562103",
+        "baseline_r243_id": 426613132,
+        "baseline_r252_id": 429390094,
+        "fresh_returned": true,
+        "fresh_id": 429390094,
+        "fresh_datetime": "2026-11-17T13:00:00",
+        "fresh_draft": false,
+        "fresh_autoPublish": true,
+        "fresh_providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14138555457630086945.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "1744402171830094170",
+        "baseline_r243_id": 426612259,
+        "baseline_r252_id": null,
+        "fresh_returned": false,
+        "fresh_id": null,
+        "fresh_datetime": null,
+        "fresh_draft": null,
+        "fresh_autoPublish": null,
+        "fresh_providers": null,
+        "fresh_media": null,
+        "out_of_window_or_not_returned": true
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "2172266762404316928",
+        "baseline_r243_id": 426613082,
+        "baseline_r252_id": 429390445,
+        "fresh_returned": true,
+        "fresh_id": 429390445,
+        "fresh_datetime": "2026-11-17T13:00:00",
+        "fresh_draft": false,
+        "fresh_autoPublish": true,
+        "fresh_providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3484059358275403548.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "3963843144054620883",
+        "baseline_r243_id": 427286519,
+        "baseline_r252_id": 429395222,
+        "fresh_returned": true,
+        "fresh_id": 429395222,
+        "fresh_datetime": "2026-11-17T20:00:00",
+        "fresh_draft": false,
+        "fresh_autoPublish": true,
+        "fresh_providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5330233543487375882.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "5647388074617226143",
+        "baseline_r243_id": 426613048,
+        "baseline_r252_id": null,
+        "fresh_returned": false,
+        "fresh_id": null,
+        "fresh_datetime": null,
+        "fresh_draft": null,
+        "fresh_autoPublish": null,
+        "fresh_providers": null,
+        "fresh_media": null,
+        "out_of_window_or_not_returned": true
+      },
+      {
+        "group": "audio_holds",
+        "uuid": "8935974072695279179",
+        "baseline_r243_id": 427286591,
+        "baseline_r252_id": null,
+        "fresh_returned": true,
+        "fresh_id": 427969120,
+        "fresh_datetime": "2026-11-15T11:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "threads",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-8433270664969267227.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "projector_master_holds",
+        "uuid": "4156060813550767248",
+        "baseline_r243_id": 429127242,
+        "baseline_r252_id": 429127242,
+        "fresh_returned": true,
+        "fresh_id": 429127242,
+        "fresh_datetime": "2026-11-16T19:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-17906828818888044629.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "projector_master_holds",
+        "uuid": "6680239273933357186",
+        "baseline_r243_id": 429127259,
+        "baseline_r252_id": 429127259,
+        "fresh_returned": true,
+        "fresh_id": 429127259,
+        "fresh_datetime": "2026-11-16T19:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12120062633045835946.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "projector_master_holds",
+        "uuid": "3614365779669041576",
+        "baseline_r243_id": 429127272,
+        "baseline_r252_id": 429127272,
+        "fresh_returned": true,
+        "fresh_id": 429127272,
+        "fresh_datetime": "2026-11-17T19:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      },
+      {
+        "group": "projector_master_holds",
+        "uuid": "-7647174116509334899",
+        "baseline_r243_id": 429127286,
+        "baseline_r252_id": 429127286,
+        "fresh_returned": true,
+        "fresh_id": 429127286,
+        "fresh_datetime": "2026-11-19T19:00:00",
+        "fresh_draft": true,
+        "fresh_autoPublish": false,
+        "fresh_providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING"
+          }
+        ],
+        "fresh_media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5018391867237613111.mp4"
+        ],
+        "out_of_window_or_not_returned": false
+      }
+    ],
+    "active_instagram_provider_autopublish_note": "Eight still-active future IG placements retain instagramData.autoPublish=true. The Facebook+Instagram hold UUID 3963843144054620883 is now draft=true, global autoPublish=false, and instagramData.autoPublish=false.",
+    "post_hold_target_readbacks": [
+      {
+        "uuid": "-7002936161864562103",
+        "old_id": 429390094,
+        "new_id": 429675848,
+        "date_time": "2026-11-17T13:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "instagramData_autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14138555457630086945.mp4"
+        ],
+        "uuid_preserved": true,
+        "all_content_and_actual_provider_fields_preserved": true,
+        "other_window_objects_unchanged": true,
+        "server_metadata_deltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T00:13:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T08:20:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "unusedNonTargetInstagramAutoPublish": {
+            "before": true,
+            "after": false
+          }
+        }
+      },
+      {
+        "uuid": "2172266762404316928",
+        "old_id": 429390445,
+        "new_id": 429676883,
+        "date_time": "2026-11-17T13:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "instagramData_autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3484059358275403548.mp4"
+        ],
+        "uuid_preserved": true,
+        "all_content_and_actual_provider_fields_preserved": true,
+        "other_window_objects_unchanged": true,
+        "server_metadata_deltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T00:13:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T08:22:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "instagramAutoPublish": {
+            "before": true,
+            "after": false,
+            "targeted": false
+          }
+        }
+      },
+      {
+        "uuid": "3963843144054620883",
+        "old_id": 429395222,
+        "new_id": 429676896,
+        "date_time": "2026-11-17T20:00:00",
+        "draft": true,
+        "autoPublish": false,
+        "instagramData_autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5330233543487375882.mp4"
+        ],
+        "uuid_preserved": true,
+        "all_content_and_actual_provider_fields_preserved": true,
+        "other_window_objects_unchanged": true,
+        "server_metadata_deltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T00:20:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T08:22:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "instagramAutoPublish": {
+            "before": true,
+            "after": false,
+            "targeted": true
+          }
+        }
+      }
+    ],
+    "successful_hold_updates": 3,
+    "rejected_validation_requests": 1,
+    "post_hold_delta_note": "Exactly three existing UUIDs were set to draft and global autoPublish=false. Existing UUIDs retained; three numeric IDs changed. Confirmed readback reports preserved target content, media, publication date, UUID, and actual provider states. API reset creationDate and the non-target Instagram autoPublish default; see per-target server_metadata_deltas. Other window objects were unchanged.",
+    "daily_coverage_after_holds": "All six channels still have at least one active entry on 2026-11-17; counts for all other queried dates are unchanged from the pre-hold snapshot. From 2026-11-18 onward, YouTube has draft-only on Nov 18 and 19; no YouTube queue object Nov 20–23.",
+    "youtube_hold_details": [
+      {
+        "uuid": "-7002936161864562103",
+        "id": 429390094,
+        "datetime": "2026-11-17T13:00:00",
+        "draft": false,
+        "global_autoPublish": true,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false,
+        "post_hold_draft": true,
+        "post_hold_autoPublish": false,
+        "post_hold_provider_status": "PENDING"
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "id": 429127286,
+        "datetime": "2026-11-19T19:00:00",
+        "draft": true,
+        "global_autoPublish": false,
+        "youtube_provider_status": "PENDING",
+        "youtube_title": "Sternenlicht-Projektor im Detail #Shorts",
+        "youtube_type": "short",
+        "youtube_privacy": "public",
+        "youtube_madeForKids": false,
+        "youtube_isAiGeneratedContent": false,
+        "post_hold_draft": true,
+        "post_hold_autoPublish": false,
+        "post_hold_provider_status": "PENDING"
+      }
+    ]
+  },
+  "ownUpdates": {
+    "scope": "Exactly three old-hold UUIDs, four provider placements on17Nov, actual silent media verified afresh. No new posts/publish/delete/content/media/date changes.",
+    "successfulWrites": 3,
+    "rejectedValidationRequests": 1,
+    "readbacks": [
+      {
+        "uuid": "-7002936161864562103",
+        "oldId": 429390094,
+        "newId": 429675848,
+        "publicationDate": {
+          "dateTime": "2026-11-17T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14138555457630086945.mp4"
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "allContentAndActualProviderFieldsPreserved": true,
+          "providerStatesPreserved": true
+        },
+        "changedTopLevelKeys": [
+          "id",
+          "creationDate",
+          "autoPublish",
+          "draft",
+          "instagramData"
+        ],
+        "otherWindowObjectsUnchanged": true,
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T00:13:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T08:20:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "unusedNonTargetInstagramAutoPublish": {
+            "before": true,
+            "after": false
+          }
+        },
+        "note": "API resets creationDate on new numeric ID and unused Instagram AP default when non-provider networkData cannot be submitted. Original content, date, media, UUID and actual YouTube fields are preserved; not full all-field equality."
+      },
+      {
+        "uuid": "2172266762404316928",
+        "oldId": 429390445,
+        "newId": 429676883,
+        "publicationDate": {
+          "dateTime": "2026-11-17T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3484059358275403548.mp4"
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "targetInstagramOff": true,
+          "allContentAndActualProviderFieldsPreserved": true,
+          "providerStatesPreserved": true
+        },
+        "otherWindowObjectsUnchanged": true,
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T00:13:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T08:22:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "instagramAutoPublish": {
+            "before": true,
+            "after": false,
+            "targeted": false
+          }
+        },
+        "note": "CreationDate/numeric ID reset by API; inactive Instagram defaults reset when not an actual provider. Actual provider fields/content/media/date/UUID preserved."
+      },
+      {
+        "uuid": "3963843144054620883",
+        "oldId": 429395222,
+        "newId": 429676896,
+        "publicationDate": {
+          "dateTime": "2026-11-17T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5330233543487375882.mp4"
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "targetInstagramOff": true,
+          "allContentAndActualProviderFieldsPreserved": true,
+          "providerStatesPreserved": true
+        },
+        "otherWindowObjectsUnchanged": true,
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T00:20:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T08:22:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "instagramAutoPublish": {
+            "before": true,
+            "after": false,
+            "targeted": true
+          }
+        },
+        "note": "CreationDate/numeric ID reset by API; inactive Instagram defaults reset when not an actual provider. Actual provider fields/content/media/date/UUID preserved."
+      }
+    ],
+    "inflight": null
+  },
+  "latest17NovReadback": {
+    "readAtUTC": "2026-11-16T07:30:00Z",
+    "rows": [
+      {
+        "id": 424393187,
+        "uuid": "-2055061205905158476",
+        "draft": false,
+        "autoPublish": true,
+        "publicationDate": {
+          "dateTime": "2026-11-17T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "instagramAutoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_b7d0012d-ac66-44b7-b2fb-c2241bf1f06a.jpg?v=1794397437"
+        ],
+        "text": "Schwalbe oder Schmetterling? Die Retro-Keramiktasse mit Tiermotiv gibt es in Braun mit Schwalben und in Weiss mit Schmetterlingen. Welche würdest du nehmen?\n\nhttps://luxestyle.ch/products/retro-keramik-kaffeetasse-mit-tiermotiv-621800"
+      },
+      {
+        "id": 424393289,
+        "uuid": "-326770756211684563",
+        "draft": false,
+        "autoPublish": true,
+        "publicationDate": {
+          "dateTime": "2026-11-17T16:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "instagramAutoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_1_d1b07451-b0b9-4a81-8d8d-b0320b7e39d4.jpg?v=1794397405",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_2_4444b6f7-a436-4b33-be29-a341d8dbc51d.jpg?v=1794397412",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tt_3_293b22f6-d6f6-44ff-b046-74e64d8c35ea.jpg?v=1794397419"
+        ],
+        "text": "Schwalbe oder Schmetterling: Welche Tasse wäre deine?\n\nRetro-Keramiktasse mit Tiermotiv. Zwei Motive: Schwalbe · Braun und Schmetterling · Weiss. Gewellter Henkel, kommt in einer Geschenkbox. Je CHF 17.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#keramiktasse #kaffeetasse #retro #tassenliebe\n\nShop: luxestyle.ch/tt"
+      },
+      {
+        "id": 424393422,
+        "uuid": "8906814597211638530",
+        "draft": false,
+        "autoPublish": true,
+        "publicationDate": {
+          "dateTime": "2026-11-17T17:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "instagramAutoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+        ],
+        "text": "Schwalbe oder Schmetterling? ☕\n\nDie Retro-Keramiktasse mit Tiermotiv gibt es in zwei Ausführungen: Schwalbe · Braun und Schmetterling · Weiss. Der Henkel ist gewellt, der Rand unregelmässig geformt. Gedacht für den Kaffee zu Hause oder im Büro. Die Tasse kommt in einer Geschenkbox.\n\nBeide Motive kosten je CHF 17.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\nWelches Motiv ist deins?\n\n#keramiktasse #kaffeetasse #retrodesign #tassenliebe\n\nShop: luxestyle.ch/ig"
+      },
+      {
+        "id": 424393614,
+        "uuid": "9119250214596987223",
+        "draft": false,
+        "autoPublish": true,
+        "publicationDate": {
+          "dateTime": "2026-11-17T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "pinterest",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "instagramAutoPublish": true,
+        "media": [
+          "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_e17bf436-d4bd-4b11-8300-2e17b5b11b42.png?v=1794397450"
+        ],
+        "text": "Keramiktasse im Retro-Design mit Tiermotiv. Zwei Ausführungen: Schwalbe · Braun und Schmetterling · Weiss. Handgefertigt, der Henkel ist gewellt. Für den Kaffee zu Hause oder im Büro. Die Tasse kommt in einer Geschenkbox."
+      },
+      {
+        "id": 428891173,
+        "uuid": "-3668679867663038577",
+        "draft": false,
+        "autoPublish": true,
+        "publicationDate": {
+          "dateTime": "2026-11-17T18:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "instagramAutoPublish": true,
+        "youtubeMadeForKids": false,
+        "youtubeTitle": "8 Fächer, kompakt verstaut | LuxeStyle #Shorts",
+        "media": [
+          "https://static.metricool.com/common/202611/6227837-mtr_13422080667703116992.mp4"
+        ],
+        "text": "8 Fächer, kompakt verstaut.\n\nDie Medizin-Box mit 8 Fächern lässt sich zusammenklappen. Im kurzen Video siehst du die Aufteilung und das Öffnen der Box.\n\nFarben, aktuelle Preise und Produktdetails:\nhttps://luxestyle.ch/products/medizin-box-mit-8-fachern-612200?utm_source=youtube&utm_medium=shorts&utm_campaign=repost_20261117\n\n#aufbewahrung #ordnung #luxestyle #shorts"
+      },
+      {
+        "id": 429127272,
+        "uuid": "3614365779669041576",
+        "draft": true,
+        "autoPublish": false,
+        "publicationDate": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "instagramAutoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14707599990910049871.mp4"
+        ],
+        "text": "Licht im Detail: der Sternenlicht-Projektor für Schlafzimmer. Welche Ausführung welche Scheiben mitbringt, steht beim Artikel.\n\nShop: luxestyle.ch/tt\n\n#sternlicht #lichtmomente #luxestyle"
+      },
+      {
+        "id": 429675848,
+        "uuid": "-7002936161864562103",
+        "draft": true,
+        "autoPublish": false,
+        "publicationDate": {
+          "dateTime": "2026-11-17T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "instagramAutoPublish": false,
+        "youtubeMadeForKids": false,
+        "youtubeTitle": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14138555457630086945.mp4"
+        ],
+        "text": "Zucchini wird zu Spiralen. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfuss für mehr Stabilität und drei Edelstahlmessern. Bedient wird er von Hand mit der Kurbel.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: https://luxestyle.ch/products/3-in-1-gemusehobel-mit-scharfen-messern-940928?utm_source=youtube&utm_medium=shorts&utm_campaign=gemuesehobel\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz #Shorts"
+      },
+      {
+        "id": 429676883,
+        "uuid": "2172266762404316928",
+        "draft": true,
+        "autoPublish": false,
+        "publicationDate": {
+          "dateTime": "2026-11-17T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "instagramAutoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3484059358275403548.mp4"
+        ],
+        "text": "Zucchini wird zu Spiralen. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfuss für mehr Stabilität und drei Edelstahlmessern. Bedient wird er von Hand mit der Kurbel.\n\nSchweiz: Lieferung 10–20 Werktage\nVersand CHF 7, ab CHF 50 gratis nach Rabatt\n\nShop: luxestyle.ch/tt\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz"
+      },
+      {
+        "id": 429676896,
+        "uuid": "3963843144054620883",
+        "draft": true,
+        "autoPublish": false,
+        "publicationDate": {
+          "dateTime": "2026-11-17T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "instagramAutoPublish": false,
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5330233543487375882.mp4"
+        ],
+        "text": "Zucchini wird zu Spiralen. 🥒 Der 3-in-1 Gemüsehobel hobelt, schneidet und zerkleinert, mit Saugfuss für mehr Stabilität und drei Edelstahlmessern. Bedient wird er von Hand mit der Kurbel.\n\nSchweiz: Lieferung 10–20 Werktage, Versand CHF 7, ab CHF 50 gratis nach Rabatt.\nShop: luxestyle.ch (Instagram: Link in Bio)\n\n#gemuesehobel #kuechenhelfer #kochen #schweiz"
+      }
+    ]
+  },
+  "actualMediaDownloads": [
+    {
+      "uuid": "-7002936161864562103",
+      "id": 429390094,
+      "url": "https://static.metricool.com/planner/202611/6227837-file-14138555457630086945.mp4",
+      "http": 200,
+      "bytes": 6420565,
+      "sha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d"
+    },
+    {
+      "uuid": "2172266762404316928",
+      "id": 429390445,
+      "url": "https://static.metricool.com/planner/202611/6227837-file-3484059358275403548.mp4",
+      "http": 200,
+      "bytes": 6420565,
+      "sha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d"
+    },
+    {
+      "uuid": "3963843144054620883",
+      "id": 429395222,
+      "url": "https://static.metricool.com/planner/202611/6227837-file-5330233543487375882.mp4",
+      "http": 200,
+      "bytes": 6420565,
+      "sha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d"
+    }
+  ],
+  "audioEvidence": {
+    "actualSha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d",
+    "freshDownloads": 3,
+    "decodedBy": "R252 complete stereo decode, same fresh actual bytes R253",
+    "sampleRateHz": 44100,
+    "stereoFrames": 447488,
+    "bothChannelsAllSamplesExactlyZero": true,
+    "canonicalMusicPresent": false
+  },
+  "writeAccounting": {
+    "successfulExistingUuidUpdates": 3,
+    "affectedProviderPlacements": 4,
+    "rejectedValidationRequests": 1,
+    "rejectedRequestChangedPost": false,
+    "newPosts": 0,
+    "deletions": 0,
+    "ownPublications": 0,
+    "blindRetries": 0
+  },
+  "diffScope": "draft/AP off; IG AP off for actual IG provider; server reset numeric IDs/creationDate and unused IG default on non-IG posts. Actual content/media/date/UUID/provider configuration preserved.",
+  "historyLimit": "Window and targeted existing UUIDs only; not an exhaustive publication ledger. Missing historical rows unknown. No register initialised/reset or publication receipt fabricated.",
+  "privacy": "Creator mail and private creator user IDs removed; private originals/checkpoints remain local."
+}

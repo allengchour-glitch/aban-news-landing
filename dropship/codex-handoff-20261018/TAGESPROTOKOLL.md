@@ -3003,3 +3003,21 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Bericht](FORTSCHRITT-LIVE-20261116-R252.md) · [Belege](PRUEFBELEGE-LIVE-20261116-R252.json) · [Merchant-Gegenprobe](MERCHANT-QUELLEN-GEGENPROBE-20261116-R252.json) · [Plan/Film](METRICOOL-PLAN-MEDIEN-20261116-R252.json).
 
 [LUXESTYLE_R252_20261116]
+
+### R253 – bestehender Morgenlauf ab07:57 Europe/Zurich
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Identität | Core4, aktuellen16Nov-Block und festeClaude-Datei frisch gelesen; Shop und Metricool samt sechsKanälen vorWrites erneut geprüft. | Revision252 fortgesetzt; LuxeStyle passt. KeineGSC-Wiederholung. |
+| Metricool / tatsächliche Holds | Drei aktive alteAudio-HoldUUIDs/frische3MP4Downloads geprüft; drei vorhandenePosts gezielt zurückaufDraft/APaus gesetzt. | YT429675848,TT429676883,FBIG429676896; UUIDs/Medien/Termine/Inhalte erhalten,4KanalzuständePENDING.1abgewiesene Validierung blieb unverändert; keineblindenRetries/neuenPosts/eigenenPublikationen. |
+| Planung / Auslieferung | FünfkleineFenster plusgezielter17NovReadback; lokaleDuplikat-/Statusgegenprobe. |47UUID/35aktiv/12Draft/58PENDING, bisganzem23Nov. IGFBTTThreadsPin täglichtechnisch geplant; YT18–23offen.6bestehendePUBLISHEDZustände fremderAbläufebeobachtet, keineeigenenVeröffentlichungen. |
+| Kennzahlen / einmalig |6Definitionen/6kleineKanalreads09–15Nov,12MetrikenmitunabhängigerOfflineprüfung. |Null/fehlendunknown, numerischeNullerhalten; keinekanalübergreifendeSumme/Kaufableitung. HeuteohneNeubefundnichtwiederholen. |
+| Klaviyo / Entwurf |W7XTVDentdeckt,danneinFlowreport/Status-/Capturemetadaten gelesen; einenWelcomeBetreff/PreheaderDiffvorbereitet. |3Flowsdraft,leererReport/Captureunbekannt; keineRabatt-/Flowaktivierung/Sendung. ShopCHF/KontoUSDgetrennt. |
+| Master / Quellenfortschritt | ExakteA-SKUund7Shopify/CJ-Bildzuordnungen, echtesReferenzbild/hash, Shopkaufbarkeit/Tagwächter geprüft; denselben18s540FramePlan und6Kanaltexte/UTMs ergänzt. |A68122445283719/34.90CHF, keinStock-/Liefernachweis. PhysischeA-/Motiv-/Filmrechte-/Musik-/Premiumabnahmeoffen; keinneuerFilm/Upload. YTmadeForKids=falsebekannt; Bio/BoardfrischvorAusspielungprüfen. |
+| Musik / DNS / Zugriff | Repo-WAV/Quellhelper/Hashes undgenau4genehmigteöffentlicheDNSRecords gegengeprüft; verfügbarenDNS-/Browserwriter gesucht. |WAVhashgleich,SF2Build/Lizenzbindungoffen;3CNAMENXDOMAIN,TXTfehlt;authWriterfehlt,0DNSwrites. KeineNeuinstallation/Ersatzmusik. |
+| Übergabe / Grenzen | R253Paket,Core4undbestehendenClaudeDirektlinkfortgeschrieben;24TaskIDs/Historieerhalten, frischeSHA/Diff/CAS undReadback vorgesehen. |KeineShop/Theme/Merchant-/Flow-/DNS-/Budget-/Rabattänderung, Kundenansprache, Bestellwatch, Render oderWorkflowstarts. NächsterSchritt echteA-Takes/Rechte; Claudereceiptunknown. |
+
+[R253-Bericht](CONTENT-VERKAUFSPAKET-20261116-R253.md) · [Belege](CONTENT-VERKAUFSPAKET-20261116-R253.json).
+
+[LUXESTYLE_R253_20261116]
+

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "createdFor": "R253",
+  "createdAt": "2026-11-16",
+  "overallStatus": "BLOCKED_DRAFT_ONLY",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "product": {
+    "shopifyProductId": "15521256604033",
+    "variantId": "68122445283719",
+    "sku": "CJSN139239101AZ",
+    "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719",
+    "variantEvidence": "Current local R253 source crosswalk; no new API read in this task."
+  },
+  "blockingGates": [
+    "physical A unit and projection motif binding",
+    "film and commercial image/edit/upload rights",
+    "music rights and WAV build evidence",
+    "final master and creative approval"
+  ],
+  "channelDrafts": [
+    {
+      "channel": "instagram",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "draftStatus": "BLOCKED_PENDING_FILM_RIGHTS_MUSIC_AND_FINAL_APPROVAL",
+      "publishable": false,
+      "utmLink": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=instagram&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_instagram",
+      "utm": {
+        "utm_source": "instagram",
+        "utm_medium": "organic_social",
+        "utm_campaign": "luxe_sternenprojektor_master_20261018",
+        "utm_content": "r253_master_a_instagram"
+      },
+      "targetVariantId": "68122445283719",
+      "targetVariantSku": "CJSN139239101AZ",
+      "caption": "Ein Lichtmoment für den Abend.\n\nMehr zum Sternenlicht-Projektor findest du über den Link in der Bio.\n\n#sternlicht #lichtmomente #schlafzimmer #wohnen #luxestyle",
+      "linkPlacement": "BIO_ONLY",
+      "bioTargetVerification": "OPEN_NOT_FRESHLY_CONFIRMED",
+      "captionContainsDirectUrl": false
+    },
+    {
+      "channel": "tiktok",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "draftStatus": "BLOCKED_PENDING_FILM_RIGHTS_MUSIC_AND_FINAL_APPROVAL",
+      "publishable": false,
+      "utmLink": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=tiktok&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_tiktok",
+      "utm": {
+        "utm_source": "tiktok",
+        "utm_medium": "organic_social",
+        "utm_campaign": "luxe_sternenprojektor_master_20261018",
+        "utm_content": "r253_master_a_tiktok"
+      },
+      "targetVariantId": "68122445283719",
+      "targetVariantSku": "CJSN139239101AZ",
+      "caption": "Licht im Detail. Ein ruhiger Blick auf den Sternenlicht-Projektor.\n\nMehr dazu über den Link in der Bio.\n\n#sternlicht #lichtmomente #wohnen #luxestyle",
+      "linkPlacement": "BIO_ONLY",
+      "bioTargetVerification": "OPEN_NOT_FRESHLY_CONFIRMED",
+      "captionContainsDirectUrl": false,
+      "title": "Sternenlicht-Projektor im Detail"
+    },
+    {
+      "channel": "youtube",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "draftStatus": "BLOCKED_PENDING_FILM_RIGHTS_MUSIC_AND_FINAL_APPROVAL",
+      "publishable": false,
+      "utmLink": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_youtube",
+      "utm": {
+        "utm_source": "youtube",
+        "utm_medium": "organic_social",
+        "utm_campaign": "luxe_sternenprojektor_master_20261018",
+        "utm_content": "r253_master_a_youtube"
+      },
+      "targetVariantId": "68122445283719",
+      "targetVariantSku": "CJSN139239101AZ",
+      "title": "Sternenlicht-Projektor im Detail #Shorts",
+      "description": "Licht im Detail. Entdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung auf der Produktseite:\n\nhttps://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=youtube&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_youtube\n\n#Shorts #Sternenlicht #LuxeStyle",
+      "madeForKids": false,
+      "madeForKidsStatus": "PREVIOUSLY_CONFIRMED_KEEP_UNCHANGED"
+    },
+    {
+      "channel": "facebook",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "draftStatus": "BLOCKED_PENDING_FILM_RIGHTS_MUSIC_AND_FINAL_APPROVAL",
+      "publishable": false,
+      "utmLink": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_facebook",
+      "utm": {
+        "utm_source": "facebook",
+        "utm_medium": "organic_social",
+        "utm_campaign": "luxe_sternenprojektor_master_20261018",
+        "utm_content": "r253_master_a_facebook"
+      },
+      "targetVariantId": "68122445283719",
+      "targetVariantSku": "CJSN139239101AZ",
+      "text": "Licht im Detail. Ein ruhiger Lichtmoment für den Abend.\n\nEntdecke den Sternenlicht-Projektor und prüfe die gewünschte Ausführung:\nhttps://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=facebook&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_facebook\n\n#sternlicht #lichtmomente #wohnen #luxestyle"
+    },
+    {
+      "channel": "threads",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "draftStatus": "BLOCKED_PENDING_FILM_RIGHTS_MUSIC_AND_FINAL_APPROVAL",
+      "publishable": false,
+      "utmLink": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_threads",
+      "utm": {
+        "utm_source": "threads",
+        "utm_medium": "organic_social",
+        "utm_campaign": "luxe_sternenprojektor_master_20261018",
+        "utm_content": "r253_master_a_threads"
+      },
+      "targetVariantId": "68122445283719",
+      "targetVariantSku": "CJSN139239101AZ",
+      "text": "Licht im Detail. Ein ruhiger Blick auf den Sternenlicht-Projektor. Welcher Lichtmoment passt für dich zum Abend?\n\nhttps://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=threads&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_threads"
+    },
+    {
+      "channel": "pinterest",
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "draftStatus": "BLOCKED_PENDING_FILM_RIGHTS_MUSIC_AND_FINAL_APPROVAL",
+      "publishable": false,
+      "utmLink": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_pinterest",
+      "utm": {
+        "utm_source": "pinterest",
+        "utm_medium": "organic_social",
+        "utm_campaign": "luxe_sternenprojektor_master_20261018",
+        "utm_content": "r253_master_a_pinterest"
+      },
+      "targetVariantId": "68122445283719",
+      "targetVariantSku": "CJSN139239101AZ",
+      "pinTitle": "Sternenlicht-Projektor für den Abend | LuxeStyle",
+      "description": "Licht im Detail: ein ruhiger Blick auf den Sternenlicht-Projektor. Produkt und gewünschte Ausführung ansehen.",
+      "pinLink": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_sternenprojektor_master_20261018&utm_content=r253_master_a_pinterest",
+      "historicalBoardId": "1111333714239531706",
+      "boardVerification": "OPEN_HISTORICAL_REFERENCE_ONLY",
+      "boardName": null
+    }
+  ]
+}

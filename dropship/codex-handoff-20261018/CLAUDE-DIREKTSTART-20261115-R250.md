@@ -1,3 +1,17 @@
+# R253 – Morgenlauf: drei Audio-Holds, aktuelle Kanalberichte und Masterfortschritt – 16.11.2026
+
+**Aktueller Stand:** Drei bisher aktive Video-UUIDs vom 17. November wegen frisch bestätigter stummer MP4 wieder als Entwurf mit Autopublish aus gesperrt und kanalweise zurückgelesen. Keine neuen Posts oder eigene Veröffentlichung. Neue IDs: YouTube 429675848, TikTok 429676883, FB/IG 429676896; stabile UUIDs, Medien, Inhalte und Termine erhalten. Server-Metadatenänderungen und eine abgewiesene Validierungsanfrage ohne Änderung sind im Beleg dokumentiert.
+
+Plan bis Ende 23. November: 47 UUIDs / 35 aktive Posts / 12 Entwürfe / 58 PENDING-Kanalzustände. Tägliche technische Plätze auf IG, FB, TikTok, Threads und Pinterest vom 16.–23. November; YouTube vom 18.–23. November offen. Vier Projektor-Holds bleiben inaktiv. Das Fenster beweist keine vollständige frühere Publikationshistorie oder Qualitätsfreigabe. Heute für 09.–15. November genau sechs Metricool-Definitionen und sechs Datenreads sowie ein Klaviyo-Flowreport nach W7XTVD-Discovery. Fehlende Daten bleiben unbekannt; Währungen getrennt, keine Käufe abgeleitet. GSC aus R251 nicht wiederholt.
+
+Derselbe 18-Sekunden-Master: aktuelle A-Variante 68122445283719 / CJSN139239101AZ / CHF 34.90 kaufbar, Tagprüfung bestanden; sieben Shopify/CJ-Variantenbilder auf Asset-Ebene zugeordnet. Hook A «Dein Raum. Neues Licht.», B «Licht im Detail.», CTA «Produkt ansehen»; Plan für 540 Frames bei 30 fps und sechs Kanaltexte mit UTMs. Keine Master-MP4; physische A-/Motivbindung, Filmrechte, Musik und Premium-Abnahme offen. YouTube madeForKids=false bekannt, nicht erneut fragen. Vier genehmigte DNS-Records fehlen öffentlich, authentifizierter Writer fehlt. Ein Welcome-Betreff/Preheader-Diff ohne 10%-Versprechen zur Freigabe vorbereitet; Flow bleibt Entwurf.
+
+[Bericht](CONTENT-VERKAUFSPAKET-20261116-R253.md) · [Belege](CONTENT-VERKAUFSPAKET-20261116-R253.json) · [Planner/Holds](METRICOOL-HOLDS-PLAN-20261116-R253.json) · [Master](MASTER-SCHNITT-20261116-R253.md) · [Captions](MASTER-CAPTIONS-20261116-R253.md) · [Welcome-Diff](WELCOME-FREIGABEENTWURF-20261116-R253.md).
+
+24 Aufgaben und alte Belege erhalten. Die aktuelle ausdrückliche Automationsvorgabe ist Grundlage der drei engen Qualitätsholds; keine allgemeine Rollen-/Publikationsfreigabe erweitern. Keine weiteren Plattformwrites oder Workflowstarts. Empfang durch Claude bleibt unbekannt. Fünf Shopify-Writes, Konsolenstand 10 von 36 und Merchant-Teilbefunde aus R252 sind vorherige Arbeit, keine neue R253-Umsetzung. **Memory am Schluss des Nutzerberichts verlinken.**
+
+---
+
 # Aktueller Zusatz R252 – 16.11.2026, Fortsetzung
 
 Derselbe Direktlink bleibt Einstieg. [R252-Bericht](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/FORTSCHRITT-LIVE-20261116-R252.md) und [Belege](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/PRUEFBELEGE-LIVE-20261116-R252.json) zuerst lesen. Zwei weitereKonsolen(X2Pro/GD20) mit5Writes live: Produktdetails/Metadaten und6genaueAuswahlen,6IDs/6WertIDs/12Medien/Preise/SKUs geschützt. MobileÜberbreite korrigiert,alle6Auswahlen/JSONLDOffers bestätigt. Konsolenliste10/36redaktionellbearbeitet,26offen; Spiele/Karten/Controller/English weiterhin quellabhängig.

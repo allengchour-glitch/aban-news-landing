@@ -1,0 +1,72 @@
+{
+  "run": "R253",
+  "atUtc": "2026-11-16T07:37:08Z",
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "domain": "luxestyle.ch",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currency": "CHF",
+      "timezone": "Europe/Zurich"
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "facebook": "1049840534888592",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+    },
+    "freshPreWriteRecheckPassed": true
+  },
+  "ownWrites": {
+    "metricoolHoldUpdates": 3,
+    "providerPlacementsHeld": 4,
+    "newPosts": 0,
+    "ownPublications": 0,
+    "shopify": 0,
+    "merchant": 0,
+    "theme": 0,
+    "flows": 0,
+    "dns": 0,
+    "renders": 0,
+    "uploads": 0,
+    "workflowDispatch": 0,
+    "customersContacted": 0
+  },
+  "queue": {
+    "uuidCount": 47,
+    "activeObjects": 35,
+    "drafts": 12,
+    "providerStates": 58,
+    "status": "PENDING",
+    "finalLocalCalendarDay": "2026-11-23",
+    "youtubeGaps": [
+      "2026-11-18",
+      "2026-11-19",
+      "2026-11-20",
+      "2026-11-21",
+      "2026-11-22",
+      "2026-11-23"
+    ],
+    "technicalCoverageOtherFiveChannels": "2026-11-16/2026-11-23",
+    "masterLedgerTouched": false,
+    "historyIsExhaustive": false
+  },
+  "proofs": {
+    "queue": "METRICOOL-HOLDS-PLAN-20261116-R253.json",
+    "metricsAndKlaviyo": "KENNZAHLEN-KLAVIYO-20261116-R253.json",
+    "master": "MASTER-QUELLEN-20261116-R253.json",
+    "dns": "DNS-VIER-20261116-R253.json",
+    "music": "MUSIK-RECHTE-GEGENPROBE-20261116-R253.md",
+    "singleSalesDraft": "WELCOME-FREIGABEENTWURF-20261116-R253.md"
+  },
+  "taskCountPreserved": 24,
+  "purchaseWatchEnded": true,
+  "ordersQueried": false,
+  "searchConsoleRepeated": false,
+  "globalMerchantZeroErrorsVerified": false,
+  "claudeReceipt": "unknown"
+}

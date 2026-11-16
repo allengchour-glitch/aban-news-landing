@@ -1,0 +1,53 @@
+{
+  "capturedAtUtc": "2026-11-16T07:03:22.983206+00:00",
+  "provider": "Google Public DNS JSON DoH (dns.google)",
+  "scope": "Exactly four specified record queries; no other TXT answers retained",
+  "results": [
+    {
+      "record": "send.luxestyle.ch",
+      "type": "CNAME",
+      "expected": "3848818023763335087.klaviyodns.com",
+      "httpStatus": 200,
+      "rcode": 3,
+      "answerCount": 0,
+      "cnameAnswers": [],
+      "expectedValuePresent": false,
+      "expectedTtlSeconds": null
+    },
+    {
+      "record": "mtd1._domainkey.luxestyle.ch",
+      "type": "CNAME",
+      "expected": "mtd1._domainkey.3848818023763335087.klaviyodns.com",
+      "httpStatus": 200,
+      "rcode": 3,
+      "answerCount": 0,
+      "cnameAnswers": [],
+      "expectedValuePresent": false,
+      "expectedTtlSeconds": null
+    },
+    {
+      "record": "mtd2._domainkey.luxestyle.ch",
+      "type": "CNAME",
+      "expected": "mtd2._domainkey.3848818023763335087.klaviyodns.com",
+      "httpStatus": 200,
+      "rcode": 3,
+      "answerCount": 0,
+      "cnameAnswers": [],
+      "expectedValuePresent": false,
+      "expectedTtlSeconds": null
+    },
+    {
+      "record": "luxestyle.ch",
+      "type": "TXT",
+      "expectedValue": "klaviyo-site-verification=[redacted token]",
+      "httpStatus": 200,
+      "rcode": 0,
+      "answerCount": 4,
+      "expectedValuePresent": false,
+      "expectedTtlSeconds": null,
+      "negativeSoaTtlSeconds": null,
+      "otherTxtValuesStored": false
+    }
+  ],
+  "interpretation": "Each result is an observation from this resolver at query time. UNKNOWN or transport errors are not evidence that a record is absent."
+}
