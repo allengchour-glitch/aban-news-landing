@@ -4,6 +4,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright"),
   os = require("os");
 (async () => {
   const b = await chromium.launch({
+    executablePath: process.env.NEON_CHROME,
     args: ["--no-sandbox", "--enable-unsafe-swiftshader"],
   });
   try {

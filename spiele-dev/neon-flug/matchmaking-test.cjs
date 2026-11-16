@@ -4,14 +4,15 @@ const fs = require("fs"),
   path = require("path");
 (async () => {
   const b = await chromium.launch({
+    executablePath: process.env.NEON_CHROME,
     args: ["--no-sandbox", "--enable-unsafe-swiftshader"],
   });
   try {
     const c = await b.newContext({ viewport: { width: 1280, height: 800 } });
     c.setDefaultTimeout(20000);
     const a = await c.newPage(),
-      d = await c.newPage(),
-      spectator = await c.newPage();
+      d = await require("./browser-window.cjs")(b, c, a),
+      spectator = await require("./browser-window.cjs")(b, c, a);
     const errors = [],
       checks = [];
     for (const p of [a, d, spectator])

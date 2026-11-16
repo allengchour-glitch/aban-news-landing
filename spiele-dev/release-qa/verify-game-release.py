@@ -4,7 +4,7 @@ import os, importlib.util, hashlib, subprocess, tempfile, json, re
 root=Path(os.environ['GAME_ROOT']);game=os.environ['GAME'];out=Path(os.environ['GAME_OUT']);out.mkdir(parents=True,exist_ok=True)
 spec=importlib.util.spec_from_file_location('mix_qa',root/'spiele-dev/minispiele-mix/https-qa.py');qa=importlib.util.module_from_spec(spec);spec.loader.exec_module(qa);qa.ROOT=root
 page=game+'.html';source=(root/page).read_text();release=os.environ['RELEASE_COMMIT']
-assets=(['js/lebenspfad/atmosphere.js','js/lebenspfad/world-sites.js']+[str(p.relative_to(root)) for p in sorted((root/'models/lebenspfad-eigen').glob('*.glb'))]) if game=='lebenspfad' else [str(p.relative_to(root)) for p in sorted((root/'js/neon-flug').glob('*')) if p.is_file()]
+assets=(['js/lebenspfad/atmosphere.js','js/lebenspfad/world-sites.js','js/lebenspfad/character-art.js']+[str(p.relative_to(root)) for p in sorted((root/'models/lebenspfad-eigen').glob('*.glb'))]) if game=='lebenspfad' else [str(p.relative_to(root)) for p in sorted((root/'js/neon-flug').glob('*')) if p.is_file()]
 paths=[(page,page),(page,game)]
 for f in assets:
  paths.append((f,f));v=re.search(re.escape('/'+f)+r'\?v=([a-f0-9]+)',source)

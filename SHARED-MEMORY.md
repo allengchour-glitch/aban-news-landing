@@ -1,5 +1,17 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Neon Flug: vier Richtungen, Ringe und Schießmodus ·16.11.2026
+
+Besitzer wollte mehr Animation, verschwindende Sammelringe, Belohnungen, Neon-Schießen und ausdrücklich «hoch runter auch». Umgesetzt: echte X/Y-Steuerung perWASD/Pfeilen/Touchstick mit Koop/Kollisionen, einmalige Ringwertung und Entfernung in beiden Renderern, begrenzte Trails/Partikel,60-Sekunden-Drohnenmodus innerhalb derselben Spielkarte, Wärme/Cooldown und einmalige XP-Abrechnung. Klassische Kampagne bleibt Standard; Protokoll/Räumev4, mp.js unverändert. Bei Quota bleiben XP/Claims innerhalb der Sitzung erhalten, verspätete Locks überschreiben keine neue Runde.
+
+GEMESSEN66 Node+90 Browser-/Rendererbedingungen grün: echte Tastatur/Touch, lokales WebRTC zwischen zwei Fenstern, Ring-Pixelgegenproben, drei HUD-Formate, Höhenränder/3D und Speicherfehler. Korrekte3D-/HUD-Bilder angesehen; Testfinale beschleunigt. Canvas-Kurzprobe41,5–45,1rAF/s, Simulationszeit korrekt; keine physische Handy-/Internet-Koop-/WebGL-FPS-Zusage. HTML/Syntax/Diff sauber, Gesamt-CI vor Start durch read-only HOME blockiert. Quellen+Belege gesichert, echte PR-CI/Veröffentlichung folgen. Kanonisch `spiele-dev/neon-flug/WEITERARBEIT.md` und `PRUEFUNG-v4.json`.
+
+Bereits LIVE: Mix Arena PR3213, Merge78f14f5fb, Hauptseitenlauf43924427755,42/42 normale HTTPS-Prüfungen; Lebenspfad-Atmosphäre/eigeneObjekte PR3214, Mergee6cb01125, Lauf43925206449,9/9 HTTPS-Prüfungen. Je sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen; Releasebelege in den jeweiligen Belegordnern. Neuer Besitzerentscheid zur Lebenspfad-Figur: **klein/niedlich, großer Kopf, kompakter Körper, verspielt**. Umsetzung getrennt auf `codex/lebenspfad-figur-neu`, noch nicht live. Fortlaufend `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Traumhaus bleibt fremde Sitzung; keine Shop-/Social-/Konto-/Secret-Aktionen.
+
+## Codex: Büro-Arbeitsstände und Raumdetails ·16.11.2026
+
+Design23 ergänzt vier getrennte Gruppen/Filter geladener Arbeitsstände, vollständiges Zentraljournal, nächsten Schritt und aufklappbare Quelle/Messzeit. Kein Verkaufs-/Gewinnzähler. Reproduzierter Quellenfokus-Verlust korrigiert. Statische Monitorwände, Medienmöbel, Kabelwannen und Bankdetails; keine neue Quelle, Frequenz, Kontoaktion oder Higgsfield-Revision.17 Modell-,21 Bot-,44 Bau- und31 Mutationsprüfungen grün; Browser-/CI-/Bereitstellungsbelege im zugehörigen PR. Nutzen: offene Arbeit schneller erkennen, finanzielle Wirkung ungemessen. Claude übernimmt vollständigen Drei-Seiten-Bau mit kb-stil.css unter Erhalt privater Daten/Eingaben; privater Upload erst nach Quittung bestätigt. Details in der kanonischen Übergabe.
+
 ## Spiele: auf Besitzerwunsch sichern und pausieren ·16.11.2026
 
 Letzter Auftrag «langsam speichern alles und token sparen». Mix Arena PR3213 und Lebenspfad-Atmosphäre PR3214 sind live/öffentlich geprüft. Neonv4 ist als DraftPR3217 gepusht,66 Node+90 Browserbedingungen bestanden, noch nicht gemergt/live. Neue Lebenspfad-Figur: Besitzer wählte **klein/niedlich, großer Kopf, kompakter Körper, verspielt**. Geometriemodul, lokale HTML-Integration, Portraitprobe und Vorher-/Entwurfbilder sind im Branch `codex/lebenspfad-figur-neu` gesichert; vollständige Bild-/Alters-/Gameplayprüfung fehlt, nicht veröffentlichen. Agenten beendet. Weiterarbeiten anhand `spiele-dev/CLAUDE-SPIELE-AKTUELL.md` und `spiele-dev/lebenspfad/FIGUR-NEU.md`; nichts erneut blind anwenden. Keine neuen Erweiterungen während der Pause.

@@ -19,6 +19,9 @@ import {
   VERSION,
   LEVELS,
   FLIGHT_LIMIT,
+  HEIGHT_LIMIT,
+  duration,
+  eventsFor,
   createState,
   start,
   step,
@@ -47,8 +50,10 @@ function read(key, fallback) {
 function write(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
+    return true;
   } catch {
     storage = false;
+    return false;
   }
 }
 let settings = {
@@ -79,7 +84,13 @@ function helloPacket() {
   return { t: "hello", name: pilotProfile.name, setup: loadout(pilotProfile) };
 }
 function newState(level = 0) {
-  return createState(level, pilotSetups);
+  try {
+    sessionStorage.removeItem("aether-last-result");
+  } catch {}
+  return createState(level, pilotSetups, {
+    mode: $("flightMode").value,
+    training,
+  });
 }
 function refreshProfile() {
   $("pilotRank").textContent = "Level " + rank(pilotProfile.xp);
@@ -104,9 +115,18 @@ function refreshProfile() {
   select.value = pilotProfile.mod;
   $("moduleDetail").textContent = MODULES[pilotProfile.mod].tag;
 }
+function latestProfile() {
+  const saved = profile(read("aether-pilot", pilotProfile));
+  return profile({
+    ...saved,
+    xp: Math.max(saved.xp, pilotProfile.xp),
+    missions: Math.max(saved.missions, pilotProfile.missions),
+    claimed: [...new Set([...saved.claimed, ...pilotProfile.claimed])],
+  });
+}
 function saveProfile() {
   pilotProfile = profile({
-    ...pilotProfile,
+    ...latestProfile(),
     name: $("pilotName").value,
     role: $("pilotRole").value,
     mod: $("pilotModule").value,
@@ -222,8 +242,22 @@ let session = null,
   screen = "menu",
   stageReady = [false, false],
   lobbyReady = [false, false],
-  input = { axis: 0, target: null, rescue: false },
-  remoteInput = { axis: 0, target: null, rescue: false },
+  input = {
+    axis: 0,
+    vertical: 0,
+    target: null,
+    targetY: null,
+    rescue: false,
+    fire: false,
+  },
+  remoteInput = {
+    axis: 0,
+    vertical: 0,
+    target: null,
+    targetY: null,
+    rescue: false,
+    fire: false,
+  },
   seq = 0,
   lastRemoteSeq = -1,
   lastSnapshot = performance.now(),
@@ -240,6 +274,7 @@ let session = null,
   networkTimer = null,
   lastInputAt = performance.now();
 const held = new Set();
+let portraitAllowed = false;
 let pointer = null,
   prevPhase = "",
   oldRings = [0, 0],
@@ -250,7 +285,9 @@ let pointer = null,
   hudElapsed = 0,
   previousScores = [0, 0, 0],
   trainingGuide = false,
-  rescueHeld = false;
+  rescueHeld = false,
+  fireHeld = false,
+  stick = { x: 0, y: 0, vertical: 0, axis: 0 };
 const screens = [
   "menu",
   "matchScreen",
@@ -286,6 +323,7 @@ function show(name) {
 function updateRotate() {
   const inFlight = ["game", "pauseScreen", "briefing"].includes(screen);
   $("rotateHint").hidden = !(
+    !portraitAllowed &&
     navigator.maxTouchPoints > 0 &&
     innerHeight > innerWidth &&
     inFlight
@@ -375,9 +413,19 @@ document
   .forEach((b) => (b.onclick = () => $(b.dataset.close).close()));
 function release() {
   held.clear();
-  input = { axis: 0, target: null, rescue: false };
+  input = {
+    axis: 0,
+    vertical: 0,
+    target: null,
+    targetY: null,
+    rescue: false,
+    fire: false,
+  };
   pointer = null;
   rescueHeld = false;
+  fireHeld = false;
+  stick.axis = stick.vertical = 0;
+  $("touchStick").hidden = true;
 }
 function closeSession() {
   snapshotSerial = 0;
@@ -398,13 +446,23 @@ function closeSession() {
   connected = false;
   hello = false;
   netLost = false;
-  remoteInput = { axis: 0, target: null, rescue: false };
+  remoteInput = {
+    axis: 0,
+    vertical: 0,
+    target: null,
+    targetY: null,
+    rescue: false,
+    fire: false,
+  };
   lastRemoteSeq = -1;
   lastDashSerial = 0;
   dashSerial = 0;
   seq = 0;
 }
 function exit() {
+  try {
+    sessionStorage.removeItem("aether-last-result");
+  } catch {}
   release();
   audio.silence();
   closeSession();
@@ -436,6 +494,10 @@ function lobbyUI() {
   for (let i = 0; i < 2; i++)
     $("pilot" + i + "Name").textContent =
       pilotNames[i] + " · " + ROLES[pilotSetups[i].role].name;
+  $("lobbyMode").textContent =
+    state.mode === "shoot"
+      ? "NEON-SCHIESSEN · 60 SEKUNDEN"
+      : "KLASSISCHE KAMPAGNE · 3 KAPITEL";
   const s = host ? lobbyReady : [lobbyReady[0], lobbyReady[1]];
   $("pilot0Status").textContent = s[0]
     ? "Bereit"
@@ -585,6 +647,7 @@ function connect(asHost, code, publicRoom = false) {
             ready: lobbyReady,
             names: pilotNames,
             setups: pilotSetups,
+            mode: state.mode,
           });
         else sendSnapshot();
       }
@@ -640,7 +703,12 @@ function receive(m) {
         target: Number.isFinite(m.target)
           ? clamp(m.target, -FLIGHT_LIMIT, FLIGHT_LIMIT)
           : null,
+        vertical: Number.isFinite(m.vertical) ? clamp(m.vertical, -1, 1) : 0,
+        targetY: Number.isFinite(m.targetY)
+          ? clamp(m.targetY, -HEIGHT_LIMIT, HEIGHT_LIMIT)
+          : null,
         rescue: m.rescue === true,
+        fire: m.fire === true,
       };
       if (Number.isInteger(m.dash) && m.dash > lastDashSerial) {
         lastDashSerial = m.dash;
@@ -668,6 +736,10 @@ function receive(m) {
         pilotNames = m.names.map(nickname);
       if (Array.isArray(m.setups) && m.setups.length === 2)
         pilotSetups = m.setups.map(loadout);
+      if (["classic", "shoot"].includes(m.mode)) {
+        state.mode = m.mode;
+        $("flightMode").value = m.mode;
+      }
       lobbyReady = m.ready.map(Boolean);
       lobbyUI();
     } else if (m.t === "state" && validSnapshot(m.s)) {
@@ -681,13 +753,14 @@ function receive(m) {
       state = {
         ...m.s,
         players: m.s.players.map((p) => ({ ...p })),
-        events: [],
+        events: [...m.s.events],
       };
       if (Array.isArray(m.ready) && m.ready.length === 2)
         stageReady = m.ready.map(Boolean);
       if (
         old.phase !== state.phase ||
         old.level !== state.level ||
+        old.runId !== state.runId ||
         screen === "lobby"
       )
         phaseUI();
@@ -742,7 +815,7 @@ $("shareBtn").onclick = async () => {
   } catch {}
 };
 function key() {
-  return `${state.level}:${state.phase}`;
+  return `${state.runId}:${state.level}:${state.phase}`;
 }
 function stageConfirm() {
   enableAudio();
@@ -774,7 +847,7 @@ function updateReadyLabels() {
   $("resultReady").textContent = training
     ? "Training beendet. Bestwerte bleiben unverändert."
     : state.phase === "victory"
-      ? "Kampagne beendet. Du kannst zum Hangar zurück."
+      ? "Flug beendet. Du kannst zum Hangar zurück."
       : !connected || netLost
         ? "Partner nicht verbunden. Euer Ergebnis bleibt erhalten."
         : ready
@@ -842,7 +915,7 @@ $("trainingBtn").onclick = () => {
   trainingGuide = true;
   phaseUI();
 };
-function storeResult() {
+async function storeResult() {
   if (
     training ||
     !["result", "victory"].includes(state.phase) ||
@@ -850,33 +923,74 @@ function storeResult() {
   )
     return;
   storedKey = key();
-  const progress = award(pilotProfile, state);
-  didLevelUp = !!progress.leveledUp;
-  pilotProfile = progress.profile;
-  write("aether-pilot", pilotProfile);
-  xpMessage =
+  const result = snapshot(state);
+  const save = () => {
+    const progress = award(latestProfile(), result);
+    const persisted = write("aether-pilot", progress.profile);
+    // Nur Fortschritt übernehmen: eine während des Wartens gewählte Rolle bleibt erhalten.
+    pilotProfile = profile({
+      ...pilotProfile,
+      xp: progress.profile.xp,
+      missions: progress.profile.missions,
+      claimed: progress.profile.claimed,
+    });
+    return { ...progress, persisted };
+  };
+  let progress;
+  try {
+    progress = navigator.locks
+      ? await navigator.locks.request("aether-rewards", save)
+      : save();
+  } catch {
+    // Web Locks können vom Browser gesperrt sein. Derselbe idempotente Speicherschritt
+    // funktioniert weiter; ohne LocalStorage bleiben die Kennungen für diese Sitzung.
+    progress = save();
+  }
+  const message =
     (progress.leveledUp ? `LEVEL UP · LEVEL ${progress.level} · ` : ``) +
-    `+${progress.gained} Flug-XP · Level ${rank(pilotProfile.xp)}` +
+    (progress.gained
+      ? `+${progress.gained} Flug-XP · Level ${rank(progress.profile.xp)}`
+      : "Belohnung bereits gespeichert") +
+    (progress.breakdown
+      ? ` · Abschluss ${progress.breakdown.completion} / Team ${progress.breakdown.team} / Sammeln ${progress.breakdown.collection} / Drohnen ${progress.breakdown.combat}`
+      : "") +
     (progress.unlocked.length
       ? " · Neu: " + progress.unlocked.map((k) => MODULES[k].name).join(", ")
-      : "");
+      : "") +
+    (progress.persisted
+      ? ""
+      : " · Nur für diese Sitzung: Browser-Speicher nicht verfügbar.");
+  const completed = { message, leveledUp: !!progress.leveledUp };
+  const freshRecords = read("aether-records", records);
+  if (Array.isArray(freshRecords.best) && Array.isArray(freshRecords.medals))
+    records = freshRecords;
 
-  previousScores[state.level] = state.score;
-  records.best[state.level] = Math.max(
-    Number(records.best[state.level]) || 0,
-    state.score,
+  if (result.mode === "shoot") {
+    records.shootBest = Math.max(records.shootBest || 0, result.score);
+    write("aether-records", records);
+    return completed;
+  }
+  if (state.runId === result.runId) previousScores[result.level] = result.score;
+  records.best[result.level] = Math.max(
+    Number(records.best[result.level]) || 0,
+    result.score,
   );
-  records.medals[state.level] = Math.max(
-    Number(records.medals[state.level]) || 0,
-    state.medal || 1,
+  records.medals[result.level] = Math.max(
+    Number(records.medals[result.level]) || 0,
+    result.medal || 1,
   );
   records.unlocked = Math.max(
     Number(records.unlocked) || 0,
-    Math.min(2, state.level + 1),
+    Math.min(2, result.level + 1),
   );
-  records.next = state.level === 2 ? 0 : state.level + 1;
+  records.next = result.level === 2 ? 0 : result.level + 1;
   write("aether-records", records);
-  if (isStation && state.phase === "victory")
+  if (
+    isStation &&
+    progress.gained > 0 &&
+    state.runId === result.runId &&
+    result.phase === "victory"
+  )
     parent.postMessage(
       JSON.stringify({
         t: "stationDone",
@@ -888,6 +1002,7 @@ function storeResult() {
       }),
       location.origin,
     );
+  return completed;
 }
 function phaseUI() {
   const l = LEVELS[state.level];
@@ -899,18 +1014,55 @@ function phaseUI() {
     if (state.phase === "playing") audio.unlock();
   }
   if (state.phase === "briefing") {
+    try {
+      sessionStorage.removeItem("aether-last-result");
+    } catch {}
     $("chapterLabel").textContent =
       `KAPITEL 0${state.level + 1} / 03${training ? " · TRAINING" : ""}`;
     $("chapterName").textContent =
       l.name.toLowerCase().replace(/^./, (c) => c.toUpperCase()) + ".";
-    $("chapterSubtitle").textContent = l.subtitle;
+    $("chapterSubtitle").textContent =
+      state.mode === "shoot"
+        ? "60 Sekunden überleben. Drohnen mit F oder FEUER treffen (zwei Treffer). Wärme im Blick behalten. Ringe und Rettung bleiben aktiv."
+        : l.subtitle;
+    if (state.mode === "shoot") {
+      $("chapterLabel").textContent =
+        "NEON-SCHIESSEN" + (training ? " · TRAINING" : "");
+      $("chapterName").textContent = "Drohnenflug.";
+    }
     show("briefing");
   } else if (state.phase === "playing") show("game");
   else if (state.phase === "paused") {
     show("pauseScreen");
     audio.silence();
   } else if (["result", "failed", "victory"].includes(state.phase)) {
-    storeResult();
+    try {
+      sessionStorage.setItem(
+        "aether-last-result",
+        JSON.stringify(snapshot(state)),
+      );
+    } catch {}
+    const resultKey = key();
+    if (storedKey !== key()) xpMessage = "Belohnung wird gespeichert …";
+    storeResult().then((completed) => {
+      if (
+        !completed ||
+        key() !== resultKey ||
+        screen !== "resultScreen" ||
+        training ||
+        state.phase === "failed"
+      )
+        return;
+      xpMessage = completed.message;
+      didLevelUp = completed.leveledUp;
+      $("xpResult").textContent = xpMessage;
+      $("xpResult").classList.toggle("level-up", didLevelUp);
+      $("resultBest").textContent = (
+        state.mode === "shoot"
+          ? records.shootBest || 0
+          : records.best[state.level] || 0
+      ).toLocaleString("de-CH");
+    });
     $("upgradeBtn").hidden = training;
     const fail = state.phase === "failed",
       win = state.phase === "victory";
@@ -950,13 +1102,26 @@ function phaseUI() {
     );
     $("resultBest").textContent = training
       ? "—"
-      : (records.best[state.level] || 0).toLocaleString("de-CH");
+      : (state.mode === "shoot"
+          ? records.shootBest || 0
+          : records.best[state.level] || 0
+        ).toLocaleString("de-CH");
     $("nextBtn").textContent =
       training || win
         ? "Zurück zum Hangar →"
         : fail
           ? "Gemeinsam erneut versuchen →"
           : "Nächstes Leuchtfeuer →";
+    $("resultCombo").textContent =
+      "Beste Kette ×" +
+      state.bestCombo +
+      (state.mode === "shoot" ? " · " + state.kills + " Drohnen" : "");
+    if (state.mode === "shoot" && !fail) {
+      $("resultTag").textContent = "NEON-SCHIESSEN · FLUG ABGESCHLOSSEN";
+      $("resultTitle").textContent = "Drohnenflug geschafft.";
+      $("resultDescription").textContent =
+        "60 Sekunden gemeinsam überlebt. Zwei Treffer je Drohne; Abschüsse geben zusätzliche Flug-XP.";
+    }
     show("resultScreen");
     audio.effect(fail ? "hit" : "win");
   }
@@ -979,12 +1144,25 @@ function sendInput() {
       t: "input",
       seq: ++seq,
       axis: input.axis,
+      vertical: input.vertical,
+      targetY: input.targetY,
+      fire: input.fire,
       target: input.target,
       rescue: input.rescue,
       dash: dashSerial,
     });
 }
 $("dashBtn").onclick = triggerDash;
+$("fireBtn").onpointerdown = (e) => {
+  e.preventDefault();
+  $("fireBtn").setPointerCapture(e.pointerId);
+  fireHeld = true;
+  enableAudio();
+};
+for (const n of ["pointerup", "pointercancel", "lostpointercapture"])
+  $("fireBtn").addEventListener(n, () => {
+    fireHeld = false;
+  });
 $("rescueBtn").onpointerdown = (e) => {
   e.preventDefault();
   $("rescueBtn").setPointerCapture(e.pointerId);
@@ -1000,15 +1178,16 @@ addEventListener("keydown", (e) => {
   if (
     e.target.closest("input,select,button") ||
     $("settings").open ||
+    $("hangar").open ||
     $("credits").open
   )
     return;
   const k = e.key.toLowerCase();
-  if (["arrowleft", "arrowright", " ", "arrowup"].includes(k))
+  if (["arrowleft", "arrowright", " ", "arrowup", "arrowdown"].includes(k))
     e.preventDefault();
   if (e.repeat) return;
   held.add(k);
-  if (k === " " || k === "arrowup") triggerDash();
+  if (k === " ") triggerDash();
   if (k === "escape" || k === "p") {
     if (state.phase === "playing")
       requestPause("Der Flug ist für euch beide pausiert.");
@@ -1031,28 +1210,35 @@ canvas.addEventListener(
   },
   true,
 );
+// Relativer Zwei-Achsen-Stick: Aufsetzen versetzt den Gleiter nicht.
 canvas.addEventListener("pointerdown", (e) => {
-  if (state.phase !== "playing") return;
+  if (state.phase !== "playing" || pointer !== null) return;
   pointer = e.pointerId;
   canvas.setPointerCapture(pointer);
-  input.target = clamp(
-    (e.clientX / innerWidth - 0.5) * 26,
-    -FLIGHT_LIMIT,
-    FLIGHT_LIMIT,
-  );
+  stick = { x: e.clientX, y: e.clientY, axis: 0, vertical: 0 };
+  const pad = $("touchStick");
+  pad.hidden = false;
+  pad.style.left = e.clientX + "px";
+  pad.style.top = e.clientY + "px";
+  pad.firstElementChild.style.transform = "translate(0px, 0px)";
 });
 canvas.addEventListener("pointermove", (e) => {
-  if (pointer === e.pointerId && state.phase === "playing")
-    input.target = clamp(
-      (e.clientX / innerWidth - 0.5) * 26,
-      -FLIGHT_LIMIT,
-      FLIGHT_LIMIT,
-    );
+  if (pointer !== e.pointerId || state.phase !== "playing") return;
+  const dx = e.clientX - stick.x,
+    dy = e.clientY - stick.y;
+  const length = Math.max(44, Math.hypot(dx, dy));
+  stick.axis = dx / length;
+  stick.vertical = -dy / length;
+  $("touchStick").firstElementChild.style.transform =
+    `translate(${stick.axis * 35}px, ${-stick.vertical * 35}px)`;
 });
 for (const n of ["pointerup", "pointercancel", "lostpointercapture"])
-  canvas.addEventListener(n, () => {
+  canvas.addEventListener(n, (e) => {
+    if (pointer !== e.pointerId) return;
     pointer = null;
-    input.target = null;
+    stick.axis = stick.vertical = 0;
+    input.target = input.targetY = null;
+    $("touchStick").hidden = true;
   });
 addEventListener("blur", () => {
   release();
@@ -1069,6 +1255,10 @@ document.addEventListener("visibilitychange", () => {
 });
 addEventListener("resize", updateRotate);
 addEventListener("beforeunload", () => closeSession());
+$("portraitBtn").onclick = () => {
+  portraitAllowed = true;
+  updateRotate();
+};
 $("rotateBtn").onclick = async () => {
   try {
     await document.documentElement.requestFullscreen();
@@ -1082,7 +1272,7 @@ function notice(text) {
   noticeTimer = 2;
 }
 function autopilot() {
-  const soon = routeCache[state.level].filter(
+  const soon = eventsFor(state).filter(
     (e) => e.t > state.t && e.t < state.t + 1.2,
   );
   let target =
@@ -1096,7 +1286,17 @@ function autopilot() {
   const hazard = soon.find((e) => e.type === "hazard");
   if (hazard && Math.abs(target - eventX(hazard, state.t)) < 2.5)
     target = target < 0 ? 5 : -5;
-  remoteInput = { axis: 0, target, rescue: state.players[0].hp === 0 };
+  const goal = soon.find(
+    (e) => e.type === "ring" || e.type === "duet" || e.type === "drone",
+  );
+  if (state.mode === "shoot" && goal?.type === "drone") target = goal.x;
+  remoteInput = {
+    axis: 0,
+    target,
+    targetY: state.players[0].hp === 0 ? state.players[0].y : goal?.y || 0,
+    rescue: state.players[0].hp === 0,
+    fire: state.mode === "shoot",
+  };
 }
 function hud(dt) {
   const over = state.overdrive > 0;
@@ -1114,7 +1314,9 @@ function hud(dt) {
     ":" +
     state.rescues +
     ":" +
-    state.bonuses;
+    state.bonuses +
+    ":" +
+    state.feedbackSerial;
   if (state.notice && noticeKey !== previousNotice) {
     notice(state.notice);
     previousNotice = noticeKey;
@@ -1125,14 +1327,23 @@ function hud(dt) {
   const p = state.players[local],
     q = state.players[1 - local];
   $("hudChapter").textContent =
-    `0${state.level + 1} / ${LEVELS[state.level].name}`;
-  const progress = Math.min(
-    100,
-    (state.t / LEVELS[state.level].duration) * 100,
-  );
+    state.mode === "shoot"
+      ? "NEON-SCHIESSEN · " + state.kills + " DROHNEN"
+      : `0${state.level + 1} / ${LEVELS[state.level].name}`;
+  const progress = Math.min(100, (state.t / duration(state)) * 100);
   $("distance").textContent =
     String(Math.floor(progress)).padStart(2, "0") + "%";
   $("progressFill").style.width = progress + "%";
+  $("comboValue").textContent = "KETTE ×" + state.combo;
+  $("fireBtn").hidden = state.mode !== "shoot";
+  $("heatValue").hidden = state.mode !== "shoot";
+  $("heatValue").textContent = p.overheated
+    ? "ÜBERHITZT · ABKÜHLEN"
+    : "WÄRME " + Math.round(p.heat * 100) + "%";
+  $("fireBtn").setAttribute(
+    "aria-label",
+    p.overheated ? "Waffe kühlt ab" : "Feuern (F gedrückt halten)",
+  );
   $("score").textContent = state.score.toLocaleString("de-CH");
   $("youLabel").textContent = local === 0 ? "DU" : "PARTNER";
   $("partnerLabel").textContent = local === 1 ? "DU" : "PARTNER";
@@ -1144,11 +1355,10 @@ function hud(dt) {
         : "RETTEN " + Math.ceil(state.players[i].down) + "s";
     if (state.players[i].rings > oldRings[i]) {
       audio.effect("ring");
-      view.burst(state.players[i].x, i ? 0xffad71 : 0x7ce7ed);
     }
     if (state.players[i].hp < oldHp[i]) {
       audio.effect("hit");
-      view.burst(state.players[i].x, 0xff6655);
+      view.burst(state.players[i].x, 0xff6655, state.players[i].y);
     }
     if (state.players[i].hp > oldHp[i]) {
       audio.effect("rescue");
@@ -1180,7 +1390,9 @@ function hud(dt) {
     trainingGuide = false;
     if (!state.notice)
       notice(
-        navigator.maxTouchPoints > 0 ? "ZIEHEN ZUM LENKEN" : "A / D ZUM LENKEN",
+        navigator.maxTouchPoints > 0
+          ? "STICK: LINKS / RECHTS / HOCH / RUNTER"
+          : "WASD / PFEILE · HOCH / RUNTER",
       );
   }
 }
@@ -1193,7 +1405,16 @@ function frame(now) {
   input.axis =
     (held.has("arrowright") || held.has("d") ? 1 : 0) -
     (held.has("arrowleft") || held.has("a") ? 1 : 0);
+  input.vertical =
+    (held.has("arrowup") || held.has("w") ? 1 : 0) -
+    (held.has("arrowdown") || held.has("s") ? 1 : 0);
+  if (pointer !== null) {
+    input.axis = stick.axis;
+    input.vertical = stick.vertical;
+  }
   if (input.axis) input.target = null;
+  if (input.vertical) input.targetY = null;
+  input.fire = held.has("f") || fireHeld;
   input.rescue = held.has("e") || rescueHeld;
   if (training) autopilot();
   if (
@@ -1242,7 +1463,7 @@ function frame(now) {
     renderState = {
       ...state,
       t: Math.min(
-        LEVELS[state.level].duration,
+        duration(state),
         presentationClock.sample(state, lastSnapshot, now),
       ),
       players: state.players.map((p, i) =>
@@ -1261,10 +1482,21 @@ function frame(now) {
   requestAnimationFrame(frame);
 }
 if (navigator.maxTouchPoints > 0)
-  $("controlHint").textContent =
-    "ZIEHEN ZUM LENKEN · DASH UND RETTEN PER KNOPF";
+  $("controlHint").textContent = "STICK: 4 RICHTUNGEN · DASH / RETTEN / FEUER";
 saveSettings();
 show("menu");
+try {
+  const result = JSON.parse(sessionStorage.getItem("aether-last-result"));
+  if (
+    !params.has("room") &&
+    validSnapshot(result) &&
+    ["result", "victory", "failed"].includes(result.phase)
+  ) {
+    state = result;
+    training = result.training;
+    phaseUI();
+  }
+} catch {}
 $("boot").hidden = true;
 requestAnimationFrame(frame);
 if (params.get("room") && /^[A-Z]{4}$/i.test(params.get("room"))) {
@@ -1275,6 +1507,20 @@ if (params.get("room") && /^[A-Z]{4}$/i.test(params.get("room"))) {
 if (params.get("debug") === "1")
   window.__flight = {
     state: () => snapshot(state),
+    input: () => ({ ...input }),
+    pilot: () => profile(pilotProfile),
+    helloAgain: () => send(helloPacket()),
+    replayResult: async (result) => {
+      if (
+        !validSnapshot(result) ||
+        !["result", "victory"].includes(result.phase)
+      )
+        throw Error("Ungültiges Ergebnis");
+      state = result;
+      training = result.training;
+      storedKey = "";
+      phaseUI();
+    },
     graphics: () => ({
       calls: view.renderer.info.render.calls,
       triangles: view.renderer.info.render.triangles,
@@ -1291,15 +1537,30 @@ if (params.get("debug") === "1")
             : gl.getParameter(gl.RENDERER);
         })(),
     }),
-    role: () => ({ host, local, connected, hello, screen, ready: stageReady }),
+    role: () => ({
+      host,
+      local,
+      connected,
+      hello,
+      screen,
+      ready: stageReady,
+      netLost,
+      lastFrame,
+      accumulator,
+      remoteInput,
+    }),
     setInput: (v) => {
       input = { ...input, ...v };
     },
     simulate: (seconds) => {
       if (!host) throw Error("Nur Host");
       for (let t = 0; t < seconds; t += 1 / 60) {
-        const e = routeCache[state.level].find(
-          (e) => e.type === "hazard" && e.t > state.t && e.t < state.t + 1.3,
+        const e = eventsFor(state).find(
+          (e) =>
+            (e.type === "hazard" || e.type === "drone") &&
+            !state.destroyed.includes(e.id) &&
+            e.t > state.t &&
+            e.t < state.t + 1.3,
         );
         step(
           state,

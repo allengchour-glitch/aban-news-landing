@@ -1,5 +1,13 @@
+import { FlightMotion, EFFECT_LIMIT, cameraOffset } from "./motion.mjs";
 import { wallIndices, wallSegment, clipNear, splitWall } from "./scenery.mjs";
-import { LEVELS, routeCache, eventX, clamp, LANE_WIDTH } from "./core.mjs";
+import {
+  LEVELS,
+  eventsFor,
+  duration,
+  eventX,
+  clamp,
+  LANE_WIDTH,
+} from "./core.mjs";
 
 // Perspektivischer Canvas-Renderer: vorberechnete Motive statt teurer Echtzeit-Shader.
 function canvas(w, h) {
@@ -141,6 +149,7 @@ export class FastFlightView {
     this.positions = [-3.2, 3.2];
     this.banks = [0, 0];
     this.effects = [];
+    this.motion = new FlightMotion();
     this.texture = null;
     this.texturePattern = null;
     this.textureSize = 512;
@@ -187,7 +196,7 @@ export class FastFlightView {
   project(x, y, z) {
     const d = 13 - z;
     if (d < 2) return null;
-    const f = this.h * 0.88;
+    const f = Math.min(this.h * 0.88, this.w * 0.54);
     return {
       x: this.w * 0.5 + ((x - this.cameraX) * f) / d,
       y: this.h * 0.34 + ((4.3 - y) * f) / d,
@@ -324,12 +333,13 @@ export class FastFlightView {
     }
     this.ctx.drawImage(this.background, 0, 0);
   }
-  burst(x, color) {
-    for (let i = 0; i < 10; i++)
+  burst(x, color, y = 0, z = 0) {
+    if (this.reduced) return;
+    for (let i = 0; i < 10 && this.effects.length < EFFECT_LIMIT; i++)
       this.effects.push({
         x,
-        y: 0.7,
-        z: 0,
+        y: 0.7 + y,
+        z,
         vx: (Math.random() - 0.5) * 8,
         vy: Math.random() * 5,
         vz: Math.random() * 7,
@@ -337,8 +347,8 @@ export class FastFlightView {
         color: "#" + color.toString(16).padStart(6, "0"),
       });
   }
-  ring(x, z, color) {
-    const p = this.project(x, 0.7, z);
+  ring(x, z, color, y = 0) {
+    const p = this.project(x, 0.7 + y, z);
     if (!p || p.k < 0.4) return;
     const r = 2 * p.k;
     if (p.x + r < 0 || p.x - r > this.w || p.y + r < 0 || p.y - r > this.h)
@@ -360,7 +370,10 @@ export class FastFlightView {
   }
   update(s, local, mode, dt) {
     dt = clamp(dt, 0, 0.15);
+    if (s?.phase === "paused") dt = 0;
     this.clock += dt;
+    if (this.motion.run !== s?.runId || this.reduced) this.effects.length = 0;
+    this.motion.update(s, dt, this.reduced, (...args) => this.burst(...args));
     this.setLevel(s?.level || 0);
     const g = this.ctx;
     g.setTransform(this.ratio, 0, 0, this.ratio, 0, 0);
@@ -372,7 +385,9 @@ export class FastFlightView {
       t = playing ? s.t : this.clock * 0.15,
       travel = t * 22;
     const target = s?.players[local]?.x || 0;
-    this.cameraX += (target * 0.16 - this.cameraX) * Math.min(1, dt * 4);
+    this.cameraX +=
+      (cameraOffset(target, this.w, this.h) - this.cameraX) *
+      Math.min(1, dt * 4);
     this.sky();
     const water = g.createLinearGradient(0, this.h * 0.34, 0, this.h);
     water.addColorStop(0, "#233c46");
@@ -420,18 +435,40 @@ export class FastFlightView {
       g.globalAlpha = 1;
     }
     if (playing) {
-      for (const e of routeCache[this.level]) {
+      for (const e of eventsFor(s)) {
         const z = -(e.t - t) * 22;
-        if (z > 8 || z < -340) continue;
+        if (
+          z > 8 ||
+          z < -340 ||
+          s.collected.includes(e.id) ||
+          s.destroyed.includes(e.id)
+        )
+          continue;
         if (e.type === "duet") {
-          this.ring(-LANE_WIDTH, z, "#9aeee0");
-          this.ring(LANE_WIDTH, z, "#ffb77e");
+          this.ring(-LANE_WIDTH, z, "#9aeee0", e.y);
+          this.ring(LANE_WIDTH, z, "#ffb77e", e.y);
         } else if (e.type === "ring")
-          this.ring(eventX(e, t), z, e.bonus ? "#ffd786" : "#b8f2dd");
-        else {
+          this.ring(eventX(e, t), z, e.bonus ? "#ffd786" : "#b8f2dd", e.y);
+        else if (e.type === "drone") {
+          const p = this.project(e.x, 0.7 + e.y, z);
+          if (!p) continue;
+          g.fillStyle = s.droneHits[e.id] ? "#ffcc8a" : "#ea777c";
+          g.strokeStyle = "#ffddb8";
+          g.lineWidth = Math.max(1, p.k * 0.08);
+          g.beginPath();
+          g.moveTo(p.x - 1.5 * p.k, p.y);
+          g.lineTo(p.x, p.y - p.k);
+          g.lineTo(p.x + 1.5 * p.k, p.y);
+          g.lineTo(p.x, p.y + p.k);
+          g.closePath();
+          g.fill();
+          g.stroke();
+          g.fillStyle = "#203242";
+          g.fillRect(p.x - 0.4 * p.k, p.y - 0.2 * p.k, 0.8 * p.k, 0.4 * p.k);
+        } else {
           const x = eventX(e, t),
-            a = this.project(x - 1.35, -4, z),
-            b = this.project(x + 1.35, 4, z);
+            a = this.project(x - 1.35, e.y + 0.7 - 1.7, z),
+            b = this.project(x + 1.35, e.y + 0.7 + 1.7, z);
           if (!a || !b) continue;
           const shade = g.createLinearGradient(a.x, 0, b.x, 0);
           shade.addColorStop(0, "#213039");
@@ -450,7 +487,7 @@ export class FastFlightView {
           }
         }
       }
-      const goalZ = -Math.max(-12, (LEVELS[this.level].duration - t) * 22);
+      const goalZ = -Math.max(-12, (duration(s) - t) * 22);
       if (goalZ > -340) {
         const goal = this.project(0, 8, goalZ);
         if (goal) {
@@ -470,7 +507,7 @@ export class FastFlightView {
       const p = s?.players[i],
         x = p?.x ?? (i ? 3.2 : -3.2),
         prev = this.positions[i];
-      this.positions[i] += (x - this.positions[i]) * Math.min(1, dt * 18);
+      this.positions[i] = x;
       this.banks[i] +=
         (clamp(
           ((this.positions[i] - prev) / Math.max(dt, 0.001)) * 0.025,
@@ -478,12 +515,8 @@ export class FastFlightView {
           0.2,
         ) -
           this.banks[i]) *
-        Math.min(1, dt * 8);
-      points[i] = this.project(
-        this.positions[i],
-        0.65,
-        i === local ? 1.2 : -4.8,
-      );
+        (1 - Math.exp(-dt * 8));
+      points[i] = this.project(this.positions[i], 0.7 + (p?.y || 0), 0);
     }
     if (playing && points.every(Boolean)) {
       g.strokeStyle = s.overdrive > 0 ? "#ffe2a8" : "#98e5dd";
@@ -500,7 +533,47 @@ export class FastFlightView {
       g.stroke();
       g.globalAlpha = 1;
     }
-    // Partner voraus, eigener Gleiter zuletzt und stets sichtbar.
+    // Projektile und Trails benutzen dieselbe Weltachse wie Ringe und Kollisionen.
+    for (const shot of s?.shots || []) {
+      const a = this.project(shot.x, 0.7 + shot.y, shot.z),
+        b = this.project(shot.x, 0.7 + shot.y, shot.z + 4);
+      if (!a || !b) continue;
+      g.strokeStyle = shot.owner ? "#ffd194" : "#9cffee";
+      g.lineWidth = Math.max(2, a.k * 0.1);
+      g.beginPath();
+      g.moveTo(a.x, a.y);
+      g.lineTo(b.x, b.y);
+      g.stroke();
+    }
+    if (!this.reduced && playing)
+      this.motion.trails.forEach((trail, i) => {
+        if (s.players[i].hp <= 0) return;
+        g.strokeStyle = i ? "#ffc789" : "#92eee2";
+        g.lineWidth = 1.5;
+        for (let j = 1; j < trail.length; j++) {
+          const a = trail[j - 1],
+            b = trail[j];
+          const pa = this.project(
+            a.x,
+            a.y + 0.7,
+            1 + (this.motion.time - a.t) * 18,
+          );
+          const pb = this.project(
+            b.x,
+            b.y + 0.7,
+            1 + (this.motion.time - b.t) * 18,
+          );
+          if (!pa || !pb) continue;
+          g.globalAlpha =
+            0.24 * Math.max(0, 1 - (this.motion.time - b.t) / 0.65);
+          g.beginPath();
+          g.moveTo(pa.x, pa.y);
+          g.lineTo(pb.x, pb.y);
+          g.stroke();
+        }
+        g.globalAlpha = 1;
+      });
+    // Eigener Gleiter zuletzt und stets sichtbar.
     for (const i of [1 - local, local]) {
       const p = s?.players[i],
         pos = points[i];
@@ -509,9 +582,11 @@ export class FastFlightView {
         boost = p?.dash > 0 || s?.overdrive > 0;
       g.save();
       g.translate(pos.x, pos.y);
-      g.rotate(p?.hp === 0 ? 0.6 : this.banks[i]);
+      g.rotate(this.reduced ? 0 : p?.hp === 0 ? 0.6 : this.banks[i]);
       if (playing && p?.hp > 0) {
-        const len = boost ? size * 0.8 : size * 0.35;
+        const len =
+          (boost ? size * 0.8 : size * 0.35) *
+          (this.reduced ? 1 : 1 + Math.sin(this.clock * 24 + i) * 0.12);
         for (const side of [-1, 1]) {
           const flame = g.createLinearGradient(
             0,

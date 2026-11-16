@@ -1,5 +1,4 @@
-import { clamp, FLIGHT_LIMIT } from "./core.mjs";
-import { ROLES } from "./profile.mjs";
+import { clamp, movePilot } from "./core.mjs";
 
 // Begrenzte Nachholung statt Zeitverlust bei Frames unter 20 FPS.
 export function frameTime(elapsed) {
@@ -21,7 +20,7 @@ export class PresentationClock {
     this.now = 0;
   }
   sample(state, receivedAt, now) {
-    const key = state.level + ":" + state.phase,
+    const key = (state.runId || "") + ":" + state.level + ":" + state.phase,
       age = clamp((now - receivedAt) / 1000, 0, 0.2),
       target = state.t + age;
     if (this.key !== key) {
@@ -40,12 +39,9 @@ export class PresentationClock {
 
 export function predictPilot(p, input, age) {
   if (p.hp <= 0) return p;
-  const dt = clamp(Number.isFinite(age) ? age : 0, 0, 0.15),
-    speed = ROLES[p.role].speed + (p.mod === "vector" ? 2 : 0);
-  const movement = Number.isFinite(input.target)
-    ? clamp(input.target - p.x, -speed * dt, speed * dt)
-    : clamp(Number(input.axis) || 0, -1, 1) * speed * dt;
-  return { ...p, x: clamp(p.x + movement, -FLIGHT_LIMIT, FLIGHT_LIMIT) };
+  const predicted = { ...p };
+  movePilot(predicted, input, clamp(Number.isFinite(age) ? age : 0, 0, 0.15));
+  return predicted;
 }
 
 // Auf schwächeren Geräten nur die Renderauflösung anpassen, nicht die Spielregeln.
