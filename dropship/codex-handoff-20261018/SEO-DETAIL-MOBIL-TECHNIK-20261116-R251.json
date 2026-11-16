@@ -1,0 +1,1513 @@
+{
+  "run": "R251",
+  "preparedAtUTC": "2026-11-16T00:20:06.933955Z",
+  "mobile": {
+    "mobile/evidence.json": {
+      "checkedAt": "2026-11-15T23:50:23.843Z",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "deviceScaleFactor": 1,
+        "mobile": true,
+        "touch": true
+      },
+      "method": "Visible button clicks on .lx-bildwahl color cards; hidden native variant radio was not set programmatically; read form ID/URL/price/hero after click; no cart or checkout interaction.",
+      "results": [
+        {
+          "url": "https://luxestyle.ch/products/faltbares-bluetooth-headset-813952?variant=56026866680193",
+          "formId": "56026866680193",
+          "radios": [
+            {
+              "value": "Pink",
+              "id": "56026866680193"
+            }
+          ],
+          "card": [
+            {
+              "option": "Farbe",
+              "selected": "Pink",
+              "pressed": [
+                "Pink"
+              ]
+            }
+          ],
+          "price": "CHF 17.90",
+          "prices": [
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 14.90",
+            "CHF 14.90",
+            "CHF 34.90",
+            "CHF 34.90",
+            "CHF 22.90",
+            "CHF 22.90",
+            "CHF 34.90",
+            "CHF 34.90"
+          ],
+          "hero": {
+            "src": "https://luxestyle.ch/cdn/shop/files/3b386a07-e500-4508-bb86-c11fe40990c2.jpg?v=1785730110&width=480",
+            "alt": "Faltbares Bluetooth-Headset in Pink mit hellgrünem Kopfbügel",
+            "x": 0,
+            "y": 122,
+            "w": 390,
+            "h": 390,
+            "visible": true
+          },
+          "visibleLargeImages": [
+            {
+              "src": "https://luxestyle.ch/cdn/shop/files/3b386a07-e500-4508-bb86-c11fe40990c2.jpg?v=1785730110&width=480",
+              "alt": "Faltbares Bluetooth-Headset in Pink mit hellgrünem Kopfbügel",
+              "x": 0,
+              "y": 122,
+              "w": 390,
+              "h": 390,
+              "visible": true
+            }
+          ],
+          "h1": "Faltbares Bluetooth-Headset 5.2",
+          "title": "Faltbares Bluetooth-Headset 5.2 | LuxeStyle CH",
+          "metaDescription": "Faltbares Stereo-Headset mit Bluetooth 5.2 und Anruffunktion. Fünf Farbausführungen, USB-Ladung und genaue Angaben zu Multipoint und Lieferumfang.",
+          "viewport": {
+            "width": 390,
+            "height": 844,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "horizontalOverflow": false
+          },
+          "expected": {
+            "variantId": "56026866680193",
+            "price": "CHF 17.90",
+            "imageFilename": "3b386a07-e500-4508-bb86-c11fe40990c2.jpg"
+          },
+          "pass": {
+            "formId": true,
+            "urlContainsVariant": true,
+            "price": true,
+            "heroFileMatches": true,
+            "visibleSelectedCard": true
+          }
+        },
+        {
+          "url": "https://luxestyle.ch/products/faltbares-bluetooth-headset-813952?variant=56026866778497",
+          "formId": "56026866778497",
+          "radios": [
+            {
+              "value": "Schwarz",
+              "id": "56026866778497"
+            }
+          ],
+          "card": [
+            {
+              "option": "Farbe",
+              "selected": "Schwarz",
+              "pressed": [
+                "Schwarz"
+              ]
+            }
+          ],
+          "price": "CHF 17.90",
+          "prices": [
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 14.90",
+            "CHF 14.90",
+            "CHF 34.90",
+            "CHF 34.90",
+            "CHF 22.90",
+            "CHF 22.90",
+            "CHF 34.90",
+            "CHF 34.90"
+          ],
+          "hero": {
+            "src": "https://luxestyle.ch/cdn/shop/files/1380a850-d82e-4e26-b7f6-81dbe8eda6fc.jpg?v=1785730110&width=480",
+            "alt": "Faltbares Bluetooth-Headset in Schwarz",
+            "x": 0,
+            "y": -355,
+            "w": 390,
+            "h": 390,
+            "visible": true
+          },
+          "visibleLargeImages": [
+            {
+              "src": "https://luxestyle.ch/cdn/shop/files/1380a850-d82e-4e26-b7f6-81dbe8eda6fc.jpg?v=1785730110&width=480",
+              "alt": "Faltbares Bluetooth-Headset in Schwarz",
+              "x": 0,
+              "y": -355,
+              "w": 390,
+              "h": 390,
+              "visible": true
+            }
+          ],
+          "h1": "Faltbares Bluetooth-Headset 5.2",
+          "title": "Faltbares Bluetooth-Headset 5.2 | LuxeStyle CH",
+          "metaDescription": "Faltbares Stereo-Headset mit Bluetooth 5.2 und Anruffunktion. Fünf Farbausführungen, USB-Ladung und genaue Angaben zu Multipoint und Lieferumfang.",
+          "viewport": {
+            "width": 390,
+            "height": 844,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "horizontalOverflow": false
+          },
+          "expected": {
+            "variantId": "56026866778497",
+            "price": "CHF 17.90",
+            "imageFilename": "1380a850-d82e-4e26-b7f6-81dbe8eda6fc.jpg"
+          },
+          "pass": {
+            "formId": true,
+            "urlContainsVariant": true,
+            "price": true,
+            "heroFileMatches": true,
+            "visibleSelectedCard": true
+          }
+        },
+        {
+          "url": "https://luxestyle.ch/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800?variant=67870839570823",
+          "formId": "67870839570823",
+          "radios": [
+            {
+              "value": "Rosa",
+              "id": "67870839570823"
+            }
+          ],
+          "card": [
+            {
+              "option": "Farbe",
+              "selected": "Rosa",
+              "pressed": [
+                "Rosa"
+              ]
+            }
+          ],
+          "price": "CHF 23.90",
+          "prices": [
+            "CHF 23.90",
+            "CHF 23.90",
+            "CHF 23.90",
+            "CHF 23.90",
+            "CHF 23.90",
+            "CHF 23.90",
+            "CHF 17.90",
+            "CHF 17.90",
+            "CHF 14.90",
+            "CHF 14.90",
+            "CHF 34.90",
+            "CHF 34.90",
+            "CHF 22.90",
+            "CHF 22.90",
+            "CHF 34.90",
+            "CHF 34.90"
+          ],
+          "hero": {
+            "src": "https://luxestyle.ch/cdn/shop/files/131bd2ac-2d9d-410a-b05a-22bcba04cd61_fine.jpg?v=1787908774&width=480",
+            "alt": "In-Ear Wireless Bluetooth Headset Cool Mecha | LuxeStyle",
+            "x": 0,
+            "y": 93,
+            "w": 390,
+            "h": 390,
+            "visible": true
+          },
+          "visibleLargeImages": [
+            {
+              "src": "https://luxestyle.ch/cdn/shop/files/131bd2ac-2d9d-410a-b05a-22bcba04cd61_fine.jpg?v=1787908774&width=480",
+              "alt": "In-Ear Wireless Bluetooth Headset Cool Mecha | LuxeStyle",
+              "x": 0,
+              "y": 93,
+              "w": 390,
+              "h": 390,
+              "visible": true
+            }
+          ],
+          "h1": "In-Ear-Kopfhörer Cool Mecha mit Bluetooth",
+          "title": "In-Ear-Kopfhörer Cool Mecha mit Bluetooth | LuxeStyle CH",
+          "metaDescription": "Cool Mecha In-Ear-Kopfhörer mit Bluetooth: sechs Farben, angegebene 4–8 Stunden Laufzeit und bis zu 10 m Reichweite. Auswahl und Lieferumfang prüfen.",
+          "viewport": {
+            "width": 390,
+            "height": 844,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "horizontalOverflow": false
+          },
+          "expected": {
+            "variantId": "67870839570823",
+            "price": "CHF 23.90",
+            "imageFilename": "131bd2ac-2d9d-410a-b05a-22bcba04cd61_fine.jpg"
+          },
+          "pass": {
+            "formId": true,
+            "urlContainsVariant": true,
+            "price": true,
+            "heroFileMatches": true,
+            "visibleSelectedCard": true
+          }
+        }
+      ],
+      "foldedDescription": {
+        "heading": "Verbindung und Funktionen",
+        "tableCaption": "Technische Angaben des faltbaren Headsets",
+        "tableText": "Technische Angaben des faltbaren Headsets\nBluetooth\tVersion 5.2\nAngegebene Reichweite\tBis zu 10 m\nAudio und Telefonie\tStereo, Musikwiedergabe und Anruffunktion\nWeitere Angaben\tAkkuanzeige und Sprachsteuerung; der Umfang der Sprachsteuerung ist nicht näher beschrieben.\nMultipoint\tMehrpunktverbindung aufgeführt; Anzahl gleichzeitig verbundener Geräte und Umschaltverhalten nicht angegeben.\nLaden\tUSB-Ladung; genaue Steckerform nicht bestätigt\nMaterialangabe\tKunststoff; genaue Zusammensetzung von Bügel und Polsterung nicht bestätigt",
+        "tableScrollWidth": 358,
+        "tableClientWidth": 358,
+        "descriptionRect": {
+          "x": 16,
+          "y": -157,
+          "w": 358,
+          "h": 1845
+        }
+      },
+      "viewport360": {
+        "folded": {
+          "width": 360,
+          "documentWidth": 360,
+          "bodyWidth": 360,
+          "overflow": false,
+          "tableWidths": [
+            {
+              "scrollWidth": 328,
+              "clientWidth": 328
+            },
+            {
+              "scrollWidth": 328,
+              "clientWidth": 328
+            }
+          ]
+        },
+        "cool-mecha": {
+          "width": 360,
+          "documentWidth": 360,
+          "bodyWidth": 360,
+          "overflow": false,
+          "tableWidths": [
+            {
+              "scrollWidth": 337,
+              "clientWidth": 337
+            }
+          ]
+        }
+      },
+      "observations": {
+        "publicVariantImageInitiallyNull": true,
+        "postclickFeaturedHeroExpectedToBeObservedInRenderedPage": true
+      }
+    },
+    "collection-mobile/evidence.json": {
+      "scope": "Read-only real summary clicks; no cart/order/checkout interaction",
+      "cases": [
+        {
+          "handle": "pc-gaming",
+          "status": 200,
+          "url": "https://luxestyle.ch/collections/pc-gaming",
+          "open": true,
+          "h1": [
+            "PC-Gaming"
+          ],
+          "h2": [
+            "Welche Ausrüstung suchst du?",
+            "Vor der Auswahl vergleichen"
+          ],
+          "restVisible": true,
+          "metrics": {
+            "width": 390,
+            "scrollWidth": 390,
+            "clientWidth": 390
+          },
+          "screenshot": "pc-gaming-390.png",
+          "narrow": {
+            "width": 360,
+            "scrollWidth": 360,
+            "clientWidth": 360
+          },
+          "passed": true
+        },
+        {
+          "handle": "kopfhoerer-audio",
+          "status": 200,
+          "url": "https://luxestyle.ch/collections/kopfhoerer-audio",
+          "open": true,
+          "h1": [
+            "Kopfhörer & Audio"
+          ],
+          "h2": [
+            "In-Ear oder Kopfbügel?",
+            "Darauf kommt es bei der Auswahl an"
+          ],
+          "restVisible": true,
+          "metrics": {
+            "width": 390,
+            "scrollWidth": 390,
+            "clientWidth": 390
+          },
+          "screenshot": "kopfhoerer-audio-390.png",
+          "narrow": {
+            "width": 360,
+            "scrollWidth": 360,
+            "clientWidth": 360
+          },
+          "passed": true
+        },
+        {
+          "handle": "spielkonsolen-retro-handhelds",
+          "status": 200,
+          "url": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds",
+          "open": true,
+          "h1": [
+            "Spielkonsolen & Retro-Handhelds"
+          ],
+          "h2": [
+            "TV-Konsole oder Handheld?",
+            "Spiele, Speicherkarte und Set-Auswahl"
+          ],
+          "restVisible": true,
+          "metrics": {
+            "width": 390,
+            "scrollWidth": 390,
+            "clientWidth": 390
+          },
+          "screenshot": "spielkonsolen-retro-handhelds-390.png",
+          "narrow": {
+            "width": 360,
+            "scrollWidth": 360,
+            "clientWidth": 360
+          },
+          "passed": true
+        }
+      ],
+      "allPassed": true
+    },
+    "pc-mobile/evidence.json": {
+      "cases": [
+        {
+          "key": "mouse",
+          "status": 200,
+          "url": "https://luxestyle.ch/products/usb-gaming-maus-mit-rgb-beleuchtung-d40fcb",
+          "top": {
+            "h1": "USB-Gaming-Maus X3 mit Beleuchtung",
+            "formId": "55889956733313",
+            "price": "CHF 15.90",
+            "pickerLabels": [],
+            "optionNames": []
+          },
+          "firstParagraph": "Die X3 ist eine schwarze, kabelgebundene USB-Gaming-Maus mit farbwechselnder Beleuchtung. Die Produktbeschreibung nennt vier DPI-Stufen im Bereich von 1000 bis 5500 und ein 145 cm langes Kabel mit Nylon-Geflecht.",
+          "firstParagraphVisible": true,
+          "measurements": [
+            {
+              "width": 390,
+              "documentWidth": 390,
+              "bodyWidth": 390,
+              "tables": [
+                {
+                  "scrollWidth": 358,
+                  "clientWidth": 358
+                }
+              ]
+            },
+            {
+              "width": 360,
+              "documentWidth": 360,
+              "bodyWidth": 360,
+              "tables": [
+                {
+                  "scrollWidth": 328,
+                  "clientWidth": 328
+                }
+              ]
+            }
+          ],
+          "checks": {
+            "http": true,
+            "formId": true,
+            "price": true,
+            "noOverflow": true,
+            "detailVisible": true,
+            "specific": false
+          },
+          "allChecks": false
+        },
+        {
+          "key": "keyboard",
+          "status": 200,
+          "url": "https://luxestyle.ch/products/gaming-tastatur-mit-usb-kabel-und-beleuchtung-81961a",
+          "top": {
+            "h1": "USB-Gaming-Tastatur AK-600 – Layout prüfen",
+            "formId": "56096444514689",
+            "price": "CHF 17.90",
+            "pickerLabels": [],
+            "optionNames": []
+          },
+          "firstParagraph": "Die AK-600 ist eine kabelgebundene USB-Gaming-Tastatur mit 104 Tasten und dreifarbiger Beleuchtung. Das gelieferte Sprachlayout ist nicht eindeutig bestätigt: Die Produktdaten nennen eine «Russian Version», während auf den Produktbildern lateinische Tastenbeschriftungen zu sehen sind. Ein deutsches oder Schweizer QWERTZ-Layout ist nicht bestätigt.",
+          "firstParagraphVisible": true,
+          "measurements": [
+            {
+              "width": 390,
+              "documentWidth": 390,
+              "bodyWidth": 390,
+              "tables": [
+                {
+                  "scrollWidth": 358,
+                  "clientWidth": 358
+                }
+              ]
+            },
+            {
+              "width": 360,
+              "documentWidth": 360,
+              "bodyWidth": 360,
+              "tables": [
+                {
+                  "scrollWidth": 342,
+                  "clientWidth": 342
+                }
+              ]
+            }
+          ],
+          "checks": {
+            "http": true,
+            "formId": true,
+            "price": true,
+            "noOverflow": true,
+            "detailVisible": true,
+            "specific": true
+          },
+          "allChecks": true
+        }
+      ],
+      "allPassed": false,
+      "noCartCheckoutOrOrderActions": true
+    },
+    "pc-mobile/review-assessment.json": {
+      "scope": "Local-only review of pc-mobile/evidence.json, four captured screenshots, pc-final-copy-plans.json, and public-after-verification.json. No network queries or writes to Shopify.",
+      "mouse": {
+        "http200": true,
+        "mobileWidths": [
+          390,
+          360
+        ],
+        "documentAndTableOverflow": false,
+        "h1AndDescriptionVisible": true,
+        "pickerSpecificHeuristic": "not_applicable",
+        "reason": "The screenshot visibly shows 'Ausführung Schwarz, Tyrannosaurus Rex'. The native/current page has one variant, so the theme displays its value as static text and hides variant-picker/.lx-bildwahl controls. The `specific` check in evidence.json expected a visible selector; its false result is a test assumption mismatch, not a reason to add a picker.",
+        "contentBoundary": "The mouse title/meta avoid a six-button claim. Body explicitly explains that source values differ (six in product description vs seven in another product name), and avoids a programming claim. DPI values are given as a 1000–5500 range in four stages; no intermediate values are invented. Product dimensions are 130 × 85 × 40 mm."
+      },
+      "keyboard": {
+        "allOriginalChecksPassed": true,
+        "http200": true,
+        "mobileWidths": [
+          390,
+          360
+        ],
+        "documentAndTableOverflow": false,
+        "layoutWarningVisibleInFirstParagraph": true,
+        "layoutWarningVisibleInH1AndSeoTitle": true,
+        "contentBoundary": "The heading and first paragraph foreground unresolved Russian Version vs Latin-looking legends. No German/Swiss QWERTZ or selectable layout is asserted. Product dimensions remain 442 × 133 × 30 mm from product descriptions; the logistics dimensions are excluded."
+      },
+      "publicVerification": "Both product entries in public-after-verification.json have allChecks=true: HTTP 200, title/meta, H1, self-canonical, no noindex, body links, public JSON/IDs and variant details. Other collection/product entries were read for context only; this review does not add new checks for them.",
+      "result": "PASS within the narrow local review scope; the mouse evidence bundle's aggregate allPassed=false is caused only by the inapplicable visible-picker heuristic. Original evidence was left unchanged."
+    }
+  },
+  "mobileLimits": "Screenshots and real variant clicks are a targeted browser QA, not full-catalog/cross-device certification. Headphone mobile captures predate final minor qualifier/alt refinements; final public/native evidence verifies those fields. Mouse original selector heuristic is preserved and independently explained as not applicable for its single variant.",
+  "publicReadback": [
+    {
+      "key": "cool-mecha",
+      "type": "product",
+      "url": "https://luxestyle.ch/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800",
+      "http": 200,
+      "headings": [
+        "In-Ear-Kopfhörer Cool Mecha mit Bluetooth"
+      ],
+      "title": [
+        "In-Ear-Kopfhörer Cool Mecha mit Bluetooth | LuxeStyle CH"
+      ],
+      "description": [
+        "Cool Mecha In-Ear-Kopfhörer mit Bluetooth: sechs Farben, angegebene 4–8 Stunden Laufzeit und bis zu 10 m Reichweite. Auswahl und Lieferumfang prüfen."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800"
+      ],
+      "robots": [],
+      "htmlSha256": "674486222e959bb85cbd3dfcc9f9c0fb26ec1b5a9af58461611f3d807f06c384",
+      "bodyLinks": [
+        "/collections/kopfhoerer-audio",
+        "/products/faltbares-bluetooth-headset-813952"
+      ],
+      "checks": {
+        "http200": true,
+        "seoTitle": true,
+        "metaDescription": true,
+        "h1": true,
+        "canonical": true,
+        "bodyText": true,
+        "noNoindex": true,
+        "allBodyLinksPresent": true,
+        "publicJson200": true,
+        "publicProductId": true,
+        "publicDescription": true,
+        "publicTitle": true,
+        "variantIdsSkusPrices": true,
+        "allPublicVariantsAvailable": true,
+        "allVariantImages": true,
+        "allVariantImageAlts": true
+      },
+      "publicJsonSha256": "ac125fb305ec75c62e450a024f5d637ec38b5dbe15a210f24bb6258a9af349a0",
+      "bodyComparisonMethod": "Full normalized description text for products; every p/h2/li fragment for collections because theme inserts Mehr anzeigen/Weniger anzeigen controls between intro and remainder.",
+      "allChecks": true
+    },
+    {
+      "key": "foldable",
+      "type": "product",
+      "url": "https://luxestyle.ch/products/faltbares-bluetooth-headset-813952",
+      "http": 200,
+      "headings": [
+        "Faltbares Bluetooth-Headset 5.2"
+      ],
+      "title": [
+        "Faltbares Bluetooth-Headset 5.2 | LuxeStyle CH"
+      ],
+      "description": [
+        "Faltbares Stereo-Headset mit Bluetooth 5.2 und Anruffunktion. Fünf Farbausführungen, USB-Ladung und genaue Angaben zu Multipoint und Lieferumfang."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/products/faltbares-bluetooth-headset-813952"
+      ],
+      "robots": [],
+      "htmlSha256": "09f82b069de0b848aed8288a42741b476ef2359e23ab3f4b961bedc27833eee7",
+      "bodyLinks": [
+        "/collections/kopfhoerer-audio",
+        "/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800"
+      ],
+      "checks": {
+        "http200": true,
+        "seoTitle": true,
+        "metaDescription": true,
+        "h1": true,
+        "canonical": true,
+        "bodyText": true,
+        "noNoindex": true,
+        "allBodyLinksPresent": true,
+        "publicJson200": true,
+        "publicProductId": true,
+        "publicDescription": true,
+        "publicTitle": true,
+        "variantIdsSkusPrices": true,
+        "allPublicVariantsAvailable": true,
+        "allVariantImages": true,
+        "allVariantImageAlts": true
+      },
+      "publicJsonSha256": "b585047496370be66331f98f1bd4d58e3f9adf73c18c2f8365c04fca054f12d2",
+      "bodyComparisonMethod": "Full normalized description text for products; every p/h2/li fragment for collections because theme inserts Mehr anzeigen/Weniger anzeigen controls between intro and remainder.",
+      "allChecks": true
+    },
+    {
+      "key": "mouse",
+      "type": "product",
+      "url": "https://luxestyle.ch/products/usb-gaming-maus-mit-rgb-beleuchtung-d40fcb",
+      "http": 200,
+      "headings": [
+        "USB-Gaming-Maus X3 mit Beleuchtung"
+      ],
+      "title": [
+        "USB-Gaming-Maus X3 mit Beleuchtung | LuxeStyle CH"
+      ],
+      "description": [
+        "USB-Gaming-Maus X3 mit Farblicht, 145-cm-Nylongeflechtkabel und vier angegebenen DPI-Stufen von 1000 bis 5500. Masse, Ausführung und Details prüfen."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/products/usb-gaming-maus-mit-rgb-beleuchtung-d40fcb"
+      ],
+      "robots": [],
+      "htmlSha256": "6a75fe187811426566de564386e4584dabaaf6e14f70dc7f3b9c786e2f696cb7",
+      "bodyLinks": [
+        "/collections/pc-gaming",
+        "/collections/tastaturen",
+        "/products/gaming-tastatur-mit-usb-kabel-und-beleuchtung-81961a"
+      ],
+      "checks": {
+        "http200": true,
+        "seoTitle": true,
+        "metaDescription": true,
+        "h1": true,
+        "canonical": true,
+        "bodyText": true,
+        "noNoindex": true,
+        "allBodyLinksPresent": true,
+        "publicJson200": true,
+        "publicProductId": true,
+        "publicDescription": true,
+        "publicTitle": true,
+        "variantIdsSkusPrices": true,
+        "allPublicVariantsAvailable": true,
+        "singleVariantGalleryImage": true
+      },
+      "publicJsonSha256": "25f75f98d7a0fc82a076b35d300d4de23fa578ecc37436fe9db8b6970592746f",
+      "bodyComparisonMethod": "Full normalized description text for products; every p/h2/li fragment for collections because theme inserts Mehr anzeigen/Weniger anzeigen controls between intro and remainder.",
+      "allChecks": true
+    },
+    {
+      "key": "keyboard",
+      "type": "product",
+      "url": "https://luxestyle.ch/products/gaming-tastatur-mit-usb-kabel-und-beleuchtung-81961a",
+      "http": 200,
+      "headings": [
+        "USB-Gaming-Tastatur AK-600 – Layout prüfen"
+      ],
+      "title": [
+        "USB-Gaming-Tastatur AK-600: Layout prüfen | LuxeStyle CH"
+      ],
+      "description": [
+        "AK-600 USB-Gaming-Tastatur mit 104 Tasten und dreifarbiger Beleuchtung. Sprachlayout vor dem Kauf klären; Masse, Kabellänge und Lieferumfang ansehen."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/products/gaming-tastatur-mit-usb-kabel-und-beleuchtung-81961a"
+      ],
+      "robots": [],
+      "htmlSha256": "58a1f76069d26a785aeadb8ac28c14086a77bc32cc4dfc58600c49288f8a117c",
+      "bodyLinks": [
+        "/collections/pc-gaming",
+        "/products/usb-gaming-maus-mit-rgb-beleuchtung-d40fcb"
+      ],
+      "checks": {
+        "http200": true,
+        "seoTitle": true,
+        "metaDescription": true,
+        "h1": true,
+        "canonical": true,
+        "bodyText": true,
+        "noNoindex": true,
+        "allBodyLinksPresent": true,
+        "publicJson200": true,
+        "publicProductId": true,
+        "publicDescription": true,
+        "publicTitle": true,
+        "variantIdsSkusPrices": true,
+        "allPublicVariantsAvailable": true,
+        "singleVariantGalleryImage": true
+      },
+      "publicJsonSha256": "fd630ff374dac98d1aa2663dc9d5c84eaa78119709d8efad794288f098eac692",
+      "bodyComparisonMethod": "Full normalized description text for products; every p/h2/li fragment for collections because theme inserts Mehr anzeigen/Weniger anzeigen controls between intro and remainder.",
+      "allChecks": true
+    },
+    {
+      "key": "pc-gaming",
+      "type": "collection",
+      "url": "https://luxestyle.ch/collections/pc-gaming",
+      "http": 200,
+      "headings": [
+        "PC-Gaming"
+      ],
+      "title": [
+        "PC-Gaming-Zubehör: Mäuse und Tastaturen | LuxeStyle CH"
+      ],
+      "description": [
+        "PC-Gaming-Zubehör vergleichen: Mäuse, Tastaturen, Mikrofone und Headsets. Auswahlhilfe zu Verbindung, Anschlüssen, Ausführung und Lieferumfang."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/collections/pc-gaming"
+      ],
+      "robots": [],
+      "htmlSha256": "ebee056526072273173099941505b4fef1a2c408c0fb7907e3093bd0c4804413",
+      "bodyLinks": [
+        "/collections/tastaturen",
+        "/collections/mikrofone",
+        "/collections/gaming-headsets",
+        "/collections/gaming"
+      ],
+      "checks": {
+        "http200": true,
+        "seoTitle": true,
+        "metaDescription": true,
+        "h1": true,
+        "canonical": true,
+        "bodyText": true,
+        "noNoindex": true,
+        "allBodyLinksPresent": true
+      },
+      "bodyComparisonMethod": "Full normalized description text for products; every p/h2/li fragment for collections because theme inserts Mehr anzeigen/Weniger anzeigen controls between intro and remainder.",
+      "allChecks": true
+    },
+    {
+      "key": "kopfhoerer-audio",
+      "type": "collection",
+      "url": "https://luxestyle.ch/collections/kopfhoerer-audio",
+      "http": 200,
+      "headings": [
+        "Kopfhörer & Audio"
+      ],
+      "title": [
+        "Kopfhörer, Bluetooth-Headsets und Audio | LuxeStyle CH"
+      ],
+      "description": [
+        "Kopfhörer, Bluetooth-Headsets und Lautsprecher vergleichen. Auswahlhilfe zu In-Ear, Bügelmodellen, Verbindung, Anruffunktion und Lieferumfang."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/collections/kopfhoerer-audio"
+      ],
+      "robots": [],
+      "htmlSha256": "a51b8f6291f654a7aeff962c83691668b4c591b5c408cff02f4f1217490d1b36",
+      "bodyLinks": [
+        "/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800",
+        "/products/faltbares-bluetooth-headset-813952",
+        "/collections/gaming-headsets",
+        "/collections/mikrofone",
+        "/collections/elektronik-technik"
+      ],
+      "checks": {
+        "http200": true,
+        "seoTitle": true,
+        "metaDescription": true,
+        "h1": true,
+        "canonical": true,
+        "bodyText": true,
+        "noNoindex": true,
+        "allBodyLinksPresent": true
+      },
+      "bodyComparisonMethod": "Full normalized description text for products; every p/h2/li fragment for collections because theme inserts Mehr anzeigen/Weniger anzeigen controls between intro and remainder.",
+      "allChecks": true
+    },
+    {
+      "key": "spielkonsolen-retro-handhelds",
+      "type": "collection",
+      "url": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds",
+      "http": 200,
+      "headings": [
+        "Spielkonsolen & Retro-Handhelds"
+      ],
+      "title": [
+        "Spielkonsolen und Retro-Handhelds | LuxeStyle CH"
+      ],
+      "description": [
+        "Spielkonsolen und Retro-Handhelds vergleichen: Einsatz am TV oder unterwegs, Anschlüsse, Display, Speicheroptionen und bestätigten Lieferumfang prüfen."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds"
+      ],
+      "robots": [],
+      "htmlSha256": "6d787d21c6f68d798b754037ff78082ab88c519bdffbf6b259f88bb661132b80",
+      "bodyLinks": [
+        "/collections/gamepads-controller",
+        "/collections/konsolen-zubehoer",
+        "/collections/gaming"
+      ],
+      "checks": {
+        "http200": true,
+        "seoTitle": true,
+        "metaDescription": true,
+        "h1": true,
+        "canonical": true,
+        "bodyText": true,
+        "noNoindex": true,
+        "allBodyLinksPresent": true
+      },
+      "bodyComparisonMethod": "Full normalized description text for products; every p/h2/li fragment for collections because theme inserts Mehr anzeigen/Weniger anzeigen controls between intro and remainder.",
+      "allChecks": true
+    }
+  ],
+  "structuredData": [
+    {
+      "key": "cool-mecha",
+      "htmlSha256": "674486222e959bb85cbd3dfcc9f9c0fb26ec1b5a9af58461611f3d807f06c384",
+      "jsonLdScriptsParsed": 3,
+      "types": [
+        "Organization",
+        "ProductGroup",
+        "BreadcrumbList"
+      ],
+      "variantCount": 6,
+      "nativeVariantCount": 6,
+      "checks": [
+        {
+          "variantId": "67870839505287",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        },
+        {
+          "variantId": "67870839538055",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        },
+        {
+          "variantId": "67870839570823",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        },
+        {
+          "variantId": "67870839603591",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        },
+        {
+          "variantId": "67870839636359",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        },
+        {
+          "variantId": "67870839669127",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        }
+      ],
+      "allPassed": true,
+      "preexistingAggregateRatingObserved": false,
+      "scope": "Syntax and native SKU/CHF price/exact variant URL consistency only. Existing review provenance was not verified; no rating/review was created, changed or endorsed. This is not Google rich-result eligibility, index or sales proof."
+    },
+    {
+      "key": "foldable",
+      "htmlSha256": "09f82b069de0b848aed8288a42741b476ef2359e23ab3f4b961bedc27833eee7",
+      "jsonLdScriptsParsed": 3,
+      "types": [
+        "Organization",
+        "ProductGroup",
+        "BreadcrumbList"
+      ],
+      "variantCount": 5,
+      "nativeVariantCount": 5,
+      "checks": [
+        {
+          "variantId": "56026866647425",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        },
+        {
+          "variantId": "56026866680193",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        },
+        {
+          "variantId": "56026866712961",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        },
+        {
+          "variantId": "56026866745729",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        },
+        {
+          "variantId": "56026866778497",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        }
+      ],
+      "allPassed": true,
+      "preexistingAggregateRatingObserved": false,
+      "scope": "Syntax and native SKU/CHF price/exact variant URL consistency only. Existing review provenance was not verified; no rating/review was created, changed or endorsed. This is not Google rich-result eligibility, index or sales proof."
+    },
+    {
+      "key": "mouse",
+      "htmlSha256": "6a75fe187811426566de564386e4584dabaaf6e14f70dc7f3b9c786e2f696cb7",
+      "jsonLdScriptsParsed": 3,
+      "types": [
+        "Organization",
+        "ProductGroup",
+        "BreadcrumbList"
+      ],
+      "variantCount": 1,
+      "nativeVariantCount": 1,
+      "checks": [
+        {
+          "variantId": "55889956733313",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        }
+      ],
+      "allPassed": true,
+      "preexistingAggregateRatingObserved": false,
+      "scope": "Syntax and native SKU/CHF price/exact variant URL consistency only. Existing review provenance was not verified; no rating/review was created, changed or endorsed. This is not Google rich-result eligibility, index or sales proof."
+    },
+    {
+      "key": "keyboard",
+      "htmlSha256": "58a1f76069d26a785aeadb8ac28c14086a77bc32cc4dfc58600c49288f8a117c",
+      "jsonLdScriptsParsed": 3,
+      "types": [
+        "Organization",
+        "Product",
+        "BreadcrumbList"
+      ],
+      "variantCount": 1,
+      "nativeVariantCount": 1,
+      "checks": [
+        {
+          "variantId": "56096444514689",
+          "sku": true,
+          "price": true,
+          "currency": true,
+          "url": true
+        }
+      ],
+      "allPassed": true,
+      "preexistingAggregateRatingObserved": true,
+      "scope": "Syntax and native SKU/CHF price/exact variant URL consistency only. Existing review provenance was not verified; no rating/review was created, changed or endorsed. This is not Google rich-result eligibility, index or sales proof."
+    }
+  ],
+  "pageLinksAndRobots": {
+    "rows": [
+      {
+        "key": "cool-mecha",
+        "type": "products",
+        "url": "https://luxestyle.ch/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800",
+        "seoTitleLength": 56,
+        "metaDescriptionLength": 149,
+        "beforeBodyLinks": [
+          "/collections/trends-gadgets",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "afterBodyLinks": [
+          "/collections/kopfhoerer-audio",
+          "/products/faltbares-bluetooth-headset-813952"
+        ],
+        "robotsAllowed": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        }
+      },
+      {
+        "key": "foldable",
+        "type": "products",
+        "url": "https://luxestyle.ch/products/faltbares-bluetooth-headset-813952",
+        "seoTitleLength": 46,
+        "metaDescriptionLength": 146,
+        "beforeBodyLinks": [
+          "/collections/trends-gadgets",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "afterBodyLinks": [
+          "/collections/kopfhoerer-audio",
+          "/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800"
+        ],
+        "robotsAllowed": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        }
+      },
+      {
+        "key": "mouse",
+        "type": "products",
+        "url": "https://luxestyle.ch/products/usb-gaming-maus-mit-rgb-beleuchtung-d40fcb",
+        "seoTitleLength": 49,
+        "metaDescriptionLength": 148,
+        "beforeBodyLinks": [
+          "/collections/trends-gadgets",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "afterBodyLinks": [
+          "/collections/pc-gaming",
+          "/collections/tastaturen",
+          "/products/gaming-tastatur-mit-usb-kabel-und-beleuchtung-81961a"
+        ],
+        "robotsAllowed": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        }
+      },
+      {
+        "key": "keyboard",
+        "type": "products",
+        "url": "https://luxestyle.ch/products/gaming-tastatur-mit-usb-kabel-und-beleuchtung-81961a",
+        "seoTitleLength": 56,
+        "metaDescriptionLength": 149,
+        "beforeBodyLinks": [
+          "/collections/gaming",
+          "/collections/bestseller-premium-heroes"
+        ],
+        "afterBodyLinks": [
+          "/collections/pc-gaming",
+          "/products/usb-gaming-maus-mit-rgb-beleuchtung-d40fcb"
+        ],
+        "robotsAllowed": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        }
+      },
+      {
+        "key": "pc-gaming",
+        "type": "collections",
+        "url": "https://luxestyle.ch/collections/pc-gaming",
+        "seoTitleLength": 54,
+        "metaDescriptionLength": 143,
+        "beforeBodyLinks": [],
+        "afterBodyLinks": [
+          "/collections/tastaturen",
+          "/collections/mikrofone",
+          "/collections/gaming-headsets",
+          "/collections/gaming"
+        ],
+        "robotsAllowed": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        }
+      },
+      {
+        "key": "kopfhoerer-audio",
+        "type": "collections",
+        "url": "https://luxestyle.ch/collections/kopfhoerer-audio",
+        "seoTitleLength": 54,
+        "metaDescriptionLength": 142,
+        "beforeBodyLinks": [
+          "/collections/elektronik-technik"
+        ],
+        "afterBodyLinks": [
+          "/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800",
+          "/products/faltbares-bluetooth-headset-813952",
+          "/collections/gaming-headsets",
+          "/collections/mikrofone",
+          "/collections/elektronik-technik"
+        ],
+        "robotsAllowed": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        }
+      },
+      {
+        "key": "spielkonsolen-retro-handhelds",
+        "type": "collections",
+        "url": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds",
+        "seoTitleLength": 48,
+        "metaDescriptionLength": 151,
+        "beforeBodyLinks": [],
+        "afterBodyLinks": [
+          "/collections/gamepads-controller",
+          "/collections/konsolen-zubehoer",
+          "/collections/gaming"
+        ],
+        "robotsAllowed": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        }
+      }
+    ],
+    "beforeAnchorInstances": 9,
+    "afterAnchorInstances": 21,
+    "afterUniqueTargets": 13,
+    "netAdditionalAnchorInstances": 12,
+    "addedAnchorInstancesByTarget": {
+      "/collections/kopfhoerer-audio": 2,
+      "/products/faltbares-bluetooth-headset-813952": 2,
+      "/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800": 2,
+      "/collections/pc-gaming": 2,
+      "/collections/tastaturen": 2,
+      "/products/gaming-tastatur-mit-usb-kabel-und-beleuchtung-81961a": 1,
+      "/products/usb-gaming-maus-mit-rgb-beleuchtung-d40fcb": 1,
+      "/collections/mikrofone": 2,
+      "/collections/gaming-headsets": 2,
+      "/collections/gaming": 1,
+      "/collections/gamepads-controller": 1,
+      "/collections/konsolen-zubehoer": 1
+    },
+    "removedAnchorInstancesByTarget": {
+      "/collections/trends-gadgets": 3,
+      "/collections/bestseller-premium-heroes": 4
+    },
+    "robotsSourceSha256": "cb0603cc7715bdd00f30f162918d7f3fb6d253d309fdf3a50d649c93f7dbbf86",
+    "robotsScope": "Local parsing of already fetched robots.txt for the seven edited URLs; not a fresh Google crawler fetch. Category sitemap evidence remains limited to three edited collections in two existing collection sitemaps."
+  },
+  "robotsAndCollectionSitemap": {
+    "robots": {
+      "url": "https://luxestyle.ch/robots.txt",
+      "http": 200,
+      "sha256": "cb0603cc7715bdd00f30f162918d7f3fb6d253d309fdf3a50d649c93f7dbbf86",
+      "targets": {
+        "/collections/pc-gaming": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        },
+        "/collections/kopfhoerer-audio": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        },
+        "/collections/spielkonsolen-retro-handhelds": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        },
+        "/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        },
+        "/products/faltbares-bluetooth-headset-813952": {
+          "Googlebot": true,
+          "Googlebot-Image": true,
+          "GoogleStoreBot": true
+        }
+      }
+    },
+    "sitemap": {
+      "url": "https://luxestyle.ch/sitemap.xml",
+      "http": 200,
+      "sha256": "23e12ec6d832c56fd94b8a2d543eff5f35da6ec08a2894e43457cd4f21945f52",
+      "childSitemaps": [
+        "https://luxestyle.ch/sitemap_agentic_discovery.xml",
+        "https://luxestyle.ch/sitemap_products_1.xml?from=15406765801857&to=15446273917313",
+        "https://luxestyle.ch/sitemap_products_2.xml?from=15446273950081&to=15448001773953",
+        "https://luxestyle.ch/sitemap_products_3.xml?from=15448002068865&to=15448595595649",
+        "https://luxestyle.ch/sitemap_products_4.xml?from=15448595628417&to=15448789057921",
+        "https://luxestyle.ch/sitemap_products_5.xml?from=15448790270337&to=15448930451841",
+        "https://luxestyle.ch/sitemap_products_6.xml?from=15448930517377&to=15449132925313",
+        "https://luxestyle.ch/sitemap_products_7.xml?from=15449132958081&to=15449478562177",
+        "https://luxestyle.ch/sitemap_products_8.xml?from=15449478627713&to=15450252870017",
+        "https://luxestyle.ch/sitemap_products_9.xml?from=15450252902785&to=15450854195585",
+        "https://luxestyle.ch/sitemap_products_10.xml?from=15450854261121&to=15453743186305",
+        "https://luxestyle.ch/sitemap_products_11.xml?from=15453743284609&to=15453924393345",
+        "https://luxestyle.ch/sitemap_products_12.xml?from=15453924426113&to=15454117593473",
+        "https://luxestyle.ch/sitemap_products_13.xml?from=15454117691777&to=15454914969985",
+        "https://luxestyle.ch/sitemap_products_14.xml?from=15454915002753&to=15458756690305",
+        "https://luxestyle.ch/sitemap_products_15.xml?from=15458756755841&to=15466876830081",
+        "https://luxestyle.ch/sitemap_products_16.xml?from=15466876862849&to=15469961183617",
+        "https://luxestyle.ch/sitemap_products_17.xml?from=15469961216385&to=15470000701825",
+        "https://luxestyle.ch/sitemap_products_18.xml?from=15470000734593&to=15472049815937",
+        "https://luxestyle.ch/sitemap_products_19.xml?from=15472049848705&to=15477469053313",
+        "https://luxestyle.ch/sitemap_products_20.xml?from=15477470495105&to=15479488348545",
+        "https://luxestyle.ch/sitemap_products_21.xml?from=15479488414081&to=15481776406913",
+        "https://luxestyle.ch/sitemap_products_22.xml?from=15481776472449&to=15487894716801",
+        "https://luxestyle.ch/sitemap_products_23.xml?from=15487895470465&to=15493059707265",
+        "https://luxestyle.ch/sitemap_products_24.xml?from=15493059838337&to=15493835391361",
+        "https://luxestyle.ch/sitemap_products_25.xml?from=15493835424129&to=15493935333761",
+        "https://luxestyle.ch/sitemap_products_26.xml?from=15493935366529&to=15495121338753",
+        "https://luxestyle.ch/sitemap_products_27.xml?from=15495121469825&to=15495725744513",
+        "https://luxestyle.ch/sitemap_products_28.xml?from=15495725842817&to=15496392671617",
+        "https://luxestyle.ch/sitemap_products_29.xml?from=15496392737153&to=15497421914497",
+        "https://luxestyle.ch/sitemap_products_30.xml?from=15497421980033&to=15497533915521",
+        "https://luxestyle.ch/sitemap_products_31.xml?from=15497533948289&to=15500192874881",
+        "https://luxestyle.ch/sitemap_products_32.xml?from=15500193005953&to=15500898042241",
+        "https://luxestyle.ch/sitemap_products_33.xml?from=15500898075009&to=15500999229825",
+        "https://luxestyle.ch/sitemap_products_34.xml?from=15500999262593&to=15502138442113",
+        "https://luxestyle.ch/sitemap_products_35.xml?from=15502138605953&to=15503117877633",
+        "https://luxestyle.ch/sitemap_products_36.xml?from=15503117975937&to=15503931376001",
+        "https://luxestyle.ch/sitemap_products_37.xml?from=15503931474305&to=15504286876033",
+        "https://luxestyle.ch/sitemap_products_38.xml?from=15504287465857&to=15506448646529",
+        "https://luxestyle.ch/sitemap_products_39.xml?from=15506448974209&to=15508423278977",
+        "https://luxestyle.ch/sitemap_products_40.xml?from=15508423311745&to=15509384036737",
+        "https://luxestyle.ch/sitemap_products_41.xml?from=15509384069505&to=15510322839937",
+        "https://luxestyle.ch/sitemap_products_42.xml?from=15510322872705&to=15511015686529",
+        "https://luxestyle.ch/sitemap_products_43.xml?from=15511015850369&to=15516666888577",
+        "https://luxestyle.ch/sitemap_products_44.xml?from=15516667543937&to=15520397623681",
+        "https://luxestyle.ch/sitemap_products_45.xml?from=15520397656449&to=15522210021761",
+        "https://luxestyle.ch/sitemap_products_46.xml?from=15522210218369&to=15523850486145",
+        "https://luxestyle.ch/sitemap_products_47.xml?from=15523850518913&to=15524853055873",
+        "https://luxestyle.ch/sitemap_products_48.xml?from=15524853154177&to=15525490983297",
+        "https://luxestyle.ch/sitemap_products_49.xml?from=15525491048833&to=16604583035271",
+        "https://luxestyle.ch/sitemap_products_50.xml?from=16604583657863&to=16608455033223",
+        "https://luxestyle.ch/sitemap_products_51.xml?from=16608455065991&to=16612118659463",
+        "https://luxestyle.ch/sitemap_products_52.xml?from=16612118692231&to=16614814908807",
+        "https://luxestyle.ch/sitemap_products_53.xml?from=16614814941575&to=16615807091079",
+        "https://luxestyle.ch/sitemap_products_54.xml?from=16615807123847&to=16617713435015",
+        "https://luxestyle.ch/sitemap_products_55.xml?from=16617713467783&to=16647641661831",
+        "https://luxestyle.ch/sitemap_products_56.xml?from=16647642579335&to=16655498314119",
+        "https://luxestyle.ch/sitemap_products_57.xml?from=16655498346887&to=16706218951047",
+        "https://luxestyle.ch/sitemap_pages_1.xml?from=697899417985&to=700975022465",
+        "https://luxestyle.ch/sitemap_collections_1.xml?from=687295136129&to=755668844935",
+        "https://luxestyle.ch/sitemap_collections_2.xml?from=755668877703&to=756506886535",
+        "https://luxestyle.ch/sitemap_blogs_1.xml",
+        "https://luxestyle.ch/sitemap_articles_1.xml",
+        "https://luxestyle.ch/fr/sitemap_products_1.xml?from=15406765801857&to=15446273917313",
+        "https://luxestyle.ch/fr/sitemap_products_2.xml?from=15446273950081&to=15448001773953",
+        "https://luxestyle.ch/fr/sitemap_products_3.xml?from=15448002068865&to=15448595595649",
+        "https://luxestyle.ch/fr/sitemap_products_4.xml?from=15448595628417&to=15448789057921",
+        "https://luxestyle.ch/fr/sitemap_products_5.xml?from=15448790270337&to=15448930451841",
+        "https://luxestyle.ch/fr/sitemap_products_6.xml?from=15448930517377&to=15449132925313",
+        "https://luxestyle.ch/fr/sitemap_products_7.xml?from=15449132958081&to=15449478562177",
+        "https://luxestyle.ch/fr/sitemap_products_8.xml?from=15449478627713&to=15450252870017",
+        "https://luxestyle.ch/fr/sitemap_products_9.xml?from=15450252902785&to=15450854195585",
+        "https://luxestyle.ch/fr/sitemap_products_10.xml?from=15450854261121&to=15453743186305",
+        "https://luxestyle.ch/fr/sitemap_products_11.xml?from=15453743284609&to=15453924393345",
+        "https://luxestyle.ch/fr/sitemap_products_12.xml?from=15453924426113&to=15454117593473",
+        "https://luxestyle.ch/fr/sitemap_products_13.xml?from=15454117691777&to=15454914969985",
+        "https://luxestyle.ch/fr/sitemap_products_14.xml?from=15454915002753&to=15458756690305",
+        "https://luxestyle.ch/fr/sitemap_products_15.xml?from=15458756755841&to=15466876830081",
+        "https://luxestyle.ch/fr/sitemap_products_16.xml?from=15466876862849&to=15469961183617",
+        "https://luxestyle.ch/fr/sitemap_products_17.xml?from=15469961216385&to=15470000701825",
+        "https://luxestyle.ch/fr/sitemap_products_18.xml?from=15470000734593&to=15472049815937",
+        "https://luxestyle.ch/fr/sitemap_products_19.xml?from=15472049848705&to=15477469053313",
+        "https://luxestyle.ch/fr/sitemap_products_20.xml?from=15477470495105&to=15479488348545",
+        "https://luxestyle.ch/fr/sitemap_products_21.xml?from=15479488414081&to=15481776406913",
+        "https://luxestyle.ch/fr/sitemap_products_22.xml?from=15481776472449&to=15487894716801",
+        "https://luxestyle.ch/fr/sitemap_products_23.xml?from=15487895470465&to=15493059707265",
+        "https://luxestyle.ch/fr/sitemap_products_24.xml?from=15493059838337&to=15493835391361",
+        "https://luxestyle.ch/fr/sitemap_products_25.xml?from=15493835424129&to=15493935333761",
+        "https://luxestyle.ch/fr/sitemap_products_26.xml?from=15493935366529&to=15495121338753",
+        "https://luxestyle.ch/fr/sitemap_products_27.xml?from=15495121469825&to=15495725744513",
+        "https://luxestyle.ch/fr/sitemap_products_28.xml?from=15495725842817&to=15496392671617",
+        "https://luxestyle.ch/fr/sitemap_products_29.xml?from=15496392737153&to=15497421914497",
+        "https://luxestyle.ch/fr/sitemap_products_30.xml?from=15497421980033&to=15497533915521",
+        "https://luxestyle.ch/fr/sitemap_products_31.xml?from=15497533948289&to=15500192874881",
+        "https://luxestyle.ch/fr/sitemap_products_32.xml?from=15500193005953&to=15500898042241",
+        "https://luxestyle.ch/fr/sitemap_products_33.xml?from=15500898075009&to=15500999229825",
+        "https://luxestyle.ch/fr/sitemap_products_34.xml?from=15500999262593&to=15502138442113",
+        "https://luxestyle.ch/fr/sitemap_products_35.xml?from=15502138605953&to=15503117877633",
+        "https://luxestyle.ch/fr/sitemap_products_36.xml?from=15503117975937&to=15503931376001",
+        "https://luxestyle.ch/fr/sitemap_products_37.xml?from=15503931474305&to=15504286876033",
+        "https://luxestyle.ch/fr/sitemap_products_38.xml?from=15504287465857&to=15506448646529",
+        "https://luxestyle.ch/fr/sitemap_products_39.xml?from=15506448974209&to=15508423278977",
+        "https://luxestyle.ch/fr/sitemap_products_40.xml?from=15508423311745&to=15509384036737",
+        "https://luxestyle.ch/fr/sitemap_products_41.xml?from=15509384069505&to=15510322839937",
+        "https://luxestyle.ch/fr/sitemap_products_42.xml?from=15510322872705&to=15511015686529",
+        "https://luxestyle.ch/fr/sitemap_products_43.xml?from=15511015850369&to=15516666888577",
+        "https://luxestyle.ch/fr/sitemap_products_44.xml?from=15516667543937&to=15520397623681",
+        "https://luxestyle.ch/fr/sitemap_products_45.xml?from=15520397656449&to=15522210021761",
+        "https://luxestyle.ch/fr/sitemap_products_46.xml?from=15522210218369&to=15523850486145",
+        "https://luxestyle.ch/fr/sitemap_products_47.xml?from=15523850518913&to=15524853055873",
+        "https://luxestyle.ch/fr/sitemap_products_48.xml?from=15524853154177&to=15525490983297",
+        "https://luxestyle.ch/fr/sitemap_products_49.xml?from=15525491048833&to=16604583035271",
+        "https://luxestyle.ch/fr/sitemap_products_50.xml?from=16604583657863&to=16608455033223",
+        "https://luxestyle.ch/fr/sitemap_products_51.xml?from=16608455065991&to=16612118659463",
+        "https://luxestyle.ch/fr/sitemap_products_52.xml?from=16612118692231&to=16614814908807",
+        "https://luxestyle.ch/fr/sitemap_products_53.xml?from=16614814941575&to=16615807091079",
+        "https://luxestyle.ch/fr/sitemap_products_54.xml?from=16615807123847&to=16617713435015",
+        "https://luxestyle.ch/fr/sitemap_products_55.xml?from=16617713467783&to=16647641661831",
+        "https://luxestyle.ch/fr/sitemap_products_56.xml?from=16647642579335&to=16655498314119",
+        "https://luxestyle.ch/fr/sitemap_products_57.xml?from=16655498346887&to=16706218951047",
+        "https://luxestyle.ch/fr/sitemap_pages_1.xml?from=697899417985&to=700975022465",
+        "https://luxestyle.ch/fr/sitemap_collections_1.xml?from=687295136129&to=755668844935",
+        "https://luxestyle.ch/fr/sitemap_collections_2.xml?from=755668877703&to=756506886535",
+        "https://luxestyle.ch/fr/sitemap_blogs_1.xml",
+        "https://luxestyle.ch/fr/sitemap_articles_1.xml"
+      ],
+      "checkedCollectionSitemap": {
+        "url": "https://luxestyle.ch/sitemap_collections_1.xml?from=687295136129&to=755668844935",
+        "http": 200,
+        "entriesExamined": 864,
+        "targetChecks": [
+          {
+            "url": "https://luxestyle.ch/collections/pc-gaming",
+            "presentInThisCollectionSitemap": true
+          },
+          {
+            "url": "https://luxestyle.ch/collections/kopfhoerer-audio",
+            "presentInThisCollectionSitemap": true
+          },
+          {
+            "url": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds",
+            "presentInThisCollectionSitemap": false
+          }
+        ],
+        "sha256": "841864fee1efe362a15356763d87e56c5ecccca76b4728915242f1fd3870efad"
+      },
+      "secondCollectionSitemap": {
+        "url": "https://luxestyle.ch/sitemap_collections_2.xml?from=755668877703&to=756506886535",
+        "http": 200,
+        "entriesExamined": 696,
+        "retroPresent": true,
+        "sha256": "11667648e65a7814a29f10c705d7d608159397c0f6cc947216b7d5e49dfc6be1"
+      }
+    },
+    "scope": "robots.txt, root sitemap index and two German collection child sitemaps only. Retro belongs to second childIDrange; absence from first was not an orphan/indexing finding. No product sitemap orcatalog scan.",
+    "allThreeTargetsPresentInTheirCollectionSitemaps": true
+  },
+  "initialTargetedHeadAudit": {
+    "home": {
+      "http": 200,
+      "url": "https://luxestyle.ch/",
+      "headChars": 224832,
+      "h1count": 1,
+      "title": "\n  LuxeStyle CH – Premium Mode, Beauty & Lifestyle Shop Schweiz\n",
+      "description": "Entdecke Mode, Wohnideen und ausgewählte Geschenke bei LuxeStyle. Vergleiche Varianten und Preise in CHF und finde etwas für deinen Alltag.",
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://luxestyle.ch/\">"
+      ],
+      "langs": [
+        "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://luxestyle.ch/\">",
+        "<link rel=\"alternate\" hreflang=\"de\" href=\"https://luxestyle.ch/\">",
+        "<link rel=\"alternate\" hreflang=\"fr\" href=\"https://luxestyle.ch/fr\">"
+      ],
+      "jsonLdTypes": [
+        null,
+        null
+      ]
+    },
+    "scale": {
+      "http": 200,
+      "url": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119",
+      "headChars": 279119,
+      "h1count": 1,
+      "title": "\n  Präzisionswaage 3-10 kg, elektronisch | LuxeStyle CH\n",
+      "description": "Präzisionswaage 3-10 kg, elektronisch – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456\">"
+      ],
+      "langs": [
+        "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456\">",
+        "<link rel=\"alternate\" hreflang=\"de\" href=\"https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456\">",
+        "<link rel=\"alternate\" hreflang=\"fr\" href=\"https://luxestyle.ch/fr/products/prazisionswaage-3-10-kg-elektronisch-939456\">"
+      ],
+      "ogPrice": "101.90",
+      "ogCurrency": "CHF",
+      "jsonLdTypes": [
+        null,
+        null,
+        null
+      ]
+    },
+    "fr": {
+      "http": 200,
+      "url": "https://luxestyle.ch/fr",
+      "headChars": 211518,
+      "h1count": 1,
+      "title": "\n  LuxeStyle Suisse – Mode, beauté, maison et technologie\n",
+      "description": "LuxeStyle : mode, beauté, technologie et maison. Livraison en Suisse et au Liechtenstein. Livraison gratuite dès CHF 50.",
+      "canonical": [
+        "<link rel=\"canonical\" href=\"https://luxestyle.ch/fr\">"
+      ],
+      "langs": [
+        "<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://luxestyle.ch/\">",
+        "<link rel=\"alternate\" hreflang=\"de\" href=\"https://luxestyle.ch/\">",
+        "<link rel=\"alternate\" hreflang=\"fr\" href=\"https://luxestyle.ch/fr\">"
+      ],
+      "jsonLdTypes": [
+        null,
+        null
+      ]
+    }
+  },
+  "searchConsole": {
+    "checked_at": "2026-11-15 23:25 UTC (2026-11-16 Europe/Zurich)",
+    "source": "Google Search Console by HYPD",
+    "property": "sc-domain:luxestyle.ch",
+    "property_discovery": [
+      "https://luxestyle.ch/",
+      "sc-domain:luxestyle.ch"
+    ],
+    "site_url_used": "sc-domain:luxestyle.ch",
+    "data_window": {
+      "start_date": "2026-11-06",
+      "end_date": "2026-11-12",
+      "data_state": "final",
+      "estimated_data_finalized_through": "2026-11-12",
+      "search_type": "web"
+    },
+    "page_summary_request": {
+      "dimensions": [
+        "page"
+      ],
+      "row_limit": 10,
+      "start_row": 0,
+      "filters": [
+        {
+          "dimension": "page",
+          "operator": "includingRegex",
+          "expression": "https://luxestyle\\.ch/collections/(pc-gaming|kopfhoerer-audio|spielkonsolen-retro-handhelds)$"
+        }
+      ]
+    },
+    "page_summary_response": {
+      "rows": [
+        {
+          "keys": [
+            "https://luxestyle.ch/collections/kopfhoerer-audio"
+          ],
+          "clicks": 0,
+          "impressions": 2,
+          "ctr": 0,
+          "position": 77.5
+        }
+      ],
+      "row_count": 1,
+      "truncated": false
+    },
+    "best_page_query_request": {
+      "page": "https://luxestyle.ch/collections/kopfhoerer-audio",
+      "row_limit": 10
+    },
+    "best_page_query_response": {
+      "rows": [
+        {
+          "keys": [
+            "stereo bluetooth headset"
+          ],
+          "clicks": 0,
+          "impressions": 1,
+          "ctr": 0,
+          "position": 88
+        }
+      ],
+      "row_count": 1,
+      "truncated": false,
+      "anonymized_queries_note": "Rare queries are anonymised and withheld by Google, so query-level rows never sum to this page's totals."
+    }
+  },
+  "audioUrlInspection": {
+    "property": "sc-domain:luxestyle.ch",
+    "inspection_url": "https://luxestyle.ch/collections/kopfhoerer-audio",
+    "source": "Google Search Console by HYPD",
+    "result": {
+      "inspection_result": {
+        "inspectionResultLink": "https://search.google.com/search-console/inspect?resource_id=sc-domain:luxestyle.ch&id=qEQBZV8Est8Mg_lZkRJuQw&utm_medium=link&utm_source=api",
+        "indexStatusResult": {
+          "verdict": "PASS",
+          "coverageState": "Gesendet und indexiert",
+          "robotsTxtState": "ALLOWED",
+          "indexingState": "INDEXING_ALLOWED",
+          "lastCrawlTime": "2026-11-06T20:41:32Z",
+          "pageFetchState": "SUCCESSFUL",
+          "googleCanonical": "https://luxestyle.ch/collections/kopfhoerer-audio",
+          "userCanonical": "https://luxestyle.ch/collections/kopfhoerer-audio",
+          "referringUrls": [
+            "https://luxestyle.ch/products/pailletten-bodycon-kleid-mit-v-ausschnitt-600600",
+            "https://luxestyle.ch/"
+          ],
+          "crawledAs": "MOBILE"
+        },
+        "mobileUsabilityResult": {
+          "verdict": "VERDICT_UNSPECIFIED"
+        },
+        "richResultsResult": {
+          "verdict": "PASS",
+          "detectedItems": [
+            {
+              "richResultType": "Navigationspfade",
+              "items": [
+                {
+                  "name": "Unbenanntes Element"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "limits": [
+    "No new content indexation, rankings or sales proved.",
+    "Two category sitemap reads and seven robots paths only; no whole catalog scan.",
+    "Known scale OpenGraph101.90CHF vs selected offer127.90CHF remains unfixed; not proof of a Merchant crawl cause.",
+    "Preexisting keyboard aggregateRating observed, provenance unverified; not authored or changed in R251."
+  ]
+}

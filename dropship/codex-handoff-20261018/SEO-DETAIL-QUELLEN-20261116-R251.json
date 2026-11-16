@@ -1,0 +1,674 @@
+{
+  "run": "R251",
+  "source": "Targeted CJ connector reads and existing native/public media; not a catalog scan.",
+  "products": {
+    "cool": {
+      "pid": "2507250726321612800",
+      "productName": "[\"GM40入耳式无线蓝牙耳机炫酷机甲游戏智能降噪超长续航无延迟私模\",\"gm40入耳式无线蓝牙\",\"耳机炫酷机甲游戏智能\"]",
+      "productNameEn": "In-Ear Wireless Bluetooth Headset Cool Mecha",
+      "productSku": "CJYP2439570",
+      "productImageSet": [
+        "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/131bd2ac-2d9d-410a-b05a-22bcba04cd61_fine.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/7bea7ceb-e342-4922-a68c-f5bd4c1e3b7a_fine.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/81bfe2d2-0de4-4b1c-bbfd-effaff131997_fine.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/c1befc97-3ec6-4f5c-96b4-8828b894b051_fine.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/5a2ae3df-a08d-4b72-ace2-881ced3e8c50_fine.jpeg",
+        "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/cd59e011-8fc6-45ea-ae7a-89b28c0f1793_fine.jpeg"
+      ],
+      "materialNameEn": "[\"Plastic\",\"Metal\"]",
+      "description": "<p><b>Product information:</b><br>Color: black, red, pink, yellow, green, blue<br> Transmission range: 10 meters<br> Battery life: 4-8 hours<br> Function: supports music<br> Material: PC ABS<br> Usage: in-ear</p>\n<p><br></p>\n<b>Packing list: </b>\n<br> Headphones*1 pair\n<p><br></p>\n<b>Product Image:</b>\n<div>\n <b><br></b>\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/25/07/d507a803-32d8-45ad-ad9c-1c37dc4bcf87_fine.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/25/07/d2228dca-4dbf-4cdd-8d08-5a7734c4e7c1_fine.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/25/07/415837f2-a1fd-42bf-a69a-dbf3458471ad_fine.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/25/07/3e67f050-e6c7-4d40-94c9-d3b316ee0482_fine.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/25/07/f40111c9-4f69-4f8e-9027-0e0d917e8044_fine.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/25/07/c737c294-6fdd-422f-9870-dc1144c613da_fine.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/25/07/18e9073a-d149-4004-a58f-2e9e76fdc4a7_fine.jpeg\">\n <img src=\"https://oss-cf.cjdropshipping.com/product/2025/07/25/07/aa7be13c-e92f-40dc-91c5-c8b7374cfdea_fine.jpeg\">\n</div>",
+      "variants": [
+        {
+          "vid": "2507250726321613000",
+          "pid": "2507250726321612800",
+          "variantNameEn": "In-Ear Wireless Bluetooth Headset Cool Mecha Black",
+          "variantSku": "CJYP243957001AZ",
+          "variantKey": "Black",
+          "variantImage": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/7bea7ceb-e342-4922-a68c-f5bd4c1e3b7a_fine.jpeg"
+        },
+        {
+          "vid": "2507250726321613200",
+          "pid": "2507250726321612800",
+          "variantNameEn": "In-Ear Wireless Bluetooth Headset Cool Mecha Red",
+          "variantSku": "CJYP243957002BY",
+          "variantKey": "Red",
+          "variantImage": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/cd59e011-8fc6-45ea-ae7a-89b28c0f1793_fine.jpeg"
+        },
+        {
+          "vid": "2507250726321613400",
+          "pid": "2507250726321612800",
+          "variantNameEn": "In-Ear Wireless Bluetooth Headset Cool Mecha Pink",
+          "variantSku": "CJYP243957003CX",
+          "variantKey": "Pink",
+          "variantImage": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/131bd2ac-2d9d-410a-b05a-22bcba04cd61_fine.jpeg"
+        },
+        {
+          "vid": "2507250726321613600",
+          "pid": "2507250726321612800",
+          "variantNameEn": "In-Ear Wireless Bluetooth Headset Cool Mecha Yellow",
+          "variantSku": "CJYP243957004DW",
+          "variantKey": "Yellow",
+          "variantImage": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/5a2ae3df-a08d-4b72-ace2-881ced3e8c50_fine.jpeg"
+        },
+        {
+          "vid": "2507250726321613800",
+          "pid": "2507250726321612800",
+          "variantNameEn": "In-Ear Wireless Bluetooth Headset Cool Mecha Green",
+          "variantSku": "CJYP243957005EV",
+          "variantKey": "Green",
+          "variantImage": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/81bfe2d2-0de4-4b1c-bbfd-effaff131997_fine.jpeg"
+        },
+        {
+          "vid": "2507250726321614000",
+          "pid": "2507250726321612800",
+          "variantNameEn": "In-Ear Wireless Bluetooth Headset Cool Mecha Blue",
+          "variantSku": "CJYP243957006FU",
+          "variantKey": "Blue",
+          "variantImage": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/c1befc97-3ec6-4f5c-96b4-8828b894b051_fine.jpeg"
+        }
+      ],
+      "shopifyProductId": "gid://shopify/Product/15518808703361",
+      "shopifyVariantIdsAndSkus": [
+        {
+          "id": "gid://shopify/ProductVariant/67870839505287",
+          "sku": "CJYP243957001AZ"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67870839538055",
+          "sku": "CJYP243957002BY"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67870839570823",
+          "sku": "CJYP243957003CX"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67870839603591",
+          "sku": "CJYP243957004DW"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67870839636359",
+          "sku": "CJYP243957005EV"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67870839669127",
+          "sku": "CJYP243957006FU"
+        }
+      ],
+      "matchMethod": "Exact native variantSku lookup CJYP243957001AZ, six colours and existing source images checked."
+    },
+    "folded": {
+      "pid": "1650379328770813952",
+      "productName": "[\"新爆款渐变色蓝牙耳机头戴式手机无线游戏礼品耳麦可折叠耳机批发\",\"新爆款渐变色蓝牙耳机头戴式手机无\",\"礼品耳麦可折叠耳机批发\"]",
+      "productNameEn": "Gradient Bluetooth Headset Foldable Wireless",
+      "productSku": "CJEJ1743008",
+      "productImageSet": [
+        "https://cf.cjdropshipping.com/bc2a0cf1-548d-4078-8de4-1f5c2fa9fcb5.jpg",
+        "https://cf.cjdropshipping.com/3b3b492e-a4bc-457b-9557-5dfe10a36892.jpg",
+        "https://cf.cjdropshipping.com/3c27d420-da5c-4e0d-856a-262b3635de7f.jpg",
+        "https://cf.cjdropshipping.com/1380a850-d82e-4e26-b7f6-81dbe8eda6fc.jpg",
+        "https://cf.cjdropshipping.com/3b386a07-e500-4508-bb86-c11fe40990c2.jpg",
+        "https://cf.cjdropshipping.com/deafc07d-60a3-48af-8803-dc93c33ea040.jpg"
+      ],
+      "materialNameEn": "[\"Plastic\"]",
+      "description": "<p><b>Product information:</b><br/></p><p>Transmission range: 10 meters<br/>Features: battery display, call function, voice control, support for music, multi-point connection<br/>Bluetooth protocol: 5.2<br/>Channel: Stereo<br/>Colors: blue, pink, green, purple, black<br/><span style=\"font-size: 1em;\">Charging method: USB</span></p><p><br/><b>Packing list:</b></p><p>Headset*1</p><p><br/></p><p><img src=\"https://cf.cjdropshipping.com/295839a0-422e-4796-af65-8bc4f9b92cf6.jpg\" style=\"max-width:100%;\"/><img src=\"https://cf.cjdropshipping.com/a6496a53-fb1b-4162-8d9a-ae090ffc31aa.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/21b0d08e-87cd-4ab1-8bc7-13d70e421379.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/e5c68495-d73c-4799-9b1c-3827704504a2.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/8aa382a3-6ccc-4e06-abf1-1eb2a70025a4.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/94daa855-07b2-42ea-b797-a5a44e048012.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/58abe0b9-d9ea-4bc8-b53d-808a3fe9d5e5.jpg\" style=\"max-width: 100%;\"/><br/></p>",
+      "variants": [
+        {
+          "vid": "1650379328884060160",
+          "pid": "1650379328770813952",
+          "variantNameEn": "Gradient Bluetooth Headset Foldable Wireless Blue",
+          "variantSku": "CJEJ174300801AZ",
+          "variantKey": "Blue",
+          "variantImage": "https://cf.cjdropshipping.com/3c27d420-da5c-4e0d-856a-262b3635de7f.jpg"
+        },
+        {
+          "vid": "1650379328951169024",
+          "pid": "1650379328770813952",
+          "variantNameEn": "Gradient Bluetooth Headset Foldable Wireless Pink",
+          "variantSku": "CJEJ174300802BY",
+          "variantKey": "Pink",
+          "variantImage": "https://cf.cjdropshipping.com/3b386a07-e500-4508-bb86-c11fe40990c2.jpg"
+        },
+        {
+          "vid": "1650379329018277888",
+          "pid": "1650379328770813952",
+          "variantNameEn": "Gradient Bluetooth Headset Foldable Wireless Green",
+          "variantSku": "CJEJ174300803CX",
+          "variantKey": "Green",
+          "variantImage": "https://cf.cjdropshipping.com/deafc07d-60a3-48af-8803-dc93c33ea040.jpg"
+        },
+        {
+          "vid": "1650379329085386752",
+          "pid": "1650379328770813952",
+          "variantNameEn": "Gradient Bluetooth Headset Foldable Wireless Purple",
+          "variantSku": "CJEJ174300804DW",
+          "variantKey": "Purple",
+          "variantImage": "https://cf.cjdropshipping.com/bc2a0cf1-548d-4078-8de4-1f5c2fa9fcb5.jpg"
+        },
+        {
+          "vid": "1650379329156689920",
+          "pid": "1650379328770813952",
+          "variantNameEn": "Gradient Bluetooth Headset Foldable Wireless Black",
+          "variantSku": "CJEJ174300805EV",
+          "variantKey": "Black",
+          "variantImage": "https://cf.cjdropshipping.com/1380a850-d82e-4e26-b7f6-81dbe8eda6fc.jpg"
+        }
+      ],
+      "shopifyProductId": "gid://shopify/Product/15483934179713",
+      "shopifyVariantIdsAndSkus": [
+        {
+          "id": "gid://shopify/ProductVariant/56026866647425",
+          "sku": "CJ-CJEJ174300801AZ"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56026866680193",
+          "sku": "CJ-CJEJ174300802BY"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56026866712961",
+          "sku": "CJ-CJEJ174300803CX"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56026866745729",
+          "sku": "CJ-CJEJ174300804DW"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/56026866778497",
+          "sku": "CJ-CJEJ174300805EV"
+        }
+      ],
+      "matchMethod": "Removed exactly one confirmed leading CJ- for supplier lookup; all five exact supplier variant SKUs and existing image identities checked."
+    },
+    "mouse": {
+      "pid": "2ADAEC52-ED97-4262-8E9D-FC074BD40FCB",
+      "productName": "[\"7键七彩发光USB游戏鼠标电脑背光光电USB有线鼠标 \",\"游戏鼠标\",\"有线鼠标\"]",
+      "productNameEn": "USB gaming mouse",
+      "productSku": "CJJSPBPB00192",
+      "productImageSet": [
+        "https://cf.cjdropshipping.com/15873120/1316314747806.jpg",
+        "https://cf.cjdropshipping.com/20200420/3062151283905.jpg",
+        "https://cf.cjdropshipping.com/20200420/716288905646.jpg",
+        "https://cf.cjdropshipping.com/20200420/3846081759875.jpg",
+        "https://cf.cjdropshipping.com/20200420/1883039487908.jpg"
+      ],
+      "materialNameEn": "[\"\",\"plastic\"]",
+      "description": "<p>Mouse parameters<br>Model: X3-6 key<br>Buttons: 6 buttons<br>Specifications: 130 * 85 * 40MM<br>Weight: 154g / 126g bare metal<br>Wire: nylon braided wire<br>Line length: 145CM<br>Colour: Black<br>Luminous: colorful changing color<br></p><p>DPI: 1000-5500 fourth gear<img src=\"https://cf.cjdropshipping.com/49ad74c1-35ab-4051-b3d5-5a2ffd9eaaca.jpg\" style=\"max-width:100%;\"><img src=\"https://cf.cjdropshipping.com/bf4c846f-a28c-42b7-8dea-29a640651e38.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/ef5bff27-2bdf-4504-935c-305a59b03f19.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/446371cf-6883-427e-bcca-464429051388.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/8a97aba8-e7f8-499b-a287-1f928a6a92e0.jpg\" style=\"font-size: 14px; max-width: 100%;\"><br></p>",
+      "variants": [
+        {
+          "vid": "D90A624D-2AAA-480D-98EE-AD113B365547",
+          "pid": "2ADAEC52-ED97-4262-8E9D-FC074BD40FCB",
+          "variantNameEn": "USB gaming mouse Black Tyrannosaurus Rex",
+          "variantSku": "CJJSPBPB00192-Black-Tyrannosaurus Rex",
+          "variantKey": "Black-Tyrannosaurus Rex",
+          "variantImage": "https://cf.cjdropshipping.com/15873120/1316314747806.jpg"
+        }
+      ],
+      "shopifyProductId": "gid://shopify/Product/15450853867905",
+      "shopifyVariantIdsAndSkus": [
+        {
+          "id": "gid://shopify/ProductVariant/55889956733313",
+          "sku": "CJ-CJJSPBPB00192-Black-Tyrannosaurus Rex"
+        }
+      ],
+      "matchMethod": "Removed exactly one confirmed leading CJ- for exact supplier SKU CJJSPBPB00192-Black-Tyrannosaurus Rex; no SKU write."
+    },
+    "keyboard": {
+      "pid": "3921D0D0-0BC5-4E0F-B0EC-6970AC81961A",
+      "productName": "[\"AK-600新款USB有线发光悬浮键帽机械手感键盘\",\"机械手感键盘\",\"悬浮键帽\"]",
+      "productNameEn": "USB wired illuminated keyboard",
+      "productSku": "CJXFSPYX00274",
+      "productImageSet": [
+        "https://cf.cjdropshipping.com/20200615/4156140113606.jpg",
+        "https://cf.cjdropshipping.com/20200615/274582466059.jpg",
+        "https://cf.cjdropshipping.com/20200615/1328692752996.jpg",
+        "https://cf.cjdropshipping.com/20200615/1996865703452.jpg",
+        "https://cf.cjdropshipping.com/20200615/12530419126547.jpg"
+      ],
+      "materialNameEn": "[\"Plastic\"]",
+      "description": "<p><b>Product information:</b><br>Model: AK-600<br>Applicable models: general<br>Type: Gaming Keyboard<br>Number of keys: 104 (keys)<br>Interface: USB<br>Connection with computer: wired<br>Whether there are multimedia function keys: Yes<br>Shortcut key: yes<br>With or without hand rest: no<br>Waterproof function: support waterproof<br>Backlight function: three-color backlight<br>Material: ABS<br>Line length: 1.4 (m)<br>Product size: 442*133*30mm<br>Color Special: AK-600 Russian Version</p><p><br></p><p><b>Package:</b><br>Gaming keyboard*1</p><p><img src=\"https://cf.cjdropshipping.com/30427eb5-2df9-4240-9196-0fd52de32a39.jpg\" style=\"max-width:100%;\"><img src=\"https://cf.cjdropshipping.com/ef29a0fb-f1d1-4d60-b331-568f2886db36.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/b4e5945e-4353-4435-ac76-0789a1042644.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/2c07a433-ae02-4c19-b9a2-e43fcb65e08a.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/397706be-b242-432b-ad1f-ea385c8e637f.jpg\" style=\"font-size: 14px; max-width: 100%;\"><br></p>",
+      "variants": [
+        {
+          "vid": "E77F6FA7-3BA2-4C62-949B-ECB89DF33AE9",
+          "pid": "3921D0D0-0BC5-4E0F-B0EC-6970AC81961A",
+          "variantNameEn": "USB wired illuminated keyboard Black",
+          "variantSku": "CJXFSPYX00274-Black",
+          "variantKey": "Black",
+          "variantImage": "https://cf.cjdropshipping.com/20200615/12530419126547.jpg"
+        }
+      ],
+      "shopifyProductId": "gid://shopify/Product/15496863154561",
+      "shopifyVariantIdsAndSkus": [
+        {
+          "id": "gid://shopify/ProductVariant/56096444514689",
+          "sku": "CJ-3921D0D0-0BC5-4E0F-B0EC-6970AC81961A"
+        }
+      ],
+      "matchMethod": "Native SKU encodes exact supplier PID 3921D0D0-0BC5-4E0F-B0EC-6970AC81961A; parent and five existing image filenames matched. This does not verify or change fulfillment binding."
+    }
+  },
+  "foldableImageMapping": {
+    "task": "R251 folded headset read-only variant-to-media identity map",
+    "productId": "gid://shopify/Product/15483934179713",
+    "handle": "faltbares-bluetooth-headset-813952",
+    "observedPublicFeaturedImage": {
+      "Blau": null,
+      "Pink": null,
+      "Grün": null,
+      "Lila": null,
+      "Schwarz": null
+    },
+    "mapping": [
+      {
+        "color": "Blue",
+        "cjVariantSku": "CJEJ174300801AZ",
+        "cjVariantId": "1650379328884060160",
+        "cjVariantImageUrl": "https://cf.cjdropshipping.com/3c27d420-da5c-4e0d-856a-262b3635de7f.jpg",
+        "existingShopifyVariantId": "gid://shopify/ProductVariant/56026866647425",
+        "existingShopifySku": "CJ-CJEJ174300801AZ",
+        "publicFeaturedImage": null,
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70383102689665",
+        "shopifyMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3c27d420-da5c-4e0d-856a-262b3635de7f.jpg?v=1785730110",
+        "mediaAlt": "Faltbares Bluetooth-Headset – Bild 3 | LuxeStyle",
+        "identityCheck": "Exact matching basename on CJ variantImage and Shopify media URL",
+        "downloadedSha256": {
+          "cj": "6a212220a6115c96e9e818dfe98a7c1b37a4649830e622f63bb1cd7a56da5bb0",
+          "shopify": "83e3c37556ea498d148ae49ff7a638c9ae2a508a8ed234594520909e09137e0a"
+        },
+        "sourceBytesIdentical": false,
+        "imageDims": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        },
+        "decodedRgbPixelsIdentical": false,
+        "pixelDifferenceBoundingBox": [
+          0,
+          0,
+          800,
+          800
+        ]
+      },
+      {
+        "color": "Pink",
+        "cjVariantSku": "CJEJ174300802BY",
+        "cjVariantId": "1650379328951169024",
+        "cjVariantImageUrl": "https://cf.cjdropshipping.com/3b386a07-e500-4508-bb86-c11fe40990c2.jpg",
+        "existingShopifyVariantId": "gid://shopify/ProductVariant/56026866680193",
+        "existingShopifySku": "CJ-CJEJ174300802BY",
+        "publicFeaturedImage": null,
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70383102755201",
+        "shopifyMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3b386a07-e500-4508-bb86-c11fe40990c2.jpg?v=1785730110",
+        "mediaAlt": "Faltbares Bluetooth-Headset – Bild 5 | LuxeStyle",
+        "identityCheck": "Exact matching basename on CJ variantImage and Shopify media URL",
+        "downloadedSha256": {
+          "cj": "395d4d08e88e379878f97a518897add88efaddd8906a77733163ce45601538b1",
+          "shopify": "88ee4ecb3c4a36a81efa9a25d95a2788f7ad20de6bdea7db2a6ca65fd7e9a94b"
+        },
+        "sourceBytesIdentical": false,
+        "imageDims": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        },
+        "decodedRgbPixelsIdentical": false,
+        "pixelDifferenceBoundingBox": [
+          0,
+          0,
+          800,
+          800
+        ]
+      },
+      {
+        "color": "Green",
+        "cjVariantSku": "CJEJ174300803CX",
+        "cjVariantId": "1650379329018277888",
+        "cjVariantImageUrl": "https://cf.cjdropshipping.com/deafc07d-60a3-48af-8803-dc93c33ea040.jpg",
+        "existingShopifyVariantId": "gid://shopify/ProductVariant/56026866712961",
+        "existingShopifySku": "CJ-CJEJ174300803CX",
+        "publicFeaturedImage": null,
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70383102787969",
+        "shopifyMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/deafc07d-60a3-48af-8803-dc93c33ea040.jpg?v=1785730110",
+        "mediaAlt": "Faltbares Bluetooth-Headset – Bild 6 | LuxeStyle",
+        "identityCheck": "Exact matching basename on CJ variantImage and Shopify media URL",
+        "downloadedSha256": {
+          "cj": "ed469d0d9e63255da02dd7792ea53190faf16043f35d1ecf498228a1841e21fa",
+          "shopify": "891c4d0d8085d42354c53ed2c786817c3a93433c0d6eb9d7bcafe78b8f078bf0"
+        },
+        "sourceBytesIdentical": false,
+        "imageDims": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        },
+        "decodedRgbPixelsIdentical": false,
+        "pixelDifferenceBoundingBox": [
+          0,
+          0,
+          800,
+          800
+        ]
+      },
+      {
+        "color": "Purple",
+        "cjVariantSku": "CJEJ174300804DW",
+        "cjVariantId": "1650379329085386752",
+        "cjVariantImageUrl": "https://cf.cjdropshipping.com/bc2a0cf1-548d-4078-8de4-1f5c2fa9fcb5.jpg",
+        "existingShopifyVariantId": "gid://shopify/ProductVariant/56026866745729",
+        "existingShopifySku": "CJ-CJEJ174300804DW",
+        "publicFeaturedImage": null,
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70383102591361",
+        "shopifyMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc2a0cf1-548d-4078-8de4-1f5c2fa9fcb5.jpg?v=1785730109",
+        "mediaAlt": "Faltbares Bluetooth-Headset – Bild 1 | LuxeStyle",
+        "identityCheck": "Exact matching basename on CJ variantImage and Shopify media URL",
+        "downloadedSha256": {
+          "cj": "bf7cbaf47ea8dfe1704e249c2b5ef6288f2888fc2f67e2701011b3deabd01238",
+          "shopify": "834e2dbaf92ce8df4a9f11799df12c21691bd2198432dcc3a8c1c9a416e00654"
+        },
+        "sourceBytesIdentical": false,
+        "imageDims": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        },
+        "decodedRgbPixelsIdentical": false,
+        "pixelDifferenceBoundingBox": [
+          0,
+          0,
+          800,
+          800
+        ]
+      },
+      {
+        "color": "Black",
+        "cjVariantSku": "CJEJ174300805EV",
+        "cjVariantId": "1650379329156689920",
+        "cjVariantImageUrl": "https://cf.cjdropshipping.com/1380a850-d82e-4e26-b7f6-81dbe8eda6fc.jpg",
+        "existingShopifyVariantId": "gid://shopify/ProductVariant/56026866778497",
+        "existingShopifySku": "CJ-CJEJ174300805EV",
+        "publicFeaturedImage": null,
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70383102722433",
+        "shopifyMediaUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1380a850-d82e-4e26-b7f6-81dbe8eda6fc.jpg?v=1785730110",
+        "mediaAlt": "Faltbares Bluetooth-Headset – Bild 4 | LuxeStyle",
+        "identityCheck": "Exact matching basename on CJ variantImage and Shopify media URL",
+        "downloadedSha256": {
+          "cj": "d59043df2e5b814a31d4ec520b78ed93f0c75ba7a6d8cfbee276d4905de907ef",
+          "shopify": "38726b2d5c4979d13bb4c8f98db61fbaa5bd227e53a3db6191100d142d1823dc"
+        },
+        "sourceBytesIdentical": false,
+        "imageDims": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        },
+        "decodedRgbPixelsIdentical": false,
+        "pixelDifferenceBoundingBox": [
+          0,
+          0,
+          800,
+          800
+        ]
+      }
+    ],
+    "contactSheet": "foldable-cj-shopify-image-contact-sheet.jpg",
+    "downloads": "source-images/",
+    "claimReview": {
+      "BluetoothVersion": "CJ product description explicitly states Bluetooth protocol 5.2; keep claim.",
+      "Multipoint": "CJ product description says multi-point connection; can say multipoint connection. It does not give supported number of devices, so do not specify a number or assert exact switching behavior.",
+      "VoiceControl": "CJ product description states voice control; keep only as supplier-reported functionality.",
+      "USBCharging": "CJ description says charging method USB. Pack list is only Headset*1; do not imply a USB cable is included. Connector type/charge specs unknown.",
+      "Wireless": "CJ English product name says Foldable Wireless and description says Bluetooth; wireless audio is supported as supplier-reported. USB is wired charging, not wireless charging."
+    },
+    "protectedFields": [
+      "No Shopify mutation performed",
+      "No media uploads performed",
+      "Only proposed associations of existing media to existing variants"
+    ],
+    "unmappedExistingMedia": [
+      {
+        "mediaId": "gid://shopify/MediaImage/70383102656897",
+        "filename": "3b3b492e-a4bc-457b-9557-5dfe10a36892.jpg",
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3b3b492e-a4bc-457b-9557-5dfe10a36892.jpg?v=1785730110",
+        "alt": "Faltbares Bluetooth-Headset – Bild 2 | LuxeStyle",
+        "identity": "CJ bigImage filename match"
+      }
+    ],
+    "pixelNote": "CJ and Shopify downloads are not byte-identical and decoded RGB pixels are not strictly identical; mean absolute RGB channel difference is below 0.9/255 for each pair, with matching 800x800 dimensions and visually matching image/color/composition in the contact sheet. Exact association basis is matching filenames, not hash identity."
+  },
+  "coolImageMapping": {
+    "task": "Read-only Cool Mecha existing variant image mapping",
+    "capturedAt": "2026-11-15 UTC",
+    "shopifyProductId": "gid://shopify/Product/15518808703361",
+    "handle": "in-ear-wireless-bluetooth-headset-cool-mecha-612800",
+    "publicSource": "https://luxestyle.ch/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800.js",
+    "nativeSource": "native-current.json",
+    "cjSource": "../source-evidence.json cj.coolMecha raw get_product_detail result",
+    "mapping": [
+      {
+        "color": "Schwarz",
+        "cjVariantSku": "CJYP243957001AZ",
+        "cjVariantId": "2507250726321613000",
+        "shopifyVariantId": "gid://shopify/ProductVariant/67870839505287",
+        "cjVariantImageUrl": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/7bea7ceb-e342-4922-a68c-f5bd4c1e3b7a_fine.jpeg",
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70700744999297",
+        "publicFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7bea7ceb-e342-4922-a68c-f5bd4c1e3b7a_fine.jpg?v=1787908773",
+        "publicImageId": 83481074172289,
+        "publicFeaturedVariantIds": [
+          67870839505287
+        ],
+        "currentShopifyAlt": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 2 | LuxeStyle",
+        "sameFilenameStem": true,
+        "cjFilename": "7bea7ceb-e342-4922-a68c-f5bd4c1e3b7a_fine.jpeg",
+        "shopifyFilename": "7bea7ceb-e342-4922-a68c-f5bd4c1e3b7a_fine.jpg",
+        "sourceBytesIdentical": false,
+        "downloadedSha256": {
+          "cj": "324c0ee8e5f92a2c2f601ef409a59ba370d9d42dc6369631aad0eaa31c3ecbf0",
+          "shopify": "e3e8ef3578016782fd50ec971ffbc90c7a1fe446b0ffb9e0242567de43ad7c6d"
+        },
+        "imageDimensions": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        }
+      },
+      {
+        "color": "Rot",
+        "cjVariantSku": "CJYP243957002BY",
+        "cjVariantId": "2507250726321613200",
+        "shopifyVariantId": "gid://shopify/ProductVariant/67870839538055",
+        "cjVariantImageUrl": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/cd59e011-8fc6-45ea-ae7a-89b28c0f1793_fine.jpeg",
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70700745130369",
+        "publicFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cd59e011-8fc6-45ea-ae7a-89b28c0f1793_fine.jpg?v=1787908774",
+        "publicImageId": 83481074303361,
+        "publicFeaturedVariantIds": [
+          67870839538055
+        ],
+        "currentShopifyAlt": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 6 | LuxeStyle",
+        "sameFilenameStem": true,
+        "cjFilename": "cd59e011-8fc6-45ea-ae7a-89b28c0f1793_fine.jpeg",
+        "shopifyFilename": "cd59e011-8fc6-45ea-ae7a-89b28c0f1793_fine.jpg",
+        "sourceBytesIdentical": false,
+        "downloadedSha256": {
+          "cj": "3c81b040c747a631031e74eb8bd5792753b1278b776ca42159c5aa06185aaf94",
+          "shopify": "a14deb82f485786148f309a52882abd79f8f8bfd3d8fc6d5306e456a3acd33c3"
+        },
+        "imageDimensions": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        }
+      },
+      {
+        "color": "Rosa",
+        "cjVariantSku": "CJYP243957003CX",
+        "cjVariantId": "2507250726321613400",
+        "shopifyVariantId": "gid://shopify/ProductVariant/67870839570823",
+        "cjVariantImageUrl": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/131bd2ac-2d9d-410a-b05a-22bcba04cd61_fine.jpeg",
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70700744966529",
+        "publicFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/131bd2ac-2d9d-410a-b05a-22bcba04cd61_fine.jpg?v=1787908774",
+        "publicImageId": 83481074139521,
+        "publicFeaturedVariantIds": [
+          67870839570823
+        ],
+        "currentShopifyAlt": "In-Ear Wireless Bluetooth Headset Cool Mecha | LuxeStyle",
+        "sameFilenameStem": true,
+        "cjFilename": "131bd2ac-2d9d-410a-b05a-22bcba04cd61_fine.jpeg",
+        "shopifyFilename": "131bd2ac-2d9d-410a-b05a-22bcba04cd61_fine.jpg",
+        "sourceBytesIdentical": false,
+        "downloadedSha256": {
+          "cj": "d0b628f69342618a63ce3b96864ee435208907e277ee3e15be6aeb7fad783583",
+          "shopify": "3659f1499dcc876773db2f47fa170a33b8bfceeee50f3019a43254a878bc7256"
+        },
+        "imageDimensions": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        }
+      },
+      {
+        "color": "Gelb",
+        "cjVariantSku": "CJYP243957004DW",
+        "cjVariantId": "2507250726321613600",
+        "shopifyVariantId": "gid://shopify/ProductVariant/67870839603591",
+        "cjVariantImageUrl": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/5a2ae3df-a08d-4b72-ace2-881ced3e8c50_fine.jpeg",
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70700745097601",
+        "publicFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5a2ae3df-a08d-4b72-ace2-881ced3e8c50_fine.jpg?v=1787908774",
+        "publicImageId": 83481074270593,
+        "publicFeaturedVariantIds": [
+          67870839603591
+        ],
+        "currentShopifyAlt": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 5 | LuxeStyle",
+        "sameFilenameStem": true,
+        "cjFilename": "5a2ae3df-a08d-4b72-ace2-881ced3e8c50_fine.jpeg",
+        "shopifyFilename": "5a2ae3df-a08d-4b72-ace2-881ced3e8c50_fine.jpg",
+        "sourceBytesIdentical": false,
+        "downloadedSha256": {
+          "cj": "264c09ab38a244134a6193774da6982719bc16474e73df8e0cb2ac7dc0d94945",
+          "shopify": "8d1d78d8b1f65f8150db49794797079ad06f4d12cc130fac16336feefb614c6e"
+        },
+        "imageDimensions": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        }
+      },
+      {
+        "color": "Grün",
+        "cjVariantSku": "CJYP243957005EV",
+        "cjVariantId": "2507250726321613800",
+        "shopifyVariantId": "gid://shopify/ProductVariant/67870839636359",
+        "cjVariantImageUrl": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/81bfe2d2-0de4-4b1c-bbfd-effaff131997_fine.jpeg",
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70700745032065",
+        "publicFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/81bfe2d2-0de4-4b1c-bbfd-effaff131997_fine.jpg?v=1787908774",
+        "publicImageId": 83481074205057,
+        "publicFeaturedVariantIds": [
+          67870839636359
+        ],
+        "currentShopifyAlt": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 3 | LuxeStyle",
+        "sameFilenameStem": true,
+        "cjFilename": "81bfe2d2-0de4-4b1c-bbfd-effaff131997_fine.jpeg",
+        "shopifyFilename": "81bfe2d2-0de4-4b1c-bbfd-effaff131997_fine.jpg",
+        "sourceBytesIdentical": false,
+        "downloadedSha256": {
+          "cj": "c7045695135e2275f004c878dc1a33d91d38f2d1f88f8996a65eb4c854c85453",
+          "shopify": "9dd72496e983d8b8d99f2fefb1a296e6d0308c0fc25a9d77a94ce4289faceb6b"
+        },
+        "imageDimensions": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        }
+      },
+      {
+        "color": "Blau",
+        "cjVariantSku": "CJYP243957006FU",
+        "cjVariantId": "2507250726321614000",
+        "shopifyVariantId": "gid://shopify/ProductVariant/67870839669127",
+        "cjVariantImageUrl": "https://oss-cf.cjdropshipping.com/product/2025/07/25/07/c1befc97-3ec6-4f5c-96b4-8828b894b051_fine.jpeg",
+        "existingShopifyMediaId": "gid://shopify/MediaImage/70700745064833",
+        "publicFeaturedImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c1befc97-3ec6-4f5c-96b4-8828b894b051_fine.jpg?v=1787908774",
+        "publicImageId": 83481074237825,
+        "publicFeaturedVariantIds": [
+          67870839669127
+        ],
+        "currentShopifyAlt": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 4 | LuxeStyle",
+        "sameFilenameStem": true,
+        "cjFilename": "c1befc97-3ec6-4f5c-96b4-8828b894b051_fine.jpeg",
+        "shopifyFilename": "c1befc97-3ec6-4f5c-96b4-8828b894b051_fine.jpg",
+        "sourceBytesIdentical": false,
+        "downloadedSha256": {
+          "cj": "1b1f838771965d05cb03b13c7fc324b1dd890986523d897cf25f08e762bc8cc0",
+          "shopify": "72bc67fb829e78fa3005bc2a9e599786fef9588f831f4df716b7e116ae503b68"
+        },
+        "imageDimensions": {
+          "cj": [
+            800,
+            800
+          ],
+          "shopify": [
+            800,
+            800
+          ]
+        }
+      }
+    ],
+    "contactSheet": "cool-mecha-cj-shopify-contact-sheet.jpg",
+    "imagesDirectory": "source-images/",
+    "scope": "No mutation; no media upload; existing six variant/media links preserved. CJ variantImage, current native Shopify media, and each public variant featured_image have matching filename stems; public featured_image variant_ids contain the linked Shopify variant."
+  },
+  "constraints": {
+    "cool": "PC/ABS attributed to description; composition unknown. Runtime4–8h and range10m source-stated, conditions unknown. Case is visible but not independently listed in packing list; no case charging claim. No confirmed mic/ANC/Bluetooth version/OS/waterproof/weight/dimensions.",
+    "folded": "Multipoint count/switching and voice control scope unknown; USB exact connector/cable/runtime unknown. Plastic is source-level material, not exact composition. Product weight range and shipping weight are different concepts, not a proven contradiction.",
+    "mouse": "Product name says7keys; English model/description says6. Count and mapping remain unresolved, no programming claim. 130x85x40mm and126g bare product explicitly stated, distinct from150x100x60/logistics154g. DPI1000–5500 in4steps, intermediatevalues notconfirmed. Decorative logo/licence not asserted.",
+    "keyboard": "Russian Version source vs Latin-looking photo legends unresolved; no German/SwissQWERTZ or mechanical/IP claim. 442x133x30mm product dimensions distinct from432x125x33logistics. Exact keyboard variant/fulfillment binding not changed.",
+    "all": "No source barcode promoted to verified GTIN, no invented games/reviews/certifications/material mixes, no photo rights inferred for new ads, no new media upload."
+  }
+}

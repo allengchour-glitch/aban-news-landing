@@ -2965,3 +2965,23 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [LUXESTYLE_R250_20261115]
 
+
+## 16.11.2026
+
+### R251 – SEO und Produktdetails, ab00:25 Europe/Zurich
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Identitäten | Core4 und Tagesstand frisch gelesen; Shopify/Metricool samt sechs Kanalidentitäten geprüft. | LuxeStyle/CHF/EuropeZurich passen, Revision250 fortgesetzt. |
+| Kategorien / live | PC-Gaming, Kopfhörer & Audio und Retro-Handhelds mit unterschiedlicher Auswahlhilfe, Metadaten und Links überarbeitet. | Drei native/öffentliche Rücklesungen bestätigt; drei Regelquellen/Bedingungen/Counts und18erste Produkt-IDs/Reihenfolgen erhalten. Kein Gesamtkatalogscan. |
+| Produktdetails / live | CoolMecha, faltbaresHeadset, X3-Maus und AK-600 nach aktuellen CJ-/SKU-/Bildquellen konkretisiert, Tabellen und Lieferumfangshilfe ergänzt. | Vier Seiten live. Maus6vs7Tasten und Tastatur-Sprachlayout ausdrücklich offen; keine erfundenen QWERTZ-/Spiele-/Zubehörzusagen. |
+| Auswahl / Bilder / live | Fünf vorhandene faltbare-Headset-Farbbilder zugeordnet, elf Alt-Texte verbessert; MausoptionFarbe→Ausführung. | Keine Uploads;13Varianten-/13Wert-IDs und22Produktmedien geschützt. Sechs CoolMecha-Zuordnungen waren schon korrekt. |
+| Schutz / Rücklesung | Alle13 Shopify-Mutationen mit userErrors=[] und gezielten Reads, strengen Diff und unabhängigen Schlussread geprüft. | Keine unerwarteten abgefragten Geschäftsfeldänderungen. Nur Maus-updatedAt im Schlussread+4s, Ursache unbekannt, kein erneuterWrite. Preise/SKUs/Inventarregeln erhalten. |
+| Öffentlich / mobil / Technik | Sieben HTML/Meta/H1/Canonical/Text/Linkchecks, vier Produkt-JSONs und13 JSONLDOffers; echte Farbklicks sowie360/390px-Ansichten geprüft. | Begrenzte Checks bestanden. Maus-Einzelvariante zeigt Ausführung als Text, Picker-Test nicht anwendbar.21Inhaltslinks/13Ziele,netto+12. Siebenrobots-Pfade erlaubt,dreiKategorieninzweiSitemaps. |
+| GSC / einmalige Tagesmessung | Zwei enge Webabfragen final06.–12.11. und eine Audio-URL-Inspection nach Logprüfung gelesen. | Audio2Impressionen/0Klicks/77.5; PC-/Retro-Zeilen unknown. Audioindex mitCrawl06Nov vorCopy, neueFassungnichtnachgewiesen. Keine weiteren Metricool-/Klaviyo-/Verkaufs-/Bestellreports. |
+| Konkrete Blocker / Fortsetzung | Modellkonflikte, WaagenOG101.90vsOffer127.90CHF und vorbestehende ungeprüfte Tastaturbewertung dokumentiert; R251Quellen/Schutzdiff und bestehendeClaude-Direktdatei vorbereitet. | Layout/Tastenbelegung/engerThemepreisfix offen. MerchantR250-Stand datiert15Nov;0Gesamtfehler nicht belegt. Nächste kleine SKU-Gruppe, R249Konsolenstand8/36/28offen erhalten. Claude-Empfang unbekannt. |
+| Grenzen | Bestehende Rechte-/Qualitäts-/Socialsperren und08/14/19-Zürich-Rhythmus erhalten. | Keine Theme-/Merchant-/Social-Writes, neuen Automationen/24h-Zusage, Budgets/Flows/DNS/Kundenansprache oder bezahltenRenders. |
+
+[Live-Bericht](SEO-DETAIL-LIVE-20261116-R251.md) · [Belege](SEO-DETAIL-BELEGE-20261116-R251.json) · [Mobil/Technik](SEO-DETAIL-MOBIL-TECHNIK-20261116-R251.json).
+
+[LUXESTYLE_R251_20261116]

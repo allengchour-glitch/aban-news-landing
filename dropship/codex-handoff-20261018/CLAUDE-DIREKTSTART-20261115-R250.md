@@ -1,3 +1,15 @@
+# Aktueller Zusatz R251 – 16.11.2026
+
+**Der bereits geteilte Direktlink bleibt gültig.** Neuester Stand: vier Produktseiten und drei Kategorien live mit Produktdetails, Auswahlhilfe, Metadaten und internen Links verbessert; fünf vorhandene Variantenbilder zugeordnet, elf Alt-Texte und eine Optionsbezeichnung korrigiert.13 Shopify-Mutationen, keine Uploads. Vier Produkte/13Varianten/22Medien und sieben öffentliche Seiten geprüft, keine unerwarteten abgefragten Geschäftsfeldänderungen.
+
+Zuerst [R251-Livebericht](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/SEO-DETAIL-LIVE-20261116-R251.md) und [R251-Belege](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/SEO-DETAIL-BELEGE-20261116-R251.json) lesen; bei Bedarf [Vorher/Nachher](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/SEO-DETAIL-VORHER-NACHHER-20261116-R251.json) und [Quellen](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/SEO-DETAIL-QUELLEN-20261116-R251.json). AK-600-Sprachlayout und X3-Tastenbelegung bleiben offen und stehen klar in den Produkttexten. WaagenOG101.90vsOffer127.90CHF nicht behoben, kein Merchant-Ursachennachweis. Bestehende Tastaturbewertung nicht verifiziert/angelegt. Audioindex mitCrawl06Nov bestätigt nicht die neue Copy.
+
+Nächste Arbeit: genaue Modellbelege und nächste kleine SKU-gebundene Produktgruppe. R249-Konsolenstand8/36/28offen erhalten, keine Spiele-/Karten-/Material-/Layoutversprechen erfinden. AlteWrites nicht ohne neuen Befund wiederholen. GSC16Nov einmalig eng gelesen; andere Reports inR251 nicht durchgeführt.24Aufgaben/Historie, beendetenKaufWatch, bestehende08/14/19-Läufe und alle Rechte-/Qualitäts-/Social-Gates erhalten. Keine ununterbrochene24h-Hintergrundarbeit zugesichert; Claude-Empfang unbekannt.
+
+**Die folgenden Merchant-Angaben sind der datierte R250-Stand vom15.11. und wurden inR251 nicht neu geprüft.** OriginalZIPs weiterhin nicht als hier vorhanden belegt; kein0-Gesamtfehlerbeleg.
+
+---
+
 # LuxeStyle – Direktstart für Claude Code, R250
 
 Stand15.11.2026, Europe/Zurich. Repository allengchour-glitch/aban-news-landing, Handoff-Branch codex/luxestyle-claude-handoff-20261018. Dies ist Arbeitsgedächtnis, keine neue Rechte-/Kosten-/Publikationsfreigabe. Aktuelle ausdrückliche Inhabervorgaben im Chat bleiben massgebend.

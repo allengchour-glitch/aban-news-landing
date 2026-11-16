@@ -1,0 +1,37 @@
+{
+  "run": "R251",
+  "preparedAtUTC": "2026-11-16T00:20:06.933955Z",
+  "files": [
+    {
+      "name": "SEO-DETAIL-BELEGE-20261116-R251.json",
+      "bytes": 41983,
+      "sha256": "8b84f221ed2a208d88eacbe684122f6b63f0aee250c8d7b30f1542dcf87c5202",
+      "gitBlobSha": "2e845bd64989f1476e8baa69154775bc2aa7af79"
+    },
+    {
+      "name": "SEO-DETAIL-LIVE-20261116-R251.md",
+      "bytes": 7413,
+      "sha256": "466746f54fa7db8d087e8e1522cfc5380fc43b1359c3b07bb6195d7744df0ec5",
+      "gitBlobSha": "41d266916e80e1aeed75e0bd66b832282615991f"
+    },
+    {
+      "name": "SEO-DETAIL-MOBIL-TECHNIK-20261116-R251.json",
+      "bytes": 60878,
+      "sha256": "0b1e0681f109e852c15cda6b2a288e3643e52c18be638e39ffb2db40262d3994",
+      "gitBlobSha": "1484245eab166d36b3443038d06e8ce7d660f639"
+    },
+    {
+      "name": "SEO-DETAIL-QUELLEN-20261116-R251.json",
+      "bytes": 35556,
+      "sha256": "f90060565449b451b46d1d201a0f14b48a45664d8977e8039dddd1b0fd94d1bb",
+      "gitBlobSha": "b4f8f4e43f1e94fc9de08071d62c7c159c94b6a0"
+    },
+    {
+      "name": "SEO-DETAIL-VORHER-NACHHER-20261116-R251.json",
+      "bytes": 286208,
+      "sha256": "6fb775e582149300fcaee65e861657b63e710cd9a223d63a26b2d174c473dd84",
+      "gitBlobSha": "42afe46af064fb0ff741cebf5af5d0fca0ed1aa0"
+    }
+  ],
+  "scope": "Only LuxeStyle documentation; not deployed code, workflow or publication ledger."
+}

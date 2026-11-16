@@ -1,0 +1,1088 @@
+{
+  "schemaVersion": 1,
+  "run": "R251",
+  "dateZurich": "2026-11-16",
+  "startedAtApproxUTC": "2026-11-15T23:25:00Z",
+  "preparedAtUTC": "2026-11-16T00:20:06.933955Z",
+  "timezone": "Europe/Zurich",
+  "ownerRequest": "SEO bis ins Detail; ausführliche Produktdetails und Auswahlhilfe; autonom weiterarbeiten. Keine ununterbrochene24h-Laufzeit zugesichert.",
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch",
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "pass": true
+  },
+  "nativeWriteCount": 13,
+  "operations": [
+    {
+      "sequence": 1,
+      "reference": "r251MediaWrite",
+      "data": {
+        "productVariantsBulkUpdate": {
+          "productVariants": [
+            {
+              "id": "gid://shopify/ProductVariant/56026866647425"
+            },
+            {
+              "id": "gid://shopify/ProductVariant/56026866680193"
+            },
+            {
+              "id": "gid://shopify/ProductVariant/56026866712961"
+            },
+            {
+              "id": "gid://shopify/ProductVariant/56026866745729"
+            },
+            {
+              "id": "gid://shopify/ProductVariant/56026866778497"
+            }
+          ],
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 2,
+      "reference": "r251CopyWritecool-mecha",
+      "data": {
+        "productUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15518808703361"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 3,
+      "reference": "r251CopyWritefoldable",
+      "data": {
+        "productUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15483934179713"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 4,
+      "reference": "r251CopyWritepc-gaming",
+      "data": {
+        "collectionUpdate": {
+          "collection": {
+            "id": "gid://shopify/Collection/689698439553"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 5,
+      "reference": "r251CopyWritekopfhoerer-audio",
+      "data": {
+        "collectionUpdate": {
+          "collection": {
+            "id": "gid://shopify/Collection/689713054081"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 6,
+      "reference": "r251CopyWritespielkonsolen-retro-handhelds",
+      "data": {
+        "collectionUpdate": {
+          "collection": {
+            "id": "gid://shopify/Collection/756134183303"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 7,
+      "reference": "r251AltWrite",
+      "data": {
+        "fileUpdate": {
+          "files": [
+            {
+              "id": "gid://shopify/MediaImage/70383102689665",
+              "alt": "Faltbares Bluetooth-Headset in Blau mit rosa Kopfbügel",
+              "fileStatus": "READY"
+            },
+            {
+              "id": "gid://shopify/MediaImage/70383102755201",
+              "alt": "Faltbares Bluetooth-Headset in Pink mit hellgrünem Kopfbügel",
+              "fileStatus": "READY"
+            },
+            {
+              "id": "gid://shopify/MediaImage/70383102787969",
+              "alt": "Faltbares Bluetooth-Headset in Grün mit hellem Kopfbügel",
+              "fileStatus": "READY"
+            },
+            {
+              "id": "gid://shopify/MediaImage/70383102591361",
+              "alt": "Faltbares Bluetooth-Headset in Lila mit hellblauen Akzenten",
+              "fileStatus": "READY"
+            },
+            {
+              "id": "gid://shopify/MediaImage/70383102722433",
+              "alt": "Faltbares Bluetooth-Headset in Schwarz",
+              "fileStatus": "READY"
+            }
+          ],
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 8,
+      "reference": "r251MaterialQualifierWrite",
+      "data": {
+        "productUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15483934179713"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 9,
+      "reference": "r251CoolAltWrite",
+      "data": {
+        "fileUpdate": {
+          "files": [
+            {
+              "id": "gid://shopify/MediaImage/70700744999297",
+              "alt": "Cool Mecha In-Ear-Kopfhörer mit schwarzem Etui",
+              "fileStatus": "READY"
+            },
+            {
+              "id": "gid://shopify/MediaImage/70700745130369",
+              "alt": "Cool Mecha In-Ear-Kopfhörer mit roten Akzenten und rotem Etui",
+              "fileStatus": "READY"
+            },
+            {
+              "id": "gid://shopify/MediaImage/70700744966529",
+              "alt": "Cool Mecha In-Ear-Kopfhörer mit rosa Akzenten und rosafarbenem Etui",
+              "fileStatus": "READY"
+            },
+            {
+              "id": "gid://shopify/MediaImage/70700745097601",
+              "alt": "Cool Mecha In-Ear-Kopfhörer mit gelben Akzenten und gelbem Etui",
+              "fileStatus": "READY"
+            },
+            {
+              "id": "gid://shopify/MediaImage/70700745032065",
+              "alt": "Cool Mecha In-Ear-Kopfhörer mit grünen Akzenten und grünem Etui",
+              "fileStatus": "READY"
+            },
+            {
+              "id": "gid://shopify/MediaImage/70700745064833",
+              "alt": "Cool Mecha In-Ear-Kopfhörer mit blauen Akzenten und blauem Etui",
+              "fileStatus": "READY"
+            }
+          ],
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 10,
+      "reference": "r251CoolQualifierWrite",
+      "data": {
+        "productUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15518808703361"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 11,
+      "reference": "r251PcOptionWrite",
+      "data": {
+        "productOptionUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15450853867905"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 12,
+      "reference": "r251PcCopyWritemouse",
+      "data": {
+        "productUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15450853867905"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    },
+    {
+      "sequence": 13,
+      "reference": "r251PcCopyWritekeyboard",
+      "data": {
+        "productUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15496863154561"
+          },
+          "userErrors": []
+        }
+      },
+      "isError": false
+    }
+  ],
+  "counts": {
+    "editedProductPages": 4,
+    "editedCollections": 3,
+    "protectedVariants": 13,
+    "protectedProductMedia": 22,
+    "newExistingMediaAssociations": 5,
+    "improvedExistingMediaAlts": 11,
+    "renamedOptionNames": 1,
+    "newMediaUploads": 0,
+    "finalCopyWrites": 7,
+    "additionalQualifierWrites": 2,
+    "variantMediaBulkWrites": 1,
+    "altFileBatchWrites": 2,
+    "optionWrites": 1,
+    "publicPagesPassed": 7,
+    "jsonLdOffersMatched": 13,
+    "bodyLinksBefore": 9,
+    "bodyLinksAfter": 21,
+    "uniqueFinalBodyLinkTargets": 13,
+    "newAnchorInstances": 19,
+    "removedGenericAnchorInstances": 7,
+    "netAdditionalAnchorInstances": 12
+  },
+  "protectedFieldsGuard": {
+    "review": "R251 strict local business-field diff guard",
+    "reviewedAt": "2026-11-16 UTC; saved JSON only; no live reads or writes",
+    "sources": {
+      "native-products-before.json": {
+        "path": "/dev/shm/luxestyle-review/r251/native-products-before.json",
+        "sha256": "3048254bbd8e5d31ee057779c6570511014902599bf1b2825a19afa3285c71c7"
+      },
+      "pc-native-products-before.json": {
+        "path": "/dev/shm/luxestyle-review/r251/pc-native-products-before.json",
+        "sha256": "c2a6f02094e28f4320baf936f4cfaa7f90a714e19040cce1f15e5928adb41b0e"
+      },
+      "afterProducts.json": {
+        "path": "/dev/shm/luxestyle-review/r251/afterProducts.json",
+        "sha256": "713bddbbb2f5c54ee3c6cff5ac864e06b542c7606df33db7656f802bf17b3951"
+      }
+    },
+    "productLabels": [
+      "cool",
+      "folded",
+      "mouse",
+      "keyboard"
+    ],
+    "pass": true,
+    "counts": {
+      "products": 4,
+      "variants": 13,
+      "options": 4,
+      "optionValues": 13,
+      "existingProductMedia": 22,
+      "copyFieldPaths": 16,
+      "updatedAtChanges": 4,
+      "mouseOptionNameChanges": 1,
+      "mouseSelectedOptionsNameChanges": 1,
+      "foldedVariantMediaAssociationAdditions": 5,
+      "uniqueExistingImageAltTextChanges": 11,
+      "unexpectedChangedPaths": 0
+    },
+    "allowedChanges": {
+      "productCopyFields": {
+        "cool": {
+          "title": {
+            "changed": true,
+            "before": "In-Ear Wireless Bluetooth Headset Cool Mecha",
+            "after": "In-Ear-Kopfhörer Cool Mecha mit Bluetooth"
+          },
+          "descriptionHtml": {
+            "changed": true,
+            "before": {
+              "length": 1133,
+              "sha256": "eb97d56f9a9b37789b7611090e1869a585a2cd334199f279d6e516f4c5f6d840"
+            },
+            "after": {
+              "length": 1877,
+              "sha256": "f545eb36f5f73375e367f0a1ec4cefc4c22e73144825623b6ba7fdcc7f3e1b8c"
+            }
+          },
+          "seo": {
+            "title": {
+              "changed": true,
+              "before": "In-Ear Wireless Bluetooth Headset Cool Mecha | LuxeStyle CH",
+              "after": "In-Ear-Kopfhörer Cool Mecha mit Bluetooth | LuxeStyle CH"
+            },
+            "description": {
+              "changed": true,
+              "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+              "after": "Cool Mecha In-Ear-Kopfhörer mit Bluetooth: sechs Farben, angegebene 4–8 Stunden Laufzeit und bis zu 10 m Reichweite. Auswahl und Lieferumfang prüfen."
+            }
+          }
+        },
+        "folded": {
+          "title": {
+            "changed": true,
+            "before": "Faltbares Bluetooth-Headset",
+            "after": "Faltbares Bluetooth-Headset 5.2"
+          },
+          "descriptionHtml": {
+            "changed": true,
+            "before": {
+              "length": 1073,
+              "sha256": "8a6f277b18e40df7a24b79abe04a1a8e3d543455ad3bf64691c3f8e713cfb191"
+            },
+            "after": {
+              "length": 2489,
+              "sha256": "1dcec0aa585006baf13fc4a613989e8e5711c6710ba0f6db530898ad519a569f"
+            }
+          },
+          "seo": {
+            "title": {
+              "changed": true,
+              "before": "Faltbares Bluetooth-Headset | LuxeStyle CH",
+              "after": "Faltbares Bluetooth-Headset 5.2 | LuxeStyle CH"
+            },
+            "description": {
+              "changed": true,
+              "before": "Faltbares Bluetooth-Headset – der Trend-Hit bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+              "after": "Faltbares Stereo-Headset mit Bluetooth 5.2 und Anruffunktion. Fünf Farbausführungen, USB-Ladung und genaue Angaben zu Multipoint und Lieferumfang."
+            }
+          }
+        },
+        "mouse": {
+          "title": {
+            "changed": true,
+            "before": "USB Gaming Maus mit RGB Beleuchtung",
+            "after": "USB-Gaming-Maus X3 mit Beleuchtung"
+          },
+          "descriptionHtml": {
+            "changed": true,
+            "before": {
+              "length": 1424,
+              "sha256": "544b523a1a86bfbded049cdc13960df8b6ad28e892cb3b472e38edf77554b50d"
+            },
+            "after": {
+              "length": 2050,
+              "sha256": "f05a389b878d68ab5eec4cb55f2c779c17bc4905942b238c00defaf08a610c73"
+            }
+          },
+          "seo": {
+            "title": {
+              "changed": true,
+              "before": "USB Gaming Maus mit RGB Beleuchtung | LuxeStyle CH",
+              "after": "USB-Gaming-Maus X3 mit Beleuchtung | LuxeStyle CH"
+            },
+            "description": {
+              "changed": true,
+              "before": "USB Gaming Maus mit RGB Beleuchtung bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+              "after": "USB-Gaming-Maus X3 mit Farblicht, 145-cm-Nylongeflechtkabel und vier angegebenen DPI-Stufen von 1000 bis 5500. Masse, Ausführung und Details prüfen."
+            }
+          }
+        },
+        "keyboard": {
+          "title": {
+            "changed": true,
+            "before": "Gaming-Tastatur mit USB-Kabel und Beleuchtung",
+            "after": "USB-Gaming-Tastatur AK-600 – Layout prüfen"
+          },
+          "descriptionHtml": {
+            "changed": true,
+            "before": {
+              "length": 1325,
+              "sha256": "ac603a30b6791818d391ae0dfce50666244db84419493e8462199951c3025cf7"
+            },
+            "after": {
+              "length": 1887,
+              "sha256": "18398bf85bd6f84982ea7227f285ca3fbdff78b8f0b26b65893c4d11dcec2d51"
+            }
+          },
+          "seo": {
+            "title": {
+              "changed": true,
+              "before": "Gaming-Tastatur mit USB-Kabel und Beleuchtung | LuxeStyle CH",
+              "after": "USB-Gaming-Tastatur AK-600: Layout prüfen | LuxeStyle CH"
+            },
+            "description": {
+              "changed": true,
+              "before": "Gaming-Tastatur mit USB-Kabel und Beleuchtung – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.",
+              "after": "AK-600 USB-Gaming-Tastatur mit 104 Tasten und dreifarbiger Beleuchtung. Sprachlayout vor dem Kauf klären; Masse, Kabellänge und Lieferumfang ansehen."
+            }
+          }
+        }
+      },
+      "updatedAt": {
+        "cool": {
+          "before": "2026-11-02T01:21:47Z",
+          "after": "2026-11-16T00:00:32Z",
+          "changed": true
+        },
+        "folded": {
+          "before": "2026-11-01T22:14:47Z",
+          "after": "2026-11-15T23:54:18Z",
+          "changed": true
+        },
+        "mouse": {
+          "before": "2026-11-01T22:10:16Z",
+          "after": "2026-11-16T00:05:10Z",
+          "changed": true
+        },
+        "keyboard": {
+          "before": "2026-11-01T22:10:00Z",
+          "after": "2026-11-16T00:05:13Z",
+          "changed": true
+        }
+      },
+      "mouseOptionRenames": [
+        {
+          "optionId": "gid://shopify/ProductOption/17882861896065",
+          "before": "Farbe",
+          "after": "Ausführung",
+          "path": "products.mouse.options[id=gid://shopify/ProductOption/17882861896065].name"
+        }
+      ],
+      "mouseSelectedOptionsNameChanges": [
+        {
+          "variantId": "gid://shopify/ProductVariant/55889956733313",
+          "before": "Farbe",
+          "after": "Ausführung",
+          "valuePreserved": true,
+          "path": "products.mouse.variants.nodes[id=gid://shopify/ProductVariant/55889956733313].selectedOptions[0].name"
+        }
+      ],
+      "foldedVariantMediaAssociations": [
+        {
+          "variantId": "gid://shopify/ProductVariant/56026866647425",
+          "variantTitle": "Blau",
+          "beforeMediaIds": [],
+          "afterMediaIds": [
+            "gid://shopify/MediaImage/70383102689665"
+          ],
+          "addedMediaIds": [
+            "gid://shopify/MediaImage/70383102689665"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/56026866680193",
+          "variantTitle": "Pink",
+          "beforeMediaIds": [],
+          "afterMediaIds": [
+            "gid://shopify/MediaImage/70383102755201"
+          ],
+          "addedMediaIds": [
+            "gid://shopify/MediaImage/70383102755201"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/56026866712961",
+          "variantTitle": "Grün",
+          "beforeMediaIds": [],
+          "afterMediaIds": [
+            "gid://shopify/MediaImage/70383102787969"
+          ],
+          "addedMediaIds": [
+            "gid://shopify/MediaImage/70383102787969"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/56026866745729",
+          "variantTitle": "Lila",
+          "beforeMediaIds": [],
+          "afterMediaIds": [
+            "gid://shopify/MediaImage/70383102591361"
+          ],
+          "addedMediaIds": [
+            "gid://shopify/MediaImage/70383102591361"
+          ]
+        },
+        {
+          "variantId": "gid://shopify/ProductVariant/56026866778497",
+          "variantTitle": "Schwarz",
+          "beforeMediaIds": [],
+          "afterMediaIds": [
+            "gid://shopify/MediaImage/70383102722433"
+          ],
+          "addedMediaIds": [
+            "gid://shopify/MediaImage/70383102722433"
+          ]
+        }
+      ],
+      "targetedExistingImageAltTextChanges": [
+        {
+          "product": "cool",
+          "mediaId": "gid://shopify/MediaImage/70700744966529",
+          "before": "In-Ear Wireless Bluetooth Headset Cool Mecha | LuxeStyle",
+          "after": "Cool Mecha In-Ear-Kopfhörer mit rosa Akzenten und rosafarbenem Etui",
+          "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700744966529].image.altText"
+        },
+        {
+          "product": "cool",
+          "mediaId": "gid://shopify/MediaImage/70700744999297",
+          "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 2 | LuxeStyle",
+          "after": "Cool Mecha In-Ear-Kopfhörer mit schwarzem Etui",
+          "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700744999297].image.altText"
+        },
+        {
+          "product": "cool",
+          "mediaId": "gid://shopify/MediaImage/70700745032065",
+          "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 3 | LuxeStyle",
+          "after": "Cool Mecha In-Ear-Kopfhörer mit grünen Akzenten und grünem Etui",
+          "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745032065].image.altText"
+        },
+        {
+          "product": "cool",
+          "mediaId": "gid://shopify/MediaImage/70700745064833",
+          "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 4 | LuxeStyle",
+          "after": "Cool Mecha In-Ear-Kopfhörer mit blauen Akzenten und blauem Etui",
+          "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745064833].image.altText"
+        },
+        {
+          "product": "cool",
+          "mediaId": "gid://shopify/MediaImage/70700745097601",
+          "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 5 | LuxeStyle",
+          "after": "Cool Mecha In-Ear-Kopfhörer mit gelben Akzenten und gelbem Etui",
+          "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745097601].image.altText"
+        },
+        {
+          "product": "cool",
+          "mediaId": "gid://shopify/MediaImage/70700745130369",
+          "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 6 | LuxeStyle",
+          "after": "Cool Mecha In-Ear-Kopfhörer mit roten Akzenten und rotem Etui",
+          "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745130369].image.altText"
+        },
+        {
+          "product": "folded",
+          "mediaId": "gid://shopify/MediaImage/70383102591361",
+          "before": "Faltbares Bluetooth-Headset – Bild 1 | LuxeStyle",
+          "after": "Faltbares Bluetooth-Headset in Lila mit hellblauen Akzenten",
+          "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102591361].image.altText"
+        },
+        {
+          "product": "folded",
+          "mediaId": "gid://shopify/MediaImage/70383102689665",
+          "before": "Faltbares Bluetooth-Headset – Bild 3 | LuxeStyle",
+          "after": "Faltbares Bluetooth-Headset in Blau mit rosa Kopfbügel",
+          "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102689665].image.altText"
+        },
+        {
+          "product": "folded",
+          "mediaId": "gid://shopify/MediaImage/70383102722433",
+          "before": "Faltbares Bluetooth-Headset – Bild 4 | LuxeStyle",
+          "after": "Faltbares Bluetooth-Headset in Schwarz",
+          "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102722433].image.altText"
+        },
+        {
+          "product": "folded",
+          "mediaId": "gid://shopify/MediaImage/70383102755201",
+          "before": "Faltbares Bluetooth-Headset – Bild 5 | LuxeStyle",
+          "after": "Faltbares Bluetooth-Headset in Pink mit hellgrünem Kopfbügel",
+          "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102755201].image.altText"
+        },
+        {
+          "product": "folded",
+          "mediaId": "gid://shopify/MediaImage/70383102787969",
+          "before": "Faltbares Bluetooth-Headset – Bild 6 | LuxeStyle",
+          "after": "Faltbares Bluetooth-Headset in Grün mit hellem Kopfbügel",
+          "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102787969].image.altText"
+        }
+      ]
+    },
+    "preservationChecks": {
+      "productIdsPreserved": {
+        "cool": true,
+        "folded": true,
+        "mouse": true,
+        "keyboard": true
+      },
+      "productCount": {
+        "before": 4,
+        "after": 4,
+        "expected": 4,
+        "pass": true
+      },
+      "variantIds": {
+        "beforeCount": 13,
+        "afterCount": 13,
+        "uniqueCount": 13,
+        "allPreserved": true
+      },
+      "optionIds": {
+        "beforeCount": 4,
+        "afterCount": 4,
+        "allPreserved": true
+      },
+      "optionValuesAndValueIds": {
+        "beforeValueCount": 13,
+        "afterValueCount": 13,
+        "allPreserved": true
+      },
+      "pricesAndSkus": {
+        "variantCount": 13,
+        "allPreserved": true
+      },
+      "inventory": {
+        "variantCount": 13,
+        "allPreserved": true
+      },
+      "tags": {
+        "productCount": 4,
+        "allPreserved": true
+      },
+      "productUrlsAndCoreFields": {
+        "fields": [
+          "handle",
+          "status",
+          "productType",
+          "vendor",
+          "onlineStoreUrl",
+          "category",
+          "gp"
+        ],
+        "allPreserved": true
+      },
+      "existingMediaIdsAndOrder": {
+        "beforeCount": 22,
+        "afterCount": 22,
+        "allPreserved": true
+      },
+      "existingMediaUrlsDimensionsAndMetadata": {
+        "allPreserved": true
+      },
+      "coolVariantMediaAssociations": {
+        "allPreserved": true
+      },
+      "foldedAssociationsUseExistingProductMedia": {
+        "allExisting": true,
+        "count": 5
+      },
+      "copyFieldsChanged": {
+        "pathCount": 16,
+        "allExpected": true
+      },
+      "updatedAtChanged": {
+        "count": 4,
+        "allExpected": true
+      },
+      "mouseOptionRename": {
+        "count": 1,
+        "items": [
+          {
+            "optionId": "gid://shopify/ProductOption/17882861896065",
+            "before": "Farbe",
+            "after": "Ausführung",
+            "path": "products.mouse.options[id=gid://shopify/ProductOption/17882861896065].name"
+          }
+        ],
+        "pass": true
+      },
+      "mouseSelectedOptionNameRename": {
+        "count": 1,
+        "items": [
+          {
+            "variantId": "gid://shopify/ProductVariant/55889956733313",
+            "before": "Farbe",
+            "after": "Ausführung",
+            "valuePreserved": true,
+            "path": "products.mouse.variants.nodes[id=gid://shopify/ProductVariant/55889956733313].selectedOptions[0].name"
+          }
+        ],
+        "pass": true
+      },
+      "foldedVariantMediaAssociations": {
+        "count": 5,
+        "items": [
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866647425",
+            "variantTitle": "Blau",
+            "beforeMediaIds": [],
+            "afterMediaIds": [
+              "gid://shopify/MediaImage/70383102689665"
+            ],
+            "addedMediaIds": [
+              "gid://shopify/MediaImage/70383102689665"
+            ]
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866680193",
+            "variantTitle": "Pink",
+            "beforeMediaIds": [],
+            "afterMediaIds": [
+              "gid://shopify/MediaImage/70383102755201"
+            ],
+            "addedMediaIds": [
+              "gid://shopify/MediaImage/70383102755201"
+            ]
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866712961",
+            "variantTitle": "Grün",
+            "beforeMediaIds": [],
+            "afterMediaIds": [
+              "gid://shopify/MediaImage/70383102787969"
+            ],
+            "addedMediaIds": [
+              "gid://shopify/MediaImage/70383102787969"
+            ]
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866745729",
+            "variantTitle": "Lila",
+            "beforeMediaIds": [],
+            "afterMediaIds": [
+              "gid://shopify/MediaImage/70383102591361"
+            ],
+            "addedMediaIds": [
+              "gid://shopify/MediaImage/70383102591361"
+            ]
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866778497",
+            "variantTitle": "Schwarz",
+            "beforeMediaIds": [],
+            "afterMediaIds": [
+              "gid://shopify/MediaImage/70383102722433"
+            ],
+            "addedMediaIds": [
+              "gid://shopify/MediaImage/70383102722433"
+            ]
+          }
+        ],
+        "pass": true
+      },
+      "targetedExistingImageAltTexts": {
+        "uniqueMediaCount": 11,
+        "items": [
+          {
+            "product": "cool",
+            "mediaId": "gid://shopify/MediaImage/70700744966529",
+            "before": "In-Ear Wireless Bluetooth Headset Cool Mecha | LuxeStyle",
+            "after": "Cool Mecha In-Ear-Kopfhörer mit rosa Akzenten und rosafarbenem Etui",
+            "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700744966529].image.altText"
+          },
+          {
+            "product": "cool",
+            "mediaId": "gid://shopify/MediaImage/70700744999297",
+            "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 2 | LuxeStyle",
+            "after": "Cool Mecha In-Ear-Kopfhörer mit schwarzem Etui",
+            "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700744999297].image.altText"
+          },
+          {
+            "product": "cool",
+            "mediaId": "gid://shopify/MediaImage/70700745032065",
+            "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 3 | LuxeStyle",
+            "after": "Cool Mecha In-Ear-Kopfhörer mit grünen Akzenten und grünem Etui",
+            "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745032065].image.altText"
+          },
+          {
+            "product": "cool",
+            "mediaId": "gid://shopify/MediaImage/70700745064833",
+            "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 4 | LuxeStyle",
+            "after": "Cool Mecha In-Ear-Kopfhörer mit blauen Akzenten und blauem Etui",
+            "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745064833].image.altText"
+          },
+          {
+            "product": "cool",
+            "mediaId": "gid://shopify/MediaImage/70700745097601",
+            "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 5 | LuxeStyle",
+            "after": "Cool Mecha In-Ear-Kopfhörer mit gelben Akzenten und gelbem Etui",
+            "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745097601].image.altText"
+          },
+          {
+            "product": "cool",
+            "mediaId": "gid://shopify/MediaImage/70700745130369",
+            "before": "In-Ear Wireless Bluetooth Headset Cool Mecha – Bild 6 | LuxeStyle",
+            "after": "Cool Mecha In-Ear-Kopfhörer mit roten Akzenten und rotem Etui",
+            "path": "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745130369].image.altText"
+          },
+          {
+            "product": "folded",
+            "mediaId": "gid://shopify/MediaImage/70383102591361",
+            "before": "Faltbares Bluetooth-Headset – Bild 1 | LuxeStyle",
+            "after": "Faltbares Bluetooth-Headset in Lila mit hellblauen Akzenten",
+            "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102591361].image.altText"
+          },
+          {
+            "product": "folded",
+            "mediaId": "gid://shopify/MediaImage/70383102689665",
+            "before": "Faltbares Bluetooth-Headset – Bild 3 | LuxeStyle",
+            "after": "Faltbares Bluetooth-Headset in Blau mit rosa Kopfbügel",
+            "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102689665].image.altText"
+          },
+          {
+            "product": "folded",
+            "mediaId": "gid://shopify/MediaImage/70383102722433",
+            "before": "Faltbares Bluetooth-Headset – Bild 4 | LuxeStyle",
+            "after": "Faltbares Bluetooth-Headset in Schwarz",
+            "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102722433].image.altText"
+          },
+          {
+            "product": "folded",
+            "mediaId": "gid://shopify/MediaImage/70383102755201",
+            "before": "Faltbares Bluetooth-Headset – Bild 5 | LuxeStyle",
+            "after": "Faltbares Bluetooth-Headset in Pink mit hellgrünem Kopfbügel",
+            "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102755201].image.altText"
+          },
+          {
+            "product": "folded",
+            "mediaId": "gid://shopify/MediaImage/70383102787969",
+            "before": "Faltbares Bluetooth-Headset – Bild 6 | LuxeStyle",
+            "after": "Faltbares Bluetooth-Headset in Grün mit hellem Kopfbügel",
+            "path": "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102787969].image.altText"
+          }
+        ],
+        "pass": true
+      },
+      "foldedAssociationPayloadMatchesExistingMedia": {
+        "allPreserved": true,
+        "items": [
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866647425",
+            "color": "Blau",
+            "associatedMediaId": "gid://shopify/MediaImage/70383102689665",
+            "exactlyMatchesExistingProductMediaRecord": true,
+            "altText": "Faltbares Bluetooth-Headset in Blau mit rosa Kopfbügel",
+            "altContainsOptionColor": true
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866680193",
+            "color": "Pink",
+            "associatedMediaId": "gid://shopify/MediaImage/70383102755201",
+            "exactlyMatchesExistingProductMediaRecord": true,
+            "altText": "Faltbares Bluetooth-Headset in Pink mit hellgrünem Kopfbügel",
+            "altContainsOptionColor": true
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866712961",
+            "color": "Grün",
+            "associatedMediaId": "gid://shopify/MediaImage/70383102787969",
+            "exactlyMatchesExistingProductMediaRecord": true,
+            "altText": "Faltbares Bluetooth-Headset in Grün mit hellem Kopfbügel",
+            "altContainsOptionColor": true
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866745729",
+            "color": "Lila",
+            "associatedMediaId": "gid://shopify/MediaImage/70383102591361",
+            "exactlyMatchesExistingProductMediaRecord": true,
+            "altText": "Faltbares Bluetooth-Headset in Lila mit hellblauen Akzenten",
+            "altContainsOptionColor": true
+          },
+          {
+            "variantId": "gid://shopify/ProductVariant/56026866778497",
+            "color": "Schwarz",
+            "associatedMediaId": "gid://shopify/MediaImage/70383102722433",
+            "exactlyMatchesExistingProductMediaRecord": true,
+            "altText": "Faltbares Bluetooth-Headset in Schwarz",
+            "altContainsOptionColor": true
+          }
+        ]
+      }
+    },
+    "unexpectedChanges": {
+      "count": 0,
+      "paths": []
+    },
+    "changePolicy": {
+      "onlyAllowedProductFields": [
+        "title",
+        "descriptionHtml",
+        "seo.title",
+        "seo.description",
+        "updatedAt"
+      ],
+      "onlyAllowedOptionChange": "mouse options[id=gid://shopify/ProductOption/17882861896065].name: Farbe -> Ausführung",
+      "onlyAllowedSelectedOptionsNameChange": "mouse variant gid://shopify/ProductVariant/55889956733313 selectedOptions[0].name: Farbe -> Ausführung; selected option value unchanged",
+      "onlyAllowedVariantMediaAssociationChange": "folded product: five existing option-matched MediaImage associations; no new product media assets",
+      "onlyAllowedMediaAltChange": "11 existing image altText values (Cool 6 + Folded 5)",
+      "allOtherFields": "must remain exactly equal as parsed JSON, including option/value IDs and values, variant IDs/SKUs/prices/inventory, tags, media IDs/order/URLs/dimensions and all other product data"
+    },
+    "observedExpectedPaths": {
+      "productCopyFieldLeafPaths": [
+        "products.cool.title",
+        "products.cool.descriptionHtml",
+        "products.cool.seo.title",
+        "products.cool.seo.description",
+        "products.folded.title",
+        "products.folded.descriptionHtml",
+        "products.folded.seo.title",
+        "products.folded.seo.description",
+        "products.mouse.title",
+        "products.mouse.descriptionHtml",
+        "products.mouse.seo.title",
+        "products.mouse.seo.description",
+        "products.keyboard.title",
+        "products.keyboard.descriptionHtml",
+        "products.keyboard.seo.title",
+        "products.keyboard.seo.description"
+      ],
+      "updatedAtPaths": [
+        "products.cool.updatedAt",
+        "products.folded.updatedAt",
+        "products.mouse.updatedAt",
+        "products.keyboard.updatedAt"
+      ],
+      "mouseOptionAndSelectedOptionRenamePaths": [
+        "products.mouse.options[id=gid://shopify/ProductOption/17882861896065].name",
+        "products.mouse.variants.nodes[id=gid://shopify/ProductVariant/55889956733313].selectedOptions[0].name"
+      ],
+      "foldedExistingMediaAssociationAdditionPaths": [
+        {
+          "path": "products.folded.variants.nodes[id=gid://shopify/ProductVariant/56026866647425].media.nodes[id=gid://shopify/MediaImage/70383102689665]",
+          "variantId": "gid://shopify/ProductVariant/56026866647425",
+          "existingMediaId": "gid://shopify/MediaImage/70383102689665"
+        },
+        {
+          "path": "products.folded.variants.nodes[id=gid://shopify/ProductVariant/56026866680193].media.nodes[id=gid://shopify/MediaImage/70383102755201]",
+          "variantId": "gid://shopify/ProductVariant/56026866680193",
+          "existingMediaId": "gid://shopify/MediaImage/70383102755201"
+        },
+        {
+          "path": "products.folded.variants.nodes[id=gid://shopify/ProductVariant/56026866712961].media.nodes[id=gid://shopify/MediaImage/70383102787969]",
+          "variantId": "gid://shopify/ProductVariant/56026866712961",
+          "existingMediaId": "gid://shopify/MediaImage/70383102787969"
+        },
+        {
+          "path": "products.folded.variants.nodes[id=gid://shopify/ProductVariant/56026866745729].media.nodes[id=gid://shopify/MediaImage/70383102591361]",
+          "variantId": "gid://shopify/ProductVariant/56026866745729",
+          "existingMediaId": "gid://shopify/MediaImage/70383102591361"
+        },
+        {
+          "path": "products.folded.variants.nodes[id=gid://shopify/ProductVariant/56026866778497].media.nodes[id=gid://shopify/MediaImage/70383102722433]",
+          "variantId": "gid://shopify/ProductVariant/56026866778497",
+          "existingMediaId": "gid://shopify/MediaImage/70383102722433"
+        }
+      ],
+      "uniqueExistingImageAltTextPaths": [
+        "products.cool.media.nodes[id=gid://shopify/MediaImage/70700744966529].image.altText",
+        "products.cool.media.nodes[id=gid://shopify/MediaImage/70700744999297].image.altText",
+        "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745032065].image.altText",
+        "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745064833].image.altText",
+        "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745097601].image.altText",
+        "products.cool.media.nodes[id=gid://shopify/MediaImage/70700745130369].image.altText",
+        "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102591361].image.altText",
+        "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102689665].image.altText",
+        "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102722433].image.altText",
+        "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102755201].image.altText",
+        "products.folded.media.nodes[id=gid://shopify/MediaImage/70383102787969].image.altText"
+      ],
+      "mirroredCoolVariantMediaAltTextPaths": [
+        "products.cool.variants.nodes[id=gid://shopify/ProductVariant/67870839505287].media.nodes[id=gid://shopify/MediaImage/70700744999297].image.altText",
+        "products.cool.variants.nodes[id=gid://shopify/ProductVariant/67870839538055].media.nodes[id=gid://shopify/MediaImage/70700745130369].image.altText",
+        "products.cool.variants.nodes[id=gid://shopify/ProductVariant/67870839570823].media.nodes[id=gid://shopify/MediaImage/70700744966529].image.altText",
+        "products.cool.variants.nodes[id=gid://shopify/ProductVariant/67870839603591].media.nodes[id=gid://shopify/MediaImage/70700745097601].image.altText",
+        "products.cool.variants.nodes[id=gid://shopify/ProductVariant/67870839636359].media.nodes[id=gid://shopify/MediaImage/70700745032065].image.altText",
+        "products.cool.variants.nodes[id=gid://shopify/ProductVariant/67870839669127].media.nodes[id=gid://shopify/MediaImage/70700745064833].image.altText"
+      ],
+      "counts": {
+        "copyFieldPaths": 16,
+        "updatedAtPaths": 4,
+        "mouseRenamePaths": 2,
+        "foldedAssociationNodes": 5,
+        "uniqueUnderlyingAltTextChanges": 11,
+        "duplicatedCoolVariantAltTextSnapshotPaths": 6,
+        "unexpectedPaths": 0
+      }
+    }
+  },
+  "collectionGuard": {
+    "sourceConditionsAndImagesSortHandlesTemplatesPreserved": true,
+    "sampledProductIdsAndOrderPreserved": true,
+    "countsUnchanged": true,
+    "changedProductTitlesExpected": true
+  },
+  "finalIndependentNativeBusinessFieldsEqualWorkingReadback": true,
+  "finalIndependentNativeTimestampDeltas": {
+    "mouse": {
+      "working": "2026-11-16T00:05:10Z",
+      "independent": "2026-11-16T00:05:14Z"
+    }
+  },
+  "timestampDeltaCause": "unknown; no mutation repeated. Mouse updatedAt differs by four seconds; every other queried field is identical.",
+  "links": {
+    "cool-mecha": "https://luxestyle.ch/products/in-ear-wireless-bluetooth-headset-cool-mecha-612800",
+    "foldable": "https://luxestyle.ch/products/faltbares-bluetooth-headset-813952",
+    "mouse": "https://luxestyle.ch/products/usb-gaming-maus-mit-rgb-beleuchtung-d40fcb",
+    "keyboard": "https://luxestyle.ch/products/gaming-tastatur-mit-usb-kabel-und-beleuchtung-81961a",
+    "pc-gaming": "https://luxestyle.ch/collections/pc-gaming",
+    "kopfhoerer-audio": "https://luxestyle.ch/collections/kopfhoerer-audio",
+    "spielkonsolen-retro-handhelds": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds"
+  },
+  "notDone": {
+    "merchantWrites": 0,
+    "themeWrites": 0,
+    "socialWrites": 0,
+    "indexingRequests": 0,
+    "ordersQueried": false,
+    "paidRenders": 0,
+    "newAutomation": false,
+    "campaignBudgetOrFlowSettingsChanged": false,
+    "globalZeroErrorsVerified": false,
+    "claudeReceipt": "unknown"
+  },
+  "dailyReads": {
+    "localDate": "2026-11-16",
+    "searchConsoleQueryCalls": 2,
+    "searchConsoleUrlInspectionCalls": 1,
+    "searchWindow": "2026-11-06/2026-11-12 final",
+    "metricoolMetricsReadInRun": false,
+    "klaviyoReportReadInRun": false,
+    "broadSalesReadInRun": false,
+    "purchaseWatchEnded": true
+  },
+  "nextSteps": [
+    "Resolve exact AK-600 delivered layout and mouse button count from model-specific evidence; no invented variant/fact.",
+    "Review current theme source and existing narrow R248 OpenGraph variant-price patch; current observation alone does not justify a blind theme publish.",
+    "Continue the next small SKU-bound product group; preserve R249 console worklist8/36 reviewed and28 pending, no game/card assumptions.",
+    "Merchant R250 LI-service mapping and CH pending statuses are dated15Nov evidence, not freshly verified in R251. Do not repeat prior writes or claim zero errors."
+  ],
+  "evidenceFiles": [
+    "SEO-DETAIL-LIVE-20261116-R251.md",
+    "SEO-DETAIL-VORHER-NACHHER-20261116-R251.json",
+    "SEO-DETAIL-QUELLEN-20261116-R251.json",
+    "SEO-DETAIL-MOBIL-TECHNIK-20261116-R251.json"
+  ]
+}
