@@ -160,6 +160,8 @@ Gruppen geladener Arbeitsstände: gemeldet, prüfen, veraltet, ohne Messzeit. Fi
 Verteilungsbalken zählen diese Einträge, keine Verkäufe oder Gewinne. Karten zeigen den
 übermittelten nächsten Schritt sowie aufklappbare Quelle und Messzeit. Filterfokus,
 Quellenfokus und geöffnete Angaben bleiben beim Neuzeichnen erhalten.
+Die Namensschilder bleiben auch direkt nach einem Daten-Neuzeichnen im vergrösserten
+Monitor verborgen; nach Rückkehr in den Raum erscheinen sie wieder.
 
 Eingerahmte Wandfelder, niedrige Medienmöbel, Kabelwannen und gegliederte Holzbänke
 ergänzen das bestehende statische Netz. Kameraziele, Datenquellen, Modellpakete,

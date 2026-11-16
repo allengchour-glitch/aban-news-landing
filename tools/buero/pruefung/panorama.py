@@ -66,7 +66,7 @@ with sync_playwright() as pw:
    assert '<img src=x onerror=alert(1)>' in quelle.inner_text()
    assert quelle.locator('img').count()==0
    quelle.locator('summary').focus()
-   p.evaluate('dash.draw("szene3d")')
+   assert p.evaluate('()=>{dash.draw("szene3d");return [...document.querySelectorAll(".kb3-label")].every(n=>n.getClientRects().length===0);}')
    assert p.locator('.ll-quelle').first.get_attribute('open') is not None
    assert p.locator('.ll-quelle summary').first.evaluate('(n)=>n===document.activeElement')
    p.locator('.kb3-viewer').screenshot(path=str(bilder/f'buero-{width}-inhalt.png'))
@@ -101,6 +101,7 @@ with sync_playwright() as pw:
   assert p.evaluate('document.documentElement.style.overflow')!='hidden'
   p.locator('.kb3-viewer').screenshot(path=str(bilder/f'buero-{width}-monitor.png'))
   p.locator('[data-cmd=monitorBack]').click();assert p.locator('.kb3-licht').is_visible()
+  assert p.locator('.kb3-over').is_visible()
   assert kamera==p.evaluate('JSON.stringify(__office.debug.cam.g)')
   p.locator('[data-cmd="monitor"]').first.click();auswahl.select_option('Shop');p.keyboard.press('Escape')
   assert not p.evaluate('__office.monitorName()')

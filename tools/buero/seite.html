@@ -209,6 +209,7 @@
 .kb3-canvas:active { cursor: grabbing; }
 .kb3-canvas:focus-visible { outline: 2px solid var(--color-fg); outline-offset: -2px; }
 .kb3-over { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.kb3-viewer.is-monitor .kb3-over { display: none; }
 .kb3-label { position: absolute; left: 0; top: 0; pointer-events: auto; will-change: transform; }
 .kb3-lb { appearance: none; display: inline-flex; align-items: center; gap: 0.3rem; max-width: 13rem; margin: 0; padding: 0.1rem 0.55rem 0.1rem 0.35rem; border: 1px solid var(--lamp, var(--color-border-line)); border-radius: 999px; background: var(--color-bg); color: var(--color-fg); font: inherit; font-size: 0.72rem; font-weight: var(--cds-font-weight-medium); line-height: 1.25; cursor: pointer; white-space: nowrap; }
 @supports (color: color-mix(in srgb, red 50%, blue)) { .kb3-lb { background: color-mix(in srgb, var(--color-bg) 92%, transparent); } }
