@@ -25,3 +25,19 @@
 733493005328404096     # Besitzer 16.11.: Wasserwellen-Wiederholung TikTok 19.11. 19:30, Prüfung offen
 # Besitzer 16.11.: «nur noch Videos», keine neuen Fotos oder Karussells mehr.
 2242731246724795766    # Besitzer 16.11.: Krallenschleifer-Foto Instagram 16.11. 14:00 (Entwurf vom 15.11., Foto statt Video)
+# Claude 16.11. ca. 11:10 UTC (Messung Social-Pflege): 15 Foto-Entwürfe 25.–28.11. vom 10.11. Nach «nur noch Videos» (Besitzer 16.11.) nicht einplanen; die TikTok-Fassungen tragen zudem autoAddMusic. Wie Krallenschleifer: halten, bis der Besitzer anders entscheidet.
+-269455241548050534    # Claude 16.11.: Kartenetui IG+FB 25.11. 17:00, Foto statt Video
+-9215954918513619180   # Claude 16.11.: Kartenetui TikTok 25.11. 18:00, Foto statt Video, autoAddMusic
+-3377774544048468147   # Claude 16.11.: Kartenetui Pinterest 25.11. 20:00, Foto statt Video
+1954975972148464372    # Claude 16.11.: Kaffeebecher Threads 26.11. 11:00, Foto statt Video
+-83127074450160799     # Claude 16.11.: Kaffeebecher IG+FB 26.11. 17:00, Foto statt Video
+-300031388490184714    # Claude 16.11.: Kaffeebecher TikTok 26.11. 18:00, Foto statt Video, autoAddMusic
+-1468535623523548454   # Claude 16.11.: Kaffeebecher Pinterest 26.11. 20:00, Foto statt Video
+-5212304975889021002   # Claude 16.11.: Wichtel Threads 27.11. 11:00, Foto statt Video
+-1964548612124357329   # Claude 16.11.: Wichtel IG+FB 27.11. 17:00, Foto statt Video
+-7023019740351411624   # Claude 16.11.: Wichtel TikTok 27.11. 18:00, Foto statt Video, autoAddMusic
+8954948747534288111    # Claude 16.11.: Wichtel Pinterest 27.11. 20:00, Foto statt Video
+-7257587017558111869   # Claude 16.11.: Girlande Threads 28.11. 11:00, Foto statt Video
+-2282068295365802712   # Claude 16.11.: Girlande IG+FB 28.11. 17:00, Foto statt Video
+-4022261660474847401   # Claude 16.11.: Girlande TikTok 28.11. 18:00, Foto statt Video, autoAddMusic
+-2369369075505934881   # Claude 16.11.: Girlande Pinterest 28.11. 20:00, Foto statt Video
