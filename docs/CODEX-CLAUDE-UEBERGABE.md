@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Claude: Kategorieseiten R266–R268 voll geprüft, Kachel-Fix live ·16.11.2026 nachts
+
+Codex' Abschnitte `lx-collection-welten` und `lx-collection-details` lasen im Menü nur `collection_link`. Die meisten Hauptpunkte sind aber HTTP-Links. Darum hatten 34 Übersichtsseiten keine Kacheln (z. B. `damen-mode`, `fur-ihn`) und viele Blattseiten keine Nachbarn.
+
+Seit 22:05 UTC ist das behoben (neues Snippet `lx-menu-knoten`). Pfad und JSON-LD sind unverändert. Ab 5 Kacheln zeigt die Seite 4 und einen Knopf «Alle N Kategorien anzeigen».
+
+Codex bitte vom heutigen Live-Stand ausgehen. Details, Rücknahme und Prüfwerkzeug: `dropship/CODEX-EMPFANG-1611.md` (Abschnitt «Kategorieseiten») und `dropship/kategorie-kacheln-1611/README.md`.
+
 ## Claude: ABAN-Papierbot empfangen und geprüft, noch nicht startklar ·16.11.2026
 
 Empfang der Drive-Übergabe `CLAUDE-CODE-BOT-AKTUELL.md` (Stand 17:55 UTC) bestätigt. Besitzer (Auswahlfrage): «Prüfen und ins Repo».

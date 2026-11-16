@@ -1,0 +1,495 @@
+{% comment %}
+  Collection landing introduction and native child-collection navigation.
+  Child collections come from lux.unterfilter first and the selected menu second;
+  duplicate references are rendered once. Existing collection URLs stay canonical.
+{% endcomment %}
+
+{%- paginate collection.products by 24 -%}
+  {%- assign lx_page_number = paginate.current_page -%}
+{%- endpaginate -%}
+
+{%- liquid
+  assign lx_menu = section.settings.menu
+  assign lx_meta_children = collection.metafields.lux.unterfilter.value
+  assign lx_parent = collection.metafields.lux.eltern.value
+  assign lx_menu_children = '' | split: ','
+  assign lx_menu_parent = blank
+
+  if lx_menu != blank
+    for lx_top in lx_menu.links
+      assign lx_top_collection = lx_top.object
+      if lx_top.type == 'collection_link' and lx_top_collection != blank and lx_top_collection.id == collection.id
+        assign lx_menu_children = lx_top.links
+      elsif lx_top.type == 'collection_link' and lx_top_collection == blank and lx_top.url == collection.url
+        assign lx_menu_children = lx_top.links
+      endif
+
+      for lx_sub in lx_top.links
+        assign lx_sub_collection = lx_sub.object
+        if lx_sub.type == 'collection_link' and lx_sub_collection != blank and lx_sub_collection.id == collection.id
+          assign lx_menu_parent = lx_top_collection
+          assign lx_menu_children = lx_sub.links
+        elsif lx_sub.type == 'collection_link' and lx_sub_collection == blank and lx_sub.url == collection.url
+          assign lx_menu_parent = lx_top_collection
+          assign lx_menu_children = lx_sub.links
+        endif
+
+        for lx_leaf in lx_sub.links
+          assign lx_leaf_collection = lx_leaf.object
+          if lx_leaf.type == 'collection_link' and lx_leaf_collection != blank and lx_leaf_collection.id == collection.id
+            assign lx_menu_parent = lx_sub_collection
+          elsif lx_leaf.type == 'collection_link' and lx_leaf_collection == blank and lx_leaf.url == collection.url
+            assign lx_menu_parent = lx_sub_collection
+          endif
+        endfor
+      endfor
+    endfor
+  endif
+
+  if lx_parent == blank
+    assign lx_parent = lx_menu_parent
+  endif
+
+  assign lx_is_compact = false
+  if lx_page_number > 1 or current_tags != blank
+    assign lx_is_compact = true
+  endif
+  for lx_filter in collection.filters
+    if lx_filter.active_values.size > 0
+      assign lx_is_compact = true
+    endif
+    if lx_filter.type == 'price_range'
+      if lx_filter.min_value.value != blank or lx_filter.max_value.value != blank
+        assign lx_is_compact = true
+      endif
+    endif
+  endfor
+
+  assign lx_intro = section.settings.intro
+  if lx_intro == blank and collection.description != blank
+    assign lx_intro = collection.description | strip_html | strip | truncatewords: 24
+  endif
+
+  assign lx_tile_count = 0
+  capture lx_category_tiles
+    assign lx_seen_ids = '|'
+    for lx_child in lx_meta_children
+      if lx_child != blank and lx_child.id != collection.id
+        assign lx_child_key = lx_child.id | prepend: '|' | append: '|'
+        unless lx_seen_ids contains lx_child_key
+          assign lx_seen_ids = lx_seen_ids | append: lx_child.id | append: '|'
+          assign lx_image_override = blank
+          assign lx_image_position = '50% 50%'
+          for lx_block in section.blocks
+            assign lx_block_collection = lx_block.settings.collection
+            if lx_block_collection != blank and lx_block_collection.id == lx_child.id
+              assign lx_image_override = lx_block.settings.image
+              assign lx_image_position = lx_block.settings.image_position
+              break
+            endif
+          endfor
+          assign lx_tile_count = lx_tile_count | plus: 1
+          render 'lx-collection-welten-card', child: lx_child, image_override: lx_image_override, image_position: lx_image_position, index: lx_tile_count
+        endunless
+      endif
+    endfor
+
+    for lx_link in lx_menu_children
+      assign lx_child = lx_link.object
+      if lx_link.type == 'collection_link' and lx_child != blank and lx_child.id != collection.id
+        assign lx_child_key = lx_child.id | prepend: '|' | append: '|'
+        unless lx_seen_ids contains lx_child_key
+          assign lx_seen_ids = lx_seen_ids | append: lx_child.id | append: '|'
+          assign lx_image_override = blank
+          assign lx_image_position = '50% 50%'
+          for lx_block in section.blocks
+            assign lx_block_collection = lx_block.settings.collection
+            if lx_block_collection != blank and lx_block_collection.id == lx_child.id
+              assign lx_image_override = lx_block.settings.image
+              assign lx_image_position = lx_block.settings.image_position
+              break
+            endif
+          endfor
+          assign lx_tile_count = lx_tile_count | plus: 1
+          render 'lx-collection-welten-card', child: lx_child, image_override: lx_image_override, image_position: lx_image_position, index: lx_tile_count
+        endunless
+      endif
+    endfor
+  endcapture
+
+  assign lx_has_tiles = false
+  if lx_tile_count > 0 and lx_category_tiles != blank and lx_is_compact == false
+    assign lx_has_tiles = true
+  endif
+  assign lx_hero_image = section.settings.header_image
+-%}
+
+<section class="lx-welten color-{{ section.settings.color_scheme }}{% if lx_is_compact %} lx-welten--compact{% endif %}" aria-labelledby="lx-welten-title-{{ section.id }}">
+  {% render 'lx-kopf-pfad', parent_collection: lx_parent, show_usp: false %}
+
+  <div class="lx-welten__inner">
+    <header class="lx-welten__intro{% if lx_hero_image != blank and lx_is_compact == false %} lx-welten__intro--image{% endif %}"{% if lx_hero_image != blank and lx_is_compact == false %} style="--lx-welten-hero: url('{{ lx_hero_image | image_url: width: 1600 }}');"{% endif %}>
+      <h1 class="lx-welten__title" id="lx-welten-title-{{ section.id }}">{{ collection.title | escape }}</h1>
+      {% if lx_intro != blank and lx_is_compact == false %}
+        <p class="lx-welten__lead">{{ lx_intro | escape }}</p>
+      {% endif %}
+    </header>
+
+    {% if lx_has_tiles %}
+      <nav class="lx-welten__navigation" aria-label="{{ 'lx_welten.category_navigation' | t | escape }}">
+        <h2 class="visually-hidden">{{ 'lx_welten.choose_category' | t | escape }}</h2>
+        <ul class="lx-welten__grid{% if lx_tile_count > 6 %} lx-welten__grid--many{% endif %}{% if section.settings.feature_first and lx_tile_count > 2 %} lx-welten__grid--featured{% endif %}" role="list">
+          {{ lx_category_tiles }}
+        </ul>
+        <a class="lx-welten__all-products" href="#ResultsList">
+          <span>{{ 'lx_welten.all_products' | t | escape }}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </nav>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .lx-welten {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    padding-block: 0 2rem;
+  }
+
+  .lx-welten__inner {
+    width: min(100% - 2rem, 1440px);
+    margin-inline: auto;
+  }
+
+  .lx-welten__intro {
+    box-sizing: border-box;
+    min-height: 0;
+    margin-block: 1rem 1.25rem;
+    padding: clamp(.5rem, 2vw, 1rem) 0;
+  }
+
+  .lx-welten__intro--image {
+    min-height: 8.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.25rem clamp(1rem, 3vw, 2rem);
+    border-radius: 6px;
+    background-color: var(--color-primary);
+    background-image: linear-gradient(rgb(var(--color-foreground-heading-rgb) / 78%), rgb(var(--color-foreground-heading-rgb) / 78%)), var(--lx-welten-hero);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .lx-welten__intro--image .lx-welten__title,
+  .lx-welten__intro--image .lx-welten__lead {
+    color: #fff;
+  }
+
+  .lx-welten__title {
+    max-width: 22ch;
+    margin: 0;
+    color: var(--color-foreground-heading);
+    font-family: var(--font-heading--family);
+    font-size: clamp(1.9rem, 4vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    text-wrap: balance;
+  }
+
+  .lx-welten__lead {
+    max-width: 68ch;
+    margin: .65rem 0 0;
+    color: var(--color-foreground);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .lx-welten__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .lx-welten__item {
+    min-width: 0;
+  }
+
+  .lx-welten__card {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 160px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 6px;
+    background: rgb(var(--color-foreground-rgb) / 12%);
+    color: #fff;
+    isolation: isolate;
+    text-decoration: none;
+  }
+
+  .lx-welten__card-image {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--lx-welten-image-position, 50% 50%);
+  }
+
+  .lx-welten__card--no-image {
+    background: var(--color-foreground-heading);
+  }
+
+  .lx-welten__card::after {
+    position: absolute;
+    z-index: -1;
+    inset: 36% 0 0;
+    background: linear-gradient(180deg, rgb(var(--color-foreground-heading-rgb) / 0%), rgb(var(--color-foreground-heading-rgb) / 90%));
+    content: '';
+  }
+
+  .lx-welten__card-title {
+    position: absolute;
+    inset-inline: .75rem;
+    bottom: .75rem;
+    padding-inline-end: 2.5rem;
+    display: block;
+    max-width: 24ch;
+    color: #fff;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .lx-welten__card-arrow {
+    position: absolute;
+    right: .75rem;
+    bottom: .75rem;
+    display: grid;
+    width: 2.75rem;
+    min-height: 2.75rem;
+    place-items: center;
+    border-radius: 50%;
+    background: rgb(var(--color-foreground-heading-rgb) / 90%);
+    color: #fff;
+  }
+
+  .lx-welten__card:focus-visible,
+  .lx-welten__all-products:focus-visible {
+    outline: 3px solid var(--color-foreground-heading);
+    outline-offset: 3px;
+  }
+
+  .lx-welten__all-products {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: .6rem;
+    margin-block-start: 1rem;
+    padding: .55rem .85rem;
+    border-radius: 4px;
+    background: var(--color-primary-button-background);
+    color: var(--color-primary-button-text);
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .lx-welten--compact {
+    padding-block-end: .25rem;
+  }
+
+  .lx-welten--compact .lx-welten__intro {
+    margin-block: .5rem .75rem;
+    padding-block: .25rem;
+  }
+
+  /* Native AJAX facets replace results-list, not this separate section.
+     React to the theme's existing active-filter control without extra scripts. */
+  main:has(results-list .facets__clear-all-link--active) .lx-welten {
+    padding-block-end: .25rem;
+  }
+
+  main:has(results-list .facets__clear-all-link--active) .lx-welten__navigation,
+  main:has(results-list .facets__clear-all-link--active) .lx-welten__lead {
+    display: none;
+  }
+
+  main:has(results-list .facets__clear-all-link--active) .lx-welten__intro {
+    min-height: 0;
+    margin-block: .5rem .75rem;
+    padding: .25rem 0;
+    background: none;
+    border-radius: 0;
+  }
+
+  main:has(results-list .facets__clear-all-link--active) .lx-welten__title {
+    color: var(--color-foreground-heading);
+  }
+
+  @media (max-width: 749px) {
+    .lx-welten > .lx-kp {
+      margin-inline: 0;
+      padding-inline: 1rem;
+    }
+
+    .lx-welten__card-title {
+      padding-inline-end: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .lx-welten__card-arrow {
+      top: .65rem;
+      right: .65rem;
+      bottom: auto;
+      width: 2rem;
+      min-height: 2rem;
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 750px) {
+    .lx-welten__inner {
+      width: min(100% - 3rem, 1440px);
+    }
+
+    .lx-welten__intro--image {
+      min-height: 10rem;
+    }
+
+    .lx-welten__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .lx-welten__grid--many {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .lx-welten__grid--featured .lx-welten__item:first-child {
+      grid-column: span 2;
+    }
+
+    .lx-welten__grid--featured .lx-welten__item:first-child .lx-welten__card {
+      aspect-ratio: 3 / 2;
+    }
+
+    .lx-welten__card-title {
+      inset-inline: 1rem;
+      bottom: 1rem;
+      padding-inline-end: 2.5rem;
+    }
+
+    .lx-welten__card-arrow {
+      right: 1rem;
+      bottom: 1rem;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .lx-welten__inner {
+      width: min(100% - 4rem, 1440px);
+    }
+
+    .lx-welten__grid {
+      gap: 1.25rem;
+    }
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .lx-welten__card:hover .lx-welten__card-image {
+      transform: scale(1.025);
+      transition: transform 180ms ease-out;
+    }
+  }
+
+  @media (hover: none), (prefers-reduced-motion: reduce) {
+    .lx-welten__card:hover .lx-welten__card-image {
+      transform: none;
+      transition: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:lx_welten.section_name",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:lx_welten.menu_label",
+      "default": "main-menu"
+    },
+    {
+      "type": "image_picker",
+      "id": "header_image",
+      "label": "t:lx_welten.header_image_label"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "t:lx_welten.intro_label",
+      "info": "t:lx_welten.intro_info"
+    },
+    {
+      "type": "checkbox",
+      "id": "feature_first",
+      "label": "t:lx_welten.feature_first_label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tile_image",
+      "name": "t:lx_welten.tile_block_name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:lx_welten.tile_collection_label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:lx_welten.tile_image_label"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "t:lx_welten.tile_focus_label",
+          "options": [
+            {"value": "50% 50%", "label": "t:lx_welten.focus_center"},
+            {"value": "50% 25%", "label": "t:lx_welten.focus_top"},
+            {"value": "50% 75%", "label": "t:lx_welten.focus_bottom"},
+            {"value": "25% 50%", "label": "t:lx_welten.focus_left"},
+            {"value": "75% 50%", "label": "t:lx_welten.focus_right"}
+          ],
+          "default": "50% 50%"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50
+}
+{% endschema %}
