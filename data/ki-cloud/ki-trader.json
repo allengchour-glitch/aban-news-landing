@@ -120,6 +120,30 @@
     "btc": 64128.05078125,
     "eth": 1769.1204833984375
    }
+  },
+  {
+   "stand": "2026-11-15",
+   "zeit": "2026-11-16T12:52:02+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 925,
+   "kosten_usd": 0.025192,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.1,
+    "begruendung": "Der Abwärtstrend ist intakt: -12,4 % in 7 Tagen, 18 % unter dem 50-Tage-Schnitt und unter dem 200-Tage-Schnitt. Gleichzeitig ist der Markt stark überverkauft. Angst&Gier steht bei 10, das Funding ist leicht negativ, und nach dem Tief bei 64'128 kam ein erster Rebound von +1,8 %. Das Risiko einer Short-Squeeze-Erholung steigt. Ich reduziere den Short von -0,20 auf -0,10, um Gewinne zu sichern, behalte aber die Trendrichtung.",
+    "sicherheit": 0.35
+   },
+   "eth": {
+    "position": -0.1,
+    "begruendung": "ETH ist schwächer als BTC: -24 % in 30 Tagen, fast 23 % unter dem 50-Tage-Schnitt, Abstand zum 1-Jahres-Hoch -45 %. Die Extremwerte sprechen aber für eine Gegenbewegung. Der MVRV von 0,84 liegt unter 1, das Funding ist deutlich negativ (-0,0068 % je 8 h), Shorts zahlen also, und heute gab es einen Rebound von +3,8 %. Bei 60 % Schwankung ist ein Squeeze teuer. Ich reduziere den Short von -0,25 auf -0,10.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Der Trend zeigt klar nach unten, die Stimmung ist aber in Kapitulationsnähe und das Funding negativ. Ich nehme den Grossteil der Short-Gewinne mit und halte nur einen kleinen Rest-Short. Ein Long ohne bestätigte Bodenbildung wäre verfrüht. Bei weiterer Erholung über ca. 68'000 bzw. 1'930 gehe ich flach.",
+   "kurse": {
+    "btc": 65305.0625,
+    "eth": 1835.4952392578125
+   }
   }
  ]
 }
