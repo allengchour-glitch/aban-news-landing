@@ -11,7 +11,7 @@ Der Besitzer möchte Traumhaus als Hauptspiel weiter ausbauen: grosse zusammenh�
 | Nordstadt und Missionen | [PR #3209](https://github.com/allengchour-glitch/aban-news-landing/pull/3209), Main-Commit `c3088227d`; veröffentlicht und öffentlich geprüft. |
 | Stadtbild | [PR #3211](https://github.com/allengchour-glitch/aban-news-landing/pull/3211), Branch `codex/traumhaus-stadtbild-20261116`, Head `dbb7ba3680829ae50f411927a8f38be37d0778fb`. Alle vier PR-Prüfungen bestanden; gemergt als `1667fc056033e756cf55a52574c35da0c10c8f72`. Produktionslauf `43919014522` erfolgreich; Spielseite und beide JS-Dateien frisch mit HTTP 200 und neuen Stadtbild-Markern geprüft. ZIP und Vergleichsbilder im bestehenden Drive-Projektordner rückgelesen. |
 | Kamera und Leistung | PR #3212, Merge `ab10d8f15ba42728b40563d4a2a1d6d85cfbb97d`. Vier PR-Prüfungen grün; Produktionslauf `43922995107` erfolgreich; Spielseite und Sichtmodul frisch mit HTTP 200 und neuen Kamera-/Himmel-/Filtermarkern geprüft. Lokale Kamera-/Touch-/Himmel-/Filterprüfungen bestanden, ZIP in Drive rückgelesen. |
-| Aktueller Fokus | Branch `codex/traumhaus-strassen-20261116` von `ab10d8f15`. Neuester Besitzerauftrag: Strassen prüfen und verbessern. GEMESSEN: 16’776 Fahrbahnproben und 80 GPS-Routen frei; echte Fahrzeugfahrten über 525,38 und 636,24 Meter ohne Blockade. Bestätigte optische Fehler werden korrigiert: Bahnhof-Gehweg über versetzten Zufahrten, überkreuzende Gehwege/Bankette an der Bauernhofverbindung, fehlende kleine Einmündungen bei Nordstadt-Markierungen sowie offene Rennkurs-Naht und Randstein über Boxenzufahrt. Änderungen noch nicht abschliessend geprüft oder veröffentlicht. |
+| Aktueller Fokus | Branch `codex/traumhaus-strassen-20261116` von `ab10d8f15`. Neuester Besitzerauftrag: Strassen prüfen und verbessern. Strassenkorrekturen lokal umgesetzt; siehe [Strassenbericht](TRAUMHAUS-STRASSEN.md). Vier Ringmündungen, Bahnhofszufahrten, schräge Anschlüsse, Strand-Flora/Laterne, Nordstadt-Markierungen und Rennkurs korrigiert. Alte Strand-Hoftiere in bestehende Koppel integriert. Einzelprüfungen bestanden; letzte Tier-/Nachtproben und isolierte ÖV-/Rennfahrt laufen. Noch nicht veröffentlicht. |
 
 Vor Weiterarbeit diesen Stand frisch gegen `git status`, `origin/main`, offene PRs und deren Dateien prüfen. Andere Sitzungen arbeiten parallel im Repository. Keine fremden Änderungen überschreiben oder einen vorhandenen Zweig blind auf `origin/main` zurücksetzen.
 
@@ -22,7 +22,7 @@ Vor Weiterarbeit diesen Stand frisch gegen `git status`, `origin/main`, offene P
 - `js/traumhaus-sicht.js`: gezielter Sichtfeldfilter für registrierte statische Instanzgruppen, nur im Hauptbild ohne Schattenkarte.
 - `js/traumhaus-stadtbild.js`: neue Grün- und Sitzmodule, Platzierung mit Freiraumprüfung, Instancing und Entfernungsausblendung.
 - `js/traumhaus-missionen.js`: reine Missionszustände und Übergänge, ohne DOM oder eigene Geldauszahlung. `js/traumhaus-missionen.css` und `js/traumhaus-stadt.css` enthalten die dazugehörige Oberfläche.
-- [Missionen-Bericht](TRAUMHAUS-MISSIONEN.md), [Stadtbild-Bericht](TRAUMHAUS-STADTBILD.md) und [Stadtleben/Recherchen](TRAUMHAUS-STADTLEBEN.md): Funktionsumfang, Gestaltungsgrundlagen und Prüfungen.
+- [Strassenbericht](TRAUMHAUS-STRASSEN.md), [Missionen-Bericht](TRAUMHAUS-MISSIONEN.md), [Stadtbild-Bericht](TRAUMHAUS-STADTBILD.md) und [Stadtleben/Recherchen](TRAUMHAUS-STADTLEBEN.md): Funktionsumfang, Gestaltungsgrundlagen und Prüfungen.
 - [Traumhaus-Runbook](RUNBOOK-TRAUMHAUS.md) und `spiele-dev/tools/`: bestehende Messwerkzeuge und bekannte Fallen. Alte Grössenangaben und Wiederherstellungsbefehle im Runbook nicht ungeprüft übernehmen; aktueller Arbeitsbaum und `AGENTS.md` haben Vorrang.
 
 ## Bestehende Spielregeln erhalten
@@ -47,11 +47,17 @@ GEMESSEN im vollständigen Regressionslauf:
 
 GEMESSEN im isolierten Stadtmodulvergleich bei gleicher Kamera: Zeichenaufrufe 61 → 60, Materialien 9 → 9, gesamte Modulgeometrie 42’676 → 47’792 Dreiecke. Dieser Vergleich umfasst weder das ganze Spiel noch die zusätzlichen Grünmodule. Die Gebäudezahl und Gebäudekollider blieben identisch. Altstadt, Nordstadt und Seepark sowie Regen bei Tag und Nacht wurden visuell verglichen.
 
-Die Tests nutzen Chromium mit Software-WebGL. **60 FPS auf einem echten Handy sind nicht nachgewiesen.** Vom Gerät des Besitzers ist nur «Handy» bekannt. Simulierte Fahrzeugfahrten, Funktionsproben und isolierte Zeichenbudgets nicht als menschliche Handy-Spieltests darstellen. Die bestehende Kollisionskamera verkürzt den Blick an engen Hochhäusern weiterhin; genau das wird als Nächstes untersucht.
+Die Tests nutzen Chromium mit Software-WebGL. **60 FPS auf einem echten Handy sind nicht nachgewiesen.** Vom Gerät des Besitzers ist nur «Handy» bekannt. Simulierte Fahrzeugfahrten, Funktionsproben und isolierte Zeichenbudgets nicht als menschliche Handy-Spieltests darstellen. Die Kollisionskamera verkürzt den Blick an engen Hochhäusern weiterhin bei Bedarf; die anschliessenden Verbesserungen stehen im Kamera-Bericht.
 
 ## Aktuelle Kamera-/Renderprüfung
 
 Siehe [Kamera und Leistung](TRAUMHAUS-KAMERA-LEISTUNG.md). Elf Belohnungsimpulse lassen die Benutzerwinkel unverändert; native Zwei-Finger-Geste gibt der manuellen Kamera sofort Vorrang. Himmelskuppel/Wolken/Sterne begleiten die Kamera bis in die Aussenstadt, auch beim Fotografieren. Zwölf Filtertests bestanden; zehn A/B-Ansichten pixelidentisch. Nordstadt151→74 Zeichenaufrufe/160’999→82’915 Dreiecke. Offene Leistungsgrenze: Egoansicht Seepark2’241 Zeichenaufrufe.
+
+## Aktuelle Strassenprüfung
+
+GEMESSEN: Vier Ringmündungen mit 180 Fahrbahn- und 56 Gehwegproben frei. Bahnhof: 104 Bodenproben, beide Spuren je 15,51 Meter bei 23 km/h ohne Stillstand. Strand: 560 Proben ohne Pflanzenfreigabe oder feste Blockade. Rennnaht 0,687 → 0 Meter, Randsteintreffer in Zufahrt 128 → 0. Bauplan und 148 Stadtmodul-Kollider identisch. Der geometrische Schnitt wird nur beim Bau ausgeführt; neun Geometriefälle, unabhängige 15’808 Punktproben und Originalcode-Gegentest bestanden.
+
+Testfallen: Parkplatz wird verzögert gebaut, gemeinsame Zufahrtsdaten müssen davor verfügbar sein. Schnitthelfer darf eigene Mittelstriche nicht als Gehwegrand behandeln. Vor ÖV-/Rennprobe Missions-Ergebnisdialog schliessen; er pausiert absichtlich Aktionen. THREE-Sprite-Raycasts brauchen eine Kamera oder einen Meshfilter. Diese im Testlauf gefundenen Probleme nicht als offene Spielregressionen behandeln.
 
 ## Prüfungen fortsetzen
 
