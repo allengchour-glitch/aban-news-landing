@@ -1,15 +1,12 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
-## Spieleabschluss: Neon live, neue Lebenspfad-Figur geprüft ·16.11.2026
+## Spiele abgeschlossen und live: Neon Flug und Lebenspfad-Figur ·16.11.2026
 
-Aktiver Besitzerauftrag «mach die2 fertig», danach «teile dann memory»; zuletzt «token sparen». Die frühere Pause ist aufgehoben. Keine weiteren Erweiterungen: Veröffentlichung und gemeinsame Übergabe abschließen. Kanonischer aktueller Stand: `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`; ältere Pausen-/WIP-Abschnitte unten sind Historie.
+Besitzerauftrag «mach die2 fertig», danach «teile dann memory» abgeschlossen. Zuletzt «token sparen»: keine neuen Erweiterungen. Kanonische vollständige Übergabe: `spiele-dev/CLAUDE-SPIELE-AKTUELL.md`. Ältere Pausen-/WIP-Abschnitte unten sind Historie; keine Patches erneut anwenden.
 
-Neon Flug PR3217 live: Head4008cc562, Mergee023cc01f, Hauptseitenlauf43929567774 erfolgreich, sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen,14/14 normale HTTPS-Prüfungen bestanden. Höhensteuerung/Touch, verschwindende Ringe, Belohnungen, optionales Neon-Schießen;66 Node+90 Browserbedingungen grün. Belege `spiele-dev/neon-flug/belege-v4/`.
+Neon Flug PR3217: Mergee023cc01f, Hauptseitenlauf43929567774 erfolgreich,14/14 normale öffentliche HTTPS-Prüfungen. Höhensteuerung/Touch, verschwindende Ringe, Belohnungen und optionales Schießen;66 Node+90 Browserbedingungen grün. Lebenspfad-Figur PR3218: Mergee93f2930e, Hauptseitenlauf43932279011 erfolgreich,11/11 HTTPS-Prüfungen. Gewählte kleine niedliche Figur, großer Kopf, passende Familie.71 Browserbedingungen,9 GLBs,5 Layoutgrößen/7 Stand-/Emotefixtures bestanden;26 Replaypunkte/Endzustand/31 RNG unverändert. Beide Releases mit jeweils sechs relevanten echten CI-Prüfungen grün und vier übersprungenen Einrichtungsschritten.
 
-Lebenspfad PR3218: gewählte kleine niedliche Figur mit großem Kopf, eigenem Geometriemodul und passender Familie fertig implementiert. GEMESSEN71 Browserbedingungen, neun GLB-Vorschauen, fünf Layoutgrößen/sieben Stand- und Emotefixtures bestanden. Replay26 Kontrollpunkte/Endzustand/31 RNG-Aufrufe unverändert. Portrait,25 Varianten, Alter, Familie und Spielkamera wirklich angesehen. Default32 statt60 Zeichenaufrufe,13.380 statt10.316 Dreiecke; keine FPS-Zusage. Veröffentlichung noch ausstehend; tatsächlichen Abschluss oben in der kanonischen Übergabe lesen.
-
-Keine neue Higgsfield-Ausführung; native Geometrie lokal gebaut. Internet-/NAT-/physische Handy-Leistung nicht neu belegt. Lokale Gesamt-CI vor Start durch read-only HOME blockiert; echte CI separat. Traumhaus unverändert vom anderen Bearbeiter integriert. Keine Shop-/Social-/Konto-/Secret-Aktion.
-
+Dauerhafte Belege: `spiele-dev/neon-flug/belege-v4/` und `spiele-dev/lebenspfad/belege-figur-neu/VEROEFFENTLICHUNG.md`. Keine öffentliche Internet-/NAT-/Handy-FPS-Zusage; lokale Gesamt-CI durch read-only HOME blockiert, echte GitHub-CI getrennt grün. Keine neue Higgsfield-Ausführung. Traumhaus unverändert vom anderen Bearbeiter integriert. Keine Shop-/Social-/Konto-/Secret-Aktion. Agenten beendet; Claude-Empfang unbekannt.
 
 ## Neon Flug: vier Richtungen, Ringe und Schießmodus ·16.11.2026
 

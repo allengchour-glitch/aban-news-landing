@@ -1,5 +1,7 @@
 # Lebenspfad: neue niedliche Figur – Implementierung abgeschlossen
 
+**Veröffentlicht:** PR3218, Mergee93f2930e, Hauptseitenlauf43932279011 erfolgreich; sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen,11/11 öffentliche HTTPS-Prüfungen bestanden. Vollständiger Nachweis: `belege-figur-neu/VEROEFFENTLICHUNG.md`. Nachfolgende Implementierungsübergabe beschreibt den Stand vor Veröffentlichung.
+
 Besitzerwahl: **kleine niedliche Figur, großer Kopf, kompakter Körper, verspielt**. Auftrag «mach die2 fertig», danach «teile dann memory», zuletzt «token sparen». Keine weiteren Erweiterungen. Parent übernimmt Veröffentlichung/Memory; aktueller Gesamtstand in `../CLAUDE-SPIELE-AKTUELL.md`. PR3218.
 
 ## Ergebnis

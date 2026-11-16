@@ -1,26 +1,32 @@
 # Gemeinsamer Spiele-Stand für Claude Code ·16.11.2026
 
-**Aktiver Besitzerauftrag: «mach die 2 fertig», danach «teile dann memory».** Die vorherige Pause ist aufgehoben. Neon Flug und die kleine niedliche Lebenspfad-Figur vollständig prüfen/veröffentlichen, danach Memory mit tatsächlichen Live-Belegen teilen. Bestehende Freigabe gilt; keine neue Rückfrage nötig. Traumhaus bleibt bei der anderen Sitzung. Keine Shop-/Social-/Konto-/Secret-Aktion.
+**Auftrag abgeschlossen:** «mach die2 fertig», danach «teile dann memory». Neon Flug und die gewählte niedliche Lebenspfad-Figur sind live. Zuletzt «token sparen»: keine weiteren Erweiterungen gestartet. Frühere Pausen-/WIP-Angaben in historischen Memory-Abschnitten sind überholt. Bereits enthaltene Patches nicht erneut anwenden.
 
-## Bereits live
+## Neon Flug – live
 
-- Mix Arena PR3213, Merge78f14f5fb, Hauptseitenlauf43924427755,42/42 normale HTTPS-Prüfungen grün. Figuren/Runden/XP/Level/Revanche. https://abannews.com/minispiele/
-- Lebenspfad Atmosphäre/Objekte PR3214, Mergee6cb01125, Lauf43925206449,9/9 HTTPS-Prüfungen grün. Eigene Blender-Modelle und Kapitellicht; kein Higgsfield-Anschluss genutzt. https://abannews.com/lebenspfad
+https://abannews.com/neon-flug
 
-## Neon Flug: live und geprüft
+Vier Richtungen per Tastatur/Touch, eingesammelte Ringe verschwinden, zusätzliche Animationen, einmalige XP-Belohnung und optionales Neon-Schießen im selben Einstieg. Klassische Kampagne bleibt Standard. Räume/Protokollv4; gemeinsames mp.js unverändert.
 
-PR3217: sechs relevante echte CI-Prüfungen am Head4008cc562 grün, Mergee023cc01f. Hauptseitenlauf43929567774 erfolgreich, vier Einrichtungs-/Secret-Schritte übersprungen. GEMESSEN **14/14 normale öffentliche HTTPS-Prüfungen bestanden**: tatsächlicher Seitenbau, Skripte/Styles/Sicherheitsheader und bytegleiche Module. Lokal66 Node+90 Browser-/Rendererbedingungen grün: echte Höhensteuerung/Touch, Ringe entfernen, Drohnenmodus, einmalige XP, lokale WebRTC-Verbindung. Keine öffentliche Zwei-Geräte-/Handy-FPS-Zusage. https://abannews.com/neon-flug
+GEMESSEN66 Node+90 Browser-/Rendererbedingungen grün. PR3217, getesteter Head4008cc562249852a45f7c014175a3c709ab202a5, Mergee023cc01f382e62e26420c90d001a9097baf6af5. Hauptseitenlauf43929567774 erfolgreich, sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen. **14/14 öffentliche HTTPS-Prüfungen bestanden.** Belege: `neon-flug/belege-v4/{veroeffentlichung,produktion}.json`; Details `neon-flug/PRUEFUNG-v4.json` und `WEITERARBEIT.md`.
 
-Belege: `spiele-dev/neon-flug/belege-v4/{veroeffentlichung,produktion}.json`; Detailprüfung `PRUEFUNG-v4.json` und `WEITERARBEIT.md` im selben Spieleordner.
+## Lebenspfad-Figur – live
 
-## Lebenspfad-Figur: abschließende Prüfung
+https://abannews.com/lebenspfad
 
-PR3218, Branch `codex/lebenspfad-figur-neu`, Worktree `/workspace/aban-lebenspfad-figur`. Verbindlicher Stil umgesetzt: **kleine niedliche Figur, großer Kopf, kompakter Körper, verspielt**. Eigenes natives Geometriemodul; Elternreview von Portrait, Profil, allen25 Varianten, vier Altersstufen und Familie abgeschlossen. Keine zusätzlichen Texturen oder GLB-Downloads für native Figuren. Default32 statt60 Zeichenaufrufe; Dreiecke13.380 statt10.316, keine FPS-Zusage.
+Verbindlicher Stil umgesetzt: kleine niedliche Figur, großer Kopf, kompakter Körper, verspielt. Eigenes natives Geometriemodul, passende Familie, Kleidung/Haare/Accessoires, vier Altersstufen und bestehende gespeicherte Auswahl. Keine zusätzlichen Downloads für native Figuren. Neun Spezialmodelle bleiben erhalten.
 
-GEMESSEN71 Browserbedingungen grün:25 Varianten jeweils Desktop/Mobil, Alters-/Bodenkontakt, Rig/Gang/Blinzeln, Familie, gespeicherte Wahl nach Reload und deterministische Koop-Looks. Streifen-NaN reproduziert und korrigiert; Neun echte Spezial-GLB-Vorschauen, fünf Layoutgrößen/sieben Stand- und Emotefixtures sowie Replay bestanden:26 Kontrollpunkte, Endzustand und31 RNG-Aufrufe identisch zur Atmosphäreversion. Veröffentlichung folgt. Kanonisch `spiele-dev/lebenspfad/FIGUR-NEU.md`. Bereits eingebundene Patchdatei nicht erneut anwenden. Noch keinen Live-Abschluss der Figur behaupten.
+GEMESSEN71 Browserbedingungen,9 GLB-Vorschauen,5 Layoutgrößen/7 Stand- und Emotefixtures grün. Replay26 Kontrollpunkte, Endzustand und31 RNG-Aufrufe identisch. Portrait/Profil,25 Varianten, Alter, Familie und Spielkamera angesehen. Default32 statt60 Zeichenaufrufe;13.380 statt10.316 Dreiecke. Keine FPS-Zusage.
 
-## Abschluss und Memory
+PR3218, getesteter Heade8eea2ece1ba8a8592e1c38020abc0e832bb45e2, Mergee93f2930eb065583feb670bf1112d848befb4055. Hauptseitenlauf43932279011 erfolgreich, sechs relevante CI-Prüfungen grün, vier Einrichtungsschritte übersprungen. **11/11 öffentliche HTTPS-Prüfungen bestanden.** Dauerhafter Releasebericht samt Rohabgleich: `lebenspfad/belege-figur-neu/VEROEFFENTLICHUNG.md`. Implementierung/Tests/Grenzen: `lebenspfad/FIGUR-NEU.md`; Freeze in `FREEZE-FIGUR.sha256`.
 
-Keine weiteren unabhängigen Erweiterungen. Sechs relevante echte Headprüfungen abwarten (check2×, Brand-Voice2×, Cloudflare-Pages1×, Pre-deploy1×), exakten Head mergen, Hauptseiten-Deploy bestätigen. Vier Einrichtungs-/Secret-Schritte müssen übersprungen bleiben. Öffentlicher Prüfer `spiele-dev/release-qa/verify-game-release.py` nutzt echten Seitenbau, Byte-/Headerabgleich und normales TLS. Für Neon14, für die Figur samt vorhandenen Atmosphärenassets11 Anfragen. Keine TLS-Ausnahme. Gesamt-CI lokal durch read-only HOME blockiert, echte GitHub-Prüfungen getrennt.
+## Bereits vorher live
 
-Nach erfolgreicher Veröffentlichung beide Releasebelege in Memory/Claude-Übergabe ergänzen und dem Besitzer den gemeinsamen Übergabelink geben.
+- Mix Arena: PR3213, Merge78f14f5fb, Lauf43924427755,42/42 HTTPS-Prüfungen. https://abannews.com/minispiele/
+- Lebenspfad-Atmosphäre/eigene Blender-Objekte: PR3214, Mergee6cb01125, Lauf43925206449,9/9 HTTPS-Prüfungen. Higgsfield-Anschluss war nicht verfügbar; keine Higgsfield-Ausführung behaupten.
+
+## Prüfgrenzen und Übergabe
+
+Öffentliche Prüfung: tatsächlicher Seitenbau, Skripte/Styles/Sicherheitsheader und bytegleiche Assets, normales TLS ohne Ausnahme. Neon-WebRTC lokal zwischen zwei Fenstern; Lebenspfad-Looks/Replay mit Fixtures. Kein neuer Internet-/NAT-/physischer Handy-FPS-Nachweis. Quota-XP bei Neon verbleiben nur in der Sitzung. Lokale Gesamt-CI startet wegen read-only HOME nicht; echte GitHub-CI grün. Lebenspfad-HTML-Linter unverändert5 alte Fehler/37 Warnungen.
+
+Alles versioniert gesichert; keine Agenten mehr aktiv. Traumhaus bleibt beim anderen Bearbeiter, dessen PR3216 unverändert integriert. Keine Shop-/Social-/Konto-/Secret-Aktion. Claude: zuerst diesen Stand lesen, keine alten Zwischenpatches erneut anwenden. Empfang durch Claude noch nicht bestätigt.
