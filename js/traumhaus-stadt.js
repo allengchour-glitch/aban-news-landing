@@ -66,7 +66,7 @@ function cameraClip(buildings,a,b){
 }
 function createWorld(T,scene,solid){
   var P=plan(),root=new T.Group(),groups=[],materials=[],box=new T.BoxGeometry(1,1,1),plane=new T.PlaneGeometry(1,1),tmp=new T.Object3D(),pal=[0xe4d7bd,0xb5cec2,0xc3d2dd,0xd5b09d,0xd7d3c7,0x99b6bd];root.name='Oststadt, Nordstadt und Motorsportpark';scene.add(root);
-  var bodyMat=new T.MeshLambertMaterial({color:0xffffff}),glassMat=new T.MeshLambertMaterial({color:0xffffff,emissive:0xf6cb7a,emissiveIntensity:0}),roofMat=new T.MeshLambertMaterial({color:0xffffff}),roadMat=new T.MeshLambertMaterial({color:0x303b43}),paveMat=new T.MeshLambertMaterial({color:0xcdd0c2}),lineMat=new T.MeshBasicMaterial({color:0xf7f0dc}),redMat=new T.MeshLambertMaterial({color:0xad5946}),parkMat=new T.MeshLambertMaterial({color:0x6d9567});materials.push(glassMat);
+  var bodyMat=new T.MeshLambertMaterial({color:0xffffff}),glassMat=new T.MeshLambertMaterial({color:0xffffff,emissive:0xf6cb7a,emissiveIntensity:0}),roofMat=new T.MeshLambertMaterial({color:0xffffff}),roadMat=new T.MeshLambertMaterial({color:0x121216}),paveMat=new T.MeshLambertMaterial({color:0xcdd0c2}),lineMat=new T.MeshBasicMaterial({color:0xf7f0dc}),redMat=new T.MeshLambertMaterial({color:0xad5946}),parkMat=new T.MeshLambertMaterial({color:0x6d9567});materials.push(glassMat);
   var chunks={};function add(kind,x,y,z,w,h,d,rot,color){var k=Math.floor(x/80)+'_'+Math.floor(z/80),b=chunks[k]||(chunks[k]={x:Math.floor(x/80)*80+40,z:Math.floor(z/80)*80+40,body:[],glass:[],roof:[]});b[kind].push({x:x,y:y,z:z,w:w,h:h,d:d,rot:rot||0,color:color||0xffffff});}
   P.buildings.forEach(function(b){
     var style=b.seed%3,base=pal[b.seed%pal.length],trim=[0x477f7a,0x526b7e,0xa56e50][style],glass=[0x355767,0x4b7280,0x40685f][style],stone=[0xece3cf,0xd9e0d8,0xe5d0b4][style];
@@ -110,16 +110,21 @@ function createWorld(T,scene,solid){
   /* Markierungen sind flache Instanzen: zwei Dreiecke statt zwoelf je Strich. */
   var markPlane=new T.PlaneGeometry(1,1),crossings=[];
   function slab(x,z,w,d,mat,y){var flat=mat===lineMat,m=new T.Mesh(flat?markPlane:box,mat);m.position.set(x,(y===undefined?.02:y)+(flat?.03:0),z);if(flat){m.rotation.order='YXZ';m.rotation.x=-Math.PI/2;m.scale.set(w,d,1);}else m.scale.set(w,.06,d);m.updateMatrix();m.matrixAutoUpdate=false;root.add(m);return m;}
-  P.roads.forEach(function(h){if(h.a[1]!==h.b[1]||h.w<10)return;P.roads.forEach(function(v){if(v.a[0]!==v.b[0]||v.w<10)return;var x=v.a[0],z=h.a[1];if(x<Math.min(h.a[0],h.b[0])||x>Math.max(h.a[0],h.b[0])||z<Math.min(v.a[1],v.b[1])||z>Math.max(v.a[1],v.b[1]))return;
+  P.roads.forEach(function(h){if(h.a[1]!==h.b[1])return;P.roads.forEach(function(v){if(v.a[0]!==v.b[0])return;var x=v.a[0],z=h.a[1];if(x<Math.min(h.a[0],h.b[0])||x>Math.max(h.a[0],h.b[0])||z<Math.min(v.a[1],v.b[1])||z>Math.max(v.a[1],v.b[1]))return;
     if(crossings.some(function(c){return c.x===x&&c.z===z;}))return;
     crossings.push({x:x,z:z,h:h,v:v});
   });});
-  P.roads.forEach(function(r){var dx=r.b[0]-r.a[0],dz=r.b[1]-r.a[1],len=Math.hypot(dx,dz),x=(r.a[0]+r.b[0])/2,z=(r.a[1]+r.b[1])/2,rot=-Math.atan2(dz,dx);var a=slab(x,z,len+r.w,r.w+7,paveMat,.015);a.rotation.y=rot;a.updateMatrix();var b=slab(x,z,len+r.w,r.w,roadMat,.055);b.rotation.y=rot;b.updateMatrix();for(var t=5;t<len-5;t+=12){var q=t/len,mx=r.a[0]+dx*q,mz=r.a[1]+dz*q;if(crossings.some(function(c){return Math.hypot(c.x-mx,c.z-mz)<15;}))continue;var m=slab(mx,mz,3.5,.12,lineMat,.097);m.rotation.y=rot;m.updateMatrix();}});
+  P.roads.forEach(function(r){var dx=r.b[0]-r.a[0],dz=r.b[1]-r.a[1],len=Math.hypot(dx,dz),x=(r.a[0]+r.b[0])/2,z=(r.a[1]+r.b[1])/2,rot=-Math.atan2(dz,dx);var a=slab(x,z,len+r.w,r.w+7,paveMat,.015);a.rotation.y=rot;a.updateMatrix();var b=slab(x,z,len+r.w,r.w,roadMat,.055);b.rotation.y=rot;b.updateMatrix();for(var t=5;t<len-5;t+=12){var q=t/len,mx=r.a[0]+dx*q,mz=r.a[1]+dz*q;
+    /* Ganze Striche ausserhalb von Muendung und Zebra: halbe Querstrasse + 5 m Ueberweg + halber Strich + Reserve. */
+    if(crossings.some(function(c){if(r!==c.h&&r!==c.v)return false;var quer=r===c.h?c.v:c.h;return Math.hypot(c.x-mx,c.z-mz)<quer.w/2+5+1.75+.35;}))continue;
+    var m=slab(mx,mz,3.5,.12,lineMat,.097);m.rotation.y=rot;m.updateMatrix();}});
   crossings.forEach(function(c){
     [[1,0,c.h,c.v.w],[-1,0,c.h,c.v.w],[0,1,c.v,c.h.w],[0,-1,c.v,c.h.w]].forEach(function(a){
       var ux=a[0],uz=a[1],r=a[2],reach=ux?Math.max((r.a[0]-c.x)*ux,(r.b[0]-c.x)*ux):Math.max((r.a[1]-c.z)*uz,(r.b[1]-c.z)*uz);
       if(reach<16)return;var offset=a[3]/2+3.4;
-      for(var k=-3;k<=3;k++){var x=c.x+ux*offset-uz*k*1.4,z=c.z+uz*offset+ux*k*1.4;slab(x,z,ux?3.2:.65,ux?.65:3.2,lineMat,.1);}
+      /* Auf 7-m-Zufahrten passen fuenf statt sieben Streifen; mindestens 35 cm bis zum Asphaltrand. */
+      var n=Math.min(7,Math.max(1,Math.floor((r.w-.65-2*.35)/1.4)+1));
+      for(var k=0;k<n;k++){var off=(k-(n-1)/2)*1.4,x=c.x+ux*offset-uz*off,z=c.z+uz*offset+ux*off;slab(x,z,ux?3.2:.65,ux?.65:3.2,lineMat,.1);}
     });
   });
   slab(680,120,57,57,paveMat,.04);slab(680,120,28,28,parkMat,.09);
@@ -135,9 +140,21 @@ function createWorld(T,scene,solid){
     slab(p[0]+8.5,p[1],.4,10,i===1?redMat:lineMat,.12);
   });
   var track=path(P.track,true),pos=[],uv=[],idx=[];
-  for(var i=0;i<track.points.length;i++){var a=track.points[Math.max(0,i-1)],b=track.points[Math.min(track.points.length-1,i+1)],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz)||1;[-1,1].forEach(function(s){pos.push(track.points[i][0]-dz/l*7*s,.095,track.points[i][1]+dx/l*7*s);uv.push(track.lengths[i]/12,(s+1)/2);});if(i){var k=i*2;idx.push(k-2,k-1,k,k-1,k+1,k);}}
-  var tg=new T.BufferGeometry();tg.setAttribute('position',new T.Float32BufferAttribute(pos,3));tg.setAttribute('uv',new T.Float32BufferAttribute(uv,2));tg.setIndex(idx);tg.computeVertexNormals();var tm=new T.Mesh(tg,new T.MeshLambertMaterial({color:0x38434a,side:T.DoubleSide}));root.add(tm);
-  for(var i=0;i<track.points.length-1;i++){var a=track.points[i],b=track.points[i+1],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz);[-1,1].forEach(function(side){var m=slab((a[0]+b[0])/2-dz/l*7.5*side,(a[1]+b[1])/2+dx/l*7.5*side,l+1,1,i%2?redMat:lineMat,.11);m.rotation.y=-Math.atan2(dz,dx);m.updateMatrix();});}
+  var trackN=track.points.length-1;
+  for(var i=0;i<track.points.length;i++){var j=i%trackN,a=track.points[(j+trackN-1)%trackN],b=track.points[(j+1)%trackN],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz)||1;[-1,1].forEach(function(s){pos.push(track.points[i][0]-dz/l*7*s,.095,track.points[i][1]+dx/l*7*s);uv.push(track.lengths[i]/12,(s+1)/2);});if(i){var k=i*2;idx.push(k-2,k-1,k,k-1,k+1,k);}}
+  var tg=new T.BufferGeometry();tg.setAttribute('position',new T.Float32BufferAttribute(pos,3));tg.setAttribute('uv',new T.Float32BufferAttribute(uv,2));tg.setIndex(idx);tg.computeVertexNormals();var tm=new T.Mesh(tg,new T.MeshLambertMaterial({color:0x121216,side:T.DoubleSide}));root.add(tm);
+  /* Randsteine an echten Zufahrten aufschneiden, einschliesslich ihrer halben Breite. */
+  function trackRand(a,b,side,mat){
+    var dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz),ux=dx/l,uz=dz/l;
+    var x=a[0]-uz*7.5*side-ux*.5,z=a[1]+ux*7.5*side-uz*.5,len=l+1,cuts=[];
+    P.roads.forEach(function(r){var pad=r.w/2+.65,lo=[Math.min(r.a[0],r.b[0])-pad,Math.min(r.a[1],r.b[1])-pad],hi=[Math.max(r.a[0],r.b[0])+pad,Math.max(r.a[1],r.b[1])+pad],p=[x,z],d=[ux*len,uz*len],t0=0,t1=1;
+      for(var k=0;k<2;k++){if(Math.abs(d[k])<1e-8){if(p[k]<lo[k]||p[k]>hi[k])return;}else{var u=(lo[k]-p[k])/d[k],v=(hi[k]-p[k])/d[k];if(u>v){var tmp=u;u=v;v=tmp;}t0=Math.max(t0,u);t1=Math.min(t1,v);if(t0>=t1)return;}}
+      cuts.push([t0,t1]);
+    });
+    function span(t0,t1){var length=(t1-t0)*len;if(length<.12)return;var t=(t0+t1)/2,m=slab(x+ux*len*t,z+uz*len*t,length,1,mat,.11);m.rotation.y=-Math.atan2(dz,dx);m.updateMatrix();}
+    cuts.sort(function(a,b){return a[0]-b[0];});var t=0;cuts.forEach(function(c){if(c[0]>t)span(t,c[0]);t=Math.max(t,c[1]);});if(t<1)span(t,1);
+  }
+  for(var i=0;i<track.points.length-1;i++){var a=track.points[i],b=track.points[i+1];[-1,1].forEach(function(side){trackRand(a,b,side,i%2?redMat:lineMat);});}
   for(var i=0;i<8;i++)for(var j=0;j<2;j++)slab(754+i,340-5+j*5,1,5,(i+j)%2?lineMat:roadMat,.13);
   slab(770,320,34,22,paveMat,.08);for(var i=0;i<3;i++)slab(685,503+i*2,58,2,paveMat,.7+i*.6);
   /* Markierungen, Gehwege und Randsteine gemeinsam zeichnen statt je Strich. */
