@@ -705,12 +705,14 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <link rel="stylesheet" href="/js/traumhaus-stadt.css?v=3">
 <script src="/js/traumhaus-stadt.js?v=4"></script>
 <script src="/js/traumhaus-stadtbild.js?v=1"></script>
+<script src="/js/traumhaus-sicht.js?v=1"></script>
 <link rel="stylesheet" href="/js/traumhaus-missionen.css?v=1">
 <script src="/js/traumhaus-missionen.js?v=1"></script>
 <script>
 (function(){
 "use strict";
 var THREE=window.THREE,W=innerWidth,H=innerHeight;
+var stadtSicht=window.TraumSicht?TraumSicht.create(THREE):null;
 var IS_TOUCH=navigator.maxTouchPoints>0;
 var renderer=new THREE.WebGLRenderer({antialias:true});
 /* 📱 Handy: Pixelratio auf 1.5 deckeln. Auf einem 3x-Display rendert die Szene sonst
@@ -3467,7 +3469,7 @@ for(var st5=0;st5<420;st5++){var sa5=Math.random()*6.283,sr5=150+Math.random()*1
   sternePos[st5*3]=Math.cos(sa5)*sr5;sternePos[st5*3+1]=60+Math.random()*110;sternePos[st5*3+2]=Math.sin(sa5)*sr5;}
 sterneGeo.setAttribute("position",new THREE.BufferAttribute(sternePos,3));
 var sterne=new THREE.Points(sterneGeo,new THREE.PointsMaterial({color:0xfff8e0,size:0.32,transparent:true,opacity:0,sizeAttenuation:true}));
-sterne.frustumCulled=false;scene.add(sterne);window.sterne=sterne;
+sterne.frustumCulled=false;sterne._bewegt=true;scene.add(sterne);window.sterne=sterne;
 var partN=700,partGeo=new THREE.BufferGeometry(),partPos=new Float32Array(partN*3),partDrift=new Float32Array(partN);
 for(var pi=0;pi<partN;pi++){partPos[pi*3]=(Math.random()-0.5)*56;partPos[pi*3+1]=Math.random()*17;partPos[pi*3+2]=(Math.random()-0.5)*56;partDrift[pi]=Math.random()*6.283;}
 partGeo.setAttribute("position",new THREE.BufferAttribute(partPos,3));
@@ -4469,7 +4471,7 @@ function _stadtKontaktAufbau(){
     a.forEach(function(p,i){dummy.position.set(p[0]-cx,p[4],p[1]-cz);dummy.rotation.set(-Math.PI/2,0,0);dummy.scale.set(p[2],p[3],1);dummy.updateMatrix();m.setMatrixAt(i,dummy.matrix);
       radius=Math.max(radius,Math.hypot(p[0]-cx,p[1]-cz)+Math.hypot(p[2],p[3])/2);});
     m.position.set(cx,0,cz);m.instanceMatrix.needsUpdate=true;m.frustumCulled=false;m.userData.nieAusblenden=true;m.name="Gebäudekontakt";
-    scene.add(m);_stadtKontaktBatches.push(m);
+    scene.add(m);_stadtKontaktBatches.push(m);if(stadtSicht)stadtSicht.add(m);
     (window._instGruppen||(window._instGruppen=[])).push({m:m,x:cx,z:cz,r:radius});
   });
   window._stadtKontaktZahl=zahl;
@@ -6120,10 +6122,10 @@ setTimeout(function baueVerkehr(){
     var dom=new THREE.Mesh(new THREE.SphereGeometry(520,24,16),
       new THREE.MeshBasicMaterial({map:gt,color:0xb4dcf2,side:THREE.BackSide,
                                    fog:false,depthWrite:false}));
-    dom.renderOrder=-10;dom.frustumCulled=false;dom.userData.nieAusblenden=1;scene.add(dom);
+    dom.renderOrder=-10;dom.frustumCulled=false;dom.userData.nieAusblenden=1;dom._bewegt=true;scene.add(dom);
     window._skyDome=dom;
 
-    var grp=new THREE.Group();grp.userData.nieAusblenden=1;scene.add(grp);
+    var grp=new THREE.Group();grp.userData.nieAusblenden=1;grp._bewegt=true;scene.add(grp);
     var puffG=new THREE.SphereGeometry(1,7,5);
     /* ⚠️ 0,9 DECKKRAFT liess die Wolken als harte weisse Klumpen stehen; 0,76
        gibt ihnen Luft, ohne sie verschwinden zu lassen. */
@@ -9068,6 +9070,7 @@ setTimeout(function baueGebaeude(){
          fuer diese zwei Objekte ab — bei 2 Zeichenaufrufen lohnt der Aufwand nicht. */
       st.frustumCulled=false; kr.frustumCulled=false;
       scene.add(st); scene.add(kr);
+      if(stadtSicht){stadtSicht.add(st);stadtSicht.add(kr);}
     },1400);
     /* Park-Ausstattung entlang der Hauptachse: Wegweiser, Plan, Beete, Laternen */
     /* ═══ 🪑 STRASSENMOEBEL FUER DIE KAHLEN VIERTEL ══════════════════════════════
@@ -9322,7 +9325,7 @@ setTimeout(function baueGebaeude(){
             im.instanceMatrix.needsUpdate=true;
             im.castShadow=true;im.receiveShadow=true;
             im.userData.nieAusblenden=true;   /* eine Gruppe — nie als Ganzes ausblenden */
-            scene.add(im);});
+            scene.add(im);if(stadtSicht)stadtSicht.add(im);});
           scene.remove(w);
           var ix=(window._gebaeude||[]).indexOf(w);if(ix>=0)window._gebaeude.splice(ix,1);
           window._heckeZahl=heckenStellen.length;window._heckeTeile=teile.length;
@@ -16758,10 +16761,40 @@ function updSim(s,si,dt,now){
 // ===================== Kamera (Orbit) =====================
 var camA=0.8,camB=0.78,camR=44,camRT=44,camTx=0,camTz=0,followSim=null;var camAT=null; // camRT = Ziel-Zoom (weiches Easing)
 var egoMode=false; /* 👁️ User: „Egoperspektive … man kann immer wechseln wie GTA" */
-var camKick=0;
+var camKick=0,_camUhr=0;
+var _camStadt={zusatz:0,abstand:1,frei:0,ziel:0,pruefen:0,x:null,z:null,a:0,b:0,r:0};
+function camStadtReset(){_camStadt.zusatz=0;_camStadt.abstand=1;_camStadt.frei=0;_camStadt.ziel=0;_camStadt.pruefen=0;_camStadt.x=null;}
+/* Der Benutzerwinkel bleibt erhalten. Zwischen Hochhaeusern sucht die Folgekamera
+   einen etwas hoeheren freien Blick, bevor sie nahe an die Figur heranrueckt. */
+function camStadtWinkel(hoehe,dt,zeit){
+  var k=_camStadt,aktiv=STADT&&!buildMode&&!egoMode&&!_fahrt&&!(window._coaster&&window._coaster.mit)&&(followSim||fahren);
+  if(!aktiv){camStadtReset();return 0;}
+  if(k.x===null||Math.hypot(camTx-k.x,camTz-k.z)>12)camStadtReset();
+  k.x=camTx;k.z=camTz;
+  var hand=zeit-(window._camHandT||-10000)<900;
+  if(hand){k.ziel=0;k.frei=0;k.pruefen=0;}
+  else if(zeit>=k.pruefen||Math.abs(camA-k.a)>.08||Math.abs(camB-k.b)>.04||Math.abs(camR-k.r)>2){
+    k.pruefen=zeit+80;k.a=camA;k.b=camB;k.r=camR;
+    var dx=0,dz=0;
+    if(fahren){var v=Math.max(-4,Math.min(4,carSpeed*.8));dx=Math.sin(carRot)*v;dz=Math.cos(carRot)*v;}
+    else if(followSim&&followSim.state==='steer'){dx=Math.sin(followSim.rot||0)*4;dz=Math.cos(followSim.rot||0)*4;}
+    function sicht(x,z,b){return STADT.cameraClip({x:x,y:.6+hoehe,z:z},{x:x+Math.sin(camA)*Math.cos(b)*camR,y:Math.sin(b)*camR+2+hoehe,z:z+Math.cos(camA)*Math.cos(b)*camR});}
+    function suche(x,z){var basis=sicht(x,z,camB),best=basis,plus=0;
+      if(basis>.995)return 0;
+      for(var d=.04;d<=.3201&&camB+d<=1.2;d+=.04){var f=sicht(x,z,camB+d);if(f>best+.01){best=f;plus=d;}if(f>.995)break;}
+      return best>basis+.10?plus:0;}
+    k.ziel=Math.max(suche(camTx,camTz),(dx||dz)?suche(camTx+dx,camTz+dz):0);
+  }
+  if(k.ziel>.001)k.frei=0;else k.frei+=dt;
+  var ziel=k.ziel;if(!hand&&ziel<k.zusatz&&k.frei<.65)ziel=k.zusatz;
+  k.zusatz+=Math.max(-dt*.35,Math.min(dt*.9,ziel-k.zusatz));return k.zusatz;
+}
 function updCam(){
-  /* Kamera-Nicken: bei Muenze, Erfolg, Aufprall setzt jemand camKick; es klingt in ~10 Bildern ab. */
-  if(camKick>0.0005){camB+=camKick;camKick*=0.86;}else camKick=0;
+  var _zeit=performance.now(),_dt=_camUhr?Math.max(0,Math.min(.1,(_zeit-_camUhr)/1000)):0;_camUhr=_zeit;
+  /* Das Nicken ist ein voruebergehender Zusatz, keine dauerhafte Pitch-Aenderung.
+     Mehrere Kamera-Aufrufe pro Bild verbrauchen zusammen nur die verstrichene Zeit. */
+  if(camKick>.0005)camKick*=Math.exp(-9*_dt);else camKick=0;
+  var _nick=camKick;
   /* 🌫️ Der Nebel stand fest auf 130…340 m. Beim Herauszoomen (der Zoom geht bis
      weit ueber 300) verschwand damit die ganze Stadt in blauer Suppe — genau in
      dem Moment, in dem man die Karte ueberblicken will. Er haengt jetzt am Zoom:
@@ -16782,7 +16815,7 @@ function updCam(){
       _ex=_me.x;_ez=_me.z;
       _ey=1.42+Math.max(window._camHebung||0, _me._gelH||0);
       if(_me.mesh&&_me.mesh.visible)_me.mesh.visible=false; /* eigenen Körper ausblenden (sonst Blick in den Kopf) */}
-    var _pit=(0.8-camB)*0.9;
+    camStadtReset();var _pit=(0.8-camB-_nick)*0.9;
     if(camera.near!==0.1){camera.near=0.1;camera.updateProjectionMatrix();}   /* Ich-Sicht: Boden und Waende sind nah */
     camera.position.set(_ex,_ey,_ez);
     camera.lookAt(_ex+Math.sin(_yaw)*Math.cos(_pit),_ey+Math.sin(_pit),_ez+Math.cos(_yaw)*Math.cos(_pit));
@@ -16791,9 +16824,16 @@ function updCam(){
      Boden, waehrend die Figur den Berg hochlief — man sah nur noch Hang. */
   var _hb=Math.max(window._camHebung||0,
                    (followSim&&followSim._gelH)||(sims[meinSi()]&&sims[meinSi()]._gelH)||0);
-  camera.position.set(camTx+Math.sin(camA)*Math.cos(camB)*camR,Math.sin(camB)*camR+2+_hb,camTz+Math.cos(camA)*Math.cos(camB)*camR);
+  var _winkel=camB+camStadtWinkel(_hb,_dt,_zeit)+_nick;
+  camera.position.set(camTx+Math.sin(camA)*Math.cos(_winkel)*camR,Math.sin(_winkel)*camR+2+_hb,camTz+Math.cos(camA)*Math.cos(_winkel)*camR);
   var _sicht=1;
-  if(STADT){var ziel={x:camTx,y:.6+_hb,z:camTz};_sicht=STADT.cameraClip(ziel,camera.position);if(_sicht<1){camera.position.x=ziel.x+(camera.position.x-ziel.x)*_sicht;camera.position.y=ziel.y+(camera.position.y-ziel.y)*_sicht;camera.position.z=ziel.z+(camera.position.z-ziel.z)*_sicht;}}
+  if(STADT){var ziel={x:camTx,y:.6+_hb,z:camTz},sicher=STADT.cameraClip(ziel,camera.position);
+    /* Sofort vor einer Wand stoppen, den freien Abstand danach ruhig zurueckgeben.
+       Erst den geglaetteten Winkel pruefen: ein freier Zielwinkel allein reicht nicht. */
+    if(sicher<_camStadt.abstand)_camStadt.abstand=sicher;
+    else _camStadt.abstand=Math.min(sicher,_camStadt.abstand+(1-_camStadt.abstand)*(1-Math.exp(-3*_dt)));
+    _sicht=_camStadt.abstand;
+    if(_sicht<1){camera.position.x=ziel.x+(camera.position.x-ziel.x)*_sicht;camera.position.y=ziel.y+(camera.position.y-ziel.y)*_sicht;camera.position.z=ziel.z+(camera.position.z-ziel.z)*_sicht;}}
   camera.lookAt(camTx,0.6+_hb,camTz);
   /* 📏 NEAR FOLGT DEM ZOOM (Runde 99, User: „flimmert die ganze map fast"). near stand fest auf 0,1 m — fuer die
      Ich-Sicht noetig, fuer eine Kamera 14…135 m ueber dem Boden aber ein Tiefenpuffer, der fast alles fuer die ersten
@@ -18076,7 +18116,7 @@ renderer.domElement.addEventListener("touchmove",function(e){
     if(!touchKamera&&_zug&&zugBewegt(lx,ly)){/* 🧱 Wand/Zimmer ziehen */}
     else if(!touchKamera&&paintFloorAt(lx,ly)){/* 🎨 Boden-Malen — Kamera drehen geht weiter mit 2 Fingern */}
     else{camAT=null;window._camHandT=performance.now();camA-=dx*0.006;camB=Math.max(0.25,Math.min(1.35,camB+dy*0.005));updCam();}}
-  else if(tt.length===2){var nd=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);
+  else if(tt.length===2){window._camHandT=performance.now();var nd=Math.hypot(tt[0].clientX-tt[1].clientX,tt[0].clientY-tt[1].clientY);
     camRT=Math.max(7,Math.min(ZOOM_MAX,camRT-(nd-pinchD)*0.06));pinchD=nd;
     /* 🔄 Zwei Finger DREHEN die Kamera (wie in jeder Karten-App). Bisher konnten zwei
        Finger nur zoomen — und mit Boden- oder Wandwerkzeug in der Hand frisst der eine
@@ -18356,6 +18396,7 @@ function stadtInit(){
   if(!window.Traumstadt)return;
   var V=(window._viertelSolver||{}).VIERTEL||[];if(V.length<11){setTimeout(stadtInit,400);return;}
   STADT=Traumstadt.createWorld(THREE,scene,function(x,z,w,d){addSolid(x,z,w,d,null);});
+  if(stadtSicht)STADT.groups.forEach(function(g){stadtSicht.add(g.mesh);});
   if(window._zfStatisch)window._zfStatisch(STADT.root);
   STADTLEBEN=Traumstadt.createLife(THREE,scene,function(x,z,w,d){addSolid(x,z,w,d,null);});
   WORLD_POIS.push([680,108,"🏙️","Oststadt"],[770,320,"🏎️","Motorsportpark"],[680,-68,"🏙️","Nordstadt"],[600,-120,"📦","Nordstadt Depot"],[760,-120,"🔧","Nordstadt Garage"],[680,-280,"🌳","Nordpark"]);
@@ -18411,6 +18452,7 @@ function stadtbildInit(){
     stadtbildUmfeld();var pois=WORLD_POIS.filter(function(p){return names.indexOf(p[3])!==-1;}).map(function(p){return {name:p[3],x:p[0],z:p[1]};});
     STADT.plan.courtyards.forEach(function(p,i){var E=STADT.plan.expansion;if(['depot','garage','service','nordpark'].some(function(k){return Traumstadt.dist(p,E[k])<20;}))return;pois.push({name:'Nordstadthof '+(i+1),x:p[0],z:p[1],courtyard:true});});
     STADTBILD=TraumStadtbild.create(THREE,scene,pois,stadtbildFrei);STADTBILD.placements.forEach(function(p){addSolid(p.x,p.z,p.w,p.d,null);});
+    if(stadtSicht)STADTBILD.root.traverse(function(m){if(m.isInstancedMesh)stadtSicht.add(m);});
     _gpsFrei=null;_gpsStr=null;if(window._aufwaermenBald)window._aufwaermenBald();
   },9000);
 }
@@ -18612,7 +18654,7 @@ function lebenFoto(){
   if(!lebenNah(m)){hint("Gehe zum Fotomotiv und steige aus. Dein Blick wird als Foto gespeichert.");return;}
   try{
     /* Nur beim Ausloesen lesen wir den Zeichenpuffer. Keine Kopie pro Bild. */
-    renderer.render(scene,camera);var cv=document.createElement("canvas");cv.width=320;cv.height=180;var c=cv.getContext("2d"),src=renderer.domElement,w=src.width,h=src.height,sw=Math.min(w,h*16/9),sh=sw*9/16;
+    himmelFolgen();renderer.render(scene,camera);var cv=document.createElement("canvas");cv.width=320;cv.height=180;var c=cv.getContext("2d"),src=renderer.domElement,w=src.width,h=src.height,sw=Math.min(w,h*16/9),sh=sw*9/16;
     c.drawImage(src,(w-sw)/2,(h-sh)/2,sw,sh,0,0,320,180);var bild=cv.toDataURL("image/jpeg",.65),alt=LEBEN.album[m.name];
     if(bild.length>=90000)throw new Error("Bild zu gross");LEBEN.album[m.name]={bild:bild};
     try{localStorage.setItem("th_stadtalbum_v1",JSON.stringify(LEBEN.album));}catch(e){if(alt)LEBEN.album[m.name]=alt;else delete LEBEN.album[m.name];hint("Dein Geraetespeicher ist voll. Das Foto konnte nicht gespeichert werden.");return;}
@@ -20171,6 +20213,12 @@ function stampVilla(){
   stats.moebelGekauft=(stats.moebelGekauft||0)+VILLA.furn.length;
   updHUD();beep(660,.1,"triangle",.06);setTimeout(function(){beep(880,.14,"triangle",.06);},140);
   hint("Villa steht. Sieben Zimmer, möbliert. Geh rein.");}
+/* Der Himmel begleitet die Kamera auch ausserhalb der urspruenglichen 520-m-Welt. */
+function himmelFolgen(){
+  if(window._skyDome){window._skyDome.position.copy(camera.position);window._skyDome.updateMatrix();}
+  if(window._wolkenGrp){window._wolkenGrp.position.x=camera.position.x;window._wolkenGrp.position.z=camera.position.z;window._wolkenGrp.updateMatrix();}
+  if(window.sterne){window.sterne.position.copy(camera.position);window.sterne.updateMatrix();}
+}
 function loop(now){
   requestAnimationFrame(loop);
   var _roh=(now-last)/1000;                 /* echte Bildzeit — dt ist gedeckelt */
@@ -20335,7 +20383,7 @@ function loop(now){
     if(window._wolkenMat){
       window._wolkenMat.color.copy(skyC).lerp(new THREE.Color(0xffffff),0.55+dayA*0.35);
       window._wolkenMat.opacity=0.55+dayA*0.38;}
-    if(window._wolkenGrp)window._wolkenGrp.rotation.y+=0.000045;
+    if(window._wolkenGrp)window._wolkenGrp.rotation.y+=dt*.0027;
     furn.forEach(function(f){if(f.plight)f.plight.intensity=dayA<0.3?(f.def&&f.def.light===2?2.2:1.1):0;}); /* 💡 Kandelaber heller als Garten-Laterne */
     var nacht9=dayA<0.3?1:0;
     if(window._dorfNacht!==nacht9){window._dorfNacht=nacht9;
@@ -20563,7 +20611,10 @@ function loop(now){
      behaelt ihr letztes Bild), er ist nur nicht mehr fluessig. Sobald `running`
      steht, wird wieder jedes Bild gezeichnet. */
   gruppenSicht();
-  if(running||(++_menuTakt%5===0)){renderer.render(scene,camera);
+  if(running||(++_menuTakt%5===0)){himmelFolgen();
+    /* Nur das Hauptbild ohne Schattenkarte: ausserhalb liegende Schattenwerfer bleiben im Vollprofil erhalten. */
+    try{if(stadtSicht&&!renderer.shadowMap.enabled)stadtSicht.begin(camera);renderer.render(scene,camera);}
+    finally{if(stadtSicht)stadtSicht.end();}
     if(_fpsEl){_fpsAufr=renderer.info.render.calls;_fpsDr=renderer.info.render.triangles;}}
 }
 var _menuTakt=0;
