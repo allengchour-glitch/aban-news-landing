@@ -1,3 +1,9 @@
+# R267 – Geprüfter Entwurf bereit; Live-Zugang bleibt offen – 16.11.2026
+
+Shop, Rollen, Pending-Zustand und 16 finale Dateien frisch bestätigt. Der R266-Entwurf ist vollständig gespeichert und unverändert; MAIN bleibt unverändert. Die Veröffentlichung ist weiterhin durch die bekannte Connectorgrenze blockiert. Nutzerfreigabe liegt vor. [Abschluss und nächster Schritt](R267-REPORT-20261116.md) · [Beleg](R267-PROOF-20261116.json). Kein Live-Erfolg oder Claude-Empfang behauptet.
+
+---
+
 # R266 – Kategorieseiten und Hinweise im geprüften Entwurf – 16.11.2026
 
 Der unveröffentlichte Shopify-Entwurf 214169584007 enthält jetzt vollständige Bildkacheln mit weissen Kategorietiteln, bestehende Unterkategorien mit Elternnavigation sowie fünf Hinweise in 14-px-Schrift mit neutralen SVG-Icons. Drei Theme-Commits wurden gespeichert und zurückgelesen; die begrenzte echte Browserprüfung ist bestanden. MAIN bleibt unverändert. Die Veröffentlichung ist weiterhin durch publish_refused blockiert; der gespeicherte Entwurf ist kein Live-Nachweis. [Bericht](R266-REPORT-20261116.md) · [Belege](R266-PROOF-20261116.json). 24 Aufgaben und Historien erhalten; Claude-Empfang unbekannt.

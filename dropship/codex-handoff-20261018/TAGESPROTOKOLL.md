@@ -3236,3 +3236,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R266-REPORT-20261116.md) · [Belege](R266-PROOF-20261116.json).
 
 [LUXESTYLE_R266_20261116]
+
+
+### R267 – Abschlussprüfung des Designblocks
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Design-Abschluss | Shopidentität, Theme-Rollen, Pending-Dateien und 16 finale R266-Dateien frisch geprüft. | 16/16 native Metadaten unverändert; Entwurf UNPUBLISHED, keine ausstehenden Dateien, MAIN unverändert. |
+| Veröffentlichung | Bekannte Connectorgrenze und verfügbare Zugänge geprüft; konkreten Admin-Link bereitgestellt. | Kein neuer Zulässigkeitsbeleg, kein blinder Wiederholungsversuch. Live-Wechsel und Live-QA bleiben offen; Nutzerfreigabe besteht. |
+| Projektgedächtnis | R267 als belegte Prüfung zur bestehenden Historie ergänzt. | Kein neuer Design-Umbau und keine Vollständigkeitsquote für den Shop; Claude-Empfang unbekannt. |
+
+[Abschlussbericht](R267-REPORT-20261116.md) · [Beleg](R267-PROOF-20261116.json).
+
+[LUXESTYLE_R267_20261116]

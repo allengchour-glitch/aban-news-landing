@@ -1,0 +1,121 @@
+{
+  "run": "R267",
+  "checkedAtUTC": "2026-11-16T19:37:02Z",
+  "baseRevision": 266,
+  "baseCommit": "bbc884e844b9cc5f8bb7538a2b1be606a3eaf890",
+  "reason": "Inhaberauftrag: 95% mach 100; Abschluss des bestehenden Designblocks.",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    },
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich"
+  },
+  "theme": {
+    "id": "gid://shopify/OnlineStoreTheme/214169584007",
+    "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+    "role": "UNPUBLISHED",
+    "updatedAt": "2026-11-16T18:49:05Z",
+    "processing": false,
+    "processingFailed": false
+  },
+  "main": {
+    "id": "gid://shopify/OnlineStoreTheme/213991391623",
+    "name": "LuxeStyle – SEO 14.11.2026",
+    "role": "MAIN",
+    "updatedAt": "2026-11-16T03:55:52Z",
+    "processing": false,
+    "processingFailed": false
+  },
+  "pending": [],
+  "finalFileChecks": [
+    {
+      "filename": "DESIGN.md",
+      "matches": true
+    },
+    {
+      "filename": "templates/collection.lxwelten.json",
+      "matches": true
+    },
+    {
+      "filename": "templates/collection.json",
+      "matches": true
+    },
+    {
+      "filename": "snippets/lx-kopf-pfad.liquid",
+      "matches": true
+    },
+    {
+      "filename": "snippets/lx-collection-welten-card.liquid",
+      "matches": true
+    },
+    {
+      "filename": "sections/lx-collection-welten.liquid",
+      "matches": true
+    },
+    {
+      "filename": "sections/lx-collection-details.liquid",
+      "matches": true
+    },
+    {
+      "filename": "sections/header-group.json",
+      "matches": true
+    },
+    {
+      "filename": "sections/header-announcements.liquid",
+      "matches": true
+    },
+    {
+      "filename": "locales/fr.schema.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/fr.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/en.default.schema.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/en.default.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/de.schema.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/de.json",
+      "matches": true
+    },
+    {
+      "filename": "blocks/_announcement.liquid",
+      "matches": true
+    }
+  ],
+  "publication": {
+    "state": "UNPUBLISHED",
+    "newPublishAttempt": false,
+    "existingUserPermission": true,
+    "knownConnectorRefusal": "R262: publish_refused / Only agent-created themes can be published here",
+    "newEligibilityEvidence": false,
+    "connectedDocumentSessions": 0,
+    "localBrowserControlToolsAvailable": false,
+    "noSafeguardBypass": true
+  },
+  "scope": "Nur frische Identitäts-, Rollen-, Pending- und 16 gezielte Dateiprüfungen; keine Themeänderung, Veröffentlichung, Medienerzeugung oder Kennzahlabfrage.",
+  "next": "Vorhandenen Entwurf 214169584007 im authentifizierten Shopify-Admin veröffentlichen; danach MAIN-Rolle und öffentliche mobile Darstellung ohne Vorschau bestätigen.",
+  "editor": "https://admin.shopify.com/store/au3j0y-hq/themes/214169584007/editor",
+  "completion": {
+    "developmentAndScopedDraftQA": "COMPLETE",
+    "liveSwitch": "BLOCKED_ACCESS",
+    "liveQA": "PENDING",
+    "wholeShop100PercentClaim": false
+  },
+  "claudeReceipt": "UNKNOWN"
+}
