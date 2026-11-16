@@ -1,0 +1,73 @@
+name: Merchant-Fehler beheben (Einspruch, verwaiste Angebote)
+
+# Freigabe des Besitzers 16.11.2026 auf eine gezielte Rückfrage: Einspruch «kein Problem» bei 11 Fehlurteilen und
+# Löschen von 17 Angeboten, deren Shopify-Variante es nicht mehr gibt. Ziele fest in dropship/merchant-fehler-1611/plan.json.
+# Handstart: Vorgabe «trocken» (liest nur). «schreiben» löst aus und löscht, liest danach zurück.
+# Pull Request: nur der Offline-Test.
+on:
+  workflow_dispatch:
+    inputs:
+      modus:
+        description: 'trocken = nur lesen und planen · schreiben = Einsprüche auslösen und verwaiste Angebote löschen'
+        type: choice
+        options: [trocken, schreiben]
+        default: trocken
+  pull_request:
+    paths: ['.github/workflows/merchant-fehler-beheben.yml', 'automation/merchant_fehler_beheben.py',
+            'automation/merchant_fehler_beheben_test.py', 'dropship/merchant-fehler-1611/plan.json']
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant_fehler_beheben.py
+            automation/merchant_fehler_beheben_test.py
+            dropship/merchant-fehler-1611/plan.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline-Test
+        run: python3 -I automation/merchant_fehler_beheben_test.py
+
+  beheben:
+    if: github.event_name == 'workflow_dispatch'
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: merchant-fehler
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant_fehler_beheben.py
+            dropship/merchant-fehler-1611/plan.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet google-auth requests
+      - name: Beheben
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          MODUS: ${{ inputs.modus }}
+        run: python3 automation/merchant_fehler_beheben.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-fehler
+          path: merchant_fehler.json
+          if-no-files-found: ignore
+          retention-days: 14
