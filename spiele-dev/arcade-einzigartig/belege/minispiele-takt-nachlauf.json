@@ -1,0 +1,11 @@
+{
+  "base": "http://127.0.0.1:8182",
+  "filter": "Tipp Duell",
+  "failures": 0,
+  "results": [
+    {
+      "name": "Tipp Duell: Touch → Maus im Takt, Ende und Neustart",
+      "ok": true
+    }
+  ]
+}

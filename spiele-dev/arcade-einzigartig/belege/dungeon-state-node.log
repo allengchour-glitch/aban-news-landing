@@ -1,0 +1,11 @@
+OK Stein: beide Ringfronten verletzen nur am Boden
+OK Eis: vier gerichtete Deckungen; Sprünge im Frost helfen nicht
+OK Lava: Sektor wandert; Mitte, Gegenrichtung und Sprünge sind unsicher
+OK Warnung und Öffnung sind schadensfrei; jede Prüfung gewährt ein langes Fenster
+OK Laufgeschwindigkeit reicht für Deckungswechsel, Wandersektor und Faustfenster
+OK Feste Zeit ergibt ohne Zufall identische Phasen über viele Zyklen
+OK Nur Start aktiviert die Uhr; Frame-Aufteilung ändert kein Muster
+OK Snapshots: Sequenz, Runde, Ebene und Schema verhindern Rücksprünge
+OK Host validiert Phase, Entfernung, Runde, Waffe und einen Treffer je Person/Zyklus
+OK Rekorde trennen Ebene, Solo/Koop und Meister; Niederlagen überschreiben nichts
+10 ok, 0 Fehler

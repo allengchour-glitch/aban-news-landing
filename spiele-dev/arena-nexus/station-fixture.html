@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arena-Stationsprüfung</title>
+<style>html,body,iframe{margin:0;width:100%;height:100%;border:0;overflow:hidden}iframe{display:block}</style></head>
+<body>
+<iframe id="arena" title="Arena-Station" src="/neon-survivor.html?station=1&amp;qa-child=1"></iframe>
+<script>
+window.arenaMessages=[];
+addEventListener("message",function(event){
+  if(event.origin!==location.origin||event.source!==document.getElementById("arena").contentWindow)return;
+  var message=event.data;try{message=JSON.parse(message);}catch(e){}
+  if(message==="mini-back"||(message&&message.t==="stationDone"))arenaMessages.push(message);
+});
+</script>
+</body></html>

@@ -5,12 +5,13 @@
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>Tauziehen</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://abannews.com/minispiele/tauziehen.html">
-<meta name="description" content="Tauziehen per Tipp-Tempo: wer schneller tippt, zieht das Seil auf seine Seite.">
+<meta name="description" content="Tauziehen mit Ausdauer: Halten zieht, Loslassen erholt. Teile deine Kraft klug ein.">
 <meta property="og:title" content="Tauziehen">
 <meta property="og:image" content="https://abannews.com/og-arcade.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:description" content="Tauziehen per Tipp-Tempo: wer schneller tippt, zieht das Seil auf seine Seite.">
+<meta property="og:description" content="Tauziehen mit Ausdauer: Halten zieht, Loslassen erholt. Teile deine Kraft klug ein.">
 <meta property="og:url" content="https://abannews.com/minispiele/tauziehen.html">
 <meta property="og:type" content="website">
 <style>
@@ -104,19 +105,38 @@
   }
   .btn:active { transform: translateY(2px); box-shadow: 0 3px 8px rgba(255,140,42,.35); }
   .hidden { display: none !important; }
+  .back{z-index:30;}
+  .pad{touch-action:none;min-height:0;}
+  .pad.holding{filter:brightness(.88);}
+  .stamina{width:70%;max-width:300px;height:18px;background:#fff9;border-radius:12px;overflow:hidden;margin-top:4px;}
+  .stamina i{display:block;width:100%;height:100%;background:#276e3d;}
+  .energy{font-weight:bold;color:#17334b;font-size:15px;}
+  .pad .emo{font-size:40px}.pad .hint{font-size:13px;color:#17334b;text-shadow:none;opacity:1;}
+  @media(max-height:650px){h1{font-size:22px;margin-top:54px}.arena{gap:6px;padding:6px}.pad .emo{font-size:24px}.pad .lbl{font-size:17px}.sub{font-size:12px}.card{padding:16px;gap:8px}.overlay p{font-size:14px}.overlay .big{font-size:36px}.overlay h2{font-size:28px}}
+  .arena{min-height:0;}
+  @media(max-height:450px){
+    .arena{gap:4px;padding:4px 8px 6px;}
+    .pad .emo{display:none;}.pad .lbl{font-size:15px;margin-bottom:1px;}
+    .pad .hint{font-size:11px;margin-top:2px;}.energy{font-size:12px;}
+    .stamina{height:12px;margin-top:2px;}.ropewrap .track{height:36px;}
+    .ropewrap .sub{margin:0;font-size:11px;}.pad .score{top:4px;font-size:16px;padding:2px 8px;}
+    .overlay .card{max-width:560px;gap:6px;padding:14px 18px;}
+    .overlay p{font-size:13px;line-height:1.25;}.overlay .big{font-size:30px;}
+    .overlay h2{font-size:24px;}.overlay .btn{padding:10px 24px;min-height:46px;font-size:18px;}
+  }
 </style>
 </head>
 <body>
-  <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+  <button type="button" class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
   <h1>🪢 Tauziehen</h1>
-  <div class="sub">Hämmert euren Knopf! Wer die Mitte rüberzieht, gewinnt den Zug.</div>
+  <div class="sub">Halten zieht · Loslassen erholt · Rot: A / Blau: L</div>
 
   <div class="arena">
     <div class="pad p2" id="pad2">
       <div class="score" id="s2">0</div>
       <div class="emo">💪</div>
       <div class="lbl">Spieler 2 (Blau)</div>
-      <div class="hint">Tippen zum Ziehen →</div>
+      <div class="energy" id="energy2">Ausdauer 100%</div><div class="stamina"><i id="stamina2"></i></div><div class="hint" id="hint2">Halten = ziehen · Loslassen = erholen</div>
     </div>
 
     <div class="ropewrap">
@@ -127,14 +147,14 @@
         <div class="flag" id="flag" style="left:50%">🚩</div>
         <div class="countdown hidden" id="cd">3</div>
       </div>
-      <div class="sub" id="status">Bereit? Tippt zum Start!</div>
+      <div class="sub" id="status">Bereit? Startet die erste Runde!</div>
     </div>
 
     <div class="pad p1" id="pad1">
       <div class="score" id="s1">0</div>
       <div class="emo">💪</div>
       <div class="lbl">Spieler 1 (Rot)</div>
-      <div class="hint">Tippen zum Ziehen →</div>
+      <div class="energy" id="energy1">Ausdauer 100%</div><div class="stamina"><i id="stamina1"></i></div><div class="hint" id="hint1">Halten = ziehen · Loslassen = erholen</div>
     </div>
   </div>
 
@@ -142,9 +162,9 @@
     <div class="card">
       <div class="big">🪢</div>
       <h2>Tauziehen</h2>
-      <p>2 Spieler · Ein Gerät<br>Spieler 1 unten (rot), Spieler 2 oben (blau).<br>Hämmert so schnell ihr könnt!<br>Best of 3 Runden gewinnt.</p>
+      <p>2 Spieler · Ein Gerät<br>Spieler 1 unten (rot), Spieler 2 oben (blau).<br>Halten zieht, Loslassen erholt die Ausdauer. Bei 0% musst du bis 35% erholen!<br>Rot: A halten · Blau: L halten.<br>Zwei Rundensiege gewinnen. Nach 25 s zählt die Seilposition; Gleichstand wird wiederholt.</p>
       <div style="margin-top:10px;font-size:11px;opacity:.6"><a href="/impressum.html" style="color:inherit">Impressum</a> · <a href="/datenschutz.html" style="color:inherit">Datenschutz</a></div>
-      <button class="btn" id="startBtn">▶ Los geht's</button>
+      <button type="button" class="btn" id="startBtn">▶ Los geht's</button>
     </div>
   </div>
 
@@ -153,134 +173,115 @@
       <div class="big" id="endEmo">🏆</div>
       <h2 id="endTitle">Sieg!</h2>
       <p id="endText"></p>
-      <button class="btn" id="againBtn">🔁 Nochmal</button>
+      <button type="button" class="btn" id="againBtn">🔁 Nochmal</button>
     </div>
   </div>
 
+<script id="game-logic">
+/* Ausdauer wird nur beim Loslassen regeneriert; Erschöpfung sperrt die Kraft. */
+var GameLogic = (function(){
+  "use strict";
+  function player(){return {stamina:100,held:false,exhausted:false,force:0};}
+  function state(){return {pos:50,elapsed:0,players:[player(),player()],result:null};}
+  function step(s,dt){
+    if(s.result!==null) return;
+    s.players.forEach(function(p){
+      if(p.held){
+        p.stamina=Math.max(0,p.stamina-27*dt);
+        if(p.stamina===0) p.exhausted=true;
+      } else {
+        p.stamina=Math.min(100,p.stamina+35*dt);
+        if(p.stamina>=35) p.exhausted=false;
+      }
+      p.force=p.held && !p.exhausted ? 0.35+0.65*p.stamina/100 : 0;
+    });
+    s.pos=Math.max(0,Math.min(100,s.pos+(s.players[1].force-s.players[0].force)*14*dt));
+    s.elapsed+=dt;
+    if(s.pos<=12) s.result=1;
+    else if(s.pos>=88) s.result=2;
+    else if(s.elapsed>=25) s.result=Math.abs(s.pos-50)<1?0:s.pos<50?1:2;
+  }
+  return {state:state,step:step};
+}());
+</script>
 <script>
 (function(){
-  var pos = 50;            /* 0 = Spieler1(links/rot) gewinnt, 100 = Spieler2(rechts/blau) gewinnt */
-  var WIN_ZONE = 12;       /* Prozent Rand */
-  var STEP = 2.2;          /* Bewegung pro Tap */
-  var DECAY = 0.06;        /* sanfte Rückzug-Reibung Richtung Mitte pro frame */
-  var wins = {p1:0, p2:0};
-  var roundActive = false;
-  var counting = false;
-  var rafId = null;
-  var lastTs = 0;
-
-  var flag = document.getElementById('flag');
-  var status = document.getElementById('status');
-  var cd = document.getElementById('cd');
-  var pad1 = document.getElementById('pad1');
-  var pad2 = document.getElementById('pad2');
-  var s1 = document.getElementById('s1');
-  var s2 = document.getElementById('s2');
-  var startO = document.getElementById('startO');
-  var endO = document.getElementById('endO');
-
-  function render(){ flag.style.left = pos + '%'; }
-
-  function loop(ts){
-    if(!roundActive){ rafId = null; return; }
-    if(!lastTs) lastTs = ts;
-    var dt = Math.min(64, ts - lastTs); lastTs = ts;
-    /* sanfte Reibung Richtung Mitte, damit Nichtstun bestraft/ausgeglichen wirkt */
-    var frames = dt/16.7;
-    if(pos > 50) pos = Math.max(50, pos - DECAY*frames);
-    else if(pos < 50) pos = Math.min(50, pos + DECAY*frames);
+  "use strict";
+  var $=function(id){return document.getElementById(id);};
+  var game=GameLogic.state(),wins=[0,0],phase='idle',phaseEnd=0,lastTs=0;
+  var pointers=[new Set(),new Set()],keys=new Set();
+  function sync(){
+    game.players.forEach(function(p,i){
+      p.held=phase==='pull' && (pointers[i].size>0 || keys.has(i===0?'a':'l'));
+      $('pad'+(i+1)).classList.toggle('holding',p.held);
+    });
+  }
+  function release(){keys.clear();pointers.forEach(function(s){s.clear();});sync();}
+  function render(){
+    $('flag').style.left=game.pos+'%';
+    game.players.forEach(function(p,i){
+      var n=i+1;
+      $('stamina'+n).style.width=p.stamina+'%';
+      $('stamina'+n).style.background=p.exhausted?'#a52530':'#276e3d';
+      $('energy'+n).textContent='Ausdauer '+Math.round(p.stamina)+'%';
+      $('hint'+n).textContent=p.exhausted?'Erschöpft! Loslassen bis 35%':p.held?'Ziehen … Kraft '+Math.round(p.force*100)+'%':'Halten = ziehen · Loslassen = erholen';
+      $('s'+n).textContent=wins[i];
+    });
+  }
+  function startRound(){
+    phase='countdown'; release(); game=GameLogic.state(); render();
+    phaseEnd=performance.now()+2400; $('cd').classList.remove('hidden'); $('cd').textContent='3';
+    $('status').textContent='Bereit? Gleich geht’s los!';
+  }
+  function roundEnd(){
+    var result=game.result; phase='pause'; release();
+    if(result) wins[result-1]++;
     render();
-    checkWin();
-    if(roundActive) rafId = requestAnimationFrame(loop);
-  }
-
-  function ensureLoop(){
-    if(roundActive && rafId===null){ lastTs=0; rafId = requestAnimationFrame(loop); }
-  }
-
-  function pull(player, padEl){
-    if(!roundActive) return;
-    if(player===1) pos -= STEP; else pos += STEP;
-    pos = Math.max(0, Math.min(100, pos));
-    padEl.classList.remove('tap'); void padEl.offsetWidth; padEl.classList.add('tap');
-    render();
-    checkWin();
-  }
-
-  function checkWin(){
-    if(!roundActive) return;
-    if(pos <= WIN_ZONE){ roundWon(1); }
-    else if(pos >= 100 - WIN_ZONE){ roundWon(2); }
-  }
-
-  function roundWon(player){
-    roundActive = false;
-    if(rafId){ cancelAnimationFrame(rafId); rafId=null; }
-    if(player===1){ wins.p1++; s1.textContent = wins.p1; }
-    else { wins.p2++; s2.textContent = wins.p2; }
-
-    if(wins.p1>=2 || wins.p2>=2){
-      showEnd();
+    if(wins[0]>=2 || wins[1]>=2){
+      phase='idle'; $('endTitle').textContent='Spieler '+(wins[0]>wins[1]?'1 (Rot)':'2 (Blau)')+' gewinnt!';
+      $('endText').textContent='Endstand: Rot '+wins[0]+' : '+wins[1]+' Blau';
+      $('endO').classList.remove('hidden');
     } else {
-      status.textContent = (player===1?'Rot':'Blau') + ' gewinnt die Runde! Nächste Runde …';
-      setTimeout(function(){ startRound(); }, 1200);
+      $('status').textContent=(result?(result===1?'Rot':'Blau')+' gewinnt die Runde!':'Gleichstand – Runde wiederholen!')+' Neue Runde …';
+      phaseEnd=performance.now()+1400;
     }
   }
-
-  function startRound(){
-    pos = 50; render();
-    counting = true; roundActive = false;
-    cd.classList.remove('hidden');
-    var n = 3; cd.textContent = n;
-    status.textContent = 'Macht euch bereit!';
-    var iv = setInterval(function(){
-      n--;
-      if(n<=0){
-        clearInterval(iv);
-        cd.textContent = 'LOS!';
-        setTimeout(function(){
-          cd.classList.add('hidden');
-          counting = false; roundActive = true;
-          status.textContent = 'ZIEHT!!! 💥';
-          ensureLoop();
-        }, 500);
-      } else {
-        cd.textContent = n;
-      }
-    }, 700);
+  function loop(now){
+    var dt=Math.max(0,Math.min(0.05,(now-lastTs)/1000 || 0)); lastTs=now;
+    if(phase==='countdown'){
+      $('cd').textContent=Math.max(1,Math.ceil((phaseEnd-now)/800));
+      if(now>=phaseEnd){phase='pull';sync();$('cd').classList.add('hidden');dt=0;}
+    } else if(phase==='pause' && now>=phaseEnd) startRound();
+    if(phase==='pull'){
+      GameLogic.step(game,dt); render();
+      $('status').textContent='Noch '+Math.max(0,Math.ceil(25-game.elapsed))+' s · Rot ← 🚩 → Blau';
+      if(game.result!==null) roundEnd();
+    }
+    requestAnimationFrame(loop);
   }
-
-  function showEnd(){
-    var p1win = wins.p1>wins.p2;
-    document.getElementById('endEmo').textContent = '🏆';
-    document.getElementById('endTitle').textContent = (p1win?'Spieler 1 (Rot)':'Spieler 2 (Blau)') + ' gewinnt!';
-    document.getElementById('endText').textContent = 'Endstand: Rot ' + wins.p1 + ' : ' + wins.p2 + ' Blau 🎉';
-    endO.classList.remove('hidden');
+  function reset(){
+    wins=[0,0]; $('startO').classList.add('hidden'); $('endO').classList.add('hidden'); startRound();
   }
-
-  function resetGame(){
-    wins.p1=0; wins.p2=0; s1.textContent='0'; s2.textContent='0';
-    endO.classList.add('hidden');
-    startRound();
-  }
-
-  /* Input: sowohl Touch als auch Maus/Pointer. touchstart verhindert doppelten click. */
-  function bind(el, player){
-    el.addEventListener('touchstart', function(e){ e.preventDefault(); pull(player, el); }, {passive:false});
-    el.addEventListener('mousedown', function(e){ e.preventDefault(); pull(player, el); });
-  }
-  bind(pad1, 1);
-  bind(pad2, 2);
-
-  document.getElementById('startBtn').addEventListener('click', function(){
-    startO.classList.add('hidden');
-    resetGame();
+  [1,2].forEach(function(n){
+    var el=$('pad'+n),i=n-1;
+    el.addEventListener('pointerdown',function(e){
+      if(e.pointerType==='mouse' && e.button!==0) return;
+      e.preventDefault(); if(phase!=='pull' && phase!=='countdown') return;
+      pointers[i].add(e.pointerId);try{el.setPointerCapture(e.pointerId);}catch(_){/* Synthetischer Zeiger ohne Erfassung. */}sync();
+    });
+    ['pointerup','pointercancel','lostpointercapture'].forEach(function(type){
+      el.addEventListener(type,function(e){pointers[i].delete(e.pointerId);sync();});
+    });
   });
-  document.getElementById('againBtn').addEventListener('click', function(){
-    resetGame();
+  window.addEventListener('keydown',function(e){
+    var k=e.key.toLowerCase(); if(k!=='a' && k!=='l') return;
+    e.preventDefault(); if(e.repeat) return; keys.add(k);sync();
   });
-
-  render();
+  window.addEventListener('keyup',function(e){keys.delete(e.key.toLowerCase());sync();});
+  window.addEventListener('blur',release);
+  document.addEventListener('visibilitychange',function(){if(document.hidden) release();});
+  $('startBtn').addEventListener('click',reset); $('againBtn').addEventListener('click',reset);
+  render(); requestAnimationFrame(loop);
 })();
 </script>
 </body>

@@ -1,0 +1,16 @@
+OK · Stehen und Warten eröffnen keine Fahrt
+  Kettenflieger: 9.3s, 17 Impulse, 3 Sterne
+  Teetassen: 9.8s, 12 Impulse, 3 Sterne
+  Piratenschiff: 8.8s, 7 Impulse, 3 Sterne
+  Achterbahn: 8.2s, 14 Impulse, 3 Sterne
+OK · Alle vier unterschiedlichen Fahrten mit begrenzten Einzelimpulsen lösbar
+OK · Schiff braucht Schub im Tal, Bremse wirkt überall
+OK · Falsche Eingaben, kaputte und alte Snapshots ändern nichts
+OK · Seitencode: Nähe, echte Aktionsknöpfe, Pause und Stehenbleiben
+OK · Eigenes Protokoll trennt neue Schnellsuche und Räume von alten Park-Clients
+OK · Regie bewegt echte Three-Knoten; der Mixer setzt sie nicht zurück
+OK · Zwei Seiten: Hostzustand, gemeinsame/aufgeteilte Regie, keine fremden Siege
+OK · Kompletter Koop-Abschluss erreicht beide Seiten auch zwischen Sendeintervallen
+OK · Gespeicherte Finale-Fixture: normales E, zehn simulierte Sekunden und gemeinsames Ende
+OK · Ganze Solo-Premiere durch echte Seiteneingaben und genau eine Stationsmeldung
+11 ok, 0 Fehler (Node/VM; kein Browser/WebGL)

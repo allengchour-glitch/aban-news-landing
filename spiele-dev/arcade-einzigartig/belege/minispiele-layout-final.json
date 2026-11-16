@@ -1,0 +1,3470 @@
+{
+  "scope": "Gezielter Nachlauf für die letzten CSS-Korrekturen: sechs Original-HTTP-Seitenfälle, UI-Start, Start-/Spiel-Layout, Trefferpunkte, Timer-/Namens- und Rechtslink-/Knopf-Abstände, echte Touch-Holds und Tastaturprobe. Keine vollständige Wiederholung der 368 Assertions, keine Ergebnis-/Restart-/iframe-/Fokus-Neupruefung.",
+  "base": "http://127.0.0.1:8182",
+  "node": "v24.19.0",
+  "expectedProductSha256": {
+    "tap-duell": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8",
+    "auto-rennen": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3",
+    "tauziehen": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a"
+  },
+  "testSha256": "f4cc80c4c6a384b0cd7ea0482c261ce37126335c5b3664c1b0307c496a98c472",
+  "cases": [
+    {
+      "name": "tap-duell-390x844",
+      "ok": true,
+      "errors": [],
+      "headers": {
+        "connection": "keep-alive",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 16 Nov 2026 15:40:51 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "cache-control": "public, max-age=300, must-revalidate",
+        "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+        "cross-origin-resource-policy": "same-site",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-xss-protection": "1; mode=block"
+      },
+      "productSha256": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8",
+      "localProductSha256": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8"
+    },
+    {
+      "name": "auto-rennen-390x844",
+      "ok": true,
+      "errors": [],
+      "headers": {
+        "connection": "keep-alive",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 16 Nov 2026 15:40:52 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "cache-control": "public, max-age=300, must-revalidate",
+        "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+        "cross-origin-resource-policy": "same-site",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-xss-protection": "1; mode=block"
+      },
+      "productSha256": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3",
+      "localProductSha256": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3"
+    },
+    {
+      "name": "tauziehen-390x844",
+      "ok": true,
+      "errors": [],
+      "headers": {
+        "connection": "keep-alive",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 16 Nov 2026 15:40:54 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "cache-control": "public, max-age=300, must-revalidate",
+        "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+        "cross-origin-resource-policy": "same-site",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-xss-protection": "1; mode=block"
+      },
+      "productSha256": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a",
+      "localProductSha256": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a"
+    },
+    {
+      "name": "tap-duell-640x360",
+      "ok": true,
+      "errors": [],
+      "headers": {
+        "connection": "keep-alive",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 16 Nov 2026 15:40:55 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "cache-control": "public, max-age=300, must-revalidate",
+        "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+        "cross-origin-resource-policy": "same-site",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-xss-protection": "1; mode=block"
+      },
+      "productSha256": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8",
+      "localProductSha256": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8"
+    },
+    {
+      "name": "auto-rennen-640x360",
+      "ok": true,
+      "errors": [],
+      "headers": {
+        "connection": "keep-alive",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 16 Nov 2026 15:40:55 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "cache-control": "public, max-age=300, must-revalidate",
+        "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+        "cross-origin-resource-policy": "same-site",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-xss-protection": "1; mode=block"
+      },
+      "productSha256": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3",
+      "localProductSha256": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3"
+    },
+    {
+      "name": "tauziehen-640x360",
+      "ok": true,
+      "errors": [],
+      "headers": {
+        "connection": "keep-alive",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 16 Nov 2026 15:40:56 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "cache-control": "public, max-age=300, must-revalidate",
+        "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+        "cross-origin-resource-policy": "same-site",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-permitted-cross-domain-policies": "none",
+        "x-xss-protection": "1; mode=block"
+      },
+      "productSha256": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a",
+      "localProductSha256": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a"
+    }
+  ],
+  "checks": [
+    {
+      "name": "tap-duell-390x844 echte HTML-Header",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844 CSP unverändert aktiv",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844 Originalseite entspricht lokaler eingefrorener Datei",
+      "ok": true,
+      "data": {
+        "served": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8",
+        "local": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8"
+      }
+    },
+    {
+      "name": "tap-duell-390x844 Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 47,
+              "right": 343,
+              "top": 542.390625,
+              "bottom": 598.390625,
+              "width": 296,
+              "height": 56
+            },
+            "legalRect": {
+              "left": 132.328125,
+              "right": 186.734375,
+              "top": 530.390625,
+              "bottom": 542.390625,
+              "width": 54.40625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 47,
+              "right": 343,
+              "top": 542.390625,
+              "bottom": 598.390625,
+              "width": 296,
+              "height": 56
+            },
+            "legalRect": {
+              "left": 196.515625,
+              "right": 257.671875,
+              "top": 530.390625,
+              "bottom": 542.390625,
+              "width": 61.15625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 10,
+              "right": 119.796875,
+              "top": 10,
+              "bottom": 56,
+              "width": 109.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 132.328125,
+              "right": 186.734375,
+              "top": 530.390625,
+              "bottom": 542.390625,
+              "width": 54.40625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 10,
+              "right": 119.796875,
+              "top": 10,
+              "bottom": 56,
+              "width": 109.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 196.515625,
+              "right": 257.671875,
+              "top": 530.390625,
+              "bottom": 542.390625,
+              "width": 61.15625,
+              "height": 12
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 2
+      }
+    },
+    {
+      "name": "tap-duell-390x844 UI-Start per echtem Touch",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844 Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "timer-label",
+            "label": ".half.top .who",
+            "timerRect": {
+              "left": 149,
+              "right": 241,
+              "top": 376,
+              "bottom": 468,
+              "width": 92,
+              "height": 92
+            },
+            "labelRect": {
+              "left": 123.921875,
+              "right": 266.09375,
+              "top": 272,
+              "bottom": 300,
+              "width": 142.171875,
+              "height": 28
+            }
+          },
+          {
+            "kind": "timer-label",
+            "label": ".half.bottom .who",
+            "timerRect": {
+              "left": 149,
+              "right": 241,
+              "top": 376,
+              "bottom": 468,
+              "width": 92,
+              "height": 92
+            },
+            "labelRect": {
+              "left": 123.90625,
+              "right": 266.078125,
+              "top": 544,
+              "bottom": 572,
+              "width": 142.171875,
+              "height": 28
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tap-duell-390x844 tatsächliche präzise Touch-Tipps für beide",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844 Halten zählt keinen weiteren Tipp",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844 gehalten Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "timer-label",
+            "label": ".half.top .who",
+            "timerRect": {
+              "left": 149,
+              "right": 241,
+              "top": 376,
+              "bottom": 468,
+              "width": 92,
+              "height": 92
+            },
+            "labelRect": {
+              "left": 123.921875,
+              "right": 266.09375,
+              "top": 272,
+              "bottom": 300,
+              "width": 142.171875,
+              "height": 28
+            }
+          },
+          {
+            "kind": "timer-label",
+            "label": ".half.bottom .who",
+            "timerRect": {
+              "left": 149,
+              "right": 241,
+              "top": 376,
+              "bottom": 468,
+              "width": 92,
+              "height": 92
+            },
+            "labelRect": {
+              "left": 123.90625,
+              "right": 266.078125,
+              "top": 544,
+              "bottom": 572,
+              "width": 142.171875,
+              "height": 28
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tap-duell-390x844 getrennte Tasten bleiben nutzbar",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844 nach Eingaben Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "timer-label",
+            "label": ".half.top .who",
+            "timerRect": {
+              "left": 149,
+              "right": 241,
+              "top": 376,
+              "bottom": 468,
+              "width": 92,
+              "height": 92
+            },
+            "labelRect": {
+              "left": 123.921875,
+              "right": 266.09375,
+              "top": 272,
+              "bottom": 300,
+              "width": 142.171875,
+              "height": 28
+            }
+          },
+          {
+            "kind": "timer-label",
+            "label": ".half.bottom .who",
+            "timerRect": {
+              "left": 149,
+              "right": 241,
+              "top": 376,
+              "bottom": 468,
+              "width": 92,
+              "height": 92
+            },
+            "labelRect": {
+              "left": 123.90625,
+              "right": 266.078125,
+              "top": 544,
+              "bottom": 572,
+              "width": 142.171875,
+              "height": 28
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tap-duell-390x844 echte Touch- und Tastatureingaben",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844 keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-390x844 keine JS-/HTTP-/Konsolen-/Netzfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-390x844 echte HTML-Header",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 CSP unverändert aktiv",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 Originalseite entspricht lokaler eingefrorener Datei",
+      "ok": true,
+      "data": {
+        "served": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3",
+        "local": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3"
+      }
+    },
+    {
+      "name": "auto-rennen-390x844 Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 119.15625,
+              "right": 270.84375,
+              "top": 576.734375,
+              "bottom": 634.734375,
+              "width": 151.6875,
+              "height": 58
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 119.15625,
+              "right": 270.84375,
+              "top": 576.734375,
+              "bottom": 634.734375,
+              "width": 151.6875,
+              "height": 58
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 119.15625,
+              "right": 270.84375,
+              "top": 576.734375,
+              "bottom": 634.734375,
+              "width": 151.6875,
+              "height": 58
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 3
+      }
+    },
+    {
+      "name": "auto-rennen-390x844 UI-Start per echtem Touch",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 18,
+              "right": 94,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 18,
+              "right": 94,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 18,
+              "right": 94,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 210,
+              "right": 286,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 210,
+              "right": 286,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 210,
+              "right": 286,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 100,
+              "right": 180,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 100,
+              "right": 180,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 100,
+              "right": 180,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 292,
+              "right": 372,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 292,
+              "right": 372,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 292,
+              "right": 372,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 3
+      }
+    },
+    {
+      "name": "auto-rennen-390x844 beide Gas-Holds aktiv",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 Gas erzeugt Strecke",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 Schalten bei weiter gehaltenem Gas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 gehalten Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 18,
+              "right": 94,
+              "top": 740,
+              "bottom": 806,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 18,
+              "right": 94,
+              "top": 740,
+              "bottom": 806,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 18,
+              "right": 94,
+              "top": 740,
+              "bottom": 806,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 210,
+              "right": 286,
+              "top": 740,
+              "bottom": 806,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 210,
+              "right": 286,
+              "top": 740,
+              "bottom": 806,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 210,
+              "right": 286,
+              "top": 740,
+              "bottom": 806,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 100,
+              "right": 180,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 100,
+              "right": 180,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 100,
+              "right": 180,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 292,
+              "right": 372,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 292,
+              "right": 372,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 292,
+              "right": 372,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 3
+      }
+    },
+    {
+      "name": "auto-rennen-390x844 rotes Loslassen löst Blau nicht",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 Tastaturgas getrennt",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 Gas vollständig losgelassen",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 nach Eingaben Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 18,
+              "right": 94,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 18,
+              "right": 94,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 18,
+              "right": 94,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 210,
+              "right": 286,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 210,
+              "right": 286,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 210,
+              "right": 286,
+              "top": 738,
+              "bottom": 804,
+              "width": 76,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 100,
+              "right": 180,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 100,
+              "right": 180,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 100,
+              "right": 180,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 292,
+              "right": 372,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 292,
+              "right": 372,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 292,
+              "right": 372,
+              "top": 738,
+              "bottom": 804,
+              "width": 80,
+              "height": 66
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 819.5,
+              "bottom": 840,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 8,
+              "right": 113.796875,
+              "top": 8,
+              "bottom": 54,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 821.5,
+              "bottom": 836.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 3
+      }
+    },
+    {
+      "name": "auto-rennen-390x844 echte Touch- und Tastatureingaben",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844 keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-390x844 keine JS-/HTTP-/Konsolen-/Netzfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-390x844 echte HTML-Header",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844 CSP unverändert aktiv",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844 Originalseite entspricht lokaler eingefrorener Datei",
+      "ok": true,
+      "data": {
+        "served": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a",
+        "local": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a"
+      }
+    },
+    {
+      "name": "tauziehen-390x844 Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 89.640625,
+              "right": 300.34375,
+              "top": 628.96875,
+              "bottom": 686.96875,
+              "width": 210.703125,
+              "height": 58
+            },
+            "legalRect": {
+              "left": 132.328125,
+              "right": 186.734375,
+              "top": 602.96875,
+              "bottom": 614.96875,
+              "width": 54.40625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 89.640625,
+              "right": 300.34375,
+              "top": 628.96875,
+              "bottom": 686.96875,
+              "width": 210.703125,
+              "height": 58
+            },
+            "legalRect": {
+              "left": 196.515625,
+              "right": 257.671875,
+              "top": 602.96875,
+              "bottom": 614.96875,
+              "width": 61.15625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".back",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 12,
+              "right": 117.796875,
+              "top": 12,
+              "bottom": 58,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 132.328125,
+              "right": 186.734375,
+              "top": 602.96875,
+              "bottom": 614.96875,
+              "width": 54.40625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".back",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 12,
+              "right": 117.796875,
+              "top": 12,
+              "bottom": 58,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 196.515625,
+              "right": 257.671875,
+              "top": 602.96875,
+              "bottom": 614.96875,
+              "width": 61.15625,
+              "height": 12
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 2
+      }
+    },
+    {
+      "name": "tauziehen-390x844 UI-Start per echtem Touch",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844 Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tauziehen-390x844 beide Griffe verbrauchen Ausdauer",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844 gehalten Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tauziehen-390x844 Loslassen erholt nur Rot",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844 Tastaturgriff getrennt",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844 Griffe vollständig losgelassen",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844 nach Eingaben Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tauziehen-390x844 echte Touch- und Tastatureingaben",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844 keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-390x844 keine JS-/HTTP-/Konsolen-/Netzfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-640x360 echte HTML-Header",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360 CSP unverändert aktiv",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360 Originalseite entspricht lokaler eingefrorener Datei",
+      "ok": true,
+      "data": {
+        "served": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8",
+        "local": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8"
+      }
+    },
+    {
+      "name": "tap-duell-640x360 Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 166,
+              "right": 474,
+              "top": 273.5,
+              "bottom": 329.5,
+              "width": 308,
+              "height": 56
+            },
+            "legalRect": {
+              "left": 257.328125,
+              "right": 311.734375,
+              "top": 261.5,
+              "bottom": 273.5,
+              "width": 54.40625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 166,
+              "right": 474,
+              "top": 273.5,
+              "bottom": 329.5,
+              "width": 308,
+              "height": 56
+            },
+            "legalRect": {
+              "left": 321.515625,
+              "right": 382.671875,
+              "top": 261.5,
+              "bottom": 273.5,
+              "width": 61.15625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 10,
+              "right": 119.796875,
+              "top": 10,
+              "bottom": 56,
+              "width": 109.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 257.328125,
+              "right": 311.734375,
+              "top": 261.5,
+              "bottom": 273.5,
+              "width": 54.40625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 10,
+              "right": 119.796875,
+              "top": 10,
+              "bottom": 56,
+              "width": 109.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 321.515625,
+              "right": 382.671875,
+              "top": 261.5,
+              "bottom": 273.5,
+              "width": 61.15625,
+              "height": 12
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 2
+      }
+    },
+    {
+      "name": "tap-duell-640x360 UI-Start per echtem Touch",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360 Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "timer-label",
+            "label": ".half.top .who",
+            "timerRect": {
+              "left": 287,
+              "right": 353,
+              "top": 147,
+              "bottom": 213,
+              "width": 66,
+              "height": 66
+            },
+            "labelRect": {
+              "left": 266,
+              "right": 374.015625,
+              "top": 117.5,
+              "bottom": 139.5,
+              "width": 108.015625,
+              "height": 22
+            }
+          },
+          {
+            "kind": "timer-label",
+            "label": ".half.bottom .who",
+            "timerRect": {
+              "left": 287,
+              "right": 353,
+              "top": 147,
+              "bottom": 213,
+              "width": 66,
+              "height": 66
+            },
+            "labelRect": {
+              "left": 265.984375,
+              "right": 374,
+              "top": 220.5,
+              "bottom": 242.5,
+              "width": 108.015625,
+              "height": 22
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tap-duell-640x360 tatsächliche präzise Touch-Tipps für beide",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360 Halten zählt keinen weiteren Tipp",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360 gehalten Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "timer-label",
+            "label": ".half.top .who",
+            "timerRect": {
+              "left": 287,
+              "right": 353,
+              "top": 147,
+              "bottom": 213,
+              "width": 66,
+              "height": 66
+            },
+            "labelRect": {
+              "left": 266,
+              "right": 374.015625,
+              "top": 117.5,
+              "bottom": 139.5,
+              "width": 108.015625,
+              "height": 22
+            }
+          },
+          {
+            "kind": "timer-label",
+            "label": ".half.bottom .who",
+            "timerRect": {
+              "left": 287,
+              "right": 353,
+              "top": 147,
+              "bottom": 213,
+              "width": 66,
+              "height": 66
+            },
+            "labelRect": {
+              "left": 265.984375,
+              "right": 374,
+              "top": 220.5,
+              "bottom": 242.5,
+              "width": 108.015625,
+              "height": 22
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tap-duell-640x360 getrennte Tasten bleiben nutzbar",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360 nach Eingaben Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "timer-label",
+            "label": ".half.top .who",
+            "timerRect": {
+              "left": 287,
+              "right": 353,
+              "top": 147,
+              "bottom": 213,
+              "width": 66,
+              "height": 66
+            },
+            "labelRect": {
+              "left": 266,
+              "right": 374.015625,
+              "top": 117.5,
+              "bottom": 139.5,
+              "width": 108.015625,
+              "height": 22
+            }
+          },
+          {
+            "kind": "timer-label",
+            "label": ".half.bottom .who",
+            "timerRect": {
+              "left": 287,
+              "right": 353,
+              "top": 147,
+              "bottom": 213,
+              "width": 66,
+              "height": 66
+            },
+            "labelRect": {
+              "left": 265.984375,
+              "right": 374,
+              "top": 220.5,
+              "bottom": 242.5,
+              "width": 108.015625,
+              "height": 22
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tap-duell-640x360 echte Touch- und Tastatureingaben",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360 keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-640x360 keine JS-/HTTP-/Konsolen-/Netzfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-640x360 echte HTML-Header",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 CSP unverändert aktiv",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 Originalseite entspricht lokaler eingefrorener Datei",
+      "ok": true,
+      "data": {
+        "served": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3",
+        "local": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3"
+      }
+    },
+    {
+      "name": "auto-rennen-640x360 Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 244.15625,
+              "right": 395.84375,
+              "top": 278.890625,
+              "bottom": 336.890625,
+              "width": 151.6875,
+              "height": 58
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 244.15625,
+              "right": 395.84375,
+              "top": 278.890625,
+              "bottom": 336.890625,
+              "width": 151.6875,
+              "height": 58
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 244.15625,
+              "right": 395.84375,
+              "top": 278.890625,
+              "bottom": 336.890625,
+              "width": 151.6875,
+              "height": 58
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 3
+      }
+    },
+    {
+      "name": "auto-rennen-640x360 UI-Start per echtem Touch",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 10,
+              "right": 154.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 10,
+              "right": 154.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 10,
+              "right": 154.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 331,
+              "right": 475.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 331,
+              "right": 475.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 331,
+              "right": 475.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 160.5,
+              "right": 309,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 160.5,
+              "right": 309,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 160.5,
+              "right": 309,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 481.5,
+              "right": 630,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 481.5,
+              "right": 630,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 481.5,
+              "right": 630,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 3
+      }
+    },
+    {
+      "name": "auto-rennen-640x360 beide Gas-Holds aktiv",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 Gas erzeugt Strecke",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 Schalten bei weiter gehaltenem Gas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 gehalten Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 10,
+              "right": 154.5,
+              "top": 282,
+              "bottom": 330,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 10,
+              "right": 154.5,
+              "top": 282,
+              "bottom": 330,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 10,
+              "right": 154.5,
+              "top": 282,
+              "bottom": 330,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 331,
+              "right": 475.5,
+              "top": 282,
+              "bottom": 330,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 331,
+              "right": 475.5,
+              "top": 282,
+              "bottom": 330,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 331,
+              "right": 475.5,
+              "top": 282,
+              "bottom": 330,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 160.5,
+              "right": 309,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 160.5,
+              "right": 309,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 160.5,
+              "right": 309,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 481.5,
+              "right": 630,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 481.5,
+              "right": 630,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 481.5,
+              "right": 630,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 3
+      }
+    },
+    {
+      "name": "auto-rennen-640x360 rotes Loslassen löst Blau nicht",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 Tastaturgas getrennt",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 Gas vollständig losgelassen",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 nach Eingaben Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 10,
+              "right": 154.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 10,
+              "right": 154.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 10,
+              "right": 154.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 331,
+              "right": 475.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 331,
+              "right": 475.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#padBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 331,
+              "right": 475.5,
+              "top": 280,
+              "bottom": 328,
+              "width": 144.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 160.5,
+              "right": 309,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 160.5,
+              "right": 309,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftRed",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 160.5,
+              "right": 309,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 481.5,
+              "right": 630,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 481.5,
+              "right": 630,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#shiftBlue",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 481.5,
+              "right": 630,
+              "top": 280,
+              "bottom": 328,
+              "width": 148.5,
+              "height": 48
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "#aban-recht",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 6,
+              "right": 152.078125,
+              "top": 335.5,
+              "bottom": 356,
+              "width": 146.078125,
+              "height": 20.5
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 13,
+              "right": 71.9375,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 58.9375,
+              "height": 15
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".backbtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 4,
+              "right": 109.796875,
+              "top": 4,
+              "bottom": 50,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 80.609375,
+              "right": 145.078125,
+              "top": 337.5,
+              "bottom": 352.5,
+              "width": 64.46875,
+              "height": 15
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 3
+      }
+    },
+    {
+      "name": "auto-rennen-640x360 echte Touch- und Tastatureingaben",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360 keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-640x360 keine JS-/HTTP-/Konsolen-/Netzfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-640x360 echte HTML-Header",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360 CSP unverändert aktiv",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360 Originalseite entspricht lokaler eingefrorener Datei",
+      "ok": true,
+      "data": {
+        "served": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a",
+        "local": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a"
+      }
+    },
+    {
+      "name": "tauziehen-640x360 Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 237.625,
+              "right": 402.375,
+              "top": 260.25,
+              "bottom": 306.25,
+              "width": 164.75,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 257.328125,
+              "right": 311.734375,
+              "top": 242.25,
+              "bottom": 254.25,
+              "width": 54.40625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": "#startBtn",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 237.625,
+              "right": 402.375,
+              "top": 260.25,
+              "bottom": 306.25,
+              "width": 164.75,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 321.515625,
+              "right": 382.671875,
+              "top": 242.25,
+              "bottom": 254.25,
+              "width": 61.15625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".back",
+            "legal": "/impressum.html",
+            "controlRect": {
+              "left": 12,
+              "right": 117.796875,
+              "top": 12,
+              "bottom": 58,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 257.328125,
+              "right": 311.734375,
+              "top": 242.25,
+              "bottom": 254.25,
+              "width": 54.40625,
+              "height": 12
+            }
+          },
+          {
+            "kind": "legal-control",
+            "control": ".back",
+            "legal": "/datenschutz.html",
+            "controlRect": {
+              "left": 12,
+              "right": 117.796875,
+              "top": 12,
+              "bottom": 58,
+              "width": 105.796875,
+              "height": 46
+            },
+            "legalRect": {
+              "left": 321.515625,
+              "right": 382.671875,
+              "top": 242.25,
+              "bottom": 254.25,
+              "width": 61.15625,
+              "height": 12
+            }
+          }
+        ],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 2
+      }
+    },
+    {
+      "name": "tauziehen-640x360 UI-Start per echtem Touch",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360 Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tauziehen-640x360 beide Griffe verbrauchen Ausdauer",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360 gehalten Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tauziehen-640x360 Loslassen erholt nur Rot",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360 Tastaturgriff getrennt",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360 Griffe vollständig losgelassen",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360 nach Eingaben Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "measurements": [],
+        "horizontal": false,
+        "vertical": false,
+        "legalRegions": 0
+      }
+    },
+    {
+      "name": "tauziehen-640x360 echte Touch- und Tastatureingaben",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360 keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-640x360 keine JS-/HTTP-/Konsolen-/Netzfehler",
+      "ok": true,
+      "data": []
+    }
+  ],
+  "errors": [],
+  "browserClosed": true,
+  "ok": true
+}

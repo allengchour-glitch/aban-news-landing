@@ -1,0 +1,1986 @@
+{
+  "scope": "Echte, unveränderte HTTP-Spielantworten; Chromium-Eingaben über Playwright/CDP; kontrollierte Playwright-Uhr. Nur iframe-Elternseite und lesender Ereignisbeobachter sind Test-Fixtures.",
+  "base": "http://127.0.0.1:8182",
+  "checks": [
+    {
+      "name": "tap-duell-390x844-touch echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-390x844-touch Start über touch",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 1",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 2",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 3",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 4",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 5",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 6",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 7",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 8",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 9",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 10",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 11",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch präziser Schlag 12",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch Rhythmus-Spam bringt keine Punkte",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch vollständiges Ergebnis",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch zwölf echte Treffer",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-390x844-touch Restart setzt beide Punkte zurück",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch neuer Schlag nach Restart zählt",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch nach Fokusverlust wieder getrennte Spieler",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch doppelter Tipp kostet genau 25",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-touch keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-390x844-touch keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-390x844-keyboard echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-390x844-keyboard Start über keyboard",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 1",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 2",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 3",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 4",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 5",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 6",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 7",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 8",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 9",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 10",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 11",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard präziser Schlag 12",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard Rhythmus-Spam bringt keine Punkte",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard vollständiges Ergebnis",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard zwölf echte Treffer",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-390x844-keyboard Restart setzt beide Punkte zurück",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard neuer Schlag nach Restart zählt",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard Tastaturrepeat zählt nicht",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard nach Fokusverlust wieder getrennte Spieler",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard doppelter Tipp kostet genau 25",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-keyboard keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-390x844-keyboard keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-390x844-iframe Elternantwort echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-iframe Elternantwort echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-iframe Elternantwort nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-iframe genau eine echte mini-back-Nachricht",
+      "ok": true,
+      "data": [
+        {
+          "data": "mini-back",
+          "origin": "http://127.0.0.1:8182",
+          "sourceCorrect": true
+        }
+      ]
+    },
+    {
+      "name": "tap-duell-390x844-iframe Elternseite und Spiel bleiben bis Integration geladen",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-390x844-iframe keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-390x844-iframe keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-390x844-touch echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-touch Start über touch",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-touch Schalt-Spam ohne Gas bewegt nicht",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch zu frühes Schalten erklärt",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch vier zeitgerechte Gangwechsel",
+      "ok": true,
+      "data": {
+        "shifts": 4
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-touch gutes Fahren schlägt identisches Gas mit Schalt-Spam",
+      "ok": true,
+      "data": {
+        "duration": 9700,
+        "blue": 35
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-touch vollständiges Rennergebnis",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-touch Restart: Strecke und Gang",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch Restart übernimmt kein Gas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch getrennte Gasfelder gleichzeitig aktiv",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch Fokusverlust löst beide Gasfelder",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch nach Ausrollen kein Phantomgas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-touch keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-390x844-touch keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Start über keyboard",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Schalt-Spam ohne Gas bewegt nicht",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard zu frühes Schalten erklärt",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard vier zeitgerechte Gangwechsel",
+      "ok": true,
+      "data": {
+        "shifts": 4
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard gutes Fahren schlägt identisches Gas mit Schalt-Spam",
+      "ok": true,
+      "data": {
+        "duration": 9700,
+        "blue": 35
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard vollständiges Rennergebnis",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Restart: Strecke und Gang",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Restart übernimmt kein Gas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard getrennte Gasfelder gleichzeitig aktiv",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Fokusverlust löst beide Gasfelder",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard nach Ausrollen kein Phantomgas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-390x844-iframe Elternantwort echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-iframe Elternantwort echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-iframe Elternantwort nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-iframe genau eine echte mini-back-Nachricht",
+      "ok": true,
+      "data": [
+        {
+          "data": "mini-back",
+          "origin": "http://127.0.0.1:8182",
+          "sourceCorrect": true
+        }
+      ]
+    },
+    {
+      "name": "auto-rennen-390x844-iframe Elternseite und Spiel bleiben bis Integration geladen",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-390x844-iframe keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-390x844-iframe keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-390x844-touch echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-390x844-touch Start über touch",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-390x844-touch reine Tippzahl bewegt kein Seil",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch beide gehalten: symmetrisch erschöpft",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Erschöpfung ist lesbar",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Dauerhalten heilt nicht",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch nur losgelassener Spieler erholt sich",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Erholung schlägt Dauerhalten: Rundensieg",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch zwei Rundensiege beenden Match",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch vollständiger Match-Endstand",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-390x844-touch Restart: Punkte, Ausdauer, Seil",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Restart übernimmt keine Holds",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Ausdauer wird sichtbar verbraucht",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Fokusverlust löst beide Seilgriffe",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Fokusverlust regeneriert statt Phantomziehen",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-touch keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-390x844-touch keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-390x844-keyboard echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Start über keyboard",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-390x844-keyboard reine Tippzahl bewegt kein Seil",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard beide gehalten: symmetrisch erschöpft",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Erschöpfung ist lesbar",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Dauerhalten heilt nicht",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard nur losgelassener Spieler erholt sich",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Erholung schlägt Dauerhalten: Rundensieg",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard zwei Rundensiege beenden Match",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard vollständiger Match-Endstand",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Restart: Punkte, Ausdauer, Seil",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Restart übernimmt keine Holds",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Ausdauer wird sichtbar verbraucht",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Fokusverlust löst beide Seilgriffe",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Fokusverlust regeneriert statt Phantomziehen",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-keyboard keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-390x844-keyboard keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-390x844-iframe Elternantwort echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-iframe Elternantwort echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-iframe Elternantwort nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-iframe genau eine echte mini-back-Nachricht",
+      "ok": true,
+      "data": [
+        {
+          "data": "mini-back",
+          "origin": "http://127.0.0.1:8182",
+          "sourceCorrect": true
+        }
+      ]
+    },
+    {
+      "name": "tauziehen-390x844-iframe Elternseite und Spiel bleiben bis Integration geladen",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-390x844-iframe keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-390x844-iframe keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-640x360-touch echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-640x360-touch Start über touch",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 1",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 2",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 3",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 4",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 5",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 6",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 7",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 8",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 9",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 10",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 11",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch präziser Schlag 12",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch Rhythmus-Spam bringt keine Punkte",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch vollständiges Ergebnis",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch zwölf echte Treffer",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-640x360-touch Restart setzt beide Punkte zurück",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch neuer Schlag nach Restart zählt",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch nach Fokusverlust wieder getrennte Spieler",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch doppelter Tipp kostet genau 25",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-touch keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-640x360-touch keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-640x360-keyboard echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-640x360-keyboard Start über keyboard",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 1",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 2",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 3",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 4",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 5",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 6",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 7",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 8",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 9",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 10",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 11",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard präziser Schlag 12",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard Rhythmus-Spam bringt keine Punkte",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard vollständiges Ergebnis",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard zwölf echte Treffer",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tap-duell-640x360-keyboard Restart setzt beide Punkte zurück",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard neuer Schlag nach Restart zählt",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard Tastaturrepeat zählt nicht",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard nach Fokusverlust wieder getrennte Spieler",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard doppelter Tipp kostet genau 25",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-keyboard keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-640x360-keyboard keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-640x360-iframe Elternantwort echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-iframe Elternantwort echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-iframe Elternantwort nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-iframe genau eine echte mini-back-Nachricht",
+      "ok": true,
+      "data": [
+        {
+          "data": "mini-back",
+          "origin": "http://127.0.0.1:8182",
+          "sourceCorrect": true
+        }
+      ]
+    },
+    {
+      "name": "tap-duell-640x360-iframe Elternseite und Spiel bleiben bis Integration geladen",
+      "ok": true
+    },
+    {
+      "name": "tap-duell-640x360-iframe keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tap-duell-640x360-iframe keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-640x360-touch echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-touch Start über touch",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-touch Schalt-Spam ohne Gas bewegt nicht",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch zu frühes Schalten erklärt",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch vier zeitgerechte Gangwechsel",
+      "ok": true,
+      "data": {
+        "shifts": 4
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-touch gutes Fahren schlägt identisches Gas mit Schalt-Spam",
+      "ok": true,
+      "data": {
+        "duration": 9700,
+        "blue": 35
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-touch vollständiges Rennergebnis",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-touch Restart: Strecke und Gang",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch Restart übernimmt kein Gas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch getrennte Gasfelder gleichzeitig aktiv",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch Fokusverlust löst beide Gasfelder",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch nach Ausrollen kein Phantomgas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-touch keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-640x360-touch keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Start über keyboard",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Schalt-Spam ohne Gas bewegt nicht",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard zu frühes Schalten erklärt",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard vier zeitgerechte Gangwechsel",
+      "ok": true,
+      "data": {
+        "shifts": 4
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard gutes Fahren schlägt identisches Gas mit Schalt-Spam",
+      "ok": true,
+      "data": {
+        "duration": 9700,
+        "blue": 35
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard vollständiges Rennergebnis",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Restart: Strecke und Gang",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Restart übernimmt kein Gas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard getrennte Gasfelder gleichzeitig aktiv",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Fokusverlust löst beide Gasfelder",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard nach Ausrollen kein Phantomgas",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-640x360-iframe Elternantwort echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-iframe Elternantwort echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-iframe Elternantwort nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-iframe genau eine echte mini-back-Nachricht",
+      "ok": true,
+      "data": [
+        {
+          "data": "mini-back",
+          "origin": "http://127.0.0.1:8182",
+          "sourceCorrect": true
+        }
+      ]
+    },
+    {
+      "name": "auto-rennen-640x360-iframe Elternseite und Spiel bleiben bis Integration geladen",
+      "ok": true
+    },
+    {
+      "name": "auto-rennen-640x360-iframe keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "auto-rennen-640x360-iframe keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-640x360-touch echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-640x360-touch Start über touch",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-640x360-touch reine Tippzahl bewegt kein Seil",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch beide gehalten: symmetrisch erschöpft",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Erschöpfung ist lesbar",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Dauerhalten heilt nicht",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch nur losgelassener Spieler erholt sich",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Erholung schlägt Dauerhalten: Rundensieg",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch zwei Rundensiege beenden Match",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch vollständiger Match-Endstand",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-640x360-touch Restart: Punkte, Ausdauer, Seil",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Restart übernimmt keine Holds",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Ausdauer wird sichtbar verbraucht",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Fokusverlust löst beide Seilgriffe",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Fokusverlust regeneriert statt Phantomziehen",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-touch keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-640x360-touch keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-640x360-keyboard echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Layout start",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Start über keyboard",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Startzeit beobachtet",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Layout play",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-640x360-keyboard reine Tippzahl bewegt kein Seil",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard beide gehalten: symmetrisch erschöpft",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Erschöpfung ist lesbar",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Dauerhalten heilt nicht",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard nur losgelassener Spieler erholt sich",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Erholung schlägt Dauerhalten: Rundensieg",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard zwei Rundensiege beenden Match",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard vollständiger Match-Endstand",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Layout result",
+      "ok": true,
+      "data": {
+        "bad": [],
+        "horizontal": false,
+        "vertical": false
+      }
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Restart: Punkte, Ausdauer, Seil",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Restart übernimmt keine Holds",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Ausdauer wird sichtbar verbraucht",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard echter Fenster-Fokusverlust",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Fokusverlust löst beide Seilgriffe",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Fokusverlust regeneriert statt Phantomziehen",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard Eingaben sind echte Browserereignisse",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard keine synthetischen Spieleingaben",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-keyboard keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-640x360-keyboard keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-640x360-iframe Elternantwort echte erfolgreiche HTML-Antwort",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-iframe Elternantwort echte CSP und iframe-Schutz",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-iframe Elternantwort nosniff unverändert",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-iframe genau eine echte mini-back-Nachricht",
+      "ok": true,
+      "data": [
+        {
+          "data": "mini-back",
+          "origin": "http://127.0.0.1:8182",
+          "sourceCorrect": true
+        }
+      ]
+    },
+    {
+      "name": "tauziehen-640x360-iframe Elternseite und Spiel bleiben bis Integration geladen",
+      "ok": true
+    },
+    {
+      "name": "tauziehen-640x360-iframe keine JS-/HTTP-/Konsolenfehler",
+      "ok": true,
+      "data": []
+    },
+    {
+      "name": "tauziehen-640x360-iframe keine CSP-Verletzungen",
+      "ok": true,
+      "data": []
+    }
+  ],
+  "errors": [],
+  "headers": [
+    {
+      "name": "tap-duell-390x844-touch",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tap-duell-390x844-keyboard",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tap-duell-390x844-iframe Elternantwort",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "auto-rennen-390x844-touch",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "auto-rennen-390x844-iframe Elternantwort",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tauziehen-390x844-touch",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tauziehen-390x844-keyboard",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tauziehen-390x844-iframe Elternantwort",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tap-duell-640x360-touch",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tap-duell-640x360-keyboard",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tap-duell-640x360-iframe Elternantwort",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "auto-rennen-640x360-touch",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "auto-rennen-640x360-iframe Elternantwort",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tauziehen-640x360-touch",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tauziehen-640x360-keyboard",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "name": "tauziehen-640x360-iframe Elternantwort",
+      "status": 200,
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+      "frame": "SAMEORIGIN",
+      "contentType": "text/html; charset=utf-8"
+    }
+  ],
+  "cases": [
+    {
+      "name": "tap-duell-390x844-touch",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tap-duell-390x844-keyboard",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tap-duell-390x844-iframe",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "auto-rennen-390x844-touch",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "auto-rennen-390x844-keyboard",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "auto-rennen-390x844-iframe",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tauziehen-390x844-touch",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tauziehen-390x844-keyboard",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tauziehen-390x844-iframe",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tap-duell-640x360-touch",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tap-duell-640x360-keyboard",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tap-duell-640x360-iframe",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "auto-rennen-640x360-touch",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "auto-rennen-640x360-keyboard",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "auto-rennen-640x360-iframe",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tauziehen-640x360-touch",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tauziehen-640x360-keyboard",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "tauziehen-640x360-iframe",
+      "ok": true,
+      "errors": []
+    }
+  ],
+  "ok": true
+}

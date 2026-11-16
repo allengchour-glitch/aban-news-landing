@@ -5,12 +5,13 @@
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>Tipp-Duell</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://abannews.com/minispiele/tap-duell.html">
-<meta name="description" content="Tap-Duell: 10 Sekunden, wer öfter tippt, gewinnt.">
+<meta name="description" content="Tap-Duell: Triff zwölf Schläge genau im Takt. Präzision gewinnt, Zusatz-Tipps kosten Punkte.">
 <meta property="og:title" content="Tipp-Duell">
 <meta property="og:image" content="https://abannews.com/og-arcade.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:description" content="Tap-Duell: 10 Sekunden, wer öfter tippt, gewinnt.">
+<meta property="og:description" content="Tap-Duell: Triff zwölf Schläge genau im Takt. Präzision gewinnt, Zusatz-Tipps kosten Punkte.">
 <meta property="og:url" content="https://abannews.com/minispiele/tap-duell.html">
 <meta property="og:type" content="website">
 <style>
@@ -42,11 +43,15 @@
   @keyframes pulse{0%{filter:brightness(1.25)}100%{filter:brightness(1)}}
 
   .who{font-size:24px;font-weight:900;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.3);margin-bottom:4px;letter-spacing:.5px;}
-  .count{font-size:76px;font-weight:900;color:#fff;text-shadow:0 4px 10px rgba(0,0,0,.32);line-height:1;}
-  .tapicon{font-size:44px;margin-top:8px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.25);opacity:.95;}
-  .bar{width:70%;max-width:260px;height:16px;background:rgba(255,255,255,.4);border-radius:14px;margin-top:14px;overflow:hidden;
-    box-shadow:inset 0 2px 4px rgba(0,0,0,.15);}
-  .bar > i{display:block;height:100%;width:0%;background:#ffcf3a;border-radius:14px;transition:width .12s;}
+  .count{font-size:54px;font-weight:900;color:#fff;text-shadow:0 4px 10px rgba(0,0,0,.32);line-height:1;}
+  .tapicon{font-size:18px;margin-top:8px;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.25);opacity:.95;}
+  .bar{width:min(70vw,260px);height:28px;background:#fff9;border-radius:14px;margin-top:8px;position:relative;overflow:hidden;}
+  .bar:before{content:"";position:absolute;left:32.8%;width:34.4%;height:100%;background:#267644;}
+  .bar:after{content:"";position:absolute;left:49%;width:2%;height:100%;background:#fff;}
+  .bar > i{position:absolute;top:2px;bottom:2px;left:4%;width:8px;transform:translateX(-50%);background:#642d82;border:2px solid #fff;border-radius:8px;z-index:1;}
+  .feedback{font-size:15px;font-weight:bold;color:#213d58;margin-top:5px;}
+  .half{touch-action:none;}
+
 
   /* Mitte: Timer + Start */
   .center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:30;
@@ -77,26 +82,32 @@
   .scorebox .val{font-size:32px;font-weight:900;}
   .scorebox.p1 .val{color:#e8574a;}
   .scorebox.p2 .val{color:#3a7dd8;}
+  @media(max-height:600px){.who{font-size:18px}.count{font-size:36px}.tapicon{font-size:15px;margin-top:2px}.bar{margin-top:3px;height:22px}.feedback{font-size:13px}.timerbadge{width:66px;height:66px;font-size:28px}.card{padding:16px}.sub{font-size:15px;margin-bottom:10px}.emoji{font-size:36px}}
+  @media(max-height:450px){
+    .half{flex-basis:0;min-height:0;}
+    .half.top .flip{position:relative;top:-16px;}
+    .half.bottom>*{position:relative;top:16px;}
+  }
 </style>
 </head>
 <body>
 <div id="app">
-  <button class="backbtn" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+  <button type="button" class="backbtn" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
 
   <div class="arena">
     <div class="half top" id="halfTop">
       <div class="flip" style="display:flex;flex-direction:column;align-items:center;">
         <div class="who">🔴 Spieler 1</div>
         <div class="count" id="cntTop">0</div>
-        <div class="tapicon">👆 tippen!</div>
-        <div class="bar"><i id="barTop"></i></div>
+        <div class="tapicon" id="cueTop">Schlag 1 / 12 · A</div>
+        <div class="bar"><i id="barTop"></i></div><div class="feedback" id="feedbackTop">Spieler 1: Taste A</div>
       </div>
     </div>
     <div class="half bottom" id="halfBottom">
       <div class="who">🔵 Spieler 2</div>
       <div class="count" id="cntBottom">0</div>
-      <div class="tapicon">👆 tippen!</div>
-      <div class="bar"><i id="barBottom"></i></div>
+      <div class="tapicon" id="cueBottom">Schlag 1 / 12 · L</div>
+      <div class="bar"><i id="barBottom"></i></div><div class="feedback" id="feedbackBottom">Spieler 2: Taste L</div>
     </div>
   </div>
 
@@ -107,9 +118,9 @@
     <div class="card">
       <div class="emoji">👆⚡</div>
       <div class="title">Tipp-Duell</div>
-      <div class="sub">Jeder tippt <b>10 Sekunden</b> lang so schnell wie möglich auf seine Hälfte.<br>Wer öfter tippt, gewinnt!</div>
+      <div class="sub">Triff <b>12 Schläge</b>: Tippe genau dann, wenn der Zeiger die Mitte kreuzt. Perfekt: 100, nah dran: 50 Punkte. Zusatz-Tipps kosten 25 Punkte.<br>Rot oben: <b>A</b> · Blau unten: <b>L</b><br>Oder jeder auf seine Hälfte.</div>
       <div style="margin-top:10px;font-size:11px;opacity:.6"><a href="/impressum.html" style="color:inherit">Impressum</a> · <a href="/datenschutz.html" style="color:inherit">Datenschutz</a></div>
-      <button class="btn" id="startBtn">▶ Los geht's!</button>
+      <button type="button" class="btn" id="startBtn">▶ Los geht's!</button>
     </div>
   </div>
 
@@ -122,92 +133,95 @@
         <div class="scorebox p1"><div class="lbl">🔴 Spieler 1</div><div class="val" id="endP1">0</div></div>
         <div class="scorebox p2"><div class="lbl">🔵 Spieler 2</div><div class="val" id="endP2">0</div></div>
       </div>
-      <button class="btn green" id="againBtn">🔁 Nochmal</button>
+      <div class="sub" id="endDetail"></div><button type="button" class="btn green" id="againBtn">🔁 Nochmal</button>
     </div>
   </div>
 </div>
 
+<script id="game-logic">
+/* Reine Spiellogik; dieselbe Quelle wird ohne Browser geprüft. */
+var GameLogic = (function(){
+  "use strict";
+  var PERIOD=750, FIRST=1000, BEATS=12, WINDOW=140, DURATION=10000;
+  function player(){ return {score:0, hits:0, perfect:0, used:{}, feedback:'Auf die Mitte warten'}; }
+  function tap(p, elapsed){
+    if(elapsed<0 || elapsed>=DURATION) return;
+    var beat=Math.round((elapsed-FIRST)/PERIOD);
+    if(beat<0 || beat>=BEATS || p.used[beat]){
+      p.score=Math.max(0,p.score-25); p.feedback='Zusatz-Tipp −25'; return;
+    }
+    p.used[beat]=true;
+    var error=Math.abs(elapsed-(FIRST+beat*PERIOD));
+    if(error<=WINDOW){
+      var perfect=error<=55;
+      p.score+=perfect?100:50; p.hits++; if(perfect) p.perfect++;
+      p.feedback=perfect?'Perfekt! +100':'Im Takt +50';
+    } else { p.score=Math.max(0,p.score-40); p.feedback='Zu früh / spät −40'; }
+  }
+  function cue(elapsed){
+    var beat=Math.max(0,Math.min(BEATS-1,Math.round((elapsed-FIRST)/PERIOD)));
+    return {beat:beat+1, offset:Math.max(-1,Math.min(1,(elapsed-FIRST-beat*PERIOD)/(PERIOD/2)))};
+  }
+  return {player:player,tap:tap,cue:cue,duration:DURATION,beats:BEATS};
+}());
+</script>
 <script>
 (function(){
   "use strict";
-  var DURATION = 10;
-  var top=0, bottom=0, running=false, endTime=0, rafId=null;
-
-  var elCntTop=document.getElementById('cntTop');
-  var elCntBottom=document.getElementById('cntBottom');
-  var elBarTop=document.getElementById('barTop');
-  var elBarBottom=document.getElementById('barBottom');
-  var elTimer=document.getElementById('timer');
-  var halfTop=document.getElementById('halfTop');
-  var halfBottom=document.getElementById('halfBottom');
-  var startOverlay=document.getElementById('startOverlay');
-  var endOverlay=document.getElementById('endOverlay');
-
-  function updateBars(){
-    var max=Math.max(top,bottom,1);
-    elBarTop.style.width=(top/max*100)+'%';
-    elBarBottom.style.width=(bottom/max*100)+'%';
-  }
-
-  function pulse(el){
-    el.classList.remove('pulse');
-    /* force reflow to restart animation */
-    void el.offsetWidth;
-    el.classList.add('pulse');
-  }
-
-  function tap(which){
-    if(!running) return;
-    if(which==='top'){ top++; elCntTop.textContent=top; pulse(halfTop); }
-    else { bottom++; elCntBottom.textContent=bottom; pulse(halfBottom); }
-    updateBars();
-  }
-
-  /* Ein Handler für Touch + Maus, doppeltes Zählen vermeiden */
-  function bindHalf(el, which){
-    el.addEventListener('pointerdown', function(e){
-      if(e.pointerType==='mouse' && e.button!==0) return;
-      e.preventDefault(); tap(which);
+  var players, running=false, started=0, raf=null, keys=new Set();
+  var $=function(id){return document.getElementById(id);};
+  function render(elapsed){
+    var cue=GameLogic.cue(elapsed);
+    ['Top','Bottom'].forEach(function(side,i){
+      $('cnt'+side).textContent=players[i].score;
+      $('bar'+side).style.left=(50+cue.offset*46)+'%';
+      $('cue'+side).textContent=elapsed<625?'Bereit …':'Schlag '+cue.beat+' / '+GameLogic.beats;
+      $('feedback'+side).textContent=players[i].feedback;
     });
+    $('timer').textContent=Math.max(0,Math.ceil((GameLogic.duration-elapsed)/1000));
   }
-  bindHalf(halfTop,'top');
-  bindHalf(halfBottom,'bottom');
-
-  function loop(){
-    if(!running) return;
-    var remain=(endTime-Date.now())/1000;
-    if(remain<=0){ elTimer.textContent='0'; finish(); return; }
-    elTimer.textContent=Math.ceil(remain);
-    rafId=requestAnimationFrame(loop);
-  }
-
-  function start(){
-    top=0; bottom=0; running=true;
-    elCntTop.textContent='0'; elCntBottom.textContent='0';
-    updateBars();
-    startOverlay.classList.add('hidden');
-    endOverlay.classList.add('hidden');
-    endTime=Date.now()+DURATION*1000;
-    elTimer.textContent=String(DURATION);
-    if(rafId) cancelAnimationFrame(rafId);
-    rafId=requestAnimationFrame(loop);
-  }
-
   function finish(){
-    running=false;
-    if(rafId){ cancelAnimationFrame(rafId); rafId=null; }
-    var emoji=document.getElementById('endEmoji');
-    var title=document.getElementById('endTitle');
-    document.getElementById('endP1').textContent=top;
-    document.getElementById('endP2').textContent=bottom;
-    if(top>bottom){ emoji.textContent='🔴🏆'; title.textContent='Spieler 1 gewinnt!'; title.style.color='#e8574a'; }
-    else if(bottom>top){ emoji.textContent='🔵🏆'; title.textContent='Spieler 2 gewinnt!'; title.style.color='#3a7dd8'; }
-    else { emoji.textContent='🤝'; title.textContent='Unentschieden!'; title.style.color='#2b6cb0'; }
-    endOverlay.classList.remove('hidden');
+    running=false; if(raf!==null) cancelAnimationFrame(raf); raf=null;
+    var a=players[0].score,b=players[1].score;
+    $('endP1').textContent=a; $('endP2').textContent=b;
+    $('endTitle').textContent=a===b?'Unentschieden!':'Spieler '+(a>b?'1':'2')+' gewinnt!';
+    $('endEmoji').textContent=a===b?'🤝':(a>b?'🔴🏆':'🔵🏆');
+    $('endDetail').textContent='Treffer: '+players[0].hits+' : '+players[1].hits+' von je '+GameLogic.beats;
+    $('endOverlay').classList.remove('hidden');
   }
-
-  document.getElementById('startBtn').addEventListener('click', start);
-  document.getElementById('againBtn').addEventListener('click', start);
+  function loop(now){
+    if(!running) return;
+    var elapsed=now-started; render(elapsed);
+    if(elapsed>=GameLogic.duration){finish(); return;}
+    raf=requestAnimationFrame(loop);
+  }
+  function tap(i){
+    if(!running) return;
+    var elapsed=performance.now()-started;
+    if(elapsed>=GameLogic.duration){render(elapsed); finish(); return;}
+    GameLogic.tap(players[i],elapsed); render(elapsed);
+  }
+  function start(){
+    if(raf!==null) cancelAnimationFrame(raf);
+    players=[GameLogic.player(),GameLogic.player()]; keys.clear();
+    started=performance.now(); running=true;
+    $('startOverlay').classList.add('hidden'); $('endOverlay').classList.add('hidden');
+    render(0); raf=requestAnimationFrame(loop);
+  }
+  ['halfTop','halfBottom'].forEach(function(id,i){
+    $(id).addEventListener('pointerdown',function(e){
+      if(e.pointerType==='mouse' && e.button!==0) return;
+      e.preventDefault(); tap(i);
+    });
+  });
+  window.addEventListener('keydown',function(e){
+    var k=e.key.toLowerCase(); if(k!=='a' && k!=='l') return;
+    e.preventDefault(); if(e.repeat || keys.has(k)) return;
+    keys.add(k); tap(k==='a'?0:1);
+  });
+  window.addEventListener('keyup',function(e){keys.delete(e.key.toLowerCase());});
+  window.addEventListener('blur',function(){keys.clear();});
+  $('startBtn').addEventListener('click',start); $('againBtn').addEventListener('click',start);
 })();
 </script>
 </body>

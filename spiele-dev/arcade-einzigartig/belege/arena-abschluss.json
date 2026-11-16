@@ -1,0 +1,81 @@
+{
+  "status": "passed-with-scoped-followup",
+  "browserClosed": true,
+  "gpuReleasedTo": "Parent/Dungeon",
+  "cpuTestsPassed": 18,
+  "firstRun": {
+    "report": "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/first-run/result.json",
+    "passedChecks": 10,
+    "historicalFailure": "locator.click: Timeout 30000ms exceeded.",
+    "screenshots": 14
+  },
+  "targetedRun": {
+    "report": "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/result.json",
+    "scope": "station-native",
+    "passedChecks": 11,
+    "failure": null,
+    "pageErrors": [],
+    "consoleErrors": [],
+    "httpErrors": [],
+    "screenshots": 8
+  },
+  "inspection": {
+    "complete": true,
+    "method": "Alle 22 PNGs einzeln mit view_image angesehen.",
+    "files": [
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-menue.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-reaktor-stabil.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-bau-reparatur.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-reaktor-kritisch.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-reaktor-verloren.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-nexus.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-reaktor-sieg.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/touch-hochformat.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/touch-hochformat-bau-reparatur.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/touch-querformat.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/touch-querformat-bau-reparatur.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/station-reaktor.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/station-bau-reparatur.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/station-sieg.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/station-reaktor.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/station-bau-reparatur.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/station-sieg.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-gast-reparatur.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-gast-verloren.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-host-nexus-layout.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-gast-sieg.png",
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-host-sieg.png"
+    ]
+  },
+  "frozenSHA256First12": {
+    "neon-survivor.html": "dd64ba43b85e",
+    "css/arena-nexus.css": "1484b0e2e6c3",
+    "js/arena-nexus/reactor.js": "c2442eec6beb",
+    "js/arena-nexus/reactor-view.js": "70d0f70939aa",
+    "spiele-dev/arena-nexus/browser-qa.cjs": "02ddc1f43783"
+  },
+  "scopeLimits": [
+    "Solo/Touch/Station: Spiel-HTML, Assets, Renderer, rAF und Header unverändert vom Server 8182. Keine Zeit-/Renderer-Ersetzung in diesen Teilfällen.",
+    "Nur Koop: Test-HTML injiziert einen renderBloom-Hook. Automatische 3D-Zeichnung unterdrückt, Screenshots einzeln echt gezeichnet. Spiel-/UI-/rAF-Zeit-/Transportlogik unverändert. Kein Beleg für Leistung mit zwei gleichzeitig zeichnenden Seiten.",
+    "Kontrollierte Kampfzustände nutzen bestehende __ns-Hilfen: Schaden, Baupause, Schrott und Boss-Spawn/-Schaden. Kein Beleg für einen natürlich gespielten Zehn-Minuten-Sieg oder finale Balance.",
+    "Stations-Elternseite ist eine geroutete Fixture unter der echten Survivor-URL mit deren unveränderten Headern. Das Spiel-Iframe bleibt unverändert. Wildnis-Belohnungslogik selbst wird nicht getestet.",
+    "Koop nutzt den versionierten Spiel-Namensraum survivor-reactor1 und MP.localMode: native RTCPeerConnection/DataChannels, BroadcastChannel nur zum Signaling. Kein Beleg für PeerJS-Cloud, TURN, NAT oder zwei getrennte Geräte.",
+    "Host/Gast teilen wegen BroadcastChannel einen Browser-Kontext und damit localStorage; individuelle Konto-Belohnungen prüft zusätzlich die getrennte VM-Suite.",
+    "Solo/Touch aus dem Erstlauf; nach lokalem Station-z-index-/Desktop-Bossleisten-/Favicon-Fix gezielt Station/native erneut geprüft. Kein vollständiger erneuter Solo-/Touch-Lauf."
+  ],
+  "networkRender": {
+    "mode": "manual snapshots",
+    "host": {
+      "suppressed": true,
+      "draws": 2,
+      "skipped": 175,
+      "frame": 175
+    },
+    "guest": {
+      "suppressed": true,
+      "draws": 3,
+      "skipped": 602,
+      "frame": 602
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "Finale Runtime-Quellen nach lokaler Abnahme; einzelne frühere CSS-Teilnachweise im README gekennzeichnet.",
+  "baseline": "da8cd75352e1e5f9b7962fb5c3cd43f205b12159",
+  "sha256": {
+    "spiele.html": "9cb9e0b3290b60dbf6b2cb3b179e358e40f525801d071aeacad88734835e4184",
+    "minispiele/index.html": "b5bebe3233be8278a60c510a9d16cdcf30b481fae775af0e867776b9d0f2e4cd",
+    "neon-racer.html": "9873b02e437dc862554add5955131875560f0431792a816a37981f9bda9d5791",
+    "neon-jump.html": "6eeafdf769eaf7742384a087b660dc004af71f40a0b782228c045fb0eb74db94",
+    "neon-park.html": "f033fad2c85af277ab111c00ced4cf1552f73b75cb38d8bc28e5c811a0f25e52",
+    "neon-survivor.html": "dd64ba43b85e95d55db578d9d4001755c08ee5ce94959e6595336b8a2cccc15e",
+    "neon-dungeon.html": "36d43a14094cd5b9bd93d36a8a0df39460183472750ae1f7133849bf0e312560",
+    "minispiele/tap-duell.html": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8",
+    "minispiele/auto-rennen.html": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3",
+    "minispiele/tauziehen.html": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a",
+    "minispiele/stapel-turm.html": "decf1822da85a3a718d79ab379588d30fde86390aa6cb248a78374e37868b51c",
+    "js/arena-nexus/reactor-view.js": "70d0f70939aa849aa7893d9465590ef1c7cef98077e86d57e2301f00cab5012c",
+    "js/arena-nexus/reactor.js": "c2442eec6bebf01aa4bc8f4e20eb5666a0415b924622c7f88b6d07caa7981415",
+    "js/dungeon-trials/state.js": "1c52bbf044bc8338df8c5a2dcb359dcc84aea7536bed581a0a49959e0151b7a5",
+    "js/dungeon-trials/view.js": "13b2c678b33bd4f9e4c1b6ae13ac9fe48a042e4125c4dc4ceb3a9e98669396a4",
+    "js/neon-park/premiere.js": "a1d8fa7c6595c5eaaab5018fcbefe0cc9cb95bc4cd8489423c9d0c1dac0464e6",
+    "js/parcours/lichtschienen.js": "ba09e47947801d650fada0a570aa921903abe05dd3a70c500357d41f7d0edcd8",
+    "js/prisma-racer/race.js": "867c6d61a072fa52a3030a59113dd2561ab9ea49bbac61ff67b3e9bb0758cd69",
+    "css/prisma-racer.css": "71ac9b805c7dc30f5d4d9b7a6306edfabba7b865ee0c8838c9bc2d9fd19eaa63",
+    "css/parcours.css": "5f568c1d0dca5bc664fd5e2b7c4ce33df7dcce463354d531beccec81b36b0b71",
+    "css/neon-park.css": "60b6a961230ed29025f2a77267e4e10c72a08fa567f2e4965b8c8de55d4dbcb2",
+    "css/arena-nexus.css": "1484b0e2e6c362381e390ea7d12068b88ea0a930edfcb74d2a9e597187e579f5",
+    "css/dungeon-trials.css": "71aca788e383c8808dc863a2d1b22ae1baf0350c24fac2d351049d61dc578cfc"
+  },
+  "expectedPublicRequests": 42
+}

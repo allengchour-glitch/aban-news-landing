@@ -1,0 +1,39 @@
+#director{position:absolute;left:50%;bottom:calc(202px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(440px,94vw);padding:12px 16px;border:1px solid #89d8ee;border-radius:16px;background:rgba(9,24,40,.94);text-align:center;color:#eaf2ff;pointer-events:auto}
+#director[hidden]{display:none}
+#director h2{font-size:1rem;color:#ffd68a;margin-bottom:5px}
+#director p{font-size:.8rem;line-height:1.35;margin:5px 0}
+#rideGauge{position:relative;height:20px;margin:9px 4px;border:1px solid #658fa8;border-radius:8px;background:#162f45;overflow:hidden}
+#targetBand{position:absolute;top:0;bottom:0;background:#257d60;border-left:2px solid #8dffc8;border-right:2px solid #8dffc8}
+#rideNeedle{position:absolute;top:0;bottom:0;width:4px;background:#fff;box-shadow:0 0 6px #fff}
+#rideHold{height:6px;border-radius:6px;background:#29475d;overflow:hidden}
+#rideHold i{display:block;width:0;height:100%;background:#ffd166}
+#rideButtons{display:flex;gap:10px;justify-content:center;margin-top:8px}
+#rideButtons button{touch-action:manipulation;min-width:112px;min-height:44px;padding:8px;border:1px solid #8ad0ff;border-radius:10px;background:#173d58;color:#fff;font:800 .9rem system-ui;cursor:pointer}
+#rideButtons button:active{background:#286785}
+#rideButtons button:disabled{opacity:.5;cursor:default}
+#mission{position:absolute;left:12px;top:calc(48px + env(safe-area-inset-top));max-width:min(330px,55vw);padding:8px 10px;border-radius:12px;background:rgba(9,24,40,.9);font-size:.8rem;line-height:1.45;color:#eaf2ff;white-space:pre-line}
+#mission strong{color:#ffd68a}
+#pTick{color:#ffd68a}
+#rides .ride{max-width:44vw;white-space:nowrap}
+#rides .ride.ready{border-color:#ffd166;color:#ffd166}
+#hint{bottom:calc(160px + env(safe-area-inset-bottom))}
+#bAct{font-size:.9rem;text-align:center;padding:5px}
+#bar{display:none!important}
+#showLight{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:0;background:radial-gradient(ellipse at 50% 35%,rgba(255,212,105,.25),transparent 70%)}
+@media(max-width:600px){
+  #tag{display:none}
+  #pClock{display:none}
+  #mission{max-width:51vw;font-size:.73rem;top:calc(42px + env(safe-area-inset-top))}
+  #rides .ride{font-size:.67rem;padding:4px 6px}
+  #director{bottom:calc(170px + env(safe-area-inset-bottom));padding:9px 12px}
+  #director h2{font-size:.9rem}
+  #director p{font-size:.75rem}
+  #rideButtons button{min-width:100px}
+}
+@media(max-height:540px){
+  #director{left:12px;transform:none;bottom:32px;width:min(370px,56vw);padding:8px 12px}
+  #mission{display:none}
+  #director p{margin:3px 0}
+  #stick{bottom:16px;left:calc(59vw + env(safe-area-inset-left));width:94px;height:94px}
+  #hint{bottom:calc(122px + env(safe-area-inset-bottom))}
+}

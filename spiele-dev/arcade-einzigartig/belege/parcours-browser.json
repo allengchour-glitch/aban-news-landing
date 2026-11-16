@@ -1,0 +1,51 @@
+{
+  "checks": [
+    "Unveränderte Seite: echter Tastatur-Sprung fängt erste Schiene und sichert Impuls",
+    "Echter R-Tastendruck behält Impuls",
+    "Strecke 1: alle Schienen, Portaltransfer und Finale gerendert",
+    "Strecke 2: alle Schienen, Portaltransfer und Finale gerendert",
+    "Strecke 3: alle Schienen, Portaltransfer und Finale gerendert",
+    "Koop: geteilte Impulse und gemeinsames Portalziel",
+    "Mobiles Layout: HUD, Feedback und Retry innerhalb des Viewports",
+    "Echtes Touch-Gerät: Solo-Start und Sprungzone nutzbar",
+    "Echte iframe-Station: Solo-Autostart und mini-back unter echten CSP-Headern"
+  ],
+  "errors": [],
+  "layout": [
+    {
+      "id": "hud",
+      "x": 0,
+      "y": 10,
+      "right": 390,
+      "bottom": 74
+    },
+    {
+      "id": "railHud",
+      "x": 10,
+      "y": 108,
+      "right": 306.546875,
+      "bottom": 161.328125
+    },
+    {
+      "id": "retryBtn",
+      "x": 260.140625,
+      "y": 700,
+      "right": 380,
+      "bottom": 744
+    },
+    {
+      "id": "muteBtn",
+      "x": 340,
+      "y": 8,
+      "right": 380,
+      "bottom": 48
+    },
+    {
+      "id": "pauseBtn",
+      "x": 286,
+      "y": 8,
+      "right": 330,
+      "bottom": 52
+    }
+  ]
+}

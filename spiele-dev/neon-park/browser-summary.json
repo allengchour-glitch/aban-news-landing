@@ -1,0 +1,439 @@
+{
+  "kind": "Getrennte Browser-Teilläufe; kein behaupteter vollständiger erneuter Browser-Durchlauf.",
+  "browserClosed": true,
+  "nodeVm": {
+    "checks": 11,
+    "errors": 0,
+    "includes": "Gespeicherte Finale-Fixture mit normaler E-Aktion, zehn simulierten Sekunden und synchronem VM-Koop-Ende"
+  },
+  "soloUi": {
+    "source": "/tmp/aban-neon-park-browser/result.json",
+    "positiveChecks": [
+      "Server liefert echte CSP",
+      "Echter WebGL-Render mit geladenen Gästen; Zeichnungen zwischen Aufnahmen gedrosselt",
+      "WASD bewegt die Figur real",
+      "Solo-Pause friert echte rAF-Simulation ein",
+      "solo · Kettenflieger über UI bestanden",
+      "solo · Teetassen über UI bestanden",
+      "solo · Piratenschiff über UI bestanden",
+      "solo · Achterbahn über UI bestanden",
+      "Vollständiger Solo-Abschluss über echte Tasten und gerenderte Lichtshow",
+      "Echte Touch-Taps starten und regeln; Hochformat ohne Überdeckung",
+      "Native Touch-Bewegung steuert den Joystick",
+      "Touch-Querformat: Regie und Aktion erreichbar"
+    ],
+    "laterHarnessFailure": "locator.click: Timeout 30000ms exceeded.",
+    "scope": "Vollständiger Solo-Abschluss und erste Touch-Prüfung erfolgreich; danach verborgener Raumknopf im Testskript."
+  },
+  "correctedTouch": {
+    "source": "/tmp/aban-neon-park-browser/result-touch.json",
+    "positiveChecks": [
+      {
+        "name": "Echte Touch-Taps starten und regeln; Hochformat ohne Überdeckung",
+        "data": {
+          "boxes": {
+            "director": {
+              "x": 11.703125,
+              "y": 454.25,
+              "w": 366.59375,
+              "h": 219.75,
+              "visible": true
+            },
+            "rideMinus": {
+              "x": 90,
+              "y": 593.8125,
+              "w": 100,
+              "h": 44,
+              "visible": true
+            },
+            "ridePlus": {
+              "x": 200,
+              "y": 593.8125,
+              "w": 100,
+              "h": 44,
+              "visible": true
+            },
+            "bAct": {
+              "x": 290,
+              "y": 728,
+              "w": 78,
+              "h": 78,
+              "visible": true
+            },
+            "stick": {
+              "x": 20,
+              "y": 694,
+              "w": 118,
+              "h": 118,
+              "visible": true
+            }
+          },
+          "inside": true,
+          "accessible": true,
+          "headingsClear": true,
+          "footerClear": true,
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "name": "Native Touch-Bewegung steuert den Joystick"
+      },
+      {
+        "name": "Touch-Querformat: Regie und Aktion erreichbar",
+        "data": {
+          "boxes": {
+            "director": {
+              "x": 12,
+              "y": 138.9375,
+              "w": 370,
+              "h": 219.0625,
+              "visible": true
+            },
+            "rideMinus": {
+              "x": 80,
+              "y": 281.734375,
+              "w": 112,
+              "h": 44,
+              "visible": true
+            },
+            "ridePlus": {
+              "x": 202,
+              "y": 281.734375,
+              "w": 112,
+              "h": 44,
+              "visible": true
+            },
+            "bAct": {
+              "x": 744,
+              "y": 274,
+              "w": 78,
+              "h": 78,
+              "visible": true
+            },
+            "stick": {
+              "x": 497.953125,
+              "y": 280,
+              "w": 94,
+              "h": 94,
+              "visible": true
+            }
+          },
+          "inside": true,
+          "accessible": true,
+          "headingsClear": true,
+          "footerClear": true,
+          "width": 844,
+          "height": 390
+        }
+      }
+    ],
+    "laterFailure": "page.waitForFunction: Timeout 20000ms exceeded.",
+    "scope": "Korrigierte Hoch-/Querformatansichten und echter Joystick erfolgreich; anschließender Versuch mit System-Chromium ohne ICE-Kandidaten."
+  },
+  "native": {
+    "source": "/tmp/aban-neon-park-browser/result-coop.json",
+    "launch": {
+      "executable": "/tmp/aban-browsers/chromium-1255/chrome-linux64/chrome",
+      "args": [
+        "--no-sandbox",
+        "--enable-unsafe-swiftshader"
+      ]
+    },
+    "positiveChecks": [
+      {
+        "name": "Server liefert echte CSP",
+        "data": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' blob: https://0.peerjs.com wss://0.peerjs.com https://peerjs.92k.de wss://peerjs.92k.de https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+      },
+      {
+        "name": "Native lokale RTCPeerConnection mit offenem main/fast-Kanal",
+        "data": {
+          "diag": {
+            "conn": "connected",
+            "ice": "connected",
+            "sig": "stable",
+            "gather": "complete",
+            "main": "open",
+            "fast": "open"
+          },
+          "native": 2,
+          "stats": [
+            {
+              "label": "main",
+              "state": "open",
+              "messagesSent": 1,
+              "messagesReceived": 3
+            },
+            {
+              "label": "fast",
+              "state": "open",
+              "messagesSent": 1,
+              "messagesReceived": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Nur der Host simuliert; native Gastpakete können keinen Sieg setzen",
+        "data": {
+          "host": 23,
+          "guest": 0
+        }
+      },
+      {
+        "name": "koop · Kettenflieger über UI bestanden",
+        "data": {
+          "elapsed": 9.433699999999988,
+          "inputs": 15
+        }
+      },
+      {
+        "name": "koop · Teetassen über UI bestanden",
+        "data": {
+          "elapsed": 10.900200000000225,
+          "inputs": 12
+        }
+      },
+      {
+        "name": "koop · Piratenschiff über UI bestanden",
+        "data": {
+          "elapsed": 7.782800000000262,
+          "inputs": 6
+        }
+      },
+      {
+        "name": "koop · Achterbahn über UI bestanden",
+        "data": {
+          "elapsed": 8.833300000000156,
+          "inputs": 14
+        }
+      }
+    ],
+    "rides": [
+      {
+        "label": "koop",
+        "i": 0,
+        "elapsed": 9.433699999999988,
+        "inputs": 15,
+        "stars": 3
+      },
+      {
+        "label": "koop",
+        "i": 1,
+        "elapsed": 10.900200000000225,
+        "inputs": 12,
+        "stars": 3
+      },
+      {
+        "label": "koop",
+        "i": 2,
+        "elapsed": 7.782800000000262,
+        "inputs": 6,
+        "stars": 3
+      },
+      {
+        "label": "koop",
+        "i": 3,
+        "elapsed": 8.833300000000156,
+        "inputs": 14,
+        "stars": 3
+      }
+    ],
+    "errors": [],
+    "httpErrors": [],
+    "limit": "page.waitForFunction: Timeout 25000ms exceeded.",
+    "lastStates": [
+      {
+        "connected": "connected",
+        "channels": {
+          "conn": "connected",
+          "ice": "connected",
+          "sig": "stable",
+          "gather": "complete",
+          "main": "open",
+          "fast": "open"
+        },
+        "phase": "show",
+        "finale": 3.4497999999999336,
+        "rides": [
+          {
+            "status": "passed",
+            "stage": 3
+          },
+          {
+            "status": "passed",
+            "stage": 3
+          },
+          {
+            "status": "passed",
+            "stage": 3
+          },
+          {
+            "status": "passed",
+            "stage": 3
+          }
+        ]
+      },
+      {
+        "connected": "connected",
+        "channels": {
+          "conn": "connected",
+          "ice": "connected",
+          "sig": "stable",
+          "gather": "complete",
+          "main": "open",
+          "fast": "open"
+        },
+        "phase": "show",
+        "finale": 3.366500000000003,
+        "rides": [
+          {
+            "status": "passed",
+            "stage": 3
+          },
+          {
+            "status": "passed",
+            "stage": 3
+          },
+          {
+            "status": "passed",
+            "stage": 3
+          },
+          {
+            "status": "passed",
+            "stage": 3
+          }
+        ]
+      }
+    ],
+    "scope": "Native Kanäle, Host-Autorität und vier UI-Fahrten erfolgreich. Finale gestartet, Endbildschirm nicht bestätigt: nach 25 Wandsekunden erst 3,45/10 Simulationssekunden."
+  },
+  "drawing": "Unveränderter Render separat im unthrottled-Ordner. UI- und bisheriger nativer Lauf: zwei Sekunden Pause nach Zeichnungen, echte Uhr und Updates. Künftiger Finale-Netztest: Zeichnen ausgesetzt außer erzwungenem Screenshot.",
+  "remaining": "Keine offene angeforderte Park-Prüfung. Normale Geräteperformance und Internet-/NAT-/TURN-Koop sind durch diese lokalen Browser-Fixtures nicht belegt.",
+  "hashes": {
+    "css/neon-park.css": "60b6a961230e",
+    "js/neon-park/premiere.js": "a1d8fa7c6595"
+  },
+  "protocolCompatibility": {
+    "current": "park-premiere1",
+    "priorNativeRun": "park",
+    "status": "Neuer Raum park-premiere1 offline vertraglich und im fokussierten nativen Finale-Lauf erfolgreich geprüft. Alte Park-Clients absichtlich getrennt."
+  },
+  "focusedFinale": {
+    "source": "/workspace/aban-spiele-analyse/arcade-einzigartig/park-finale/result-finale.json",
+    "scope": "Separater nativer Finale-Test mit gültigem zuvor bestandenem Vier-Fahrten-Stand, kein erneut behaupteter kompletter Vier-Fahrten-Lauf.",
+    "namespace": "park-premiere1",
+    "positiveChecks": [
+      {
+        "name": "Server liefert echte CSP",
+        "data": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' blob: https://0.peerjs.com wss://0.peerjs.com https://peerjs.92k.de wss://peerjs.92k.de https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+      },
+      {
+        "name": "Native lokale RTCPeerConnection mit offenem main/fast-Kanal",
+        "data": {
+          "diag": {
+            "conn": "connected",
+            "ice": "connected",
+            "sig": "stable",
+            "gather": "complete",
+            "main": "open",
+            "fast": "open"
+          },
+          "native": 2,
+          "stats": [
+            {
+              "label": "main",
+              "state": "open",
+              "messagesSent": 1,
+              "messagesReceived": 3
+            },
+            {
+              "label": "fast",
+              "state": "open",
+              "messagesSent": 1,
+              "messagesReceived": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Finale-Fixture startet bereit, ohne Sieg/Ergebniszuweisung",
+        "data": {
+          "kind": "Explizit wiederhergestellter, vorher nativ bestätigter Vier-Fahrten-Stand; nur Finale wird hier neu geprüft.",
+          "source": "/workspace/aban-arcade-spielrunde/spiele-dev/neon-park/fixtures/finale-ready.json",
+          "phase": "ready",
+          "rides": [
+            {
+              "status": "passed",
+              "stage": 3
+            },
+            {
+              "status": "passed",
+              "stage": 3
+            },
+            {
+              "status": "passed",
+              "stage": 3
+            },
+            {
+              "status": "passed",
+              "stage": 3
+            }
+          ]
+        }
+      },
+      {
+        "name": "Normale E-Aktion am Stern startet die zehn Simulationssekunden Lichtshow"
+      },
+      {
+        "name": "Fokussierter nativer Finale-Abschluss; Endstände identisch",
+        "data": {
+          "host": "done",
+          "guest": "done",
+          "guestSimulationCalls": 0
+        }
+      },
+      {
+        "name": "Echter nativer Kanalabschluss wird erkannt"
+      },
+      {
+        "name": "Keine Seiten- oder Konsolenfehler"
+      }
+    ],
+    "errors": [],
+    "httpErrors": [],
+    "browserClosed": true,
+    "fixture": {
+      "kind": "Explizit wiederhergestellter, vorher nativ bestätigter Vier-Fahrten-Stand; nur Finale wird hier neu geprüft.",
+      "source": "/workspace/aban-arcade-spielrunde/spiele-dev/neon-park/fixtures/finale-ready.json",
+      "phase": "ready",
+      "rides": [
+        {
+          "status": "passed",
+          "stage": 3
+        },
+        {
+          "status": "passed",
+          "stage": 3
+        },
+        {
+          "status": "passed",
+          "stage": 3
+        },
+        {
+          "status": "passed",
+          "stage": 3
+        }
+      ]
+    },
+    "drawing": "3D-Zeichnen ausgesetzt außer erzwungenen Screenshots; echte JS-/UI-/WebRTC-Ausführung und echte Uhr unverändert.",
+    "screenshots": [
+      "/workspace/aban-spiele-analyse/arcade-einzigartig/park-finale/koop-gast-ergebnis.png"
+    ]
+  },
+  "visualReview": {
+    "shots": 16,
+    "status": "Alle finalen Desktop-/Solo-/Touch-/Koop-Aufnahmen und fokussiertes Ergebnis visuell geprüft; lesbare Regie und Ergebnisse. Grenzen: nahe Besucher im Vordergrund, temporärer Starttipp teils hinter Regiepanel im Querformat."
+  },
+  "productFrozen": true
+}

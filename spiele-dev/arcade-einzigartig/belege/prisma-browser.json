@@ -1,0 +1,278 @@
+{
+  "kind": "Echte Racer-Logik mit kontrollierter rAF-Zeit; kompletter Bot-Lauf mit Tastatureingaben, keine Positionssetzung. Separate Render-/Layout-Fixtures.",
+  "checks": [
+    {
+      "name": "Rallye startet über echten Startknopf",
+      "ok": true
+    },
+    {
+      "name": "Polwechsel per E",
+      "ok": true
+    },
+    {
+      "name": "Pause hält Strecke und Pol unverändert",
+      "ok": true
+    },
+    {
+      "name": "Vollständige Rallye über echte Lenktasten bis zum Ziel",
+      "ok": true,
+      "data": {
+        "state": {
+          "running": false,
+          "paused": false,
+          "dist": 2800,
+          "speed": 72.80871202272299,
+          "shield": 100,
+          "offset": -0.04282100656378951,
+          "polarity": 1,
+          "charge": 0,
+          "matched": 18,
+          "finished": true,
+          "won": true,
+          "mode": "race",
+          "profile": {
+            "runs": 1,
+            "wins": 1,
+            "bestScore": 3780,
+            "bestTime": 39.93,
+            "gateRecord": 18
+          },
+          "things": []
+        },
+        "frames": 2396,
+        "flips": 12,
+        "boosts": 6
+      }
+    },
+    {
+      "name": "Resonanztore und Energie-Boost tatsächlich verwendet",
+      "ok": true,
+      "data": {
+        "state": {
+          "running": false,
+          "paused": false,
+          "dist": 2800,
+          "speed": 72.80871202272299,
+          "shield": 100,
+          "offset": -0.04282100656378951,
+          "polarity": 1,
+          "charge": 0,
+          "matched": 18,
+          "finished": true,
+          "won": true,
+          "mode": "race",
+          "profile": {
+            "runs": 1,
+            "wins": 1,
+            "bestScore": 3780,
+            "bestTime": 39.93,
+            "gateRecord": 18
+          },
+          "things": []
+        },
+        "frames": 2396,
+        "flips": 12,
+        "boosts": 6
+      }
+    },
+    {
+      "name": "Ergebnis und Profil genau einmal gespeichert",
+      "ok": true
+    },
+    {
+      "name": "Ergebnis bleibt stabil, keine doppelte Prämie",
+      "ok": true
+    },
+    {
+      "name": "Endlos-Training separat erreichbar",
+      "ok": true
+    },
+    {
+      "name": "Polknopf im Endlosmodus ausgeblendet",
+      "ok": true
+    },
+    {
+      "name": "Rennprofil übersteht echten Reload",
+      "ok": true
+    },
+    {
+      "name": "Echter Touch-Tipp wechselt den Pol",
+      "ok": true
+    },
+    {
+      "name": "Bedienknöpfe erreichbar 390×844",
+      "ok": true,
+      "data": [
+        {
+          "id": "polarityBtn",
+          "x": 272,
+          "y": 768,
+          "w": 108,
+          "h": 54,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "chargeBtn",
+          "x": 147.46875,
+          "y": 768,
+          "w": 114.53125,
+          "h": 54,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "pauseBtn",
+          "x": 336,
+          "y": 64,
+          "w": 44,
+          "h": 44,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "muteBtn",
+          "x": 334,
+          "y": 10,
+          "w": 46,
+          "h": 46,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "brakeBtn",
+          "x": 10,
+          "y": 752,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        }
+      ]
+    },
+    {
+      "name": "Bedienknöpfe erreichbar 640×360",
+      "ok": true,
+      "data": [
+        {
+          "id": "polarityBtn",
+          "x": 506,
+          "y": 300,
+          "w": 116,
+          "h": 48,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "chargeBtn",
+          "x": 379.46875,
+          "y": 300,
+          "w": 114.53125,
+          "h": 48,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "pauseBtn",
+          "x": 586,
+          "y": 64,
+          "w": 44,
+          "h": 44,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "muteBtn",
+          "x": 584,
+          "y": 10,
+          "w": 46,
+          "h": 46,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "brakeBtn",
+          "x": 18,
+          "y": 284,
+          "w": 64,
+          "h": 64,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        }
+      ]
+    },
+    {
+      "name": "Bedienknöpfe erreichbar 360×640",
+      "ok": true,
+      "data": [
+        {
+          "id": "polarityBtn",
+          "x": 242,
+          "y": 564,
+          "w": 108,
+          "h": 54,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "chargeBtn",
+          "x": 117.46875,
+          "y": 564,
+          "w": 114.53125,
+          "h": 54,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "pauseBtn",
+          "x": 306,
+          "y": 64,
+          "w": 44,
+          "h": 44,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "muteBtn",
+          "x": 304,
+          "y": 10,
+          "w": 46,
+          "h": 46,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        },
+        {
+          "id": "brakeBtn",
+          "x": 10,
+          "y": 548,
+          "w": 70,
+          "h": 70,
+          "visible": true,
+          "inside": true,
+          "hit": true
+        }
+      ]
+    },
+    {
+      "name": "Keine JavaScript-Fehler",
+      "ok": true,
+      "data": []
+    }
+  ],
+  "errors": [],
+  "status": "passed"
+}

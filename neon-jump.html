@@ -20,7 +20,7 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Neon Jump — Koop-Jump-and-Run (2 Spieler) | aban news</title>
-<meta name="description" content="Neon Jump: Koop-Jump-and-Run im Synthwave-Look — 2 Spieler an einer Tastatur, Schalter öffnen Tore, 3 Level mit Checkpoints, Federn und beweglichen Plattformen. Auch solo. Gratis.">
+<meta name="description" content="Neon Jump: Koop-Jump-and-Run im Synthwave-Look — 2 Spieler an einer Tastatur, Lichtschienen tragen dich über Abgründe: sichere 3 Impulse und öffne das Zielportal. 3 Level, solo oder zu zweit mit Schaltern und Checkpoints. Auch solo. Gratis.">
 <link rel="canonical" href="https://abannews.com/neon-wildnis.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Neon Jump — Synthwave-Jump-and-Run">
@@ -74,12 +74,15 @@ canvas{display:block}
 #pauseLayer{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:rgba(7,6,26,.88);text-align:center;padding:20px}
 #pauseLayer button{min-height:44px;padding:12px 24px;border:0;border-radius:14px;font:700 1rem system-ui;cursor:pointer}
 </style>
+<link rel="stylesheet" href="/css/parcours.css?v=5f568c1d0dca">
 </head>
 <body>
 <div id="wrap"></div>
 <div id="vig"></div>
 <div id="hud" class="hide"><div>🪙 <span id="coins">0</span></div><div id="lvlTag" style="color:#ffb0d8">Level 1</div><div>💀 <span id="deaths">0</span> · ⏱ <span id="time">0s</span></div></div>
 <div id="waitP" class="hide" style="position:fixed;top:62px;left:50%;transform:translateX(-50%);z-index:6;background:rgba(20,10,40,.85);color:#ffd6ee;font-weight:800;font-size:1rem;padding:8px 18px;border-radius:14px;border:1px solid rgba(255,122,217,.45);box-shadow:0 6px 20px rgba(0,0,0,.4);animation:wpB 1s ease-in-out infinite">⏳ Warte auf deinen Partner!</div>
+<div id="railHud" class="hide" role="status" aria-live="polite" aria-atomic="true"><strong id="railProgress">Lichtschienen · 0 / 3 Impulse</strong><span id="railHint">Spring auf die erste Schiene.</span></div>
+<button id="retryBtn" class="hide" type="button" title="Zurück zum gesicherten Checkpoint (R)">↺ Checkpoint · R</button>
 <button id="muteBtn" title="Ton an/aus (M)">🔊</button>
 <button id="pauseBtn" class="hide" title="Pause (Esc/P)" aria-label="Pause">⏸</button>
 <div id="pauseLayer" class="hide"><strong>⏸ Pause</strong><button id="resumeBtn">Weiterspielen ▶</button><span>Esc / P</span></div>
@@ -88,18 +91,19 @@ canvas{display:block}
 <div class="overlay" id="start">
   <div class="tag">aban news · Synthwave-Platformer</div>
   <h1>NEON JUMP</h1>
-  <p>Renne durch die Neon-Welt — jetzt als <b>Koop</b>: Pink &amp; Cyan, verbunden durchs Band. <b>Schalter</b> öffnen Tore für den Partner, <b>beide</b> müssen ins Ziel. 3 Level mit Checkpoints, Federn &amp; beweglichen Plattformen.</p>
-  <p style="font-size:.85rem;color:#a890b8"><b style="color:#ff7ad9">P1:</b> A/D + W · <b style="color:#5ef2ff">P2:</b> ←/→ + ↑ · Handy: Solo mit Tipp-Zonen</p>
+  <p class="railIntro"><b>3 Lichtschienen → 3 Impulse → Zielportal.</b><br>Spring auf und gleite bis zum Ende. Sprung löst dich von der Schiene. Nach einem Sturz bleiben Impulse gesichert.</p>
+  <p>Solo oder <b>zu zweit</b>: Checkpoints teilen, Tore mit Schaltern öffnen, gemeinsam ins Portal. <b>↺ / R:</b> zurück zum Checkpoint.</p>
+  <p style="font-size:.85rem;color:#a890b8"><b style="color:#ff7ad9">P1:</b> A/D + W · <b style="color:#5ef2ff">P2:</b> ←/→ + ↑ · 2× springen möglich · Handy: Solo mit Tipp-Zonen</p>
+  <div id="lvlSel" style="margin:6px 0;display:flex;gap:8px;justify-content:center"></div>
+  <div class="launchButtons"><button class="btn" id="startBtn">🤝 Koop starten ▶</button>
+  <button class="btn ghost" id="soloBtn">🏃 Solo starten</button></div>
   <div id="charPick">
-    <div class="cpLbl">Dein Charakter</div>
+    <div class="cpLbl">Dein Charakter · optional</div>
     <div id="charPrev"></div>
     <div class="cpRow" id="cpGender"></div>
     <div class="cpRow" id="cpColor"></div>
     <div class="cpRow" id="cpAcc"></div>
   </div>
-  <div id="lvlSel" style="margin:6px 0;display:flex;gap:8px;justify-content:center"></div>
-  <button class="btn" id="startBtn">🤝 Koop starten ▶</button>
-  <button class="btn ghost" id="soloBtn">🏃 Solo starten</button>
   <div id="best2" class="small"></div>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
   <div class="small" style="font-size:.68rem;opacity:.7">Musik: „Electrodoodle" — Kevin MacLeod (incompetech.com) · CC BY 4.0</div>
@@ -115,6 +119,7 @@ canvas{display:block}
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
+<script src="/js/parcours/lichtschienen.js?v=ba09e4794780"></script>
 <script>
 (function(){
 "use strict";
@@ -316,13 +321,58 @@ var LEVELS=[
   switches:[{x:69,y:7.7,id:0}],gates:[{x:108,y:4.6,w:1.2,h:6,id:0}],
   goal:{x:128,y:5.5}}
 ];
+var Rails=window.ParcoursRails, railState=null, railVisuals=[], portalRing=null, portalCharge=0, railNotice="", railNoticeT=0;
 var curLvl=0,coopMode=true;
 try{curLvl=Math.max(0,Math.min(2,parseInt(localStorage.getItem("nj_lvl")||"0",10)||0));}catch(e){} /* 🛡️ Schwarm-3 P3: negativer nj_lvl kam durch (nur oben geklemmt) → LEVELS[-n] Crash */
 function lvlStars(i){try{return localStorage.getItem("nj_star"+i)||"";}catch(e){return "";}}
 // ---- Level-Bau (Meshes je Level neu) ----
 var lvlGroup=new THREE.Group();scene.add(lvlGroup);
 var PLAT=[],COINS=[],coinMeshes=[],SPIKES=[],SWITCHES=[],GATES=[],CHECKS=[],goalX=0,goalY=0,goalFlag=null;
+function railLabel(text,x,y){
+  var cv=document.createElement("canvas");cv.width=512;cv.height=80;var ctx=cv.getContext("2d");
+  ctx.fillStyle="rgba(7,12,31,.94)";ctx.fillRect(0,0,512,80);ctx.strokeStyle="#5ef2ff";ctx.lineWidth=4;ctx.strokeRect(2,2,508,76);
+  ctx.fillStyle="#ddfbff";ctx.font="bold 30px system-ui";ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillText(text,256,40);
+  var tex=new THREE.CanvasTexture(cv),m=new THREE.SpriteMaterial({map:tex,depthTest:false});
+  var label=new THREE.Sprite(m);label.position.set(x,y,0.5);label.scale.set(6.4,1,1);lvlGroup.add(label);return label;
+}
+function buildRailVisuals(){
+  railState.rails.forEach(function(r,id){
+    var pts=[];for(var t=0;t<=32;t++){var q=Rails.point(r,t/32);pts.push(new THREE.Vector3(q.x,q.y,0.9));}
+    var curve=new THREE.CatmullRomCurve3(pts);
+    var tube=new THREE.Mesh(new THREE.TubeGeometry(curve,48,0.085,6,false),matS(0x23778f,0x23778f,0.35));lvlGroup.add(tube);
+    var entry=new THREE.Mesh(new THREE.TorusGeometry(0.62,0.075,6,24),matS(0x5ef2ff,0x5ef2ff,0.45));entry.position.set(r.from[0],r.from[1]+0.4,0.8);lvlGroup.add(entry);
+    var pulse=new THREE.Mesh(new THREE.OctahedronGeometry(0.43,0),matS(0xffcf33,0xffcf33,0.55));pulse.position.set(r.to[0],r.to[1]+1.7,0.5);lvlGroup.add(pulse);
+    var arrows=[];for(var a=1;a<7;a++){var ap=Rails.point(r,a/8),an=Rails.point(r,a/8+0.01);
+      var arrow=new THREE.Mesh(new THREE.ConeGeometry(0.18,0.5,3),matS(0x5ef2ff,0x5ef2ff,0.4));arrow.position.set(ap.x,ap.y+0.18,0.9);arrow.rotation.z=-Math.atan2(an.x-ap.x,an.y-ap.y);lvlGroup.add(arrow);arrows.push(arrow);}
+    railVisuals.push({tube:tube,entry:entry,pulse:pulse,arrows:arrows,label:railLabel((id+1)+" · SPRING AUF",r.from[0],r.from[1]+3.2)});
+  });
+}
+function railFeedback(event,p){
+  if(!event)return;
+  if(event.kind==="capture"){spawnRing(p.x,p.y-0.5,0x5ef2ff,0.3,2);beep(660,.08,"sine",.04);}
+  if(event.kind==="jump"){burst(p.x,p.y-0.5,[FXC.dj2a,FXC.dj2b],2.5);beep(790,.08,"triangle",.04);}
+  if(event.secured){
+    var r=railState.rails[event.id];
+    PL.forEach(function(q){if(q.ckX<r.to[0]){q.ckX=r.to[0];q.ckY=r.to[1]+HH+0.3;}});
+    railNotice=Rails.ready(railState)?"Alle Impulse gesichert! Das Zielportal ist offen.":"Impuls "+railState.count+" gesichert · gemeinsamer Checkpoint!";railNoticeT=3;
+    burst(p.x,p.y,[0xffcf33,0x5ef2ff],4.5);beep(880,.15,"triangle",.06);beep(1320,.25,"sine",.04);
+  }
+}
+function updateRailVisuals(dt,now){
+  if(!railState)return;railNoticeT=Math.max(0,railNoticeT-dt);
+  railVisuals.forEach(function(v,id){var done=railState.secured[id],active=id===railState.count,col=done?0xffcf33:(active?0x5ef2ff:0x375374);
+    v.tube.material.color.setHex(col);v.entry.material.color.setHex(col);v.entry.rotation.z+=dt*0.5;
+    v.label.material.opacity=done?0.35:(active?1:0.45);v.pulse.rotation.y+=dt*2;
+    v.pulse.scale.setScalar(done?0.5:1+Math.sin(now*.004)*.1);v.pulse.material.color.setHex(done?0x7bffba:0xffcf33);
+    v.arrows.forEach(function(a){a.material.color.setHex(col);});
+  });
+  if(portalRing){var ready=Rails.ready(railState);portalRing.material.color.setHex(ready?0x7bffba:0x49617a);portalRing.rotation.z+=dt*(ready?1.2:.15);portalRing.scale.setScalar(1+portalCharge*.2);
+    goalFlag.material.color.setHex(ready?0x39ff9e:0x49617a);goalFlag.material.emissive.setHex(ready?0x39ff9e:0x152138);goalFlag.material.emissiveIntensity=ready?.65:.15;}
+}
 function buildLevel(idx){
+  // Nur die neuen exklusiven Materialien/Texturen entsorgen; keine geteilten Figuren-Materialien.
+  if(railVisuals.length){railVisuals.forEach(function(v){[v.tube,v.entry,v.pulse,v.label].concat(v.arrows).forEach(function(m){if(m.material.map)m.material.map.dispose();m.material.dispose();});});}
+  if(portalRing)portalRing.material.dispose();railVisuals=[];portalRing=null;portalCharge=0;railNoticeT=0;railState=Rails.create(idx);
   while(lvlGroup.children.length){var _lc=lvlGroup.children[0];_lc.traverse(function(nn){if(nn.isMesh&&nn.geometry)nn.geometry.dispose();});lvlGroup.remove(_lc);} /* 🩹 Kimi-P2: Level-Geometrien entsorgen (Materialien geteilt → nicht anfassen) — Leak pro Levelwechsel/Restart */
   var L=LEVELS[idx];PLAT=[];COINS=[];coinMeshes=[];SPIKES=[];SWITCHES=[];GATES=[];CHECKS=[];
   L.plats.forEach(function(pl,pi){
@@ -372,6 +422,8 @@ function buildLevel(idx){
   goalFlag=new THREE.Mesh(roundedBoxGeo(1.6,1.1,0.12,0.16),matS(0x39ff9e,0x39ff9e,1.25));goalFlag.position.set(goalX+0.9,goalY+2,0);lvlGroup.add(goalFlag);
   var goalBase=new THREE.Mesh(roundedBoxGeo(9,2,3,0.5),matS(0x24123f,0x39ff9e,0.75));goalBase.position.set(goalX,goalY-3.2,0);lvlGroup.add(goalBase);
   PLAT.push({x:goalX,y:goalY-3.2,w:9,h:2,x0:goalX,y0:goalY-3.2,mv:null,spring:false,crumble:false,cT:0,gone:false,m:goalBase});
+  portalRing=new THREE.Mesh(new THREE.TorusGeometry(2.4,0.14,8,48),matS(0x49617a,0x24563f,0.4));portalRing.position.set(goalX,goalY,0.6);lvlGroup.add(portalRing);
+  buildRailVisuals();
   document.getElementById("lvlTag").textContent="Level "+(idx+1)+" · "+L.name;
 }
 // ---- Charakter-System: niedliche Neon-Figuren (Frau/Mann) mit Varianten + Animation ----
@@ -532,7 +584,7 @@ function buildPicker(){
 }
 // ---- Physik / State ----
 var GRAV=52,MAXVX=13,ACC=95,FRIC=70,JUMPV=19,HW=0.42,HH=0.7;
-function freshP(x,y){return {x:x,y:y,vx:0,vy:0,onGround:false,coyote:0,jbuf:0,jumps:0,sq:1,ckX:x,ckY:y,atGoal:false};}
+function freshP(x,y){var p={x:x,y:y,vx:0,vy:0,onGround:false,coyote:0,jbuf:0,jumps:0,sq:1,ckX:x,ckY:y,atGoal:false};Rails.resetPlayer(p);return p;}
 var PL=[freshP(3,2.2),freshP(5,2.2)];
 var coins=0,deaths=0,running=false,paused=false,won=false,elapsed=0,last=performance.now();
 var inp=[{L:false,R:false,J:false},{L:false,R:false,J:false}];
@@ -542,10 +594,16 @@ function resetRun(){
   PL=coopMode?[freshP(3,2.2),freshP(5,2.2)]:[freshP(4,2.2)];
   runnerMeshes[1].visible=coopMode;band.visible=coopMode;pGlow2.visible=coopMode;
   coins=0;deaths=0;won=false;elapsed=0;
+  // Bei Streckenwechsel sofort den neuen Start zeigen, statt vom alten Ziel zurückzuschwenken.
+  camera.position.set(PL[0].x+3,PL[0].y+3.4,20+(W/H<1?Math.min(8,(1-W/H)*14):0));
+  camera.lookAt(camera.position.x-1.5,camera.position.y-2.5,0);
   inp=[{L:false,R:false,J:false},{L:false,R:false,J:false}];}
-function respawn(pi){ /* J1: zerbröselte Crumble-Plattformen wiederherstellen — sonst harter Softlock in linearen Passagen */
+function respawn(pi,manual){ /* J1: zerbröselte Crumble-Plattformen wiederherstellen — sonst harter Softlock in linearen Passagen */
   for(var _ci=0;_ci<PLAT.length;_ci++){var _cp=PLAT[_ci];if(_cp.crumble&&(_cp.gone||_cp.cT>0)){_cp.gone=false;_cp.cT=0;if(_cp.m){_cp.m.visible=true;_cp.m.rotation.z=0;}}}
-  var p=PL[pi];p.x=p.ckX;p.y=p.ckY;p.vx=0;p.vy=0;p.atGoal=false;deaths++;shake=0.55;beep(140,.2,"sawtooth",.08);}
+  var p=PL[pi];p.x=p.ckX;p.y=p.ckY;p.vx=0;p.vy=0;p.atGoal=false;p.onGround=false;p.coyote=0;p.jumps=0;p.jbuf=0;Rails.resetPlayer(p);portalCharge=0;if(!manual)deaths++;shake=manual?0.12:0.55;beep(manual?330:140,.2,"sawtooth",.06);
+  railNotice="Zurück am Checkpoint · "+railState.count+" Impulse bleiben gesichert.";railNoticeT=2.5;}
+function retryCheckpoint(){if(!running||paused)return;clearInput();PL.forEach(function(p,i){respawn(i,true);});}
+document.getElementById("retryBtn").onclick=retryCheckpoint;
 function doJump(p){if(p.coyote>0||p.jumps<2){p.vy=JUMPV*(p.jumps===0?1:0.92);p.coyote=0;p.jumps++;p.sq=0.6;beep(560+p.jumps*90,.08,"square",.05);
   if(p.jumps>=2)burst(p.x,p.y-0.1,[FXC.dj2a,FXC.dj2b],3.4);   // Doppelsprung: Cyan + Magenta
   else spawnRing(p.x,p.y-0.6,FXC.dj1,0.34,2.0);}}             // 1. Sprung: dezenter Violett-Puls
@@ -560,7 +618,8 @@ document.addEventListener("visibilitychange",function(){if(document.hidden){clea
 // ---- Eingaben: P1 = WAD, P2 = Pfeile; Handy = Zonen für P1(solo) ----
 addEventListener("keydown",function(e){if(e.repeat)return;var k=e.key.toLowerCase();
   if((k==="escape"||k==="p")&&running){e.preventDefault();setPaused(!paused);return;}
-  if(paused)return; /* 🩹 Schwarm-P2: Auto-Repeat feuerte Doppelsprung */
+  if(paused)return;
+  if(k==="r"&&running){e.preventDefault();retryCheckpoint();return;} /* 🩹 Schwarm-P2: Auto-Repeat feuerte Doppelsprung */
   if(k==="a")inp[0].L=true;if(k==="d")inp[0].R=true;
   if(k==="arrowleft")inp[coopMode?1:0].L=true;if(k==="arrowright")inp[coopMode?1:0].R=true;
   if(k==="w"||k===" "){if(!running){startGame(coopMode);}else{inp[0].J=true;}e.preventDefault&&e.preventDefault();} /* J5: Modus beibehalten statt Koop erzwingen */
@@ -585,12 +644,12 @@ function renderLvlSel(){var el=document.getElementById("lvlSel");if(!el)return;e
     el.appendChild(b);});}
 function startGame(coop){
   coopMode=IS_MOBILE?false:coop; // 📱 Handy: IMMER Solo mit Touch-Zonen (Tastatur-Koop ergab dort KEINE Steuerung)
-  resetRun();running=true;setPaused(false);document.getElementById("pauseBtn").classList.remove("hide");
+  resetRun();document.getElementById("railHud").classList.remove("hide");document.getElementById("retryBtn").classList.remove("hide");running=true;setPaused(false);document.getElementById("pauseBtn").classList.remove("hide");
   document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   if(IS_MOBILE)touchEl.style.display="block";
   musSync();}
 function showBest(){var b=bestT();document.getElementById("best2").textContent=b>0?("🏆 Beste Zeit L1: "+b+"s"):"";}
-function finish(win){setPaused(false);document.getElementById("pauseBtn").classList.add("hide");running=false;won=win;musSync();shake=win?0.4:0.6;touchEl.style.display="none";var _wp=document.getElementById("waitP");if(_wp)_wp.classList.add("hide");
+function finish(win){document.getElementById("retryBtn").classList.add("hide");document.getElementById("railHud").classList.add("hide");setPaused(false);document.getElementById("pauseBtn").classList.add("hide");running=false;won=win;musSync();shake=win?0.4:0.6;touchEl.style.display="none";var _wp=document.getElementById("waitP");if(_wp)_wp.classList.add("hide");
   if(win){for(var gi=0;gi<FXC.goal.length;gi++)spawnRing(goalX,goalY+1,FXC.goal[gi],0.7,4+gi*1.1);} // Ziel: bunter Feier-Puls
   var secs=Math.floor(elapsed);
   if(win){var stars=(coins>=coinMeshes.length?"⭐⭐⭐":(deaths===0?"⭐⭐":"⭐"));
@@ -599,7 +658,7 @@ function finish(win){setPaused(false);document.getElementById("pauseBtn").classL
   document.getElementById("overTag").textContent=win?("Level "+(curLvl+1)+" geschafft!"):"Game Over";
   document.getElementById("finalT").textContent=win?("🏁 "+secs+"s"):"Aufgegeben";
   document.getElementById("verdict").innerHTML=win?
-    ((coins>=coinMeshes.length?"⭐⭐⭐ Alle Münzen! · ":"")+"🪙 "+coins+"/"+coinMeshes.length+" · 💀 "+deaths+(curLvl<LEVELS.length-1?"<br>Weiter zu Level "+(curLvl+2)+"?":"<br>🏆 Alle Level geschafft!")):"Versuch's nochmal!";
+    ((coins>=coinMeshes.length?"⭐⭐⭐ Alle Münzen! · ":"")+"⚡ "+railState.count+"/3 Impulse · 🪙 "+coins+"/"+coinMeshes.length+" · 💀 "+deaths+(curLvl<LEVELS.length-1?"<br>Weiter zu Level "+(curLvl+2)+"?":"<br>🏆 Himmelsnetz verbunden! Himmelssturm gemeistert.")):"Versuch's nochmal!";
   var again=document.getElementById("againBtn");
   if(win&&curLvl<LEVELS.length-1){again.textContent="Level "+(curLvl+2)+" ▶";again.onclick=function(){curLvl++;try{if(!STATION)localStorage.setItem("nj_lvl",String(curLvl));}catch(e){}startGame(coopMode);};} /* P7: Stations-Lauf überschreibt den Standalone-Fortschritt nicht */
   else{again.textContent="Nochmal ▶";again.onclick=function(){startGame(coopMode);};}
@@ -612,7 +671,7 @@ document.getElementById("soloBtn").onclick=function(){startGame(false);};
 if(IS_MOBILE){ // 📱 klare Beschriftung: auf dem Handy gibt es (noch) nur Solo mit Tipp-Zonen
   document.getElementById("startBtn").textContent="🏃 Los geht's ▶";
   document.getElementById("soloBtn").style.display="none";}
-document.getElementById("shareBtn").onclick=function(){var txt="Neon Jump 🤝 Level "+(curLvl+1)+" in "+Math.floor(elapsed)+"s, "+coins+" Münzen\nGratis spielen: abannews.com/neon-jump.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
+document.getElementById("shareBtn").onclick=function(){var txt="Neon Jump ⚡ Lichtschienen · Level "+(curLvl+1)+" in "+Math.floor(elapsed)+"s · "+railState.count+"/3 Impulse · "+coins+" Münzen\nSpring auf die Lichtschienen, sichere 3 Impulse und öffne das Zielportal — solo oder zu zweit.\nGratis spielen: https://abannews.com/neon-jump.html?station=1";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 function overlaps(ax,ay,bx,by,bw2,bh2){return Math.abs(ax-bx)<HW+bw2 && Math.abs(ay-by)<HH+bh2;}
 // ---- Hauptschleife ----
 function loop(now){
@@ -630,7 +689,10 @@ function loop(now){
       if(pl.crumble&&pl.cT>0&&!pl.gone){pl.cT-=dt;pl.m.rotation.z=Math.sin(now*0.05)*0.03;
         if(pl.cT<=0){pl.gone=true;pl.m.visible=false;beep(180,.15,"sawtooth",.06);}}
     }
-    for(var piU=0;piU<PL.length;piU++){var P=PL[piU],IN=inp[piU];
+    for(var piU=0;piU<PL.length;piU++){var P=PL[piU],IN=inp[piU],previous={x:P.x,y:P.y};
+      var railEvent=Rails.advance(railState,P,dt,IN.J);
+      if(railEvent){IN.J=false;railFeedback(railEvent,P);}
+      if(!railEvent||railEvent.kind==="jump"){
       var d=(IN.R?1:0)-(IN.L?1:0);
       if(d!==0){P.vx+=d*ACC*dt;P.vx=Math.max(-MAXVX,Math.min(MAXVX,P.vx));}
       else{if(P.vx>0)P.vx=Math.max(0,P.vx-FRIC*dt);else P.vx=Math.min(0,P.vx+FRIC*dt);}
@@ -654,19 +716,21 @@ function loop(now){
               burst(P.x,p3.y+p3.h/2+0.1,[FXC.spring,FXC.springHi],4.2);} // Feder: kräftiges Grün
             if(p3.crumble&&p3.cT===0&&!p3.gone)p3.cT=0.7;
           }else{P.y=p3.y-p3.h/2-HH;P.vy=0;}}}
+      }
+      if(!railEvent||railEvent.kind==="jump")railFeedback(Rails.capture(railState,P,previous),P);
       // Stacheln
       for(i=0;i<SPIKES.length;i++){var sp2=SPIKES[i];if(Math.abs(P.x-sp2.x)<sp2.w/2+HW*0.6&&Math.abs(P.y-(sp2.y+0.2))<0.9){respawn(piU);break;}}
       // Abgrund
       if(P.y<-14)respawn(piU);
       // Checkpoints (gelten für beide)
-      for(i=0;i<CHECKS.length;i++){var ck=CHECKS[i];if(!ck.hit&&Math.abs(P.x-ck.x)<1.6&&Math.abs(P.y-ck.y)<2.4){ck.hit=true;
+      for(i=0;i<CHECKS.length;i++){var ck=CHECKS[i];if(!ck.hit&&Rails.checkpointAllowed(railState,ck.x)&&Math.abs(P.x-ck.x)<1.6&&Math.abs(P.y-ck.y)<2.4){ck.hit=true;
         ck.m.material.color.setHex(0x6aff9e);ck.m.material.emissive.setHex(0x6aff9e);ck.m.material.emissiveIntensity=1.2;
-        PL.forEach(function(q){q.ckX=ck.x;q.ckY=ck.y+1;});burst(ck.x,ck.y,[FXC.check,FXC.checkHi],3.6);beep(880,.1,"triangle",.05);beep(1108,.14,"triangle",.05);}}
+        PL.forEach(function(q){if(q.ckX<ck.x){q.ckX=ck.x;q.ckY=ck.y+1;}});burst(ck.x,ck.y,[FXC.check,FXC.checkHi],3.6);beep(880,.1,"triangle",.05);beep(1108,.14,"triangle",.05);}}
       // Münzen
       for(i=0;i<coinMeshes.length;i++){var cm2=coinMeshes[i];if(cm2.userData.got)continue;var C=COINS[i];
         if(Math.abs(P.x-C.x)<0.9&&Math.abs(P.y-C.y)<1.1){cm2.userData.got=true;cm2.visible=false;coins++;spawnRing(C.x,C.y,FXC.coin,0.4,2.6);beep(1046,.08,"triangle",.05);}}
       // Ziel
-      P.atGoal=(Math.abs(P.x-goalX)<2.2&&P.y>goalY-3&&P.y<goalY+4);
+      P.atGoal=(Rails.ready(railState)&&Math.abs(P.x-goalX)<2.2&&P.y>goalY-3&&P.y<goalY+4);
       P.sq=Math.min(1,P.sq+dt*4);
     }
     // Schalter: gedrückt, solange ein Läufer draufsteht (Koop-Kern!)
@@ -685,7 +749,8 @@ function loop(now){
     // Sieg: alle am Ziel
     var allGoal=PL.every(function(q){return q.atGoal;});
     var _wp=document.getElementById("waitP");if(_wp)_wp.classList.toggle("hide",!(coopMode&&!allGoal&&PL.some(function(q){return q.atGoal;})));
-    if(allGoal)finish(true);
+    portalCharge=allGoal?Math.min(1,portalCharge+dt/0.85):0;
+    if(portalCharge>=1)finish(true);
   }
   // Darstellung + Charakter-Animation
   for(var pr=0;pr<PL.length;pr++){var Q=PL[pr],RM=runnerMeshes[pr];if(!RM)continue;
@@ -698,7 +763,12 @@ function loop(now){
     rig.rotation.y+=(faceTgt-rig.rotation.y)*Math.min(1,dt*10);
     var spd=Math.abs(Q.vx),moving=Q.onGround&&spd>1.2,ease=Math.min(1,dt*9);
     ud.phase+=dt*(moving?(7+spd*1.3):3.5);var ph=ud.phase;
-    if(!Q.onGround){
+    if(Q.railId>=0){
+      // Seitlicher Surf-Stand: Schienenfahrt klar vom normalen Sprung unterscheiden.
+      P.legL.rotation.x=-0.35;P.legR.rotation.x=0.65;
+      P.armL.rotation.x=-0.4;P.armR.rotation.x=-0.6;P.armL.rotation.z=1.1;P.armR.rotation.z=-1.1;
+      rig.position.y=Math.sin(now*.02)*.035;
+    } else if(!Q.onGround){
       if(Q.vy>0){ // Aufstieg: Beine anziehen, Arme hoch
         P.legL.rotation.x=-0.7;P.legR.rotation.x=-1.05;
         P.armL.rotation.x=-2.4;P.armR.rotation.x=-2.4;P.armL.rotation.z=0.3;P.armR.rotation.z=-0.3;
@@ -775,11 +845,20 @@ function loop(now){
     if(pu.parts.eyeL){pu.parts.eyeL.scale.y=pes;pu.parts.eyeR.scale.y=pes;}
     try{previewR.render(previewScene,previewCam);}catch(e){}
   }
+  updateRailVisuals(dt,now);
   updFX(dt);
   updHUD();
   renderBloom();
 }
-function updHUD(){document.getElementById("coins").textContent=coins;document.getElementById("deaths").textContent=deaths;document.getElementById("time").textContent=Math.floor(elapsed)+"s";}
+function updHUD(){document.getElementById("coins").textContent=coins;document.getElementById("deaths").textContent=deaths;document.getElementById("time").textContent=Math.floor(elapsed)+"s";
+  if(!railState)return;var ready=Rails.ready(railState),riding=PL.some(function(p){return p.railId>=0;});
+  var progress=portalCharge>0?"Zielportal · Transfer "+(Math.floor(portalCharge*4)*25)+" %":"Lichtschienen · "+railState.count+" / 3 Impulse";
+  var hint=railNoticeT>0?railNotice:(ready?(coopMode?"Portal offen → gemeinsam ins Ziel!":"Portal offen → ins Ziel!"):(riding?"Gleiten → Impuls am Ende · Sprung: abspringen":"Schiene "+(railState.count+1)+" → im Sprung einrasten · ↺ Checkpoint für neuen Anlauf"));
+  if(!ready&&!riding&&railNoticeT<=0&&PL.every(function(p){return p.x>railState.rails[railState.count].from[0]+4;}))hint="Schiene "+(railState.count+1)+" verpasst? ↺ Checkpoint für einen neuen Anlauf.";
+  if(document.getElementById("railProgress").textContent!==progress)document.getElementById("railProgress").textContent=progress;
+  if(document.getElementById("railHint").textContent!==hint)document.getElementById("railHint").textContent=hint;
+  document.getElementById("railHud").dataset.ready=String(ready);
+}
 buildLevel(curLvl);renderLvlSel();showBest();buildPicker();applyChar();requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);
   DW=Math.max(1,Math.round(W*PR));DH=Math.max(1,Math.round(H*PR));rtScene.setSize(DW,DH);bw=Math.max(1,DW>>2);bh=Math.max(1,DH>>2);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
@@ -789,6 +868,7 @@ addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/
 var STATION=window.parent!==window&&/[?&]station=1/.test(location.search);
 function stationPost(m){try{window.parent.postMessage(typeof m==="string"?m:JSON.stringify(m),"*");}catch(e){}}
 if(STATION){
+  document.body.classList.add("inStation");
   /* Arcade-Links ausblenden (würden im Iframe navigieren) */
   document.querySelectorAll('a[href="/spiele.html"]').forEach(function(a){a.style.display="none";});
   /* '← Wildnis'-Knopf (immer sichtbar) */

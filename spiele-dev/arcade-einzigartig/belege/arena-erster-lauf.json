@@ -1,0 +1,770 @@
+{
+  "checks": [
+    {
+      "name": "Server 8182 liefert echte Survivor-CSP und SAMEORIGIN",
+      "data": {
+        "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' blob: https://0.peerjs.com wss://0.peerjs.com https://peerjs.92k.de wss://peerjs.92k.de https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+        "x-frame-options": "SAMEORIGIN"
+      }
+    },
+    {
+      "name": "Desktop · echtes WebGL und laufende Frames",
+      "data": {
+        "canvas": [
+          1280,
+          800
+        ],
+        "webgl": true,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "draw": {
+          "frame": 41,
+          "calls": 1,
+          "triangles": 2,
+          "reactorVisible": true
+        },
+        "assets": {
+          "enemyModels": {
+            "loaded": {
+              "swarm": 3,
+              "runner": 3,
+              "shooter": 3,
+              "tank": 0,
+              "splitter": 0,
+              "boss": 0
+            },
+            "active": {
+              "swarm": 0,
+              "runner": 1,
+              "shooter": 0,
+              "tank": 0,
+              "splitter": 0,
+              "boss": 0
+            }
+          },
+          "lootModels": 4,
+          "p2Model": false,
+          "floorTex": true,
+          "ibl": false,
+          "softGpu": true
+        }
+      }
+    },
+    {
+      "name": "desktop · Reparatur über echten Klick",
+      "data": {
+        "before": {
+          "state": {
+            "scrap": 120,
+            "structures": 0,
+            "wave": 1,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 1.900000000000001
+          },
+          "reactor": {
+            "hp": 200,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 0,
+            "runId": "mwjeyfde-2"
+          },
+          "position": {
+            "x": 1.5,
+            "y": 0.8807260060090828,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "after": {
+          "state": {
+            "scrap": 108,
+            "structures": 0,
+            "wave": 1,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 1.900000000000001
+          },
+          "reactor": {
+            "hp": 260,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 1,
+            "runId": "mwjeyfde-2"
+          },
+          "position": {
+            "x": 1.5,
+            "y": 0.8807260060090828,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "layout": {
+          "width": 1280,
+          "height": 800,
+          "boxes": {
+            "reactorRepair": {
+              "x": 460,
+              "y": 173.890625,
+              "w": 360,
+              "h": 56,
+              "visible": true,
+              "inside": true
+            }
+          },
+          "actionable": true,
+          "inside": true
+        }
+      }
+    },
+    {
+      "name": "Desktop · Reaktor-Aus und echter Retry",
+      "data": {
+        "loss": {
+          "state": {
+            "scrap": 108,
+            "structures": 0,
+            "wave": 2,
+            "phase": "combat",
+            "hp": 120,
+            "running": false,
+            "paused": false,
+            "kills": 0,
+            "lvl": 1,
+            "time": 2.849999999999998
+          },
+          "reactor": {
+            "hp": 0,
+            "maxhp": 300,
+            "outcome": "loss",
+            "reason": "reactor",
+            "repairs": 1,
+            "runId": "mwjeyfde-2"
+          },
+          "position": {
+            "x": 1.5,
+            "y": 0.9268590404903623,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 2,
+            "bestWave": 2,
+            "mostKills": 0,
+            "runs": 1,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "retry": {
+          "state": {
+            "scrap": 20,
+            "structures": 0,
+            "wave": 1,
+            "phase": "combat",
+            "hp": 120,
+            "running": true,
+            "paused": false,
+            "kills": 0,
+            "lvl": 1,
+            "time": 0.25
+          },
+          "reactor": {
+            "hp": 300,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 0,
+            "runId": "mwjezbov-3"
+          },
+          "position": {
+            "x": 0,
+            "y": 0.9238573566008167,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 2,
+            "bestWave": 2,
+            "mostKills": 0,
+            "runs": 1,
+            "totalKills": 0
+          },
+          "cores": 0
+        }
+      }
+    },
+    {
+      "name": "Desktop · kontrollierter NEXUS-Sieg, Sieg-Retry und Menü-Rückkehr"
+    },
+    {
+      "name": "touch-hochformat · Reparatur über echten Touch-Tap",
+      "data": {
+        "before": {
+          "state": {
+            "scrap": 120,
+            "structures": 0,
+            "wave": 1,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 1.7500000000000009
+          },
+          "reactor": {
+            "hp": 200,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 0,
+            "runId": "mwjezyog-2"
+          },
+          "position": {
+            "x": 0,
+            "y": 0.8699372927300694,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "after": {
+          "state": {
+            "scrap": 108,
+            "structures": 0,
+            "wave": 1,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 1.7500000000000009
+          },
+          "reactor": {
+            "hp": 260,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 1,
+            "runId": "mwjezyog-2"
+          },
+          "position": {
+            "x": 0,
+            "y": 0.8699372927300694,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "layout": {
+          "width": 390,
+          "height": 844,
+          "boxes": {
+            "reactorRepair": {
+              "x": 20,
+              "y": 184.453125,
+              "w": 350,
+              "h": 56,
+              "visible": true,
+              "inside": true
+            }
+          },
+          "actionable": true,
+          "inside": true
+        }
+      }
+    },
+    {
+      "name": "Touch · nativer Joystick und Hochformat",
+      "data": {
+        "layout": {
+          "width": 390,
+          "height": 844,
+          "boxes": {
+            "hudPanel": {
+              "x": 14,
+              "y": 10,
+              "w": 304,
+              "h": 281.796875,
+              "visible": true,
+              "inside": true
+            },
+            "reactorPanel": {
+              "x": 27,
+              "y": 112,
+              "w": 278,
+              "h": 68.796875,
+              "visible": true,
+              "inside": true
+            },
+            "buildBtn": {
+              "x": 212,
+              "y": 748,
+              "w": 74,
+              "h": 74,
+              "visible": true,
+              "inside": true
+            },
+            "abBtn": {
+              "x": 298,
+              "y": 748,
+              "w": 74,
+              "h": 74,
+              "visible": true,
+              "inside": true
+            }
+          },
+          "actionable": true,
+          "inside": true
+        }
+      }
+    },
+    {
+      "name": "touch-querformat · Reparatur über echten Touch-Tap",
+      "data": {
+        "before": {
+          "state": {
+            "scrap": 208,
+            "structures": 0,
+            "wave": 2,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 4.199999999999993
+          },
+          "reactor": {
+            "hp": 160,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 1,
+            "runId": "mwjezyog-2"
+          },
+          "position": {
+            "x": 2.4456521739130435,
+            "y": 0.9011768066527391,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "after": {
+          "state": {
+            "scrap": 196,
+            "structures": 0,
+            "wave": 2,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 4.199999999999993
+          },
+          "reactor": {
+            "hp": 220,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 2,
+            "runId": "mwjezyog-2"
+          },
+          "position": {
+            "x": 2.4456521739130435,
+            "y": 0.9011768066527391,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "layout": {
+          "width": 844,
+          "height": 390,
+          "boxes": {
+            "reactorRepair": {
+              "x": 242,
+              "y": 131.78125,
+              "w": 360,
+              "h": 56,
+              "visible": true,
+              "inside": true
+            }
+          },
+          "actionable": true,
+          "inside": true
+        }
+      }
+    },
+    {
+      "name": "Touch · Querformat und Verlust-Retry über Taps",
+      "data": {
+        "width": 844,
+        "height": 390,
+        "boxes": {
+          "hudPanel": {
+            "x": 14,
+            "y": 10,
+            "w": 430,
+            "h": 251.5625,
+            "visible": true,
+            "inside": true
+          },
+          "reactorPanel": {
+            "x": 27,
+            "y": 109,
+            "w": 404,
+            "h": 61.5625,
+            "visible": true,
+            "inside": true
+          },
+          "buildBtn": {
+            "x": 666,
+            "y": 294,
+            "w": 74,
+            "h": 74,
+            "visible": true,
+            "inside": true
+          },
+          "abBtn": {
+            "x": 752,
+            "y": 294,
+            "w": 74,
+            "h": 74,
+            "visible": true,
+            "inside": true
+          }
+        },
+        "actionable": true,
+        "inside": true
+      }
+    },
+    {
+      "name": "station · Reparatur über echten Klick",
+      "data": {
+        "before": {
+          "state": {
+            "scrap": 120,
+            "structures": 0,
+            "wave": 1,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 2.9499999999999975
+          },
+          "reactor": {
+            "hp": 200,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 0,
+            "runId": "mwjf0jvb-2"
+          },
+          "position": {
+            "x": 0,
+            "y": 0.9190276955283133,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "after": {
+          "state": {
+            "scrap": 108,
+            "structures": 0,
+            "wave": 1,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 2.9499999999999975
+          },
+          "reactor": {
+            "hp": 260,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 1,
+            "runId": "mwjf0jvb-2"
+          },
+          "position": {
+            "x": 0,
+            "y": 0.9190276955283133,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "layout": {
+          "width": 1000,
+          "height": 700,
+          "boxes": {
+            "reactorRepair": {
+              "x": 320,
+              "y": 149.890625,
+              "w": 360,
+              "h": 56,
+              "visible": true,
+              "inside": true
+            }
+          },
+          "actionable": true,
+          "inside": true
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [
+    {
+      "url": "http://127.0.0.1:8182/neon-survivor.html?station=1",
+      "error": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "url": "http://127.0.0.1:8182/neon-survivor.html?station=1",
+      "error": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "url": "http://127.0.0.1:8182/neon-survivor.html?station=1",
+      "error": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "screenshots": [
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-menue.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-reaktor-stabil.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-bau-reparatur.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-reaktor-kritisch.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-reaktor-verloren.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-nexus.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/desktop-reaktor-sieg.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/touch-hochformat.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/touch-hochformat-bau-reparatur.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/touch-querformat.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/touch-querformat-bau-reparatur.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/station-reaktor.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/station-bau-reparatur.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/station-sieg.png"
+  ],
+  "inspection": "AUSSTEHEND: PNGs nach dem Lauf mit view_image ansehen.",
+  "fixtures": [
+    "Solo/Touch/Station: Spiel-HTML, Assets, Renderer, rAF und Header unverändert vom Server 8182. Keine Zeit-/Renderer-Ersetzung in diesen Teilfällen.",
+    "Nur Koop: Test-HTML injiziert einen renderBloom-Hook. Automatische 3D-Zeichnung unterdrückt, Screenshots einzeln echt gezeichnet. Spiel-/UI-/rAF-Zeit-/Transportlogik unverändert. Kein Beleg für Leistung mit zwei gleichzeitig zeichnenden Seiten.",
+    "Kontrollierte Kampfzustände nutzen bestehende __ns-Hilfen: Schaden, Baupause, Schrott und Boss-Spawn/-Schaden. Kein Beleg für einen natürlich gespielten Zehn-Minuten-Sieg oder finale Balance.",
+    "Stations-Elternseite ist eine geroutete Fixture unter der echten Survivor-URL mit deren unveränderten Headern. Das Spiel-Iframe bleibt unverändert. Wildnis-Belohnungslogik selbst wird nicht getestet.",
+    "Koop nutzt den versionierten Spiel-Namensraum survivor-reactor1 und MP.localMode: native RTCPeerConnection/DataChannels, BroadcastChannel nur zum Signaling. Kein Beleg für PeerJS-Cloud, TURN, NAT oder zwei getrennte Geräte.",
+    "Host/Gast teilen wegen BroadcastChannel einen Browser-Kontext und damit localStorage; individuelle Konto-Belohnungen prüft zusätzlich die getrennte VM-Suite."
+  ],
+  "networkRender": {
+    "mode": "manual snapshots"
+  },
+  "browserClosed": true,
+  "browserExecutable": "/tmp/aban-browsers/chromium-1255/chrome-linux64/chrome",
+  "pid": 223244,
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#stationBack')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"stationBack\">← Wildnis</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"win\" class=\"overlay\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"win\" class=\"overlay\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    4 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div id=\"win\" class=\"overlay\">…</div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\n    at click (/workspace/aban-arcade-spielrunde/spiele-dev/arena-nexus/browser-qa.cjs:38:167)\n    at async station (/workspace/aban-arcade-spielrunde/spiele-dev/arena-nexus/browser-qa.cjs:116:5)\n    at async /workspace/aban-arcade-spielrunde/spiele-dev/arena-nexus/browser-qa.cjs:190:71\n    at async bounded (/workspace/aban-arcade-spielrunde/spiele-dev/arena-nexus/browser-qa.cjs:23:63)\n    at async /workspace/aban-arcade-spielrunde/spiele-dev/arena-nexus/browser-qa.cjs:190:5"
+}

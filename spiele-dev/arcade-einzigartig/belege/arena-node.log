@@ -1,0 +1,26 @@
+✔ Asset-Verweise tragen SHA256-Anfang; Skript-Marker akzeptieren optionale Version (8.455162ms)
+✔ Netz-Render-Fixture unterdrückt nur Zeichnung, lässt Spielzeit laufen und erlaubt einzelne Bilder (82.578225ms)
+✔ Versionierter Namensraum isoliert Host, Code-Einladung, offene Suche und festen Peer von alten Tabs (62.550974ms)
+✔ Teilen öffnet direkt die Reaktor-Arena; Clipboard und echtes iframe-Station-Flag bleiben korrekt (94.646603ms)
+✔ Reaktor: Reparaturen konkurrieren mit Bauten um Schrott; keine Gratisheilung (0.472982ms)
+✔ Reaktor: terminale Zustände und Stations-Meldung sind einmalig (0.199971ms)
+✔ VM lädt komplettes Spiel; zentrale Fläche bleibt frei, Bau und Reparatur teilen den Vorrat (70.58089ms)
+✔ VM: raiders marschieren zum Reaktor statt zur nächsten beliebigen Struktur (59.452568ms)
+✔ VM: Mauer blockiert Angreifer tatsächlich (49.169248ms)
+✔ VM: Reaktor-Aus umgeht keine Wiederbelebung; Verlust, Sieg und stationDone zahlen nur einmal (45.787466ms)
+✔ VM: Snapshot-Roundtrip, Host-Autorität, veraltete Pakete, Koop-Retry und End-Duplikate (81.780705ms)
+✔ VM: Stacheln stoppen einen Belagerer und liefern verwertbaren Schrott (51.537506ms)
+✔ VM: ein vorhandener Turm verhindert Reaktorschaden im kontrollierten Angriff (116.623851ms)
+✔ VM: persönliche Wiederbelebung und Koop-Rettung verändern Reaktor-HP nicht (149.044208ms)
+✔ VM: 10-Minuten-Schwelle ist kein Sieg; NEXUS lässt den Reaktor weiter angreifen (56.781862ms)
+✔ VM: ungültige Spiegel-Daten werden ohne Teiländerung verworfen (99.146023ms)
+✔ VM: NEXUS-Sieg, Endereignis vor Snapshot und Wiederholung belohnen Gast nur einmal (147.684602ms)
+✔ VM: Host sendet auch pausierte Bauzustände und terminalen Snapshot bei Reaktor-Aus (164.348424ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1521.929587

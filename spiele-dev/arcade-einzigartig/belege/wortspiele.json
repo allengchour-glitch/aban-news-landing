@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "checks": 642,
+  "base": "http://127.0.0.1:8182",
+  "viewport": "320×540 / 960×540",
+  "observations": [
+    "Favicon durch Navigation abgebrochen",
+    "Favicon durch Navigation abgebrochen",
+    "Tageswörter: 88 / Brücken: 33",
+    "Favicon durch Navigation abgebrochen",
+    "Favicon durch Navigation abgebrochen"
+  ],
+  "runtimeConsoleNetworkErrors": []
+}
