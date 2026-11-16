@@ -1,0 +1,10 @@
+OK Verschachtelte Weltmatrizen, keine doppelten Quellen, originale Knoten unverändert
+OK Jede Instanzmatrix entspricht Float32(matrixWorld); alle echten Vertices in Weltbounds
+OK Echte Raycasts liefern dieselben Treffer/Instanz-IDs bei entfernten Weltpositionen
+OK Echter r128-Frustumtest sieht entfernte Instanzen und verwirft abgewandte Sicht
+OK Dispose ist idempotent, stellt Sichtbarkeit her und entsorgt nur eigene Ressourcen
+OK Material, Geometrie, Layer, Schatten, RenderOrder, XZ-Zellen und Szenen bleiben getrennt
+OK Bytegleiche Geometrie- und Materialklone werden zusammengefasst, Unterschiede bleiben getrennt
+OK Unsichere Meshes und Hierarchien bleiben sichtbar; Alpha-Test ist erlaubt
+OK Transformierte Szene abgelehnt und Fehler nach Teilaufbau vollständig zurückgerollt
+9 ok, 0 Fehler (Three.js r128)

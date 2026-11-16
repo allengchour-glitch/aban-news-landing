@@ -1,0 +1,314 @@
+{
+  "sourceHash": "40b9e61a9f277df429f17f4e220e2e30d007d64c05f5c6c655206f19dc006650",
+  "kind": "Feste Welt-/Kamerafixtures; Software-Rendering, kein physisches Handy",
+  "errors": [],
+  "views": [
+    {
+      "name": "start",
+      "stats": {
+        "meshes": 12759,
+        "lights": 6,
+        "casts": 3346,
+        "calls": 1586,
+        "triangles": 341129,
+        "geometries": 2399,
+        "textures": 108,
+        "pixelRatio": 1,
+        "shadow": true,
+        "seed": 317151129,
+        "resources": 373,
+        "colliders": 71,
+        "villages": 5,
+        "stations": 7,
+        "gfx": {
+          "ibl": false,
+          "bloom": false,
+          "soft": true,
+          "hi": false,
+          "profile": "detail",
+          "ratio": 1,
+          "shadows": true,
+          "lights": {
+            "sources": 33,
+            "slots": 6,
+            "active": 6
+          },
+          "culling": {
+            "hiddenForRender": 572
+          },
+          "batch": {
+            "sourceMeshes": 6896,
+            "eligibleMeshes": 5602,
+            "skippedMeshes": 1294,
+            "batchedMeshes": 4953,
+            "batches": 454,
+            "instances": 4953
+          },
+          "chunks": {
+            "sourceMeshes": 12,
+            "sourceInstances": 3940,
+            "chunkedMeshes": 12,
+            "chunkedInstances": 3940,
+            "skippedMeshes": 0,
+            "batches": 735,
+            "triangles": 56220,
+            "totalTriangles": 56220
+          },
+          "tufts": 480,
+          "waterMats": 19
+        },
+        "player": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "dorf",
+      "stats": {
+        "meshes": 12763,
+        "lights": 6,
+        "casts": 3350,
+        "calls": 1187,
+        "triangles": 425453,
+        "geometries": 2499,
+        "textures": 114,
+        "pixelRatio": 1,
+        "shadow": true,
+        "seed": 317151129,
+        "resources": 373,
+        "colliders": 71,
+        "villages": 5,
+        "stations": 7,
+        "gfx": {
+          "ibl": false,
+          "bloom": false,
+          "soft": true,
+          "hi": false,
+          "profile": "detail",
+          "ratio": 1,
+          "shadows": true,
+          "lights": {
+            "sources": 33,
+            "slots": 6,
+            "active": 6
+          },
+          "culling": {
+            "hiddenForRender": 614
+          },
+          "batch": {
+            "sourceMeshes": 6896,
+            "eligibleMeshes": 5602,
+            "skippedMeshes": 1294,
+            "batchedMeshes": 4953,
+            "batches": 454,
+            "instances": 4953
+          },
+          "chunks": {
+            "sourceMeshes": 12,
+            "sourceInstances": 3940,
+            "chunkedMeshes": 12,
+            "chunkedInstances": 3940,
+            "skippedMeshes": 0,
+            "batches": 735,
+            "triangles": 56220,
+            "totalTriangles": 56220
+          },
+          "tufts": 480,
+          "waterMats": 19
+        },
+        "player": [
+          0,
+          -0.2658816152726492,
+          -18
+        ]
+      }
+    },
+    {
+      "name": "weg",
+      "stats": {
+        "meshes": 12763,
+        "lights": 6,
+        "casts": 3350,
+        "calls": 89,
+        "triangles": 67368,
+        "geometries": 3189,
+        "textures": 136,
+        "pixelRatio": 1,
+        "shadow": true,
+        "seed": 317151129,
+        "resources": 373,
+        "colliders": 71,
+        "villages": 5,
+        "stations": 7,
+        "gfx": {
+          "ibl": false,
+          "bloom": false,
+          "soft": true,
+          "hi": false,
+          "profile": "detail",
+          "ratio": 1,
+          "shadows": true,
+          "lights": {
+            "sources": 33,
+            "slots": 6,
+            "active": 2
+          },
+          "culling": {
+            "hiddenForRender": 1167
+          },
+          "batch": {
+            "sourceMeshes": 6896,
+            "eligibleMeshes": 5602,
+            "skippedMeshes": 1294,
+            "batchedMeshes": 4953,
+            "batches": 454,
+            "instances": 4953
+          },
+          "chunks": {
+            "sourceMeshes": 12,
+            "sourceInstances": 3940,
+            "chunkedMeshes": 12,
+            "chunkedInstances": 3940,
+            "skippedMeshes": 0,
+            "batches": 735,
+            "triangles": 56220,
+            "totalTriangles": 56220
+          },
+          "tufts": 480,
+          "waterMats": 19
+        },
+        "player": [
+          53.81166458129883,
+          -0.5498396102679997,
+          -118.2874755859375
+        ]
+      }
+    },
+    {
+      "name": "nacht",
+      "stats": {
+        "meshes": 12763,
+        "lights": 6,
+        "casts": 3350,
+        "calls": 1805,
+        "triangles": 442442,
+        "geometries": 3762,
+        "textures": 156,
+        "pixelRatio": 1,
+        "shadow": true,
+        "seed": 317151129,
+        "resources": 373,
+        "colliders": 71,
+        "villages": 5,
+        "stations": 7,
+        "gfx": {
+          "ibl": false,
+          "bloom": false,
+          "soft": true,
+          "hi": false,
+          "profile": "detail",
+          "ratio": 1,
+          "shadows": true,
+          "lights": {
+            "sources": 33,
+            "slots": 6,
+            "active": 6
+          },
+          "culling": {
+            "hiddenForRender": 573
+          },
+          "batch": {
+            "sourceMeshes": 6896,
+            "eligibleMeshes": 5602,
+            "skippedMeshes": 1294,
+            "batchedMeshes": 4953,
+            "batches": 454,
+            "instances": 4953
+          },
+          "chunks": {
+            "sourceMeshes": 12,
+            "sourceInstances": 3940,
+            "chunkedMeshes": 12,
+            "chunkedInstances": 3940,
+            "skippedMeshes": 0,
+            "batches": 735,
+            "triangles": 56220,
+            "totalTriangles": 56220
+          },
+          "tufts": 480,
+          "waterMats": 19
+        },
+        "player": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "profile": {
+    "meshes": 12747,
+    "lights": 6,
+    "casts": 3342,
+    "calls": 1149,
+    "triangles": 306045,
+    "geometries": 2056,
+    "textures": 99,
+    "pixelRatio": 0.65,
+    "shadow": false,
+    "seed": 317151129,
+    "resources": 373,
+    "colliders": 71,
+    "villages": 5,
+    "stations": 7,
+    "gfx": {
+      "ibl": false,
+      "bloom": false,
+      "soft": true,
+      "hi": false,
+      "profile": "auto",
+      "ratio": 0.65,
+      "shadows": false,
+      "lights": {
+        "sources": 33,
+        "slots": 6,
+        "active": 6
+      },
+      "culling": {
+        "hiddenForRender": 2106
+      },
+      "batch": {
+        "sourceMeshes": 6896,
+        "eligibleMeshes": 5602,
+        "skippedMeshes": 1294,
+        "batchedMeshes": 4953,
+        "batches": 454,
+        "instances": 4953
+      },
+      "chunks": {
+        "sourceMeshes": 12,
+        "sourceInstances": 3940,
+        "chunkedMeshes": 12,
+        "chunkedInstances": 3940,
+        "skippedMeshes": 0,
+        "batches": 735,
+        "triangles": 56220,
+        "totalTriangles": 56220
+      },
+      "tufts": 480,
+      "waterMats": 19
+    },
+    "player": [
+      0,
+      0,
+      0
+    ],
+    "rafps": 1.2922818466720032,
+    "median": 899.8999999999978,
+    "p95": 1016.7000000000007
+  },
+  "showcase": "Details, Renderverhältnis 1 und echte Schatten; Profil vorher auf Automatisch gemessen",
+  "passed": true
+}

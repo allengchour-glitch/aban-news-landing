@@ -1,0 +1,127 @@
+{
+  "kind": "Lokale Node-VM-Laufzeitprobe mit Originalfunktionen und DOM/MP-Doubles; kein Browsernachweis und kein Internet-Koop",
+  "htmlPath": "/workspace/aban-wildnis-grafik/neon-wildnis.html",
+  "regressions": [
+    {
+      "name": "Schnell → privat: Suche einmal abbrechen; fund/fertig bleiben wirkungslos",
+      "ok": true,
+      "observed": {
+        "aborts": 1,
+        "sessions": 1,
+        "code": "ABCD"
+      }
+    },
+    {
+      "name": "Privat → schnell: alte ready-Mikrotask startet keine Welt; Share-Timer entfernt",
+      "ok": true,
+      "observed": {
+        "closed": 1,
+        "on": false,
+        "running": false,
+        "timers": 0
+      }
+    },
+    {
+      "name": "Aktives Quick → privat: close-Rejection überschreibt privaten Status nicht",
+      "ok": true,
+      "observed": {
+        "closed": 1,
+        "code": "ABCD",
+        "text": "Raum-Code: ABCD — teile ihn mit dem Partner!"
+      }
+    },
+    {
+      "name": "Erneute Suche: nur aktuelle Suche öffnet Session; Suchhandles freigegeben",
+      "ok": true,
+      "observed": {
+        "sessions": 1,
+        "code": "PUBB",
+        "aborts": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "name": "Quick-Fehler: nächster Raum wird versucht und alter Versuch geschlossen",
+      "ok": true,
+      "observed": {
+        "sessions": 2,
+        "code": "PUBB",
+        "closed": 1
+      }
+    },
+    {
+      "name": "Synchrones Suchende: genau eine Session, zurückgegebenes Handle freigegeben",
+      "ok": true,
+      "observed": {
+        "sessions": 1,
+        "aborts": 1
+      }
+    },
+    {
+      "name": "Aktive privat-Verbindung startet weiterhin die Welt und sendet start",
+      "ok": true,
+      "observed": {
+        "on": true,
+        "running": true,
+        "startSent": true
+      }
+    },
+    {
+      "name": "Aktive quick-Verbindung startet weiterhin die Welt und sendet start",
+      "ok": true,
+      "observed": {
+        "on": true,
+        "running": true,
+        "startSent": true
+      }
+    },
+    {
+      "name": "Karte sperrt Spieltasten; Escape schliesst Karte",
+      "ok": true,
+      "observed": {
+        "actions": 0,
+        "mapOpen": false
+      }
+    },
+    {
+      "name": "Direkter Dodge-Aufruf gesperrt: paused",
+      "ok": true,
+      "observed": {
+        "dodgeT": 0,
+        "dodgeCd": 0
+      }
+    },
+    {
+      "name": "Direkter Dodge-Aufruf gesperrt: mapOpen",
+      "ok": true,
+      "observed": {
+        "dodgeT": 0,
+        "dodgeCd": 0
+      }
+    },
+    {
+      "name": "Direkter Dodge-Aufruf gesperrt: perkChoosing",
+      "ok": true,
+      "observed": {
+        "dodgeT": 0,
+        "dodgeCd": 0
+      }
+    },
+    {
+      "name": "Direkter Dodge-Aufruf gesperrt: stationOpen",
+      "ok": true,
+      "observed": {
+        "dodgeT": 0,
+        "dodgeCd": 0
+      }
+    }
+  ],
+  "sourceSha256": "40b9e61a9f277df429f17f4e220e2e30d007d64c05f5c6c655206f19dc006650",
+  "controls": [
+    "Privaten Raum allein öffnen: ABCD bleibt aktive Host-Session.",
+    "Shift ohne Karte rollt im ersten 50-ms-Schritt 0.85 Welteinheiten."
+  ],
+  "findings": []
+}

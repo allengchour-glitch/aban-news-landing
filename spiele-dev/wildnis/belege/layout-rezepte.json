@@ -1,0 +1,1903 @@
+{
+  "uiOnly": true,
+  "kind": "Echter Solo-Start mit deaktiviertem 3D-Zeichenpfad, HUD- und Rezeptfixtures; kein FPS- oder Kampagnentest",
+  "checks": [
+    {
+      "name": "Solo-Welt tatsächlich gestartet",
+      "passed": true
+    },
+    {
+      "name": "Aktionsknöpfe erreichbar 1280×800",
+      "passed": true,
+      "data": [
+        {
+          "id": "bMenu",
+          "x": 1224,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bMenu",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSound",
+          "x": 1172,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bSound",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bAct",
+          "x": 1178,
+          "y": 682,
+          "width": 78,
+          "height": 78,
+          "hit": "bAct",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBuild",
+          "x": 1102,
+          "y": 684,
+          "width": 60,
+          "height": 60,
+          "hit": "bBuild",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bThrow",
+          "x": 1194,
+          "y": 608,
+          "width": 60,
+          "height": 60,
+          "hit": "bThrow",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSkill",
+          "x": 1102,
+          "y": 610,
+          "width": 60,
+          "height": 60,
+          "hit": "bSkill",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bDodge",
+          "x": 1028,
+          "y": 680,
+          "width": 56,
+          "height": 56,
+          "hit": "bDodge",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBolt",
+          "x": 1028,
+          "y": 608,
+          "width": 56,
+          "height": 56,
+          "hit": "bBolt",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomIn",
+          "x": 1170,
+          "y": 280,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomIn",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomOut",
+          "x": 1224,
+          "y": 280,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomOut",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote0",
+          "x": 514,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote0",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote1",
+          "x": 566,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote1",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote2",
+          "x": 618,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote2",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote3",
+          "x": 670,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote3",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote4",
+          "x": 722,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote4",
+          "reachable": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "Anzeigen ohne Überschneidung 1280×800",
+      "passed": true,
+      "data": {
+        "items": [
+          {
+            "id": "topLeft",
+            "x": 12,
+            "y": 8,
+            "right": 316.59375,
+            "bottom": 82,
+            "visible": true
+          },
+          {
+            "id": "invBar",
+            "x": 509.9765625,
+            "y": 8,
+            "right": 770.0234375,
+            "bottom": 53,
+            "visible": true
+          },
+          {
+            "id": "onlineBadge",
+            "x": 170.046875,
+            "y": 12,
+            "right": 316.59375,
+            "bottom": 36,
+            "visible": true
+          },
+          {
+            "id": "quest",
+            "x": 1040.703125,
+            "y": 64,
+            "right": 1268,
+            "bottom": 131.671875,
+            "visible": true
+          },
+          {
+            "id": "minimap",
+            "x": 1148,
+            "y": 152,
+            "right": 1268,
+            "bottom": 272,
+            "visible": true
+          },
+          {
+            "id": "zoomBtns",
+            "x": 1170,
+            "y": 280,
+            "right": 1268,
+            "bottom": 324,
+            "visible": true
+          },
+          {
+            "id": "sysRow",
+            "x": 1172,
+            "y": 8,
+            "right": 1268,
+            "bottom": 52,
+            "visible": true
+          },
+          {
+            "id": "emoteBar",
+            "x": 514,
+            "y": 542,
+            "right": 766,
+            "bottom": 586,
+            "visible": true
+          }
+        ],
+        "overlap": []
+      }
+    },
+    {
+      "name": "Aktionsknöpfe erreichbar 390×844",
+      "passed": true,
+      "data": [
+        {
+          "id": "bMenu",
+          "x": 336,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bMenu",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSound",
+          "x": 286,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bSound",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bAct",
+          "x": 306,
+          "y": 752,
+          "width": 68,
+          "height": 68,
+          "hit": "bAct",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBuild",
+          "x": 240,
+          "y": 758,
+          "width": 54,
+          "height": 54,
+          "hit": "bBuild",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bThrow",
+          "x": 312,
+          "y": 680,
+          "width": 58,
+          "height": 58,
+          "hit": "bThrow",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSkill",
+          "x": 240,
+          "y": 684,
+          "width": 54,
+          "height": 54,
+          "hit": "bSkill",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bDodge",
+          "x": 180,
+          "y": 762,
+          "width": 50,
+          "height": 50,
+          "hit": "bDodge",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBolt",
+          "x": 180,
+          "y": 688,
+          "width": 50,
+          "height": 50,
+          "hit": "bBolt",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomIn",
+          "x": 286,
+          "y": 238,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomIn",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomOut",
+          "x": 336,
+          "y": 238,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomOut",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote0",
+          "x": 10,
+          "y": 460,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote0",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote1",
+          "x": 10,
+          "y": 510,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote1",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote2",
+          "x": 10,
+          "y": 560,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote2",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote3",
+          "x": 10,
+          "y": 610,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote3",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote4",
+          "x": 10,
+          "y": 660,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote4",
+          "reachable": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "Anzeigen ohne Überschneidung 390×844",
+      "passed": true,
+      "data": {
+        "items": [
+          {
+            "id": "topLeft",
+            "x": 10,
+            "y": 8,
+            "right": 160,
+            "bottom": 82,
+            "visible": true
+          },
+          {
+            "id": "invBar",
+            "x": 10,
+            "y": 86,
+            "right": 228.3125,
+            "bottom": 124,
+            "visible": true
+          },
+          {
+            "id": "onlineBadge",
+            "x": 180,
+            "y": 55,
+            "right": 311.484375,
+            "bottom": 80,
+            "visible": true
+          },
+          {
+            "id": "quest",
+            "x": 10,
+            "y": 148,
+            "right": 209.1875,
+            "bottom": 212.4375,
+            "visible": true
+          },
+          {
+            "id": "minimap",
+            "x": 298,
+            "y": 148,
+            "right": 380,
+            "bottom": 230,
+            "visible": true
+          },
+          {
+            "id": "zoomBtns",
+            "x": 286,
+            "y": 238,
+            "right": 380,
+            "bottom": 282,
+            "visible": true
+          },
+          {
+            "id": "sysRow",
+            "x": 286,
+            "y": 8,
+            "right": 380,
+            "bottom": 52,
+            "visible": true
+          },
+          {
+            "id": "emoteBar",
+            "x": 10,
+            "y": 460,
+            "right": 54,
+            "bottom": 704,
+            "visible": true
+          }
+        ],
+        "overlap": []
+      }
+    },
+    {
+      "name": "Aktionsknöpfe erreichbar 360×640",
+      "passed": true,
+      "data": [
+        {
+          "id": "bMenu",
+          "x": 306,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bMenu",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSound",
+          "x": 256,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bSound",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bAct",
+          "x": 276,
+          "y": 548,
+          "width": 68,
+          "height": 68,
+          "hit": "bAct",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBuild",
+          "x": 210,
+          "y": 554,
+          "width": 54,
+          "height": 54,
+          "hit": "bBuild",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bThrow",
+          "x": 282,
+          "y": 476,
+          "width": 58,
+          "height": 58,
+          "hit": "bThrow",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSkill",
+          "x": 210,
+          "y": 480,
+          "width": 54,
+          "height": 54,
+          "hit": "bSkill",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bDodge",
+          "x": 150,
+          "y": 558,
+          "width": 50,
+          "height": 50,
+          "hit": "bDodge",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBolt",
+          "x": 150,
+          "y": 484,
+          "width": 50,
+          "height": 50,
+          "hit": "bBolt",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomIn",
+          "x": 256,
+          "y": 238,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomIn",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomOut",
+          "x": 306,
+          "y": 238,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomOut",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote0",
+          "x": 10,
+          "y": 256,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote0",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote1",
+          "x": 10,
+          "y": 306,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote1",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote2",
+          "x": 10,
+          "y": 356,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote2",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote3",
+          "x": 10,
+          "y": 406,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote3",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote4",
+          "x": 10,
+          "y": 456,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote4",
+          "reachable": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "Anzeigen ohne Überschneidung 360×640",
+      "passed": true,
+      "data": {
+        "items": [
+          {
+            "id": "topLeft",
+            "x": 10,
+            "y": 8,
+            "right": 160,
+            "bottom": 82,
+            "visible": true
+          },
+          {
+            "id": "invBar",
+            "x": 10,
+            "y": 86,
+            "right": 228.3125,
+            "bottom": 124,
+            "visible": true
+          },
+          {
+            "id": "onlineBadge",
+            "x": 180,
+            "y": 55,
+            "right": 311.484375,
+            "bottom": 80,
+            "visible": true
+          },
+          {
+            "id": "quest",
+            "x": 10,
+            "y": 148,
+            "right": 209.1875,
+            "bottom": 212.4375,
+            "visible": true
+          },
+          {
+            "id": "minimap",
+            "x": 268,
+            "y": 148,
+            "right": 350,
+            "bottom": 230,
+            "visible": true
+          },
+          {
+            "id": "zoomBtns",
+            "x": 256,
+            "y": 238,
+            "right": 350,
+            "bottom": 282,
+            "visible": true
+          },
+          {
+            "id": "sysRow",
+            "x": 256,
+            "y": 8,
+            "right": 350,
+            "bottom": 52,
+            "visible": true
+          },
+          {
+            "id": "emoteBar",
+            "x": 10,
+            "y": 256,
+            "right": 54,
+            "bottom": 500,
+            "visible": true
+          }
+        ],
+        "overlap": []
+      }
+    },
+    {
+      "name": "Aktionsknöpfe erreichbar 640×360",
+      "passed": true,
+      "data": [
+        {
+          "id": "bMenu",
+          "x": 586,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bMenu",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSound",
+          "x": 534,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bSound",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bAct",
+          "x": 566,
+          "y": 284,
+          "width": 60,
+          "height": 60,
+          "hit": "bAct",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBuild",
+          "x": 506,
+          "y": 288,
+          "width": 50,
+          "height": 50,
+          "hit": "bBuild",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bThrow",
+          "x": 570,
+          "y": 216,
+          "width": 52,
+          "height": 52,
+          "hit": "bThrow",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSkill",
+          "x": 506,
+          "y": 224,
+          "width": 50,
+          "height": 50,
+          "hit": "bSkill",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bDodge",
+          "x": 448,
+          "y": 290,
+          "width": 46,
+          "height": 46,
+          "hit": "bDodge",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBolt",
+          "x": 448,
+          "y": 226,
+          "width": 46,
+          "height": 46,
+          "hit": "bBolt",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomIn",
+          "x": 536,
+          "y": 142,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomIn",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomOut",
+          "x": 586,
+          "y": 142,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomOut",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote0",
+          "x": 168,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote0",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote1",
+          "x": 220,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote1",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote2",
+          "x": 272,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote2",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote3",
+          "x": 324,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote3",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote4",
+          "x": 376,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote4",
+          "reachable": true,
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "Anzeigen ohne Überschneidung 640×360",
+      "passed": true,
+      "data": {
+        "items": [
+          {
+            "id": "topLeft",
+            "x": 10,
+            "y": 8,
+            "right": 160,
+            "bottom": 82,
+            "visible": true
+          },
+          {
+            "id": "invBar",
+            "x": 190,
+            "y": 8,
+            "right": 396.3125,
+            "bottom": 44,
+            "visible": true
+          },
+          {
+            "id": "onlineBadge",
+            "x": 10,
+            "y": 82,
+            "right": 141.484375,
+            "bottom": 107,
+            "visible": true
+          },
+          {
+            "id": "quest",
+            "x": 190,
+            "y": 58,
+            "right": 417.296875,
+            "bottom": 125.671875,
+            "visible": true
+          },
+          {
+            "id": "minimap",
+            "x": 558,
+            "y": 62,
+            "right": 630,
+            "bottom": 134,
+            "visible": true
+          },
+          {
+            "id": "zoomBtns",
+            "x": 536,
+            "y": 142,
+            "right": 630,
+            "bottom": 186,
+            "visible": true
+          },
+          {
+            "id": "sysRow",
+            "x": 534,
+            "y": 8,
+            "right": 630,
+            "bottom": 52,
+            "visible": true
+          },
+          {
+            "id": "emoteBar",
+            "x": 168,
+            "y": 300,
+            "right": 420,
+            "bottom": 344,
+            "visible": true
+          }
+        ],
+        "overlap": []
+      }
+    },
+    {
+      "name": "Erste Baurezepte im Fenster erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Baurezept im Scrollmenü erreichbar",
+      "passed": true
+    },
+    {
+      "name": "Keine Script-/CSP-Fehler",
+      "passed": true,
+      "data": {
+        "errors": [],
+        "csp": []
+      }
+    }
+  ],
+  "views": [
+    {
+      "size": {
+        "width": 1280,
+        "height": 800
+      },
+      "controls": [
+        {
+          "id": "bMenu",
+          "x": 1224,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bMenu",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSound",
+          "x": 1172,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bSound",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bAct",
+          "x": 1178,
+          "y": 682,
+          "width": 78,
+          "height": 78,
+          "hit": "bAct",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBuild",
+          "x": 1102,
+          "y": 684,
+          "width": 60,
+          "height": 60,
+          "hit": "bBuild",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bThrow",
+          "x": 1194,
+          "y": 608,
+          "width": 60,
+          "height": 60,
+          "hit": "bThrow",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSkill",
+          "x": 1102,
+          "y": 610,
+          "width": 60,
+          "height": 60,
+          "hit": "bSkill",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bDodge",
+          "x": 1028,
+          "y": 680,
+          "width": 56,
+          "height": 56,
+          "hit": "bDodge",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBolt",
+          "x": 1028,
+          "y": 608,
+          "width": 56,
+          "height": 56,
+          "hit": "bBolt",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomIn",
+          "x": 1170,
+          "y": 280,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomIn",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomOut",
+          "x": 1224,
+          "y": 280,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomOut",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote0",
+          "x": 514,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote0",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote1",
+          "x": 566,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote1",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote2",
+          "x": 618,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote2",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote3",
+          "x": 670,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote3",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote4",
+          "x": 722,
+          "y": 542,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote4",
+          "reachable": true,
+          "inside": true
+        }
+      ],
+      "ui": {
+        "items": [
+          {
+            "id": "topLeft",
+            "x": 12,
+            "y": 8,
+            "right": 316.59375,
+            "bottom": 82,
+            "visible": true
+          },
+          {
+            "id": "invBar",
+            "x": 509.9765625,
+            "y": 8,
+            "right": 770.0234375,
+            "bottom": 53,
+            "visible": true
+          },
+          {
+            "id": "onlineBadge",
+            "x": 170.046875,
+            "y": 12,
+            "right": 316.59375,
+            "bottom": 36,
+            "visible": true
+          },
+          {
+            "id": "quest",
+            "x": 1040.703125,
+            "y": 64,
+            "right": 1268,
+            "bottom": 131.671875,
+            "visible": true
+          },
+          {
+            "id": "minimap",
+            "x": 1148,
+            "y": 152,
+            "right": 1268,
+            "bottom": 272,
+            "visible": true
+          },
+          {
+            "id": "zoomBtns",
+            "x": 1170,
+            "y": 280,
+            "right": 1268,
+            "bottom": 324,
+            "visible": true
+          },
+          {
+            "id": "sysRow",
+            "x": 1172,
+            "y": 8,
+            "right": 1268,
+            "bottom": 52,
+            "visible": true
+          },
+          {
+            "id": "emoteBar",
+            "x": 514,
+            "y": 542,
+            "right": 766,
+            "bottom": 586,
+            "visible": true
+          }
+        ],
+        "overlap": []
+      }
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "controls": [
+        {
+          "id": "bMenu",
+          "x": 336,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bMenu",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSound",
+          "x": 286,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bSound",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bAct",
+          "x": 306,
+          "y": 752,
+          "width": 68,
+          "height": 68,
+          "hit": "bAct",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBuild",
+          "x": 240,
+          "y": 758,
+          "width": 54,
+          "height": 54,
+          "hit": "bBuild",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bThrow",
+          "x": 312,
+          "y": 680,
+          "width": 58,
+          "height": 58,
+          "hit": "bThrow",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSkill",
+          "x": 240,
+          "y": 684,
+          "width": 54,
+          "height": 54,
+          "hit": "bSkill",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bDodge",
+          "x": 180,
+          "y": 762,
+          "width": 50,
+          "height": 50,
+          "hit": "bDodge",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBolt",
+          "x": 180,
+          "y": 688,
+          "width": 50,
+          "height": 50,
+          "hit": "bBolt",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomIn",
+          "x": 286,
+          "y": 238,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomIn",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomOut",
+          "x": 336,
+          "y": 238,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomOut",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote0",
+          "x": 10,
+          "y": 460,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote0",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote1",
+          "x": 10,
+          "y": 510,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote1",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote2",
+          "x": 10,
+          "y": 560,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote2",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote3",
+          "x": 10,
+          "y": 610,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote3",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote4",
+          "x": 10,
+          "y": 660,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote4",
+          "reachable": true,
+          "inside": true
+        }
+      ],
+      "ui": {
+        "items": [
+          {
+            "id": "topLeft",
+            "x": 10,
+            "y": 8,
+            "right": 160,
+            "bottom": 82,
+            "visible": true
+          },
+          {
+            "id": "invBar",
+            "x": 10,
+            "y": 86,
+            "right": 228.3125,
+            "bottom": 124,
+            "visible": true
+          },
+          {
+            "id": "onlineBadge",
+            "x": 180,
+            "y": 55,
+            "right": 311.484375,
+            "bottom": 80,
+            "visible": true
+          },
+          {
+            "id": "quest",
+            "x": 10,
+            "y": 148,
+            "right": 209.1875,
+            "bottom": 212.4375,
+            "visible": true
+          },
+          {
+            "id": "minimap",
+            "x": 298,
+            "y": 148,
+            "right": 380,
+            "bottom": 230,
+            "visible": true
+          },
+          {
+            "id": "zoomBtns",
+            "x": 286,
+            "y": 238,
+            "right": 380,
+            "bottom": 282,
+            "visible": true
+          },
+          {
+            "id": "sysRow",
+            "x": 286,
+            "y": 8,
+            "right": 380,
+            "bottom": 52,
+            "visible": true
+          },
+          {
+            "id": "emoteBar",
+            "x": 10,
+            "y": 460,
+            "right": 54,
+            "bottom": 704,
+            "visible": true
+          }
+        ],
+        "overlap": []
+      }
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "controls": [
+        {
+          "id": "bMenu",
+          "x": 306,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bMenu",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSound",
+          "x": 256,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bSound",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bAct",
+          "x": 276,
+          "y": 548,
+          "width": 68,
+          "height": 68,
+          "hit": "bAct",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBuild",
+          "x": 210,
+          "y": 554,
+          "width": 54,
+          "height": 54,
+          "hit": "bBuild",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bThrow",
+          "x": 282,
+          "y": 476,
+          "width": 58,
+          "height": 58,
+          "hit": "bThrow",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSkill",
+          "x": 210,
+          "y": 480,
+          "width": 54,
+          "height": 54,
+          "hit": "bSkill",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bDodge",
+          "x": 150,
+          "y": 558,
+          "width": 50,
+          "height": 50,
+          "hit": "bDodge",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBolt",
+          "x": 150,
+          "y": 484,
+          "width": 50,
+          "height": 50,
+          "hit": "bBolt",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomIn",
+          "x": 256,
+          "y": 238,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomIn",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomOut",
+          "x": 306,
+          "y": 238,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomOut",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote0",
+          "x": 10,
+          "y": 256,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote0",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote1",
+          "x": 10,
+          "y": 306,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote1",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote2",
+          "x": 10,
+          "y": 356,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote2",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote3",
+          "x": 10,
+          "y": 406,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote3",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote4",
+          "x": 10,
+          "y": 456,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote4",
+          "reachable": true,
+          "inside": true
+        }
+      ],
+      "ui": {
+        "items": [
+          {
+            "id": "topLeft",
+            "x": 10,
+            "y": 8,
+            "right": 160,
+            "bottom": 82,
+            "visible": true
+          },
+          {
+            "id": "invBar",
+            "x": 10,
+            "y": 86,
+            "right": 228.3125,
+            "bottom": 124,
+            "visible": true
+          },
+          {
+            "id": "onlineBadge",
+            "x": 180,
+            "y": 55,
+            "right": 311.484375,
+            "bottom": 80,
+            "visible": true
+          },
+          {
+            "id": "quest",
+            "x": 10,
+            "y": 148,
+            "right": 209.1875,
+            "bottom": 212.4375,
+            "visible": true
+          },
+          {
+            "id": "minimap",
+            "x": 268,
+            "y": 148,
+            "right": 350,
+            "bottom": 230,
+            "visible": true
+          },
+          {
+            "id": "zoomBtns",
+            "x": 256,
+            "y": 238,
+            "right": 350,
+            "bottom": 282,
+            "visible": true
+          },
+          {
+            "id": "sysRow",
+            "x": 256,
+            "y": 8,
+            "right": 350,
+            "bottom": 52,
+            "visible": true
+          },
+          {
+            "id": "emoteBar",
+            "x": 10,
+            "y": 256,
+            "right": 54,
+            "bottom": 500,
+            "visible": true
+          }
+        ],
+        "overlap": []
+      }
+    },
+    {
+      "size": {
+        "width": 640,
+        "height": 360
+      },
+      "controls": [
+        {
+          "id": "bMenu",
+          "x": 586,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bMenu",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSound",
+          "x": 534,
+          "y": 8,
+          "width": 44,
+          "height": 44,
+          "hit": "bSound",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bAct",
+          "x": 566,
+          "y": 284,
+          "width": 60,
+          "height": 60,
+          "hit": "bAct",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBuild",
+          "x": 506,
+          "y": 288,
+          "width": 50,
+          "height": 50,
+          "hit": "bBuild",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bThrow",
+          "x": 570,
+          "y": 216,
+          "width": 52,
+          "height": 52,
+          "hit": "bThrow",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bSkill",
+          "x": 506,
+          "y": 224,
+          "width": 50,
+          "height": 50,
+          "hit": "bSkill",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bDodge",
+          "x": 448,
+          "y": 290,
+          "width": 46,
+          "height": 46,
+          "hit": "bDodge",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "bBolt",
+          "x": 448,
+          "y": 226,
+          "width": 46,
+          "height": 46,
+          "hit": "bBolt",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomIn",
+          "x": 536,
+          "y": 142,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomIn",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "zoomOut",
+          "x": 586,
+          "y": 142,
+          "width": 44,
+          "height": 44,
+          "hit": "zoomOut",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote0",
+          "x": 168,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote0",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote1",
+          "x": 220,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote1",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote2",
+          "x": 272,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote2",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote3",
+          "x": 324,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote3",
+          "reachable": true,
+          "inside": true
+        },
+        {
+          "id": "qaEmote4",
+          "x": 376,
+          "y": 300,
+          "width": 44,
+          "height": 44,
+          "hit": "qaEmote4",
+          "reachable": true,
+          "inside": true
+        }
+      ],
+      "ui": {
+        "items": [
+          {
+            "id": "topLeft",
+            "x": 10,
+            "y": 8,
+            "right": 160,
+            "bottom": 82,
+            "visible": true
+          },
+          {
+            "id": "invBar",
+            "x": 190,
+            "y": 8,
+            "right": 396.3125,
+            "bottom": 44,
+            "visible": true
+          },
+          {
+            "id": "onlineBadge",
+            "x": 10,
+            "y": 82,
+            "right": 141.484375,
+            "bottom": 107,
+            "visible": true
+          },
+          {
+            "id": "quest",
+            "x": 190,
+            "y": 58,
+            "right": 417.296875,
+            "bottom": 125.671875,
+            "visible": true
+          },
+          {
+            "id": "minimap",
+            "x": 558,
+            "y": 62,
+            "right": 630,
+            "bottom": 134,
+            "visible": true
+          },
+          {
+            "id": "zoomBtns",
+            "x": 536,
+            "y": 142,
+            "right": 630,
+            "bottom": 186,
+            "visible": true
+          },
+          {
+            "id": "sysRow",
+            "x": 534,
+            "y": 8,
+            "right": 630,
+            "bottom": 52,
+            "visible": true
+          },
+          {
+            "id": "emoteBar",
+            "x": 168,
+            "y": 300,
+            "right": 420,
+            "bottom": 344,
+            "visible": true
+          }
+        ],
+        "overlap": []
+      }
+    }
+  ],
+  "errors": [],
+  "csp": [],
+  "status": "passed"
+}

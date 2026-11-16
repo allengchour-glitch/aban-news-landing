@@ -1,0 +1,127 @@
+{
+  "kind": "Feste Welt-/Kamerafixtures; Software-Rendering, kein physisches Handy",
+  "errors": [],
+  "views": [
+    {
+      "name": "start",
+      "stats": {
+        "meshes": 11560,
+        "lights": 26,
+        "casts": 3266,
+        "calls": 2884,
+        "triangles": 380536,
+        "geometries": 2379,
+        "textures": 112,
+        "pixelRatio": 1,
+        "shadow": true,
+        "seed": 317151129,
+        "resources": 373,
+        "colliders": 71,
+        "villages": 5,
+        "stations": 7,
+        "player": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "dorf",
+      "stats": {
+        "meshes": 11566,
+        "lights": 26,
+        "casts": 3267,
+        "calls": 2331,
+        "triangles": 417924,
+        "geometries": 2433,
+        "textures": 115,
+        "pixelRatio": 1,
+        "shadow": true,
+        "seed": 317151129,
+        "resources": 373,
+        "colliders": 71,
+        "villages": 5,
+        "stations": 7,
+        "player": [
+          0,
+          -0.2658816152726492,
+          -18
+        ]
+      }
+    },
+    {
+      "name": "weg",
+      "stats": {
+        "meshes": 11566,
+        "lights": 26,
+        "casts": 3267,
+        "calls": 102,
+        "triangles": 114689,
+        "geometries": 3403,
+        "textures": 136,
+        "pixelRatio": 1,
+        "shadow": true,
+        "seed": 317151129,
+        "resources": 373,
+        "colliders": 71,
+        "villages": 5,
+        "stations": 7,
+        "player": [
+          53.81166458129883,
+          -0.5498396102679997,
+          -118.2874755859375
+        ]
+      }
+    },
+    {
+      "name": "nacht",
+      "stats": {
+        "meshes": 11566,
+        "lights": 33,
+        "casts": 3267,
+        "calls": 3146,
+        "triangles": 467419,
+        "geometries": 5846,
+        "textures": 154,
+        "pixelRatio": 1,
+        "shadow": true,
+        "seed": 317151129,
+        "resources": 373,
+        "colliders": 71,
+        "villages": 5,
+        "stations": 7,
+        "player": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "profile": {
+    "meshes": 11557,
+    "lights": 26,
+    "casts": 3263,
+    "calls": 2885,
+    "triangles": 380647,
+    "geometries": 2375,
+    "textures": 112,
+    "pixelRatio": 1,
+    "shadow": true,
+    "seed": 317151129,
+    "resources": 373,
+    "colliders": 71,
+    "villages": 5,
+    "stations": 7,
+    "player": [
+      0,
+      0,
+      0
+    ],
+    "rafps": 0.5265236277482082,
+    "median": 2516.5,
+    "p95": 2716.5999999999985
+  },
+  "passed": true
+}

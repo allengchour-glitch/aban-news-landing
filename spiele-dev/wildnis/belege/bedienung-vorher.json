@@ -1,0 +1,175 @@
+{
+  "kind": "Lokale Node-VM-Laufzeitprobe mit Originalfunktionen und DOM/MP-Doubles; kein Browsernachweis und kein Internet-Koop",
+  "htmlPath": "/tmp/wildnis-bedienung-original.html",
+  "regressions": [
+    {
+      "name": "Schnell → privat: Suche einmal abbrechen; fund/fertig bleiben wirkungslos",
+      "ok": false,
+      "observed": {
+        "aborts": 0,
+        "sessions": 2,
+        "code": "PUBB"
+      }
+    },
+    {
+      "name": "Privat → schnell: alte ready-Mikrotask startet keine Welt; Share-Timer entfernt",
+      "ok": false,
+      "observed": {
+        "closed": 1,
+        "on": true,
+        "running": false,
+        "timers": 1
+      }
+    },
+    {
+      "name": "Aktives Quick → privat: close-Rejection überschreibt privaten Status nicht",
+      "ok": false,
+      "observed": {
+        "closed": 1,
+        "code": "ABCD",
+        "text": "❌ Kein Mitspieler gefunden"
+      }
+    },
+    {
+      "name": "Erneute Suche: nur aktuelle Suche öffnet Session; Suchhandles freigegeben",
+      "ok": false,
+      "observed": {
+        "sessions": 2,
+        "code": "PUBB",
+        "aborts": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "Quick-Fehler: nächster Raum wird versucht und alter Versuch geschlossen",
+      "ok": false,
+      "observed": {
+        "sessions": 2,
+        "code": "PUBB",
+        "closed": 0
+      }
+    },
+    {
+      "name": "Synchrones Suchende: genau eine Session, zurückgegebenes Handle freigegeben",
+      "ok": false,
+      "observed": {
+        "sessions": 1,
+        "aborts": 0
+      }
+    },
+    {
+      "name": "Aktive privat-Verbindung startet weiterhin die Welt und sendet start",
+      "ok": true,
+      "observed": {
+        "on": true,
+        "running": true,
+        "startSent": true
+      }
+    },
+    {
+      "name": "Aktive quick-Verbindung startet weiterhin die Welt und sendet start",
+      "ok": true,
+      "observed": {
+        "on": true,
+        "running": true,
+        "startSent": true
+      }
+    },
+    {
+      "name": "Karte sperrt Spieltasten; Escape schliesst Karte",
+      "ok": false,
+      "observed": {
+        "actions": 7,
+        "mapOpen": true
+      }
+    },
+    {
+      "name": "Direkter Dodge-Aufruf gesperrt: paused",
+      "ok": false,
+      "observed": {
+        "dodgeT": 0.38,
+        "dodgeCd": 0.9
+      }
+    },
+    {
+      "name": "Direkter Dodge-Aufruf gesperrt: mapOpen",
+      "ok": false,
+      "observed": {
+        "dodgeT": 0.38,
+        "dodgeCd": 0.9
+      }
+    },
+    {
+      "name": "Direkter Dodge-Aufruf gesperrt: perkChoosing",
+      "ok": false,
+      "observed": {
+        "dodgeT": 0.38,
+        "dodgeCd": 0.9
+      }
+    },
+    {
+      "name": "Direkter Dodge-Aufruf gesperrt: stationOpen",
+      "ok": false,
+      "observed": {
+        "dodgeT": 0.38,
+        "dodgeCd": 0.9
+      }
+    }
+  ],
+  "sourceSha256": "6d9fc8a2bfeb10f3c4d3c06b1296a8e09a5c45d3cec4f958aa2e32ac7d860220",
+  "controls": [
+    "Privaten Raum allein öffnen: ABCD bleibt aktive Host-Session.",
+    "Shift ohne Karte rollt im ersten 50-ms-Schritt 0.85 Welteinheiten."
+  ],
+  "findings": [
+    {
+      "id": "NW-B1",
+      "source": "neon-wildnis.html:5050-5071; 5091",
+      "input": [
+        "Schnell-Koop klicken",
+        "Vor Suchende Raum öffnen klicken",
+        "Alte Suche liefert fertig([])"
+      ],
+      "expected": "Der zuletzt gewählte private Raum ABCD bleibt aktiv; alte Suche hat keine Wirkung.",
+      "before": {
+        "role": "host",
+        "code": "ABCD",
+        "text": "Raum-Code: ABCD — teile ihn mit dem Partner!"
+      },
+      "after": {
+        "role": "quick",
+        "code": "PUBA",
+        "text": "Raum-Code: ABCD — teile ihn mit dem Partner!",
+        "privateRoomCloseCalls": 0,
+        "privateRoomStatus": "waiting",
+        "liveSessions": 2
+      },
+      "fix": "Suchgeneration vor jedem neuen Lobby-Versuch erhöhen; fund/fertig vor netQuickGo auf aktuelle Generation prüfen. Suchhandle aufbewahren; vor abbrechen zuerst Generation entwerten, weil abbrechen selbst fertig aufruft."
+    },
+    {
+      "id": "NW-B2",
+      "source": "neon-wildnis.html:3586-3606; 4252-4266; 4749-4770; 4794",
+      "input": [
+        "Während Spiel Weltkarte öffnen",
+        "Shift drücken und loslassen",
+        "Karte schliessen; nächster Simulationsschritt"
+      ],
+      "expected": "Tastendruck in der pausierten Vollbildkarte aktiviert keine Spielaktion nach dem Schliessen.",
+      "whileMap": {
+        "mapOpen": true,
+        "dodgeT": 0.38,
+        "dodgeCd": 0.9,
+        "z": 0,
+        "shiftReleased": true
+      },
+      "after": {
+        "mapOpen": false,
+        "dodgeT": 0.33,
+        "z": 0.8500000000000001
+      },
+      "fix": "In keydown bei mapOpen Spielaktionen sperren (Escape kann closeWorldMap ausführen); zusätzlich doDodge gegen paused/mapOpen/perkChoosing/stationOpen absichern."
+    }
+  ]
+}

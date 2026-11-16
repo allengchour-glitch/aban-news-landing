@@ -1,0 +1,9 @@
+OK Feste Lichtanzahl, Originalfarbe/Intensität unverändert, bewegte Quelle nachgeführt
+OK Nachträgliche Lichtgruppen, Unsichtbarkeit, eigene Layer und idempotentes Aufräumen
+OK Entfernte Bauvorschauen werden freigegeben und können erneut registriert werden
+OK Lichtpool verarbeitet Tages-/Nachtwechsel ohne Wechsel der Shader-Lichtanzahl
+OK Entfernte Weltobjekte nur während des Zeichnens verborgen, auch nach Fehler restauriert
+OK Himmel, animierte Figuren, große Flächen und globale Instanzen werden erhalten
+OK Neue Kinder und verschachtelte Transformationen erhalten konservative Grenzen
+OK Bodenkontakt folgt dem Gelände, zeigt nach oben und gibt eigene Ressourcen frei
+8 ok, 0 Fehler
