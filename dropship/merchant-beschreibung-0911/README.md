@@ -81,6 +81,8 @@ Beispiele (Vorher: «<Titel> bei LuxeStyle – Schweizer Online-Shop. Gratis-Ver
 
 **Fehler im eigenen Messgerät, vor dem Ergebnis behoben:** Lauf 1 und 2 fanden kein einziges Angebot, auch nicht die Probe. Das Skript zerlegte die `id` von `product_view` in vier Teile, sie hat aber nur drei (`sprache~label~angebot`). Erst die Probe mit einem bekannten Angebot zeigte, dass das Messgerät falsch war und nicht der Shop. Der Name für `products.get` entsteht jetzt aus `language_code`, `feed_label` und `offer_id`.
 
+**Zweiter Fehler, nach dem Merge (Lauf 5, 16.11.):** GitHub schwärzt im Protokoll «{» und «}», weil das der Inhalt einzelner Zeilen des JSON-Schlüssels ist. Darum sollten die Zählungen als Text erscheinen. Die neue Hilfsfunktion dafür hiess `liste`, genau wie eine lokale Variable in `main()`. Der Lauf brach deshalb mit `TypeError` ab. Der Selbsttest hatte `main()` nie aufgerufen. Behoben: Die Funktion heisst jetzt `als_text`. Ausserdem lässt der Selbsttest `main()` einmal mit Attrappen für Shopify und Merchant durchlaufen. Dieser Probelauf prüft Gruppen, Zählung und Urteil. Er prüft auch, dass weder Konto-Nummer noch Feed-Label noch Klammern in der Ausgabe stehen. Mutationsprobe: 7 von 7 erkannt.
+
 **Entscheid des Besitzers:** behalten und in einigen Tagen neu messen (Handstart von `merchant-beschreibung.yml`), oder zurücknehmen (`ZURUECK=1 LIVE=1 python3 dropship/merchant-beschreibung-0911/pilot_pullover.py`).
 
 ## Messrezept
@@ -98,3 +100,4 @@ Seit 16.11.: Workflow `merchant-beschreibung.yml` (Handstart; `google_lesen.py`,
 1. **Ein Bericht des Merchant Centers ist auch ein Messgerät für das, was bei Google ankommt:** die Spalte «Description» zeigte, dass die Werbezeile statt der Beschreibung ankommt; auf der Seite (JSON-LD) sieht man das nicht.
 2. **Erst Tags entfernen, dann Entitäten auflösen:** die erste Fassung von `klartext` löste `&lt;` vor dem Entfernen der Tags auf und schnitt Text weg; der Selbsttest hat es gefunden.
 3. **Eine Aussage über einen Datenweg erst am Anteil messen:** 95 % von 634 Produkten sind kein Zufall, 4 Produkte wären einer.
+4. **Ein Selbsttest, der nur Hilfsfunktionen prüft, übersieht Fehler im Ablauf:** eine lokale Variable verdeckte eine Funktion gleichen Namens. Erst ein Probelauf von `main()` mit Attrappen fängt solche Fehler ab, ohne Netz.

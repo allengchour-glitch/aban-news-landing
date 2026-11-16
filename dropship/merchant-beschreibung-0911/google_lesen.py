@@ -111,7 +111,7 @@ def schwaerzen(text, name=''):
     return re.sub(r'\b\d{8,}\b', '<nummer>', t)
 
 
-def liste(c):
+def als_text(c):
     """Zählung als Text ohne geschweifte Klammern: GitHub schwärzt jede Zeile eines mehrzeiligen Secrets, beim
     JSON-Schlüssel also auch «{» und «}» (Lauf 4 vom 16.11. zeigte ein Wörterbuch nur als ***)."""
     return ', '.join(f'{k}: {v}' for k, v in sorted(c.items(), key=lambda x: str(x[0]))) or 'keine'
@@ -165,17 +165,100 @@ def selbsttest():
     ok('Urteil unklar bei weniger als 50 gefundenen', urteil(z) == ('unklar', 40))
     z = collections.Counter({('pilot', 'pilot'): 60, ('pilot', 'nicht_lesbar'): 30, ('pilot', 'nicht_im_shop'): 5, ('pilot', 'nicht_im_kanal'): 200})
     ok('Urteil zählt nicht lesbare und fehlende Produkte nicht mit', urteil(z) == ('bestaetigt', 60))
-    s = schwaerzen('HTTP 404 accounts/123456789/products/de~CHF_99383214465~shopify_ZZ_1_2', 'accounts/123456789')
-    ok('Schwärzen: weder Konto-Nummer noch Feed-Label im Text', '123456789' not in s and '99383214465' not in s and 'CHF_' not in s)
+    s = schwaerzen('HTTP 404 accounts/123456789/products/de~CHF_11122233344~shopify_ZZ_1_2', 'accounts/123456789')
+    ok('Schwärzen: weder Konto-Nummer noch Feed-Label im Text', '123456789' not in s and '11122233344' not in s and 'CHF_' not in s)
     ok('Schwärzen: Konto auch ohne Namen', '987654321' not in schwaerzen('accounts/987654321 fehlt'))
-    ok('Schwärzen: nackte lange Nummer (Konto ohne Präfix)', '99383214465' not in schwaerzen('Konto 99383214465 unbekannt'))
+    ok('Schwärzen: nackte lange Nummer (Konto ohne Präfix)', '11122233344' not in schwaerzen('Konto 11122233344 unbekannt'))
     zeilen = bericht(collections.Counter({('pilot', 'pilot'): 2, ('kontrolle', 'seo_heute'): 1}),
                      {('pilot', 'pilot'): [('handle-a', neu), ('handle-b', neu), ('handle-c', neu), ('handle-d', neu)]})
     ok('Bericht: Gruppen und Klassen', 'GRUPPE pilot: 2 Produkte' in zeilen and any('seo_heute' in z_ for z_ in zeilen))
     ok('Bericht: höchstens drei Beispiele je Klasse', sum('z. B.' in z_ for z_ in zeilen) == 3)
-    ok('Zählung als Text ohne Klammern', liste(collections.Counter({3: 722})) == '3: 722' and liste(collections.Counter()) == 'keine')
+    ok('Zählung als Text ohne Klammern', als_text(collections.Counter({3: 722})) == '3: 722' and als_text(collections.Counter()) == 'keine')
+    ok('Probelauf von main() mit Attrappen (Shopify, Merchant)', probelauf())
     print('Selbsttest:', 'ALLE OK' if not fehler else f'{len(fehler)} FEHLER')
     return 0 if not fehler else 1
+
+
+def probelauf():
+    """main() einmal ganz durchlaufen, ohne Netz: Attrappen für Shopify und Merchant. Fängt Fehler, die nur im Lauf
+    auftreten (Lauf 5 vom 16.11. brach ab, weil eine lokale Variable den Namen einer Funktion verdeckte)."""
+    import contextlib, io, types
+    pids = json.load(open(os.path.join(HIER, 'pullover_pids.json'), encoding='utf-8'))
+    pilot = {g.rsplit('/', 1)[-1] for g in json.load(open(os.path.join(HIER, 'sicherung', 'pilot_pullover_vorher.json'), encoding='utf-8'))}
+    p_pilot = next(p for p in pids if p in pilot)
+    p_kontrolle = next(p for p in pids if p not in pilot)
+    neu = 'Pullover für Damen. Material: Polyester. Grössen: S–XL.'
+    werbe = 'Pullover bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.'
+
+    def gql(shop, tok, q, v):
+        nodes = []
+        for gid in v['ids']:
+            p = gid.rsplit('/', 1)[-1]
+            seo = neu if p in pilot else werbe
+            gp = p in (p_pilot, p_kontrolle)
+            nodes.append({'id': gid, 'handle': 'h-' + p, 'status': 'ACTIVE', 'updatedAt': '2026-11-10T00:01:00Z',
+                          'descriptionHtml': '<p>Text</p>', 'seo': {'description': seo}, 'gp': gp,
+                          'variants': {'nodes': [{'legacyResourceId': '1'}]}})
+        return {'nodes': nodes}
+    mb = types.ModuleType('merchant_bildprobleme')
+    mb.anmelden = lambda: {}
+    mb.konto = lambda h: 'accounts/123456789'
+    mb.BILDPROBEN = ['shopify_ZZ_9_9']
+    netz = types.ModuleType('apply_fristen')
+    netz.token = lambda: ('shop', 'tok')
+    netz.gql = gql
+
+    def suchen(h, name, abfrage):
+        rows = []
+        for off in re.findall(r"'([^']+)'", abfrage):
+            if off in ('shopify_ZZ_9_9', f'shopify_ZZ_{p_pilot}_1', f'shopify_ZZ_{p_kontrolle}_1'):
+                rows.append({'productView': {'id': f'de~CHF_123~{off}', 'offerId': off, 'languageCode': 'de', 'feedLabel': 'CHF_123'}})
+        return rows
+
+    def lesen(h, name, pname):
+        off = pname.split('~')[-1]
+        return (neu if off == f'shopify_ZZ_{p_pilot}_1' else werbe), None
+    alt_mods = {k: sys.modules.get(k) for k in ('merchant_bildprobleme', 'apply_fristen')}
+    alt_fn = {k: globals()[k] for k in ('suchen_still', 'produkt_lesen')}
+    alt_env = {k: os.environ.get(k) for k in ('SHOPIFY_SHOP', 'SHOPIFY_CLIENT_ID', 'SHOPIFY_CLIENT_SECRET')}
+    alt_argv = sys.argv[:]
+    try:
+        sys.argv = sys.argv[:1]   # sonst sieht main() «--selbsttest» und ruft den Selbsttest endlos neu auf
+        sys.modules['merchant_bildprobleme'], sys.modules['apply_fristen'] = mb, netz
+        globals()['suchen_still'], globals()['produkt_lesen'] = suchen, lesen
+        for k in alt_env:
+            os.environ[k] = 'x'
+        aus = io.StringIO()
+        with contextlib.redirect_stdout(aus):
+            rc = main()
+        text = aus.getvalue()
+    except Exception as e:  # noqa: BLE001 (jeder Fehler im Probelauf ist ein Befund)
+        print('    Probelauf:', type(e).__name__, e)
+        return False
+    finally:
+        sys.argv = alt_argv
+        for k, v in alt_mods.items():
+            if v is None:
+                sys.modules.pop(k, None)
+            else:
+                sys.modules[k] = v
+        globals().update(alt_fn)
+        for k, v in alt_env.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+    pruefungen = {'rc 0': rc == 0, 'Probe gefunden': '(Probe shopify_ZZ_9_9: gefunden)' in text,
+                  'Urteil unklar': 'URTEIL: unklar' in text, 'kein Konto': '123456789' not in text,
+                  'kein Feed-Label': 'CHF_123' not in text, 'Zählung als Text': 'keine' in text,
+                  # GitHub schwärzt «{» und «}» (Zeilen des JSON-Schlüssels): die Ausgabe darf keine Klammern tragen
+                  'keine Klammern': '{' not in text and '}' not in text,
+                  'Zählung Merchant': 'Merchant: 2 von 634 Angeboten bei Google gefunden' in text,
+                  'Gruppen': 'GRUPPE pilot: 329 Produkte' in text and 'GRUPPE kontrolle: 305 Produkte' in text}
+    falsch = [k for k, v in pruefungen.items() if not v]
+    if falsch:
+        print('    Probelauf: nicht erfüllt:', ', '.join(falsch), '| letzte Zeilen:', ' / '.join(text.strip().splitlines()[-3:]))
+    return not falsch
 
 
 def suchen_still(h, name, abfrage):
@@ -274,7 +357,7 @@ def main():
             off, pname, sprache = name_aus_zeile(pv)
             if pname:
                 views[off][sprache] = pname
-    print(f'product_view: {zeilen} Zeilen; Teile der id (Anzahl «~»-Teile: Zeilen): {liste(formen)}')
+    print(f'product_view: {zeilen} Zeilen; Teile der id (Anzahl «~»-Teile: Zeilen): {als_text(formen)}')
     print(f'Merchant: {sum(1 for o in views if o != probe)} von {len(alle_angebote) - (1 if probe else 0)} Angeboten bei Google gefunden '
           f'(Probe {probe}: {"gefunden" if probe in views else "NICHT gefunden, Messgerät prüfen"})')
 
@@ -303,8 +386,8 @@ def main():
     for zeile in bericht(z, beispiele):
         print(zeile)
     if fehler:
-        print('Lesefehler products.get:', liste(fehler))
-    print(f'Pilot, in Shopify nach {PILOT_ENDE} noch einmal geändert (updatedAt), je Klasse: {liste(spaeter)}')
+        print('Lesefehler products.get:', als_text(fehler))
+    print(f'Pilot, in Shopify nach {PILOT_ENDE} noch einmal geändert (updatedAt), je Klasse: {als_text(spaeter)}')
     u, gefunden = urteil(z)
     print(f'URTEIL: {u} (Pilot-Produkte bei Google gefunden und gelesen: {gefunden}; Regel: ab 80 % «pilot» bestätigt, '
           f'ab 50 % «werbezeile» nicht bestätigt)')
