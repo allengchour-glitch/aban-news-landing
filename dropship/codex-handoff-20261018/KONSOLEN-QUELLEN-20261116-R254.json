@@ -1,0 +1,117 @@
+{
+  "run": "R254",
+  "products": [
+    {
+      "key": "hdmi",
+      "shopifyProductId": "gid://shopify/Product/15496982397313",
+      "shopifyVariantId": "gid://shopify/ProductVariant/56096830980481",
+      "shopifySku": "CJ-8CCAF3F0-7DAB-47C3-8072-57CCF85A2AF5",
+      "cjPid": "8CCAF3F0-7DAB-47C3-8072-57CCF85A2AF5",
+      "cjProductSku": "CJXFSPYX00190",
+      "cjVariantSku": "CJXFSPYX00190-default",
+      "cjVariantId": "B510DE37-73D9-4421-BC5A-AA37D7F559E8",
+      "sourceProductName": "4K HDMI Video Game Console",
+      "sourceDescription": "<p>Product Size:<br>Wireless handle size: 12.5 * 5.3 * 1.5cm<br>Shipping list:<br>2 * Wireless controller (need to be equipped with No. 7 battery)<br>1 * HD game console<br>1 * USB data cable<br>1 * English manual<br>1 * Color box</p><p><br></p><p><img src=\"https://cf.cjdropshipping.com/872f406b-c2bd-464f-bbb3-8ca64afe2712.jpg\" style=\"font-size: 14px;\"><img src=\"https://cf.cjdropshipping.com/cb13b3f1-78f3-411e-b2e3-bda27a1a7eae.jpg\" style=\"max-width:100%;\"><img src=\"https://cf.cjdropshipping.com/d28d492a-7a67-4498-8a60-84019b024da7.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/b06d6955-1607-43fb-bdf4-f113a1785ef5.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/790007b9-1b1f-4a98-8fd8-6fe8b0546547.jpg\" style=\"font-size: 14px; max-width: 100%;\"><img src=\"https://cf.cjdropshipping.com/b38c1608-1381-484c-878a-7a5599cd41de.jpg\" style=\"font-size: 14px; max-width: 100%;\"><br></p>",
+      "sourceLocalSha256": "ff98f76879d66250f67ab55c2f29bcd96492fab35916ce116af8dd641d6b266f",
+      "sourceFile": "source/cj-product-detail-raw.json",
+      "imageMapping": [
+        {
+          "mediaId": "gid://shopify/MediaImage/70516380729729",
+          "filename": "6743040384284.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/70516380762497",
+          "filename": "3642841416831.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/70516380664193",
+          "filename": "2554100523621.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/70516380696961",
+          "filename": "1247813743493.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/70516380795265",
+          "filename": "2780314926227.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/70516380828033",
+          "filename": "1990746895969.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/70516380860801",
+          "filename": "2578123687041.jpg",
+          "matchesCurrentCjProductImageSet": true
+        }
+      ],
+      "commercialMediaRights": "Not established by this product/source lookup; no new image published or edited."
+    },
+    {
+      "key": "fc620",
+      "shopifyProductId": "gid://shopify/Product/15448846926209",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55877932548481",
+      "shopifySku": "CJ-1364123175339823104",
+      "cjPid": "1364123175339823104",
+      "cjProductSku": "CJSP1019284",
+      "cjVariantSku": "CJSP101928401AZ",
+      "cjVariantId": "1364123176577142784",
+      "sourceProductName": "8-bit Mini FC620AV Game Wireless 2.4G Gamepad",
+      "sourceDescription": "<p><b>Overview：                   <br/></b></p><p>NES 8-bit MINI FC620AV game for wireless 2.4G gamepad MINI game console Mini</p><p><b><br/>Specification：&nbsp;</b></p><p>Single size: 13.5*10*5.5cm<br/>Single weight: 0.2kg<br/>Product Type: Game Console<br/>Genre of game :RPG role-playing<br/>Game version: Plain cover version<br/>Memory: no<br/>Video game classification: elite level<br/>Applicable number: double<br/>Applicable platform :TV<br/>For age: unlimited<br/>There is wireless: wireless<br/></p><p><span style=\"font-size: 1em;\">Interface: AV</span></p><p><img src=\"https://cf.cjdropshipping.com/1614067180289.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/1614067180326.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/1614067180334.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/1614067180330.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/1614067180340.jpg\" style=\"max-width: 100%;\"/><b style=\"font-size: 1em;\">&nbsp; &nbsp;</b></p>",
+      "sourceLocalSha256": "69ce189251f27b6f52d8fae085007c9b15d0b830e774ae8a4affc02233094a29",
+      "sourceFile": "fc620/source/cj-detail.json",
+      "imageMapping": [
+        {
+          "mediaId": "gid://shopify/MediaImage/69861470568833",
+          "filename": "1614067195611.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/69861470601601",
+          "filename": "1614067195691.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/69861470634369",
+          "filename": "1614067195610.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/69861470667137",
+          "filename": "1614067195608.jpg",
+          "matchesCurrentCjProductImageSet": true
+        },
+        {
+          "mediaId": "gid://shopify/MediaImage/69861470699905",
+          "filename": "1614067195693.jpg",
+          "matchesCurrentCjProductImageSet": true
+        }
+      ],
+      "commercialMediaRights": "Not established by this product/source lookup; no new image published or edited."
+    }
+  ],
+  "scope": "Two exact current Shopify products with one variant each; targeted CJ PID resolution, no catalogue pagination, no supplier messages.",
+  "rootVisualReview": [
+    "Current FC620 packaging says EMX-06, compared with CJ name FC620AV; generic headline used, conflict disclosed.",
+    "Current HDMI picture documents HDMI stick and controller keys; separate battery image documents AAA."
+  ],
+  "openQuestions": {
+    "hdmi": [
+      "4K supplier title versus1080P image; no guaranteed resolution.",
+      "568-in-1 and image category sum591 conflict; exact games/card/rights not proved.",
+      "Batteries and power supply inclusion not enumerated completely."
+    ],
+    "fc620": [
+      "FC620AV source name versus EMX-06/MiniGameBox+ package marking.",
+      "No enumerated pack list; two pads shown is not a confirmed controller quantity.",
+      "620-games packaging claim has no verified title list; no game count promised.",
+      "200g supplier single weight and220g variant/packing field kept separate."
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "run": "R254",
+  "atUtc": "2026-11-16T08:05:38Z",
+  "files": [
+    {
+      "file": "KONSOLEN-DETAILARBEIT-20261116-R254.csv",
+      "path": "dropship/codex-handoff-20261018/KONSOLEN-DETAILARBEIT-20261116-R254.csv",
+      "bytes": 7152,
+      "sha256": "14cda38d9dd2902f10cc8c993a87099c5e6d33d9c1a27abc39159446729bf736",
+      "gitBlobSha": "fed8e0c52431602de22902a0388ea30a7024b22b",
+      "readAt": "2026-11-16T08:05:38Z"
+    },
+    {
+      "file": "KONSOLEN-QUELLEN-20261116-R254.json",
+      "path": "dropship/codex-handoff-20261018/KONSOLEN-QUELLEN-20261116-R254.json",
+      "bytes": 6870,
+      "sha256": "769c5cb672512db9173458f317f8568f2e05bf336e47a9c61e6fc855bfd87d6f",
+      "gitBlobSha": "324556b1da7482b56ef56dcf20ad1a69006da184",
+      "readAt": "2026-11-16T08:05:38Z"
+    },
+    {
+      "file": "SEO-FORTSCHRITT-20261116-R254.json",
+      "path": "dropship/codex-handoff-20261018/SEO-FORTSCHRITT-20261116-R254.json",
+      "bytes": 4030,
+      "sha256": "aeaf963fdfda9317a93049fbe4c2dba2be4692dd91588be57e710534cf335953",
+      "gitBlobSha": "37ab7957636099badcb327f6f1a032ff0e3e092b",
+      "readAt": "2026-11-16T08:05:38Z"
+    },
+    {
+      "file": "SEO-PRODUKTDETAILS-BELEGE-20261116-R254.json",
+      "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R254.json",
+      "bytes": 3294,
+      "sha256": "5206f32dd30d6dc78a8dafd5b9277d4ad8aa4a130362f3cbea2d1c0df6a37390",
+      "gitBlobSha": "0fb8a68c9914b531b81b1d7abae0d9ea95051912",
+      "readAt": "2026-11-16T08:05:38Z"
+    },
+    {
+      "file": "SEO-PRODUKTDETAILS-LIVE-20261116-R254.md",
+      "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-LIVE-20261116-R254.md",
+      "bytes": 5367,
+      "sha256": "9de5a4eca17b5f8ddfc539f48dd3d031cbe1c2db035cd4e5c533088306dbe2da",
+      "gitBlobSha": "f2896b749727016fd5e957e122280edd098f717e",
+      "readAt": "2026-11-16T08:05:38Z"
+    },
+    {
+      "file": "SEO-PRODUKTDETAILS-MOBIL-20261116-R254.json",
+      "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-MOBIL-20261116-R254.json",
+      "bytes": 18480,
+      "sha256": "34028ca5ae5d99e6ab4e1130bfb188c9b8843272b78b1001933e7e6acf1e33fb",
+      "gitBlobSha": "2d84430887ee98d8a4f0f118881f088a04bd4142",
+      "readAt": "2026-11-16T08:05:38Z"
+    },
+    {
+      "file": "SEO-PRODUKTDETAILS-TEXTE-20261116-R254.json",
+      "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-TEXTE-20261116-R254.json",
+      "bytes": 45248,
+      "sha256": "8ba01b765e2766d5529d566d76222b274fb615d8e342b9100deb4ea538f684c0",
+      "gitBlobSha": "71da951494bf6928b980eef68efaaa0056be5f69",
+      "readAt": "2026-11-16T08:05:38Z"
+    }
+  ],
+  "scope": "Only LuxeStyle documentation; no automation/code/deployment files.",
+  "sourceCustomerOrCredentialDataIncluded": false
+}

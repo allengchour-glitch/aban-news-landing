@@ -1,0 +1,99 @@
+{
+  "run": "R254",
+  "atUtc": "2026-11-16T08:05:38Z",
+  "scope": "Exactly36 tracked console product pages, not the complete Shopify catalogue or all SEO work.",
+  "before": {
+    "editoriallyWorked": 10,
+    "total": 36,
+    "percent": 27.8,
+    "sourceAndCopyOpen": 26
+  },
+  "after": {
+    "editoriallyWorked": 12,
+    "total": 36,
+    "percent": 33.3,
+    "sourceAndCopyOpen": 24
+  },
+  "sourceQuestionsClosedForAllWorkedPages": false,
+  "wholeShopSeoCompletionPercent": null,
+  "validation": {
+    "source_csv": "/dev/shm/luxestyle-review/r252/publish/KONSOLEN-DETAILARBEIT-20261116-R252.csv",
+    "source_sha256": "7d99ba52a9d374f686a6ce69abc3f13a0c843c806d8e51e836de920cabcdd884",
+    "output_csv": "/dev/shm/luxestyle-review/r254/worklist-after.csv",
+    "output_sha256": "14cda38d9dd2902f10cc8c993a87099c5e6d33d9c1a27abc39159446729bf736",
+    "native_after_and_guards": "/dev/shm/luxestyle-review/r254/native-after-and-guards.json",
+    "rows_before": 36,
+    "rows_after": 36,
+    "unique_product_ids_before": 36,
+    "unique_product_ids_after": 36,
+    "same_36_product_ids_and_order": true,
+    "same_all_36_urls": true,
+    "original_columns_preserved": [
+      "product_id",
+      "title",
+      "url",
+      "copy_state",
+      "previous_title_R252",
+      "previous_copy_state_R252",
+      "last_review_run_R252"
+    ],
+    "added_columns": [
+      "previous_title_R254",
+      "previous_copy_state_R254",
+      "last_review_run_R254"
+    ],
+    "target_updates": [
+      {
+        "product_id": "gid://shopify/Product/15496982397313",
+        "url": "https://luxestyle.ch/products/4k-hdmi-videospielkonsole-5a2af5",
+        "old_title": "4K HDMI Videospielkonsole",
+        "new_title": "HDMI-Retro-Konsole mit 2 kabellosen Controllern",
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R254_SOURCE_DETAILS_OPEN",
+        "previous_title_R254": "4K HDMI Videospielkonsole",
+        "previous_copy_state_R254": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "native_checks": {
+          "title": true,
+          "seo": true,
+          "htmlFormattingOnly": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448846926209",
+        "url": "https://luxestyle.ch/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+        "old_title": "8-Bit Mini FC620AV Retro Game Konsole Wireless",
+        "new_title": "8-Bit Mini-Retro-Konsole mit AV-Anschluss",
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R254_SOURCE_DETAILS_OPEN",
+        "previous_title_R254": "8-Bit Mini FC620AV Retro Game Konsole Wireless",
+        "previous_copy_state_R254": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "native_checks": {
+          "title": true,
+          "seo": true,
+          "htmlFormattingOnly": true,
+          "protectedFields": true
+        }
+      }
+    ],
+    "copy_state_counts": {
+      "COPY_SELECTION_LIVE_R252_GAMES_CARD_CONTROLLER_SCOPE_OPEN": 2,
+      "COPY_SEO_LIVE_R254_SOURCE_DETAILS_OPEN": 2,
+      "SOURCE_AND_COPY_REVIEW_OPEN": 24,
+      "COPY_SELECTION_LIVE_R245_COLOUR_GAMES_CHARGING_CONFIRMATION_OPEN": 1,
+      "R242_COPY_AND_SEO_LIVE_VERIFIED": 4,
+      "R249_COPY_LIVE_GAME_CONTENT_OPEN": 1,
+      "R249_COPY_LIVE_GAME_AND_CARD_CONTENT_OPEN": 1,
+      "COPY_SELECTION_LIVE_R245_MODEL_GAME_LIST_CONFIRMATION_OPEN": 1
+    },
+    "editorially_worked_total": 12,
+    "open_source_and_copy_review": 24,
+    "editorially_worked_percent": 33.3,
+    "fully_verified_R242_count": 4,
+    "interpretation": "Two additional pages have confirmed live title/body/SEO changes, with protected fields unchanged. Their model/game/card questions remain open; this records editing, not full source verification or SEO completion for the shop.",
+    "mutations_performed_by_this_validation": false,
+    "shopify_or_git_writes_by_this_validation": false,
+    "untargeted_34_rows_legacy_columns_unchanged": true,
+    "legacy_history_columns_preserved": true
+  }
+}

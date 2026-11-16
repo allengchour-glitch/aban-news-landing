@@ -1,0 +1,130 @@
+{
+  "run": "R254",
+  "atUtc": "2026-11-16T08:05:38Z",
+  "request": "seo text detailierter, also weiter machen, wieviel prozent hast du ungefähr",
+  "identity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "ownShopifyWrites": 2,
+  "editedProductIds": [
+    "gid://shopify/Product/15496982397313",
+    "gid://shopify/Product/15448846926209"
+  ],
+  "changedFields": [
+    "title",
+    "descriptionHtml",
+    "seo.title",
+    "seo.description"
+  ],
+  "wordCountsApprox": {
+    "hdmi": 378,
+    "fc620": 405
+  },
+  "nativeUserErrors": [],
+  "nativeGuardChecks": [
+    {
+      "key": "hdmi",
+      "productId": "gid://shopify/Product/15496982397313",
+      "checks": {
+        "title": true,
+        "seo": true,
+        "htmlFormattingOnly": true,
+        "protectedFields": true
+      },
+      "updatedAt": "2026-11-16T07:56:48Z",
+      "changedTopLevelKeys": [
+        "title",
+        "updatedAt",
+        "descriptionHtml",
+        "seo"
+      ]
+    },
+    {
+      "key": "fc620",
+      "productId": "gid://shopify/Product/15448846926209",
+      "checks": {
+        "title": true,
+        "seo": true,
+        "htmlFormattingOnly": true,
+        "protectedFields": true
+      },
+      "updatedAt": "2026-11-16T07:57:20Z",
+      "changedTopLevelKeys": [
+        "title",
+        "updatedAt",
+        "descriptionHtml",
+        "seo"
+      ]
+    }
+  ],
+  "preserved": {
+    "variants": 2,
+    "optionIds": 2,
+    "optionValueIds": 2,
+    "mediaIdsAndOrder": 12,
+    "priceCHF": [
+      "29.90",
+      "14.90"
+    ],
+    "allQueriedSkusStatusTagsInventoryPolicies": true,
+    "handlesAndUrls": true,
+    "noNewVariants": true
+  },
+  "publicValidation": {
+    "htmlAndJsEndpoints": 4,
+    "allHttp200": true,
+    "h1TitleMetaCanonicalAndBodyPass": true,
+    "currentJsonLdOffersMatch": 2,
+    "mobileViews": 4,
+    "widths": [
+      360,
+      390
+    ],
+    "noDocumentOrTableOverflow": true,
+    "singleDefaultVariantsNoPickerClickClaim": true
+  },
+  "progress": {
+    "scope": "36er Konsolenliste, redaktionell bearbeitet",
+    "beforeWorked": 10,
+    "afterWorked": 12,
+    "total": 36,
+    "percentAfter": 33.3,
+    "sourceAndCopyReviewOpen": 24,
+    "allSupplierQuestionsResolved": false,
+    "wholeShopPercent": null
+  },
+  "remainingIssues": [
+    "Exact games/card contents, controller/battery/accessory inclusion as individually disclosed.",
+    "FC620AV/EMX-06 and HDMI4K/1080P supplier conflicts.",
+    "Pre-existing theme shipping-policy text and dynamic ETA were not modified.",
+    "Pre-existing HDMI hero first image shows batteries; image order unchanged.",
+    "No new Google index/ranking or sales improvement measured."
+  ],
+  "otherWrites": {
+    "merchant": 0,
+    "theme": 0,
+    "metricool": 0,
+    "flows": 0,
+    "dns": 0,
+    "price": 0,
+    "inventory": 0,
+    "budget": 0,
+    "discount": 0,
+    "customerOrSupplierMessages": 0,
+    "paidRender": 0,
+    "workflowDispatch": 0
+  },
+  "todayReportsRepeated": false,
+  "ordersQueried": false,
+  "purchaseWatchEnded": true,
+  "newAutomation": false,
+  "claudeReceipt": "unknown"
+}

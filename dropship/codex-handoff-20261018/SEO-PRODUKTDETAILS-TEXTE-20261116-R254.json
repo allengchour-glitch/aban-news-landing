@@ -1,0 +1,784 @@
+{
+  "run": "R254",
+  "preparedInputs": [
+    {
+      "key": "hdmi",
+      "beforeUpdatedAt": "2026-11-01T22:18:30Z",
+      "productId": "gid://shopify/Product/15496982397313",
+      "handle": "4k-hdmi-videospielkonsole-5a2af5",
+      "input": {
+        "id": "gid://shopify/Product/15496982397313",
+        "title": "HDMI-Retro-Konsole mit 2 kabellosen Controllern",
+        "descriptionHtml": "<p>Diese HDMI-Retro-Konsole ist ein kompaktes TV-Spielgerät in Stick-Bauform. Zum Set gehören laut Lieferliste zwei kabellose Controller, ein USB-Datenkabel und eine englische Anleitung. Die Controller haben ein Steuerkreuz sowie Start-, Select- und A/B-Tasten. Das Angebot führt eine Standardausführung; separate Speichergrössen oder Spielepakete sind nicht auswählbar.</p>\n<h2>Anschluss und Bedienung</h2>\n<p>Die Konsole wird über HDMI mit einem passenden Fernseher verbunden. Prüfe vor dem Kauf den verfügbaren HDMI-Eingang und die Stromversorgung am vorgesehenen Platz. Ein USB-Datenkabel ist aufgeführt; ein separates Netzteil wird in der Lieferliste nicht genannt. Daraus lässt sich nicht sicher ableiten, welches Netzteil oder welcher USB-Anschluss für deinen Fernseher geeignet ist.</p>\n<p>Für die kabellosen Controller werden AAA-Batterien benötigt. Die Produktabbildung zeigt zwei 1,5-V-AAA-Batterien pro Controller. Ob Batterien beiliegen, ist nicht eindeutig bestätigt. Die Angabe «kabellos» bezieht sich auf die Controller und bedeutet keine drahtlose Bildübertragung zum Fernseher.</p>\n<h2>Technische Details</h2>\n<table><caption>Angaben zu Konsole und Controllern</caption><tbody>\n<tr><th scope=\"row\">Bauform</th><td>TV-Konsole in Stick-Bauform mit HDMI-Stecker</td></tr>\n<tr><th scope=\"row\">Bedienung</th><td>Zwei kabellose Controller; Steuerkreuz, Start, Select und A/B-Tasten</td></tr>\n<tr><th scope=\"row\">Controller</th><td>12,5 × 5,3 × 1,5 cm laut Produktangabe; dies sind keine Konsolenmasse</td></tr>\n<tr><th scope=\"row\">Batterien</th><td>AAA für die Controller; Mitlieferung nicht bestätigt</td></tr>\n<tr><th scope=\"row\">Anleitung</th><td>Englisch laut Lieferliste; eine deutsche Anleitung ist nicht bestätigt</td></tr>\n<tr><th scope=\"row\">Ausführung</th><td>Eine Standardausführung, keine wählbaren Speicher- oder Spielepakete</td></tr>\n</tbody></table>\n<h2>Lieferumfang</h2>\n<ul><li>1 Spielkonsole</li><li>2 kabellose Controller</li><li>1 USB-Datenkabel</li><li>1 englische Anleitung</li><li>Farbverpackung</li></ul>\n<h2>Spiele, Speicherkarte und Auflösung</h2>\n<p>Eine verifizierte Liste mitgelieferter oder vorinstallierter Spiele liegt nicht vor. Die Produktbilder nennen unterschiedliche Spieleangaben; diese werden deshalb nicht als zugesicherte Anzahl übernommen. Auch eine Speicherkarte und deren Kapazität sind in der textlichen Lieferliste nicht bestätigt. Fehlende Angaben bedeuten nicht, dass keine Spiele oder keine Karte enthalten sind.</p>\n<p>Der frühere Produktname nennt 4K, eine Produktabbildung dagegen 1080P. Die tatsächliche Ausgabeauflösung ist damit nicht eindeutig belegt. Dieses Angebot sichert weder 4K noch 1080p zu. Eine Kompatibilität mit PS4, PS5, Xbox oder bestimmten Spieletiteln ist ebenfalls nicht bestätigt.</p>\n<h2>Häufige Fragen vor dem Kauf</h2>\n<h3>Kann ich sofort spielen?</h3>\n<p>Eine vollständig eingerichtete, sofort spielbereite Lieferung ist nicht bestätigt. Kläre dafür vorab den Spiele- und Karteninhalt sowie die passende Stromversorgung und Controller-Batterien.</p>\n<h3>Ist dies eine Handheld-Konsole?</h3>\n<p>Nein. Es handelt sich um ein TV-Gerät mit HDMI-Anschluss, nicht um eine Konsole mit eigenem Bildschirm für unterwegs.</p>\n<h3>Welche Ausführung bekomme ich?</h3>\n<p>Dieses Angebot hat eine Standardausführung. Es gibt keine auswählbare Speicherkapazität oder separat zugesicherte Spiele-Sammlung.</p>\n<p>Weitere Bauformen findest du unter <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>.</p>",
+        "seo": {
+          "title": "HDMI-Retro-Konsole: Lieferumfang und Details | LuxeStyle",
+          "description": "HDMI-Retro-Konsole mit zwei kabellosen Controllern. Lieferumfang, AAA-Batterien und Anschluss prüfen. Angaben zu Spielen und Speicherkarte klar erklärt."
+        }
+      },
+      "wordsApprox": 378,
+      "seoLengths": {
+        "title": 56,
+        "description": 152
+      },
+      "protectedFields": [
+        "id",
+        "handle",
+        "status",
+        "productType",
+        "vendor",
+        "tags",
+        "onlineStoreUrl",
+        "options",
+        "variants",
+        "media"
+      ]
+    },
+    {
+      "key": "fc620",
+      "beforeUpdatedAt": "2026-11-01T22:18:31Z",
+      "productId": "gid://shopify/Product/15448846926209",
+      "handle": "8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+      "input": {
+        "id": "gid://shopify/Product/15448846926209",
+        "title": "8-Bit Mini-Retro-Konsole mit AV-Anschluss",
+        "descriptionHtml": "<p>Diese schwarze 8-Bit Mini-Retro-Konsole ist für den Anschluss an einen Fernseher mit passendem AV-Eingang vorgesehen. Die Produktangaben nennen kabellose 2.4G-Gamepads und eine Auslegung für zwei Spieler. Das Angebot führt eine Standardausführung in Schwarz; wählbare Speichergrössen oder gesonderte Spielepakete gibt es nicht.</p>\n<h2>Passt die Konsole zu deinem Fernseher?</h2>\n<p>Der angegebene Anschluss ist AV. Prüfe vor dem Kauf, ob dein Fernseher den passenden AV-Eingang besitzt. Ein HDMI-Anschluss allein ist dafür kein Nachweis. Eine allgemeine Kompatibilität mit allen oder den meisten Fernsehern wird nicht zugesichert; ein geeigneter zusätzlicher Adapter und dessen Lieferumfang sind nicht bestätigt.</p>\n<p>Die Funkangabe 2.4G bezieht sich auf die Gamepads, nicht auf eine kabellose Bildübertragung zum Fernseher. Die genaue Funkreichweite wird nicht genannt. Eine Auslegung für zwei Spieler bestätigt ausserdem noch nicht, dass jedes Spiel einen Zweispielermodus bietet.</p>\n<h2>Technische Angaben und Auswahl</h2>\n<table><caption>Produktangaben zur Mini-Retro-Konsole</caption><tbody>\n<tr><th scope=\"row\">Geräteart</th><td>8-Bit TV-Spielkonsole, ohne eigenen Bildschirm</td></tr>\n<tr><th scope=\"row\">Anschluss</th><td>AV laut Produktangabe; HDMI nicht bestätigt</td></tr>\n<tr><th scope=\"row\">Bedienung</th><td>Kabellose 2.4G-Gamepads laut Produktangabe</td></tr>\n<tr><th scope=\"row\">Spielerzahl</th><td>Für zwei Spieler ausgewiesen; Spielmodi nicht einzeln bestätigt</td></tr>\n<tr><th scope=\"row\">Farbe</th><td>Schwarz, eine Standardausführung</td></tr>\n<tr><th scope=\"row\">Masse</th><td>13,5 × 10 × 5,5 cm als Einzelmass angegeben; Geräte- und Setmasse werden nicht getrennt ausgewiesen</td></tr>\n<tr><th scope=\"row\">Gewicht</th><td>200 g als Einzelgewicht angegeben; kein separat bestätigtes Gesamtgewicht des Sets</td></tr>\n<tr><th scope=\"row\">Material</th><td>Kunststoff laut Produktangabe; keine genauere Zusammensetzung genannt</td></tr>\n</tbody></table>\n<h2>Lieferumfang, Batterien und Spiele</h2>\n<p>Die Bilder zeigen die Konsole, zwei Pads und einen kleinen Empfänger. Eine vollständige schriftliche Packliste mit den Stückzahlen, Anschlusskabeln und der Stromversorgung liegt jedoch nicht vor. Die Abbildung allein bestätigt deshalb nicht, welche Teile tatsächlich im Paket enthalten sind.</p>\n<p>Eine Controller-Abbildung kennzeichnet zwei AAA-Batterien als nicht enthalten. Die genaue Batterie- und Zubehörausstattung der Lieferung bleibt zu bestätigen. Auf der Verpackung steht «620 classic games built-in»; eine verifizierte Spieleliste, die genaue Anzahl und einzelne Titel sind nicht belegt. Es wird keine bestimmte Spieleauswahl zugesichert. Das bedeutet nicht, dass keine Spiele enthalten sind.</p>\n<h2>Häufige Fragen</h2>\n<h3>Welche Ausführung kann ich auswählen?</h3>\n<p>Es gibt eine Standardausführung in Schwarz. Es stehen keine unterschiedlichen Speichergrössen oder Spielepakete zur Auswahl.</p>\n<h3>Ist dies genau das Modell FC620AV?</h3>\n<p>Die Lieferantenbezeichnung lautet FC620AV, auf der abgebildeten Verpackung steht EMX-06. Diese Abweichung ist nicht abschliessend geklärt. Wenn du ein bestimmtes Modell benötigst, muss dessen Kennzeichnung vor dem Kauf bestätigt werden.</p>\n<h3>Sind zwei Controller enthalten?</h3>\n<p>Die Bilder zeigen zwei Pads und die Produktangaben nennen zwei Spieler. Ohne vollständige Packliste bleibt die tatsächlich mitgelieferte Controller-Anzahl offen.</p>\n<h3>Ist ein Bildschirm eingebaut?</h3>\n<p>Nein. Dies ist eine TV-Konsole mit AV-Anschluss, keine Handheld-Konsole mit eigenem Bildschirm.</p>\n<p>Andere Bauformen findest du unter <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>.</p>",
+        "seo": {
+          "title": "8-Bit Retro-Konsole mit AV: Anschluss und Auswahl | LuxeStyle",
+          "description": "8-Bit Mini-Retro-Konsole mit AV-Anschluss und 2.4G-Funkangabe. Technische Daten, TV-Anschluss und offene Angaben zu Spielen und Lieferumfang im Überblick."
+        }
+      },
+      "wordsApprox": 405,
+      "seoLengths": {
+        "title": 61,
+        "description": 154
+      },
+      "protectedFields": [
+        "id",
+        "handle",
+        "status",
+        "productType",
+        "vendor",
+        "tags",
+        "onlineStoreUrl",
+        "options",
+        "variants",
+        "media"
+      ]
+    }
+  ],
+  "nativeBefore": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch",
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "hdmi": {
+      "id": "gid://shopify/Product/15496982397313",
+      "title": "4K HDMI Videospielkonsole",
+      "handle": "4k-hdmi-videospielkonsole-5a2af5",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-01T22:18:30Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "neuheit",
+        "ps4",
+        "ps5",
+        "sort-konsolen",
+        "sort-spielkonsolen-retro-handhelds",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Erlebe Gaming in brillanter 4K-Auflösung mit dieser kompakten Videospielkonsole. Sie wird mit zwei kabellosen Controllern geliefert, die dir maximale Bewegungsfreiheit beim Spielen ermöglichen. Einfach an den Fernseher anschliessen und loslegen. Ideal für alle, die eine unkomplizierte und hochwertige Gaming-Lösung suchen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Unterstützt 4K HDMI Videoausgabe für gestochen scharfe Bilder</li>\n<li>Inklusive 2 kabellosen Controllern (benötigt AAA-Batterien, nicht enthalten)</li>\n<li>Lieferumfang: HD-Spielkonsole, USB-Datenkabel, Anleitung, Farbverpackung</li>\n<li>Kompaktes Design der Controller (12.5 x 5.3 x 1.5 cm)</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/gaming\">Gaming</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "4K HDMI Videospielkonsole | LuxeStyle CH",
+        "description": "4K HDMI Videospielkonsole – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/4k-hdmi-videospielkonsole-5a2af5",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17941856092545",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ],
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12362714055041",
+              "name": "Default Title"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56096830980481",
+            "title": "Default Title",
+            "sku": "CJ-8CCAF3F0-7DAB-47C3-8072-57CCF85A2AF5",
+            "price": "29.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55452944564609",
+              "tracked": false,
+              "requiresShipping": true
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NjA5NjgzMDk4MDQ4MSwibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70516380729729",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 4 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380729729",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6743040384284.jpg?v=1786624350",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 4 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380762497",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 1 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380762497",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3642841416831.jpg?v=1786624350",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 1 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380664193",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 2 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380664193",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2554100523621.jpg?v=1786624350",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 2 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380696961",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 3 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380696961",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1247813743493.jpg?v=1786624351",
+              "width": 960,
+              "height": 1376,
+              "altText": "4K HDMI Videospielkonsole – Bild 3 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380795265",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 5 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380795265",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2780314926227.jpg?v=1786624350",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 5 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380828033",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 6 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380828033",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1990746895969.jpg?v=1786624350",
+              "width": 960,
+              "height": 1087,
+              "altText": "4K HDMI Videospielkonsole – Bild 6 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380860801",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 7 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380860801",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2578123687041.jpg?v=1786624351",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 7 | LuxeStyle"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3MDUxNjM4MDg2MDgwMSwibGFzdF92YWx1ZSI6IjcifQ=="
+        }
+      }
+    },
+    "fc620": {
+      "id": "gid://shopify/Product/15448846926209",
+      "title": "8-Bit Mini FC620AV Retro Game Konsole Wireless",
+      "handle": "8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-01T22:18:31Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "ps4",
+        "ps5",
+        "rueckhol-0907",
+        "sort-konsolen",
+        "sort-konsolen-retro-arcade",
+        "sort-retro",
+        "sort-spielkonsolen-retro-handhelds",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Die 8-Bit Mini FC620AV ist eine kompakte Retro-Spielkonsole, die dir klassisches Gaming-Vergnügen direkt ins Wohnzimmer bringt. Diese Mini-Konsole ist ideal für alle, die in Erinnerungen schwelgen oder die Anfänge der Videospiele erleben möchten. Sie ist einfach anzuschliessen und sofort einsatzbereit, perfekt für spontane Spielrunden.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Kabelloser 2.4G Gamepad für mehr Bewegungsfreiheit</li>\n<li>Kompaktes Design mit den Massen 13.5 x 10 x 5.5 cm und einem Gewicht von nur 0.2 kg</li>\n<li>Anschluss über AV-Schnittstelle, kompatibel mit den meisten Fernsehern</li>\n<li>Unterstützt Rollenspiele (RPG)</li>\n<li>Für zwei Spieler ausgelegt</li>\n<li>Altersunbegrenzt spielbar</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+      "seo": {
+        "title": null,
+        "description": "8-Bit Mini FC620AV Retro Game Konsole Wireless bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code…"
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17880365269377",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ],
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12026697777537",
+              "name": "Default Title"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55877932548481",
+            "title": "Default Title",
+            "sku": "CJ-1364123175339823104",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55230176428417",
+              "tracked": false,
+              "requiresShipping": true
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTg3NzkzMjU0ODQ4MSwibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69861470568833",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470568833",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195611.jpg?v=1783189383",
+              "width": 800,
+              "height": 800,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861470601601",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 2",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470601601",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195691.jpg?v=1783189385",
+              "width": 1600,
+              "height": 1600,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 2"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861470634369",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 3",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470634369",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195610.jpg?v=1783189383",
+              "width": 800,
+              "height": 800,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 3"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861470667137",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 4",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470667137",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195608.jpg?v=1783189384",
+              "width": 800,
+              "height": 800,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 4"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861470699905",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 5",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470699905",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195693.jpg?v=1783189383",
+              "width": 800,
+              "height": 800,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 5"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTg2MTQ3MDY5OTkwNSwibGFzdF92YWx1ZSI6IjUifQ=="
+        }
+      }
+    }
+  },
+  "nativeAfter": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch",
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "hdmi": {
+      "id": "gid://shopify/Product/15496982397313",
+      "title": "HDMI-Retro-Konsole mit 2 kabellosen Controllern",
+      "handle": "4k-hdmi-videospielkonsole-5a2af5",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-16T07:56:48Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "neuheit",
+        "ps4",
+        "ps5",
+        "sort-konsolen",
+        "sort-spielkonsolen-retro-handhelds",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Diese HDMI-Retro-Konsole ist ein kompaktes TV-Spielgerät in Stick-Bauform. Zum Set gehören laut Lieferliste zwei kabellose Controller, ein USB-Datenkabel und eine englische Anleitung. Die Controller haben ein Steuerkreuz sowie Start-, Select- und A/B-Tasten. Das Angebot führt eine Standardausführung; separate Speichergrössen oder Spielepakete sind nicht auswählbar.</p>\n<h2>Anschluss und Bedienung</h2>\n<p>Die Konsole wird über HDMI mit einem passenden Fernseher verbunden. Prüfe vor dem Kauf den verfügbaren HDMI-Eingang und die Stromversorgung am vorgesehenen Platz. Ein USB-Datenkabel ist aufgeführt; ein separates Netzteil wird in der Lieferliste nicht genannt. Daraus lässt sich nicht sicher ableiten, welches Netzteil oder welcher USB-Anschluss für deinen Fernseher geeignet ist.</p>\n<p>Für die kabellosen Controller werden AAA-Batterien benötigt. Die Produktabbildung zeigt zwei 1,5-V-AAA-Batterien pro Controller. Ob Batterien beiliegen, ist nicht eindeutig bestätigt. Die Angabe «kabellos» bezieht sich auf die Controller und bedeutet keine drahtlose Bildübertragung zum Fernseher.</p>\n<h2>Technische Details</h2>\n<table>\n<caption>Angaben zu Konsole und Controllern</caption>\n<tbody>\n<tr>\n<th scope=\"row\">Bauform</th>\n<td>TV-Konsole in Stick-Bauform mit HDMI-Stecker</td>\n</tr>\n<tr>\n<th scope=\"row\">Bedienung</th>\n<td>Zwei kabellose Controller; Steuerkreuz, Start, Select und A/B-Tasten</td>\n</tr>\n<tr>\n<th scope=\"row\">Controller</th>\n<td>12,5 × 5,3 × 1,5 cm laut Produktangabe; dies sind keine Konsolenmasse</td>\n</tr>\n<tr>\n<th scope=\"row\">Batterien</th>\n<td>AAA für die Controller; Mitlieferung nicht bestätigt</td>\n</tr>\n<tr>\n<th scope=\"row\">Anleitung</th>\n<td>Englisch laut Lieferliste; eine deutsche Anleitung ist nicht bestätigt</td>\n</tr>\n<tr>\n<th scope=\"row\">Ausführung</th>\n<td>Eine Standardausführung, keine wählbaren Speicher- oder Spielepakete</td>\n</tr>\n</tbody>\n</table>\n<h2>Lieferumfang</h2>\n<ul>\n<li>1 Spielkonsole</li>\n<li>2 kabellose Controller</li>\n<li>1 USB-Datenkabel</li>\n<li>1 englische Anleitung</li>\n<li>Farbverpackung</li>\n</ul>\n<h2>Spiele, Speicherkarte und Auflösung</h2>\n<p>Eine verifizierte Liste mitgelieferter oder vorinstallierter Spiele liegt nicht vor. Die Produktbilder nennen unterschiedliche Spieleangaben; diese werden deshalb nicht als zugesicherte Anzahl übernommen. Auch eine Speicherkarte und deren Kapazität sind in der textlichen Lieferliste nicht bestätigt. Fehlende Angaben bedeuten nicht, dass keine Spiele oder keine Karte enthalten sind.</p>\n<p>Der frühere Produktname nennt 4K, eine Produktabbildung dagegen 1080P. Die tatsächliche Ausgabeauflösung ist damit nicht eindeutig belegt. Dieses Angebot sichert weder 4K noch 1080p zu. Eine Kompatibilität mit PS4, PS5, Xbox oder bestimmten Spieletiteln ist ebenfalls nicht bestätigt.</p>\n<h2>Häufige Fragen vor dem Kauf</h2>\n<h3>Kann ich sofort spielen?</h3>\n<p>Eine vollständig eingerichtete, sofort spielbereite Lieferung ist nicht bestätigt. Kläre dafür vorab den Spiele- und Karteninhalt sowie die passende Stromversorgung und Controller-Batterien.</p>\n<h3>Ist dies eine Handheld-Konsole?</h3>\n<p>Nein. Es handelt sich um ein TV-Gerät mit HDMI-Anschluss, nicht um eine Konsole mit eigenem Bildschirm für unterwegs.</p>\n<h3>Welche Ausführung bekomme ich?</h3>\n<p>Dieses Angebot hat eine Standardausführung. Es gibt keine auswählbare Speicherkapazität oder separat zugesicherte Spiele-Sammlung.</p>\n<p>Weitere Bauformen findest du unter <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>.</p>",
+      "seo": {
+        "title": "HDMI-Retro-Konsole: Lieferumfang und Details | LuxeStyle",
+        "description": "HDMI-Retro-Konsole mit zwei kabellosen Controllern. Lieferumfang, AAA-Batterien und Anschluss prüfen. Angaben zu Spielen und Speicherkarte klar erklärt."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/4k-hdmi-videospielkonsole-5a2af5",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17941856092545",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ],
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12362714055041",
+              "name": "Default Title"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56096830980481",
+            "title": "Default Title",
+            "sku": "CJ-8CCAF3F0-7DAB-47C3-8072-57CCF85A2AF5",
+            "price": "29.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55452944564609",
+              "tracked": false,
+              "requiresShipping": true
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NjA5NjgzMDk4MDQ4MSwibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70516380729729",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 4 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380729729",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6743040384284.jpg?v=1786624350",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 4 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380762497",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 1 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380762497",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3642841416831.jpg?v=1786624350",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 1 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380664193",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 2 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380664193",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2554100523621.jpg?v=1786624350",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 2 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380696961",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 3 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380696961",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1247813743493.jpg?v=1786624351",
+              "width": 960,
+              "height": 1376,
+              "altText": "4K HDMI Videospielkonsole – Bild 3 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380795265",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 5 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380795265",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2780314926227.jpg?v=1786624350",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 5 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380828033",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 6 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380828033",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1990746895969.jpg?v=1786624350",
+              "width": 960,
+              "height": 1087,
+              "altText": "4K HDMI Videospielkonsole – Bild 6 | LuxeStyle"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70516380860801",
+            "mediaContentType": "IMAGE",
+            "alt": "4K HDMI Videospielkonsole – Bild 7 | LuxeStyle",
+            "image": {
+              "id": "gid://shopify/ImageSource/70516380860801",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2578123687041.jpg?v=1786624351",
+              "width": 800,
+              "height": 800,
+              "altText": "4K HDMI Videospielkonsole – Bild 7 | LuxeStyle"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3MDUxNjM4MDg2MDgwMSwibGFzdF92YWx1ZSI6IjcifQ=="
+        }
+      }
+    },
+    "fc620": {
+      "id": "gid://shopify/Product/15448846926209",
+      "title": "8-Bit Mini-Retro-Konsole mit AV-Anschluss",
+      "handle": "8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-16T07:57:20Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "ps4",
+        "ps5",
+        "rueckhol-0907",
+        "sort-konsolen",
+        "sort-konsolen-retro-arcade",
+        "sort-retro",
+        "sort-spielkonsolen-retro-handhelds",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Diese schwarze 8-Bit Mini-Retro-Konsole ist für den Anschluss an einen Fernseher mit passendem AV-Eingang vorgesehen. Die Produktangaben nennen kabellose 2.4G-Gamepads und eine Auslegung für zwei Spieler. Das Angebot führt eine Standardausführung in Schwarz; wählbare Speichergrössen oder gesonderte Spielepakete gibt es nicht.</p>\n<h2>Passt die Konsole zu deinem Fernseher?</h2>\n<p>Der angegebene Anschluss ist AV. Prüfe vor dem Kauf, ob dein Fernseher den passenden AV-Eingang besitzt. Ein HDMI-Anschluss allein ist dafür kein Nachweis. Eine allgemeine Kompatibilität mit allen oder den meisten Fernsehern wird nicht zugesichert; ein geeigneter zusätzlicher Adapter und dessen Lieferumfang sind nicht bestätigt.</p>\n<p>Die Funkangabe 2.4G bezieht sich auf die Gamepads, nicht auf eine kabellose Bildübertragung zum Fernseher. Die genaue Funkreichweite wird nicht genannt. Eine Auslegung für zwei Spieler bestätigt ausserdem noch nicht, dass jedes Spiel einen Zweispielermodus bietet.</p>\n<h2>Technische Angaben und Auswahl</h2>\n<table>\n<caption>Produktangaben zur Mini-Retro-Konsole</caption>\n<tbody>\n<tr>\n<th scope=\"row\">Geräteart</th>\n<td>8-Bit TV-Spielkonsole, ohne eigenen Bildschirm</td>\n</tr>\n<tr>\n<th scope=\"row\">Anschluss</th>\n<td>AV laut Produktangabe; HDMI nicht bestätigt</td>\n</tr>\n<tr>\n<th scope=\"row\">Bedienung</th>\n<td>Kabellose 2.4G-Gamepads laut Produktangabe</td>\n</tr>\n<tr>\n<th scope=\"row\">Spielerzahl</th>\n<td>Für zwei Spieler ausgewiesen; Spielmodi nicht einzeln bestätigt</td>\n</tr>\n<tr>\n<th scope=\"row\">Farbe</th>\n<td>Schwarz, eine Standardausführung</td>\n</tr>\n<tr>\n<th scope=\"row\">Masse</th>\n<td>13,5 × 10 × 5,5 cm als Einzelmass angegeben; Geräte- und Setmasse werden nicht getrennt ausgewiesen</td>\n</tr>\n<tr>\n<th scope=\"row\">Gewicht</th>\n<td>200 g als Einzelgewicht angegeben; kein separat bestätigtes Gesamtgewicht des Sets</td>\n</tr>\n<tr>\n<th scope=\"row\">Material</th>\n<td>Kunststoff laut Produktangabe; keine genauere Zusammensetzung genannt</td>\n</tr>\n</tbody>\n</table>\n<h2>Lieferumfang, Batterien und Spiele</h2>\n<p>Die Bilder zeigen die Konsole, zwei Pads und einen kleinen Empfänger. Eine vollständige schriftliche Packliste mit den Stückzahlen, Anschlusskabeln und der Stromversorgung liegt jedoch nicht vor. Die Abbildung allein bestätigt deshalb nicht, welche Teile tatsächlich im Paket enthalten sind.</p>\n<p>Eine Controller-Abbildung kennzeichnet zwei AAA-Batterien als nicht enthalten. Die genaue Batterie- und Zubehörausstattung der Lieferung bleibt zu bestätigen. Auf der Verpackung steht «620 classic games built-in»; eine verifizierte Spieleliste, die genaue Anzahl und einzelne Titel sind nicht belegt. Es wird keine bestimmte Spieleauswahl zugesichert. Das bedeutet nicht, dass keine Spiele enthalten sind.</p>\n<h2>Häufige Fragen</h2>\n<h3>Welche Ausführung kann ich auswählen?</h3>\n<p>Es gibt eine Standardausführung in Schwarz. Es stehen keine unterschiedlichen Speichergrössen oder Spielepakete zur Auswahl.</p>\n<h3>Ist dies genau das Modell FC620AV?</h3>\n<p>Die Lieferantenbezeichnung lautet FC620AV, auf der abgebildeten Verpackung steht EMX-06. Diese Abweichung ist nicht abschliessend geklärt. Wenn du ein bestimmtes Modell benötigst, muss dessen Kennzeichnung vor dem Kauf bestätigt werden.</p>\n<h3>Sind zwei Controller enthalten?</h3>\n<p>Die Bilder zeigen zwei Pads und die Produktangaben nennen zwei Spieler. Ohne vollständige Packliste bleibt die tatsächlich mitgelieferte Controller-Anzahl offen.</p>\n<h3>Ist ein Bildschirm eingebaut?</h3>\n<p>Nein. Dies ist eine TV-Konsole mit AV-Anschluss, keine Handheld-Konsole mit eigenem Bildschirm.</p>\n<p>Andere Bauformen findest du unter <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>.</p>",
+      "seo": {
+        "title": "8-Bit Retro-Konsole mit AV: Anschluss und Auswahl | LuxeStyle",
+        "description": "8-Bit Mini-Retro-Konsole mit AV-Anschluss und 2.4G-Funkangabe. Technische Daten, TV-Anschluss und offene Angaben zu Spielen und Lieferumfang im Überblick."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17880365269377",
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ],
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12026697777537",
+              "name": "Default Title"
+            }
+          ]
+        }
+      ],
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55877932548481",
+            "title": "Default Title",
+            "sku": "CJ-1364123175339823104",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55230176428417",
+              "tracked": false,
+              "requiresShipping": true
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTg3NzkzMjU0ODQ4MSwibGFzdF92YWx1ZSI6MX0="
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69861470568833",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470568833",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195611.jpg?v=1783189383",
+              "width": 800,
+              "height": 800,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861470601601",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 2",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470601601",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195691.jpg?v=1783189385",
+              "width": 1600,
+              "height": 1600,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 2"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861470634369",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 3",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470634369",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195610.jpg?v=1783189383",
+              "width": 800,
+              "height": 800,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 3"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861470667137",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 4",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470667137",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195608.jpg?v=1783189384",
+              "width": 800,
+              "height": 800,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 4"
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861470699905",
+            "mediaContentType": "IMAGE",
+            "alt": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 5",
+            "image": {
+              "id": "gid://shopify/ImageSource/69861470699905",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614067195693.jpg?v=1783189383",
+              "width": 800,
+              "height": 800,
+              "altText": "8-Bit Mini FC620AV Retro Game Konsole Wireless – Ansicht 5"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTg2MTQ3MDY5OTkwNSwibGFzdF92YWx1ZSI6IjUifQ=="
+        }
+      }
+    }
+  },
+  "guardChecks": [
+    {
+      "key": "hdmi",
+      "productId": "gid://shopify/Product/15496982397313",
+      "checks": {
+        "title": true,
+        "seo": true,
+        "htmlFormattingOnly": true,
+        "protectedFields": true
+      },
+      "updatedAt": "2026-11-16T07:56:48Z",
+      "changedTopLevelKeys": [
+        "title",
+        "updatedAt",
+        "descriptionHtml",
+        "seo"
+      ]
+    },
+    {
+      "key": "fc620",
+      "productId": "gid://shopify/Product/15448846926209",
+      "checks": {
+        "title": true,
+        "seo": true,
+        "htmlFormattingOnly": true,
+        "protectedFields": true
+      },
+      "updatedAt": "2026-11-16T07:57:20Z",
+      "changedTopLevelKeys": [
+        "title",
+        "updatedAt",
+        "descriptionHtml",
+        "seo"
+      ]
+    }
+  ],
+  "htmlNormalization": "Only whitespace between HTML tags normalised by Shopify. Root compared exact remaining fields and canonicalised content; not a byte-identical description claim."
+}

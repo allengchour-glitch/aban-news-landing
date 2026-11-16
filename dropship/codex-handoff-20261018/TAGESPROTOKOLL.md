@@ -3021,3 +3021,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 
 [LUXESTYLE_R253_20261116]
 
+
+### R254 – direkte SEO-/Produktdetail-Fortsetzung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Fortschrittsquote | Aktuelle Core4/16Nov-Block, Hauptbranch-Rollen/Shared-Memory und36er-Liste frisch geprüft; Shopidentität nativ bestätigt. |10/36vorher27,8%; keine Shopgesamtquote aus Teilmenge. Heutige Reports ausR251/R253 nicht wiederholt. |
+| Quellen / Produktdetails | Genau zwei aktuelle Einzelausführungen und ihre exakten CJ-PIDs, Beschreibungen und12Bilddateinamen geprüft. | HDMI4Kvs1080P und FC620AVvsEMX-06 offengehalten; keine Spielezahl/Karte/Setumfang erfunden. |
+| SEO / tatsächliche Livewrites | Zwei Produkt-/SEO-Titel, zwei Beschreibungen ca.378/405Wörter und beide Meta-Felder mit Tabellen, Anschluss-/Auswahlhilfe, Lieferumfang undFAQ aktualisiert. |2Shopify-Mutationen/userErrors=[]; nachfrischemOriginal undFeld-Diff.12/36redaktionellbearbeitet33,3%,24weiteroffen, Lieferantenfragen nicht automatisch erledigt. |
+| Schutz / Readback | NativeRücklesung undFeldvergleich für2Varianten-/2Option-/2WertIDs/12Medien sowie Preise/SKUs/Inventar/Status/Tags/Handles. | Alle abgefragten Schutzfelder unverändert. HTML nur zwischen Tags normalisiert. Rueckhol-Tag bleibtSocialsperre. Kein neuerVariant/Upload. |
+| Öffentlich / mobil |4HTML/JS-Endpunkte, H1/Title/Meta/Canonical/2JSONLDOffers, Kategorie-Link und4echteChromium360/390px-Ansichten geprüft; Root sah2Screenshots. |HTTP200, Inhalte/Preise passen, keineDokument-/Tabellenüberbreite. Default-Einzelvarianten: keinePicker-Klicks behauptet. KeineIndexierungs-/Rankingwirkung gemessen. |
+| Grenzen / nächste Arbeit | Quellenfragen und unveränderte Theme-Liefertexte/Batterie-Heroaufnahme dokumentiert; neue36er-Liste undClaude-Einstiegfortgeschrieben. |KeineMerchant/Theme/Social/Flow/DNS-/Budget-/Rabatt-/Preis-/Inventaränderung, Kunden-/Supplierkontakt/Bestellwatch/neueAutomation. Nächste kleine Gruppe aus24offenen Seiten; Claudereceiptunknown. |
+
+[R254-Bericht](SEO-PRODUKTDETAILS-LIVE-20261116-R254.md) · [Belege](SEO-PRODUKTDETAILS-BELEGE-20261116-R254.json).
+
+[LUXESTYLE_R254_20261116]

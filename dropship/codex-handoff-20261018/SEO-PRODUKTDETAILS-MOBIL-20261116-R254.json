@@ -1,0 +1,545 @@
+{
+  "run": "R254",
+  "rootIndependentValidation": {
+    "atUtc": "2026-11-16T08:02:45.139947+00:00",
+    "products": [
+      {
+        "key": "hdmi",
+        "productId": "gid://shopify/Product/15496982397313",
+        "checks": {
+          "h1": true,
+          "title": true,
+          "metaDescription": true,
+          "canonical": true,
+          "noNoindex": true,
+          "publicTitle": true,
+          "publicBody": true,
+          "singleVariant": true,
+          "variantId": true,
+          "sku": true,
+          "priceCHF": true,
+          "available": true,
+          "oldDescriptionTrustBoxRemoved": true,
+          "specificLinkPresent": true,
+          "jsonLdOffer": true
+        },
+        "title": "HDMI-Retro-Konsole: Lieferumfang und Details | LuxeStyle",
+        "h1": "HDMI-Retro-Konsole mit 2 kabellosen Controllern",
+        "canonical": "https://luxestyle.ch/products/4k-hdmi-videospielkonsole-5a2af5",
+        "publicVariant": {
+          "id": 56096830980481,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-8CCAF3F0-7DAB-47C3-8072-57CCF85A2AF5",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "HDMI-Retro-Konsole mit 2 kabellosen Controllern",
+          "public_title": null,
+          "options": [
+            "Default Title"
+          ],
+          "price": 2990,
+          "weight": 258,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        },
+        "jsonLdOffers": [
+          {
+            "@id": "/products/4k-hdmi-videospielkonsole-5a2af5?variant=56096830980481#offer",
+            "@type": "Offer",
+            "availability": "http://schema.org/InStock",
+            "price": "29.90",
+            "priceCurrency": "CHF",
+            "url": "https://luxestyle.ch/products/4k-hdmi-videospielkonsole-5a2af5?variant=56096830980481"
+          }
+        ],
+        "bodyWordsApprox": 378,
+        "mediaCount": 7
+      },
+      {
+        "key": "fc620",
+        "productId": "gid://shopify/Product/15448846926209",
+        "checks": {
+          "h1": true,
+          "title": true,
+          "metaDescription": true,
+          "canonical": true,
+          "noNoindex": true,
+          "publicTitle": true,
+          "publicBody": true,
+          "singleVariant": true,
+          "variantId": true,
+          "sku": true,
+          "priceCHF": true,
+          "available": true,
+          "oldDescriptionTrustBoxRemoved": true,
+          "specificLinkPresent": true,
+          "jsonLdOffer": true
+        },
+        "title": "8-Bit Retro-Konsole mit AV: Anschluss und Auswahl | LuxeStyle",
+        "h1": "8-Bit Mini-Retro-Konsole mit AV-Anschluss",
+        "canonical": "https://luxestyle.ch/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+        "publicVariant": {
+          "id": 55877932548481,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "CJ-1364123175339823104",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "name": "8-Bit Mini-Retro-Konsole mit AV-Anschluss",
+          "public_title": null,
+          "options": [
+            "Default Title"
+          ],
+          "price": 1490,
+          "weight": 200,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        },
+        "jsonLdOffers": [
+          {
+            "@id": "/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104?variant=55877932548481#offer",
+            "@type": "Offer",
+            "availability": "http://schema.org/InStock",
+            "price": "14.90",
+            "priceCurrency": "CHF",
+            "url": "https://luxestyle.ch/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104?variant=55877932548481"
+          }
+        ],
+        "bodyWordsApprox": 405,
+        "mediaCount": 5
+      }
+    ],
+    "mobile": [
+      {
+        "key": "hdmi",
+        "width": 360,
+        "httpStatus": 200,
+        "bodyOverflow": false,
+        "tables": [
+          {
+            "i": 0,
+            "scrollWidth": 328,
+            "clientWidth": 328,
+            "rectWidth": 328,
+            "caption": "Angaben zu Konsole und Controllern",
+            "rows": 6,
+            "wrapper": "rte lux-beschreibung"
+          },
+          {
+            "i": 1,
+            "scrollWidth": 328,
+            "clientWidth": 328,
+            "rectWidth": 328,
+            "caption": "",
+            "rows": 3,
+            "wrapper": "DIV"
+          }
+        ]
+      },
+      {
+        "key": "hdmi",
+        "width": 390,
+        "httpStatus": 200,
+        "bodyOverflow": false,
+        "tables": [
+          {
+            "i": 0,
+            "scrollWidth": 358,
+            "clientWidth": 358,
+            "rectWidth": 358,
+            "caption": "Angaben zu Konsole und Controllern",
+            "rows": 6,
+            "wrapper": "rte lux-beschreibung"
+          },
+          {
+            "i": 1,
+            "scrollWidth": 358,
+            "clientWidth": 358,
+            "rectWidth": 358,
+            "caption": "",
+            "rows": 3,
+            "wrapper": "DIV"
+          }
+        ]
+      },
+      {
+        "key": "fc620",
+        "width": 360,
+        "httpStatus": 200,
+        "bodyOverflow": false,
+        "tables": [
+          {
+            "i": 0,
+            "scrollWidth": 328,
+            "clientWidth": 328,
+            "rectWidth": 328,
+            "caption": "Produktangaben zur Mini-Retro-Konsole",
+            "rows": 8,
+            "wrapper": "rte lux-beschreibung"
+          },
+          {
+            "i": 1,
+            "scrollWidth": 328,
+            "clientWidth": 328,
+            "rectWidth": 328,
+            "caption": "",
+            "rows": 3,
+            "wrapper": "DIV"
+          }
+        ]
+      },
+      {
+        "key": "fc620",
+        "width": 390,
+        "httpStatus": 200,
+        "bodyOverflow": false,
+        "tables": [
+          {
+            "i": 0,
+            "scrollWidth": 358,
+            "clientWidth": 358,
+            "rectWidth": 358,
+            "caption": "Produktangaben zur Mini-Retro-Konsole",
+            "rows": 8,
+            "wrapper": "rte lux-beschreibung"
+          },
+          {
+            "i": 1,
+            "scrollWidth": 358,
+            "clientWidth": 358,
+            "rectWidth": 358,
+            "caption": "",
+            "rows": 3,
+            "wrapper": "DIV"
+          }
+        ]
+      }
+    ],
+    "rootVisuallyInspected": [
+      "fc620-360px.png",
+      "hdmi-360px.png"
+    ],
+    "limits": [
+      "No cart/checkout/order/login action.",
+      "Single default variants: no variant-picker click applicable or claimed.",
+      "Current HTML and no noindex do not prove Google indexing or ranking improvement.",
+      "Pre-existing dynamic delivery block and newsletter discount popup were outside this content-only write.",
+      "Pre-existing HDMI first gallery image shows controller batteries; image order unchanged, follow-up candidate only."
+    ]
+  },
+  "independentPublicValidation": {
+    "run": "R254 public after check",
+    "fetched_at_utc": "2026-11-16T07:58Z",
+    "scope": "read-only, two specified product HTML pages plus product.js, and four Chromium renders at 360/390 CSS px; cachebuster query params used",
+    "results": {
+      "hdmi": {
+        "product_key": "hdmi",
+        "url": "https://luxestyle.ch/products/4k-hdmi-videospielkonsole-5a2af5",
+        "cache_busted_request": true,
+        "html": {
+          "status": "200",
+          "status_history": [
+            "HTTP/1.1 200 OK",
+            "HTTP/2 200 "
+          ],
+          "content_type": [
+            "text/html; charset=utf-8"
+          ],
+          "x_robots_tag": []
+        },
+        "product_js": {
+          "status": "200",
+          "status_history": [
+            "HTTP/1.1 200 OK",
+            "HTTP/2 200 "
+          ],
+          "content_type": [
+            "text/javascript; charset=utf-8"
+          ],
+          "x_robots_tag": []
+        },
+        "checks": {
+          "h1": {
+            "expected": "HDMI-Retro-Konsole mit 2 kabellosen Controllern",
+            "observed": "HDMI-Retro-Konsole mit 2 kabellosen Controllern",
+            "pass": true
+          },
+          "seo_title": {
+            "expected": "HDMI-Retro-Konsole: Lieferumfang und Details | LuxeStyle",
+            "observed": "HDMI-Retro-Konsole: Lieferumfang und Details | LuxeStyle",
+            "pass": true
+          },
+          "meta_description": {
+            "expected": "HDMI-Retro-Konsole mit zwei kabellosen Controllern. Lieferumfang, AAA-Batterien und Anschluss prüfen. Angaben zu Spielen und Speicherkarte klar erklärt.",
+            "observed": "HDMI-Retro-Konsole mit zwei kabellosen Controllern. Lieferumfang, AAA-Batterien und Anschluss prüfen. Angaben zu Spielen und Speicherkarte klar erklärt.",
+            "pass": true
+          },
+          "canonical": {
+            "expected": "https://luxestyle.ch/products/4k-hdmi-videospielkonsole-5a2af5",
+            "observed": "https://luxestyle.ch/products/4k-hdmi-videospielkonsole-5a2af5",
+            "pass": true
+          },
+          "robots": {
+            "meta": null,
+            "x_robots_tag": [],
+            "noindex_found": false,
+            "pass": true
+          },
+          "body_content_matches_final_copy_ignoring_intertag_whitespace": true,
+          "variant": {
+            "count": 1,
+            "options": [
+              {
+                "name": "Title",
+                "position": 1,
+                "values": [
+                  "Default Title"
+                ]
+              }
+            ],
+            "variant_id": 56096830980481,
+            "native_variant_id": "56096830980481",
+            "price_js_cents": 2990,
+            "price_native_chf": "29.90",
+            "available_js": true,
+            "default_only_no_variant_picker_expected": true
+          },
+          "media": {
+            "public_js_images": 7,
+            "native_media_nodes": 7
+          },
+          "jsonld_offer": {
+            "product_name": "HDMI-Retro-Konsole mit 2 kabellosen Controllern",
+            "availability": "http://schema.org/InStock",
+            "price": "29.90",
+            "currency": "CHF",
+            "url": "https://luxestyle.ch/products/4k-hdmi-videospielkonsole-5a2af5?variant=56096830980481",
+            "offer_id": "/products/4k-hdmi-videospielkonsole-5a2af5?variant=56096830980481#offer"
+          },
+          "old_product_trustbox_10_20_removed": true,
+          "theme_delivery_block_kept": false,
+          "old_discount_claim_removed": true
+        },
+        "mobile_render": [
+          {
+            "width": 360,
+            "http_status": 200,
+            "viewport_width": 360,
+            "document_width": 360,
+            "horizontal_document_overflow": false,
+            "content_tables": [
+              {
+                "client_width": 328,
+                "scroll_width": 328,
+                "rows": 6,
+                "caption": "Angaben zu Konsole und Controllern"
+              }
+            ],
+            "faq_headings": [
+              "Häufige Fragen vor dem Kauf"
+            ],
+            "screenshot": "/dev/shm/luxestyle-review/r254/public-after/hdmi-360px.png"
+          },
+          {
+            "width": 390,
+            "http_status": 200,
+            "viewport_width": 390,
+            "document_width": 390,
+            "horizontal_document_overflow": false,
+            "content_tables": [
+              {
+                "client_width": 358,
+                "scroll_width": 358,
+                "rows": 6,
+                "caption": "Angaben zu Konsole und Controllern"
+              }
+            ],
+            "faq_headings": [
+              "Häufige Fragen vor dem Kauf"
+            ],
+            "screenshot": "/dev/shm/luxestyle-review/r254/public-after/hdmi-390px.png"
+          }
+        ]
+      },
+      "fc620": {
+        "product_key": "fc620",
+        "url": "https://luxestyle.ch/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+        "cache_busted_request": true,
+        "html": {
+          "status": "200",
+          "status_history": [
+            "HTTP/1.1 200 OK",
+            "HTTP/2 200 "
+          ],
+          "content_type": [
+            "text/html; charset=utf-8"
+          ],
+          "x_robots_tag": []
+        },
+        "product_js": {
+          "status": "200",
+          "status_history": [
+            "HTTP/1.1 200 OK",
+            "HTTP/2 200 "
+          ],
+          "content_type": [
+            "text/javascript; charset=utf-8"
+          ],
+          "x_robots_tag": []
+        },
+        "checks": {
+          "h1": {
+            "expected": "8-Bit Mini-Retro-Konsole mit AV-Anschluss",
+            "observed": "8-Bit Mini-Retro-Konsole mit AV-Anschluss",
+            "pass": true
+          },
+          "seo_title": {
+            "expected": "8-Bit Retro-Konsole mit AV: Anschluss und Auswahl | LuxeStyle",
+            "observed": "8-Bit Retro-Konsole mit AV: Anschluss und Auswahl | LuxeStyle",
+            "pass": true
+          },
+          "meta_description": {
+            "expected": "8-Bit Mini-Retro-Konsole mit AV-Anschluss und 2.4G-Funkangabe. Technische Daten, TV-Anschluss und offene Angaben zu Spielen und Lieferumfang im Überblick.",
+            "observed": "8-Bit Mini-Retro-Konsole mit AV-Anschluss und 2.4G-Funkangabe. Technische Daten, TV-Anschluss und offene Angaben zu Spielen und Lieferumfang im Überblick.",
+            "pass": true
+          },
+          "canonical": {
+            "expected": "https://luxestyle.ch/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+            "observed": "https://luxestyle.ch/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104",
+            "pass": true
+          },
+          "robots": {
+            "meta": null,
+            "x_robots_tag": [],
+            "noindex_found": false,
+            "pass": true
+          },
+          "body_content_matches_final_copy_ignoring_intertag_whitespace": true,
+          "variant": {
+            "count": 1,
+            "options": [
+              {
+                "name": "Title",
+                "position": 1,
+                "values": [
+                  "Default Title"
+                ]
+              }
+            ],
+            "variant_id": 55877932548481,
+            "native_variant_id": "55877932548481",
+            "price_js_cents": 1490,
+            "price_native_chf": "14.90",
+            "available_js": true,
+            "default_only_no_variant_picker_expected": true
+          },
+          "media": {
+            "public_js_images": 5,
+            "native_media_nodes": 5
+          },
+          "jsonld_offer": {
+            "product_name": "8-Bit Mini-Retro-Konsole mit AV-Anschluss",
+            "availability": "http://schema.org/InStock",
+            "price": "14.90",
+            "currency": "CHF",
+            "url": "https://luxestyle.ch/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104?variant=55877932548481",
+            "offer_id": "/products/8-bit-mini-fc620av-retro-game-konsole-wireless-823104?variant=55877932548481#offer"
+          },
+          "old_product_trustbox_10_20_removed": true,
+          "theme_delivery_block_kept": false,
+          "old_discount_claim_removed": true
+        },
+        "mobile_render": [
+          {
+            "width": 360,
+            "http_status": 200,
+            "viewport_width": 360,
+            "document_width": 360,
+            "horizontal_document_overflow": false,
+            "content_tables": [
+              {
+                "client_width": 328,
+                "scroll_width": 328,
+                "rows": 8,
+                "caption": "Produktangaben zur Mini-Retro-Konsole"
+              }
+            ],
+            "faq_headings": [
+              "Häufige Fragen"
+            ],
+            "screenshot": "/dev/shm/luxestyle-review/r254/public-after/fc620-360px.png"
+          },
+          {
+            "width": 390,
+            "http_status": 200,
+            "viewport_width": 390,
+            "document_width": 390,
+            "horizontal_document_overflow": false,
+            "content_tables": [
+              {
+                "client_width": 358,
+                "scroll_width": 358,
+                "rows": 8,
+                "caption": "Produktangaben zur Mini-Retro-Konsole"
+              }
+            ],
+            "faq_headings": [
+              "Häufige Fragen"
+            ],
+            "screenshot": "/dev/shm/luxestyle-review/r254/public-after/fc620-390px.png"
+          }
+        ]
+      }
+    },
+    "checks": {
+      "all_html_js_http_200": true,
+      "exact_canonicals": true,
+      "meta_noindex_absent": true,
+      "seo_h1_meta_match_finalcopy": true,
+      "one_variant_each": true,
+      "media_count_12_total": true,
+      "offer_jsonld_prices_chf": true,
+      "all_mobile_document_widths_fit": true,
+      "tables_fit_mobile": true
+    },
+    "limits": [
+      "No variant selection was simulated. Each product has only its Default Title option; the visible quantity stepper is not a variant picker.",
+      "No cart, checkout, login, form, signup, or account flow was used.",
+      "Robots meta and response header were absent; this records absence of explicit noindex only, not Google indexing status.",
+      "Screenshots capture current storefront appearance, not browser/device diversity or later delivery fulfillment."
+    ]
+  },
+  "linkCheck": {
+    "requested": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds",
+    "status": 200,
+    "final": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds",
+    "contentType": "text/html; charset=utf-8"
+  }
+}

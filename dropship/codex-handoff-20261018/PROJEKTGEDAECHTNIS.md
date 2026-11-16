@@ -1,3 +1,17 @@
+# R254 – Zwei detaillierte Konsolenseiten live, Teilfortschritt 33% – 16.11.2026
+
+Auf den direkten SEO-/Detailtextauftrag zwei weitere bestehende Seiten live überarbeitet: HDMI-Konsole 15496982397313 und AV-Konsole 15448846926209. Je ca. 378/405 Wörter mit technischen Tabellen, Anschluss-/Auswahlhilfe, Lieferumfang, Spiele-/Kartenfragen und FAQ; eigene Produkt-/SEO-Titel und vollständige Meta-Beschreibungen. Zwei Mutationen; Preise, Status, Tags, Inventar, Medien und Varianten erhalten.
+
+**Belegter Teilstand: 12 von 36 Konsolenseiten redaktionell bearbeitet = 33,3%; 24 für Quellen-/Textarbeit offen.** Das ist keine Gesamtquote für Shop-SEO oder vollständig geklärte Produktfragen. Zwei Einzelvarianten, zwei Optionen, zwei Wert-IDs, zwölf Medien samt Reihenfolge und Preise CHF 29.90/14.90 erhalten. Native und öffentliche HTML-/JS-/H1-/Meta-/Canonical-/JSON-LD-Prüfungen sowie vier Ansichten bei 360/390px bestätigt, kein Überlauf. Root sah beide 360px-Bilder. Bei Einzelausführungen gibt es keine Varianten-Picker-Klicks zu prüfen.
+
+Offen bleiben 4K gegenüber 1080P, Spiele-/Karten-/Batterieumfang bei der HDMI-Konsole und FC620AV gegenüber EMX-06 sowie die Packliste bei der AV-Konsole. Keine erfundenen Spielezahlen; aus fehlender Liste folgt nicht «keine Spiele». Alte Body-Trustbox und Rabatt-Meta bereinigt. Allgemeine Theme-Liefertexte und alte Batterie-Heroaufnahme sind nicht geändert. Keine neuen Tagesreports oder anderen Plattformwrites und Automationen. R253-Qualitätsholds bleiben bestehen.
+
+[Live-Bericht](SEO-PRODUKTDETAILS-LIVE-20261116-R254.md) · [Belege](SEO-PRODUKTDETAILS-BELEGE-20261116-R254.json) · [Texte/Diff](SEO-PRODUKTDETAILS-TEXTE-20261116-R254.json) · [36er-Liste](KONSOLEN-DETAILARBEIT-20261116-R254.csv) · [Mobil/SEO](SEO-PRODUKTDETAILS-MOBIL-20261116-R254.json).
+
+24 stabile Aufgaben und alle historischen Belege erhalten. Die nächste kleine Gruppe aus 24 offenen Konsolenseiten gezielt bearbeiten; offene Lieferantenfragen separat führen. Claude-Empfang weiterhin unbekannt. **Memory am Schluss des Nutzerberichts verlinken.**
+
+---
+
 # R253 – Morgenlauf: drei Audio-Holds, aktuelle Kanalberichte und Masterfortschritt – 16.11.2026
 
 **Aktueller Stand:** Drei bisher aktive Video-UUIDs vom 17. November wegen frisch bestätigter stummer MP4 wieder als Entwurf mit Autopublish aus gesperrt und kanalweise zurückgelesen. Keine neuen Posts oder eigene Veröffentlichung. Neue IDs: YouTube 429675848, TikTok 429676883, FB/IG 429676896; stabile UUIDs, Medien, Inhalte und Termine erhalten. Server-Metadatenänderungen und eine abgewiesene Validierungsanfrage ohne Änderung sind im Beleg dokumentiert.
