@@ -10,7 +10,7 @@ Der Besitzer möchte Traumhaus als Hauptspiel weiter ausbauen: grosse zusammenh�
 | --- | --- |
 | Nordstadt und Missionen | [PR #3209](https://github.com/allengchour-glitch/aban-news-landing/pull/3209), Main-Commit `c3088227d`; veröffentlicht und öffentlich geprüft. |
 | Stadtbild | [PR #3211](https://github.com/allengchour-glitch/aban-news-landing/pull/3211), Branch `codex/traumhaus-stadtbild-20261116`, Head `dbb7ba3680829ae50f411927a8f38be37d0778fb`. Alle vier PR-Prüfungen bestanden; gemergt als `1667fc056033e756cf55a52574c35da0c10c8f72`. Produktionslauf `43919014522` erfolgreich; Spielseite und beide JS-Dateien frisch mit HTTP 200 und neuen Stadtbild-Markern geprüft. ZIP und Vergleichsbilder im bestehenden Drive-Projektordner rückgelesen. |
-| Aktuelle Entwicklung | Branch `codex/traumhaus-kamera-20261116` von `1667fc056`: Kamerakorrektur lokal implementiert und geprüft: kein dauerhafter Belohnungs-Pitch, sanfter Hochhauswinkel. Himmel/Wolken begleiten nun die Kamera; Stern-Gegenprobe läuft. Statisches Instanz-Culling wird nach pixelgleicher A/B-Probe umgesetzt. Noch nicht veröffentlicht. |
+| Aktuelle Entwicklung | Branch `codex/traumhaus-kamera-20261116` von `1667fc056`: Kamerakorrektur lokal implementiert und geprüft: kein dauerhafter Belohnungs-Pitch, sanfter Hochhauswinkel. Himmel/Wolken begleiten nun die Kamera; Sterne im Zentrum und Nordpark geprüft. Statisches Instanz-Culling implementiert: zehn pixelgleiche A/B-Ansichten, Nordstadt 151 auf 74 Zeichenaufrufe. Kamera, Touch, Himmel und Filter lokal geprüft; noch nicht veröffentlicht. |
 
 Vor Weiterarbeit diesen Stand frisch gegen `git status`, `origin/main`, offene PRs und deren Dateien prüfen. Andere Sitzungen arbeiten parallel im Repository. Keine fremden Änderungen überschreiben oder einen vorhandenen Zweig blind auf `origin/main` zurücksetzen.
 
@@ -18,6 +18,7 @@ Vor Weiterarbeit diesen Stand frisch gegen `git status`, `origin/main`, offene P
 
 - `traumhaus.html`: Haupteinstieg und Spielschleife; enthält Kamera, Steuerung, ÖV, Missionseinbindung, Menüs, Speichern/Laden, Licht und Wetter. Funktionsnamen suchen; Zeilennummern verschieben sich häufig.
 - `js/traumhaus-stadt.js`: gemeinsamer Stadtbauplan, Strassen und Routing, Gebäude, Kamerakollision, Rundkurs, Fahrzeuge und animierte Passanten. `plan()` ist die Quelle für Geometrie und zugehörige Orte.
+- `js/traumhaus-sicht.js`: gezielter Sichtfeldfilter für registrierte statische Instanzgruppen, nur im Hauptbild ohne Schattenkarte.
 - `js/traumhaus-stadtbild.js`: neue Grün- und Sitzmodule, Platzierung mit Freiraumprüfung, Instancing und Entfernungsausblendung.
 - `js/traumhaus-missionen.js`: reine Missionszustände und Übergänge, ohne DOM oder eigene Geldauszahlung. `js/traumhaus-missionen.css` und `js/traumhaus-stadt.css` enthalten die dazugehörige Oberfläche.
 - [Missionen-Bericht](TRAUMHAUS-MISSIONEN.md), [Stadtbild-Bericht](TRAUMHAUS-STADTBILD.md) und [Stadtleben/Recherchen](TRAUMHAUS-STADTLEBEN.md): Funktionsumfang, Gestaltungsgrundlagen und Prüfungen.
@@ -46,6 +47,10 @@ GEMESSEN im vollständigen Regressionslauf:
 GEMESSEN im isolierten Stadtmodulvergleich bei gleicher Kamera: Zeichenaufrufe 61 → 60, Materialien 9 → 9, gesamte Modulgeometrie 42’676 → 47’792 Dreiecke. Dieser Vergleich umfasst weder das ganze Spiel noch die zusätzlichen Grünmodule. Die Gebäudezahl und Gebäudekollider blieben identisch. Altstadt, Nordstadt und Seepark sowie Regen bei Tag und Nacht wurden visuell verglichen.
 
 Die Tests nutzen Chromium mit Software-WebGL. **60 FPS auf einem echten Handy sind nicht nachgewiesen.** Vom Gerät des Besitzers ist nur «Handy» bekannt. Simulierte Fahrzeugfahrten, Funktionsproben und isolierte Zeichenbudgets nicht als menschliche Handy-Spieltests darstellen. Die bestehende Kollisionskamera verkürzt den Blick an engen Hochhäusern weiterhin; genau das wird als Nächstes untersucht.
+
+## Aktuelle Kamera-/Renderprüfung
+
+Siehe [Kamera und Leistung](TRAUMHAUS-KAMERA-LEISTUNG.md). Elf Belohnungsimpulse lassen die Benutzerwinkel unverändert; native Zwei-Finger-Geste gibt der manuellen Kamera sofort Vorrang. Himmelskuppel/Wolken/Sterne begleiten die Kamera bis in die Aussenstadt, auch beim Fotografieren. Zwölf Filtertests bestanden; zehn A/B-Ansichten pixelidentisch. Nordstadt151→74 Zeichenaufrufe/160’999→82’915 Dreiecke. Offene Leistungsgrenze: Egoansicht Seepark2’241 Zeichenaufrufe.
 
 ## Prüfungen fortsetzen
 
