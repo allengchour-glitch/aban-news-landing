@@ -105,6 +105,19 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
+**📌 2026-11-16 morgens (🧶 Pullover-Pilot gemessen: Google trägt den Sachtext erst bei 16 von 91; Wiedervorlage `trig_01LVTJiKpsKFnhmFMdXgLk1a` um 08:00 UTC; Zweig `claude/pullover-pilot-messen-1611`, Doku `dropship/merchant-beschreibung-0911/README.md` Abschnitt «Messung 16.11.»; Abannews-Sitzung):**
+- **Weg:** ohne Bericht des Besitzers (in Drive lag keiner), direkt über die Merchant API: `google_lesen.py` und `merchant-beschreibung.yml` (nur lesen, Handstart). `products.get` liefert `productAttributes.description`, also die Spalte «Description» des Berichts.
+- **GEMESSEN 08:22 UTC (Lauf 43830473552):**
+  - Pilot, 329 Produkte: 238 nicht im Kanal «Google & YouTube» (Schaufenster). 91 bei Google: 16 tragen den Sachtext, 75 noch die alte Werbezeile. Keiner der 91 wurde seither in Shopify geändert.
+  - Kontrolle, 305 Produkte: 39 bei Google (33 Werbezeile, 5 echte Beschreibung, 1 andere).
+  - Gegenprobe: Drei Pilot-Seiten tragen im Shop den Sachtext als Meta-Beschreibung.
+- **Deutung:** Der Weg stimmt im Kern (16 genaue Treffer), die App schickt die Änderung aber langsam oder nur teilweise. Nach der vorher festgelegten Regel heisst das «nicht bestätigt». Entscheid beim Besitzer: behalten und neu messen, oder zurücknehmen.
+- **Dashboard «Offene Punkte»:** Die Wiedervorlage nannte noch das gelöschte Artefakt; nachgeführt im KI-Büro: Zeile `merchant-beschreibung` um 08:30 UTC (`datasets/offen` Version 9, Seite Version 21), die Zeilen vom 11.11. auf «älter».
+- **Lehren:**
+  - (1) Ein Messgerät zuerst an einem bekannten Fall prüfen: Lauf 1 und 2 meldeten 0 von 1 859 Angeboten, weil die `id` von `product_view` drei Teile hat und nicht vier. Erst die Probe mit einem bekannten Angebot zeigte den Fehler.
+  - (2) GitHub schwärzt im Protokoll jede Zeile eines mehrzeiligen Secrets, beim JSON-Schlüssel also auch «{» und «}». Ein Wörterbuch erscheint dann als `***`; Zählungen darum als Text ausgeben.
+  - (3) Eine Wiedervorlage kann einen veralteten Weg nennen (hier den Bericht des Besitzers und das gelöschte Artefakt). Zuerst prüfen, was seither möglich ist.
+
 **📌 2026-11-16 früh (🎬 zwei Testseiten fertig, für Kundinnen NICHT umgeschaltet: bewegter Kategoriekopf `?view=lxbewegt` und Scroll-Story `?view=lxstory`; Quellen gesichert in `dropship/kategoriekopf-bewegt-1511/` und `dropship/scroll-story-1511/` (je README); Besitzer «unterkategorien auch verbessern mit hintergründe?» und «20k franken webseite … hintergrund bewegt»):**
 - **Bewegter Kategoriekopf:** Testlink jede Kategorie mit `?view=lxbewegt` (Clip z. B. `/collections/geschirr-tisch?view=lxbewegt`, Fotostreifen `/collections/damen-mode?view=lxbewegt`). Live im MAIN-Theme `213991391623` nur `snippets/lx-kopf-bewegt.liquid` (md5 `0f2c7d9d…`, Runde 1611b: Pause-Knopf nach Fehler und Breitenwechsel, Ausschnitt s01, Schimmer endet durchsichtig) und `templates/collection.lxbewegt.json`. Ein Clip erscheint nur, wenn sein Produkt Mitglied der Sammlung ist und die Ausführung kaufbar ist (fail closed). Nachbau 130 bestanden, unabhängiger Prüfer «ok». **Umschalten (`LIVE=1 node umschalten.mjs`, eine Änderung in `templates/collection.json`) nur auf Ja des Besitzers.**
 - **Scroll-Story:** Testlink `https://luxestyle.ch/?view=lxstory`; sechs Kapitel mit kaufbaren Produkten, Videos und Poster in Shopify Files (32 Dateien). Nachbau 126 von 126, Mutationsprobe 33 von 33. Desktop 7 110 px, Handy 6 203 px hoch (die Kategorien rücken nach unten, Hypothese: Risiko für schnelle Sucherinnen). **Umschalten (`LIVE=1 node umschalten.mjs`, Reihenfolge in `templates/index.json`) nur auf Ja des Besitzers, vorher und nachher messen, Rücknahme-Kriterium im Bericht.**
