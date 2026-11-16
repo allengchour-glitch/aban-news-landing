@@ -559,6 +559,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <div id="bigmapWrap" style="position:fixed;inset:0;z-index:60;display:none;background:rgba(12,16,12,.86);backdrop-filter:blur(3px);align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:10px">
   <div style="color:#fff;font-weight:900;font-size:1.05rem;text-shadow:0 2px 6px #000">🗺️ Weltkarte <span style="font-weight:700;font-size:.8rem;opacity:.85">· Tipp auf die Karte = 📍 GPS-Wegpunkt</span></div>
   <canvas id="bigmap" width="920" height="554" style="max-width:97vw;max-height:78vh;border-radius:14px;border:3px solid rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(0,0,0,.6);background:#3a5a34"></canvas>
+  <div class="karten-werkzeuge"><button type="button" id="kartenZoomAus" aria-label="Karte verkleinern">−</button><button type="button" id="kartenZoomEin" aria-label="Karte vergrössern">+</button><button type="button" id="kartenStandort">Mein Standort</button><button type="button" id="kartenOst">Oststadt</button><button type="button" id="kartenOev">🚏 ÖV</button></div>
   <button id="bigmapClose" style="border:0;background:#ffdf7a;color:#3a2b06;font-weight:900;border-radius:14px;padding:12px 30px;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.4)">Schliessen</button>
 </div>
 <div id="speedo" style="position:fixed;left:calc(50% + 170px);bottom:calc(74px + env(safe-area-inset-bottom));z-index:15;display:none;background:rgba(20,18,26,.82);border:2px solid rgba(255,255,255,.25);border-radius:14px;padding:5px 14px 7px;text-align:center;min-width:96px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.4)">
@@ -573,6 +574,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
       <span id="hausWertTxt" style="font-size:.85rem;color:#b8862a;font-weight:800"></span>
       <button id="achClose" style="border:0;background:#e8e0d0;border-radius:14px;width:36px;height:36px;font-size:1rem;cursor:pointer">✕</button>
     </div>
+    <div class="stadt-schnell"><button type="button" id="oevMenue">🚏 ÖV-Liniennetz</button><button type="button" id="rennenMenue">🏎️ Rundkurs Oststadt</button><button type="button" id="oststadtGps">🏙️ Oststadt entdecken</button></div>
     <div class="aktivitaeten">
       <div class="aktiv-karte"><b>🧭 Deine Stadt entdecken</b><p>Drei Orte, ein Weg. Zu Fuss oder im Auto – die GPS-Linie führt dich.</p><div class="aktiv-wahl"><button type="button" id="tourStart">Entspannt erkunden</button><button type="button" id="rallyStart">🏁 Gegen die Uhr</button></div><small id="rallyRekord"></small></div>
       <div class="aktiv-karte"><b>💃 Beat-Club</b><p>Acht Beats, sichtbare Tanzmoves. Triff den Ring im Takt.</p><div class="aktiv-wahl"><button type="button" data-tanz="0">Locker</button><button type="button" data-tanz="1">Groove</button><button type="button" data-tanz="2">Profi</button></div></div>
@@ -582,6 +584,11 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
     <div id="achList" style="margin-top:10px;display:flex;flex-direction:column;gap:6px"></div>
   </div>
 </div>
+<div id="stadtPanel" class="stadt-dialog" role="dialog" aria-modal="true" aria-labelledby="stadtTitel"><div class="stadt-karte"><div class="stadt-kopf"><h2 id="stadtTitel">🚏 Liniennetz &amp; Fahrplan</h2><button type="button" id="stadtZu" class="stadt-schliessen" aria-label="Stadtmenü schliessen">✕</button></div><p id="stadtBeschreibung"></p><div id="stadtInhalt"></div></div></div>
+<button type="button" id="stadtAktion"></button>
+<div id="oevHud" class="stadt-fahrt-hud"><div><b id="oevTitel"></b><small id="oevText"></small></div><button type="button" id="oevAusstieg" aria-label="An der nächsten Haltestelle aussteigen">⏏</button></div>
+<div id="rennenHud" class="stadt-fahrt-hud"><div><b id="rennenTitel"></b><small id="rennenText"></small></div><button type="button" id="rennenAbbruch" aria-label="Rennen abbrechen">✕</button></div>
+<div id="fahrPedale"><button type="button" id="fahrBremse" aria-label="Bremsen, gehalten rückwärts fahren">BREMSE<br>↓</button><button type="button" id="fahrGas" aria-label="Gas geben">GAS<br>↑</button></div>
 <div id="rundenErgebnis" role="dialog" aria-modal="true" aria-labelledby="ergebnisTitel" aria-describedby="ergebnisText">
   <div class="ergebnis-karte"><div id="ergebnisSymbol" aria-hidden="true"></div><h2 id="ergebnisTitel"></h2><div id="ergebnisSterne" aria-label="Sterne"></div><div id="ergebnisWert"></div><p id="ergebnisText"></p><div class="ergebnis-knopf"><button type="button" id="ergebnisZu">Zurück zur Stadt</button><button type="button" id="ergebnisNochmal">Nochmal spielen</button></div></div>
 </div>
@@ -664,11 +671,12 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 
 <div id="introCard" style="position:fixed;inset:0;z-index:65;display:none;align-items:center;justify-content:center;background:rgba(20,25,35,.74);padding:20px">
   <div style="background:#fffdf7;border-radius:14px;max-width:430px;width:92vw;padding:24px 22px;text-align:center;box-shadow:0 20px 60px rgba(20,30,50,.5)">
-    <div style="font-size:1.5rem;font-weight:900;color:#e8722a">👋 Willkommen im Traumhaus!</div>
+    <div style="font-size:1.5rem;font-weight:900;color:#e8722a">👋 Willkommen in deiner Stadt!</div>
     <div style="font-size:.9rem;color:#6a7a8a;margin:6px 0 16px">So einfach geht's los:</div>
     <div style="text-align:left;display:flex;flex-direction:column;gap:13px;font-size:1.02rem;color:#3a4a5a;line-height:1.35">
       <div>🕹️ <b>Bewegen</b> — Joystick unten links (oder WASD am PC)</div>
       <div>🔨 <b>Bauen</b> — „Bauen" tippen → etwas wählen → aufs Grundstück tippen</div>
+      <div>🚏 <b>ÖV &amp; Rundkurs</b> — über 🏆 oder die grosse Karte. Im Auto: Gas/Bremse rechts, Lenken links.</div>
       <div>💰 <b>Geld verdienen</b> — die Aufträge vom Stadtpräsidenten erfüllen</div>
       <div>👫 <b>Tipp auf Max/Mia</b> — Kamera folgt. Herd = 🍳 Kochen, Teich = 🎣 Angeln</div>
       <div style="margin-top:8px;padding:9px 11px;border-radius:14px;background:#fff4dc;border:1px dashed #d8a84a">
@@ -693,6 +701,8 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <script src="/js/vendor/RGBELoader.js"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script src="/js/mp.js"></script>
+<link rel="stylesheet" href="/js/traumhaus-stadt.css?v=1">
+<script src="/js/traumhaus-stadt.js?v=1"></script>
 <script>
 (function(){
 "use strict";
@@ -1054,6 +1064,7 @@ function cz(gy){return (gy-GH/2+0.5)*CS;}
 var TEXLOADER=new THREE.TextureLoader();
 /* 🧱 WELT-KOLLISION (frueh deklariert, damit alle Bau-Funktionen registrieren koennen) */
 /* 🗺️ Orte der Welt — gemeinsame Quelle fuer Radar + grosse Karte (User: „map ist noch zu klein") */
+var WELT=window.Traumstadt?window.Traumstadt.bounds:{x0:-400,x1:900,z0:-700,z1:620};
 var WORLD_POIS=[
   /* ⚠️ Die Zahlen hier sind nur der Startwert — die echte Lage zieht `domMarke()`
      beim Bau der Kathedrale nach (siehe dort). Wer sie hier aendert, aendert nichts. */
@@ -1465,7 +1476,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
 (function landschaft(){
   // Ferne Grasebene (Horizont) unter allem
   var fernTex=grasTex.clone();fernTex.needsUpdate=true;fernTex.repeat.set(107,107);   /* gleiche Kachel wie bei 900/80 */
-  var fern=new THREE.Mesh(new THREE.PlaneGeometry(1200,1200),   /* Runde 95: 900 → 1200, sonst endet die Welt 45 m hinter dem Technikpark */_standardMat({map:fernTex,color:0xa8c88a,roughness:1,envMapIntensity:0.18}));
+  var fern=new THREE.Mesh(new THREE.PlaneGeometry(2000,2000),   /* Runde 95: 900 → 1200, sonst endet die Welt 45 m hinter dem Technikpark */_standardMat({map:fernTex,color:0xa8c88a,roughness:1,envMapIntensity:0.18}));
   fern.rotation.x=-Math.PI/2;fern.position.y=-0.08;fern.receiveShadow=true;scene.add(fern);
   /* ⛰️ BERGKETTE — User: „erstelle sonst bergen fuer noch groessere map".
      Weit draussen (r 210..290), damit zwischen Ringstrasse und Gebirge Platz fuer neue
@@ -14988,6 +14999,7 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
   hzl:HETZE.letzte||[],
   il:immoLv,rg:rangGezahlt};}  /* Runde 103: Haus-Ausbaustufen, ausgezahlter Buergerrang (der Zeitstempel zt kommt in saveGame dazu — nicht hier, sonst waere der Umweg speichern(laden(speichern(x))) nie gleich) */  /* 🏁 bester Hetze-Punktestand */      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
 function loadSnapshot(sn){
+  if(OEV)sims.forEach(function(s,i){oevLoesen(i);});if(RENNEN&&RENNEN.an)rennenEnde(false);
   if(MINI_ERG&&MINI_ERG.on)rundeSchliessen();
   if(RALLY&&RALLY.an)rallyEnde(false);
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
@@ -15080,6 +15092,7 @@ function onNetMsg(m){
   else if(m.t==="geld"){if(m.d!==undefined){geld+=m.d;geldLast+=m.d;}else{geld=m.v;geldLast=geld;}updHUD();}
   else if(m.t==="chat")chatAdd(m.n,m.x);
   else if(m.t==="emote")onEmote(m.si,m.k);
+  else if(m.t==="stadtOev")oevNet(m);
   else if(m.t==="ping")onPing(m.x,m.z);
   else if(m.t==="tragReq"&&mpHost){if(!TRAGM)startTrag();}          /* Gast bittet, Host armiert */
   else if(m.t==="tragStop"&&mpHost){if(TRAGM)tragEnde(false);}      /* Gast bittet um Abbruch */
@@ -15881,12 +15894,14 @@ function ensureNitroFx(){
 var driveKopf=null,driveHeck=null;
 function ensureDriveLights(){if(driveKopf)return;driveKopf=[mkLicht("w"),mkLicht("w")];driveHeck=[mkLicht("r"),mkLicht("r")];}
 function einsteigen(rec,geklaut){
+  if(OEV&&OEV.ride){hint("Steige zuerst an einer Haltestelle aus.");return;}
   if(MPs&&!mpHost){hint("Nur der Gastgeber fährt. Steig ein.");return;}
   var a=rec||window.autoRec;if(!a||fahren)return;
-  fahren=true;driveCar=a;driveGeklaut=!!geklaut;
+  fahren=true;driveCar=a;driveGeklaut=!!geklaut;if(a._stadt)a.parked=true;
+  document.body.classList.add("stadt-fahren");
   if(a.state!==undefined)a.state="fahren";
   sims[0].mesh.visible=false;followSim=null;
-  carRot=a.mesh.rotation.y;carSpeed=0;carLenk=0;carStandT=0;camR=Math.max(camR,26);camRT=camR;
+  carRot=a.mesh.rotation.y;carSpeed=0;carLenk=0;carStandT=0;camR=Math.min(40,Math.max(camR,26));camRT=camR;
   camTx=a.mesh.position.x;camTz=a.mesh.position.z;updCam(); /* einmal hart aufs Auto — danach folgt die Kamera weich (autoFahr) */
   document.getElementById("exitCar").style.display="block";
   document.getElementById("nitroBtn").style.display="block";
@@ -15898,7 +15913,7 @@ function einsteigen(rec,geklaut){
   if(geklaut){stats.autosGeklaut=(stats.autosGeklaut||0)+1;
     hint("Auto geklaut. Die Polizei ist schon unterwegs.");
     setTimeout(function(){if(fahren)wantedPlus(2);},1500);}
-  else{var _sh=null;try{_sh=localStorage.getItem("th_stickhint");}catch(e){} if(!_sh){try{localStorage.setItem("th_stickhint","1");}catch(e){} hint("Stick nach oben ist Gas, nach unten Bremse, seitlich lenken.");}}
+  else{var _sh=null;try{_sh=localStorage.getItem("th_stickhint");}catch(e){} if(!_sh){try{localStorage.setItem("th_stickhint","1");}catch(e){} hint("Gas und Bremse rechts halten, mit dem linken Stick lenken. Am PC bleibt WASD aktiv.");}}
   // Beifahrer: steht der Partner nahe am Auto, faehrt er wirklich mit (Koop: "alles zu 2")
   var bf=sims[1];
   if(bf&&Math.hypot(bf.x-a.mesh.position.x,bf.z-a.mesh.position.z)<4.5){
@@ -15907,7 +15922,8 @@ function einsteigen(rec,geklaut){
     hint(bf.name+" fährt als Beifahrer mit.");
     if(MPs)netSend({t:"mitfahrt",on:1});}}
 function aussteigen(){
-  if(!fahren)return;fahren=false;
+  if(!fahren)return;fahren=false;document.body.classList.remove("stadt-fahren");stadtPedaleLos();
+  if(RENNEN&&RENNEN.an)rennenEnde(false);
   var a=driveCar||window.autoRec;
   sims[0].mesh.visible=true;
   sims[0].x=a.mesh.position.x+Math.cos(carRot)*1.6;sims[0].z=a.mesh.position.z-Math.sin(carRot)*1.6;
@@ -15952,7 +15968,8 @@ function autoFahr(dt){
      ~2,5 s, Lenkwinkel waechst mit dem Tempo (im Stand dreht sich nichts). Die Kamera legt
      sich weich HINTER das Auto, damit "links" auf dem Bildschirm auch links ist — ausser
      der Spieler hat sie gerade selbst gedreht (2,5 s Schonfrist). */
-  var gas=Math.max(0,-steer.z),brk=Math.max(0,steer.z),lenk=steer.x;
+  var gas=Math.max(fahrGas,Math.max(0,-steer.z)),brk=Math.max(fahrBremse,Math.max(0,steer.z)),lenk=steer.x;
+  if(fahrBremse)gas=0;if(MINI_ERG.on||document.getElementById("stadtPanel").style.display==="flex"||document.getElementById("bigmapWrap").style.display==="flex"||(RENNEN&&RENNEN.an&&RENNEN.start>0)){gas=0;brk=1;carSpeed=0;}
   if(gas<0.12)gas=0;if(brk<0.12)brk=0;if(Math.abs(lenk)<0.12)lenk=0;
   if(nitro>0)nitro-=dt;
   var vmax=13+(nitro>0?12:0);
@@ -15985,8 +16002,8 @@ function autoFahr(dt){
     if(!inSolid(m.position.x,_cnz)&&!imWasser(m.position.x,_cnz))m.position.z=_cnz;else _hit=true;   /* 🌊 kein Auto auf dem See */
     if(_hit){if(fahrt>7&&typeof beep==="function")beep(150,.12,"sawtooth",.05);carSpeed*=0.3;} /* Rumms: abbremsen + Ton */
     /* Gleiche Grenze wie zu Fuss (Schwarm P0: 5 von 9 Lieferzielen lagen ausserhalb) */
-    m.position.x=Math.max(-305,Math.min(305,m.position.x));
-    m.position.z=Math.max(-405,Math.min(405,m.position.z));
+    m.position.x=Math.max(WELT.x0+20,Math.min(WELT.x1-20,m.position.x));
+    m.position.z=Math.max(WELT.z0+20,Math.min(WELT.z1-20,m.position.z));
     m.position.y=(a.homeY||0.01)+Math.abs(Math.sin(performance.now()*0.02))*0.03*Math.min(1,fahrt/6)+carAirY; // Wanken + Sprunghoehe
     /* Raeder rollen mit dem Weg: Achse z, vorwaerts (Modell +x) = rotation.z positiv, rueckwaerts negativ. */
     if(a.raeder&&a.raeder.length){var _wR=sp*dt/(a.radMass||1);
@@ -16619,7 +16636,8 @@ function simGestenTakt(s,dt,now){
     if(f===1)g.von=null;}
 }
 function updSim(s,si,dt,now){
-  if(MPs&&!mpHost){ // Gast
+  if(s._oev!==undefined){s.state="oev";s.pose="stand";}
+  else if(MPs&&!mpHost){ // Gast
     var _mein=(si===meinSi()),_sv=_mein?steerVec(si):null;
     if(_mein&&_sv){
       /* ── VORHERSAGE der eigenen Figur ──────────────────────────────────────
@@ -16769,6 +16787,8 @@ function updCam(){
   var _hb=Math.max(window._camHebung||0,
                    (followSim&&followSim._gelH)||(sims[meinSi()]&&sims[meinSi()]._gelH)||0);
   camera.position.set(camTx+Math.sin(camA)*Math.cos(camB)*camR,Math.sin(camB)*camR+2+_hb,camTz+Math.cos(camA)*Math.cos(camB)*camR);
+  var _sicht=1;
+  if(STADT){var ziel={x:camTx,y:.6+_hb,z:camTz};_sicht=STADT.cameraClip(ziel,camera.position);if(_sicht<1){camera.position.x=ziel.x+(camera.position.x-ziel.x)*_sicht;camera.position.y=ziel.y+(camera.position.y-ziel.y)*_sicht;camera.position.z=ziel.z+(camera.position.z-ziel.z)*_sicht;}}
   camera.lookAt(camTx,0.6+_hb,camTz);
   /* 📏 NEAR FOLGT DEM ZOOM (Runde 99, User: „flimmert die ganze map fast"). near stand fest auf 0,1 m — fuer die
      Ich-Sicht noetig, fuer eine Kamera 14…135 m ueber dem Boden aber ein Tiefenpuffer, der fast alles fuer die ersten
@@ -16778,7 +16798,7 @@ function updCam(){
      Muster als Flimmern ueber jede Strasse (probe-tiefenstreit: Stadtmitte 10 % der Bildpunkte). camR·0,05 (0,7 m
      bei Zoom 14, 2,2 m bei 44, 6 m ab 120) laesst nichts Sichtbares weg — die Kamera steht mindestens 7 m vom Ziel —
      und macht die Tiefe auf 45 m 22-mal genauer. Nur bei spuerbarer Aenderung neu rechnen. */
-  var _nr=Math.max(0.1,Math.min(6,camR*0.05));
+  var _nr=Math.max(0.1,Math.min(6,camR*_sicht*0.05));
   if(Math.abs(camera.near-_nr)>_nr*0.08){camera.near=_nr;camera.updateProjectionMatrix();}}
 /* ═══════ 🎢 ACHTERBAHN FAHREN (Ego-Perspektive, koop-tauglich) ═══════════════════
    Der Zug laeuft ueber den Rundkurs; Geschwindigkeit haengt von der Hoehe ab (bergab
@@ -17365,6 +17385,7 @@ document.addEventListener("visibilitychange",function(){
   joy.addEventListener("lostpointercapture",joyEnd);
 })();
 function steerVec(si){
+  if(sims[si]&&sims[si]._oev!==undefined)return null;
   if(si===meinSi()&&(MINI_ERG.on||TANZ.on||KOCH.on||ANGEL.on||MG.on))return null;
   /* ⚠️ Frueher: „Gast: Host rechnet" -> null. Das hiess, die eigene Figur des
      Gasts bewegte sich AUSSCHLIESSLICH auf Host-Schnappschuesse hin, die
@@ -17393,8 +17414,7 @@ function steerMove(s9,sv,dt,sprint){
      Jetzt umfasst die Grenze die ganze bebaute Welt mit Rand. */
   /* limZ von 400 auf 520: sonst endet die Welt vor dem Grossen Berg (Fuss bei
      z = -160, Gipfel bei -420) und man kann ihn gar nicht besteigen. */
-  var lim=340,limZ=520;
-  nx=Math.max(-lim,Math.min(lim,nx));nz=Math.max(-limZ,Math.min(limZ,nz));
+  nx=Math.max(WELT.x0+20,Math.min(WELT.x1-20,nx));nz=Math.max(WELT.z0+20,Math.min(WELT.z1-20,nz));
   function cellX(w){return Math.round(w/CS+GW/2-0.5);}
   function cellY(w){return Math.round(w/CS+GH/2-0.5);}
   var cx1=cellX(s9.x),cy1=cellY(s9.z),cx2=cellX(nx),cy2=cellY(nz);
@@ -17527,7 +17547,7 @@ function updMinimap(dt){
   function S(wx,wz){return [Cc+(wx-pcx)*sc,Cc+(wz-pcz)*sc];}
   /* 🧭 GPS pflegen (laeuft im 8x/s-Radar-Takt mit): verbrauchte Punkte abwerfen,
      bei Abweichung von der Linie neu rechnen, Ankunft erkennen, Ring pulsieren */
-  if(GPS.aktiv&&GPS.pfad){
+  if(GPS.aktiv&&GPS.pfad&&!(OEV&&OEV.ride)){
     while(GPS.pfad.length>1&&Math.hypot(GPS.pfad[0][0]-pcx,GPS.pfad[0][1]-pcz)<6)GPS.pfad.shift();
     if(Math.hypot(GPS.x-pcx,GPS.z-pcz)<8){
       gpsWeg();hint("Ziel erreicht.");beep(1180,.08,"sine",.05);
@@ -17545,8 +17565,9 @@ function updMinimap(dt){
   // Strassennetz
   c.strokeStyle="#6b6b72";c.lineWidth=Math.max(3,7*sc);var SZ=GH*CS/2;
   var yN=S(0,-SZ-12)[1],yS=S(0,SZ+12)[1],xW=S(-RX,0)[0],xE=S(RX,0)[0];
-  c.beginPath();c.moveTo(0,yN);c.lineTo(W,yN);c.moveTo(0,yS);c.lineTo(W,yS);
-  c.moveTo(xW,0);c.lineTo(xW,W);c.moveTo(xE,0);c.lineTo(xE,W);c.stroke();
+  function radarStrasse(a,b,w){var p=S(a[0],a[1]),q=S(b[0],b[1]);c.lineWidth=Math.max(2,(w||7)*sc);c.beginPath();c.moveTo(p[0],p[1]);c.lineTo(q[0],q[1]);c.stroke();}
+  [[-132,-SZ-12,132,-SZ-12],[-132,SZ+12,132,SZ+12],[-RX,-112,-RX,112],[RX,-112,RX,112]].forEach(function(a){radarStrasse([a[0],a[1]],[a[2],a[3]],7);});
+  if(STADT){STADT.plan.roads.forEach(function(r){radarStrasse(r.a,r.b,r.w);});var rt=STADT.plan.track;c.strokeStyle="#d2a85b";for(var ri=0;ri<rt.length;ri++)radarStrasse(rt[ri],rt[(ri+1)%rt.length],12);c.strokeStyle="#6b6b72";}
   // 🛣️ Aussennetz auch im Radar: Landstrasse (r 200), Zubringer, Viertel-Verbinder
   var c9=S(0,0);
   c.beginPath();c.arc(c9[0],c9[1],200*sc,234*0.01745,126*0.01745+6.283);c.stroke();
@@ -17633,12 +17654,14 @@ function updMinimap(dt){
    Ost-Villen (x +130) und vom Kathedralen-Viertel (z −110) bis zum Bahnhof (z +115).
    Ein Tipp aufs Radar oeffnet deshalb die ganze Karte — Gebaeude kommen direkt aus
    WORLD_SOLIDS, damit sie nie auseinanderlaufen. */
+var kartenZoom=1,kartenZentrum=null;
 function drawBigMap(){
   var cv=document.getElementById("bigmap");if(!cv)return;
   var c=cv.getContext("2d"),W=cv.width,H=cv.height;
-  var X0=-400,X1=460,Z0=-450,Z1=420;   /* Runde 95: bis Burgdorf (-300|-390), Technikpark (405|-260),
+  var X0=WELT.x0,X1=WELT.x1,Z0=WELT.z0,Z1=WELT.z1;   /* Runde 95: bis Burgdorf (-300|-390), Technikpark (405|-260),
                                           Bergsee-Camping (330|360) und Pirateninsel (-250|90) */
-  var sc=Math.min(W/(X1-X0),H/(Z1-Z0)),ox=(W-(X1-X0)*sc)/2,oy=(H-(Z1-Z0)*sc)/2;
+  var cc=kartenZentrum||{x:(X0+X1)/2,z:(Z0+Z1)/2},sc=Math.min(W/(X1-X0),H/(Z1-Z0))*kartenZoom,ox=0,oy=0;
+  X0=cc.x-W/sc/2;X1=cc.x+W/sc/2;Z0=cc.z-H/sc/2;Z1=cc.z+H/sc/2;
   _bigTrafo={sc:sc,ox:ox,oy:oy,X0:X0,Z0:Z0}; /* 🧭 fuers Ruecktransformieren des Karten-Tipps */
   function S(wx,wz){return [ox+(wx-X0)*sc,oy+(wz-Z0)*sc];}
   c.fillStyle="#3f6238";c.fillRect(0,0,W,H);
@@ -17669,6 +17692,7 @@ function drawBigMap(){
   var ga=S(-GW*CS/2,-GH*CS/2),gb=S(GW*CS/2,GH*CS/2);
   c.fillStyle="rgba(160,205,125,.75)";c.fillRect(ga[0],ga[1],gb[0]-ga[0],gb[1]-ga[1]);
   c.strokeStyle="#f4e08a";c.lineWidth=2;c.strokeRect(ga[0],ga[1],gb[0]-ga[0],gb[1]-ga[1]);
+  if(STADT){c.strokeStyle="#687176";STADT.plan.roads.forEach(function(r){road(r.a[0],r.a[1],r.b[0],r.b[1],r.w);});var tr=STADT.plan.track;c.strokeStyle="#d2a85b";for(var ti=0;ti<tr.length;ti++){var ta=tr[ti],tb=tr[(ti+1)%tr.length];road(ta[0],ta[1],tb[0],tb[1],12);}}
   // Gebaeude aus den echten Kollidern
   c.fillStyle="rgba(70,58,50,.8)";
   for(var i=0;i<WORLD_SOLIDS.length;i++){var s=WORLD_SOLIDS[i],p1=S(s.x-s.hw,s.z-s.hd);
@@ -17679,6 +17703,7 @@ function drawBigMap(){
     c.beginPath();var q0=S(GPS.pfad[0][0],GPS.pfad[0][1]);c.moveTo(q0[0],q0[1]);
     for(var gi=1;gi<GPS.pfad.length;gi++){var qq=S(GPS.pfad[gi][0],GPS.pfad[gi][1]);c.lineTo(qq[0],qq[1]);}
     c.stroke();c.lineJoin="miter";c.lineCap="butt";}
+  if(OEV&&OEV.ready){OEV.lines.forEach(function(l){c.strokeStyle="#"+l.color.toString(16).padStart(6,"0");c.lineWidth=2;c.globalAlpha=.65;l.f.parts.forEach(function(part){c.beginPath();part.path.points.forEach(function(v,i){var p=S(v[0],v[1]);if(i)c.lineTo(p[0],p[1]);else c.moveTo(p[0],p[1]);});c.stroke();});c.globalAlpha=1;var b=l.stand;if(b){var p=S(b.x,b.z);c.fillStyle=c.strokeStyle;c.fillRect(p[0]-3,p[1]-3,6,6);}});}
   // Orte
   c.textAlign="center";c.textBaseline="middle";
   /* Beschriftung abwechselnd ueber/unter dem Symbol — im Suedviertel stehen die Orte dicht */
@@ -17772,7 +17797,7 @@ function drawBigMap(){
 var GPS={aktiv:false,x:0,z:0,pfad:null,beam:null,ring:null};
 /* Raster deckt die GANZE Welt: Bauernhof reicht bis z −241, der Freizeitpark bis z ~385 —
    mit dem alten Ende bei 280 konnte das GPS dorthin gar keine Route legen. */
-var _gpsX0=-300,_gpsZ0=-260,_gpsCell=4,_gpsNX=138,_gpsNZ=163,_gpsFrei=null;
+var _gpsX0=WELT.x0,_gpsZ0=WELT.z0,_gpsCell=4,_gpsNX=Math.ceil((WELT.x1-WELT.x0)/4),_gpsNZ=Math.ceil((WELT.z1-WELT.z0)/4),_gpsFrei=null;
 /* 🛣️ Aussennetz (gemessen aus dem Bau-Code): 6 Zubringer-Winkel (landstrasse()) und die
    Viertel-Verbinder aus anbindung() — ["z",xMitte,z0,z1] laeuft laengs z, ["x",zMitte,x0,x1]
    laengs x. Eine Tabelle fuer GPS-Kosten UND Karten-/Radar-Zeichnung, damit nichts auseinanderlaeuft. */
@@ -17800,6 +17825,7 @@ window._gpsVerbNeu=function(){
     A.push(b.a==="z"?["x",b.c,b.von,b.bis]:["z",b.c,b.von,b.bis]);}
   return A.length;};
 function gpsStrasse(x,z){
+  if(STADT&&STADT.onRoad(x,z))return true;
   var SZr=GH*CS/2+12;
   if(Math.abs(x)<RL/2+6&&(Math.abs(z-SZr)<5||Math.abs(z+SZr)<5))return true;   // Hauptstrassen
   if(Math.abs(z)<124&&(Math.abs(x-RX)<4.5||Math.abs(x+RX)<4.5))return true;    // Querstrassen
@@ -17851,7 +17877,8 @@ var _gpsStr=null;
 function _gpsStrAt(ix,iz){var k=ix+iz*_gpsNX,v=_gpsStr[k];
   if(!v){v=gpsStrasse(_gpsX0+(ix+0.5)*_gpsCell,_gpsZ0+(iz+0.5)*_gpsCell)?1:2;_gpsStr[k]=v;}
   return v===1;}
-function gpsRoute(sx,sz,tx,tz){
+function gpsRoute(sx,sz,tx,tz,ohneStadt){
+  if(!ohneStadt&&OEV&&OEV.ready&&(sx>500||tx>500)&&Math.hypot(tx-sx,tz-sz)>120){var schnell=stadtGpsRoute(sx,sz,tx,tz);if(schnell)return schnell;}
   /* Cache pro Lauf frisch — der Spieler kann zwischendurch gebaut/abgerissen haben */
   _gpsFrei=new Int8Array(_gpsNX*_gpsNZ);_gpsStr=new Int8Array(_gpsNX*_gpsNZ);
   function C(x,z){return [Math.max(0,Math.min(_gpsNX-1,Math.floor((x-_gpsX0)/_gpsCell))),
@@ -17918,6 +17945,7 @@ function gpsWeg(){
   if(GPS.beam)GPS.beam.visible=false;
   if(GPS.ring)GPS.ring.visible=false;}
 function gpsSetz(x,z){
+  if(x<WELT.x0+20||x>WELT.x1-20||z<WELT.z0+20||z>WELT.z1-20){hint("Dort endet die begehbare Welt.");return false;}
   var me=sims[meinSi()];if(!me)return false;
   var px=(fahren&&driveCar)?driveCar.mesh.position.x:me.x,
       pz=(fahren&&driveCar)?driveCar.mesh.position.z:me.z;
@@ -17955,6 +17983,10 @@ document.getElementById("bigmap").addEventListener("click",function(e){
 function bigMapOpen(){var w=document.getElementById("bigmapWrap");if(!w)return;
   drawBigMap();w.style.display="flex";}
 document.getElementById("minimap").addEventListener("click",bigMapOpen);
+document.getElementById("kartenZoomEin").onclick=function(){if(!kartenZentrum)kartenZentrum=spielerPos();kartenZoom=Math.min(6,kartenZoom*1.6);drawBigMap();};
+document.getElementById("kartenZoomAus").onclick=function(){kartenZoom=Math.max(1,kartenZoom/1.6);if(kartenZoom===1)kartenZentrum=null;drawBigMap();};
+document.getElementById("kartenStandort").onclick=function(){kartenZentrum=spielerPos();kartenZoom=3;drawBigMap();};
+document.getElementById("kartenOst").onclick=function(){kartenZentrum={x:680,z:220};kartenZoom=2.5;drawBigMap();};
 document.getElementById("bigmapClose").onclick=function(){document.getElementById("bigmapWrap").style.display="none";};
 document.getElementById("bigmapWrap").addEventListener("click",function(e){
   if(e.target===this)this.style.display="none";});
@@ -18140,6 +18172,7 @@ function nearestEdge(c){
   return {x:c.gx,y:c.gy,d:1,wx:cx(c.gx)+CS/2,wz:cz(c.gy)};}
 function tapAt(px,py){
   if(!running)return;
+  if(!buildMode&&STADT){var cp=pickCell(px,py);if(cp){for(var ci=0;ci<stadtAutos.length;ci++){var ca=stadtAutos[ci];if(Math.hypot(ca.mesh.position.x-cp.pt.x,ca.mesh.position.z-cp.pt.z)<3.2){einsteigen(ca,ca!==RENNEN.auto);return;}}}}
   if(!buildMode){ // Bewohner antippen -> Kamera folgt · NPC antippen -> Taschendieb
     var c0=pickCell(px,py);
     if(c0){for(var ni9=0;ni9<npcs.length;ni9++){var n9=npcs[ni9];
@@ -18289,6 +18322,136 @@ function mgTick(ts){
   MG.pos+=MG.dir*MG.speed*dt9;
   if(MG.pos>=1){MG.pos=1;MG.dir=-1;}if(MG.pos<=0){MG.pos=0;MG.dir=1;}
   mgDraw();MG.raf=requestAnimationFrame(mgTick);}
+/* Grossstadt, gemeinsames Verkehrsnetz und ein befahrbarer Rundkurs. */
+var STADT=null,stadtAutos=[],fahrGas=0,fahrBremse=0,stadtPedalReset=[],stadtUiT=0,stadtLodT=0;
+var OEV={ready:false,graph:null,stops:[],lines:[],ride:null,zeit:0};
+var RENNEN={an:false,start:0,t:0,schritte:0,strafe:0,best:0,tickAt:0,auto:null,ring:null};
+try{var rb9=+localStorage.getItem("th_rundkurs_best_v1");if(isFinite(rb9)&&rb9>0)RENNEN.best=rb9;}catch(e){}
+function stadtPedaleLos(){stadtPedalReset.forEach(function(fn){fn();});fahrGas=0;fahrBremse=0;["fahrGas","fahrBremse"].forEach(function(id){document.getElementById(id).classList.remove("aktiv");});}
+["fahrGas","fahrBremse"].forEach(function(id){var b=document.getElementById(id),pid=null;
+  b.addEventListener("pointerdown",function(e){if(!fahren||pid!==null)return;e.preventDefault();pid=e.pointerId;b.setPointerCapture(pid);if(id==="fahrGas")fahrGas=1;else fahrBremse=1;b.classList.add("aktiv");});
+  function los(e){if(pid!==null&&(!e||e.pointerId===pid)){pid=null;if(id==="fahrGas")fahrGas=0;else fahrBremse=0;b.classList.remove("aktiv");}}
+  stadtPedalReset.push(function(){los();});b.addEventListener("pointerup",los);b.addEventListener("pointercancel",los);b.addEventListener("lostpointercapture",los);addEventListener("blur",function(){los();});
+});
+document.addEventListener("visibilitychange",function(){if(document.hidden)stadtPedaleLos();if(RENNEN.an)RENNEN.tickAt=performance.now();});
+function stadtWegSegmente(){
+  var A=[[-132,-58,132,-58],[-132,58,132,58],[-78,-112,-78,112],[78,-112,78,112],[-112,-100,112,-100],[-112,118,112,118],[-112,-100,-112,118],[112,-100,112,118]];
+  var out=A.map(function(a){return {a:[a[0],a[1]],b:[a[2],a[3]]};});
+  for(var i=0;i<72;i++){var a=i*Math.PI/36,b=(i+1)*Math.PI/36;out.push({a:[Math.cos(a)*200,Math.sin(a)*200],b:[Math.cos(b)*200,Math.sin(b)*200]});}
+  [30,60,120,240,300,330].forEach(function(gr){var a=gr*Math.PI/180,r=zubRing(gr).r;out.push({a:[Math.cos(a)*r,Math.sin(a)*r],b:[Math.cos(a)*200,Math.sin(a)*200]});});
+  if(window._gpsVerbNeu)window._gpsVerbNeu();_GPS_VERB.forEach(function(v){out.push(v[0]==="x"?{a:[v[2],v[1]],b:[v[3],v[1]]}:{a:[v[1],v[2]],b:[v[1],v[3]]});});
+  return out.concat(STADT.plan.roads);
+}
+function stadtSichererHalt(st){
+  var a=st.segment.a,b=st.segment.b,dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz)||1;
+  var off=[7,-7,10,-10,14,-14];for(var i=0;i<off.length;i++){var x=st.p[0]-dz/l*off[i],z=st.p[1]+dx/l*off[i];if(!imBau(x,z)&&!imWasser(x,z)&&!inSolid(x,z))return {x:x,z:z};}
+  return null;
+}
+function stadtInit(){
+  if(!window.Traumstadt)return;
+  var V=(window._viertelSolver||{}).VIERTEL||[];if(V.length<11){setTimeout(stadtInit,400);return;}
+  STADT=Traumstadt.createWorld(THREE,scene,function(x,z,w,d){addSolid(x,z,w,d,null);});
+  if(window._zfStatisch)window._zfStatisch(STADT.root);
+  WORLD_POIS.push([680,120,"🏙️","Oststadt"],[770,320,"🏎️","Motorsportpark"]);
+  var names=["Bahnhof","Marktplatz","Brunnmatt","Kathedrale","Meer","Zoo","Burgdorf","Bauernhof","Gewerbe Rietli","Neustadt","Flughafen","Technikpark"];
+  var stops=names.map(function(n){var p=WORLD_POIS.find(function(q){return q[3]===n;});return {name:n,p:p?[p[0],p[1]]:[0,118]};});
+  stops.push({name:"Oststadt Forum",p:[680,80]},{name:"Motorsportpark",p:[770,320]});
+  ["Sportpark","Chilbiplatz","Freizeitpark","Bergsee-Camping","Spielclub","Seilbahn"].forEach(function(n){var p=WORLD_POIS.find(function(q){return q[3]===n;});if(p)stops.push({name:n,p:[p[0],p[1]]});});
+  OEV.graph=Traumstadt.graph(stadtWegSegmente(),stops);OEV.stops=OEV.graph.stops;
+  OEV.stops.forEach(function(st){st.walk=stadtSichererHalt(st);if(!st.walk)return;var pole=new THREE.Mesh(new THREE.CylinderGeometry(.045,.045,2.9,6),stdMat(0x355f59,.8));pole.position.set(st.walk.x,1.45,st.walk.z);scene.add(pole);
+    var cv=document.createElement("canvas");cv.width=512;cv.height=96;var c=cv.getContext("2d");c.fillStyle="#f9f5df";c.fillRect(0,0,512,96);c.fillStyle="#245644";c.font="bold 30px sans-serif";c.textAlign="center";c.fillText("H · "+st.name,256,59);var tx=new THREE.CanvasTexture(cv);var label=new THREE.Sprite(new THREE.SpriteMaterial({map:tx}));label.scale.set(10,1.88,1);label.position.set(st.walk.x,3.4,st.walk.z);scene.add(label);st.label=label;st.pole=pole;});
+  [{id:"M1",name:"Stadtlinie",color:0x246e68,ids:[0,1,2,19,18,3,4]},{id:"R2",name:"Nordwest-Linie",color:0xb06d24,ids:[0,5,6,7]},{id:"X3",name:"Ost-Express",color:0x73519a,ids:[0,8,9,10,11,12,13,12,9]},{id:"S4",name:"Freizeit-Linie",color:0x356da1,ids:[0,14,15,16,17,16]}].forEach(function(cfg,i){var f=Traumstadt.fahrplan(OEV.graph,cfg.ids,18,9);if(!f){console.warn("ÖV-Linie nicht verbunden:",cfg.id);return;}var bus=Traumstadt.vehicle(THREE,cfg.color,true);scene.add(bus.mesh);OEV.lines.push({id:cfg.id,name:cfg.name,color:cfg.color,ids:cfg.ids,f:f,bus:bus,phase:i*47,stand:null});});
+  OEV.ready=OEV.lines.length===4;
+  RENNEN.auto=Traumstadt.vehicle(THREE,0xe5ac39,false);RENNEN.auto.mesh.position.set(758,.05,322);RENNEN.auto.homeX=758;RENNEN.auto.homeZ=322;RENNEN.auto.mesh.rotation.y=Math.PI/2;scene.add(RENNEN.auto.mesh);stadtAutos.push(RENNEN.auto);
+  var tours=[[[562,2],[798,2],[798,238],[562,238]],[[642,2],[718,2],[718,158],[642,158]],[[562,82],[798,82],[798,158],[562,158]],[[562,162],[718,162],[718,238],[562,238]]];
+  tours.forEach(function(p,i){var a=Traumstadt.vehicle(THREE,[0xd4d9d3,0x788fa8,0x9e655b,0x4c6f62][i],false);a._npc=true;a.pfad=Traumstadt.path(p,true);a.phase=i*23;scene.add(a.mesh);stadtAutos.push(a);});
+  _gpsFrei=null;_gpsStr=null;window._stadtWelt=STADT;window._stadtOev=OEV;
+}
+setTimeout(stadtInit,1800);
+function stadtGpsRoute(sx,sz,tx,tz){
+  var g=OEV.graph;if(!g)return null;var a=-1,b=-1,da=Infinity,db=Infinity;g.nodes.forEach(function(p,i){var d=Math.hypot(p[0]-sx,p[1]-sz);if(d<da){da=d;a=i;}d=Math.hypot(p[0]-tx,p[1]-tz);if(d<db){db=d;b=i;}});
+  if(a<0||b<0)return null;var weg=Traumstadt.route(g,a,b);if(!weg)return null;
+  var an=gpsRoute(sx,sz,weg[0][0],weg[0][1],true),ende=gpsRoute(weg[weg.length-1][0],weg[weg.length-1][1],tx,tz,true);if(!an||!ende)return null;
+  var out=an.slice();for(var i=1;i<weg.length;i++){var p=weg[i-1],q=weg[i],n=Math.ceil(Traumstadt.dist(p,q)/4);for(var k=1;k<=n;k++)out.push([p[0]+(q[0]-p[0])*k/n,p[1]+(q[1]-p[1])*k/n]);}return out.concat(ende.slice(1));
+}
+function oevAnkunft(line,stop){var t=((Date.now()/1000+line.phase)%line.f.duration+line.f.duration)%line.f.duration,p=oevStand(line);if(p.halt&&p.stop===stop)return "Hält noch "+Math.ceil(p.rest)+" s";var d=Infinity;line.f.parts.forEach(function(a){if(a.stop===stop)d=Math.min(d,(a.start-t+line.f.duration)%line.f.duration);});return isFinite(d)?"Bus in "+Math.floor(Math.ceil(d)/60)+":"+String(Math.ceil(d)%60).padStart(2,"0"):"Keine Verbindung";}
+function oevStand(line){var p=Traumstadt.fahrzeugStand(line.f,Date.now()/1000+line.phase);p.x-=Math.cos(p.yaw)*2;p.z+=Math.sin(p.yaw)*2;return p;}
+function oevEinsteigen(idx,si,still){
+  var line=OEV.lines[idx];si=si===undefined?meinSi():si;var s=sims[si];if(!line||!s)return false;var p=oevStand(line);
+  if(!p.halt||Math.hypot(s.x-p.x,s.z-p.z)>32)return false;
+  if(si===meinSi()&&(fahren||buildMode||MG.on||TANZ.on||KOCH.on||ANGEL.on||MINI_ERG.on))return false;
+  if(s.target){s.target.busy=false;s.target=null;}s.path=null;s.state="oev";s.pose="stand";s._oev=idx;s.mesh.visible=false;
+  if(si===meinSi()){OEV.ride={line:idx,exit:false};document.body.classList.add("stadt-oev");document.getElementById("stadtPanel").style.display="none";steer.x=0;steer.z=0;followSim=s;}
+  if(!still)netSend({t:"stadtOev",on:1,line:idx});return true;
+}
+function oevAussteigen(si,still,stop){
+  var s=sims[si];if(!s||s._oev===undefined)return false;var line=OEV.lines[s._oev],p=oevStand(line),st=OEV.stops[stop===undefined?p.stop:stop];
+  if(!st||Math.hypot(st.p[0]-p.x,st.p[1]-p.z)>38)return false;st.walk=stadtSichererHalt(st);if(!st.walk)return false;
+  s.x=st.walk.x;s.z=st.walk.z;s.mesh.visible=true;s.state="idle";s._manualT=performance.now();delete s._oev;
+  if(si===meinSi()){OEV.ride=null;document.body.classList.remove("stadt-oev");document.getElementById("oevHud").style.display="none";window._camHebung=0;followSim=s;hint("Ausgestiegen: "+st.name);}
+  if(!still)netSend({t:"stadtOev",on:0,stop:OEV.stops.indexOf(st)});return true;
+}
+function oevLoesen(si){var s=sims[si];if(!s||s._oev===undefined)return;delete s._oev;s.mesh.visible=true;s.state="idle";s._manualT=performance.now();if(si===meinSi()){OEV.ride=null;document.body.classList.remove("stadt-oev");document.getElementById("oevHud").style.display="none";window._camHebung=0;}}
+function oevNet(m){if(!OEV.ready)return;var si=mpHost?1:0;if(m.on===1&&Number.isInteger(m.line)&&m.line>=0&&m.line<OEV.lines.length)oevEinsteigen(m.line,si,true);else if(m.on===0&&Number.isInteger(m.stop))oevAussteigen(si,true,m.stop);}
+function stadtMenue(art){
+  stadtPedaleLos();
+  document.getElementById("achPanel").style.display="none";document.getElementById("bigmapWrap").style.display="none";var el=document.getElementById("stadtPanel");el.dataset.art=art;
+  document.getElementById("stadtTitel").textContent=art==="oev"?"🚏 Liniennetz & Fahrplan":"🏎️ Rundkurs Oststadt";
+  document.getElementById("stadtBeschreibung").textContent=art==="oev"?"Vier Linien verbinden Zentrum und Aussenviertel. Folge dem GPS zur Haltestelle, steige bei haltendem Bus ein und fahre wirklich mit.":"668 Meter Rundkurs, zwei Runden, acht Checkpoints je Runde. Am Park steht ein kostenloser Leihwagen. Gas und Bremse rechts, Lenken links.";
+  var box=document.getElementById("stadtInhalt");box.textContent="";
+  if(!STADT||!OEV.lines.length){box.textContent="Das Verkehrsnetz wird vorbereitet … öffne es gleich noch einmal.";}
+  else if(art==="oev")OEV.lines.forEach(function(line,idx){var card=document.createElement("details");card.className="oev-linie";var h=document.createElement("summary"),mark=document.createElement("span");mark.className="linie-marke";mark.style.background="#"+line.color.toString(16).padStart(6,"0");mark.textContent=line.id;h.appendChild(mark);h.appendChild(document.createTextNode(line.name));card.appendChild(h);var list=document.createElement("ul");Array.from(new Set(line.ids)).forEach(function(k){var st=OEV.stops[k],li=document.createElement("li"),tx=document.createElement("span");tx.textContent=st.name;var eta=document.createElement("small");eta.dataset.etaLinie=idx;eta.dataset.etaHalt=k;eta.textContent="Fahrplan wird geladen …";tx.appendChild(eta);var b=document.createElement("button");b.textContent="GPS zur Haltestelle";b.onclick=function(){var p=oevStand(line),me=spielerPos();if(p.halt&&p.stop===k&&Math.hypot(me.x-p.x,me.z-p.z)<32){if(!oevEinsteigen(idx))hint("Zum Einsteigen aus dem Auto steigen und die Aktion beenden.");}else{st.walk=stadtSichererHalt(st);if(st.walk){gpsSetz(st.walk.x,st.walk.z);el.style.display="none";}else hint("Haltestelle wird noch freigeräumt.");}};b.dataset.linie=idx;b.dataset.halt=k;li.appendChild(tx);li.appendChild(b);list.appendChild(li);});card.appendChild(list);box.appendChild(card);});
+  else{var info=document.createElement("p");info.textContent=RENNEN.best?"Dein Bestwert: "+RENNEN.best.toFixed(2)+" s":"Dein erster Bestwert wartet auf dich.";box.appendChild(info);var row=document.createElement("div");row.className="stadt-schnell";[["GPS zum Motorsportpark",function(){gpsSetz(770,320);el.style.display="none";}],["Leihwagen & Rennen starten",rennenStart]].forEach(function(a){var b=document.createElement("button");b.textContent=a[0];b.onclick=a[1];row.appendChild(b);});box.appendChild(row);}
+  el.style.display="flex";el.firstElementChild.scrollTop=0;document.getElementById("stadtZu").focus();
+}
+function rennenStart(){
+  if(!STADT)return;if(MPs&&!mpHost){hint("Der Gastgeber fährt; du kannst als Beifahrer mitfahren.");return;}
+  if(OEV.ride||RALLY.an||HETZE.an||TANZ.on||KOCH.on||ANGEL.on||MG.on){hint("Beende zuerst die aktuelle Aktion.");return;}
+  var p=spielerPos();if(Math.hypot(p.x-770,p.z-340)>55){gpsSetz(770,320);document.getElementById("stadtPanel").style.display="none";hint("Fahre oder nimm X3 zum Motorsportpark. Dort startet das Rennen.");return;}
+  document.getElementById("stadtPanel").style.display="none";if(buildMode)document.getElementById("modeBtn").click();
+  var a=fahren?driveCar:RENNEN.auto;a.mesh.position.set(752,.05,340);a.mesh.rotation.y=Math.PI/2;if(!fahren)einsteigen(a,false);if(!fahren)return;
+  carRot=Math.PI/2;carSpeed=0;stadtPedaleLos();RENNEN.an=true;RENNEN.start=3;RENNEN.t=0;RENNEN.schritte=0;RENNEN.strafe=0;RENNEN.tickAt=performance.now();
+  if(!RENNEN.ring){RENNEN.ring=new THREE.Mesh(new THREE.TorusGeometry(6,.18,4,24),new THREE.MeshBasicMaterial({color:0xffd66c}));RENNEN.ring._bewegt=true;scene.add(RENNEN.ring);}RENNEN.ring.visible=true;rennenZiel();
+}
+function rennenZiel(){var p=Traumstadt.sample(STADT.track,((RENNEN.schritte+1)%8)/8*STADT.track.length);RENNEN.ring.position.set(p.x,6.3,p.z);RENNEN.ring.rotation.y=p.yaw;}
+function rennenEnde(fertig){
+  if(!RENNEN.an)return;RENNEN.an=false;document.getElementById("rennenHud").style.display="none";if(RENNEN.ring)RENNEN.ring.visible=false;
+  if(!fertig){hint("Rennen beendet. Der Rundkurs bleibt frei befahrbar.");return;}carSpeed=0;stadtPedaleLos();var zeit=RENNEN.t+RENNEN.strafe,rek=!RENNEN.best||zeit<RENNEN.best;
+  if(rek){RENNEN.best=zeit;try{localStorage.setItem("th_rundkurs_best_v1",String(zeit));}catch(e){}}
+  rundeZeigen({symbol:"🏎️",titel:rek?"Neuer Rundkurs-Bestwert!":"Zwei Runden geschafft!",wert:zeit.toFixed(2)+" s",text:"Bestwert: "+RENNEN.best.toFixed(2)+" s · Streckenstrafe: "+RENNEN.strafe.toFixed(1)+" s",sterne:RENNEN.strafe<1?3:(RENNEN.strafe<15?2:1),nochmal:rennenStart});
+}
+function rennenTakt(dt){
+  if(!RENNEN.an)return;var clock=performance.now();dt=Math.max(0,(clock-RENNEN.tickAt)/1000);RENNEN.tickAt=clock;if(!fahren){rennenEnde(false);return;}
+  if(document.hidden||MINI_ERG.on||document.getElementById("stadtPanel").style.display==="flex"||document.getElementById("bigmapWrap").style.display==="flex")return;
+  if(RENNEN.start>0){RENNEN.start=Math.max(0,RENNEN.start-dt);carSpeed=0;}
+  else{RENNEN.t+=dt;var p=spielerPos(),off=Traumstadt.abstand([p.x,p.z],STADT.plan.track,true);if(off>9)RENNEN.strafe+=dt*2;
+    var q=RENNEN.ring.position;if(Math.hypot(p.x-q.x,p.z-q.z)<10&&off<9){RENNEN.schritte++;beep(800,.07,"triangle",.04);if(RENNEN.schritte>=16){rennenEnde(true);return;}rennenZiel();}}
+}
+function stadtTakt(dt,now){
+  if(!STADT)return;var me=spielerPos();stadtLodT-=dt;if(stadtLodT<=0){stadtLodT=.5;STADT.tick(me.x,me.z,uhrzeit<360||uhrzeit>1140);OEV.stops.forEach(function(st){if(st.label){var nah=Math.hypot(st.p[0]-me.x,st.p[1]-me.z)<75;st.label.visible=nah;st.pole.visible=nah;}});}
+  OEV.lines.forEach(function(line){var p=oevStand(line);line.stand=p;line.bus.mesh.position.set(p.x,.05,p.z);var da=((p.yaw-line.bus.mesh.rotation.y+Math.PI*3)%(Math.PI*2))-Math.PI;line.bus.mesh.rotation.y+=da*Math.min(1,dt*7);if(!p.halt)line.bus.wheels.forEach(function(w){w.rotation.x+=dt*35;});line.bus.mesh.visible=Math.hypot(p.x-me.x,p.z-me.z)<200;
+    sims.forEach(function(s,si){if(s._oev===OEV.lines.indexOf(line)){s.x=p.x;s.z=p.z;s.mesh.visible=false;if(si===meinSi()){followSim=s;window._camHebung=1.2;if(OEV.ride&&OEV.ride.exit&&p.halt)oevAussteigen(si);}}});});
+  stadtAutos.forEach(function(a){if(!a._npc||a.parked||a===driveCar)return;var p=Traumstadt.sample(a.pfad,(Date.now()/1000*7+a.phase)%a.pfad.length);a.mesh.position.set(p.x,.05,p.z);var da=((p.yaw-a.mesh.rotation.y+Math.PI*3)%(Math.PI*2))-Math.PI;a.mesh.rotation.y+=da*Math.min(1,dt*8);a.mesh.visible=Math.hypot(p.x-me.x,p.z-me.z)<190;});
+  rennenTakt(dt);stadtUiT-=dt;if(stadtUiT>0)return;stadtUiT=.15;
+  var busy=buildMode||TANZ.on||KOCH.on||ANGEL.on||MG.on||MINI_ERG.on;
+  var action=document.getElementById("stadtAktion");action.style.display="none";
+  if(!busy&&!fahren&&!OEV.ride){var nearest=null;OEV.lines.forEach(function(l,i){var p=l.stand;if(p&&p.halt){var d=Math.hypot(p.x-me.x,p.z-me.z);if(d<24&&(!nearest||d<nearest.d))nearest={line:i,d:d};}});
+    if(nearest){action.textContent="🚏 "+OEV.lines[nearest.line].id+" · Einsteigen";action.onclick=function(){oevEinsteigen(nearest.line);};action.style.display="block";}
+    else if(OEV.stops.some(function(st){return st.walk&&Math.hypot(me.x-st.walk.x,me.z-st.walk.z)<11;})){action.textContent="🚏 Fahrplan & Verbindungen";action.onclick=function(){stadtMenue("oev");};action.style.display="block";}
+    else if(Math.hypot(me.x-RENNEN.auto.mesh.position.x,me.z-RENNEN.auto.mesh.position.z)<7){action.textContent="🏎️ Leihwagen · Einsteigen";action.onclick=function(){einsteigen(RENNEN.auto,false);};action.style.display="block";}}
+  var hud=document.getElementById("oevHud");hud.style.display=OEV.ride&&!busy?"flex":"none";
+  if(OEV.ride){var l=OEV.lines[OEV.ride.line],p=l.stand;document.getElementById("oevTitel").textContent=l.id+" · "+l.name;document.getElementById("oevText").textContent=(p.halt?"Halt: ":"Nächster Halt: ")+OEV.stops[p.halt?p.stop:p.next].name+(OEV.ride.exit?" · Ausstieg vorgemerkt":"");}
+  var rh=document.getElementById("rennenHud");rh.style.display=RENNEN.an&&!busy?"flex":"none";if(RENNEN.an){document.getElementById("rennenTitel").textContent=RENNEN.start>0?"Start in "+Math.ceil(RENNEN.start):"Runde "+(Math.floor(RENNEN.schritte/8)+1)+" / 2 · "+RENNEN.t.toFixed(1)+" s";document.getElementById("rennenText").textContent="Checkpoint "+(RENNEN.schritte%8+1)+" / 8"+(RENNEN.strafe>0?" · +"+RENNEN.strafe.toFixed(1)+" s Strafe":"");}
+  document.querySelectorAll("[data-eta-linie]").forEach(function(e){if(document.getElementById("stadtPanel").style.display==="flex"){var t=oevAnkunft(OEV.lines[+e.dataset.etaLinie],+e.dataset.etaHalt);if(e.textContent!==t)e.textContent=t;}});
+  document.querySelectorAll("button[data-linie]").forEach(function(b){if(document.getElementById("stadtPanel").style.display!=="flex")return;var l=OEV.lines[+b.dataset.linie],p=l.stand,k=+b.dataset.halt;var nah=p.halt&&p.stop===k&&Math.hypot(me.x-p.x,me.z-p.z)<32;b.textContent=nah?"Einsteigen":"GPS zur Haltestelle";});
+}
+document.getElementById("oevMenue").onclick=function(){stadtMenue("oev");};document.getElementById("kartenOev").onclick=function(){stadtMenue("oev");};document.getElementById("rennenMenue").onclick=function(){stadtMenue("rennen");};
+document.getElementById("oststadtGps").onclick=function(){if(STADT){gpsSetz(680,120);document.getElementById("achPanel").style.display="none";}};
+document.getElementById("stadtZu").onclick=function(){document.getElementById("stadtPanel").style.display="none";document.getElementById("achBtn").focus();};
+document.getElementById("oevAusstieg").onclick=function(){if(!OEV.ride)return;var p=oevStand(OEV.lines[OEV.ride.line]);if(p.halt)oevAussteigen(meinSi());else{OEV.ride.exit=true;hint("Ausstieg an der nächsten Haltestelle vorgemerkt.");}};
+document.getElementById("rennenAbbruch").onclick=function(){rennenEnde(false);};
+document.addEventListener("keydown",function(e){var p=document.getElementById("stadtPanel");if(p.style.display!=="flex")return;e.stopPropagation();if(e.key==="Escape"){e.preventDefault();document.getElementById("stadtZu").click();}else if(e.key==="Tab"){var b=p.querySelectorAll("button,summary"),first=b[0],last=b[b.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
+
 /* Ein gemeinsamer Abschluss fuer die kurzen Spielrunden, ohne weitere Belohnungsauszahlung. */
 var MINI_ERG={on:false,nochmal:null,fokus:null};
 function rundeSchliessen(){
@@ -18745,7 +18908,7 @@ function crimeGo(ji){
     else startCrime(ji,false);});}
 document.getElementById("delBtn").onclick=function(){delMode=!delMode;curItem=delMode?null:curItem;
   document.getElementById("delBtn").classList.toggle("on",delMode);renderPalette();refreshGhost();};
-document.getElementById("modeBtn").onclick=function(){buildMode=!buildMode;
+document.getElementById("modeBtn").onclick=function(){if(fahren||(OEV&&OEV.ride)){hint("Steige zum Bauen zuerst aus.");return;}buildMode=!buildMode;
   document.getElementById("modeBtn").innerHTML=buildMode?'<svg class="ik" aria-hidden="true"><use href="#i-eye"/></svg> Leben':'<svg class="ik" aria-hidden="true"><use href="#i-hammer"/></svg> Bauen';
   /* ⚠️ INLINE MIT !important UEBERLEBT DEN MODUSWECHSEL. layoutLinkeSpalte setzt im
      Spielmodus `left` inline und mit Prioritaet (weil die CSS-Regel selbst !important
@@ -19732,7 +19895,7 @@ function beitreten(code){
       /* 🩹 Schwarm-4: Host weg MITTEN im Spiel — die Meldung oben liegt im versteckten #start,
          und mit MPs+!mpHost blieben alle Gast-Sperren aktiv (Figur eingefroren, Uhr stand,
          kein Save). Der Ex-Gast uebernimmt jetzt selbst und spielt solo weiter. */
-      if(running){mpHost=true;MPs=null;document.getElementById("netBadge").style.display="none";hint("Dein Partner ist weg. Du spielst allein weiter.");}}
+      if(running){sims.forEach(function(s,i){oevLoesen(i);});mpHost=true;MPs=null;document.getElementById("netBadge").style.display="none";hint("Dein Partner ist weg. Du spielst allein weiter.");}}
     document.getElementById("netBadge").style.background=st==="connected"?"rgba(90,150,90,.9)":"rgba(190,90,60,.9)";});
   if(MPs.ready&&MPs.ready.catch)MPs.ready.catch(function(err){mpLobbyFehler(err&&err.message||"Verbindung fehlgeschlagen");});}
 document.getElementById("hostBtn").onclick=function(){
@@ -20117,6 +20280,7 @@ function loop(now){
       if(Math.abs(camRT-camR)<=0.02)camR=camRT;updCam();}
     updEigenRing(dt);updFollow(dt);updVerdecker();updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
     updFahrt(dt);updSeilbahn(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();tragBtnUpd();
+    stadtTakt(dt,now);
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
