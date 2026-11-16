@@ -119,7 +119,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   - Gegenprobe: Drei Pilot-Seiten tragen im Shop den Sachtext als Meta-Beschreibung.
   - Nachmessung 08:45 UTC (Lauf 43833669895, Leser behoben mit PR #3182): dieselben Zahlen. «Seit dem Pilot geändert: keine» steht jetzt im Klartext.
 - **Deutung:** Der Weg stimmt im Kern (16 genaue Treffer), die App schickt die Änderung aber langsam oder nur teilweise. Nach der vorher festgelegten Regel heisst das «nicht bestätigt». Entscheid beim Besitzer: behalten und neu messen, oder zurücknehmen.
-- **Dashboard «Offene Punkte»:** Die Wiedervorlage nannte noch das gelöschte Artefakt; nachgeführt im KI-Büro: Zeile `merchant-beschreibung` um 08:30 UTC (`datasets/offen` Version 9, Seite Version 21), die Zeilen vom 11.11. auf «älter».
+- **Dashboard «Offene Punkte»:** Die Wiedervorlage nannte noch das gelöschte Artefakt; nachgeführt im KI-Büro: Zeile `merchant-beschreibung` um 08:30 UTC (`datasets/offen` Version 9, Seite Version 21), die Zeilen vom 11.11. auf «älter». Um 09:06 UTC nach dem Entscheid: Zeile auf «Zeit», Nachmessung Do 19.11. (`datasets/offen` Version 10, Datei `offene-punkte-1611b.json`, Seite Version 23).
+- **Entscheid des Besitzers (16.11. gegen 09:00 UTC, Auswahlfrage):** «Behalten, 19.11. messen» und Wiedervorlage «Ja, ausschalten».
+  - **Am Do 19.11. selbst anstossen:** Handstart von `merchant-beschreibung.yml` auf `main`, Protokoll lesen, mit 16 Sachtext und 75 Werbezeile von 91 vergleichen.
+  - Regel: Ab rund 50 % Sachtext den Vorschlag für weitere Kategorien machen. Bei rund 18 % die Rücknahme als Auswahlfrage anbieten, nicht selbst ausführen.
+  - **Nicht erledigt:** `update_trigger` (Wiedervorlage `trig_01LVTJiKpsKFnhmFMdXgLk1a` aus) und `send_later` (Erinnerung 19.11.) meldeten «requires approval». Beide wurden nicht wiederholt; der Besitzer kann die Wiedervorlage in der App ausschalten.
 - **Lehren:**
   - (1) Ein Messgerät zuerst an einem bekannten Fall prüfen: Lauf 1 und 2 meldeten 0 von 1 859 Angeboten, weil die `id` von `product_view` drei Teile hat und nicht vier. Erst die Probe mit einem bekannten Angebot zeigte den Fehler.
   - (2) GitHub schwärzt im Protokoll jede Zeile eines mehrzeiligen Secrets, beim JSON-Schlüssel also auch «{» und «}». Ein Wörterbuch erscheint dann als `***`; Zählungen darum als Text ausgeben.

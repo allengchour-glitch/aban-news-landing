@@ -85,7 +85,13 @@ Beispiele (Vorher: «<Titel> bei LuxeStyle – Schweizer Online-Shop. Gratis-Ver
 
 **Nachmessung mit dem behobenen Leser (GEMESSEN 16.11. 08:45 UTC, Lauf 43833669895):** Die Zahlen sind dieselben wie um 08:22 UTC. Pilot: 16 Sachtext, 75 Werbezeile, 238 nicht im Kanal. Kontrolle: 33 Werbezeile, 5 echte Beschreibung, 1 andere, 266 nicht im Kanal. Die Zeile zu `updatedAt` steht jetzt im Klartext: «keine». Bei Google gefunden wurden 360 der 1 859 abgefragten Angebote. Im Protokoll stehen weder Konto-Nummer noch Feed-Label.
 
-**Entscheid des Besitzers:** behalten und in einigen Tagen neu messen (Handstart von `merchant-beschreibung.yml`), oder zurücknehmen (`ZURUECK=1 LIVE=1 python3 dropship/merchant-beschreibung-0911/pilot_pullover.py`).
+**Entscheid des Besitzers (16.11. gegen 09:00 UTC, Auswahlfrage):** «Behalten, 19.11. messen». Die Sachtexte bleiben im Shop.
+
+- Am Do 19.11. startet die Messung neu: Handstart von `merchant-beschreibung.yml` auf `main`.
+- Regel für den 19.11.: Tragen rund 50 % der Pilot-Produkte bei Google den Sachtext, gilt die App als langsam, aber richtig. Dann folgt der Vorschlag, den Sachtext auf weitere Kategorien auszudehnen; das entscheidet der Besitzer.
+- Bleibt der Anteil bei rund 18 %, wird die Rücknahme noch einmal angeboten: `ZURUECK=1 LIVE=1 python3 dropship/merchant-beschreibung-0911/pilot_pullover.py`.
+
+Die alte Wiedervorlage soll laut Besitzer aus. Eine neue Erinnerung für den 19.11. war geplant. Beide Aufrufe verlangten am 16.11. eine Freigabe, die nicht erteilt wurde; sie wurden nicht wiederholt. Darum steht die Nachmessung im Projektgedächtnis (CLAUDE.md).
 
 ## Messrezept
 
