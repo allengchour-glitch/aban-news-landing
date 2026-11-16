@@ -88,12 +88,25 @@ Die Rohdaten, Hörproben und Werkzeuge liegen nur im Scratch dieser Sitzung.
   - Die Texte sind ohne Preise und Lieferzeiten, mit Wegweiser-Kurzlink beziehungsweise Produktlink.
   - Beim Tennisarmband fehlt «Zirkon», weil der Titel inzwischen «mit dekorativem Besatz» lautet.
   - TikTok ist als «Eigenwerbung» gekennzeichnet, ohne Bibliotheks-Sound.
-- **Freigabe:**
-  - Trockenlauf mit dem Code von `main`: alle 12 frei.
-  - Handstart der Freigabe (Lauf 43881855556) wartet seit 14:03 UTC in der GitHub-Warteschlange (GitHub meldet um 14:34 UTC eine Störung). Kommt er nicht, plant der tägliche Lauf vom 17.11. die Entwürfe ein; der erste Termin ist erst am 21.11.
+- **Freigabe (GEMESSEN 16.11.):**
+  - Der Handstart 43881855556 hing ohne Job in der GitHub-Warteschlange. Ersatzlauf 43888840574 (14:44 UTC) plante 12 Beiträge ein, Lauf 43889635631 (14:48 UTC) die übrigen 6. Je PUT HTTP 200, Kontrolle OK.
+  - Danach frisch gelesen (Planer 16. bis 28.11.): 80 Beiträge, 0 doppelte uuid, 0 TikTok mit `autoAddMusic`, 0 Paare unter 3 Stunden je Netzwerk.
+  - Alle 12 neuen Videos still (max −91 dB).
+- **Wegweiser `aus-tiktok-und-instagram` neu geordnet (14:41 UTC):**
+  - Vorher standen 18 von 20 kommenden Produkten auf Seite 1, jetzt alle 20 (28 Züge).
+  - Frisch gelesen: Die Plätze 18 bis 20 sind gegenüber dem Soll vertauscht, weil Shopify die Züge nacheinander ausführt. Das ist harmlos.
 - **Kurzlinks** `luxestyle.ch/fb`, `/th` und `/pin` sind neu (301 auf die Wegweiser-Sammlung mit eigener UTM-Kennung, live geprüft).
   - Zurücknehmen: `ZURUECK=1 LIVE=1 python3 dropship/social-aufraeumen-1611/kurzlinks.py`.
   - In die Profile eintragen kann sie nur der Besitzer oder PC-Claude nach seinem Ja.
+
+## Codex hielt 14 Beiträge an (GEMESSEN 16.11.)
+
+- Codex-Lauf R259 setzte 14 eingeplante Videos auf Entwurf und `autoPublish` aus, in zwei Schüben (13:52 bis 13:57 und 14:22 bis 14:23 UTC). Grund «Canonical music mandatory».
+- Belege:
+  - Metricool-Ereignisse je uuid (`GET /v2/scheduler/posts/{uuid}/events`, Typ «save», Konto 4801419).
+  - Codex' Datei `dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json` auf `codex/luxestyle-claude-handoff-20261018` (alte und neue id je Beitrag).
+- Die Freigabe plante sie wieder ein: 8 um 13:59, 6 um 14:44 UTC. Eine Wache prüfte danach alle 2 Minuten von 14:47 bis 16:00 UTC: keine weitere Rücksetzung (sie läuft weiter).
+- Ursache: `VIDEO-PRAEFERENZEN.md` Regel 2 schrieb noch «Musik rotiert von Mixkit» vor (Stand 02.11.). Jetzt nachgeführt, dazu ein Satz in `AGENTS.md`.
 
 ## Offen
 
@@ -102,6 +115,8 @@ Die Rohdaten, Hörproben und Werkzeuge liegen nur im Scratch dieser Sitzung.
 - Für 37 Beiträge mit unbekannter Musik gibt es Hörproben, der Besitzer entscheidet.
 
 ## Lehren
+
+0. Wird ein eingeplanter Beitrag wieder Entwurf, zuerst die Ereignisse lesen (`GET /v2/scheduler/posts/{uuid}/events`). Sie zeigen jede Speicherung mit Zeit, aber nicht das Programm. Dann die Berichte der anderen Beteiligten durchsuchen.
 
 1. «Originalton» auf TikTok, Instagram und YouTube heisst nur: keine Bibliotheksmusik. Die Musik steckt meist in der Videodatei. Sie lässt sich nur am Ton selbst messen.
 2. Die eigenen Musikstücke lagen nicht mehr im Arbeitsbaum, sondern nur in der git-Geschichte. Ohne diese Referenzen blieb die Hälfte der Videos «unbekannt».

@@ -140,6 +140,12 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   - (2) «Originalton» heisst nur «keine Bibliotheksmusik». Die Musik steckt in der Datei und lässt sich nur am Ton messen.
   - (3) Die eigenen Stücke lagen nur noch in der git-Geschichte. Ohne sie blieb die Hälfte «unbekannt».
   - (4) `curl` in `while read` frisst die Eingabe: `</dev/null`.
+- **Nachtrag 16.11. spätnachmittags (GEMESSEN):**
+  - Die 12 Entwürfe für 21. bis 24.11. sind eingeplant (Ersatzläufe 43888840574 und 43889635631, Kontrolle OK). Der Wegweiser hat alle 20 kommenden Produkte auf Seite 1.
+  - **Codex-Lauf R259 hatte 14 eingeplante Videos auf Entwurf gesetzt**, Grund «Canonical music mandatory». Belegt durch die Metricool-Ereignisse und Codex' eigene Belegdatei. Die Freigabe plante alle wieder ein.
+  - Ursache war die veraltete Regel 2 in `dropship/VIDEO-PRAEFERENZEN.md` (Musik von Mixkit). Jetzt nachgeführt: stumm bis zu einem Ja des Besitzers. Dazu ein Satz in `AGENTS.md`.
+  - **Offen beim Besitzer:** den Codex-Automationsauftrag mit «Musik ist Pflicht» anpassen.
+  - Lehre (5): Bei «eingeplant, dann wieder Entwurf» zuerst `GET /v2/scheduler/posts/{uuid}/events` lesen (jede Speicherung mit Zeit, ohne Programm), dann die Berichte der anderen Beteiligten.
 **📌 2026-11-16 vormittags (📲 Social-Analyse aller Kanäle · Besitzer-Entscheide zu Metricool umgesetzt; Besitzer «kannst du gsnzen sozial post anschauen und analysieren oder hst das der andere session schon gemacht»; Doku `dropship/social-analyse-1611/README.md`, Halteliste PR #3180 gemergt `9899714f87`):**
 - **Antwort:** Die Handy-Sitzung «metricool analyse …» hat nur bis 09.11. ausgewertet und ist seit dem 09.11. archiviert. Neu: Workflow mit 22 Agenten (6 Messungen, Analyse, 14 Nachmessungen, 13 gehalten, 1 mit korrigiertem Zeitraum, Gegenleserin), nur lesend.
 - **GEMESSEN:** Social 20 von 2 336 Sitzungen in 7 Tagen (Schweiz 9), 1 Warenkorb, 0 Kassen, 0 Käufe in 45 Tagen (bei so wenig Besuchen schwacher Beleg). TikTok rund 250 Aufrufe je Beitrag fast unabhängig vom Inhalt, mehr Beiträge = mehr Aufrufe insgesamt, Sehdauer in der Woche 1,4 statt 2,3 s. YouTube-Tagesaufrufe stiegen mit 2 Shorts je Tag (Median 55 → 213). Instagram-Feed Median 8 bis 11,5 Konten, Facebook-Feed fast 0, Threads Median 2, neue Pins 37 Impressionen. Kurzlinks `/tt` und `/yt` 0 Besuche. Planer 10.–15.11.: 71 von 76 PUBLISHED, 0 ERROR, 5 Entwürfe verfallen (Freigabe läuft praktisch gegen 13 UTC). Rosen-Clip 11.11. lief mit dem abgelehnten «violin-uplift».

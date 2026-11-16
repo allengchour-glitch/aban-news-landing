@@ -8,7 +8,12 @@
    Hochdeutsch (nicht Mundart), kurze Sätze (≤ 160 Zeichen, ≈ 8 s), keine Preise, Rabatte, Lieferzeiten, Bewertungen oder Versprechen.
    Stimme lokal und gratis mit Piper (`SPRECHER=…` in `dropship/reel-vorlage/reel_karte.sh`, Vorgabe `de_DE-thorsten-high`, Alternative `de_DE-ramona-low`);
    die Musik duckt unter der Stimme. On-screen-Text bleibt zusätzlich. Ältere Marken-Videos (`*-text.mp4`) bleiben stumm.
-2. **Musik rotiert, nie zweimal hintereinander dasselbe Stück, und kommt von Mixkit** (Besitzer 2.11.2026: «kann man andere Musik nehmen … nie das gleiche»,
+2. **Musik: AUSGESETZT. Neue Videos laufen ohne Musik (stille Tonspur), bis der Besitzer ein bestimmtes Stück ausdrücklich freigibt.**
+   Seit 10.11.2026 ausgesetzt (Besitzer «musik ist scheisse»). Am 16.11.2026 hat der Besitzer auf gezielte Fragen entschieden: «Ton weg, einplanen» für zehn Videos mit Musik,
+   TikTok-Bibliotheks-Sound (`autoAddMusic`) bleibt aus, alte Beiträge mit abgelehnter Musik werden ausgeblendet (`dropship/social-aufraeumen-1611/`).
+   **Stumme Videos sind gewollt und kein Fehler.** Wer ein stummes Video wegen «fehlender Musik» zurückhält, handelt gegen diesen Entscheid.
+   Verlauf: `dropship/REEL-REGELN.md` (Verbesserungs-Log 10.11. und 16.11.).
+   *Abgelöst, nur noch zur Geschichte:* Musik rotierte, nie zweimal hintereinander dasselbe Stück, von Mixkit (Besitzer 2.11.2026: «kann man andere Musik nehmen … nie das gleiche»,
    danach «die selbst gemachte ist das Schrecklichste … nimm von irgendwo lieber»; löst die Festlegung auf `luxe-premium.wav` ab). Wahl:
    `dropship/reel-vorlage/musik_waehlen.sh` (fünf Mixkit-Stücke, Lizenz ohne Namensnennung, Log `dropship/reel-vorlage/musik-log.txt`).
    **Keine selbst synthetisierten `luxe-*`-Stücke mehr in Reels.** Kevin-MacLeod-Stücke (CC BY) nur mit Quellenangabe in der Caption.
