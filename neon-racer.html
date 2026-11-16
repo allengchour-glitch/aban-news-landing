@@ -19,16 +19,16 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 <meta name="robots" content="noindex">
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>Neon Racer — Anti-Grav-Rennspiel (PSP-Style) | aban news</title>
-<meta name="description" content="Neon Racer: futuristischer Anti-Grav-Racer im Browser, im Stil der PSP-Klassiker. Folge der kurvigen Neon-Strecke, nutze Boost, weiche aus, werde immer schneller. Gratis, kein Download.">
+<title>Prisma Rallye — Neon Racer | aban Arcade</title>
+<meta name="description" content="Prisma Rallye: wechsle deinen Pol, durchfahre 18 Resonanztore und lade den Energie-Boost. Drei Sektoren, Zieleinlauf, Medaillen und Endlos-Training.">
 <link rel="canonical" href="https://abannews.com/neon-wildnis.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Neon Racer — Anti-Grav-Rennspiel (PSP-Style)">
-<meta property="og:description" content="Futuristischer Neon-Racer im Browser. Kurvige Strecke, Boost, immer schneller. Gratis.">
+<meta property="og:title" content="Prisma Rallye — Neon Racer">
+<meta property="og:description" content="Drei Sektoren, 18 Resonanztore: Pol wechseln, Energie laden und deine perfekte Linie finden.">
 <meta property="og:url" content="https://abannews.com/neon-racer.html">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"VideoGame","name":"Neon Racer","url":"https://abannews.com/neon-racer.html","genre":"Racing","inLanguage":"de","isAccessibleForFree":true,"applicationCategory":"Game","operatingSystem":"Web","publisher":{"@type":"Organization","name":"aban news"}}
+{"@context":"https://schema.org","@type":"VideoGame","name":"Prisma Rallye","url":"https://abannews.com/neon-racer.html","genre":"Racing","inLanguage":"de","isAccessibleForFree":true,"applicationCategory":"Game","operatingSystem":"Web","publisher":{"@type":"Organization","name":"aban news"}}
 </script>
 <style>
 *{box-sizing:border-box;margin:0}
@@ -64,6 +64,7 @@ canvas{display:block}
 #pauseLayer{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:rgba(7,6,26,.88);text-align:center;padding:20px}
 #pauseLayer button{min-height:44px;padding:12px 24px;border:0;border-radius:14px;font:700 1rem system-ui;cursor:pointer}
 </style>
+<link rel="stylesheet" href="/css/prisma-racer.css?v=71ac9b805c7d">
 </head>
 <body>
 <div id="wrap"></div>
@@ -72,6 +73,7 @@ canvas{display:block}
   <div id="spd" class="panel">0 <small>km/h</small></div>
   <div id="coinpanel" class="panel">🪙 <span id="coins">0</span></div>
   <div class="best panel"><span id="dist">0</span> m<br><span style="opacity:.75">Rekord <span id="best">0</span> m</span></div>
+  <div id="prismaHud" class="panel hide"><b id="sectorName">Sektor 1 · Blaue Stunde</b><span id="gateCount">0/18 Resonanzen</span><span id="nextPol">Nächstes Tor: − Pink</span><div id="prismaProgress"><i id="raceFill"></i></div></div>
   <div id="shieldwrap" class="hide"><span class="sic">🛡️</span><span id="shieldtrack"><i id="shieldFill"></i></span></div>
 </div>
 <div id="boostFx"></div>
@@ -80,11 +82,16 @@ canvas{display:block}
 <div id="pauseLayer" class="hide"><strong>⏸ Pause</strong><button id="resumeBtn">Weiterspielen ▶</button><span>Esc / P</span></div>
 <button id="brakeBtn" style="position:fixed;left:18px;bottom:22px;z-index:7;width:84px;height:84px;border-radius:50%;border:2px solid #ff6ec7;background:rgba(60,20,45,.55);color:#ff9ad9;font-size:1rem;font-weight:800;display:none;-webkit-user-select:none;user-select:none">BREMSE</button>
 
+<button type="button" id="polarityBtn" class="hide" data-pol="0">+ Cyan · E</button>
+<button type="button" id="chargeBtn" class="hide" disabled>Boost 0/3 · F</button>
+<div id="gateNotice" class="hide" role="status" aria-live="polite"></div>
 <div class="overlay" id="start">
-  <div class="tag">aban news · Anti-Grav · PSP-Style</div>
-  <h1>NEON RACER</h1>
-  <p>Fahr deinen Neon-Kart über die kurvige Strecke! Sammle 🪙 <b>Münzen</b>, triff die <b>Boost-Pads</b> ⚡, weiche roten Barrieren aus. Je weiter, desto schneller.</p>
-  <p style="font-size:1rem;color:#9aa4cf">Lenken: ← → / A D / Maus / Finger · Bremse: ↓ / LEER</p>
+  <div class="tag">18 Resonanzen · 3 Sektoren · Dein perfekter Lauf</div>
+  <h1>PRISMA RALLYE</h1>
+  <p>Wechsle zwischen <b>+ Cyan</b> und <b>− Pink</b>, bevor du durch ein Resonanztor fährst. Drei passende Tore laden deinen Extra-Boost. Sichere mindestens <b>8 Resonanzen</b> und fahre durch alle drei Sektoren bis ins Ziel – ab 16 gibt es Gold!</p>
+  <div id="raceModes" aria-label="Rennmodus"><button type="button" data-race="race" aria-pressed="true">Resonanz-Rallye</button><button type="button" data-race="endless" aria-pressed="false">Endlos üben</button></div>
+  <div id="raceRecord"></div>
+  <p style="font-size:1rem;color:#9aa4cf">Lenken: ← → / A D / Maus / Finger · Bremse: ↓ / LEER<br>Pol wechseln: E oder Knopf · Energie-Boost: F oder Knopf</p>
   <button class="btn" id="startBtn">Start ▶</button>
   <div id="best2" class="small"></div>
   <div class="small">Kein Download · <a href="/spiele.html">mehr Spiele</a></div>
@@ -92,15 +99,17 @@ canvas{display:block}
 </div>
 
 <div class="overlay hide" id="over">
-  <div class="tag">Crash</div>
+  <div class="tag" id="raceResultTag">Rennbericht</div>
   <h1 id="finalT">0 m</h1>
-  <p id="verdict"></p>
+  <p id="verdict"></p><div id="raceSummary"></div>
   <button class="btn" id="againBtn">Nochmal ▶</button>
   <button class="btn ghost" id="shareBtn">Teilen 📋</button>
+  <button class="btn ghost" id="raceModeBack">Rennmodus wechseln</button>
   <p class="small">5 Min KI ohne Hype, werktäglich — <a href="https://abannews.beehiiv.com/subscribe" target="_blank" rel="noopener">Newsletter →</a></p>
 </div>
 
 <script src="/js/vendor/three.min.js"></script>
+<script src="/js/prisma-racer/race.js?v=867c6d61a072"></script>
 <script src="/js/vendor/GLTFLoader.js"></script>
 <script>/* 🚑 Robust-Loader: r128-FileLoader (Stream-Reader) scheitert auf manchen Geraeten hinter dem
    Service Worker mit 'Failed to fetch' (User-Diagnose Android/Brave). GLB selbst per fetch holen
@@ -120,7 +129,7 @@ var THREE=window.THREE, W=innerWidth, H=innerHeight;
 var IS_COARSE=!!(window.matchMedia&&window.matchMedia("(pointer:coarse)").matches);
 var renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(W,H);
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;renderer.outputEncoding=THREE.sRGBEncoding;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=.96;renderer.outputEncoding=THREE.sRGBEncoding;
 document.getElementById("wrap").appendChild(renderer.domElement);
 var scene=new THREE.Scene(); scene.background=new THREE.Color(0x04050d); scene.fog=new THREE.Fog(0x04050d,65,265);
 var camera=new THREE.PerspectiveCamera(72,W/H,0.1,400);
@@ -222,17 +231,17 @@ var flameMat=new THREE.MeshBasicMaterial({color:0x66e0ff,transparent:true,opacit
 var boostFlames=[];
 (function(){for(var s=-1;s<=1;s+=2){var f=new THREE.Mesh(new THREE.ConeGeometry(0.26,1.3,10),flameMat); f.rotation.x=-Math.PI/2; f.position.set(s*0.28,0.9,1.75); f.scale.z=0.01; kart.add(f); boostFlames.push(f);} })();
 ship.position.set(0,0.12,0); scene.add(ship);
-var sGlow=new THREE.PointLight(0x5ef2ff,0.75,20); scene.add(sGlow);
+var sGlow=new THREE.PointLight(0x5ef2ff,0.48,20); scene.add(sGlow);
 // ---- Charakter hervorheben: grösser, Neon-Outline, Boden-Halo, Schlagschatten, hellerer Fahrer ----
 ship.scale.setScalar(1.12);
 var outlineMat=new THREE.MeshBasicMaterial({color:0x7ae4ff,side:THREE.BackSide,transparent:true,opacity:0.16,blending:THREE.AdditiveBlending,depthWrite:false});
 var oBody=new THREE.Mesh(roundedBoxGeo(1.55,0.58,2.35,0.28),outlineMat);oBody.position.y=0.54;oBody.scale.setScalar(1.14);kart.add(oBody);
 var oNose=new THREE.Mesh(roundedBoxGeo(1.2,0.42,0.95,0.2),outlineMat);oNose.position.set(0,0.5,-1.32);oNose.scale.setScalar(1.18);kart.add(oNose);
-var helmHalo=new THREE.Mesh(new THREE.SphereGeometry(0.46,16,12),new THREE.MeshBasicMaterial({color:0xffe9a0,transparent:true,opacity:0.12,blending:THREE.AdditiveBlending,depthWrite:false}));helmHalo.position.set(0,1.76,0.34);kart.add(helmHalo);
+var helmHalo=new THREE.Mesh(new THREE.SphereGeometry(0.46,16,12),new THREE.MeshBasicMaterial({color:0xffe9a0,transparent:true,opacity:0.035,blending:THREE.AdditiveBlending,depthWrite:false}));helmHalo.position.set(0,1.76,0.34);kart.add(helmHalo);
 function radialTex(inner,outer){var cv=document.createElement("canvas");cv.width=cv.height=128;var x=cv.getContext("2d");var g=x.createRadialGradient(64,64,4,64,64,64);g.addColorStop(0,inner);g.addColorStop(1,outer);x.fillStyle=g;x.fillRect(0,0,128,128);return new THREE.CanvasTexture(cv);}
 var kshadow=new THREE.Mesh(new THREE.PlaneGeometry(3.6,4.6),new THREE.MeshBasicMaterial({map:radialTex("rgba(0,0,0,0.6)","rgba(0,0,0,0)"),transparent:true,depthWrite:false}));kshadow.rotation.x=-Math.PI/2;kshadow.position.y=0.09;scene.add(kshadow);
 var khalo=new THREE.Mesh(new THREE.PlaneGeometry(5.4,5.4),new THREE.MeshBasicMaterial({map:radialTex("rgba(94,242,255,0.2)","rgba(94,242,255,0)"),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));khalo.rotation.x=-Math.PI/2;khalo.position.y=0.12;scene.add(khalo);
-var rimLight=new THREE.PointLight(0xff6ec7,0.9,16);scene.add(rimLight);
+var rimLight=new THREE.PointLight(0xff6ec7,0.55,16);scene.add(rimLight);
 
 // Strecken-Boden (Ribbon-Segmente) + Rail-Posten (werden je Frame neu positioniert)
 var N=50, SP=5.0, BACK=4; // vier zusätzliche Abschnitte hinter Spieler und Kamera
@@ -452,9 +461,9 @@ var rtScene=(renderer.capabilities.isWebGL2&&THREE.WebGLMultisampleRenderTarget)
 var bw=Math.max(1,_dw()>>1),bh=Math.max(1,_dh()>>1);
 var rtA=new THREE.WebGLRenderTarget(bw,bh,rtOpt),rtB=new THREE.WebGLRenderTarget(bw,bh,rtOpt);
 var qScene=new THREE.Scene(),qCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.82}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
+var brightMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},threshold:{value:0.9}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform float threshold;varying vec2 vUv;void main(){vec4 c=texture2D(tDiffuse,vUv);float l=dot(c.rgb,vec3(0.299,0.587,0.114));gl_FragColor=l>threshold?c:vec4(0.0,0.0,0.0,1.0);}"});
 var blurMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},res:{value:new THREE.Vector2(bw,bh)}},vertexShader:bvert,fragmentShader:"uniform sampler2D tDiffuse;uniform vec2 dir;uniform vec2 res;varying vec2 vUv;void main(){vec2 px=dir/res;vec4 s=vec4(0.0);s+=texture2D(tDiffuse,vUv-4.0*px)*0.05;s+=texture2D(tDiffuse,vUv-3.0*px)*0.09;s+=texture2D(tDiffuse,vUv-2.0*px)*0.12;s+=texture2D(tDiffuse,vUv-1.0*px)*0.15;s+=texture2D(tDiffuse,vUv)*0.18;s+=texture2D(tDiffuse,vUv+1.0*px)*0.15;s+=texture2D(tDiffuse,vUv+2.0*px)*0.12;s+=texture2D(tDiffuse,vUv+3.0*px)*0.09;s+=texture2D(tDiffuse,vUv+4.0*px)*0.05;gl_FragColor=s;}"});
-var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.58}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
+var compMat=new THREE.ShaderMaterial({depthTest:false,depthWrite:false,uniforms:{tBase:{value:null},tBloom:{value:null},strength:{value:0.26}},vertexShader:bvert,fragmentShader:"uniform sampler2D tBase;uniform sampler2D tBloom;uniform float strength;varying vec2 vUv;void main(){vec4 b=texture2D(tBase,vUv);vec4 g=texture2D(tBloom,vUv);gl_FragColor=vec4(b.rgb+g.rgb*strength,1.0);}"});
 var qMesh=new THREE.Mesh(new THREE.PlaneGeometry(2,2),brightMat);qScene.add(qMesh);
 function blit(material,target){qMesh.material=material;renderer.setRenderTarget(target||null);renderer.render(qScene,qCam);}
 function renderBloom(){
@@ -484,12 +493,58 @@ function setBestM(v){try{localStorage.setItem("nr_best",String(v));}catch(e){}}
 // ---- State ----
 var dist=0,speed=0,shipX=0,steer=0,shield=100,running=false,paused=false,camX=0,bank=0,spawnD=0,last=performance.now();
 var keyL=false,keyR=false,brake=false,boostT=0,fov=72;
-function reset(){dist=0;speed=42;shipX=centerX(0);steer=0;shield=100;camX=shipX;bank=0;spawnD=40;boostT=0;coinScore=0;coinSpawnD=60;
+var raceMode="race",race=PrismaRace.create(raceMode),raceProfile=PrismaRace.profile(null),noticeUntil=0,raceHudAt=0;
+try{raceProfile=PrismaRace.profile(JSON.parse(localStorage.getItem("prisma_racer_v1")||"null"));}catch(e){}
+function raceNotice(text){document.getElementById("gateNotice").textContent=text;document.getElementById("gateNotice").classList.remove("hide");noticeUntil=performance.now()+1800;}
+function flipPolarity(){if(!running||paused||race.mode!=="race"||!PrismaRace.flip(race))return;raceHud(true);beep(race.polarity?520:760,.06,"triangle",.04);}
+function chargeBoost(){if(!running||paused||race.mode!=="race"||!PrismaRace.boost(race))return;speed+=22;boostT=1.6;raceNotice("ENERGIE-BOOST · Drei Resonanzen eingesetzt");raceHud(true);}
+document.getElementById("polarityBtn").onclick=flipPolarity;document.getElementById("chargeBtn").onclick=chargeBoost;
+document.querySelectorAll("[data-race]").forEach(function(b){b.onclick=function(){raceMode=b.getAttribute("data-race");document.querySelectorAll("[data-race]").forEach(function(q){q.setAttribute("aria-pressed",String(q===b));});};});
+function raceHud(force){
+  var stamp=performance.now();if(!force&&stamp<raceHudAt)return;raceHudAt=stamp+80;
+  var active=running&&race.mode==="race",pol=document.getElementById("polarityBtn"),charge=document.getElementById("chargeBtn");
+  [pol,charge,document.getElementById("prismaHud")].forEach(function(e){e.classList.toggle("hide",!active);});
+  pol.textContent=(race.polarity?"− Pink":"+ Cyan")+" · E";pol.dataset.pol=String(race.polarity);pol.setAttribute("aria-label","Pol wechseln. Aktuell "+(race.polarity?"Minus Pink":"Plus Cyan"));
+  charge.textContent="Boost "+race.charge+"/3 · F";charge.disabled=race.charge<3;
+  var section=Math.min(2,Math.floor(dist/(PrismaRace.length/3)));document.getElementById("sectorName").textContent="Sektor "+(section+1)+" · "+["Blaue Stunde","Kupferpass","Prisma-Finale"][section];
+  document.getElementById("gateCount").textContent=race.matched+"/18 Resonanzen · Ziel ab 8 · Serie "+race.chain;
+  var next=race.gates.find(function(g){return !g.resolved;});document.getElementById("nextPol").textContent=next?"Tor "+(next.id+1)+": "+(next.polarity?"− Pink":"+ Cyan")+" · "+Math.max(0,Math.ceil(next.d-dist))+" m":"Ziel voraus";
+  document.getElementById("raceFill").style.width=Math.min(100,dist/PrismaRace.length*100)+"%";
+}
+function profileHud(){document.getElementById("raceRecord").textContent=raceProfile.wins?raceProfile.wins+" Zieleinläufe · Bestwert "+raceProfile.bestScore+" · "+raceProfile.bestTime.toFixed(2)+" s · Torrekord "+raceProfile.gateRecord+"/18":"Gold: 16 passende Tore · Silber: 12 · Bronze: Ziel + 8 Resonanzen";}
+// Fünf wiederverwendete Tore, keine neuen Lichter oder Geometrien pro Bild.
+var gateViews=[],polColors=[0x71e4e8,0xf4a2cd];
+for(var gv=0;gv<5;gv++){
+ var root=new THREE.Group(),energy=new THREE.MeshBasicMaterial({color:polColors[0]}),dark=new THREE.MeshBasicMaterial({color:0x172635});
+ var arc=new THREE.Mesh(new THREE.TorusGeometry(2.55,.10,5,28,Math.PI),energy);root.add(arc);
+ for(var side=-1;side<=1;side+=2){var post=new THREE.Mesh(new THREE.BoxGeometry(.18,2.5,.24),energy);post.position.set(side*2.55,-1.25,0);root.add(post);}
+ var face=new THREE.Mesh(new THREE.CircleGeometry(.46,16),dark);face.position.set(0,.63,.02);root.add(face);
+ var minus=new THREE.Mesh(new THREE.BoxGeometry(.55,.08,.06),energy);minus.position.set(0,.63,.06);root.add(minus);
+ var plus=new THREE.Mesh(new THREE.BoxGeometry(.08,.55,.06),energy);plus.position.set(0,.63,.06);root.add(plus);
+ root.visible=false;scene.add(root);gateViews.push({root:root,energy:energy,plus:plus});
+}
+var finishGate=new THREE.Group(),finishMat=new THREE.MeshBasicMaterial({color:0xe8d2a2});
+for(var fs9=-1;fs9<=1;fs9+=2){var pole9=new THREE.Mesh(new THREE.BoxGeometry(.3,5.4,.3),finishMat);pole9.position.set(fs9*6.5,2.7,0);finishGate.add(pole9);}
+var finishCanvas=document.createElement("canvas");finishCanvas.width=512;finishCanvas.height=80;var finishCtx=finishCanvas.getContext("2d");finishCtx.fillStyle="#f1e8cf";finishCtx.fillRect(0,0,512,80);finishCtx.fillStyle="#172f36";
+for(var qr9=0;qr9<4;qr9++)for(var qc9=0;qc9<6;qc9++)if((qr9+qc9)%2===0){finishCtx.fillRect(qc9*20,qr9*20,20,20);finishCtx.fillRect(392+qc9*20,qr9*20,20,20);}
+finishCtx.font="bold 54px sans-serif";finishCtx.textAlign="center";finishCtx.fillText("ZIEL",256,59);
+var finishBanner=new THREE.Mesh(new THREE.PlaneGeometry(13,2),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(finishCanvas),side:THREE.DoubleSide}));finishBanner.position.y=4.7;finishGate.add(finishBanner);finishGate.visible=false;scene.add(finishGate);
+var raceSkies=[new THREE.Color(0x081521),new THREE.Color(0x261725),new THREE.Color(0x181735)];
+function raceAtmosphere(dt){var k=race.mode==="race"?Math.min(2,Math.floor(dist/(PrismaRace.length/3))):0;scene.background.lerp(raceSkies[k],1-Math.exp(-dt*.9));scene.fog.color.copy(scene.background);}
+function drawGates(){
+ finishGate.visible=running&&race.mode==="race"&&dist>PrismaRace.length-250;
+ if(finishGate.visible)finishGate.position.set(centerX(PrismaRace.length),0,dist-PrismaRace.length);
+
+ var visible=race.mode==="race"?race.gates.filter(function(g){return !g.resolved&&g.d>=dist-5&&g.d<dist+250;}):[];
+ gateViews.forEach(function(v,i){var g=visible[i];v.root.visible=!!g;if(!g)return;v.root.position.set(centerX(g.d)+g.offset,2.6,-(g.d-dist));v.energy.color.setHex(polColors[g.polarity]);v.plus.visible=!g.polarity;});
+}
+
+function reset(){dist=0;speed=42;shipX=centerX(0);steer=0;shield=100;camX=shipX;bank=0;spawnD=raceMode==="race"?240:40;boostT=0;coinScore=0;coinSpawnD=60;
   ship.position.set(shipX,0.12,0);
   for(var i=0;i<things.length;i++){things[i].active=false;things[i].bar.visible=false;things[i].pad.visible=false;}
   for(i=0;i<coins.length;i++){coins[i].active=false;coins[i].m.visible=false;}
   var ce=document.getElementById("coins");if(ce)ce.textContent="0";
-  touchX=null;steerId=null;keyL=keyR=brake=false;} /* 🏎️ Schwarm-3 P2/P3: Lenk-/Tasten-Zustand beim Neustart leeren (kein Geister-Lenken) */
+  touchX=null;steerId=null;keyL=keyR=brake=false;race=PrismaRace.create(raceMode);noticeUntil=0;raceHudAt=0;document.getElementById("gateNotice").classList.add("hide");finishGate.visible=false;scene.background.setHex(0x081521);scene.fog.color.copy(scene.background);gateViews.forEach(function(v){v.root.visible=false;});} /* 🏎️ Schwarm-3 P2/P3: Lenk-/Tasten-Zustand beim Neustart leeren (kein Geister-Lenken) */
 
 function clearInput(){keyL=keyR=brake=false;touchX=null;steerId=null;steer=0;}
 function setPaused(value){if(!running)return;paused=value;clearInput();last=performance.now();
@@ -500,8 +555,10 @@ document.getElementById("resumeBtn").onclick=function(){setPaused(false);};
 addEventListener("blur",function(){clearInput();if(running)setPaused(true);});
 document.addEventListener("visibilitychange",function(){if(document.hidden){clearInput();if(running)setPaused(true);}});
 addEventListener("keydown",function(e){var k=e.key.toLowerCase();
+  if(e.target&&(e.target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)))return;
+  if((k===" "||k==="enter")&&e.target&&e.target.closest&&e.target.closest("button,a"))return;
   if(k==="escape"||k==="p"){if(!e.repeat&&running){e.preventDefault();setPaused(!paused);}return;}
-  if(paused)return;if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if(k==="arrowdown"||k===" ")brake=true;if((k===" "||k==="enter")&&!running){e.preventDefault&&e.preventDefault();start();}});
+  if(paused)return;if(k==="e"||k==="f"){if(!e.repeat){e.preventDefault();if(k==="e")flipPolarity();else chargeBoost();}return;}if(k==="arrowleft"||k==="a")keyL=true;if(k==="arrowright"||k==="d")keyR=true;if(k==="arrowdown"||k===" ")brake=true;if((k===" "||k==="enter")&&!running){e.preventDefault&&e.preventDefault();start();}});
 addEventListener("keyup",function(e){var k=e.key.toLowerCase();if(k==="arrowleft"||k==="a")keyL=false;if(k==="arrowright"||k==="d")keyR=false;if(k==="arrowdown"||k===" ")brake=false;});
 var touchX=null,steerId=null;
 addEventListener("touchstart",function(e){if(paused)return; /* R1: nur der Lenk-Finger steuert; Brems-/UI-Finger wird NICHT als Lenkung gelesen */
@@ -524,28 +581,34 @@ addEventListener("mouseleave",function(){if(!IS_COARSE)touchX=null;});
 function brakeBtnVis(on){var bb=document.getElementById("brakeBtn");if(bb)bb.style.display=(on&&IS_COARSE)?"block":"none";} // nur im Spiel zeigen (nicht auf Start/Game-Over)
 
 function spawnThing(){
+  if(race.mode==="race"&&(spawnD>PrismaRace.length-30||race.gates.some(function(g){return Math.abs(g.d-spawnD)<48;})))return;
   var t=null;for(var i=0;i<things.length;i++)if(!things[i].active){t=things[i];break;}if(!t)return;
-  t.active=true;t.d=spawnD;t.boost=Math.random()<0.30;t.nm=false; /* 🏎️ Beinahe-Streifer-Flag */
+  t.active=true;t.d=spawnD;t.boost=race.mode==="endless"&&Math.random()<0.30;t.nm=false; /* 🏎️ Beinahe-Streifer-Flag */
   if(t.boost){t.off=(Math.random()*2-1)*(HALF-3.0);t.pad.visible=true;t.bar.visible=false;}
-  else{t.off=(Math.random()*2-1)*(HALF-1.5);t.bar.visible=true;t.pad.visible=false;t.bar.rotation.y=(Math.random()-0.5)*0.5;}
+  else{t.off=race.mode==="race"?((Math.floor(spawnD/100)%2?1:-1)*(HALF-1.5)):(Math.random()*2-1)*(HALF-1.5);t.bar.visible=true;t.pad.visible=false;t.bar.rotation.y=(Math.random()-0.5)*0.5;}
 }
 
 var shake=0,_cyan=new THREE.Color(0x5ef2ff);
 function burst(x,y,z,c){shake=Math.max(shake,0.35);}
 
-function start(){reset();running=true;setPaused(false);document.getElementById("pauseBtn").classList.remove("hide");document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");document.getElementById("shieldwrap").classList.remove("hide");brakeBtnVis(true);musSync();}
+function start(){reset();running=true;setPaused(false);document.getElementById("pauseBtn").classList.remove("hide");document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.remove("hide");document.getElementById("shieldwrap").classList.remove("hide");brakeBtnVis(true);raceHud(true);profileHud();musSync();}
 function showBest(){var b=bestM();document.getElementById("best").textContent=b;document.getElementById("best2").textContent=b>0?("🏆 Rekord: "+b+" m"):"";}
-function gameOver(){setPaused(false);document.getElementById("pauseBtn").classList.add("hide");running=false;shake=1.4;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
-  document.getElementById("finalT").textContent=m+" m";
+function gameOver(){if(!running)return;var rr=PrismaRace.result(race,shield,coinScore,dist);setPaused(false);document.getElementById("pauseBtn").classList.add("hide");running=false;shake=1.4;var m=Math.floor(dist),b=bestM(),rec=m>b;if(rec)setBestM(m);
+  raceProfile=PrismaRace.record(raceProfile,rr);try{localStorage.setItem("prisma_racer_v1",JSON.stringify(raceProfile));}catch(e){}
+  document.getElementById("raceResultTag").textContent=rr&&rr.won?"Ziel erreicht · "+rr.medal:rr&&rr.mode==="race"&&m>=PrismaRace.length?"Qualifikation: mindestens 8 Resonanzen":"Nächster Versuch, neue Linie";
+  document.getElementById("finalT").textContent=rr&&rr.won?"PRISMA · "+rr.medal:m+" m";
+  document.getElementById("raceSummary").textContent=rr&&rr.mode==="race"?rr.matched+"/18 Resonanzen · beste Serie "+rr.chain+" · "+rr.time.toFixed(2)+" s · "+rr.score+" Punkte. "+(rr.won?"Drei Sektoren geschafft. Dein nächstes Ziel: die perfekte Linie.":m>=PrismaRace.length?"Für den Zieleinlauf brauchst du mindestens 8 passende Tore. Versuche auch die Seitenspuren.":"Falscher Pol? Wechsle vor dem Tor mit E. Du kannst auch seitlich ausweichen."):"Endlos-Training · dein Distanzrekord bleibt erhalten.";
+  raceHud(true);profileHud();finishGate.visible=false;document.getElementById("gateNotice").classList.add("hide");gateViews.forEach(function(v){v.root.visible=false;});
   document.getElementById("verdict").innerHTML=(rec&&m>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+" m · ")+"🪙 "+coinScore+" · Top-Speed "+Math.floor(speed*3.0)+" km/h";
   var _sc=document.getElementById("stCrys");if(_sc)_sc.innerHTML="💎 <b>+"+(Math.floor(dist/10)+(coinScore|0))+" Kristalle</b> — bring sie zurück zur Wildnis!"; /* Stations-Inszenierung (nur wenn Element existiert) */
   document.getElementById("over").classList.remove("hide");document.getElementById("shieldwrap").classList.add("hide");brakeBtnVis(false);
   showBest(); // HUD-"Rekord" sofort aktualisieren (stand sonst bis zum Reload auf dem alten Wert)
   if(STATION)stationPost({t:"stationDone",score:Math.floor(dist/10)+(coinScore|0)}); /* 🌲 Wildnis-Station: Ergebnis melden */
-  musSync();beep(90,.4,"sawtooth",.12);}
+  musSync();beep(rr&&rr.won?880:90,.4,rr&&rr.won?"triangle":"sawtooth",.12);}
 
 document.getElementById("startBtn").onclick=start;
 document.getElementById("againBtn").onclick=start;
+document.getElementById("raceModeBack").onclick=function(){document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.add("hide");document.getElementById("start").classList.remove("hide");profileHud();};
 document.getElementById("shareBtn").onclick=function(){var txt="Neon Racer 🏎️ — "+Math.floor(dist)+" m, "+Math.floor(speed*3.0)+" km/h\nGratis spielen: abannews.com/neon-racer.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 
 function loop(now){
@@ -559,16 +622,20 @@ function loop(now){
     steer+=(sx-steer)*(1-Math.pow(0.8,dt*60));
     brake=keyL||keyR?brake:brake; // (kept simple)
     // Beschleunigung (Zone-Style), Bremse senkt Tempo & schärft Lenkung
-    var maxSpeed=42+dist*0.05;
+    var maxSpeed=race.mode==="race"?52+Math.min(45,dist*.015):42+dist*0.05;
     speed+=(maxSpeed-speed)*0.4*dt + 6*dt;
     if(brake)speed-=40*dt;
     if(boostT>0){boostT-=dt;}
     speed=Math.max(20,Math.min(maxSpeed+(boostT>0?58:30),speed));
-    var nextDist=dist+speed*dt;
+    var previousDist=dist;var nextDist=dist+speed*dt;
     shipX+=steer*(brake?22:16)*dt + centerX(nextDist)-centerX(dist); // Kurvenversatz über die gefahrene Strecke
     dist=nextDist;
+    var events=PrismaRace.advance(race,dt,previousDist,dist,shipX-centerX(dist));
+    events.forEach(function(e){if(e.kind==="match"){shield=Math.min(100,shield+6);coinScore+=3;document.getElementById("coins").textContent=coinScore;raceNotice("RESONANZ · Serie "+race.chain+(race.charge===3?" · Boost bereit!":""));beep(920,.08,"triangle",.05);}
+      else if(e.kind==="wrong"){shield=Math.max(0,shield-14);shake=Math.max(shake,.25);raceNotice("Falscher Pol · vor dem Tor wechseln");}else raceNotice("Tor verpasst · neue Serie möglich");});
+    raceHud();drawGates();raceAtmosphere(dt);if(noticeUntil&&now>noticeUntil)document.getElementById("gateNotice").classList.add("hide");
     // Hindernisse + Münzen entlang der Strecke spawnen
-    if(dist+200>spawnD){spawnThing();spawnD+=18+Math.random()*16;}
+    if(dist+200>spawnD){spawnThing();spawnD+=race.mode==="race"?100:18+Math.random()*16;}
     if(dist+200>coinSpawnD){spawnCoinRow();coinSpawnD+=24+Math.random()*22;}
     // Strecke zeichnen (Curbs + Tiles + Mittellinie + Kanten je Frame aus der Funktion)
     roadTex.offset.y=(dist/SP)%1; grassT.offset.y=(dist/SP*2)%1;   // Asphalt/Gras scrollt mit der Fahrt (mod 1 = lückenlos + präzise bei langer Distanz)
@@ -624,7 +691,7 @@ function loop(now){
       }
     }
     updSparks(dt);
-    if(shield<=0){shield=0;gameOver();}
+    if(shield<=0){shield=0;gameOver();}else if(race.mode==="race"&&dist>=PrismaRace.length){dist=PrismaRace.length;gameOver();}
     // HUD
     document.getElementById("spd").innerHTML=Math.floor(speed*3.0)+" <small>km/h</small>";
     document.getElementById("dist").textContent=Math.floor(dist);
@@ -640,13 +707,13 @@ function loop(now){
   fov+=(fovT-fov)*(1-Math.pow(0.9,dt*60)); camera.fov=fov; camera.updateProjectionMatrix();
   if(shake>0.001)shake*=Math.pow(0.86,dt*60); else shake=0;
   gridMesh.material.uniforms.uT.value=dist*0.02;
-  if(landscape)landscape.rotation.y=dist*0.0006; // Bergring dreht langsam mit = Fahrt durchs Tal
+  // Der ferne Bergring bleibt fest; nur nahe Streckendetails ziehen vorbei.
   updNature(); updGreen();
   sGlow.color.lerp(_cyan,1-Math.pow(0.92,dt*60)); // Farbe nach Boost/Treffer zurück zu Cyan
   camera.rotation.z=bank*0.3;
   renderBloom();
 }
-reset(); showBest(); requestAnimationFrame(loop);
+reset(); showBest(); profileHud(); requestAnimationFrame(loop);
 addEventListener("resize",function(){W=innerWidth;H=innerHeight;camera.aspect=W/H;camera.updateProjectionMatrix();renderer.setSize(W,H);rtScene.setSize(_dw(),_dh());bw=Math.max(1,_dw()>>1);bh=Math.max(1,_dh()>>1);rtA.setSize(bw,bh);rtB.setSize(bw,bh);});
 
 /* ===================== 🌲 Stations-Modus (Wildnis-Fusion): läuft als Iframe-Station in neon-wildnis =====================

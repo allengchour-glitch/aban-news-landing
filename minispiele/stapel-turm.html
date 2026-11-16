@@ -63,12 +63,12 @@
     <div style="width:70px"></div>
   </div>
   <div class="scores">
-    <div class="sc p1" id="sc1"><div class="n">🔴 Spieler 1</div><div class="v" id="v1">0</div></div>
-    <div class="sc p2" id="sc2"><div class="n">🔵 Spieler 2</div><div class="v" id="v2">0</div></div>
+    <div class="sc p1" id="sc1"><div class="n">🔴 Spieler 1</div><div class="v" id="v1">0</div><small id="precision1">Präzision 0,0%</small></div>
+    <div class="sc p2" id="sc2"><div class="n">🔵 Spieler 2</div><div class="v" id="v2">0</div><small id="precision2">Präzision 0,0%</small></div>
   </div>
   <div class="stage">
     <canvas id="cv"></canvas>
-    <div class="hint" id="hint">Tippe zum Platzieren!</div>
+    <div class="hint" id="hint">Tippe zum Platzieren! Bei gleicher Höhe zählt die Präzision.</div>
     <div class="overlay hidden" id="ov">
       <div class="big" id="ovEmoji">🏆</div>
       <h2 id="ovTitle">Runde</h2>
@@ -118,7 +118,7 @@
     baseW=Math.min(W*0.42,150);
     placedRounds=0;
     current=1;
-    v1.textContent="0"; v2.textContent="0";
+    v1.textContent="0"; v2.textContent="0";precisionHud();
     startTurn();
     ov.classList.add("hidden");
     raf=requestAnimationFrame(loop);
@@ -185,7 +185,7 @@
   function afterPlace(pl,missed){
     v1.textContent=towers[1].length;
     v2.textContent=towers[2].length;
-    placedRounds++;
+    precisionHud();placedRounds++;
     // kurze Pause dann nächster
     setTimeout(function(){
       if(placedRounds>=GAMEROUNDS){
@@ -197,20 +197,28 @@
     }, 520);
   }
 
+  function towerPrecision(pl){
+    var t=towers[pl];if(!t.length||!(baseW>0))return 0;
+    return Math.round(1000*t.reduce(function(n,b){return n+b.w;},0)/(t.length*baseW));
+  }
+  function precisionText(pl){
+    return (towerPrecision(pl)/10).toFixed(1).replace(".",",")+"%";
+  }
+  function precisionHud(){[1,2].forEach(function(pl){document.getElementById("precision"+pl).textContent="Präzision "+precisionText(pl);});}
   function endGame(){
     state="over"; moving=false;
     var a=towers[1].length, b=towers[2].length;
     var win;
-    if(a>b) win=1; else if(b>a) win=2; else win=0;
+    if(a>b) win=1; else if(b>a) win=2; else if(towerPrecision(1)>towerPrecision(2))win=1;else if(towerPrecision(2)>towerPrecision(1))win=2;else win=0;
     setTimeout(function(){
       if(win===0){
         ovEmoji.textContent="🤝";
         ovTitle.textContent="Unentschieden!";
-        ovText.textContent="Beide Türme "+a+" Blöcke hoch. Stark gebaut!";
+        ovText.textContent="Beide Türme "+a+" Blöcke hoch und "+precisionText(1)+" Präzision. Gleichauf!";
       } else {
         ovEmoji.textContent="🏆";
         ovTitle.textContent=(win===1?"🔴 Spieler 1":"🔵 Spieler 2")+" gewinnt!";
-        ovText.textContent="🔴 "+a+" Blöcke  vs.  🔵 "+b+" Blöcke";
+        ovText.textContent="🔴 "+a+" Blöcke · "+precisionText(1)+"  vs.  🔵 "+b+" Blöcke · "+precisionText(2)+(a===b?" — Präzision entscheidet!":" — Der höhere Turm gewinnt.");
       }
       ovBtn.textContent="🔁 Nochmal";
       ov.classList.remove("hidden");

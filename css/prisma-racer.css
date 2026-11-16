@@ -1,0 +1,229 @@
+/* Prisma: klare Instrumente und lesbare Polzeichen statt flächigem Glühen. */
+:root {
+  --pr-bg: #101923;
+  --pr-line: #58717a;
+  --pr-cyan: #71e4e8;
+  --pr-pink: #f4a2cd;
+  --pr-ink: #f3f2df;
+}
+.overlay {
+  z-index: 12;
+  background: linear-gradient(
+    160deg,
+    rgba(13, 27, 36, 0.97),
+    rgba(25, 25, 43, 0.94)
+  );
+  backdrop-filter: none;
+  color: var(--pr-ink);
+}
+.overlay h1 {
+  -webkit-text-fill-color: var(--pr-ink);
+  background: none;
+  letter-spacing: 0.08em;
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 7vw, 3.8rem);
+}
+.overlay p {
+  max-width: 520px;
+  color: #c4d2d4;
+}
+.tag {
+  color: var(--pr-cyan);
+}
+.btn {
+  min-height: 46px;
+  border-radius: 9px;
+  background: var(--pr-cyan);
+  box-shadow: none;
+}
+.btn.ghost {
+  border-color: var(--pr-line);
+  color: var(--pr-ink);
+  border-radius: 9px;
+}
+.panel,
+#shieldwrap {
+  background: rgba(13, 28, 36, 0.92);
+  border-color: var(--pr-line);
+  backdrop-filter: none;
+  box-shadow: none;
+  border-radius: 9px;
+}
+#raceModes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0;
+}
+#raceModes button {
+  font: 700 0.92rem system-ui;
+  min-height: 44px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--pr-line);
+  background: #1a2d38;
+  color: var(--pr-ink);
+}
+#raceModes button[aria-pressed="true"] {
+  border-color: var(--pr-cyan);
+  background: #2c4d55;
+}
+#prismaHud {
+  grid-column: 1/-1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 16px;
+  font-size: 0.86rem;
+  max-width: 560px;
+}
+#prismaProgress {
+  height: 5px;
+  width: 100%;
+  background: #2c3c49;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#prismaProgress i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--pr-cyan);
+}
+#polarityBtn,
+#chargeBtn {
+  position: fixed;
+  bottom: 22px;
+  min-height: 54px;
+  border: 2px solid var(--pr-cyan);
+  border-radius: 12px;
+  background: #182f3b;
+  color: var(--pr-ink);
+  font: 800 0.9rem system-ui;
+  z-index: 7;
+  padding: 9px 12px;
+  touch-action: manipulation;
+}
+#polarityBtn {
+  right: 18px;
+  min-width: 116px;
+}
+#chargeBtn {
+  right: 146px;
+  min-width: 104px;
+  border-color: #e8c77c;
+  color: #f1dca3;
+}
+#chargeBtn:disabled {
+  opacity: 0.55;
+}
+#polarityBtn[data-pol="1"] {
+  border-color: var(--pr-pink);
+  background: #392639;
+}
+#gateNotice {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 110px;
+  max-width: calc(100vw - 28px);
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(14, 29, 37, 0.92);
+  color: var(--pr-ink);
+  font-weight: 800;
+  text-align: center;
+  pointer-events: none;
+  z-index: 7;
+}
+#raceRecord {
+  font-size: 0.85rem;
+  color: #b4c9c5;
+}
+#raceSummary {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 450px;
+  color: #c4d2d4;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #f3ce83;
+  outline-offset: 3px;
+}
+@media (max-width: 560px) {
+  #polarityBtn {
+    right: 10px;
+    min-width: 108px;
+  }
+  #chargeBtn {
+    right: 128px;
+    min-width: 98px;
+  }
+  #brakeBtn {
+    left: 10px !important;
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 0.82rem !important;
+  }
+  #prismaHud {
+    gap: 5px 10px;
+    font-size: 0.78rem;
+  }
+  #hud {
+    gap: 5px;
+  }
+  #raceSummary {
+    font-size: 0.92rem;
+  }
+}
+@media (max-height: 440px) {
+  #hud {
+    grid-template-columns: auto auto auto;
+    padding-right: 66px;
+    max-width: 660px;
+  }
+  #hud .best {
+    grid-column: auto;
+  }
+  #shieldwrap {
+    grid-column: 1;
+  }
+  #prismaHud {
+    grid-column: 2/-1;
+  }
+  #prismaHud.panel {
+    padding: 5px 8px;
+  }
+  #gateNotice {
+    bottom: 88px;
+    font-size: 0.85rem;
+  }
+  #polarityBtn,
+  #chargeBtn {
+    bottom: 12px;
+    min-height: 48px;
+  }
+  #brakeBtn {
+    bottom: 12px !important;
+    width: 64px !important;
+    height: 64px !important;
+  }
+  .overlay {
+    padding: 14px;
+  }
+  .overlay h1 {
+    font-size: 2rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+  #boostFx {
+    transition: none;
+  }
+}
+
+#hud{right:auto;width:calc(100% - 66px);max-width:760px;padding-right:0}
