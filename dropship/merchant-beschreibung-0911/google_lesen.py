@@ -37,6 +37,7 @@ PAKET = int(os.environ.get('PAKET', '100'))  # Angebote je Abfrage von product_v
 NICHT_GELESEN = ('nicht_gefunden', 'nicht_im_kanal', 'nicht_im_shop', 'nicht_lesbar')
 # Kanal «Google & YouTube» in Shopify (wie automation/lib/gmc_schaufenster.mjs)
 GOOGLE_PUBLICATION = 'gid://shopify/Publication/302872297857'
+PILOT_ENDE = '2026-11-10T00:05:00Z'  # letzter Schreibzugriff des Pilots: 10.11. 00:01 UTC
 
 
 def gruppen(pids, pilot_gids):
@@ -234,7 +235,7 @@ def main():
     print(f'Pullover: {len(gruppe)} Produkte, davon Pilot {sum(1 for v in gruppe.values() if v == "pilot")}')
 
     shop, tok = netz.token()
-    q = ('query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product { id handle status descriptionHtml seo{ description } '
+    q = ('query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product { id handle status updatedAt descriptionHtml seo{ description } '
          f'gp: publishedOnPublication(publicationId: "{GOOGLE_PUBLICATION}") '
          'variants(first:3){ nodes{ legacyResourceId } } } } }')
     shopify, ids = {}, list(gruppe)
@@ -271,6 +272,7 @@ def main():
           f'(Probe {probe}: {"gefunden" if probe in views else "NICHT gefunden, Messgerät prüfen"})')
 
     z, beispiele, fehler = collections.Counter(), collections.defaultdict(list), collections.Counter()
+    spaeter = collections.Counter()  # Pilot-Produkte mit einer Shopify-Änderung nach dem Ende des Pilots, je Klasse
     for p, g in gruppe.items():
         n = shopify.get(p)
         if not n:
@@ -287,12 +289,15 @@ def main():
             continue
         k = einordnen(g, text, (n.get('seo') or {}).get('description') or '', klartext(n.get('descriptionHtml')))
         z[(g, k)] += 1
+        if g == 'pilot' and str(n.get('updatedAt') or '') > PILOT_ENDE:
+            spaeter[k] += 1
         if len(beispiele[(g, k)]) < BEISPIELE:
             beispiele[(g, k)].append((n.get('handle') or p, text))
     for zeile in bericht(z, beispiele):
         print(zeile)
     if fehler:
         print('Lesefehler products.get:', dict(fehler))
+    print(f'Pilot, in Shopify nach {PILOT_ENDE} noch einmal geändert (updatedAt), je Klasse: {dict(spaeter)}')
     u, gefunden = urteil(z)
     print(f'URTEIL: {u} (Pilot-Produkte bei Google gefunden und gelesen: {gefunden}; Regel: ab 80 % «pilot» bestätigt, '
           f'ab 50 % «werbezeile» nicht bestätigt)')
