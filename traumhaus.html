@@ -703,7 +703,8 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <script src="/js/vendor/peerjs.min.js"></script>
 <script src="/js/mp.js"></script>
 <link rel="stylesheet" href="/js/traumhaus-stadt.css?v=3">
-<script src="/js/traumhaus-stadt.js?v=3"></script>
+<script src="/js/traumhaus-stadt.js?v=4"></script>
+<script src="/js/traumhaus-stadtbild.js?v=1"></script>
 <link rel="stylesheet" href="/js/traumhaus-missionen.css?v=1">
 <script src="/js/traumhaus-missionen.js?v=1"></script>
 <script>
@@ -792,7 +793,7 @@ if(localStorage.getItem("th_filmlook")!=="0"){
      Laternen herausstechen. Die zweite Vignette (#vign) ist ersatzlos weg: zwei Vignetten
      uebereinander neutralisierten sich nur. */
   var _tint=document.createElement("div");_tint.id="tint";
-  _tint.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:2;mix-blend-mode:soft-light;transition:background 1.2s linear;background:rgba(217,119,6,.10)";
+  _tint.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:2;mix-blend-mode:soft-light;transition:background 1.2s linear;background:rgba(217,119,6,.035)";
   document.getElementById("wrap").appendChild(_tint);window._tint=_tint;window._tintDay=-1;
 }
 var _halmTexObj=null;
@@ -10614,13 +10615,10 @@ setTimeout(function baueGebaeude(){
        (User: „map ist noch zu klein"). Neuer Platz: Suedviertel hinter der Sued-Querstrasse,
        Positionen per Freiflaechen-Solver gegen Strassen + alle 68 Kollider geprueft. */
     (function altstadtPlatz(){ /* 🧱 Gepflasterter Platz + Gassen — die Gebaeude standen auf blanker Wiese */
-      var pfM=betMat(0xc4bcae,0.92);
-      if(typeof ladeTex==="function")ladeTex("textures/th5/kopfstein.png",23,17,function(t){pfM.map=t;pfM.color.setHex(0xffffff);pfM.needsUpdate=true;});
-      var pf=new THREE.Mesh(new THREE.PlaneGeometry(58,42),pfM); /* deckt Laden+Werkstatt mit ab, die sonst auf blanker Wiese standen */
-      pf.rotation.x=-Math.PI/2;pf.position.set(-26,-0.012,86);pf.receiveShadow=true;scene.add(pf);
+      /* Gleiches ruhiges Pflaster und gleicher Massstab wie auf den anderen Stadtplaetzen. */
+      _stadtBoden(58,42,-26,86,-0.012);
       /* Verbindungsweg zur Sued-Querstrasse (Band 53..63) */
-      var wg=new THREE.Mesh(new THREE.PlaneGeometry(6,6),pfM.clone());
-      wg.rotation.x=-Math.PI/2;wg.position.set(-26,-0.011,63.5);wg.receiveShadow=true;scene.add(wg);
+      _stadtBoden(6,6,-26,63.5,-0.011);
       /* Baeume + Baenke saeumen den Platz */
       /* ⚠️ VIER AHORNE, ZWEIMAL NACHGEMESSEN — der erste Anlauf hatte GERATEN.
          Befund: der Ahorn auf (-16|102) landete nicht reproduzierbar. Ueber drei
@@ -18329,7 +18327,7 @@ function mgTick(ts){
   if(MG.pos>=1){MG.pos=1;MG.dir=-1;}if(MG.pos<=0){MG.pos=0;MG.dir=1;}
   mgDraw();MG.raf=requestAnimationFrame(mgTick);}
 /* Grossstadt, gemeinsames Verkehrsnetz und ein befahrbarer Rundkurs. */
-var STADTLEBEN=null;
+var STADTLEBEN=null,STADTBILD=null;
 var STADT=null,stadtAutos=[],fahrGas=0,fahrBremse=0,stadtPedalReset=[],stadtUiT=0,stadtLodT=0;
 var OEV={ready:false,graph:null,stops:[],lines:[],ride:null,zeit:0};
 var RENNEN={an:false,start:0,t:0,schritte:0,strafe:0,best:0,tickAt:0,auto:null,ring:null};
@@ -18377,6 +18375,47 @@ function stadtInit(){
   _gpsFrei=null;_gpsStr=null;window._stadtWelt=STADT;window._stadtOev=OEV;
 }
 setTimeout(stadtInit,1800);
+/* Begruenung erst nach dem letzten Modell-Umbau platzieren. Strassen, Tueren und Missionsorte bleiben frei. */
+var stadtbildBesetzt=[];
+function stadtbildUmfeld(){
+  var box=new THREE.Box3(),matrix=new THREE.Matrix4(),welt=new THREE.Matrix4();stadtbildBesetzt=[];
+  function merken(b){if(!isFinite(b.min.x)||b.max.y-b.min.y<.45||b.min.y>6)return;stadtbildBesetzt.push({x0:b.min.x,x1:b.max.x,z0:b.min.z,z1:b.max.z});}
+  (window._gebaeude||[]).forEach(function(g){if(g.parent)merken(box.setFromObject(g));});
+  (window._instGruppen||[]).forEach(function(e){var m=e.m;if(!m.parent||!m.geometry)return;if(!m.geometry.boundingBox)m.geometry.computeBoundingBox();
+    for(var i=0;i<m.count;i++){m.getMatrixAt(i,matrix);welt.multiplyMatrices(m.matrixWorld,matrix);merken(box.copy(m.geometry.boundingBox).applyMatrix4(welt));}});
+  scene.children.forEach(function(g){if(g._ausBau||g._bewegt||g.isInstancedMesh||(!g.isGroup&&!g.isMesh))return;box.setFromObject(g);
+    if(box.max.x-box.min.x<=12&&box.max.z-box.min.z<=12)merken(box);});
+}
+function stadtbildFrei(x,z,r){
+  if(x<WELT.x0+r+10||x>WELT.x1-r-10||z<WELT.z0+r+10||z>WELT.z1-r-10)return false;
+  if(Math.abs(x)<GW*CS/2+r+4&&Math.abs(z)<GH*CS/2+r+4)return false;
+  if(window._aufStrasse&&window._aufStrasse(x,z,r+1))return false;
+  if(Math.abs(x)<125+r&&Math.abs(z-112)<5+r)return false;
+  if((window._parkplaetze||[]).some(function(p){return Math.abs(x-p.x)<p.w/2+r+1&&Math.abs(z-p.z)<p.d/2+r+1;}))return false;
+  if(window._seeUfer){var sx=x-(window._seeMitte?window._seeMitte.x:0),sz=z-(window._seeMitte?window._seeMitte.z:146),ufer=window._seeUfer(-Math.atan2(sz,sx)),seeD=Math.hypot(sx,sz);if(seeD<ufer+4.4+r+1)return false;}
+  if(STADT.plan.roads.some(function(s){return Traumstadt.projekt([x,z],s.a,s.b).d<s.w/2+r+1.2;}))return false;
+  if(Traumstadt.abstand([x,z],STADT.plan.track,true)<9+r)return false;
+  if(STADTLEBEN&&STADTLEBEN.crowd.some(function(c){return Traumstadt.abstand([x,z],c.path.points,false)<r+.6;}))return false;
+  if(WORLD_SOLIDS.some(function(s){return Math.abs(x-s.x)<s.hw+r+.7&&Math.abs(z-s.z)<s.hd+r+.7;}))return false;
+  if(stadtbildBesetzt.some(function(b){return Math.hypot(Math.max(b.x0-x,0,x-b.x1),Math.max(b.z0-z,0,z-b.z1))<r+.7;}))return false;
+  if(WORLD_POIS.some(function(p){return Math.hypot(x-p[0],z-p[1])<r+8;}))return false;
+  if(OEV.stops.some(function(s){return s.walk&&Math.hypot(x-s.walk.x,z-s.walk.z)<r+6;}))return false;
+  var E=STADT.plan.expansion;if(E&&['depot','garage','service','nordpark'].some(function(k){return Math.hypot(x-E[k][0],z-E[k][1])<r+10;}))return false;
+  for(var dx=-r;dx<=r+.01;dx+=Math.max(.5,r))for(var dz=-r;dz<=r+.01;dz+=Math.max(.5,r)){var a=x+dx,b=z+dz;if(imBau(a,b)||imWasser(a,b)||(window._bergHoehe&&Math.abs(window._bergHoehe(a,b))>.12))return false;}
+  return true;
+}
+function stadtbildInit(){
+  if(!window.TraumStadtbild||STADTBILD)return;
+  if(!STADT||window._ladeOffen!==0){setTimeout(stadtbildInit,1000);return;}
+  setTimeout(function(){if(STADTBILD)return;var names=['Kathedrale','Markthalle','Laden','Werkstatt','Stadthaus','Altstadt','Stadtpark','Brunnmatt','Seepark','Meer','Gewerbe Rietli','Bürgli','Neustadt','Burgdorf','Spielclub','Oststadt','Nordstadt','Nordpark'];
+    stadtbildUmfeld();var pois=WORLD_POIS.filter(function(p){return names.indexOf(p[3])!==-1;}).map(function(p){return {name:p[3],x:p[0],z:p[1]};});
+    STADT.plan.courtyards.forEach(function(p,i){var E=STADT.plan.expansion;if(['depot','garage','service','nordpark'].some(function(k){return Traumstadt.dist(p,E[k])<20;}))return;pois.push({name:'Nordstadthof '+(i+1),x:p[0],z:p[1],courtyard:true});});
+    STADTBILD=TraumStadtbild.create(THREE,scene,pois,stadtbildFrei);STADTBILD.placements.forEach(function(p){addSolid(p.x,p.z,p.w,p.d,null);});
+    _gpsFrei=null;_gpsStr=null;if(window._aufwaermenBald)window._aufwaermenBald();
+  },9000);
+}
+setTimeout(stadtbildInit,2000);
+
 function stadtGpsRoute(sx,sz,tx,tz){
   var g=OEV.graph;if(!g)return null;var a=-1,b=-1,da=Infinity,db=Infinity;g.nodes.forEach(function(p,i){var d=Math.hypot(p[0]-sx,p[1]-sz);if(d<da){da=d;a=i;}d=Math.hypot(p[0]-tx,p[1]-tz);if(d<db){db=d;b=i;}});
   if(a<0||b<0)return null;var weg=Traumstadt.route(g,a,b);if(!weg)return null;
@@ -18439,7 +18478,7 @@ function rennenTakt(dt){
     var q=RENNEN.ring.position;if(Math.hypot(p.x-q.x,p.z-q.z)<10&&off<9){RENNEN.schritte++;beep(800,.07,"triangle",.04);if(RENNEN.schritte>=16){rennenEnde(true);return;}rennenZiel();}}
 }
 function stadtTakt(dt,now){
-  if(!STADT)return;var me=spielerPos();if(STADTLEBEN)STADTLEBEN.tick(dt,me.x,me.z,LEBEN.ruhig);stadtLodT-=dt;if(stadtLodT<=0){stadtLodT=.5;STADT.tick(me.x,me.z,uhrzeit<360||uhrzeit>1140);OEV.stops.forEach(function(st){if(st.label){var nah=Math.hypot(st.p[0]-me.x,st.p[1]-me.z)<75;st.label.visible=nah;st.pole.visible=nah;}});}
+  if(!STADT)return;var me=spielerPos();if(STADTLEBEN)STADTLEBEN.tick(dt,me.x,me.z,LEBEN.ruhig);stadtLodT-=dt;if(stadtLodT<=0){stadtLodT=.5;if(STADTBILD)STADTBILD.tick(me.x,me.z,uhrzeit<360||uhrzeit>1140);STADT.tick(me.x,me.z,uhrzeit<360||uhrzeit>1140);OEV.stops.forEach(function(st){if(st.label){var nah=Math.hypot(st.p[0]-me.x,st.p[1]-me.z)<75;st.label.visible=nah;st.pole.visible=nah;}});}
   OEV.lines.forEach(function(line){var p=oevStand(line);line.stand=p;line.bus.mesh.position.set(p.x,.05,p.z);var da=((p.yaw-line.bus.mesh.rotation.y+Math.PI*3)%(Math.PI*2))-Math.PI;line.bus.mesh.rotation.y+=da*Math.min(1,dt*7);if(!p.halt)line.bus.wheels.forEach(function(w){w.rotation.x+=dt*35;});line.bus.mesh.visible=Math.hypot(p.x-me.x,p.z-me.z)<200;
     sims.forEach(function(s,si){if(s._oev===OEV.lines.indexOf(line)){s.x=p.x;s.z=p.z;s.mesh.visible=false;if(si===meinSi()){followSim=s;window._camHebung=1.2;if(OEV.ride&&OEV.ride.exit&&p.halt)oevAussteigen(si);}}});});
   stadtAutos.forEach(function(a){if(!a._npc||a.parked||a===driveCar)return;var p=Traumstadt.sample(a.pfad,(Date.now()/1000*7+a.phase)%a.pfad.length);a.mesh.position.set(p.x,.05,p.z);var da=((p.yaw-a.mesh.rotation.y+Math.PI*3)%(Math.PI*2))-Math.PI;a.mesh.rotation.y+=da*Math.min(1,dt*8);a.mesh.visible=Math.hypot(p.x-me.x,p.z-me.z)<190;});
@@ -20236,7 +20275,8 @@ function loop(now){
        ⚠️ NICHT WEITER RUNTER. Ein Viertel (0,07/0,03) sah im Bild noch etwas besser aus,
        aber ueber diesem Kommentar steht die Beschwerde „man sieht nichts" — die Nacht war
        schon einmal zu dunkel. Wer sie wieder heller will, aendert genau die 0,13. */
-    sun.intensity=(0.10+dayA*0.82)*wDim;hemi.intensity=0.13+dayA*0.44;
+    /* Stadtbild: tags mehr gerichtetes Licht, weniger gleichmaessiger Schleier; Nacht-Sockel unveraendert. */
+    sun.intensity=(0.10+dayA*1.00)*wDim;hemi.intensity=0.13+dayA*0.34;
     hemi.groundColor.setRGB(0.22+dayA*0.13,0.24+dayA*0.13,0.25+dayA*0.11); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
     sun.color.setHex(0xfff5e7);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
@@ -20246,7 +20286,7 @@ function loop(now){
        lag alles ausserhalb der Box und wurde komplett schwarz (User-Screenshot).
        Licht UND Ziel wandern jetzt mit der Kamera mit, die Box ist immer um den Spieler. */
     _sonneAufKamera(camTx,camTz,Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,18); // tiefer bei Daemmerung -> lange Schatten
-    renderer.toneMappingExposure=(0.62+dayA*0.30)*wDim; // 0.34 war zu dunkel zum Spielen
+    renderer.toneMappingExposure=0.62+dayA*0.34*(wetter==="sonne"?1:.86); // Wetter dimmt das Sonnenlicht, nicht nochmals den Nacht-Sockel.
     /* 🌙 DIE NACHT WAR TAGHELL — und diese eine Zeile war der Grund.
        `scene.environmentIntensity` gibt es erst ab three.js r163; geladen ist
        r128. Die `undefined`-Abfrage hat die Abdunklung darum still uebersprungen,
@@ -20288,7 +20328,7 @@ function loop(now){
        heller und waermer als der Himmel. */
     scene.fog.color.copy(skyC).lerp(new THREE.Color(0xffe9c4),0.12);
     if(window._tint&&Math.abs(dayA-window._tintDay)>0.05){window._tintDay=dayA;
-      window._tint.style.background=dayA>0.5?"rgba(217,119,6,.10)":"rgba(28,44,84,.16)";}
+      window._tint.style.background=dayA>0.5?"rgba(217,119,6,.035)":"rgba(28,44,84,.16)";}
     /* Kuppel und Wolken mit dem Tageslauf mitfuehren. Die Kuppeltextur ist grau,
        die Farbe traegt also den ganzen Verlauf — eine Zuweisung pro Bild. */
     if(window._skyDome)window._skyDome.material.color.copy(skyC).multiplyScalar(1.12);
