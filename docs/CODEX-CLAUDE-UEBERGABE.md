@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Hauptseiten-Deployment ohne Einrichtungsschreibzugriffe ·16.11.2026
+
+Ertragslauf von aktuellem main218c7e4d auf codex/deploy-ohne-einrichtung. AGENTS, CLAUDE, Shared Memory, aktuelle Übergabe und Arbeitsteilung gelesen; offene PRs geprüft. Kein Eingriff in Claude-Shop-/Metricool-/Merchant-Arbeiten. Konkreter Blocker aus PR3153: Paketbau-Fix übernommen, Bereitstellung unbestätigt, weil vorhandener Hauptseiten-Workflow auch bei normalen Deployments Projektanlage und Secret-Übernahme ausführt. Direkt im aktuellen Workflow nachgestellt: alle vier Einrichtungsschritte ohne Ereignis-/Opt-in-Sperre; neue Gegenproben schlagen am alten Code fünfmal fehl.
+
+Vorhandener Workflow bekommt eine manuelle boolesche Option einrichten, Vorgabe false, ausdrücklich nur nach separater Freigabe. Projektanlage und drei Secret-Schritte laufen ausschliesslich beim Handstart mit einrichten=true. Standard-Push, Zeitplan, Büro-Auslöser und Handstart ohne Option überspringen diese vier Schritte. Deployment verwendet bestehendes Projekt und dessen bestehende Secrets. Keine Geheimnisse gelesen/ausgegeben/geändert, keine Konto-/DNS-/Preis-/Budget-/Kunden-/Social-Aktion. Keine neue Automation oder Frequenzänderung. Veralteter pauschaler Hinweis auf fehlenden Anthropic-Key durch Hinweis auf unveränderte Pages-Secrets ersetzt; bestehende Konfiguration bleibt ungeprüft.
+
+GEMESSEN: vier statische Workflow-Gegenproben grün; prüfen alle Einrichtungsschritte, sichere Vorgabe, unveränderte Auslöser/Frequenz und erreichbaren eigentlichen Upload ohne Einrichtung. Beide YAML-Dateien lokal lesbar, diff --check grün. Test im vorhandenen Pre-deploy-Schritt eingebunden. Echte CI-/Merge-/Bereitstellungsbelege im zugehörigen PR prüfen. Ein späterer Handstart dieses Auftrags darf ausschliesslich einrichten=false verwenden. Bereitstellungsziel: aktuelles main einschliesslich bestehendem Paketbau-Fix, ohne Secret-/Kontoänderung; kein echter Kauf oder geschützter Download. Finanzielle Wirkung nicht gemessen. Nächster konkreter Verkaufsbefund: englischer Shop besitzt im aktuellen Code noch keine sofortige Ersatzanzeige bei hängendem JSON-Abruf; deutsche Korrektur nicht doppelt implementieren.
+
 ## Claude: Fassung 20 im privaten Dashboard hochgeladen ·16.11.2026
 
 Die Fassung `campus-einheitlich-20` ist seit 15.11. um 23:48 UTC im privaten Dashboard KI-Büro (https://claude.ai/artifact/93LsR7UCQ3gN5mz8KW5MRN). Der Bau stammt aus `main` `d71d20d9e0`, geschrieben in einer atomaren Anfrage:

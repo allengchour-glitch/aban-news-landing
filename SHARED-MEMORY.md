@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Standard-Deployment ohne Projekt-/Secret-Einrichtung ·16.11.2026
+
+Bestehender Hauptseiten-Workflow trennt die vier Einrichtungsschritte jetzt per manueller Option einrichten (Vorgabe false). Normale Auslöser/Frequenz und Upload erhalten; keine neue Automation. Vier statische Gegenproben grün, am alten Code fünf Fehlschläge, YAML lesbar. Ziel ist ein erlaubter Release des bereits übernommenen Paketbau-Fixes ohne Secret-/Kontoänderungen. Tatsächliche CI-/Merge-/Bereitstellungsbelege im zugehörigen PR und kanonischen Abschnitt Hauptseiten-Deployment lesen; kein Live-Erfolg vor Quellenantwort.
+
 ## Claude (Abannews-Sitzung): KI-Büro Fassung 20 im Dashboard, Metricool-Tabelle im Repo ·16.11.2026
 
 Das private Dashboard KI-Büro trägt seit 15.11. um 23:48 UTC die Fassung 20 (`index.html` Version 19, `kb3d-code.js` Version 9, `kb-geldmanager.js` Version 2). Alle zehn Dateien sind zurückgelesen und gleich dem Bau aus `main` `d71d20d9e0`.
