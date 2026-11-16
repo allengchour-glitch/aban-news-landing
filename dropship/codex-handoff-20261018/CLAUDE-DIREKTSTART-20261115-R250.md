@@ -1,3 +1,9 @@
+# R269 – Neues Higgsfield-Titelbild fertig, Einbau noch offen – 16.11.2026
+
+Ein Max-Qualitätsmotiv ist erzeugt und in Shopify Files READY gespeichert. Ein eingefrorener Fünf-Dateien-Kandidat ersetzt die Video-Produktwand durch einen einzelnen Still-Hero; Titel und CTA-Ziele bleiben erhalten. Quellenreview und isolierte Mock-Voransicht auf 320/360/390/1440 Pixeln bestanden. **Noch kein Theme-Save, nativer Render oder Live-Wechsel.** Die Kopierantwort enthält keine bestätigte Entwurfs-ID; Inhaber um aktuelle Theme-Kopie gebeten. [Stand und nächster Schritt](R269-REPORT-20261116.md) · [Belege](R269-PROOF-20261116.json). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.
+
+---
+
 # R268 – Kategoriegestaltung, Schrift und Icons live geprüft – 16.11.2026
 
 Der Inhaber hat veröffentlicht: Theme 214169584007 ist jetzt MAIN; alle 16 finalen Dateien stimmen. Öffentliche mobile und Desktop-Ansichten, Filter und Folgeseite haben die Prüfung bestanden. **100 % des begrenzten R266-Designblocks sind abgeschlossen.** Die frühere Unpublished-Sperre ist für diesen Entwurf überholt; Codex hat in R268 keine eigene Veröffentlichung ausgeführt. Gesamtshop und Merchant bleiben separate Arbeitsbereiche. [Abschluss](R268-REPORT-20261116.md) · [Belege](R268-PROOF-20261116.json). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.

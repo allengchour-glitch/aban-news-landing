@@ -1,0 +1,19 @@
+{
+  "status": "PASS_LOCAL_CONTRACTS",
+  "schemaParses": true,
+  "uniqueSettings": true,
+  "heroCopyAndCTAByteIdentical": true,
+  "belowHeroMarkupByteIdentical": true,
+  "stillPathNoVideoOrToggleOrJSOwner": true,
+  "oneResponsiveDecorativeImage": true,
+  "externalWrites": 0,
+  "officialThemeCheck": "NOT_RUN",
+  "browserQA": "CONFIRMED_MOCK_ONLY",
+  "allFinalCandidateHashesMatch": true,
+  "noPendingAssetPlaceholder": true,
+  "explicitNativeImageStyleUsesViewportVariable": true,
+  "noCSSSelfReference": true,
+  "mobileCoverSrcsetAccountsForHeight": true,
+  "nativeThemeSave": "NOT_CONFIRMED",
+  "nativeLiquidRender": "NOT_CONFIRMED"
+}

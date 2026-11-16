@@ -1,0 +1,30 @@
+{
+  "scope": "LOCAL DOM ONLY: exact candidate fragment/CSS, every browser request blocked; no network read or Shopify editor interaction.",
+  "inputHashes": {
+    "heroHTML": "ace32107bb5a45ff7c4738456576e751d5cc18051719d423222fa89b61ebda9e",
+    "css": "ae81c8f3164008b336e574a0c64733641a8bc5257e01504c2644e2fd40ce6b7d"
+  },
+  "cases": [
+    {
+      "mobileFocalX": 65,
+      "computedObjectPosition": "65% 40%",
+      "passed": true
+    },
+    {
+      "mobileFocalX": 25,
+      "computedObjectPosition": "25% 40%",
+      "passed": true
+    },
+    {
+      "mobileFocalX": 65,
+      "computedObjectPosition": "65% 40%",
+      "passed": true
+    }
+  ],
+  "networkRequests": 0,
+  "desktop": {
+    "computedObjectPosition": "50% 40%",
+    "passed": true
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,208 @@
+--- MAIN/sections/luxe-edit-home.liquid
++++ DRAFT/sections/luxe-edit-home.liquid
+@@ -29,12 +29,19 @@
+   </header>
+   {% endunless %}
+   {% if lx_standard_home %}<div id="lx-content">{% else %}<main id="lx-content">{% endif %}
+-    <section class="lx-hero lx-background-hero" aria-labelledby="lx-hero-title">
++    {% assign lx_campaign_image = section.settings.hero_campaign_image %}
++    <section class="lx-hero lx-background-hero{% if lx_campaign_image != blank %} lx-campaign-hero{% endif %}" aria-labelledby="lx-hero-title"{% if lx_campaign_image != blank %} style="--lx-campaign-focus: {{ lx_campaign_image.presentation.focal_point | default: '50% 40%' }}; --lx-campaign-mobile-x: {{ section.settings.hero_campaign_mobile_focus | default: 65 }}%;"{% endif %}>
++      {% if lx_campaign_image != blank %}
++        <div class="lx-campaign-hero__media" aria-hidden="true">
++          {{ lx_campaign_image | image_url: width: 3504 | image_tag: widths: '540, 750, 960, 1200, 1600, 2000, 2560, 3200, 3504', sizes: '(min-width: 1600px) calc(100vw - 96px), (min-width: 1051px) 94vw, (min-width: 761px) 1230px, 960px', loading: 'eager', fetchpriority: 'high', decoding: 'async', alt: '', style: 'object-position: var(--lx-campaign-object-position);' }}
++        </div>
++      {% else %}
+       <div class="lx-background-hero-media" data-hero-media>
+         <img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-wand-0811-poster.jpg?v=1794177208" width="1296" height="1800" loading="eager" fetchpriority="high" alt="{{ 'luxe_home.hero.video_description' | t | escape }}">
+         <video muted playsinline loop preload="none" data-hero-video data-src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-wand-0811.mp4?v=1794177202" poster="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-wand-0811-poster.jpg?v=1794177208" aria-hidden="true" tabindex="-1"></video>
+         <button type="button" class="lx-hero-video-control" data-hero-toggle data-play-label="{{ 'luxe_home.hero.play' | t | escape }}" data-pause-label="{{ 'luxe_home.hero.pause' | t | escape }}" hidden>{{ 'luxe_home.hero.play' | t }}</button>
+       </div>
++      {% endif %}
+       <div class="lx-hero-copy">
+         <p class="lx-eyebrow">{{ 'luxe_home.sch_nes_f_r_deinen_alltag_14a23' | t }}</p>
+         <h1 id="lx-hero-title">{{ 'luxe_home.hero.heading_first' | t }}<br><em>{{ 'luxe_home.hero.heading_second' | t }}</em></h1>
+@@ -616,10 +623,128 @@
+   </script>
+ </div>
+ 
++{% stylesheet %}
++  /* One still campaign image. The modifier also outranks the older hero asset rules. */
++  .lx-home .lx-background-hero.lx-campaign-hero {
++    min-block-size: clamp(600px, 73svh, 820px);
++    background: var(--lx-ink);
++    color: var(--lx-cream);
++  }
++  .lx-home .lx-campaign-hero__media {
++    --lx-campaign-object-position: var(--lx-campaign-focus, 50% 40%);
++    position: absolute;
++    inset: 0;
++    z-index: 0;
++    overflow: hidden;
++  }
++  .lx-home .lx-campaign-hero__media img {
++    inline-size: 100%;
++    block-size: 100%;
++    object-fit: cover;
++    object-position: var(--lx-campaign-object-position);
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero::before {
++    content: '';
++    position: absolute;
++    inset: 0;
++    z-index: 1;
++    pointer-events: none;
++    background: linear-gradient(90deg, rgb(18 15 11 / .84) 0%, rgb(18 15 11 / .67) 31%, rgb(18 15 11 / .28) 62%, rgb(18 15 11 / .06) 100%);
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy {
++    position: relative;
++    z-index: 2;
++    inline-size: min(76%, 960px);
++    min-inline-size: 0;
++    min-block-size: inherit;
++    justify-content: center;
++    padding: clamp(40px, 5.5vw, 88px);
++    background: transparent;
++    color: var(--lx-cream);
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-eyebrow {
++    color: var(--lx-cream);
++    font-size: 11px;
++    letter-spacing: .19em;
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero h1 {
++    max-inline-size: 100%;
++    margin: 24px 0;
++    color: var(--lx-cream);
++    font-size: clamp(64px, 7.4vw, 116px);
++    line-height: 1;
++    letter-spacing: -.045em;
++    text-wrap: balance;
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero h1 em { color: #e9d7ba; }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-description {
++    max-inline-size: 38ch;
++    color: var(--lx-cream);
++    font-size: 16px;
++    line-height: 1.65;
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-actions { margin-block-start: 30px; gap: 14px 22px; }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-button {
++    min-block-size: 54px;
++    padding: 16px 22px;
++    border-color: var(--lx-cream);
++    border-radius: 12px;
++    background: var(--lx-cream);
++    color: var(--lx-ink) !important;
++    font-size: 13px;
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-text-link { color: var(--lx-cream); font-size: 13px; }
++  .lx-home .lx-background-hero.lx-campaign-hero a:focus-visible {
++    outline: 3px solid var(--lx-cream);
++    outline-offset: 5px;
++    box-shadow: 0 0 0 7px var(--lx-ink);
++  }
++  @media (min-width: 761px) and (max-width: 1050px) {
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy { inline-size: 86%; padding: 48px; }
++    .lx-home .lx-background-hero.lx-campaign-hero h1 { font-size: clamp(58px, 7.2vw, 76px); }
++  }
++  @media (max-width: 760px) {
++    .lx-home .lx-background-hero.lx-campaign-hero { min-block-size: clamp(490px, calc(100svh - 330px), 600px); }
++    .lx-home .lx-campaign-hero__media { --lx-campaign-object-position: var(--lx-campaign-mobile-x, 65%) 40%; }
++    .lx-home .lx-background-hero.lx-campaign-hero::before {
++      background: linear-gradient(180deg, rgb(18 15 11 / .02) 0%, rgb(18 15 11 / .08) 25%, rgb(18 15 11 / .42) 44%, rgb(18 15 11 / .9) 70%, rgb(18 15 11 / .98) 100%);
++    }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy {
++      inline-size: 100%;
++      justify-content: flex-end;
++      padding: 180px 24px 28px;
++    }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-eyebrow { font-size: 9px; letter-spacing: .16em; }
++    .lx-home .lx-background-hero.lx-campaign-hero h1 { margin: 14px 0 16px; font-size: clamp(35px, 10vw, 54px); letter-spacing: -.04em; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-description { font-size: 14px; line-height: 1.6; max-inline-size: 37ch; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-actions { gap: 10px 14px; margin-block-start: 22px; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-button { min-block-size: 50px; padding: 14px 16px; gap: 16px; font-size: 12px; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-text-link { min-block-size: 48px; gap: 8px; font-size: 12px; }
++  }
++  @media (max-width: 359px) {
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy { padding-inline: 18px; }
++    .lx-home .lx-background-hero.lx-campaign-hero h1 { font-size: 33px; }
++  }
++  @media (forced-colors: active) {
++    .lx-home .lx-background-hero.lx-campaign-hero { background: Canvas; color: CanvasText; }
++    .lx-home .lx-background-hero.lx-campaign-hero::before { display: none; }
++    .lx-home .lx-campaign-hero__media { display: none; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy,
++    .lx-home .lx-background-hero.lx-campaign-hero h1,
++    .lx-home .lx-background-hero.lx-campaign-hero h1 em,
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-eyebrow,
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-description,
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-text-link { color: CanvasText; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-button { background: ButtonFace; border-color: ButtonText; color: ButtonText !important; }
++  }
++{% endstylesheet %}
++
+ {% schema %}
+ {
+   "name": "LuxeStyle – Editorial",
+   "settings": [
++    {"type":"image_picker","id":"hero_campaign_image","label":"t:lx_campaign_hero.image_label","info":"t:lx_campaign_hero.image_info"},
++    {"type":"range","id":"hero_campaign_mobile_focus","label":"t:lx_campaign_hero.mobile_focus_label","min":0,"max":100,"step":1,"unit":"%","default":65},
+     {"type":"product_list","id":"more_products","label":"Weitere Produkte","limit":8},
+     {"type":"header","content":"t:luxe_world_cards.heading"},
+     {"type":"color","id":"worlds_text_color","label":"t:luxe_world_cards.text_color","default":"#ffffff"},
+--- MAIN/locales/en.default.schema.json
++++ DRAFT/locales/en.default.schema.json
+@@ -8,6 +8,12 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "lx_campaign_hero": {
++    "image_label": "Homepage campaign image",
++    "image_info": "One still campaign image. Set its focal point in the image editor. Leaving this empty retains the previous hero.",
++    "mobile_focus_label": "Mobile image focus (horizontal)"
++  },
++
+   "lx_welten": {
+     "section_name": "Category landing",
+     "details_section_name": "Collection details",
+--- MAIN/locales/de.schema.json
++++ DRAFT/locales/de.schema.json
+@@ -8,6 +8,12 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "lx_campaign_hero": {
++    "image_label": "Titelbild der Startseite",
++    "image_info": "Ein einzelnes Kampagnenbild. Den Bildfokus kannst du im Bildeditor setzen. Ohne Bild bleibt der bisherige Aufmacher.",
++    "mobile_focus_label": "Bildfokus auf dem Handy (horizontal)"
++  },
++
+   "lx_welten": {
+     "section_name": "Kategoriesystem",
+     "details_section_name": "Kollektionsdetails",
+--- MAIN/locales/fr.schema.json
++++ DRAFT/locales/fr.schema.json
+@@ -8,6 +8,12 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "lx_campaign_hero": {
++    "image_label": "Image principale de la page d’accueil",
++    "image_info": "Une seule image de campagne. Réglez son point focal dans l’éditeur d’image. Sans image, la présentation précédente est conservée.",
++    "mobile_focus_label": "Point focal sur mobile (horizontal)"
++  },
++
+   "lx_welten": {
+     "section_name": "Page de catégorie",
+     "details_section_name": "Détails de la collection",
+--- MAIN/templates/index.json
++++ DRAFT/templates/index.json
+@@ -12,6 +12,8 @@
+     "luxe_home": {
+       "type": "luxe-edit-home",
+       "settings": {
++        "hero_campaign_image": "shopify://shop_images/luxe-atelier-hero-r269.webp",
++        "hero_campaign_mobile_focus": 65,
+         "more_products": [
+           "led-leucht-brustgeschirr-reissfest-933632",
+           "handgemachte-3d-liebesnagel-blue-ice-652096",

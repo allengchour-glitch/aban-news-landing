@@ -1,0 +1,77 @@
+{
+  "task": "R269 Hero-Quellenprüfung",
+  "scope": "Nur gezielte native Leseabfragen und lokale Quellkopien; keine externen Writes.",
+  "theme": {
+    "id": "214169584007",
+    "role": "MAIN",
+    "updatedAt": "2026-11-16T19:42:08Z"
+  },
+  "activeTemplate": {
+    "path": "templates/index.json",
+    "sectionId": "luxe_home",
+    "sectionType": "luxe-edit-home",
+    "order": [
+      "luxe_home",
+      "luxe_reviews"
+    ]
+  },
+  "currentHero": {
+    "sectionPath": "sections/luxe-edit-home.liquid",
+    "lines": "32–47",
+    "isCarousel": false,
+    "isVideoProductWall": true,
+    "poster": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-wand-0811-poster.jpg?v=1794177208",
+    "video": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-wand-0811.mp4?v=1794177202",
+    "heading": [
+      "Schön leben.",
+      "Schlau shoppen."
+    ],
+    "description": "Mode, Wohnen, Geschenke und mehr. Entdecke deine nächste Lieblingsidee.",
+    "ctas": [
+      {
+        "label": "Alle Kategorien",
+        "liquid": "{{ pages['alle-kategorien'].url }}",
+        "defaultGermanPath": "/pages/alle-kategorien"
+      },
+      {
+        "label": "Selbst gestalten",
+        "liquid": "{{ lx_design_url }}",
+        "defaultGermanPath": "/collections/selbst-gestalten-1?view=luxe-gestalten"
+      }
+    ]
+  },
+  "contracts": {
+    "heroCurrentlyHasImagePicker": false,
+    "existingSchema": "more_products plus worlds image pickers; preserve all IDs and saved settings.",
+    "cssPath": "assets/luxe-edit.css",
+    "cssSource": "Included by layout/theme.liquid only on standard index; relevant hero overrides lines133–159 plus mobileheight lines262–265.",
+    "desktopMediaWidth": "54%; copy57%; min-height640px",
+    "mobileMediaWidth": "100%; layered copy/gradient; final mobile min-height clamp(430px,calc(100svh - 372px),560px)",
+    "jsPath": "assets/luxe-edit.js",
+    "jsRisk": "Presence of data-hero-media immediately assumes data-hero-video and data-hero-toggle exist. A still image wrapper must omit data-hero-media or JS must guard both video and toggle; otherwise null dereference can break later dialog setup.",
+    "otherCarousels": "Inline product row carousels target .lx-trends-grid/.lx-edit-product-grid and are independent. Do not remove them for a hero-only request."
+  },
+  "minimalChange": {
+    "files": [
+      "sections/luxe-edit-home.liquid",
+      "templates/index.json",
+      "locales/de.schema.json",
+      "locales/en.default.schema.json",
+      "locales/fr.schema.json"
+    ],
+    "approach": "Add one hero image_picker and its translated schema label. Selected image renders a semantic responsive image, no video/control or data-hero-media. Keep existing heading/CTA/localized URLs, header, categories and products. Place scoped hero style overrides alongside the section rather than changing unrelated base assets. Empty image setting may preserve the known current fallback; an assigned image must result in a still hero only.",
+    "assetContract": "Use Shopify image resource with responsive widths and focal point; chosen master file URL is pending Root generation/upload."
+  },
+  "sourceEvidence": {
+    "metadata": "source/source-readback-metadata.json",
+    "copies": 11,
+    "nativeMd5Matches": 10,
+    "note": "config/settings_data.json returned API body representation differs from native checksum metadata; original returned body was copied exactly, but no native raw-MD5 identity claim for that one JSON file."
+  },
+  "workflow": {
+    "themeBash": "Root freshly found down/operation_not_allowed; no blind retry by source agent.",
+    "historicalDraft": "R262 legitimately duplicated former MAIN to214169584007; that draft is now published MAIN by owner.",
+    "historicalPublishConstraint": "R262 dedicated publisher rejected that duplicate: Only agent-created themes can be published here. Duplicating alone does not prove a future theme is publishable.",
+    "writes": "No theme duplicate/create/upsert/publish, no workflow dispatch, no installs or Git writes executed by this source agent."
+  }
+}

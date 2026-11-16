@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 268,
-  "updatedAt": "2026-11-16T19:48:02Z",
+  "revision": 269,
+  "updatedAt": "2026-11-16T20:54:37Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-16",
     "currentDayEvidenceKind": "R255 Produkttexte, native Reads und öffentliche/mobile QA",
-    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R260: Fünf bestätigte Writes an drei Produkten (3Text/SEO+1Bodyüberschrift+1Optionsname) mit nativer und öffentlicher/mobiler Prüfung; drei weitere Quellenblocker. Keine Kennzahl-/Flow-/GSC-/Bestellwatch-Wiederholung. R261: Acht Shopify-Mutationen (3Produkttexte/SEO,6Medienrelationen in1Batch,2CollectionWrites inkl.Titelwiederherstellung,1responsiveBodykorrektur,8Alttexte in1Batch) nativ/öffentlich geprüft. Ein gezielter Merchantfall und zwei aktuelle Theme-Dateien nur gelesen. Keine MetricoolKennzahl-/Klaviyo-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R262:2ProdukttexteSEO+1FormOptionsname nativ/öffentlich geprüft;3CJDetailreads. Theme555DateiennativeBaseline/fünfPreviewfälle,Publishverweigert. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinMerchantReadWrite. R263:4ProdukttexteSEO+2Optionsnamen nativ/öffentlich/mobil geprüft;4CJDetailreads,4kleineSuchen. Ein gezielterMerchantBildverarbeitungsfall ohneWrite. ThemerollenweiterUNPUBLISHED/MAINunverändert. AstraSchlussprüfung. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinSocial/Automation. R264:2ProdukttexteSEO+1DekorInhaltOptionsname nativ/öffentlich/mobil,AstraFaktengeprüft;4kleineSuchen/3CJDetails,1Badregalquellenblocker. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch/Merchantwiederholung;keinSocial/Automation/Higgsfieldrender. R265: Lokale Korrektur der Produktlink-Erkennung mit 184 Prüfungen und 67 von 67 erkannten Mutationen; Patch nicht in die operative Automation übernommen oder veröffentlicht. QA-Helfer nach unabhängiger Prüfung korrigiert; 18 Offline-Tests und Root-Gegenprüfung bestanden, nicht öffentlich ausgeführt. Tasche 15507734135169 bleibt wegen unbekannter exakter Lieferantenvarianten-Zuordnung blockiert. Keine Shop-, Theme-, Metricool- oder Merchant-Änderung; keine Tagesreports, Bestell- oder Kundenabfragen. R266 läuft; Ergebnis offen. R266: Kategorieseiten, Schriften und Icons im Entwurf gespeichert und eng geprüft; drei Theme-Commits, keine MAIN-Veröffentlichung. Metricool nur Identitäten und acht kleine Planungsreads; keine Kennzahlen/Klaviyo/Orders wiederholt. Ton-/Master-/Ledgerblocker bleiben erhalten. R267: Frische Shop-/Themerollen-/Pending-/16Dateiprüfung für Liveabschluss; keine Veröffentlichung, kein Publish-Retry, keine Kennzahl-, Klaviyo- oder Bestellabfrage. R268: Nach der Nutzerveröffentlichung MAIN und 16 Dateien gegengeprüft; vier öffentliche Live-Einstiege plus Desktop, AJAX-Filter und Zurücksetzen bestanden. 100 % des R266-Designblocks. Keine eigene Theme- oder Social-Publikation und keine Kennzahl-, Klaviyo- oder Bestellwatch-Wiederholung.",
+    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R260: Fünf bestätigte Writes an drei Produkten (3Text/SEO+1Bodyüberschrift+1Optionsname) mit nativer und öffentlicher/mobiler Prüfung; drei weitere Quellenblocker. Keine Kennzahl-/Flow-/GSC-/Bestellwatch-Wiederholung. R261: Acht Shopify-Mutationen (3Produkttexte/SEO,6Medienrelationen in1Batch,2CollectionWrites inkl.Titelwiederherstellung,1responsiveBodykorrektur,8Alttexte in1Batch) nativ/öffentlich geprüft. Ein gezielter Merchantfall und zwei aktuelle Theme-Dateien nur gelesen. Keine MetricoolKennzahl-/Klaviyo-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R262:2ProdukttexteSEO+1FormOptionsname nativ/öffentlich geprüft;3CJDetailreads. Theme555DateiennativeBaseline/fünfPreviewfälle,Publishverweigert. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinMerchantReadWrite. R263:4ProdukttexteSEO+2Optionsnamen nativ/öffentlich/mobil geprüft;4CJDetailreads,4kleineSuchen. Ein gezielterMerchantBildverarbeitungsfall ohneWrite. ThemerollenweiterUNPUBLISHED/MAINunverändert. AstraSchlussprüfung. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinSocial/Automation. R264:2ProdukttexteSEO+1DekorInhaltOptionsname nativ/öffentlich/mobil,AstraFaktengeprüft;4kleineSuchen/3CJDetails,1Badregalquellenblocker. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch/Merchantwiederholung;keinSocial/Automation/Higgsfieldrender. R265: Lokale Korrektur der Produktlink-Erkennung mit 184 Prüfungen und 67 von 67 erkannten Mutationen; Patch nicht in die operative Automation übernommen oder veröffentlicht. QA-Helfer nach unabhängiger Prüfung korrigiert; 18 Offline-Tests und Root-Gegenprüfung bestanden, nicht öffentlich ausgeführt. Tasche 15507734135169 bleibt wegen unbekannter exakter Lieferantenvarianten-Zuordnung blockiert. Keine Shop-, Theme-, Metricool- oder Merchant-Änderung; keine Tagesreports, Bestell- oder Kundenabfragen. R266 läuft; Ergebnis offen. R266: Kategorieseiten, Schriften und Icons im Entwurf gespeichert und eng geprüft; drei Theme-Commits, keine MAIN-Veröffentlichung. Metricool nur Identitäten und acht kleine Planungsreads; keine Kennzahlen/Klaviyo/Orders wiederholt. Ton-/Master-/Ledgerblocker bleiben erhalten. R267: Frische Shop-/Themerollen-/Pending-/16Dateiprüfung für Liveabschluss; keine Veröffentlichung, kein Publish-Retry, keine Kennzahl-, Klaviyo- oder Bestellabfrage. R268: Nach der Nutzerveröffentlichung MAIN und 16 Dateien gegengeprüft; vier öffentliche Live-Einstiege plus Desktop, AJAX-Filter und Zurücksetzen bestanden. 100 % des R266-Designblocks. Keine eigene Theme- oder Social-Publikation und keine Kennzahl-, Klaviyo- oder Bestellwatch-Wiederholung. R269: Ein Higgsfield-Bild und Shopify-Dateiupload, lokale Hero-Vorbereitung mit Quellenreview und isolierter Mock-QA. Keine Theme-Datei gespeichert oder veröffentlicht; Entwurfs-ID unbestätigt. Keine Kennzahlen/Klaviyo/Bestellwatch wiederholt.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-16",
@@ -8277,12 +8277,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r268_category_design_live_verified_other_scope_open",
+      "state": "r269_still_hero_image_ready_local_candidate_mock_pass_native_save_open",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R268_NATIVE_MAIN_PUBLIC_MOBILE_DESKTOP",
-      "lastEvidence": "R268: Nutzerveröffentlichung nativ als MAIN 214169584007 bestätigt; 16 Datei-MD5 identisch. Vier öffentliche GET-Abrufe mit HTTP 200 plus Desktop, AJAX-Filter, Zurücksetzen und Schrift/SVG-Prüfung bestanden. 100 % des R266-Designblocks; keine Gesamtshop- oder Merchant-Quote.",
-      "nextAllowedStep": "Den R266-Designblock als abgeschlossen behandeln. Weitere Produktdetails-, Varianten-, SEO- und Merchant-Aufgaben anhand ihrer vorhandenen Quellenblocker fortsetzen.",
+      "belegArt": "GEMESSEN_R269_HIGGSFIELD_FILE_READY_LOCAL_MOCK",
+      "lastEvidence": "R269: Ein Max-Qualitätsbild erzeugt und Shopify-Datei READY bestätigt. Fünf lokale Dateien, 25/25 Quellenverträge, Mock auf vier Viewports bestanden. Keine Theme-Datei gespeichert oder veröffentlicht; neue Entwurfs-ID unbestätigt.",
+      "nextAllowedStep": "Nach bestätigter Inhaberkopie eine frische Entwurfs-ID und Shopidentität lesen, die fünf Quellchecksums gegenprüfen, den eingefrorenen Kandidaten dort speichern und nativ/Desktop/mobil prüfen. Erst danach Veröffentlichung und Live-Nachweis. Keine ungeprüften alten Entwürfe überschreiben oder veröffentlichen.",
       "blockers": [
         "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
         "Becherhalter: genaue Passform/Montage und Material offen.",
@@ -8300,7 +8300,8 @@
         "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
         "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
         "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur.",
-        "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen."
+        "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen.",
+        "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -17022,6 +17023,36 @@
               "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen."
             ]
           }
+        },
+        {
+          "archivedByRun": "R269",
+          "recordedAt": "2026-11-16T20:54:37Z",
+          "previous": {
+            "state": "r268_category_design_live_verified_other_scope_open",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R268_NATIVE_MAIN_PUBLIC_MOBILE_DESKTOP",
+            "lastEvidence": "R268: Nutzerveröffentlichung nativ als MAIN 214169584007 bestätigt; 16 Datei-MD5 identisch. Vier öffentliche GET-Abrufe mit HTTP 200 plus Desktop, AJAX-Filter, Zurücksetzen und Schrift/SVG-Prüfung bestanden. 100 % des R266-Designblocks; keine Gesamtshop- oder Merchant-Quote.",
+            "nextAllowedStep": "Den R266-Designblock als abgeschlossen behandeln. Weitere Produktdetails-, Varianten-, SEO- und Merchant-Aufgaben anhand ihrer vorhandenen Quellenblocker fortsetzen.",
+            "blockers": [
+              "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+              "Becherhalter: genaue Passform/Montage und Material offen.",
+              "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+              "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+              "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+              "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt.",
+              "R261 Reibe Stil3 ohne exakt belegtes Galerie-Einzelbild; keine falsche Zuordnung.",
+              "R261 Brettmaterial widersprüchlich; kein Titan-/Food-Grade-/Antibakteriellnachweis.",
+              "R261 Reflexionstasse: zwölf CJ-Motive, exakte bestehende Variante ungeklärt; ein Verbindungsread0 ist keine leere Historie.",
+              "R261 Merchant-Waage weiterhin DISAPPROVED; OG101.90 vs Auswahl127.90CHF separat belegt, Google-Ursache unbekannt.",
+              "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
+              "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
+              "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
+              "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
+              "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
+              "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur.",
+              "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -19911,6 +19942,29 @@
         "resolvedHistoricalBlockers": [
           "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED."
         ]
+      },
+      "run269": {
+        "report": "dropship/codex-handoff-20261018/R269-REPORT-20261116.md",
+        "proof": "dropship/codex-handoff-20261018/R269-PROOF-20261116.json",
+        "candidateManifest": "dropship/codex-handoff-20261018/runs/20261116-r269/theme/HERO-DESIGN-MANIFEST.json",
+        "mockQA": "dropship/codex-handoff-20261018/runs/20261116-r269/quality/MOCK-QA-summary.json",
+        "imageId": "gid://shopify/MediaImage/78095478325639",
+        "imageState": "READY",
+        "model": "gpt_image_2_6",
+        "quality": "max",
+        "actualDimensions": [
+          3504,
+          2336
+        ],
+        "quotedCredits": 15,
+        "chargedCredits": "UNKNOWN",
+        "candidateFiles": 5,
+        "localSourceReview": "PASS_25_OF_25",
+        "browserState": "PASS_MOCK_ONLY",
+        "nativeSave": "NOT_CONFIRMED",
+        "publicationState": "NOT_CHANGED_BY_R269",
+        "draftIdentity": "UNKNOWN_NO_CONFIRMED_NEW_ID",
+        "nextStep": "Nach bestätigter Inhaberkopie eine frische Entwurfs-ID und Shopidentität lesen, die fünf Quellchecksums gegenprüfen, den eingefrorenen Kandidaten dort speichern und nativ/Desktop/mobil prüfen. Erst danach Veröffentlichung und Live-Nachweis. Keine ungeprüften alten Entwürfe überschreiben oder veröffentlichen."
       }
     },
     {
@@ -28641,18 +28695,19 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r239_original_seven_unchanged_two_extra_shipping_diffs_require_countercheck_unpublished",
+      "state": "r269_still_hero_image_ready_local_candidate_mock_pass_native_save_open",
       "title": "Mobile Website im Stil der App weiterentwickelt",
-      "lastEvidenceDate": "2026-11-15",
-      "belegArt": "FRESH_SHOP_NATIVE_THEME_FILES_TWO_EXTRA_SAVED_DIFFS_CONDITIONAL_ARITHMETIC_NO_THEME_WRITE",
-      "lastEvidence": "R239: Theme214040805767weiterUNPUBLISHED/updated15:52:32Z. Die7freigegebenenDateienMD5unverändert,aberzusätzlichegespeicherteDiffsinlayout/theme.liquidundsnippets/cart-summary.liquid. Native130-Pfade-Gegenprobeund4Vollquelldateienbelegen2zusätzlicheVersandrechenänderungen;Actorunknown. Synthetischer10%-FallzeigtneueRestempfehlung14→Netto48.60unterunveränderterUI50;ohneRabattneueDifferenzexakt. KeinrealerCheckout-/Rabattregelbelegundkein eigenerTheme-/Versandwrite.",
+      "lastEvidenceDate": "2026-11-16",
+      "belegArt": "GEMESSEN_R269_HIGGSFIELD_FILE_READY_LOCAL_MOCK",
+      "lastEvidence": "R269: Ein Max-Qualitätsbild erzeugt und Shopify-Datei READY bestätigt. Fünf lokale Dateien, 25/25 Quellenverträge, Mock auf vier Viewports bestanden. Keine Theme-Datei gespeichert oder veröffentlicht; neue Entwurfs-ID unbestätigt.",
       "previewUrl": "https://au3j0y-hq.myshopify.com/?preview_theme_id=214040805767",
-      "nextAllowedStep": "BisherigeFreigabefür7Dateienerhalten,neue2Versanddateiennichtalsabgenommenausgeben. GesichertenDiffundRechenfälle mitaktuellerRabatt-/Checkoutlogikgegenprüfen,öffentlicheCHF50/interneCHF45nachRabattnichtändern. ErstnachKlärunggesamtenfrischenTheme-Diff/legitimenPublishwegprüfen;keineblindenPublisher-Retries,Clone-/GuardumgehungoderautomatischeRücknahmefremderÄnderungen. Rolle/HashvorabhängigemPusherneutlesen.",
+      "nextAllowedStep": "Nach bestätigter Inhaberkopie eine frische Entwurfs-ID und Shopidentität lesen, die fünf Quellchecksums gegenprüfen, den eingefrorenen Kandidaten dort speichern und nativ/Desktop/mobil prüfen. Erst danach Veröffentlichung und Live-Nachweis. Keine ungeprüften alten Entwürfe überschreiben oder veröffentlichen.",
       "blockers": [
         "Zwei zusätzliche Theme-Versandrechendiffs ausserhalb der ursprünglichen sieben Dateien; Actor und tatsächliche Rabatt-/Checkoutlogik offen.",
         "Theme214040805767 weiterUNPUBLISHED; Publisher-Scope-Verweigerung ausR234/R235 nicht erneut ausgelöst.",
         "Shellrate-limit ist keine leere Quelle oder404; gültige native Dateigegenprobe nach Wartefrist liegt vor, keine weiteren Shellversuche nötig.",
-        "Kein pauschaler Quelle-/Gesamttheme-Rollback oder Versand-/Rabattänderung aus dem hypothetischen Rechenfall ableiten."
+        "Kein pauschaler Quelle-/Gesamttheme-Rollback oder Versand-/Rabattänderung aus dem hypothetischen Rechenfall ableiten.",
+        "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -29821,6 +29876,23 @@
             "Aktueller Zielstatus UNPUBLISHED; MAIN unverändert.",
             "Keine heutige Live-Darstellungsabnahme, weil Veröffentlichung nicht erfolgt."
           ]
+        },
+        {
+          "archivedByRun": "R269",
+          "recordedAt": "2026-11-16T20:54:37Z",
+          "previous": {
+            "state": "r239_original_seven_unchanged_two_extra_shipping_diffs_require_countercheck_unpublished",
+            "lastEvidenceDate": "2026-11-15",
+            "belegArt": "FRESH_SHOP_NATIVE_THEME_FILES_TWO_EXTRA_SAVED_DIFFS_CONDITIONAL_ARITHMETIC_NO_THEME_WRITE",
+            "lastEvidence": "R239: Theme214040805767weiterUNPUBLISHED/updated15:52:32Z. Die7freigegebenenDateienMD5unverändert,aberzusätzlichegespeicherteDiffsinlayout/theme.liquidundsnippets/cart-summary.liquid. Native130-Pfade-Gegenprobeund4Vollquelldateienbelegen2zusätzlicheVersandrechenänderungen;Actorunknown. Synthetischer10%-FallzeigtneueRestempfehlung14→Netto48.60unterunveränderterUI50;ohneRabattneueDifferenzexakt. KeinrealerCheckout-/Rabattregelbelegundkein eigenerTheme-/Versandwrite.",
+            "nextAllowedStep": "BisherigeFreigabefür7Dateienerhalten,neue2Versanddateiennichtalsabgenommenausgeben. GesichertenDiffundRechenfälle mitaktuellerRabatt-/Checkoutlogikgegenprüfen,öffentlicheCHF50/interneCHF45nachRabattnichtändern. ErstnachKlärunggesamtenfrischenTheme-Diff/legitimenPublishwegprüfen;keineblindenPublisher-Retries,Clone-/GuardumgehungoderautomatischeRücknahmefremderÄnderungen. Rolle/HashvorabhängigemPusherneutlesen.",
+            "blockers": [
+              "Zwei zusätzliche Theme-Versandrechendiffs ausserhalb der ursprünglichen sieben Dateien; Actor und tatsächliche Rabatt-/Checkoutlogik offen.",
+              "Theme214040805767 weiterUNPUBLISHED; Publisher-Scope-Verweigerung ausR234/R235 nicht erneut ausgelöst.",
+              "Shellrate-limit ist keine leere Quelle oder404; gültige native Dateigegenprobe nach Wartefrist liegt vor, keine weiteren Shellversuche nötig.",
+              "Kein pauschaler Quelle-/Gesamttheme-Rollback oder Versand-/Rabattänderung aus dem hypothetischen Rechenfall ableiten."
+            ]
+          }
         }
       ],
       "followUpFindings": [
@@ -31053,6 +31125,29 @@
         ],
         "shippingScenariosSyntheticOnly": true,
         "themeWrites": 0
+      },
+      "run269": {
+        "report": "dropship/codex-handoff-20261018/R269-REPORT-20261116.md",
+        "proof": "dropship/codex-handoff-20261018/R269-PROOF-20261116.json",
+        "candidateManifest": "dropship/codex-handoff-20261018/runs/20261116-r269/theme/HERO-DESIGN-MANIFEST.json",
+        "mockQA": "dropship/codex-handoff-20261018/runs/20261116-r269/quality/MOCK-QA-summary.json",
+        "imageId": "gid://shopify/MediaImage/78095478325639",
+        "imageState": "READY",
+        "model": "gpt_image_2_6",
+        "quality": "max",
+        "actualDimensions": [
+          3504,
+          2336
+        ],
+        "quotedCredits": 15,
+        "chargedCredits": "UNKNOWN",
+        "candidateFiles": 5,
+        "localSourceReview": "PASS_25_OF_25",
+        "browserState": "PASS_MOCK_ONLY",
+        "nativeSave": "NOT_CONFIRMED",
+        "publicationState": "NOT_CHANGED_BY_R269",
+        "draftIdentity": "UNKNOWN_NO_CONFIRMED_NEW_ID",
+        "nextStep": "Nach bestätigter Inhaberkopie eine frische Entwurfs-ID und Shopidentität lesen, die fünf Quellchecksums gegenprüfen, den eingefrorenen Kandidaten dort speichern und nativ/Desktop/mobil prüfen. Erst danach Veröffentlichung und Live-Nachweis. Keine ungeprüften alten Entwürfe überschreiben oder veröffentlichen."
       }
     },
     {
@@ -50350,6 +50445,17 @@
         "dropship/codex-handoff-20261018/R268-PROOF-20261116.json",
         "dropship/codex-handoff-20261018/runs/20261116-r268/quality/LIVE-QA-summary.json"
       ]
+    },
+    {
+      "revision": 269,
+      "at": "2026-11-16T20:54:37Z",
+      "summary": "R269: Neues Higgsfield-Titelmotiv mit Qualität max und angefragter 4k-Stufe abgeschlossen; tatsächliche Datei 3504 × 2336 Pixel als Shopify READY bestätigt. Fünf Dateien lokal vorbereitet, Quellenreview 25/25 und Mock auf vier Viewports bestanden. Keine Theme-Speicherung oder Publikation; neue Entwurfs-ID unbestätigt, Inhaberkopie angefragt.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R269-REPORT-20261116.md",
+        "dropship/codex-handoff-20261018/R269-PROOF-20261116.json",
+        "dropship/codex-handoff-20261018/runs/20261116-r269/theme/HERO-DESIGN-MANIFEST.json",
+        "dropship/codex-handoff-20261018/runs/20261116-r269/quality/MOCK-QA-summary.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -51702,7 +51808,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 268,
+    "latestCanonicalRevision": 269,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -52757,6 +52863,11 @@
     "run268": {
       "atUtc": "2026-11-16T19:48:02Z",
       "report": "dropship/codex-handoff-20261018/R268-REPORT-20261116.md",
+      "receipt": "unknown"
+    },
+    "run269": {
+      "atUtc": "2026-11-16T20:54:37Z",
+      "report": "dropship/codex-handoff-20261018/R269-REPORT-20261116.md",
       "receipt": "unknown"
     }
   },
@@ -78782,5 +78893,28 @@
     "ownSocialPublications": 0,
     "supersedes": "R262/R267: UNPUBLISHED/Live-Wechsel offen für dieses Theme. Historische Connectorgrenze nicht als repariert behaupten.",
     "nextStep": "Den R266-Designblock als abgeschlossen behandeln. Weitere Produktdetails-, Varianten-, SEO- und Merchant-Aufgaben anhand ihrer vorhandenen Quellenblocker fortsetzen."
+  },
+  "run269": {
+    "report": "dropship/codex-handoff-20261018/R269-REPORT-20261116.md",
+    "proof": "dropship/codex-handoff-20261018/R269-PROOF-20261116.json",
+    "candidateManifest": "dropship/codex-handoff-20261018/runs/20261116-r269/theme/HERO-DESIGN-MANIFEST.json",
+    "mockQA": "dropship/codex-handoff-20261018/runs/20261116-r269/quality/MOCK-QA-summary.json",
+    "imageId": "gid://shopify/MediaImage/78095478325639",
+    "imageState": "READY",
+    "model": "gpt_image_2_6",
+    "quality": "max",
+    "actualDimensions": [
+      3504,
+      2336
+    ],
+    "quotedCredits": 15,
+    "chargedCredits": "UNKNOWN",
+    "candidateFiles": 5,
+    "localSourceReview": "PASS_25_OF_25",
+    "browserState": "PASS_MOCK_ONLY",
+    "nativeSave": "NOT_CONFIRMED",
+    "publicationState": "NOT_CHANGED_BY_R269",
+    "draftIdentity": "UNKNOWN_NO_CONFIRMED_NEW_ID",
+    "nextStep": "Nach bestätigter Inhaberkopie eine frische Entwurfs-ID und Shopidentität lesen, die fünf Quellchecksums gegenprüfen, den eingefrorenen Kandidaten dort speichern und nativ/Desktop/mobil prüfen. Erst danach Veröffentlichung und Live-Nachweis. Keine ungeprüften alten Entwürfe überschreiben oder veröffentlichen."
   }
 }

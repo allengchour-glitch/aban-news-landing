@@ -1,0 +1,31 @@
+{
+  "status": "PASS_SEMANTIC_DOCUMENTATION_REVIEW",
+  "reviewedAtUTC": "2026-11-16T20:55:45.743200+00:00",
+  "scope": "Nur lokaler Semantik- und Belegabgleich von R269-Bericht, Root-Proof und Ergänzungs-Diff; keine externen Abfragen, Git- oder Shopify-Schreibaktionen.",
+  "checks": {
+    "local_candidate_mock_separate_from_native_live": true,
+    "actual_image_upload_ready_preserved": true,
+    "cost_quote_not_charge": true,
+    "requested_tier_actual_dimensions_distinguished": true,
+    "section_proof_matches_frozen_candidate": true,
+    "source_review_hashes_still_match_manifest": true,
+    "fresh_main_metadata_cause_unknown": true,
+    "five_current_checksums_equal_source": true,
+    "root_invariants_report_not_independent_byte_claim": true,
+    "r268_completion_retained_new_hero_open": true,
+    "unknown_draft_no_blind_retry_claim": true,
+    "no_new_video_or_sales_success_claim": true
+  },
+  "passed": 12,
+  "total": 12,
+  "rootInvariantBoundary": "Die Erhaltung der 24 Aufgaben, vollständigen State-Historie und R268-Fertigstellung ist in Roots Invariantenbericht angegeben. Dieser Reviewer hat keinen zusätzlichen vollständigen Core5-/State-Bytevergleich ausgeführt.",
+  "copyeditNote": "Root glättet noch fehlende Leerzeichen in neuen Texten; keine inhaltliche Änderung erforderlich.",
+  "nativeRendering": "Nicht bestätigt; lokaler Kandidat und Browser-Mock sind getrennt bezeichnet.",
+  "reviewedFiles": {
+    "R269-REPORT-20261116.md": "459487824300b4357fe6e19e67f1f466a24f209fd46a9f3a14753d9fae08fecb",
+    "ROOT-FINAL-PROOF.json": "14c1631c3e6a5e7c574dcf7f35acfb86a1be8c09c3ad2b8ca8887ca3fe294b84",
+    "DOCUMENTATION-REVIEW.json": "8cb2913916dcbd88cc8fe12a4379839179aca8a444f4f0b956ca235026ed04e0"
+  },
+  "externalReads": 0,
+  "externalWrites": 0
+}

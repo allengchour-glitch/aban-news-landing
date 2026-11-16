@@ -1,0 +1,127 @@
+{
+  "themeId": "214169584007",
+  "role": "MAIN",
+  "files": [
+    {
+      "filename": "templates/index.json",
+      "path": "/dev/shm/luxestyle-review/r269/source/templates-index.json",
+      "nativeChecksumMd5": "aa3d177234272df6acedab60272a5396",
+      "nativeUpdatedAt": "2026-11-16T16:57:27Z",
+      "returnedBodyChars": 2746,
+      "sha256": "e3c651d814afdf874fba97072ae3109407f93de51f35b64a5cdf17dc3e5fb995",
+      "md5": "aa3d177234272df6acedab60272a5396",
+      "bytes": 2746,
+      "nativeMd5MatchesReturnedBody": true
+    },
+    {
+      "filename": "config/settings_data.json",
+      "path": "/dev/shm/luxestyle-review/r269/source/config/settings_data.json",
+      "nativeChecksumMd5": "bffffbeb42ee70df121c575a4347cf37",
+      "nativeUpdatedAt": "2026-11-16T16:57:27Z",
+      "returnedBodyChars": 11123,
+      "sha256": "ca33d324c12abf6693402c6b831fc80f5068510456cb22fe18df0344d1f8ade7",
+      "md5": "ccd563bb0f8412870c644f20c60f2b42",
+      "bytes": 11123,
+      "nativeMd5MatchesReturnedBody": false
+    },
+    {
+      "filename": "DESIGN.md",
+      "path": "/dev/shm/luxestyle-review/r269/source/DESIGN.md",
+      "nativeChecksumMd5": "878cebab534908a233a1d90281bdf10a",
+      "nativeUpdatedAt": "2026-11-16T18:35:26Z",
+      "returnedBodyChars": 1779,
+      "sha256": "f03f2efc23cbbf66b5be4ec7a5b9f1acb8a7056673b8c68836d8d677ec55300e",
+      "md5": "878cebab534908a233a1d90281bdf10a",
+      "bytes": 1797,
+      "nativeMd5MatchesReturnedBody": true
+    },
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "path": "/dev/shm/luxestyle-review/r269/source/sections/luxe-edit-home.liquid",
+      "nativeChecksumMd5": "8ef120629f6ad0c04eb13fd9acbf6ae8",
+      "nativeUpdatedAt": "2026-11-16T16:57:27Z",
+      "returnedBodyChars": 64585,
+      "sha256": "d3b188ece1e567f8e36dfbd818b0328f6e35f38a8fcc89412ca0ad07d0c067b4",
+      "md5": "8ef120629f6ad0c04eb13fd9acbf6ae8",
+      "bytes": 64609,
+      "nativeMd5MatchesReturnedBody": true
+    },
+    {
+      "filename": "assets/luxe-edit.css",
+      "path": "/dev/shm/luxestyle-review/r269/source/assets/luxe-edit.css",
+      "nativeChecksumMd5": "22b0bd13a138d14e9666d71e6c70c9e8",
+      "nativeUpdatedAt": "2026-11-16T16:57:27Z",
+      "returnedBodyChars": 60872,
+      "sha256": "0dfe3e5c70bacb3b04bb79aa261e94134d126cf29eeb7d258f4f6ec680504823",
+      "md5": "22b0bd13a138d14e9666d71e6c70c9e8",
+      "bytes": 60898,
+      "nativeMd5MatchesReturnedBody": true
+    },
+    {
+      "filename": "assets/luxe-edit.js",
+      "path": "/dev/shm/luxestyle-review/r269/source/assets/luxe-edit.js",
+      "nativeChecksumMd5": "4aa19e8ff7993e0e8badad2f02cade4b",
+      "nativeUpdatedAt": "2026-11-16T16:57:27Z",
+      "returnedBodyChars": 3120,
+      "sha256": "02c8b94fa3a11907a6568017afd69d318033e3e602b8bef190744bc214aae809",
+      "md5": "4aa19e8ff7993e0e8badad2f02cade4b",
+      "bytes": 3120,
+      "nativeMd5MatchesReturnedBody": true
+    },
+    {
+      "filename": "locales/de.json",
+      "path": "/dev/shm/luxestyle-review/r269/source/locales/de.json",
+      "nativeChecksumMd5": "6cdb896f31cad66a9cc2f3f0936f39fd",
+      "nativeUpdatedAt": "2026-11-16T18:35:26Z",
+      "returnedBodyChars": 53419,
+      "sha256": "84a7634506f51e731c62a9a0da959e332cd91bf7dbe270073e569e4c490b9d17",
+      "md5": "6cdb896f31cad66a9cc2f3f0936f39fd",
+      "bytes": 53845,
+      "nativeMd5MatchesReturnedBody": true
+    },
+    {
+      "filename": "layout/theme.liquid",
+      "path": "/dev/shm/luxestyle-review/r269/source/layout/theme.liquid",
+      "nativeChecksumMd5": "62a77592ae9e0648d2ccec60bdf23979",
+      "nativeUpdatedAt": "2026-11-16T16:57:27Z",
+      "returnedBodyChars": 66982,
+      "sha256": "74a3a2fb778f2de4304f1312fd630c734930acb3146e877ee0531aca8e3bf3ca",
+      "md5": "62a77592ae9e0648d2ccec60bdf23979",
+      "bytes": 67423,
+      "nativeMd5MatchesReturnedBody": true
+    },
+    {
+      "filename": "locales/de.schema.json",
+      "path": "/dev/shm/luxestyle-review/r269/source/locales/de.schema.json",
+      "nativeChecksumMd5": "1c38f38260f84023fce55c08b25f12a4",
+      "nativeUpdatedAt": "2026-11-16T18:35:26Z",
+      "returnedBodyChars": 50999,
+      "sha256": "92ee05ce0f1c9e32d531a9bd5ca3bff04b3f6fb5ff4cd203d77aba4c98be7ac6",
+      "md5": "1c38f38260f84023fce55c08b25f12a4",
+      "bytes": 51418,
+      "nativeMd5MatchesReturnedBody": true
+    },
+    {
+      "filename": "locales/en.default.schema.json",
+      "path": "/dev/shm/luxestyle-review/r269/source/locales/en.default.schema.json",
+      "nativeChecksumMd5": "57512d1064a003a0a5bc8d632650b06d",
+      "nativeUpdatedAt": "2026-11-16T18:35:26Z",
+      "returnedBodyChars": 52540,
+      "sha256": "2be6e52a5eef283262a973e6fc3f15f8d585449b6536aa50bbf98aa3801914ae",
+      "md5": "57512d1064a003a0a5bc8d632650b06d",
+      "bytes": 52556,
+      "nativeMd5MatchesReturnedBody": true
+    },
+    {
+      "filename": "locales/fr.schema.json",
+      "path": "/dev/shm/luxestyle-review/r269/source/locales/fr.schema.json",
+      "nativeChecksumMd5": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+      "nativeUpdatedAt": "2026-11-16T18:35:26Z",
+      "returnedBodyChars": 51935,
+      "sha256": "8fd575acbea6ad2617e7f5945f3cffdacc0aa09e4449617c3bc60f65e229e9c0",
+      "md5": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+      "bytes": 52699,
+      "nativeMd5MatchesReturnedBody": true
+    }
+  ]
+}

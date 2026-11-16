@@ -3264,3 +3264,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Abschluss](R268-REPORT-20261116.md) · [Belege](R268-PROOF-20261116.json).
 
 [LUXESTYLE_R268_20261116]
+
+
+### R269 – Einzelnes Higgsfield-Titelmotiv vorbereitet
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Titelbild | Einen Higgsfield-Job in Max-Qualität abgeschlossen und das echte Ergebnis visuell geprüft. | 3504 × 2336 Pixel; Offerte 15 Credits, tatsächliche Abbuchung unbekannt. Ein Motiv, kein Video. |
+| Shopify-Datei | Generiertes Motiv hochgeladen und Datei nativ zurückgelesen. | MediaImage 78095478325639 READY, keine Fehler. Datei vorhanden; Hero dadurch noch nicht geändert. |
+| Hero-Kandidat | Bestehende Section, Index und drei Schema-Sprachdateien mit Bildpicker/Handyfokus vorbereitet. | Fünf lokale Dateien; 25/25 Quellverträge bestanden. Titel/CTAs und Below-Hero-Inhalt erhalten. |
+| Voransicht | Isolierten Browser-Mock auf 320/360/390/1440 Pixeln geprüft und konkrete Auflösungs-/Typografiebefunde korrigiert. | PASS_MOCK_ONLY; zweizeilige Titel, kein Überlauf/Video, Fokus und Tastatur geprüft. Kein nativer Shopify-Render. |
+| Zugriff | Kopierantworten und gezielte Theme-Abfragen abgeglichen; Inhaber um frische Kopie gebeten. | Keine bestätigte neue Entwurfs-ID; Theme-Dateien nicht geschrieben oder veröffentlicht. Fünf Originaldateien frisch unverändert bestätigt. |
+| Projektgedächtnis | R269-Kandidat und Belege mit vorhandener Historie verbunden. | R268 bleibt live abgeschlossen. Neue Hero-Speicherung und Live-Prüfung offen; Claude-Empfang unbekannt. |
+
+[Bericht](R269-REPORT-20261116.md) · [Belege](R269-PROOF-20261116.json).
+
+[LUXESTYLE_R269_20261116]

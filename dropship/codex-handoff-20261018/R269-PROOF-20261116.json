@@ -1,0 +1,120 @@
+{
+  "run": "R269",
+  "recordedAtUTC": "2026-11-16T20:54:37Z",
+  "baseRevision": 268,
+  "baseCommit": "e3cb454fea2dbee8a4075f8bb006ad8bc8e229c0",
+  "request": "Titelbild mit Higgsfield maximal hochwertig statt Karussell.",
+  "artwork": {
+    "jobId": "41cbd665-4460-49b0-bd5f-b066df8dd044",
+    "model": "gpt_image_2_6",
+    "quality": "max",
+    "requestedResolutionTier": "4k",
+    "aspectRatio": "3:2",
+    "state": "completed",
+    "quoteCredits": 15,
+    "chargedCredits": "UNKNOWN",
+    "actualWidth": 3504,
+    "actualHeight": 2336,
+    "bytes": 7793582,
+    "sha256": "4c528e54324dd4d09f48c7312ef08b87e5fddbd87ef530802f5e0ed16474e09f",
+    "referenceImages": 0,
+    "videoRenders": 0
+  },
+  "shopifyFile": {
+    "id": "gid://shopify/MediaImage/78095478325639",
+    "state": "READY",
+    "fileErrors": [],
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-atelier-hero-r269.webp?v=1794861676",
+    "picker": "shopify://shop_images/luxe-atelier-hero-r269.webp",
+    "dimensions": [
+      3504,
+      2336
+    ]
+  },
+  "design": {
+    "candidateFiles": 5,
+    "copyAndCTAPreserved": true,
+    "belowHeroContentPreserved": true,
+    "review": "25/25 begrenzte lokale Quellverträge bestanden.",
+    "mockQA": "PASS_MOCK_ONLY",
+    "viewports": [
+      320,
+      360,
+      390,
+      1440
+    ],
+    "rootVisualApproval": "PASS: Master und finale mobile/Desktop-Mockbilder.",
+    "sourceCandidateManifest": "runs/20261116-r269/theme/HERO-DESIGN-MANIFEST.json",
+    "candidateSectionSHA256": "7307abbe1299543c4c4b10f421f08ddc210e5614c51a5a21e9ba5080fb365fe5"
+  },
+  "deliveryStates": {
+    "image": "READY_IN_SHOPIFY_FILES",
+    "code": "LOCAL_CANDIDATE_FROZEN",
+    "browser": "PASS_MOCK_ONLY",
+    "nativeSave": "NOT_CONFIRMED_NO_DRAFT_ID",
+    "liquidRender": "NOT_CONFIRMED",
+    "liveHero": "NOT_CHANGED_BY_R269"
+  },
+  "access": {
+    "main": "214169584007",
+    "themeBash": "Nach temporärer Dienststörung wieder lesbar.",
+    "duplicateCalls": 2,
+    "firstOutcome": "newTheme=null, userErrors=[]; kein bestätigter Entwurf.",
+    "reconciliation": "Zwei gezielte Namensabfragen und eine Neuste-Themes-Abfrage ohne passendes Objekt.",
+    "secondCallReason": "Dienst war wieder erreichbar; nach gezielter Gegenprobe ein kontrollierter Versuch.",
+    "secondOutcome": "newTheme=null, userErrors=[]; weiterhin keine bestätigte Entwurfs-ID.",
+    "state": "UNKNOWN_NO_CONFIRMED_DRAFT_ID",
+    "additionalRetries": false,
+    "userActionRequested": "Aktuelles Live-Theme im Shopify-Admin duplizieren und kopiert melden.",
+    "liveHeroChanged": false
+  },
+  "lastNativeCountercheck": {
+    "id": "gid://shopify/OnlineStoreTheme/214169584007",
+    "role": "MAIN",
+    "updatedAt": "2026-11-16T20:51:43Z",
+    "files": {
+      "nodes": [
+        {
+          "filename": "locales/de.schema.json",
+          "checksumMd5": "1c38f38260f84023fce55c08b25f12a4",
+          "updatedAt": "2026-11-16T18:35:26Z"
+        },
+        {
+          "filename": "locales/en.default.schema.json",
+          "checksumMd5": "57512d1064a003a0a5bc8d632650b06d",
+          "updatedAt": "2026-11-16T18:35:26Z"
+        },
+        {
+          "filename": "locales/fr.schema.json",
+          "checksumMd5": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+          "updatedAt": "2026-11-16T18:35:26Z"
+        },
+        {
+          "filename": "sections/luxe-edit-home.liquid",
+          "checksumMd5": "8ef120629f6ad0c04eb13fd9acbf6ae8",
+          "updatedAt": "2026-11-16T16:57:27Z"
+        },
+        {
+          "filename": "templates/index.json",
+          "checksumMd5": "aa3d177234272df6acedab60272a5396",
+          "updatedAt": "2026-11-16T16:57:27Z"
+        }
+      ]
+    }
+  },
+  "actorNote": "Codex hat das Bild erzeugt und als Datei hochgeladen. Keine Theme-Datei gespeichert oder veröffentlicht.",
+  "otherMainActivity": "MAIN-updatedAt stieg während der Arbeit auf20:51:43Z; Grund unbekannt. Die fünf betroffenen Dateien sind in frischer gezielter Gegenprobe unverändert.",
+  "dailyReportsRepeated": false,
+  "newOrdersQueried": false,
+  "videoRenders": 0,
+  "claudeReceipt": "UNKNOWN",
+  "next": "Nach bestätigter Inhaberkopie eine frische Entwurfs-ID und Shopidentität lesen, die fünf Quellchecksums gegenprüfen, den eingefrorenen Kandidaten dort speichern und nativ/Desktop/mobil prüfen. Erst danach Veröffentlichung und Live-Nachweis. Keine ungeprüften alten Entwürfe überschreiben oder veröffentlichen.",
+  "limits": [
+    "Voransicht durch gezielt ersetzten Hero im isolierten Browser; kein Shopify-Liquid-/Theme-Save-Beleg.",
+    "Offizieller Theme Check nicht verfügbar; begrenzte lokale Contracts und Browser-Mock sind separat belegt.",
+    "Kleine Bildschirmhöhen benötigen für vollständige CTAs teils Scrollen; Cookieleiste und Bottomnavigation bleiben unangetastet.",
+    "15Credits waren die Kostenofferte; tatsächliche Abrechnung nicht unabhängig geprüft. 4k war die angefragte Modellstufe, tatsächliches Bild3504x2336.",
+    "Kein Gesamtshop-, Merchant-, Ranking- oder Verkaufserfolg daraus abgeleitet."
+  ],
+  "privacy": "Nur freigegebene Kandidaten und kompakte Belege; Roh-HTML/Netzwerklogs/Bildbinary nicht im Repository."
+}

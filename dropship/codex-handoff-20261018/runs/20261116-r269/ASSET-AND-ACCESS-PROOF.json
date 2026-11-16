@@ -1,0 +1,47 @@
+{
+  "run": "R269",
+  "purpose": "Ein neues Homepage-Titelmotiv als einzelner Still-Hero statt bisheriger Video-Produktwand.",
+  "generation": {
+    "jobId": "41cbd665-4460-49b0-bd5f-b066df8dd044",
+    "model": "gpt_image_2_6",
+    "quality": "max",
+    "requestedResolutionTier": "4k",
+    "aspectRatio": "3:2",
+    "state": "completed",
+    "quoteCredits": 15,
+    "chargedCredits": "UNKNOWN",
+    "actualWidth": 3504,
+    "actualHeight": 2336,
+    "bytes": 7793582,
+    "sha256": "4c528e54324dd4d09f48c7312ef08b87e5fddbd87ef530802f5e0ed16474e09f",
+    "referenceImages": 0,
+    "videoRenders": 0
+  },
+  "creativeScope": "Dekorative Atelier-Installation mit Seidenband, Naturstein, Bronze und bernsteinfarbenem Glas; keine beworbenen Produkte oder Produkteigenschaften dargestellt.",
+  "rootVisualReview": "PASS am tatsächlichen Master (1400px-Inspektionsansicht).",
+  "shopifyFile": {
+    "id": "gid://shopify/MediaImage/78095478325639",
+    "state": "READY",
+    "fileErrors": [],
+    "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-atelier-hero-r269.webp?v=1794861676",
+    "picker": "shopify://shop_images/luxe-atelier-hero-r269.webp",
+    "dimensions": [
+      3504,
+      2336
+    ]
+  },
+  "themeAccess": {
+    "main": "214169584007",
+    "themeBash": "Nach temporärer Dienststörung wieder lesbar.",
+    "duplicateCalls": 2,
+    "firstOutcome": "newTheme=null, userErrors=[]; kein bestätigter Entwurf.",
+    "reconciliation": "Zwei gezielte Namensabfragen und eine Neuste-Themes-Abfrage ohne passendes Objekt.",
+    "secondCallReason": "Dienst war wieder erreichbar; nach gezielter Gegenprobe ein kontrollierter Versuch.",
+    "secondOutcome": "newTheme=null, userErrors=[]; weiterhin keine bestätigte Entwurfs-ID.",
+    "state": "UNKNOWN_NO_CONFIRMED_DRAFT_ID",
+    "additionalRetries": false,
+    "userActionRequested": "Aktuelles Live-Theme im Shopify-Admin duplizieren und kopiert melden.",
+    "liveHeroChanged": false
+  },
+  "next": "Vorhandene Section mit Bildpicker, ruhigem Still-Markup und mobilen Styles lokal vorbereiten; Voransicht klar von Shopify-Render und gespeicherter Themeänderung trennen."
+}

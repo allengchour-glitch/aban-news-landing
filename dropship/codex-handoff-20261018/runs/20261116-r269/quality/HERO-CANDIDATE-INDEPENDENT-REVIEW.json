@@ -1,0 +1,74 @@
+{
+  "status": "PASS_LIMITED_LOCAL_REVIEW",
+  "reviewedAtUTC": "2026-11-16T20:49:31.834856+00:00",
+  "scope": "Unabhängiger lokaler Quellen-, JSONC-, Schema-, Erhaltungs- und CSS-Vertragsreview. Keine Shopify- oder Live-Prüfung.",
+  "checks": {
+    "exactly_five_allowed_candidate_files": true,
+    "manifest_files_exact": true,
+    "manifest_sha256_and_original_hashes": true,
+    "index_all_previous_settings_structure_order_preserved": true,
+    "confirmed_image_picker_bound": true,
+    "mobile_focus_default_bound": true,
+    "locale_addition_only_de.schema.json": true,
+    "locale_addition_only_en.default.schema.json": true,
+    "locale_addition_only_fr.schema.json": true,
+    "hero_copy_titles_cta_liquid_byte_identical": true,
+    "all_markup_below_hero_byte_identical_except_new_boundary_linefeeds": true,
+    "prefix_markup_unchanged": true,
+    "schema_preserves_previous_settings_presets": true,
+    "schema_setting_ids_unique": true,
+    "schema_image_picker_and_range_valid": true,
+    "still_branch_no_video_toggle_or_js_owner": true,
+    "one_responsive_decorative_image": true,
+    "max_srcset_matches_3504px_asset": true,
+    "exactly_one_section_stylesheet": true,
+    "image_tag_explicit_inline_object_position_variable": true,
+    "desktop_variable_non_circular": true,
+    "mobile_focus_uses_responsive_variable": true,
+    "no_global_css_reset_or_js_change": true,
+    "hero_override_specificity_exceeds_existing_asset": true,
+    "patch_matches_current_five_files": true
+  },
+  "passed": 25,
+  "total": 25,
+  "files": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "sha256": "7307abbe1299543c4c4b10f421f08ddc210e5614c51a5a21e9ba5080fb365fe5",
+      "originalSHA256": "d3b188ece1e567f8e36dfbd818b0328f6e35f38a8fcc89412ca0ad07d0c067b4"
+    },
+    {
+      "filename": "locales/en.default.schema.json",
+      "sha256": "2887de63b7ca7326b230e0d4a565c0527174ced23913498de14ed073d6560005",
+      "originalSHA256": "2be6e52a5eef283262a973e6fc3f15f8d585449b6536aa50bbf98aa3801914ae"
+    },
+    {
+      "filename": "locales/de.schema.json",
+      "sha256": "e45112faaf051a1a2c220d955e16ff80026616cdf6e51d87ec5a0c3002623b08",
+      "originalSHA256": "92ee05ce0f1c9e32d531a9bd5ca3bff04b3f6fb5ff4cd203d77aba4c98be7ac6"
+    },
+    {
+      "filename": "locales/fr.schema.json",
+      "sha256": "129aa4e4546ace6bfcc997324a960e87891211823fc6fab7f53161fbdacefc8c",
+      "originalSHA256": "8fd575acbea6ad2617e7f5945f3cffdacc0aa09e4449617c3bc60f65e229e9c0"
+    },
+    {
+      "filename": "templates/index.json",
+      "sha256": "ee72ef06176da2bd1ce434112a1e1e8730f1b4cc79b69e84552e917a9f47be20",
+      "originalSHA256": "e3c651d814afdf874fba97072ae3109407f93de51f35b64a5cdf17dc3e5fb995"
+    }
+  ],
+  "fixedFinding": "Automatische inline object-position durch image_tag wurde robust behandelt: expliziter Inlinewert nutzt eine viewportabhängige Custom Property; Desktop ist nicht mehr selbstreferenziell.",
+  "cssCascadeAssessment": "Neue Hero-/Copy-/H1-Selektoren besitzen jeweils die zusätzliche .lx-campaign-hero-Klasse gegenüber den bisherigen Asset-Regeln. Bildfokus ist über die explizite Inlinevariable mit Desktop-/Mobilewerten verbunden. Native Stylesheet-Auslieferung ist noch nicht geprüft.",
+  "officialThemeCheck": {
+    "status": "NOT_RUN_UNAVAILABLE",
+    "priorEvidence": "R266/toolkit-validation-limitation.json: @shopify/theme-check-common fehlte; keine Installation. Kein offizielles Theme-Check-PASS behauptet."
+  },
+  "limitations": [
+    "Lokale Mock-Prüfung ist separat; keine native Liquid-/Shopify-Vorschau durch diesen Reviewer.",
+    "Kein bestätigter neuer Entwurf aus den dokumentierten Duplicate-Antworten; keine Datei als auf Shopify gespeichert behaupten.",
+    "Leerer Bildpicker erhält den bestehenden Video-Fallback. Der konfigurierte Picker aktiviert den einzelnen Still-Hero."
+  ],
+  "externalReads": 0,
+  "externalWrites": 0
+}

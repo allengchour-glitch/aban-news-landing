@@ -1,0 +1,128 @@
+{
+  "run": "R269",
+  "status": "PASS_MOCK_ONLY",
+  "checkedAtUTC": "2026-11-16T20:49:35.326536+00:00",
+  "scope": "Isolierte Voransicht: Nur Hero-HTML und Scope-CSS wurden im öffentlichen Homepage-Response eines frischen Browsers ersetzt. KEIN Shopify-Liquid-Render, kein Theme-Save, keine Live-Änderung.",
+  "viewports": [
+    {
+      "viewport": "mobile390",
+      "width": 390,
+      "documentWidth": 390,
+      "heroHeight": 514,
+      "headingLines": 2.0,
+      "allMechanicalChecksPassed": true,
+      "keyboardFocusPassed": true,
+      "actualSourcePixels": [
+        960,
+        640
+      ],
+      "actualSourceBytes": 82928,
+      "sourceUpscalingAtDPR1": false
+    },
+    {
+      "viewport": "mobile360",
+      "width": 360,
+      "documentWidth": 360,
+      "heroHeight": 500.671875,
+      "headingLines": 2.0,
+      "allMechanicalChecksPassed": true,
+      "keyboardFocusPassed": true,
+      "actualSourcePixels": [
+        960,
+        640
+      ],
+      "actualSourceBytes": 82928,
+      "sourceUpscalingAtDPR1": false
+    },
+    {
+      "viewport": "mobile320",
+      "width": 320,
+      "documentWidth": 320,
+      "heroHeight": 517.0625,
+      "headingLines": 2.0,
+      "allMechanicalChecksPassed": true,
+      "keyboardFocusPassed": true,
+      "actualSourcePixels": [
+        960,
+        640
+      ],
+      "actualSourceBytes": 82928,
+      "sourceUpscalingAtDPR1": false
+    },
+    {
+      "viewport": "desktop1440",
+      "width": 1440,
+      "documentWidth": 1440,
+      "heroHeight": 730,
+      "headingLines": 2.0,
+      "allMechanicalChecksPassed": true,
+      "keyboardFocusPassed": true,
+      "actualSourcePixels": [
+        1600,
+        1067
+      ],
+      "actualSourceBytes": 192740,
+      "sourceUpscalingAtDPR1": false
+    }
+  ],
+  "inputs": {
+    "heroHTML": "ace32107bb5a45ff7c4738456576e751d5cc18051719d423222fa89b61ebda9e",
+    "css": "ae81c8f3164008b336e574a0c64733641a8bc5257e01504c2644e2fd40ce6b7d"
+  },
+  "visualReview": {
+    "mobile390": "PASS: scharfes Motiv, klare Zweizeilenüberschrift; beide CTAs oberhalb vorhandener Cookieleiste im Screenshot.",
+    "mobile360and320": "PASS für Layout und Lesbarkeit; vollständige CTAs erfordern bei kleinen Bildschirmhöhen Scrollen, weil unveränderte Cookieleiste und Bottomnavigation Platz belegen.",
+    "desktop1440": "PASS: ein durchgehendes Motiv, klare Zweizeilenüberschrift und beide CTAs.",
+    "contrast": "Visuell lesbar; keine vollständige WCAG-Kontrastprüfung aller Bildpixel."
+  },
+  "checks": {
+    "singleDecorativeImage": true,
+    "noHeroVideoOrPauseControl": true,
+    "noVideoJSSelector": true,
+    "titleAndBothCTALinksPreserved": true,
+    "noHorizontalOverflow": true,
+    "copyInsideHero": true,
+    "touchTargetsAtLeast44px": true,
+    "keyboardSecondaryFocused": true,
+    "visibleFocusOutline": "3px cream plus 7px dark surround",
+    "eagerHighPriorityResponsiveImage": true,
+    "mobileActualImage": "960x640 / 82,928 Bytes at DPR1; sufficiently tall for tested portrait cover.",
+    "desktopActualImage": "1600x1067 / 192,740 Bytes at DPR1.",
+    "focalVariableMobile65to25to65": "PASS in exact local DOM, 0 HTTP requests",
+    "desktopFocalVariable": "50% 40%, no self-reference, local DOM PASS"
+  },
+  "externalRequests": {
+    "publicHomepageGETs": 4,
+    "onlyAllowedGET": true,
+    "unexpectedErrors": 0,
+    "telemetryAndNonGETBlocked": true,
+    "externalWrites": 0
+  },
+  "evidence": {
+    "rawLocalReport": "/dev/shm/luxestyle-review/r269/quality/mock-preview-20261116T204850Z/report.json",
+    "mobile390Screenshot": "/dev/shm/luxestyle-review/r269/quality/mock-preview-20261116T204850Z/mobile390-viewport.png",
+    "mobile390HeroScreenshot": "/dev/shm/luxestyle-review/r269/quality/mock-preview-20261116T204850Z/mobile390-hero.png",
+    "mobile360Screenshot": "/dev/shm/luxestyle-review/r269/quality/mock-preview-20261116T204850Z/mobile360-viewport.png",
+    "mobile320Screenshot": "/dev/shm/luxestyle-review/r269/quality/mock-preview-20261116T204850Z/mobile320-viewport.png",
+    "desktopScreenshot": "/dev/shm/luxestyle-review/r269/quality/mock-preview-20261116T204850Z/desktop1440-viewport.png",
+    "focalDOMProof": "/dev/shm/luxestyle-review/r269/quality/FOCAL-DOM-QA.json",
+    "runner": "/dev/shm/luxestyle-review/r269/quality/mock_hero_qa.py"
+  },
+  "limitations": [
+    "Der neue Hero ist ausschliesslich als isolierter Mock geprüft; Shopify-Speicherung und Liquid-/Theme-Editor-Prüfung stehen aus.",
+    "DPR1 an vier Viewports geprüft; keine reale Geräte- oder vollständige Lighthouse-/Core-Web-Vitals-Messung.",
+    "Vorhandene Cookieleiste und Bottomnavigation wurden nicht bedient oder geändert.",
+    "Roh-HTML und Netzwerklogs bleiben lokal; nur dieser kompakte Bericht ist für die Übergabe vorgesehen."
+  ],
+  "supersedes": "Erster Mocklauf mock-preview-20261116T204544Z: unscharfer Portrait-Srcset und Dreizeilentitel nach konkretem Befund korrigiert.",
+  "evidenceSHA256": {
+    "rawLocalReport": "28379d459b6b91ffcedde80b3b6d78d3bb25ddd16748d37f87f8c58303aa334a",
+    "mobile390Screenshot": "a269b5be2f1e439ca8336faa7c75d2c2fcf7aedc104b530012f1a1323caa5344",
+    "mobile390HeroScreenshot": "d18dda67c123cbcecfdc78a21dbbbbfaf451cf51799f925dae99735d4f1937de",
+    "mobile360Screenshot": "aed9b0c5a79f587605aca83819c481df933295520bafe1c72bfb1b46f1ed06b7",
+    "mobile320Screenshot": "d1a669ab7c9874a61fc4d921ecd63769cfb1249e7545f454cc3e7882584f6e27",
+    "desktopScreenshot": "0be9872bf07d199d1fd4d4d8e5ffd08766c78bcf061784f09ca3a63137641d05",
+    "focalDOMProof": "a77d4c44549c0de2b66e4f6af2500172c503bf67b012b4be104c56a5abaaaebe",
+    "runner": "674e4332ad4e08caafe62aaaf57d3efc1a3f7fbcc7544732f6f6c08e9b0f37c4"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "status": "FROZEN_LOCAL_PROPOSAL_CONFIRMED_MOCK_ONLY",
+  "files": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "source": "/dev/shm/luxestyle-review/r269/source/sections/luxe-edit-home.liquid",
+      "candidate": "/dev/shm/luxestyle-review/r269/theme/candidate/sections/luxe-edit-home.liquid",
+      "sha256": "7307abbe1299543c4c4b10f421f08ddc210e5614c51a5a21e9ba5080fb365fe5",
+      "bytes": 71020,
+      "originalSHA256": "d3b188ece1e567f8e36dfbd818b0328f6e35f38a8fcc89412ca0ad07d0c067b4"
+    },
+    {
+      "filename": "locales/en.default.schema.json",
+      "source": "/dev/shm/luxestyle-review/r269/source/locales/en.default.schema.json",
+      "candidate": "/dev/shm/luxestyle-review/r269/theme/candidate/locales/en.default.schema.json",
+      "sha256": "2887de63b7ca7326b230e0d4a565c0527174ced23913498de14ed073d6560005",
+      "bytes": 52826,
+      "originalSHA256": "2be6e52a5eef283262a973e6fc3f15f8d585449b6536aa50bbf98aa3801914ae"
+    },
+    {
+      "filename": "locales/de.schema.json",
+      "source": "/dev/shm/luxestyle-review/r269/source/locales/de.schema.json",
+      "candidate": "/dev/shm/luxestyle-review/r269/theme/candidate/locales/de.schema.json",
+      "sha256": "e45112faaf051a1a2c220d955e16ff80026616cdf6e51d87ec5a0c3002623b08",
+      "bytes": 51698,
+      "originalSHA256": "92ee05ce0f1c9e32d531a9bd5ca3bff04b3f6fb5ff4cd203d77aba4c98be7ac6"
+    },
+    {
+      "filename": "locales/fr.schema.json",
+      "source": "/dev/shm/luxestyle-review/r269/source/locales/fr.schema.json",
+      "candidate": "/dev/shm/luxestyle-review/r269/theme/candidate/locales/fr.schema.json",
+      "sha256": "129aa4e4546ace6bfcc997324a960e87891211823fc6fab7f53161fbdacefc8c",
+      "bytes": 53016,
+      "originalSHA256": "8fd575acbea6ad2617e7f5945f3cffdacc0aa09e4449617c3bc60f65e229e9c0"
+    },
+    {
+      "filename": "templates/index.json",
+      "source": "/dev/shm/luxestyle-review/r269/source/templates-index.json",
+      "candidate": "/dev/shm/luxestyle-review/r269/theme/candidate/templates/index.json",
+      "sha256": "ee72ef06176da2bd1ce434112a1e1e8730f1b4cc79b69e84552e917a9f47be20",
+      "bytes": 2872,
+      "originalSHA256": "e3c651d814afdf874fba97072ae3109407f93de51f35b64a5cdf17dc3e5fb995"
+    }
+  ],
+  "confirmedImagePicker": "shopify://shop_images/luxe-atelier-hero-r269.webp",
+  "externalWrites": 0,
+  "mockQA": "CONFIRMED_MOCK_ONLY",
+  "mockQASummary": "../quality/MOCK-QA-summary.json",
+  "nativeThemeSave": "NOT_CONFIRMED",
+  "nativeLiquidRender": "NOT_CONFIRMED",
+  "livePublication": "NOT_PERFORMED",
+  "frozenAtUTC": "2026-11-16T20:52:16.293259+00:00"
+}

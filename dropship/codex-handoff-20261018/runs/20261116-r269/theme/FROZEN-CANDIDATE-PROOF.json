@@ -1,0 +1,82 @@
+{
+  "status": "FINAL_LOCAL_CANDIDATE_FROZEN",
+  "candidateFiles": [
+    {
+      "filename": "sections/luxe-edit-home.liquid",
+      "sha256": "7307abbe1299543c4c4b10f421f08ddc210e5614c51a5a21e9ba5080fb365fe5",
+      "bytes": 71020,
+      "originalSHA256": "d3b188ece1e567f8e36dfbd818b0328f6e35f38a8fcc89412ca0ad07d0c067b4"
+    },
+    {
+      "filename": "locales/en.default.schema.json",
+      "sha256": "2887de63b7ca7326b230e0d4a565c0527174ced23913498de14ed073d6560005",
+      "bytes": 52826,
+      "originalSHA256": "2be6e52a5eef283262a973e6fc3f15f8d585449b6536aa50bbf98aa3801914ae"
+    },
+    {
+      "filename": "locales/de.schema.json",
+      "sha256": "e45112faaf051a1a2c220d955e16ff80026616cdf6e51d87ec5a0c3002623b08",
+      "bytes": 51698,
+      "originalSHA256": "92ee05ce0f1c9e32d531a9bd5ca3bff04b3f6fb5ff4cd203d77aba4c98be7ac6"
+    },
+    {
+      "filename": "locales/fr.schema.json",
+      "sha256": "129aa4e4546ace6bfcc997324a960e87891211823fc6fab7f53161fbdacefc8c",
+      "bytes": 53016,
+      "originalSHA256": "8fd575acbea6ad2617e7f5945f3cffdacc0aa09e4449617c3bc60f65e229e9c0"
+    },
+    {
+      "filename": "templates/index.json",
+      "sha256": "ee72ef06176da2bd1ce434112a1e1e8730f1b4cc79b69e84552e917a9f47be20",
+      "bytes": 2872,
+      "originalSHA256": "e3c651d814afdf874fba97072ae3109407f93de51f35b64a5cdf17dc3e5fb995"
+    }
+  ],
+  "sourceReview": "PASS_LIMITED_LOCAL_REVIEW_25_OF_25",
+  "mockQA": "PASS_MOCK_ONLY",
+  "nativeThemeSave": "NOT_CONFIRMED",
+  "nativeLiquidRender": "NOT_CONFIRMED",
+  "externalWritesByDesignAgent": 0,
+  "artifacts": [
+    {
+      "path": "theme/HERO-DESIGN-MANIFEST.json",
+      "sha256": "df6bfaa6bc1a45b1434943f1fa069225e7ffdadbc1c4fe4dd2342c60706a1f58",
+      "bytes": 2609
+    },
+    {
+      "path": "theme/HERO-DESIGN.patch",
+      "sha256": "3513abb42a1dcf7920a5111fbd54b11cb1272c809420a0df0f30dcc78f1f4ba6",
+      "bytes": 10574
+    },
+    {
+      "path": "theme/hero-mock-fragment.html",
+      "sha256": "ace32107bb5a45ff7c4738456576e751d5cc18051719d423222fa89b61ebda9e",
+      "bytes": 2414
+    },
+    {
+      "path": "theme/hero-campaign.css",
+      "sha256": "ae81c8f3164008b336e574a0c64733641a8bc5257e01504c2644e2fd40ce6b7d",
+      "bytes": 5177
+    },
+    {
+      "path": "theme/LOCAL-CONTRACT-CHECKS.json",
+      "sha256": "f079c819cd51d534e885f6514b6f861ea4e93264f4ceaead160c21c2b6140b31",
+      "bytes": 637
+    },
+    {
+      "path": "theme/MOCK-INPUT-CHECKS.json",
+      "sha256": "eb2efd1d98840bcb2940302729a9af5c39750757051c855226943461afb462f9",
+      "bytes": 558
+    },
+    {
+      "path": "quality/HERO-CANDIDATE-INDEPENDENT-REVIEW.json",
+      "sha256": "da204b86e5dd07ddf44b32d45b601895edf64174e0cef4e93aad4d562ec8e4de",
+      "bytes": 3900
+    },
+    {
+      "path": "quality/MOCK-QA-summary.json",
+      "sha256": "1a2b38cdd18781ea75e53ff0ee2847b3c6df82f235d818184584821844d2fc2b",
+      "bytes": 5683
+    }
+  ]
+}
