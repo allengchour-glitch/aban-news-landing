@@ -160,6 +160,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -289,13 +290,13 @@
   function endGame(){
     state.done = true;
     var s1 = state.scores[1], s2 = state.scores[2];
-    var emoji, title, res;
+    var emoji, title, res, winner=0;
     if(s1 === s2){
       emoji = "🤝";
       title = "Unentschieden!";
       res = "Beide " + s1 + " Punkte. Gut gespielt!";
     } else {
-      var winner = s1 > s2 ? 1 : 2;
+      winner = s1 > s2 ? 1 : 2;
       emoji = "🏆";
       title = (winner===1 ? "🔴 Spieler 1" : "🔵 Spieler 2") + " gewinnt!";
       res = "🔴 " + s1 + " : " + s2 + " 🔵";
@@ -304,6 +305,7 @@
     el("endTitle").textContent = title;
     el("endRes").textContent = res;
     overlay.classList.add("show");
+    if(window.MiniMix) window.MiniMix.finish(winner);
   }
 
   // Native Buttons: Touch, Maus und Tastatur ohne bleibende Eingabesperre

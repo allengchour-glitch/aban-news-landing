@@ -184,6 +184,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -312,6 +313,7 @@
     $("endeTitel").textContent=g;
     $("endeText").textContent="Endstand: Spieler 1  "+state.p1+" : "+state.p2+"  Spieler 2";
     ov.classList.remove("hide");
+    window.MiniMix && MiniMix.finish(state.p1===state.p2?0:state.p1>state.p2?1:2);
   }
 
   function start(){

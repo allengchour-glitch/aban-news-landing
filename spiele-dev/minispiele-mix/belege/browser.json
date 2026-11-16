@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Nur vier Hauptkarten sichtbar",
+      "ok": true
+    },
+    {
+      "name": "Mix ist ein gemeinsamer Einstieg",
+      "ok": true
+    },
+    {
+      "name": "Einzelkatalog anfangs geschlossen",
+      "ok": true
+    },
+    {
+      "name": "Lobby ohne Überlauf 390",
+      "ok": true
+    },
+    {
+      "name": "Lobby ohne Überlauf 640",
+      "ok": true
+    },
+    {
+      "name": "Lobby ohne Überlauf 1280",
+      "ok": true
+    },
+    {
+      "name": "20 Disziplinen zum Üben erreichbar",
+      "ok": true
+    },
+    {
+      "name": "UI erzeugt drei verschiedene Runden mit Namen",
+      "ok": true
+    },
+    {
+      "name": "Echter Drei-gewinnt-Sieg zählt drei Punkte",
+      "ok": true
+    },
+    {
+      "name": "Zwischenstand übersteht Reload",
+      "ok": true
+    },
+    {
+      "name": "Echtes Rhythmusergebnis zählt für Spieler 2",
+      "ok": true
+    },
+    {
+      "name": "Fremde/doppelte Meldung ohne Wirkung",
+      "ok": true
+    },
+    {
+      "name": "Drei echte Disziplinen ergeben einen Gesamtsieger",
+      "ok": true
+    },
+    {
+      "name": "Querformat gibt Disziplin volle Bildschirmhöhe",
+      "ok": true
+    },
+    {
+      "name": "Rückkehr verwirft nur die laufende Runde ohne Punkte",
+      "ok": true
+    },
+    {
+      "name": "Reload einer laufenden Runde setzt sie ungewertet neu an",
+      "ok": true
+    },
+    {
+      "name": "Keine JavaScript-Fehler",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "scope": "Echte Drei-gewinnt-, Rhythmus- und Rennsiege, Reihenfolge als Speicher-Fixture, kontrollierte Browserzeit in zwei Zeitspielen; kein Ergebnis direkt gesetzt."
+}

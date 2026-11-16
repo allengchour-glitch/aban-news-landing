@@ -146,6 +146,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -272,6 +273,7 @@
       confetti();
     }
     endScreen.classList.remove('hidden');
+    window.MiniMix && MiniMix.finish(score1===score2?0:score1>score2?1:2);
   }
 
   // Eingaben: Touch + Maus, doppelte Auslösung verhindern

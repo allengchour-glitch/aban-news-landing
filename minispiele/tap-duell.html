@@ -138,6 +138,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script id="game-logic">
 /* Reine Spiellogik; dieselbe Quelle wird ohne Browser geprüft. */
 var GameLogic = (function(){
@@ -188,6 +189,7 @@ var GameLogic = (function(){
     $('endEmoji').textContent=a===b?'🤝':(a>b?'🔴🏆':'🔵🏆');
     $('endDetail').textContent='Treffer: '+players[0].hits+' : '+players[1].hits+' von je '+GameLogic.beats;
     $('endOverlay').classList.remove('hidden');
+    window.MiniMix && MiniMix.finish(a===b?0:a>b?1:2);
   }
   function loop(now){
     if(!running) return;

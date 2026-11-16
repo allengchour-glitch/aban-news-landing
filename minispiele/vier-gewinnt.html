@@ -120,6 +120,7 @@
     </div>
   </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   const COLS = 7, ROWS = 6;
@@ -326,6 +327,7 @@
     }
     if(winner !== 0) confetti();
     ov.classList.add('show');
+    window.MiniMix && MiniMix.finish(winner);
   }
 
   function confetti(){

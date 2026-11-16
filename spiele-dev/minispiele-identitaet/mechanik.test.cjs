@@ -9,7 +9,7 @@ const ROOT = path.resolve(__dirname, '../..');
 function source(name, hook) {
   let html = fs.readFileSync(path.join(ROOT, 'minispiele', name+'.html'), 'utf8');
   if(hook) html=html.replace(/\}\)\(\);\s*<\/script>/, `window.__miniQA=${hook};})();\n</script>`);
-  const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
+  const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter(m=>! /\bsrc\s*=/.test(m[1])).map(m=>m[2]);
   assert.equal(scripts.length, 2);
   return {html, scripts};
 }

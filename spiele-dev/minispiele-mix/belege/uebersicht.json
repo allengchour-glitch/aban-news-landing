@@ -1,0 +1,74 @@
+{
+  "checks": [
+    {
+      "name": "/spiele.html ohne horizontalen Überlauf 390",
+      "ok": true
+    },
+    {
+      "name": "/spiele.html ohne horizontalen Überlauf 640",
+      "ok": true
+    },
+    {
+      "name": "/spiele.html ohne horizontalen Überlauf 1280",
+      "ok": true
+    },
+    {
+      "name": "13 tatsächliche Spieleinstiege",
+      "ok": true
+    },
+    {
+      "name": "Traumhaus-Hero vorhanden",
+      "ok": true
+    },
+    {
+      "name": "Direktstart neon-racer.html?station=1",
+      "ok": true
+    },
+    {
+      "name": "Direktstart neon-jump.html?station=1",
+      "ok": true
+    },
+    {
+      "name": "Direktstart neon-survivor.html?station=1",
+      "ok": true
+    },
+    {
+      "name": "Direktstart neon-dungeon.html?station=1",
+      "ok": true
+    },
+    {
+      "name": "Direktstart neon-park.html",
+      "ok": true
+    },
+    {
+      "name": "/minispiele/ ohne horizontalen Überlauf 390",
+      "ok": true
+    },
+    {
+      "name": "/minispiele/ ohne horizontalen Überlauf 640",
+      "ok": true
+    },
+    {
+      "name": "/minispiele/ ohne horizontalen Überlauf 1280",
+      "ok": true
+    },
+    {
+      "name": "Aktuelle Regel Schalt-Rennen",
+      "ok": true
+    },
+    {
+      "name": "Aktuelle Regel Ausdauer",
+      "ok": true
+    },
+    {
+      "name": "Aktuelle Regel Takt",
+      "ok": true
+    },
+    {
+      "name": "Keine Laufzeitfehler",
+      "ok": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

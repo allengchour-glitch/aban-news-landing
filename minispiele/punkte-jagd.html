@@ -162,6 +162,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -328,6 +329,7 @@
       sub.textContent = "Mit " + b + " gegen " + a + " Sternen. Toll gefangen!";
     }
     endOv.classList.remove("hidden");
+    if(window.MiniMix) window.MiniMix.finish(a>b?1:b>a?2:0);
   }
 
   document.getElementById("startBtn").addEventListener("click", startGame);

@@ -104,6 +104,7 @@
   </div>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -413,6 +414,7 @@
 
     var emoji='🏆', title='', text='';
     var bs = snakes.blue.score, ps = snakes.pink.score;
+    var winner = bs>ps?1:ps>bs?2:0; // Spieler 1 = Blau, Spieler 2 = Pink.
 
     if(reason==='crash'){
       if(loser==='both'){
@@ -423,9 +425,11 @@
         else if(ps>bs){ title='🩷 Pink gewinnt!'; emoji='🩷'; }
         else { title='Unentschieden!'; emoji='🤝'; }
       } else if(loser==='blue'){
+        winner=2;
         emoji='🩷'; title='🩷 Pink gewinnt!';
         text = '🔵 Blau ist gecrasht. '+scoreLine(bs,ps);
       } else {
+        winner=1;
         emoji='🔵'; title='🔵 Blau gewinnt!';
         text = '🩷 Pink ist gecrasht. '+scoreLine(bs,ps);
       }
@@ -440,6 +444,7 @@
     document.getElementById('endTitle').textContent = title;
     document.getElementById('endText').innerHTML = text;
     document.getElementById('endScreen').classList.remove('hidden');
+    if(window.MiniMix) window.MiniMix.finish(winner);
   }
   function scoreLine(b,p){
     return '<br>🔵 '+b+' 🍎 &nbsp;·&nbsp; 🩷 '+p+' 🍎';

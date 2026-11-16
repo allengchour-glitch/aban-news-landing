@@ -152,6 +152,7 @@
   <button class="btn" id="obtn"></button>
 </div>
 
+<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
 <script>
 (function(){
   "use strict";
@@ -285,6 +286,7 @@
     els.rsub.textContent = "Endstand " + score[1] + " : " + score[2] + " — Best of 5";
     els.obtn.textContent = "🔁 Nochmal";
     els.obtn.onclick = restart;
+    window.MiniMix && MiniMix.finish(winP);
   }
 
   function nextRound(){

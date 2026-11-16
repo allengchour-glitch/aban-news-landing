@@ -131,6 +131,7 @@ footer a{color:var(--purple);text-decoration:none}
 
 .hero-start{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;margin-top:22px;padding:12px 24px;border-radius:10px;background:#b4c79c;color:#20362a;text-decoration:none;font-weight:800}
 .hero-start:hover{background:#c4d4af}.hero-start:focus-visible{outline:3px solid #e7d49f;outline-offset:5px}
+.more-games{margin-top:32px}.more-games>summary{cursor:pointer;padding:16px;border:1px solid #52614c;border-radius:12px;min-height:48px;font-weight:700}.more-games>summary:focus-visible{outline:3px solid #e7d49f;outline-offset:4px}
 </style>
 </head>
 <body>
@@ -162,7 +163,7 @@ footer a{color:var(--purple);text-decoration:none}
     }catch(e){try{localStorage.removeItem("aban_last_game");}catch(_){}}
     document.addEventListener("click",function(ev){
       var a=ev.target&&ev.target.closest?ev.target.closest("a"):null;if(!a||a.id==="contLink")return; /* 🩹 eigener Link zählt nicht (sonst „▶ Weiterspielen:"-Präfix-Schneeball) */
-      var h=a.getAttribute("href")||"";if(!/^\/?(neon-|lebenspfad|traumhaus)/.test(h))return;
+      var h=a.getAttribute("href")||"";if(!/^\/?(neon-|lebenspfad|traumhaus|minispiele)/.test(h))return;
       var nm=a.getAttribute("data-game-name")||(a.querySelector("h2,h3,b,strong")||{}).textContent||a.textContent||"Spiel";
       try{localStorage.setItem("aban_last_game",JSON.stringify({href:h,name:nm.trim().slice(0,40)}));}catch(e){}
     },true);
@@ -189,7 +190,7 @@ footer a{color:var(--purple);text-decoration:none}
   <div class="pbar">
     <button class="pname" id="pName" type="button">👤 Namen wählen</button>
     <button class="pname" id="installBtn" type="button" style="display:none;border-color:#6affc0;color:#eafff5">📲 Als App installieren</button>
-    <div class="chips" id="chips" aria-label="Deine Rekorde"></div>
+    <div class="chips" id="chips" role="group" aria-label="Deine Rekorde"></div>
   </div>
 
   <h2 class="sect">Weitere Spielwelten</h2>
@@ -241,6 +242,15 @@ footer a{color:var(--purple);text-decoration:none}
     </a>
   </div>
 
+  <h2 class="sect">Ein Spiel für euren Spieleabend</h2>
+  <div class="grid-games">
+    <a class="card" href="/minispiele/" style="--c:#a4e1c3" data-game-name="Minispiele-Mix">
+      <div class="emo">🎮</div><span class="tag">2 Spieler · 1 Gerät · Gemeinsame Punktewertung</span>
+      <h2>Minispiele-Mix</h2><p>Ein Rundenspiel mit wechselnden Disziplinen: Rhythmus, Rennen, Rätsel und mehr. Spielt 3, 5 oder 7 Runden und holt euch den Gesamtsieg.</p><span class="play">Mix starten</span>
+    </a>
+  </div>
+
+  <details class="more-games"><summary>Weitere Spielwelten &amp; einzelne Disziplinen</summary>
   <h2 class="sect">Ausserdem in der Arcade</h2>
   <div class="grid-games">
     <a class="card" href="/neon-flug.html" style="--c:#81e9df">
@@ -285,13 +295,7 @@ footer a{color:var(--purple);text-decoration:none}
       <h2>Katakomben des Koloss</h2><p>Überwinde den Fackel-Parcours und lies die Angriffe des Koloss: Steinwellen, gerichteter Frost und sichere Lava-Zonen verlangen unterschiedliche Antworten.</p><span class="play">In die Katakomben</span>
     </a>
 
-    <a class="card" href="/minispiele/" style="--c:#5ef2ff">
-      <div class="emo">🎮</div>
-      <span class="tag">20 Spiele · 2 Spieler · 1 Gerät</span>
-      <h2>Minispiele-Sammlung</h2>
-      <p>20 schnelle Duelle für zwei an einem Gerät: Pong, Vier gewinnt, Reaktions-Duell, Elfmeter, Tauziehen &amp; mehr. Die gleichen Spiele warten auch <b>im Lebenspfad</b> auf den Ereignisfeldern.</p>
-      <span class="play">Duell starten</span>
-    </a>
+
 
     <a class="card" href="/wort-des-tages.html" style="--c:#ffcf6e">
       <div class="emo">🔤</div>
@@ -325,6 +329,8 @@ footer a{color:var(--purple);text-decoration:none}
     <a href="/neon-zusammen.html">🤝 Tempel der Zwei — Koop-Rätsel</a> ·
     <a href="/neon-park.html">🎢 Lichterpremiere — vier Regie-Fahrten</a>
   </div>
+
+  </details>
 
   <div class="cta">
     <strong>Mehr von aban?</strong>
@@ -370,7 +376,7 @@ footer a{color:var(--purple);text-decoration:none}
     if(bar){
       if(chips.length){
         var t=document.createElement("span");t.className="chip total";
-        t.textContent="🏆 Fortschritt in "+withProgress+" von "+GAMES_TOTAL+" Spielen";bar.appendChild(t);
+        t.textContent="🏆 Fortschritt in "+withProgress+" von "+GAMES_TOTAL+" Spielen und Bereichen";bar.appendChild(t);
         for(var j=0;j<chips.length;j++){var s=document.createElement("span");s.className="chip";s.textContent=chips[j];bar.appendChild(s);}
       }else{
         var e0=document.createElement("span");e0.className="chip";

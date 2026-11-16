@@ -1,95 +1,38 @@
 <!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta name="aban-nav" content="off">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>🎮 Minispiele — Lebenspfad</title>
-<link rel="canonical" href="https://abannews.com/minispiele/index.html">
-<meta name="description" content="20 kostenlose Mini-Spiele für zwei Personen an einem Handy — ohne Anmeldung, direkt im Browser.">
-<meta property="og:title" content="🎮 Minispiele — Lebenspfad">
-<meta property="og:image" content="https://abannews.com/og-arcade.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta property="og:description" content="20 kostenlose Mini-Spiele für zwei Personen an einem Handy — ohne Anmeldung, direkt im Browser.">
-<meta property="og:url" content="https://abannews.com/minispiele/index.html">
-<meta property="og:type" content="website">
-<style>
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{margin:0;padding:0}
-  body{font-family:-apple-system,"Segoe UI",Roboto,system-ui,sans-serif;color:#22405a;
-    background:linear-gradient(160deg,#bce6ff 0%,#dff2ff 45%,#eaf7ff 100%);min-height:100vh;
-    background-attachment:fixed;padding:0 14px 40px}
-  header{max-width:760px;margin:0 auto;padding:16px 4px 8px;display:flex;align-items:center;gap:12px;position:sticky;top:0;
-    background:#bce6ff;z-index:5}
-  .back{border:none;background:#ffffff;color:#2a6ab0;font-weight:800;font-size:15px;border-radius:14px;
-    padding:10px 14px;box-shadow:0 3px 10px rgba(40,90,150,.18);cursor:pointer}
-  .back:active{transform:translateY(1px)}
-  h1{font-size:22px;margin:0;font-weight:900;letter-spacing:.3px}
-  .sub{max-width:760px;margin:0 auto 12px;padding:0 4px;color:#3a6a8a;font-weight:600;font-size:14px}
-  .sub .hint{display:block;margin-top:6px;font-size:12.5px;font-weight:600;color:#5a7a94}
-  .sub .hint a{color:#2a6ab0;font-weight:800;text-decoration:none}
-  .sub .hint a:hover{text-decoration:underline}
-  .grid{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
-  a.card{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-decoration:none;
-    background:#fff;border-radius:14px;padding:16px 10px 14px;box-shadow:0 4px 14px rgba(40,90,150,.15);
-    border:3px solid #fff;transition:transform .12s,box-shadow .12s,border-color .12s;color:#22405a;min-height:132px}
-  a.card:active{transform:scale(.96)}
-  a.card:hover{border-color:#7cc7ff;box-shadow:0 6px 18px rgba(40,90,150,.25)}
-  .emo{font-size:44px;line-height:1.1;margin-bottom:6px}
-  .nm{font-weight:900;font-size:15px;text-align:center;margin-bottom:3px}
-  .ds{font-size:11.5px;color:#6a8398;text-align:center;line-height:1.3}
-  .pill{display:inline-block;margin-top:7px;background:#eaf6ff;color:#2a7db0;font-weight:800;font-size:10.5px;
-    padding:2px 8px;border-radius:14px}
-  footer{max-width:760px;margin:20px auto 0;text-align:center;color:#5a7a94;font-size:12px}
-</style>
-</head>
-<body>
-<header>
-  <button class="back" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{location.href='/lebenspfad.html'}">← Lebenspfad</button>
-  <h1>🎮 Minispiele</h1>
-</header>
-<div class="sub">Kleine Spiele für zwischendurch — zu zweit auf einem Gerät. Wählt ein Spiel!
-  <span class="hint">💡 Alle 20 Spiele stecken auch im Brettspiel <a href="/lebenspfad.html">🎲 Lebenspfad</a> — dort fordern sie euch unterwegs heraus.</span></div>
-<div class="grid" id="grid"></div>
-<noscript>
+<html lang="de"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="aban-nav" content="off"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Minispiele-Mix – ein Spiel, viele Runden | aban Arcade</title>
+<meta name="description" content="Ein gemeinsames Rundenspiel für zwei: wechselnde Minispiele, gemeinsame Punkte und ein Gesamtsieger. Gratis an einem Gerät spielen.">
+<link rel="canonical" href="https://abannews.com/minispiele/">
+<meta property="og:title" content="Minispiele-Mix – ein Spiel, viele Runden">
+<meta property="og:description" content="Spielt drei, fünf oder sieben verschiedene Disziplinen. Wer holt den Gesamtsieg?">
+<meta property="og:image" content="https://abannews.com/og-arcade.jpg"><meta property="og:type" content="website">
+<link rel="stylesheet" href="/css/minispiele-mix.css?v=8e9bb1a44cc4">
+</head><body>
+<header class="top"><a href="/spiele.html">← Arcade</a><span>ABAN · MINISPIELE-MIX</span></header>
+<main id="lobby">
+  <section class="intro"><p class="eyebrow">Zwei Spieler · Ein Gerät</p><h1>Ein Mix.<br>Ein Gesamtsieg.</h1><p>Rhythmus, Rennen, Rätsel: Jede Runde bringt eine andere Disziplin. Sammelt gemeinsam Punkte über den ganzen Mix.</p><div class="symbols" aria-hidden="true">🏁 <span>＋</span> 🧠 <span>＋</span> 🎯</div></section>
+  <section class="setup panel" aria-labelledby="setupTitle"><h2 id="setupTitle">Euer Minispiele-Mix</h2><p>Ein Sieg gibt 3 Punkte, ein Unentschieden je 1 Punkt. Keine Disziplin kommt im selben Mix doppelt vor.</p>
+  <form id="setup"><div class="names"><label>Spieler 1<input type="text" id="name1" maxlength="20" value="Spieler 1" autocomplete="off"></label><label>Spieler 2<input type="text" id="name2" maxlength="20" value="Spieler 2" autocomplete="off"></label></div>
+  <fieldset><legend>Wie viele Runden?</legend><label><input type="radio" name="rounds" value="3">3 · Kurz</label><label><input type="radio" name="rounds" value="5" checked>5 · Mix</label><label><input type="radio" name="rounds" value="7">7 · Lang</label></fieldset>
+  <button class="primary" type="submit">Mix starten <span aria-hidden="true">→</span></button></form>
+  <button type="button" id="resume" class="secondary" hidden>Gespeicherten Mix fortsetzen</button><p id="resumeInfo" class="note" hidden></p>
+  <p class="note">Ihr bleibt Spieler 1 und Spieler 2. Die Steuerung wird vor jeder Disziplin erklärt. Ein laufender Mix wird auf diesem Gerät gespeichert.</p></section>
+  <details id="einzeln"><summary>Nur ein einzelnes Minispiel üben</summary><p>Diese 20 Disziplinen sind Teil des Mix. Zum Üben könnt ihr sie auch einzeln starten.</p><div class="grid" id="grid"></div><noscript>
   <div style="max-width:900px;margin:12px auto;padding:14px;line-height:2;font-size:.92rem;text-align:center">
     <strong>Alle Minispiele:</strong><br><a href="drei-gewinnt.html">⭕ Drei gewinnt</a> · <a href="vier-gewinnt.html">🔴 Vier gewinnt</a> · <a href="memory.html">🃏 Memory</a> · <a href="schere-stein-papier.html">✊ Schere Stein Papier</a> · <a href="reaktions-duell.html">⚡ Reaktions-Duell</a> · <a href="tap-duell.html">👆 Tipp-Duell</a> · <a href="pong.html">🏓 Pong</a> · <a href="tauziehen.html">🪢 Tauziehen</a> · <a href="mathe-duell.html">➗ Mathe-Duell</a> · <a href="farb-klick.html">🎨 Farb-Klick</a> · <a href="elfmeter.html">⚽ Elfmeterschiessen</a> · <a href="hoch-tief.html">🎴 Höher oder Tiefer</a> · <a href="simon.html">🟩 Farben merken</a> · <a href="schlange-duell.html">🐍 Schlangen-Duell</a> · <a href="ballon-pump.html">🎈 Ballon-Wettpumpen</a> · <a href="auto-rennen.html">🏎️ Schalt-Rennen</a> · <a href="maulwurf.html">🔨 Maulwurf klopfen</a> · <a href="quiz-buzzer.html">❓ Quiz-Buzzer</a> · <a href="stapel-turm.html">🧱 Stapel-Turm</a> · <a href="punkte-jagd.html">🌟 Punkte-Jagd</a>
   </div>
-</noscript>
-<footer>20 lokale Duelle · für 2 Spieler am selben Gerät 🎉<br><a href="/suchmaschine.html">Suche</a> · <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
-<script>
-  var GAMES=[
-    {s:"drei-gewinnt",e:"⭕",n:"Drei gewinnt",d:"Tic-Tac-Toe: drei in einer Reihe"},
-    {s:"vier-gewinnt",e:"🔴",n:"Vier gewinnt",d:"Steine fallen lassen, vier in Reihe"},
-    {s:"memory",e:"🃏",n:"Memory",d:"Paare finden, wer mehr hat gewinnt"},
-    {s:"schere-stein-papier",e:"✊",n:"Schere Stein Papier",d:"Best of 5, verdeckt wählen"},
-    {s:"reaktions-duell",e:"⚡",n:"Reaktions-Duell",d:"Bei Grün zuerst tippen"},
-    {s:"tap-duell",e:"👆",n:"Tipp-Duell",d:"Zwölf Beats: genau im Takt treffen"},
-    {s:"pong",e:"🏓",n:"Pong",d:"Der Klassiker, erster mit 5"},
-    {s:"tauziehen",e:"🪢",n:"Tauziehen",d:"Kraft dosieren und Ausdauer erholen"},
-    {s:"mathe-duell",e:"➗",n:"Mathe-Duell",d:"Wer schneller rechnet punktet"},
-    {s:"farb-klick",e:"🎨",n:"Farb-Klick",d:"Stroop: richtige Farbe zuerst"},
-    {s:"elfmeter",e:"⚽",n:"Elfmeterschiessen",d:"Schütze vs. Torwart, 5 Schüsse"},
-    {s:"hoch-tief",e:"🎴",n:"Höher oder Tiefer",d:"Nächste Karte höher/tiefer?"},
-    {s:"simon",e:"🟩",n:"Farben merken",d:"Leuchtfolge nachtippen"},
-    {s:"schlange-duell",e:"🐍",n:"Schlangen-Duell",d:"Sammle Äpfel, crashe nicht"},
-    {s:"ballon-pump",e:"🎈",n:"Ballon-Wettpumpen",d:"Aufpumpen ohne zu platzen"},
-    {s:"auto-rennen",e:"🏎️",n:"Schalt-Rennen",d:"Gas halten und im grünen Bereich schalten"},
-    {s:"maulwurf",e:"🔨",n:"Maulwurf klopfen",d:"20s — wer mehr trifft"},
-    {s:"quiz-buzzer",e:"❓",n:"Quiz-Buzzer",d:"Zuerst buzzern & antworten"},
-    {s:"stapel-turm",e:"🧱",n:"Stapel-Turm",d:"Höher stapeln, bei Gleichstand präziser"},
-    {s:"punkte-jagd",e:"🌟",n:"Punkte-Jagd",d:"Sterne fangen in 30s"}
-  ];
-  var g=document.getElementById("grid");
-  var last=(function(){try{return localStorage.getItem("mini_last")||"";}catch(e){return "";}})();
-  GAMES.forEach(function(x){
-    var a=document.createElement("a");a.className="card";a.href=x.s+".html";
-    var mark=(x.s===last)?'<span class="pill" style="background:#fff0d6;color:#b07a2a">🕑 Zuletzt gespielt</span> ':"";
-    a.innerHTML='<span class="emo">'+x.e+'</span><span class="nm">'+x.n+'</span><span class="ds">'+x.d+'</span>'+mark+'<span class="pill">👥 2 Spieler</span>';
-    a.addEventListener("click",function(){try{localStorage.setItem("mini_last",x.s);}catch(e){}});
-    if(x.s===last)g.insertBefore(a,g.firstChild);else g.appendChild(a);
-  });
-</script>
-</body>
-</html>
+</noscript></details>
+</main>
+<section id="match" hidden aria-label="Aktueller Mix"><div class="matchTop"><a href="/spiele.html">← Arcade</a><strong id="roundLabel"></strong><button type="button" id="menu" class="secondary">Mix-Menü</button></div>
+  <div class="scoreboard"><div><span id="p1"></span><b id="score1">0</b></div><span class="scoreDivider">PUNKTE</span><div><span id="p2"></span><b id="score2">0</b></div></div>
+  <div id="stage" class="panel" aria-live="polite"><p id="stageTag" class="eyebrow"></p><div id="stageIcon" aria-hidden="true"></div><h1 id="stageTitle" tabindex="-1">Nächste Runde</h1><p id="stageText"></p><button type="button" id="action" class="primary"></button></div>
+  <ol id="roundList" aria-label="Rundenübersicht"></ol>
+</section>
+<section id="arena" hidden aria-label="Disziplin spielen"><div class="arenaBar"><span id="arenaRound"></span><button type="button" id="skip">Runde abbrechen</button></div><div id="frameSlot"></div><div id="loadError" hidden><p>Das Spiel konnte nicht geladen werden.</p><button type="button" id="retry">Noch einmal laden</button></div></section>
+<p id="storageNotice" class="notice" hidden>Der Browser erlaubt hier kein Speichern. Euer Mix läuft weiter, geht beim Schließen aber verloren.</p>
+<noscript><p>Für den Rundenspiel-Modus bitte JavaScript aktivieren.</p></noscript>
+<footer><a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a></footer>
+<script src="/js/minispiele-mix/catalog.js?v=0747f67c2ac6"></script><script src="/js/minispiele-mix/core.js?v=4cca66e7cc69"></script><script src="/js/minispiele-mix/app.js?v=a5ac1e367114"></script>
+</body></html>
