@@ -94,10 +94,15 @@
   <p class="fine">Secure payment by <strong>card</strong> (Stripe), shown in your local currency at checkout. Instant download. aban news is independent, ad-free and tracking-free. Questions? <a href="mailto:hallo@abannews.com" style="color:#b45309">hallo@abannews.com</a></p>
 </main>
 <footer><div class="wrap">© 2026 aban news · <a href="/en/" style="color:#6b7280">Home</a> · <a href="/shop.html" style="color:#6b7280">Deutsch</a> · <a href="/en/search.html">Search</a> · <a href="/impressum.html">Imprint</a> · <a href="/datenschutz.html">Privacy</a></div></footer>
+<script src="/js/shop-config-en.js"></script>
 <script>
   (function(){
     var el=document.getElementById('shop');
+    var gezeigt;
     function render(items){
+      var stand=JSON.stringify(items);
+      if(stand===gezeigt)return;
+      gezeigt=stand;
       if(!items||!items.length){el.innerHTML='<p>Kits are in preparation. <a href="https://abannews.beehiiv.com/subscribe" style="color:#b45309">Subscribe</a> to hear first.</p>';return;}
       el.innerHTML=items.map(function(p){
         var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Buy — '+p.price+'</a>')
@@ -111,10 +116,12 @@
         if(t){t.style.borderColor='#b45309';t.style.boxShadow='0 0 0 2px rgba(180,83,9,.15)';t.scrollIntoView({block:'center'});}
       }
     }
+    // Vorhandene Kaufkarten zeigen, auch wenn der frische Abruf hängt.
+    render(window.ABAN_SHOP_EN||[]);
     fetch('/data/shop-products-en.json',{cache:'no-store'})
       .then(function(r){return r.ok?r.json():null;})
-      .then(function(d){ render(d||[]); })
-      .catch(function(){ render([]); });
+      .then(function(d){ render(Array.isArray(d)&&d.length?d:(window.ABAN_SHOP_EN||[])); })
+      .catch(function(){ render(window.ABAN_SHOP_EN||[]); });
   })();
 </script>
 <script defer src="/js/announce.js"></script>
