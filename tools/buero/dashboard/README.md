@@ -23,7 +23,7 @@ hochlädt (so stand es bis 10.11. in `docs/KI-BUERO-SEITE.md`), löscht die Seit
 python3 -I tools/buero/dashboard/bauen.py <Ordner> --dokumente
 ```
 
-schreibt `index.html`, `lx-offen.css`, `lx-offen.js`, `lx-suche.css`, `lx-suche.js` und unter `dok/` je ein Dokument
+schreibt `index.html`, `kb-stil.css`, `lx-offen.css`, `lx-offen.js`, `lx-suche.css`, `lx-suche.js` und unter `dok/` je ein Dokument
 `{text, edit}` zum Hochladen. Die Büro-Seite steht Zeichen für Zeichen in ihrem Abschnitt. Die Zeichnungen der Seite
 «Offene Punkte» heissen im Dashboard `op-zahl`, `op-balken`, `op-tabelle` (in `offen.html` weiter `zahl`, `balken`,
 `tabelle`), weil die Suchanfragen-Seite ebenfalls eine Zeichnung `zahl` hat. Der Bau bricht ab, wenn
@@ -33,11 +33,11 @@ schreibt `index.html`, `lx-offen.css`, `lx-offen.js`, `lx-suche.css`, `lx-suche.
 - eine der zwei neuen Seiten fremde Klassen trägt oder ihr Stil ein nacktes Element trifft (er würde auf das Büro abfärben),
 - ein Dokument grösser als 250 000 Byte würde (die Grenze des Dashboards ist 256 KB je Dokument).
 
-**Grösse (Stand 16.11.2026, Fassung `campus-einheitlich-20` mit der Kanal-Tabelle):** `index.html` hat als Dokument 248 569 Byte,
-also nur noch **1 431 Byte Luft** (`test_bauen.py` nennt die Luft bei jedem Lauf). Die nächste grössere Änderung an
-`tools/buero/seite.html` bricht den Bau mit der Grössenmeldung ab. Abhilfe: den Stil der Büro-Seite (rund 50 KB) beim Bauen in
-eine eigene Datei auslagern (`<link rel="stylesheet" href="kb-stil.css">`, der Dashboard-Typ lädt eigene Stil-Dateien), so wie
-es für die zwei neuen Seiten schon geschieht. Nicht kürzen, was der Besitzer sieht.
+**Grösse (Stand 16.11.2026, Fassung `campus-einheitlich-21`):** Der Büro-Stil wird jetzt vollständig
+als `kb-stil.css` ausgegeben. `index.html` bleibt dadurch deutlich unter 250 000 Byte; der Bau prüft weiterhin
+jedes gespeicherte Dokument. Gerüst und Skripte aller drei Seiten bleiben erhalten; der Test rekonstruiert
+auch den ursprünglichen Büro-Stil bytegenau. Beim Übertragen **kb-stil.css vor index.html** hochladen.
+Die eigenständige `seite.html` und die öffentliche Webansicht tragen den Stil weiterhin selbst.
 
 ## Kanäle laut Metricool (seit 16.11.2026 im Repo)
 
@@ -63,7 +63,7 @@ Name als `id` in den Dateien der Seite steht: darum die schlichten Namen und kei
 
 1. `ArtifactData get` für `files/index.html` (ohne den Text zu drucken: `out_dir`), Version merken. Hat jemand die Seite im
    Dashboard von Hand geändert, weicht der Text von `tools/buero/seite.html` ab: dann zuerst die Quelle nachziehen.
-2. EINE `ArtifactData batch`-Anfrage: `files/index.html` (set, `if_version`), `files/lx-*.css|js` (set, mit `if_version`,
+2. EINE `ArtifactData batch`-Anfrage: `files/index.html` (set, `if_version`), `files/kb-stil.css` und `files/lx-*.css|js` (set, mit `if_version`,
    sobald es sie gibt), dazu wie bisher `files/kb3d-code.js`, `files/kb-geldmanager.js` und `datasets/buero`, wenn sie sich
    ändern (`docs/KI-BUERO-SEITE.md`, Abschnitt «Auffrischen»). Als `file_path` dienen die Dateien unter `dok/`.
 3. Nachlesen: `ArtifactData get files/index.html` mit `out_dir` und mit dem gebauten Text vergleichen.

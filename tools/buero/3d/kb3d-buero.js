@@ -430,7 +430,20 @@
         else used2 = false;
         if (used2) { ev.preventDefault(); made.dirty = true; }
       });
+      var licht = 'galerie';
+      var lichtLooks={
+          tag:{lc:[0.60,0.57,0.49],sky:[0.70,0.75,0.80],gnd:[0.43,0.40,0.35],fill:[0.11,0.14,0.16],exposure:1.04},
+          galerie:{lc:[0.63,0.52,0.37],sky:[0.56,0.64,0.70],gnd:[0.40,0.35,0.29],fill:[0.10,0.16,0.17],exposure:1.04},
+          abend:{lc:[0.60,0.37,0.20],sky:[0.37,0.44,0.56],gnd:[0.30,0.27,0.25],fill:[0.10,0.15,0.20],exposure:1.12}
+      };
+
+      made.licht = function () { return licht; };
       made.cmd = function (name) {
+        if(name.indexOf('licht:')===0){
+          var wahl=name.slice(6);
+          if(['tag','galerie','abend'].indexOf(wahl)!==-1){licht=wahl;made.dirty=true;}
+          return;
+        }
         if(name==='bot'){botLaden();focusMonitor('Krypto');return;}
         if(name==='monitor'){focusMonitor(W.live[viewName] ? viewName : 'Zentral');return;}
         if(name.indexOf('monitor:')===0){focusMonitor(name.slice(8));return;}
@@ -473,10 +486,10 @@
       var reduced = !!cfg.reduced;
       made.dprCap = 2;
       function env() {
-        var day = clamp((Math.cos((hour - 13) / 24 * PI * 2) + 0.35) / 1.35, 0, 1);
-        var k = 0.82 + 0.18 * day;
         var L = [-0.45, 0.8, 0.55], l = Math.hypot(L[0], L[1], L[2]);
-        return { l: [L[0] / l, L[1] / l, L[2] / l], lc: [0.50 * k, 0.48 * k, 0.43 * (0.9 + 0.1 * day)], sky: [0.62 * k, 0.64 * k, 0.70 * (0.92 + 0.08 * day)], gnd: [0.47 * k, 0.45 * k, 0.43 * k], shadowA: made.shadows === false ? 0 : 0.20, shadowY: 0.02 };
+        var e=lichtLooks[licht];
+        // Gestaltungswahl, keine Uhrzeit oder Aussage über laufende Arbeit.
+        return {l:[L[0]/l,L[1]/l,L[2]/l],lc:e.lc,sky:e.sky,gnd:e.gnd,fill:e.fill,exposure:e.exposure,shadowA:made.shadows===false?0:0.22,shadowY:0.02};
       }
       function lamp(state) { return col[state] || col.alt; }
 

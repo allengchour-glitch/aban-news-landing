@@ -56,7 +56,7 @@
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
   var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
   SEATS.forEach(function (s) { var r = ROOMS[s.room]; s.x = r.x0 + s.u; s.z = r.z0 + s.v; });
-  K.DESIGN_VERSION = 'campus-einheitlich-20';
+  K.DESIGN_VERSION = 'campus-einheitlich-21';
   K.SEATS = SEATS;
   K.ROOMS = ROOMS;
   K.ROOM_SIZE = [RW, RD];
@@ -244,7 +244,7 @@
 
     /* =============================== CHEFBÜRO =============================== */
     beginRoom('Chefbüro');
-    huelle('Chefbüro', { key: 'fChef', floor: function () { return T.parquet('#b4c6c3', 1); }, sued: [6.6, 9.2] });
+    huelle('Chefbüro', { key: 'fChef', floor: function () { return T.parquet('#b99d79', 1); }, sued: [6.6, 9.2] });
     // Geldmanager-Wand (links) und Liveboard (rechts) an der Nordwand
     W.moneyPanel = { mn: [ROOMS['Chefbüro'].x0 + 0.3, 0.75, ROOMS['Chefbüro'].z0 + 0.1], mx: [ROOMS['Chefbüro'].x0 + 4.7, 3.05, ROOMS['Chefbüro'].z0 + 0.45] };
     B.box(2.5, 1.9, 0.235, 4.4, 2.3, 0.09, '#233d48');
@@ -458,6 +458,12 @@
     B.cyl(0, GY + 0.075, 11.8, 6.43, 6.43, 0.03, 72, '#7fc3b0', 0.12);
     B.cyl(0, GY + 0.1, 11.8, 6.25, 6.25, 0.025, 72, '#d1d7c8');
     var CZ = 11.0, CW = 11.0, CH = 4.8, CY = 3.1;
+    // Akustiklamellen: ein gemeinsames statisches Netz, keine zusätzlichen Texturen.
+    // Hinter dem Monitor, ausserhalb seiner Sichtfläche und Trefferfläche.
+    for(var sl=0;sl<47;sl++){
+      var sx=-6.65+sl*0.289;
+      B.box(sx,2.9,CZ-0.65,0.13,5.4,0.18,sl%3?'#a68a66':'#947655');
+    }
     gehaeuse(0, 0.22, CZ, 12.1, 0.32, 1.6, 0.14, '#335254');
     [-6.1, 6.1].forEach(function(x){
       gehaeuse(x, 3.1, CZ - 0.3, 0.3, 6.0, 0.42, 0.08, '#345c5b');
