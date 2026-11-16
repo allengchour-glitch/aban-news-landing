@@ -1,5 +1,16 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Büro: mehr Arbeitsinhalt und räumliche Details ·16.11.2026
+
+Besitzerauftrag «verbessere mehr inhalt und 3d optik». Eigener Branch codex/buero-inhalt-atmosphaere von mainab10d8f, vor Dokumentation auf maine6cb011 vorgezogen. Regeln, Übergaben und offene Arbeiten abgeglichen; parallele Spiele-/Shop-Arbeit bleibt erhalten. Design23 zählt die geladenen Arbeitsstände in vier getrennten Gruppen: gemeldet, prüfen, veraltet, ohne Messzeit. Filter und Verteilungsbalken helfen, offene Arbeit zu finden. Das vollständige Zentraljournal erhält auch undatierte Einträge und erfolgreiche Läufe mit noch offenem Ergebnis. Karten zeigen den übermittelten nächsten Schritt sowie aufklappbare Quelle/Messzeit als Klartext.
+
+Vorher lokal nachgestellt: geöffnete Quellenangabe blieb beim Neuzeichnen offen, verlor aber den Tastaturfokus. Jetzt bleiben Filterfokus, Quellenfokus und offene Angaben erhalten. Screenshot-Gegenprobe: sieben neu erzeugte Namensschilder waren vor dem nächsten Renderbild über dem geöffneten Monitor sichtbar; die gesamte Beschriftungsebene bleibt dort nun unmittelbar verborgen und kehrt mit der Raumansicht zurück. Statische Wandfelder/Medienmöbel, Kabelwannen, Zentralbank und Holzbänke ergänzen das vorhandene Netz. Keine neuen Modelle, Netzquellen, Bewegungen, Automationen oder Frequenzen; keine privaten Daten im Repository. Campus-, Shop- und Entwicklungsansicht als echte lokale WebGL-Bilder geprüft. Die bestehende Higgsfield-Revision5 wird durch diesen nativen Web-Durchgang nicht geändert.
+
+GEMESSEN:17 Modell-,21 Bot- und44 Bauprüfungen sowie31/31 Bau-Mutationen grün. Synthetische Browserdaten unter tools/buero/pruefung/monitorinhalt.json; panorama.py --inhalt verlangt diese sechs Einträge und prüft Filter, Klartext, Fokus sowie die bestehende Monitor-/Vollbildbedienung auf390/1440px. Vollständige Browser-, echte CI- und Bereitstellungsbelege im zugehörigen PR; Software-WebGL ist kein physischer Handy-Leistungsnachweis. Finanzielle Wirkung nicht gemessen. Nutzen: Prüfbedarf und belegte nächste Schritte schneller erkennen.
+
+Claude: vollständigen Drei-Seiten-Bau inklusive kb-stil.css übernehmen, nicht die rohe seite.html. Vorhandene Dateien/Versionen frisch lesen, private Datensätze, Benutzereingaben und Messzeiten erhalten, atomar mit Versionsbedingungen übertragen und rücklesen. Neue private Bereitstellung erst nach Quittung behaupten. Öffentliche Web-Bereitstellung separat nachweisen.
+
+
 ## Lebenspfad: Atmosphäre und eigene Objekte ·16.11.2026
 
 Besitzerauftrag mit bestehender Live-Freigabe: acht abgestimmte Licht-/Himmelspaletten, korrekt kodierter Nebel, zwei feste Bergzüge und drei selbst modellierte Blender-GLBs. Willkommenstor am Start, Erinnerungsplatz im Familienkapitel, Sternwarte im Lebensabend; sichere Terrainplätze, auch mobil im Bild. Drei Assets zusammen254.156Bytes, fünf Materialien je Modell. Higgsfield-Anschluss hier nicht verfügbar; lokal mit Blender4.3.2 erzeugt, reproduzierbares bpy-Rezept und geprüfter Reimport liegen bei.
