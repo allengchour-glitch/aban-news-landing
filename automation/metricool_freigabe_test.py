@@ -66,6 +66,28 @@ gl([p['handle'] for p in m.finde_produkte('Tennisarmband mit Zirkon ab CHF 16.90
 gl(m.finde_produkte('Ein Plüschtier für Kinder ab 3 Jahren', PRODUKTE), [], 'ein einzelnes gemeinsames Wort reicht nicht')
 gl(m.finde_produkte('Schöne Dinge für dich', PRODUKTE), [], 'kein Treffer')
 
+# ---- Produktlink geht vor Wortvergleich (Lauf 16.11.: Wasserwellen-Text erkannte auch Wasser-Speaker und LED-Rose)
+PRODUKTE_L = PRODUKTE + [prod('LED Wasser-Speaker mit 3D-Ton', 'led-wasser-speaker-mit-3d-ton-e17c58', [39.9]),
+                         prod('Ewige Rose mit LED-Licht', 'ewige-rose-mit-led-licht-718080', [24.9])]
+TW = ('Licht wie Wasserwellen. Die LED-Wasserwellen-Projektionsleuchte wirft bewegte Lichtmuster an Wand und Decke.\n'
+      'https://luxestyle.ch/products/led-wasserwellen-projektionsleuchte-677504?utm_source=youtube&utm_medium=shorts')
+TW_OHNE = TW.split('\n')[0]
+ok(len(m.finde_produkte(TW_OHNE, PRODUKTE_L)) > 1, 'Vorbedingung: ohne Link erkennt der Wortvergleich Nachbarn mit')
+gl([p['handle'] for p in m.finde_produkte(TW, PRODUKTE_L)], ['led-wasserwellen-projektionsleuchte-677504'], 'mit Produktlink nur das verlinkte Produkt')
+gl(m.verlinkte_handles('a https://luxestyle.ch/fr/products/plusch-panda-15-cm-fga25867?x=1 b'), ['plusch-panda-15-cm-fga25867'], 'Sprachpfad /fr/ wird erkannt')
+gl(m.verlinkte_handles('https://LuxeStyle.ch/products/Plusch-Panda-15-cm-fga25867'), ['plusch-panda-15-cm-fga25867'], 'Gross-/Kleinschreibung egal')
+gl(m.verlinkte_handles('luxestyle.ch/products/a-b luxestyle.ch/products/c-d luxestyle.ch/products/a-b'), ['a-b', 'c-d'], 'Reihenfolge, ohne Doppel')
+gl(m.verlinkte_handles('Shop: luxestyle.ch/tt und https://luxestyle.ch/collections/aus-tiktok-und-instagram'), [], 'Sammlungs- und Kurzlinks zählen nicht')
+gl(m.verlinkte_handles('https://example.com/products/plusch-panda-15-cm-fga25867'), [], 'nur Links auf luxestyle.ch')
+gl([p['handle'] for p in m.finde_produkte('Plüsch Panda 15 cm, Shop: luxestyle.ch/tt', PRODUKTE)], ['plusch-panda-15-cm-fga25867'], 'ohne Produktlink gilt der Wortvergleich weiter')
+gl([p['handle'] for p in m.finde_produkte('luxestyle.ch/products/plusch-waschbar-fga41332 und luxestyle.ch/products/plusch-panda-15-cm-fga25867', PRODUKTE)],
+   ['plusch-waschbar-fga41332', 'plusch-panda-15-cm-fga25867'], 'zwei Links: beide, in Textreihenfolge')
+pp, tr = m.pruefe_produkte('Plüsch Panda 15 cm · CHF 19.90\nhttps://luxestyle.ch/products/fremdes-produkt-123456', PRODUKTE)
+gl(tr, [], 'verlinktes Produkt fehlt in der Sammlung: kein Ersatz über Wörter')
+gl(pp, ['verlinktes Produkt nicht in der Wegweiser-Sammlung: fremdes-produkt-123456'], 'klarer Grund beim Halten')
+pp, tr = m.pruefe_produkte(TW, PRODUKTE_L)
+gl((pp, [p['handle'] for p in tr]), ([], ['led-wasserwellen-projektionsleuchte-677504']), 'Wasserwellen-Beitrag besteht mit genau einem Produkt')
+
 # ---- Produkt- und Preisprüfung
 pp, tr = m.pruefe_produkte('Plüsch Panda, 15 cm · CHF 19.90 · Versand CHF 7, ab CHF 50 gratis nach Rabatt', PRODUKTE)
 gl(pp, [], 'richtiger Preis und generische Beträge bestehen')
