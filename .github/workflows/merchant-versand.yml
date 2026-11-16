@@ -1,18 +1,30 @@
 name: Merchant-Versand Liechtenstein
 
-# Modus steht in der Datei dropship/merchant-versand-1111/MODUS (pruefen | schreiben | zurueck),
-# damit jede schreibende Ausführung als eigener Commit sichtbar ist.
+# Versanddienst «Standard Liechtenstein» (CHF 14.90) im Google Merchant Center.
+# - Zeitplan (täglich): Modus «waechter», legt den Dienst nur an, wenn er fehlt, liest mit Wartezeit zurück und meldet
+#   einen Eingriff oder Fehler per Telegram. Anlass: am 15.11.2026 war der am 11.11. angelegte Dienst wieder weg
+#   (Hypothese: die Google-App in Shopify schreibt die Versanddienste neu). Entscheid des Besitzers 15.11.: «a».
+#   Schalter: dropship/merchant-versand-1111/WAECHTER («an» = scharf, alles andere oder Datei fehlt = nur Trockenlauf).
+# - Handstart: Eingabe «modus»; «datei» nimmt den Modus aus dropship/merchant-versand-1111/MODUS (Vorgabe pruefen).
+# - Pull Request: nur der Offline-Test, kein Zugriff auf das Merchant Center.
 on:
+  schedule:
+    - cron: '29 5 * * *'
   workflow_dispatch:
-  push:
-    branches: [claude/shop-bilder-1111]
-    paths: ['.github/workflows/merchant-versand.yml', 'automation/merchant_versand.py', 'dropship/merchant-versand-1111/MODUS']
+    inputs:
+      modus:
+        description: 'datei = Modus aus dropship/merchant-versand-1111/MODUS · pruefen · waechter (anlegen nur wenn er fehlt) · schreiben · zurueck'
+        type: choice
+        options: [datei, pruefen, waechter, schreiben, zurueck]
+        default: datei
+  pull_request:
+    paths: ['.github/workflows/merchant-versand.yml', 'automation/merchant_versand.py', 'automation/merchant_versand_test.py']
 
 permissions:
   contents: read
 
 jobs:
-  versand:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -20,16 +32,64 @@ jobs:
         with:
           sparse-checkout: |
             automation/merchant_versand.py
+            automation/merchant_versand_test.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline-Test (gefälschte Merchant API und Telegram, kein Netz)
+        run: python3 automation/merchant_versand_test.py
+
+  versand:
+    if: github.event_name != 'pull_request'
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Nur ein Lauf gegen das Merchant Center zugleich. Der laufende wird nie abgebrochen; kommt ein dritter dazu,
+    # ersetzt er einen schon wartenden (GitHub hält je Gruppe höchstens einen wartenden Lauf, der ersetzte endet
+    # als «cancelled» ohne Meldung). Pull Requests laufen ohne diese Sperre, sie berühren das Merchant Center nicht.
+    concurrency:
+      group: merchant-versand
+      cancel-in-progress: false
+    outputs:
+      skript: ${{ steps.lauf.outputs.gelaufen }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant_versand.py
             dropship/merchant-versand-1111/MODUS
+            dropship/merchant-versand-1111/WAECHTER
           sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install --quiet google-auth requests
+      - name: Modus bestimmen
+        env:
+          EREIGNIS: ${{ github.event_name }}
+          EINGABE: ${{ inputs.modus }}
+        run: |
+          if [ "$EREIGNIS" = "schedule" ]; then
+            if [ "$(tr -d '[:space:]' < dropship/merchant-versand-1111/WAECHTER 2>/dev/null)" = "an" ]; then M=waechter; else M=pruefen; fi
+          elif [ -n "$EINGABE" ] && [ "$EINGABE" != "datei" ]; then
+            M="$EINGABE"
+          else
+            M="$(tr -d '[:space:]' < dropship/merchant-versand-1111/MODUS 2>/dev/null || echo pruefen)"
+          fi
+          case "$M" in pruefen|waechter|schreiben|zurueck) ;; *) echo "unbekannter Modus: $M"; exit 2 ;; esac
+          echo "MODUS=$M" >> "$GITHUB_ENV"
+          if [ "$EREIGNIS" = "schedule" ]; then echo "ZEITPLAN=1" >> "$GITHUB_ENV"; fi
+          echo "Modus: $M"
       - name: Versand
+        id: lauf
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
-        run: MODUS="$(tr -d '[:space:]' < dropship/merchant-versand-1111/MODUS 2>/dev/null || echo pruefen)" python3 automation/merchant_versand.py
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          echo "gelaufen=1" >> "$GITHUB_OUTPUT"
+          python3 automation/merchant_versand.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -37,3 +97,23 @@ jobs:
           path: versand_vorher.json
           if-no-files-found: ignore
           retention-days: 30
+
+  # Meldet per Telegram, wenn der tägliche Lauf scheitert, bevor das Skript lief (Test rot, Paket-Installation).
+  # Ist das Skript gelaufen, hat es im Wächter-Modus selbst gemeldet; dann keine zweite Meldung. Nennt keine Merchant-Nummer.
+  meldung:
+    if: failure() && github.event_name == 'schedule' && needs.versand.outputs.skript != '1'
+    needs: [test, versand]
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LAUF: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then echo "keine Telegram-Zugangsdaten"; exit 0; fi
+          curl -sS -o /dev/null -w "Telegram HTTP %{http_code}\n" "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=⚠️ Merchant-Versand Liechtenstein: der tägliche Lauf ist gescheitert. ${LAUF}" \
+            --data-urlencode "disable_web_page_preview=true"

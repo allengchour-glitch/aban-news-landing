@@ -70,3 +70,9 @@ Start über Actions «Merchant-Bildprobleme lesen» mit der Eingabe `modus`.
    - Solange die Google-App die Dienste überschreibt, hält ein einmaliges Anlegen nicht.
 
 **Wirkung auf Verkäufe:** klein. Liechtenstein ist ein kleiner Markt, bisher eine Bestellung (#1032). Anzeigen laufen nicht. Die Schweiz ist nicht betroffen.
+
+## Stand 16.11.2026
+
+- **Dienst wieder angelegt 15.11. 23:52 UTC** (Werkzeug `merchant_versand.py`, Modus `schreiben`, eigener Zweig). Ein Lauf eine Minute danach las vier Dienste: die drei Schweizer unverändert und «Standard Liechtenstein».
+- **Täglicher Wächter gebaut** (Besitzer «a»): Workflow `merchant-versand.yml`, Zeitplan 05:29 UTC, Modus `waechter`, Schalter `dropship/merchant-versand-1111/WAECHTER`. Doku, Exit-Codes und Prüfung: `dropship/merchant-versand-1111/README.md`.
+- **Ungemessen:** ob Google die Sperre in Liechtenstein aufhebt (Stunden bis Tage), wann die Google-App die Dienste das nächste Mal neu schreibt.
