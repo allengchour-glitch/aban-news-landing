@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 262,
-  "updatedAt": "2026-11-16T17:10:57Z",
+  "revision": 263,
+  "updatedAt": "2026-11-16T17:30:29Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-16",
     "currentDayEvidenceKind": "R255 Produkttexte, native Reads und öffentliche/mobile QA",
-    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R260: Fünf bestätigte Writes an drei Produkten (3Text/SEO+1Bodyüberschrift+1Optionsname) mit nativer und öffentlicher/mobiler Prüfung; drei weitere Quellenblocker. Keine Kennzahl-/Flow-/GSC-/Bestellwatch-Wiederholung. R261: Acht Shopify-Mutationen (3Produkttexte/SEO,6Medienrelationen in1Batch,2CollectionWrites inkl.Titelwiederherstellung,1responsiveBodykorrektur,8Alttexte in1Batch) nativ/öffentlich geprüft. Ein gezielter Merchantfall und zwei aktuelle Theme-Dateien nur gelesen. Keine MetricoolKennzahl-/Klaviyo-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R262:2ProdukttexteSEO+1FormOptionsname nativ/öffentlich geprüft;3CJDetailreads. Theme555DateiennativeBaseline/fünfPreviewfälle,Publishverweigert. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinMerchantReadWrite.",
+    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R260: Fünf bestätigte Writes an drei Produkten (3Text/SEO+1Bodyüberschrift+1Optionsname) mit nativer und öffentlicher/mobiler Prüfung; drei weitere Quellenblocker. Keine Kennzahl-/Flow-/GSC-/Bestellwatch-Wiederholung. R261: Acht Shopify-Mutationen (3Produkttexte/SEO,6Medienrelationen in1Batch,2CollectionWrites inkl.Titelwiederherstellung,1responsiveBodykorrektur,8Alttexte in1Batch) nativ/öffentlich geprüft. Ein gezielter Merchantfall und zwei aktuelle Theme-Dateien nur gelesen. Keine MetricoolKennzahl-/Klaviyo-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R262:2ProdukttexteSEO+1FormOptionsname nativ/öffentlich geprüft;3CJDetailreads. Theme555DateiennativeBaseline/fünfPreviewfälle,Publishverweigert. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinMerchantReadWrite. R263:4ProdukttexteSEO+2Optionsnamen nativ/öffentlich/mobil geprüft;4CJDetailreads,4kleineSuchen. Ein gezielterMerchantBildverarbeitungsfall ohneWrite. ThemerollenweiterUNPUBLISHED/MAINunverändert. AstraSchlussprüfung. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinSocial/Automation.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-16",
@@ -765,12 +765,12 @@
       "id": "product-attribute-completeness",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r262_two_product_details_live_theme_preview_complete_publish_refused",
+      "state": "r263_four_product_details_live_two_option_labels_merchant_processing_open",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R262_NATIVE_PUBLIC_AND_DRAFT_PREVIEW",
-      "lastEvidence": "R262: Zwei Produkttexte/SEO live und bestehende Organizer-OptionFarbe→Form (3Mutationen);20Varianten erhalten.57Arbeitsidentitäten. Alte Küchenset-Labelabweichung aktuell ohne Write nicht reproduzierbar. OGpreisFix in frischer Kopie214169584007 gespeichert,555nativeBaselineDateiengleich,5Previewfällepass;PublishToolverweigert,MAINbleibt213991391623. Keine Merchant-Zulassung oder Gesamtfehlerfreiheit.",
-      "nextAllowedStep": "Gespeicherten und geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise nachlesen; Connector-Publish nicht blind wiederholen/umgehen. Teetassen-Liefermenge und bisherige Quellenfragen klären; kleine weitere Produktgruppe beleggestützt fortsetzen. R259Tonkonflikt weiterhin offen.",
+      "belegArt": "GEMESSEN_R263_NATIVE_PUBLIC_MOBILE_AND_ASTRA",
+      "lastEvidence": "R263:4Produkttexte/SEO+2Optionsnamen live (6Mutationen),26Varianten erhalten.4CJDetailreads.61Arbeitsidentitäten. QS19Blau Merchant image_link_internal_error trotz korrektem erreichbarem Bild;keinWrite. Theme214169584007 weiterhin UNPUBLISHED,MAIN213991391623;keinPublishretry. Keine Katalogvollständigkeit/0Fehlerbehauptung.",
+      "nextAllowedStep": "Gespeicherten geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise prüfen; Connector-Publish nicht blind wiederholen/umgehen. WC-Passmasse/Einheit und genaue Stückzählung des ersten Küchensets sowie frühere Quellenlücken klären. QS19Blau nur später gezielt nachlesen. Weitere kleine Produktgruppe beleggestützt fortsetzen;R259Tonkonflikt bleibt offen.",
       "blockers": [
         "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
         "Becherhalter: genaue Passform/Montage und Material offen.",
@@ -785,7 +785,10 @@
         "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
         "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED.",
         "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
-        "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN."
+        "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
+        "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
+        "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
+        "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -2063,6 +2066,38 @@
           "sha256": "bcf29a3c657d0b16e671b08f16d559ad6c5f3afa83ab0ca31a6b9d2950751b61",
           "gitBlobSha": "a209b9fe787fec44e28bef549b98675a3f84d2e8",
           "readAt": "2026-11-16T17:10:57Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+          "bytes": 7012,
+          "sha256": "4fdad118a71718e5d854beaa680f6f080a852a9def5aa2e479893b042879cda7",
+          "gitBlobSha": "bda193482142d249fa15c8b8af5514f5fa6dad20",
+          "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R263.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R263.json",
+          "bytes": 221183,
+          "sha256": "93467ce2cde18f916421afa704104b41f7ff6c7acba343d36b3000bf4de556c2",
+          "gitBlobSha": "3318ccea078348351056ca3112edb177e4bb2412",
+          "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+          "bytes": 25151,
+          "sha256": "f9808f9faa505376cbbcfc449c7167844c15bab8538a08bad5b7cacb75b00b54",
+          "gitBlobSha": "5235df4d4d1966fc814ac1ba32636a41352b7d21",
+          "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "MERCHANT-QS19-BILD-20261116-R263.json",
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QS19-BILD-20261116-R263.json",
+          "bytes": 2772,
+          "sha256": "516a5b0a2be363dd013e683e28f9e2df4e62f4766ede78f476064ac39a37494b",
+          "gitBlobSha": "1e5c6ef493f70997b909653166cccd2f7d10461c",
+          "readAt": "2026-11-16T17:30:29Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -5281,6 +5316,33 @@
               "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt."
             ]
           }
+        },
+        {
+          "archivedByRun": "R263",
+          "recordedAt": "2026-11-16T17:30:29Z",
+          "previous": {
+            "state": "r262_two_product_details_live_theme_preview_complete_publish_refused",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R262_NATIVE_PUBLIC_AND_DRAFT_PREVIEW",
+            "lastEvidence": "R262: Zwei Produkttexte/SEO live und bestehende Organizer-OptionFarbe→Form (3Mutationen);20Varianten erhalten.57Arbeitsidentitäten. Alte Küchenset-Labelabweichung aktuell ohne Write nicht reproduzierbar. OGpreisFix in frischer Kopie214169584007 gespeichert,555nativeBaselineDateiengleich,5Previewfällepass;PublishToolverweigert,MAINbleibt213991391623. Keine Merchant-Zulassung oder Gesamtfehlerfreiheit.",
+            "nextAllowedStep": "Gespeicherten und geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise nachlesen; Connector-Publish nicht blind wiederholen/umgehen. Teetassen-Liefermenge und bisherige Quellenfragen klären; kleine weitere Produktgruppe beleggestützt fortsetzen. R259Tonkonflikt weiterhin offen.",
+            "blockers": [
+              "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+              "Becherhalter: genaue Passform/Montage und Material offen.",
+              "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+              "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+              "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+              "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt.",
+              "R261 Reibe Stil3 ohne exakt belegtes Galerie-Einzelbild; keine falsche Zuordnung.",
+              "R261 Brettmaterial widersprüchlich; kein Titan-/Food-Grade-/Antibakteriellnachweis.",
+              "R261 Reflexionstasse: zwölf CJ-Motive, exakte bestehende Variante ungeklärt; ein Verbindungsread0 ist keine leere Historie.",
+              "R261 Merchant-Waage weiterhin DISAPPROVED; OG101.90 vs Auswahl127.90CHF separat belegt, Google-Ursache unbekannt.",
+              "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
+              "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED.",
+              "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
+              "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN."
+            ]
+          }
         }
       ],
       "additionalProductCleanups": [
@@ -7130,6 +7192,29 @@
         "globalCompletionPercent": "UNKNOWN",
         "merchantErrorGroupCount": "UNKNOWN",
         "publicQaState": "PASS_WITH_LIMITS"
+      },
+      "run263": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R263.json",
+        "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+        "merchantCase": "dropship/codex-handoff-20261018/MERCHANT-QS19-BILD-20261116-R263.json",
+        "productMutationCalls": 6,
+        "confirmedProducts": 4,
+        "optionNameUpdates": 2,
+        "protectedVariants": 26,
+        "worklistRows": 61,
+        "priorRowsPreserved": 57,
+        "themeId": "214169584007",
+        "themeStatus": "UNPUBLISHED_PRIOR_CONNECTOR_REFUSAL",
+        "liveMainThemeId": "213991391623",
+        "metricoolWrites": 0,
+        "merchantWrites": 0,
+        "targetedMerchantCaseState": "DISAPPROVED_IMAGE_LINK_INTERNAL_ERROR_NO_JUSTIFIED_WRITE",
+        "newDailyReports": 0,
+        "orderQueries": 0,
+        "globalCompletionPercent": "UNKNOWN",
+        "merchantErrorGroupCount": "UNKNOWN",
+        "publicQaState": "PASS_BOUNDED_FOUR_PRODUCTS"
       }
     },
     {
@@ -8070,12 +8155,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r262_two_product_details_live_theme_preview_complete_publish_refused",
+      "state": "r263_four_product_details_live_two_option_labels_merchant_processing_open",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R262_NATIVE_PUBLIC_AND_DRAFT_PREVIEW",
-      "lastEvidence": "R262: Zwei Produkttexte/SEO live und bestehende Organizer-OptionFarbe→Form (3Mutationen);20Varianten erhalten.57Arbeitsidentitäten. Alte Küchenset-Labelabweichung aktuell ohne Write nicht reproduzierbar. OGpreisFix in frischer Kopie214169584007 gespeichert,555nativeBaselineDateiengleich,5Previewfällepass;PublishToolverweigert,MAINbleibt213991391623. Keine Merchant-Zulassung oder Gesamtfehlerfreiheit.",
-      "nextAllowedStep": "Gespeicherten und geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise nachlesen; Connector-Publish nicht blind wiederholen/umgehen. Teetassen-Liefermenge und bisherige Quellenfragen klären; kleine weitere Produktgruppe beleggestützt fortsetzen. R259Tonkonflikt weiterhin offen.",
+      "belegArt": "GEMESSEN_R263_NATIVE_PUBLIC_MOBILE_AND_ASTRA",
+      "lastEvidence": "R263:4Produkttexte/SEO+2Optionsnamen live (6Mutationen),26Varianten erhalten.4CJDetailreads.61Arbeitsidentitäten. QS19Blau Merchant image_link_internal_error trotz korrektem erreichbarem Bild;keinWrite. Theme214169584007 weiterhin UNPUBLISHED,MAIN213991391623;keinPublishretry. Keine Katalogvollständigkeit/0Fehlerbehauptung.",
+      "nextAllowedStep": "Gespeicherten geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise prüfen; Connector-Publish nicht blind wiederholen/umgehen. WC-Passmasse/Einheit und genaue Stückzählung des ersten Küchensets sowie frühere Quellenlücken klären. QS19Blau nur später gezielt nachlesen. Weitere kleine Produktgruppe beleggestützt fortsetzen;R259Tonkonflikt bleibt offen.",
       "blockers": [
         "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
         "Becherhalter: genaue Passform/Montage und Material offen.",
@@ -8090,7 +8175,10 @@
         "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
         "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED.",
         "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
-        "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN."
+        "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
+        "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
+        "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
+        "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -9816,6 +9904,38 @@
           "sha256": "bcf29a3c657d0b16e671b08f16d559ad6c5f3afa83ab0ca31a6b9d2950751b61",
           "gitBlobSha": "a209b9fe787fec44e28bef549b98675a3f84d2e8",
           "readAt": "2026-11-16T17:10:57Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+          "bytes": 7012,
+          "sha256": "4fdad118a71718e5d854beaa680f6f080a852a9def5aa2e479893b042879cda7",
+          "gitBlobSha": "bda193482142d249fa15c8b8af5514f5fa6dad20",
+          "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R263.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R263.json",
+          "bytes": 221183,
+          "sha256": "93467ce2cde18f916421afa704104b41f7ff6c7acba343d36b3000bf4de556c2",
+          "gitBlobSha": "3318ccea078348351056ca3112edb177e4bb2412",
+          "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+          "bytes": 25151,
+          "sha256": "f9808f9faa505376cbbcfc449c7167844c15bab8538a08bad5b7cacb75b00b54",
+          "gitBlobSha": "5235df4d4d1966fc814ac1ba32636a41352b7d21",
+          "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "MERCHANT-QS19-BILD-20261116-R263.json",
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QS19-BILD-20261116-R263.json",
+          "bytes": 2772,
+          "sha256": "516a5b0a2be363dd013e683e28f9e2df4e62f4766ede78f476064ac39a37494b",
+          "gitBlobSha": "1e5c6ef493f70997b909653166cccd2f7d10461c",
+          "readAt": "2026-11-16T17:30:29Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -16598,6 +16718,33 @@
               "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt."
             ]
           }
+        },
+        {
+          "archivedByRun": "R263",
+          "recordedAt": "2026-11-16T17:30:29Z",
+          "previous": {
+            "state": "r262_two_product_details_live_theme_preview_complete_publish_refused",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R262_NATIVE_PUBLIC_AND_DRAFT_PREVIEW",
+            "lastEvidence": "R262: Zwei Produkttexte/SEO live und bestehende Organizer-OptionFarbe→Form (3Mutationen);20Varianten erhalten.57Arbeitsidentitäten. Alte Küchenset-Labelabweichung aktuell ohne Write nicht reproduzierbar. OGpreisFix in frischer Kopie214169584007 gespeichert,555nativeBaselineDateiengleich,5Previewfällepass;PublishToolverweigert,MAINbleibt213991391623. Keine Merchant-Zulassung oder Gesamtfehlerfreiheit.",
+            "nextAllowedStep": "Gespeicherten und geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise nachlesen; Connector-Publish nicht blind wiederholen/umgehen. Teetassen-Liefermenge und bisherige Quellenfragen klären; kleine weitere Produktgruppe beleggestützt fortsetzen. R259Tonkonflikt weiterhin offen.",
+            "blockers": [
+              "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+              "Becherhalter: genaue Passform/Montage und Material offen.",
+              "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+              "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+              "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+              "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt.",
+              "R261 Reibe Stil3 ohne exakt belegtes Galerie-Einzelbild; keine falsche Zuordnung.",
+              "R261 Brettmaterial widersprüchlich; kein Titan-/Food-Grade-/Antibakteriellnachweis.",
+              "R261 Reflexionstasse: zwölf CJ-Motive, exakte bestehende Variante ungeklärt; ein Verbindungsread0 ist keine leere Historie.",
+              "R261 Merchant-Waage weiterhin DISAPPROVED; OG101.90 vs Auswahl127.90CHF separat belegt, Google-Ursache unbekannt.",
+              "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
+              "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED.",
+              "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
+              "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -19402,6 +19549,29 @@
         "globalCompletionPercent": "UNKNOWN",
         "merchantErrorGroupCount": "UNKNOWN",
         "publicQaState": "PASS_WITH_LIMITS"
+      },
+      "run263": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R263.json",
+        "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+        "merchantCase": "dropship/codex-handoff-20261018/MERCHANT-QS19-BILD-20261116-R263.json",
+        "productMutationCalls": 6,
+        "confirmedProducts": 4,
+        "optionNameUpdates": 2,
+        "protectedVariants": 26,
+        "worklistRows": 61,
+        "priorRowsPreserved": 57,
+        "themeId": "214169584007",
+        "themeStatus": "UNPUBLISHED_PRIOR_CONNECTOR_REFUSAL",
+        "liveMainThemeId": "213991391623",
+        "metricoolWrites": 0,
+        "merchantWrites": 0,
+        "targetedMerchantCaseState": "DISAPPROVED_IMAGE_LINK_INTERNAL_ERROR_NO_JUSTIFIED_WRITE",
+        "newDailyReports": 0,
+        "orderQueries": 0,
+        "globalCompletionPercent": "UNKNOWN",
+        "merchantErrorGroupCount": "UNKNOWN",
+        "publicQaState": "PASS_BOUNDED_FOUR_PRODUCTS"
       }
     },
     {
@@ -32605,12 +32775,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r262_two_product_details_live_theme_preview_complete_publish_refused",
+      "state": "r263_four_product_details_live_two_option_labels_merchant_processing_open",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R262_NATIVE_PUBLIC_AND_DRAFT_PREVIEW",
-      "lastEvidence": "R262: Zwei Produkttexte/SEO live und bestehende Organizer-OptionFarbe→Form (3Mutationen);20Varianten erhalten.57Arbeitsidentitäten. Alte Küchenset-Labelabweichung aktuell ohne Write nicht reproduzierbar. OGpreisFix in frischer Kopie214169584007 gespeichert,555nativeBaselineDateiengleich,5Previewfällepass;PublishToolverweigert,MAINbleibt213991391623. Keine Merchant-Zulassung oder Gesamtfehlerfreiheit.",
-      "nextAllowedStep": "Gespeicherten und geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise nachlesen; Connector-Publish nicht blind wiederholen/umgehen. Teetassen-Liefermenge und bisherige Quellenfragen klären; kleine weitere Produktgruppe beleggestützt fortsetzen. R259Tonkonflikt weiterhin offen.",
+      "belegArt": "GEMESSEN_R263_NATIVE_PUBLIC_MOBILE_AND_ASTRA",
+      "lastEvidence": "R263:4Produkttexte/SEO+2Optionsnamen live (6Mutationen),26Varianten erhalten.4CJDetailreads.61Arbeitsidentitäten. QS19Blau Merchant image_link_internal_error trotz korrektem erreichbarem Bild;keinWrite. Theme214169584007 weiterhin UNPUBLISHED,MAIN213991391623;keinPublishretry. Keine Katalogvollständigkeit/0Fehlerbehauptung.",
+      "nextAllowedStep": "Gespeicherten geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise prüfen; Connector-Publish nicht blind wiederholen/umgehen. WC-Passmasse/Einheit und genaue Stückzählung des ersten Küchensets sowie frühere Quellenlücken klären. QS19Blau nur später gezielt nachlesen. Weitere kleine Produktgruppe beleggestützt fortsetzen;R259Tonkonflikt bleibt offen.",
       "blockers": [
         "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
         "Becherhalter: genaue Passform/Montage und Material offen.",
@@ -32625,7 +32795,10 @@
         "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
         "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED.",
         "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
-        "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN."
+        "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
+        "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
+        "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
+        "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -33676,6 +33849,38 @@
           "sha256": "bcf29a3c657d0b16e671b08f16d559ad6c5f3afa83ab0ca31a6b9d2950751b61",
           "gitBlobSha": "a209b9fe787fec44e28bef549b98675a3f84d2e8",
           "readAt": "2026-11-16T17:10:57Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+          "bytes": 7012,
+          "sha256": "4fdad118a71718e5d854beaa680f6f080a852a9def5aa2e479893b042879cda7",
+          "gitBlobSha": "bda193482142d249fa15c8b8af5514f5fa6dad20",
+          "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R263.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R263.json",
+          "bytes": 221183,
+          "sha256": "93467ce2cde18f916421afa704104b41f7ff6c7acba343d36b3000bf4de556c2",
+          "gitBlobSha": "3318ccea078348351056ca3112edb177e4bb2412",
+          "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+          "bytes": 25151,
+          "sha256": "f9808f9faa505376cbbcfc449c7167844c15bab8538a08bad5b7cacb75b00b54",
+          "gitBlobSha": "5235df4d4d1966fc814ac1ba32636a41352b7d21",
+          "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "MERCHANT-QS19-BILD-20261116-R263.json",
+          "path": "dropship/codex-handoff-20261018/MERCHANT-QS19-BILD-20261116-R263.json",
+          "bytes": 2772,
+          "sha256": "516a5b0a2be363dd013e683e28f9e2df4e62f4766ede78f476064ac39a37494b",
+          "gitBlobSha": "1e5c6ef493f70997b909653166cccd2f7d10461c",
+          "readAt": "2026-11-16T17:30:29Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -36714,6 +36919,33 @@
               "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt."
             ]
           }
+        },
+        {
+          "archivedByRun": "R263",
+          "recordedAt": "2026-11-16T17:30:29Z",
+          "previous": {
+            "state": "r262_two_product_details_live_theme_preview_complete_publish_refused",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R262_NATIVE_PUBLIC_AND_DRAFT_PREVIEW",
+            "lastEvidence": "R262: Zwei Produkttexte/SEO live und bestehende Organizer-OptionFarbe→Form (3Mutationen);20Varianten erhalten.57Arbeitsidentitäten. Alte Küchenset-Labelabweichung aktuell ohne Write nicht reproduzierbar. OGpreisFix in frischer Kopie214169584007 gespeichert,555nativeBaselineDateiengleich,5Previewfällepass;PublishToolverweigert,MAINbleibt213991391623. Keine Merchant-Zulassung oder Gesamtfehlerfreiheit.",
+            "nextAllowedStep": "Gespeicherten und geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise nachlesen; Connector-Publish nicht blind wiederholen/umgehen. Teetassen-Liefermenge und bisherige Quellenfragen klären; kleine weitere Produktgruppe beleggestützt fortsetzen. R259Tonkonflikt weiterhin offen.",
+            "blockers": [
+              "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+              "Becherhalter: genaue Passform/Montage und Material offen.",
+              "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+              "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+              "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+              "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt.",
+              "R261 Reibe Stil3 ohne exakt belegtes Galerie-Einzelbild; keine falsche Zuordnung.",
+              "R261 Brettmaterial widersprüchlich; kein Titan-/Food-Grade-/Antibakteriellnachweis.",
+              "R261 Reflexionstasse: zwölf CJ-Motive, exakte bestehende Variante ungeklärt; ein Verbindungsread0 ist keine leere Historie.",
+              "R261 Merchant-Waage weiterhin DISAPPROVED; OG101.90 vs Auswahl127.90CHF separat belegt, Google-Ursache unbekannt.",
+              "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
+              "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED.",
+              "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
+              "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN."
+            ]
+          }
         }
       ],
       "visibilitySupplementR49": {
@@ -38614,6 +38846,29 @@
         "globalCompletionPercent": "UNKNOWN",
         "merchantErrorGroupCount": "UNKNOWN",
         "publicQaState": "PASS_WITH_LIMITS"
+      },
+      "run263": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R263.json",
+        "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+        "merchantCase": "dropship/codex-handoff-20261018/MERCHANT-QS19-BILD-20261116-R263.json",
+        "productMutationCalls": 6,
+        "confirmedProducts": 4,
+        "optionNameUpdates": 2,
+        "protectedVariants": 26,
+        "worklistRows": 61,
+        "priorRowsPreserved": 57,
+        "themeId": "214169584007",
+        "themeStatus": "UNPUBLISHED_PRIOR_CONNECTOR_REFUSAL",
+        "liveMainThemeId": "213991391623",
+        "metricoolWrites": 0,
+        "merchantWrites": 0,
+        "targetedMerchantCaseState": "DISAPPROVED_IMAGE_LINK_INTERNAL_ERROR_NO_JUSTIFIED_WRITE",
+        "newDailyReports": 0,
+        "orderQueries": 0,
+        "globalCompletionPercent": "UNKNOWN",
+        "merchantErrorGroupCount": "UNKNOWN",
+        "publicQaState": "PASS_BOUNDED_FOUR_PRODUCTS"
       }
     },
     {
@@ -49409,6 +49664,17 @@
         "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R262.csv",
         "dropship/codex-handoff-20261018/VARIANTENPREIS-OG-20261116-R262.patch"
       ]
+    },
+    {
+      "revision": 263,
+      "at": "2026-11-16T17:30:29Z",
+      "summary": "Four new product descriptions/SEO live and two option names corrected;26variants preserved. Exact source/image/native/public/mobile/Astra reviews. Worklist57+4=61. One QS19image processing rejection remains with correct reachable image,noMerchantwrite. ThemeOGfix stillunpublished;no retry. No repeateddailyreports/orders/Social/automation.",
+      "sources": [
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R263.json",
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+        "dropship/codex-handoff-20261018/MERCHANT-QS19-BILD-20261116-R263.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -50761,7 +51027,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 262,
+    "latestCanonicalRevision": 263,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -51778,6 +52044,11 @@
     "run262": {
       "atUtc": "2026-11-16T17:10:57Z",
       "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-VARIANTENPREIS-20261116-R262.md",
+      "receipt": "unknown"
+    },
+    "run263": {
+      "atUtc": "2026-11-16T17:30:29Z",
+      "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
       "receipt": "unknown"
     }
   },
@@ -77708,5 +77979,28 @@
     "globalCompletionPercent": "UNKNOWN",
     "merchantErrorGroupCount": "UNKNOWN",
     "publicQaState": "PASS_WITH_LIMITS"
+  },
+  "run263": {
+    "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
+    "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R263.json",
+    "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
+    "merchantCase": "dropship/codex-handoff-20261018/MERCHANT-QS19-BILD-20261116-R263.json",
+    "productMutationCalls": 6,
+    "confirmedProducts": 4,
+    "optionNameUpdates": 2,
+    "protectedVariants": 26,
+    "worklistRows": 61,
+    "priorRowsPreserved": 57,
+    "themeId": "214169584007",
+    "themeStatus": "UNPUBLISHED_PRIOR_CONNECTOR_REFUSAL",
+    "liveMainThemeId": "213991391623",
+    "metricoolWrites": 0,
+    "merchantWrites": 0,
+    "targetedMerchantCaseState": "DISAPPROVED_IMAGE_LINK_INTERNAL_ERROR_NO_JUSTIFIED_WRITE",
+    "newDailyReports": 0,
+    "orderQueries": 0,
+    "globalCompletionPercent": "UNKNOWN",
+    "merchantErrorGroupCount": "UNKNOWN",
+    "publicQaState": "PASS_BOUNDED_FOUR_PRODUCTS"
   }
 }

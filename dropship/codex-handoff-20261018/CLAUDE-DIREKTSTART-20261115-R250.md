@@ -1,3 +1,13 @@
+# R263 – Vier Produktseiten und zwei Auswahlbeschriftungen live – 16.11.2026
+
+Vier zusätzliche Titel/Beschreibungen/SEO-Paare sind live: zwei Küchenhelfer-Sets, Massivholz-Stufenregal und WC-Regal. Dazu Grösse→Farbe beim 9-Farben-Set und Farbe→Modell und Farbe beim WC-Regal: sechs bestätigte Mutationen, 26 Varianten unverändert. Quellenfragen werden ausdrücklich erhalten. [Bericht](PRODUKTDETAILS-MERCHANT-20261116-R263.md) · [native/öffentliche/mobile Belege und Astra-Prüfung](PRODUKTDETAILS-BELEGE-20261116-R263.json).
+
+Gezielter Merchant-Fall QS19 Blau: image_link_internal_error bleibt DISAPPROVED, korrekt zugeordnetes Bild ist erreichbar. Google-Verarbeitungsfehler, kein begründeter Feed-Write. Keine Gesamtfehlerzahl oder 0-Fehler-Behauptung. [Beleg](MERCHANT-QS19-BILD-20261116-R263.json). Theme214169584007 bleibt gespeichert/UNPUBLISHED, MAIN213991391623 unverändert; Connector-Publishblocker ausR262, kein Retry/Bypass. Keine fehlende erneute Inhaberfreigabe behaupten.
+
+Arbeitsliste57+4=[61 belegte Identitäten](PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv); enthält Quellenblocker, keine Katalogquote. Alle24Aufgaben/Historie erhalten. Keine Tagesreports/Bestellwatch/Social/Automation wiederholt. R259Tonkonflikt bleibt offen. Claude-Empfang unbekannt. Memory am Schluss verlinken.
+
+---
+
 # R262 – Zwei Produktdetails live, OG-Fix geprüft aber Publish blockiert – 16.11.2026
 
 Organizer und Trinkbecher: zwei neue ausführliche Titel/Body/SEO-Paare live, Organizer-Optionsname Farbe→Form separat nativ bestätigt; drei Produktmutationen insgesamt. Vier Organizer- und 16 Bechervarianten erhalten. Öffentliche/mobile Prüfung im [Beleg](PRODUKTDETAILS-BELEGE-20261116-R262.json); [Bericht](PRODUKTDETAILS-VARIANTENPREIS-20261116-R262.md). Teetasse15524880744833 wegen6Tassenbild/1TassePackliste nicht geändert. Arbeitsliste54+2live+1blockiert=[57 Identitäten](PRODUKTDETAILS-ARBEITSLISTE-20261116-R262.csv), keine Gesamtquote.

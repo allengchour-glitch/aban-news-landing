@@ -3169,3 +3169,21 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](PRODUKTDETAILS-VARIANTENPREIS-20261116-R262.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R262.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R262.csv) · [Patch](VARIANTENPREIS-OG-20261116-R262.patch).
 
 [LUXESTYLE_R262_20261116]
+
+
+### R263 – Produktdetails, Variantenwahl und Merchant-Einzelfall
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität | Revision262/Core5 und Tagesstand frisch gelesen, Shop/Metricool-Identitäten bestätigt. | Tagesgrenzen und Historie erhalten. |
+| Produktdetails | Vier Titel/Beschreibungen/SEO-Paare sowie zwei bestehende Optionsnamen verbessert. | Sechs nativ bestätigte Mutationen;26 Varianten/Preise unverändert. |
+| Quellen | Vier kleine Produktsuchen, vier genaue CJ-Detailreads;26 SKUs und vorhandene Bilder gegengeprüft. | Mengen-/Material-/Masslücken offengelegt; keine Katalogpagination. |
+| Öffentliche Prüfung | HTML/.js/SEO/Canonical/strukturierte Angebote, Handybreiten360/390 und je eine Nichtstandardauswahl geprüft. | Finaler Beleg enthält gezielte Hauptprodukt-Preisgegenprobe nach fehlerhaftem erstem generischem Selektor; kein Checkout. |
+| Astra | Auf ausdrücklichen Modellwunsch eine unabhängige Astra-Schlussprüfung ausgeführt. | Lokaler Fakten-/Schutzfeld-Audit im Beleg; Hauptsitzungsmodell nicht als umgestellt ausgegeben. |
+| Merchant | Genau QS19Blau mit image_link_internal_error geprüft; Variantenbild/Preis stimmen, Seite/Bild erreichbar. | Google-Verarbeitung bleibt offen; kein begründeter Feed-Write und keine0-Fehler-Meldung. |
+| Theme | Rollen aktuell gelesen. | MAIN213991391623; OG-Fix214169584007 bleibtUNPUBLISHED. Kein erneuter Publishversuch/Bypass. |
+| Gedächtnis | Arbeitsliste57Zeilen erhalten und4Produkte ergänzt. | 61Identitäten; Gesamtquote unbekannt. Keine neuen Reports/Bestellwatch/Social/Automation. |
+
+[Bericht](PRODUKTDETAILS-MERCHANT-20261116-R263.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R263.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv) · [Merchant](MERCHANT-QS19-BILD-20261116-R263.json).
+
+[LUXESTYLE_R263_20261116]

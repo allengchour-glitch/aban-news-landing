@@ -1,0 +1,64 @@
+{
+  "task": "R263 read-only Merchant case review",
+  "shop": {
+    "name": "LuxeStyle CH",
+    "merchantAccount": "5797470070"
+  },
+  "selection": {
+    "method": "one exact row from a single small disapproved-products page; no pagination/count extrapolation",
+    "product": "QS19 Smart-Armband",
+    "variant": "Blau",
+    "shopifyProductId": "15481068421505",
+    "shopifyVariantId": "67814850527623",
+    "sku": "CJZN104187003CX"
+  },
+  "merchant": {
+    "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15481068421505_67814850527623",
+    "source": "accounts/5797470070/dataSources/10667445201",
+    "issue": "image_link_internal_error",
+    "severity": "DISAPPROVED",
+    "message": "Image not processed; no action needed; image will be processed again within 3 days",
+    "lastUpdateDate": "2026-11-01T22:20:57.884268Z",
+    "price": "31.90 CHF",
+    "availability": "IN_STOCK",
+    "imageLink": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1615772936018.jpg?v=1785524810",
+    "affectedDestinations": [
+      "Shopping Ads",
+      "Display Ads",
+      "Free Listings",
+      "Demand Gen",
+      "Video Ads",
+      "Discover"
+    ],
+    "affectedCountries": [
+      "CH",
+      "LI"
+    ]
+  },
+  "shopify": {
+    "status": "ACTIVE",
+    "handle": "qs19-smart-armband-mit-gesundheitsmonitoring-235136",
+    "variantTitle": "Blau",
+    "price": "31.90 CHF",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryTracked": false,
+    "nativeVariantImageMatchesMerchantImageLink": true,
+    "publicProductUrl": "https://luxestyle.ch/products/qs19-smart-armband-mit-gesundheitsmonitoring-235136?variant=67814850527623&country=CH&currency=CHF",
+    "publicPageHttp": 200,
+    "publicVariantJsHttp": 200,
+    "publicVariantJsSha256": "3d2ff661451c14ad8eb437cda4175c9d473f3120efcbbe889fbbb2dffc4becaf",
+    "publicVariantJsBytes": 11468,
+    "imageHttp": 200,
+    "imageContentType": "image/jpeg",
+    "imageBytes": 77796,
+    "imageSha256": "7067868b0357420c9438deb219f749e3f8dced4abde427e80da7ea378da921a3",
+    "imageLocalCopy": "qswatch-blue.jpg"
+  },
+  "conclusion": "No source-backed image replacement or other feed-field correction is justified. Merchant reports processing failure and explicitly advises no action; the exact Shopify variant association and live image URL match, and the URL responds successfully. Rights provenance and human visual review are not established by these reads. No write made.",
+  "limitations": [
+    "Image bytes were downloaded but visual inspection did not complete, so no visual-content claim is made.",
+    "A functioning image URL and variant binding do not establish image rights.",
+    "Single exact offer only; no account-wide or disapproval-rate conclusion."
+  ]
+}
