@@ -58,9 +58,34 @@ Beispiele (Vorher: «<Titel> bei LuxeStyle – Schweizer Online-Shop. Gratis-Ver
 
 **Grenzen:** Die Wirkung auf Rang und Sichtbarkeit ist ungemessen (Hypothese). Die Google-&-YouTube-App synchronisiert die geänderten Produkte neu zu Google (einmalig, Stunden bis Tage). Die SEO-Beschreibung ist auch die Meta-Beschreibung der Suchergebnisse; die Pullover haben dort heute fast keine Klicks.
 
+## Messung 16.11.2026: Google trägt den Sachtext erst bei 16 von 91 Pilot-Produkten
+
+**Weg:** statt des CSV-Berichts direkt über die Merchant API (Dienstkonto, Workflow `merchant-beschreibung.yml`, Skript `google_lesen.py`, nur lesen). `products.get` liefert je Artikel `productAttributes.description`, also die Spalte «Description» des Berichts. Je Produkt zählt die erste Variante, die Google auf Deutsch führt. Eingeordnet mit `klassifiziere()` aus `klassifizieren.py`; trägt ein Pilot-Produkt bei Google noch eine Werbezeile, heisst die Klasse «werbezeile».
+
+**Ergebnis (GEMESSEN 16.11. 08:22 UTC, Lauf 43830473552):**
+
+| Gruppe | Produkte | nicht im Kanal «Google & YouTube» | Google trägt den Sachtext | Google trägt die Werbezeile | echte Beschreibung |
+|---|---|---|---|---|---|
+| Pilot | 329 | 238 | 16 | 75 | 0 |
+| Kontrolle (nicht umgestellt) | 305 | 266 | 1 (gleich der heutigen SEO-Beschreibung, eine ältere Werbezeile ohne Versandversprechen) | 33 | 5 |
+
+- **Messgerät:** Das Probe-Angebot (am 15.11. sicher bei Google) wurde gefunden; `product_view` lieferte 722 Zeilen für 1 859 abgefragte Angebote (bis 3 Varianten je Produkt, Deutsch und Französisch).
+- **Gegenprobe im Shop:** Drei Pilot-Seiten (zwei davon mit Werbezeile bei Google) tragen im Shop den Sachtext als Meta-Beschreibung (16.11. gegen 08:25 UTC, `curl`).
+- **Keines der 91 Pilot-Produkte im Kanal** wurde nach dem Pilot (10.11. 00:05 UTC) in Shopify noch einmal geändert (`updatedAt`). Der Unterschied zwischen den 16 und den 75 kommt also nicht von einer späteren Änderung im Shop.
+
+**Deutung:**
+- Der Weg stimmt im Kern: Bei 16 Produkten steht bei Google genau die neue SEO-Beschreibung, die es nur im Shop gibt. Die App gibt also `seo.description` weiter.
+- Sie tut es aber nach 6,5 Tagen erst bei 18 % der Produkte. Wann sie die übrigen 75 neu schickt, ist unbekannt. Hypothese, nicht geprüft: Die App schickt ein Produkt erst bei einem anderen Anlass neu, etwa bei einer Preis- oder Bestandsänderung.
+- Nach der vorher festgelegten Regel (ab 50 % Werbezeile) heisst das Ergebnis «nicht bestätigt». Die Regel trennte nicht zwischen «falscher Weg» und «langsamer Weg»; die 16 genauen Treffer sprechen für den zweiten Fall.
+- 238 der 329 Pilot-Produkte stehen gar nicht im Google-Kanal (Schaufenster, `dropship/gmc_schaufenster_manifest.jsonl`). Für sie hat der Pilot bei Google keine Wirkung; im Shop wirkt der Sachtext als Meta-Beschreibung.
+
+**Fehler im eigenen Messgerät, vor dem Ergebnis behoben:** Lauf 1 und 2 fanden kein einziges Angebot, auch nicht die Probe. Das Skript zerlegte die `id` von `product_view` in vier Teile, sie hat aber nur drei (`sprache~label~angebot`). Erst die Probe mit einem bekannten Angebot zeigte, dass das Messgerät falsch war und nicht der Shop. Der Name für `products.get` entsteht jetzt aus `language_code`, `feed_label` und `offer_id`.
+
+**Entscheid des Besitzers:** behalten und in einigen Tagen neu messen (Handstart von `merchant-beschreibung.yml`), oder zurücknehmen (`ZURUECK=1 LIVE=1 python3 dropship/merchant-beschreibung-0911/pilot_pullover.py`).
+
 ## Messrezept
 
-`python3 dropship/merchant-beschreibung-0911/klassifizieren.py <Bericht.csv>` (nur lesend, Selbsttest `--selbsttest`). Den Bericht liefert das Merchant Center unter den Empfehlungen («Update product descriptions to include details customers are looking for», Filter: Kategorie wählen, CSV laden); die Drive-Anbindung liest nur Dateien bis 10 MB.
+Seit 16.11.: Workflow `merchant-beschreibung.yml` (Handstart; `google_lesen.py`, Selbsttest `--selbsttest`), ohne Bericht. Weiterhin möglich: `python3 dropship/merchant-beschreibung-0911/klassifizieren.py <Bericht.csv>` (nur lesend, Selbsttest `--selbsttest`). Den Bericht liefert das Merchant Center unter den Empfehlungen («Update product descriptions to include details customers are looking for», Filter: Kategorie wählen, CSV laden); die Drive-Anbindung liest nur Dateien bis 10 MB.
 
 ## Die übrigen Dateien im Ordner `luxestyle` (Stand 09.11., nichts Neueres als der 08.11. dabei)
 

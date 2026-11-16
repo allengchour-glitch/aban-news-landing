@@ -111,6 +111,12 @@ def schwaerzen(text, name=''):
     return re.sub(r'\b\d{8,}\b', '<nummer>', t)
 
 
+def liste(c):
+    """Zählung als Text ohne geschweifte Klammern: GitHub schwärzt jede Zeile eines mehrzeiligen Secrets, beim
+    JSON-Schlüssel also auch «{» und «}» (Lauf 4 vom 16.11. zeigte ein Wörterbuch nur als ***)."""
+    return ', '.join(f'{k}: {v}' for k, v in sorted(c.items(), key=lambda x: str(x[0]))) or 'keine'
+
+
 def bericht(z, beispiele):
     zeilen = []
     for g in ('pilot', 'kontrolle'):
@@ -167,6 +173,7 @@ def selbsttest():
                      {('pilot', 'pilot'): [('handle-a', neu), ('handle-b', neu), ('handle-c', neu), ('handle-d', neu)]})
     ok('Bericht: Gruppen und Klassen', 'GRUPPE pilot: 2 Produkte' in zeilen and any('seo_heute' in z_ for z_ in zeilen))
     ok('Bericht: höchstens drei Beispiele je Klasse', sum('z. B.' in z_ for z_ in zeilen) == 3)
+    ok('Zählung als Text ohne Klammern', liste(collections.Counter({3: 722})) == '3: 722' and liste(collections.Counter()) == 'keine')
     print('Selbsttest:', 'ALLE OK' if not fehler else f'{len(fehler)} FEHLER')
     return 0 if not fehler else 1
 
@@ -267,7 +274,7 @@ def main():
             off, pname, sprache = name_aus_zeile(pv)
             if pname:
                 views[off][sprache] = pname
-    print(f'product_view: {zeilen} Zeilen; Teile der id (Anzahl «~»-Teile: Zeilen): {dict(formen)}')
+    print(f'product_view: {zeilen} Zeilen; Teile der id (Anzahl «~»-Teile: Zeilen): {liste(formen)}')
     print(f'Merchant: {sum(1 for o in views if o != probe)} von {len(alle_angebote) - (1 if probe else 0)} Angeboten bei Google gefunden '
           f'(Probe {probe}: {"gefunden" if probe in views else "NICHT gefunden, Messgerät prüfen"})')
 
@@ -296,8 +303,8 @@ def main():
     for zeile in bericht(z, beispiele):
         print(zeile)
     if fehler:
-        print('Lesefehler products.get:', dict(fehler))
-    print(f'Pilot, in Shopify nach {PILOT_ENDE} noch einmal geändert (updatedAt), je Klasse: {dict(spaeter)}')
+        print('Lesefehler products.get:', liste(fehler))
+    print(f'Pilot, in Shopify nach {PILOT_ENDE} noch einmal geändert (updatedAt), je Klasse: {liste(spaeter)}')
     u, gefunden = urteil(z)
     print(f'URTEIL: {u} (Pilot-Produkte bei Google gefunden und gelesen: {gefunden}; Regel: ab 80 % «pilot» bestätigt, '
           f'ab 50 % «werbezeile» nicht bestätigt)')
