@@ -1,0 +1,145 @@
+{
+  "run": "R268",
+  "checkedAtUTC": "2026-11-16T19:48:02Z",
+  "baseRevision": 267,
+  "baseCommit": "94190f2751bb68f2203e5d01d3c5dda6b192006c",
+  "trigger": "Inhaber meldet veröffentlicht; Abschlussprüfung des R266-Designblocks.",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    },
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich"
+  },
+  "theme": {
+    "id": "gid://shopify/OnlineStoreTheme/214169584007",
+    "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+    "role": "MAIN",
+    "updatedAt": "2026-11-16T19:42:08Z",
+    "processing": false,
+    "processingFailed": false
+  },
+  "main": {
+    "id": "gid://shopify/OnlineStoreTheme/214169584007",
+    "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+    "role": "MAIN",
+    "updatedAt": "2026-11-16T19:42:08Z",
+    "processing": false,
+    "processingFailed": false
+  },
+  "nativeFinalFileChecks": [
+    {
+      "filename": "DESIGN.md",
+      "matches": true
+    },
+    {
+      "filename": "templates/collection.lxwelten.json",
+      "matches": true
+    },
+    {
+      "filename": "templates/collection.json",
+      "matches": true
+    },
+    {
+      "filename": "snippets/lx-kopf-pfad.liquid",
+      "matches": true
+    },
+    {
+      "filename": "snippets/lx-collection-welten-card.liquid",
+      "matches": true
+    },
+    {
+      "filename": "sections/lx-collection-welten.liquid",
+      "matches": true
+    },
+    {
+      "filename": "sections/lx-collection-details.liquid",
+      "matches": true
+    },
+    {
+      "filename": "sections/header-group.json",
+      "matches": true
+    },
+    {
+      "filename": "sections/header-announcements.liquid",
+      "matches": true
+    },
+    {
+      "filename": "locales/fr.schema.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/fr.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/en.default.schema.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/en.default.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/de.schema.json",
+      "matches": true
+    },
+    {
+      "filename": "locales/de.json",
+      "matches": true
+    },
+    {
+      "filename": "blocks/_announcement.liquid",
+      "matches": true
+    }
+  ],
+  "liveQA": {
+    "status": "PASS",
+    "scope": "Begrenzte öffentliche Live-Prüfung des Kategorie-/Schrift-/Icon-Designblocks; keine vollständige Katalog-, Checkout- oder Merchant-Prüfung.",
+    "summary": "runs/20261116-r268/quality/LIVE-QA-summary.json",
+    "sha256": "00e5fafd647d5f8026f265ecf43996f3713cda79966b7d28ed8c60467345126d",
+    "checkedAtUTC": "2026-11-16T19:45:19.577067+00:00",
+    "publicGETCases": 4,
+    "rootMobileWidth": 390,
+    "rootDesktopWidth": 1440,
+    "filtersAndClear": "PASS",
+    "titleOverlaps": 0,
+    "clippedTitles": 0
+  },
+  "publication": {
+    "status": "LIVE_CONFIRMED",
+    "actor": "Inhaber laut Chat; keine eigene Veröffentlichung durch Codex in R268.",
+    "themeId": "214169584007",
+    "role": "MAIN",
+    "shopifyUpdatedAt": "2026-11-16T19:42:08Z",
+    "shopifyUpdatedAtZurich": "16.11.2026 20:42:08 Europe/Zurich",
+    "previousUnpublishedOutcome": "R262/R267: für diesen Entwurf durch aktuelle Nutzerveröffentlichung überholt.",
+    "connectorPublishCapability": "Nicht erneut getestet; historische publish_refused-Antwort bleibt als Zugangsbeleg erhalten."
+  },
+  "completion": {
+    "designBlockPercent": 100,
+    "scope": "R266-Kategoriegestaltung mit Schrift und Icons: gespeichert, live und gezielt geprüft.",
+    "wholeCatalogPercent": "UNKNOWN",
+    "merchantErrorFree": "UNKNOWN"
+  },
+  "rootVisualApproval": {
+    "mobile": "PASS",
+    "categorySection": "PASS",
+    "desktop": "PASS mit dokumentierter Scrollposition"
+  },
+  "platformWritesThisRun": 0,
+  "dailyReportsRepeated": false,
+  "purchaseWatchQueries": 0,
+  "claudeReceipt": "UNKNOWN",
+  "privacy": "Nur kompakte Prüfbelege; keine Roh-HTML, Netzwerklogs oder Nutzerdaten im Repository.",
+  "limits": [
+    "VieröffentlicheSeiteneinstiege plusDesktop/AJAX/Clear; keine98Seitenvollprüfung.",
+    "Screenshots zeigenunverändertenCookiehinweis, keineConsentaktion.",
+    "ErgebnisbelegtdenbegrenztenDesignblock; keineAussagezunullMerchantfehlern oderallenProduktdetails."
+  ],
+  "next": "Den R266-Designblock als abgeschlossen behandeln. Weitere Produktdetails-, Varianten-, SEO- und Merchant-Aufgaben anhand ihrer vorhandenen Quellenblocker fortsetzen."
+}

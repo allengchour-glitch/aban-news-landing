@@ -1,0 +1,105 @@
+{
+  "run": "R268",
+  "status": "PASS",
+  "scope": "Begrenzte öffentliche Live-Prüfung des Kategorie-/Schrift-/Icon-Designblocks; keine vollständige Katalog-, Checkout- oder Merchant-Prüfung.",
+  "checkedAtUTC": "2026-11-16T19:45:19.577067+00:00",
+  "themeId": "214169584007",
+  "themeRole": "main",
+  "savedSourceCommit": "801c1d508fbdda98a542d19fffa65bd6fa5f4e48",
+  "previewState": "NONE: frische cookie-freie Browsercontexts, kein preview_theme_id, nach jedem Seitenabruf kein Preview-Cookie.",
+  "publicGETCases": [
+    {
+      "case": "schmuck-mobile",
+      "httpStatus": 200,
+      "allChecksPassed": true,
+      "mainThemeVerified": true,
+      "width": 390,
+      "documentWidth": 390,
+      "tiles": 10
+    },
+    {
+      "case": "ohrstecker-silber-mobile",
+      "httpStatus": 200,
+      "allChecksPassed": true,
+      "mainThemeVerified": true,
+      "width": 390,
+      "documentWidth": 390,
+      "tiles": 0
+    },
+    {
+      "case": "schmuck-page2",
+      "httpStatus": 200,
+      "allChecksPassed": true,
+      "mainThemeVerified": true,
+      "width": 390,
+      "documentWidth": 390,
+      "tiles": 0
+    },
+    {
+      "case": "schmuck-filtered",
+      "httpStatus": 200,
+      "allChecksPassed": true,
+      "mainThemeVerified": true,
+      "width": 390,
+      "documentWidth": 390,
+      "tiles": 0
+    }
+  ],
+  "rootDesktop": "PASS bei1440x1000; H1,10Kacheln,Eltern/Styles/Bilder/keinhorizontalerÜberlauf bestätigt.",
+  "fontIcons": {
+    "fontSize": "14px",
+    "lineHeight": "20.3px",
+    "allFiveMessagesVerified": true,
+    "actualSVGPaths": true,
+    "monochrome": true,
+    "decorativeAriaHidden": true,
+    "visibleControlsAtLeast44px": true
+  },
+  "mobileTitles": {
+    "checked": 10,
+    "arrowOverlaps": 0,
+    "clipped": 0,
+    "categoryImagesLoaded": true
+  },
+  "filterStates": {
+    "page2Compact": "PASS",
+    "directFilterCompact": "PASS",
+    "ajaxFilterCompact": "PASS",
+    "clearRestores10TilesAndHero": "PASS"
+  },
+  "visualReview": {
+    "mobile": "PASS: Header,Lesbarkeit,Hero,Kacheln undvollständigeTitel visuell geprüft.",
+    "desktop": "PASSfürKacheln; Screenshot zeigt nachViewportwechsel beibehalteneScrollposition, daherH1imScreenshotobenangeschnitten, keinLayoutfehler.",
+    "leaf": "PASS: Elternpfad,H1,ProduktlisteohneLeer-Unterkategorien.",
+    "cookieBanner": "VorhandenerCookiehinweis sichtbar; nichtbetätigt."
+  },
+  "network": {
+    "onlyAllowedGET": true,
+    "unexpectedErrors": 0,
+    "observedHTTPErrorResponses": 0,
+    "expectedTelemetryAndNonGETRequestsBlocked": true
+  },
+  "remoteWrites": 0,
+  "newOwnPublication": false,
+  "evidence": {
+    "rawLocalReport": "/dev/shm/luxestyle-review/r268/quality/live-public-20261116T194349Z/report.json",
+    "mobileScreenshot": "/dev/shm/luxestyle-review/r268/quality/live-public-20261116T194349Z/schmuck-mobile-390x844.png",
+    "mobileCategoryScreenshot": "/dev/shm/luxestyle-review/r268/quality/live-public-20261116T194349Z/schmuck-mobile-category-section.png",
+    "desktopScreenshot": "/dev/shm/luxestyle-review/r268/quality/live-public-20261116T194349Z/schmuck-desktop-1440x1000.png",
+    "leafScreenshot": "/dev/shm/luxestyle-review/r268/quality/live-public-20261116T194349Z/ohrstecker-silber-mobile-390x844.png",
+    "runner": "/dev/shm/luxestyle-review/r268/quality/live_qa.py"
+  },
+  "evidenceSHA256": {
+    "rawLocalReport": "2ba11b148a8047894c6103291636de4cf58f6e189cc0918af839a2df573c0828",
+    "mobileScreenshot": "f6d4c57580e42a99529c49e48a03680c6e74ef694843fc5891b85fab5c3ca0db",
+    "mobileCategoryScreenshot": "880dbabe67add6f05e7ba2cd561ed90500a6b00475e852958289f0466218718f",
+    "desktopScreenshot": "f06124ec4a2abdc79250005054a4c6f263e54efb8a6ad32242af9d2873a9ba6f",
+    "leafScreenshot": "cecefddc8c80d07cc6751f12e9886da8e994ba97cef13e6202a185674293d550",
+    "runner": "8f5459147cda26146fe005722a5640e40ff59dbd46cfda3cea1063d8f1318b5f"
+  },
+  "limits": [
+    "VieröffentlicheSeiteneinstiege plusDesktop/AJAX/Clear; keine98Seitenvollprüfung.",
+    "Screenshots zeigenunverändertenCookiehinweis, keineConsentaktion.",
+    "ErgebnisbelegtdenbegrenztenDesignblock; keineAussagezunullMerchantfehlern oderallenProduktdetails."
+  ]
+}

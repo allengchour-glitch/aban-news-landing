@@ -3249,3 +3249,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Abschlussbericht](R267-REPORT-20261116.md) · [Beleg](R267-PROOF-20261116.json).
 
 [LUXESTYLE_R267_20261116]
+
+
+### R268 – Nutzerveröffentlichung und öffentliche Abschlussprüfung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Live-Status | Nach der Nutzerveröffentlichung Shop, MAIN-Rolle und 16 finale Theme-Dateien frisch geprüft. | Theme 214169584007 ist MAIN, alle 16 MD5 entsprechen R266; keine eigene Veröffentlichung oder Themeänderung in R268. |
+| Öffentliche Prüfung | Vier öffentliche Einstiege ohne Vorschau sowie Desktop, AJAX-Filter und Zurücksetzen geprüft; aktuelle Screenshots visuell gelesen. | HTTP 200 / PASS; zehn mobile Titel lesbar, Bilder geladen, kein Überlauf; Filter/Folgeseite kompakt, Clear stellt zehn Kacheln und Hero wieder her. |
+| Schrift und Icons | Fünf Hinweise im Live-Browser auf Schrift, SVG-Pfade und Bedienelemente geprüft. | 14 px / 20.3 px, monochrome dekorative SVGs, mindestens 44 px. |
+| Design-Abschluss | Bisherige Entwurfssperre mit aktuellem Live-Beleg abgeglichen. | 100 % dieses Designblocks abgeschlossen; keine Gesamtshop-/Merchant-Fehlerfreiheitsquote. Historischer Connectorfehler bleibt erhalten. |
+| Projektgedächtnis | R268-Ergänzung mit Vorher-/Nachher-Belegen vorbereitet; alte Aussagen gezielt als überholt gekennzeichnet. | 24 Aufgaben und Historie erhalten; übrige Blocker separat. Git-Speicherung/Rücklesung separat belegt, Claude-Empfang unbekannt. |
+
+[Abschluss](R268-REPORT-20261116.md) · [Belege](R268-PROOF-20261116.json).
+
+[LUXESTYLE_R268_20261116]

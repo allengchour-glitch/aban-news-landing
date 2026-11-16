@@ -1,0 +1,34 @@
+{
+  "run": "R268",
+  "status": "PASS",
+  "reviewedAtUTC": "2026-11-16T19:47:08.966960+00:00",
+  "scope": "Unabhängige lokale Prüfung des öffentlichen Live-QA-Abschlusses für den begrenzten Kategorie-/Schrift-/Icon-Designblock.",
+  "rootNativeEvidence": "Root meldet frisch bestätigte Shopidentität, MAIN214169584007 seit2026-11-16T19:42:08Z und16/16MD5-Metadaten identisch zum finalen R266-Manifest; von diesem Reviewer nicht zusätzlich extern abgefragt.",
+  "qaSummary": "LIVE-QA-summary.json",
+  "qaSummarySHA256": "00e5fafd647d5f8026f265ecf43996f3713cda79966b7d28ed8c60467345126d",
+  "checks": {
+    "fourPublicLiveCases": true,
+    "allCaseChecksPassed": true,
+    "exactLiveThemeAllCases": true,
+    "allPublicHTTP200": true,
+    "noPreviewChecksPassed": true,
+    "allNoticeChecksPassed": true,
+    "allSixEvidenceHashesMatch": true,
+    "noOwnPublicationOrExternalWrites": true
+  },
+  "visualReview": {
+    "mobile": "PASS: echte öffentliche mobile Ansicht mit neuer Typografie, SVG-Hinweisicon, Hero und sauberen Kacheln angesehen; keine Draftleiste.",
+    "desktop": "PASS für Kachelansicht. Beibehaltene Scrollposition unter Stickyheader im Screenshot ist korrekt als Bildausschnitt-Limit dokumentiert; keine Behauptung eines abgeschnittenen Hero."
+  },
+  "closureDecision": "100 % dieses begrenzten Designblocks ist nach Roots bestätigtem Live-Rollen-/Dateiabgleich und bestandenem öffentlichen QA-Beleg vertretbar. Keine vollständige Shop-/Katalog-/SEO-/Merchant-Fehlerfreiheitsbehauptung.",
+  "memoryGuidance": [
+    "Veröffentlichung dem Inhaber zurechnen; Root hat sie nachgeprüft, nicht selbst ausgeführt.",
+    "R262/R267 UNPUBLISHED-Zustand als historischen Befund erhalten und durch datierte R268-Livebestätigung gezielt ablösen.",
+    "Die erfolgreiche manuelle Veröffentlichung beweist keinen Fix oder Wegfall der Connectorgrenze publish_refused.",
+    "Quellen-/Rechte-/Social-/Katalogblocker und Tageslimits bleiben unabhängig erhalten.",
+    "Roh-HTML, Netzwerklogs und lokale Screenshots nicht als öffentliche Medien oder Teil einer pauschalen Shopprüfung bezeichnen."
+  ],
+  "openBlockingFindings": [],
+  "remoteReads": 0,
+  "remoteWrites": 0
+}

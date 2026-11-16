@@ -1,3 +1,9 @@
+# R268 – Kategoriegestaltung, Schrift und Icons live geprüft – 16.11.2026
+
+Der Inhaber hat veröffentlicht: Theme 214169584007 ist jetzt MAIN; alle 16 finalen Dateien stimmen. Öffentliche mobile und Desktop-Ansichten, Filter und Folgeseite haben die Prüfung bestanden. **100 % des begrenzten R266-Designblocks sind abgeschlossen.** Die frühere Unpublished-Sperre ist für diesen Entwurf überholt; Codex hat in R268 keine eigene Veröffentlichung ausgeführt. Gesamtshop und Merchant bleiben separate Arbeitsbereiche. [Abschluss](R268-REPORT-20261116.md) · [Belege](R268-PROOF-20261116.json). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.
+
+---
+
 # R267 – Geprüfter Entwurf bereit; Live-Zugang bleibt offen – 16.11.2026
 
 Shop, Rollen, Pending-Zustand und 16 finale Dateien frisch bestätigt. Der R266-Entwurf ist vollständig gespeichert und unverändert; MAIN bleibt unverändert. Die Veröffentlichung ist weiterhin durch die bekannte Connectorgrenze blockiert. Nutzerfreigabe liegt vor. [Abschluss und nächster Schritt](R267-REPORT-20261116.md) · [Beleg](R267-PROOF-20261116.json). Kein Live-Erfolg oder Claude-Empfang behauptet.
