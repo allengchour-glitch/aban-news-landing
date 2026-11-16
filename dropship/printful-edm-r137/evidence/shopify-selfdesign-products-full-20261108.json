@@ -1,0 +1,3798 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-08T10:33:11.179Z",
+  "source": "Shopify get_product plus targeted Admin GraphQL continuation for the single 84-variant product",
+  "scope": {
+    "requestedProducts": 41,
+    "returnedProducts": 41,
+    "complete": true
+  },
+  "policy": {
+    "draftRemainsDraft": true,
+    "missingPrintfulMappingBlocksEditor": true,
+    "noShopWritePerformed": true
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15422946083201",
+      "handle": "allover-rucksack-selbst-gestalten",
+      "title": "Allover-Rucksack – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Taschen",
+      "tags": [
+        "bild-ok",
+        "kat-taschen",
+        "kategorie-tasche",
+        "printful_personalized_product",
+        "sg-taschen",
+        "sort-damen-weitere-taschen",
+        "sort-herren-weitere-taschen",
+        "sort-rucksaecke",
+        "wunschdesign"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778413969793",
+          "title": "Default Title",
+          "sku": "5070666_9063",
+          "priceCHF": "77.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/allover-rucksack-selbst-gestalten_f079fcc4-3929-468c-90b1-89351d0b5a37.jpg?v=1781356270",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422960501121",
+      "handle": "allover-sport-bh-selbst-gestalten",
+      "title": "Allover-Sport-BH – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-dessous",
+        "sort-damen-dessous-bh",
+        "wunschdesign"
+      ],
+      "totalVariants": 6,
+      "variantsReturned": 6,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778512929153",
+          "title": "XS",
+          "sku": "2360450_9098",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778512961921",
+          "title": "S",
+          "sku": "2360450_9099",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778512994689",
+          "title": "M",
+          "sku": "2360450_9100",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778513027457",
+          "title": "L",
+          "sku": "2360450_9101",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778513060225",
+          "title": "XL",
+          "sku": "2360450_9102",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778513092993",
+          "title": "2XL",
+          "sku": "2360450_9103",
+          "priceCHF": "55.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-sport-bh.png?v=1781358258",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422950474113",
+      "handle": "allover-stoffbeutel-selbst-gestalten",
+      "title": "Allover-Stoffbeutel – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-taschen",
+        "wunschdesign"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778472591745",
+          "title": "Default Title",
+          "sku": "6706312_8905",
+          "priceCHF": "36.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8905_1530790527.jpg?v=1781046463",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422945034625",
+      "handle": "allover-yoga-leggings-selbst-gestalten",
+      "title": "Allover-Yoga-Leggings – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-sport-leggings",
+        "sort-damen-sportbekleidung",
+        "sort-sub-yoga-fitness",
+        "wunschdesign"
+      ],
+      "totalVariants": 5,
+      "variantsReturned": 5,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778389721473",
+          "title": "XS",
+          "sku": "6933254_8353",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778389754241",
+          "title": "S",
+          "sku": "6933254_8354",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778389787009",
+          "title": "M",
+          "sku": "6933254_8355",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778389819777",
+          "title": "L",
+          "sku": "6933254_8356",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778389852545",
+          "title": "XL",
+          "sku": "6933254_8357",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-yoga-leggings.png?v=1781358258",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422854463873",
+      "handle": "alltags-umhangetasche-selbst-gestalten",
+      "title": "Alltags-Umhängetasche – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Taschen",
+      "tags": [
+        "bild-ok",
+        "kat-taschen",
+        "printful_personalized_product",
+        "sg-taschen",
+        "sort-damen-umhaengetaschen",
+        "sort-handtaschen-umhaengetaschen",
+        "sort-herren-umhaengetaschen",
+        "tasche",
+        "taschen",
+        "umhaengetasche",
+        "wunschdesign"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778075017601",
+          "title": "Default Title",
+          "sku": "8524891_49310",
+          "priceCHF": "52.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/alltags-umhangetasche-selbst-gestalten_b72846c7-0f81-487c-81a6-78e10ef0b325.jpg?v=1781356269",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422942609793",
+      "handle": "kiss-cut-aufkleber-selbst-gestalten",
+      "title": "Aufkleber mit Konturschnitt – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Aufkleber",
+      "tags": [
+        "bild-ok",
+        "mengenrabatt-a",
+        "printful_personalized_product",
+        "sg-accessoires",
+        "wunschdesign"
+      ],
+      "totalVariants": 4,
+      "variantsReturned": 4,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778363376001",
+          "title": "7,6 × 7,6 cm",
+          "sku": "3424232_10163",
+          "priceCHF": "17.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778363408769",
+          "title": "10,2 × 10,2 cm",
+          "sku": "3424232_10164",
+          "priceCHF": "17.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778363441537",
+          "title": "14 × 14 cm",
+          "sku": "3424232_10165",
+          "priceCHF": "18.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778363474305",
+          "title": "38 × 9,5 cm",
+          "sku": "3424232_16362",
+          "priceCHF": "21.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/528b1742-88be-4c21-9947-0299de1deea4_result23ca451f10fc6892.jpg?v=1781361016",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422941299073",
+      "handle": "baby-jersey-body-selbst-gestalten",
+      "title": "Baby-Jersey-Body – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "ghost-sale-risiko",
+        "keine-lieferanten-ref",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "wunschdesign"
+      ],
+      "totalVariants": 4,
+      "variantsReturned": 4,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778350793089",
+          "title": "6M",
+          "sku": "7558517_22151",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778350825857",
+          "title": "12M",
+          "sku": "7558517_22158",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778350858625",
+          "title": "18M",
+          "sku": "7558517_22165",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778350891393",
+          "title": "24M",
+          "sku": "7558517_22172",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/baby-jersey-body-selbst-gestalten_f441e5e3-c5d1-41bf-8559-5c75fe3e828d.jpg?v=1781356270",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422938382721",
+      "handle": "baumwolltasche-mit-langen-henkeln-selbst-gestalten",
+      "title": "Baumwolltasche mit langen Henkeln – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "ghost-sale-risiko",
+        "keine-lieferanten-ref",
+        "printful_personalized_product",
+        "sg-taschen",
+        "vegan",
+        "wunschdesign"
+      ],
+      "totalVariants": 12,
+      "variantsReturned": 12,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778317402497",
+          "title": "Natur",
+          "sku": "3033370_49323",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293484935",
+          "title": "Schwarz",
+          "sku": "3033370_49313",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293517703",
+          "title": "Flaschengrün",
+          "sku": "3033370_49314",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293550471",
+          "title": "Burgunderrot",
+          "sku": "3033370_49315",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293583239",
+          "title": "Rosa",
+          "sku": "3033370_49316",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293616007",
+          "title": "Rot",
+          "sku": "3033370_49317",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293648775",
+          "title": "Korallenrot",
+          "sku": "3033370_49318",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293681543",
+          "title": "Marineblau",
+          "sku": "3033370_49319",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293714311",
+          "title": "Hellgrau",
+          "sku": "3033370_49320",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293747079",
+          "title": "Mint",
+          "sku": "3033370_49321",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293779847",
+          "title": "Senfgelb",
+          "sku": "3033370_49322",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293812615",
+          "title": "Orange",
+          "sku": "3033370_49324",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/baumwolltasche-mit-langen-henkeln-selbst-gestalten_fcf67bd4-88ed-4f95-9346-eb0d519c2264.jpg?v=1781356270",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422939267457",
+      "handle": "boardshorts-mit-allover-druck-selbst-gestalten",
+      "title": "Boardshorts mit Allover-Druck – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "pod-uebersee",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-shorts",
+        "sort-herren-shorts",
+        "wunschdesign"
+      ],
+      "totalVariants": 11,
+      "variantsReturned": 11,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778328838529",
+          "title": "2XS",
+          "sku": "8755604_46353",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778328871297",
+          "title": "XS",
+          "sku": "8755604_46355",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778328904065",
+          "title": "S",
+          "sku": "8755604_46357",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778328936833",
+          "title": "M",
+          "sku": "8755604_46359",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778328969601",
+          "title": "L",
+          "sku": "8755604_46361",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778329002369",
+          "title": "XL",
+          "sku": "8755604_46363",
+          "priceCHF": "88.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778329035137",
+          "title": "2XL",
+          "sku": "8755604_46365",
+          "priceCHF": "92.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778329067905",
+          "title": "3XL",
+          "sku": "8755604_46367",
+          "priceCHF": "96.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778329100673",
+          "title": "4XL",
+          "sku": "8755604_46369",
+          "priceCHF": "101.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778329133441",
+          "title": "5XL",
+          "sku": "8755604_46371",
+          "priceCHF": "105.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778329166209",
+          "title": "6XL",
+          "sku": "8755604_46373",
+          "priceCHF": "109.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-boardshorts.png?v=1781358259",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422849188225",
+      "handle": "dad-cap-selbst-gestalten",
+      "title": "Dad-Cap – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "mengenrabatt-a",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-kopfbedeckung",
+        "sort-damen-kopfbedeckung-caps",
+        "sort-herren-kopfbedeckung",
+        "sort-herren-kopfbedeckung-caps",
+        "wunschdesign"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778063843713",
+          "title": "Default Title",
+          "sku": "8279135_7853",
+          "priceCHF": "31.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dad-cap-selbst-gestalten.jpg?v=1781356270",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422940447105",
+      "handle": "edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten",
+      "title": "Edelstahl Trinkflasche mit Strohhalm – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Tassen & Becher",
+      "tags": [
+        "bild-ok",
+        "flasche",
+        "mengenrabatt-a",
+        "printful_personalized_product",
+        "sg-trinken",
+        "sort-trinkflaschen-strohhalm-tee",
+        "sort-trinkflaschen-thermosflaschen",
+        "vegan",
+        "wunschdesign"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778346172801",
+          "title": "Default Title",
+          "sku": "4950408_20175",
+          "priceCHF": "45.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten_bd3c5777-f7e0-4094-8456-204fcc1b0e2c.jpg?v=1781356271",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422943822209",
+      "handle": "einteiliger-allover-badeanzug-selbst-gestalten",
+      "title": "Einteiliger Allover-Badeanzug – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-bademode",
+        "sort-damen-bademode-badeanzug",
+        "wunschdesign"
+      ],
+      "totalVariants": 7,
+      "variantsReturned": 7,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778372845953",
+          "title": "XS",
+          "sku": "2298810_9014",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778372878721",
+          "title": "S",
+          "sku": "2298810_9015",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778372911489",
+          "title": "M",
+          "sku": "2298810_9016",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778372944257",
+          "title": "L",
+          "sku": "2298810_9017",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778372977025",
+          "title": "XL",
+          "sku": "2298810_9018",
+          "priceCHF": "53.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778373009793",
+          "title": "2XL",
+          "sku": "2298810_9019",
+          "priceCHF": "57.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778373042561",
+          "title": "3XL",
+          "sku": "2298810_9020",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-swimsuit.png?v=1781358259",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15427285123457",
+      "handle": "kissen-zum-selbstgestalten",
+      "title": "Fotokissen bedrucken · Kissen selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Kissen",
+      "tags": [
+        "bild-ok",
+        "dekoration",
+        "kat-kissen",
+        "kissen",
+        "pod-cushion",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-wohnen",
+        "sort-kissen",
+        "wohnen",
+        "wunschdesign"
+      ],
+      "totalVariants": 2,
+      "variantsReturned": 2,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55792266641793",
+          "title": "45 × 45 cm",
+          "sku": "9000001_4532",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792266674561",
+          "title": "56 × 30 cm",
+          "sku": "9000001_9513",
+          "priceCHF": "38.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/kissen.jpg?v=1781356273",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422953062785",
+      "handle": "recycelter-unisex-allover-hoodie-selbst-gestalten",
+      "title": "Hoodie bedrucken · recycelter Unisex Allover-Hoodie selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Hoodies & Pullover",
+      "tags": [
+        "bild-ok",
+        "kat-damen-pullover",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-hoodies-hoodie",
+        "sort-damen-hoodies-sweatshirts",
+        "sort-herren-hoodies",
+        "sort-herren-hoodies-sweatshirts",
+        "wunschdesign"
+      ],
+      "totalVariants": 11,
+      "variantsReturned": 11,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778482684289",
+          "title": "2XS",
+          "sku": "7500684_18730",
+          "priceCHF": "84.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482717057",
+          "title": "XS",
+          "sku": "7500684_10869",
+          "priceCHF": "86.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482749825",
+          "title": "S",
+          "sku": "7500684_10870",
+          "priceCHF": "86.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482782593",
+          "title": "M",
+          "sku": "7500684_10871",
+          "priceCHF": "86.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482815361",
+          "title": "L",
+          "sku": "7500684_10872",
+          "priceCHF": "86.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482848129",
+          "title": "XL",
+          "sku": "7500684_10873",
+          "priceCHF": "86.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482880897",
+          "title": "2XL",
+          "sku": "7500684_10874",
+          "priceCHF": "90.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482913665",
+          "title": "3XL",
+          "sku": "7500684_10875",
+          "priceCHF": "94.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482946433",
+          "title": "4XL",
+          "sku": "7500684_18731",
+          "priceCHF": "98.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778482979201",
+          "title": "5XL",
+          "sku": "7500684_18732",
+          "priceCHF": "102.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778483011969",
+          "title": "6XL",
+          "sku": "7500684_18733",
+          "priceCHF": "106.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-hoodie.png?v=1781358260",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422939988353",
+      "handle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "title": "iPhone-Hülle – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Handy-Zubehör",
+      "tags": [
+        "bild-ok",
+        "huelle",
+        "natel",
+        "printful_personalized_product",
+        "sg-accessoires",
+        "sort-handy-halterungen",
+        "sort-handy-huellen",
+        "sort-handyhuellen-displayschutz",
+        "wunschdesign"
+      ],
+      "totalVariants": 48,
+      "variantsReturned": 48,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778337358209",
+          "title": "Hartschale MagSafe / iPhone 14",
+          "sku": "3615382_20688",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337390977",
+          "title": "Hartschale MagSafe / iPhone 14 Plus",
+          "sku": "3615382_20692",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337423745",
+          "title": "Hartschale MagSafe / iPhone 14 Pro",
+          "sku": "3615382_20690",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337456513",
+          "title": "Hartschale MagSafe / iPhone 14 Pro Max",
+          "sku": "3615382_20694",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337489281",
+          "title": "Hartschale MagSafe / iPhone 15",
+          "sku": "3615382_20318",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337522049",
+          "title": "Hartschale MagSafe / iPhone 15 Plus",
+          "sku": "3615382_20322",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337554817",
+          "title": "Hartschale MagSafe / iPhone 15 Pro",
+          "sku": "3615382_20320",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337587585",
+          "title": "Hartschale MagSafe / iPhone 15 Pro Max",
+          "sku": "3615382_20324",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337620353",
+          "title": "Hartschale MagSafe / iPhone 16",
+          "sku": "3615382_20326",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337653121",
+          "title": "Hartschale MagSafe / iPhone 16 Plus",
+          "sku": "3615382_20332",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337685889",
+          "title": "Hartschale MagSafe / iPhone 16 Pro",
+          "sku": "3615382_20328",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337718657",
+          "title": "Hartschale MagSafe / iPhone 16 Pro Max",
+          "sku": "3615382_20330",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337751425",
+          "title": "Hartschale MagSafe / iPhone 17",
+          "sku": "3615382_34002",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337784193",
+          "title": "Hartschale MagSafe / iPhone 17 Air",
+          "sku": "3615382_34004",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337816961",
+          "title": "Hartschale MagSafe / iPhone 17 Pro",
+          "sku": "3615382_34006",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778337849729",
+          "title": "Hartschale MagSafe / iPhone 17 Pro Max",
+          "sku": "3615382_34008",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160073095",
+          "title": "Hartschale / iPhone 14",
+          "sku": "3615382_16125",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160105863",
+          "title": "Hartschale / iPhone 14 Plus",
+          "sku": "3615382_16129",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160138631",
+          "title": "Hartschale / iPhone 14 Pro",
+          "sku": "3615382_16127",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160171399",
+          "title": "Hartschale / iPhone 14 Pro Max",
+          "sku": "3615382_16131",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160204167",
+          "title": "Hartschale / iPhone 15",
+          "sku": "3615382_17715",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160236935",
+          "title": "Hartschale / iPhone 15 Plus",
+          "sku": "3615382_17717",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160269703",
+          "title": "Hartschale / iPhone 15 Pro",
+          "sku": "3615382_17719",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160302471",
+          "title": "Hartschale / iPhone 15 Pro Max",
+          "sku": "3615382_17721",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160335239",
+          "title": "Hartschale / iPhone 16",
+          "sku": "3615382_20306",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160368007",
+          "title": "Hartschale / iPhone 16 Plus",
+          "sku": "3615382_20307",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160400775",
+          "title": "Hartschale / iPhone 16 Pro",
+          "sku": "3615382_20308",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160433543",
+          "title": "Hartschale / iPhone 16 Pro Max",
+          "sku": "3615382_20309",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160466311",
+          "title": "Hartschale / iPhone 17",
+          "sku": "3615382_33989",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160499079",
+          "title": "Hartschale / iPhone 17 Air",
+          "sku": "3615382_33990",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160531847",
+          "title": "Hartschale / iPhone 17 Pro",
+          "sku": "3615382_33991",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160564615",
+          "title": "Hartschale / iPhone 17 Pro Max",
+          "sku": "3615382_33992",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160597383",
+          "title": "Klare Hülle / iPhone 14",
+          "sku": "3615382_16240",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160630151",
+          "title": "Klare Hülle / iPhone 14 Plus",
+          "sku": "3615382_16242",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160662919",
+          "title": "Klare Hülle / iPhone 14 Pro",
+          "sku": "3615382_16241",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160695687",
+          "title": "Klare Hülle / iPhone 14 Pro Max",
+          "sku": "3615382_16243",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160728455",
+          "title": "Klare Hülle / iPhone 15",
+          "sku": "3615382_17616",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160761223",
+          "title": "Klare Hülle / iPhone 15 Plus",
+          "sku": "3615382_17617",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160793991",
+          "title": "Klare Hülle / iPhone 15 Pro",
+          "sku": "3615382_17618",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160826759",
+          "title": "Klare Hülle / iPhone 15 Pro Max",
+          "sku": "3615382_17619",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160859527",
+          "title": "Klare Hülle / iPhone 16",
+          "sku": "3615382_20290",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160892295",
+          "title": "Klare Hülle / iPhone 16 Plus",
+          "sku": "3615382_20291",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160925063",
+          "title": "Klare Hülle / iPhone 16 Pro",
+          "sku": "3615382_20292",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160957831",
+          "title": "Klare Hülle / iPhone 16 Pro Max",
+          "sku": "3615382_20293",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814160990599",
+          "title": "Klare Hülle / iPhone 17",
+          "sku": "3615382_33993",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814161023367",
+          "title": "Klare Hülle / iPhone 17 Air",
+          "sku": "3615382_33994",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814161056135",
+          "title": "Klare Hülle / iPhone 17 Pro",
+          "sku": "3615382_33995",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814161088903",
+          "title": "Klare Hülle / iPhone 17 Pro Max",
+          "sku": "3615382_33996",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20688_1728028145.jpg?v=1781046473",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422819991937",
+      "handle": "bio-jutebeutel-selbst-gestalten",
+      "title": "Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-taschen",
+        "vegan",
+        "wunschdesign"
+      ],
+      "totalVariants": 2,
+      "variantsReturned": 2,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55777965539713",
+          "title": "Oyster",
+          "sku": "2069171_10458",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67668293124487",
+          "title": "Schwarz",
+          "sku": "2069171_10457",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bio-jutebeutel-selbst-gestalten_9064663a-39f9-4a39-b81b-8ac733b49c18.jpg?v=1781356270",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/16697144705415",
+      "handle": "keramik-tasse-farbige-innenseite-selbst-gestalten",
+      "title": "Keramik-Tasse mit farbiger Innenseite selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Tassen & Becher",
+      "tags": [
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-fabrik",
+        "sg-klasse-flach",
+        "sg-modell-403",
+        "sg-trinken",
+        "sg-typ-mug",
+        "wunschdesign"
+      ],
+      "totalVariants": 11,
+      "variantsReturned": 11,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/68134397575559",
+          "title": "Schwarz / 325 ml",
+          "sku": "9100403_11051",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397608327",
+          "title": "Schwarz / 444 ml",
+          "sku": "9100403_17196",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397641095",
+          "title": "Rot / 325 ml",
+          "sku": "9100403_11049",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397673863",
+          "title": "Rot / 444 ml",
+          "sku": "9100403_17200",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397706631",
+          "title": "Blau / 325 ml",
+          "sku": "9100403_11050",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397739399",
+          "title": "Blau / 444 ml",
+          "sku": "9100403_17197",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397772167",
+          "title": "Rosa / 325 ml",
+          "sku": "9100403_12578",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397804935",
+          "title": "Rosa / 444 ml",
+          "sku": "9100403_17199",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397837703",
+          "title": "Orange / 325 ml",
+          "sku": "9100403_12579",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397870471",
+          "title": "Gelb / 325 ml",
+          "sku": "9100403_11048",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68134397903239",
+          "title": "Dunkelblau / 444 ml",
+          "sku": "9100403_22373",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11051_1596788464.jpg?v=1793975980",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422823465345",
+      "handle": "keramik-tasse-selbst-gestalten",
+      "title": "Keramik-Tasse – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Tassen & Becher",
+      "tags": [
+        "bild-ok",
+        "mengenrabatt-a",
+        "printful_personalized_product",
+        "sg-trinken",
+        "sort-tassen-kaffeebecher",
+        "sort-tassen-kaffeebecher-keramik",
+        "tassen-becher",
+        "wunschdesign"
+      ],
+      "totalVariants": 3,
+      "variantsReturned": 3,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55777979629953",
+          "title": "325 ml",
+          "sku": "9365183_1320",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777979662721",
+          "title": "444 ml",
+          "sku": "9365183_4830",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777979695489",
+          "title": "591 ml",
+          "sku": "9365183_16586",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1320_1663762583.jpg?v=1781046472",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422857642369",
+      "handle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "title": "Klassisches Unisex T-Shirt – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "koll-shirts",
+        "sg-bekleidung",
+        "sort-damen-t-shirts",
+        "sort-damen-t-shirts-tshirt",
+        "sort-herren-t-shirts",
+        "wunschdesign"
+      ],
+      "totalVariants": 8,
+      "variantsReturned": 8,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778083996033",
+          "title": "S",
+          "sku": "8481330_11576",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084028801",
+          "title": "M",
+          "sku": "8481330_11577",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084061569",
+          "title": "L",
+          "sku": "8481330_11578",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084094337",
+          "title": "XL",
+          "sku": "8481330_11579",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084127105",
+          "title": "2XL",
+          "sku": "8481330_11580",
+          "priceCHF": "26.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084159873",
+          "title": "3XL",
+          "sku": "8481330_12650",
+          "priceCHF": "30.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084192641",
+          "title": "4XL",
+          "sku": "8481330_12651",
+          "priceCHF": "34.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778084225409",
+          "title": "5XL",
+          "sku": "8481330_12652",
+          "priceCHF": "38.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/blank-tee-white_3a017319-f17d-42bc-b7a9-078d106b5839.png?v=1793172254",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422958338433",
+      "handle": "kleid-mit-schlitz-und-allover-druck-selbst-gestalten",
+      "title": "Kleid mit Schlitz und Allover-Druck – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "kategorie-kleid",
+        "pod-uebersee",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-kleider",
+        "wunschdesign"
+      ],
+      "totalVariants": 6,
+      "variantsReturned": 6,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778502377857",
+          "title": "XS",
+          "sku": "1886540_22905",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778502410625",
+          "title": "S",
+          "sku": "1886540_22907",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778502443393",
+          "title": "M",
+          "sku": "1886540_22909",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778502476161",
+          "title": "L",
+          "sku": "1886540_22911",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778502508929",
+          "title": "XL",
+          "sku": "1886540_22913",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778502541697",
+          "title": "2XL",
+          "sku": "1886540_22915",
+          "priceCHF": "78.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-slip-dress.png?v=1781358259",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15451569389953",
+      "handle": "kuscheldecke-selbst-gestalten",
+      "title": "Kuscheldecke – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "decke",
+        "geschenk",
+        "printful_personalized_product",
+        "sg-wohnen",
+        "sort-decken-kuscheldecken",
+        "sort-decken-plaids",
+        "wunschdesign"
+      ],
+      "totalVariants": 2,
+      "variantsReturned": 2,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188510081",
+          "title": "76×102 cm",
+          "sku": "LS395_22609",
+          "priceCHF": "51.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55893188542849",
+          "title": "127×152 cm",
+          "sku": "LS395_10986",
+          "priceCHF": "60.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10986_e3936f06-2d7d-4ad0-84f0-da456c7238be.jpg?v=1783540651",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15451569357185",
+      "handle": "laptop-sleeve-selbst-gestalten",
+      "title": "Laptop-Sleeve – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "handy-technik",
+        "nicht-fit-elektronik-draft",
+        "printful_personalized_product",
+        "sg-technik",
+        "wunschdesign"
+      ],
+      "totalVariants": 2,
+      "variantsReturned": 2,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188444545",
+          "title": "13 Zoll",
+          "sku": "LS394_10984",
+          "priceCHF": "44.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55893188477313",
+          "title": "15 Zoll",
+          "sku": "LS394_10985",
+          "priceCHF": "49.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10984_be23ebe6-8b72-4e59-b23d-eca5435a175d.jpg?v=1783540648",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15427217195393",
+      "handle": "magnet-zum-selbstgestalten",
+      "title": "Magnet zum Selbstgestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Magnet",
+      "tags": [
+        "bild-ok",
+        "magnet",
+        "pod-magnet",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-wohnen",
+        "sort-deko-objekte-accessoires",
+        "wunschdesign"
+      ],
+      "totalVariants": 3,
+      "variantsReturned": 3,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55791941812609",
+          "title": "7,6 × 7,6 cm",
+          "sku": "9000001_16366",
+          "priceCHF": "16.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791941845377",
+          "title": "10 × 10 cm",
+          "sku": "9000001_16367",
+          "priceCHF": "17.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791941878145",
+          "title": "15 × 15 cm",
+          "sku": "9000001_16465",
+          "priceCHF": "19.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/magnet.jpg?v=1781356272",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15451569160577",
+      "handle": "mauspad-selbst-gestalten",
+      "title": "Mauspad – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "handy-technik",
+        "printful_personalized_product",
+        "sg-technik",
+        "sort-laptopzubehoer",
+        "sort-mauspads",
+        "sort-pc-homeoffice",
+        "sort-tastatur-maus",
+        "wunschdesign"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188149633",
+          "title": "Default Title",
+          "sku": "LS518_13097",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/mauspad_f4cd4b1a-0c7e-4870-926f-a7b5169a0edc.jpg?v=1783540637",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15427182330241",
+      "handle": "poster-zum-selbstgestalten",
+      "title": "Poster zum Selbstgestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Poster",
+      "tags": [
+        "bild-ok",
+        "pod-poster",
+        "poster",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-wohnen",
+        "sort-wandbilder",
+        "sort-wandbilder-uf-poster",
+        "sort-wandbilder-wanddeko",
+        "wunschdesign"
+      ],
+      "totalVariants": 18,
+      "variantsReturned": 18,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55791753298305",
+          "title": "Poster matt / 30×40 cm",
+          "sku": "9000001_8948",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791753331073",
+          "title": "Poster matt / 50×70 cm",
+          "sku": "9000001_8952",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791753363841",
+          "title": "Poster matt / 70×100 cm",
+          "sku": "9000001_8954",
+          "priceCHF": "46.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55791753396609",
+          "title": "Poster matt / A2 (42×59,4 cm)",
+          "sku": "9000001_19516",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154043783",
+          "title": "Foto-Glanzpapier / 30×40 cm",
+          "sku": "9000001_6875",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154076551",
+          "title": "Foto-Glanzpapier / 50×70 cm",
+          "sku": "9000001_48863",
+          "priceCHF": "37.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154109319",
+          "title": "Foto-Glanzpapier / A2 (42×59,4 cm)",
+          "sku": "9000001_19526",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154174855",
+          "title": "Leinwand / 30×40 cm",
+          "sku": "9000001_5",
+          "priceCHF": "48.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154207623",
+          "title": "Leinwand / 50×70 cm",
+          "sku": "9000001_19310",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154240391",
+          "title": "Leinwand / 70×100 cm",
+          "sku": "9000001_19321",
+          "priceCHF": "141.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154305927",
+          "title": "Gerahmt · Schwarz / 30×40 cm",
+          "sku": "9000001_9357",
+          "priceCHF": "67.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154338695",
+          "title": "Gerahmt · Schwarz / A2 (42×59,4 cm)",
+          "sku": "9000001_19643",
+          "priceCHF": "106.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154404231",
+          "title": "Gerahmt · Weiss / 30×40 cm",
+          "sku": "9000001_10297",
+          "priceCHF": "62.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154436999",
+          "title": "Gerahmt · Weiss / 50×70 cm",
+          "sku": "9000001_10298",
+          "priceCHF": "125.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154469767",
+          "title": "Gerahmt · Weiss / A2 (42×59,4 cm)",
+          "sku": "9000001_19648",
+          "priceCHF": "106.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154568071",
+          "title": "Gerahmt · Eiche / 30×40 cm",
+          "sku": "9000001_11791",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154600839",
+          "title": "Gerahmt · Eiche / 50×70 cm",
+          "sku": "9000001_11792",
+          "priceCHF": "135.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814154633607",
+          "title": "Gerahmt · Eiche / A2 (42×59,4 cm)",
+          "sku": "9000001_19653",
+          "priceCHF": "106.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/poster.jpg?v=1781356275",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422860984705",
+      "handle": "premium-hoodie-selbst-gestalten",
+      "title": "Premium-Hoodie – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "ghost-sale-risiko",
+        "kat-damen-pullover",
+        "keine-lieferanten-ref",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "wunschdesign"
+      ],
+      "totalVariants": 6,
+      "variantsReturned": 6,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778090254721",
+          "title": "S",
+          "sku": "9448929_10774",
+          "priceCHF": "57.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778090287489",
+          "title": "M",
+          "sku": "9448929_10775",
+          "priceCHF": "57.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778090320257",
+          "title": "L",
+          "sku": "9448929_10776",
+          "priceCHF": "57.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778090353025",
+          "title": "XL",
+          "sku": "9448929_10777",
+          "priceCHF": "57.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778090385793",
+          "title": "2XL",
+          "sku": "9448929_10778",
+          "priceCHF": "61.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778090418561",
+          "title": "3XL",
+          "sku": "9448929_13421",
+          "priceCHF": "66.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/premium-hoodie-selbst-gestalten.jpg?v=1781356277",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422959518081",
+      "handle": "recycelte-allover-jogginghosen-selbst-gestalten",
+      "title": "Recycelte Allover-Jogginghosen – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "hose",
+        "hosen",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-hosen",
+        "sort-damen-hosen-jogging",
+        "sort-herren-hosen",
+        "wunschdesign"
+      ],
+      "totalVariants": 7,
+      "variantsReturned": 7,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778508439937",
+          "title": "XS",
+          "sku": "4944509_11033",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508472705",
+          "title": "S",
+          "sku": "4944509_11034",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508505473",
+          "title": "M",
+          "sku": "4944509_11035",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508538241",
+          "title": "L",
+          "sku": "4944509_11036",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508571009",
+          "title": "XL",
+          "sku": "4944509_11037",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508603777",
+          "title": "2XL",
+          "sku": "4944509_11038",
+          "priceCHF": "85.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778508636545",
+          "title": "3XL",
+          "sku": "4944509_11039",
+          "priceCHF": "90.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-joggers.png?v=1781358259",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422949130625",
+      "handle": "recycelter-unisex-allover-pullover-selbst-gestalten",
+      "title": "Recycelter Unisex Allover-Pullover – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Hoodies & Pullover",
+      "tags": [
+        "bild-ok",
+        "kat-damen-pullover",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-pullover",
+        "sort-herren-pullover-strick",
+        "wunschdesign"
+      ],
+      "totalVariants": 11,
+      "variantsReturned": 11,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778459550081",
+          "title": "2XS",
+          "sku": "1989990_19769",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459582849",
+          "title": "XS",
+          "sku": "1989990_9730",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459615617",
+          "title": "S",
+          "sku": "1989990_9731",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459648385",
+          "title": "M",
+          "sku": "1989990_9732",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459681153",
+          "title": "L",
+          "sku": "1989990_9733",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459713921",
+          "title": "XL",
+          "sku": "1989990_9734",
+          "priceCHF": "73.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459746689",
+          "title": "2XL",
+          "sku": "1989990_9735",
+          "priceCHF": "77.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459779457",
+          "title": "3XL",
+          "sku": "1989990_9736",
+          "priceCHF": "81.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459812225",
+          "title": "4XL",
+          "sku": "1989990_19770",
+          "priceCHF": "85.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459844993",
+          "title": "5XL",
+          "sku": "1989990_19771",
+          "priceCHF": "89.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778459877761",
+          "title": "6XL",
+          "sku": "1989990_19772",
+          "priceCHF": "93.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-pullover.png?v=1781358260",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/16672778289543",
+      "handle": "samsung-huelle-selbst-gestalten",
+      "title": "Samsung-Hülle selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Handy-Zubehör",
+      "tags": [
+        "huelle",
+        "natel",
+        "printful_personalized_product",
+        "samsung",
+        "sg-accessoires",
+        "sort-handy-huellen",
+        "sort-handyhuellen-displayschutz",
+        "wunschdesign"
+      ],
+      "totalVariants": 84,
+      "variantsReturned": 84,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/67813421941127",
+          "title": "Hartschale matt / Samsung Galaxy S20",
+          "sku": "9000001_16982",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813421973895",
+          "title": "Hartschale matt / Samsung Galaxy S20 Plus",
+          "sku": "9000001_16978",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422006663",
+          "title": "Hartschale matt / Samsung Galaxy S20 Ultra",
+          "sku": "9000001_16980",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422039431",
+          "title": "Hartschale matt / Samsung Galaxy S20 FE",
+          "sku": "9000001_16976",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422072199",
+          "title": "Hartschale matt / Samsung Galaxy S21",
+          "sku": "9000001_16990",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422104967",
+          "title": "Hartschale matt / Samsung Galaxy S21 Plus",
+          "sku": "9000001_16986",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422137735",
+          "title": "Hartschale matt / Samsung Galaxy S21 Ultra",
+          "sku": "9000001_16988",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422170503",
+          "title": "Hartschale matt / Samsung Galaxy S21 FE",
+          "sku": "9000001_16984",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422203271",
+          "title": "Hartschale matt / Samsung Galaxy S22",
+          "sku": "9000001_16996",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422236039",
+          "title": "Hartschale matt / Samsung Galaxy S22 Plus",
+          "sku": "9000001_16992",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422268807",
+          "title": "Hartschale matt / Samsung Galaxy S22 Ultra",
+          "sku": "9000001_16994",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422301575",
+          "title": "Hartschale matt / Samsung Galaxy S23",
+          "sku": "9000001_17002",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422334343",
+          "title": "Hartschale matt / Samsung Galaxy S23 Plus",
+          "sku": "9000001_16998",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422367111",
+          "title": "Hartschale matt / Samsung Galaxy S23 Ultra",
+          "sku": "9000001_17000",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422399879",
+          "title": "Hartschale matt / Samsung Galaxy S24",
+          "sku": "9000001_18746",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422432647",
+          "title": "Hartschale matt / Samsung Galaxy S24 Plus",
+          "sku": "9000001_18747",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422465415",
+          "title": "Hartschale matt / Samsung Galaxy S24 Ultra",
+          "sku": "9000001_18748",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422498183",
+          "title": "Hartschale matt / Samsung Galaxy S25",
+          "sku": "9000001_21470",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422530951",
+          "title": "Hartschale matt / Samsung Galaxy S25 Plus",
+          "sku": "9000001_21472",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422563719",
+          "title": "Hartschale matt / Samsung Galaxy S25 Ultra",
+          "sku": "9000001_21474",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422596487",
+          "title": "Hartschale matt / Samsung Galaxy S26",
+          "sku": "9000001_49332",
+          "priceCHF": "30.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422629255",
+          "title": "Hartschale matt / Samsung Galaxy S26 Plus",
+          "sku": "9000001_49330",
+          "priceCHF": "30.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422662023",
+          "title": "Hartschale matt / Samsung Galaxy S26 Ultra",
+          "sku": "9000001_49331",
+          "priceCHF": "30.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422694791",
+          "title": "Hartschale glänzend / Samsung Galaxy S20",
+          "sku": "9000001_16981",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422727559",
+          "title": "Hartschale glänzend / Samsung Galaxy S20 Plus",
+          "sku": "9000001_16977",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422760327",
+          "title": "Hartschale glänzend / Samsung Galaxy S20 Ultra",
+          "sku": "9000001_16979",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422793095",
+          "title": "Hartschale glänzend / Samsung Galaxy S20 FE",
+          "sku": "9000001_16975",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422825863",
+          "title": "Hartschale glänzend / Samsung Galaxy S21",
+          "sku": "9000001_16989",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422858631",
+          "title": "Hartschale glänzend / Samsung Galaxy S21 Plus",
+          "sku": "9000001_16985",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422891399",
+          "title": "Hartschale glänzend / Samsung Galaxy S21 Ultra",
+          "sku": "9000001_16987",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422924167",
+          "title": "Hartschale glänzend / Samsung Galaxy S21 FE",
+          "sku": "9000001_16983",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422956935",
+          "title": "Hartschale glänzend / Samsung Galaxy S22",
+          "sku": "9000001_16995",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813422989703",
+          "title": "Hartschale glänzend / Samsung Galaxy S22 Plus",
+          "sku": "9000001_16991",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423022471",
+          "title": "Hartschale glänzend / Samsung Galaxy S22 Ultra",
+          "sku": "9000001_16993",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423055239",
+          "title": "Hartschale glänzend / Samsung Galaxy S23",
+          "sku": "9000001_17001",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423088007",
+          "title": "Hartschale glänzend / Samsung Galaxy S23 Plus",
+          "sku": "9000001_16997",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423120775",
+          "title": "Hartschale glänzend / Samsung Galaxy S23 Ultra",
+          "sku": "9000001_16999",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423153543",
+          "title": "Hartschale glänzend / Samsung Galaxy S24",
+          "sku": "9000001_18743",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423186311",
+          "title": "Hartschale glänzend / Samsung Galaxy S24 Plus",
+          "sku": "9000001_18744",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423219079",
+          "title": "Hartschale glänzend / Samsung Galaxy S24 Ultra",
+          "sku": "9000001_18745",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423251847",
+          "title": "Hartschale glänzend / Samsung Galaxy S25",
+          "sku": "9000001_21469",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423284615",
+          "title": "Hartschale glänzend / Samsung Galaxy S25 Plus",
+          "sku": "9000001_21471",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423317383",
+          "title": "Hartschale glänzend / Samsung Galaxy S25 Ultra",
+          "sku": "9000001_21473",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423350151",
+          "title": "Hartschale glänzend / Samsung Galaxy S26",
+          "sku": "9000001_49327",
+          "priceCHF": "30.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423382919",
+          "title": "Hartschale glänzend / Samsung Galaxy S26 Plus",
+          "sku": "9000001_49328",
+          "priceCHF": "30.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423415687",
+          "title": "Hartschale glänzend / Samsung Galaxy S26 Ultra",
+          "sku": "9000001_49329",
+          "priceCHF": "30.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423448455",
+          "title": "Klare Hülle / Samsung Galaxy S20",
+          "sku": "9000001_11347",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423481223",
+          "title": "Klare Hülle / Samsung Galaxy S20 Plus",
+          "sku": "9000001_11348",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423513991",
+          "title": "Klare Hülle / Samsung Galaxy S20 Ultra",
+          "sku": "9000001_11349",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423546759",
+          "title": "Klare Hülle / Samsung Galaxy S21",
+          "sku": "9000001_12025",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423579527",
+          "title": "Klare Hülle / Samsung Galaxy S21 Plus",
+          "sku": "9000001_12027",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423612295",
+          "title": "Klare Hülle / Samsung Galaxy S21 Ultra",
+          "sku": "9000001_12026",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423645063",
+          "title": "Klare Hülle / Samsung Galaxy S22",
+          "sku": "9000001_14633",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423677831",
+          "title": "Klare Hülle / Samsung Galaxy S22 Plus",
+          "sku": "9000001_14634",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423710599",
+          "title": "Klare Hülle / Samsung Galaxy S22 Ultra",
+          "sku": "9000001_14635",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423743367",
+          "title": "Klare Hülle / Samsung Galaxy S23",
+          "sku": "9000001_18749",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423776135",
+          "title": "Klare Hülle / Samsung Galaxy S23 Plus",
+          "sku": "9000001_18750",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423808903",
+          "title": "Klare Hülle / Samsung Galaxy S23 Ultra",
+          "sku": "9000001_18751",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423841671",
+          "title": "Klare Hülle / Samsung Galaxy S24",
+          "sku": "9000001_18734",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423874439",
+          "title": "Klare Hülle / Samsung Galaxy S24 Plus",
+          "sku": "9000001_18735",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423907207",
+          "title": "Klare Hülle / Samsung Galaxy S24 Ultra",
+          "sku": "9000001_18736",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423939975",
+          "title": "Klare Hülle / Samsung Galaxy S25",
+          "sku": "9000001_21481",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813423972743",
+          "title": "Klare Hülle / Samsung Galaxy S25 Plus",
+          "sku": "9000001_21482",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424005511",
+          "title": "Klare Hülle / Samsung Galaxy S25 Ultra",
+          "sku": "9000001_21483",
+          "priceCHF": "23.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424038279",
+          "title": "Slim-Hülle / Samsung Galaxy S20",
+          "sku": "9000001_16925",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424071047",
+          "title": "Slim-Hülle / Samsung Galaxy S20 Plus",
+          "sku": "9000001_16927",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424103815",
+          "title": "Slim-Hülle / Samsung Galaxy S20 Ultra",
+          "sku": "9000001_16929",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424136583",
+          "title": "Slim-Hülle / Samsung Galaxy S20 FE",
+          "sku": "9000001_16931",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424169351",
+          "title": "Slim-Hülle / Samsung Galaxy S21",
+          "sku": "9000001_16935",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424202119",
+          "title": "Slim-Hülle / Samsung Galaxy S21 Plus",
+          "sku": "9000001_16937",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424234887",
+          "title": "Slim-Hülle / Samsung Galaxy S21 Ultra",
+          "sku": "9000001_16939",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424267655",
+          "title": "Slim-Hülle / Samsung Galaxy S21 FE",
+          "sku": "9000001_16933",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424300423",
+          "title": "Slim-Hülle / Samsung Galaxy S22",
+          "sku": "9000001_16941",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424333191",
+          "title": "Slim-Hülle / Samsung Galaxy S22 Plus",
+          "sku": "9000001_16943",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424365959",
+          "title": "Slim-Hülle / Samsung Galaxy S22 Ultra",
+          "sku": "9000001_16945",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424398727",
+          "title": "Slim-Hülle / Samsung Galaxy S23",
+          "sku": "9000001_16947",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424431495",
+          "title": "Slim-Hülle / Samsung Galaxy S23 Plus",
+          "sku": "9000001_16949",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424464263",
+          "title": "Slim-Hülle / Samsung Galaxy S23 Ultra",
+          "sku": "9000001_16951",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424497031",
+          "title": "Slim-Hülle / Samsung Galaxy S24",
+          "sku": "9000001_18740",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424529799",
+          "title": "Slim-Hülle / Samsung Galaxy S24 Plus",
+          "sku": "9000001_18741",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424562567",
+          "title": "Slim-Hülle / Samsung Galaxy S24 Ultra",
+          "sku": "9000001_18742",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424595335",
+          "title": "Slim-Hülle / Samsung Galaxy S25",
+          "sku": "9000001_21476",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424628103",
+          "title": "Slim-Hülle / Samsung Galaxy S25 Plus",
+          "sku": "9000001_21478",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67813424660871",
+          "title": "Slim-Hülle / Samsung Galaxy S25 Ultra",
+          "sku": "9000001_21480",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/21474_1737960312.jpg?v=1793217974",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15451569324417",
+      "handle": "spiral-notizbuch-selbst-gestalten",
+      "title": "Spiral-Notizbuch – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "schule-buero",
+        "sg-buero",
+        "sort-buero",
+        "sort-kalender",
+        "sort-notizbuecher",
+        "wunschdesign"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188411777",
+          "title": "Default Title",
+          "sku": "LS474_12141",
+          "priceCHF": "28.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/12141_bb65cca5-3d84-476d-bccb-2e55e2a202cb.jpg?v=1783540644",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15427285156225",
+      "handle": "tote-zum-selbstgestalten",
+      "title": "Stofftasche zum Selbstgestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Tasche",
+      "tags": [
+        "accessoire",
+        "bild-ok",
+        "kat-taschen",
+        "nachhaltig",
+        "pod-tote",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-taschen",
+        "tasche",
+        "taschen",
+        "wunschdesign"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55794931532161",
+          "title": "Schwarz",
+          "sku": "9000001_4533",
+          "priceCHF": "37.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/tote.jpg?v=1781356273",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15451569226113",
+      "handle": "strandtuch-selbst-gestalten",
+      "title": "Strandtuch & Badetuch bedrucken · selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Selbst gestalten",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-wohnen",
+        "sommer-2026",
+        "sort-handtuecher-bade-strand",
+        "sort-handtuecher-badetuecher",
+        "strand",
+        "wunschdesign"
+      ],
+      "totalVariants": 2,
+      "variantsReturned": 2,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55893188215169",
+          "title": "76×152 cm",
+          "sku": "LS259_8874",
+          "priceCHF": "60.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55893188247937",
+          "title": "91×183 cm",
+          "sku": "LS259_22610",
+          "priceCHF": "67.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8874_b327540f-16b6-4c80-8e57-c135253f9d24.jpg?v=1783540641",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15427283157377",
+      "handle": "shirt-zum-selbstgestalten",
+      "title": "T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "T-Shirt",
+      "tags": [
+        "bild-ok",
+        "kleidung",
+        "pod-shirt",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-bekleidung",
+        "sort-damen-t-shirts",
+        "sort-damen-t-shirts-tshirt",
+        "sort-herren-t-shirts",
+        "sort-herren-t-shirts-print",
+        "t-shirt",
+        "wunschdesign"
+      ],
+      "totalVariants": 15,
+      "variantsReturned": 15,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55792263954817",
+          "title": "Weiss / S",
+          "sku": "9000001_4011",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792263987585",
+          "title": "Weiss / M",
+          "sku": "9000001_4012",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792264020353",
+          "title": "Weiss / L",
+          "sku": "9000001_4013",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792264053121",
+          "title": "Weiss / XL",
+          "sku": "9000001_4014",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792264085889",
+          "title": "Weiss / 2XL",
+          "sku": "9000001_4015",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951258497",
+          "title": "Schwarz / S",
+          "sku": "9000001_4016",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951291265",
+          "title": "Schwarz / M",
+          "sku": "9000001_4017",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951324033",
+          "title": "Schwarz / L",
+          "sku": "9000001_4018",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951356801",
+          "title": "Schwarz / XL",
+          "sku": "9000001_4019",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951389569",
+          "title": "Schwarz / 2XL",
+          "sku": "9000001_4020",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951422337",
+          "title": "Marineblau / S",
+          "sku": "9000001_4111",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951455105",
+          "title": "Marineblau / M",
+          "sku": "9000001_4112",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951487873",
+          "title": "Marineblau / L",
+          "sku": "9000001_4113",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951520641",
+          "title": "Marineblau / XL",
+          "sku": "9000001_4114",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55794951553409",
+          "title": "Marineblau / 2XL",
+          "sku": "9000001_4115",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4011_1752236284.jpg?v=1781197671",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15427282633089",
+      "handle": "tasse-zum-selbstgestalten",
+      "title": "Tasse bedrucken & selbst gestalten · dein Foto",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Tasse",
+      "tags": [
+        "bild-ok",
+        "geschenk",
+        "kueche",
+        "pod-mug",
+        "printful_personalized_product",
+        "selbst-gestalten",
+        "sg-trinken",
+        "sort-tassen-kaffeebecher",
+        "tasse",
+        "tassen-becher",
+        "wunschdesign"
+      ],
+      "totalVariants": 2,
+      "variantsReturned": 2,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55792263233921",
+          "title": "325 ml (Standard)",
+          "sku": "9000001_1320",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55792263266689",
+          "title": "444 ml (Gross)",
+          "sku": "9000001_4830",
+          "priceCHF": "25.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1320_1663762583_6854cbf8-0ca1-4f08-9e2c-3d3673d1f211.jpg?v=1781197669",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422956798337",
+      "handle": "unisex-allover-bomberjacke-selbst-gestalten",
+      "title": "Unisex Allover-Bomberjacke – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Accessoires",
+      "tags": [
+        "bild-ok",
+        "jacke",
+        "kat-damen-jacke",
+        "kat-jacke-outdoor",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-jacken-maentel",
+        "sort-damen-jacken-uebergang",
+        "sort-herren-jacken-baseball-bomber",
+        "sort-herren-jacken-maentel",
+        "wunschdesign"
+      ],
+      "totalVariants": 7,
+      "variantsReturned": 7,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778488418689",
+          "title": "XS",
+          "sku": "9844202_10877",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488451457",
+          "title": "S",
+          "sku": "9844202_10878",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488484225",
+          "title": "M",
+          "sku": "9844202_10879",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488516993",
+          "title": "L",
+          "sku": "9844202_10880",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488549761",
+          "title": "XL",
+          "sku": "9844202_10881",
+          "priceCHF": "103.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488582529",
+          "title": "2XL",
+          "sku": "9844202_10882",
+          "priceCHF": "107.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778488615297",
+          "title": "3XL",
+          "sku": "9844202_10883",
+          "priceCHF": "111.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/clean-bomber.png?v=1781358259",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422815699329",
+      "handle": "unisex-hoodie-selbst-gestalten",
+      "title": "Unisex Sweatshirt & Bio-Hoodie – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Hoodies & Sweatshirts",
+      "tags": [
+        "bild-ok",
+        "kat-damen-pullover",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-hoodies-hoodie",
+        "sort-damen-hoodies-sweatshirts",
+        "sort-herren-hoodies",
+        "sort-herren-hoodies-sweatshirts",
+        "wunschdesign"
+      ],
+      "totalVariants": 13,
+      "variantsReturned": 13,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55777955643777",
+          "title": "Sweatshirt (Rundhals) / S",
+          "sku": "1726823_5426",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955676545",
+          "title": "Sweatshirt (Rundhals) / M",
+          "sku": "1726823_5427",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955709313",
+          "title": "Sweatshirt (Rundhals) / L",
+          "sku": "1726823_5428",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955742081",
+          "title": "Sweatshirt (Rundhals) / XL",
+          "sku": "1726823_5429",
+          "priceCHF": "39.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955774849",
+          "title": "Sweatshirt (Rundhals) / 2XL",
+          "sku": "1726823_5430",
+          "priceCHF": "43.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955807617",
+          "title": "Sweatshirt (Rundhals) / 3XL",
+          "sku": "1726823_5431",
+          "priceCHF": "48.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955840385",
+          "title": "Sweatshirt (Rundhals) / 4XL",
+          "sku": "1726823_5432",
+          "priceCHF": "52.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777955873153",
+          "title": "Sweatshirt (Rundhals) / 5XL",
+          "sku": "1726823_5433",
+          "priceCHF": "56.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157877639",
+          "title": "Bio-Baumwolle / S",
+          "sku": "1726823_20805",
+          "priceCHF": "75.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157910407",
+          "title": "Bio-Baumwolle / M",
+          "sku": "1726823_20811",
+          "priceCHF": "75.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157943175",
+          "title": "Bio-Baumwolle / L",
+          "sku": "1726823_20817",
+          "priceCHF": "75.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157975943",
+          "title": "Bio-Baumwolle / XL",
+          "sku": "1726823_20823",
+          "priceCHF": "75.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814158008711",
+          "title": "Bio-Baumwolle / 2XL",
+          "sku": "1726823_20830",
+          "priceCHF": "79.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/unisex-hoodie-selbst-gestalten.jpg?v=1781356271",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422811439489",
+      "handle": "unisex-t-shirt-selbst-gestalten",
+      "title": "Unisex T-Shirt – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "T-SHIRT",
+      "tags": [
+        "bild-ok",
+        "printful_personalized_product",
+        "sg-bekleidung",
+        "sort-damen-t-shirts",
+        "sort-damen-t-shirts-tshirt",
+        "sort-herren-t-shirts",
+        "wunschdesign"
+      ],
+      "totalVariants": 25,
+      "variantsReturned": 25,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55777948008833",
+          "title": "Ringgarn-Baumwolle / XS",
+          "sku": "5599797_9526",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948041601",
+          "title": "Ringgarn-Baumwolle / S",
+          "sku": "5599797_4011",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948074369",
+          "title": "Ringgarn-Baumwolle / M",
+          "sku": "5599797_4012",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948107137",
+          "title": "Ringgarn-Baumwolle / L",
+          "sku": "5599797_4013",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948139905",
+          "title": "Ringgarn-Baumwolle / XL",
+          "sku": "5599797_4014",
+          "priceCHF": "27.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948172673",
+          "title": "Ringgarn-Baumwolle / 2XL",
+          "sku": "5599797_4015",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948205441",
+          "title": "Ringgarn-Baumwolle / 3XL",
+          "sku": "5599797_5294",
+          "priceCHF": "33.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948238209",
+          "title": "Ringgarn-Baumwolle / 4XL",
+          "sku": "5599797_5309",
+          "priceCHF": "37.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55777948270977",
+          "title": "Ringgarn-Baumwolle / 5XL",
+          "sku": "5599797_12872",
+          "priceCHF": "41.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814156730759",
+          "title": "Bio-Baumwolle / XS",
+          "sku": "5599797_53681",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814156763527",
+          "title": "Bio-Baumwolle / S",
+          "sku": "5599797_11864",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814156796295",
+          "title": "Bio-Baumwolle / M",
+          "sku": "5599797_11865",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814156829063",
+          "title": "Bio-Baumwolle / L",
+          "sku": "5599797_11866",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814156861831",
+          "title": "Bio-Baumwolle / XL",
+          "sku": "5599797_11867",
+          "priceCHF": "29.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814156894599",
+          "title": "Bio-Baumwolle / 2XL",
+          "sku": "5599797_11868",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814156927367",
+          "title": "Bio-Baumwolle / 3XL",
+          "sku": "5599797_17228",
+          "priceCHF": "35.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814156960135",
+          "title": "Bio-Baumwolle / 4XL",
+          "sku": "5599797_17232",
+          "priceCHF": "38.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814156992903",
+          "title": "Bio-Baumwolle / 5XL",
+          "sku": "5599797_17235",
+          "priceCHF": "42.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157091207",
+          "title": "Heavyweight-Baumwolle / S",
+          "sku": "5599797_15124",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157123975",
+          "title": "Heavyweight-Baumwolle / M",
+          "sku": "5599797_15125",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157156743",
+          "title": "Heavyweight-Baumwolle / L",
+          "sku": "5599797_15126",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157189511",
+          "title": "Heavyweight-Baumwolle / XL",
+          "sku": "5599797_15127",
+          "priceCHF": "32.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157222279",
+          "title": "Heavyweight-Baumwolle / 2XL",
+          "sku": "5599797_15128",
+          "priceCHF": "36.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157255047",
+          "title": "Heavyweight-Baumwolle / 3XL",
+          "sku": "5599797_16335",
+          "priceCHF": "40.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/67814157287815",
+          "title": "Heavyweight-Baumwolle / 4XL",
+          "sku": "5599797_17508",
+          "priceCHF": "44.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/blank-tee-white.png?v=1781027029",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422851744129",
+      "handle": "urban-umhangetasche-selbst-gestalten",
+      "title": "Urban-Umhängetasche – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "Taschen",
+      "tags": [
+        "bild-ok",
+        "ghost-sale-risiko",
+        "keine-lieferanten-ref",
+        "printful_personalized_product",
+        "sg-taschen",
+        "wunschdesign"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778068726145",
+          "title": "Default Title",
+          "sku": "5485122_49345",
+          "priceCHF": "58.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/urban-umhangetasche-selbst-gestalten_ebb2771f-7c5b-4343-887e-97f85ac4cf8f.jpg?v=1781356271",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15433948070273",
+      "handle": "wm-trikot-selbst-gestalten",
+      "title": "⚽ Schweiz Fan-Trikot 2026 – selbst gestalten (Name & Nummer)",
+      "vendor": "LuxeStyle",
+      "status": "DRAFT",
+      "productType": "T-SHIRT",
+      "tags": [
+        "blanko",
+        "fan",
+        "fan-zone",
+        "fussball",
+        "nati",
+        "premium",
+        "printful_personalized_product",
+        "rot",
+        "schweiz-fan",
+        "sg-alle",
+        "sg-bekleidung",
+        "sport",
+        "trend",
+        "trikot",
+        "video-hit",
+        "viral",
+        "wm-2026",
+        "wm-langsam-pausiert",
+        "wunschdesign"
+      ],
+      "totalVariants": 20,
+      "variantsReturned": 20,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55815201227137",
+          "title": "S / Rot",
+          "sku": "WM-TRIKOT-RO-S",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815201259905",
+          "title": "M / Rot",
+          "sku": "WM-TRIKOT-RO-M",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815201292673",
+          "title": "L / Rot",
+          "sku": "WM-TRIKOT-RO-L",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815201325441",
+          "title": "XL / Rot",
+          "sku": "WM-TRIKOT-RO-XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": -1
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815201358209",
+          "title": "2XL / Rot",
+          "sku": "WM-TRIKOT-RO-2XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217185153",
+          "title": "S / Weiss",
+          "sku": "WM-TRIKOT-WE-S",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217217921",
+          "title": "M / Weiss",
+          "sku": "WM-TRIKOT-WE-M",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217250689",
+          "title": "L / Weiss",
+          "sku": "WM-TRIKOT-WE-L",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217283457",
+          "title": "XL / Weiss",
+          "sku": "WM-TRIKOT-WE-XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217316225",
+          "title": "2XL / Weiss",
+          "sku": "WM-TRIKOT-WE-2XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217348993",
+          "title": "S / Schwarz",
+          "sku": "WM-TRIKOT-SC-S",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217381761",
+          "title": "M / Schwarz",
+          "sku": "WM-TRIKOT-SC-M",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217414529",
+          "title": "L / Schwarz",
+          "sku": "WM-TRIKOT-SC-L",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217447297",
+          "title": "XL / Schwarz",
+          "sku": "WM-TRIKOT-SC-XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217480065",
+          "title": "2XL / Schwarz",
+          "sku": "WM-TRIKOT-SC-2XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217512833",
+          "title": "S / Blau",
+          "sku": "WM-TRIKOT-BL-S",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217545601",
+          "title": "M / Blau",
+          "sku": "WM-TRIKOT-BL-M",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217578369",
+          "title": "L / Blau",
+          "sku": "WM-TRIKOT-BL-L",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217611137",
+          "title": "XL / Blau",
+          "sku": "WM-TRIKOT-BL-XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55815217643905",
+          "title": "2XL / Blau",
+          "sku": "WM-TRIKOT-BL-2XL",
+          "priceCHF": "59.90",
+          "inventoryQuantity": 0
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/all-over-print-recycled-unisex-sports-jersey-white-front-6a489d0533441_800x800_83037a46-e086-4101-9108-5819f4c5296e.jpg?v=1783157790",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15423895830913",
+      "handle": "buegeltransfer-selbst-gestalten",
+      "title": "Bügeltransfer – selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Bügeltransfer",
+      "tags": [
+        "basteln",
+        "bild-ok",
+        "buegeltransfer",
+        "bügelbild",
+        "custom",
+        "diy",
+        "hype-jetzt",
+        "selbst-gestalten",
+        "sg-accessoires"
+      ],
+      "totalVariants": 1,
+      "variantsReturned": 1,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55784678654337",
+          "title": "Gross (A3, ~30×21 cm)",
+          "sku": "TRANSFER-A3",
+          "priceCHF": "35.90",
+          "inventoryQuantity": -1
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/buegeltransfer.jpg?v=1781356273",
+      "readStatus": "CONFIRMED"
+    },
+    {
+      "id": "gid://shopify/Product/15422946804097",
+      "handle": "transparente-iphone®-hulle-selbst-gestalten",
+      "title": "Transparente iPhone®-Hülle – Selbst gestalten",
+      "vendor": "LuxeStyle",
+      "status": "ACTIVE",
+      "productType": "Handy-Zubehör",
+      "tags": [
+        "bild-ok",
+        "huelle",
+        "natel",
+        "sort-handy-huellen",
+        "sort-handyhuellen-displayschutz",
+        "tech"
+      ],
+      "totalVariants": 31,
+      "variantsReturned": 31,
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55778422849921",
+          "title": "iPhone 11 Pro Max",
+          "sku": "6267182_10996",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778422882689",
+          "title": "iPhone 11 Pro",
+          "sku": "6267182_10995",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778422915457",
+          "title": "iPhone 11",
+          "sku": "6267182_10994",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778422948225",
+          "title": "iPhone 12 mini",
+          "sku": "6267182_11703",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778422980993",
+          "title": "iPhone 12 Pro Max",
+          "sku": "6267182_11705",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423013761",
+          "title": "iPhone 12 Pro",
+          "sku": "6267182_11808",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423046529",
+          "title": "iPhone 12",
+          "sku": "6267182_11704",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423079297",
+          "title": "iPhone 13 mini",
+          "sku": "6267182_13428",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423112065",
+          "title": "iPhone 13 Pro Max",
+          "sku": "6267182_13801",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423144833",
+          "title": "iPhone 13 Pro",
+          "sku": "6267182_13800",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423177601",
+          "title": "iPhone 13",
+          "sku": "6267182_13427",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423210369",
+          "title": "iPhone 14 Plus",
+          "sku": "6267182_16242",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423243137",
+          "title": "iPhone 14 Pro Max",
+          "sku": "6267182_16243",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423275905",
+          "title": "iPhone 14 Pro",
+          "sku": "6267182_16241",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423308673",
+          "title": "iPhone 14",
+          "sku": "6267182_16240",
+          "priceCHF": "24.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423341441",
+          "title": "iPhone 15 Plus",
+          "sku": "6267182_17617",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423374209",
+          "title": "iPhone 15 Pro Max",
+          "sku": "6267182_17619",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423406977",
+          "title": "iPhone 15 Pro",
+          "sku": "6267182_17618",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423439745",
+          "title": "iPhone 15",
+          "sku": "6267182_17616",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423472513",
+          "title": "iPhone 16 Plus",
+          "sku": "6267182_20291",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423505281",
+          "title": "iPhone 16 Pro Max",
+          "sku": "6267182_20293",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423538049",
+          "title": "iPhone 16 Pro",
+          "sku": "6267182_20292",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423570817",
+          "title": "iPhone 16",
+          "sku": "6267182_20290",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423603585",
+          "title": "iPhone 17 Air",
+          "sku": "6267182_33994",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423636353",
+          "title": "iPhone 17 Pro Max",
+          "sku": "6267182_33996",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423669121",
+          "title": "iPhone 17 Pro",
+          "sku": "6267182_33995",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423701889",
+          "title": "iPhone 17",
+          "sku": "6267182_33993",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423734657",
+          "title": "iPhone 7/8",
+          "sku": "6267182_7910",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423767425",
+          "title": "iPhone SE",
+          "sku": "6267182_11452",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423800193",
+          "title": "iPhone X/XS",
+          "sku": "6267182_8933",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55778423832961",
+          "title": "iPhone XR",
+          "sku": "6267182_9621",
+          "priceCHF": "22.90",
+          "inventoryQuantity": 9999
+        }
+      ],
+      "featuredImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10996_1582202496.jpg?v=1781046473",
+      "readStatus": "CONFIRMED"
+    }
+  ]
+}

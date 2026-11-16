@@ -1,0 +1,5743 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-08T10:36:55.078550Z",
+  "source": {
+    "path": "data/catalog-manifest.json",
+    "sha256": "1bbe063c19d2b014d5cc02f27005e7e5397694db98e13a181a05e85012ff65bb"
+  },
+  "policy": {
+    "exactShopifyVariantGidRequired": true,
+    "defaultPlacementOnly": true,
+    "draftProductsBlocked": true,
+    "nonPrintfulProductsBlocked": true
+  },
+  "coverage": {
+    "activePrintfulProducts": 18,
+    "mappedVariants": 244
+  },
+  "mappings": [
+    {
+      "shopifyProductId": "gid://shopify/Product/15422950474113",
+      "shopifyHandle": "allover-stoffbeutel-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778472591745",
+      "printfulProductId": 84,
+      "printfulVariantId": 8905,
+      "technique": "CUT-SEW",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#allover-stoffbeutel-selbst-gestalten/gid://shopify/ProductVariant/55778472591745"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422854463873",
+      "shopifyHandle": "alltags-umhangetasche-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778075017601",
+      "printfulProductId": 1552,
+      "printfulVariantId": 49310,
+      "technique": "EMBROIDERY",
+      "knownPlacements": [
+        "default",
+        "front_dtf_backpack"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#alltags-umhangetasche-selbst-gestalten/gid://shopify/ProductVariant/55778075017601"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422819991937",
+      "shopifyHandle": "bio-jutebeutel-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777965539713",
+      "printfulProductId": 367,
+      "printfulVariantId": 10458,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "embroidery_apparel_front",
+        "front_dtf_tote",
+        "back_dtf_tote"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#bio-jutebeutel-selbst-gestalten/gid://shopify/ProductVariant/55777965539713"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422819991937",
+      "shopifyHandle": "bio-jutebeutel-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67668293124487",
+      "printfulProductId": 367,
+      "printfulVariantId": 10457,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "embroidery_apparel_front",
+        "front_dtf_tote",
+        "back_dtf_tote"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#bio-jutebeutel-selbst-gestalten/gid://shopify/ProductVariant/67668293124487"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422849188225",
+      "shopifyHandle": "dad-cap-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778063843713",
+      "printfulProductId": 206,
+      "printfulVariantId": 7853,
+      "technique": "EMBROIDERY",
+      "knownPlacements": [
+        "default",
+        "embroidery_front_large",
+        "back",
+        "right",
+        "left",
+        "front_dtf_hat"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#dad-cap-selbst-gestalten/gid://shopify/ProductVariant/55778063843713"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422940447105",
+      "shopifyHandle": "edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778346172801",
+      "printfulProductId": 788,
+      "printfulVariantId": 20175,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#edelstahl-trinkflasche-mit-strohhalm-selbst-gestalten/gid://shopify/ProductVariant/55778346172801"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337358209",
+      "printfulProductId": 798,
+      "printfulVariantId": 20688,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337358209"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337390977",
+      "printfulProductId": 798,
+      "printfulVariantId": 20692,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337390977"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337423745",
+      "printfulProductId": 798,
+      "printfulVariantId": 20690,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337423745"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337456513",
+      "printfulProductId": 798,
+      "printfulVariantId": 20694,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337456513"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337489281",
+      "printfulProductId": 798,
+      "printfulVariantId": 20318,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337489281"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337522049",
+      "printfulProductId": 798,
+      "printfulVariantId": 20322,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337522049"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337554817",
+      "printfulProductId": 798,
+      "printfulVariantId": 20320,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337554817"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337587585",
+      "printfulProductId": 798,
+      "printfulVariantId": 20324,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337587585"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337620353",
+      "printfulProductId": 798,
+      "printfulVariantId": 20326,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337620353"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337653121",
+      "printfulProductId": 798,
+      "printfulVariantId": 20332,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337653121"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337685889",
+      "printfulProductId": 798,
+      "printfulVariantId": 20328,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337685889"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337718657",
+      "printfulProductId": 798,
+      "printfulVariantId": 20330,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337718657"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337751425",
+      "printfulProductId": 798,
+      "printfulVariantId": 34002,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337751425"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337784193",
+      "printfulProductId": 798,
+      "printfulVariantId": 34004,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337784193"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337816961",
+      "printfulProductId": 798,
+      "printfulVariantId": 34006,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337816961"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778337849729",
+      "printfulProductId": 798,
+      "printfulVariantId": 34008,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/55778337849729"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160073095",
+      "printfulProductId": 601,
+      "printfulVariantId": 16125,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160073095"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160105863",
+      "printfulProductId": 601,
+      "printfulVariantId": 16129,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160105863"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160138631",
+      "printfulProductId": 601,
+      "printfulVariantId": 16127,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160138631"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160171399",
+      "printfulProductId": 601,
+      "printfulVariantId": 16131,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160171399"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160204167",
+      "printfulProductId": 601,
+      "printfulVariantId": 17715,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160204167"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160236935",
+      "printfulProductId": 601,
+      "printfulVariantId": 17717,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160236935"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160269703",
+      "printfulProductId": 601,
+      "printfulVariantId": 17719,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160269703"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160302471",
+      "printfulProductId": 601,
+      "printfulVariantId": 17721,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160302471"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160335239",
+      "printfulProductId": 601,
+      "printfulVariantId": 20306,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160335239"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160368007",
+      "printfulProductId": 601,
+      "printfulVariantId": 20307,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160368007"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160400775",
+      "printfulProductId": 601,
+      "printfulVariantId": 20308,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160400775"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160433543",
+      "printfulProductId": 601,
+      "printfulVariantId": 20309,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160433543"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160466311",
+      "printfulProductId": 601,
+      "printfulVariantId": 33989,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160466311"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160499079",
+      "printfulProductId": 601,
+      "printfulVariantId": 33990,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160499079"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160531847",
+      "printfulProductId": 601,
+      "printfulVariantId": 33991,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160531847"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160564615",
+      "printfulProductId": 601,
+      "printfulVariantId": 33992,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160564615"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160597383",
+      "printfulProductId": 181,
+      "printfulVariantId": 16240,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160597383"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160630151",
+      "printfulProductId": 181,
+      "printfulVariantId": 16242,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160630151"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160662919",
+      "printfulProductId": 181,
+      "printfulVariantId": 16241,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160662919"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160695687",
+      "printfulProductId": 181,
+      "printfulVariantId": 16243,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160695687"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160728455",
+      "printfulProductId": 181,
+      "printfulVariantId": 17616,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160728455"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160761223",
+      "printfulProductId": 181,
+      "printfulVariantId": 17617,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160761223"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160793991",
+      "printfulProductId": 181,
+      "printfulVariantId": 17618,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160793991"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160826759",
+      "printfulProductId": 181,
+      "printfulVariantId": 17619,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160826759"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160859527",
+      "printfulProductId": 181,
+      "printfulVariantId": 20290,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160859527"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160892295",
+      "printfulProductId": 181,
+      "printfulVariantId": 20291,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160892295"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160925063",
+      "printfulProductId": 181,
+      "printfulVariantId": 20292,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160925063"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160957831",
+      "printfulProductId": 181,
+      "printfulVariantId": 20293,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160957831"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814160990599",
+      "printfulProductId": 181,
+      "printfulVariantId": 33993,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814160990599"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814161023367",
+      "printfulProductId": 181,
+      "printfulVariantId": 33994,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814161023367"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814161056135",
+      "printfulProductId": 181,
+      "printfulVariantId": 33995,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814161056135"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422939988353",
+      "shopifyHandle": "hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814161088903",
+      "printfulProductId": 181,
+      "printfulVariantId": 33996,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten/gid://shopify/ProductVariant/67814161088903"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422823465345",
+      "shopifyHandle": "keramik-tasse-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777979629953",
+      "printfulProductId": 19,
+      "printfulVariantId": 1320,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#keramik-tasse-selbst-gestalten/gid://shopify/ProductVariant/55777979629953"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422823465345",
+      "shopifyHandle": "keramik-tasse-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777979662721",
+      "printfulProductId": 19,
+      "printfulVariantId": 4830,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#keramik-tasse-selbst-gestalten/gid://shopify/ProductVariant/55777979662721"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422823465345",
+      "shopifyHandle": "keramik-tasse-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777979695489",
+      "printfulProductId": 19,
+      "printfulVariantId": 16586,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#keramik-tasse-selbst-gestalten/gid://shopify/ProductVariant/55777979695489"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422942609793",
+      "shopifyHandle": "kiss-cut-aufkleber-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778363376001",
+      "printfulProductId": 358,
+      "printfulVariantId": 10163,
+      "technique": "DIGITAL",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#kiss-cut-aufkleber-selbst-gestalten/gid://shopify/ProductVariant/55778363376001"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422942609793",
+      "shopifyHandle": "kiss-cut-aufkleber-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778363408769",
+      "printfulProductId": 358,
+      "printfulVariantId": 10164,
+      "technique": "DIGITAL",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#kiss-cut-aufkleber-selbst-gestalten/gid://shopify/ProductVariant/55778363408769"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422942609793",
+      "shopifyHandle": "kiss-cut-aufkleber-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778363441537",
+      "printfulProductId": 358,
+      "printfulVariantId": 10165,
+      "technique": "DIGITAL",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#kiss-cut-aufkleber-selbst-gestalten/gid://shopify/ProductVariant/55778363441537"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422942609793",
+      "shopifyHandle": "kiss-cut-aufkleber-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778363474305",
+      "printfulProductId": 358,
+      "printfulVariantId": 16362,
+      "technique": "DIGITAL",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#kiss-cut-aufkleber-selbst-gestalten/gid://shopify/ProductVariant/55778363474305"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422857642369",
+      "shopifyHandle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778083996033",
+      "printfulProductId": 438,
+      "printfulVariantId": 11576,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "default",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "back",
+        "label_outside",
+        "label_inside",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "label_inside_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#klassisches-unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55778083996033"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422857642369",
+      "shopifyHandle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778084028801",
+      "printfulProductId": 438,
+      "printfulVariantId": 11577,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "default",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "back",
+        "label_outside",
+        "label_inside",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "label_inside_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#klassisches-unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55778084028801"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422857642369",
+      "shopifyHandle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778084061569",
+      "printfulProductId": 438,
+      "printfulVariantId": 11578,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "default",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "back",
+        "label_outside",
+        "label_inside",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "label_inside_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#klassisches-unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55778084061569"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422857642369",
+      "shopifyHandle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778084094337",
+      "printfulProductId": 438,
+      "printfulVariantId": 11579,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "default",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "back",
+        "label_outside",
+        "label_inside",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "label_inside_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#klassisches-unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55778084094337"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422857642369",
+      "shopifyHandle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778084127105",
+      "printfulProductId": 438,
+      "printfulVariantId": 11580,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "default",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "back",
+        "label_outside",
+        "label_inside",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "label_inside_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#klassisches-unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55778084127105"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422857642369",
+      "shopifyHandle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778084159873",
+      "printfulProductId": 438,
+      "printfulVariantId": 12650,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "default",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "back",
+        "label_outside",
+        "label_inside",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "label_inside_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#klassisches-unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55778084159873"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422857642369",
+      "shopifyHandle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778084192641",
+      "printfulProductId": 438,
+      "printfulVariantId": 12651,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "default",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "back",
+        "label_outside",
+        "label_inside",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "label_inside_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#klassisches-unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55778084192641"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422857642369",
+      "shopifyHandle": "klassisches-unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778084225409",
+      "printfulProductId": 438,
+      "printfulVariantId": 12652,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "default",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "back",
+        "label_outside",
+        "label_inside",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "label_inside_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#klassisches-unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55778084225409"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427217195393",
+      "shopifyHandle": "magnet-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55791941812609",
+      "printfulProductId": 656,
+      "printfulVariantId": 16366,
+      "technique": "DIGITAL",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#magnet-zum-selbstgestalten/gid://shopify/ProductVariant/55791941812609"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427217195393",
+      "shopifyHandle": "magnet-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55791941845377",
+      "printfulProductId": 656,
+      "printfulVariantId": 16367,
+      "technique": "DIGITAL",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#magnet-zum-selbstgestalten/gid://shopify/ProductVariant/55791941845377"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427217195393",
+      "shopifyHandle": "magnet-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55791941878145",
+      "printfulProductId": 656,
+      "printfulVariantId": 16465,
+      "technique": "DIGITAL",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#magnet-zum-selbstgestalten/gid://shopify/ProductVariant/55791941878145"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15451569160577",
+      "shopifyHandle": "mauspad-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55893188149633",
+      "printfulProductId": 518,
+      "printfulVariantId": 13097,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#mauspad-selbst-gestalten/gid://shopify/ProductVariant/55893188149633"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813421941127",
+      "printfulProductId": 686,
+      "printfulVariantId": 16982,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813421941127"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813421973895",
+      "printfulProductId": 686,
+      "printfulVariantId": 16978,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813421973895"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422006663",
+      "printfulProductId": 686,
+      "printfulVariantId": 16980,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422006663"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422039431",
+      "printfulProductId": 686,
+      "printfulVariantId": 16976,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422039431"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422072199",
+      "printfulProductId": 686,
+      "printfulVariantId": 16990,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422072199"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422104967",
+      "printfulProductId": 686,
+      "printfulVariantId": 16986,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422104967"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422137735",
+      "printfulProductId": 686,
+      "printfulVariantId": 16988,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422137735"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422170503",
+      "printfulProductId": 686,
+      "printfulVariantId": 16984,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422170503"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422203271",
+      "printfulProductId": 686,
+      "printfulVariantId": 16996,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422203271"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422236039",
+      "printfulProductId": 686,
+      "printfulVariantId": 16992,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422236039"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422268807",
+      "printfulProductId": 686,
+      "printfulVariantId": 16994,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422268807"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422301575",
+      "printfulProductId": 686,
+      "printfulVariantId": 17002,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422301575"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422334343",
+      "printfulProductId": 686,
+      "printfulVariantId": 16998,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422334343"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422367111",
+      "printfulProductId": 686,
+      "printfulVariantId": 17000,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422367111"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422399879",
+      "printfulProductId": 686,
+      "printfulVariantId": 18746,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422399879"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422432647",
+      "printfulProductId": 686,
+      "printfulVariantId": 18747,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422432647"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422465415",
+      "printfulProductId": 686,
+      "printfulVariantId": 18748,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422465415"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422498183",
+      "printfulProductId": 686,
+      "printfulVariantId": 21470,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422498183"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422530951",
+      "printfulProductId": 686,
+      "printfulVariantId": 21472,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422530951"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422563719",
+      "printfulProductId": 686,
+      "printfulVariantId": 21474,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422563719"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422596487",
+      "printfulProductId": 686,
+      "printfulVariantId": 49332,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422596487"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422629255",
+      "printfulProductId": 686,
+      "printfulVariantId": 49330,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422629255"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422662023",
+      "printfulProductId": 686,
+      "printfulVariantId": 49331,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422662023"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422694791",
+      "printfulProductId": 686,
+      "printfulVariantId": 16981,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422694791"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422727559",
+      "printfulProductId": 686,
+      "printfulVariantId": 16977,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422727559"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422760327",
+      "printfulProductId": 686,
+      "printfulVariantId": 16979,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422760327"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422793095",
+      "printfulProductId": 686,
+      "printfulVariantId": 16975,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422793095"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422825863",
+      "printfulProductId": 686,
+      "printfulVariantId": 16989,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422825863"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422858631",
+      "printfulProductId": 686,
+      "printfulVariantId": 16985,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422858631"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422891399",
+      "printfulProductId": 686,
+      "printfulVariantId": 16987,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422891399"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422924167",
+      "printfulProductId": 686,
+      "printfulVariantId": 16983,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422924167"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422956935",
+      "printfulProductId": 686,
+      "printfulVariantId": 16995,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422956935"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813422989703",
+      "printfulProductId": 686,
+      "printfulVariantId": 16991,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813422989703"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423022471",
+      "printfulProductId": 686,
+      "printfulVariantId": 16993,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423022471"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423055239",
+      "printfulProductId": 686,
+      "printfulVariantId": 17001,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423055239"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423088007",
+      "printfulProductId": 686,
+      "printfulVariantId": 16997,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423088007"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423120775",
+      "printfulProductId": 686,
+      "printfulVariantId": 16999,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423120775"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423153543",
+      "printfulProductId": 686,
+      "printfulVariantId": 18743,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423153543"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423186311",
+      "printfulProductId": 686,
+      "printfulVariantId": 18744,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423186311"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423219079",
+      "printfulProductId": 686,
+      "printfulVariantId": 18745,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423219079"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423251847",
+      "printfulProductId": 686,
+      "printfulVariantId": 21469,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423251847"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423284615",
+      "printfulProductId": 686,
+      "printfulVariantId": 21471,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423284615"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423317383",
+      "printfulProductId": 686,
+      "printfulVariantId": 21473,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423317383"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423350151",
+      "printfulProductId": 686,
+      "printfulVariantId": 49327,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423350151"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423382919",
+      "printfulProductId": 686,
+      "printfulVariantId": 49328,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423382919"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423415687",
+      "printfulProductId": 686,
+      "printfulVariantId": 49329,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423415687"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423448455",
+      "printfulProductId": 267,
+      "printfulVariantId": 11347,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423448455"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423481223",
+      "printfulProductId": 267,
+      "printfulVariantId": 11348,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423481223"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423513991",
+      "printfulProductId": 267,
+      "printfulVariantId": 11349,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423513991"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423546759",
+      "printfulProductId": 267,
+      "printfulVariantId": 12025,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423546759"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423579527",
+      "printfulProductId": 267,
+      "printfulVariantId": 12027,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423579527"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423612295",
+      "printfulProductId": 267,
+      "printfulVariantId": 12026,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423612295"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423645063",
+      "printfulProductId": 267,
+      "printfulVariantId": 14633,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423645063"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423677831",
+      "printfulProductId": 267,
+      "printfulVariantId": 14634,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423677831"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423710599",
+      "printfulProductId": 267,
+      "printfulVariantId": 14635,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423710599"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423743367",
+      "printfulProductId": 267,
+      "printfulVariantId": 18749,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423743367"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423776135",
+      "printfulProductId": 267,
+      "printfulVariantId": 18750,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423776135"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423808903",
+      "printfulProductId": 267,
+      "printfulVariantId": 18751,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423808903"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423841671",
+      "printfulProductId": 267,
+      "printfulVariantId": 18734,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423841671"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423874439",
+      "printfulProductId": 267,
+      "printfulVariantId": 18735,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423874439"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423907207",
+      "printfulProductId": 267,
+      "printfulVariantId": 18736,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423907207"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423939975",
+      "printfulProductId": 267,
+      "printfulVariantId": 21481,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423939975"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813423972743",
+      "printfulProductId": 267,
+      "printfulVariantId": 21482,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813423972743"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424005511",
+      "printfulProductId": 267,
+      "printfulVariantId": 21483,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424005511"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424038279",
+      "printfulProductId": 684,
+      "printfulVariantId": 16925,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424038279"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424071047",
+      "printfulProductId": 684,
+      "printfulVariantId": 16927,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424071047"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424103815",
+      "printfulProductId": 684,
+      "printfulVariantId": 16929,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424103815"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424136583",
+      "printfulProductId": 684,
+      "printfulVariantId": 16931,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424136583"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424169351",
+      "printfulProductId": 684,
+      "printfulVariantId": 16935,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424169351"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424202119",
+      "printfulProductId": 684,
+      "printfulVariantId": 16937,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424202119"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424234887",
+      "printfulProductId": 684,
+      "printfulVariantId": 16939,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424234887"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424267655",
+      "printfulProductId": 684,
+      "printfulVariantId": 16933,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424267655"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424300423",
+      "printfulProductId": 684,
+      "printfulVariantId": 16941,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424300423"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424333191",
+      "printfulProductId": 684,
+      "printfulVariantId": 16943,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424333191"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424365959",
+      "printfulProductId": 684,
+      "printfulVariantId": 16945,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424365959"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424398727",
+      "printfulProductId": 684,
+      "printfulVariantId": 16947,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424398727"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424431495",
+      "printfulProductId": 684,
+      "printfulVariantId": 16949,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424431495"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424464263",
+      "printfulProductId": 684,
+      "printfulVariantId": 16951,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424464263"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424497031",
+      "printfulProductId": 684,
+      "printfulVariantId": 18740,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424497031"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424529799",
+      "printfulProductId": 684,
+      "printfulVariantId": 18741,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424529799"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424562567",
+      "printfulProductId": 684,
+      "printfulVariantId": 18742,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424562567"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424595335",
+      "printfulProductId": 684,
+      "printfulVariantId": 21476,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424595335"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424628103",
+      "printfulProductId": 684,
+      "printfulVariantId": 21478,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424628103"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/16672778289543",
+      "shopifyHandle": "samsung-huelle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67813424660871",
+      "printfulProductId": 684,
+      "printfulVariantId": 21480,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#samsung-huelle-selbst-gestalten/gid://shopify/ProductVariant/67813424660871"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55792263954817",
+      "printfulProductId": 71,
+      "printfulVariantId": 4011,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55792263954817"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55792263987585",
+      "printfulProductId": 71,
+      "printfulVariantId": 4012,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55792263987585"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55792264020353",
+      "printfulProductId": 71,
+      "printfulVariantId": 4013,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55792264020353"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55792264053121",
+      "printfulProductId": 71,
+      "printfulVariantId": 4014,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55792264053121"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55792264085889",
+      "printfulProductId": 71,
+      "printfulVariantId": 4015,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55792264085889"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951258497",
+      "printfulProductId": 71,
+      "printfulVariantId": 4016,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951258497"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951291265",
+      "printfulProductId": 71,
+      "printfulVariantId": 4017,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951291265"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951324033",
+      "printfulProductId": 71,
+      "printfulVariantId": 4018,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951324033"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951356801",
+      "printfulProductId": 71,
+      "printfulVariantId": 4019,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951356801"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951389569",
+      "printfulProductId": 71,
+      "printfulVariantId": 4020,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951389569"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951422337",
+      "printfulProductId": 71,
+      "printfulVariantId": 4111,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951422337"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951455105",
+      "printfulProductId": 71,
+      "printfulVariantId": 4112,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951455105"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951487873",
+      "printfulProductId": 71,
+      "printfulVariantId": 4113,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951487873"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951520641",
+      "printfulProductId": 71,
+      "printfulVariantId": 4114,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951520641"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427283157377",
+      "shopifyHandle": "shirt-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55794951553409",
+      "printfulProductId": 71,
+      "printfulVariantId": 4115,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#shirt-zum-selbstgestalten/gid://shopify/ProductVariant/55794951553409"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15451569324417",
+      "shopifyHandle": "spiral-notizbuch-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55893188411777",
+      "printfulProductId": 474,
+      "printfulVariantId": 12141,
+      "technique": "DIGITAL",
+      "knownPlacements": [
+        "default",
+        "back"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#spiral-notizbuch-selbst-gestalten/gid://shopify/ProductVariant/55893188411777"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427282633089",
+      "shopifyHandle": "tasse-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55792263233921",
+      "printfulProductId": 19,
+      "printfulVariantId": 1320,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#tasse-zum-selbstgestalten/gid://shopify/ProductVariant/55792263233921"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15427282633089",
+      "shopifyHandle": "tasse-zum-selbstgestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55792263266689",
+      "printfulProductId": 19,
+      "printfulVariantId": 4830,
+      "technique": "SUBLIMATION",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#tasse-zum-selbstgestalten/gid://shopify/ProductVariant/55792263266689"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422849921",
+      "printfulProductId": 181,
+      "printfulVariantId": 10996,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778422849921"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422882689",
+      "printfulProductId": 181,
+      "printfulVariantId": 10995,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778422882689"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422915457",
+      "printfulProductId": 181,
+      "printfulVariantId": 10994,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778422915457"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422948225",
+      "printfulProductId": 181,
+      "printfulVariantId": 11703,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778422948225"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778422980993",
+      "printfulProductId": 181,
+      "printfulVariantId": 11705,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778422980993"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423013761",
+      "printfulProductId": 181,
+      "printfulVariantId": 11808,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423013761"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423046529",
+      "printfulProductId": 181,
+      "printfulVariantId": 11704,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423046529"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423079297",
+      "printfulProductId": 181,
+      "printfulVariantId": 13428,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423079297"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423112065",
+      "printfulProductId": 181,
+      "printfulVariantId": 13801,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423112065"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423144833",
+      "printfulProductId": 181,
+      "printfulVariantId": 13800,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423144833"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423177601",
+      "printfulProductId": 181,
+      "printfulVariantId": 13427,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423177601"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423210369",
+      "printfulProductId": 181,
+      "printfulVariantId": 16242,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423210369"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423243137",
+      "printfulProductId": 181,
+      "printfulVariantId": 16243,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423243137"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423275905",
+      "printfulProductId": 181,
+      "printfulVariantId": 16241,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423275905"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423308673",
+      "printfulProductId": 181,
+      "printfulVariantId": 16240,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423308673"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423341441",
+      "printfulProductId": 181,
+      "printfulVariantId": 17617,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423341441"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423374209",
+      "printfulProductId": 181,
+      "printfulVariantId": 17619,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423374209"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423406977",
+      "printfulProductId": 181,
+      "printfulVariantId": 17618,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423406977"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423439745",
+      "printfulProductId": 181,
+      "printfulVariantId": 17616,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423439745"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423472513",
+      "printfulProductId": 181,
+      "printfulVariantId": 20291,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423472513"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423505281",
+      "printfulProductId": 181,
+      "printfulVariantId": 20293,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423505281"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423538049",
+      "printfulProductId": 181,
+      "printfulVariantId": 20292,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423538049"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423570817",
+      "printfulProductId": 181,
+      "printfulVariantId": 20290,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423570817"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423603585",
+      "printfulProductId": 181,
+      "printfulVariantId": 33994,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423603585"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423636353",
+      "printfulProductId": 181,
+      "printfulVariantId": 33996,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423636353"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423669121",
+      "printfulProductId": 181,
+      "printfulVariantId": 33995,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423669121"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423701889",
+      "printfulProductId": 181,
+      "printfulVariantId": 33993,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423701889"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423734657",
+      "printfulProductId": 181,
+      "printfulVariantId": 7910,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423734657"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423767425",
+      "printfulProductId": 181,
+      "printfulVariantId": 11452,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423767425"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423800193",
+      "printfulProductId": 181,
+      "printfulVariantId": 8933,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423800193"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422946804097",
+      "shopifyHandle": "transparente-iphone®-hulle-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55778423832961",
+      "printfulProductId": 181,
+      "printfulVariantId": 9621,
+      "technique": "UV",
+      "knownPlacements": [
+        "default"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#transparente-iphone®-hulle-selbst-gestalten/gid://shopify/ProductVariant/55778423832961"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777955643777",
+      "printfulProductId": 145,
+      "printfulVariantId": 5426,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "embroidery_neckline",
+        "default",
+        "back",
+        "front_dtf",
+        "back_dtf",
+        "label_outside",
+        "sleeve_right",
+        "sleeve_left",
+        "label_inside_dtf",
+        "long_sleeve_right_dtf",
+        "long_sleeve_left_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/55777955643777"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777955676545",
+      "printfulProductId": 145,
+      "printfulVariantId": 5427,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "embroidery_neckline",
+        "default",
+        "back",
+        "front_dtf",
+        "back_dtf",
+        "label_outside",
+        "sleeve_right",
+        "sleeve_left",
+        "label_inside_dtf",
+        "long_sleeve_right_dtf",
+        "long_sleeve_left_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/55777955676545"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777955709313",
+      "printfulProductId": 145,
+      "printfulVariantId": 5428,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "embroidery_neckline",
+        "default",
+        "back",
+        "front_dtf",
+        "back_dtf",
+        "label_outside",
+        "sleeve_right",
+        "sleeve_left",
+        "label_inside_dtf",
+        "long_sleeve_right_dtf",
+        "long_sleeve_left_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/55777955709313"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777955742081",
+      "printfulProductId": 145,
+      "printfulVariantId": 5429,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "embroidery_neckline",
+        "default",
+        "back",
+        "front_dtf",
+        "back_dtf",
+        "label_outside",
+        "sleeve_right",
+        "sleeve_left",
+        "label_inside_dtf",
+        "long_sleeve_right_dtf",
+        "long_sleeve_left_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/55777955742081"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777955774849",
+      "printfulProductId": 145,
+      "printfulVariantId": 5430,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "embroidery_neckline",
+        "default",
+        "back",
+        "front_dtf",
+        "back_dtf",
+        "label_outside",
+        "sleeve_right",
+        "sleeve_left",
+        "label_inside_dtf",
+        "long_sleeve_right_dtf",
+        "long_sleeve_left_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/55777955774849"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777955807617",
+      "printfulProductId": 145,
+      "printfulVariantId": 5431,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "embroidery_neckline",
+        "default",
+        "back",
+        "front_dtf",
+        "back_dtf",
+        "label_outside",
+        "sleeve_right",
+        "sleeve_left",
+        "label_inside_dtf",
+        "long_sleeve_right_dtf",
+        "long_sleeve_left_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/55777955807617"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777955840385",
+      "printfulProductId": 145,
+      "printfulVariantId": 5432,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "embroidery_neckline",
+        "default",
+        "back",
+        "front_dtf",
+        "back_dtf",
+        "label_outside",
+        "sleeve_right",
+        "sleeve_left",
+        "label_inside_dtf",
+        "long_sleeve_right_dtf",
+        "long_sleeve_left_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/55777955840385"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777955873153",
+      "printfulProductId": 145,
+      "printfulVariantId": 5433,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "embroidery_neckline",
+        "default",
+        "back",
+        "front_dtf",
+        "back_dtf",
+        "label_outside",
+        "sleeve_right",
+        "sleeve_left",
+        "label_inside_dtf",
+        "long_sleeve_right_dtf",
+        "long_sleeve_left_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/55777955873153"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157877639",
+      "printfulProductId": 821,
+      "printfulVariantId": 20805,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "back_large_dtf",
+        "label_inside_dtf",
+        "long_sleeve_left_dtf",
+        "long_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/67814157877639"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157910407",
+      "printfulProductId": 821,
+      "printfulVariantId": 20811,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "back_large_dtf",
+        "label_inside_dtf",
+        "long_sleeve_left_dtf",
+        "long_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/67814157910407"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157943175",
+      "printfulProductId": 821,
+      "printfulVariantId": 20817,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "back_large_dtf",
+        "label_inside_dtf",
+        "long_sleeve_left_dtf",
+        "long_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/67814157943175"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157975943",
+      "printfulProductId": 821,
+      "printfulVariantId": 20823,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "back_large_dtf",
+        "label_inside_dtf",
+        "long_sleeve_left_dtf",
+        "long_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/67814157975943"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422815699329",
+      "shopifyHandle": "unisex-hoodie-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814158008711",
+      "printfulProductId": 821,
+      "printfulVariantId": 20830,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_wrist_left",
+        "embroidery_wrist_right",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "back_large_dtf",
+        "label_inside_dtf",
+        "long_sleeve_left_dtf",
+        "long_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-hoodie-selbst-gestalten/gid://shopify/ProductVariant/67814158008711"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777948008833",
+      "printfulProductId": 71,
+      "printfulVariantId": 9526,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55777948008833"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777948041601",
+      "printfulProductId": 71,
+      "printfulVariantId": 4011,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55777948041601"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777948074369",
+      "printfulProductId": 71,
+      "printfulVariantId": 4012,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55777948074369"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777948107137",
+      "printfulProductId": 71,
+      "printfulVariantId": 4013,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55777948107137"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777948139905",
+      "printfulProductId": 71,
+      "printfulVariantId": 4014,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55777948139905"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777948172673",
+      "printfulProductId": 71,
+      "printfulVariantId": 4015,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55777948172673"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777948205441",
+      "printfulProductId": 71,
+      "printfulVariantId": 5294,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55777948205441"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777948238209",
+      "printfulProductId": 71,
+      "printfulVariantId": 5309,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55777948238209"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/55777948270977",
+      "printfulProductId": 71,
+      "printfulVariantId": 12872,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "front_dtf",
+        "front_large",
+        "back",
+        "back_dtf",
+        "sleeve_left",
+        "sleeve_right",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/55777948270977"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814156730759",
+      "printfulProductId": 456,
+      "printfulVariantId": 53681,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814156730759"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814156763527",
+      "printfulProductId": 456,
+      "printfulVariantId": 11864,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814156763527"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814156796295",
+      "printfulProductId": 456,
+      "printfulVariantId": 11865,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814156796295"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814156829063",
+      "printfulProductId": 456,
+      "printfulVariantId": 11866,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814156829063"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814156861831",
+      "printfulProductId": 456,
+      "printfulVariantId": 11867,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814156861831"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814156894599",
+      "printfulProductId": 456,
+      "printfulVariantId": 11868,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814156894599"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814156927367",
+      "printfulProductId": 456,
+      "printfulVariantId": 17228,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814156927367"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814156960135",
+      "printfulProductId": 456,
+      "printfulVariantId": 17232,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814156960135"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814156992903",
+      "printfulProductId": 456,
+      "printfulVariantId": 17235,
+      "technique": "DTG",
+      "knownPlacements": [
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf",
+        "label_inside",
+        "label_outside",
+        "label_inside_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814156992903"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157091207",
+      "printfulProductId": 586,
+      "printfulVariantId": 15124,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814157091207"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157123975",
+      "printfulProductId": 586,
+      "printfulVariantId": 15125,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814157123975"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157156743",
+      "printfulProductId": 586,
+      "printfulVariantId": 15126,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814157156743"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157189511",
+      "printfulProductId": 586,
+      "printfulVariantId": 15127,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814157189511"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157222279",
+      "printfulProductId": 586,
+      "printfulVariantId": 15128,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814157222279"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157255047",
+      "printfulProductId": 586,
+      "printfulVariantId": 16335,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814157255047"
+        ]
+      }
+    },
+    {
+      "shopifyProductId": "gid://shopify/Product/15422811439489",
+      "shopifyHandle": "unisex-t-shirt-selbst-gestalten",
+      "shopifyVariantId": "gid://shopify/ProductVariant/67814157287815",
+      "printfulProductId": 586,
+      "printfulVariantId": 17508,
+      "technique": "DTG",
+      "knownPlacements": [
+        "embroidery_chest_left",
+        "embroidery_chest_center",
+        "embroidery_sleeve_left_top",
+        "embroidery_sleeve_right_top",
+        "default",
+        "back",
+        "sleeve_left",
+        "sleeve_right",
+        "label_outside",
+        "front_dtf",
+        "back_dtf",
+        "short_sleeve_left_dtf",
+        "short_sleeve_right_dtf"
+      ],
+      "eligiblePlacements": [
+        "default"
+      ],
+      "evidence": {
+        "verifiedAt": "2026-11-08T10:36:55.078550Z",
+        "sources": [
+          "data/catalog-manifest.json#unisex-t-shirt-selbst-gestalten/gid://shopify/ProductVariant/67814157287815"
+        ]
+      }
+    }
+  ]
+}

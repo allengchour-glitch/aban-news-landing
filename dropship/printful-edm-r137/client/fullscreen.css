@@ -1,0 +1,47 @@
+/* Apply only while the dedicated editor route/dialog is open. */
+.luxe-edm-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: 100%;
+  height: 100dvh;
+  background: #fcfaf7;
+  color: #25221f;
+}
+.luxe-edm-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: max(.75rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) .75rem max(1rem, env(safe-area-inset-left));
+  border-bottom: 1px solid #dfd8cf;
+}
+.luxe-edm-heading-copy { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; min-width: 0; }
+.luxe-edm-title { flex-basis: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.luxe-edm-variant, .luxe-edm-price { color: #625c55; font-size: .875rem; }
+.luxe-edm-heading button { min-width: 44px; min-height: 44px; }
+.luxe-edm-heading button:focus-visible { outline: 3px solid #315b80; outline-offset: 3px; }
+.luxe-edm-container { min-width: 0; min-height: 0; overflow: hidden; }
+.luxe-edm-frame { display: block; width: 100%; height: 100%; border: 0; }
+.luxe-edm-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem max(1rem, env(safe-area-inset-right)) max(.75rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+  border-top: 1px solid #dfd8cf;
+  background: #fcfaf7;
+}
+.luxe-edm-status { margin: 0; font-size: .875rem; line-height: 1.35; }
+.luxe-edm-save { min-height: 44px; padding: .625rem 1rem; border: 1px solid #25221f; border-radius: 999px; background: #25221f; color: #fff; font: inherit; }
+.luxe-edm-save:disabled { cursor: not-allowed; opacity: .48; }
+.luxe-edm-save:focus-visible { outline: 3px solid #315b80; outline-offset: 3px; }
+
+@media (max-width: 520px) {
+  .luxe-edm-heading { gap: .5rem; padding-inline: .75rem; }
+  .luxe-edm-close { padding-inline: .5rem; }
+  .luxe-edm-footer { align-items: stretch; flex-direction: column; gap: .5rem; padding-inline: .75rem; }
+  .luxe-edm-save { width: 100%; }
+}

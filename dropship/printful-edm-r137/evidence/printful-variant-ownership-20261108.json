@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-08T10:34:42.320731Z",
+  "source": "Printful public GET /products/{id}; direct targeted read; no credential",
+  "scope": {
+    "requestedProductIds": [
+      19,
+      181
+    ],
+    "complete": true
+  },
+  "products": [
+    {
+      "printfulProductId": 19,
+      "title": "White Glossy Mug",
+      "isDiscontinued": false,
+      "responseSha256": "5fa4f6663cfe1d3a8930217deb8518cfdee34c280e6b8bfc70cc3620417171a7",
+      "variants": [
+        {
+          "printfulVariantId": 1320,
+          "name": "White Glossy Mug 11 oz"
+        },
+        {
+          "printfulVariantId": 4830,
+          "name": "White Glossy Mug 15 oz"
+        },
+        {
+          "printfulVariantId": 16586,
+          "name": "White Glossy Mug 20 oz"
+        }
+      ]
+    },
+    {
+      "printfulProductId": 181,
+      "title": "Clear Case for iPhone®",
+      "isDiscontinued": false,
+      "responseSha256": "73fc3d47f96ecc7ed8ee3c996270a77d8cdef5e2b2f61cf9e3cbdc9380c72133",
+      "variants": [
+        {
+          "printfulVariantId": 10996,
+          "name": "Clear Case for iPhone® (iPhone 11 Pro Max)"
+        },
+        {
+          "printfulVariantId": 10995,
+          "name": "Clear Case for iPhone® (iPhone 11 Pro)"
+        },
+        {
+          "printfulVariantId": 10994,
+          "name": "Clear Case for iPhone® (iPhone 11)"
+        },
+        {
+          "printfulVariantId": 11703,
+          "name": "Clear Case for iPhone® (iPhone 12 mini)"
+        },
+        {
+          "printfulVariantId": 11705,
+          "name": "Clear Case for iPhone® (iPhone 12 Pro Max)"
+        },
+        {
+          "printfulVariantId": 11808,
+          "name": "Clear Case for iPhone® (iPhone 12 Pro)"
+        },
+        {
+          "printfulVariantId": 11704,
+          "name": "Clear Case for iPhone® (iPhone 12)"
+        },
+        {
+          "printfulVariantId": 13428,
+          "name": "Clear Case for iPhone® (iPhone 13 mini)"
+        },
+        {
+          "printfulVariantId": 13801,
+          "name": "Clear Case for iPhone® (iPhone 13 Pro Max)"
+        },
+        {
+          "printfulVariantId": 13800,
+          "name": "Clear Case for iPhone® (iPhone 13 Pro)"
+        },
+        {
+          "printfulVariantId": 13427,
+          "name": "Clear Case for iPhone® (iPhone 13)"
+        },
+        {
+          "printfulVariantId": 16242,
+          "name": "Clear Case for iPhone® (iPhone 14 Plus)"
+        },
+        {
+          "printfulVariantId": 16243,
+          "name": "Clear Case for iPhone® (iPhone 14 Pro Max)"
+        },
+        {
+          "printfulVariantId": 16241,
+          "name": "Clear Case for iPhone® (iPhone 14 Pro)"
+        },
+        {
+          "printfulVariantId": 16240,
+          "name": "Clear Case for iPhone® (iPhone 14)"
+        },
+        {
+          "printfulVariantId": 17617,
+          "name": "Clear Case for iPhone® (iPhone 15 Plus)"
+        },
+        {
+          "printfulVariantId": 17619,
+          "name": "Clear Case for iPhone® (iPhone 15 Pro Max)"
+        },
+        {
+          "printfulVariantId": 17618,
+          "name": "Clear Case for iPhone® (iPhone 15 Pro)"
+        },
+        {
+          "printfulVariantId": 17616,
+          "name": "Clear Case for iPhone® (iPhone 15)"
+        },
+        {
+          "printfulVariantId": 20291,
+          "name": "Clear Case for iPhone® (iPhone 16 Plus)"
+        },
+        {
+          "printfulVariantId": 20293,
+          "name": "Clear Case for iPhone® (iPhone 16 Pro Max)"
+        },
+        {
+          "printfulVariantId": 20292,
+          "name": "Clear Case for iPhone® (iPhone 16 Pro)"
+        },
+        {
+          "printfulVariantId": 20290,
+          "name": "Clear Case for iPhone® (iPhone 16)"
+        },
+        {
+          "printfulVariantId": 33994,
+          "name": "Clear Case for iPhone® (iPhone 17 Air)"
+        },
+        {
+          "printfulVariantId": 33996,
+          "name": "Clear Case for iPhone® (iPhone 17 Pro Max)"
+        },
+        {
+          "printfulVariantId": 33995,
+          "name": "Clear Case for iPhone® (iPhone 17 Pro)"
+        },
+        {
+          "printfulVariantId": 33993,
+          "name": "Clear Case for iPhone® (iPhone 17)"
+        },
+        {
+          "printfulVariantId": 7910,
+          "name": "Clear Case for iPhone® (iPhone 7/8)"
+        },
+        {
+          "printfulVariantId": 11452,
+          "name": "Clear Case for iPhone® (iPhone SE)"
+        },
+        {
+          "printfulVariantId": 8933,
+          "name": "Clear Case for iPhone® (iPhone X/XS)"
+        },
+        {
+          "printfulVariantId": 9621,
+          "name": "Clear Case for iPhone® (iPhone XR)"
+        }
+      ]
+    }
+  ]
+}
