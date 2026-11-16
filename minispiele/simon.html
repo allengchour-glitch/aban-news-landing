@@ -142,6 +142,7 @@
   var actx=null;
 
   function beep(i,dur){
+    if(window.MiniMix && window.MiniMix.active && !window.MiniMix.sound)return;
     try{
       if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)();
       var o=actx.createOscillator(),gn=actx.createGain();
