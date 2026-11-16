@@ -1,0 +1,19 @@
+{"stand":"2026-11-16 ca. 08:00 UTC","quelle":"ShopifyQL, nur lesend",
+"quellen_alle_laender":{
+"7d":{"direct":[2257,11,7,0],"google":[51,4,2,1],"facebook":[10,0,0,0],"pinterest":[7,1,0,0],"instagram":[3,0,0,0],"tiktok":[0,0,0,0]},
+"14d":{"direct":[2963,29,14,4],"google":[93,7,3,2],"facebook":[32,0,0,0],"pinterest":[14,1,0,0],"instagram":[3,0,0,0]},
+"45d":{"direct":[4450,72,46,13],"tiktok":[402,4,2,0],"facebook":[306,0,0,0],"google":[229,12,5,4],"pinterest":[41,1,0,0],"instagram":[5,0,0,0],"chatgpt":[6,0,0,0]},
+"spalten":"Sitzungen, mit Warenkorb, Kasse erreicht, Kasse abgeschlossen"},
+"schweiz":{
+"7d":{"direct":[259,10,6,0],"google":[41,4,2,1],"facebook":[6,0,0,0],"instagram":[3,0,0,0]},
+"14d":{"direct":[540,22,11,3],"google":[79,7,3,2],"facebook":[21,0,0,0],"instagram":[3,0,0,0]},
+"45d":{"direct":[1196,55,33,12],"tiktok":[397,4,2,0],"google":[199,11,4,3],"facebook":[56,0,0,0],"instagram":[5,0,0,0],"pinterest":[1,0,0,0]}},
+"utm_7d":[["Pinterest","organic","",5],["google","product_sync","",3],["instagram","bio","profil/ig_kurzlink",2],["tiktok","video_ad","",1],["shop_campaigns","paid","",1],["ig","social","link_in_bio",1]],
+"utm_45d":[["tiktok","paid","lernen-okt26 sirene/provence/aurora",414,10,6,0],["facebook","social","autopilot bild/reel/karussell",72,0,0,0],["Pinterest","organic","",32,0,0,0],["instagram","bio","profil ig_kurzlink",2,0,0,0],["threads","social","autopost",3,0,0,0]],
+"social_tagesverlauf_seit_0915":"Peak 01.-04.10. (152-168/Tag, bezahlter TikTok-Test), danach 20/Tag 06.-09.10., ab 21.10. 1-3/Tag; 10.-16.11.: 2,4,2,2,4,1,1 (ca. 2/Tag)",
+"social_woche_sitzungen":{"2026-11-02":{"facebook":22,"pinterest":7},"2026-11-09":{"facebook":9,"pinterest":7,"instagram":3},"2026-10-26":{"facebook":26,"pinterest":4}},
+"utm_instagram_tiktok_youtube_facebook_pinterest_threads_tag_seit_1025":"10.-15.11. insgesamt 9 Sitzungen (1,1,0,1,3,1); 0 Kasse",
+"einstiegsseiten_social_14d":"42 Sitzungen, breit gestreut (Boho-Set 4, Startseite 4, Provence-Set 3, /collections/aus-tiktok-und-instagram 2, sonst je 1-2), 1 Warenkorb, 0 Kauf; viele /fr/-Produktseiten",
+"einstiegsseiten_social_45d":"Sirene 166, Provence 137, Aurora 110 (alle TikTok-bezahlt), danach Startseite 14, rest je unter 12",
+"bestellungen_45d":{"anzahl":20,"mit_social_quelle":0,"quellen":"google 4, luxestyle (intern) 3, chatgpt.com 5 (#1029,#1030,#1031,#1034,#1039), ohne 13","neu_seit_10_11":[["#1040","59.90","keine Quelle"],["#1041","23.90","google"]]},
+"hinweis":"order_referrer_source war bei allen Bestellungen leer oder google; keine Bestellung mit utm instagram/tiktok/youtube/facebook/pinterest/threads in 45 Tagen"}

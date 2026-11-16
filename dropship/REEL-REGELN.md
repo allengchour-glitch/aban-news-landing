@@ -26,6 +26,7 @@
 9. **Freigabe-Workflow:** Reel EINZELN per Telegram zur Freigabe (ja/nein/Kommentar), erst nach „ja" posten.
 
 ## Verbesserungs-Log (chronologisch — neue Punkte kommen oben dazu)
+- 2026-11-16: **Besitzer auf gezielte Fragen (Analyse `dropship/social-analyse-1611/README.md`):** (1) Die Musikregel vom 10.11. gilt auch für den TikTok-Bibliotheks-Sound: `autoAddMusic` bleibt aus (an acht Fotobeiträgen 16.–23.11. abgeschaltet). (2) **Nur noch Videos:** keine neuen Fotos, Karussells, Threads- oder TikTok-Fotobeiträge; Eingeplantes läuft aus. (3) Ein Beitrag, den jemand auf Entwurf zurückstellt, gehört auch auf die Halteliste `METRICOOL-HALTEN.txt`, sonst plant ihn die tägliche Freigabe wieder ein. (4) Videos mit Ton vor dem Einplanen messen (volumedetect, silencedetect): durchgehender Ton ohne Pausen heisst Musik und braucht das Ja des Besitzers.
 - 2026-11-10: **«musik ist scheisse»** (Besitzer, wörtlich, nach den Reels Knoblauch- und Zwiebelhacker mit Mixkit «new-york-427» und Winter Warme Haussocken mit Mixkit «violin-uplift-675»).
   **Regel bis zur Klärung:** kein neues Reel mit Hintergrundmusik, die beiden Stücke nie wiederverwenden, vor dem nächsten Reel den Besitzer fragen (ganz ohne Musik, anderes Stück, oder seine Wahl).
   Die Musikregel vom 02.11. (rotierend aus fünf Mixkit-Stücken, `VIDEO-PRAEFERENZEN.md` Regel 2) ist ausgesetzt. Die vier Metricool-Entwürfe des Hacker-Reels stehen auf der Halteliste. Stand und ids: `SHARED-MEMORY.md`.
