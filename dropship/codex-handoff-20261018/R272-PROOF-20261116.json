@@ -1,0 +1,418 @@
+{
+  "run": "R272",
+  "atUtc": "2026-11-16T22:55:54Z",
+  "masterId": "luxe-home-atelier-multishot-20261116",
+  "approval": {
+    "userText": "ja nimm mehr credits",
+    "interpretation": "Explicit yes to the previously quoted 90-credit exception: exactly three 5-second Kling 4K takes.",
+    "maxCredits": 90,
+    "extraPaidRetriesApproved": false,
+    "model": "kling3_0",
+    "quotes": [
+      30,
+      30,
+      30
+    ],
+    "actualAccountCharge": "UNKNOWN_not_independently_read"
+  },
+  "renders": [
+    {
+      "index": 0,
+      "job_id": "5e522a6c-88c5-4af8-9bbc-837969cf87da",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261116_224003_5e522a6c-88c5-4af8-9bbc-837969cf87da.mp4"
+    },
+    {
+      "index": 1,
+      "job_id": "dae19b0b-2124-4581-a713-c61e21b83f6b",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261116_224004_dae19b0b-2124-4581-a713-c61e21b83f6b.mp4"
+    },
+    {
+      "index": 2,
+      "job_id": "72abffff-043a-417e-b5ce-9db42670bf07",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261116_224004_72abffff-043a-417e-b5ce-9db42670bf07.mp4"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "index": 0,
+      "jobId": "5e522a6c-88c5-4af8-9bbc-837969cf87da",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261116_224003_5e522a6c-88c5-4af8-9bbc-837969cf87da.mp4",
+      "path": "/dev/shm/luxestyle-review/r272/source/take-0.mp4",
+      "bytes": 1576743,
+      "sha256": "23d5f02d61d9e1c1f405f8dda78b6820c17fe147af42efbc54fe416bcb58facf",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "width": 3528,
+          "height": 2348,
+          "r_frame_rate": "24/1",
+          "duration": "5.041667",
+          "nb_frames": "121",
+          "nb_read_frames": "121",
+          "pix_fmt": "yuv420p"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "jobId": "dae19b0b-2124-4581-a713-c61e21b83f6b",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261116_224004_dae19b0b-2124-4581-a713-c61e21b83f6b.mp4",
+      "path": "/dev/shm/luxestyle-review/r272/source/take-1.mp4",
+      "bytes": 11369090,
+      "sha256": "95f2dbb4ef222473e3b63fbc5841a535d2d4a950fc32269f5f3230c87b0befe6",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "width": 2492,
+          "height": 3324,
+          "r_frame_rate": "24/1",
+          "duration": "5.041667",
+          "nb_frames": "121",
+          "nb_read_frames": "121",
+          "pix_fmt": "yuv420p"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "jobId": "72abffff-043a-417e-b5ce-9db42670bf07",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261116_224004_72abffff-043a-417e-b5ce-9db42670bf07.mp4",
+      "path": "/dev/shm/luxestyle-review/r272/source/take-2.mp4",
+      "bytes": 11954289,
+      "sha256": "9736a6c23d35c2eed53d0cf0a9db94a53faf3aef7cea7d2eb6317ea0fbcb2a26",
+      "streams": [
+        {
+          "codec_type": "video",
+          "codec_name": "h264",
+          "width": 2728,
+          "height": 3036,
+          "r_frame_rate": "24/1",
+          "duration": "5.041667",
+          "nb_frames": "121",
+          "nb_read_frames": "121",
+          "pix_fmt": "yuv420p"
+        }
+      ]
+    }
+  ],
+  "master": {
+    "masterId": "luxe-home-atelier-multishot-20261116",
+    "path": "/dev/shm/luxestyle-review/r272/luxestyle-atelier-15s-review-r272.mp4",
+    "bytes": 9871989,
+    "sha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+    "seconds": 15,
+    "frames": 450,
+    "exportFPS": 30,
+    "sourceFPS": 24,
+    "opticalFlow": false,
+    "width": 1080,
+    "height": 1440,
+    "audioStreams": 0,
+    "completeDecode": "PASS",
+    "state": "REVIEW_EXPORTED_VISUAL_CHECKED_OWNER_ACCEPTANCE_OPEN",
+    "productCrops": "B and C full-frame preserved; A decorative crop x1500/y0/w1761/h2348",
+    "paidLocalRender": false
+  },
+  "publicMedia": {
+    "mediaId": "bacfdceb-c8e3-40db-983c-784aa7ebf9bb",
+    "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/bacfdceb-c8e3-40db-983c-784aa7ebf9bb.mp4",
+    "rangeStatus": 206,
+    "contentRange": "bytes 0-1023/9871989",
+    "acceptRanges": null,
+    "sampleBytes": 1024,
+    "httpStatus": 200,
+    "remoteBytes": 9871989,
+    "remoteSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+    "matchesLocal": true,
+    "confirmed": true,
+    "shownForReview": true
+  },
+  "sourceIdentityReview": "PASS_WITH_LIMITS",
+  "visualReview": {
+    "reviewStatus": "PASS_REVIEW_EXPORT_ONLY",
+    "atUtc": "2026-11-16T22:51:26.330327+00:00",
+    "masterId": "luxe-home-atelier-multishot-20261116",
+    "masterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+    "actualCanvas": [
+      1080,
+      1440
+    ],
+    "sourceFPS": 24,
+    "exportFPS": 30,
+    "opticalFlow": false,
+    "audioStreams": 0,
+    "frames": 450,
+    "durationSeconds": 15,
+    "edl": "A0–3 + B0–4 + C0–4 + A1–5",
+    "inspection": {
+      "fullContact": "30frames at0.5s intervals",
+      "boundaryFrames": [
+        0,
+        89,
+        90,
+        209,
+        210,
+        329,
+        330,
+        449
+      ],
+      "loopFirstLast": "Both full1080x1440 frames viewed; close matching composition, no black or obviously different scene at seam. Seamless motion not independently demonstrated.",
+      "poster": "Actual master-poster.jpg viewed;1080x1440, composition matches firstAtelierframe.",
+      "productRetention": "B retains both straps and fullhem; C keeps front-leftfloraljar full with explicit warmcreamtop/bottompadding. A decorativecrop retains arch/silkloop/orb/platform; no actual product hidden bycrop.",
+      "unwantedElements": "No added person/mannequin, logos/text or crossfadeghosts observed in checkedmasterframes. Sourceidentityreviews remain separately applicable.",
+      "style": "Distincthardcuts between darkAtelier, brightdress and ceramicstilllife; restrainedmotion. No claim of strong action or seamless cinematic scene transitions."
+    },
+    "numericComparisons": {
+      "posterFirstMeanAbsoluteRGB": 2.6971735682441698,
+      "firstLastMeanAbsoluteRGB": 1.6776592506858712,
+      "scope": "Compression/appearance comparison only; not a perceptualseamlessness or pixelidentity proof."
+    },
+    "requiredRemaining": [
+      "Ownercreativeacceptance of this exact actualMP4.",
+      "White HTMLoverlaycontrast on brightB/C frames.",
+      "NativeShopifyintegration and publicreadback.",
+      "Safari/iPhoneScrubbing and real-timeplayback; handled separately ifavailable.",
+      "No true30fps sourcemotionclaim:24→30 fps repeatsframes, no opticalflow."
+    ],
+    "ownerCreativeAcceptance": "OPEN",
+    "liveAcceptance": false,
+    "files": [
+      {
+        "name": "MASTER-CONTACT-2FPS-QA.jpg",
+        "bytes": 235087,
+        "sha256": "87d17cfb301c3a61981086833d74ab5bc4b5cde14bdc3bd2b5b26242370ee073"
+      },
+      {
+        "name": "MASTER-CUTS-LOOP-QA.jpg",
+        "bytes": 157799,
+        "sha256": "347f9c742f16df3a03c53741a8f6c67c6a9a04307a2a979128662811e90568fb"
+      },
+      {
+        "name": "master-poster.jpg",
+        "bytes": 98788,
+        "sha256": "2c7817fc7e8b078099c5ef3772a002a4d7d61a9077a491b1738300d56d01c483"
+      }
+    ]
+  },
+  "nativeIntegration": {
+    "state": "LOCAL_CANDIDATE_ONLY",
+    "themeWrites": 0,
+    "saved": false,
+    "live": false,
+    "ownerCreativeAcceptance": "OPEN",
+    "requiresLegitimateDraft": true,
+    "manifest": "dropship/codex-handoff-20261018/runs/20261116-r272/integration/MANIFEST.json",
+    "candidateFiles": 9,
+    "sourceValidation": "PASS_LOCAL",
+    "browserQA": {
+      "state": "PASS_LOCAL_DOM_AND_REAL_MP4_CHROMIUM_ONLY",
+      "actualMP4": true,
+      "cases": [
+        {
+          "width": 320,
+          "height": 900,
+          "initialTime": 0,
+          "forward": 5.048411,
+          "backward": 1.165018
+        },
+        {
+          "width": 390,
+          "height": 900,
+          "initialTime": 0,
+          "forward": 5.052294,
+          "backward": 1.165914
+        },
+        {
+          "width": 1440,
+          "height": 900,
+          "initialTime": 0,
+          "forward": 5.025438,
+          "backward": 1.159716
+        },
+        {
+          "width": 390,
+          "height": 640,
+          "initialTime": 0,
+          "forward": 14.180872,
+          "backward": 3.272509
+        }
+      ],
+      "nativeLiquid": false,
+      "iPhoneSafari": false
+    },
+    "frozen": {
+      "state": "FROZEN_LOCAL_CANDIDATE_AND_BOUNDED_QA",
+      "nativeWrites": 0,
+      "videoPickerBound": false,
+      "scrollEnabled": false,
+      "files": [
+        {
+          "file": "candidate/assets/luxe-scroll-hero.js",
+          "bytes": 7808,
+          "sha256": "bb9a92dce1787df8d499a5615badeb163738da0b309da2627ceb9e4926569151"
+        },
+        {
+          "file": "candidate/locales/de.additions.json",
+          "bytes": 265,
+          "sha256": "dfc318fa48b535716217db027f578852bc8a866420acf97427122831caf953a5"
+        },
+        {
+          "file": "candidate/locales/de.schema.json",
+          "bytes": 51956,
+          "sha256": "f3c29fb94dfc01b9e97cb94bec66d7c0305aded0249b193c0a9efd4630620e84"
+        },
+        {
+          "file": "candidate/locales/en.default.additions.json",
+          "bytes": 258,
+          "sha256": "7941a5f2a8780873fe61f0fb71a588cf2abf3f59a347401ef5ab5a349920eaf2"
+        },
+        {
+          "file": "candidate/locales/en.default.schema.json",
+          "bytes": 53055,
+          "sha256": "b003fd95be35191513b1207b75c494882c6a679ed8e8538477035e29733608ec"
+        },
+        {
+          "file": "candidate/locales/fr.additions.json",
+          "bytes": 297,
+          "sha256": "985a73e61207b0de4eec241a9195bba46fba016663149d8b3bcef186cc7e2833"
+        },
+        {
+          "file": "candidate/locales/fr.schema.json",
+          "bytes": 53271,
+          "sha256": "31667a032df2badd94bd7b09b7174a522f50fcc77d3d910534e17bbc55501c39"
+        },
+        {
+          "file": "candidate/sections/luxe-edit-home.liquid",
+          "bytes": 78600,
+          "sha256": "af3274777285c48f6ebe06c344e94b6cc50da53e84cccab19d984710b6476810"
+        },
+        {
+          "file": "candidate/templates/index.json",
+          "bytes": 2910,
+          "sha256": "551a508da14cc58687616d0dff5e99e2fa8af37b73a86b5fa4e77c6d0b3a7b11"
+        },
+        {
+          "file": "README.md",
+          "bytes": 4928,
+          "sha256": "99a966c7dfaa9bda4524ae611b4bd47f949ba531795f9d218206ac1a91a6a48c"
+        },
+        {
+          "file": "CANDIDATE.diff",
+          "bytes": 28633,
+          "sha256": "a5b5f86f01e7af1d92bade653b8d1412e71d6e317948d96033f8b40f763d5cb7"
+        },
+        {
+          "file": "MANIFEST.json",
+          "bytes": 1897,
+          "sha256": "8e342b7edf280aef78328921e392f2bfc637f537aa13e1a0dc5318c2a8f7e56a"
+        },
+        {
+          "file": "SOURCE-VALIDATION.json",
+          "bytes": 1373,
+          "sha256": "86415d49f992c2f6eb892d1ca115316933ddcea1ea63e07dcf321c723a2fd848"
+        },
+        {
+          "file": "qa/REPORT.json",
+          "bytes": 2769,
+          "sha256": "8d4af21b065a0b555a3ed6f17dd387806ff190e1705655cddf4c46ade28b6102"
+        },
+        {
+          "file": "browser_state_qa.py",
+          "bytes": 10772,
+          "sha256": "4e0a3295c51a2b0fcd3fe167849c728b9c3eeb23f0b78abb3dd1011a8eb4f6fa"
+        },
+        {
+          "file": "build_candidate.py",
+          "bytes": 17332,
+          "sha256": "546c734ca7a52619bdca0c70a02b7e0db489608e42d8f8e83f16fee601ceefa9"
+        }
+      ],
+      "browserStatus": "PASS_LOCAL_DOM_AND_REAL_MP4_CHROMIUM_ONLY",
+      "visualReview": "Productframesandtextseparate; desktopcontrolsclearofcopyafterlastspacingfix; ownervisualacceptancepending"
+    }
+  },
+  "referenceAnalysis": {
+    "id": "6ef5eab1-ca27-49f9-86a3-71c7dd6eb84c",
+    "status": "completed",
+    "sceneSummaries": 12,
+    "coverageLimitation": "Scene summaries end at 13:38 while page metadata gives 27:37; this is not a fully verified timed video watch.",
+    "conclusion": "Scroll forward/reverse/hold and supporting visuals; use own LuxeStyle materials only"
+  },
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "primaryDomain": {
+      "url": "https://luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "products": [
+    {
+      "handle": "midikleid-mit-zopfmuster-und-blumenprint-600200",
+      "httpStatus": 200,
+      "id": 15448587075969,
+      "variant": {
+        "id": 55876172906881,
+        "title": "Aprikose / S",
+        "available": true,
+        "price": 3990,
+        "sku": "CJ-CJLY296508601AZ"
+      }
+    },
+    {
+      "handle": "keramik-vorratsdose-fur-die-kuche-886976",
+      "httpStatus": 200,
+      "id": 15524879008129,
+      "variant": {
+        "id": 68122741014919,
+        "title": "Kirschblüte 700ml",
+        "available": true,
+        "price": 2490,
+        "sku": "CJYD205154101AZ"
+      }
+    }
+  ],
+  "tags": [
+    {
+      "productId": "gid://shopify/Product/15448587075969",
+      "nonEmptyTags": true,
+      "policyMatches": [],
+      "allRueckhol": [],
+      "scope": "website-film-only"
+    },
+    {
+      "productId": "gid://shopify/Product/15524879008129",
+      "nonEmptyTags": true,
+      "policyMatches": [],
+      "allRueckhol": [],
+      "scope": "website-film-only"
+    }
+  ],
+  "scope": {
+    "socialWrites": 0,
+    "shopifyWrites": 0,
+    "themeWrites": 0,
+    "newAutomation": 0,
+    "budgets": 0,
+    "customersContacted": 0,
+    "newDailyReports": 0,
+    "purchaseWatchQueries": 0
+  },
+  "history": {
+    "preserveR268Completed": true,
+    "preserveHistoricalR270R271": true,
+    "claudeReceipt": "unknown"
+  }
+}

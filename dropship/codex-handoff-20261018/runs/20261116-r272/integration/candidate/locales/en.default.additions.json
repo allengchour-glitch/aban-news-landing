@@ -1,0 +1,11 @@
+{
+  "lx_scroll_hero": {
+    "hold": "Pause scroll effect",
+    "resume": "Resume scroll effect",
+    "scrolling": "Following scroll",
+    "paused": "Paused",
+    "manual": "Manual position",
+    "poster": "Still image",
+    "position": "Film position"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mediaId": "bacfdceb-c8e3-40db-983c-784aa7ebf9bb",
+  "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/bacfdceb-c8e3-40db-983c-784aa7ebf9bb.mp4",
+  "rangeStatus": 206,
+  "contentRange": "bytes 0-1023/9871989",
+  "acceptRanges": null,
+  "sampleBytes": 1024,
+  "httpStatus": 200,
+  "remoteBytes": 9871989,
+  "remoteSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+  "matchesLocal": true
+}

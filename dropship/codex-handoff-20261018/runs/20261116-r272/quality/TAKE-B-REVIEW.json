@@ -1,0 +1,53 @@
+{
+  "take": "B_MODE",
+  "jobId": "dae19b0b-2124-4581-a713-c61e21b83f6b",
+  "checkedAtUtc": "2026-11-16T22:43:59.370354+00:00",
+  "input": "/dev/shm/luxestyle-review/r272/source/take-1.mp4",
+  "sha256": "95f2dbb4ef222473e3b63fbc5841a535d2d4a950fc32269f5f3230c87b0befe6",
+  "actual": {
+    "width": 2492,
+    "height": 3324,
+    "fps": 24,
+    "frames": 121,
+    "duration": 5.041667,
+    "codec": "h264",
+    "pixFmt": "yuv420p",
+    "audioStreams": 0
+  },
+  "identityVerdict": "PASS_SOURCE_IDENTITY_WITH_LIMITS",
+  "requestedFormatMet": false,
+  "formatIssue": "Requested16:9 but actual portrait approximately3:4; needs deliberate full-garment-safe layout, no blind fill crop.",
+  "reference": "/dev/shm/luxestyle-review/r270/source/dress-variant.jpg",
+  "visualInspection": {
+    "method": "view_image actual contact sheets and enlarged reference/frame comparison",
+    "allFrameOverview": "frames0–119 in10x12 sheet, finalframe120 separately in detail comparison",
+    "detailFrames": [
+      0,
+      24,
+      48,
+      72,
+      96,
+      120
+    ],
+    "quarterSecondContact": true,
+    "observed": "Wide straps, neckline, waist, cream base and salient blue/orange flower arrangement remain consistent. Slight hem/fold movement. No added person, mannequin, accessories, text, logos or unseen back observed.",
+    "limits": "Contact inspection does not prove real-time playback smoothness, exact pixel identity, colour calibration or Safari decode performance. Final composition/mobile crop not yet inspected."
+  },
+  "files": [
+    {
+      "name": "TAKE-B-CONTACT-4FPS.jpg",
+      "bytes": 223433,
+      "sha256": "b8ffdf7b2d98a6c46d8310447399c9dbd022cfb8f2491e3492737b80c45948f7"
+    },
+    {
+      "name": "TAKE-B-ALL-FRAMES.jpg",
+      "bytes": 452247,
+      "sha256": "7a4f638c841d7a51a9acbeefa32b43343990bb1e8cdfbcb897945c7170e4d03e"
+    },
+    {
+      "name": "TAKE-B-DETAIL-COMPARE.jpg",
+      "bytes": 812851,
+      "sha256": "3026c521a830fd2e1290fa8bd5f8a521faedf5d84e5a5e6dfb5f4795c0154583"
+    }
+  ]
+}

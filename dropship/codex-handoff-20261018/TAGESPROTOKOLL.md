@@ -3312,3 +3312,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R271-REPORT-20261116.md) · [Belege](R271-PROOF-20261116.json).
 
 [LUXESTYLE_R271_20261116]
+
+
+### R272 – Credit-Ausnahme ausgeführt, Film zur Abnahme vorhanden
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Freigabe und Render | Inhaber-Ja auf die konkrete 90-Credit-Ausnahme bezogen, Preise/Referenzen frisch geprüft und genau drei Takes gestartet. | Drei bestätigte Jobs completed. Je 30 Credits Offerte; tatsächliche Kontoabbuchung separat unbekannt, keine Paid-Retries. |
+| Produkte | Shopidentität, zwei exakte Varianten, öffentliche Kaufbarkeit und aktuelle Tags/Tracking/Policy erneut geprüft. | CHF, ACTIVE, kaufbar; aktueller Wächter ohne Treffer. Kein Produkt- oder Shop-Write. |
+| Tatsächlicher Film | Einen15s-Master aus drei echten Quellen geschnitten und vollständig dekodiert. | 1080×1440,450 Frames,30-fps-Export aus 24-fps-Quellen, stumm. Produktbilder vollständig, A dekorativ ausgeschnitten; Review-Export, keine finale kreative Abnahme. |
+| Medienbeleg | Master hochgeladen, bestätigt, öffentlich vollständig zurückgelesen und im Ergebnisfenster gezeigt. | 9’871’989 Bytes, SHA-256 `84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6` gleich; HTTP 206 für Range. Erster urllib-PUT 403, korrigierter curl-PUT 200; keine Bestätigung vor HTTP 200. |
+| Scroll-Entwurf | Neun lokale Kandidatendateien, Diff, Übersetzungs-Merge und Component-Adapter vorbereitet; konkrete Start-/Remount-/Abstandsfehler korrigiert. | Vier echte lokale Chromium-/MP4-Fälle PASS. Vollständige Produkte, Text auf separater dunkler Fläche. Native Liquid-/iPhone-/Safari-/Live-Abnahme offen; Picker ungebunden und nicht aktiviert. |
+| Referenz und Memory | Bestehende YouTube-Analyse-ID completed gelesen, R272-Belege an stabile Aufgaben angefügt. | Zwölf Szenenzusammenfassungen mit begrenzter Zeitabdeckung, keine Vollsichtungsbehauptung. Historie/24 Aufgaben erhalten; Claude-Empfang unbekannt. |
+
+[Bericht](R272-REPORT-20261116.md) · [Belege](R272-PROOF-20261116.json).
+
+[LUXESTYLE_R272_20261116]

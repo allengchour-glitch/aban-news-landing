@@ -1,0 +1,18 @@
+{
+  "masterId": "luxe-home-atelier-multishot-20261116",
+  "path": "/dev/shm/luxestyle-review/r272/luxestyle-atelier-15s-review-r272.mp4",
+  "bytes": 9871989,
+  "sha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+  "seconds": 15,
+  "frames": 450,
+  "exportFPS": 30,
+  "sourceFPS": 24,
+  "opticalFlow": false,
+  "width": 1080,
+  "height": 1440,
+  "audioStreams": 0,
+  "completeDecode": "PASS",
+  "state": "REVIEW_EXPORT_PENDING_VISUAL_AND_OWNER_ACCEPTANCE",
+  "productCrops": "B and C full-frame preserved; A decorative crop x1500/y0/w1761/h2348",
+  "paidLocalRender": false
+}

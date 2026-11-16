@@ -1,3 +1,9 @@
+# R272 – Drei Takes und echter 15-Sekunden-Prüfschnitt – 16.11.2026
+
+Die Antwort «ja nimm mehr credits» genehmigt die konkret angefragte Ausnahme für drei Takes bis zusammen 90 Credits. Alle drei Jobs sind abgeschlossen; ein stummer 15-Sekunden-Review-Master mit 1080 × 1440 Pixeln ist erstellt, angezeigt und öffentlich hashgleich zurückgelesen. **Render und Schnitt vorhanden; kreative Inhaberabnahme und Live-Einbau offen.** Neun lokale Integrationsdateien samt vier echten Chromium-/MP4-Prüfungen vorbereitet, keine Shopify-Writes. Die alten PENDING-Kostenangaben R270/R271 sind Historie und durch diese enge Zustimmung überholt; keine zusätzlichen Paid-Retries genehmigt. [Film und Stand](R272-REPORT-20261116.md) · [Belege](R272-PROOF-20261116.json) · [Integrationsvertrag](runs/20261116-r272/integration/README.md). R268 bleibt abgeschlossen; Claude-Empfang unbekannt.
+
+---
+
 # R271 – Referenz für einen filmischen Scroll-Aufmacher geprüft – 16.11.2026
 
 Der neue YouTube-Link erklärt eine Scroll-Steuerung der Filmposition: vorwärts, rückwärts und Halt. Beschreibung und Seitentranskript gelesen; ergänzende visuelle Analyse noch queued. Lokaler Scroll-Controller und Integrationsvertrag vorbereitet, Syntax und zehn reine Grenzfälle bestanden. **Keine MP4, kein Shopify-Einbau und kein Ja zu 90 Credits.** Der R270-Master bleibt vorbereitet; der Link erweitert keine Kosten-/Medien-/Hostingbefugnis. [Referenzabgleich](R271-REPORT-20261116.md) · [Belege](R271-PROOF-20261116.json). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.

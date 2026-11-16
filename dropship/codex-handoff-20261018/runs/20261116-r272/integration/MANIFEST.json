@@ -1,0 +1,65 @@
+[
+  {
+    "path": "assets/luxe-scroll-hero.js",
+    "bytes": 7808,
+    "sha256": "bb9a92dce1787df8d499a5615badeb163738da0b309da2627ceb9e4926569151",
+    "baseAvailable": false,
+    "kind": "FULL_CANDIDATE"
+  },
+  {
+    "path": "locales/de.additions.json",
+    "bytes": 265,
+    "sha256": "dfc318fa48b535716217db027f578852bc8a866420acf97427122831caf953a5",
+    "baseAvailable": false,
+    "kind": "MERGE_ADDITIONS_ONLY"
+  },
+  {
+    "path": "locales/de.schema.json",
+    "bytes": 51956,
+    "sha256": "f3c29fb94dfc01b9e97cb94bec66d7c0305aded0249b193c0a9efd4630620e84",
+    "baseAvailable": true,
+    "kind": "FULL_CANDIDATE"
+  },
+  {
+    "path": "locales/en.default.additions.json",
+    "bytes": 258,
+    "sha256": "7941a5f2a8780873fe61f0fb71a588cf2abf3f59a347401ef5ab5a349920eaf2",
+    "baseAvailable": false,
+    "kind": "MERGE_ADDITIONS_ONLY"
+  },
+  {
+    "path": "locales/en.default.schema.json",
+    "bytes": 53055,
+    "sha256": "b003fd95be35191513b1207b75c494882c6a679ed8e8538477035e29733608ec",
+    "baseAvailable": true,
+    "kind": "FULL_CANDIDATE"
+  },
+  {
+    "path": "locales/fr.additions.json",
+    "bytes": 297,
+    "sha256": "985a73e61207b0de4eec241a9195bba46fba016663149d8b3bcef186cc7e2833",
+    "baseAvailable": false,
+    "kind": "MERGE_ADDITIONS_ONLY"
+  },
+  {
+    "path": "locales/fr.schema.json",
+    "bytes": 53271,
+    "sha256": "31667a032df2badd94bd7b09b7174a522f50fcc77d3d910534e17bbc55501c39",
+    "baseAvailable": true,
+    "kind": "FULL_CANDIDATE"
+  },
+  {
+    "path": "sections/luxe-edit-home.liquid",
+    "bytes": 78600,
+    "sha256": "af3274777285c48f6ebe06c344e94b6cc50da53e84cccab19d984710b6476810",
+    "baseAvailable": true,
+    "kind": "FULL_CANDIDATE"
+  },
+  {
+    "path": "templates/index.json",
+    "bytes": 2910,
+    "sha256": "551a508da14cc58687616d0dff5e99e2fa8af37b73a86b5fa4e77c6d0b3a7b11",
+    "baseAvailable": true,
+    "kind": "FULL_CANDIDATE"
+  }
+]

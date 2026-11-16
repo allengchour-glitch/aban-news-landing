@@ -1,0 +1,33 @@
+{
+  "sourceMd5ConfirmedFresh": {
+    "sections/luxe-edit-home.liquid": "8ef120629f6ad0c04eb13fd9acbf6ae8",
+    "assets/luxe-edit.js": "4aa19e8ff7993e0e8badad2f02cade4b",
+    "assets/luxe-edit.css": "22b0bd13a138d14e9666d71e6c70c9e8",
+    "templates/index.json": "aa3d177234272df6acedab60272a5396",
+    "locales/de.schema.json": "1c38f38260f84023fce55c08b25f12a4",
+    "locales/en.default.schema.json": "57512d1064a003a0a5bc8d632650b06d",
+    "locales/fr.schema.json": "03cdadce5df0f7a9da59eec5a7e0cb4d"
+  },
+  "nativeWrites": 0,
+  "themeRole": "MAIN read-only",
+  "actualMasterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+  "sourceChecks": {
+    "oneStylesheet": true,
+    "oneH1Source": true,
+    "embeddedSchemaParse": true,
+    "dePriorSchemaSuffixPreserved": true,
+    "deRuntimeAdditionsParse": true,
+    "en.defaultPriorSchemaSuffixPreserved": true,
+    "en.defaultRuntimeAdditionsParse": true,
+    "frPriorSchemaSuffixPreserved": true,
+    "frRuntimeAdditionsParse": true,
+    "copyAndBelowHeroExact": true
+  },
+  "runtimeLocaleOperation": "merge lx_scroll_hero key into existing locale; additions are not deployable locales",
+  "videoBinding": "UNSET",
+  "scrollEnabled": false,
+  "nativePreview": "NOT_RUN",
+  "iphoneSafari": "NOT_RUN",
+  "copyContrastRatio": 13.96,
+  "status": "PASS_LOCAL_CANDIDATE_WITH_REAL_MP4_CHROMIUM_ONLY"
+}

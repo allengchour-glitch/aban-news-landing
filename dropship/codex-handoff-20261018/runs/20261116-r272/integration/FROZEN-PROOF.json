@@ -1,0 +1,90 @@
+{
+  "state": "FROZEN_LOCAL_CANDIDATE_AND_BOUNDED_QA",
+  "nativeWrites": 0,
+  "videoPickerBound": false,
+  "scrollEnabled": false,
+  "files": [
+    {
+      "file": "candidate/assets/luxe-scroll-hero.js",
+      "bytes": 7808,
+      "sha256": "bb9a92dce1787df8d499a5615badeb163738da0b309da2627ceb9e4926569151"
+    },
+    {
+      "file": "candidate/locales/de.additions.json",
+      "bytes": 265,
+      "sha256": "dfc318fa48b535716217db027f578852bc8a866420acf97427122831caf953a5"
+    },
+    {
+      "file": "candidate/locales/de.schema.json",
+      "bytes": 51956,
+      "sha256": "f3c29fb94dfc01b9e97cb94bec66d7c0305aded0249b193c0a9efd4630620e84"
+    },
+    {
+      "file": "candidate/locales/en.default.additions.json",
+      "bytes": 258,
+      "sha256": "7941a5f2a8780873fe61f0fb71a588cf2abf3f59a347401ef5ab5a349920eaf2"
+    },
+    {
+      "file": "candidate/locales/en.default.schema.json",
+      "bytes": 53055,
+      "sha256": "b003fd95be35191513b1207b75c494882c6a679ed8e8538477035e29733608ec"
+    },
+    {
+      "file": "candidate/locales/fr.additions.json",
+      "bytes": 297,
+      "sha256": "985a73e61207b0de4eec241a9195bba46fba016663149d8b3bcef186cc7e2833"
+    },
+    {
+      "file": "candidate/locales/fr.schema.json",
+      "bytes": 53271,
+      "sha256": "31667a032df2badd94bd7b09b7174a522f50fcc77d3d910534e17bbc55501c39"
+    },
+    {
+      "file": "candidate/sections/luxe-edit-home.liquid",
+      "bytes": 78600,
+      "sha256": "af3274777285c48f6ebe06c344e94b6cc50da53e84cccab19d984710b6476810"
+    },
+    {
+      "file": "candidate/templates/index.json",
+      "bytes": 2910,
+      "sha256": "551a508da14cc58687616d0dff5e99e2fa8af37b73a86b5fa4e77c6d0b3a7b11"
+    },
+    {
+      "file": "README.md",
+      "bytes": 4928,
+      "sha256": "99a966c7dfaa9bda4524ae611b4bd47f949ba531795f9d218206ac1a91a6a48c"
+    },
+    {
+      "file": "CANDIDATE.diff",
+      "bytes": 28633,
+      "sha256": "a5b5f86f01e7af1d92bade653b8d1412e71d6e317948d96033f8b40f763d5cb7"
+    },
+    {
+      "file": "MANIFEST.json",
+      "bytes": 1897,
+      "sha256": "8e342b7edf280aef78328921e392f2bfc637f537aa13e1a0dc5318c2a8f7e56a"
+    },
+    {
+      "file": "SOURCE-VALIDATION.json",
+      "bytes": 1373,
+      "sha256": "86415d49f992c2f6eb892d1ca115316933ddcea1ea63e07dcf321c723a2fd848"
+    },
+    {
+      "file": "qa/REPORT.json",
+      "bytes": 2769,
+      "sha256": "8d4af21b065a0b555a3ed6f17dd387806ff190e1705655cddf4c46ade28b6102"
+    },
+    {
+      "file": "browser_state_qa.py",
+      "bytes": 10772,
+      "sha256": "4e0a3295c51a2b0fcd3fe167849c728b9c3eeb23f0b78abb3dd1011a8eb4f6fa"
+    },
+    {
+      "file": "build_candidate.py",
+      "bytes": 17332,
+      "sha256": "546c734ca7a52619bdca0c70a02b7e0db489608e42d8f8e83f16fee601ceefa9"
+    }
+  ],
+  "browserStatus": "PASS_LOCAL_DOM_AND_REAL_MP4_CHROMIUM_ONLY",
+  "visualReview": "Productframesandtextseparate; desktopcontrolsclearofcopyafterlastspacingfix; ownervisualacceptancepending"
+}

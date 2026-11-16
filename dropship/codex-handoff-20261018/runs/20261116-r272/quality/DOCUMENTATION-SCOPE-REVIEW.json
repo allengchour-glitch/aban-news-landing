@@ -1,0 +1,18 @@
+{
+  "status": "PASS_NO_MATERIAL_FALSECLAIM_FOUND",
+  "checkedAtUtc": "2026-11-16T22:59:53.998711+00:00",
+  "packetSha256": "5859c753d7f2140f661b4c34e1ebad74df5f574f7a4074e458d5ca7fbed4a852",
+  "scope": [
+    "Costapproval bounded90credits/exact3jobs/nopaidretry; actualdebitunknown.",
+    "RealMP4reported withverifiedtechnicalparameters and24→30fpslimitation.",
+    "Productidentityreviewlimited, creativeowneracceptanceopen.",
+    "Publicfileverification distinguishedfromShopifyliveintegration.",
+    "FourlocalChromiumactualMP4tests distinguishedfromnativeLiquid/iPhoneSafari.",
+    "Existinghistoryprefixinvariantsreportedconsistent; noindependent4.5MBstatecomparisonbythisreviewer."
+  ],
+  "materialIssues": [],
+  "nonBlockingNotes": [
+    "Nestedmaster.state retains technicalstage PENDING_VISUAL text; separatevisualReviewPASS_REVIEW_EXPORT_ONLY clearlysupersedeslocalvisualpending, owneracceptancestillopen."
+  ],
+  "externalWrites": 0
+}

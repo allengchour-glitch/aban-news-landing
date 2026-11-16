@@ -1,0 +1,65 @@
+[
+  {
+    "index": 0,
+    "jobId": "5e522a6c-88c5-4af8-9bbc-837969cf87da",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261116_224003_5e522a6c-88c5-4af8-9bbc-837969cf87da.mp4",
+    "path": "/dev/shm/luxestyle-review/r272/source/take-0.mp4",
+    "bytes": 1576743,
+    "sha256": "23d5f02d61d9e1c1f405f8dda78b6820c17fe147af42efbc54fe416bcb58facf",
+    "streams": [
+      {
+        "codec_type": "video",
+        "codec_name": "h264",
+        "width": 3528,
+        "height": 2348,
+        "r_frame_rate": "24/1",
+        "duration": "5.041667",
+        "nb_frames": "121",
+        "nb_read_frames": "121",
+        "pix_fmt": "yuv420p"
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "jobId": "dae19b0b-2124-4581-a713-c61e21b83f6b",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261116_224004_dae19b0b-2124-4581-a713-c61e21b83f6b.mp4",
+    "path": "/dev/shm/luxestyle-review/r272/source/take-1.mp4",
+    "bytes": 11369090,
+    "sha256": "95f2dbb4ef222473e3b63fbc5841a535d2d4a950fc32269f5f3230c87b0befe6",
+    "streams": [
+      {
+        "codec_type": "video",
+        "codec_name": "h264",
+        "width": 2492,
+        "height": 3324,
+        "r_frame_rate": "24/1",
+        "duration": "5.041667",
+        "nb_frames": "121",
+        "nb_read_frames": "121",
+        "pix_fmt": "yuv420p"
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "jobId": "72abffff-043a-417e-b5ce-9db42670bf07",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261116_224004_72abffff-043a-417e-b5ce-9db42670bf07.mp4",
+    "path": "/dev/shm/luxestyle-review/r272/source/take-2.mp4",
+    "bytes": 11954289,
+    "sha256": "9736a6c23d35c2eed53d0cf0a9db94a53faf3aef7cea7d2eb6317ea0fbcb2a26",
+    "streams": [
+      {
+        "codec_type": "video",
+        "codec_name": "h264",
+        "width": 2728,
+        "height": 3036,
+        "r_frame_rate": "24/1",
+        "duration": "5.041667",
+        "nb_frames": "121",
+        "nb_read_frames": "121",
+        "pix_fmt": "yuv420p"
+      }
+    ]
+  }
+]

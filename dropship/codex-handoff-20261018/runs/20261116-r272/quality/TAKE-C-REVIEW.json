@@ -1,0 +1,51 @@
+{
+  "take": "C_WOHNEN",
+  "jobId": "72abffff-043a-417e-b5ce-9db42670bf07",
+  "checkedAtUtc": "2026-11-16T22:45:42.824062+00:00",
+  "input": "/dev/shm/luxestyle-review/r272/source/take-2.mp4",
+  "sha256": "9736a6c23d35c2eed53d0cf0a9db94a53faf3aef7cea7d2eb6317ea0fbcb2a26",
+  "actualStreams": [
+    {
+      "codec_type": "video",
+      "codec_name": "h264",
+      "width": 2728,
+      "height": 3036,
+      "r_frame_rate": "24/1",
+      "duration": "5.041667",
+      "nb_frames": "121",
+      "nb_read_frames": "121",
+      "pix_fmt": "yuv420p"
+    }
+  ],
+  "reference": "/dev/shm/luxestyle-review/r270/source/jar-gallery3.jpg",
+  "identityVerdict": "PASS_SOURCE_IDENTITY_WITH_LIMITS",
+  "professionalFinalAcceptance": false,
+  "mayComposeLocalReviewMaster": true,
+  "requested16by9Met": false,
+  "observations": "Correct reference is jar-gallery3.jpg (be03d88a), not jar-gallery.jpg with hands. Front-left floral jar, lids, brown rims and relative arrangement remain recognizable. Native1100px crops at frames0/24/48/72/96/120 do not confirm the suspected later blocking from resized contacts; frame0 is softer and later detail sharper. No opening, hands, pouring or new objects observed.",
+  "inspection": "Actual reference viewed; all121frames overview and20quarter-second contacts. C additionally six native-resolution product crops.",
+  "limits": [
+    "No real-time playback review performed by this agent.",
+    "Not a pixel-exact pattern proof or calibrated colour test.",
+    "No final master, mobile crop, Shopify native preview or Safari performance inspected.",
+    "Source aspect ratios differ from requested16:9; final composition must preserve products rather than blind crop.",
+    "Professional premium motion/loop/final creative approval remains open."
+  ],
+  "files": [
+    {
+      "name": "TAKE-C-ALL-FRAMES.jpg",
+      "bytes": 506387,
+      "sha256": "95fbf477123337ba460b7dc86ca8fdd955f1cade6c8993feb66967938308996b"
+    },
+    {
+      "name": "TAKE-C-NATIVE-FRONT-COMPARE.jpg",
+      "bytes": 2445841,
+      "sha256": "789eb51edcb130fe0d8339378029bedd2d1a91e346c141ea5df6b344cff632fb"
+    },
+    {
+      "name": "take-2-contact.jpg",
+      "bytes": 812736,
+      "sha256": "ef245d6f8802030d8c77f22e41074f519bf52bb1145500b2931428ba5bac1092"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "scope": "LOCAL_DOM_AND_ACTUAL_REVIEW_MP4_CHROMIUM_ONLY",
+  "realMp4DecoderTested": true,
+  "nativeLiquidRendered": false,
+  "shopifyWrites": 0,
+  "cases": [
+    {
+      "width": 320,
+      "height": 900,
+      "initial": {
+        "rootHeight": 1556,
+        "stageHeight": 784,
+        "source": "/mobile.mp4",
+        "fit": "contain",
+        "playCalls": 0,
+        "overflow": false,
+        "status": "scroll",
+        "controlsWithin": true,
+        "target44": true
+      },
+      "initialTime": 0,
+      "forwardScrollTime": 5.048411,
+      "backwardScrollTime": 1.165018,
+      "tallNaturalScroll": false,
+      "pauseFrozen": true,
+      "rangeKeyboardEnd": true,
+      "repeatedNativeUpdateSingular": true,
+      "reducedMotionPoster": true,
+      "utf8CopyExact": true
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "initial": {
+        "rootHeight": 1565,
+        "stageHeight": 793,
+        "source": "/mobile.mp4",
+        "fit": "contain",
+        "playCalls": 0,
+        "overflow": false,
+        "status": "scroll",
+        "controlsWithin": true,
+        "target44": true
+      },
+      "initialTime": 0,
+      "forwardScrollTime": 5.052294,
+      "backwardScrollTime": 1.165914,
+      "tallNaturalScroll": false,
+      "pauseFrozen": true,
+      "rangeKeyboardEnd": true,
+      "repeatedNativeUpdateSingular": true,
+      "reducedMotionPoster": true,
+      "utf8CopyExact": true
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "initial": {
+        "rootHeight": 1433,
+        "stageHeight": 657,
+        "source": "/desktop.mp4",
+        "fit": "contain",
+        "playCalls": 0,
+        "overflow": false,
+        "status": "scroll",
+        "controlsWithin": true,
+        "target44": true
+      },
+      "initialTime": 0,
+      "forwardScrollTime": 5.025438,
+      "backwardScrollTime": 1.159716,
+      "tallNaturalScroll": false,
+      "pauseFrozen": true,
+      "rangeKeyboardEnd": true,
+      "repeatedNativeUpdateSingular": true,
+      "reducedMotionPoster": true,
+      "utf8CopyExact": true
+    },
+    {
+      "width": 390,
+      "height": 640,
+      "initial": {
+        "rootHeight": 697,
+        "stageHeight": 681,
+        "source": "/mobile.mp4",
+        "fit": "contain",
+        "playCalls": 0,
+        "overflow": false,
+        "status": "scroll",
+        "controlsWithin": true,
+        "target44": true
+      },
+      "initialTime": 0,
+      "forwardScrollTime": 14.180872,
+      "backwardScrollTime": 3.272509,
+      "tallNaturalScroll": true,
+      "pauseFrozen": true,
+      "rangeKeyboardEnd": true,
+      "repeatedNativeUpdateSingular": true,
+      "reducedMotionPoster": true,
+      "utf8CopyExact": true
+    }
+  ],
+  "errors": [],
+  "status": "PASS_LOCAL_DOM_AND_REAL_MP4_CHROMIUM_ONLY"
+}

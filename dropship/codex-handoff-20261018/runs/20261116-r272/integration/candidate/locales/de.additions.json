@@ -1,0 +1,11 @@
+{
+  "lx_scroll_hero": {
+    "hold": "Scroll-Effekt anhalten",
+    "resume": "Scroll-Effekt fortsetzen",
+    "scrolling": "Beim Scrollen",
+    "paused": "Angehalten",
+    "manual": "Manuelle Position",
+    "poster": "Standbild",
+    "position": "Filmposition"
+  }
+}

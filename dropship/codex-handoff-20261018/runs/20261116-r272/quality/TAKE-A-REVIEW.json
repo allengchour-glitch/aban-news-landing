@@ -1,0 +1,51 @@
+{
+  "take": "A_ATELIER",
+  "jobId": "5e522a6c-88c5-4af8-9bbc-837969cf87da",
+  "checkedAtUtc": "2026-11-16T22:45:42.822250+00:00",
+  "input": "/dev/shm/luxestyle-review/r272/source/take-0.mp4",
+  "sha256": "23d5f02d61d9e1c1f405f8dda78b6820c17fe147af42efbc54fe416bcb58facf",
+  "actualStreams": [
+    {
+      "codec_type": "video",
+      "codec_name": "h264",
+      "width": 3528,
+      "height": 2348,
+      "r_frame_rate": "24/1",
+      "duration": "5.041667",
+      "nb_frames": "121",
+      "nb_read_frames": "121",
+      "pix_fmt": "yuv420p"
+    }
+  ],
+  "reference": "/dev/shm/luxestyle-review/r269/design/luxe-atelier-hero-master.webp",
+  "identityVerdict": "PASS_SOURCE_IDENTITY_WITH_LIMITS",
+  "professionalFinalAcceptance": false,
+  "mayComposeLocalReviewMaster": true,
+  "requested16by9Met": false,
+  "observations": "Atelier composition, silk loop, amber sphere, bronze platform and architecture agree with reference. Only very restrained visible motion in contacts; no strong cinematic action proven. No new object/text/logo observed.",
+  "inspection": "Actual reference viewed; all121frames overview and20quarter-second contacts. C additionally six native-resolution product crops.",
+  "limits": [
+    "No real-time playback review performed by this agent.",
+    "Not a pixel-exact pattern proof or calibrated colour test.",
+    "No final master, mobile crop, Shopify native preview or Safari performance inspected.",
+    "Source aspect ratios differ from requested16:9; final composition must preserve products rather than blind crop.",
+    "Professional premium motion/loop/final creative approval remains open."
+  ],
+  "files": [
+    {
+      "name": "TAKE-A-ALL-FRAMES.jpg",
+      "bytes": 254098,
+      "sha256": "97923323b6f842e8599e35c8f0e8169d8124b1801a483c5db8ba0bd7acfb953e"
+    },
+    {
+      "name": "ATELIER-REFERENCE-QA.jpg",
+      "bytes": 280649,
+      "sha256": "a3e2bedb6bcd90567ffb74d714a06ee657f3c16ca460a22163595afef89e5542"
+    },
+    {
+      "name": "take-0-contact.jpg",
+      "bytes": 461341,
+      "sha256": "47faa142e0ee8a47a4a67b23038c3bcda9c55c7c778941da3c2a7ece2abf267e"
+    }
+  ]
+}

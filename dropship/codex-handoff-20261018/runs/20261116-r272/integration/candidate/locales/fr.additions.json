@@ -1,0 +1,11 @@
+{
+  "lx_scroll_hero": {
+    "hold": "Suspendre l’effet de défilement",
+    "resume": "Reprendre l’effet de défilement",
+    "scrolling": "Selon le défilement",
+    "paused": "En pause",
+    "manual": "Position manuelle",
+    "poster": "Image fixe",
+    "position": "Position du film"
+  }
+}
