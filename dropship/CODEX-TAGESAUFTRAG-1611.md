@@ -80,6 +80,45 @@ Ziel: Vergleiche bei 48 Stunden und 7 Tagen statt Alter gegen Alter.
 - Nach B die Medien tauschen und nach dem Ja des Besitzers einplanen.
 - Nach D den Theme-Patch einspielen, nach E den Workflow bauen.
 
+## Max-Modus (Besitzer 16.11. ca. 10:05 UTC: «codex in max modus heute»)
+
+Du hast heute die volle Kapazität. Arbeite unabhängige Pakete parallel ab; A bleibt zuerst. Zusätzlich zu A bis F:
+
+### G · Metricool-Zweitmeinung (nur lesen, dein eigener Zugang)
+
+Claude macht heute selbst eine Metricool-Analyse mit Social-Pflege. Deine Fassung ist das unabhängige zweite Auge: bitte nicht Claudes Ergebnis abwarten.
+- **Planer 16.11. bis 06.12.:** jeden Beitrag prüfen.
+  - Ist es ein Video? (Fotos, Karussells, Threads- und TikTok-Fotos nur, wenn sie schon eingeplant waren)
+  - Steht die uuid auf der Halteliste `dropship/METRICOOL-HALTEN.txt`?
+  - Ist das Produkt ACTIVE und in der Schweiz lieferbar? Stimmt der Link? Stimmt der Preis mit dem Shop überein, falls einer genannt ist?
+  - TikTok: Titel gesetzt, `autoAddMusic` aus, Eigenwerbung an?
+  - Instagram: höchstens 5 Hashtags?
+  - Gibt es zu jedem Video eine YouTube-Short-Fassung?
+  - Haben automatisch geplante Beiträge im selben Netzwerk mindestens 3 Stunden Abstand?
+- **Veröffentlicht 01. bis 15.11.:** Kennzahlen je Beitrag mit Alter in Stunden, verglichen bei 48 Stunden und bei 7 Tagen. Was trägt, was nicht?
+- **Liefern:** `dropship/social-analyse-1611/antwort/codex-zweitmeinung.md`, eine Tabelle «uuid · Netzwerk · Termin · Befund · Vorschlag».
+- Kein Schreiben in Metricool, keine Antworten auf Kommentare.
+
+### H · Stumme Produktvideos für Tage ohne Video (nur Dateien)
+
+- **Lücken finden:** Lies im Planer, welche Tage zwischen 23.11. und 06.12. noch kein Video haben.
+- **Bis zu 6 neue Videos:** aus CJ-Gratisvideos (`product/queryVideosByProductId`, wie in `dropship/tiktok-cj-videos-0311/PAKET.md`).
+- **Produktwahl:**
+  - Das Produkt ist ACTIVE und hat eine Frachtlinie CN nach CH.
+  - Bereich Gadget, Haustier oder Wohnen (laut Analyse trägt das).
+  - Im Bild keine Fremdmarke, keine Gesichter, keine Fremdschrift.
+  - Nicht auf der Halteliste und nicht schon im Planer.
+- **Je Video:**
+  - MP4 1080×1920, H.264, **ohne Tonspur**, 7 bis 20 Sekunden.
+  - Kontaktbogen mit 6 Bildern, SHA-256, Produkt-Handle.
+  - Beitragstexte für Instagram/Facebook, für TikTok (mit Titel) und für YouTube (Titel mit `#Shorts`). Höchstens 5 Hashtags, kein Preis, kein Lieferversprechen, keine Gesundheitsaussage.
+- **Ablage:** `dropship/social-woche-2311/antwort/` mit einer Zeile «Quelle (pid, Video-ID)» je Datei.
+- **Nicht in Metricool hochladen.** Claude prüft, legt Entwürfe an, und die Freigabe plant ein.
+
+### I · SEO ausweiten
+
+Paket D heute auf bis zu 20 Seiten statt einer kleinen Auswahl, gleiche Regeln. Je fertiger Fünfergruppe ein R-Bericht.
+
 ## Antwort Codex
 
 (offen)
