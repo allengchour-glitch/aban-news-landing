@@ -740,7 +740,7 @@ document.getElementById("wrap").appendChild(renderer.domElement);
    dem Handy praktisch nichts (kein zusaetzlicher Render-Target-Pass wie bei Bloom).
    Abschalten ohne UI: localStorage.th_filmlook="0". */
 if(localStorage.getItem("th_filmlook")!=="0"){
-  renderer.domElement.style.filter="saturate(1.07) contrast(1.03)";
+  renderer.domElement.style.filter="saturate(1.01) contrast(1.07)";
   var _vig=document.createElement("div");
   _vig.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:1;"+
     "background:radial-gradient(ellipse 118% 96% at 50% 44%,transparent 62%,rgba(10,14,26,.16) 86%,rgba(6,9,18,.34) 100%)";
@@ -3354,13 +3354,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var r=_zfModell(m,new Set(),[],uint?500000:65000,true);
       var st=window._zfStat=window._zfStat||{modelle:0,vorher:0,nachher:0,ms:0,laeufe:0};
       st.wagen=(st.wagen||0)+1;st.wagenVorher=(st.wagenVorher||0)+r[0];st.wagenNachher=(st.wagenNachher||0)+r[1];}catch(e){console.warn("zusammenfassen Wagen",e);}};
-  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();_zusammenfassen();_aufwaermen();}
+  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();_zusammenfassen();_aufwaermen();if(window._stadtKontaktPlan)window._stadtKontaktPlan();}
   /* ⚠️ _einfrieren() setzt matrixAutoUpdate=false. Es laeuft 9 s nach dem Laden — also
      VOR entzerren() (14 s) und entwirren() (15.5/32 s). Wer danach noch .position
      aendert, verschiebt nur eine Zahl: die Weltmatrix wird nie neu gerechnet, das
      Modell bleibt sichtbar stehen. Genau deshalb blieben die Ueberschneidungen trotz
      Entzerrung bestehen. Jede spaete Verschiebung muss die Matrix selbst nachziehen. */
-  window._nachRuecken=function(o){o.updateMatrix();o.updateMatrixWorld(true);};
+  window._nachRuecken=function(o){o.updateMatrix();o.updateMatrixWorld(true);if(window._stadtKontaktPlan)window._stadtKontaktPlan();};
   window._spaetEinfrieren=_spaetEinfrieren;   /* fuer den lade-gekoppelten zweiten Lauf */
   if(document.readyState==="complete")setTimeout(_spaetEinfrieren,9000);
   else window.addEventListener("load",function(){setTimeout(_spaetEinfrieren,9000);});
@@ -3487,7 +3487,8 @@ function _roadTex(){var cv=document.createElement("canvas");cv.width=cv.height=2
     c.fillStyle="rgba("+(58+v)+","+(58+v)+","+(64+v)+",0.3)";
     c.fillRect(Math.random()*256,Math.random()*256,Math.random()<0.25?3:2,2);}
   for(var f=0;f<26;f++){
-    var g=c.createRadialGradient(Math.random()*256,Math.random()*256,2,Math.random()*256,Math.random()*256,18+Math.random()*46);
+    var gx=Math.random()*256,gy=Math.random()*256;
+    var g=c.createRadialGradient(gx,gy,2,gx,gy,18+Math.random()*46);
     var hell=Math.random()<0.5;
     g.addColorStop(0,hell?"rgba(120,120,128,0.09)":"rgba(24,24,30,0.11)");
     g.addColorStop(1,"rgba(0,0,0,0)");c.fillStyle=g;c.fillRect(0,0,256,256);}
@@ -4279,6 +4280,158 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
 })();
 
 // ---- Dorf rundherum: Strassen, Nachbarhaeuser, Baeume, Laternen ----
+/* Stadtgestaltung: gemeinsame Baufluchten, echte Erdgeschosse und ein ruhiges
+   Materialsystem. Alle Höhen sind Meter; die Geometrie bleibt auf dem Handy klein. */
+var _stadtBauten=[],_stadtGlas=[],_stadtSchilder={},_stadtSteinM=null,_stadtPalettenMats=new WeakSet(),_stadtLineareMats=new WeakSet(),_stadtDachMats=[];
+function _stadtPflasterMat(){
+  if(_stadtSteinM)return _stadtSteinM;
+  var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
+  c.fillStyle="#9d9e94";c.fillRect(0,0,256,256);
+  for(var y=0;y<16;y++)for(var x=-1;x<9;x++){
+    var px=x*32+(y%2)*16,v=((x*17+y*31+97)%13+13)%13;
+    c.fillStyle="rgb("+(175+v)+","+(174+v)+","+(163+v)+")";
+    c.fillRect(px+0.7,y*16+0.7,30.6,14.6);
+    c.fillStyle="rgba(255,255,246,.12)";c.fillRect(px+1,y*16+1,30,1);
+  }
+  var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;
+  t.encoding=THREE.sRGBEncoding;t.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
+  _stadtSteinM=_standardMat({map:t,color:0xe0dfd5,roughness:0.96});
+  return _stadtSteinM;
+}
+function _stadtBoden(w,d,x,z,y){
+  var geo=new THREE.PlaneGeometry(w,d),uv=geo.attributes.uv;
+  for(var i=0;i<uv.count;i++)uv.setXY(i,uv.getX(i)*w/5,uv.getY(i)*d/5);
+  var m=new THREE.Mesh(geo,_stadtPflasterMat());m.rotation.x=-Math.PI/2;
+  m.position.set(x,y===undefined?-0.024:y,z);m.receiveShadow=true;scene.add(m);return m;
+}
+function _stadtGlasMat(i){
+  i=((i%4)+4)%4;
+  if(!_stadtGlas[i]){var m=_standardMat({color:[0x345661,0x4e6970,0x41636b,0x58757b][i],
+    roughness:0.24,metalness:0.08,emissive:0xffd59a,emissiveIntensity:0});
+    _stadtFarbton(m);if(i!==2)dorfFenster.push(m);_stadtGlas[i]=m;}
+  return _stadtGlas[i];
+}
+function _stadtSchild(seed){
+  var namen=["BÄCKEREI","BUCHHANDLUNG","APOTHEKE","BLUMEN","CAFÉ","ATELIER"],i=((seed%6)+6)%6;
+  if(!_stadtSchilder[i]){var cv=document.createElement("canvas");cv.width=512;cv.height=96;var c=cv.getContext("2d");
+    c.fillStyle=["#704c39","#344e58","#3b6051","#735b65","#4c5b4c","#615b50"][i];c.fillRect(0,0,512,96);
+    c.strokeStyle="#d4c7a4";c.lineWidth=3;c.strokeRect(7,7,498,82);
+    c.fillStyle="#fff2d6";c.font="600 37px Georgia,serif";c.textAlign="center";c.textBaseline="middle";
+    c.fillText(namen[i],256,50,462);
+    var t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;
+    var m=_standardMat({map:t,emissiveMap:t,emissive:0xffdfa9,emissiveIntensity:0,roughness:0.7});
+    dorfFenster.push(m);_stadtSchilder[i]=m;}
+  return _stadtSchilder[i];
+}
+function _stadtFarbton(m){
+  if(!_stadtLineareMats.has(m)){m.color.convertSRGBToLinear();_stadtLineareMats.add(m);}return m;
+}
+function _stadtDachMat(seed){
+  var i=Math.abs(seed)%2;if(_stadtDachMats[i])return _stadtDachMats[i];
+  var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
+  c.fillStyle="#707575";c.fillRect(0,0,256,256);
+  for(var y=0;y<16;y++)for(var x=-1;x<9;x++){var v=((x*13+y*7+103)%17+17)%17;
+    c.fillStyle="rgb("+(156+v)+","+(158+v)+","+(157+v)+")";
+    c.fillRect(x*32+(y%2)*16+.7,y*16+.7,30.6,14.3);}
+  var t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;
+  t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(.25,.25);
+  var m=_standardMat({map:t,color:i?0x736153:0x566269,roughness:.96,envMapIntensity:.18});
+  _stadtDachMats[i]=_stadtFarbton(m);return m;
+}
+function _stadthaus(x,z,rot,seed,w,d){
+  w=w||11.4;d=d||8.2;
+  var et=3+(seed%3===0?1:0),h=3+(et-1)*2.7,g=new THREE.Group();
+  g.name="Stadthaus "+seed;
+  var palette=[0xc9bda4,0xb9b9ad,0xd8cbb5,0xc0b2a4,0xb8c0bb,0xd2bfaa];
+  var wand=stdMat(palette[((seed%6)+6)%6],0.88),stein=stdMat(0xc5c1b4,0.91),
+      rahmen=stdMat(0xe8e1d0,0.78),holz=stdMat(0x3b4743,0.75),dach=_stadtDachMat(seed);
+  [wand,stein,rahmen,holz].forEach(_stadtFarbton);
+  function box(w,h,d,x,y,z,mat){var o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);
+    o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;g.add(o);return o;}
+  box(w,h,d,0,h/2,0,wand);
+  box(w+0.18,0.5,d+0.18,0,.23,0,stein);
+  box(w+0.22,0.22,d+0.22,0,3.03,0,stein);
+  box(w+0.32,0.24,d+0.32,0,h+.05,0,rahmen);
+  // Durchgehende Geschosse mit schmalen Gesimsen statt unbestimmter hoher Kästen.
+  for(var e=1;e<et-1;e++)box(w+.08,.1,d+.08,0,3+e*2.7,0,stein);
+  var columns=Math.max(3,Math.floor(w/2.65)),step=(w-1.8)/columns;
+  for(var e=1;e<et;e++)for(var k=0;k<columns;k++){
+    var wx=-w/2+.9+step*(k+.5),wy=3+(e-.5)*2.7;
+    [-1,1].forEach(function(face){
+      box(1.33,1.68,.11,wx,wy,face*(d/2+.035),rahmen);
+      box(1.08,1.42,.06,wx,wy,face*(d/2+.105),_stadtGlasMat(seed+e+k));
+      box(1.47,.1,.28,wx,wy-.86,face*(d/2+.13),stein);
+      box(.055,1.42,.025,wx,wy,face*(d/2+.15),rahmen);
+    });
+  }
+  // Schaufenster, Markise und Eingang zeigen, wo die öffentliche Strassenseite ist.
+  var shopW=w*.58,shopX=-w*.15;
+  box(shopW+.22,2.16,.12,shopX,1.35,d/2+.05,rahmen);
+  box(shopW,1.94,.08,shopX,1.35,d/2+.14,_stadtGlasMat(seed));
+  for(var sx=-1;sx<=1;sx++)box(.08,1.94,.04,shopX+sx*shopW/3,1.35,d/2+.195,holz);
+  var doorX=w*.34;
+  box(1.36,2.35,.13,doorX,1.18,d/2+.06,rahmen);
+  box(1.1,2.12,.09,doorX,1.12,d/2+.15,holz);
+  box(.8,1.12,.04,doorX,1.5,d/2+.21,_stadtGlasMat(seed+1));
+  box(.05,.36,.12,doorX+.35,1.05,d/2+.27,stein);
+  box(1.6,.1,.55,doorX,.04,d/2+.25,stein);
+  var aw=box(shopW+.45,.09,1.18,shopX,2.63,d/2+.57,holz);aw.rotation.x=.12;
+  var sign=new THREE.Mesh(new THREE.PlaneGeometry(shopW,.4),_stadtSchild(seed));
+  sign.position.set(shopX,3.3,d/2+.4);
+  // Die Beschriftung gehört zur Fassade und bleibt mit ihr lesbar; die normale
+  // Kamera-Sichtfeldprüfung gilt weiter. Elf Schilder brauchen keinen Detail-LOD.
+  sign.userData.nieAusblenden=true;g.add(sign);
+  // Ein Satteldach mit durchgehendem First und verputztem Giebel.
+  var roof=new THREE.Shape(),rw=w/2+.16,rh=1.55;
+  roof.moveTo(-rw,0);roof.lineTo(0,rh);roof.lineTo(rw,0);roof.closePath();
+  var rg=new THREE.ExtrudeGeometry(roof,{depth:d+.3,bevelEnabled:false,steps:1,curveSegments:1});
+  var rm=new THREE.Mesh(rg,[wand,dach]);rm.position.set(0,h+.16,-d/2-.15);rm.castShadow=true;g.add(rm);
+  box(.6,1.4,.65,-w*.28,h+1.25,-d*.18,stein);
+  // Rückwärtige Haustür: der Block hat auch einen glaubwürdigen Hof.
+  box(1.15,2.1,.1,0,1.05,-d/2-.05,holz);
+  g.position.set(x,0,z);g.rotation.y=rot||0;scene.add(g);
+  addSolidRot(x,z,w+.2,d+.2,rot||0,null);
+  _stadtBauten.push(g);if(window._zfStatisch)window._zfStatisch(g);
+  return {g:g,h:h};
+}
+/* Weiche Kontaktschatten verankern Gebäude auch ohne die teure mobile Schattenkarte.
+   Eine gemeinsame 64px-Textur; je räumlicher Zelle ein InstancedMesh, keine neuen Lichter. */
+var _stadtKontaktTimer=null,_stadtKontaktBatches=[],_stadtKontaktGeo=null,_stadtKontaktMat=null;
+function _stadtKontaktAufbau(){
+  var roots=Array.from(new Set((window._gebaeude||[]).concat(_stadtBauten,(window._immo||[]).map(function(e){return e.grp;})))),
+      bb=new THREE.Box3(),zellen={},zahl=0;
+  var eigene=new Set(_stadtBauten.concat((window._immo||[]).map(function(e){return e.grp;})));
+  roots.forEach(function(o){
+    if(!o||!o.parent||o._bewegt||o.userData.animiert||(!o.visible&&!o._gsAus))return;
+    // Bäume, Pavillons und Freizeitgeräte brauchen keine Gebäudegrundierung.
+    if(!eigene.has(o)&&!/(haus|halle|rathaus|museum|bibliothek|hotel|kino|post|bank|praxis|schule|bahnhof|werkstatt|fabrik|laden|markt|kirche|hospital|kranken|tower|hochhaus|wohn|casino|club|theater|terminal|hangar|muehle|scheune)/i.test(o.userData.datei||""))return;
+    bb.setFromObject(o);var w=bb.max.x-bb.min.x,d=bb.max.z-bb.min.z,h=bb.max.y-bb.min.y;
+    if(w<4||d<4||w>52||d>52||h<3||h>45||w/d>5||d/w>5||bb.min.y<-.6||bb.min.y>.6)return;
+    var x=(bb.min.x+bb.max.x)/2,z=(bb.min.z+bb.max.z)/2,key=Math.floor(x/64)+","+Math.floor(z/64);
+    (zellen[key]||(zellen[key]=[])).push([x,z,w+1.8,d+1.8,Math.max(.018,bb.min.y+.018)]);zahl++;
+  });
+  if(!_stadtKontaktMat){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+    var gr=c.createRadialGradient(32,32,7,32,32,32);gr.addColorStop(0,"rgba(20,25,23,.9)");
+    gr.addColorStop(.7,"rgba(20,25,23,.65)");gr.addColorStop(1,"rgba(20,25,23,0)");c.fillStyle=gr;c.fillRect(0,0,64,64);
+    _stadtKontaktMat=new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true,opacity:.23,depthWrite:false,
+      polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1});
+    _stadtKontaktGeo=new THREE.PlaneGeometry(1,1);}
+  var alt=new Set(_stadtKontaktBatches);
+  if(window._instGruppen)window._instGruppen=window._instGruppen.filter(function(q){return !alt.has(q.m);});
+  _stadtKontaktBatches.forEach(function(m){scene.remove(m);if(m.dispose)m.dispose();});_stadtKontaktBatches=[];
+  var dummy=new THREE.Object3D();
+  Object.keys(zellen).forEach(function(key){var a=zellen[key],m=new THREE.InstancedMesh(_stadtKontaktGeo,_stadtKontaktMat,a.length);
+    var cx=0,cz=0,radius=0;a.forEach(function(p){cx+=p[0];cz+=p[1];});cx/=a.length;cz/=a.length;
+    a.forEach(function(p,i){dummy.position.set(p[0]-cx,p[4],p[1]-cz);dummy.rotation.set(-Math.PI/2,0,0);dummy.scale.set(p[2],p[3],1);dummy.updateMatrix();m.setMatrixAt(i,dummy.matrix);
+      radius=Math.max(radius,Math.hypot(p[0]-cx,p[1]-cz)+Math.hypot(p[2],p[3])/2);});
+    m.position.set(cx,0,cz);m.instanceMatrix.needsUpdate=true;m.frustumCulled=false;m.userData.nieAusblenden=true;m.name="Gebäudekontakt";
+    scene.add(m);_stadtKontaktBatches.push(m);
+    (window._instGruppen||(window._instGruppen=[])).push({m:m,x:cx,z:cz,r:radius});
+  });
+  window._stadtKontaktZahl=zahl;
+}
+window._stadtKontaktPlan=function(){clearTimeout(_stadtKontaktTimer);_stadtKontaktTimer=setTimeout(_stadtKontaktAufbau,1800);};
+
 var dorfFenster=[];
 /* 🩹 Lampen, die VOR dieser Zeile entstanden sind (Parkplatz), nachtragen. */
 if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLampenSpaet);window._nachtLampenSpaet=null;}
@@ -4646,6 +4799,8 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
 
   function haus(x,z,rotY,seed){
     var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
+    if(Math.abs(z+SZ+31)<.1&&x>=-40&&x<=36){var sh=_stadthaus(x,z,rotY,seed);
+      (window._immo=window._immo||[]).push({x:x,z:z,grp:sh.g,preis:1800+(seed%5)*600,h:sh.h});return;}
     var g=new THREE.Group();
     var w=4+(seed%3),d=3.6+((seed*7)%2),h=2.3+((seed*3)%2)*0.5;
     var wandC=new THREE.Color(WANDF[seed%WANDF.length]).offsetHSL(((seed*7)%11-5)*0.0025,0,((seed*13)%9-4)*0.012).getHex(),dachC=DACHF[seed%DACHF.length];
@@ -4719,7 +4874,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       lx.fillStyle=lc[(k*2+n)%lc.length];lx.fillRect(0,0,128,44);
       lx.fillStyle="rgba(255,255,255,0.9)";lx.fillRect(3,3,122,38);
       lx.font="26px sans-serif";lx.textAlign="center";lx.textBaseline="middle";
-      lx.fillText(LS[(k*3+n)%LS.length],64,24);
+      lx.font="bold 13px system-ui";lx.fillText(["BÄCKEREI","CAFÉ","BÜCHER","BLUMEN","FEINKOST","ATELIER"][(k+n)%6],64,24,114);
       var ltx=new THREE.CanvasTexture(lcv);
       var lm=_standardMat({map:ltx,emissiveMap:ltx,emissive:new THREE.Color(0xffe8b0),emissiveIntensity:0,roughness:0.5,side:THREE.DoubleSide});
       dorfFenster.push(lm);
@@ -4856,7 +5011,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       bl.position.set(hx+(b9-1)*1.5,0.18,hz+dir*3.6);scene.add(bl);
       var st9=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.03,0.22,4),heckM);
       st9.position.set(bl.position.x,0.09,bl.position.z);scene.add(st9);}}
-  [-38,-26,-14,-2,10,22,34].forEach(function(hx){vorgarten(hx,-SZ-31,1);});    // Nordreihe -> Strasse im Sueden(+z)
+  _stadtBoden(144,21.5,0,-SZ-33.25);    // Nordreihe -> Strasse im Sueden(+z)
   /* Suedreihe: kein Vorgarten mehr — das Einzelhaus (64|77) ist seit Runde 102 weg (s. Haeuserzeilen oben). */
   /* 🚶 Hinterhof-Gehweg zwischen Haeuserzeile (±(SZ+31)) und 2. Reihe (±(SZ+47)):
      der Streifen dazwischen war blanke Wiese (User: „hinten auch ... gehweg?"). */
@@ -9145,8 +9300,14 @@ setTimeout(function baueGebaeude(){
          Jetzt nur noch Modelle, die in das Band passen, mit Abstand aus der
          GEMESSENEN Breite + 7 m Luecke:
            th22_doppelhaus 15.4 x 11.9 · th7_reihenhaus_modul 5.0 x 7.0 */
-      var NB=[["th22_doppelhaus.glb",7.5,15.4],["reihe3",0,17],["th22_doppelhaus.glb",7.5,15.4],
-              ["reihe3",0,17],["th22_doppelhaus.glb",7.5,15.4]];
+      // Stadtblöcke statt einzelner Vorstadthäuser im inneren Stadtring.
+      // Die bestehenden Parzellenbreiten und der freie Mittelzugang bleiben dieselben.
+      _stadtBoden(144,22,0,-36);_stadtBoden(144,22,0,36);
+      _stadtBoden(35,48,-54.5,0);_stadtBoden(35,48,54.5,0);
+      var parkGruen=new THREE.Mesh(new THREE.PlaneGeometry(23,42),_standardMat({map:grasTex,color:0x8ca675,roughness:1}));
+      parkGruen.rotation.x=-Math.PI/2;parkGruen.position.set(56,-.018,0);parkGruen.receiveShadow=true;scene.add(parkGruen);
+      var NB=[["stadthaus",0,15.4],["reihe3",0,17],["stadthaus",0,15.4],
+              ["reihe3",0,17],["stadthaus",0,15.4]];
       function reihenhausTerrasse(mx,mz,rot){          /* 3 Module aneinander = Terrasse */
         for(var i=-1;i<=1;i++){
           bau("th7_reihenhaus_modul.glb",8,mx+i*5.6,0,mz,rot,false,null,true);}
@@ -9162,11 +9323,12 @@ setTimeout(function baueGebaeude(){
           var mx=cur+e[2]/2; cur+=e[2]+LUE;
           if(Math.abs(mx)<11)return;                    /* Zugangsweg frei lassen */
           if(e[0]==="reihe3"){reihenhausTerrasse(mx,z,rot);}
+          else if(e[0]==="stadthaus"){_stadthaus(mx,z,rot,i+(z>0?13:7),e[2],10.8);}
           else{
             bau(e[0],e[1],mx,0,z,rot,false,null,true);
             addSolid(mx,z,e[2]+0.6,12.5,{a:"z",at:z+(rot?-6.2:6.2),c:mx,w:3.2});}
           /* Vorgarten zur Strasse hin */
-          bau("th2_gartenzaun.glb",1.0,mx,0,z+vorgarten,0,false,null,true);
+          // Freie, zusammenhängende Vorzone zum Trottoir statt Gartenzäunen vor Geschäften.
           if(i%2===0)bau("th2_blumenbeet.glb",0.5,mx-5,0,z+vorgarten-1.6,0,false,null,true);
           bau("th3_briefkasten.glb",1.25,mx+5.5,0,z+vorgarten-0.4,0,false,null,true);
           if(i%2===1)bau("th4_laterne_modern.glb",5.2,mx+9,0,z+vorgarten+0.8,0,false,null,true);
@@ -9174,8 +9336,8 @@ setTimeout(function baueGebaeude(){
       zeile(NB,NZ,Math.PI,7.5);                         /* Norden: Front zur Hauptstrasse */
       /* Sueden: Ladenzeile — dieselben Groessen, aber Werkstatt/Lagerhalle als
          Gewerbe-Note (17.7 x 12.9 passt gerade noch ins Band). */
-      var SB=[["th7_lagerhalle.glb",7.5,17.7],["reihe3",0,17],["th22_doppelhaus.glb",7.5,15.4],
-              ["reihe3",0,17],["th7_lagerhalle.glb",7.5,17.7]];
+      var SB=[["stadthaus",0,17.7],["reihe3",0,17],["stadthaus",0,15.4],
+              ["reihe3",0,17],["stadthaus",0,17.7]];
       zeile(SB,SZ0,0,-7.5);
       bau("th3_kiosk.glb",3.4,0,0,SZ0-9,0,false,null,true);
       bau("th6_litfasssaeule.glb",3.2,20,0,SZ0-9,0,false,null,true);
@@ -13439,7 +13601,7 @@ function _plakatTex(){
   var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;
   if(THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;
   _plakatTexObj=t;return t;}
-function _matVereinheitlichen(wurzel){
+function _matVereinheitlichen(wurzel,datei){
   wurzel.traverse(function(n){
     if(!n.isMesh||!n.material)return;
     var liste=Array.isArray(n.material)?n.material:[n.material];
@@ -13448,7 +13610,17 @@ function _matVereinheitlichen(wurzel){
       m=_leichtMat(m);
       m.envMapIntensity=0.3;
       if(!m.map&&/plakat/i.test(m.name||"")){m.map=_plakatTex();m.color.set(0xffffff);m.needsUpdate=true;}
-      if(_istWand(m))_wandTiefe(m);
+      if(_istWand(m)){
+        // Neutrale Fassaden erhalten pro Gebäudetyp einen ruhigen Stein-/Putzton.
+        // Farbige Wahrzeichen und vorhandene Wandtexturen behalten ihre Identität.
+        if(!_stadtPalettenMats.has(m)){var hsl={};m.color.getHSL(hsl);
+          if(hsl.s<.24&&hsl.l>.45){var hash=0,txt=datei||wurzel.name||m.name;
+            for(var ci=0;ci<txt.length;ci++)hash=(Math.imul(hash,31)+txt.charCodeAt(ci))|0;
+            var farben=[0xc9c0af,0xb5bfbd,0xc6b7a5,0xd2c5b0,0xb6c0c7];
+            m.color.lerp(new THREE.Color(farben[(hash>>>0)%farben.length]),.42);}
+          _stadtPalettenMats.add(m);}
+        _wandTiefe(m);
+      }
       else if(_istModellFenster(m))_fensterNacht(m);
       /* ⚠️ DER NAME GEHOERT IN DEN SCHLUESSEL. Der Verkehr sucht sein Lackmaterial
          ueber `/lack/i.test(m.name)`; wuerde ein gleich eingestelltes Material aus
@@ -13476,7 +13648,7 @@ window._glbVorlage=function(datei,cb){
   if(e){e.warte.push(cb);if(window._ladePrioUpd)window._ladePrioUpd(datei,window._ladePrioD);window._ladePrioD=undefined;return;}          /* laedt schon — anstellen (Runde 103: naeherer Ort zieht den Auftrag vor) */
   C[datei]=e={szene:null,warte:[cb]};
   GL.load("/models/"+datei,function(g){ window._ladePrioD=undefined;
-    _matVereinheitlichen(g.scene);
+    _matVereinheitlichen(g.scene,datei);
     e.szene=g.scene; var w=e.warte; e.warte=[];
     for(var i=0;i<w.length;i++)w[i](e.szene);
     /* Neues Modell ist da und steht gleich in der Welt — aufwaermen anmelden. */
@@ -19556,17 +19728,17 @@ function loop(now){
        ⚠️ NICHT WEITER RUNTER. Ein Viertel (0,07/0,03) sah im Bild noch etwas besser aus,
        aber ueber diesem Kommentar steht die Beschwerde „man sieht nichts" — die Nacht war
        schon einmal zu dunkel. Wer sie wieder heller will, aendert genau die 0,13. */
-    sun.intensity=(0.10+dayA*0.82)*wDim;hemi.intensity=0.13+dayA*0.57;
-    hemi.groundColor.setRGB(0.24+dayA*0.17,0.34+dayA*0.20,0.30+dayA*0.04); // nachts blau-grau statt oliv
+    sun.intensity=(0.10+dayA*0.82)*wDim;hemi.intensity=0.13+dayA*0.44;
+    hemi.groundColor.setRGB(0.22+dayA*0.13,0.24+dayA*0.13,0.25+dayA*0.11); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
-    sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
+    sun.color.setHex(0xfff5e7);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
     if(window.sterne)sterne.material.opacity=Math.max(0,0.9-dayA*3);
     /* 🐛 Die Schatten-Box haengt am Licht-Ziel. Das stand fest im Weltursprung, waehrend ich
        die Box auf dem Handy auf ±60 m verkleinert habe — sobald der Spieler weiter weg war,
        lag alles ausserhalb der Box und wurde komplett schwarz (User-Screenshot).
        Licht UND Ziel wandern jetzt mit der Kamera mit, die Box ist immer um den Spieler. */
     _sonneAufKamera(camTx,camTz,Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,18); // tiefer bei Daemmerung -> lange Schatten
-    renderer.toneMappingExposure=(0.62+dayA*0.36)*wDim; // 0.34 war zu dunkel zum Spielen
+    renderer.toneMappingExposure=(0.62+dayA*0.30)*wDim; // 0.34 war zu dunkel zum Spielen
     /* 🌙 DIE NACHT WAR TAGHELL — und diese eine Zeile war der Grund.
        `scene.environmentIntensity` gibt es erst ab three.js r163; geladen ist
        r128. Die `undefined`-Abfrage hat die Abdunklung darum still uebersprungen,
