@@ -134,6 +134,18 @@ wahr('Exit 0 und 4 (Drosselung) sind keine Fehler, alles andere macht den Job ro
 wahr('Manifest und Fehlerliste werden mit Union-Merge zurückgelegt', /gmc_schaufenster_manifest\.jsonl merge=union/.test(WF) && /gmc_schaufenster_fehler\.txt merge=union/.test(WF));
 wahr('Manifest wird auch nach Teilfehlern committet (always) und nur wenn der Lauf schrieb', /name: Manifest committen[^\n]*\n\s+if: \$\{\{ always\(\) && steps\.modus\.outputs\.live == '1' \}\}/.test(WF));
 wahr('Commit trägt [skip ci] (kein Test-Lauf für Manifest-Zeilen)', /\[skip ci\]/.test(WF));
+// Bis 15.11.2026 setzte nur der Schritt «Schaufenster» BUDGET=78000, die Nachprüfung rechnete mit der Vorgabe 90 000 des Codes.
+wahr('Kein Schritt setzt ein eigenes BUDGET (die Vorgabe steht nur im Code, alle Läufe rechnen gleich)', !/^\s+BUDGET:/m.test(WF));
+wahr('Die Auswahl «zuruecksetzen» nennt ihre Schranke und den Zeitplan', /zuruecksetzen = Rücknahme bis höchstens 140 000 Varianten auf Google \(bricht sonst ab; vorher GMC-SCHAUFENSTER-TAEGLICH-FREI\.txt löschen/.test(WF));
+// Seit 16.11.2026 rechnet die Nachprüfung mit demselben Budget wie der Lauf: Exit 5 (noch etwas abzuwählen) ist dort nur ein Hinweis, Exit 3 (Defekt) bleibt rot.
+const NACH = schritt('Nachprüfen (frisch lesen, nach 2 Minuten Abstand)');
+wahr('Nachprüfung: Exit 5 nur als Warnung, danach Exit 0', typeof NACH === 'string' && /if \[ "\$rc" = "5" \]; then echo "::warning [^"]*"; exit 0; fi\n?exit "\$rc"/.test(NACH), String(NACH).slice(-400));
+if (NACH) {
+  const lauf5 = rc => spawnSync('bash', ['-eo', 'pipefail', '-c', NACH.replace('sleep 120', ':').replace(/node automation\/gmc_schaufenster\.mjs/, `bash -c 'exit ${rc}'`).replace('/tmp/gmc_schaufenster_nach.log', '/dev/null')], { encoding: 'utf8', timeout: 20000, env: { PATH: process.env.PATH, GITHUB_OUTPUT: '/dev/null' } });
+  wahr('Nachprüfung ausgeführt: Exit 5 → Schritt grün, mit Warnung', lauf5(5).status === 0 && /::warning/.test(lauf5(5).stdout));
+  wahr('Nachprüfung ausgeführt: Exit 3 (Defekt) → Schritt rot', lauf5(3).status === 3);
+  wahr('Nachprüfung ausgeführt: Exit 0 → grün ohne Warnung', lauf5(0).status === 0 && !/::warning/.test(lauf5(0).stdout));
+}
 
 console.log(`${ok} ok, ${fehl} Fehler`);
 process.exit(fehl ? 1 : 0);

@@ -10,7 +10,11 @@
  *                 Produkte (Stufe 0) bleiben; sind die Bestellungen nicht vollständig lesbar, bricht der Lauf ab.
  *   aufnehmen     LIVE=1: stellt Produkte zurück, die dieses Werkzeug früher abgewählt hat UND die wieder ins Schaufenster passen.
  *   zuruecksetzen LIVE=1: VOLLE Rücknahme: stellt alles zurück, was dieses Werkzeug abgewählt hat (ausser Sperrtag), auch Produkte mit
- *                 Ausschlussfeld oder ausserhalb des Budgets. Danach wählt ein neuer Lauf wieder ab; zum Stoppen die Freigabedatei löschen.
+ *                 Ausschlussfeld oder ausserhalb des Budgets. Danach wählt ein neuer Lauf wieder ab; den Zeitplan stoppt GMC-SCHAUFENSTER-TAEGLICH-FREI.txt.
+ *                 Lägen danach mehr als HARTE_GRENZE Varianten auf Google (Quote 150 000), bricht sie ab (Exit 2). Eine Rücknahme ALLER Manifest-Produkte
+ *                 ist darum nicht möglich (16.11.2026: 31 191 Produkte, rund 509 000 Varianten); höchstens bis zur Grenze, mit ONLY= oder MAX=, und
+ *                 nur nach dem Löschen von dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt (sonst wählt der nächste Zeitplanlauf sie wieder ab).
+ *                 Produkte mit Sperrtag oder Negativ-Tag (ausgelistet, Bild zu klein, Bild abgelehnt) kommen nie zurück.
  *   pruefen       NUR LESEN: liest frisch und vergleicht mit Manifest und Plan, nennt die Varianten auf Google.
  *
  * SICHERHEIT
@@ -25,7 +29,7 @@
  *   - Drosselung wird nie umgangen: bleibt sie bestehen, endet der Lauf (Exit 4), der nächste macht idempotent weiter.
  *
  * ENV  SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET (+ SHOPIFY_SHOP)  ·  LIVE=1  ·  PHASE  ·  MAX (Vorgabe 2000, «alle»)  ·  ONLY=handle,handle (Stichprobe)
- *      BUDGET (Varianten, Vorgabe 90000, mindestens 40000)  ·  PLAN_AUS (Vorgabe /tmp/gmc_schaufenster_plan.json)  ·  MANIFEST  ·  FREIGABE  ·  FEHLERDATEI
+ *      BUDGET (Varianten, Vorgabe 78000 aus lib/gmc_schaufenster.mjs, mindestens 40000)  ·  PLAN_AUS (Vorgabe /tmp/gmc_schaufenster_plan.json)  ·  MANIFEST  ·  FREIGABE  ·  FEHLERDATEI
  *      KATALOG (fertige Bulk-Datei statt Lesen, nur ohne LIVE)
  * Exit  0 ok · 1 Zugang/Einstellung · 2 Plan nicht erlaubt · 3 Fehlschläge oder Defekt (abgewählt, aber noch auf Google) · 4 Drosselung/Abbruch
  *       5 pruefen: Google trägt noch Produkte ausserhalb des Schaufensters
@@ -36,7 +40,7 @@ import { fileURLToPath } from 'node:url';
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 import { shopifyGql } from './lib/shopify_gql.mjs';
 import {
-  GOOGLE_PUBLICATION, BUDGET_VARIANTEN, MIN_BUDGET, plan, stuecke, mutation, auswerten, parseManifest, manifestZeile, ratingAus, bestellteIds, bewaehrt,
+  GOOGLE_PUBLICATION, BUDGET_VARIANTEN, HARTE_GRENZE, MIN_BUDGET, MIN_PRODUKTE, plan, stuecke, mutation, auswerten, parseManifest, manifestZeile, ratingAus, bestellteIds, bewaehrt,
 } from './lib/gmc_schaufenster.mjs';
 
 const SHOP = process.env.SHOPIFY_SHOP || 'au3j0y-hq.myshopify.com';
@@ -131,7 +135,7 @@ async function liesBestellte() {
 }
 
 function liesManifest() {
-  if (!existsSync(MANIFEST)) return { ids: new Set(), kaputt: 0 };
+  if (!existsSync(MANIFEST)) { console.log(`WARNUNG: Manifest ${MANIFEST} fehlt: abgewählte Produkte gelten als fremd (nichts wird zurückgelegt, sie zählen nicht ins Budget).`); return { ids: new Set(), kaputt: 0 }; }
   return parseManifest(readFileSync(MANIFEST, 'utf8'));
 }
 /** Zeilen anhängen; endet die Datei nicht auf einen Zeilenumbruch, steht vor der ersten neuen Zeile einer (sonst verschmölzen zwei Einträge). */
@@ -151,11 +155,12 @@ function bericht(p, alle) {
   const z = p.zahlen, v = p.varianten;
   console.log(`\nSCHAUFENSTER (Budget ${z.budget} Varianten, Deckel je Kategorie ${z.katDeckel})`);
   console.log(`  gelesen ${alle.length} aktive Produkte · auf Google jetzt ${alle.filter(x => x.aufGoogle === true).length} · unklar ${p.unklar}`);
-  console.log(`  zulässig: Stufe 0 (bewährt: bestellt oder gut bewertet) ${z.produkte[0]} · Stufe 1 (Fortura/CH-Lager) ${z.produkte[1]} · Stufe 2 (Marge A/B) ${z.produkte[2]} · Stufe 3 (Rest) ${z.produkte[3]}`);
+  console.log(`  zulässig und erreichbar (auf Google, unklar oder im Manifest): Stufe 0 (bewährt: bestellt oder gut bewertet) ${z.produkte[0]} · Stufe 1 (Fortura/CH-Lager) ${z.produkte[1]} · Stufe 2 (Marge A/B) ${z.produkte[2]} · Stufe 3 (Rest) ${z.produkte[3]}`);
   console.log(`  im Schaufenster: S0 ${z.drin[0]} / ${z.varianten[0]} Var. · S1 ${z.drin[1]} / ${z.varianten[1]} Var. · S2 ${z.drin[2]} / ${z.varianten[2]} Var. · S3 ${z.drin[3]} / ${z.varianten[3]} Var. · zusammen ${z.varianten.gesamt} Varianten`);
-  console.log(`  Varianten auf Google: jetzt ${v.vorher} → nach dem Lauf ${v.nachher}   (Quote 150000, Budget ${z.budget})`);
+  console.log(`  Varianten auf Google: jetzt ${v.vorher} → nach dem Lauf ${v.nachher} mit Aufnahmen, ${p.nurAbwahl} nur mit Abwahl (Zeitplan)   (Quote 150000, Budget ${z.budget})`);
   console.log(`  ABWÄHLEN ${p.abwaehlen.length} Produkte, Gründe ${JSON.stringify(p.gruende)}`);
-  console.log(`  AUFNEHMEN ${p.aufnehmen.length} Produkte (aus dem Manifest, passen wieder) · ZURÜCKSETZEN ${p.zuruecksetzen.length} (alles aus dem Manifest, ausser Sperrtag)`);
+  console.log(`  AUFNEHMEN ${p.aufnehmen.length} Produkte (aus dem Manifest, passen wieder) · ZURÜCKSETZEN ${p.zuruecksetzen.length} (alles aus dem Manifest, ausser Sperr- und Negativ-Tag)`);
+  console.log(`  ausserhalb: ${p.ausserhalb.produkte} Produkte / ${p.ausserhalb.varianten} Varianten liegen nicht auf Google und stehen nicht im Manifest (zählen nicht ins Budget, das Werkzeug fügt sie nie hinzu)`);
   const proKat = {};
   for (const x of alle) if (p.drin.has(x.id) && x.aufGoogle === true) { const k = String(x.kategorie).split(' > ').slice(0, 2).join(' > '); proKat[k] = (proKat[k] || 0) + Number(x.varianten); }
   console.log('  grösste Kategorien im Schaufenster (Varianten): ' + Object.entries(proKat).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([k, n]) => `${k}=${n}`).join(' · '));
@@ -217,6 +222,23 @@ const gesperrt = ziele.filter(x => (fehlerAnzahl.get(x.id) || 0) >= 3);
 if (gesperrt.length) console.log(`HINWEIS: ${gesperrt.length} Produkte schlugen schon dreimal fehl und werden übersprungen (${FEHLERDATEI}), zum Beispiel ${gesperrt.slice(0, 3).map(x => x.handle).join(', ')}.`);
 const bereit = ziele.filter(x => (fehlerAnzahl.get(x.id) || 0) < 3).slice(0, MAX);
 console.log(`\n${PHASE.toUpperCase()}: ${bereit.length} von ${ziele.length} Produkten${bereit.length < ziele.length - gesperrt.length ? ` (MAX ${MAX} erreicht, der Rest folgt im nächsten Lauf)` : ''}`);
+// Schranke für alles, was Produkte auf Google legt: danach nie über HARTE_GRENZE. Der Plan prüft nur den Endstand NACH Abwahl und Aufnahme; «aufnehmen» allein
+// legte bei ausstehender Abwahl mehr hin (Gegenprüfer 16.11.: 145 000 + 5 000), und die volle Rücknahme umgeht den Plan ganz.
+// Am 15.11.2026 hätte ein Handstart «zuruecksetzen» alle 31 191 Manifest-Produkte zurückgelegt (Gegenprüfer; am 28.10. gingen 27 931 mit rund 430 000 Varianten).
+// Unklare Zeilen zählen mit (sie könnten auf Google liegen). «abwaehlen» ist ausgenommen: es nimmt nur weg und muss gerade dann laufen, wenn zu viel auf Google liegt.
+if (art === 'aufnehmen' && bereit.length) {
+  // Ein falsch gelesener Kanalstatus (zum Beispiel eine geänderte Kanal-ID) sähe aus wie «fast nichts auf Google» und liesse sonst Tausende zurück (Gegenprüfer 16.11.).
+  const aufGoogleJetzt = alle.filter(x => x.aufGoogle === true).length;
+  if (PHASE === 'aufnehmen' && aufGoogleJetzt < MIN_PRODUKTE) { console.log(`ABBRUCH: nur ${aufGoogleJetzt} Produkte auf Google gelesen (erwartet mindestens ${MIN_PRODUKTE}): Kanalstatus vermutlich falsch gelesen.`); process.exit(2); }
+  const dazu = bereit.reduce((s, x) => s + (Number.isFinite(x.varianten) ? x.varianten : 0), 0);
+  const danach = p.varianten.vorher + p.unklarVarianten + dazu;
+  console.log(`  Varianten auf Google danach höchstens ${danach} (jetzt ${p.varianten.vorher}, unklar ${p.unklarVarianten}, dazu ${dazu}; Grenze ${HARTE_GRENZE}, Quote 150000)`);
+  if (bereit.some(x => !Number.isFinite(x.varianten))) { console.log('ABBRUCH: Variantenzahl eines Produkts unbekannt, die Grenze lässt sich nicht prüfen.'); process.exit(2); }
+  if (danach > HARTE_GRENZE) {
+    const rat = p.varianten.vorher + p.unklarVarianten > p.zahlen.budget ? 'Zuerst PHASE=abwaehlen (auf Google liegt mehr als das Budget).' : 'Weniger auf einmal mit ONLY= oder MAX= (vorher dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt löschen, sonst wählt der Zeitplan sie wieder ab).';
+    console.log(`ABBRUCH: danach lägen ${danach} Varianten auf Google (Grenze ${HARTE_GRENZE}). ${rat}`); process.exit(2);
+  }
+}
 if (!LIVE) { console.log('TROCKENLAUF: nichts geschrieben.'); process.exit(0); }
 if (!bereit.length) { console.log('Nichts zu tun.'); process.exit(0); }
 if (PHASE !== 'abwaehlen' && man.kaputt) { console.log(`ABBRUCH: ${man.kaputt} kaputte Manifest-Zeilen: eine Rücknahme könnte Produkte übersehen. Manifest prüfen.`); process.exit(1); }

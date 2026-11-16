@@ -13,7 +13,7 @@ Der Besitzer zeigte am 28.10.2026 das Merchant Center («Products › Needs atte
 
 ## Die Lösung: ein Schaufenster unter der Grenze
 
-`automation/gmc_schaufenster.mjs` (Logik und Begründung: `automation/lib/gmc_schaufenster.mjs`, 159 Tests der Regel, 44 des Ablaufs mit Attrappen-Shop, der nur liefert, was die Abfragen des Werkzeugs verlangen) hält die Zahl der Varianten auf dem Kanal unter einem **Budget von 90 000** (SETZUNG; Grenze 150 000, der Rest ist Platz für das Wachstum der Auswahl-Läufe bis zum nächsten Lauf).
+`automation/gmc_schaufenster.mjs` (Logik und Begründung: `automation/lib/gmc_schaufenster.mjs`, 159 Tests der Regel, 44 des Ablaufs mit Attrappen-Shop, der nur liefert, was die Abfragen des Werkzeugs verlangen) hält die Zahl der Varianten auf dem Kanal unter einem **Budget von 78 000** (SETZUNG seit 16.11.2026, vorher 90 000; Grenze 150 000, der Rest ist Platz für das Wachstum der Auswahl-Läufe bis zum nächsten Lauf; Abschnitt «Nachbesserung 16.11.2026»).
 
 | Stufe | Wer | Regel |
 |---|---|---|
@@ -72,3 +72,51 @@ Gegenprobe «bestellt»: 0 der 18 bezahlten Produkte stehen im Abwahl-Plan (14 l
 - **Manifest** `dropship/gmc_schaufenster_manifest.jsonl`: 27 935 Zeilen (27 934 × `ab-versucht`, 1 × `auf` aus dem Test), 27 931 verschiedene Produkte, jede Zeile gültiges JSON, die sechs Zeilen aus dem Test von vorher sind enthalten. Die drei Zeilen mehr als Produkte (GEMESSEN an den Zeilen): ein Test-Produkt (`15449130926465`: abgewählt, zurückgeholt, im vollen Lauf erneut abgewählt) und zwei Produkte (`15522215592321`, `15522215625089`), deren Stück beim Absturz offen war und nach dem Neustart erneut versucht wurde; das Werkzeug zählt je Produkt.
 - **Noch nicht gemessen:** die Wirkung im Merchant Center. Google verarbeitet Stunden bis Tage; der Besitzer schickt dann die Ansichten «Needs attention» und «All products».
 - **Hinweis zu «Personalized advertising: personal hardships» (200 Produkte, Merchant-Center-CSV vom 28.10.):** die Datei nennt als betroffene Ziele nur dynamisches Remarketing; Shopping-Anzeigen und kostenlose Einträge sind laut Datei nicht betroffen. Hier wird deshalb nichts geändert (Empfehlung; Entscheid des Besitzers).
+
+## Nachbesserung 16.11.2026 (M08 der Merchant-Messung vom 15.11.)
+
+Zwei unabhängige Gegenprüfer lasen die Merchant-Massnahme M08 (Rohtext im Workflow-Journal `wf_e0e3e700-d63`). Umgesetzt:
+
+- **Budget an einer Stelle.** Bis 15.11. setzte nur der Workflow-Schritt «Schaufenster» `BUDGET=78000` (seit 08.11. wegen 3 838 Varianten «Over capacity for Shopping ads (CSS)» bei 89 575 auf Google). Die Nachprüfung und jeder lokale Lauf rechneten mit der Vorgabe 90 000 des Codes: die Nachprüfung vom 15.11. nannte «AUFNEHMEN 1 410», und ein lokales `PHASE=aufnehmen` hätte diese Produkte zurückgeholt. Jetzt steht 78 000 nur in `automation/lib/gmc_schaufenster.mjs` (`BUDGET_VARIANTEN`). Der Workflow setzt kein Budget mehr, ein Test erzwingt das. Zurück auf 90 000: nur dort ändern.
+- **Ins Budget zählt nur Erreichbares.** Ein Produkt, das nicht auf Google liegt und nie von hier abgewählt wurde, kommt nie dazu. Es belegte trotzdem Platz im Schaufenster. Gegenprüfer: 86 Produkte mit 175 Varianten. Jetzt zählen nur Produkte auf Google, Produkte mit unklarem Kanalstatus (vorsichtshalber) und Produkte aus dem Manifest. Der Bericht nennt den Rest als Zeile «ausserhalb».
+- **Schranke für das Zurücklegen.** `zuruecksetzen` umgeht den Plan. Ein Handstart hätte am 15.11. alle 31 191 Manifest-Produkte zurückgelegt; am 28.10. gingen 27 931 Produkte mit rund 430 000 Varianten. Jetzt brechen `aufnehmen` und `zuruecksetzen` mit Exit 2 ab, wenn danach mehr als 140 000 Varianten auf Google lägen (`HARTE_GRENZE`). Dabei zählen auch Zeilen mit unklarem Kanalstatus mit. Der Trockenlauf meldet den Abbruch ebenso. Für `abwaehlen` gilt die Schranke nie: es nimmt nur weg und muss gerade dann laufen, wenn zu viel auf Google liegt.
+- **Eine volle Rücknahme ist damit nicht mehr möglich** (GEMESSEN 16.11. im Trockenlauf: 31 086 Produkte, «danach 586 264 Varianten», Exit 2). Zurücklegen geht höchstens bis zur Grenze, mit `ONLY=` oder `MAX=` (im Workflow: Eingabe `max`). `MAX=` wählt in der Reihenfolge des Katalogs, nicht nach Stufe.
+  - Vorher `dropship/GMC-SCHAUFENSTER-TAEGLICH-FREI.txt` löschen, sonst wählt der nächste Zeitplanlauf die Produkte wieder ab. Nicht `GMC-SCHAUFENSTER-FREI.txt` löschen: ohne diese Datei schreibt auch die Rücknahme nicht.
+  - Liegt schon mehr als das Budget auf Google, rät die Meldung «zuerst abwaehlen».
+  - Mehr zurücklegen geht nur mit dem Entscheid, `HARTE_GRENZE` anzuheben; bei mehr als 150 000 Varianten auf Google greift die Quote des Merchant Centers.
+- **Nie zurück:** Produkte mit Sperrtag und neu auch mit Negativ-Tag. Das sind von CJ ausgelistete Produkte, solche mit zu kleinem Bild und solche, deren Bild Google abgelehnt hat (`google-bild-abgelehnt`, seit 08.11.). Das betrifft am 16.11. 105 Manifest-Produkte.
+- **Kanalstatus falsch gelesen:** Liest `aufnehmen` weniger als 500 Produkte auf Google (zum Beispiel nach einer geänderten Kanal-ID), bricht es ab. Ein Gegenprüfer stellte nach: mit allem auf «nicht auf Google» kämen sonst 4 671 Produkte zurück. Für `zuruecksetzen` gilt diese Sperre nicht, damit nach einem Unfall alles zurückgelegt werden kann; die Grenze gilt dort weiter.
+- **Nachprüfung im Workflow:** Sie rechnet jetzt mit demselben Budget wie der Lauf. Liegt dazwischen ein neues Produkt auf Google, endet sie mit Exit 5 («noch etwas abzuwählen»). Das gibt seit 16.11. nur eine Warnung, kein roter Job; der nächste Lauf wählt das Produkt ab. Exit 3 bleibt rot: dann liegt ein abgewähltes Produkt noch auf Google.
+- **Bericht:** Die Zeile «Varianten auf Google» zeigt beide Werte: mit Aufnahmen und nur mit Abwahl (so endet der Zeitplan). «zulässig» zählt nur Erreichbares. Fehlt die Manifest-Datei, warnt der Lauf.
+
+Bewusst **nicht** umgesetzt: ausverkaufte Produkte vom Kanal nehmen (Vorschlag (b) der Messung). Gründe der Gegenprüfer:
+- Die Wirkung ist klein: 112 Produkte mit 114 Varianten, 0,15 % des Budgets.
+- Google zeigt diese Artikel heute ehrlich als «nicht lieferbar»; das ist keine Ablehnung.
+- Ohne täglichen Rückweg blieben wieder aufgefüllte Fortura-Kostüme in der Fasnacht vom Kanal weg.
+- Die Sperrseiten (Magnet, Bügeltransfer) sind am 11.11. bewusst «nicht kaufbar» statt «abgewählt».
+- Die Lieferbarkeit wäre nur je Variante lesbar; eine Abkürzung über `totalInventory` trifft 79 kaufbare CJ-Produkte zu viel (GEMESSEN vom Gegenprüfer).
+- Der Fortura-Bestand im Shop wird seit 10.11. nicht täglich geschrieben.
+
+Neu prüfen erst, wenn der Fortura-Bestand täglich geschrieben wird und der Zeitplan auch `aufnehmen` fährt.
+
+**GEMESSEN 16.11. 01:55 UTC** (nur lesend, derselbe Katalogstand für beide Fassungen: 56 495 aktive Produkte, 23 385 auf Google, 77 792 Varianten):
+
+| | Abwählen | Aufnehmen | Varianten nach dem Lauf |
+|---|---|---|---|
+| alter Code mit `BUDGET=78000` | 1 | 6 | 77 820 |
+| neuer Code | 0 | 28 | 78 000 |
+
+Die alte Fassung hielt 175 Varianten im Fenster frei, die nie auf Google kommen konnten. Ausserhalb liegen 1 885 Produkte mit 5 086 Varianten.
+
+Die 28 Rückkehrer stehen am Rand des Budgets. Ein neues kleines Produkt kann sie beim nächsten `abwaehlen` wieder hinausschieben; Gegenprüfer: die Liste wanderte vom 11.11. bis 15.11. zwischen 6 und 11 Produkten. Der Zeitplan fährt weiter nur `abwaehlen`. Zurück kommen sie nur mit einem Handstart `aufnehmen`, vorher `plan`.
+
+Ein Rest bleibt im Zeitplan frei: Manifest-Produkte im Fenster belegen Budget, kommen ohne `aufnehmen` aber nie zurück. Heute sind es 28 Produkte mit 208 Varianten, darum endet der Zeitplan bei 77 792 statt 78 000. Ein Gegenprüfer stellte nach: bei 200 neuen Produkten bleiben rund 48 Varianten frei. Das ist bewusst so. Eine Regel je Phase würde Lauf und Nachprüfung verschieden rechnen lassen, und ein tägliches `aufnehmen` liesse Produkte an der Grenze täglich kommen und gehen.
+
+Zwei unabhängige Prüfer lasen die erste Fassung (Linsen Korrektheit und Sicherheit, Workflow `wf_33c18dff-95f`). Kein Blocker. Sie fanden zwei wichtige und acht kleine Funde, alle oben eingearbeitet. Der wichtigste: die Tests sicherten nicht, für welche Phasen die Schranke gilt; zwei absichtliche Fehler überlebten. Dafür gibt es jetzt die Lauf-Tests 22 und 23.
+
+Tests:
+- Regel 169 Prüfungen (vorher 161).
+- Ablauf 62 (vorher 47).
+- Workflow 51 (vorher 45), mit einem echten Lauf des Schritts «Nachprüfen» für die Exits 0, 3 und 5.
+- Mutationsprobe: 30 von 30 absichtlichen Fehlern erkannt, 0 überlebt (zwei Muster nach der letzten Änderung erneuert und einzeln nachgefahren).
+

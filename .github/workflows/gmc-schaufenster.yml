@@ -19,7 +19,7 @@ on:
   workflow_dispatch:
     inputs:
       modus:
-        description: 'plan = nur rechnen · pruefen = frisch lesen und vergleichen · abwaehlen = schreibt LIVE · aufnehmen = stellt Abgewählte zurück, die wieder passen · zuruecksetzen = VOLLE Rücknahme'
+        description: 'plan = nur rechnen · pruefen = frisch lesen und vergleichen · abwaehlen = schreibt LIVE · aufnehmen = stellt Abgewählte zurück, die wieder passen · zuruecksetzen = Rücknahme bis höchstens 140 000 Varianten auf Google (bricht sonst ab; vorher GMC-SCHAUFENSTER-TAEGLICH-FREI.txt löschen, sonst wählt der Zeitplan wieder ab)'
         type: choice
         options: [plan, pruefen, abwaehlen, aufnehmen, zuruecksetzen]
         default: plan
@@ -108,9 +108,8 @@ jobs:
           PHASE: ${{ steps.modus.outputs.modus }}
           MAX: ${{ steps.modus.outputs.max }}
           LIVE: ${{ steps.modus.outputs.live }}
-          # 08.11.2026: 3 838 Varianten «Over capacity for Shopping ads (CSS)» im Merchant Center bei 89 575 Varianten auf Google (Vorgabe 90 000).
-          # 78 000 lässt gut 11 000 Varianten der niedrigsten Stufen vom Kanal gehen. Zurück auf 90000 = Zeile löschen; Rücknahme der Abwahl: PHASE=zuruecksetzen.
-          BUDGET: '78000'
+          # Kein BUDGET hier: die Vorgabe steht seit 16.11.2026 nur in automation/lib/gmc_schaufenster.mjs (BUDGET_VARIANTEN = 78 000, Begründung dort),
+          # damit Lauf, Nachprüfung und lokale Läufe dasselbe Budget rechnen. Bis dahin stand BUDGET: '78000' nur in diesem Schritt.
           PLAN_AUS: /tmp/gmc_schaufenster_plan.json
         run: |
           set +e
@@ -140,6 +139,10 @@ jobs:
           set -e
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
           echo "Exit der Nachprüfung: $rc"
+          # Exit 5 = auf Google liegt noch etwas ausserhalb des Schaufensters (zum Beispiel neue Produkte seit der Planung): der nächste Lauf wählt es ab.
+          # Seit 16.11.2026 rechnet die Nachprüfung mit demselben Budget wie der Lauf, eine kleine Änderung dazwischen genügt dafür. Nur Hinweis, kein roter Job.
+          # Exit 3 (abgewählt, aber noch auf Google) und alle anderen bleiben rot.
+          if [ "$rc" = "5" ]; then echo "::warning title=Nachprüfung::Auf Google liegen noch Produkte ausserhalb des Schaufensters (Exit 5); der nächste Lauf wählt sie ab."; exit 0; fi
           exit "$rc"
 
       - name: Zusammenfassung
