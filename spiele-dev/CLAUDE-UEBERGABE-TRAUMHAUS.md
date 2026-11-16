@@ -1,6 +1,6 @@
 # Traumhaus – dauerhafte Übergabe an Claude Code
 
-Stand: 16. November 2026, Europe/Zurich. Diese Datei ist der Einstieg für die nächste Sitzung und wird nach abgeschlossenen Arbeitspaketen aktualisiert. Ein Eintrag hier ist keine Bestätigung, dass Claude Code ihn bereits gelesen hat.
+Stand: 16. November 2026, UTC. Diese Datei ist der Einstieg für die nächste Sitzung und wird nach abgeschlossenen Arbeitspaketen aktualisiert. Ein Eintrag hier ist keine Bestätigung, dass Claude Code ihn bereits gelesen hat.
 
 ## Aktueller Auftrag und Stand
 
@@ -9,8 +9,8 @@ Der Besitzer möchte Traumhaus als Hauptspiel weiter ausbauen: grosse zusammenh�
 | Arbeitspaket | Nachgewiesener Stand |
 | --- | --- |
 | Nordstadt und Missionen | [PR #3209](https://github.com/allengchour-glitch/aban-news-landing/pull/3209), Main-Commit `c3088227d`; veröffentlicht und öffentlich geprüft. |
-| Stadtbild | [PR #3211](https://github.com/allengchour-glitch/aban-news-landing/pull/3211), Branch `codex/traumhaus-stadtbild-20261116`, Head `dbb7ba3680829ae50f411927a8f38be37d0778fb`. Alle vier PR-Prüfungen bestanden; gemergt als `1667fc056033e756cf55a52574c35da0c10c8f72`. Produktionslauf `43919014522` läuft; frischer Live-Nachweis steht noch aus. |
-| Aktuelle Entwicklung | Branch `codex/traumhaus-kamera-20261116` von `1667fc056`: Kamerakorrektur in Arbeit. Nachgewiesen: `camB += camKick` kippt den Benutzerwinkel dauerhaft, und der Kollisionsabstand springt an Hochhäusern. Renderbudget und Himmelsdarstellung werden parallel zunächst lesend geprüft. |
+| Stadtbild | [PR #3211](https://github.com/allengchour-glitch/aban-news-landing/pull/3211), Branch `codex/traumhaus-stadtbild-20261116`, Head `dbb7ba3680829ae50f411927a8f38be37d0778fb`. Alle vier PR-Prüfungen bestanden; gemergt als `1667fc056033e756cf55a52574c35da0c10c8f72`. Produktionslauf `43919014522` erfolgreich; Spielseite und beide JS-Dateien frisch mit HTTP 200 und neuen Stadtbild-Markern geprüft. ZIP und Vergleichsbilder im bestehenden Drive-Projektordner rückgelesen. |
+| Aktuelle Entwicklung | Branch `codex/traumhaus-kamera-20261116` von `1667fc056`: Kamerakorrektur lokal implementiert und geprüft: kein dauerhafter Belohnungs-Pitch, sanfter Hochhauswinkel. Himmel/Wolken begleiten nun die Kamera; Stern-Gegenprobe läuft. Statisches Instanz-Culling wird nach pixelgleicher A/B-Probe umgesetzt. Noch nicht veröffentlicht. |
 
 Vor Weiterarbeit diesen Stand frisch gegen `git status`, `origin/main`, offene PRs und deren Dateien prüfen. Andere Sitzungen arbeiten parallel im Repository. Keine fremden Änderungen überschreiben oder einen vorhandenen Zweig blind auf `origin/main` zurücksetzen.
 
@@ -70,3 +70,7 @@ Bei Kamera- oder Geometrieänderungen jeweils freie Gegenprobe, Gebäudegrenze, 
 5. Spielseite und betroffene JS-/CSS-Dateien frisch öffentlich abrufen, neue Funktionen im ausgelieferten Inhalt prüfen und den Live-Commit hier festhalten. Danach Projektbericht/Testnachweise in der vorgesehenen Google-Drive-Ablage aktualisieren. Keine erledigte Sicherung behaupten, bevor sie bestätigt ist.
 
 Repository-Regeln: `AGENTS.md` lesen, keine Änderungen an fremden Projekten. Änderungen an Tests oder Workflows erfordern laut `AGENTS.md` zusätzlich `bash automation/ci_simulation.sh`. Laufende Testprozesse nur gezielt über ihre eigenen Prozesskennungen beenden; kein `pkill -f` oder `killall`.
+
+## Higgsfield – aktueller Auftrag
+
+Der Besitzer hat Higgsfield ausdrücklich einbezogen. Erste Generierung: Modell `tripo_3d`, Parkuhr als kleiner Orientierungspunkt, Zielbudget 1’500 Flächen, Textur standard, PBR aus. Kostenvoranschlag 5 Credits; Auftrag `6f107f39-ce69-42da-8c11-40a497a69890` wurde angenommen und läuft. Nicht erneut absenden; Status dieses Jobs abfragen. Nach Abschluss GLB-Grösse, tatsächliche Dreiecke und Materialien prüfen, visuell ansehen und nur mit freier Platzierung integrieren.
