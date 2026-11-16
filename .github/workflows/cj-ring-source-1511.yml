@@ -1,0 +1,34 @@
+name: Ring-Grössen beim Lieferanten lesen 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/cj_ring_source.mjs
+      - .github/workflows/cj-ring-source-1511.yml
+permissions:
+  contents: read
+jobs:
+  quelle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant-fix-1511/cj_ring_source.mjs
+            automation/lib/cj_readonly.mjs
+            automation/lib/cj_identity.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Ein Ring, nur lesen
+        env:
+          CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
+        run: node automation/merchant-fix-1511/cj_ring_source.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cj-ring-source
+          path: cj-ring-source/
+          retention-days: 30

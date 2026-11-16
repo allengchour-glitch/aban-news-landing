@@ -1,0 +1,48 @@
+name: Ring-Grössentabelle ergänzen 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/ring_size_guide.mjs
+      - dropship/merchant-fix-1511/ringgroesse/guide.html
+      - dropship/merchant-fix-1511/SIZE-MODUS
+      - .github/workflows/ring-size-guide-1511.yml
+permissions:
+  contents: read
+concurrency:
+  group: ring-size-guide-1511
+  cancel-in-progress: false
+jobs:
+  groesse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant-fix-1511
+            automation/lib/shopify_secret.mjs
+            dropship/merchant-fix-1511/ringgroesse/guide.html
+            dropship/merchant-fix-1511/SIZE-MODUS
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Messhilfe prüfen oder ergänzen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          mode=$(tr -d '[:space:]' < dropship/merchant-fix-1511/SIZE-MODUS)
+          case "$mode" in
+            pruefen) LIVE=0 node automation/merchant-fix-1511/ring_size_guide.mjs ;;
+            schreiben) LIVE=1 node automation/merchant-fix-1511/ring_size_guide.mjs ;;
+            *) exit 1 ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-ring-size-guide
+          path: merchant-ring-size-guide/
+          retention-days: 30

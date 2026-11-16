@@ -1,0 +1,38 @@
+name: Merchant-Bildquellen gezielt lesen 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/audit.py
+      - dropship/merchant-fix-1511/audit/targets.json
+      - .github/workflows/merchant-image-audit-1511.yml
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant-fix-1511/audit.py
+            dropship/merchant-fix-1511/audit/targets.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet requests google-auth
+      - name: Merchant und Shopify nur lesen
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: python automation/merchant-fix-1511/audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-image-audit
+          path: merchant-image-audit/
+          retention-days: 14

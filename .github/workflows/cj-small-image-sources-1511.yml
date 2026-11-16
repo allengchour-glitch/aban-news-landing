@@ -1,0 +1,32 @@
+name: Kleine Produktbilder beim Lieferanten lesen 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/cj_small_image_sources.py
+      - .github/workflows/cj-small-image-sources-1511.yml
+permissions:
+  contents: read
+jobs:
+  lesen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: automation/merchant-fix-1511/cj_small_image_sources.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet requests
+      - name: Zwei Artikel nur lesen
+        env:
+          CJ_API_KEY: ${{ secrets.CJ_API_KEY }}
+        run: python automation/merchant-fix-1511/cj_small_image_sources.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cj-small-image-sources
+          path: cj-small-image-sources/
+          retention-days: 30

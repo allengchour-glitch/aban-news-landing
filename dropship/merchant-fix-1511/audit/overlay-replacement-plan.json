@@ -1,0 +1,35 @@
+[
+  {
+    "handle": "geburtsstein-ring-mit-zirkonia-601500",
+    "erwartet_erstes": "gid://shopify/MediaImage/70446533804417",
+    "ersatz": [
+      {
+        "alt": "gid://shopify/MediaImage/70446533935489",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Gold-1.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Gold, 1 Stein"
+      },
+      {
+        "alt": "gid://shopify/MediaImage/70446533771649",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Gold-2.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Gold, 2 Steine"
+      },
+      {
+        "alt": "gid://shopify/MediaImage/70446533706113",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Silber-1.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Silber, 1 Stein"
+      },
+      {
+        "alt": "gid://shopify/MediaImage/70446533968257",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Silber-2.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Silber, 2 Steine"
+      },
+      {
+        "alt": "gid://shopify/MediaImage/70446534001025",
+        "neu_url": "https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/merchant-fix-1511/dropship/merchant-fix-1511/images/ring-Silber-3.png",
+        "alt_text": "Geburtsstein-Ring mit Zirkonia – Silber, 3 Steine"
+      }
+    ],
+    "loesen": [],
+    "nach_vorn": null
+  }
+]

@@ -1,0 +1,34 @@
+name: Merchant-Lösungswege lesen 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/issue_actions.py
+      - .github/workflows/merchant-issue-actions-1511.yml
+permissions:
+  contents: read
+jobs:
+  lesen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant-fix-1511/issue_actions.py
+            dropship/merchant-fix-1511/audit/targets.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet requests google-auth
+      - name: Nur Lösungswege lesen
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: python automation/merchant-fix-1511/issue_actions.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-issue-actions
+          path: merchant-issue-actions/
+          retention-days: 14

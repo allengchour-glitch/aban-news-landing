@@ -1,0 +1,46 @@
+name: Merchant-DE-Altangebote bereinigen 15.11.
+on:
+  push:
+    branches: [codex/merchant-fix-1511]
+    paths:
+      - automation/merchant-fix-1511/remove_de.py
+      - .github/workflows/merchant-de-cleanup-1511.yml
+      - dropship/merchant-fix-1511/DE-MODUS
+permissions:
+  contents: read
+concurrency:
+  group: merchant-de-cleanup-1511
+  cancel-in-progress: false
+jobs:
+  de:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            automation/merchant-fix-1511/remove_de.py
+            dropship/merchant-fix-1511/DE-MODUS
+            dropship/merchant-fix-1511/audit/de-offers.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet requests google-auth
+      - name: Nur alte DE-Ziele bearbeiten
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          mode=$(tr -d '[:space:]' < dropship/merchant-fix-1511/DE-MODUS)
+          case "$mode" in
+            pruefen) LIVE=0 LIMIT=1 python automation/merchant-fix-1511/remove_de.py ;;
+            pilot) LIVE=1 LIMIT=1 python automation/merchant-fix-1511/remove_de.py ;;
+            schreiben) LIVE=1 LIMIT=1000 python automation/merchant-fix-1511/remove_de.py ;;
+            *) exit 1 ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: merchant-de-cleanup
+          path: merchant-de-cleanup/
+          retention-days: 30
