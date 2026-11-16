@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Monitorzentrale bedienbarer ·16.11.2026
+
+Design22 ergänzt die direkte Auswahl der acht vorhandenen Monitore, hält Tastaturfokus beim Wechsel und zeigt Bot-Aktionen nur im Bot-Monitor. Vorher lokal nachgestellt: im Handy-Vollbild Bildschirmhöhe0, letzte Karte ausserhalb844px, Scrollen gesperrt. Jetzt Bildschirm mit Mindesthöhe und gesamter Monitor scrollbar. Messstand steht über den Karten, Büro-Uhr getrennt darunter. Keine neue Quelle, Abfragefrequenz oder Kontoaktion.44 Bau-,31 Mutations- und21 Botprüfungen grün; erweiterter Browserlauf390/1440 prüft alle Monitorziele, Fokus, Rückkehr/Escape, natives/CSS-Vollbild und einmaligen abgefangenen Bot-Abruf. Finanzielle Wirkung und echte Handy-Leistung ungemessen. Vollständiges privates Drei-Seiten-Paket inklusive kb-stil.css durch Claude übertragen, Daten/Eingaben erhalten; private Bereitstellung erst nach Quittung bestätigt. Details in der kanonischen Übergabe, echte CI und Web-Bereitstellung im zugehörigen PR.
+
+
 ## Stumme Videos sind gewollt, Codex hielt 14 Beiträge an ·16.11.2026
 
 - **GEMESSEN:** Codex-Lauf R259 setzte 14 eingeplante Videos (Hobel, Sternenlicht, Medizin-Box, Knoblauchhacker, Wasserwellen) auf Entwurf, Grund «Canonical music mandatory».

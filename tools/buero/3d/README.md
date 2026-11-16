@@ -140,3 +140,15 @@ Die private Higgsfield-Gestaltung wird über `higgsfield/05_galerie_feinschliff.
 prozedurale Eiche, 61 instanzierte Akustiklamellen, vier Tastatur-/Maus-/Leuchtenplätze und Handläufe.
 Die Kamera und vorhandene Einrichtung bleiben erhalten. Maserung ist im Render sichtbar und wird vom GLB
 nicht zuverlässig übernommen; die Webansicht verwendet ihre eigenen Materialien und ist keine GLB-Einbettung.
+
+
+### Monitorzentrale ·16.11.2026
+
+Design `campus-einheitlich-22` ergänzt eine direkte Auswahl der acht vorhandenen Monitore.
+Pfeile und Auswahl bleiben synchron; Tastaturfokus bleibt beim bedienten Element.
+Im Vollbild hat der Bildschirm eine feste Mindesthöhe und der gesamte Monitorbereich scrollt.
+Messstand steht über den Karten, die Büro-Uhr getrennt darunter. Bot-Aktionen stehen nur im Bot-Monitor.
+Quellen, Abruffrequenzen und Datenmodelle bleiben erhalten. Die erweiterte `panorama.py` prüft
+Direktauswahl, Fokus, Kamera-Rückkehr, Escape, natives/CSS-Vollbild und den einmaligen Bot-Abruf.
+Alle externen Abrufe werden dabei abgefangen. Reale Handy-Leistung ist nicht gemessen.
+Privates Dashboard weiterhin als vollständigen Drei-Seiten-Bau mit `kb-stil.css` übertragen.
