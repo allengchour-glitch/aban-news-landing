@@ -119,7 +119,7 @@
   </div>
 </div>
 
-<script src="/js/minispiele-mix/result.js?v=0ce10aeb8b09"></script>
+<script src="/js/minispiele-mix/result.js?v=ed5628fb888b"></script>
 <script>
 (function(){
   var pads=[document.getElementById('g'),document.getElementById('r'),document.getElementById('y'),document.getElementById('b')];
@@ -142,6 +142,7 @@
   var actx=null;
 
   function beep(i,dur){
+    if(window.MiniMix && window.MiniMix.active && !window.MiniMix.sound)return;
     try{
       if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)();
       var o=actx.createOscillator(),gn=actx.createGain();
