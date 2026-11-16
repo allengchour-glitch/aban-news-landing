@@ -1,0 +1,225 @@
+{
+  "run": "R273",
+  "dateEuropeZurich": "2026-11-17",
+  "atUtc": "2026-11-16T23:34:20Z",
+  "ownerApproval": {
+    "userText": "mach live",
+    "creativeAcceptance": true,
+    "publicationAuthorized": true,
+    "scope": "Exact R272 website master and its bounded homepage integration; no additional paid renders",
+    "masterId": "luxe-home-atelier-multishot-20261116",
+    "masterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6"
+  },
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "primaryDomain": {
+      "url": "https://luxestyle.ch"
+    },
+    "currencyCode": "CHF"
+  },
+  "nativeMedia": [
+    {
+      "id": "gid://shopify/Video/78096309289351",
+      "filename": "luxe-atelier-scroll-master-r272.mp4",
+      "fileStatus": "READY",
+      "status": "READY",
+      "duration": 15000,
+      "originalSource": {
+        "url": "https://cdn.shopify.com/videos/c/o/v/aa2fde9011d8483db61d3b1d34a5e7b2.mp4",
+        "format": "mp4",
+        "width": 1080,
+        "height": 1440
+      },
+      "sources": [
+        {
+          "url": "https://cdn.shopify.com/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.SD-480p-1.2Mbps-101621626.mp4",
+          "format": "mp4",
+          "mimeType": "video/mp4",
+          "width": 360,
+          "height": 480
+        },
+        {
+          "url": "https://cdn.shopify.com/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.HD-1080p-4.8Mbps-101621626.mp4",
+          "format": "mp4",
+          "mimeType": "video/mp4",
+          "width": 810,
+          "height": 1080
+        },
+        {
+          "url": "https://cdn.shopify.com/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.HD-720p-3.0Mbps-101621626.mp4",
+          "format": "mp4",
+          "mimeType": "video/mp4",
+          "width": 540,
+          "height": 720
+        },
+        {
+          "url": "https://cdn.shopify.com/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.m3u8",
+          "format": "m3u8",
+          "mimeType": "application/x-mpegURL",
+          "width": 810,
+          "height": 1080
+        }
+      ],
+      "fileErrors": []
+    },
+    {
+      "id": "gid://shopify/MediaImage/78096308339079",
+      "fileStatus": "READY",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-atelier-scroll-poster-r272.jpg?v=1794871392",
+        "width": 1080,
+        "height": 1440
+      },
+      "fileErrors": []
+    }
+  ],
+  "productCheck": [
+    {
+      "id": "gid://shopify/ProductVariant/55876172906881",
+      "title": "Aprikose / S",
+      "price": "39.90",
+      "availableForSale": true,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "inventoryItem": {
+        "tracked": false
+      },
+      "product": {
+        "id": "gid://shopify/Product/15448587075969",
+        "status": "ACTIVE",
+        "tags": [
+          "auto-entwurf-0926",
+          "bild-ok",
+          "cj-real",
+          "damen",
+          "dropship",
+          "fokus-damenmode",
+          "gfeed-anstupsen-260929",
+          "hype-jetzt",
+          "kategorie-kleid",
+          "kleid",
+          "kleider",
+          "kunden-liebling",
+          "mode",
+          "sort-damen-kleider",
+          "sort-damen-kleider-blumen",
+          "sort-damen-kleider-midi"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/midikleid-mit-zopfmuster-und-blumenprint-600200"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/68122741014919",
+      "title": "Kirschblüte 700ml",
+      "price": "24.90",
+      "availableForSale": true,
+      "inventoryPolicy": "CONTINUE",
+      "inventoryQuantity": 0,
+      "inventoryItem": {
+        "tracked": false
+      },
+      "product": {
+        "id": "gid://shopify/Product/15524879008129",
+        "status": "ACTIVE",
+        "tags": [
+          "aufbewahrung",
+          "bild-ok",
+          "bildmass-ok-0906",
+          "cj-real",
+          "dropship",
+          "haushalt",
+          "neuheit",
+          "organizer",
+          "sort-vorratsdosen",
+          "varianten-nachgezogen-1025",
+          "wohnen"
+        ],
+        "onlineStoreUrl": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976"
+      }
+    }
+  ],
+  "copy": {
+    "attempts": 1,
+    "sourceMainId": "214169584007",
+    "requestedName": "LuxeStyle – Film-Scroll R273 17.11.2026",
+    "response": {
+      "newTheme": null,
+      "userErrors": []
+    },
+    "targetedRead": [],
+    "outcome": "UNKNOWN_NO_CONFIRMED_NEW_CURRENT_DRAFT",
+    "confirmedCreatedThemes": 0,
+    "blindRetries": 0
+  },
+  "deployment": {
+    "state": "BOUND_LOCAL_ONLY",
+    "files": 9,
+    "manifest": "dropship/codex-handoff-20261018/runs/20261117-r273/DEPLOYMENT-MANIFEST.json",
+    "nativeBaselineChecksums": {
+      "locales/de.json": "6cdb896f31cad66a9cc2f3f0936f39fd",
+      "locales/de.schema.json": "1c38f38260f84023fce55c08b25f12a4",
+      "locales/en.default.json": "b12df48be4468b89edbe8743be2020f1",
+      "locales/en.default.schema.json": "57512d1064a003a0a5bc8d632650b06d",
+      "locales/fr.json": "6a998951e85c24eab2c8a577d477bda8",
+      "locales/fr.schema.json": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+      "sections/luxe-edit-home.liquid": "8ef120629f6ad0c04eb13fd9acbf6ae8",
+      "templates/index.json": "aa3d177234272df6acedab60272a5396"
+    },
+    "allPriorLocaleKeysPreserved": true,
+    "allOtherIndexDataPreserved": true,
+    "videoPicker": "shopify://files/videos/luxe-atelier-scroll-master-r272.mp4",
+    "posterPicker": "shopify://shop_images/luxe-atelier-scroll-poster-r272.jpg",
+    "localFlag": true,
+    "nativeThemeFlagChanged": false,
+    "officialThemeCheck": "UNAVAILABLE_missing_@shopify/theme-check-common"
+  },
+  "mediaQa": {
+    "status": "PASS_PUBLIC_NATIVE_MEDIA_WITH_LIMITS",
+    "originalHashMatches": true,
+    "nativeOutput": "810x1080/15s/450frames/30fps/no_audio",
+    "nativeOutputSha256": "66aff24df607366f1d97ae8117cb283d97301449954dc7f9d131d19cfd56082e",
+    "range206": true,
+    "chromiumSeeksPassed": 8,
+    "transcodedKeyframeGapSeconds": 3,
+    "originalKeyframeGapSeconds": 0.5,
+    "nativeLiquidPreview": false,
+    "iPhoneSafari": false,
+    "proof": "dropship/codex-handoff-20261018/runs/20261117-r273/media-quality/NATIVE-MEDIA-REVIEW.json"
+  },
+  "access": {
+    "verifiedAuthenticatedBrowser": false,
+    "guardedExistingHelperRequiresExistingDraft": true,
+    "helperRuntimeAuthVariablesPresent": false,
+    "themeCreateRequiresFullVerifiedZipNotAvailable": true,
+    "alternativeFullThemeRebuildNotAttempted": true
+  },
+  "writes": {
+    "fileCreateConfirmed": 2,
+    "fileCreateRejected": 2,
+    "stagedSlotsCreated": 2,
+    "posterUploadHttp": 201,
+    "videoUploadHttp": 204,
+    "themeDuplicateOutcomeUnconfirmed": 1,
+    "themeFilesSaved": 0,
+    "themePublishes": 0,
+    "social": 0,
+    "newPaidRenders": 0,
+    "newDailyMetricsReports": 0,
+    "newAutomations": 0,
+    "customersContacted": 0
+  },
+  "publicReadback": {
+    "atUtc": "2026-11-16T23:32:46.915237+00:00",
+    "httpStatus": 200,
+    "oldHeroMarkerFound": true,
+    "newScrollElementFound": false,
+    "newVideoFilenameFound": false,
+    "newPosterFilenameFound": false,
+    "scope": "Public anonymous homepage GET only; no forms or customer actions"
+  },
+  "live": false,
+  "nextStep": "Owner makes current MAIN copy and supplies new theme ID; then fresh baseline, native installation/preview/readback and already authorized publication.",
+  "claudeReceipt": "unknown"
+}

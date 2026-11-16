@@ -1,0 +1,84 @@
+{
+  "scope": "NARROW_READONLY_EXISTING_THEME_HELPER_ROUTE_CHECK",
+  "repository": "allengchour-glitch/aban-news-landing",
+  "mainCommit": "54b8dada6ba65a54c8986b373d4d3030447b312f",
+  "searches": [
+    {
+      "query": "themeDuplicate",
+      "topn": 5,
+      "result": "One planning document, no implementation returned."
+    },
+    {
+      "query": "themeCreate",
+      "topn": 5,
+      "result": "No results."
+    },
+    {
+      "query": "themeFilesUpsert",
+      "topn": 5,
+      "result": "Existing specific theme writers returned."
+    },
+    {
+      "query": "theme deploy",
+      "topn": 5,
+      "result": "Planning/README records and unrelated deployments."
+    },
+    {
+      "query": "shopify themes create",
+      "topn": 5,
+      "result": "Theme writer/README documents, no copy implementation."
+    },
+    {
+      "query": "SHOPIFY_ADMIN_ACCESS_TOKEN theme",
+      "topn": 5,
+      "result": "No results."
+    }
+  ],
+  "workflowFilenameListing": {
+    "count": 210,
+    "dedicatedThemeCopyOrDeployFilenameFound": false,
+    "codeRead": [
+      ".github/workflows/set-header-logo.yml"
+    ],
+    "limitation": "Only filenames plus one directly relevant workflow body inspected; not an exhaustive audit of210workflowbodies."
+  },
+  "existingGuardedWriter": {
+    "path": "dropship/startseite-2710/theme_schreiben.mjs",
+    "blobSha": "f834791a6eca99ea07e4727d687e4b3a5dcdad92",
+    "type": "Writes files to an existing non-MAIN theme.",
+    "createsTheme": false,
+    "duplicatesTheme": false,
+    "publishesTheme": false,
+    "guard": "Abort for MAIN or missing theme.",
+    "authentication": "Client credentials from SHOPIFY_SHOP / SHOPIFY_CLIENT_ID / SHOPIFY_CLIENT_SECRET; external /home/user checkout imports.",
+    "runtimeAuthVerified": false,
+    "portableCurrentSandboxExecution": false
+  },
+  "otherWriters": {
+    "paths": [
+      "dropship/optik-1011/apply.mjs",
+      "automation/set_header_logo.mjs"
+    ],
+    "whyNotApplicable": "Specific MAIN file changes; different scope and no theme-copy implementation. Not used as an alternative to explicit live-theme restrictions."
+  },
+  "runtimeAuthPresence": {
+    "SHOPIFY_SHOP": false,
+    "SHOPIFY_CLIENT_ID": false,
+    "SHOPIFY_CLIENT_SECRET": false,
+    "SHOPIFY_ADMIN_ACCESS_TOKEN": false,
+    "SHOPIFY_ACCESS_TOKEN": false,
+    "SHOPIFY_TOKEN": false,
+    "valuesRead": false
+  },
+  "verdict": "NO_PROVEN_ALLOWED_AUTHENTICATED_CURRENT_MAIN_COPY_ROUTE_FOUND",
+  "limitation": "A helper's presence proves code exists, not current credentials, permission, successful copy or safe dispatch. Search negatives do not prove no uninspected helper exists.",
+  "writes": {
+    "shopify": 0,
+    "github": 0,
+    "workflowDispatch": 0,
+    "deploy": 0,
+    "secretsRead": 0,
+    "paidJobs": 0
+  },
+  "next": "Keep the fully bound deployment bundle reviewable. Continue only with a confirmed legitimate current-MAIN draft and native preview/publication access."
+}

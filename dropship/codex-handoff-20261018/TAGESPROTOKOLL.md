@@ -3328,3 +3328,23 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R272-REPORT-20261116.md) · [Belege](R272-PROOF-20261116.json).
 
 [LUXESTYLE_R272_20261116]
+
+
+## 17.11.2026
+
+
+### R273 – Live-Auftrag und native Medienvorbereitung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Inhaberfreigabe | «mach live» auf den gezeigten exakten 15-Sekunden-Master bezogen. | Kreative Abnahme und Veröffentlichung erlaubt; keine neue Kosten-/Filmfrage nötig. |
+| Shopify-Medien | Freigegebenen Film und sein Standbild gestuft hochgeladen, angelegt und gezielt zurückgelesen. | Video 78096309289351 und Bild 78096308339079 READY; zwei vorherige Video-Versuche klar abgewiesen, keine doppelten Datensätze bestätigt. |
+| Medienprüfung | Öffentliches Shopify-Original, Transkodierung und acht echte Chromium-CDN-Seeks geprüft. | Original hashgleich; 810×1080-Transkodierung/15 s/stumm, Decode und Range 206 PASS. 3-s-Keyframes, keine allgemeine iPhone-/Scroll-Performancebehauptung. |
+| Einbaupaket | Neun vollständige Dateien mit echten Video-/Poster-Pickern und zusammengeführten Laufzeit-Sprachen vorbereitet. | Alle bisherigen Übersetzungsschlüssel und übrigen Index-Daten erhalten; acht Original-MD5 stimmen. Nur lokales Aktivierungsflag true, keine Theme-Datei geschrieben. |
+| Zugang | Neue MAIN-Kopie angefordert und gezielt nachgelesen; Browser und vorhandene Repo-Helfer geprüft. | Kopierausgang unbekannt, keine bestätigte neue ID. Kein authentifizierter UI-/Helfer-Kopierweg; Inhaber um aktuelle Kopie gebeten. Keine blinden Wiederholungen oder alten Theme-Publishes. |
+| Live-Gegenprobe | Öffentliche Startseite gezielt gelesen. | HTTP 200, alter Hero vorhanden, neuer Scroll-Owner/Film fehlen. Noch nicht live; kein aktueller Publish-Aufruf. |
+| Qualität und Memory | Native Header-Geometrie geprüft und abgegrenzte Belege zur Historie ergänzt. | Kein belegter Suchleisten-Inset-Fehler. Offizieller Theme Check wegen fehlendem Modul nicht nutzbar. Historie/24 Aufgaben erhalten, Claude-Empfang unbekannt. |
+
+[Status](R273-REPORT-20261117.md) · [Belege](R273-PROOF-20261117.json).
+
+[LUXESTYLE_R273_20261117]

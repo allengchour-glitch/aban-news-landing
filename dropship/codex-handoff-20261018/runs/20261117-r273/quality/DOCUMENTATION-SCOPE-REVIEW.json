@@ -1,0 +1,90 @@
+{
+  "verdict": "PASS_SCOPE_AND_BOUND_LOCAL_MANIFEST",
+  "atUtc": "2026-11-16T23:39:42.082255+00:00",
+  "report": "R273-REPORT-20261117.md",
+  "proof": "R273-PROOF-20261117.json",
+  "observations": [
+    "Owner live and creative approval preserved; no claim that approval remains missing.",
+    "Report explicitly says not live; no theme-save/publication success invented.",
+    "Null themeDuplicate response remains unknown, not counted as a successful copy.",
+    "No current publisher or automatic approval-review rejection invented.",
+    "Native Shopify assets READY and actual selected transcode distinguished from original.",
+    "Original master hash preserved; transcode hash different and scoped.",
+    "Native Liquid, iPhone/Safari and continuous scroll performance remain explicitly open.",
+    "Official Theme Check dependency failure not presented as green.",
+    "No workflow or MAIN-writer bypass claimed."
+  ],
+  "fileChecks": [
+    {
+      "file": "assets/luxe-scroll-hero.js",
+      "bytesMatch": true,
+      "sha256Match": true
+    },
+    {
+      "file": "locales/de.json",
+      "bytesMatch": true,
+      "sha256Match": true
+    },
+    {
+      "file": "locales/de.schema.json",
+      "bytesMatch": true,
+      "sha256Match": true
+    },
+    {
+      "file": "locales/en.default.json",
+      "bytesMatch": true,
+      "sha256Match": true
+    },
+    {
+      "file": "locales/en.default.schema.json",
+      "bytesMatch": true,
+      "sha256Match": true
+    },
+    {
+      "file": "locales/fr.json",
+      "bytesMatch": true,
+      "sha256Match": true
+    },
+    {
+      "file": "locales/fr.schema.json",
+      "bytesMatch": true,
+      "sha256Match": true
+    },
+    {
+      "file": "sections/luxe-edit-home.liquid",
+      "bytesMatch": true,
+      "sha256Match": true
+    },
+    {
+      "file": "templates/index.json",
+      "bytesMatch": true,
+      "sha256Match": true
+    }
+  ],
+  "localeChecks": [
+    {
+      "file": "de.json",
+      "previousObjectIdentical": true,
+      "newNamespacePresent": true
+    },
+    {
+      "file": "en.default.json",
+      "previousObjectIdentical": true,
+      "newNamespacePresent": true
+    },
+    {
+      "file": "fr.json",
+      "previousObjectIdentical": true,
+      "newNamespacePresent": true
+    }
+  ],
+  "binding": {
+    "localEnabled": true,
+    "nativeEnabledChanged": false,
+    "video": "shopify://files/videos/luxe-atelier-scroll-master-r272.mp4",
+    "poster": "shopify://shop_images/luxe-atelier-scroll-poster-r272.jpg"
+  },
+  "historyAudit": "Root-proposed invariants24tasks/21unchanged/3archived and235→236; full ARBEITSSTAND comparison was not repeated by this agent.",
+  "nonBlockingWording": "Title says current copy is missing; body accurately limits that to missing confirmed ID and unknown copy outcome. Could optionally use confirmed in title.",
+  "externalWrites": 0
+}

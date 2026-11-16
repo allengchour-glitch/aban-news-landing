@@ -1,0 +1,105 @@
+{
+  "scope": "ISOLATED_CHROMIUM_ACTUAL_PUBLIC_CDN_MEDIA_NOT_NATIVE_LIQUID",
+  "atUtc": "2026-11-16T23:28:32.641394+00:00",
+  "externalWrites": 0,
+  "adminAccess": false,
+  "iphoneSafari": false,
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://cdn.shopify.com/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.HD-1080p-4.8Mbps-101621626.mp4",
+      "range": "bytes=0-"
+    }
+  ],
+  "responses": [
+    {
+      "status": 206,
+      "contentRange": "bytes 0-8148492/8148493",
+      "contentType": "video/mp4"
+    }
+  ],
+  "errors": [],
+  "seeks": [
+    {
+      "currentTime": 0,
+      "seeking": false,
+      "readyState": 4,
+      "paused": true,
+      "error": null,
+      "targetSeconds": 0,
+      "elapsedMs": 17.49
+    },
+    {
+      "currentTime": 4,
+      "seeking": false,
+      "readyState": 4,
+      "paused": true,
+      "error": null,
+      "targetSeconds": 4,
+      "elapsedMs": 448.6
+    },
+    {
+      "currentTime": 8,
+      "seeking": false,
+      "readyState": 4,
+      "paused": true,
+      "error": null,
+      "targetSeconds": 8,
+      "elapsedMs": 218.6
+    },
+    {
+      "currentTime": 12,
+      "seeking": false,
+      "readyState": 4,
+      "paused": true,
+      "error": null,
+      "targetSeconds": 12,
+      "elapsedMs": 100.8
+    },
+    {
+      "currentTime": 14.9,
+      "seeking": false,
+      "readyState": 4,
+      "paused": true,
+      "error": null,
+      "targetSeconds": 14.9,
+      "elapsedMs": 146.54
+    },
+    {
+      "currentTime": 8,
+      "seeking": false,
+      "readyState": 4,
+      "paused": true,
+      "error": null,
+      "targetSeconds": 8,
+      "elapsedMs": 250.13
+    },
+    {
+      "currentTime": 4,
+      "seeking": false,
+      "readyState": 4,
+      "paused": true,
+      "error": null,
+      "targetSeconds": 4,
+      "elapsedMs": 158.86
+    },
+    {
+      "currentTime": 0,
+      "seeking": false,
+      "readyState": 4,
+      "paused": true,
+      "error": null,
+      "targetSeconds": 0,
+      "elapsedMs": 50.83
+    }
+  ],
+  "initial": {
+    "duration": 15,
+    "width": 810,
+    "height": 1080,
+    "readyState": 4,
+    "paused": true,
+    "error": null
+  },
+  "status": "PASS_ACTUAL_CDN_DECODER_AND_BOUNDED_SEEKS"
+}

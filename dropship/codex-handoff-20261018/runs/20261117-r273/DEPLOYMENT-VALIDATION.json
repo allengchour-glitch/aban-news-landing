@@ -1,0 +1,16 @@
+{
+  "state": "BOUND_LOCAL_DEPLOYMENT_ONLY",
+  "files": 9,
+  "videoPicker": "shopify://files/videos/luxe-atelier-scroll-master-r272.mp4",
+  "posterPicker": "shopify://shop_images/luxe-atelier-scroll-poster-r272.jpg",
+  "enabledInLocalCandidate": true,
+  "runtimeLocalesPreserveAllPriorKeys": 3,
+  "allOtherIndexDataEqual": true,
+  "sectionSchemaParse": "PASS",
+  "sectionSchemaSettingIdsUnique": true,
+  "nativeBaselineMd5MatchesAll8Originals": true,
+  "noThemeWrites": true,
+  "officialThemeCheck": "UNAVAILABLE_missing_@shopify/theme-check-common",
+  "nativeLiquidPreview": "NOT_RUN_NO_CURRENT_DRAFT",
+  "published": false
+}

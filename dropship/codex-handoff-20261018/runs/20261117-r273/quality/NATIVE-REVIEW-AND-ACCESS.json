@@ -1,0 +1,120 @@
+{
+  "scope": "READONLY_NATIVE_REVIEW_AND_LOCAL_QA_PLAN",
+  "writes": {
+    "shopify": 0,
+    "github": 0,
+    "paidJobs": 0
+  },
+  "identity": {
+    "data": {
+      "shop": {
+        "id": "gid://shopify/Shop/94368563585",
+        "name": "LuxeStyle",
+        "primaryDomain": {
+          "url": "https://luxestyle.ch"
+        },
+        "currencyCode": "CHF"
+      },
+      "theme": {
+        "id": "gid://shopify/OnlineStoreTheme/214169584007",
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "role": "MAIN"
+      }
+    }
+  },
+  "sourceRead": {
+    "exitCode": 0,
+    "pending": [],
+    "md5Output": [
+      "8ef120629f6ad0c04eb13fd9acbf6ae8  sections/luxe-edit-home.liquid",
+      "4aa19e8ff7993e0e8badad2f02cade4b  assets/luxe-edit.js",
+      "22b0bd13a138d14e9666d71e6c70c9e8  assets/luxe-edit.css",
+      "aa3d177234272df6acedab60272a5396  templates/index.json",
+      "1c38f38260f84023fce55c08b25f12a4  locales/de.schema.json",
+      "57512d1064a003a0a5bc8d632650b06d  locales/en.default.schema.json",
+      "03cdadce5df0f7a9da59eec5a7e0cb4d  locales/fr.schema.json"
+    ]
+  },
+  "verifiedContracts": {
+    "videoPickerExample": {
+      "file": "templates/index.luxe-legacy.json",
+      "values": [
+        "shopify://files/videos/lx-hero-wand-desktop-2710e.mp4",
+        "shopify://files/videos/lx-hero-wand-mobil-2710e.mp4"
+      ],
+      "warning": "Bind only real native file name after successful Video READY readback; no invented URI."
+    },
+    "componentImport": "@theme/component mapped in snippets/scripts.liquid",
+    "componentObserver": "Attributes filtered to ref; child mutations update refs without automatically invoking subclass updatedCallback.",
+    "stickyHeader": "sticky always / scroll-up and active state match candidate; --header-height set on body.",
+    "searchbarGeometry": "Separate mobile searchbar scrolls off with parent; public390x844 check does not substantiate a sticky inset bug."
+  },
+  "remainingIntegrationGates": [
+    "Current legitimate UNPUBLISHED copy based on current MAIN, not a stale draft.",
+    "Real Shopify Video READY, exact source/file binding and poster asset; enable hero_scroll_enabled only after binding.",
+    "Merge lx_scroll_hero into fresh runtime locales de/en.default/fr; additions files are not standalone theme locales.",
+    "Native Liquid/source/module/CSS render before committing; actual Shopify CDN Range and seek response.",
+    "Real header/CTA/controls geometry and no old video controller target in active path.",
+    "Preserve unchanged category updates and all unrelated sections/settings; current sources match baseline.",
+    "Publish only via allowed route and independently verify current MAIN/public page; no MAIN file-write bypass."
+  ],
+  "nativePreviewPlan": {
+    "viewports": [
+      [
+        320,
+        900
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        640
+      ]
+    ],
+    "assertions": [
+      "One visible H1; original copy and both CTA targets intact.",
+      "Exactly one luxe-scroll-hero with nonempty real MP4 data-src; actual metadata duration15s and actual rendition dimensions recorded.",
+      "Initial frame0, forward/reverse scroll, hold, keyboard rangeEnd, repeat section update and reconnect without duplicate handlers.",
+      "Product frames full with object-fit contain; text on own dark area, no controls/eyebrow/product overlap; no horizontal overflow.",
+      "Reduced motion shows poster; no play/autoplay loop or scroll interception; forced-colors and JS failure leave purchase paths reachable.",
+      "Mobile source selection <=1280 may still choose1080; actual transfer/seek performance must be measured, not inferred from naming.",
+      "Native HTTP206 and Content-Range on actual selected MP4; Shopify transcoding may change stream hash while masterId stays stable.",
+      "Public post-publish test without preview params, fresh theme identity and per-file readback."
+    ],
+    "iPhoneSafari": "Not performed by this agent; report availability honestly."
+  },
+  "browserAccess": {
+    "skillsRead": [
+      "browser:control-browser",
+      "cloud-environment:cloud-desktop",
+      "cloud-environment:cloud-environment-runtime"
+    ],
+    "associatedBrowserTools": [],
+    "cloudDesktopTools": [],
+    "environment": {
+      "environment_id": "ccarenv_b64_Y2NhcmVudl84ODAxYzRhM2JkYTA4MTkxOWU5MTI0OTYzYmZlMjYyOA",
+      "observed_phase": "running",
+      "capabilities": [],
+      "portals": [],
+      "connectivity": "offline",
+      "network_policy": {
+        "mode": "unrestricted",
+        "state": "enforced"
+      },
+      "observations_current": true
+    },
+    "firecrawl": "Isolated hosted session, explicitly does not inherit user cookies. No verified Shopify-authenticated profile available in current context.",
+    "verdict": "NO_VERIFIED_AUTHENTICATED_ADMIN_UI_ROUTE",
+    "noCredentialInspection": true,
+    "noAlternativeBrowserBypass": true
+  },
+  "files": [
+    "PUBLIC-HEADER-GEOMETRY.json"
+  ]
+}

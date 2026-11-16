@@ -1,0 +1,86 @@
+{
+  "attempt": {
+    "themeDuplicate": {
+      "newTheme": null,
+      "userErrors": []
+    }
+  },
+  "targetName": "LuxeStyle – Film-Scroll R273 17.11.2026",
+  "targetedRead": {
+    "nodes": []
+  },
+  "freshBaseline": {
+    "node": {
+      "id": "gid://shopify/OnlineStoreTheme/214169584007",
+      "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+      "role": "MAIN",
+      "updatedAt": "2026-11-16T22:12:34Z",
+      "files": {
+        "nodes": [
+          {
+            "filename": "locales/de.json",
+            "checksumMd5": "6cdb896f31cad66a9cc2f3f0936f39fd"
+          },
+          {
+            "filename": "locales/de.schema.json",
+            "checksumMd5": "1c38f38260f84023fce55c08b25f12a4"
+          },
+          {
+            "filename": "locales/en.default.json",
+            "checksumMd5": "b12df48be4468b89edbe8743be2020f1"
+          },
+          {
+            "filename": "locales/en.default.schema.json",
+            "checksumMd5": "57512d1064a003a0a5bc8d632650b06d"
+          },
+          {
+            "filename": "locales/fr.json",
+            "checksumMd5": "6a998951e85c24eab2c8a577d477bda8"
+          },
+          {
+            "filename": "locales/fr.schema.json",
+            "checksumMd5": "03cdadce5df0f7a9da59eec5a7e0cb4d"
+          },
+          {
+            "filename": "sections/luxe-edit-home.liquid",
+            "checksumMd5": "8ef120629f6ad0c04eb13fd9acbf6ae8"
+          },
+          {
+            "filename": "templates/index.json",
+            "checksumMd5": "aa3d177234272df6acedab60272a5396"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "InRlbXBsYXRlc1wvaW5kZXguanNvbiI="
+        }
+      }
+    },
+    "themes": {
+      "nodes": [
+        {
+          "id": "gid://shopify/OnlineStoreTheme/214169584007",
+          "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+          "role": "MAIN",
+          "createdAt": "2026-11-16T16:57:10Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/214040805767",
+          "name": "LuxeStyle – Kaufhinweis 15.11.2026",
+          "role": "UNPUBLISHED",
+          "createdAt": "2026-11-15T09:34:24Z"
+        },
+        {
+          "id": "gid://shopify/OnlineStoreTheme/213991391623",
+          "name": "LuxeStyle – SEO 14.11.2026",
+          "role": "UNPUBLISHED",
+          "createdAt": "2026-11-14T13:42:06Z"
+        }
+      ]
+    }
+  },
+  "conclusion": "NO_CONFIRMED_NEW_CURRENT_DRAFT",
+  "actualDuplicateCreation": "UNKNOWN_no_returned_id",
+  "themeWrites": 0,
+  "themePublishes": 0
+}

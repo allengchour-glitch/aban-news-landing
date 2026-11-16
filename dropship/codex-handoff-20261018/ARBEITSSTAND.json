@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 272,
-  "updatedAt": "2026-11-16T22:55:54Z",
+  "revision": 273,
+  "updatedAt": "2026-11-16T23:34:20Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -8277,12 +8277,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r272_actual_15s_review_mp4_and_local_scroll_candidate_owner_acceptance_open",
+      "state": "r273_owner_live_approved_native_media_ready_current_theme_copy_unconfirmed",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
-      "lastEvidenceDate": "2026-11-16",
-      "belegArt": "TATSAECHLICHE_3_RENDER_UND_15S_REVIEW_MP4_LOCAL_QA_NO_LIVE",
-      "lastEvidence": "R272: Inhaber sagt Ja zur 90-Credit-Ausnahme. Drei Takes abgeschlossen; ein 15-Sekunden-Review-Master (1080 × 1440, 450 Frames, stumm) mit Hash und öffentlichem Readback vorhanden. Produktidentität und vier echte Chromium-Fälle geprüft. Kreative Inhaberabnahme, native Integration/iPhone/Safari offen; kein Shopify-Write.",
-      "nextAllowedStep": "Gezeigten exakten 15-Sekunden-Film kreativ abnehmen lassen. Danach aktuelle legitime Theme-Kopie und native Video-/Posterdatei prüfen, begrenzten Scroll-Kandidaten integrieren und Shopify-/iPhone-/Safari-Prüfung abschliessen. Keine weiteren bezahlten Takes aus dieser 90-Credit-Ausnahme ableiten.",
+      "lastEvidenceDate": "2026-11-17",
+      "belegArt": "TATSAECHLICHE_NATIVE_MEDIEN_READY_UND_GEBUNDENES_LOKALPAKET_KEIN_LIVE",
+      "lastEvidence": "R273: «mach live» als kreative und Live-Freigabe des exakten R272-Films übernommen. Video und Standbild in Shopify READY, Original hashgleich, acht echte CDN-Seeks bestanden. Neun vollständige Einbaudateien vorbereitet. Theme-Kopie ohne bestätigte ID; keine Theme-Datei geschrieben oder veröffentlicht, öffentlicher alter Hero bestätigt.",
+      "nextAllowedStep": "Aktuelle vollständige MAIN-Kopie und neue Theme-ID vom Inhaber übernehmen; Identität/Basis frisch prüfen, neun Dateien im legitimen Entwurf installieren, native Vorschau/CDN/Safari prüfen, speichern/zurücklesen und vorhandene Live-Freigabe verwenden. Dieselbe Film-/Kostenfreigabe nicht nochmals anfordern.",
       "blockers": [
         "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
         "Becherhalter: genaue Passform/Montage und Material offen.",
@@ -8301,9 +8301,8 @@
         "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
         "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur.",
         "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen.",
-        "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen.",
-        "R272: Kreative Abnahme der tatsächlichen MP4 noch offen; zurückhaltende Bewegung und sichtbare harte Motivschnitte nicht als finale Premium-Abnahme darstellen.",
-        "R272: Lokaler Scroll-Kandidat nicht in Shopify gespeichert; echte Liquid-/CDN-/Header-/iPhone-/Safari-Prüfung und legitimer aktueller Entwurf offen."
+        "R273: themeDuplicate liefert newTheme:null/errors:[], gezielte Rücklesung ohne Kopie; kein aktueller bestätigter UNPUBLISHED-Zielentwurf. Keine veraltete Kopie oder MAIN-Schreibumgehung.",
+        "R273: Native Liquid-/Header-/Modul-/iPhone-/Safari-Prüfung und tatsächliche Veröffentlichung bleiben offen; öffentliche Startseite weiterhin alter Hero. Shopify-Transkodierung hat 3-Sekunden-Keyframes."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -17150,6 +17149,39 @@
               "R270: Konkrete Ausnahme von der bestehenden Keine-kostenpflichtigen-Video-Renders-Vorgabe für genau drei Takes bis höchstens 90 Credits steht aus."
             ]
           }
+        },
+        {
+          "archivedByRun": "R273",
+          "recordedAt": "2026-11-16T23:34:20Z",
+          "previous": {
+            "state": "r272_actual_15s_review_mp4_and_local_scroll_candidate_owner_acceptance_open",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "TATSAECHLICHE_3_RENDER_UND_15S_REVIEW_MP4_LOCAL_QA_NO_LIVE",
+            "lastEvidence": "R272: Inhaber sagt Ja zur 90-Credit-Ausnahme. Drei Takes abgeschlossen; ein 15-Sekunden-Review-Master (1080 × 1440, 450 Frames, stumm) mit Hash und öffentlichem Readback vorhanden. Produktidentität und vier echte Chromium-Fälle geprüft. Kreative Inhaberabnahme, native Integration/iPhone/Safari offen; kein Shopify-Write.",
+            "nextAllowedStep": "Gezeigten exakten 15-Sekunden-Film kreativ abnehmen lassen. Danach aktuelle legitime Theme-Kopie und native Video-/Posterdatei prüfen, begrenzten Scroll-Kandidaten integrieren und Shopify-/iPhone-/Safari-Prüfung abschliessen. Keine weiteren bezahlten Takes aus dieser 90-Credit-Ausnahme ableiten.",
+            "blockers": [
+              "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+              "Becherhalter: genaue Passform/Montage und Material offen.",
+              "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+              "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+              "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+              "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt.",
+              "R261 Reibe Stil3 ohne exakt belegtes Galerie-Einzelbild; keine falsche Zuordnung.",
+              "R261 Brettmaterial widersprüchlich; kein Titan-/Food-Grade-/Antibakteriellnachweis.",
+              "R261 Reflexionstasse: zwölf CJ-Motive, exakte bestehende Variante ungeklärt; ein Verbindungsread0 ist keine leere Historie.",
+              "R261 Merchant-Waage weiterhin DISAPPROVED; OG101.90 vs Auswahl127.90CHF separat belegt, Google-Ursache unbekannt.",
+              "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
+              "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
+              "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
+              "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
+              "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
+              "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur.",
+              "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen.",
+              "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen.",
+              "R272: Kreative Abnahme der tatsächlichen MP4 noch offen; zurückhaltende Bewegung und sichtbare harte Motivschnitte nicht als finale Premium-Abnahme darstellen.",
+              "R272: Lokaler Scroll-Kandidat nicht in Shopify gespeichert; echte Liquid-/CDN-/Header-/iPhone-/Safari-Prüfung und legitimer aktueller Entwurf offen."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -20124,6 +20156,25 @@
           30
         ],
         "actualAccountCharge": "UNKNOWN_not_independently_read"
+      },
+      "run273": {
+        "report": "dropship/codex-handoff-20261018/R273-REPORT-20261117.md",
+        "proof": "dropship/codex-handoff-20261018/R273-PROOF-20261117.json",
+        "approvedMasterId": "luxe-home-atelier-multishot-20261116",
+        "approvedMasterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+        "nativeVideoId": "gid://shopify/Video/78096309289351",
+        "nativePosterId": "gid://shopify/MediaImage/78096308339079",
+        "nativeMediaReady": true,
+        "copyConfirmed": false,
+        "live": false
+      },
+      "ownerWebsiteFilmLiveApprovalR273": {
+        "userText": "mach live",
+        "creativeAcceptance": true,
+        "publicationAuthorized": true,
+        "scope": "Exact R272 website master and its bounded homepage integration; no additional paid renders",
+        "masterId": "luxe-home-atelier-multishot-20261116",
+        "masterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6"
       }
     },
     {
@@ -28854,21 +28905,20 @@
       "id": "homepage-redesign-20261029",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r272_actual_15s_review_mp4_and_local_scroll_candidate_owner_acceptance_open",
+      "state": "r273_owner_live_approved_native_media_ready_current_theme_copy_unconfirmed",
       "title": "Mobile Website im Stil der App weiterentwickelt",
-      "lastEvidenceDate": "2026-11-16",
-      "belegArt": "TATSAECHLICHE_3_RENDER_UND_15S_REVIEW_MP4_LOCAL_QA_NO_LIVE",
-      "lastEvidence": "R272: Inhaber sagt Ja zur 90-Credit-Ausnahme. Drei Takes abgeschlossen; ein 15-Sekunden-Review-Master (1080 × 1440, 450 Frames, stumm) mit Hash und öffentlichem Readback vorhanden. Produktidentität und vier echte Chromium-Fälle geprüft. Kreative Inhaberabnahme, native Integration/iPhone/Safari offen; kein Shopify-Write.",
+      "lastEvidenceDate": "2026-11-17",
+      "belegArt": "TATSAECHLICHE_NATIVE_MEDIEN_READY_UND_GEBUNDENES_LOKALPAKET_KEIN_LIVE",
+      "lastEvidence": "R273: «mach live» als kreative und Live-Freigabe des exakten R272-Films übernommen. Video und Standbild in Shopify READY, Original hashgleich, acht echte CDN-Seeks bestanden. Neun vollständige Einbaudateien vorbereitet. Theme-Kopie ohne bestätigte ID; keine Theme-Datei geschrieben oder veröffentlicht, öffentlicher alter Hero bestätigt.",
       "previewUrl": "https://au3j0y-hq.myshopify.com/?preview_theme_id=214040805767",
-      "nextAllowedStep": "Gezeigten exakten 15-Sekunden-Film kreativ abnehmen lassen. Danach aktuelle legitime Theme-Kopie und native Video-/Posterdatei prüfen, begrenzten Scroll-Kandidaten integrieren und Shopify-/iPhone-/Safari-Prüfung abschliessen. Keine weiteren bezahlten Takes aus dieser 90-Credit-Ausnahme ableiten.",
+      "nextAllowedStep": "Aktuelle vollständige MAIN-Kopie und neue Theme-ID vom Inhaber übernehmen; Identität/Basis frisch prüfen, neun Dateien im legitimen Entwurf installieren, native Vorschau/CDN/Safari prüfen, speichern/zurücklesen und vorhandene Live-Freigabe verwenden. Dieselbe Film-/Kostenfreigabe nicht nochmals anfordern.",
       "blockers": [
         "Zwei zusätzliche Theme-Versandrechendiffs ausserhalb der ursprünglichen sieben Dateien; Actor und tatsächliche Rabatt-/Checkoutlogik offen.",
         "Theme214040805767 weiterUNPUBLISHED; Publisher-Scope-Verweigerung ausR234/R235 nicht erneut ausgelöst.",
         "Shellrate-limit ist keine leere Quelle oder404; gültige native Dateigegenprobe nach Wartefrist liegt vor, keine weiteren Shellversuche nötig.",
         "Kein pauschaler Quelle-/Gesamttheme-Rollback oder Versand-/Rabattänderung aus dem hypothetischen Rechenfall ableiten.",
-        "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen.",
-        "R272: Kreative Abnahme der tatsächlichen MP4 noch offen; zurückhaltende Bewegung und sichtbare harte Motivschnitte nicht als finale Premium-Abnahme darstellen.",
-        "R272: Lokaler Scroll-Kandidat nicht in Shopify gespeichert; echte Liquid-/CDN-/Header-/iPhone-/Safari-Prüfung und legitimer aktueller Entwurf offen."
+        "R273: themeDuplicate liefert newTheme:null/errors:[], gezielte Rücklesung ohne Kopie; kein aktueller bestätigter UNPUBLISHED-Zielentwurf. Keine veraltete Kopie oder MAIN-Schreibumgehung.",
+        "R273: Native Liquid-/Header-/Modul-/iPhone-/Safari-Prüfung und tatsächliche Veröffentlichung bleiben offen; öffentliche Startseite weiterhin alter Hero. Shopify-Transkodierung hat 3-Sekunden-Keyframes."
       ],
       "acceptance": [
         "Review anhand konkreter nativer Vorschau und Belege",
@@ -30108,6 +30158,26 @@
               "Kein pauschaler Quelle-/Gesamttheme-Rollback oder Versand-/Rabattänderung aus dem hypothetischen Rechenfall ableiten.",
               "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen.",
               "R270: Konkrete Ausnahme von der bestehenden Keine-kostenpflichtigen-Video-Renders-Vorgabe für genau drei Takes bis höchstens 90 Credits steht aus."
+            ]
+          }
+        },
+        {
+          "archivedByRun": "R273",
+          "recordedAt": "2026-11-16T23:34:20Z",
+          "previous": {
+            "state": "r272_actual_15s_review_mp4_and_local_scroll_candidate_owner_acceptance_open",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "TATSAECHLICHE_3_RENDER_UND_15S_REVIEW_MP4_LOCAL_QA_NO_LIVE",
+            "lastEvidence": "R272: Inhaber sagt Ja zur 90-Credit-Ausnahme. Drei Takes abgeschlossen; ein 15-Sekunden-Review-Master (1080 × 1440, 450 Frames, stumm) mit Hash und öffentlichem Readback vorhanden. Produktidentität und vier echte Chromium-Fälle geprüft. Kreative Inhaberabnahme, native Integration/iPhone/Safari offen; kein Shopify-Write.",
+            "nextAllowedStep": "Gezeigten exakten 15-Sekunden-Film kreativ abnehmen lassen. Danach aktuelle legitime Theme-Kopie und native Video-/Posterdatei prüfen, begrenzten Scroll-Kandidaten integrieren und Shopify-/iPhone-/Safari-Prüfung abschliessen. Keine weiteren bezahlten Takes aus dieser 90-Credit-Ausnahme ableiten.",
+            "blockers": [
+              "Zwei zusätzliche Theme-Versandrechendiffs ausserhalb der ursprünglichen sieben Dateien; Actor und tatsächliche Rabatt-/Checkoutlogik offen.",
+              "Theme214040805767 weiterUNPUBLISHED; Publisher-Scope-Verweigerung ausR234/R235 nicht erneut ausgelöst.",
+              "Shellrate-limit ist keine leere Quelle oder404; gültige native Dateigegenprobe nach Wartefrist liegt vor, keine weiteren Shellversuche nötig.",
+              "Kein pauschaler Quelle-/Gesamttheme-Rollback oder Versand-/Rabattänderung aus dem hypothetischen Rechenfall ableiten.",
+              "R269: Keine bestätigte neue Entwurfs-ID nach unklarer Duplicate-Antwort; Inhaber-Kopie angefragt. Native Speicherung, Liquid-Render und Live-Prüfung offen.",
+              "R272: Kreative Abnahme der tatsächlichen MP4 noch offen; zurückhaltende Bewegung und sichtbare harte Motivschnitte nicht als finale Premium-Abnahme darstellen.",
+              "R272: Lokaler Scroll-Kandidat nicht in Shopify gespeichert; echte Liquid-/CDN-/Header-/iPhone-/Safari-Prüfung und legitimer aktueller Entwurf offen."
             ]
           }
         }
@@ -31427,6 +31497,25 @@
           30
         ],
         "actualAccountCharge": "UNKNOWN_not_independently_read"
+      },
+      "run273": {
+        "report": "dropship/codex-handoff-20261018/R273-REPORT-20261117.md",
+        "proof": "dropship/codex-handoff-20261018/R273-PROOF-20261117.json",
+        "approvedMasterId": "luxe-home-atelier-multishot-20261116",
+        "approvedMasterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+        "nativeVideoId": "gid://shopify/Video/78096309289351",
+        "nativePosterId": "gid://shopify/MediaImage/78096308339079",
+        "nativeMediaReady": true,
+        "copyConfirmed": false,
+        "live": false
+      },
+      "ownerWebsiteFilmLiveApprovalR273": {
+        "userText": "mach live",
+        "creativeAcceptance": true,
+        "publicationAuthorized": true,
+        "scope": "Exact R272 website master and its bounded homepage integration; no additional paid renders",
+        "masterId": "luxe-home-atelier-multishot-20261116",
+        "masterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6"
       }
     },
     {
@@ -46279,21 +46368,21 @@
       "id": "website-main-film-20261103",
       "priority": 65,
       "priorityKind": "SETZUNG",
-      "state": "r272_actual_15s_review_mp4_and_local_scroll_candidate_owner_acceptance_open",
+      "state": "r273_owner_live_approved_native_media_ready_current_theme_copy_unconfirmed",
       "title": "Einen professionellen Hauptfilm für die LuxeStyle-Startseite herstellen",
-      "lastEvidenceDate": "2026-11-16",
-      "belegArt": "TATSAECHLICHE_3_RENDER_UND_15S_REVIEW_MP4_LOCAL_QA_NO_LIVE",
-      "lastEvidence": "R272: Inhaber sagt Ja zur 90-Credit-Ausnahme. Drei Takes abgeschlossen; ein 15-Sekunden-Review-Master (1080 × 1440, 450 Frames, stumm) mit Hash und öffentlichem Readback vorhanden. Produktidentität und vier echte Chromium-Fälle geprüft. Kreative Inhaberabnahme, native Integration/iPhone/Safari offen; kein Shopify-Write.",
+      "lastEvidenceDate": "2026-11-17",
+      "belegArt": "TATSAECHLICHE_NATIVE_MEDIEN_READY_UND_GEBUNDENES_LOKALPAKET_KEIN_LIVE",
+      "lastEvidence": "R273: «mach live» als kreative und Live-Freigabe des exakten R272-Films übernommen. Video und Standbild in Shopify READY, Original hashgleich, acht echte CDN-Seeks bestanden. Neun vollständige Einbaudateien vorbereitet. Theme-Kopie ohne bestätigte ID; keine Theme-Datei geschrieben oder veröffentlicht, öffentlicher alter Hero bestätigt.",
       "ownerPurpose": "LuxeStyle als Marke zeigen; ausdrücklich im Chat bestätigt. Keine fertige kreative/Produkt-/Rechteabnahme daraus ableiten.",
       "proposedMasterId": "luxe_website_brand_master_20261103",
       "preservedSocialMasterId": "luxe_sternenprojektor_master_20261018",
-      "nextAllowedStep": "Gezeigten exakten 15-Sekunden-Film kreativ abnehmen lassen. Danach aktuelle legitime Theme-Kopie und native Video-/Posterdatei prüfen, begrenzten Scroll-Kandidaten integrieren und Shopify-/iPhone-/Safari-Prüfung abschliessen. Keine weiteren bezahlten Takes aus dieser 90-Credit-Ausnahme ableiten.",
+      "nextAllowedStep": "Aktuelle vollständige MAIN-Kopie und neue Theme-ID vom Inhaber übernehmen; Identität/Basis frisch prüfen, neun Dateien im legitimen Entwurf installieren, native Vorschau/CDN/Safari prüfen, speichern/zurücklesen und vorhandene Live-Freigabe verwenden. Dieselbe Film-/Kostenfreigabe nicht nochmals anfordern.",
       "blockers": [
         "Kreative Abnahme des tatsächlichen fertigen Schnitts steht aus; keine Ablehnung oder fehlende Erstellungserlaubnis behaupten.",
         "Einbindung in die aktuelle Website nicht ausgeführt oder geprüft.",
         "Bestehende Website-Quellen sind nach ausdrücklichem Auftrag genutzt; unabhängige kommerzielle Drittanbieter-Lizenzbestätigung bleibt unbekannt, keine Socialfreigabe ableiten.",
-        "R272: Kreative Abnahme der tatsächlichen MP4 noch offen; zurückhaltende Bewegung und sichtbare harte Motivschnitte nicht als finale Premium-Abnahme darstellen.",
-        "R272: Lokaler Scroll-Kandidat nicht in Shopify gespeichert; echte Liquid-/CDN-/Header-/iPhone-/Safari-Prüfung und legitimer aktueller Entwurf offen."
+        "R273: themeDuplicate liefert newTheme:null/errors:[], gezielte Rücklesung ohne Kopie; kein aktueller bestätigter UNPUBLISHED-Zielentwurf. Keine veraltete Kopie oder MAIN-Schreibumgehung.",
+        "R273: Native Liquid-/Header-/Modul-/iPhone-/Safari-Prüfung und tatsächliche Veröffentlichung bleiben offen; öffentliche Startseite weiterhin alter Hero. Shopify-Transkodierung hat 3-Sekunden-Keyframes."
       ],
       "acceptance": [
         "Ein Markenfilm aus aktuellen Website-Bildern und belegten Kategorien, keine erfundene Produktdemonstration.",
@@ -46383,6 +46472,24 @@
               "Einbindung in die aktuelle Website nicht ausgeführt oder geprüft.",
               "Bestehende Website-Quellen sind nach ausdrücklichem Auftrag genutzt; unabhängige kommerzielle Drittanbieter-Lizenzbestätigung bleibt unbekannt, keine Socialfreigabe ableiten.",
               "R270: Konkrete Ausnahme von der bestehenden Keine-kostenpflichtigen-Video-Renders-Vorgabe für genau drei Takes bis höchstens 90 Credits steht aus."
+            ]
+          }
+        },
+        {
+          "archivedByRun": "R273",
+          "recordedAt": "2026-11-16T23:34:20Z",
+          "previous": {
+            "state": "r272_actual_15s_review_mp4_and_local_scroll_candidate_owner_acceptance_open",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "TATSAECHLICHE_3_RENDER_UND_15S_REVIEW_MP4_LOCAL_QA_NO_LIVE",
+            "lastEvidence": "R272: Inhaber sagt Ja zur 90-Credit-Ausnahme. Drei Takes abgeschlossen; ein 15-Sekunden-Review-Master (1080 × 1440, 450 Frames, stumm) mit Hash und öffentlichem Readback vorhanden. Produktidentität und vier echte Chromium-Fälle geprüft. Kreative Inhaberabnahme, native Integration/iPhone/Safari offen; kein Shopify-Write.",
+            "nextAllowedStep": "Gezeigten exakten 15-Sekunden-Film kreativ abnehmen lassen. Danach aktuelle legitime Theme-Kopie und native Video-/Posterdatei prüfen, begrenzten Scroll-Kandidaten integrieren und Shopify-/iPhone-/Safari-Prüfung abschliessen. Keine weiteren bezahlten Takes aus dieser 90-Credit-Ausnahme ableiten.",
+            "blockers": [
+              "Kreative Abnahme des tatsächlichen fertigen Schnitts steht aus; keine Ablehnung oder fehlende Erstellungserlaubnis behaupten.",
+              "Einbindung in die aktuelle Website nicht ausgeführt oder geprüft.",
+              "Bestehende Website-Quellen sind nach ausdrücklichem Auftrag genutzt; unabhängige kommerzielle Drittanbieter-Lizenzbestätigung bleibt unbekannt, keine Socialfreigabe ableiten.",
+              "R272: Kreative Abnahme der tatsächlichen MP4 noch offen; zurückhaltende Bewegung und sichtbare harte Motivschnitte nicht als finale Premium-Abnahme darstellen.",
+              "R272: Lokaler Scroll-Kandidat nicht in Shopify gespeichert; echte Liquid-/CDN-/Header-/iPhone-/Safari-Prüfung und legitimer aktueller Entwurf offen."
             ]
           }
         }
@@ -46482,6 +46589,25 @@
           30
         ],
         "actualAccountCharge": "UNKNOWN_not_independently_read"
+      },
+      "run273": {
+        "report": "dropship/codex-handoff-20261018/R273-REPORT-20261117.md",
+        "proof": "dropship/codex-handoff-20261018/R273-PROOF-20261117.json",
+        "approvedMasterId": "luxe-home-atelier-multishot-20261116",
+        "approvedMasterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+        "nativeVideoId": "gid://shopify/Video/78096309289351",
+        "nativePosterId": "gid://shopify/MediaImage/78096308339079",
+        "nativeMediaReady": true,
+        "copyConfirmed": false,
+        "live": false
+      },
+      "ownerWebsiteFilmLiveApprovalR273": {
+        "userText": "mach live",
+        "creativeAcceptance": true,
+        "publicationAuthorized": true,
+        "scope": "Exact R272 website master and its bounded homepage integration; no additional paid renders",
+        "masterId": "luxe-home-atelier-multishot-20261116",
+        "masterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6"
       }
     },
     {
@@ -50879,6 +51005,16 @@
         "dropship/codex-handoff-20261018/R272-PROOF-20261116.json",
         "dropship/codex-handoff-20261018/runs/20261116-r272/integration/README.md"
       ]
+    },
+    {
+      "revision": 273,
+      "at": "2026-11-16T23:34:20Z",
+      "summary": "R273: Live-Freigabe des exakten Films übernommen. Native Video-/Posterdatei READY angelegt, Original hashgleich und acht CDN-Seeks geprüft. Neun Dateien vollständig gebunden/zusammengeführt. Kopieraktion ohne bestätigte neue Theme-ID; keine Theme-/Publisher-Writes, öffentlicher alter Hero bleibt. Zugang statt erneuter Inhaberfreigabe offen.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R273-REPORT-20261117.md",
+        "dropship/codex-handoff-20261018/R273-PROOF-20261117.json",
+        "dropship/codex-handoff-20261018/runs/20261117-r273/APPLY-CHECKLIST.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -52231,7 +52367,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 272,
+    "latestCanonicalRevision": 273,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -53308,6 +53444,15 @@
       "report": "dropship/codex-handoff-20261018/R272-REPORT-20261116.md",
       "receipt": "unknown",
       "creditException": "APPROVED_SCOPE_90_CREDITS_THREE_TAKES"
+    },
+    "run273": {
+      "atUtc": "2026-11-16T23:34:20Z",
+      "report": "dropship/codex-handoff-20261018/R273-REPORT-20261117.md",
+      "receipt": "unknown",
+      "ownerLiveApproval": "APPROVED_EXACT_R272_FILM",
+      "nativeMediaReady": true,
+      "themeCopy": "UNCONFIRMED",
+      "live": false
     }
   },
   "claudeCodeHandoffHistory": [
@@ -79811,5 +79956,230 @@
       "preserveHistoricalR270R271": true,
       "claudeReceipt": "unknown"
     }
+  },
+  "run273": {
+    "run": "R273",
+    "dateEuropeZurich": "2026-11-17",
+    "atUtc": "2026-11-16T23:34:20Z",
+    "ownerApproval": {
+      "userText": "mach live",
+      "creativeAcceptance": true,
+      "publicationAuthorized": true,
+      "scope": "Exact R272 website master and its bounded homepage integration; no additional paid renders",
+      "masterId": "luxe-home-atelier-multishot-20261116",
+      "masterSha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6"
+    },
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "primaryDomain": {
+        "url": "https://luxestyle.ch"
+      },
+      "currencyCode": "CHF"
+    },
+    "nativeMedia": [
+      {
+        "id": "gid://shopify/Video/78096309289351",
+        "filename": "luxe-atelier-scroll-master-r272.mp4",
+        "fileStatus": "READY",
+        "status": "READY",
+        "duration": 15000,
+        "originalSource": {
+          "url": "https://cdn.shopify.com/videos/c/o/v/aa2fde9011d8483db61d3b1d34a5e7b2.mp4",
+          "format": "mp4",
+          "width": 1080,
+          "height": 1440
+        },
+        "sources": [
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.SD-480p-1.2Mbps-101621626.mp4",
+            "format": "mp4",
+            "mimeType": "video/mp4",
+            "width": 360,
+            "height": 480
+          },
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.HD-1080p-4.8Mbps-101621626.mp4",
+            "format": "mp4",
+            "mimeType": "video/mp4",
+            "width": 810,
+            "height": 1080
+          },
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.HD-720p-3.0Mbps-101621626.mp4",
+            "format": "mp4",
+            "mimeType": "video/mp4",
+            "width": 540,
+            "height": 720
+          },
+          {
+            "url": "https://cdn.shopify.com/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.m3u8",
+            "format": "m3u8",
+            "mimeType": "application/x-mpegURL",
+            "width": 810,
+            "height": 1080
+          }
+        ],
+        "fileErrors": []
+      },
+      {
+        "id": "gid://shopify/MediaImage/78096308339079",
+        "fileStatus": "READY",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-atelier-scroll-poster-r272.jpg?v=1794871392",
+          "width": 1080,
+          "height": 1440
+        },
+        "fileErrors": []
+      }
+    ],
+    "productCheck": [
+      {
+        "id": "gid://shopify/ProductVariant/55876172906881",
+        "title": "Aprikose / S",
+        "price": "39.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "inventoryItem": {
+          "tracked": false
+        },
+        "product": {
+          "id": "gid://shopify/Product/15448587075969",
+          "status": "ACTIVE",
+          "tags": [
+            "auto-entwurf-0926",
+            "bild-ok",
+            "cj-real",
+            "damen",
+            "dropship",
+            "fokus-damenmode",
+            "gfeed-anstupsen-260929",
+            "hype-jetzt",
+            "kategorie-kleid",
+            "kleid",
+            "kleider",
+            "kunden-liebling",
+            "mode",
+            "sort-damen-kleider",
+            "sort-damen-kleider-blumen",
+            "sort-damen-kleider-midi"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/midikleid-mit-zopfmuster-und-blumenprint-600200"
+        }
+      },
+      {
+        "id": "gid://shopify/ProductVariant/68122741014919",
+        "title": "Kirschblüte 700ml",
+        "price": "24.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryQuantity": 0,
+        "inventoryItem": {
+          "tracked": false
+        },
+        "product": {
+          "id": "gid://shopify/Product/15524879008129",
+          "status": "ACTIVE",
+          "tags": [
+            "aufbewahrung",
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "haushalt",
+            "neuheit",
+            "organizer",
+            "sort-vorratsdosen",
+            "varianten-nachgezogen-1025",
+            "wohnen"
+          ],
+          "onlineStoreUrl": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976"
+        }
+      }
+    ],
+    "copy": {
+      "attempts": 1,
+      "sourceMainId": "214169584007",
+      "requestedName": "LuxeStyle – Film-Scroll R273 17.11.2026",
+      "response": {
+        "newTheme": null,
+        "userErrors": []
+      },
+      "targetedRead": [],
+      "outcome": "UNKNOWN_NO_CONFIRMED_NEW_CURRENT_DRAFT",
+      "confirmedCreatedThemes": 0,
+      "blindRetries": 0
+    },
+    "deployment": {
+      "state": "BOUND_LOCAL_ONLY",
+      "files": 9,
+      "manifest": "dropship/codex-handoff-20261018/runs/20261117-r273/DEPLOYMENT-MANIFEST.json",
+      "nativeBaselineChecksums": {
+        "locales/de.json": "6cdb896f31cad66a9cc2f3f0936f39fd",
+        "locales/de.schema.json": "1c38f38260f84023fce55c08b25f12a4",
+        "locales/en.default.json": "b12df48be4468b89edbe8743be2020f1",
+        "locales/en.default.schema.json": "57512d1064a003a0a5bc8d632650b06d",
+        "locales/fr.json": "6a998951e85c24eab2c8a577d477bda8",
+        "locales/fr.schema.json": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+        "sections/luxe-edit-home.liquid": "8ef120629f6ad0c04eb13fd9acbf6ae8",
+        "templates/index.json": "aa3d177234272df6acedab60272a5396"
+      },
+      "allPriorLocaleKeysPreserved": true,
+      "allOtherIndexDataPreserved": true,
+      "videoPicker": "shopify://files/videos/luxe-atelier-scroll-master-r272.mp4",
+      "posterPicker": "shopify://shop_images/luxe-atelier-scroll-poster-r272.jpg",
+      "localFlag": true,
+      "nativeThemeFlagChanged": false,
+      "officialThemeCheck": "UNAVAILABLE_missing_@shopify/theme-check-common"
+    },
+    "mediaQa": {
+      "status": "PASS_PUBLIC_NATIVE_MEDIA_WITH_LIMITS",
+      "originalHashMatches": true,
+      "nativeOutput": "810x1080/15s/450frames/30fps/no_audio",
+      "nativeOutputSha256": "66aff24df607366f1d97ae8117cb283d97301449954dc7f9d131d19cfd56082e",
+      "range206": true,
+      "chromiumSeeksPassed": 8,
+      "transcodedKeyframeGapSeconds": 3,
+      "originalKeyframeGapSeconds": 0.5,
+      "nativeLiquidPreview": false,
+      "iPhoneSafari": false,
+      "proof": "dropship/codex-handoff-20261018/runs/20261117-r273/media-quality/NATIVE-MEDIA-REVIEW.json"
+    },
+    "access": {
+      "verifiedAuthenticatedBrowser": false,
+      "guardedExistingHelperRequiresExistingDraft": true,
+      "helperRuntimeAuthVariablesPresent": false,
+      "themeCreateRequiresFullVerifiedZipNotAvailable": true,
+      "alternativeFullThemeRebuildNotAttempted": true
+    },
+    "writes": {
+      "fileCreateConfirmed": 2,
+      "fileCreateRejected": 2,
+      "stagedSlotsCreated": 2,
+      "posterUploadHttp": 201,
+      "videoUploadHttp": 204,
+      "themeDuplicateOutcomeUnconfirmed": 1,
+      "themeFilesSaved": 0,
+      "themePublishes": 0,
+      "social": 0,
+      "newPaidRenders": 0,
+      "newDailyMetricsReports": 0,
+      "newAutomations": 0,
+      "customersContacted": 0
+    },
+    "publicReadback": {
+      "atUtc": "2026-11-16T23:32:46.915237+00:00",
+      "httpStatus": 200,
+      "oldHeroMarkerFound": true,
+      "newScrollElementFound": false,
+      "newVideoFilenameFound": false,
+      "newPosterFilenameFound": false,
+      "scope": "Public anonymous homepage GET only; no forms or customer actions"
+    },
+    "live": false,
+    "nextStep": "Owner makes current MAIN copy and supplies new theme ID; then fresh baseline, native installation/preview/readback and already authorized publication.",
+    "claudeReceipt": "unknown"
   }
 }

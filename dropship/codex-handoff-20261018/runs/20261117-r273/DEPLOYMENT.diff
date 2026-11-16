@@ -1,0 +1,613 @@
+--- a/assets/luxe-scroll-hero.js
++++ b/assets/luxe-scroll-hero.js
+@@ -0,0 +1,189 @@
++import { Component } from '@theme/component';
++
++/** R272 local integration candidate. Requires real-media and native preview acceptance. */
++export function scrollProgress(rect, stageHeight, stickyTop = 0) {
++  const distance = rect.height - stageHeight;
++  if (!Number.isFinite(distance) || distance <= 0) return 0;
++  return Math.min(1, Math.max(0, (stickyTop - rect.top) / distance));
++}
++
++export function timeAtProgress(progress, duration) {
++  if (!Number.isFinite(progress) || !Number.isFinite(duration) || duration <= 0) return null;
++  return Math.min(1, Math.max(0, progress)) * Math.max(0, duration - 0.001);
++}
++
++/**
++ * Each owner must supply translated labels in data-* and a verified film URL.
++ * Returns cleanup for theme section unloading. Uses native APIs, never play().
++ */
++export function mountScrollHero(root, options = {}) {
++  const stage = root?.querySelector('[data-scroll-stage]');
++  const video = root?.querySelector('[data-scroll-video]');
++  const controls = root?.querySelector('[data-scroll-controls]');
++  const hold = root?.querySelector('[data-scroll-hold]');
++  const range = root?.querySelector('[data-scroll-range]');
++  const status = root?.querySelector('[data-scroll-status]');
++  const labels = root?.dataset;
++  const noop = () => {};
++  if (!stage || !video || !controls || !hold || !range || !status || !video.dataset.src ||
++      !labels.holdLabel || !labels.resumeLabel || !labels.scrollLabel ||
++      !labels.pausedLabel || !labels.manualLabel || !labels.posterLabel ||
++      !window.IntersectionObserver || !window.ResizeObserver || !window.matchMedia) return noop;
++
++  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
++  const connection = navigator.connection;
++  const controller = new AbortController();
++  const { signal } = controller;
++  let raf = 0;
++  let inView = false;
++  let metadata = video.readyState >= 1 && Number.isFinite(video.duration) && video.duration > 0;
++  let failed = false;
++  let frozen = false;
++  let manual = null;
++  let destroyed = false;
++  let lastMode = '';
++  const weak = () => options.forcePoster === true || connection?.saveData === true ||
++    /^(slow-)?2g$/.test(connection?.effectiveType || '') ||
++    (Number.isFinite(navigator.deviceMemory) && navigator.deviceMemory <= 2);
++  const eligible = () => !destroyed && !failed && !reduced.matches && !weak();
++  const active = () => eligible() && inView && !document.hidden;
++  const mode = name => {
++    root.dataset.scrollMode = name;
++    if (name !== lastMode) {
++      status.textContent = name === 'poster' ? labels.posterLabel :
++        name === 'manual' ? labels.manualLabel :
++        name === 'paused' ? labels.pausedLabel : labels.scrollLabel;
++      lastMode = name;
++    }
++    hold.setAttribute('aria-pressed', String(frozen));
++    hold.textContent = frozen ? labels.resumeLabel : labels.holdLabel;
++  };
++  const progress = () => {
++    const rect = root.getBoundingClientRect();
++    const stickyTop = Number.parseFloat(getComputedStyle(root).getPropertyValue('--lx-scroll-sticky-top')) || 0;
++    if (root.hasAttribute('data-scroll-tall')) {
++      const travel = Math.max(1, video.parentElement?.offsetHeight || stage.offsetHeight);
++      return Math.min(1, Math.max(0, (stickyTop - rect.top) / travel));
++    }
++    return scrollProgress(rect, stage.offsetHeight, stickyTop);
++  };
++  const poster = () => {
++    if (controls.contains(document.activeElement) && !document.hidden) root.focus({ preventScroll: true });
++    delete root.dataset.hasFrame;
++    if (!eligible()) delete root.dataset.scrollEnhanced;
++    controls.hidden = true;
++    video.pause();
++    mode('poster');
++  };
++  const schedule = () => { if (!raf && !destroyed) raf = requestAnimationFrame(update); };
++  const update = () => {
++    raf = 0;
++    if (!active()) {
++      poster();
++      return;
++    }
++    if (!video.hasAttribute('src')) {
++      video.src = matchMedia('(max-width: 760px)').matches && video.dataset.srcMobile ? video.dataset.srcMobile : video.dataset.src;
++      video.preload = 'metadata';
++      video.load();
++    }
++    if (!metadata || video.seeking) return; // seeked retries the latest position.
++    const stickyTop = Number.parseFloat(getComputedStyle(root).getPropertyValue('--lx-scroll-sticky-top')) || 0;
++    root.toggleAttribute('data-scroll-tall', stage.offsetHeight > innerHeight - stickyTop - 16);
++    root.dataset.scrollEnhanced = 'true';
++    controls.hidden = false;
++    if (video.readyState >= 2) root.dataset.hasFrame = 'true';
++    mode(frozen ? manual === null ? 'paused' : 'manual' : 'scroll');
++    if (frozen && manual === null) return;
++    const p = frozen ? manual : progress();
++    const target = timeAtProgress(p, video.duration);
++    if (target === null) return;
++    if (document.activeElement !== range) range.value = String(Math.round(p * 1000));
++    range.setAttribute('aria-valuetext', new Intl.NumberFormat(document.documentElement.lang || undefined,
++      { style: 'percent', maximumFractionDigits: 0 }).format(p));
++    if (Math.abs(video.currentTime - target) >= 0.04) {
++      try { video.currentTime = target; } catch { failed = true; poster(); }
++    }
++  };
++  video.muted = true;
++  video.playsInline = true;
++  video.autoplay = false;
++  video.loop = false;
++  video.pause();
++  controls.hidden = true;
++  mode('poster');
++  video.addEventListener('loadedmetadata', () => {
++    metadata = Number.isFinite(video.duration) && video.duration > 0;
++    if (!metadata) failed = true;
++    schedule();
++  }, { signal });
++  const frameReady = () => { if (active() && video.readyState >= 2) root.dataset.hasFrame = 'true'; schedule(); };
++  video.addEventListener('loadeddata', frameReady, { signal });
++  video.addEventListener('seeked', frameReady, { signal });
++  video.addEventListener('error', () => { failed = true; poster(); }, { signal });
++  hold.addEventListener('click', () => { frozen = !frozen; manual = null; mode(frozen ? 'paused' : 'scroll'); schedule(); }, { signal });
++  range.addEventListener('input', () => {
++    frozen = true;
++    manual = Math.min(1, Math.max(0, Number(range.value) / 1000));
++    mode('manual'); schedule();
++  }, { signal });
++  window.addEventListener('scroll', schedule, { passive: true, signal });
++  window.addEventListener('resize', schedule, { passive: true, signal });
++  document.addEventListener('visibilitychange', schedule, { signal });
++  reduced.addEventListener('change', schedule, { signal });
++  connection?.addEventListener?.('change', schedule, { signal });
++  const intersection = new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; schedule(); }, { threshold: 0.05 });
++  const resize = new ResizeObserver(schedule);
++  intersection.observe(root);
++  resize.observe(root);
++  resize.observe(stage);
++  schedule();
++  return () => {
++    destroyed = true;
++    controller.abort();
++    intersection.disconnect();
++    resize.disconnect();
++    cancelAnimationFrame(raf);
++    video.pause();
++    delete root.dataset.hasFrame;
++    delete root.dataset.scrollEnhanced;
++    controls.hidden = true;
++    mode('poster');
++  };
++}
++
++
++/** Native theme owner: clean resources before updates and disconnects. */
++class LuxeScrollHero extends Component {
++  #cleanup = null;
++  #mountQueued = false;
++
++  connectedCallback() {
++    super.connectedCallback();
++    this.#queueMount();
++  }
++
++  updatedCallback() {
++    super.updatedCallback();
++    this.#queueMount();
++  }
++
++  disconnectedCallback() {
++    this.#cleanup?.();
++    this.#cleanup = null;
++    super.disconnectedCallback();
++  }
++
++  #queueMount() {
++    this.#cleanup?.();
++    this.#cleanup = null;
++    if (this.#mountQueued) return;
++    this.#mountQueued = true;
++    queueMicrotask(() => {
++      this.#mountQueued = false;
++      if (this.isConnected) this.#cleanup = mountScrollHero(this);
++    });
++  }
++}
++
++if (!customElements.get('luxe-scroll-hero')) customElements.define('luxe-scroll-hero', LuxeScrollHero);
+--- a/locales/de.json
++++ b/locales/de.json
+@@ -8,6 +8,15 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "lx_scroll_hero": {
++    "hold": "Scroll-Effekt anhalten",
++    "resume": "Scroll-Effekt fortsetzen",
++    "scrolling": "Beim Scrollen",
++    "paused": "Angehalten",
++    "manual": "Manuelle Position",
++    "poster": "Standbild",
++    "position": "Filmposition"
++  },
+   "lx_welten": {
+     "category_navigation": "Unterkategorien",
+     "choose_category": "Kategorie auswählen",
+@@ -1120,3 +1129,4 @@
+     "notice_shoes": "Schuhgrössen: Europa-Tabelle des Herstellers, «ca.» = ungefähr."
+   }
+ }
++
+--- a/locales/de.schema.json
++++ b/locales/de.schema.json
+@@ -8,6 +8,17 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "lx_scroll_hero": {
++    "enabled": "Scroll-Film aktivieren",
++    "video": "Geprüfter Website-Film",
++    "video_info": "Nur einen geprüften stummen Film aus Shopify Files wählen. Poster erforderlich; vor Veröffentlichung auf Mobilgeräten testen."
++  },
++  "lx_campaign_hero": {
++    "image_label": "Titelbild der Startseite",
++    "image_info": "Ein einzelnes Kampagnenbild. Den Bildfokus kannst du im Bildeditor setzen. Ohne Bild bleibt der bisherige Aufmacher.",
++    "mobile_focus_label": "Bildfokus auf dem Handy (horizontal)"
++  },
++
+   "lx_welten": {
+     "section_name": "Kategoriesystem",
+     "details_section_name": "Kollektionsdetails",
+--- a/locales/en.default.json
++++ b/locales/en.default.json
+@@ -8,6 +8,15 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "lx_scroll_hero": {
++    "hold": "Pause scroll effect",
++    "resume": "Resume scroll effect",
++    "scrolling": "Following scroll",
++    "paused": "Paused",
++    "manual": "Manual position",
++    "poster": "Still image",
++    "position": "Film position"
++  },
+   "lx_welten": {
+     "category_navigation": "Subcategories",
+     "choose_category": "Choose a category",
+@@ -1120,3 +1129,4 @@
+     "notice_shoes": "Shoe sizes: manufacturer's European chart, «ca.» means approximately."
+   }
+ }
++
+--- a/locales/en.default.schema.json
++++ b/locales/en.default.schema.json
+@@ -8,6 +8,17 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "lx_scroll_hero": {
++    "enabled": "Enable scroll film",
++    "video": "Approved website film",
++    "video_info": "Choose an approved silent film from Shopify Files. A poster is required; test on mobile before publishing."
++  },
++  "lx_campaign_hero": {
++    "image_label": "Homepage campaign image",
++    "image_info": "One still campaign image. Set its focal point in the image editor. Leaving this empty retains the previous hero.",
++    "mobile_focus_label": "Mobile image focus (horizontal)"
++  },
++
+   "lx_welten": {
+     "section_name": "Category landing",
+     "details_section_name": "Collection details",
+--- a/locales/fr.json
++++ b/locales/fr.json
+@@ -8,6 +8,15 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "lx_scroll_hero": {
++    "hold": "Suspendre l’effet de défilement",
++    "resume": "Reprendre l’effet de défilement",
++    "scrolling": "Selon le défilement",
++    "paused": "En pause",
++    "manual": "Position manuelle",
++    "poster": "Image fixe",
++    "position": "Position du film"
++  },
+   "lx_welten": {
+     "category_navigation": "Sous-catégories",
+     "choose_category": "Choisir une catégorie",
+@@ -640,3 +649,4 @@
+     "notice_shoes": "Pointures : tableau européen du fabricant, « ca. » = environ."
+   }
+ }
++
+--- a/locales/fr.schema.json
++++ b/locales/fr.schema.json
+@@ -8,6 +8,17 @@
+  * ------------------------------------------------------------
+  */
+ {
++  "lx_scroll_hero": {
++    "enabled": "Activer le film au défilement",
++    "video": "Film du site validé",
++    "video_info": "Choisir un film silencieux validé dans Shopify Files. Une affiche est nécessaire ; tester sur mobile avant publication."
++  },
++  "lx_campaign_hero": {
++    "image_label": "Image principale de la page d’accueil",
++    "image_info": "Une seule image de campagne. Réglez son point focal dans l’éditeur d’image. Sans image, la présentation précédente est conservée.",
++    "mobile_focus_label": "Point focal sur mobile (horizontal)"
++  },
++
+   "lx_welten": {
+     "section_name": "Page de catégorie",
+     "details_section_name": "Détails de la collection",
+--- a/sections/luxe-edit-home.liquid
++++ b/sections/luxe-edit-home.liquid
+@@ -29,12 +29,65 @@
+   </header>
+   {% endunless %}
+   {% if lx_standard_home %}<div id="lx-content">{% else %}<main id="lx-content">{% endif %}
+-    <section class="lx-hero lx-background-hero" aria-labelledby="lx-hero-title">
++    {% comment %}Bounded scroll-film owner; no source URL until a real Shopify video is selected.{% endcomment %}
++    {% liquid
++      assign lx_campaign_image = section.settings.hero_campaign_image
++      assign lx_campaign_video = section.settings.hero_scroll_video
++      assign lx_scroll_source = nil
++      assign lx_scroll_mobile_source = nil
++      if section.settings.hero_scroll_enabled and lx_campaign_image != blank and lx_campaign_video != blank
++        for lx_source in lx_campaign_video.sources
++          if lx_source.format == 'mp4' and lx_source.width <= 1920
++            if lx_scroll_source == blank or lx_source.width > lx_scroll_source.width
++              assign lx_scroll_source = lx_source
++            endif
++            if lx_source.width <= 1280
++              if lx_scroll_mobile_source == blank or lx_source.width > lx_scroll_mobile_source.width
++                assign lx_scroll_mobile_source = lx_source
++              endif
++            endif
++          endif
++        endfor
++      endif
++    %}
++    {% if lx_scroll_source != blank %}
++      <script type="module" src="{{ 'luxe-scroll-hero.js' | asset_url }}"></script>
++      <luxe-scroll-hero class="lx-scroll-root" tabindex="-1"
++        data-hold-label="{{ 'lx_scroll_hero.hold' | t | escape }}"
++        data-resume-label="{{ 'lx_scroll_hero.resume' | t | escape }}"
++        data-scroll-label="{{ 'lx_scroll_hero.scrolling' | t | escape }}"
++        data-paused-label="{{ 'lx_scroll_hero.paused' | t | escape }}"
++        data-manual-label="{{ 'lx_scroll_hero.manual' | t | escape }}"
++        data-poster-label="{{ 'lx_scroll_hero.poster' | t | escape }}">
++    {% endif %}
++    <section{% if lx_scroll_source != blank %} data-scroll-stage{% endif %} class="lx-hero lx-background-hero{% if lx_campaign_image != blank %} lx-campaign-hero{% endif %}{% if lx_scroll_source != blank %} lx-scroll-hero{% endif %}" aria-labelledby="lx-hero-title"{% if lx_campaign_image != blank %} style="--lx-campaign-focus: {{ lx_campaign_image.presentation.focal_point | default: '50% 40%' }}; --lx-campaign-mobile-x: {{ section.settings.hero_campaign_mobile_focus | default: 65 }}%;"{% endif %}>
++      {% if lx_campaign_image != blank %}
++        <div class="lx-campaign-hero__media" aria-hidden="true">
++          {{ lx_campaign_image | image_url: width: 3504 | image_tag: widths: '540, 750, 960, 1200, 1600, 2000, 2560, 3200, 3504', sizes: '(min-width: 1600px) calc(100vw - 96px), (min-width: 1051px) 94vw, (min-width: 761px) 1230px, 960px', loading: 'eager', fetchpriority: 'high', decoding: 'async', alt: '', style: 'object-position: var(--lx-campaign-object-position);' }}
++          {% if lx_scroll_source != blank %}
++            <video class="lx-scroll-hero__video" data-scroll-video
++              data-src="{{ lx_scroll_source.url | escape }}"
++              {% if lx_scroll_mobile_source != blank %}data-src-mobile="{{ lx_scroll_mobile_source.url | escape }}"{% endif %}
++              width="{{ lx_scroll_source.width }}" height="{{ lx_scroll_source.height }}"
++              poster="{{ lx_campaign_image | image_url: width: 1600 }}"
++              muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
++          {% endif %}
++        </div>
++      {% else %}
+       <div class="lx-background-hero-media" data-hero-media>
+         <img src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-wand-0811-poster.jpg?v=1794177208" width="1296" height="1800" loading="eager" fetchpriority="high" alt="{{ 'luxe_home.hero.video_description' | t | escape }}">
+         <video muted playsinline loop preload="none" data-hero-video data-src="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-wand-0811.mp4?v=1794177202" poster="https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-wand-0811-poster.jpg?v=1794177208" aria-hidden="true" tabindex="-1"></video>
+         <button type="button" class="lx-hero-video-control" data-hero-toggle data-play-label="{{ 'luxe_home.hero.play' | t | escape }}" data-pause-label="{{ 'luxe_home.hero.pause' | t | escape }}" hidden>{{ 'luxe_home.hero.play' | t }}</button>
+       </div>
++      {% endif %}
++      {% if lx_scroll_source != blank %}
++        <div class="lx-scroll-hero__controls" data-scroll-controls hidden>
++          <button type="button" data-scroll-hold aria-pressed="false">{{ 'lx_scroll_hero.hold' | t }}</button>
++          <label class="lx-scroll-hero__range-label" for="lx-scroll-position-{{ section.id }}">{{ 'lx_scroll_hero.position' | t }}</label>
++          <input id="lx-scroll-position-{{ section.id }}" type="range" min="0" max="1000" step="1" value="0" data-scroll-range>
++          <span class="lx-scroll-hero__status" data-scroll-status role="status" aria-live="polite">{{ 'lx_scroll_hero.poster' | t }}</span>
++        </div>
++      {% endif %}
+       <div class="lx-hero-copy">
+         <p class="lx-eyebrow">{{ 'luxe_home.sch_nes_f_r_deinen_alltag_14a23' | t }}</p>
+         <h1 id="lx-hero-title">{{ 'luxe_home.hero.heading_first' | t }}<br><em>{{ 'luxe_home.hero.heading_second' | t }}</em></h1>
+@@ -45,6 +98,7 @@
+         </div>
+       </div>
+     </section>
++    {% if lx_scroll_source != blank %}</luxe-scroll-hero>{% endif %}
+     <section class="lx-worlds lx-section{% if lx_standard_home %} lx-worlds--photo-grid{% endif %}" id="lx-worlds" aria-labelledby="lx-worlds-title" style="--lx-worlds-label: {{ section.settings.worlds_text_color | default: '#ffffff' }};">
+       <div class="lx-section-heading"><div><p class="lx-eyebrow">{{ 'luxe_home.deine_einkaufswelten_8c136' | t }}</p><h2 id="lx-worlds-title">{{ 'luxe_home.was_passt_zu_dir_8d3c4' | t }}</h2></div><p>{{ 'luxe_home.weniger_suchen_e0c2e' | t }}<br>{{ 'luxe_home.mehr_entdecken_386fc' | t }}</p></div>
+       {% assign lx_home_categories = 'selbst-gestalten-1|design,damen-mode|women,fur-ihn|men,sub-baby-kids|kids,schuhe|shoes,sub-taschen|bags,schmuck|jewellery,uhren|watches,beauty-pflege|beauty,wohnen-dekoration|home,sub-kueche|kitchen,elektronik-technik|electronics,gaming|gaming,hundewelt|dogs,sport-outdoor|sport,premium-geschenke|gifts' | split: ',' %}
+@@ -616,10 +670,192 @@
+   </script>
+ </div>
+ 
++{% stylesheet %}
++  /* One still campaign image. The modifier also outranks the older hero asset rules. */
++  .lx-home .lx-background-hero.lx-campaign-hero {
++    min-block-size: clamp(600px, 73svh, 820px);
++    background: var(--lx-ink);
++    color: var(--lx-cream);
++  }
++  .lx-home .lx-campaign-hero__media {
++    --lx-campaign-object-position: var(--lx-campaign-focus, 50% 40%);
++    position: absolute;
++    inset: 0;
++    z-index: 0;
++    overflow: hidden;
++  }
++  .lx-home .lx-campaign-hero__media img {
++    inline-size: 100%;
++    block-size: 100%;
++    object-fit: cover;
++    object-position: var(--lx-campaign-object-position);
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero::before {
++    content: '';
++    position: absolute;
++    inset: 0;
++    z-index: 1;
++    pointer-events: none;
++    background: linear-gradient(90deg, rgb(18 15 11 / .84) 0%, rgb(18 15 11 / .67) 31%, rgb(18 15 11 / .28) 62%, rgb(18 15 11 / .06) 100%);
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy {
++    position: relative;
++    z-index: 2;
++    inline-size: min(76%, 960px);
++    min-inline-size: 0;
++    min-block-size: inherit;
++    justify-content: center;
++    padding: clamp(40px, 5.5vw, 88px);
++    background: transparent;
++    color: var(--lx-cream);
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-eyebrow {
++    color: var(--lx-cream);
++    font-size: 11px;
++    letter-spacing: .19em;
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero h1 {
++    max-inline-size: 100%;
++    margin: 24px 0;
++    color: var(--lx-cream);
++    font-size: clamp(64px, 7.4vw, 116px);
++    line-height: 1;
++    letter-spacing: -.045em;
++    text-wrap: balance;
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero h1 em { color: #e9d7ba; }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-description {
++    max-inline-size: 38ch;
++    color: var(--lx-cream);
++    font-size: 16px;
++    line-height: 1.65;
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-actions { margin-block-start: 30px; gap: 14px 22px; }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-button {
++    min-block-size: 54px;
++    padding: 16px 22px;
++    border-color: var(--lx-cream);
++    border-radius: 12px;
++    background: var(--lx-cream);
++    color: var(--lx-ink) !important;
++    font-size: 13px;
++  }
++  .lx-home .lx-background-hero.lx-campaign-hero .lx-text-link { color: var(--lx-cream); font-size: 13px; }
++  .lx-home .lx-background-hero.lx-campaign-hero a:focus-visible {
++    outline: 3px solid var(--lx-cream);
++    outline-offset: 5px;
++    box-shadow: 0 0 0 7px var(--lx-ink);
++  }
++  @media (min-width: 761px) and (max-width: 1050px) {
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy { inline-size: 86%; padding: 48px; }
++    .lx-home .lx-background-hero.lx-campaign-hero h1 { font-size: clamp(58px, 7.2vw, 76px); }
++  }
++  @media (max-width: 760px) {
++    .lx-home .lx-background-hero.lx-campaign-hero { min-block-size: clamp(490px, calc(100svh - 330px), 600px); }
++    .lx-home .lx-campaign-hero__media { --lx-campaign-object-position: var(--lx-campaign-mobile-x, 65%) 40%; }
++    .lx-home .lx-background-hero.lx-campaign-hero::before {
++      background: linear-gradient(180deg, rgb(18 15 11 / .02) 0%, rgb(18 15 11 / .08) 25%, rgb(18 15 11 / .42) 44%, rgb(18 15 11 / .9) 70%, rgb(18 15 11 / .98) 100%);
++    }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy {
++      inline-size: 100%;
++      justify-content: flex-end;
++      padding: 180px 24px 28px;
++    }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-eyebrow { font-size: 9px; letter-spacing: .16em; }
++    .lx-home .lx-background-hero.lx-campaign-hero h1 { margin: 14px 0 16px; font-size: clamp(35px, 10vw, 54px); letter-spacing: -.04em; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-description { font-size: 14px; line-height: 1.6; max-inline-size: 37ch; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-actions { gap: 10px 14px; margin-block-start: 22px; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-button { min-block-size: 50px; padding: 14px 16px; gap: 16px; font-size: 12px; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-text-link { min-block-size: 48px; gap: 8px; font-size: 12px; }
++  }
++  @media (max-width: 359px) {
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy { padding-inline: 18px; }
++    .lx-home .lx-background-hero.lx-campaign-hero h1 { font-size: 33px; }
++  }
++  @media (forced-colors: active) {
++    .lx-home .lx-background-hero.lx-campaign-hero { background: Canvas; color: CanvasText; }
++    .lx-home .lx-background-hero.lx-campaign-hero::before { display: none; }
++    .lx-home .lx-campaign-hero__media { display: none; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-copy,
++    .lx-home .lx-background-hero.lx-campaign-hero h1,
++    .lx-home .lx-background-hero.lx-campaign-hero h1 em,
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-eyebrow,
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-hero-description,
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-text-link { color: CanvasText; }
++    .lx-home .lx-background-hero.lx-campaign-hero .lx-button { background: ButtonFace; border-color: ButtonText; color: ButtonText !important; }
++  }
++
++  /* R272: normal scrolling, scoped sticky owner, unchanged typography and CTAs. */
++  .lx-home .lx-scroll-root { --lx-scroll-sticky-top: 0px; display: block; min-inline-size: 0; }
++  body:has(#header-component[sticky='always']) .lx-scroll-root,
++  body:has(#header-component[sticky='scroll-up'][data-sticky-state='active']) .lx-scroll-root {
++    --lx-scroll-sticky-top: var(--header-height, 0px);
++  }
++  .lx-home .lx-scroll-root[data-scroll-enhanced] { padding-block-end: min(84svh, 800px); }
++  .lx-home .lx-scroll-root[data-scroll-enhanced] .lx-scroll-hero {
++    position: sticky; top: var(--lx-scroll-sticky-top); margin-block-start: 0;
++  }
++  .lx-home .lx-scroll-root[data-scroll-tall] { padding-block-end: 0; }
++  .lx-home .lx-scroll-root[data-scroll-tall] .lx-scroll-hero { position: relative; top: auto; }
++  .lx-home .lx-scroll-root { padding-block-start: 20px; }
++  .lx-home .lx-scroll-root .lx-scroll-hero { margin-block-start: 0; }
++  .lx-home .lx-background-hero.lx-campaign-hero.lx-scroll-hero { display: grid; grid-template-columns: 44% 56%; }
++  .lx-home .lx-background-hero.lx-campaign-hero.lx-scroll-hero::before { content: none; }
++  .lx-home .lx-scroll-hero .lx-campaign-hero__media { position: relative; grid-column: 2; grid-row: 1; min-block-size: inherit; }
++  .lx-home .lx-scroll-hero .lx-campaign-hero__media img { position: absolute; inset: 0; }
++  .lx-home .lx-background-hero.lx-campaign-hero.lx-scroll-hero .lx-hero-copy { grid-column: 1; grid-row: 1; inline-size: 100%; min-inline-size: 0; padding-inline: clamp(28px, 4vw, 60px); }
++  .lx-home .lx-scroll-hero__video {
++    position: absolute; inset: 0; inline-size: 100%; block-size: 100%;
++    object-fit: contain; object-position: center top; opacity: 0; background: var(--lx-ink);
++  }
++  .lx-home .lx-scroll-root[data-has-frame] .lx-scroll-hero__video { opacity: 1; }
++  .lx-home .lx-scroll-hero__controls {
++    position: absolute; z-index: 4; inset-block-start: 18px; inset-inline-start: 18px;
++    display: grid; grid-template-columns: auto minmax(90px, 140px); gap: 4px 12px;
++    max-inline-size: calc(100% - 36px); padding: 8px 12px;
++    border: 1px solid var(--lx-line); border-radius: 14px;
++    background: var(--lx-cream); color: var(--lx-ink); font-size: 12px; line-height: 1.4;
++  }
++  .lx-home .lx-scroll-hero__controls[hidden] { display: none; }
++  .lx-home .lx-scroll-hero__controls button {
++    grid-row: 1 / 3; min-block-size: 44px; min-inline-size: 44px;
++    padding: 8px 12px; border: 1px solid var(--lx-ink); border-radius: 8px;
++    color: var(--lx-ink); background: var(--lx-cream);
++  }
++  .lx-home .lx-scroll-hero__controls input { inline-size: 100%; min-inline-size: 0; min-block-size: 44px; margin: 0; accent-color: var(--lx-ink); }
++  .lx-home .lx-scroll-hero__range-label { grid-column: 2; }
++  .lx-home .lx-scroll-hero__status { grid-column: 1 / -1; }
++  @media (min-width: 761px) {
++    .lx-home .lx-background-hero.lx-campaign-hero.lx-scroll-hero .lx-hero-copy { padding-block-start: 140px; padding-block-end: 60px; }
++    .lx-home .lx-background-hero.lx-campaign-hero.lx-scroll-hero h1 { font-size: clamp(52px, 5.1vw, 84px); }
++  }
++  @media (prefers-reduced-motion: no-preference) {
++    .lx-home .lx-scroll-hero__controls button { transition: transform 120ms cubic-bezier(.16, 1, .3, 1); }
++    .lx-home .lx-scroll-hero__controls button:active { transform: scale(.97); }
++  }
++  @media (max-width: 760px) {
++    .lx-home .lx-scroll-root { padding-block-start: 16px; }
++    .lx-home .lx-background-hero.lx-campaign-hero.lx-scroll-hero { display: flex; flex-direction: column; min-block-size: 0; min-height: 0; }
++    .lx-home .lx-scroll-hero .lx-campaign-hero__media { flex: none; min-block-size: 0; block-size: clamp(250px, 43svh, 480px); inline-size: 100%; }
++    .lx-home .lx-background-hero.lx-campaign-hero.lx-scroll-hero .lx-hero-copy { min-block-size: 0; padding: 24px 24px 28px; }
++    .lx-home .lx-scroll-hero__controls { position: relative; inset: auto; max-inline-size: calc(100% - 24px); margin: 12px 12px 0; }
++  }
++  @media (prefers-reduced-motion: reduce), (forced-colors: active) {
++    .lx-home .lx-scroll-root[data-scroll-enhanced] { padding-block-end: 0; }
++    .lx-home .lx-scroll-root[data-scroll-enhanced] .lx-scroll-hero { position: relative; top: auto; }
++    .lx-home .lx-scroll-hero__video { display: none; }
++    .lx-home .lx-scroll-hero__controls { display: none; }
++  }
++{% endstylesheet %}
++
+ {% schema %}
+ {
+   "name": "LuxeStyle – Editorial",
+   "settings": [
++    {"type":"checkbox","id":"hero_scroll_enabled","label":"t:lx_scroll_hero.enabled","default":false},
++    {"type":"video","id":"hero_scroll_video","label":"t:lx_scroll_hero.video","info":"t:lx_scroll_hero.video_info"},
++    {"type":"image_picker","id":"hero_campaign_image","label":"t:lx_campaign_hero.image_label","info":"t:lx_campaign_hero.image_info"},
++    {"type":"range","id":"hero_campaign_mobile_focus","label":"t:lx_campaign_hero.mobile_focus_label","min":0,"max":100,"step":1,"unit":"%","default":65},
+     {"type":"product_list","id":"more_products","label":"Weitere Produkte","limit":8},
+     {"type":"header","content":"t:luxe_world_cards.heading"},
+     {"type":"color","id":"worlds_text_color","label":"t:luxe_world_cards.text_color","default":"#ffffff"},
+--- a/templates/index.json
++++ b/templates/index.json
+@@ -12,6 +12,8 @@
+     "luxe_home": {
+       "type": "luxe-edit-home",
+       "settings": {
++        "hero_campaign_image": "shopify://shop_images/luxe-atelier-scroll-poster-r272.jpg",
++        "hero_campaign_mobile_focus": 65,
+         "more_products": [
+           "led-leucht-brustgeschirr-reissfest-933632",
+           "handgemachte-3d-liebesnagel-blue-ice-652096",
+@@ -38,7 +40,9 @@
+         "worlds_gaming_image": "shopify://shop_images/luxestyle-einkaufswelt-gaming-20261115.png",
+         "worlds_dogs_image": "shopify://shop_images/luxestyle-einkaufswelt-hundewelt-pullover-20261115.png",
+         "worlds_beauty_image": "shopify://shop_images/luxestyle-einkaufswelt-beauty-20261115.png",
+-        "worlds_sport_image": "shopify://shop_images/luxestyle-einkaufswelt-sport-20261115.png"
++        "worlds_sport_image": "shopify://shop_images/luxestyle-einkaufswelt-sport-20261115.png",
++        "hero_scroll_enabled": true,
++        "hero_scroll_video": "shopify://files/videos/luxe-atelier-scroll-master-r272.mp4"
+       }
+     },
+     "luxe_reviews": {

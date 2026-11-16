@@ -1,0 +1,74 @@
+[
+  {
+    "file": "assets/luxe-scroll-hero.js",
+    "bytes": 7808,
+    "sha256": "bb9a92dce1787df8d499a5615badeb163738da0b309da2627ceb9e4926569151",
+    "gitBlob": "46f514dfed19616be74ddafbcab78d29ab61eb37",
+    "expectedBaseMd5": null,
+    "newFileExpectedAbsent": true
+  },
+  {
+    "file": "locales/de.json",
+    "bytes": 54108,
+    "sha256": "9d415b541265b81d1c34f3ff4a844538ddc1bc4c541baf71894974b7ea1ed16b",
+    "gitBlob": "f7be377c0857964363c0336109eaea5e79b083ce",
+    "expectedBaseMd5": "6cdb896f31cad66a9cc2f3f0936f39fd",
+    "newFileExpectedAbsent": false
+  },
+  {
+    "file": "locales/de.schema.json",
+    "bytes": 51956,
+    "sha256": "f3c29fb94dfc01b9e97cb94bec66d7c0305aded0249b193c0a9efd4630620e84",
+    "gitBlob": "68ba0936f90ad20020f9b150f1e155a83c250d46",
+    "expectedBaseMd5": "1c38f38260f84023fce55c08b25f12a4",
+    "newFileExpectedAbsent": false
+  },
+  {
+    "file": "locales/en.default.json",
+    "bytes": 51331,
+    "sha256": "2b04d71fb4314d7b42022d520ee6b2dd981ce4407e96a9fd94257468f00a2748",
+    "gitBlob": "86a7e9109e405d3892448817d5ce88f311438a49",
+    "expectedBaseMd5": "b12df48be4468b89edbe8743be2020f1",
+    "newFileExpectedAbsent": false
+  },
+  {
+    "file": "locales/en.default.schema.json",
+    "bytes": 53055,
+    "sha256": "b003fd95be35191513b1207b75c494882c6a679ed8e8538477035e29733608ec",
+    "gitBlob": "932023b376ae5c3d16992e21c88c3704e91990b9",
+    "expectedBaseMd5": "57512d1064a003a0a5bc8d632650b06d",
+    "newFileExpectedAbsent": false
+  },
+  {
+    "file": "locales/fr.json",
+    "bytes": 32852,
+    "sha256": "bfd8ff7675414f98a979b1938ae43a7f8ed68030e4ef4cdb152ba2390ea38a91",
+    "gitBlob": "69432e56622b069d336b3bcd945fc36a130da09d",
+    "expectedBaseMd5": "6a998951e85c24eab2c8a577d477bda8",
+    "newFileExpectedAbsent": false
+  },
+  {
+    "file": "locales/fr.schema.json",
+    "bytes": 53271,
+    "sha256": "31667a032df2badd94bd7b09b7174a522f50fcc77d3d910534e17bbc55501c39",
+    "gitBlob": "1e88f6b62cbe1d2077632bc1e35b551cc0c89e91",
+    "expectedBaseMd5": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+    "newFileExpectedAbsent": false
+  },
+  {
+    "file": "sections/luxe-edit-home.liquid",
+    "bytes": 78600,
+    "sha256": "af3274777285c48f6ebe06c344e94b6cc50da53e84cccab19d984710b6476810",
+    "gitBlob": "de837733b9077c18911b9f12117a8daf327748e0",
+    "expectedBaseMd5": "8ef120629f6ad0c04eb13fd9acbf6ae8",
+    "newFileExpectedAbsent": false
+  },
+  {
+    "file": "templates/index.json",
+    "bytes": 3008,
+    "sha256": "0c1e14341632a1a9f0a6711e50dee3e37e1894b0ca3fadb585e2abdcb644adf5",
+    "gitBlob": "c8078eabeadb4984bf972441c55fa600780943ed",
+    "expectedBaseMd5": "aa3d177234272df6acedab60272a5396",
+    "newFileExpectedAbsent": false
+  }
+]

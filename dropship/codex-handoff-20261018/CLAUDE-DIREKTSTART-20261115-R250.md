@@ -1,3 +1,9 @@
+# R273 – Live-Freigabe gültig, Medien READY; aktuelle Theme-Kopie fehlt – 17.11.2026
+
+«Mach live» genehmigt den konkreten R272-Film und seine Veröffentlichung. Video und Standbild sind in Shopify READY; Original hashgleich und acht echte öffentliche CDN-Seeks bestanden. Neun vollständige Einbaudateien sind an die echten Ressourcen gebunden, alle alten Übersetzungen und übrigen Index-Daten erhalten. **Noch nicht live:** Die Kopieraktion bestätigt keine neue aktuelle Theme-ID; keine MAIN-Änderung oder Veröffentlichung einer alten Kopie. Die Frage nach der aktuellen Kopie ist offen, keine erneute Film-/Kostenfreigabe nötig. [Status](R273-REPORT-20261117.md) · [Belege](R273-PROOF-20261117.json) · [Einbauvertrag](runs/20261117-r273/APPLY-CHECKLIST.md). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.
+
+---
+
 # R272 – Drei Takes und echter 15-Sekunden-Prüfschnitt – 16.11.2026
 
 Die Antwort «ja nimm mehr credits» genehmigt die konkret angefragte Ausnahme für drei Takes bis zusammen 90 Credits. Alle drei Jobs sind abgeschlossen; ein stummer 15-Sekunden-Review-Master mit 1080 × 1440 Pixeln ist erstellt, angezeigt und öffentlich hashgleich zurückgelesen. **Render und Schnitt vorhanden; kreative Inhaberabnahme und Live-Einbau offen.** Neun lokale Integrationsdateien samt vier echten Chromium-/MP4-Prüfungen vorbereitet, keine Shopify-Writes. Die alten PENDING-Kostenangaben R270/R271 sind Historie und durch diese enge Zustimmung überholt; keine zusätzlichen Paid-Retries genehmigt. [Film und Stand](R272-REPORT-20261116.md) · [Belege](R272-PROOF-20261116.json) · [Integrationsvertrag](runs/20261116-r272/integration/README.md). R268 bleibt abgeschlossen; Claude-Empfang unbekannt.

@@ -1,0 +1,10 @@
+{
+  "locales/de.json": "6cdb896f31cad66a9cc2f3f0936f39fd",
+  "locales/de.schema.json": "1c38f38260f84023fce55c08b25f12a4",
+  "locales/en.default.json": "b12df48be4468b89edbe8743be2020f1",
+  "locales/en.default.schema.json": "57512d1064a003a0a5bc8d632650b06d",
+  "locales/fr.json": "6a998951e85c24eab2c8a577d477bda8",
+  "locales/fr.schema.json": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+  "sections/luxe-edit-home.liquid": "8ef120629f6ad0c04eb13fd9acbf6ae8",
+  "templates/index.json": "aa3d177234272df6acedab60272a5396"
+}

@@ -1,0 +1,83 @@
+{
+  "scope": "PUBLIC_CURRENT_MAIN_HEADER_ONLY_READONLY",
+  "writes": 0,
+  "blockedNonGET": 23,
+  "cases": [
+    {
+      "y": 0,
+      "header": {
+        "top": 79.890625,
+        "bottom": 139.890625,
+        "height": 60,
+        "position": "static",
+        "display": "block"
+      },
+      "search": {
+        "top": 139.890625,
+        "bottom": 205.265625,
+        "height": 65.375,
+        "position": "sticky",
+        "display": "block"
+      },
+      "headerHeight": "60px",
+      "groupHeight": "205px"
+    },
+    {
+      "y": 200,
+      "header": {
+        "top": -1,
+        "bottom": 59,
+        "height": 60,
+        "position": "static",
+        "display": "block"
+      },
+      "search": {
+        "top": -60.109375,
+        "bottom": 5.265625,
+        "height": 65.375,
+        "position": "sticky",
+        "display": "block"
+      },
+      "headerHeight": "60px",
+      "groupHeight": "205px"
+    },
+    {
+      "y": 500,
+      "header": {
+        "top": -1,
+        "bottom": 59,
+        "height": 60,
+        "position": "static",
+        "display": "block"
+      },
+      "search": {
+        "top": -360.109375,
+        "bottom": -294.734375,
+        "height": 65.375,
+        "position": "sticky",
+        "display": "block"
+      },
+      "headerHeight": "60px",
+      "groupHeight": "205px"
+    },
+    {
+      "y": 900,
+      "header": {
+        "top": -1,
+        "bottom": 59,
+        "height": 60,
+        "position": "static",
+        "display": "block"
+      },
+      "search": {
+        "top": -760.109375,
+        "bottom": -694.734375,
+        "height": 65.375,
+        "position": "sticky",
+        "display": "block"
+      },
+      "headerHeight": "60px",
+      "groupHeight": "205px"
+    }
+  ]
+}
