@@ -574,7 +574,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
       <span id="hausWertTxt" style="font-size:.85rem;color:#b8862a;font-weight:800"></span>
       <button id="achClose" style="border:0;background:#e8e0d0;border-radius:14px;width:36px;height:36px;font-size:1rem;cursor:pointer">✕</button>
     </div>
-    <div class="stadt-schnell"><button type="button" id="oevMenue">🚏 ÖV-Liniennetz</button><button type="button" id="rennenMenue">🏎️ Rundkurs Oststadt</button><button type="button" id="lebenMenue">📷 Stadtleben & Fotoalbum</button><button type="button" id="oststadtGps">🏙️ Oststadt entdecken</button></div>
+    <div class="stadt-schnell"><button type="button" id="missionenMenue">📋 Stadtmissionen</button><button type="button" id="oevMenue">🚏 ÖV-Liniennetz</button><button type="button" id="rennenMenue">🏎️ Rundkurs Oststadt</button><button type="button" id="lebenMenue">📷 Stadtleben & Fotoalbum</button><button type="button" id="oststadtGps">🏙️ Oststadt entdecken</button></div>
     <div class="aktivitaeten">
       <div class="aktiv-karte"><b>🧭 Deine Stadt entdecken</b><p>Drei Orte, ein Weg. Zu Fuss oder im Auto – die GPS-Linie führt dich.</p><div class="aktiv-wahl"><button type="button" id="tourStart">Entspannt erkunden</button><button type="button" id="rallyStart">🏁 Gegen die Uhr</button></div><small id="rallyRekord"></small></div>
       <div class="aktiv-karte"><b>💃 Beat-Club</b><p>Acht Beats, sichtbare Tanzmoves. Triff den Ring im Takt.</p><div class="aktiv-wahl"><button type="button" data-tanz="0">Locker</button><button type="button" data-tanz="1">Groove</button><button type="button" data-tanz="2">Profi</button></div></div>
@@ -588,6 +588,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <button type="button" id="stadtAktion"></button>
 <div id="oevHud" class="stadt-fahrt-hud"><div><b id="oevTitel"></b><small id="oevText"></small></div><button type="button" id="oevAusstieg" aria-label="An der nächsten Haltestelle aussteigen">⏏</button></div>
 <div id="rennenHud" class="stadt-fahrt-hud"><div><b id="rennenTitel"></b><small id="rennenText"></small></div><button type="button" id="rennenAbbruch" aria-label="Rennen abbrechen">✕</button></div>
+<div id="missionHud" class="stadt-fahrt-hud" role="region" aria-label="Aktuelle Stadtmission"><div><b id="missionTitel"></b><small id="missionText"></small></div><button type="button" id="missionGPS" aria-label="GPS zum Missionsziel">⌖</button><button type="button" id="missionAbbruch" aria-label="Auftrag abbrechen">✕</button></div>
 <div id="fahrPedale"><button type="button" id="fahrBremse" aria-label="Bremsen, gehalten rückwärts fahren">BREMSE<br>↓</button><button type="button" id="fahrGas" aria-label="Gas geben">GAS<br>↑</button></div>
 <div id="rundenErgebnis" role="dialog" aria-modal="true" aria-labelledby="ergebnisTitel" aria-describedby="ergebnisText">
   <div class="ergebnis-karte"><div id="ergebnisSymbol" aria-hidden="true"></div><h2 id="ergebnisTitel"></h2><div id="ergebnisSterne" aria-label="Sterne"></div><div id="ergebnisWert"></div><p id="ergebnisText"></p><div class="ergebnis-knopf"><button type="button" id="ergebnisZu">Zurück zur Stadt</button><button type="button" id="ergebnisNochmal">Nochmal spielen</button></div></div>
@@ -701,8 +702,10 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <script src="/js/vendor/RGBELoader.js"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script src="/js/mp.js"></script>
-<link rel="stylesheet" href="/js/traumhaus-stadt.css?v=2">
-<script src="/js/traumhaus-stadt.js?v=2"></script>
+<link rel="stylesheet" href="/js/traumhaus-stadt.css?v=3">
+<script src="/js/traumhaus-stadt.js?v=3"></script>
+<link rel="stylesheet" href="/js/traumhaus-missionen.css?v=1">
+<script src="/js/traumhaus-missionen.js?v=1"></script>
 <script>
 (function(){
 "use strict";
@@ -13968,6 +13971,7 @@ function hetzeEinladung(){
   var p1=document.getElementById("hetzePanel");if(p1)p1.style.display="flex";
   return true;}
 function hetzeStart(){
+  if(missionAn()){hint("Beende zuerst deinen Stadtauftrag.");return;}
   if(RALLY.an){hint("Beende zuerst die Stadttour über ✕ am Tour-Feld.");return;}
   var b0=document.getElementById("hetzeNochmal");if(b0)b0.textContent="🔁 Nochmal";
   HETZE.an=true;HETZE.t=HETZE.dauer;HETZE.punkte=0;HETZE.kette=0;HETZE._piep=99;
@@ -15055,6 +15059,7 @@ function loadSnapshot(sn){
   naechsteAbnahme=(sn.na!==undefined&&sn.na>0)?sn.na:(sn.tag||tag)+4;
   if(sn.bkT!==undefined)window._buskTag=sn.bkT;if(sn.bkH!==undefined)window._buskHeute=sn.bkH;
   if(sn.anC!==undefined)window._angelCd=sn.anC;
+  missionLaden(sn.st&&sn.st.stadtMissionen);
   if(sn.kb!==undefined)KOMBO.best=sn.kb|0;
   if(sn.an)_achNah=sn.an;
   if(sn.hz!==undefined)HETZE.best=sn.hz|0;
@@ -16074,6 +16079,7 @@ var LIEFERZIELE=[["Markt",26,67],["Seepark",10,139],["Spielplatz",57,-3],["Bauer
   ["Neustadt",370,-140],["Technikpark",405,-260],["Burgdorf",-300,-390],["Bergsee-Camping",330,360]];
 document.getElementById("lieferBtn").onclick=function(){
   if(!fahren||liefer)return;
+  if(missionAn()){hint("Beende zuerst deinen Stadtauftrag.");return;}
   /* 💰 Die Lieferung war die einzige UNGEDECKELTE Geldquelle: ~120-260 $ pro Minute,
      das 4- bis 7-fache des Tagesgehalts, endlos wiederholbar — sie entwertete Arbeit,
      Ernte und Auftraege. Vier pro Tag reichen als Bonus-Einkommen. */
@@ -16900,9 +16906,8 @@ function npcAnsprechen(){
   if(!f.stand){f.stand=true;var sp9=spielerPos();f._blick=Math.atan2(sp9.x-f.x,sp9.z-f.z);
     setTimeout(function(){f.stand=false;f._blick=undefined;},3500);}       // bleibt kurz stehen und schaut her
   if(Math.random()<0.35){
-    var a=NPC_AUFTRAEGE[(Math.random()*NPC_AUFTRAEGE.length)|0];
-    verdiene(Math.round(a[1]*stufenBonus()));
-    hint("„"+a[0]+"“  → +"+a[1]+" $");
+    hint("„Die Stadtzentrale sucht Hilfe. Schau dir die offenen Aufträge an.“");
+    missionMenue();
     beep(700,.09,"sine",.05);setTimeout(function(){beep(920,.11,"sine",.05);},110);
     stats.gespraeche=(stats.gespraeche||0)+1;
   }else{
@@ -18173,7 +18178,7 @@ function nearestEdge(c){
   return {x:c.gx,y:c.gy,d:1,wx:cx(c.gx)+CS/2,wz:cz(c.gy)};}
 function tapAt(px,py){
   if(!running)return;
-  if(!buildMode&&STADT){var cp=pickCell(px,py);if(cp){for(var ci=0;ci<stadtAutos.length;ci++){var ca=stadtAutos[ci];if(Math.hypot(ca.mesh.position.x-cp.pt.x,ca.mesh.position.z-cp.pt.z)<3.2){einsteigen(ca,ca!==RENNEN.auto);return;}}}}
+  if(!buildMode&&STADT){var cp=pickCell(px,py);if(cp){for(var ci=0;ci<stadtAutos.length;ci++){var ca=stadtAutos[ci];if(Math.hypot(ca.mesh.position.x-cp.pt.x,ca.mesh.position.z-cp.pt.z)<3.2){einsteigen(ca,ca!==RENNEN.auto&&!ca._mission);return;}}}}
   if(!buildMode){ // Bewohner antippen -> Kamera folgt · NPC antippen -> Taschendieb
     var c0=pickCell(px,py);
     if(c0){for(var ni9=0;ni9<npcs.length;ni9++){var n9=npcs[ni9];
@@ -18355,16 +18360,17 @@ function stadtInit(){
   STADT=Traumstadt.createWorld(THREE,scene,function(x,z,w,d){addSolid(x,z,w,d,null);});
   if(window._zfStatisch)window._zfStatisch(STADT.root);
   STADTLEBEN=Traumstadt.createLife(THREE,scene,function(x,z,w,d){addSolid(x,z,w,d,null);});
-  WORLD_POIS.push([680,108,"🏙️","Oststadt"],[770,320,"🏎️","Motorsportpark"]);
+  WORLD_POIS.push([680,108,"🏙️","Oststadt"],[770,320,"🏎️","Motorsportpark"],[680,-68,"🏙️","Nordstadt"],[600,-120,"📦","Nordstadt Depot"],[760,-120,"🔧","Nordstadt Garage"],[680,-280,"🌳","Nordpark"]);
   var names=["Bahnhof","Marktplatz","Brunnmatt","Kathedrale","Meer","Zoo","Burgdorf","Bauernhof","Gewerbe Rietli","Neustadt","Flughafen","Technikpark"];
   var stops=names.map(function(n){var p=WORLD_POIS.find(function(q){return q[3]===n;});return {name:n,p:p?[p[0],p[1]]:[0,118]};});
   stops.push({name:"Oststadt Forum",p:[680,80]},{name:"Motorsportpark",p:[770,320]});
   ["Sportpark","Chilbiplatz","Freizeitpark","Bergsee-Camping","Spielclub","Seilbahn"].forEach(function(n){var p=WORLD_POIS.find(function(q){return q[3]===n;});if(p)stops.push({name:n,p:[p[0],p[1]]});});
+  stops.push({name:"Nordstadt Depot",p:[600,-160]},{name:"Nordpark",p:[680,-320]});
   OEV.graph=Traumstadt.graph(stadtWegSegmente(),stops);OEV.stops=OEV.graph.stops;
   OEV.stops.forEach(function(st){st.walk=stadtSichererHalt(st);if(!st.walk)return;var pole=new THREE.Mesh(new THREE.CylinderGeometry(.045,.045,2.9,6),stdMat(0x355f59,.8));pole.position.set(st.walk.x,1.45,st.walk.z);scene.add(pole);
     var cv=document.createElement("canvas");cv.width=512;cv.height=96;var c=cv.getContext("2d");c.fillStyle="#f9f5df";c.fillRect(0,0,512,96);c.fillStyle="#245644";c.font="bold 30px sans-serif";c.textAlign="center";c.fillText("H · "+st.name,256,59);var tx=new THREE.CanvasTexture(cv);var label=new THREE.Sprite(new THREE.SpriteMaterial({map:tx}));label.scale.set(10,1.88,1);label.position.set(st.walk.x,3.4,st.walk.z);scene.add(label);st.label=label;st.pole=pole;});
-  [{id:"M1",name:"Stadtlinie",color:0x246e68,ids:[0,1,2,19,18,3,4]},{id:"R2",name:"Nordwest-Linie",color:0xb06d24,ids:[0,5,6,7]},{id:"X3",name:"Ost-Express",color:0x73519a,ids:[0,8,9,10,11,12,13,12,9]},{id:"S4",name:"Freizeit-Linie",color:0x356da1,ids:[0,14,15,16,17,16]}].forEach(function(cfg,i){var f=Traumstadt.fahrplan(OEV.graph,cfg.ids,18,9);if(!f){console.warn("ÖV-Linie nicht verbunden:",cfg.id);return;}var bus=Traumstadt.vehicle(THREE,cfg.color,true);scene.add(bus.mesh);OEV.lines.push({id:cfg.id,name:cfg.name,color:cfg.color,ids:cfg.ids,f:f,bus:bus,phase:i*47,stand:null});});
-  OEV.ready=OEV.lines.length===4;
+  [{id:"M1",name:"Stadtlinie",color:0x246e68,ids:[0,1,2,19,18,3,4]},{id:"R2",name:"Nordwest-Linie",color:0xb06d24,ids:[0,5,6,7]},{id:"X3",name:"Ost-Express",color:0x73519a,ids:[0,8,9,10,11,20,12,13,12,9]},{id:"S4",name:"Freizeit-Linie",color:0x356da1,ids:[0,14,15,16,17,16]},{id:"N5",name:"Nordstadt-Shuttle",color:0x92732d,ids:[12,20,21]}].forEach(function(cfg,i){var f=Traumstadt.fahrplan(OEV.graph,cfg.ids,18,9);if(!f){console.warn("ÖV-Linie nicht verbunden:",cfg.id);return;}var bus=Traumstadt.vehicle(THREE,cfg.color,true);scene.add(bus.mesh);OEV.lines.push({id:cfg.id,name:cfg.name,color:cfg.color,ids:cfg.ids,f:f,bus:bus,phase:i*47,stand:null});});
+  OEV.ready=OEV.lines.length===5;missionInit();
   RENNEN.auto=Traumstadt.vehicle(THREE,0xe5ac39,false);RENNEN.auto.mesh.position.set(758,.05,322);RENNEN.auto.homeX=758;RENNEN.auto.homeZ=322;RENNEN.auto.mesh.rotation.y=Math.PI/2;scene.add(RENNEN.auto.mesh);stadtAutos.push(RENNEN.auto);
   var tours=[[[562,2],[798,2],[798,238],[562,238]],[[642,2],[718,2],[718,158],[642,158]],[[562,82],[798,82],[798,158],[562,158]],[[562,162],[718,162],[718,238],[562,238]]];
   tours.forEach(function(p,i){var a=Traumstadt.vehicle(THREE,[0xd4d9d3,0x788fa8,0x9e655b,0x4c6f62][i],false);a._npc=true;a.pfad=Traumstadt.path(p,true);a.phase=i*23;scene.add(a.mesh);stadtAutos.push(a);});
@@ -18401,7 +18407,7 @@ function stadtMenue(art){
   stadtPedaleLos();
   document.getElementById("achPanel").style.display="none";document.getElementById("bigmapWrap").style.display="none";var el=document.getElementById("stadtPanel");el.dataset.art=art;
   document.getElementById("stadtTitel").textContent=art==="oev"?"🚏 Liniennetz & Fahrplan":"🏎️ Rundkurs Oststadt";
-  document.getElementById("stadtBeschreibung").textContent=art==="oev"?"Vier Linien verbinden Zentrum und Aussenviertel. Folge dem GPS zur Haltestelle, steige bei haltendem Bus ein und fahre wirklich mit.":"668 Meter Rundkurs, zwei Runden, acht Checkpoints je Runde. Am Park steht ein kostenloser Leihwagen. Gas und Bremse rechts, Lenken links.";
+  document.getElementById("stadtBeschreibung").textContent=art==="oev"?"Fünf Linien verbinden Zentrum und Aussenviertel. N5 fährt vom Oststadt-Forum über das Depot zum Nordpark. Folge dem GPS zur Haltestelle, steige bei haltendem Bus ein und fahre wirklich mit.":"668 Meter Rundkurs, zwei Runden, acht Checkpoints je Runde. Am Park steht ein kostenloser Leihwagen. Gas und Bremse rechts, Lenken links.";
   var box=document.getElementById("stadtInhalt");box.textContent="";
   if(!STADT||!OEV.lines.length){box.textContent="Das Verkehrsnetz wird vorbereitet … öffne es gleich noch einmal.";}
   else if(art==="oev")OEV.lines.forEach(function(line,idx){var card=document.createElement("details");card.className="oev-linie";var h=document.createElement("summary"),mark=document.createElement("span");mark.className="linie-marke";mark.style.background="#"+line.color.toString(16).padStart(6,"0");mark.textContent=line.id;h.appendChild(mark);h.appendChild(document.createTextNode(line.name));card.appendChild(h);var list=document.createElement("ul");Array.from(new Set(line.ids)).forEach(function(k){var st=OEV.stops[k],li=document.createElement("li"),tx=document.createElement("span");tx.textContent=st.name;var eta=document.createElement("small");eta.dataset.etaLinie=idx;eta.dataset.etaHalt=k;eta.textContent="Fahrplan wird geladen …";tx.appendChild(eta);var b=document.createElement("button");b.textContent="GPS zur Haltestelle";b.onclick=function(){var p=oevStand(line),me=spielerPos();if(p.halt&&p.stop===k&&Math.hypot(me.x-p.x,me.z-p.z)<32){if(!oevEinsteigen(idx))hint("Zum Einsteigen aus dem Auto steigen und die Aktion beenden.");}else{st.walk=stadtSichererHalt(st);if(st.walk){gpsSetz(st.walk.x,st.walk.z);el.style.display="none";}else hint("Haltestelle wird noch freigeräumt.");}};b.dataset.linie=idx;b.dataset.halt=k;li.appendChild(tx);li.appendChild(b);list.appendChild(li);});card.appendChild(list);box.appendChild(card);});
@@ -18409,6 +18415,7 @@ function stadtMenue(art){
   el.style.display="flex";el.firstElementChild.scrollTop=0;box.scrollTop=0;document.getElementById("stadtZu").focus();
 }
 function rennenStart(){
+  if(missionAn()){hint("Beende zuerst deinen Stadtauftrag.");return;}
   if(!STADT)return;if(MPs&&!mpHost){hint("Der Gastgeber fährt; du kannst als Beifahrer mitfahren.");return;}
   if(OEV.ride||RALLY.an||HETZE.an||TANZ.on||KOCH.on||ANGEL.on||MG.on){hint("Beende zuerst die aktuelle Aktion.");return;}
   var p=spielerPos();if(Math.hypot(p.x-770,p.z-340)>55){gpsSetz(770,320);document.getElementById("stadtPanel").style.display="none";hint("Fahre oder nimm X3 zum Motorsportpark. Dort startet das Rennen.");return;}
@@ -18457,6 +18464,95 @@ document.getElementById("oevAusstieg").onclick=function(){if(!OEV.ride)return;va
 document.getElementById("rennenAbbruch").onclick=function(){rennenEnde(false);};
 document.addEventListener("keydown",function(e){var p=document.getElementById("stadtPanel");if(p.style.display!=="flex")return;e.stopPropagation();if(e.key==="Escape"){e.preventDefault();document.getElementById("stadtZu").click();}else if(e.key==="Tab"){var b=p.querySelectorAll("button:not(:disabled),summary,input:not(:disabled)"),first=b[0],last=b[b.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
 
+/* Stadtauftraege verbinden Orte, Fahrzeuge und gespeicherten Spielfortschritt. */
+var MISSION={car:null,ring:null,hold:null,last:0,ui:0,neu:true};
+function missionStand(){if(!window.TraumMission)return null;if(!stats.stadtMissionen)stats.stadtMissionen=TraumMission.fresh();return stats.stadtMissionen;}
+function missionAn(){var s=missionStand();return !!(s&&s.active);}
+function missionDaten(){var s=missionStand();if(!s||!s.active)return null;var d=TraumMission.definitions.find(function(d){return d.id===s.active.id;});return d?{state:s,active:s.active,def:d,step:d.stages[s.active.step]}:null;}
+function missionOrt(key,car){
+  if(!STADT||!STADT.plan.expansion)return null;var E=STADT.plan.expansion,p;
+  if(key==='forum')return car?{x:680,z:80}:{x:680,z:108};
+  if(key==='track')return {x:770,z:320};
+  if(key==='bahnhof'){var st=OEV.stops.find(function(s){return s.name==='Bahnhof';});if(st&&st.walk)return {x:st.walk.x,z:st.walk.z};return null;}
+  p=E[key];return p?{x:p[0],z:p[1]}:null;
+}
+function missionGast(){if(MPs&&!mpHost){hint('Der Gastgeber führt Stadtmissionen. Du kannst mitfahren und ihn begleiten.');return true;}return false;}
+function missionPause(){return !running||document.hidden||buildMode||MINI_ERG.on||TANZ.on||KOCH.on||ANGEL.on||MG.on||HETZE.an||RALLY.an||RENNEN.an||document.getElementById('stadtPanel').style.display==='flex'||document.getElementById('achPanel').style.display==='flex'||document.getElementById('bigmapWrap').style.display==='flex'||!!_fahrt||!!(window._coaster&&window._coaster.mit);}
+function missionInit(){
+  if(!STADT||!STADT.plan.expansion||MISSION.car)return;var p=STADT.plan.expansion.depot;
+  MISSION.car=Traumstadt.vehicle(THREE,0x438da5,false);MISSION.car.mesh.position.set(p[0]+3,.05,p[1]);MISSION.car.homeX=p[0]+3;MISSION.car.homeZ=p[1];MISSION.car.mesh.rotation.y=Math.PI;MISSION.car._mission=true;scene.add(MISSION.car.mesh);stadtAutos.push(MISSION.car);
+  /* Sichtbare Auftragsorte: Pakete, Werkbank und Schaltschrank teilen einen Zeichenaufruf. */
+  var items=[],marks=[],E=STADT.plan.expansion;
+  [['depot','DEPOT · PAKETE',0xbf925e],['garage','GARAGE · ÜBERFÜHRUNG',0x668d9f],['service','TECHNIK · STROM',0x78927b]].forEach(function(v){var q=E[v[0]],x=q[0]+6,z=q[1]-6;items.push({x:x,y:.7,z:z,w:2,h:1.4,d:1.3,c:v[2]});items.push({x:x,y:1.55,z:z,w:1.2,h:.3,d:.9,c:0xd8b360});addSolid(x,z,2,1.5,null);
+    var cv=document.createElement('canvas');cv.width=512;cv.height=80;var c=cv.getContext('2d');c.fillStyle='#253f38';c.fillRect(0,0,512,80);c.fillStyle='#fff6d8';c.font='bold 25px sans-serif';c.textAlign='center';c.fillText(v[1],256,49);var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv)}));sp.position.set(x,3.4,z);sp.scale.set(9,1.4,1);scene.add(sp);marks.push(sp);});
+  var props=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshLambertMaterial({color:0xffffff}),items.length),tmp=new THREE.Object3D();items.forEach(function(a,i){tmp.position.set(a.x,a.y,a.z);tmp.scale.set(a.w,a.h,a.d);tmp.updateMatrix();props.setMatrixAt(i,tmp.matrix);props.setColorAt(i,new THREE.Color(a.c));});props.instanceMatrix.needsUpdate=true;scene.add(props);MISSION.props=props;MISSION.marks=marks;
+  MISSION.ring=new THREE.Mesh(new THREE.TorusGeometry(3.4,.15,4,32),new THREE.MeshBasicMaterial({color:0x75d6d0}));MISSION.ring.rotation.x=-Math.PI/2;MISSION.ring._bewegt=true;MISSION.ring.visible=false;scene.add(MISSION.ring);MISSION.neu=true;
+}
+function missionLaden(raw){
+  if(!window.TraumMission)return;stats.stadtMissionen=TraumMission.sanitize(raw);MISSION.hold=null;MISSION.last=performance.now();MISSION.neu=true;
+  if(MISSION.car){if(fahren&&driveCar===MISSION.car)aussteigen();var p=STADT.plan.expansion.depot;MISSION.car.mesh.position.set(p[0]+3,.05,p[1]);MISSION.car.mesh.rotation.y=Math.PI;}
+  document.getElementById('missionHud').style.display='none';if(MISSION.ring)MISSION.ring.visible=false;
+}
+function missionGPS(){
+  var m=missionDaten();if(!m)return;var p=missionOrt(m.step.anchor,m.step.requirement!=='foot');
+  if(m.step.requirement==='missionCar'&&(!fahren||driveCar!==MISSION.car))p={x:MISSION.car.mesh.position.x,z:MISSION.car.mesh.position.z};
+  if(p)gpsSetz(p.x,p.z);
+}
+function missionStart(id){
+  if(missionGast())return;if(!running||!MISSION.car){hint('Die Stadt wird noch vorbereitet.');return;}
+  if(missionAn()){hint('Beende oder brich zuerst deinen laufenden Auftrag ab.');return;}
+  if(RALLY.an||RENNEN.an||HETZE.an||TANZ.on||KOCH.on||ANGEL.on||MG.on||liefer||TAXI.an){hint('Beende zuerst die aktuelle Fahrt oder Spielrunde.');return;}
+  var r=TraumMission.begin(missionStand(),id);if(!r.ok)return;stats.stadtMissionen=r.state;MISSION.hold=null;MISSION.last=performance.now();MISSION.neu=false;
+  if(id==='auto'&&driveCar!==MISSION.car){var p=STADT.plan.expansion.depot;MISSION.car.mesh.position.set(p[0]+3,.05,p[1]);MISSION.car.mesh.rotation.y=Math.PI;}
+  if(buildMode)document.getElementById('modeBtn').click();document.getElementById('stadtPanel').style.display='none';LEBEN.ziel=null;missionGPS();saveGame();hint('Auftrag angenommen. Folge dem GPS zum ersten Ziel.');
+}
+function missionAbbruch(){if(missionGast())return;var s=missionStand();if(!s||!s.active)return;stats.stadtMissionen=TraumMission.cancel(s).state;MISSION.hold=null;MISSION.ring.visible=false;document.getElementById('missionHud').style.display='none';gpsWeg();saveGame();hint('Auftrag abgebrochen. Du kannst ihn erneut annehmen.');}
+function missionBereit(m){
+  var p=missionOrt(m.step.anchor,m.step.requirement!=='foot'),me=spielerPos();if(!p||Math.hypot(me.x-p.x,me.z-p.z)>7||OEV.ride)return false;
+  if(m.step.requirement==='foot')return !fahren;
+  if(!fahren||Math.abs(carSpeed)>.7)return false;
+  return m.step.requirement!=='missionCar'||driveCar===MISSION.car;
+}
+function missionAktion(){
+  if(missionGast()||missionPause())return;var m=missionDaten();if(!m||!missionBereit(m)){hint('Erreiche das Ziel und halte an. Beachte, ob du aussteigen musst.');return;}
+  if(m.step.holdSeconds&&!MISSION.hold){var p=spielerPos();MISSION.hold={id:m.active.id,step:m.active.step,t:0,x:p.x,z:p.z};simGeste(sims[meinSi()],'winken');hint('Reparatur läuft. Bleib kurz beim Technikpunkt.');return;}
+  if(m.step.holdSeconds&&MISSION.hold.t<m.step.holdSeconds)return;
+  var r=TraumMission.advance(m.state,{anchor:m.step.anchor,mode:fahren?'car':'foot',missionCar:driveCar===MISSION.car,heldSeconds:MISSION.hold?MISSION.hold.t:0});if(!r.ok)return;
+  stats.stadtMissionen=r.state;MISSION.hold=null;beep(800,.1,'triangle',.05);
+  if(r.completed){MISSION.ring.visible=false;document.getElementById('missionHud').style.display='none';gpsWeg();var reward=r.reward?verdiene(r.reward,false):0;saveGame();simGeste(sims[meinSi()],'freude');
+    rundeZeigen({symbol:m.def.symbol,titel:m.def.name+' geschafft!',wert:reward?'+'+reward+' $':'Erneut geschafft',text:r.firstCompletion?'Auftrag abgeschlossen · Fortschritt im Spielstand.':'Die Erstbelohnung hast du bereits erhalten. Wiederholungen bleiben kostenlos.',sterne:r.timely===false?2:3,nochmal:function(){missionMenue();}});
+  }else{saveGame();missionGPS();hint(m.def.stages[r.state.active.step].title);}
+}
+function missionTakt(dt){
+  var clock=performance.now(),delta=MISSION.last?Math.max(0,(clock-MISSION.last)/1000):0;MISSION.last=clock;
+  if(!MISSION.car)return;var me=spielerPos();MISSION.props.visible=Math.hypot(me.x-680,me.z+80)<260;MISSION.marks.forEach(function(m){m.visible=Math.hypot(me.x-m.position.x,me.z-m.position.z)<70;});MISSION.car.mesh.visible=driveCar===MISSION.car||Math.hypot(me.x-MISSION.car.mesh.position.x,me.z-MISSION.car.mesh.position.z)<190;
+  var m=missionDaten(),hud=document.getElementById('missionHud'),pause=missionPause()||(MPs&&!mpHost);hud.style.display=m&&!pause&&!OEV.ride?'flex':'none';
+  if(!m||pause){MISSION.ring.visible=false;return;}if(MISSION.neu){missionGPS();MISSION.neu=false;}
+  m.active.elapsed=Math.min(604800,m.active.elapsed+delta);
+  if(MISSION.hold){var h=MISSION.hold;if(h.id!==m.active.id||h.step!==m.active.step||!missionBereit(m)||Math.hypot(me.x-h.x,me.z-h.z)>1.5){MISSION.hold=null;hint('Reparatur unterbrochen. Starte sie am Technikpunkt erneut.');}else{h.t+=delta;sims[meinSi()]._manualT=clock;if(h.t>=m.step.holdSeconds){missionAktion();return;}}}
+  var p=missionOrt(m.step.anchor,m.step.requirement!=='foot');if(p){MISSION.ring.visible=!OEV.ride&&Math.hypot(me.x-p.x,me.z-p.z)<150;MISSION.ring.position.set(p.x,.2,p.z);}
+  MISSION.ui-=dt;if(MISSION.ui>0)return;MISSION.ui=.12;
+  var title=m.def.symbol+' '+(m.active.step+1)+' / '+m.def.stages.length+' · '+m.step.title,text=m.step.requirement==='foot'?'Zu Fuss am Ziel bestätigen':m.step.requirement==='missionCar'?'Mit dem blauen Auftragswagen anhalten':'Mit einem Auto anhalten';
+  if(p)text+=' · '+Math.round(Math.hypot(me.x-p.x,me.z-p.z))+' m';if(m.def.optionalSeconds)text+=' · '+Math.floor(m.active.elapsed)+' / '+m.def.optionalSeconds+' s (freiwillig)';
+  if(MISSION.hold)text='Reparatur · '+Math.min(100,Math.floor(100*MISSION.hold.t/m.step.holdSeconds))+' %';
+  document.getElementById('missionTitel').textContent=title;document.getElementById('missionText').textContent=text;
+  var b=document.getElementById('stadtAktion');
+  if(missionBereit(m)){b.textContent=MISSION.hold?'🔧 Reparatur läuft …':m.def.symbol+' '+m.step.action;b.onclick=missionAktion;b.style.display='block';}
+  else if(!fahren&&!OEV.ride&&Math.hypot(me.x-MISSION.car.mesh.position.x,me.z-MISSION.car.mesh.position.z)<7&&m.step.requirement!=='foot'){b.textContent='🚙 Auftragswagen · Einsteigen';b.onclick=function(){einsteigen(MISSION.car,false);};b.style.display='block';}
+}
+function missionMenue(){
+  stadtPedaleLos();steer.x=0;steer.z=0;document.getElementById('achPanel').style.display='none';document.getElementById('bigmapWrap').style.display='none';var el=document.getElementById('stadtPanel'),box=document.getElementById('stadtInhalt');el.dataset.art='missionen';box.textContent='';
+  document.getElementById('stadtTitel').textContent='📋 Stadtmissionen';document.getElementById('stadtBeschreibung').textContent='Vier Aufträge mit mehreren Etappen. Geld gibt es nach dem vollständigen Abschluss – einmal je Auftrag. Dein Fortschritt gehört zum Spielstand. Im Koop führt der Gastgeber den Auftrag.';
+  var s=missionStand();if(!s)return;var progress=document.createElement('progress');progress.className='mission-progress';progress.max=4;progress.value=Object.keys(s.done).length;progress.setAttribute('aria-label','Stadtmissionen abgeschlossen');box.appendChild(progress);
+  var info=document.createElement('p');info.textContent=Object.keys(s.done).length+' / 4 Aufträge abgeschlossen';box.appendChild(info);var grid=document.createElement('div');grid.className='mission-grid';
+  TraumMission.definitions.forEach(function(d){var card=document.createElement('article');card.className='mission-card'+(s.active&&s.active.id===d.id?' mission-active':'');var h=document.createElement('h3');h.textContent=d.symbol+' '+d.name;card.appendChild(h);var p=document.createElement('p');p.textContent=d.description+(s.active&&s.active.id===d.id?' Jetzt: '+d.stages[s.active.step].title+'.':'');card.appendChild(p);var small=document.createElement('small');small.textContent=s.done[d.id]?'✓ Erledigt · Wiederholen ohne weitere Auszahlung':d.stages.length+' Etappen · Erstbelohnung '+d.reward+' $';card.appendChild(small);var row=document.createElement('div');row.className='mission-actions';var b=document.createElement('button');
+    if(s.active&&s.active.id===d.id){b.textContent='Fortsetzen · Etappe '+(s.active.step+1);b.onclick=function(){el.style.display='none';missionGPS();};var cancel=document.createElement('button');cancel.textContent='Auftrag abbrechen';cancel.onclick=function(){missionAbbruch();missionMenue();};row.appendChild(cancel);}else{b.textContent=s.done[d.id]?'Noch einmal spielen':'Auftrag annehmen';b.disabled=!!s.active;b.onclick=function(){missionStart(d.id);};}row.appendChild(b);if(s.active&&s.active.id===d.id)row.insertBefore(b,row.firstChild);card.appendChild(row);grid.appendChild(card);
+  });box.appendChild(grid);var north=document.createElement('button');north.textContent='🏙️ GPS zur Nordstadt · Depot';north.onclick=function(){var p=missionOrt('depot',false);if(p){gpsSetz(p.x,p.z);el.style.display='none';}};box.appendChild(north);
+  el.style.display='flex';el.firstElementChild.scrollTop=0;box.scrollTop=0;document.getElementById('stadtZu').focus();
+}
+document.getElementById('missionenMenue').onclick=missionMenue;document.getElementById('missionGPS').onclick=missionGPS;document.getElementById('missionAbbruch').onclick=missionAbbruch;
+document.addEventListener('visibilitychange',function(){MISSION.last=performance.now();});
+
 /* Entdecken ohne Zeitdruck: echte Ansichten, nur auf diesem Geraet gespeichert. */
 var LEBEN={album:{},ziel:null,ruhig:false};
 var FOTOORTE=["Kathedrale","Seepark","Freizeitpark","Burgdorf","Oststadt","Motorsportpark"];
@@ -18464,7 +18560,7 @@ try{var la=JSON.parse(localStorage.getItem("th_stadtalbum_v1")||"{}");FOTOORTE.f
 function lebenMotiv(name){var p=WORLD_POIS.find(function(q){return q[3]===name;});if(!p)return null;return {name:name,x:p[0],z:p[1],symbol:p[2]};}
 function lebenNah(m){var p=spielerPos();return Math.hypot(p.x-m.x,p.z-m.z)<35&&!fahren&&!OEV.ride&&!buildMode;}
 function lebenZiel(name){
-  if(RALLY.an||RENNEN.an){hint("Beende zuerst die aktuelle Tour oder das Rennen.");return;}
+  if(RALLY.an||RENNEN.an||missionAn()){hint("Beende zuerst die aktuelle Tour oder den Auftrag.");return;}
   var m=lebenMotiv(name);if(!m)return;var best=null,me=spielerPos();
   /* POIs koennen im Gebaeude oder Brunnen liegen: GPS endet auf freiem Boden. */
   for(var r=12;r<=28;r+=8)for(var i=0;i<16;i++){var a=i*Math.PI/8,x=m.x+Math.cos(a)*r,z=m.z+Math.sin(a)*r;if(imWasser(x,z)||inSolid(x,z)||imBau(x,z))continue;var d=Math.hypot(x-me.x,z-me.z);if(!best||d<best.d)best={x:x,z:z,d:d};}
@@ -18531,6 +18627,7 @@ document.addEventListener("keydown",function(e){if(!MINI_ERG.on)return;e.stopPro
 var RALLY={an:false,zeitrennen:false,route:[],i:0,t:0,dauer:0,vergangen:0,best:0,altGPS:null,_hud:0,ziel:null};
 try{var rb=+localStorage.getItem("th_rally_best_v1");if(isFinite(rb)&&rb>0&&rb<=1000)RALLY.best=rb;}catch(e){}
 function rallyStart(zeitrennen){
+  if(missionAn()){hint("Beende zuerst deinen Stadtauftrag.");return false;}
   if(!running||RENNEN.an||HETZE.an||TANZ.on||KOCH.on||ANGEL.on||MG.on){hint("Beende zuerst deine aktuelle Aktion.");return false;}
   if(RALLY.an)rallyEnde(false);
   var p=spielerPos(),x=p.x,z=p.z,route=[],weg=0;
@@ -19594,6 +19691,7 @@ function istTaxi(rec){return !!(rec&&/th50_taxi/.test(rec.datei||""));}
 function taxiHud(txt){var el=document.getElementById("taxiHud");if(!el)return;
   if(txt===null){el.style.display="none";return;}el.textContent=txt;el.style.display="block";}
 function taxiSchicht(v){
+  if(missionAn()){hint("Beende zuerst deinen Stadtauftrag.");return;}
   if(MPs&&!mpHost){hint("Nur der Gastgeber fährt.");return;}
   if(fahren)return;
   if(geld<TAXI_MIETE){hint("Die Taxischicht kostet "+TAXI_MIETE+" $ Miete.");return;}
@@ -20329,7 +20427,7 @@ function loop(now){
       if(Math.abs(camRT-camR)<=0.02)camR=camRT;updCam();}
     updEigenRing(dt);updFollow(dt);updVerdecker();updMinimap(dt);updLampPool(dt);updCoaster(dt,now);coasterBtnUpd();
     updFahrt(dt);updSeilbahn(dt);fahrtBtnUpd();npcBtnUpd();updCoup(dt);coupBtnUpd();tragBtnUpd();
-    stadtTakt(dt,now);
+    stadtTakt(dt,now);missionTakt(dt);
     sims.forEach(function(s,si){updSim(s,si,dt,now);});
     for(var ki=0;ki<kinder.length;ki++)updKind(kinder[ki],dt,now);
     updHund(dt,now);
