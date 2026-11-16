@@ -1,0 +1,116 @@
+/* Wildnis: ruhige Expeditionskarten, klare Ziele und erreichbare Handyknöpfe. */
+:root{--nw-ink:#edf3e8;--nw-muted:#b8c9b9;--nw-line:rgba(189,210,181,.26);--nw-panel:rgba(18,35,31,.91);--nw-gold:#e8c178;--nw-green:#8dd7b0}
+#ov{background:radial-gradient(ellipse at 15% 0%,rgba(85,131,102,.24),transparent 55%),linear-gradient(155deg,#172d28,#101d20 70%);color:var(--nw-ink)}
+#ov h1{font-family:Georgia,serif;letter-spacing:.045em;color:#f2e5c7;text-shadow:0 3px 18px #061611;font-size:clamp(2rem,6vw,3.8rem)}
+#ov .sub{color:var(--nw-gold);letter-spacing:.18em}
+#ov p{color:#c6d4c8;line-height:1.6;max-width:590px}
+#ov .chip{background:rgba(128,166,139,.1);border-color:var(--nw-line);color:#d7e3d8;border-radius:8px}
+#ov .big,#ov .ghost{min-height:46px;border-radius:10px;font:800 1rem system-ui;box-shadow:none}
+#ov .big{background:#97d8b0;color:#112c24;border:1px solid #b4ebc7}
+#ov .ghost{background:rgba(124,162,135,.08);border:1px solid var(--nw-line);color:var(--nw-ink)}
+#coopBox{border:1px solid var(--nw-line)!important;background:rgba(4,19,16,.36)!important;border-radius:14px!important;max-width:480px;width:100%}
+#coopQuick{background:#2e6351!important;border:1px solid #59967b!important;color:#f0f9ef!important}
+#coopCode{font-size:16px!important;min-height:46px}
+#charNav{background:rgba(3,17,14,.35)!important;border-color:var(--nw-line)!important}
+#charPick button{border-radius:9px}
+#nwGraphicsRow{display:flex;justify-content:space-between;align-items:center;gap:14px;width:min(480px,100%);margin:14px auto 2px;padding:11px 14px;background:rgba(5,20,16,.45);border:1px solid var(--nw-line);border-radius:10px;font-size:.85rem;color:var(--nw-muted)}
+#nwGraphics{font:700 16px system-ui;min-height:42px;border:1px solid #557b65;background:#203b31;color:#f4f4e6;border-radius:8px;padding:6px 10px;max-width:65%}
+#clock,#invBar,#quest,#kprompt,#toast,#announce,#waveHud,#netHud{background:var(--nw-panel);border:1px solid var(--nw-line);box-shadow:0 4px 14px rgba(4,17,13,.18);backdrop-filter:none;color:var(--nw-ink)}
+#invBar{border-radius:11px;padding:8px 14px}
+#clock{border-radius:9px;font-size:.88rem}
+#quest{border-radius:12px;max-width:245px;padding:11px 14px}
+#quest .label{color:var(--nw-gold)}
+#announce{font-size:clamp(.95rem,2vw,1.2rem);font-weight:700;letter-spacing:0;text-shadow:none;border-radius:12px;padding:10px 18px;max-width:min(620px,80vw)}
+#toast,#kprompt{border-radius:10px;font-size:.95rem;text-shadow:none}
+#kprompt .key{background:#294f40;color:#bbefd3;border-color:#679c7f}
+.sysbtn{background:var(--nw-panel);border-color:var(--nw-line);border-radius:10px}
+.btn{background:rgba(22,46,37,.9);border-width:2px;box-shadow:0 3px 10px rgba(4,17,13,.2)}
+#stick{background:rgba(28,57,45,.34);border-color:rgba(187,222,191,.4)}
+#nub{background:rgba(159,213,173,.6);border-color:#c9e6ce}
+#minimap{border-color:#a4c3a6;box-shadow:0 3px 16px rgba(4,17,13,.25)}
+#zoomBtns .zbtn{width:44px;height:44px;background:var(--nw-panel);border-color:var(--nw-line);color:#d9e6d4}
+#zoomBtns .zbtn::after{inset:0}
+button:focus-visible,a:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--nw-gold);outline-offset:3px}
+@media(max-width:700px){
+ #invBar{top:calc(76px + env(safe-area-inset-top));left:10px;transform:none;gap:9px;padding:7px 10px;max-width:calc(100vw - 20px);font-size:.9rem}
+ #invBar .inv{font-size:.88rem;gap:4px}#invBar .ic{font-size:1.02rem}
+ #quest{top:calc(120px + env(safe-area-inset-top));left:10px;right:auto;max-width:calc(100vw - 122px);font-size:.8rem}
+ #minimap{width:82px;height:82px;top:calc(120px + env(safe-area-inset-top));right:10px}
+ #zoomBtns{top:calc(210px + env(safe-area-inset-top));right:10px;gap:6px}
+ #topLeft{left:10px}#sysRow{right:10px}
+ #announce{top:31%;max-width:84vw;font-size:.95rem}
+ #waveHud{top:calc(270px + env(safe-area-inset-top));font-size:.78rem;max-width:84vw}
+ #ov{padding:26px 18px 38px}#ov h1{font-size:2.2rem}
+}
+@media(max-width:430px){
+ #stick{left:12px;bottom:22px;width:94px;height:94px}#nub{left:25px;top:25px;width:44px;height:44px}
+ #bAct{right:16px;bottom:24px;width:68px;height:68px}
+ #bBuild{right:96px;bottom:32px;width:54px;height:54px}
+ #bDodge{right:160px;bottom:32px;width:50px;height:50px}
+ #bThrow,#bConfirm{right:20px;bottom:106px;width:58px;height:58px}
+ #bSkill{right:96px;bottom:106px;width:54px;height:54px}
+ #bBolt{right:160px;bottom:106px;width:50px;height:50px}
+ #kprompt{bottom:184px;max-width:90vw;overflow:hidden;text-overflow:ellipsis}
+}
+@media(orientation:landscape) and (max-height:520px){
+ #invBar{top:8px;left:190px;transform:none;max-width:calc(100vw - 300px);padding:6px 8px;gap:7px}
+ #quest{top:58px;left:190px;max-width:calc(100vw - 310px)}
+ #minimap{top:62px;width:72px;height:72px;right:10px}
+ #zoomBtns{top:142px;right:10px}#zoomBtns .zbtn{width:44px;height:44px}
+ #waveHud{top:118px;left:190px;transform:none;max-width:calc(100vw - 310px)}
+ #announce{top:42%;max-width:70vw}
+ #ov{padding:18px 24px 30px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}#announce,#toast{transition:none}}
+@media(max-width:700px) and (orientation:portrait){
+ #announce{top:auto;bottom:calc(310px + env(safe-area-inset-bottom))}
+ #waveHud{top:auto;bottom:calc(260px + env(safe-area-inset-bottom))}
+ #toast{bottom:calc(214px + env(safe-area-inset-bottom));font-size:.85rem}
+ #kprompt{bottom:calc(174px + env(safe-area-inset-bottom))}
+}
+@media(orientation:landscape) and (max-height:520px){
+ #bAct{right:14px;bottom:16px;width:60px;height:60px}
+ #bBuild{right:84px;bottom:22px;width:50px;height:50px}
+ #bDodge{right:146px;bottom:24px;width:46px;height:46px}
+ #bThrow,#bConfirm{right:18px;bottom:92px;width:52px;height:52px}
+ #bSkill{right:84px;bottom:86px;width:50px;height:50px}
+ #bBolt{right:146px;bottom:88px;width:46px;height:46px}
+ #waveHud{left:10px;top:104px;bottom:auto;transform:none;max-width:170px;font-size:.75rem;padding:5px 8px}
+ #announce{top:auto;bottom:152px;max-width:min(300px,calc(100vw - 380px));font-size:.85rem}
+ #toast{bottom:100px;max-width:calc(100vw - 380px);font-size:.8rem;padding:6px 8px}
+ #kprompt{bottom:48px;max-width:calc(100vw - 380px);font-size:.8rem;padding:6px 8px;overflow:hidden;text-overflow:ellipsis}
+}
+@media(max-width:700px){
+ #onlineBadge{position:absolute;left:170px;top:50px;margin-left:0!important;white-space:nowrap;font-size:.72rem!important;padding:4px 8px!important;max-width:calc(100vw - 190px);overflow:hidden;text-overflow:ellipsis}
+ #invBar{top:calc(86px + env(safe-area-inset-top));flex-wrap:wrap}
+ #quest{top:calc(148px + env(safe-area-inset-top))}
+ #minimap{top:calc(148px + env(safe-area-inset-top))}
+ #zoomBtns{top:calc(238px + env(safe-area-inset-top))}
+}
+@media(orientation:landscape) and (max-height:520px){
+ #onlineBadge{left:0;top:78px;max-width:170px}
+ #invBar{top:8px;flex-wrap:nowrap}
+ #quest{top:58px}#minimap{top:62px}#zoomBtns{top:142px}#waveHud{top:114px}
+}
+/* Lange Rezeptlisten bleiben auf kleinen Fenstern vollständig erreichbar. */
+#buildMenu,#craftMenu,#tradeMenu{
+ width:min(960px,calc(100vw - 24px));max-height:64vh;max-height:min(64vh,calc(100dvh - 100px));overflow-y:auto;overflow-x:hidden;
+ align-content:flex-start;padding:14px;background:rgba(13,30,25,.97);border:1px solid var(--nw-line);border-radius:14px;z-index:40;
+ overscroll-behavior:contain;touch-action:pan-y;box-shadow:0 8px 30px rgba(3,14,9,.35)
+}
+#buildMenu .menuX,#craftMenu .menuX,#tradeMenu .menuX{min-height:44px;flex-basis:100%;color:#e9eadc}
+#buildMenu .bcard,#craftMenu .bcard,#tradeMenu .bcard{flex:1 0 104px;max-width:150px;min-height:90px;touch-action:manipulation}
+@media(orientation:landscape) and (max-height:520px){#buildMenu,#craftMenu,#tradeMenu{max-height:calc(100dvh - 76px);bottom:12px}}
+@media(orientation:portrait) and (min-height:620px) and (max-width:700px){
+ #emoteBar{left:10px!important;bottom:calc(140px + env(safe-area-inset-bottom))!important;transform:none!important;flex-direction:column;gap:6px!important}
+ #announce,#toast,#kprompt,#waveHud{left:calc(50% + 22px);max-width:calc(100vw - 100px)}
+}
+@media(orientation:landscape) and (max-height:520px){
+ #emoteBar{left:calc(50% - 26px)!important;bottom:16px!important}
+ #announce{top:130px;bottom:auto}#toast{bottom:140px}#kprompt{bottom:80px}
+}
+@media(orientation:landscape) and (max-height:520px) and (max-width:620px){#emoteBar{gap:2px!important}}
+@media(max-width:700px){#topLeft{top:calc(8px + env(safe-area-inset-top))}#onlineBadge{top:44px}}
+@media(orientation:landscape) and (max-height:520px){#onlineBadge{top:74px}}
+/* Gesten liegen über der Welt, aber unter Menüs und Spielanzeigen. */
+#emoteBar{z-index:1!important}

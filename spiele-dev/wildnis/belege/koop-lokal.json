@@ -1,0 +1,133 @@
+{
+  "kind": "Lokaler echter WebRTC-Koop; Zeichenpfad pausiert, keine echte Internetverbindung",
+  "checks": [
+    "Privater Raum mit echten UI-Klicks, Desktop-Host und Touch-Gast verbunden",
+    "Ressourcen, Collider, Dörfer und Stationen auf beiden verbundenen Geräten identisch",
+    "Echte W-Bewegung über schnellen Datenkanal beim Partner angekommen",
+    "Mit gesetztem Materialvorrat per Baumenü/Enter platzierte Mauer zuverlässig bei beiden vorhanden",
+    "Native RTCPeerConnection-Statistik bestätigt offene Datenkanäle und empfangene Nachrichten"
+  ],
+  "errors": [],
+  "initial": [
+    {
+      "running": true,
+      "on": true,
+      "mobile": false,
+      "shared": true,
+      "seed": 853644741,
+      "code": "MRKT",
+      "role": "host",
+      "status": "connected",
+      "pos": {
+        "x": -2.5,
+        "z": 0
+      },
+      "remote": {
+        "x": 2.5,
+        "z": 0
+      },
+      "remoteHero": true,
+      "structures": []
+    },
+    {
+      "running": true,
+      "on": true,
+      "mobile": true,
+      "shared": true,
+      "seed": 853644741,
+      "code": "MRKT",
+      "role": "join",
+      "status": "connected",
+      "pos": {
+        "x": 2.5,
+        "z": 0
+      },
+      "remote": {
+        "x": -2.5,
+        "z": 0
+      },
+      "remoteHero": true,
+      "structures": []
+    }
+  ],
+  "worldHash": "35399eb441c3b29428c26c7018623fe905a4e2f9abb9063a704be69fc353331a",
+  "movement": {
+    "before": {
+      "x": -2.5,
+      "z": 0
+    },
+    "after": {
+      "x": -2.5,
+      "z": 3.6000000000000014
+    },
+    "remote": {
+      "x": -2.5,
+      "z": 3.6
+    }
+  },
+  "builds": [
+    {
+      "type": "wand",
+      "x": -2,
+      "z": 8
+    },
+    {
+      "type": "wand",
+      "x": -2,
+      "z": 8
+    }
+  ],
+  "channels": [
+    [
+      {
+        "connectionState": "closed",
+        "iceConnectionState": "closed",
+        "channels": []
+      },
+      {
+        "connectionState": "connected",
+        "iceConnectionState": "connected",
+        "channels": [
+          {
+            "label": "main",
+            "state": "open",
+            "messagesSent": 21,
+            "messagesReceived": 22
+          },
+          {
+            "label": "fast",
+            "state": "open",
+            "messagesSent": 51,
+            "messagesReceived": 59
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "connectionState": "closed",
+        "iceConnectionState": "closed",
+        "channels": []
+      },
+      {
+        "connectionState": "connected",
+        "iceConnectionState": "connected",
+        "channels": [
+          {
+            "label": "main",
+            "state": "open",
+            "messagesSent": 22,
+            "messagesReceived": 21
+          },
+          {
+            "label": "fast",
+            "state": "open",
+            "messagesSent": 59,
+            "messagesReceived": 51
+          }
+        ]
+      }
+    ]
+  ],
+  "status": "passed"
+}

@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-15T11:55:31Z",
+ "stand": "2026-11-16T12:41:39Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "„Benotung ist sinnlos geworden“: Warum dieser Mathe-Professor den Zweck von Hausaufgaben anzweifelt",
-   "u": "https://t3n.de/news/benotung-sinnlos-mathematik-professor-hausaufgaben-1769844/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-15T10:25:00Z",
-   "s": "Zu Beginn des KI-Booms galt Mathematik als eine gute Studienwahl – das hat sich geändert. Jetzt zweifeln selbst Lehrkräfte an Universitäten daran, ob sie jungen Menschen raten sollen, das Fach zu stud…",
-   "sprache": "de"
-  },
-  {
-   "t": "Stopp von KI-Entwicklung per Klage gefordert",
-   "u": "https://www.heise.de/news/Kalifornien-Klage-fordert-Stopp-der-KI-Entwicklung-wegen-katastrophaler-Risiken-11525487.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-15T10:17:00Z",
-   "s": "Verbraucherschützer und Sicherheitsinitiativen verklagen in den USA fünf Tech-Giganten wie OpenAI und Google, um den unkontrollierten KI-Fortschritt zu stoppen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Kann Nvidia KI-Chips orten? Das sagt das Unternehmen hinter verschlossenen Türen",
-   "u": "https://t3n.de/news/nvidia-ki-chips-orten-1773433/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-15T09:30:27Z",
-   "s": "Der US-Gesetzentwurf namens Chip Security Act zielt darauf, den Standort von KI-Chips zu tracken, um so Schmuggel nach China zu unterbinden. Das gewinnt nach deweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Where was Nvidia’s security team?",
-   "u": "https://techcrunch.com/2026/11/14/where-was-nvidias-security-team/",
+   "t": "Freshworks alums raise $53M to take on Salesforce, HubSpot with AI-native CRM",
+   "u": "https://techcrunch.com/2026/11/16/freshworks-alums-raise-53m-to-take-on-salesforce-hubspot-with-ai-native-crm/",
    "q": "TechCrunch AI",
-   "d": "2026-11-15T00:08:07Z",
-   "s": "Nvidia’s security chief quietly left in August, and now that CEO Jensen Huang has stepped down over his relationships, including one with an executive at a company suspected of funneling chips to Chin…",
+   "d": "2026-11-16T12:30:00Z",
+   "s": "Dreamteam has signed up more than 100 customers across 13 countries, with some businesses switching from established CRMs.",
    "sprache": "en"
   },
   {
-   "t": "Elon Musk, other tech execs sign petition calling on Nvidia to reinstate Jensen Huang",
-   "u": "https://techcrunch.com/2026/11/14/elon-musk-other-tech-execs-sign-petition-calling-on-nvidia-to-reinstate-jensen-huang/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-14T21:41:22Z",
-   "s": "The petition had attracted more than 115,000 signatures as of Saturday afternoon.",
-   "sprache": "en"
+   "t": "Autonome Killerroboter: Staaten ringen um Verbot KI-basierter Waffen",
+   "u": "https://www.golem.de/news/autonome-killerroboter-staaten-ringen-um-verbot-ki-basierter-waffen-2611-215262.html",
+   "q": "Golem",
+   "d": "2026-11-16T12:16:01Z",
+   "s": "Angeblich kommen im Ukraine-Krieg schon autonome Killerdrohnen zum Einsatz. Doch weltweit könnten solche Waffen verboten werden. (Militär, KI)",
+   "sprache": "de"
   },
   {
-   "t": "Inference Manager: neues Ubuntu-Tool verwaltet lokale KI-Modelle",
-   "u": "https://www.heise.de/news/Inference-Manager-neues-Ubuntu-Tool-verwaltet-lokale-KI-Modelle-11525275.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Zuschauen statt posten: Wie Jugendliche 2026 Medien und KI nutzen",
+   "u": "https://www.heise.de/hintergrund/JIM-Studie-Kommunikation-per-Messenger-ganz-vorne-passiver-bei-Social-Media-11526368.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-14T13:46:00Z",
-   "s": "Canonical hat auf dem Ubuntu Summit den Inference Manager vorgestellt, ein neues Werkzeug zur Verwaltung lokal installierter KI-Modelle.",
+   "d": "2026-11-16T12:08:00Z",
+   "s": "Laut JIM-Studie 2026 posten Jugendliche seltener selbst, suchen aber häufiger per KI-Chatbot. KI-Antworten nehmen Jüngere eher hin als Ältere.",
    "sprache": "de"
   },
   {
-   "t": "Neue Gewichtung: OpenAI löst Robotik-Team auf",
-   "u": "https://www.golem.de/news/neue-gewichtung-openai-loest-robotik-team-auf-2611-215222.html",
+   "t": "1000 Kilowatt pro Schrank: KI-Chips drohen Rechenzentren zu sprengen",
+   "u": "https://www.heise.de/news/1000-Kilowatt-pro-Schrank-KI-Chips-drohen-Rechenzentren-zu-sprengen-11526263.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-16T11:32:00Z",
+   "s": "Moderne Prozessoren heizen so stark, dass Wasser direkt an den Chip muss und neue 800-Volt-Stromnetze entstehen. Die Politik streitet über Effizienzregeln.",
+   "sprache": "de"
+  },
+  {
+   "t": "Gamedev: Mobile-Games-Studios setzen besonders häufig auf KI",
+   "u": "https://www.golem.de/news/gamedev-mobile-games-studios-setzen-besonders-haeufig-auf-ki-2611-215252.html",
    "q": "Golem",
-   "d": "2026-11-14T12:35:02Z",
-   "s": "OpenAI löst sein Robotik-Team auf und setzt nun auf allgemeine KI-Modelle als Grundlage für künftige Roboterforschung. (Roboter, KI)",
+   "d": "2026-11-16T10:25:01Z",
+   "s": "Eine große Entwicklerumfrage zeigt auch, wofür KI tatsächlich genutzt wird: Es sind eher nicht finale Spielinhalte. (GDC 2027, KI)",
    "sprache": "de"
   },
   {
-   "t": "Outlook und Teams: Serverausfälle bei Microsoft nicht wegen KI oder Hackern",
-   "u": "https://www.golem.de/news/outlook-und-teams-serverausfaelle-bei-microsoft-nicht-wegen-ki-oder-hackern-2611-215215.html",
-   "q": "Golem",
-   "d": "2026-11-14T09:09:01Z",
-   "s": "Microsoft hat eine erste Erklärung für den stundenlangen Serverausfall gegeben. Eine ausführliche Fehleranalyse soll folgen. (Microsoft 365, Microsoft)",
+   "t": "Otto-Chef Boris Ewenstein: „Mit KI schließen wir die Lücke zum Kauferlebnis im stationären Handel\"",
+   "u": "https://t3n.de/news/otto-chef-boris-ewenstein-mit-ki-schliessen-wir-die-luecke-zum-kauferlebnis-im-stationaeren-handel-1772862/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-16T10:00:28Z",
+   "s": "Vom Katalog zur KI: Otto-Chef Boris Ewenstein verrät im t3n-Interview, wie sich die Shoppingplattform verändert – und wie sie trotz neuer Checkout-Kanäle relevaweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Build a Robot Pick-and-Place Simulation with SimReady Assets",
-   "u": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
-   "q": "Hugging Face",
-   "d": "2026-11-13T18:00:39Z",
-   "s": "",
+   "t": "ChatGPT Wallet: So soll die KI künftig für euch shoppen",
+   "u": "https://t3n.de/news/chatgpt-wallet-so-soll-die-ki-kuenftig-fuer-euch-shoppen-1773710/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-16T09:00:37Z",
+   "s": "OpenAI hat eine eigene Bezahlfunktion zur Verwendung durch KI-Agenten gestartet. Damit kann ChatGPT im Namen der Nutzer:innen Produkte kaufen – freigegeben per Biometrie.weiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "LVMH’s Media Division announces strategic partnership with OpenAI",
+   "u": "https://openai.com/index/lvmh-media-division-partnership",
+   "q": "OpenAI",
+   "d": "2026-11-16T09:00:00Z",
+   "s": "LVMH’s Media Division and OpenAI announce a partnership to support journalism with AI and make its publications more accessible through ChatGPT.",
    "sprache": "en"
   },
   {
-   "t": "XYBench: Helping with the problem behind the question",
-   "u": "https://huggingface.co/blog/allenai/xybench",
-   "q": "Hugging Face",
-   "d": "2026-11-13T17:02:35Z",
-   "s": "",
+   "t": "Apple launches new app to study how people use AI for health",
+   "u": "https://techcrunch.com/2026/11/15/apple-launches-new-app-to-study-how-people-use-ai-for-health/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-16T01:30:00Z",
+   "s": "Apple's new app for a study will answer everyday medical questions",
+   "sprache": "en"
+  },
+  {
+   "t": "The King’s Trust and OpenAI launch £1m partnership",
+   "u": "https://openai.com/index/the-kings-trust-and-openai",
+   "q": "OpenAI",
+   "d": "2026-11-16T00:00:00Z",
+   "s": "The King’s Trust and OpenAI launch a £1m partnership to help up to 25,000 young people across the UK build practical AI skills for work.",
    "sprache": "en"
   }
  ]

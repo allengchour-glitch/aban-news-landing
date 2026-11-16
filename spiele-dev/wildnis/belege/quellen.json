@@ -1,0 +1,12 @@
+{
+  "baseCommit": "dccf212cdb52567932bd27136bf208497a41e46f",
+  "originalCommit": "80c73edab",
+  "files": {
+    "neon-wildnis.html": "40b9e61a9f277df429f17f4e220e2e30d007d64c05f5c6c655206f19dc006650",
+    "css/wildnis.css": "51043111639617dfcaa307b60e2863aa94b4c332c6d0d62eb96d26eec3850794",
+    "js/wildnis/visuals.js": "ea479e026907c2c1a3fd6d2640c424c17c38c1c4674d82a05cef296f2525793d",
+    "js/wildnis/static-instances.js": "3849366f9dcdd73aa0a0c370ce2d4b63c9c3842c31dd655ff68db9afb8322fec",
+    "js/lebenspfad/instance-chunks.js": "cc75ebe983ee65879d6d373bc524c09cfcb6934b6a3e7db8b71de569e8b129d8"
+  },
+  "limits": "Quellstand des finalen Bildlaufs und Bedienungsnachlaufs. Vollständige Testgrenzen im README; keine Produktionsprüfung vor Deploy."
+}
