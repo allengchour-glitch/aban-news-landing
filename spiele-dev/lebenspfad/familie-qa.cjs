@@ -16,6 +16,12 @@ const out=process.env.LP_OUT||'/tmp/lebenspfad-familie';
     updFam(0);scene.updateMatrixWorld(true);
     return pw.followers.map(function(f,j){var support=0;fields.forEach(function(fl){var dx=f.position.x-fl.x,dz=f.position.z-fl.z,r=fl.disc.geometry.parameters.radiusTop+.08;if(dx*dx+dz*dz<=r*r)support=Math.max(support,fl.disc.position.y+.13);});return {j:j,dog:!!f.userData.dog,support:support,y:f.position.y,minY:new THREE.Box3().setFromObject(f).min.y};});
    };
+   window.__familyRoadFixture=function(){
+    var link=_lpPathArt.links.find(function(l){return l.from===2&&l.to===3;}),x=(link.start.x+link.end.x)/2,z=(link.start.z+link.end.z)/2;
+    G.players[0].fam={partner:true,kids:0,dog:false};syncFam(0);var pw=pawns[0],f=pw.followers[0],a=2.6;
+    pw.position.x=x-Math.cos(a)*1.1;pw.position.z=z-Math.sin(a)*1.1;f.position.x=x;f.position.z=z;updFam(0);scene.updateMatrixWorld(true);
+    return {support:_lpPathArt.surfaceAt(x,z),minY:new THREE.Box3().setFromObject(f).min.y};
+   };
   `+h.slice(i);await route.fulfill({response:r,body:h});});
   await p.goto((process.env.LP_BASE||'http://localhost:8150')+'/lebenspfad.html');await p.waitForFunction(()=>window.__lp);
   await p.locator('#pselect button').first().click();await p.locator('#botChk').uncheck();await p.locator('#startBtn').click();await p.locator('#menuBtn').click();
@@ -24,6 +30,7 @@ const out=process.env.LP_OUT||'/tmp/lebenspfad-familie';
    assert.equal(followers.length,3);
    for(const f of followers){assert(f.minY>=f.support-.0001,`Begleiter ${f.j}: ${f.minY} unter Deckel ${f.support}`);if(!f.dog)assert(Math.abs(f.minY-f.support)<.005,'Wartende Person schwebt');}
   }
+  if(!process.env.LP_HTML){const road=await p.evaluate(()=>__familyRoadFixture());result.road=road;assert(road.support>.2);assert(Math.abs(road.minY-road.support)<.005,'Partner steckt im Verbindungsweg');}
   assert.deepEqual(result.errors,[]);result.status='passed';
  }catch(e){result.status='failed';result.failure=e.stack;process.exitCode=1;}finally{fs.writeFileSync(path.join(out,'ergebnis.json'),JSON.stringify(result,null,2));console.log(result);await b.close();}
 })();

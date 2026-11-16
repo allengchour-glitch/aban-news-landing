@@ -1,0 +1,36 @@
+{
+  "source": "../belege-landschaft/nachher.json",
+  "release": "4222ff1a37f0b1a46f074ab8367a6731914f5b81",
+  "performance": {
+    "rafPerSecond": 12.091503267973856,
+    "median": 83.29999999999927,
+    "p95": 100.09999999999854,
+    "profile": "auto",
+    "pixelRatio": 0.55,
+    "shadows": false,
+    "calls": 243,
+    "triangles": 47231,
+    "terrain": {
+      "sourceMeshes": 1,
+      "batchedMeshes": 1,
+      "batches": 78,
+      "triangles": 20480
+    },
+    "board": {
+      "sourceMeshes": 746,
+      "batchedMeshes": 418,
+      "batches": 39,
+      "triangles": 32424
+    },
+    "instances": {
+      "sourceMeshes": 9,
+      "sourceInstances": 2014,
+      "chunkedMeshes": 9,
+      "chunkedInstances": 2014,
+      "skippedMeshes": 0,
+      "batches": 93,
+      "triangles": 42649,
+      "totalTriangles": 42649
+    }
+  }
+}

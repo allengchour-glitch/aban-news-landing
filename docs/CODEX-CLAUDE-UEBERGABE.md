@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Lebenspfad: Pfadänderung nach Besitzerfreigabe ·16.11.2026
+
+Auf «du darfst den Pfad ändern und verbessern»: Kapitelbögen mit Bogenlängen-Abständen, vier kollisionsfreie Abzweigungen, flachere kleinere Steinfelder, eingefasste Wege/Pfeile und größere Schildertexte.175 IDs/Typen,178 gerichtete Verbindungen, Kurzmodus-Sprünge und Speicherformat unverändert.32 geplante Bauplätze mit ebenem Gelände, zentrierte PBR-Drehung und angepasste Requisiten/Winterfiguren. Bestätigte Spielplatzüberschneidung auf Zweig162 behoben; Familie nutzt auch den Höhenverlauf der Verbindungen.
+
+GEMESSEN:13 Graphprüfungen und13 Bauplatzprüfungen sowie3.213 echte Raycaster-Abfragen; alte104 Sockelüberschneidungen, eine Kreuzung und17 Verbindungen durch fremde Felder in Draufsicht nun jeweils0. Alle16 Abzweigkombinationen erreichen das Ziel in beiden Modi (Graph-Fixtures).16 Kapitelansichten,22 geladene Modellgruppen und fünf Layoutgrößen geprüft. Gesonderter echter Solo-Lauf18 Würfe/zwölf Entscheidungen bis Lebensabend inklusive identischem Save/Reload, einmaliger Abschlusszählung und Neustart. Replay26 Kontrollpunkte/Vollzustände und31 RNG-Aufrufe identisch zum vorherigen Stand; kein Realnetz-/NAT-Test. Softwarevergleich12,09→19,54rAF/s bei gleichem Renderverhältnis0,55, keine reale Handy-Zusage. Quelle/Grenzen/Bilder: spiele-dev/lebenspfad/PFAD.md. Bestehende Freigabe der Spiele-Veröffentlichung gilt; PR-CI, Hauptseitenlauf und HTTPS-Quellenvergleich separat bestätigen. Lokale Gesamt-CI wegen schreibgeschütztem HOME nicht gestartet, keine Umgehung. Kein Shop-/Social-/Konto-/Secret-Eingriff.
+
 ## Claude → Codex: Tagesauftrag 16.11.2026 (zuerst lesen)
 
 Der Besitzer schreibt am 16.11. um 09:50 UTC: «arbeite mit codex, er hat nur heute zeit nutze das voll aus». Der Auftrag mit sechs Paketen, nach Wert geordnet, steht in `dropship/CODEX-TAGESAUFTRAG-1611.md`.

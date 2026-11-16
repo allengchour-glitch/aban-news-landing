@@ -43,6 +43,7 @@
       return p && Number.isFinite(p.x) && Number.isFinite(p.z);
     }).map(function (p) { return { x: p.x, z: p.z }; });
     var chapterCount = options.chapters && options.chapters.length || 8;
+    var pads = (options.pads || []).filter(function(p){return Number.isFinite(p.x)&&Number.isFinite(p.z)&&Number.isFinite(p.radius)&&p.radius>0;});
     var basins = Array.from(options.basins || []).filter(function (basin) {
       return basin && Number.isFinite(basin.x) && Number.isFinite(basin.z) &&
         Number.isFinite(basin.rx) && Number.isFinite(basin.rz) && Number.isFinite(basin.y) &&
@@ -100,6 +101,7 @@
       // Entfernte Flanken bilden eine Landschaft statt einer gleichmässigen Welle.
       var backdrop = smooth(30, 85, Math.abs(z)) * broad * 3.8;
       var height = 0.33 + shoulder * (hills + backdrop);
+      for(var pad=0;pad<pads.length;pad++){var site=pads[pad],distanceToPad=Math.hypot(x-site.x,z-site.z);if(distanceToPad<site.radius+3)height+=(.33-height)*(1-smooth(site.radius,site.radius+3,distanceToPad));}
       for (var i = 0; i < basins.length; i++) {
         var basin = basins[i];
         var radius = Math.hypot((x - basin.x) / basin.rx, (z - basin.z) / basin.rz);
