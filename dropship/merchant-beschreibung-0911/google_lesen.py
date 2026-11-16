@@ -34,7 +34,9 @@ from klassifizieren import klassifiziere, klartext, ist_werbezeile  # noqa: E402
 
 BEISPIELE = 3
 PAKET = int(os.environ.get('PAKET', '100'))  # Angebote je Abfrage von product_view
-NICHT_GELESEN = ('nicht_gefunden', 'nicht_im_shop', 'nicht_lesbar')
+NICHT_GELESEN = ('nicht_gefunden', 'nicht_im_kanal', 'nicht_im_shop', 'nicht_lesbar')
+# Kanal «Google & YouTube» in Shopify (wie automation/lib/gmc_schaufenster.mjs)
+GOOGLE_PUBLICATION = 'gid://shopify/Publication/302872297857'
 
 
 def gruppen(pids, pilot_gids):
@@ -58,6 +60,12 @@ def waehle(views, offers, sprache='de'):
         if p:
             return off, p
     return None, None
+
+
+def fehlklasse(im_kanal):
+    """Klasse eines Produkts, das Google nicht führt: nicht im Kanal (Schaufenster oder nie veröffentlicht) oder
+    im Kanal, aber bei Google nicht angekommen."""
+    return 'nicht_gefunden' if im_kanal else 'nicht_im_kanal'
 
 
 def einordnen(gruppe, google, seo, body):
@@ -118,6 +126,8 @@ def selbsttest():
     views = {'shopify_ZZ_1_5': {'fr': 'fr~L~shopify_ZZ_1_5'}, 'shopify_ZZ_1_6': {'de': 'de~L~shopify_ZZ_1_6'}}
     ok('Wahl: erste Variante mit deutscher Fassung', waehle(views, ['shopify_ZZ_1_5', 'shopify_ZZ_1_6']) == ('shopify_ZZ_1_6', 'de~L~shopify_ZZ_1_6'))
     ok('Wahl: nichts gefunden', waehle({}, ['shopify_ZZ_1_5']) == (None, None))
+    ok('Fehlklasse: nicht im Google-Kanal', fehlklasse(False) == 'nicht_im_kanal')
+    ok('Fehlklasse: im Kanal, aber bei Google nicht da', fehlklasse(True) == 'nicht_gefunden')
     alt = 'Strickpullover mit Rundhalsausschnitt bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.'
     neu = 'Strickpullover mit Rundhalsausschnitt für Damen. Material: Polyester. Grössen: S–XL.'
     body = 'Dieser Pullover ist ein weiches Basic für den Winter.'
@@ -134,7 +144,7 @@ def selbsttest():
     ok('Urteil nicht bestätigt ab 50 % Werbezeile', urteil(z)[0] == 'nicht_bestaetigt')
     z = collections.Counter({('pilot', 'pilot'): 40, ('pilot', 'nicht_gefunden'): 280})
     ok('Urteil unklar bei weniger als 50 gefundenen', urteil(z) == ('unklar', 40))
-    z = collections.Counter({('pilot', 'pilot'): 60, ('pilot', 'nicht_lesbar'): 30, ('pilot', 'nicht_im_shop'): 5})
+    z = collections.Counter({('pilot', 'pilot'): 60, ('pilot', 'nicht_lesbar'): 30, ('pilot', 'nicht_im_shop'): 5, ('pilot', 'nicht_im_kanal'): 200})
     ok('Urteil zählt nicht lesbare und fehlende Produkte nicht mit', urteil(z) == ('bestaetigt', 60))
     s = schwaerzen('HTTP 404 accounts/123456789/products/de~CHF_99383214465~shopify_ZZ_1_2', 'accounts/123456789')
     ok('Schwärzen: weder Konto-Nummer noch Feed-Label im Text', '123456789' not in s and '99383214465' not in s and 'CHF_' not in s)
@@ -213,6 +223,7 @@ def main():
 
     shop, tok = netz.token()
     q = ('query($ids:[ID!]!){ nodes(ids:$ids){ ... on Product { id handle status descriptionHtml seo{ description } '
+         f'gp: publishedOnPublication(publicationId: "{GOOGLE_PUBLICATION}") '
          'variants(first:3){ nodes{ legacyResourceId } } } } }')
     shopify, ids = {}, list(gruppe)
     for i in range(0, len(ids), 100):
@@ -220,10 +231,15 @@ def main():
             if n:
                 shopify[n['id'].rsplit('/', 1)[-1]] = n
     print(f'Shopify: {len(shopify)} von {len(ids)} Produkten gelesen')
+    for g in ('pilot', 'kontrolle'):
+        im = sum(1 for p, n in shopify.items() if gruppe.get(p) == g and n.get('gp'))
+        print(f'Shopify, Kanal «Google & YouTube»: {g} {im} von {sum(1 for p in shopify if gruppe.get(p) == g)} veröffentlicht')
 
     h = mb.anmelden()
     name = mb.konto(h)
-    alle_angebote, je_produkt = [], {}
+    # Messgerät-Probe: ein Angebot der App, das Google am 15.11. sicher führte (MODUS=autofeed in merchant_bildprobleme.py)
+    probe = next((o for o in mb.BILDPROBEN if o.startswith('shopify_ZZ_')), '')
+    alle_angebote, je_produkt = [probe] if probe else [], {}
     for p, n in shopify.items():
         offers = angebote(p, [v['legacyResourceId'] for v in (n.get('variants') or {}).get('nodes') or []])
         je_produkt[p] = offers
@@ -236,7 +252,8 @@ def main():
             teile = str(pv.get('id', '')).split('~')  # kanal~sprache~label~angebot
             if len(teile) == 4:
                 views[pv.get('offerId', '')][teile[1]] = '~'.join(teile[1:])
-    print(f'Merchant: {len(views)} von {len(alle_angebote)} Angeboten bei Google gefunden')
+    print(f'Merchant: {sum(1 for o in views if o != probe)} von {len(alle_angebote) - (1 if probe else 0)} Angeboten bei Google gefunden '
+          f'(Probe {probe}: {"gefunden" if probe in views else "NICHT gefunden, Messgerät prüfen"})')
 
     z, beispiele, fehler = collections.Counter(), collections.defaultdict(list), collections.Counter()
     for p, g in gruppe.items():
@@ -246,7 +263,7 @@ def main():
             continue
         off, pname = waehle(views, je_produkt.get(p, []))
         if not pname:
-            z[(g, 'nicht_gefunden')] += 1
+            z[(g, fehlklasse(bool(n.get('gp'))))] += 1
             continue
         text, err = produkt_lesen(h, name, pname)
         if err:
