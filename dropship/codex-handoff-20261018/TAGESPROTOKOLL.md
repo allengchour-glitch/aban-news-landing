@@ -3152,3 +3152,20 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](PRODUKTDETAILS-SEO-MERCHANT-20261116-R261.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R261.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R261.csv) · [Gegenproben](OFFENE-GEGENPROBEN-20261116-R261.md).
 
 [LUXESTYLE_R261_20261116]
+
+
+### R262 – Produktdetails, Formauswahl und blockierter Theme-Publish
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität | Core5/Revision261 und Tagesstand frisch geprüft, Shop/Metricool-Identitäten bestätigt. | Vorhandene Historie und Tagesgrenzen erhalten. |
+| Produkte | Organizer und Trinkbecher mit ausführlichen Beschreibungen/SEO verbessert; Organizer-Option Farbe→Form korrigiert. | Drei nativ bestätigte Produktmutationen;20 Varianten erhalten. Öffentliche/mobile Auswahlprüfung im Beleg. |
+| Quellen | Drei gezielte CJ-Detailreads, drei ausgeführte kleine Produktsuchen; ein Schemafehler vor Suchausführung dokumentiert. | Teetasse wegen6erBild/1erPackliste blockiert; keine Produktpagination. |
+| Altes Label | Küchenset Farbe-Beschriftung und Pink-Auswahl frisch mobil gegengeprüft. | Aktuell korrekt ohne neuen Write; historische Ursache unbekannt. |
+| Theme / SEO | Frische Livekopie erstellt;555Dateien nativ verglichen, ein OG-Preissnippet korrigiert/gespeichert; fünf Previewfälle geprüft. | Gewählte Waagenvariante zeigt in bestätigter Draftvorschau127.90CHF; andere Preisfälle korrekt. |
+| Veröffentlichung | Autorisierten Theme-Publish versucht und Rollen zurückgelesen. | Connector verweigert: Only agent-created themes can be published here. MAIN213991391623 bleibt; Draft214169584007 gespeichert. Kein Retry/Bypass. |
+| Fortsetzung | Arbeitsliste54Zeilen erhalten,2live+1blockiert ergänzt. | 57Identitäten; keine Gesamtquote, kein aktueller Merchant-Erfolg, keine neuen Reports/Social/Automation. |
+
+[Bericht](PRODUKTDETAILS-VARIANTENPREIS-20261116-R262.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R262.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R262.csv) · [Patch](VARIANTENPREIS-OG-20261116-R262.patch).
+
+[LUXESTYLE_R262_20261116]

@@ -1,3 +1,13 @@
+# R262 – Zwei Produktdetails live, OG-Fix geprüft aber Publish blockiert – 16.11.2026
+
+Organizer und Trinkbecher: zwei neue ausführliche Titel/Body/SEO-Paare live, Organizer-Optionsname Farbe→Form separat nativ bestätigt; drei Produktmutationen insgesamt. Vier Organizer- und 16 Bechervarianten erhalten. Öffentliche/mobile Prüfung im [Beleg](PRODUKTDETAILS-BELEGE-20261116-R262.json); [Bericht](PRODUKTDETAILS-VARIANTENPREIS-20261116-R262.md). Teetasse15524880744833 wegen6Tassenbild/1TassePackliste nicht geändert. Arbeitsliste54+2live+1blockiert=[57 Identitäten](PRODUKTDETAILS-ARBEITSLISTE-20261116-R262.csv), keine Gesamtquote.
+
+OG-Variantenpreis-Fix gespeichert in Theme214169584007 «LuxeStyle – Variantenpreis SEO 16.11.2026»:555Dateien native Baselineidentität, ein Snippet geändert, fünf echte Previewfälle bestanden. **Publish von Connector verweigert**: Only agent-created themes can be published here. MAIN bleibt213991391623, Entwurf UNPUBLISHED; kein Retry/BYPASS. Bestehende Livefreigabe ausreichend, manuelle Admin-Veröffentlichung nötig. [Patch](VARIANTENPREIS-OG-20261116-R262.patch). Merchant-Zulassung/Google-Fehlerursache dadurch nicht bewiesen.
+
+Alte Küchenset-Grösse/Farbe-Abweichung aktuell ohne neuen Write behoben beobachtet; historische Ursache unbekannt. R259-Tonkonflikt unverändert offen. Keine neuen Tagesreports/Bestellwatch/Automation. Alle24Aufgaben/Historie erhalten. Claude-Empfang unbekannt. Memory am Schluss verlinken.
+
+---
+
 # R261 – Produktdetails, Auswahlbilder und SEO live – 16.11.2026
 
 Sechs Unteragenten parallel eingesetzt (100 angefragt, Kapazität Root + sechs). Drei weitere Produktseiten haben belegte ausführliche Texte/SEO: Keramikreibe, neutrales Schneidebrett und Keramik-Teeservice. Sechs vorhandene Variantenbilder zugeordnet, acht Alttexte neutralisiert, mobile Teetabelle korrigiert; 14 Varianten/28 Medien erhalten. Acht bestätigte Shopify-Mutationen insgesamt. Eine Collection-Meta-Beschreibung ist live; der versehentlich gelöschte SEO-Titel wurde exakt wiederhergestellt und öffentlich bestätigt. Künftig verschachtelte SEO-Felder immer vollständig aus frischem Read senden. [Bericht](PRODUKTDETAILS-SEO-MERCHANT-20261116-R261.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R261.json).
