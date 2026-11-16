@@ -54,7 +54,7 @@ Werkzeug `automation/merchant_versand.py`, Workflow `.github/workflows/merchant-
 - **Nach dem Senden:** Jeder aktive eigene Dienst muss ausser der Lieferzeit gleich bleiben und die neue Lieferzeit tragen; alle übrigen Dienste (auch ein inaktiver eigener) und die Lager unverändert. Zeigt das Zurücklesen ein neues `etag`, aber nicht den gesendeten Stand, oder unseren Dienst inaktiv, endet der Lauf sofort mit Exit 7 statt zu warten.
 - **Auch beim Anlegen** wird die Lieferzeit geprüft (Antwort und Zurücklesen). Zeigt das Zurücklesen ein neues `etag` ohne unseren Dienst (vermutlich hat die Google-App neu geschrieben), endet der Lauf mit Exit 7; der Wächter legt ihn am nächsten Tag neu an.
 - **Lesefehler beim Zurücklesen** ohne Bestätigung ergeben Exit 7, nie Erfolg. Weicht die insert-Antwort ab, wird der Stand einmal gelesen und gezeigt, dann Exit 7.
-- **Annahme (nicht gemessen):** Ein veralteter Lesestand trägt auch das alte `etag`. Darauf stützt sich der schnelle Abbruch bei neuem `etag`. Stimmt die Annahme nicht, gibt es einen Fehlalarm (Exit 7), keinen falschen Erfolg. Beim ersten echten Lauf die Zeilen «Rücklesen …» festhalten.
+- **Veralteter Lesestand und `etag` (gemessen 16.11. 01:31 UTC):** Beim ersten echten Angleichen zeigte das erste Zurücklesen noch den alten Stand und meldete «fertig=False» (also auch das alte `etag`), das zweite bestätigte. Darauf stützt sich der schnelle Abbruch bei neuem `etag`; eine einzelne Messung, kein Beweis für jeden Fall (Fehlalarm Exit 7 wäre die Folge, kein falscher Erfolg).
 - **Mitgeschickt wird jedes gelesene Feld ausser `name`:** insert ersetzt alles, ein künftiges Feld ginge sonst still verloren.
 - **Zeitlimit oder Netzfehler beim Senden:** Exit 9 mit «möglicherweise gesendet»; nicht sofort wiederholen, der nächste Lauf prüft. Das gilt auch beim Anlegen und bei der Rücknahme.
 
@@ -63,6 +63,8 @@ Werkzeug `automation/merchant_versand.py`, Workflow `.github/workflows/merchant-
 1. Actions → «Merchant-Versand Liechtenstein» → `modus` = `schreiben`. Erwartet: «Lieferzeit Liechtenstein angeglichen, übrige Dienste unverändert (GLEICH)».
 2. Frühestens 2 Minuten später `modus` = `pruefen`. Erwartet: «nichts zu tun» und in der Liste beim Dienst «Standard Liechtenstein» `Bearbeitung=1-3 Transit=10-29 Werktage=Mo-Fr` (oder `Werktage=Vorgabe`, falls Google den Vorgabewert weglässt).
 3. Der Wächter meldet eine spätere Abweichung der Lieferzeit nicht per Telegram, nur im Protokoll.
+
+**Ausgeführt 16.11.:** `schreiben` 01:31 UTC «angeglichen … (GLEICH)», `pruefen` 01:34 UTC «nichts zu tun», Dienst «Standard Liechtenstein» mit `Bearbeitung=1-3 Transit=10-29 Werktage=Mo-Fr`. Google behält die ausdrücklich gesendeten Werktage. Die drei Schweizer Dienste sind unverändert.
 
 ## Prüfung
 
