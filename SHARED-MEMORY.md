@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: englische Download-Rückkehr abgesichert ·16.11.2026
+
+EN akzeptierte HTTP-Fehler/nicht-booleschen Erfolg und blieb bei Hängern stehen; sechs Vorher-Browserfälle bestätigt. Jetzt strikte Freigabe,15-Sekunden-Frist, manuelle Wiederprüfung und Hilfe gegen Doppelkauf samt englischer ZIP-Starthilfe. API/Zuordnungen/Preise/geschützte Dateien unverändert.91 gemeinsame DE/EN-Downloadprüfungen und14 Handy-/Desktopfälle grün, nur Demoantworten. Vorhandene CI nutzt dieselbe Testdatei, keine neue Automation. Details/Bereitstellung im kanonischen Abschnitt Englische Kit-Rückkehr und zugehörigem PR; finanzielle Wirkung nicht gemessen.
+
 ## Neon Wildnis: Grafik, Bedienung und gemeinsame Welt ·16.11.2026
 
 Folgeauftrag «weiter andere spiele verbessern», bestehende Spiele-Veröffentlichung freigegeben. Neue dezente Bodenmaterialien, abgestimmtes Licht, feste Beete/Zäune, statische räumliche Instanzen und Lichtbudget; gespeicherte Grafikprofile und kein schweres Weltzeichnen hinter Pause/Karte/Station. Nachgestellt und behoben: veraltete Schnell-Suche überschreibt privaten Raum, Rolle während offener Karte, nicht erreichbare Baurezepte und verschiedene Koop-Weltgeneratoren auf Desktop/Touch. Gemeinsame Welten jetzt geräteunabhängig; worldFull erhält deren Solo-Fortsetzung, Online-Läufe überschreiben weiterhin keinen Solo-Save.
