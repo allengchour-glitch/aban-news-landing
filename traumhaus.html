@@ -16574,6 +16574,17 @@ function updNpcs(dt,now){
 function simGeste(s,art){if(!s)return;s.geste={art:art,t:0,dauer:art==="freude"?2.6:2};}
 function simGelenkeZurueck(s){if(!s.gelenke)return;for(var k in s.gelenke){var g=s.gelenke[k];if(g.aktiv){g.bone.quaternion.copy(g.basis);g.aktiv=false;}}}
 function simGelenk(s,name,x,y,z){var g=s.gelenke&&s.gelenke[name];if(!g)return;g.basis.copy(g.bone.quaternion);g.aktiv=true;g.bone.rotateX(x);g.bone.rotateY(y);g.bone.rotateZ(z);}
+var _gestPos=new THREE.Vector3(),_gestRichtung=new THREE.Vector3(),_gestZiel=new THREE.Vector3(),_gestQ1=new THREE.Quaternion(),_gestQ2=new THREE.Quaternion(),_gestQ3=new THREE.Quaternion();
+/* Gelenkachsen unterscheiden sich je Rig. Arme deshalb nach ihrer echten Richtung ausrichten. */
+function simArmZiel(s,name,x,y,z,w){
+  var g=s.gelenke&&s.gelenke[name];if(!g)return;
+  var b=g.bone,tip=b.children.find(function(c){return c.isBone;});if(!tip)return;
+  g.basis.copy(b.quaternion);g.aktiv=true;b.updateWorldMatrix(true,true);
+  b.getWorldPosition(_gestPos);tip.getWorldPosition(_gestRichtung);_gestRichtung.sub(_gestPos).normalize();
+  s.mesh.getWorldQuaternion(_gestQ1);_gestZiel.set(x,y,z).normalize().applyQuaternion(_gestQ1);
+  b.getWorldQuaternion(_gestQ1);_gestQ2.setFromUnitVectors(_gestRichtung,_gestZiel).multiply(_gestQ1);
+  b.parent.getWorldQuaternion(_gestQ3);_gestQ3.invert().multiply(_gestQ2);b.quaternion.slerp(_gestQ3,w);b.updateWorldMatrix(false,true);
+}
 function simGestenTakt(s,dt,now){
   var g=s.geste;if(g){g.t+=dt;if(g.t>=g.dauer){s.geste=null;g=null;}}
   var tanzt=s.state==="dance",t=g?g.t:now/1000;
@@ -16581,12 +16592,12 @@ function simGestenTakt(s,dt,now){
   var w=g?Math.min(1,g.t/.22,(g.dauer-g.t)/.35):1;
   if(tanzt||(g&&g.art==="freude")){
     var a=Math.sin(t*7);simGelenk(s,"Spine",0,a*.08*w,a*.13*w);
-    simGelenk(s,"LeftArm",-.3*w,0,(.65+a*.3)*w);simGelenk(s,"RightArm",-.3*w,0,(-.65+a*.3)*w);
-    simGelenk(s,"LeftForeArm",-.65*w,0,0);simGelenk(s,"RightForeArm",-.65*w,0,0);simGelenk(s,"Head",Math.sin(t*14)*.06*w,0,0);
+    simArmZiel(s,"LeftArm",.8,.35+a*.25,.1,w);simArmZiel(s,"RightArm",-.8,.35-a*.25,.1,w);
+    simArmZiel(s,"LeftForeArm",.2,.9,.2,w);simArmZiel(s,"RightForeArm",-.2,.9,.2,w);simGelenk(s,"Head",Math.sin(t*14)*.06*w,0,0);
   }else if(g.art==="herz"){
-    simGelenk(s,"LeftArm",-.85*w,0,.3*w);simGelenk(s,"RightArm",-.85*w,0,-.3*w);
-    simGelenk(s,"LeftForeArm",0,.75*w,0);simGelenk(s,"RightForeArm",0,-.75*w,0);simGelenk(s,"Head",.12*w,0,0);
-  }else{simGelenk(s,"RightArm",-.25*w,0,-1.2*w);simGelenk(s,"RightForeArm",0,0,(-.6+Math.sin(t*13)*.4)*w);simGelenk(s,"Head",0,-.12*w,0);}
+    simArmZiel(s,"LeftArm",.35,-.35,.7,w);simArmZiel(s,"RightArm",-.35,-.35,.7,w);
+    simArmZiel(s,"LeftForeArm",-.65,.55,.1,w);simArmZiel(s,"RightForeArm",.65,.55,.1,w);simGelenk(s,"Head",.12*w,0,0);
+  }else{simArmZiel(s,"RightArm",-.65,.8,0,w);simArmZiel(s,"RightForeArm",Math.sin(t*13)*.45,1,.05,w);simGelenk(s,"Head",0,-.12*w,0);}
 }
 function updSim(s,si,dt,now){
   if(MPs&&!mpHost){ // Gast
