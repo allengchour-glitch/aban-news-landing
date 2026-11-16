@@ -114,7 +114,11 @@ for(const mode of ['verifyHang','bodyHang']){
   const recovered=await request();assert.equal(recovered.status,200);assert.equal(recovered.calls,1);assert.equal(recovered.assetCalls,1);assert.equal(timers.size,0);checks++;
  }finally{globalThis.setTimeout=realSet;globalThis.clearTimeout=realClear;}
 }
-const html=readFileSync(new URL('../danke-kit.html',import.meta.url),'utf8');
+for(const lang of ['de','en']){
+const html=readFileSync(new URL(lang==='de'?'../danke-kit.html':'../en/danke-kit.html',import.meta.url),'utf8');
+const kaufWarnung=lang==='de'?/nicht nochmals kaufen/:/do not buy again/i;
+const bestellkennung=lang==='de'?/Bestellkennung/:/order reference/i;
+const downloadWort=lang==='de'?/Kit herunterladen/:/Download kit/;
 const script=html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];
 const settle=()=>new Promise(resolve=>setImmediate(resolve));
 function page(replies,search='?session_id=cs_test_demo',statuses=[]){
@@ -129,8 +133,8 @@ function page(replies,search='?session_id=cs_test_demo',statuses=[]){
 }
 {
  const p=page([{error:'Zahlung noch nicht bestätigt.'},{ok:true,url:'/downloads/kits/'+ 'a'.repeat(24)+'.zip'}]);
- await settle();assert.equal(p.calls(),1);assert.equal(p.button.hidden,false);assert.match(p.box.textContent,/nicht nochmals kaufen/);
- p.button.click();assert.equal(p.button.disabled,true);await settle();assert.equal(p.calls(),2);assert.equal(p.button.hidden,true);assert.match(p.box.innerHTML,/Kit herunterladen/);checks++;
+ await settle();assert.equal(p.calls(),1);assert.equal(p.button.hidden,false);assert.match(p.box.textContent,kaufWarnung);
+ p.button.click();assert.equal(p.button.disabled,true);await settle();assert.equal(p.calls(),2);assert.equal(p.button.hidden,true);assert.match(p.box.innerHTML,downloadWort);checks++;
 }
 {
  const p=page([new Error('Demo offline')]);await settle();assert.equal(p.button.hidden,false);assert.equal(p.button.disabled,false);checks++;
@@ -139,7 +143,7 @@ function page(replies,search='?session_id=cs_test_demo',statuses=[]){
  const p=page([{ok:true,url:'https://fremd.invalid/datei'}]);await settle();assert.equal(p.button.hidden,false);assert.ok(!p.box.innerHTML.includes('fremd.invalid'));checks++;
 }
 {
- const p=page([{error:'<img src=x onerror=alert(1)>'}]);await settle();assert.match(p.box.textContent,/<img/);assert.equal(p.box.innerHTML,'');checks++;
+ const p=page([{error:'<img src=x onerror=alert(1)>'}]);await settle();if(lang==='de')assert.match(p.box.textContent,/<img/);assert.equal(p.box.innerHTML,'');checks++;
 }
 {
  const p=page([], '');await settle();assert.equal(p.calls(),0);assert.equal(p.button.hidden,true);checks++;
@@ -148,15 +152,15 @@ function page(replies,search='?session_id=cs_test_demo',statuses=[]){
  let finish;const hanging=new Promise(resolve=>{finish=resolve;});
  const p=page([hanging,{ok:true,url:'/downloads/kits/'+'b'.repeat(24)+'.zip'}]);
  await settle();assert.equal(p.button.hidden,true);assert.equal(p.calls(),1);
- p.expire();await settle();assert.equal(p.button.hidden,false);assert.equal(p.button.disabled,false);assert.match(p.box.textContent,/nicht nochmals kaufen/);assert.equal(p.calls(),1);checks++;
- p.button.click();await settle();assert.equal(p.calls(),2);assert.match(p.box.innerHTML,/Kit herunterladen/);assert.equal(p.timers.size,0);checks++;
+ p.expire();await settle();assert.equal(p.button.hidden,false);assert.equal(p.button.disabled,false);assert.match(p.box.textContent,kaufWarnung);assert.equal(p.calls(),1);checks++;
+ p.button.click();await settle();assert.equal(p.calls(),2);assert.match(p.box.innerHTML,downloadWort);assert.equal(p.timers.size,0);checks++;
  finish({ok:true,url:'/downloads/kits/'+'c'.repeat(24)+'.zip'});await settle();assert.ok(!p.box.innerHTML.includes('c'.repeat(24)));assert.equal(p.calls(),2);checks++;
 }
 // Fehlende/defekte Rückkehrkennung ist kein Grund für einen erneuten Kauf.
 for (const search of ['', '?session_id=', '?session_id=ungueltig', '?session_id=%3Cimg%3E']) {
  const p=page([],search);await settle();
  assert.equal(p.calls(),0);assert.equal(p.button.hidden,true);assert.equal(p.timers.size,0);
- assert.match(p.box.textContent,/Bestellkennung/);assert.match(p.box.textContent,/nicht nochmals kaufen/);
+ assert.match(p.box.textContent,bestellkennung);assert.match(p.box.textContent,kaufWarnung);
  assert.doesNotMatch(p.box.textContent,/Bitte über den Shop kaufen/);checks++;
 }
 // Widersprüchliche Transport-/Inhaltsantworten geben keinen Link frei.
@@ -165,7 +169,7 @@ for(const status of [402,429,500]){
   {ok:true,url:'/downloads/kits/'+'e'.repeat(24)+'.zip'}],undefined,[status,200]);
  await settle();assert.equal(p.box.innerHTML,'','HTTP '+status+' darf keinen Download zeigen');
  assert.equal(p.button.hidden,false);assert.equal(p.calls(),1);assert.equal(p.timers.size,0);
- p.button.click();await settle();assert.match(p.box.innerHTML,/Kit herunterladen/);
+ p.button.click();await settle();assert.match(p.box.innerHTML,downloadWort);
  assert.equal(p.calls(),2);assert.equal(p.button.hidden,true);checks++;
 }
 for(const ok of ['false','true',1,{}]){
@@ -173,5 +177,6 @@ for(const ok of ['false','true',1,{}]){
  await settle();assert.equal(p.box.innerHTML,'','Nur boolesch true gibt frei');
  assert.equal(p.button.hidden,false);assert.equal(p.calls(),1);checks++;
 }
-assert.doesNotMatch(html,/<h1>Danke für deinen Kauf!/);checks++;
+assert.doesNotMatch(html,/<h1>(Danke für deinen Kauf!|Thanks for your purchase!)/);checks++;
+}
 console.log(`${checks} ok, 0 Fehler`);

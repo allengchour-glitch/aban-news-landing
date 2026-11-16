@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: englische Download-Rückkehr abgesichert ·16.11.2026
+
+EN akzeptierte HTTP-Fehler/nicht-booleschen Erfolg und blieb bei Hängern stehen; sechs Vorher-Browserfälle bestätigt. Jetzt strikte Freigabe,15-Sekunden-Frist, manuelle Wiederprüfung und Hilfe gegen Doppelkauf samt englischer ZIP-Starthilfe. API/Zuordnungen/Preise/geschützte Dateien unverändert.91 gemeinsame DE/EN-Downloadprüfungen und14 Handy-/Desktopfälle grün, nur Demoantworten. Vorhandene CI nutzt dieselbe Testdatei, keine neue Automation. Details/Bereitstellung im kanonischen Abschnitt Englische Kit-Rückkehr und zugehörigem PR; finanzielle Wirkung nicht gemessen.
+
 ## Lebenspfad: Charakter verfeinert ·16.11.2026
 
 Auf Besitzerauftrag native Comic-Figuren verfeinert: gewölbte Augenflächen statt Kugelschichten, Kappenfrisur/Bob/Dutt aufgeräumt, Streifen auf dem Shirt, gemeinsamer Kopf-Pivot. Vorschau mit sRGB und vollständigem Bildausschnitt; neun Spezial-GLBs über tatsächliche Pose eingerahmt, keine Änderung an ihrer Spielskalierung. GEMESSEN:82 native Browser-Bedingungen und neun echte GLB-Vorschauen grün; alte Fehlergruppen/falsche Bindepose als Gegenproben erkannt. Vier Altersstufen und Sohlenabstände unverändert; fünf HUD-Formate, sieben Stand-/Emote-Fixtures und Familie bestanden. Desktop-Zeichenaufrufe Frau78→60/Mann81→69, Touch-Fixture74→56/75→63; keine FPS-/Handy-Zusage. Replay26 Hashes/kompletter Endzustand/31 RNG-Aufrufe identisch zum Pfad; kein Realnetztest. Details/Bilder: spiele-dev/lebenspfad/CHARAKTER.md. Pfad PR3189 bereits live (033b06057, Hauptseitenlauf43849319557,20 HTTPS-Prüfungen grün). Charakter-Veröffentlichung nach realer PR-CI und HTTPS-Abgleich im zugehörigen PR belegen. Lokale Gesamt-CI wegen schreibgeschütztem HOME blockiert. Kein Shop-/Social-/Konto-/Secret-Eingriff.
