@@ -375,6 +375,10 @@ pruef("zeigen: ohne amountMicros kein Absturz", "0.00 CHF" in puffer.getvalue())
 pruef("zeigen: schwärzt", KONTO not in puffer.getvalue())
 puffer = io.StringIO()
 with contextlib.redirect_stdout(puffer):
+    mv.zeigen("T", {"services": [CH2, CH1]})
+pruef("zeigen: Mindestbestellwert als Betrag", "Mindestbestellwert=45.00 CHF" in puffer.getvalue() and "Mindestbestellwert=keiner" in puffer.getvalue())
+puffer = io.StringIO()
+with contextlib.redirect_stdout(puffer):
     mv.zeigen("T", {"services": [{"rateGroups": "kaputt"}]})
 pruef("zeigen: kaputte Daten nur Hinweis", "Anzeige nicht möglich" in puffer.getvalue())
 # 36. Schwärzen vor dem Kürzen: Kontonummer an der Schnittkante

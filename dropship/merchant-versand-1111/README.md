@@ -43,8 +43,10 @@ Werkzeug `automation/merchant_versand.py`, Workflow `.github/workflows/merchant-
 
 ## Prüfung
 
-- Offline-Test 125 Prüfungen (gefälschte Merchant API mit Verzögerung und etag-Prüfung wie Google, Lager, fremden LI-Diensten, Tabellen und Versandlabels, Lese- und Netzfehlern mit Kontonummer im Text, Telegram), läuft bei jedem Pull Request und vor jedem Lauf.
+- Offline-Test 126 Prüfungen (gefälschte Merchant API mit Verzögerung und etag-Prüfung wie Google, Lager, fremden LI-Diensten, Tabellen und Versandlabels, Lese- und Netzfehlern mit Kontonummer im Text, Telegram), läuft bei jedem Pull Request und vor jedem Lauf.
 - Mutationsprobe 16.11.: 82 von 82 Mutanten erkannt (Skript im Scratch, nicht im Repo). Zwei unabhängige Prüfer: Runde 1 Kontonummer-Leck über Fehlertexte, fehlender etag-Schutz; Runde 2 kein Blocker, neun kleine Funde, alle behoben und an den Nachstellungen des Prüfers nachgemessen.
+
+- **Alte Protokolle geprüft (16.11.):** alle neun Läufe dieses Workflows (11.11. bis 15.11.) enthalten kein «accounts/» und keine Merchant-Nummer. Die langen Zahlen in den Dienstnamen der Google-App (`flat_7.00_CHF_<12 Ziffern>_<13 Ziffern>_standard`) sind Shopify-Kennungen von Versandzone und Tarif (gegen `deliveryProfiles` abgeglichen). Die neue Fassung schwärzt sie in der Anzeige trotzdem (Regel: jede Zahl ab 7 Stellen).
 
 ## Offen
 

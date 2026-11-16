@@ -102,8 +102,10 @@ def _zeigen(titel, s):
             tarife.append(f"{int(fr.get('amountMicros') or 0)/1e6:.2f} {fr.get('currencyCode','')}" if fr else
                           ("kein Versand" if sv.get("noShipping") else "Tabelle/anders"))
         dt = d.get("deliveryTime") or {}
+        mov = d.get("minimumOrderValue") or {}
+        mindest = f"{int(mov.get('amountMicros') or 0)/1e6:.2f} {mov.get('currencyCode','')}" if mov else "keiner"
         print(schwaerzen(f"  - {d.get('serviceName')!r} aktiv={d.get('active')} Länder={d.get('deliveryCountries')} "
-              f"Währung={d.get('currencyCode')} Tarife={tarife} Mindestbestellwert={d.get('minimumOrderValue')} "
+              f"Währung={d.get('currencyCode')} Tarife={tarife} Mindestbestellwert={mindest} "
               f"Bearbeitung={dt.get('minHandlingDays')}-{dt.get('maxHandlingDays')} "
               f"Transit={dt.get('minTransitDays')}-{dt.get('maxTransitDays')} Typ={d.get('shipmentType')}"))
     print(f"  Lager: {len(s.get('warehouses') or [])}, etag vorhanden: {bool(s.get('etag'))}")
