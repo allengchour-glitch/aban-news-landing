@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Lebenspfad: Charakter verfeinert ·16.11.2026
+
+Auf Besitzerauftrag native Comic-Figuren verfeinert: gewölbte Augenflächen statt Kugelschichten, Kappenfrisur/Bob/Dutt aufgeräumt, Streifen auf dem Shirt, gemeinsamer Kopf-Pivot. Vorschau mit sRGB und vollständigem Bildausschnitt; neun Spezial-GLBs über tatsächliche Pose eingerahmt, keine Änderung an ihrer Spielskalierung. GEMESSEN:82 native Browser-Bedingungen und neun echte GLB-Vorschauen grün; alte Fehlergruppen/falsche Bindepose als Gegenproben erkannt. Vier Altersstufen und Sohlenabstände unverändert; fünf HUD-Formate, sieben Stand-/Emote-Fixtures und Familie bestanden. Desktop-Zeichenaufrufe Frau78→60/Mann81→69, Touch-Fixture74→56/75→63; keine FPS-/Handy-Zusage. Replay26 Hashes/kompletter Endzustand/31 RNG-Aufrufe identisch zum Pfad; kein Realnetztest. Details/Bilder: spiele-dev/lebenspfad/CHARAKTER.md. Pfad PR3189 bereits live (033b06057, Hauptseitenlauf43849319557,20 HTTPS-Prüfungen grün). Charakter-Veröffentlichung nach realer PR-CI und HTTPS-Abgleich im zugehörigen PR belegen. Lokale Gesamt-CI wegen schreibgeschütztem HOME blockiert. Kein Shop-/Social-/Konto-/Secret-Eingriff.
+
+
 ## Lebenspfad: Pfadänderung nach Besitzerfreigabe ·16.11.2026
 
 Auf «du darfst den Pfad ändern und verbessern»: Kapitelbögen mit Bogenlängen-Abständen, vier kollisionsfreie Abzweigungen, flachere kleinere Steinfelder, eingefasste Wege/Pfeile und größere Schildertexte.175 IDs/Typen,178 gerichtete Verbindungen, Kurzmodus-Sprünge und Speicherformat unverändert.32 geplante Bauplätze mit ebenem Gelände, zentrierte PBR-Drehung und angepasste Requisiten/Winterfiguren. Bestätigte Spielplatzüberschneidung auf Zweig162 behoben; Familie nutzt auch den Höhenverlauf der Verbindungen.

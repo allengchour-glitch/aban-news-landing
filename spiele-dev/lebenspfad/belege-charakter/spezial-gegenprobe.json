@@ -1,0 +1,17 @@
+{
+  "kind": "Neun echte GLB-Vorschauen mit posierten Vertices; keine Spielfigur-Normalisierung",
+  "cases": [
+    {
+      "id": "hero",
+      "vertices": 10251,
+      "margin": -853549.6588272998,
+      "zMin": -2664.886718459014,
+      "zMax": 2864.9157166523564,
+      "finite": true,
+      "pixelColors": 54
+    }
+  ],
+  "errors": [],
+  "passed": false,
+  "error": "AssertionError [ERR_ASSERTION]: {\"id\":\"hero\",\"vertices\":10251,\"margin\":-853549.6588272998,\"zMin\":-2664.886718459014,\"zMax\":2864.9157166523564,\"finite\":true,\"pixelColors\":54}\n    at /workspace/aban-lebenspfad-charakter/spiele-dev/lebenspfad/charakter-glb-qa.cjs:44:4"
+}
