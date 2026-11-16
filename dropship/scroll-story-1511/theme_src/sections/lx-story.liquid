@@ -1,0 +1,210 @@
+{%- comment -%}
+  LuxeStyle Scroll-Geschichte 2.0 (15.11.2026). Neue Datei, ändert nichts Bestehendes.
+  Angeheftete Bühne (sticky) mit einem stummen Video je Kapitel. Beim Scrollen zoomt und schwenkt der Hintergrund, das nächste
+  Kapitel schiebt sich als Vorhang von unten herein, darüber Text mit Parallaxe und je Kapitel eine Kaufkarte.
+  Wahrheit (fail closed): ein Kapitel erscheint nur, wenn Produkt aktiv, im Onlineshop sichtbar und die eingestellte Ausführung
+  kaufbar ist, Poster und Videos von cdn.shopify.com stammen und sein Ablaufdatum («bis») nicht vorbei ist.
+  Preis und Titel kommen live aus dem Shop. Weniger als zwei Kapitel: nichts.
+  Stil: {% stylesheet %} unten (Shopify lädt ihn im <head>), nicht als <style> im <body>.
+  Rücknahme: Abschnitt aus der Vorlage entfernen. Doku: scratchpad/story1511/BERICHT.md.
+{%- endcomment -%}
+{%- liquid
+  assign fr = false
+  if request.locale.iso_code == 'fr'
+    assign fr = true
+  endif
+  assign cdn = 'https://cdn.shopify.com/'
+  assign heute = 'now' | date: '%Y%m%d' | plus: 0
+  assign zahl = 0
+  assign okliste = '|'
+  assign gruende = ''
+  for block in section.blocks
+    assign p = block.settings.produkt
+    assign ok = true
+    if p == blank or p.available == false
+      assign ok = false
+      assign gruende = gruende | append: ' ' | append: block.id | append: ':produkt'
+    endif
+    assign vid = block.settings.variante | plus: 0
+    assign v = nil
+    if ok
+      for x in p.variants
+        if x.id == vid
+          assign v = x
+        endif
+      endfor
+      if v == nil or v.available == false
+        assign ok = false
+        assign gruende = gruende | append: ' ' | append: block.id | append: ':ausfuehrung'
+      endif
+    endif
+    assign pq = block.settings.poster_quer | default: ''
+    assign ph = block.settings.poster_hoch | default: ''
+    unless pq contains cdn and ph contains cdn
+      assign ok = false
+      assign gruende = gruende | append: ' ' | append: block.id | append: ':poster'
+    endunless
+    assign bis = block.settings.bis | default: '' | remove: '-' | remove: '.' | strip | plus: 0
+    if bis > 0 and heute > bis
+      assign ok = false
+      assign gruende = gruende | append: ' ' | append: block.id | append: ':abgelaufen'
+    endif
+    if ok
+      assign zahl = zahl | plus: 1
+      assign okliste = okliste | append: block.id | append: '|'
+    endif
+  endfor
+  assign sid = section.id | replace: '_', '-'
+-%}
+{%- if zahl < 2 -%}
+  <!-- lx-story: aus ({{ zahl }} Kapitel;{{ gruende }}) -->
+  <script>(function(){var p=document.querySelector('.lx-story-platzhalter');if(p&&p.parentNode)p.parentNode.removeChild(p)})();</script>
+{%- else -%}
+<script src="{{ 'lx-story.js' | asset_url }}" defer></script>
+<section class="lx-story" id="lx-story-{{ sid }}" data-lx-story data-platz="{{ section.settings.platz | escape }}" aria-labelledby="lx-story-titel-{{ sid }}">
+  <a class="lx-story__skip" href="#lx-story-ende-{{ sid }}">{% if fr %}Passer l’histoire{% else %}Geschichte überspringen{% endif %}</a>
+  <h2 class="lx-story__titel" id="lx-story-titel-{{ sid }}">{% if fr %}{{ section.settings.titel_fr | escape }}{% else %}{{ section.settings.titel | escape }}{% endif %}</h2>
+  <div class="lx-story__buehne">
+    <div class="lx-story__medien" aria-hidden="true">
+      {%- assign n = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign nadel = '|' | append: block.id | append: '|' -%}
+        {%- if okliste contains nadel -%}
+          {%- liquid
+            assign pq = block.settings.poster_quer
+            assign ph = block.settings.poster_hoch
+            assign vq = block.settings.video_quer | default: ''
+            assign vh = block.settings.video_hoch | default: ''
+            unless vq contains cdn and vh contains cdn
+              assign vq = ''
+              assign vh = ''
+            endunless
+          -%}
+          <div class="lx-story__ebene" data-i="{{ n }}"{% if n == 0 %} data-aktiv data-sicht{% endif %} style="--lx-fq:{{ block.settings.fokus_quer | default: '50% 50%' | escape }};--lx-fh:{{ block.settings.fokus_hoch | default: '50% 30%' | escape }}">
+            <picture>
+              {%- if n == 0 -%}
+              <source media="(max-width: 749px)" srcset="{{ ph | escape }}" type="image/webp">
+              <img class="lx-story__poster" src="{{ pq | escape }}" alt="" width="1440" height="1080" loading="lazy" decoding="async">
+              {%- else -%}
+              <source media="(max-width: 749px)" data-srcset="{{ ph | escape }}" type="image/webp">
+              <img class="lx-story__poster" data-src="{{ pq | escape }}" alt="" width="1440" height="1080" decoding="async">
+              {%- endif -%}
+            </picture>
+            {%- if vq != '' -%}
+            <video class="lx-story__video" muted playsinline loop preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" data-vq="{{ vq | escape }}" data-vh="{{ vh | escape }}"></video>
+            {%- endif -%}
+          </div>
+          {%- assign n = n | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <div class="lx-story__schleier" aria-hidden="true"></div>
+  </div>
+  <div class="lx-story__steuer">
+    <div class="lx-story__fortschritt" aria-hidden="true"><span></span></div>
+    <nav class="lx-story__punkte" aria-label="{% if fr %}Chapitres{% else %}Kapitel{% endif %}">
+      {%- assign n = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign nadel = '|' | append: block.id | append: '|' -%}
+        {%- if okliste contains nadel -%}
+          {%- if fr -%}{%- assign wort = block.settings.wort_fr | default: block.settings.wort -%}{%- else -%}{%- assign wort = block.settings.wort -%}{%- endif -%}
+          <a href="#lx-story-{{ sid }}-k{{ n }}" data-i="{{ n }}"{% if n == 0 %} aria-current="step"{% endif %}><span>{{ n | plus: 1 }}. {{ wort | escape }}</span></a>
+          {%- assign n = n | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+    <button type="button" class="lx-story__pause" aria-pressed="false" data-an="{% if fr %}Arrêter le mouvement{% else %}Bewegung anhalten{% endif %}" data-aus="{% if fr %}Reprendre le mouvement{% else %}Bewegung fortsetzen{% endif %}" hidden><svg class="lx-story__pause-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="lx-story__i-pause" d="M8 5v14M16 5v14"/><path class="lx-story__i-play" d="M7 5l12 7-12 7z"/></svg><span class="lx-story__pause-text">{% if fr %}Arrêter le mouvement{% else %}Bewegung anhalten{% endif %}</span></button>
+  </div>
+  {%- assign n = 0 -%}
+  {%- for block in section.blocks -%}
+    {%- assign nadel = '|' | append: block.id | append: '|' -%}
+    {%- if okliste contains nadel -%}
+    {%- liquid
+      assign p = block.settings.produkt
+      assign vid = block.settings.variante | plus: 0
+      assign v = nil
+      for x in p.variants
+        if x.id == vid
+          assign v = x
+        endif
+      endfor
+      assign pq = block.settings.poster_quer
+      assign ph = block.settings.poster_hoch
+      if fr
+        assign wort = block.settings.wort_fr | default: block.settings.wort
+        assign zeile = block.settings.zeile_fr | default: block.settings.zeile
+      else
+        assign wort = block.settings.wort
+        assign zeile = block.settings.zeile
+      endif
+      assign bild = v.featured_image | default: p.featured_image
+      assign letzte = zahl | minus: 1
+    -%}
+    <div class="lx-story__kapitel" id="lx-story-{{ sid }}-k{{ n }}" data-i="{{ n }}"{% if n == letzte %} data-letztes{% endif %} {{ block.shopify_attributes }}>
+      <picture class="lx-story__still" aria-hidden="true">
+        <source media="(max-width: 749px)" srcset="{{ ph | escape }}" type="image/webp">
+        <img src="{{ pq | escape }}" alt="" width="1440" height="1080" loading="lazy" decoding="async">
+      </picture>
+      <div class="lx-story__text">
+        <p class="lx-story__nr"><span>{{ n | plus: 1 | prepend: '0' | slice: -2, 2 }}</span> / {{ zahl | prepend: '0' | slice: -2, 2 }}</p>
+        <h3 class="lx-story__wort">{{ wort | escape }}</h3>
+        <p class="lx-story__zeile">{{ zeile | escape }}</p>
+      </div>
+      <a class="lx-story__karte" href="{{ v.url }}" data-produkt="{{ p.handle | escape }}" data-variante="{{ v.id }}">
+        <span class="lx-story__karte-bild">{%- if bild != blank -%}{{ bild | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '96px', alt: '' }}{%- endif -%}</span>
+        <span class="lx-story__karte-text">
+          <span class="lx-story__karte-titel">{{ p.title | escape }}</span>
+          {%- if block.settings.variante_zeigen != false and v.title != 'Default Title' -%}<span class="lx-story__karte-var">{{ v.title | escape }}</span>{%- endif -%}
+          <span class="lx-story__karte-preis">{{ v.price | money_with_currency }}</span>
+          <span class="lx-story__karte-cta">{% if fr %}Voir le produit{% else %}Produkt ansehen{% endif %}<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+        </span>
+      </a>
+    </div>
+    {%- assign n = n | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+  <span class="lx-story__ende" id="lx-story-ende-{{ sid }}" tabindex="-1"></span>
+</section>
+<script>(function(){var s=document.currentScript,w=s&&s.closest('.shopify-section');if(!w)return;{%- if section.settings.platz == 'nach_hero' and template.name == 'index' -%}var p=document.querySelector('.lx-story-platzhalter'),h=document.querySelector('.lx-home .lx-hero');if(p&&p.parentNode){p.parentNode.replaceChild(w,p)}else if(h&&h.parentNode&&h.nextSibling!==w){h.parentNode.insertBefore(w,h.nextSibling)}w.setAttribute('data-lx-story-platz','nach-hero');{%- else -%}w.setAttribute('data-lx-story-platz','eigener');{%- endif -%}})();</script>
+{%- endif -%}
+
+{% stylesheet %}
+/*LX-STORY-CSS*/
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Scroll-Geschichte",
+  "tag": "div",
+  "class": "lx-story-abschnitt",
+  "settings": [
+    { "type": "select", "id": "platz", "label": "Platz", "default": "nach_hero", "options": [ { "value": "nach_hero", "label": "Direkt nach dem Hero" }, { "value": "eigener", "label": "An eigener Stelle" } ] },
+    { "type": "text", "id": "titel", "label": "Unsichtbarer Titel (Bildschirmleser)", "default": "Sechs Kapitel aus unserem Sortiment" },
+    { "type": "text", "id": "titel_fr", "label": "Titel französisch", "default": "Six chapitres de notre sélection" }
+  ],
+  "blocks": [
+    {
+      "type": "kapitel",
+      "name": "Kapitel",
+      "limit": 8,
+      "settings": [
+        { "type": "text", "id": "wort", "label": "Grosses Wort" },
+        { "type": "text", "id": "zeile", "label": "Kurze Zeile (keine Preise, Rabatte, Lieferzeiten, Wirkversprechen)" },
+        { "type": "text", "id": "wort_fr", "label": "Wort französisch" },
+        { "type": "text", "id": "zeile_fr", "label": "Zeile französisch" },
+        { "type": "product", "id": "produkt", "label": "Produkt" },
+        { "type": "text", "id": "variante", "label": "Ausführung (Varianten-ID, muss kaufbar sein)" },
+        { "type": "checkbox", "id": "variante_zeigen", "label": "Ausführung in der Karte nennen", "default": true },
+        { "type": "text", "id": "bis", "label": "Sichtbar bis (JJJJ-MM-TT, leer = immer)" },
+        { "type": "text", "id": "video_quer", "label": "Video quer (cdn.shopify.com)" },
+        { "type": "text", "id": "video_hoch", "label": "Video hoch (cdn.shopify.com)" },
+        { "type": "text", "id": "poster_quer", "label": "Poster quer WebP (cdn.shopify.com)" },
+        { "type": "text", "id": "poster_hoch", "label": "Poster hoch WebP (cdn.shopify.com)" },
+        { "type": "text", "id": "fokus_quer", "label": "Bildausschnitt quer (object-position)", "default": "50% 50%" },
+        { "type": "text", "id": "fokus_hoch", "label": "Bildausschnitt hoch (object-position)", "default": "50% 30%" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Scroll-Geschichte" } ]
+}
+{% endschema %}

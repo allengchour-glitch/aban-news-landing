@@ -1,0 +1,115 @@
+/* LuxeStyle Scroll-Geschichte 2.0 (15.11.2026). Quelle für den {% stylesheet %}-Block in sections/lx-story.liquid (bauen_stil.sh).
+   Nur Klassen mit Präfix lx-story. Geladen im <head> über die kompilierten Theme-Stile, nicht mehr als <style> im <body>.
+   Alles, was sich beim Scrollen bewegt, setzt das Skript direkt als transform/opacity am Element (keine geerbten Variablen). */
+.lx-story{--lx-story-kopf:88px;--lx-oben:var(--lx-story-kopf);--lx-bg:#110e0b;--lx-creme:#faf7f2;position:relative;isolation:isolate;background:var(--lx-bg);color:var(--lx-creme);font-family:var(--lx-sans,Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif);margin:0;overflow:clip}
+/* Kopfzeile des Themes: 59 px auf Touch-Geräten und auf dem Handy (gemessen 15.11.), sonst 88 px. Das Skript misst nach;
+   die Höhe wirkt nur auf transform/height in der Bühne, nie auf die Lage der Kapitel (keine Layout-Verschiebung). */
+@media (hover:none) and (pointer:coarse){.lx-story{--lx-story-kopf:59px}}
+.lx-story .lx-story__titel{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.lx-story .lx-story__skip{position:absolute;left:16px;top:100px;z-index:6;transform:translateY(-300%);background:var(--lx-creme);color:#292722;padding:12px 18px;border-radius:999px;font-size:14px;text-decoration:underline}
+.lx-story .lx-story__skip:focus{transform:none}
+.lx-story .lx-story__ende{display:block;height:0;outline:0}
+.lx-story.lx-story :focus-visible{outline:3px solid #f2d6a2;outline-offset:4px}
+
+/* Bühne: klebt am oberen Rand, solange der Abschnitt im Bild ist. */
+.lx-story .lx-story__buehne{position:sticky;top:0;height:100vh;height:100svh;margin-bottom:-100vh;margin-bottom:-100svh;overflow:hidden;z-index:0;background:var(--lx-bg)}
+.lx-story .lx-story__medien{position:absolute;right:0;top:0;height:calc(100% - var(--lx-oben));transform:translate3d(0,var(--lx-oben),0);width:min(100%,calc((100vh - 88px) * 4 / 3));width:min(100%,calc((100svh - 88px) * 4 / 3));overflow:hidden;background:var(--lx-bg)}
+/* Ebenen liegen übereinander, die spätere über der früheren. Das Skript schiebt die nächste beim Scrollen von unten herein
+   (Vorhang: Ebene nach oben, Bild gegenläufig, also bleibt das Bild stehen und das Fenster wandert). */
+.lx-story .lx-story__ebene{position:absolute;inset:0;overflow:hidden;visibility:hidden;box-shadow:0 -46px 90px rgba(0,0,0,.6);will-change:transform}
+.lx-story .lx-story__ebene[data-sicht]{visibility:visible}
+.lx-story .lx-story__ebene picture{display:block;position:absolute;inset:0}
+.lx-story .lx-story__ebene img,.lx-story .lx-story__ebene video{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:var(--lx-fq,50% 50%);transform:scale(1.23);transform-origin:50% 50%;will-change:transform;background:var(--lx-bg)}
+.lx-story .lx-story__ebene video{opacity:0;transition:opacity .5s ease}
+.lx-story .lx-story__ebene video[data-spielt]{opacity:1}
+.lx-story .lx-story__medien::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--lx-bg) 0%,rgba(17,14,11,.62) 13%,rgba(17,14,11,0) 32%)}
+.lx-story .lx-story__schleier{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(14,11,8,.55) 0%,rgba(14,11,8,.38) 30%,rgba(14,11,8,0) 52%),linear-gradient(0deg,rgba(14,11,8,.5) 0%,rgba(14,11,8,0) 28%)}
+
+/* Steuerleiste: eigene klebende Ebene ÜBER den Kapiteln (Pause und Punkte bleiben immer bedienbar).
+   Pause oben rechts: unten rechts liegt der Hilfe-Knopf des Themes, links die Kaufkarten. */
+/* Am Ende (Bühne löst sich) blenden nur Punkte und Balken aus; die Pause bleibt, solange ein Video zu sehen ist. */
+.lx-story .lx-story__steuer{position:sticky;top:0;height:100vh;height:100svh;margin-bottom:-100vh;margin-bottom:-100svh;z-index:3;pointer-events:none}
+.lx-story .lx-story__punkte,.lx-story .lx-story__fortschritt{transition:opacity .4s ease,visibility 0s linear 0s}
+.lx-story[data-ende] .lx-story__punkte,.lx-story[data-ende] .lx-story__fortschritt{opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s linear .4s}
+.lx-story .lx-story__fortschritt{position:absolute;left:0;right:0;top:0;height:2px;transform:translate3d(0,var(--lx-oben),0);background:rgba(250,247,242,.14)}
+.lx-story .lx-story__fortschritt span{display:block;height:100%;width:100%;background:#d8c6a6;transform:scaleX(0);transform-origin:0 50%;will-change:transform}
+.lx-story .lx-story__punkte{position:absolute;right:clamp(14px,2.4vw,40px);top:50%;transform:translate3d(0,calc(-50% + var(--lx-oben) / 2),0);display:flex;flex-direction:column;gap:6px;pointer-events:auto}
+.lx-story .lx-story__punkte a{display:flex;align-items:center;justify-content:flex-end;gap:12px;min-width:44px;min-height:32px;color:var(--lx-creme);text-decoration:none}
+.lx-story .lx-story__punkte a span{font-size:12px;letter-spacing:.06em;opacity:0;transform:translateX(6px);transition:opacity .3s,transform .3s;white-space:nowrap;padding:4px 10px;border-radius:999px;background:rgba(17,14,11,.72)}
+.lx-story .lx-story__punkte a::after{content:'';flex:0 0 auto;width:8px;height:8px;border-radius:50%;border:1px solid rgba(250,247,242,.9);background:rgba(17,14,11,.35);box-shadow:0 0 0 1px rgba(17,14,11,.35);transition:transform .3s,background .3s}
+.lx-story .lx-story__punkte a[aria-current]::after{background:var(--lx-creme);transform:scale(1.5)}
+.lx-story .lx-story__punkte a[aria-current] span,.lx-story .lx-story__punkte a:hover span,.lx-story .lx-story__punkte a:focus-visible span{opacity:1;transform:none}
+.lx-story .lx-story__pause{position:absolute;right:clamp(16px,2.4vw,40px);top:0;transform:translate3d(0,calc(var(--lx-oben) + 18px),0);display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px 8px 12px;border-radius:999px;border:1px solid rgba(250,247,242,.4);background:rgba(17,14,11,.6);color:var(--lx-creme);font-size:13px;line-height:1;cursor:pointer;pointer-events:auto;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.lx-story .lx-story__pause:hover{background:rgba(17,14,11,.85)}
+.lx-story .lx-story__pause-icon{width:18px;height:18px;flex:0 0 18px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lx-story .lx-story__i-play{display:none;fill:currentColor;stroke:none}
+.lx-story .lx-story__pause[aria-pressed="true"] .lx-story__i-play{display:inline}
+.lx-story .lx-story__pause[aria-pressed="true"] .lx-story__i-pause{display:none}
+.lx-story .lx-story__punkte a,.lx-story .lx-story__pause{scroll-margin-top:110px;scroll-margin-bottom:110px}
+
+/* Kapitel: laufen normal über die Bühne; das Skript verschiebt Text und Karte gemeinsam (Parallaxe, keine Überdeckung).
+   Abstände ohne Kopfzeilen-Variable: die Lage der Kapitel hängt nie von einer späteren Messung ab. */
+.lx-story .lx-story__kapitel{position:relative;z-index:1;min-height:135vh;min-height:135svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:clamp(28px,6vh,64px);padding:calc(88px + 22vh) clamp(22px,5.5vw,96px) 22vh;pointer-events:none}
+.lx-story .lx-story__kapitel[data-i="0"]{padding-top:calc(88px + 30vh)}
+.lx-story .lx-story__kapitel[data-letztes]{min-height:115vh;min-height:115svh;padding-bottom:8vh}
+.lx-story .lx-story__still{display:none}
+.lx-story .lx-story__text{max-width:min(600px,42vw);will-change:transform,opacity}
+.lx-story .lx-story__nr{margin:0 0 14px;font-size:12px;line-height:1.4;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:#e3d3b6}
+.lx-story .lx-story__nr span{color:var(--lx-creme)}
+.lx-story .lx-story__wort{margin:0;font-family:var(--lx-serif,'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif);font-weight:400;font-size:clamp(60px,7.8vw,132px);line-height:.95;letter-spacing:-.035em;color:var(--lx-creme);text-shadow:0 2px 30px rgba(0,0,0,.35);transform-origin:0 100%;will-change:transform}
+.lx-story .lx-story__zeile{margin:18px 0 0;max-width:30ch;font-size:clamp(17px,1.35vw,21px);line-height:1.5;color:#f1e9dd;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.lx-story .lx-story__karte{pointer-events:auto;display:flex;align-items:center;gap:16px;width:min(400px,100%);padding:12px 18px 12px 12px;border-radius:18px;background:rgba(250,247,242,.97);color:#292722;text-decoration:none;box-shadow:0 22px 60px rgba(0,0,0,.38);transition:box-shadow .25s ease,background .25s ease;will-change:transform}
+.lx-story .lx-story__karte:hover{background:#fff;box-shadow:0 26px 70px rgba(0,0,0,.48)}
+.lx-story .lx-story__karte-bild{flex:0 0 96px;width:96px;height:96px;border-radius:12px;overflow:hidden;background:#efe9df}
+.lx-story .lx-story__karte-bild img{width:100%;height:100%;max-width:none;object-fit:cover}
+.lx-story .lx-story__karte-text{display:flex;flex-direction:column;min-width:0;gap:2px}
+.lx-story .lx-story__karte-titel{font-size:15px;line-height:1.35;font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lx-story .lx-story__karte-var{font-size:12px;line-height:1.4;color:#5f574d}
+.lx-story .lx-story__karte-preis{margin-top:4px;font-size:16px;font-weight:600;color:#292722}
+.lx-story .lx-story__karte-cta{display:inline-flex;align-items:center;gap:6px;margin-top:4px;font-size:13px;text-decoration:underline;text-underline-offset:3px;color:#4b4339}
+.lx-story .lx-story__karte-cta svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* Handy: Hochformat-Video oben (rund 62 % der Höhe), Text direkt auf dem unteren Videorand, kompakte Karte darunter. */
+@media (max-width:749px){
+  .lx-story{--lx-story-kopf:59px}
+  .lx-story .lx-story__medien{left:0;width:100%;height:min(calc(100vw * 4 / 3),calc(100% - var(--lx-oben) - 150px))}
+  .lx-story .lx-story__medien::after{display:none}
+  .lx-story .lx-story__ebene img,.lx-story .lx-story__ebene video{object-position:var(--lx-fh,50% 30%)}
+  .lx-story .lx-story__ebene::after{content:'';position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,rgba(17,14,11,0) 0%,rgba(17,14,11,.72) 62%,var(--lx-bg) 100%);pointer-events:none}
+  .lx-story .lx-story__schleier{background:linear-gradient(180deg,rgba(14,11,8,.3) 0%,rgba(14,11,8,0) 18%)}
+  .lx-story .lx-story__kapitel{min-height:125vh;min-height:125svh;justify-content:flex-end;padding:calc(59px + 100vw) 16px calc(25vh + 8px);gap:14px}
+  .lx-story .lx-story__kapitel[data-i="0"]{padding-top:calc(59px + 100vw)}
+  .lx-story .lx-story__kapitel[data-letztes]{min-height:110vh;min-height:110svh;padding-bottom:calc(16vh + 8px)}
+  .lx-story .lx-story__text{max-width:none;width:100%;padding:0 4px}
+  .lx-story .lx-story__nr{margin-bottom:8px}
+  .lx-story .lx-story__wort{font-size:clamp(44px,13vw,60px);text-shadow:0 2px 18px rgba(0,0,0,.6)}
+  .lx-story .lx-story__zeile{font-size:16px;margin-top:8px;text-shadow:0 1px 10px rgba(0,0,0,.75)}
+  .lx-story .lx-story__karte{width:100%;gap:12px;padding:8px 14px 8px 8px;border-radius:14px}
+  .lx-story .lx-story__karte-bild{flex-basis:64px;width:64px;height:64px;border-radius:10px}
+  .lx-story .lx-story__karte-titel{font-size:14px;-webkit-line-clamp:1}
+  .lx-story .lx-story__karte-preis{margin-top:2px;font-size:15px}
+  .lx-story .lx-story__karte-cta{margin-top:2px}
+  .lx-story .lx-story__punkte{top:0;right:6px;transform:translate3d(0,calc(var(--lx-oben) + 14px),0);gap:0}
+  .lx-story .lx-story__punkte a{min-height:28px;min-width:40px}
+  .lx-story .lx-story__punkte a span{display:none}
+  .lx-story .lx-story__pause{left:10px;right:auto;bottom:auto;top:0;transform:translate3d(0,calc(var(--lx-oben) + 10px),0);min-height:40px;width:40px;padding:0;justify-content:center;gap:0}
+  .lx-story .lx-story__pause-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .lx-story .lx-story__punkte a,.lx-story .lx-story__pause{scroll-margin-top:80px;scroll-margin-bottom:110px}
+}
+
+/* Reduzierte Bewegung (und Rückfall per JS): keine Bühne, kein Video, Standbilder untereinander. */
+@media (prefers-reduced-motion:reduce){
+  .lx-story .lx-story__buehne,.lx-story .lx-story__steuer{display:none}
+  .lx-story .lx-story__kapitel,.lx-story .lx-story__kapitel[data-i="0"],.lx-story .lx-story__kapitel[data-letztes]{min-height:0;display:grid;padding:0 0 48px;gap:20px;pointer-events:auto}
+  .lx-story .lx-story__still{display:block;position:relative;grid-row:1;grid-column:1}
+  .lx-story .lx-story__still img{display:block;width:100%;height:auto;max-width:none;aspect-ratio:4/3;object-fit:cover}
+  .lx-story .lx-story__text{grid-row:1;grid-column:1;align-self:end;max-width:none;margin:0;padding:24px clamp(18px,4vw,64px) 28px;transform:none!important;opacity:1!important;background:linear-gradient(180deg,rgba(17,14,11,0),rgba(17,14,11,.86) 45%)}
+  .lx-story .lx-story__wort{transform:none!important}
+  .lx-story .lx-story__karte{margin:0 clamp(16px,4vw,64px);transform:none!important}
+  .lx-story .lx-story__wort{font-size:clamp(48px,7vw,96px)}
+}
+@media (prefers-reduced-motion:reduce) and (max-width:749px){
+  .lx-story .lx-story__still img{aspect-ratio:3/4}
+  .lx-story .lx-story__text{border-radius:0}
+  .lx-story .lx-story__karte{width:auto}
+}

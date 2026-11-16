@@ -1,0 +1,12 @@
+{
+ "zeit": "2026-11-15T23:48:52.905Z",
+ "quelle": "6cbba761cbfabffe6f8037fe4732080c",
+ "ergebnis": [
+  [
+   "M16",
+   "ERKANNT",
+   "M16 Ken Burns startet vor dem Laden der Kopffotos (LCP)",
+   "FEHLER damen-mode LCP Median heute 632 ms, test 2368 ms (Grenze +400 ms)"
+  ]
+ ]
+}

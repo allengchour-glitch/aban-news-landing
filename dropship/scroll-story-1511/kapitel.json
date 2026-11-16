@@ -1,0 +1,70 @@
+[
+ {
+  "id": "S01",
+  "wort": "Licht",
+  "zeile": "Warmes Licht für lange Winterabende.",
+  "wort_fr": "Lumière",
+  "zeile_fr": "Une lumière chaleureuse pour les longues soirées d’hiver.",
+  "produkt": "led-tulpen-planet-nachtlicht-fur-tisch-618400",
+  "variante": "67679802950023",
+  "fokus_quer": "50% 40%",
+  "fokus_hoch": "50% 30%"
+ },
+ {
+  "id": "S03",
+  "wort": "Schmuck",
+  "zeile": "Ein Funkeln für jeden Tag.",
+  "wort_fr": "Bijoux",
+  "zeile_fr": "Un éclat pour chaque jour.",
+  "produkt": "dreifachklinken-tennisarmband-mit-zirkon-613400",
+  "variante": "67672760975751",
+  "fokus_quer": "50% 55%",
+  "fokus_hoch": "50% 30%",
+  "variante_zeigen": false
+ },
+ {
+  "id": "S05",
+  "wort": "Wohnen",
+  "zeile": "Kleine Dinge, die ein Zuhause festlich machen.",
+  "wort_fr": "Maison",
+  "zeile_fr": "De petites choses qui rendent la maison festive.",
+  "produkt": "weihnachtskugeln-beflockt-9-stuck-625300",
+  "variante": "67843689152903",
+  "fokus_quer": "50% 50%",
+  "fokus_hoch": "50% 30%",
+  "bis": "2027-01-06"
+ },
+ {
+  "id": "S06",
+  "wort": "Reisen",
+  "zeile": "Für Wochenenden und lange Wege.",
+  "wort_fr": "Voyage",
+  "zeile_fr": "Pour les week-ends et les longs trajets.",
+  "produkt": "reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c",
+  "variante": "67726147944839",
+  "fokus_quer": "50% 50%",
+  "fokus_hoch": "50% 30%"
+ },
+ {
+  "id": "S09",
+  "wort": "Küche",
+  "zeile": "Für den ersten Kaffee am Morgen.",
+  "wort_fr": "Cuisine",
+  "zeile_fr": "Pour le premier café du matin.",
+  "produkt": "retro-vogel-keramikbecher-mit-ballgriff-637200",
+  "variante": "67675894710663",
+  "fokus_quer": "50% 50%",
+  "fokus_hoch": "50% 30%"
+ },
+ {
+  "id": "S11",
+  "wort": "Geschenke",
+  "zeile": "Etwas Schönes zum Verschenken.",
+  "wort_fr": "Cadeaux",
+  "zeile_fr": "Une belle idée à offrir.",
+  "produkt": "ewige-rose-mit-led-licht-718080",
+  "variante": "55881738092929",
+  "fokus_quer": "50% 50%",
+  "fokus_hoch": "50% 30%"
+ }
+]

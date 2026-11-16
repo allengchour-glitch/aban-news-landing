@@ -1,0 +1,190 @@
+{
+ "zeit": "2026-11-16T00:36:49.512Z",
+ "out": {
+  "s01": {
+   "handle": "led-tulpen-planet-nachtlicht-fur-tisch-618400",
+   "status": "ACTIVE",
+   "online": true,
+   "variante": {
+    "id": "67679802950023",
+    "titel": "Orange",
+    "verkaufbar": true
+   },
+   "varianten": 4,
+   "mitglied": {
+    "sub-beleuchtung": true,
+    "nachtlichter-ambiente": true,
+    "wohnen-dekoration": true
+   },
+   "sammlungen": [
+    "bestseller-unter-50",
+    "wohnen-dekoration",
+    "neu-eingetroffen",
+    "beleuchtung-lampen",
+    "sub-beleuchtung",
+    "🎁-geschenke-bis-chf-30-alt-20261010",
+    "geschenke-fuer-kinder",
+    "licht-nachtlicht-projektor",
+    "🎁-geschenke-bis-chf-30",
+    "nachtlichter-ambiente",
+    "aus-tiktok-und-instagram",
+    "shop-licht-wohnen"
+   ]
+  },
+  "s03": {
+   "handle": "dreifachklinken-tennisarmband-mit-zirkon-613400",
+   "status": "ACTIVE",
+   "online": true,
+   "variante": {
+    "id": "67672760975751",
+    "titel": "Weiss / 7 Zoll",
+    "verkaufbar": true
+   },
+   "varianten": 8,
+   "mitglied": {
+    "schmuck": true,
+    "sub-armbaender": true,
+    "gliederarmbaender": true,
+    "zirkonia-strassarmbaender": true
+   },
+   "sammlungen": [
+    "bestseller-unter-50",
+    "geschenke-unter-30",
+    "neu-eingetroffen",
+    "sub-armbaender",
+    "schmuck-uhren",
+    "schmuck",
+    "mengenrabatt-ab-3-stueck",
+    "gliederarmbaender",
+    "zirkonia-strassarmbaender",
+    "aus-tiktok-und-instagram"
+   ]
+  },
+  "s05": {
+   "handle": "weihnachtskugeln-beflockt-9-stuck-625300",
+   "status": "ACTIVE",
+   "online": true,
+   "variante": {
+    "id": "67843689152903",
+    "titel": "Kaffeefarbe",
+    "verkaufbar": true
+   },
+   "varianten": 3,
+   "mitglied": {
+    "weihnachten-2026": true,
+    "premium-geschenke": false
+   },
+   "sammlungen": [
+    "bestseller-unter-50",
+    "wohnen-dekoration",
+    "weihnachten-2026",
+    "unter-chf-25",
+    "geschenke-unter-30",
+    "kleine-geschenke-mitbringsel",
+    "neu-eingetroffen",
+    "🎁-geschenke-bis-chf-30-alt-20261010",
+    "party-deko-ch",
+    "fortura-weihnachten",
+    "🎁-geschenke-bis-chf-30",
+    "aus-tiktok-und-instagram"
+   ]
+  },
+  "s06": {
+   "handle": "reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c",
+   "status": "ACTIVE",
+   "online": true,
+   "variante": {
+    "id": "67726147944839",
+    "titel": "Default Title",
+    "verkaufbar": true
+   },
+   "varianten": 1,
+   "mitglied": {
+    "sub-taschen": false,
+    "damen-reisetaschen": true,
+    "herren-reisetaschen": true,
+    "sub-reise": true
+   },
+   "sammlungen": [
+    "neu-eingetroffen",
+    "sub-reise",
+    "damen-reisetaschen",
+    "herren-reisetaschen"
+   ]
+  },
+  "s09": {
+   "handle": "retro-vogel-keramikbecher-mit-ballgriff-637200",
+   "status": "ACTIVE",
+   "online": true,
+   "variante": {
+    "id": "67675894710663",
+    "titel": "Schwalbe",
+    "verkaufbar": true
+   },
+   "varianten": 2,
+   "mitglied": {
+    "geschirr-tisch": true,
+    "kaffee-tee-trinken": true,
+    "teekannen-kaffeeservice": false,
+    "deko-objekte-accessoires": false
+   },
+   "sammlungen": [
+    "bestseller-unter-50",
+    "wohnen-dekoration",
+    "neu-eingetroffen",
+    "sub-kueche",
+    "tassen-becher",
+    "retro-vintage",
+    "tassen-kaffeebecher",
+    "tassen-kaffeebecher-keramik",
+    "aus-tiktok-und-instagram",
+    "kaffee-tee-trinken",
+    "geschirr-tisch",
+    "shop-geschenkideen"
+   ]
+  },
+  "s08": {
+   "handle": "gusseisen-teekanne-sandguss-unbeschichtet-609800",
+   "status": "ACTIVE",
+   "online": true,
+   "variante": null,
+   "varianten": 1,
+   "mitglied": {
+    "geschirr-tisch": true,
+    "kaffee-tee-trinken": true,
+    "teekannen-kaffeeservice": true
+   },
+   "sammlungen": [
+    "bestseller-unter-50",
+    "geschenke-unter-50-franken",
+    "geschenke-unter-100-franken",
+    "neu-eingetroffen",
+    "sub-kueche",
+    "teekannen-kaffeeservice",
+    "kaffee-tee-trinken",
+    "geschirr-tisch"
+   ]
+  },
+  "s10": {
+   "handle": "kristallspitzen-set-8-teilig-holzbox",
+   "status": "ACTIVE",
+   "online": true,
+   "variante": null,
+   "varianten": 1,
+   "mitglied": {
+    "deko-objekte-accessoires": true
+   },
+   "sammlungen": [
+    "bestseller-unter-50",
+    "bestseller-premium-heroes",
+    "luxestyle-premium",
+    "viral-hits",
+    "hype-jetzt",
+    "mengenrabatt-ab-2-stueck",
+    "deko-objekte-accessoires",
+    "aus-tiktok-und-instagram",
+    "startseite-pool-trends"
+   ]
+  }
+ }
+}
