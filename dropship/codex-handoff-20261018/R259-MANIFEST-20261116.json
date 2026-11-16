@@ -1,0 +1,49 @@
+{
+  "run": "R259",
+  "atUtc": "2026-11-16T14:47:39Z",
+  "files": [
+    {
+      "file": "PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+      "path": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+      "bytes": 5495,
+      "sha256": "cc4e20396e682fa8c19946e776f1514c2634c18685091ce5dfd616e44f1c4b5d",
+      "gitBlobSha": "16db71f48cebd81e14d2eebf49383314eb354401",
+      "readAt": "2026-11-16T14:47:39Z"
+    },
+    {
+      "file": "PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+      "path": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+      "bytes": 83618,
+      "sha256": "aff388275a8b3157347179d06e8b5d59393f3e924a725bcb2d58eb8c2a84ccb2",
+      "gitBlobSha": "eca482b566b00586cce9d79ee15abdf7aa5c6086",
+      "readAt": "2026-11-16T14:47:39Z"
+    },
+    {
+      "file": "PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+      "path": "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+      "bytes": 7322,
+      "sha256": "ba804ea1a67cd72cf57fd96044b89918c7695256656619a5c4ad6ff87e76b200",
+      "gitBlobSha": "6557e01bb558db08ea461af5fd15e3036eb1e69b",
+      "readAt": "2026-11-16T14:47:39Z"
+    },
+    {
+      "file": "PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+      "path": "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+      "bytes": 6775,
+      "sha256": "e5b5f3efb9c5ce590c151caefdf15ebfadb81f30192f134190f4c4ed368d5d5a",
+      "gitBlobSha": "0b1e51d0f8fb2fbfa3abca1f58be359bede2a870",
+      "readAt": "2026-11-16T14:47:39Z"
+    },
+    {
+      "file": "LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md",
+      "path": "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md",
+      "bytes": 1454,
+      "sha256": "06392099eff0532945049c7c998418011235a9d9866aa421d8fb0eb8dfe3fc09",
+      "gitBlobSha": "59f892c44e1cd2f0520651cd0bc5e463142c10d2",
+      "readAt": "2026-11-16T14:47:39Z"
+    }
+  ],
+  "scope": "Exactly five new artifacts; manifest and five core context files excluded.",
+  "rawPlannerPrivateFilesIncluded": false,
+  "creatorEmailOrUserIdentifiersIncluded": false
+}

@@ -1,3 +1,15 @@
+# R259 – Social-Freigabekonflikt, Master und Entwürfe – 16.11.2026
+
+14 eigene erfolgreiche Hold-Schreibereignisse sind belegt. Eine spätere geplante Freigabeautomation hat acht betroffene Posts/neun Providerplatzierungen wieder aktiviert; sechs Posts/sieben Platzierungen bleiben gehalten. Die technische Ursache ist auf Workflow 43881112008 zurückgeführt, menschliche Absicht bleibt UNKNOWN. Pflichtmusik im Automationstask widerspricht einer als Besitzeranweisung gespeicherten Repo-Notiz «Ton aus»; Klärung steht aus. Weitere widersprüchliche Schreibversuche bleiben pausiert.
+
+Aktuelle Rücklese: 57 UUIDs, 71 Providerzustände; 48 ursprüngliche UUIDs erhalten, neun neue Drafts mit unbekannter Quelle, 34 ursprüngliche Objekte ausserhalb der 14 eigenen Änderungen unverändert. Rohabdeckung 44 rollierend/48 im Kalender; nach Abzug neun technisch fehlgeschlagener Musikpost-Platzierungen 35/39. Die R258-Produktarbeitsliste mit 44 Zeilen blieb unverändert.
+
+Sechs kanalbezogene Captions bleiben unveröffentlicht. Zehn bestehende Medien wurden serverseitig kopiert und bytegleich bestätigt; keine neuen Posts oder lokalen Uploads. Der 18-Sekunden-Master ist nicht fertig. Ein Google-Kategorieentwurf 5592 bleibt bedingt und ungeschrieben. R253 Tagesdaten wurden wiederverwendet; keine neuen Reports.
+
+[Bericht](PROJEKTOR-SOCIAL-STATUS-20261116-R259.md) · [Belege](PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json) · [Produktionsgates](PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md) · [Captions](PROJEKTOR-KANALCAPTIONS-20261116-R259.json) · [Kategorieentwurf](LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md).
+
+---
+
 # R258 – Sechs weitere Produktdetails live – 16.11.2026
 
 Der Inhaberauftrag gilt für den Gesamtkatalog. Sechs weitere Produkte aus Beleuchtung, Taschen und Tierbedarf haben jetzt ausführlichere Angaben zu Ausführung, Material, Nutzung und Lieferumfang sowie eigene SEO-Titel und Metabeschreibungen. Fehlende Fakten sind konkret als offen benannt. Alle sechs Angebote haben genau eine Standardausführung; zusätzliche Grössen, Farben oder Sets werden nicht erfunden.

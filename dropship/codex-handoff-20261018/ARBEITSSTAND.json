@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 258,
-  "updatedAt": "2026-11-16T11:29:23Z",
+  "revision": 259,
+  "updatedAt": "2026-11-16T14:47:39Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -7845,22 +7845,16 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r258_six_live_product_details_catalogue_scope_worklist_memory_receipt_unknown",
+      "state": "r259_social_reactivation_conflict_master_drafts_continued_memory_receipt_unknown",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R258_SIX_LIVE_PRODUCT_TEXTS_NATIVE_PUBLIC_MOBILE_WORKLIST",
-      "lastEvidence": "R258: Gesamtkatalogziel, sechs initiale Text/SEO-Writes plus zwei gezielte Body-Tabellenkorrekturen, sechs gespeicherte CJ-Quellenreads, native Schutzdaten und öffentliche/mobile Prüfung dokumentiert.44erArbeitsliste ohne Reset fortgeschrieben. ExakteShopifyProduktzähler nur als Umfang, keine Fertigquote.24TaskIDs und Tagesgrenzen erhalten; Claude-Empfang unbekannt.",
-      "nextAllowedStep": "Aktuellen stabilen Claude-Einstieg und R258Arbeitsliste/Belege übernehmen, im nächsten bestehenden Lauf sinnvolle kleine Gruppe fortsetzen. Belegte Textverbesserung und offene Produktfakten getrennt halten. Memory am Schluss verlinken.",
+      "belegArt": "GEMESSEN_R259_SOCIAL_HOLDS_MASTER_GATES_DRAFTS",
+      "lastEvidence": "R259: 14 eigene Hold-Schreibereignisse; aktueller Stand sechs Posts/sieben Platzierungen gehalten, acht Posts/neun Platzierungen vom bestehenden geplanten Freigabelauf reaktiviert. Absicht UNKNOWN; widersprüchliche Tonanweisung wartet auf Klärung. Sechs Caption-Drafts, ein bedingter Taxonomieentwurf, Master bleibt blockiert. R258-Arbeitsliste 44 Zeilen unverändert; Historie ausserhalb der belegten Scopes UNKNOWN.",
+      "nextAllowedStep": "R259-Bericht und geprüfte Belege übernehmen; nächste Arbeit im bestehenden Ablauf, keine neuen Posts oder Kategorien ohne jeweilige Gates.",
       "blockers": [
-        "Kenntnisnahme durch Claude ohne tatsächlichen Empfangsbeleg unbekannt.",
-        "Globale Bearbeitungshistorie ausserhalb der belegten44erListe unbekannt.",
-        "CJ-Pagination lieferte bei Seite2 wieder Seite1; keine Vollauflistung behaupten.",
-        "Lokaler Guard ist nicht deployt oder im aktiven Lauf verwendet.",
-        "Claude-Empfang unbekannt.",
-        "Claude-Empfang weiterhin unbekannt.",
-        "Zwei Auswahlproben bleiben unverified.",
-        "Core-Änderung ist remote noch nicht angewandt oder zurückgelesen.",
-        "Claude-Empfang unbekannt."
+        "Claude-Empfang ohne Quittung UNKNOWN.",
+        "Kein fertiger Master und offene Rechte.",
+        "R258-Liste ist belegter Scope, keine vollständige Historie."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -9493,7 +9487,12 @@
           "sha256": "4ef9dfeb481166b6eefb8a239981efda6be6211794052304d195b2c626ee3296",
           "gitBlobSha": "0637616d7c22683245303da16b36a8573ba28752",
           "readAt": "2026-11-16T11:29:23Z"
-        }
+        },
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+        "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+        "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
       ],
       "requiresFreshVerification": true,
       "assignedRole": "codex_preparation_claude_coordination",
@@ -16194,6 +16193,28 @@
               "Claude-Empfang unbekannt."
             ]
           }
+        },
+        {
+          "archivedByRun": "R259",
+          "recordedAt": "2026-11-16T14:47:39Z",
+          "previous": {
+            "state": "r258_six_live_product_details_catalogue_scope_worklist_memory_receipt_unknown",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R258_SIX_LIVE_PRODUCT_TEXTS_NATIVE_PUBLIC_MOBILE_WORKLIST",
+            "lastEvidence": "R258: Gesamtkatalogziel, sechs initiale Text/SEO-Writes plus zwei gezielte Body-Tabellenkorrekturen, sechs gespeicherte CJ-Quellenreads, native Schutzdaten und öffentliche/mobile Prüfung dokumentiert.44erArbeitsliste ohne Reset fortgeschrieben. ExakteShopifyProduktzähler nur als Umfang, keine Fertigquote.24TaskIDs und Tagesgrenzen erhalten; Claude-Empfang unbekannt.",
+            "nextAllowedStep": "Aktuellen stabilen Claude-Einstieg und R258Arbeitsliste/Belege übernehmen, im nächsten bestehenden Lauf sinnvolle kleine Gruppe fortsetzen. Belegte Textverbesserung und offene Produktfakten getrennt halten. Memory am Schluss verlinken.",
+            "blockers": [
+              "Kenntnisnahme durch Claude ohne tatsächlichen Empfangsbeleg unbekannt.",
+              "Globale Bearbeitungshistorie ausserhalb der belegten44erListe unbekannt.",
+              "CJ-Pagination lieferte bei Seite2 wieder Seite1; keine Vollauflistung behaupten.",
+              "Lokaler Guard ist nicht deployt oder im aktiven Lauf verwendet.",
+              "Claude-Empfang unbekannt.",
+              "Claude-Empfang weiterhin unbekannt.",
+              "Zwei Auswahlproben bleiben unverified.",
+              "Core-Änderung ist remote noch nicht angewandt oder zurückgelesen.",
+              "Claude-Empfang unbekannt."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -18924,22 +18945,29 @@
         "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv",
         "writes": 8,
         "sourceQuestionsRemainOpen": true
+      },
+      "run259": {
+        "report": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+        "proof": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+        "production": "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+        "captions": "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+        "categoryDraft": "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r253_exact_seven_variant_image_crosswalk_same_18s_master_draft_blocked",
+      "state": "r259_a_variant_gates_current_master_not_rendered",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "R253_FRESH_READS_THREE_CONFIRMED_METRICOOL_HOLDS_LOCAL_PREPARATION",
-      "lastEvidence": "R253: A68122445283719/CJSN139239101AZ/CHF34.90ACTIVE,kaufbar,untrackedCONTINUE,Taggatepasst.7Shopify/CJVariantenbildDateinamenpassen;AReferenzfreshSHA5fa8…39612visuellgeprüft. CJVideoIDohneURL/Variante/Rechte. Ein18s540Frame30fpsStoryboardmit2Hooksund6UTMs ergänzt,keinFilm. CanonicalWAVhasha767…16688mitfrischemRepoBlobgleich;SF2/Lizenz/Build/Hörabnahmeoffen.4ProjektorUUIDHoldsweiterinaktiv.",
-      "nextAllowedStep": "PhysischeAProbeundexaktesMotiv/Lieferumfang/kommerzielleFilmrechtebelegen,hochwertigeechteTakesindenselbeneinenMasterübernehmen;Pflichtmusikrechte/InputbindungundEndabnahmeprüfen.ErstfertiggeprüfteMP4übervorhandeneUUIDsmitLedger/Historie/Kanalgatesverwenden.",
+      "belegArt": "GEMESSEN_R259_SOCIAL_HOLDS_MASTER_GATES_DRAFTS",
+      "lastEvidence": "R259: aktuelle Variante A 68122445283719 / CJSN139239101AZ; Masterplan 18 s, kein fertiger Master. Physische Probe, A-spezifischer Inhalt, Motiv- und Rechtebindung, SoundFont-/Buildnachweis sowie kreative Abnahme offen.",
+      "nextAllowedStep": "Erst bei physischer A-Probe und belegter Motiv-/Packungsbindung drehen; Rechte, Musikbuild und Shotkontinuität vor internem Prüfrender belegen.",
       "blockers": [
-        "PhysischeA-/Motiv-/Packungsbindung und native hochwertigeTakes fehlen.",
-        "KommerzielleFilm-/Bearbeitungs-/Uploadrechte und tatsächlicherSF2Build/Lizenz-/Musikbelegoffen.",
-        "KeinefertigeprofessionelleMasterMP4/Endabnahme, Bio-/frischeBoard-/Historiengatesoffen."
+        "Physische A-Probe und exakte Motiv-/Packungsbindung fehlen.",
+        "Film-/Grafik-/Musikrechte und SoundFont-Build offen.",
+        "Kein fertiger 18-s-Master oder finale kreative Abnahme."
       ],
       "acceptance": [
         "Echte produktgetreue Handlung in geprüfter MP4",
@@ -19793,7 +19821,12 @@
           "gitBlobSha": "78a8e48b31b1d48816b2d16a9fe01637161875e3",
           "sha256": "0e69fb7321198127e4090902a3f07d89d87e891e80d9eb7ba5ae84548064d1cd",
           "readAt": "2026-11-16T07:37:08Z"
-        }
+        },
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+        "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+        "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
       ],
       "requiresFreshVerification": true,
       "assignedRole": "codex_preparation_claude_coordination",
@@ -21506,6 +21539,22 @@
               }
             ]
           }
+        },
+        {
+          "archivedByRun": "R259",
+          "recordedAt": "2026-11-16T14:47:39Z",
+          "previous": {
+            "state": "r253_exact_seven_variant_image_crosswalk_same_18s_master_draft_blocked",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "R253_FRESH_READS_THREE_CONFIRMED_METRICOOL_HOLDS_LOCAL_PREPARATION",
+            "lastEvidence": "R253: A68122445283719/CJSN139239101AZ/CHF34.90ACTIVE,kaufbar,untrackedCONTINUE,Taggatepasst.7Shopify/CJVariantenbildDateinamenpassen;AReferenzfreshSHA5fa8…39612visuellgeprüft. CJVideoIDohneURL/Variante/Rechte. Ein18s540Frame30fpsStoryboardmit2Hooksund6UTMs ergänzt,keinFilm. CanonicalWAVhasha767…16688mitfrischemRepoBlobgleich;SF2/Lizenz/Build/Hörabnahmeoffen.4ProjektorUUIDHoldsweiterinaktiv.",
+            "nextAllowedStep": "PhysischeAProbeundexaktesMotiv/Lieferumfang/kommerzielleFilmrechtebelegen,hochwertigeechteTakesindenselbeneinenMasterübernehmen;Pflichtmusikrechte/InputbindungundEndabnahmeprüfen.ErstfertiggeprüfteMP4übervorhandeneUUIDsmitLedger/Historie/Kanalgatesverwenden.",
+            "blockers": [
+              "PhysischeA-/Motiv-/Packungsbindung und native hochwertigeTakes fehlen.",
+              "KommerzielleFilm-/Bearbeitungs-/Uploadrechte und tatsächlicherSF2Build/Lizenz-/Musikbelegoffen.",
+              "KeinefertigeprofessionelleMasterMP4/Endabnahme, Bio-/frischeBoard-/Historiengatesoffen."
+            ]
+          }
         }
       ],
       "visualAcceptanceDraft": {
@@ -22840,6 +22889,13 @@
         "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261116-R253.json",
         "historicalEvidencePreserved": true,
         "claudeReceipt": "unknown"
+      },
+      "run259": {
+        "report": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+        "proof": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+        "production": "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+        "captions": "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+        "categoryDraft": "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
       }
     },
     {
@@ -32099,18 +32155,16 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r258_six_source_bound_product_titles_body_seo_live_no_google_claim",
+      "state": "r259_conditional_worklight_taxonomy_draft_only",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R258_SIX_LIVE_PRODUCT_TEXTS_NATIVE_PUBLIC_MOBILE_WORKLIST",
-      "lastEvidence": "R258:6Produkt-Titel/Details/SEO-Paare live, Meta143–149Zeichen. Native und öffentliche/mobilGegenprüfung; Preise/URLs/SKUs/Medien erhalten. Zwei tatsächliche Taschen-Kategorielinks, bestehendeLeuchtenlinks. Keine neuen Merchant-/Indexierungs-/Ranking-/Umsatzbefunde.",
-      "nextAllowedStep": "Quellengestützte Produktdetails samt realer Auswahl ausweiten; bestehende URLs/Angebotsidentitäten erhalten. Neue GSC-/Kennzahl-/Flow-/Breitsalesabfragen nur gemäss Tagesgrenze oder neuem konkretem Befund.",
+      "belegArt": "GEMESSEN_R259_SOCIAL_HOLDS_MASTER_GATES_DRAFTS",
+      "lastEvidence": "R259: bedingter Google-Kategorieentwurf 5592 für die Vierfachleuchte, nicht angewandt. Shopify-Google-Metafeld geprüft, aktuelles Merchant-Angebot nicht. Kein Google-Approval oder Fehlerresolution belegt; Metricool/Klaviyo R253 nur wiederverwendet.",
+      "nextAllowedStep": "Produkt-/Quellenidentität vor jeder möglichen Metafeldänderung bestätigen; native Metafeld-Rücklese und späteren passenden Merchant-Datensatz getrennt prüfen.",
       "blockers": [
-        "Keine aktuelleGoogle-Indexierung,Merchant-Freigabe oderRanking-/Verkaufswirkung der sechs R258Textänderungen belegt.",
-        "Keine frische Indexierung oder Rankingwirkung der R257-Änderungen belegt.",
-        "Google-Indexierung und Rankingwirkung der neuen R256-Texte unbekannt.",
-        "Keine frische Google-Indexierung oder Rankingwirkung nachgewiesen.",
-        "Zwei Auswahlproben bleiben unverified."
+        "Modellidentität offen.",
+        "5592 ist bedingter Draft; kein Shopify-/Merchant-Write.",
+        "Klaviyo-Daten UNKNOWN, keine neuen Berichte."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -33068,7 +33122,12 @@
           "sha256": "4ef9dfeb481166b6eefb8a239981efda6be6211794052304d195b2c626ee3296",
           "gitBlobSha": "0637616d7c22683245303da16b36a8573ba28752",
           "readAt": "2026-11-16T11:29:23Z"
-        }
+        },
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+        "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+        "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
       ],
       "requiresFreshVerification": true,
       "assignedRole": "codex_preparation_claude_coordination",
@@ -36029,6 +36088,24 @@
               "Zwei Auswahlproben bleiben unverified."
             ]
           }
+        },
+        {
+          "archivedByRun": "R259",
+          "recordedAt": "2026-11-16T14:47:39Z",
+          "previous": {
+            "state": "r258_six_source_bound_product_titles_body_seo_live_no_google_claim",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R258_SIX_LIVE_PRODUCT_TEXTS_NATIVE_PUBLIC_MOBILE_WORKLIST",
+            "lastEvidence": "R258:6Produkt-Titel/Details/SEO-Paare live, Meta143–149Zeichen. Native und öffentliche/mobilGegenprüfung; Preise/URLs/SKUs/Medien erhalten. Zwei tatsächliche Taschen-Kategorielinks, bestehendeLeuchtenlinks. Keine neuen Merchant-/Indexierungs-/Ranking-/Umsatzbefunde.",
+            "nextAllowedStep": "Quellengestützte Produktdetails samt realer Auswahl ausweiten; bestehende URLs/Angebotsidentitäten erhalten. Neue GSC-/Kennzahl-/Flow-/Breitsalesabfragen nur gemäss Tagesgrenze oder neuem konkretem Befund.",
+            "blockers": [
+              "Keine aktuelleGoogle-Indexierung,Merchant-Freigabe oderRanking-/Verkaufswirkung der sechs R258Textänderungen belegt.",
+              "Keine frische Indexierung oder Rankingwirkung der R257-Änderungen belegt.",
+              "Google-Indexierung und Rankingwirkung der neuen R256-Texte unbekannt.",
+              "Keine frische Google-Indexierung oder Rankingwirkung nachgewiesen.",
+              "Zwei Auswahlproben bleiben unverified."
+            ]
+          }
         }
       ],
       "visibilitySupplementR49": {
@@ -37855,6 +37932,13 @@
         "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv",
         "writes": 8,
         "sourceQuestionsRemainOpen": true
+      },
+      "run259": {
+        "report": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+        "proof": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+        "production": "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+        "captions": "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+        "categoryDraft": "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
       }
     },
     {
@@ -40376,16 +40460,18 @@
       "id": "external-video-review-20261103",
       "priority": 2,
       "priorityKind": "SETZUNG",
-      "state": "r253_three_silent_existing_uuids_held_confirmed_no_new_posts",
+      "state": "r259_metricool_reactivation_conflict_workflow_proven",
       "title": "Drei zusätzlich terminierte Fotoreels vor möglicher Ausspielung abklären",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "R253_FRESH_READS_THREE_CONFIRMED_METRICOOL_HOLDS_LOCAL_PREPARATION",
-      "lastEvidence": "R253: Drei17NovAudioholdUUIDs mit frisch geladenemSHA2edf3883…3357d(identischbeidkanaligvollständigstummR252) wiederDraft/APaus;3Writes/4Provider. YT429675848,TT429676883,FBIG429676896,stabileUUID/Medien/Inhalte/Termineerhalten. ServerIDs/creationDate/ungenutzteIGDefaults dokumentiert.47UUID/35aktiv/12Draft/58PENDING,8aktiveIGmitProviderAPtrue. VierProjektorHolds inaktiv;YT18–23offen. KeineNeuanlage/Löschung/eigenePublikation.",
-      "nextAllowedStep": "BekannteUUIDHoldsfrischerhalten; keineReaktivierungalsFreigabe. ZuständigeQuelleundHalteschutz anhandCode/Queue/BelegenprüfenohneWorkflowstart. GeeigneteechtefreigegebeneFilmeundRechte/Musik/Produkt/Kanal/Ledger/HistoriebevorneuenPostsprüfen; fehlendeYouTubeTageoffenmelden.",
+      "belegArt": "GEMESSEN_R259_SOCIAL_HOLDS_MASTER_GATES_DRAFTS",
+      "lastEvidence": "R259: 14 eigene Hold-Schreibereignisse belegt; aktuell sechs Posts/sieben Providerplatzierungen weiter gehalten, acht Posts/neun Platzierungen durch geplanten Freigabelauf 43881112008 reaktiviert. Menschliche Absicht UNKNOWN; Anweisungskonflikt Pflichtmusik vs. Ton aus wartet auf Klärung. Neun neue UUIDs sind Drafts mit unbekannter Quelle. Zehn Medien serverseitig kopiert und bytegleich, darunter vier Projektor-Dateien, keine neuen Posts oder lokale Uploads. Extra YT-Clip 616448 decodierte Samples, alle null; Root-Korrektur nennt sichtbaren lampenartigen Würfel im Sample, nicht Geräteabwesenheit.",
+      "nextAllowedStep": "Zuerst widersprüchliche Tonvorgabe klären; keine weiteren gegensätzlichen Schreibversuche. Danach Rechte, Produkt, Qualität und Kanalhistorie unabhängig prüfen; stabile UUIDs erhalten.",
       "blockers": [
-        "DreiaktuelleMedienvollständigstumm, Pflichtmusik/Produkt-/Rechte-/Kreativabnahmeoffen; jetztnichtaktiv.",
-        "YouTube18–23keinaktiverTermin;FensterkeinevollständigeMasterhistorie.",
-        "Bio-Ziele/Boardrechte/älterevollständigeHistorievorneuerAusspielungfrischprüfen."
+        "Vorhandene gehaltene Tonspuren ohne Pflichtmusik; zusätzliches YT-Audio exakt stumm.",
+        "Rechte und kreative Abnahme offen.",
+        "YouTube roh: Lücken 16., 18., 21.–23.11.; ohne bekannte Tonproblem-Posts kein geeigneter aktiver Termin 16.–23.11. belegt.",
+        "Bio-Ziele, Pinterest-Board und vollständige Master-/Kanalhistorie vor neuer Ausspielung frisch prüfen.",
+        "Tonvorgabe ist ausdrücklich zur Klärung angefragt; kein weiterer Schreibkonflikt."
       ],
       "acceptance": [
         "Nur nach ausdrücklicher passender Inhaberentscheidung und nachgewiesenen Bedingungen handeln.",
@@ -40914,7 +41000,12 @@
           "gitBlobSha": "3349edfbc9f0c8a391963a9bab9c0ac8d1702bfb",
           "sha256": "712161e488cb14383d89747e9092899c5a999fc0ffb00a35fc829fe158d8946c",
           "readAt": "2026-11-16T07:37:08Z"
-        }
+        },
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+        "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+        "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
       ],
       "requiresFreshVerification": true,
       "posts": [
@@ -42648,6 +42739,22 @@
               }
             ]
           }
+        },
+        {
+          "archivedByRun": "R259",
+          "recordedAt": "2026-11-16T14:47:39Z",
+          "previous": {
+            "state": "r253_three_silent_existing_uuids_held_confirmed_no_new_posts",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "R253_FRESH_READS_THREE_CONFIRMED_METRICOOL_HOLDS_LOCAL_PREPARATION",
+            "lastEvidence": "R253: Drei17NovAudioholdUUIDs mit frisch geladenemSHA2edf3883…3357d(identischbeidkanaligvollständigstummR252) wiederDraft/APaus;3Writes/4Provider. YT429675848,TT429676883,FBIG429676896,stabileUUID/Medien/Inhalte/Termineerhalten. ServerIDs/creationDate/ungenutzteIGDefaults dokumentiert.47UUID/35aktiv/12Draft/58PENDING,8aktiveIGmitProviderAPtrue. VierProjektorHolds inaktiv;YT18–23offen. KeineNeuanlage/Löschung/eigenePublikation.",
+            "nextAllowedStep": "BekannteUUIDHoldsfrischerhalten; keineReaktivierungalsFreigabe. ZuständigeQuelleundHalteschutz anhandCode/Queue/BelegenprüfenohneWorkflowstart. GeeigneteechtefreigegebeneFilmeundRechte/Musik/Produkt/Kanal/Ledger/HistoriebevorneuenPostsprüfen; fehlendeYouTubeTageoffenmelden.",
+            "blockers": [
+              "DreiaktuelleMedienvollständigstumm, Pflichtmusik/Produkt-/Rechte-/Kreativabnahmeoffen; jetztnichtaktiv.",
+              "YouTube18–23keinaktiverTermin;FensterkeinevollständigeMasterhistorie.",
+              "Bio-Ziele/Boardrechte/älterevollständigeHistorievorneuerAusspielungfrischprüfen."
+            ]
+          }
         }
       ],
       "latestScheduleReadR67": {
@@ -44230,6 +44337,13 @@
         "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261116-R253.json",
         "historicalEvidencePreserved": true,
         "claudeReceipt": "unknown"
+      },
+      "run259": {
+        "report": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+        "proof": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+        "production": "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+        "captions": "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+        "categoryDraft": "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
       }
     },
     {
@@ -48576,6 +48690,18 @@
         "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R258.json",
         "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv"
       ]
+    },
+    {
+      "revision": 259,
+      "at": "2026-11-16T14:47:39Z",
+      "summary": "R259: 14 own successful hold-write events; current six posts/seven placements held, eight posts/nine placements reactivated by scheduled workflow; human intent UNKNOWN and conflicting tone instructions pending clarification. Six caption drafts and one conditional category draft; projector master unfinished. No new product edits or posts; no whole-history claim.",
+      "sources": [
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+        "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+        "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+        "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -49928,7 +50054,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 258,
+    "latestCanonicalRevision": 259,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -50922,6 +51048,12 @@
       "atUtc": "2026-11-16T11:29:23Z",
       "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-GESAMTKATALOG-20261116-R258.md",
       "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv",
+      "receipt": "unknown"
+    },
+    "run259": {
+      "atUtc": "2026-11-16T14:47:39Z",
+      "report": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+      "proof": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
       "receipt": "unknown"
     }
   },
@@ -76740,5 +76872,37 @@
       "precision": "EXACT"
     },
     "claudeReceipt": "unknown"
+  },
+  "run259": {
+    "report": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
+    "proof": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+    "production": "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
+    "captions": "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+    "categoryDraft": "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md",
+    "metricoolHoldWriteEvents": 14,
+    "ownInitiallyHeldProviderPlacements": 16,
+    "currentlyHeldPosts": 6,
+    "currentlyHeldProviderPlacements": 7,
+    "reactivatedPosts": 8,
+    "reactivatedProviderPlacements": 9,
+    "toneClarificationPending": true,
+    "workflowCauseConfirmed": 43881112008,
+    "currentSnapshotPosts": 57,
+    "newDraftsSourceUnknown": 9,
+    "rawRollingPlacements": 44,
+    "rawCalendarPlacements": 48,
+    "rollingExcludingKnownFailedAudio": 35,
+    "calendarExcludingKnownFailedAudio": 39,
+    "serverMediaImports": 10,
+    "newPosts": 0,
+    "published": 0,
+    "deleted": 0,
+    "newProductWrites": 0,
+    "newDailyReports": 0,
+    "captionDrafts": 6,
+    "taxonomyWrites": 0,
+    "masterRendered": false,
+    "R258WorklistRowsUnchanged": 44,
+    "unlistedHistory": "UNKNOWN"
   }
 }

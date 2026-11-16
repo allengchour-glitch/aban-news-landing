@@ -3102,3 +3102,21 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [R258-Bericht](PRODUKTDETAILS-GESAMTKATALOG-20261116-R258.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R258.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv).
 
 [LUXESTYLE_R258_20261116]
+
+
+### R259 – Social-Holds, Caption-Entwürfe und Projektor-Mastergates
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Planner-Rücklese | Identitäten und Planung gelesen; 14 bestehende Posts gezielt gehalten und einzeln zurückgelesen. | 14 eigene erfolgreiche Hold-Updates; aktuell 6 Posts/7 Platzierungen gehalten. Acht Posts/neun Platzierungen durch Workflow 43881112008 reaktiviert. 34 weitere ursprüngliche Objekte exakt unverändert; neun neue Drafts unbekannter Herkunft. Keine eigenen neuen Posts/Publikationen/Löschungen. |
+| Abdeckung | Aktuellen Snapshot mit 57 UUIDs ausgewertet. | 44 roh rollierend/48 Kalender-Pending; nach Abzug neun fehlgeschlagener Providerplatzierungen 35/39. Vier späte Placements am 23.11.; Threads am 16.11. bereits veröffentlicht. |
+| Medienprüfung | Fünf Filmhashes technisch und visuell geprüft; zehn Serverimporte mit Originalbytes verglichen. | 10 SHA-256-Übereinstimmungen. Zusätzlicher YouTube-Clip vollständig decodiert, aber exakt stumm; Root-Korrektur bestätigt sichtbaren lampenartigen Würfel und behauptet keine Geräteabwesenheit. |
+| Captions | Sechs Entwürfe für denselben Master mit kanalbezogenen UTMs vorbereitet. | Sechs Kanalentwürfe mit eindeutigen UTMs; alle DRAFT_ONLY und unveröffentlicht. Shorts-Caption-Link nicht als klickbar geführt. |
+| Master | A-Bindung und native Altvideo-Metadaten geprüft; 540-Frame-Dreh- und Abnahmeplan präzisiert. | Variante A aktuell gebunden; kein 18-s-/540-Frame-MP4 fertig. Physische Probe, Motiv-/Rechtebelege, Musik-Buildprovenienz und Abnahme offen. |
+| Kategorie | Ein Metafeld und die offizielle Google-Taxonomie gegengeprüft. | Ein bedingter Entwurf für Work Lights / 5592. Kein Produktmetafeld oder Merchant-Angebot geändert; Produktidentität zuerst bestätigen. |
+| Messungen | Bereits heutige Berichte offline geprüft. | Metricool/Klaviyo-R253-Snapshot wiederverwendet; null neue Tagesreports. Leere Klaviyoantwort = UNKNOWN. |
+| Kontinuität | R259-Belege und Ergänzungs-Diff für Core5 vorbereitet; Speicherung separat zurücklesen. | R258-Arbeitsliste mit 44 Zeilen unverändert; 24 Task-IDs, SalesGoal und Tagesreports erhalten. Nicht aufgeführte Historie bleibt UNKNOWN. |
+
+[Bericht](PROJEKTOR-SOCIAL-STATUS-20261116-R259.md) · [Belege](PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json) · [Produktionsgates](PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md) · [Captions](PROJEKTOR-KANALCAPTIONS-20261116-R259.json) · [Kategorieentwurf](LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md).
+
+[LUXESTYLE_R259_20261116]

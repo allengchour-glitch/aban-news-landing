@@ -1,0 +1,2563 @@
+{
+  "run": "R259",
+  "atUtc": "2026-11-16T14:47:39Z",
+  "identity": {
+    "shopId": "gid://shopify/Shop/94368563585",
+    "shop": "LuxeStyle",
+    "domain": "luxestyle.ch",
+    "currency": "CHF",
+    "timezone": "Europe/Zurich",
+    "metricoolBrandId": 6227837,
+    "channelIdentities": {
+      "facebook": "1049840534888592",
+      "instagram": "luxestyle.ch",
+      "threads": "luxestyle.ch",
+      "tiktok": "luxestyle.ch",
+      "pinterest": "luxestyleCH",
+      "youtube": "UCSfCEYjAsdOyYxyfTClXRZA"
+    }
+  },
+  "scope": "Existing Metricool holds, one existing projector master, six local caption drafts and one conditional category draft. No new product edits or posts.",
+  "planner": {
+    "cutoffUTC": "2026-11-16T14:32:04.536Z",
+    "cutoffZurich": "2026-11-16T15:32:04.536000+01:00",
+    "rollingEndExclusiveZurich": "2026-11-23T15:32:04.536000+01:00",
+    "rollingPendingRaw": 44,
+    "rollingPendingExcludingEightMediaFailedReactivatedPosts": 35,
+    "lateNov23": 4,
+    "fullCalendarPendingRaw": 48,
+    "fullCalendarExcludingEightMediaFailedReactivatedPosts": 39,
+    "rollingByChannel": {
+      "facebook": 9,
+      "instagram": 9,
+      "pinterest": 7,
+      "threads": 7,
+      "tiktok": 9,
+      "youtube": 3
+    },
+    "rollingByChannelExcludingEightMediaFailed": {
+      "facebook": 7,
+      "instagram": 7,
+      "pinterest": 7,
+      "threads": 7,
+      "tiktok": 7,
+      "youtube": 0
+    },
+    "lateNov23ByChannel": {
+      "facebook": 1,
+      "instagram": 1,
+      "pinterest": 1,
+      "threads": 0,
+      "tiktok": 1,
+      "youtube": 0
+    },
+    "fullCalendarByChannel": {
+      "facebook": 10,
+      "instagram": 10,
+      "pinterest": 8,
+      "threads": 7,
+      "tiktok": 10,
+      "youtube": 3
+    },
+    "fullCalendarByChannelExcludingEightMediaFailed": {
+      "facebook": 8,
+      "instagram": 8,
+      "pinterest": 8,
+      "threads": 7,
+      "tiktok": 8,
+      "youtube": 0
+    },
+    "youtubeGapsRaw": [
+      "2026-11-16",
+      "2026-11-18",
+      "2026-11-21",
+      "2026-11-22",
+      "2026-11-23"
+    ],
+    "youtubeNoEligibleActiveAfterKnownMediaExclusion": [
+      "2026-11-16",
+      "2026-11-17",
+      "2026-11-18",
+      "2026-11-19",
+      "2026-11-20",
+      "2026-11-21",
+      "2026-11-22",
+      "2026-11-23"
+    ],
+    "threadsNov16": "one already-published placement; excluded from pending totals",
+    "posts": 57,
+    "uniqueUUIDs": 57,
+    "providerStates": 71,
+    "pending": 70,
+    "published": 1,
+    "drafts": 17,
+    "active": 40,
+    "sameChannelExactCaptionAndOrderedMediaDuplicates": [],
+    "duplicateRule": "Exact caption/media-URL comparison in the bounded current snapshot only; creative identities and full history remain UNKNOWN"
+  },
+  "holds": {
+    "successfulWriteEvents": 14,
+    "currentlyHeldPosts": 6,
+    "currentlyHeldProviderPlacements": 7,
+    "reactivatedPosts": 8,
+    "reactivatedProviderPlacements": 9,
+    "currentlyHeldDetails": [
+      {
+        "uuid": "-3668679867663038577",
+        "localDateTime": "2026-11-17T18:30:00",
+        "timezone": "Europe/Zurich",
+        "networks": [
+          "youtube"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          "PENDING"
+        ]
+      },
+      {
+        "uuid": "4659816415037836014",
+        "localDateTime": "2026-11-18T10:00:00",
+        "timezone": "Europe/Zurich",
+        "networks": [
+          "facebook",
+          "instagram"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          "PENDING",
+          "PENDING"
+        ]
+      },
+      {
+        "uuid": "-8339089096074181290",
+        "localDateTime": "2026-11-18T11:00:00",
+        "timezone": "Europe/Zurich",
+        "networks": [
+          "threads"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          "PENDING"
+        ]
+      },
+      {
+        "uuid": "-8305910546945982140",
+        "localDateTime": "2026-11-18T12:00:00",
+        "timezone": "Europe/Zurich",
+        "networks": [
+          "tiktok"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          "PENDING"
+        ]
+      },
+      {
+        "uuid": "-3731207601091163105",
+        "localDateTime": "2026-11-18T18:00:00",
+        "timezone": "Europe/Zurich",
+        "networks": [
+          "youtube"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          "PENDING"
+        ]
+      },
+      {
+        "uuid": "733493005328404096",
+        "localDateTime": "2026-11-20T19:30:00",
+        "timezone": "Europe/Zurich",
+        "networks": [
+          "tiktok"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providerStates": [
+          "PENDING"
+        ]
+      }
+    ],
+    "reactivationCause": "existing scheduled Metricool-Freigabe workflow 43881112008 confirmed by ID→UUID mapping and successful HTTP 200 PUT log lines",
+    "humanTriggerOrIntent": "UNKNOWN",
+    "toneInstructionConflict": {
+      "task": "Canonical music mandatory",
+      "repositoryClaim": "Owner16Nov: Hobel freigeben; Sternenlicht/Hacker/Box/Welle Ton weg einplanen",
+      "source": "dropship/METRICOOL-HALTEN.txt",
+      "sourceBlob": "5e264cf2c6d0949996ca71066adc73d6c2e27ec2",
+      "confirmationPending": true
+    },
+    "confirmationPending": true,
+    "stable": false,
+    "workflowRun": {
+      "id": 43881112008,
+      "event": "schedule",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-16T13:59:19Z",
+      "completedAt": "2026-11-16T14:00:30Z",
+      "headSha": "da8cd75352e1e5f9b7962fb5c3cd43f205b12159",
+      "mappedWrites": [
+        {
+          "uuid": "4156060813550767248",
+          "numericId": "430102466"
+        },
+        {
+          "uuid": "6680239273933357186",
+          "numericId": "430105449"
+        },
+        {
+          "uuid": "-7002936161864562103",
+          "numericId": "430101963"
+        },
+        {
+          "uuid": "2172266762404316928",
+          "numericId": "430102295"
+        },
+        {
+          "uuid": "3614365779669041576",
+          "numericId": "430105794"
+        },
+        {
+          "uuid": "3963843144054620883",
+          "numericId": "430102388"
+        },
+        {
+          "uuid": "-7647174116509334899",
+          "numericId": "430105912"
+        },
+        {
+          "uuid": "5345343768312041034",
+          "numericId": "430107948"
+        }
+      ]
+    },
+    "ownInitiallyHeldProviderPlacements": 16,
+    "readback": "Numeric planner IDs changed; stable UUIDs retained. Interim 8-post hold readback predates workflow reactivation and is historical only.",
+    "initialRequest": "One pre-upload validation error, no effect; corrected request omitted mediaFiles and was confirmed.",
+    "ownConfirmedWriteDetails": [
+      {
+        "uuid": "-7002936161864562103",
+        "oldId": 429949375,
+        "newId": 430101963,
+        "date": {
+          "dateTime": "2026-11-17T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14138555457630086945.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d",
+        "reason": "Exact retained R253 media; nonempty full audio decode is all zero, no audible canonical music.",
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T14:52:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "2172266762404316928",
+        "oldId": 429949477,
+        "newId": 430102295,
+        "date": {
+          "dateTime": "2026-11-17T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3484059358275403548.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d",
+        "reason": "Exact retained R253 media; nonempty full audio decode is all zero, no audible canonical music.",
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T14:52:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "3963843144054620883",
+        "oldId": 429949772,
+        "newId": 430102388,
+        "date": {
+          "dateTime": "2026-11-17T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5330233543487375882.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d",
+        "reason": "Exact retained R253 media; nonempty full audio decode is all zero, no audible canonical music.",
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T14:52:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": null
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData"
+        ]
+      },
+      {
+        "uuid": "4156060813550767248",
+        "oldId": 429949059,
+        "newId": 430102466,
+        "date": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15511589642552380795.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true,
+          "serverImportedMediaHashIdentical": true
+        },
+        "mediaSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+        "reason": "New 18s25fps/450frame still/graphic montage; effectively silent full audio at-91dB, canonical music and A/motif/film rights not cleared.",
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T14:52:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": null
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData"
+        ],
+        "mediaIdentityProof": {
+          "uuid": "4156060813550767248",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-15511589642552380795.mp4",
+          "bytes": 5107087,
+          "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "originalSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of server-imported URL following existing-post hold update; no publish or creative change",
+          "sourceFile": "/dev/shm/luxestyle-review/r259/media-qc/server-import-4156060813550767248.mp4"
+        }
+      },
+      {
+        "uuid": "6680239273933357186",
+        "oldId": 429949278,
+        "newId": 430105449,
+        "date": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-18069782442414770458.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+        "reason": "New 18s25fps/450frame still/graphic montage; effectively silent full audio at-91dB, canonical music and A/motif/film rights not cleared.",
+        "mediaIdentityProof": {
+          "uuid": "6680239273933357186",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-18069782442414770458.mp4",
+          "bytes": 5107087,
+          "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "originalSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of changed server URL; no retry or new publication"
+        },
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T14:55:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "3614365779669041576",
+        "oldId": 429949644,
+        "newId": 430105794,
+        "date": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-6017425296879370036.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+        "reason": "New 18s25fps/450frame still/graphic montage; effectively silent full audio at-91dB, canonical music and A/motif/film rights not cleared.",
+        "mediaIdentityProof": {
+          "uuid": "3614365779669041576",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-6017425296879370036.mp4",
+          "bytes": 5107087,
+          "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "originalSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of changed server URL; no retry or new publication"
+        },
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T14:55:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "oldId": 429950297,
+        "newId": 430105912,
+        "date": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-4976117013583399734.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+        "reason": "New 18s25fps/450frame still/graphic montage; effectively silent full audio at-91dB, canonical music and A/motif/film rights not cleared.",
+        "mediaIdentityProof": {
+          "uuid": "-7647174116509334899",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-4976117013583399734.mp4",
+          "bytes": 5107087,
+          "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "originalSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of changed server URL; no retry or new publication"
+        },
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:48:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T14:55:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "5345343768312041034",
+        "oldId": 429951887,
+        "newId": 430107948,
+        "date": {
+          "dateTime": "2026-11-20T19:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14481533889624888063.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+        "reason": "New existing YouTube post has a complete nonempty audio decode of 616448 samples, all zero; required canonical music absent and rights unverified. Different content; no duplicate claim.",
+        "mediaIdentityProof": null,
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:49:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T14:57:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "-3668679867663038577",
+        "oldId": 429949565,
+        "newId": 430141753,
+        "date": {
+          "dateTime": "2026-11-17T18:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5481087294279516864.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "7c88b3c89b9429a12e1e78eda11b2f2fa38842a668258cd7d18847e3c2688c67",
+        "reason": "Fresh full AAC decode616448samples all zero. Organizer handling is visible; filename does not imply medical claim. Required canonical music absent; rights not cleared.",
+        "mediaIdentityProof": {
+          "uuid": "-3668679867663038577",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-5481087294279516864.mp4",
+          "bytes": 3601944,
+          "sha256": "7c88b3c89b9429a12e1e78eda11b2f2fa38842a668258cd7d18847e3c2688c67",
+          "originalSha256": "7c88b3c89b9429a12e1e78eda11b2f2fa38842a668258cd7d18847e3c2688c67",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of changed server URL; no retry or new publication"
+        },
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T15:22:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "4659816415037836014",
+        "oldId": 429949857,
+        "newId": 430142174,
+        "date": {
+          "dateTime": "2026-11-18T10:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-12596158120651486276.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "facebook",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          },
+          {
+            "network": "instagram",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+        "reason": "Fresh full AAC decode933888samples all zero. Garlic/chopper scenes sampled; model/material/rights not confirmed. Required canonical music absent.",
+        "mediaIdentityProof": {
+          "uuid": "4659816415037836014",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-12596158120651486276.mp4",
+          "bytes": 5895969,
+          "sha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "originalSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of changed server URL; no retry or new publication"
+        },
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T15:22:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": null
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData"
+        ]
+      },
+      {
+        "uuid": "-8339089096074181290",
+        "oldId": 429949952,
+        "newId": 430142367,
+        "date": {
+          "dateTime": "2026-11-18T11:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-13461439076189758509.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "threads",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+        "reason": "Fresh full AAC decode933888samples all zero. Garlic/chopper scenes sampled; model/material/rights not confirmed. Required canonical music absent.",
+        "mediaIdentityProof": {
+          "uuid": "-8339089096074181290",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-13461439076189758509.mp4",
+          "bytes": 5895969,
+          "sha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "originalSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of changed server URL; no retry or new publication"
+        },
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T15:22:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "-8305910546945982140",
+        "oldId": 429950075,
+        "newId": 430142510,
+        "date": {
+          "dateTime": "2026-11-18T12:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-10053590860223006438.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+        "reason": "Fresh full AAC decode933888samples all zero. Garlic/chopper scenes sampled; model/material/rights not confirmed. Required canonical music absent.",
+        "mediaIdentityProof": {
+          "uuid": "-8305910546945982140",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-10053590860223006438.mp4",
+          "bytes": 5895969,
+          "sha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "originalSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of changed server URL; no retry or new publication"
+        },
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T15:22:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "-3731207601091163105",
+        "oldId": 429950197,
+        "newId": 430142769,
+        "date": {
+          "dateTime": "2026-11-18T18:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-9275500331074887210.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "youtube",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+        "reason": "Fresh full AAC decode933888samples all zero. Garlic/chopper scenes sampled; model/material/rights not confirmed. Required canonical music absent.",
+        "mediaIdentityProof": {
+          "uuid": "-3731207601091163105",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-9275500331074887210.mp4",
+          "bytes": 5895969,
+          "sha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "originalSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of changed server URL; no retry or new publication"
+        },
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:47:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T15:23:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      },
+      {
+        "uuid": "733493005328404096",
+        "oldId": 429951792,
+        "newId": 430142949,
+        "date": {
+          "dateTime": "2026-11-20T19:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-6495987452755768550.mp4"
+        ],
+        "draft": true,
+        "autoPublish": false,
+        "providers": [
+          {
+            "network": "tiktok",
+            "status": "PENDING",
+            "detailedStatus": "Pending"
+          }
+        ],
+        "checks": {
+          "uuid": true,
+          "draft": true,
+          "globalAPOff": true,
+          "actualInstagramAPOff": true,
+          "contentDateMediaAndActualProviderDataPreserved": true,
+          "otherWindowObjectsUnchanged": true,
+          "writeAcknowledged": true
+        },
+        "mediaSha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+        "reason": "Fresh Shopify file byte-identical to reviewed YouTube clip; positive full PCM sample count with every sample zero. Required canonical music absent. Cross-platform reuse is not itself a duplicate violation.",
+        "mediaIdentityProof": {
+          "uuid": "733493005328404096",
+          "httpStatus": 200,
+          "sourceUrl": "https://static.metricool.com/planner/202611/6227837-file-6495987452755768550.mp4",
+          "bytes": 3303386,
+          "sha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+          "originalSha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+          "exactByteHashMatch": true,
+          "method": "One bounded GET of changed server URL; no retry or new publication"
+        },
+        "serverMetadataDeltas": {
+          "creationDate": {
+            "before": {
+              "dateTime": "2026-11-16T12:49:00",
+              "timezone": "Europe/Zurich"
+            },
+            "after": {
+              "dateTime": "2026-11-16T15:23:00",
+              "timezone": "Europe/Zurich"
+            }
+          },
+          "numericIdChanged": true,
+          "unusedInstagramAP": {
+            "before": true,
+            "after": false
+          }
+        },
+        "transportOnlyOmittedNonProviderData": [
+          "twitterData",
+          "instagramData"
+        ]
+      }
+    ],
+    "currentReactivatedDetails": [
+      {
+        "uuid": "-7002936161864562103",
+        "id": 430111412,
+        "scheduled": {
+          "dateTime": "2026-11-17T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "channels": [
+          "youtube"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "providerStatuses": [
+          "PENDING"
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14138555457630086945.mp4"
+        ]
+      },
+      {
+        "uuid": "2172266762404316928",
+        "id": 430111520,
+        "scheduled": {
+          "dateTime": "2026-11-17T13:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "channels": [
+          "tiktok"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "providerStatuses": [
+          "PENDING"
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-3484059358275403548.mp4"
+        ]
+      },
+      {
+        "uuid": "3963843144054620883",
+        "id": 430111824,
+        "scheduled": {
+          "dateTime": "2026-11-17T20:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "channels": [
+          "facebook",
+          "instagram"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "providerStatuses": [
+          "PENDING",
+          "PENDING"
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-5330233543487375882.mp4"
+        ]
+      },
+      {
+        "uuid": "4156060813550767248",
+        "id": 430111185,
+        "scheduled": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "channels": [
+          "instagram"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "providerStatuses": [
+          "PENDING"
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-15511589642552380795.mp4"
+        ]
+      },
+      {
+        "uuid": "6680239273933357186",
+        "id": 430111296,
+        "scheduled": {
+          "dateTime": "2026-11-16T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "channels": [
+          "facebook"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "providerStatuses": [
+          "PENDING"
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-18069782442414770458.mp4"
+        ]
+      },
+      {
+        "uuid": "3614365779669041576",
+        "id": 430111643,
+        "scheduled": {
+          "dateTime": "2026-11-17T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "channels": [
+          "tiktok"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "providerStatuses": [
+          "PENDING"
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-6017425296879370036.mp4"
+        ]
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "id": 430111922,
+        "scheduled": {
+          "dateTime": "2026-11-19T19:00:00",
+          "timezone": "Europe/Zurich"
+        },
+        "channels": [
+          "youtube"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "providerStatuses": [
+          "PENDING"
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-4976117013583399734.mp4"
+        ]
+      },
+      {
+        "uuid": "5345343768312041034",
+        "id": 430112117,
+        "scheduled": {
+          "dateTime": "2026-11-20T19:30:00",
+          "timezone": "Europe/Zurich"
+        },
+        "channels": [
+          "youtube"
+        ],
+        "draft": false,
+        "autoPublish": true,
+        "providerStatuses": [
+          "PENDING"
+        ],
+        "media": [
+          "https://static.metricool.com/planner/202611/6227837-file-14481533889624888063.mp4"
+        ]
+      }
+    ],
+    "sanitizedWorkflowLogMapping": {
+      "runId": 43881112008,
+      "reasonForSecondBoundedRead": "The inspected writer formats post IDs, not UUIDs; map known confirmed numeric IDs to their stable UUIDs. First UUID-only search had no hits.",
+      "requestsTotal": 2,
+      "httpStatus": 200,
+      "zipSha256": "11c854cb439a46e2085a614dee43dde23687fe3cf3a09f32b7ca8f5b7a8ae336",
+      "matchedLines": [
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430102466"
+          ],
+          "mappedUUIDs": [
+            "4156060813550767248"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0500149Z FREI   16.11. 19:00 instagram (id 430102466) -> 16.11. 19:00 | sternenlicht-projektor-fur-schlafzimmer-732544"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430105449"
+          ],
+          "mappedUUIDs": [
+            "6680239273933357186"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0500908Z FREI   16.11. 19:00 facebook (id 430105449) -> 16.11. 19:00 | sternenlicht-projektor-fur-schlafzimmer-732544"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430101963"
+          ],
+          "mappedUUIDs": [
+            "-7002936161864562103"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0501507Z FREI   17.11. 13:00 youtube (id 430101963) -> 17.11. 13:00 | 3-in-1-gemusehobel-mit-scharfen-messern-940928"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430102295"
+          ],
+          "mappedUUIDs": [
+            "2172266762404316928"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0502118Z FREI   17.11. 13:00 tiktok (id 430102295) -> 17.11. 13:00 | 3-in-1-gemusehobel-mit-scharfen-messern-940928"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430105794"
+          ],
+          "mappedUUIDs": [
+            "3614365779669041576"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0502754Z FREI   17.11. 19:00 tiktok (id 430105794) -> 17.11. 19:00 | sternenlicht-projektor-fur-schlafzimmer-732544"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430102388"
+          ],
+          "mappedUUIDs": [
+            "3963843144054620883"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0503432Z FREI   17.11. 20:00 facebook+instagram (id 430102388) -> 17.11. 20:00 | 3-in-1-gemusehobel-mit-scharfen-messern-940928"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430105912"
+          ],
+          "mappedUUIDs": [
+            "-7647174116509334899"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0504151Z FREI   19.11. 19:00 youtube (id 430105912) -> 19.11. 19:00 | sternenlicht-projektor-fur-schlafzimmer-732544"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430107948"
+          ],
+          "mappedUUIDs": [
+            "5345343768312041034"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0504897Z FREI   20.11. 19:30 youtube (id 430107948) -> 20.11. 19:30 | led-wasserwellen-projektionsleuchte-677504"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [],
+          "mappedUUIDs": [],
+          "lineRedacted": "2026-11-16T14:00:28.0513271Z Entwürfe geprüft: 14 | frei: 8 | gehalten: 6"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430102466"
+          ],
+          "mappedUUIDs": [
+            "4156060813550767248"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0513510Z PUT 430102466 HTTP 200 Kontrolle: OK"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430105449"
+          ],
+          "mappedUUIDs": [
+            "6680239273933357186"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0513706Z PUT 430105449 HTTP 200 Kontrolle: OK"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430101963"
+          ],
+          "mappedUUIDs": [
+            "-7002936161864562103"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0513889Z PUT 430101963 HTTP 200 Kontrolle: OK"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430102295"
+          ],
+          "mappedUUIDs": [
+            "2172266762404316928"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0514065Z PUT 430102295 HTTP 200 Kontrolle: OK"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430105794"
+          ],
+          "mappedUUIDs": [
+            "3614365779669041576"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0514941Z PUT 430105794 HTTP 200 Kontrolle: OK"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430102388"
+          ],
+          "mappedUUIDs": [
+            "3963843144054620883"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0515117Z PUT 430102388 HTTP 200 Kontrolle: OK"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430105912"
+          ],
+          "mappedUUIDs": [
+            "-7647174116509334899"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0515301Z PUT 430105912 HTTP 200 Kontrolle: OK"
+        },
+        {
+          "file": "freigabe/5_Entwürfe prüfen und einplanen.txt",
+          "numericIds": [
+            "430107948"
+          ],
+          "mappedUUIDs": [
+            "5345343768312041034"
+          ],
+          "lineRedacted": "2026-11-16T14:00:28.0515493Z PUT 430107948 HTTP 200 Kontrolle: OK"
+        }
+      ],
+      "mappedUUIDs": [
+        "-7002936161864562103",
+        "-7647174116509334899",
+        "2172266762404316928",
+        "3614365779669041576",
+        "3963843144054620883",
+        "4156060813550767248",
+        "5345343768312041034",
+        "6680239273933357186"
+      ],
+      "scope": "Log-output mapping to original pre-reactivation IDs; exact update/write line interpretation reviewed separately, no general actor inference beyond matched IDs."
+    },
+    "serverSideImports": {
+      "count": 10,
+      "allExactByteMatches": true,
+      "items": [
+        {
+          "uuid": "-3668679867663038577",
+          "httpStatus": 200,
+          "bytes": 3601944,
+          "sha256": "7c88b3c89b9429a12e1e78eda11b2f2fa38842a668258cd7d18847e3c2688c67",
+          "originalSha256": "7c88b3c89b9429a12e1e78eda11b2f2fa38842a668258cd7d18847e3c2688c67",
+          "exactByteHashMatch": true
+        },
+        {
+          "uuid": "-3731207601091163105",
+          "httpStatus": 200,
+          "bytes": 5895969,
+          "sha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "originalSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "exactByteHashMatch": true
+        },
+        {
+          "uuid": "-7647174116509334899",
+          "httpStatus": 200,
+          "bytes": 5107087,
+          "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "originalSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "exactByteHashMatch": true
+        },
+        {
+          "uuid": "-8305910546945982140",
+          "httpStatus": 200,
+          "bytes": 5895969,
+          "sha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "originalSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "exactByteHashMatch": true
+        },
+        {
+          "uuid": "-8339089096074181290",
+          "httpStatus": 200,
+          "bytes": 5895969,
+          "sha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "originalSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "exactByteHashMatch": true
+        },
+        {
+          "uuid": "3614365779669041576",
+          "httpStatus": 200,
+          "bytes": 5107087,
+          "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "originalSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "exactByteHashMatch": true
+        },
+        {
+          "uuid": "4156060813550767248",
+          "httpStatus": 200,
+          "bytes": 5107087,
+          "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "originalSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "exactByteHashMatch": true
+        },
+        {
+          "uuid": "4659816415037836014",
+          "httpStatus": 200,
+          "bytes": 5895969,
+          "sha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "originalSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+          "exactByteHashMatch": true
+        },
+        {
+          "uuid": "6680239273933357186",
+          "httpStatus": 200,
+          "bytes": 5107087,
+          "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "originalSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+          "exactByteHashMatch": true
+        },
+        {
+          "uuid": "733493005328404096",
+          "httpStatus": 200,
+          "bytes": 3303386,
+          "sha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+          "originalSha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+          "exactByteHashMatch": true
+        }
+      ],
+      "localUploads": 0
+    },
+    "untouchedOriginalUUIDs": 34,
+    "originalUUIDsRetained": 48,
+    "newUUIDs": 9,
+    "oldUUIDsNotReturned": 0,
+    "untouchedDifferences": {},
+    "newUUIDSource": "UNKNOWN; not attributed to this agent",
+    "newPosts": 0,
+    "publish": 0,
+    "deletions": 0,
+    "workflowDispatch": 0
+  },
+  "mediaQC": {
+    "extraYouTube": {
+      "uuid": "5345343768312041034",
+      "sha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+      "decodedSamples": 616448,
+      "nonzeroSamples": 0,
+      "peak": 0,
+      "rootVisualCorrection": "At0.2s a glowing lamp-like cube/object is visible in the lower-left scene. Do not adopt the stronger claim that no device is visible in any sample. Exact product/variant and creative rights are still not established.",
+      "holdBasis": "Full non-empty decoded AAC stream is exactly silent, canonical required music absent; rights approval remains unknown. No duplicate assertion.",
+      "rights": "unknown"
+    },
+    "fourProjectorPosts": {
+      "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+      "audio": "effectively silent, about -91 dB",
+      "serverSideCopies": 4,
+      "finalMaster": false
+    },
+    "otherCheckedAssets": [
+      {
+        "source": "media-qc/remaining-medizin-qc.json",
+        "sha256": "7c88b3c89b9429a12e1e78eda11b2f2fa38842a668258cd7d18847e3c2688c67",
+        "nonzeroSamples": 0,
+        "audioFullySilent": true
+      },
+      {
+        "source": "media-qc/remaining-welle-qc.json",
+        "sha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+        "nonzeroSamples": 0,
+        "audioFullySilent": true
+      },
+      {
+        "source": "media-qc/remaining-hacker-qc.json",
+        "sha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+        "nonzeroSamples": 0,
+        "audioFullySilent": true
+      }
+    ],
+    "threeOldPostsSharedSHA": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d",
+    "oldAudioDecode": "all zero samples"
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "currentA": {
+      "shopifyProductId": "15521256604033",
+      "currentAvariantId": "68122445283719",
+      "currentASku": "CJSN139239101AZ",
+      "priceCHF": "34.90",
+      "label": "A · Grundmodell · USB",
+      "basis": "Root-provided fresh native read for R259, updatedAt 2026-11-16T07:06:59Z. Historical variant 56197916361089 is obsolete and must not be used."
+    },
+    "productUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719",
+    "target": {
+      "resolution": "1080x1920",
+      "fps": 30,
+      "durationSeconds": 18,
+      "frames": 540,
+      "hookA": "Dein Raum. Neues Licht.",
+      "hookB": "Licht im Detail.",
+      "hookDeltaFrames": "Only frames 000–059 may differ between hook treatments; both feed the same master from frame 060.",
+      "hookTreatments": [
+        {
+          "id": "A",
+          "text": "Dein Raum. Neues Licht.",
+          "frames": "000–059",
+          "picture": "Ruhige Raumtotale mit derselben real geprüften A-Projektion; kein digitales Sternen-Compositing. Motivbindung muss vorher belegt sein.",
+          "appeal": "Atmosphäre und Raumwirkung"
+        },
+        {
+          "id": "B",
+          "text": "Licht im Detail.",
+          "frames": "000–059",
+          "picture": "Nahaufnahme des physisch identifizierten A-Gehäuses und der echten USB-Zuleitung bei kontrolliertem Seitenlicht. Keine zusätzliche Funktion vorführen.",
+          "appeal": "Produktform und Ausstattung"
+        }
+      ],
+      "overlayPlan": [
+        {
+          "frames": "060–149",
+          "text": "Grundmodell A"
+        },
+        {
+          "frames": "150–269",
+          "text": "USB-Ausführung"
+        },
+        {
+          "frames": "270–389",
+          "text": "Licht im Raum",
+          "gate": "Nur nach physisch bestätigter A-/Motivbindung"
+        },
+        {
+          "frames": "390–479",
+          "text": "Variante A"
+        },
+        {
+          "frames": "480–539",
+          "text": "Produkt ansehen"
+        }
+      ],
+      "visualStyle": "Premium und clean; taupe/cream für Raum, Requisiten und Grafik. Echte Produkt-/Lichtfarben neutral erhalten; kontrollierte Belichtung und konsistenter Weissabgleich, ruhige Kamerabewegung, passende Texthinterlegung und Plattform-Sicherheitsränder prüfen.",
+      "exportApprovalOrder": "Zuerst Quellen-, Produkt- und Musikrechte sowie Drehmaterial freigeben; dann unbezahlten internen Prüffilm exportieren, komplett prüfen und den fertigen Master dem Inhaber zur finalen kreativen Abnahme vorlegen. Erst danach Veröffentlichungsvoraussetzungen je Kanal/Ledger prüfen."
+    },
+    "existingAttachedVideo": {
+      "id": "gid://shopify/Video/77496185356679",
+      "status": "READY",
+      "durationMilliseconds": 27960,
+      "originalSource": {
+        "url": "https://cdn.shopify.com/videos/c/o/v/6490c6357dae4df69bb910178acb2912.mp4",
+        "width": 960,
+        "height": 540,
+        "format": "mp4",
+        "mimeType": "video/mp4",
+        "fileSize": 3679836
+      },
+      "meaning": "READY is technical processing only, not creative, identity or rights approval."
+    },
+    "referenceImage": {
+      "mediaId": "gid://shopify/MediaImage/70733173719425",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+      "role": "Fresh native variant A binding and public visual reference only; no filming or rights waiver"
+    },
+    "blockers": [
+      "physical A sample",
+      "A-specific pack contents and disc/motif identity",
+      "film, graphic and commercial music rights",
+      "SoundFont/build provenance",
+      "new shoot, 540-frame review and creative acceptance"
+    ],
+    "finalMP4Exists": false
+  },
+  "captions": {
+    "count": 6,
+    "artifact": "PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
+    "allDraftOnly": true,
+    "uniqueUtmSources": 6,
+    "uniqueUtmContent": 6,
+    "shortsLinkClickable": false,
+    "bioTargetsFreshlyVerified": false
+  },
+  "dailyMetricoolDetails": {
+    "sourceFiles": [
+      "/dev/shm/luxestyle-review/r253/metrics/raw-six-channel.json",
+      "/dev/shm/luxestyle-review/r253/metrics/selected-definitions.json",
+      "/dev/shm/luxestyle-review/r253/metrics/daily-summary.json",
+      "/dev/shm/luxestyle-review/r253/metrics/validation-final.json"
+    ],
+    "readAtUTC": "2026-11-16 06:57 UTC",
+    "timezone": "Europe/Zurich",
+    "periodInclusiveLocalDates": [
+      "2026-11-09",
+      "2026-11-15"
+    ],
+    "exclusiveEnd": "2026-11-16T00:00:00+01:00",
+    "channelCount": 6,
+    "definitionCount": 12,
+    "dataReadCount": 6,
+    "offlineSumChecksPassed": 12,
+    "channels": {
+      "instagram": [
+        {
+          "metricId": "IGEV12",
+          "label": "Instagram Evolution > Feed Posts Views",
+          "description": "Number of times feed posts (photos and carousels) were displayed. Does NOT include reels or stories. Organic data.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 28.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 23.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 56.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 26.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 48.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": 16.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": 18.0,
+              "state": "numeric"
+            }
+          ],
+          "numericDays": 7,
+          "nullDays": 0,
+          "absentDays": 0,
+          "observedSum": 215.0,
+          "sourceSummarySum": 215.0,
+          "matchesSourceSum": true
+        },
+        {
+          "metricId": "IGEV09",
+          "label": "Instagram Evolution > Feed Posts Interactions",
+          "description": "Interactions (likes, comments, saves and shares) received by feed posts only (photos and carousels). Does NOT include reels. For all content use Instagram Evolution > Total Content Interactions.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261110",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261111",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261112",
+              "value": 1.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "null"
+            }
+          ],
+          "numericDays": 1,
+          "nullDays": 6,
+          "absentDays": 0,
+          "observedSum": 1.0,
+          "sourceSummarySum": 1.0,
+          "matchesSourceSum": true
+        }
+      ],
+      "facebook": [
+        {
+          "metricId": "FBEV49",
+          "label": "Facebook Evolution > Page Media View",
+          "description": "Page content views.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 3.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 5.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 61.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 27.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 21.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": 6.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": 17.0,
+              "state": "numeric"
+            }
+          ],
+          "numericDays": 7,
+          "nullDays": 0,
+          "absentDays": 0,
+          "observedSum": 140.0,
+          "sourceSummarySum": 140.0,
+          "matchesSourceSum": true
+        },
+        {
+          "metricId": "FBEV34",
+          "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261110",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261111",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261112",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261113",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "null"
+            }
+          ],
+          "numericDays": 0,
+          "nullDays": 7,
+          "absentDays": 0,
+          "observedSum": null,
+          "sourceSummarySum": null,
+          "matchesSourceSum": true
+        }
+      ],
+      "tiktok": [
+        {
+          "metricId": "TKEV02",
+          "label": "TikTok Evolution > Views",
+          "description": "Number of views reached by the videos published in the period",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261110",
+              "value": 766.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 1012.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 748.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 505.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": 730.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": 265.0,
+              "state": "numeric"
+            }
+          ],
+          "numericDays": 6,
+          "nullDays": 0,
+          "absentDays": 1,
+          "observedSum": 4026.0,
+          "sourceSummarySum": 4026.0,
+          "matchesSourceSum": true
+        },
+        {
+          "metricId": "TKEV06",
+          "label": "TikTok Evolution > Interactions",
+          "description": "Number of interactions on videos: Likes, Comments and Shares.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261110",
+              "value": 3.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 4.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 1.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": 2.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": 0.0,
+              "state": "numeric"
+            }
+          ],
+          "numericDays": 6,
+          "nullDays": 0,
+          "absentDays": 1,
+          "observedSum": 10.0,
+          "sourceSummarySum": 10.0,
+          "matchesSourceSum": true
+        }
+      ],
+      "threads": [
+        {
+          "metricId": "THEV06",
+          "label": "Threads Evolution > Post Views",
+          "description": "Total number of times that the post is displayed.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261110",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261111",
+              "value": 1.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261113",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261114",
+              "value": 4.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numericDays": 2,
+          "nullDays": 0,
+          "absentDays": 5,
+          "observedSum": 5.0,
+          "sourceSummarySum": 5.0,
+          "matchesSourceSum": true
+        },
+        {
+          "metricId": "THEV05",
+          "label": "Threads Evolution > Interactions",
+          "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261110",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261111",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261112",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261113",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "null"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numericDays": 0,
+          "nullDays": 2,
+          "absentDays": 5,
+          "observedSum": null,
+          "sourceSummarySum": null,
+          "matchesSourceSum": true
+        }
+      ],
+      "youtube": [
+        {
+          "metricId": "YTEV02",
+          "label": "Youtube Evolution > Video Views",
+          "description": "Number of times the videos were watched",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 4.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 256.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 171.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 261.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 104.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numericDays": 5,
+          "nullDays": 0,
+          "absentDays": 2,
+          "observedSum": 796.0,
+          "sourceSummarySum": 796.0,
+          "matchesSourceSum": true
+        },
+        {
+          "metricId": "YTEV05",
+          "label": "Youtube Evolution > Followers Gained",
+          "description": "Subscribers gained in the period selected.",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 0.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numericDays": 5,
+          "nullDays": 0,
+          "absentDays": 2,
+          "observedSum": 0.0,
+          "sourceSummarySum": 0.0,
+          "matchesSourceSum": true
+        }
+      ],
+      "pinterest": [
+        {
+          "metricId": "PIEV01",
+          "label": "Pinterest Evolution > Impressions in period",
+          "description": "",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 764.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 863.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 870.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 713.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 1520.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numericDays": 5,
+          "nullDays": 0,
+          "absentDays": 2,
+          "observedSum": 4730.0,
+          "sourceSummarySum": 4730.0,
+          "matchesSourceSum": true
+        },
+        {
+          "metricId": "PIEV04",
+          "label": "Pinterest Evolution > Interactions in period",
+          "description": "",
+          "aggregation": "SUM",
+          "daily": [
+            {
+              "date": "20261109",
+              "value": 19.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261110",
+              "value": 19.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261111",
+              "value": 14.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261112",
+              "value": 16.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261113",
+              "value": 16.0,
+              "state": "numeric"
+            },
+            {
+              "date": "20261114",
+              "value": null,
+              "state": "absent"
+            },
+            {
+              "date": "20261115",
+              "value": null,
+              "state": "absent"
+            }
+          ],
+          "numericDays": 5,
+          "nullDays": 0,
+          "absentDays": 2,
+          "observedSum": 84.0,
+          "sourceSummarySum": 84.0,
+          "matchesSourceSum": true
+        }
+      ]
+    },
+    "limits": [
+      "Metric definitions describe different content types across networks; no cross-platform total/ranking.",
+      "Instagram feed metrics exclude Reels and Stories; IG feed measures are organic.",
+      "JSON null and absent dates are unknown; do not convert them to zero. Only numeric values are summed; 16 Nov rows are excluded.",
+      "No views-to-sales or other sales inference."
+    ]
+  },
+  "datedKlaviyoEvidence": {
+    "sourceFiles": [
+      "/dev/shm/luxestyle-review/r253/package/KENNZAHLEN-KLAVIYO-20261116-R253.json",
+      "/dev/shm/luxestyle-review/r253/klaviyo/summary.md",
+      "/dev/shm/luxestyle-review/r253/klaviyo/raw-flows-and-report.json"
+    ],
+    "asOf": "R253 review dated 2026-11-16; source report does not include an exact capture time; reused without new query in R259.",
+    "timezone": "Europe/Zurich",
+    "accountCurrency": "USD",
+    "shopCurrency": "CHF",
+    "currenciesCombined": false,
+    "placedOrderMetric": {
+      "name": "Placed Order",
+      "id": "W7XTVD",
+      "status": "freshly discovered during R253, not re-discovered in R259"
+    },
+    "reportPeriod": "2026-11-09 through 2026-11-15 local",
+    "response": {
+      "results": [],
+      "flow_aggregation": [],
+      "interpretation": "unknown/empty response, not zero performance"
+    },
+    "reviewedFlows": [
+      {
+        "id": "Vse76a",
+        "name": "Abandoned Checkout",
+        "status": "draft",
+        "triggerType": "Metric"
+      },
+      {
+        "id": "VbLQj6",
+        "name": "Welcome Series",
+        "status": "draft",
+        "triggerType": "Added to List"
+      },
+      {
+        "id": "RnTvsY",
+        "name": "Post-Purchase · Order + Review",
+        "status": "draft",
+        "triggerType": "Metric"
+      }
+    ],
+    "captureStatus": "Unknown: R253 forms-list response returned an empty data array; this does not establish that no capture form or flow exists.",
+    "limits": [
+      "No profiles, event payloads, recipients, or orders were read in R253 evidence.",
+      "Empty report is not zero activity; no revenue inference.",
+      "USD Klaviyo metrics and CHF Shopify figures are not converted or combined.",
+      "Flow states are dated R253 observations, not fresh R259 statuses."
+    ],
+    "reportBounds": {
+      "start": "2026-11-09T00:00:00+01:00",
+      "end": "2026-11-15T23:59:59+01:00"
+    }
+  },
+  "dailyReuse": {
+    "R253MetricoolDays": "2026-11-09 to 2026-11-15",
+    "channels": 6,
+    "definitions": 12,
+    "dataReads": 6,
+    "newR259MetricoolKlaviyoReports": 0,
+    "offlineChecksPassed": 12,
+    "Klaviyo": "R253 empty response interpreted UNKNOWN, not zero",
+    "currenciesCombined": false,
+    "orderWatchRepeated": false,
+    "GSCRepeated": false
+  },
+  "conditionalCategory": {
+    "status": "DRAFT_CONDITIONAL_OWNER_REVIEW_REQUIRED",
+    "productId": "gid://shopify/Product/16617685451143",
+    "url": "https://luxestyle.ch/products/magnetische-led-lampe-zum-aufkleben-kabellos-621500",
+    "metafield": "mm-google-shopping.google_product_category",
+    "metafieldId": "gid://shopify/Metafield/209771697275271",
+    "current": "Sporting Goods > Exercise & Fitness",
+    "proposed": "Hardware > Tools > Work Lights",
+    "categoryId": "5592",
+    "compareDigest": "29abf79db665c62289c2e6e9a63b0c9831b7da6170c86490e2bbb96ff4ab997b",
+    "taxonomyLine": "5592 - Hardware > Tools > Work Lights",
+    "write": false,
+    "scopeLimit": "Only Shopify Google metafield measured; current Merchant offer was not checked."
+  },
+  "tagGate": {
+    "readOnly": true,
+    "missingTagsBlock": true,
+    "rueckholBlock": true,
+    "doesNotGrantPublicationOrRights": true
+  },
+  "activity": {
+    "shopifyProductWrites": 0,
+    "metricoolHoldWriteEvents": 14,
+    "serverSideMediaImports": 10,
+    "newPosts": 0,
+    "published": 0,
+    "deleted": 0,
+    "newReports": 0,
+    "renderedMP4": 0,
+    "localUploads": 0,
+    "taxonomyWrites": 0
+  },
+  "coreBase": {
+    "revision": 258,
+    "sha256": "02f427c8bb437b892ecf37ed393c7d61f671e873543238c7728b0abf6b3228c8",
+    "tasks": 24,
+    "updatedTaskIds": [
+      "master-projector-15521256604033",
+      "external-video-review-20261103",
+      "seo-landing-visibility-20261101",
+      "luxe-zusammenarbeit-20261028"
+    ],
+    "R258WorklistRows": 44,
+    "R258WorklistChanged": false,
+    "unlistedHistory": "UNKNOWN",
+    "salesGoalPreserved": true,
+    "dailyCompletedReportsPreserved": true
+  },
+  "sourceRefs": [
+    {
+      "localEvidence": "identity.json",
+      "bytes": 701,
+      "sha256": "eea0141f2b948d557c97937f261d723e0e3c956a1801c146d166691e6bceebb6",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "latest-status.json",
+      "bytes": 9197,
+      "sha256": "065b8a08f120fdc6fba0474f8c6164203ee6bad6acc50f7ef4c724fb5c4a2da8",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "latest-planner-flat-private.json",
+      "bytes": 102128,
+      "sha256": "32ee39c7179fd39ded29a7fcefadeeb1f031377c4e475e0ce94f89099092131d",
+      "privateNotForUpload": true
+    },
+    {
+      "localEvidence": "metricool/latest-summary.json",
+      "bytes": 21328,
+      "sha256": "3a205938c4b15e955dc4b2f19c0579c758fad0dc6ca151f55decce8edc049299",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "metricool/current-integrity.json",
+      "bytes": 1121,
+      "sha256": "15e629980dc736eb74e9da797d5f092acac966d90ebac90a06d672b9e87166bc",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "writer-run-id-mapping.json",
+      "bytes": 6054,
+      "sha256": "02e3df055b3597fe50bada59cebf71ac3490a0b37dc5e679a17f47e6c2976c1f",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "later-reactivation-drift.json",
+      "bytes": 7589,
+      "sha256": "1dc91c1afb694222e37a4f998258983d26c7669856bea188753fbd9b042172ba",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "writer-runs-read.json",
+      "bytes": 2814,
+      "sha256": "8d55067ae98361fe590aab4a4c1b295073bbf33b853bae8ef218dc94c9f4c2eb",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "writer-run-status.json",
+      "bytes": 1072,
+      "sha256": "5472849b4d662f47383aead695c97f5ab53ad64c5ad43b04d0d3db8680a1d9ed",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "writer-source-evidence.json",
+      "bytes": 4628,
+      "sha256": "8fa235101ea0d94d606b215ab2346a89045bda66cde561f2d3e68247063a8a6b",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "daily-reuse.json",
+      "bytes": 26775,
+      "sha256": "add2d17579ab52a859516ca5c02de8ece2f885ef9975950f18c360d98d7f7610",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "master/a-variant-shot-acceptance.json",
+      "bytes": 9000,
+      "sha256": "d191d8b2051a8f66ae4d3fce3c48e8d7f28d5a25e51bc0600d54e289983b858a",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "master/production-readiness-delta.md",
+      "bytes": 7008,
+      "sha256": "04da6bafe08d7a8be20cbd6f7c98627e0f4f3cda5bf487333be2a8e3be606004",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "master-existing-video.json",
+      "bytes": 6192,
+      "sha256": "5d80497da05e925704b78e25d09057cba50777bc6ad231f097d0a31d4681fd7a",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "public/summary.json",
+      "bytes": 10328,
+      "sha256": "fbd86b0e46f66af19c1ce5141fdd734d845b659a23ecb214fba91307f61d955c",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "tag-gate.json",
+      "bytes": 1360,
+      "sha256": "45b76d4abaaf3bb37e245067446e366abe08a7a63ea907bbb8fa3c63c6382abc",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "sales/one-action-proposal.json",
+      "bytes": 8774,
+      "sha256": "5455c2384117dfd6db4ed6577d32b59916a132fea120e61b94ce8dc4634ee2a6",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "sales/one-action-taxonomy.json",
+      "bytes": 553,
+      "sha256": "80b53fff31490ea3e71e342851e31e780af957a6ad7164010e3e7ccd4964b2b4",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "media-qc/new-projector-qc.json",
+      "bytes": 5329,
+      "sha256": "9fbae67b4bcce8bed54601eb5c41557b4a41374f24f69583f115fa694c645a32",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "media-qc/new-youtube-report.json",
+      "bytes": 7142,
+      "sha256": "6c16358812b549a0aec718af14c685f75db82ff3a4932ba15fc5b552e4c21497",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "media-qc/new-youtube-report.md",
+      "bytes": 2922,
+      "sha256": "1900abb9219d703863a1ffd467fd5f50d86d4debddf4601c70e3da0b8026d081",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "media-qc/remaining-medizin-qc.json",
+      "bytes": 2717,
+      "sha256": "4e5f4e321829c4163825f8b88353ab1535593c876948e4bc30e3ad38ee77af60",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "media-qc/remaining-welle-qc.json",
+      "bytes": 3683,
+      "sha256": "bd871c8c94c8863c1ac31e8cbfe8eb4da58e5f6478ff180d0d636b33606da579",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "media-qc/remaining-hacker-qc.json",
+      "bytes": 5781,
+      "sha256": "64d67bf0cf932be8dacaa18563dd2b7c91a64fac52f7e5107bcb39df9ad30c78",
+      "privateNotForUpload": false
+    },
+    {
+      "localEvidence": "R258/package/PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv",
+      "bytes": 18465,
+      "sha256": "54299b33b9f6e67c4e526ac646e23e0f884ab2f267516ada8f439bde3610f4a8"
+    }
+  ],
+  "privacy": {
+    "rawPlannerPrivateFilesIncluded": false,
+    "creatorEmailOrUserIdentifiersIncluded": false,
+    "supplierPricesCustomerDataCredentialsIncluded": false
+  }
+}
