@@ -58,6 +58,8 @@ BASE = 'https://app.metricool.com/api'
 WEGWEISER = 'aus-tiktok-und-instagram'
 MIN_ABSTAND_H = 3
 MIN_VORLAUF_H = 2
+# Besitzer 16.11.: «nur noch Videos». Entwürfe ohne Video bleiben Entwurf. NUR_VIDEOS=0 schaltet das Tor ab.
+NUR_VIDEOS = os.environ.get('NUR_VIDEOS', '1') != '0'
 SPIELRAUM_H = (1, -1, 2, -2, 3, -3, 4, 5, 6)  # Verschiebungen in Stunden am selben Tag, in dieser Reihenfolge (später zuerst)
 TAGESFENSTER = (9, 21)                        # früheste/späteste Uhrzeit beim Verschieben
 GENERISCH = {7.0, 14.9, 45.0, 50.0}           # Versand CH, Versand LI, Gratis-Schwelle (Text 50, Regel 45)
@@ -167,10 +169,12 @@ def pruefe_produkte(text, produkte):
     for p in treffer:
         if p.get('status') != 'ACTIVE':
             probleme.append(f"Produkt nicht ACTIVE: {p['handle']}")
-        if p.get('tracksInventory') and (p.get('totalInventory') or 0) <= 0:
-            probleme.append(f"Produkt ausverkauft: {p['handle']}")
-        elif not any(v.get('availableForSale') for v in p.get('variants', [])):
-            probleme.append(f"Produkt nicht lieferbar: {p['handle']}")
+        # Bestand 0 heisst nicht ausverkauft (CJ-Ware mit Nachbestellung, Lehre 03.11.): entscheidend ist, ob eine Ausführung kaufbar ist.
+        if not any(v.get('availableForSale') for v in p.get('variants', [])):
+            if p.get('tracksInventory') and (p.get('totalInventory') or 0) <= 0:
+                probleme.append(f"Produkt ausverkauft: {p['handle']}")
+            else:
+                probleme.append(f"Produkt nicht lieferbar: {p['handle']}")
     alle, kappen, abs_ = preise(text)
     erlaubt = set()
     for p in (treffer if len(treffer) == 1 else produkte):
@@ -294,6 +298,7 @@ def baue_put(post, ziel, text):
         b['instagramData']['autoPublish'] = True
     if 'tiktok' in netze:
         b['tiktokData']['commercialContentOwnBrand'] = True      # TikTok verlangt die Kennzeichnung für Werbung in eigener Sache
+        b['tiktokData']['autoAddMusic'] = False      # Besitzer 16.11.: kein TikTok-Bibliotheks-Sound (Musikregel 10.11.)
     return b
 
 
@@ -364,6 +369,8 @@ def plane_lauf(planer, produkte, jetzt, horizont_tage=10, max_je_lauf=12, medien
         if e['alt'] < jetzt + timedelta(hours=MIN_VORLAUF_H):
             e['probleme'].append('Termin liegt in der Vergangenheit oder weniger als 2 Stunden voraus (wird nicht neu gesetzt)')
         e['probleme'] += pflichtfelder(p)
+        if NUR_VIDEOS and not any(ist_video(u) for u in (p.get('media') or [])):
+            e['probleme'].append('kein Video: nur noch Videos (Besitzer 16.11.)')
         text = p['text']
         if 'instagram' in netze:
             text, entfernt = kuerze_hashtags(text, 5)
@@ -381,6 +388,8 @@ def plane_lauf(planer, produkte, jetzt, horizont_tage=10, max_je_lauf=12, medien
                 e['probleme'].append('Medium nicht erreichbar: ' + url[-40:])
         if 'tiktok' in netze and not (p.get('tiktokData') or {}).get('commercialContentOwnBrand'):
             e['fixes'].append('TikTok: Eigenwerbung gesetzt')
+        if 'tiktok' in netze and (p.get('tiktokData') or {}).get('autoAddMusic'):
+            e['fixes'].append('TikTok: Bibliotheks-Sound aus')
         if e['probleme']:
             continue
         nachbarn = [x for v in vorlaeufig.values() for x in v]

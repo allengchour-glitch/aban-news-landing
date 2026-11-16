@@ -7,22 +7,9 @@
 # Beispiel (auskommentiert):
 # 3f2a9c1e-0000-0000-0000-000000000000   # Codex 10.11.: Rechte am Quellvideo unklar
 # Besitzer 10.11. ca. 17:55 UTC zu den Reels Hacker und Haussocken: «musik ist scheisse». Entwürfe des Hacker-Reels halten, bis die Musik entschieden ist (SHARED-MEMORY.md):
-4659816415037836014    # Claude 10.11.: Hacker-Reel IG+FB 18.11. 10:00, Musik vom Besitzer abgelehnt
--8339089096074181290   # Claude 10.11.: Hacker-Reel Threads 18.11. 11:00, Musik vom Besitzer abgelehnt
--8305910546945982140   # Claude 10.11.: Hacker-Reel TikTok 18.11. 12:00, Musik vom Besitzer abgelehnt
--3731207601091163105   # Claude 10.11.: Hacker-Reel YouTube-Short 18.11. 18:00, Musik vom Besitzer abgelehnt
 # Besitzer 16.11. ca. 08:40 UTC (Frage von Claude): Hobel- und Sternenlicht-Entwürfe hat er selbst zurückgestellt, «zurückhalten».
--7002936161864562103   # Besitzer 16.11.: Hobel-Short YouTube 17.11. 13:00, selbst auf Entwurf gestellt
-2172266762404316928    # Besitzer 16.11.: Hobel TikTok 17.11. 13:00, selbst auf Entwurf gestellt
-3963843144054620883    # Besitzer 16.11.: Hobel-Reel IG+FB 17.11. 20:00, selbst auf Entwurf gestellt
-4156060813550767248    # Besitzer 16.11.: Sternenlicht-Reel Instagram 16.11. 19:00, selbst auf Entwurf gestellt
-6680239273933357186    # Besitzer 16.11.: Sternenlicht-Reel Facebook 16.11. 19:00, selbst auf Entwurf gestellt
-3614365779669041576    # Besitzer 16.11.: Sternenlicht TikTok 17.11. 19:00, selbst auf Entwurf gestellt
--7647174116509334899   # Besitzer 16.11.: Sternenlicht-Short YouTube 19.11. 19:00, selbst auf Entwurf gestellt
 # Besitzer 16.11.: drei Videos, am 15.11. direkt mit autoPublish angelegt, «anhalten, erst prüfen» (Ton, Produkt, Preis). Claude stellt sie auf Entwurf und entfernt die Zeilen erst nach der Prüfung.
 -1463494076488727798   # Besitzer 16.11.: «3 Ideen für Hund und Katze» TikTok+YouTube 16.11. 18:30, Prüfung offen
--3668679867663038577   # Besitzer 16.11.: Medizin-Box-Short YouTube 17.11. 18:30, Prüfung offen
-733493005328404096     # Besitzer 16.11.: Wasserwellen-Wiederholung TikTok 19.11. 19:30, Prüfung offen
 # Besitzer 16.11.: «nur noch Videos», keine neuen Fotos oder Karussells mehr.
 2242731246724795766    # Besitzer 16.11.: Krallenschleifer-Foto Instagram 16.11. 14:00 (Entwurf vom 15.11., Foto statt Video)
 # Claude 16.11. ca. 11:10 UTC (Messung Social-Pflege): 15 Foto-Entwürfe 25.–28.11. vom 10.11. Nach «nur noch Videos» (Besitzer 16.11.) nicht einplanen; die TikTok-Fassungen tragen zudem autoAddMusic. Wie Krallenschleifer: halten, bis der Besitzer anders entscheidet.
@@ -41,3 +28,5 @@
 -2282068295365802712   # Claude 16.11.: Girlande IG+FB 28.11. 17:00, Foto statt Video
 -4022261660474847401   # Claude 16.11.: Girlande TikTok 28.11. 18:00, Foto statt Video, autoAddMusic
 -2369369075505934881   # Claude 16.11.: Girlande Pinterest 28.11. 20:00, Foto statt Video
+# Besitzer 16.11. ca. 11:20 UTC (gezielte Frage von Claude): Hobel «Freigeben»; Sternenlicht, Knoblauch-Hacker, Medizin-Box und Wasserwellen «Ton weg, einplanen».
+# Claude hat die Musik entfernt (nur Tonspur ersetzt, Bild bytegleich, −91 dB) und die 13 Zeilen gelöscht. «3 Ideen» bleibt bis zu den neuen Einblendungen von Codex (Paket B).

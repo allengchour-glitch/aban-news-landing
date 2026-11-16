@@ -36,7 +36,8 @@ PRODUKTE = [
     prod('LED Tulpen-Planet Nachtlicht für Tisch', 'led-tulpen-planet-nachtlicht-fur-tisch-618400', [28.9]),
     prod('Kristallspitzen-Set 8-teilig in Holzbox', 'kristallspitzen-set-8-teilig-holzbox', [29.9]),
     prod('Haarspange Keks', 'schokoladen-ohrring-haarstecker-609700', [15.9]),
-    prod('Plüsch Hochlandrind', 'plusch-hochlandrind-fga59641', [35.9], tracks=True, inv=0),     # ausverkauft
+    prod('Plüsch Hochlandrind', 'plusch-hochlandrind-fga59641', [35.9], tracks=True, inv=0, avail=False),     # ausverkauft
+    prod('LED Wasserwellen Projektionsleuchte', 'led-wasserwellen-projektionsleuchte-677504', [28.9, 29.9], tracks=True, inv=0),  # Bestand 0, aber Nachbestellung: kaufbar
 ]
 
 # ---- Bausteine
@@ -79,7 +80,9 @@ ok(any('bis CHF 15' in x for x in pp), 'Obergrenze verletzt')
 pp, _ = m.pruefe_produkte('Plüsch Panda: Geschenk unter CHF 20', PRODUKTE)
 gl(pp, [], 'Obergrenze eingehalten')
 pp, _ = m.pruefe_produkte('Plüsch Hochlandrind, 25 cm · CHF 35.90', PRODUKTE)
-ok(any('ausverkauft' in x for x in pp), 'getrackter Bestand 0 = ausverkauft')
+ok(any('ausverkauft' in x for x in pp), 'getrackter Bestand 0 und keine kaufbare Ausführung = ausverkauft')
+pp, _ = m.pruefe_produkte('Licht wie Wasserwellen: die LED Wasserwellen Projektionsleuchte', PRODUKTE)
+gl(pp, [], 'Bestand 0, aber kaufbare Ausführungen (Nachbestellung) = nicht ausverkauft (Lehre 03.11., Fall Wasserwellen 16.11.)')
 pp, _ = m.pruefe_produkte('Schöne Dinge für dich', PRODUKTE)
 ok(any('nicht erkannt' in x for x in pp), 'kein Produkt = Entwurf bleibt')
 pp, _ = m.pruefe_produkte('Plüsch Panda · CHF 19.90', [dict(PRODUKTE[1], status='DRAFT')])
@@ -140,6 +143,9 @@ gl(b['draft'], False, 'kein Entwurf mehr'); gl(b['autoPublish'], True, 'autoPubl
 gl(b['publicationDate'], {'dateTime': '2026-11-11T09:00:00', 'timezone': 'Europe/Zurich'}, 'Datum im Planerformat')
 ok('twitterData' not in b and 'uuid' not in b and 'id' not in b, 'keine fremden Felder')
 gl(b['tiktokData']['commercialContentOwnBrand'], True, 'TikTok-Eigenwerbung gesetzt')
+b3 = m.baue_put(post(9, '2026-11-11T10:00', ['tiktok'], 'Text', tiktokData={'title': 'T', 'autoAddMusic': True, 'commercialContentOwnBrand': True}), D('2026-11-11T10:00'), 'Text')
+gl(b3['tiktokData']['autoAddMusic'], False, 'TikTok-Bibliotheks-Sound wird ausgeschaltet (Besitzer 16.11.)')
+gl(b3['tiktokData']['title'], 'T', 'übrige TikTok-Felder bleiben')
 b2 = m.baue_put(post(8, '2026-11-11T10:00', ['facebook', 'instagram'], 'T'), D('2026-11-11T10:00'), 'T')
 gl(b2['instagramData']['autoPublish'], True, 'Instagram-autoPublish'); gl(b2['facebookData']['type'], 'REEL', 'Facebook-Daten bleiben')
 gl([p['network'] for p in b2['providers']], ['facebook', 'instagram'], 'Netzwerke ohne Status')
@@ -319,5 +325,22 @@ finally:
         if v is not None:
             os.environ[k] = v
 
+
+# ---- Besitzer 16.11.: nur noch Videos, kein TikTok-Sound
+e7 = {x['id']: x for x in m.plane_lauf([
+    post(1, '2026-11-10T21:00', ['tiktok'], 'Plüsch Panda, 15 cm · CHF 19.90', media=('https://x.test/a.jpeg', 'https://x.test/b.png')),
+    post(2, '2026-11-10T21:00', ['instagram', 'facebook'], 'Plüsch Waschbär · CHF 20.90', media=('https://x.test/c.mp4?v=3',)),
+    post(3, '2026-11-11T21:00', ['tiktok'], 'Plüsch Waschbär · CHF 20.90', tiktokData={'title': 'T', 'autoAddMusic': True}),
+    post(4, '2026-11-12T21:00', ['threads'], 'Plüsch Waschbär · CHF 20.90', media=('https://x.test/d.mp4', 'https://x.test/e.jpeg')),
+], PRODUKTE, JETZT, medien_ok=lambda u: True)}
+ok(not e7[1]['ok'] and any('nur noch Videos' in x for x in e7[1]['probleme']), 'Foto-Entwurf bleibt Entwurf (nur noch Videos)')
+ok(e7[2]['ok'], 'Video-Entwurf wird frei')
+ok(e7[4]['ok'], 'Video mit Zusatzbild zählt als Video-Beitrag')
+ok(e7[3]['ok'] and any('Bibliotheks-Sound aus' in f for f in e7[3]['fixes']), 'TikTok mit Sound: frei, Sound wird ausgeschaltet und gemeldet')
+ok(not any('Bibliotheks-Sound' in f for f in e7[2]['fixes']), 'ohne TikTok keine Sound-Meldung')
+_alt = m.NUR_VIDEOS; m.NUR_VIDEOS = False
+e8 = {x['id']: x for x in m.plane_lauf([post(1, '2026-11-10T21:00', ['tiktok'], 'Plüsch Panda, 15 cm · CHF 19.90', media=('https://x.test/a.jpeg',))], PRODUKTE, JETZT, medien_ok=lambda u: True)}
+m.NUR_VIDEOS = _alt
+ok(e8[1]['ok'], 'NUR_VIDEOS=0 schaltet das Tor ab')
 
 print(f'metricool_freigabe_test.py: {n} Prüfungen bestanden')
