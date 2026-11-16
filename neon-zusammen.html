@@ -93,6 +93,21 @@
   @media(max-height:700px) and (max-width:650px) and (orientation:portrait){#objective{top:155px;bottom:auto}#checkpoint{top:272px}#hint{bottom:193px}#announce{top:44%;font-size:17px}}
   @media(max-height:500px) and (pointer:coarse) and (orientation:landscape){#objective{left:50%;transform:translateX(-50%);width:calc(100vw - 340px);max-width:350px;bottom:24px;padding:8px 10px}#objectiveTitle{font-size:10px}.task-pair>div,.task-pair b,#teamTask{font-size:10px}#hint{bottom:158px}#announce{font-size:18px;top:30%}}
 
+  /* Meldungen bleiben in der Aufgabenkarte, die Spielfiguren bleiben frei. */
+  #objective.show-hint #teamTask,#objective.announcing #objectiveTitle{display:none}
+  #hint{position:static;left:auto;bottom:auto;transform:none;width:auto;max-width:none;margin:7px 0 0;padding:7px 0 0;border:0;border-top:1px solid #3c5245;border-radius:0;background:none;font-size:10px;line-height:1.5;text-align:left;transition:none}
+  #announce{position:static;top:auto;left:auto;right:auto;font-size:11px;line-height:1.4;text-align:left;text-shadow:none;margin:0 0 7px}
+  #hint[hidden],#announce[hidden]{display:none}
+  @media(max-height:700px) and (max-width:650px) and (orientation:portrait){#checkpoint{width:1px;height:1px;padding:0;border:0;overflow:hidden;clip-path:inset(50%)}}
+  @media(max-height:500px) and (pointer:coarse) and (orientation:landscape){
+    #roomTag{top:12px;left:50%;transform:translateX(-50%);font-size:10px;max-width:calc(100vw - 290px);padding:6px 8px}
+    #coopTag{top:44px;left:50%;transform:translateX(-50%);font-size:9px}
+    #journey{top:70px;width:min(300px,calc(100vw - 400px))}#journey span{font-size:9px;padding:4px 3px}
+    #checkpoint{top:98px;font-size:9px}
+    #objective{top:56px;left:12px;bottom:auto;transform:none;width:clamp(180px,27vw,230px);max-height:calc(100dvh - 216px);overflow-y:auto;pointer-events:auto;padding:8px 10px}
+    #announce,#hint,.task-pair>div,.task-pair b{font-size:9px;line-height:1.4}
+  }
+
 </style>
 </head>
 <body>
@@ -101,10 +116,10 @@
   <div id="roomTag">🤝 Raum 1 · Die zwei Platten</div>
   <div id="coopTag">🧍 Solo: 🔁 wechselt die Figur</div>
   <nav id="journey" aria-label="Kammerfortschritt"><span>1 <b>Platten</b></span><span>2 <b>Elemente</b></span><span>3 <b>Gleichklang</b></span><span>4 <b>Wächter</b></span></nav>
-  <section id="objective" aria-label="Eure Aufgaben"><div id="objectiveTitle"></div><div class="task-pair"><div id="emberTask"></div><div id="aquaTask"></div></div><div id="teamTask"></div></section>
+  <section id="objective" aria-label="Eure Aufgaben"><div id="objectiveTitle"></div><div id="announce" role="status" hidden></div><div class="task-pair"><div id="emberTask"></div><div id="aquaTask"></div></div><div id="teamTask"></div><div id="hint" role="status" hidden></div></section>
   <div id="checkpoint" role="status" aria-live="polite"></div>
   <div id="playerEmber" class="player-label">🔥 Ember <small></small></div><div id="playerAqua" class="player-label">💧 Aqua <small></small></div>
-  <div id="announce" role="status"></div><div id="hint" role="status"></div><div id="keyboardHelp">WASD / ↑↓←→ bewegen · E Aktion · Q Wechsel · Esc Pause</div>
+  <div id="keyboardHelp">WASD / ↑↓←→ bewegen · E Aktion · Q Wechsel · Esc Pause</div>
   <button class="btn" id="bAct" aria-label="Aktion (E)"><span>✋</span><small id="actionText">Aktion</small></button>
   <button class="btn" id="bSwap" aria-label="Figur wechseln (Q)"><span>⇄</span><small>Wechsel</small></button>
   <button type="button" aria-label="Partner rufen" class="btn" id="bPing" style="display:none;right:calc(112px + env(safe-area-inset-right));bottom:calc(112px + env(safe-area-inset-bottom));width:64px;height:64px;border-color:#7dffc8;color:#d6fff0;font-size:1.3rem"><span>📣</span><small>Rufen</small></button>
@@ -153,7 +168,7 @@
 <script src="/js/vendor/three.min.js"></script>
 <script src="/js/tempel-zwei/world.js"></script>
 <script src="/js/tempel-zwei/heroes.js"></script>
-<script src="/js/tempel-zwei/props.js"></script>
+<script src="/js/tempel-zwei/props.js?v=a963faa848f8"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script src="/js/mp.js"></script>
 <script>
@@ -269,7 +284,7 @@ var guard=new THREE.Group();guard.position.set(GX,0,GZ);scene.add(guard);
     r.rotation.x=Math.PI/2;r.position.y=1.1+k*0.95;guard.add(r);}   /* gleiche Radien: Saeule, kein Tannenbaum */
   var hd=new THREE.Mesh(new THREE.CylinderGeometry(1.25,1.05,1.15,8),M(0x7a7a6e,0x2a2a1e,0.2));hd.position.y=4.35;guard.add(hd);
   var kr=new THREE.Mesh(new THREE.TorusGeometry(1.18,0.12,6,16),M(0x8a7040,0x4a3410,0.5));kr.rotation.x=Math.PI/2;kr.position.y=4.92;guard.add(kr);
-  walls.push({x:GX,z:GZ,w:1.1,d:1.1,m:pil});   /* Waechter ist solide - man laeuft nicht durch ihn hindurch */
+  walls.push({x:GX,z:GZ,r:2.1,m:pil});   /* Runder Sockel: Kollisionsradius folgt der sichtbaren Steinbasis. */
 })();
 var pivot=new THREE.Group();pivot.position.y=4.35;guard.add(pivot);
 /* Auge sitzt IM Pivot -> es schaut immer den Strahl entlang */
@@ -317,6 +332,9 @@ var chars=[
   {g:mkChar(true),x:2,z:2,name:"💧 Aqua",id:"aqua",hitCd:0}
 ];
 window.TempleProps(THREE,scene,{gates:gates,plateA:plateA,plateB:plateB,vines:vines,plantPot:plantPot,plant:plant,lever:lever,lever2:lever2,syncA:syncA,syncB:syncB,guard:guard,pivot:pivot,eye:eye,lid:lid,beam:beam,beamFloor:beamFloor,shads:shads,altF:altF,altW:altW,altFlame:altFlame,altWater:altWater,podium:podium,torches:torches});
+/* Nur die Darstellung folgt erhöhten Platten; Netzwerk/Bewegung bleiben zweidimensional. */
+var walkSurfaces=[plateA,plateB,shadA,shadB,shadC,podium].map(function(o){var p=o.geometry.parameters;return {x:o.position.x,z:o.position.z,r:p.radiusTop,y:o.position.y+p.height/2};});
+function supportHeight(x,z){var y=0;for(var i=0;i<walkSurfaces.length;i++){var s=walkSurfaces[i],d=Math.hypot(x-s.x,z-s.z);y=Math.max(y,s.y*Math.max(0,Math.min(1,(s.r+.2-d)/.3)));}return y;}
 var active=0,gemN=0,room=1,running=false,won=false,t0=0,taughtHalf=false,stuck1=0;
 var lookFx=0,lookFz=2; /* #16 geglätteter Kamera-Blickpunkt (Start = Figuren-Mitte) */
 var _pOnA=false,_pOnB=false,_blWas=false; /* #29 Platten-Flankenerkennung · _blWas = Waechter war im letzten Frame geblendet */
@@ -372,8 +390,8 @@ targetMark(-6,-52,"▼ EMBER · 3, 2, 1",2,"#ffd0a5");targetMark(6,-52,"▼ AQUA
 targetMark(-7.6,-68.5,"▼ BLICK BINDEN",3,"#debdff");targetMark(7.6,-68.5,"▼ BLICK BINDEN",3,"#debdff");targetMark(0,-80.5,"▼ PLATTE ZUM TAUSCHEN",3,"#debdff");
 targetMark(-7,-82,"▼ FEUERALTAR",3,"#ffd0a5");targetMark(7,-82,"▼ WASSERALTAR",3,"#bae7f5");targetMark(0,-94,"▼ GEMEINSAM ANKOMMEN",4,"#d1f4d7");
 var annT=0;
-function announce(t,c){var a=document.getElementById("announce");a.textContent=t;a.style.color=c||"#ffd166";a.style.opacity=1;annT=2.6;}
-function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||3200);}
+function announce(t,c){var a=document.getElementById("announce");a.textContent=t;a.style.color=c||"#ffd166";a.style.opacity=1;a.hidden=false;document.getElementById("objective").classList.add("announcing");annT=2.6;}
+function hint(t,ms){var h=document.getElementById("hint"),card=document.getElementById("objective");h.textContent=t;h.style.opacity=1;h.hidden=false;card.classList.add("show-hint");clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;h.hidden=true;card.classList.remove("show-hint");},ms||3200);}
 function pulseHud(){var g=document.getElementById("gems");g.classList.remove("pulse");void g.offsetWidth;g.classList.add("pulse");} /* #52 HUD-Counter-Puls */
 function updHud(){document.getElementById("gems").textContent="💎 "+gemN;
   var names=["🤝 Raum 1 · Die zwei Platten","🔥💧 Raum 2 · Feuer & Wasser","⚡ Raum 3 · Der Gleichklang","👁️ Raum 4 · Das Auge des Wächters","🏆 Geschafft!"];
@@ -567,7 +585,7 @@ document.getElementById("cancelCoop").onclick=function(){ /* #14 Suche abbrechen
   document.getElementById("coopStatus").textContent="";document.getElementById("startBtn").style.display="block";};
 
 /* ---------- Spiel-Logik ---------- */
-function blocked(x,z){for(var i=0;i<walls.length;i++){var w=walls[i];if(Math.abs(x-w.x)<w.w+0.42&&Math.abs(z-w.z)<w.d+0.42)return true;}
+function blocked(x,z){for(var i=0;i<walls.length;i++){var w=walls[i];if(w.r?Math.hypot(x-w.x,z-w.z)<w.r+0.42:Math.abs(x-w.x)<w.w+0.42&&Math.abs(z-w.z)<w.d+0.42)return true;}
   return x<-9.6||x>9.6||z>5.8||z<-95;}
 function tryMove(c,nx,nz){ /* achsengetrennt: an Wänden entlanggleiten statt kleben */
   if(!blocked(nx,c.z))c.x=nx;
@@ -653,7 +671,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     for(var ci=0;ci<2;ci++){var c=chars[ci];
       var moved=Math.hypot(c.x-c.g.position.x,c.z-c.g.position.z)>.003;
       if(NETON&&ci!==mySlot&&moved)c.g.rotation.y=Math.atan2(c.x-c.g.position.x,c.z-c.g.position.z);
-      c.g.position.set(c.x,0,c.z);window.TempleHeroes.animate(c.g,t,dt,moved,reducedMotion);
+      c.g.position.set(c.x,supportHeight(c.x,c.z),c.z);window.TempleHeroes.animate(c.g,t,dt,moved,reducedMotion);
       for(var g2=0;g2<gems.length;g2++){var gg=gems[g2];if(gg.got)continue;
         if((!NETON||ci===mySlot)&&Math.hypot(c.x-gg.x,c.z-gg.z)<1.0)collectGem(g2,false);}}
     /* Raum 1: beide Platten gleichzeitig */
@@ -741,7 +759,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     partnerArrow();playerLabels();objectiveT-=dt;if(objectiveT<=0){objectiveT=.15;updObjectives();} /* 7 HUD-Aktualisierungen/s reichen. */
   } else if(won&&celebrate){ /* #15 Sieg-Feier: Figuren hüpfen, Kamera läuft weiter */
     celebrate+=dt;
-    for(var _cj=0;_cj<2;_cj++){var _cc=chars[_cj];_cc.g.position.y=Math.max(0,Math.abs(Math.sin(t*4+_cj*0.6))*0.5);_cc.g.rotation.y+=dt*2.2;}
+    for(var _cj=0;_cj<2;_cj++){var _cc=chars[_cj];_cc.g.position.y=supportHeight(_cc.x,_cc.z)+Math.max(0,Math.abs(Math.sin(t*4+_cj*0.6))*0.5);_cc.g.rotation.y+=dt*2.2;}
     _cbSpk-=dt;if(_cbSpk<=0){_cbSpk=0.28;var _sc=chars[(Math.random()*2)|0];spark(_sc.x,1.4,_sc.z,[0x7dffc8,0xffd166,0xff9a60,0x60c8ff][(Math.random()*4)|0],10);}
     var _fx2=(chars[0].x+chars[1].x)/2,_fz2=(chars[0].z+chars[1].z)/2;
     camera.position.x+=(_fx2-camera.position.x)*Math.min(1,dt*2);
@@ -750,7 +768,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
     lookFx+=(_fx2-lookFx)*Math.min(1,dt*3);lookFz+=(_fz2-lookFz)*Math.min(1,dt*3);
     camera.lookAt(lookFx,1.0,lookFz-1);
   }
-  if(annT>0){annT-=dt;if(annT<=0)document.getElementById("announce").style.opacity=0;}
+  if(annT>0){annT-=dt;if(annT<=0){document.getElementById("announce").style.opacity=0;document.getElementById("announce").hidden=true;document.getElementById("objective").classList.remove("announcing");}}
   renderer.render(scene,camera);}
 _rafId=requestAnimationFrame(frame);
 addEventListener("pagehide",function(){try{cancelAnimationFrame(_rafId);}catch(e){}try{stopAmbient();}catch(e){}try{if(net)net.close();}catch(e){}try{if(AC&&AC.close)AC.close();}catch(e){}try{renderer.dispose();}catch(e){}}); /* sauberes Teardown */

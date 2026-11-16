@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Tempel der Zwei: Grafikdurchgang und Detailkorrekturen ·16.11.2026
+
+Auf Benutzerauftrag Grafik geprüft:20 Kammeransichten in fünf Formaten; Höhen von Figuren/Ringen, verdeckende Hinweise auf kleinen Handys, versunkene Schalterzeichen und durchgehbarer Wächtersockel bestätigt und korrigiert.40 Grafikbedingungen vorher20/nachher0 Fehlschläge,33 Koop- und22 Solo-/UI-Prüfungen erneut grün. Kreisförmiger Sockelkontakt mit echtem W nachgestellt; Siegesanimation bleibt über dem Podest. Cloud-Framezeiten und Zeichenaufwand unverändert, keine physische Handy-Zusage. Der geänderte Grafikloader trägt einen Inhalts-Hash wegen vorheriger vierstündiger Browsercachezeit. Details/Belege: spiele-dev/tempel-zwei/GRAFIK-CHECK.md. Lokale Shop-CI startet wegen schreibgeschütztem HOME nicht; keine Umgehung. Reale PR-Prüfung, Hauptseitenlauf und HTTPS-Nachweis separat. Kein Eingriff in Shop/Social/Secrets.
+
+
 ## Tempel der Zwei: überarbeitete Spielgrafik ·16.11.2026
 
 Neue prozedurale Architektur, eigene animierte Elementarwächter und gestaltete Requisiten in neon-zusammen.html und js/tempel-zwei/. Keine Änderung an Backend, Netzprotokoll, Shop oder Social. GEMESSEN:33 Koop- und22 Solo-/UI-Prüfungen grün; echte Zweiclient-Tastaturaufnahme des ersten Siegels, keine Positionsfixtures darin. Vier Kammeransichten geprüft; abgeschnittenes Aqua-Namensschild im Hochformat korrigiert. Software-Probe29,8→28,6rAF/s bei gleichem Renderverhältnis0,55, Median33,3ms und95.Perzentil≈50ms; keine Beschleunigung oder reale Handy-Leistung behauptet. Quellen und Grenzen: spiele-dev/tempel-zwei/GRAFIK.md. Laufender Benutzerauftrag erlaubt Veröffentlichung; tatsächlicher Live-Nachweis erfolgt separat nach grünem Hauptseitenlauf und HTTPS-Quellenvergleich.

@@ -218,13 +218,14 @@
       ornament(o, function (b) {
         b.cyl(stone, 0, -0.78, 0, 0.94, 1.03, 0.24, 8);
         b.cyl(copper, 0, 0.83, 0, 0.75, 0.68, 0.16, 8);
-        b.torus(copper, 0, 0.3, 0.59, 0.34, 0.045, 0);
-        b.box(dark, 0, 0.3, 0.58, 0.55, 0.65, 0.04);
+        // Frontzeichen vor die nach unten breiter werdende Säule setzen.
+        b.torus(copper, 0, 0.3, 0.71, 0.34, 0.045, 0);
+        b.box(dark, 0, 0.3, 0.58, 0.55, 0.65, 0.28);
         b.box(
           i ? 0x8ae9f3 : 0xffb86a,
           0,
           0.3,
-          0.62,
+          0.74,
           0.26,
           0.34,
           0.05,
