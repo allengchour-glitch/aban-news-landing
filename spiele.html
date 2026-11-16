@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>aban Arcade — kostenlose 3D-Browser-Games &amp; tägliche Rätsel</title>
-<meta name="description" content="Aban Arcade: kostenlose Browser-Games — Neon Wildnis (offene 3D-Welt), Lebenspfad (Brettspiel-Koop), Dungeon, Traumhaus u.v.m. Ohne Download, mit Online-Koop.">
+<title>Traumhaus &amp; mehr — aban Arcade</title>
+<meta name="description" content="Traumhaus ist das Hauptspiel der aban Arcade: baue dein Zuhause, entdecke die Stadt und spiele mit Freunden. Dazu Abenteuer, Minispiele und tägliche Rätsel.">
 <link rel="canonical" href="https://abannews.com/spiele.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="aban Arcade — kostenlose Neon-Browser-Games">
-<meta property="og:description" content="Zwei grosse Spielwelten: Lebenspfad (Brettspiel, Online-Koop, Voice-Chat) & Neon Wildnis (offene 3D-Welt mit 6 Stationen). Dazu tägliche Rätsel. Gratis im Browser.">
+<meta property="og:title" content="Traumhaus &amp; mehr — aban Arcade">
+<meta property="og:description" content="Deine Stadt. Dein Zuhause. Traumhaus ist unser Hauptspiel – mit Bauen, Stadtleben und Online-Koop. Entdecke auch die weiteren Spiele der aban Arcade.">
 <meta property="og:url" content="https://abannews.com/spiele.html">
-<meta property="og:image" content="https://abannews.com/og-arcade.jpg">
-<meta name="twitter:image" content="https://abannews.com/og-arcade.jpg">
+<meta property="og:image" content="https://abannews.com/assets/traumhaus/stadt-v1.webp">
+<meta name="twitter:image" content="https://abannews.com/assets/traumhaus/stadt-v1.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#06070f">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -112,6 +112,25 @@ body{background:#06070f;color:#eaf0ff;font-family:system-ui,-apple-system,Segoe 
 .cta a{display:inline-block;margin-top:14px;background:linear-gradient(92deg,#ff7ad9,#ff9a4a);color:#1a0a20;text-decoration:none;font-weight:900;padding:12px 26px;border-radius:14px;box-shadow:0 8px 30px rgba(255,110,199,.35)}
 footer{border-top:1px solid rgba(120,140,255,.14);text-align:center;padding:22px 16px;color:#8b93b8;font-size:.85rem;max-width:1080px;margin:40px auto 0}
 footer a{color:var(--purple);text-decoration:none}
+
+/* Traumhaus ist der zentrale Einstieg; die weiteren Welten bleiben erreichbar. */
+.bg{background:linear-gradient(160deg,#091612,#11251e 50%,#121d22)}
+.bg .sun,.bg .grid,.bg .glowline{display:none}
+.hero{padding-top:30px}.hero h1{background:none;color:#f2eddd;font-family:Georgia,serif;font-weight:500;font-size:clamp(2.7rem,7vw,4.7rem);line-height:1.08;letter-spacing:-.04em;filter:none}
+.hero .kick{color:#a6bd9b}.hero p{color:#c3cfbf;max-width:620px}
+.main-game-grid{margin-top:18px}.card.main-game{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:28px;padding:28px;background:#f3f0e6;border:0;color:#263d30;box-shadow:0 16px 60px #0003}
+.card.main-game::before{display:none}.card.main-game:hover{transform:translateY(-3px);box-shadow:0 20px 65px #0005}.main-game-body{min-width:0}
+.card.main-game h2{font:500 clamp(2rem,4vw,3.1rem)/1.1 Georgia,serif;color:#264331;letter-spacing:-.035em;margin:8px 0 14px}
+.card.main-game p{color:#526451;font-size:.96rem;line-height:1.65}.card.main-game .tag{margin-top:0;color:#4d684d;background:#e4e9dc;border-color:#c9d4be;letter-spacing:.1em}
+.card.main-game .feats{gap:6px}.card.main-game .feats li{color:#50624c;border-color:#d4dacb;background:#eceee3;font-size:.73rem;padding:5px 8px}
+.card.main-game .play{background:#315a43;color:#fffaf0;box-shadow:none;min-height:48px;padding:12px 22px;border-radius:10px}
+.card.main-game small{display:block;color:#6c7664;font-size:.7rem;line-height:1.6;margin-top:12px}.card.main-game img{display:block;width:100%;height:auto;aspect-ratio:11/7;object-fit:cover;border-radius:10px}
+.card.main-game:focus-visible{outline:3px solid #d4b475;outline-offset:5px}
+@media(max-width:700px){.card.main-game{grid-template-columns:1fr;gap:22px;padding:22px}.hero{padding-top:20px}.card.main-game img{order:2}.main-game-body{order:1}}
+
+
+.hero-start{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:48px;margin-top:22px;padding:12px 24px;border-radius:10px;background:#b4c79c;color:#20362a;text-decoration:none;font-weight:800}
+.hero-start:hover{background:#c4d4af}.hero-start:focus-visible{outline:3px solid #e7d49f;outline-offset:5px}
 </style>
 </head>
 <body>
@@ -125,8 +144,9 @@ footer a{color:var(--purple);text-decoration:none}
 <div class="wrap">
   <div class="hero">
     <div class="kick">aban arcade</div>
-    <h1>🕹️ ABAN ARCADE</h1>
-    <p>Zwei grosse Spielwelten — das Brettspiel <b>Lebenspfad</b> und die offene 3D-Welt <b>Neon Wildnis</b> — plus Traumhaus, Minispiele &amp; tägliche Rätsel. Kein Download, 1 Tap und du spielst.</p>
+    <h1>Deine Stadt wartet.</h1>
+    <p>Unser Hauptspiel <b>Traumhaus</b>: Baue dein Zuhause, entdecke die Stadt und gestalte das Leben von Max &amp; Mia. Allein oder zusammen mit einem Freund.</p>
+    <a class="hero-start" href="/traumhaus.html" data-game-name="Traumhaus">Traumhaus spielen <span aria-hidden="true">→</span></a>
   </div>
 
   <div id="contBar" style="display:none;margin:10px 0;padding:12px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(106,255,192,.14),rgba(94,242,255,.10));border:1px solid rgba(106,255,192,.35);text-align:center">
@@ -143,11 +163,28 @@ footer a{color:var(--purple);text-decoration:none}
     document.addEventListener("click",function(ev){
       var a=ev.target&&ev.target.closest?ev.target.closest("a"):null;if(!a||a.id==="contLink")return; /* 🩹 eigener Link zählt nicht (sonst „▶ Weiterspielen:"-Präfix-Schneeball) */
       var h=a.getAttribute("href")||"";if(!/^\/?(neon-|lebenspfad|traumhaus)/.test(h))return;
-      var nm=(a.querySelector("h2,h3,b,strong")||{}).textContent||a.textContent||"Spiel";
+      var nm=a.getAttribute("data-game-name")||(a.querySelector("h2,h3,b,strong")||{}).textContent||a.textContent||"Spiel";
       try{localStorage.setItem("aban_last_game",JSON.stringify({href:h,name:nm.trim().slice(0,40)}));}catch(e){}
     },true);
   })();
   </script>
+
+
+
+  <h2 class="sect">Unser Hauptspiel</h2>
+  <div class="grid-games main-game-grid">
+    <a class="card main-game" href="/traumhaus.html" style="--c:#9db78a">
+      <div class="main-game-body">
+        <span class="tag">Hauptspiel · Stadtleben &amp; Bauen</span>
+        <h2>Traumhaus</h2>
+        <p>Dein Zuhause in einer lebendigen Stadt. Richte Räume ein, erkunde die Quartiere und begleite Max &amp; Mia durch ihren Alltag.</p>
+        <ul class="feats"><li>Haus bauen &amp; einrichten</li><li>Die Stadt entdecken</li><li>Solo oder Online-Koop</li></ul>
+        <span class="play" id="traumhausStart">Stadt betreten</span>
+        <small>Gratis im Browser · Ab 18 · Spielstand wird automatisch gespeichert</small>
+      </div>
+      <img src="/assets/traumhaus/stadt-v1.webp" alt="Geschäfts- und Wohnhäuser mit breiten Gehwegen, Bäumen und Passanten in Traumhaus" width="1100" height="700" fetchpriority="high" decoding="async">
+    </a>
+  </div>
 
   <div class="pbar">
     <button class="pname" id="pName" type="button">👤 Namen wählen</button>
@@ -155,7 +192,7 @@ footer a{color:var(--purple);text-decoration:none}
     <div class="chips" id="chips" aria-label="Deine Rekorde"></div>
   </div>
 
-  <h2 class="sect">Die zwei grossen Welten</h2>
+  <h2 class="sect">Weitere Spielwelten</h2>
   <div class="grid-games">
     <a class="card feat" href="/lebenspfad.html" style="--c:#ffcf6e">
       <div class="emo">🎲</div>
@@ -224,13 +261,7 @@ footer a{color:var(--purple);text-decoration:none}
       <span class="play">Tempel öffnen</span>
     </a>
 
-    <a class="card" href="/traumhaus.html" style="--c:#ff9a6e">
-      <div class="emo">🏡</div>
-      <span class="tag">Simulation · Bauen · 🌐 Online-Koop</span>
-      <h2>Traumhaus</h2>
-      <p>Sims-Style Bau-Simulation: <b>Wände, Böden, Möbel</b> von Küche bis Pool, Bewohner <b>Max &amp; Mia</b> mit Bedürfnissen, <b>Arbeit, Liebe → Hochzeit → Kinder</b>, Familienhund und Tag/Nacht — im Online-Koop baut ihr <b>zusammen am selben Haus</b> (Raum-Code!).</p>
-      <span class="play">Bauen</span>
-    </a>
+
 
     <a class="card" href="/minispiele/" style="--c:#5ef2ff">
       <div class="emo">🎮</div>
@@ -285,6 +316,9 @@ footer a{color:var(--purple);text-decoration:none}
 <script src="/js/arcade.js"></script>
 <script>
 (function(){
+  try{var stadtStand=JSON.parse(localStorage.getItem("th_save1")||"null");
+    if(stadtStand&&typeof stadtStand.gw==="number"&&stadtStand.walls)document.getElementById("traumhausStart").textContent="Deine Stadt weiterspielen";
+  }catch(e){}
   var GAMES_TOTAL=document.querySelectorAll("a.card").length; // Tatsächliche Spieleinstiege im Hub.
   function readBest(key,field){ // defensiv: nutzt AbanArcade, sonst Inline-Fallback
     if(window.AbanArcade)return AbanArcade.readBest(key,field);

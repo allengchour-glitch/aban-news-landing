@@ -19,12 +19,12 @@
 <link rel="apple-touch-icon" href="/icons/apple-touch-180.png">
 <meta name="theme-color" content="#241d15">
 <meta name="aban-nav" content="off"><!-- Vollbild-Spiel: keine Website-Navileiste (sonst frisst sie auf dem Handy den halben Screen) -->
-<title>Traumhaus — Bau-Simulation (Sims-Style, Online-Koop) | aban news</title>
+<title>Traumhaus — Deine Stadt, dein Zuhause | aban Arcade</title>
 <meta name="description" content="Traumhaus: baue dein Haus im Browser — Wände, Böden, echte 3D-Möbel, zwei Bewohner mit Bedürfnissen, Tag/Nacht, Romantik-Modus. Solo oder Online-Koop mit Raum-Code. Gratis, kein Download.">
 <link rel="canonical" href="https://abannews.com/traumhaus.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Traumhaus — Bau-Simulation mit Online-Koop">
-<meta property="og:image" content="https://abannews.com/og-arcade.jpg">
+<meta property="og:title" content="Traumhaus — Deine Stadt, dein Zuhause">
+<meta property="og:image" content="https://abannews.com/assets/traumhaus/stadt-v1.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:description" content="Baue dein Traumhaus: Wände, Möbel, Bewohner mit eigenem Kopf. Zusammen online bauen per Raum-Code.">
 <meta property="og:url" content="https://abannews.com/traumhaus.html">
@@ -592,7 +592,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
    <div class="start-eyebrow">TRAUMHAUS</div>
    <h2>Mach es zu deinem.</h2>
    <p class="start-sub">Dein nächstes Kapitel beginnt hier.</p>
-   <button class="btn" id="soloBtn">Mein Spiel starten <span aria-hidden="true">→</span></button>
+   <button class="btn" id="soloBtn"><span id="soloLabel">Mein Spiel starten</span> <span aria-hidden="true">→</span></button>
    <div id="ladeAnzeige" role="status" aria-live="polite">
     <div id="ladeBalken"><div id="ladeFuell"></div></div>
     <div id="ladeText">Deine Umgebung wird vorbereitet …</div>
@@ -19320,6 +19320,11 @@ function updTaxi(dt){
 
 // ===================== Start / Netz-Lobby =====================
 var SAVE="th_save1";
+try{var vorhandenerStand=JSON.parse(localStorage.getItem(SAVE)||"null");
+  if(vorhandenerStand&&typeof vorhandenerStand.gw==="number"&&vorhandenerStand.walls){
+    document.getElementById("soloLabel").textContent="Weiterspielen";
+    document.querySelector(".start-sub").textContent="Dein Zuhause wartet auf dich.";}
+}catch(e){}
 /* 🩹 Schwarm-6: Der Slot hing am LIVE-Wert von MPs. Verliess der Partner das
    Spiel (MPs=null bei running), schrieb der 6-s-Autosave den KOOP-Stand in den
    SOLO-Slot und zerstoerte den Solo-Spielstand. Slot wird jetzt beim Start
