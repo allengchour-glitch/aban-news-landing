@@ -19,12 +19,12 @@
 <link rel="apple-touch-icon" href="/icons/apple-touch-180.png">
 <meta name="theme-color" content="#241d15">
 <meta name="aban-nav" content="off"><!-- Vollbild-Spiel: keine Website-Navileiste (sonst frisst sie auf dem Handy den halben Screen) -->
-<title>Traumhaus — Bau-Simulation (Sims-Style, Online-Koop) | aban news</title>
+<title>Traumhaus — Deine Stadt, dein Zuhause | aban Arcade</title>
 <meta name="description" content="Traumhaus: baue dein Haus im Browser — Wände, Böden, echte 3D-Möbel, zwei Bewohner mit Bedürfnissen, Tag/Nacht, Romantik-Modus. Solo oder Online-Koop mit Raum-Code. Gratis, kein Download.">
 <link rel="canonical" href="https://abannews.com/traumhaus.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Traumhaus — Bau-Simulation mit Online-Koop">
-<meta property="og:image" content="https://abannews.com/og-arcade.jpg">
+<meta property="og:title" content="Traumhaus — Deine Stadt, dein Zuhause">
+<meta property="og:image" content="https://abannews.com/assets/traumhaus/stadt-v1.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:description" content="Baue dein Traumhaus: Wände, Möbel, Bewohner mit eigenem Kopf. Zusammen online bauen per Raum-Code.">
 <meta property="og:url" content="https://abannews.com/traumhaus.html">
@@ -321,6 +321,38 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
   #introCard>div>div:nth-child(3)>div:last-child{grid-column:1/-1;margin-top:2px !important}
   #introOk{margin-top:10px !important;padding:11px 36px !important}
 }
+
+/* Klarer Einstieg: Spielen zuerst, Koop und Hilfe bei Bedarf. */
+#start{background:#e9ede2;color:#243e34;padding:clamp(12px,3vw,40px);justify-content:flex-start;text-align:left;overscroll-behavior:contain}
+.start-shell{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,70px);width:100%;max-width:1040px;margin:auto;flex-shrink:0;align-items:center}
+#start .tag{color:#59705d;letter-spacing:2px;font-size:.7rem;margin-bottom:20px}
+#start h1{font-size:clamp(2.8rem,5.4vw,4.6rem);line-height:1.06;font-weight:500;color:#243e34;letter-spacing:-.045em;margin:0 0 20px}
+#start h1 em{color:#567e5b;font-weight:500}
+#start p{color:#5c6d60;font-size:.98rem;line-height:1.65;margin:0;max-width:430px}
+.start-house{max-width:430px;margin-top:10px}.start-house svg{width:100%;display:block}
+.start-features{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:.72rem;color:#566d59}
+.start-features span::before{content:'•';color:#8b6b3e;margin-right:6px}
+.start-play{background:#fffdf6;border-radius:24px;padding:clamp(22px,3vw,38px);box-shadow:0 16px 60px #29433212}
+.start-eyebrow{font-size:.7rem;letter-spacing:3px;font-weight:800;color:#718268;margin-bottom:12px}
+#start h2{font:500 clamp(1.7rem,2.5vw,2.2rem)/1.15 Georgia,serif;color:#243e34;letter-spacing:-.03em;margin-bottom:10px}
+#start .start-sub{font-size:.85rem;margin-bottom:22px}
+#start #soloBtn{width:100%;display:flex;justify-content:space-between;align-items:center;margin:0;background:#305a45;color:#fffdf3;border-radius:12px;box-shadow:none;padding:16px 20px;font-size:1rem;min-height:54px}
+#start #soloBtn:hover{background:#244634}#start button:focus-visible,#start summary:focus-visible,#modusWahl button:focus-visible{outline:3px solid #b98235;outline-offset:3px}
+#start #ladeAnzeige{margin:14px 0 22px;width:100%}#start #ladeBalken{height:4px;border:0;border-radius:10px;overflow:hidden;background:#e8ebdf}#start #ladeFuell{height:100%;width:0;background:#7b9669;transition:width .4s ease}#start #ladeText{font-size:.73rem;color:#697962;margin-top:7px}
+.start-details{border-top:1px solid #e6e7da;padding:13px 0}.start-details summary{cursor:pointer;font-size:.88rem;font-weight:650;min-height:28px;line-height:28px}.start-details summary span{display:block;font-size:.72rem;line-height:1.4;font-weight:400;color:#78816f;padding-left:15px}.start-details[open] summary{margin-bottom:12px}
+#start #tipRow{font-size:.8rem;line-height:1.8}#start #netSetup{justify-content:flex-start!important}#start #netSetup .btn{font-size:.8rem;padding:10px 12px;min-height:44px}#start input{max-width:100%;border:1px solid #cbd3c2;border-radius:8px;background:#fffef8}
+#start .start-rating{font-size:.7rem;margin-top:10px;color:#8b806d}#start .small{font-size:.72rem;line-height:1.8;color:#7c8574;margin-top:14px}#start .small a{color:#506951;text-decoration:underline;text-underline-offset:3px}
+#modusWahl{overflow-y:auto;overscroll-behavior:contain}#modusWahl .modusKarte{max-height:100%;overflow-y:auto}#modusZurueck{margin-top:8px;font-size:.9rem;min-height:44px;padding:9px 20px}
+@media(max-width:650px) and (orientation:portrait){.start-shell{grid-template-columns:1fr;max-width:440px;gap:24px}.start-house{display:none}#start h1{font-size:2.8rem}#start .tag{margin-bottom:12px}}
+@media(max-height:540px) and (orientation:landscape){#start{padding:16px 24px}.start-shell{gap:30px;align-items:start}.start-play{padding:20px;border-radius:18px}#start h1{font-size:2.8rem;margin-bottom:12px}#start .tag{margin-bottom:12px}#start p{font-size:.85rem}.start-house{max-width:270px}.start-features{font-size:.65rem;gap:5px 12px}#start .start-sub{margin-bottom:14px}#start #ladeAnzeige{margin:10px 0 12px}.start-details{padding:8px 0}#modusWahl .modusKarte{padding:14px!important}#modusWahl button[data-m]{margin:5px 0!important;padding:9px 13px!important;min-height:48px!important}}
+
+
+.pal-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.pal-head #palCats{flex:1;min-width:0;margin-bottom:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}.pal-head .pcat{flex-shrink:0}
+#palSuche{flex:0 1 170px;min-width:110px;width:170px;min-height:44px;padding:9px 12px;border:1px solid #c8d2bf;border-radius:10px;background:#fffef8;font:16px system-ui;color:#243e34;user-select:text}
+#palSuche:focus{outline:2px solid #567e5b;outline-offset:1px}.pal-leer{min-height:58px;display:flex;align-items:center;color:#5c6d60;font-size:.85rem;padding:8px}
+.pitem.on{border-color:#42694e;box-shadow:0 0 0 2px #42694e30}
+.grafik-profile{display:flex;gap:6px;flex-wrap:wrap}.grafik-profile button{flex:1;border:1px solid #d2d8c8;border-radius:8px;background:#f1f3e9;color:#405a47;padding:10px 8px;min-height:44px;font-weight:700;cursor:pointer}.grafik-profile button[aria-pressed="true"]{background:#305a45;color:#fff;border-color:#305a45}#start .grafik-hilfe{font-size:.72rem;margin:10px 0}.fps-wahl{font-size:.8rem;display:flex;align-items:center;gap:8px;min-height:32px}.fps-wahl input{accent-color:#305a45}
 </style>
 </head>
 <body>
@@ -434,7 +466,7 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 </div>
 <div id="bauMass"></div>
 <div id="palette">
-  <div id="palCats"></div>
+  <div class="pal-head"><div id="palCats"></div><input id="palSuche" type="search" placeholder="Möbel suchen …" aria-label="Alle Bauteile und Möbel durchsuchen" autocomplete="off"></div>
   <div id="palItems"></div>
 </div>
 <div id="rotHint" style="position:fixed;inset:0;z-index:70;display:none;flex-direction:column;align-items:center;justify-content:center;background:#241d15;color:#fff;text-align:center;padding:24px;font-size:1.1rem">
@@ -546,31 +578,26 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
 <div id="romKiss"><div style="font-size:3rem">💞</div><div id="romTxt">Max &amp; Mia turteln …</div><div style="font-size:.85rem;opacity:.7;margin-top:8px">(diskrete Ausblende — wie im Original)</div></div>
 
 <div class="overlay" id="start">
-  <div class="tag">aban news · Bau-Simulation · Sims-Style</div>
-  <h1>🏡 TRAUMHAUS</h1>
-  <p>Baue dein Haus: <b>Wände, Böden, Türen, Fenster</b> und echte 3D-Möbel vom Doppelbett bis zur Monstera. Deine Bewohner <b>Max &amp; Mia</b> leben ihr eigenes Leben — sie kochen, angeln, tanzen und erkunden die Stadt. Alle 4 Tage kommt die <b>Bauabnahme</b>: besteh sie und steig von der Hütte bis zum Palast auf. Tag- und Nachtwechsel inklusive.</p>
-  <p id="tipRow" style="font-size:.9rem"><b>Bauen:</b> Kategorie wählen → aufs Grundstück tippen · <b>🔄</b> dreht · <b>🧨</b> reisst ab · Kamera: ziehen oder <b>Tab</b>/Q/E dreht, Rad/Kneifen/± zoomt · <b>🕹️ Joystick/WASD steuert deinen Bewohner direkt!</b> · <b>Shift</b> oder Joystick ganz drücken = 🏃 rennen · Tipp auf Max/Mia = Kamera folgt · Herd = 🍳 Kochen · Teich = 🎣 Angeln · Stereo = 💃 Tanzen</p>
-  <!-- 💞 ROMANTIK-MODUS IST JETZT IMMER AN (User: „immer 18+ ohne die Haken").
-       Das Haekchen ist weg; wer das Spiel startet, spielt die vollstaendige Fassung.
-       ⚠️ DREI STELLEN, NICHT EINE — wer nur dieses Feld entfernt, hat es nur halb:
-       die Startbelegung von `romantik`, das Auslesen beim Start und das Laden eines
-       alten Spielstands (der `rom:false` mitbringt und den Modus wieder abschaltete). -->
-  <div style="display:flex;gap:8px;align-items:center;justify-content:center;background:#fff8ec;border:2px solid #f0c8a0;border-radius:14px;padding:10px 14px;margin:8px auto;max-width:430px;font-size:.9rem">
-    💞 <span><b>Ab 18</b>: Max &amp; Mia flirten, küssen und turteln — frech, aber diskret (Ausblende wie im Original).</span>
-  </div>
-  <!-- 🌍 LADEANZEIGE. Vorher gab es KEINE: die Seite stand da, 157 MB kamen
-       unsichtbar herein, und der Startknopf reagierte minutenlang nicht. Jetzt sieht
-       man, was passiert. Der Balken geht nie rueckwaerts — `gefordert` waechst
-       waehrend des Ladens weiter, sonst spraenge der Prozentwert zurueck. -->
-  <div id="ladeAnzeige" style="max-width:430px;width:100%;margin:10px auto 0">
-    <div id="ladeBalken" style="height:10px;border-radius:999px;background:rgba(255,255,255,.55);overflow:hidden;border:1px solid #b8cee0">
-      <div id="ladeFuell" style="height:100%;width:0%;background:var(--bern);transition:width .4s ease"></div>
-    </div>
-    <div id="ladeText" style="font-size:.85rem;color:#4a6a88;margin-top:6px">🌍 Welt wird geladen …</div>
-  </div>
-  <button class="btn" id="soloBtn">Solo bauen ▶</button>
-  <div style="margin-top:14px;padding:12px;border:2px dashed rgba(90,140,200,.5);border-radius:14px;max-width:430px">
-    <div style="font-weight:800;color:#2a6ab0">🌐 Online-Koop — zusammen bauen (2 Spieler)</div>
+ <div class="start-shell">
+  <section class="start-hero" aria-labelledby="startTitel">
+   <div class="tag">aban arcade · Lebenssimulation</div>
+   <h1 id="startTitel">Ein Platz für<br>deine <em>Träume.</em></h1>
+   <p>Baue dein Zuhause. Gestalte das Leben von Max &amp; Mia. Und entdecke die Stadt – in deinem Tempo.</p>
+   <div class="start-house" aria-hidden="true">
+    <svg viewBox="0 0 440 220" fill="none"><ellipse cx="224" cy="192" rx="186" ry="20" fill="#adc0a3"/><path d="M83 182L218 211L363 164L228 139Z" fill="#75936d"/><path d="M127 106L232 132V190L127 163Z" fill="#f8ead3"/><path d="M232 132L319 96V155L232 190Z" fill="#d1c2a8"/><path d="M110 111L178 40L247 123L232 139Z" fill="#2d5147"/><path d="M178 40L267 26L332 98L247 123Z" fill="#42695a"/><path d="M147 112L176 119V144L147 137Z" fill="#b1ccbf"/><path d="M160 115V140M147 124L176 131" stroke="#fff9eb" stroke-width="3"/><path d="M195 142L218 148V186L195 180Z" fill="#b77c4d"/><path d="M253 139L277 129V151L253 161ZM287 124L309 115V137L287 146Z" fill="#89aaa0"/><path d="M261 173L277 180L251 201L234 197Z" fill="#e9d7b6"/><path d="M85 164V119M349 165V106" stroke="#6b6847" stroke-width="6"/><circle cx="85" cy="104" r="25" fill="#5c8057"/><circle cx="349" cy="91" r="28" fill="#6f8e5b"/><circle cx="70" cy="116" r="18" fill="#70975f"/><circle cx="365" cy="104" r="20" fill="#567c51"/><path d="M284 49V22L296 20V62" fill="#c0a58b"/></svg>
+   </div>
+   <div class="start-features"><span>Bauen &amp; einrichten</span><span>Leben &amp; entdecken</span><span>Allein oder zu zweit</span></div>
+  </section>
+  <section class="start-play" aria-label="Spiel starten">
+   <div class="start-eyebrow">TRAUMHAUS</div>
+   <h2>Mach es zu deinem.</h2>
+   <p class="start-sub">Dein nächstes Kapitel beginnt hier.</p>
+   <button class="btn" id="soloBtn"><span id="soloLabel">Mein Spiel starten</span> <span aria-hidden="true">→</span></button>
+   <div id="ladeAnzeige" role="status" aria-live="polite">
+    <div id="ladeBalken"><div id="ladeFuell"></div></div>
+    <div id="ladeText">Deine Umgebung wird vorbereitet …</div>
+   </div>
+   <details class="start-details" id="koopAuswahl"><summary>Zusammen spielen <span>Online-Koop · 2 Spieler</span></summary>
     <div id="netSetup" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center">
       <input type="text" id="mpName" placeholder="Dein Name" maxlength="12" style="width:120px">
       <button class="btn ghost" id="hostBtn" style="margin-top:0">Raum erstellen</button>
@@ -586,8 +613,24 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
       <button class="btn" id="mpStartBtn" style="margin-top:10px;display:none;font-size:.95rem;padding:10px 26px">▶ Spiel starten</button>
       <button class="btn ghost" id="mpBackBtn" style="margin-top:8px;display:none;font-size:.9rem;padding:8px 18px">↩ Abbrechen / neuer Versuch</button>
     </div>
-  </div>
-  <div class="small">Kein Download · <a href="/spiele.html">🕹️ aban Arcade</a> · Speichert automatisch (Solo)</div>
+
+   </details>
+   <details class="start-details"><summary>So spielst du</summary>
+    <p id="tipRow"><b>Bewegen:</b> WASD oder Joystick. Shift zum Rennen.<br><b>Bauen:</b> „Bauen“ öffnen, etwas wählen und aufs Grundstück tippen.<br><b>Kamera:</b> ziehen, mit Q/E drehen, mit Mausrad oder zwei Fingern zoomen.<br><b>Dein Ziel:</b> Räume einrichten und die Bauabnahme bestehen.</p>
+   </details>
+   <details class="start-details"><summary>Grafik &amp; Leistung</summary>
+    <div class="grafik-profile" aria-label="Grafikprofil">
+     <button type="button" data-grafik="spar2">Flüssig</button>
+     <button type="button" data-grafik="spar">Ausgewogen</button>
+     <button type="button" data-grafik="voll">Detailreich</button>
+    </div>
+    <p class="grafik-hilfe">Profil wechseln startet die Ansicht neu. Dein Spielstand bleibt erhalten.</p>
+    <label class="fps-wahl"><input type="checkbox" id="fpsToggle"> FPS anzeigen</label>
+   </details>
+   <p class="start-rating">Ab 18 · Romantik mit Max &amp; Mia</p>
+   <div class="small">Automatisch gespeichert · Kein Download<br><a href="/spiele.html">Zurück zur Arcade</a></div>
+  </section>
+ </div>
 </div>
 
 <div id="introCard" style="position:fixed;inset:0;z-index:65;display:none;align-items:center;justify-content:center;background:rgba(20,25,35,.74);padding:20px">
@@ -632,10 +675,13 @@ var renderer=new THREE.WebGLRenderer({antialias:true});
 var _mobil=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||Math.min(screen.width,screen.height)<820;
 /* 📱 HANDY-SPARMODUS (Runde 106, User: „1 fps habe ich bei traumhaus"). Auf dem Telefon kurze Sichtweite, kleinerer
    Herauszoom, weniger Lampen — was genau, steht jeweils am Ort. `?voll` schaltet ihn ab, `?spar` am Rechner ein. */
-var _sparHandy=(_mobil&&!/[?&]voll\b/.test(location.search))||/[?&]spar2?\b/.test(location.search);
+var _grafikProfil=_mobil?"spar2":"voll";try{_grafikProfil=localStorage.getItem("th_grafik")||_grafikProfil;}catch(e){}
+var _grafikQuery=/(?:[?&])(spar2|spar|voll)\b/.exec(location.search);
+if(_grafikQuery)_grafikProfil=_grafikQuery[1];
+var _sparHandy=_grafikProfil==="spar"||_grafikProfil==="spar2"||(_mobil&&_grafikProfil!=="voll");
 /* Stufe 2 (Runde 107): nach einem Grafikabsturz („nach paar sekunde nur weiss") startet das Spiel leichter —
    gesetzt vom Knopf „Leichter neu starten" (localStorage th_spar) oder per ?spar2. */
-var _sparStufe=!_sparHandy?0:((/[?&]spar2\b/.test(location.search)||(function(){try{return localStorage.getItem("th_spar")==="2";}catch(e){return false;}})())?2:1);
+var _sparStufe=!_sparHandy?0:((_grafikProfil==="spar2"||(!_grafikProfil&&(function(){try{return localStorage.getItem("th_spar")==="2";}catch(e){return false;}})()))?2:1);
 var LOD_SPAR=_sparStufe>1?0.6:(_sparHandy?0.75:1);   /* Ausblend-Abstaende in lodTakt */
 var LAMP_SPAR=_sparStufe>1?1:2;   /* Punktlichter im Shader (jedes kostet JEDEN Bildpunkt jedes Standard-Materials) */
 var ZOOM_MAX=_sparStufe>1?60:(_sparHandy?80:135);   /* ⚠️ main bei Zoom 135 (probe-bildlast „Weit"): 9'821 Zeichenaufrufe je Bild */
@@ -694,7 +740,7 @@ document.getElementById("wrap").appendChild(renderer.domElement);
    dem Handy praktisch nichts (kein zusaetzlicher Render-Target-Pass wie bei Bloom).
    Abschalten ohne UI: localStorage.th_filmlook="0". */
 if(localStorage.getItem("th_filmlook")!=="0"){
-  renderer.domElement.style.filter="saturate(1.07) contrast(1.03)";
+  renderer.domElement.style.filter="saturate(1.01) contrast(1.07)";
   var _vig=document.createElement("div");
   _vig.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:1;"+
     "background:radial-gradient(ellipse 118% 96% at 50% 44%,transparent 62%,rgba(10,14,26,.16) 86%,rgba(6,9,18,.34) 100%)";
@@ -784,6 +830,26 @@ sun.shadow.camera.near=5;sun.shadow.camera.far=320;
    ACHTUNG: Wer das Material danach noch veraendert (Textur anhaengen, Farbe
    umsetzen), muss `stdMat(...,true)` mit `einzeln=true` anfordern — sonst faerbt
    er alle Mitbenutzer mit um. */
+/* Das Profil „Flüssig“ beleuchtet matte, deckende Flächen pro Eckpunkt.
+   Metall, Wasser, Glas und Normal-/Bump-Details behalten ihre bisherigen Materialien.
+   Die Materialobjekte entstehen vor der Nachtlogik: ihre Referenzen bleiben gültig. */
+var _leichteMats=new WeakMap();
+function _leichtMat(m){
+  if(_sparStufe<2||!m||!m.isMeshStandardMaterial||m.isMeshPhysicalMaterial||m.transparent||m.opacity!==1
+     ||m.metalness>0.1||m.roughness<0.5||m.normalMap||m.bumpMap||m.displacementMap||m.lightMap||m.aoMap
+     ||m.onBeforeCompile!==THREE.Material.prototype.onBeforeCompile)return m;
+  if(_leichteMats.has(m))return _leichteMats.get(m);
+  var n=new THREE.MeshLambertMaterial();
+  ["color","emissive"].forEach(function(k){n[k].copy(m[k]);});
+  ["map","alphaMap","emissiveMap","emissiveIntensity","opacity","alphaTest","side","shadowSide",
+   "vertexColors","flatShading","skinning","morphTargets","morphNormals","fog","depthTest","depthWrite",
+   "colorWrite","visible","name","toneMapped","polygonOffset","polygonOffsetFactor","polygonOffsetUnits",
+   "wireframe","wireframeLinewidth","blending","blendSrc","blendDst","blendEquation","premultipliedAlpha","dithering",
+   "clippingPlanes","clipIntersection","clipShadows"].forEach(function(k){n[k]=m[k];});
+  n.userData=Object.assign({},m.userData);n.roughness=m.roughness;n.metalness=m.metalness;n.envMapIntensity=m.envMapIntensity;
+  _leichteMats.set(m,n);return n;
+}
+function _standardMat(p){return _leichtMat(new THREE.MeshStandardMaterial(p));}
 var _matCache={};
 /* 🪞 METALLGRAD (Handschrift-Runde Teil 3). Vorher hatte JEDES ueber stdMat gebaute
    Material metalness 0 — Putz, Dachziegel, Laternenmast und Gelaender reflektierten
@@ -797,10 +863,10 @@ var _matCache={};
 function stdMat(c,rough,einzeln,metal){
   var r=rough!==undefined?rough:0.8, mt=metal!==undefined?metal:0.04;
   var ev=mt>0.3?0.75:0.5;
-  if(einzeln){var m0=new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:mt});m0.envMapIntensity=ev;return m0;}
+  if(einzeln){var m0=_standardMat({color:c,roughness:r,metalness:mt});m0.envMapIntensity=ev;return m0;}
   var k=c+"_"+r+"_"+mt;
   var m=_matCache[k];
-  if(!m){m=new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:mt});m.envMapIntensity=ev;_matCache[k]=m;}
+  if(!m){m=_standardMat({color:c,roughness:r,metalness:mt});m.envMapIntensity=ev;m._zfFarbKey=r+"|"+mt+"|"+ev;_matCache[k]=m;}
   return m;}
 /* Blech, Mast, Schiene, Gelaender: eine Zeile statt vier Zahlen an 20 Stellen. */
 function metallM(c,rough){return stdMat(c,rough!==undefined?rough:0.35,false,0.7);}
@@ -823,7 +889,7 @@ function _strukTex(kind){var cv=document.createElement("canvas");cv.width=cv.hei
   var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t;}
 var _texBeton=null,_texBlatt=null,_texErde=null;
 function betMat(c,rough){if(!_texBeton)_texBeton=_strukTex("beton");
-  var m=new THREE.MeshStandardMaterial({color:c,roughness:rough!==undefined?rough:0.85,map:_texBeton});m.envMapIntensity=0.3;return m;}
+  var m=_standardMat({color:c,roughness:rough!==undefined?rough:0.85,map:_texBeton});m.envMapIntensity=0.3;return m;}
 /* 🛣️ ASPHALT UND KIES (Runde 94, User: „weiter schoener machen"). betMat traegt die Beton-Struktur MIT
    Fugenlinien alle 32 px — Landstrasse, Zubringer, Strandzufahrt, Quartiersplatz, Achterbahn-Stich und
    Bergweg sahen damit aus wie Betonplatten, heller und anders als die Stadtstrassen (Bild
@@ -832,9 +898,9 @@ function betMat(c,rough){if(!_texBeton)_texBeton=_strukTex("beton");
    ein eigenes Material, teilen aber die Textur — wer `repeat` braucht, nimmt kacheln() (klont die map). */
 var _texAsphalt=null,_texKies=null;
 function asphMat(c,rough){if(!_texAsphalt){_texAsphalt=_roadTex();_texAsphalt.wrapS=_texAsphalt.wrapT=THREE.RepeatWrapping;}
-  var m=new THREE.MeshStandardMaterial({color:c||0x4a4a53,roughness:rough!==undefined?rough:0.92,map:_texAsphalt});m.envMapIntensity=0.3;return m;}
+  var m=_standardMat({color:c||0x4a4a53,roughness:rough!==undefined?rough:0.92,map:_texAsphalt});m.envMapIntensity=0.3;return m;}
 function kiesMat(c,rough){if(!_texKies)_texKies=_strukTex("kies");
-  var m=new THREE.MeshStandardMaterial({color:c||0x9a9384,roughness:rough!==undefined?rough:0.98,map:_texKies});m.envMapIntensity=0.3;return m;}
+  var m=_standardMat({color:c||0x9a9384,roughness:rough!==undefined?rough:0.98,map:_texKies});m.envMapIntensity=0.3;return m;}
 /* 📏 KACHELGROESSE IN METERN — und die Falle, die dabei zweimal zugeschlagen hat.
    `betMat()` gibt JEDEM Aufrufer dieselbe Texturinstanz (`_texBeton`). Wer `repeat`
    daran dreht, dreht es an Bordsteinen, Bruecken, Pfeilern und Vorplaetzen mit; und
@@ -1137,13 +1203,13 @@ function wegVonStrasse(x,z){
     g.addColorStop(1,"rgba(255,255,255,0)");
     c.fillStyle=g;c.fillRect(0,0,64,64);
     _lampPoolTexC=new THREE.CanvasTexture(cv);return _lampPoolTexC;}
-  var mMat=new THREE.MeshStandardMaterial({color:0x2c343c,roughness:0.55});
+  var mMat=_standardMat({color:0x2c343c,roughness:0.55});
   var fuG=new THREE.CylinderGeometry(0.26,0.36,0.6,8),
       maG=new THREE.CylinderGeometry(0.11,0.16,6.2,8),
       qaG=new THREE.BoxGeometry(3.2,0.11,0.11),
       koG=new THREE.SphereGeometry(0.26,10,8),
       poolG=new THREE.CircleGeometry(5.5,16);
-  var kopfMat=new THREE.MeshStandardMaterial({color:0xffe9c0,emissive:0xffc870,emissiveIntensity:0,roughness:0.3});
+  var kopfMat=_standardMat({color:0xffe9c0,emissive:0xffc870,emissiveIntensity:0,roughness:0.3});
   window._lampKopf=kopfMat;
   window._lampGlows=window._lampGlows||[];
   window._lampPos=[];
@@ -1227,7 +1293,7 @@ var grasTex=(function(){var cv=document.createElement("canvas");cv.width=cv.heig
     c.fillRect(Math.random()*256,Math.random()*256,2,3);}
   var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(20,15);
   try{t.anisotropy=renderer.capabilities.getMaxAnisotropy();}catch(e){}return t;})();
-var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),new THREE.MeshStandardMaterial({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
+var rasen=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+60,GH*CS+60),_standardMat({map:grasTex,roughness:0.95,envMapIntensity:0.22}));
 /* 📐 Klare Hoehen-Staffelung, damit sich keine zwei Flaechen um dieselbe Tiefe streiten
    (das war das Flimmern): Fernebene -0.08, Fern-Overlay -0.06, Rasen -0.05,
    Nah-Overlay -0.035, Wasser -0.022, Plaetze/Viertel -0.012, Strassen -0.003,
@@ -1246,7 +1312,7 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
       c.fillStyle=g;c.beginPath();c.arc(x,y,r,0,6.283);c.fill();}
     return new THREE.CanvasTexture(cv);}
   function overlay(w,h,y,tex){var m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),
-    new THREE.MeshStandardMaterial({map:tex,transparent:true,roughness:1,depthWrite:false}));
+    _standardMat({map:tex,transparent:true,roughness:1,depthWrite:false}));
     m.rotation.x=-Math.PI/2;m.position.y=y;scene.add(m);return m;}
   overlay(GW*CS+60,GH*CS+60,-0.035,blotchTex(46,0.3)); // nahe Wiese — traegt jetzt die grossflaechige Variation
   /* 🌱 MAEHSTREIFEN auf dem Baugrundstueck. Es ist die groesste zusammenhaengende
@@ -1266,7 +1332,7 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
     var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;
     t.repeat.set(10,1);
     var m=new THREE.Mesh(new THREE.PlaneGeometry(GW*CS+6,GH*CS+6),
-      new THREE.MeshStandardMaterial({map:t,transparent:true,roughness:1,depthWrite:false}));
+      _standardMat({map:t,transparent:true,roughness:1,depthWrite:false}));
     m.rotation.x=-Math.PI/2;m.position.y=-0.02;m.receiveShadow=true;scene.add(m);
   })();
   /* 🏗️ DER BAUPLATZ SIEHT JETZT AUS WIE EINER. Der User: „die Platzierung in Mitte
@@ -1286,7 +1352,7 @@ rasen.rotation.x=-Math.PI/2;rasen.position.y=-0.05;rasen.receiveShadow=true;scen
     var ZX=7;                                   /* Zufahrt in der Achse des Ortsschilds */
     function band(x,z,bx,bz,farbe,hoehe){
       var mm=new THREE.Mesh(new THREE.PlaneGeometry(bx,bz),
-        new THREE.MeshStandardMaterial({color:farbe,roughness:0.96,envMapIntensity:0.14,
+        _standardMat({color:farbe,roughness:0.96,envMapIntensity:0.14,
                                         transparent:true,opacity:0.9,depthWrite:false}));
       mm.rotation.x=-Math.PI/2;mm.position.set(x,hoehe||0.012,z);
       mm.receiveShadow=true;scene.add(mm);return mm;}
@@ -1370,7 +1436,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
 (function landschaft(){
   // Ferne Grasebene (Horizont) unter allem
   var fernTex=grasTex.clone();fernTex.needsUpdate=true;fernTex.repeat.set(107,107);   /* gleiche Kachel wie bei 900/80 */
-  var fern=new THREE.Mesh(new THREE.PlaneGeometry(1200,1200),   /* Runde 95: 900 → 1200, sonst endet die Welt 45 m hinter dem Technikpark */new THREE.MeshStandardMaterial({map:fernTex,color:0xa8c88a,roughness:1,envMapIntensity:0.18}));
+  var fern=new THREE.Mesh(new THREE.PlaneGeometry(1200,1200),   /* Runde 95: 900 → 1200, sonst endet die Welt 45 m hinter dem Technikpark */_standardMat({map:fernTex,color:0xa8c88a,roughness:1,envMapIntensity:0.18}));
   fern.rotation.x=-Math.PI/2;fern.position.y=-0.08;fern.receiveShadow=true;scene.add(fern);
   /* ⛰️ BERGKETTE — User: „erstelle sonst bergen fuer noch groessere map".
      Weit draussen (r 210..290), damit zwischen Ringstrasse und Gebirge Platz fuer neue
@@ -1390,7 +1456,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
           echten Gebirgen. Am Fuss laeuft die Farbe ins Wiesengruen aus.
        3. Die aufgesetzte Schneekappe faellt weg; sie war ein zweiter Koerper,
           der bei jeder Drehung gegen den Berg verrutschte. */
-    var felsVM=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,
+    var felsVM=_standardMat({vertexColors:true,roughness:1,
                                                flatShading:true,envMapIntensity:0.2});
     /* Schneelinie 44 war zu hoch: die Berge sind 42..97 hoch und stehen mit dem
        Fuss bei hoch/2-6, ihre Gipfel liegen also auf 36..91 — die halbe Kette
@@ -1780,7 +1846,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        Foto th-blick 60 -420 150 1.25 danach: Strahlen weg, weicher Schneeverlauf; von Sueden
        (60 -250 220 0.7) ein glatter statt facettierter Berg. Die Kettenberge (Z. ~1302) bleiben
        facettiert — bewusst nur dieser eine Berg, weil nur hier die Rippen radial vom Gipfel laufen. */
-    var bm=new THREE.Mesh(g,new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,
+    var bm=new THREE.Mesh(g,_standardMat({vertexColors:true,roughness:1,
                                                             flatShading:false,envMapIntensity:0.2}));
     bm.userData.gelaende=1; bm.userData.nieAusblenden=1; bm.frustumCulled=false;
     bm.receiveShadow=true; scene.add(bm);
@@ -1837,7 +1903,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     WORLD_POIS.push([G.x,G.z,"🏔️","Grosser Berg"]);
   })();
   /* Vorgelagerte Huegel als Uebergang von der Ebene ins Gebirge */
-    var vhM=new THREE.MeshStandardMaterial({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
+    var vhM=_standardMat({color:0x8faa72,roughness:1,flatShading:true,envMapIntensity:0.16});
     window._vorhuegel=[];
     for(var v=0;v<26;v++){
       /* Die Vorhuegel sind der Uebergang von der Ebene ins Gebirge — sie muessen
@@ -1868,7 +1934,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   })();
   // Sanfte Huegelkette am Rand (grosse flache Halbkugeln)
   var hTex=grasTex.clone();hTex.needsUpdate=true;hTex.repeat.set(6,4);
-  var hMat=new THREE.MeshStandardMaterial({map:hTex,color:0x9aba7c,roughness:1,envMapIntensity:0.16});
+  var hMat=_standardMat({map:hTex,color:0x9aba7c,roughness:1,envMapIntensity:0.16});
   for(var h=0;h<14;h++){var a=h/14*6.283,r=95+((h*37)%40);
     var hx0=Math.cos(a)*r,hz0=Math.sin(a)*r;
     var hR=14+((h*7)%12);
@@ -1890,9 +1956,9 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
      mitten auf der Fahrbahn (User-Screenshot „ueberschneidung ... strasse"). */
   var BF=[0xff6b8a,0xffd93d,0xa66bff,0xff9f43,0xffffff];
   var _halmBG=new THREE.CylinderGeometry(0.03,0.03,0.4,4),
-      _halmBM=new THREE.MeshStandardMaterial({color:0x3a8a3a,roughness:0.9}),
+      _halmBM=_standardMat({color:0x3a8a3a,roughness:0.9}),
       _bluetG=new THREE.SphereGeometry(0.12,6,5),
-      _bluetM=BF.map(function(f){return new THREE.MeshStandardMaterial({color:f,roughness:0.7,emissive:f,emissiveIntensity:0.12});});
+      _bluetM=BF.map(function(f){return _standardMat({color:f,roughness:0.7,emissive:f,emissiveIntensity:0.12});});
   /* 🌼 EINE WIESE STEHT NICHT STRAMM. GEMESSEN (th-vielfalt): 595 Blueten und 558 Halme
      mit je EINER Groesse und EINER Drehung — jede Blume exakt 0,42 m hoch, exakt gleich
      dick, kerzengerade, und jedes Feld einfarbig. Aus der Naehe, etwa auf dem eigenen
@@ -1921,7 +1987,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     grp.position.set(x,0,z);scene.add(grp);}
   // ---- Schönes animiertes Wasser: See mit Wellen ----
   window._wasser=[];
-  function wasserMat(){return new THREE.MeshStandardMaterial({color:0x1f6bb0,roughness:0.06,metalness:0.45,transparent:true,opacity:0.92,envMapIntensity:0.9});}
+  function wasserMat(){return _standardMat({color:0x1f6bb0,roughness:0.06,metalness:0.45,transparent:true,opacity:0.92,envMapIntensity:0.9});}
   function machWasser(w,d,x,z,seg){
     var g=new THREE.PlaneGeometry(w,d,seg||16,seg||16);
     /* 🐛 Wasser lag auf y=-0.02 — EXAKT auf der Hoehe des Rasens. Zwei Flaechen auf
@@ -1968,7 +2034,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     var sg=new THREE.BufferGeometry();
     sg.setAttribute("position",new THREE.Float32BufferAttribute(sPos,3));
     sg.setIndex(sIdx);sg.computeVertexNormals();
-    var sand=new THREE.Mesh(sg,new THREE.MeshStandardMaterial({color:0x8f7a52,roughness:1,envMapIntensity:0.2}));
+    var sand=new THREE.Mesh(sg,_standardMat({color:0x8f7a52,roughness:1,envMapIntensity:0.2}));
     sand.rotation.x=-Math.PI/2;sand.position.set(x,-0.015,z);sand.receiveShadow=true;scene.add(sand);
     /* 🌾 Schilfguertel am Ufer (User: "schoenere map"). Der See endete bisher
        hart: Wasser, Sandring, Gras. Ein paar Halmbueschel in den Uferbuchten
@@ -1994,7 +2060,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       }
       if(!halme.length)return;
       var hG=new THREE.CylinderGeometry(0.012,0.06,1,5);hG.translate(0,0.5,0);
-      var hM=new THREE.MeshStandardMaterial({map:_halmTex(),roughness:0.95});
+      var hM=_standardMat({map:_halmTex(),roughness:0.95});
       var hI=new THREE.InstancedMesh(hG,hM,halme.length);
       halme.forEach(function(q,i){
         dmy.position.set(q[0],0,q[1]);
@@ -2012,26 +2078,26 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
   // Ufersteine folgen der echten Uferkurve (knapp ausserhalb des Wassers)
   for(var sr=0;sr<10;sr++){var sa=sr/10*6.283+0.3;
     if(Math.sin(sa)>0.45)continue;    /* Promenadenseite (Vorplatz, z<146) aussparen wie das Schilf — Stein 7 lag auf dem Vorplatz (Runde 93); Vorzeichen seit Runde 102 wie das Wassermesh */
-    var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),new THREE.MeshStandardMaterial({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));var stz=146-Math.sin(sa)*(seeR(sa)+1.0);   /* ⚠️ Runde 102: mit „146+sin" lagen Stein (0.1|156.5) 4,9 m und (12.9|141.6) 0,5 m im Wasser (s. seeR) */
+    var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(0.45+Math.sin(sr*3)*0.18,0),_standardMat({color:sr%2?0x6a6558:0x565043,roughness:1,metalness:0,envMapIntensity:0.25}));var stz=146-Math.sin(sa)*(seeR(sa)+1.0);   /* ⚠️ Runde 102: mit „146+sin" lagen Stein (0.1|156.5) 4,9 m und (12.9|141.6) 0,5 m im Wasser (s. seeR) */
     stein.position.set(0+Math.cos(sa)*(seeR(sa)+1.0),0.04,stz);stein.rotation.set(Math.random(),Math.random()*6,Math.random());stein.castShadow=true;scene.add(stein);}
   // Viele Baeume rings um die Stadt (prozedural, gestreut)
   /* Geometrien + Materialien EINMAL bauen und teilen — vorher bekam jeder der ~400
      Streu-Objekte eigene, was den Seitenstart merklich verlangsamt hat. */
   var _stammG=new THREE.CylinderGeometry(0.18,0.28,1.8,7),
-      _stammM=new THREE.MeshStandardMaterial({color:0x6a4a30,roughness:0.9}),
+      _stammM=_standardMat({color:0x6a4a30,roughness:0.9}),
       _kronG=[new THREE.SphereGeometry(1.1,9,7),new THREE.SphereGeometry(0.88,9,7),new THREE.SphereGeometry(0.66,9,7)],
-      _kronM=[new THREE.MeshStandardMaterial({color:0x4a8a44,roughness:0.85,envMapIntensity:0.2}),
-              new THREE.MeshStandardMaterial({color:0x3a7a3a,roughness:0.85,envMapIntensity:0.2})],
+      _kronM=[_standardMat({color:0x4a8a44,roughness:0.85,envMapIntensity:0.2}),
+              _standardMat({color:0x3a7a3a,roughness:0.85,envMapIntensity:0.2})],
       _buschG=new THREE.SphereGeometry(1,8,6),
-      _buschM=[new THREE.MeshStandardMaterial({color:0x4a8a48,roughness:0.92,envMapIntensity:0.18}),
-               new THREE.MeshStandardMaterial({color:0x3f7a40,roughness:0.92,envMapIntensity:0.18})],
+      _buschM=[_standardMat({color:0x4a8a48,roughness:0.92,envMapIntensity:0.18}),
+               _standardMat({color:0x3f7a40,roughness:0.92,envMapIntensity:0.18})],
       _felsG=new THREE.DodecahedronGeometry(1,0),
-      _felsM=[new THREE.MeshStandardMaterial({color:0x726c60,roughness:1,envMapIntensity:0.22}),
-              new THREE.MeshStandardMaterial({color:0x5e584c,roughness:1,envMapIntensity:0.22})],
+      _felsM=[_standardMat({color:0x726c60,roughness:1,envMapIntensity:0.22}),
+              _standardMat({color:0x5e584c,roughness:1,envMapIntensity:0.22})],
       _heuG=new THREE.CylinderGeometry(1.05,1.05,1.5,12),
-      _heuM=new THREE.MeshStandardMaterial({color:0xd8c274,roughness:0.98,envMapIntensity:0.15}),
+      _heuM=_standardMat({color:0xd8c274,roughness:0.98,envMapIntensity:0.15}),
       _halmG=new THREE.CylinderGeometry(0.012,0.06,1,5),
-      _halmM=new THREE.MeshStandardMaterial({map:_halmTex(),roughness:0.95});
+      _halmM=_standardMat({map:_halmTex(),roughness:0.95});
   function baum2(x,z,k){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];var b=new THREE.Group();
     var st=new THREE.Mesh(_stammG,_stammM);st.position.y=0.9;b.add(st);
     for(var c=0;c<3;c++){var kr=new THREE.Mesh(_kronG[c],_kronM[c%2]);
@@ -2263,7 +2329,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
           bg2.position.set(bx,0,bz);bg2.rotation.y=ab-Math.PI/2;scene.add(bg2);}   /* Lehne (lokal −z) vom See weg, Blick aufs Wasser (Runde 102) */
         else{var lg2=new THREE.Group();
           var ma=new THREE.Mesh(mastG,mastM);ma.position.y=1.6;lg2.add(ma);
-          var ko=new THREE.Mesh(kopfG,new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
+          var ko=new THREE.Mesh(kopfG,_standardMat({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
           ko.position.y=3.3;lg2.add(ko);
           if(typeof dorfFenster!=="undefined")dorfFenster.push(ko.material);
           lg2.position.set(bx,0,bz);scene.add(lg2);}}
@@ -2272,7 +2338,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         baum2(SX+Math.cos(at)*rt,SZ2-Math.sin(at)*rt,0.8+((t*3)%4)*0.12);}   /* z − sin (Runde 102): Baum 2 (-3.9|163) und Baum 10 (11.7|131.4) standen AUF dem Weg; jetzt 2,1…4,1 m dahinter */
     })();
     (function ufer(){ /* weicher Rand statt harter Wasserkante */
-      var uM=new THREE.MeshStandardMaterial({color:0x6f7a4e,roughness:1,envMapIntensity:0.18});
+      var uM=_standardMat({color:0x6f7a4e,roughness:1,envMapIntensity:0.18});
       [-94.6,-86.4].forEach(function(uz){
         var u=new THREE.Mesh(new THREE.PlaneGeometry(200,3.4),uM);
         u.rotation.x=-Math.PI/2;u.position.set(-20,-0.014,uz);u.receiveShadow=true;scene.add(u);});
@@ -2293,7 +2359,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
           if(uz2>-90||LATN.every(function(lx){return Math.abs(ux-lx)>=1.8;}))break;}
         if(t9===20)continue;
         var k=0.3+Math.random()*0.5;
-        var st=new THREE.Mesh(new THREE.DodecahedronGeometry(k,0),new THREE.MeshStandardMaterial({color:i%2?0x6a6558:0x565043,roughness:1}));
+        var st=new THREE.Mesh(new THREE.DodecahedronGeometry(k,0),_standardMat({color:i%2?0x6a6558:0x565043,roughness:1}));
         st.position.set(ux,k*0.4,uz2);st.rotation.set(Math.random()*3,Math.random()*6,Math.random()*3);st.castShadow=true;scene.add(st);}
     })();
     (function allee(){
@@ -2422,7 +2488,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         platz:function(seite,idx){return [R0+RB/2+idx*RB,seite<0?ZS:ZN];}};   /* Mitte eines Stellplatzes — fuer Wagen anderer Abschnitte */
       var pl=new THREE.Mesh(new THREE.PlaneGeometry(PX+PW/2-INS1,PD),strMatH.clone());
       pl.rotation.x=-Math.PI/2;pl.position.set((INS1+PX+PW/2)/2,-0.004,PZ);pl.receiveShadow=true;scene.add(pl);
-      var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
+      var mM=_standardMat({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
       (window._markMats=window._markMats||[]).push(mM);
       [[ZS,NS],[ZN,NN]].forEach(function(r){               /* Reihen an den Kanten */
         for(var b=0;b<=r[1];b++){
@@ -2437,9 +2503,9 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         var seite=BELEGT[a][0],idx=BELEGT[a][1];
         var ax=R0+RB/2+idx*RB, az=seite<0?ZS:ZN;
         var g=new THREE.Group();
-        var k=new THREE.Mesh(new THREE.BoxGeometry(1.8,0.85,4.0),new THREE.MeshStandardMaterial({color:AF[(a*3)%AF.length],roughness:0.35,metalness:0.3}));
+        var k=new THREE.Mesh(new THREE.BoxGeometry(1.8,0.85,4.0),_standardMat({color:AF[(a*3)%AF.length],roughness:0.35,metalness:0.3}));
         k.position.y=0.75;k.castShadow=true;g.add(k);
-        var d=new THREE.Mesh(new THREE.BoxGeometry(1.6,0.62,2.1),new THREE.MeshStandardMaterial({color:0x2a2e34,roughness:0.15,metalness:0.2,transparent:true,opacity:0.85}));
+        var d=new THREE.Mesh(new THREE.BoxGeometry(1.6,0.62,2.1),_standardMat({color:0x2a2e34,roughness:0.15,metalness:0.2,transparent:true,opacity:0.85}));
         d.position.set(0,1.42,-0.25*seite);g.add(d);
         [[-0.85,1.4],[0.85,1.4],[-0.85,-1.4],[0.85,-1.4]].forEach(function(w){
           var r=new THREE.Mesh(new THREE.CylinderGeometry(0.33,0.33,0.22,10),stdMat(0x22252a,0.5));
@@ -2493,7 +2559,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         sp.rotation.x=-Math.PI/2;sp.rotation.z=zi?Math.PI/4:-Math.PI/4;
         sp.position.set(zx,0.005,Z1+(zi?4.0:1.8));scene.add(sp);});
       /* Gruenstreifen + Baumreihe an der Suedkante — nur bis vor das Rathaus (x 29,5) */
-      var GX1=29.0,gruen=new THREE.Mesh(new THREE.PlaneGeometry(GX1-X0,1.7),new THREE.MeshStandardMaterial({color:0x5f9a52,roughness:0.95}));
+      var GX1=29.0,gruen=new THREE.Mesh(new THREE.PlaneGeometry(GX1-X0,1.7),_standardMat({color:0x5f9a52,roughness:0.95}));
       gruen.rotation.x=-Math.PI/2;gruen.position.set((X0+GX1)/2,0.006,Z0-KB-0.85);gruen.receiveShadow=true;scene.add(gruen);
       [15.5,21,26.5].forEach(function(bx){baum2(bx,Z0-KB-0.85,0.62);});
       /* 🅿️ Ausstattung wie auf einem echten Parkplatz (User: "parkplaetze schoener"):
@@ -2511,7 +2577,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         pf9.position.set(ax9,0.006,PZ);scene.add(pf9);});
       /* Behindertenstellplatz: blaue Flaeche mit weissem Zeichen, Suedplatz 0 (naechst dem Bahnhof) */
       var bhF=new THREE.Mesh(new THREE.PlaneGeometry(RB-0.3,RT-0.3),
-        new THREE.MeshStandardMaterial({color:0x2f5fae,roughness:0.9}));
+        _standardMat({color:0x2f5fae,roughness:0.9}));
       bhF.rotation.x=-Math.PI/2;bhF.position.set(R0+RB/2,0.005,ZS);scene.add(bhF);
       var bcv=document.createElement("canvas");bcv.width=bcv.height=64;
       var bcx=bcv.getContext("2d");bcx.fillStyle="#ffffff";bcx.font="52px sans-serif";
@@ -2529,7 +2595,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         var kopf=new THREE.Mesh(new THREE.BoxGeometry(1.1,0.22,0.5),metallM(0x3a3f45));
         kopf.position.set(lx9,5.2,PZ);scene.add(kopf);
         var lamp=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.08,0.36),
-          new THREE.MeshStandardMaterial({color:0xf4ecd0,emissive:0xffe8b0,emissiveIntensity:0,roughness:0.4}));
+          _standardMat({color:0xf4ecd0,emissive:0xffe8b0,emissiveIntensity:0,roughness:0.4}));
         lamp.position.set(lx9,5.06,PZ);scene.add(lamp);
         /* dorfFenster entsteht erst weiter unten — deshalb erst pruefen, dann eintragen. */
         if(typeof dorfFenster!=="undefined"&&dorfFenster)dorfFenster.push(lamp.material);
@@ -2540,7 +2606,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var aut=new THREE.Mesh(new THREE.BoxGeometry(0.42,1.45,0.55),stdMat(0x6a7078,0.6));
       aut.position.set(AX,0.73,AZ);aut.castShadow=true;scene.add(aut);
       var autF=new THREE.Mesh(new THREE.PlaneGeometry(0.4,0.5),
-        new THREE.MeshStandardMaterial({color:0x22262c,roughness:0.3}));
+        _standardMat({color:0x22262c,roughness:0.3}));
       autF.rotation.y=Math.PI/2;autF.position.set(AX+0.215,1.05,AZ);scene.add(autF);
       /* Keine Voll-Kollider: nur die beiden Stellreihen, die Fahrgasse bleibt frei. */
       addSolid(R0+NS*RB/2,ZS,NS*RB+0.6,RT*0.9);
@@ -2601,7 +2667,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var FW=30,FD=21, felder=suchen(8,FW,FD,46), furchen=[];  /* kleiner = mehr Treffer im engen Ring */
       felder.forEach(function(F,fi){
         var m=new THREE.Mesh(new THREE.PlaneGeometry(FW,FD),
-          new THREE.MeshStandardMaterial({color:TON[fi%3],roughness:1,envMapIntensity:0.14}));
+          _standardMat({color:TON[fi%3],roughness:1,envMapIntensity:0.14}));
         m.rotation.set(-Math.PI/2,0,F[2]);m.position.set(F[0],0.004,F[1]);
         m.receiveShadow=true;scene.add(m);
         var n=Math.floor(FD/2.6), ca=Math.cos(F[2]), sa=Math.sin(F[2]);
@@ -2611,7 +2677,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var dmy=new THREE.Object3D();
       if(furchen.length){
         var fI=new THREE.InstancedMesh(new THREE.PlaneGeometry(1,0.55),
-          new THREE.MeshStandardMaterial({color:0x6a563a,roughness:1,transparent:true,opacity:0.45}),furchen.length);
+          _standardMat({color:0x6a563a,roughness:1,transparent:true,opacity:0.45}),furchen.length);
         furchen.forEach(function(f,i){
           dmy.position.set(f[0],0.0055,f[1]);dmy.rotation.set(-Math.PI/2,0,f[2]);
           dmy.scale.set(f[3],1,1);dmy.updateMatrix();fI.setMatrixAt(i,dmy.matrix);});
@@ -2665,7 +2731,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var wege=suchen(4,40,3.4,40);
       wege.forEach(function(W){
         var w=new THREE.Mesh(new THREE.PlaneGeometry(40,3.2),
-          new THREE.MeshStandardMaterial({color:0xbdae90,roughness:1,envMapIntensity:0.12}));
+          _standardMat({color:0xbdae90,roughness:1,envMapIntensity:0.12}));
         w.rotation.set(-Math.PI/2,0,W[2]);w.position.set(W[0],0.0045,W[1]);
         w.receiveShadow=true;scene.add(w);});
       window._landschaft={felder:felder.length,baeume:st.length,hecken:seg.length,wege:wege.length};
@@ -2678,9 +2744,9 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
        Stiele und Pilze der Welt — 80 Flecken x 8…13 Blueten waeren sonst 800 Zeichenaufrufe. */
     (function blumenUndPilze(){
       var MAXB=1100,MAXP=160,M4=new THREE.Matrix4(),P4=new THREE.Vector3(),Q4=new THREE.Quaternion(),S4=new THREE.Vector3(1,1,1);
-      var bl=new THREE.InstancedMesh(new THREE.SphereGeometry(0.15,7,6),new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.8}),MAXB);
+      var bl=new THREE.InstancedMesh(new THREE.SphereGeometry(0.15,7,6),_standardMat({color:0xffffff,roughness:0.8}),MAXB);
       var st=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.02,0.028,0.44,4),stdMat(0x4c8a3a,0.9),MAXB);
-      var hut=new THREE.InstancedMesh(new THREE.SphereGeometry(0.22,8,6,0,6.283,0,1.6),new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.7}),MAXP);
+      var hut=new THREE.InstancedMesh(new THREE.SphereGeometry(0.22,8,6,0,6.283,0,1.6),_standardMat({color:0xffffff,roughness:0.7}),MAXP);
       var fuss=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.06,0.08,0.3,6),stdMat(0xe8e2d2,0.9),MAXP);
       [bl,st,hut,fuss].forEach(function(m){m.count=0;m.frustumCulled=false;m.castShadow=false;m.receiveShadow=true;scene.add(m);});
       var FARB=[0xffd23a,0xff6b6b,0xc77dff,0xfff4d6,0xff9f43,0x7ec8ff],HUT=[0xc8362a,0xd99a3a,0xf0e6d0],C9=new THREE.Color();
@@ -2961,7 +3027,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
     if(_warmObjLaeuft||!_warmObjSchlange.length)return;
     _warmObjLaeuft=true;
     requestAnimationFrame(function schritt(){
-      var o=_warmObjSchlange.shift();
+      var o=_warmObjSchlange.shift(),alt=renderer.getRenderTarget(),_kette=[];
       try{
         /* ⚠️ UNSICHTBARES MUSS FUERS AUFWAERMEN KURZ SICHTBAR SEIN. Der erste Anlauf
            uebersprang alles mit visible===false — und genau das ist der haeufige Fall:
@@ -2974,10 +3040,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
            sofort wieder zurueckgesetzt — auf dem Bildschirm ist davon nichts zu sehen,
            weil in ein eigenes Ziel gezeichnet wird. */
         if(o&&o.parent){
-          var _kette=[],_k=o;
+          var _k=o;
           while(_k&&_k!==scene){if(!_k.visible){_kette.push(_k);_k.visible=true;}_k=_k.parent;}
-          if(!_warmZiel){_warmZiel=new THREE.WebGLRenderTarget(8,8);
-            _warmKam=new THREE.PerspectiveCamera(35,1,0.1,900);}
+          if(!_warmZiel){_warmZiel=new THREE.WebGLRenderTarget(8,8);_warmZiel.texture.encoding=renderer.outputEncoding;}
+          if(!_warmKam)_warmKam=new THREE.PerspectiveCamera(35,1,0.1,900);
           var bb=new THREE.Box3().setFromObject(o);
           if(isFinite(bb.min.x)){
             var mp=new THREE.Vector3();bb.getCenter(mp);
@@ -2985,13 +3051,12 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
             var d=Math.max(2.5,sp.radius*2.4);
             _warmKam.position.set(mp.x,mp.y+d*0.35,mp.z+d);
             _warmKam.lookAt(mp);_warmKam.updateMatrixWorld(true);
-            var alt=renderer.getRenderTarget();
             renderer.setRenderTarget(_warmZiel);
             renderer.render(scene,_warmKam);
             renderer.setRenderTarget(alt);
             window._warmObjekte=(window._warmObjekte||0)+1;}
           for(var _i=0;_i<_kette.length;_i++)_kette[_i].visible=false;}
-      }catch(e){}
+      }catch(e){}finally{renderer.setRenderTarget(alt);for(var ki=0;ki<_kette.length;ki++)_kette[ki].visible=false;}
       if(_warmObjSchlange.length)requestAnimationFrame(schritt);
       else _warmObjLaeuft=false;});}
   /* ⚠️ compile() ALLEIN REICHT NICHT. Es merkt sich je MATERIAL, dass es fertig ist —
@@ -3018,14 +3083,19 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
                     [120,30,-120,60,10,-60],[60,8,280,60,2,330],[-40,8,-180,-40,2,-246],
                     [0,8,100,0,2,146],[-190,10,160,-190,3,207],[0,140,0,0,0,1]];
   function _warmZeichnen(){
-    var p=camera.position.clone(),q=camera.quaternion.clone();
+    var p=camera.position.clone(),q=camera.quaternion.clone(),ziel=renderer.getRenderTarget();
+    /* Das Menü verdeckt diese neun Ansichten vollständig. Nur die Programme brauchen
+       Vorbereitung, keine neun bildschirmgrossen Bilder. Gleiche Farbkodierung wie
+       der Bildschirm, damit auch dieselben Shader-Varianten vorbereitet werden. */
+    if(!_warmZiel){_warmZiel=new THREE.WebGLRenderTarget(8,8);_warmZiel.texture.encoding=renderer.outputEncoding;}
+    renderer.setRenderTarget(_warmZiel);
     try{
       for(var i=0;i<_WARM_BLICKE.length;i++){var b=_WARM_BLICKE[i];
         camera.position.set(b[0],b[1],b[2]);camera.lookAt(b[3],b[4],b[5]);
         camera.updateMatrixWorld(true);
         renderer.render(scene,camera);}
-    }catch(e){}
-    camera.position.copy(p);camera.quaternion.copy(q);camera.updateMatrixWorld(true);}
+    }catch(e){}finally{renderer.setRenderTarget(ziel);
+      camera.position.copy(p);camera.quaternion.copy(q);camera.updateMatrixWorld(true);}}
   function _aufwaermen(){
     if(typeof renderer.initTexture!=="function")return;  /* initTexture gibt es seit r117 */
     var neu=_warmSammeln(),imSpiel=!!window._running;
@@ -3095,10 +3165,26 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       if(at.isInterleavedBufferAttribute||!(at.array instanceof Float32Array)||n[i]==="tangent")return null;
       s.push(n[i]+at.itemSize+(at.normalized?"n":""));}
     return s.join(",");}
-  function _zfBaue(L,inv){
+  /* Unveränderliche stdMat-Farben lassen sich als Eckpunktfarben zeichnen. Licht,
+     Rauheit und Metall bleiben erhalten; Fenster, Texturen und individuelle Materialien
+     bleiben einzeln. So brauchen verschiedenfarbige Teile desselben Hauses weniger Aufrufe. */
+  var _zfFarbMats={};
+  function _zfFarbKey(m,g){
+    if(window._keinFarbbatch||!m._zfFarbKey||g.attributes.color||m.vertexColors||m.transparent||m.opacity!==1
+       ||m.emissive.getHex()!==0||m.onBeforeCompile!==THREE.Material.prototype.onBeforeCompile)return null;
+    for(var i=0;i<_WARM_SLOTS.length;i++)if(m[_WARM_SLOTS[i]])return null;
+    return m.type+"|"+m._zfFarbKey+"|"+m.side+"|"+m.flatShading+"|"+m.depthTest+"|"+m.depthWrite;
+  }
+  if(/[?&]ohneFarbbatch\b/.test(location.search))window._keinFarbbatch=true;
+  function _zfFarbMat(m,key){
+    if(!_zfFarbMats[key]){var n=m.clone();n.color.setHex(0xffffff);n.vertexColors=true;_zfFarbMats[key]=n;}
+    return _zfFarbMats[key];
+  }
+  function _zfBaue(L,inv,farben){
     var namen=Object.keys(L[0].geometry.attributes),NV=0,NI=0;
     L.forEach(function(m){var g=m.geometry,c=g.attributes.position.count;NV+=c;NI+=g.index?g.index.count:c;});
     var arr={};namen.forEach(function(nm){arr[nm]=new Float32Array(NV*L[0].geometry.attributes[nm].itemSize);});
+    if(farben)arr.color=new Float32Array(NV*3);
     var idx=NV>65535?new Uint32Array(NI):new Uint16Array(NI),teile=new Float32Array(L.length*6),ov=0,oi=0;
     var M=new THREE.Matrix4(),N=new THREE.Matrix3(),v=new THREE.Vector3(),bx=new THREE.Box3();
     L.forEach(function(m,mi){var g=m.geometry,c=g.attributes.position.count;
@@ -3107,6 +3193,8 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
         if(nm==="position")for(i=0;i<c;i++){v.set(src[i*3],src[i*3+1],src[i*3+2]).applyMatrix4(M);dst[(ov+i)*3]=v.x;dst[(ov+i)*3+1]=v.y;dst[(ov+i)*3+2]=v.z;}
         else if(nm==="normal")for(i=0;i<c;i++){v.set(src[i*3],src[i*3+1],src[i*3+2]).applyMatrix3(N).normalize();dst[(ov+i)*3]=v.x;dst[(ov+i)*3+1]=v.y;dst[(ov+i)*3+2]=v.z;}
         else dst.set(src.subarray(0,c*sz),ov*sz);});
+      if(farben){var fc=m.material.color;for(var fi=0;fi<c;fi++){
+        arr.color[(ov+fi)*3]=fc.r;arr.color[(ov+fi)*3+1]=fc.g;arr.color[(ov+fi)*3+2]=fc.b;}}
       var ix=g.index?g.index.array:null,n=ix?g.index.count:c,flip=M.determinant()<0;
       for(var j=0;j+2<n;j+=3){var a0=ix?ix[j]:j,a1=ix?ix[j+1]:j+1,a2=ix?ix[j+2]:j+2;
         if(flip){var t=a1;a1=a2;a2=t;}idx[oi++]=a0+ov;idx[oi++]=a1+ov;idx[oi++]=a2+ov;}
@@ -3115,6 +3203,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       ov+=c;});
     var neu=new THREE.BufferGeometry();
     namen.forEach(function(nm){var at=L[0].geometry.attributes[nm];neu.setAttribute(nm,new THREE.BufferAttribute(arr[nm],at.itemSize,at.normalized));});
+    if(farben)neu.setAttribute("color",new THREE.BufferAttribute(arr.color,3));
     neu.setIndex(new THREE.BufferAttribute(idx.subarray(0,oi),1));neu.computeBoundingSphere();neu.computeBoundingBox();
     return {g:neu,teile:teile};}
   function _zfModell(w,lodM,fahr,maxV,fahrzeug){
@@ -3138,7 +3227,7 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
          &&!c.material.transparent&&!c.material.wireframe&&!c.morphTargetInfluences&&!c.children.length&&c.frustumCulled
          &&c.onBeforeRender===_zfLeer&&_zfUdOk(c.userData)){
         var sig=_zfSig(c.geometry);
-        if(sig){var k=c.material.uuid+"|"+sig+"|"+(c.castShadow?1:0)+(c.receiveShadow?1:0)+"|"+c.renderOrder+"|"+c.layers.mask;
+        if(sig){var fk=!fahrzeug&&_zfFarbKey(c.material,c.geometry);var k=(fk?"farbe:"+fk:c.material.uuid)+"|"+sig+"|"+(c.castShadow?1:0)+(c.receiveShadow?1:0)+"|"+c.renderOrder+"|"+c.layers.mask;
           if(!T[k]){T[k]=[];keys.push(k);}T[k].push(c);
           M.multiplyMatrices(inv,c.matrixWorld);
           for(var q=0;q<16;q++)h=Math.imul(h,31)+Math.round(M.elements[q]*1000)|0;
@@ -3151,8 +3240,10 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       if(akt.length)stuecke.push(akt);
       stuecke.forEach(function(S,si){if(S.length<2)return;
         var r=C?C[k+"#"+si]:null;if(C&&!r)return;
-        if(!r){r=_zfBaue(S,inv);neuC[k+"#"+si]=r;}
-        var mm=new THREE.Mesh(r.g,S[0].material);
+        if(!r){r=_zfBaue(S,inv,k.indexOf("farbe:")===0);neuC[k+"#"+si]=r;}
+        var fm=k.indexOf("farbe:")===0?_zfFarbMat(S[0].material,_zfFarbKey(S[0].material,S[0].geometry)):S[0].material;
+        var mm=new THREE.Mesh(r.g,fm);
+        if(fm!==S[0].material)window._farbbatchTeile=(window._farbbatchTeile||0)+S.length;
         mm.castShadow=S[0].castShadow;mm.receiveShadow=S[0].receiveShadow;mm.renderOrder=S[0].renderOrder;mm.layers.mask=S[0].layers.mask;
         mm.matrixAutoUpdate=false;mm.userData.teile=r.teile;mm.userData.zusammen=S.length;
         w.add(mm);mm.updateMatrixWorld(true);
@@ -3263,13 +3354,13 @@ function updRauch(dt){if((++_rauchFrame&1))return;var pp=rauchGeo.attributes.pos
       var r=_zfModell(m,new Set(),[],uint?500000:65000,true);
       var st=window._zfStat=window._zfStat||{modelle:0,vorher:0,nachher:0,ms:0,laeufe:0};
       st.wagen=(st.wagen||0)+1;st.wagenVorher=(st.wagenVorher||0)+r[0];st.wagenNachher=(st.wagenNachher||0)+r[1];}catch(e){console.warn("zusammenfassen Wagen",e);}};
-  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();_zusammenfassen();_aufwaermen();}
+  function _spaetEinfrieren(){_bewegtMarkieren();_schattenSparen();_opakSchalten();_einfrieren();_zusammenfassen();_aufwaermen();if(window._stadtKontaktPlan)window._stadtKontaktPlan();}
   /* ⚠️ _einfrieren() setzt matrixAutoUpdate=false. Es laeuft 9 s nach dem Laden — also
      VOR entzerren() (14 s) und entwirren() (15.5/32 s). Wer danach noch .position
      aendert, verschiebt nur eine Zahl: die Weltmatrix wird nie neu gerechnet, das
      Modell bleibt sichtbar stehen. Genau deshalb blieben die Ueberschneidungen trotz
      Entzerrung bestehen. Jede spaete Verschiebung muss die Matrix selbst nachziehen. */
-  window._nachRuecken=function(o){o.updateMatrix();o.updateMatrixWorld(true);};
+  window._nachRuecken=function(o){o.updateMatrix();o.updateMatrixWorld(true);if(window._stadtKontaktPlan)window._stadtKontaktPlan();};
   window._spaetEinfrieren=_spaetEinfrieren;   /* fuer den lade-gekoppelten zweiten Lauf */
   if(document.readyState==="complete")setTimeout(_spaetEinfrieren,9000);
   else window.addEventListener("load",function(){setTimeout(_spaetEinfrieren,9000);});
@@ -3396,7 +3487,8 @@ function _roadTex(){var cv=document.createElement("canvas");cv.width=cv.height=2
     c.fillStyle="rgba("+(58+v)+","+(58+v)+","+(64+v)+",0.3)";
     c.fillRect(Math.random()*256,Math.random()*256,Math.random()<0.25?3:2,2);}
   for(var f=0;f<26;f++){
-    var g=c.createRadialGradient(Math.random()*256,Math.random()*256,2,Math.random()*256,Math.random()*256,18+Math.random()*46);
+    var gx=Math.random()*256,gy=Math.random()*256;
+    var g=c.createRadialGradient(gx,gy,2,gx,gy,18+Math.random()*46);
     var hell=Math.random()<0.5;
     g.addColorStop(0,hell?"rgba(120,120,128,0.09)":"rgba(24,24,30,0.11)");
     g.addColorStop(1,"rgba(0,0,0,0)");c.fillStyle=g;c.fillRect(0,0,256,256);}
@@ -3416,7 +3508,7 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
   /* roughness 0,18 → 0,34 (Runde 94, Bilder k14-meer-*): die Sonne stand als ein 300-px-Weissklecks auf dem
      Wasser, hart wie ein Scheinwerfer — der Glanzpunkt einer fast spiegelnden Flaeche unter ACES. Rauer
      verteilt ihn zu einem weichen Glitzerband, das Blau bleibt. */
-  var meer=new THREE.Mesh(meerG,new THREE.MeshStandardMaterial({color:0x2e6f9e,roughness:0.34,metalness:0.1,envMapIntensity:0.45}));
+  var meer=new THREE.Mesh(meerG,_standardMat({color:0x2e6f9e,roughness:0.34,metalness:0.1,envMapIntensity:0.45}));
   meer.rotation.x=-Math.PI/2;meer.position.set(-232,-0.04,0);scene.add(meer);
   /* ⚠️ amp 0,2 (Runde 94, Bild k11-meer-insel): der Teich-Animator daempft nur Rand-Vertices (|x|,|y| > 11 m);
      die MITTE der 200 x 340-m-Platte kraeuselte mit voller Amplitude ±0,16 um -0,04 und tauchte bis -0,20 —
@@ -3456,7 +3548,7 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
   var BX0=-140,BX1=-320,BY=3.4,bl=BX0-BX1;
   var deck=new THREE.Mesh(new THREE.BoxGeometry(bl,0.5,3.6),betMat(0x9a948a,0.85));
   deck.position.set((BX0+BX1)/2,BY,-30);deck.castShadow=true;deck.receiveShadow=true;scene.add(deck);
-  var schM=new THREE.MeshStandardMaterial({color:0x3c3f45,roughness:0.35,metalness:0.7});
+  var schM=_standardMat({color:0x3c3f45,roughness:0.35,metalness:0.7});
   [-0.7,0.7].forEach(function(oz){var s=new THREE.Mesh(new THREE.BoxGeometry(bl,0.1,0.14),schM);s.position.set((BX0+BX1)/2,BY+0.3,-30+oz);scene.add(s);});
   for(var sw=0;sw<Math.floor(bl/2.4);sw++){var q=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.07,2.0),stdMat(0x6a4a2c,0.9));q.position.set(BX1+1.2+sw*2.4,BY+0.27,-30);scene.add(q);}
   [-1.7,1.7].forEach(function(oz){var g=new THREE.Mesh(new THREE.BoxGeometry(bl,0.7,0.08),stdMat(0x4a5560,0.6));g.position.set((BX0+BX1)/2,BY+0.6,-30+oz);scene.add(g);});
@@ -3475,7 +3567,7 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
        an Land wuerde sofort die Ringstrasse und den Bauernhof ueberdecken. Das Portal sitzt
        deshalb in einer Felsinsel IM Wasser, kurz vor dem Brueckenkopf: die Strecke verschwindet
        sichtbar im Berg, statt in der Luft abzureissen. */
-    var felsM=new THREE.MeshStandardMaterial({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
+    var felsM=_standardMat({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
     var hue=new THREE.Mesh(new THREE.SphereGeometry(11,12,8,0,6.283,0,Math.PI/2),felsM);
     hue.userData.gelaende=1;hue.position.set(BX0-14,-2,-30);hue.scale.set(1.25,1.15,1.35);hue.receiveShadow=true;scene.add(hue);
     var pM=betMat(0x9a948a,0.9);
@@ -3492,7 +3584,7 @@ var strMatH=stdMat(0x4a4a53,0.92,true),strMatV=stdMat(0x4a4a53,0.92,true);  /* e
   /* 🚂 Zug: Lok + 3 Wagen, pendelt über die Brücke */
   var zug=new THREE.Group();
   function wagen(c,ln){var w=new THREE.Group();
-    var k=new THREE.Mesh(new THREE.BoxGeometry(ln,1.15,1.7),new THREE.MeshStandardMaterial({color:c,roughness:0.4,metalness:0.25}));k.position.y=0.95;w.add(k);
+    var k=new THREE.Mesh(new THREE.BoxGeometry(ln,1.15,1.7),_standardMat({color:c,roughness:0.4,metalness:0.25}));k.position.y=0.95;w.add(k);
     var d=new THREE.Mesh(new THREE.BoxGeometry(ln*0.96,0.12,1.5),stdMat(0x2c2f34,0.5));d.position.y=1.58;w.add(d);
     [-ln*0.32,ln*0.32].forEach(function(ox){[-0.65,0.65].forEach(function(oz){
       var r=new THREE.Mesh(new THREE.CylinderGeometry(0.24,0.24,0.16,10),stdMat(0x22252a,0.4));
@@ -3675,7 +3767,7 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
   // Bordsteine an den Fahrbahnkanten + weicher Erdstreifen zwischen Gehweg und Rasen
   var bordM=betMat(0xbfbcb2,0.85);
   if(!_texErde)_texErde=_strukTex("erde");
-  var erdM=new THREE.MeshStandardMaterial({color:0x9a8a68,roughness:1,map:_texErde});
+  var erdM=_standardMat({color:0x9a8a68,roughness:1,map:_texErde});
   /* bord() ist durch bordsteinKante() ersetzt (Absenkungen an den Zebrastreifen, Runde 93) */
   function erd(w,d,x,z){var e=new THREE.Mesh(new THREE.PlaneGeometry(w,d),erdM);
     e.rotation.x=-Math.PI/2;e.position.set(x,0.005,z);e.receiveShadow=true;scene.add(e);}
@@ -3758,7 +3850,7 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
      die die Verbreiterung je Seite gebracht hat — der Fahrstreifen bleibt frei. */
   (function parkstreifen(){
     var SZp=GH*CS/2+12;
-    var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
+    var mM=_standardMat({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
     (window._markMats=window._markMats||[]).push(mM);
     [SZp,-SZp].forEach(function(zc){
       /* Parkfelder zwischen Randlinie (HS_PARK) und Bordstein (HS_BORD). Die eigene
@@ -3799,7 +3891,7 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
        Richtung Bordstein). Der Bus fuhr ausserdem auf der anderen Strassenseite und hielt
        bei x -8 auf der Fahrbahn, die Bucht bei x 30 blieb leer. Jetzt: gelbe Buchtlinien
        und "BUS" im Parkstreifen, der Bus faehrt westwaerts und biegt hinein. */
-    var bx=-8,bz=SZp-(HS_PARK+HS_BORD)/2,gM=new THREE.MeshStandardMaterial({color:0xe8c030,roughness:0.8});
+    var bx=-8,bz=SZp-(HS_PARK+HS_BORD)/2,gM=_standardMat({color:0xe8c030,roughness:0.8});
     gM.envMapIntensity=0.12;(window._gelbMats=window._gelbMats||[]).push(gM);   /* Runde 97: gelb bleibt gelb (vorher _markMats → nach dem ersten Abend grau) */
     [bx-11,bx+11].forEach(function(ex){
       var bs=new THREE.Mesh(new THREE.PlaneGeometry(0.15,HS_BORD-HS_PARK),gM);
@@ -3938,7 +4030,7 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
         stueck(SZ9+12+7.92+ECK_R, RGZ_S-5.6,    false, xe, 0.05, xc);});});
   })();
   // Zebrastreifen an den Kreuzungen (Fussgaenger queren die Hauptstrassen)
-  var zMat=new THREE.MeshStandardMaterial({color:0xcfcfc6,roughness:0.85});zMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(zMat);
+  var zMat=_standardMat({color:0xcfcfc6,roughness:0.85});zMat.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(zMat);
   /* 🚸 FUSSGAENGERSTREIFEN (Runde 96, User: „übergänge schöner"). Vorher: weisse Balken 0,62 m im
      1,15-m-Takt, sonst nichts — der Gehweg hoerte am Streifen einfach auf (Bilder k24-*-vor).
      Jetzt wie in der Schweiz: GELBE Streifen 0,5 m breit mit 0,5 m Luecke (SN 640 241), an jedem
@@ -3956,7 +4048,7 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
      ~450 Streifen, 94 Schilder — mit 420/80 waeren die letzten STILL weggefallen, _zebSetz prueft nur), ohne
      frustumCulled (die Instanzen liegen ueber die ganze Welt, die Huellkugel waere falsch). */
   var ZEB_GELB=0xe8b73a,ZEB_NACHT=0x9a7d2a;
-  var zGelb=new THREE.MeshStandardMaterial({color:ZEB_GELB,roughness:0.85});zGelb.envMapIntensity=0.12;
+  var zGelb=_standardMat({color:ZEB_GELB,roughness:0.85});zGelb.envMapIntensity=0.12;
   (window._gelbMats=window._gelbMats||[]).push(zGelb);
   function _tastTex(){var cv=document.createElement("canvas");cv.width=cv.height=128;var c=cv.getContext("2d");
     c.fillStyle="#e4e0d4";c.fillRect(0,0,128,128);
@@ -3980,14 +4072,14 @@ strasse.rotation.x=-Math.PI/2;strasse.position.set(0,-0.003,GH*CS/2+12);strasse.
     var sG=new THREE.PlaneGeometry(4.8,0.5);sG.rotateX(-Math.PI/2);
     var sI=new THREE.InstancedMesh(sG,zGelb,800);sI.count=0;sI.receiveShadow=true;sI.frustumCulled=false;scene.add(sI);
     var fG=new THREE.PlaneGeometry(4.8,0.9);fG.rotateX(-Math.PI/2);
-    var fM=new THREE.MeshStandardMaterial({map:_tastTex(),roughness:0.9});fM.envMapIntensity=0.15;
+    var fM=_standardMat({map:_tastTex(),roughness:0.9});fM.envMapIntensity=0.15;
     var fI=new THREE.InstancedMesh(fG,fM,160);fI.count=0;fI.receiveShadow=true;fI.frustumCulled=false;scene.add(fI);
     var pG=new THREE.CylinderGeometry(0.035,0.035,2.3,8);pG.translate(0,1.15,0);
-    var pM=new THREE.MeshStandardMaterial({color:0x8a8f96,roughness:0.55,metalness:0.35});
+    var pM=_standardMat({color:0x8a8f96,roughness:0.55,metalness:0.35});
     var pI=new THREE.InstancedMesh(pG,pM,160);pI.count=0;pI.castShadow=true;pI.frustumCulled=false;scene.add(pI);
     var tG=new THREE.BoxGeometry(0.6,0.6,0.03);tG.translate(0,2.0,0);
-    var rM=new THREE.MeshStandardMaterial({color:0x9aa0a6,roughness:0.6,metalness:0.3});
-    var vM=new THREE.MeshStandardMaterial({map:_schildTex(),roughness:0.5});vM.envMapIntensity=0.2;
+    var rM=_standardMat({color:0x9aa0a6,roughness:0.6,metalness:0.3});
+    var vM=_standardMat({map:_schildTex(),roughness:0.5});vM.envMapIntensity=0.2;
     var tI=new THREE.InstancedMesh(tG,[rM,rM,rM,rM,vM,rM],160);tI.count=0;tI.castShadow=true;tI.frustumCulled=false;scene.add(tI);
     /* ⚠️ GEMESSEN (Bilder k25-gewerbe/-burgdorf-nach: gar kein Streifen; k25-schild-nah: kein Feld, kein
        Schild): die Entfernungs-Ausblendung entscheidet pro OBJEKT nach dessen Lage — eine InstancedMesh
@@ -4145,7 +4237,7 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
     var g9=new THREE.BufferGeometry();
     g9.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
     g9.computeVertexNormals();return g9;})(),
-      tuftMat=new THREE.MeshStandardMaterial({roughness:1,metalness:0,envMapIntensity:0.2,side:THREE.DoubleSide});
+      tuftMat=_standardMat({roughness:1,metalness:0,envMapIntensity:0.2,side:THREE.DoubleSide});
   var NT=430,tuft=new THREE.InstancedMesh(tuftGeo,tuftMat,NT);tuft.receiveShadow=true;tuft.castShadow=false;
   var ti=0,c=new THREE.Color();
   for(var g=0;g<NT*3&&ti<NT;g++){
@@ -4163,7 +4255,7 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   tuft.count=ti;tuft.instanceMatrix.needsUpdate=true;if(tuft.instanceColor)tuft.instanceColor.needsUpdate=true;scene.add(tuft);
   // 2) Wildblumen (kleine Farbtupfer auf duennem Halm)
   var flGeo=new THREE.SphereGeometry(0.11,6,5),
-      flMat=new THREE.MeshStandardMaterial({roughness:0.7,metalness:0,transparent:true,opacity:1});
+      flMat=_standardMat({roughness:0.7,metalness:0,transparent:true,opacity:1});
   window._flMat=flMat; // nachts ausfaden (sonst Rausch-Sprenkel im Dunkeln)
   var NF=85,fl=new THREE.InstancedMesh(flGeo,flMat,NF);
   var FCOL=[0xffd94a,0xff7ab0,0xb98cff,0xff5a4a,0xffe08a,0xffffff,0xffd94a,0xff7ab0,0xffb347,0xe86aa0]; // Weiss nur 1/10
@@ -4181,13 +4273,165 @@ if(THREE.GLTFLoader){["lp_tree.glb"].forEach(function(){
   }
   fl.count=fi;fl.instanceMatrix.needsUpdate=true;if(fl.instanceColor)fl.instanceColor.needsUpdate=true;scene.add(fl);
   // Stiele (ein gemeinsamer duenner Zylinder-Instancer unter den Blueten)
-  var stGeo=new THREE.CylinderGeometry(0.02,0.03,0.28,4),stMat=new THREE.MeshStandardMaterial({color:0x3a6a34,roughness:1});
+  var stGeo=new THREE.CylinderGeometry(0.02,0.03,0.28,4),stMat=_standardMat({color:0x3a6a34,roughness:1});
   var st=new THREE.InstancedMesh(stGeo,stMat,fi);var sm=new THREE.Matrix4(),v=new THREE.Vector3(),q=new THREE.Quaternion(),sv=new THREE.Vector3(1,1,1);
   for(var si=0;si<fi;si++){fl.getMatrixAt(si,sm);var sc7=Math.cbrt(Math.abs(sm.elements[0]*sm.elements[5]*sm.elements[10]))||1;v.setFromMatrixPosition(sm);v.y=0.14*sc7;sv.set(1,sc7,1);sm.compose(v,q,sv);st.setMatrixAt(si,sm);}
   st.instanceMatrix.needsUpdate=true;scene.add(st);
 })();
 
 // ---- Dorf rundherum: Strassen, Nachbarhaeuser, Baeume, Laternen ----
+/* Stadtgestaltung: gemeinsame Baufluchten, echte Erdgeschosse und ein ruhiges
+   Materialsystem. Alle Höhen sind Meter; die Geometrie bleibt auf dem Handy klein. */
+var _stadtBauten=[],_stadtGlas=[],_stadtSchilder={},_stadtSteinM=null,_stadtPalettenMats=new WeakSet(),_stadtLineareMats=new WeakSet(),_stadtDachMats=[];
+function _stadtPflasterMat(){
+  if(_stadtSteinM)return _stadtSteinM;
+  var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
+  c.fillStyle="#9d9e94";c.fillRect(0,0,256,256);
+  for(var y=0;y<16;y++)for(var x=-1;x<9;x++){
+    var px=x*32+(y%2)*16,v=((x*17+y*31+97)%13+13)%13;
+    c.fillStyle="rgb("+(175+v)+","+(174+v)+","+(163+v)+")";
+    c.fillRect(px+0.7,y*16+0.7,30.6,14.6);
+    c.fillStyle="rgba(255,255,246,.12)";c.fillRect(px+1,y*16+1,30,1);
+  }
+  var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;
+  t.encoding=THREE.sRGBEncoding;t.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
+  _stadtSteinM=_standardMat({map:t,color:0xe0dfd5,roughness:0.96});
+  return _stadtSteinM;
+}
+function _stadtBoden(w,d,x,z,y){
+  var geo=new THREE.PlaneGeometry(w,d),uv=geo.attributes.uv;
+  for(var i=0;i<uv.count;i++)uv.setXY(i,uv.getX(i)*w/5,uv.getY(i)*d/5);
+  var m=new THREE.Mesh(geo,_stadtPflasterMat());m.rotation.x=-Math.PI/2;
+  m.position.set(x,y===undefined?-0.024:y,z);m.receiveShadow=true;scene.add(m);return m;
+}
+function _stadtGlasMat(i){
+  i=((i%4)+4)%4;
+  if(!_stadtGlas[i]){var m=_standardMat({color:[0x345661,0x4e6970,0x41636b,0x58757b][i],
+    roughness:0.24,metalness:0.08,emissive:0xffd59a,emissiveIntensity:0});
+    _stadtFarbton(m);if(i!==2)dorfFenster.push(m);_stadtGlas[i]=m;}
+  return _stadtGlas[i];
+}
+function _stadtSchild(seed){
+  var namen=["BÄCKEREI","BUCHHANDLUNG","APOTHEKE","BLUMEN","CAFÉ","ATELIER"],i=((seed%6)+6)%6;
+  if(!_stadtSchilder[i]){var cv=document.createElement("canvas");cv.width=512;cv.height=96;var c=cv.getContext("2d");
+    c.fillStyle=["#704c39","#344e58","#3b6051","#735b65","#4c5b4c","#615b50"][i];c.fillRect(0,0,512,96);
+    c.strokeStyle="#d4c7a4";c.lineWidth=3;c.strokeRect(7,7,498,82);
+    c.fillStyle="#fff2d6";c.font="600 37px Georgia,serif";c.textAlign="center";c.textBaseline="middle";
+    c.fillText(namen[i],256,50,462);
+    var t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;
+    var m=_standardMat({map:t,emissiveMap:t,emissive:0xffdfa9,emissiveIntensity:0,roughness:0.7});
+    dorfFenster.push(m);_stadtSchilder[i]=m;}
+  return _stadtSchilder[i];
+}
+function _stadtFarbton(m){
+  if(!_stadtLineareMats.has(m)){m.color.convertSRGBToLinear();_stadtLineareMats.add(m);}return m;
+}
+function _stadtDachMat(seed){
+  var i=Math.abs(seed)%2;if(_stadtDachMats[i])return _stadtDachMats[i];
+  var cv=document.createElement("canvas");cv.width=cv.height=256;var c=cv.getContext("2d");
+  c.fillStyle="#707575";c.fillRect(0,0,256,256);
+  for(var y=0;y<16;y++)for(var x=-1;x<9;x++){var v=((x*13+y*7+103)%17+17)%17;
+    c.fillStyle="rgb("+(156+v)+","+(158+v)+","+(157+v)+")";
+    c.fillRect(x*32+(y%2)*16+.7,y*16+.7,30.6,14.3);}
+  var t=new THREE.CanvasTexture(cv);t.encoding=THREE.sRGBEncoding;
+  t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(.25,.25);
+  var m=_standardMat({map:t,color:i?0x736153:0x566269,roughness:.96,envMapIntensity:.18});
+  _stadtDachMats[i]=_stadtFarbton(m);return m;
+}
+function _stadthaus(x,z,rot,seed,w,d){
+  w=w||11.4;d=d||8.2;
+  var et=3+(seed%3===0?1:0),h=3+(et-1)*2.7,g=new THREE.Group();
+  g.name="Stadthaus "+seed;
+  var palette=[0xc9bda4,0xb9b9ad,0xd8cbb5,0xc0b2a4,0xb8c0bb,0xd2bfaa];
+  var wand=stdMat(palette[((seed%6)+6)%6],0.88),stein=stdMat(0xc5c1b4,0.91),
+      rahmen=stdMat(0xe8e1d0,0.78),holz=stdMat(0x3b4743,0.75),dach=_stadtDachMat(seed);
+  [wand,stein,rahmen,holz].forEach(_stadtFarbton);
+  function box(w,h,d,x,y,z,mat){var o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);
+    o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;g.add(o);return o;}
+  box(w,h,d,0,h/2,0,wand);
+  box(w+0.18,0.5,d+0.18,0,.23,0,stein);
+  box(w+0.22,0.22,d+0.22,0,3.03,0,stein);
+  box(w+0.32,0.24,d+0.32,0,h+.05,0,rahmen);
+  // Durchgehende Geschosse mit schmalen Gesimsen statt unbestimmter hoher Kästen.
+  for(var e=1;e<et-1;e++)box(w+.08,.1,d+.08,0,3+e*2.7,0,stein);
+  var columns=Math.max(3,Math.floor(w/2.65)),step=(w-1.8)/columns;
+  for(var e=1;e<et;e++)for(var k=0;k<columns;k++){
+    var wx=-w/2+.9+step*(k+.5),wy=3+(e-.5)*2.7;
+    [-1,1].forEach(function(face){
+      box(1.33,1.68,.11,wx,wy,face*(d/2+.035),rahmen);
+      box(1.08,1.42,.06,wx,wy,face*(d/2+.105),_stadtGlasMat(seed+e+k));
+      box(1.47,.1,.28,wx,wy-.86,face*(d/2+.13),stein);
+      box(.055,1.42,.025,wx,wy,face*(d/2+.15),rahmen);
+    });
+  }
+  // Schaufenster, Markise und Eingang zeigen, wo die öffentliche Strassenseite ist.
+  var shopW=w*.58,shopX=-w*.15;
+  box(shopW+.22,2.16,.12,shopX,1.35,d/2+.05,rahmen);
+  box(shopW,1.94,.08,shopX,1.35,d/2+.14,_stadtGlasMat(seed));
+  for(var sx=-1;sx<=1;sx++)box(.08,1.94,.04,shopX+sx*shopW/3,1.35,d/2+.195,holz);
+  var doorX=w*.34;
+  box(1.36,2.35,.13,doorX,1.18,d/2+.06,rahmen);
+  box(1.1,2.12,.09,doorX,1.12,d/2+.15,holz);
+  box(.8,1.12,.04,doorX,1.5,d/2+.21,_stadtGlasMat(seed+1));
+  box(.05,.36,.12,doorX+.35,1.05,d/2+.27,stein);
+  box(1.6,.1,.55,doorX,.04,d/2+.25,stein);
+  var aw=box(shopW+.45,.09,1.18,shopX,2.63,d/2+.57,holz);aw.rotation.x=.12;
+  var sign=new THREE.Mesh(new THREE.PlaneGeometry(shopW,.4),_stadtSchild(seed));
+  sign.position.set(shopX,3.3,d/2+.4);
+  // Die Beschriftung gehört zur Fassade und bleibt mit ihr lesbar; die normale
+  // Kamera-Sichtfeldprüfung gilt weiter. Elf Schilder brauchen keinen Detail-LOD.
+  sign.userData.nieAusblenden=true;g.add(sign);
+  // Ein Satteldach mit durchgehendem First und verputztem Giebel.
+  var roof=new THREE.Shape(),rw=w/2+.16,rh=1.55;
+  roof.moveTo(-rw,0);roof.lineTo(0,rh);roof.lineTo(rw,0);roof.closePath();
+  var rg=new THREE.ExtrudeGeometry(roof,{depth:d+.3,bevelEnabled:false,steps:1,curveSegments:1});
+  var rm=new THREE.Mesh(rg,[wand,dach]);rm.position.set(0,h+.16,-d/2-.15);rm.castShadow=true;g.add(rm);
+  box(.6,1.4,.65,-w*.28,h+1.25,-d*.18,stein);
+  // Rückwärtige Haustür: der Block hat auch einen glaubwürdigen Hof.
+  box(1.15,2.1,.1,0,1.05,-d/2-.05,holz);
+  g.position.set(x,0,z);g.rotation.y=rot||0;scene.add(g);
+  addSolidRot(x,z,w+.2,d+.2,rot||0,null);
+  _stadtBauten.push(g);if(window._zfStatisch)window._zfStatisch(g);
+  return {g:g,h:h};
+}
+/* Weiche Kontaktschatten verankern Gebäude auch ohne die teure mobile Schattenkarte.
+   Eine gemeinsame 64px-Textur; je räumlicher Zelle ein InstancedMesh, keine neuen Lichter. */
+var _stadtKontaktTimer=null,_stadtKontaktBatches=[],_stadtKontaktGeo=null,_stadtKontaktMat=null;
+function _stadtKontaktAufbau(){
+  var roots=Array.from(new Set((window._gebaeude||[]).concat(_stadtBauten,(window._immo||[]).map(function(e){return e.grp;})))),
+      bb=new THREE.Box3(),zellen={},zahl=0;
+  var eigene=new Set(_stadtBauten.concat((window._immo||[]).map(function(e){return e.grp;})));
+  roots.forEach(function(o){
+    if(!o||!o.parent||o._bewegt||o.userData.animiert||(!o.visible&&!o._gsAus))return;
+    // Bäume, Pavillons und Freizeitgeräte brauchen keine Gebäudegrundierung.
+    if(!eigene.has(o)&&!/(haus|halle|rathaus|museum|bibliothek|hotel|kino|post|bank|praxis|schule|bahnhof|werkstatt|fabrik|laden|markt|kirche|hospital|kranken|tower|hochhaus|wohn|casino|club|theater|terminal|hangar|muehle|scheune)/i.test(o.userData.datei||""))return;
+    bb.setFromObject(o);var w=bb.max.x-bb.min.x,d=bb.max.z-bb.min.z,h=bb.max.y-bb.min.y;
+    if(w<4||d<4||w>52||d>52||h<3||h>45||w/d>5||d/w>5||bb.min.y<-.6||bb.min.y>.6)return;
+    var x=(bb.min.x+bb.max.x)/2,z=(bb.min.z+bb.max.z)/2,key=Math.floor(x/64)+","+Math.floor(z/64);
+    (zellen[key]||(zellen[key]=[])).push([x,z,w+1.8,d+1.8,Math.max(.018,bb.min.y+.018)]);zahl++;
+  });
+  if(!_stadtKontaktMat){var cv=document.createElement("canvas");cv.width=cv.height=64;var c=cv.getContext("2d");
+    var gr=c.createRadialGradient(32,32,7,32,32,32);gr.addColorStop(0,"rgba(20,25,23,.9)");
+    gr.addColorStop(.7,"rgba(20,25,23,.65)");gr.addColorStop(1,"rgba(20,25,23,0)");c.fillStyle=gr;c.fillRect(0,0,64,64);
+    _stadtKontaktMat=new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true,opacity:.23,depthWrite:false,
+      polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1});
+    _stadtKontaktGeo=new THREE.PlaneGeometry(1,1);}
+  var alt=new Set(_stadtKontaktBatches);
+  if(window._instGruppen)window._instGruppen=window._instGruppen.filter(function(q){return !alt.has(q.m);});
+  _stadtKontaktBatches.forEach(function(m){scene.remove(m);if(m.dispose)m.dispose();});_stadtKontaktBatches=[];
+  var dummy=new THREE.Object3D();
+  Object.keys(zellen).forEach(function(key){var a=zellen[key],m=new THREE.InstancedMesh(_stadtKontaktGeo,_stadtKontaktMat,a.length);
+    var cx=0,cz=0,radius=0;a.forEach(function(p){cx+=p[0];cz+=p[1];});cx/=a.length;cz/=a.length;
+    a.forEach(function(p,i){dummy.position.set(p[0]-cx,p[4],p[1]-cz);dummy.rotation.set(-Math.PI/2,0,0);dummy.scale.set(p[2],p[3],1);dummy.updateMatrix();m.setMatrixAt(i,dummy.matrix);
+      radius=Math.max(radius,Math.hypot(p[0]-cx,p[1]-cz)+Math.hypot(p[2],p[3])/2);});
+    m.position.set(cx,0,cz);m.instanceMatrix.needsUpdate=true;m.frustumCulled=false;m.userData.nieAusblenden=true;m.name="Gebäudekontakt";
+    scene.add(m);_stadtKontaktBatches.push(m);
+    (window._instGruppen||(window._instGruppen=[])).push({m:m,x:cx,z:cz,r:radius});
+  });
+  window._stadtKontaktZahl=zahl;
+}
+window._stadtKontaktPlan=function(){clearTimeout(_stadtKontaktTimer);_stadtKontaktTimer=setTimeout(_stadtKontaktAufbau,1800);};
+
 var dorfFenster=[];
 /* 🩹 Lampen, die VOR dieser Zeile entstanden sind (Parkplatz), nachtragen. */
 if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLampenSpaet);window._nachtLampenSpaet=null;}
@@ -4315,7 +4559,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       linie(N+E,S-E,[[-30,5.5]],false,-X+o);
       linie(N+E,S-E,[],false,X+o);});
     /* ── Leitplanken ── */
-    var holmM=new THREE.MeshStandardMaterial({color:0xb4b9c0,roughness:0.35,metalness:0.65});
+    var holmM=_standardMat({color:0xb4b9c0,roughness:0.35,metalness:0.65});
     var pfPos=[];
     function planke(x0,z0,x1,z1){
       var dx=x1-x0,dz=z1-z0,len=Math.hypot(dx,dz),wk=Math.atan2(dx,dz);
@@ -4357,7 +4601,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
        Stelle streiten sich um die Sichtbarkeit. */
     /* ── Gullys in der Rinne + Schachtdeckel in der Fahrbahn ── */
     var gulliG=new THREE.BoxGeometry(0.62,0.04,0.42);
-    var gulliM=new THREE.MeshStandardMaterial({color:0x3a3d43,roughness:0.85,metalness:0.35});
+    var gulliM=_standardMat({color:0x3a3d43,roughness:0.85,metalness:0.35});
     var gP=[];
     [-SZd,SZd].forEach(function(zc){[-7.6,7.6].forEach(function(o){
       for(var x=-RL/2+14;x<RL/2-14;x+=22){
@@ -4495,7 +4739,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
   function fensterGruppe(bw,bh,laden){
     _fdMats();
     var g=new THREE.Group();
-    var glasM=new THREE.MeshStandardMaterial({color:0xbfd8e8,emissive:0xffd890,
+    var glasM=_standardMat({color:0xbfd8e8,emissive:0xffd890,
       emissiveIntensity:0,roughness:0.2,metalness:0.05});
     g.add(new THREE.Mesh(new THREE.BoxGeometry(bw,bh,0.04),glasM));
     var lb=0.09;                                             /* Rahmenbreite */
@@ -4535,7 +4779,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     [bh*0.24,-bh*0.22].forEach(function(oy){                  /* Fuellungen */
       var f=new THREE.Mesh(new THREE.BoxGeometry(bw*0.62,bh*0.3,0.02),blM);
       f.position.set(0,oy,0.06);g.add(f);});
-    var obM=new THREE.MeshStandardMaterial({color:0xcfe4f0,emissive:0xffd890,
+    var obM=_standardMat({color:0xcfe4f0,emissive:0xffd890,
       emissiveIntensity:0,roughness:0.2});
     var ob=new THREE.Mesh(new THREE.BoxGeometry(bw*0.66,0.16,0.03),obM);
     ob.position.set(0,bh/2-0.22,0.06);g.add(ob);              /* Oberlicht */
@@ -4555,6 +4799,8 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
 
   function haus(x,z,rotY,seed){
     var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
+    if(Math.abs(z+SZ+31)<.1&&x>=-40&&x<=36){var sh=_stadthaus(x,z,rotY,seed);
+      (window._immo=window._immo||[]).push({x:x,z:z,grp:sh.g,preis:1800+(seed%5)*600,h:sh.h});return;}
     var g=new THREE.Group();
     var w=4+(seed%3),d=3.6+((seed*7)%2),h=2.3+((seed*3)%2)*0.5;
     var wandC=new THREE.Color(WANDF[seed%WANDF.length]).offsetHSL(((seed*7)%11-5)*0.0025,0,((seed*13)%9-4)*0.012).getHex(),dachC=DACHF[seed%DACHF.length];
@@ -4616,7 +4862,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       if(window._schindelTex)dch.material.map=window._schindelTex;g.add(dch);
       // Erdgeschoss: Schaufenster + Tuer zur Strasse
       var sf=new THREE.Mesh(new THREE.BoxGeometry(bw*0.5,1.5,0.08),
-        new THREE.MeshStandardMaterial({color:0x9ec4d8,emissive:0xffe0a0,emissiveIntensity:0,roughness:0.15}));
+        _standardMat({color:0x9ec4d8,emissive:0xffe0a0,emissiveIntensity:0,roughness:0.15}));
       sf.position.set(bx+bw*0.36,1.35,dep/2+0.05);g.add(sf);dorfFenster.push(sf.material);
       var td=new THREE.Mesh(new THREE.BoxGeometry(1.0,2.1,0.09),stdMat(0x4a3a2c,0.55));
       td.position.set(bx+bw*0.78,1.05,dep/2+0.05);g.add(td);
@@ -4628,9 +4874,9 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       lx.fillStyle=lc[(k*2+n)%lc.length];lx.fillRect(0,0,128,44);
       lx.fillStyle="rgba(255,255,255,0.9)";lx.fillRect(3,3,122,38);
       lx.font="26px sans-serif";lx.textAlign="center";lx.textBaseline="middle";
-      lx.fillText(LS[(k*3+n)%LS.length],64,24);
+      lx.font="bold 13px system-ui";lx.fillText(["BÄCKEREI","CAFÉ","BÜCHER","BLUMEN","FEINKOST","ATELIER"][(k+n)%6],64,24,114);
       var ltx=new THREE.CanvasTexture(lcv);
-      var lm=new THREE.MeshStandardMaterial({map:ltx,emissiveMap:ltx,emissive:new THREE.Color(0xffe8b0),emissiveIntensity:0,roughness:0.5,side:THREE.DoubleSide});
+      var lm=_standardMat({map:ltx,emissiveMap:ltx,emissive:new THREE.Color(0xffe8b0),emissiveIntensity:0,roughness:0.5,side:THREE.DoubleSide});
       dorfFenster.push(lm);
       var lsch=new THREE.Mesh(new THREE.PlaneGeometry(bw*0.5,0.52),lm);
       lsch.position.set(bx+bw*0.36,2.95,dep/2+0.09);g.add(lsch);
@@ -4640,14 +4886,14 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
         var ra=new THREE.Mesh(new THREE.BoxGeometry(1.15,1.35,0.05),stdMat(0x6a6258,0.7));
         ra.position.set(px,0.9+e*2.5,dep/2+0.02);g.add(ra);
         var fe=new THREE.Mesh(new THREE.BoxGeometry(0.95,1.15,0.05),
-          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+          _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
         fe.position.set(px,0.9+e*2.5,dep/2+0.05);g.add(fe);
         if((e+fx+k)%2===0)dorfFenster.push(fe.material);
         // Rueckseite: gleiches Raster (Zeilen sind rundum einsehbar)
         var rr=new THREE.Mesh(new THREE.BoxGeometry(1.15,1.35,0.05),stdMat(0x6a6258,0.7));
         rr.position.set(px,0.9+e*2.5,-dep/2-0.02);g.add(rr);
         var rf=new THREE.Mesh(new THREE.BoxGeometry(0.95,1.15,0.05),
-          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+          _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
         rf.position.set(px,0.9+e*2.5,-dep/2-0.05);g.add(rf);
         if((e+fx+k)%2===1)dorfFenster.push(rf.material);}
       // Erdgeschoss-Rueckseite: Hintertuer
@@ -4684,16 +4930,16 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
   [-8,4,22,40].forEach(function(hz){haus(RX+11,hz,-Math.PI/2,seed++);}); // zwischen den Hauptstrassen: nichts ragt in Fahrbahn/Gehweg
   // Vorgaerten: Plattenweg zur Tuer + Hecken + Blumen (Haeuser wirkten wegelos im Gras)
   if(!_texBlatt)_texBlatt=_strukTex("blatt");
-  var heckM=new THREE.MeshStandardMaterial({color:0x4a7a42,roughness:0.95,map:_texBlatt}),wegM=betMat(0xcfc8b8,0.9),
+  var heckM=_standardMat({color:0x4a7a42,roughness:0.95,map:_texBlatt}),wegM=betMat(0xcfc8b8,0.9),
       blumG=new THREE.SphereGeometry(0.1,6,5),BLF=[0xffd94a,0xff7ab0,0xffffff,0xff5a4a];
   /* 🪵 Holzzaun / 🧱 Steinmauer ums Grundstueck + Gartentor (User: „diverse holzaeune bei
      einfamilienhaus, kleine garten, diverse steinmauer"). Abwechselnd, damit die Zeile nicht
      uniform wirkt; das Tor sitzt immer am Gartenweg. */
   var _zaunLatteG=new THREE.BoxGeometry(0.09,0.95,0.09),
       _zaunRiegelG=new THREE.BoxGeometry(6.4,0.09,0.07),
-      _zaunM=new THREE.MeshStandardMaterial({color:0xd8c9a8,roughness:0.9}),
+      _zaunM=_standardMat({color:0xd8c9a8,roughness:0.9}),
       _mauerM=betMat(0xb4ada0,0.95),
-      _torM=new THREE.MeshStandardMaterial({color:0xc0a878,roughness:0.85});
+      _torM=_standardMat({color:0xc0a878,roughness:0.85});
   function einfriedung(hx,hz,dir,art){
     var g=new THREE.Group();
     function seite(len,ax,az,rot,mitTor){
@@ -4761,11 +5007,11 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       var he=new THREE.Mesh(new THREE.BoxGeometry(3.2,0.5,0.45),heckM);
       he.position.set(hx+off,0.25,hz+dir*4.7);he.castShadow=true;scene.add(he);});
     for(var b9=0;b9<3;b9++){
-      var bl=new THREE.Mesh(blumG,new THREE.MeshStandardMaterial({color:BLF[(b9+hx&3)>=0?(b9+Math.abs(hx|0))%4:0],roughness:0.7}));
+      var bl=new THREE.Mesh(blumG,_standardMat({color:BLF[(b9+hx&3)>=0?(b9+Math.abs(hx|0))%4:0],roughness:0.7}));
       bl.position.set(hx+(b9-1)*1.5,0.18,hz+dir*3.6);scene.add(bl);
       var st9=new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.03,0.22,4),heckM);
       st9.position.set(bl.position.x,0.09,bl.position.z);scene.add(st9);}}
-  [-38,-26,-14,-2,10,22,34].forEach(function(hx){vorgarten(hx,-SZ-31,1);});    // Nordreihe -> Strasse im Sueden(+z)
+  _stadtBoden(144,21.5,0,-SZ-33.25);    // Nordreihe -> Strasse im Sueden(+z)
   /* Suedreihe: kein Vorgarten mehr — das Einzelhaus (64|77) ist seit Runde 102 weg (s. Haeuserzeilen oben). */
   /* 🚶 Hinterhof-Gehweg zwischen Haeuserzeile (±(SZ+31)) und 2. Reihe (±(SZ+47)):
      der Streifen dazwischen war blanke Wiese (User: „hinten auch ... gehweg?"). */
@@ -4795,7 +5041,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     var lg=new THREE.Group();
     var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.1,7),metallM(0x3a3a42));mast.position.y=1.55;lg.add(mast);
     var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),
-      new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
+      _standardMat({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
     kopf.position.y=3.2;lg.add(kopf);dorfFenster.push(kopf.material);
     // warmer Lichtschein am Boden (nachts sichtbar)
     var scheinMat=new THREE.MeshBasicMaterial({color:0xffd68c,transparent:true,opacity:0.0,blending:THREE.AdditiveBlending,depthWrite:false});
@@ -4810,7 +5056,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
   var SZ=GH*CS/2;
   var _balkG=new THREE.BoxGeometry(1.4,0.1,0.8),_balkWG=new THREE.BoxGeometry(1.4,0.55,0.05),
       _balkSG=new THREE.BoxGeometry(0.05,0.55,0.75),_rahmG=new THREE.BoxGeometry(1.08,1.18,0.05),
-      _balkM=new THREE.MeshStandardMaterial({color:0xcfe4ee,transparent:true,opacity:0.45,roughness:0.2}),
+      _balkM=_standardMat({color:0xcfe4ee,transparent:true,opacity:0.45,roughness:0.2}),
       _rahmM=stdMat(0x5a544c,0.7),_plattM=betMat(0xb8b2a6,0.8);
   function block(x,z,rotY,etagen,w,d,farbe){
     var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
@@ -4838,12 +5084,12 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       if(e9===0&&Math.abs(fx9)<1.3)continue; // Platz fuer die Tuer
       var rah=new THREE.Mesh(_rahmG,_rahmM);rah.position.set(fx9,1.3+e9*1.9,d/2+0.015);g.add(rah); // Rahmen
       var fe9=new THREE.Mesh(new THREE.BoxGeometry(0.9,1.0,0.06),
-        new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+        _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
       fe9.position.set(fx9,1.3+e9*1.9,d/2+0.05);g.add(fe9);
       if((e9+wx9)%2===0)dorfFenster.push(fe9.material);
       var rr9=new THREE.Mesh(_rahmG,_rahmM);rr9.position.set(fx9,1.3+e9*1.9,-d/2-0.015);g.add(rr9);
       var rb9=new THREE.Mesh(new THREE.BoxGeometry(0.9,1.0,0.06),
-        new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+        _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
       rb9.position.set(fx9,1.3+e9*1.9,-d/2-0.05);g.add(rb9);
       if((e9+wx9)%2===1)dorfFenster.push(rb9.material); // Rueckseite war eine nackte Wand
       if(e9>=1&&(e9+wx9)%2===1){ // Balkon (versetzt zu den Nachtlicht-Fenstern)
@@ -4887,7 +5133,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     var krM=stdMat(0xc8a84a,0.35);var kr1=new THREE.Mesh(new THREE.BoxGeometry(0.12,1.1,0.12),krM);kr1.position.set(0,1.9,4.6);g.add(kr1);
     var kr2=new THREE.Mesh(new THREE.BoxGeometry(0.6,0.12,0.12),krM);kr2.position.set(0,2.15,4.6);g.add(kr2);
     [-1.4,1.4].forEach(function(cx3){var ke=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.07,0.7,8),
-      new THREE.MeshStandardMaterial({color:0xfff2d0,emissive:0xffc860,emissiveIntensity:0.9,roughness:0.5}));
+      _standardMat({color:0xfff2d0,emissive:0xffc860,emissiveIntensity:0.9,roughness:0.5}));
       ke.position.set(cx3,1.35,4.2);g.add(ke);});
     var kLicht=new THREE.PointLight(0xffd9a0,0.85,9,2);kLicht.position.set(0,3.2,2.4);g.add(kLicht);
     [[-1,1],[1,-1]].forEach(function(sg){var pl=new THREE.Mesh(new THREE.BoxGeometry(4.3,0.16,11.5),stdMat(0x6a5648,0.75));
@@ -4896,7 +5142,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     turm.position.set(0,4.5,6.5);turm.castShadow=true;g.add(turm);
     var spitze=new THREE.Mesh(new THREE.ConeGeometry(2,3.4,4),stdMat(0x4a5a68,0.7));
     spitze.position.set(0,10.7,6.5);spitze.rotation.y=Math.PI/4;spitze.castShadow=true;g.add(spitze);
-    var zb=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.2,0.08),new THREE.MeshStandardMaterial({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
+    var zb=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.2,0.08),_standardMat({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
     zb.position.set(0,7.6,7.82);g.add(zb);dorfFenster.push(zb.material);
     g.position.set(RX-14,0,-SZ-33);g.rotation.y=Math.PI;scene.add(g);})(); /* 🛣️ stand bei RX mitten in der Ost-Querstrasse */
   // Laeden-Zeile mit bunten Markisen (Suedstrasse, gegenueber vom Haus)
@@ -4906,7 +5152,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     var body=new THREE.Mesh(new THREE.BoxGeometry(6.4,3.4,5),ladM);
     body.position.y=1.7;body.castShadow=true;body.receiveShadow=true;g.add(body);
     var front=new THREE.Mesh(new THREE.BoxGeometry(4.8,1.6,0.06),
-      new THREE.MeshStandardMaterial({color:0x9ec4d8,emissive:0xfff0c0,emissiveIntensity:0,roughness:0.15}));
+      _standardMat({color:0x9ec4d8,emissive:0xfff0c0,emissiveIntensity:0,roughness:0.15}));
     front.position.set(0,1.1,2.53);g.add(front);dorfFenster.push(front.material);
     var mark=new THREE.Mesh(new THREE.BoxGeometry(5.4,0.08,1.5),stdMat(sh[1],0.6));
     mark.position.set(0,2.6,3.2);mark.rotation.x=0.28;mark.castShadow=true;g.add(mark);
@@ -4927,13 +5173,13 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     nc.strokeStyle="#"+sh[3].toString(16).padStart(6,"0");nc.lineWidth=6;nc.strokeRect(6,6,116,52);
     nc.font="34px sans-serif";nc.textAlign="center";nc.textBaseline="middle";nc.fillText(sh[2],64,36);
     var ntx=new THREE.CanvasTexture(ncv);
-    var nMat=new THREE.MeshStandardMaterial({map:ntx,emissiveMap:ntx,emissive:new THREE.Color(sh[3]),emissiveIntensity:0.5,side:THREE.DoubleSide,roughness:0.4});
+    var nMat=_standardMat({map:ntx,emissiveMap:ntx,emissive:new THREE.Color(sh[3]),emissiveIntensity:0.5,side:THREE.DoubleSide,roughness:0.4});
     dorfFenster.push(nMat); // nachts hell
     var schild=new THREE.Mesh(new THREE.PlaneGeometry(2.2,0.9),nMat);
     schild.position.set(0,3.05,2.62);g.add(schild);
     [-1.7,1.7].forEach(function(fx8){ // Rueckseite: war nachts ein schwarzer Klotz
       var rf=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.0,0.06),
-        new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+        _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
       rf.position.set(fx8,1.9,-2.53);g.add(rf);dorfFenster.push(rf.material);});
     var ht=new THREE.Mesh(new THREE.BoxGeometry(1.0,1.9,0.07),stdMat(0x5a4a3a,0.6));
     ht.position.set(0,0.95,-2.53);g.add(ht);
@@ -4965,7 +5211,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     var g=new THREE.Group();var h=etagen*2.0+1;
     var tex=_twTex.clone(),emi=_twEmi.clone();tex.needsUpdate=emi.needsUpdate=true;
     tex.repeat.set(2,etagen);emi.repeat.set(2,etagen);
-    var bodyM=new THREE.MeshStandardMaterial({map:tex,emissiveMap:emi,emissive:new THREE.Color(0xffcf80),emissiveIntensity:0,roughness:0.6,color:new THREE.Color(farbe).lerp(new THREE.Color(0xb8b4ac),0.5)});
+    var bodyM=_standardMat({map:tex,emissiveMap:emi,emissive:new THREE.Color(0xffcf80),emissiveIntensity:0,roughness:0.6,color:new THREE.Color(farbe).lerp(new THREE.Color(0xb8b4ac),0.5)});
     dorfFenster.push(bodyM); // nachts leuchten die Fenster der Textur warm
     var body=new THREE.Mesh(new THREE.BoxGeometry(w,h,w),bodyM);body.position.y=h/2;body.castShadow=true;g.add(body);
     // Sockelgeschoss + Eingang, damit die Tuerme nicht nackt aus dem Gras wachsen
@@ -5007,7 +5253,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     var vilM=stdMat(0xede4d2,0.85);(window._wandMats=window._wandMats||[]).push(vilM);
     var zaunM=betMat(0xe8e4da,0.8),einfM=betMat(0xb6b2a8,0.9);
     if(!_texBlatt)_texBlatt=_strukTex("blatt");
-    var heckM=new THREE.MeshStandardMaterial({color:0x4a7a42,roughness:0.95,map:_texBlatt});
+    var heckM=_standardMat({color:0x4a7a42,roughness:0.95,map:_texBlatt});
     function villa(x,z,rotY,dachC){var _q=wegVonStrasse(x,z);x=_q[0];z=_q[1];
       var g=new THREE.Group();
       // Haus: 2 Etagen + Walmdach
@@ -5023,19 +5269,19 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
         if(e===0&&fx===1)continue; // Tuer-Platz
         var ra=new THREE.Mesh(new THREE.BoxGeometry(1.3,1.5,0.06),stdMat(0x6a6258,0.7));ra.position.set(px,1.5+e*2.3,3.21);g.add(ra);
         var fe=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.3,0.06),
-          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+          _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
         fe.position.set(px,1.5+e*2.3,3.24);g.add(fe);if((e+fx)%2===0)dorfFenster.push(fe.material);}
       var tuer=new THREE.Mesh(new THREE.BoxGeometry(1.3,2.3,0.1),stdMat(0x4a3a2c,0.5));tuer.position.set(0,1.15,3.24);g.add(tuer);
       for(var e2=0;e2<2;e2++){ // Rueckseite: 2 Fenster je Etage
         [-2.2,2.2].forEach(function(px2){
           var rr=new THREE.Mesh(new THREE.BoxGeometry(1.3,1.5,0.06),stdMat(0x6a6258,0.7));rr.position.set(px2,1.5+e2*2.3,-3.21);g.add(rr);
           var rf2=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.3,0.06),
-            new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+            _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
           rf2.position.set(px2,1.5+e2*2.3,-3.24);g.add(rf2);if(e2===1)dorfFenster.push(rf2.material);});
         // Westseite: 1 Fenster je Etage (Ostseite traegt die Garage)
         var sr=new THREE.Mesh(new THREE.BoxGeometry(0.06,1.5,1.3),stdMat(0x6a6258,0.7));sr.position.set(-4.03,1.5+e2*2.3,0);g.add(sr);
         var sf=new THREE.Mesh(new THREE.BoxGeometry(0.06,1.3,1.1),
-          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+          _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
         sf.position.set(-4.06,1.5+e2*2.3,0);g.add(sf);}
       var vord=new THREE.Mesh(new THREE.BoxGeometry(1.9,0.12,1.0),betMat(0x9a948a,0.7));vord.position.set(0,2.5,3.6);vord.castShadow=true;g.add(vord);
       // Garage seitlich mit Tor
@@ -5102,7 +5348,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       var px=-8.2+fx*2.34;if(Math.abs(px)<5.2&&e9===0)continue;
       var ra=new THREE.Mesh(new THREE.BoxGeometry(1.35,1.9,0.06),stdMat(0x6a6258,0.7));ra.position.set(px,3.2+e9*3.4,5.29);g.add(ra);
       var fe=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.65,0.06),
-        new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+        _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
       fe.position.set(px,3.2+e9*3.4,5.32);g.add(fe);if((e9+fx)%2===0)dorfFenster.push(fe.material);}
     var por=new THREE.Mesh(new THREE.BoxGeometry(3.0,4.0,0.14),stdMat(0x5a4632,0.5));por.position.set(0,3.0,5.32);g.add(por);
     // Rueckfassade (zeigt zur offenen Wiese) + Flanken
@@ -5110,13 +5356,13 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       for(var rx=0;rx<7;rx++){var pxr=-7.2+rx*2.4;
         var rra=new THREE.Mesh(new THREE.BoxGeometry(1.35,1.9,0.06),stdMat(0x6a6258,0.7));rra.position.set(pxr,3.2+e8*3.4,-5.29);g.add(rra);
         var rfe=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.65,0.06),
-          new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+          _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
         rfe.position.set(pxr,3.2+e8*3.4,-5.32);g.add(rfe);if((e8+rx)%2===1)dorfFenster.push(rfe.material);}
       [-9.79,9.79].forEach(function(sx8){ // Flanken je 2 Fenster
         [-2.6,2.6].forEach(function(sz8){
           var sra=new THREE.Mesh(new THREE.BoxGeometry(0.06,1.9,1.35),stdMat(0x6a6258,0.7));sra.position.set(sx8,3.2+e8*3.4,sz8);g.add(sra);
           var sfe=new THREE.Mesh(new THREE.BoxGeometry(0.06,1.65,1.1),
-            new THREE.MeshStandardMaterial({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
+            _standardMat({color:0xa8c8dc,emissive:0xffd890,emissiveIntensity:0,roughness:0.25}));
           sfe.position.set(sx8+(sx8>0?0.03:-0.03),3.2+e8*3.4,sz8);g.add(sfe);if(e8===1)dorfFenster.push(sfe.material);});});}
     var hint9=new THREE.Mesh(new THREE.BoxGeometry(1.4,2.6,0.12),stdMat(0x5a4632,0.55));hint9.position.set(0,1.3,-5.32);g.add(hint9);
     var tu=new THREE.Mesh(new THREE.BoxGeometry(4.4,7.5,4.4),rm);tu.position.set(0,14.2,-1.5);tu.castShadow=true;g.add(tu);
@@ -5131,11 +5377,11 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     var rtx=new THREE.CanvasTexture(rcv);
     [[0,2.24],[Math.PI,-2.24]].forEach(function(rf){
       var zb=new THREE.Mesh(new THREE.CircleGeometry(1.5,22),
-        new THREE.MeshStandardMaterial({map:rtx,emissiveMap:rtx,emissive:new THREE.Color(0xfff0c8),emissiveIntensity:0,roughness:0.4}));
+        _standardMat({map:rtx,emissiveMap:rtx,emissive:new THREE.Color(0xfff0c8),emissiveIntensity:0,roughness:0.4}));
       zb.position.set(0,15.2,-1.5+rf[1]);zb.rotation.y=rf[0];g.add(zb);dorfFenster.push(zb.material);});
     var kup=new THREE.Mesh(new THREE.ConeGeometry(3.0,3.2,8),stdMat(0x4a6a72,0.6));kup.position.set(0,19.9,-1.5);kup.castShadow=true;g.add(kup);
     var fst=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.07,2.2,6),metallM(0x6a645a));fst.position.set(0,22.6,-1.5);g.add(fst);
-    var fah=new THREE.Mesh(new THREE.PlaneGeometry(1.5,0.9),new THREE.MeshStandardMaterial({color:0xd84a4a,roughness:0.8,side:THREE.DoubleSide}));
+    var fah=new THREE.Mesh(new THREE.PlaneGeometry(1.5,0.9),_standardMat({color:0xd84a4a,roughness:0.8,side:THREE.DoubleSide}));
     fah.position.set(0.78,23.2,-1.5);g.add(fah);
     g.position.set(40,0,84);g.rotation.y=Math.PI;scene.add(g); // Portikus zeigt zum Marktplatz (z=72)
     addSolid(40,84,21.5,12.5,{a:"z",at:77.8,c:40,w:5.0}); /* 🧱 Rathaus war ohne Kollider — man lief mitten durch */
@@ -5151,7 +5397,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
         var t9=w9/(N-1),wx=x0+(x1-x0)*t9,wz=z0+(z1-z0)*t9;
         var sag=Math.sin(t9*Math.PI)*0.55; // Durchhang
         var wm=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.38,3),
-          new THREE.MeshStandardMaterial({color:WF[(w9+li)%WF.length],roughness:0.8,side:THREE.DoubleSide}));
+          _standardMat({color:WF[(w9+li)%WF.length],roughness:0.8,side:THREE.DoubleSide}));
         wm.position.set(wx,3.5-sag,wz);wm.rotation.x=Math.PI;wm.rotation.y=w9*0.7;
         scene.add(wm);}
       // Trageseil
@@ -5172,7 +5418,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
     var utx=new THREE.CanvasTexture(ucv);
     [[0,0.52],[Math.PI,-0.52]].forEach(function(uf){
       var zb=new THREE.Mesh(new THREE.CircleGeometry(0.42,20),
-        new THREE.MeshStandardMaterial({map:utx,emissiveMap:utx,emissive:new THREE.Color(0xfff0c8),emissiveIntensity:0,roughness:0.4}));
+        _standardMat({map:utx,emissiveMap:utx,emissive:new THREE.Color(0xfff0c8),emissiveIntensity:0,roughness:0.4}));
       zb.position.set(0,4.05,uf[1]);zb.rotation.y=uf[0];ug.add(zb);dorfFenster.push(zb.material);});
     var spitz=new THREE.Mesh(new THREE.ConeGeometry(0.3,0.6,8),stdMat(0x3a4a52,0.6));spitz.position.y=4.7;ug.add(spitz);
     ug.position.set(68,0,82.5);scene.add(ug); /* Uhr am Park-Platz */
@@ -5322,7 +5568,7 @@ if(window._nachtLampenSpaet){dorfFenster.push.apply(dorfFenster,window._nachtLam
       var lg=new THREE.Group();
       var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.08,3.1,7),metallM(0x3a3a42));mast.position.y=1.55;lg.add(mast);
       var kopf=new THREE.Mesh(new THREE.SphereGeometry(0.18,10,8),
-        new THREE.MeshStandardMaterial({color:0xffe9c0,emissive:0xffd88a,emissiveIntensity:0,roughness:0.3}));
+        _standardMat({color:0xffe9c0,emissive:0xffd88a,emissiveIntensity:0,roughness:0.3}));
       kopf.position.y=3.15;lg.add(kopf);dorfFenster.push(kopf.material);
       var gm=new THREE.MeshBasicMaterial({map:glowTex,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false});
       var glow=new THREE.Mesh(new THREE.PlaneGeometry(7.5,7.5),gm);
@@ -5374,8 +5620,8 @@ ladeTex("textures/th32/hausputz.png",3,2,function(t){(window._wandMats||[]).forE
 // ---- Immobilien-Imperium: Nachbarhaeuser kaufen, taeglich Miete kassieren ----
 var immo=[]; // gekaufte Haus-Indizes
 function immoFlagge(hs){var fg=new THREE.Group();
-  var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,1.1,5),new THREE.MeshStandardMaterial({color:0x8a8a90}));mast.position.y=0.55;fg.add(mast);
-  var fl=new THREE.Mesh(new THREE.PlaneGeometry(0.7,0.4),new THREE.MeshStandardMaterial({color:0xffd23a,emissive:0xcc9900,emissiveIntensity:0.35,side:THREE.DoubleSide}));
+  var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.04,0.04,1.1,5),_standardMat({color:0x8a8a90}));mast.position.y=0.55;fg.add(mast);
+  var fl=new THREE.Mesh(new THREE.PlaneGeometry(0.7,0.4),_standardMat({color:0xffd23a,emissive:0xcc9900,emissiveIntensity:0.35,side:THREE.DoubleSide}));
   fl.position.set(0.35,0.9,0);fg.add(fl);
   fg.position.set(hs.x,hs.h+1.2,hs.z);scene.add(fg);hs.flagge=fg;
   var _ix=window._immo?window._immo.indexOf(hs):-1;if(_ix>=0&&(immoLv[_ix]||1)>1)fg.scale.setScalar(1+0.35*((immoLv[_ix]||1)-1));}
@@ -5659,9 +5905,9 @@ setTimeout(function baueVerkehr(){
   var korpus=new THREE.Mesh(new THREE.BoxGeometry(8,2.4,2.4),stdMat(0xf0b83a,0.5));
   korpus.position.y=1.6;korpus.castShadow=true;bg.add(korpus);
   var dach=new THREE.Mesh(new THREE.BoxGeometry(7.6,0.35,2.2),stdMat(0xe0a828,0.5));dach.position.y=2.95;bg.add(dach);
-  var band=new THREE.Mesh(new THREE.BoxGeometry(7.2,0.85,2.46),new THREE.MeshStandardMaterial({color:0x214656,roughness:0.15,metalness:0.4}));
+  var band=new THREE.Mesh(new THREE.BoxGeometry(7.2,0.85,2.46),_standardMat({color:0x214656,roughness:0.15,metalness:0.4}));
   band.position.y=2.05;bg.add(band);
-  var front=new THREE.Mesh(new THREE.BoxGeometry(0.12,1.15,2.15),new THREE.MeshStandardMaterial({color:0x18384a,roughness:0.1,metalness:0.5}));
+  var front=new THREE.Mesh(new THREE.BoxGeometry(0.12,1.15,2.15),_standardMat({color:0x18384a,roughness:0.1,metalness:0.5}));
   front.position.set(4.02,2.0,0);bg.add(front);
   var tuer=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.8,0.06),stdMat(0x162730,0.4));tuer.position.set(1.2,1.15,1.23);bg.add(tuer);
   [4.05,-4.05].forEach(function(bx){var st=new THREE.Mesh(new THREE.BoxGeometry(0.22,0.4,2.3),stdMat(0x33333a,0.5));st.position.set(bx,0.62,0);bg.add(st);});
@@ -5675,11 +5921,11 @@ setTimeout(function baueVerkehr(){
     var speiche=new THREE.Mesh(new THREE.BoxGeometry(0.86,0.36,0.14),stdMat(0xc2c6cc,0.4));radI.add(speiche);
     radG.add(radI);bg.add(radG);busRaeder.push(radI);});});
   var busLichter=[];
-  [0.9,-0.9].forEach(function(hz){var hl=new THREE.Mesh(new THREE.CircleGeometry(0.24,14),new THREE.MeshStandardMaterial({color:0xfff2c0,emissive:0xfff2c0,emissiveIntensity:0.2}));
+  [0.9,-0.9].forEach(function(hz){var hl=new THREE.Mesh(new THREE.CircleGeometry(0.24,14),_standardMat({color:0xfff2c0,emissive:0xfff2c0,emissiveIntensity:0.2}));
     hl.position.set(4.07,1.0,hz);hl.rotation.y=Math.PI/2;bg.add(hl);busLichter.push({m:hl.material,typ:"k"});});
-  [0.9,-0.9].forEach(function(rz){var rl=new THREE.Mesh(new THREE.CircleGeometry(0.2,14),new THREE.MeshStandardMaterial({color:0xff3020,emissive:0xff2010,emissiveIntensity:0.25}));
+  [0.9,-0.9].forEach(function(rz){var rl=new THREE.Mesh(new THREE.CircleGeometry(0.2,14),_standardMat({color:0xff3020,emissive:0xff2010,emissiveIntensity:0.25}));
     rl.position.set(-4.07,1.0,rz);rl.rotation.y=-Math.PI/2;bg.add(rl);busLichter.push({m:rl.material,typ:"h"});});
-  var schild=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.44,0.06),new THREE.MeshStandardMaterial({color:0x141417,emissive:0xffa040,emissiveIntensity:0.9}));
+  var schild=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.44,0.06),_standardMat({color:0x141417,emissive:0xffa040,emissiveIntensity:0.9}));
   schild.position.set(2.3,2.6,1.24);bg.add(schild);
   scene.add(bg);
   /* Westwaerts auf der AUSSENSPUR der Nordhaelfte — dort liegt das Wartehaeuschen (x -8). */
@@ -5877,7 +6123,7 @@ setTimeout(function baueVerkehr(){
   for(var rb=0;rb<2;rb++){var bl=new THREE.Mesh(new THREE.BoxGeometry(7,0.08,0.4),stdMat(0x33333a,0.4));bl.rotation.y=rb*Math.PI/2;rotor.add(bl);}
   rotor.position.y=1.1;heliG.add(rotor);
   var heckrotor=new THREE.Mesh(new THREE.BoxGeometry(0.1,1.6,0.1),stdMat(0x33333a,0.4));heckrotor.position.set(-4.2,0.2,0.25);heliG.add(heckrotor);
-  var suchlicht=new THREE.Mesh(new THREE.CircleGeometry(0.3,10),new THREE.MeshStandardMaterial({color:0xfff4c0,emissive:0xffe080,emissiveIntensity:1.2}));suchlicht.position.set(1.4,-0.9,0);suchlicht.rotation.x=-Math.PI/2;heliG.add(suchlicht);
+  var suchlicht=new THREE.Mesh(new THREE.CircleGeometry(0.3,10),_standardMat({color:0xfff4c0,emissive:0xffe080,emissiveIntensity:1.2}));suchlicht.position.set(1.4,-0.9,0);suchlicht.rotation.x=-Math.PI/2;heliG.add(suchlicht);
   heliG.position.set(0,32,0);heliG.scale.setScalar(1.4);scene.add(heliG);
   window._heli={mesh:heliG,rotor:rotor,heckrotor:heckrotor,ang:0};
   // ---- Vogelschwarm am Himmel ----
@@ -5937,13 +6183,13 @@ function updHafen(dt,now){
        nicht benannt — darum eine eigene, sichtbar an der Ausleger-Unterkante. */
     var g=new THREE.Group();
     var kk=new THREE.Mesh(new THREE.BoxGeometry(1.1,0.5,0.6),
-      new THREE.MeshStandardMaterial({color:0x2a2c32,roughness:0.5,metalness:0.5}));
+      _standardMat({color:0x2a2c32,roughness:0.5,metalness:0.5}));
     kk.position.y=-0.25;g.add(kk);
     var seil=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,3.2,6),
-      new THREE.MeshStandardMaterial({color:0x8a8d93,roughness:0.4,metalness:0.6}));
+      _standardMat({color:0x8a8d93,roughness:0.4,metalness:0.6}));
     seil.position.y=-2.1;g.add(seil);
     var hk=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.5,0.5),
-      new THREE.MeshStandardMaterial({color:0x2a2c32,roughness:0.5,metalness:0.5}));
+      _standardMat({color:0x2a2c32,roughness:0.5,metalness:0.5}));
     hk.position.y=-3.9;g.add(hk);
     g.userData.nieAusblenden=true;g._bewegt=true;/* 🩹 Schwarm-7: sonst friert _einfrieren() die Katze bei 9 s ein */scene.add(g);
     K.userData.katze=g;
@@ -6022,7 +6268,7 @@ function baueSchranken(){
       var lampen=[];
       [-0.45,0.45].forEach(function(ox){
         var lm=new THREE.Mesh(new THREE.SphereGeometry(0.16,10,8),
-          new THREE.MeshStandardMaterial({color:0x6a1a1a,emissive:0xff2a1a,emissiveIntensity:0,roughness:0.3}));
+          _standardMat({color:0x6a1a1a,emissive:0xff2a1a,emissiveIntensity:0,roughness:0.3}));
         lm.position.set(ox,2.5,0);g.add(lm);lampen.push(lm.material);});
       /* Schrankenbaum: Drehachse am Mast, rot-weiss gestreift */
       var arm=new THREE.Group();
@@ -6547,14 +6793,14 @@ function figurenLaden(){
     },undefined,function(){});                       /* ohne Datei bleibt die Kastenfigur — kein Fehlerbild */
     window._ladePrioD=undefined;});}
 // ---- Ambiente-Tiere: Enten auf dem See + streunende Katzen/Hunde ----
-function mkEnte(){var g=new THREE.Group();var wm=new THREE.MeshStandardMaterial({color:0xf4f4ea,roughness:0.6});
+function mkEnte(){var g=new THREE.Group();var wm=_standardMat({color:0xf4f4ea,roughness:0.6});
   var body=new THREE.Mesh(new THREE.SphereGeometry(0.32,10,8),wm);body.scale.set(1.3,0.8,1);body.position.y=0.28;g.add(body);
   var head=new THREE.Mesh(new THREE.SphereGeometry(0.16,8,7),wm);head.position.set(0.34,0.52,0);g.add(head);
-  var beak=new THREE.Mesh(new THREE.ConeGeometry(0.07,0.16,6),new THREE.MeshStandardMaterial({color:0xf0a020,roughness:0.5}));beak.rotation.z=-Math.PI/2;beak.position.set(0.52,0.5,0);g.add(beak);
+  var beak=new THREE.Mesh(new THREE.ConeGeometry(0.07,0.16,6),_standardMat({color:0xf0a020,roughness:0.5}));beak.rotation.z=-Math.PI/2;beak.position.set(0.52,0.5,0);g.add(beak);
   var tail=new THREE.Mesh(new THREE.ConeGeometry(0.12,0.24,6),wm);tail.rotation.z=Math.PI/2;tail.position.set(-0.42,0.34,0);g.add(tail);
   return g;}
 function mkVierbeiner(dog,seed){var g=new THREE.Group();var col=dog?(seed%2?0x8a5a34:0x3a3330):(seed%2?0x9a9a9a:0xd88a3a);
-  var mat=new THREE.MeshStandardMaterial({color:col,roughness:0.75});
+  var mat=_standardMat({color:col,roughness:0.75});
   var body=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.34,0.32),mat);body.position.y=0.42;g.add(body);
   var head=new THREE.Mesh(new THREE.BoxGeometry(0.28,0.28,0.28),mat);head.position.set(0.44,0.52,0);g.add(head);
   [-0.09,0.09].forEach(function(ez){var ohr=new THREE.Mesh(new THREE.ConeGeometry(0.06,0.14,4),mat);ohr.position.set(0.44,0.7,ez);g.add(ohr);});
@@ -7063,7 +7309,7 @@ setTimeout(function baueGebaeude(){
        Dieselbe Falle wie bei den geteilten Wagen-Materialien (siehe dort). */
     var bodenM=cfg.boden==="platz"?betMat(0xc6c0b2,0.93)
               :cfg.boden==="kies"?betMat(0x9c9384,0.98)
-              :new THREE.MeshStandardMaterial({color:0x6ea055,roughness:0.95,envMapIntensity:0.18});
+              :_standardMat({color:0x6ea055,roughness:0.95,envMapIntensity:0.18});
     (function bodenKachel(){
       var M=7;                                   /* Meter je Kachel */
       /* ⚠️ KIES IST KEIN BETON. Der erste Anlauf gab allen dieselbe Betonstruktur —
@@ -7140,7 +7386,7 @@ setTimeout(function baueGebaeude(){
         if(zj>j)lk2.push([j+SW/2+0.26,zj-2.7,"ab"]);else lk2.push([zj+2.7,j-SW/2-0.26,"ab"]);});
       bordsteinKante(laengs?"z":"x",_quer+sg*SW/2,sg,_mitte-laenge/2,_mitte+laenge/2,lk2,{b:2.4,m:twM});});
     /* Mittelstreifen */
-    var mM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
+    var mM=_standardMat({color:0xd8d8cc,roughness:0.8});mM.envMapIntensity=0.12;
     (window._markMats=window._markMats||[]).push(mM);
     for(var m=0;m<Math.floor(laenge/9);m++){
       var mo=-laenge/2+5+m*9;
@@ -7994,8 +8240,8 @@ setTimeout(function baueGebaeude(){
       var VF=new THREE.Mesh(new THREE.PlaneGeometry(50,36),betMat(0x9d9da2,0.95));
       VF.rotation.x=-Math.PI/2;VF.position.set(FX-8,-0.006,BAHN+27);VF.receiveShadow=true;scene.add(VF);
       window._flugfeld={x0:FX-70.4,x1:FX+70.4,z0:BAHN-8,z1:BAHN+46};
-      var vfM=new THREE.MeshStandardMaterial({color:0xe8b73a,roughness:0.8});vfM.envMapIntensity=0.12;(window._gelbMats=window._gelbMats||[]).push(vfM);   /* gelb bleibt gelb: nicht in _markMats (Runde 96) */
-      var vfW=new THREE.MeshStandardMaterial({color:0xe8e8e0,roughness:0.8});vfW.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(vfW);
+      var vfM=_standardMat({color:0xe8b73a,roughness:0.8});vfM.envMapIntensity=0.12;(window._gelbMats=window._gelbMats||[]).push(vfM);   /* gelb bleibt gelb: nicht in _markMats (Runde 96) */
+      var vfW=_standardMat({color:0xe8e8e0,roughness:0.8});vfW.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(vfW);
       [[FX-20,BAHN+27,0.3,34,vfM],[FX-20,BAHN+22,3.2,0.3,vfM],[FX-8,BAHN+9.6,50,0.2,vfW],[FX+8,BAHN+27,0.2,34,vfW]].forEach(function(L){
         var l=new THREE.Mesh(new THREE.PlaneGeometry(L[2],L[3]),L[4]);
         l.rotation.x=-Math.PI/2;l.position.set(L[0],0.004,L[1]);scene.add(l);});
@@ -8231,7 +8477,7 @@ setTimeout(function baueGebaeude(){
          Die Luecke an Einmuendungen prueft die AUSDEHNUNG: halbe Fahrbahn 4,5 + halber Strich 3
          + Luft — mit der Strichmitte allein ragten die Nachbarstriche in die Kreuzung (Bild). */
       var dashL=6, dashG=new THREE.PlaneGeometry(dashL,0.15);
-      var dashI=new THREE.InstancedMesh(dashG,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}),dashA.length);
+      var dashI=new THREE.InstancedMesh(dashG,_standardMat({color:0xd8d8cc,roughness:0.8}),dashA.length);
       var dashO=new THREE.Object3D();
       dashA.forEach(function(am,i){dashO.position.set(Math.cos(am)*R,HM,Math.sin(am)*R);
         dashO.rotation.set(-Math.PI/2,0,-(am+Math.PI/2));dashO.scale.set(1,1,1);dashO.updateMatrix();dashI.setMatrixAt(i,dashO.matrix);});
@@ -8244,7 +8490,7 @@ setTimeout(function baueGebaeude(){
       ZUB.forEach(function(g){var a=g*Math.PI/180;window._ringStrichLuecke(Math.cos(a)*R,Math.sin(a)*R);});
       (window._ringLueckeWunsch||[]).forEach(function(q){window._ringStrichLuecke(q[0],q[1]);});
       window._ringLueckeWunsch=[];
-      if(didx.length)mesh(dpos,didx,new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8}));   /* Zubringer-Streifen + Haltelinien */
+      if(didx.length)mesh(dpos,didx,_standardMat({color:0xd8d8cc,roughness:0.8}));   /* Zubringer-Streifen + Haltelinien */
       /* 🌊 DAMMFLANKE UND BRUESTUNG. Ein Asphaltband, das auf dem Wasser liegt,
          sieht aus wie ein Fehler. Zwei Teile machen daraus einen Damm: eine
          Steinboeschung, die von der Fahrbahnkante schraeg ins Wasser laeuft (sie
@@ -8268,7 +8514,7 @@ setTimeout(function baueGebaeude(){
            Flaeche haette bei senkrechter Wand keine eindeutige Wickelrichtung
            (quadOben rechnet sie aus der y-Komponente aus, die hier 0 ist). */
         var bg=new THREE.BoxGeometry(1,0.55,0.22),
-            bm=new THREE.MeshStandardMaterial({color:0xbdb7a8,roughness:0.85});
+            bm=_standardMat({color:0xbdb7a8,roughness:0.85});
         var bi2=new THREE.InstancedMesh(bg,bm,_damm.length*2);
         var Mb=new THREE.Matrix4(),Qb=new THREE.Quaternion(),
             Pb=new THREE.Vector3(),Sb=new THREE.Vector3(1,1,1),nb=0;
@@ -8303,7 +8549,7 @@ setTimeout(function baueGebaeude(){
       }
       mesh(bp,bi,betMat(0x9a9384,0.98),buv);
       var lpG=new THREE.CylinderGeometry(0.06,0.07,1.0,5),
-          lpM=new THREE.MeshStandardMaterial({color:0xf0efe8,roughness:0.7});
+          lpM=_standardMat({color:0xf0efe8,roughness:0.7});
       var NLP=48, lp=new THREE.InstancedMesh(lpG,lpM,NLP*2);
       var Mlp=new THREE.Matrix4(),Qlp=new THREE.Quaternion(),Plp=new THREE.Vector3(),Slp=new THREE.Vector3(1,1,1);
       var nlp=0;
@@ -8361,7 +8607,7 @@ setTimeout(function baueGebaeude(){
            verteilten Instanzen verschwinden damit alle auf einmal, sobald der
            Ursprung aus dem Bild faellt — darum frustumCulled = false. */
         var zg=new THREE.CylinderGeometry(0.06,0.07,1.0,5),
-            zm=new THREE.MeshStandardMaterial({color:0xf0efe8,roughness:0.7});
+            zm=_standardMat({color:0xf0efe8,roughness:0.7});
         var pro=Math.max(2,Math.floor((r1-r0)/14));
         var im=new THREE.InstancedMesh(zg,zm,ZUB.length*pro*2);
         var M4=new THREE.Matrix4(),Q4=new THREE.Quaternion(),
@@ -8650,7 +8896,7 @@ setTimeout(function baueGebaeude(){
       g3.setAttribute("position",new THREE.Float32BufferAttribute(pos,3));
       g3.setAttribute("color",new THREE.Float32BufferAttribute(col,3));
       g3.setIndex(idx); g3.computeVertexNormals();
-      var fm=new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,envMapIntensity:0.14});
+      var fm=_standardMat({vertexColors:true,roughness:1,envMapIntensity:0.14});
       var fmesh=new THREE.Mesh(g3,fm);
       fmesh.receiveShadow=true; fmesh.frustumCulled=false;
       fmesh.userData.nieAusblenden=1; scene.add(fmesh);
@@ -8742,8 +8988,8 @@ setTimeout(function baueGebaeude(){
       var n=kand.length;
       var stG=new THREE.CylinderGeometry(0.45,0.75,3.2,5),
           krG=new THREE.ConeGeometry(2.7,9.0,7,2);
-      var stM=new THREE.MeshStandardMaterial({color:0x5a4432,roughness:1,flatShading:true,envMapIntensity:0.15}),
-          krM=new THREE.MeshStandardMaterial({color:0xffffff,roughness:1,flatShading:true,envMapIntensity:0.15});
+      var stM=_standardMat({color:0x5a4432,roughness:1,flatShading:true,envMapIntensity:0.15}),
+          krM=_standardMat({color:0xffffff,roughness:1,flatShading:true,envMapIntensity:0.15});
       var st=new THREE.InstancedMesh(stG,stM,n), kr=new THREE.InstancedMesh(krG,krM,n);
       var M4=new THREE.Matrix4(), Q=new THREE.Quaternion(), P=new THREE.Vector3(), S=new THREE.Vector3();
       var C=new THREE.Color();
@@ -9054,8 +9300,14 @@ setTimeout(function baueGebaeude(){
          Jetzt nur noch Modelle, die in das Band passen, mit Abstand aus der
          GEMESSENEN Breite + 7 m Luecke:
            th22_doppelhaus 15.4 x 11.9 · th7_reihenhaus_modul 5.0 x 7.0 */
-      var NB=[["th22_doppelhaus.glb",7.5,15.4],["reihe3",0,17],["th22_doppelhaus.glb",7.5,15.4],
-              ["reihe3",0,17],["th22_doppelhaus.glb",7.5,15.4]];
+      // Stadtblöcke statt einzelner Vorstadthäuser im inneren Stadtring.
+      // Die bestehenden Parzellenbreiten und der freie Mittelzugang bleiben dieselben.
+      _stadtBoden(144,22,0,-36);_stadtBoden(144,22,0,36);
+      _stadtBoden(35,48,-54.5,0);_stadtBoden(35,48,54.5,0);
+      var parkGruen=new THREE.Mesh(new THREE.PlaneGeometry(23,42),_standardMat({map:grasTex,color:0x8ca675,roughness:1}));
+      parkGruen.rotation.x=-Math.PI/2;parkGruen.position.set(56,-.018,0);parkGruen.receiveShadow=true;scene.add(parkGruen);
+      var NB=[["stadthaus",0,15.4],["reihe3",0,17],["stadthaus",0,15.4],
+              ["reihe3",0,17],["stadthaus",0,15.4]];
       function reihenhausTerrasse(mx,mz,rot){          /* 3 Module aneinander = Terrasse */
         for(var i=-1;i<=1;i++){
           bau("th7_reihenhaus_modul.glb",8,mx+i*5.6,0,mz,rot,false,null,true);}
@@ -9071,11 +9323,12 @@ setTimeout(function baueGebaeude(){
           var mx=cur+e[2]/2; cur+=e[2]+LUE;
           if(Math.abs(mx)<11)return;                    /* Zugangsweg frei lassen */
           if(e[0]==="reihe3"){reihenhausTerrasse(mx,z,rot);}
+          else if(e[0]==="stadthaus"){_stadthaus(mx,z,rot,i+(z>0?13:7),e[2],10.8);}
           else{
             bau(e[0],e[1],mx,0,z,rot,false,null,true);
             addSolid(mx,z,e[2]+0.6,12.5,{a:"z",at:z+(rot?-6.2:6.2),c:mx,w:3.2});}
           /* Vorgarten zur Strasse hin */
-          bau("th2_gartenzaun.glb",1.0,mx,0,z+vorgarten,0,false,null,true);
+          // Freie, zusammenhängende Vorzone zum Trottoir statt Gartenzäunen vor Geschäften.
           if(i%2===0)bau("th2_blumenbeet.glb",0.5,mx-5,0,z+vorgarten-1.6,0,false,null,true);
           bau("th3_briefkasten.glb",1.25,mx+5.5,0,z+vorgarten-0.4,0,false,null,true);
           if(i%2===1)bau("th4_laterne_modern.glb",5.2,mx+9,0,z+vorgarten+0.8,0,false,null,true);
@@ -9083,8 +9336,8 @@ setTimeout(function baueGebaeude(){
       zeile(NB,NZ,Math.PI,7.5);                         /* Norden: Front zur Hauptstrasse */
       /* Sueden: Ladenzeile — dieselben Groessen, aber Werkstatt/Lagerhalle als
          Gewerbe-Note (17.7 x 12.9 passt gerade noch ins Band). */
-      var SB=[["th7_lagerhalle.glb",7.5,17.7],["reihe3",0,17],["th22_doppelhaus.glb",7.5,15.4],
-              ["reihe3",0,17],["th7_lagerhalle.glb",7.5,17.7]];
+      var SB=[["stadthaus",0,17.7],["reihe3",0,17],["stadthaus",0,15.4],
+              ["reihe3",0,17],["stadthaus",0,17.7]];
       zeile(SB,SZ0,0,-7.5);
       bau("th3_kiosk.glb",3.4,0,0,SZ0-9,0,false,null,true);
       bau("th6_litfasssaeule.glb",3.2,20,0,SZ0-9,0,false,null,true);
@@ -9126,7 +9379,7 @@ setTimeout(function baueGebaeude(){
         var QX=WX-4, QZ=-2, QW=9, QD=30;
         var be=new THREE.Mesh(new THREE.PlaneGeometry(QW,QD),kacheln(asphMat(0x55534f,0.95),QW,QD,6));   /* Asphalt (Runde 94) */
         be.rotation.x=-Math.PI/2;be.position.set(QX,-0.003,QZ);be.receiveShadow=true;scene.add(be);
-        var sM=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.85});
+        var sM=_standardMat({color:0xd8d8cc,roughness:0.85});
         sM.envMapIntensity=0.12;(window._markMats=window._markMats||[]).push(sM);
         for(var q=0;q<=10;q++){
           var st=new THREE.Mesh(new THREE.PlaneGeometry(QW-2.2,0.18),sM);
@@ -9319,7 +9572,7 @@ setTimeout(function baueGebaeude(){
            zwoelf weissen Fugen — th34_decke ist eine DECKE, kein Dach. Darueber jetzt eine Kiesschicht
            (dunkelgrau, ohne Fugen) in einem hellen Attika-Rahmen, 0,3 m ueber der Deckenoberkante 3,00;
            die Module bleiben, von innen ist es weiter die Holzdecke. */
-        var attM=new THREE.MeshStandardMaterial({color:0xd4d1c8,roughness:0.85,envMapIntensity:0.2});
+        var attM=_standardMat({color:0xd4d1c8,roughness:0.85,envMapIntensity:0.2});
         var att=new THREE.Mesh(new THREE.BoxGeometry(16.6,0.3,12.6),attM);att.position.set(CX,3.15,CZ);att.receiveShadow=true;scene.add(att);
         var kd=new THREE.Mesh(new THREE.BoxGeometry(16.0,0.32,12.0),kiesMat(0x6b6864,1.0));kd.position.set(CX,3.16,CZ);kd.receiveShadow=true;scene.add(kd);
         /* ⚠️ UND EIN FUSSBODEN. Der erste Blick von innen (th-blick mit r 5) zeigte
@@ -9418,12 +9671,12 @@ setTimeout(function baueGebaeude(){
       var FX=-40+BHDX,FZ=-196+BHDZ;
       [[-64,-41,12,-4.2],[-30,-41,12,-4.2],[6,-41,12,-4.2],[42,-41,12,-4.2],
        [-64,37,16,-6.5],[-30,37,16,-6.5],[6,37,16,-6.5],[42,37,16,-6.5]].forEach(function(f,i){
-        var ackerM=new THREE.MeshStandardMaterial({color:i%2?0x8a6b46:0x7d6140,roughness:1,envMapIntensity:0.12});
+        var ackerM=_standardMat({color:i%2?0x8a6b46:0x7d6140,roughness:1,envMapIntensity:0.12});
         var a=new THREE.Mesh(new THREE.PlaneGeometry(30,f[2]),ackerM);
         a.rotation.x=-Math.PI/2;a.position.set(FX+f[0],-0.008,FZ+f[1]);a.receiveShadow=true;scene.add(a);
         for(var r=0;r<4;r++){                       // Saatreihen: vier je Feld, Abstand 2,8
           var rm=new THREE.Mesh(new THREE.BoxGeometry(28,0.12,0.5),
-            new THREE.MeshStandardMaterial({color:i%2?0x6f8a44:0x5e7c3c,roughness:0.95}));
+            _standardMat({color:i%2?0x6f8a44:0x5e7c3c,roughness:0.95}));
           rm.position.set(FX+f[0],0.06,FZ+f[1]+f[3]+r*2.8);scene.add(rm);}});
       bau("th18_traktor.glb",3.0,FX-8,0,FZ-46,0.6,false,null,true);
       bau("th18_anhaenger.glb",2.0,FX+2,0,FZ-46,0.6,false,null,true);
@@ -9496,8 +9749,8 @@ setTimeout(function baueGebaeude(){
              [-26,6,0],[-22,3,-12],[-10,0.8,-20]];
       var pts=P.map(function(p){return new THREE.Vector3(CX+p[0],p[1]+0.8,CZ+p[2]);});
       var kurve=new THREE.CatmullRomCurve3(pts,true,"catmullrom",0.5);
-      var schM=new THREE.MeshStandardMaterial({color:0xd8443a,roughness:0.45,metalness:0.35});
-      var stuetzM=new THREE.MeshStandardMaterial({color:0x6d7480,roughness:0.7,metalness:0.2});
+      var schM=_standardMat({color:0xd8443a,roughness:0.45,metalness:0.35});
+      var stuetzM=_standardMat({color:0x6d7480,roughness:0.7,metalness:0.2});
       /* Zwei Schienen seitlich versetzt */
       [-0.55,0.55].forEach(function(off){
         var op=[],N=180;
@@ -9531,7 +9784,7 @@ setTimeout(function baueGebaeude(){
       for(var w=0;w<4;w++){
         var wg=new THREE.Group();
         var kp=new THREE.Mesh(new THREE.BoxGeometry(1.7,0.85,2.4),
-          new THREE.MeshStandardMaterial({color:w?0x2f6fb8:0xf0c02a,roughness:0.4,metalness:0.3}));
+          _standardMat({color:w?0x2f6fb8:0xf0c02a,roughness:0.4,metalness:0.3}));
         kp.position.y=0.75;kp.castShadow=true;wg.add(kp);
         var sitz=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.4,0.6),stdMat(0x2a2e34,0.7));
         sitz.position.set(0,1.25,-0.4);wg.add(sitz);
@@ -9552,7 +9805,7 @@ setTimeout(function baueGebaeude(){
        Stil wie die Landstrasse: 8,4 m Asphalt, Bankett beidseits, gestrichelte Mitte. */
     (function achterbahnStich(){
       var A=asphMat(0x4a4a53,0.92), B=kiesMat(0x9a9384,0.98);   /* Asphalt + Kies ohne Fugen (Runde 94) */
-      var D=new THREE.MeshStandardMaterial({color:0xd8d8cc,roughness:0.8});
+      var D=_standardMat({color:0xd8d8cc,roughness:0.8});
       /* ⚠️ EIN MATERIAL FUER PLATTEN VERSCHIEDENER GROESSE GEHT NICHT. A und B werden
          von allen Platten geteilt; ein `repeat` daran passt dann zur einen und nicht
          zur anderen. Darum je Platte ein eigener Klon — und `kacheln` klont zusaetzlich
@@ -9660,7 +9913,7 @@ setTimeout(function baueGebaeude(){
                                  TAL.z+(BERG.z-TAL.z)*t+qz*o);}
       /* Felssockel im Kegelmaterial (0x7d7468, flatShading) — so liest sich der Unterbau
          als Felsnase des Berges und nicht als freistehende Betonplatte. */
-      var felsSockelM=new THREE.MeshStandardMaterial({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
+      var felsSockelM=_standardMat({color:0x7d7468,roughness:1,flatShading:true,envMapIntensity:0.2});
       /* Die Station ist 17 x 27 m gross (gemessen: Modell 20.6 x 11.5 x 33.3, auf 9.5 m
          Hoehe skaliert) — der Sockel muss diese Grundflaeche wirklich tragen. */
       /* ⚠️ Der Sockel war BERGY+2 hoch und reichte damit IMMER bis y -1 hinunter —
@@ -9682,7 +9935,7 @@ setTimeout(function baueGebaeude(){
       gel.position.set(BERG.x,BERGY+0.15,BERG.z);gel.rotation.y=winkel;
       gel.receiveShadow=true;scene.add(gel);
       /* Gelaender rundum — sonst wirkt die Aussichtsplattform ungesichert */
-      var glM=new THREE.MeshStandardMaterial({color:0x6f7883,roughness:0.5,metalness:0.5});
+      var glM=_standardMat({color:0x6f7883,roughness:0.5,metalness:0.5});
       for(var gi=0;gi<22;gi++){
         var gu=gi/22*Math.PI*2;
         var glx=Math.cos(gu)*9,glz=Math.sin(gu)*7;
@@ -9706,7 +9959,7 @@ setTimeout(function baueGebaeude(){
       bau("th26_seilbahn_station.glb",9.5,BERG.x,BERGY+0.3,BERG.z,winkel+Math.PI,false,
         function(w){w.userData.fest=1;stationSolid(w,BERG.x,BERG.z);},true);
       /* Stuetzen auf gerechneter Gelaendehoehe, jede genau unter dem Seil */
-      var seilM=new THREE.MeshStandardMaterial({color:0x3c4148,roughness:0.5,metalness:0.6});
+      var seilM=_standardMat({color:0x3c4148,roughness:0.5,metalness:0.6});
       /* Stuetzenpunkte aus derselben Suche: alle fuenf stehen auf freiem Grund und
          nicht auf Fahrbahn oder Trottoir. */
       /* ⚠️ t=0,9 lag 16 m vor der Bergstation — bei 27,5 m langem Stationshaus
@@ -10211,7 +10464,7 @@ setTimeout(function baueGebaeude(){
      wegVonStrasse-Bands). th3-Sandkasten und th3-Wippe gestrichen: das th16-Set hat beide. */
   (function spielRasen(){
     var sm=new THREE.Mesh(new THREE.PlaneGeometry(22,16),
-      new THREE.MeshStandardMaterial({color:0xd6c08c,roughness:1,envMapIntensity:0.14}));
+      _standardMat({color:0xd6c08c,roughness:1,envMapIntensity:0.14}));
     sm.rotation.x=-Math.PI/2;sm.position.set(57,0.004,-2);sm.receiveShadow=true;scene.add(sm);})();
   /* Rutsche (48|-4): Kasten x 46,2…49,8 / z -4,5…-3,5 — th16-Wippe (Kasten z ≤ -6,8) 2,3 m,
      Parkbank (50|0) 2,7 m, Hydrant (44|0) 2,2 m. */
@@ -10572,7 +10825,7 @@ setTimeout(function baueGebaeude(){
       [[0,2.68],[0,-2.68],[2.68,0],[-2.68,0]].forEach(function(o){
         var sf=new THREE.Mesh(new THREE.BoxGeometry(Math.abs(o[0])>0?0.08:1.7,3.2,Math.abs(o[0])>0?1.7:0.08),stdMat(0x3a3f48,0.6));
         sf.position.set(o[0],21,o[1]);g.add(sf);});
-      var zb=new THREE.Mesh(new THREE.CircleGeometry(1.5,20),new THREE.MeshStandardMaterial({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
+      var zb=new THREE.Mesh(new THREE.CircleGeometry(1.5,20),_standardMat({color:0xf4ecd8,emissive:0xffe8a8,emissiveIntensity:0,roughness:0.4}));
       zb.position.set(0,15.5,2.63);g.add(zb);dorfFenster.push(zb.material);
       g.position.set(DOM_X-12.5,0,DOM_Z-6.5);scene.add(g);  /* Campanile westlich neben dem Chor */
       /* ⚠️ DIESER KOLLIDER STAND 200 m NEBEN SEINEM TURM. Er lautete
@@ -10683,7 +10936,7 @@ setTimeout(function baueGebaeude(){
       /* Rasenflaeche des Friedhofs — auf dem Pflaster liegt sonst ein Steinfriedhof */
       var FX=DOM_X,FZ=DOM_NW-7.2;        /* Friedhof hinter dem Chor */
       var rasen=new THREE.Mesh(new THREE.PlaneGeometry(14,10),
-        new THREE.MeshStandardMaterial({color:0x5f8a4a,roughness:1}));
+        _standardMat({color:0x5f8a4a,roughness:1}));
       rasen.rotation.x=-Math.PI/2;rasen.position.set(FX,0.004,FZ);
       rasen.receiveShadow=true;scene.add(rasen);
       /* Kiesweg in der Mittelachse */
@@ -10736,7 +10989,7 @@ setTimeout(function baueGebaeude(){
       /* Spitzbogenfenster an den LAENGSwaenden (x-Seiten), Scheibe quer dazu */
       (function fenster(){
         var rahmM=stdMat(0x8a8274,0.7);
-        var glasM=new THREE.MeshStandardMaterial({color:0x6a8fb8,emissive:0x2a4a7a,
+        var glasM=_standardMat({color:0x6a8fb8,emissive:0x2a4a7a,
           emissiveIntensity:0.25,roughness:0.2,metalness:0.1});
         [-1,1].forEach(function(seite){
           for(var i=0;i<5;i++){
@@ -10764,7 +11017,7 @@ setTimeout(function baueGebaeude(){
           var sp2=new THREE.Mesh(new THREE.ConeGeometry(0.85,2.2,4),stdMat(0x5a6470,0.65));
           sp2.rotation.y=Math.PI/4;sp2.position.set(bx,10.3,bz);sp2.castShadow=true;scene.add(sp2);});}
       /* Rosettenfenster ueber dem Portal (Suedwand, leuchtet nachts) */
-      var ro=new THREE.Mesh(new THREE.CircleGeometry(2.6,24),new THREE.MeshStandardMaterial({color:0x9ac4e8,emissive:0x3a6ab0,emissiveIntensity:0,roughness:0.3,side:THREE.DoubleSide}));
+      var ro=new THREE.Mesh(new THREE.CircleGeometry(2.6,24),_standardMat({color:0x9ac4e8,emissive:0x3a6ab0,emissiveIntensity:0,roughness:0.3,side:THREE.DoubleSide}));
       ro.position.set(DOM_X,9.4,SW+0.16);scene.add(ro);dorfFenster.push(ro.material);
       for(var rs=0;rs<8;rs++){var ra=rs/8*6.283;
         var sp3=new THREE.Mesh(new THREE.BoxGeometry(0.1,2.4,0.16),stM);
@@ -10816,7 +11069,7 @@ setTimeout(function baueGebaeude(){
       var ma=new THREE.Mesh(new THREE.CylinderGeometry(0.13,0.2,9,8),stdMat(0x9aa0a8,0.5));
       ma.position.set(TX+3.4,TY+4.6,TZ+3.4);ma.castShadow=true;scene.add(ma);
       var bl=new THREE.Mesh(new THREE.SphereGeometry(0.34,10,8),
-        new THREE.MeshStandardMaterial({color:0xd8402a,emissive:0xff3020,emissiveIntensity:0.5,roughness:0.4}));
+        _standardMat({color:0xd8402a,emissive:0xff3020,emissiveIntensity:0.5,roughness:0.4}));
       bl.position.set(TX+3.4,TY+9.3,TZ+3.4);scene.add(bl);
       window._turmBlink=bl;
       /* Fernrohr auf der Terrasse — macht aus der Plattform einen Ort */
@@ -10874,7 +11127,7 @@ setTimeout(function baueGebaeude(){
          Suedreihe des Bahnhofs-Parkplatzes, der BEHINDERTENSTELLPLATZ (blaue Flaeche, th-autoboden
          meldete "wasser #436ebd" unter dem Taxi). Jetzt Plaetze 9 und 10 derselben Reihe (die
          einzigen freien, GEMESSEN: belegt sind 1,2,3,7,8), gelb markiert, Schriftzug in der Gasse. */
-      var tM=new THREE.MeshStandardMaterial({color:0xe8b73a,roughness:0.8});tM.envMapIntensity=0.12;(window._gelbMats=window._gelbMats||[]).push(tM);   /* Runde 97: gelb, nicht _markMats (dort nach dem ersten Abend grau) */
+      var tM=_standardMat({color:0xe8b73a,roughness:0.8});tM.envMapIntensity=0.12;(window._gelbMats=window._gelbMats||[]).push(tM);   /* Runde 97: gelb, nicht _markMats (dort nach dem ersten Abend grau) */
       /* Runde 101: Taxistand = die letzten zwei Plaetze der Suedreihe des neu eingepassten Platzes (window._bahnPP) */
       var TP=window._bahnPP||{R0:14.8,RB:2.8,RT:4.5,NS:10,ZS:92.85},TX=TP.R0+(TP.NS-1)*TP.RB,TZ=TP.ZS+TP.RT/2;
       window._taxiStand=[TP.R0+(TP.NS-1.5)*TP.RB,TP.ZS];
@@ -11136,7 +11389,7 @@ setTimeout(function baueGebaeude(){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;},true);
     }
     var pfl=new THREE.Mesh(new THREE.PlaneGeometry(40,26),
-      new THREE.MeshStandardMaterial({color:0x55534f,roughness:0.95,envMapIntensity:0.16}));
+      _standardMat({color:0x55534f,roughness:0.95,envMapIntensity:0.16}));
     pfl.rotation.x=-Math.PI/2;pfl.position.set(MX,0.026,MZ);pfl.receiveShadow=true;scene.add(pfl);
     fest("th48_markthalle.glb",14.38,MX-11,MZ-4,0);
     addSolid(MX-11,MZ-4,23.0,15.0);
@@ -11295,7 +11548,7 @@ setTimeout(function baueGebaeude(){
       bau(datei,hoehe,x,0,z,ry,false,function(w){w.userData.fest=true;if(cb)cb(w);},true);
     }
     var hof=new THREE.Mesh(new THREE.PlaneGeometry(46,24),
-      new THREE.MeshStandardMaterial({color:0x3b3d40,roughness:0.95,envMapIntensity:0.14}));
+      _standardMat({color:0x3b3d40,roughness:0.95,envMapIntensity:0.14}));
     hof.rotation.x=-Math.PI/2;hof.position.set(KX,0.012,KZ);hof.receiveShadow=true;scene.add(hof);
     /* Streifen x -23…23, z -148…-124. Die Kaesten sind gemessen, nicht aus dem
        Massstabs-Test uebernommen — der stellt die Teile eng zusammen, damit sie
@@ -11421,7 +11674,7 @@ setTimeout(function baueGebaeude(){
       bau(datei,hoehe,x,y,z,ry,false,function(w){w.userData.fest=true;},true);
     }
     var kai=new THREE.Mesh(new THREE.PlaneGeometry(15,68),
-      new THREE.MeshStandardMaterial({color:0x585754,roughness:0.94,envMapIntensity:0.16}));
+      _standardMat({color:0x585754,roughness:0.94,envMapIntensity:0.16}));
     kai.rotation.x=-Math.PI/2;kai.position.set(-125.5,0.03,28);kai.receiveShadow=true;scene.add(kai);
     /* Kai noerdlich der Strandzufahrt (die quert bei z = -30) */
     for(var k=0;k<7;k++) fest("th45_kaimauer.glb",2.62,KX,0,-4+k*8,Math.PI/2);
@@ -11653,7 +11906,7 @@ setTimeout(function baueGebaeude(){
     }
     function strich(x,z,bx,bz){
       var li=new THREE.Mesh(new THREE.PlaneGeometry(bx,bz),
-        new THREE.MeshStandardMaterial({color:0xeceae2,roughness:0.85}));
+        _standardMat({color:0xeceae2,roughness:0.85}));
       li.rotation.x=-Math.PI/2;li.position.set(x,0.035,z);scene.add(li);
     }
     /* ⚠️ 0x2f6a30 mit envMapIntensity im Standardwert renderte als blasses Mint —
@@ -11662,7 +11915,7 @@ setTimeout(function baueGebaeude(){
        Bodenflaechen der Karte fahren darum ebenfalls eine gedaempfte
        envMapIntensity. */
     var ras=new THREE.Mesh(new THREE.PlaneGeometry(FB+4,FT+4),
-      new THREE.MeshStandardMaterial({color:0x24551d,roughness:0.97,envMapIntensity:0.14}));
+      _standardMat({color:0x24551d,roughness:0.97,envMapIntensity:0.14}));
     ras.rotation.x=-Math.PI/2;ras.position.set(CX,0.028,CZ);ras.receiveShadow=true;scene.add(ras);
     /* ⚽ FELDMARKIERUNG NACH ECHTEN VERHAELTNISSEN.
        ⚠️ GEFUNDEN mit th-vielfalt (die einzige KOMPAKTE Gruppe der ganzen Welt): 37
@@ -11677,12 +11930,12 @@ setTimeout(function baueGebaeude(){
        Strafraum, Torraum, Elfmeterpunkte und Eckboegen fehlten ganz. */
     function ring(x,z,r,br,von,weite){
       var g=new THREE.RingGeometry(r-br/2,r+br/2,64,1,von||0,weite||6.283);
-      var m9=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:0xeceae2,roughness:0.85}));
+      var m9=new THREE.Mesh(g,_standardMat({color:0xeceae2,roughness:0.85}));
       m9.rotation.x=-Math.PI/2;m9.position.set(x,0.035,z);scene.add(m9);
     }
     function punkt(x,z,r){
       var m9=new THREE.Mesh(new THREE.CircleGeometry(r,16),
-        new THREE.MeshStandardMaterial({color:0xeceae2,roughness:0.85}));
+        _standardMat({color:0xeceae2,roughness:0.85}));
       m9.rotation.x=-Math.PI/2;m9.position.set(x,0.035,z);scene.add(m9);
     }
     strich(CX,CZ-FT/2,FB,0.14); strich(CX,CZ+FT/2,FB,0.14);      // Seitenlinien
@@ -11803,7 +12056,7 @@ setTimeout(function baueGebaeude(){
       fest("th43_loeschfahrzeug.glb",3.24,56+(t?-0.6:-9.6),108.0,0);
       [-1,1].forEach(function(sd){                        // Ausfahrtsbahn
         var lin=new THREE.Mesh(new THREE.PlaneGeometry(0.16,7.0),
-          new THREE.MeshStandardMaterial({color:0xd8b42a,roughness:0.8}));
+          _standardMat({color:0xd8b42a,roughness:0.8}));
         lin.rotation.x=-Math.PI/2;lin.position.set(tx+sd*2.1,0.02,109.5);scene.add(lin);});
     }
     fest("th43_hydrant.glb",0.93,44,0,103.0,0);   /* war (46|106,5) — dort parkt jetzt das westliche Loeschfahrzeug */
@@ -12034,7 +12287,7 @@ setTimeout(function baueGebaeude(){
       fest("th41_bahnsteigbank.glb",3.51,bx,108.9,0,BSH);});
   })();
   (function(){var lin=new THREE.Mesh(new THREE.PlaneGeometry(32,0.28),
-      new THREE.MeshStandardMaterial({color:0xe8e4da,roughness:0.8}));
+      _standardMat({color:0xe8e4da,roughness:0.8}));
     lin.rotation.x=-Math.PI/2;
     /* 🩹 Schwarm-7 hatte sie von der Gleismitte auf 110,9 gezogen — das lag immer
        noch ueber der noerdlichen Schiene. Eine Sicherheitslinie liegt 0,6 m hinter
@@ -12049,12 +12302,12 @@ setTimeout(function baueGebaeude(){
     c.fillText("08:45   West   Gleis 1",14,104);
     c.fillText("09:15   Ost      Gleis 1",14,136);
     var tafel=new THREE.Mesh(new THREE.BoxGeometry(2.6,1.6,0.1),
-      new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cv),roughness:0.5}));
+      _standardMat({map:new THREE.CanvasTexture(cv),roughness:0.5}));
     tafel.position.set(13,2.3,110.4);scene.add(tafel);
     [12,14].forEach(function(px){var pf=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.07,2.3,7),stdMat(0x3a4048,0.5));
       pf.position.set(px,1.15,110.4);scene.add(pf);});
     /* Oberleitung: Tragseil + Fahrdraht ueber dem Gleis, Masten stehen bei -108..108 */
-    var drahtM=new THREE.MeshStandardMaterial({color:0x3a3f46,roughness:0.4,metalness:0.7});
+    var drahtM=_standardMat({color:0x3a3f46,roughness:0.4,metalness:0.7});
     [[6.55],[7.05]].forEach(function(dy){
       var dr=new THREE.Mesh(new THREE.BoxGeometry(236,0.05,0.05),drahtM);
       dr.position.set(0,dy[0],112);scene.add(dr);});
@@ -12114,11 +12367,11 @@ function updTiere(dt,now){var M9=window._muehle;if(M9)M9.rotation.z+=dt*1.1;
 // ---- Heissluftballon, der über die Stadt zieht ----
 setTimeout(function baueBallon(){
   var bg=new THREE.Group();
-  var huelle=new THREE.Mesh(new THREE.SphereGeometry(4,18,14),new THREE.MeshStandardMaterial({color:0xff5a6a,roughness:0.5}));huelle.scale.set(1,1.24,1);huelle.position.y=6;huelle.castShadow=true;bg.add(huelle);
-  var band=new THREE.Mesh(new THREE.SphereGeometry(4.04,18,14),new THREE.MeshStandardMaterial({color:0xffd23a,roughness:0.5,transparent:true,opacity:0.55}));band.scale.set(0.55,1.24,1);band.position.y=6;bg.add(band);
-  var band2=new THREE.Mesh(new THREE.SphereGeometry(4.05,18,14),new THREE.MeshStandardMaterial({color:0x3ad0ff,roughness:0.5,transparent:true,opacity:0.5}));band2.scale.set(1,1.24,0.5);band2.position.y=6;bg.add(band2);
-  var korb=new THREE.Mesh(new THREE.BoxGeometry(1.4,1.1,1.4),new THREE.MeshStandardMaterial({color:0x8a5a34,roughness:0.85}));korb.position.y=1.3;korb.castShadow=true;bg.add(korb);
-  [[-0.6,-0.6],[0.6,-0.6],[-0.6,0.6],[0.6,0.6]].forEach(function(p){var seil=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,3.2,4),new THREE.MeshStandardMaterial({color:0x3a2a1a}));seil.position.set(p[0],3.4,p[1]);bg.add(seil);});
+  var huelle=new THREE.Mesh(new THREE.SphereGeometry(4,18,14),_standardMat({color:0xff5a6a,roughness:0.5}));huelle.scale.set(1,1.24,1);huelle.position.y=6;huelle.castShadow=true;bg.add(huelle);
+  var band=new THREE.Mesh(new THREE.SphereGeometry(4.04,18,14),_standardMat({color:0xffd23a,roughness:0.5,transparent:true,opacity:0.55}));band.scale.set(0.55,1.24,1);band.position.y=6;bg.add(band);
+  var band2=new THREE.Mesh(new THREE.SphereGeometry(4.05,18,14),_standardMat({color:0x3ad0ff,roughness:0.5,transparent:true,opacity:0.5}));band2.scale.set(1,1.24,0.5);band2.position.y=6;bg.add(band2);
+  var korb=new THREE.Mesh(new THREE.BoxGeometry(1.4,1.1,1.4),_standardMat({color:0x8a5a34,roughness:0.85}));korb.position.y=1.3;korb.castShadow=true;bg.add(korb);
+  [[-0.6,-0.6],[0.6,-0.6],[-0.6,0.6],[0.6,0.6]].forEach(function(p){var seil=new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,3.2,4),_standardMat({color:0x3a2a1a}));seil.position.set(p[0],3.4,p[1]);bg.add(seil);});
   bg.position.set(-130,24,-60);bg.scale.setScalar(1.35);scene.add(bg);
   window._ballon={mesh:bg,x:-130,z:-60,sp:2.6};
 },0);
@@ -12173,11 +12426,11 @@ setTimeout(function baueFest(){
      See" ist dort geblieben, wo der See NICHT mehr ist. Jetzt steht es an der
      Uferpromenade (Ring um (0|146), Gehweg r+1,6..r+4,4); die Masten stehen knapp
      ausserhalb davon, die Schnur spannt ueber den Weg. */
-  [[17.2,156.5],[9.8,163.0]].forEach(function(p){var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.4,7),new THREE.MeshStandardMaterial({color:0x5a4a38,roughness:0.8}));
+  [[17.2,156.5],[9.8,163.0]].forEach(function(p){var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3.4,7),_standardMat({color:0x5a4a38,roughness:0.8}));
     mast.position.set(p[0],1.7,p[1]);g.add(mast);});
   var lamps=[];
   for(var i=0;i<9;i++){var t=i/8;var lx=17.2+(9.8-17.2)*t,lz=156.5+(163.0-156.5)*t,ly=3.2-Math.sin(t*Math.PI)*0.7;
-    var la=new THREE.Mesh(new THREE.SphereGeometry(0.22,8,7),new THREE.MeshStandardMaterial({color:LF[i%6],emissive:LF[i%6],emissiveIntensity:0.2,roughness:0.4}));
+    var la=new THREE.Mesh(new THREE.SphereGeometry(0.22,8,7),_standardMat({color:LF[i%6],emissive:LF[i%6],emissiveIntensity:0.2,roughness:0.4}));
     la.position.set(lx,ly,lz);g.add(la);lamps.push(la.material);}
   g.visible=false;scene.add(g);
   window._fest={grp:g,lamps:lamps,x:13.5,z:159.7,hintTag:0,cd:0};   /* Mitte der Schnur, jetzt am See */
@@ -12195,16 +12448,16 @@ function baueRampeAn(rx,rz,rdreh){
   var prof=new THREE.Shape();
   prof.moveTo(-3.25,0); prof.lineTo(3.25,0); prof.lineTo(3.25,1.70); prof.closePath();
   var keil=new THREE.Mesh(new THREE.ExtrudeGeometry(prof,{depth:3.4,bevelEnabled:false}),
-    new THREE.MeshStandardMaterial({color:0x54545e,roughness:0.9,flatShading:true}));
+    _standardMat({color:0x54545e,roughness:0.9,flatShading:true}));
   keil.position.z=-1.7;g.add(keil);
   /* Anlaufkante: ohne sie steht der Keil wie abgeschnitten auf dem Rasen. */
   var lippe=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.06,3.4),
-    new THREE.MeshStandardMaterial({color:0x6a6a74,roughness:0.9}));
+    _standardMat({color:0x6a6a74,roughness:0.9}));
   lippe.position.set(-3.6,0.03,0);g.add(lippe);
   /* Die gelben Leitlinien liegen auf der Schraege — Winkel aus dem Profil, nicht
      geraten: atan(1.70/6.5). */
   var _w=Math.atan2(1.70,6.5);
-  [[-1,0],[1,0]].forEach(function(sd){var rail=new THREE.Mesh(new THREE.BoxGeometry(6.72,0.07,0.16),new THREE.MeshStandardMaterial({color:0xf0c030,roughness:0.6}));
+  [[-1,0],[1,0]].forEach(function(sd){var rail=new THREE.Mesh(new THREE.BoxGeometry(6.72,0.07,0.16),_standardMat({color:0xf0c030,roughness:0.6}));
     rail.rotation.z=_w;rail.position.set(0,0.88,sd[0]*1.55);g.add(rail);});
   g.position.set(rx,0.01,rz);g.rotation.y=rdreh;scene.add(g); // sitzt auf dem Rasen auf
   return {x:rx,z:rz,cd:0};}
@@ -12246,12 +12499,12 @@ function updFest(dt,now){var FE=window._fest;if(!FE)return;
       simEmoji(sq,"🎆");beep(660,.08,"sine",.04);hint("Festlaune. +Spass");break;}}}}
 // ---- Brunnen (Landmark, hebt die Laune) ----
 setTimeout(function baueBrunnen(){
-  var g=new THREE.Group();var stein=new THREE.MeshStandardMaterial({color:0xbfc4cc,roughness:0.6});
+  var g=new THREE.Group();var stein=_standardMat({color:0xbfc4cc,roughness:0.6});
   var basin=new THREE.Mesh(new THREE.CylinderGeometry(3,3.2,0.6,24),stein);basin.position.y=0.3;basin.castShadow=true;g.add(basin);
-  var water=new THREE.Mesh(new THREE.CylinderGeometry(2.7,2.7,0.4,24),new THREE.MeshStandardMaterial({color:0x2e7fc0,roughness:0.1,metalness:0.3,transparent:true,opacity:0.85}));water.position.y=0.5;g.add(water);
+  var water=new THREE.Mesh(new THREE.CylinderGeometry(2.7,2.7,0.4,24),_standardMat({color:0x2e7fc0,roughness:0.1,metalness:0.3,transparent:true,opacity:0.85}));water.position.y=0.5;g.add(water);
   var col=new THREE.Mesh(new THREE.CylinderGeometry(0.4,0.5,1.6,12),stein);col.position.y=1.3;g.add(col);
   var top=new THREE.Mesh(new THREE.CylinderGeometry(1.1,1.1,0.28,16),stein);top.position.y=2.1;g.add(top);
-  var jets=[];for(var j=0;j<6;j++){var a=j/6*6.283;var jet=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.02,1.2,5),new THREE.MeshStandardMaterial({color:0x9fd8f0,transparent:true,opacity:0.6,roughness:0.1}));jet.position.set(Math.cos(a)*0.35,2.6,Math.sin(a)*0.35);g.add(jet);jets.push(jet);}
+  var jets=[];for(var j=0;j<6;j++){var a=j/6*6.283;var jet=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.02,1.2,5),_standardMat({color:0x9fd8f0,transparent:true,opacity:0.6,roughness:0.1}));jet.position.set(Math.cos(a)*0.35,2.6,Math.sin(a)*0.35);g.add(jet);jets.push(jet);}
   /* ⛲ Der Brunnen sass bei x=84 — mit seinem 9 m breiten Park-Ring reichte er von 75 bis 93
      und lag damit in der Ost-Querstrasse (Band 73..83). Jetzt weiter oestlich, zwischen
      Fahrbahn und Villenzeile, mit Abstand zu beiden. */
@@ -12259,9 +12512,9 @@ setTimeout(function baueBrunnen(){
   window._brunnen={grp:g,jets:jets,x:96,z:14,cd:0};
   // Park rundherum: Plattenweg-Ring, Baenke, Blumenbeete, Hecken, Laternen
   var park=new THREE.Group();park.position.set(96,0,14);
-  var weg=new THREE.Mesh(new THREE.RingGeometry(3.6,5.4,28),new THREE.MeshStandardMaterial({color:0xcfc6b4,roughness:0.9}));
+  var weg=new THREE.Mesh(new THREE.RingGeometry(3.6,5.4,28),_standardMat({color:0xcfc6b4,roughness:0.9}));
   weg.rotation.x=-Math.PI/2;weg.position.y=0.005;weg.receiveShadow=true;park.add(weg);
-  var holz=new THREE.MeshStandardMaterial({color:0x8a6a48,roughness:0.8}),eisen=new THREE.MeshStandardMaterial({color:0x3a3a42,roughness:0.6});
+  var holz=_standardMat({color:0x8a6a48,roughness:0.8}),eisen=_standardMat({color:0x3a3a42,roughness:0.6});
   for(var bk=0;bk<4;bk++){var ba2=bk/4*6.283+0.785;var bench=new THREE.Group();
     var sitz=new THREE.Mesh(new THREE.BoxGeometry(2,0.12,0.55),holz);sitz.position.y=0.55;bench.add(sitz);
     var lehne=new THREE.Mesh(new THREE.BoxGeometry(2,0.5,0.1),holz);lehne.position.set(0,0.92,-0.24);lehne.rotation.x=-0.15;bench.add(lehne);
@@ -12269,16 +12522,16 @@ setTimeout(function baueBrunnen(){
     bench.position.set(Math.cos(ba2)*6.6,0,Math.sin(ba2)*6.6);bench.rotation.y=-ba2-Math.PI/2;bench.castShadow=true;park.add(bench);}
   var BLUM=[0xff6b8a,0xffd93d,0xa66bff,0xff9f43];
   for(var bb=0;bb<4;bb++){var bba=bb/4*6.283;var beet=new THREE.Group();
-    var rand2=new THREE.Mesh(new THREE.CylinderGeometry(0.9,0.95,0.3,10),new THREE.MeshStandardMaterial({color:0x9a9088,roughness:0.9}));rand2.position.y=0.15;beet.add(rand2);
-    var erde=new THREE.Mesh(new THREE.CylinderGeometry(0.82,0.82,0.32,10),new THREE.MeshStandardMaterial({color:0x4a3626,roughness:1}));erde.position.y=0.17;beet.add(erde);
-    for(var fl=0;fl<7;fl++){var fa=fl/7*6.283;var bl2=new THREE.Mesh(new THREE.SphereGeometry(0.11,6,5),new THREE.MeshStandardMaterial({color:BLUM[(bb+fl)%4],roughness:0.6,emissive:BLUM[(bb+fl)%4],emissiveIntensity:0.15}));
+    var rand2=new THREE.Mesh(new THREE.CylinderGeometry(0.9,0.95,0.3,10),_standardMat({color:0x9a9088,roughness:0.9}));rand2.position.y=0.15;beet.add(rand2);
+    var erde=new THREE.Mesh(new THREE.CylinderGeometry(0.82,0.82,0.32,10),_standardMat({color:0x4a3626,roughness:1}));erde.position.y=0.17;beet.add(erde);
+    for(var fl=0;fl<7;fl++){var fa=fl/7*6.283;var bl2=new THREE.Mesh(new THREE.SphereGeometry(0.11,6,5),_standardMat({color:BLUM[(bb+fl)%4],roughness:0.6,emissive:BLUM[(bb+fl)%4],emissiveIntensity:0.15}));
       bl2.position.set(Math.cos(fa)*0.45,0.42,Math.sin(fa)*0.45);beet.add(bl2);}
     beet.position.set(Math.cos(bba)*6.6,0,Math.sin(bba)*6.6);park.add(beet);}
-  for(var hk=0;hk<10;hk++){var ha=hk/10*6.283+0.31;var hecke=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.8,0.6),new THREE.MeshStandardMaterial({color:0x3f7a38,roughness:0.95}));
+  for(var hk=0;hk<10;hk++){var ha=hk/10*6.283+0.31;var hecke=new THREE.Mesh(new THREE.BoxGeometry(2.2,0.8,0.6),_standardMat({color:0x3f7a38,roughness:0.95}));
     hecke.position.set(Math.cos(ha)*8.6,0.4,Math.sin(ha)*8.6);hecke.rotation.y=-ha+Math.PI/2;hecke.castShadow=true;park.add(hecke);}
   [[-7.6,0],[7.6,0]].forEach(function(lp){var lg2=new THREE.Group();
     var mast3=new THREE.Mesh(new THREE.CylinderGeometry(0.07,0.09,3,7),eisen);mast3.position.y=1.5;lg2.add(mast3);
-    var kopf2=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),new THREE.MeshStandardMaterial({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
+    var kopf2=new THREE.Mesh(new THREE.SphereGeometry(0.2,10,8),_standardMat({color:0xfff4d0,emissive:0xffe8a0,emissiveIntensity:0,roughness:0.3}));
     kopf2.position.y=3.1;lg2.add(kopf2);dorfFenster.push(kopf2.material);
     lg2.position.set(lp[0],0,lp[1]);park.add(lg2);});
   scene.add(park);
@@ -12307,9 +12560,9 @@ function updBrunnen(dt,now){var B=window._brunnen;if(!B)return;
    die darf _einfrieren() gefahrlos einfrieren. */
 var ENTEN=(function(){
   var N=5,SEE={x:0,z:146};
-  var teile=[new THREE.InstancedMesh(new THREE.SphereGeometry(0.30,8,6),new THREE.MeshStandardMaterial({color:0xf2ead2,roughness:0.8}),N),
-             new THREE.InstancedMesh(new THREE.SphereGeometry(0.15,7,6),new THREE.MeshStandardMaterial({color:0x3f7a3a,roughness:0.7}),N),
-             new THREE.InstancedMesh(new THREE.ConeGeometry(0.07,0.16,5),new THREE.MeshStandardMaterial({color:0xe8a13a,roughness:0.6}),N)];
+  var teile=[new THREE.InstancedMesh(new THREE.SphereGeometry(0.30,8,6),_standardMat({color:0xf2ead2,roughness:0.8}),N),
+             new THREE.InstancedMesh(new THREE.SphereGeometry(0.15,7,6),_standardMat({color:0x3f7a3a,roughness:0.7}),N),
+             new THREE.InstancedMesh(new THREE.ConeGeometry(0.07,0.16,5),_standardMat({color:0xe8a13a,roughness:0.6}),N)];
   teile.forEach(function(t){t.userData.nieAusblenden=true;t.castShadow=true;scene.add(t);});
   var enten=[];
   for(var i=0;i<N;i++)enten.push({a:i/N*6.283,r:4.5+i*1.3,sp:(0.10+0.05*(i%3))*(i%2?1:-1),x:SEE.x,z:SEE.z,rot:0});
@@ -12397,7 +12650,7 @@ var FAHNEN=(function(){
     var mast=new THREE.Mesh(new THREE.CylinderGeometry(0.035,0.05,1.5+h,6),metallM(0x4a4f55));
     mast.position.set(x,y+(1.5+h)/2,z);mast.userData.nieAusblenden=true;scene.add(mast);
     var g=new THREE.PlaneGeometry(b,h,8,3);g.translate(b/2,0,0);
-    var m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({map:t,side:THREE.DoubleSide,roughness:0.85}));
+    var m=new THREE.Mesh(g,_standardMat({map:t,side:THREE.DoubleSide,roughness:0.85}));
     m.position.set(x+0.05,y+1.5+h/2-0.15,z);m.userData.nieAusblenden=true;scene.add(m);
     F.liste.push({g:g,b:b,basis:g.attributes.position.array.slice(),ph:F.liste.length*2.4});
   };
@@ -12516,7 +12769,7 @@ var EIS=(function(){
      von der Kante. Ein flacher Kegel liest sich aus jedem Winkel als
      gestreifter Schirm. */
   var dach=new THREE.Mesh(new THREE.ConeGeometry(1.35,0.55,10),
-    new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cv),roughness:0.85}));
+    _standardMat({map:new THREE.CanvasTexture(cv),roughness:0.85}));
   dach.position.y=2.62;dach.castShadow=true;g.add(dach);
   var kugel=new THREE.Mesh(new THREE.SphereGeometry(0.14,8,6),stdMat(0xf2c4d0,0.5));
   kugel.position.set(0.4,1.42,0.3);g.add(kugel);
@@ -12571,7 +12824,7 @@ var DRACHEN=(function(){
   var L=[];
   [[40,149,"#d84a5a","#f2c040",0],[66,162,"#2f6fb8","#8ad0f0",2.6]].forEach(function(k){
     var m=new THREE.Mesh(new THREE.PlaneGeometry(1.1,1.5),
-      new THREE.MeshStandardMaterial({map:drachenTex(k[2],k[3]),side:THREE.DoubleSide,roughness:0.8}));
+      _standardMat({map:drachenTex(k[2],k[3]),side:THREE.DoubleSide,roughness:0.8}));
     m._bewegt=true;m.userData.nieAusblenden=true;scene.add(m);
     function linie(farbe,n){
       var g=new THREE.BufferGeometry();
@@ -12614,11 +12867,11 @@ var TAUBEN=(function(){
      Schneebaelle. Deutlich dunkler, und ein flacher Schwanz-Kegel macht die
      Silhouette erst zur Taube. */
   var koerper=new THREE.InstancedMesh(new THREE.SphereGeometry(0.16,7,5),
-    new THREE.MeshStandardMaterial({color:0x6f7688,roughness:0.85}),N);
+    _standardMat({color:0x6f7688,roughness:0.85}),N);
   var kopf=new THREE.InstancedMesh(new THREE.SphereGeometry(0.08,6,5),
-    new THREE.MeshStandardMaterial({color:0x454c5e,roughness:0.8}),N);
+    _standardMat({color:0x454c5e,roughness:0.8}),N);
   var schwanz=new THREE.InstancedMesh(new THREE.ConeGeometry(0.09,0.26,4),
-    new THREE.MeshStandardMaterial({color:0x565e70,roughness:0.85}),N);
+    _standardMat({color:0x565e70,roughness:0.85}),N);
   [koerper,kopf,schwanz].forEach(function(t){t.userData.nieAusblenden=true;t.castShadow=true;scene.add(t);});
   var sd=41,rnd=function(){sd=(sd*16807)%2147483647;return sd/2147483647;},L=[];
   for(var i=0;i<N;i++)L.push({x:H.x+(rnd()-0.5)*7,z:H.z+(rnd()-0.5)*6,
@@ -12716,7 +12969,7 @@ var BALL=(function(){
   [[10,12],[34,6],[52,22],[20,36],[44,44],[8,50]].forEach(function(f){
     c.beginPath();c.arc(f[0],f[1],7,0,6.283);c.fill();});
   var m=new THREE.Mesh(new THREE.SphereGeometry(0.42,12,10),
-    new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cv),roughness:0.55}));
+    _standardMat({map:new THREE.CanvasTexture(cv),roughness:0.55}));
   m.castShadow=true;m._bewegt=true;m.userData.nieAusblenden=true;scene.add(m);
   return {m:m,x:53,z:155,vx:0,vz:0,cd:0,sendT:0,stand:[0,0],torCd:0,net:null,netV:null,netT:0,anpfT:0};
 })();
@@ -13213,7 +13466,7 @@ function schildTafel(w,zeilen,opt){
   if(br<0.15||ho<0.1)return 0;
   var tex=_schildTex(zeilen,{seiten:br/ho,uAnteil:1,grund:opt.grund,schrift:opt.schrift,
                              randFarbe:opt.randFarbe,rand:opt.rand,gross:opt.gross});
-  var mat=new THREE.MeshStandardMaterial({map:tex,roughness:0.55,
+  var mat=_standardMat({map:tex,roughness:0.55,
     emissive:opt.leuchtet?0xffffff:0x000000,emissiveMap:opt.leuchtet?tex:null,emissiveIntensity:opt.leuchtet?0.35:0});
   /* 🧭 WELCHE SEITE IST AUSSEN? Ein Schild wird von der Seite gelesen, die vom
      Koerper des Modells WEGZEIGT — beim Neonschild sitzt hinter der Anzeige eine
@@ -13348,15 +13601,26 @@ function _plakatTex(){
   var t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;
   if(THREE.sRGBEncoding!==undefined)t.encoding=THREE.sRGBEncoding;
   _plakatTexObj=t;return t;}
-function _matVereinheitlichen(wurzel){
+function _matVereinheitlichen(wurzel,datei){
   wurzel.traverse(function(n){
     if(!n.isMesh||!n.material)return;
     var liste=Array.isArray(n.material)?n.material:[n.material];
     var neu=liste.map(function(m){
       if(!m)return m;
+      m=_leichtMat(m);
       m.envMapIntensity=0.3;
       if(!m.map&&/plakat/i.test(m.name||"")){m.map=_plakatTex();m.color.set(0xffffff);m.needsUpdate=true;}
-      if(_istWand(m))_wandTiefe(m);
+      if(_istWand(m)){
+        // Neutrale Fassaden erhalten pro Gebäudetyp einen ruhigen Stein-/Putzton.
+        // Farbige Wahrzeichen und vorhandene Wandtexturen behalten ihre Identität.
+        if(!_stadtPalettenMats.has(m)){var hsl={};m.color.getHSL(hsl);
+          if(hsl.s<.24&&hsl.l>.45){var hash=0,txt=datei||wurzel.name||m.name;
+            for(var ci=0;ci<txt.length;ci++)hash=(Math.imul(hash,31)+txt.charCodeAt(ci))|0;
+            var farben=[0xc9c0af,0xb5bfbd,0xc6b7a5,0xd2c5b0,0xb6c0c7];
+            m.color.lerp(new THREE.Color(farben[(hash>>>0)%farben.length]),.42);}
+          _stadtPalettenMats.add(m);}
+        _wandTiefe(m);
+      }
       else if(_istModellFenster(m))_fensterNacht(m);
       /* ⚠️ DER NAME GEHOERT IN DEN SCHLUESSEL. Der Verkehr sucht sein Lackmaterial
          ueber `/lack/i.test(m.name)`; wuerde ein gleich eingestelltes Material aus
@@ -13384,7 +13648,7 @@ window._glbVorlage=function(datei,cb){
   if(e){e.warte.push(cb);if(window._ladePrioUpd)window._ladePrioUpd(datei,window._ladePrioD);window._ladePrioD=undefined;return;}          /* laedt schon — anstellen (Runde 103: naeherer Ort zieht den Auftrag vor) */
   C[datei]=e={szene:null,warte:[cb]};
   GL.load("/models/"+datei,function(g){ window._ladePrioD=undefined;
-    _matVereinheitlichen(g.scene);
+    _matVereinheitlichen(g.scene,datei);
     e.szene=g.scene; var w=e.warte; e.warte=[];
     for(var i=0;i<w.length;i++)w[i](e.szene);
     /* Neues Modell ist da und steht gleich in der Welt — aufwaermen anmelden. */
@@ -14302,7 +14566,7 @@ function wpMat(idx){
   if(wpCache[idx])return wpCache[idx];
   var v=WPAINT[idx],m;
   if(typeof v==="string"&&v.indexOf("textures/")===0){
-    m=new THREE.MeshStandardMaterial({color:0xffffff,roughness:0.9,envMapIntensity:0.3});
+    m=_standardMat({color:0xffffff,roughness:0.9,envMapIntensity:0.3});
     ladeTex(v,1.2,1.2,function(t){m.map=t;m.needsUpdate=true;});
     wpCache[idx]=m;return m;}
   if(typeof v==="number")m=stdMat(v,0.85);
@@ -14312,7 +14576,7 @@ function wpMat(idx){
     else{c.fillStyle="#eef2f6";c.fillRect(0,0,128,128);c.fillStyle="#a8c4dc";
       for(var y=0;y<4;y++)for(var x=0;x<4;x++){c.beginPath();c.arc(x*32+16+(y%2)*16,y*32+16,7,0,6.284);c.fill();}}
     var tx=new THREE.CanvasTexture(cv);tx.wrapS=tx.wrapT=THREE.RepeatWrapping;tx.repeat.set(1.6,2.1);
-    m=new THREE.MeshStandardMaterial({map:tx,roughness:0.85,envMapIntensity:0.3});}
+    m=_standardMat({map:tx,roughness:0.85,envMapIntensity:0.3});}
   wpCache[idx]=m;return m;}
 function buildWallMesh(type,co){
   var g=new THREE.Group();var wm=wpMat(co);
@@ -14321,7 +14585,7 @@ function buildWallMesh(type,co){
   if(type==="fenster"){[[-CS/2+0.3,0],[CS/2-0.3,0]].forEach(function(){});
     var lo=new THREE.Mesh(new THREE.BoxGeometry(CS,0.8,0.16),wm);lo.position.y=0.4;lo.castShadow=true;g.add(lo);
     var up=new THREE.Mesh(new THREE.BoxGeometry(CS,0.6,0.16),wm);up.position.y=2.3;up.castShadow=true;g.add(up);
-    var glas=new THREE.Mesh(new THREE.BoxGeometry(CS-0.5,1.2,0.05),new THREE.MeshStandardMaterial({color:0xbfe0f0,roughness:0.05,transparent:true,opacity:0.4}));glas.position.y=1.4;g.add(glas);
+    var glas=new THREE.Mesh(new THREE.BoxGeometry(CS-0.5,1.2,0.05),_standardMat({color:0xbfe0f0,roughness:0.05,transparent:true,opacity:0.4}));glas.position.y=1.4;g.add(glas);
     var ra=new THREE.Mesh(new THREE.BoxGeometry(CS-0.4,0.08,0.18),stdMat(0xffffff,0.4));ra.position.y=0.84;g.add(ra);
     var rb=ra.clone();rb.position.y=1.98;g.add(rb);
     var rm=new THREE.Mesh(new THREE.BoxGeometry(0.08,1.2,0.18),stdMat(0xffffff,0.4));rm.position.y=1.4;g.add(rm);}
@@ -14347,7 +14611,7 @@ function applyFloor(x,y,idx){var k=fkey(x,y);
   if(floorMeshes[k]){scene.remove(floorMeshes[k]);delete floorMeshes[k];delete floors[k];}
   if(idx===null||idx===undefined)return;
   var fl=FLOORS[idx];
-  var m=new THREE.Mesh(new THREE.PlaneGeometry(CS,CS),fl.texture?new THREE.MeshStandardMaterial({map:fl.texture,roughness:0.75,envMapIntensity:0.3}):stdMat(fl.col,0.9));
+  var m=new THREE.Mesh(new THREE.PlaneGeometry(CS,CS),fl.texture?_standardMat({map:fl.texture,roughness:0.75,envMapIntensity:0.3}):stdMat(fl.col,0.9));
   m.rotation.x=-Math.PI/2;m.position.set(cx(x),0.01,cz(y));m.receiveShadow=true;scene.add(m);
   floors[k]=idx;floorMeshes[k]=m;
   if(!_warDa)bauPloppStart(m,"f");}
@@ -14373,8 +14637,8 @@ function applyFurn(id,gx,gy,rot,fid){
            dem blauen Lack — aus der Spielkamera (steil, Auto ~55 px lang) war kein Fenster zu
            unterscheiden (th-spielerblick, Bild 4, erster Anlauf). Darum Lack in Kontrastfarbe
            (Limousine Sonnengelb, Flitzer Orange, Van Petrol) und Glas fast schwarz. */
-        var lack9=new THREE.MeshStandardMaterial({color:def.lack||0xf2b21c,metalness:0.45,roughness:0.28});
-        var glas9=new THREE.MeshStandardMaterial({color:0x151c26,metalness:0.6,roughness:0.06});
+        var lack9=_standardMat({color:def.lack||0xf2b21c,metalness:0.45,roughness:0.28});
+        var glas9=_standardMat({color:0x151c26,metalness:0.6,roughness:0.06});
         m.traverse(function(n){if(!n.isMesh||!n.material)return;var nm=n.material.name||"";
           if(/^SdLack/.test(nm))n.material=lack9;else if(/^SdScheibe/.test(nm))n.material=glas9;});
         m=tr9;}
@@ -14394,7 +14658,7 @@ function applyFurn(id,gx,gy,rot,fid){
     var zelt=new THREE.Mesh(new THREE.BoxGeometry(1.7,1.9,1.7),stdMat(0x2a2a32,0.7));zelt.position.y=0.95;zelt.castShadow=true;gg.add(zelt);
     var front=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.6,0.06),stdMat(0x1a1a22,0.6));front.position.set(0,0.85,0.86);gg.add(front);
     var zipp=new THREE.Mesh(new THREE.BoxGeometry(0.05,1.4,0.08),stdMat(0x8a8a92,0.4));zipp.position.set(0,0.85,0.9);gg.add(zipp);
-    var lampL=new THREE.Mesh(new THREE.BoxGeometry(1.2,0.1,0.5),new THREE.MeshStandardMaterial({color:0xb08aff,emissive:0x9a5aff,emissiveIntensity:1.6}));
+    var lampL=new THREE.Mesh(new THREE.BoxGeometry(1.2,0.1,0.5),_standardMat({color:0xb08aff,emissive:0x9a5aff,emissiveIntensity:1.6}));
     lampL.position.y=1.75;gg.add(lampL);
     var pl2=new THREE.PointLight(0xb07aff,0.9,4);pl2.position.y=1.4;gg.add(pl2);
     var krauts=[];
@@ -14409,7 +14673,7 @@ function applyFurn(id,gx,gy,rot,fid){
     return;}
   if(def.teich){ // Gartenteich: Wasser + Steinrand + Seerose
     var tg=new THREE.Group();
-    var wasser=new THREE.Mesh(new THREE.CylinderGeometry(1.55,1.4,0.12,26),new THREE.MeshStandardMaterial({color:0x3a8ac8,roughness:0.12,metalness:0.1,transparent:true,opacity:0.88,envMapIntensity:0.5}));
+    var wasser=new THREE.Mesh(new THREE.CylinderGeometry(1.55,1.4,0.12,26),_standardMat({color:0x3a8ac8,roughness:0.12,metalness:0.1,transparent:true,opacity:0.88,envMapIntensity:0.5}));
     wasser.position.y=0.06;tg.add(wasser);
     for(var st9=0;st9<11;st9++){var sw=0.22+Math.sin(st9*7.3)*0.07;
       var stein=new THREE.Mesh(new THREE.DodecahedronGeometry(sw,0),stdMat(st9%2?0x9a9a92:0x7a7a72,0.9));
@@ -14431,7 +14695,7 @@ function applyFurn(id,gx,gy,rot,fid){
       spk.rotation.x=Math.PI/2;spk.position.set(sx,0.8,0.21);sg.add(spk);
       var memb=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.1,0.07,12),stdMat(0x3a3a44,0.6));
       memb.rotation.x=Math.PI/2;memb.position.set(sx,0.8,0.22);sg.add(memb);});
-    var disp=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.12,0.02),new THREE.MeshStandardMaterial({color:0x30e0c0,emissive:0x20c0a0,emissiveIntensity:1.1}));
+    var disp=new THREE.Mesh(new THREE.BoxGeometry(0.3,0.12,0.02),_standardMat({color:0x30e0c0,emissive:0x20c0a0,emissiveIntensity:1.1}));
     disp.position.set(0,0.95,0.21);sg.add(disp);
     var _ms=furnMitte(def,gx,gy,rot);sg.position.set(_ms[0],0.01,_ms[1]);sg.rotation.y=rot*Math.PI/2;scene.add(sg);
     furn.push({fid:fid,id:id,gx:gx,gy:gy,rot:rot,def:def,mesh:sg,busy:false,stereo:1,lv:arguments[5]||1});
@@ -15013,14 +15277,14 @@ var TRAG_VON=[-48,68],TRAG_ZU=[-56,36],TRAG_NAH=5.0,TRAG_ZIEL_R=3.0,TRAG_LOHN=45
 function tragBauen(){
   var g=new THREE.Group();
   var k=new THREE.Mesh(new THREE.BoxGeometry(1.7,1.15,1.05),
-    new THREE.MeshStandardMaterial({color:0xa8763c,roughness:.86}));
+    _standardMat({color:0xa8763c,roughness:.86}));
   k.position.y=.58;k.castShadow=true;g.add(k);
   [-.5,.5].forEach(function(dx){                       /* Spanngurte */
     var b=new THREE.Mesh(new THREE.BoxGeometry(.12,1.2,1.11),
-      new THREE.MeshStandardMaterial({color:0x35281a,roughness:.9}));
+      _standardMat({color:0x35281a,roughness:.9}));
     b.position.set(dx,.58,0);g.add(b);});
   var d=new THREE.Mesh(new THREE.BoxGeometry(1.76,.08,1.11),
-    new THREE.MeshStandardMaterial({color:0x8a5f30,roughness:.88}));
+    _standardMat({color:0x8a5f30,roughness:.88}));
   d.position.y=1.16;g.add(d);
   return g;}
 function tragRing(){
@@ -15092,11 +15356,11 @@ setTimeout(function bauePickups(){
     var gift=(i%4===0),reward=gift?120:30;
     var g=new THREE.Group();
     if(gift){
-      var box=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.7,0.7),new THREE.MeshStandardMaterial({color:0xff5a8a,roughness:0.5,emissive:0xff2a6a,emissiveIntensity:0.4}));g.add(box);
-      var b1=new THREE.Mesh(new THREE.BoxGeometry(0.76,0.76,0.16),new THREE.MeshStandardMaterial({color:0xffe14a,emissive:0xffd000,emissiveIntensity:0.5}));g.add(b1);
+      var box=new THREE.Mesh(new THREE.BoxGeometry(0.7,0.7,0.7),_standardMat({color:0xff5a8a,roughness:0.5,emissive:0xff2a6a,emissiveIntensity:0.4}));g.add(box);
+      var b1=new THREE.Mesh(new THREE.BoxGeometry(0.76,0.76,0.16),_standardMat({color:0xffe14a,emissive:0xffd000,emissiveIntensity:0.5}));g.add(b1);
       var b2=b1.clone();b2.rotation.y=Math.PI/2;g.add(b2);
     }else{
-      var coin=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.55,0.14,20),new THREE.MeshStandardMaterial({color:0xffd23a,metalness:0.7,roughness:0.25,emissive:0xffa000,emissiveIntensity:0.55}));
+      var coin=new THREE.Mesh(new THREE.CylinderGeometry(0.55,0.55,0.14,20),_standardMat({color:0xffd23a,metalness:0.7,roughness:0.25,emissive:0xffa000,emissiveIntensity:0.55}));
       coin.rotation.x=Math.PI/2;g.add(coin);
     }
     g.position.set(p[0],1.1,p[1]);scene.add(g);
@@ -15842,8 +16106,8 @@ var _blauTex=null;
 function _polizeiKaesten(gg,rec,schnell){
   var korpus=new THREE.Mesh(new THREE.BoxGeometry(1.7,1,3.6),stdMat(schnell?0x1a1a22:0x2a3a6a,0.5));korpus.position.y=0.7;korpus.castShadow=true;gg.add(korpus);
   var dach=new THREE.Mesh(new THREE.BoxGeometry(1.5,0.7,2),stdMat(schnell?0x2a2a30:0xf4f4f8,0.4));dach.position.y=1.5;gg.add(dach);
-  var bl=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,0.4),new THREE.MeshStandardMaterial({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));bl.position.set(0.3,1.95,0);gg.add(bl);
-  var br=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,0.4),new THREE.MeshStandardMaterial({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));br.position.set(-0.3,1.95,0);gg.add(br);
+  var bl=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,0.4),_standardMat({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));bl.position.set(0.3,1.95,0);gg.add(bl);
+  var br=new THREE.Mesh(new THREE.BoxGeometry(0.5,0.18,0.4),_standardMat({color:0x3a5aff,emissive:0x3a5aff,emissiveIntensity:1.6}));br.position.set(-0.3,1.95,0);gg.add(br);
   rec.bl=bl;rec.br=br;rec.glowL.position.set(0.3,2.1,0);rec.glowR.position.set(-0.3,2.1,0);}
 /* 🚓 STREIFENWAGEN GEHOEREN AUF DIE STRASSE (Runde 92, User: „auto gehoeren nicht
    auf rasen"). Vorher erschien jeder Wagen in einem ZUFAELLIGEN Winkel 34 m vom
@@ -18202,13 +18466,21 @@ function hint(t){var h=document.getElementById("hint");h.textContent=t;h.style.o
 var ZIMMER_DEF={id:"zimmer",n:"Zimmer ziehen",e:"🏠",cost:0,zimmer:1};
 function renderPalette(){
   var cats=document.getElementById("palCats");cats.innerHTML="";
+  var suchAktiv=!!document.getElementById("palSuche").value.trim();
   if(curCat==="zuletzt"&&!ZULETZT.length)curCat="bau";
-  (ZULETZT.length?[["zuletzt","🕘 Zuletzt"]]:[]).concat(CATS).forEach(function(ct){var b=document.createElement("button");b.className="pcat"+(ct[0]===curCat?" on":"");
-    b.textContent=ct[1];b.onclick=function(){curCat=ct[0];renderPalette();};cats.appendChild(b);});
+  (ZULETZT.length?[["zuletzt","🕘 Zuletzt"]]:[]).concat(CATS).forEach(function(ct){var b=document.createElement("button");b.className="pcat"+(ct[0]===(suchAktiv?"alle":curCat)?" on":"");
+    b.textContent=ct[1];b.onclick=function(){curCat=ct[0];document.getElementById("palSuche").value="";renderPalette();};cats.appendChild(b);});
   var it=document.getElementById("palItems");it.innerHTML="";
   var liste=curCat==="zuletzt"?ZULETZT.map(function(id){return id==="zimmer"?ZIMMER_DEF:defOf(id);}).filter(Boolean):
     (curCat==="alle"?Object.keys(KATALOG).reduce(function(a,k){return a.concat(KATALOG[k]);},[]):KATALOG[curCat]);
   if(curCat==="bau"||curCat==="alle")liste=[ZIMMER_DEF].concat(liste);
+  var suchText=document.getElementById("palSuche").value.trim();
+  function suchNorm(v){return v.toLocaleLowerCase("de").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/ß/g,"ss");}
+  if(suchText){var needle=suchNorm(suchText);
+    liste=[ZIMMER_DEF].concat(Object.keys(KATALOG).reduce(function(a,k){return a.concat(KATALOG[k]);},[]))
+      .filter(function(d){return suchNorm(d.n).indexOf(needle)>=0;});}
+  if(!liste.length){var leer=document.createElement("p");leer.className="pal-leer";
+    leer.textContent="Keine passenden Teile. Versuche z. B. Bett, Sofa oder Tisch.";it.appendChild(leer);}
   liste.forEach(function(d){var b=document.createElement("button");b.className="pitem"+(d.id===curItem?" on":"");
     var gesperrt=d.stufe&&d.stufe>wohnstufe&&MODUS!=="sandbox"; /* 🩹 Schwarm-6: Sandbox schaltet auch die Palette frei */
     if(gesperrt){
@@ -18220,11 +18492,13 @@ function renderPalette(){
       b.onclick=function(){pipMode=false;document.getElementById("pipBtn").classList.remove("on");waehleTeil(d.id);};
     }
     it.appendChild(b);});}
+document.getElementById("palSuche").addEventListener("input",renderPalette);
 var curCat="bau";
 function vorschauNeu(){refreshGhost();if(window._gpx!==undefined)ghostFollow(window._gpx,window._gpy);}
 document.getElementById("rotBtn").onclick=function(){curRot=(curRot+1)%4;vorschauNeu();hint("Gedreht ("+["Nord","Ost","Süd","West"][curRot]+")");};
 addEventListener("keydown",function(e){if(e.key&&e.key.toLowerCase()==="r"&&buildMode&&!(e.target&&/^(INPUT|TEXTAREA)$/.test(e.target.tagName))){curRot=(curRot+1)%4;vorschauNeu();}});
 addEventListener("keydown",function(e){
+  if(!running||(e.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)))return;
   if(e.key==="Tab"){e.preventDefault();
     camAT=(camAT===null?camA:camAT)+(e.shiftKey?-1:1)*Math.PI/2;}
   else if(e.key&&!buildMode){var k4=e.key.toLowerCase();
@@ -19046,6 +19320,11 @@ function updTaxi(dt){
 
 // ===================== Start / Netz-Lobby =====================
 var SAVE="th_save1";
+try{var vorhandenerStand=JSON.parse(localStorage.getItem(SAVE)||"null");
+  if(vorhandenerStand&&typeof vorhandenerStand.gw==="number"&&vorhandenerStand.walls){
+    document.getElementById("soloLabel").textContent="Weiterspielen";
+    document.querySelector(".start-sub").textContent="Dein Zuhause wartet auf dich.";}
+}catch(e){}
 /* 🩹 Schwarm-6: Der Slot hing am LIVE-Wert von MPs. Verliess der Partner das
    Spiel (MPs=null bei running), schrieb der 6-s-Autosave den KOOP-Stand in den
    SOLO-Slot und zerstoerte den Solo-Spielstand. Slot wird jetzt beim Start
@@ -19067,13 +19346,10 @@ function startGame(){
      danach bleibt unveraendert. */
   try{var _me0=sims[meinSi()]||sims[0];
     if(_me0){camTx=_me0.x;camTz=_me0.z;
-      /* 🔎 UND NAH GENUG, UM SICH ZU SEHEN. Gemessen im Handy-Querformat (844x390):
-         beim Standardabstand 44 ist die eigene Figur 12,8 px hoch — 3,3 % der Bildhoehe.
-         Man steuert damit eine Person, die man kaum erkennt. Bei 30 sind es 18,1 px
-         (+41 %), und die Nachbarschaft bleibt im Blick.
-         Nur der STARTWERT: wer wegzoomt, bleibt weggezoomt — camRT wird hier gesetzt,
-         nicht laufend erzwungen. */
-      if(camR>30){camR=30;camRT=30;}
+      /* Näher an der Figur starten: besonders im Handy-Querformat müssen Gesicht
+         und Bewegungsrichtung erkennbar bleiben. Der Zoom bleibt frei bedienbar. */
+      var startZoom=_mobil?22:28;
+      if(camR>startZoom){camR=startZoom;camRT=startZoom;}
       updCam();}}catch(e){}
   if((!MPs||mpHost)&&(!missHeute||missHeute.tag!==tag))missNeu();
   document.getElementById("start").classList.add("hide");
@@ -19132,24 +19408,33 @@ document.getElementById("soloBtn").onclick=function(){
     applySaison();rollWetter();startGame();return;}
   /* Frisches Spiel: erst den Modus waehlen (User: „viele mods"). Overlay wird
      per JS gebaut, damit kein HTML-Umbau noetig ist. */
-  var mw=document.createElement("div");
+  if(document.getElementById("modusWahl"))return;
+  var mw=document.createElement("div");mw.id="modusWahl";
+  mw.setAttribute("role","dialog");mw.setAttribute("aria-modal","true");mw.setAttribute("aria-labelledby","modusTitel");
   mw.style.cssText="position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(20,25,35,.78);padding:18px";
   function kn(emoji,titel,sub,modus,farbe){
     return "<button data-m='"+modus+"' style=\"display:block;width:100%;margin:7px 0;border:0;border-radius:14px;padding:13px 15px;text-align:left;cursor:pointer;background:"+farbe+";min-height:52px\">"+
       "<span style='font-size:1.05rem;font-weight:900'>"+emoji+" "+titel+"</span><br><span style='font-size:.85rem;color:#4a5a6a'>"+sub+"</span></button>";}
-  mw.innerHTML="<div style='background:#fffdf7;border-radius:14px;max-width:420px;width:94vw;padding:20px;box-shadow:0 20px 60px rgba(20,30,50,.5)'>"+
-    "<div style='font-size:1.3rem;font-weight:900;color:#e8722a;text-align:center;margin-bottom:8px'>🎮 Wie willst du spielen?</div>"+
+  mw.innerHTML="<div class='modusKarte' style='background:#fffdf7;border-radius:14px;max-width:540px;width:94vw;padding:20px;box-shadow:0 20px 60px rgba(20,30,50,.5)'>"+
+    "<div id='modusTitel' style='font-size:1.3rem;font-weight:900;color:#305848;text-align:center;margin-bottom:8px'>Dein Haus. Dein Spiel.</div>"+
     kn("🏡","Klassisch","Das volle Spiel — bauen, Familie, Karriere, Bauabnahmen.","klassisch","#eef6ff")+
     kn("🏁","Sprint","Schaffst du die Traumvilla bis Tag 20? Danach entspannt weiter.","sprint","#fff4dc")+
     kn("🏖️","Sandbox","99'999 $, alle Möbel sofort frei — bauen ohne Sorgen.","sandbox","#eaffef")+
     kn("💀","Hardcore","800 $ Start, Abnahme alle 3 Tage, 25 % weniger Einnahmen.","hardcore","#ffecec")+
-    "</div>";
-  document.body.appendChild(mw);
+    "<button type='button' id='modusZurueck' class='btn ghost'>Zurück</button></div>";
+  function schliessen(){mw.remove();document.removeEventListener("keydown",modusTaste);document.getElementById("soloBtn").focus();}
+  function modusTaste(ev){if(ev.key==="Escape")schliessen();
+    if(ev.key==="Tab"){var bs=mw.querySelectorAll("button"),erst=bs[0],letzt=bs[bs.length-1];
+      if(ev.shiftKey&&document.activeElement===erst){ev.preventDefault();letzt.focus();}
+      else if(!ev.shiftKey&&document.activeElement===letzt){ev.preventDefault();erst.focus();}}}
+  document.body.appendChild(mw);document.addEventListener("keydown",modusTaste);
+  mw.querySelector("button").focus();
+  document.getElementById("modusZurueck").onclick=schliessen;
   mw.addEventListener("click",function(ev){
     var b=ev.target.closest("button[data-m]");if(!b)return;
     MODUS=b.getAttribute("data-m");
     if(MODUS==="sandbox")geld=99999;else if(MODUS==="hardcore")geld=800;
-    document.body.removeChild(mw);
+    mw.remove();document.removeEventListener("keydown",modusTaste);
     applySaison();rollWetter();startGame();
     if(MODUS!=="klassisch")setTimeout(function(){hint(
       MODUS==="sprint"?"🏁 Sprint gestartet: Traumvilla (Stufe 3) bis Tag 20!":
@@ -19448,17 +19733,17 @@ function loop(now){
        ⚠️ NICHT WEITER RUNTER. Ein Viertel (0,07/0,03) sah im Bild noch etwas besser aus,
        aber ueber diesem Kommentar steht die Beschwerde „man sieht nichts" — die Nacht war
        schon einmal zu dunkel. Wer sie wieder heller will, aendert genau die 0,13. */
-    sun.intensity=(0.10+dayA*0.82)*wDim;hemi.intensity=0.13+dayA*0.57;
-    hemi.groundColor.setRGB(0.24+dayA*0.17,0.34+dayA*0.20,0.30+dayA*0.04); // nachts blau-grau statt oliv
+    sun.intensity=(0.10+dayA*0.82)*wDim;hemi.intensity=0.13+dayA*0.44;
+    hemi.groundColor.setRGB(0.22+dayA*0.13,0.24+dayA*0.13,0.25+dayA*0.11); // nachts blau-grau statt oliv
     var warm=Math.max(0,1-dayA*1.8); // 1 bei Daemmerung/Nacht, 0 bei hohem Sonnenstand
-    sun.color.setHex(0xfff0d0);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
+    sun.color.setHex(0xfff5e7);if(warm>0)sun.color.lerp(new THREE.Color(0xff8a3a),warm*0.8);
     if(window.sterne)sterne.material.opacity=Math.max(0,0.9-dayA*3);
     /* 🐛 Die Schatten-Box haengt am Licht-Ziel. Das stand fest im Weltursprung, waehrend ich
        die Box auf dem Handy auf ±60 m verkleinert habe — sobald der Spieler weiter weg war,
        lag alles ausserhalb der Box und wurde komplett schwarz (User-Screenshot).
        Licht UND Ziel wandern jetzt mit der Kamera mit, die Box ist immer um den Spieler. */
     _sonneAufKamera(camTx,camTz,Math.cos((hh-5.75)/14*Math.PI)*34,4+dayA*36,18); // tiefer bei Daemmerung -> lange Schatten
-    renderer.toneMappingExposure=(0.62+dayA*0.36)*wDim; // 0.34 war zu dunkel zum Spielen
+    renderer.toneMappingExposure=(0.62+dayA*0.30)*wDim; // 0.34 war zu dunkel zum Spielen
     /* 🌙 DIE NACHT WAR TAGHELL — und diese eine Zeile war der Grund.
        `scene.environmentIntensity` gibt es erst ab three.js r163; geladen ist
        r128. Die `undefined`-Abfrage hat die Abdunklung darum still uebersprungen,
@@ -19741,8 +20026,7 @@ var _menuTakt=0;
    das ist auf 0,05 gedeckelt und koennte ein 900-ms-Bild gar nicht anzeigen. Genau
    dieser Deckel hat in diesem Projekt schon mehrfach Messungen verdorben.
    Gleitender Mittelwert, damit ein einzelner Ruckler (Modell laedt fertig, Schatten
-   werden neu gebaut) nicht sofort die Aufloesung senkt. Herunter ab 33 ms (unter
-   30 Bildern/s), hinauf erst unter 20 ms — die Luecke dazwischen verhindert Pendeln.
+   werden neu gebaut) nicht sofort die Aufloesung senkt. Herunter ab 18 ms (60 Bilder/s als Ziel), hinauf erst nach 12 stabilen Sekunden unter 16,9 ms — die Luecke dazwischen verhindert Pendeln.
    Zwischen zwei Aenderungen mindestens 4 s, denn `setPixelRatio`+`setSize` legt den
    Zeichenpuffer neu an und ruckelt selbst. */
 /* 📱 `?fps` — Anzeige oben links fuer das ECHTE Geraet (Runde 106, User: „1 fps habe ich bei traumhaus").
@@ -19753,10 +20037,25 @@ var _menuTakt=0;
    das Shader-Vorwaermen (_warmObjekt, eigene requestAnimationFrame-Kette) zeichnet dazwischen in ein 8x8-Ziel und
    setzt die Zaehler zurueck. Erste Fassung zeigte an der Kreuzung 185 Aufrufe, probe-bildlast am selben Punkt 964. */
 var _fpsEl=null, _fpsN=0, _fpsT=0, _fpsMax=0, _fpsAufr=0, _fpsDr=0;
-if(/[?&]fps\b/.test(location.search)){_fpsEl=document.createElement("div");
+function fpsAnzeige(an){
+  if(!an){if(_fpsEl)_fpsEl.remove();_fpsEl=null;return;}
+  if(_fpsEl)return;
+  _fpsN=0;_fpsT=0;_fpsMax=0;
+  _fpsEl=document.createElement("div");
   _fpsEl.style.cssText="position:fixed;left:6px;top:6px;z-index:999;pointer-events:none;font:11px/1.35 ui-monospace,monospace;"+
     "color:#fff;background:rgba(0,0,0,.62);padding:4px 7px;border-radius:8px;white-space:pre";
   document.body.appendChild(_fpsEl);}
+var fpsWahl=document.getElementById("fpsToggle"),fpsGespeichert=false;
+try{fpsGespeichert=localStorage.getItem("th_fps")==="1";}catch(e){}
+fpsWahl.checked=/[?&]fps\b/.test(location.search)||fpsGespeichert;fpsAnzeige(fpsWahl.checked);
+fpsWahl.onchange=function(){fpsAnzeige(this.checked);try{localStorage.setItem("th_fps",this.checked?"1":"0");}catch(e){}};
+document.querySelectorAll("[data-grafik]").forEach(function(b){
+  var aktiv=_grafikProfil?b.dataset.grafik===_grafikProfil:b.dataset.grafik===(_mobil?"spar":"voll");
+  b.setAttribute("aria-pressed",String(aktiv));
+  b.onclick=function(){var profil=this.dataset.grafik;
+    try{localStorage.setItem("th_grafik",profil);localStorage.removeItem("th_spar");}catch(e){}
+    var u=new URL(location.href);["spar","spar2","voll"].forEach(function(k){u.searchParams.delete(k);});
+    u.searchParams.set(profil,"");location.replace(u.href);};});
 function _fpsTakt(roh){
   if(!(roh>0)||roh>5)return;
   _fpsN++;_fpsT+=roh;if(roh>_fpsMax)_fpsMax=roh;
@@ -19766,16 +20065,17 @@ function _fpsTakt(roh){
     "Pixel "+renderer.getPixelRatio().toFixed(2)+(_mobil?" · Handy":"")+(_sparHandy?" · Sparmodus":"")+
     (window._ladeOffen>0?" · lädt "+window._ladeOffen:"");
   _fpsN=0;_fpsT=0;_fpsMax=0;}
-var _rrMit=0, _rrSperre=0;
+var _rrMit=0, _rrSperre=0, _rrGut=0;
 function _rrRegel(roh){
   if(!running||roh<=0||roh>1.5)return;      /* Ladepausen nicht als Ruckeln werten */
   _rrMit=_rrMit?_rrMit*0.92+roh*0.08:roh;
+  _rrGut=_rrMit<0.0169?_rrGut+roh:0;
   if((_rrSperre-=roh)>0)return;
   var neu=_rrIdx;
-  if(_rrMit>0.033&&_rrIdx<_rrStufen.length-1)neu=_rrIdx+1;
-  else if(_rrMit<0.020&&_rrIdx>0)neu=_rrIdx-1;
+  if(_rrMit>0.018&&_rrIdx<_rrStufen.length-1)neu=_rrIdx+1;
+  else if(_rrGut>=12&&_rrIdx>0)neu=_rrIdx-1;
   if(neu===_rrIdx)return;
-  _rrIdx=neu;_rrSperre=4;_rrMit=0;
+  var senken=neu>_rrIdx;_rrIdx=neu;_rrSperre=senken?4:12;_rrMit=0;_rrGut=0;
   renderer.setPixelRatio(_rrStufen[_rrIdx]);renderer.setSize(W,H);
   window._rrStand=+_rrStufen[_rrIdx].toFixed(3);}
 requestAnimationFrame(loop);
