@@ -1,0 +1,1361 @@
+{
+  "kind": "GEMESSEN: feste Kapitel/Kamera, Animation aus; Rendering-Gegenprobe bei parallelen2D-Tests, keine isolierte FPS-Messung",
+  "graphics": "details",
+  "views": [
+    {
+      "profile": "desktop",
+      "chapter": 0,
+      "graphics": {
+        "profile": "details",
+        "pixelRatio": 1,
+        "shadows": true,
+        "calls": 124,
+        "triangles": 23126,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2119,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2119,
+          "skippedMeshes": 0,
+          "batches": 135,
+          "triangles": 43948,
+          "totalTriangles": 43948
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        -159.45,
+        16.5,
+        -21
+      ],
+      "fog": {
+        "near": 55,
+        "far": 340,
+        "color": [
+          0.7960813562470016,
+          0.847061083962765,
+          0.8117674313857164
+        ]
+      },
+      "sun": {
+        "position": [
+          -201.45,
+          62,
+          2
+        ],
+        "color": [
+          1,
+          0.8631572134510892,
+          0.6866853124288864
+        ],
+        "intensity": 0.98
+      },
+      "atmosphere": {
+        "stats": {
+          "ridgeMeshes": 2,
+          "ridgeTriangles": 576,
+          "skyTriangles": 528,
+          "extraLights": 0,
+          "textures": 0
+        },
+        "state": {
+          "chapter": 0,
+          "horizon": [
+            0.7960813562470016,
+            0.847061083962765,
+            0.8117674313857164
+          ],
+          "zenith": [
+            0.181164244239483,
+            0.3967552307153359,
+            0.5394794890033748
+          ],
+          "fogNear": 55,
+          "fogFar": 340
+        }
+      },
+      "art": {
+        "own:welcome": {
+          "state": "ready",
+          "radius": 2.752106329588145,
+          "size": [
+            5.400000095367432,
+            4,
+            1.065999984741211
+          ]
+        },
+        "own:memories": {
+          "state": "ready",
+          "radius": 2.741464131467988,
+          "size": [
+            4.800000190734863,
+            2,
+            2.6500000953674316
+          ]
+        },
+        "own:observatory": {
+          "state": "ready",
+          "radius": 3.5355339059327378,
+          "size": [
+            5,
+            5,
+            5
+          ]
+        }
+      },
+      "models": 25,
+      "programs": 25,
+      "seed": 1
+    },
+    {
+      "profile": "desktop",
+      "chapter": 5,
+      "graphics": {
+        "profile": "details",
+        "pixelRatio": 1,
+        "shadows": true,
+        "calls": 219,
+        "triangles": 47977,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2119,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2119,
+          "skippedMeshes": 0,
+          "batches": 135,
+          "triangles": 43948,
+          "totalTriangles": 43948
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        93.55565839499522,
+        16.5,
+        14.50153232625976
+      ],
+      "fog": {
+        "near": 55,
+        "far": 340,
+        "color": [
+          0.8941190846725722,
+          0.8039244770432451,
+          0.7215726153333502
+        ]
+      },
+      "sun": {
+        "position": [
+          51.55565839499522,
+          62,
+          37.50153232625976
+        ],
+        "color": [
+          1,
+          0.7379106405491185,
+          0.4851503130082527
+        ],
+        "intensity": 0.9600000370120239
+      },
+      "atmosphere": {
+        "stats": {
+          "ridgeMeshes": 2,
+          "ridgeTriangles": 576,
+          "skyTriangles": 528,
+          "extraLights": 0,
+          "textures": 0
+        },
+        "state": {
+          "chapter": 5,
+          "horizon": [
+            0.8941190846725722,
+            0.8039244770432451,
+            0.7215726153333502
+          ],
+          "zenith": [
+            0.33245125636304995,
+            0.4072401924880123,
+            0.5028865257424693
+          ],
+          "fogNear": 55,
+          "fogFar": 340
+        }
+      },
+      "art": {
+        "own:welcome": {
+          "state": "ready",
+          "radius": 2.752106329588145,
+          "size": [
+            5.400000095367432,
+            4,
+            1.065999984741211
+          ]
+        },
+        "own:memories": {
+          "state": "ready",
+          "radius": 2.741464131467988,
+          "size": [
+            4.800000190734863,
+            2,
+            2.6500000953674316
+          ]
+        },
+        "own:observatory": {
+          "state": "ready",
+          "radius": 3.5355339059327378,
+          "size": [
+            5,
+            5,
+            5
+          ]
+        }
+      },
+      "models": 25,
+      "programs": 30,
+      "seed": 1
+    },
+    {
+      "profile": "desktop",
+      "chapter": 7,
+      "graphics": {
+        "profile": "details",
+        "pixelRatio": 1,
+        "shadows": true,
+        "calls": 205,
+        "triangles": 66395,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2119,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2119,
+          "skippedMeshes": 0,
+          "batches": 135,
+          "triangles": 43948,
+          "totalTriangles": 43948
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": false,
+      "camera": [
+        188.56087923860733,
+        16.5,
+        17.343440555964264
+      ],
+      "fog": {
+        "near": 55,
+        "far": 340,
+        "color": [
+          0.8784332303777328,
+          0.8627470406146417,
+          0.8784329440832833
+        ]
+      },
+      "sun": {
+        "position": [
+          146.56087923860733,
+          62,
+          40.343440555964264
+        ],
+        "color": [
+          1,
+          0.8227855973224505,
+          0.6724428103466521
+        ],
+        "intensity": 0.9000001110361404
+      },
+      "atmosphere": {
+        "stats": {
+          "ridgeMeshes": 2,
+          "ridgeTriangles": 576,
+          "skyTriangles": 528,
+          "extraLights": 0,
+          "textures": 0
+        },
+        "state": {
+          "chapter": 7,
+          "horizon": [
+            0.8784332303777328,
+            0.8627470406146417,
+            0.8784329440832833
+          ],
+          "zenith": [
+            0.3005438534529768,
+            0.4072402118914951,
+            0.5457243820856046
+          ],
+          "fogNear": 55,
+          "fogFar": 340
+        }
+      },
+      "art": {
+        "own:welcome": {
+          "state": "ready",
+          "radius": 2.752106329588145,
+          "size": [
+            5.400000095367432,
+            4,
+            1.065999984741211
+          ]
+        },
+        "own:memories": {
+          "state": "ready",
+          "radius": 2.741464131467988,
+          "size": [
+            4.800000190734863,
+            2,
+            2.6500000953674316
+          ]
+        },
+        "own:observatory": {
+          "state": "ready",
+          "radius": 3.5355339059327378,
+          "size": [
+            5,
+            5,
+            5
+          ]
+        }
+      },
+      "models": 25,
+      "programs": 31,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 0,
+      "graphics": {
+        "profile": "details",
+        "pixelRatio": 1,
+        "shadows": true,
+        "calls": 118,
+        "triangles": 17061,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1532,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1532,
+          "skippedMeshes": 0,
+          "batches": 129,
+          "triangles": 31322,
+          "totalTriangles": 31322
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        -159.45,
+        23.925,
+        -16.5
+      ],
+      "fog": {
+        "near": 55,
+        "far": 340,
+        "color": [
+          0.7960813562470016,
+          0.847061083962765,
+          0.8117674313857164
+        ]
+      },
+      "sun": {
+        "position": [
+          -201.45,
+          62,
+          2
+        ],
+        "color": [
+          1,
+          0.8631572134510892,
+          0.6866853124288864
+        ],
+        "intensity": 0.98
+      },
+      "atmosphere": {
+        "stats": {
+          "ridgeMeshes": 2,
+          "ridgeTriangles": 576,
+          "skyTriangles": 528,
+          "extraLights": 0,
+          "textures": 0
+        },
+        "state": {
+          "chapter": 0,
+          "horizon": [
+            0.7960813562470016,
+            0.847061083962765,
+            0.8117674313857164
+          ],
+          "zenith": [
+            0.181164244239483,
+            0.3967552307153359,
+            0.5394794890033748
+          ],
+          "fogNear": 55,
+          "fogFar": 340
+        }
+      },
+      "art": {
+        "own:welcome": {
+          "state": "ready",
+          "radius": 2.752106329588145,
+          "size": [
+            5.400000095367432,
+            4,
+            1.065999984741211
+          ]
+        },
+        "own:memories": {
+          "state": "ready",
+          "radius": 2.741464131467988,
+          "size": [
+            4.800000190734863,
+            2,
+            2.6500000953674316
+          ]
+        },
+        "own:observatory": {
+          "state": "ready",
+          "radius": 3.5355339059327378,
+          "size": [
+            5,
+            5,
+            5
+          ]
+        }
+      },
+      "models": 25,
+      "programs": 25,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 5,
+      "graphics": {
+        "profile": "details",
+        "pixelRatio": 1,
+        "shadows": true,
+        "calls": 142,
+        "triangles": 33855,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1532,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1532,
+          "skippedMeshes": 0,
+          "batches": 129,
+          "triangles": 31322,
+          "totalTriangles": 31322
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        93.55565839499522,
+        23.925,
+        19.00153232625976
+      ],
+      "fog": {
+        "near": 55,
+        "far": 340,
+        "color": [
+          0.8941190846725722,
+          0.8039244770432451,
+          0.7215726153333502
+        ]
+      },
+      "sun": {
+        "position": [
+          51.55565839499522,
+          62,
+          37.50153232625976
+        ],
+        "color": [
+          1,
+          0.7379106405491185,
+          0.4851503130082527
+        ],
+        "intensity": 0.9600000370120239
+      },
+      "atmosphere": {
+        "stats": {
+          "ridgeMeshes": 2,
+          "ridgeTriangles": 576,
+          "skyTriangles": 528,
+          "extraLights": 0,
+          "textures": 0
+        },
+        "state": {
+          "chapter": 5,
+          "horizon": [
+            0.8941190846725722,
+            0.8039244770432451,
+            0.7215726153333502
+          ],
+          "zenith": [
+            0.33245125636304995,
+            0.4072401924880123,
+            0.5028865257424693
+          ],
+          "fogNear": 55,
+          "fogFar": 340
+        }
+      },
+      "art": {
+        "own:welcome": {
+          "state": "ready",
+          "radius": 2.752106329588145,
+          "size": [
+            5.400000095367432,
+            4,
+            1.065999984741211
+          ]
+        },
+        "own:memories": {
+          "state": "ready",
+          "radius": 2.741464131467988,
+          "size": [
+            4.800000190734863,
+            2,
+            2.6500000953674316
+          ]
+        },
+        "own:observatory": {
+          "state": "ready",
+          "radius": 3.5355339059327378,
+          "size": [
+            5,
+            5,
+            5
+          ]
+        }
+      },
+      "models": 25,
+      "programs": 27,
+      "seed": 1
+    },
+    {
+      "profile": "touch",
+      "chapter": 7,
+      "graphics": {
+        "profile": "details",
+        "pixelRatio": 1,
+        "shadows": true,
+        "calls": 133,
+        "triangles": 32129,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 508,
+          "batchedMeshes": 195,
+          "batches": 21,
+          "triangles": 25696
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 1532,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 1532,
+          "skippedMeshes": 0,
+          "batches": 129,
+          "triangles": 31322,
+          "totalTriangles": 31322
+        }
+      },
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "coarse": true,
+      "camera": [
+        188.56087923860733,
+        23.925,
+        21.843440555964264
+      ],
+      "fog": {
+        "near": 55,
+        "far": 340,
+        "color": [
+          0.8784332303777328,
+          0.8627470406146417,
+          0.8784329440832833
+        ]
+      },
+      "sun": {
+        "position": [
+          146.56087923860733,
+          62,
+          40.343440555964264
+        ],
+        "color": [
+          1,
+          0.8227855973224505,
+          0.6724428103466521
+        ],
+        "intensity": 0.9000001110361404
+      },
+      "atmosphere": {
+        "stats": {
+          "ridgeMeshes": 2,
+          "ridgeTriangles": 576,
+          "skyTriangles": 528,
+          "extraLights": 0,
+          "textures": 0
+        },
+        "state": {
+          "chapter": 7,
+          "horizon": [
+            0.8784332303777328,
+            0.8627470406146417,
+            0.8784329440832833
+          ],
+          "zenith": [
+            0.3005438534529768,
+            0.4072402118914951,
+            0.5457243820856046
+          ],
+          "fogNear": 55,
+          "fogFar": 340
+        }
+      },
+      "art": {
+        "own:welcome": {
+          "state": "ready",
+          "radius": 2.752106329588145,
+          "size": [
+            5.400000095367432,
+            4,
+            1.065999984741211
+          ]
+        },
+        "own:memories": {
+          "state": "ready",
+          "radius": 2.741464131467988,
+          "size": [
+            4.800000190734863,
+            2,
+            2.6500000953674316
+          ]
+        },
+        "own:observatory": {
+          "state": "ready",
+          "radius": 3.5355339059327378,
+          "size": [
+            5,
+            5,
+            5
+          ]
+        }
+      },
+      "models": 25,
+      "programs": 27,
+      "seed": 1
+    }
+  ],
+  "errors": [],
+  "sourceHash": "7ef3393215293ea96153daee8090b1a78b005953b6cbd608e1680445139dd330",
+  "desktopSeams": [
+    {
+      "chapter": 0,
+      "sky": [
+        203,
+        216,
+        207,
+        255
+      ],
+      "fog": [
+        203,
+        216,
+        207,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 1,
+      "sky": [
+        209,
+        221,
+        210,
+        255
+      ],
+      "fog": [
+        209,
+        221,
+        210,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 2,
+      "sky": [
+        227,
+        223,
+        200,
+        255
+      ],
+      "fog": [
+        227,
+        223,
+        200,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 3,
+      "sky": [
+        234,
+        218,
+        194,
+        255
+      ],
+      "fog": [
+        234,
+        218,
+        194,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 4,
+      "sky": [
+        236,
+        212,
+        186,
+        255
+      ],
+      "fog": [
+        236,
+        212,
+        186,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 5,
+      "sky": [
+        228,
+        205,
+        184,
+        255
+      ],
+      "fog": [
+        228,
+        205,
+        184,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 6,
+      "sky": [
+        223,
+        200,
+        185,
+        255
+      ],
+      "fog": [
+        223,
+        200,
+        185,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 7,
+      "sky": [
+        224,
+        220,
+        224,
+        255
+      ],
+      "fog": [
+        224,
+        220,
+        224,
+        255
+      ],
+      "delta": 0
+    }
+  ],
+  "desktopArt": [
+    {
+      "key": "own:welcome",
+      "site": {
+        "key": "own:welcome",
+        "tile": 0,
+        "x": -162.99531496919872,
+        "z": -47.98125987679485,
+        "r": 3.6,
+        "cx": 0,
+        "cz": 0,
+        "score": 3.8134356417313526
+      },
+      "size": [
+        5.492219325515492,
+        4,
+        2.323491327169073
+      ],
+      "floor": -0.019999999552965164,
+      "ground": -0.019999999552965164,
+      "materials": 5,
+      "triangles": 1440,
+      "radius": 2.752106329588145
+    },
+    {
+      "key": "own:memories",
+      "site": {
+        "key": "own:memories",
+        "tile": 98,
+        "x": 90.62596346142104,
+        "z": -15.9664847419724,
+        "r": 4,
+        "cx": 0,
+        "cz": 0,
+        "score": 12.358338991667168
+      },
+      "size": [
+        5.147135890014141,
+        2,
+        3.34905960645413
+      ],
+      "floor": -0.019999999552965164,
+      "ground": -0.019999999552965164,
+      "materials": 5,
+      "triangles": 1588,
+      "radius": 2.741464131467988
+    },
+    {
+      "key": "own:observatory",
+      "site": {
+        "key": "own:observatory",
+        "tile": 134,
+        "x": 185.91608427516468,
+        "z": -13.367521669855496,
+        "r": 4.2,
+        "cx": 0,
+        "cz": 0,
+        "score": 6.79501587163668
+      },
+      "size": [
+        5.616958103868285,
+        5,
+        5.616958103868264
+      ],
+      "floor": -0.019999999552965164,
+      "ground": -0.019999999552965164,
+      "materials": 5,
+      "triangles": 2487,
+      "radius": 3.5355339059327378
+    }
+  ],
+  "desktop": {
+    "graphics": {
+      "profile": "details",
+      "pixelRatio": 1,
+      "shadows": true,
+      "calls": 124,
+      "triangles": 23126,
+      "terrain": {
+        "sourceMeshes": 1,
+        "batchedMeshes": 1,
+        "batches": 78,
+        "triangles": 20480
+      },
+      "board": {
+        "sourceMeshes": 508,
+        "batchedMeshes": 195,
+        "batches": 21,
+        "triangles": 25696
+      },
+      "instances": {
+        "sourceMeshes": 9,
+        "sourceInstances": 2119,
+        "chunkedMeshes": 9,
+        "chunkedInstances": 2119,
+        "skippedMeshes": 0,
+        "batches": 135,
+        "triangles": 43948,
+        "totalTriangles": 43948
+      }
+    },
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "coarse": false,
+    "camera": [
+      -159.45,
+      16.5,
+      -21
+    ],
+    "fog": {
+      "near": 55,
+      "far": 340,
+      "color": [
+        0.7960815191016021,
+        0.8470611133453847,
+        0.8117675614667011
+      ]
+    },
+    "sun": {
+      "position": [
+        -201.45,
+        62,
+        2
+      ],
+      "color": [
+        1,
+        0.8631571387393282,
+        0.6866852860716951
+      ],
+      "intensity": 0.9799998519521096
+    },
+    "atmosphere": {
+      "stats": {
+        "ridgeMeshes": 2,
+        "ridgeTriangles": 576,
+        "skyTriangles": 528,
+        "extraLights": 0,
+        "textures": 0
+      },
+      "state": {
+        "chapter": 0,
+        "horizon": [
+          0.7960815191016021,
+          0.8470611133453847,
+          0.8117675614667011
+        ],
+        "zenith": [
+          0.18116446516353077,
+          0.3967552501188546,
+          0.5394795005601813
+        ],
+        "fogNear": 55,
+        "fogFar": 340
+      }
+    },
+    "art": {
+      "own:welcome": {
+        "state": "ready",
+        "radius": 2.752106329588145,
+        "size": [
+          5.400000095367432,
+          4,
+          1.065999984741211
+        ]
+      },
+      "own:memories": {
+        "state": "ready",
+        "radius": 2.741464131467988,
+        "size": [
+          4.800000190734863,
+          2,
+          2.6500000953674316
+        ]
+      },
+      "own:observatory": {
+        "state": "ready",
+        "radius": 3.5355339059327378,
+        "size": [
+          5,
+          5,
+          5
+        ]
+      }
+    },
+    "models": 25,
+    "programs": 31,
+    "seed": 1,
+    "lights": [
+      "HemisphereLight",
+      "DirectionalLight",
+      "PointLight"
+    ]
+  },
+  "touchSeams": [
+    {
+      "chapter": 0,
+      "sky": [
+        203,
+        216,
+        207,
+        255
+      ],
+      "fog": [
+        203,
+        216,
+        207,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 1,
+      "sky": [
+        209,
+        221,
+        210,
+        255
+      ],
+      "fog": [
+        209,
+        221,
+        210,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 2,
+      "sky": [
+        227,
+        223,
+        200,
+        255
+      ],
+      "fog": [
+        227,
+        223,
+        200,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 3,
+      "sky": [
+        234,
+        218,
+        194,
+        255
+      ],
+      "fog": [
+        234,
+        218,
+        194,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 4,
+      "sky": [
+        236,
+        212,
+        186,
+        255
+      ],
+      "fog": [
+        236,
+        212,
+        186,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 5,
+      "sky": [
+        228,
+        205,
+        184,
+        255
+      ],
+      "fog": [
+        228,
+        205,
+        184,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 6,
+      "sky": [
+        223,
+        200,
+        185,
+        255
+      ],
+      "fog": [
+        223,
+        200,
+        185,
+        255
+      ],
+      "delta": 0
+    },
+    {
+      "chapter": 7,
+      "sky": [
+        224,
+        220,
+        224,
+        255
+      ],
+      "fog": [
+        224,
+        220,
+        224,
+        255
+      ],
+      "delta": 0
+    }
+  ],
+  "touchArt": [
+    {
+      "key": "own:welcome",
+      "site": {
+        "key": "own:welcome",
+        "tile": 0,
+        "x": -162.99531496919872,
+        "z": -47.98125987679485,
+        "r": 3.6,
+        "cx": 0,
+        "cz": 0,
+        "score": 3.8134356417313526
+      },
+      "size": [
+        5.492219325515492,
+        4,
+        2.323491327169073
+      ],
+      "floor": -0.019999999552965164,
+      "ground": -0.019999999552965164,
+      "materials": 5,
+      "triangles": 1440,
+      "radius": 2.752106329588145
+    },
+    {
+      "key": "own:memories",
+      "site": {
+        "key": "own:memories",
+        "tile": 98,
+        "x": 90.62596346142104,
+        "z": -15.9664847419724,
+        "r": 4,
+        "cx": 0,
+        "cz": 0,
+        "score": 12.358338991667168
+      },
+      "size": [
+        5.147135890014141,
+        2,
+        3.34905960645413
+      ],
+      "floor": -0.019999999552965164,
+      "ground": -0.019999999552965164,
+      "materials": 5,
+      "triangles": 1588,
+      "radius": 2.741464131467988
+    },
+    {
+      "key": "own:observatory",
+      "site": {
+        "key": "own:observatory",
+        "tile": 134,
+        "x": 185.91608427516468,
+        "z": -13.367521669855496,
+        "r": 4.2,
+        "cx": 0,
+        "cz": 0,
+        "score": 6.79501587163668
+      },
+      "size": [
+        5.616958103868285,
+        5,
+        5.616958103868264
+      ],
+      "floor": -0.019999999552965164,
+      "ground": -0.019999999552965164,
+      "materials": 5,
+      "triangles": 2487,
+      "radius": 3.5355339059327378
+    }
+  ],
+  "touch": {
+    "graphics": {
+      "profile": "details",
+      "pixelRatio": 1,
+      "shadows": true,
+      "calls": 118,
+      "triangles": 17061,
+      "terrain": {
+        "sourceMeshes": 1,
+        "batchedMeshes": 1,
+        "batches": 78,
+        "triangles": 20480
+      },
+      "board": {
+        "sourceMeshes": 508,
+        "batchedMeshes": 195,
+        "batches": 21,
+        "triangles": 25696
+      },
+      "instances": {
+        "sourceMeshes": 9,
+        "sourceInstances": 1532,
+        "chunkedMeshes": 9,
+        "chunkedInstances": 1532,
+        "skippedMeshes": 0,
+        "batches": 129,
+        "triangles": 31322,
+        "totalTriangles": 31322
+      }
+    },
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "coarse": true,
+    "camera": [
+      -159.45,
+      23.925,
+      -16.5
+    ],
+    "fog": {
+      "near": 55,
+      "far": 340,
+      "color": [
+        0.7960815191016021,
+        0.8470611133453847,
+        0.8117675614667011
+      ]
+    },
+    "sun": {
+      "position": [
+        -201.45,
+        62,
+        2
+      ],
+      "color": [
+        1,
+        0.8631571387393282,
+        0.6866852860716951
+      ],
+      "intensity": 0.9799998519521096
+    },
+    "atmosphere": {
+      "stats": {
+        "ridgeMeshes": 2,
+        "ridgeTriangles": 576,
+        "skyTriangles": 528,
+        "extraLights": 0,
+        "textures": 0
+      },
+      "state": {
+        "chapter": 0,
+        "horizon": [
+          0.7960815191016021,
+          0.8470611133453847,
+          0.8117675614667011
+        ],
+        "zenith": [
+          0.18116446516353077,
+          0.3967552501188546,
+          0.5394795005601813
+        ],
+        "fogNear": 55,
+        "fogFar": 340
+      }
+    },
+    "art": {
+      "own:welcome": {
+        "state": "ready",
+        "radius": 2.752106329588145,
+        "size": [
+          5.400000095367432,
+          4,
+          1.065999984741211
+        ]
+      },
+      "own:memories": {
+        "state": "ready",
+        "radius": 2.741464131467988,
+        "size": [
+          4.800000190734863,
+          2,
+          2.6500000953674316
+        ]
+      },
+      "own:observatory": {
+        "state": "ready",
+        "radius": 3.5355339059327378,
+        "size": [
+          5,
+          5,
+          5
+        ]
+      }
+    },
+    "models": 25,
+    "programs": 27,
+    "seed": 1,
+    "lights": [
+      "HemisphereLight",
+      "DirectionalLight",
+      "PointLight"
+    ]
+  },
+  "passed": true
+}

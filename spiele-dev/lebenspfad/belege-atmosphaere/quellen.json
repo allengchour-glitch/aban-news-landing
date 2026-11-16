@@ -1,0 +1,45 @@
+{
+  "basis": "c3088227d5f98ae703de20611e4ce829c52993f2",
+  "files": [
+    {
+      "path": "lebenspfad.html",
+      "sha256": "7ef3393215293ea96153daee8090b1a78b005953b6cbd608e1680445139dd330",
+      "bytes": 534264
+    },
+    {
+      "path": "js/lebenspfad/atmosphere.js",
+      "sha256": "554f3af1f405863bcd1977a57185461e1e4d6379f413b2fb3e7dc5dae10dd4de",
+      "bytes": 7701
+    },
+    {
+      "path": "js/lebenspfad/world-sites.js",
+      "sha256": "b4502c0fbe6fad66678c54011e37a3bf7e5969d823b8f66d3e1ca05b5f75655b",
+      "bytes": 3287
+    },
+    {
+      "path": "spiele-dev/lebenspfad/atmosphere-qa.cjs",
+      "sha256": "f011063400afd3c0a8ddf9a7f7e51d49caa2a7bf6dd00954ad04f03d9e716697",
+      "bytes": 7163
+    },
+    {
+      "path": "spiele-dev/lebenspfad/atmosphere-browser-qa.cjs",
+      "sha256": "6694ff812441ee9b460f6fd41de51c6872109db47377886ebc2b9e5078177988",
+      "bytes": 11013
+    },
+    {
+      "path": "models/lebenspfad-eigen/sternwarte.glb",
+      "sha256": "ba95cb7870d3deaacae9b3038d86c12a2746e60aa747aae87622b56b759cda8e",
+      "bytes": 90788
+    },
+    {
+      "path": "models/lebenspfad-eigen/erinnerungsplatz.glb",
+      "sha256": "81dd33961e78d0ddc464455b2c56754fef1b4b900980e9408e4119d339cf0b75",
+      "bytes": 88580
+    },
+    {
+      "path": "models/lebenspfad-eigen/willkommenstor.glb",
+      "sha256": "cb7e650ef2e820077115ef9254ee5e3e13bd59db6a2f860fdb0d93abc4077a82",
+      "bytes": 74788
+    }
+  ]
+}

@@ -1,5 +1,12 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Lebenspfad: Atmosphäre und eigene Objekte ·16.11.2026
+
+Besitzerauftrag mit bestehender Live-Freigabe: acht abgestimmte Licht-/Himmelspaletten, korrekt kodierter Nebel, zwei feste Bergzüge und drei selbst modellierte Blender-GLBs. Willkommenstor am Start, Erinnerungsplatz im Familienkapitel, Sternwarte im Lebensabend; sichere Terrainplätze, auch mobil im Bild. Drei Assets zusammen254.156Bytes, fünf Materialien je Modell. Higgsfield-Anschluss hier nicht verfügbar; lokal mit Blender4.3.2 erzeugt, reproduzierbares bpy-Rezept und geprüfter Reimport liegen bei.
+
+GEMESSEN: acht neue Geometrie-/Atmosphärengruppen und bestehende Terrain/Pfad/Ufer/Batching-Prüfungen grün;16 Kapitelansichten,25 geladene Modellgruppen, fünf HUD-Größen/sieben Standfixtures und Schattenprofil bestanden. Nebel-Horizont-Pixelabweichung0, bewusst falsche Kodierung rot. Replay26 Hashes/Vollzustand/31 RNG-Aufrufe unverändert. Startbild Desktop120→124 Zeichenaufrufe,21.068→23.126 Dreiecke; keine isolierte FPS-/Handy-Zusage. Dateien, echte Bilder und Grenzen: `spiele-dev/lebenspfad/ATMOSPHAERE.md`, `eigene-objekte/README.md`. Implementierung gesichert; echte PR-CI/Deploy/öffentliche Prüfung noch ausstehend. Lokale Gesamt-CI scheitert an read-only HOME. Traumhaus unverändert übernommen. Neon-Flug-Folgeauftrag läuft separat; keine Shop-/Social-/Konto-/Secret-Aktion.
+
+
 ## Mix Arena und neue Spiele-Folgeaufträge ·16.11.2026
 
 Besitzer: «verbessere mehr alles wie ein komplettes spiel» und fortlaufend fürClaudeCode sichern. Minispiele-Mix wird Mix Arena: Figurenwahl, Kategorienmix, konkrete Steuerkarten, Countdown, gemeinsame Rundenkarte, XP/Level/Erfolge, Revanche mit gleicher Reihenfolge, Migration und atomare Run-/Profilspeicherung. Unterbrechen startet aktuelle Runde ungewertet neu; alte Punkte bleiben. Grundstand auf `codex/minispiele-komplettes-spiel` regelmäßig gesichert.194 Node-,24 Arena-,139 Einbettungs-,7 Recovery- und17 Arcadebedingungen am versionierten Abschlussstand grün; neun Querformatkorrekturen mit echten Randfeld-/Touch-Eingaben bestätigt. Veröffentlichung/Endnachweise im PR, kanonisch `spiele-dev/minispiele-mix/WEITERARBEIT.md`.

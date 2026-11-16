@@ -1,0 +1,88 @@
+{
+  "status": "GEMESSEN",
+  "blender": "4.3.2",
+  "axes": "glTF: X rechts, Y oben, Vorderseite +Z; Blender: Z oben, Vorderseite -Y",
+  "models": [
+    {
+      "file": "models/lebenspfad-eigen/willkommenstor.glb",
+      "bytes": 74788,
+      "sha256": "cb7e650ef2e820077115ef9254ee5e3e13bd59db6a2f860fdb0d93abc4077a82",
+      "gltf_bounds_min_xyz": [
+        -2.7,
+        0.0,
+        -0.5
+      ],
+      "gltf_bounds_max_xyz": [
+        2.7,
+        4.0,
+        0.566
+      ],
+      "width_height_depth": [
+        5.4,
+        4.0,
+        1.066
+      ],
+      "exported_vertices": 2560,
+      "triangles": 1440,
+      "materials": 5,
+      "meshes": 5,
+      "primitives": 5,
+      "source_vertices": 780,
+      "source_triangles": 1440
+    },
+    {
+      "file": "models/lebenspfad-eigen/erinnerungsplatz.glb",
+      "bytes": 88580,
+      "sha256": "81dd33961e78d0ddc464455b2c56754fef1b4b900980e9408e4119d339cf0b75",
+      "gltf_bounds_min_xyz": [
+        -2.4,
+        0.0,
+        -1.325
+      ],
+      "gltf_bounds_max_xyz": [
+        2.4,
+        2.0,
+        1.325
+      ],
+      "width_height_depth": [
+        4.8,
+        2.0,
+        2.65
+      ],
+      "exported_vertices": 3096,
+      "triangles": 1588,
+      "materials": 5,
+      "meshes": 5,
+      "primitives": 5,
+      "source_vertices": 910,
+      "source_triangles": 1588
+    },
+    {
+      "file": "models/lebenspfad-eigen/sternwarte.glb",
+      "bytes": 90788,
+      "sha256": "ba95cb7870d3deaacae9b3038d86c12a2746e60aa747aae87622b56b759cda8e",
+      "gltf_bounds_min_xyz": [
+        -2.5,
+        0.0,
+        -2.5
+      ],
+      "gltf_bounds_max_xyz": [
+        2.5,
+        5.0,
+        2.5
+      ],
+      "width_height_depth": [
+        5.0,
+        5.0,
+        5.0
+      ],
+      "exported_vertices": 2966,
+      "triangles": 2487,
+      "materials": 5,
+      "meshes": 5,
+      "primitives": 5,
+      "source_vertices": 1402,
+      "source_triangles": 2487
+    }
+  ]
+}
