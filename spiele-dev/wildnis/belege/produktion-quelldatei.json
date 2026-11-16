@@ -1,0 +1,101 @@
+{
+  "domain": "https://abannews.com",
+  "sourceHead": "a1900e6dd94946ed2501d86144d9efe4839634c1",
+  "releaseCommit": "49b72565f8adf5665b39945c7df1b01b3286e3ff",
+  "checks": [
+    {
+      "path": "neon-wildnis.html",
+      "uri": "neon-wildnis",
+      "http": "200",
+      "ok": false,
+      "inlineScriptsPreserved": false,
+      "scriptOrderPreserved": true,
+      "stylesPreserved": true,
+      "securityPolicyPreserved": true
+    },
+    {
+      "path": "neon-wildnis.html",
+      "uri": "neon-wildnis.html",
+      "http": "200",
+      "ok": false,
+      "inlineScriptsPreserved": false,
+      "scriptOrderPreserved": true,
+      "stylesPreserved": true,
+      "securityPolicyPreserved": true
+    },
+    {
+      "path": "css/wildnis.css",
+      "uri": "css/wildnis.css",
+      "http": "200",
+      "ok": true,
+      "sha256": "51043111639617dfcaa307b60e2863aa94b4c332c6d0d62eb96d26eec3850794",
+      "byteIdentical": true,
+      "mimeCorrect": true
+    },
+    {
+      "path": "css/wildnis.css",
+      "uri": "css/wildnis.css?v=510431116396",
+      "http": "200",
+      "ok": true,
+      "sha256": "51043111639617dfcaa307b60e2863aa94b4c332c6d0d62eb96d26eec3850794",
+      "byteIdentical": true,
+      "mimeCorrect": true
+    },
+    {
+      "path": "js/wildnis/visuals.js",
+      "uri": "js/wildnis/visuals.js",
+      "http": "200",
+      "ok": true,
+      "sha256": "ea479e026907c2c1a3fd6d2640c424c17c38c1c4674d82a05cef296f2525793d",
+      "byteIdentical": true,
+      "mimeCorrect": true
+    },
+    {
+      "path": "js/wildnis/visuals.js",
+      "uri": "js/wildnis/visuals.js?v=ea479e026907",
+      "http": "200",
+      "ok": true,
+      "sha256": "ea479e026907c2c1a3fd6d2640c424c17c38c1c4674d82a05cef296f2525793d",
+      "byteIdentical": true,
+      "mimeCorrect": true
+    },
+    {
+      "path": "js/wildnis/static-instances.js",
+      "uri": "js/wildnis/static-instances.js",
+      "http": "200",
+      "ok": true,
+      "sha256": "3849366f9dcdd73aa0a0c370ce2d4b63c9c3842c31dd655ff68db9afb8322fec",
+      "byteIdentical": true,
+      "mimeCorrect": true
+    },
+    {
+      "path": "js/wildnis/static-instances.js",
+      "uri": "js/wildnis/static-instances.js?v=3849366f9dcd",
+      "http": "200",
+      "ok": true,
+      "sha256": "3849366f9dcdd73aa0a0c370ce2d4b63c9c3842c31dd655ff68db9afb8322fec",
+      "byteIdentical": true,
+      "mimeCorrect": true
+    },
+    {
+      "path": "js/lebenspfad/instance-chunks.js",
+      "uri": "js/lebenspfad/instance-chunks.js",
+      "http": "200",
+      "ok": true,
+      "sha256": "cc75ebe983ee65879d6d373bc524c09cfcb6934b6a3e7db8b71de569e8b129d8",
+      "byteIdentical": true,
+      "mimeCorrect": true
+    },
+    {
+      "path": "js/lebenspfad/instance-chunks.js",
+      "uri": "js/lebenspfad/instance-chunks.js?v=cc75ebe983ee",
+      "http": "200",
+      "ok": true,
+      "sha256": "cc75ebe983ee65879d6d373bc524c09cfcb6934b6a3e7db8b71de569e8b129d8",
+      "byteIdentical": true,
+      "mimeCorrect": true
+    }
+  ],
+  "passed": false,
+  "limits": "HTTPS mit normaler TLS-Prüfung; Quellen/Header/Asset-MIME, kein öffentlicher Browser-/NAT-Koop-Test"
+}

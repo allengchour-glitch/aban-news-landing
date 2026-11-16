@@ -1,0 +1,20 @@
+{
+  "builder": "automation/inject-engine.mjs",
+  "builderSha256": "370f29431897c4903b2c566e440fd055272fbadc605f473b1d8e255317d3f19d",
+  "checks": [
+    {
+      "route": "neon-wildnis",
+      "inlineScriptsExact": true,
+      "externalScriptsExact": true,
+      "stylesExact": true
+    },
+    {
+      "route": "neon-wildnis.html",
+      "inlineScriptsExact": true,
+      "externalScriptsExact": true,
+      "stylesExact": true
+    }
+  ],
+  "passed": true,
+  "change": "Vorhandener Builder ergänzt fetchpriority=high und decoding=async an einem Bildliteral. Erste reine Quelldatei-Prüfung meldete dies korrekt als Unterschied, unterschied aber nicht vom erwarteten Build."
+}

@@ -1,0 +1,74 @@
+{
+  "pr": 3197,
+  "head": "a1900e6dd94946ed2501d86144d9efe4839634c1",
+  "merge": "d93cc7073fd689d3cdf740dc0bc7e798aa62fd9a",
+  "ci": [
+    {
+      "conclusion": "success",
+      "databaseId": 43868672975,
+      "event": "pull_request",
+      "headSha": "a1900e6dd94946ed2501d86144d9efe4839634c1",
+      "name": "Deploy Check",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 43868673040,
+      "event": "pull_request",
+      "headSha": "a1900e6dd94946ed2501d86144d9efe4839634c1",
+      "name": "Cloudflare Pages",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 43868673082,
+      "event": "pull_request",
+      "headSha": "a1900e6dd94946ed2501d86144d9efe4839634c1",
+      "name": "Voice Linter",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 43868673038,
+      "event": "pull_request",
+      "headSha": "a1900e6dd94946ed2501d86144d9efe4839634c1",
+      "name": "Quality Check",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 43868620129,
+      "event": "push",
+      "headSha": "a1900e6dd94946ed2501d86144d9efe4839634c1",
+      "name": "Quality Check",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 43868620248,
+      "event": "push",
+      "headSha": "a1900e6dd94946ed2501d86144d9efe4839634c1",
+      "name": "Voice Linter",
+      "status": "completed"
+    }
+  ],
+  "replacedDeploy": {
+    "run": 43869026007,
+    "conclusion": "cancelled",
+    "reason": "Neuerer Hauptseitenlauf nach parallelem Traumhaus-Merge"
+  },
+  "productionDeploy": {
+    "run": 43869233424,
+    "head": "49b72565f8adf5665b39945c7df1b01b3286e3ff",
+    "conclusion": "success",
+    "containsGameMerge": true,
+    "gameSourcesUnchanged": true,
+    "setupStepsSkipped": 4
+  },
+  "https": {
+    "checks": 10,
+    "passed": true,
+    "normalTLS": true
+  },
+  "limits": "Quellen/Header/Assetnachweis; kein öffentlicher Browserlauf oder Internet-/NAT-Test."
+}
