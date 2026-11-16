@@ -1,0 +1,2525 @@
+{
+  "kind": "Kapitel-/Kamerafixtures, keine Kampagne",
+  "views": [
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 1,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 253,
+        "triangles": 48821,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 2,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 238,
+        "triangles": 46056,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 3,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 264,
+        "triangles": 47957,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 4,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 245,
+        "triangles": 62556,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 5,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 236,
+        "triangles": 51587,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 6,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 299,
+        "triangles": 53904,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 7,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 232,
+        "triangles": 50159,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "chapter": 8,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 262,
+        "triangles": 49881,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 1,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 185,
+        "triangles": 41766,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 2,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 163,
+        "triangles": 33659,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 3,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 191,
+        "triangles": 42101,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 4,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 164,
+        "triangles": 44588,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 5,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 163,
+        "triangles": 41306,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 6,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 185,
+        "triangles": 44734,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 7,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 154,
+        "triangles": 38496,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "chapter": 8,
+      "groundedCount": 19,
+      "badVertices": 0,
+      "graphics": {
+        "profile": "auto",
+        "pixelRatio": 0.55,
+        "shadows": false,
+        "calls": 169,
+        "triangles": 38356,
+        "terrain": {
+          "sourceMeshes": 1,
+          "batchedMeshes": 1,
+          "batches": 78,
+          "triangles": 20480
+        },
+        "board": {
+          "sourceMeshes": 746,
+          "batchedMeshes": 418,
+          "batches": 39,
+          "triangles": 32424
+        },
+        "instances": {
+          "sourceMeshes": 9,
+          "sourceInstances": 2014,
+          "chunkedMeshes": 9,
+          "chunkedInstances": 2014,
+          "skippedMeshes": 0,
+          "batches": 93,
+          "triangles": 42649,
+          "totalTriangles": 42649
+        }
+      },
+      "terrain": {
+        "vertices": 10465,
+        "triangles": 20480,
+        "widthSegments": 160,
+        "depthSegments": 64,
+        "width": 560,
+        "depth": 220,
+        "centerX": 20,
+        "minHeight": -0.81,
+        "maxHeight": 15.392553310891973,
+        "pathPoints": 175,
+        "pathSegments": 170,
+        "flatRadius": 10,
+        "protectedPathRadius": 5,
+        "heightOffset": 0.35,
+        "basins": 3,
+        "bufferBytes": 583340,
+        "textureBytes": 16384
+      },
+      "scenery": {
+        "trees": 220,
+        "shrubs": 70,
+        "rocks": 60,
+        "instances": 1881,
+        "drawTypes": 4,
+        "totalTriangles": 40483,
+        "chapters": [
+          28,
+          28,
+          28,
+          28,
+          27,
+          27,
+          27,
+          27
+        ],
+        "rejected": 5488,
+        "coarse": false
+      },
+      "waterside": {
+        "basins": 3,
+        "docks": 1,
+        "rocks": 36,
+        "reeds": 60,
+        "lilies": 15
+      },
+      "fields": 175,
+      "seed": 1
+    }
+  ],
+  "errors": [],
+  "initial": {
+    "groundedCount": 19,
+    "badVertices": 0,
+    "graphics": {
+      "profile": "auto",
+      "pixelRatio": 0.55,
+      "shadows": false,
+      "calls": 243,
+      "triangles": 47231,
+      "terrain": {
+        "sourceMeshes": 1,
+        "batchedMeshes": 1,
+        "batches": 78,
+        "triangles": 20480
+      },
+      "board": {
+        "sourceMeshes": 746,
+        "batchedMeshes": 418,
+        "batches": 39,
+        "triangles": 32424
+      },
+      "instances": {
+        "sourceMeshes": 9,
+        "sourceInstances": 2014,
+        "chunkedMeshes": 9,
+        "chunkedInstances": 2014,
+        "skippedMeshes": 0,
+        "batches": 93,
+        "triangles": 42649,
+        "totalTriangles": 42649
+      }
+    },
+    "terrain": {
+      "vertices": 10465,
+      "triangles": 20480,
+      "widthSegments": 160,
+      "depthSegments": 64,
+      "width": 560,
+      "depth": 220,
+      "centerX": 20,
+      "minHeight": -0.81,
+      "maxHeight": 15.392553310891973,
+      "pathPoints": 175,
+      "pathSegments": 170,
+      "flatRadius": 10,
+      "protectedPathRadius": 5,
+      "heightOffset": 0.35,
+      "basins": 3,
+      "bufferBytes": 583340,
+      "textureBytes": 16384
+    },
+    "scenery": {
+      "trees": 220,
+      "shrubs": 70,
+      "rocks": 60,
+      "instances": 1881,
+      "drawTypes": 4,
+      "totalTriangles": 40483,
+      "chapters": [
+        28,
+        28,
+        28,
+        28,
+        27,
+        27,
+        27,
+        27
+      ],
+      "rejected": 5488,
+      "coarse": false
+    },
+    "waterside": {
+      "basins": 3,
+      "docks": 1,
+      "rocks": 36,
+      "reeds": 60,
+      "lilies": 15
+    },
+    "fields": 175,
+    "seed": 1
+  },
+  "clearances": [
+    {
+      "x": -160,
+      "z": 22,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -157.68226430457008,
+      "z": 16.666791283651413,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -155.40261164190733,
+      "z": 10.577154513346528,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -153.12242259850137,
+      "z": 4.4981716592945435,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -150.80307776084183,
+      "z": -0.8030753082953233,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -148.40595771541828,
+      "z": -4.559504419213871,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -145.89669893519718,
+      "z": -6.002751428797628,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -143.31913126191364,
+      "z": -4.126585482938412,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -140.602225483311,
+      "z": 0.5047776742530683,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -137.81868508533947,
+      "z": 6.460408215281477,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -135.0412135539491,
+      "z": 12.309376312651462,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -132.34251437509002,
+      "z": 16.62075213886771,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -129.74969044243983,
+      "z": 17.951455903956095,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -126.85919528866543,
+      "z": 14.304618605289347,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -124.13471689011344,
+      "z": 6.5262884326095385,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -121.51432958992658,
+      "z": -3.186539004154829,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -118.93610773124766,
+      "z": -12.636868095075275,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -116.33812565721946,
+      "z": -19.627703230223297,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -113.7110752885635,
+      "z": -21.98407227122338,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -111.47399920921725,
+      "z": -20.054853144371645,
+      "ground": -0.019999999552965164,
+      "base": 0.09
+    },
+    {
+      "x": -109.30519382064725,
+      "z": -15.64158009281858,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -107.1145086009172,
+      "z": -9.759511379138068,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -104.81179302809083,
+      "z": -3.423905265903924,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -102.30689658023182,
+      "z": 2.349979984309929,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -99.60956296852163,
+      "z": 6.460562080452672,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -97.16387239847639,
+      "z": 9.056310239462995,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -94.56787697955255,
+      "z": 11.37762330473422,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -91.85810813345446,
+      "z": 13.442391739005885,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -89.07109728188651,
+      "z": 15.268506005017509,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -86.24337584655298,
+      "z": 16.87385656550864,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -83.46045271710908,
+      "z": 18.258812910348713,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -80.76494453324713,
+      "z": 19.56963010630542,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -77.96039726919685,
+      "z": 20.848797360421777,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -75.13631041589727,
+      "z": 21.89925956495781,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -72.38218346428722,
+      "z": 22.523961612173547,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -69.78751590530574,
+      "z": 22.52584839432902,
+      "ground": -0.019999999552965164,
+      "base": 0.09
+    },
+    {
+      "x": -67.23539340453104,
+      "z": 21.52734009416858,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -64.49973138668399,
+      "z": 17.72898723372964,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -62.15237725867866,
+      "z": 11.866677053875554,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -60.022510897042636,
+      "z": 5.258254701227794,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -57.939312178303496,
+      "z": -0.7784346775922231,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -55.73196097898884,
+      "z": -4.92554593596299,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -53.26934593613787,
+      "z": -5.8702636558363785,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -50.65012778471672,
+      "z": -3.171148735816408,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -47.90974739946403,
+      "z": 1.9254309386620063,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -45.12090826632994,
+      "z": 7.988545540103482,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -42.356313871264575,
+      "z": 13.587265241012716,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -39.68866770021804,
+      "z": 17.29066021389437,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -37.008116023834745,
+      "z": 17.547222233646085,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -34.164930589196324,
+      "z": 12.661543378045303,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -31.47228049556596,
+      "z": 4.193620550913538,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -28.868240086086452,
+      "z": -5.659550637820676,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -26.290883703900604,
+      "z": -14.700974578228735,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -23.678285692151135,
+      "z": -20.733655660382347,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -21.140475784798276,
+      "z": -21.7901694811857,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -18.928918989577607,
+      "z": -19.144756411042312,
+      "ground": -0.019999999552965164,
+      "base": 0.09
+    },
+    {
+      "x": -16.763095254649134,
+      "z": -14.269103981841116,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -14.552854058076523,
+      "z": -8.17847045615587,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -12.208044877923534,
+      "z": -1.8881140965605567,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -9.638517192253799,
+      "z": 3.5867068343711423,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -7.014229217717137,
+      "z": 7.136205794924359,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -4.527537614667482,
+      "z": 9.661667949618064,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -1.8996740181652976,
+      "z": 11.917167626257577,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 0.8328301500850436,
+      "z": 13.920595287582405,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 3.6334434683791916,
+      "z": 15.689841396332083,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 6.4656345150127725,
+      "z": 17.24279641524613,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 9.198307411678027,
+      "z": 18.57870794018089,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 11.929465942862604,
+      "z": 19.900086567028143,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 14.747288681500725,
+      "z": 21.14055147510004,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 17.562276136653434,
+      "z": 22.10304755665661,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 20.28492881738186,
+      "z": 22.59051970395791,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 22.825747232747048,
+      "z": 22.405912809263942,
+      "ground": -0.019999999552965164,
+      "base": 0.09
+    },
+    {
+      "x": 25.494267690105794,
+      "z": 20.843317534209863,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 28.116838348916882,
+      "z": 16.40542736142133,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 30.393806148754344,
+      "z": 10.233041155873096,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 32.49599121309059,
+      "z": 3.6440040641865448,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 34.59421366539807,
+      "z": -2.043838767016929,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 36.85929362914916,
+      "z": -5.512642191115766,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 39.37012367040781,
+      "z": -5.498501221503022,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 42.02644833209464,
+      "z": -2.0658704415408073,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 44.785759356125524,
+      "z": 3.4064926360061163,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 47.57535325655027,
+      "z": 9.48765818364225,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 50.32252654741878,
+      "z": 14.74669637387229,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 52.954575742780875,
+      "z": 17.75267737920087,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 55.720179582403716,
+      "z": 16.78178608949491,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 58.51992565145977,
+      "z": 10.794577902580578,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 61.18461779372207,
+      "z": 1.7743746466174075,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 63.776181666047826,
+      "z": -8.08182806846619,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 66.3565429252942,
+      "z": -16.577034632741395,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 68.98762722831849,
+      "z": -21.514249436279982,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 71.42163099507766,
+      "z": -21.393423089796045,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 73.61330291379376,
+      "z": -18.095269717771895,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 75.78177940270174,
+      "z": -12.820691552333404,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 78.0172109837379,
+      "z": -6.584946856054396,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 80.40974817883857,
+      "z": -0.4032938915086497,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 83.04954150994001,
+      "z": 4.709009078729952,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 85.59221099653467,
+      "z": 7.793858700596462,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 88.11762041873224,
+      "z": 10.250153004894779,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 90.77506897895623,
+      "z": 12.440957446823766,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 93.52802525550227,
+      "z": 14.384162489122957,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 96.3399578266661,
+      "z": 16.09765859453192,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 99.17433527074323,
+      "z": 17.599336225790115,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 101.86807777161471,
+      "z": 18.905861806823374,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 104.62929293193815,
+      "z": 20.225485920327394,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 107.45479742698043,
+      "z": 21.41493253812108,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 110.25509176580265,
+      "z": 22.27714655246447,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 112.94067645746576,
+      "z": 22.615072855617562,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 115.4220520110309,
+      "z": 22.231656339840423,
+      "ground": -0.019999999552965164,
+      "base": 0.09
+    },
+    {
+      "x": 118.19165234833973,
+      "z": 19.968523650539833,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 120.71180790583186,
+      "z": 14.973461487065665,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 122.92906563521852,
+      "z": 8.573364577486956,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 125.01424565997202,
+      "z": 2.0860780684254348,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 127.13816810356485,
+      "z": -3.170552893497586,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 129.47165308946944,
+      "z": -5.878683161660682,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 132.0205738924719,
+      "z": -4.909822404352143,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 134.70946109655256,
+      "z": -0.8331088786660732,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 137.48315879148967,
+      "z": 4.925604487730736,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 140.2689634913332,
+      "z": 10.9353878673431,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 142.99417171013297,
+      "z": 15.765311432675517,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 145.58607996193876,
+      "z": 17.984445356232577,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 148.43616396466405,
+      "z": 15.68947552790758,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 151.19634102169127,
+      "z": 8.738050235300301,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 153.83694556613904,
+      "z": -0.6971212238736371,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 156.4199032548646,
+      "z": -10.419043239685994,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 159.0071397447251,
+      "z": -18.230720202207863,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 161.66058069257784,
+      "z": -21.935156501511045,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 163.97665365296956,
+      "z": -20.809696507407125,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 166.1540751028021,
+      "z": -16.92225647491313,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 168.33083875331064,
+      "z": -11.312206214648096,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 170.5970951264314,
+      "z": -4.994803989186115,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 173.0429947441007,
+      "z": 1.0146919388990696,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 175.7586881282549,
+      "z": 5.701023307033694,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 178.09673643667776,
+      "z": 8.514391480517046,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 180.3769205830783,
+      "z": 11.104496511371904,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 182.76895106910442,
+      "z": 13.441510751943984,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 185.39555965188723,
+      "z": 15.42918369278801,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 188.37947808855776,
+      "z": 16.971264824458675,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 191.84343813624696,
+      "z": 17.971503637510573,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 199.35741999774626,
+      "z": 17.94447550704637,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 208.72152650504881,
+      "z": 15.797593409860035,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 219.24206709801234,
+      "z": 12.218575109849507,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 230.34481243755,
+      "z": 7.918550307727507,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 241.45553318457473,
+      "z": 3.608648704206818,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 252.00000000000006,
+      "z": 0,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -56.84579071869277,
+      "z": 2.425649375539329,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -53.68474979028973,
+      "z": -0.2999111055211121,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -50.940315514997785,
+      "z": -1.6239129530909882,
+      "ground": -0.019999999552965164,
+      "base": 0.09
+    },
+    {
+      "x": -48.97084610050483,
+      "z": -1.7250542423915827,
+      "ground": -0.019999999552965164,
+      "base": 0.135
+    },
+    {
+      "x": -47.12413678715333,
+      "z": -1.321019048957266,
+      "ground": -0.019999999552965164,
+      "base": 0.09
+    },
+    {
+      "x": -45.48776808517244,
+      "z": -0.5495269080122961,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -44.00103841346902,
+      "z": 0.6180409096450985,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -42.82591820630777,
+      "z": 2.201749163631892,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": -42.10107832088044,
+      "z": 5.1613956837858215,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -42.192394296985036,
+      "z": 9.334226986326783,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 84.32537901621947,
+      "z": -6.464185633384752,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 89.52428160481621,
+      "z": -5.243454955461623,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 92.80879280149144,
+      "z": -2.5095012126656937,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 95.46587005607302,
+      "z": 0.7798219185253065,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 97.44806297899355,
+      "z": 4.565773329354113,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 97.5483224587602,
+      "z": 9.905129053639346,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -147.0433746712547,
+      "z": -0.9710331972919046,
+      "ground": -0.019999999552965164,
+      "base": 0.09
+    },
+    {
+      "x": -147.49852695815565,
+      "z": 3.786644249574102,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -146.35723997090304,
+      "z": 7.301257759159577,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -144.45681839016885,
+      "z": 10.445933231912527,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -142.2547764215247,
+      "z": 13.38729298239933,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -139.42502271177696,
+      "z": 15.763747915950963,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": -134.84408355779132,
+      "z": 17.12670600781209,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 169.93114031581032,
+      "z": -0.5068024697259256,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 169.61652814583894,
+      "z": 3.8063240136500105,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 170.57047829226866,
+      "z": 7.057205021456869,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 172.289453172087,
+      "z": 9.772524476717578,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 174.288113356532,
+      "z": 12.241412209037607,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 176.58603586444917,
+      "z": 14.488051149582228,
+      "ground": -0.019999999552965164,
+      "base": 0
+    },
+    {
+      "x": 179.56706294909517,
+      "z": 16.09793491228053,
+      "ground": -0.019999999552965164,
+      "base": 0.045
+    },
+    {
+      "x": 183.85117406672447,
+      "z": 16.688216888032624,
+      "ground": -0.019999999552965164,
+      "base": 0.09
+    }
+  ],
+  "waterClearance": [
+    {
+      "basin": {
+        "x": -142.04076215492248,
+        "z": -16.835655199364275
+      },
+      "conflicts": []
+    }
+  ],
+  "performance": {
+    "rafPerSecond": 12.091503267973856,
+    "median": 83.29999999999927,
+    "p95": 100.09999999999854,
+    "profile": "auto",
+    "pixelRatio": 0.55,
+    "shadows": false,
+    "calls": 243,
+    "triangles": 47231,
+    "terrain": {
+      "sourceMeshes": 1,
+      "batchedMeshes": 1,
+      "batches": 78,
+      "triangles": 20480
+    },
+    "board": {
+      "sourceMeshes": 746,
+      "batchedMeshes": 418,
+      "batches": 39,
+      "triangles": 32424
+    },
+    "instances": {
+      "sourceMeshes": 9,
+      "sourceInstances": 2014,
+      "chunkedMeshes": 9,
+      "chunkedInstances": 2014,
+      "skippedMeshes": 0,
+      "batches": 93,
+      "triangles": 42649,
+      "totalTriangles": 42649
+    }
+  },
+  "passed": true
+}
