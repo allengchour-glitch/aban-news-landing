@@ -1,0 +1,51 @@
+{
+  "productId": "gid://shopify/Product/15454109041025",
+  "title": "2-Ebenen-Badezimmer-Aufbewahrungsständer aus Aluminium",
+  "status": "ACTIVE",
+  "nativeVariantCount": 1,
+  "nativeVariant": {
+    "id": "gid://shopify/ProductVariant/55907480830337",
+    "title": "Default Title",
+    "sku": "CJ-2604160736511628400"
+  },
+  "supplierLookup": {
+    "method": "pid",
+    "input": "2604160736511628400",
+    "basis": "Native synthetic SKU contains CJ- followed by this parent identifier; this lookup is parent association only, not proof of exact child binding."
+  },
+  "supplierFacts": {
+    "pid": "2604160736511628400",
+    "productNameEn": "Wall-mounted Balconywall Bathroom Storage Rack",
+    "productSku": "CJYD2837560",
+    "materialNameEnSet": [
+      "Plastic"
+    ]
+  },
+  "supplierDescriptionText": "Product information:  Number of Floors: 2 floors  Dimensions: As shown in the picture  Material: Aluminum alloy  Style: Creamy style   Packing list:   Storage rack*3   Product Image:",
+  "sourceChildren": [
+    {
+      "vid": "2604160736511628900",
+      "variantSku": "CJYD283756001AZ",
+      "variantKey": "Three Layers",
+      "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/04/16/07/87f4f105-41da-4002-b773-76e69a4a854f_trans.jpeg"
+    }
+  ],
+  "exactSkuBinding": false,
+  "imageEvidence": {
+    "supplierChildImageFilenameExistsInShopGallery": true,
+    "matchedExistingMediaId": "gid://shopify/MediaImage/69931373068673",
+    "visualComparisonCompleted": false,
+    "reason": "Stopped candidate on identity/variant and set-quantity blockers before downloading/comparing images."
+  },
+  "blockers": [
+    {
+      "code": "EXACT_CHILD_BINDING_MISSING",
+      "detail": "Native SKU CJ-2604160736511628400 references the CJ parent identifier and does not equal the sole returned child SKU CJYD283756001AZ. Default Title does not establish the Three Layers child choice."
+    },
+    {
+      "code": "LAYERS_AND_QUANTITY_UNRESOLVED",
+      "detail": "Native title and supplier prose state 2 levels, supplier child key says Three Layers, and supplier packing list says Storage rack*3. It is not established whether three denotes separate complete racks or assembly components. Do not preserve the existing claim of three complete racks or select a layer count without clarification."
+    }
+  ],
+  "additionalSourceLimit": "Structured material taxonomy says Plastic while prose says Aluminum alloy; no draft material promise prepared."
+}

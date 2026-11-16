@@ -1,0 +1,2545 @@
+{
+  "run": "R264",
+  "atUtc": "2026-11-16T17:43:06Z",
+  "identity": {
+    "atUtc": "2026-11-16 17:35:02 UTC",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    },
+    "verified": true
+  },
+  "productMutationCalls": 3,
+  "initialCopyUpdates": 2,
+  "optionNameUpdates": 1,
+  "productCheckpoint": {
+    "run": "R264",
+    "phase": "CONFIRMED",
+    "confirmed": [
+      "15524879008129",
+      "15449463751041"
+    ],
+    "optionRenames": [
+      {
+        "productId": "gid://shopify/Product/15524879008129",
+        "optionId": "gid://shopify/ProductOption/17975143334273",
+        "beforeName": "Farbe",
+        "afterName": "Dekor und Inhalt",
+        "reason": "Die sechs bestehenden Werte kombinieren drei Dekore und 700/1400 ml; keine reine Farbauswahl."
+      }
+    ],
+    "inflight": null,
+    "unknown": []
+  },
+  "reviewedInputs": [
+    {
+      "id": "gid://shopify/Product/15524879008129",
+      "title": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml",
+      "descriptionHtml": "<!-- ls-var-v1 -->\n<h2>Eine Vorratsdose, drei Dekore und zwei Füllmengen</h2>\n<p>Diese Keramikdose mit Deckel ist für die Aufbewahrung im Haushalt vorgesehen. Du kannst zwischen 700 ml und 1400 ml sowie drei dekorativen Ausführungen wählen. Die Produktbilder zeigen eine bauchige Dose mit seitlichen Griffen und einem abnehmbaren Deckel. Angeboten wird jeweils eine Dose in der ausgewählten Kombination, kein Set aus kleiner und grosser Dose.</p>\n<h3>Dekor und Inhalt auswählen</h3>\n<ul><li><strong>Kirschblüte / Kirsche:</strong> «Kirschblüte 700ml» bezeichnet die kleine und «Kirsche 1400ml» die grosse Ausführung dieses Dekors.</li><li><strong>Künstlerische Konzeption:</strong> erhältlich mit 700 ml oder 1400 ml.</li><li><strong>Rhynchophylla Blumen:</strong> erhältlich mit 700 ml oder 1400 ml.</li></ul>\n<p>Der Name im Auswahlfeld kombiniert Dekor und Füllmenge. Achte deshalb auf die Zahl am Ende: 1400 ml entsprechen 1,4 Litern und damit dem doppelten angegebenen Inhalt der 700-ml-Variante. Vergleiche zusätzlich das zugehörige Produktbild, damit du das gewünschte Muster auswählst.</p>\n<h3>Produktdetails und Lieferumfang</h3>\n<ul><li>Material laut Produktbeschreibung: Keramik</li><li>Ausführung mit Deckel</li><li>Nenninhalt je nach Auswahl: 700 ml oder 1400 ml</li><li>Sechs Kombinationen aus drei Dekoren und zwei Füllmengen</li><li>Lieferumfang: eine Dose mit dem abgebildeten Deckel in der gewählten Ausführung</li></ul>\n<h3>Hinweise zur Verwendung</h3>\n<p>Der Deckel allein belegt keinen luftdichten oder auslaufsicheren Verschluss. Freigaben für Herd, Backofen, Mikrowelle und Spülmaschine sind nicht hinterlegt. Richte dich bei Reinigung und Verwendung nach den Hinweisen des gelieferten Produkts.</p>\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml | LuxeStyle",
+        "description": "Keramikdose mit Deckel in drei Dekoren und zwei Füllmengen. Vergleiche 700 und 1400 ml und wähle eine einzelne Dose in der passenden Ausführung."
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15449463751041",
+      "title": "Trinkglas mit Griff und Strohhalm, 980 ml",
+      "descriptionHtml": "<!-- ls-var-v1 -->\n<h2>Grosses Trinkglas mit Fruchtmotiv</h2>\n<p>Dieses Trinkglas verbindet einen seitlichen Griff mit einem Deckel und einem Strohhalm. Die Produktbeschreibung nennt Borosilikatglas und einen Inhalt von 980 ml. Der Glasbehälter ist einwandig aufgebaut; die Bilder zeigen Fruchtmotive, einen hellen Griff und einen farbigen Deckel.</p>\n<h3>Die vier Farbvarianten verstehen</h3>\n<p>Alle vier angebotenen Ausführungen haben den angegebenen Inhalt von 980 ml. Die Farbwahl bezieht sich auf das Dekor und den Deckel, nicht auf einen vollständig eingefärbten Glasbehälter. Im Auswahlfeld sind folgende Bezeichnungen hinterlegt:</p>\n<ul><li><strong>Frucht Orange:</strong> als Orange geführte Ausführung; der Deckel wirkt auf dem Produktbild gelb</li><li><strong>Frucht Brasket:</strong> Ausführung mit blauem Deckel</li><li><strong>Frucht Grün:</strong> Ausführung mit grünem Deckel</li><li><strong>Frucht Pulver:</strong> Ausführung mit rosafarbenem Deckel</li></ul>\n<p>«Brasket» und «Pulver» sind die vorhandenen Variantenbezeichnungen. Die zugehörigen Bilder zeigen, welche Farbgestaltung du damit auswählst. Du bestellst ein Trinkglas in der gewählten Ausführung, kein Vierer-Set.</p>\n<h3>Produktdetails</h3>\n<ul><li>Nenninhalt: 980 ml</li><li>Glasbehälter laut Produktbeschreibung: Borosilikatglas</li><li>Einwandige Konstruktion</li><li>Ausführung mit seitlichem Griff, Deckel und Strohhalm</li><li>Vier Farb- und Motivvarianten</li></ul>\n<h3>Was vor dem Gebrauch wichtig ist</h3>\n<p>Eine zulässige Höchsttemperatur, eine Spülmaschinenfreigabe und die Auslaufsicherheit sind nicht bestätigt. Aus der Bezeichnung Borosilikatglas folgt hier keine Zusage für kochend heisse Getränke oder starke Temperaturwechsel. Die Materialien von Griff, Deckel und Strohhalm sind nicht gesondert ausgewiesen.</p>\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Trinkglas mit Griff und Strohhalm, 980 ml | LuxeStyle",
+        "description": "980-ml-Trinkglas mit Griff, Deckel, Strohhalm und Fruchtmotiv. Vergleiche vier Farbvarianten und finde die passende Ausführung über die Auswahlhilfe."
+      }
+    }
+  ],
+  "nativeBefore": {
+    "15524879008129": {
+      "id": "gid://shopify/Product/15524879008129",
+      "title": "Keramik-Vorratsdose für die Küche",
+      "descriptionHtml": "<!-- ls-var-v1 --><p>Diese Keramikdose ist eine praktische Aufbewahrungsmöglichkeit für Gewürze oder andere Lebensmittel in deiner Küche. Sie besteht aus Keramik und ist für den Haushalt konzipiert. Die Dose ist mit einem Deckel ausgestattet und hat ein Fassungsvermögen von 700 ml. Im Lieferumfang ist eine Dose enthalten.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Aus Keramik gefertigt</li>\n<li>Mit praktischem Deckel</li>\n<li>700 ml Fassungsvermögen</li>\n<li>Für den Haushalt geeignet</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 675 g – 1.3 kg (je nach Variante)</li></ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Keramik-Vorratsdose für die Küche | LuxeStyle CH",
+        "description": "Diese Keramikdose ist eine praktische Aufbewahrungsmöglichkeit für Gewürze oder andere Lebensmittel in deiner Küche. 700 ml Fassungsvermögen."
+      },
+      "updatedAt": "2026-11-05T03:30:19Z",
+      "status": "ACTIVE",
+      "handle": "keramik-vorratsdose-fur-die-kuche-886976",
+      "onlineStoreUrl": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976",
+      "vendor": "LuxeStyle",
+      "productType": "Aufbewahrung & Organizer",
+      "tags": [
+        "aufbewahrung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "neuheit",
+        "organizer",
+        "sort-vorratsdosen",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17975143334273",
+          "name": "Farbe",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404701575",
+              "name": "Kirschblüte 700ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404734343",
+              "name": "Kirsche 1400ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404767111",
+              "name": "Künstlerische Konzeption 700ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404799879",
+              "name": "Künstlerische Konzeption 1400ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404832647",
+              "name": "Rhynchophylla Blumen 700ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404865415",
+              "name": "Rhynchophylla Blumen 1400ml",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70800736420225",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/82466e8f-8072-4a4f-8a92-bdc497a3f10b.jpg?v=1788517063",
+              "width": 746,
+              "height": 830
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736452993",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 2 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c457501c-bfd4-4204-bdf5-bfb629d0c059.jpg?v=1788517064",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736485761",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 3 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be03d88a-60a5-4dd4-8f06-a1b40067d2e1.jpg?v=1788517064",
+              "width": 750,
+              "height": 834
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736518529",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 4 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d4ff921f-7796-4750-b65a-bb93049e8019.jpg?v=1788517064",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736551297",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 5 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60112767-e68f-431e-a71a-90651d2932d5.jpg?v=1788517064",
+              "width": 743,
+              "height": 842
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736584065",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 6 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7da97bc-eec2-4942-8f81-3e20808c43c8.jpg?v=1788517063",
+              "width": 705,
+              "height": 648
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736616833",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 7 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6819c41c-f3e4-4a2e-ac30-de845d00ff0d.jpg?v=1788517064",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736649601",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 8 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/99800f93-6224-4ebe-bbe1-b8e2c9057724.jpg?v=1788517063",
+              "width": 749,
+              "height": 842
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736682369",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 9 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8ca61cfb-391c-4cfd-91b7-6f910a45d746_fine.jpg?v=1788517063",
+              "width": 749,
+              "height": 749
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736715137",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 10 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fa748b50-c351-48b4-838a-cd9c0652d3a7.jpg?v=1788517063",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736747905",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 11 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8b067b4f-2d82-47fd-9332-749e9337b191.jpg?v=1788517064",
+              "width": 747,
+              "height": 844
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736780673",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 12 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg?v=1788517063",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736813441",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 13 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0704ca62-f182-4386-b333-29c6f408b4d4.jpg?v=1788517063",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjgxMzQ0MSwibGFzdF92YWx1ZSI6IjEzIn0="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/68122741014919",
+            "title": "Kirschblüte 700ml",
+            "sku": "CJYD205154101AZ",
+            "price": "24.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Kirschblüte 700ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157408647",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736780673"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjc4MDY3MywibGFzdF92YWx1ZSI6NzA4MDA3MzY3ODA2NzN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741047687",
+            "title": "Kirsche 1400ml",
+            "sku": "CJYD205154102BY",
+            "price": "28.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Kirsche 1400ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157441415",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736616833"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjYxNjgzMywibGFzdF92YWx1ZSI6NzA4MDA3MzY2MTY4MzN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741080455",
+            "title": "Künstlerische Konzeption 700ml",
+            "sku": "CJYD205154103CX",
+            "price": "24.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Künstlerische Konzeption 700ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157474183",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736715137"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjcxNTEzNywibGFzdF92YWx1ZSI6NzA4MDA3MzY3MTUxMzd9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741113223",
+            "title": "Künstlerische Konzeption 1400ml",
+            "sku": "CJYD205154104DW",
+            "price": "28.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Künstlerische Konzeption 1400ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157506951",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736452993"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjQ1Mjk5MywibGFzdF92YWx1ZSI6NzA4MDA3MzY0NTI5OTN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741145991",
+            "title": "Rhynchophylla Blumen 700ml",
+            "sku": "CJYD205154105EV",
+            "price": "24.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Rhynchophylla Blumen 700ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157539719",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736518529"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjUxODUyOSwibGFzdF92YWx1ZSI6NzA4MDA3MzY1MTg1Mjl9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741178759",
+            "title": "Rhynchophylla Blumen 1400ml",
+            "sku": "CJYD205154106FU",
+            "price": "28.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Rhynchophylla Blumen 1400ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157572487",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736813441"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjgxMzQ0MSwibGFzdF92YWx1ZSI6NzA4MDA3MzY4MTM0NDF9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2ODEyMjc0MTE3ODc1OSwibGFzdF92YWx1ZSI6Nn0="
+        }
+      }
+    },
+    "15449463751041": {
+      "id": "gid://shopify/Product/15449463751041",
+      "title": "Grosses Trinkglas mit Strohhalm und Griff",
+      "descriptionHtml": "<!-- ls-var-v1 --><p><strong>Ausführung:</strong> Inhalt: 980 ml.</p><p>Ein grosses, portables Trinkglas aus hochtemperaturbeständigem Borosilikatglas mit Strohhalm und Griff. Ideal als Geschenk für Frauen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>980 ml Fassungsvermögen</li>\n<li>Einlagige Konstruktion</li>\n<li>Blumenmuster durch Hochtemperatur-Glasur</li>\n<li>in den Farben Orange, Blau, Grün und Rosa erhältlich</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Grosses Trinkglas mit Strohhalm und Griff | LuxeStyle CH",
+        "description": "Grosses Trinkglas mit Strohhalm und Griff bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "updatedAt": "2026-11-02T08:47:37Z",
+      "status": "ACTIVE",
+      "handle": "grosses-trinkglas-mit-strohhalm-und-griff-637300",
+      "onlineStoreUrl": "https://luxestyle.ch/products/grosses-trinkglas-mit-strohhalm-und-griff-637300",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "rueckhol-0907",
+        "sort-thermobecher-strohhalm",
+        "sort-thermobecher-trinkbecher",
+        "varianten-nachgezogen-1025"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17881138594177",
+          "name": "Farbe",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58745990185351",
+              "name": "Frucht Orange",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58745990218119",
+              "name": "Frucht Brasket",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58745990250887",
+              "name": "Frucht Grün",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58745990283655",
+              "name": "Frucht Pulver",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69873019912577",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 2 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cb80d19-a799-42e9-936c-7263c291a5d3.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873019879809",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 1 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1662d5ff-99f2-4cb6-9c39-1383debc8465.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873019945345",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 3 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b319ca7-fa84-4707-bd2c-74a3a5cd5d6c.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873019978113",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 4 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2044a551-f79d-4483-915b-7c960f725ae6.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020010881",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 5 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27fb003d-7cda-4ec1-9634-14b6aa07a3db.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020043649",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 6 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/606dcc0b-18bc-4ad1-ac7f-e4e075a385f3.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020076417",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 7 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eaf5b5bd-3fdb-46f9-a6c9-c0a1733322c3.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020109185",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 8 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/078c4694-93b2-4b2c-ac07-cc2177d76a9a.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020141953",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 9 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/694c9755-0f9c-4cab-a070-2c4df7acadbd.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAyMDE0MTk1MywibGFzdF92YWx1ZSI6IjkifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67871828803975",
+            "title": "Frucht Orange",
+            "sku": "CJJT294514601AZ",
+            "price": "16.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Frucht Orange"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69888523141511",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69873020010881"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAyMDAxMDg4MSwibGFzdF92YWx1ZSI6Njk4NzMwMjAwMTA4ODF9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67871828836743",
+            "title": "Frucht Brasket",
+            "sku": "CJJT294514602BY",
+            "price": "16.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Frucht Brasket"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69888523174279",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69873020141953"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAyMDE0MTk1MywibGFzdF92YWx1ZSI6Njk4NzMwMjAxNDE5NTN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67871828869511",
+            "title": "Frucht Grün",
+            "sku": "CJJT294514603CX",
+            "price": "16.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Frucht Grün"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69888523207047",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69873019912577"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAxOTkxMjU3NywibGFzdF92YWx1ZSI6Njk4NzMwMTk5MTI1Nzd9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67871828902279",
+            "title": "Frucht Pulver",
+            "sku": "CJJT294514604DW",
+            "price": "16.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Frucht Pulver"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69888523239815",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69873020109185"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAyMDEwOTE4NSwibGFzdF92YWx1ZSI6Njk4NzMwMjAxMDkxODV9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2Nzg3MTgyODkwMjI3OSwibGFzdF92YWx1ZSI6NH0="
+        }
+      }
+    }
+  },
+  "nativeAfter": {
+    "15524879008129": {
+      "id": "gid://shopify/Product/15524879008129",
+      "title": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml",
+      "descriptionHtml": "<!-- ls-var-v1 -->\n<h2>Eine Vorratsdose, drei Dekore und zwei Füllmengen</h2>\n<p>Diese Keramikdose mit Deckel ist für die Aufbewahrung im Haushalt vorgesehen. Du kannst zwischen 700 ml und 1400 ml sowie drei dekorativen Ausführungen wählen. Die Produktbilder zeigen eine bauchige Dose mit seitlichen Griffen und einem abnehmbaren Deckel. Angeboten wird jeweils eine Dose in der ausgewählten Kombination, kein Set aus kleiner und grosser Dose.</p>\n<h3>Dekor und Inhalt auswählen</h3>\n<ul>\n<li>\n<strong>Kirschblüte / Kirsche:</strong> «Kirschblüte 700ml» bezeichnet die kleine und «Kirsche 1400ml» die grosse Ausführung dieses Dekors.</li>\n<li>\n<strong>Künstlerische Konzeption:</strong> erhältlich mit 700 ml oder 1400 ml.</li>\n<li>\n<strong>Rhynchophylla Blumen:</strong> erhältlich mit 700 ml oder 1400 ml.</li>\n</ul>\n<p>Der Name im Auswahlfeld kombiniert Dekor und Füllmenge. Achte deshalb auf die Zahl am Ende: 1400 ml entsprechen 1,4 Litern und damit dem doppelten angegebenen Inhalt der 700-ml-Variante. Vergleiche zusätzlich das zugehörige Produktbild, damit du das gewünschte Muster auswählst.</p>\n<h3>Produktdetails und Lieferumfang</h3>\n<ul>\n<li>Material laut Produktbeschreibung: Keramik</li>\n<li>Ausführung mit Deckel</li>\n<li>Nenninhalt je nach Auswahl: 700 ml oder 1400 ml</li>\n<li>Sechs Kombinationen aus drei Dekoren und zwei Füllmengen</li>\n<li>Lieferumfang: eine Dose mit dem abgebildeten Deckel in der gewählten Ausführung</li>\n</ul>\n<h3>Hinweise zur Verwendung</h3>\n<p>Der Deckel allein belegt keinen luftdichten oder auslaufsicheren Verschluss. Freigaben für Herd, Backofen, Mikrowelle und Spülmaschine sind nicht hinterlegt. Richte dich bei Reinigung und Verwendung nach den Hinweisen des gelieferten Produkts.</p>\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml | LuxeStyle",
+        "description": "Keramikdose mit Deckel in drei Dekoren und zwei Füllmengen. Vergleiche 700 und 1400 ml und wähle eine einzelne Dose in der passenden Ausführung."
+      },
+      "updatedAt": "2026-11-16T17:39:27Z",
+      "status": "ACTIVE",
+      "handle": "keramik-vorratsdose-fur-die-kuche-886976",
+      "onlineStoreUrl": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976",
+      "vendor": "LuxeStyle",
+      "productType": "Aufbewahrung & Organizer",
+      "tags": [
+        "aufbewahrung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "neuheit",
+        "organizer",
+        "sort-vorratsdosen",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17975143334273",
+          "name": "Dekor und Inhalt",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404701575",
+              "name": "Kirschblüte 700ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404734343",
+              "name": "Kirsche 1400ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404767111",
+              "name": "Künstlerische Konzeption 700ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404799879",
+              "name": "Künstlerische Konzeption 1400ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404832647",
+              "name": "Rhynchophylla Blumen 700ml",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58848404865415",
+              "name": "Rhynchophylla Blumen 1400ml",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70800736420225",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/82466e8f-8072-4a4f-8a92-bdc497a3f10b.jpg?v=1788517063",
+              "width": 746,
+              "height": 830
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736452993",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 2 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c457501c-bfd4-4204-bdf5-bfb629d0c059.jpg?v=1788517064",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736485761",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 3 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be03d88a-60a5-4dd4-8f06-a1b40067d2e1.jpg?v=1788517064",
+              "width": 750,
+              "height": 834
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736518529",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 4 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d4ff921f-7796-4750-b65a-bb93049e8019.jpg?v=1788517064",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736551297",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 5 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60112767-e68f-431e-a71a-90651d2932d5.jpg?v=1788517064",
+              "width": 743,
+              "height": 842
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736584065",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 6 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7da97bc-eec2-4942-8f81-3e20808c43c8.jpg?v=1788517063",
+              "width": 705,
+              "height": 648
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736616833",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 7 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6819c41c-f3e4-4a2e-ac30-de845d00ff0d.jpg?v=1788517064",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736649601",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 8 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/99800f93-6224-4ebe-bbe1-b8e2c9057724.jpg?v=1788517063",
+              "width": 749,
+              "height": 842
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736682369",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 9 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8ca61cfb-391c-4cfd-91b7-6f910a45d746_fine.jpg?v=1788517063",
+              "width": 749,
+              "height": 749
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736715137",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 10 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fa748b50-c351-48b4-838a-cd9c0652d3a7.jpg?v=1788517063",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736747905",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 11 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8b067b4f-2d82-47fd-9332-749e9337b191.jpg?v=1788517064",
+              "width": 747,
+              "height": 844
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736780673",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 12 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg?v=1788517063",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70800736813441",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 13 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0704ca62-f182-4386-b333-29c6f408b4d4.jpg?v=1788517063",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjgxMzQ0MSwibGFzdF92YWx1ZSI6IjEzIn0="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/68122741014919",
+            "title": "Kirschblüte 700ml",
+            "sku": "CJYD205154101AZ",
+            "price": "24.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Dekor und Inhalt",
+                "value": "Kirschblüte 700ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157408647",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736780673"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjc4MDY3MywibGFzdF92YWx1ZSI6NzA4MDA3MzY3ODA2NzN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741047687",
+            "title": "Kirsche 1400ml",
+            "sku": "CJYD205154102BY",
+            "price": "28.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Dekor und Inhalt",
+                "value": "Kirsche 1400ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157441415",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736616833"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjYxNjgzMywibGFzdF92YWx1ZSI6NzA4MDA3MzY2MTY4MzN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741080455",
+            "title": "Künstlerische Konzeption 700ml",
+            "sku": "CJYD205154103CX",
+            "price": "24.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Dekor und Inhalt",
+                "value": "Künstlerische Konzeption 700ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157474183",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736715137"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjcxNTEzNywibGFzdF92YWx1ZSI6NzA4MDA3MzY3MTUxMzd9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741113223",
+            "title": "Künstlerische Konzeption 1400ml",
+            "sku": "CJYD205154104DW",
+            "price": "28.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Dekor und Inhalt",
+                "value": "Künstlerische Konzeption 1400ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157506951",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736452993"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjQ1Mjk5MywibGFzdF92YWx1ZSI6NzA4MDA3MzY0NTI5OTN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741145991",
+            "title": "Rhynchophylla Blumen 700ml",
+            "sku": "CJYD205154105EV",
+            "price": "24.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Dekor und Inhalt",
+                "value": "Rhynchophylla Blumen 700ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157539719",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736518529"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjUxODUyOSwibGFzdF92YWx1ZSI6NzA4MDA3MzY1MTg1Mjl9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/68122741178759",
+            "title": "Rhynchophylla Blumen 1400ml",
+            "sku": "CJYD205154106FU",
+            "price": "28.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Dekor und Inhalt",
+                "value": "Rhynchophylla Blumen 1400ml"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/70058157572487",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70800736813441"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDgwMDczNjgxMzQ0MSwibGFzdF92YWx1ZSI6NzA4MDA3MzY4MTM0NDF9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2ODEyMjc0MTE3ODc1OSwibGFzdF92YWx1ZSI6Nn0="
+        }
+      }
+    },
+    "15449463751041": {
+      "id": "gid://shopify/Product/15449463751041",
+      "title": "Trinkglas mit Griff und Strohhalm, 980 ml",
+      "descriptionHtml": "<!-- ls-var-v1 -->\n<h2>Grosses Trinkglas mit Fruchtmotiv</h2>\n<p>Dieses Trinkglas verbindet einen seitlichen Griff mit einem Deckel und einem Strohhalm. Die Produktbeschreibung nennt Borosilikatglas und einen Inhalt von 980 ml. Der Glasbehälter ist einwandig aufgebaut; die Bilder zeigen Fruchtmotive, einen hellen Griff und einen farbigen Deckel.</p>\n<h3>Die vier Farbvarianten verstehen</h3>\n<p>Alle vier angebotenen Ausführungen haben den angegebenen Inhalt von 980 ml. Die Farbwahl bezieht sich auf das Dekor und den Deckel, nicht auf einen vollständig eingefärbten Glasbehälter. Im Auswahlfeld sind folgende Bezeichnungen hinterlegt:</p>\n<ul>\n<li>\n<strong>Frucht Orange:</strong> als Orange geführte Ausführung; der Deckel wirkt auf dem Produktbild gelb</li>\n<li>\n<strong>Frucht Brasket:</strong> Ausführung mit blauem Deckel</li>\n<li>\n<strong>Frucht Grün:</strong> Ausführung mit grünem Deckel</li>\n<li>\n<strong>Frucht Pulver:</strong> Ausführung mit rosafarbenem Deckel</li>\n</ul>\n<p>«Brasket» und «Pulver» sind die vorhandenen Variantenbezeichnungen. Die zugehörigen Bilder zeigen, welche Farbgestaltung du damit auswählst. Du bestellst ein Trinkglas in der gewählten Ausführung, kein Vierer-Set.</p>\n<h3>Produktdetails</h3>\n<ul>\n<li>Nenninhalt: 980 ml</li>\n<li>Glasbehälter laut Produktbeschreibung: Borosilikatglas</li>\n<li>Einwandige Konstruktion</li>\n<li>Ausführung mit seitlichem Griff, Deckel und Strohhalm</li>\n<li>Vier Farb- und Motivvarianten</li>\n</ul>\n<h3>Was vor dem Gebrauch wichtig ist</h3>\n<p>Eine zulässige Höchsttemperatur, eine Spülmaschinenfreigabe und die Auslaufsicherheit sind nicht bestätigt. Aus der Bezeichnung Borosilikatglas folgt hier keine Zusage für kochend heisse Getränke oder starke Temperaturwechsel. Die Materialien von Griff, Deckel und Strohhalm sind nicht gesondert ausgewiesen.</p>\n<!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Trinkglas mit Griff und Strohhalm, 980 ml | LuxeStyle",
+        "description": "980-ml-Trinkglas mit Griff, Deckel, Strohhalm und Fruchtmotiv. Vergleiche vier Farbvarianten und finde die passende Ausführung über die Auswahlhilfe."
+      },
+      "updatedAt": "2026-11-16T17:39:23Z",
+      "status": "ACTIVE",
+      "handle": "grosses-trinkglas-mit-strohhalm-und-griff-637300",
+      "onlineStoreUrl": "https://luxestyle.ch/products/grosses-trinkglas-mit-strohhalm-und-griff-637300",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "rueckhol-0907",
+        "sort-thermobecher-strohhalm",
+        "sort-thermobecher-trinkbecher",
+        "varianten-nachgezogen-1025"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17881138594177",
+          "name": "Farbe",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58745990185351",
+              "name": "Frucht Orange",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58745990218119",
+              "name": "Frucht Brasket",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58745990250887",
+              "name": "Frucht Grün",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58745990283655",
+              "name": "Frucht Pulver",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69873019912577",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 2 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cb80d19-a799-42e9-936c-7263c291a5d3.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873019879809",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 1 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1662d5ff-99f2-4cb6-9c39-1383debc8465.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873019945345",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 3 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b319ca7-fa84-4707-bd2c-74a3a5cd5d6c.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873019978113",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 4 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2044a551-f79d-4483-915b-7c960f725ae6.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020010881",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 5 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27fb003d-7cda-4ec1-9634-14b6aa07a3db.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020043649",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 6 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/606dcc0b-18bc-4ad1-ac7f-e4e075a385f3.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020076417",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 7 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eaf5b5bd-3fdb-46f9-a6c9-c0a1733322c3.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020109185",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 8 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/078c4694-93b2-4b2c-ac07-cc2177d76a9a.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69873020141953",
+            "mediaContentType": "IMAGE",
+            "alt": "Grosses Trinkglas mit Strohhalm und Griff – Bild 9 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/694c9755-0f9c-4cab-a070-2c4df7acadbd.jpg?v=1783297094",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAyMDE0MTk1MywibGFzdF92YWx1ZSI6IjkifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67871828803975",
+            "title": "Frucht Orange",
+            "sku": "CJJT294514601AZ",
+            "price": "16.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Frucht Orange"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69888523141511",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69873020010881"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAyMDAxMDg4MSwibGFzdF92YWx1ZSI6Njk4NzMwMjAwMTA4ODF9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67871828836743",
+            "title": "Frucht Brasket",
+            "sku": "CJJT294514602BY",
+            "price": "16.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Frucht Brasket"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69888523174279",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69873020141953"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAyMDE0MTk1MywibGFzdF92YWx1ZSI6Njk4NzMwMjAxNDE5NTN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67871828869511",
+            "title": "Frucht Grün",
+            "sku": "CJJT294514603CX",
+            "price": "16.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Frucht Grün"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69888523207047",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69873019912577"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAxOTkxMjU3NywibGFzdF92YWx1ZSI6Njk4NzMwMTk5MTI1Nzd9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67871828902279",
+            "title": "Frucht Pulver",
+            "sku": "CJJT294514604DW",
+            "price": "16.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Frucht Pulver"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69888523239815",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69873020109185"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTg3MzAyMDEwOTE4NSwibGFzdF92YWx1ZSI6Njk4NzMwMjAxMDkxODV9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2Nzg3MTgyODkwMjI3OSwibGFzdF92YWx1ZSI6NH0="
+        }
+      }
+    }
+  },
+  "optionPlan": [
+    {
+      "productId": "gid://shopify/Product/15524879008129",
+      "optionId": "gid://shopify/ProductOption/17975143334273",
+      "beforeName": "Farbe",
+      "afterName": "Dekor und Inhalt",
+      "reason": "Die sechs bestehenden Werte kombinieren drei Dekore und 700/1400 ml; keine reine Farbauswahl."
+    }
+  ],
+  "sourceSnapshots": [
+    {
+      "productId": "15524879008129",
+      "rawPrivateSha256": "f9ffe9e6b745b5997c097f8705b40ed635012febbdd3172eaf947e8cfbb0d78e",
+      "snapshot": {
+        "pid": "1796838046197886976",
+        "productNameEn": "Lard Jar Kitchen Ceramic Seasoning Jar",
+        "productSku": "CJYD2051541",
+        "productImageSet": [
+          "https://cf.cjdropshipping.com/quick/product/82466e8f-8072-4a4f-8a92-bdc497a3f10b.jpg",
+          "https://cf.cjdropshipping.com/quick/product/c457501c-bfd4-4204-bdf5-bfb629d0c059.jpg",
+          "https://cf.cjdropshipping.com/quick/product/be03d88a-60a5-4dd4-8f06-a1b40067d2e1.jpg",
+          "https://cf.cjdropshipping.com/quick/product/d4ff921f-7796-4750-b65a-bb93049e8019.jpg",
+          "https://cf.cjdropshipping.com/quick/product/60112767-e68f-431e-a71a-90651d2932d5.jpg",
+          "https://cf.cjdropshipping.com/quick/product/c7da97bc-eec2-4942-8f81-3e20808c43c8.jpg",
+          "https://cf.cjdropshipping.com/quick/product/6819c41c-f3e4-4a2e-ac30-de845d00ff0d.jpg",
+          "https://cf.cjdropshipping.com/quick/product/99800f93-6224-4ebe-bbe1-b8e2c9057724.jpg",
+          "https://oss-cf.cjdropshipping.com/product/2024/06/01/12/8ca61cfb-391c-4cfd-91b7-6f910a45d746_fine.jpeg",
+          "https://cf.cjdropshipping.com/quick/product/fa748b50-c351-48b4-838a-cd9c0652d3a7.jpg",
+          "https://cf.cjdropshipping.com/quick/product/8b067b4f-2d82-47fd-9332-749e9337b191.jpg",
+          "https://cf.cjdropshipping.com/quick/product/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg",
+          "https://cf.cjdropshipping.com/quick/product/0704ca62-f182-4386-b333-29c6f408b4d4.jpg"
+        ],
+        "productWeight": "675.00-1250.00",
+        "productUnit": null,
+        "materialNameEn": "[\"Stone\"]",
+        "materialNameEnSet": [
+          "Stone"
+        ],
+        "packingWeight": "730.00-1300.00",
+        "description": "<p><b>Product information:</b><br/>Material: Ceramic<br/> Applicable scenario: Household<br/> Style: Covered<br/> Color classification: romantic cherry blossoms small size 700ml, romantic cherry blossoms large 1400ml, artistic conception small size 700ml, artistic conception large 1400ml, rhynchophylla flower small size 700ml, rhynchophylla flower large 1400ml</p>\n <p><br/></p>\n <b>Packing list: </b>\n <br/>1* Jar<p><br/></p>\n \n <b>Product Image:</b><div><b><br/></b></div><div>\n <b><br/></b>\n <img src=\"https://cf.cjdropshipping.com/17172000/2406011226530329900.jpg\"/>\n <img src=\"https://cf.cjdropshipping.com/17172000/2406011226540324000.jpg\"/>\n <img src=\"https://cf.cjdropshipping.com/17172000/2406011226540327500.jpg\"/>\n <img src=\"https://cf.cjdropshipping.com/17172000/2406011226550320200.jpg\"/>\n <img src=\"https://cf.cjdropshipping.com/17172000/2406011226550323900.jpg\"/>\n <img src=\"https://cf.cjdropshipping.com/17172000/2406011226550328100.jpg\"/>\n <img src=\"https://cf.cjdropshipping.com/17172000/2406011226560320600.jpg\"/>\n</div>",
+        "variants": [
+          {
+            "vid": "1796838046285967360",
+            "pid": "1796838046197886976",
+            "variantNameEn": "Lard Jar Kitchen Ceramic Seasoning Jar Cherry Blossom 700ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg",
+            "variantSku": "CJYD205154101AZ",
+            "variantKey": "Cherry Blossom 700ml",
+            "variantLength": 140,
+            "variantWidth": 130,
+            "variantHeight": 130,
+            "variantWeight": 730
+          },
+          {
+            "vid": "1796838046357270528",
+            "pid": "1796838046197886976",
+            "variantNameEn": "Lard Jar Kitchen Ceramic Seasoning Jar Cherry 1400ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/6819c41c-f3e4-4a2e-ac30-de845d00ff0d.jpg",
+            "variantSku": "CJYD205154102BY",
+            "variantKey": "Cherry 1400ml",
+            "variantLength": 160,
+            "variantWidth": 160,
+            "variantHeight": 160,
+            "variantWeight": 1300
+          },
+          {
+            "vid": "1796838046428573696",
+            "pid": "1796838046197886976",
+            "variantNameEn": "Lard Jar Kitchen Ceramic Seasoning Jar Artistic Conception 700ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/fa748b50-c351-48b4-838a-cd9c0652d3a7.jpg",
+            "variantSku": "CJYD205154103CX",
+            "variantKey": "Artistic Conception 700ml",
+            "variantLength": 140,
+            "variantWidth": 130,
+            "variantHeight": 130,
+            "variantWeight": 730
+          },
+          {
+            "vid": "1796838046499876864",
+            "pid": "1796838046197886976",
+            "variantNameEn": "Lard Jar Kitchen Ceramic Seasoning Jar Artistic Conception 1400ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/c457501c-bfd4-4204-bdf5-bfb629d0c059.jpg",
+            "variantSku": "CJYD205154104DW",
+            "variantKey": "Artistic Conception 1400ml",
+            "variantLength": 160,
+            "variantWidth": 160,
+            "variantHeight": 160,
+            "variantWeight": 1300
+          },
+          {
+            "vid": "1796838046571180032",
+            "pid": "1796838046197886976",
+            "variantNameEn": "Lard Jar Kitchen Ceramic Seasoning Jar Rhynchophylla Flowers 700ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/d4ff921f-7796-4750-b65a-bb93049e8019.jpg",
+            "variantSku": "CJYD205154105EV",
+            "variantKey": "Rhynchophylla Flowers 700ml",
+            "variantLength": 140,
+            "variantWidth": 130,
+            "variantHeight": 130,
+            "variantWeight": 730
+          },
+          {
+            "vid": "1796838046642483200",
+            "pid": "1796838046197886976",
+            "variantNameEn": "Lard Jar Kitchen Ceramic Seasoning Jar Rhynchophylla Flowers 1400ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/0704ca62-f182-4386-b333-29c6f408b4d4.jpg",
+            "variantSku": "CJYD205154106FU",
+            "variantKey": "Rhynchophylla Flowers 1400ml",
+            "variantLength": 160,
+            "variantWidth": 160,
+            "variantHeight": 160,
+            "variantWeight": 1300
+          }
+        ]
+      },
+      "rawPrivateNotUploaded": true
+    },
+    {
+      "productId": "15449463751041",
+      "rawPrivateSha256": "16668a6658de91810fff0ae1797600d7570ac3ef72dc5a38a7257c43ebaf5894",
+      "snapshot": {
+        "pid": "2606180850591637300",
+        "productNameEn": "New Large-capacity Straw Cup With A Handle",
+        "productSku": "CJJT2945146",
+        "productImageSet": [
+          "https://cf.cjdropshipping.com/quick/product/1662d5ff-99f2-4cb6-9c39-1383debc8465.jpg",
+          "https://cf.cjdropshipping.com/quick/product/7cb80d19-a799-42e9-936c-7263c291a5d3.jpg",
+          "https://cf.cjdropshipping.com/quick/product/7b319ca7-fa84-4707-bd2c-74a3a5cd5d6c.jpg",
+          "https://cf.cjdropshipping.com/quick/product/2044a551-f79d-4483-915b-7c960f725ae6.jpg",
+          "https://cf.cjdropshipping.com/quick/product/27fb003d-7cda-4ec1-9634-14b6aa07a3db.jpg",
+          "https://cf.cjdropshipping.com/quick/product/606dcc0b-18bc-4ad1-ac7f-e4e075a385f3.jpg",
+          "https://cf.cjdropshipping.com/quick/product/eaf5b5bd-3fdb-46f9-a6c9-c0a1733322c3.jpg",
+          "https://cf.cjdropshipping.com/quick/product/078c4694-93b2-4b2c-ac07-cc2177d76a9a.jpg",
+          "https://cf.cjdropshipping.com/quick/product/694c9755-0f9c-4cab-a070-2c4df7acadbd.jpg"
+        ],
+        "productWeight": "400.00",
+        "productUnit": null,
+        "materialNameEn": "[\"Glass\"]",
+        "materialNameEnSet": [
+          "Glass"
+        ],
+        "packingWeight": "440.00",
+        "description": "<p><b>Product information:</b><br/>Colors: Fruit Orange, Fruit Blue, Fruit Green, Fruit Pink<br/> Applicable Scope: Universal<br/> Function: Portable<br/> Ideal Gift For: Women<br/> Design: With Straw<br/> Material: High-Borosilicate Glass<br/> Style: Cartoon<br/> Capacity: 980 mL (Heat-Resistant Borosilicate Glass)<br/> Structure: Single Layer<br/> Craftsmanship: High-Temperature Floral Glaze<br/></p> \n<br/> \n<b>Packing list: </b> \n<br/>Cup *1 \n<br/> \n \n<b>Product Image:</b> \n<br/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/8f1b8816-6f5a-4da6-9c0a-05efbc1340b6_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/ad92f3f1-fcef-4188-995e-24edcdc150b9_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/86de35ce-ea04-4112-99fa-511ef2251c4f_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/17443012-8caf-4e6e-a8c9-a86f1e28ad75_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/c4967f08-98b0-4570-8e20-c793b56a12e6_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/5c586ff9-2778-4141-86e7-6cb617ee5fc9_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/44192ff2-d4c5-4105-880c-28beeaf9e054_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/baeb91b0-b4d3-4231-b86d-667076286a51_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/c91ef4ec-14a9-4bc6-8ad3-af8b8e64ae2b_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/0ef10981-58a1-4352-87b7-5d92cd9110d8_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/77b656b8-40ee-42ae-8a0e-a77bebe6a14f_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/f000e497-61a3-447e-b5be-571a67e63fc6_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/e0e5488d-6037-47e5-bbab-e8d5a1e8bbb7_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/ae95cf1f-d917-421a-aeae-92deed246bc9_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/76fc4042-eb90-402c-bbba-2b98f40c6047_trans.jpeg\"/> \n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/18/08/bf64e5aa-daca-4ccc-9624-867c90cdd0f2_trans.jpeg\"/>",
+        "variants": [
+          {
+            "vid": "2606180850591637900",
+            "pid": "2606180850591637300",
+            "variantNameEn": "New Large-capacity Straw Cup With A Handle Fruit Orange 980ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/27fb003d-7cda-4ec1-9634-14b6aa07a3db.jpg",
+            "variantSku": "CJJT294514601AZ",
+            "variantKey": "Fruit Orange-980ml",
+            "variantLength": 300,
+            "variantWidth": 150,
+            "variantHeight": 150,
+            "variantWeight": 440
+          },
+          {
+            "vid": "2606180850591638300",
+            "pid": "2606180850591637300",
+            "variantNameEn": "New Large-capacity Straw Cup With A Handle Fruit Brasket 980ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/694c9755-0f9c-4cab-a070-2c4df7acadbd.jpg",
+            "variantSku": "CJJT294514602BY",
+            "variantKey": "Fruit Brasket-980ml",
+            "variantLength": 300,
+            "variantWidth": 150,
+            "variantHeight": 150,
+            "variantWeight": 440
+          },
+          {
+            "vid": "2606180850591638900",
+            "pid": "2606180850591637300",
+            "variantNameEn": "New Large-capacity Straw Cup With A Handle Fruit Green 980ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/7cb80d19-a799-42e9-936c-7263c291a5d3.jpg",
+            "variantSku": "CJJT294514603CX",
+            "variantKey": "Fruit Green-980ml",
+            "variantLength": 300,
+            "variantWidth": 150,
+            "variantHeight": 150,
+            "variantWeight": 440
+          },
+          {
+            "vid": "2606180850591639400",
+            "pid": "2606180850591637300",
+            "variantNameEn": "New Large-capacity Straw Cup With A Handle Fruit Powder 980ml",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/078c4694-93b2-4b2c-ac07-cc2177d76a9a.jpg",
+            "variantSku": "CJJT294514604DW",
+            "variantKey": "Fruit Powder-980ml",
+            "variantLength": 300,
+            "variantWidth": 150,
+            "variantHeight": 150,
+            "variantWeight": 440
+          }
+        ]
+      },
+      "rawPrivateNotUploaded": true
+    }
+  ],
+  "sourceReads": {
+    "boundedFirstTwoProductSearches": 4,
+    "targetedCjDetails": 3,
+    "massPagination": false
+  },
+  "imagePairHashes": {
+    "schema": "r264-image-integrity-manifest-v1",
+    "scope": "Read-only local hashes of downloaded source and existing Shopify images. No image upload or mutation.",
+    "count": 10,
+    "byteIdenticalPairs": 0,
+    "visuallyMatchedPairs": 10,
+    "products": [
+      {
+        "productId": "15524879008129",
+        "nativeVariantId": "gid://shopify/ProductVariant/68122741014919",
+        "sku": "CJYD205154101AZ",
+        "supplierChildVariantId": "1796838046285967360",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/70800736780673",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg?v=1788517063",
+        "supplierSHA256": "49a0ed2baf6b6371adad19d25faec3538a735eee1d5ebaa64599ef2bdc98d95f",
+        "shopifySHA256": "20b0d09d892f797c24ceb6284ef068200121b8e0b48c8964a1973a3b08a0f140",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      },
+      {
+        "productId": "15524879008129",
+        "nativeVariantId": "gid://shopify/ProductVariant/68122741047687",
+        "sku": "CJYD205154102BY",
+        "supplierChildVariantId": "1796838046357270528",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/6819c41c-f3e4-4a2e-ac30-de845d00ff0d.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/70800736616833",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6819c41c-f3e4-4a2e-ac30-de845d00ff0d.jpg?v=1788517064",
+        "supplierSHA256": "c3ba909b7740804f437b283427e52db3d2a913978293570647825f8a4a08f442",
+        "shopifySHA256": "3fc44f1dcfbbdafbb8346229521b00cb90bb79e55aa94390c63057efde85a04e",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      },
+      {
+        "productId": "15524879008129",
+        "nativeVariantId": "gid://shopify/ProductVariant/68122741080455",
+        "sku": "CJYD205154103CX",
+        "supplierChildVariantId": "1796838046428573696",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/fa748b50-c351-48b4-838a-cd9c0652d3a7.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/70800736715137",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fa748b50-c351-48b4-838a-cd9c0652d3a7.jpg?v=1788517063",
+        "supplierSHA256": "fba4e26f05936ce056021d0628e1f6740c6df2cc1f971a8e4d14d601ceff5961",
+        "shopifySHA256": "c4f5eb36e3a61585e478258b78733ebbf62ee348f0225085120526a3da5649df",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      },
+      {
+        "productId": "15524879008129",
+        "nativeVariantId": "gid://shopify/ProductVariant/68122741113223",
+        "sku": "CJYD205154104DW",
+        "supplierChildVariantId": "1796838046499876864",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/c457501c-bfd4-4204-bdf5-bfb629d0c059.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/70800736452993",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c457501c-bfd4-4204-bdf5-bfb629d0c059.jpg?v=1788517064",
+        "supplierSHA256": "92d37336a96b4c3408923cd0077cbfab00cd2bafa28356ad59ed90e65272e5a4",
+        "shopifySHA256": "75945db46f7d3c3d2dd5309913376fc763e148d284da52aa92056bbcd363a0f3",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      },
+      {
+        "productId": "15524879008129",
+        "nativeVariantId": "gid://shopify/ProductVariant/68122741145991",
+        "sku": "CJYD205154105EV",
+        "supplierChildVariantId": "1796838046571180032",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/d4ff921f-7796-4750-b65a-bb93049e8019.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/70800736518529",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d4ff921f-7796-4750-b65a-bb93049e8019.jpg?v=1788517064",
+        "supplierSHA256": "dcd21d52758b6fcee32d507fbaf2dfe68b162254cf478ced43f4ea0fc9fa39e6",
+        "shopifySHA256": "14513899aed2c01bbdf20c04602529149fa6c363637e419ea5202f76b6dae4f0",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      },
+      {
+        "productId": "15524879008129",
+        "nativeVariantId": "gid://shopify/ProductVariant/68122741178759",
+        "sku": "CJYD205154106FU",
+        "supplierChildVariantId": "1796838046642483200",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/0704ca62-f182-4386-b333-29c6f408b4d4.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/70800736813441",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0704ca62-f182-4386-b333-29c6f408b4d4.jpg?v=1788517063",
+        "supplierSHA256": "c0ea88a75a8f04fb253eb50f3f45cd221789ed36f6fb7db2694f0361e66eee40",
+        "shopifySHA256": "480072ce74c3bafd1773697205badc12f99d77be4bfbd969dc488b4a1f356d03",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      },
+      {
+        "productId": "15449463751041",
+        "nativeVariantId": "gid://shopify/ProductVariant/67871828803975",
+        "sku": "CJJT294514601AZ",
+        "supplierChildVariantId": "2606180850591637900",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/27fb003d-7cda-4ec1-9634-14b6aa07a3db.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/69873020010881",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/27fb003d-7cda-4ec1-9634-14b6aa07a3db.jpg?v=1783297094",
+        "supplierSHA256": "5ab0f86faa460a4d319fee5851ff7118c57eb7675fdbe46e43610b780337675b",
+        "shopifySHA256": "3553b82ec2b02248b138aeefcf7241402dc26884f7ad9bf1cff589ce78128453",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      },
+      {
+        "productId": "15449463751041",
+        "nativeVariantId": "gid://shopify/ProductVariant/67871828836743",
+        "sku": "CJJT294514602BY",
+        "supplierChildVariantId": "2606180850591638300",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/694c9755-0f9c-4cab-a070-2c4df7acadbd.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/69873020141953",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/694c9755-0f9c-4cab-a070-2c4df7acadbd.jpg?v=1783297094",
+        "supplierSHA256": "d9f0025841050841f227982a8a84c7b02ccac54e58b29fb561e01d9622412f7c",
+        "shopifySHA256": "6fdbc82f5ee3218545a6b882e50bc80276fd84a9aad07c83935405f936cf1a6e",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      },
+      {
+        "productId": "15449463751041",
+        "nativeVariantId": "gid://shopify/ProductVariant/67871828869511",
+        "sku": "CJJT294514603CX",
+        "supplierChildVariantId": "2606180850591638900",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/7cb80d19-a799-42e9-936c-7263c291a5d3.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/69873019912577",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cb80d19-a799-42e9-936c-7263c291a5d3.jpg?v=1783297094",
+        "supplierSHA256": "8fdb0555f5b8216509850f0a3b4b800cc1ebf549ef6592b4258f2e2f09501e52",
+        "shopifySHA256": "eff554651485f1b6239db7c4336d579e49af60ddfc369f710691d913405e176a",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      },
+      {
+        "productId": "15449463751041",
+        "nativeVariantId": "gid://shopify/ProductVariant/67871828902279",
+        "sku": "CJJT294514604DW",
+        "supplierChildVariantId": "2606180850591639400",
+        "supplierImageUrl": "https://cf.cjdropshipping.com/quick/product/078c4694-93b2-4b2c-ac07-cc2177d76a9a.jpg",
+        "existingGalleryMediaId": "gid://shopify/MediaImage/69873020109185",
+        "existingGalleryImageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/078c4694-93b2-4b2c-ac07-cc2177d76a9a.jpg?v=1783297094",
+        "supplierSHA256": "00095f6c343d54cb2f75e3e99cfeb470fcac7e5478c3b331333b3bff41f440df",
+        "shopifySHA256": "54ac70a3150eae6627532690091b036da1c9f7805f6253e1f81a9c89eecf32b1",
+        "byteIdentical": false,
+        "supplierDecodedSize": [
+          800,
+          800
+        ],
+        "shopifyDecodedSize": [
+          800,
+          800
+        ],
+        "visualComparison": "side-by-side contact sheet shows same design/color and product; files are transcoded/resized and hashes differ"
+      }
+    ]
+  },
+  "audits": {
+    "astra": {
+      "schema": "r264-astra-final-copy-review-v1",
+      "reviewedAt": "2026-11-16T17:39:24.290367+00:00",
+      "result": "PASS",
+      "findings": [],
+      "inputSha256": "f5a68fc15c14e192f1979d8c2930d94695bcca8109bd5abde52b43eb68648640",
+      "resolvedFindings": [
+        {
+          "productId": "15449463751041",
+          "issue": "Orange option name previously expanded to unsupported orange lid assertion.",
+          "resolution": "Final copy retains Orange option label and explicitly says the depicted lid looks yellow."
+        }
+      ],
+      "checks": {
+        "productsReviewed": 2,
+        "variantsReviewed": 10,
+        "exactNativeSkuMatchesSourceChildren": 10,
+        "exactAssignedVariantImageFilenameStemMatches": 10,
+        "variantImagePairsVisuallyCompared": 10,
+        "originalCrossSellSuffixesPreserved": 2
+      },
+      "evidenceConclusions": [
+        "Ceramic source supports three decor choices at both 700 and 1400 ml, ceramic material and a covered jar; images confirm same decor pairing, side handles and lid. One jar is specified rather than an invented multi-jar set.",
+        "Glass source supports one 980-ml vessel, single-layer borosilicate construction and straw design; matching pictures show handle, lid and fruit motifs. Four colour labels are mapped to pictured lid colours with the Orange/yellow caveat.",
+        "No new heat, cold-shock, food-contact certification, leak-proof, dishwasher, weight or outside-dimension claim is added. Unspecified lid/handle/straw materials remain unspecified.",
+        "Final German Swiss copy contains no private supplier costs or internal API/audit workflow prose.",
+        "Planned jar option rename Farbe to Dekor und Inhalt describes existing combined decor/capacity values; variant values need not change."
+      ],
+      "limitations": [
+        "Local input/prewrite review only; no API calls or new public-page verification for this audit.",
+        "No after-write snapshots reviewed; this PASS does not assert that final input is already live or prove preservation after a subsequent mutation.",
+        "Supplier statements and pictures are not independent material tests, measurements or certifications.",
+        "No assertion about other catalogue products, Merchant Center error counts, image-rights clearance or theme/OG deployment."
+      ],
+      "reviewedFiles": [
+        {
+          "path": "/dev/shm/luxestyle-review/r264/root-product-inputs.json",
+          "sha256": "f5a68fc15c14e192f1979d8c2930d94695bcca8109bd5abde52b43eb68648640"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/prepare_copy.py",
+          "sha256": "6ae93605b62c37d3e87d189548b01bac9ddbd935681be9b5bca70cadab8f33fa"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/kitchen/proposals.json",
+          "sha256": "e9791eec82a31e38bf1763001c08425d5974a4ef02572e612a6bd1ca0d7ceb84"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/kitchen/source-evidence-private.json",
+          "sha256": "9239ccfd33a1e3a31087568c612d4d2519134b6ad28732311f6f45ea87645732"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/native-before-15524879008129.json",
+          "sha256": "4fd8b1cac5bc26adf3d1e53b2b26249450b23c16c39cd4401c094076de3bd7e9"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/kitchen/15524879008129-cj-detail-raw.json",
+          "sha256": "f9ffe9e6b745b5997c097f8705b40ed635012febbdd3172eaf947e8cfbb0d78e"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/kitchen/images/15524879008129-variant-pairs.jpg",
+          "sha256": "07f64585ff1c13144298615fe214bf35bf738597a6b63ad85f15dcac44d341a2"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/native-before-15449463751041.json",
+          "sha256": "4eda6d1ebc44021fd5b244da31b4e552d74fa4d194a3ed3a58458f4b9d5f1bc7"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/kitchen/15449463751041-cj-detail-raw.json",
+          "sha256": "16668a6658de91810fff0ae1797600d7570ac3ef72dc5a38a7257c43ebaf5894"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/kitchen/images/15449463751041-variant-pairs.jpg",
+          "sha256": "26b3be9409c68567f4f8c9ef989838816ffef4c3c406af63af68f90c93055d83"
+        },
+        {
+          "path": "/dev/shm/luxestyle-review/r264/kitchen/images/15449463751041-CJJT294514601AZ-SHOP.img",
+          "sha256": "3553b82ec2b02248b138aeefcf7241402dc26884f7ad9bf1cff589ce78128453"
+        }
+      ]
+    },
+    "fieldGuard": {
+      "run": "R264",
+      "rootInputsSha256": "f5a68fc15c14e192f1979d8c2930d94695bcca8109bd5abde52b43eb68648640",
+      "products": [
+        {
+          "productId": "gid://shopify/Product/15524879008129",
+          "checks": {
+            "exact_native_product_id": true,
+            "native_active": true,
+            "native_variant_count": 6,
+            "source_variant_count": 6,
+            "native_sku_set_matches_source_children": true,
+            "current_option_value_count": 6,
+            "root_input_fields_only": true,
+            "managed_xsell_suffix_exact": true,
+            "no_static_price_or_promo_or_delivery_claim": true,
+            "html_balanced_structural_parse": true,
+            "seo_description_length": 144
+          },
+          "htmlErrors": [],
+          "unclosedTags": [],
+          "nativeOptions": [
+            [
+              "Farbe",
+              [
+                "Kirschblüte 700ml",
+                "Kirsche 1400ml",
+                "Künstlerische Konzeption 700ml",
+                "Künstlerische Konzeption 1400ml",
+                "Rhynchophylla Blumen 700ml",
+                "Rhynchophylla Blumen 1400ml"
+              ]
+            ]
+          ],
+          "sourceSkuCount": 6
+        },
+        {
+          "productId": "gid://shopify/Product/15449463751041",
+          "checks": {
+            "exact_native_product_id": true,
+            "native_active": true,
+            "native_variant_count": 4,
+            "source_variant_count": 4,
+            "native_sku_set_matches_source_children": true,
+            "current_option_value_count": 4,
+            "root_input_fields_only": true,
+            "managed_xsell_suffix_exact": true,
+            "no_static_price_or_promo_or_delivery_claim": true,
+            "html_balanced_structural_parse": true,
+            "seo_description_length": 149
+          },
+          "htmlErrors": [],
+          "unclosedTags": [],
+          "nativeOptions": [
+            [
+              "Farbe",
+              [
+                "Frucht Orange",
+                "Frucht Brasket",
+                "Frucht Grün",
+                "Frucht Pulver"
+              ]
+            ]
+          ],
+          "sourceSkuCount": 4
+        }
+      ],
+      "blockedHomeCandidates": [
+        {
+          "productId": "gid://shopify/Product/15454109041025",
+          "status": "BLOCKED_SOURCE_DETAILS",
+          "blockers": [
+            {
+              "code": "EXACT_CHILD_BINDING_MISSING",
+              "detail": "Native SKU CJ-2604160736511628400 references the CJ parent identifier and does not equal the sole returned child SKU CJYD283756001AZ. Default Title does not establish the Three Layers child choice."
+            },
+            {
+              "code": "LAYERS_AND_QUANTITY_UNRESOLVED",
+              "detail": "Native title and supplier prose state 2 levels, supplier child key says Three Layers, and supplier packing list says Storage rack*3. It is not established whether three denotes separate complete racks or assembly components. Do not preserve the existing claim of three complete racks or select a layer count without clarification."
+            }
+          ],
+          "sourceFactsFile": "source-facts.json"
+        }
+      ],
+      "verdict": "PASS"
+    }
+  },
+  "publicFinal": {
+    "run": "R264",
+    "result": "PASS_BOUNDED_TWO_PRODUCTS",
+    "products": [
+      {
+        "productId": "15524879008129",
+        "url": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976",
+        "checks": {
+          "bodyProjectionMatchesNative": true,
+          "publicJsDescriptionEqualsNative": true,
+          "publicVariantsMatchNative": true,
+          "jsonLdOffersMatchNative": true,
+          "noHorizontalOverflow360390": true,
+          "h1MatchesNative": true,
+          "metaDescriptionMatchesNative": true,
+          "canonicalMatchesNative": true,
+          "documentTitleMatchesConfiguredExactly": true,
+          "variantIdMatchesNative": true,
+          "mainPriceMatchesNative": true,
+          "stickyPriceMatchesNative": true,
+          "noNoindex": true
+        },
+        "selectedVariant": {
+          "id": "68122741047687",
+          "sku": "CJYD205154102BY",
+          "priceCHF": "28.90"
+        },
+        "selection": [
+          "Kirsche 1400ml"
+        ],
+        "actualPriceAndSelection": {
+          "variantId": "68122741047687",
+          "mainPriceSelector": "product-price[data-product-id=\"15524879008129\"] .price",
+          "mainProductPriceNodes": [
+            {
+              "text": "CHF 28.90",
+              "className": "price",
+              "visible": true
+            }
+          ],
+          "stickyPriceSelector": ".sticky-add-to-cart__price .price",
+          "stickyProductPriceNodes": [
+            {
+              "text": "CHF 28.90",
+              "className": "price"
+            }
+          ],
+          "selectedPickerLabels": [
+            {
+              "legend": null,
+              "aria": "Dekor und Inhalt wählen",
+              "selected": "Kirsche 1400ml"
+            },
+            {
+              "legend": "Dekor und Inhalt",
+              "aria": null,
+              "selected": "Kirsche 1400ml"
+            }
+          ]
+        },
+        "mobileSizes": [
+          {
+            "viewport": 360,
+            "docWidth": 360,
+            "bodyWidth": 360,
+            "descriptionRect": {
+              "x": 16,
+              "right": 344,
+              "width": 328,
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "y": 2304.84375
+            },
+            "specRect": {
+              "x": 16,
+              "right": 344,
+              "width": 328,
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "y": 3636.03125
+            },
+            "formRect": {
+              "x": 16,
+              "right": 344,
+              "width": 328,
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "y": 1115.234375
+            }
+          },
+          {
+            "viewport": 390,
+            "docWidth": 390,
+            "bodyWidth": 390,
+            "descriptionRect": {
+              "x": 16,
+              "right": 374,
+              "width": 358,
+              "scrollWidth": 358,
+              "clientWidth": 358,
+              "y": 2266.953125
+            },
+            "specRect": {
+              "x": 16,
+              "right": 374,
+              "width": 358,
+              "scrollWidth": 358,
+              "clientWidth": 358,
+              "y": 3486.1875
+            },
+            "formRect": {
+              "x": 16,
+              "right": 374,
+              "width": 358,
+              "scrollWidth": 358,
+              "clientWidth": 358,
+              "y": 1149.234375
+            }
+          }
+        ]
+      },
+      {
+        "productId": "15449463751041",
+        "url": "https://luxestyle.ch/products/grosses-trinkglas-mit-strohhalm-und-griff-637300",
+        "checks": {
+          "bodyProjectionMatchesNative": true,
+          "publicJsDescriptionEqualsNative": true,
+          "publicVariantsMatchNative": true,
+          "jsonLdOffersMatchNative": true,
+          "noHorizontalOverflow360390": true,
+          "h1MatchesNative": true,
+          "metaDescriptionMatchesNative": true,
+          "canonicalMatchesNative": true,
+          "documentTitleMatchesConfiguredExactly": true,
+          "variantIdMatchesNative": true,
+          "mainPriceMatchesNative": true,
+          "stickyPriceMatchesNative": true,
+          "noNoindex": true
+        },
+        "selectedVariant": {
+          "id": "67871828869511",
+          "sku": "CJJT294514603CX",
+          "priceCHF": "16.90"
+        },
+        "selection": [
+          "Frucht Grün"
+        ],
+        "actualPriceAndSelection": {
+          "variantId": "67871828869511",
+          "mainPriceSelector": "product-price[data-product-id=\"15449463751041\"] .price",
+          "mainProductPriceNodes": [
+            {
+              "text": "CHF 16.90",
+              "className": "price",
+              "visible": true
+            }
+          ],
+          "stickyPriceSelector": ".sticky-add-to-cart__price .price",
+          "stickyProductPriceNodes": [
+            {
+              "text": "CHF 16.90",
+              "className": "price"
+            }
+          ],
+          "selectedPickerLabels": [
+            {
+              "legend": null,
+              "aria": "Farbe wählen",
+              "selected": "Frucht Grün"
+            },
+            {
+              "legend": "Farbe",
+              "aria": null,
+              "selected": "Frucht Grün"
+            }
+          ]
+        },
+        "mobileSizes": [
+          {
+            "viewport": 360,
+            "docWidth": 360,
+            "bodyWidth": 360,
+            "descriptionRect": {
+              "x": 16,
+              "right": 344,
+              "width": 328,
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "y": 2115.09375
+            },
+            "specRect": {
+              "x": 16,
+              "right": 344,
+              "width": 328,
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "y": 3496.359375
+            },
+            "formRect": {
+              "x": 16,
+              "right": 344,
+              "width": 328,
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "y": 925.484375
+            }
+          },
+          {
+            "viewport": 390,
+            "docWidth": 390,
+            "bodyWidth": 390,
+            "descriptionRect": {
+              "x": 16,
+              "right": 374,
+              "width": 358,
+              "scrollWidth": 358,
+              "clientWidth": 358,
+              "y": 2073.203125
+            },
+            "specRect": {
+              "x": 16,
+              "right": 374,
+              "width": 358,
+              "scrollWidth": 358,
+              "clientWidth": 358,
+              "y": 3342.515625
+            },
+            "formRect": {
+              "x": 16,
+              "right": 374,
+              "width": 358,
+              "scrollWidth": 358,
+              "clientWidth": 358,
+              "y": 955.484375
+            }
+          }
+        ]
+      }
+    ],
+    "fetches": [
+      {
+        "productId": "15524879008129",
+        "kind": "html",
+        "status": 200,
+        "bytes": 1083890,
+        "sha256": "aa8f3299baade8c03f0022700dbe2b8807420145408903ae6440f2978d5ab0ca"
+      },
+      {
+        "productId": "15524879008129",
+        "kind": "js",
+        "status": 200,
+        "bytes": 19455,
+        "sha256": "b93e2b6e7e4848bc13dc92321c7b29ac4c33cd9626dd008109a80d682f92a144"
+      },
+      {
+        "productId": "15449463751041",
+        "kind": "html",
+        "status": 200,
+        "bytes": 1059833,
+        "sha256": "81870ab78d6aa0d62c41e848c780ce501bb83dd2ca93e3890528e522e2443264"
+      },
+      {
+        "productId": "15449463751041",
+        "kind": "js",
+        "status": 200,
+        "bytes": 14286,
+        "sha256": "5f2f7b765f297df387baf2a4866bbdefda33704705fae8c66e39ec7f4cb4f888"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "file": "public-qa.json",
+        "sha256": "9e418e3eede6a80c6ff59356c5ec81e4445494ce6ba077124418d825dcc977ff"
+      },
+      {
+        "file": "price-component-followup.json",
+        "sha256": "abf96f3c291b654cbda68c65166d52b9544d2c19f0cc6a7eb78a7631d715b177"
+      },
+      {
+        "file": "final-assessment.json",
+        "sha256": "39090c38908d36a11154552f7a002fbe025c49acd565ea384f6ccaa95de89128"
+      },
+      {
+        "file": "fetch-proof.json",
+        "sha256": "75fe2799a26d0e5925835981f152e5db1873f9e4cd726b9a291f8036cec42de3"
+      }
+    ],
+    "measurementCorrection": "Initial main price selector did not match the live theme and returned empty. Superseded by actual product-price[data-product-id] DOM check, separately preserved; no store price failure inferred.",
+    "limits": [
+      "Two products,four mobile viewports,one nondefault choiceeach;notentirecatalogorallpermutations.",
+      "GET-only routeguard;nocart/checkout/paymenttest.",
+      "No rawHTML/networklogs/sessiontokenspublished.",
+      "No indexing/Merchantapproval/salesclaim."
+    ]
+  },
+  "blockedCandidateProof": "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+  "merchantReadCalls": 0,
+  "merchantWriteCalls": 0,
+  "metricoolWrites": 0,
+  "themeMutationCalls": 0,
+  "dailyReportsRepeated": false,
+  "orderQueries": 0,
+  "paidRenders": 0,
+  "higgsfieldCalls": 0,
+  "customerOrSupplierMessages": 0,
+  "newAutomation": false,
+  "workflowDispatch": 0,
+  "globalCompletionPercent": "UNKNOWN",
+  "merchantErrorGroupCount": "UNKNOWN",
+  "claudeReceipt": "unknown",
+  "priorRun263Commit": "bcae3354f32bc28e4a559df4141c493562e8d6b1",
+  "ownerPreferences": {
+    "regularSharedMemoryAfterCompletedWorkBlock": true,
+    "approxProgressAlwaysWithBoundedScope": true,
+    "higgsfieldPermittedWhenUseful": true,
+    "paidVideoRenderProhibitionUnchanged": true,
+    "userRequestedAstra": "Astra performed source review and final copy audit; root session model not claimed changed",
+    "userRequested100Agents": "Environment concurrency limit7includingroot; no100agentsclaim"
+  },
+  "privacy": "No source costs, credentials or raw public HTML/session/network logs published."
+}

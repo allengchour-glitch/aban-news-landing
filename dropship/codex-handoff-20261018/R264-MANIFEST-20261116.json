@@ -1,0 +1,39 @@
+{
+  "run": "R264",
+  "atUtc": "2026-11-16T17:43:06Z",
+  "files": [
+    {
+      "file": "PRODUKTDETAILS-KUECHE-20261116-R264.md",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+      "bytes": 4984,
+      "sha256": "6fdeed80586b03a3baa49d8a3e08ed49e7731d03d22bbc13b8ad0b1b5df78646",
+      "gitBlobSha": "25d3ff9d83397a4d254c5f0d093e9046f5d61ae7",
+      "readAt": "2026-11-16T17:43:06Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-BELEGE-20261116-R264.json",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R264.json",
+      "bytes": 110321,
+      "sha256": "063bbec62559bf49dd2bd7ad0a9d89a91ff360a57c9889bc08cdbaf7dd17189c",
+      "gitBlobSha": "4ad188f37c64512d444e1f5d39d9d8b5de798381",
+      "readAt": "2026-11-16T17:43:06Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+      "bytes": 26334,
+      "sha256": "37d4824718e5c8f6dfb51956ae1de739adda3cc5e4a9e30a74331d769b7d5086",
+      "gitBlobSha": "2d6ab080b2dc9738a600ef38843d56946fd44f90",
+      "readAt": "2026-11-16T17:43:06Z"
+    },
+    {
+      "file": "BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+      "path": "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+      "bytes": 2463,
+      "sha256": "a6c745b01adfbd554ba93b0198b595361483f54327e10f1b530521f562ec608f",
+      "gitBlobSha": "0d52576e253e9c2fa621bafb9a17d34db48bfd54",
+      "readAt": "2026-11-16T17:43:06Z"
+    }
+  ],
+  "scope": "Four new artifacts; manifest and Core5 excluded"
+}

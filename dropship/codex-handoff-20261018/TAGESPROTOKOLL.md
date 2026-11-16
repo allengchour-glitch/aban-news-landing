@@ -3187,3 +3187,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](PRODUKTDETAILS-MERCHANT-20261116-R263.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R263.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv) · [Merchant](MERCHANT-QS19-BILD-20261116-R263.json).
 
 [LUXESTYLE_R263_20261116]
+
+
+### R264 – Weitere Produktdetails und gemeinsame Übergabe
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Gedächtnis | R263exaktgespeichert/zurückgelesen undInhaberverlinkt;Core5/Revision263/Tagesstandfrischgelesen. | StabileFortsetzung,Shop/Metricoolidentitätbestätigt. |
+| Produktdetails | ZweiTitel/Beschreibungen/SEO-Paare undDoseFarbe→Dekor und Inhalt verbessert. | Drei bestätigteMutationen,zehnVarianten/Preiseunverändert. |
+| Quellen/Astra | VierkleineSuchen,dreiCJDetails,zehnSKU/Bildbindungen;AstraFarbabweichungOrange→gelbesBild korrigiert. | Badregal2/3Ebenen/Kindbindung/Packmengeblockiert;keinWrite. |
+| ÖffentlichePrüfung | ZweiSeiten/360und390Pixel/jeNichtstandardauswahl inklHaupt-undStickyPreis geprüft. | FinalerBelegenthältseparateKorrekturdesanfänglichleerenHauptpreis-Selektors;keinCheckout. |
+| Inhaberpräferenzen | Memoryregelmässigteilen,FortschrittinProzentmitScope,HiggsfieldbeiBedarfnotiert. | KeineHiggsfieldproduktion/keinebezahltenRenders;AstraPrüfungbelegt,7Agentengrenzeerklärt. |
+| Fortsetzung |61alteArbeitszeilenerhalten,2Liveprodukte+1Blockerergänzt. |64Identitäten;kein100%-Gesamtshop/0Merchantfehlerclaim;keineReports/Social/Automationwiederholt. |
+
+[Bericht](PRODUKTDETAILS-KUECHE-20261116-R264.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R264.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv) · [Blocker](BADREGAL-QUELLENBLOCKER-20261116-R264.json).
+
+[LUXESTYLE_R264_20261116]

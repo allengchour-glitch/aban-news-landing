@@ -1,3 +1,13 @@
+# R264 – Zwei weitere Produktseiten live, Auswahl und Farbzuordnung verbessert – 16.11.2026
+
+Vorratsdose700/1400ml und Trinkglas980ml: zwei neue Titel/Beschreibungen/SEO-Paare live; DoseFarbe→Dekor und Inhalt. Drei bestätigte Mutationen, zehn Varianten unverändert. Astra fand die gelbe Bildfarbe der alsOrange bezeichneten Variante; Text vorWrite korrigiert. [Bericht](PRODUKTDETAILS-KUECHE-20261116-R264.md) · [Native/Quellen/öffentliche/mobile Belege](PRODUKTDETAILS-BELEGE-20261116-R264.json).
+
+Badregal15454109041025 wegen fehlender genauerKindbindung und2/3Ebenen-/Liefermengenkonflikt unverändert; [Blocker](BADREGAL-QUELLENBLOCKER-20261116-R264.json). Arbeitsliste61+2live+1blockiert=[64Identitäten](PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv), keine Katalogquote. R263bereits exaktgespeichert/geteilt. Aktuelle Inhaberpräferenzen: Memoryregelmässigverlinken, ungefähreProzenteimmermitbenanntemArbeitsblock;HiggsfieldbeiBedarferlaubt,keinekostenpflichtigenVideorenders. Hauptsitzungsmodellnichtalsgeändertausgeben;AstraSubagentbelegt.
+
+Keine erneuten Reports/Bestellwatch/Merchant/Social/Automation. ThemeOGFix undQS19Fallnichtalsgelöstmelden. Alle24Aufgaben/Historie erhalten; ClaudeEmpfangunbekannt. MemoryamSchlussverlinken.
+
+---
+
 # R263 – Vier Produktseiten und zwei Auswahlbeschriftungen live – 16.11.2026
 
 Vier zusätzliche Titel/Beschreibungen/SEO-Paare sind live: zwei Küchenhelfer-Sets, Massivholz-Stufenregal und WC-Regal. Dazu Grösse→Farbe beim 9-Farben-Set und Farbe→Modell und Farbe beim WC-Regal: sechs bestätigte Mutationen, 26 Varianten unverändert. Quellenfragen werden ausdrücklich erhalten. [Bericht](PRODUKTDETAILS-MERCHANT-20261116-R263.md) · [native/öffentliche/mobile Belege und Astra-Prüfung](PRODUKTDETAILS-BELEGE-20261116-R263.json).

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 263,
-  "updatedAt": "2026-11-16T17:30:29Z",
+  "revision": 264,
+  "updatedAt": "2026-11-16T17:43:06Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-16",
     "currentDayEvidenceKind": "R255 Produkttexte, native Reads und öffentliche/mobile QA",
-    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R260: Fünf bestätigte Writes an drei Produkten (3Text/SEO+1Bodyüberschrift+1Optionsname) mit nativer und öffentlicher/mobiler Prüfung; drei weitere Quellenblocker. Keine Kennzahl-/Flow-/GSC-/Bestellwatch-Wiederholung. R261: Acht Shopify-Mutationen (3Produkttexte/SEO,6Medienrelationen in1Batch,2CollectionWrites inkl.Titelwiederherstellung,1responsiveBodykorrektur,8Alttexte in1Batch) nativ/öffentlich geprüft. Ein gezielter Merchantfall und zwei aktuelle Theme-Dateien nur gelesen. Keine MetricoolKennzahl-/Klaviyo-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R262:2ProdukttexteSEO+1FormOptionsname nativ/öffentlich geprüft;3CJDetailreads. Theme555DateiennativeBaseline/fünfPreviewfälle,Publishverweigert. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinMerchantReadWrite. R263:4ProdukttexteSEO+2Optionsnamen nativ/öffentlich/mobil geprüft;4CJDetailreads,4kleineSuchen. Ein gezielterMerchantBildverarbeitungsfall ohneWrite. ThemerollenweiterUNPUBLISHED/MAINunverändert. AstraSchlussprüfung. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinSocial/Automation.",
+    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R260: Fünf bestätigte Writes an drei Produkten (3Text/SEO+1Bodyüberschrift+1Optionsname) mit nativer und öffentlicher/mobiler Prüfung; drei weitere Quellenblocker. Keine Kennzahl-/Flow-/GSC-/Bestellwatch-Wiederholung. R261: Acht Shopify-Mutationen (3Produkttexte/SEO,6Medienrelationen in1Batch,2CollectionWrites inkl.Titelwiederherstellung,1responsiveBodykorrektur,8Alttexte in1Batch) nativ/öffentlich geprüft. Ein gezielter Merchantfall und zwei aktuelle Theme-Dateien nur gelesen. Keine MetricoolKennzahl-/Klaviyo-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R262:2ProdukttexteSEO+1FormOptionsname nativ/öffentlich geprüft;3CJDetailreads. Theme555DateiennativeBaseline/fünfPreviewfälle,Publishverweigert. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinMerchantReadWrite. R263:4ProdukttexteSEO+2Optionsnamen nativ/öffentlich/mobil geprüft;4CJDetailreads,4kleineSuchen. Ein gezielterMerchantBildverarbeitungsfall ohneWrite. ThemerollenweiterUNPUBLISHED/MAINunverändert. AstraSchlussprüfung. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch-Wiederholung;keinSocial/Automation. R264:2ProdukttexteSEO+1DekorInhaltOptionsname nativ/öffentlich/mobil,AstraFaktengeprüft;4kleineSuchen/3CJDetails,1Badregalquellenblocker. KeineKennzahl/Klaviyo/GSC/Breitsales/Bestellwatch/Merchantwiederholung;keinSocial/Automation/Higgsfieldrender.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-16",
@@ -765,12 +765,12 @@
       "id": "product-attribute-completeness",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r263_four_product_details_live_two_option_labels_merchant_processing_open",
+      "state": "r264_two_product_details_live_decor_capacity_picker_source_blocker",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R263_NATIVE_PUBLIC_MOBILE_AND_ASTRA",
-      "lastEvidence": "R263:4Produkttexte/SEO+2Optionsnamen live (6Mutationen),26Varianten erhalten.4CJDetailreads.61Arbeitsidentitäten. QS19Blau Merchant image_link_internal_error trotz korrektem erreichbarem Bild;keinWrite. Theme214169584007 weiterhin UNPUBLISHED,MAIN213991391623;keinPublishretry. Keine Katalogvollständigkeit/0Fehlerbehauptung.",
-      "nextAllowedStep": "Gespeicherten geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise prüfen; Connector-Publish nicht blind wiederholen/umgehen. WC-Passmasse/Einheit und genaue Stückzählung des ersten Küchensets sowie frühere Quellenlücken klären. QS19Blau nur später gezielt nachlesen. Weitere kleine Produktgruppe beleggestützt fortsetzen;R259Tonkonflikt bleibt offen.",
+      "belegArt": "GEMESSEN_R264_NATIVE_PUBLIC_MOBILE_ASTRA",
+      "lastEvidence": "R264:2ProdukttexteSEO+1Optionsname live(3Mutationen),10Varianten erhalten. AstrahatgelbeBildfarbederOrangeVariantevorWriteberichtigt.4kleineSuchen/3CJDetails. Arbeitsliste64inkl1neuemBadregalblocker. KeineTagesreports/Merchant/Social/Bestellwatchwiederholt.",
+      "nextAllowedStep": "Badregal15454109041025exakteKindbindung/Ebenenzahl/Liefermengebelegen;gespeichertenOG-ThemeFiximAdminveröffentlichenundLivepreisnachlesen;weiterekleineProduktgruppebeleggestützt. Memoryregelmässigverlinken,Fortschritt%mitbenanntemScope.",
       "blockers": [
         "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
         "Becherhalter: genaue Passform/Montage und Material offen.",
@@ -788,7 +788,8 @@
         "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
         "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
         "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
-        "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur."
+        "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur.",
+        "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -2098,6 +2099,38 @@
           "sha256": "516a5b0a2be363dd013e683e28f9e2df4e62f4766ede78f476064ac39a37494b",
           "gitBlobSha": "1e5c6ef493f70997b909653166cccd2f7d10461c",
           "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-KUECHE-20261116-R264.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+          "bytes": 4984,
+          "sha256": "6fdeed80586b03a3baa49d8a3e08ed49e7731d03d22bbc13b8ad0b1b5df78646",
+          "gitBlobSha": "25d3ff9d83397a4d254c5f0d093e9046f5d61ae7",
+          "readAt": "2026-11-16T17:43:06Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R264.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R264.json",
+          "bytes": 110321,
+          "sha256": "063bbec62559bf49dd2bd7ad0a9d89a91ff360a57c9889bc08cdbaf7dd17189c",
+          "gitBlobSha": "4ad188f37c64512d444e1f5d39d9d8b5de798381",
+          "readAt": "2026-11-16T17:43:06Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+          "bytes": 26334,
+          "sha256": "37d4824718e5c8f6dfb51956ae1de739adda3cc5e4a9e30a74331d769b7d5086",
+          "gitBlobSha": "2d6ab080b2dc9738a600ef38843d56946fd44f90",
+          "readAt": "2026-11-16T17:43:06Z"
+        },
+        {
+          "file": "BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+          "path": "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+          "bytes": 2463,
+          "sha256": "a6c745b01adfbd554ba93b0198b595361483f54327e10f1b530521f562ec608f",
+          "gitBlobSha": "0d52576e253e9c2fa621bafb9a17d34db48bfd54",
+          "readAt": "2026-11-16T17:43:06Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -5343,6 +5376,36 @@
               "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN."
             ]
           }
+        },
+        {
+          "archivedByRun": "R264",
+          "recordedAt": "2026-11-16T17:43:06Z",
+          "previous": {
+            "state": "r263_four_product_details_live_two_option_labels_merchant_processing_open",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R263_NATIVE_PUBLIC_MOBILE_AND_ASTRA",
+            "lastEvidence": "R263:4Produkttexte/SEO+2Optionsnamen live (6Mutationen),26Varianten erhalten.4CJDetailreads.61Arbeitsidentitäten. QS19Blau Merchant image_link_internal_error trotz korrektem erreichbarem Bild;keinWrite. Theme214169584007 weiterhin UNPUBLISHED,MAIN213991391623;keinPublishretry. Keine Katalogvollständigkeit/0Fehlerbehauptung.",
+            "nextAllowedStep": "Gespeicherten geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise prüfen; Connector-Publish nicht blind wiederholen/umgehen. WC-Passmasse/Einheit und genaue Stückzählung des ersten Küchensets sowie frühere Quellenlücken klären. QS19Blau nur später gezielt nachlesen. Weitere kleine Produktgruppe beleggestützt fortsetzen;R259Tonkonflikt bleibt offen.",
+            "blockers": [
+              "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+              "Becherhalter: genaue Passform/Montage und Material offen.",
+              "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+              "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+              "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+              "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt.",
+              "R261 Reibe Stil3 ohne exakt belegtes Galerie-Einzelbild; keine falsche Zuordnung.",
+              "R261 Brettmaterial widersprüchlich; kein Titan-/Food-Grade-/Antibakteriellnachweis.",
+              "R261 Reflexionstasse: zwölf CJ-Motive, exakte bestehende Variante ungeklärt; ein Verbindungsread0 ist keine leere Historie.",
+              "R261 Merchant-Waage weiterhin DISAPPROVED; OG101.90 vs Auswahl127.90CHF separat belegt, Google-Ursache unbekannt.",
+              "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
+              "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED.",
+              "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
+              "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
+              "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
+              "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
+              "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur."
+            ]
+          }
         }
       ],
       "additionalProductCleanups": [
@@ -7215,6 +7278,27 @@
         "globalCompletionPercent": "UNKNOWN",
         "merchantErrorGroupCount": "UNKNOWN",
         "publicQaState": "PASS_BOUNDED_FOUR_PRODUCTS"
+      },
+      "run264": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R264.json",
+        "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+        "blockedCandidateProof": "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+        "productMutationCalls": 3,
+        "confirmedProducts": 2,
+        "optionNameUpdates": 1,
+        "protectedVariants": 10,
+        "worklistRows": 64,
+        "priorRowsPreserved": 61,
+        "blockedNewCandidates": 1,
+        "metricoolWrites": 0,
+        "merchantWrites": 0,
+        "newDailyReports": 0,
+        "orderQueries": 0,
+        "higgsfieldCalls": 0,
+        "globalCompletionPercent": "UNKNOWN",
+        "merchantErrorGroupCount": "UNKNOWN",
+        "publicQaState": "PASS_BOUNDED_TWO_PRODUCTS"
       }
     },
     {
@@ -8155,12 +8239,12 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r263_four_product_details_live_two_option_labels_merchant_processing_open",
+      "state": "r264_two_product_details_live_decor_capacity_picker_source_blocker",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R263_NATIVE_PUBLIC_MOBILE_AND_ASTRA",
-      "lastEvidence": "R263:4Produkttexte/SEO+2Optionsnamen live (6Mutationen),26Varianten erhalten.4CJDetailreads.61Arbeitsidentitäten. QS19Blau Merchant image_link_internal_error trotz korrektem erreichbarem Bild;keinWrite. Theme214169584007 weiterhin UNPUBLISHED,MAIN213991391623;keinPublishretry. Keine Katalogvollständigkeit/0Fehlerbehauptung.",
-      "nextAllowedStep": "Gespeicherten geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise prüfen; Connector-Publish nicht blind wiederholen/umgehen. WC-Passmasse/Einheit und genaue Stückzählung des ersten Küchensets sowie frühere Quellenlücken klären. QS19Blau nur später gezielt nachlesen. Weitere kleine Produktgruppe beleggestützt fortsetzen;R259Tonkonflikt bleibt offen.",
+      "belegArt": "GEMESSEN_R264_NATIVE_PUBLIC_MOBILE_ASTRA",
+      "lastEvidence": "R264:2ProdukttexteSEO+1Optionsname live(3Mutationen),10Varianten erhalten. AstrahatgelbeBildfarbederOrangeVariantevorWriteberichtigt.4kleineSuchen/3CJDetails. Arbeitsliste64inkl1neuemBadregalblocker. KeineTagesreports/Merchant/Social/Bestellwatchwiederholt.",
+      "nextAllowedStep": "Badregal15454109041025exakteKindbindung/Ebenenzahl/Liefermengebelegen;gespeichertenOG-ThemeFiximAdminveröffentlichenundLivepreisnachlesen;weiterekleineProduktgruppebeleggestützt. Memoryregelmässigverlinken,Fortschritt%mitbenanntemScope.",
       "blockers": [
         "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
         "Becherhalter: genaue Passform/Montage und Material offen.",
@@ -8178,7 +8262,8 @@
         "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
         "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
         "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
-        "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur."
+        "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur.",
+        "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -9936,6 +10021,38 @@
           "sha256": "516a5b0a2be363dd013e683e28f9e2df4e62f4766ede78f476064ac39a37494b",
           "gitBlobSha": "1e5c6ef493f70997b909653166cccd2f7d10461c",
           "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-KUECHE-20261116-R264.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+          "bytes": 4984,
+          "sha256": "6fdeed80586b03a3baa49d8a3e08ed49e7731d03d22bbc13b8ad0b1b5df78646",
+          "gitBlobSha": "25d3ff9d83397a4d254c5f0d093e9046f5d61ae7",
+          "readAt": "2026-11-16T17:43:06Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R264.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R264.json",
+          "bytes": 110321,
+          "sha256": "063bbec62559bf49dd2bd7ad0a9d89a91ff360a57c9889bc08cdbaf7dd17189c",
+          "gitBlobSha": "4ad188f37c64512d444e1f5d39d9d8b5de798381",
+          "readAt": "2026-11-16T17:43:06Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+          "bytes": 26334,
+          "sha256": "37d4824718e5c8f6dfb51956ae1de739adda3cc5e4a9e30a74331d769b7d5086",
+          "gitBlobSha": "2d6ab080b2dc9738a600ef38843d56946fd44f90",
+          "readAt": "2026-11-16T17:43:06Z"
+        },
+        {
+          "file": "BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+          "path": "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+          "bytes": 2463,
+          "sha256": "a6c745b01adfbd554ba93b0198b595361483f54327e10f1b530521f562ec608f",
+          "gitBlobSha": "0d52576e253e9c2fa621bafb9a17d34db48bfd54",
+          "readAt": "2026-11-16T17:43:06Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -16745,6 +16862,36 @@
               "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN."
             ]
           }
+        },
+        {
+          "archivedByRun": "R264",
+          "recordedAt": "2026-11-16T17:43:06Z",
+          "previous": {
+            "state": "r263_four_product_details_live_two_option_labels_merchant_processing_open",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R263_NATIVE_PUBLIC_MOBILE_AND_ASTRA",
+            "lastEvidence": "R263:4Produkttexte/SEO+2Optionsnamen live (6Mutationen),26Varianten erhalten.4CJDetailreads.61Arbeitsidentitäten. QS19Blau Merchant image_link_internal_error trotz korrektem erreichbarem Bild;keinWrite. Theme214169584007 weiterhin UNPUBLISHED,MAIN213991391623;keinPublishretry. Keine Katalogvollständigkeit/0Fehlerbehauptung.",
+            "nextAllowedStep": "Gespeicherten geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise prüfen; Connector-Publish nicht blind wiederholen/umgehen. WC-Passmasse/Einheit und genaue Stückzählung des ersten Küchensets sowie frühere Quellenlücken klären. QS19Blau nur später gezielt nachlesen. Weitere kleine Produktgruppe beleggestützt fortsetzen;R259Tonkonflikt bleibt offen.",
+            "blockers": [
+              "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+              "Becherhalter: genaue Passform/Montage und Material offen.",
+              "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+              "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+              "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+              "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt.",
+              "R261 Reibe Stil3 ohne exakt belegtes Galerie-Einzelbild; keine falsche Zuordnung.",
+              "R261 Brettmaterial widersprüchlich; kein Titan-/Food-Grade-/Antibakteriellnachweis.",
+              "R261 Reflexionstasse: zwölf CJ-Motive, exakte bestehende Variante ungeklärt; ein Verbindungsread0 ist keine leere Historie.",
+              "R261 Merchant-Waage weiterhin DISAPPROVED; OG101.90 vs Auswahl127.90CHF separat belegt, Google-Ursache unbekannt.",
+              "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
+              "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED.",
+              "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
+              "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
+              "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
+              "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
+              "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -19572,6 +19719,27 @@
         "globalCompletionPercent": "UNKNOWN",
         "merchantErrorGroupCount": "UNKNOWN",
         "publicQaState": "PASS_BOUNDED_FOUR_PRODUCTS"
+      },
+      "run264": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R264.json",
+        "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+        "blockedCandidateProof": "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+        "productMutationCalls": 3,
+        "confirmedProducts": 2,
+        "optionNameUpdates": 1,
+        "protectedVariants": 10,
+        "worklistRows": 64,
+        "priorRowsPreserved": 61,
+        "blockedNewCandidates": 1,
+        "metricoolWrites": 0,
+        "merchantWrites": 0,
+        "newDailyReports": 0,
+        "orderQueries": 0,
+        "higgsfieldCalls": 0,
+        "globalCompletionPercent": "UNKNOWN",
+        "merchantErrorGroupCount": "UNKNOWN",
+        "publicQaState": "PASS_BOUNDED_TWO_PRODUCTS"
       }
     },
     {
@@ -32775,12 +32943,12 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r263_four_product_details_live_two_option_labels_merchant_processing_open",
+      "state": "r264_two_product_details_live_decor_capacity_picker_source_blocker",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R263_NATIVE_PUBLIC_MOBILE_AND_ASTRA",
-      "lastEvidence": "R263:4Produkttexte/SEO+2Optionsnamen live (6Mutationen),26Varianten erhalten.4CJDetailreads.61Arbeitsidentitäten. QS19Blau Merchant image_link_internal_error trotz korrektem erreichbarem Bild;keinWrite. Theme214169584007 weiterhin UNPUBLISHED,MAIN213991391623;keinPublishretry. Keine Katalogvollständigkeit/0Fehlerbehauptung.",
-      "nextAllowedStep": "Gespeicherten geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise prüfen; Connector-Publish nicht blind wiederholen/umgehen. WC-Passmasse/Einheit und genaue Stückzählung des ersten Küchensets sowie frühere Quellenlücken klären. QS19Blau nur später gezielt nachlesen. Weitere kleine Produktgruppe beleggestützt fortsetzen;R259Tonkonflikt bleibt offen.",
+      "belegArt": "GEMESSEN_R264_NATIVE_PUBLIC_MOBILE_ASTRA",
+      "lastEvidence": "R264:2ProdukttexteSEO+1Optionsname live(3Mutationen),10Varianten erhalten. AstrahatgelbeBildfarbederOrangeVariantevorWriteberichtigt.4kleineSuchen/3CJDetails. Arbeitsliste64inkl1neuemBadregalblocker. KeineTagesreports/Merchant/Social/Bestellwatchwiederholt.",
+      "nextAllowedStep": "Badregal15454109041025exakteKindbindung/Ebenenzahl/Liefermengebelegen;gespeichertenOG-ThemeFiximAdminveröffentlichenundLivepreisnachlesen;weiterekleineProduktgruppebeleggestützt. Memoryregelmässigverlinken,Fortschritt%mitbenanntemScope.",
       "blockers": [
         "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
         "Becherhalter: genaue Passform/Montage und Material offen.",
@@ -32798,7 +32966,8 @@
         "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
         "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
         "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
-        "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur."
+        "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur.",
+        "R264 Badregal15454109041025: synthetischeParentSKU,2EbenenProse/ThreeLayersChild/StorageRack*3;KindbindungundMengeoffen."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -33881,6 +34050,38 @@
           "sha256": "516a5b0a2be363dd013e683e28f9e2df4e62f4766ede78f476064ac39a37494b",
           "gitBlobSha": "1e5c6ef493f70997b909653166cccd2f7d10461c",
           "readAt": "2026-11-16T17:30:29Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-KUECHE-20261116-R264.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+          "bytes": 4984,
+          "sha256": "6fdeed80586b03a3baa49d8a3e08ed49e7731d03d22bbc13b8ad0b1b5df78646",
+          "gitBlobSha": "25d3ff9d83397a4d254c5f0d093e9046f5d61ae7",
+          "readAt": "2026-11-16T17:43:06Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R264.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R264.json",
+          "bytes": 110321,
+          "sha256": "063bbec62559bf49dd2bd7ad0a9d89a91ff360a57c9889bc08cdbaf7dd17189c",
+          "gitBlobSha": "4ad188f37c64512d444e1f5d39d9d8b5de798381",
+          "readAt": "2026-11-16T17:43:06Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+          "bytes": 26334,
+          "sha256": "37d4824718e5c8f6dfb51956ae1de739adda3cc5e4a9e30a74331d769b7d5086",
+          "gitBlobSha": "2d6ab080b2dc9738a600ef38843d56946fd44f90",
+          "readAt": "2026-11-16T17:43:06Z"
+        },
+        {
+          "file": "BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+          "path": "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+          "bytes": 2463,
+          "sha256": "a6c745b01adfbd554ba93b0198b595361483f54327e10f1b530521f562ec608f",
+          "gitBlobSha": "0d52576e253e9c2fa621bafb9a17d34db48bfd54",
+          "readAt": "2026-11-16T17:43:06Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -36946,6 +37147,36 @@
               "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN."
             ]
           }
+        },
+        {
+          "archivedByRun": "R264",
+          "recordedAt": "2026-11-16T17:43:06Z",
+          "previous": {
+            "state": "r263_four_product_details_live_two_option_labels_merchant_processing_open",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R263_NATIVE_PUBLIC_MOBILE_AND_ASTRA",
+            "lastEvidence": "R263:4Produkttexte/SEO+2Optionsnamen live (6Mutationen),26Varianten erhalten.4CJDetailreads.61Arbeitsidentitäten. QS19Blau Merchant image_link_internal_error trotz korrektem erreichbarem Bild;keinWrite. Theme214169584007 weiterhin UNPUBLISHED,MAIN213991391623;keinPublishretry. Keine Katalogvollständigkeit/0Fehlerbehauptung.",
+            "nextAllowedStep": "Gespeicherten geprüften Theme214169584007 im ShopifyAdmin veröffentlichen und LiveOGpreise prüfen; Connector-Publish nicht blind wiederholen/umgehen. WC-Passmasse/Einheit und genaue Stückzählung des ersten Küchensets sowie frühere Quellenlücken klären. QS19Blau nur später gezielt nachlesen. Weitere kleine Produktgruppe beleggestützt fortsetzen;R259Tonkonflikt bleibt offen.",
+            "blockers": [
+              "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+              "Becherhalter: genaue Passform/Montage und Material offen.",
+              "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+              "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+              "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+              "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt.",
+              "R261 Reibe Stil3 ohne exakt belegtes Galerie-Einzelbild; keine falsche Zuordnung.",
+              "R261 Brettmaterial widersprüchlich; kein Titan-/Food-Grade-/Antibakteriellnachweis.",
+              "R261 Reflexionstasse: zwölf CJ-Motive, exakte bestehende Variante ungeklärt; ein Verbindungsread0 ist keine leere Historie.",
+              "R261 Merchant-Waage weiterhin DISAPPROVED; OG101.90 vs Auswahl127.90CHF separat belegt, Google-Ursache unbekannt.",
+              "R260 Auswahl-Label HTMLGrösse/JSONFarbe weiter offen; aktuelle MAIN213991391623, genaue Ursache unbekannt.",
+              "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED.",
+              "R262 Teetasse15524880744833: sechs abgebildete Tassen vs Packliste eine Tasse+Box; keine Mengenzusage.",
+              "R262 supersedes historical R260labelblocker: kitchen HTML/JS nowFarbe and Pinkselectionverified without own write; historical causeUNKNOWN.",
+              "R263: WC-Regal15493845877121 Quelle60×35×170ohneEinheit; Passmasse/Belastung/Montage unbekannt.",
+              "R263: Küchenset15504178053505 zählt12Teile;MitrechnungBehälterungeklärt. SilikoninbeidenSetbeschreibungenattributiert,grobeMaterialtaxonomieabweichend.",
+              "R263: QS19Blau67814850527623 DISAPPROVED/image_link_internal_error; korrekteBildURLerreichbar,keinebegründeteFeedkorrektur."
+            ]
+          }
         }
       ],
       "visibilitySupplementR49": {
@@ -38869,6 +39100,27 @@
         "globalCompletionPercent": "UNKNOWN",
         "merchantErrorGroupCount": "UNKNOWN",
         "publicQaState": "PASS_BOUNDED_FOUR_PRODUCTS"
+      },
+      "run264": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R264.json",
+        "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+        "blockedCandidateProof": "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+        "productMutationCalls": 3,
+        "confirmedProducts": 2,
+        "optionNameUpdates": 1,
+        "protectedVariants": 10,
+        "worklistRows": 64,
+        "priorRowsPreserved": 61,
+        "blockedNewCandidates": 1,
+        "metricoolWrites": 0,
+        "merchantWrites": 0,
+        "newDailyReports": 0,
+        "orderQueries": 0,
+        "higgsfieldCalls": 0,
+        "globalCompletionPercent": "UNKNOWN",
+        "merchantErrorGroupCount": "UNKNOWN",
+        "publicQaState": "PASS_BOUNDED_TWO_PRODUCTS"
       }
     },
     {
@@ -49675,6 +49927,17 @@
         "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R263.csv",
         "dropship/codex-handoff-20261018/MERCHANT-QS19-BILD-20261116-R263.json"
       ]
+    },
+    {
+      "revision": 264,
+      "at": "2026-11-16T17:43:06Z",
+      "summary": "Two further product detail/SEO updates and one decor-capacity picker name live;10variants preserved. Astra correctedOrange/yellowimage wordingbeforewrite. Worklist61+2live+1blocked=64. Memorysharing/progressscope/Higgsfieldoptional preferences recorded. No repeatedreports/orders/Merchant/Social/automation.",
+      "sources": [
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R264.json",
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+        "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -51027,7 +51290,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 263,
+    "latestCanonicalRevision": 264,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -52050,6 +52313,19 @@
       "atUtc": "2026-11-16T17:30:29Z",
       "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-MERCHANT-20261116-R263.md",
       "receipt": "unknown"
+    },
+    "run264": {
+      "atUtc": "2026-11-16T17:43:06Z",
+      "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+      "receipt": "unknown",
+      "ownerPreferences": {
+        "regularSharedMemoryAfterCompletedWorkBlock": true,
+        "approxProgressAlwaysWithBoundedScope": true,
+        "higgsfieldPermittedWhenUseful": true,
+        "paidVideoRenderProhibitionUnchanged": true,
+        "userRequestedAstra": "Astra performed source review and final copy audit; root session model not claimed changed",
+        "userRequested100Agents": "Environment concurrency limit7includingroot; no100agentsclaim"
+      }
     }
   },
   "claudeCodeHandoffHistory": [
@@ -78002,5 +78278,26 @@
     "globalCompletionPercent": "UNKNOWN",
     "merchantErrorGroupCount": "UNKNOWN",
     "publicQaState": "PASS_BOUNDED_FOUR_PRODUCTS"
+  },
+  "run264": {
+    "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-20261116-R264.md",
+    "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R264.json",
+    "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R264.csv",
+    "blockedCandidateProof": "dropship/codex-handoff-20261018/BADREGAL-QUELLENBLOCKER-20261116-R264.json",
+    "productMutationCalls": 3,
+    "confirmedProducts": 2,
+    "optionNameUpdates": 1,
+    "protectedVariants": 10,
+    "worklistRows": 64,
+    "priorRowsPreserved": 61,
+    "blockedNewCandidates": 1,
+    "metricoolWrites": 0,
+    "merchantWrites": 0,
+    "newDailyReports": 0,
+    "orderQueries": 0,
+    "higgsfieldCalls": 0,
+    "globalCompletionPercent": "UNKNOWN",
+    "merchantErrorGroupCount": "UNKNOWN",
+    "publicQaState": "PASS_BOUNDED_TWO_PRODUCTS"
   }
 }
