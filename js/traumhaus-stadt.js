@@ -5,17 +5,25 @@ var bounds={x0:-400,x1:900,z0:-700,z1:620};
 function dist(a,b){return Math.hypot(b[0]-a[0],b[1]-a[1]);}
 function projekt(p,a,b){var dx=b[0]-a[0],dz=b[1]-a[1],l=dx*dx+dz*dz,t=l?Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dz)/l)):0;return {p:[a[0]+dx*t,a[1]+dz*t],t:t,d:Math.hypot(p[0]-a[0]-dx*t,p[1]-a[1]-dz*t)};}
 function plan(){
-  var roads=[{a:[80,236],b:[80,246],w:9},{a:[420,-140],b:[560,-140],w:12},{a:[560,-140],b:[560,320],w:12},{a:[560,320],b:[780,320],w:12},{a:[780,320],b:[780,340],w:12}],buildings=[];
-  [560,640,720,800].forEach(function(x){roads.push({a:[x,0],b:[x,240],w:12});});
-  [0,80,160,240].forEach(function(z){roads.push({a:[560,z],b:[800,z],w:12});});
+  var roads=[{a:[80,236],b:[80,246],w:9},{a:[420,-140],b:[560,-140],w:12},{a:[560,-320],b:[560,320],w:12},{a:[560,320],b:[780,320],w:12},{a:[780,320],b:[780,340],w:12}],buildings=[];
+  [640,720,800].forEach(function(x){roads.push({a:[x,-320],b:[x,240],w:12});});
+  [-320,-240,-160,-80,0,80,160,240].forEach(function(z){roads.push({a:[560,z],b:[800,z],w:12});});
   var seed=101;
   for(var ix=0;ix<3;ix++)for(var iz=0;iz<3;iz++){
     if(ix===1&&iz===1)continue;
     [[20,20],[40,20],[60,20],[20,40],[60,40],[20,60],[40,60],[60,60]].forEach(function(p){var n=seed++,floors=4+n%9;
       buildings.push({x:560+ix*80+p[0],z:iz*80+p[1],w:14+n%3,d:13+n%3,h:3+floors*2.8,floors:floors,seed:n});});
   }
+  /* Zwoelf offene Hofbloecke im Norden. Die mittlere Nordparzelle bleibt Zufahrt. */
+  var expansion={name:'Nordstadt',poi:[680,-80],depot:[600,-120],garage:[760,-120],service:[680,-40],nordpark:[680,-280]},courtyards=[];
+  for(var nx=0;nx<3;nx++)for(var nz=0;nz<4;nz++){
+    var bx=560+nx*80,bz=-320+nz*80;courtyards.push([bx+40,bz+40]);
+    [[20,20],[60,20],[20,40],[60,40],[20,60],[40,60],[60,60]].forEach(function(p){var n=seed++,floors=4+(n*5)%7;
+      buildings.push({x:bx+p[0],z:bz+p[1],w:14+n%3,d:13+n%3,h:3+floors*2.8,floors:floors,seed:n,district:'Nordstadt'});});
+  }
+  [expansion.depot,expansion.garage,expansion.service].forEach(function(p){roads.push({a:[p[0],p[1]-40],b:[p[0],p[1]-10],w:7});});
   var track=[];[[770,370,-90],[770,450,0],[610,450,90],[610,370,180]].forEach(function(c){for(var i=0;i<=8;i++){var a=(c[2]+i*90/8)*Math.PI/180;track.push([c[0]+Math.cos(a)*30,c[1]+Math.sin(a)*30]);}});
-  return {roads:roads,buildings:buildings,track:track,pit:[770,320],grid:[752,340],forum:[680,120]};
+  return {roads:roads,buildings:buildings,track:track,pit:[770,320],grid:[752,340],forum:[680,120],expansion:expansion,courtyards:courtyards};
 }
 function path(points,closed){var p=points.map(function(a){return a.slice();});if(closed&&dist(p[0],p[p.length-1])>.01)p.push(p[0].slice());var lengths=[0];for(var i=1;i<p.length;i++)lengths.push(lengths[i-1]+dist(p[i-1],p[i]));return {points:p,lengths:lengths,length:lengths[lengths.length-1]};}
 function punkt(p,d){d=Math.max(0,Math.min(p.length,d));for(var i=1;i<p.points.length;i++)if(d<=p.lengths[i]||i===p.points.length-1){var a=p.points[i-1],b=p.points[i],t=(d-p.lengths[i-1])/(p.lengths[i]-p.lengths[i-1]||1);return {x:a[0]+(b[0]-a[0])*t,z:a[1]+(b[1]-a[1])*t,yaw:Math.atan2(b[0]-a[0],b[1]-a[1])};}return {x:p.points[0][0],z:p.points[0][1],yaw:0};}
@@ -49,7 +57,7 @@ function route(g,start,end){
 function fahrplan(g,ids,speed,dwell){var parts=[],duration=0;for(var i=0;i<ids.length;i++){var a=ids[i],b=ids[(i+1)%ids.length],r=route(g,g.stops[a].node,g.stops[b].node);if(!r)return null;var p=path(r,false);parts.push({stop:a,next:b,start:duration,depart:duration+dwell,end:duration+dwell+p.length/speed,path:p});duration+=dwell+p.length/speed;}return {parts:parts,duration:duration,speed:speed,dwell:dwell};}
 function fahrzeugStand(f,zeit){var t=((zeit%f.duration)+f.duration)%f.duration;for(var i=0;i<f.parts.length;i++){var a=f.parts[i];if(t<a.end||i===f.parts.length-1){var halt=t<a.depart,p=sample(a.path,halt?0:(t-a.depart)*f.speed);return {x:p.x,z:p.z,yaw:p.yaw,halt:halt,stop:a.stop,next:a.next,rest:Math.max(0,(halt?a.depart:a.end)-t),teil:i};}}}
 function cameraClip(buildings,a,b){
-  if(Math.max(a.x,b.x)<540||Math.min(a.x,b.x)>820||Math.max(a.z,b.z)<-20||Math.min(a.z,b.z)>260)return 1;
+  if(Math.max(a.x,b.x)<540||Math.min(a.x,b.x)>820||Math.max(a.z,b.z)<-340||Math.min(a.z,b.z)>260)return 1;
   var dx=b.x-a.x,dy=b.y-a.y,dz=b.z-a.z,len=Math.hypot(dx,dy,dz)||1,best=1;
   buildings.forEach(function(h){var lo=[h.x-h.w/2-.4,-.2,h.z-h.d/2-.4],hi=[h.x+h.w/2+.4,h.h+.5,h.z+h.d/2+.4],p=[a.x,a.y,a.z],d=[dx,dy,dz],t0=0,t1=1;
     for(var i=0;i<3;i++){if(Math.abs(d[i])<1e-8){if(p[i]<lo[i]||p[i]>hi[i])return;}else{var l=(lo[i]-p[i])/d[i],r=(hi[i]-p[i])/d[i];if(l>r){var q=l;l=r;r=q;}t0=Math.max(t0,l);t1=Math.min(t1,r);if(t0>t1)return;}}
@@ -57,8 +65,8 @@ function cameraClip(buildings,a,b){
   });return best;
 }
 function createWorld(T,scene,solid){
-  var P=plan(),root=new T.Group(),groups=[],materials=[],box=new T.BoxGeometry(1,1,1),plane=new T.PlaneGeometry(1,1),tmp=new T.Object3D(),pal=[0xc2b5a1,0xa6b3ad,0xd0c3aa,0x8f9c9e,0xc8b5a6,0xada9b1];root.name='Oststadt und Motorsportpark';scene.add(root);
-  var bodyMat=new T.MeshLambertMaterial({color:0xffffff}),glassMat=new T.MeshLambertMaterial({color:0x476b77,emissive:0xf6cb7a,emissiveIntensity:0}),roofMat=new T.MeshLambertMaterial({color:0x727b78}),roadMat=new T.MeshLambertMaterial({color:0x41484e}),paveMat=new T.MeshLambertMaterial({color:0xb5b8ae}),lineMat=new T.MeshBasicMaterial({color:0xf0e9cf}),redMat=new T.MeshLambertMaterial({color:0xad5946});materials.push(glassMat);
+  var P=plan(),root=new T.Group(),groups=[],materials=[],box=new T.BoxGeometry(1,1,1),plane=new T.PlaneGeometry(1,1),tmp=new T.Object3D(),pal=[0xc2b5a1,0xa6b3ad,0xd0c3aa,0x8f9c9e,0xc8b5a6,0xada9b1];root.name='Oststadt, Nordstadt und Motorsportpark';scene.add(root);
+  var bodyMat=new T.MeshLambertMaterial({color:0xffffff}),glassMat=new T.MeshLambertMaterial({color:0x476b77,emissive:0xf6cb7a,emissiveIntensity:0}),roofMat=new T.MeshLambertMaterial({color:0x727b78}),roadMat=new T.MeshLambertMaterial({color:0x41484e}),paveMat=new T.MeshLambertMaterial({color:0xb5b8ae}),lineMat=new T.MeshBasicMaterial({color:0xf0e9cf}),redMat=new T.MeshLambertMaterial({color:0xad5946}),parkMat=new T.MeshLambertMaterial({color:0x6d9567});materials.push(glassMat);
   var chunks={};function add(kind,x,y,z,w,h,d,rot,color){var k=Math.floor(x/80)+'_'+Math.floor(z/80),b=chunks[k]||(chunks[k]={x:Math.floor(x/80)*80+40,z:Math.floor(z/80)*80+40,body:[],glass:[],roof:[]});b[kind].push({x:x,y:y,z:z,w:w,h:h,d:d,rot:rot||0,color:color||0xffffff});}
   P.buildings.forEach(function(b){add('body',b.x,b.h/2,b.z,b.w,b.h,b.d,0,pal[b.seed%pal.length]);add('roof',b.x,b.h+.2,b.z,b.w+.4,.4,b.d+.4);add('glass',b.x,1.7,b.z+b.d/2+.04,b.w*.68,2,1,0);add('glass',b.x,1.7,b.z-b.d/2-.04,b.w*.68,2,1,Math.PI);
     /* Geschaeftssockel, Vordach und Dachaufbau brechen die gleiche Silhouette. */
@@ -71,7 +79,18 @@ function createWorld(T,scene,solid){
   Object.keys(chunks).forEach(function(k){var b=chunks[k];['body','glass','roof'].forEach(function(kind){var rows=b[kind];if(!rows.length)return;var geo=(kind==='glass'?plane:box).clone();geo.boundingSphere=new T.Sphere(new T.Vector3(0,25,0),80);var m=new T.InstancedMesh(geo,kind==='glass'?glassMat:(kind==='body'?bodyMat:roofMat),rows.length);m.position.set(b.x,0,b.z);rows.forEach(function(a,i){tmp.position.set(a.x-b.x,a.y,a.z-b.z);tmp.rotation.set(0,a.rot,0);tmp.scale.set(a.w,a.h,a.d);tmp.updateMatrix();m.setMatrixAt(i,tmp.matrix);if(kind==='body')m.setColorAt(i,new T.Color(a.color));});m.instanceMatrix.needsUpdate=true;m.updateMatrix();m.matrixAutoUpdate=false;root.add(m);groups.push({mesh:m,x:b.x,z:b.z,detail:kind==='glass'});});});
   function slab(x,z,w,d,mat,y){var m=new T.Mesh(box,mat);m.position.set(x,y===undefined?.02:y,z);m.scale.set(w,.06,d);m.updateMatrix();m.matrixAutoUpdate=false;root.add(m);return m;}
   P.roads.forEach(function(r){var dx=r.b[0]-r.a[0],dz=r.b[1]-r.a[1],len=Math.hypot(dx,dz),x=(r.a[0]+r.b[0])/2,z=(r.a[1]+r.b[1])/2,rot=-Math.atan2(dz,dx);var a=slab(x,z,len+r.w,r.w+7,paveMat,.015);a.rotation.y=rot;a.updateMatrix();var b=slab(x,z,len+r.w,r.w,roadMat,.055);b.rotation.y=rot;b.updateMatrix();for(var t=5;t<len-5;t+=12){var q=t/len,m=slab(r.a[0]+dx*q,r.a[1]+dz*q,4,.14,lineMat,.092);m.rotation.y=rot;m.updateMatrix();}});
-  slab(680,120,57,57,paveMat,.04);slab(680,120,28,28,new T.MeshLambertMaterial({color:0x6d9567}),.09);
+  slab(680,120,57,57,paveMat,.04);slab(680,120,28,28,parkMat,.09);
+  /* Hofbelag und Stellplaetze liegen ausserhalb der Grundflaechen; Zufahrten bleiben offen. */
+  P.courtyards.forEach(function(p){slab(p[0],p[1],22,22,paveMat,.04);});
+  slab(P.expansion.nordpark[0],P.expansion.nordpark[1],20,20,parkMat,.09);
+  [P.expansion.depot,P.expansion.garage,P.expansion.service].forEach(function(p,i){
+    slab(p[0],p[1],20,20,roadMat,.08);
+    for(var k=0;k<3;k++){slab(p[0]-7+k*7,p[1]+5,.12,7,lineMat,.12);}
+    slab(p[0],p[1]+8.5,14,.12,lineMat,.12);
+    /* Farbige Ankunftsflaeche: Mitte bleibt fuer Spielfigur oder Auto frei. */
+    slab(p[0]-8.5,p[1],.4,10,i===1?redMat:lineMat,.12);
+    slab(p[0]+8.5,p[1],.4,10,i===1?redMat:lineMat,.12);
+  });
   var track=path(P.track,true),pos=[],uv=[],idx=[];
   for(var i=0;i<track.points.length;i++){var a=track.points[Math.max(0,i-1)],b=track.points[Math.min(track.points.length-1,i+1)],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz)||1;[-1,1].forEach(function(s){pos.push(track.points[i][0]-dz/l*7*s,.095,track.points[i][1]+dx/l*7*s);uv.push(track.lengths[i]/12,(s+1)/2);});if(i){var k=i*2;idx.push(k-2,k-1,k,k-1,k+1,k);}}
   var tg=new T.BufferGeometry();tg.setAttribute('position',new T.Float32BufferAttribute(pos,3));tg.setAttribute('uv',new T.Float32BufferAttribute(uv,2));tg.setIndex(idx);tg.computeVertexNormals();var tm=new T.Mesh(tg,new T.MeshLambertMaterial({color:0x38434a,side:T.DoubleSide}));root.add(tm);
@@ -80,7 +99,7 @@ function createWorld(T,scene,solid){
   slab(770,320,34,22,paveMat,.08);for(var i=0;i<3;i++)slab(685,503+i*2,58,2,paveMat,.7+i*.6);
   /* Markierungen, Gehwege und Randsteine gemeinsam zeichnen statt je Strich. */
   var flat={};root.children.slice().forEach(function(m){if(m.isMesh&&!m.isInstancedMesh&&m.geometry===box){(flat[m.material.uuid]||(flat[m.material.uuid]=[])).push(m);}});
-  Object.keys(flat).forEach(function(k){var a=flat[k],g=box.clone();g.boundingSphere=new T.Sphere(new T.Vector3(440,0,200),550);var im=new T.InstancedMesh(g,a[0].material,a.length);a.forEach(function(m,i){im.setMatrixAt(i,m.matrix);root.remove(m);});im.instanceMatrix.needsUpdate=true;im.updateMatrix();im.matrixAutoUpdate=false;root.add(im);});
+  Object.keys(flat).forEach(function(k){var a=flat[k],g=box.clone();g.boundingSphere=new T.Sphere(new T.Vector3(440,0,100),600);var im=new T.InstancedMesh(g,a[0].material,a.length);a.forEach(function(m,i){im.setMatrixAt(i,m.matrix);root.remove(m);});im.instanceMatrix.needsUpdate=true;im.updateMatrix();im.matrixAutoUpdate=false;root.add(im);});
   var roadPoints=P.roads.map(function(r){return [r.a,r.b];});
   return {root:root,plan:P,track:track,groups:groups,cameraClip:function(a,b){return cameraClip(P.buildings,a,b);},onRoad:function(x,z){if(P.roads.some(function(r){return x>=Math.min(r.a[0],r.b[0])-r.w/2&&x<=Math.max(r.a[0],r.b[0])+r.w/2&&z>=Math.min(r.a[1],r.b[1])-r.w/2&&z<=Math.max(r.a[1],r.b[1])+r.w/2&&projekt([x,z],r.a,r.b).d<r.w/2;}))return true;if(x>570&&x<810&&z>330&&z<490&&abstand([x,z],P.track,true)<8)return true;return false;},tick:function(x,z,night){groups.forEach(function(g){var d=Math.hypot(g.x-x,g.z-z);g.mesh.visible=d<(g.detail?200:570);});glassMat.emissiveIntensity=night?.55:0;}};
 }
