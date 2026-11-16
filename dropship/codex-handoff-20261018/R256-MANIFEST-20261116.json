@@ -1,0 +1,24 @@
+{
+  "run": "R256",
+  "atUtc": "2026-11-16T09:50:48Z",
+  "files": [
+    {
+      "file": "PRODUKTDETAILS-BELEGE-20261116-R256.json",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
+      "bytes": 36781,
+      "sha256": "447722f418eb929eacaeacaf12d38c34fd93a979542e15312bbc6b1918f69df6",
+      "gitBlobSha": "954573f1d11ec1a1101b7549e1ab153a0f0c9f3b",
+      "readAt": "2026-11-16T09:50:48Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-LIVE-20261116-R256.md",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+      "bytes": 4506,
+      "sha256": "6104823911bec5f9c9d105dfe74e29f990c51d5baa5e433b39e834bab82b0707",
+      "gitBlobSha": "cac33ee00603ee5ff1a7b029f948b6cf2f97fc3e",
+      "readAt": "2026-11-16T09:50:48Z"
+    }
+  ],
+  "scope": "Two new documentation artifacts only; excludes manifest and core files.",
+  "noCustomerCredentialsOrSupplierPrices": true
+}

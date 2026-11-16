@@ -1,3 +1,13 @@
+# R256 – Ein weiterer Produkttext und SEO live verbessert – 16.11.2026
+
+[Katzenspielzeug](https://luxestyle.ch/products/interaktives-katzenspielzeug-mit-rotierender-s-627400) mit ungefähr348Wörtern zu Akku/USB, Bedienung, Material/Gewicht, tatsächlicher weiss-schwarzer Ausführung, Lieferumfang und FAQ verbessert. Neuer SEO-Titel und vollständige Meta; unbelegte Stress-/Laufzeit-, weitere Farb- und alte Liefer-/Rabatttexte bereinigt. Ein bestätigter Shopify-Write; Titel, CHF29.90, eine Defaultvariante, sieben Medien, Tags und Inventarregeln erhalten. Aktuelle CJ-Kindbindung CJYD279383701AZ und Quellbilder gegengeprüft. Öffentliches HTML/JSON/Offer und zwei360/390px-Ansichten bestätigt; kein neuer Medienupload oder Socialpost.
+
+Zwei Konsolen-Verknüpfungen eng geprüft (vier Zielabfragen plus Ein-Zeilen-Positivkontrolle): keine regionale Ausführung aus den Zielantworten belegbar, keine SKU-/Verknüpfungsänderung. Das beweist keine fehlende Fulfilment-Funktion. 36/36 redaktioneller Konsolenstand und32 offene Statuszeilen bleiben erhalten; neuer Katzenartikel separat. Mass-/Laufzeit-/Zubehörfragen und Medienrechte bleiben offen. Keine neue Index-, Ranking-, Merchant- oder Verkaufswirkung behaupten.
+
+[R256-Bericht](PRODUKTDETAILS-LIVE-20261116-R256.md) · [Belege/Quellen/öffentliche Prüfung](PRODUKTDETAILS-BELEGE-20261116-R256.json). Tagesreports ausR251/R253 unverändert, keine Zusatzautomation. 24 Aufgaben-IDs und Historie erhalten; Claude-Empfang unbekannt. **Memory am Schluss des Nutzerberichts verlinken.**
+
+---
+
 # R255 – 36/36 Konsolenseiten redaktionell bearbeitet – 16.11.2026
 
 24 weitere bestehende Seiten sind live überarbeitet: ausführliche Produktdetails und Auswahlhilfe, Lieferumfang, Spiele-/Kartenfragen, individuelle Produkt-/SEO-Titel und Meta-Beschreibungen. 24 erste Änderungen plus vier Nacharbeiten an Beschreibungstabellen ergeben 28 bestätigte Schreibaufrufe. Preise, 73 Varianten, Optionswerte, 168 Medien und alle abgefragten Schutzfelder blieben erhalten.

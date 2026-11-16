@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 255,
-  "updatedAt": "2026-11-16T09:17:59Z",
+  "revision": 256,
+  "updatedAt": "2026-11-16T09:50:48Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-16",
     "currentDayEvidenceKind": "R255 Produkttexte, native Reads und öffentliche/mobile QA",
-    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt.",
+    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-16",
@@ -703,6 +703,12 @@
       "publicQaState": "PASS_WITH_LIMITS",
       "proof": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
       "dailyReportsRepeated": false
+    },
+    "targetedSeoWritesR256": {
+      "productWrites": 1,
+      "productId": "gid://shopify/Product/15491768058241",
+      "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
+      "reportsRepeated": false
     }
   },
   "expectedIdentity": {
@@ -736,13 +742,15 @@
       "id": "product-attribute-completeness",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "R255 redaktionell vollständig für 36er-Liste; Quellenfragen offen",
+      "state": "r256_one_additional_cat_product_live_source_bound_details",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "R255 nativer Readback, öffentlicher Seitencheck und mobile Ansicht",
-      "lastEvidence": "R255: 24 zusätzliche Produktseiten, 24 Initial- und 4 Body-Polish-Aufrufe. Alle 28 Readbacks bestätigt. Die vorhandene 36er-Liste steht bei 36/36 redaktionell bearbeiteten Einträgen; 24 R255-Produkte behalten offene Quellenfragen. Öffentliche QA: 24 Seiten/73 Varianten, 48 Viewports bestanden; zwei Auswahlproben unverified.",
-      "nextAllowedStep": "Offene Produktfragen je SKU mit neuen Primärbelegen klären. Die redaktionelle Quote gilt nur für die 36er-Liste; sie schliesst keine Lieferantenfragen oder Bildrechte.",
+      "belegArt": "GEMESSEN_R256_ONE_PRODUCT_WRITE_NATIVE_PUBLIC_MOBILE",
+      "lastEvidence": "R256: Ein zusätzlicher Katzenartikel15491768058241 mit klarer aktueller CJ-KindbindungCJYD279383701AZ, Bild-/Textquellen, ausführlichem Body und eigenem SEO-Paar live verbessert. Ein Write und native/public/mobile Gegenprüfung; Titel/Preis/Variante/Medien/Tags/Inventar erhalten. Zwei Konsolenbindungen eng geprüft, Regionalausführung weiterhin offen. 36er-Liste unverändert; keine Gesamtshopquote.",
+      "nextAllowedStep": "Weiteren bestehenden Artikel mit eindeutiger Kind-SKU-Bindung gezielt verbessern; R256 ohne Neubefund nicht erneut umtexten. Konsolenregion, genaue Gesamtmasse und Laufzeit nur mit neuen Primärbelegen schliessen.",
       "blockers": [
+        "Katzenspielzeug: Gesamtmassbezug, Lauf-/Ladezeit, Netzadapter/Anleitungssprache und Medienrechte bleiben offen.",
+        "Konsolen Xgame/SUPER21: Zielantworten belegen keine genaue bestehende CJ-Kindbindung; keine automatische Neuverknüpfung.",
         "Produkt- und Lieferantenfragen sowie Bildrechte sind nicht geschlossen.",
         "Zwei Auswahlproben timeouteten vor einer Auswahl und bleiben unverified."
       ],
@@ -1854,6 +1862,22 @@
           "sha256": "d78f63fbbd8868686465bf88ebc00e7ef5992cdd14753043a7ef3adb9af30e00",
           "gitBlobSha": "946fedc7a863c8f43b0e78ec561698e626a61814",
           "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R256.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
+          "bytes": 36781,
+          "sha256": "447722f418eb929eacaeacaf12d38c34fd93a979542e15312bbc6b1918f69df6",
+          "gitBlobSha": "954573f1d11ec1a1101b7549e1ab153a0f0c9f3b",
+          "readAt": "2026-11-16T09:50:48Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-LIVE-20261116-R256.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+          "bytes": 4506,
+          "sha256": "6104823911bec5f9c9d105dfe74e29f990c51d5baa5e433b39e834bab82b0707",
+          "gitBlobSha": "cac33ee00603ee5ff1a7b029f948b6cf2f97fc3e",
+          "readAt": "2026-11-16T09:50:48Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -4954,6 +4978,21 @@
               "Historisch offen, heute nicht neu geprüft: R252: X2Variantennamen64G/128G/256GbestätigenkeinekonkreteKarte/nutzbareKapazität/Spieleliste. GD20Packliste1ControllergegenBild2Controller;EnglishBedeutung/4KAusgabe/System/Stickmasseoffen. Bilderbleibenunverändert,keineLizenz-/Spielezusage."
             ]
           }
+        },
+        {
+          "archivedByRun": "R256",
+          "recordedAt": "2026-11-16T09:50:48Z",
+          "previous": {
+            "state": "R255 redaktionell vollständig für 36er-Liste; Quellenfragen offen",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "R255 nativer Readback, öffentlicher Seitencheck und mobile Ansicht",
+            "lastEvidence": "R255: 24 zusätzliche Produktseiten, 24 Initial- und 4 Body-Polish-Aufrufe. Alle 28 Readbacks bestätigt. Die vorhandene 36er-Liste steht bei 36/36 redaktionell bearbeiteten Einträgen; 24 R255-Produkte behalten offene Quellenfragen. Öffentliche QA: 24 Seiten/73 Varianten, 48 Viewports bestanden; zwei Auswahlproben unverified.",
+            "nextAllowedStep": "Offene Produktfragen je SKU mit neuen Primärbelegen klären. Die redaktionelle Quote gilt nur für die 36er-Liste; sie schliesst keine Lieferantenfragen oder Bildrechte.",
+            "blockers": [
+              "Produkt- und Lieferantenfragen sowie Bildrechte sind nicht geschlossen.",
+              "Zwei Auswahlproben timeouteten vor einer Auswahl und bleiben unverified."
+            ]
+          }
         }
       ],
       "additionalProductCleanups": [
@@ -6718,6 +6757,11 @@
         "evidence": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
         "taskIdsPreserved": 24,
         "publicQaState": "PASS_WITH_LIMITS"
+      },
+      "run256": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
+        "shopifyWrites": 1
       }
     },
     {
@@ -7610,13 +7654,14 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "R255-Paket vorbereitet; Core-Patch und Readback noch offen",
+      "state": "r256_additional_product_work_documented_receipt_unknown",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "R255 nativer Readback, öffentlicher Seitencheck und mobile Ansicht",
-      "lastEvidence": "R255-Paket: 24 finale Texte, native Vorher-/Nachher-Daten, Quellenregister, 36er-Liste, öffentliche/mobile QA und Fortschrittsbericht. ARBEITSSTAND 254→255 behält alle 24 Task-IDs; drei relevante Aufgaben mit Historie und Blockern aktualisiert. Claude-Empfang unbekannt.",
-      "nextAllowedStep": "Root wendet die R255-Instruktionen an, prüft den V8-Patch, lädt die freigegebenen Dateien hoch und verifiziert die tatsächlichen Blob-SHAs per Readback.",
+      "belegArt": "GEMESSEN_R256_ONE_PRODUCT_WRITE_NATIVE_PUBLIC_MOBILE",
+      "lastEvidence": "R256: Ein bestätigter neuer Produkttext-/SEO-Write sowie eng abgegrenzte Konsolenquellenprüfung mit Positivkontrolle, native/public/mobile Belege und unveränderte 36er-Liste dokumentiert. Core fortgeschrieben, alle24TaskIDs erhalten; Claude-Empfang unbekannt.",
+      "nextAllowedStep": "Bestehenden Claude-Einstieg und R256-Bericht verwenden, ohne Prüfung als Freigabe oder Kenntnisnahme zu zählen.",
       "blockers": [
+        "Claude-Empfang weiterhin unbekannt.",
         "Zwei Auswahlproben bleiben unverified.",
         "Core-Änderung ist remote noch nicht angewandt oder zurückgelesen.",
         "Claude-Empfang unbekannt."
@@ -9172,6 +9217,22 @@
           "sha256": "d78f63fbbd8868686465bf88ebc00e7ef5992cdd14753043a7ef3adb9af30e00",
           "gitBlobSha": "946fedc7a863c8f43b0e78ec561698e626a61814",
           "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R256.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
+          "bytes": 36781,
+          "sha256": "447722f418eb929eacaeacaf12d38c34fd93a979542e15312bbc6b1918f69df6",
+          "gitBlobSha": "954573f1d11ec1a1101b7549e1ab153a0f0c9f3b",
+          "readAt": "2026-11-16T09:50:48Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-LIVE-20261116-R256.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+          "bytes": 4506,
+          "sha256": "6104823911bec5f9c9d105dfe74e29f990c51d5baa5e433b39e834bab82b0707",
+          "gitBlobSha": "cac33ee00603ee5ff1a7b029f948b6cf2f97fc3e",
+          "readAt": "2026-11-16T09:50:48Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -15820,6 +15881,22 @@
               "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: R250: OriginalZIPs claude-produktideen-20261115.zip / claude-social-zukunft-20261115.zip hier nicht vorhanden; separater Direktstart ist kein behaupteter Ersatz. Claude-Empfang unbekannt."
             ]
           }
+        },
+        {
+          "archivedByRun": "R256",
+          "recordedAt": "2026-11-16T09:50:48Z",
+          "previous": {
+            "state": "R255-Paket vorbereitet; Core-Patch und Readback noch offen",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "R255 nativer Readback, öffentlicher Seitencheck und mobile Ansicht",
+            "lastEvidence": "R255-Paket: 24 finale Texte, native Vorher-/Nachher-Daten, Quellenregister, 36er-Liste, öffentliche/mobile QA und Fortschrittsbericht. ARBEITSSTAND 254→255 behält alle 24 Task-IDs; drei relevante Aufgaben mit Historie und Blockern aktualisiert. Claude-Empfang unbekannt.",
+            "nextAllowedStep": "Root wendet die R255-Instruktionen an, prüft den V8-Patch, lädt die freigegebenen Dateien hoch und verifiziert die tatsächlichen Blob-SHAs per Readback.",
+            "blockers": [
+              "Zwei Auswahlproben bleiben unverified.",
+              "Core-Änderung ist remote noch nicht angewandt oder zurückgelesen.",
+              "Claude-Empfang unbekannt."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -18532,6 +18609,11 @@
         "evidence": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
         "taskIdsPreserved": 24,
         "publicQaState": "PASS_WITH_LIMITS"
+      },
+      "run256": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
+        "shopifyWrites": 1
       }
     },
     {
@@ -31707,13 +31789,14 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "R255 öffentliche Produktprüfung bestanden; keine Index- oder Rankingbehauptung",
+      "state": "r256_cat_product_body_and_seo_live_public_verified",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "R255 nativer Readback, öffentlicher Seitencheck und mobile Ansicht",
-      "lastEvidence": "R255: 24 Seiten und 73 Varianten mit H1, Titel, Meta, Canonical, Body und JSON-LD-Angeboten öffentlich abgeglichen. 48 Viewports bei 360/390 px bestanden. Zwei Pickerproben sind unverified; keine Indexierungs- oder Rankingwirkung belegt.",
-      "nextAllowedStep": "Offene Produktquellen weiter prüfen. GSC nur zur fälligen Tagesmessung oder mit neuem konkretem Gegenprüfgrund verwenden.",
+      "belegArt": "GEMESSEN_R256_ONE_PRODUCT_WRITE_NATIVE_PUBLIC_MOBILE",
+      "lastEvidence": "R256: Eine weitere Produktseite mit vollständigem individuellem SEO-Titel/Meta und quellenbasiertem Detailtext live; öffentliche HTML-/JSON-/Offer-Prüfung und zwei mobile Ansichten bestätigt. Kein GSC-Report wiederholt, keine Index-/Rankingwirkung aus dem Write abgeleitet.",
+      "nextAllowedStep": "Weitere gezielt verifizierbare Produkttexte verbessern. Vorhandene Ranking-/Indexmessungen nur im erlaubten Tagesrahmen fortführen.",
       "blockers": [
+        "Google-Indexierung und Rankingwirkung der neuen R256-Texte unbekannt.",
         "Keine frische Google-Indexierung oder Rankingwirkung nachgewiesen.",
         "Zwei Auswahlproben bleiben unverified."
       ],
@@ -32593,6 +32676,22 @@
           "sha256": "d78f63fbbd8868686465bf88ebc00e7ef5992cdd14753043a7ef3adb9af30e00",
           "gitBlobSha": "946fedc7a863c8f43b0e78ec561698e626a61814",
           "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R256.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
+          "bytes": 36781,
+          "sha256": "447722f418eb929eacaeacaf12d38c34fd93a979542e15312bbc6b1918f69df6",
+          "gitBlobSha": "954573f1d11ec1a1101b7549e1ab153a0f0c9f3b",
+          "readAt": "2026-11-16T09:50:48Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-LIVE-20261116-R256.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+          "bytes": 4506,
+          "sha256": "6104823911bec5f9c9d105dfe74e29f990c51d5baa5e433b39e834bab82b0707",
+          "gitBlobSha": "cac33ee00603ee5ff1a7b029f948b6cf2f97fc3e",
+          "readAt": "2026-11-16T09:50:48Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -35506,6 +35605,21 @@
               "Historisch offen, heute nicht neu geprüft: R252: WaagenGoogleLandingfehlerundaktuellerkompletterIndex-/Rankingeffektunbekannt;R251GSCdatenheutenichtwiederholt. FrühereR158-/R169-/R170-RestständebeiabhängigenAktionenfrischverifizieren,Historieerhalten."
             ]
           }
+        },
+        {
+          "archivedByRun": "R256",
+          "recordedAt": "2026-11-16T09:50:48Z",
+          "previous": {
+            "state": "R255 öffentliche Produktprüfung bestanden; keine Index- oder Rankingbehauptung",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "R255 nativer Readback, öffentlicher Seitencheck und mobile Ansicht",
+            "lastEvidence": "R255: 24 Seiten und 73 Varianten mit H1, Titel, Meta, Canonical, Body und JSON-LD-Angeboten öffentlich abgeglichen. 48 Viewports bei 360/390 px bestanden. Zwei Pickerproben sind unverified; keine Indexierungs- oder Rankingwirkung belegt.",
+            "nextAllowedStep": "Offene Produktquellen weiter prüfen. GSC nur zur fälligen Tagesmessung oder mit neuem konkretem Gegenprüfgrund verwenden.",
+            "blockers": [
+              "Keine frische Google-Indexierung oder Rankingwirkung nachgewiesen.",
+              "Zwei Auswahlproben bleiben unverified."
+            ]
+          }
         }
       ],
       "visibilitySupplementR49": {
@@ -37314,6 +37428,11 @@
         "evidence": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
         "taskIdsPreserved": 24,
         "publicQaState": "PASS_WITH_LIMITS"
+      },
+      "run256": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
+        "shopifyWrites": 1
       }
     },
     {
@@ -48007,6 +48126,15 @@
         "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
         "dropship/codex-handoff-20261018/KONSOLEN-QUELLEN-20261116-R255.json"
       ]
+    },
+    {
+      "revision": 256,
+      "at": "2026-11-16T09:50:48Z",
+      "summary": "One additional source-bound product body and SEO pair live, public/mobile verified; two console binding probes unresolved;36-page list preserved.",
+      "sources": [
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -49359,7 +49487,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 255,
+    "latestCanonicalRevision": 256,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -50338,6 +50466,11 @@
       "entryPath": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
       "receipt": "unknown",
       "publicQaState": "PASS_WITH_LIMITS"
+    },
+    "run256": {
+      "atUtc": "2026-11-16T09:50:48Z",
+      "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+      "receipt": "unknown"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -76109,5 +76242,14 @@
       "luxe-zusammenarbeit-20261028"
     ],
     "taskCountPreserved": 24
+  },
+  "run256": {
+    "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+    "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
+    "shopifyWrites": 1,
+    "newProductId": "gid://shopify/Product/15491768058241",
+    "consoleWorklistUnchanged": true,
+    "publicQaState": "PASS",
+    "claudeReceipt": "unknown"
   }
 }

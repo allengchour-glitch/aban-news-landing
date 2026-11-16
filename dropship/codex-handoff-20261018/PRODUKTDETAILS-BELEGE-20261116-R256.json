@@ -1,0 +1,797 @@
+{
+  "run": "R256",
+  "atUtc": "2026-11-16T09:50:48Z",
+  "identity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "authorizedScope": "Continuation of owner-authorized detailed product/SEO improvements; exactly one new product copy write and two console source-binding probes.",
+  "shopifyWrites": 1,
+  "productId": "gid://shopify/Product/15491768058241",
+  "variantId": "gid://shopify/ProductVariant/56065972601217",
+  "titleRetained": "Interaktives Katzenspielzeug mit rotierender Scheibe",
+  "nativeBefore": {
+    "id": "gid://shopify/Product/15491768058241",
+    "title": "Interaktives Katzenspielzeug mit rotierender Scheibe",
+    "handle": "interaktives-katzenspielzeug-mit-rotierender-s-627400",
+    "status": "ACTIVE",
+    "updatedAt": "2026-11-02T06:41:08Z",
+    "productType": "Haustierbedarf",
+    "vendor": "LuxeStyle",
+    "tags": [
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "gfeed-anstupsen-260929",
+      "haustier",
+      "hund",
+      "kat-haustier",
+      "kat-katzen",
+      "katze",
+      "kunden-liebling",
+      "neuheit",
+      "pet",
+      "rueckhol-0907",
+      "sort-haustier",
+      "sort-katzen",
+      "sort-tier-katzenspielzeug",
+      "sort-tier-katzenspielzeug-elektrisch",
+      "sort-tier-spielzeug"
+    ],
+    "descriptionHtml": "<p>Dieses multifunktionale elektrische Katzenspielzeug bietet deiner Katze stundenlange Unterhaltung und hilft gleichzeitig, Stress abzubauen. Das intelligente Design mit rotierender Scheibe animiert zum Spielen und Jagen, was den natürlichen Jagdinstinkt deiner Katze fördert und für geistige sowie körperliche Auslastung sorgt. Es ist ein ideales Geschenk für Katzenbesitzer und ihre geliebten Vierbeiner.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Multifunktionales, elektrisches Katzenspielzeug</li>\n<li>Fördert die Selbstunterhaltung und reduziert Stress</li>\n<li>Automatischer Teaser mit rotierender Scheibe</li>\n<li>Hergestellt aus robustem ABS-Kunststoff</li>\n<li>Erhältlich in Weiss + Schwarz, Dunkelblau + Schwarz, Himmelblau + Schwarz</li>\n<li>Perfekt für verschiedene Anlässe wie Weihnachten oder Geburtstage</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 610 g</li>\n<li>\n<strong>Stromversorgung:</strong> Batterie/Akku</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+    "seo": {
+      "title": null,
+      "description": "Interaktives Katzenspielzeug mit rotierender Scheibe bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit…"
+    },
+    "onlineStoreUrl": "https://luxestyle.ch/products/interaktives-katzenspielzeug-mit-rotierender-s-627400",
+    "options": [
+      {
+        "id": "gid://shopify/ProductOption/17935057813889",
+        "name": "Title",
+        "position": 1,
+        "values": [
+          "Default Title"
+        ],
+        "optionValues": [
+          {
+            "id": "gid://shopify/ProductOptionValue/12313663242625",
+            "name": "Default Title"
+          }
+        ]
+      }
+    ],
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/56065972601217",
+          "title": "Default Title",
+          "sku": "CJ-2603190158441627400",
+          "price": "29.90",
+          "compareAtPrice": null,
+          "inventoryQuantity": -1,
+          "inventoryPolicy": "CONTINUE",
+          "availableForSale": true,
+          "selectedOptions": [
+            {
+              "name": "Title",
+              "value": "Default Title"
+            }
+          ],
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55421906485633",
+            "tracked": false,
+            "requiresShipping": true
+          },
+          "media": {
+            "nodes": [],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": null
+            }
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjo1NjA2NTk3MjYwMTIxNywibGFzdF92YWx1ZSI6MX0="
+      }
+    },
+    "media": {
+      "nodes": [
+        {
+          "id": "gid://shopify/MediaImage/70456047698305",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 1 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047698305",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8c3d6420-4bcc-40c5-bfe0-d2a443a12458_trans.jpg?v=1786205321",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 1 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047763841",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 2 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047763841",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30797e30-f3af-47ec-a414-b6278efa1e16_trans.jpg?v=1786205322",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 2 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047796609",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 3 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047796609",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba456f6e-6475-4ce9-bd37-62e397d7640c_trans.jpg?v=1786205323",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 3 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047829377",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 4 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047829377",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7907a53c-54c8-4622-a2f5-37f62758bd34_trans.jpg?v=1786205322",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 4 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047862145",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 5 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047862145",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/afe1fe85-1f96-43d2-b083-235885ee3303_trans.jpg?v=1786205322",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 5 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047894913",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 6 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047894913",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9afab099-870a-4798-a471-facd32517d03_trans.jpg?v=1786205322",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 6 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047927681",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 7 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047927681",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/24755e08-44cf-493c-aa7c-783de157d67a_trans.jpg?v=1786205321",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 7 | LuxeStyle"
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjo3MDQ1NjA0NzkyNzY4MSwibGFzdF92YWx1ZSI6IjcifQ=="
+      }
+    }
+  },
+  "nativeAfter": {
+    "id": "gid://shopify/Product/15491768058241",
+    "title": "Interaktives Katzenspielzeug mit rotierender Scheibe",
+    "handle": "interaktives-katzenspielzeug-mit-rotierender-s-627400",
+    "status": "ACTIVE",
+    "updatedAt": "2026-11-16T09:46:39Z",
+    "productType": "Haustierbedarf",
+    "vendor": "LuxeStyle",
+    "tags": [
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "gfeed-anstupsen-260929",
+      "haustier",
+      "hund",
+      "kat-haustier",
+      "kat-katzen",
+      "katze",
+      "kunden-liebling",
+      "neuheit",
+      "pet",
+      "rueckhol-0907",
+      "sort-haustier",
+      "sort-katzen",
+      "sort-tier-katzenspielzeug",
+      "sort-tier-katzenspielzeug-elektrisch",
+      "sort-tier-spielzeug"
+    ],
+    "descriptionHtml": "<p>Dieses elektrische Katzenspielzeug verbindet eine runde Basis mit mehreren Spielelementen: Kugeln in der seitlichen Laufbahn, ein Feder-Spielteil und einen Schmetterlingsaufsatz am Stab. Die Produktbilder beschreiben eine 360-Grad-Drehbewegung des Aufsatzes. Das Modell wird über USB geladen; die angebotene Ausführung ist Weiss/Schwarz.</p>\n<h2>Bewegung, Licht und Bedienung</h2>\n<p>Die zugehörigen Detailbilder nennen einen Start per Taste, eine dreifarbige LED-Beleuchtung und eine automatische Abschaltung. Ein weiteres Bild beschreibt einen eingebauten Sensor und eine erneute Drehbewegung nach Berührung. Ein genaues Bedienprogramm oder unterschiedliche Geschwindigkeitsstufen werden nicht erläutert.</p>\n<h2>Technische Angaben</h2>\n<p>Die folgenden Werte stammen aus dem Produktdatenblatt und dem zugehörigen technischen Detailbild.</p>\n<table>\n<caption>Akku, Laden und Material</caption>\n<tbody>\n<tr>\n<th scope=\"row\">Akku</th>\n<td>Integrierter Akku; Bildangabe 1200 mAh</td>\n</tr>\n<tr>\n<th scope=\"row\">Laden</th>\n<td>USB; angegebene Ladespannung DC 5 V, Ladestrom 1 A</td>\n</tr>\n<tr>\n<th scope=\"row\">Material</th>\n<td>ABS-Kunststoff laut Produktbeschreibung</td>\n</tr>\n<tr>\n<th scope=\"row\">Gewicht</th>\n<td>Ca. 610 g laut Produktstammdaten</td>\n</tr>\n</tbody>\n</table>\n<p>Ladezeit und Laufzeit sind für die angebotene Ausführung nicht verlässlich bestätigt. Die genaue Gesamthöhe einschliesslich des Schmetterlingsstabs ist nicht eindeutig ausgewiesen.</p>\n<h2>Welche Ausführung bestellst du?</h2>\n<p>Diese Seite bietet eine einzelne Standardausführung in Weiss/Schwarz. Es gibt hier keine zusätzliche Farbauswahl. Auf den allgemeinen Detailbildern sind auch andere Gehäusefarben abgebildet; sie sind in dieser Auswahl nicht als weitere Varianten bestellbar. Das Konfigurationsbild bezeichnet die Farben des Feder-Spielteils und der Kugeln als zufällig. Eine bestimmte Zubehörfarbe wird deshalb nicht versprochen.</p>\n<h2>Lieferumfang</h2>\n<p>Die allgemeine Packliste nennt ein Katzenspielzeug. Das detaillierte Konfigurationsbild führt dazu eine Basis mit Feder-Spielteil, zwei Kugeln, einen Schmetterlingskopf mit Stab, ein USB-Kabel und eine Anleitung auf. Ein Netzadapter ist dort nicht aufgeführt. Auch Sprache der Anleitung und Anschlussform des Ladekabels sind nicht genauer bezeichnet.</p>\n<h2>Häufige Fragen</h2>\n<h3>Welche Stromversorgung braucht das Spielzeug?</h3>\n<p>Es wird per USB geladen. Das technische Bild nennt 5 V und 1 A sowie einen integrierten Akku mit 1200 mAh. Ein passender Netzadapter ist nicht als Lieferumfang bestätigt.</p>\n<h3>Kann ich Blau oder eine bestimmte Zubehörfarbe wählen?</h3>\n<p>Die aktuell angebotene Ausführung ist Weiss/Schwarz. Weitere Gehäusefarben sind hier nicht auswählbar; Zubehörfarben werden im Konfigurationsbild als zufällig angegeben.</p>\n<h3>Welche Teile bewegen sich?</h3>\n<p>Die Produktbilder beschreiben den drehenden Schmetterlingsaufsatz und ein einziehbares Feder-Spielteil. Die Kugeln liegen in einer umlaufenden Bahn. Genaue Zeitprogramme und Geschwindigkeiten sind nicht dokumentiert.</p>\n<p>Weitere Modelle findest du in der <a href=\"/collections/tier-katzenspielzeug\">Kategorie Katzenspielzeug</a>.</p>",
+    "seo": {
+      "title": "Elektrisches Katzenspielzeug mit Akku und USB | LuxeStyle",
+      "description": "Katzenspielzeug in Weiss/Schwarz mit Schmetterlingsaufsatz, Kugeln und USB-Ladung. Akku, Bedienung, Lieferumfang und die aktuelle Ausführung erklärt."
+    },
+    "onlineStoreUrl": "https://luxestyle.ch/products/interaktives-katzenspielzeug-mit-rotierender-s-627400",
+    "options": [
+      {
+        "id": "gid://shopify/ProductOption/17935057813889",
+        "name": "Title",
+        "position": 1,
+        "values": [
+          "Default Title"
+        ],
+        "optionValues": [
+          {
+            "id": "gid://shopify/ProductOptionValue/12313663242625",
+            "name": "Default Title"
+          }
+        ]
+      }
+    ],
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/56065972601217",
+          "title": "Default Title",
+          "sku": "CJ-2603190158441627400",
+          "price": "29.90",
+          "compareAtPrice": null,
+          "inventoryQuantity": -1,
+          "inventoryPolicy": "CONTINUE",
+          "availableForSale": true,
+          "selectedOptions": [
+            {
+              "name": "Title",
+              "value": "Default Title"
+            }
+          ],
+          "inventoryItem": {
+            "id": "gid://shopify/InventoryItem/55421906485633",
+            "tracked": false,
+            "requiresShipping": true
+          },
+          "media": {
+            "nodes": [],
+            "pageInfo": {
+              "hasNextPage": false,
+              "endCursor": null
+            }
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjo1NjA2NTk3MjYwMTIxNywibGFzdF92YWx1ZSI6MX0="
+      }
+    },
+    "media": {
+      "nodes": [
+        {
+          "id": "gid://shopify/MediaImage/70456047698305",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 1 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047698305",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8c3d6420-4bcc-40c5-bfe0-d2a443a12458_trans.jpg?v=1786205321",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 1 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047763841",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 2 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047763841",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/30797e30-f3af-47ec-a414-b6278efa1e16_trans.jpg?v=1786205322",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 2 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047796609",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 3 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047796609",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba456f6e-6475-4ce9-bd37-62e397d7640c_trans.jpg?v=1786205323",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 3 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047829377",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 4 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047829377",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7907a53c-54c8-4622-a2f5-37f62758bd34_trans.jpg?v=1786205322",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 4 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047862145",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 5 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047862145",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/afe1fe85-1f96-43d2-b083-235885ee3303_trans.jpg?v=1786205322",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 5 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047894913",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 6 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047894913",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9afab099-870a-4798-a471-facd32517d03_trans.jpg?v=1786205322",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 6 | LuxeStyle"
+          }
+        },
+        {
+          "id": "gid://shopify/MediaImage/70456047927681",
+          "mediaContentType": "IMAGE",
+          "alt": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 7 | LuxeStyle",
+          "image": {
+            "id": "gid://shopify/ImageSource/70456047927681",
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/24755e08-44cf-493c-aa7c-783de157d67a_trans.jpg?v=1786205321",
+            "width": 800,
+            "height": 800,
+            "altText": "Interaktives Katzenspielzeug mit rotierender Scheibe – Bild 7 | LuxeStyle"
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "eyJsYXN0X2lkIjo3MDQ1NjA0NzkyNzY4MSwibGFzdF92YWx1ZSI6IjcifQ=="
+      }
+    }
+  },
+  "finalCopyPlan": {
+    "run": "R256",
+    "productId": "gid://shopify/Product/15491768058241",
+    "input": {
+      "id": "gid://shopify/Product/15491768058241",
+      "descriptionHtml": "<p>Dieses elektrische Katzenspielzeug verbindet eine runde Basis mit mehreren Spielelementen: Kugeln in der seitlichen Laufbahn, ein Feder-Spielteil und einen Schmetterlingsaufsatz am Stab. Die Produktbilder beschreiben eine 360-Grad-Drehbewegung des Aufsatzes. Das Modell wird über USB geladen; die angebotene Ausführung ist Weiss/Schwarz.</p>\n<h2>Bewegung, Licht und Bedienung</h2>\n<p>Die zugehörigen Detailbilder nennen einen Start per Taste, eine dreifarbige LED-Beleuchtung und eine automatische Abschaltung. Ein weiteres Bild beschreibt einen eingebauten Sensor und eine erneute Drehbewegung nach Berührung. Ein genaues Bedienprogramm oder unterschiedliche Geschwindigkeitsstufen werden nicht erläutert.</p>\n<h2>Technische Angaben</h2>\n<p>Die folgenden Werte stammen aus dem Produktdatenblatt und dem zugehörigen technischen Detailbild.</p>\n<table><caption>Akku, Laden und Material</caption><tbody>\n<tr><th scope=\"row\">Akku</th><td>Integrierter Akku; Bildangabe 1200 mAh</td></tr>\n<tr><th scope=\"row\">Laden</th><td>USB; angegebene Ladespannung DC 5 V, Ladestrom 1 A</td></tr>\n<tr><th scope=\"row\">Material</th><td>ABS-Kunststoff laut Produktbeschreibung</td></tr>\n<tr><th scope=\"row\">Gewicht</th><td>Ca. 610 g laut Produktstammdaten</td></tr>\n</tbody></table>\n<p>Ladezeit und Laufzeit sind für die angebotene Ausführung nicht verlässlich bestätigt. Die genaue Gesamthöhe einschliesslich des Schmetterlingsstabs ist nicht eindeutig ausgewiesen.</p>\n<h2>Welche Ausführung bestellst du?</h2>\n<p>Diese Seite bietet eine einzelne Standardausführung in Weiss/Schwarz. Es gibt hier keine zusätzliche Farbauswahl. Auf den allgemeinen Detailbildern sind auch andere Gehäusefarben abgebildet; sie sind in dieser Auswahl nicht als weitere Varianten bestellbar. Das Konfigurationsbild bezeichnet die Farben des Feder-Spielteils und der Kugeln als zufällig. Eine bestimmte Zubehörfarbe wird deshalb nicht versprochen.</p>\n<h2>Lieferumfang</h2>\n<p>Die allgemeine Packliste nennt ein Katzenspielzeug. Das detaillierte Konfigurationsbild führt dazu eine Basis mit Feder-Spielteil, zwei Kugeln, einen Schmetterlingskopf mit Stab, ein USB-Kabel und eine Anleitung auf. Ein Netzadapter ist dort nicht aufgeführt. Auch Sprache der Anleitung und Anschlussform des Ladekabels sind nicht genauer bezeichnet.</p>\n<h2>Häufige Fragen</h2>\n<h3>Welche Stromversorgung braucht das Spielzeug?</h3>\n<p>Es wird per USB geladen. Das technische Bild nennt 5 V und 1 A sowie einen integrierten Akku mit 1200 mAh. Ein passender Netzadapter ist nicht als Lieferumfang bestätigt.</p>\n<h3>Kann ich Blau oder eine bestimmte Zubehörfarbe wählen?</h3>\n<p>Die aktuell angebotene Ausführung ist Weiss/Schwarz. Weitere Gehäusefarben sind hier nicht auswählbar; Zubehörfarben werden im Konfigurationsbild als zufällig angegeben.</p>\n<h3>Welche Teile bewegen sich?</h3>\n<p>Die Produktbilder beschreiben den drehenden Schmetterlingsaufsatz und ein einziehbares Feder-Spielteil. Die Kugeln liegen in einer umlaufenden Bahn. Genaue Zeitprogramme und Geschwindigkeiten sind nicht dokumentiert.</p>\n<p>Weitere Modelle findest du in der <a href=\"/collections/tier-katzenspielzeug\">Kategorie Katzenspielzeug</a>.</p>",
+      "seo": {
+        "title": "Elektrisches Katzenspielzeug mit Akku und USB | LuxeStyle",
+        "description": "Katzenspielzeug in Weiss/Schwarz mit Schmetterlingsaufsatz, Kugeln und USB-Ladung. Akku, Bedienung, Lieferumfang und die aktuelle Ausführung erklärt."
+      }
+    },
+    "titleRetained": "Interaktives Katzenspielzeug mit rotierender Scheibe",
+    "wordsApprox": 348,
+    "seoLengths": {
+      "title": 57,
+      "description": 149
+    },
+    "explicitScope": "Only descriptionHtml and both seo fields; preserve title, prices, selection, stock, media, tags, policies, URL and all other fields.",
+    "sourceFacts": {
+      "binding": "Current CJ connection positive-control record binds Shopify variant56065972601217 to CJ child SKU CJYD279383701AZ, White And Black; current native parent SKU/PID matches.",
+      "specImage": "images/detail-5.jpg: 1200mAh, DC5V,1A, standard configuration and random accessory colours.",
+      "functionImages": [
+        "images/detail-1.jpg:360degree rotation",
+        "images/detail-4.jpg:built-in sensor and touch reactivation",
+        "images/detail-7.jpg:USB charging,LED,button start,automatic shutdown,retractable feather"
+      ],
+      "textSource": "cat-source.json: ABS material, packlist cattoy1pc, productWeight610; one WhiteAndBlack child."
+    },
+    "withheld": [
+      "Image claims over40hours runtime: no independent confirmation, not promised.",
+      "Image19.9x9.9Hcm versus variant251x251x154mm not conclusively reconciled; no exact overall dimensions stated.",
+      "No health/stress benefit or guaranteed cat reaction.",
+      "No additional three-colour shop selection; no new variants.",
+      "No confirmed adapter, connector form, instruction language or delivery time.",
+      "No media-rights clearance or new media publication."
+    ]
+  },
+  "checkpoint": {
+    "run": "R256",
+    "phase": "CONFIRMED",
+    "productId": "gid://shopify/Product/15491768058241",
+    "expectedWriteCalls": 1,
+    "inflight": false,
+    "unknown": [],
+    "allowedFields": [
+      "descriptionHtml",
+      "seo.title",
+      "seo.description"
+    ],
+    "independentSourceCheck": "PASS",
+    "planWords": 348,
+    "successfulWrites": 1,
+    "userErrors": [],
+    "checks": {
+      "description": true,
+      "seo": true,
+      "protectedFields": true
+    },
+    "updatedAt": "2026-11-16T09:46:39Z",
+    "actualChangedFields": [
+      "updatedAt",
+      "descriptionHtml",
+      "seo"
+    ]
+  },
+  "guardCounterexample": {
+    "copyOnlyPass": true,
+    "syntheticPriceChangeRejected": true,
+    "syntheticChangeWasNeverSent": true
+  },
+  "currentSourceBinding": {
+    "shopName": "au3j0y-hq / LuxeStyle CH",
+    "cjShopId": "2605251603003533600",
+    "shopifyProductId": "gid://shopify/Product/15491768058241",
+    "shopifyVariantId": "gid://shopify/ProductVariant/56065972601217",
+    "cjProductId": "2603190158441627400",
+    "cjChildSku": "CJYD279383701AZ",
+    "sourceVariantKey": "White And Black",
+    "connectionPriceNotUsed": true
+  },
+  "sourceImageChecks": [
+    {
+      "file": "detail-1.jpg",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/03/19/01/514354f5-1a0f-4092-b71f-f6822069adf0_trans.jpeg",
+      "httpStatus": 200,
+      "size": [
+        750,
+        947
+      ],
+      "sha256": "881c5a90b1ef664131a423ca06e5097e018dbc888d9859e57fff33522866130c"
+    },
+    {
+      "file": "detail-2.jpg",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/03/19/01/a6a5e42f-c1a5-4687-81a6-c88e3d99b773_trans.jpeg",
+      "httpStatus": 200,
+      "size": [
+        750,
+        1208
+      ],
+      "sha256": "bf4eb7a811ef4efbc81662b90e847c35843a028d0ee4466908c2a6bae2c23d4a"
+    },
+    {
+      "file": "detail-3.jpg",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/03/19/01/229fcfa2-39da-4fb9-86cc-f96e2ba24a70_trans.jpeg",
+      "httpStatus": 200,
+      "size": [
+        750,
+        1193
+      ],
+      "sha256": "337170639e121a23af759b7bb85dc2f2cd60bd353b43f0e1a74e53d864e08846"
+    },
+    {
+      "file": "detail-4.jpg",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/03/19/01/fae36a32-ab53-428d-867d-35d8fb3a1eeb_trans.jpeg",
+      "httpStatus": 200,
+      "size": [
+        750,
+        957
+      ],
+      "sha256": "f0215128292f3777de6b324c9619824db2da03378641136c6a9670bbf6204ee7"
+    },
+    {
+      "file": "detail-5.jpg",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/03/19/01/22bbbb2d-e470-4d7e-8912-b9a27fcd79fb_trans.jpeg",
+      "httpStatus": 200,
+      "size": [
+        750,
+        791
+      ],
+      "sha256": "56a8406f4780757fd2ef956c46ce831c0724d66aa22d1405835defbac8070e1d"
+    },
+    {
+      "file": "detail-6.jpg",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/03/19/01/6e2bbf7a-aaf7-4833-9d94-df0bb148cc3d_trans.jpeg",
+      "httpStatus": 200,
+      "size": [
+        750,
+        1110
+      ],
+      "sha256": "94c26ffd1583eff1975832e0c2ed34c42bee0bc09597f9dce79f80ceef423043"
+    },
+    {
+      "file": "detail-7.jpg",
+      "url": "https://oss-cf.cjdropshipping.com/product/2026/03/19/01/fbbc4cdf-6f3d-4a4f-91b5-713e37138195_trans.jpeg",
+      "httpStatus": 200,
+      "size": [
+        750,
+        1250
+      ],
+      "sha256": "f1e2c128e47d23cd174c18ac4ebdfdf7f98e5c8d5b01eb68e3a9eb5f538b4c58"
+    },
+    {
+      "file": "shop-hero.jpg",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8c3d6420-4bcc-40c5-bfe0-d2a443a12458_trans.jpg?v=1786205321",
+      "httpStatus": 200,
+      "size": [
+        800,
+        800
+      ],
+      "sha256": "6cbf5715817c4466bc64e5f14bc646373d2f0d63edba0022ba40ec5a7e988497"
+    }
+  ],
+  "commercialMediaRights": "Unknown; no image altered, uploaded or newly published.",
+  "connectionProbes": [
+    {
+      "queryKey": "connections:15448851743105",
+      "isError": false,
+      "returnedRows": 0,
+      "reportedTotal": 0,
+      "rows": []
+    },
+    {
+      "queryKey": "connections:15495146635649",
+      "isError": false,
+      "returnedRows": 0,
+      "reportedTotal": 0,
+      "rows": []
+    },
+    {
+      "queryKey": "connectionsNoShop:15448851743105",
+      "isError": false,
+      "returnedRows": 0,
+      "reportedTotal": 0,
+      "rows": []
+    },
+    {
+      "queryKey": "connectionsNoShop:15495146635649",
+      "isError": false,
+      "returnedRows": 0,
+      "reportedTotal": 0,
+      "rows": []
+    },
+    {
+      "queryKey": "connectionsShopControl",
+      "isError": false,
+      "returnedRows": 1,
+      "reportedTotal": 27,
+      "rows": [
+        {
+          "shopId": "2605251603003533600",
+          "platformProductId": "15491768058241",
+          "platformVariantId": "56065972601217",
+          "platformSku": "CJ-2603190158441627400",
+          "cjSku": "CJYD279383701AZ",
+          "cjVariantId": "2603190158441627800",
+          "cjProductId": "2603190158441627400"
+        }
+      ]
+    }
+  ],
+  "consoleInterpretation": "Two exact console filters returned no connection rows, both with and without shop filter. A one-row positive control in the confirmed store returned a matching child connection (reported store total27). This proves scoped API results, not missing fulfilment or all integrations. Console contents and all SKUs/connections were left unchanged.",
+  "consoleNativeComparison": {
+    "gid://shopify/Product/15448851743105": {
+      "title": "Arcade Xgame Joystick-Konsole für TV-Spielrunden",
+      "updatedAt": "2026-11-16T08:37:50Z",
+      "changedSinceR255": [],
+      "noBusinessChange": true
+    },
+    "gid://shopify/Product/15495146635649": {
+      "title": "Mini-TV-Konsole SUPER 21 mit HDMI und zwei Controllern",
+      "updatedAt": "2026-11-16T08:38:51Z",
+      "changedSinceR255": [
+        "updatedAt"
+      ],
+      "noBusinessChange": true
+    }
+  },
+  "publicQa": {
+    "run": "R256",
+    "passed": true,
+    "checks": {
+      "agentChecksAllTrue": true,
+      "nativePublicBody": true,
+      "exactVariantId": true,
+      "sku": true,
+      "priceCHF": true,
+      "mediaCount": true,
+      "tableFitsBoth": true
+    },
+    "mobileWidths": [
+      360,
+      390
+    ],
+    "rootSawScreenshot": true,
+    "rootScreenshot": "public-after/390-full.png",
+    "publicEvidence": {
+      "productUrl": "https://luxestyle.ch/products/interaktives-katzenspielzeug-mit-rotierender-s-627400",
+      "fetchedAtUTC": "2026-11-16T09:47Z",
+      "checks": {
+        "html_http_200": true,
+        "js_http_200": true,
+        "canonical_matches": true,
+        "h1_matches": true,
+        "seo_title_matches_plan": true,
+        "meta_description_matches_plan": true,
+        "body_matches_native_after_exact_readback": true,
+        "copy_plan_content_equivalent_to_public": true,
+        "default_variant_matches": true,
+        "seven_media_images": true,
+        "jsonld_offer_matches_default": true,
+        "mobile_360_no_doc_or_table_overflow": true,
+        "mobile_390_no_doc_or_table_overflow": true
+      },
+      "public": {
+        "htmlStatus": 200,
+        "jsStatus": 200,
+        "title": "Elektrisches Katzenspielzeug mit Akku und USB | LuxeStyle",
+        "h1": [
+          "Interaktives Katzenspielzeug mit rotierender Scheibe"
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/interaktives-katzenspielzeug-mit-rotierender-s-627400"
+        ],
+        "metaDescription": [
+          "Katzenspielzeug in Weiss/Schwarz mit Schmetterlingsaufsatz, Kugeln und USB-Ladung. Akku, Bedienung, Lieferumfang und die aktuelle Ausführung erklärt."
+        ],
+        "noindex": false,
+        "variant": {
+          "id": 56065972601217,
+          "sku": "CJ-2603190158441627400",
+          "priceCHF": 29.9,
+          "available": true,
+          "options": [
+            "Default Title"
+          ]
+        },
+        "mediaImages": 7,
+        "jsonldOffer": {
+          "@id": "/products/interaktives-katzenspielzeug-mit-rotierender-s-627400?variant=56065972601217#offer",
+          "@type": "Offer",
+          "availability": "http://schema.org/InStock",
+          "price": "29.90",
+          "priceCurrency": "CHF",
+          "url": "https://luxestyle.ch/products/interaktives-katzenspielzeug-mit-rotierender-s-627400?variant=56065972601217"
+        }
+      },
+      "mobile": [
+        {
+          "viewportWidth": 360,
+          "docWidth": 360,
+          "bodyWidth": 360,
+          "overflow": false,
+          "description": {
+            "left": 16,
+            "right": 344,
+            "width": 328,
+            "top": 1912.359375,
+            "bottom": 4386.15625,
+            "height": 2473.796875
+          },
+          "tables": [
+            {
+              "rect": {
+                "left": 16,
+                "right": 344,
+                "width": 328,
+                "top": 2556.171875,
+                "bottom": 2873.578125,
+                "height": 317.40625
+              },
+              "scrollWidth": 328,
+              "clientWidth": 328
+            },
+            {
+              "rect": {
+                "left": 16,
+                "right": 344,
+                "width": 328,
+                "top": 4456.625,
+                "bottom": 4604.9375,
+                "height": 148.3125
+              },
+              "scrollWidth": 328,
+              "clientWidth": 328
+            }
+          ],
+          "h1": "Interaktives Katzenspielzeug mit rotierender Scheibe"
+        },
+        {
+          "viewportWidth": 390,
+          "docWidth": 390,
+          "bodyWidth": 390,
+          "overflow": false,
+          "description": {
+            "left": 16,
+            "right": 374,
+            "width": 358,
+            "top": -41.53125,
+            "bottom": 2297.921875,
+            "height": 2339.453125
+          },
+          "tables": [
+            {
+              "rect": {
+                "left": 16,
+                "right": 374,
+                "width": 358,
+                "top": 579.890625,
+                "bottom": 852.515625,
+                "height": 272.625
+              },
+              "scrollWidth": 358,
+              "clientWidth": 358
+            },
+            {
+              "rect": {
+                "left": 16,
+                "right": 374,
+                "width": 358,
+                "top": 2368.390625,
+                "bottom": 2516.703125,
+                "height": 148.3125
+              },
+              "scrollWidth": 358,
+              "clientWidth": 358
+            }
+          ],
+          "h1": "Interaktives Katzenspielzeug mit rotierender Scheibe"
+        }
+      ],
+      "screenshots": [
+        "360-description-viewport.png",
+        "360-full.png",
+        "390-description-viewport.png",
+        "390-full.png"
+      ],
+      "picker": "Single Default Title variant only. No variant selection picker is claimed.",
+      "boundaries": [
+        "GET-only browser requests; non-GET requests were aborted.",
+        "No cart, checkout, Shop Pay, consent, or signup interaction."
+      ]
+    },
+    "categoryBeforeEvidence": "public-before/evidence.json",
+    "sourceRightsUnchangedUnknown": true,
+    "indexOrSalesImpactProven": false
+  },
+  "supplierQuestionsOpen": [
+    "Image claims over40hours runtime: no independent confirmation, not promised.",
+    "Image19.9x9.9Hcm versus variant251x251x154mm not conclusively reconciled; no exact overall dimensions stated.",
+    "No health/stress benefit or guaranteed cat reaction.",
+    "No additional three-colour shop selection; no new variants.",
+    "No confirmed adapter, connector form, instruction language or delivery time.",
+    "No media-rights clearance or new media publication."
+  ],
+  "consoleWorklistPreserved": {
+    "rows": 36,
+    "editoriallyWorked": 36,
+    "rowsWithOpenStatus": 32,
+    "newConsoleCopyWrites": 0
+  },
+  "notPerformed": [
+    "No Metricool/merchant/theme/flow/DNS/price/inventory/budget/discount/settings writes.",
+    "No orders or ended purchase-watch queries.",
+    "No repeated GSC/social-metrics/Klaviyo/broad-sales report.",
+    "No customer/supplier messages, paid render, workflow dispatch, installation or new automation."
+  ],
+  "claudeReceipt": "unknown"
+}
