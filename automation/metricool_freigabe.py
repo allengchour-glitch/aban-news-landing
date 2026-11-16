@@ -141,7 +141,27 @@ def token_trifft(t, zt):
     return len(t) >= 6 and any((t in w or w in t) for w in zt if len(w) >= 6)
 
 
+LINK_RE = re.compile(r'luxestyle\.ch/(?:[a-z]{2}/)?products/([a-z0-9][a-z0-9-]*)', re.I)
+
+
+def verlinkte_handles(text):
+    """Produkt-Handles aus Links auf luxestyle.ch/products/<handle> (Reihenfolge wie im Text, ohne Doppel)."""
+    out = []
+    for h in LINK_RE.findall(text or ''):
+        h = h.lower()
+        if h not in out:
+            out.append(h)
+    return out
+
+
 def finde_produkte(text, produkte):
+    # Ein Link auf die Produktseite sagt eindeutig, welches Produkt beworben wird. Wortvergleiche
+    # erkannten sonst Nachbarn mit ähnlichen Wörtern mit (Wasserwellen-Leuchte -> auch Wasser-Speaker
+    # und LED-Rose, Lauf 16.11.). Ohne Produktlink gilt der Wortvergleich wie bisher.
+    links = verlinkte_handles(text)
+    if links:
+        nach_handle = {p['handle'].lower(): p for p in produkte}
+        return [nach_handle[h] for h in links if h in nach_handle]
     zt = set(norm(text).split())
     treffer = []
     for p in produkte:
@@ -164,6 +184,9 @@ def pruefe_produkte(text, produkte):
     """Tore 4 und 5. Gibt (Probleme, erkannte Produkte) zurück."""
     treffer = finde_produkte(text, produkte)
     if not treffer:
+        links = verlinkte_handles(text)
+        if links:
+            return [f"verlinktes Produkt nicht in der Wegweiser-Sammlung: {', '.join(links)}"], []
         return ['Produkt nicht erkannt (oder nicht in der Wegweiser-Sammlung)'], []
     probleme = []
     for p in treffer:

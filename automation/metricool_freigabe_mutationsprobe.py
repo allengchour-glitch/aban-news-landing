@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
-"""Mutationsprobe für metricool_freigabe.py: ändert den Code absichtlich an 54 Stellen und prüft, dass der Test jedes Mal rot wird.
-Aufruf: python3 automation/metricool_freigabe_mutationsprobe.py   (Ausgabe: «Mutanten: 54 | erkannt: 54 | überlebt/nicht anwendbar: 0»)"""
+"""Mutationsprobe für metricool_freigabe.py: ändert den Code absichtlich an 62 Stellen und prüft, dass der Test jedes Mal rot wird.
+Aufruf: python3 automation/metricool_freigabe_mutationsprobe.py   (Ausgabe: «Mutanten: 62 | erkannt: 62 | überlebt/nicht anwendbar: 0»)"""
 import os, shutil, subprocess, sys, tempfile
 SRC = os.path.dirname(os.path.abspath(__file__))
 W = tempfile.mkdtemp(prefix='mfmut-')
 M = [
+ ("    if links:\n        nach_handle", "    if False:\n        nach_handle"),
+ ("products/([a-z0-9][a-z0-9-]*)', re.I)", "products/([a-z0-9][a-z0-9-]*)')"),
+ ("luxestyle\\.ch/(?:[a-z]{2}/)?products", "luxestyle\\.ch/products"),
+ ("luxestyle\\.ch/(?:[a-z]{2}/)?products", "[a-z.]+/(?:[a-z]{2}/)?products"),
+ ("        h = h.lower()\n", "        pass\n"),
+ ("        if h not in out:\n", "        if True:\n"),
+ ("        return [nach_handle[h] for h in links if h in nach_handle]", "        return [p for p in produkte if p['handle'].lower() in links]"),
+ ("        if links:\n            return [f\"verlinktes", "        if False:\n            return [f\"verlinktes"),
  ("MIN_ABSTAND_H = 3", "MIN_ABSTAND_H = 2"),
  ("MIN_VORLAUF_H = 2", "MIN_VORLAUF_H = 0"),
  ("GENERISCH = {7.0, 14.9, 45.0, 50.0}", "GENERISCH = {7.0, 14.9, 45.0}"),
