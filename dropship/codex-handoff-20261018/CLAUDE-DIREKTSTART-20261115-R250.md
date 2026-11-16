@@ -1,3 +1,13 @@
+# R261 – Produktdetails, Auswahlbilder und SEO live – 16.11.2026
+
+Sechs Unteragenten parallel eingesetzt (100 angefragt, Kapazität Root + sechs). Drei weitere Produktseiten haben belegte ausführliche Texte/SEO: Keramikreibe, neutrales Schneidebrett und Keramik-Teeservice. Sechs vorhandene Variantenbilder zugeordnet, acht Alttexte neutralisiert, mobile Teetabelle korrigiert; 14 Varianten/28 Medien erhalten. Acht bestätigte Shopify-Mutationen insgesamt. Eine Collection-Meta-Beschreibung ist live; der versehentlich gelöschte SEO-Titel wurde exakt wiederhergestellt und öffentlich bestätigt. Künftig verschachtelte SEO-Felder immer vollständig aus frischem Read senden. [Bericht](PRODUKTDETAILS-SEO-MERCHANT-20261116-R261.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R261.json).
+
+Stil 3, Brettmaterial und Tassenmotiv bleiben offen. Merchant-Einzelfall Waage bleibt DISAPPROVED; exakte URL HTTP 200, separate OG-Preisabweichung 101.90/127.90 CHF belegt, Ursache des Googlefehlers nicht bewiesen. Auswahl-Label Farbe/Grösse beim R260-Set weiter offen; aktuelle MAIN-ID 213991391623 geprüft, kein Theme-Write. [Gegenproben](OFFENE-GEGENPROBEN-20261116-R261.md). [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R261.csv): 50 alte Zeilen exakt erhalten, 3 Live + 1 blockiert ergänzt = 54 Identitäten, keine Gesamtquote.
+
+Keine Metricool-/Merchant-/Theme-Writes, keine wiederholten Tagesreports/Bestellwatch und keine neue Automation. R259-Tonentscheidung ungeklärt, Claude-Empfang unbekannt. Alle 24 Aufgaben und Historie erhalten. Memory am Schluss verlinken.
+
+---
+
 # R260 – Drei Produktseiten mit mehr Details live – 16.11.2026
 
 Küchenset, Becherhalter und Schreibtisch-Organizer haben neue Titel, ausführliche Produktangaben, reale Auswahlhilfe und individuelle SEO-Texte. Fünf bestätigte Mutationen an drei Produkten, danach native und öffentliche/mobile Gegenprüfung. Beim Küchenset sind eine leere Zwischenüberschrift entfernt und «Grösse» nativ zu «Farbe» präzisiert; das sichtbare HTML-Label steht noch auf «Grösse» und bleibt offen. Preise, SKUs, Varianten-/Options-/Werte-IDs, Werte, Bilder, Status, Tags, Inventar und URLs erhalten. [Bericht](PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R260.json).

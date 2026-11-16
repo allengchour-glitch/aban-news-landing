@@ -3136,3 +3136,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R260.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv).
 
 [LUXESTYLE_R260_20261116]
+
+
+### R261 – Sechs parallele Prüfspuren, Produktdetails und Gegenproben
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Team | Core5/Revision 260 und Tagesstand gelesen, Shopify/Metricool-Identitäten geprüft; sechs Unteragenten parallel eingesetzt. | 100 angefragt, maximal sechs Unteragenten plus Root möglich; Unteragenten ohne Plattform-Writes. |
+| Produktdetails / Auswahl | Drei Produkt-Titel/Body/SEO aktualisiert, sechs vorhandene Reibenbilder zugeordnet, acht Brett-Alttexte neutralisiert, Teetabelle responsiv korrigiert. | Acht Shopify-Mutationen einschliesslich zwei Collection-Writes; alle nativ bestätigt. 14 Varianten, vier Optionen/13 Werte und 28 Medien erhalten. Stil 3 / Brettmaterial weiter offen. |
+| Öffentlich / mobil | Drei Seiten und reale Auswahl geprüft, Teetabelle bei 360/390 px nachgebessert; Lazyload-Bild gezielt nachgescrollt. | Tabelle ohne Überlauf, richtiges Stil-6-Bild geladen, acht Alttexte öffentlich bestätigt; kein Checkout. |
+| Collection-SEO | Meta-Beschreibung Trends & Gadgets aktualisiert; vom ersten nested Write gelöschten SEO-Titel erkannt und exakt wiederhergestellt. | Vollständige native/öffentliche Endprüfung bestanden. Künftig frisch gelesenen Titel und Beschreibung zusammen senden. |
+| Merchant / Picker | Einen Waagenfall und aktuellen Farbe-/Grösse-Kontext gezielt gegengeprüft. | Merchant weiterhin DISAPPROVED; URL HTTP 200, OG-Preisabweichung separat offen. Aktuelle MAIN-ID 213991391623 geprüft; Labelursache unbekannt. Keine Merchant-/Theme-Writes. |
+| Quellen / Fortsetzung | Vier konkrete CJ-Detailquellen geprüft und Arbeitsliste ergänzt. | 54 Identitäten: erste 50 Zeilen erhalten + drei live + ein Motivblocker; keine Gesamtfehlerquote. Keine neuen Tagesreports, Kaufwatch, Social-Writes oder Automationen. |
+
+[Bericht](PRODUKTDETAILS-SEO-MERCHANT-20261116-R261.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R261.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R261.csv) · [Gegenproben](OFFENE-GEGENPROBEN-20261116-R261.md).
+
+[LUXESTYLE_R261_20261116]

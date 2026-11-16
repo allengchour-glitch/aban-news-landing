@@ -1,0 +1,3863 @@
+{
+  "run": "R261",
+  "atUtc": "2026-11-16T16:36:22Z",
+  "identity": {
+    "atUtc": "2026-11-16 15:47:08 UTC",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "brand": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    }
+  },
+  "requestedAgents": 100,
+  "actualSubagents": 6,
+  "concurrencySlotsIncludingRoot": 7,
+  "remoteSubagentWrites": 0,
+  "shopifyMutationCalls": 8,
+  "mutationBreakdown": {
+    "initialProductCopyUpdates": 3,
+    "variantMediaAssociationBatch": 1,
+    "collectionSeoInitial": 1,
+    "collectionSeoCorrective": 1,
+    "teaResponsiveBodyAmendment": 1,
+    "boardAltTextBatch": 1
+  },
+  "confirmedProducts": 3,
+  "reviewedFinalInputs": [
+    {
+      "productId": "gid://shopify/Product/15413085733249",
+      "input": {
+        "id": "gid://shopify/Product/15413085733249",
+        "title": "Keramikreibe für Ingwer und Knoblauch mit Reibeschale",
+        "descriptionHtml": "<h2>Ingwer und Knoblauch frisch raffeln</h2>\n<p>Mit dieser runden Reibeschale bereitest du kleine Mengen Ingwer oder Knoblauch direkt von Hand zu. Die strukturierte Fläche in der Mitte reibt das Lebensmittel beim Darüberführen; der Rand hält das Ergebnis in der Schale zusammen. Das eignet sich, wenn du eine kleine Portion für eine Sauce, Marinade oder ein Gericht vorbereitest und dafür kein elektrisches Gerät verwenden möchtest.</p>\n<p>Die Lieferantenbeschreibung nennt ausserdem Fruchtpüree als mögliche Verwendung. Das Produkt wird manuell bedient. Die sichtbare Reibefläche ist von einem dekorativen Rand umgeben. Je nach gewählter Variante unterscheidet sich das Dekor; die Auswahl im Shop erfolgt über die Stilnummern 1 bis 7. Prüfe vor dem Hinzufügen zum Warenkorb, ob die gewählte Stilnummer deinem bevorzugten Motiv entspricht. </p>\n<h3>Produktdetails</h3>\n<ul><li>Runde Reibeschale mit strukturierter Reibefläche</li><li>Für Ingwer und Knoblauch; laut Lieferantenbeschreibung auch für Fruchtpüree</li><li>Durchmesser laut Lieferant: ca. 11,7 cm laut Lieferantenbeschreibung</li><li>Manuelle Anwendung</li><li>Sieben Dekorvarianten, Auswahl Stil 1–7</li></ul>\n<p>Reibe das Lebensmittel mit leichtem Druck über die Mitte und entnimm die gewünschte Menge anschliessend aus der Schale. Für genaue Reinigungshinweise liegen in den geprüften Produktangaben keine verlässlichen Informationen vor; prüfe vor der ersten Nutzung vorhandene Pflegehinweise. Eine separate Zusatzschale oder ein weiteres Zubehörteil ist in der Lieferanten-Packliste nicht ausgewiesen.</p>\n<h3>Stilnummern und Dekore</h3><p>Die Stilnummer bezeichnet das Dekor der einen Reibeschale. Die folgende Zuordnung stammt aus den passenden Lieferantenbildern. Bei Stil 3 ist das einzelne Shopbild noch offen; verlasse dich dort vorerst nicht auf ein automatisch angezeigtes Galeriebild.</p><table><thead><tr><th>Auswahl</th><th>Dekor laut Produktbild</th></tr></thead><tbody><tr><td>Stil 1</td><td>Mehrfarbiger Ornamentrand mit türkisfarbenem Reibefeld</td></tr><tr><td>Stil 2</td><td>Blaues Blütendekor mit hellem Reibefeld</td></tr><tr><td>Stil 3</td><td>Bunter Rand mit blauem Reibefeld; einzelnes Shopbild noch offen</td></tr><tr><td>Stil 4</td><td>Olivenmotiv mit gelbem Reibefeld</td></tr><tr><td>Stil 5</td><td>Grüne Blätter mit hellblauem Reibefeld</td></tr><tr><td>Stil 6</td><td>Roter Rand mit gelbem Reibefeld</td></tr><tr><td>Stil 7</td><td>Blaues Ornament mit blauem Reibefeld</td></tr></tbody></table>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li><strong>Material:</strong> Keramik laut Lieferantenbeschreibung; genaue Zusammensetzung und Glasur nicht ausgewiesen</li><li><strong>Gewicht:</strong> Produktgewicht noch nicht eindeutig bestätigt</li><li><strong>Durchmesser:</strong> ca. 11,7 cm (laut Lieferantenbeschreibung)</li></ul>\n</div>",
+        "seo": {
+          "title": "Keramikreibe für Ingwer & Knoblauch | LuxeStyle",
+          "description": "Ingwer und Knoblauch von Hand raffeln: runde Keramikreibe mit strukturierter Reibefläche, 11,7 cm Durchmesser und sieben Dekorvarianten."
+        }
+      },
+      "wordCount": 315,
+      "sourceFiles": [
+        "kitchen/15413085733249-cj-detail-raw.json"
+      ],
+      "factsStatus": "Supplier-attributed factual copy; no measured/certified health or performance claims. Missing physical weight and composition/compatibility facts explicit."
+    },
+    {
+      "productId": "gid://shopify/Product/15422985765249",
+      "input": {
+        "id": "gid://shopify/Product/15422985765249",
+        "title": "Rechteckiges Schneidebrett 38,5 × 26,5 cm",
+        "descriptionHtml": "<h2>Schneidebrett für die Küchenvorbereitung</h2>\n<p>Dieses rechteckige Schneidebrett bietet eine Fläche zum Vorbereiten und Schneiden von Lebensmitteln. Die Lieferantenangabe nennt ein Format von 38,5 × 26,5 cm. Auf den Produktbildern ist ein Griffausschnitt an der kurzen Seite sichtbar.</p>\n<p>Die geprüften Produktangaben führen eine einzelne Schneidebrett-Variante. Im Shop wird keine Grössen- oder Farbwahl angeboten; vor dem Kauf kannst du daher die angegebenen Abmessungen mit dem Platz vergleichen, den du auf deiner Arbeitsfläche zur Verfügung hast. Die Lieferanten-Packliste nennt ein Schneidebrett. Die Abbildung mehrerer Bretter bedeutet daher kein Mehrfachset.</p>\n<p>Zu einer bestimmten Schneidetechnik, Pflege oder Spülmaschineneignung liegen in den geprüften Angaben keine belastbaren Hinweise vor. Prüfe vor der ersten Nutzung vorhandene Pflege- und Anwendungshinweise. Aussagen zu Material, Lebensmitteleignung, antibakteriellen Eigenschaften, Rostschutz oder Haltbarkeit lassen sich aus den vorliegenden Angaben nicht zuverlässig bestätigen.</p>\n<h3>Produktdetails</h3>\n<ul><li>Rechteckiges Schneidebrett</li><li>Format: 38,5 × 26,5 cm laut Lieferantenbeschreibung</li><li>Ein Stück gemäss Lieferanten-Packliste</li><li>Eine angebotene Ausführung</li></ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li><strong>Material:</strong> Nicht verlässlich angegeben; Lieferantenangaben widersprechen sich</li><li><strong>Gewicht:</strong> Produktgewicht noch nicht eindeutig bestätigt</li><li><strong>Format:</strong> 38,5 × 26,5 cm laut Lieferantenbeschreibung</li></ul>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "seo": {
+          "title": "Rechteckiges Schneidebrett 38,5 × 26,5 cm | LuxeStyle",
+          "description": "Rechteckiges Schneidebrett mit 38,5 × 26,5 cm laut Lieferantenangabe. Ein Stück, eine Shopvariante. Materialangabe beim Lieferanten widersprüchlich."
+        }
+      },
+      "wordCount": 178,
+      "sourceFiles": [
+        "kitchen/15422985765249-cj-detail-raw.json"
+      ],
+      "factsStatus": "Supplier-attributed factual copy; no measured/certified health or performance claims. Missing physical weight and composition/compatibility facts explicit."
+    },
+    {
+      "productId": "gid://shopify/Product/15478656532865",
+      "input": {
+        "id": "gid://shopify/Product/15478656532865",
+        "title": "Teeservice aus Keramik mit Teekanne und zwei Tassen",
+        "descriptionHtml": "<!-- ls-var-v1 -->\n<p>Der Lieferant beschreibt dieses Teeservice als Set mit einer Teekanne und zwei passenden Tassen. Die Lieferantenangaben beschreiben das Set als Keramik. Für die Auswahl stehen drei Farbvarianten und je eine Ausführung mit oder ohne tragbare Tasche bereit. So kannst du vor der Bestellung gezielt festlegen, ob die Tasche dazugehören soll.</p>\n<h3>Farben und Ausführungen</h3>\n<p>Im Auswahlfeld findest du die folgenden Kombinationen. Die Bezeichnungen entsprechen den aktuell verfügbaren Ausführungen:</p>\n<table style=\"width:100%;table-layout:fixed;border-collapse:collapse;\"><thead><tr><th style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;width:50%;\">Farbe</th><th style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;width:50%;\">Ausführung</th></tr></thead><tbody><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Elegantes Rot</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Mit tragbarer Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Elegantes Rot</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ohne Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ofengebackenes Grün</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Mit tragbarer Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ofengebackenes Grün</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ohne Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Zen Schwarz</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Mit tragbarer Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Zen Schwarz</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ohne Tasche</td></tr></tbody></table>\n<h3>Lieferumfang und Grössenangaben</h3>\n<ul>\n<li>Setbestandteile: eine Teekanne und zwei Tassen</li>\n<li>Material laut Lieferantenangabe: Keramik</li>\n<li>Bildangaben zum Fassungsvermögen: Teekanne 150 ml, grosse Tasse 105 ml, kleine Tasse 50 ml. Diese Werte stehen auf den zugeordneten Lieferantenbildern; eine eigene Messung liegt nicht vor.</li>\n<li>Die Tasche ist nur in den Ausführungen «Mit tragbarer Tasche» enthalten.</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Weitere Angaben</h4>\n<ul>\n<li>\n<strong>Material:</strong> Keramik laut Lieferantenangabe.</li>\n<li>\n<strong>Gewicht:</strong> Nicht zuverlässig ausgewiesen; die Gewichtsangaben unterscheiden sich je nach Quelle und Ausführung.</li>\n</ul>\n</div>\n<h3>Häufige Fragen</h3>\n<p><strong>Was ist im Set enthalten?</strong><br>Eine Teekanne und zwei Tassen. Bei der Auswahl «Mit tragbarer Tasche» kommt die Tasche dazu; bei «Ohne Tasche» ist sie nicht enthalten.</p>\n<p><strong>Wie wähle ich Farbe und Taschen-Ausführung?</strong><br>Wähle zuerst eine der drei Farbvarianten und danach «Mit tragbarer Tasche» oder «Ohne Tasche». Die sechs Kombinationen stehen einzeln im Auswahlfeld.</p>\n<p><strong>Welche Grössen- und Pflegeangaben gibt es?</strong><br>Die Lieferantenbilder nennen die oben aufgeführten Fassungsvermögen. Genaue Aussenmasse und Pflegefreigaben sind noch nicht bestätigt; Spülmaschinen- oder Mikrowelleneignung wird nicht zugesichert.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sub-kueche\">Küche &amp; Kochen</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "seo": {
+          "title": "Keramik-Teeservice mit Teekanne und 2 Tassen | LuxeStyle",
+          "description": "Teeservice aus Keramik mit einer Teekanne und zwei Tassen. Wähle Rot, Grün oder Schwarz sowie die Ausführung mit oder ohne Tasche."
+        }
+      },
+      "wordCount": 260,
+      "sourceFiles": [
+        "home/r261_cj_15478656532865.json"
+      ],
+      "factsStatus": "Supplier-attributed factual copy; no measured/certified health or performance claims. Missing physical weight and composition/compatibility facts explicit."
+    }
+  ],
+  "nativeBefore": {
+    "15413085733249": {
+      "id": "gid://shopify/Product/15413085733249",
+      "title": "Ingwerreibe aus Keramik · für Knoblauch & Wasabi, mit Schälchen",
+      "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<!-- ls-text-v2 --><p>Frisch geriebener Ingwer und Knoblauch geben vielen Gerichten erst das richtige Aroma, und mit dieser Reibe aus Keramik gelingt das ganz ohne Aufwand. Sie zerkleinert Ingwer, Knoblauch und Co. zu einer feinen Paste, die du direkt im dekorativen Schälchen servieren kannst. Im nordischen Stil gestaltet, macht sie auch auf dem Tisch eine schöne Figur.</p><h4>Material und Verarbeitung</h4><p>Die Reibe besteht aus Keramik und wird von Hand benutzt, was sie sicher und einfach in der Anwendung macht. Die Reibfläche misst 11.7 cm im Durchmesser und bietet damit reichlich Platz für effizientes Arbeiten.</p><h4>So nutzt du sie</h4><p>Reibe Ingwer, Knoblauch, Wasabi oder Muskat direkt in der Schale, auch Obst lässt sich damit zu Fruchtmus verarbeiten. Nach dem Gebrauch ist sie leicht zu reinigen. Du kannst aus sieben Stilen wählen, von Stil 1 bis Stil 7, und findest so das Design, das zu deiner Küche passt.</p><!-- /ls-text-v2 -->\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Gewicht:</strong> ca. 200 g</li>\n<li>\n<strong>Masse:</strong> Diameter 11.7cm</li>\n<li>\n<strong>Stil:</strong> Nordisch</li>\n</ul>\n</div>\n<p>👉 Passt dazu: <a href=\"/collections/kuechenhelfer\">Küchenhelfer</a> · <a href=\"/collections/kochen-backen\">Kochen &amp; Backen</a></p><!-- ls-fakten-v1 --><div class=\"ls-fakten\" style=\"margin:16px 0;\">\n<h4>Technische Daten</h4>\n<table style=\"border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;\">\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Material</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">Keramik</td>\n</tr>\n<tr>\n<th style=\"text-align:left;font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid #ece7de;width:38%;vertical-align:top;\">Durchmesser</th>\n<td style=\"padding:6px 0;border-bottom:1px solid #ece7de;\">11.7 cm</td>\n</tr>\n</table>\n<h4>Lieferumfang</h4>\n<ul><li>1 Reibe</li></ul>\n<p style=\"font-size:12px;opacity:.7;margin-top:10px;\">Angaben aus dem Datenblatt des Lieferanten. Kleine Abweichungen bei Mass und Farbe sind möglich.</p>\n</div><!-- /ls-fakten-v1 -->",
+      "seo": {
+        "title": "Ingwer-Reibe aus Keramik für Knoblauch & Wasabi | LuxeStyle",
+        "description": "Ingwer-Reibe aus Keramik für Knoblauch & Wasabi. Bezahlen mit TWINT oder Klarna, Versand in die ganze Schweiz."
+      },
+      "updatedAt": "2026-11-02T06:49:46Z",
+      "status": "ACTIVE",
+      "handle": "keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen",
+      "onlineStoreUrl": "https://luxestyle.ch/products/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "cj-real",
+        "dropship",
+        "ig-gepostet",
+        "ig-seit-2026-10-19",
+        "kueche",
+        "kuechengeraete",
+        "mengenrabatt-b",
+        "moerser",
+        "neu",
+        "schaelchen",
+        "sort-kuechenhelfer",
+        "sort-schneiden-reiben-pressen-scheren",
+        "sort-schneiden-reiben-schaelen"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17838210843009",
+          "name": "Stil",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871735169",
+              "name": "Stil 1",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871767937",
+              "name": "Stil 2",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871800705",
+              "name": "Stil 3",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871833473",
+              "name": "Stil 4",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871866241",
+              "name": "Stil 5",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871899009",
+              "name": "Stil 6",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871931777",
+              "name": "Stil 7",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69552924393857",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 1",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57a9e29a-76a8-466f-8473-c53c1b0f455e.jpg?v=1780269312",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924426625",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 2",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e3269246-6973-49f5-a6df-03d2a3c55b10.jpg?v=1780269311",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924459393",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 3",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924492161",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 4",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a1a4faa6-a295-46ed-886c-c4cf0d42abb5.jpg?v=1780269311",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924524929",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 5",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/837e04a2-fe4c-4073-9312-8d4f7c6313e5.jpg?v=1780269312",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924557697",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 6",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e7edb48c-91e3-4fb4-9703-11db8e8cd485.jpg?v=1780269311",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924590465",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 7",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/409102e8-83c3-4ab8-a89e-65bebdb4d6ef.jpg?v=1780269312",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924623233",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 8",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f3b11bf-d9f6-4d66-bbe9-e4900551b64d.jpg?v=1780269312",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69650128961921",
+            "mediaContentType": "IMAGE",
+            "alt": "LuxeStyle-Edit · Keramik-Reibe für Ingwer & Knoblauch · Mini-Mörser Schälchen",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen-edit.jpg?v=1781097539",
+              "width": 1080,
+              "height": 1080
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTY1MDEyODk2MTkyMSwibGFzdF92YWx1ZSI6IjkifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55748918575489",
+            "title": "Stil 1",
+            "sku": "CJCJ291442401AZ",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 1"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065341313",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918608257",
+            "title": "Stil 2",
+            "sku": "CJCJ291442402BY",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 2"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065374081",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918641025",
+            "title": "Stil 3",
+            "sku": "CJCJ291442403CX",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 3"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065406849",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918673793",
+            "title": "Stil 4",
+            "sku": "CJCJ291442404DW",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 4"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065439617",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918706561",
+            "title": "Stil 5",
+            "sku": "CJCJ291442405EV",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 5"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065472385",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918739329",
+            "title": "Stil 6",
+            "sku": "CJCJ291442406FU",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 6"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065505153",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918772097",
+            "title": "Stil 7",
+            "sku": "CJCJ291442407GT",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 7"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065537921",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTc0ODkxODc3MjA5NywibGFzdF92YWx1ZSI6N30="
+        }
+      }
+    },
+    "15422985765249": {
+      "id": "gid://shopify/Product/15422985765249",
+      "title": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell",
+      "descriptionHtml": "<p class=\"ls-liefer\" data-tier=\"direkt\" style=\"background:#f4f6fb;border:1px solid #dde3ef;border-radius:10px;padding:10px 14px;font-size:13px;margin:0 0 14px;\">📦 <strong>Lieferzeit</strong> Schweiz: <strong>10–20 Werktage</strong> <span style=\"opacity:.7;\">· Direktversand ab Lieferantenlager · Versand nur in die Schweiz und nach Liechtenstein</span></p>\n<p><strong>Hochwertiges Schneidebrett aus reinem Titan – food-grade, antibakteriell und ein Leben lang scharf-resistent. Der Profi-Helfer für jede Küche.</strong></p><ul>\n<li>🔪 Reines Food-Grade-Titan</li>\n<li>🦠 Antibakteriell &amp; hygienisch</li>\n<li>💧 Rostfrei &amp; spülmaschinenfest</li>\n<li>🪶 Leicht &amp; langlebig</li>\n<li>🍳 Profi-Qualität für zuhause</li>\n</ul><p><em> 🇨🇭 Gratis-Versand in der Schweiz ab CHF 50 · WELCOME10 –10%.</em></p>\n\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 1.1 kg</li></ul>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Titan-Schneidebrett «Chef» – Food-Grade & antibakteriell",
+        "description": "Titan-Schneidebrett «Chef» – Food-Grade & antibakteriell bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10%…"
+      },
+      "updatedAt": "2026-11-02T06:49:19Z",
+      "status": "ACTIVE",
+      "handle": "titan-schneidebrett-chef-food-grade-antibakteriell",
+      "onlineStoreUrl": "https://luxestyle.ch/products/titan-schneidebrett-chef-food-grade-antibakteriell",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "cj-real",
+        "dropship",
+        "home",
+        "kat-schneidebretter",
+        "küche",
+        "mengenrabatt-a",
+        "neu",
+        "sort-schneidebretter-bretter",
+        "sort-schneidebretter-edelstahl-titan"
+      ],
+      "hasOnlyDefaultVariant": true,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17849650086273",
+          "name": "Title",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/11857307730305",
+              "name": "Default Title",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69635223847297",
+            "mediaContentType": "IMAGE",
+            "alt": "Titan-Schneidebrett «Chef» food-grade in der Küche",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fca9167f-0522-4c39-96de-0bc08198d408_trans.jpg?v=1780951337",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635223880065",
+            "mediaContentType": "IMAGE",
+            "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 2",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4fd67206-36af-4003-841f-c24a1481c75f_trans.jpg?v=1780951337",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635223912833",
+            "mediaContentType": "IMAGE",
+            "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 3",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65364c29-e972-4506-ba07-5e95a516792b_trans.jpg?v=1780951336",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635223945601",
+            "mediaContentType": "IMAGE",
+            "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 4",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29eef77a-7671-4996-aed9-178a3ed6a76e_trans.jpg?v=1780951336",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635223978369",
+            "mediaContentType": "IMAGE",
+            "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 5",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/99231bb9-900b-47e8-a7d0-e0ac670ebe98.jpg?v=1780951336",
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635224011137",
+            "mediaContentType": "IMAGE",
+            "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 6",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dce7b0bd-ab10-4ddc-b979-c147580ddadb_trans.jpg?v=1780951336",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635224043905",
+            "mediaContentType": "IMAGE",
+            "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 7",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cb90df3-2f42-40df-ae60-9a671717faf4_trans.jpg?v=1780951336",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69650184536449",
+            "mediaContentType": "IMAGE",
+            "alt": "LuxeStyle-Edit · Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/titan-schneidebrett-chef-food-grade-antibakteriell-edit.jpg?v=1781097852",
+              "width": 1080,
+              "height": 1080
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTY1MDE4NDUzNjQ0OSwibGFzdF92YWx1ZSI6IjgifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55778889269633",
+            "title": "Default Title",
+            "sku": "CJCJ292269801AZ",
+            "price": "54.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55127488692609",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 1175,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTc3ODg4OTI2OTYzMywibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    "15478656532865": {
+      "id": "gid://shopify/Product/15478656532865",
+      "title": "Tragbares Teeservice mit Teekanne und zwei Tassen",
+      "descriptionHtml": "<!-- ls-var-v1 --><p>Dieses minimalistische Teeservice ist ideal für unterwegs oder für eine stilvolle Teezeremonie zu Hause. Das Set besteht aus einer Teekanne und zwei passenden Tassen, gefertigt aus hochwertiger Keramik im modernen Design. Es ist in den eleganten Farben Yaobian Grün, Zen Schwarz und Elegant Rot erhältlich. Für zusätzlichen Komfort auf Reisen sind ausgewählte Sets mit einer praktischen Tragetasche ausgestattet. Geniesse deinen Lieblingstee, wo immer du bist, mit diesem kompakten und ästhetischen Set.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Set mit Teekanne und zwei Tassen</li>\n<li>Erhältlich in Yaobian Grün, Zen Schwarz oder Elegant Rot</li>\n<li>Hergestellt aus hochwertiger Keramik</li>\n<li>Modernes, minimalistisches Design</li>\n<li>Optionale, praktische Tragetasche für unterwegs</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sub-kueche\">Küche &amp; Kochen</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": null,
+        "description": "Tragbares Teeservice mit Teekanne und zwei Tassen bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code…"
+      },
+      "updatedAt": "2026-11-02T06:53:08Z",
+      "status": "ACTIVE",
+      "handle": "tragbares-teeservice-mit-teekanne-und-zwei-tas-621300",
+      "onlineStoreUrl": "https://luxestyle.ch/products/tragbares-teeservice-mit-teekanne-und-zwei-tas-621300",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "geschenkidee",
+        "geschenkideen",
+        "geschenkwelt-alle",
+        "geschenkwelt-preishits",
+        "geschenkwelt-unter30",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "mengenrabatt-b",
+        "rueckhol-0907",
+        "sort-tassen-kaffeebecher",
+        "sort-tassen-kaffeebecher-tee-kaffee",
+        "tassen-becher",
+        "varianten-nachgezogen-1025"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17918253105537",
+          "name": "Farbe",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458731399",
+              "name": "Elegantes Rot",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458764167",
+              "name": "Ofengebackenes Grün",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458796935",
+              "name": "Zen Schwarz",
+              "hasVariants": true
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductOption/19633966809479",
+          "name": "Modell",
+          "position": 2,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458829703",
+              "name": "Mit tragbarer Tasche",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458862471",
+              "name": "Ohne Tasche",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70333139976577",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 1 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85a4be31-1bae-4561-966e-728bd2fe173c_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333139943809",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 2 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/56db1060-18dd-4fce-9d6b-5db374bf5d8d_trans.jpg?v=1785402758",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333139845505",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 3 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/40804b6d-68ea-4f95-b27b-801108ed42e3_trans.jpg?v=1785402756",
+              "width": 471,
+              "height": 472
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140009345",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 4 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f811b7e6-930b-43de-bc56-5da2aae92cba_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140042113",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 5 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9580cb02-7561-42ea-9e20-23f715834456_trans.jpg?v=1785402757",
+              "width": 462,
+              "height": 461
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140074881",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 6 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89dfd174-87cf-49bc-b872-b1995ecc3570_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140107649",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 7 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3195ae7b-76ef-4346-9047-6e604e83a76c_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140140417",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 8 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7c4a9ae-83ce-46b3-95f6-4b1ecb95a09f_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140173185",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 9 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29aa4f72-97db-4557-abbb-38ed05020730_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140205953",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 10 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/342af986-789a-41f7-b03f-c235a8b3ccb9_trans.jpg?v=1785402758",
+              "width": 458,
+              "height": 465
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140238721",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 11 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5239f141-6a6f-4572-9fb5-8df3365d854c_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDIzODcyMSwibGFzdF92YWx1ZSI6IjExIn0="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67842183725447",
+            "title": "Elegantes Rot / Mit tragbarer Tasche",
+            "sku": "CJYD301731602BY",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Elegantes Rot"
+              },
+              {
+                "name": "Modell",
+                "value": "Mit tragbarer Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854690183",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333140173185"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDE3MzE4NSwibGFzdF92YWx1ZSI6NzAzMzMxNDAxNzMxODV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183758215",
+            "title": "Elegantes Rot / Ohne Tasche",
+            "sku": "CJYD301731603CX",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Elegantes Rot"
+              },
+              {
+                "name": "Modell",
+                "value": "Ohne Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854722951",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333139845505"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzEzOTg0NTUwNSwibGFzdF92YWx1ZSI6NzAzMzMxMzk4NDU1MDV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183790983",
+            "title": "Ofengebackenes Grün / Mit tragbarer Tasche",
+            "sku": "CJYD301731604DW",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Ofengebackenes Grün"
+              },
+              {
+                "name": "Modell",
+                "value": "Mit tragbarer Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854755719",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333139943809"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzEzOTk0MzgwOSwibGFzdF92YWx1ZSI6NzAzMzMxMzk5NDM4MDl9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183823751",
+            "title": "Ofengebackenes Grün / Ohne Tasche",
+            "sku": "CJYD301731605EV",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Ofengebackenes Grün"
+              },
+              {
+                "name": "Modell",
+                "value": "Ohne Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854788487",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333140042113"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDA0MjExMywibGFzdF92YWx1ZSI6NzAzMzMxNDAwNDIxMTN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183856519",
+            "title": "Zen Schwarz / Mit tragbarer Tasche",
+            "sku": "CJYD301731606FU",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Zen Schwarz"
+              },
+              {
+                "name": "Modell",
+                "value": "Mit tragbarer Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854821255",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333140140417"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDE0MDQxNywibGFzdF92YWx1ZSI6NzAzMzMxNDAxNDA0MTd9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183889287",
+            "title": "Zen Schwarz / Ohne Tasche",
+            "sku": "CJYD301731607GT",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Zen Schwarz"
+              },
+              {
+                "name": "Modell",
+                "value": "Ohne Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854854023",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333140205953"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDIwNTk1MywibGFzdF92YWx1ZSI6NzAzMzMxNDAyMDU5NTN9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2Nzg0MjE4Mzg4OTI4NywibGFzdF92YWx1ZSI6Nn0="
+        }
+      }
+    }
+  },
+  "nativeAfter": {
+    "15413085733249": {
+      "id": "gid://shopify/Product/15413085733249",
+      "title": "Keramikreibe für Ingwer und Knoblauch mit Reibeschale",
+      "descriptionHtml": "<h2>Ingwer und Knoblauch frisch raffeln</h2>\n<p>Mit dieser runden Reibeschale bereitest du kleine Mengen Ingwer oder Knoblauch direkt von Hand zu. Die strukturierte Fläche in der Mitte reibt das Lebensmittel beim Darüberführen; der Rand hält das Ergebnis in der Schale zusammen. Das eignet sich, wenn du eine kleine Portion für eine Sauce, Marinade oder ein Gericht vorbereitest und dafür kein elektrisches Gerät verwenden möchtest.</p>\n<p>Die Lieferantenbeschreibung nennt ausserdem Fruchtpüree als mögliche Verwendung. Das Produkt wird manuell bedient. Die sichtbare Reibefläche ist von einem dekorativen Rand umgeben. Je nach gewählter Variante unterscheidet sich das Dekor; die Auswahl im Shop erfolgt über die Stilnummern 1 bis 7. Prüfe vor dem Hinzufügen zum Warenkorb, ob die gewählte Stilnummer deinem bevorzugten Motiv entspricht. </p>\n<h3>Produktdetails</h3>\n<ul>\n<li>Runde Reibeschale mit strukturierter Reibefläche</li>\n<li>Für Ingwer und Knoblauch; laut Lieferantenbeschreibung auch für Fruchtpüree</li>\n<li>Durchmesser laut Lieferant: ca. 11,7 cm laut Lieferantenbeschreibung</li>\n<li>Manuelle Anwendung</li>\n<li>Sieben Dekorvarianten, Auswahl Stil 1–7</li>\n</ul>\n<p>Reibe das Lebensmittel mit leichtem Druck über die Mitte und entnimm die gewünschte Menge anschliessend aus der Schale. Für genaue Reinigungshinweise liegen in den geprüften Produktangaben keine verlässlichen Informationen vor; prüfe vor der ersten Nutzung vorhandene Pflegehinweise. Eine separate Zusatzschale oder ein weiteres Zubehörteil ist in der Lieferanten-Packliste nicht ausgewiesen.</p>\n<h3>Stilnummern und Dekore</h3><p>Die Stilnummer bezeichnet das Dekor der einen Reibeschale. Die folgende Zuordnung stammt aus den passenden Lieferantenbildern. Bei Stil 3 ist das einzelne Shopbild noch offen; verlasse dich dort vorerst nicht auf ein automatisch angezeigtes Galeriebild.</p><table>\n<thead><tr>\n<th>Auswahl</th>\n<th>Dekor laut Produktbild</th>\n</tr></thead>\n<tbody>\n<tr>\n<td>Stil 1</td>\n<td>Mehrfarbiger Ornamentrand mit türkisfarbenem Reibefeld</td>\n</tr>\n<tr>\n<td>Stil 2</td>\n<td>Blaues Blütendekor mit hellem Reibefeld</td>\n</tr>\n<tr>\n<td>Stil 3</td>\n<td>Bunter Rand mit blauem Reibefeld; einzelnes Shopbild noch offen</td>\n</tr>\n<tr>\n<td>Stil 4</td>\n<td>Olivenmotiv mit gelbem Reibefeld</td>\n</tr>\n<tr>\n<td>Stil 5</td>\n<td>Grüne Blätter mit hellblauem Reibefeld</td>\n</tr>\n<tr>\n<td>Stil 6</td>\n<td>Roter Rand mit gelbem Reibefeld</td>\n</tr>\n<tr>\n<td>Stil 7</td>\n<td>Blaues Ornament mit blauem Reibefeld</td>\n</tr>\n</tbody>\n</table>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Keramik laut Lieferantenbeschreibung; genaue Zusammensetzung und Glasur nicht ausgewiesen</li>\n<li>\n<strong>Gewicht:</strong> Produktgewicht noch nicht eindeutig bestätigt</li>\n<li>\n<strong>Durchmesser:</strong> ca. 11,7 cm (laut Lieferantenbeschreibung)</li>\n</ul>\n</div>",
+      "seo": {
+        "title": "Keramikreibe für Ingwer & Knoblauch | LuxeStyle",
+        "description": "Ingwer und Knoblauch von Hand raffeln: runde Keramikreibe mit strukturierter Reibefläche, 11,7 cm Durchmesser und sieben Dekorvarianten."
+      },
+      "updatedAt": "2026-11-16T16:08:29Z",
+      "status": "ACTIVE",
+      "handle": "keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen",
+      "onlineStoreUrl": "https://luxestyle.ch/products/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "cj-real",
+        "dropship",
+        "ig-gepostet",
+        "ig-seit-2026-10-19",
+        "kueche",
+        "kuechengeraete",
+        "mengenrabatt-b",
+        "moerser",
+        "neu",
+        "schaelchen",
+        "sort-kuechenhelfer",
+        "sort-schneiden-reiben-pressen-scheren",
+        "sort-schneiden-reiben-schaelen"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17838210843009",
+          "name": "Stil",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871735169",
+              "name": "Stil 1",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871767937",
+              "name": "Stil 2",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871800705",
+              "name": "Stil 3",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871833473",
+              "name": "Stil 4",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871866241",
+              "name": "Stil 5",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871899009",
+              "name": "Stil 6",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/11805871931777",
+              "name": "Stil 7",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69552924393857",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 1",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57a9e29a-76a8-466f-8473-c53c1b0f455e.jpg?v=1780269312",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924426625",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 2",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e3269246-6973-49f5-a6df-03d2a3c55b10.jpg?v=1780269311",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924459393",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 3",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924492161",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 4",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a1a4faa6-a295-46ed-886c-c4cf0d42abb5.jpg?v=1780269311",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924524929",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 5",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/837e04a2-fe4c-4073-9312-8d4f7c6313e5.jpg?v=1780269312",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924557697",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 6",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e7edb48c-91e3-4fb4-9703-11db8e8cd485.jpg?v=1780269311",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924590465",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 7",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/409102e8-83c3-4ab8-a89e-65bebdb4d6ef.jpg?v=1780269312",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69552924623233",
+            "mediaContentType": "IMAGE",
+            "alt": "Keramik-Reibe 8",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f3b11bf-d9f6-4d66-bbe9-e4900551b64d.jpg?v=1780269312",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69650128961921",
+            "mediaContentType": "IMAGE",
+            "alt": "LuxeStyle-Edit · Keramik-Reibe für Ingwer & Knoblauch · Mini-Mörser Schälchen",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen-edit.jpg?v=1781097539",
+              "width": 1080,
+              "height": 1080
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTY1MDEyODk2MTkyMSwibGFzdF92YWx1ZSI6IjkifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55748918575489",
+            "title": "Stil 1",
+            "sku": "CJCJ291442401AZ",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 1"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065341313",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69552924623233"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTU1MjkyNDYyMzIzMywibGFzdF92YWx1ZSI6Njk1NTI5MjQ2MjMyMzN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918608257",
+            "title": "Stil 2",
+            "sku": "CJCJ291442402BY",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 2"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065374081",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69552924524929"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTU1MjkyNDUyNDkyOSwibGFzdF92YWx1ZSI6Njk1NTI5MjQ1MjQ5Mjl9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918641025",
+            "title": "Stil 3",
+            "sku": "CJCJ291442403CX",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 3"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065406849",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918673793",
+            "title": "Stil 4",
+            "sku": "CJCJ291442404DW",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 4"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065439617",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69552924590465"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTU1MjkyNDU5MDQ2NSwibGFzdF92YWx1ZSI6Njk1NTI5MjQ1OTA0NjV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918706561",
+            "title": "Stil 5",
+            "sku": "CJCJ291442405EV",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 5"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065472385",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69552924426625"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTU1MjkyNDQyNjYyNSwibGFzdF92YWx1ZSI6Njk1NTI5MjQ0MjY2MjV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918739329",
+            "title": "Stil 6",
+            "sku": "CJCJ291442406FU",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 6"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065505153",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69552924459393"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTU1MjkyNDQ1OTM5MywibGFzdF92YWx1ZSI6Njk1NTI5MjQ0NTkzOTN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/55748918772097",
+            "title": "Stil 7",
+            "sku": "CJCJ291442407GT",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Stil",
+                "value": "Stil 7"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55097065537921",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 220,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/69552924393857"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo2OTU1MjkyNDM5Mzg1NywibGFzdF92YWx1ZSI6Njk1NTI5MjQzOTM4NTd9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTc0ODkxODc3MjA5NywibGFzdF92YWx1ZSI6N30="
+        }
+      }
+    },
+    "15422985765249": {
+      "id": "gid://shopify/Product/15422985765249",
+      "title": "Rechteckiges Schneidebrett 38,5 × 26,5 cm",
+      "descriptionHtml": "<h2>Schneidebrett für die Küchenvorbereitung</h2>\n<p>Dieses rechteckige Schneidebrett bietet eine Fläche zum Vorbereiten und Schneiden von Lebensmitteln. Die Lieferantenangabe nennt ein Format von 38,5 × 26,5 cm. Auf den Produktbildern ist ein Griffausschnitt an der kurzen Seite sichtbar.</p>\n<p>Die geprüften Produktangaben führen eine einzelne Schneidebrett-Variante. Im Shop wird keine Grössen- oder Farbwahl angeboten; vor dem Kauf kannst du daher die angegebenen Abmessungen mit dem Platz vergleichen, den du auf deiner Arbeitsfläche zur Verfügung hast. Die Lieferanten-Packliste nennt ein Schneidebrett. Die Abbildung mehrerer Bretter bedeutet daher kein Mehrfachset.</p>\n<p>Zu einer bestimmten Schneidetechnik, Pflege oder Spülmaschineneignung liegen in den geprüften Angaben keine belastbaren Hinweise vor. Prüfe vor der ersten Nutzung vorhandene Pflege- und Anwendungshinweise. Aussagen zu Material, Lebensmitteleignung, antibakteriellen Eigenschaften, Rostschutz oder Haltbarkeit lassen sich aus den vorliegenden Angaben nicht zuverlässig bestätigen.</p>\n<h3>Produktdetails</h3>\n<ul>\n<li>Rechteckiges Schneidebrett</li>\n<li>Format: 38,5 × 26,5 cm laut Lieferantenbeschreibung</li>\n<li>Ein Stück gemäss Lieferanten-Packliste</li>\n<li>Eine angebotene Ausführung</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Nicht verlässlich angegeben; Lieferantenangaben widersprechen sich</li>\n<li>\n<strong>Gewicht:</strong> Produktgewicht noch nicht eindeutig bestätigt</li>\n<li>\n<strong>Format:</strong> 38,5 × 26,5 cm laut Lieferantenbeschreibung</li>\n</ul>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Rechteckiges Schneidebrett 38,5 × 26,5 cm | LuxeStyle",
+        "description": "Rechteckiges Schneidebrett mit 38,5 × 26,5 cm laut Lieferantenangabe. Ein Stück, eine Shopvariante. Materialangabe beim Lieferanten widersprüchlich."
+      },
+      "updatedAt": "2026-11-16T16:19:57Z",
+      "status": "ACTIVE",
+      "handle": "titan-schneidebrett-chef-food-grade-antibakteriell",
+      "onlineStoreUrl": "https://luxestyle.ch/products/titan-schneidebrett-chef-food-grade-antibakteriell",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "cj-real",
+        "dropship",
+        "home",
+        "kat-schneidebretter",
+        "küche",
+        "mengenrabatt-a",
+        "neu",
+        "sort-schneidebretter-bretter",
+        "sort-schneidebretter-edelstahl-titan"
+      ],
+      "hasOnlyDefaultVariant": true,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17849650086273",
+          "name": "Title",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/11857307730305",
+              "name": "Default Title",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69635223847297",
+            "mediaContentType": "IMAGE",
+            "alt": "Zwei Produktansichten eines rechteckigen Schneidebretts mit Griffausschnitt",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fca9167f-0522-4c39-96de-0bc08198d408_trans.jpg?v=1780951337",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635223880065",
+            "mediaContentType": "IMAGE",
+            "alt": "Rechteckiges Schneidebrett – Produktabbildung 2",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4fd67206-36af-4003-841f-c24a1481c75f_trans.jpg?v=1780951337",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635223912833",
+            "mediaContentType": "IMAGE",
+            "alt": "Rechteckiges Schneidebrett – Produktabbildung 3",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/65364c29-e972-4506-ba07-5e95a516792b_trans.jpg?v=1780951336",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635223945601",
+            "mediaContentType": "IMAGE",
+            "alt": "Rechteckiges Schneidebrett – Produktabbildung 4",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29eef77a-7671-4996-aed9-178a3ed6a76e_trans.jpg?v=1780951336",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635223978369",
+            "mediaContentType": "IMAGE",
+            "alt": "Rechteckiges Schneidebrett – Produktabbildung 5",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/99231bb9-900b-47e8-a7d0-e0ac670ebe98.jpg?v=1780951336",
+              "width": 1080,
+              "height": 1080
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635224011137",
+            "mediaContentType": "IMAGE",
+            "alt": "Rechteckiges Schneidebrett – Produktabbildung 6",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dce7b0bd-ab10-4ddc-b979-c147580ddadb_trans.jpg?v=1780951336",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69635224043905",
+            "mediaContentType": "IMAGE",
+            "alt": "Rechteckiges Schneidebrett – Produktabbildung 7",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7cb90df3-2f42-40df-ae60-9a671717faf4_trans.jpg?v=1780951336",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69650184536449",
+            "mediaContentType": "IMAGE",
+            "alt": "Rechteckiges Schneidebrett – Produktabbildung 8",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/titan-schneidebrett-chef-food-grade-antibakteriell-edit.jpg?v=1781097852",
+              "width": 1080,
+              "height": 1080
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTY1MDE4NDUzNjQ0OSwibGFzdF92YWx1ZSI6IjgifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55778889269633",
+            "title": "Default Title",
+            "sku": "CJCJ292269801AZ",
+            "price": "54.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55127488692609",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 1175,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTc3ODg4OTI2OTYzMywibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    "15478656532865": {
+      "id": "gid://shopify/Product/15478656532865",
+      "title": "Teeservice aus Keramik mit Teekanne und zwei Tassen",
+      "descriptionHtml": "<!-- ls-var-v1 -->\n<p>Der Lieferant beschreibt dieses Teeservice als Set mit einer Teekanne und zwei passenden Tassen. Die Lieferantenangaben beschreiben das Set als Keramik. Für die Auswahl stehen drei Farbvarianten und je eine Ausführung mit oder ohne tragbare Tasche bereit. So kannst du vor der Bestellung gezielt festlegen, ob die Tasche dazugehören soll.</p>\n<h3>Farben und Ausführungen</h3>\n<p>Im Auswahlfeld findest du die folgenden Kombinationen. Die Bezeichnungen entsprechen den aktuell verfügbaren Ausführungen:</p>\n<table style=\"width:100%;table-layout:fixed;border-collapse:collapse;\">\n<thead><tr>\n<th style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;width:50%;\">Farbe</th>\n<th style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;width:50%;\">Ausführung</th>\n</tr></thead>\n<tbody>\n<tr>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Elegantes Rot</td>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Mit tragbarer Tasche</td>\n</tr>\n<tr>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Elegantes Rot</td>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ohne Tasche</td>\n</tr>\n<tr>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ofengebackenes Grün</td>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Mit tragbarer Tasche</td>\n</tr>\n<tr>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ofengebackenes Grün</td>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ohne Tasche</td>\n</tr>\n<tr>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Zen Schwarz</td>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Mit tragbarer Tasche</td>\n</tr>\n<tr>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Zen Schwarz</td>\n<td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ohne Tasche</td>\n</tr>\n</tbody>\n</table>\n<h3>Lieferumfang und Grössenangaben</h3>\n<ul>\n<li>Setbestandteile: eine Teekanne und zwei Tassen</li>\n<li>Material laut Lieferantenangabe: Keramik</li>\n<li>Bildangaben zum Fassungsvermögen: Teekanne 150 ml, grosse Tasse 105 ml, kleine Tasse 50 ml. Diese Werte stehen auf den zugeordneten Lieferantenbildern; eine eigene Messung liegt nicht vor.</li>\n<li>Die Tasche ist nur in den Ausführungen «Mit tragbarer Tasche» enthalten.</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Weitere Angaben</h4>\n<ul>\n<li>\n<strong>Material:</strong> Keramik laut Lieferantenangabe.</li>\n<li>\n<strong>Gewicht:</strong> Nicht zuverlässig ausgewiesen; die Gewichtsangaben unterscheiden sich je nach Quelle und Ausführung.</li>\n</ul>\n</div>\n<h3>Häufige Fragen</h3>\n<p><strong>Was ist im Set enthalten?</strong><br>Eine Teekanne und zwei Tassen. Bei der Auswahl «Mit tragbarer Tasche» kommt die Tasche dazu; bei «Ohne Tasche» ist sie nicht enthalten.</p>\n<p><strong>Wie wähle ich Farbe und Taschen-Ausführung?</strong><br>Wähle zuerst eine der drei Farbvarianten und danach «Mit tragbarer Tasche» oder «Ohne Tasche». Die sechs Kombinationen stehen einzeln im Auswahlfeld.</p>\n<p><strong>Welche Grössen- und Pflegeangaben gibt es?</strong><br>Die Lieferantenbilder nennen die oben aufgeführten Fassungsvermögen. Genaue Aussenmasse und Pflegefreigaben sind noch nicht bestätigt; Spülmaschinen- oder Mikrowelleneignung wird nicht zugesichert.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sub-kueche\">Küche &amp; Kochen</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Keramik-Teeservice mit Teekanne und 2 Tassen | LuxeStyle",
+        "description": "Teeservice aus Keramik mit einer Teekanne und zwei Tassen. Wähle Rot, Grün oder Schwarz sowie die Ausführung mit oder ohne Tasche."
+      },
+      "updatedAt": "2026-11-16T16:18:50Z",
+      "status": "ACTIVE",
+      "handle": "tragbares-teeservice-mit-teekanne-und-zwei-tas-621300",
+      "onlineStoreUrl": "https://luxestyle.ch/products/tragbares-teeservice-mit-teekanne-und-zwei-tas-621300",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "geschenkidee",
+        "geschenkideen",
+        "geschenkwelt-alle",
+        "geschenkwelt-preishits",
+        "geschenkwelt-unter30",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "mengenrabatt-b",
+        "rueckhol-0907",
+        "sort-tassen-kaffeebecher",
+        "sort-tassen-kaffeebecher-tee-kaffee",
+        "tassen-becher",
+        "varianten-nachgezogen-1025"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17918253105537",
+          "name": "Farbe",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458731399",
+              "name": "Elegantes Rot",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458764167",
+              "name": "Ofengebackenes Grün",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458796935",
+              "name": "Zen Schwarz",
+              "hasVariants": true
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/ProductOption/19633966809479",
+          "name": "Modell",
+          "position": 2,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458829703",
+              "name": "Mit tragbarer Tasche",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58677458862471",
+              "name": "Ohne Tasche",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70333139976577",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 1 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85a4be31-1bae-4561-966e-728bd2fe173c_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333139943809",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 2 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/56db1060-18dd-4fce-9d6b-5db374bf5d8d_trans.jpg?v=1785402758",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333139845505",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 3 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/40804b6d-68ea-4f95-b27b-801108ed42e3_trans.jpg?v=1785402756",
+              "width": 471,
+              "height": 472
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140009345",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 4 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f811b7e6-930b-43de-bc56-5da2aae92cba_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140042113",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 5 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9580cb02-7561-42ea-9e20-23f715834456_trans.jpg?v=1785402757",
+              "width": 462,
+              "height": 461
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140074881",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 6 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89dfd174-87cf-49bc-b872-b1995ecc3570_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140107649",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 7 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3195ae7b-76ef-4346-9047-6e604e83a76c_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140140417",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 8 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c7c4a9ae-83ce-46b3-95f6-4b1ecb95a09f_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140173185",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 9 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/29aa4f72-97db-4557-abbb-38ed05020730_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140205953",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 10 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/342af986-789a-41f7-b03f-c235a8b3ccb9_trans.jpg?v=1785402758",
+              "width": 458,
+              "height": 465
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70333140238721",
+            "mediaContentType": "IMAGE",
+            "alt": "Tragbares Teeservice mit Teekanne und zwei Tassen – Bild 11 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5239f141-6a6f-4572-9fb5-8df3365d854c_trans.jpg?v=1785402757",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDIzODcyMSwibGFzdF92YWx1ZSI6IjExIn0="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67842183725447",
+            "title": "Elegantes Rot / Mit tragbarer Tasche",
+            "sku": "CJYD301731602BY",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Elegantes Rot"
+              },
+              {
+                "name": "Modell",
+                "value": "Mit tragbarer Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854690183",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333140173185"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDE3MzE4NSwibGFzdF92YWx1ZSI6NzAzMzMxNDAxNzMxODV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183758215",
+            "title": "Elegantes Rot / Ohne Tasche",
+            "sku": "CJYD301731603CX",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Elegantes Rot"
+              },
+              {
+                "name": "Modell",
+                "value": "Ohne Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854722951",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333139845505"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzEzOTg0NTUwNSwibGFzdF92YWx1ZSI6NzAzMzMxMzk4NDU1MDV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183790983",
+            "title": "Ofengebackenes Grün / Mit tragbarer Tasche",
+            "sku": "CJYD301731604DW",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Ofengebackenes Grün"
+              },
+              {
+                "name": "Modell",
+                "value": "Mit tragbarer Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854755719",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333139943809"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzEzOTk0MzgwOSwibGFzdF92YWx1ZSI6NzAzMzMxMzk5NDM4MDl9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183823751",
+            "title": "Ofengebackenes Grün / Ohne Tasche",
+            "sku": "CJYD301731605EV",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Ofengebackenes Grün"
+              },
+              {
+                "name": "Modell",
+                "value": "Ohne Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854788487",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333140042113"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDA0MjExMywibGFzdF92YWx1ZSI6NzAzMzMxNDAwNDIxMTN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183856519",
+            "title": "Zen Schwarz / Mit tragbarer Tasche",
+            "sku": "CJYD301731606FU",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Zen Schwarz"
+              },
+              {
+                "name": "Modell",
+                "value": "Mit tragbarer Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854821255",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333140140417"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDE0MDQxNywibGFzdF92YWx1ZSI6NzAzMzMxNDAxNDA0MTd9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67842183889287",
+            "title": "Zen Schwarz / Ohne Tasche",
+            "sku": "CJYD301731607GT",
+            "price": "21.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Zen Schwarz"
+              },
+              {
+                "name": "Modell",
+                "value": "Ohne Tasche"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69836854854023",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70333140205953"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDMzMzE0MDIwNTk1MywibGFzdF92YWx1ZSI6NzAzMzMxNDAyMDU5NTN9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2Nzg0MjE4Mzg4OTI4NywibGFzdF92YWx1ZSI6Nn0="
+        }
+      }
+    }
+  },
+  "finalNativeIntegrity": {
+    "passed": true,
+    "products": [
+      {
+        "id": "15413085733249",
+        "checks": {
+          "allSelectedFieldsEqualIntended": true,
+          "variantIdsAndSkusPreserved": true,
+          "parentMediaIdsUrlsOrderPreserved": true
+        },
+        "variants": 7,
+        "options": 1,
+        "optionValues": 7,
+        "parentMedia": 9
+      },
+      {
+        "id": "15422985765249",
+        "checks": {
+          "allSelectedFieldsEqualIntended": true,
+          "variantIdsAndSkusPreserved": true,
+          "parentMediaIdsUrlsOrderPreserved": true
+        },
+        "variants": 1,
+        "options": 1,
+        "optionValues": 1,
+        "parentMedia": 8
+      },
+      {
+        "id": "15478656532865",
+        "checks": {
+          "allSelectedFieldsEqualIntended": true,
+          "variantIdsAndSkusPreserved": true,
+          "parentMediaIdsUrlsOrderPreserved": true
+        },
+        "variants": 6,
+        "options": 2,
+        "optionValues": 5,
+        "parentMedia": 11
+      }
+    ],
+    "paginationCursorNote": "Only nested variant-media pagination endCursor is omitted from semantic protection comparison; IDs and full business fields remain checked."
+  },
+  "writeCheckpoint": {
+    "run": "R261",
+    "phase": "CONFIRMED_NATIVE_ALL",
+    "allowedFields": [
+      "title",
+      "descriptionHtml",
+      "seo.title",
+      "seo.description",
+      "six existing variant mediaId associations",
+      "one collection seo.description"
+    ],
+    "attempted": [
+      "15413085733249",
+      "15422985765249",
+      "15478656532865"
+    ],
+    "confirmed": [
+      {
+        "id": "15413085733249",
+        "productId": "gid://shopify/Product/15413085733249",
+        "title": "Keramikreibe für Ingwer und Knoblauch mit Reibeschale",
+        "url": "https://luxestyle.ch/products/keramik-reibe-fur-ingwer-knoblauch-mini-morser-schalchen",
+        "variantIds": [
+          "gid://shopify/ProductVariant/55748918575489",
+          "gid://shopify/ProductVariant/55748918608257",
+          "gid://shopify/ProductVariant/55748918641025",
+          "gid://shopify/ProductVariant/55748918673793",
+          "gid://shopify/ProductVariant/55748918706561",
+          "gid://shopify/ProductVariant/55748918739329",
+          "gid://shopify/ProductVariant/55748918772097"
+        ],
+        "optionIds": [
+          "gid://shopify/ProductOption/17838210843009"
+        ],
+        "mediaIds": [
+          "gid://shopify/MediaImage/69552924393857",
+          "gid://shopify/MediaImage/69552924426625",
+          "gid://shopify/MediaImage/69552924459393",
+          "gid://shopify/MediaImage/69552924492161",
+          "gid://shopify/MediaImage/69552924524929",
+          "gid://shopify/MediaImage/69552924557697",
+          "gid://shopify/MediaImage/69552924590465",
+          "gid://shopify/MediaImage/69552924623233",
+          "gid://shopify/MediaImage/69650128961921"
+        ],
+        "userErrors": [],
+        "checks": {
+          "title": true,
+          "bodyTextAndMarkup": true,
+          "seo": true,
+          "protectedFields": true
+        },
+        "updatedAt": "2026-11-16T16:08:29Z"
+      },
+      {
+        "id": "15422985765249",
+        "productId": "gid://shopify/Product/15422985765249",
+        "title": "Rechteckiges Schneidebrett 38,5 × 26,5 cm",
+        "url": "https://luxestyle.ch/products/titan-schneidebrett-chef-food-grade-antibakteriell",
+        "variantIds": [
+          "gid://shopify/ProductVariant/55778889269633"
+        ],
+        "optionIds": [
+          "gid://shopify/ProductOption/17849650086273"
+        ],
+        "mediaIds": [
+          "gid://shopify/MediaImage/69635223847297",
+          "gid://shopify/MediaImage/69635223880065",
+          "gid://shopify/MediaImage/69635223912833",
+          "gid://shopify/MediaImage/69635223945601",
+          "gid://shopify/MediaImage/69635223978369",
+          "gid://shopify/MediaImage/69635224011137",
+          "gid://shopify/MediaImage/69635224043905",
+          "gid://shopify/MediaImage/69650184536449"
+        ],
+        "userErrors": [],
+        "checks": {
+          "title": true,
+          "bodyTextAndMarkup": true,
+          "seo": true,
+          "protectedFields": true
+        },
+        "updatedAt": "2026-11-16T16:08:34Z"
+      },
+      {
+        "id": "15478656532865",
+        "productId": "gid://shopify/Product/15478656532865",
+        "title": "Teeservice aus Keramik mit Teekanne und zwei Tassen",
+        "url": "https://luxestyle.ch/products/tragbares-teeservice-mit-teekanne-und-zwei-tas-621300",
+        "variantIds": [
+          "gid://shopify/ProductVariant/67842183725447",
+          "gid://shopify/ProductVariant/67842183758215",
+          "gid://shopify/ProductVariant/67842183790983",
+          "gid://shopify/ProductVariant/67842183823751",
+          "gid://shopify/ProductVariant/67842183856519",
+          "gid://shopify/ProductVariant/67842183889287"
+        ],
+        "optionIds": [
+          "gid://shopify/ProductOption/17918253105537",
+          "gid://shopify/ProductOption/19633966809479"
+        ],
+        "mediaIds": [
+          "gid://shopify/MediaImage/70333139976577",
+          "gid://shopify/MediaImage/70333139943809",
+          "gid://shopify/MediaImage/70333139845505",
+          "gid://shopify/MediaImage/70333140009345",
+          "gid://shopify/MediaImage/70333140042113",
+          "gid://shopify/MediaImage/70333140074881",
+          "gid://shopify/MediaImage/70333140107649",
+          "gid://shopify/MediaImage/70333140140417",
+          "gid://shopify/MediaImage/70333140173185",
+          "gid://shopify/MediaImage/70333140205953",
+          "gid://shopify/MediaImage/70333140238721"
+        ],
+        "userErrors": [],
+        "checks": {
+          "title": true,
+          "bodyTextAndMarkup": true,
+          "seo": true,
+          "protectedFields": true
+        },
+        "updatedAt": "2026-11-16T16:08:38Z"
+      }
+    ],
+    "mediaAttempts": [
+      {
+        "id": "15413085733249",
+        "variants": 6
+      }
+    ],
+    "mediaConfirmed": [
+      {
+        "id": "15413085733249",
+        "variants": 6,
+        "checks": {
+          "allOtherFieldsPreserved": true,
+          "sixExactMediaAssociations": true,
+          "unmatchedStyle3Unchanged": true,
+          "galleryOrderAndFilesPreserved": true
+        },
+        "userErrors": [],
+        "updatedAt": "2026-11-16T16:07:29Z",
+        "newUploads": 0
+      }
+    ],
+    "unknown": [],
+    "inflight": null,
+    "requestedParallelAgents": 100,
+    "actualSubagentsStarted": 6,
+    "totalConcurrentSlots": 7,
+    "remoteSubagentWrites": 0,
+    "merchantWrites": 0,
+    "metricoolWrites": 0,
+    "collectionAttempt": {
+      "id": "gid://shopify/Collection/688577577345",
+      "field": "seo.description"
+    },
+    "collectionCorrectionAttempt": {
+      "id": "gid://shopify/Collection/688577577345",
+      "reason": "Restore unintended null SEO title; explicit full SEO input"
+    },
+    "resolvedUncertainties": [
+      {
+        "original": {
+          "operation": "collection-readback",
+          "checks": {
+            "description": true,
+            "allOtherNativeFieldsPreserved": false,
+            "titleAndCanonicalHandlePreserved": true,
+            "sourcesPreserved": true
+          }
+        },
+        "resolution": "Corrective full SEO input restored the exact former title and retained the reviewed new description; full readback passed.",
+        "checks": {
+          "newDescription": true,
+          "originalSeoTitleRestored": true,
+          "allOtherNativeFieldsPreserved": true,
+          "sourcesPreserved": true
+        }
+      }
+    ],
+    "collectionConfirmed": {
+      "id": "gid://shopify/Collection/688577577345",
+      "checks": {
+        "newDescription": true,
+        "originalSeoTitleRestored": true,
+        "allOtherNativeFieldsPreserved": true,
+        "sourcesPreserved": true
+      },
+      "userErrors": [],
+      "updatedAt": "2026-11-16T16:11:04Z",
+      "mutationCalls": 2,
+      "correctiveCalls": 1,
+      "fieldChangedFinally": "seo.description"
+    },
+    "bodyAmendmentAttempts": [
+      {
+        "id": "15478656532865",
+        "reason": "Reproduced 438px overflow from redundant three-column table"
+      }
+    ],
+    "bodyAmendments": [
+      {
+        "id": "15478656532865",
+        "checks": {
+          "body": true,
+          "allOtherFieldsPreserved": true,
+          "sixRowsPreserved": true
+        },
+        "userErrors": [],
+        "updatedAt": "2026-11-16T16:18:50Z",
+        "reason": "Removed redundant column; six choices kept, wrapping constrained within this product table."
+      }
+    ],
+    "altAttempt": {
+      "id": "15422985765249",
+      "files": 8
+    },
+    "altConfirmed": {
+      "id": "15422985765249",
+      "files": 8,
+      "checks": {
+        "onlyEightAltFieldsChanged": true,
+        "eightNeutralAlts": true,
+        "sameAssetIdsUrlsOrder": true
+      },
+      "userErrors": [],
+      "updatedAt": "2026-11-16T16:19:57Z",
+      "imageContentChanged": false
+    }
+  },
+  "sourceSnapshots": [
+    {
+      "localFile": "kitchen/15413085733249-cj-detail-raw.json",
+      "rawSha256": "4b9c5a23246ed7dd9fc32b47eb2a286a85d7d3931bac8785d61d96c5194fd4f5",
+      "rawPrivateNotUploaded": true,
+      "snapshot": {
+        "pid": "2605290353091614800",
+        "productName": "[\"跨境姜蒜磨泥器陶瓷研磨盘子手动磨蒜盘厨房捣蒜泥神器水果打泥器\",\"跨境姜蒜磨泥器陶瓷\",\"研磨盘子手动磨蒜盘厨房\"]",
+        "productNameEn": "Ceramic Grinding Dish For Ginger And Garlic Paste",
+        "productSku": "CJCJ2914424",
+        "bigImage": "https://cf.cjdropshipping.com/quick/product/e7edb48c-91e3-4fb4-9703-11db8e8cd485.jpg",
+        "productImageSet": [
+          "https://cf.cjdropshipping.com/quick/product/57a9e29a-76a8-466f-8473-c53c1b0f455e.jpg",
+          "https://cf.cjdropshipping.com/quick/product/e3269246-6973-49f5-a6df-03d2a3c55b10.jpg",
+          "https://cf.cjdropshipping.com/quick/product/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg",
+          "https://cf.cjdropshipping.com/quick/product/a1a4faa6-a295-46ed-886c-c4cf0d42abb5.jpg",
+          "https://cf.cjdropshipping.com/quick/product/837e04a2-fe4c-4073-9312-8d4f7c6313e5.jpg",
+          "https://cf.cjdropshipping.com/quick/product/e7edb48c-91e3-4fb4-9703-11db8e8cd485.jpg",
+          "https://cf.cjdropshipping.com/quick/product/409102e8-83c3-4ab8-a89e-65bebdb4d6ef.jpg",
+          "https://cf.cjdropshipping.com/quick/product/1f3b11bf-d9f6-4d66-bbe9-e4900551b64d.jpg",
+          "https://cf.cjdropshipping.com/quick/product/f1e76532-34a9-4c5d-98bd-03201ab06048.jpg"
+        ],
+        "productWeight": "200.00",
+        "productUnit": null,
+        "packingWeight": "220.00",
+        "packingKey": "[\"PLASTIC_BAG\"]",
+        "description": "<p><b>Product information:</b><br>Overview:<br>This Nordic-style ceramic ginger and garlic grater is crafted from high-quality ceramic, featuring a manual design that is safe and easy to use—ideal for making garlic paste, ginger puree, or fruit mash in the kitchen. The grinding surface with a diameter of 11.7cm offers ample space for efficient preparation while blending functionality with aesthetic appeal.<br><br>Specification:<br>Material: Ceramic<br>Size: Diameter 11.7cm<br>Style: Nordic</p>\n<br>\n<b>Packing list: </b>\n<br>Mud mixer * 1\n<br>\n<p></p>\n<b>Product Image:</b>\n<br>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/03/487a98ef-d4b4-4607-9084-1940fbf6c637_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/03/5c828a8f-ebec-4e9b-a054-cd08f1b37168_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/03/c46e0ab7-d77d-4ec6-8af0-dbb13bea3edb_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/03/cb84c460-a553-494b-b6f9-e51d18dc9914_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/03/8a03c070-f8d4-471d-94fe-fcba27b9d837_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/03/b97ed2c4-d04c-4a90-9895-7b875a0d8e46_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/03/488a9023-1773-4971-b053-40393b5016ff_trans.jpeg\">",
+        "variants": [
+          {
+            "vid": "2605290353091615400",
+            "pid": "2605290353091614800",
+            "variantName": null,
+            "variantNameEn": "Ceramic Grinding Dish For Ginger And Garlic Paste 01Style",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/1f3b11bf-d9f6-4d66-bbe9-e4900551b64d.jpg",
+            "variantSku": "CJCJ291442401AZ",
+            "variantKey": "01Style",
+            "variantLength": 165,
+            "variantWidth": 145,
+            "variantHeight": 50,
+            "variantVolume": 1196250,
+            "variantWeight": 220
+          },
+          {
+            "vid": "2605290353091615900",
+            "pid": "2605290353091614800",
+            "variantName": null,
+            "variantNameEn": "Ceramic Grinding Dish For Ginger And Garlic Paste 02Style",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/837e04a2-fe4c-4073-9312-8d4f7c6313e5.jpg",
+            "variantSku": "CJCJ291442402BY",
+            "variantKey": "02Style",
+            "variantLength": 165,
+            "variantWidth": 145,
+            "variantHeight": 50,
+            "variantVolume": 1196250,
+            "variantWeight": 220
+          },
+          {
+            "vid": "2605290353091616400",
+            "pid": "2605290353091614800",
+            "variantName": null,
+            "variantNameEn": "Ceramic Grinding Dish For Ginger And Garlic Paste 03Style",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/f1e76532-34a9-4c5d-98bd-03201ab06048.jpg",
+            "variantSku": "CJCJ291442403CX",
+            "variantKey": "03Style",
+            "variantLength": 165,
+            "variantWidth": 145,
+            "variantHeight": 50,
+            "variantVolume": 1196250,
+            "variantWeight": 220
+          },
+          {
+            "vid": "2605290353091616800",
+            "pid": "2605290353091614800",
+            "variantName": null,
+            "variantNameEn": "Ceramic Grinding Dish For Ginger And Garlic Paste 04Style",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/409102e8-83c3-4ab8-a89e-65bebdb4d6ef.jpg",
+            "variantSku": "CJCJ291442404DW",
+            "variantKey": "04Style",
+            "variantLength": 165,
+            "variantWidth": 145,
+            "variantHeight": 50,
+            "variantVolume": 1196250,
+            "variantWeight": 220
+          },
+          {
+            "vid": "2605290353091617300",
+            "pid": "2605290353091614800",
+            "variantName": null,
+            "variantNameEn": "Ceramic Grinding Dish For Ginger And Garlic Paste 05Style",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/e3269246-6973-49f5-a6df-03d2a3c55b10.jpg",
+            "variantSku": "CJCJ291442405EV",
+            "variantKey": "05Style",
+            "variantLength": 165,
+            "variantWidth": 145,
+            "variantHeight": 50,
+            "variantVolume": 1196250,
+            "variantWeight": 220
+          },
+          {
+            "vid": "2605290353091617700",
+            "pid": "2605290353091614800",
+            "variantName": null,
+            "variantNameEn": "Ceramic Grinding Dish For Ginger And Garlic Paste 06Style",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg",
+            "variantSku": "CJCJ291442406FU",
+            "variantKey": "06Style",
+            "variantLength": 165,
+            "variantWidth": 145,
+            "variantHeight": 50,
+            "variantVolume": 1196250,
+            "variantWeight": 220
+          },
+          {
+            "vid": "2605290353091618200",
+            "pid": "2605290353091614800",
+            "variantName": null,
+            "variantNameEn": "Ceramic Grinding Dish For Ginger And Garlic Paste 07Style",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/57a9e29a-76a8-466f-8473-c53c1b0f455e.jpg",
+            "variantSku": "CJCJ291442407GT",
+            "variantKey": "07Style",
+            "variantLength": 165,
+            "variantWidth": 145,
+            "variantHeight": 50,
+            "variantVolume": 1196250,
+            "variantWeight": 220
+          }
+        ]
+      },
+      "weightUnitOrCompositionNotInferred": true
+    },
+    {
+      "localFile": "kitchen/15422985765249-cj-detail-raw.json",
+      "rawSha256": "55e04f0db0cb16599a8b57f2f067f28881a7f38a989142f8a7758e7ffd541cb1",
+      "rawPrivateNotUploaded": true,
+      "snapshot": {
+        "pid": "2606050539191608100",
+        "productName": "[\"亚马逊爆款麦秸秆PP304不锈钢砧板切菜板 食品级不锈钢塑料菜板\",\"亚马逊爆款麦秸秆\",\"pp304不锈钢砧板切菜板\"]",
+        "productNameEn": "Pure Titanium Cutting Board Food-grade",
+        "productSku": "CJCJ2922698",
+        "bigImage": "https://oss-cf.cjdropshipping.com/product/2026/06/05/05/99231bb9-900b-47e8-a7d0-e0ac670ebe98.jpg",
+        "productImageSet": [
+          "https://oss-cf.cjdropshipping.com/product/2026/06/05/05/fca9167f-0522-4c39-96de-0bc08198d408_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/06/05/05/4fd67206-36af-4003-841f-c24a1481c75f_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/06/05/05/65364c29-e972-4506-ba07-5e95a516792b_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/06/05/05/29eef77a-7671-4996-aed9-178a3ed6a76e_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/06/05/05/99231bb9-900b-47e8-a7d0-e0ac670ebe98.jpg",
+          "https://oss-cf.cjdropshipping.com/product/2026/06/05/05/dce7b0bd-ab10-4ddc-b979-c147580ddadb_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/06/05/05/7cb90df3-2f42-40df-ae60-9a671717faf4_trans.jpeg"
+        ],
+        "productWeight": "1150.00",
+        "productUnit": null,
+        "packingWeight": "1175.00",
+        "packingKey": "[\"PLASTIC_BAG\"]",
+        "description": "<p><b>Product information:</b><br/>Specifications: Pure titanium [food-grade], snowflake pattern, 38.5 × 26.5 cm – m ‑ F3622 – color box<br/> Material: Plastic<br/> Style: Modern minimalist</p><br/><b>Packing list: </b><br/>Vegetable board * 1<br/><b>Product Image:</b><br/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/d92c53c0-7f73-4ccf-975a-32f2defcb441_trans.jpeg\"/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/c45055e1-a2ee-452b-b81c-7f0e976f414b_trans.jpeg\"/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/124c24c8-1d49-4127-a6f1-41932705edab_trans.jpeg\"/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/217a8637-7bf9-4350-bce4-4bedc733e37a_trans.jpeg\"/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/5330820f-841a-47ea-8995-657b792f39eb_trans.jpeg\"/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/6082602c-9f3e-4d97-98a0-05fbb89f0a22_trans.jpeg\"/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/0769f4b8-3050-41a7-9922-d5edb9617984_trans.jpeg\"/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/45498ca4-a533-47a0-9f90-8304ba98310c_trans.jpeg\"/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/0d7da243-3549-4d70-a759-7e0188ee212e_trans.jpeg\"/><img src=\"https://oss-cf.cjdropshipping.com/product/2026/06/05/05/11ad346f-5ef4-4ec4-9dbe-256569c38b0c_trans.jpeg\"/>",
+        "variants": [
+          {
+            "vid": "2606050539191608800",
+            "pid": "2606050539191608100",
+            "variantName": null,
+            "variantNameEn": "Pure Titanium Cutting Board Food-grade Pure titanium snowflakes 38.5x26.5",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/06/05/05/7cb90df3-2f42-40df-ae60-9a671717faf4_trans.jpeg",
+            "variantSku": "CJCJ292269801AZ",
+            "variantKey": "Pure titanium snowflakes-38.5x26.5",
+            "variantLength": 400,
+            "variantWidth": 280,
+            "variantHeight": 50,
+            "variantVolume": 5600000,
+            "variantWeight": 1175
+          }
+        ]
+      },
+      "weightUnitOrCompositionNotInferred": true
+    },
+    {
+      "localFile": "home/r261_cj_15478656532865.json",
+      "rawSha256": "10e0d0712f4de0d2a818c596cc46c4b2dd8a8d358d6825087fab6baa93fe7a0d",
+      "rawPrivateNotUploaded": true,
+      "snapshot": {
+        "pid": "2607290808481621300",
+        "productName": "[\"一壶二杯快客杯便携式旅行茶具车载户外泡茶器商务年会礼品伴手礼\",\"一壶二杯快客杯\",\"便携式旅行茶具车载户外泡茶\"]",
+        "productNameEn": "A Teapot And Two Cupsconvenient Portable Travel Tea Set",
+        "productSku": "CJYD3017316",
+        "bigImage": "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/f811b7e6-930b-43de-bc56-5da2aae92cba_trans.jpeg",
+        "productImageSet": [
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/40804b6d-68ea-4f95-b27b-801108ed42e3_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/56db1060-18dd-4fce-9d6b-5db374bf5d8d_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/85a4be31-1bae-4561-966e-728bd2fe173c_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/f811b7e6-930b-43de-bc56-5da2aae92cba_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/9580cb02-7561-42ea-9e20-23f715834456_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/89dfd174-87cf-49bc-b872-b1995ecc3570_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/3195ae7b-76ef-4346-9047-6e604e83a76c_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/c7c4a9ae-83ce-46b3-95f6-4b1ecb95a09f_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/29aa4f72-97db-4557-abbb-38ed05020730_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/342af986-789a-41f7-b03f-c235a8b3ccb9_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/5239f141-6a6f-4572-9fb5-8df3365d854c_trans.jpeg"
+        ],
+        "productWeight": "400.00-500.00",
+        "productUnit": null,
+        "packingWeight": "450.00-550.00",
+        "packingKey": "[\"PLASTIC_BAG\"]",
+        "description": "<p><b>Product information:</b><br/>Colors: Fu—One Teapot, Two Cups [Yao Bian Green] + Portable Bag; Fu—One Teapot, Two Cups [Zen Black] + Portable Bag; Fu—One Teapot, Two Cups [Elegant Red] + Portable Bag; Fu (No Portable Bag)—One Teapot, Two Cups [Yao Bian Green]; Fu (No Portable Bag)—One Teapot, Two Cups [Zen Black]; Fu (No Portable Bag)—One Teapot, Two Cups [Elegant Red]<br/>Style: Minimalist Elegance<br/>Material: Ceramic<br/>Design Style: Modern Minimalism<br/></p>\n<br/>\n<b>Packing list: </b>\n<br/>Teapot x 1pc Cup x 2pcs/Teapot x 1pc Cup x 2pcs Portable bag x 1pc\n\n<b>Product Image:</b>\n<br/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/07/29/08/db4008b1-103d-48bf-8bae-89eaeb291af6_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/07/29/08/9d666e08-ce2d-42c1-a176-f6f1db40ac74_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/07/29/08/be8ab859-402e-47f6-a14d-46018ed8edf9_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/07/29/08/1ac6faf8-a3ca-46d7-9321-9b4a83edda5e_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/07/29/08/152004e8-dadb-4edf-a097-327cd7b9e51e_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/07/29/08/bc2560f4-c76a-44d7-bf98-2dcb62c3ac49_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/07/29/08/ccd4dd47-0ae5-4b51-acaa-97973275d305_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/07/29/08/afeee7a2-9b5d-4f3b-bdb8-bdfaae8b4e6d_trans.jpeg\"/>",
+        "variants": [
+          {
+            "vid": "2607290808481621900",
+            "pid": "2607290808481621300",
+            "variantName": null,
+            "variantNameEn": "A Teapot And Two Cupsconvenient Portable Travel Tea Set Elegant Red With a portable bag",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/29aa4f72-97db-4557-abbb-38ed05020730_trans.jpeg",
+            "variantSku": "CJYD301731602BY",
+            "variantKey": "Elegant Red-With a portable bag",
+            "variantLength": 150,
+            "variantWidth": 150,
+            "variantHeight": 120,
+            "variantVolume": 2700000,
+            "variantWeight": 550
+          },
+          {
+            "vid": "2607290808481622400",
+            "pid": "2607290808481621300",
+            "variantName": null,
+            "variantNameEn": "A Teapot And Two Cupsconvenient Portable Travel Tea Set Elegant Red Without a bag",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/40804b6d-68ea-4f95-b27b-801108ed42e3_trans.jpeg",
+            "variantSku": "CJYD301731603CX",
+            "variantKey": "Elegant Red-Without a bag",
+            "variantLength": 150,
+            "variantWidth": 150,
+            "variantHeight": 120,
+            "variantVolume": 2700000,
+            "variantWeight": 450
+          },
+          {
+            "vid": "2607290808481622900",
+            "pid": "2607290808481621300",
+            "variantName": null,
+            "variantNameEn": "A Teapot And Two Cupsconvenient Portable Travel Tea Set Kiln Baked Green With a portable bag",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/56db1060-18dd-4fce-9d6b-5db374bf5d8d_trans.jpeg",
+            "variantSku": "CJYD301731604DW",
+            "variantKey": "Kiln Baked Green-With a portable bag",
+            "variantLength": 150,
+            "variantWidth": 150,
+            "variantHeight": 120,
+            "variantVolume": 2700000,
+            "variantWeight": 550
+          },
+          {
+            "vid": "2607290808481623400",
+            "pid": "2607290808481621300",
+            "variantName": null,
+            "variantNameEn": "A Teapot And Two Cupsconvenient Portable Travel Tea Set Kiln Baked Green Without a bag",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/9580cb02-7561-42ea-9e20-23f715834456_trans.jpeg",
+            "variantSku": "CJYD301731605EV",
+            "variantKey": "Kiln Baked Green-Without a bag",
+            "variantLength": 150,
+            "variantWidth": 150,
+            "variantHeight": 120,
+            "variantVolume": 2700000,
+            "variantWeight": 450
+          },
+          {
+            "vid": "2607290808481624000",
+            "pid": "2607290808481621300",
+            "variantName": null,
+            "variantNameEn": "A Teapot And Two Cupsconvenient Portable Travel Tea Set Zen Black With a portable bag",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/c7c4a9ae-83ce-46b3-95f6-4b1ecb95a09f_trans.jpeg",
+            "variantSku": "CJYD301731606FU",
+            "variantKey": "Zen Black-With a portable bag",
+            "variantLength": 150,
+            "variantWidth": 150,
+            "variantHeight": 120,
+            "variantVolume": 2700000,
+            "variantWeight": 550
+          },
+          {
+            "vid": "2607290808481624500",
+            "pid": "2607290808481621300",
+            "variantName": null,
+            "variantNameEn": "A Teapot And Two Cupsconvenient Portable Travel Tea Set Zen Black Without a bag",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/07/29/08/342af986-789a-41f7-b03f-c235a8b3ccb9_trans.jpeg",
+            "variantSku": "CJYD301731607GT",
+            "variantKey": "Zen Black-Without a bag",
+            "variantLength": 150,
+            "variantWidth": 150,
+            "variantHeight": 120,
+            "variantVolume": 2700000,
+            "variantWeight": 450
+          }
+        ]
+      },
+      "weightUnitOrCompositionNotInferred": true
+    },
+    {
+      "localFile": "home/r261_cj_15451640398209.json",
+      "rawSha256": "78d21d525435b219303d17eb85f98c5ad59459cbf6c76fdc7cdba57910ac8e61",
+      "rawPrivateNotUploaded": true,
+      "snapshot": {
+        "pid": "2605070610201621700",
+        "productName": "[\"金福兰创意莫尔条纹新六款物理动态倒影反射陶瓷咖啡杯创意设计\",\"金福兰创意莫尔条纹\",\"新六款物理动态倒影\"]",
+        "productNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup",
+        "productSku": "CJYD2872640",
+        "bigImage": "https://cf.cjdropshipping.com/quick/product/d8b07bb4-3aa0-4d5a-a050-cf44608b8bfe.jpg",
+        "productImageSet": [
+          "https://cf.cjdropshipping.com/quick/product/520e8253-5dac-4157-8841-5f8867b15152.jpg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/bf4938b3-759e-4dd4-b05f-082939c2f9d9_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/8580f37c-91d8-49fa-836f-6aa5eec28203_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/31b93d5c-0949-46c1-bf6b-c8d0a47e0e49_trans.jpeg",
+          "https://cf.cjdropshipping.com/quick/product/d8b07bb4-3aa0-4d5a-a050-cf44608b8bfe.jpg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/413aac31-a7db-45c6-a2e2-d5963904072a_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/9aac1ed1-de3c-406e-8a33-1a58fb8b1e7f_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/4bed142a-93a9-4f44-909b-a55cfa4ded8c_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/4ea815d6-e2f3-49a8-96d7-725665fd7302_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/e5fc383a-c0b8-42f2-a555-b77406ffb39e_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/599f6e37-c4bc-4751-a5bb-37c49b78a831_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/078e679b-a55e-4456-9a0b-c21098f796a6_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/d280646f-2f78-4a2f-8a5c-e8fdf4b213fb_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/d07fd1d5-5a19-4d89-b187-40841256e443_trans.jpeg"
+        ],
+        "productWeight": "635.00-650.00",
+        "productUnit": null,
+        "packingWeight": "690.00",
+        "packingKey": "[\"PLASTIC_BAG\"]",
+        "description": "<p><b>Product information:</b><br>Pattern: Solid Color<br> Colors: Upgraded Horse Gold, Upgraded Horse Silver, Upgraded Butterfly Gold, Upgraded Butterfly Silver, Lion King Gold, Lion King Silver, Dynamic Hummingbird Gold, Dynamic Hummingbird Silver, Wild Goose Gold, Wild Goose Silver, Mike Gold, Mike Silver<br> Style: Simple and Elegant<br> Material: Ceramic<br> Suitable For: Office, Home, Bar, Restaurant, Lounge, Café, Tea House<br> Packaging Specification: Single Piece<br> External Dimensions (Height, Mouth Diameter): 7 x 8.5 inches<br> Style: Modern Minimalist<br> Capacity: 240 ml</p>\n<br>\n<b>Packing list: </b>\n<br>Cup X 1pc\n<br>\n<p></p>\n<b>Product Image:</b>\n<br>\n<img src=\"https://cf.cjdropshipping.com/quick/product/7628c773-75c4-4812-a3e9-94c022b15fd4.jpg\">\n<img src=\"https://cf.cjdropshipping.com/quick/product/49a2b22d-f8c4-4a1e-a253-06f5fb298df4.jpg\">\n<img src=\"https://cf.cjdropshipping.com/quick/product/aaad05f2-10eb-4984-8dc9-3762e0262455.jpg\">\n<img src=\"https://cf.cjdropshipping.com/quick/product/e58e40dc-b7bd-45b2-9705-c5bc6375f713.jpg\">\n<img src=\"https://cf.cjdropshipping.com/quick/product/594f0c0f-ffc7-49e3-8302-0c6bff712427.jpg\">\n<img src=\"https://cf.cjdropshipping.com/quick/product/8c808f9f-1de7-409c-a1e9-8ab1158f2bfb.jpg\">\n<img src=\"https://cf.cjdropshipping.com/quick/product/5924f904-91ba-42ba-841d-45c92c596df8.jpg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/05/07/06/9d586d9c-563b-4de2-9ac0-85fd8c629c83_trans.jpeg\">",
+        "variants": [
+          {
+            "vid": "2605070610201622300",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Upgraded Majin 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/599f6e37-c4bc-4751-a5bb-37c49b78a831_trans.jpeg",
+            "variantSku": "CJYD287264001AZ",
+            "variantKey": "Upgraded Majin-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201622800",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Upgraded Version Of Ma Yin 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/078e679b-a55e-4456-9a0b-c21098f796a6_trans.jpeg",
+            "variantSku": "CJYD287264002BY",
+            "variantKey": "Upgraded Version Of Ma Yin-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201623300",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Upgraded Butterfly Gold 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/d280646f-2f78-4a2f-8a5c-e8fdf4b213fb_trans.jpeg",
+            "variantSku": "CJYD287264003CX",
+            "variantKey": "Upgraded Butterfly Gold-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201623800",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Upgraded Butterfly Silver 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/413aac31-a7db-45c6-a2e2-d5963904072a_trans.jpeg",
+            "variantSku": "CJYD287264004DW",
+            "variantKey": "Upgraded Butterfly Silver-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201624400",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Lion King Gold 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/31b93d5c-0949-46c1-bf6b-c8d0a47e0e49_trans.jpeg",
+            "variantSku": "CJYD287264005EV",
+            "variantKey": "Lion King Gold-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201624900",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Lion King Silver 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/9aac1ed1-de3c-406e-8a33-1a58fb8b1e7f_trans.jpeg",
+            "variantSku": "CJYD287264006FU",
+            "variantKey": "Lion King Silver-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201625500",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Dynamic Hummingbird Gold 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/bf4938b3-759e-4dd4-b05f-082939c2f9d9_trans.jpeg",
+            "variantSku": "CJYD287264007GT",
+            "variantKey": "Dynamic Hummingbird Gold-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201626000",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Dynamic Hummingbird Silver 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/4bed142a-93a9-4f44-909b-a55cfa4ded8c_trans.jpeg",
+            "variantSku": "CJYD287264008HS",
+            "variantKey": "Dynamic Hummingbird Silver-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201626500",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Wild Goose Gold 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/4ea815d6-e2f3-49a8-96d7-725665fd7302_trans.jpeg",
+            "variantSku": "CJYD287264009IR",
+            "variantKey": "Wild Goose Gold-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201627000",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Goose Silver 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/e5fc383a-c0b8-42f2-a555-b77406ffb39e_trans.jpeg",
+            "variantSku": "CJYD287264010JQ",
+            "variantKey": "Goose Silver-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201627600",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Michael King 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/8580f37c-91d8-49fa-836f-6aa5eec28203_trans.jpeg",
+            "variantSku": "CJYD287264011KP",
+            "variantKey": "Michael King-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          },
+          {
+            "vid": "2605070610201628100",
+            "pid": "2605070610201621700",
+            "variantName": null,
+            "variantNameEn": "Physical Dynamic Reflection Ceramic Coffee Cup Mike Silver 240ml",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/07/06/d07fd1d5-5a19-4d89-b187-40841256e443_trans.jpeg",
+            "variantSku": "CJYD287264012LO",
+            "variantKey": "Mike Silver-240ml",
+            "variantLength": 225,
+            "variantWidth": 225,
+            "variantHeight": 120,
+            "variantVolume": 6075000,
+            "variantWeight": 690
+          }
+        ]
+      },
+      "weightUnitOrCompositionNotInferred": true
+    }
+  ],
+  "successfulCjProductDetailReads": 4,
+  "existingVariantMediaMapping": {
+    "variables": {
+      "productId": "gid://shopify/Product/15413085733249",
+      "variants": [
+        {
+          "id": "gid://shopify/ProductVariant/55748918575489",
+          "mediaId": "gid://shopify/MediaImage/69552924623233"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55748918608257",
+          "mediaId": "gid://shopify/MediaImage/69552924524929"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55748918673793",
+          "mediaId": "gid://shopify/MediaImage/69552924590465"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55748918706561",
+          "mediaId": "gid://shopify/MediaImage/69552924426625"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55748918739329",
+          "mediaId": "gid://shopify/MediaImage/69552924459393"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/55748918772097",
+          "mediaId": "gid://shopify/MediaImage/69552924393857"
+        }
+      ]
+    },
+    "allowPartialUpdates": false,
+    "newMedia": 0,
+    "unresolved": [
+      {
+        "nativeVariantId": "gid://shopify/ProductVariant/55748918641025",
+        "exactSku": "CJCJ291442403CX",
+        "nativeOptionLabel": "Stil 3",
+        "supplierProductId": "2605290353091614800",
+        "supplierChildVariantId": "2605290353091616400",
+        "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/f1e76532-34a9-4c5d-98bd-03201ab06048.jpg",
+        "status": "NO_EXACT_EXISTING_MEDIA",
+        "existingMediaId": null,
+        "existingURL": null,
+        "match": "No gallery image with the exact supplier variant-image basename; no visual substitute inferred",
+        "currentAlt": null
+      }
+    ],
+    "mapping": {
+      "schema": "r261-existing-native-variant-image-map-v1",
+      "productId": "15413085733249",
+      "productTitle": "Ingwerreibe aus Keramik · für Knoblauch & Wasabi, mit Schälchen",
+      "status": "PARTIAL_6_OF_7_EXACT_EXISTING_MEDIA_MATCHES",
+      "scope": "Read-only mapping proposal. Does not reorder, replace, upload, or mutate existing gallery media.",
+      "counts": {
+        "nativeVariants": 7,
+        "supplierVariants": 7,
+        "matchedExactSkuAndImage": 6,
+        "unmatchedMissingExactImage": 1,
+        "nativeGalleryImages": 9
+      },
+      "method": "Exact native SKU and supplier child variant ID verified for every row. Supplier variant-image basename was compared with all current native IMAGE media URL basenames after dropping URL query parameters. Unique filename matches were visually confirmed in the saved contact sheet. No gallery image matched the exact supplier variant image for Stil 3 (CJCJ291442403CX), so it is left unresolved.",
+      "mappings": [
+        {
+          "nativeVariantId": "gid://shopify/ProductVariant/55748918575489",
+          "exactSku": "CJCJ291442401AZ",
+          "nativeOptionLabel": "Stil 1",
+          "supplierProductId": "2605290353091614800",
+          "supplierChildVariantId": "2605290353091615400",
+          "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/1f3b11bf-d9f6-4d66-bbe9-e4900551b64d.jpg",
+          "status": "MATCHED_EXISTING_MEDIA",
+          "existingMediaId": "gid://shopify/MediaImage/69552924623233",
+          "existingURL": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f3b11bf-d9f6-4d66-bbe9-e4900551b64d.jpg?v=1780269312",
+          "match": "unique exact filename match; existing gallery media",
+          "currentAlt": "Keramik-Reibe 8"
+        },
+        {
+          "nativeVariantId": "gid://shopify/ProductVariant/55748918608257",
+          "exactSku": "CJCJ291442402BY",
+          "nativeOptionLabel": "Stil 2",
+          "supplierProductId": "2605290353091614800",
+          "supplierChildVariantId": "2605290353091615900",
+          "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/837e04a2-fe4c-4073-9312-8d4f7c6313e5.jpg",
+          "status": "MATCHED_EXISTING_MEDIA",
+          "existingMediaId": "gid://shopify/MediaImage/69552924524929",
+          "existingURL": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/837e04a2-fe4c-4073-9312-8d4f7c6313e5.jpg?v=1780269312",
+          "match": "unique exact filename match; existing gallery media",
+          "currentAlt": "Keramik-Reibe 5"
+        },
+        {
+          "nativeVariantId": "gid://shopify/ProductVariant/55748918641025",
+          "exactSku": "CJCJ291442403CX",
+          "nativeOptionLabel": "Stil 3",
+          "supplierProductId": "2605290353091614800",
+          "supplierChildVariantId": "2605290353091616400",
+          "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/f1e76532-34a9-4c5d-98bd-03201ab06048.jpg",
+          "status": "NO_EXACT_EXISTING_MEDIA",
+          "existingMediaId": null,
+          "existingURL": null,
+          "match": "No gallery image with the exact supplier variant-image basename; no visual substitute inferred",
+          "currentAlt": null
+        },
+        {
+          "nativeVariantId": "gid://shopify/ProductVariant/55748918673793",
+          "exactSku": "CJCJ291442404DW",
+          "nativeOptionLabel": "Stil 4",
+          "supplierProductId": "2605290353091614800",
+          "supplierChildVariantId": "2605290353091616800",
+          "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/409102e8-83c3-4ab8-a89e-65bebdb4d6ef.jpg",
+          "status": "MATCHED_EXISTING_MEDIA",
+          "existingMediaId": "gid://shopify/MediaImage/69552924590465",
+          "existingURL": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/409102e8-83c3-4ab8-a89e-65bebdb4d6ef.jpg?v=1780269312",
+          "match": "unique exact filename match; existing gallery media",
+          "currentAlt": "Keramik-Reibe 7"
+        },
+        {
+          "nativeVariantId": "gid://shopify/ProductVariant/55748918706561",
+          "exactSku": "CJCJ291442405EV",
+          "nativeOptionLabel": "Stil 5",
+          "supplierProductId": "2605290353091614800",
+          "supplierChildVariantId": "2605290353091617300",
+          "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/e3269246-6973-49f5-a6df-03d2a3c55b10.jpg",
+          "status": "MATCHED_EXISTING_MEDIA",
+          "existingMediaId": "gid://shopify/MediaImage/69552924426625",
+          "existingURL": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e3269246-6973-49f5-a6df-03d2a3c55b10.jpg?v=1780269311",
+          "match": "unique exact filename match; existing gallery media",
+          "currentAlt": "Keramik-Reibe 2"
+        },
+        {
+          "nativeVariantId": "gid://shopify/ProductVariant/55748918739329",
+          "exactSku": "CJCJ291442406FU",
+          "nativeOptionLabel": "Stil 6",
+          "supplierProductId": "2605290353091614800",
+          "supplierChildVariantId": "2605290353091617700",
+          "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg",
+          "status": "MATCHED_EXISTING_MEDIA",
+          "existingMediaId": "gid://shopify/MediaImage/69552924459393",
+          "existingURL": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311",
+          "match": "unique exact filename match; existing gallery media",
+          "currentAlt": "Keramik-Reibe 3"
+        },
+        {
+          "nativeVariantId": "gid://shopify/ProductVariant/55748918772097",
+          "exactSku": "CJCJ291442407GT",
+          "nativeOptionLabel": "Stil 7",
+          "supplierProductId": "2605290353091614800",
+          "supplierChildVariantId": "2605290353091618200",
+          "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/57a9e29a-76a8-466f-8473-c53c1b0f455e.jpg",
+          "status": "MATCHED_EXISTING_MEDIA",
+          "existingMediaId": "gid://shopify/MediaImage/69552924393857",
+          "existingURL": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57a9e29a-76a8-466f-8473-c53c1b0f455e.jpg?v=1780269312",
+          "match": "unique exact filename match; existing gallery media",
+          "currentAlt": "Keramik-Reibe 1"
+        }
+      ]
+    }
+  },
+  "boardAltChanges": {
+    "before": [
+      {
+        "id": "gid://shopify/MediaImage/69635223847297",
+        "alt": "Titan-Schneidebrett «Chef» food-grade in der Küche"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635223880065",
+        "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 2"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635223912833",
+        "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 3"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635223945601",
+        "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 4"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635223978369",
+        "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 5"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635224011137",
+        "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 6"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635224043905",
+        "alt": "Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell – Ansicht 7"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69650184536449",
+        "alt": "LuxeStyle-Edit · Titan-Schneidebrett «Chef» · Food-Grade & antibakteriell"
+      }
+    ],
+    "files": [
+      {
+        "id": "gid://shopify/MediaImage/69635223847297",
+        "alt": "Zwei Produktansichten eines rechteckigen Schneidebretts mit Griffausschnitt"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635223880065",
+        "alt": "Rechteckiges Schneidebrett – Produktabbildung 2"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635223912833",
+        "alt": "Rechteckiges Schneidebrett – Produktabbildung 3"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635223945601",
+        "alt": "Rechteckiges Schneidebrett – Produktabbildung 4"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635223978369",
+        "alt": "Rechteckiges Schneidebrett – Produktabbildung 5"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635224011137",
+        "alt": "Rechteckiges Schneidebrett – Produktabbildung 6"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69635224043905",
+        "alt": "Rechteckiges Schneidebrett – Produktabbildung 7"
+      },
+      {
+        "id": "gid://shopify/MediaImage/69650184536449",
+        "alt": "Rechteckiges Schneidebrett – Produktabbildung 8"
+      }
+    ],
+    "allowedFields": [
+      "id",
+      "alt"
+    ],
+    "originalSourceOrFilenameChange": false,
+    "reason": "Remove unsupported material/food-grade/antibacterial claims from existing accessibility metadata."
+  },
+  "teaResponsiveAmendment": {
+    "productId": "gid://shopify/Product/15478656532865",
+    "beforeBody": "<!-- ls-var-v1 -->\n<p>Der Lieferant beschreibt dieses Teeservice als Set mit einer Teekanne und zwei passenden Tassen. Die Lieferantenangaben beschreiben das Set als Keramik. Für die Auswahl stehen drei Farbvarianten und je eine Ausführung mit oder ohne tragbare Tasche bereit. So kannst du vor der Bestellung gezielt festlegen, ob die Tasche dazugehören soll.</p>\n<h3>Farben und Ausführungen</h3>\n<p>Im Auswahlfeld findest du die folgenden Kombinationen. Die Bezeichnungen entsprechen den aktuell verfügbaren Ausführungen:</p>\n<table><thead><tr><th>Farbe</th><th>Ausführung</th><th>Auswahlhinweis</th></tr></thead><tbody>\n<tr><td>Elegantes Rot</td><td>Mit tragbarer Tasche</td><td>Set mit Tasche</td></tr>\n<tr><td>Elegantes Rot</td><td>Ohne Tasche</td><td>Set ohne Tasche</td></tr>\n<tr><td>Ofengebackenes Grün</td><td>Mit tragbarer Tasche</td><td>Set mit Tasche</td></tr>\n<tr><td>Ofengebackenes Grün</td><td>Ohne Tasche</td><td>Set ohne Tasche</td></tr>\n<tr><td>Zen Schwarz</td><td>Mit tragbarer Tasche</td><td>Set mit Tasche</td></tr>\n<tr><td>Zen Schwarz</td><td>Ohne Tasche</td><td>Set ohne Tasche</td></tr>\n</tbody></table>\n<h3>Lieferumfang und Grössenangaben</h3>\n<ul><li>Setbestandteile: eine Teekanne und zwei Tassen</li><li>Material laut Lieferantenangabe: Keramik</li><li>Bildangaben zum Fassungsvermögen: Teekanne 150 ml, grosse Tasse 105 ml, kleine Tasse 50 ml. Diese Werte stehen auf den zugeordneten Lieferantenbildern; eine eigene Messung liegt nicht vor.</li><li>Die Tasche ist nur in den Ausführungen «Mit tragbarer Tasche» enthalten.</li></ul>\n<div class=\"ls-produktdetails\"><h4>Weitere Angaben</h4><ul><li><strong>Material:</strong> Keramik laut Lieferantenangabe.</li><li><strong>Gewicht:</strong> Nicht zuverlässig ausgewiesen; die Gewichtsangaben unterscheiden sich je nach Quelle und Ausführung.</li></ul></div>\n<h3>Häufige Fragen</h3>\n<p><strong>Was ist im Set enthalten?</strong><br>Eine Teekanne und zwei Tassen. Bei der Auswahl «Mit tragbarer Tasche» kommt die Tasche dazu; bei «Ohne Tasche» ist sie nicht enthalten.</p>\n<p><strong>Wie wähle ich Farbe und Taschen-Ausführung?</strong><br>Wähle zuerst eine der drei Farbvarianten und danach «Mit tragbarer Tasche» oder «Ohne Tasche». Die sechs Kombinationen stehen einzeln im Auswahlfeld.</p>\n<p><strong>Welche Grössen- und Pflegeangaben gibt es?</strong><br>Die Lieferantenbilder nennen die oben aufgeführten Fassungsvermögen. Genaue Aussenmasse und Pflegefreigaben sind noch nicht bestätigt; Spülmaschinen- oder Mikrowelleneignung wird nicht zugesichert.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sub-kueche\">Küche &amp; Kochen</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+    "afterBody": "<!-- ls-var-v1 -->\n<p>Der Lieferant beschreibt dieses Teeservice als Set mit einer Teekanne und zwei passenden Tassen. Die Lieferantenangaben beschreiben das Set als Keramik. Für die Auswahl stehen drei Farbvarianten und je eine Ausführung mit oder ohne tragbare Tasche bereit. So kannst du vor der Bestellung gezielt festlegen, ob die Tasche dazugehören soll.</p>\n<h3>Farben und Ausführungen</h3>\n<p>Im Auswahlfeld findest du die folgenden Kombinationen. Die Bezeichnungen entsprechen den aktuell verfügbaren Ausführungen:</p>\n<table style=\"width:100%;table-layout:fixed;border-collapse:collapse;\"><thead><tr><th style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;width:50%;\">Farbe</th><th style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;width:50%;\">Ausführung</th></tr></thead><tbody><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Elegantes Rot</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Mit tragbarer Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Elegantes Rot</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ohne Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ofengebackenes Grün</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Mit tragbarer Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ofengebackenes Grün</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ohne Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Zen Schwarz</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Mit tragbarer Tasche</td></tr><tr><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Zen Schwarz</td><td style=\"padding:8px;white-space:normal;overflow-wrap:anywhere;hyphens:auto;vertical-align:top;\">Ohne Tasche</td></tr></tbody></table>\n<h3>Lieferumfang und Grössenangaben</h3>\n<ul><li>Setbestandteile: eine Teekanne und zwei Tassen</li><li>Material laut Lieferantenangabe: Keramik</li><li>Bildangaben zum Fassungsvermögen: Teekanne 150 ml, grosse Tasse 105 ml, kleine Tasse 50 ml. Diese Werte stehen auf den zugeordneten Lieferantenbildern; eine eigene Messung liegt nicht vor.</li><li>Die Tasche ist nur in den Ausführungen «Mit tragbarer Tasche» enthalten.</li></ul>\n<div class=\"ls-produktdetails\"><h4>Weitere Angaben</h4><ul><li><strong>Material:</strong> Keramik laut Lieferantenangabe.</li><li><strong>Gewicht:</strong> Nicht zuverlässig ausgewiesen; die Gewichtsangaben unterscheiden sich je nach Quelle und Ausführung.</li></ul></div>\n<h3>Häufige Fragen</h3>\n<p><strong>Was ist im Set enthalten?</strong><br>Eine Teekanne und zwei Tassen. Bei der Auswahl «Mit tragbarer Tasche» kommt die Tasche dazu; bei «Ohne Tasche» ist sie nicht enthalten.</p>\n<p><strong>Wie wähle ich Farbe und Taschen-Ausführung?</strong><br>Wähle zuerst eine der drei Farbvarianten und danach «Mit tragbarer Tasche» oder «Ohne Tasche». Die sechs Kombinationen stehen einzeln im Auswahlfeld.</p>\n<p><strong>Welche Grössen- und Pflegeangaben gibt es?</strong><br>Die Lieferantenbilder nennen die oben aufgeführten Fassungsvermögen. Genaue Aussenmasse und Pflegefreigaben sind noch nicht bestätigt; Spülmaschinen- oder Mikrowelleneignung wird nicht zugesichert.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sub-kueche\">Küche &amp; Kochen</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+    "reason": "Actual 360/390px DOM showed 438px document width; remove redundant third column and wrap only this table. All six color/bag choices remain unchanged."
+  },
+  "publicFinalAssessment": {
+    "run": "R261 final targeted post-amend public QA",
+    "capturedAtUTC": "r261-amended-20261116T162128Z",
+    "result": "PASS_WITH_LIMITS",
+    "scope": "Only amended tea table and board alt text were rechecked after root signal. Grater Stil 6 hero was separately confirmed by targeted scroll-into-view check. No store mutations from QA.",
+    "tea": {
+      "htmlAndJs200": true,
+      "descriptionJsEqualsNative": true,
+      "seoMetaCanonicalChecked": {
+        "metaMatchesNative": true,
+        "canonicalMatchesNative": true,
+        "h1": "Teeservice aus Keramik mit Teekanne und zwei Tassen",
+        "seoTitle": "Keramik-Teeservice mit Teekanne und 2 Tassen | LuxeStyle"
+      },
+      "variantsAndSkusMatch": true,
+      "variantCount": 6,
+      "bodyTableHeaders": [
+        "FARBE",
+        "AUSFÜHRUNG"
+      ],
+      "bodyTableRows": [
+        [
+          "Elegantes Rot",
+          "Mit tragbarer Tasche"
+        ],
+        [
+          "Elegantes Rot",
+          "Ohne Tasche"
+        ],
+        [
+          "Ofengebackenes Grün",
+          "Mit tragbarer Tasche"
+        ],
+        [
+          "Ofengebackenes Grün",
+          "Ohne Tasche"
+        ],
+        [
+          "Zen Schwarz",
+          "Mit tragbarer Tasche"
+        ],
+        [
+          "Zen Schwarz",
+          "Ohne Tasche"
+        ]
+      ],
+      "exactSixChoices": true,
+      "responsiveWidths": {
+        "360": {
+          "viewport": 360,
+          "document": 360,
+          "body": 360
+        },
+        "390": {
+          "viewport": 390,
+          "document": 390,
+          "body": 390
+        }
+      },
+      "noHorizontalOverflow": true,
+      "screenshots": [
+        "15478656532865-amended-360-table.png",
+        "15478656532865-amended-390-table.png"
+      ]
+    },
+    "board": {
+      "htmlAndJs200": true,
+      "nativeImageCount": 8,
+      "publicGalleryUniqueImageCount": 8,
+      "allPublicImageAltsMatchNative": true,
+      "altComparisons": [
+        {
+          "filename": "fca9167f-0522-4c39-96de-0bc08198d408_trans.jpg",
+          "mediaId": "69635223847297",
+          "nativeAlt": "Zwei Produktansichten eines rechteckigen Schneidebretts mit Griffausschnitt",
+          "publicAlt": "Zwei Produktansichten eines rechteckigen Schneidebretts mit Griffausschnitt",
+          "matches": true
+        },
+        {
+          "filename": "4fd67206-36af-4003-841f-c24a1481c75f_trans.jpg",
+          "mediaId": "69635223880065",
+          "nativeAlt": "Rechteckiges Schneidebrett – Produktabbildung 2",
+          "publicAlt": "Rechteckiges Schneidebrett – Produktabbildung 2",
+          "matches": true
+        },
+        {
+          "filename": "65364c29-e972-4506-ba07-5e95a516792b_trans.jpg",
+          "mediaId": "69635223912833",
+          "nativeAlt": "Rechteckiges Schneidebrett – Produktabbildung 3",
+          "publicAlt": "Rechteckiges Schneidebrett – Produktabbildung 3",
+          "matches": true
+        },
+        {
+          "filename": "29eef77a-7671-4996-aed9-178a3ed6a76e_trans.jpg",
+          "mediaId": "69635223945601",
+          "nativeAlt": "Rechteckiges Schneidebrett – Produktabbildung 4",
+          "publicAlt": "Rechteckiges Schneidebrett – Produktabbildung 4",
+          "matches": true
+        },
+        {
+          "filename": "99231bb9-900b-47e8-a7d0-e0ac670ebe98.jpg",
+          "mediaId": "69635223978369",
+          "nativeAlt": "Rechteckiges Schneidebrett – Produktabbildung 5",
+          "publicAlt": "Rechteckiges Schneidebrett – Produktabbildung 5",
+          "matches": true
+        },
+        {
+          "filename": "dce7b0bd-ab10-4ddc-b979-c147580ddadb_trans.jpg",
+          "mediaId": "69635224011137",
+          "nativeAlt": "Rechteckiges Schneidebrett – Produktabbildung 6",
+          "publicAlt": "Rechteckiges Schneidebrett – Produktabbildung 6",
+          "matches": true
+        },
+        {
+          "filename": "7cb90df3-2f42-40df-ae60-9a671717faf4_trans.jpg",
+          "mediaId": "69635224043905",
+          "nativeAlt": "Rechteckiges Schneidebrett – Produktabbildung 7",
+          "publicAlt": "Rechteckiges Schneidebrett – Produktabbildung 7",
+          "matches": true
+        },
+        {
+          "filename": "titan-schneidebrett-chef-food-grade-antibakteriell-edit.jpg",
+          "mediaId": "69650184536449",
+          "nativeAlt": "Rechteckiges Schneidebrett – Produktabbildung 8",
+          "publicAlt": "Rechteckiges Schneidebrett – Produktabbildung 8",
+          "matches": true
+        }
+      ],
+      "mediaFilesReplaced": false,
+      "proof": "post-amend-qa.json"
+    },
+    "grater": {
+      "style1VariantId": "55748918575489",
+      "style1PriceCHF": "14.90",
+      "style1MappedHeroLoaded": true,
+      "style6VariantId": "55748918739329",
+      "style6PriceCHF": "14.90",
+      "style6MappedHeroLoadedAfterScroll": true,
+      "style6HeroNaturalWidth": 389,
+      "style6HeroResponseStatus": 200,
+      "unresolved": "Stil 3 remains without exact mapped media; its listing copy marks the shop image unresolved."
+    },
+    "knownUnrelatedOpenIssue": "The previously recorded R260 kitchen option label mismatch (public HTML Grösse vs native/product.js Farbe) remains open by date memory and was not re-probed here.",
+    "evidence": {
+      "amendedPublicRun": "post-amend-qa.json",
+      "freshHTTPProof": "amended-fetch-proof.json",
+      "initialBaseline": "initial-assessment.md",
+      "graterTargetedImageProof": "grater-image-recheck.json",
+      "teaOverflowBeforeFix": "tea-overflow-detail.json"
+    }
+  },
+  "publicSelectedImageRecheck": {
+    "capturedAtUTC": "2026-11-16T16:16:43.139018+00:00",
+    "htmlStatus": 200,
+    "selectedVariantState": {
+      "width": 390,
+      "scrollX": 0,
+      "docWidth": 390,
+      "scrollY": 0,
+      "variantId": "55748918739329",
+      "selected": [
+        "Stil 6"
+      ],
+      "price": [
+        "CHF 22.90",
+        "CHF 34.90",
+        "CHF 34.90"
+      ],
+      "images": [
+        {
+          "src": "https://luxestyle.ch/cdn/shop/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311&width=120",
+          "complete": true,
+          "naturalWidth": 120,
+          "naturalHeight": 120,
+          "alt": "Keramik-Reibe 3",
+          "rect": {
+            "x": 11.1875,
+            "y": 951.1875,
+            "width": 52,
+            "height": 52
+          }
+        },
+        {
+          "src": "https://luxestyle.ch/cdn/shop/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311&width=480",
+          "complete": true,
+          "naturalWidth": 389,
+          "naturalHeight": 389,
+          "alt": "Keramik-Reibe 3",
+          "rect": {
+            "x": 0,
+            "y": 125.78125,
+            "width": 390,
+            "height": 390
+          }
+        },
+        {
+          "src": "https://luxestyle.ch/cdn/shop/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311&width=480",
+          "complete": true,
+          "naturalWidth": 389,
+          "naturalHeight": 389,
+          "alt": "Keramik-Reibe 3",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "src": "https://luxestyle.ch/cdn/shop/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311&width=1024",
+          "complete": false,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "alt": "Keramik-Reibe 3",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "src": "https://luxestyle.ch/cdn/shop/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311&width=480",
+          "complete": false,
+          "naturalWidth": 389,
+          "naturalHeight": 389,
+          "alt": "Keramik-Reibe 3",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          }
+        }
+      ]
+    },
+    "matchingImageResponses": [
+      {
+        "status": 200,
+        "url": "https://luxestyle.ch/cdn/shop/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311&width=120"
+      },
+      {
+        "status": 200,
+        "url": "https://luxestyle.ch/cdn/shop/files/bee8063f-b5d2-4ce2-9a1b-8a9f50113823.jpg?v=1780269311&width=480"
+      }
+    ],
+    "matchingImageFailures": [],
+    "exactImageUrlProbe": null,
+    "disallowedRoutesBlockedCount": 108,
+    "screenshot": "/dev/shm/luxestyle-review/r261/public/grater-stil6-image-recheck.png"
+  },
+  "collectionFinal": {
+    "id": "gid://shopify/Collection/688577577345",
+    "title": "Trends & Gadgets",
+    "descriptionHtml": "<p>Hier findest du Trends und Gadgets aus verschiedenen Produktbereichen. Die Auswahl kann sich laufend verändern.</p><p>Prüfe Funktionen, Kompatibilität, Varianten und Verfügbarkeit direkt auf der jeweiligen Produktseite.</p>\n<!-- ls-verwandt --><p class=\"ls-verwandt-eltern\">Zur Übersicht: <a href=\"/collections/elektronik-technik\">Technik &amp; Gaming</a></p><!-- /ls-verwandt -->",
+    "handle": "trends-gadgets",
+    "updatedAt": "2026-11-16T16:11:04Z",
+    "seo": {
+      "title": "Trends & Gadgets kaufen | LuxeStyle Schweiz",
+      "description": "Entdecke Trends & Gadgets für Zuhause und Alltag: Lichtideen, Technik und Accessoires. Vergleiche Ausführungen und Produktdetails bei LuxeStyle."
+    },
+    "sortOrder": "MANUAL",
+    "templateSuffix": null,
+    "image": {
+      "id": "gid://shopify/CollectionImage/2066453987713",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/collections/8e617793-8686-478b-88fd-5e68e5702df9.jpg?v=1781386832",
+      "altText": "Trends & Gadgets | LuxeStyle"
+    },
+    "productsCount": {
+      "count": 4015,
+      "precision": "EXACT"
+    },
+    "sources": [
+      {
+        "id": "gid://shopify/CollectionConditionsSource/25103827329",
+        "title": "Untitled Source",
+        "description": null
+      }
+    ]
+  },
+  "collectionPublicAfter": {
+    "url": "https://luxestyle.ch/collections/trends-gadgets?qa_cache_bust=r261-headtitle-confirm",
+    "status": 200,
+    "bytes": 2011562,
+    "sha256": "a727437442080b47ce32ba899eeec45a728dbe3bf3f4622cc6a8a6dee4f3320e",
+    "title": "Trends & Gadgets kaufen | LuxeStyle Schweiz",
+    "metaDescription": "Entdecke Trends & Gadgets für Zuhause und Alltag: Lichtideen, Technik und Accessoires. Vergleiche Ausführungen und Produktdetails bei LuxeStyle.",
+    "canonical": "https://luxestyle.ch/collections/trends-gadgets",
+    "checks": {
+      "http200": true,
+      "title": true,
+      "description": true,
+      "canonical": true,
+      "indexable": true
+    },
+    "rawHtmlPersisted": false,
+    "passed": true,
+    "measurementCorrection": "The first parser aggregated SVG title text after the head title. This capture restricts title to head; positive and negative SVG controls passed. No additional shop write."
+  },
+  "collectionCorrection": {
+    "incident": "Description-only nested SEO update cleared the prior SEO title; protected-field guard caught it.",
+    "resolution": "Separate explicit full SEO object restored the exact original title and retained the new reviewed description; native/public readback confirmed.",
+    "lesson": "For nested SEO changes always send both freshly read title and description.",
+    "resolved": true
+  },
+  "measurementCorrection": "Initial public title parser included SVG icon titles; head-only parser plus positive/negative fixtures corrected the measurement, not the shop.",
+  "merchantTargetedRead": {
+    "run": "R261",
+    "checkedAtUtc": "2026-11-16",
+    "scope": "One historical open Merchant case, exact current account/offer/source and exact Shopify variant. No broad list/report, no writes.",
+    "identity": {
+      "merchantShopId": "5797470070",
+      "merchantShopName": "LuxeStyle CH",
+      "verifiedFreshly": true
+    },
+    "historicalGroup": {
+      "priorEvidence": "R252 MERCHANT-QUELLEN-GEGENPROBE-20261116-R252.json, exact scale offer from current disapproved subset; R240 partial issue snapshot",
+      "historicalIssue": "landing_page_error",
+      "historicalStatusNotAssumedCurrent": true
+    },
+    "merchant": {
+      "resource": "accounts/5797470070/products/de~CHF_99383214465~shopify_ZZ_15502258831745_68193799242119",
+      "offerId": "shopify_ZZ_15502258831745_68193799242119",
+      "feedLabel": "CHF_99383214465",
+      "language": "de",
+      "currentDataSource": "accounts/5797470070/dataSources/10667445201",
+      "sourceType": "Shopify app data source, not AUTOFEED",
+      "title": "Präzisionswaage 3-10 kg, elektronisch | LuxeStyle CH 7.5kg 0.1g Englisch",
+      "price": {
+        "amountMicros": "127900000",
+        "currencyCode": "CHF"
+      },
+      "availability": "IN_STOCK",
+      "link": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+      "merchantItemVariant": "gid://shopify/ProductVariant/68193799242119",
+      "merchantSku": "CJZN170995619SH",
+      "destinationStatuses": [
+        {
+          "reportingContext": "SHOPPING_ADS",
+          "disapprovedCountries": [
+            "CH",
+            "LI"
+          ],
+          "approvedCountries": [],
+          "pendingCountries": []
+        },
+        {
+          "reportingContext": "DISPLAY_ADS",
+          "disapprovedCountries": [
+            "CH",
+            "LI"
+          ],
+          "approvedCountries": [],
+          "pendingCountries": []
+        },
+        {
+          "reportingContext": "FREE_LISTINGS",
+          "disapprovedCountries": [
+            "CH",
+            "LI"
+          ],
+          "approvedCountries": [],
+          "pendingCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS",
+          "disapprovedCountries": [
+            "CH",
+            "LI"
+          ],
+          "approvedCountries": [],
+          "pendingCountries": []
+        },
+        {
+          "reportingContext": "VIDEO_ADS",
+          "disapprovedCountries": [
+            "CH",
+            "LI"
+          ],
+          "approvedCountries": [],
+          "pendingCountries": []
+        },
+        {
+          "reportingContext": "DEMAND_GEN_ADS_DISCOVER_SURFACE",
+          "disapprovedCountries": [
+            "CH",
+            "LI"
+          ],
+          "approvedCountries": [],
+          "pendingCountries": []
+        }
+      ],
+      "itemIssueCodes": [
+        "availability_updated",
+        "landing_page_error"
+      ],
+      "landingPageErrorContexts": [
+        "SHOPPING_ADS",
+        "DISPLAY_ADS",
+        "FREE_LISTINGS",
+        "DEMAND_GEN_ADS",
+        "VIDEO_ADS",
+        "DEMAND_GEN_ADS_DISCOVER_SURFACE"
+      ],
+      "availabilityUpdatedSeverity": [
+        "NOT_IMPACTED"
+      ]
+    },
+    "shopify": {
+      "readAtUtc": "2026-11-16",
+      "product": {
+        "id": "gid://shopify/Product/15502258831745",
+        "title": "Präzisionswaage 3-10 kg, elektronisch",
+        "status": "ACTIVE",
+        "handle": "prazisionswaage-3-10-kg-elektronisch-939456",
+        "onlineStoreUrl": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456"
+      },
+      "variant": {
+        "id": "gid://shopify/ProductVariant/68193799242119",
+        "title": "7.5kg 0.1g Englisch",
+        "sku": "CJZN170995619SH",
+        "price": "127.90",
+        "availableForSale": true,
+        "inventoryPolicy": "CONTINUE",
+        "inventoryItem": {
+          "tracked": false
+        }
+      }
+    },
+    "public": {
+      "productJs": {
+        "productId": 15502258831745,
+        "handle": "prazisionswaage-3-10-kg-elektronisch-939456",
+        "variant": {
+          "id": 68193799242119,
+          "title": "7.5kg 0.1g Englisch",
+          "sku": "CJZN170995619SH",
+          "price": 12790,
+          "available": true,
+          "inventory_management": null,
+          "inventory_policy": null
+        },
+        "sha256": "857ca63f5915ee77d2b33619ab93d47b1b9fb11c3593611c056ce6034d72d26f"
+      },
+      "publicHtml": {
+        "bytes": 1078881,
+        "sha256": "36a70bb91ea0d14b50e11827638e1cce82096398e800eaf6969bd739bfb9c533",
+        "httpStatus": 200,
+        "finalUrlCanonical": [
+          "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456"
+        ],
+        "ogPriceAmount": "101.90",
+        "ogPriceCurrency": "CHF",
+        "metaPriceAmount": null,
+        "containsVariantId": true,
+        "effectiveUrl": "https://luxestyle.ch/products/prazisionswaage-3-10-kg-elektronisch-939456?variant=68193799242119&country=CH&currency=CHF&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+        "redirects": 0
+      }
+    },
+    "comparison": {
+      "merchantVariantMatchesNativeVariant": true,
+      "merchantSkuMatchesNativeSku": true,
+      "merchantPriceMatchesNativeVariantPrice": true,
+      "merchantAvailabilityMatchesPublicAvailable": true,
+      "exactLandingUrlReturns200": true,
+      "ogPriceMatchesSelectedVariant": false,
+      "ogPriceCurrent": "101.90",
+      "selectedVariantPrice": "127.90"
+    },
+    "assessment": {
+      "currentMerchantOfferIsExactAndSourceVerified": true,
+      "priceOrAvailabilityMerchantWriteJustified": false,
+      "landingPageErrorStillCurrent": true,
+      "causeProven": false,
+      "approvalClaimed": false,
+      "suggestion": "No Merchant price/availability change. Review a narrowly scoped, variant-aware Open Graph price output: this exact selected variant should expose 127.90 CHF (currently 101.90 CHF). Treat it as a separate metadata mismatch only; it is not proven to cause the Merchant landing_page_error. Recheck all variant contexts before any theme diff."
+    },
+    "mutations": 0
+  },
+  "pickerReadOnlyDiagnosis": {
+    "run": "R261 corrected current theme attribution",
+    "capturedAtUTC": "2026-11-16T15:46:26.593769Z",
+    "publicThemeIdentity": {
+      "name": "LuxeStyle – SEO 14.11.2026",
+      "id": 213991391623,
+      "schema_name": "Horizon",
+      "schema_version": "3.5.1",
+      "theme_store_id": 2481,
+      "role": "main"
+    },
+    "identityProof": {
+      "source": "/dev/shm/luxestyle-review/r261/picker/fresh.html",
+      "sha256": "620a6826ed01d39cfb8d04b59b84ae5554c3d6a50a6bcb8723e337b6de3e7149",
+      "sameCaptureAs": "/dev/shm/luxestyle-review/r261/picker/fresh-public-proof.json"
+    },
+    "currentPublishedThemeFiles": [
+      {
+        "path": "templates/product.json",
+        "sha256": "a1cb1441aae715b21e25e2cb46e114b8346bf9d61a2dc7814585d94aaec00f18",
+        "targetedExtract": [
+          "custom-liquid block at line 385 assigns bw_opt = o from product.options_with_values",
+          "data-lx-opt uses {{ bw_opt.name | escape }}",
+          "aria-label uses {{ bw_opt.name | escape }} wählen",
+          "visible caption uses {{ bw_opt.name }}:"
+        ]
+      },
+      {
+        "path": "snippets/variant-main-picker.liquid",
+        "sha256": "02ffd7b2eea478bf0ab7e2639a47afdbde26a3b31442f9f8b9d0ca453be537ed",
+        "targetedExtract": [
+          "line 38 loops product_resource.options_with_values",
+          "line 63 emits {{ product_option.name | escape }}",
+          "line 80 emits {{ product_option.name | escape }} in <legend>",
+          "line 94 uses product_option.name in radio name"
+        ]
+      }
+    ],
+    "sourceReadProof": {
+      "themeId": "gid://shopify/OnlineStoreTheme/213991391623",
+      "tool": "shopify_theme_bash, read-only sha256sum + rg context",
+      "onlyTargets": [
+        "templates/product.json",
+        "snippets/variant-main-picker.liquid"
+      ],
+      "readResult": "Both target files were read from the theme identified by the captured public page as role=main."
+    },
+    "publicMismatch": {
+      "htmlLabel": "Grösse",
+      "htmlCaption": "Grösse:",
+      "productJsOptionName": "Farbe",
+      "publicFetchProof": "/dev/shm/luxestyle-review/r261/picker/fresh-public-proof.json"
+    },
+    "correction": "An earlier R261 note incorrectly attributed source from theme 213013037447 to the current MAIN theme. The same captured public HTML identifies current MAIN as 213991391623. The earlier theme source is not used for this correction and cannot support a current-theme conclusion.",
+    "conclusion": "The targeted current MAIN source uses dynamic product option names at the custom-picker and native-picker output sites. The current HTML still renders Grösse while the current product.js reports Farbe. The cause remains unknown; this bounded read does not rule out other Liquid paths, Shopify localization/market context, or upstream product object behavior. No theme or Shopify change was made.",
+    "open": "Do not treat 213013037447 snippets as current. Cause remains pending valid source evidence beyond the two inspected current MAIN files."
+  },
+  "newSourceBlocker": {
+    "productId": "gid://shopify/Product/15451640398209",
+    "pid": "2605070610201621700",
+    "sourceDetailReadMade": true,
+    "sourceChildren": 12,
+    "exactConnectionQueryRows": 0,
+    "selectedMotif": "UNKNOWN",
+    "write": false,
+    "limits": "One exact filtered query is not all connection history; no binding created."
+  },
+  "sourceAudit": {
+    "checkerControlsPassed": 10,
+    "initialFindings": [
+      "Hard-coded prices in two proposal bodies",
+      "New grater cross-sell suffix absent from baseline"
+    ],
+    "rootResolution": [
+      "Static body prices removed before writes",
+      "Unrequested new suffix removed; existing board/tea suffixes preserved exactly"
+    ],
+    "semanticReview": "Manual supplier prose, exact SKU/child images and public/native checks; no automatic truth or rights certification."
+  },
+  "dailyReportsRepeated": false,
+  "orderQueries": 0,
+  "metricoolPlannerRead": false,
+  "metricoolWrites": 0,
+  "merchantWrites": 0,
+  "themeWrites": 0,
+  "otherSettingsWrites": 0,
+  "workflowDispatch": 0,
+  "newAutomation": false,
+  "frequencyChanges": 0,
+  "customerOrSupplierMessages": 0,
+  "paidRenders": 0,
+  "globalCompletionPercent": "UNKNOWN",
+  "merchantErrorGroupCount": "UNKNOWN",
+  "toneConflict": "R259 remains unresolved; weiter and agent count are not tone choices.",
+  "claudeReceipt": "unknown",
+  "privacy": "Whitelisted CJ fields only; no supplier costs, customer data, credentials, raw public HTML or checkout/session tokens included."
+}

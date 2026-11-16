@@ -1,0 +1,39 @@
+{
+  "run": "R261",
+  "atUtc": "2026-11-16T16:36:22Z",
+  "files": [
+    {
+      "file": "PRODUKTDETAILS-SEO-MERCHANT-20261116-R261.md",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-SEO-MERCHANT-20261116-R261.md",
+      "bytes": 6433,
+      "sha256": "f4fb0fb901499f03308d03ea39fb5a4af0e5981308ab1756997764b8e8595855",
+      "gitBlobSha": "97d69ceb8d64feddbd7568538b25ff11234b510c",
+      "readAt": "2026-11-16T16:36:22Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-BELEGE-20261116-R261.json",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R261.json",
+      "bytes": 183064,
+      "sha256": "c972e82dbeba306090cd90f1db2e2d09376c07f950c9f7565030118d86d24fcd",
+      "gitBlobSha": "eb2d628978b08712c3e2eab159501cf069b866d6",
+      "readAt": "2026-11-16T16:36:22Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R261.csv",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R261.csv",
+      "bytes": 22430,
+      "sha256": "21a04fa56ad612bf692c97aa420da507bcff9c93a8154c15c4c9633c268f6e03",
+      "gitBlobSha": "689de5dd62f0c06060d270b7a0d8a7a8c04353c3",
+      "readAt": "2026-11-16T16:36:22Z"
+    },
+    {
+      "file": "OFFENE-GEGENPROBEN-20261116-R261.md",
+      "path": "dropship/codex-handoff-20261018/OFFENE-GEGENPROBEN-20261116-R261.md",
+      "bytes": 3070,
+      "sha256": "1d9be07682c4580a639a7b105b9f6586dc27cac162d6f5b11fda2fb9972b7ee8",
+      "gitBlobSha": "e5c2ccf6539fdc0474fa131c677de3eadcee42c5",
+      "readAt": "2026-11-16T16:36:22Z"
+    }
+  ],
+  "scope": "Four new artifacts; manifest and Core5 excluded."
+}
