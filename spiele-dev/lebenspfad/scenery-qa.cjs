@@ -6,7 +6,9 @@ const vm = require("node:vm");
 const THREE = require(path + "/js/vendor/three.min.js");
 const html = fs.readFileSync(path + "/lebenspfad.html", "utf8");
 const fixture = { THREE };
+fixture.window = fixture;
 vm.createContext(fixture);
+vm.runInContext(fs.readFileSync(path + "/js/lebenspfad/route-layout.js", "utf8"), fixture);
 // Echte Haupt- und Nebenrouten, ohne DOM, GLBs oder die grosse HTML-JSON-Zeile.
 vm.runInContext(html.slice(html.indexOf("var CHAPTERS=["), html.indexOf("// ===================== Licht")), fixture);
 const fields = fixture.pathPts.map((p, i) => ({ x: p.x, z: p.z, type: i % 18 === 17 || !i ? "m" : "e" }));

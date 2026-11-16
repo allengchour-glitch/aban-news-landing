@@ -1,0 +1,414 @@
+{
+  "source": "/workspace/aban-lebenspfad/lebenspfad.html",
+  "scope": "GEMESSEN: reine Bauplatzplanung, echte Register/Pfade, analytisches Terrain und r128-Raycaster; Browser-Modellgrenzen separat",
+  "checks": [
+    "Echte r128-Pfade: 175 Knoten, 178 Kanten, vier Nebenrouten",
+    "32 eindeutige Slots aus tatsächlichen Registern, Winterfiguren und Gabelschildern",
+    "Modellradien verwenden die vermessenen Footprint-Verhältnisse",
+    "Alle Kreise halten Feld-, Kanten-, Bauplatz- und Altgewässerabstand",
+    "Pad-Zentren stimmen mit Bauplätzen überein; Radius = Modellradius + 4.5",
+    "Planer bleibt deterministisch, ohne RNG oder Eingabemutation",
+    "Tatsächlicher HTML-Aufruf übergibt dieselben Register samt Gabelungen",
+    "Neue Teiche lassen alle geplanten Modellkreise frei",
+    "Tatsächlicher Terrain-Aufruf übergibt alle Pads und neuen Teiche",
+    "160 Bauplatzproben: Mittelpunkt + vier Randpunkte sind flach auf -.02",
+    "Alle 175 Feldbasen bleiben frei; fünf Proben je realem Sockelfuß",
+    "Terrain mit Pads ist reproduzierbar und verändert keine Eingaben/RNG",
+    "Messgerät erkennt Requisiten auf Zweig 162 und kollidierende Bauplätze"
+  ],
+  "failures": [],
+  "sites": [
+    {
+      "key": "chapter:0",
+      "tile": 9,
+      "x": -125.18655407757414,
+      "z": -5.4434271880800065,
+      "r": 3.6,
+      "cx": 2.65,
+      "cz": 1.3,
+      "score": 31.495820264979635
+    },
+    {
+      "key": "chapter:1",
+      "tile": 27,
+      "x": -80.85801306450344,
+      "z": 2.3416502315815215,
+      "r": 3.6,
+      "cx": 0,
+      "cz": 0,
+      "score": 3.043071282384646
+    },
+    {
+      "key": "chapter:2",
+      "tile": 45,
+      "x": -51.64219713254467,
+      "z": -1.3790361261915036,
+      "r": 1.9,
+      "cx": 0,
+      "cz": 0,
+      "score": 8.117077158388062
+    },
+    {
+      "key": "chapter:3",
+      "tile": 63,
+      "x": 13.068752071383283,
+      "z": 4.727289459354435,
+      "r": 5.7,
+      "cx": 3,
+      "cz": 0,
+      "score": 4.26253965349187
+    },
+    {
+      "key": "chapter:4",
+      "tile": 81,
+      "x": 40.21141438603776,
+      "z": -1.6101487341816796,
+      "r": 2.1,
+      "cx": 0,
+      "cz": 0,
+      "score": 3.7789950684013176
+    },
+    {
+      "key": "chapter:5",
+      "tile": 99,
+      "x": 105.65173106975678,
+      "z": -10.655370083140912,
+      "r": 3.4,
+      "cx": 2.6,
+      "cz": 1.1,
+      "score": 6.363486023494814
+    },
+    {
+      "key": "chapter:6",
+      "tile": 117,
+      "x": 135.36727436657162,
+      "z": 12.424552692361775,
+      "r": 3.3,
+      "cx": 1.1,
+      "cz": 1.6,
+      "score": 3.25535300841542
+    },
+    {
+      "key": "chapter:7",
+      "tile": 135,
+      "x": 199.6025604371233,
+      "z": -9.073493618302422,
+      "r": 1.7,
+      "cx": 0,
+      "cz": 0,
+      "score": 6.288693555827645
+    },
+    {
+      "key": "lp_schule",
+      "tile": 26,
+      "x": -95.75130819335779,
+      "z": -10.011794748176047,
+      "r": 4.786,
+      "cx": 0,
+      "cz": 0,
+      "score": 3.1244183131223675
+    },
+    {
+      "key": "lp_uni",
+      "tile": 44,
+      "x": -29.97469104657906,
+      "z": -14.782402699140421,
+      "r": 5.4265,
+      "cx": 0,
+      "cz": 0,
+      "score": 130.19662101861826
+    },
+    {
+      "key": "lp_buero",
+      "tile": 80,
+      "x": 47.3604838683062,
+      "z": -12.00628838834074,
+      "r": 2.31,
+      "cx": 0,
+      "cz": 0,
+      "score": 23.135495786411248
+    },
+    {
+      "key": "lp_parkbank",
+      "tile": 134,
+      "x": 197.34031697162,
+      "z": -3.606927654141634,
+      "r": 2.3155,
+      "cx": 0,
+      "cz": 0,
+      "score": 32.5657657006658
+    },
+    {
+      "key": "lp_prop_kinderwagen",
+      "tile": 8,
+      "x": -130.78575580487615,
+      "z": -10.801354650074591,
+      "r": 1.5890000000000002,
+      "cx": 0,
+      "cz": 0,
+      "score": 43.88029281261929
+    },
+    {
+      "key": "lp_prop_abschlusshut",
+      "tile": 62,
+      "x": 10.309470039295967,
+      "z": -7.100336193468858,
+      "r": 2.1466000000000003,
+      "cx": 0,
+      "cz": 0,
+      "score": 15.650454234262682
+    },
+    {
+      "key": "lp_prop_cabrio",
+      "tile": 80,
+      "x": 53.39819620029556,
+      "z": -4.9809962197983175,
+      "r": 2.57,
+      "cx": 0,
+      "cz": 0,
+      "score": 2.4116813391877803
+    },
+    {
+      "key": "lp_prop_hochzeitsbogen",
+      "tile": 98,
+      "x": 84.83605839499522,
+      "z": -11.391267673740241,
+      "r": 1.9660000000000002,
+      "cx": 0,
+      "cz": 0,
+      "score": 17.710342400000016
+    },
+    {
+      "key": "lp_prop_haus",
+      "tile": 116,
+      "x": 144.10776535249693,
+      "z": -10.210751854500867,
+      "r": 3.2399999999999998,
+      "cx": 0,
+      "cz": 0,
+      "score": 2.8370066279940334
+    },
+    {
+      "key": "lp_prop_herz",
+      "tile": 134,
+      "x": 181.9590909118831,
+      "z": 0.5004363539819099,
+      "r": 1.9262,
+      "cx": 0,
+      "cz": 0,
+      "score": 27.597807852556542
+    },
+    {
+      "key": "house",
+      "tile": 98,
+      "x": 102.90070870085928,
+      "z": -0.18545098980843622,
+      "r": 5.5,
+      "cx": 0,
+      "cz": 0,
+      "score": 123.9341478638601
+    },
+    {
+      "key": "wheel",
+      "tile": 22,
+      "x": -108.24343277793079,
+      "z": 7.4715099784764245,
+      "r": 5.8,
+      "cx": 0,
+      "cz": 0,
+      "score": 4.428691992424183
+    },
+    {
+      "key": "mill",
+      "tile": 94,
+      "x": 72.10145247440387,
+      "z": 22.04884531466768,
+      "r": 5.1,
+      "cx": 0,
+      "cz": 0,
+      "score": 46.36120481236236
+    },
+    {
+      "key": "wind",
+      "tile": 99,
+      "x": 108.22828024629273,
+      "z": -18.23031787185428,
+      "r": 2.8,
+      "cx": 0,
+      "cz": 0,
+      "score": 14.157282148881013
+    },
+    {
+      "key": "flag",
+      "tile": 62,
+      "x": -10.45740820812671,
+      "z": 10.535881719180557,
+      "r": 1.8,
+      "cx": 0,
+      "cz": 0,
+      "score": 6.069369315963399
+    },
+    {
+      "key": "chalk",
+      "tile": 5,
+      "x": -150.37305375323666,
+      "z": -5.674210709298114,
+      "r": 2.8,
+      "cx": 0,
+      "cz": 0,
+      "score": 55.85114690998052
+    },
+    {
+      "key": "goalTree",
+      "tile": 143,
+      "x": 208,
+      "z": -43.6,
+      "r": 4.2,
+      "cx": 0,
+      "cz": 0,
+      "score": 8.609000000000009
+    },
+    {
+      "key": "winter:0",
+      "tile": 129,
+      "x": 181.9922983384919,
+      "z": 26.544673774762746,
+      "r": 1,
+      "cx": 0,
+      "cz": 0,
+      "score": 1.3034575522867002
+    },
+    {
+      "key": "winter:1",
+      "tile": 133,
+      "x": 178.93763026324996,
+      "z": 11.12801218966359,
+      "r": 1,
+      "cx": 0,
+      "cz": 0,
+      "score": 2.9079476545955814
+    },
+    {
+      "key": "winter:2",
+      "tile": 137,
+      "x": 202.47223951302476,
+      "z": -4.8679910882177015,
+      "r": 1,
+      "cx": 0,
+      "cz": 0,
+      "score": 8.82256275690447
+    },
+    {
+      "key": "fork:39",
+      "tile": 39,
+      "x": -53.569828321828396,
+      "z": -28.554206214343814,
+      "r": 1.4,
+      "cx": 0,
+      "cz": 0,
+      "score": 29.212732772270677
+    },
+    {
+      "key": "fork:93",
+      "tile": 93,
+      "x": 88.6352007684439,
+      "z": 20.984150155801377,
+      "r": 1.4,
+      "cx": 0,
+      "cz": 0,
+      "score": 18.381848652448365
+    },
+    {
+      "key": "fork:6",
+      "tile": 6,
+      "x": -141.72976817156373,
+      "z": -15.549732016900844,
+      "r": 1.4,
+      "cx": 0,
+      "cz": 0,
+      "score": 24.306508437680236
+    },
+    {
+      "key": "fork:129",
+      "tile": 129,
+      "x": 182.0717654874872,
+      "z": 22.252002610398456,
+      "r": 1.4,
+      "cx": 0,
+      "cz": 0,
+      "score": 18.381848652448365
+    }
+  ],
+  "clearance": {
+    "nodeMargin": 0.04659293054375668,
+    "lineMargin": 1.707703169087884,
+    "siteMargin": 0.5011523958015955,
+    "waterMargin": 28.43516107973864,
+    "violations": []
+  },
+  "determinism": {
+    "runs": 6,
+    "inputUnchanged": true,
+    "rngCalls": 0
+  },
+  "basins": [
+    {
+      "x": -60,
+      "z": 58,
+      "rx": 10,
+      "rz": 10,
+      "y": 0.12,
+      "legacy": true
+    },
+    {
+      "x": 150,
+      "z": -55,
+      "rx": 12,
+      "rz": 12,
+      "y": 0.12,
+      "legacy": true
+    },
+    {
+      "x": -158.56623228593264,
+      "z": 8.61950778590539,
+      "rx": 5.2,
+      "rz": 4.4,
+      "y": 0.04,
+      "chapter": 0
+    },
+    {
+      "x": -62.32772754186678,
+      "z": -1.0226279721001783,
+      "rx": 5.2,
+      "rz": 4.4,
+      "y": 0.04,
+      "chapter": 2
+    },
+    {
+      "x": 29.671869671517765,
+      "z": -1.0224285011394745,
+      "rx": 5.2,
+      "rz": 4.4,
+      "y": 0.04,
+      "chapter": 4
+    },
+    {
+      "x": 121.65570292101215,
+      "z": -2.5182298100202676,
+      "rx": 5.2,
+      "rz": 4.4,
+      "y": 0.04,
+      "chapter": 6
+    }
+  ],
+  "terrain": {
+    "siteSamples": 160,
+    "nodeSamples": 875,
+    "basins": 6,
+    "meshFlatTolerance": 0.0001,
+    "maxAnalyticError": 9.367506770274758e-17,
+    "maxMeshError": 2.9353509813461603e-05,
+    "maxSurfaceMismatch": 7.105427357601002e-15
+  },
+  "pass": true
+}

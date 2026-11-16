@@ -7,7 +7,7 @@ const root = path.resolve(__dirname, '../..');
 const context = { console, assert, performance };
 context.window = context;
 vm.createContext(context);
-for (const file of ['js/vendor/three.min.js', 'js/lebenspfad/terrain.js', 'js/lebenspfad/static-batches.js']) {
+for (const file of ['js/vendor/three.min.js', 'js/lebenspfad/route-layout.js', 'js/lebenspfad/terrain.js', 'js/lebenspfad/static-batches.js']) {
   vm.runInContext(fs.readFileSync(path.join(root, file), 'utf8'), context, { filename: file });
 }
 // Die echten Kapitel, 144 Wegfelder und alle Nebenrouten aus dem Spiel verwenden.

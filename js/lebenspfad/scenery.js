@@ -12,6 +12,7 @@
     var scene = options.scene, fields = options.fields || [], chapters = options.chapters || [];
     var terrainHeight = options.terrainHeight, coarse = !!options.coarse;
     var roots = [], placements = [], anchors = [], trees = [];
+    if(options.anchors)options.anchors.forEach(function(a){anchors.push({x:a.x,z:a.z,radius:a.r||a.radius||3});});
     var stats = { trees: 0, shrubs: 0, rocks: 0, instances: 0, drawTypes: 0, totalTriangles: 0,
       chapters: [], rejected: 0, coarse: coarse };
     var count = Math.min(8, chapters.length || Math.ceil(fields.length / 18));

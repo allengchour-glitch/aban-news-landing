@@ -1,0 +1,407 @@
+{
+  "checks": [
+    "Echter Einzelspieler ohne Robo, kurzer Modus",
+    "Echter gespeicherter Zwischenstand nach Neuladen identisch fortgesetzt",
+    "Ohne Teleport vom Start zum Lebensabend: Karten, Gabelungen, Alterung, Auswertung und Biografie",
+    "Abschluss genau einmal in lokaler Statistik gespeichert",
+    "Neues Leben startet wieder auf Feld 0 mit bedienbarem Würfel"
+  ],
+  "errors": [],
+  "turns": [
+    {
+      "phase": "idle",
+      "round": 1,
+      "tile": 0,
+      "done": false,
+      "dead": false,
+      "bio": 0,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "—",
+      "opts": []
+    },
+    {
+      "phase": "idle",
+      "round": 2,
+      "tile": 4,
+      "done": false,
+      "dead": false,
+      "bio": 1,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Was sammeln Bienen von Blüten?",
+      "seq": 1,
+      "opts": [
+        "🅰 Nektar",
+        "🅱 Tau",
+        "🅲 Samen"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 3,
+      "tile": 9,
+      "done": false,
+      "dead": false,
+      "bio": 2,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "seq": 3,
+      "opts": [
+        "🤝 Ja, tauschen!−4 💰 · +2 ❤️",
+        "🙅 Nein dankealles bleibt, wie es ist"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 4,
+      "tile": 13,
+      "done": false,
+      "dead": false,
+      "bio": 2,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🏁 Best-of-3-Sprint!",
+      "seq": 4,
+      "opts": [
+        "Weiter ▶"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 5,
+      "tile": 17,
+      "done": false,
+      "dead": false,
+      "bio": 3,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "💼 Was willst du werden?",
+      "seq": 5,
+      "opts": [
+        "💼 Manager:inKarriere pur: Einkommen ×1.6, aber −2 ❤️",
+        "🎨 Künstler:inWenig Geld, viel Herz: +3 ❤️ jetzt, Einkommen ×0.7",
+        "🔧 Handwerker:inSolide und gefragt: +2 👥, Einkommen ×1.15"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 6,
+      "tile": 19,
+      "done": false,
+      "dead": false,
+      "bio": 3,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "—",
+      "opts": []
+    },
+    {
+      "phase": "idle",
+      "round": 7,
+      "tile": 25,
+      "done": false,
+      "dead": false,
+      "bio": 4,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "👥 Versöhnungsversuch",
+      "seq": 1,
+      "opts": [
+        "Persönlich entschuldigen+3 ❤️ · +4 👥",
+        "Warten, bis er sich meldet-2 ❤️ · -2 👥"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 8,
+      "tile": 27,
+      "done": false,
+      "dead": false,
+      "bio": 5,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "👥 Pausenhof-Schlägerei",
+      "seq": 2,
+      "opts": [
+        "Eingreifen und schlichten-3 ❤️ · +4 👥",
+        "Schnell den Lehrer holen+1 ❤️ · -1 👥",
+        "Wegschauen und weitergehen-2 👥"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 9,
+      "tile": 33,
+      "done": false,
+      "dead": false,
+      "bio": 5,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "👥 Pausenhof-Schlägerei",
+      "seq": 2,
+      "opts": [
+        "Eingreifen und schlichten-3 ❤️ · +4 👥",
+        "Schnell den Lehrer holen+1 ❤️ · -1 👥",
+        "Wegschauen und weitergehen-2 👥"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 10,
+      "tile": 72,
+      "done": false,
+      "dead": false,
+      "bio": 6,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Altes Feuer neu entfacht",
+      "seq": 3,
+      "opts": [
+        "Flirt genießen, dann gehen+1 ❤️",
+        "⚠️ Nummer austauschen+3 ❤️ · -1 🧠 · -2 👥 · ⚰️ Risiko 10%",
+        "Direkt nach Hause gehen-1 ❤️ · +1 👥"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 11,
+      "tile": 76,
+      "done": false,
+      "dead": false,
+      "bio": 6,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welcher Vogel kann nicht fliegen?",
+      "seq": 4,
+      "opts": [
+        "🅰 Amsel",
+        "🅱 Pinguin",
+        "🅲 Möwe"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 12,
+      "tile": 82,
+      "done": false,
+      "dead": false,
+      "bio": 6,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welcher Vogel kann nicht fliegen?",
+      "seq": 4,
+      "opts": [
+        "🅰 Amsel",
+        "🅱 Pinguin",
+        "🅲 Möwe"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 13,
+      "tile": 86,
+      "done": false,
+      "dead": false,
+      "bio": 6,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welcher Vogel kann nicht fliegen?",
+      "seq": 4,
+      "opts": [
+        "🅰 Amsel",
+        "🅱 Pinguin",
+        "🅲 Möwe"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 14,
+      "tile": 88,
+      "done": false,
+      "dead": false,
+      "bio": 6,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welcher Vogel kann nicht fliegen?",
+      "seq": 4,
+      "opts": [
+        "🅰 Amsel",
+        "🅱 Pinguin",
+        "🅲 Möwe"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 15,
+      "tile": 127,
+      "done": false,
+      "dead": false,
+      "bio": 6,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welcher Vogel kann nicht fliegen?",
+      "seq": 4,
+      "opts": [
+        "🅰 Amsel",
+        "🅱 Pinguin",
+        "🅲 Möwe"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 16,
+      "tile": 129,
+      "done": false,
+      "dead": false,
+      "bio": 6,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❓ Welcher Vogel kann nicht fliegen?",
+      "seq": 4,
+      "opts": [
+        "🅰 Amsel",
+        "🅱 Pinguin",
+        "🅲 Möwe"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 17,
+      "tile": 133,
+      "done": false,
+      "dead": false,
+      "bio": 7,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "🔄 Tausche 5 💰 gegen 2 ❤️?",
+      "seq": 6,
+      "opts": [
+        "🤝 Ja, tauschen!−5 💰 · +2 ❤️",
+        "🙅 Nein dankealles bleibt, wie es ist"
+      ]
+    },
+    {
+      "phase": "idle",
+      "round": 18,
+      "tile": 139,
+      "done": false,
+      "dead": false,
+      "bio": 8,
+      "end": false,
+      "roll": true,
+      "rad": false,
+      "card": false,
+      "title": "❤️ Die verlorene Rezeptsammlung",
+      "seq": 7,
+      "opts": [
+        "Koche ein altes Rezept nach+3 ❤️ · +1 🧠",
+        "Teile die Rezepte mit Freunden+2 ❤️ · +3 👥"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "card": "❓ Was sammeln Bienen von Blüten?",
+      "choice": "🅰 Nektar"
+    },
+    {
+      "card": "🛤️ Spielplatz oder Schulweg?",
+      "choice": "🎒 Schulwegdirekt und schnell — brav zur Schule"
+    },
+    {
+      "card": "🔄 Tausche 4 💰 gegen 2 ❤️?",
+      "choice": "🤝 Ja, tauschen!−4 💰 · +2 ❤️"
+    },
+    {
+      "card": "🏁 Best-of-3-Sprint!",
+      "choice": "Weiter ▶"
+    },
+    {
+      "card": "💼 Was willst du werden?",
+      "choice": "💼 Manager:inKarriere pur: Einkommen ×1.6, aber −2 ❤️"
+    },
+    {
+      "card": "👥 Versöhnungsversuch",
+      "choice": "Persönlich entschuldigen+3 ❤️ · +4 👥"
+    },
+    {
+      "card": "👥 Pausenhof-Schlägerei",
+      "choice": "Eingreifen und schlichten-3 ❤️ · +4 👥"
+    },
+    {
+      "card": "❤️ Altes Feuer neu entfacht",
+      "choice": "Flirt genießen, dann gehen+1 ❤️"
+    },
+    {
+      "card": "❓ Welcher Vogel kann nicht fliegen?",
+      "choice": "🅰 Amsel"
+    },
+    {
+      "card": "🛤️ Weltreise oder Schaukelstuhl?",
+      "choice": "🪑 Gemütlich bleibender kurze, vertraute Weg"
+    },
+    {
+      "card": "🔄 Tausche 5 💰 gegen 2 ❤️?",
+      "choice": "🤝 Ja, tauschen!−5 💰 · +2 ❤️"
+    },
+    {
+      "card": "❤️ Die verlorene Rezeptsammlung",
+      "choice": "Koche ein altes Rezept nach+3 ❤️ · +1 🧠"
+    }
+  ],
+  "ended": true,
+  "final": {
+    "phase": "landed",
+    "round": 18,
+    "tile": 143,
+    "done": true,
+    "dead": false,
+    "bio": 9,
+    "end": true,
+    "roll": false,
+    "rad": false,
+    "card": false,
+    "title": "❤️ Die verlorene Rezeptsammlung",
+    "seq": 7,
+    "opts": [
+      "Koche ein altes Rezept nach+3 ❤️ · +1 🧠",
+      "Teile die Rezepte mit Freunden+2 ❤️ · +3 👥"
+    ]
+  }
+}
