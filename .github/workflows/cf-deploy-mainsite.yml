@@ -41,6 +41,11 @@ on:
         description: 'Cloudflare-Pages-Projektname'
         required: true
         default: 'abannews'
+      einrichten:
+        description: 'Nur nach separater Freigabe: Pages-Projekt und Secrets einrichten'
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: read
@@ -88,10 +93,14 @@ jobs:
           name: technische-reparatur
           path: _site/buero-reparatur.json
           retention-days: 14
+      # Normale Builds verwenden die vorhandene Einrichtung unverändert.
+      # Projektanlage/Secret-Übernahme nur im separat freigegebenen Handstart.
       - name: Pages-Projekt anlegen (idempotent)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.einrichten == true }}
         run: npx --yes wrangler@3 pages project create "${{ env.PROJECT }}" --production-branch=main || true
 
       - name: Anthropic-Key ins Pages-Projekt schreiben (falls GitHub-Secret gesetzt)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.einrichten == true }}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -103,6 +112,7 @@ jobs:
           fi
 
       - name: Etsy-Schlüssel ins Pages-Projekt schreiben (für /api/etsy-auth, falls gesetzt)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.einrichten == true }}
         env:
           ETSY_API_KEY: ${{ secrets.ETSY_API_KEY }}
         run: |
@@ -114,6 +124,7 @@ jobs:
           fi
 
       - name: Pinterest-App ins Pages-Projekt schreiben (für /api/pinterest-auth, falls gesetzt)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.einrichten == true }}
         env:
           ABAN_PINTEREST_APP_ID: ${{ secrets.ABAN_PINTEREST_APP_ID }}
           ABAN_PINTEREST_APP_SECRET: ${{ secrets.ABAN_PINTEREST_APP_SECRET }}
@@ -167,4 +178,4 @@ jobs:
         run: |
           echo "Fertig. Öffne https://${{ env.PROJECT }}.pages.dev/"
           echo "API-Test:  curl -X POST https://${{ env.PROJECT }}.pages.dev/api/pro-validate -H 'content-type: application/json' -d '{\"license_key\":\"x\"}'"
-          echo "Für die KI-Tools fehlt noch das Pages-Secret ANTHROPIC_API_KEY (im CF-Dashboard des Projekts)."
+          echo "Vorhandene Pages-Secrets bleiben beim Standard-Deployment unverändert."

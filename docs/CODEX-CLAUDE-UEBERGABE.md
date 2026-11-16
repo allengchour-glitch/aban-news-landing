@@ -1,5 +1,13 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Hauptseiten-Deployment ohne Einrichtungsschreibzugriffe ·16.11.2026
+
+Ertragslauf von aktuellem main218c7e4d auf codex/deploy-ohne-einrichtung. AGENTS, CLAUDE, Shared Memory, aktuelle Übergabe und Arbeitsteilung gelesen; offene PRs geprüft. Kein Eingriff in Claude-Shop-/Metricool-/Merchant-Arbeiten. Konkreter Blocker aus PR3153: Paketbau-Fix übernommen, Bereitstellung unbestätigt, weil vorhandener Hauptseiten-Workflow auch bei normalen Deployments Projektanlage und Secret-Übernahme ausführt. Direkt im aktuellen Workflow nachgestellt: alle vier Einrichtungsschritte ohne Ereignis-/Opt-in-Sperre; neue Gegenproben schlagen am alten Code fünfmal fehl.
+
+Vorhandener Workflow bekommt eine manuelle boolesche Option einrichten, Vorgabe false, ausdrücklich nur nach separater Freigabe. Projektanlage und drei Secret-Schritte laufen ausschliesslich beim Handstart mit einrichten=true. Standard-Push, Zeitplan, Büro-Auslöser und Handstart ohne Option überspringen diese vier Schritte. Deployment verwendet bestehendes Projekt und dessen bestehende Secrets. Keine Geheimnisse gelesen/ausgegeben/geändert, keine Konto-/DNS-/Preis-/Budget-/Kunden-/Social-Aktion. Keine neue Automation oder Frequenzänderung. Veralteter pauschaler Hinweis auf fehlenden Anthropic-Key durch Hinweis auf unveränderte Pages-Secrets ersetzt; bestehende Konfiguration bleibt ungeprüft.
+
+GEMESSEN: vier statische Workflow-Gegenproben grün; prüfen alle Einrichtungsschritte, sichere Vorgabe, unveränderte Auslöser/Frequenz und erreichbaren eigentlichen Upload ohne Einrichtung. Beide YAML-Dateien lokal lesbar, diff --check grün. Test im vorhandenen Pre-deploy-Schritt eingebunden. Echte CI-/Merge-/Bereitstellungsbelege im zugehörigen PR prüfen. Ein späterer Handstart dieses Auftrags darf ausschliesslich einrichten=false verwenden. Bereitstellungsziel: aktuelles main einschliesslich bestehendem Paketbau-Fix, ohne Secret-/Kontoänderung; kein echter Kauf oder geschützter Download. Finanzielle Wirkung nicht gemessen. Nächster konkreter Verkaufsbefund: englischer Shop besitzt im aktuellen Code noch keine sofortige Ersatzanzeige bei hängendem JSON-Abruf; deutsche Korrektur nicht doppelt implementieren.
+
 ## Claude → Codex: Theme «Kaufhinweis 15.11.2026» ist erledigt · 15.11.2026 22:35 UTC
 
 - Die sieben freigegebenen Dateien aus R230/R232 sind auf MAIN `213991391623`. Der Besitzer hat «7 Dateien übernehmen» gewählt. Übernommen um 22:35 UTC mit MD5-Prüfung gegen die Basis, Sicherung vor/nach. Messung Handy: 16 Bildkarten, Kaufhinweis über den Kaufknöpfen, neuer Popup-Satz. Doku und Rücknahme: `dropship/codex-theme-uebertrag-1511/README.md`.

@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Standard-Deployment ohne Projekt-/Secret-Einrichtung ·16.11.2026
+
+Bestehender Hauptseiten-Workflow trennt die vier Einrichtungsschritte jetzt per manueller Option einrichten (Vorgabe false). Normale Auslöser/Frequenz und Upload erhalten; keine neue Automation. Vier statische Gegenproben grün, am alten Code fünf Fehlschläge, YAML lesbar. Ziel ist ein erlaubter Release des bereits übernommenen Paketbau-Fixes ohne Secret-/Kontoänderungen. Tatsächliche CI-/Merge-/Bereitstellungsbelege im zugehörigen PR und kanonischen Abschnitt Hauptseiten-Deployment lesen; kein Live-Erfolg vor Quellenantwort.
+
 ## Codex: Spiele-Abschlussprüfung und Live-Freigabe ·16.11.2026
 
 Besitzer hat Veröffentlichung der Spiele-Änderungen und anschliessend das nächste Koop-Spiel freigegeben. PR3156: reale285-Sekunden-Flugkampagne mit zwei lokalen WebRTC-Seiten ohne Vorspulen, Abbruch oder Schaden bestanden; Minispiele60, Wortspiele642, Action74, Traumhaus23+7 erneut grün. Audio36 Prüfbedingungen; Null-Lautstärke und wiederkehrende stumme Töne repariert. Querformat-Menü erreichbar, sparsamer Flugmodus ohne teure Fels-Texturzeichnung;4x-CPU-Emulation12,9→59,6rAF/s, kein Handybenchmark. Park-Vollsuite weiterhin Zeitabbruch; isolierte Pause/Weiter grün. Öffentlicher Koop im Cloud-Browser TLS-blockiert. Produktionsnachweis folgt getrennt; Abschluss und Grenzen in `spiele-dev/abschlusspruefung/README.md`. Nächstes Spiel: Tempel der Zwei, eigene isolierte Arbeit.

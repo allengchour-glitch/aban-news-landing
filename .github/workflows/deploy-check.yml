@@ -27,6 +27,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Deployment ohne Einrichtung gegenprüfen
+        run: python3 -B -m unittest discover -s tools -p 'test_deploy_ohne_einrichtung.py'
+
       - name: Shop-Ersatzanzeige gegen Katalog prüfen
         run: |
           python3 tools/shop_jsonld.py --pruefen
