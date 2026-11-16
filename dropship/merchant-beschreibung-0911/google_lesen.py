@@ -62,6 +62,16 @@ def waehle(views, offers, sprache='de'):
     return None, None
 
 
+def name_aus_zeile(pv):
+    """(Angebot, Name für products.get, Sprache) aus einer Zeile von product_view. Der Name entsteht aus Sprache, Feed-Label
+    und Angebot (Form «sprache~label~angebot»), nicht aus der id: deren Form ist nicht zugesagt (Lauf 2 vom 16.11. fand
+    mit dem Zerlegen der id kein einziges Angebot, auch nicht die Probe)."""
+    off, sprache, label = pv.get('offerId') or '', pv.get('languageCode') or '', pv.get('feedLabel') or ''
+    if not (off and sprache and label):
+        return off, None, sprache
+    return off, f'{sprache}~{label}~{off}', sprache
+
+
 def fehlklasse(im_kanal):
     """Klasse eines Produkts, das Google nicht führt: nicht im Kanal (Schaufenster oder nie veröffentlicht) oder
     im Kanal, aber bei Google nicht angekommen."""
@@ -126,6 +136,8 @@ def selbsttest():
     views = {'shopify_ZZ_1_5': {'fr': 'fr~L~shopify_ZZ_1_5'}, 'shopify_ZZ_1_6': {'de': 'de~L~shopify_ZZ_1_6'}}
     ok('Wahl: erste Variante mit deutscher Fassung', waehle(views, ['shopify_ZZ_1_5', 'shopify_ZZ_1_6']) == ('shopify_ZZ_1_6', 'de~L~shopify_ZZ_1_6'))
     ok('Wahl: nichts gefunden', waehle({}, ['shopify_ZZ_1_5']) == (None, None))
+    ok('Name aus Sprache, Label und Angebot', name_aus_zeile({'offerId': 'shopify_ZZ_1_2', 'languageCode': 'de', 'feedLabel': 'L'}) == ('shopify_ZZ_1_2', 'de~L~shopify_ZZ_1_2', 'de'))
+    ok('Name fehlt ohne Feed-Label', name_aus_zeile({'offerId': 'shopify_ZZ_1_2', 'languageCode': 'de'})[1] is None)
     ok('Fehlklasse: nicht im Google-Kanal', fehlklasse(False) == 'nicht_im_kanal')
     ok('Fehlklasse: im Kanal, aber bei Google nicht da', fehlklasse(True) == 'nicht_gefunden')
     alt = 'Strickpullover mit Rundhalsausschnitt bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe.'
@@ -244,14 +256,17 @@ def main():
         offers = angebote(p, [v['legacyResourceId'] for v in (n.get('variants') or {}).get('nodes') or []])
         je_produkt[p] = offers
         alle_angebote += offers
-    views = collections.defaultdict(dict)
+    views, zeilen, formen = collections.defaultdict(dict), 0, collections.Counter()
     for i in range(0, len(alle_angebote), PAKET):
         liste = ','.join("'" + o + "'" for o in alle_angebote[i:i + PAKET])
-        for x in suchen_still(h, name, f'SELECT id, offer_id, language_code FROM product_view WHERE offer_id IN ({liste})'):
+        for x in suchen_still(h, name, f'SELECT id, offer_id, language_code, feed_label FROM product_view WHERE offer_id IN ({liste})'):
+            zeilen += 1
             pv = x.get('productView') or {}
-            teile = str(pv.get('id', '')).split('~')  # kanal~sprache~label~angebot
-            if len(teile) == 4:
-                views[pv.get('offerId', '')][teile[1]] = '~'.join(teile[1:])
+            formen[len(str(pv.get('id', '')).split('~'))] += 1
+            off, pname, sprache = name_aus_zeile(pv)
+            if pname:
+                views[off][sprache] = pname
+    print(f'product_view: {zeilen} Zeilen; Teile der id (Anzahl «~»-Teile: Zeilen): {dict(formen)}')
     print(f'Merchant: {sum(1 for o in views if o != probe)} von {len(alle_angebote) - (1 if probe else 0)} Angeboten bei Google gefunden '
           f'(Probe {probe}: {"gefunden" if probe in views else "NICHT gefunden, Messgerät prüfen"})')
 
