@@ -10,7 +10,7 @@ Dienstkontos. Ausgegeben werden Zählungen je Problemcode, je Bild-Problem die Z
 und je übriges Problem (ohne die Massencodes in MASSE) die Zeile «FEHLER|<code>|<attribut>|<offer_id>|<titel>»,
 dazu die Datei bildprobleme.json (Workflow-Artefakt). Schreibt nichts im Merchant Center.
 """
-import json, os, sys, time
+import base64, json, os, sys, time
 from collections import Counter
 import requests
 from google.oauth2 import service_account
@@ -388,6 +388,90 @@ def versand(h, name):
                    "dienste": [{k: v for k, v in d.items()} for d in dienste]}, f, ensure_ascii=False, indent=1)
     return 0
 
+# MODUS=aktionen (16.11.2026): Codes, die in der Schweiz kostenlose Einträge und Shopping sperren (Lauf 43945004049).
+# Die übrigen Codes des Tages (Notlagen, Sexualität, Recht, Erwachsene, Weltanschauung) betreffen nur Remarketing.
+SPERRCODES = ("image_unwanted_overlays", "tobacco_policy_violation", "live_animals_policy_violation",
+              "guns_parts_policy_violation", "alcohol_policy_violation", "local_requirements_policy_violation",
+              "image_link_pending_crawl", "image_link_internal_error")
+
+
+def produkt_ressource(view_id):
+    """Produkt-Segment für die Merchant API aus product_view.id («[online~|local~]sprache~feedlabel~angebot»).
+
+    Base64url ohne Auffüllung, wie Google es für alle IDs empfiehlt. None bei unbekanntem Format."""
+    teile = str(view_id or "").split("~")
+    if len(teile) == 4 and teile[0] == "online":
+        teile = teile[1:]
+    elif len(teile) == 4 and teile[0] != "local":
+        return None
+    if len(teile) not in (3, 4) or not all(teile):
+        return None
+    return base64.urlsafe_b64encode("~".join(teile).encode()).decode().rstrip("=")
+
+
+def aktionen_zusammenfassen(ri):
+    """Ein gerendertes Problem auf Titel, Wirkung und Aktionen kürzen (ohne actionContext, ohne Links: beide können die
+    Kontonummer tragen)."""
+    out = {"titel": sauber(ri.get("title"), 160), "wirkung": sauber((ri.get("impact") or {}).get("message"), 200),
+           "aktionen": []}
+    for a in ri.get("actions") or []:
+        art = next((k for k in ("builtinSimpleAction", "builtinUserInputAction", "externalAction") if k in a), "?")
+        e = {"art": art, "knopf": sauber(a.get("buttonLabel"), 60), "verfuegbar": bool(a.get("isAvailable"))}
+        if a.get("reasons"):
+            e["gruende"] = [sauber(r.get("message"), 160) for r in a["reasons"]]
+        teil = a.get(art) or {}
+        if art == "builtinUserInputAction":
+            e["ablaeufe"] = [{"id": sauber(f.get("id"), 60), "label": sauber(f.get("label"), 80)} for f in teil.get("flows") or []]
+        elif art in ("builtinSimpleAction", "externalAction"):
+            e["typ"] = teil.get("type")
+        out["aktionen"].append(e)
+    return out
+
+
+def aktionen(h, name):
+    """MODUS=aktionen: je gesperrtem Produkt Googles Problemtext und die angebotenen Aktionen lesen. Schreibt nichts.
+
+    Frage: Lässt sich «Überprüfung anfordern» über triggeraction auslösen (builtinUserInputAction), oder geht es nur im
+    Merchant Center? Je Produkt wird ein Angebot gerendert (deutsch bevorzugt)."""
+    zeilen = suchen(h, name, "SELECT id, offer_id, title, item_issues FROM product_view")
+    wahl = {}
+    for z in zeilen:
+        pv = z.get("productView") or {}
+        codes = [(i.get("type") or {}).get("code") for i in pv.get("itemIssues") or []]
+        treffer = [c for c in codes if c in SPERRCODES]
+        pid = produkt_id(pv.get("offerId"))
+        if not treffer or not pid:
+            continue
+        deutsch = "~de~" in "~" + str(pv.get("id", "")) + "~"
+        if pid not in wahl or (deutsch and not wahl[pid]["deutsch"]):
+            wahl[pid] = {"id": pv.get("id"), "codes": treffer, "titel": sauber(pv.get("title"), 70), "deutsch": deutsch}
+    print(f"AKTIONEN: {len(wahl)} Produkte mit Sperrcode")
+    erg = []
+    for pid, w in sorted(wahl.items())[:60]:
+        seg = produkt_ressource(w["id"])
+        if not seg:
+            print(f"AKTION|{pid}|{','.join(w['codes'])}|ID-Format unbekannt"); continue
+        url = f"https://merchantapi.googleapis.com/issueresolution/v1/{name}/products/{seg}:renderproductissues"
+        r = requests.post(url, headers=h, params={"languageCode": "de-CH", "timeZone": "Europe/Zurich"},
+                          json={"contentOption": "PRE_RENDERED_HTML", "userInputActionOption": "BUILT_IN_USER_INPUT_ACTIONS"},
+                          timeout=60)
+        if r.status_code != 200:
+            print(f"AKTION|{pid}|{','.join(w['codes'])}|HTTP {r.status_code}|{sauber(r.text, 200)}"); continue
+        probleme = [aktionen_zusammenfassen(ri) for ri in r.json().get("renderedIssues") or []]
+        erg.append({"produkt": pid, "codes": w["codes"], "titel": w["titel"], "probleme": probleme})
+        for p in probleme:
+            knoepfe = "; ".join(f"{a['art']}:{a['knopf']}:{'ja' if a['verfuegbar'] else 'nein'}"
+                                + (f" ({' / '.join(a.get('gruende', []))})" if a.get("gruende") else "")
+                                + (f" ablaeufe={[f['id'] for f in a.get('ablaeufe', [])]}" if a.get("ablaeufe") else "")
+                                for a in p["aktionen"])
+            print(f"AKTION|{pid}|{','.join(w['codes'])}|{w['titel']}|{p['titel']}|{p['wirkung']}|{knoepfe}")
+        time.sleep(0.3)
+    with open("bildprobleme.json", "w") as f:
+        json.dump({"gelesen": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "modus": "aktionen", "produkte": erg},
+                  f, ensure_ascii=False, indent=1)
+    print(f"ERGEBNIS aktionen: {len(erg)} Produkte gerendert")
+    return 0
+
 
 def main():
     h = anmelden()
@@ -400,6 +484,8 @@ def main():
         return laender(h, name)
     if os.environ.get("MODUS", "bilder") == "versand":
         return versand(h, name)
+    if os.environ.get("MODUS", "bilder") == "aktionen":
+        return aktionen(h, name)
     zeilen = suchen(h, name, "SELECT id, offer_id, title, item_issues FROM product_view")
     codes, treffer, fehler, attribute = Counter(), [], [], Counter()
     beispiel = None

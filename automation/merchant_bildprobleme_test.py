@@ -71,5 +71,31 @@ gleich(l["autofeed-produkt-sku-gesperrt"], {"klicks": 1, "einblendungen": 15, "a
 gleich(l["autofeed-produkt-sku"], {"klicks": 0, "einblendungen": 3, "angebote_mit_klick": 0}, "Leistung Autofeed frei")
 gleich(l["autofeed-nummer"]["klicks"], 1, "Leistung reine Nummer")
 
+# MODUS=aktionen: Produkt-Segment aus product_view.id und gekürzte Aktionen (keine Kontonummer, kein Link)
+import base64 as _b64
+def _dek(s):
+    return _b64.urlsafe_b64decode(s + "=" * (-len(s) % 4)).decode()
+gleich(_dek(m.produkt_ressource("online~de~CH~shopify_ZZ_1_2")), "de~CH~shopify_ZZ_1_2", "online wird entfernt")
+gleich(_dek(m.produkt_ressource("de~CH~sku/1")), "de~CH~sku/1", "drei Teile bleiben")
+gleich(_dek(m.produkt_ressource("local~de~CH~a")), "local~de~CH~a", "local bleibt")
+gleich(m.produkt_ressource("fremd~de~CH~a"), None, "unbekannter Kanal")
+gleich(m.produkt_ressource("de~~a"), None, "leerer Teil")
+gleich(m.produkt_ressource(None), None, "leer")
+gleich("=" in m.produkt_ressource("de~CH~ab"), False, "ohne Auffüllung")
+z = m.aktionen_zusammenfassen({"title": "Tabak", "impact": {"message": "Gesperrt in CH"}, "actions": [
+    {"buttonLabel": "Überprüfung anfordern", "isAvailable": True,
+     "builtinUserInputAction": {"actionContext": "GEHEIM", "flows": [{"id": "flow1", "label": "Grund"}]}},
+    {"buttonLabel": "Mehr", "isAvailable": False, "reasons": [{"message": "zu früh"}],
+     "externalAction": {"type": "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER", "uri": "https://merchants.google.com/x?a=123"}},
+    {"buttonLabel": "Bearbeiten", "isAvailable": True, "builtinSimpleAction": {"type": "EDIT_ITEM_ATTRIBUTE"}}]})
+gleich(z["titel"], "Tabak", "Titel")
+gleich(z["wirkung"], "Gesperrt in CH", "Wirkung")
+gleich([a["art"] for a in z["aktionen"]], ["builtinUserInputAction", "externalAction", "builtinSimpleAction"], "Arten")
+gleich(z["aktionen"][0]["ablaeufe"], [{"id": "flow1", "label": "Grund"}], "Abläufe")
+gleich(z["aktionen"][1]["gruende"], ["zu früh"], "Gründe")
+gleich(z["aktionen"][1]["typ"], "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER", "Typ extern")
+gleich("GEHEIM" in repr(z) or "123" in repr(z), False, "kein actionContext, kein Link")
+gleich(m.aktionen_zusammenfassen({})["aktionen"], [], "leeres Problem")
+
 print(f"{'OK' if not fehler else 'FEHLGESCHLAGEN'}: {fehler} Fehler")
 sys.exit(1 if fehler else 0)
