@@ -1,0 +1,319 @@
+/* Nur aktive Mix-Frames. Nach minispiele-mix-embedded.css laden. */
+@media (max-height: 450px) and (min-width: 600px) {
+  /* Die Shellbar entfällt hier; der echte Unterbrechen-Knopf bleibt erreichbar. */
+  html.mix-embedded[data-mix-game] button.mix-back {
+    display: block;
+    min-width: 44px;
+    min-height: 44px;
+    flex-shrink: 0;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  /* DOM-Bretter: Bedienleiste links, quadratisches Brett daneben. */
+  html.mix-embedded:is([data-mix-game='drei-gewinnt'], [data-mix-game='memory'], [data-mix-game='simon']) body {
+    display: grid;
+    grid-template-columns: minmax(180px, 220px) minmax(0, 340px);
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 8px 20px;
+    padding: 12px;
+    height: auto;
+    min-height: 100dvh;
+  }
+  html.mix-embedded:is([data-mix-game='drei-gewinnt'], [data-mix-game='memory'], [data-mix-game='simon']) body > button.mix-back {
+    position: static;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+  html.mix-embedded:is([data-mix-game='drei-gewinnt'], [data-mix-game='memory'], [data-mix-game='simon']) body > h1 {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  html.mix-embedded:is([data-mix-game='drei-gewinnt'], [data-mix-game='memory'], [data-mix-game='simon']) body > #board {
+    grid-column: 2;
+    grid-row: 1 / 7;
+    justify-self: center;
+    width: min(100%, 340px, calc(100dvh - 32px));
+    min-width: 204px;
+    aspect-ratio: 1;
+    margin: 0;
+    gap: 8px;
+  }
+  html.mix-embedded[data-mix-game='drei-gewinnt'] body > .sub,
+  html.mix-embedded[data-mix-game='simon'] body > .sub {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: center;
+  }
+  html.mix-embedded[data-mix-game='drei-gewinnt'] body { row-gap: 6px; }
+  html.mix-embedded[data-mix-game='drei-gewinnt'] body > .status {
+    grid-column: 1;
+    grid-row: 4;
+    min-width: 0;
+    margin: 0;
+    padding: 8px;
+    font-size: 16px;
+  }
+  html.mix-embedded[data-mix-game='drei-gewinnt'] body > .score {
+    grid-column: 1;
+    grid-row: 5;
+    margin: 0;
+    gap: 8px;
+  }
+  html.mix-embedded[data-mix-game='drei-gewinnt'] .scard {
+    flex: 1;
+    min-width: 0;
+    padding: 6px;
+  }
+  html.mix-embedded[data-mix-game='drei-gewinnt'] .scard .who { font-size: 12px; }
+  html.mix-embedded[data-mix-game='drei-gewinnt'] #resetBtn {
+    grid-column: 1;
+    grid-row: 6;
+    min-height: 44px;
+    margin: 0;
+    padding: 8px;
+    font-size: 15px;
+  }
+  html.mix-embedded[data-mix-game='memory'] body > .scores,
+  html.mix-embedded[data-mix-game='simon'] body > .scores {
+    grid-column: 1;
+    grid-row: 4;
+    margin: 0;
+    gap: 8px;
+  }
+  html.mix-embedded[data-mix-game='memory'] body > .scores { grid-row: 3; }
+  html.mix-embedded[data-mix-game='memory'] .pcard,
+  html.mix-embedded[data-mix-game='simon'] .pcard { min-width: 0; padding: 6px; }
+  html.mix-embedded[data-mix-game='memory'] .pname,
+  html.mix-embedded[data-mix-game='simon'] .pcard .name { font-size: 12px; }
+  html.mix-embedded[data-mix-game='memory'] body > .turn,
+  html.mix-embedded[data-mix-game='simon'] body > .status {
+    grid-column: 1;
+    grid-row: 5;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.35;
+    text-align: center;
+    color: #d9d1ff;
+  }
+  html.mix-embedded[data-mix-game='memory'] body > .turn { grid-row: 4; }
+  html.mix-embedded[data-mix-game='simon'] #startBtn {
+    grid-column: 1;
+    grid-row: 6;
+    min-height: 44px;
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  /* Vier gewinnt: sizeBoard() setzt 378 × 324 px und liest unskalierte X-Werte.
+     Keine CSS-Größenüberschreibung des Canvas: jede Spalte bleibt 54 px breit. */
+  html.mix-embedded[data-mix-game='vier-gewinnt'] body {
+    display: grid;
+    grid-template-columns: minmax(180px, 220px) 378px;
+    grid-template-rows: 44px auto auto auto auto;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 8px 12px;
+    padding: 12px;
+    height: auto;
+    min-height: 100dvh;
+  }
+  html.mix-embedded[data-mix-game='vier-gewinnt'] body > button.mix-back {
+    position: static;
+    grid-area: 1 / 1;
+    justify-self: start;
+  }
+  html.mix-embedded[data-mix-game='vier-gewinnt'] body > h1 {
+    grid-area: 2 / 1;
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+  }
+  html.mix-embedded[data-mix-game='vier-gewinnt'] body > .status {
+    grid-area: 3 / 1;
+    justify-content: center;
+    margin: 0;
+    padding: 8px;
+    font-size: 16px;
+  }
+  html.mix-embedded[data-mix-game='vier-gewinnt'] body > .scores {
+    grid-area: 4 / 1;
+    justify-content: center;
+    margin: 0;
+    gap: 8px;
+  }
+  html.mix-embedded[data-mix-game='vier-gewinnt'] body > #board { grid-area: 1 / 2 / 6 / 3; }
+  html.mix-embedded[data-mix-game='vier-gewinnt'] body > .hint {
+    grid-area: 5 / 1;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #d9d1ff;
+  }
+
+  /* Elfmeter: festes Seitenverhältnis, Resize liest weiterhin das echte CSS-Rechteck. */
+  html.mix-embedded[data-mix-game='elfmeter'] body > .wrap {
+    display: grid;
+    grid-template-columns: minmax(176px, 200px) minmax(0, 436px);
+    grid-template-rows: auto auto auto auto;
+    align-content: center;
+    align-items: center;
+    gap: 6px 16px;
+    max-width: 700px;
+    min-height: 100dvh;
+    padding: 12px;
+  }
+  html.mix-embedded[data-mix-game='elfmeter'] .wrap > h1 {
+    grid-area: 1 / 1;
+    margin: 48px 0 0;
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+  html.mix-embedded[data-mix-game='elfmeter'] h1 small { font-size: 12px; }
+  html.mix-embedded[data-mix-game='elfmeter'] .scoreboard {
+    grid-area: 2 / 1;
+    gap: 6px;
+  }
+  html.mix-embedded[data-mix-game='elfmeter'] .pcard { min-width: 0; padding: 4px 2px; }
+  html.mix-embedded[data-mix-game='elfmeter'] .pcard .name { font-size: 12px; }
+  html.mix-embedded[data-mix-game='elfmeter'] .pcard .score { font-size: 24px; }
+  html.mix-embedded[data-mix-game='elfmeter'] .pcard .shots { font-size: 12px; letter-spacing: 0; }
+  html.mix-embedded[data-mix-game='elfmeter'] .turnbar {
+    grid-area: 3 / 1;
+    padding: 8px;
+    font-size: 15px;
+  }
+  html.mix-embedded[data-mix-game='elfmeter'] .hint {
+    grid-area: 4 / 1;
+    margin: 0;
+    font-size: 13px;
+    color: #d9d1ff;
+    opacity: 1;
+  }
+  html.mix-embedded[data-mix-game='elfmeter'] #cv {
+    grid-area: 1 / 2 / 4 / 3;
+    justify-self: center;
+    width: min(100%, calc((100dvh - 100px) * 436 / 300));
+    height: auto;
+  }
+  html.mix-embedded[data-mix-game='elfmeter'] .controls { grid-area: 4 / 2; gap: 8px; }
+  html.mix-embedded[data-mix-game='elfmeter'] .zbtn { min-height: 48px; padding: 4px; font-size: 20px; }
+
+  /* Hoch/Tief: Karten bleiben in Originalgröße, Tipps direkt darunter. */
+  html.mix-embedded[data-mix-game='hoch-tief'] body > .wrap {
+    display: grid;
+    grid-template-columns: minmax(180px, 230px) minmax(300px, 340px);
+    grid-template-rows: auto auto auto auto auto;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 8px 20px;
+    max-width: 700px;
+    min-height: 100dvh;
+    padding: 12px;
+  }
+  html.mix-embedded[data-mix-game='hoch-tief'] .wrap > h1 { grid-area: 1 / 1; margin: 48px 0 0; font-size: 20px; text-align: center; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .wrap > .sub { grid-area: 2 / 1; margin: 0; font-size: 12px; line-height: 1.4; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .scores { grid-area: 3 / 1; margin: 0; gap: 8px; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .pcard { padding: 6px; min-width: 0; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .pcard .name { font-size: 12px; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .round { grid-area: 4 / 1; margin: 0; text-align: center; color: #d9d1ff; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .turn { grid-area: 5 / 1; margin: 0; font-size: 16px; color: #d9d1ff; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .cardrow { grid-area: 1 / 2 / 4 / 3; margin: 0; gap: 10px; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .buttons { grid-area: 4 / 2; margin: 0; gap: 8px; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .buttons .btn { min-height: 48px; padding: 8px; font-size: 18px; }
+  html.mix-embedded[data-mix-game='hoch-tief'] .feedback { grid-area: 5 / 2; margin: 0; font-size: 16px; }
+
+  /* Quiz: Frage, Buzzer und die Antworten bleiben gleichzeitig sichtbar. */
+  html.mix-embedded[data-mix-game='quiz-buzzer'] body > .wrap {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr;
+    align-content: center;
+    align-items: start;
+    gap: 10px 16px;
+    max-width: 900px;
+    min-height: 100dvh;
+    padding: 12px;
+  }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .wrap > h1 { grid-area: 1 / 1; margin: 48px 0 0; font-size: 20px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] h1 .e { font-size: inherit; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .wrap > .sub { grid-area: 2 / 1; margin: 0; font-size: 12px; line-height: 1.4; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .scores { grid-area: 3 / 1; margin: 0; gap: 8px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .score { padding: 6px 2px; min-width: 0; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .score .name { font-size: 12px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] #game,
+  html.mix-embedded[data-mix-game='quiz-buzzer'] #end { grid-area: 1 / 2 / 4 / 3; min-width: 0; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] #game > .card { padding: 10px; margin: 0 0 6px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .qnum { font-size: 12px; margin-bottom: 4px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .question { min-height: 44px; font-size: 18px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .status { min-height: 22px; margin: 4px 0 6px; font-size: 14px; color: #d9d1ff; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .who { font-size: inherit; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .buzzers { gap: 8px; margin-bottom: 8px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .buzzer { min-height: 48px; padding: 8px; font-size: 16px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .buzzer .big { display: inline; font-size: 18px; margin-right: 6px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .answers.show { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  html.mix-embedded[data-mix-game='quiz-buzzer'] .ans { min-width: 0; min-height: 44px; padding: 8px; font-size: 16px; }
+
+  /* Pong: eindeutige Grid-Höhe beseitigt die intrinsische Flex-Mindesthöhe.
+     resize() liest cv.clientWidth/Height; keine Canvas-Transformation. */
+  html.mix-embedded[data-mix-game='pong'] #app {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+  html.mix-embedded[data-mix-game='pong'] #app > .topbar { grid-area: 1 / 1; flex-direction: column; align-items: stretch; padding: 0; }
+  html.mix-embedded[data-mix-game='pong'] .topbar > .title { margin: 0; font-size: 20px; text-align: center; }
+  html.mix-embedded[data-mix-game='pong'] #app > .scorebar { grid-area: 2 / 1; flex-direction: column; align-self: start; padding: 0; }
+  html.mix-embedded[data-mix-game='pong'] .scorebar > .sc { width: 100%; padding: 6px; }
+  html.mix-embedded[data-mix-game='pong'] .sc .pts { font-size: 24px; }
+  html.mix-embedded[data-mix-game='pong'] #app > .stagewrap { grid-area: 1 / 2 / 3 / 3; min-width: 0; min-height: 0; padding: 0; }
+  html.mix-embedded[data-mix-game='pong'] .stagewrap > .overlay { inset: 0; gap: 8px; padding: 12px; overflow-y: auto; }
+  html.mix-embedded[data-mix-game='pong'] .overlay h2 { font-size: 22px; }
+  html.mix-embedded[data-mix-game='pong'] .overlay p { font-size: 14px; }
+  html.mix-embedded[data-mix-game='pong'] .overlay .btn { min-height: 44px; padding: 10px 16px; font-size: 16px; }
+
+  /* Stapel-Turm: H >= 300 ist eine Spielkonstante; die Bühne bleibt mindestens
+     so hoch. Unter 324 px Framehöhe ist dafür ein kleiner Restscroll nötig. */
+  html.mix-embedded[data-mix-game='stapel-turm'] { overflow-y: auto; }
+  html.mix-embedded[data-mix-game='stapel-turm'] body {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 520px);
+    grid-template-rows: auto minmax(0, 1fr);
+    justify-content: center;
+    align-items: start;
+    gap: 12px 16px;
+    padding: 12px;
+    height: auto;
+    min-height: max(100dvh, 324px);
+    overflow-y: auto;
+  }
+  html.mix-embedded[data-mix-game='stapel-turm'] body > .top { grid-area: 1 / 1; flex-direction: column; padding: 0; }
+  html.mix-embedded[data-mix-game='stapel-turm'] body > .top > h1 { font-size: 20px; }
+  html.mix-embedded[data-mix-game='stapel-turm'] body > .top > div { display: none; }
+  html.mix-embedded[data-mix-game='stapel-turm'] body > .scores { grid-area: 2 / 1; flex-direction: column; padding: 0; gap: 12px; }
+  html.mix-embedded[data-mix-game='stapel-turm'] .scores > .sc { padding: 6px; }
+  html.mix-embedded[data-mix-game='stapel-turm'] .sc .n { font-size: 12px; line-height: 1.3; }
+  html.mix-embedded[data-mix-game='stapel-turm'] body > .stage { grid-area: 1 / 2 / 3 / 3; height: max(300px, calc(100dvh - 24px)); min-width: 0; padding: 0; }
+  html.mix-embedded[data-mix-game='stapel-turm'] .stage > .hint { left: 8px; right: 8px; top: 12px; font-size: 13px; }
+  html.mix-embedded[data-mix-game='stapel-turm'] .stage > .overlay { padding: 12px; gap: 8px; overflow-y: auto; }
+  html.mix-embedded[data-mix-game='stapel-turm'] .overlay h2 { font-size: 22px; }
+  html.mix-embedded[data-mix-game='stapel-turm'] .overlay p { font-size: 14px; }
+  html.mix-embedded[data-mix-game='stapel-turm'] .overlay .big { font-size: 32px; }
+  html.mix-embedded[data-mix-game='stapel-turm'] .overlay .btn { min-height: 44px; padding: 10px 16px; font-size: 16px; }
+}

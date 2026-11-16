@@ -1,50 +1,62 @@
 (function(){
   'use strict';
-  var $=function(id){return document.getElementById(id);},R=window.MixRules,C=window.MixCatalog,KEY='aban_mini_mix_v1',run=null,frame=null,token='',timer=0,saved=null;
+  var $=function(id){return document.getElementById(id);},R=window.MixRules,P=window.MixProgress,C=window.MixCatalog;
+  var KEY='aban_mix_arena_v2',LEGACY='aban_mini_mix_v1',run=null,profile=P.empty(),settings={sound:false,avatars:[0,1],names:['Spieler 1','Spieler 2']};
+  var frame=null,token='',timer=0,countTimer=0,counting=false,awardInfo=null,notice='',audio=null;
+  var avatars=['🦊','🐼','🤖','🐸','🦉','🐲'],avatarNames=['Fuchs','Panda','Roboter','Frosch','Eule','Drache'];
+  var groups={kopf:'Köpfchen',tempo:'Tempo',geschick:'Geschick'};
+  var badges=[{id:'first',e:'🏅',n:'Auftakt',d:'Ein Match vollständig spielen'},{id:'explorer',e:'🧭',n:'Entdecker',d:'10 Disziplinen abschließen'},{id:'marathon',e:'🔥',n:'Ausdauer',d:'7 Runden ohne Auslassen'},{id:'close',e:'⚖️',n:'Kopf an Kopf',d:'Höchstens 1 Punkt Abstand'}];
   function game(slug){return C.find(function(g){return g.s===slug;});}
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(run));saved=R.restore(run);}catch(_){$('storageNotice').hidden=false;}}
-  function load(){try{saved=R.restore(localStorage.getItem(KEY));}catch(_){saved=null;}}
-  function resumeInfo(){load();$('resume').hidden=!saved;$('resumeInfo').hidden=!saved;if(saved)$('resumeInfo').textContent=saved.names.join(' · ')+' — '+saved.history.length+' von '+saved.deck.length+' Runden gewertet.';}
-  function dispose(){clearTimeout(timer);token='';if(frame){frame.remove();frame=null;}$('arena').hidden=true;$('loadError').hidden=true;document.body.classList.remove('in-round');}
+  function el(tag,cls,text){var node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node;}
+  function load(){try{var raw=localStorage.getItem(KEY),s=raw?JSON.parse(raw):null;if(s&&s.v===2){run=R.restore(s.run);profile=P.restore(s.profile);if(s.settings){settings.sound=s.settings.sound===true;settings.avatars=[0,1].map(function(i){var n=s.settings.avatars&&s.settings.avatars[i];return Number.isInteger(n)&&n>=0&&n<6?n:i;});settings.names=[0,1].map(function(i){var n=s.settings.names&&s.settings.names[i];return typeof n==='string'&&n.trim()?n.trim().slice(0,20):'Spieler '+(i+1);});}}else{run=R.restore(localStorage.getItem(LEGACY));if(run){settings.names=run.names.slice();settings.avatars=(run.avatars||[0,1]).slice();}}}catch(_){$('storageNotice').hidden=false;}if(!profile)profile=P.empty();}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify({v:2,run:run,profile:profile,settings:settings}));}catch(_){$('storageNotice').hidden=false;}}
+  function sound(kind){if(!settings.sound||document.hidden)return;try{if(!audio)audio=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume();var notes=kind==='win'?[523.25,659.25,783.99]:kind==='final'?[392,523.25,659.25,783.99]:kind==='tick'?[440]:[659.25];notes.forEach(function(hz,i){var osc=audio.createOscillator(),gain=audio.createGain(),t=audio.currentTime+i*.12;osc.type='sine';osc.frequency.value=hz;gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(.055,t+.015);gain.gain.exponentialRampToValueAtTime(.0001,t+.2);osc.connect(gain);gain.connect(audio.destination);osc.start(t);osc.stop(t+.22);});}catch(_){}}
+  function syncSound(){['sound','arenaSound'].forEach(function(id){$(id).setAttribute('aria-pressed',String(settings.sound));$(id).setAttribute('aria-label',settings.sound?'Spielklänge ausschalten':'Spielklänge einschalten');});$('sound').textContent=settings.sound?'♫ Klang an':'♫ Klang aus';$('arenaSound').textContent=settings.sound?'♫ An':'♫ Aus';if(frame){try{frame.contentWindow.MiniMix.sound=settings.sound;}catch(_){}}}
+  function toggleSound(){settings.sound=!settings.sound;syncSound();save();sound('tap');}
+  function picker(){var unlocked=P.unlocked(profile);settings.avatars=settings.avatars.map(function(n,i){return unlocked.indexOf(n)>=0?n:i;});[1,2].forEach(function(i){$('avatar'+i).textContent=avatars[settings.avatars[i-1]];$('avatar'+i).setAttribute('aria-label','Spieler '+i+': '+avatarNames[settings.avatars[i-1]]+'. Figur wechseln');});}
+  function pass(){var level=P.level(profile);$('levelMedal').textContent=level.level;$('levelText').textContent='Level '+level.level;$('xpText').textContent=level.into+' / '+level.next+' XP';$('xpBar').max=level.next;$('xpBar').value=level.into;$('passStats').textContent=profile.matches+' Matches · '+profile.rounds+' gespielte Runden';$('unlockText').textContent=level.level<3?'Eule ab Level 3 · Drache ab Level 5':level.level<5?'Eule freigeschaltet · Drache ab Level 5':'Alle sechs Figuren freigeschaltet';$('badges').replaceChildren();badges.forEach(function(b){var yes=profile.badges.indexOf(b.id)>=0,item=el('div','badge'+(yes?' earned':'')),txt=el('span','',b.n);item.appendChild(el('span','badgeIcon',yes?b.e:'◇'));txt.appendChild(el('small','',yes?'Freigeschaltet':b.d));item.appendChild(txt);$('badges').appendChild(item);});picker();}
+  function resumeInfo(){$('resume').hidden=!run;$('resumeInfo').hidden=!run;if(run){$('resume').textContent=run.phase==='finished'?'Letztes Finale ansehen':'Match fortsetzen';$('resumeInfo').textContent=run.names.join(' · ')+' — '+run.history.length+' von '+run.deck.length+' Runden abgeschlossen.';}}
+  function dispose(){clearTimeout(timer);clearTimeout(countTimer);counting=false;token='';if(frame){frame.remove();frame=null;}$('arena').hidden=true;$('countdown').hidden=true;$('loadError').hidden=true;document.body.classList.remove('in-round');}
   function render(focus){
-    dispose();$('lobby').hidden=true;$('match').hidden=false;var points=R.score(run),done=run.history.length,idx=run.phase==='result'?done-1:done,g=game(run.deck[Math.min(idx,run.deck.length-1)]);
-    $('p1').textContent='1 · '+run.names[0];$('p2').textContent='2 · '+run.names[1];$('score1').textContent=points[0];$('score2').textContent=points[1];
-    $('roundLabel').textContent=run.phase==='finished'?'Mix abgeschlossen':'Runde '+Math.min(idx+1,run.deck.length)+' / '+run.deck.length;
-    $('roundList').replaceChildren();run.deck.forEach(function(slug,i){var li=document.createElement('li'),gg=game(slug);li.textContent=(i+1)+'. '+gg.n;li.className=i<done?'done':i===done?'current':'';if(i<done){var w=run.history[i];li.textContent+=' · '+(w===null?'ohne Punkte':w===0?'je 1 Punkt':run.names[w-1]+' +3');}$('roundList').appendChild(li);});
-    $('stageTag').textContent=run.phase==='finished'?'Euer Ergebnis':run.phase==='result'?'Runde abgeschlossen':'Nächste Disziplin';
-    $('stageIcon').textContent=run.phase==='finished'?'🏆':g.e;
-    if(run.phase==='finished'){
-      $('stageTitle').textContent=points[0]===points[1]?'Gemeinsamer Gleichstand!':run.names[points[0]>points[1]?0:1]+' gewinnt den Mix!';
-      $('stageText').textContent=points[0]+' : '+points[1]+' Punkte über '+run.deck.length+' Disziplinen. Lust auf eine neue Mischung?';$('action').textContent='Neuen Mix zusammenstellen';
-    }else if(run.phase==='result'){
-      var winner=run.history[done-1];$('stageTitle').textContent=winner===null?'Runde abgebrochen':winner===0?'Unentschieden!':run.names[winner-1]+' holt die Runde!';
-      $('stageText').textContent=g.n+' · '+(winner===null?'Keine Punkte vergeben.':winner===0?'Beide erhalten 1 Punkt.':'3 Punkte für Spieler '+winner+'.');$('action').textContent=done===run.deck.length?'Gesamtsieger ansehen':'Zur nächsten Runde';
-    }else{
-      $('stageTitle').textContent=g.n;$('stageText').textContent=g.d+'. '+run.names[0]+' spielt als Spieler 1, '+run.names[1]+' als Spieler 2. Die Anleitung folgt im Spiel.';$('action').textContent='Runde starten';
-    }
-    if(focus){$('stageTitle').focus();window.scrollTo(0,0);}
+    dispose();$('lobby').hidden=true;$('match').hidden=false;var points=R.score(run),done=run.history.length,final=run.phase==='finished',result=run.phase==='result',idx=result?done-1:done,g=game(run.deck[Math.min(idx,run.deck.length-1)]),winner=result?run.history[done-1]:null;
+    [1,2].forEach(function(i){$('p'+i).textContent=run.names[i-1];$('avatarScore'+i).textContent=avatars[(run.avatars||[0,1])[i-1]];$('score'+i).textContent=points[i-1];$('delta'+i).textContent=result?(winner===i?'+3':winner===0?'+1':''):'';});
+    $('roundLabel').textContent=final?'Finale · '+run.deck.length+' Runden':'Runde '+Math.min(idx+1,run.deck.length)+' / '+run.deck.length;
+    $('roundList').replaceChildren();run.deck.forEach(function(slug,i){var gg=game(slug),li=el('li',i<done?'done':i===done?'current':''),node=el('span','node',gg.e);if(i<done){node.appendChild(el('b','',run.history[i]===null?'–':'✓'));li.title=gg.n+' · '+(run.history[i]===null?'Ausgelassen':run.history[i]===0?'Unentschieden':run.names[run.history[i]-1]+' gewinnt');}else li.title=gg.n;li.append(node,el('span','nodeName',gg.n));if(i===done)li.setAttribute('aria-current','step');$('roundList').appendChild(li);});
+    $('stage').className='panel'+(final?' isFinal':result?' isResult':'');$('stageTag').textContent=final?'Euer großes Finale':result?'Runde abgeschlossen':'Nächste Disziplin';$('stageIcon').textContent=final?'🏆':result?(winner===null?'↪':winner===0?'🤝':avatars[(run.avatars||[0,1])[winner-1]]):g.e;
+    $('stageGroup').textContent=final?'MEISTERSCHAFT':groups[g.group]||'ARENA';$('tips').replaceChildren();$('controls').replaceChildren();$('tips').hidden=result||final;$('controls').hidden=result||final;$('skip').hidden=result||final;$('rematch').hidden=!final;$('rewardText').hidden=!final;$('finalHistory').hidden=!final;
+    $('roundNotice').hidden=!notice;$('roundNotice').textContent=notice;
+    if(final){
+      var played=run.history.filter(function(w){return w!==null;}).length;
+      $('stageTitle').textContent=!played?'Heute bleibt der Pokal hier.':points[0]===points[1]?'Gleichstand. Doppelt gefeiert!':run.names[points[0]>points[1]?0:1]+' holt den Pokal!';
+      $('stageText').textContent=points[0]+' : '+points[1]+' Punkte. '+(played===run.deck.length?'Ihr habt die ganze Arena gemeistert.':'Ihr habt '+played+' von '+run.deck.length+' Disziplinen gespielt.');
+      $('action').textContent='Neues Match zusammenstellen';$('rewardText').textContent=awardInfo&&awardInfo.awarded?'+'+awardInfo.xp+' Arena-XP · Level '+P.level(profile).level+(awardInfo.newBadges.length?' · '+awardInfo.newBadges.length+' neue Erfolge':''):'Euer Arena-Pass: '+profile.xp+' XP · Level '+P.level(profile).level;
+      $('finalHistory').replaceChildren();run.deck.forEach(function(slug,i){var row=el('div','historyRow'),w=run.history[i];row.append(el('strong','',(i+1)+'. '+game(slug).n),el('span','',w===null?'Ausgelassen':w===0?'Je 1 Punkt':run.names[w-1]+' +3'));$('finalHistory').appendChild(row);});
+    }else if(result){$('stageTitle').textContent=winner===null?'Weiter zur nächsten Arena.':winner===0?'Diese Runde teilt ihr euch!':run.names[winner-1]+' gewinnt die Runde!';$('stageText').textContent=g.n+' · '+(winner===null?'Ausgelassen, keine Punkte vergeben.':winner===0?'Beide bekommen einen Punkt.':'Drei Punkte gehen auf dein Konto.');$('action').textContent=done===run.deck.length?'Zum großen Finale':'Nächste Disziplin →';}
+    else{$('stageTitle').textContent=g.n;$('stageText').textContent=g.goal||g.d;(g.tips||[]).forEach(function(t){$('tips').appendChild(el('li','',t));});[0,1].forEach(function(i){var card=el('div','controlCard '+(i?'playerTwo':'playerOne'));card.append(el('strong','',avatars[(run.avatars||[0,1])[i]]+' '+run.names[i]+' · P'+(i+1)),el('p','',(g.controls||[])[i]||'Spieler '+(i+1)+' im Spielfeld.'));$('controls').appendChild(card);});$('action').textContent='Beide bereit? Los geht’s →';}
+    if(focus){$('stageTitle').focus({preventScroll:true});window.scrollTo(0,0);}
   }
-  function finish(winner){if(!run||!R.finish(run,winner))return;save();render(true);}
-  function startRound(){
-    if(!run||!R.start(run))return;save();var slug=run.deck[run.history.length];
-    token=crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+'_'+Math.random().toString(36).slice(2);frame=document.createElement('iframe');frame.title=game(slug).n+' – Runde '+(run.history.length+1);frame.src='/minispiele/'+slug+'.html?mix='+encodeURIComponent(token);frame.setAttribute('allow','autoplay');
-    $('match').hidden=true;$('arena').hidden=false;document.body.classList.add('in-round');$('arenaRound').textContent='Runde '+(run.history.length+1)+' / '+run.deck.length+' · '+game(slug).n;
-    $('frameSlot').replaceChildren(frame);timer=setTimeout(function(){$('loadError').hidden=false;},15000);
-    frame.addEventListener('load',function(){clearTimeout(timer);try{if(!frame.contentWindow.MiniMix)throw Error('Spiel fehlt');$('loadError').hidden=true;frame.contentWindow.focus();}catch(_){$('loadError').hidden=false;}});
+  function finish(winner){if(!run||!R.finish(run,winner))return;notice='';save();render(true);sound(winner===null?'tap':'win');}
+  function interrupt(){if(!run||run.phase!=='playing')return;dispose();run.phase='ready';notice='Runde unterbrochen. Sie beginnt beim nächsten Start von vorn; eure bisherigen Punkte bleiben erhalten.';save();render(true);}
+  function syncFrameChrome(){if(frame){try{frame.contentDocument.documentElement.classList.toggle('mix-has-bar',innerHeight>450);}catch(_){}}}
+  addEventListener('resize',syncFrameChrome);
+  function loadRound(){
+    if(!run||run.phase!=='playing')return;counting=false;$('countdown').hidden=true;var slug=run.deck[run.history.length];token=crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+'_'+Math.random().toString(36).slice(2);var target=document.createElement('iframe');frame=target;
+    target.title=game(slug).n+' – Runde '+(run.history.length+1);var query=new URLSearchParams({mix:token,p1:run.names[0],p2:run.names[1],sound:settings.sound?'1':'0'});target.src='/minispiele/'+slug+'.html?'+query.toString();target.setAttribute('allow','autoplay');$('arena').hidden=false;$('arenaRound').textContent=(run.history.length+1)+' / '+run.deck.length+' · '+game(slug).n+' · '+run.names.join(' / ');$('frameSlot').replaceChildren(target);
+    timer=setTimeout(function(){if(frame===target)$('loadError').hidden=false;},15000);
+    target.addEventListener('load',function(){if(frame!==target)return;clearTimeout(timer);try{var api=target.contentWindow.MiniMix;if(!api||!api.active)throw Error('Disziplin fehlt');$('loadError').hidden=true;syncFrameChrome();target.contentWindow.focus();if(api.begin)api.begin();}catch(_){$('loadError').hidden=false;}});
   }
-  addEventListener('message',function(e){
-    if(!run||run.phase!=='playing'||!frame||e.source!==frame.contentWindow||e.origin!==location.origin)return;
-    if(e.data==='mini-back'){finish(null);return;}
-    if(R.accepts(e,frame.contentWindow,location.origin,token,run.deck[run.history.length]))finish(e.data.winner);
-  });
-  $('setup').addEventListener('submit',function(e){e.preventDefault();run=R.create(Number(new FormData(e.target).get('rounds')),[$('name1').value,$('name2').value]);save();render(true);});
-  $('resume').onclick=function(){load();if(saved){run=saved;render(true);}};
-  $('action').onclick=function(){if(run.phase==='ready')startRound();else if(run.phase==='result'){R.next(run);save();render(true);}else showMenu();};
-  function showMenu(){dispose();$('match').hidden=true;$('lobby').hidden=false;resumeInfo();$('setupTitle').scrollIntoView({block:'start'});$('name1').focus();}
-  $('menu').onclick=showMenu;
-  $('skip').onclick=function(){finish(null);};
-  $('retry').onclick=function(){dispose();run.phase='ready';startRound();};
-  C.forEach(function(g){var a=document.createElement('a');a.href=g.s+'.html';a.className='card';var emoji=document.createElement('span');emoji.className='emo';emoji.textContent=g.e;var name=document.createElement('strong');name.textContent=g.n;var desc=document.createElement('span');desc.textContent=g.d;a.append(emoji,name,desc);a.onclick=function(){try{localStorage.setItem('mini_last',g.s);}catch(_){}};$('grid').appendChild(a);});
-  if(location.hash==='#einzeln')$('einzeln').open=true;
-  resumeInfo();
+  function startRound(){if(!run||!R.start(run))return;notice='';save();$('match').hidden=true;$('countdown').hidden=false;document.body.classList.add('in-round');$('countdownLabel').textContent=game(run.deck[run.history.length]).n;counting=true;var n=3;function tick(){if(!counting)return;$('countdownNumber').textContent=n;sound('tick');countTimer=setTimeout(function(){n--;if(n>0)tick();else loadRound();},700);}tick();}
+  function showMenu(){dispose();$('match').hidden=true;$('lobby').hidden=false;pass();resumeInfo();window.scrollTo(0,0);$('setupTitle').setAttribute('tabindex','-1');$('setupTitle').focus({preventScroll:true});}
+  addEventListener('message',function(e){if(!run||run.phase!=='playing'||!frame||e.source!==frame.contentWindow||e.origin!==location.origin)return;if(e.data==='mini-back'){interrupt();return;}if(R.accepts(e,frame.contentWindow,location.origin,token,run.deck[run.history.length]))finish(e.data.winner);});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&run&&run.phase==='playing'){e.preventDefault();interrupt();}});
+  document.addEventListener('visibilitychange',function(){if(document.hidden&&run&&run.phase==='playing')interrupt();if(document.hidden&&audio&&audio.state==='running')audio.suspend();});
+  $('setup').addEventListener('submit',function(e){e.preventDefault();settings.names=[$('name1').value,$('name2').value];run=R.create(Number(new FormData(e.target).get('rounds')),settings.names,undefined,{avatars:settings.avatars});settings.names=run.names.slice();awardInfo=null;notice='';save();render(true);sound('tap');});
+  $('resume').onclick=function(){if(run){notice='';render(true);}};
+  $('action').onclick=function(){if(run.phase==='ready')startRound();else if(run.phase==='result'){R.next(run);if(run.phase==='finished'){awardInfo=P.award(profile,run);profile=awardInfo.profile;sound('final');}save();render(true);}else showMenu();};
+  $('rematch').onclick=function(){run=R.rematch(run);awardInfo=null;notice='Revanche! Gleiche Disziplinen, gleicher Ablauf, neue Punkte.';save();render(true);sound('tap');};
+  $('skip').onclick=function(){if(run&&R.start(run))finish(null);};$('menu').onclick=showMenu;$('interrupt').onclick=interrupt;$('loadExit').onclick=interrupt;$('cancelCountdown').onclick=interrupt;
+  $('retry').onclick=function(){interrupt();startRound();};$('sound').onclick=toggleSound;$('arenaSound').onclick=toggleSound;
+  [1,2].forEach(function(i){$('avatar'+i).onclick=function(){var list=P.unlocked(profile),at=list.indexOf(settings.avatars[i-1]);settings.avatars[i-1]=list[(at+1)%list.length];picker();save();sound('tap');};});
+  C.forEach(function(g){var a=el('a','card');a.href=g.s+'.html';a.append(el('span','emo',g.e),el('strong','',g.n),el('span','',g.d));a.onclick=function(){try{localStorage.setItem('mini_last',g.s);}catch(_){}};$('grid').appendChild(a);});
+  load();[1,2].forEach(function(i){$('name'+i).value=settings.names[i-1];});syncSound();pass();resumeInfo();if(location.hash==='#einzeln')$('einzeln').open=true;
 })();

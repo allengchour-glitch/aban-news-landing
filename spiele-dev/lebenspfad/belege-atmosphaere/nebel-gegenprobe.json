@@ -1,0 +1,139 @@
+{
+  "kind": "GEMESSEN: feste Kapitel/Kamera, Animation aus; Rendering-Gegenprobe bei parallelen2D-Tests, keine isolierte FPS-Messung",
+  "graphics": "light",
+  "views": [],
+  "errors": [],
+  "sourceHash": "7ef3393215293ea96153daee8090b1a78b005953b6cbd608e1680445139dd330",
+  "desktopSeams": [
+    {
+      "chapter": 0,
+      "sky": [
+        203,
+        216,
+        207,
+        255
+      ],
+      "fog": [
+        152,
+        175,
+        159,
+        255
+      ],
+      "delta": 51
+    },
+    {
+      "chapter": 1,
+      "sky": [
+        209,
+        221,
+        210,
+        255
+      ],
+      "fog": [
+        163,
+        184,
+        164,
+        255
+      ],
+      "delta": 46
+    },
+    {
+      "chapter": 2,
+      "sky": [
+        227,
+        223,
+        200,
+        255
+      ],
+      "fog": [
+        196,
+        188,
+        147,
+        255
+      ],
+      "delta": 53
+    },
+    {
+      "chapter": 3,
+      "sky": [
+        234,
+        218,
+        194,
+        255
+      ],
+      "fog": [
+        210,
+        179,
+        138,
+        255
+      ],
+      "delta": 56
+    },
+    {
+      "chapter": 4,
+      "sky": [
+        236,
+        212,
+        186,
+        255
+      ],
+      "fog": [
+        214,
+        168,
+        125,
+        255
+      ],
+      "delta": 61
+    },
+    {
+      "chapter": 5,
+      "sky": [
+        228,
+        205,
+        184,
+        255
+      ],
+      "fog": [
+        198,
+        156,
+        122,
+        255
+      ],
+      "delta": 62
+    },
+    {
+      "chapter": 6,
+      "sky": [
+        223,
+        200,
+        185,
+        255
+      ],
+      "fog": [
+        188,
+        147,
+        124,
+        255
+      ],
+      "delta": 61
+    },
+    {
+      "chapter": 7,
+      "sky": [
+        224,
+        220,
+        224,
+        255
+      ],
+      "fog": [
+        190,
+        183,
+        190,
+        255
+      ],
+      "delta": 37
+    }
+  ],
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: Nebel/Himmel weichen in der tatsächlichen Pixelausgabe ab\n    at /workspace/aban-lebenspfad-atmosphaere/spiele-dev/lebenspfad/atmosphere-browser-qa.cjs:72:75"
+}

@@ -1,5 +1,29 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Büro: mehr Arbeitsinhalt und räumliche Details ·16.11.2026
+
+Besitzerauftrag «verbessere mehr inhalt und 3d optik». Eigener Branch codex/buero-inhalt-atmosphaere von mainab10d8f, vor Dokumentation auf maine6cb011 vorgezogen. Regeln, Übergaben und offene Arbeiten abgeglichen; parallele Spiele-/Shop-Arbeit bleibt erhalten. Design23 zählt die geladenen Arbeitsstände in vier getrennten Gruppen: gemeldet, prüfen, veraltet, ohne Messzeit. Filter und Verteilungsbalken helfen, offene Arbeit zu finden. Das vollständige Zentraljournal erhält auch undatierte Einträge und erfolgreiche Läufe mit noch offenem Ergebnis. Karten zeigen den übermittelten nächsten Schritt sowie aufklappbare Quelle/Messzeit als Klartext.
+
+Vorher lokal nachgestellt: geöffnete Quellenangabe blieb beim Neuzeichnen offen, verlor aber den Tastaturfokus. Jetzt bleiben Filterfokus, Quellenfokus und offene Angaben erhalten. Screenshot-Gegenprobe: sieben neu erzeugte Namensschilder waren vor dem nächsten Renderbild über dem geöffneten Monitor sichtbar; die gesamte Beschriftungsebene bleibt dort nun unmittelbar verborgen und kehrt mit der Raumansicht zurück. Statische Wandfelder/Medienmöbel, Kabelwannen, Zentralbank und Holzbänke ergänzen das vorhandene Netz. Keine neuen Modelle, Netzquellen, Bewegungen, Automationen oder Frequenzen; keine privaten Daten im Repository. Campus-, Shop- und Entwicklungsansicht als echte lokale WebGL-Bilder geprüft. Die bestehende Higgsfield-Revision5 wird durch diesen nativen Web-Durchgang nicht geändert.
+
+GEMESSEN:17 Modell-,21 Bot- und44 Bauprüfungen sowie31/31 Bau-Mutationen grün. Synthetische Browserdaten unter tools/buero/pruefung/monitorinhalt.json; panorama.py --inhalt verlangt diese sechs Einträge und prüft Filter, Klartext, Fokus sowie die bestehende Monitor-/Vollbildbedienung auf390/1440px. Vollständige Browser-, echte CI- und Bereitstellungsbelege im zugehörigen PR; Software-WebGL ist kein physischer Handy-Leistungsnachweis. Finanzielle Wirkung nicht gemessen. Nutzen: Prüfbedarf und belegte nächste Schritte schneller erkennen.
+
+Claude: vollständigen Drei-Seiten-Bau inklusive kb-stil.css übernehmen, nicht die rohe seite.html. Vorhandene Dateien/Versionen frisch lesen, private Datensätze, Benutzereingaben und Messzeiten erhalten, atomar mit Versionsbedingungen übertragen und rücklesen. Neue private Bereitstellung erst nach Quittung behaupten. Öffentliche Web-Bereitstellung separat nachweisen.
+
+
+## Lebenspfad: Atmosphäre und eigene Objekte ·16.11.2026
+
+Besitzerauftrag mit bestehender Live-Freigabe: acht abgestimmte Licht-/Himmelspaletten, korrekt kodierter Nebel, zwei feste Bergzüge und drei selbst modellierte Blender-GLBs. Willkommenstor am Start, Erinnerungsplatz im Familienkapitel, Sternwarte im Lebensabend; sichere Terrainplätze, auch mobil im Bild. Drei Assets zusammen254.156Bytes, fünf Materialien je Modell. Higgsfield-Anschluss hier nicht verfügbar; lokal mit Blender4.3.2 erzeugt, reproduzierbares bpy-Rezept und geprüfter Reimport liegen bei.
+
+GEMESSEN: acht neue Geometrie-/Atmosphärengruppen und bestehende Terrain/Pfad/Ufer/Batching-Prüfungen grün;16 Kapitelansichten,25 geladene Modellgruppen, fünf HUD-Größen/sieben Standfixtures und Schattenprofil bestanden. Nebel-Horizont-Pixelabweichung0, bewusst falsche Kodierung rot. Replay26 Hashes/Vollzustand/31 RNG-Aufrufe unverändert. Startbild Desktop120→124 Zeichenaufrufe,21.068→23.126 Dreiecke; keine isolierte FPS-/Handy-Zusage. Dateien, echte Bilder und Grenzen: `spiele-dev/lebenspfad/ATMOSPHAERE.md`, `eigene-objekte/README.md`. Implementierung gesichert; echte PR-CI/Deploy/öffentliche Prüfung noch ausstehend. Lokale Gesamt-CI scheitert an read-only HOME. Traumhaus unverändert übernommen. Neon-Flug-Folgeauftrag läuft separat; keine Shop-/Social-/Konto-/Secret-Aktion.
+
+
+## Mix Arena und neue Spiele-Folgeaufträge ·16.11.2026
+
+Besitzer: «verbessere mehr alles wie ein komplettes spiel» und fortlaufend fürClaudeCode sichern. Minispiele-Mix wird Mix Arena: Figurenwahl, Kategorienmix, konkrete Steuerkarten, Countdown, gemeinsame Rundenkarte, XP/Level/Erfolge, Revanche mit gleicher Reihenfolge, Migration und atomare Run-/Profilspeicherung. Unterbrechen startet aktuelle Runde ungewertet neu; alte Punkte bleiben. Grundstand auf `codex/minispiele-komplettes-spiel` regelmäßig gesichert.194 Node-,24 Arena-,139 Einbettungs-,7 Recovery- und17 Arcadebedingungen am versionierten Abschlussstand grün; neun Querformatkorrekturen mit echten Randfeld-/Touch-Eingaben bestätigt. Veröffentlichung/Endnachweise im PR, kanonisch `spiele-dev/minispiele-mix/WEITERARBEIT.md`.
+
+Weitere ausdrückliche Aufträge parallel: Lebenspfad mit eigener Atmosphäre und passenden selbstgebauten Objekten (`codex/lebenspfad-atmosphaere`); direkter Higgsfield-Anschluss fehlt hier, lokales Blender baut GLB-Vorlagen. Neon Flug: eingesammelte Ringe sichtbar entfernen, mehr Animation/Belohnungen, freie Oben-/Unten-Steuerung und zusätzlicher Neon-Schießen-Modus (`codex/neon-flug-ringe-belohnung`). Diese beiden Erweiterungen sind noch in Arbeit, nicht als live behaupten. Traumhaus bleibt beim anderen Bearbeiter. Keine Shop-/Social-/Kontoeingriffe.
+
 ## Minispiele-Mix: gemeinsame Rundenwertung ·16.11.2026
 
 Besitzerwahl: «Ein Rundenspiel – mehrere Minispiele nacheinander». `/minispiele/` bietet jetzt 3/5/7 verschiedene Disziplinen aus 20, Namen, gemeinsame Rundenwertung und Gesamtsieger. Sieg3, Remis je1, Abbruch0; lokales Zwei-Personen-Spiel an einem Gerät. Reload erhält den Zwischenstand; laufende Runde beginnt ungewertet neu. Ergebnisannahme prüft Fenster/Ursprung/Disziplin/Rundenschlüssel und zählt einmal. Einzelspiele und Lebenspfad unverändert spielbar. Arcade: vier sichtbare Hauptkarten, neun weitere aufklappbar; Traumhaus-Code und Hero nicht angefasst.

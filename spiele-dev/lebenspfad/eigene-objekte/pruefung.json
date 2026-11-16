@@ -1,0 +1,19 @@
+{
+  "status": "GEMESSEN: bestanden",
+  "blender": "4.3.2",
+  "checks": [
+    "Positivprobe: bekanntes Dreieck, Bounds 2/3/4, 3 Vertices, 1 Material",
+    "Negativprobe: Ungueltiger Index erkannt",
+    "Negativprobe: Entartetes Dreieck erkannt",
+    "Vorhandene Szenen, Objekte, Geometrie und Transformationen erhalten; aktive Szene wiederhergestellt",
+    "Frischer Factory-Startup-Lauf erzeugt drei byteidentische GLBs (SHA-256)",
+    "Unabhaengiger Blender-Reimport: Bounds und Dreiecke bestaetigt, willkommenstor.glb",
+    "Unabhaengiger Blender-Reimport: Bounds und Dreiecke bestaetigt, erinnerungsplatz.glb",
+    "Unabhaengiger Blender-Reimport: Bounds und Dreiecke bestaetigt, sternwarte.glb"
+  ],
+  "sha256": {
+    "erinnerungsplatz.glb": "81dd33961e78d0ddc464455b2c56754fef1b4b900980e9408e4119d339cf0b75",
+    "sternwarte.glb": "ba95cb7870d3deaacae9b3038d86c12a2746e60aa747aae87622b56b759cda8e",
+    "willkommenstor.glb": "cb7e650ef2e820077115ef9254ee5e3e13bd59db6a2f860fdb0d93abc4077a82"
+  }
+}

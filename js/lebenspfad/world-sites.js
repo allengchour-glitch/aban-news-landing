@@ -28,7 +28,15 @@
   plan('wind',99,13,-11,2.8);plan('flag',62,-12,10,1.8);plan('chalk',5,4.6,6.4,2.8);plan('goalTree',143,0,-6,4.2);
   for(var winter=0;winter<3;winter++)plan('winter:'+winter,129+winter*4,winter%2?-6:6,4,1.0);
   (options.forks||[]).forEach(function(f){plan('fork:'+f.at,f.at,1.8,-1.8,1.4);});
-  return {sites:sites,get:function(key){return lookup[key];},pads:sites.map(function(s){return {x:s.x,z:s.z,radius:s.r+4.5};}),
-   stats:{sites:sites.length,keys:sites.map(function(s){return s.key;})}};
+  var pads=sites.map(function(s){return {x:s.x,z:s.z,radius:s.r+4.5};});
+  var stats={sites:sites.length,keys:sites.map(function(s){return s.key;})};
+  return {sites:sites,get:function(key){return lookup[key];},pads:pads,stats:stats,
+   // Zusätzliche Kunstobjekte nutzen denselben Planer, nachdem alle alten Plätze feststehen.
+   plan:function(key,tile,dx,dz,r){
+    if(lookup[key])throw new Error('Bauplatz bereits belegt: '+key);
+    if(!points[tile]||![dx,dz,r].every(Number.isFinite)||r<=0)throw new Error('Ungültiger Bauplatz: '+key);
+    var s=plan(key,tile,dx,dz,r);pads.push({x:s.x,z:s.z,radius:s.r+4.5});
+    stats.sites=sites.length;stats.keys.push(key);return s;
+   }};
  };
 })(window);
