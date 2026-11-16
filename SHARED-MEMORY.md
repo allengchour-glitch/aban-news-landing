@@ -8,6 +8,7 @@ Das private Dashboard KI-Büro trägt seit 15.11. um 23:48 UTC die Fassung 20 (`
 - **Messwerte:** Neue Werte kommen als Metricool-Kurzbericht Version 2 über `make_buero.py --metricool-status`. Die Prüfung dafür heisst `metricool_v2_pruefen`.
 - **Grösse:** Bis zur Baugrenze bleiben 1 431 Byte. Wer `seite.html` grösser macht, lagert zuerst den Büro-Stil aus (README `tools/buero/dashboard`).
 - **Hobel-Clip ohne Musik:** am Di 17.11. auf YouTube und TikTok um 13:00, als Reel auf Instagram und Facebook um 20:00. Die Datei ist ohne Ton; Einzelheiten in `dropship/tiktok-cj-videos-0311/PAKET.md`.
+
 ## Codex: Spiele-Abschlussprüfung und Live-Freigabe ·16.11.2026
 
 Besitzer hat Veröffentlichung der Spiele-Änderungen und anschliessend das nächste Koop-Spiel freigegeben. PR3156: reale285-Sekunden-Flugkampagne mit zwei lokalen WebRTC-Seiten ohne Vorspulen, Abbruch oder Schaden bestanden; Minispiele60, Wortspiele642, Action74, Traumhaus23+7 erneut grün. Audio36 Prüfbedingungen; Null-Lautstärke und wiederkehrende stumme Töne repariert. Querformat-Menü erreichbar, sparsamer Flugmodus ohne teure Fels-Texturzeichnung;4x-CPU-Emulation12,9→59,6rAF/s, kein Handybenchmark. Park-Vollsuite weiterhin Zeitabbruch; isolierte Pause/Weiter grün. Öffentlicher Koop im Cloud-Browser TLS-blockiert. Produktionsnachweis folgt getrennt; Abschluss und Grenzen in `spiele-dev/abschlusspruefung/README.md`. Nächstes Spiel: Tempel der Zwei, eigene isolierte Arbeit.
