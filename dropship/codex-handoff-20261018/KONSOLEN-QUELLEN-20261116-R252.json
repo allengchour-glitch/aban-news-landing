@@ -1,0 +1,475 @@
+{
+  "run": "R252",
+  "source": "Two targeted current CJ product detail lookups, exact six supplier variant SKUs and current native product/variant IDs. No catalog pagination.",
+  "sourceEvidence": {
+    "review": "R252 console detail source review",
+    "capturedDate": "2026-11-16",
+    "timezone": "Europe/Zurich",
+    "scope": "Two ACTIVE SOURCE_AND_COPY_REVIEW_OPEN console products; only targeted Shopify product nodes and CJ product detail lookups; no Google Search Console read (already read by root today); no write actions.",
+    "sourceFiles": {
+      "shopifyNative": "shopify-native.json",
+      "cj3in1Raw": "cj-3in1-raw.json",
+      "cj4kWirelessRaw": "cj-4k-wireless-raw.json",
+      "imageContactSheets": [
+        "3in1-contact-sheet.jpg",
+        "4k-wireless-contact-sheet.jpg"
+      ],
+      "downloadedShopifyImages": "images/"
+    },
+    "products": [
+      {
+        "label": "3-in-1 Retro Gaming & Media Box",
+        "shopify": {
+          "id": "gid://shopify/Product/15448849023361",
+          "handle": "3-in-1-retro-gaming-media-box-793344",
+          "status": "ACTIVE",
+          "updatedAt": "2026-11-01T22:18:35Z",
+          "onlineStoreUrl": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344",
+          "productType": "Gaming-Zubehör",
+          "vendor": "LuxeStyle",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "gadgets",
+            "gaming",
+            "konsole",
+            "ps4",
+            "ps5",
+            "rueckhol-0907",
+            "sort-konsolen",
+            "sort-konsolen-retro-arcade",
+            "sort-retro",
+            "sort-spielkonsolen-retro-handhelds",
+            "stecker-bereinigt-2510",
+            "xbox"
+          ],
+          "currentTitle": "3-in-1 Retro Gaming & Media Box",
+          "currentOption": {
+            "id": "gid://shopify/ProductOption/17880367530369",
+            "name": "Ausführung",
+            "position": 1,
+            "values": [
+              "X2 pro-256G-EU",
+              "X2 pro-128G-EU",
+              "X2 pro-64G-EU"
+            ],
+            "optionValues": [
+              {
+                "id": "gid://shopify/ProductOptionValue/12296566309249",
+                "name": "X2 pro-256G-EU",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/12296566440321",
+                "name": "X2 pro-128G-EU",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/12296566571393",
+                "name": "X2 pro-64G-EU",
+                "hasVariants": true
+              }
+            ]
+          },
+          "variantCount": 3,
+          "media": [
+            {
+              "id": "gid://shopify/MediaImage/69861515067777",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 7",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4083f2f1-c7ba-4bda-8c0e-c316a81ee881.jpg?v=1783189610",
+              "width": 1000,
+              "height": 1000
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861514871169",
+              "alt": "3-in-1 Retro Gaming & Media Box",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/39f64651-7977-4574-bd1d-6f01cab2a912.jpg?v=1783189611",
+              "width": 1000,
+              "height": 1000
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861514903937",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 2",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/52d50910-9629-49a4-9207-47d6c8ef5e2f.jpg?v=1783189611",
+              "width": 1000,
+              "height": 1000
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861514936705",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 3",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b49c54f1-f7c9-44b4-82ea-38e98b5b9caf.jpg?v=1783189610",
+              "width": 367,
+              "height": 371
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861514969473",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 4",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60ebe9f0-b399-42aa-b364-54cbcb291910.jpg?v=1783189610",
+              "width": 1000,
+              "height": 694
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861515002241",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 5",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/caaaf727-c5b6-428f-bddf-41fad16fd894.jpg?v=1783189611",
+              "width": 1000,
+              "height": 1000
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861515035009",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 6",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/186dfa22-e927-4632-a815-b0f974a67926.jpg?v=1783189610",
+              "width": 1000,
+              "height": 1000
+            }
+          ]
+        },
+        "supplier": {
+          "pid": "1742831532596793344",
+          "productSku": "CJZS1939394",
+          "productNameEn": "Home Video Three System Integrated Game Set-top Box",
+          "productUrl": "https://www.cjdropshipping.com/product/home-video-three-system-integrated-game-set-top-box-p-1742831532596793344.html",
+          "sourceLookup": "variantSku CJZS193939402BY; one Shopify prefix CJ- removed exactly",
+          "descriptionFacts": {
+            "systems": [
+              "Emuelec 4.5",
+              "Android 9.0",
+              "Coreelec"
+            ],
+            "wirelessFieldRaw": "Wireless: wired (ambiguous supplier translation; not repeated as device claim)",
+            "interfaces": [
+              "USB"
+            ],
+            "mediaFunction": "MP4 video player",
+            "materialInDescription": "PC",
+            "productSizeRaw": "10 * 10CM",
+            "packingList": [
+              "Machine * 1",
+              "HD cable * 1",
+              "power supply * 1",
+              "remote control * 1",
+              "wireless controller * 2"
+            ]
+          },
+          "materialMetadata": [
+            "Plastic"
+          ],
+          "productWeightRangeRaw": "829.00-860.00",
+          "packingWeightRaw": "880.00",
+          "variantCount": 12,
+          "shopifyVariantBindings": [
+            {
+              "shopifyVariantId": "gid://shopify/ProductVariant/56053827174785",
+              "shopifyVariantTitle": "X2 pro-256G-EU",
+              "shopifySku": "CJ-CJZS193939402BY",
+              "shopifyCurrentSelectedOption": {
+                "name": "Ausführung",
+                "value": "X2 pro-256G-EU"
+              },
+              "shopifyPriceCHF": "95.90",
+              "inventory": {
+                "policy": "CONTINUE",
+                "quantity": 0,
+                "tracked": false
+              },
+              "optionValueId": "gid://shopify/ProductOptionValue/12296566309249",
+              "supplierVariantId": "1742831532777148416",
+              "supplierVariantSku": "CJZS193939402BY",
+              "supplierVariantKey": "X2 pro-256G-EU",
+              "supplierVariantName": "Home Video Three System Integrated Game Set-top Box X2 pro 256G EU",
+              "supplierVariantImage": "https://oss-cf.cjdropshipping.com/product/2024/01/04/08/52d50910-9629-49a4-9207-47d6c8ef5e2f.jpg",
+              "supplierVariantWeightGrams": 880.0,
+              "supplierVariantDimensionsRaw": {
+                "length": 220,
+                "width": 170,
+                "height": 115
+              },
+              "skuBinding": "exact supplier variant SKU after removing one confirmed Shopify CJ- prefix"
+            },
+            {
+              "shopifyVariantId": "gid://shopify/ProductVariant/56053827305857",
+              "shopifyVariantTitle": "X2 pro-128G-EU",
+              "shopifySku": "CJ-CJZS193939406FU",
+              "shopifyCurrentSelectedOption": {
+                "name": "Ausführung",
+                "value": "X2 pro-128G-EU"
+              },
+              "shopifyPriceCHF": "97.90",
+              "inventory": {
+                "policy": "CONTINUE",
+                "quantity": 0,
+                "tracked": false
+              },
+              "optionValueId": "gid://shopify/ProductOptionValue/12296566440321",
+              "supplierVariantId": "1770741825343598592",
+              "supplierVariantSku": "CJZS193939406FU",
+              "supplierVariantKey": "X2 pro-128G-EU",
+              "supplierVariantName": "Home Video Three System Integrated Game Set-top Box X2 pro 128G EU",
+              "supplierVariantImage": "https://oss-cf.cjdropshipping.com/product/2024/01/04/08/52d50910-9629-49a4-9207-47d6c8ef5e2f.jpg",
+              "supplierVariantWeightGrams": 880.0,
+              "supplierVariantDimensionsRaw": {
+                "length": 220,
+                "width": 170,
+                "height": 115
+              },
+              "skuBinding": "exact supplier variant SKU after removing one confirmed Shopify CJ- prefix"
+            },
+            {
+              "shopifyVariantId": "gid://shopify/ProductVariant/56053827436929",
+              "shopifyVariantTitle": "X2 pro-64G-EU",
+              "shopifySku": "CJ-CJZS193939410JQ",
+              "shopifyCurrentSelectedOption": {
+                "name": "Ausführung",
+                "value": "X2 pro-64G-EU"
+              },
+              "shopifyPriceCHF": "97.90",
+              "inventory": {
+                "policy": "CONTINUE",
+                "quantity": 0,
+                "tracked": false
+              },
+              "optionValueId": "gid://shopify/ProductOptionValue/12296566571393",
+              "supplierVariantId": "2408060959281612900",
+              "supplierVariantSku": "CJZS193939410JQ",
+              "supplierVariantKey": "X2 pro-64G-EU",
+              "supplierVariantName": "Home Video Three System Integrated Game Set-top Box X2 pro 64G EU",
+              "supplierVariantImage": "https://oss-cf.cjdropshipping.com/product/2024/08/06/09/b49c54f1-f7c9-44b4-82ea-38e98b5b9caf.jpg",
+              "supplierVariantWeightGrams": 880.0,
+              "supplierVariantDimensionsRaw": {
+                "length": 220,
+                "width": 170,
+                "height": 115
+              },
+              "skuBinding": "exact supplier variant SKU after removing one confirmed Shopify CJ- prefix"
+            }
+          ],
+          "imageTextReview": [
+            "A Shopify/CJ product-list image shows “4GB Memory card”; CJ pack list does not list a card and selected variant keys state 64G/128G/256G. Do not claim an included card or resolved capacity until clarified.",
+            "A supplier product image says “Built-in 70000+ games/50+ emulators”; no game catalogue/count is in the product-description source. Exclude from copy.",
+            "A product diagram visibly labels USB 2.0 ports and memory-card slot; other port labels are cropped/ambiguous, while written product details specify USB only. Do not add HDMI/AV/network/TF claims from that image."
+          ]
+        },
+        "mappingStatus": "All three Shopify CJ-wrapped variant SKUs bind to exact supplier SKU/variant records; Shopify includes only EU variants although CJ returns additional regions."
+      },
+      {
+        "label": "4K HD Wireless Open Source Gaming Konsole",
+        "shopify": {
+          "id": "gid://shopify/Product/15448848695681",
+          "handle": "4k-hd-wireless-open-source-gaming-konsole-600100",
+          "status": "ACTIVE",
+          "updatedAt": "2026-11-01T22:18:31Z",
+          "onlineStoreUrl": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100",
+          "productType": "Gaming-Zubehör",
+          "vendor": "LuxeStyle",
+          "tags": [
+            "bild-ok",
+            "bildmass-ok-0906",
+            "cj-real",
+            "dropship",
+            "gadgets",
+            "gaming",
+            "konsole",
+            "ps4",
+            "ps5",
+            "rueckhol-0907",
+            "sort-konsolen",
+            "sort-spielkonsolen-retro-handhelds",
+            "xbox"
+          ],
+          "currentTitle": "4K HD Wireless Open Source Gaming Konsole",
+          "currentOption": {
+            "id": "gid://shopify/ProductOption/17880367169921",
+            "name": "Farbe",
+            "position": 1,
+            "values": [
+              "Englisch",
+              "GD English",
+              "GD 20 256G English"
+            ],
+            "optionValues": [
+              {
+                "id": "gid://shopify/ProductOptionValue/12296447656321",
+                "name": "Englisch",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/12296447689089",
+                "name": "GD English",
+                "hasVariants": true
+              },
+              {
+                "id": "gid://shopify/ProductOptionValue/12296447721857",
+                "name": "GD 20 256G English",
+                "hasVariants": true
+              }
+            ]
+          },
+          "variantCount": 3,
+          "media": [
+            {
+              "id": "gid://shopify/MediaImage/69861507989889",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 1 | LuxeStyle",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a090714f-ad51-4dd2-9fe6-20750c127002.jpg?v=1783189570",
+              "width": 1600,
+              "height": 1600
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861508022657",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 2 | LuxeStyle",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/563b60bf-82dd-4ad1-a699-a5aeaebe86d5.jpg?v=1783189570",
+              "width": 970,
+              "height": 600
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861508055425",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 3 | LuxeStyle",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85849770-a31e-48f7-8db9-155aa9aa8b87.jpg?v=1783189570",
+              "width": 1500,
+              "height": 1500
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861508153729",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 4 | LuxeStyle",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f39568a0-c711-4373-90fd-b7a0460afe73.jpg?v=1783189571",
+              "width": 1000,
+              "height": 1000
+            },
+            {
+              "id": "gid://shopify/MediaImage/69861508186497",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 5 | LuxeStyle",
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93ddda74-43e0-4f35-a60a-6c4b9d41f305.jpg?v=1783189570",
+              "width": 1500,
+              "height": 1500
+            }
+          ]
+        },
+        "supplier": {
+          "pid": "2410300211091600100",
+          "productSku": "CJYD2175614",
+          "productNameEn": "HD Home TV Game Console 4K Wireless Open Source",
+          "productUrl": "https://www.cjdropshipping.com/product/hd-home-tv-game-console-4k-wireless-open-source-p-2410300211091600100.html",
+          "sourceLookup": "variantSku CJYD217561401AZ; one Shopify prefix CJ- removed exactly",
+          "descriptionFacts": {
+            "interface": "HDMI",
+            "materialInDescription": "ABS",
+            "packingListRaw": [
+              "Handle *1pc",
+              "Manual host *1pc",
+              "Charging cable *1pc",
+              "HDMI cable *1pc"
+            ],
+            "specificationRaw": "double",
+            "productSizeRaw": "16cm * 11.5 * 10.5cm",
+            "styleRaw": "E-sports"
+          },
+          "materialMetadata": [
+            "Plastic"
+          ],
+          "productWeightRaw": "380.00",
+          "packingWeightRaw": "400.00",
+          "variantCount": 3,
+          "shopifyVariantBindings": [
+            {
+              "shopifyVariantId": "gid://shopify/ProductVariant/56053716484481",
+              "shopifyVariantTitle": "Englisch",
+              "shopifySku": "CJ-CJYD217561401AZ",
+              "shopifyCurrentSelectedOption": {
+                "name": "Farbe",
+                "value": "Englisch"
+              },
+              "shopifyPriceCHF": "43.90",
+              "inventory": {
+                "policy": "CONTINUE",
+                "quantity": 0,
+                "tracked": false
+              },
+              "optionValueId": "gid://shopify/ProductOptionValue/12296447656321",
+              "supplierVariantId": "2410300211091600300",
+              "supplierVariantSku": "CJYD217561401AZ",
+              "supplierVariantKey": "GD20 64G English",
+              "supplierVariantName": "HD Home TV Game Console 4K Wireless Open Source GD20 64G English",
+              "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/a090714f-ad51-4dd2-9fe6-20750c127002.jpg",
+              "supplierVariantWeightGrams": 400.0,
+              "supplierVariantDimensionsRaw": {
+                "length": 200,
+                "width": 120,
+                "height": 130
+              },
+              "skuBinding": "exact supplier variant SKU after removing one confirmed Shopify CJ- prefix"
+            },
+            {
+              "shopifyVariantId": "gid://shopify/ProductVariant/56053716517249",
+              "shopifyVariantTitle": "GD English",
+              "shopifySku": "CJ-CJYD217561402BY",
+              "shopifyCurrentSelectedOption": {
+                "name": "Farbe",
+                "value": "GD English"
+              },
+              "shopifyPriceCHF": "49.90",
+              "inventory": {
+                "policy": "CONTINUE",
+                "quantity": 0,
+                "tracked": false
+              },
+              "optionValueId": "gid://shopify/ProductOptionValue/12296447689089",
+              "supplierVariantId": "2410300211091600400",
+              "supplierVariantSku": "CJYD217561402BY",
+              "supplierVariantKey": "GD 20 128G English",
+              "supplierVariantName": "HD Home TV Game Console 4K Wireless Open Source GD 20 128G English",
+              "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/a090714f-ad51-4dd2-9fe6-20750c127002.jpg",
+              "supplierVariantWeightGrams": 400.0,
+              "supplierVariantDimensionsRaw": {
+                "length": 200,
+                "width": 120,
+                "height": 130
+              },
+              "skuBinding": "exact supplier variant SKU after removing one confirmed Shopify CJ- prefix"
+            },
+            {
+              "shopifyVariantId": "gid://shopify/ProductVariant/56053716550017",
+              "shopifyVariantTitle": "GD 20 256G English",
+              "shopifySku": "CJ-CJYD217561403CX",
+              "shopifyCurrentSelectedOption": {
+                "name": "Farbe",
+                "value": "GD 20 256G English"
+              },
+              "shopifyPriceCHF": "55.90",
+              "inventory": {
+                "policy": "CONTINUE",
+                "quantity": 0,
+                "tracked": false
+              },
+              "optionValueId": "gid://shopify/ProductOptionValue/12296447721857",
+              "supplierVariantId": "2410300211091600600",
+              "supplierVariantSku": "CJYD217561403CX",
+              "supplierVariantKey": "GD 20 256G English",
+              "supplierVariantName": "HD Home TV Game Console 4K Wireless Open Source GD 20 256G English",
+              "supplierVariantImage": "https://cf.cjdropshipping.com/quick/product/a090714f-ad51-4dd2-9fe6-20750c127002.jpg",
+              "supplierVariantWeightGrams": 400.0,
+              "supplierVariantDimensionsRaw": {
+                "length": 200,
+                "width": 120,
+                "height": 130
+              },
+              "skuBinding": "exact supplier variant SKU after removing one confirmed Shopify CJ- prefix"
+            }
+          ],
+          "imageTextReview": [
+            "Supplier product name includes 4K and Open Source, but technical description does not specify output resolution, operating system/version, or software details; do not present these as verified technical claims.",
+            "Supplier image shows “Dual 2.4G Wireless Controllers” and says 4 AAA batteries are required/not included; the structured CJ pack list says Handle *1pc. Controller count/type and batteries are unresolved; do not promise either until clarified.",
+            "Supplier image advertises 40+ emulators and lists platforms; no exact tested compatibility or per-variant game catalogue is in the structured product description. Exclude emulator/game claims from copy.",
+            "Variant dimensions 200×120×130 and supplier weight 380g/400g appear as variant/logistics fields; keep separate from the product-description size 16×11.5×10.5cm and do not substitute package dimensions as product dimensions."
+          ]
+        },
+        "mappingStatus": "All three Shopify CJ-wrapped variant SKUs bind to exact supplier SKU/variant records. Supplier variantKey identifies GD20 and 64G/128G/256G, each with “English”; the meaning of English is not explained."
+      }
+    ]
+  },
+  "rootOverrides": {
+    "x2": "Image4GBcard and another unlabelled card do not prove what each64G/128G/256G variant contains. No installed-game count/card/capacity claim. Two dimensions10x10cm supported by description+diagram. PC source-level material, no exact composition.",
+    "gd20": "16x11.5x10.5cm dataset dimension is not separately tied to the stick rather than the set; omitted as a device dimension. One-controller pack list conflicts with two-controller image. English meaning/storage/game list/4K output/OS unknown. No unsupported claims or physical-stock/delivery promise.",
+    "all": "CJ integration details kept out of customer copy; current IDs/SKUs/prices/inventory/media preserved. This review is not verification of software/game licences or a successful purchase."
+  }
+}

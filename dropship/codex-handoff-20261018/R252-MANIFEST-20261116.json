@@ -1,0 +1,56 @@
+{
+  "run": "R252",
+  "preparedAtUTC": "2026-11-16T06:26:46.857405Z",
+  "files": [
+    {
+      "name": "FORTSCHRITT-LIVE-20261116-R252.md",
+      "bytes": 7300,
+      "chars": 7197,
+      "sha256": "ac85d31f3197ca28b822298e4e0bd78112bd36afe8b90f11ff08e0a4dc44e6e3",
+      "gitBlobSha": "d34e0389360e6a5edb395d15840088bdebc160ef"
+    },
+    {
+      "name": "KONSOLEN-DETAILARBEIT-20261116-R252.csv",
+      "bytes": 6806,
+      "chars": 6801,
+      "sha256": "7d99ba52a9d374f686a6ce69abc3f13a0c843c806d8e51e836de920cabcdd884",
+      "gitBlobSha": "7258ed43334cf57b7c71c68fbd85e143a259d6b2"
+    },
+    {
+      "name": "KONSOLEN-QUELLEN-20261116-R252.json",
+      "bytes": 22438,
+      "chars": 22390,
+      "sha256": "0346308c0c5bbf9c6279c0392814fa4fe9a97f8bf19d74f15ca477dbf717aad0",
+      "gitBlobSha": "b35a1e42c86c7a56440262939ac9d1062c5af403"
+    },
+    {
+      "name": "MERCHANT-QUELLEN-GEGENPROBE-20261116-R252.json",
+      "bytes": 108005,
+      "chars": 107939,
+      "sha256": "44e0220b83b3d8c049da8fcf42aa5f1ff870ff6a226ffa9ed777346f84861db9",
+      "gitBlobSha": "df83dda486fb45ae0a9af9987616f1d10e079dbd"
+    },
+    {
+      "name": "METRICOOL-PLAN-MEDIEN-20261116-R252.json",
+      "bytes": 88904,
+      "chars": 88854,
+      "sha256": "dc803c64591a4966b31574c58468b83cfa7f0d0ba12033c00303fe3488ed5c7c",
+      "gitBlobSha": "8b5aba25738cdbe7f4b968df0581f0e4ebb29a40"
+    },
+    {
+      "name": "OG-VARIANTENPREIS-20261116-R252.patch",
+      "bytes": 567,
+      "chars": 567,
+      "sha256": "bcf29a3c657d0b16e671b08f16d559ad6c5f3afa83ab0ca31a6b9d2950751b61",
+      "gitBlobSha": "a209b9fe787fec44e28bef549b98675a3f84d2e8"
+    },
+    {
+      "name": "PRUEFBELEGE-LIVE-20261116-R252.json",
+      "bytes": 132920,
+      "chars": 131452,
+      "sha256": "b12a7aa937360fed1c6354fe4d792a214fa213686b67ddb5b8eff9cfa8da0e85",
+      "gitBlobSha": "1228981c39dddc34e6653259518ca51e4c816fdc"
+    }
+  ],
+  "scope": "LuxeStyle documentation only; no deployed code/automation or publication-ledger initialisation."
+}

@@ -1,0 +1,15 @@
+--- a/snippets/meta-tags.liquid
++++ b/snippets/meta-tags.liquid
+@@ -151,9 +151,11 @@
+ {%- endif -%}
+ 
+ {%- if request.page_type == 'product' -%}
++  {%- assign og_price_variant = product.selected_or_first_available_variant | default: product.variants.first -%}
++  {%- assign og_price = og_price_variant.price | default: product.price -%}
+   <meta
+     property="og:price:amount"
+-    content="{{ product.price | money_without_currency | strip_html }}"
++    content="{{ og_price | money_without_currency | strip_html }}"
+   >
+   <meta
+     property="og:price:currency"

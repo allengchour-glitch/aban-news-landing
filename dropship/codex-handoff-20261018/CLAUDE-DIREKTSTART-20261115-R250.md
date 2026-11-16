@@ -1,3 +1,15 @@
+# Aktueller Zusatz R252 – 16.11.2026, Fortsetzung
+
+Derselbe Direktlink bleibt Einstieg. [R252-Bericht](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/FORTSCHRITT-LIVE-20261116-R252.md) und [Belege](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/PRUEFBELEGE-LIVE-20261116-R252.json) zuerst lesen. Zwei weitereKonsolen(X2Pro/GD20) mit5Writes live: Produktdetails/Metadaten und6genaueAuswahlen,6IDs/6WertIDs/12Medien/Preise/SKUs geschützt. MobileÜberbreite korrigiert,alle6Auswahlen/JSONLDOffers bestätigt. Konsolenliste10/36redaktionellbearbeitet,26offen; Spiele/Karten/Controller/English weiterhin quellabhängig.
+
+**Wichtig für Merchant:** Alte numerischeAutofeed-Angebote nicht blind neu anlegen/erneut überschreiben:8exakte alteRessourcen ITEM_NOT_FOUND, heutigerLänderstatus/Entfernungsursacheunbekannt. AktuelleFehlerstichprobe gehörtQuelle10667445201/feedCHF_99383214465; [Quellengegenprobe](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/MERCHANT-QUELLEN-GEGENPROBE-20261116-R252.json). Haarstyler/Pad haben heuteandereVariantIDs undungeklärteBildrechte, Bild-onlyDraftsgeblockt. Bereitsbestehenderfremder Versandprüflauf01:34UTCbestätigtLI14.90/Handling1–3Transit10–29MoFr; nicht nochmalsalsfehlendbehandeln. KeineeigeneVersandänderung.18Gruppen/20OverrideRecords ausR250 bleibenhistorisch, keinheutiger0Fehlerbeleg.
+
+**Social-Prüfung:** [47UUIDs/Plan und actualFilmhash](https://raw.githubusercontent.com/allengchour-glitch/aban-news-landing/codex/luxestyle-claude-handoff-20261018/dropship/codex-handoff-20261018/METRICOOL-PLAN-MEDIEN-20261116-R252.json), bisEnde23Nov.3alteAudioHoldUUIDsmitneuer10.16s-Datei am17Novaktiv; beideStereokanälekomplettstumm, keineautomatischeProdukt-/Rechte-/Qualitätsfreigabe.4ProjektorHoldsweiterinaktiv,YouTube18–23ohneaktivenTermin. KeineSocialwritesundkeineeigenePublikation. GleicheDateiaufverschiedenenKanälen nichtalsDoppelpostverwechseln. WaagenOGPreispatchweiternurEntwurf;exakterMerchantlinkjetztHTTP200,Googlelanding_page_errornichtaufgehoben.
+
+BestehendeGrenzen/24Aufgaben/Historie/08-14-19Zürich-Läufe erhalten. GSC16NovbereitsinR251gelesen,nichtwiederholen; keineerneutenKennzahl-/Klaviyo-/Verkaufs-/KaufWatchabfragen. DiesenneuenQuellenstandvorälterenR250/R251Zusätzenbeachten. Claude-Empfangunbekannt;fehlendeOriginalZIPsweiterkeinbelegterDownload.
+
+---
+
 # Aktueller Zusatz R251 – 16.11.2026
 
 **Der bereits geteilte Direktlink bleibt gültig.** Neuester Stand: vier Produktseiten und drei Kategorien live mit Produktdetails, Auswahlhilfe, Metadaten und internen Links verbessert; fünf vorhandene Variantenbilder zugeordnet, elf Alt-Texte und eine Optionsbezeichnung korrigiert.13 Shopify-Mutationen, keine Uploads. Vier Produkte/13Varianten/22Medien und sieben öffentliche Seiten geprüft, keine unerwarteten abgefragten Geschäftsfeldänderungen.

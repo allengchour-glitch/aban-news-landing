@@ -1,0 +1,2557 @@
+{
+  "run": "R252",
+  "dateZurich": "2026-11-16",
+  "preparedAtUTC": "2026-11-16T06:26:46.857405Z",
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch",
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+      }
+    }
+  },
+  "nativeShopifyMutations": 5,
+  "operations": [
+    {
+      "sequence": 1,
+      "reference": "r252OptionWritex2",
+      "isError": false,
+      "data": {
+        "productOptionUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15448849023361"
+          },
+          "userErrors": []
+        }
+      }
+    },
+    {
+      "sequence": 2,
+      "reference": "r252CopyWritex2",
+      "isError": false,
+      "data": {
+        "productUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15448849023361"
+          },
+          "userErrors": []
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "reference": "r252OptionWritegd20",
+      "isError": false,
+      "data": {
+        "productOptionUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15448848695681"
+          },
+          "userErrors": []
+        }
+      }
+    },
+    {
+      "sequence": 4,
+      "reference": "r252CopyWritegd20",
+      "isError": false,
+      "data": {
+        "productUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15448848695681"
+          },
+          "userErrors": []
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "reference": "r252MobileTableWrite",
+      "isError": false,
+      "data": {
+        "productUpdate": {
+          "product": {
+            "id": "gid://shopify/Product/15448849023361"
+          },
+          "userErrors": []
+        }
+      }
+    }
+  ],
+  "before": {
+    "x2": {
+      "id": "gid://shopify/Product/15448849023361",
+      "title": "3-in-1 Retro Gaming & Media Box",
+      "handle": "3-in-1-retro-gaming-media-box-793344",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-01T22:18:35Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "ps4",
+        "ps5",
+        "rueckhol-0907",
+        "sort-konsolen",
+        "sort-konsolen-retro-arcade",
+        "sort-retro",
+        "sort-spielkonsolen-retro-handhelds",
+        "stecker-bereinigt-2510",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Diese vielseitige Set-Top-Box vereint Gaming und Medienwiedergabe in einem kompakten Gerät. Sie kombiniert drei Betriebssysteme: Emuelec 4.5 für umfassendes Retro-Gaming, Android 9.0 für Apps und Coreelec für ein optimiertes Medienerlebnis. So verwandelst du deinen Fernseher in eine Unterhaltungszentrale für die ganze Familie.</p><p>Die Box ist aus robustem PC-Material gefertigt und misst handliche 10 x 10 cm, wodurch sie sich nahtlos in jedes Setup einfügt. Im Lieferumfang sind alle nötigen Kabel, eine Fernbedienung sowie zwei kabellose Controller enthalten, sodass du sofort loslegen kannst.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Drei integrierte Betriebssysteme: Emuelec 4.5, Android 9.0 und Coreelec</li>\n<li>Kompaktes Design (10 x 10 cm)</li>\n<li>Inklusive zwei kabellosen Controllern und Fernbedienung</li>\n<li>Unterstützt MP4-Videowiedergabe</li>\n<li>USB-Schnittstelle für zusätzliche Konnektivität</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+      "seo": {
+        "title": "3-in-1 Retro Gaming & Media Box | LuxeStyle CH",
+        "description": "3-in-1 Retro Gaming & Media Box bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-19",
+        "fullName": "Elektronik > Videospielkonsolen",
+        "isLeaf": false,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17880367530369",
+          "name": "Ausführung",
+          "position": 1,
+          "values": [
+            "X2 pro-256G-EU",
+            "X2 pro-128G-EU",
+            "X2 pro-64G-EU"
+          ],
+          "linkedMetafield": null,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12296566309249",
+              "name": "X2 pro-256G-EU",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296566440321",
+              "name": "X2 pro-128G-EU",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296566571393",
+              "name": "X2 pro-64G-EU",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202061469188481",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Video Game Consoles"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56053827174785",
+            "title": "X2 pro-256G-EU",
+            "sku": "CJ-CJZS193939402BY",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "95.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Ausführung",
+                "value": "X2 pro-256G-EU"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409592271233",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56053827305857",
+            "title": "X2 pro-128G-EU",
+            "sku": "CJ-CJZS193939406FU",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "97.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Ausführung",
+                "value": "X2 pro-128G-EU"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409592402305",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56053827436929",
+            "title": "X2 pro-64G-EU",
+            "sku": "CJ-CJZS193939410JQ",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "97.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Ausführung",
+                "value": "X2 pro-64G-EU"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409592533377",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69861515067777",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4083f2f1-c7ba-4bda-8c0e-c316a81ee881.jpg?v=1783189610",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 7",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861514871169",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/39f64651-7977-4574-bd1d-6f01cab2a912.jpg?v=1783189611",
+              "altText": "3-in-1 Retro Gaming & Media Box",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861514903937",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/52d50910-9629-49a4-9207-47d6c8ef5e2f.jpg?v=1783189611",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 2",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861514936705",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b49c54f1-f7c9-44b4-82ea-38e98b5b9caf.jpg?v=1783189610",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 3",
+              "width": 367,
+              "height": 371
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861514969473",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60ebe9f0-b399-42aa-b364-54cbcb291910.jpg?v=1783189610",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 4",
+              "width": 1000,
+              "height": 694
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861515002241",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/caaaf727-c5b6-428f-bddf-41fad16fd894.jpg?v=1783189611",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 5",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861515035009",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/186dfa22-e927-4632-a815-b0f974a67926.jpg?v=1783189610",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 6",
+              "width": 1000,
+              "height": 1000
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "gd20": {
+      "id": "gid://shopify/Product/15448848695681",
+      "title": "4K HD Wireless Open Source Gaming Konsole",
+      "handle": "4k-hd-wireless-open-source-gaming-konsole-600100",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-01T22:18:31Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "ps4",
+        "ps5",
+        "rueckhol-0907",
+        "sort-konsolen",
+        "sort-spielkonsolen-retro-handhelds",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Diese kabellose Gaming Konsole bringt deine Lieblingsspiele in gestochen scharfer 4K-Auflösung direkt auf deinen HD-Fernseher. Dank Open Source Architektur geniesst du maximale Flexibilität und eine breite Palette an Unterhaltungsmöglichkeiten. Das kompakte Design aus robustem ABS-Material fügt sich nahtlos in jedes Wohnzimmer ein und ist mit einer Grösse von 16 x 11.5 x 10.5 cm leicht zu verstauen. Ideal für alle, die eine unkomplizierte und vielseitige Gaming-Lösung suchen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Kabellose Verbindung für mehr Bewegungsfreiheit</li>\n<li>Unterstützt 4K-Auflösung für ein klares Bild</li>\n<li>Open Source System für individuelle Anpassungen</li>\n<li>E-Sports-Design für ein modernes Erscheinungsbild</li>\n<li>Lieferumfang: 1 Konsole, 1 Controller, Ladekabel, HDMI-Kabel</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+      "seo": {
+        "title": "4K HD Wireless Open Source Gaming Konsole | LuxeStyle CH",
+        "description": "4K HD Wireless Open Source Gaming Konsole bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-19",
+        "fullName": "Elektronik > Videospielkonsolen",
+        "isLeaf": false,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17880367169921",
+          "name": "Farbe",
+          "position": 1,
+          "values": [
+            "Englisch",
+            "GD English",
+            "GD 20 256G English"
+          ],
+          "linkedMetafield": null,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12296447656321",
+              "name": "Englisch",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296447689089",
+              "name": "GD English",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296447721857",
+              "name": "GD 20 256G English",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202061468991873",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Video Game Consoles"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56053716484481",
+            "title": "Englisch",
+            "sku": "CJ-CJYD217561401AZ",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "43.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Englisch"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409480630657",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56053716517249",
+            "title": "GD English",
+            "sku": "CJ-CJYD217561402BY",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "49.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "GD English"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409480663425",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56053716550017",
+            "title": "GD 20 256G English",
+            "sku": "CJ-CJYD217561403CX",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "55.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "GD 20 256G English"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409480696193",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69861507989889",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a090714f-ad51-4dd2-9fe6-20750c127002.jpg?v=1783189570",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 1 | LuxeStyle",
+              "width": 1600,
+              "height": 1600
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861508022657",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/563b60bf-82dd-4ad1-a699-a5aeaebe86d5.jpg?v=1783189570",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 2 | LuxeStyle",
+              "width": 970,
+              "height": 600
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861508055425",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85849770-a31e-48f7-8db9-155aa9aa8b87.jpg?v=1783189570",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 3 | LuxeStyle",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861508153729",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f39568a0-c711-4373-90fd-b7a0460afe73.jpg?v=1783189571",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 4 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861508186497",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93ddda74-43e0-4f35-a60a-6c4b9d41f305.jpg?v=1783189570",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 5 | LuxeStyle",
+              "width": 1500,
+              "height": 1500
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "after": {
+    "x2": {
+      "id": "gid://shopify/Product/15448849023361",
+      "title": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC",
+      "handle": "3-in-1-retro-gaming-media-box-793344",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-16T06:14:14Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "ps4",
+        "ps5",
+        "rueckhol-0907",
+        "sort-konsolen",
+        "sort-konsolen-retro-arcade",
+        "sort-retro",
+        "sort-spielkonsolen-retro-handhelds",
+        "stecker-bereinigt-2510",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Die X2 Pro ist eine TV-Box. Die Produktangaben nennen drei Systeme: EmuELEC 4.5, Android 9.0 und CoreELEC sowie einen MP4-Videoplayer. Zur Auswahl stehen drei EU-Ausführungen mit den Bezeichnungen 64G, 128G und 256G. Ein bestimmtes vorinstalliertes Spielepaket ist für diese Ausführungen nicht bestätigt.</p>\n<h2>Systeme, Anschlüsse und Masse</h2><table>\n<caption>Produktangaben zur X2 Pro</caption>\n<tbody>\n<tr>\n<th scope=\"row\">Systeme laut Produktangaben</th>\n<td>EmuELEC 4.5, Android 9.0 und CoreELEC</td>\n</tr>\n<tr>\n<th scope=\"row\">Wiedergabe</th>\n<td>MP4-Videoplayer aufgeführt</td>\n</tr>\n<tr>\n<th scope=\"row\">Schnittstelle</th>\n<td>USB</td>\n</tr>\n<tr>\n<th scope=\"row\">Produktmasse</th>\n<td>10 × 10 cm; eine dritte Abmessung ist nicht angegeben</td>\n</tr>\n<tr>\n<th scope=\"row\">Materialangabe</th>\n<td>PC laut Angaben; die genaue Zusammensetzung ist nicht bestätigt</td>\n</tr>\n</tbody>\n</table>\n<h2>Die drei Ausführungen</h2><table>\n<caption>Bezeichnungen in der Auswahl</caption>\n<thead><tr>\n<th scope=\"col\">Auswahl</th>\n<th scope=\"col\">Was damit bestätigt ist</th>\n</tr></thead>\n<tbody>\n<tr>\n<th scope=\"row\">X2 Pro · 64G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 64G, EU-Ausführung</td>\n</tr>\n<tr>\n<th scope=\"row\">X2 Pro · 128G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 128G, EU-Ausführung</td>\n</tr>\n<tr>\n<th scope=\"row\">X2 Pro · 256G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 256G, EU-Ausführung</td>\n</tr>\n</tbody>\n</table><p>Die Angaben 64G, 128G und 256G stammen aus den Variantenbezeichnungen. Speichermedium, nutzbare Kapazität und eine bestimmte Spieleauswahl sind damit nicht abschliessend bestätigt. EU ist die Ausführungsbezeichnung des Lieferanten; die genaue Steckerform ist nicht dokumentiert.</p>\n<h2>Lieferumfang, Speicher und Spiele</h2><p>Die Packliste nennt 1 Gerät, 1 HD-Kabel, 1 Netzteil, 1 Fernbedienung und 2 kabellose Controller.</p><p>Produktbilder zeigen zusätzlich eine mit 4 GB beschriftete Speicherkarte und eine weitere Karte ohne erkennbare Kapazitätsangabe. Die Packliste führt keine Speicherkarte separat auf. Ob und welche Karte zur gewählten Ausführung gehört, bleibt offen. Eine konkrete Liste mitgelieferter oder installierter Spiele liegt nicht vor; beworbene Spielzahlen werden hier nicht als zugesichert übernommen.</p><p>Bestätigte Angaben zur Einrichtung, zu einzelnen kompatiblen Spielen, zur Controller-Stromversorgung sowie zu WLAN und Bluetooth liegen nicht vor. Prüfe diese Punkte vor dem Kauf, wenn sie für deinen Einsatz entscheidend sind.</p>\n<p>Weitere Bauformen findest du unter <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>. Separates Zubehör gibt es bei <a href=\"/collections/gamepads-controller\">Gamepads und Controllern</a>.</p>",
+      "seo": {
+        "title": "X2 Pro TV-Box: Systeme und Ausführungen | LuxeStyle CH",
+        "description": "X2 Pro TV-Box mit EmuELEC 4.5, Android 9.0 und CoreELEC laut Produktangaben. EU-Ausführungen vergleichen und Angaben zu Speicher, Spielen und Zubehör prüfen."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-19",
+        "fullName": "Elektronik > Videospielkonsolen",
+        "isLeaf": false,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17880367530369",
+          "name": "Ausführung",
+          "position": 1,
+          "values": [
+            "X2 Pro · 256G · EU",
+            "X2 Pro · 128G · EU",
+            "X2 Pro · 64G · EU"
+          ],
+          "linkedMetafield": null,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12296566309249",
+              "name": "X2 Pro · 256G · EU",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296566440321",
+              "name": "X2 Pro · 128G · EU",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296566571393",
+              "name": "X2 Pro · 64G · EU",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202061469188481",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Video Game Consoles"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56053827174785",
+            "title": "X2 Pro · 256G · EU",
+            "sku": "CJ-CJZS193939402BY",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "95.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Ausführung",
+                "value": "X2 Pro · 256G · EU"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409592271233",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56053827305857",
+            "title": "X2 Pro · 128G · EU",
+            "sku": "CJ-CJZS193939406FU",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "97.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Ausführung",
+                "value": "X2 Pro · 128G · EU"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409592402305",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56053827436929",
+            "title": "X2 Pro · 64G · EU",
+            "sku": "CJ-CJZS193939410JQ",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "97.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Ausführung",
+                "value": "X2 Pro · 64G · EU"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409592533377",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69861515067777",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4083f2f1-c7ba-4bda-8c0e-c316a81ee881.jpg?v=1783189610",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 7",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861514871169",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/39f64651-7977-4574-bd1d-6f01cab2a912.jpg?v=1783189611",
+              "altText": "3-in-1 Retro Gaming & Media Box",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861514903937",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/52d50910-9629-49a4-9207-47d6c8ef5e2f.jpg?v=1783189611",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 2",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861514936705",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b49c54f1-f7c9-44b4-82ea-38e98b5b9caf.jpg?v=1783189610",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 3",
+              "width": 367,
+              "height": 371
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861514969473",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60ebe9f0-b399-42aa-b364-54cbcb291910.jpg?v=1783189610",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 4",
+              "width": 1000,
+              "height": 694
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861515002241",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/caaaf727-c5b6-428f-bddf-41fad16fd894.jpg?v=1783189611",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 5",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861515035009",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/186dfa22-e927-4632-a815-b0f974a67926.jpg?v=1783189610",
+              "altText": "3-in-1 Retro Gaming & Media Box – Ansicht 6",
+              "width": 1000,
+              "height": 1000
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "gd20": {
+      "id": "gid://shopify/Product/15448848695681",
+      "title": "GD20 Spielkonsole mit HDMI-Anschluss",
+      "handle": "4k-hd-wireless-open-source-gaming-konsole-600100",
+      "status": "ACTIVE",
+      "updatedAt": "2026-11-16T06:05:09Z",
+      "productType": "Gaming-Zubehör",
+      "vendor": "LuxeStyle",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "gadgets",
+        "gaming",
+        "konsole",
+        "ps4",
+        "ps5",
+        "rueckhol-0907",
+        "sort-konsolen",
+        "sort-spielkonsolen-retro-handhelds",
+        "xbox"
+      ],
+      "descriptionHtml": "<p>Die GD20 ist eine Spielkonsole in Stick-Bauform mit HDMI-Anschluss. Die drei Ausführungen unterscheiden sich in der Lieferantenbezeichnung 64G, 128G oder 256G und tragen jeweils den Zusatz English. Der genaue Spieleumfang und die Anzahl mitgelieferter Controller sind nicht eindeutig bestätigt.</p>\n<h2>Anschluss und Produktangaben</h2><table>\n<caption>Belegte Angaben zur GD20</caption>\n<tbody>\n<tr>\n<th scope=\"row\">Bauform und Anschluss</th>\n<td>TV-Spielkonsole in Stick-Bauform, HDMI</td>\n</tr>\n<tr>\n<th scope=\"row\">Materialangabe</th>\n<td>ABS laut Produktbeschreibung; genaue Materialzusammensetzung nicht weiter beschrieben</td>\n</tr>\n<tr>\n<th scope=\"row\">Gerätemasse</th>\n<td>Für den Stick nicht getrennt vom übrigen Set bestätigt</td>\n</tr>\n<tr>\n<th scope=\"row\">Bildausgabe und System</th>\n<td>Tatsächliche Ausgabeauflösung, Betriebssystem und Softwareumfang nicht näher dokumentiert</td>\n</tr>\n</tbody>\n</table>\n<h2>Ausführung auswählen</h2><table>\n<caption>Die drei Lieferantenbezeichnungen</caption>\n<thead><tr>\n<th scope=\"col\">Auswahl</th>\n<th scope=\"col\">Kennzeichnung</th>\n</tr></thead>\n<tbody>\n<tr>\n<th scope=\"row\">GD20 · 64G · English</th>\n<td>64G, English</td>\n</tr>\n<tr>\n<th scope=\"row\">GD20 · 128G · English</th>\n<td>128G, English</td>\n</tr>\n<tr>\n<th scope=\"row\">GD20 · 256G · English</th>\n<td>256G, English</td>\n</tr>\n</tbody>\n</table><p>English ist der Wortlaut des Lieferanten. Ob damit Menüs, Begleitunterlagen oder andere Inhalte gemeint sind, wird nicht erklärt. Auch Speichermedium, nutzbare Kapazität und eine bestimmte Spieleliste sind nicht separat bestätigt. Die Auswahl bezeichnet eine Ausführung, keine Farbe.</p>\n<h2>Lieferumfang und Controller vor dem Kauf klären</h2><p>Die schriftliche Packliste nennt 1 Controller, 1 Game-Stick, 1 Kabel mit der Bezeichnung Ladekabel und 1 HDMI-Kabel. Ein Produktbild beschreibt dagegen 2 kabellose 2,4-GHz-Controller und weist auf 4 benötigte AAA-Batterien hin, die nicht mitgeliefert würden. Wegen dieser unterschiedlichen Angaben bleiben Controlleranzahl, Batteriebedarf und tatsächlicher Paketumfang zu bestätigen.</p><p>Eine konkrete Liste installierter oder mitgelieferter Spiele liegt nicht vor. Die Lieferantenbezeichnungen 4K und Open Source werden ohne technische Nachweise zur Ausgabeauflösung beziehungsweise zum System nicht als zugesicherte Funktionen übernommen.</p>\n<p>Weitere Modelle findest du bei <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>. Separates Zubehör zeigen die <a href=\"/collections/gamepads-controller\">Gamepads und Controller</a>.</p>",
+      "seo": {
+        "title": "GD20 HDMI-Spielkonsole: Auswahl und Details | LuxeStyle CH",
+        "description": "GD20 Spielkonsole mit HDMI-Anschluss. Ausführungen 64G, 128G und 256G mit Kennzeichnung English vergleichen. Spieleumfang, Controller und Zubehör prüfen."
+      },
+      "onlineStoreUrl": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100",
+      "category": {
+        "id": "gid://shopify/TaxonomyCategory/el-19",
+        "fullName": "Elektronik > Videospielkonsolen",
+        "isLeaf": false,
+        "isArchived": false
+      },
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17880367169921",
+          "name": "Ausführung",
+          "position": 1,
+          "values": [
+            "GD20 · 64G · English",
+            "GD20 · 128G · English",
+            "GD20 · 256G · English"
+          ],
+          "linkedMetafield": null,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12296447656321",
+              "name": "GD20 · 64G · English",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296447689089",
+              "name": "GD20 · 128G · English",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296447721857",
+              "name": "GD20 · 256G · English",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "gp": {
+        "id": "gid://shopify/Metafield/202061468991873",
+        "namespace": "mm-google-shopping",
+        "key": "google_product_category",
+        "type": "single_line_text_field",
+        "value": "Electronics > Video Game Consoles"
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56053716484481",
+            "title": "GD20 · 64G · English",
+            "sku": "CJ-CJYD217561401AZ",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "43.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Ausführung",
+                "value": "GD20 · 64G · English"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409480630657",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56053716517249",
+            "title": "GD20 · 128G · English",
+            "sku": "CJ-CJYD217561402BY",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "49.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Ausführung",
+                "value": "GD20 · 128G · English"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409480663425",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56053716550017",
+            "title": "GD20 · 256G · English",
+            "sku": "CJ-CJYD217561403CX",
+            "barcodes": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            },
+            "price": "55.90",
+            "compareAtPrice": null,
+            "selectedOptions": [
+              {
+                "name": "Ausführung",
+                "value": "GD20 · 256G · English"
+              }
+            ],
+            "inventoryPolicy": "CONTINUE",
+            "inventoryQuantity": 0,
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55409480696193",
+              "tracked": false
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      },
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69861507989889",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a090714f-ad51-4dd2-9fe6-20750c127002.jpg?v=1783189570",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 1 | LuxeStyle",
+              "width": 1600,
+              "height": 1600
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861508022657",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/563b60bf-82dd-4ad1-a699-a5aeaebe86d5.jpg?v=1783189570",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 2 | LuxeStyle",
+              "width": 970,
+              "height": 600
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861508055425",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/85849770-a31e-48f7-8db9-155aa9aa8b87.jpg?v=1783189570",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 3 | LuxeStyle",
+              "width": 1500,
+              "height": 1500
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861508153729",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f39568a0-c711-4373-90fd-b7a0460afe73.jpg?v=1783189571",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 4 | LuxeStyle",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861508186497",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93ddda74-43e0-4f35-a60a-6c4b9d41f305.jpg?v=1783189570",
+              "altText": "4K HD Wireless Open Source Gaming Konsole – Bild 5 | LuxeStyle",
+              "width": 1500,
+              "height": 1500
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "perOperationGuards": [
+    {
+      "product": "gid://shopify/Product/15448849023361",
+      "operation": "option",
+      "checks": {
+        "onlyOptionFieldsChanged": true,
+        "optionName": true,
+        "optionValues": true,
+        "orderedValues": true,
+        "derivedVariantNames": true
+      }
+    },
+    {
+      "product": "gid://shopify/Product/15448849023361",
+      "operation": "copy",
+      "checks": {
+        "onlyCopyFieldsChanged": true,
+        "title": true,
+        "descriptionStructuralWhitespaceOnly": true,
+        "seo": true
+      },
+      "note": "Shopify added whitespace between table tags; exact normalized markup/content equal, no repeated write."
+    },
+    {
+      "product": "gid://shopify/Product/15448848695681",
+      "operation": "option",
+      "checks": {
+        "onlyOptionFieldsChanged": true,
+        "optionName": true,
+        "optionValues": true,
+        "orderedValues": true,
+        "derivedVariantNames": true,
+        "otherProductUnchanged": true
+      }
+    },
+    {
+      "product": "gid://shopify/Product/15448848695681",
+      "operation": "copy",
+      "checks": {
+        "onlyCopyFieldsChanged": true,
+        "title": true,
+        "descriptionStructuralWhitespaceOnly": true,
+        "seo": true,
+        "otherProductUnchanged": true
+      }
+    },
+    {
+      "product": "gid://shopify/Product/15448849023361",
+      "operation": "mobile table copy refinement",
+      "checks": {
+        "onlyDescriptionChanged": true,
+        "exactReadback": true,
+        "otherProductUnchanged": true
+      }
+    }
+  ],
+  "finalCopy": [
+    {
+      "key": "x2",
+      "id": "gid://shopify/Product/15448849023361",
+      "title": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC",
+      "descriptionHtml": "<p>Die X2 Pro ist eine TV-Box. Die Produktangaben nennen drei Systeme: EmuELEC 4.5, Android 9.0 und CoreELEC sowie einen MP4-Videoplayer. Zur Auswahl stehen drei EU-Ausführungen mit den Bezeichnungen 64G, 128G und 256G. Ein bestimmtes vorinstalliertes Spielepaket ist für diese Ausführungen nicht bestätigt.</p>\n<h2>Systeme, Anschlüsse und Masse</h2><table>\n<caption>Produktangaben zur X2 Pro</caption>\n<tbody>\n<tr>\n<th scope=\"row\">Systeme laut Produktangaben</th>\n<td>EmuELEC 4.5, Android 9.0 und CoreELEC</td>\n</tr>\n<tr>\n<th scope=\"row\">Wiedergabe</th>\n<td>MP4-Videoplayer aufgeführt</td>\n</tr>\n<tr>\n<th scope=\"row\">Schnittstelle</th>\n<td>USB</td>\n</tr>\n<tr>\n<th scope=\"row\">Produktmasse</th>\n<td>10 × 10 cm; eine dritte Abmessung ist nicht angegeben</td>\n</tr>\n<tr>\n<th scope=\"row\">Materialangabe</th>\n<td>PC laut Angaben; die genaue Zusammensetzung ist nicht bestätigt</td>\n</tr>\n</tbody>\n</table>\n<h2>Die drei Ausführungen</h2><table>\n<caption>Bezeichnungen in der Auswahl</caption>\n<thead><tr>\n<th scope=\"col\">Auswahl</th>\n<th scope=\"col\">Was damit bestätigt ist</th>\n</tr></thead>\n<tbody>\n<tr>\n<th scope=\"row\">X2 Pro · 64G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 64G, EU-Ausführung</td>\n</tr>\n<tr>\n<th scope=\"row\">X2 Pro · 128G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 128G, EU-Ausführung</td>\n</tr>\n<tr>\n<th scope=\"row\">X2 Pro · 256G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 256G, EU-Ausführung</td>\n</tr>\n</tbody>\n</table><p>Die Angaben 64G, 128G und 256G stammen aus den Variantenbezeichnungen. Speichermedium, nutzbare Kapazität und eine bestimmte Spieleauswahl sind damit nicht abschliessend bestätigt. EU ist die Ausführungsbezeichnung des Lieferanten; die genaue Steckerform ist nicht dokumentiert.</p>\n<h2>Lieferumfang, Speicher und Spiele</h2><p>Die Packliste nennt 1 Gerät, 1 HD-Kabel, 1 Netzteil, 1 Fernbedienung und 2 kabellose Controller.</p><p>Produktbilder zeigen zusätzlich eine mit 4 GB beschriftete Speicherkarte und eine weitere Karte ohne erkennbare Kapazitätsangabe. Die Packliste führt keine Speicherkarte separat auf. Ob und welche Karte zur gewählten Ausführung gehört, bleibt offen. Eine konkrete Liste mitgelieferter oder installierter Spiele liegt nicht vor; beworbene Spielzahlen werden hier nicht als zugesichert übernommen.</p><p>Bestätigte Angaben zur Einrichtung, zu einzelnen kompatiblen Spielen, zur Controller-Stromversorgung sowie zu WLAN und Bluetooth liegen nicht vor. Prüfe diese Punkte vor dem Kauf, wenn sie für deinen Einsatz entscheidend sind.</p>\n<p>Weitere Bauformen findest du unter <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>. Separates Zubehör gibt es bei <a href=\"/collections/gamepads-controller\">Gamepads und Controllern</a>.</p>",
+      "seo": {
+        "title": "X2 Pro TV-Box: Systeme und Ausführungen | LuxeStyle CH",
+        "description": "X2 Pro TV-Box mit EmuELEC 4.5, Android 9.0 und CoreELEC laut Produktangaben. EU-Ausführungen vergleichen und Angaben zu Speicher, Spielen und Zubehör prüfen."
+      },
+      "seoLengths": {
+        "title": 54,
+        "description": 157
+      },
+      "option": {
+        "id": "gid://shopify/ProductOption/17880367530369",
+        "name": "Ausführung"
+      },
+      "optionValuesToUpdate": [
+        {
+          "id": "gid://shopify/ProductOptionValue/12296566309249",
+          "name": "X2 Pro · 256G · EU"
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12296566440321",
+          "name": "X2 Pro · 128G · EU"
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12296566571393",
+          "name": "X2 Pro · 64G · EU"
+        }
+      ],
+      "variantStrategy": "LEAVE_AS_IS"
+    },
+    {
+      "key": "gd20",
+      "id": "gid://shopify/Product/15448848695681",
+      "title": "GD20 Spielkonsole mit HDMI-Anschluss",
+      "descriptionHtml": "<p>Die GD20 ist eine Spielkonsole in Stick-Bauform mit HDMI-Anschluss. Die drei Ausführungen unterscheiden sich in der Lieferantenbezeichnung 64G, 128G oder 256G und tragen jeweils den Zusatz English. Der genaue Spieleumfang und die Anzahl mitgelieferter Controller sind nicht eindeutig bestätigt.</p>\n<h2>Anschluss und Produktangaben</h2><table><caption>Belegte Angaben zur GD20</caption><tbody><tr><th scope=\"row\">Bauform und Anschluss</th><td>TV-Spielkonsole in Stick-Bauform, HDMI</td></tr><tr><th scope=\"row\">Materialangabe</th><td>ABS laut Produktbeschreibung; genaue Materialzusammensetzung nicht weiter beschrieben</td></tr><tr><th scope=\"row\">Gerätemasse</th><td>Für den Stick nicht getrennt vom übrigen Set bestätigt</td></tr><tr><th scope=\"row\">Bildausgabe und System</th><td>Tatsächliche Ausgabeauflösung, Betriebssystem und Softwareumfang nicht näher dokumentiert</td></tr></tbody></table>\n<h2>Ausführung auswählen</h2><table><caption>Die drei Lieferantenbezeichnungen</caption><thead><tr><th scope=\"col\">Auswahl</th><th scope=\"col\">Kennzeichnung</th></tr></thead><tbody><tr><th scope=\"row\">GD20 · 64G · English</th><td>64G, English</td></tr><tr><th scope=\"row\">GD20 · 128G · English</th><td>128G, English</td></tr><tr><th scope=\"row\">GD20 · 256G · English</th><td>256G, English</td></tr></tbody></table><p>English ist der Wortlaut des Lieferanten. Ob damit Menüs, Begleitunterlagen oder andere Inhalte gemeint sind, wird nicht erklärt. Auch Speichermedium, nutzbare Kapazität und eine bestimmte Spieleliste sind nicht separat bestätigt. Die Auswahl bezeichnet eine Ausführung, keine Farbe.</p>\n<h2>Lieferumfang und Controller vor dem Kauf klären</h2><p>Die schriftliche Packliste nennt 1 Controller, 1 Game-Stick, 1 Kabel mit der Bezeichnung Ladekabel und 1 HDMI-Kabel. Ein Produktbild beschreibt dagegen 2 kabellose 2,4-GHz-Controller und weist auf 4 benötigte AAA-Batterien hin, die nicht mitgeliefert würden. Wegen dieser unterschiedlichen Angaben bleiben Controlleranzahl, Batteriebedarf und tatsächlicher Paketumfang zu bestätigen.</p><p>Eine konkrete Liste installierter oder mitgelieferter Spiele liegt nicht vor. Die Lieferantenbezeichnungen 4K und Open Source werden ohne technische Nachweise zur Ausgabeauflösung beziehungsweise zum System nicht als zugesicherte Funktionen übernommen.</p>\n<p>Weitere Modelle findest du bei <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>. Separates Zubehör zeigen die <a href=\"/collections/gamepads-controller\">Gamepads und Controller</a>.</p>",
+      "seo": {
+        "title": "GD20 HDMI-Spielkonsole: Auswahl und Details | LuxeStyle CH",
+        "description": "GD20 Spielkonsole mit HDMI-Anschluss. Ausführungen 64G, 128G und 256G mit Kennzeichnung English vergleichen. Spieleumfang, Controller und Zubehör prüfen."
+      },
+      "seoLengths": {
+        "title": 58,
+        "description": 153
+      },
+      "option": {
+        "id": "gid://shopify/ProductOption/17880367169921",
+        "name": "Ausführung"
+      },
+      "optionValuesToUpdate": [
+        {
+          "id": "gid://shopify/ProductOptionValue/12296447656321",
+          "name": "GD20 · 64G · English"
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12296447689089",
+          "name": "GD20 · 128G · English"
+        },
+        {
+          "id": "gid://shopify/ProductOptionValue/12296447721857",
+          "name": "GD20 · 256G · English"
+        }
+      ],
+      "variantStrategy": "LEAVE_AS_IS"
+    }
+  ],
+  "beforeWriteDiff": [
+    {
+      "product": "gid://shopify/Product/15448849023361",
+      "field": "title",
+      "before": "3-in-1 Retro Gaming & Media Box",
+      "after": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC"
+    },
+    {
+      "product": "gid://shopify/Product/15448849023361",
+      "field": "descriptionHtml",
+      "before": "<p>Diese vielseitige Set-Top-Box vereint Gaming und Medienwiedergabe in einem kompakten Gerät. Sie kombiniert drei Betriebssysteme: Emuelec 4.5 für umfassendes Retro-Gaming, Android 9.0 für Apps und Coreelec für ein optimiertes Medienerlebnis. So verwandelst du deinen Fernseher in eine Unterhaltungszentrale für die ganze Familie.</p><p>Die Box ist aus robustem PC-Material gefertigt und misst handliche 10 x 10 cm, wodurch sie sich nahtlos in jedes Setup einfügt. Im Lieferumfang sind alle nötigen Kabel, eine Fernbedienung sowie zwei kabellose Controller enthalten, sodass du sofort loslegen kannst.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Drei integrierte Betriebssysteme: Emuelec 4.5, Android 9.0 und Coreelec</li>\n<li>Kompaktes Design (10 x 10 cm)</li>\n<li>Inklusive zwei kabellosen Controllern und Fernbedienung</li>\n<li>Unterstützt MP4-Videowiedergabe</li>\n<li>USB-Schnittstelle für zusätzliche Konnektivität</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+      "after": "<p>Die X2 Pro ist eine TV-Box. Die Produktangaben nennen drei Systeme: EmuELEC 4.5, Android 9.0 und CoreELEC sowie einen MP4-Videoplayer. Zur Auswahl stehen drei EU-Ausführungen mit den Bezeichnungen 64G, 128G und 256G. Ein bestimmtes vorinstalliertes Spielepaket ist für diese Ausführungen nicht bestätigt.</p>\n<h2>Systeme, Anschlüsse und Masse</h2><table><caption>Produktangaben zur X2 Pro</caption><tbody><tr><th scope=\"row\">Systeme laut Produktangaben</th><td>EmuELEC 4.5, Android 9.0 und CoreELEC</td></tr><tr><th scope=\"row\">Medienwiedergabe</th><td>MP4-Videoplayer aufgeführt</td></tr><tr><th scope=\"row\">Schnittstelle</th><td>USB</td></tr><tr><th scope=\"row\">Produktmasse</th><td>10 × 10 cm; eine dritte Abmessung ist nicht angegeben</td></tr><tr><th scope=\"row\">Materialangabe</th><td>PC laut Produktbeschreibung; die genaue Materialzusammensetzung ist nicht bestätigt</td></tr></tbody></table>\n<h2>Die drei Ausführungen</h2><table><caption>Bezeichnungen in der Auswahl</caption><thead><tr><th scope=\"col\">Auswahl</th><th scope=\"col\">Was damit bestätigt ist</th></tr></thead><tbody><tr><th scope=\"row\">X2 Pro · 64G · EU</th><td>Modell X2 Pro, Lieferantenbezeichnung 64G, EU-Ausführung</td></tr><tr><th scope=\"row\">X2 Pro · 128G · EU</th><td>Modell X2 Pro, Lieferantenbezeichnung 128G, EU-Ausführung</td></tr><tr><th scope=\"row\">X2 Pro · 256G · EU</th><td>Modell X2 Pro, Lieferantenbezeichnung 256G, EU-Ausführung</td></tr></tbody></table><p>Die Angaben 64G, 128G und 256G stammen aus den Variantenbezeichnungen. Speichermedium, nutzbare Kapazität und eine bestimmte Spieleauswahl sind damit nicht abschliessend bestätigt. EU ist die Ausführungsbezeichnung des Lieferanten; die genaue Steckerform ist nicht dokumentiert.</p>\n<h2>Lieferumfang, Speicher und Spiele</h2><p>Die Packliste nennt 1 Gerät, 1 HD-Kabel, 1 Netzteil, 1 Fernbedienung und 2 kabellose Controller.</p><p>Produktbilder zeigen zusätzlich eine mit 4 GB beschriftete Speicherkarte und eine weitere Karte ohne erkennbare Kapazitätsangabe. Die Packliste führt keine Speicherkarte separat auf. Ob und welche Karte zur gewählten Ausführung gehört, bleibt offen. Eine konkrete Liste mitgelieferter oder installierter Spiele liegt nicht vor; beworbene Spielzahlen werden hier nicht als zugesichert übernommen.</p><p>Bestätigte Angaben zur Einrichtung, zu einzelnen kompatiblen Spielen, zur Controller-Stromversorgung sowie zu WLAN und Bluetooth liegen nicht vor. Prüfe diese Punkte vor dem Kauf, wenn sie für deinen Einsatz entscheidend sind.</p>\n<p>Weitere Bauformen findest du unter <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>. Separates Zubehör gibt es bei <a href=\"/collections/gamepads-controller\">Gamepads und Controllern</a>.</p>"
+    },
+    {
+      "product": "gid://shopify/Product/15448849023361",
+      "field": "seo",
+      "before": {
+        "title": "3-in-1 Retro Gaming & Media Box | LuxeStyle CH",
+        "description": "3-in-1 Retro Gaming & Media Box bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "after": {
+        "title": "X2 Pro TV-Box: Systeme und Ausführungen | LuxeStyle CH",
+        "description": "X2 Pro TV-Box mit EmuELEC 4.5, Android 9.0 und CoreELEC laut Produktangaben. EU-Ausführungen vergleichen und Angaben zu Speicher, Spielen und Zubehör prüfen."
+      }
+    },
+    {
+      "product": "gid://shopify/Product/15448849023361",
+      "field": "option and existing option values",
+      "before": [
+        {
+          "id": "gid://shopify/ProductOption/17880367530369",
+          "name": "Ausführung",
+          "position": 1,
+          "values": [
+            "X2 pro-256G-EU",
+            "X2 pro-128G-EU",
+            "X2 pro-64G-EU"
+          ],
+          "linkedMetafield": null,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12296566309249",
+              "name": "X2 pro-256G-EU",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296566440321",
+              "name": "X2 pro-128G-EU",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296566571393",
+              "name": "X2 pro-64G-EU",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "after": {
+        "option": {
+          "id": "gid://shopify/ProductOption/17880367530369",
+          "name": "Ausführung"
+        },
+        "optionValuesToUpdate": [
+          {
+            "id": "gid://shopify/ProductOptionValue/12296566309249",
+            "name": "X2 Pro · 256G · EU"
+          },
+          {
+            "id": "gid://shopify/ProductOptionValue/12296566440321",
+            "name": "X2 Pro · 128G · EU"
+          },
+          {
+            "id": "gid://shopify/ProductOptionValue/12296566571393",
+            "name": "X2 Pro · 64G · EU"
+          }
+        ],
+        "variantStrategy": "LEAVE_AS_IS"
+      }
+    },
+    {
+      "product": "gid://shopify/Product/15448848695681",
+      "field": "title",
+      "before": "4K HD Wireless Open Source Gaming Konsole",
+      "after": "GD20 Spielkonsole mit HDMI-Anschluss"
+    },
+    {
+      "product": "gid://shopify/Product/15448848695681",
+      "field": "descriptionHtml",
+      "before": "<p>Diese kabellose Gaming Konsole bringt deine Lieblingsspiele in gestochen scharfer 4K-Auflösung direkt auf deinen HD-Fernseher. Dank Open Source Architektur geniesst du maximale Flexibilität und eine breite Palette an Unterhaltungsmöglichkeiten. Das kompakte Design aus robustem ABS-Material fügt sich nahtlos in jedes Wohnzimmer ein und ist mit einer Grösse von 16 x 11.5 x 10.5 cm leicht zu verstauen. Ideal für alle, die eine unkomplizierte und vielseitige Gaming-Lösung suchen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Kabellose Verbindung für mehr Bewegungsfreiheit</li>\n<li>Unterstützt 4K-Auflösung für ein klares Bild</li>\n<li>Open Source System für individuelle Anpassungen</li>\n<li>E-Sports-Design für ein modernes Erscheinungsbild</li>\n<li>Lieferumfang: 1 Konsole, 1 Controller, Ladekabel, HDMI-Kabel</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>\n<!--xsell--><p>👉 Passt dazu: <a href=\"/collections/gaming\">🎮 Gaming</a> · <a href=\"/collections/hightech-gadgets\">⚡ Hightech &amp; Gadgets</a></p>",
+      "after": "<p>Die GD20 ist eine Spielkonsole in Stick-Bauform mit HDMI-Anschluss. Die drei Ausführungen unterscheiden sich in der Lieferantenbezeichnung 64G, 128G oder 256G und tragen jeweils den Zusatz English. Der genaue Spieleumfang und die Anzahl mitgelieferter Controller sind nicht eindeutig bestätigt.</p>\n<h2>Anschluss und Produktangaben</h2><table><caption>Belegte Angaben zur GD20</caption><tbody><tr><th scope=\"row\">Bauform und Anschluss</th><td>TV-Spielkonsole in Stick-Bauform, HDMI</td></tr><tr><th scope=\"row\">Materialangabe</th><td>ABS laut Produktbeschreibung; genaue Materialzusammensetzung nicht weiter beschrieben</td></tr><tr><th scope=\"row\">Gerätemasse</th><td>Für den Stick nicht getrennt vom übrigen Set bestätigt</td></tr><tr><th scope=\"row\">Bildausgabe und System</th><td>Tatsächliche Ausgabeauflösung, Betriebssystem und Softwareumfang nicht näher dokumentiert</td></tr></tbody></table>\n<h2>Ausführung auswählen</h2><table><caption>Die drei Lieferantenbezeichnungen</caption><thead><tr><th scope=\"col\">Auswahl</th><th scope=\"col\">Kennzeichnung</th></tr></thead><tbody><tr><th scope=\"row\">GD20 · 64G · English</th><td>64G, English</td></tr><tr><th scope=\"row\">GD20 · 128G · English</th><td>128G, English</td></tr><tr><th scope=\"row\">GD20 · 256G · English</th><td>256G, English</td></tr></tbody></table><p>English ist der Wortlaut des Lieferanten. Ob damit Menüs, Begleitunterlagen oder andere Inhalte gemeint sind, wird nicht erklärt. Auch Speichermedium, nutzbare Kapazität und eine bestimmte Spieleliste sind nicht separat bestätigt. Die Auswahl bezeichnet eine Ausführung, keine Farbe.</p>\n<h2>Lieferumfang und Controller vor dem Kauf klären</h2><p>Die schriftliche Packliste nennt 1 Controller, 1 Game-Stick, 1 Kabel mit der Bezeichnung Ladekabel und 1 HDMI-Kabel. Ein Produktbild beschreibt dagegen 2 kabellose 2,4-GHz-Controller und weist auf 4 benötigte AAA-Batterien hin, die nicht mitgeliefert würden. Wegen dieser unterschiedlichen Angaben bleiben Controlleranzahl, Batteriebedarf und tatsächlicher Paketumfang zu bestätigen.</p><p>Eine konkrete Liste installierter oder mitgelieferter Spiele liegt nicht vor. Die Lieferantenbezeichnungen 4K und Open Source werden ohne technische Nachweise zur Ausgabeauflösung beziehungsweise zum System nicht als zugesicherte Funktionen übernommen.</p>\n<p>Weitere Modelle findest du bei <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>. Separates Zubehör zeigen die <a href=\"/collections/gamepads-controller\">Gamepads und Controller</a>.</p>"
+    },
+    {
+      "product": "gid://shopify/Product/15448848695681",
+      "field": "seo",
+      "before": {
+        "title": "4K HD Wireless Open Source Gaming Konsole | LuxeStyle CH",
+        "description": "4K HD Wireless Open Source Gaming Konsole bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "after": {
+        "title": "GD20 HDMI-Spielkonsole: Auswahl und Details | LuxeStyle CH",
+        "description": "GD20 Spielkonsole mit HDMI-Anschluss. Ausführungen 64G, 128G und 256G mit Kennzeichnung English vergleichen. Spieleumfang, Controller und Zubehör prüfen."
+      }
+    },
+    {
+      "product": "gid://shopify/Product/15448848695681",
+      "field": "option and existing option values",
+      "before": [
+        {
+          "id": "gid://shopify/ProductOption/17880367169921",
+          "name": "Farbe",
+          "position": 1,
+          "values": [
+            "Englisch",
+            "GD English",
+            "GD 20 256G English"
+          ],
+          "linkedMetafield": null,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12296447656321",
+              "name": "Englisch",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296447689089",
+              "name": "GD English",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12296447721857",
+              "name": "GD 20 256G English",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "after": {
+        "option": {
+          "id": "gid://shopify/ProductOption/17880367169921",
+          "name": "Ausführung"
+        },
+        "optionValuesToUpdate": [
+          {
+            "id": "gid://shopify/ProductOptionValue/12296447656321",
+            "name": "GD20 · 64G · English"
+          },
+          {
+            "id": "gid://shopify/ProductOptionValue/12296447689089",
+            "name": "GD20 · 128G · English"
+          },
+          {
+            "id": "gid://shopify/ProductOptionValue/12296447721857",
+            "name": "GD20 · 256G · English"
+          }
+        ],
+        "variantStrategy": "LEAVE_AS_IS"
+      }
+    }
+  ],
+  "mobileRefinementDiff": {
+    "product": "gid://shopify/Product/15448849023361",
+    "field": "descriptionHtml",
+    "reason": "Actual 360px table overflow documented; shorten two long table phrases without changing facts.",
+    "before": "<p>Die X2 Pro ist eine TV-Box. Die Produktangaben nennen drei Systeme: EmuELEC 4.5, Android 9.0 und CoreELEC sowie einen MP4-Videoplayer. Zur Auswahl stehen drei EU-Ausführungen mit den Bezeichnungen 64G, 128G und 256G. Ein bestimmtes vorinstalliertes Spielepaket ist für diese Ausführungen nicht bestätigt.</p>\n<h2>Systeme, Anschlüsse und Masse</h2><table>\n<caption>Produktangaben zur X2 Pro</caption>\n<tbody>\n<tr>\n<th scope=\"row\">Systeme laut Produktangaben</th>\n<td>EmuELEC 4.5, Android 9.0 und CoreELEC</td>\n</tr>\n<tr>\n<th scope=\"row\">Medienwiedergabe</th>\n<td>MP4-Videoplayer aufgeführt</td>\n</tr>\n<tr>\n<th scope=\"row\">Schnittstelle</th>\n<td>USB</td>\n</tr>\n<tr>\n<th scope=\"row\">Produktmasse</th>\n<td>10 × 10 cm; eine dritte Abmessung ist nicht angegeben</td>\n</tr>\n<tr>\n<th scope=\"row\">Materialangabe</th>\n<td>PC laut Produktbeschreibung; die genaue Materialzusammensetzung ist nicht bestätigt</td>\n</tr>\n</tbody>\n</table>\n<h2>Die drei Ausführungen</h2><table>\n<caption>Bezeichnungen in der Auswahl</caption>\n<thead><tr>\n<th scope=\"col\">Auswahl</th>\n<th scope=\"col\">Was damit bestätigt ist</th>\n</tr></thead>\n<tbody>\n<tr>\n<th scope=\"row\">X2 Pro · 64G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 64G, EU-Ausführung</td>\n</tr>\n<tr>\n<th scope=\"row\">X2 Pro · 128G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 128G, EU-Ausführung</td>\n</tr>\n<tr>\n<th scope=\"row\">X2 Pro · 256G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 256G, EU-Ausführung</td>\n</tr>\n</tbody>\n</table><p>Die Angaben 64G, 128G und 256G stammen aus den Variantenbezeichnungen. Speichermedium, nutzbare Kapazität und eine bestimmte Spieleauswahl sind damit nicht abschliessend bestätigt. EU ist die Ausführungsbezeichnung des Lieferanten; die genaue Steckerform ist nicht dokumentiert.</p>\n<h2>Lieferumfang, Speicher und Spiele</h2><p>Die Packliste nennt 1 Gerät, 1 HD-Kabel, 1 Netzteil, 1 Fernbedienung und 2 kabellose Controller.</p><p>Produktbilder zeigen zusätzlich eine mit 4 GB beschriftete Speicherkarte und eine weitere Karte ohne erkennbare Kapazitätsangabe. Die Packliste führt keine Speicherkarte separat auf. Ob und welche Karte zur gewählten Ausführung gehört, bleibt offen. Eine konkrete Liste mitgelieferter oder installierter Spiele liegt nicht vor; beworbene Spielzahlen werden hier nicht als zugesichert übernommen.</p><p>Bestätigte Angaben zur Einrichtung, zu einzelnen kompatiblen Spielen, zur Controller-Stromversorgung sowie zu WLAN und Bluetooth liegen nicht vor. Prüfe diese Punkte vor dem Kauf, wenn sie für deinen Einsatz entscheidend sind.</p>\n<p>Weitere Bauformen findest du unter <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>. Separates Zubehör gibt es bei <a href=\"/collections/gamepads-controller\">Gamepads und Controllern</a>.</p>",
+    "after": "<p>Die X2 Pro ist eine TV-Box. Die Produktangaben nennen drei Systeme: EmuELEC 4.5, Android 9.0 und CoreELEC sowie einen MP4-Videoplayer. Zur Auswahl stehen drei EU-Ausführungen mit den Bezeichnungen 64G, 128G und 256G. Ein bestimmtes vorinstalliertes Spielepaket ist für diese Ausführungen nicht bestätigt.</p>\n<h2>Systeme, Anschlüsse und Masse</h2><table>\n<caption>Produktangaben zur X2 Pro</caption>\n<tbody>\n<tr>\n<th scope=\"row\">Systeme laut Produktangaben</th>\n<td>EmuELEC 4.5, Android 9.0 und CoreELEC</td>\n</tr>\n<tr>\n<th scope=\"row\">Wiedergabe</th>\n<td>MP4-Videoplayer aufgeführt</td>\n</tr>\n<tr>\n<th scope=\"row\">Schnittstelle</th>\n<td>USB</td>\n</tr>\n<tr>\n<th scope=\"row\">Produktmasse</th>\n<td>10 × 10 cm; eine dritte Abmessung ist nicht angegeben</td>\n</tr>\n<tr>\n<th scope=\"row\">Materialangabe</th>\n<td>PC laut Angaben; die genaue Zusammensetzung ist nicht bestätigt</td>\n</tr>\n</tbody>\n</table>\n<h2>Die drei Ausführungen</h2><table>\n<caption>Bezeichnungen in der Auswahl</caption>\n<thead><tr>\n<th scope=\"col\">Auswahl</th>\n<th scope=\"col\">Was damit bestätigt ist</th>\n</tr></thead>\n<tbody>\n<tr>\n<th scope=\"row\">X2 Pro · 64G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 64G, EU-Ausführung</td>\n</tr>\n<tr>\n<th scope=\"row\">X2 Pro · 128G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 128G, EU-Ausführung</td>\n</tr>\n<tr>\n<th scope=\"row\">X2 Pro · 256G · EU</th>\n<td>Modell X2 Pro, Lieferantenbezeichnung 256G, EU-Ausführung</td>\n</tr>\n</tbody>\n</table><p>Die Angaben 64G, 128G und 256G stammen aus den Variantenbezeichnungen. Speichermedium, nutzbare Kapazität und eine bestimmte Spieleauswahl sind damit nicht abschliessend bestätigt. EU ist die Ausführungsbezeichnung des Lieferanten; die genaue Steckerform ist nicht dokumentiert.</p>\n<h2>Lieferumfang, Speicher und Spiele</h2><p>Die Packliste nennt 1 Gerät, 1 HD-Kabel, 1 Netzteil, 1 Fernbedienung und 2 kabellose Controller.</p><p>Produktbilder zeigen zusätzlich eine mit 4 GB beschriftete Speicherkarte und eine weitere Karte ohne erkennbare Kapazitätsangabe. Die Packliste führt keine Speicherkarte separat auf. Ob und welche Karte zur gewählten Ausführung gehört, bleibt offen. Eine konkrete Liste mitgelieferter oder installierter Spiele liegt nicht vor; beworbene Spielzahlen werden hier nicht als zugesichert übernommen.</p><p>Bestätigte Angaben zur Einrichtung, zu einzelnen kompatiblen Spielen, zur Controller-Stromversorgung sowie zu WLAN und Bluetooth liegen nicht vor. Prüfe diese Punkte vor dem Kauf, wenn sie für deinen Einsatz entscheidend sind.</p>\n<p>Weitere Bauformen findest du unter <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>. Separates Zubehör gibt es bei <a href=\"/collections/gamepads-controller\">Gamepads und Controllern</a>.</p>"
+  },
+  "descriptionNormalization": "First X2 readback inserted only whitespace between table tags; inspected and normalized, accepted write not repeated. Fifth write later shortened two table phrases after actual360px overflow.",
+  "publicQa": {
+    "capturedAt": "2026-11-16T06:15:16.713Z",
+    "browser": "Chromium via Playwright",
+    "mobile390": {
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "isMobile": true,
+      "hasTouch": true
+    },
+    "selectionMethod": "Clicked visible labels inside variant-picker; no direct DOM assignment. No cart or checkout interaction.",
+    "results": [
+      {
+        "key": "x2",
+        "productId": "gid://shopify/Product/15448849023361",
+        "requestUrl": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344",
+        "status": 200,
+        "jsonStatus": 200,
+        "canonical": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344",
+        "h1": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC",
+        "documentTitle": "X2 Pro TV-Box: Systeme und Ausführungen | LuxeStyle CH",
+        "metaDescription": "X2 Pro TV-Box mit EmuELEC 4.5, Android 9.0 und CoreELEC laut Produktangaben. EU-Ausführungen vergleichen und Angaben zu Speicher, Spielen und Zubehör prüfen.",
+        "bodyTextNormalized": "Direkt zum Inhalt 🇨🇭 Lieferung nur in die Schweiz & nach Liechtenstein · 🚚 in der Schweiz gratis ab CHF 50 nach Rabatt X2 Pro TV-Box mit EmuELEC, Android und CoreELEC X2 Pro · 256G · EU CHF 95.90 Zu Produktinformationen springen 1 2 3 4 5 6 7 ♡ Home › Elektronik › Gaming X2 Pro TV-Box mit EmuELEC, Android und CoreELEC CHF 95.90 Ausführung X2 Pro · 256G · EU X2 Pro · 128G · EU X2 Pro · 64G · EU Menge verringern Menge erhöhen In den Warenkorb legen Weitere Bezahlmöglichkeiten ♡ Merken Merkliste ansehen Verfügbar · Direktversand aus Asien 🚚 Bestelle jetzt – Lieferung voraussichtlich 30. Nov. – 14. Dez. Direktversand vom Hersteller in Asien — deshalb die längere Lieferzeit · In der Schweiz gratis Versand inklusive 🚚 Gratis Versand in der Schweiz für diesen Artikel ↩️ 30 Tage Rückgabe 🔒 Kauf auf Rechnung — Klarna · TWINT · Karten · PayPal 🇨🇭 Lieferung nur in die Schweiz und nach Liechtenstein · Support info@luxestyle.ch Bezahlen mit Versand & Lieferung Rückgabe & Umtausch 30 Tage Rückgaberecht: Gib Artikel innerhalb von 30 Tagen zurück — unbenutzt, vollständig und in Originalverpackung (Ausnahmen wie personalisierte Ware: siehe Rückgaberichtlinie). Melde deine Rückgabe zuerst an; die gültige Retourenadresse erhältst du von uns. Bei freiwilliger Rückgabe trägst du die Rücksendekosten. Defekt oder falsch geliefert? Dann ist die Rücksendung kostenlos und wir ersetzen oder erstatten vollständig. Die X2 Pro ist eine TV-Box. Die Produktangaben nennen drei Systeme: EmuELEC 4.5, Android 9.0 und CoreELEC sowie einen MP4-Videoplayer. Zur Auswahl stehen drei EU-Ausführungen mit den Bezeichnungen 64G, 128G und 256G. Ein bestimmtes vorinstalliertes Spielepaket ist für diese Ausführungen nicht bestätigt. Systeme, Anschlüsse und Masse Produktangaben zur X2 Pro Systeme laut Produktangaben EmuELEC 4.5, Android 9.0 und CoreELEC Wiedergabe MP4-Videoplayer aufgeführt Schnittstelle USB Produktmasse 10 × 10 cm; eine dritte Abmessung ist nicht angegeben Materialangabe PC laut Angaben; die genaue Zusammensetzung ist nicht bestätigt Die drei Ausführungen Bezeichnungen in der Auswahl AUSWAHL WAS DAMIT BESTÄTIGT IST X2 Pro · 64G · EU Modell X2 Pro, Lieferantenbezeichnung 64G, EU-Ausführung X2 Pro · 128G · EU Modell X2 Pro, Lieferantenbezeichnung 128G, EU-Ausführung X2 Pro · 256G · EU Modell X2 Pro, Lieferantenbezeichnung 256G, EU-Ausführung Die Angaben 64G, 128G und 256G stammen aus den Variantenbezeichnungen. Speichermedium, nutzbare Kapazität und eine bestimmte Spieleauswahl sind damit nicht abschliessend bestätigt. EU ist die Ausführungsbezeichnung des Lieferanten; die genaue Steckerform ist nicht dokumentiert. Lieferumfang, Speicher und Spiele Die Packliste nennt 1 Gerät, 1 HD-Kabel, 1 Netzteil, 1 Fernbedienung und 2 kabellose Controller. Produktbilder zeigen zusätzlich eine mit 4 GB beschriftete Speicherkarte und eine weitere Karte ohne erkennbare Kapazitätsangabe. Die Packliste führt keine Speicherkarte separat auf. Ob und welche Karte zur gewählten Ausführung gehört, bleibt offen. Eine konkrete Liste mitgelieferter oder installierter Spiele liegt nicht vor; beworbene Spielzahlen werden hier nicht als zugesichert übernommen. Bestätigte Angaben zur Einrichtung, zu einzelnen kompatiblen Spielen, zur Controller-Stromversorgung sowie zu WLAN und Bluetooth liegen nicht vor. Prüfe diese Punkte vor dem Kauf, wenn sie für deinen Einsatz entscheidend sind. Weitere Bauformen findest du unter Spielkonsolen und Retro-Handhelds. Separates Zubehör gibt es bei Gamepads und Controllern. Spezifikationen & Details Kategorie Gaming-Zubehör Ausführung X2 Pro · 256G · EU, X2 Pro · 128G · EU, X2 Pro · 64G · EU Gewicht 880 g Zustand Neu Ähnliche Produkte Bezahlen mit © 2026 LuxeStyle, Online-Shop mit Shopify Geschäftsbedingungen und Richtlinien",
+        "mainNormalizedHtmlFile": "x2-main-normalized.html",
+        "rawHtmlFile": "x2-public.html",
+        "productJsFile": "x2-product-js.json",
+        "jsonLdFile": "x2-jsonld.json",
+        "productJs": {
+          "id": 15448849023361,
+          "title": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC",
+          "handle": "3-in-1-retro-gaming-media-box-793344",
+          "options": [
+            {
+              "name": "Ausführung",
+              "position": 1,
+              "values": [
+                "X2 Pro · 256G · EU",
+                "X2 Pro · 128G · EU",
+                "X2 Pro · 64G · EU"
+              ]
+            }
+          ],
+          "variantCount": 3,
+          "variants": [
+            {
+              "id": "56053827174785",
+              "title": "X2 Pro · 256G · EU",
+              "sku": "CJ-CJZS193939402BY",
+              "priceCHF": 95.9,
+              "option1": "X2 Pro · 256G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            {
+              "id": "56053827305857",
+              "title": "X2 Pro · 128G · EU",
+              "sku": "CJ-CJZS193939406FU",
+              "priceCHF": 97.9,
+              "option1": "X2 Pro · 128G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            {
+              "id": "56053827436929",
+              "title": "X2 Pro · 64G · EU",
+              "sku": "CJ-CJZS193939410JQ",
+              "priceCHF": 97.9,
+              "option1": "X2 Pro · 64G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            }
+          ]
+        },
+        "jsonLdProductGroupName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC",
+        "jsonLdOffers": [
+          {
+            "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 256G · EU",
+            "sku": "CJ-CJZS193939402BY",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827174785",
+            "price": "95.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          },
+          {
+            "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 128G · EU",
+            "sku": "CJ-CJZS193939406FU",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827305857",
+            "price": "97.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          },
+          {
+            "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 64G · EU",
+            "sku": "CJ-CJZS193939410JQ",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827436929",
+            "price": "97.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          }
+        ],
+        "variantComparison": [
+          {
+            "expected": {
+              "id": "56053827174785",
+              "label": "X2 Pro · 256G · EU",
+              "variantTitle": "X2 Pro · 256G · EU",
+              "sku": "CJ-CJZS193939402BY",
+              "price": "95.90"
+            },
+            "publicJs": {
+              "id": "56053827174785",
+              "title": "X2 Pro · 256G · EU",
+              "sku": "CJ-CJZS193939402BY",
+              "priceCHF": 95.9,
+              "option1": "X2 Pro · 256G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 256G · EU",
+              "sku": "CJ-CJZS193939402BY",
+              "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827174785",
+              "price": "95.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          },
+          {
+            "expected": {
+              "id": "56053827305857",
+              "label": "X2 Pro · 128G · EU",
+              "variantTitle": "X2 Pro · 128G · EU",
+              "sku": "CJ-CJZS193939406FU",
+              "price": "97.90"
+            },
+            "publicJs": {
+              "id": "56053827305857",
+              "title": "X2 Pro · 128G · EU",
+              "sku": "CJ-CJZS193939406FU",
+              "priceCHF": 97.9,
+              "option1": "X2 Pro · 128G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 128G · EU",
+              "sku": "CJ-CJZS193939406FU",
+              "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827305857",
+              "price": "97.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          },
+          {
+            "expected": {
+              "id": "56053827436929",
+              "label": "X2 Pro · 64G · EU",
+              "variantTitle": "X2 Pro · 64G · EU",
+              "sku": "CJ-CJZS193939410JQ",
+              "price": "97.90"
+            },
+            "publicJs": {
+              "id": "56053827436929",
+              "title": "X2 Pro · 64G · EU",
+              "sku": "CJ-CJZS193939410JQ",
+              "priceCHF": 97.9,
+              "option1": "X2 Pro · 64G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 64G · EU",
+              "sku": "CJ-CJZS193939410JQ",
+              "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827436929",
+              "price": "97.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          }
+        ],
+        "allJsonLdVariantOffersPass": true,
+        "variantClicks": [
+          {
+            "label": "X2 Pro · 256G · EU",
+            "expectedVariantId": "56053827174785",
+            "expectedPriceCHF": "95.90",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827174785",
+            "formVariantId": "56053827174785",
+            "selected": [
+              {
+                "label": "X2 Pro · 256G · EU",
+                "variantId": "56053827174785",
+                "visibleLabel": "X2 Pro · 256G · EU"
+              }
+            ],
+            "price": "CHF 95.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/4083f2f1-c7ba-4bda-8c0e-c316a81ee881.jpg?v=1783189610&width=480",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 7",
+              "w": 390,
+              "h": 394,
+              "y": -321
+            },
+            "pass": true
+          },
+          {
+            "label": "X2 Pro · 128G · EU",
+            "expectedVariantId": "56053827305857",
+            "expectedPriceCHF": "97.90",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827305857",
+            "formVariantId": "56053827305857",
+            "selected": [
+              {
+                "label": "X2 Pro · 128G · EU",
+                "variantId": "56053827305857",
+                "visibleLabel": "X2 Pro · 128G · EU"
+              }
+            ],
+            "price": "CHF 97.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/4083f2f1-c7ba-4bda-8c0e-c316a81ee881.jpg?v=1783189610&width=480",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 7",
+              "w": 390,
+              "h": 394,
+              "y": -321
+            },
+            "pass": true
+          },
+          {
+            "label": "X2 Pro · 64G · EU",
+            "expectedVariantId": "56053827436929",
+            "expectedPriceCHF": "97.90",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827436929",
+            "formVariantId": "56053827436929",
+            "selected": [
+              {
+                "label": "X2 Pro · 64G · EU",
+                "variantId": "56053827436929",
+                "visibleLabel": "X2 Pro · 64G · EU"
+              }
+            ],
+            "price": "CHF 97.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/4083f2f1-c7ba-4bda-8c0e-c316a81ee881.jpg?v=1783189610&width=480",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 7",
+              "w": 390,
+              "h": 394,
+              "y": -379
+            },
+            "pass": true
+          }
+        ],
+        "allVariantClicksPass": true,
+        "overflow360": {
+          "configuredWidth": 360,
+          "innerWidth": 360,
+          "visualViewportWidth": 360,
+          "clientWidth": 360,
+          "documentWidth": 360,
+          "bodyWidth": 360,
+          "bodyScrollWidth": 360,
+          "horizontalOverflow": false,
+          "tables": [
+            {
+              "caption": "Produktangaben zur X2 Pro",
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "rectWidth": 328,
+              "right": 344,
+              "overflow": false
+            },
+            {
+              "caption": "Bezeichnungen in der Auswahl",
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "rectWidth": 328,
+              "right": 344,
+              "overflow": false
+            }
+          ]
+        }
+      },
+      {
+        "key": "gd20",
+        "productId": "gid://shopify/Product/15448848695681",
+        "requestUrl": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100",
+        "status": 200,
+        "jsonStatus": 200,
+        "canonical": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100",
+        "h1": "GD20 Spielkonsole mit HDMI-Anschluss",
+        "documentTitle": "GD20 HDMI-Spielkonsole: Auswahl und Details | LuxeStyle CH",
+        "metaDescription": "GD20 Spielkonsole mit HDMI-Anschluss. Ausführungen 64G, 128G und 256G mit Kennzeichnung English vergleichen. Spieleumfang, Controller und Zubehör prüfen.",
+        "bodyTextNormalized": "Direkt zum Inhalt 🇨🇭 Lieferung nur in die Schweiz & nach Liechtenstein · 🚚 in der Schweiz gratis ab CHF 50 nach Rabatt GD20 Spielkonsole mit HDMI-Anschluss GD20 · 64G · English CHF 43.90 Zu Produktinformationen springen 1 2 3 4 5 ♡ Home › Elektronik › Gaming GD20 Spielkonsole mit HDMI-Anschluss CHF 43.90 Ausführung GD20 · 64G · English GD20 · 128G · English GD20 · 256G · English Menge verringern Menge erhöhen In den Warenkorb legen Weitere Bezahlmöglichkeiten ♡ Merken Merkliste ansehen Verfügbar · Direktversand aus Asien 🚚 Bestelle jetzt – Lieferung voraussichtlich 30. Nov. – 14. Dez. Direktversand vom Hersteller in Asien — deshalb die längere Lieferzeit · In der Schweiz gratis ab CHF 50 nach Rabatt 🚚 Versand in der Schweiz CHF 7 · gratis ab CHF 50 nach Rabatt ↩️ 30 Tage Rückgabe 🔒 Kauf auf Rechnung — Klarna · TWINT · Karten · PayPal 🇨🇭 Lieferung nur in die Schweiz und nach Liechtenstein · Support info@luxestyle.ch Bezahlen mit Versand & Lieferung Rückgabe & Umtausch 30 Tage Rückgaberecht: Gib Artikel innerhalb von 30 Tagen zurück — unbenutzt, vollständig und in Originalverpackung (Ausnahmen wie personalisierte Ware: siehe Rückgaberichtlinie). Melde deine Rückgabe zuerst an; die gültige Retourenadresse erhältst du von uns. Bei freiwilliger Rückgabe trägst du die Rücksendekosten. Defekt oder falsch geliefert? Dann ist die Rücksendung kostenlos und wir ersetzen oder erstatten vollständig. Die GD20 ist eine Spielkonsole in Stick-Bauform mit HDMI-Anschluss. Die drei Ausführungen unterscheiden sich in der Lieferantenbezeichnung 64G, 128G oder 256G und tragen jeweils den Zusatz English. Der genaue Spieleumfang und die Anzahl mitgelieferter Controller sind nicht eindeutig bestätigt. Anschluss und Produktangaben Belegte Angaben zur GD20 Bauform und Anschluss TV-Spielkonsole in Stick-Bauform, HDMI Materialangabe ABS laut Produktbeschreibung; genaue Materialzusammensetzung nicht weiter beschrieben Gerätemasse Für den Stick nicht getrennt vom übrigen Set bestätigt Bildausgabe und System Tatsächliche Ausgabeauflösung, Betriebssystem und Softwareumfang nicht näher dokumentiert Ausführung auswählen Die drei Lieferantenbezeichnungen AUSWAHL KENNZEICHNUNG GD20 · 64G · English 64G, English GD20 · 128G · English 128G, English GD20 · 256G · English 256G, English English ist der Wortlaut des Lieferanten. Ob damit Menüs, Begleitunterlagen oder andere Inhalte gemeint sind, wird nicht erklärt. Auch Speichermedium, nutzbare Kapazität und eine bestimmte Spieleliste sind nicht separat bestätigt. Die Auswahl bezeichnet eine Ausführung, keine Farbe. Lieferumfang und Controller vor dem Kauf klären Die schriftliche Packliste nennt 1 Controller, 1 Game-Stick, 1 Kabel mit der Bezeichnung Ladekabel und 1 HDMI-Kabel. Ein Produktbild beschreibt dagegen 2 kabellose 2,4-GHz-Controller und weist auf 4 benötigte AAA-Batterien hin, die nicht mitgeliefert würden. Wegen dieser unterschiedlichen Angaben bleiben Controlleranzahl, Batteriebedarf und tatsächlicher Paketumfang zu bestätigen. Eine konkrete Liste installierter oder mitgelieferter Spiele liegt nicht vor. Die Lieferantenbezeichnungen 4K und Open Source werden ohne technische Nachweise zur Ausgabeauflösung beziehungsweise zum System nicht als zugesicherte Funktionen übernommen. Weitere Modelle findest du bei Spielkonsolen und Retro-Handhelds. Separates Zubehör zeigen die Gamepads und Controller. Spezifikationen & Details Kategorie Gaming-Zubehör Ausführung GD20 · 64G · English, GD20 · 128G · English, GD20 · 256G · English Gewicht 400 g Zustand Neu Ähnliche Produkte Bezahlen mit © 2026 LuxeStyle, Online-Shop mit Shopify Geschäftsbedingungen und Richtlinien",
+        "mainNormalizedHtmlFile": "gd20-main-normalized.html",
+        "rawHtmlFile": "gd20-public.html",
+        "productJsFile": "gd20-product-js.json",
+        "jsonLdFile": "gd20-jsonld.json",
+        "productJs": {
+          "id": 15448848695681,
+          "title": "GD20 Spielkonsole mit HDMI-Anschluss",
+          "handle": "4k-hd-wireless-open-source-gaming-konsole-600100",
+          "options": [
+            {
+              "name": "Ausführung",
+              "position": 1,
+              "values": [
+                "GD20 · 64G · English",
+                "GD20 · 128G · English",
+                "GD20 · 256G · English"
+              ]
+            }
+          ],
+          "variantCount": 3,
+          "variants": [
+            {
+              "id": "56053716484481",
+              "title": "GD20 · 64G · English",
+              "sku": "CJ-CJYD217561401AZ",
+              "priceCHF": 43.9,
+              "option1": "GD20 · 64G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            {
+              "id": "56053716517249",
+              "title": "GD20 · 128G · English",
+              "sku": "CJ-CJYD217561402BY",
+              "priceCHF": 49.9,
+              "option1": "GD20 · 128G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            {
+              "id": "56053716550017",
+              "title": "GD20 · 256G · English",
+              "sku": "CJ-CJYD217561403CX",
+              "priceCHF": 55.9,
+              "option1": "GD20 · 256G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            }
+          ]
+        },
+        "jsonLdProductGroupName": "GD20 Spielkonsole mit HDMI-Anschluss",
+        "jsonLdOffers": [
+          {
+            "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 64G · English",
+            "sku": "CJ-CJYD217561401AZ",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716484481",
+            "price": "43.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          },
+          {
+            "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 128G · English",
+            "sku": "CJ-CJYD217561402BY",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716517249",
+            "price": "49.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          },
+          {
+            "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 256G · English",
+            "sku": "CJ-CJYD217561403CX",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716550017",
+            "price": "55.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          }
+        ],
+        "variantComparison": [
+          {
+            "expected": {
+              "id": "56053716484481",
+              "label": "GD20 · 64G · English",
+              "variantTitle": "GD20 · 64G · English",
+              "sku": "CJ-CJYD217561401AZ",
+              "price": "43.90"
+            },
+            "publicJs": {
+              "id": "56053716484481",
+              "title": "GD20 · 64G · English",
+              "sku": "CJ-CJYD217561401AZ",
+              "priceCHF": 43.9,
+              "option1": "GD20 · 64G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 64G · English",
+              "sku": "CJ-CJYD217561401AZ",
+              "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716484481",
+              "price": "43.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          },
+          {
+            "expected": {
+              "id": "56053716517249",
+              "label": "GD20 · 128G · English",
+              "variantTitle": "GD20 · 128G · English",
+              "sku": "CJ-CJYD217561402BY",
+              "price": "49.90"
+            },
+            "publicJs": {
+              "id": "56053716517249",
+              "title": "GD20 · 128G · English",
+              "sku": "CJ-CJYD217561402BY",
+              "priceCHF": 49.9,
+              "option1": "GD20 · 128G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 128G · English",
+              "sku": "CJ-CJYD217561402BY",
+              "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716517249",
+              "price": "49.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          },
+          {
+            "expected": {
+              "id": "56053716550017",
+              "label": "GD20 · 256G · English",
+              "variantTitle": "GD20 · 256G · English",
+              "sku": "CJ-CJYD217561403CX",
+              "price": "55.90"
+            },
+            "publicJs": {
+              "id": "56053716550017",
+              "title": "GD20 · 256G · English",
+              "sku": "CJ-CJYD217561403CX",
+              "priceCHF": 55.9,
+              "option1": "GD20 · 256G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 256G · English",
+              "sku": "CJ-CJYD217561403CX",
+              "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716550017",
+              "price": "55.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          }
+        ],
+        "allJsonLdVariantOffersPass": true,
+        "variantClicks": [
+          {
+            "label": "GD20 · 64G · English",
+            "expectedVariantId": "56053716484481",
+            "expectedPriceCHF": "43.90",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716484481",
+            "formVariantId": "56053716484481",
+            "selected": [
+              {
+                "label": "GD20 · 64G · English",
+                "variantId": "56053716484481",
+                "visibleLabel": "GD20 · 64G · English"
+              }
+            ],
+            "price": "CHF 43.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/a090714f-ad51-4dd2-9fe6-20750c127002.jpg?v=1783189570&width=480",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 1 | LuxeStyle",
+              "w": 360,
+              "h": 360,
+              "y": 112
+            },
+            "pass": true
+          },
+          {
+            "label": "GD20 · 128G · English",
+            "expectedVariantId": "56053716517249",
+            "expectedPriceCHF": "49.90",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716517249",
+            "formVariantId": "56053716517249",
+            "selected": [
+              {
+                "label": "GD20 · 128G · English",
+                "variantId": "56053716517249",
+                "visibleLabel": "GD20 · 128G · English"
+              }
+            ],
+            "price": "CHF 49.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/a090714f-ad51-4dd2-9fe6-20750c127002.jpg?v=1783189570&width=480",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 1 | LuxeStyle",
+              "w": 360,
+              "h": 360,
+              "y": -286
+            },
+            "pass": true
+          },
+          {
+            "label": "GD20 · 256G · English",
+            "expectedVariantId": "56053716550017",
+            "expectedPriceCHF": "55.90",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716550017",
+            "formVariantId": "56053716550017",
+            "selected": [
+              {
+                "label": "GD20 · 256G · English",
+                "variantId": "56053716550017",
+                "visibleLabel": "GD20 · 256G · English"
+              }
+            ],
+            "price": "CHF 55.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/a090714f-ad51-4dd2-9fe6-20750c127002.jpg?v=1783189570&width=480",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 1 | LuxeStyle",
+              "w": 360,
+              "h": 360,
+              "y": -344
+            },
+            "pass": true
+          }
+        ],
+        "allVariantClicksPass": true,
+        "overflow360": {
+          "configuredWidth": 360,
+          "innerWidth": 360,
+          "visualViewportWidth": 360,
+          "clientWidth": 360,
+          "documentWidth": 360,
+          "bodyWidth": 360,
+          "bodyScrollWidth": 360,
+          "horizontalOverflow": false,
+          "tables": [
+            {
+              "caption": "Belegte Angaben zur GD20",
+              "scrollWidth": 337,
+              "clientWidth": 337,
+              "rectWidth": 337,
+              "right": 353,
+              "overflow": false
+            },
+            {
+              "caption": "Die drei Lieferantenbezeichnungen",
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "rectWidth": 328,
+              "right": 344,
+              "overflow": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "baselineMobileQa": {
+    "capturedAt": "2026-11-16T06:12:26.808Z",
+    "browser": "Chromium via Playwright",
+    "mobile390": {
+      "width": 390,
+      "height": 844,
+      "deviceScaleFactor": 1,
+      "isMobile": true,
+      "hasTouch": true
+    },
+    "selectionMethod": "Clicked visible labels inside variant-picker; no direct DOM assignment. No cart or checkout interaction.",
+    "results": [
+      {
+        "key": "x2",
+        "productId": "gid://shopify/Product/15448849023361",
+        "requestUrl": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344",
+        "status": 200,
+        "jsonStatus": 200,
+        "canonical": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344",
+        "h1": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC",
+        "documentTitle": "X2 Pro TV-Box: Systeme und Ausführungen | LuxeStyle CH",
+        "metaDescription": "X2 Pro TV-Box mit EmuELEC 4.5, Android 9.0 und CoreELEC laut Produktangaben. EU-Ausführungen vergleichen und Angaben zu Speicher, Spielen und Zubehör prüfen.",
+        "bodyTextNormalized": "Direkt zum Inhalt 🇨🇭 Lieferung nur in die Schweiz & nach Liechtenstein · 🚚 in der Schweiz gratis ab CHF 50 nach Rabatt X2 Pro TV-Box mit EmuELEC, Android und CoreELEC X2 Pro · 256G · EU CHF 95.90 Zu Produktinformationen springen 1 2 3 4 5 6 7 ♡ Home › Elektronik › Gaming X2 Pro TV-Box mit EmuELEC, Android und CoreELEC CHF 95.90 Ausführung X2 Pro · 256G · EU X2 Pro · 128G · EU X2 Pro · 64G · EU Menge verringern Menge erhöhen In den Warenkorb legen Weitere Bezahlmöglichkeiten ♡ Merken Merkliste ansehen Verfügbar · Direktversand aus Asien 🚚 Bestelle jetzt – Lieferung voraussichtlich 30. Nov. – 14. Dez. Direktversand vom Hersteller in Asien — deshalb die längere Lieferzeit · In der Schweiz gratis Versand inklusive 🚚 Gratis Versand in der Schweiz für diesen Artikel ↩️ 30 Tage Rückgabe 🔒 Kauf auf Rechnung — Klarna · TWINT · Karten · PayPal 🇨🇭 Lieferung nur in die Schweiz und nach Liechtenstein · Support info@luxestyle.ch Bezahlen mit Versand & Lieferung Rückgabe & Umtausch 30 Tage Rückgaberecht: Gib Artikel innerhalb von 30 Tagen zurück — unbenutzt, vollständig und in Originalverpackung (Ausnahmen wie personalisierte Ware: siehe Rückgaberichtlinie). Melde deine Rückgabe zuerst an; die gültige Retourenadresse erhältst du von uns. Bei freiwilliger Rückgabe trägst du die Rücksendekosten. Defekt oder falsch geliefert? Dann ist die Rücksendung kostenlos und wir ersetzen oder erstatten vollständig. Die X2 Pro ist eine TV-Box. Die Produktangaben nennen drei Systeme: EmuELEC 4.5, Android 9.0 und CoreELEC sowie einen MP4-Videoplayer. Zur Auswahl stehen drei EU-Ausführungen mit den Bezeichnungen 64G, 128G und 256G. Ein bestimmtes vorinstalliertes Spielepaket ist für diese Ausführungen nicht bestätigt. Systeme, Anschlüsse und Masse Produktangaben zur X2 Pro Systeme laut Produktangaben EmuELEC 4.5, Android 9.0 und CoreELEC Medienwiedergabe MP4-Videoplayer aufgeführt Schnittstelle USB Produktmasse 10 × 10 cm; eine dritte Abmessung ist nicht angegeben Materialangabe PC laut Produktbeschreibung; die genaue Materialzusammensetzung ist nicht bestätigt Die drei Ausführungen Bezeichnungen in der Auswahl AUSWAHL WAS DAMIT BESTÄTIGT IST X2 Pro · 64G · EU Modell X2 Pro, Lieferantenbezeichnung 64G, EU-Ausführung X2 Pro · 128G · EU Modell X2 Pro, Lieferantenbezeichnung 128G, EU-Ausführung X2 Pro · 256G · EU Modell X2 Pro, Lieferantenbezeichnung 256G, EU-Ausführung Die Angaben 64G, 128G und 256G stammen aus den Variantenbezeichnungen. Speichermedium, nutzbare Kapazität und eine bestimmte Spieleauswahl sind damit nicht abschliessend bestätigt. EU ist die Ausführungsbezeichnung des Lieferanten; die genaue Steckerform ist nicht dokumentiert. Lieferumfang, Speicher und Spiele Die Packliste nennt 1 Gerät, 1 HD-Kabel, 1 Netzteil, 1 Fernbedienung und 2 kabellose Controller. Produktbilder zeigen zusätzlich eine mit 4 GB beschriftete Speicherkarte und eine weitere Karte ohne erkennbare Kapazitätsangabe. Die Packliste führt keine Speicherkarte separat auf. Ob und welche Karte zur gewählten Ausführung gehört, bleibt offen. Eine konkrete Liste mitgelieferter oder installierter Spiele liegt nicht vor; beworbene Spielzahlen werden hier nicht als zugesichert übernommen. Bestätigte Angaben zur Einrichtung, zu einzelnen kompatiblen Spielen, zur Controller-Stromversorgung sowie zu WLAN und Bluetooth liegen nicht vor. Prüfe diese Punkte vor dem Kauf, wenn sie für deinen Einsatz entscheidend sind. Weitere Bauformen findest du unter Spielkonsolen und Retro-Handhelds. Separates Zubehör gibt es bei Gamepads und Controllern. Spezifikationen & Details Kategorie Gaming-Zubehör Ausführung X2 Pro · 256G · EU, X2 Pro · 128G · EU, X2 Pro · 64G · EU Gewicht 880 g Zustand Neu Ähnliche Produkte Bezahlen mit © 2026 LuxeStyle, Online-Shop mit Shopify Geschäftsbedingungen und Richtlinien",
+        "mainNormalizedHtmlFile": "x2-main-normalized.html",
+        "rawHtmlFile": "x2-public.html",
+        "productJsFile": "x2-product-js.json",
+        "jsonLdFile": "x2-jsonld.json",
+        "productJs": {
+          "id": 15448849023361,
+          "title": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC",
+          "handle": "3-in-1-retro-gaming-media-box-793344",
+          "options": [
+            {
+              "name": "Ausführung",
+              "position": 1,
+              "values": [
+                "X2 Pro · 256G · EU",
+                "X2 Pro · 128G · EU",
+                "X2 Pro · 64G · EU"
+              ]
+            }
+          ],
+          "variantCount": 3,
+          "variants": [
+            {
+              "id": "56053827174785",
+              "title": "X2 Pro · 256G · EU",
+              "sku": "CJ-CJZS193939402BY",
+              "priceCHF": 95.9,
+              "option1": "X2 Pro · 256G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            {
+              "id": "56053827305857",
+              "title": "X2 Pro · 128G · EU",
+              "sku": "CJ-CJZS193939406FU",
+              "priceCHF": 97.9,
+              "option1": "X2 Pro · 128G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            {
+              "id": "56053827436929",
+              "title": "X2 Pro · 64G · EU",
+              "sku": "CJ-CJZS193939410JQ",
+              "priceCHF": 97.9,
+              "option1": "X2 Pro · 64G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            }
+          ]
+        },
+        "jsonLdProductGroupName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC",
+        "jsonLdOffers": [
+          {
+            "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 256G · EU",
+            "sku": "CJ-CJZS193939402BY",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827174785",
+            "price": "95.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          },
+          {
+            "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 128G · EU",
+            "sku": "CJ-CJZS193939406FU",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827305857",
+            "price": "97.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          },
+          {
+            "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 64G · EU",
+            "sku": "CJ-CJZS193939410JQ",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827436929",
+            "price": "97.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          }
+        ],
+        "variantComparison": [
+          {
+            "expected": {
+              "id": "56053827174785",
+              "label": "X2 Pro · 256G · EU",
+              "variantTitle": "X2 Pro · 256G · EU",
+              "sku": "CJ-CJZS193939402BY",
+              "price": "95.90"
+            },
+            "publicJs": {
+              "id": "56053827174785",
+              "title": "X2 Pro · 256G · EU",
+              "sku": "CJ-CJZS193939402BY",
+              "priceCHF": 95.9,
+              "option1": "X2 Pro · 256G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 256G · EU",
+              "sku": "CJ-CJZS193939402BY",
+              "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827174785",
+              "price": "95.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          },
+          {
+            "expected": {
+              "id": "56053827305857",
+              "label": "X2 Pro · 128G · EU",
+              "variantTitle": "X2 Pro · 128G · EU",
+              "sku": "CJ-CJZS193939406FU",
+              "price": "97.90"
+            },
+            "publicJs": {
+              "id": "56053827305857",
+              "title": "X2 Pro · 128G · EU",
+              "sku": "CJ-CJZS193939406FU",
+              "priceCHF": 97.9,
+              "option1": "X2 Pro · 128G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 128G · EU",
+              "sku": "CJ-CJZS193939406FU",
+              "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827305857",
+              "price": "97.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          },
+          {
+            "expected": {
+              "id": "56053827436929",
+              "label": "X2 Pro · 64G · EU",
+              "variantTitle": "X2 Pro · 64G · EU",
+              "sku": "CJ-CJZS193939410JQ",
+              "price": "97.90"
+            },
+            "publicJs": {
+              "id": "56053827436929",
+              "title": "X2 Pro · 64G · EU",
+              "sku": "CJ-CJZS193939410JQ",
+              "priceCHF": 97.9,
+              "option1": "X2 Pro · 64G · EU",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "X2 Pro TV-Box mit EmuELEC, Android und CoreELEC - X2 Pro · 64G · EU",
+              "sku": "CJ-CJZS193939410JQ",
+              "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827436929",
+              "price": "97.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          }
+        ],
+        "allJsonLdVariantOffersPass": true,
+        "variantClicks": [
+          {
+            "label": "X2 Pro · 256G · EU",
+            "expectedVariantId": "56053827174785",
+            "expectedPriceCHF": "95.90",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827174785",
+            "formVariantId": "56053827174785",
+            "selected": [
+              {
+                "label": "X2 Pro · 256G · EU",
+                "variantId": "56053827174785",
+                "visibleLabel": "X2 Pro · 256G · EU"
+              }
+            ],
+            "price": "CHF 95.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/4083f2f1-c7ba-4bda-8c0e-c316a81ee881.jpg?v=1783189610&width=480",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 7",
+              "w": 390,
+              "h": 394,
+              "y": -321
+            },
+            "pass": true
+          },
+          {
+            "label": "X2 Pro · 128G · EU",
+            "expectedVariantId": "56053827305857",
+            "expectedPriceCHF": "97.90",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827305857",
+            "formVariantId": "56053827305857",
+            "selected": [
+              {
+                "label": "X2 Pro · 128G · EU",
+                "variantId": "56053827305857",
+                "visibleLabel": "X2 Pro · 128G · EU"
+              }
+            ],
+            "price": "CHF 97.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/4083f2f1-c7ba-4bda-8c0e-c316a81ee881.jpg?v=1783189610&width=480",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 7",
+              "w": 390,
+              "h": 394,
+              "y": -321
+            },
+            "pass": true
+          },
+          {
+            "label": "X2 Pro · 64G · EU",
+            "expectedVariantId": "56053827436929",
+            "expectedPriceCHF": "97.90",
+            "url": "https://luxestyle.ch/products/3-in-1-retro-gaming-media-box-793344?variant=56053827436929",
+            "formVariantId": "56053827436929",
+            "selected": [
+              {
+                "label": "X2 Pro · 64G · EU",
+                "variantId": "56053827436929",
+                "visibleLabel": "X2 Pro · 64G · EU"
+              }
+            ],
+            "price": "CHF 97.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/4083f2f1-c7ba-4bda-8c0e-c316a81ee881.jpg?v=1783189610&width=480",
+              "alt": "3-in-1 Retro Gaming & Media Box – Ansicht 7",
+              "w": 390,
+              "h": 394,
+              "y": -379
+            },
+            "pass": true
+          }
+        ],
+        "allVariantClicksPass": true,
+        "overflow360": {
+          "configuredWidth": 360,
+          "innerWidth": 377,
+          "visualViewportWidth": 360,
+          "clientWidth": 360,
+          "documentWidth": 377,
+          "bodyWidth": 360,
+          "bodyScrollWidth": 377,
+          "horizontalOverflow": true,
+          "tables": [
+            {
+              "caption": "Produktangaben zur X2 Pro",
+              "scrollWidth": 361,
+              "clientWidth": 361,
+              "rectWidth": 361,
+              "right": 377,
+              "overflow": true
+            },
+            {
+              "caption": "Bezeichnungen in der Auswahl",
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "rectWidth": 328,
+              "right": 344,
+              "overflow": false
+            }
+          ]
+        }
+      },
+      {
+        "key": "gd20",
+        "productId": "gid://shopify/Product/15448848695681",
+        "requestUrl": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100",
+        "status": 200,
+        "jsonStatus": 200,
+        "canonical": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100",
+        "h1": "GD20 Spielkonsole mit HDMI-Anschluss",
+        "documentTitle": "GD20 HDMI-Spielkonsole: Auswahl und Details | LuxeStyle CH",
+        "metaDescription": "GD20 Spielkonsole mit HDMI-Anschluss. Ausführungen 64G, 128G und 256G mit Kennzeichnung English vergleichen. Spieleumfang, Controller und Zubehör prüfen.",
+        "bodyTextNormalized": "Direkt zum Inhalt 🇨🇭 Lieferung nur in die Schweiz & nach Liechtenstein · 🚚 in der Schweiz gratis ab CHF 50 nach Rabatt GD20 Spielkonsole mit HDMI-Anschluss GD20 · 64G · English CHF 43.90 Zu Produktinformationen springen 1 2 3 4 5 ♡ Home › Elektronik › Gaming GD20 Spielkonsole mit HDMI-Anschluss CHF 43.90 Ausführung GD20 · 64G · English GD20 · 128G · English GD20 · 256G · English Menge verringern Menge erhöhen In den Warenkorb legen Weitere Bezahlmöglichkeiten ♡ Merken Merkliste ansehen Verfügbar · Direktversand aus Asien 🚚 Bestelle jetzt – Lieferung voraussichtlich 30. Nov. – 14. Dez. Direktversand vom Hersteller in Asien — deshalb die längere Lieferzeit · In der Schweiz gratis ab CHF 50 nach Rabatt 🚚 Versand in der Schweiz CHF 7 · gratis ab CHF 50 nach Rabatt ↩️ 30 Tage Rückgabe 🔒 Kauf auf Rechnung — Klarna · TWINT · Karten · PayPal 🇨🇭 Lieferung nur in die Schweiz und nach Liechtenstein · Support info@luxestyle.ch Bezahlen mit Versand & Lieferung Rückgabe & Umtausch 30 Tage Rückgaberecht: Gib Artikel innerhalb von 30 Tagen zurück — unbenutzt, vollständig und in Originalverpackung (Ausnahmen wie personalisierte Ware: siehe Rückgaberichtlinie). Melde deine Rückgabe zuerst an; die gültige Retourenadresse erhältst du von uns. Bei freiwilliger Rückgabe trägst du die Rücksendekosten. Defekt oder falsch geliefert? Dann ist die Rücksendung kostenlos und wir ersetzen oder erstatten vollständig. Die GD20 ist eine Spielkonsole in Stick-Bauform mit HDMI-Anschluss. Die drei Ausführungen unterscheiden sich in der Lieferantenbezeichnung 64G, 128G oder 256G und tragen jeweils den Zusatz English. Der genaue Spieleumfang und die Anzahl mitgelieferter Controller sind nicht eindeutig bestätigt. Anschluss und Produktangaben Belegte Angaben zur GD20 Bauform und Anschluss TV-Spielkonsole in Stick-Bauform, HDMI Materialangabe ABS laut Produktbeschreibung; genaue Materialzusammensetzung nicht weiter beschrieben Gerätemasse Für den Stick nicht getrennt vom übrigen Set bestätigt Bildausgabe und System Tatsächliche Ausgabeauflösung, Betriebssystem und Softwareumfang nicht näher dokumentiert Ausführung auswählen Die drei Lieferantenbezeichnungen AUSWAHL KENNZEICHNUNG GD20 · 64G · English 64G, English GD20 · 128G · English 128G, English GD20 · 256G · English 256G, English English ist der Wortlaut des Lieferanten. Ob damit Menüs, Begleitunterlagen oder andere Inhalte gemeint sind, wird nicht erklärt. Auch Speichermedium, nutzbare Kapazität und eine bestimmte Spieleliste sind nicht separat bestätigt. Die Auswahl bezeichnet eine Ausführung, keine Farbe. Lieferumfang und Controller vor dem Kauf klären Die schriftliche Packliste nennt 1 Controller, 1 Game-Stick, 1 Kabel mit der Bezeichnung Ladekabel und 1 HDMI-Kabel. Ein Produktbild beschreibt dagegen 2 kabellose 2,4-GHz-Controller und weist auf 4 benötigte AAA-Batterien hin, die nicht mitgeliefert würden. Wegen dieser unterschiedlichen Angaben bleiben Controlleranzahl, Batteriebedarf und tatsächlicher Paketumfang zu bestätigen. Eine konkrete Liste installierter oder mitgelieferter Spiele liegt nicht vor. Die Lieferantenbezeichnungen 4K und Open Source werden ohne technische Nachweise zur Ausgabeauflösung beziehungsweise zum System nicht als zugesicherte Funktionen übernommen. Weitere Modelle findest du bei Spielkonsolen und Retro-Handhelds. Separates Zubehör zeigen die Gamepads und Controller. Spezifikationen & Details Kategorie Gaming-Zubehör Ausführung GD20 · 64G · English, GD20 · 128G · English, GD20 · 256G · English Gewicht 400 g Zustand Neu Ähnliche Produkte Bezahlen mit © 2026 LuxeStyle, Online-Shop mit Shopify Geschäftsbedingungen und Richtlinien",
+        "mainNormalizedHtmlFile": "gd20-main-normalized.html",
+        "rawHtmlFile": "gd20-public.html",
+        "productJsFile": "gd20-product-js.json",
+        "jsonLdFile": "gd20-jsonld.json",
+        "productJs": {
+          "id": 15448848695681,
+          "title": "GD20 Spielkonsole mit HDMI-Anschluss",
+          "handle": "4k-hd-wireless-open-source-gaming-konsole-600100",
+          "options": [
+            {
+              "name": "Ausführung",
+              "position": 1,
+              "values": [
+                "GD20 · 64G · English",
+                "GD20 · 128G · English",
+                "GD20 · 256G · English"
+              ]
+            }
+          ],
+          "variantCount": 3,
+          "variants": [
+            {
+              "id": "56053716484481",
+              "title": "GD20 · 64G · English",
+              "sku": "CJ-CJYD217561401AZ",
+              "priceCHF": 43.9,
+              "option1": "GD20 · 64G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            {
+              "id": "56053716517249",
+              "title": "GD20 · 128G · English",
+              "sku": "CJ-CJYD217561402BY",
+              "priceCHF": 49.9,
+              "option1": "GD20 · 128G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            {
+              "id": "56053716550017",
+              "title": "GD20 · 256G · English",
+              "sku": "CJ-CJYD217561403CX",
+              "priceCHF": 55.9,
+              "option1": "GD20 · 256G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            }
+          ]
+        },
+        "jsonLdProductGroupName": "GD20 Spielkonsole mit HDMI-Anschluss",
+        "jsonLdOffers": [
+          {
+            "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 64G · English",
+            "sku": "CJ-CJYD217561401AZ",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716484481",
+            "price": "43.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          },
+          {
+            "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 128G · English",
+            "sku": "CJ-CJYD217561402BY",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716517249",
+            "price": "49.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          },
+          {
+            "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 256G · English",
+            "sku": "CJ-CJYD217561403CX",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716550017",
+            "price": "55.90",
+            "priceCurrency": "CHF",
+            "availability": "http://schema.org/InStock",
+            "offerType": "Offer"
+          }
+        ],
+        "variantComparison": [
+          {
+            "expected": {
+              "id": "56053716484481",
+              "label": "GD20 · 64G · English",
+              "variantTitle": "GD20 · 64G · English",
+              "sku": "CJ-CJYD217561401AZ",
+              "price": "43.90"
+            },
+            "publicJs": {
+              "id": "56053716484481",
+              "title": "GD20 · 64G · English",
+              "sku": "CJ-CJYD217561401AZ",
+              "priceCHF": 43.9,
+              "option1": "GD20 · 64G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 64G · English",
+              "sku": "CJ-CJYD217561401AZ",
+              "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716484481",
+              "price": "43.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          },
+          {
+            "expected": {
+              "id": "56053716517249",
+              "label": "GD20 · 128G · English",
+              "variantTitle": "GD20 · 128G · English",
+              "sku": "CJ-CJYD217561402BY",
+              "price": "49.90"
+            },
+            "publicJs": {
+              "id": "56053716517249",
+              "title": "GD20 · 128G · English",
+              "sku": "CJ-CJYD217561402BY",
+              "priceCHF": 49.9,
+              "option1": "GD20 · 128G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 128G · English",
+              "sku": "CJ-CJYD217561402BY",
+              "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716517249",
+              "price": "49.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          },
+          {
+            "expected": {
+              "id": "56053716550017",
+              "label": "GD20 · 256G · English",
+              "variantTitle": "GD20 · 256G · English",
+              "sku": "CJ-CJYD217561403CX",
+              "price": "55.90"
+            },
+            "publicJs": {
+              "id": "56053716550017",
+              "title": "GD20 · 256G · English",
+              "sku": "CJ-CJYD217561403CX",
+              "priceCHF": 55.9,
+              "option1": "GD20 · 256G · English",
+              "option2": null,
+              "option3": null,
+              "available": true,
+              "featuredImage": null
+            },
+            "jsonLdOffer": {
+              "variantName": "GD20 Spielkonsole mit HDMI-Anschluss - GD20 · 256G · English",
+              "sku": "CJ-CJYD217561403CX",
+              "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716550017",
+              "price": "55.90",
+              "priceCurrency": "CHF",
+              "availability": "http://schema.org/InStock",
+              "offerType": "Offer"
+            },
+            "pass": true
+          }
+        ],
+        "allJsonLdVariantOffersPass": true,
+        "variantClicks": [
+          {
+            "label": "GD20 · 64G · English",
+            "expectedVariantId": "56053716484481",
+            "expectedPriceCHF": "43.90",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716484481",
+            "formVariantId": "56053716484481",
+            "selected": [
+              {
+                "label": "GD20 · 64G · English",
+                "variantId": "56053716484481",
+                "visibleLabel": "GD20 · 64G · English"
+              }
+            ],
+            "price": "CHF 43.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/a090714f-ad51-4dd2-9fe6-20750c127002.jpg?v=1783189570&width=480",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 1 | LuxeStyle",
+              "w": 360,
+              "h": 360,
+              "y": 112
+            },
+            "pass": true
+          },
+          {
+            "label": "GD20 · 128G · English",
+            "expectedVariantId": "56053716517249",
+            "expectedPriceCHF": "49.90",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716517249",
+            "formVariantId": "56053716517249",
+            "selected": [
+              {
+                "label": "GD20 · 128G · English",
+                "variantId": "56053716517249",
+                "visibleLabel": "GD20 · 128G · English"
+              }
+            ],
+            "price": "CHF 49.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/a090714f-ad51-4dd2-9fe6-20750c127002.jpg?v=1783189570&width=480",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 1 | LuxeStyle",
+              "w": 360,
+              "h": 360,
+              "y": -286
+            },
+            "pass": true
+          },
+          {
+            "label": "GD20 · 256G · English",
+            "expectedVariantId": "56053716550017",
+            "expectedPriceCHF": "55.90",
+            "url": "https://luxestyle.ch/products/4k-hd-wireless-open-source-gaming-konsole-600100?variant=56053716550017",
+            "formVariantId": "56053716550017",
+            "selected": [
+              {
+                "label": "GD20 · 256G · English",
+                "variantId": "56053716550017",
+                "visibleLabel": "GD20 · 256G · English"
+              }
+            ],
+            "price": "CHF 55.90",
+            "hero": {
+              "src": "https://luxestyle.ch/cdn/shop/files/a090714f-ad51-4dd2-9fe6-20750c127002.jpg?v=1783189570&width=480",
+              "alt": "4K HD Wireless Open Source Gaming Konsole – Bild 1 | LuxeStyle",
+              "w": 360,
+              "h": 360,
+              "y": -344
+            },
+            "pass": true
+          }
+        ],
+        "allVariantClicksPass": true,
+        "overflow360": {
+          "configuredWidth": 360,
+          "innerWidth": 360,
+          "visualViewportWidth": 360,
+          "clientWidth": 360,
+          "documentWidth": 360,
+          "bodyWidth": 360,
+          "bodyScrollWidth": 360,
+          "horizontalOverflow": false,
+          "tables": [
+            {
+              "caption": "Belegte Angaben zur GD20",
+              "scrollWidth": 337,
+              "clientWidth": 337,
+              "rectWidth": 337,
+              "right": 353,
+              "overflow": false
+            },
+            {
+              "caption": "Die drei Lieferantenbezeichnungen",
+              "scrollWidth": 328,
+              "clientWidth": 328,
+              "rectWidth": 328,
+              "right": 344,
+              "overflow": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "counts": {
+    "editedProducts": 2,
+    "protectedVariantIds": 6,
+    "protectedOptionIds": 2,
+    "protectedOptionValueIds": 6,
+    "protectedProductMedia": 12,
+    "optionNamesChanged": 1,
+    "optionValuesChanged": 6,
+    "derivedVariantTitlesChanged": 6,
+    "productTitlesAndSeoTitlesChanged": 2,
+    "descriptionsAndMetaDescriptionsChanged": 2,
+    "jsonLdOffersMatched": 6,
+    "visibleVariantSelectionsPassed": 6,
+    "newMediaUploads": 0
+  },
+  "notDone": {
+    "merchantWrites": 0,
+    "socialWrites": 0,
+    "themeWrites": 0,
+    "newAutomation": false,
+    "workflowDispatch": false,
+    "paidRenders": 0,
+    "cartCheckoutOrOrders": false,
+    "gscRepeated": false,
+    "metricoolMetricsRead": false,
+    "klaviyoReportRead": false,
+    "broadSalesRead": false,
+    "globalZeroErrorsVerified": false
+  }
+}

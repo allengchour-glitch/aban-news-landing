@@ -2985,3 +2985,21 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Bericht](SEO-DETAIL-LIVE-20261116-R251.md) · [Belege](SEO-DETAIL-BELEGE-20261116-R251.json) · [Mobil/Technik](SEO-DETAIL-MOBIL-TECHNIK-20261116-R251.json).
 
 [LUXESTYLE_R251_20261116]
+
+### R252 – Fortsetzung ab06:46 Europe/Zurich
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Identitäten | Core4/aktuellen16Nov-Block, frische Hauptbranch-Übergaben/Rollen und Repo-Helfer gelesen; Shop, Metricool samt sechs Kanälen und Merchant geprüft. | LuxeStyle passt; Revision251 fortgesetzt, GSC ausR251 nicht erneut gelesen. |
+| Produktdetails / live | X2 Pro und GD20 aus genauen CJ-/SKU-/Bildquellen konkretisiert; zwei Titel/Beschreibungen/Metadaten, eine Optionsbezeichnung und sechs Werte verbessert. | Fünf Shopify-Mutationen inkl kleinem mobilen Nachfix; alleZiele nativ bestätigt. Spiele/Karten/English/Controllerkonflikte offen statt erfunden. |
+| Schutz / öffentliche Prüfung | Sechs Varianten-/Wert-IDs, zwei Optionen, zwölf Medien und abgefragte Preise/SKUs/Inventar/Tags geschützt; zwei öffentliche Seiten/JSON und sechsJSONLDOffers sowie echte Auswahlen geprüft. | Alle sechs Auswahlklicks passen. X2 bei360px zuerst377px breit; langeTabellenbegriffe gekürzt, danach beideSeiten/4Tabellen ohneÜberlauf. Shopify-HTML-Zeilenumbrüche nur normalisiert, kein blinderRepeatWrite. |
+| Arbeitsliste | Bestehende36Zeilen/altenFassungen erhalten, nur zwei bearbeitete Modelle mit Vorzustand fortgeschrieben. | 10 redaktionell bearbeitet,26offen; kein bestätigtes Spielepaket daraus. |
+| Merchant / Quellgrenze | Acht alte Ressourcen fehlen exakt; lesbares aktuelles Kontrollangebot und neue10er-Ablehnungsseite/drei exakte Shopify-Feedangebote geprüft. | VierFehlercodes in10Zeilen, keine Katalogquote. Alte18Gruppen/20Records historisch erhalten; nicht erneut angelegt. Haarstyler/Pad mit altenVariantenIDs und ungeklärten Bildrechten geblockt, keine Merchantwrites. |
+| Versand / fremde Umsetzung | Bestehenden Merchant-Versand-Helfer und erfolgreichen Prüfjob01:34UTC gelesen. | AktiverLI-DienstCHF14.90/1–3+10–29Mo–Fr belegt für diesen früherenLauf. Von andererSitzung umgesetzt; kein eigener Settingswrite, kein neuer Workflowstart. AlteR250-Fehlend-Aussage nicht als aktuell fortgeführt. |
+| SEO / enger offener Fehler | ExaktenMerchant-Waagenlink in3UA-Fällen geprüft, aktuellenMAIN-Meta-Code/engenPatch gegengeprüft. | HTTP200jetzt; echteGoogle-Neubewertung unbekannt. OG101.90statt127.90CHF bleibt offen, Patchnichtlive/keinThemeWrite. AK-600Bewertung ausMetafeldern, Provenienzungeprüft. |
+| Social / Nurprüfung | Fünf kleinePlanfenster bisEnde23Nov,47UUIDs; dreiaktuelleMP4-Dateien/Hash/Frames/vollesStereoAudio geprüft. |38aktiveGlobalflagObjekte/9Drafts/58PENDING; YouTube18–23ohneaktivenTermin. KeineexaktenFensterdubletten;3alteHoldUUIDsmitneuerstummerDatei aktiv,4Projektorholdsinaktiv. KeinePoständerung/eigenePublikation/Rechtefreigabe. |
+| Grenzen / Fortsetzung | Aktuelle Quellen- und Produktionsblocker samt nächster kleinerProduktgruppe und bestehendemClaude-Direktlink dokumentiert. |0Gesamtfehlernichtbelegt; keineerneutenTageskennzahlen/Klaviyo/GSC/Verkaufs-/Bestellreports, keineKundenansprache/Flows/DNS/Budgets/neueAutomation. Empfangunbekannt. |
+
+[Live-Bericht](FORTSCHRITT-LIVE-20261116-R252.md) · [Belege](PRUEFBELEGE-LIVE-20261116-R252.json) · [Merchant-Gegenprobe](MERCHANT-QUELLEN-GEGENPROBE-20261116-R252.json) · [Plan/Film](METRICOOL-PLAN-MEDIEN-20261116-R252.json).
+
+[LUXESTYLE_R252_20261116]
