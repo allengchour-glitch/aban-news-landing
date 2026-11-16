@@ -1,0 +1,38 @@
+[
+  {
+    "width": 360,
+    "labels": [
+      {
+        "text": "🔥 Ember DU",
+        "left": 18.265625,
+        "right": 96.640625,
+        "visible": true
+      },
+      {
+        "text": "💧 Aqua",
+        "left": 277.2734375,
+        "right": 334.7265625,
+        "visible": true
+      }
+    ],
+    "ok": true
+  },
+  {
+    "width": 390,
+    "labels": [
+      {
+        "text": "🔥 Ember DU",
+        "left": 33.265625,
+        "right": 111.640625,
+        "visible": true
+      },
+      {
+        "text": "💧 Aqua",
+        "left": 307.2734375,
+        "right": 364.7265625,
+        "visible": true
+      }
+    ],
+    "ok": true
+  }
+]

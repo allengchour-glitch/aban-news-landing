@@ -73,3 +73,7 @@ Der Hub erhält einen eigenen Tempel-Einstieg mit tatsächlichem lokalem Bestwer
 ### Aktives Spiel und Grafiklast
 
 Der Parent hat nach der Übergabe zusätzlich während des Spielens gemessen:17,1rAF/s bei960×540 im Software-WebGL. Die Renderauflösung wird jetzt auf langsamen Renderern angepasst, und nur vier Fackellichter in der Nähe der beiden Figuren sind aktiv; sämtliche sichtbaren Flammen bleiben erhalten. Nachher29,2rAF/s, Median33,3ms,95.Perzentil50,1ms, Renderverhältnis0,55. Das ist eine begrenzte Cloud-Probe, keine Aussage über echte Handy-GPUs. Vorher/Nachher stehen in active-performance.json; performance.cjs wiederholt die aktive Probe. HUD-/Zieltexte bleiben als DOM scharf. Standard-Hardware startet mit höherer Auflösung, schwache Geräte reduzieren sie bei dauerhaft hoher Framezeit.
+
+### Überarbeitete 3D-Spielgrafik
+
+Die nächste grafische Fassung, ihre Module und Nachweise stehen in [GRAFIK.md](GRAFIK.md). Sie ersetzt auch die tatsächlichen Figuren, Requisiten und die Tempelarchitektur im Spiel.

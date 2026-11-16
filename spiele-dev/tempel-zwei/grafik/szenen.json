@@ -1,0 +1,94 @@
+{
+  "errors": [],
+  "models": [],
+  "desktop": {
+    "room": 4,
+    "gems": 0,
+    "won": false,
+    "result": null,
+    "paused": false,
+    "online": false,
+    "slot": 0,
+    "running": true,
+    "gates": [
+      true,
+      true,
+      true,
+      false
+    ],
+    "sync": [
+      -0.03309999999999985,
+      -0.03309999999999985
+    ],
+    "vines": false,
+    "plant": true,
+    "levers": [
+      true,
+      true
+    ],
+    "render": {
+      "calls": 67,
+      "triangles": 28678,
+      "pixelRatio": 0.55
+    },
+    "eye": -0.79,
+    "blind": true,
+    "altF": false,
+    "altW": false,
+    "g4": false,
+    "a": {
+      "x": -7.6,
+      "z": -68.5
+    },
+    "b": {
+      "x": 3,
+      "z": -73
+    }
+  },
+  "mobile": {
+    "room": 1,
+    "gems": 0,
+    "won": false,
+    "result": null,
+    "paused": false,
+    "online": false,
+    "slot": 0,
+    "running": true,
+    "gates": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "sync": [
+      0,
+      0
+    ],
+    "vines": true,
+    "plant": false,
+    "levers": [
+      false,
+      false
+    ],
+    "render": {
+      "calls": 98,
+      "triangles": 36490,
+      "pixelRatio": 0.55
+    },
+    "eye": 0,
+    "blind": false,
+    "altF": false,
+    "altW": false,
+    "g4": false,
+    "a": {
+      "x": -5.8,
+      "z": -8
+    },
+    "b": {
+      "x": 5.8,
+      "z": -8
+    }
+  },
+  "method": "Positionsfixtures für vier Kameraansichten, tatsächliche Rätselaktionen; kein manueller Parcours",
+  "passed": true
+}

@@ -16,3 +16,7 @@ Prüfung: Original und WebP visuell geprüft; ImageMagick dekodiert das WebP erf
 SHA-256 WebP: `354f7079c06203696103d9a9ca23a29c7f1d1a66f85829733f913c6a9545049f`.
 
 SHA-256 Original-PNG: `896ded56f1118e448d83aa6dcfc153b175b3318f6aa3a1f3c31c6e3b8e870cdc`.
+
+## Spielgrafik vom 16.11.2026
+
+Die drei Module unter `js/tempel-zwei/` enthalten eigene prozedurale Geometrie, Vertexfarben und lokal erzeugte Texturen. Die neuen Steinwächter greifen die Elementrollen und Materialwelt des Covers auf. Keine weiteren generierten Bilder, fremden Modelle oder kostenpflichtigen Grafikdienste. Die Spielaufnahmen in [GRAFIK.md](GRAFIK.md) stammen aus dem laufenden Browser-Spiel.
