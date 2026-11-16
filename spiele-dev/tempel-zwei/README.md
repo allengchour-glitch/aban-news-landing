@@ -40,7 +40,7 @@ PLAYWRIGHT_BROWSERS_PATH=/tmp/aban-browsers node spiele-dev/tempel-zwei/regressi
 PLAYWRIGHT_BROWSERS_PATH=/tmp/aban-browsers node spiele-dev/tempel-zwei/measure.cjs
 ```
 
-Die Skripte verwenden das vorhandene Playwright-Modul `/tmp/aban-games-audit/node_modules/playwright`. Es gibt keinen TLS-Bypass. Die Vorher-Sonden lesen `9dc1306ad:neon-zusammen.html` aus Git und liefern genau diese HTML-Datei über denselben Header-Server an den Browser; sie ändern keine Produktivdatei. `before.cjs` erzeugt bei Bedarf die vier Vorher-Bilder neu.
+Die Skripte verwenden lokal installiertes Playwright oder `PLAYWRIGHT_MODULE` (hier `/tmp/aban-games-audit/node_modules/playwright`). Für die obigen Aufrufe diese Variable entsprechend exportieren. Es gibt keinen TLS-Bypass. Die Vorher-Sonden lesen `9dc1306ad:neon-zusammen.html` aus Git und liefern genau diese HTML-Datei über denselben Header-Server an den Browser; sie ändern keine Produktivdatei. `before.cjs` erzeugt bei Bedarf die vier Vorher-Bilder neu.
 
 ## Nachweise und Grenzen
 
@@ -69,3 +69,7 @@ Zusätzlich: [Raumcode](screens/after-lobby-code.png), [Wächter-Koop](screens/a
 ## Integration durch den Parent
 
 Der Hub erhält einen eigenen Tempel-Einstieg mit tatsächlichem lokalem Bestwert. Menü-Cover und Freigabe-/Quellnachweis stammen aus ART.md. Die Spiel-Metadaten nennen jetzt die vier Rätsel und verwenden dieses Cover. Das Raumpräfix `tempel3` trennt die erweiterten Fortschritts-/Kristallnachrichten von alten `tempel2`-Tabs; vorhandene lokale Bestwerte bleiben unter ihrem alten Schlüssel erhalten. Die öffentliche Seite braucht weiter die vorhandenen PeerJS-Vermittler.
+
+### Aktives Spiel und Grafiklast
+
+Der Parent hat nach der Übergabe zusätzlich während des Spielens gemessen:17,1rAF/s bei960×540 im Software-WebGL. Die Renderauflösung wird jetzt auf langsamen Renderern angepasst, und nur vier Fackellichter in der Nähe der beiden Figuren sind aktiv; sämtliche sichtbaren Flammen bleiben erhalten. Nachher29,2rAF/s, Median33,3ms,95.Perzentil50,1ms, Renderverhältnis0,55. Das ist eine begrenzte Cloud-Probe, keine Aussage über echte Handy-GPUs. Vorher/Nachher stehen in active-performance.json; performance.cjs wiederholt die aktive Probe. HUD-/Zieltexte bleiben als DOM scharf. Standard-Hardware startet mit höherer Auflösung, schwache Geräte reduzieren sie bei dauerhaft hoher Framezeit.

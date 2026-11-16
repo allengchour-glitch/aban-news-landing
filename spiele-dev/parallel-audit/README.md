@@ -1,6 +1,6 @@
 # Arcade: erste parallele Reparaturrunde
 
-Entwurf auf `codex/neon-flug-koop`, PR3156. Keine Veröffentlichung oder Zusammenführung. Fünf Arbeitsagenten bearbeiteten getrennte Spielgruppen; die Elterninstanz prüfte Integration, gemeinsame Header, Hub und das Flugspiel.
+PR3156 wurde nach der Abschlussprüfung veröffentlicht (Produktionscommit218c7e4d987106ce55c7cba34b87ce515970a96e).51 öffentliche HTTPS-Antworten wurden gegen Quellen und Header geprüft; ein exakt dokumentierter Bildattribut-Zusatz des Builds ist berücksichtigt. Fünf Arbeitsagenten bearbeiteten getrennte Spielgruppen; die Elterninstanz prüfte Integration, gemeinsame Header, Hub und das Flugspiel.
 
 Das [Inventar](inventar.json) enthält 36 Spiele-Adressen:20 lokale Minispiele und16 Haupt-/Stations-/Altadressen. Vier alte Adressen leiten zur Wildnis. Sie zählen nicht als eigenständige neue Spiele. Die beiden Übersichten sind zusätzlich geprüft.
 
@@ -49,4 +49,4 @@ Andere Gruppen haben eigene dokumentierte Modulvariablen; die genauen Aufrufe st
 
 Öffentliche Vermittlung, echte Zielgeräte/FPS, Audio-Mischung und längere Koop-/Balance-/Spielstandläufe sind nicht vollständig bestätigt. Cloud-Browser konnte den öffentlichen PeerJS-Pfad zuvor wegen Zertifikatsfehler nicht belegen; keine neue Änderung an Zertifikatsvertrauen oder TLS. Lokale WebRTC-Tests ersetzen diesen Nachweis nicht.
 
-Die vollständige Repo-CI endet hier bei `mktemp` im schreibgeschützten `/home/agent`. Daher keine volle CI-Freigabe. Nichts automatisch mergen oder veröffentlichen.
+Die vollständige Repo-CI endet hier bei `mktemp` im schreibgeschützten `/home/agent`. Daher keine volle CI-Freigabe. Die aktuelle Veröffentlichung erfolgte auf ausdrücklichen Besitzerauftrag; die oben genannten Grenzen bleiben bestehen.

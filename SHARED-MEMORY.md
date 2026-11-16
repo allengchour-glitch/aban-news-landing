@@ -13,6 +13,10 @@ Das private Dashboard KI-Büro trägt seit 15.11. um 23:48 UTC die Fassung 20 (`
 - **Grösse:** Bis zur Baugrenze bleiben 1 431 Byte. Wer `seite.html` grösser macht, lagert zuerst den Büro-Stil aus (README `tools/buero/dashboard`).
 - **Hobel-Clip ohne Musik:** am Di 17.11. auf YouTube und TikTok um 13:00, als Reel auf Instagram und Facebook um 20:00. Die Datei ist ohne Ton; Einzelheiten in `dropship/tiktok-cj-videos-0311/PAKET.md`.
 
+## Codex: Arcade live, Tempel als nächstes Koop-Spiel ·16.11.2026
+
+Spiele-PR3156 ist gemergt (218c7e4d987106ce55c7cba34b87ce515970a96e), Hauptseiten-Deploy43777503558 erfolgreich.51 öffentliche Antworten geprüft: Spiele, Einbettungsheader, bytegleiche Flugmodule/Bilder; Wildnis-Build ergänzt nur zwei explizit verglichene Bildattribute. Kein öffentlicher Browser-WebRTC-/Hardware-Nachweis. Park-Vollsuite weiterhin unvollständig, isolierte Pause/Weiter grün. Auf «mach alles live und weiter nächste spiel» folgt Tempel der Zwei: eigenständiger Einstieg, Rollenaufgaben, vier Siegel, synchronisierte Kristalle/Ergebnisse, Wächter-Rückwärtstreffer korrigiert und eigenes Cover.55 lokale Koop-/Solo-/UI-Prüfbedingungen bestanden, Wege teils per Positionsfixture. Neue Raumsitzungen nutzen tempel3; vorhandene Rekorde erhalten. Details: `spiele-dev/tempel-zwei/README.md`.
+
 ## Codex: Spiele-Abschlussprüfung und Live-Freigabe ·16.11.2026
 
 Besitzer hat Veröffentlichung der Spiele-Änderungen und anschliessend das nächste Koop-Spiel freigegeben. PR3156: reale285-Sekunden-Flugkampagne mit zwei lokalen WebRTC-Seiten ohne Vorspulen, Abbruch oder Schaden bestanden; Minispiele60, Wortspiele642, Action74, Traumhaus23+7 erneut grün. Audio36 Prüfbedingungen; Null-Lautstärke und wiederkehrende stumme Töne repariert. Querformat-Menü erreichbar, sparsamer Flugmodus ohne teure Fels-Texturzeichnung;4x-CPU-Emulation12,9→59,6rAF/s, kein Handybenchmark. Park-Vollsuite weiterhin Zeitabbruch; isolierte Pause/Weiter grün. Öffentlicher Koop im Cloud-Browser TLS-blockiert. Produktionsnachweis folgt getrennt; Abschluss und Grenzen in `spiele-dev/abschlusspruefung/README.md`. Nächstes Spiel: Tempel der Zwei, eigene isolierte Arbeit.

@@ -1,6 +1,6 @@
 # Neon-Flug / Aether Run – Koop-Kampagne
 
-Entwurfs-PR3156, nicht auf abannews.com veröffentlicht. Protokoll und Raumpräfix v3. Standard ist jetzt eine schnelle perspektivische Canvas-Darstellung; die aufwendigere Three.js-Fassung bleibt unter „3D · hohe Grafiklast“ wählbar. Im Standard wird kein WebGL-Kontext angelegt. Beim Zurückschalten zeichnet die verdeckte 3D-Ansicht nicht weiter.
+PR3156 wurde nach den Prüfungen zusammengeführt und auf https://abannews.com/neon-flug veröffentlicht. Produktionscommit218c7e4d987106ce55c7cba34b87ce515970a96e; erfolgreiche Auslieferung separat geprüft. Protokoll und Raumpräfix v3. Standard ist jetzt eine schnelle perspektivische Canvas-Darstellung; die aufwendigere Three.js-Fassung bleibt unter „3D · hohe Grafiklast“ wählbar. Im Standard wird kein WebGL-Kontext angelegt. Beim Zurückschalten zeichnet die verdeckte 3D-Ansicht nicht weiter.
 
 ## Spiel und Bonus-Schleife
 Drei gestaltete Strecken (90/95/100 Sekunden), zwei getrennt gesteuerte Gleiter, gemeinsame Punkte, Dash, Rettung und gemeinsam bestätigte Übergänge bis zum Kampagnensieg. Navigator, Retter und Impuls unterscheiden sich in Lenktempo, Rettung und Dash. Training mit ausdrücklich benanntem Autopilot speichert keinen Kampagnenfortschritt.
@@ -64,4 +64,6 @@ Dann http://localhost:8099/neon-flug öffnen. Für lokale Such-/Koop-Tests beide
 
 Gemessen: 51 Simulations-/Profil-/Timing-/Geometrieprüfungen, zehn Kampagnen-WebRTC-Prüfungen, zwölf Such-/Ausrüstungsprüfungen, neun UI-Prüfungen, sechs Rendererprüfungen, zwei Bildkontinuitäts- und sechs Gameplay-Detailprüfungen bestanden (96). Dazu HTML-, Syntax- und Diff-Prüfung. Browserprüfungen benötigen Playwright/Chromium, UI-Prüfung zusätzlich @axe-core/playwright. Alternative Installationen über PLAYWRIGHT_MODULE, AXE_MODULE und PLAYWRIGHT_BROWSERS_PATH; Testserver über NEON_TEST_URL, Berichte über NEON_REPORT_DIR, Performance-JSON über PERF_OUT.
 
-Die vollständige lokale CI kann im schreibgeschützten HOME keine Plandatei anlegen. Daher keine vollständige CI-Freigabe behaupten; GitHub-Prüfungen getrennt bewerten. Entwurf nicht automatisch veröffentlichen oder mergen.
+Die vollständige lokale CI kann im schreibgeschützten HOME keine Plandatei anlegen. Daher keine vollständige CI-Freigabe behaupten; GitHub-Prüfungen getrennt bewerten. Produktionsnachweis und verbleibende Grenzen stehen in `spiele-dev/abschlusspruefung/README.md`.
+
+Im ausdrücklich sparsamen Modus werden keine wiederholten Fels-Texturprojektionen gezeichnet. Standard behält die festen Welttexturen. Die4x-CPU-Emulation stieg damit von12,9 auf59,6rAF/s; Touch und Spieluhr wurden mitgeprüft. Audio-Lautstärke0 bleibt wirklich still, auch nach Dash/Fortsetzen. Das niedrige Querformat-Menü ist scrollbar, ohne dass die Fusszeile den Trainingsknopf überdeckt. Keine Hardware-FPS-Zusage.

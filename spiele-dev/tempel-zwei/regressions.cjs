@@ -1,4 +1,95 @@
-const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');const {execFileSync}=require('node:child_process');const fs=require('node:fs');
-(async()=>{const browser=await chromium.launch({args:['--disable-background-timer-throttling','--disable-backgrounding-occluded-windows','--disable-renderer-backgrounding']});const report=[];for(const baseline of[true,false]){const c=await browser.newContext({viewport:{width:640,height:440}});const source=baseline?execFileSync('git',['show','9dc1306ad:neon-zusammen.html'],{encoding:'utf8'}):null;if(source)await c.route('**/neon-zusammen.html?*',async r=>{const response=await r.fetch();await r.fulfill({response,body:source});});const a=await c.newPage(),b=await c.newPage();for(const p of[a,b]){await p.goto('http://localhost:8120/neon-zusammen.html?station=1&mp=local');await p.waitForFunction(()=>window.__zs);}if(baseline)await a.locator('details').evaluate(e=>e.open=true);await a.click('#tHostBtn');const code=baseline?(await a.locator('#coopStatus').innerText()).match(/Raum-Code: ([A-Z]{4})/)[1]:await a.locator('#inviteCode').innerText();if(baseline)await b.locator('details').evaluate(e=>e.open=true);await b.fill('#tCode',code);await b.click('#tJoinBtn');for(const p of[a,b])await p.waitForFunction(()=>document.querySelector('#ov').style.display==='none');await a.evaluate(()=>__zs.tp(0,-6,-10));await b.evaluate(()=>__zs.tp(1,6,-10));await a.waitForTimeout(1600);const plateRooms=[(await a.evaluate(()=>__zs.state())).room,(await b.evaluate(()=>__zs.state())).room];await c.close();
-const p=await browser.newPage({viewport:{width:640,height:440}});if(source)await p.route('**/neon-zusammen.html?*',async r=>{const response=await r.fetch();await r.fulfill({response,body:source});});await p.goto('http://localhost:8120/neon-zusammen.html?station=1');await p.waitForFunction(()=>window.__zs);await p.click('#startBtn');await p.evaluate(()=>{__zs.r4();__zs.tp(0,0,-84);__zs.tp(1,3,-66);});await p.waitForTimeout(400);const rear=(await p.evaluate(()=>__zs.state())).a.z;report.push({version:baseline?'9dc1306ad':'working-tree',plateRooms,behindGuardianZ:rear,backwardsBeamHit:rear>-70});await p.close();}
-await browser.close();const passed=report[0].backwardsBeamHit&&!report[1].backwardsBeamHit&&report[1].plateRooms.every(r=>r===2);fs.writeFileSync(__dirname+'/regressions.json',JSON.stringify({passed,report},null,2));console.log({passed,report});if(!passed)process.exit(1);})().catch(e=>{console.error(e);process.exit(1)});
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
+const { execFileSync } = require("node:child_process");
+const fs = require("node:fs");
+(async () => {
+  const browser = await chromium.launch({
+    args: [
+      "--disable-background-timer-throttling",
+      "--disable-backgrounding-occluded-windows",
+      "--disable-renderer-backgrounding",
+    ],
+  });
+  const report = [];
+  for (const baseline of [true, false]) {
+    const c = await browser.newContext({
+      viewport: { width: 640, height: 440 },
+    });
+    const source = baseline
+      ? execFileSync("git", ["show", "9dc1306ad:neon-zusammen.html"], {
+          encoding: "utf8",
+        })
+      : null;
+    if (source)
+      await c.route("**/neon-zusammen.html?*", async (r) => {
+        const response = await r.fetch();
+        await r.fulfill({ response, body: source });
+      });
+    const a = await c.newPage(),
+      b = await c.newPage();
+    for (const p of [a, b]) {
+      await p.goto(
+        "http://localhost:8120/neon-zusammen.html?station=1&mp=local",
+      );
+      await p.waitForFunction(() => window.__zs);
+    }
+    if (baseline) await a.locator("details").evaluate((e) => (e.open = true));
+    await a.click("#tHostBtn");
+    const code = baseline
+      ? (await a.locator("#coopStatus").innerText()).match(
+          /Raum-Code: ([A-Z]{4})/,
+        )[1]
+      : await a.locator("#inviteCode").innerText();
+    if (baseline) await b.locator("details").evaluate((e) => (e.open = true));
+    await b.fill("#tCode", code);
+    await b.click("#tJoinBtn");
+    for (const p of [a, b])
+      await p.waitForFunction(
+        () => document.querySelector("#ov").style.display === "none",
+      );
+    await a.evaluate(() => __zs.tp(0, -6, -10));
+    await b.evaluate(() => __zs.tp(1, 6, -10));
+    await a.waitForTimeout(1600);
+    const plateRooms = [
+      (await a.evaluate(() => __zs.state())).room,
+      (await b.evaluate(() => __zs.state())).room,
+    ];
+    await c.close();
+    const p = await browser.newPage({ viewport: { width: 640, height: 440 } });
+    if (source)
+      await p.route("**/neon-zusammen.html?*", async (r) => {
+        const response = await r.fetch();
+        await r.fulfill({ response, body: source });
+      });
+    await p.goto("http://localhost:8120/neon-zusammen.html?station=1");
+    await p.waitForFunction(() => window.__zs);
+    await p.click("#startBtn");
+    await p.evaluate(() => {
+      __zs.r4();
+      __zs.tp(0, 0, -84);
+      __zs.tp(1, 3, -66);
+    });
+    await p.waitForTimeout(400);
+    const rear = (await p.evaluate(() => __zs.state())).a.z;
+    report.push({
+      version: baseline ? "9dc1306ad" : "working-tree",
+      plateRooms,
+      behindGuardianZ: rear,
+      backwardsBeamHit: rear > -70,
+    });
+    await p.close();
+  }
+  await browser.close();
+  const passed =
+    report[0].backwardsBeamHit &&
+    !report[1].backwardsBeamHit &&
+    report[1].plateRooms.every((r) => r === 2);
+  fs.writeFileSync(
+    __dirname + "/regressions.json",
+    JSON.stringify({ passed, report }, null, 2),
+  );
+  console.log({ passed, report });
+  if (!passed) process.exit(1);
+})().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

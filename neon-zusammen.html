@@ -170,7 +170,16 @@ document.getElementById("soundBtn").onclick=function(){muted=!muted;if(AC){if(mu
 if(!window.THREE){document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;text-align:center;color:#9adfc0;font-weight:800">3D-Engine nicht geladen — bitte neu laden \u21bb</div>';throw new Error("THREE fehlt");}
 var W=innerWidth,H=innerHeight;
 var renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.setSize(W,H);
+var templeScaleMax=Math.min(devicePixelRatio,matchMedia("(pointer:coarse)").matches?1.25:1.5),templeScale=templeScaleMax,renderWindow=0,renderFrames=0;
+try{var gl=renderer.getContext(),gpuInfo=gl.getExtension("WEBGL_debug_renderer_info");if(gpuInfo&&/swiftshader|llvmpipe|software/i.test(gl.getParameter(gpuInfo.UNMASKED_RENDERER_WEBGL)))templeScale=Math.min(templeScale,.65);}catch(e){}
+renderer.setPixelRatio(templeScale);renderer.setSize(W,H);
+function tuneTempleGraphics(seconds){
+  if(!Number.isFinite(seconds)||seconds<=0||seconds>.2)return;
+  renderWindow+=seconds;renderFrames++;
+  if(renderWindow<1.2)return;
+  if(renderWindow/renderFrames>.028&&templeScale>.55){templeScale=Math.max(.55,+(templeScale-.15).toFixed(2));renderer.setPixelRatio(templeScale);}
+  renderWindow=0;renderFrames=0;
+}
 renderer.outputEncoding=THREE.sRGBEncoding;document.body.insertBefore(renderer.domElement,document.getElementById("hud"));
 var scene=new THREE.Scene();scene.background=new THREE.Color(0x0c1210);scene.fog=new THREE.Fog(0x0c1210,30,90);
 var camera=new THREE.PerspectiveCamera(56,W/H,0.1,220);
@@ -207,6 +216,14 @@ torch(-9,-4,0xffa040);torch(9,-4,0xffa040);
 torch(-9,-26,0xff6a28);torch(9,-26,0x38c8ff);
 torch(-9,-48,0xc9a0ff);torch(9,-48,0xc9a0ff);
 torch(-9,-70,0xffc040);torch(9,-70,0xffc040);torch(-9,-86,0xffc040);torch(9,-86,0xffc040); /* Raum 4: Waechter-Gold */
+/* Vier nahe Fackellichter reichen für beide Figuren. Sichtbare Flammen bleiben an;
+   die konstante Lichtanzahl vermeidet Shader-Wechsel zwischen den Kammern. */
+var torchLightTimer=0;
+function tuneTorchLights(dt){
+  torchLightTimer-=dt;if(torchLightTimer>0)return;torchLightTimer=.4;
+  var nearby=torches.map(function(tc,i){var p=tc.lt.parent.position;return {i:i,d:Math.min(Math.pow(p.x-chars[0].x,2)+Math.pow(p.z-chars[0].z,2),Math.pow(p.x-chars[1].x,2)+Math.pow(p.z-chars[1].z,2))};}).sort(function(a,b){return a.d-b.d;}).slice(0,4);
+  torches.forEach(function(tc,i){tc.lt.visible=nearby.some(function(n){return n.i===i;});});
+}
 /* #9: Schwellen-Streifen vor jedem Tor (Farb-Vorschau des nächsten Raums) */
 box(0,0.02,-14.9,19,0.05,0.5,M(0xff6a28,0xff6a28,0.7));
 box(-4.75,0.02,-38.9,9.5,0.05,0.5,M(0xff6a28,0xff6a28,0.7));box(4.75,0.02,-38.9,9.5,0.05,0.5,M(0x38c8ff,0x38c8ff,0.7));
@@ -634,10 +651,12 @@ function partnerArrow(){var el=document.getElementById("pArrow");if(!_pv||!el){r
   el.style.display="block";el.style.left=((ex*0.5+0.5)*W)+"px";el.style.top=((-ey*0.5+0.5)*H)+"px";
   el.style.transform="translate(-50%,-50%) rotate("+(-ang)+"rad)";}
 function frame(now){_rafId=requestAnimationFrame(frame);
-  var dt=Math.min(0.05,(now-lastT)/1000)||0.016;lastT=now;var t=now*0.001;
+  var rawDt=(now-lastT)/1000,dt=Math.min(0.05,rawDt)||0.016;lastT=now;var t=now*0.001;
   /* Menü und Solo-Pause verdecken ein stehendes Bild. Kein WebGL-Rendern dahinter.
      Online-Pause rechnet ausdrücklich weiter; die andere Person spielt weiter. */
   if(!running||(paused&&!NETON)||(won&&document.getElementById("ov").style.display==="flex"))return;
+  tuneTempleGraphics(rawDt);
+  tuneTorchLights(dt);
   for(var _mi=0;_mi<_charMix.length;_mi++)_charMix[_mi].update(dt);
   for(var fi=0;fi<torches.length;fi++){var tc=torches[fi];
     tc.fl.scale.setScalar(1+Math.sin(t*9+tc.ph)*0.15);tc.lt.intensity=0.5+Math.sin(t*11+tc.ph)*0.15;}
@@ -769,7 +788,7 @@ function frame(now){_rafId=requestAnimationFrame(frame);
 _rafId=requestAnimationFrame(frame);
 addEventListener("pagehide",function(){try{cancelAnimationFrame(_rafId);}catch(e){}try{stopAmbient();}catch(e){}try{if(net)net.close();}catch(e){}try{if(AC&&AC.close)AC.close();}catch(e){}try{renderer.dispose();}catch(e){}}); /* sauberes Teardown */
 updHud();
-window.__zs={state:function(){return {room:room,gems:gemN,won:won,result:finalResult,paused:paused,online:NETON,slot:mySlot,running:running,gates:gates.map(function(g){return g.userData.open;}),sync:[syncA.userData.t,syncB.userData.t],vines:vines.userData.alive,plant:plant.userData.grown,levers:[lever.userData.pulled,lever2.userData.pulled],render:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles},eye:+eyeA.toFixed(2),blind:_blWas,
+window.__zs={state:function(){return {room:room,gems:gemN,won:won,result:finalResult,paused:paused,online:NETON,slot:mySlot,running:running,gates:gates.map(function(g){return g.userData.open;}),sync:[syncA.userData.t,syncB.userData.t],vines:vines.userData.alive,plant:plant.userData.grown,levers:[lever.userData.pulled,lever2.userData.pulled],render:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,pixelRatio:renderer.getPixelRatio()},eye:+eyeA.toFixed(2),blind:_blWas,
     altF:altF.userData.lit,altW:altW.userData.lit,g4:gate4.userData.open,
     a:{x:chars[0].x,z:chars[0].z},b:{x:chars[1].x,z:chars[1].z}};},
   r4:function(){gates.slice(0,3).forEach(function(g){openGate(g,null,true);});room=4;updHud();
