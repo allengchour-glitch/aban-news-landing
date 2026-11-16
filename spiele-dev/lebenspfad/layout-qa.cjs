@@ -12,6 +12,7 @@ let browser;
 (async()=>{
  browser=await chromium.launch({headless:true,args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
  const context=await browser.newContext();
+ if(process.env.LP_CSS)await context.route('**/css/lebenspfad.css*',route=>route.fulfill({path:process.env.LP_CSS,contentType:'text/css'}));
  await context.route('**/lebenspfad.html',async route=>{
   const response=await route.fetch();
   const original=await response.text();
@@ -38,6 +39,12 @@ let browser;
   results.views.push({width,height,controls});
   await page.screenshot({path:`${out}/${width}x${height}.png`,timeout:60000});
   controls.forEach(c=>assert(c.inside&&c.centerHit,`${width}x${height}: ${c.selector} blockiert/abgeschnitten`));
+  const overlaps=await page.evaluate(()=>{
+   const intersect=(a,b)=>{const x=document.getElementById(a).getBoundingClientRect(),y=document.getElementById(b).getBoundingClientRect();return x.width>0&&x.height>0&&y.width>0&&y.height>0&&Math.min(x.right,y.right)>Math.max(x.left,y.left)&&Math.min(x.bottom,y.bottom)>Math.max(x.top,y.top);};
+   return {bookHint:intersect('journeyPanel','hint'),helpLegal:intersect('keysHelp','aban-recht'),rollLegal:intersect('rollBtn','aban-recht')};
+  });
+  results.views[results.views.length-1].overlaps=overlaps;
+  assert(!Object.values(overlaps).some(Boolean),`${width}x${height}: Hinweis/Fußbereich überlappt: ${JSON.stringify(overlaps)}`);
   // Tatsächlicher Buchaufruf ohne offene Ereigniskarte; keine Modal-Blockade als Defekt werten.
   await page.locator('#journeyOpen').click();await page.locator('#liClose').click();
  }

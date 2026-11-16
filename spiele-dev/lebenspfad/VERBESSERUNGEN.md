@@ -85,6 +85,10 @@ Handys oder 60 FPS. Messwerte und Bilder liegen unter [belege](belege/).
   Altersstufen, erhöhtes Hauptpfadfeld, aktive und tatsächlich beendete Geste.
   Nach Gestenende stehen die Schuhe wieder auf dem Deckel. Zusätzliche separate
   4K-HUD-Messung: fünf erreichbare Bedienelemente. Keine Browserfehler.
+- Letzte Handy-Gegenprobe: Hinweis/Buch, Bedienhilfe/Fußlinks und
+  Würfelknopf/Fußlinks überschnitten sich bei 360×640. Korrigierte Abstände und
+  kompakte Querformatanordnung bestehen alle 15 Paarprüfungen in den fünf
+  Testgrößen; der zuvor verwendete CSS-Stand schlägt mit drei Überschneidungen fehl.
 
 Browser-Prüfungen verwenden die tatsächlichen Server- und CSP-Header.
 Keine Zertifikatsausnahmen oder Vertrauensspeicheränderungen. Reale Internet-Räume,

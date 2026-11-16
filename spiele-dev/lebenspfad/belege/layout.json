@@ -30,7 +30,12 @@
           "inside": true,
           "centerHit": true
         }
-      ]
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
     },
     {
       "width": 390,
@@ -61,7 +66,12 @@
           "inside": true,
           "centerHit": true
         }
-      ]
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
     },
     {
       "width": 640,
@@ -92,7 +102,12 @@
           "inside": true,
           "centerHit": true
         }
-      ]
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
     },
     {
       "width": 844,
@@ -123,7 +138,12 @@
           "inside": true,
           "centerHit": true
         }
-      ]
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
     },
     {
       "width": 1280,
@@ -154,7 +174,12 @@
           "inside": true,
           "centerHit": true
         }
-      ]
+      ],
+      "overlaps": {
+        "bookHint": false,
+        "helpLegal": false,
+        "rollLegal": false
+      }
     }
   ],
   "feet": [
