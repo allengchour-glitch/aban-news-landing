@@ -1,0 +1,32 @@
+{
+  "run": "R257",
+  "atUtc": "2026-11-16T10:43:09Z",
+  "files": [
+    {
+      "file": "HAENGEMATTE-BELEGE-20261116-R257.json",
+      "path": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+      "bytes": 229496,
+      "sha256": "954d8266698c5008b1fff49b5dfe796f398e5fb31017f611aeac0c54ff479c13",
+      "gitBlobSha": "c374b42db07864f3447f178cb68e3d66381f6e31",
+      "readAt": "2026-11-16T10:43:09Z"
+    },
+    {
+      "file": "HAENGEMATTE-LIVE-20261116-R257.md",
+      "path": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+      "bytes": 5365,
+      "sha256": "95184ac4b84e71c73fbf6b9447b1e3d8ee6c035453f242aa0fc1969fa7158954",
+      "gitBlobSha": "01885ef3e25dc9d8295974047d6a9e1de503cdd7",
+      "readAt": "2026-11-16T10:43:09Z"
+    },
+    {
+      "file": "CJ-PAGINATION-ENTWURF-20261116-R257.md",
+      "path": "dropship/codex-handoff-20261018/CJ-PAGINATION-ENTWURF-20261116-R257.md",
+      "bytes": 11997,
+      "sha256": "8beb5105be0bbce0996ee156e5855ae0efca0cce453e219d575e112d370bf578",
+      "gitBlobSha": "836642413471523465d9812d2652873a5941d9c8",
+      "readAt": "2026-11-16T10:43:09Z"
+    }
+  ],
+  "scope": "Exactly3new documentation artifacts; manifest and five core files excluded.",
+  "noSourceCostsCustomerDataOrCredentials": true
+}

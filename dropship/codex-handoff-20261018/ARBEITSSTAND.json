@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 256,
-  "updatedAt": "2026-11-16T09:50:48Z",
+  "revision": 257,
+  "updatedAt": "2026-11-16T10:43:09Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-16",
     "currentDayEvidenceKind": "R255 Produkttexte, native Reads und öffentliche/mobile QA",
-    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung.",
+    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-16",
@@ -709,6 +709,13 @@
       "productId": "gid://shopify/Product/15491768058241",
       "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
       "reportsRepeated": false
+    },
+    "targetedSeoWritesR257": {
+      "productWrites": 2,
+      "productId": "gid://shopify/Product/15450856292737",
+      "proof": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+      "newSeoPairWrite": false,
+      "reportsRepeated": false
     }
   },
   "expectedIdentity": {
@@ -742,13 +749,15 @@
       "id": "product-attribute-completeness",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r256_one_additional_cat_product_live_source_bound_details",
+      "state": "r257_hammock_body_and_gray_media_live_33_source_skus_verified",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R256_ONE_PRODUCT_WRITE_NATIVE_PUBLIC_MOBILE",
-      "lastEvidence": "R256: Ein zusätzlicher Katzenartikel15491768058241 mit klarer aktueller CJ-KindbindungCJYD279383701AZ, Bild-/Textquellen, ausführlichem Body und eigenem SEO-Paar live verbessert. Ein Write und native/public/mobile Gegenprüfung; Titel/Preis/Variante/Medien/Tags/Inventar erhalten. Zwei Konsolenbindungen eng geprüft, Regionalausführung weiterhin offen. 36er-Liste unverändert; keine Gesamtshopquote.",
-      "nextAllowedStep": "Weiteren bestehenden Artikel mit eindeutiger Kind-SKU-Bindung gezielt verbessern; R256 ohne Neubefund nicht erneut umtexten. Konsolenregion, genaue Gesamtmasse und Laufzeit nur mit neuen Primärbelegen schliessen.",
+      "belegArt": "GEMESSEN_R257_TWO_HAMMOCK_WRITES_SOURCE_PUBLIC_MOBILE_GUARD_DRAFT",
+      "lastEvidence": "R257: Hängemattenbody360Wörter und eine bestehendeGray-Medienrelation live,2bestätigteWrites.33Shop-/CJ-Kind-SKUs exakt gegengeprüft. Titel/SEO/Preise/Inventar/Tags/Optionen/37Galeriemedien erhalten. Öffentlich33Offers+33Varianten und2mobileAnsichten/3Auswahlproben bestätigt. Traglast/Nutzerzahl/Masse/Zubehör bleiben offen.",
+      "nextAllowedStep": "Eindeutige Primärbelege für Hängematten-Traglast, Nutzerzahl, echte Masse und Befestigungsumfang beschaffen. Weitere konkrete Artikel nur gezielt mit gesicherter Quelle verbessern, bestehende R256/R257-Resultate nicht ohne Neubefund wiederholen.",
       "blockers": [
+        "Hängematte:150vs250kg, Einzel-vsDoppelnutzung,270vs300cm und Zubehörumfang nicht eindeutig.",
+        "Keine neue Medienrechte-Freigabe; vorhandene Gray-Aufnahme nur am selben Produkt zugeordnet.",
         "Katzenspielzeug: Gesamtmassbezug, Lauf-/Ladezeit, Netzadapter/Anleitungssprache und Medienrechte bleiben offen.",
         "Konsolen Xgame/SUPER21: Zielantworten belegen keine genaue bestehende CJ-Kindbindung; keine automatische Neuverknüpfung.",
         "Produkt- und Lieferantenfragen sowie Bildrechte sind nicht geschlossen.",
@@ -1878,6 +1887,30 @@
           "sha256": "6104823911bec5f9c9d105dfe74e29f990c51d5baa5e433b39e834bab82b0707",
           "gitBlobSha": "cac33ee00603ee5ff1a7b029f948b6cf2f97fc3e",
           "readAt": "2026-11-16T09:50:48Z"
+        },
+        {
+          "file": "HAENGEMATTE-BELEGE-20261116-R257.json",
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+          "bytes": 229496,
+          "sha256": "954d8266698c5008b1fff49b5dfe796f398e5fb31017f611aeac0c54ff479c13",
+          "gitBlobSha": "c374b42db07864f3447f178cb68e3d66381f6e31",
+          "readAt": "2026-11-16T10:43:09Z"
+        },
+        {
+          "file": "HAENGEMATTE-LIVE-20261116-R257.md",
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+          "bytes": 5365,
+          "sha256": "95184ac4b84e71c73fbf6b9447b1e3d8ee6c035453f242aa0fc1969fa7158954",
+          "gitBlobSha": "01885ef3e25dc9d8295974047d6a9e1de503cdd7",
+          "readAt": "2026-11-16T10:43:09Z"
+        },
+        {
+          "file": "CJ-PAGINATION-ENTWURF-20261116-R257.md",
+          "path": "dropship/codex-handoff-20261018/CJ-PAGINATION-ENTWURF-20261116-R257.md",
+          "bytes": 11997,
+          "sha256": "8beb5105be0bbce0996ee156e5855ae0efca0cce453e219d575e112d370bf578",
+          "gitBlobSha": "836642413471523465d9812d2652873a5941d9c8",
+          "readAt": "2026-11-16T10:43:09Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -4993,6 +5026,23 @@
               "Zwei Auswahlproben timeouteten vor einer Auswahl und bleiben unverified."
             ]
           }
+        },
+        {
+          "archivedByRun": "R257",
+          "recordedAt": "2026-11-16T10:43:09Z",
+          "previous": {
+            "state": "r256_one_additional_cat_product_live_source_bound_details",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R256_ONE_PRODUCT_WRITE_NATIVE_PUBLIC_MOBILE",
+            "lastEvidence": "R256: Ein zusätzlicher Katzenartikel15491768058241 mit klarer aktueller CJ-KindbindungCJYD279383701AZ, Bild-/Textquellen, ausführlichem Body und eigenem SEO-Paar live verbessert. Ein Write und native/public/mobile Gegenprüfung; Titel/Preis/Variante/Medien/Tags/Inventar erhalten. Zwei Konsolenbindungen eng geprüft, Regionalausführung weiterhin offen. 36er-Liste unverändert; keine Gesamtshopquote.",
+            "nextAllowedStep": "Weiteren bestehenden Artikel mit eindeutiger Kind-SKU-Bindung gezielt verbessern; R256 ohne Neubefund nicht erneut umtexten. Konsolenregion, genaue Gesamtmasse und Laufzeit nur mit neuen Primärbelegen schliessen.",
+            "blockers": [
+              "Katzenspielzeug: Gesamtmassbezug, Lauf-/Ladezeit, Netzadapter/Anleitungssprache und Medienrechte bleiben offen.",
+              "Konsolen Xgame/SUPER21: Zielantworten belegen keine genaue bestehende CJ-Kindbindung; keine automatische Neuverknüpfung.",
+              "Produkt- und Lieferantenfragen sowie Bildrechte sind nicht geschlossen.",
+              "Zwei Auswahlproben timeouteten vor einer Auswahl und bleiben unverified."
+            ]
+          }
         }
       ],
       "additionalProductCleanups": [
@@ -6762,6 +6812,12 @@
         "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
         "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
         "shopifyWrites": 1
+      },
+      "run257": {
+        "report": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+        "proof": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+        "writes": 2,
+        "guardDeployed": false
       }
     },
     {
@@ -7000,13 +7056,15 @@
       "id": "schema-hammock-15450856292737",
       "priority": 30,
       "priorityKind": "SETZUNG",
-      "state": "r227_one_url_index_and_rich_results_pass_optional_warnings_open",
+      "state": "r257_body_gray_schema_image_live_optional_google_warnings_unretested",
       "title": "SKU- und Rückgabe-Auszeichnung der Hängematte",
-      "lastEvidenceDate": "2026-11-15",
-      "belegArt": "GEMESSEN",
-      "lastEvidence": "Eine gezielte Search-Console-Abfrage bestätigt Index- und Rich-Results-PASS für den Crawl vom 04.11.2026. Geliefert wurden 101 optionale Warnungen und keine ERROR-Einträge. Die heutige öffentliche Ausgabe bestätigt 33 Varianten ohne eigene Beschreibung und 33 Offers ohne Versand-/Retourenfelder. Aktuelle MAIN-Quelle gelesen, kein Schemawrite. Eine SEO-Beschreibung mit 143 Zeichen live gesetzt; SEO-Titel ausdrücklich erhalten, native und öffentliche Meta-/OG-Rücklesung passend. Keine erneute Google-Prüfung nach dem Write.",
-      "nextAllowedStep": "Den alten SKU-Patch nicht erneut anwenden. Optionale Varianten-/Offer-Warnungen am vorhandenen structured_data-Owner gezielt bearbeiten. Variantenidentitäten, Preise, Verfügbarkeiten und sachlich passende Richtlinien erhalten. Keine künstlichen Reviews; Googles Übernahme der neuen Meta-Beschreibung bleibt unbekannt.",
+      "lastEvidenceDate": "2026-11-16",
+      "belegArt": "GEMESSEN_R257_TWO_HAMMOCK_WRITES_SOURCE_PUBLIC_MOBILE_GUARD_DRAFT",
+      "lastEvidence": "R257: Aktuelle Hängematte33Varianten und33öffentlicheOffers mit passenden Preisen. NeueGray-Medienrelation nach späterer frischer Basis-/Variantengegenprobe auch imProductSchema richtig. Bodyneu,all33SKUsweitererhalten. KeineGSC-Prüfung oderThemeänderung; R227-Index/RichResults-Befund undoptionaleWarnungen bleiben datierteHistorie, nicht als geschlossen bewertet.",
+      "nextAllowedStep": "Optionale Variantenbeschreibungen/Schemahinweise gesondert am aktuellen echten Template und gerenderten HTML prüfen; keine alten SKU-Patches ungeprüft aktivieren. Keine neue Indexprüfung nur zur Wiederholung.",
       "blockers": [
+        "Optionale GSC-/Variantenschema-Warnungen in R257 nicht neu extern geprüft oder pauschal behoben.",
+        "Maß-/Traglast-/Zubehörkonflikte bleiben inhaltliche Quellenblocker.",
         "Der gespeicherte Crawl einer URL ist kein Live-Test oder Katalogzensus; kein Google-Übernahmebeleg der neuen SEO-Beschreibung.",
         "MobileUsability ist VERDICT_UNSPECIFIED; keine mobile Google- oder visuelle Abnahme.",
         "33 Variantenbeschreibungen und 33 Offer-Versand-/Retourenfelder fehlen. Sichere Schema-Vererbung, Generator und Produktausnahmen vor einer Änderung prüfen."
@@ -7143,6 +7201,30 @@
           "sha256": "c2e9a9c8b8c913b0c8f1bd60d567cf0a74db44a02f924dfbe790b43da9bb99bf",
           "gitBlobSha": "7676acd501ab623167882332afa4903921557410",
           "bytes": 6400
+        },
+        {
+          "file": "HAENGEMATTE-BELEGE-20261116-R257.json",
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+          "bytes": 229496,
+          "sha256": "954d8266698c5008b1fff49b5dfe796f398e5fb31017f611aeac0c54ff479c13",
+          "gitBlobSha": "c374b42db07864f3447f178cb68e3d66381f6e31",
+          "readAt": "2026-11-16T10:43:09Z"
+        },
+        {
+          "file": "HAENGEMATTE-LIVE-20261116-R257.md",
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+          "bytes": 5365,
+          "sha256": "95184ac4b84e71c73fbf6b9447b1e3d8ee6c035453f242aa0fc1969fa7158954",
+          "gitBlobSha": "01885ef3e25dc9d8295974047d6a9e1de503cdd7",
+          "readAt": "2026-11-16T10:43:09Z"
+        },
+        {
+          "file": "CJ-PAGINATION-ENTWURF-20261116-R257.md",
+          "path": "dropship/codex-handoff-20261018/CJ-PAGINATION-ENTWURF-20261116-R257.md",
+          "bytes": 11997,
+          "sha256": "8beb5105be0bbce0996ee156e5855ae0efca0cce453e219d575e112d370bf578",
+          "gitBlobSha": "836642413471523465d9812d2652873a5941d9c8",
+          "readAt": "2026-11-16T10:43:09Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -7209,6 +7291,22 @@
             "Begrenzte native/public JSON-LD-Gegenprobe; keine vollständige visuelle Theme-/Checkout-Abnahme",
             "Google-Akzeptanz/Console-Validierung nach öffentlicher Live-Gegenprobe unbekannt; kein Google-Test ausgelöst"
           ]
+        },
+        {
+          "archivedByRun": "R257",
+          "recordedAt": "2026-11-16T10:43:09Z",
+          "previous": {
+            "state": "r227_one_url_index_and_rich_results_pass_optional_warnings_open",
+            "lastEvidenceDate": "2026-11-15",
+            "belegArt": "GEMESSEN",
+            "lastEvidence": "Eine gezielte Search-Console-Abfrage bestätigt Index- und Rich-Results-PASS für den Crawl vom 04.11.2026. Geliefert wurden 101 optionale Warnungen und keine ERROR-Einträge. Die heutige öffentliche Ausgabe bestätigt 33 Varianten ohne eigene Beschreibung und 33 Offers ohne Versand-/Retourenfelder. Aktuelle MAIN-Quelle gelesen, kein Schemawrite. Eine SEO-Beschreibung mit 143 Zeichen live gesetzt; SEO-Titel ausdrücklich erhalten, native und öffentliche Meta-/OG-Rücklesung passend. Keine erneute Google-Prüfung nach dem Write.",
+            "nextAllowedStep": "Den alten SKU-Patch nicht erneut anwenden. Optionale Varianten-/Offer-Warnungen am vorhandenen structured_data-Owner gezielt bearbeiten. Variantenidentitäten, Preise, Verfügbarkeiten und sachlich passende Richtlinien erhalten. Keine künstlichen Reviews; Googles Übernahme der neuen Meta-Beschreibung bleibt unbekannt.",
+            "blockers": [
+              "Der gespeicherte Crawl einer URL ist kein Live-Test oder Katalogzensus; kein Google-Übernahmebeleg der neuen SEO-Beschreibung.",
+              "MobileUsability ist VERDICT_UNSPECIFIED; keine mobile Google- oder visuelle Abnahme.",
+              "33 Variantenbeschreibungen und 33 Offer-Versand-/Retourenfelder fehlen. Sichere Schema-Vererbung, Generator und Produktausnahmen vor einer Änderung prüfen."
+            ]
+          }
         }
       ],
       "liveSchemaVerification": {
@@ -7230,6 +7328,12 @@
         "at": "2026-11-15T05:51:16.969598+00:00",
         "proof": "dropship/codex-handoff-20261018/WEITERARBEIT-20261115-R227.json",
         "scope": "see exact run evidence; no implied deployment or catalog-wide result"
+      },
+      "run257": {
+        "report": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+        "proof": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+        "writes": 2,
+        "guardDeployed": false
       }
     },
     {
@@ -7654,13 +7758,16 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r256_additional_product_work_documented_receipt_unknown",
+      "state": "r257_two_hammock_writes_and_guard_draft_documented_receipt_unknown",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R256_ONE_PRODUCT_WRITE_NATIVE_PUBLIC_MOBILE",
-      "lastEvidence": "R256: Ein bestätigter neuer Produkttext-/SEO-Write sowie eng abgegrenzte Konsolenquellenprüfung mit Positivkontrolle, native/public/mobile Belege und unveränderte 36er-Liste dokumentiert. Core fortgeschrieben, alle24TaskIDs erhalten; Claude-Empfang unbekannt.",
-      "nextAllowedStep": "Bestehenden Claude-Einstieg und R256-Bericht verwenden, ohne Prüfung als Freigabe oder Kenntnisnahme zu zählen.",
+      "belegArt": "GEMESSEN_R257_TWO_HAMMOCK_WRITES_SOURCE_PUBLIC_MOBILE_GUARD_DRAFT",
+      "lastEvidence": "R257:2bestätigteLivedatenänderungen an1Hängematte,33exakteQuellenbindungen,öffentliche/mobileGegenprobenundlokalerGuardentwurf mit20Checks+Mutationsgegenprobe dokumentiert. Paginationabweichung und5DetailcallswegenSpeicherfehler ehrlich erfasst.24TaskIDs/Historieerhalten;keineClaudeQuittung.",
+      "nextAllowedStep": "BestehendenClaudeEinstieg/R257Belege verwenden. Paginationguard nur als lokal geprüften Entwurf verstehen; vor jeder produktiven Integration separater Code-/Zugriffs-/Scopeabgleich.",
       "blockers": [
+        "CJ-Pagination lieferte bei Seite2 wieder Seite1; keine Vollauflistung behaupten.",
+        "Lokaler Guard ist nicht deployt oder im aktiven Lauf verwendet.",
+        "Claude-Empfang unbekannt.",
         "Claude-Empfang weiterhin unbekannt.",
         "Zwei Auswahlproben bleiben unverified.",
         "Core-Änderung ist remote noch nicht angewandt oder zurückgelesen.",
@@ -9233,6 +9340,30 @@
           "sha256": "6104823911bec5f9c9d105dfe74e29f990c51d5baa5e433b39e834bab82b0707",
           "gitBlobSha": "cac33ee00603ee5ff1a7b029f948b6cf2f97fc3e",
           "readAt": "2026-11-16T09:50:48Z"
+        },
+        {
+          "file": "HAENGEMATTE-BELEGE-20261116-R257.json",
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+          "bytes": 229496,
+          "sha256": "954d8266698c5008b1fff49b5dfe796f398e5fb31017f611aeac0c54ff479c13",
+          "gitBlobSha": "c374b42db07864f3447f178cb68e3d66381f6e31",
+          "readAt": "2026-11-16T10:43:09Z"
+        },
+        {
+          "file": "HAENGEMATTE-LIVE-20261116-R257.md",
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+          "bytes": 5365,
+          "sha256": "95184ac4b84e71c73fbf6b9447b1e3d8ee6c035453f242aa0fc1969fa7158954",
+          "gitBlobSha": "01885ef3e25dc9d8295974047d6a9e1de503cdd7",
+          "readAt": "2026-11-16T10:43:09Z"
+        },
+        {
+          "file": "CJ-PAGINATION-ENTWURF-20261116-R257.md",
+          "path": "dropship/codex-handoff-20261018/CJ-PAGINATION-ENTWURF-20261116-R257.md",
+          "bytes": 11997,
+          "sha256": "8beb5105be0bbce0996ee156e5855ae0efca0cce453e219d575e112d370bf578",
+          "gitBlobSha": "836642413471523465d9812d2652873a5941d9c8",
+          "readAt": "2026-11-16T10:43:09Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -15897,6 +16028,23 @@
               "Claude-Empfang unbekannt."
             ]
           }
+        },
+        {
+          "archivedByRun": "R257",
+          "recordedAt": "2026-11-16T10:43:09Z",
+          "previous": {
+            "state": "r256_additional_product_work_documented_receipt_unknown",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R256_ONE_PRODUCT_WRITE_NATIVE_PUBLIC_MOBILE",
+            "lastEvidence": "R256: Ein bestätigter neuer Produkttext-/SEO-Write sowie eng abgegrenzte Konsolenquellenprüfung mit Positivkontrolle, native/public/mobile Belege und unveränderte 36er-Liste dokumentiert. Core fortgeschrieben, alle24TaskIDs erhalten; Claude-Empfang unbekannt.",
+            "nextAllowedStep": "Bestehenden Claude-Einstieg und R256-Bericht verwenden, ohne Prüfung als Freigabe oder Kenntnisnahme zu zählen.",
+            "blockers": [
+              "Claude-Empfang weiterhin unbekannt.",
+              "Zwei Auswahlproben bleiben unverified.",
+              "Core-Änderung ist remote noch nicht angewandt oder zurückgelesen.",
+              "Claude-Empfang unbekannt."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -18614,6 +18762,12 @@
         "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
         "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
         "shopifyWrites": 1
+      },
+      "run257": {
+        "report": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+        "proof": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+        "writes": 2,
+        "guardDeployed": false
       }
     },
     {
@@ -31789,13 +31943,14 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r256_cat_product_body_and_seo_live_public_verified",
+      "state": "r257_source_bound_hammock_detail_and_media_improved_no_new_google_claim",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R256_ONE_PRODUCT_WRITE_NATIVE_PUBLIC_MOBILE",
-      "lastEvidence": "R256: Eine weitere Produktseite mit vollständigem individuellem SEO-Titel/Meta und quellenbasiertem Detailtext live; öffentliche HTML-/JSON-/Offer-Prüfung und zwei mobile Ansichten bestätigt. Kein GSC-Report wiederholt, keine Index-/Rankingwirkung aus dem Write abgeleitet.",
-      "nextAllowedStep": "Weitere gezielt verifizierbare Produkttexte verbessern. Vorhandene Ranking-/Indexmessungen nur im erlaubten Tagesrahmen fortführen.",
+      "belegArt": "GEMESSEN_R257_TWO_HAMMOCK_WRITES_SOURCE_PUBLIC_MOBILE_GUARD_DRAFT",
+      "lastEvidence": "R257360WörterDetailbody mit vorhandenen Themen-/Richtlinienlinks und neuer klarer Auswahlhilfe live. BestätigtesR227SEOPaarbeibehalten.33VariantOffers/öffentlicheMetadatenundmobilpass,GrayBildbezugjetztkorrekt. Keine neueGoogle-/Merchant-/Ranking-/Salesprüfung.",
+      "nextAllowedStep": "Faktenbasierte Produktauswahlhilfe fortführen; verbleibende Quellen-/Schemaschritte separat behandeln und fällige Tagesmessungen respektieren.",
       "blockers": [
+        "Keine frische Indexierung oder Rankingwirkung der R257-Änderungen belegt.",
         "Google-Indexierung und Rankingwirkung der neuen R256-Texte unbekannt.",
         "Keine frische Google-Indexierung oder Rankingwirkung nachgewiesen.",
         "Zwei Auswahlproben bleiben unverified."
@@ -32692,6 +32847,30 @@
           "sha256": "6104823911bec5f9c9d105dfe74e29f990c51d5baa5e433b39e834bab82b0707",
           "gitBlobSha": "cac33ee00603ee5ff1a7b029f948b6cf2f97fc3e",
           "readAt": "2026-11-16T09:50:48Z"
+        },
+        {
+          "file": "HAENGEMATTE-BELEGE-20261116-R257.json",
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+          "bytes": 229496,
+          "sha256": "954d8266698c5008b1fff49b5dfe796f398e5fb31017f611aeac0c54ff479c13",
+          "gitBlobSha": "c374b42db07864f3447f178cb68e3d66381f6e31",
+          "readAt": "2026-11-16T10:43:09Z"
+        },
+        {
+          "file": "HAENGEMATTE-LIVE-20261116-R257.md",
+          "path": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+          "bytes": 5365,
+          "sha256": "95184ac4b84e71c73fbf6b9447b1e3d8ee6c035453f242aa0fc1969fa7158954",
+          "gitBlobSha": "01885ef3e25dc9d8295974047d6a9e1de503cdd7",
+          "readAt": "2026-11-16T10:43:09Z"
+        },
+        {
+          "file": "CJ-PAGINATION-ENTWURF-20261116-R257.md",
+          "path": "dropship/codex-handoff-20261018/CJ-PAGINATION-ENTWURF-20261116-R257.md",
+          "bytes": 11997,
+          "sha256": "8beb5105be0bbce0996ee156e5855ae0efca0cce453e219d575e112d370bf578",
+          "gitBlobSha": "836642413471523465d9812d2652873a5941d9c8",
+          "readAt": "2026-11-16T10:43:09Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -35620,6 +35799,22 @@
               "Zwei Auswahlproben bleiben unverified."
             ]
           }
+        },
+        {
+          "archivedByRun": "R257",
+          "recordedAt": "2026-11-16T10:43:09Z",
+          "previous": {
+            "state": "r256_cat_product_body_and_seo_live_public_verified",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R256_ONE_PRODUCT_WRITE_NATIVE_PUBLIC_MOBILE",
+            "lastEvidence": "R256: Eine weitere Produktseite mit vollständigem individuellem SEO-Titel/Meta und quellenbasiertem Detailtext live; öffentliche HTML-/JSON-/Offer-Prüfung und zwei mobile Ansichten bestätigt. Kein GSC-Report wiederholt, keine Index-/Rankingwirkung aus dem Write abgeleitet.",
+            "nextAllowedStep": "Weitere gezielt verifizierbare Produkttexte verbessern. Vorhandene Ranking-/Indexmessungen nur im erlaubten Tagesrahmen fortführen.",
+            "blockers": [
+              "Google-Indexierung und Rankingwirkung der neuen R256-Texte unbekannt.",
+              "Keine frische Google-Indexierung oder Rankingwirkung nachgewiesen.",
+              "Zwei Auswahlproben bleiben unverified."
+            ]
+          }
         }
       ],
       "visibilitySupplementR49": {
@@ -37433,6 +37628,12 @@
         "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
         "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json",
         "shopifyWrites": 1
+      },
+      "run257": {
+        "report": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+        "proof": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+        "writes": 2,
+        "guardDeployed": false
       }
     },
     {
@@ -48135,6 +48336,15 @@
         "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
         "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R256.json"
       ]
+    },
+    {
+      "revision": 257,
+      "at": "2026-11-16T10:43:09Z",
+      "summary": "Hammock body and one existing Gray media association live,33sourceSKU matches and public/mobile verified; pagination guard local draft, capacity/size/schema questions remain.",
+      "sources": [
+        "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+        "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -49487,7 +49697,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 256,
+    "latestCanonicalRevision": 257,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -50470,6 +50680,11 @@
     "run256": {
       "atUtc": "2026-11-16T09:50:48Z",
       "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-LIVE-20261116-R256.md",
+      "receipt": "unknown"
+    },
+    "run257": {
+      "atUtc": "2026-11-16T10:43:09Z",
+      "report": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
       "receipt": "unknown"
     }
   },
@@ -76250,6 +76465,17 @@
     "newProductId": "gid://shopify/Product/15491768058241",
     "consoleWorklistUnchanged": true,
     "publicQaState": "PASS",
+    "claudeReceipt": "unknown"
+  },
+  "run257": {
+    "report": "dropship/codex-handoff-20261018/HAENGEMATTE-LIVE-20261116-R257.md",
+    "proof": "dropship/codex-handoff-20261018/HAENGEMATTE-BELEGE-20261116-R257.json",
+    "shopifyWrites": 2,
+    "productId": "gid://shopify/Product/15450856292737",
+    "variantSourceMatches": 33,
+    "publicQaState": "PASS",
+    "localGuardDeployed": false,
+    "consoleWorklistUnchanged": true,
     "claudeReceipt": "unknown"
   }
 }

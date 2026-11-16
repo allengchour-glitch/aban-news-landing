@@ -1,3 +1,15 @@
+# R257 – Hängemattenauswahl und graues Variantenbild live – 16.11.2026
+
+Die [Hängematte](https://luxestyle.ch/products/reise-hangematte-aus-fallschirm-nylon-86eb20) hat jetzt ca.360Wörter mit klarer Auswahlhilfe für33Ausführungen, Material, Lieferumfang und FAQ. Alle33Shop-SKUs sind anhand der gesicherten aktuellen CJ-Antwort exakt zugeordnet. Widersprüchliche Masse, Traglast/Nutzerzahl und Zubehör bleiben offen.
+
+Die Auswahl«Grau» zeigte ein andersfarbiges Galeriebild. Das vorhandene korrekte graue Foto wurde nur dieser Variante zugeordnet; kein Upload oder neue Datei. Zwei bestätigte Shopify-Writes (Body und vorhandene Medienzuordnung). Titel/SEO/Preise/SKUs/Inventar/Tags/Optionen und37Galeriemedien erhalten. Öffentliche33Varianten/Offers, zwei360/390px-Ansichten und drei Auswahlproben bestätigt; spätere Schemagegenprobe auch mit richtigem Gray-Bild. Keine Google-/Merchant-/Verkaufswirkung behaupten.
+
+Zweite CJ-Ergebnisseite wiederholte erste Seite; Scan nach zwei kleinen Abfragen gestoppt. LokalerGuard mit20Prüfaussagen und roter Mutationsgegenprobe vorbereitet, **nicht deployt**. EinDRAFT-Messer mit CH-Versandsperre blieb unangetastet. Quellenspeicherfehler führten zu fünf statt der geplanten ein bis zwei Detailabfragen; die finale vollständige Antwort ist reproduzierbar gesichert.
+
+[Bericht](HAENGEMATTE-LIVE-20261116-R257.md) · [Belege](HAENGEMATTE-BELEGE-20261116-R257.json) · [Guard-Entwurf](CJ-PAGINATION-ENTWURF-20261116-R257.md). Keine neuen Tagesreports/Bestellwatch/Automation.36er-Konsolenliste und24TaskIDs erhalten. Claude-Empfang unbekannt. **Memory am Schluss des Nutzerberichts verlinken.**
+
+---
+
 # R256 – Ein weiterer Produkttext und SEO live verbessert – 16.11.2026
 
 [Katzenspielzeug](https://luxestyle.ch/products/interaktives-katzenspielzeug-mit-rotierender-s-627400) mit ungefähr348Wörtern zu Akku/USB, Bedienung, Material/Gewicht, tatsächlicher weiss-schwarzer Ausführung, Lieferumfang und FAQ verbessert. Neuer SEO-Titel und vollständige Meta; unbelegte Stress-/Laufzeit-, weitere Farb- und alte Liefer-/Rabatttexte bereinigt. Ein bestätigter Shopify-Write; Titel, CHF29.90, eine Defaultvariante, sieben Medien, Tags und Inventarregeln erhalten. Aktuelle CJ-Kindbindung CJYD279383701AZ und Quellbilder gegengeprüft. Öffentliches HTML/JSON/Offer und zwei360/390px-Ansichten bestätigt; kein neuer Medienupload oder Socialpost.

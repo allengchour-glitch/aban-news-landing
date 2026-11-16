@@ -3068,3 +3068,20 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [R256-Bericht](PRODUKTDETAILS-LIVE-20261116-R256.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R256.json).
 
 [LUXESTYLE_R256_20261116]
+
+
+### R257 – Hängemattenauswahl, Variantenbild und lokaler Guard
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität | Core4/Revision256/heutigen Block und frühere Hängemattenbelege gelesen. | Tagesberichte und beendete Kaufwatch nicht wiederholt. |
+| Quelle / Varianten | Aktuelle gesicherte CJ-PID-Antwort mit33Shop-SKUs verglichen. |33exakteKind-SKU-Zuordnungen;5Detailcalls(4erfolgreich,1MCP-Fehler) wegen lokaler Speicherfehler transparent dokumentiert. |
+| Live-Text | Body mit ca.360Wörtern und Auswahltabelle aktualisiert. |1dedizierterProduktwrite/isError=false+Readback; Titel und bestehendes SEO-Paar erhalten. |
+| Live-Bildzuordnung | Echtes Auswahlproblem«Grau» reproduziert und vorhandenes passendes Produktmedium genau dieser Variante zugeordnet. |1Mutation/userErrors=[]+Readback; keine neuen Medien, nur eine beabsichtigte Variantenrelation, Preise/SKUs/Optionen/Inventar/Tags/37Galeriemedien gleich. |
+| Öffentlich / mobil |33Varianten/33Offers,360/390px und drei Auswahlproben geprüft; Grau nachfixgezielt nachgelesen. |Pass; richtiges Gray-Bild auch nach späterer Schema-Gegenprobe. Verzögerte erste Antwort als Vorbeleg erhalten; Root sah2Screenshots. |
+| Lokaler Entwurf | Wiederholte CJ-Seite erkannt und Scan gestoppt; Guard mit20Prüfaussagen+Mutationsgegenprobe vorbereitet. |Nichtdeployt,keinConnector-/Automationwrite. DRAFT-Messer mit CH-Sperren unangetastet. |
+| Offene Arbeit | Traglast, Personenzahl, Masse, Zubehör und Schemahinweise getrennt fortgeschrieben. |KeineVollfehlerfrei-/Index-/Ranking-/Salesquote, keine Kundenansprache, Preis-/Budget-/Flow-/DNS-/Settings-/Kanalschreibzugriffe. |
+
+[R257-Bericht](HAENGEMATTE-LIVE-20261116-R257.md) · [Belege](HAENGEMATTE-BELEGE-20261116-R257.json) · [Guard-Entwurf](CJ-PAGINATION-ENTWURF-20261116-R257.md).
+
+[LUXESTYLE_R257_20261116]
