@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="aban-nav" content="off">
-<title>🎢 Neon-Park — Freizeitpark-Koop aus der Ego-Perspektive</title>
+<title>🎢 Neon-Park — Regie für die Lichterpremiere</title>
 <link rel="canonical" href="https://abannews.com/neon-park.html">
-<meta name="description" content="Neon-Park: kleiner 3D-Freizeitpark im Browser — Attraktionen ansehen und fahren, ohne Anmeldung.">
-<meta property="og:title" content="🎢 Neon-Park — Freizeitpark-Koop aus der Ego-Perspektive | aban news">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="description" content="Führe vier Probefahrten im 3D-Freizeitpark: Motor regeln, Teetassen lenken, Schiff anschieben und Achterbahn bremsen. Solo oder im Online-Koop bis zur Lichterpremiere.">
+<meta property="og:title" content="🎢 Neon-Park — Regie für die Lichterpremiere | aban news">
 <meta property="og:image" content="https://abannews.com/og-arcade.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:description" content="Neon-Park: kleiner 3D-Freizeitpark im Browser — Attraktionen ansehen und fahren, ohne Anmeldung.">
+<meta property="og:description" content="Vier echte Probefahrten und eine große Lichterpremiere. Übernimm die Park-Regie allein oder zu zweit.">
 <meta property="og:url" content="https://abannews.com/neon-park.html">
 <meta property="og:type" content="website">
-<meta name="description" content="Lauft zu zweit durch euren eigenen Freizeitpark: Kettenflieger, Teetassen, Piratenschiff und Achterbahn laufen nur, wenn BEIDE gleichzeitig am Bedienpult stehen. Online-Koop, erste Person, Handy und Desktop.">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:#0d1524;
@@ -69,6 +69,7 @@
   #pauseO p{margin:12px 0;line-height:1.5;color:#cfe8ff}
   #pauseResume{min-height:48px;padding:12px 24px;border:0;border-radius:14px;background:#7de3ff;color:#102638;font:900 1rem system-ui;cursor:pointer}
 </style>
+<link rel="stylesheet" href="/css/neon-park.css?v=60b6a961230e">
 </head>
 <body>
 
@@ -85,18 +86,31 @@
   <div id="ann"></div><div id="hint"></div>
   <div id="cross"></div>
   <div id="bar"><i></i></div>
-  <div class="btn" id="bAct">✋</div>
+  <button class="btn" id="bAct" type="button" aria-label="Probefahrt starten (E)">Start<br>E</button>
   <div class="btn" id="bPing">📣</div>
   <div id="stick"><div id="knob"></div></div>
+  <div id="mission"></div>
+  <section id="director" aria-labelledby="rideTitle" hidden>
+    <h2 id="rideTitle"></h2><p id="rideGoal"></p>
+    <div id="rideGauge" role="meter" aria-label="Fahrtwert und grüner Zielbereich" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="targetBand"></i><i id="rideNeedle"></i></div>
+    <div id="rideHold"><i></i></div><p id="rideRule"></p>
+    <div id="rideButtons"><button type="button" id="rideMinus">−</button><button type="button" id="ridePlus">+</button></div>
+    <p id="rideFeedback" aria-live="polite"></p>
+  </section>
 </div>
+<div id="showLight"></div>
 <div id="ov">
   <h1>🎢 NEON-PARK</h1>
-  <p>Euer Freizeitpark steht — aber <b>nichts läuft</b>. Jedes Fahrgeschäft hat <b>zwei Bedienpulte</b>.
-     Nur wenn <b>beide gleichzeitig</b> darauf stehen, startet es. Erste Person, echtes Online-Koop.</p>
+  <p>Heute ist <b>Lichterpremiere</b>! Besteht vier Probefahrten: Motor regeln, Teetassen lenken,
+     Schiffsschwung dosieren und die Achterbahn sanft bremsen. Haltet jede grüne Vorgabe,
+     dann eröffnet ihr am <b>Stern auf dem Hauptplatz</b> die Lichtshow.</p>
   <div class="chips"><span class="chip">🎠 Kettenflieger</span><span class="chip">☕ Teetassen</span>
     <span class="chip">🏴‍☠️ Piratenschiff</span><span class="chip">🎢 Achterbahn zum Mitfahren</span></div>
   <button class="big" id="bCoop" style="background:#ffb066">⚡ Online zu zweit — 1 Tipp</button>
-  <button class="big" id="bSolo">🧍 Allein erkunden ▶</button>
+  <p>Gehen: WASD / Pfeile · Blick: Maus / rechts wischen · Pult starten: E / Start.<br>
+     Fahrt steuern: Q / R oder die beiden Regie-Tasten. Solo vollständig spielbar;
+     zu zweit könnt ihr helfen oder die Fahrten aufteilen. Kein Zeitlimit.</p>
+  <button class="big" id="bSolo">🧍 Premiere allein starten ▶</button>
   <details style="margin:6px auto;max-width:340px;color:#bfe9ff;font-size:.9rem">
     <summary style="cursor:pointer;opacity:.85">oder gezielt mit einem Freund ▾</summary>
     <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px">
@@ -112,6 +126,7 @@
 <script src="/js/vendor/GLTFLoader.js"></script>
 <script src="/js/vendor/peerjs.min.js"></script>
 <script src="/js/mp.js"></script>
+<script src="/js/neon-park/premiere.js?v=a1d8fa7c6595"></script>
 <script>
 (function(){
 "use strict";
@@ -177,11 +192,7 @@ function fortschritt(){
   if(fertig>=offen&&offen>0)setTimeout(function(){var l=document.getElementById("lade");if(l)l.style.display="none";},250);
 }
 
-/* ---------- Fahrgeschaefte ----------
-   Jedes hat ZWEI Bedienpulte. Die Pulte sind Zustands-Felder, keine Ereignisse:
-   beide Clients rechnen aus den (ohnehin synchronisierten) Positionen dasselbe
-   Ergebnis aus. Das ist derselbe Ansatz wie bei den Druckplatten im Tempel und
-   braucht keine einzige Extra-Nachricht. */
+/* Die alten Pultpaare sind nun gleichwertige Regie-Zugänge, keine Druckplatten. */
 var RIDES=[
  {id:"kette", name:"🎠 Kettenflieger", datei:"th32_kettenkarussell", x:-30, z:-14, rot:0,
   pult:[[-30,-2.4],[-30,-25.6]], r:9.6, tempo:1.0},
@@ -194,7 +205,7 @@ var RIDES=[
 ];
 var ridesEl=document.getElementById("rides");
 RIDES.forEach(function(r){
-  r.an=false;r.halten=0;
+  r.an=false;
   r.el=document.createElement("div");r.el.className="ride";r.el.textContent="○ "+r.name;
   ridesEl.appendChild(r.el);
 });
@@ -215,15 +226,21 @@ function pult(x,z,ride){
     new THREE.MeshBasicMaterial({color:0xff5a4a}));
   la.position.set(0,1.2,-0.9);g.add(la);
   scene.add(g);
-  var p={g:g,x:x,z:z,ring:ri,lampe:la,ride:ride,belegt:false};PULTE.push(p);return p;
+  var p={g:g,x:x,z:z,ring:ri,lampe:la,ride:ride};PULTE.push(p);return p;
 }
 RIDES.forEach(function(r){r.pulte=r.pult.map(function(p){return pult(p[0],p[1],r);});});
 
 /* ---------- Park bestuecken ---------- */
 laden("th32_parkeingang",0,62,Math.PI);
-laden("th32_kettenkarussell",-30,-14,0,function(o,mx){RIDES[0].obj=o;RIDES[0].mx=mx;});
-laden("th32_teetassen",30,-14,0,function(o,mx){RIDES[1].obj=o;RIDES[1].mx=mx;});
-laden("th32_piratenschiff",0,-44,0,function(o,mx){RIDES[2].obj=o;RIDES[2].mx=mx;});
+function regieModell(i,o,mx){
+  RIDES[i].obj=o;RIDES[i].mx=mx;
+  RIDES[i].rig=o?o.getObjectByName(["Drehkranz","Drehteller","Pendel"][i]):null;
+  if(mx&&RIDES[i].rig)mx._parkRegie=true;
+  RIDES[i].teller=i===1&&o?[0,1,2].map(function(n){return o.getObjectByName("Unterteller"+n);}):[];
+}
+laden("th32_kettenkarussell",-30,-14,0,function(o,mx){regieModell(0,o,mx);});
+laden("th32_teetassen",30,-14,0,function(o,mx){regieModell(1,o,mx);});
+laden("th32_piratenschiff",0,-44,0,function(o,mx){regieModell(2,o,mx);});
 laden("th13_riesenrad",-34,26,Math.PI/2);
 laden("th13_festzelt",34,26,0);
 laden("th13_imbissbude",-12,14,0);
@@ -458,7 +475,7 @@ function frei(x,z){
 }
 
 /* ---------- Eingabe ---------- */
-var keys={},mx=0,mz=0,lookDX=0,lookDY=0,laeuft=false,gewonnen=false,t0=0,tickets=0;
+var keys={},mx=0,mz=0,lookDX=0,lookDY=0,laeuft=false,gewonnen=false,t0=0;
 var paused=false,resetTouch=function(){},pauseAt=0,pauseOnline=false;
 function resetControls(){keys={};mx=0;mz=0;resetTouch();}
 addEventListener("blur",resetControls);
@@ -476,8 +493,14 @@ document.getElementById("pauseBtn").onclick=togglePause;
 document.getElementById("pauseResume").onclick=togglePause;
 addEventListener("keydown",function(e){
   if(e.target&&(e.target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)))return;
+  if(e.target&&e.target.tagName==="BUTTON"&&(e.key===" "||e.key==="Enter"))return;
   if(e.key==="Escape"){if(!e.repeat)togglePause();return;}
   if(paused)return;
+  if(!e.repeat&&laeuft&&!gewonnen){
+    if(e.key.toLowerCase()==="e")regieAktion("start");
+    if(e.key.toLowerCase()==="q")regieAktion("minus");
+    if(e.key.toLowerCase()==="r")regieAktion("plus");
+  }
   keys[e.key.toLowerCase()]=1;
   if(e.key===" "){e.preventDefault();}
 });
@@ -498,7 +521,7 @@ addEventListener("mousemove",function(e){
   addEventListener("touchstart",function(e){
     if(!laeuft||paused||gewonnen)return;
     for(var i=0;i<e.changedTouches.length;i++){var t=e.changedTouches[i];
-      if(t.target&&t.target.closest&&t.target.closest(".btn,#ov,#sBack"))continue;
+      if(t.target&&t.target.closest&&t.target.closest(".btn,#ov,#sBack,#director,#pauseBtn,#pauseO"))continue;
       if(t.clientX<innerWidth*0.5&&id===null){
         id=t.identifier;cx=t.clientX;cy=t.clientY;
         st.style.left=(cx-59)+"px";st.style.top=(cy-59)+"px";st.style.bottom="auto";
@@ -528,17 +551,38 @@ addEventListener("mousemove",function(e){
 })();
 
 /* ---------- HUD ---------- */
-var annT=0;
+var annT=0,gemeldetePhase="rehearsal";
+var premiere=ParkPremiere.create(),wahl=-1,cmdSeq=0,lastCommand=[-1,-1],lastInput=[-10,-10],syncT=0,uiT=0;
 function ann(t,c){var a=document.getElementById("ann");a.textContent=t;a.style.color=c||"#ffd166";a.style.opacity=1;annT=2.8;}
 function hint(t,ms){var h=document.getElementById("hint");h.textContent=t;h.style.opacity=1;
   clearTimeout(h._t);h._t=setTimeout(function(){h.style.opacity=0;},ms||3200);}
 function hud(){
-  document.getElementById("pTick").textContent="🎟️ "+tickets;
-  RIDES.forEach(function(r){r.el.className="ride"+(r.an?" on":"");
-    r.el.textContent=(r.an?"● ":"○ ")+r.name;});
+  var done=premiere.rides.filter(function(r){return r.status==="passed";}).length;
+  document.getElementById("pTick").textContent="★ "+done+"/4 Premierenfahrten";
+  RIDES.forEach(function(r,i){
+    var q=premiere.rides[i];r.el.className="ride"+(q.status==="passed"?" on":q.status==="running"?" ready":"");
+    r.el.textContent=(q.status==="passed"?"✓ ":q.status==="running"?"▶ ":"○ ")+r.name+
+      (q.status==="running"?" · "+Math.min(3,q.stage+1)+"/3":q.status==="passed"?" · "+"★".repeat(q.stars):"");
+  });
+  var objective=done<4?"4 Probefahrten → Lichtshow\nGrün halten: drei Vorgaben je Fahrt.\n"+richtung():
+    premiere.phase==="ready"?"Alle Fahrten bestanden!\n★ Zum Stern am Hauptplatz (0 / 6).\nE / Start eröffnet die Lichtshow.":"Die Lichterpremiere läuft!";
+  document.getElementById("mission").textContent=objective;
+  document.getElementById("pClock").textContent="⏱ "+Math.floor(premiere.time)+"s";
+}
+function abstandPult(i,p){return Math.min.apply(null,RIDES[i].pulte.map(function(q){return Math.hypot(q.x-p.x,q.z-p.z);}));}
+function richtung(){
+  var best=-1,d=Infinity;
+  RIDES.forEach(function(r,i){if(premiere.rides[i].status!=="passed"){
+    var n=abstandPult(i,ich);if(n<d){d=n;best=i;}
+  }});
+  if(best<0)return "";
+  var p=RIDES[best].pulte.reduce(function(a,b){return Math.hypot(a.x-ich.x,a.z-ich.z)<Math.hypot(b.x-ich.x,b.z-ich.z)?a:b;}),angle=Math.atan2(-(p.x-ich.x),-(p.z-ich.z))-ich.yaw;
+  angle=Math.atan2(Math.sin(angle),Math.cos(angle));
+  return (Math.abs(angle)<0.55?"↑ ":angle>0?"← ":"→ ")+ParkPremiere.defs[best].name+" · "+Math.round(d)+" m zum Pult";
 }
 
 /* ---------- Netz ---------- */
+var PARK_NET_ID="park-premiere1"; // Eigenes Protokoll: alte Park-Clients dürfen nicht mitspielen.
 var NET=null,ONLINE=false,slot=0,warte=false,abgebrochen=false,jeVerbunden=false;
 function netzStatus(t){document.getElementById("st").textContent=t;}
 function verdrahte(){
@@ -551,7 +595,9 @@ function verdrahte(){
       pFig.visible=true;
       if(!laeuft)start();
       ann("🌐 Verbunden — ihr seid zu zweit!","#7dffc8");
-      hint("Stellt euch BEIDE auf die zwei Pulte eines Fahrgeschäfts.",5000);
+      lastCommand=[-1,-1];lastInput=[-10,-10];cmdSeq=0;
+      if(slot===0)sendePremiere();else if(NET)NET.send({t:"phello"});
+      hint("Gemeinsame Regie: Fahrt starten und mit Q/R oder den Regie-Tasten steuern.",5000);
     } else if(s==="waiting"){
       if(!(NET&&NET.role==="host"&&NET.code))netzStatus("⏳ Warte auf Mitspieler …");
     } else if(s==="lost"){hint("📡 Verbindung wackelt …",2400);}
@@ -560,16 +606,18 @@ function verdrahte(){
       document.getElementById("bPing").style.display="none";
       document.getElementById("bCancel").style.display="none";
       if(!jeVerbunden)netzStatus("Kein Mitspieler gefunden — starte allein oder versuch es nochmal.");
-      else hint("❌ Partner getrennt — du kannst allein weitermachen (Pult 4 s halten).",4200);
+      else hint("Partner getrennt — eure Premierenfahrten gehen solo weiter.",4200);
+      slot=0;document.getElementById("bSolo").style.display="inline-block";
     }
   });
   NET.onMessage(function(d){
     if(!d||!d.t)return;
-    if(d.t==="pos"){partner.x=d.x;partner.z=d.z;partner.yaw=d.y;partner.da=true;}
-    else if(d.t==="ride")starteRide(d.i,true);
-    else if(d.t==="tick"&&TICKETS[d.i]&&!TICKETS[d.i].weg)nimmTicket(d.i,true);
-    else if(d.t==="ping"){hint("📣 Dein Partner ruft dich!",2000);}
-    else if(d.t==="win"&&!gewonnen)sieg(true);
+    if(abgebrochen||!ONLINE)return;
+    if(d.t==="pos"&&Number.isFinite(d.x)&&Number.isFinite(d.z)&&Number.isFinite(d.y)&&Math.abs(d.x)<=70&&Math.abs(d.z)<=70){partner.x=d.x;partner.z=d.z;partner.yaw=d.y;partner.da=true;}
+    else if(d.t==="phello"&&slot===0)sendePremiere();
+    else if(d.t==="pcmd"&&slot===0){if(pruefeKommando(d,partner,1))sendePremiere();}
+    else if(d.t==="pstate"&&slot===1){var next=ParkPremiere.snapshot(premiere,d.s);if(next){premiere=next;uiT=0;}}
+    else if(d.t==="ping")hint("📣 Dein Partner ruft dich!",2000);
   });
 }
 function vor(){
@@ -582,12 +630,12 @@ function vor(){
 }
 document.getElementById("bCoop").onclick=function(){
   if(!vor())return;netzStatus("⚡ Suche Mitspieler …");
-  try{NET=MP.quick("park");}catch(e){netzStatus("Fehler: "+e.message);warte=false;return;}
+  try{NET=MP.quick(PARK_NET_ID);}catch(e){netzStatus("Fehler: "+e.message);warte=false;return;}
   verdrahte();
 };
 document.getElementById("bHost").onclick=function(){
   if(!vor())return;
-  try{NET=MP.host("park");}catch(e){netzStatus("Fehler: "+e.message);warte=false;return;}
+  try{NET=MP.host(PARK_NET_ID);}catch(e){netzStatus("Fehler: "+e.message);warte=false;return;}
   verdrahte();
   var link=location.origin+location.pathname+"?raum="+(NET.code||"");
   try{if(navigator.clipboard&&NET.code)navigator.clipboard.writeText(link);}catch(e){}
@@ -597,7 +645,7 @@ document.getElementById("bJoin").onclick=function(){
   var c=(document.getElementById("iCode").value||"").toUpperCase().replace(/[^A-Z]/g,"");
   if(c.length<4){netzStatus("Bitte 4 Buchstaben eingeben.");return;}
   if(!vor())return;netzStatus("🚪 Trete Raum "+c+" bei …");
-  try{NET=MP.join("park",c);}catch(e){netzStatus("Fehler: "+e.message);warte=false;return;}
+  try{NET=MP.join(PARK_NET_ID,c);}catch(e){netzStatus("Fehler: "+e.message);warte=false;return;}
   verdrahte();
 };
 document.getElementById("bCancel").onclick=function(){
@@ -611,57 +659,140 @@ document.getElementById("bPing").onclick=function(){
 (function(){var m=location.search.match(/[?&]raum=([A-Za-z]{4})/);
   if(m)setTimeout(function(){document.getElementById("iCode").value=m[1];document.getElementById("bJoin").click();},500);})();
 
-/* ---------- Tickets ---------- */
-var TICKETS=[],tGeo=new THREE.OctahedronGeometry(0.34,0);
-[[-18,8],[18,8],[-24,-30],[24,-30],[0,-24],[-40,0],[40,0],[0,30],[-8,44],[8,44]]
-.forEach(function(p,i){
-  var m=new THREE.Mesh(tGeo,new THREE.MeshLambertMaterial({color:0xffd166,emissive:0x8a6a10,emissiveIntensity:0.9}));
-  m.position.set(p[0],1.1,p[1]);scene.add(m);
-  TICKETS.push({m:m,x:p[0],z:p[1],weg:false,ph:i*0.7});
-});
-function nimmTicket(i,vomNetz){
-  var t=TICKETS[i];if(!t||t.weg)return;
-  t.weg=true;t.m.visible=false;tickets++;hud();
-  if(!vomNetz&&ONLINE&&NET)try{NET.send({t:"tick",i:i});}catch(e){}
+/* ---------- Premieren-Regie statt Sammelobjekte und Wartepulte ---------- */
+function sendePremiere(){if(ONLINE&&NET&&slot===0)try{NET.send({t:"pstate",s:premiere});}catch(e){}}
+function pruefeKommando(d,p,actor){
+  if(!d||!p||actor===1&&!p.da||!Number.isInteger(d.seq)||d.seq<=lastCommand[actor])return false;
+  if(["start","minus","plus","open"].indexOf(d.kind)<0)return false;
+  if(d.kind==="open"){
+    if(Math.hypot(p.x,p.z-6)>5)return false;
+  }else if(!Number.isInteger(d.i)||!RIDES[d.i]||abstandPult(d.i,p)>6)return false;
+  lastCommand[actor]=d.seq;
+  if(premiere.time-lastInput[actor]<0.12)return false;
+  if(!ParkPremiere.action(premiere,d.i,d.kind))return false;
+  lastInput[actor]=premiere.time;return true;
 }
+function regieAktion(kind){
+  if(!laeuft||paused||gewonnen)return;
+  var i=naechstesPult();
+  if(premiere.phase==="ready"&&kind==="start"){
+    if(Math.hypot(ich.x,ich.z-6)>5){hint("★ Eröffnet die Premiere am Stern auf dem Hauptplatz.");return;}
+    kind="open";
+  }else if(i<0){hint("Gehe zu einem leuchtenden Pult (höchstens 6 m entfernt).");return;}
+  var d={t:"pcmd",i:i,kind:kind,seq:++cmdSeq};
+  if(ONLINE&&slot===1){if(NET)NET.send(d);}
+  else if(pruefeKommando(d,ich,0))sendePremiere();
+  uiT=0;
+}
+function naechstesPult(){
+  var n=-1,dist=6;
+  RIDES.forEach(function(r,i){var d=abstandPult(i,ich);if(d<=dist){n=i;dist=d;}});return n;
+}
+var regiePanel=document.getElementById("director");
+function regieHUD(){
+  wahl=naechstesPult();var visible=laeuft&&!gewonnen&&wahl>=0&&premiere.phase==="rehearsal";
+  regiePanel.hidden=!visible;
+  var b=document.getElementById("bAct");
+  b.disabled=paused||!laeuft||gewonnen;
+  b.innerHTML=premiere.phase==="ready"?"★ Lichtshow<br>E":"Start<br>E";
+  if(!visible)return;
+  var r=premiere.rides[wahl],def=ParkPremiere.defs[wahl],running=r.status==="running",passed=r.status==="passed";
+  document.getElementById("rideTitle").textContent=RIDES[wahl].name+" · "+(passed?"bestanden "+"★".repeat(r.stars):running?"Probefahrt "+(r.stage+1)+"/3":"Bereit zur Probefahrt");
+  document.getElementById("rideGoal").textContent=passed?"Diese Attraktion ist bereit für die Premiere.":running?def.labels[r.stage]+" · Grün halten: "+Math.round(r.hold/2.2*100)+"%":"E / Start drücken. Dann die weiße Nadel im grünen Bereich halten.";
+  document.getElementById("rideRule").textContent=def.rule;
+  var min=wahl===1?-1:0,span=wahl===1?2:1,target=ParkPremiere.target(wahl,r);
+  var band=document.getElementById("targetBand");band.style.left=((target-def.tolerance-min)/span*100)+"%";band.style.width=(2*def.tolerance/span*100)+"%";
+  document.getElementById("rideNeedle").style.left=Math.max(0,Math.min(98,(r.value-min)/span*100))+"%";
+  document.getElementById("rideGauge").setAttribute("aria-valuenow",Math.round((r.value-min)/span*100));
+  document.getElementById("rideGauge").setAttribute("aria-valuetext",Math.round(r.value*100)+"; Ziel "+Math.round(target*100));
+  document.querySelector("#rideHold i").style.width=Math.min(100,r.hold/2.2*100)+"%";
+  document.getElementById("rideMinus").textContent="Q · "+def.minus;
+  document.getElementById("ridePlus").textContent="R · "+def.plus;
+  document.getElementById("rideMinus").disabled=!running||paused;
+  document.getElementById("ridePlus").disabled=!running||paused;
+  var feedback=!running?(passed?"✓ Nächste Attraktion wählen.":"Ein Pult genügt — auch im Koop."):wahl===2?
+    (Math.abs(r.position)<0.2?"Schiff im Tal — jetzt Schub geben!":"Schiff schwingt — auf das Tal warten."):
+    wahl===0?"Motor: "+Math.round(r.setting*100)+"% · mit einzelnen Impulsen dosieren.":
+    wahl===1?"Nach einem Lenkimpuls abwarten oder gegenlenken.":"Der Antrieb beschleunigt von selbst — rechtzeitig bremsen.";
+  document.getElementById("rideFeedback").textContent=feedback;
+}
+["minus","plus"].forEach(function(k){document.getElementById(k==="minus"?"rideMinus":"ridePlus").onclick=function(){regieAktion(k);};});
+document.getElementById("bAct").onclick=function(){regieAktion("start");};
 
-/* ---------- Fahrgeschaefte starten ---------- */
-function starteRide(i,vomNetz){
-  var r=RIDES[i];if(!r||r.an)return;
-  r.an=true;hud();
-  if(r.mx)r.mx._actions.forEach(function(a){a.paused=false;});
-  r.pulte.forEach(function(p){p.lampe.material.color.setHex(0x4affa0);
-    p.ring.material.color.setHex(0x7dffc8);});
-  ann(r.name+" läuft!","#7dffc8");
-  if(r.id==="bahn"){ZUGAN=true;}
-  if(!vomNetz&&ONLINE&&NET)try{NET.send({t:"ride",i:i});}catch(e){}
-  if(RIDES.every(function(x){return x.an;}))setTimeout(function(){sieg(false);},900);
+/* Sternbühne und vier Lichtsäulen: Finale als Teil des Parks, ohne Sammelziel. */
+var buehne=new THREE.Group();buehne.position.set(0,0,6);scene.add(buehne);
+var stern=new THREE.Mesh(new THREE.CylinderGeometry(2.5,2.8,0.18,5),new THREE.MeshLambertMaterial({color:0xffc45c,emissive:0x39210b}));
+stern.position.y=0.12;buehne.add(stern);
+var finaleLichter=[];
+for(var fi=0;fi<4;fi++){
+  var fl=new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.5,7,8),new THREE.MeshBasicMaterial({color:[0x7de3ff,0xffb066,0xc7a6ff,0x7dffc8][fi],transparent:true,opacity:0.2}));
+  fl.position.set((fi%2?1:-1)*4,3.5,(fi<2?-1:1)*3);buehne.add(fl);finaleLichter.push(fl);
 }
-function sieg(vomNetz){
-  if(gewonnen)return;if(paused)togglePause();document.getElementById("pauseBtn").style.display="none";gewonnen=true;
-  var s=Math.round((performance.now()-t0)/1000);
-  var punkte=60+tickets*8+Math.max(0,180-s);
-  ann("🎉 DER PARK IST ERÖFFNET!","#ffd166");
-  if(!vomNetz&&ONLINE&&NET)try{NET.send({t:"win"});}catch(e){}
+var funken=new THREE.Group();funken.visible=false;scene.add(funken);
+for(var ff=0;ff<48;ff++){
+  var fm=new THREE.Mesh(new THREE.SphereGeometry(0.14,5,4),new THREE.MeshBasicMaterial({color:[0xffd166,0x7de3ff,0xff87cf,0x7dffc8][ff%4]}));funken.add(fm);
+}
+function premiereWelt(dt){
+  RIDES.forEach(function(r,i){
+    var q=premiere.rides[i],on=q.status!=="waiting";
+    if(q.status==="passed"&&!r.an){r.an=true;ann(r.name+" · Probefahrt bestanden!","#7dffc8");}
+    if(r.mx){r.mx.timeScale=on?Math.max(0.12,Math.abs(q.value)):0;r.mx._actions.forEach(function(a){a.paused=!on||!!r.rig;});}
+    if(r.rig&&on){
+      if(i===2)r.rig.rotation.z=q.status==="passed"?Math.sin(premiere.time*1.8)*0.6:q.position*0.9;
+      else{
+        var speed=q.status==="passed"?0.55:q.value;
+        r.rig.rotation.y+=dt*speed*1.8;
+        r.teller.forEach(function(t){if(t)t.rotation.y-=dt*speed*3.6;});
+      }
+    }
+    r.pulte.forEach(function(p){p.lampe.material.color.setHex(q.status==="passed"?0x4affa0:on?0xffcc55:0x7de3ff);p.ring.material.color.setHex(q.status==="passed"?0x7dffc8:0xffc85a);p.ring.material.opacity=abstandPult(i,ich)<6?0.9:0.5;});
+  });
+  ZUGAN=premiere.rides[3].status!=="waiting";
+  if(gemeldetePhase!==premiere.phase){
+    if(premiere.phase==="ready")ann("★ Alle Fahrten bereit! Zum Stern auf dem Hauptplatz.");
+    if(premiere.phase==="show")ann("✨ Bühne frei für eure Lichterpremiere!");
+    gemeldetePhase=premiere.phase;
+  }
+  var show=premiere.phase==="show"||premiere.phase==="done";
+  stern.material.emissive.setHex(premiere.phase==="ready"||show?0x886600:0x39210b);
+  finaleLichter.forEach(function(m,i){m.material.opacity=show?0.55+Math.sin(premiere.finale*4+i)*0.3:premiere.rides[i].status==="passed"?0.65:0.12;});
+  funken.visible=show;
+  if(show){
+    var dunkel=Math.min(1,premiere.finale/3);
+    scene.background.setHex(0x8fc4e8).lerp(new THREE.Color(0x142846),dunkel);scene.fog.color.copy(scene.background);sun.intensity=1.25-dunkel*0.65;
+    funken.children.forEach(function(m,i){var cycle=(premiere.finale+i*0.041)%2.4,u=cycle/2.4,a=i*2.399;
+      m.position.set(Math.cos(a)*u*14,6+Math.sin(u*Math.PI)*13,6+Math.sin(a)*u*14);m.scale.setScalar(1-u*0.7);});
+    document.getElementById("showLight").style.opacity=String(0.5+Math.sin(premiere.finale*3)*0.3);
+    document.getElementById("tag").textContent="✨ Lichterpremiere · "+Math.ceil(10-premiere.finale)+"s";
+  }
+  if(premiere.phase==="done"&&!gewonnen)sieg();
+}
+function sieg(){
+  if(gewonnen)return;if(paused)togglePause();gewonnen=true;resetControls();
+  sendePremiere(); // Endstand zuverlässig senden, bevor die laufende Synchronisation endet.
+  document.getElementById("pauseBtn").style.display="none";
+  regiePanel.hidden=true;if(document.pointerLockElement)document.exitPointerLock();
+  var punkte=ParkPremiere.score(premiere),s=Math.round(premiere.time),stars=premiere.rides.reduce(function(n,r){return n+r.stars;},0);
+  ann("🎉 EURE LICHTERPREMIERE!","#ffd166");
   if(STATION)stationPost({t:"stationDone",score:punkte});
   setTimeout(function(){
     var ov=document.getElementById("ov");ov.style.display="flex";
-    ov.querySelector("h1").textContent="🎉 PARK ERÖFFNET!";
-    ov.querySelector("p").innerHTML="🎟️ "+tickets+"/10 Tickets · ⏱️ "+s+" s · <b>Punkte "+punkte+"</b>";
-    document.getElementById("bCoop").style.display="none";
-    var b=document.getElementById("bSolo");b.style.display="inline-block";
-    b.textContent=STATION?"← Zurück zur Wildnis":"Nochmal ▶";
+    ov.querySelector("h1").textContent="✨ LICHTERPREMIERE GELUNGEN!";
+    ov.querySelector("p").textContent="Vier Premierenfahrten · zwölf Regie-Vorgaben · "+stars+"/12 Komfortsterne · "+s+" s · "+punkte+" Punkte. Euer Park leuchtet!";
+    Array.prototype.forEach.call(ov.querySelectorAll("p,details,.chips"),function(el,index){if(el.tagName!=="P"||el!==ov.querySelector("p"))el.style.display="none";});
+    ["bCoop","bHost","bJoin","bCancel"].forEach(function(id){document.getElementById(id).style.display="none";});
+    var b=document.getElementById("bSolo");b.style.display="inline-block";b.textContent=STATION?"← Zurück zur Wildnis":"Neue Premiere ▶";
     b.onclick=function(){if(STATION)stationPost("mini-back");else location.reload();};
-  },2400);
+  },1200);
 }
 
 /* ---------- Start ---------- */
 function start(){
   document.getElementById("ov").style.display="none";
-  laeuft=true;t0=performance.now();hud();
+  if(laeuft)return;
+  laeuft=true;t0=performance.now();hud();regieHUD();
   document.getElementById("pauseBtn").style.display="block";
-  hint(ONLINE?"Beide auf die zwei Pulte eines Fahrgeschäfts — dann läuft es."
-             :"Allein: auf ein Pult stellen und 4 s warten. Zu zweit geht es sofort.",5200);
+  hint("Folge dem Wegweiser zum Pult. E startet die Probefahrt, Q/R steuern sie. Kein Zeitlimit.",6000);
 }
 document.getElementById("bSolo").onclick=function(){
   if(warte){hint("⏳ Koop-Suche läuft …");return;}
@@ -674,7 +805,7 @@ function frame(now){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(now-letzte)/1000)||0.016;letzte=now;var t=now*0.001;
   if(paused&&!ONLINE)return; // Solo-Pause: die schwere Welt hinter dem Overlay nicht weiter rendern.
-  for(var i=0;i<mixer.length;i++)mixer[i].update(dt);
+  for(var i=0;i<mixer.length;i++)if(!mixer[i]._parkRegie)mixer[i].update(dt);
 
   if(laeuft&&!paused&&!gewonnen&&MITFAHRT<=0){
     var vx=0,vz=0;
@@ -696,42 +827,17 @@ function frame(now){
     }
   }
 
-  /* Pulte auswerten — reiner Zustand, kein Ereignis */
   if(laeuft&&!gewonnen){
-    RIDES.forEach(function(r,ri){
-      if(r.an)return;
-      var a=false,b=false;
-      function nah(p,x,z){return (x-p.x)*(x-p.x)+(z-p.z)*(z-p.z)<2.2*2.2;}
-      if(nah(r.pulte[0],ich.x,ich.z))a=true;
-      if(nah(r.pulte[1],ich.x,ich.z))b=true;
-      if(ONLINE&&partner.da){
-        if(nah(r.pulte[0],partner.x,partner.z))a=true;
-        if(nah(r.pulte[1],partner.x,partner.z))b=true;
-      }
-      r.pulte[0].ring.material.opacity=a?0.95:0.5;
-      r.pulte[1].ring.material.opacity=b?0.95:0.5;
-      if(a&&b){starteRide(ri,false);r.halten=0;return;}
-      if(!ONLINE&&(a||b)){                 /* Solo: halten statt gleichzeitig */
-        r.halten+=dt;
-        var bar=document.getElementById("bar");
-        bar.style.display="block";bar.firstElementChild.style.width=Math.min(100,r.halten/4*100)+"%";
-        if(r.halten>=4){starteRide(ri,false);bar.style.display="none";}
-      } else if(r.halten>0){r.halten=0;document.getElementById("bar").style.display="none";}
-    });
+    if(!ONLINE||slot===0)ParkPremiere.step(premiere,dt);
+    premiereWelt(dt);
+    uiT-=dt;if(uiT<=0){uiT=0.1;hud();regieHUD();}
+    if(ONLINE&&slot===0){syncT-=dt;if(syncT<=0){syncT=0.25;sendePremiere();}}
   }
-
   if(GAESTE.length)bewegeGaeste(dt,t);
-
-  /* Tickets */
-  for(var k=0;k<TICKETS.length;k++){
-    var ti=TICKETS[k];if(ti.weg)continue;
-    ti.m.rotation.y+=dt*2.2;ti.m.position.y=1.1+Math.sin(t*2.2+ti.ph)*0.14;
-    if(laeuft&&(ich.x-ti.x)*(ich.x-ti.x)+(ich.z-ti.z)*(ich.z-ti.z)<1.3*1.3)nimmTicket(k,false);
-  }
 
   /* Zug */
   if(ZUGAN){
-    ZUGT=(ZUGT+dt*0.055)%1;setzeZug();
+    ZUGT=(ZUGT+dt*0.055*(premiere.rides[3].status==="passed"?1:Math.max(0.12,premiere.rides[3].value)))%1;setzeZug();
     if(MITFAHRT>0){
       MITFAHRT-=dt;
       var p=bahnPunkt(ZUGT),q=bahnPunkt((ZUGT+0.006)%1);
@@ -741,7 +847,7 @@ function frame(now){
     }
   }
   /* Einsteigen: auf dem Bahnsteig, wenn der Zug vorbeikommt */
-  if(ZUGAN&&MITFAHRT<=0&&laeuft&&!gewonnen){
+  if(ZUGAN&&MITFAHRT<=0&&laeuft&&!paused&&!gewonnen&&premiere.rides[3].status==="passed"){
     var zp=ZUG.children[0].position;
     if(Math.abs(ich.x-zp.x)<3.2&&Math.abs(ich.z-zp.z)<3.2&&ich.z>40){
       MITFAHRT=1/0.055*0.98;ann("🎢 Einsteigen — festhalten!","#ffd166");
@@ -758,7 +864,6 @@ function frame(now){
   if(ONLINE){sendT-=dt;if(sendT<=0){sendT=0.07;
     if(NET)try{NET.sendFast({t:"pos",x:+ich.x.toFixed(2),z:+ich.z.toFixed(2),y:+ich.yaw.toFixed(2)});}catch(e){}}}
 
-  if(laeuft&&!gewonnen)document.getElementById("pClock").textContent="⏱️ "+(((now-t0)/1000)|0)+"s";
   if(annT>0){annT-=dt;if(annT<=0)document.getElementById("ann").style.opacity=0;}
   renderer.render(scene,camera);
 }
@@ -767,7 +872,7 @@ hud();
 
 /* Debug-Haken fuer die automatisierte Abnahme */
 window.__np={
-  state:function(){return {laeuft:laeuft,gewonnen:gewonnen,paused:paused,tickets:tickets,
+  state:function(){return {laeuft:laeuft,gewonnen:gewonnen,paused:paused,premiere:JSON.parse(JSON.stringify(premiere)),
     ich:{x:+ich.x.toFixed(2),z:+ich.z.toFixed(2)},online:ONLINE,
     rides:RIDES.map(function(r){return r.id+":"+(r.an?1:0);}),
     zug:ZUGAN,mitfahrt:+MITFAHRT.toFixed(1)};},
@@ -781,7 +886,7 @@ window.__np={
       var bb=new THREE.Box3().setFromObject(GAESTE[0].g),v=new THREE.Vector3();bb.getSize(v);
       return {skinned:sk,mesh:me,sichtbar:sicht,groesse:[+v.x.toFixed(2),+v.y.toFixed(2),+v.z.toFixed(2)]};})()};},
   tpPartner:function(x,z){partner.x=x;partner.z=z;partner.da=true;ONLINE=true;},
-  start:start
+  start:start,action:regieAktion
 };
 })();
 </script>

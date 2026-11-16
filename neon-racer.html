@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>/* 🧹 SW-Kick: Eine alte Service-Worker-Version zerbricht auf manchen Geraeten die Modell-Downloads
    (User-Diagnose: Header ok, Body scheitert). Spiel-Seiten brauchen keinen SW — abmelden und EINMAL
    neu laden; spiele.html registriert bei Bedarf die reparierte v2 neu. */
@@ -299,7 +300,7 @@ var gridMesh=neonGrid(640,64,0xb98bff,0x141c48);gridMesh.position.y=-3.6;gridMes
 // ---- Landschaft (ersetzt die alten Pylonen-Klötze) ----
 // 1) Ferner Neon-Bergring am Horizont: landscape_realm.glb (Blender-GLB aus neon-realm,
 //    Rezept spiele-dev/blender_landscape.py). Kamera bleibt bei z~0 (Treadmill) → der Ring
-//    passt perfekt als Panorama; langsame Drehung mit der Distanz = Fahrt durchs Tal.
+//    bleibt fest. Die Öffnung liegt außerhalb der gesamten sichtbaren Fahrbahn.
 var landscape=null;
 if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/landscape_realm.glb",function(g){
   var o=g.scene;
@@ -307,7 +308,7 @@ if(THREE.GLTFLoader){new THREE.GLTFLoader().load("/models/landscape_realm.glb",f
     if(n.material){var nm=(n.material.name||"").toLowerCase();
       n.material.flatShading=true;n.material.needsUpdate=true;
       n.material.emissiveIntensity=nm.indexOf("crystal")>=0?1.5:0.9;}}});
-  o.scale.set(0.62,0.62,0.62);o.position.y=-3.4;scene.add(o);landscape=o;},undefined,function(){});}
+  o.scale.set(1.5,0.62,1.5);o.position.y=-3.4;scene.add(o);landscape=o;},undefined,function(){});}
 // 2) Streckenrand-Vegetation: nature_pack.glb → InstancedMesh pro Kind-Mesh (Muster neon-realm).
 //    Jede Instanz ist an einer Strecken-Distanz d verankert (wie die Hindernisse), scrollt
 //    also mit und wird hinter dem Schiff um NAT_SPAN nach vorn recycelt (jenseits des Nebels).
@@ -387,7 +388,7 @@ function updGreen(){
 (function(){var hg=new THREE.IcosahedronGeometry(1,0),
    hm=new THREE.MeshLambertMaterial({color:0x2f7a35,emissive:0x143a18,emissiveIntensity:0.7,flatShading:true});
  for(var k=0;k<(IS_COARSE?6:8);k++){var h=new THREE.Mesh(hg,hm);
-   h.position.set((Math.random()*2-1)*170,-5-Math.random()*5,-80-Math.random()*120);
+   h.position.set((k%2?1:-1)*(90+Math.random()*80),-5-Math.random()*5,-80-Math.random()*120);
    h.scale.set(30+Math.random()*32,15+Math.random()*13,30+Math.random()*32);
    h.rotation.y=Math.random()*6.283;scene.add(h);}})();
 /* Sterne mit weicher Radial-Textur (vorher harte Quadrat-Pixel) + mehr davon — der Himmel war ein leeres schwarzes Loch */
@@ -508,7 +509,7 @@ function raceHud(force){
   charge.textContent="Boost "+race.charge+"/3 · F";charge.disabled=race.charge<3;
   var section=Math.min(2,Math.floor(dist/(PrismaRace.length/3)));document.getElementById("sectorName").textContent="Sektor "+(section+1)+" · "+["Blaue Stunde","Kupferpass","Prisma-Finale"][section];
   document.getElementById("gateCount").textContent=race.matched+"/18 Resonanzen · Ziel ab 8 · Serie "+race.chain;
-  var next=race.gates.find(function(g){return !g.resolved;});document.getElementById("nextPol").textContent=next?"Tor "+(next.id+1)+": "+(next.polarity?"− Pink":"+ Cyan")+" · "+Math.max(0,Math.ceil(next.d-dist))+" m":"Ziel voraus";
+  var next=race.gates.find(function(g){return !g.resolved;});document.getElementById("nextPol").textContent=next?"Tor "+(next.id+1)+": "+(next.polarity?"− Pink":"+ Cyan")+" · "+(next.offset<0?"← Links":next.offset>0?"Rechts →":"Mitte")+" · "+Math.max(0,Math.ceil(next.d-dist))+" m":"Ziel voraus";
   document.getElementById("raceFill").style.width=Math.min(100,dist/PrismaRace.length*100)+"%";
 }
 function profileHud(){document.getElementById("raceRecord").textContent=raceProfile.wins?raceProfile.wins+" Zieleinläufe · Bestwert "+raceProfile.bestScore+" · "+raceProfile.bestTime.toFixed(2)+" s · Torrekord "+raceProfile.gateRecord+"/18":"Gold: 16 passende Tore · Silber: 12 · Bronze: Ziel + 8 Resonanzen";}
@@ -609,7 +610,7 @@ function gameOver(){if(!running)return;var rr=PrismaRace.result(race,shield,coin
 document.getElementById("startBtn").onclick=start;
 document.getElementById("againBtn").onclick=start;
 document.getElementById("raceModeBack").onclick=function(){document.getElementById("over").classList.add("hide");document.getElementById("hud").classList.add("hide");document.getElementById("start").classList.remove("hide");profileHud();};
-document.getElementById("shareBtn").onclick=function(){var txt="Neon Racer 🏎️ — "+Math.floor(dist)+" m, "+Math.floor(speed*3.0)+" km/h\nGratis spielen: abannews.com/neon-racer.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
+document.getElementById("shareBtn").onclick=function(){var txt="Prisma Rallye ◆ — "+(race.mode==="race"?race.matched+"/18 Resonanzen, "+race.time.toFixed(2)+" s":Math.floor(dist)+" m Endlos-Training")+"\nGratis spielen: abannews.com/neon-racer.html?station=1";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
 
 function loop(now){
   requestAnimationFrame(loop);

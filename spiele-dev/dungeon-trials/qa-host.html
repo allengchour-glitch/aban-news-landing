@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><title>Dungeon · lokale Stationsprüfung</title>
+<style>html,body{margin:0;width:100%;height:100%;background:#0a0812}iframe{position:fixed;inset:0;width:100%;height:100%;border:0}</style></head><body>
+<iframe id="station" title="Dungeon-Station" allow="autoplay"></iframe>
+<script>
+/* Gleicher Ursprung und echte HTTP-Header. Kein Wildnis-Rewardsystem in dieser Testhülle. */
+window.__dungeonPosts=[];
+var frame=document.getElementById('station'),query=new URLSearchParams(location.search);
+addEventListener('message',function(e){if(e.source!==frame.contentWindow||e.origin!==location.origin)return;
+  var data=e.data;try{data=JSON.parse(data);}catch(_){}window.__dungeonPosts.push(data);});
+frame.src='/neon-dungeon.html?station=1&lvl='+Math.max(0,Math.min(2,Number(query.get('lvl'))||0))+(query.get('mp')==='local'?'&mp=local':'');
+</script></body></html>

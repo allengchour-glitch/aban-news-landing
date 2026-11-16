@@ -1,0 +1,31 @@
+{
+  "finalBrowserReport": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/result.json",
+  "initialReportsPreserved": [
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/result.json",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-fixture/result.json",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/result.json"
+  ],
+  "finalChecks": 28,
+  "priorInitialPositiveChecks": 2,
+  "duplicatedHeaderChecksAcrossInitialAndFinal": 1,
+  "distinctPositiveCheckNamesInitialPlusFinal": 29,
+  "intermediatePositiveChecks": 1,
+  "nodeStateChecks": 10,
+  "nodeOriginalFunctionsChecks": 13,
+  "inspectedScreenshots": 33,
+  "finalPageConsoleErrors": 0,
+  "allBrowserRunsClosed": true,
+  "browserClosed": true,
+  "gpuLease": "returned to parent; no subsequent browser launch",
+  "browserExecutable": "/tmp/aban-browsers/chromium-1255/chrome-linux64/chrome",
+  "networkContinuousRendering": false,
+  "networkSnapshots": "explicit original renderer",
+  "frameTrace": "prepared after successful process started; not executed",
+  "visualReview": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/visual-review.json",
+  "runtimeChangedDuringOrAfterBrowserQA": false,
+  "assetHashes": {
+    "css/dungeon-trials.css": "71aca788e383",
+    "js/dungeon-trials/state.js": "1c52bbf044bc",
+    "js/dungeon-trials/view.js": "13b2c678b33b"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "auftrag": "Alle anderen Spiele einzigartig ausarbeiten; Traumhaus ausdrücklich andere Sitzung, 16.11.2026",
+  "aktiveSpiele": 31,
+  "weiterleitungen": 4,
+  "hinweis": "Keine Fertigmeldung aus der Quellprüfung. Gameplay, UI, Speicherung und Netz getrennt belegen.",
+  "spiele": [
+    {
+      "path": "neon-dungeon.html",
+      "gruppe": "action",
+      "art": "Spiel/Station",
+      "durchgang": "neue Spielmechanik"
+    },
+    {
+      "path": "neon-flug.html",
+      "gruppe": "neon-flug",
+      "art": "Spiel/Station",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "neon-jump.html",
+      "gruppe": "action",
+      "art": "Spiel/Station",
+      "durchgang": "neue Spielmechanik"
+    },
+    {
+      "path": "neon-park.html",
+      "gruppe": "welten",
+      "art": "Spiel/Station",
+      "durchgang": "neue Spielmechanik"
+    },
+    {
+      "path": "neon-racer.html",
+      "gruppe": "action",
+      "art": "Spiel/Station",
+      "durchgang": "neue Spielmechanik"
+    },
+    {
+      "path": "neon-survivor.html",
+      "gruppe": "action",
+      "art": "Spiel/Station",
+      "durchgang": "neue Spielmechanik"
+    },
+    {
+      "path": "neon-wildnis.html",
+      "gruppe": "welten",
+      "art": "Spiel/Station",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "neon-zusammen.html",
+      "gruppe": "welten",
+      "art": "Spiel/Station",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "lebenspfad.html",
+      "gruppe": "welten",
+      "art": "Spiel/Station",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "wort-des-tages.html",
+      "gruppe": "wortspiele",
+      "art": "Spiel/Station",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "wortbruecke.html",
+      "gruppe": "wortspiele",
+      "art": "Spiel/Station",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/auto-rennen.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "neue Spielmechanik"
+    },
+    {
+      "path": "minispiele/ballon-pump.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/drei-gewinnt.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/elfmeter.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/farb-klick.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/hoch-tief.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/mathe-duell.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/maulwurf.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/memory.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/pong.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/punkte-jagd.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/quiz-buzzer.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/reaktions-duell.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/schere-stein-papier.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/schlange-duell.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/simon.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    },
+    {
+      "path": "minispiele/stapel-turm.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "Höhe mit Präzisionsentscheidung bei Gleichstand"
+    },
+    {
+      "path": "minispiele/tap-duell.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "neue Spielmechanik"
+    },
+    {
+      "path": "minispiele/tauziehen.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "neue Spielmechanik"
+    },
+    {
+      "path": "minispiele/vier-gewinnt.html",
+      "gruppe": "minispiele",
+      "art": "Minispiel",
+      "durchgang": "vorhandenen eigenen Spielkern erhalten und prüfen"
+    }
+  ]
+}

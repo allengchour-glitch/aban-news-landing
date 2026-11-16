@@ -1,0 +1,37 @@
+HTML /tmp/prisma-landschaft-basis.html · THREE r128
+Korridor inkl. Curbs: |x|≤23.660, z=[-247.500,27.500], Radius≤248.628, Fahrbahnoberkante=0.060
+GLB models/landscape_realm.glb: 3 Nodes, 3 Meshes, 4032 echte Dreiecke, minimaler projizierter Dreiecksabstand=106.608
+PASS GLB-Loader und Metadaten stimmen überein; reales Ringzentrum bleibt leer
+THREE.MeshLambertMaterial: 'flatShading' is not a property of this material.
+THREE.MeshLambertMaterial: 'flatShading' is not a property of this material.
+  Hügel-Grenze |x|≥-62.000; Mittelachsen-Rayhits oberhalb Fahrbahn=16
+FAIL Hügel Desktop: alle affinen Zufallsextreme und beliebige Y-Drehung halten den Korridor frei
+  Alter Hügel verdeckt die Mittelachse: Y=18.818
+
+16 !== 0
+
+THREE.MeshLambertMaterial: 'flatShading' is not a property of this material.
+THREE.MeshLambertMaterial: 'flatShading' is not a property of this material.
+  Hügel-Grenze |x|≥-62.000; Mittelachsen-Rayhits oberhalb Fahrbahn=12
+FAIL Hügel mobil: alle affinen Zufallsextreme und beliebige Y-Drehung halten den Korridor frei
+  Alter Hügel verdeckt die Mittelachse: Y=18.818
+
+12 !== 0
+
+FAIL Alle transformierten GLB-Dreiecke liegen ausserhalb der gesamten sichtbaren Strecke, für jede Rasterphase und Streckendistanz
+  Der Ring darf nach dem Laden nicht bewegt werden
+  GLB-Raycasts=972 · Überschneidung={"dist":0,"x":13.235780322221974,"z":-130,"y":1.8883887800620873,"mesh":"rock"}
+FAIL Echte GLB-Raycasts entlang aller sichtbaren Tiles und drei Fahrspuren verdecken keine Fahrbahn
+  Ring liegt über der Straße: {"dist":0,"x":13.235780322221974,"z":-130,"y":1.8883887800620873,"mesh":"rock"}
++ actual - expected
+
++ {
++   dist: 0,
++   mesh: 'rock',
++   x: 13.235780322221974,
++   y: 1.8883887800620873,
++   z: -130
++ }
+- null
+
+1 bestanden, 4 Fehler. Grenzen: Geometrie/Korridor, keine Bild-, Nebel-, Material- oder Leistungsprüfung; keine Browser/GPU.

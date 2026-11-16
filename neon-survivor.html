@@ -19,8 +19,8 @@ if(window.parent===window&&!/[?&]station=1/.test(location.search)){location.repl
 <meta name="robots" content="noindex">
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>Neon Survivor — 3D-Roguelite-Survival | aban news</title>
-<meta name="description" content="Neon Survivor: 3D-Roguelite im Browser. Bewege dich, auto-feuere auf Gegner-Schwärme, sammle XP, wähle Upgrades, überlebe so lange wie möglich. Gratis, kein Download.">
+<title>Neon Survivor — Reaktor-Verteidigung | aban news</title>
+<meta name="description" content="Verteidige den zentralen Reaktor: Schrott für Reparaturen oder Bauten ausgeben, Waffen verbessern und nach 10 Minuten NEXUS besiegen. Solo oder im Koop, gratis im Browser.">
 <link rel="canonical" href="https://abannews.com/neon-wildnis.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Neon Survivor — 3D-Roguelite-Survival">
@@ -107,6 +107,8 @@ canvas{display:block}
 /* 42 -> 44 px: unter 44 px trifft man auf dem Handy daneben (Mindestgroesse fuer Beruehrungsflaechen). Abstaende mitgezogen, damit >=10 px Luft bleibt. */
 @media(max-width:640px){.skbtn{width:44px;height:44px;right:34px;font-size:1rem}#skBtn1{bottom:104px}#skBtn2{bottom:156px}#skBtn3{bottom:208px}}
 </style>
+<link rel="stylesheet" href="/css/arena-nexus.css?v=1484b0e2e6c3">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <div id="wrap"></div>
@@ -120,6 +122,11 @@ canvas{display:block}
     <div id="hp2wrap" class="hide" style="max-width:240px;margin-top:4px"><div class="bar" style="height:9px"><i id="hp2Fill" style="background:linear-gradient(90deg,#ff9a3c,#ffd166)"></i></div><div id="p2tag" style="font-size:.72rem;color:#ffcf6e;font-weight:700;margin-top:2px"></div></div>
     <div id="xpwrap"><div class="bar"><i id="xpFill" style="width:0%"></i></div></div>
     <div id="scrapRow" style="margin-top:5px;font-size:1rem;font-weight:800;color:#ffb347">🔩 <span id="scrapN">0</span> Schrott<span id="waveN" style="color:#9fb2ff;margin-left:10px;font-weight:700"></span></div>
+    <div id="reactorPanel" data-state="stable">
+      <div id="reactorStatus">REAKTOR 300 / 300 · STABIL</div>
+      <div class="bar"><i id="reactorFill"></i></div>
+      <div id="reactorNav">Schrott: Reparatur oder Verteidigung</div>
+    </div>
     <div id="upRow"></div>
     <div id="ability" style="margin-top:5px;font-size:1rem;font-weight:800"></div>
     <div id="skRow" style="margin-top:3px;font-size:.92rem;font-weight:700"></div>
@@ -141,9 +148,10 @@ canvas{display:block}
 <button id="cancelBtn" title="Abbrechen (Esc)" style="position:fixed;left:50%;transform:translateX(24px);bottom:26px;z-index:9;width:94px;height:64px;border-radius:14px;border:2px solid #ff6b6b;background:rgba(50,16,20,.85);color:#ff9e9e;font-size:1.5rem;font-weight:800;cursor:pointer;display:none">✕</button>
 
 <div class="overlay" id="start">
-  <div class="tag">aban news · 3D-Roguelite</div>
+  <div class="tag">aban news · Reaktor-Verteidigung</div>
   <h1>NEON SURVIVOR</h1>
-  <p>Überlebe die Schwärme. Du bewegst dich — geschossen wird <b>automatisch</b>. Sammle XP und baue aus <b>4 Waffen</b> (Bolt · Nova · Ketten-Blitz · Orbit) + Boni deinen eigenen <b>Build</b>.</p>
+  <p>Halte den <b>Reaktor in der Mitte</b> am Leben. Orange Angreifer marschieren auf ihn zu; Mauern und Türme schützen ihn. In Wellenpausen: <b>12 Schrott für 60 Reaktor-HP</b> oder neue Verteidigung?</p>
+  <p>Du schiesst <b>automatisch</b>. Sammle XP für deinen Waffen-Build. Nach 10 Minuten erscheint <b>NEXUS</b>: Besiege ihn, solange der Reaktor steht. Bei 0 Reaktor-HP endet die Runde.</p>
   <p style="font-size:.85rem;color:#8890b8">Bewegen: WASD / Pfeile / Finger ziehen</p>
   <div id="nameWrap" style="margin:6px 0 2px">
     <label for="nameInput" style="font-size:.8rem;color:#8890b8;display:block;margin-bottom:4px">👤 Dein Name</label>
@@ -185,6 +193,7 @@ canvas{display:block}
   <div class="tag">Wellenpause · bauen</div>
   <h1 style="font-size:1.5rem">🔨 Baue deine Basis</h1>
   <p id="buildScrap" style="margin:.3rem 0">🔩 <b>0</b> Schrott · <span id="buildCap">0/12</span> Strukturen</p>
+  <button id="reactorRepair" class="bcard" type="button"></button>
   <div id="buildCards" style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:360px;margin-top:6px;max-height:52vh;overflow-y:auto;padding-right:2px"></div>
   <div style="display:flex;gap:10px;margin-top:12px">
     <button class="btn ghost" id="demolishBtn">🔧 Verwalten</button>
@@ -203,6 +212,7 @@ canvas{display:block}
 <div class="overlay hide" id="over">
   <div class="tag">Game Over</div>
   <h1 id="finalT">Überlebt: 0s</h1>
+  <div id="reactorEnd"></div>
   <div id="nsRound" style="font-weight:800;color:#5ef2ff;font-size:1.15rem;margin:.15rem 0"></div>
   <div id="nsRec" class="rec" style="display:none;font-weight:800;font-size:1.05rem;margin:.15rem 0"></div>
   <p id="verdict"></p>
@@ -217,7 +227,7 @@ canvas{display:block}
 
 <div class="overlay hide" id="win">
   <div class="tag">Sieg</div>
-  <h1 id="winT" class="rec">🏆 DURCHGESPIELT!</h1>
+  <h1 id="winT" class="rec">🏆 REAKTOR GESICHERT!</h1>
   <p id="winV"></p>
   <button class="btn" id="winAgainBtn">Nochmal ▶</button>
   <button class="btn ghost" id="winMenuBtn">🏠 Menü</button>
@@ -242,6 +252,8 @@ canvas{display:block}
   };})();
 </script>
 <script src="/js/vendor/RGBELoader.js"></script>
+<script src="/js/arena-nexus/reactor.js?v=c2442eec6beb"></script>
+<script src="/js/arena-nexus/reactor-view.js?v=70d0f70939aa"></script>
 <script>
 (function(){
 "use strict";
@@ -602,12 +614,15 @@ function updateSkins(dt){ /* zentraler Sweep: Mixer ticken + verwaiste Instanzen
       if(inst.mixer)inst.mixer.update(dt);}}}
 
 // State + Upgrades
-var S={};
+var S={},reactorView=createArenaReactorView(THREE,scene),reactorRunNo=0,pendingRunId=null,lastSnapSeq=-1,snapSeq=0,seenClientRuns=[];
 function reset(){
   S={alive:true,t:0,kills:0,hp:100,maxhp:100,lvl:1,xp:0,xpNeed:4,
      dmg:1,speed:10,multishot:1,pickup:3.6,area:1,haste:1,
      spawnT:0,spawnEvery:1.5,bossT:40,phase:1,finalBoss:false,won:false,weapons:{bolt:1},wt:{},bladeA:0,ups:{},
-     scrap:0,wave:1,buildPhase:"combat",waveT:0,buildT:0,bossWave:false,bossWaveBoss:null};
+     scrap:20,wave:1,buildPhase:"combat",waveT:0,buildT:0,bossWave:false,bossWaveBoss:null};
+  S.reactor=ArenaReactor.create();S.reactorRaidT=8;S.reactorHit=0;
+  S.runId=coopMode==='client'?pendingRunId:(Date.now().toString(36)+"-"+(++reactorRunNo));lastSnapSeq=-1;snapSeq=0;
+  document.getElementById("reactorEnd").textContent="";
   var meta=loadMeta();
   S.maxhp=120+(meta.hp||0)*20; S.hp=S.maxhp;
   S.dmg=1+(meta.dmg||0)*0.1;
@@ -624,7 +639,7 @@ function reset(){
   var _prof=getProfile(curName||nsGetName()); if(_prof.runs>=5){S.maxhp*=1.05;S.hp=S.maxhp;S.veteran=true;}
   renderUpRow();
   [bullets,enemies,orbs,fx,blades,ebullets,loot,scrapPickups,rings,flashes,trails].forEach(function(p){p.forEach(function(o){o.active=false;o.m.visible=false;o.m.position.y=-99;});});
-  player.position.set(0,0.9,0);
+  player.position.set(0,0.9,6);
   resetBuild();
   S.cbDone=[false,false,false]; // Koloss-Events pro Run (Phase 2/4/Endboss)
   cb_abort();                   // Koloss-Boss-Engine aufraeumen (Funktions-Deklaration → gehoisted)
@@ -674,8 +689,9 @@ addEventListener("touchend",relTouch);addEventListener("touchcancel",relTouch);
 function nearestEnemy(){var best=null,bd=1e9;for(var i=0;i<enemies.length;i++){var en=enemies[i];if(!en.active)continue;var dx=en.m.position.x-player.position.x,dz=en.m.position.z-player.position.z;var d=dx*dx+dz*dz;if(d<bd){bd=d;best=en;}}return best;}
 
 function spawnEnemy(boss){
+  if(!running||coopMode==='client')return null;
   if(!boss){var _ae=0;for(var _ai=0;_ai<enemies.length;_ai++)if(enemies[_ai].active)_ae++; /* 🧟 Schwarm-3 P3: harte Gleichzeitig-Grenze → kein Spawn-Runaway/FPS-Kollaps in Phase 5 */
-    if(_ae>=(IS_TOUCH?120:200))return;}
+    if(_ae>=(IS_TOUCH?120:200))return null;}
   var en=getMesh(enemies,enemyMesh); en.active=true; en.m.visible=true; en.boss=!!boss;
   en.shooter=false; en.splitter=false; en.shootT=0; en.raider=false; en.baseWaveBoss=false; en._tele=0; /* 🐛 Schwarm: Warn-Ring-Flag beim Pool-Recycling zurücksetzen (sonst übersprang ein recycelter Boss seinen ersten Telegraph) */
   /* 🩹 Die Boss-Krone wurde nur beim regulaeren Boss-TOD abgenommen. Nach jedem
@@ -704,7 +720,39 @@ function spawnEnemy(boss){
   }
   en.baseEmissive=en.m.material.emissive.getHex(); en.flash=0; en.finalBoss=false;
   initEnemyAnim(en);skinAttach(en,en.kind);
+  return en;
 }
+// Wenige, gut sichtbare Belagerer zusätzlich zu den Spieler jagenden Schwärmen.
+function spawnReactorRaider(){var en=spawnEnemy(false);if(!en)return;
+  skinDetach(en);en.raider=true;en.shooter=false;en.splitter=false;en.kind="runner";
+  en.hp=6+Math.min(18,S.wave);en.spd=2.8;en.xp=2;en.m.scale.setScalar(1.2);
+  var a=rnd()*Math.PI*2;en.m.position.set(Math.cos(a)*28,0.7,Math.sin(a)*28);
+  en.m.material.color.setHex(0xff9a3a);en.m.material.emissive.setHex(0xcc5500);en.baseEmissive=0xcc5500;
+  initEnemyAnim(en);skinAttach(en,en.kind);spawnRing(en.m.position.x,en.m.position.z,0xff9a3a,0.5,4,0.7);
+}
+function reactorTick(dt){
+  if(!running||coopMode==='client'||S.reactor.outcome)return;
+  if(S.buildPhase!=="combat"||(CB.active&&CB.kind!==2))return;
+  S.reactorRaidT-=dt;if(S.reactorRaidT<=0){spawnReactorRaider();S.reactorRaidT=CB.active?12:10;}
+}
+function damageReactor(amount){if(!running)return;
+  var before=S.reactor.hp;if(!ArenaReactor.damage(S.reactor,amount,coopMode))return;
+  if(S.reactorHit<=0){smallSpark(0,0,0xff8a3a);beep(120,.08,"square",.025);}S.reactorHit=0.22;
+  if(before>90&&S.reactor.hp<=90)announce("⚠ REAKTOR KRITISCH! In der Baupause reparieren!");
+  if(S.reactor.hp<=0){deathPop(0,0,0xff5555,true);gameOver("reactor");}
+}
+function repairReactor(){if(!ArenaReactor.repair(S.reactor,S,coopMode,running))return false;
+  updateScrapHUD();renderRepair();renderBuildCards();reactorHUD();spawnRing(0,0,0x6aff9e,1,8,0.6);beep(660,.2,"triangle",.06);return true;
+}
+function renderRepair(){var b=document.getElementById("reactorRepair"),r=S.reactor;
+  b.disabled=coopMode==='client'||!running||r.outcome||r.hp<=0||r.hp>=r.maxhp||S.scrap<ArenaReactor.REPAIR_COST;
+  b.textContent="✚ Reaktor "+Math.ceil(r.hp)+"/"+r.maxhp+" · +60 HP · 12 🔩";
+}
+document.getElementById("reactorRepair").onclick=repairReactor;
+function reactorHUD(){if(!S.reactor)return;var pos=coopMode==='client'&&P2?P2.g.position:player.position;
+  reactorView.update(S.reactor,S.t,pos,S.reactorHit>0,S.finalBoss,coopMode);
+}
+function reactorStationDone(){if(STATION&&ArenaReactor.claimStation(S.reactor))stationPost({t:"stationDone",score:S.kills+(S.lvl*10)});}
 function announce(txt){if(coopMode==='host'&&netSess&&txt){try{netSess.send({e:'an',t:txt});}catch(e){}}
   var c=document.getElementById("center")||(function(){var d=document.createElement("div");d.id="center";d.style.cssText="position:fixed;top:26%;left:0;right:0;text-align:center;font-weight:900;font-size:clamp(1.5rem,4.6vw,2.15rem);letter-spacing:.5px;color:#ff7ad9;text-shadow:0 2px 12px #000,0 0 24px rgba(255,122,217,.75),0 0 46px rgba(255,122,217,.35);pointer-events:none;transition:opacity .4s;z-index:6";document.body.appendChild(d);return d;})();c.textContent=txt;c.style.opacity="1";
   if(txt&&c.animate){try{c.animate([{transform:"translateY(-16px) scale(.6)",opacity:0},{transform:"translateY(0) scale(1.08)",opacity:1,offset:.35},{transform:"translateY(0) scale(1)",opacity:1}],{duration:520,easing:"cubic-bezier(.2,.9,.3,1.2)"});}catch(e){}}
@@ -731,18 +779,18 @@ function getBossAdorn(){if(bossAdorn)return bossAdorn;var g=new THREE.Group();
   var vis=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.18,0.15),mat(0xff3020,0xaa1000));vis.position.set(0,0.18,0.56);g.add(vis);
   g.traverse(function(n){if(n.isMesh&&n.material&&n.material.emissive)n.material.emissiveIntensity=0.95;});
   bossAdorn=g;return g;}
-function spawnBossWave(){if(S.bossWave||S.finalBoss)return;S.bossWave=true;
+function spawnBossWave(){if(!running||coopMode==='client'||S.bossWave||S.finalBoss)return;S.bossWave=true;
   announce("⚠ BOSS-ANSTURM! Verteidige die Basis!");beep(85,.7,"sawtooth",.13);beep(120,.5,"square",.06);shake=1.0;hitstop=Math.max(hitstop,0.06);
   screenFlash("rgba(255,60,90,.26)",0.55,460);spawnRing(player.position.x,player.position.z,0xff3355,1,40,1.0);
   var boss=getMesh(enemies,enemyMesh);boss.active=true;boss.m.visible=true;boss.boss=true;boss.finalBoss=false;boss.raider=true;boss.baseWaveBoss=true;boss._tele=0;if(boss._adorned){boss.m.remove(bossAdorn);boss._adorned=false;} /* 🩹 Schwarm-P3/P2: _tele+Krone beim Recycling zurücksetzen */boss.shooter=false;boss.splitter=false;boss.shootT=3.2;
-  var a=rnd()*6.283;boss.m.position.set(Math.max(-ARENA+3,Math.min(ARENA-3,player.position.x+Math.cos(a)*ARENA*0.85)),0.9,Math.max(-ARENA+3,Math.min(ARENA-3,player.position.z+Math.sin(a)*ARENA*0.85)));
+  var a=rnd()*6.283;boss.m.position.set(Math.cos(a)*32,0.9,Math.sin(a)*32);
   boss.hp=90+S.wave*22;boss.maxhp=boss.hp;boss.spd=1.7;boss.xp=24;boss.m.scale.set(3.0,3.0,3.0);
   boss.m.material.color.setHex(0xff7a1a);boss.m.material.emissive.setHex(0xff5a00);boss.baseEmissive=0xff5a00;boss.flash=0;
   boss.m.add(getBossAdorn());boss._adorned=true;
   initEnemyAnim(boss);skinAttach(boss,"boss");S.bossWaveBoss=boss;
   var n=Math.min(6,2+Math.floor(S.wave/5));
   for(var c=0;c<n;c++){var m2=getMesh(enemies,enemyMesh);m2.active=true;m2.m.visible=true;m2.boss=false;m2.finalBoss=false;m2.raider=true;m2.baseWaveBoss=false;m2.shooter=false;m2.splitter=false;m2.shootT=0;
-    var a2=rnd()*6.283,rr=ARENA*0.8;m2.m.position.set(Math.max(-ARENA+2,Math.min(ARENA-2,player.position.x+Math.cos(a2)*rr)),0.7,Math.max(-ARENA+2,Math.min(ARENA-2,player.position.z+Math.sin(a2)*rr)));
+    var a2=a+(c-(n-1)/2)*0.12,rr=34;m2.m.position.set(Math.cos(a2)*rr,0.7,Math.sin(a2)*rr);
     m2.hp=8+S.wave*2;m2.spd=2.4;m2.xp=3;m2.m.scale.set(1.4,1.4,1.4);m2.m.material.color.setHex(0xff9a3a);m2.m.material.emissive.setHex(0xcc5500);m2.baseEmissive=0xcc5500;m2.flash=0;initEnemyAnim(m2);skinAttach(m2,"runner");}}
 // ---------- Waffen-System: mehrere Waffen (je 6 Level) → Build-Vielfalt ----------
 function spawnBullet(x,z,ang,spd,dmg,life,pierce,color){var b=getMesh(bullets,bulletMesh);b.active=true;b.m.visible=true;b.m.position.set(x,0.9,z);b.vx=Math.cos(ang)*spd;b.vz=Math.sin(ang)*spd;b.life=life;b.dmg=dmg;b.pierce=pierce||0;b.m.material.color.setHex(color||0x88ffff);b.m.material.emissive.setHex(color||0x88ffff);
@@ -755,10 +803,10 @@ function killEnemy(en){en.active=false;en.m.visible=false;skinDetach(en);burst(e
   if(en.splitter){var px=en.m.position.x,pz=en.m.position.z;for(var sp2=0;sp2<2;sp2++){var mi=getMesh(enemies,enemyMesh);mi.active=true;mi.m.visible=true;mi.boss=false;mi.shooter=false;mi.splitter=false;mi.shootT=0;mi.raider=false;mi.baseWaveBoss=false;mi.hp=1;mi.spd=4.5;mi.xp=1;mi.m.scale.set(0.6,0.6,0.6);mi.m.material.color.setHex(0x44ee88);mi.m.material.emissive.setHex(0x22aa55);mi.baseEmissive=0x22aa55;mi.flash=0;mi.finalBoss=false;mi.m.position.set(px+(rnd()-.5)*2.4,0.7,pz+(rnd()-.5)*2.4);initEnemyAnim(mi);skinAttach(mi,"splitter");}}
   var dc=en.finalBoss?1:(en.boss?1:(en.splitter?0.14:(en.shooter?0.10:0.05)));
   if(rnd()<dc)spawnLoot(en.m.position.x,en.m.position.z,en.finalBoss?3:(en.boss?2:0));
-  var nsc=en.finalBoss?15:(en.boss?4:(rnd()<0.30?1:0));
+  var nsc=en.finalBoss?15:(en.boss?4:(en.raider?2:(rnd()<0.30?1:0)));
   for(var _sc=0;_sc<nsc;_sc++)dropScrap(en.m.position.x+(rnd()-.5)*2.4,en.m.position.z+(rnd()-.5)*2.4);
   en.m.scale.set(1,1,1);en.m.position.y=-99;S.kills++;if(en.boss){shake=1.0;hitstop=Math.max(hitstop,0.07);announce("Boss besiegt! 🏆");checkEvolutions();}beep(en.boss?160:300,.1,"sawtooth",.06);if(en.finalBoss)win();}
-function hitEnemy(en,dmg){if(!en.active)return;if(en.cbProxy){cb_damage(dmg);return;}en.hp-=dmg;if(en.hp<=0)killEnemy(en);else en.flash=0.09;}
+function hitEnemy(en,dmg){if(!running||coopMode==='client'||!en.active)return;if(en.cbProxy){cb_damage(dmg);return;}en.hp-=dmg;if(en.hp<=0)killEnemy(en);else en.flash=0.09;}
 function novaFx(R){var n=20;for(var i=0;i<n;i++){var a=i/n*6.283;var p=getMesh(fx,function(){var m=new THREE.Mesh(new THREE.SphereGeometry(0.18,6,6),mat(0x9bd0ff,0x9bd0ff));m.active=false;scene.add(m);return {m:m,active:false,vx:0,vy:0,vz:0,life:0};});p.active=true;p.m.visible=true;p.m.material.color.setHex(0x9bd0ff);p.m.material.emissive.setHex(0x9bd0ff);p.m.position.set(player.position.x,0.9,player.position.z);p.vx=Math.cos(a)*R*2.4;p.vz=Math.sin(a)*R*2.4;p.vy=0;p.life=0.4;}}
 // Aktive Fähigkeit: PULS-BLAST (Taste LEER) — grosser AoE + Rückstoss, Cooldown
 function castAbility(){if(S.abilityCD>0||p1Down>0)return;S.abilityCD=S.abilityMax;var R=15*S.area;novaFx(R);novaFx(R*0.6);
@@ -1022,6 +1070,7 @@ function buildChoices(){
 }
 var paused=false;
 function levelUp(){
+  if(!running)return;
   if(!document.getElementById("levelup").classList.contains("hide")){S.pendingLv=(S.pendingLv||0)+1;return;} /* mehrere Level in EINEM Frame (Orb-Pulk): merken statt Dialog überschreiben — jede Wahl kommt nacheinander dran */
   paused=true; levelUpFx(); var box=document.getElementById("ups"); box.innerHTML="";
   if(coopMode==='host')netEv({e:'lu'}); /* Client sieht: Partner wählt (geteilter Build) */
@@ -1071,7 +1120,7 @@ function collectScrap(dt){for(var i=0;i<scrapPickups.length;i++){var s=scrapPick
     if(!scrapTipShown){scrapTipShown=true;try{localStorage.setItem("ns_scrapTip","1");}catch(e){}announce("🔩 Schrott! Baue in der Wellenpause (🔨)");}}}}
 function updateScrapHUD(){var e=document.getElementById("scrapN");if(e)e.textContent=S.scrap;
   var bs=document.getElementById("buildScrap");if(bs)bs.innerHTML="🔩 <b>"+S.scrap+"</b> Schrott · "+structures.length+"/"+STRUCT_CAP+" Strukturen";
-  if(buildMenuOpen)renderBuildCards();}
+  if(buildMenuOpen){renderBuildCards();renderRepair();}}
 // Struktur-Meshes — mehrteilig & detailreich; Marker-Kinder (g.userData) für Animation.
 function makeStruct(type){var g=new THREE.Group();
   if(type==="wall"){
@@ -1122,6 +1171,7 @@ function makeStruct(type){var g=new THREE.Group();
   g.traverse(function(n){if(n.isMesh&&n.material&&n.material.emissive)n.material.emissiveIntensity=0.4;}); // #1 Beauty-Sweep: Bloom-Diät — Strukturen behalten Farbidentität → Farben bleiben lesbar
   return g;}
 function validPlace(x,z,type){var m=structFootprint(type);
+  if(x*x+z*z<(3.5+m)*(3.5+m))return false;
   if(Math.abs(x)>ARENA-m+0.01||Math.abs(z)>ARENA-m+0.01)return false;
   if((x-player.position.x)*(x-player.position.x)+(z-player.position.z)*(z-player.position.z)<9)return false;
   for(var i=0;i<enemies.length;i++){var en=enemies[i];if(!en.active)continue;var dx=en.m.position.x-x,dz=en.m.position.z-z;if(dx*dx+dz*dz<4)return false;}
@@ -1144,7 +1194,8 @@ function updateHpBar(st){var bar=st.hpBar;if(!bar)return;var r=st.maxhp?st.hp/st
   bar.visible=true;bar.position.set(st.x,st.barY||3.2,st.z);bar.quaternion.copy(camera.quaternion);
   st.hpFillMesh.scale.x=Math.max(0.02,r);st.hpFillMesh.position.x=-(st.hpFillW*(1-r))/2;
   var col=(st.hitT>0)?0xffffff:(r>0.5?0x6aff9e:(r>0.25?0xffd166:0xff5555));st.hpFillMesh.material.color.setHex(col);}
-function placeStruct(type,x,z){var g=makeStruct(type);g.position.set(x,0,z);g.scale.setScalar(0.02);scene.add(g);var st={type:type,g:g,x:x,z:z,pop:0,scaleBase:1,hp:0,maxhp:0,hitT:0};
+function placeStruct(type,x,z){if(!running||coopMode==='client'||S.buildPhase!=="build"||!BUILD_DEFS[type]||S.scrap<BUILD_DEFS[type].cost||!Number.isFinite(x)||!Number.isFinite(z)||!validPlace(x,z,type))return null;
+  var g=makeStruct(type);g.position.set(x,0,z);g.scale.setScalar(0.02);scene.add(g);var st={type:type,g:g,x:x,z:z,pop:0,scaleBase:1,hp:0,maxhp:0,hitT:0};
   spawnRing(x,z,0x9bffd0,0.6,5,0.4);spawnFlash(x,0.9,z,0x9bffd0,1.4,0.16);
   if(type==="wall"){st.hp=60;st.maxhp=60;st.halfX=2.0;st.halfZ=0.55;st.barY=3.3;}
   else if(type==="spike"){st.hp=45;st.maxhp=45;st.halfX=2.0;st.halfZ=0.6;st.thornT=0;st.barY=3.0;}
@@ -1161,8 +1212,8 @@ function destroyStruct(st){var i=structures.indexOf(st);var col=(st.type==="spik
   deathPop(st.x,st.z,0xff6688,true);burst(st.x,st.z,col);burst(st.x,st.z,0xffffff);
   var n=Math.round(9*PB)||5;for(var d=0;d<n;d++){var p=getMesh(fx,fxMake);p.active=true;p.m.visible=true;p.m.material.color.setHex((d%2)?col:0xffd9a0);p.m.material.emissive.setHex((d%2)?col:0xffd9a0);p.m.position.set(st.x,0.9+Math.random()*1.6,st.z);var a=Math.random()*6.28,s=3+Math.random()*5;p.vx=Math.cos(a)*s;p.vz=Math.sin(a)*s;p.vy=3+Math.random()*5;p.life=0.75;}
   spawnRing(st.x,st.z,0xff3355,0.6,10,0.6);spawnRing(st.x,st.z,col,0.5,6,0.4,0.14);screenFlash("rgba(255,70,100,.12)",0.28,260);shake=Math.max(shake,0.45);hitstop=Math.max(hitstop,0.04);beep(150,.28,"sawtooth",.08);removeStruct(st,i);}
-function damageStruct(st,dmg){if(!st||st.hp<=0)return;st.hp-=dmg;st.hitT=0.14;if(st.hp<=0)destroyStruct(st);}
-function upgradeTower(st){if(!st||st.type!=="tower"||st.lv>=3)return false;var cost=TOWER_UPCOST[st.lv+1];if(S.scrap<cost)return false;
+function damageStruct(st,dmg){if(coopMode==='client'||!st||st.hp<=0)return;st.hp-=dmg;st.hitT=0.14;if(st.hp<=0)destroyStruct(st);}
+function upgradeTower(st){if(!running||coopMode==='client'||S.buildPhase!=="build"||!st||st.type!=="tower"||st.lv>=3)return false;var cost=TOWER_UPCOST[st.lv+1];if(S.scrap<cost)return false;
   S.scrap-=cost;st.lv++;var hpGain=20;st.maxhp+=hpGain;st.hp+=hpGain;applyTowerLevel(st);st.pop=0.55;
   spawnRing(st.x,st.z,st.color,0.6,6,0.5);spawnRing(st.x,st.z,0xffffff,0.5,3.4,0.32,0.15);spawnFlash(st.x,2.7,st.z,st.color,2.0,0.24);burst(st.x,st.z,st.color);screenFlash("rgba(255,220,130,.16)",0.3,280);shake=Math.max(shake,0.3);
   beep(620,.08,"triangle",.06);setTimeout(function(){beep(990,.12,"triangle",.06);},80);updateScrapHUD();announce("⬆️ Turm Lv "+st.lv+"!");return true;}
@@ -1176,20 +1227,20 @@ function showPlaceButtons(on){var ok=document.getElementById("okBtn"),cc=documen
   /* ✓/✕ überlappen im Hochformat (<592px Breite) 🔨 und ⚡ → Spiel-Knöpfe während des Platzierens ausblenden, danach normal wiederherstellen */
   if(on){["buildBtn","abBtn","skBtn1","skBtn2","skBtn3"].forEach(function(id){var b=document.getElementById(id);if(b)b.style.display="none";});}
   else{updateBuildBtn();if(running&&coopMode!=='client')showTouchBtns(true);}}
-function startPlacing(type){if(S.scrap<BUILD_DEFS[type].cost)return;
+function startPlacing(type){if(!running||coopMode==='client'||S.buildPhase!=="build"||!BUILD_DEFS[type]||S.scrap<BUILD_DEFS[type].cost)return;
   buildMenuOpen=false;document.getElementById("buildmenu").classList.add("hide");paused=false;
   placing=type;makeGhost(type);showPlaceButtons(true);
   announce(COARSE?"Lauf zur Stelle · ✓ bestätigen · ✕ abbrechen":"Maus bewegen · Klick platziert · Esc bricht ab");}
 function cancelPlacing(){placing=null;removeGhost();showPlaceButtons(false);if(S.buildPhase==="build"&&!buildMenuOpen)paused=false;}
 function placeCurrent(){if(!placing)return;if(!ghostValid){beep(160,.09,"square",.05);announce("⛔ Ungültige Position");return;}
-  var type=placing;placeStruct(type,ghostX,ghostZ);cancelPlacing();if(S.buildPhase==="build")openBuildMenu();}
+  var type=placing;if(!placeStruct(type,ghostX,ghostZ))return;cancelPlacing();if(S.buildPhase==="build")openBuildMenu();}
 function pickStructAt(cx,cy){if(!structures.length)return null;var ndc=new THREE.Vector2((cx/W)*2-1,-(cy/H)*2+1);raycaster.setFromCamera(ndc,camera);
   var meshes=[];structures.forEach(function(st){st.g.traverse(function(n){if(n.isMesh){n._st=st;meshes.push(n);}});});
   var hit=raycaster.intersectObjects(meshes,true);return hit.length?hit[0].object._st:null;}
-function demolishStruct(st){var idx=structures.indexOf(st);if(idx<0)return;var ref=Math.floor(BUILD_DEFS[st.type].cost/2);S.scrap+=ref;burst(st.x,st.z,0xff9e9e);spawnRing(st.x,st.z,0xff9e9e,0.5,4,0.35);removeStruct(st,idx);updateScrapHUD();beep(400,.1,"square",.05);announce("🗑️ Abgerissen · +"+ref+" 🔩");}
+function demolishStruct(st){if(!running||coopMode==='client'||S.buildPhase!=="build")return;var idx=structures.indexOf(st);if(idx<0)return;var ref=Math.floor(BUILD_DEFS[st.type].cost/2);S.scrap+=ref;burst(st.x,st.z,0xff9e9e);spawnRing(st.x,st.z,0xff9e9e,0.5,4,0.35);removeStruct(st,idx);updateScrapHUD();beep(400,.1,"square",.05);announce("🗑️ Abgerissen · +"+ref+" 🔩");}
 function structTapAt(cx,cy){var st=pickStructAt(cx,cy);if(st)openStructMenu(st);else announce("Keine Struktur getroffen");}
 var structMenuOpen=false,currentStruct=null;
-function openStructMenu(st){currentStruct=st;structMenuOpen=true;paused=true;
+function openStructMenu(st){if(!running||coopMode==='client'||S.buildPhase!=="build")return;currentStruct=st;structMenuOpen=true;paused=true;
   var def=BUILD_DEFS[st.type];document.getElementById("smTitle").textContent=def.i+" "+def.n+(st.type==="tower"?" · Lv "+st.lv+"/3":"");
   var hpTxt="🛡️ HP "+Math.max(0,Math.round(st.hp))+"/"+st.maxhp;
   if(st.type==="tower")hpTxt+=" · Reichweite "+st.R+" · Schaden ×"+st.dmgMul.toFixed(1);
@@ -1215,20 +1266,20 @@ function renderBuildCards(){var box=document.getElementById("buildCards");if(!bo
     var b=document.createElement("button");b.className="bcard";if(!afford)b.setAttribute("disabled","");
     b.innerHTML="<span class='bi'>"+def.i+"</span><span class='bt'>"+def.n+(def.max?" ("+cnt+"/"+def.max+")":"")+"<small>"+def.d+"</small></span><span class='bcost'>"+def.cost+" 🔩</span>";
     if(afford)b.onclick=function(){startPlacing(type);};box.appendChild(b);});}
-function openBuildMenu(){if(!running)return;if(S.buildPhase!=="build"){announce("🔨 Bauen nur zwischen den Wellen");return;}
-  cancelPlacing();demolishMode=false;showPlaceButtons(false);buildMenuOpen=true;paused=true;updateScrapHUD();renderBuildCards();document.getElementById("buildmenu").classList.remove("hide");}
+function openBuildMenu(){if(!running||coopMode==='client')return;if(S.buildPhase!=="build"){announce("🔨 Bauen nur zwischen den Wellen");return;}
+  cancelPlacing();demolishMode=false;showPlaceButtons(false);buildMenuOpen=true;paused=true;updateScrapHUD();renderRepair();renderBuildCards();document.getElementById("buildmenu").classList.remove("hide");}
 function closeBuildMenu(){if(!buildMenuOpen)return;buildMenuOpen=false;document.getElementById("buildmenu").classList.add("hide");if(S.buildPhase==="build"&&!placing)paused=false;}
 function toggleDemolish(){if(S.buildPhase!=="build")return;closeBuildMenu();cancelPlacing();demolishMode=true;var cc=document.getElementById("cancelBtn");if(cc)cc.style.display="block";announce("🔧 Struktur antippen: Upgrade oder Abriss");}
 function exitDemolish(){demolishMode=false;var cc=document.getElementById("cancelBtn");if(cc)cc.style.display="none";if(S.buildPhase==="build")openBuildMenu();}
 // Wellen-Phasen
-function enterBuildPhase(){if(S.buildPhase!=="combat"||S.finalBoss||CB.active)return;S.buildPhase="build";S.buildT=BUILD_DUR;
+function enterBuildPhase(){if(!running||coopMode==='client'||S.buildPhase!=="combat"||S.finalBoss||CB.active)return;S.buildPhase="build";S.buildT=BUILD_DUR;S.reactorHit=0;
   for(var i=0;i<enemies.length;i++){var en=enemies[i];if(en.active&&!en.cbProxy){burst(en.m.position.x,en.m.position.z,0x99bbff);en.active=false;en.m.visible=false;en.m.position.y=-99;}}
   for(i=0;i<ebullets.length;i++){ebullets[i].active=false;ebullets[i].m.visible=false;ebullets[i].m.position.y=-99;}
   spawnRing(player.position.x,player.position.z,0x6aff9e,1,24,0.8);screenFlash("rgba(106,255,158,.18)",0.35,320);
-  announce("🛠️ Welle "+S.wave+" geschafft — baue! (🔨)");beep(560,.2,"triangle",.06);updateBuildBtn();}
-function endBuildPhase(){if(S.buildPhase!=="build")return;cancelPlacing();closeBuildMenu();demolishMode=false;showPlaceButtons(false);
+  announce("🛠️ Welle "+S.wave+" — Reaktor reparieren oder bauen (B / 🔨)");beep(560,.2,"triangle",.06);updateBuildBtn();}
+function endBuildPhase(){if(!running||coopMode==='client'||S.buildPhase!=="build")return;cancelPlacing();closeBuildMenu();demolishMode=false;showPlaceButtons(false);
   var cc=document.getElementById("cancelBtn");if(cc)cc.style.display="none";
-  S.buildPhase="combat";S.wave++;S.waveT=0;S.spawnT=0;
+  S.buildPhase="combat";S.wave++;S.waveT=0;S.spawnT=0;S.reactorRaidT=3;
   /* 🩹 S.bossT lief nur in der Kampfphase weiter, die Uhr S.t aber auch waehrend
      der Bauphase. Nach einer langen Bauphase war bossT laengst ueberschritten und
      die aufgestauten Bosse kamen alle 45 s hintereinander. Faellig-Zeit nachziehen. */
@@ -1236,11 +1287,10 @@ function endBuildPhase(){if(S.buildPhase!=="build")return;cancelPlacing();closeB
   for(var i=structures.length-1;i>=0;i--){var st=structures[i];if(st.expireWave!=null&&S.wave>st.expireWave)removeStruct(st,i);}
   updateScrapHUD();updateBuildBtn();spawnRing(player.position.x,player.position.z,0x5ef2ff,1,26,0.75);spawnRing(player.position.x,player.position.z,0xff7ad9,0.6,14,0.5,0.2);screenFlash("rgba(94,242,255,.2)",0.4,300);
   if(!S.finalBoss&&S.wave%5===0)spawnBossWave();else{announce("⚔ WELLE "+S.wave);beep(300,.25,"sawtooth",.07);}}
-function updateBuildBtn(){var bb=document.getElementById("buildBtn");if(!bb)return;if(!running){bb.style.display="none";return;}
+function updateBuildBtn(){var bb=document.getElementById("buildBtn");if(!bb)return;if(!running||coopMode==='client'){bb.style.display="none";return;}
   bb.style.display="flex";var can=(S.buildPhase==="build");bb.style.opacity=can?"1":"0.4";bb.style.boxShadow=can?"0 0 16px #ffb347":"none";bb.title=can?"Bauen (B)":"Bauen nur zwischen den Wellen";}
 // Gegner-Interaktion mit Strukturen
 function enemySlowFactor(x,z){for(var i=0;i<structures.length;i++){var st=structures[i];if(st.type!=="slow"||st.hp<=0)continue;var dx=st.x-x,dz=st.z-z;if(dx*dx+dz*dz<st.R*st.R)return pylonBoost(st.x,st.z)>1?0.36:0.5;}return 1;}
-function nearestStruct(x,z){var best=null,bd=1e9;for(var i=0;i<structures.length;i++){var st=structures[i];if(!st||st.hp<=0)continue;var dx=st.x-x,dz=st.z-z,d=dx*dx+dz*dz;if(d<bd){bd=d;best=st;}}return best;}
 // Blocker (Mauer + Stachel-Barrikade) schieben Gegner weg; Stachel fügt Dornen-Schaden + Funken zu.
 function resolveBlockers(en,dt){for(var i=0;i<structures.length;i++){var st=structures[i];if((st.type!=="wall"&&st.type!=="spike")||st.hp<=0)continue;
   var dxr=en.m.position.x-st.x,dzr=en.m.position.z-st.z,hx=st.halfX+0.8,hz=st.halfZ+0.8;
@@ -1297,7 +1347,10 @@ renderer.domElement.addEventListener("mousedown",function(e){if(demolishMode){st
   var sc=document.getElementById("smClose");if(sc)sc.onclick=function(){closeStructMenu();openBuildMenu();};})();
 window.__ns={scrap:function(n){S.scrap=Math.max(0,(S.scrap||0)+(n||0));updateScrapHUD();return S.scrap;},
   pause:function(){if(running&&S.buildPhase==="combat")enterBuildPhase();return S.buildPhase;},
-  state:function(){return {scrap:S.scrap,structures:structures.length,wave:S.wave,phase:S.buildPhase,hp:Math.round(S.hp),running:running};},
+  state:function(){return {scrap:S.scrap,structures:structures.length,wave:S.wave,phase:S.buildPhase,hp:Math.round(S.hp),running:running,paused:paused,kills:S.kills,lvl:S.lvl,time:S.t};},
+  reactor:function(){return {hp:S.reactor.hp,maxhp:S.reactor.maxhp,outcome:S.reactor.outcome,reason:S.reactor.reason,repairs:S.reactor.repairs,runId:S.runId};},
+  renderState:function(){return {frame:frame,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,reactorVisible:reactorView.group.visible};},
+  damageReactor:damageReactor,repairReactor:repairReactor,raider:spawnReactorRaider,
   build:function(type,x,z){placeStruct(type,x||0,z||0);return structures.length;},
   endBuild:function(){endBuildPhase();return S.wave;},openMenu:function(){openBuildMenu();},
   counts:function(){var en=0,bu=0,i,ts=0,wh=null;for(i=0;i<enemies.length;i++)if(enemies[i].active)en++;for(i=0;i<bullets.length;i++)if(bullets[i].active)bu++;for(i=0;i<structures.length;i++){if(structures[i].type==="wall")wh=(wh==null)?structures[i].hp:Math.min(wh,structures[i].hp);if(structures[i].type==="tower")ts+=(structures[i].shots||0);}return {enemies:en,bullets:bu,wallHp:wh,towerShots:ts};},
@@ -1423,6 +1476,8 @@ function cb_teleRing(x,z,rad,delay,dmg){
 // ---- Boss-Event starten/beenden ----
 function cb_updPips(){var el=document.getElementById("cbPips").children;for(var i=0;i<el.length;i++)el[i].className=(i<CB.phase)?"on":"";}
 function cb_start(kind){kind=Math.max(0,Math.min(2,kind|0));var c=CB_COLOSSI[kind];
+  if(!running||coopMode==='client'||S.reactor.outcome)return;
+  S.reactorRaidT=kind===2?5:10;
   CB.active=true;CB.kind=kind;CB.max=CB.hp=Math.round(c.hp*(1+(S.lvl||1)*0.05));CB.phase=1;CB.atkCD=1.8;CB.spiral=0;CB.intro=1.6;CB.angle=0;CB.hitFlash=0;
   if(!S.cbDone)S.cbDone=[false,false,false];S.cbDone[kind]=true;S.cbIfr=0;
   // Arena freiraeumen: normale Gegner + Gegner-Schuesse weg, Boss-Ansturm-Status zuruecksetzen
@@ -1452,7 +1507,7 @@ function cb_down(){CB.hp=0;var c=CB_COLOSSI[CB.kind],kind=CB.kind,bx=cbBoss.posi
   burst(bx,bz,c.c1);burst(bx,bz,0xffffff);deathPop(bx,bz,c.c1,true);spawnRing(bx,bz,c.c1,1,22,0.9);
   beep(1046,.5,"triangle",.1);beep(523,.6,"sawtooth",.08);
   cb_abort();
-  if(kind>=2){win();return;} // NEXUS = Endboss → Sieg
+  if(kind>=2){win();return;} // NEXUS besiegt + intakter Reaktor = Sieg
   // Fette Belohnung: XP-Orbs + Loot (Legendaer-Bias) + Schrott + Kerne + Heilung, dann weiter im Run
   for(var d=0;d<26;d++)dropOrb(bx+(rnd()-.5)*7,bz+(rnd()-.5)*7);
   for(d=0;d<3;d++)spawnLoot(bx+(rnd()-.5)*5,bz+(rnd()-.5)*5,3);
@@ -1461,7 +1516,7 @@ function cb_down(){CB.hp=0;var c=CB_COLOSSI[CB.kind],kind=CB.kind,bx=cbBoss.posi
   announce("🏆 KOLOSS BEZWUNGEN! +Loot +5 ⬢ Kerne");nsConfetti();
   S.waveT=0;S.spawnT=2.0;S.bossT=S.t+45;}
 // Waffen-Schaden aufs Boss-HP (via hitEnemy-Routing des cbProxy)
-function cb_damage(d){if(!CB.active)return;CB.hp-=d;
+function cb_damage(d){if(!running||coopMode==='client'||!CB.active)return;CB.hp-=d;
   var fm=cbBoss.userData.flashMats||[];for(var i=0;i<fm.length;i++)fm[i].emissiveIntensity=(fm[i]._baseEmis!==undefined?fm[i]._baseEmis:0.75)+0.55;
   CB.hitFlash=0.05;cbBoss.userData.hitPunch=0.1;
   var frac=CB.hp/CB.max,np=frac<=0.3?3:(frac<=0.6?2:1);
@@ -1610,12 +1665,14 @@ function start(){
   clearMoveInput();last=performance.now();if(dailyMode)_srng=mulberry32((dayNo*2654435761)>>>0);reset();running=true;paused=false;document.getElementById("levelup").classList.add("hide");document.getElementById("start").classList.add("hide");document.getElementById("over").classList.add("hide");document.getElementById("win").classList.add("hide");document.getElementById("hud").classList.remove("hide");
   hurt=0;hurtEl.style.opacity=0;showTouchBtns(true);updateBuildBtn();
   var mi=(coopMode==='client'&&pendingMap!=null)?pendingMap:(dailyMode?(dayNo%MAPS.length):Math.floor(rnd()*MAPS.length));
-  curMapIdx=mi;var m=applyMap(mi);coopSetup();announce("» "+m.name+" «");startMusic();
+  curMapIdx=mi;var m=applyMap(mi);coopSetup();reactorHUD();announce("» "+m.name+" « · Reaktor in der Mitte schützen!");startMusic();
   if(!coopMode){try{if(!localStorage.getItem("ns_moveTip")){localStorage.setItem("ns_moveTip","1");setTimeout(function(){if(running&&!paused)announce(IS_TOUCH?"🕹️ Finger ziehen = laufen · 🔫 Schuss automatisch!":"⌨️ WASD/Pfeile = laufen · 🔫 Schuss automatisch!");},1600);}}catch(e){}}} /* 🆕 Anfänger-Hinweis beim allerersten Start */
 function showBest(){var b=bestTime();document.getElementById("best").textContent=b>0?"🏆 Rekord: "+b+"s":"";nsRefreshWelcome();}
-function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();
+function gameOver(reason){if(!running||!ArenaReactor.finish(S.reactor,"loss",reason==="reactor"?"reactor":"crew",coopMode))return;running=false;shake=1.2;hurt=0;hurtEl.style.opacity=0;stopMusic();
   paused=false;document.getElementById("levelup").classList.add("hide"); /* Tod im Level-Up-Frame: sonst startete «Nochmal» eingefroren (paused=true) hinter der alten Karte */
-  if(coopMode==='host')netEv({e:'ov',s:Math.floor(S.t),lv:S.lvl,kk:S.kills,wv:S.wave});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&coopMode!=='ai'&&s>b;if(rec)setBest(s); /* 🤖-Läufe (Gratis-Revives+Doppel-Feuer) setzen keinen Zeitrekord */
+  if(coopMode==='host')netEv({e:'ov',s:Math.floor(S.t),lv:S.lvl,kk:S.kills,wv:S.wave,rx:ArenaReactor.pack(S.reactor)});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();var s=Math.floor(S.t),b=bestTime(),rec=!dailyMode&&coopMode!=='ai'&&s>b;if(rec)setBest(s); /* 🤖-Läufe (Gratis-Revives+Doppel-Feuer) setzen keinen Zeitrekord */
+  document.getElementById("reactorEnd").textContent=S.reactor.reason==="reactor"?"Reaktor zerstört. Nächster Versuch: Angreifer abfangen, Schrott für Reparaturen sparen.":"Team gefallen. Der Reaktor braucht euch — versuche es erneut.";reactorHUD();
+  if(coopMode==='host')hostNetFrame(0.066);
   document.getElementById("finalT").textContent="Überlebt: "+s+"s";
   var f=document.getElementById("finalT");f.className=rec?"rec":"";
   var pre=dailyMode?("🗓️ Tages-Challenge #"+dayNo+" · "):(rec&&s>0?"🎉 <b>Neuer Rekord!</b> · ":"🏆 Rekord "+b+"s · ");
@@ -1623,16 +1680,17 @@ function gameOver(){if(!running)return;running=false;shake=1.2;hurt=0;hurtEl.sty
   document.getElementById("verdict").innerHTML=pre+"Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   // Mehr-Runden-Speicherstand: Run eintragen (Profil + Bestenliste) und Game-Over-Extras füllen
   nsShowGameOver(recordRun(curName,S.t,S.wave,S.kills,dailyMode?'dry':(coopMode==='ai'?'soft':0)));
-  if(STATION)stationPost({t:"stationDone",score:S.kills+(S.lvl*10)}); /* 🌲 Wildnis-Arena: Score melden (Kristall-Belohnung) */
+  reactorStationDone();
   document.getElementById("over").classList.remove("hide");}
-function win(){if(S.won)return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
+function win(){if(!running||!ArenaReactor.finish(S.reactor,"win","nexus",coopMode))return;S.won=true;running=false;shake=1.5;hurt=0;hurtEl.style.opacity=0;stopMusic();
   paused=false;document.getElementById("levelup").classList.add("hide"); /* wie gameOver: Sieg im Level-Up-Frame darf die neue Runde nicht einfrieren */
-  if(coopMode==='host')netEv({e:'wn',s:Math.floor(S.t),lv:S.lvl,kk:S.kills});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();
+  if(coopMode==='host')netEv({e:'wn',s:Math.floor(S.t),lv:S.lvl,kk:S.kills,wv:S.wave,rx:ArenaReactor.pack(S.reactor)});showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();demolishMode=false;S.bossWave=false;cb_abort();showPlaceButtons(false);updateBuildBtn();reactorHUD();
+  if(coopMode==='host')hostNetFrame(0.066);
   var _ws=Math.floor(S.t);if(!dailyMode&&coopMode!=='ai'&&_ws>bestTime())setBest(_ws); /* P7: Sieg zählt auch als Zeit-Rekord (vorher nur gameOver); 🤖-Läufe ausgenommen */
   var earned=Math.floor((Math.floor(S.kills/3)+Math.floor(S.t/8))*(coopMode==='ai'?0.5:1))+150;saveCores(loadCores()+earned);try{if(!STATION){var _gx=(+(localStorage.getItem('aban_neon_xp')||0)||0)+S.kills+S.lvl*5+40;localStorage.setItem('aban_neon_xp',_gx);}}catch(e){}renderShop(); /* 💠 Cross-Game-XP (Sieg) — nur solo */
   var _r=recordRun(curName,S.t,S.wave,S.kills,dailyMode?'dry':(coopMode==='ai'?'soft':0)); // Sieg zählt auch als gespielte Runde (Tag/Bot ohne Rekord-Einträge, s. recordRun)
-  document.getElementById("winV").innerHTML="In "+mmss(S.t)+" geschafft · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b> · Runde #"+_r.round;
-  if(STATION)stationPost({t:"stationDone",score:S.kills+(S.lvl*10)}); /* 🌲 Wildnis-Arena: Sieg zählt erst recht */
+  document.getElementById("winV").innerHTML="NEXUS besiegt · Reaktor: "+Math.ceil(S.reactor.hp)+"/"+S.reactor.maxhp+" HP · In "+mmss(S.t)+" · Level "+S.lvl+" · "+S.kills+" Gegner · <b>+"+earned+" ⬢ Kerne</b> · Runde #"+_r.round;
+  reactorStationDone();
   document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);nsConfetti();}
 
 function aiWanted(){var c=document.getElementById("aiChk");return !!(c&&c.checked);}
@@ -1650,8 +1708,15 @@ function backToMenu(){ /* zurück zum Startscreen — vorher war die Werkstatt n
   document.getElementById("start").classList.remove("hide");renderShop();renderChars();showBest();}
 document.getElementById("menuBtn").onclick=backToMenu;
 document.getElementById("winMenuBtn").onclick=backToMenu;
-document.getElementById("winShareBtn").onclick=function(){var txt="Neon Survivor 🏆 DURCHGESPIELT in "+mmss(S.t)+" — Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-wildnis.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("winShareBtn").textContent="Kopiert 📋";});};
-document.getElementById("shareBtn").onclick=function(){var txt="Neon Survivor 🚀 — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s überlebt, Lv "+S.lvl+", "+S.kills+" Kills\nabannews.com/neon-wildnis.html";if(navigator.share)navigator.share({text:txt}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(txt).then(function(){document.getElementById("shareBtn").textContent="Kopiert 📋";});};
+function shareSurvivor(won,buttonId){var url="https://abannews.com/neon-survivor.html?station=1";
+  var txt=won?("Neon Survivor 🏆 Reaktor gesichert! NEXUS besiegt in "+mmss(S.t)+" · Reaktor "+Math.ceil(S.reactor.hp)+"/"+S.reactor.maxhp+" HP"):
+    ("Neon Survivor · Reaktor-Verteidigung — "+(dailyMode?"Tages-Challenge #"+dayNo+": ":"")+Math.floor(S.t)+"s gehalten");
+  txt+=" · Lv "+S.lvl+" · "+S.kills+" Gegner";
+  if(navigator.share)navigator.share({title:"Neon Survivor — Reaktor-Verteidigung",text:txt,url:url}).catch(function(){});
+  else if(navigator.clipboard)navigator.clipboard.writeText(txt+"\n"+url).then(function(){document.getElementById(buttonId).textContent="Kopiert 📋";});
+}
+document.getElementById("winShareBtn").onclick=function(){shareSurvivor(true,"winShareBtn");};
+document.getElementById("shareBtn").onclick=function(){shareSurvivor(false,"shareBtn");};
 
 // Ambient-Partikel (Atmosphäre)
 var amb2N=IS_TOUCH?48:80,ambG=new THREE.BufferGeometry(),ambP=new Float32Array(amb2N*3),ambVv=new Float32Array(amb2N); /* P7: hiess ambN und ÜBERSCHRIEB die ambN der Funken (Z.487) → nur 48/80 von 150 Funken bewegten sich */
@@ -1667,6 +1732,7 @@ function loop(now){
   if(running&&!paused&&coopMode==='client'){clientFrame(dt);} /* Online-Client: nur rendern + Input senden — Host simuliert */
   else if(running&&!paused){
     S.t+=dt;
+    S.reactorHit=Math.max(0,S.reactorHit-dt);
     // Bewegung
     var mx=0,mz=0;
     if(keys["a"]||keys["arrowleft"])mx-=1; if(keys["d"]||keys["arrowright"])mx+=1;
@@ -1680,9 +1746,11 @@ function loop(now){
     animatePlayer(dt,mx,mz);
     glow.position.set(player.position.x,2,player.position.z);
     coopSimP2(dt); /* Koop: Partner (KI/Online) bewegen, feuern, Down/Revive */
+    if(!running){updHUD();return;}
     // Waffen (mehrere, je eigener Takt) + Orbit-Klingen
     if(ml>0.05){lastMvX=mx;lastMvZ=mz;} /* Blink-Richtung merken */
-    if(p1Down<=0){weaponTick(dt); updateBlades(dt);} if(S.abilityCD>0)S.abilityCD-=dt;
+    if(p1Down<=0){weaponTick(dt);if(running)updateBlades(dt);} if(S.abilityCD>0)S.abilityCD-=dt;
+    if(!running){updHUD();return;}
     for(var _sc2=1;_sc2<=3;_sc2++)if(S.skCD[_sc2]>0)S.skCD[_sc2]-=dt;
     if(S.skIfr>0)S.skIfr-=dt;
     if(S.hurtIfr>0)S.hurtIfr-=dt; /* S3 */
@@ -1712,16 +1780,16 @@ function loop(now){
     } else { // Wellenpause — bauen
       if(!buildMenuOpen){S.buildT-=dt;if(S.buildT<=0)endBuildPhase();} /* ⏱ Platzier-Modus hält den Timer NICHT mehr an: S.t lief weiter → risikoloses AFK-Farmen von Kernen/Rekord; endBuildPhase räumt den Geist via cancelPlacing selbst ab (Menü-Fall bleibt: dort ist paused=true) */
     }
-    updateBuildRuntime(dt); collectScrap(dt); healFields(dt);
+    reactorTick(dt);updateBuildRuntime(dt); collectScrap(dt); healFields(dt);
     cb_update(dt); // Koloss-Boss-Engine (KI, Telegrafen, Boss-Projektile, HP-Balken)
     // Bullets
-    for(var i=0;i<bullets.length;i++){var b=bullets[i];if(!b.active)continue;b.m.position.x+=b.vx*dt;b.m.position.z+=b.vz*dt;b.life-=dt;if(b.life<=0){b.active=false;b.m.visible=false;b.m.position.y=-99;continue;}
+    for(var i=0;running&&i<bullets.length;i++){var b=bullets[i];if(!b.active)continue;b.m.position.x+=b.vx*dt;b.m.position.z+=b.vz*dt;b.life-=dt;if(b.life<=0){b.active=false;b.m.visible=false;b.m.position.y=-99;continue;}
       if((frame&1)===0)emitTrail(b.m.position.x,b.m.position.z,b.m.material.color.getHex());
       for(var j=0;j<enemies.length;j++){var en=enemies[j];if(!en.active)continue;var dx=en.m.position.x-b.m.position.x,dz=en.m.position.z-b.m.position.z;if(dx*dx+dz*dz<(en.cbHitR||1.2)){smallSpark(b.m.position.x,b.m.position.z,b.m.material.color.getHex());spawnFlash(en.m.position.x,0.9,en.m.position.z,0xffffff,0.75,0.07);hitEnemy(en,b.dmg);if(b.pierce>0){b.pierce--;}else{b.active=false;b.m.visible=false;b.m.position.y=-99;}break;}}
     }
     // Enemies → Ziel (nächster lebender Spieler; Raider im Boss-Ansturm greifen die Basis an)
     var _p2on=coopOn()&&P2.down<=0,_p1on=p1Down<=0;
-    for(i=0;i<enemies.length;i++){var e2=enemies[i];if(!e2.active||e2.cbProxy)continue; // Koloss steuert cb_update, nicht die Gegner-KI
+    for(i=0;running&&i<enemies.length;i++){var e2=enemies[i];if(!e2.active||e2.cbProxy)continue; // Koloss steuert cb_update, nicht die Gegner-KI
       var _tp=player.position;
       if(_p2on){if(!_p1on)_tp=P2.g.position;
         else{var _dA=(player.position.x-e2.m.position.x)*(player.position.x-e2.m.position.x)+(player.position.z-e2.m.position.z)*(player.position.z-e2.m.position.z),
@@ -1729,15 +1797,16 @@ function loop(now){
           if(_dB<_dA)_tp=P2.g.position;}}
       var pex=_tp.x-e2.m.position.x,pez=_tp.z-e2.m.position.z;var ped=Math.hypot(pex,pez)||1;
       var tgx=_tp.x,tgz=_tp.z,tstruct=null;
-      if(e2.raider&&structures.length){tstruct=nearestStruct(e2.m.position.x,e2.m.position.z);if(tstruct){tgx=tstruct.x;tgz=tstruct.z;}}
+      tstruct=ArenaReactor.target(e2,S.reactor);if(tstruct){tgx=tstruct.x;tgz=tstruct.z;}
       e2._tstruct=tstruct;
       var ex=tgx-e2.m.position.x,ez=tgz-e2.m.position.z;var ed=Math.hypot(ex,ez)||1;
-      var mv=(e2.shooter&&ped<13)?0:1;  // Schützen halten Abstand
+      var mv=tstruct&&ed<3.5?0:(e2.shooter&&ped<13)?0:1;  // Angreifer stoppen am Reaktor
       var slf=structures.length?enemySlowFactor(e2.m.position.x,e2.m.position.z):1;
       e2.m.position.x+=ex/ed*e2.spd*dt*mv*slf;e2.m.position.z+=ez/ed*e2.spd*dt*mv*slf;
       animEnemy(e2,dt,ex,ez,ed,mv*slf>0.01?1:0);
       if(structures.length)resolveBlockers(e2,dt);
-      if(e2.raider&&tstruct&&tstruct.hp>0){var sdx=tstruct.x-e2.m.position.x,sdz=tstruct.z-e2.m.position.z;if(sdx*sdx+sdz*sdz<(e2.boss?10:4.5)){damageStruct(tstruct,(e2.boss?16:6)*dt);if(e2.boss&&(frame&3)===0){smallSpark(tstruct.x,tstruct.z,0xff8a3a);}e2.m.position.y=(e2.by||0.7)+Math.abs(Math.sin(S.t*13))*0.12;}}
+      if(!e2.active)continue; // Stacheln können den Angreifer bereits besiegt haben
+      if(tstruct&&Math.hypot(e2.m.position.x,e2.m.position.z)<3.6){damageReactor((e2.boss?10:4)*dt);if(!running){updHUD();return;}}
       /* 🩹 Der Timer lief auch AUSSER Reichweite weiter — beim Eintritt stand er
          laengst auf 0 und der Schuetze feuerte sofort, ohne die 0.5-s-Auflade-
          Regung, die als einzige Warnung dient. Ausser Reichweite bleibt er nun
@@ -1755,7 +1824,7 @@ function loop(now){
       if(_p2on&&!(P2.hurtIfr>0)&&Math.hypot(P2.g.position.x-e2.m.position.x,P2.g.position.z-e2.m.position.z)<1.4){p2Damage(3.4);P2.hurtIfr=0.28;} /* D4: P2 gleicher Biss-Cap wie P1 (war 13*dt PRO Gegner PRO Frame) */
     }
     // Gegner-Projektile
-    for(i=0;i<ebullets.length;i++){var eb=ebullets[i];if(!eb.active)continue;eb.m.position.x+=eb.vx*dt;eb.m.position.z+=eb.vz*dt;eb.life-=dt;
+    for(i=0;running&&i<ebullets.length;i++){var eb=ebullets[i];if(!eb.active)continue;eb.m.position.x+=eb.vx*dt;eb.m.position.z+=eb.vz*dt;eb.life-=dt;
       // Schild-Generator: Kuppel fängt Gegner-Projektile ab
       var blk=false;for(var sh=0;sh<structures.length;sh++){var shs=structures[sh];if(shs.type!=="shield"||shs.hp<=0)continue;var shx=shs.x-eb.m.position.x,shz=shs.z-eb.m.position.z;if(shx*shx+shz*shz<shs.R*shs.R){blk=true;shs.shieldFlash=0.22;spawnFlash(eb.m.position.x,0.9,eb.m.position.z,0x8fc4ff,0.8,0.14);spawnRing(eb.m.position.x,eb.m.position.z,0x8fc4ff,0.3,1.6,0.25,0.6);beep(520,.04,"sine",.03);break;}}
       if(blk){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;continue;}
@@ -1765,19 +1834,20 @@ function loop(now){
       else if(eb.life<=0){eb.active=false;eb.m.visible=false;eb.m.position.y=-99;}}
     if(hurt>0)hurt=Math.max(0,hurt-dt*2.2); hurtEl.style.opacity=hurt;
     // Orbs einsammeln (Magnet)
-    for(i=0;i<orbs.length;i++){var o=orbs[i];if(!o.active)continue;var _op=nearPl(o.m.position.x,o.m.position.z);var ox=_op.x-o.m.position.x,oz=_op.z-o.m.position.z;var od=Math.hypot(ox,oz)||1;if(od<S.pickup){o.m.position.x+=ox/od*12*dt;o.m.position.z+=oz/od*12*dt;}o.m.rotation.y+=dt*3;
+    for(i=0;running&&i<orbs.length;i++){var o=orbs[i];if(!o.active)continue;var _op=nearPl(o.m.position.x,o.m.position.z);var ox=_op.x-o.m.position.x,oz=_op.z-o.m.position.z;var od=Math.hypot(ox,oz)||1;if(od<S.pickup){o.m.position.x+=ox/od*12*dt;o.m.position.z+=oz/od*12*dt;}o.m.rotation.y+=dt*3;
       if(od<1.0){spawnFlash(o.m.position.x,0.8,o.m.position.z,0xffe08a,0.55,0.12);o.active=false;o.m.visible=false;o.m.position.y=-99;S.xp+=(S.xpMul||1);if(S.xp>=S.xpNeed){S.xp=0;S.lvl++;S.xpNeed=Math.floor(S.xpNeed*1.4)+2;levelUp();}}
     }
     // Loot einsammeln (grösserer Radius als Orbs — Beute-Jagd)
-    for(i=0;i<loot.length;i++){var g=loot[i];if(!g.active)continue;var _lp=nearPl(g.m.position.x,g.m.position.z);var gx=_lp.x-g.m.position.x,gz=_lp.z-g.m.position.z,gd=Math.hypot(gx,gz)||1;if(gd<S.pickup+3){g.m.position.x+=gx/gd*16*dt;g.m.position.z+=gz/gd*16*dt;}g.m.rotation.y+=dt*2.2;g.m.position.y=0.7+Math.sin(S.t*4+i)*0.15;
+    for(i=0;running&&i<loot.length;i++){var g=loot[i];if(!g.active)continue;var _lp=nearPl(g.m.position.x,g.m.position.z);var gx=_lp.x-g.m.position.x,gz=_lp.z-g.m.position.z,gd=Math.hypot(gx,gz)||1;if(gd<S.pickup+3){g.m.position.x+=gx/gd*16*dt;g.m.position.z+=gz/gd*16*dt;}g.m.rotation.y+=dt*2.2;g.m.position.y=0.7+Math.sin(S.t*4+i)*0.15;
       if(gd<1.2){spawnRing(g.m.position.x,g.m.position.z,RARITY[g.rar].c,0.5,4,0.4);spawnFlash(g.m.position.x,0.8,g.m.position.z,RARITY[g.rar].c,1.3,0.16);g.active=false;g.m.visible=false;g.m.position.y=-99;applyLoot(g.rar);}}
-    if(S.hp<=0&&p1Down<=0){if(S.revives>0){S.revives--;S.hp=S.maxhp*0.6;announce("✨ Wiederbelebt!");beep(880,.3,"triangle",.09);shake=1.0;}
+    if(running&&S.hp<=0&&p1Down<=0){if(S.revives>0){S.revives--;S.hp=S.maxhp*0.6;announce("✨ Wiederbelebt!");beep(880,.3,"triangle",.09);shake=1.0;}
       else if(coopOn()&&P2.down<=0){S.hp=0;p1DownFn();} /* Koop: erst am Boden — Partner kann retten */
       else{S.hp=0;gameOver();}}
     if(coopMode==='host')hostNetFrame(dt); /* ~15 Snapshots/s an den Client */
     updHUD();
   }
   // FX (laufen auch pausiert → Level-Up-/Bau-Flourishes animieren im Overlay)
+  if(running&&paused&&coopMode==='host')hostNetFrame(dt);
   frame++;
   updateSkins(dt); /* Gegner-Modell-Mixer + Pool-Sweep (läuft immer, auch als Online-Client) */
   for(i=0;i<fx.length;i++){var p=fx[i];if(!p.active)continue;p.m.position.x+=p.vx*dt;p.m.position.y+=p.vy*dt;p.m.position.z+=p.vz*dt;p.vy-=8*dt;p.life-=dt;p.m.material.opacity=Math.max(0,p.life*2);p.m.material.transparent=true;if(p.life<=0){p.active=false;p.m.visible=false;p.m.position.y=-99;}}
@@ -1867,7 +1937,7 @@ function applyLoot(ri){var r=RARITY[ri],picks=[],pool=AFFIXES.slice();for(var k=
 function updHUD(){document.getElementById("lvl").textContent="Lv "+S.lvl;document.getElementById("time").textContent=(S.finalBoss?"☠ ENDBOSS":("P"+S.phase+"/5 · "+mmss(S.t)+" / "+mmss(RUN_T)));document.getElementById("kills").textContent="☠ "+S.kills;document.getElementById("hpFill").style.width=(100*S.hp/S.maxhp)+"%";document.getElementById("xpFill").style.width=(100*S.xp/S.xpNeed)+"%";
   var ab=document.getElementById("ability");if(ab){if((S.abilityCD||0)<=0){ab.textContent=COARSE?"⚡ PULS-BLAST bereit — gelber Knopf":"⚡ PULS-BLAST bereit — [LEER]";ab.style.color="#ffd166";}else{ab.textContent="⚡ Lädt… "+Math.ceil(S.abilityCD)+"s";ab.style.color="#7a83ad";}}
   var abb=document.getElementById("abBtn");if(abb){var rdy=(S.abilityCD||0)<=0;abb.style.opacity=rdy?"1":"0.45";abb.style.boxShadow=rdy?"0 0 16px #ffd166":"none";}
-  coopHUD();updSkillUI();}
+  reactorHUD();coopHUD();updSkillUI();}
 /* Skill-Slots-UI: HUD-Zeile (Desktop) + radiale CD-Anzeige auf den Touch-Buttons */
 var _skRowPrev="";
 function updSkillUI(){var cds=S.skCD||{};
@@ -1890,6 +1960,7 @@ function updSkillUI(){var cds=S.skCD||{};
    coopMode: null (solo) | 'ai' (KI-Partner) | 'host' (Online, simuliert alles) | 'client' (Online, rendert + Input)
    Host-autoritativ: Host simuliert, sendet ~15 kompakte Snapshots/s (sendFast) + Events (send, reliable);
    Client sendet nur seinen Move-Vektor. P2 teilt den Build (S.weapons) — eigenes Auto-Feuer via Positions-Swap. */
+var SURVIVOR_NET_GAME="survivor-reactor1"; // Eigenes Protokoll: alte Survivor-Tabs bleiben in ihrem bisherigen Raum-Namensraum.
 var coopMode=null,P2=null,p1Down=0,p1Rev=0,coopTagBase="";
 var netSess=null,netIn=null,netInT=0,snapAcc=0,inAcc=0,kaLast=0,pendingMap=null,curMapIdx=0;
 var np1={x:0,z:0,ry:0},netP2={x:3,z:3},cliMv={x:0,z:0};
@@ -2059,7 +2130,7 @@ function coopSimP2(dt){ /* Simulation (lokal/Host): P2 bewegen + feuern, Down-/R
   player.rotation.z+=((p1Down>0?1.2:0)-player.rotation.z)*Math.min(1,dt*8);
 }
 /* ---------------- Online-Koop: Protokoll (Snapshots + Events) ---------------- */
-function netEv(o){if(netSess){try{netSess.send(o);}catch(e){}}}
+function netEv(o){if(coopMode==='host'&&o.e)o.rid=S.runId;if(netSess){try{netSess.send(o);}catch(e){}}}
 var netPartnerName="";
 function p2SetName(n){netPartnerName=nsClean(n);setCoopTag();
   var g=(typeof P2!=="undefined"&&P2&&coopMode!=='client')?P2.g:null;if(!g||!g.userData||!g.userData.nameSpr)return; /* Sprite hängt an der THREE-Group P2.g (P2.userData gibt es nicht → Schild wurde nie gezeichnet); beim Client ist P2 die EIGENE Figur → dort kein Partner-Schild, die HUD-Zeile zeigt den Host */
@@ -2079,8 +2150,9 @@ function buildSnap(){ /* kompakter Host-Frame: Spieler, HP/Down, XP/Welle, Gegne
   var eb=[];
   for(i=0;i<ebullets.length;i++){var b=ebullets[i];if(b.active)eb.push([+b.m.position.x.toFixed(1),+b.m.position.z.toFixed(1)]);}
   var st=[];
-  for(i=0;i<structures.length;i++)st.push([structures[i].type,Math.round(structures[i].x),Math.round(structures[i].z)]);
-  return {k:'s',t:+S.t.toFixed(1),h1:Math.round(S.hp),m1:Math.round(S.maxhp),h2:P2?Math.round(P2.hp):0,m2:P2?Math.round(P2.maxhp):100,
+  for(i=0;i<structures.length;i++)if(structures[i].hp>0)st.push([structures[i].type,+structures[i].x.toFixed(2),+structures[i].z.toFixed(2),Math.ceil(structures[i].hp),structures[i].maxhp,structures[i].lv||0]);
+  return {k:'s',rid:S.runId,seq:++snapSeq,rx:ArenaReactor.pack(S.reactor),rh:S.reactorHit>0,bp:S.buildPhase,bt:S.buildT,pa:paused,ph:S.phase,fb:S.finalBoss,
+    t:+S.t.toFixed(1),h1:Math.round(S.hp),m1:Math.round(S.maxhp),h2:P2?Math.round(P2.hp):0,m2:P2?Math.round(P2.maxhp):100,bw:S.bossWave,
     d1:+p1Down.toFixed(1),d2:P2?+P2.down.toFixed(1):0,r1:+p1Rev.toFixed(2),r2:P2?+P2.rev.toFixed(2):0,
     lv:S.lvl,xp:+S.xp.toFixed(1),xn:S.xpNeed,k2:S.kills,wv:S.wave,sc:S.scrap,
     p1:[+player.position.x.toFixed(2),+player.position.z.toFixed(2),+player.rotation.y.toFixed(2)],
@@ -2090,12 +2162,17 @@ function buildSnap(){ /* kompakter Host-Frame: Spieler, HP/Down, XP/Welle, Gegne
 }
 function hostNetFrame(dt){snapAcc+=dt;if(snapAcc>=0.066&&netSess){snapAcc=0;try{netSess.sendFast(buildSnap());}catch(e){}}}
 function cliClear(){ /* Client-Spiegel aufräumen (Strukturen + Koloss + Telegrafen) */
-  for(var i=0;i<cliSt.length;i++)scene.remove(cliSt[i]);
+  for(var i=0;i<cliSt.length;i++){scene.remove(cliSt[i].g);scene.remove(cliSt[i].hpBar);}
   cliSt.length=0;cliStSig="";
   for(i=0;i<cbTg.length;i++){cbTg[i].active=false;cbTg[i].line.visible=false;cbTg[i].ring.visible=false;}
   if(cliCb.on){cliCb.on=false;cbBoss.visible=false;var bar=document.getElementById("cbBar");if(bar)bar.classList.add("hide");}
 }
 function applySnap(m){ /* Client: Host-Frame anwenden (Spiegel-Ziele setzen, HUD-Zustand übernehmen) */
+  if(coopMode!=='client')return false;
+  if(!ArenaReactor.frameOK(m)||m.rid!==S.runId||m.seq<=lastSnapSeq)return false;
+  if(!ArenaReactor.read(S.reactor,m.rx))return false;lastSnapSeq=m.seq;
+  S.reactorHit=m.rh?0.22:0;S.buildPhase=m.bp;S.buildT=m.bt;S.hostPaused=!!m.pa;S.phase=m.ph;S.finalBoss=!!m.fb;
+  S.bossWave=!!m.bw;document.getElementById("waveN").textContent=S.hostPaused?"· Host baut / pausiert":(S.buildPhase==="build"?"· 🛠️ Bauphase "+Math.max(0,Math.ceil(S.buildT))+"s":S.bossWave?"· ⚠ BOSS-ANSTURM":"· Welle "+m.wv);
   np1.x=m.p1[0];np1.z=m.p1[1];np1.ry=m.p1[2];
   netP2.x=m.p2[0];netP2.z=m.p2[1];
   var i;
@@ -2117,7 +2194,6 @@ function applySnap(m){ /* Client: Host-Frame anwenden (Spiegel-Ziele setzen, HUD
     if(e._col!==a[4]){e._col=a[4];e.m.material.color.setHex(a[4]);e.m.material.emissive.setHex(a[4]);e.baseEmissive=a[4];
       var _kk=KIND_BY_COLOR[a[4]];if(_kk)skinAttach(e,_kk);else skinDetach(e);} /* Client-Spiegel bekommt dieselben GLB-Skins */
   }
-  if(coopMode!=='client')return; /* netSim auf dem Host: nur Spiegel-Ziele prüfen, nichts zerstören */
   for(i=0;i<enemies.length;i++){var e2=enemies[i];
     if(e2.active&&!e2.cbProxy&&!seen[i]){burst(e2.m.position.x,e2.m.position.z,e2._col||0xff5577);e2.active=false;e2.m.visible=false;e2.m.position.y=-99;}}
   var nb=(m.eb||[]).length;
@@ -2126,10 +2202,13 @@ function applySnap(m){ /* Client: Host-Frame anwenden (Spiegel-Ziele setzen, HUD
       bb.active=true;bb.m.visible=true;bb.m.position.set(m.eb[i][0],0.8,m.eb[i][1]);}
     else if(i<ebullets.length&&ebullets[i].active){ebullets[i].active=false;ebullets[i].m.visible=false;ebullets[i].m.position.y=-99;}
   }
-  var sig=(m.st||[]).join("|");
+  var sig=(m.st||[]).map(function(a){return [a[0],a[1],a[2],a[5]].join(",");}).join("|");
   if(sig!==cliStSig){cliStSig=sig;
-    for(i=0;i<cliSt.length;i++)scene.remove(cliSt[i]);cliSt.length=0;
-    for(i=0;i<(m.st||[]).length;i++){var g2=makeStruct(m.st[i][0]);g2.position.set(m.st[i][1],0,m.st[i][2]);scene.add(g2);cliSt.push(g2);}}
+    for(i=0;i<cliSt.length;i++){scene.remove(cliSt[i].g);scene.remove(cliSt[i].hpBar);}cliSt.length=0;
+    for(i=0;i<(m.st||[]).length;i++){var a2=m.st[i],g2=makeStruct(a2[0]);g2.position.set(a2[1],0,a2[2]);scene.add(g2);
+      var mirror={g:g2,type:a2[0],x:a2[1],z:a2[2],lv:a2[5],barY:4.1};if(mirror.type==="tower")applyTowerLevel(mirror);
+      g2.scale.setScalar(mirror.scaleBase||1);attachHpBar(mirror);cliSt.push(mirror);}}
+  for(i=0;i<cliSt.length;i++){cliSt[i].hp=m.st[i][3];cliSt[i].maxhp=m.st[i][4];updateHpBar(cliSt[i]);}
   if(m.cb){
     if(!cliCb.on||cliCb.kind!==m.cb[0]){cliCb.on=true;cliCb.kind=m.cb[0];
       var c=CB_COLOSSI[m.cb[0]];cb_buildBoss(m.cb[0],c.c1,c.c2);cbBoss.position.set(m.cb[1],3.6,m.cb[2]);
@@ -2139,6 +2218,8 @@ function applySnap(m){ /* Client: Host-Frame anwenden (Spiegel-Ziele setzen, HUD
   }else if(cliCb.on){cliCb.on=false;cbBoss.visible=false;document.getElementById("cbBar").classList.add("hide");
     burst(cbBoss.position.x,cbBoss.position.z,0xffd166);shake=Math.max(shake,0.8);}
   updHUD();
+  if(m.rx[2]){var end={rid:m.rid,rx:m.rx,s:m.t,lv:m.lv,kk:m.k2,wv:m.wv};if(m.rx[2]==="win")clientWin(end);else clientOver(end);}
+  return true;
 }
 function cliTgUpdate(dt){ /* Client: Telegrafen-Animation (Blinken/Feuern) OHNE Schadens-Check — der Host rechnet Treffer */
   for(var i=0;i<cbTg.length;i++){var g=cbTg[i];if(!g.active)continue;g.t+=dt;
@@ -2149,6 +2230,7 @@ function cliTgUpdate(dt){ /* Client: Telegrafen-Animation (Blinken/Feuern) OHNE 
     else g.ring.material.opacity=0.15+prog*0.35+(prog>0.7?blink:0);
     if(g.t>=g.delay){g.fired=1;g.firedT=0.18;(g.type===0?g.line:g.ring).material.color.setHex(0xffffff);}}}
 function clientFrame(dt){ /* Online-Client: eigene Figur (Vorhersage + sanfte Host-Korrektur), Welt interpolieren, Input senden */
+  if(S.hostPaused)dt=0; // Host pausiert auch während Bau- und Upgrade-Menüs.
   S.t+=dt;
   if(P2&&P2.active){
     if(P2.down<=0){
@@ -2194,8 +2276,15 @@ function clientFrame(dt){ /* Online-Client: eigene Figur (Vorhersage + sanfte Ho
   if(inAcc>=0.05&&netSess){inAcc=0;try{netSess.sendFast({k:'i',x:+cliMv.x.toFixed(2),z:+cliMv.z.toFixed(2)});}catch(e){}}
   updHUD();
 }
+function clientEnd(m,outcome){
+  if(coopMode!=='client'||!running||S.endReceived||m.rid!==S.runId||!m.rx||m.rx[2]!==outcome)return false;
+  if(!ArenaReactor.read(S.reactor,m.rx))return false;
+  S.endReceived=true;S.won=outcome==="win";S.t=m.s||0;S.lvl=m.lv||1;S.kills=m.kk||0;S.wave=m.wv||1;
+  running=false;paused=false;stopMusic();showTouchBtns(false);cancelPlacing();closeBuildMenu();closeStructMenu();cb_abort();cliClear();reactorHUD();return true;
+}
 function clientOver(m){ /* Game-Over-Anzeige aus dem Host-Event */
-  running=false;stopMusic();showTouchBtns(false);
+  if(!clientEnd(m,"loss"))return;
+  document.getElementById("reactorEnd").textContent=S.reactor.reason==="reactor"?"Reaktor zerstört. Gemeinsam Angreifer abfangen und Reparaturen einplanen.":"Team gefallen. Der Reaktor braucht euch — versuche es erneut.";
   document.getElementById("finalT").textContent="Überlebt: "+(m.s||0)+"s";
   document.getElementById("finalT").className="";
   /* Gast verbucht denselben Lohn wie der Host (Werte kommen aus dem 'ov'-Event) — vorher ging jeder Koop-Abend für den Gast ohne Kerne/Runde/Bestenliste aus */
@@ -2205,10 +2294,10 @@ function clientOver(m){ /* Game-Over-Anzeige aus dem Host-Event */
   document.getElementById("over").classList.remove("hide");beep(80,.6,"sawtooth",.09);
 }
 function clientWin(m){
-  running=false;stopMusic();showTouchBtns(false);
+  if(!clientEnd(m,"win"))return;
   var earned=Math.floor((m.kk||0)/3)+Math.floor((m.s||0)/8)+150;saveCores(loadCores()+earned);renderShop(); /* Gast: gleicher Sieg-Lohn wie der Host */
   recordRun(curName,m.s||0,S.wave||1,m.kk||0);
-  document.getElementById("winV").innerHTML="🌐 Online-Koop · in "+mmss(m.s||0)+" geschafft · Level "+(m.lv||1)+" · "+(m.kk||0)+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
+  document.getElementById("winV").innerHTML="🌐 NEXUS besiegt · Reaktor: "+Math.ceil(S.reactor.hp)+"/"+S.reactor.maxhp+" HP · in "+mmss(m.s||0)+" · Level "+(m.lv||1)+" · "+(m.kk||0)+" Gegner · <b>+"+earned+" ⬢ Kerne</b>";
   document.getElementById("win").classList.remove("hide");beep(660,.5,"triangle",.1);nsConfetti();
 }
 function netMsg(m,roleOverride){ /* eingehende Nachrichten (beide Rollen) — defensiv, unbekannte Typen ignorieren */
@@ -2222,8 +2311,9 @@ function netMsg(m,roleOverride){ /* eingehende Nachrichten (beide Rollen) — de
     return;
   }
   if(m.k==='s'){if(coopMode==='client'&&running)applySnap(m);return;}
+  if(m.e&&m.e!=='bg'&&m.rid&&m.rid!==S.runId)return;
   switch(m.e){
-    case 'bg':pendingMap=(m.mi==null?null:m.mi);dailyMode=false;coopMode='client';start();announce("🌐 KOOP GESTARTET — du bist der ORANGE Buddy!");
+    case 'bg':if(!m.rid||m.rid===S.runId||seenClientRuns.indexOf(m.rid)>=0)return;seenClientRuns.push(m.rid);if(seenClientRuns.length>64)seenClientRuns.shift();pendingRunId=m.rid;pendingMap=(m.mi==null?null:m.mi);dailyMode=false;coopMode='client';start();announce("🌐 KOOP GESTARTET — du bist der ORANGE Buddy!");
       try{netSess.sendFast({k:'nm',n:nsGetName()||"Gast"});}catch(e){}break;
     case 'nm':p2SetName(m.n);break;
     case 'an':if(coopMode==='client')announce(m.t);break;
@@ -2245,7 +2335,7 @@ function coopNetStatus(st){ /* Disconnect: sauberer Fallback statt Crash */
   if(st==='lost'){if(running&&(coopMode==='host'||coopMode==='client'))announce("⚠ Verbindung wackelt — versuche Reconnect…");return;}
   if(st!=='closed')return;
   if(coopMode!=='host'&&coopMode!=='client')return; /* Lobby-Fehler regeln die .catch-Handler */
-  netClose(); /* Peer WIRKLICH zerstören (close() → peer.destroy) — netSess=null allein liess "aban-nsurv-OFEN" als Zombie-ID beim Vermittlungs-Server registriert und neue Spieler hingen ewig */
+  netClose(); /* Peer WIRKLICH zerstören (close() → peer.destroy) — sonst bleibt die versionierte Raum-ID beim Vermittler als Zombie registriert. */
   if(running){
     if(coopMode==='host'){coopMode='ai';setCoopTag();announce("🔌 Verbindung weg — 🤖 KI übernimmt deinen Partner!");}
     else{coopMode='ai';announce("🔌 Verbindung weg — Solo-Neustart mit 🤖 KI-Partner");start();}
@@ -2265,7 +2355,7 @@ function hostFixed(code){ /* Offener Raum: mp.js kann keine festen Codes hosten 
   function startWd(){lastRecv=Date.now();if(wd)clearInterval(wd);
     wd=setInterval(function(){if(S2.status==="closed"){clearInterval(wd);wd=null;return;}
       if(S2.status==="connected"&&Date.now()-lastRecv>6000){clearInterval(wd);wd=null;S2._set("closed");try{peer.destroy();}catch(e){}}},2000);}
-  try{peer=new window.Peer("aban-nsurv-"+code,{debug:0});}catch(e){S2._set("closed");S2._rej(e);return S2;}
+  try{peer=new window.Peer("aban-"+SURVIVOR_NET_GAME+"-"+code,{debug:0});}catch(e){S2._set("closed");S2._rej(e);return S2;}
   tmo=setTimeout(function(){if(S2.status==="connecting"){S2._set("closed");try{peer.destroy();}catch(e){}S2._rej(new Error("Vermittlungs-Server (0.peerjs.com) nicht erreichbar — Internet prüfen."));}},15000);
   peer.on("open",function(){clearTimeout(tmo);S2._set("waiting");});
   peer.on("connection",function(c){
@@ -2293,7 +2383,7 @@ function hostStart(){coopMode='host';dailyMode=false;start();netEv({e:'bg',mi:cu
   if(!mk)return;
   mk.onclick=function(){ /* Raum mit 4-Zeichen-Code erstellen */
     if(!ensureMP())return;netClose();
-    var s;try{s=MP.host("nsurv");}catch(e){mpState("⚠ "+e.message);return;}
+    var s;try{s=MP.host(SURVIVOR_NET_GAME);}catch(e){mpState("⚠ "+e.message);return;}
     netSess=s;
     var show=function(){mpState("Dein Raum-Code: <b style='font-size:1.5rem;letter-spacing:6px;color:#5ef2ff'>"+s.code+"</b><br>Warte auf Mitspieler… (Code weitergeben)");};
     show();
@@ -2306,7 +2396,7 @@ function hostStart(){coopMode='host';dailyMode=false;start();netEv({e:'bg',mi:cu
     var code=(ci.value||"").toUpperCase().replace(/[^A-Z]/g,"");
     if(code.length!==4){mpState("Bitte den 4-Buchstaben-Code eingeben.");return;}
     netClose();mpState("Verbinde mit Raum "+code+"…");
-    var s=MP.join("nsurv",code);netSess=s;
+    var s=MP.join(SURVIVOR_NET_GAME,code);netSess=s;
     s.onStatus(coopNetStatus);s.onMessage(netMsg);
     s.ready.then(function(){mpState("✅ Verbunden! Der Host startet das Spiel…");})
       .catch(function(e){mpState("⚠ "+e.message);if(netSess===s)netSess=null;});
@@ -2314,7 +2404,7 @@ function hostStart(){coopMode='host';dailyMode=false;start();netEv({e:'bg',mi:cu
   op.onclick=function(){ /* 🌍 Offener Raum (Muster lebenspfad): fester Code OFEN — erst joinen, sonst hosten */
     if(!ensureMP())return;netClose();
     mpState("🌍 Suche offenen Raum…");
-    var s=MP.join("nsurv","OFEN");netSess=s;
+    var s=MP.join(SURVIVOR_NET_GAME,"OFEN");netSess=s;
     s.onStatus(coopNetStatus);s.onMessage(netMsg);
     s.ready.then(function(){mpState("✅ Offenen Raum gefunden — der Host startet gleich…");})
       .catch(function(){ /* keiner da → selbst offenen Raum aufmachen */
@@ -2350,13 +2440,11 @@ window.__ns.netSim=function(){ /* Loopback-Test OHNE Netz: Host-Frame encode→d
     /* 1) HOST: Snapshot bauen und über die Leitung schicken (JSON-Roundtrip = DataChannel-Serialisierung) */
     var snap=buildSnap(),wire=JSON.stringify(snap),m=JSON.parse(wire);
     if(m.k!=='s'||!m.p1||!m.p2||!m.en||!m.en.length)return 'err:snapshot-felder';
-    /* 2) CLIENT: anwenden → Spiegel-Ziele müssen der Host-Wahrheit entsprechen */
-    applySnap(m);
-    if(Math.abs(np1.x-player.position.x)>0.05||Math.abs(np1.z-player.position.z)>0.05)return 'err:p1-spiegel';
-    if(Math.abs(netP2.x-P2.g.position.x)>0.05||Math.abs(netP2.z-P2.g.position.z)>0.05)return 'err:p2-spiegel';
-    var ok=0;
-    for(i=0;i<m.en.length;i++){var e=enemies[m.en[i][0]];if(e&&e.active&&Math.abs(e._tx-m.en[i][1])<0.06&&Math.abs(e._tz-m.en[i][2])<0.06)ok++;}
-    if(ok!==m.en.length)return 'err:gegner-spiegel('+ok+'/'+m.en.length+')';
+    /* 2) Host darf seinen autoritativen Zustand nicht mit einem Spiegel-Frame überschreiben.
+       Zwei getrennte Clients prüft spiele-dev/arena-nexus/reactor.test.cjs. */
+    if(applySnap(m)!==false)return 'err:host-spiegel';
+    var mirror=ArenaReactor.create();if(!ArenaReactor.read(mirror,m.rx)||mirror.hp!==Math.ceil(S.reactor.hp))return 'err:reaktor-wire';
+    if(Math.abs(m.p1[0]-player.position.x)>0.05||Math.abs(m.p2[0]-P2.g.position.x)>0.05)return 'err:position-wire';
     /* 3) CLIENT→HOST: Input encodieren → decodieren → auf den zweiten (virtuellen) Spieler anwenden */
     var im=JSON.parse(JSON.stringify({k:'i',x:1,z:0}));
     netMsg(im,'host');
@@ -2395,7 +2483,7 @@ if(STATION){
   var _db=document.getElementById("dailyBtn");if(_db)_db.style.display="none";
   /* '← Wildnis'-Knopf (immer sichtbar, unter Mute/Pause rechts oben) */
   var _wb=document.createElement("button");_wb.id="stationBack";_wb.textContent="← Wildnis";
-  _wb.style.cssText="position:fixed;top:calc(112px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:9;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:14px;padding:10px 14px;font-weight:800;font-size:.95rem;cursor:pointer";
+  _wb.style.cssText="position:fixed;top:calc(112px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right));z-index:21;border:1px solid #3a4170;background:rgba(16,20,43,.85);color:#9fb2ff;border-radius:14px;padding:10px 14px;font-weight:800;font-size:.95rem;cursor:pointer";
   _wb.onclick=function(){stationPost("mini-back");};
   document.body.appendChild(_wb);
   /* '← Zurück zur Wildnis' im Game-Over- UND Sieg-Screen */

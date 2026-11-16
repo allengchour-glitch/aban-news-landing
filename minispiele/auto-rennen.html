@@ -4,13 +4,14 @@
 <meta charset="utf-8">
 <meta name="aban-nav" content="off">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Tipp-Rennen 🏎️</title>
+<title>Schalt-Rennen 🏎️</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://abannews.com/minispiele/auto-rennen.html">
-<meta name="description" content="Tipp-Rennen: wer schneller tippt, bringt sein Auto zuerst ins Ziel.">
-<meta property="og:title" content="Tipp-Rennen 🏎️">
+<meta name="description" content="Schalt-Rennen: Gas halten und im grünen Drehzahlbereich schalten: Wer fährt zuerst ins Ziel?">
+<meta property="og:title" content="Schalt-Rennen 🏎️">
 <meta property="og:image" content="https://abannews.com/og-arcade.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:description" content="Tipp-Rennen: wer schneller tippt, bringt sein Auto zuerst ins Ziel.">
+<meta property="og:description" content="Schalt-Rennen: Gas halten und im grünen Drehzahlbereich schalten: Wer fährt zuerst ins Ziel?">
 <meta property="og:url" content="https://abannews.com/minispiele/auto-rennen.html">
 <meta property="og:type" content="website">
 <style>
@@ -33,7 +34,7 @@
   .title { font-size: 22px; font-weight: bold; flex: 1; text-align: center; }
   .title small { display:block; font-size: 12px; font-weight: normal; opacity: .8; }
   #track { flex: 1; width: 100%; border-radius: 14px; display: block; box-shadow: 0 4px 14px rgba(40,90,150,.22); }
-  .pads { display: flex; gap: 10px; }
+  .pads { display: flex; gap: 10px; margin-bottom:22px; }
   .pad {
     flex: 1; border: none; border-radius: 14px; padding: 22px 8px;
     font-size: 20px; font-weight: bold; color: #fff; cursor: pointer;
@@ -73,37 +74,80 @@
   }
   .bigbtn:active { transform: translateY(3px); box-shadow: 0 2px 0 #d97a1e, 0 4px 10px rgba(40,90,150,.15); }
   .trophy { font-size: 64px; }
+  #track{min-height:0;}
+  .backbtn{position:relative;z-index:20;}
+  .driver{flex:1;min-width:0;padding:8px;border-radius:14px;background:#fffdf6;}
+  .driver.red{border:2px solid #e8574a}.driver.blue{border:2px solid #3a7dd8}
+  .score{font-size:14px;font-weight:bold;text-align:center;}
+  .rev{position:relative;height:20px;margin:6px 0;background:linear-gradient(to right,#b4c7d5 0 72%,#368449 72% 90%,#a72e38 90%);border-radius:8px;}
+  .rev i{position:absolute;left:0;top:0;bottom:0;width:5px;transform:translateX(-50%);background:#172e44;border:1px solid #fff;}
+  .drive-feedback{font-size:12px;text-align:center;min-height:30px;}
+  .controls{display:flex;gap:6px;}.controls button{touch-action:none;min-width:0;}
+  .controls .pad{min-height:66px;padding:8px 4px;font-size:16px;}
+  .shift{flex:1;border:0;border-radius:14px;background:#ffcf3a;color:#513300;font-weight:bold;font-size:15px;min-height:66px;}
+  .pad.held{filter:brightness(.83);transform:translateY(2px);}
+  @media(max-height:550px){#app{gap:4px;padding:4px}.title{font-size:17px}.title small{font-size:11px}.driver{padding:4px}.controls .pad,.shift{min-height:48px;font-size:13px}.drive-feedback{min-height:16px;font-size:11px}#overlay{gap:10px;padding:14px}#overlay p{font-size:14px}.trophy{font-size:32px}}
 </style>
 </head>
 <body>
 <div id="app">
   <div class="topbar">
-    <button class="backbtn" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
-    <div class="title">🏎️ Tipp-Rennen<small>Erster im Ziel gewinnt!</small></div>
+    <button type="button" class="backbtn" onclick="if(window.parent!==window){parent.postMessage('mini-back','*')}else{history.back()}">← Zurück</button>
+    <div class="title">🏎️ Schalt-Rennen<small>Gas halten · im grünen Bereich schalten</small></div>
   </div>
   <canvas id="track"></canvas>
-  <div class="center-msg" id="msg">Los! Tippt so schnell ihr könnt!</div>
+  <div class="center-msg" id="msg">Rot: A + S · Blau: K + L (Gas + Schalten)</div>
   <div class="pads">
-    <button class="pad" id="padRed" aria-label="Rotes Auto">
-      <span class="emoji">🏎️</span>
-      <span>Rot</span>
-      <span class="score" id="scoreRed">0%</span>
-    </button>
-    <button class="pad" id="padBlue" aria-label="Blaues Auto">
-      <span class="emoji">🚙</span>
-      <span>Blau</span>
-      <span class="score" id="scoreBlue">0%</span>
-    </button>
+    <div class="driver red">
+      <div class="score" id="scoreRed">Rot · Gang 1 · 0%</div>
+      <div class="rev"><i id="rpmRed"></i></div>
+      <div class="drive-feedback" id="feedbackRed">Gas halten</div>
+      <div class="controls"><button type="button" class="pad" id="padRed">🏎️ Gas · A</button><button type="button" class="shift" id="shiftRed">↑ Gang · S</button></div>
+    </div>
+    <div class="driver blue">
+      <div class="score" id="scoreBlue">Blau · Gang 1 · 0%</div>
+      <div class="rev"><i id="rpmBlue"></i></div>
+      <div class="drive-feedback" id="feedbackBlue">Gas halten</div>
+      <div class="controls"><button type="button" class="pad" id="padBlue">🚙 Gas · K</button><button type="button" class="shift" id="shiftBlue">↑ Gang · L</button></div>
+    </div>
   </div>
 </div>
 
 <div id="overlay">
   <div class="trophy">🏁</div>
-  <h1 id="ovTitle">Tipp-Rennen</h1>
-  <p id="ovText">Zwei Spieler! Jeder tippt auf seine Taste, um sein Auto vorwärts zu fahren. Wer zuerst die Ziellinie erreicht, gewinnt.</p>
-  <button class="bigbtn" id="startBtn">🚦 Start</button>
+  <h1 id="ovTitle">Schalt-Rennen</h1>
+  <p id="ovText">Gas gedrückt halten und im grünen Drehzahlbereich hochschalten. Zu frühes Schalten kostet Kraft, zu spätes Tempo! Rot: A halten + S schalten. Blau: K halten + L schalten. Auf Touch: je ein Gas- und Schaltknopf. Erster im Ziel gewinnt.</p>
+  <button type="button" class="bigbtn" id="startBtn">🚦 Start</button>
 </div>
 
+<script id="game-logic">
+/* Fahrmodell: Gas halten, Drehzahl beobachten, dann hochschalten. */
+var GameLogic = (function(){
+  "use strict";
+  var CAPS=[0,0.035,0.055,0.082,0.115,0.15];
+  function car(){return {p:0,speed:0,gear:1,rpm:0,cooldown:0,gas:false,feedback:'Gas halten'};}
+  function step(c,dt){
+    c.cooldown=Math.max(0,c.cooldown-dt);
+    if(c.gas) c.speed=Math.min(CAPS[c.gear],c.speed+(0.018+c.gear*0.003)*dt);
+    else c.speed=Math.max(0,c.speed-0.035*dt);
+    c.rpm=c.speed/CAPS[c.gear];
+    // Im roten Bereich kostet der Begrenzer Strecke, nicht zusätzliche Klicks.
+    c.p=Math.min(1,c.p+c.speed*(c.rpm>0.94 && c.gear<5?0.72:1)*dt);
+  }
+  function shift(c){
+    if(c.cooldown>0 || c.gear===5) return false;
+    c.cooldown=0.65;
+    if(c.rpm<0.72){c.speed*=0.55; c.feedback='Zu früh! Kraft verloren';}
+    else {
+      var good=c.rpm<=0.9;
+      c.gear++; c.speed*=good?0.99:0.72;
+      c.feedback=good?'Sauber geschaltet!':'Zu spät! Drehzahl verloren';
+    }
+    c.rpm=c.speed/CAPS[c.gear]; return true;
+  }
+  return {car:car,step:step,shift:shift};
+}());
+</script>
 <script>
 (function(){
   "use strict";
@@ -120,20 +164,15 @@
   var scoreBlue = document.getElementById('scoreBlue');
 
   var W = 0, H = 0, dpr = 1;
-  var TRACK_LEN = 1.0; // progress 0..1
-  var GAIN = 0.018;     // Fortschritt pro Tipp
-  var DECAY = 0.006;    // sanftes Zurückrollen pro Sekunde
-  var running = false;
-  var winner = null;
-  var countdown = 0;     // >0 = countdown läuft
-  var countLabel = "";
-  var lastT = 0;
-  var wobble = 0;
-
-  var cars = {
-    red:  { p: 0, emoji: "🏎️", color: "#ec4d54", y: 0.36, bounce: 0 },
-    blue: { p: 0, emoji: "🚙", color: "#3f7fe0", y: 0.66, bounce: 0 }
-  };
+  var running=false, winner=null, phase='idle', phaseEnd=0, countLabel='', lastT=0;
+  var gasPointers={red:new Set(),blue:new Set()}, keys=new Set();
+  var cars;
+  function makeCars(){
+    cars={red:GameLogic.car(),blue:GameLogic.car()};
+    Object.assign(cars.red,{emoji:'🏎️',y:0.36,bounce:0});
+    Object.assign(cars.blue,{emoji:'🚙',y:0.66,bounce:0});
+  }
+  makeCars();
 
   function resize(){
     var rect = canvas.getBoundingClientRect();
@@ -145,92 +184,68 @@
     draw();
   }
 
-  function reset(){
-    cars.red.p = 0; cars.blue.p = 0;
-    cars.red.bounce = 0; cars.blue.bounce = 0;
-    winner = null; running = false;
-    scoreRed.textContent = "0%"; scoreBlue.textContent = "0%";
-    padRed.classList.remove('win'); padBlue.classList.remove('win');
+  function release(){
+    keys.clear(); gasPointers.red.clear(); gasPointers.blue.clear(); syncGas();
   }
-
+  function syncGas(){
+    cars.red.gas=running && (keys.has('a') || gasPointers.red.size>0);
+    cars.blue.gas=running && (keys.has('k') || gasPointers.blue.size>0);
+    padRed.classList.toggle('held',cars.red.gas); padBlue.classList.toggle('held',cars.blue.gas);
+  }
   function startGame(){
-    reset();
-    overlay.classList.add('hide');
-    countdown = 3;
-    countLabel = "3";
-    running = false;
-    msg.textContent = "Achtung...";
-    var seq = ["3","2","1","LOS!"];
-    var i = 0;
-    countLabel = seq[0];
-    var iv = setInterval(function(){
-      i++;
-      if(i < seq.length){
-        countLabel = seq[i];
-        if(seq[i] === "LOS!"){
-          running = true;
-          msg.textContent = "🏁 Fahrt!";
-        } else {
-          msg.textContent = "Achtung...";
-        }
-      } else {
-        clearInterval(iv);
-        countLabel = "";
-      }
-    }, 700);
-    lastT = performance.now();
+    release(); makeCars(); winner=null; running=false;
+    padRed.classList.remove('win'); padBlue.classList.remove('win');
+    overlay.classList.add('hide'); phase='countdown';
+    phaseEnd=performance.now()+2100; lastT=performance.now(); countLabel='3';
+    msg.textContent='Bereit? Gas darf schon gehalten werden.'; updateScores();
   }
-
-  function tap(which){
-    if(!running || winner) return;
-    var c = cars[which];
-    c.p += GAIN;
-    c.bounce = 1;
-    if(c.p >= TRACK_LEN){
-      c.p = TRACK_LEN;
-      finish(which);
-    }
-    updateScores();
+  function shift(which){
+    if(!running) return;
+    GameLogic.shift(cars[which]); updateScores();
   }
-
   function updateScores(){
-    scoreRed.textContent = Math.round(cars.red.p * 100) + "%";
-    scoreBlue.textContent = Math.round(cars.blue.p * 100) + "%";
+    ['red','blue'].forEach(function(which){
+      var c=cars[which], side=which==='red'?'Red':'Blue';
+      document.getElementById('score'+side).textContent=(which==='red'?'Rot':'Blau')+' · Gang '+c.gear+' · '+Math.floor(c.p*100)+'%';
+      document.getElementById('rpm'+side).style.left=(c.rpm*100)+'%';
+      document.getElementById('feedback'+side).textContent=c.gear===5?'Höchster Gang – Gas halten':(c.rpm>=0.72 && c.rpm<=0.9?'Jetzt schalten!':c.feedback);
+    });
   }
-
   function finish(which){
-    if(winner) return;
-    winner = which;
-    running = false;
-    var name = which === "red" ? "Rot 🏎️" : "Blau 🚙";
-    (which === "red" ? padRed : padBlue).classList.add('win');
-    msg.textContent = name + " gewinnt! 🎉";
-    setTimeout(function(){
-      ovTitle.textContent = name + " gewinnt!";
-      ovText.textContent = "Glückwunsch! Wollt ihr eine Revanche?";
-      document.querySelector('.trophy').textContent = "🏆";
-      startBtn.textContent = "🔁 Nochmal";
-      overlay.classList.remove('hide');
-    }, 900);
+    if(!running) return;
+    winner=which; running=false; phase='result'; phaseEnd=performance.now()+800; release();
+    var name=which==='tie'?'Unentschieden':(which==='red'?'Rot 🏎️':'Blau 🚙')+' gewinnt!';
+    if(which!=='tie') (which==='red'?padRed:padBlue).classList.add('win');
+    msg.textContent=name; ovTitle.textContent=name;
+    ovText.textContent='Revanche? Gas halten und im grünen Bereich schalten.';
+    document.querySelector('.trophy').textContent='🏆'; startBtn.textContent='🔁 Nochmal';
   }
-
-  // Input
-  function bind(el, which){
-    var handler = function(e){ e.preventDefault(); tap(which); };
-    el.addEventListener('touchstart', handler, {passive:false});
-    el.addEventListener('mousedown', handler);
+  function bindGas(el,which){
+    el.addEventListener('pointerdown',function(e){
+      if(e.pointerType==='mouse' && e.button!==0) return;
+      e.preventDefault(); if(phase!=='countdown' && !running) return;
+      gasPointers[which].add(e.pointerId); try{el.setPointerCapture(e.pointerId);}catch(_){/* Synthetischer Zeiger ohne Erfassung. */} syncGas();
+    });
+    ['pointerup','pointercancel','lostpointercapture'].forEach(function(type){
+      el.addEventListener(type,function(e){gasPointers[which].delete(e.pointerId);syncGas();});
+    });
   }
-  bind(padRed, "red");
-  bind(padBlue, "blue");
-  // Tastatur für Spass am Rechner (A = rot, L = blau)
-  window.addEventListener('keydown', function(e){
-    if(e.repeat) return;
-    var k = e.key.toLowerCase();
-    if(k === 'a') tap('red');
-    else if(k === 'l') tap('blue');
+  bindGas(padRed,'red'); bindGas(padBlue,'blue');
+  ['Red','Blue'].forEach(function(side){
+    document.getElementById('shift'+side).addEventListener('pointerdown',function(e){
+      if(e.pointerType==='mouse' && e.button!==0) return;
+      e.preventDefault(); shift(side.toLowerCase());
+    });
   });
-
-  startBtn.addEventListener('click', startGame);
+  window.addEventListener('keydown',function(e){
+    var k=e.key.toLowerCase(); if(!['a','s','k','l'].includes(k)) return;
+    e.preventDefault(); if(e.repeat || keys.has(k)) return;
+    keys.add(k); if(k==='s') shift('red'); if(k==='l') shift('blue'); syncGas();
+  });
+  window.addEventListener('keyup',function(e){keys.delete(e.key.toLowerCase());syncGas();});
+  window.addEventListener('blur',release);
+  document.addEventListener('visibilitychange',function(){if(document.hidden) release();});
+  startBtn.addEventListener('click',startGame);
 
   // Drawing
   function roundRect(x,y,w,h,r){
@@ -366,19 +381,18 @@
   }
 
   function loop(t){
-    var dt = Math.min(0.05, (t - lastT)/1000 || 0);
-    lastT = t;
-    // sanfter Bounce-Decay
-    cars.red.bounce = Math.max(0, cars.red.bounce - dt*6);
-    cars.blue.bounce = Math.max(0, cars.blue.bounce - dt*6);
-    // leichtes Zurückrollen wenn nicht getippt (macht es spannender)
-    if(running && !winner){
-      cars.red.p = Math.max(0, cars.red.p - DECAY*dt);
-      cars.blue.p = Math.max(0, cars.blue.p - DECAY*dt);
-      updateScores();
+    var dt=Math.max(0,Math.min(0.05,(t-lastT)/1000 || 0)); lastT=t;
+    if(phase==='countdown'){
+      countLabel=String(Math.max(1,Math.ceil((phaseEnd-t)/700)));
+      if(t>=phaseEnd){phase='race';running=true;countLabel='';syncGas();dt=0;msg.textContent='Gas halten · Grün: schalten!';}
     }
-    draw();
-    requestAnimationFrame(loop);
+    if(phase==='result' && t>=phaseEnd){overlay.classList.remove('hide');phase='idle';}
+    if(running){
+      GameLogic.step(cars.red,dt); GameLogic.step(cars.blue,dt);
+      updateScores();
+      if(cars.red.p>=1 || cars.blue.p>=1) finish(cars.red.p>=1 && cars.blue.p>=1?'tie':cars.red.p>=1?'red':'blue');
+    }
+    draw(); requestAnimationFrame(loop);
   }
 
   window.addEventListener('resize', resize);

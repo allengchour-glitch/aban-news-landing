@@ -1,0 +1,368 @@
+{
+  "checks": [
+    {
+      "name": "Server 8182 liefert echte Survivor-CSP und SAMEORIGIN",
+      "data": {
+        "content-security-policy": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' blob: https://0.peerjs.com wss://0.peerjs.com https://peerjs.92k.de wss://peerjs.92k.de https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+        "x-frame-options": "SAMEORIGIN"
+      }
+    },
+    {
+      "name": "station · Reparatur über echten Klick",
+      "data": {
+        "before": {
+          "state": {
+            "scrap": 120,
+            "structures": 0,
+            "wave": 1,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 2.9499999999999975
+          },
+          "reactor": {
+            "hp": 200,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 0,
+            "runId": "mwjf5k7q-2"
+          },
+          "position": {
+            "x": 0,
+            "y": 0.9190276955283133,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "after": {
+          "state": {
+            "scrap": 108,
+            "structures": 0,
+            "wave": 1,
+            "phase": "build",
+            "hp": 120,
+            "running": true,
+            "paused": true,
+            "kills": 0,
+            "lvl": 1,
+            "time": 2.9499999999999975
+          },
+          "reactor": {
+            "hp": 260,
+            "maxhp": 300,
+            "outcome": null,
+            "reason": null,
+            "repairs": 1,
+            "runId": "mwjf5k7q-2"
+          },
+          "position": {
+            "x": 0,
+            "y": 0.9190276955283133,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": false,
+            "pos": {
+              "x": 0,
+              "z": 0
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 0,
+            "mostKills": 0,
+            "runs": 0,
+            "totalKills": 0
+          },
+          "cores": 0
+        },
+        "layout": {
+          "width": 1000,
+          "height": 700,
+          "boxes": {
+            "reactorRepair": {
+              "x": 320,
+              "y": 149.890625,
+              "w": 360,
+              "h": 56,
+              "visible": true,
+              "inside": true
+            }
+          },
+          "actionable": true,
+          "inside": true
+        }
+      }
+    },
+    {
+      "name": "Station · echter iframe, einmal stationDone je Ende, Retry und mini-back",
+      "data": [
+        {
+          "t": "stationDone",
+          "score": 10
+        },
+        "mini-back",
+        {
+          "t": "stationDone",
+          "score": 10
+        },
+        "mini-back"
+      ]
+    },
+    {
+      "name": "Koop · UI-Raum und Code-Einladung verwenden survivor-reactor1",
+      "data": {
+        "host": [
+          {
+            "method": "host",
+            "game": "survivor-reactor1",
+            "code": null
+          }
+        ],
+        "guest": [
+          {
+            "method": "join",
+            "game": "survivor-reactor1",
+            "code": "EBFC"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Koop · native lokale WebRTC-Kanäle ohne Transport-Mock",
+      "data": {
+        "native": 2,
+        "diag": {
+          "conn": "connected",
+          "ice": "connected",
+          "sig": "stable",
+          "gather": "complete",
+          "main": "open",
+          "fast": "open"
+        },
+        "channels": []
+      }
+    },
+    {
+      "name": "Koop · Gastinput bewegt Host-P2; nur Host verändert Reaktor/Schrott"
+    },
+    {
+      "name": "Koop · Desktop-Bossleiste liegt außerhalb des HUD",
+      "data": {
+        "overlap": false,
+        "hud": {
+          "x": 14,
+          "y": 10,
+          "w": 430,
+          "h": 291.796875
+        },
+        "boss": {
+          "x": 560,
+          "y": 10,
+          "w": 460,
+          "h": 47
+        }
+      }
+    },
+    {
+      "name": "Koop · synchroner Verlust, Gast-Retry und kontrollierter NEXUS-Sieg",
+      "data": {
+        "host": {
+          "state": {
+            "scrap": 20,
+            "structures": 0,
+            "wave": 1,
+            "phase": "combat",
+            "hp": 120,
+            "running": false,
+            "paused": false,
+            "kills": 0,
+            "lvl": 1,
+            "time": 0.6078159999999992
+          },
+          "reactor": {
+            "hp": 300,
+            "maxhp": 300,
+            "outcome": "win",
+            "reason": "nexus",
+            "repairs": 0,
+            "runId": "mwjf6sn1-3"
+          },
+          "position": {
+            "x": 0,
+            "y": 0.9338888543574212,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 2,
+            "name": null,
+            "hp": 0,
+            "max": 2100,
+            "phase": 3,
+            "intro": true,
+            "model": true,
+            "pos": {
+              "x": 0,
+              "z": -10
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 2,
+            "mostKills": 0,
+            "runs": 3,
+            "totalKills": 0
+          },
+          "cores": 300
+        },
+        "guest": {
+          "state": {
+            "scrap": 20,
+            "structures": 0,
+            "wave": 1,
+            "phase": "combat",
+            "hp": 120,
+            "running": false,
+            "paused": false,
+            "kills": 0,
+            "lvl": 1,
+            "time": 0
+          },
+          "reactor": {
+            "hp": 300,
+            "maxhp": 300,
+            "outcome": "win",
+            "reason": "nexus",
+            "repairs": 0,
+            "runId": "mwjf6sn1-3"
+          },
+          "position": {
+            "x": 0,
+            "y": 0.9,
+            "z": 6
+          },
+          "boss": {
+            "active": false,
+            "kind": 0,
+            "name": null,
+            "hp": 0,
+            "max": 0,
+            "phase": 1,
+            "intro": false,
+            "model": true,
+            "pos": {
+              "x": 0,
+              "z": -10
+            }
+          },
+          "profile": {
+            "bestTime": 0,
+            "bestWave": 2,
+            "mostKills": 0,
+            "runs": 3,
+            "totalKills": 0
+          },
+          "cores": 300
+        }
+      }
+    },
+    {
+      "name": "Koop · 3D nur für echte Screenshots manuell gezeichnet; Simulation lief weiter",
+      "data": {
+        "mode": "manual snapshots",
+        "host": {
+          "suppressed": true,
+          "draws": 2,
+          "skipped": 175,
+          "frame": 175
+        },
+        "guest": {
+          "suppressed": true,
+          "draws": 3,
+          "skipped": 602,
+          "frame": 602
+        }
+      }
+    },
+    {
+      "name": "Koop · nativer Kanal sauber geschlossen"
+    },
+    {
+      "name": "Keine JavaScript-Seitenfehler"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "screenshots": [
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/station-reaktor.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/station-bau-reparatur.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/station-sieg.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-gast-reparatur.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-gast-verloren.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-host-nexus-layout.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-gast-sieg.png",
+    "/workspace/aban-spiele-analyse/arcade-einzigartig/arena/targeted-02/koop-host-sieg.png"
+  ],
+  "inspection": "AUSSTEHEND: PNGs nach dem Lauf mit view_image ansehen.",
+  "fixtures": [
+    "Solo/Touch/Station: Spiel-HTML, Assets, Renderer, rAF und Header unverändert vom Server 8182. Keine Zeit-/Renderer-Ersetzung in diesen Teilfällen.",
+    "Nur Koop: Test-HTML injiziert einen renderBloom-Hook. Automatische 3D-Zeichnung unterdrückt, Screenshots einzeln echt gezeichnet. Spiel-/UI-/rAF-Zeit-/Transportlogik unverändert. Kein Beleg für Leistung mit zwei gleichzeitig zeichnenden Seiten.",
+    "Kontrollierte Kampfzustände nutzen bestehende __ns-Hilfen: Schaden, Baupause, Schrott und Boss-Spawn/-Schaden. Kein Beleg für einen natürlich gespielten Zehn-Minuten-Sieg oder finale Balance.",
+    "Stations-Elternseite ist eine geroutete Fixture unter der echten Survivor-URL mit deren unveränderten Headern. Das Spiel-Iframe bleibt unverändert. Wildnis-Belohnungslogik selbst wird nicht getestet.",
+    "Koop nutzt den versionierten Spiel-Namensraum survivor-reactor1 und MP.localMode: native RTCPeerConnection/DataChannels, BroadcastChannel nur zum Signaling. Kein Beleg für PeerJS-Cloud, TURN, NAT oder zwei getrennte Geräte.",
+    "Host/Gast teilen wegen BroadcastChannel einen Browser-Kontext und damit localStorage; individuelle Konto-Belohnungen prüft zusätzlich die getrennte VM-Suite."
+  ],
+  "runScope": "station-native",
+  "networkRender": {
+    "mode": "manual snapshots",
+    "host": {
+      "suppressed": true,
+      "draws": 2,
+      "skipped": 175,
+      "frame": 175
+    },
+    "guest": {
+      "suppressed": true,
+      "draws": 3,
+      "skipped": 602,
+      "frame": 602
+    }
+  },
+  "httpErrors": [],
+  "browserClosed": true,
+  "browserExecutable": "/tmp/aban-browsers/chromium-1255/chrome-linux64/chrome",
+  "pid": 225060
+}

@@ -25,7 +25,7 @@ const hook = `window.__prismaQA={read:function(){return {running:running,paused:
       viewport: { width: 960, height: 640 },
     });
     await c.addInitScript(() => {
-      localStorage.clear();
+      if(!sessionStorage.getItem("prisma-qa-initialized")){localStorage.clear();sessionStorage.setItem("prisma-qa-initialized","1");}
       window.__raceClock = {
         now: 0,
         id: 0,
@@ -190,6 +190,8 @@ const hook = `window.__prismaQA={read:function(){return {running:running,paused:
     const touch=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
     const touchPage=await touch.newPage();touchPage.on("pageerror",e=>report.errors.push(e.message));
     await touchPage.goto(base+"/neon-racer.html?station=1",{waitUntil:"domcontentloaded"});await touchPage.locator("#startBtn").click();
+    await touchPage.locator("#polarityBtn").tap();
+    check("Echter Touch-Tipp wechselt den Pol",await touchPage.locator("#polarityBtn").getAttribute("data-pol")==="1");
     for (const size of [
       { width: 390, height: 844 },
       { width: 640, height: 360 },

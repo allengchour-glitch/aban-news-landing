@@ -1,0 +1,2294 @@
+{
+  "checks": [
+    {
+      "name": "Headers-Server 8182 liefert Dungeon-CSP",
+      "data": {
+        "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://*.paypal.com https://*.paypalobjects.com https://lmsqueezy.com https://static.cloudflareinsights.com; img-src 'self' blob: data: https:; font-src 'self' data:; connect-src 'self' blob: https://0.peerjs.com wss://0.peerjs.com https://peerjs.92k.de wss://peerjs.92k.de https://*.paypal.com https://api.coingecko.com https://lmsqueezy.com https://api.frankfurter.dev; frame-src 'self' https://*.paypal.com; form-action 'self' https://abannews.beehiiv.com https://*.beehiiv.com https://buy.stripe.com https://*.paypal.com https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'",
+        "frame": "SAMEORIGIN"
+      }
+    },
+    {
+      "name": "Stein: echte Tastatur-Sprungaktion schützt an der gerenderten Ringfront"
+    },
+    {
+      "name": "Desktop-Layout Prüfung 0",
+      "data": {
+        "width": 1280,
+        "height": 800,
+        "boxes": {
+          "trialHud": {
+            "x": 400,
+            "y": 84,
+            "right": 880,
+            "bottom": 141.828125,
+            "w": 480,
+            "h": 57.828125,
+            "visible": true
+          },
+          "bossBar": {
+            "x": 430,
+            "y": 44,
+            "right": 850,
+            "bottom": 76,
+            "w": 420,
+            "h": 32,
+            "visible": true
+          },
+          "stageTag": {
+            "x": 560.3125,
+            "y": 8,
+            "right": 719.6875,
+            "bottom": 34,
+            "w": 159.375,
+            "h": 26,
+            "visible": true
+          },
+          "topBar": {
+            "x": 12,
+            "y": 8,
+            "right": 199.09375,
+            "bottom": 36,
+            "w": 187.09375,
+            "h": 28,
+            "visible": true
+          },
+          "pauseBtn": {
+            "x": 1224,
+            "y": 56,
+            "right": 1268,
+            "bottom": 100,
+            "w": 44,
+            "h": 44,
+            "visible": true
+          }
+        },
+        "inside": true,
+        "separated": true,
+        "reachable": true
+      }
+    },
+    {
+      "name": "Prüfung 0: voller kontrollierter Sieg mit drei echten UI-Hammertreffern"
+    },
+    {
+      "name": "Eis: tatsächliches WASD-Laufen erreicht markierte Frostdeckung"
+    },
+    {
+      "name": "Desktop-Layout Prüfung 1",
+      "data": {
+        "width": 1280,
+        "height": 800,
+        "boxes": {
+          "trialHud": {
+            "x": 400,
+            "y": 84,
+            "right": 880,
+            "bottom": 141.828125,
+            "w": 480,
+            "h": 57.828125,
+            "visible": true
+          },
+          "bossBar": {
+            "x": 430,
+            "y": 44,
+            "right": 850,
+            "bottom": 76,
+            "w": 420,
+            "h": 32,
+            "visible": true
+          },
+          "stageTag": {
+            "x": 560.3125,
+            "y": 8,
+            "right": 719.6875,
+            "bottom": 34,
+            "w": 159.375,
+            "h": 26,
+            "visible": true
+          },
+          "topBar": {
+            "x": 12,
+            "y": 8,
+            "right": 199.09375,
+            "bottom": 36,
+            "w": 187.09375,
+            "h": 28,
+            "visible": true
+          },
+          "pauseBtn": {
+            "x": 1224,
+            "y": 56,
+            "right": 1268,
+            "bottom": 100,
+            "w": 44,
+            "h": 44,
+            "visible": true
+          }
+        },
+        "inside": true,
+        "separated": true,
+        "reachable": true
+      }
+    },
+    {
+      "name": "Prüfung 1: voller kontrollierter Sieg mit drei echten UI-Hammertreffern"
+    },
+    {
+      "name": "Lava: echte Seitwärtsbewegung folgt dem gerenderten sicheren Sektor"
+    },
+    {
+      "name": "Desktop-Layout Prüfung 2",
+      "data": {
+        "width": 1280,
+        "height": 800,
+        "boxes": {
+          "trialHud": {
+            "x": 400,
+            "y": 84,
+            "right": 880,
+            "bottom": 157.65625,
+            "w": 480,
+            "h": 73.65625,
+            "visible": true
+          },
+          "bossBar": {
+            "x": 430,
+            "y": 44,
+            "right": 850,
+            "bottom": 76,
+            "w": 420,
+            "h": 32,
+            "visible": true
+          },
+          "stageTag": {
+            "x": 560.3125,
+            "y": 8,
+            "right": 719.6875,
+            "bottom": 34,
+            "w": 159.375,
+            "h": 26,
+            "visible": true
+          },
+          "topBar": {
+            "x": 12,
+            "y": 8,
+            "right": 199.09375,
+            "bottom": 36,
+            "w": 187.09375,
+            "h": 28,
+            "visible": true
+          },
+          "pauseBtn": {
+            "x": 1224,
+            "y": 56,
+            "right": 1268,
+            "bottom": 100,
+            "w": 44,
+            "h": 44,
+            "visible": true
+          }
+        },
+        "inside": true,
+        "separated": true,
+        "reachable": true
+      }
+    },
+    {
+      "name": "Prüfung 2: voller kontrollierter Sieg mit drei echten UI-Hammertreffern"
+    },
+    {
+      "name": "Stein: echte Touch-Sprungaktion schützt an der gerenderten Ringfront"
+    },
+    {
+      "name": "Echtes Touch-Hochformat 0",
+      "data": {
+        "width": 390,
+        "height": 844,
+        "boxes": {
+          "trialHud": {
+            "x": 11.703125,
+            "y": 113,
+            "right": 378.296875,
+            "bottom": 168.40625,
+            "w": 366.59375,
+            "h": 55.40625,
+            "visible": true
+          },
+          "bossBar": {
+            "x": 39,
+            "y": 76,
+            "right": 351,
+            "bottom": 108,
+            "w": 312,
+            "h": 32,
+            "visible": true
+          },
+          "stageTag": {
+            "x": 121.828125,
+            "y": 44,
+            "right": 268.171875,
+            "bottom": 68,
+            "w": 146.34375,
+            "h": 24,
+            "visible": true
+          },
+          "topBar": {
+            "x": 12,
+            "y": 8,
+            "right": 199.09375,
+            "bottom": 36,
+            "w": 187.09375,
+            "h": 28,
+            "visible": true
+          },
+          "pauseBtn": {
+            "x": 334,
+            "y": 56,
+            "right": 378,
+            "bottom": 100,
+            "w": 44,
+            "h": 44,
+            "visible": true
+          },
+          "bJump": {
+            "x": 290,
+            "y": 728,
+            "right": 366,
+            "bottom": 804,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bHit": {
+            "x": 198,
+            "y": 656,
+            "right": 274,
+            "bottom": 732,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bWpn": {
+            "x": 226,
+            "y": 596,
+            "right": 278,
+            "bottom": 648,
+            "w": 52,
+            "h": 52,
+            "visible": true
+          },
+          "stick": {
+            "x": 22,
+            "y": 690,
+            "right": 142,
+            "bottom": 810,
+            "w": 120,
+            "h": 120,
+            "visible": true
+          }
+        },
+        "inside": true,
+        "separated": true,
+        "reachable": true
+      }
+    },
+    {
+      "name": "Echtes Touch-Querformat 0",
+      "data": {
+        "width": 844,
+        "height": 390,
+        "boxes": {
+          "trialHud": {
+            "x": 182,
+            "y": 84,
+            "right": 662,
+            "bottom": 141.828125,
+            "w": 480,
+            "h": 57.828125,
+            "visible": true
+          },
+          "bossBar": {
+            "x": 212,
+            "y": 44,
+            "right": 632,
+            "bottom": 76,
+            "w": 420,
+            "h": 32,
+            "visible": true
+          },
+          "stageTag": {
+            "x": 342.3125,
+            "y": 8,
+            "right": 501.6875,
+            "bottom": 34,
+            "w": 159.375,
+            "h": 26,
+            "visible": true
+          },
+          "topBar": {
+            "x": 12,
+            "y": 8,
+            "right": 199.09375,
+            "bottom": 36,
+            "w": 187.09375,
+            "h": 28,
+            "visible": true
+          },
+          "pauseBtn": {
+            "x": 788,
+            "y": 56,
+            "right": 832,
+            "bottom": 100,
+            "w": 44,
+            "h": 44,
+            "visible": true
+          },
+          "bJump": {
+            "x": 744,
+            "y": 274,
+            "right": 820,
+            "bottom": 350,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bHit": {
+            "x": 652,
+            "y": 202,
+            "right": 728,
+            "bottom": 278,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bWpn": {
+            "x": 680,
+            "y": 142,
+            "right": 732,
+            "bottom": 194,
+            "w": 52,
+            "h": 52,
+            "visible": true
+          },
+          "stick": {
+            "x": 22,
+            "y": 236,
+            "right": 142,
+            "bottom": 356,
+            "w": 120,
+            "h": 120,
+            "visible": true
+          }
+        },
+        "inside": true,
+        "separated": true,
+        "reachable": true
+      }
+    },
+    {
+      "name": "Prüfung 0: voller kontrollierter Sieg mit drei echten UI-Hammertreffern"
+    },
+    {
+      "name": "Eis: tatsächliches Joystick-Laufen erreicht markierte Frostdeckung"
+    },
+    {
+      "name": "Echtes Touch-Hochformat 1",
+      "data": {
+        "width": 390,
+        "height": 844,
+        "boxes": {
+          "trialHud": {
+            "x": 11.703125,
+            "y": 113,
+            "right": 378.296875,
+            "bottom": 200.8125,
+            "w": 366.59375,
+            "h": 87.8125,
+            "visible": true
+          },
+          "bossBar": {
+            "x": 39,
+            "y": 76,
+            "right": 351,
+            "bottom": 108,
+            "w": 312,
+            "h": 32,
+            "visible": true
+          },
+          "stageTag": {
+            "x": 121.828125,
+            "y": 44,
+            "right": 268.171875,
+            "bottom": 68,
+            "w": 146.34375,
+            "h": 24,
+            "visible": true
+          },
+          "topBar": {
+            "x": 12,
+            "y": 8,
+            "right": 199.09375,
+            "bottom": 36,
+            "w": 187.09375,
+            "h": 28,
+            "visible": true
+          },
+          "pauseBtn": {
+            "x": 334,
+            "y": 56,
+            "right": 378,
+            "bottom": 100,
+            "w": 44,
+            "h": 44,
+            "visible": true
+          },
+          "bJump": {
+            "x": 290,
+            "y": 728,
+            "right": 366,
+            "bottom": 804,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bHit": {
+            "x": 198,
+            "y": 656,
+            "right": 274,
+            "bottom": 732,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bWpn": {
+            "x": 226,
+            "y": 596,
+            "right": 278,
+            "bottom": 648,
+            "w": 52,
+            "h": 52,
+            "visible": true
+          },
+          "stick": {
+            "x": 22,
+            "y": 690,
+            "right": 142,
+            "bottom": 810,
+            "w": 120,
+            "h": 120,
+            "visible": true
+          }
+        },
+        "inside": true,
+        "separated": true,
+        "reachable": true
+      }
+    },
+    {
+      "name": "Echtes Touch-Querformat 1",
+      "data": {
+        "width": 844,
+        "height": 390,
+        "boxes": {
+          "trialHud": {
+            "x": 182,
+            "y": 84,
+            "right": 662,
+            "bottom": 141.828125,
+            "w": 480,
+            "h": 57.828125,
+            "visible": true
+          },
+          "bossBar": {
+            "x": 212,
+            "y": 44,
+            "right": 632,
+            "bottom": 76,
+            "w": 420,
+            "h": 32,
+            "visible": true
+          },
+          "stageTag": {
+            "x": 342.3125,
+            "y": 8,
+            "right": 501.6875,
+            "bottom": 34,
+            "w": 159.375,
+            "h": 26,
+            "visible": true
+          },
+          "topBar": {
+            "x": 12,
+            "y": 8,
+            "right": 199.09375,
+            "bottom": 36,
+            "w": 187.09375,
+            "h": 28,
+            "visible": true
+          },
+          "pauseBtn": {
+            "x": 788,
+            "y": 56,
+            "right": 832,
+            "bottom": 100,
+            "w": 44,
+            "h": 44,
+            "visible": true
+          },
+          "bJump": {
+            "x": 744,
+            "y": 274,
+            "right": 820,
+            "bottom": 350,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bHit": {
+            "x": 652,
+            "y": 202,
+            "right": 728,
+            "bottom": 278,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bWpn": {
+            "x": 680,
+            "y": 142,
+            "right": 732,
+            "bottom": 194,
+            "w": 52,
+            "h": 52,
+            "visible": true
+          },
+          "stick": {
+            "x": 22,
+            "y": 236,
+            "right": 142,
+            "bottom": 356,
+            "w": 120,
+            "h": 120,
+            "visible": true
+          }
+        },
+        "inside": true,
+        "separated": true,
+        "reachable": true
+      }
+    },
+    {
+      "name": "Prüfung 1: voller kontrollierter Sieg mit drei echten UI-Hammertreffern"
+    },
+    {
+      "name": "Lava: echte Seitwärtsbewegung folgt dem gerenderten sicheren Sektor"
+    },
+    {
+      "name": "Echtes Touch-Hochformat 2",
+      "data": {
+        "width": 390,
+        "height": 844,
+        "boxes": {
+          "trialHud": {
+            "x": 11.703125,
+            "y": 113,
+            "right": 378.296875,
+            "bottom": 200.8125,
+            "w": 366.59375,
+            "h": 87.8125,
+            "visible": true
+          },
+          "bossBar": {
+            "x": 39,
+            "y": 76,
+            "right": 351,
+            "bottom": 108,
+            "w": 312,
+            "h": 32,
+            "visible": true
+          },
+          "stageTag": {
+            "x": 121.828125,
+            "y": 44,
+            "right": 268.171875,
+            "bottom": 68,
+            "w": 146.34375,
+            "h": 24,
+            "visible": true
+          },
+          "topBar": {
+            "x": 12,
+            "y": 8,
+            "right": 199.09375,
+            "bottom": 36,
+            "w": 187.09375,
+            "h": 28,
+            "visible": true
+          },
+          "pauseBtn": {
+            "x": 334,
+            "y": 56,
+            "right": 378,
+            "bottom": 100,
+            "w": 44,
+            "h": 44,
+            "visible": true
+          },
+          "bJump": {
+            "x": 290,
+            "y": 728,
+            "right": 366,
+            "bottom": 804,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bHit": {
+            "x": 198,
+            "y": 656,
+            "right": 274,
+            "bottom": 732,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bWpn": {
+            "x": 226,
+            "y": 596,
+            "right": 278,
+            "bottom": 648,
+            "w": 52,
+            "h": 52,
+            "visible": true
+          },
+          "stick": {
+            "x": 22,
+            "y": 690,
+            "right": 142,
+            "bottom": 810,
+            "w": 120,
+            "h": 120,
+            "visible": true
+          }
+        },
+        "inside": true,
+        "separated": true,
+        "reachable": true
+      }
+    },
+    {
+      "name": "Echtes Touch-Querformat 2",
+      "data": {
+        "width": 844,
+        "height": 390,
+        "boxes": {
+          "trialHud": {
+            "x": 182,
+            "y": 84,
+            "right": 662,
+            "bottom": 141.828125,
+            "w": 480,
+            "h": 57.828125,
+            "visible": true
+          },
+          "bossBar": {
+            "x": 212,
+            "y": 44,
+            "right": 632,
+            "bottom": 76,
+            "w": 420,
+            "h": 32,
+            "visible": true
+          },
+          "stageTag": {
+            "x": 342.3125,
+            "y": 8,
+            "right": 501.6875,
+            "bottom": 34,
+            "w": 159.375,
+            "h": 26,
+            "visible": true
+          },
+          "topBar": {
+            "x": 12,
+            "y": 8,
+            "right": 199.09375,
+            "bottom": 36,
+            "w": 187.09375,
+            "h": 28,
+            "visible": true
+          },
+          "pauseBtn": {
+            "x": 788,
+            "y": 56,
+            "right": 832,
+            "bottom": 100,
+            "w": 44,
+            "h": 44,
+            "visible": true
+          },
+          "bJump": {
+            "x": 744,
+            "y": 274,
+            "right": 820,
+            "bottom": 350,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bHit": {
+            "x": 652,
+            "y": 202,
+            "right": 728,
+            "bottom": 278,
+            "w": 76,
+            "h": 76,
+            "visible": true
+          },
+          "bWpn": {
+            "x": 680,
+            "y": 142,
+            "right": 732,
+            "bottom": 194,
+            "w": 52,
+            "h": 52,
+            "visible": true
+          },
+          "stick": {
+            "x": 22,
+            "y": 236,
+            "right": 142,
+            "bottom": 356,
+            "w": 120,
+            "h": 120,
+            "visible": true
+          }
+        },
+        "inside": true,
+        "separated": true,
+        "reachable": true
+      }
+    },
+    {
+      "name": "Prüfung 2: voller kontrollierter Sieg mit drei echten UI-Hammertreffern"
+    },
+    {
+      "name": "Echte iframe-Niederlage win:0, Retry mit stationRematch und mini-back",
+      "data": [
+        {
+          "t": "stationDone",
+          "score": 0,
+          "win": 0
+        },
+        {
+          "t": "stationRematch"
+        },
+        "mini-back"
+      ]
+    },
+    {
+      "name": "Native lokale RTCPeerConnection und offene main/fast-Kanäle",
+      "data": {
+        "net": {
+          "role": "join",
+          "status": "connected",
+          "code": "WCGB",
+          "diag": {
+            "conn": "connected",
+            "ice": "connected",
+            "sig": "stable",
+            "gather": "complete",
+            "main": "open",
+            "fast": "open"
+          }
+        },
+        "native": 1,
+        "stats": [
+          {
+            "label": "main",
+            "state": "open",
+            "sent": 6,
+            "received": 6
+          },
+          {
+            "label": "fast",
+            "state": "open",
+            "sent": 0,
+            "received": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "Native Peers teilen Host-Phase und Prüfungszeit; Gast simuliert keine eigene Uhr",
+      "data": {
+        "host": {
+          "running": true,
+          "dead": false,
+          "won": false,
+          "paused": false,
+          "inv": 0,
+          "hp": 6,
+          "hearts": 4,
+          "time": 18.783300000000004,
+          "round": 0,
+          "slot": 0,
+          "phase": {
+            "level": 2,
+            "phase": "warn",
+            "cycle": 1,
+            "remaining": 3.5166999999999957,
+            "attackTime": 0,
+            "direction": 2.617993877991494,
+            "arm": 1,
+            "radii": []
+          },
+          "run": "dungeon-1794843376880",
+          "hits": [
+            -1,
+            -1
+          ],
+          "safe": true,
+          "x": 0,
+          "y": 0,
+          "z": 10,
+          "remote": {
+            "x": 0,
+            "z": 10
+          },
+          "ticks": 25
+        },
+        "guest": {
+          "running": true,
+          "dead": false,
+          "won": false,
+          "paused": false,
+          "inv": 0,
+          "hp": 6,
+          "hearts": 4,
+          "time": 18.783300000000004,
+          "round": 0,
+          "slot": 1,
+          "phase": {
+            "level": 2,
+            "phase": "warn",
+            "cycle": 1,
+            "remaining": 3.3449999999970172,
+            "attackTime": 0,
+            "direction": 2.617993877991494,
+            "arm": 1,
+            "radii": []
+          },
+          "run": "dungeon-1794843376880",
+          "hits": [
+            -1,
+            -1
+          ],
+          "safe": true,
+          "x": 0,
+          "y": 0,
+          "z": 10,
+          "remote": {
+            "x": 0,
+            "z": 10
+          },
+          "ticks": 0
+        }
+      }
+    },
+    {
+      "name": "Native Gasttreffer, identischer Sieg, Stationsereignisse und Rückspiel nach zwei Zustimmungen"
+    },
+    {
+      "name": "Echter Kanalabschluss lässt Gast dieselbe Prüfung solo fortsetzen"
+    },
+    {
+      "name": "Keine Seiten- oder Konsolenfehler"
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/warnung-0.png",
+      "inspect": "Angekündigte sichere Aktion vor Schaden lesbar; keine HUD-Überdeckung",
+      "inspected": false,
+      "state": {
+        "px": 0,
+        "py": 0,
+        "pz": -94,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 0,
+        "trial": {
+          "v": 1,
+          "level": 0,
+          "run": "dungeon-1794843232278",
+          "seq": 2,
+          "time": 2.1333999999999995,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 0,
+          "phase": "warn",
+          "cycle": 0,
+          "remaining": 2.2666000000000004,
+          "attackTime": 0,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/desktop-mechanik-0.png",
+      "inspect": "Ringfront klar, Sprung sichtbar; Faust-Parcours-Identität bleibt erkennbar",
+      "inspected": false,
+      "state": {
+        "px": 6,
+        "py": 1.3950000000000005,
+        "pz": -108,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 0,
+        "trial": {
+          "v": 1,
+          "level": 0,
+          "run": "dungeon-1794843232278",
+          "seq": 4,
+          "time": 5.749999999999999,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 0,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 2.8500000000000005,
+          "attackTime": 1.3499999999999992,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": [
+            8.424999999999995,
+            -1
+          ]
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/desktop-offene-faust-0.png",
+      "inspect": "Violette Faust auf erreichbarer Höhe; Aktionshinweis, Countdown und Reichweitenring lesbar",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 3,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 0,
+        "trial": {
+          "v": 1,
+          "level": 0,
+          "run": "dungeon-1794843232278",
+          "seq": 5,
+          "time": 8.7999,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 0,
+          "phase": "open",
+          "cycle": 0,
+          "remaining": 5.3001000000000005,
+          "attackTime": 4.399899999999999,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/desktop-sieg-0.png",
+      "inspect": "Ergebnis nennt richtige Prüfung, Solo/Koop, Rekord und Retry",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 3,
+        "gems": 10,
+        "bossOn": false,
+        "bossHp": 0,
+        "won": true,
+        "level": 0,
+        "trial": {
+          "v": 1,
+          "level": 0,
+          "run": "dungeon-1794843232278",
+          "seq": 7,
+          "time": 36.29979999999997,
+          "active": true,
+          "hp": 0,
+          "max": 6,
+          "hits": [
+            2,
+            -1
+          ],
+          "lastSlot": 0,
+          "lastHit": 36.29979999999997
+        },
+        "phase": {
+          "level": 0,
+          "phase": "open",
+          "cycle": 2,
+          "remaining": 4.400200000000028,
+          "attackTime": 5.299799999999971,
+          "direction": 3.665191429188092,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/warnung-1.png",
+      "inspect": "Angekündigte sichere Aktion vor Schaden lesbar; keine HUD-Überdeckung",
+      "inspected": false,
+      "state": {
+        "px": 0,
+        "py": 0,
+        "pz": -94,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 1,
+        "trial": {
+          "v": 1,
+          "level": 1,
+          "run": "dungeon-1794843252009",
+          "seq": 2,
+          "time": 2.15,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 1,
+          "phase": "warn",
+          "cycle": 0,
+          "remaining": 4.050000000000001,
+          "attackTime": 0,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/desktop-mechanik-1.png",
+      "inspect": "FROST-Pfeil und SICHER-Deckung zeigen dieselbe Richtung; Rune verdeckt Figur nicht",
+      "inspected": false,
+      "state": {
+        "px": 0,
+        "py": 0,
+        "pz": -95.92999999999998,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 1,
+        "trial": {
+          "v": 1,
+          "level": 1,
+          "run": "dungeon-1794843252009",
+          "seq": 3,
+          "time": 6.349999999999985,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 1,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 2.6500000000000146,
+          "attackTime": 0.14999999999998526,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/desktop-offene-faust-1.png",
+      "inspect": "Violette Faust auf erreichbarer Höhe; Aktionshinweis, Countdown und Reichweitenring lesbar",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 1,
+        "trial": {
+          "v": 1,
+          "level": 1,
+          "run": "dungeon-1794843252009",
+          "seq": 4,
+          "time": 9.200000000000001,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 1,
+          "phase": "open",
+          "cycle": 0,
+          "remaining": 5.299999999999999,
+          "attackTime": 3.000000000000001,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/desktop-sieg-1.png",
+      "inspect": "Ergebnis nennt richtige Prüfung, Solo/Koop, Rekord und Retry",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 4,
+        "gems": 10,
+        "bossOn": false,
+        "bossHp": 0,
+        "won": true,
+        "level": 1,
+        "trial": {
+          "v": 1,
+          "level": 1,
+          "run": "dungeon-1794843252009",
+          "seq": 6,
+          "time": 37.69999999999993,
+          "active": true,
+          "hp": 0,
+          "max": 6,
+          "hits": [
+            2,
+            -1
+          ],
+          "lastSlot": 0,
+          "lastHit": 37.69999999999993
+        },
+        "phase": {
+          "level": 1,
+          "phase": "open",
+          "cycle": 2,
+          "remaining": 4.200000000000067,
+          "attackTime": 4.099999999999933,
+          "direction": 4.71238898038469,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/warnung-2.png",
+      "inspect": "Angekündigte sichere Aktion vor Schaden lesbar; keine HUD-Überdeckung",
+      "inspected": false,
+      "state": {
+        "px": 0,
+        "py": 0,
+        "pz": -94,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843283351",
+          "seq": 2,
+          "time": 2.1332999999999993,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "warn",
+          "cycle": 0,
+          "remaining": 3.6667000000000005,
+          "attackTime": 0,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/desktop-mechanik-2.png",
+      "inspect": "Heller Keil entspricht sicherem Boden; Mitte und übriger Boden unterscheidbar",
+      "inspected": false,
+      "state": {
+        "px": -6.200000000000005,
+        "py": 0,
+        "pz": -95,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843283351",
+          "seq": 3,
+          "time": 11.050000000000018,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 0.7499999999999822,
+          "attackTime": 5.250000000000019,
+          "direction": 2.7257963267949004,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/desktop-offene-faust-2.png",
+      "inspect": "Violette Faust auf erreichbarer Höhe; Aktionshinweis, Countdown und Reichweitenring lesbar",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843283351",
+          "seq": 4,
+          "time": 12.000000000000002,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "open",
+          "cycle": 0,
+          "remaining": 5.299999999999999,
+          "attackTime": 6.200000000000002,
+          "direction": 2.890796326794897,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/desktop-sieg-2.png",
+      "inspect": "Ergebnis nennt richtige Prüfung, Solo/Koop, Rekord und Retry",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 4,
+        "gems": 10,
+        "bossOn": false,
+        "bossHp": 0,
+        "won": true,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843283351",
+          "seq": 6,
+          "time": 46.09999999999993,
+          "active": true,
+          "hp": 0,
+          "max": 6,
+          "hits": [
+            2,
+            -1
+          ],
+          "lastSlot": 0,
+          "lastHit": 46.09999999999993
+        },
+        "phase": {
+          "level": 2,
+          "phase": "open",
+          "cycle": 2,
+          "remaining": 4.20000000000007,
+          "attackTime": 7.2999999999999305,
+          "direction": 4.985191429188092,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-mechanik-0.png",
+      "inspect": "Ringfront klar, Sprung sichtbar; Faust-Parcours-Identität bleibt erkennbar",
+      "inspected": false,
+      "state": {
+        "px": 6,
+        "py": 1.8684457599999982,
+        "pz": -108,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 0,
+        "trial": {
+          "v": 1,
+          "level": 0,
+          "run": "dungeon-1794843307788",
+          "seq": 3,
+          "time": 5.666600000000004,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 0,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 2.9333999999999953,
+          "attackTime": 1.2666000000000044,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": [
+            7.966300000000024,
+            -1
+          ]
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-hochformat-0.png",
+      "inspect": "Mechanik, HUD, Joystick und drei Aktionsknöpfe auf 390×844 prüfen",
+      "inspected": false,
+      "state": {
+        "px": 6,
+        "py": 1.1170771599999993,
+        "pz": -108,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 0,
+        "trial": {
+          "v": 1,
+          "level": 0,
+          "run": "dungeon-1794843307788",
+          "seq": 3,
+          "time": 5.883200000000005,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 0,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 2.7167999999999948,
+          "attackTime": 1.483200000000005,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": [
+            9.157600000000027,
+            1.4576000000000278
+          ]
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-querformat-0.png",
+      "inspect": "Bei 844×390 bleiben sichere Bodenfläche und Touchaktionen erkennbar",
+      "inspected": false,
+      "state": {
+        "px": 6,
+        "py": 0,
+        "pz": -108,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 0,
+        "trial": {
+          "v": 1,
+          "level": 0,
+          "run": "dungeon-1794843307788",
+          "seq": 3,
+          "time": 6.149900000000007,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 0,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 2.450099999999993,
+          "attackTime": 1.749900000000007,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": [
+            10.624450000000039,
+            2.9244500000000384
+          ]
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-offene-faust-0.png",
+      "inspect": "Violette Faust auf erreichbarer Höhe; Aktionshinweis, Countdown und Reichweitenring lesbar",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 3,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 0,
+        "trial": {
+          "v": 1,
+          "level": 0,
+          "run": "dungeon-1794843307788",
+          "seq": 4,
+          "time": 8.7834,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 0,
+          "phase": "open",
+          "cycle": 0,
+          "remaining": 5.316599999999999,
+          "attackTime": 4.3834,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-sieg-0.png",
+      "inspect": "Ergebnis nennt richtige Prüfung, Solo/Koop, Rekord und Retry",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 3,
+        "gems": 10,
+        "bossOn": false,
+        "bossHp": 0,
+        "won": true,
+        "level": 0,
+        "trial": {
+          "v": 1,
+          "level": 0,
+          "run": "dungeon-1794843307788",
+          "seq": 6,
+          "time": 36.34959999999995,
+          "active": true,
+          "hp": 0,
+          "max": 6,
+          "hits": [
+            2,
+            -1
+          ],
+          "lastSlot": 0,
+          "lastHit": 36.34959999999995
+        },
+        "phase": {
+          "level": 0,
+          "phase": "open",
+          "cycle": 2,
+          "remaining": 4.350400000000045,
+          "attackTime": 5.349599999999954,
+          "direction": 3.665191429188092,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-mechanik-1.png",
+      "inspect": "FROST-Pfeil und SICHER-Deckung zeigen dieselbe Richtung; Rune verdeckt Figur nicht",
+      "inspected": false,
+      "state": {
+        "px": 0,
+        "py": 0,
+        "pz": -95.333452173913,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 1,
+        "trial": {
+          "v": 1,
+          "level": 1,
+          "run": "dungeon-1794843322881",
+          "seq": 2,
+          "time": 6.349699999999987,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 1,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 2.650300000000013,
+          "attackTime": 0.14969999999998684,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-hochformat-1.png",
+      "inspect": "Mechanik, HUD, Joystick und drei Aktionsknöpfe auf 390×844 prüfen",
+      "inspected": false,
+      "state": {
+        "px": 0,
+        "py": 0,
+        "pz": -95.333452173913,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 1,
+        "trial": {
+          "v": 1,
+          "level": 1,
+          "run": "dungeon-1794843322881",
+          "seq": 2,
+          "time": 6.849699999999985,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 1,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 2.1503000000000148,
+          "attackTime": 0.6496999999999851,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-querformat-1.png",
+      "inspect": "Bei 844×390 bleiben sichere Bodenfläche und Touchaktionen erkennbar",
+      "inspected": false,
+      "state": {
+        "px": 0,
+        "py": 0,
+        "pz": -95.333452173913,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 1,
+        "trial": {
+          "v": 1,
+          "level": 1,
+          "run": "dungeon-1794843322881",
+          "seq": 2,
+          "time": 7.399699999999983,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 1,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 1.6003000000000167,
+          "attackTime": 1.1996999999999831,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-offene-faust-1.png",
+      "inspect": "Violette Faust auf erreichbarer Höhe; Aktionshinweis, Countdown und Reichweitenring lesbar",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 1,
+        "trial": {
+          "v": 1,
+          "level": 1,
+          "run": "dungeon-1794843322881",
+          "seq": 3,
+          "time": 9.1833,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 1,
+          "phase": "open",
+          "cycle": 0,
+          "remaining": 5.316700000000001,
+          "attackTime": 2.983299999999999,
+          "direction": 1.5707963267948966,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-sieg-1.png",
+      "inspect": "Ergebnis nennt richtige Prüfung, Solo/Koop, Rekord und Retry",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 4,
+        "gems": 10,
+        "bossOn": false,
+        "bossHp": 0,
+        "won": true,
+        "level": 1,
+        "trial": {
+          "v": 1,
+          "level": 1,
+          "run": "dungeon-1794843322881",
+          "seq": 5,
+          "time": 37.48329999999996,
+          "active": true,
+          "hp": 0,
+          "max": 6,
+          "hits": [
+            2,
+            -1
+          ],
+          "lastSlot": 0,
+          "lastHit": 37.48329999999996
+        },
+        "phase": {
+          "level": 1,
+          "phase": "open",
+          "cycle": 2,
+          "remaining": 4.416700000000041,
+          "attackTime": 3.8832999999999585,
+          "direction": 4.71238898038469,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-mechanik-2.png",
+      "inspect": "Heller Keil entspricht sicherem Boden; Mitte und übriger Boden unterscheidbar",
+      "inspected": false,
+      "state": {
+        "px": -6.818813913043462,
+        "py": 0,
+        "pz": -95,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843345327",
+          "seq": 2,
+          "time": 11.783200000000022,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "attack",
+          "cycle": 0,
+          "remaining": 0.01679999999997861,
+          "attackTime": 5.983200000000022,
+          "direction": 2.8871003267949016,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-hochformat-2.png",
+      "inspect": "Mechanik, HUD, Joystick und drei Aktionsknöpfe auf 390×844 prüfen",
+      "inspected": false,
+      "state": {
+        "px": -6.818813913043462,
+        "py": 0,
+        "pz": -95,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843345327",
+          "seq": 2,
+          "time": 12.28320000000003,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "open",
+          "cycle": 0,
+          "remaining": 5.0167999999999715,
+          "attackTime": 6.483200000000029,
+          "direction": 2.890796326794897,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-querformat-2.png",
+      "inspect": "Bei 844×390 bleiben sichere Bodenfläche und Touchaktionen erkennbar",
+      "inspected": false,
+      "state": {
+        "px": -6.818813913043462,
+        "py": 0,
+        "pz": -95,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843345327",
+          "seq": 2,
+          "time": 12.783200000000036,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "open",
+          "cycle": 0,
+          "remaining": 4.516799999999964,
+          "attackTime": 6.9832000000000365,
+          "direction": 2.890796326794897,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-offene-faust-2.png",
+      "inspect": "Violette Faust auf erreichbarer Höhe; Aktionshinweis, Countdown und Reichweitenring lesbar",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843345327",
+          "seq": 3,
+          "time": 12.000000000000002,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "open",
+          "cycle": 0,
+          "remaining": 5.299999999999999,
+          "attackTime": 6.200000000000002,
+          "direction": 2.890796326794897,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/touch-sieg-2.png",
+      "inspect": "Ergebnis nennt richtige Prüfung, Solo/Koop, Rekord und Retry",
+      "inspected": false,
+      "state": {
+        "px": -2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 4,
+        "gems": 10,
+        "bossOn": false,
+        "bossHp": 0,
+        "won": true,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843345327",
+          "seq": 5,
+          "time": 45.93309999999997,
+          "active": true,
+          "hp": 0,
+          "max": 6,
+          "hits": [
+            2,
+            -1
+          ],
+          "lastSlot": 0,
+          "lastHit": 45.93309999999997
+        },
+        "phase": {
+          "level": 2,
+          "phase": "open",
+          "cycle": 2,
+          "remaining": 4.366900000000033,
+          "attackTime": 7.133099999999968,
+          "direction": 4.985191429188092,
+          "arm": 0,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/station-niederlage.png",
+      "inspect": "Niederlage und Retry sichtbar, kein Sieg-Rekord",
+      "inspected": false,
+      "state": {
+        "px": 0,
+        "py": 0,
+        "pz": -104,
+        "hearts": 0,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843363989",
+          "seq": 5,
+          "time": 55.433299999999996,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "attack",
+          "cycle": 3,
+          "remaining": 5.866700000000005,
+          "attackTime": 0.13329999999999576,
+          "direction": 4.741714980384689,
+          "arm": 1,
+          "radii": []
+        },
+        "online": false,
+        "round": 0
+      },
+      "renderMode": "Kontinuierliches Originalrendering"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/native-koop-phase.png",
+      "inspect": "Einzeln gerenderter Gast-Snapshot zeigt die gemeinsame Lava-Phase; Netzwerk-Fixture zeichnet sonst nicht kontinuierlich",
+      "inspected": false,
+      "state": {
+        "px": 0,
+        "py": 0,
+        "pz": -94,
+        "hearts": 4,
+        "gems": 0,
+        "bossOn": true,
+        "bossHp": 6,
+        "won": false,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843376880",
+          "seq": 12,
+          "time": 18.783300000000004,
+          "active": true,
+          "hp": 6,
+          "max": 6,
+          "hits": [
+            -1,
+            -1
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "warn",
+          "cycle": 1,
+          "remaining": 3.3166999999999964,
+          "attackTime": 0,
+          "direction": 2.617993877991494,
+          "arm": 1,
+          "radii": []
+        },
+        "online": true,
+        "round": 0
+      },
+      "renderMode": "Originalrenderer explizit für Netzwerk-Snapshot"
+    },
+    {
+      "file": "/workspace/aban-spiele-analyse/arcade-einzigartig/dungeon/followup-actions/native-koop-sieg.png",
+      "inspect": "Gast zeigt denselben Lava-Sieg, Koop-Rekord und gemeinsames Rückspiel",
+      "inspected": false,
+      "state": {
+        "px": 2.35,
+        "py": 0,
+        "pz": -104.97525759073736,
+        "hearts": 4,
+        "gems": 10,
+        "bossOn": false,
+        "bossHp": 0,
+        "won": true,
+        "level": 2,
+        "trial": {
+          "v": 1,
+          "level": 2,
+          "run": "dungeon-1794843376880",
+          "seq": 24,
+          "time": 61.53329999999999,
+          "active": true,
+          "hp": 0,
+          "max": 6,
+          "hits": [
+            -1,
+            3
+          ],
+          "lastSlot": -1,
+          "lastHit": -100
+        },
+        "phase": {
+          "level": 2,
+          "phase": "open",
+          "cycle": 3,
+          "remaining": 5.066700000000008,
+          "attackTime": 6.433299999999993,
+          "direction": 6.03238898038469,
+          "arm": 1,
+          "radii": []
+        },
+        "online": true,
+        "round": 0
+      },
+      "renderMode": "Originalrenderer explizit für Netzwerk-Snapshot"
+    }
+  ],
+  "browserClosed": true,
+  "visualInspection": "pending",
+  "limitations": [
+    "Erster Render und Start laden unverändertes HTML unter echten Server-Headern.",
+    "Danach ergänzt ein HTTP-Response-Hook lokale Sonden; CSP und übrige Header bleiben erhalten.",
+    "Kontrollierte Phasensprünge und Positionierung überspringen Parcours/Laufzeiten. Keine direkte HP-, Herz-, Sieg- oder Ergebnis-Zuweisung; kein Austausch von rAF, Performance-Uhr, Treffer- oder Gefahrenlogik.",
+    "Nur die Netzwerk-Fixture unterdrückt laufende renderer.render-Aufrufe beider Tabs. Ihre Screenshots rufen den gespeicherten Originalrenderer ausdrücklich auf. Solo-/Mobile-Prüfungen rendern durchgehend unverändert; Netzwerk-Prüfung belegt keine Leistung bei zwei durchgehend zeichnenden Seiten.",
+    "Native lokale WebRTC-Kanäle verwenden BroadcastChannel-Signaling im selben Browserkontext. Das prüft weder PeerJS-Cloud noch Mobilfunk/NAT/TURN oder zwei physische Geräte.",
+    "Die Stationshülle erfasst echte iframe-postMessage-Ereignisse, prüft aber nicht die Wildnis-Belohnung selbst.",
+    "Screenshots müssen nach dem Lauf tatsächlich geöffnet und visuell geprüft werden; automatisierte Layoutmessung ersetzt diese Sichtung nicht."
+  ],
+  "browserExecutable": "/tmp/aban-browsers/chromium-1255/chrome-linux64/chrome",
+  "networkFixture": {
+    "continuousRendering": false,
+    "snapshots": "Originalrenderer ausdrücklich aufgerufen",
+    "originalGame": true,
+    "originalUI": true,
+    "originalRAF": true,
+    "nativeTransport": true
+  }
+}

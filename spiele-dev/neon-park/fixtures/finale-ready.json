@@ -1,0 +1,71 @@
+{
+  "kind": "Explizite Finale-Fixture aus dem tatsächlich nativ bestandenen Vier-Fahrten-Lauf. Kein vorgegebener Sieg oder Ergebniszustand.",
+  "source": "/tmp/aban-neon-park-browser/result-coop.json",
+  "capturedPhase": "show",
+  "capturedFinale": 3.4497999999999336,
+  "state": {
+    "version": 1,
+    "rev": 1114,
+    "time": 38.36640000000038,
+    "phase": "ready",
+    "finale": 0,
+    "rides": [
+      {
+        "status": "passed",
+        "stage": 3,
+        "hold": 0,
+        "value": 0.45858843505745656,
+        "setting": 0.42000000000000004,
+        "velocity": 0,
+        "position": 0.12,
+        "elapsed": 9.433699999999988,
+        "good": 6.6668999999999805,
+        "inputs": 15,
+        "misses": 0,
+        "stars": 3
+      },
+      {
+        "status": "passed",
+        "stage": 3,
+        "hold": 0,
+        "value": 0.010091198120295013,
+        "setting": 0.28,
+        "velocity": -0.006981306595885005,
+        "position": 0.12,
+        "elapsed": 10.900200000000225,
+        "good": 6.63380000000012,
+        "inputs": 12,
+        "misses": 0,
+        "stars": 3
+      },
+      {
+        "status": "passed",
+        "stage": 3,
+        "hold": 0,
+        "value": 0.7070886810584862,
+        "setting": 0.28,
+        "velocity": -1.0795293941264386,
+        "position": -0.3745504929581148,
+        "elapsed": 7.782800000000262,
+        "good": 6.682800000000266,
+        "inputs": 6,
+        "misses": 0,
+        "stars": 3
+      },
+      {
+        "status": "passed",
+        "stage": 3,
+        "hold": 0,
+        "value": 0.14350548505874225,
+        "setting": 0.28,
+        "velocity": 0,
+        "position": 0.12,
+        "elapsed": 8.833300000000156,
+        "good": 6.649900000000299,
+        "inputs": 14,
+        "misses": 0,
+        "stars": 3
+      }
+    ]
+  }
+}

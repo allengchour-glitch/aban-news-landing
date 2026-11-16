@@ -1,0 +1,10 @@
+OK 18 verschiedene verankerte Tore in drei Sektoren, Zeichen und Seiten wiederholbar
+OK Durchfahren bei 30/60/120 Schritten pro Sekunde ergibt gleiche Tore und Energie
+OK Segmentüberquerung zählt ein Tor genau einmal, auch bei großen Schritten
+OK Falscher Pol und seitlich verpasst unterscheiden sich, Serie endet
+OK Umschalt-Sperre läuft nur durch Simulation ab; Boost braucht drei Treffer
+OK Ergebnis einmalig, Nullschild gewinnt nicht; alle Medaillenschwellen
+OK Ohne acht Resonanzen gibt es auch bei voller Schildenergie im Ziel keinen Sieg
+OK Endlos bleibt ohne Tore und Zieleinlauf, bestehende Profilwerte unverändert
+OK Profil: nur fertige Rallyes verbessern Rekorde, beschädigte Daten begrenzt
+9 ok, 0 Fehler

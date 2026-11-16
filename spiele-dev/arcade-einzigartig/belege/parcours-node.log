@@ -1,0 +1,34 @@
+✔ Stationsstart bleibt solo auf Strecke 1, Speicherstand bleibt unberührt (255.703633ms)
+✔ Strecke 1: reale Spielschleife fährt alle Schienen und landet sicher (138.025005ms)
+✔ Strecke 2: reale Spielschleife fährt alle Schienen und landet sicher (107.38987ms)
+✔ Strecke 3: reale Spielschleife fährt alle Schienen und landet sicher (64.064836ms)
+✔ Verpasstes Pflichtstück: Ziel geschlossen, spätere Checkpoints gesperrt, Retry möglich (44.831432ms)
+✔ Sturz/Retry lösen die Schiene, behalten Impulse und setzen Sprünge zurück (90.949771ms)
+✔ Pause friert Fahrt und Fortschritt ein; Abspringen und Doppelsprung funktionieren (71.711107ms)
+✔ Bestehende Schalter: Solo hält offen, Koop schliesst nach Loslassen (94.829181ms)
+✔ Koop teilt Impulse/Checkpoints und verlangt beide am Portal (53.220561ms)
+✔ Stationsfinale meldet genau einmal unverändertes stationDone und erlaubt nächste Strecke (89.735403ms)
+✔ Mobil erzwingt Solo und Touch-Sprung kann aus der Schiene lösen (85.90765ms)
+✔ Alle neun Einstiege sind von echten Plattformen mit Bewegung/Sprung erreichbar (385.256576ms)
+✔ Strecke 1, 120 FPS: alle drei Impulse, genau einmal (5.313149ms)
+✔ Strecke 2, 120 FPS: alle drei Impulse, genau einmal (0.932124ms)
+✔ Strecke 3, 120 FPS: alle drei Impulse, genau einmal (1.060677ms)
+✔ Strecke 1, 60 FPS: alle drei Impulse, genau einmal (0.311048ms)
+✔ Strecke 2, 60 FPS: alle drei Impulse, genau einmal (0.142164ms)
+✔ Strecke 3, 60 FPS: alle drei Impulse, genau einmal (0.295935ms)
+✔ Strecke 1, 30 FPS: alle drei Impulse, genau einmal (0.367413ms)
+✔ Strecke 2, 30 FPS: alle drei Impulse, genau einmal (0.160131ms)
+✔ Strecke 3, 30 FPS: alle drei Impulse, genau einmal (0.176495ms)
+✔ Abspringen gibt keinen Impuls und erlaubt einen weiteren Luftsprung (0.293482ms)
+✔ Boden, Rückwärtsfahrt, Auslauf und spätere Schienen sind kein Einstieg (0.141113ms)
+✔ Schnelle Querung erfasst die Schiene trotz beider Endpunkte ausserhalb des Fangradius (0.334694ms)
+✔ Koop: zwei gleichzeitige Fahrer sichern denselben Team-Impuls nur einmal (0.281464ms)
+✔ Checkpoints überspringen keine fehlenden Impulse (0.164197ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1705.583977

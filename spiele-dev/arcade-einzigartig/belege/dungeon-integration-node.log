@@ -1,0 +1,14 @@
+OK Originale Eingabe: Doppelsprung, Pause und kostenloser Parcours-Sturz
+OK Originale Koop-Platten und Brücken bleiben nutzbar; Wiederbelebung heilt genau +1
+OK Alle drei Original-Bossaufrufe verwenden ihre eigenen Gefahren und passende Faustziele
+OK Stein-Sprung schützt; Eis und Lava schützen nur an ihren markierten Bodenstellen
+OK Versionsräume und Host-Auswahl vereinheitlichen unterschiedliche Ebenen und Meister-Modi
+OK Gast extrapoliert begrenzt; veraltete und fremde Pakete ändern weder Uhr noch HP
+OK Host bestätigt Gasttreffer einmal und synchronisiert HP; alte HP-Deltas sind wirkungslos
+OK Koop-Tod heilt beim Host genau einmal; verspäteter Tod kann Sieg nicht zurücknehmen
+OK Sieg, Stationsvertrag, zwei Zustimmungen und Rematch setzen beide Originalspiele zurück
+OK Solo-Niederlage meldet win:0; Retry behält Ebene und meldet stationRematch
+OK Verbindungsabbruch führt mit derselben Prüfung solo weiter
+OK Jede Prüfung ist mit ihren sicheren Aktionen und echten Originaltreffern solo gewinnbar
+OK Ein Fehler kostet höchstens ein Herz je Angriff; Respawn gibt beide Sprünge zurück
+13 ok, 0 Fehler

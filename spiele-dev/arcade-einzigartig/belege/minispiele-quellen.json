@@ -1,0 +1,58 @@
+{
+  "algorithm": "SHA-256",
+  "node": "v24.19.0",
+  "browserClosed": true,
+  "gpuReleased": true,
+  "sourceFiles": {
+    "minispiele/tap-duell.html": "d2c6e169d5e7a3cc4d48a344627c1609f7c95446d5864dec831afcd3261b5ab8",
+    "minispiele/auto-rennen.html": "43715303e76603069d3fca0a2f967b1dec2e70ef8afcf9ae518696b2e0356aa3",
+    "minispiele/tauziehen.html": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a",
+    "spiele-dev/minispiele-identitaet/mechanik.test.cjs": "5bd53a2e9f955f3409609c927c2e4ee1c66057afbdc091d8702e9bf830f51341",
+    "spiele-dev/minispiele-identitaet/browser-qa.cjs": "d24cb1561a1fc30354bdd7f2c0a0cef6355f8a3561fccafd3d8912b3388bc529",
+    "spiele-dev/minispiele-identitaet/README.md": "7ca5bf3e3337cef21b7b50baeb17d26531a5ea6ed79940ee4432b80ee775208b",
+    "spiele-dev/minispiele-identitaet/final-layout.cjs": "f4cc80c4c6a384b0cd7ea0482c261ce37126335c5b3664c1b0307c496a98c472"
+  },
+  "artifactFiles": {
+    "report.json": "634cefcd0f733151fd7953877901896d3cfe83c5ea4118b4812156b59a860f82",
+    "../minispiele-regression.json": "b8798c4628d3ef33923612eaf1d1c32f5b640dc4b3d7c02ec9dbcffef99f7dba",
+    "../wortspiele/results.json": "3166e1f20ba4876a25de048660b67fc22d24a5ace85414176d9fc1b03fb0719e",
+    "fixture-history/index.json": "2df3aa9b662c1a6bda6c3034c270f66f2fe29583d9c8612a913624b7611e98ad"
+  },
+  "handoff": {
+    "gpuOwner": "Parent",
+    "browserLaunchesAllowed": false,
+    "targetedTapFollowup": "Parent übernimmt; von dieser Arbeit nicht gestartet"
+  },
+  "browserReportProductHashes": {
+    "minispiele/tap-duell.html": "c4f7b65e83373c6797f8e09a7ac772fb8906f745ff81697d9463a4c8ea4cdb9b",
+    "minispiele/auto-rennen.html": "14e787ee28c102f5bf04fc940f6cb565ee63dfc322c685d6f870b7f7e783c0ca",
+    "minispiele/tauziehen.html": "771c25d8a2684d57b0db4444f8e7bcc321405a48d0df478fab13b122eb0ad80a"
+  },
+  "changesAfterBrowserReport": [
+    {
+      "file": "minispiele/auto-rennen.html",
+      "change": "Nur CSS: .pads margin-bottom 22px gegen belegte Rechtslink-/Gas-Knopf-Überlappung.",
+      "browserRechecked": true
+    },
+    {
+      "file": "minispiele/tap-duell.html",
+      "change": "Nur CSS: gleiche Spielflächengrößen, im Querformat Inhalte symmetrisch von der Timer-Mitte abrücken; 92 finalen Bedingungen positiv.",
+      "browserRechecked": true
+    }
+  ],
+  "visualReview": {
+    "finalImages": 42,
+    "uniqueImageContents": 27,
+    "allUniqueImagesInspected": true,
+    "browserStarted": false
+  },
+  "targetedFinalLayout": {
+    "script": "spiele-dev/minispiele-identitaet/final-layout.cjs",
+    "status": "GEMESSEN: 92/92 Bedingungen, sechs Fälle, browserClosed=true; Originalbericht des 368er-Laufs bleibt früherer CSS-Stand.",
+    "casesPlanned": 6,
+    "output": "/workspace/aban-spiele-analyse/arcade-einzigartig/minispiele-final-layout-03/report.json",
+    "gpuOwner": "Parent",
+    "productFrozen": true,
+    "full368Repeat": false
+  }
+}

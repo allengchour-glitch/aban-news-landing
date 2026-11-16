@@ -1,5 +1,11 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Arcade: neun eigene Spielkerne ·16.11.2026
+
+Besitzerauftrag: «Traumhaus macht schon jemand», «du machst alles andere bis jedes Spiel einzigartig ist»; bestehende Freigabe «mach alles live». Traumhaus-Code und Hauptspiel-Hero bleiben beim anderen Bearbeiter. Inventar:31 andere aktive Spiele, vier alte Weiterleitungen nicht doppelt zählen. Neun Spiele überarbeitet: Prisma Rallye (Pol-/Spur-Kombination, Energie, Ziel/Medaille), Lichtschienen (Gleitfahrt/Team-Impulse), Lichterpremiere (vier Regie-Fahrten), Nexus-Wacht (Reaktor/Reparatur/Verteidigung), drei Kolossprüfungen, Rhythmus-Tipp-Duell, Schalt-Rennen, Ausdauer-Tauziehen und Turm-Präzisionsentscheid.22 bereits verschiedene Spielkerne erhalten, keine weltweite Neuheit klassischer Regeln behaupten. Fünf Direktstarts im Hub; Jump bleibt lokaler Koop. Neue Online-Protokolle park-premiere1, survivor-reactor1 und dungeon-trials1 trennen alte Tabs sicher ab; gemeinsames mp.js unverändert.
+
+Prüfung und Rohbelege: spiele-dev/arcade-einzigartig/README.md und dort verlinkte Einzelberichte. Kontrollierte Positionen/Zeitabschnitte sind jeweils als Fixtures beschrieben. Natives lokales WebRTC ist kein Internet-/NAT-Beleg; Software-WebGL kein physischer Handy-FPS-Nachweis. Lokale Gesamt-CI scheitert vor Start an schreibgeschütztem HOME; echte PR-CI und Bereitstellung separat im zugehörigen PR belegen. Kein Shop-/Social-/Konto-/Secret-Eingriff.
+
 ## Büro-Galerie, Lichtwahl und lesbare Monitore ·16.11.2026
 
 Besitzerauftrag: bestehende Büro-Webseite mit Higgsfield umfassend verfeinern. Eigener Branch codex/buero-panorama von mainbe9508c; Regeln, Übergaben und offene PRs gelesen. Keine parallele Shop-/Social-Arbeit. Design21: drei manuelle Lichtstimmungen (Tageslicht/Galerie/Abend), warme Eiche im Chefbüro, gemeinsame statische Akustiklamellen hinter dem Zentralmonitor und ruhigere Bedienflächen. Monitormeldungen stehen jetzt auch auf Desktop sichtbar in lesbaren Karten; Quelle, Messstand, Fehler-/Unbekanntzustände aus vorhandenen Daten bleiben erhalten. Keine neue Datenquelle, Netzabfrage, Bewegung, Automation oder Kontozuordnung.

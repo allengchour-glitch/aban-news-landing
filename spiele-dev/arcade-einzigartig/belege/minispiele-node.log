@@ -1,0 +1,29 @@
+✔ Rhythmus: zwölf präzise Schläge ergeben 1200, auch für beide Spieler unabhängig (4.82865ms)
+✔ Rhythmus: Spammen und Vorwegnehmen schlagen Präzision nicht (0.961077ms)
+✔ Rhythmus: Fenstergrenzen, doppelte und verspätete Eingaben (0.748226ms)
+✔ Fahren: ohne Gas kein Fortschritt; Gas ist ein zeitlicher Zustand (1.377314ms)
+✔ Fahren: gutes Schalten gewinnt gegen Gas allein und Schalt-Spam (8.194306ms)
+✔ Fahren: frühes / spätes Schalten, Sperrzeit und höchster Gang (1.891908ms)
+✔ Fahren: gleiche Strategie bei 30, 60 und 120 Hz (2.82944ms)
+✔ Tau: Dauerhalten erschöpft und zieht danach auch bei Wiederholung nicht (1.625558ms)
+✔ Tau: erst Loslassen bis 35% beendet Erschöpfung (0.877511ms)
+✔ Tau: Kraft einteilen schlägt Dauerhalten; Seiten sind symmetrisch (4.857453ms)
+✔ Tau: gleiche Kräfte und Nichtstun enden fair als Rundengleichstand (6.367376ms)
+✔ Tau: zeitbasierte Kraft statt Bewegungen pro Tastendruck oder Bild (1.138333ms)
+✔ Rhythmus echte Controller-Quelle: Touch, Tastatur, Wiederholung, Rundenende, Restart (8.607038ms)
+✔ Auto echter Controller: unabhängige Holds, Schalten, Pointer-Cancel, Fokusverlust (35.874498ms)
+✔ Auto echter Controller: Zieleinlauf und Restart ohne geerbtes Gas / zusätzliche RAF (399.214186ms)
+✔ Tau echter Controller: zwei Touches, Stamina sichtbar, gemischte Quellen und Freigabe (4.78876ms)
+✔ Tau echter Controller: zwei Rundensiege mit Erholung, Matchende und Restart (16.543706ms)
+✔ Alle echten Zurück-Handler: eingebettet mini-back, separat history.back (3.73273ms)
+✔ Bestehender lesender Auto-QA-Hook landet weiterhin im Controller (29.3531ms)
+✔ Tau echter Controller: Gleichstand wiederholt die Runde ohne Punkt (25.565348ms)
+✔ Auto echter Controller: mehrere Finger und Tastatur halten ein Gas gemeinsam (31.462076ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 694.256801

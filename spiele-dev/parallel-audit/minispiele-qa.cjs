@@ -9,6 +9,7 @@ const ROOT = path.resolve(__dirname, "../..");
 const OUT = process.env.MINI_QA_OUT || "/tmp/minispiele-qa.json";
 const results = [];
 const hooks = {
+  "tap-duell": "({read:()=>({started,players,running})})",
   "auto-rennen": "({read:()=>({running,winner,cars})})",
   "ballon-pump": "({read:()=>({P,scores})})",
   "farb-klick": "({read:()=>({...state})})",
@@ -55,6 +56,7 @@ async function visible(selector) {
   return page.locator(selector).isVisible();
 }
 async function test(name, fn) {
+  if(process.env.MINI_QA_ONLY && !name.includes(process.env.MINI_QA_ONLY))return;
   try {
     await fn();
     assert.deepEqual(errors, [], "JavaScript-/CSP-Fehler");
@@ -246,14 +248,20 @@ async function test(name, fn) {
       await event("#btnHigher");
       assert.match(await page.locator("#feedback").textContent(), /Gleich/);
     });
-    await test("Tipp Duell: Touch → Maus zählt beides, Ende und Neustart", async () => {
+    await test("Tipp Duell: Touch → Maus im Takt, Ende und Neustart", async () => {
       await load("tap-duell");
       await event("#startBtn");
       const box = await page.locator("#halfBottom").boundingBox();
+      // Gleiche Hybrid-Eingaben, aber auf zwei verschiedene gültige Beats statt Spam.
+      const started = (await read()).started;
+      await wait(Math.max(0, started + 1000 - await page.evaluate(() => performance.now())));
       await page.touchscreen.tap(box.x + box.width / 2, box.y + box.height / 2);
+      assert.equal((await read()).players[1].hits, 1);
+      await wait(Math.max(0, started + 1750 - await page.evaluate(() => performance.now())));
       await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-      assert.equal(await page.locator("#cntBottom").textContent(), "2");
-      await wait(10100);
+      assert.equal((await read()).players[1].hits, 2);
+      assert.ok((await read()).players[1].score >= 100);
+      await wait(Math.max(0, started + 10100 - await page.evaluate(() => performance.now())));
       assert.equal(await visible("#endOverlay"), true);
       await event("#againBtn");
       assert.equal(await page.locator("#cntBottom").textContent(), "0");
@@ -486,17 +494,23 @@ async function test(name, fn) {
       await load("auto-rennen");
       await event("#startBtn");
       await wait(3000);
-      for (let i = 0; i < 57; i++) await event("#padRed", "mousedown");
-      await wait(1000);
+      // Neue Regel: Gas halten, kein Klickzähler. Der eigene Mechaniktest prüft gutes Schalten.
+      await page.keyboard.down("a");
+      await wait(45000);
+      await page.keyboard.up("a");
       assert.equal((await read()).winner, "red");
       await event("#startBtn");
       assert.equal((await read()).cars.red.p, 0);
       await load("tauziehen");
       await event("#startBtn");
       await wait(2800);
-      for (let i = 0; i < 18; i++) await event("#pad1", "mousedown");
-      await wait(4000);
-      for (let i = 0; i < 18; i++) await event("#pad1", "mousedown");
+      // Halten zieht und erschöpft. Zwei echte zeitbegrenzte Runden ergeben das Match.
+      for (let round = 0; round < 2; round++) {
+        await page.keyboard.down("a");
+        await wait(26000);
+        await page.keyboard.up("a");
+        await wait(4000);
+      }
       assert.equal(await visible("#endO"), true);
       await event("#againBtn");
       assert.equal(await page.locator("#s1").textContent(), "0");
@@ -598,7 +612,7 @@ async function test(name, fn) {
     if (browser) await browser.close();
     fs.writeFileSync(
       OUT,
-      JSON.stringify({ base: BASE, failures, results }, null, 2),
+      JSON.stringify({ base: BASE, filter:process.env.MINI_QA_ONLY||null, failures, results }, null, 2),
     );
     console.log(
       `${results.filter((r) => r.ok).length} ok, ${failures} Fehler; ${OUT}`,

@@ -1,0 +1,16 @@
+HTML /workspace/aban-arcade-spielrunde/neon-racer.html · THREE r128
+Korridor inkl. Curbs: |x|≤23.660, z=[-247.500,27.500], Radius≤248.628, Fahrbahnoberkante=0.060
+GLB models/landscape_realm.glb: 3 Nodes, 3 Meshes, 4032 echte Dreiecke, minimaler projizierter Dreiecksabstand=257.922
+PASS GLB-Loader und Metadaten stimmen überein; reales Ringzentrum bleibt leer
+THREE.MeshLambertMaterial: 'flatShading' is not a property of this material.
+THREE.MeshLambertMaterial: 'flatShading' is not a property of this material.
+  Hügel-Grenze |x|≥28.000; Mittelachsen-Rayhits oberhalb Fahrbahn=0
+PASS Hügel Desktop: alle affinen Zufallsextreme und beliebige Y-Drehung halten den Korridor frei
+THREE.MeshLambertMaterial: 'flatShading' is not a property of this material.
+THREE.MeshLambertMaterial: 'flatShading' is not a property of this material.
+  Hügel-Grenze |x|≥28.000; Mittelachsen-Rayhits oberhalb Fahrbahn=0
+PASS Hügel mobil: alle affinen Zufallsextreme und beliebige Y-Drehung halten den Korridor frei
+PASS Alle transformierten GLB-Dreiecke liegen ausserhalb der gesamten sichtbaren Strecke, für jede Rasterphase und Streckendistanz
+  GLB-Raycasts=972 · keine Überschneidung
+PASS Echte GLB-Raycasts entlang aller sichtbaren Tiles und drei Fahrspuren verdecken keine Fahrbahn
+5 bestanden, 0 Fehler. Grenzen: Geometrie/Korridor, keine Bild-, Nebel-, Material- oder Leistungsprüfung; keine Browser/GPU.
