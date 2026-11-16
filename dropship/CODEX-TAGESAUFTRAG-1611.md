@@ -119,6 +119,40 @@ Claude macht heute selbst eine Metricool-Analyse mit Social-Pflege. Deine Fassun
 
 Paket D heute auf bis zu 20 Seiten statt einer kleinen Auswahl, gleiche Regeln. Je fertiger Fünfergruppe ein R-Bericht.
 
+## Max push: alles gleichzeitig (Besitzer 16.11. ca. 10:10 UTC: «codex max push bitte nur heute zeit»)
+
+Wenn du mehrere Aufgaben gleichzeitig laufen lassen kannst, ist jedes Paket eine eigene Aufgabe mit eigenem Zweig `codex/<paket>-1611`.
+- **Quittung bei parallelen Aufgaben:** nicht hier unten, sondern in `dropship/codex-antwort-1611/<Paket>.md` (eine Datei je Paket), damit die Aufgaben sich nicht in derselben Datei stossen.
+- **Reihenfolge, wenn nur eine Aufgabe läuft:** A, B, C, J, D/I, K, L, G, H, E, F.
+
+### J · Samichlaus und Schmutzli (6.12.), nur Dateien
+
+GEMESSEN 16.11. 10:09 UTC: `/collections/samichlaus`, `samichlaus-schmutzli`, `samichlaus-kostueme` und `nikolaus-kostueme` liefern HTTP 404. Google schlägt in der Schweiz «Samichlaus» und «Schmutzli» vor (09.11.).
+- **Produkte finden:** aktive Produkte, die wirklich zum Samichlaus passen (Kostüm, Bart, Mütze, Sack, Rute, Laterne, Schmutzli-Kutte). Fortura-Ware aus dem Schweizer Lager zuerst.
+- **Prüfen je Produkt:**
+  - ACTIVE und kaufbar.
+  - Der Lieferhinweis der Produktseite reicht bis 6.12.
+  - Keine Lizenzfigur, kein Echtfell.
+- **Liefern:** Vorschlag für eine Sammlung (Handle, Titel, SEO-Titel bis 60 Zeichen, Meta bis 155 Zeichen, Einleitung mit belegten Aussagen, Produktliste mit Reihenfolge) und einen Absatz für den Weihnachts-Ratgeber, abgelegt unter `dropship/samichlaus-1611/antwort/`.
+- **Nicht selbst anlegen:** Claude legt Sammlung und Menüeintrag an.
+
+### K · Offene Funde vom 28.10. (`dropship/CODEX-FUNDE-2810.md`)
+
+- **Prüfen:** jeden Fund gegen das heutige `main`. Stand dort: «alle offen»; seither wurde einiges anders gelöst.
+- **`automation/printful_sync.mjs` und `automation/lib/printful_platzierung.mjs` nicht anfassen:** Daran arbeitet der Zweig `claude/luxestyle-bestellweg-haertung-1011`. Dort nur auflisten, welche Funde der Zweig schon löst.
+- **Übrige offene Funde** (Printful-Neupreise, Material, CJ-Varianten, Fortura-Sperre, Google-Feed, Bewertungen): je Datei einen PR.
+  - Der Test ist am alten Code rot und am neuen grün.
+  - Dazu eine Mutationsprobe.
+  - Keine Live-Läufe.
+- **Shop-Wirkung:** alles hier hat Shop-Wirkung. Die PRs sind also für Claude; als bereit markieren und in der Quittung auflisten.
+
+### L · Hauptbilder ohne Werbetext (Merchant), nur Datei
+
+- **Auswahl:** die 100 Produkte mit den meisten Google-Einblendungen oder Shop-Besuchen der letzten 28 Tage, ohne die Produkte aus #3152.
+- **Prüfen:** das Hauptbild auf Werbetext, Wasserzeichen, Fremdlogo, Collage und Infografik.
+- **Je Fund:** welches Bild aus der eigenen Galerie besser ist (Index und URL) und warum.
+- **Liefern:** `dropship/hauptbild-1611/antwort/liste.md`. Claude tauscht die Bilder nach Sichtung.
+
 ## Antwort Codex
 
 (offen)
