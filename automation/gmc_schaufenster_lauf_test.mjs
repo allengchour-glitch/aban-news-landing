@@ -9,7 +9,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'no
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseManifest } from './lib/gmc_schaufenster.mjs';
+import { parseManifest, manifestZeile } from './lib/gmc_schaufenster.mjs';
 
 const CLI = fileURLToPath(new URL('./gmc_schaufenster.mjs', import.meta.url));
 const GOOGLE = 'gid://shopify/Publication/302872297857';   // das Literal, nicht die Konstante der Bibliothek (sonst prüft der Test sich selbst)
@@ -356,6 +356,88 @@ const manifest = () => parseManifest(existsSync(join(dir, 'manifest.jsonl')) ? r
   const w2 = welt();
   const r2 = los(w2, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
   pruef('Freigabe bleibt: alle 300 Produkte gehen, Exit 0', [r2.code, r2.lies().log.length], [0, 300]);
+}
+
+// 20) Budget ohne Eingabe: 78 000 für alle Läufe (bis 15.11.2026 galt im Code 90 000, nur der Workflow-Schritt setzte 78 000)
+{
+  neu();
+  const r = los(welt(), { PHASE: 'plan' });
+  pruef('Plan ohne BUDGET nennt Budget 78000', [r.code, /SCHAUFENSTER \(Budget 78000 Varianten/.test(r.aus)], [0, true]);
+  const b = los(welt(), { PHASE: 'plan', BUDGET: '90000' });
+  pruef('BUDGET=90000 übersteuert', [b.code, /SCHAUFENSTER \(Budget 90000 Varianten/.test(b.aus)], [0, true]);
+  const w = welt(); w.produkte.push(...viele(7, { gp: false, varianten: 3 }));
+  const a = los(w, { PHASE: 'plan' });
+  pruef('fremde Produkte ohne Google und ohne Manifest werden genannt', /ausserhalb: 7 Produkte \/ 21 Varianten/.test(a.aus), true);
+}
+// 21) Schranke für die volle Rücknahme: danach nie über 140 000 Varianten auf Google (am 15.11. hätte ein Handstart 31 191 Produkte zurückgelegt)
+{
+  neu();
+  const auf = viele(1200, { varianten: 100 }), weg = viele(300, { varianten: 100, gp: false });   // jetzt 120 000 Varianten, zurück kämen 30 000
+  const setz = () => writeFileSync(join(dir, 'manifest.jsonl'), weg.map(p => manifestZeile(p.id, p.handle, '2026-11-01', 'ab-versucht')).join('\n') + '\n');   // vor jedem Fall frisch (eine Rücknahme schreibt «auf»)
+  setz();
+  const z = { produkte: [...auf, ...weg], log: [], mutationen: 0 };
+  const voll = los(z, { PHASE: 'zuruecksetzen', LIVE: '1', MAX: 'alle' });
+  pruef('zuruecksetzen über der Grenze: Exit 2, kein Aufruf, Grund genannt', [voll.code, voll.lies().log.length, /danach lägen 150000 Varianten auf Google \(Grenze 140000\)/.test(voll.aus)], [2, 0, true]);
+  const trocken = los(z, { PHASE: 'zuruecksetzen', MAX: 'alle' });
+  pruef('auch der Trockenlauf meldet die Grenze (Exit 2)', [trocken.code, /Grenze 140000/.test(trocken.aus), trocken.lies().log.length], [2, true, 0]);
+  setz();
+  const teil = los(z, { PHASE: 'zuruecksetzen', LIVE: '1', ONLY: weg.slice(0, 10).map(p => p.handle).join(',') });
+  pruef('mit ONLY in Teilen: Exit 0, genau 10 zurück', [teil.code, teil.lies().log.filter(l => l.art === 'publishablePublish').length, /danach höchstens 121000/.test(teil.aus)], [0, 10, true]);
+  setz();
+  const max = los(z, { PHASE: 'zuruecksetzen', LIVE: '1', MAX: '200' });
+  pruef('mit MAX=200 (120 000 + 20 000 = 140 000, genau an der Grenze): Exit 0, 200 zurück', [max.code, max.lies().log.filter(l => l.art === 'publishablePublish').length], [0, 200]);
+  setz();
+  const eins = los(z, { PHASE: 'zuruecksetzen', LIVE: '1', MAX: '201' });
+  pruef('MAX=201 (140 100): Exit 2, kein Aufruf, das Manifest bleibt', [eins.code, eins.lies().log.length, manifest().ids.size], [2, 0, 300]);
+}
+
+// 22) Die Schranke gilt nie für «abwaehlen»: gerade wenn zu viel auf Google liegt, muss die Abwahl laufen (Gegenprüfer 16.11.: Mutant «immer» überlebte)
+{
+  neu();
+  const viel = Array.from({ length: 1450 }, (_, i) => P({ varianten: 100, cat: `K${i % 10} > X` }));   // 145 000 Varianten auf Google
+  const r = los({ produkte: viel, log: [], mutationen: 0 }, { PHASE: 'abwaehlen', LIVE: '1', MAX: 'alle' });
+  pruef('abwaehlen bei 145 000 Varianten auf Google: Exit 0, 670 Produkte gehen, keine Schranke', [r.code, r.lies().log.filter(l => l.art === 'publishableUnpublish').length, /danach höchstens/.test(r.aus)], [0, 670, false]);
+}
+// 23) «aufnehmen» hat die Schranke auch: liegt die Abwahl noch aus, erst abwählen (Mutant «nur zuruecksetzen» überlebte)
+{
+  neu();
+  const viel = Array.from({ length: 1450 }, (_, i) => P({ varianten: 100, cat: `K${i % 10} > X` }));
+  const zurueck = Array.from({ length: 50 }, (_, i) => P({ varianten: 100, gp: false, handle: `a-zurueck-${String(i).padStart(2, '0')}` }));
+  writeFileSync(join(dir, 'manifest.jsonl'), zurueck.map(p => manifestZeile(p.id, p.handle, '2026-11-01', 'ab-versucht')).join('\n') + '\n');
+  const r = los({ produkte: [...viel, ...zurueck], log: [], mutationen: 0 }, { PHASE: 'aufnehmen', LIVE: '1', MAX: 'alle' });
+  pruef('aufnehmen bei 145 000 + 5 000: Exit 2, kein Aufruf, Rat «zuerst abwaehlen»', [r.code, r.lies().log.length, /AUFNEHMEN: 50 von 50/.test(r.aus), /Zuerst PHASE=abwaehlen/.test(r.aus)], [2, 0, true, true]);
+}
+// 24) Nichts zurückzulegen: keine Schranke, auch wenn schon über der Grenze (sonst sperrte sie ein gezieltes ONLY= mit irreführendem Rat)
+{
+  neu();
+  const viel = Array.from({ length: 1450 }, (_, i) => P({ varianten: 100, cat: `K${i % 10} > X` }));
+  const r = los({ produkte: viel, log: [], mutationen: 0 }, { PHASE: 'zuruecksetzen', LIVE: '1', MAX: 'alle' });
+  pruef('zuruecksetzen ohne Manifest bei 145 000 Varianten: Exit 0, nichts zu tun', [r.code, /Nichts zu tun/.test(r.aus), /ABBRUCH/.test(r.aus)], [0, true, false]);
+}
+// 25) Unklare Zeilen zählen in der Schranke mit (sie könnten auf Google liegen); die volle Rücknahme umgeht den Plan
+{
+  neu();
+  const unklar = viele(1000, { varianten: 100, gp: null }), zurueck = viele(700, { varianten: 100, gp: false });
+  writeFileSync(join(dir, 'manifest.jsonl'), zurueck.map(p => manifestZeile(p.id, p.handle, '2026-11-01', 'ab-versucht')).join('\n') + '\n');
+  const r = los({ produkte: [...unklar, ...zurueck], log: [], mutationen: 0 }, { PHASE: 'zuruecksetzen', LIVE: '1', MAX: 'alle' });
+  pruef('1000 unklare Zeilen (100 000 Varianten) + 70 000 zurück: Exit 2, kein Aufruf', [r.code, r.lies().log.length, /unklar 100000, dazu 70000/.test(r.aus)], [2, 0, true]);
+}
+// 26) Fast nichts auf Google gelesen: «aufnehmen» bricht ab (Kanalstatus vermutlich falsch gelesen); die volle Rücknahme bleibt möglich
+{
+  neu();
+  const wenig = viele(100), zurueck = viele(1200, { gp: false });
+  writeFileSync(join(dir, 'manifest.jsonl'), zurueck.map(p => manifestZeile(p.id, p.handle, '2026-11-01', 'ab-versucht')).join('\n') + '\n');
+  const z = { produkte: [...wenig, ...zurueck], log: [], mutationen: 0 };
+  const a = los(z, { PHASE: 'aufnehmen', LIVE: '1', MAX: 'alle' });
+  pruef('aufnehmen bei nur 100 Produkten auf Google: Exit 2, kein Aufruf', [a.code, a.lies().log.length, /Kanalstatus vermutlich falsch gelesen/.test(a.aus)], [2, 0, true]);
+  const v = los(z, { PHASE: 'zuruecksetzen', LIVE: '1', MAX: 'alle' });
+  pruef('zuruecksetzen in derselben Lage: Exit 0, 1200 zurück', [v.code, v.lies().log.filter(l => l.art === 'publishablePublish').length], [0, 1200]);
+}
+// 27) Fehlt die Manifest-Datei, sagt der Bericht es
+{
+  neu();
+  const r = los(welt(), { PHASE: 'plan' });
+  pruef('Plan ohne Manifest-Datei: Warnung', [r.code, /WARNUNG: Manifest .* fehlt/.test(r.aus)], [0, true]);
 }
 
 rmSync(dir, { recursive: true, force: true });

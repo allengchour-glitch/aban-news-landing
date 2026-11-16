@@ -155,9 +155,9 @@ const viele = (n, o = {}) => Array.from({ length: n }, () => P(o));
   pruef('zu grosses Schaufenster: Abbruch', p.fehler.some(f => f.startsWith('schaufenster-zu-gross')), true);
 }
 {
-  const z = viele(MIN_ZEILEN, { varianten: 100 });   // je 100 Varianten, Budget 90 000: nur 900 passen
+  const z = viele(MIN_ZEILEN, { varianten: 100 });   // je 100 Varianten, Budget 78 000: nur 780 passen
   const p = plan(z, new Set(), { katDeckel: 1 });
-  pruef('Standardbudget wird eingehalten', [BUDGET_VARIANTEN, p.varianten.nachher <= BUDGET_VARIANTEN, p.ok], [90000, true, true]);
+  pruef('Standardbudget wird eingehalten', [BUDGET_VARIANTEN, p.varianten.nachher, p.ok], [78000, 78000, true]);
 }
 {
   // ungültige ID (kein Produkt-GID) wird nie angefasst
@@ -226,7 +226,7 @@ wirft('Mutation: unbekannte Art', () => mutation(['gid://shopify/Product/1'], 'l
 }
 // --- Kanal-ID und Vorgaben als LITERALE festgenagelt (der Prüfer: ein Test mit derselben Konstante prüft nur sich selbst; mit der Online-Store-ID würde das Werkzeug den Shop-Katalog leeren)
 pruef('Kanal «Google & YouTube» ist genau diese ID (nicht Online Store 301970915713)', GOOGLE_PUBLICATION, 'gid://shopify/Publication/302872297857');
-pruef('Vorgaben: Budget 90000, Deckel 0.15, Obergrenze 140000, Mindestbudget 40000, Abwahl-Anteil 0.7, ohne Kategorie 0.05', [BUDGET_VARIANTEN, KATEGORIE_DECKEL, HARTE_GRENZE, MIN_BUDGET, MAX_ABWAHL_ANTEIL, MAX_OHNE_KATEGORIE], [90000, 0.15, 140000, 40000, 0.7, 0.05]);
+pruef('Vorgaben: Budget 78000 (seit 16.11.2026), Deckel 0.15, Obergrenze 140000, Mindestbudget 40000, Abwahl-Anteil 0.7, ohne Kategorie 0.05', [BUDGET_VARIANTEN, KATEGORIE_DECKEL, HARTE_GRENZE, MIN_BUDGET, MAX_ABWAHL_ANTEIL, MAX_OHNE_KATEGORIE], [78000, 0.15, 140000, 40000, 0.7, 0.05]);
 pruef('Mutation für den Google-Kanal enthält das Literal', mutation(['gid://shopify/Product/7'], 'abwaehlen').includes('publicationId:"gid://shopify/Publication/302872297857"'), true);
 
 // --- Ausschlussfeld: nur eine Liste MIT «Shopping_ads» schliesst Shopping-Anzeigen aus
@@ -240,8 +240,9 @@ pruef('stufe(): Ausschlussfeld mit Local_inventory_ads sperrt nicht', stufe(P({ 
 // --- volle Rücknahme (zuruecksetzen)
 {
   const eigen = P({ aufGoogle: false, ausschluss: '["Shopping_ads"]' }), sperr = P({ aufGoogle: false, tags: ['adult-nicht-bewerben'] }), fremd = P({ aufGoogle: false }), noch = P({ aufGoogle: true, ausschluss: '["Shopping_ads"]' });
-  const p = plan([...viele(1100), eigen, sperr, fremd, noch], new Set([eigen.id, sperr.id, noch.id]), { budget: 5000, katDeckel: 1 });
-  pruef('zuruecksetzen: eigenes Produkt (auch mit Ausschlussfeld) ja; Sperrtag, Fremdes und noch auf Google nein', p.zuruecksetzen.map(x => x.id), [eigen.id]);
+  const bild = P({ aufGoogle: false, tags: ['google-bild-abgelehnt'] }), weg = P({ aufGoogle: false, tags: ['cj-ausgelistet'] }), klein = P({ aufGoogle: false, tags: ['bild-zu-klein'] });
+  const p = plan([...viele(1100), eigen, sperr, fremd, noch, bild, weg, klein], new Set([eigen.id, sperr.id, noch.id, bild.id, weg.id, klein.id]), { budget: 5000, katDeckel: 1 });
+  pruef('zuruecksetzen: eigenes Produkt (auch mit Ausschlussfeld) ja; Sperrtag, Negativ-Tags (Bild abgelehnt, ausgelistet, Bild zu klein), Fremdes und noch auf Google nein', p.zuruecksetzen.map(x => x.id), [eigen.id]);
 }
 
 // --- relative Wächter
@@ -368,6 +369,27 @@ pruef('ratingAus: Text statt Zahl = null', ratingAus('gut', 'viele'), null);
   const pruefListe = ['waffenzubehoer-nicht-verkaufen', 'stecker-nicht-ch', 'stecker-unklar', 'marken-pruefen', 'waffe-pruefen', 'versand-pruefen', 'google-policy-waffen', 'heilversprechen-risiko', 'google-kanal-markenware-unklar', 'lieferumfang-unklar', 'preis-pruefen-cj-spanne'];
   pruef('Jedes Prüf-Tag steht auch in AUSSCHLUSS_TAGS der Mengenrabatt-Regel (sonst driftet die Liste)', pruefListe.filter(t => PRUEF_TAGS.test(t) && !AUSSCHLUSS_TAGS.includes(t)), []);
   pruef('Start-Anker: «xstecker-unklar» sperrt nicht', PRUEF_TAGS.test('xstecker-unklar'), false);
+}
+
+// --- Ins Budget zählt nur, was das Werkzeug erreichen kann (Gegenprüfer 15.11.2026: 86 Produkte mit 175 Varianten belegten Platz, ohne je auf Google zu kommen)
+{
+  // 1100 Produkte auf Google (Stufe 3, je 1 Variante) und 400 fremde: nicht auf Google, nie von hier abgewählt; ihr Handle sortiert sie VOR die anderen.
+  const auf = viele(1100), fremd = viele(400, { aufGoogle: false }).map((p, i) => ({ ...p, handle: `a-fremd-${String(i).padStart(4, '0')}` }));
+  const p = plan([...fremd, ...auf], new Set(), { budget: 1200, katDeckel: 1 });
+  pruef('fremde Produkte ohne Google und ohne Manifest belegen kein Budget: alle 1100 auf Google bleiben', [p.abwaehlen.length, p.varianten.nachher, fremd.some(x => p.drin.has(x.id))], [0, 1100, false]);
+  pruef('sie werden gezählt und genannt (ausserhalb)', p.ausserhalb, { produkte: 400, varianten: 400 });
+  pruef('ohne sie zählt das Schaufenster nur Erreichbares (Stufe 3 zulässig)', p.zahlen.produkte[3], 1100);
+  // Gegenprobe: ein von hier abgewähltes Produkt (Manifest) belegt weiter Platz und darf zurück, mit seiner Variantenzahl
+  const eigen = P({ aufGoogle: false, varianten: 3, handle: 'a-eigen' });
+  const q = plan([eigen, ...fremd, ...auf], new Set([eigen.id]), { budget: 1200, katDeckel: 1 });
+  pruef('Manifest-Produkt zählt ins Budget und steht in «aufnehmen» mit Variantenzahl', [q.drin.has(eigen.id), q.aufnehmen.map(x => [x.id, x.varianten])], [true, [[eigen.id, 3]]]);
+  pruef('und in «zuruecksetzen» mit Variantenzahl', q.zuruecksetzen.map(x => [x.id, x.varianten]), [[eigen.id, 3]]);
+  // Gegenprobe: unklarer Kanalstatus belegt vorsichtshalber Platz (er könnte auf Google liegen)
+  const unklar = viele(20, { aufGoogle: null }).map((p, i) => ({ ...p, handle: `a-unklar-${String(i).padStart(2, '0')}` }));
+  const u = plan([...unklar, ...auf], new Set(), { budget: 1110, katDeckel: 1 });
+  pruef('unklarer Kanalstatus zählt ins Budget: 1120 erreichbar bei 1110 Budget, 10 gehen', [u.abwaehlen.length, u.ausserhalb.produkte], [10, 0]);
+  pruef('Varianten unklarer Zeilen werden für die Schranke genannt', [u.unklarVarianten, p.unklarVarianten], [20, 0]);
+  pruef('«nur mit Abwahl»: jetzt minus abgewählte Varianten (der Zeitplan nimmt nichts auf)', [u.nurAbwahl, u.varianten.vorher - 10, q.nurAbwahl, q.varianten.nachher], [1090, 1090, 1100, 1103]);
 }
 
 // --- Manifest: BOM am Anfang

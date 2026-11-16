@@ -36,8 +36,14 @@ import { sperrTags } from './kanal_sperren.mjs';
 import { LIZENZ } from './gmc_feed_item.mjs';
 
 export const GOOGLE_PUBLICATION = 'gid://shopify/Publication/302872297857';
-/** Wunschgrösse des Schaufensters in Varianten (SETZUNG: 60 000 Varianten Platz unter der Grenze von 150 000 für das Wachstum der nächtlichen Auswahl-Läufe bis zum nächsten Lauf). */
-export const BUDGET_VARIANTEN = 90_000;
+/**
+ * Wunschgrösse des Schaufensters in Varianten (SETZUNG). Bis 15.11.2026 stand hier 90 000 (Platz unter der Grenze von 150 000 für das Wachstum der
+ * nächtlichen Auswahl-Läufe). Merchant-Export 08.11.2026: 3 838 Varianten «Over capacity for Shopping ads (CSS)» bei 89 575 Varianten auf Google;
+ * darum lief der Zeitplan seit 08.11. mit BUDGET=78000, aber nur im Schritt «Schaufenster» des Workflows. Die Nachprüfung und jeder lokale Lauf
+ * rechneten weiter mit 90 000 (Nachprüfung 15.11.: «AUFNEHMEN 1 410»; ein lokales PHASE=aufnehmen hätte sie zurückgeholt). Seit 16.11. gilt 78 000
+ * hier, für alle Läufe gleich. Zurück auf 90 000 nur hier ändern (und den Export «Probleme mit Artikeln» danach neu ziehen).
+ */
+export const BUDGET_VARIANTEN = 78_000;
 /** Darüber bricht ein Lauf ab (SETZUNG). */
 export const HARTE_GRENZE = 140_000;
 /** Darunter ist die Datenlage verdächtig (zum Beispiel fehlende Tags) und der Lauf bricht ab (SETZUNG). */
@@ -190,7 +196,12 @@ export function zaehleGruende(liste) {
  */
 export function plan(zeilen, manifest = new Set(), opt = {}) {
   const fehler = [];
-  const { drin, draussen, zahlen } = waehle(zeilen, opt);
+  // Ins Budget zählt nur, was das Werkzeug beeinflussen kann: was auf Google liegt (oder unklar ist, vorsichtshalber) und was es selbst abgewählt hat.
+  // Ein Produkt, das nicht auf Google liegt und nie von hier abgewählt wurde, kommt nie dazu (siehe GRENZEN) und darf keinen Platz belegen
+  // (Gegenprüfer 15.11.2026: 86 solche Produkte mit 175 Varianten belegten Budget).
+  const erreichbar = p => p.aufGoogle !== false || manifest.has(p.id);
+  const ausserhalb = zeilen.filter(p => !erreichbar(p));
+  const { drin, draussen, zahlen } = waehle(zeilen.filter(erreichbar), opt);
   const gruende = new Map(draussen.map(d => [d.id, d.grund]));
   // «Unklar» = nie anfassen: Kanalstatus nicht true/false, fremde ID oder unbekannte Variantenzahl (Unbekannt ist kein Befund, Prüfer 28.10.: 701 Zeilen ohne variantsCount wurden abgewählt)
   const klar = p => typeof p.aufGoogle === 'boolean' && PRODUKT_GID.test(String(p.id)) && Number.isFinite(Number(p.varianten)) && Number(p.varianten) >= 1;
@@ -200,10 +211,11 @@ export function plan(zeilen, manifest = new Set(), opt = {}) {
   const zuruecksetzen = [];
   for (const p of zeilen) {
     if (!klar(p)) continue;
-    // Volle Rücknahme: alles, was wir (laut Manifest) abgewählt haben und das nicht mehr auf Google liegt, ausser mit Sperrtag
-    if (p.aufGoogle === false && manifest.has(p.id) && !sperrTags(p.tags || []).length) zuruecksetzen.push({ id: p.id, handle: p.handle });
+    // Volle Rücknahme: alles, was wir (laut Manifest) abgewählt haben und das nicht mehr auf Google liegt, ausser mit Sperrtag oder Negativ-Tag
+    // (seit 16.11.2026 auch nicht: von CJ ausgelistet, Bild zu klein, Bild von Google abgelehnt; Gegenprüfer: sonst kämen abgelehnte Bilder zurück)
+    if (p.aufGoogle === false && manifest.has(p.id) && !sperrTags(p.tags || []).length && !(p.tags || []).some(t => NEGATIV_TAGS.test(t))) zuruecksetzen.push({ id: p.id, handle: p.handle, varianten: Number(p.varianten) });
     if (p.aufGoogle === true && !drin.has(p.id)) abwaehlen.push({ id: p.id, handle: p.handle, grund: gruende.get(p.id) || 'unbekannt', varianten: Number(p.varianten) || 0 });
-    if (p.aufGoogle === false && manifest.has(p.id) && drin.has(p.id)) aufnehmen.push({ id: p.id, handle: p.handle, stufe: drin.get(p.id) });
+    if (p.aufGoogle === false && manifest.has(p.id) && drin.has(p.id)) aufnehmen.push({ id: p.id, handle: p.handle, stufe: drin.get(p.id), varianten: Number(p.varianten) });
   }
   // Wie viele Varianten liegen NACH dem Lauf auf Google? (nur Produkte mit bekannter Variantenzahl)
   const nachher = zeilen.reduce((s, p) => {
@@ -224,6 +236,11 @@ export function plan(zeilen, manifest = new Set(), opt = {}) {
   return {
     ok: fehler.length === 0, fehler, abwaehlen, aufnehmen, zuruecksetzen, zahlen,
     varianten: { vorher, nachher },
+    ausserhalb: { produkte: ausserhalb.length, varianten: ausserhalb.reduce((s, p) => s + (Number.isFinite(Number(p.varianten)) ? Number(p.varianten) : 0), 0) },
+    // Varianten in Zeilen mit unklarem Kanalstatus: sie könnten auf Google liegen (die Schranke vor dem Zurücklegen rechnet sie mit)
+    unklarVarianten: unklar.reduce((s, p) => s + (Number.isFinite(Number(p.varianten)) ? Number(p.varianten) : 0), 0),
+    // Varianten auf Google, wenn nur abgewählt wird (der Zeitplan fährt nur «abwaehlen»; «nachher» rechnet die Aufnahmen mit)
+    nurAbwahl: vorher - abwaehlen.reduce((s, x) => s + x.varianten, 0),
     gruende: zaehleGruende(abwaehlen), unklar: unklar.length, drin, draussen,
   };
 }
