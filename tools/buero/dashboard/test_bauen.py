@@ -45,8 +45,8 @@ def main():
     d = B.bauen()
     index = d["index.html"]
     buero = B.QUELLE_BUERO.read_text(encoding="utf-8")
-    pruefe("Fünf Dateien: die Seite und je Stil und Skript der zwei neuen Seiten",
-           sorted(d) == ["index.html", "lx-offen.css", "lx-offen.js", "lx-suche.css", "lx-suche.js"], sorted(d))
+    pruefe("Sechs Dateien: Seite, Büro-Stil und je Stil und Skript der zwei neuen Seiten",
+           sorted(d) == ["index.html", "kb-stil.css", "lx-offen.css", "lx-offen.js", "lx-suche.css", "lx-suche.js"], sorted(d))
     pruefe("Die Seite beginnt mit der Meta-Zeile «ein Schreiber» und trägt sie genau einmal", index.startswith(B.META + "\n") and index.count(B.META) == 1)
     abschnitte = re.findall(r'<section class="lx-seite" id="([\w-]+)" data-lx-seite="(\w+)"( hidden)?>', index)
     pruefe("Drei Abschnitte in fester Reihenfolge, nur das Büro ist offen",
@@ -56,7 +56,10 @@ def main():
     knoepfe = re.findall(r'<button type="button" class="lx-tab" id="lx-tab-(\w+)" data-lx-ziel="(\w+)" aria-current="(\w+)">([^<]+)</button>', index)
     pruefe("Drei Knöpfe mit festem Text im HTML, der erste ist markiert",
            knoepfe == [("buero", "buero", "page", "KI-Büro"), ("offen", "offen", "false", "Offene Punkte"), ("suche", "suche", "false", "Suchanfragen")], knoepfe)
-    pruefe("Die Büro-Seite steht unverändert in ihrem Abschnitt (Zeichen für Zeichen)", buero[len(B.META):].strip("\n") in index)
+    b_stil = re.search(r"(?s)<style>(.*?)</style>", buero).group(1)
+    rekonstruiert = index.replace('<link rel="stylesheet" href="kb-stil.css">', '<style>' + d['kb-stil.css'] + '</style>', 1)
+    pruefe("Büro mit ausgelagertem Stil vollständig rekonstruierbar", buero[len(B.META):].strip("\n") in rekonstruiert and d['kb-stil.css'] == b_stil)
+    pruefe("Büro-Stil genau einmal eingebunden", index.count('href="kb-stil.css"') == 1 and b_stil not in index)
 
     a, b, c = index.index('<section class="lx-seite" id="buero"'), index.index('<section class="lx-seite" id="offen"'), index.index('<section class="lx-seite" id="suche"')
     ende = index.index('<script src="lx-offen.js">')

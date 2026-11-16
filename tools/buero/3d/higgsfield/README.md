@@ -31,3 +31,8 @@ Die Darstellung belegt keinen laufenden Geschäftsbetrieb und keine neue Datenqu
 Für das private Claude-Dashboard nur den vollständigen Bau aus
 `tools/buero/dashboard/bauen.py` zusammen mit passendem `kb3d-code.js` und den
 unveränderten Modellpaketen verwenden; niemals die rohe Büro-Seite hochladen.
+
+5. `05_galerie_feinschliff.py`: bestehende Szene nach frischer Revision-/Sequenzabfrage verfeinern.
+   Statische Gestaltung ohne Kontodaten, instanzierte Holzlamellen, Tischgeräte und reale Tischkontakte.
+   Prozedurale Holzmaserung gilt nur für den Blender-Render; GLB behält das Grundmaterial.
+   Nach dem Lauf Gesamtbild und Monitoransicht wirklich rendern/ansehen, dann die genaue Revision zeigen.
