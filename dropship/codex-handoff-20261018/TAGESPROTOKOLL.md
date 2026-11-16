@@ -3036,3 +3036,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [R254-Bericht](SEO-PRODUKTDETAILS-LIVE-20261116-R254.md) · [Belege](SEO-PRODUKTDETAILS-BELEGE-20261116-R254.json).
 
 [LUXESTYLE_R254_20261116]
+
+
+### R255 – Detaillierte Produkttexte und SEO live
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität / Auswahl | Aktuelle Übergabe, heutiges Protokoll und Revision 254 geprüft; genau die 24 offenen Produkte der 36er-Liste bearbeitet. | Shopidentität frisch bestätigt; bestehende Tagesreports aus R251/R253 nicht wiederholt. |
+| Produkttexte / SEO | 24 Titel, Beschreibungen mit ca. 246–376 Wörtern und eigene SEO-Felder live aktualisiert; vier gezielte Tabellen-Nacharbeiten. | 28 Schreibaufrufe nativ bestätigt. 36/36 redaktionell bearbeitet; 32 Zeilen mit offenen Produktfragen erhalten. |
+| Quellen | 24 Shopify-/CJ-Quellenbezüge, Varianten- und Bildzuordnung konsolidiert. | Sechs Bindungen nur auf Grundproduktebene; keine Medienrechte oder Spiele-/Zubehörangaben erfunden. |
+| Schutz / Rücklesung | 73 Varianten, 24 Options- und 73 Wert-IDs, 168 Medien sowie Preise/SKUs/Status/Tags/Inventar/URLs gegengeprüft. | Alle abgefragten Schutzfelder unverändert. Eine Stilwarnung: zwei Auswahlwerte im Text statt einer Tabelle. |
+| Öffentlich / mobil | 24 Seiten/73 Varianten mit HTML/JSON-LD sowie 48 Ansichten bei 360/390px geprüft; fünf Screenshots selbst angesehen. | HTTP 200, passende Inhalte/Angebote; zwei Überbreiten behoben. Sieben Auswahlprüfungen bestätigt, zwei Klickproben vor Auswahl mit Timeout bleiben ungeprüft. |
+| Grenzen / Fortsetzung | Offene Primärquellenfragen je Produkt dokumentiert, Übergabe fortgeschrieben. | Keine anderen Plattform-/Preis-/Budget-/Flow-/Shopänderungen, Kundenansprache, Bestellwatch oder neue Automation; Claude-Empfang unbekannt. |
+
+[R255-Bericht](SEO-PRODUKTDETAILS-LIVE-20261116-R255.md) · [Belege](SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json) · [36er-Liste](KONSOLEN-DETAILARBEIT-20261116-R255.csv).
+
+[LUXESTYLE_R255_20261116]

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 254,
-  "updatedAt": "2026-11-16T08:05:38Z",
+  "revision": 255,
+  "updatedAt": "2026-11-16T09:17:59Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17,8 +17,8 @@
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-16",
-    "currentDayEvidenceKind": "R251_GSC_PLUS_R253_ONCE_METRICOOL_KLAVIYO_WITH_TARGETED_QUALITY_HOLDS",
-    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung.",
+    "currentDayEvidenceKind": "R255 Produkttexte, native Reads und öffentliche/mobile QA",
+    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-16",
@@ -690,6 +690,19 @@
       "socialMetricsRepeated": false,
       "flowReportRepeated": false,
       "proof": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R254.json"
+    },
+    "targetedSeoWritesR255": {
+      "localDate": "2026-11-16",
+      "productWrites": 24,
+      "successfulMutationCalls": 28,
+      "initialGraphqlUserErrors": [],
+      "bodyAmendmentsToolError": false,
+      "bodyAmendmentCalls": 4,
+      "worklistRows": 36,
+      "editoriallyWorked": 36,
+      "publicQaState": "PASS_WITH_LIMITS",
+      "proof": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+      "dailyReportsRepeated": false
     }
   },
   "expectedIdentity": {
@@ -723,28 +736,15 @@
       "id": "product-attribute-completeness",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r254_12_of_36_console_pages_live_detailed_copy_source_questions_open",
+      "state": "R255 redaktionell vollständig für 36er-Liste; Quellenfragen offen",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R254_TWO_LIVE_PRODUCT_COPY_SEO_WRITES_NATIVE_PUBLIC_MOBILE_READBACK",
-      "lastEvidence": "R254:HDMI15496982397313/AV15448846926209nachfrischenexaktenCJ-PIDs/12Bildzuordnungenmit2Writesliveüberarbeitet:2Titel/2Bodies378bzw405Wörter/2vollständigeSEOPaare,Technik/Anschluss/Auswahl/Lieferumfang/FAQ.2Varianten/2Optionen/2WertIDs/12Medien/Preise29.90und14.90/SKUs/Tags/Inventarregelnunverändert.Native/public/2JSONLDOffersund4mobileAnsichtenbestätigt.36erListe12redaktionell/24offen=33.3%,keinShopgesamtprozentsatz;Spiele/Karten/Modell/Packlisteweiteroffen.",
-      "nextAllowedStep": "NächstekleineGruppeaus24SOURCE_AND_COPY_REVIEW_OPENinKONSOLEN-DETAILARBEIT-20261116-R254.csvmitfrischenSKU/CJ-/Bild-/Originalgatesbearbeiten.VorherigeSeitenohneNeubefundnichtneuändern;offeneSpiele/Karten/Modell/Packungsfragenbelegbarweiterführen,nicht«keineSpiele»ausfehlendenDaten.",
+      "belegArt": "R255 nativer Readback, öffentlicher Seitencheck und mobile Ansicht",
+      "lastEvidence": "R255: 24 zusätzliche Produktseiten, 24 Initial- und 4 Body-Polish-Aufrufe. Alle 28 Readbacks bestätigt. Die vorhandene 36er-Liste steht bei 36/36 redaktionell bearbeiteten Einträgen; 24 R255-Produkte behalten offene Quellenfragen. Öffentliche QA: 24 Seiten/73 Varianten, 48 Viewports bestanden; zwei Auswahlproben unverified.",
+      "nextAllowedStep": "Offene Produktfragen je SKU mit neuen Primärbelegen klären. Die redaktionelle Quote gilt nur für die 36er-Liste; sie schliesst keine Lieferantenfragen oder Bildrechte.",
       "blockers": [
-        "HDMI4Kvs1080P,Spiele-/Karten-/Batteriemitlieferungunbestätigt.",
-        "FC620AVvsEMX-06undvollständigePackliste/Controllerzahlunbekannt.",
-        "BisherigeR248Bildrechte/R251Tasten-/LayoutfragenundhistorischeBlockererhalten;keinQuellvollabschluss.",
-        "Historisch offen, heute nicht neu geprüft: NeueFreigabe gilt nur den exakten7/11-Bildern; keine pauschale Freigabe aller Farbbilder oder anderer Produkte.",
-        "Historisch offen, heute nicht neu geprüft: Modell6-Nettoinhalt und frühere Mengen-/Konformitäts-/Filmrechtsfälle bleiben offen. Der R243-Projektor-Beschreibungsentwurf wurde durch R245 live umgesetzt und erweitert; dadurch keine Film-/Musikfreigabe.",
-        "Historisch offen, heute nicht neu geprüft: AUTOFEED-Parentangebot derWandleuchte ist noch nicht eindeutig einer diesersechsVarianten zugeordnet.",
-        "Historisch offen, heute nicht neu geprüft: R245: Gamepad-Modell/Empfänger/Akku sowie Powerbank-Farbe/Ladeart/Spieleumfang nicht eindeutig gebunden; vier gefilterte CJ-Verbindungsreads list=[]/total0 sind kein Connector-Negativbeweis. Konsole-Plus-Spielezahl/TF-Karte und tatsächliche einzelne Fulfillment-SKUs weiter offen.",
-        "Historisch offen, heute nicht neu geprüft: R246: B4-Controller-Auswahlen des620erProdukts15448848761217 sind weiterhin weder als komplettes Set noch als Zubehör-only bestätigt; «Umfang prüfen» direkt imWert. Dimm-/Kelvin-/Anschlussdetails derDeckenleuchte bleiben quellabhängig, keine230V- oderFernbedienungszusage.",
-        "Historisch offen, heute nicht neu geprüft: R248: HellgrauArmbandbox67821514686855/CJYD279122120TGistmobilmiteinemAnhängerboxfoto7.3×8.3×5bebildert; SKU-/CJ-Masse9.5×9.5×5. GenauesErsatzfotoistnichtalsProduktmediumvorhanden; Rechte/Produkt-/Farbantwortoffen,keinUpload. TemporärerBeschreibungshinweisbisverifizierterKorrektur erhalten.",
-        "Historisch offen, heute nicht neu geprüft: R248: Malbildrahmen/Farben/Pinsel-Paketweiternichtbestätigt; BoxInnenmaße/Futterzusammensetzungunknown, keineerfundenenAngaben.",
-        "Historisch offen, heute nicht neu geprüft: R249: Installierte Spiele, mitgelieferte Speicherkarten und konkrete Software-/Systemkompatibilität bleiben beim Handheld unbekannt; 64G/128G sind Quelllabels, keine zugesicherten GB-/Spielepakete. X6 ohne Fotofunktion ist Auswahlmerkmal, andere Varianten erhalten keine ungeprüfte Fotofunktionszusage.",
-        "Historisch offen, heute nicht neu geprüft: R249: Hundejacken-Grössentabelle hat keine bestätigten Masseinheiten; keine cm-/Gewichts-/Rassepassform oder Wetterfestigkeit zugesagt. Rucksack-Materialanteile nicht belegt.19 richtige Farbmedien lösen diese Inhaltslücken nicht.",
-        "Historisch offen, heute nicht neu geprüft: R251: AK-600-Sprachlayout ohne eindeutigen Modellbeleg, QuelleRussianVersion und lateinischeBildlegenden uneindeutig, keinDE-/CH-QWERTZ. X3-Quellen6vs7Tasten, Anzahl/Belegung/Programmierbarkeit unbestätigt.",
-        "Historisch offen, heute nicht neu geprüft: R251: CoolMechaCase nur imFoto/nicht separat inPackliste, Ladefunktion/Anschluss/Zubehör/ANC/Mikrofon unbestätigt. FaltbaresHeadset-Multipointumfang/USB-Stecker/Laufzeit offen. Bestehendes AK-600aggregateRating nicht verifiziert/erzeugt.",
-        "Historisch offen, heute nicht neu geprüft: R252: X2Variantennamen64G/128G/256GbestätigenkeinekonkreteKarte/nutzbareKapazität/Spieleliste. GD20Packliste1ControllergegenBild2Controller;EnglishBedeutung/4KAusgabe/System/Stickmasseoffen. Bilderbleibenunverändert,keineLizenz-/Spielezusage."
+        "Produkt- und Lieferantenfragen sowie Bildrechte sind nicht geschlossen.",
+        "Zwei Auswahlproben timeouteten vor einer Auswahl und bleiben unverified."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -1798,6 +1798,62 @@
           "gitBlobSha": "71da951494bf6928b980eef68efaaa0056be5f69",
           "sha256": "8ba01b765e2766d5529d566d76222b274fb615d8e342b9100deb4ea538f684c0",
           "readAt": "2026-11-16T08:05:38Z"
+        },
+        {
+          "file": "KONSOLEN-DETAILARBEIT-20261116-R255.csv",
+          "path": "dropship/codex-handoff-20261018/KONSOLEN-DETAILARBEIT-20261116-R255.csv",
+          "bytes": 9395,
+          "sha256": "13b8deb40b6c290b7c40d826c482c5314a5755356752e2ce362ab0ca9f8af10f",
+          "gitBlobSha": "bf233c05cc6542bae6bedc0684e08ae7b4f6ae2d",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "KONSOLEN-QUELLEN-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/KONSOLEN-QUELLEN-20261116-R255.json",
+          "bytes": 86309,
+          "sha256": "9977769ea395cebe6cae85c56fc9d48af5458ebefa2de14f83afe7a01bb30738",
+          "gitBlobSha": "00777c9c5a67133f3846951c33dd41a9b52ab33a",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-FORTSCHRITT-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-FORTSCHRITT-20261116-R255.json",
+          "bytes": 19681,
+          "sha256": "fbafad6e8d214902e5ad8a145e78797944ddcdc60c044a2fa54029c54a3770c5",
+          "gitBlobSha": "6370ab8ec52734c384c06e6536347a6237735a8d",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+          "bytes": 68247,
+          "sha256": "368f482fcdca92cf29c3081c0999796421113740ff4345d3c510420f9a53a8b2",
+          "gitBlobSha": "714d214eeb887a8045b020332f3a96a874036c33",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-LIVE-20261116-R255.md",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-LIVE-20261116-R255.md",
+          "bytes": 9503,
+          "sha256": "8e06fa9c895811dde447e643a0b042684ba96aba8d7e19a538999e3f25f107fb",
+          "gitBlobSha": "4d100dc89b4bb0cd7208db60b5954ccf2c292639",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json",
+          "bytes": 14217,
+          "sha256": "2564b7259e3a3323b6f1da2bd24359bcbf3b60bdfd934290d1638cfc3aab8c08",
+          "gitBlobSha": "a41f3e9b3c20689536e7769fee6931bf66728b73",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-TEXTE-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-TEXTE-20261116-R255.json",
+          "bytes": 707035,
+          "sha256": "d78f63fbbd8868686465bf88ebc00e7ef5992cdd14753043a7ef3adb9af30e00",
+          "gitBlobSha": "946fedc7a863c8f43b0e78ec561698e626a61814",
+          "readAt": "2026-11-16T09:17:59Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -4842,6 +4898,62 @@
               "R252: X2Variantennamen64G/128G/256GbestätigenkeinekonkreteKarte/nutzbareKapazität/Spieleliste. GD20Packliste1ControllergegenBild2Controller;EnglishBedeutung/4KAusgabe/System/Stickmasseoffen. Bilderbleibenunverändert,keineLizenz-/Spielezusage."
             ]
           }
+        },
+        {
+          "archivedByRun": "R255",
+          "recordedAt": "2026-11-16T09:14:45Z",
+          "previous": {
+            "state": "r254_12_of_36_console_pages_live_detailed_copy_source_questions_open",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R254_TWO_LIVE_PRODUCT_COPY_SEO_WRITES_NATIVE_PUBLIC_MOBILE_READBACK",
+            "lastEvidence": "R254:HDMI15496982397313/AV15448846926209nachfrischenexaktenCJ-PIDs/12Bildzuordnungenmit2Writesliveüberarbeitet:2Titel/2Bodies378bzw405Wörter/2vollständigeSEOPaare,Technik/Anschluss/Auswahl/Lieferumfang/FAQ.2Varianten/2Optionen/2WertIDs/12Medien/Preise29.90und14.90/SKUs/Tags/Inventarregelnunverändert.Native/public/2JSONLDOffersund4mobileAnsichtenbestätigt.36erListe12redaktionell/24offen=33.3%,keinShopgesamtprozentsatz;Spiele/Karten/Modell/Packlisteweiteroffen.",
+            "nextAllowedStep": "NächstekleineGruppeaus24SOURCE_AND_COPY_REVIEW_OPENinKONSOLEN-DETAILARBEIT-20261116-R254.csvmitfrischenSKU/CJ-/Bild-/Originalgatesbearbeiten.VorherigeSeitenohneNeubefundnichtneuändern;offeneSpiele/Karten/Modell/Packungsfragenbelegbarweiterführen,nicht«keineSpiele»ausfehlendenDaten.",
+            "blockers": [
+              "HDMI4Kvs1080P,Spiele-/Karten-/Batteriemitlieferungunbestätigt.",
+              "FC620AVvsEMX-06undvollständigePackliste/Controllerzahlunbekannt.",
+              "BisherigeR248Bildrechte/R251Tasten-/LayoutfragenundhistorischeBlockererhalten;keinQuellvollabschluss.",
+              "Historisch offen, heute nicht neu geprüft: NeueFreigabe gilt nur den exakten7/11-Bildern; keine pauschale Freigabe aller Farbbilder oder anderer Produkte.",
+              "Historisch offen, heute nicht neu geprüft: Modell6-Nettoinhalt und frühere Mengen-/Konformitäts-/Filmrechtsfälle bleiben offen. Der R243-Projektor-Beschreibungsentwurf wurde durch R245 live umgesetzt und erweitert; dadurch keine Film-/Musikfreigabe.",
+              "Historisch offen, heute nicht neu geprüft: AUTOFEED-Parentangebot derWandleuchte ist noch nicht eindeutig einer diesersechsVarianten zugeordnet.",
+              "Historisch offen, heute nicht neu geprüft: R245: Gamepad-Modell/Empfänger/Akku sowie Powerbank-Farbe/Ladeart/Spieleumfang nicht eindeutig gebunden; vier gefilterte CJ-Verbindungsreads list=[]/total0 sind kein Connector-Negativbeweis. Konsole-Plus-Spielezahl/TF-Karte und tatsächliche einzelne Fulfillment-SKUs weiter offen.",
+              "Historisch offen, heute nicht neu geprüft: R246: B4-Controller-Auswahlen des620erProdukts15448848761217 sind weiterhin weder als komplettes Set noch als Zubehör-only bestätigt; «Umfang prüfen» direkt imWert. Dimm-/Kelvin-/Anschlussdetails derDeckenleuchte bleiben quellabhängig, keine230V- oderFernbedienungszusage.",
+              "Historisch offen, heute nicht neu geprüft: R248: HellgrauArmbandbox67821514686855/CJYD279122120TGistmobilmiteinemAnhängerboxfoto7.3×8.3×5bebildert; SKU-/CJ-Masse9.5×9.5×5. GenauesErsatzfotoistnichtalsProduktmediumvorhanden; Rechte/Produkt-/Farbantwortoffen,keinUpload. TemporärerBeschreibungshinweisbisverifizierterKorrektur erhalten.",
+              "Historisch offen, heute nicht neu geprüft: R248: Malbildrahmen/Farben/Pinsel-Paketweiternichtbestätigt; BoxInnenmaße/Futterzusammensetzungunknown, keineerfundenenAngaben.",
+              "Historisch offen, heute nicht neu geprüft: R249: Installierte Spiele, mitgelieferte Speicherkarten und konkrete Software-/Systemkompatibilität bleiben beim Handheld unbekannt; 64G/128G sind Quelllabels, keine zugesicherten GB-/Spielepakete. X6 ohne Fotofunktion ist Auswahlmerkmal, andere Varianten erhalten keine ungeprüfte Fotofunktionszusage.",
+              "Historisch offen, heute nicht neu geprüft: R249: Hundejacken-Grössentabelle hat keine bestätigten Masseinheiten; keine cm-/Gewichts-/Rassepassform oder Wetterfestigkeit zugesagt. Rucksack-Materialanteile nicht belegt.19 richtige Farbmedien lösen diese Inhaltslücken nicht.",
+              "Historisch offen, heute nicht neu geprüft: R251: AK-600-Sprachlayout ohne eindeutigen Modellbeleg, QuelleRussianVersion und lateinischeBildlegenden uneindeutig, keinDE-/CH-QWERTZ. X3-Quellen6vs7Tasten, Anzahl/Belegung/Programmierbarkeit unbestätigt.",
+              "Historisch offen, heute nicht neu geprüft: R251: CoolMechaCase nur imFoto/nicht separat inPackliste, Ladefunktion/Anschluss/Zubehör/ANC/Mikrofon unbestätigt. FaltbaresHeadset-Multipointumfang/USB-Stecker/Laufzeit offen. Bestehendes AK-600aggregateRating nicht verifiziert/erzeugt.",
+              "Historisch offen, heute nicht neu geprüft: R252: X2Variantennamen64G/128G/256GbestätigenkeinekonkreteKarte/nutzbareKapazität/Spieleliste. GD20Packliste1ControllergegenBild2Controller;EnglishBedeutung/4KAusgabe/System/Stickmasseoffen. Bilderbleibenunverändert,keineLizenz-/Spielezusage."
+            ]
+          }
+        },
+        {
+          "run": "R255",
+          "recordedAt": "2026-11-16T09:14:47Z",
+          "previous": {
+            "state": "r254_12_of_36_console_pages_live_detailed_copy_source_questions_open",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R254_TWO_LIVE_PRODUCT_COPY_SEO_WRITES_NATIVE_PUBLIC_MOBILE_READBACK",
+            "lastEvidence": "R254:HDMI15496982397313/AV15448846926209nachfrischenexaktenCJ-PIDs/12Bildzuordnungenmit2Writesliveüberarbeitet:2Titel/2Bodies378bzw405Wörter/2vollständigeSEOPaare,Technik/Anschluss/Auswahl/Lieferumfang/FAQ.2Varianten/2Optionen/2WertIDs/12Medien/Preise29.90und14.90/SKUs/Tags/Inventarregelnunverändert.Native/public/2JSONLDOffersund4mobileAnsichtenbestätigt.36erListe12redaktionell/24offen=33.3%,keinShopgesamtprozentsatz;Spiele/Karten/Modell/Packlisteweiteroffen.",
+            "nextAllowedStep": "NächstekleineGruppeaus24SOURCE_AND_COPY_REVIEW_OPENinKONSOLEN-DETAILARBEIT-20261116-R254.csvmitfrischenSKU/CJ-/Bild-/Originalgatesbearbeiten.VorherigeSeitenohneNeubefundnichtneuändern;offeneSpiele/Karten/Modell/Packungsfragenbelegbarweiterführen,nicht«keineSpiele»ausfehlendenDaten.",
+            "blockers": [
+              "HDMI4Kvs1080P,Spiele-/Karten-/Batteriemitlieferungunbestätigt.",
+              "FC620AVvsEMX-06undvollständigePackliste/Controllerzahlunbekannt.",
+              "BisherigeR248Bildrechte/R251Tasten-/LayoutfragenundhistorischeBlockererhalten;keinQuellvollabschluss.",
+              "Historisch offen, heute nicht neu geprüft: NeueFreigabe gilt nur den exakten7/11-Bildern; keine pauschale Freigabe aller Farbbilder oder anderer Produkte.",
+              "Historisch offen, heute nicht neu geprüft: Modell6-Nettoinhalt und frühere Mengen-/Konformitäts-/Filmrechtsfälle bleiben offen. Der R243-Projektor-Beschreibungsentwurf wurde durch R245 live umgesetzt und erweitert; dadurch keine Film-/Musikfreigabe.",
+              "Historisch offen, heute nicht neu geprüft: AUTOFEED-Parentangebot derWandleuchte ist noch nicht eindeutig einer diesersechsVarianten zugeordnet.",
+              "Historisch offen, heute nicht neu geprüft: R245: Gamepad-Modell/Empfänger/Akku sowie Powerbank-Farbe/Ladeart/Spieleumfang nicht eindeutig gebunden; vier gefilterte CJ-Verbindungsreads list=[]/total0 sind kein Connector-Negativbeweis. Konsole-Plus-Spielezahl/TF-Karte und tatsächliche einzelne Fulfillment-SKUs weiter offen.",
+              "Historisch offen, heute nicht neu geprüft: R246: B4-Controller-Auswahlen des620erProdukts15448848761217 sind weiterhin weder als komplettes Set noch als Zubehör-only bestätigt; «Umfang prüfen» direkt imWert. Dimm-/Kelvin-/Anschlussdetails derDeckenleuchte bleiben quellabhängig, keine230V- oderFernbedienungszusage.",
+              "Historisch offen, heute nicht neu geprüft: R248: HellgrauArmbandbox67821514686855/CJYD279122120TGistmobilmiteinemAnhängerboxfoto7.3×8.3×5bebildert; SKU-/CJ-Masse9.5×9.5×5. GenauesErsatzfotoistnichtalsProduktmediumvorhanden; Rechte/Produkt-/Farbantwortoffen,keinUpload. TemporärerBeschreibungshinweisbisverifizierterKorrektur erhalten.",
+              "Historisch offen, heute nicht neu geprüft: R248: Malbildrahmen/Farben/Pinsel-Paketweiternichtbestätigt; BoxInnenmaße/Futterzusammensetzungunknown, keineerfundenenAngaben.",
+              "Historisch offen, heute nicht neu geprüft: R249: Installierte Spiele, mitgelieferte Speicherkarten und konkrete Software-/Systemkompatibilität bleiben beim Handheld unbekannt; 64G/128G sind Quelllabels, keine zugesicherten GB-/Spielepakete. X6 ohne Fotofunktion ist Auswahlmerkmal, andere Varianten erhalten keine ungeprüfte Fotofunktionszusage.",
+              "Historisch offen, heute nicht neu geprüft: R249: Hundejacken-Grössentabelle hat keine bestätigten Masseinheiten; keine cm-/Gewichts-/Rassepassform oder Wetterfestigkeit zugesagt. Rucksack-Materialanteile nicht belegt.19 richtige Farbmedien lösen diese Inhaltslücken nicht.",
+              "Historisch offen, heute nicht neu geprüft: R251: AK-600-Sprachlayout ohne eindeutigen Modellbeleg, QuelleRussianVersion und lateinischeBildlegenden uneindeutig, keinDE-/CH-QWERTZ. X3-Quellen6vs7Tasten, Anzahl/Belegung/Programmierbarkeit unbestätigt.",
+              "Historisch offen, heute nicht neu geprüft: R251: CoolMechaCase nur imFoto/nicht separat inPackliste, Ladefunktion/Anschluss/Zubehör/ANC/Mikrofon unbestätigt. FaltbaresHeadset-Multipointumfang/USB-Stecker/Laufzeit offen. Bestehendes AK-600aggregateRating nicht verifiziert/erzeugt.",
+              "Historisch offen, heute nicht neu geprüft: R252: X2Variantennamen64G/128G/256GbestätigenkeinekonkreteKarte/nutzbareKapazität/Spieleliste. GD20Packliste1ControllergegenBild2Controller;EnglishBedeutung/4KAusgabe/System/Stickmasseoffen. Bilderbleibenunverändert,keineLizenz-/Spielezusage."
+            ]
+          }
         }
       ],
       "additionalProductCleanups": [
@@ -6601,6 +6713,11 @@
         "purchaseWatchEnded": true,
         "newAutomation": false,
         "claudeReceipt": "unknown"
+      },
+      "run255": {
+        "evidence": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+        "taskIdsPreserved": 24,
+        "publicQaState": "PASS_WITH_LIMITS"
       }
     },
     {
@@ -7493,22 +7610,16 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r254_same_claude_entry_detailed_seo_and_scope_percent_documented_receipt_unknown",
+      "state": "R255-Paket vorbereitet; Core-Patch und Readback noch offen",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R254_TWO_LIVE_PRODUCT_COPY_SEO_WRITES_NATIVE_PUBLIC_MOBILE_READBACK",
-      "lastEvidence": "R2542bestätigteSEO/ProdukttextWrites,Quellen-/Schutz-/Mobilbelegeundfortgeschriebene36erListe12/36mitoffenenQuellenfrageninCore4undbestehendenClaudeDirektlinkdokumentiert.R253Holds/Tagesreportsbeibehalten.24TaskIDs/Historieerhalten.KeineClaudeNachrichtoderEmpfangsbehauptung.",
-      "nextAllowedStep": "BestehendenDirektlink/R254Paketund24erAufgabenstandverwenden;12/36nuralsredaktionellenTeilstandberichten,ClaudereceiptweiterunknownohneBeleg. KeineDoppelarbeit/DailyReportwiederholung.",
+      "belegArt": "R255 nativer Readback, öffentlicher Seitencheck und mobile Ansicht",
+      "lastEvidence": "R255-Paket: 24 finale Texte, native Vorher-/Nachher-Daten, Quellenregister, 36er-Liste, öffentliche/mobile QA und Fortschrittsbericht. ARBEITSSTAND 254→255 behält alle 24 Task-IDs; drei relevante Aufgaben mit Historie und Blockern aktualisiert. Claude-Empfang unbekannt.",
+      "nextAllowedStep": "Root wendet die R255-Instruktionen an, prüft den V8-Patch, lädt die freigegebenen Dateien hoch und verifiziert die tatsächlichen Blob-SHAs per Readback.",
       "blockers": [
-        "Claude-Empfangunbekannt.",
-        "KeinezusätzlicheAutomation/Frequenzänderung/ungeprüftenWorkflowstarts.",
-        "Historisch offen, heute nicht neu geprüft: Claudereceiptunbekannt.",
-        "Historisch offen, heute nicht neu geprüft: KeinezusätzlicheAutomation/Frequenzänderung/ungeprüfteWorkflowstarts.",
-        "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: Shopify-Publisher verweigertdiesesTheme trotzFreigabe;Zielunveröffentlicht.",
-        "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: Merchant-AUTOFEED-/ReviewzugangundvollständigeraktuellerGruppenabgleichoffen.",
-        "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: YouTubeaktiveTerminenur16./17.11.;Threads15.11.nurDraft;Qualitäts-/Rechtegateserhalten.",
-        "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: Claude-Empfangunbekannt.",
-        "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: R250: OriginalZIPs claude-produktideen-20261115.zip / claude-social-zukunft-20261115.zip hier nicht vorhanden; separater Direktstart ist kein behaupteter Ersatz. Claude-Empfang unbekannt."
+        "Zwei Auswahlproben bleiben unverified.",
+        "Core-Änderung ist remote noch nicht angewandt oder zurückgelesen.",
+        "Claude-Empfang unbekannt."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -9005,6 +9116,62 @@
           "gitBlobSha": "71da951494bf6928b980eef68efaaa0056be5f69",
           "sha256": "8ba01b765e2766d5529d566d76222b274fb615d8e342b9100deb4ea538f684c0",
           "readAt": "2026-11-16T08:05:38Z"
+        },
+        {
+          "file": "KONSOLEN-DETAILARBEIT-20261116-R255.csv",
+          "path": "dropship/codex-handoff-20261018/KONSOLEN-DETAILARBEIT-20261116-R255.csv",
+          "bytes": 9395,
+          "sha256": "13b8deb40b6c290b7c40d826c482c5314a5755356752e2ce362ab0ca9f8af10f",
+          "gitBlobSha": "bf233c05cc6542bae6bedc0684e08ae7b4f6ae2d",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "KONSOLEN-QUELLEN-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/KONSOLEN-QUELLEN-20261116-R255.json",
+          "bytes": 86309,
+          "sha256": "9977769ea395cebe6cae85c56fc9d48af5458ebefa2de14f83afe7a01bb30738",
+          "gitBlobSha": "00777c9c5a67133f3846951c33dd41a9b52ab33a",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-FORTSCHRITT-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-FORTSCHRITT-20261116-R255.json",
+          "bytes": 19681,
+          "sha256": "fbafad6e8d214902e5ad8a145e78797944ddcdc60c044a2fa54029c54a3770c5",
+          "gitBlobSha": "6370ab8ec52734c384c06e6536347a6237735a8d",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+          "bytes": 68247,
+          "sha256": "368f482fcdca92cf29c3081c0999796421113740ff4345d3c510420f9a53a8b2",
+          "gitBlobSha": "714d214eeb887a8045b020332f3a96a874036c33",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-LIVE-20261116-R255.md",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-LIVE-20261116-R255.md",
+          "bytes": 9503,
+          "sha256": "8e06fa9c895811dde447e643a0b042684ba96aba8d7e19a538999e3f25f107fb",
+          "gitBlobSha": "4d100dc89b4bb0cd7208db60b5954ccf2c292639",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json",
+          "bytes": 14217,
+          "sha256": "2564b7259e3a3323b6f1da2bd24359bcbf3b60bdfd934290d1638cfc3aab8c08",
+          "gitBlobSha": "a41f3e9b3c20689536e7769fee6931bf66728b73",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-TEXTE-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-TEXTE-20261116-R255.json",
+          "bytes": 707035,
+          "sha256": "d78f63fbbd8868686465bf88ebc00e7ef5992cdd14753043a7ef3adb9af30e00",
+          "gitBlobSha": "946fedc7a863c8f43b0e78ec561698e626a61814",
+          "readAt": "2026-11-16T09:17:59Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -15609,6 +15776,50 @@
               "Historischer offener Befund, heute nicht neu geprüft: R250: OriginalZIPs claude-produktideen-20261115.zip / claude-social-zukunft-20261115.zip hier nicht vorhanden; separater Direktstart ist kein behaupteter Ersatz. Claude-Empfang unbekannt."
             ]
           }
+        },
+        {
+          "archivedByRun": "R255",
+          "recordedAt": "2026-11-16T09:14:45Z",
+          "previous": {
+            "state": "r254_same_claude_entry_detailed_seo_and_scope_percent_documented_receipt_unknown",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R254_TWO_LIVE_PRODUCT_COPY_SEO_WRITES_NATIVE_PUBLIC_MOBILE_READBACK",
+            "lastEvidence": "R2542bestätigteSEO/ProdukttextWrites,Quellen-/Schutz-/Mobilbelegeundfortgeschriebene36erListe12/36mitoffenenQuellenfrageninCore4undbestehendenClaudeDirektlinkdokumentiert.R253Holds/Tagesreportsbeibehalten.24TaskIDs/Historieerhalten.KeineClaudeNachrichtoderEmpfangsbehauptung.",
+            "nextAllowedStep": "BestehendenDirektlink/R254Paketund24erAufgabenstandverwenden;12/36nuralsredaktionellenTeilstandberichten,ClaudereceiptweiterunknownohneBeleg. KeineDoppelarbeit/DailyReportwiederholung.",
+            "blockers": [
+              "Claude-Empfangunbekannt.",
+              "KeinezusätzlicheAutomation/Frequenzänderung/ungeprüftenWorkflowstarts.",
+              "Historisch offen, heute nicht neu geprüft: Claudereceiptunbekannt.",
+              "Historisch offen, heute nicht neu geprüft: KeinezusätzlicheAutomation/Frequenzänderung/ungeprüfteWorkflowstarts.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: Shopify-Publisher verweigertdiesesTheme trotzFreigabe;Zielunveröffentlicht.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: Merchant-AUTOFEED-/ReviewzugangundvollständigeraktuellerGruppenabgleichoffen.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: YouTubeaktiveTerminenur16./17.11.;Threads15.11.nurDraft;Qualitäts-/Rechtegateserhalten.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: Claude-Empfangunbekannt.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: R250: OriginalZIPs claude-produktideen-20261115.zip / claude-social-zukunft-20261115.zip hier nicht vorhanden; separater Direktstart ist kein behaupteter Ersatz. Claude-Empfang unbekannt."
+            ]
+          }
+        },
+        {
+          "run": "R255",
+          "recordedAt": "2026-11-16T09:14:47Z",
+          "previous": {
+            "state": "r254_same_claude_entry_detailed_seo_and_scope_percent_documented_receipt_unknown",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R254_TWO_LIVE_PRODUCT_COPY_SEO_WRITES_NATIVE_PUBLIC_MOBILE_READBACK",
+            "lastEvidence": "R2542bestätigteSEO/ProdukttextWrites,Quellen-/Schutz-/Mobilbelegeundfortgeschriebene36erListe12/36mitoffenenQuellenfrageninCore4undbestehendenClaudeDirektlinkdokumentiert.R253Holds/Tagesreportsbeibehalten.24TaskIDs/Historieerhalten.KeineClaudeNachrichtoderEmpfangsbehauptung.",
+            "nextAllowedStep": "BestehendenDirektlink/R254Paketund24erAufgabenstandverwenden;12/36nuralsredaktionellenTeilstandberichten,ClaudereceiptweiterunknownohneBeleg. KeineDoppelarbeit/DailyReportwiederholung.",
+            "blockers": [
+              "Claude-Empfangunbekannt.",
+              "KeinezusätzlicheAutomation/Frequenzänderung/ungeprüftenWorkflowstarts.",
+              "Historisch offen, heute nicht neu geprüft: Claudereceiptunbekannt.",
+              "Historisch offen, heute nicht neu geprüft: KeinezusätzlicheAutomation/Frequenzänderung/ungeprüfteWorkflowstarts.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: Shopify-Publisher verweigertdiesesTheme trotzFreigabe;Zielunveröffentlicht.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: Merchant-AUTOFEED-/ReviewzugangundvollständigeraktuellerGruppenabgleichoffen.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: YouTubeaktiveTerminenur16./17.11.;Threads15.11.nurDraft;Qualitäts-/Rechtegateserhalten.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: Claude-Empfangunbekannt.",
+              "Historisch offen, heute nicht neu geprüft: Historischer offener Befund, heute nicht neu geprüft: R250: OriginalZIPs claude-produktideen-20261115.zip / claude-social-zukunft-20261115.zip hier nicht vorhanden; separater Direktstart ist kein behaupteter Ersatz. Claude-Empfang unbekannt."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -18316,6 +18527,11 @@
         "purchaseWatchEnded": true,
         "newAutomation": false,
         "claudeReceipt": "unknown"
+      },
+      "run255": {
+        "evidence": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+        "taskIdsPreserved": 24,
+        "publicQaState": "PASS_WITH_LIMITS"
       }
     },
     {
@@ -31491,17 +31707,15 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r254_two_additional_product_seo_bodies_live_public_mobile_verified_not_index_proof",
+      "state": "R255 öffentliche Produktprüfung bestanden; keine Index- oder Rankingbehauptung",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R254_TWO_LIVE_PRODUCT_COPY_SEO_WRITES_NATIVE_PUBLIC_MOBILE_READBACK",
-      "lastEvidence": "R254zweiweitereProduktseitenmitindividuellenSuchTiteln/Meta unddetailliertenProdukt-/Auswahltextenlive;HTTP200,richtigeCanonicals,keineNoindexdirektive,2JSONLDOfferundPreise/VariantIDsbestätigt,4mobileAnsichtenohneÜberlauf.KategorieLinkHTTP200. GSCvonR251nichtwiederholt,keinefrischeIndexierung/RankingwirkungnachTextwritebelegt.WaagenOGPatchweiterhistorischunveröffentlicht.",
-      "nextAllowedStep": "NächsteabgegrenzteProduktgruppequellenbasiertverbessern;Index/RankingnurbeifälligerTagesmessungoderkonkretemneuemGegenprüfgrundneuprüfen.BestehendenWaagenOGPatchundMängelgetrenntfortführen,keineIndexgarantie.",
+      "belegArt": "R255 nativer Readback, öffentlicher Seitencheck und mobile Ansicht",
+      "lastEvidence": "R255: 24 Seiten und 73 Varianten mit H1, Titel, Meta, Canonical, Body und JSON-LD-Angeboten öffentlich abgeglichen. 48 Viewports bei 360/390 px bestanden. Zwei Pickerproben sind unverified; keine Indexierungs- oder Rankingwirkung belegt.",
+      "nextAllowedStep": "Offene Produktquellen weiter prüfen. GSC nur zur fälligen Tagesmessung oder mit neuem konkretem Gegenprüfgrund verwenden.",
       "blockers": [
-        "AktuelleGoogleIndexierung/neueRankingwirkungderR254Texteunbekannt.",
-        "Modell-/Auflösung-/Spiele-/Packungsfragenoffen;bearbeitetistnichtfehlerfrei.",
-        "Historisch offen, heute nicht neu geprüft: R252: AktuelleToolsfürtheme_commit/theme_publishexistieren;MAINcommitwirdblockiert,keinpassendescodegleichesunveröffentlichtesReleasezielinR252nachgewiesen. FrischerOGPatchistnurDatei,nichtlive. KeineblindenRetries/Theme-Neuanlagen/Guardumgehung.",
-        "Historisch offen, heute nicht neu geprüft: R252: WaagenGoogleLandingfehlerundaktuellerkompletterIndex-/Rankingeffektunbekannt;R251GSCdatenheutenichtwiederholt. FrühereR158-/R169-/R170-RestständebeiabhängigenAktionenfrischverifizieren,Historieerhalten."
+        "Keine frische Google-Indexierung oder Rankingwirkung nachgewiesen.",
+        "Zwei Auswahlproben bleiben unverified."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -32323,6 +32537,62 @@
           "gitBlobSha": "71da951494bf6928b980eef68efaaa0056be5f69",
           "sha256": "8ba01b765e2766d5529d566d76222b274fb615d8e342b9100deb4ea538f684c0",
           "readAt": "2026-11-16T08:05:38Z"
+        },
+        {
+          "file": "KONSOLEN-DETAILARBEIT-20261116-R255.csv",
+          "path": "dropship/codex-handoff-20261018/KONSOLEN-DETAILARBEIT-20261116-R255.csv",
+          "bytes": 9395,
+          "sha256": "13b8deb40b6c290b7c40d826c482c5314a5755356752e2ce362ab0ca9f8af10f",
+          "gitBlobSha": "bf233c05cc6542bae6bedc0684e08ae7b4f6ae2d",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "KONSOLEN-QUELLEN-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/KONSOLEN-QUELLEN-20261116-R255.json",
+          "bytes": 86309,
+          "sha256": "9977769ea395cebe6cae85c56fc9d48af5458ebefa2de14f83afe7a01bb30738",
+          "gitBlobSha": "00777c9c5a67133f3846951c33dd41a9b52ab33a",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-FORTSCHRITT-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-FORTSCHRITT-20261116-R255.json",
+          "bytes": 19681,
+          "sha256": "fbafad6e8d214902e5ad8a145e78797944ddcdc60c044a2fa54029c54a3770c5",
+          "gitBlobSha": "6370ab8ec52734c384c06e6536347a6237735a8d",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+          "bytes": 68247,
+          "sha256": "368f482fcdca92cf29c3081c0999796421113740ff4345d3c510420f9a53a8b2",
+          "gitBlobSha": "714d214eeb887a8045b020332f3a96a874036c33",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-LIVE-20261116-R255.md",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-LIVE-20261116-R255.md",
+          "bytes": 9503,
+          "sha256": "8e06fa9c895811dde447e643a0b042684ba96aba8d7e19a538999e3f25f107fb",
+          "gitBlobSha": "4d100dc89b4bb0cd7208db60b5954ccf2c292639",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json",
+          "bytes": 14217,
+          "sha256": "2564b7259e3a3323b6f1da2bd24359bcbf3b60bdfd934290d1638cfc3aab8c08",
+          "gitBlobSha": "a41f3e9b3c20689536e7769fee6931bf66728b73",
+          "readAt": "2026-11-16T09:17:59Z"
+        },
+        {
+          "file": "SEO-PRODUKTDETAILS-TEXTE-20261116-R255.json",
+          "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-TEXTE-20261116-R255.json",
+          "bytes": 707035,
+          "sha256": "d78f63fbbd8868686465bf88ebc00e7ef5992cdd14753043a7ef3adb9af30e00",
+          "gitBlobSha": "946fedc7a863c8f43b0e78ec561698e626a61814",
+          "readAt": "2026-11-16T09:17:59Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -35202,6 +35472,40 @@
               "R252: WaagenGoogleLandingfehlerundaktuellerkompletterIndex-/Rankingeffektunbekannt;R251GSCdatenheutenichtwiederholt. FrühereR158-/R169-/R170-RestständebeiabhängigenAktionenfrischverifizieren,Historieerhalten."
             ]
           }
+        },
+        {
+          "archivedByRun": "R255",
+          "recordedAt": "2026-11-16T09:14:45Z",
+          "previous": {
+            "state": "r254_two_additional_product_seo_bodies_live_public_mobile_verified_not_index_proof",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R254_TWO_LIVE_PRODUCT_COPY_SEO_WRITES_NATIVE_PUBLIC_MOBILE_READBACK",
+            "lastEvidence": "R254zweiweitereProduktseitenmitindividuellenSuchTiteln/Meta unddetailliertenProdukt-/Auswahltextenlive;HTTP200,richtigeCanonicals,keineNoindexdirektive,2JSONLDOfferundPreise/VariantIDsbestätigt,4mobileAnsichtenohneÜberlauf.KategorieLinkHTTP200. GSCvonR251nichtwiederholt,keinefrischeIndexierung/RankingwirkungnachTextwritebelegt.WaagenOGPatchweiterhistorischunveröffentlicht.",
+            "nextAllowedStep": "NächsteabgegrenzteProduktgruppequellenbasiertverbessern;Index/RankingnurbeifälligerTagesmessungoderkonkretemneuemGegenprüfgrundneuprüfen.BestehendenWaagenOGPatchundMängelgetrenntfortführen,keineIndexgarantie.",
+            "blockers": [
+              "AktuelleGoogleIndexierung/neueRankingwirkungderR254Texteunbekannt.",
+              "Modell-/Auflösung-/Spiele-/Packungsfragenoffen;bearbeitetistnichtfehlerfrei.",
+              "Historisch offen, heute nicht neu geprüft: R252: AktuelleToolsfürtheme_commit/theme_publishexistieren;MAINcommitwirdblockiert,keinpassendescodegleichesunveröffentlichtesReleasezielinR252nachgewiesen. FrischerOGPatchistnurDatei,nichtlive. KeineblindenRetries/Theme-Neuanlagen/Guardumgehung.",
+              "Historisch offen, heute nicht neu geprüft: R252: WaagenGoogleLandingfehlerundaktuellerkompletterIndex-/Rankingeffektunbekannt;R251GSCdatenheutenichtwiederholt. FrühereR158-/R169-/R170-RestständebeiabhängigenAktionenfrischverifizieren,Historieerhalten."
+            ]
+          }
+        },
+        {
+          "run": "R255",
+          "recordedAt": "2026-11-16T09:14:47Z",
+          "previous": {
+            "state": "r254_two_additional_product_seo_bodies_live_public_mobile_verified_not_index_proof",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R254_TWO_LIVE_PRODUCT_COPY_SEO_WRITES_NATIVE_PUBLIC_MOBILE_READBACK",
+            "lastEvidence": "R254zweiweitereProduktseitenmitindividuellenSuchTiteln/Meta unddetailliertenProdukt-/Auswahltextenlive;HTTP200,richtigeCanonicals,keineNoindexdirektive,2JSONLDOfferundPreise/VariantIDsbestätigt,4mobileAnsichtenohneÜberlauf.KategorieLinkHTTP200. GSCvonR251nichtwiederholt,keinefrischeIndexierung/RankingwirkungnachTextwritebelegt.WaagenOGPatchweiterhistorischunveröffentlicht.",
+            "nextAllowedStep": "NächsteabgegrenzteProduktgruppequellenbasiertverbessern;Index/RankingnurbeifälligerTagesmessungoderkonkretemneuemGegenprüfgrundneuprüfen.BestehendenWaagenOGPatchundMängelgetrenntfortführen,keineIndexgarantie.",
+            "blockers": [
+              "AktuelleGoogleIndexierung/neueRankingwirkungderR254Texteunbekannt.",
+              "Modell-/Auflösung-/Spiele-/Packungsfragenoffen;bearbeitetistnichtfehlerfrei.",
+              "Historisch offen, heute nicht neu geprüft: R252: AktuelleToolsfürtheme_commit/theme_publishexistieren;MAINcommitwirdblockiert,keinpassendescodegleichesunveröffentlichtesReleasezielinR252nachgewiesen. FrischerOGPatchistnurDatei,nichtlive. KeineblindenRetries/Theme-Neuanlagen/Guardumgehung.",
+              "Historisch offen, heute nicht neu geprüft: R252: WaagenGoogleLandingfehlerundaktuellerkompletterIndex-/Rankingeffektunbekannt;R251GSCdatenheutenichtwiederholt. FrühereR158-/R169-/R170-RestständebeiabhängigenAktionenfrischverifizieren,Historieerhalten."
+            ]
+          }
         }
       ],
       "visibilitySupplementR49": {
@@ -37005,6 +37309,11 @@
         "purchaseWatchEnded": true,
         "newAutomation": false,
         "claudeReceipt": "unknown"
+      },
+      "run255": {
+        "evidence": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+        "taskIdsPreserved": 24,
+        "publicQaState": "PASS_WITH_LIMITS"
       }
     },
     {
@@ -47689,6 +47998,15 @@
       "sources": [
         "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R254.json"
       ]
+    },
+    {
+      "revision": 255,
+      "at": "2026-11-16T09:14:45Z",
+      "summary": "R255: 24 Produktseiten mit 28 Mutationsaufrufen bestätigt. Die 36er-Konsolenliste ist redaktionell vollständig; Quellenfragen bleiben offen. Öffentliche QA 24/73 und 48 mobile Viewports bestanden, zwei Auswahlproben unverified.",
+      "sources": [
+        "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+        "dropship/codex-handoff-20261018/KONSOLEN-QUELLEN-20261116-R255.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -49041,7 +49359,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 254,
+    "latestCanonicalRevision": 255,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -50013,6 +50331,13 @@
       "report": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-LIVE-20261116-R254.md",
       "entryPath": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
       "receipt": "unknown"
+    },
+    "run255": {
+      "atUtc": "2026-11-16T09:14:47Z",
+      "report": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-LIVE-20261116-R255.md",
+      "entryPath": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+      "receipt": "unknown",
+      "publicQaState": "PASS_WITH_LIMITS"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -75773,5 +76098,16 @@
     "purchaseWatchEnded": true,
     "newAutomation": false,
     "claudeReceipt": "unknown"
+  },
+  "run255": {
+    "scope": "24 products, 28 confirmed product-copy mutation calls, 36/36 editorial worklist; source questions remain open.",
+    "publicQaState": "PASS_WITH_LIMITS",
+    "evidence": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+    "tasksUpdated": [
+      "product-attribute-completeness",
+      "seo-landing-visibility-20261101",
+      "luxe-zusammenarbeit-20261028"
+    ],
+    "taskCountPreserved": 24
   }
 }

@@ -1,0 +1,65 @@
+{
+  "run": "R255",
+  "atUtc": "2026-11-16T09:17:59Z",
+  "files": [
+    {
+      "file": "KONSOLEN-DETAILARBEIT-20261116-R255.csv",
+      "path": "dropship/codex-handoff-20261018/KONSOLEN-DETAILARBEIT-20261116-R255.csv",
+      "bytes": 9395,
+      "sha256": "13b8deb40b6c290b7c40d826c482c5314a5755356752e2ce362ab0ca9f8af10f",
+      "gitBlobSha": "bf233c05cc6542bae6bedc0684e08ae7b4f6ae2d",
+      "readAt": "2026-11-16T09:17:59Z"
+    },
+    {
+      "file": "KONSOLEN-QUELLEN-20261116-R255.json",
+      "path": "dropship/codex-handoff-20261018/KONSOLEN-QUELLEN-20261116-R255.json",
+      "bytes": 86309,
+      "sha256": "9977769ea395cebe6cae85c56fc9d48af5458ebefa2de14f83afe7a01bb30738",
+      "gitBlobSha": "00777c9c5a67133f3846951c33dd41a9b52ab33a",
+      "readAt": "2026-11-16T09:17:59Z"
+    },
+    {
+      "file": "SEO-FORTSCHRITT-20261116-R255.json",
+      "path": "dropship/codex-handoff-20261018/SEO-FORTSCHRITT-20261116-R255.json",
+      "bytes": 19681,
+      "sha256": "fbafad6e8d214902e5ad8a145e78797944ddcdc60c044a2fa54029c54a3770c5",
+      "gitBlobSha": "6370ab8ec52734c384c06e6536347a6237735a8d",
+      "readAt": "2026-11-16T09:17:59Z"
+    },
+    {
+      "file": "SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+      "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json",
+      "bytes": 68247,
+      "sha256": "368f482fcdca92cf29c3081c0999796421113740ff4345d3c510420f9a53a8b2",
+      "gitBlobSha": "714d214eeb887a8045b020332f3a96a874036c33",
+      "readAt": "2026-11-16T09:17:59Z"
+    },
+    {
+      "file": "SEO-PRODUKTDETAILS-LIVE-20261116-R255.md",
+      "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-LIVE-20261116-R255.md",
+      "bytes": 9503,
+      "sha256": "8e06fa9c895811dde447e643a0b042684ba96aba8d7e19a538999e3f25f107fb",
+      "gitBlobSha": "4d100dc89b4bb0cd7208db60b5954ccf2c292639",
+      "readAt": "2026-11-16T09:17:59Z"
+    },
+    {
+      "file": "SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json",
+      "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json",
+      "bytes": 14217,
+      "sha256": "2564b7259e3a3323b6f1da2bd24359bcbf3b60bdfd934290d1638cfc3aab8c08",
+      "gitBlobSha": "a41f3e9b3c20689536e7769fee6931bf66728b73",
+      "readAt": "2026-11-16T09:17:59Z"
+    },
+    {
+      "file": "SEO-PRODUKTDETAILS-TEXTE-20261116-R255.json",
+      "path": "dropship/codex-handoff-20261018/SEO-PRODUKTDETAILS-TEXTE-20261116-R255.json",
+      "bytes": 707035,
+      "sha256": "d78f63fbbd8868686465bf88ebc00e7ef5992cdd14753043a7ef3adb9af30e00",
+      "gitBlobSha": "946fedc7a863c8f43b0e78ec561698e626a61814",
+      "readAt": "2026-11-16T09:17:59Z"
+    }
+  ],
+  "scope": "Exactly seven new report artifacts; manifest and five core files excluded.",
+  "publicQaState": "PASS_WITH_LIMITS",
+  "sourceCustomerOrCredentialDataIncluded": false
+}

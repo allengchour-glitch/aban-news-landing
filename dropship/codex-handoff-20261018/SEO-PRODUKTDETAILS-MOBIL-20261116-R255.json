@@ -1,0 +1,505 @@
+{
+  "run": "R255",
+  "status": "PASS_WITH_LIMITS",
+  "publicStatic": {
+    "checkedProducts": 24,
+    "checkedVariants": 73,
+    "passed": true,
+    "source": "root-public-static-validation.json",
+    "allJsonLdOffersMatch": true,
+    "indexingOrRankingProven": false
+  },
+  "publicProductResults": [
+    {
+      "productId": "gid://shopify/Product/15448851743105",
+      "url": "https://luxestyle.ch/products/arcade-xgame-joystick-tv-spielkonsole-095040",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 1,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15496426488193",
+      "url": "https://luxestyle.ch/products/drahtlose-retro-konsole-fur-hdmi-tv-281920",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 3,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448848040321",
+      "url": "https://luxestyle.ch/products/g11-pro-dual-system-tv-retro-konsole-611500",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 3,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448848564609",
+      "url": "https://luxestyle.ch/products/g5-game-box-jingchen-905l-tv-spielekonsole-602700",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 2,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15446268412289",
+      "url": "https://luxestyle.ch/products/handheld-game-tv-spielkonsole-627700",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 6,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448847090049",
+      "url": "https://luxestyle.ch/products/handheld-konsole-hd-dual-player-630400",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 1,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448847417729",
+      "url": "https://luxestyle.ch/products/hd-mini-handheld-konsole-fur-zwei-spieler-609600",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 8,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15446267724161",
+      "url": "https://luxestyle.ch/products/hd-wireless-game-simulator-fur-zwei-spieler-603400",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 2,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448846958977",
+      "url": "https://luxestyle.ch/products/klassische-hd-mini-tv-spielkonsole-318592",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 1,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15510328934785",
+      "url": "https://luxestyle.ch/products/micro-snow-raspberry-display-game-konsole-222080",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 1,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15479484383617",
+      "url": "https://luxestyle.ch/products/mini-fc-8-bit-retro-konsole-a6fcf5",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 1,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448852038017",
+      "url": "https://luxestyle.ch/products/mini-gaming-konsole-mit-handventilator-469952",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 2,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15495082705281",
+      "url": "https://luxestyle.ch/products/mini-tv-spielkonsole-mit-620-games-691840",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 1,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448848007553",
+      "url": "https://luxestyle.ch/products/retro-arcade-gaming-konsole-fur-zuhause-602400",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 6,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448847548801",
+      "url": "https://luxestyle.ch/products/retro-arcade-handheld-konsole-x9-615000",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 1,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448848302465",
+      "url": "https://luxestyle.ch/products/retro-arcade-hd-spielkonsole-600400",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 3,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448849711489",
+      "url": "https://luxestyle.ch/products/retro-super-console-x-cube-058112",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 11,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15495146635649",
+      "url": "https://luxestyle.ch/products/snes-16-bit-mini-replika-a95cf9",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 1,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448846860673",
+      "url": "https://luxestyle.ch/products/split-wireless-hd-heimkonsole-090176",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 4,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15446267265409",
+      "url": "https://luxestyle.ch/products/wiederaufladbares-retro-game-set-mit-2-control-625500",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 3,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15452706341249",
+      "url": "https://luxestyle.ch/products/wireless-mini-game-konsole-136000",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 1,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448847319425",
+      "url": "https://luxestyle.ch/products/x10-pro-tv-retro-arcade-spielkonsole-609900",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 2,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15446267396481",
+      "url": "https://luxestyle.ch/products/x2-blue-4k-wireless-gaming-konsole-602800",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 3,
+      "allVariantOffersPass": true
+    },
+    {
+      "productId": "gid://shopify/Product/15448848597377",
+      "url": "https://luxestyle.ch/products/x2-ultra-hd-wireless-konsole-fur-2-spieler-616400",
+      "checks": {
+        "h1": true,
+        "title": true,
+        "meta": true,
+        "canonical": true,
+        "noNoindex": true,
+        "publicTitle": true,
+        "body": true,
+        "variantIds": true,
+        "variants": true
+      },
+      "variantCount": 6,
+      "allVariantOffersPass": true
+    }
+  ],
+  "viewportSummary": {
+    "products": 24,
+    "viewports": [
+      360,
+      390
+    ],
+    "checksTotal": 48,
+    "allFinalOverflowChecksPass": true,
+    "postFixEvidence": [
+      "public-after/group34/15510328934785-afterfix-qa.json",
+      "public-after/group56/post-fix-15452706341249/post-fix-proof.json"
+    ],
+    "earlierOverflowEvidenceRetained": true
+  },
+  "variantSelection": {
+    "confirmedRepresentativeChecks": 7,
+    "unverifiedTimeoutProbes": 2,
+    "timeoutInterpretation": "Two probes timed out before a selection occurred; they remain unverified, not failed. Root reports representative successful selections for G11/G5, three group 3/4 products, and two Cube post-tests. No picker claim for single/default products.",
+    "noCartOrCheckout": true
+  },
+  "nativeFinding": {
+    "status": "PASS_WITH_FINDINGS",
+    "warning": "For product 15446267724161, all variant labels are in the description body; two are not in the HTML table. This is a style warning, not a variant data mismatch."
+  },
+  "rootVisualReview": {
+    "screenshotsReviewed": 5,
+    "productIds": [
+      "15448849711489",
+      "15448847417729",
+      "15510328934785",
+      "15452706341249"
+    ],
+    "pathsRemainInSourceFolders": true
+  },
+  "limits": [
+    "No indexing, ranking, sales or rights conclusion.",
+    "Supplier details remain open.",
+    "Two selection probes remain unverified."
+  ],
+  "groupProofs": [
+    {
+      "file": "public-after/group12/evidence.json",
+      "products": 8,
+      "status": "pass",
+      "mobileNoOverflow": true
+    },
+    {
+      "file": "public-after/group34/public-after-qa.json",
+      "products": 8,
+      "status": "pass",
+      "allResultsPass": true,
+      "mobileFix": {
+        "resolved": true,
+        "productId": "15510328934785",
+        "postFixWidths": {
+          "360": {
+            "documentScrollWidth": 360,
+            "overflow": false
+          },
+          "390": {
+            "documentScrollWidth": 390,
+            "overflow": false
+          }
+        },
+        "priorFindingPreserved": true,
+        "evidenceFile": "15510328934785-afterfix-qa.json"
+      }
+    },
+    {
+      "file": "public-after/group56/review-corrected.json",
+      "products": 8,
+      "http200": true,
+      "variantPriceIdMatchAfterPriceNormalization": true,
+      "postFix": true
+    }
+  ],
+  "evidenceFiles": [
+    "root-public-static-validation.json",
+    "public-after/group12/evidence.json",
+    "public-after/group34/public-after-qa.json",
+    "public-after/group56/review-corrected.json",
+    "public-after/group56/post-fix-15452706341249/post-fix-proof.json"
+  ]
+}

@@ -1,3 +1,17 @@
+# R255 – 36/36 Konsolenseiten redaktionell bearbeitet – 16.11.2026
+
+24 weitere bestehende Seiten sind live überarbeitet: ausführliche Produktdetails und Auswahlhilfe, Lieferumfang, Spiele-/Kartenfragen, individuelle Produkt-/SEO-Titel und Meta-Beschreibungen. 24 erste Änderungen plus vier Nacharbeiten an Beschreibungstabellen ergeben 28 bestätigte Schreibaufrufe. Preise, 73 Varianten, Optionswerte, 168 Medien und alle abgefragten Schutzfelder blieben erhalten.
+
+**36/36 redaktionell bearbeitet = 100% ausschliesslich dieser festen Arbeitsliste.** 32 Zeilen behalten offene Produktfragen (24 R255 plus acht historische); vier ältere R242-Zeilen sind live-verifiziert. Lieferantenfragen und Medienrechte gelten dadurch nicht als geschlossen. Bei sechs R255-Produkten ist die Quellenbindung nur auf Grundproduktebene belegt.
+
+Öffentliche Prüfung für 24 Seiten/73 Varianten sowie 48 mobile Ansichten bei 360/390px bestanden. Zwei gefundene Tabellenüberbreiten sind korrigiert. Sieben repräsentative Auswahlprüfungen belegt; zwei zusätzliche Klickproben timeouteten vor einer Auswahl und bleiben ungeprüft. Ein Stilhinweis betrifft zwei Auswahlwerte im Text statt einer Tabelle. Keine Google-Indexierung, Ranking-, Merchant- oder Verkaufswirkung daraus ableiten.
+
+[Bericht](SEO-PRODUKTDETAILS-LIVE-20261116-R255.md) · [Belege](SEO-PRODUKTDETAILS-BELEGE-20261116-R255.json) · [Texte/native Daten](SEO-PRODUKTDETAILS-TEXTE-20261116-R255.json) · [Quellen](KONSOLEN-QUELLEN-20261116-R255.json) · [Mobil/SEO-QA](SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json) · [36er-Liste](KONSOLEN-DETAILARBEIT-20261116-R255.csv).
+
+24 stabile Aufgaben und die früheren Tagesbelege erhalten. Quellenfragen mit neuen Primärbelegen weiterbearbeiten; keine erfundenen Spiele-, Zubehör-, Leistungs- oder Lieferzusagen. Keine neue Tagesmessung ohne Anlass. Claude-Empfang bleibt unbekannt. **Memory am Schluss des Nutzerberichts verlinken.**
+
+---
+
 # R254 – Zwei detaillierte Konsolenseiten live, Teilfortschritt 33% – 16.11.2026
 
 Auf den direkten SEO-/Detailtextauftrag zwei weitere bestehende Seiten live überarbeitet: HDMI-Konsole 15496982397313 und AV-Konsole 15448846926209. Je ca. 378/405 Wörter mit technischen Tabellen, Anschluss-/Auswahlhilfe, Lieferumfang, Spiele-/Kartenfragen und FAQ; eigene Produkt-/SEO-Titel und vollständige Meta-Beschreibungen. Zwei Mutationen; Preise, Status, Tags, Inventar, Medien und Varianten erhalten.

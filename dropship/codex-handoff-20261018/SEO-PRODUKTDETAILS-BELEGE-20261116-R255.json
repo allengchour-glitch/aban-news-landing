@@ -1,0 +1,1969 @@
+{
+  "run": "R255",
+  "atUtc": "2026-11-16T09:14:45Z",
+  "scope": "24 existing active console product pages, with 28 confirmed product copy/SEO mutation calls; four final body polish calls.",
+  "shopifyWrites": {
+    "expectedProducts": 24,
+    "confirmedProducts": 24,
+    "initialCalls": 24,
+    "polishCalls": 4,
+    "totalSuccessfulCalls": 28,
+    "initialGraphqlUserErrors": [],
+    "bodyAmendmentsToolError": false,
+    "all28ReadbacksConfirmed": true,
+    "protectedFieldsChecked": true,
+    "checkpointPhase": "CONFIRMED",
+    "amendmentReadbackTimesUTC": [
+      "08:51:30Z",
+      "08:51:35Z",
+      "08:58:03Z",
+      "08:58:06Z"
+    ]
+  },
+  "listProgress": {
+    "worklistRows": 36,
+    "uniqueProductIds": 36,
+    "beforeEditoriallyWorked": 12,
+    "afterEditoriallyWorked": 36,
+    "percent": 100.0,
+    "r255ProductsWithSourceDetailsOpen": 24,
+    "trackedRowsWithOpenQuestionStatus": 32,
+    "priorOpenStatusRows": 8,
+    "olderR242LiveVerifiedRows": 4,
+    "interpretation": "All 36 tracked pages have editorial work. Source questions and image rights remain unresolved on applicable records."
+  },
+  "publicQa": {
+    "state": "PASS_WITH_LIMITS",
+    "products": 24,
+    "variants": 73,
+    "jsonLdOffersPass": true,
+    "viewportChecks": 48,
+    "viewports": [
+      360,
+      390
+    ],
+    "allFinalOverflowChecksPass": true,
+    "representativeSelectionChecks": 7,
+    "unverifiedTimeoutProbes": 2,
+    "styleWarnings": 1
+  },
+  "notClaimed": {
+    "entireShopSeoPercent": true,
+    "merchantCoverageOrZeroErrors": true,
+    "GoogleIndexingOrRankChange": true,
+    "salesImpact": true,
+    "supplierQuestionClosure": true,
+    "imageRightsClearance": true
+  },
+  "nativeProof": {
+    "run": "R255",
+    "atUtc": "2026-11-16T08:41:23.003007+00:00",
+    "state": "24_NATIVE_WRITES_CONFIRMED",
+    "confirmed": [
+      {
+        "productId": "gid://shopify/Product/15448851743105",
+        "group": 1,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Arcade Xgame Joystick-Konsole für TV-Spielrunden",
+        "updatedAt": "2026-11-16T08:37:50Z",
+        "mutationUpdatedAt": "2026-11-16T08:37:50Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15496426488193",
+        "group": 1,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Drahtlose Retro-TV-Konsole mit HDMI-Anschluss",
+        "updatedAt": "2026-11-16T08:37:53Z",
+        "mutationUpdatedAt": "2026-11-16T08:37:53Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848040321",
+        "group": 1,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "G11 PRO TV-Spielbox mit 64G-, 128G- und 256G-Ausführung",
+        "updatedAt": "2026-11-16T08:37:56Z",
+        "mutationUpdatedAt": "2026-11-16T08:37:56Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848564609",
+        "group": 1,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "G5 Game BOX Jingchen 905L mit HDMI-Anschluss",
+        "updatedAt": "2026-11-16T08:38:00Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:00Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15446268412289",
+        "group": 2,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Handheld-Spielkonsole mit Display und AV-TV-Ausgang",
+        "updatedAt": "2026-11-16T08:38:03Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:03Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448847090049",
+        "group": 2,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "SF3500 Handheld-Konsole mit MP4-Videoplayer",
+        "updatedAt": "2026-11-16T08:38:07Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:07Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448847417729",
+        "group": 2,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Mini-Handheld-Spielkonsole im Retro-Stil",
+        "updatedAt": "2026-11-16T08:38:10Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:10Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15446267724161",
+        "group": 2,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "HDMI-Game-Stick mit zwei kabellosen Controllern",
+        "updatedAt": "2026-11-16T08:38:14Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:14Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448846958977",
+        "group": 3,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "SFC HD 821 TV-Spielkonsole in Grau",
+        "updatedAt": "2026-11-16T08:38:17Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:17Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15510328934785",
+        "group": 3,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Raspberry Pi 3 Model B+ Einplatinencomputer",
+        "updatedAt": "2026-11-16T08:38:21Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:21Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15479484383617",
+        "group": 3,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "8-Bit-Mini-FC-TV-Konsole in Rot-Weiss",
+        "updatedAt": "2026-11-16T08:38:24Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:24Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448852038017",
+        "group": 3,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Handheld-Konsole mit Ventilator und 2,8-Zoll-Display",
+        "updatedAt": "2026-11-16T08:38:28Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:28Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15495082705281",
+        "group": 4,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Mini-TV-Spielkonsole mit Funksteuerung",
+        "updatedAt": "2026-11-16T08:38:31Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:31Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848007553",
+        "group": 4,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "M15 Retro-Arcade-Konsole mit HDMI",
+        "updatedAt": "2026-11-16T08:38:34Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:34Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448847548801",
+        "group": 4,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "X9 Handheld-Spielkonsole mit MP4-Player",
+        "updatedAt": "2026-11-16T08:38:37Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:37Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848302465",
+        "group": 4,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "M8 HDMI-Retro-Konsole mit drei Ausführungen",
+        "updatedAt": "2026-11-16T08:38:41Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:41Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448849711489",
+        "group": 5,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Retro-Konsole X Cube mit HDMI und mehreren Anschlüssen",
+        "updatedAt": "2026-11-16T08:38:44Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:44Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15495146635649",
+        "group": 5,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Mini-TV-Konsole SUPER 21 mit HDMI und zwei Controllern",
+        "updatedAt": "2026-11-16T08:38:48Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:48Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448846860673",
+        "group": 5,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "HDMI-Heimkonsole mit vier Farb-Ausführungen und zwei Controllern",
+        "updatedAt": "2026-11-16T08:38:51Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:51Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15446267265409",
+        "group": 5,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Retro-HDMI-Game-Set mit zwei Controllern und drei Ausführungen",
+        "updatedAt": "2026-11-16T08:38:55Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:55Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15452706341249",
+        "group": 6,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "Wireless Mini-Game-Konsole mit USB-Schnittstelle",
+        "updatedAt": "2026-11-16T08:38:58Z",
+        "mutationUpdatedAt": "2026-11-16T08:38:58Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448847319425",
+        "group": 6,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "X10 PRO TV-Spielkonsole mit HDMI",
+        "updatedAt": "2026-11-16T08:39:02Z",
+        "mutationUpdatedAt": "2026-11-16T08:39:02Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15446267396481",
+        "group": 6,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "X2 Blue Spielkonsole mit HDMI-Anschluss",
+        "updatedAt": "2026-11-16T08:39:05Z",
+        "mutationUpdatedAt": "2026-11-16T08:39:05Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848597377",
+        "group": 6,
+        "checks": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        },
+        "title": "X2 Ultra Wireless-Konsole für zwei Spieler",
+        "updatedAt": "2026-11-16T08:39:09Z",
+        "mutationUpdatedAt": "2026-11-16T08:39:09Z",
+        "changedFields": [
+          "title",
+          "updatedAt",
+          "descriptionHtml",
+          "seo"
+        ],
+        "prewriteMetadataOnlyDrift": false,
+        "userErrors": [],
+        "ownWriteConfirmed": true
+      }
+    ],
+    "files": [
+      {
+        "file": "final-inputs.json",
+        "sha256": "9ae0bd72a4c3f93d1d4e86f60473d4cdecb02d07a71f0a0c3090b1f38b6833ef",
+        "bytes": 103352
+      },
+      {
+        "file": "final-diff-before-write.patch",
+        "sha256": "83352c92d15bc0e751fbff0d940cf4c78aaae96a04f3fe5056023e14ec9bc687",
+        "bytes": 125469
+      },
+      {
+        "file": "write-checkpoint.json",
+        "sha256": "e9c4797083d1dda3e637d33964c092cb57208708945403092c23a25556d4ed68",
+        "bytes": 14174
+      },
+      {
+        "file": "guard-counterexample.json",
+        "sha256": "0fc3b80c354cbfc9896503006418f7239f750c1377e4732c32211f794e3d2d8c",
+        "bytes": 129
+      }
+    ],
+    "otherPlatformWrites": 0,
+    "publicQaStateAtInitialNativeSnapshot": "PENDING",
+    "snapshotScope": "Historical initial 24 native writes at the recorded timestamp; excludes four later body amendments and later public QA.",
+    "currentFinalPublicQaProof": "SEO-PRODUKTDETAILS-MOBIL-20261116-R255.json"
+  },
+  "finalNativeValidation": {
+    "run": "R255",
+    "type": "offline-native-write-validation",
+    "scope": "24 saved native before/after records and saved final inputs/checkpoint only; no external reads or writes. Does not assert source questions complete or Google indexing.",
+    "status": "PASS_WITH_FINDINGS",
+    "totals": {
+      "products": 24,
+      "variantsBefore": 73,
+      "variantsAfter": 73,
+      "optionIdsBefore": 24,
+      "optionIdsAfter": 24,
+      "optionValueIdsBefore": 73,
+      "optionValueIdsAfter": 73,
+      "mediaIdsBefore": 168,
+      "mediaIdsAfter": 168
+    },
+    "protectedCountsMatchExpected": true,
+    "aggregateChecks": {
+      "all24OnlyTitleBodySEOAndUpdatedAtActuallyChanged": true,
+      "allProductProtectedFieldsUnchanged": true,
+      "all73VariantIdsAndFullVariantPayloadsUnchanged": true,
+      "all24OptionIdsAnd73OptionValueIdsAndLabelsUnchanged": true,
+      "all168ProductMediaIdsAndOrderUnchanged": true,
+      "allTitlesBodiesAndBothSEOFieldsMatchSavedFinalInputs": true,
+      "allMetaDescriptions100to170AndSEOTitlesDistinct": true,
+      "snesBrandReplacedByGenericSuper21": true,
+      "noForbiddenInternalTermsPriceBodyOrSourceBoilerplate": true,
+      "allMultivariantOptionValuesPresentInBody": true,
+      "guardCounterexamplePassesWithoutLiveRecordChange": true
+    },
+    "writeAudit": {
+      "initialProductWrites": 24,
+      "bodyOnlyAmendments": 4,
+      "uniqueProducts": 24,
+      "totalSuccessfulWriteCalls": 28,
+      "allAmendmentsOnlyBodyAndUpdatedAt": true,
+      "amendmentTimestampEvidence": {
+        "exactTimestampRecordedInCheckpoint": 4,
+        "twoOtherAmendmentsVerifiedByChangedFieldsAndBeforeAfterReadback": 0
+      },
+      "records": {
+        "gid://shopify/Product/15446268412289": {
+          "productId": "gid://shopify/Product/15446268412289",
+          "purpose": "Readable exact variant/color table in place of dense six/eight-item paragraph; factual limits and selection labels preserved.",
+          "checks": {
+            "body": true,
+            "allOtherBusinessFields": true
+          },
+          "ownWriteConfirmed": true,
+          "changedFields": [
+            "descriptionHtml",
+            "updatedAt"
+          ],
+          "updatedAt": "2026-11-16T08:51:30Z",
+          "timestampEvidence": "Saved fresh native readback r255PolishAfter, no new API query."
+        },
+        "gid://shopify/Product/15448847417729": {
+          "productId": "gid://shopify/Product/15448847417729",
+          "purpose": "Readable exact variant/color table in place of dense six/eight-item paragraph; factual limits and selection labels preserved.",
+          "checks": {
+            "body": true,
+            "allOtherBusinessFields": true
+          },
+          "ownWriteConfirmed": true,
+          "changedFields": [
+            "descriptionHtml",
+            "updatedAt"
+          ],
+          "updatedAt": "2026-11-16T08:51:35Z",
+          "timestampEvidence": "Saved fresh native readback r255PolishAfter, no new API query."
+        },
+        "gid://shopify/Product/15510328934785": {
+          "productId": "gid://shopify/Product/15510328934785",
+          "purpose": "Fix confirmed 360/390px table overflow using short vertical rows, without changing product selection or protected fields.",
+          "checks": {
+            "body": true,
+            "allOtherBusinessFields": true
+          },
+          "ownWriteConfirmed": true,
+          "changedFields": [
+            "descriptionHtml",
+            "updatedAt"
+          ],
+          "updatedAt": "2026-11-16T08:58:03Z"
+        },
+        "gid://shopify/Product/15452706341249": {
+          "productId": "gid://shopify/Product/15452706341249",
+          "purpose": "Fix confirmed 360/390px table overflow using short vertical rows, without changing product selection or protected fields.",
+          "checks": {
+            "body": true,
+            "allOtherBusinessFields": true
+          },
+          "ownWriteConfirmed": true,
+          "changedFields": [
+            "descriptionHtml",
+            "updatedAt"
+          ],
+          "updatedAt": "2026-11-16T08:58:06Z"
+        }
+      }
+    },
+    "variantGetter10_11Precision": {
+      "productsAt10Variants": 0,
+      "productsAt11Variants": 1,
+      "observedRecords": [
+        {
+          "productId": "gid://shopify/Product/15448849711489",
+          "variantCount": 11,
+          "allVariantLabelsPresentInBody": true,
+          "allOptionValuesPresentInBody": true,
+          "allLabelsInTable": true
+        }
+      ]
+    },
+    "guardCounterexample": {
+      "positiveAllowedCopyChange": true,
+      "negativeUnexpectedVariantPriceDetected": true,
+      "realRecordsChangedForProbe": false
+    },
+    "storeIdentitySavedInputs": {
+      "records": 24,
+      "allLuxeStyleCHF": true
+    },
+    "products": [
+      {
+        "productId": "gid://shopify/Product/15448851743105",
+        "group": 1,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 1,
+        "optionCount": 1,
+        "optionValueCount": 1,
+        "productMediaCount": 7,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 147,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15496426488193",
+        "group": 1,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 3,
+        "optionCount": 1,
+        "optionValueCount": 3,
+        "productMediaCount": 8,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 153,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848040321",
+        "group": 1,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 3,
+        "optionCount": 1,
+        "optionValueCount": 3,
+        "productMediaCount": 6,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 145,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848564609",
+        "group": 1,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 2,
+        "optionCount": 1,
+        "optionValueCount": 2,
+        "productMediaCount": 5,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 148,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15446268412289",
+        "group": 2,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 6,
+        "optionCount": 1,
+        "optionValueCount": 6,
+        "productMediaCount": 11,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 136,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "amendment_readback_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448847090049",
+        "group": 2,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 1,
+        "optionCount": 1,
+        "optionValueCount": 1,
+        "productMediaCount": 5,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 144,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448847417729",
+        "group": 2,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 8,
+        "optionCount": 1,
+        "optionValueCount": 8,
+        "productMediaCount": 6,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 142,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "amendment_readback_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15446267724161",
+        "group": 2,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 2,
+        "optionCount": 1,
+        "optionValueCount": 2,
+        "productMediaCount": 9,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 133,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": false,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [
+          "Game Machine 32g",
+          "64g Game Machine"
+        ],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448846958977",
+        "group": 3,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 1,
+        "optionCount": 1,
+        "optionValueCount": 1,
+        "productMediaCount": 5,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 148,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15510328934785",
+        "group": 3,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 1,
+        "optionCount": 1,
+        "optionValueCount": 1,
+        "productMediaCount": 6,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 147,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "amendment_readback_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15479484383617",
+        "group": 3,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 1,
+        "optionCount": 1,
+        "optionValueCount": 1,
+        "productMediaCount": 5,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 147,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448852038017",
+        "group": 3,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 2,
+        "optionCount": 1,
+        "optionValueCount": 2,
+        "productMediaCount": 5,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 145,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15495082705281",
+        "group": 4,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 1,
+        "optionCount": 1,
+        "optionValueCount": 1,
+        "productMediaCount": 5,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 153,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848007553",
+        "group": 4,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 6,
+        "optionCount": 1,
+        "optionValueCount": 6,
+        "productMediaCount": 7,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 131,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448847548801",
+        "group": 4,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 1,
+        "optionCount": 1,
+        "optionValueCount": 1,
+        "productMediaCount": 6,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 143,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848302465",
+        "group": 4,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 3,
+        "optionCount": 1,
+        "optionValueCount": 3,
+        "productMediaCount": 8,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 159,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448849711489",
+        "group": 5,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 11,
+        "optionCount": 1,
+        "optionValueCount": 11,
+        "productMediaCount": 8,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 147,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15495146635649",
+        "group": 5,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 1,
+        "optionCount": 1,
+        "optionValueCount": 1,
+        "productMediaCount": 10,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 155,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448846860673",
+        "group": 5,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 4,
+        "optionCount": 1,
+        "optionValueCount": 4,
+        "productMediaCount": 6,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 146,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15446267265409",
+        "group": 5,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 3,
+        "optionCount": 1,
+        "optionValueCount": 3,
+        "productMediaCount": 11,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 146,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15452706341249",
+        "group": 6,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 1,
+        "optionCount": 1,
+        "optionValueCount": 1,
+        "productMediaCount": 6,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 142,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "amendment_readback_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448847319425",
+        "group": 6,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 2,
+        "optionCount": 1,
+        "optionValueCount": 2,
+        "productMediaCount": 7,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 144,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15446267396481",
+        "group": 6,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 3,
+        "optionCount": 1,
+        "optionValueCount": 3,
+        "productMediaCount": 8,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 144,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      },
+      {
+        "productId": "gid://shopify/Product/15448848597377",
+        "group": 6,
+        "changedTopLevelFields": [
+          "descriptionHtml",
+          "seo",
+          "title",
+          "updatedAt"
+        ],
+        "protectedProductFieldsUnchanged": true,
+        "variantCount": 6,
+        "optionCount": 1,
+        "optionValueCount": 6,
+        "productMediaCount": 8,
+        "variantIdsSame": true,
+        "variantPayloadSame": true,
+        "optionsAndValuesSame": true,
+        "mediaIdsAndOrderSame": true,
+        "titleMatchesInput": true,
+        "bodyVisibleTextMatchesInputAfterWhitespaceNormalization": true,
+        "seoMatchesInput": true,
+        "seoDescriptionLength": 138,
+        "seoTitleDistinct": true,
+        "multivariantLabelsInTables": true,
+        "allCurrentVariantTitlesPresentInBody": true,
+        "allOptionValuesPresentInBody": true,
+        "missingTableLabels": [],
+        "changedAtConfirmed": true,
+        "updatedAtEvidence": "initial_mutation_timestamp",
+        "initialWriteConfirmed": true,
+        "bodyAmendmentConfirmed": true
+      }
+    ],
+    "findings": [
+      {
+        "productId": "gid://shopify/Product/15446267724161",
+        "severity": "WARN",
+        "code": "variant_labels_visible_but_not_in_html_table",
+        "missingFromTable": [
+          "Game Machine 32g",
+          "64g Game Machine"
+        ],
+        "allCurrentLabelsPresentInBody": true,
+        "bodyContainsFullVariantTitles": true
+      }
+    ],
+    "limits": [
+      "Saved-data validation only; not a fresh Shopify read.",
+      "Does not claim all supplier/source questions are resolved.",
+      "Does not claim Google has indexed or reprocessed the changes."
+    ]
+  },
+  "worklistValidation": {
+    "run": "R255",
+    "created_for": "local worklist synchronization only",
+    "source_worklist": "/dev/shm/luxestyle-review/r254/worklist-after.csv",
+    "final_inputs": "/dev/shm/luxestyle-review/r255/final-inputs.json",
+    "native_after_directory": "/dev/shm/luxestyle-review/r255/native-after",
+    "native_guard_proof": "/dev/shm/luxestyle-review/r255/native-phase-proof.json",
+    "write_checkpoint": "/dev/shm/luxestyle-review/r255/write-checkpoint.json",
+    "output_csv": "/dev/shm/luxestyle-review/r255/worklist-after.csv",
+    "rows_before": 36,
+    "rows_after": 36,
+    "unique_product_ids_before": 36,
+    "unique_product_ids_after": 36,
+    "same_36_product_ids_and_order": true,
+    "same_all_36_urls": true,
+    "original_columns_preserved": [
+      "product_id",
+      "title",
+      "url",
+      "copy_state",
+      "previous_title_R252",
+      "previous_copy_state_R252",
+      "last_review_run_R252",
+      "previous_title_R254",
+      "previous_copy_state_R254",
+      "last_review_run_R254"
+    ],
+    "added_columns": [
+      "previous_title_R255",
+      "previous_copy_state_R255",
+      "last_review_run_R255"
+    ],
+    "legacy_column_differences_outside_intended_title_and_state": [],
+    "prior_12_rows_preserved": true,
+    "newly_confirmed_R255_writes": 24,
+    "native_title_source_matches": 24,
+    "native_title_source_mismatches": 0,
+    "target_updates": [
+      {
+        "product_id": "gid://shopify/Product/15448851743105",
+        "previous_title": "Arcade Xgame Joystick TV-Spielkonsole",
+        "title": "Arcade Xgame Joystick-Konsole für TV-Spielrunden",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15496426488193",
+        "previous_title": "Drahtlose Retro-Konsole für HDMI TV",
+        "title": "Drahtlose Retro-TV-Konsole mit HDMI-Anschluss",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848040321",
+        "previous_title": "G11 PRO Dual System TV & Retro-Konsole",
+        "title": "G11 PRO TV-Spielbox mit 64G-, 128G- und 256G-Ausführung",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848564609",
+        "previous_title": "G5 Game BOX Jingchen 905L TV-Spielekonsole",
+        "title": "G5 Game BOX Jingchen 905L mit HDMI-Anschluss",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15446268412289",
+        "previous_title": "Handheld Game TV Spielkonsole",
+        "title": "Handheld-Spielkonsole mit Display und AV-TV-Ausgang",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448847090049",
+        "previous_title": "Handheld-Konsole HD Dual-Player",
+        "title": "SF3500 Handheld-Konsole mit MP4-Videoplayer",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448847417729",
+        "previous_title": "HD Mini-Handheld-Konsole für zwei Spieler",
+        "title": "Mini-Handheld-Spielkonsole im Retro-Stil",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15446267724161",
+        "previous_title": "HD Wireless Game Simulator für zwei Spieler",
+        "title": "HDMI-Game-Stick mit zwei kabellosen Controllern",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448846958977",
+        "previous_title": "Klassische HD Mini TV-Spielkonsole",
+        "title": "SFC HD 821 TV-Spielkonsole in Grau",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15510328934785",
+        "previous_title": "Micro Snow Raspberry Display Game Konsole",
+        "title": "Raspberry Pi 3 Model B+ Einplatinencomputer",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15479484383617",
+        "previous_title": "Mini FC 8-Bit Retro-Konsole",
+        "title": "8-Bit-Mini-FC-TV-Konsole in Rot-Weiss",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448852038017",
+        "previous_title": "Mini Gaming-Konsole mit Handventilator",
+        "title": "Handheld-Konsole mit Ventilator und 2,8-Zoll-Display",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15495082705281",
+        "previous_title": "Mini TV-Spielkonsole mit 620 Games",
+        "title": "Mini-TV-Spielkonsole mit Funksteuerung",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848007553",
+        "previous_title": "Retro Arcade Gaming Konsole für Zuhause",
+        "title": "M15 Retro-Arcade-Konsole mit HDMI",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448847548801",
+        "previous_title": "Retro Arcade Handheld-Konsole X9",
+        "title": "X9 Handheld-Spielkonsole mit MP4-Player",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848302465",
+        "previous_title": "Retro Arcade HD Spielkonsole",
+        "title": "M8 HDMI-Retro-Konsole mit drei Ausführungen",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448849711489",
+        "previous_title": "Retro Super Console X Cube",
+        "title": "Retro-Konsole X Cube mit HDMI und mehreren Anschlüssen",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15495146635649",
+        "previous_title": "SNES 16 Bit Mini-Replika",
+        "title": "Mini-TV-Konsole SUPER 21 mit HDMI und zwei Controllern",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448846860673",
+        "previous_title": "Split Wireless HD-Heimkonsole",
+        "title": "HDMI-Heimkonsole mit vier Farb-Ausführungen und zwei Controllern",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15446267265409",
+        "previous_title": "Wiederaufladbares Retro-Game-Set mit 2 Controllern",
+        "title": "Retro-HDMI-Game-Set mit zwei Controllern und drei Ausführungen",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15452706341249",
+        "previous_title": "Wireless Mini-Game-Konsole",
+        "title": "Wireless Mini-Game-Konsole mit USB-Schnittstelle",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448847319425",
+        "previous_title": "X10 PRO TV Retro Arcade Spielkonsole",
+        "title": "X10 PRO TV-Spielkonsole mit HDMI",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15446267396481",
+        "previous_title": "X2 Blue 4K Wireless Gaming Konsole",
+        "title": "X2 Blue Spielkonsole mit HDMI-Anschluss",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848597377",
+        "previous_title": "X2 Ultra HD Wireless Konsole für 2 Spieler",
+        "title": "X2 Ultra Wireless-Konsole für zwei Spieler",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      }
+    ],
+    "native_guard_checks_all_true": true,
+    "checkpoint": {
+      "phase": "CONFIRMED",
+      "expected": 24,
+      "confirmed": 24,
+      "unknown": 0,
+      "blocked": 0
+    },
+    "copy_state_counts": {
+      "COPY_SELECTION_LIVE_R252_GAMES_CARD_CONTROLLER_SCOPE_OPEN": 2,
+      "COPY_SEO_LIVE_R254_SOURCE_DETAILS_OPEN": 2,
+      "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN": 24,
+      "COPY_SELECTION_LIVE_R245_COLOUR_GAMES_CHARGING_CONFIRMATION_OPEN": 1,
+      "R242_COPY_AND_SEO_LIVE_VERIFIED": 4,
+      "R249_COPY_LIVE_GAME_CONTENT_OPEN": 1,
+      "R249_COPY_LIVE_GAME_AND_CARD_CONTENT_OPEN": 1,
+      "COPY_SELECTION_LIVE_R245_MODEL_GAME_LIST_CONFIRMATION_OPEN": 1
+    },
+    "editorially_worked_total": 36,
+    "editorially_worked_percent": 100.0,
+    "SOURCE_AND_COPY_REVIEW_OPEN": 0,
+    "duplicate_check": {
+      "product_id_duplicates": 0,
+      "url_duplicates": 0,
+      "title_duplicates": 0,
+      "result": "PASS: zero duplicate IDs, URLs and titles"
+    },
+    "scope_note": "36/36 editorially tracked does not mean the catalogue is fully source-verified or error-free. R255 titles/copy are live for 24 targets; supplier detail, game count/titles, licensing/rights, connector/compatibility and variant questions remain open where listed in final-inputs.json. No overall shop completion or SEO success is inferred.",
+    "shopify_or_git_writes_by_this_worklist_update": false
+  },
+  "sourceLedger": "KONSOLEN-QUELLEN-20261116-R255.json",
+  "finalInputs": "final-inputs.json",
+  "writeCheckpoint": "write-checkpoint.json",
+  "otherPlatformWrites": 0,
+  "sensitiveRawHeadersOrCredentialsIncluded": false,
+  "nativeValidationStatus": "PASS_WITH_FINDINGS"
+}

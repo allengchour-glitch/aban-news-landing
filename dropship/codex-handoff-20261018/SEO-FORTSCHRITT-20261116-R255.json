@@ -1,0 +1,481 @@
+{
+  "run": "R255",
+  "atUtc": "2026-11-16T09:14:45Z",
+  "scope": "The existing 36-product console editorial worklist only; not the full shop catalogue or all SEO work.",
+  "before": {
+    "editoriallyWorked": 12,
+    "total": 36,
+    "percent": 33.3,
+    "trackedRowsWithOpenQuestionStatus": 32,
+    "priorOpenStatusRows": 8
+  },
+  "after": {
+    "editoriallyWorked": 36,
+    "total": 36,
+    "percent": 100.0,
+    "trackedRowsWithOpenQuestionStatus": 32,
+    "r255ProductsWithSourceDetailsOpen": 24,
+    "priorOpenStatusRows": 8,
+    "olderR242LiveVerifiedRows": 4,
+    "worklistInterpretation": "32 rows carry an OPEN status: 24 new R255 source-detail rows plus 8 historical open rows. Four older R242 rows are marked live-verified; that status does not prove all facts complete.",
+    "exactSourceAndCopyReviewOpenStatus": 0
+  },
+  "confirmedWrites": {
+    "products": 24,
+    "successfulMutationCalls": 28,
+    "initialProductCalls": 24,
+    "bodyPolishCalls": 4
+  },
+  "supplierQuestionsClosed": false,
+  "imageRightsClosed": false,
+  "wholeShopSeoPercent": null,
+  "merchantStatusOrCoverageClaim": null,
+  "indexingOrRankingClaim": null,
+  "salesOrRevenueClaim": null,
+  "validation": {
+    "run": "R255",
+    "created_for": "local worklist synchronization only",
+    "source_worklist": "/dev/shm/luxestyle-review/r254/worklist-after.csv",
+    "final_inputs": "/dev/shm/luxestyle-review/r255/final-inputs.json",
+    "native_after_directory": "/dev/shm/luxestyle-review/r255/native-after",
+    "native_guard_proof": "/dev/shm/luxestyle-review/r255/native-phase-proof.json",
+    "write_checkpoint": "/dev/shm/luxestyle-review/r255/write-checkpoint.json",
+    "output_csv": "/dev/shm/luxestyle-review/r255/worklist-after.csv",
+    "rows_before": 36,
+    "rows_after": 36,
+    "unique_product_ids_before": 36,
+    "unique_product_ids_after": 36,
+    "same_36_product_ids_and_order": true,
+    "same_all_36_urls": true,
+    "original_columns_preserved": [
+      "product_id",
+      "title",
+      "url",
+      "copy_state",
+      "previous_title_R252",
+      "previous_copy_state_R252",
+      "last_review_run_R252",
+      "previous_title_R254",
+      "previous_copy_state_R254",
+      "last_review_run_R254"
+    ],
+    "added_columns": [
+      "previous_title_R255",
+      "previous_copy_state_R255",
+      "last_review_run_R255"
+    ],
+    "legacy_column_differences_outside_intended_title_and_state": [],
+    "prior_12_rows_preserved": true,
+    "newly_confirmed_R255_writes": 24,
+    "native_title_source_matches": 24,
+    "native_title_source_mismatches": 0,
+    "target_updates": [
+      {
+        "product_id": "gid://shopify/Product/15448851743105",
+        "previous_title": "Arcade Xgame Joystick TV-Spielkonsole",
+        "title": "Arcade Xgame Joystick-Konsole für TV-Spielrunden",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15496426488193",
+        "previous_title": "Drahtlose Retro-Konsole für HDMI TV",
+        "title": "Drahtlose Retro-TV-Konsole mit HDMI-Anschluss",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848040321",
+        "previous_title": "G11 PRO Dual System TV & Retro-Konsole",
+        "title": "G11 PRO TV-Spielbox mit 64G-, 128G- und 256G-Ausführung",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848564609",
+        "previous_title": "G5 Game BOX Jingchen 905L TV-Spielekonsole",
+        "title": "G5 Game BOX Jingchen 905L mit HDMI-Anschluss",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15446268412289",
+        "previous_title": "Handheld Game TV Spielkonsole",
+        "title": "Handheld-Spielkonsole mit Display und AV-TV-Ausgang",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448847090049",
+        "previous_title": "Handheld-Konsole HD Dual-Player",
+        "title": "SF3500 Handheld-Konsole mit MP4-Videoplayer",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448847417729",
+        "previous_title": "HD Mini-Handheld-Konsole für zwei Spieler",
+        "title": "Mini-Handheld-Spielkonsole im Retro-Stil",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15446267724161",
+        "previous_title": "HD Wireless Game Simulator für zwei Spieler",
+        "title": "HDMI-Game-Stick mit zwei kabellosen Controllern",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448846958977",
+        "previous_title": "Klassische HD Mini TV-Spielkonsole",
+        "title": "SFC HD 821 TV-Spielkonsole in Grau",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15510328934785",
+        "previous_title": "Micro Snow Raspberry Display Game Konsole",
+        "title": "Raspberry Pi 3 Model B+ Einplatinencomputer",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15479484383617",
+        "previous_title": "Mini FC 8-Bit Retro-Konsole",
+        "title": "8-Bit-Mini-FC-TV-Konsole in Rot-Weiss",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448852038017",
+        "previous_title": "Mini Gaming-Konsole mit Handventilator",
+        "title": "Handheld-Konsole mit Ventilator und 2,8-Zoll-Display",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15495082705281",
+        "previous_title": "Mini TV-Spielkonsole mit 620 Games",
+        "title": "Mini-TV-Spielkonsole mit Funksteuerung",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848007553",
+        "previous_title": "Retro Arcade Gaming Konsole für Zuhause",
+        "title": "M15 Retro-Arcade-Konsole mit HDMI",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448847548801",
+        "previous_title": "Retro Arcade Handheld-Konsole X9",
+        "title": "X9 Handheld-Spielkonsole mit MP4-Player",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848302465",
+        "previous_title": "Retro Arcade HD Spielkonsole",
+        "title": "M8 HDMI-Retro-Konsole mit drei Ausführungen",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448849711489",
+        "previous_title": "Retro Super Console X Cube",
+        "title": "Retro-Konsole X Cube mit HDMI und mehreren Anschlüssen",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15495146635649",
+        "previous_title": "SNES 16 Bit Mini-Replika",
+        "title": "Mini-TV-Konsole SUPER 21 mit HDMI und zwei Controllern",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448846860673",
+        "previous_title": "Split Wireless HD-Heimkonsole",
+        "title": "HDMI-Heimkonsole mit vier Farb-Ausführungen und zwei Controllern",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15446267265409",
+        "previous_title": "Wiederaufladbares Retro-Game-Set mit 2 Controllern",
+        "title": "Retro-HDMI-Game-Set mit zwei Controllern und drei Ausführungen",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15452706341249",
+        "previous_title": "Wireless Mini-Game-Konsole",
+        "title": "Wireless Mini-Game-Konsole mit USB-Schnittstelle",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448847319425",
+        "previous_title": "X10 PRO TV Retro Arcade Spielkonsole",
+        "title": "X10 PRO TV-Spielkonsole mit HDMI",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15446267396481",
+        "previous_title": "X2 Blue 4K Wireless Gaming Konsole",
+        "title": "X2 Blue Spielkonsole mit HDMI-Anschluss",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      },
+      {
+        "product_id": "gid://shopify/Product/15448848597377",
+        "previous_title": "X2 Ultra HD Wireless Konsole für 2 Spieler",
+        "title": "X2 Ultra Wireless-Konsole für zwei Spieler",
+        "title_source": "final-inputs.json input.title matches native-after/<numericID>.json title",
+        "title_matches_final_input_and_native": true,
+        "old_copy_state": "SOURCE_AND_COPY_REVIEW_OPEN",
+        "new_copy_state": "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN",
+        "native_guards": {
+          "title": true,
+          "seo": true,
+          "body": true,
+          "protectedFields": true
+        }
+      }
+    ],
+    "native_guard_checks_all_true": true,
+    "checkpoint": {
+      "phase": "CONFIRMED",
+      "expected": 24,
+      "confirmed": 24,
+      "unknown": 0,
+      "blocked": 0
+    },
+    "copy_state_counts": {
+      "COPY_SELECTION_LIVE_R252_GAMES_CARD_CONTROLLER_SCOPE_OPEN": 2,
+      "COPY_SEO_LIVE_R254_SOURCE_DETAILS_OPEN": 2,
+      "COPY_SEO_LIVE_R255_SOURCE_DETAILS_OPEN": 24,
+      "COPY_SELECTION_LIVE_R245_COLOUR_GAMES_CHARGING_CONFIRMATION_OPEN": 1,
+      "R242_COPY_AND_SEO_LIVE_VERIFIED": 4,
+      "R249_COPY_LIVE_GAME_CONTENT_OPEN": 1,
+      "R249_COPY_LIVE_GAME_AND_CARD_CONTENT_OPEN": 1,
+      "COPY_SELECTION_LIVE_R245_MODEL_GAME_LIST_CONFIRMATION_OPEN": 1
+    },
+    "editorially_worked_total": 36,
+    "editorially_worked_percent": 100.0,
+    "SOURCE_AND_COPY_REVIEW_OPEN": 0,
+    "duplicate_check": {
+      "product_id_duplicates": 0,
+      "url_duplicates": 0,
+      "title_duplicates": 0,
+      "result": "PASS: zero duplicate IDs, URLs and titles"
+    },
+    "scope_note": "36/36 editorially tracked does not mean the catalogue is fully source-verified or error-free. R255 titles/copy are live for 24 targets; supplier detail, game count/titles, licensing/rights, connector/compatibility and variant questions remain open where listed in final-inputs.json. No overall shop completion or SEO success is inferred.",
+    "shopify_or_git_writes_by_this_worklist_update": false
+  },
+  "sourceRegisterSummary": {
+    "products": 24,
+    "groups": 6,
+    "productsWithCJRawSha256": 24,
+    "productsWithShopifySourceSha256": 24,
+    "productsWithUnresolvedMappings": 6,
+    "variantMappings": 73,
+    "unresolvedVariantMappings": 6
+  },
+  "publicQaState": "PASS_WITH_LIMITS",
+  "publicQaSummary": {
+    "checkedProducts": 24,
+    "checkedVariants": 73,
+    "mobileViewportChecks": 48,
+    "allFinalOverflowChecksPass": true,
+    "unverifiedSelectionProbes": 2
+  }
+}

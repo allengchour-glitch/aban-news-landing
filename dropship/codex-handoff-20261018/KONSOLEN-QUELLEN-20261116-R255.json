@@ -1,0 +1,1997 @@
+{
+  "documentType": "source documentation only; not a publication ledger",
+  "createdFrom": "Existing local R255 proposals and source/audit files only; no new API reads or writes.",
+  "privacy": "Supplier prices and raw supplier payloads, credentials, and customer personal data are not reproduced. SHA256 values identify local evidence files only.",
+  "imageInterpretation": "Filename or stem identity is reported only at the recorded level. SHA256 image equality is stated only when explicit comparisons exist. Image rights are unknown unless independently established (none are established here).",
+  "imageCoverageCaveat": "Do not infer all images are exact byte matches. Known incomplete or differing image coverage includes Cube 7/8 shared basenames, rechargeable set with Shopify/CJ count mismatch, and X2 Ultra variant photos with open mappings; see per-product entries.",
+  "products": [
+    {
+      "productId": "gid://shopify/Product/15448851743105",
+      "currentTitle": "Arcade Xgame Joystick TV-Spielkonsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-1/15448851743105/cj-product.json",
+          "sha256": "1a94cc31b52ebaca58961ad2fc77dc3f85b110c07f46c4ffee4c8a2e2513e046"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448851743105.json",
+          "sha256": "919577ba8fd8e4bb27fb2fbcce605ea1e76b5ca301191502f49666cc66bfcb55"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-1/15448851743105/source-evidence.json",
+          "sha256": "e776936d85f8a15146abd89b6e39a4e218266532972f167170e94d7d53408252"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "1408378347163095040",
+        "resolution": "current Shopify SKU to CJ product pid recorded in group evidence; variant-level resolution not in proposal record"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-1408378347163095040",
+          "cjVariantSku": null,
+          "cjVariantKey": null,
+          "status": "parent_only"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-1408378347163095040",
+          "cjVariantSku": null,
+          "cjVariantKey": null,
+          "status": "parent_only"
+        }
+      ],
+      "sourceFacts": [
+        "CJ supplier-description summary: RPG genre; two persons; wireless=WIRED; interface HDMI; material ABS. Pack list: host*1, AV cable*1, HD cable*1, manual*1, power supply*1, game controller*2.",
+        "Source conflict: Shopper image rear shows red/white/yellow AV sockets, while supplier text lists HDMI and an AV cable plus HD cable.",
+        "CJ product SKU: CJZS1191572"
+      ],
+      "openQuestions": [
+        "Confirm HDMI versus AV outputs and cable connector types.",
+        "Confirm adapter voltage.",
+        "No game list/count or game license evidence."
+      ],
+      "imageIdentity": {
+        "reported": "7/7 exact; 7/7 same stem",
+        "byteComparison": "not established by imageMatches field",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 1,
+        "unresolvedVariantMappings": 1
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15496426488193",
+      "currentTitle": "Drahtlose Retro-Konsole für HDMI TV",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-1/15496426488193/cj-product.json",
+          "sha256": "3d4e3f08accef19d69811884c32a60a0ad8f1d757d685cd6ef6358cbddb9f159"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15496426488193.json",
+          "sha256": "a13c71bd88166de8d185ad93193f3b53e1274f85ae957a6b3ca3748d53f54a6d"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-1/15496426488193/source-evidence.json",
+          "sha256": "d4a556b2e96226b578084f0e0c7bec73f56effbcc96c60bd27b13cc1edf1e9b4"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "1366254627955281920",
+        "resolution": "current Shopify SKU to CJ product pid recorded in group evidence; variant-level resolution not in proposal record"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "A",
+          "shopifySKU": "CJYX102453501AZ",
+          "cjVariantSku": "CJYX102453501AZ",
+          "cjVariantKey": "A",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "B",
+          "shopifySKU": "CJYX102453502BY",
+          "cjVariantSku": "CJYX102453502BY",
+          "cjVariantKey": "B",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "C",
+          "shopifySKU": "CJYX102453503CX",
+          "cjVariantSku": "CJYX102453503CX",
+          "cjVariantKey": "C",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ supplier-description summary: Open source system; RAM 32GB; product text lists A:32G, B:64G; double; over age 12; wireless; HDMI; plastic; 30*25*8cm; packing list HDMI TV connector, 2 wireless controllers, power cord, HD adapter cable, manual.",
+        "Source conflict: Source gives RAM 32GB and separate A/B 32G/64G without distinguishing memory type. C is not described in text; C image is an 8K/HDR/5G Game TV Stick graphic with additional unverified free-games claims.",
+        "CJ product SKU: CJYX1024535"
+      ],
+      "openQuestions": [
+        "Clarify 32G/64G meaning, as source has RAM 32GB and A/B values but does not distinguish RAM/storage.",
+        "Define C hardware and technical specs; its image differs from A/B.",
+        "Clarify whether product dimensions or variant dimensions describe device or shipment.",
+        "No game list/count/license."
+      ],
+      "imageIdentity": {
+        "reported": "7/7 exact; 7/7 same stem",
+        "byteComparison": "not established by imageMatches field",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 3,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448848040321",
+      "currentTitle": "G11 PRO Dual System TV & Retro-Konsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-1/15448848040321/cj-product.json",
+          "sha256": "775d897509f41dee128b33f9bf727508f3e94707041bbb3ba3c9f2b42d56605f"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448848040321.json",
+          "sha256": "c0871f55af4e695f3b504951131a362748250e8964d8190df3f2baad9bc0daa8"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-1/15448848040321/source-evidence.json",
+          "sha256": "a2620577709aa17562519bb2ec3ead6cb3b5d682e159819187a850cfbb1c487b"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "2503130616181611500",
+        "resolution": "current Shopify SKU to CJ product pid recorded in group evidence; variant-level resolution not in proposal record"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Balck-64G-EU",
+          "shopifySKU": "CJ-CJZS232608902BY",
+          "cjVariantSku": "CJZS232608902BY",
+          "cjVariantKey": "Balck-64G-EU",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Balck-128G-EU",
+          "shopifySKU": "CJ-CJZS232608906FU",
+          "cjVariantSku": "CJZS232608906FU",
+          "cjVariantKey": "Balck-128G-EU",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Balck-256G-EU",
+          "shopifySKU": "CJ-CJZS232608910JQ",
+          "cjVariantSku": "CJZS232608910JQ",
+          "cjVariantKey": "Balck-256G-EU",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ supplier-description summary: Game box; OS TV version; memory 64/128/256G; two people; interface “HMDI” (source typo); material ABS; pack list: game console*1 set.",
+        "CJ product SKU: CJZS2326089"
+      ],
+      "openQuestions": [
+        "Clarify “Dual System”; source identifies only TV version.",
+        "Confirm HDMI connector; source field spells HMDI.",
+        "Confirm exact set contents and included controllers.",
+        "Clarify 64G/128G/256G meaning and EU plug.",
+        "No game list/count/license; 40000+ image claim unverified."
+      ],
+      "imageIdentity": {
+        "reported": "0/6 exact; 6/6 same stem",
+        "byteComparison": "not established by imageMatches field",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 3,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448848564609",
+      "currentTitle": "G5 Game BOX Jingchen 905L TV-Spielekonsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-1/15448848564609/cj-product.json",
+          "sha256": "d5574b71c7b9235d537d8a355ed7b74cecdfaae84617512faf32506ed1410dce"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448848564609.json",
+          "sha256": "564b1726c0dcfe8194bf875edf34d8bfffeba0fc948be691d993debab8479f12"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-1/15448848564609/source-evidence.json",
+          "sha256": "75ff9a984055e2e4a4eb754fb9760abc11ac1075b58620e0917540d153ba8175"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "2411190926141602700",
+        "resolution": "current Shopify SKU to CJ product pid recorded in group evidence; variant-level resolution not in proposal record"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "64G-EU",
+          "shopifySKU": "CJ-CJYD220082503CX",
+          "cjVariantSku": "CJYD220082503CX",
+          "cjVariantKey": "64G-EU",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "128G-EU",
+          "shopifySKU": "CJ-CJYD220082507GT",
+          "cjVariantSku": "CJYD220082507GT",
+          "cjVariantKey": "128G-EU",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ supplier-description summary: Interface HDMI; material plastic; product size 24*18*7cm. Packing list 1: host*1, two handles, HDMI cable, data cable, manual. Packing list 2: manual, 12V/1A adapter, remote, HDMI cable, gamepad*2, TF Card*1, giftbox. Age over12, e-sports category omitted.",
+        "CJ product SKU: CJYD2200825"
+      ],
+      "openQuestions": [
+        "Reconcile both supplier packing lists, especially adapter, remote, TF card and gift box.",
+        "Clarify 64G/128G meaning and whether both are TF-card capacities.",
+        "Confirm EU plug/voltage.",
+        "No game list/count/license; do not use 4K/dual-system/emulator graphics."
+      ],
+      "imageIdentity": {
+        "reported": "5/5 exact; 5/5 same stem",
+        "byteComparison": "not established by imageMatches field",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 2,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "15446268412289",
+      "currentTitle": "Handheld Game TV Spielkonsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "source/cj-15446268412289.json",
+          "sha256": "11ee7f14c9af422d5ca10ee24af3f219f4ef3b51337dfc91c2805850571d2df0"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/native-15446268412289.json",
+          "sha256": "4a6d422f3896090e3ef193902b31e358d2dfcced056fa428cf84a1c33c12aee5"
+        }
+      ],
+      "lookupResolution": {
+        "type": "variantSku",
+        "value": "CJYD219924901AZ",
+        "pid": "2411180632401627700",
+        "resolution": "CJ-<pid/UUID> maps to pid; CJ-CJ... means remove only the wrapper CJ- and retain the CJ prefix before variantSku. No digits were truncated and no SKU was invented."
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Einzel Monolever, Weiss",
+          "shopifySKU": "CJ-CJYD219924901AZ",
+          "cjVariantSku": "CJYD219924901AZ",
+          "cjVariantKey": "Singles Monolever-White",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Einzel Monolever, Blau",
+          "shopifySKU": "CJ-CJYD219924902BY",
+          "cjVariantSku": "CJYD219924902BY",
+          "cjVariantKey": "Singles Monolever-Blue",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Einzel Monolever, Rot",
+          "shopifySKU": "CJ-CJYD219924903CX",
+          "cjVariantSku": "CJYD219924903CX",
+          "cjVariantKey": "Singles Monolever-Red",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Doppel Doppelgriff, Weiss",
+          "shopifySKU": "CJ-CJYD219924904DW",
+          "cjVariantSku": "CJYD219924904DW",
+          "cjVariantKey": "Double Double Handle-White",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Doppel-Doppelgriff, Blau",
+          "shopifySKU": "CJ-CJYD219924905EV",
+          "cjVariantSku": "CJYD219924905EV",
+          "cjVariantKey": "Double Double Handle-Blue",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Doppel-Doppelgriff, Rot",
+          "shopifySKU": "CJ-CJYD219924906FU",
+          "cjVariantSku": "CJYD219924906FU",
+          "cjVariantKey": "Double Double Handle-Red",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: Handheld Game TV Game Machine",
+        "CJ description excerpt (sanitized): Product information: Additional features: None Interface Type: USB Specification: double Product Size: 158*138 * 58mm Packing list: Instruction manual, game console, charging cable, AV cable Product Image:"
+      ],
+      "openQuestions": [
+        "Bedeutung/Stückzahl der Einzel-/Doppelgriff-Varianten ist in der Packliste nicht erklärt.",
+        "Exakte Displayauflösung, TV-Standards, Stromversorgung, Laufzeit und Netzteil sind nicht belegt.",
+        "Spielezahl, Titelliste und Speicherkarte sind in textueller Packliste nicht bestätigt; Bilder allein klären das nicht.",
+        "Rechte an den sichtbaren Spiele-/Figurenbildern sind unbekannt."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": null,
+        "cjImageCount": 11,
+        "filenameMatch": "all CJ basenames matched",
+        "byteComparison": "not established",
+        "rights": "unknown",
+        "visualNote": "Handheld device with on-device display, TV output marketing graphic, six color/single-double source options; images contain recognizable game characters/titles; rights unknown."
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 6,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "15448847090049",
+      "currentTitle": "Handheld-Konsole HD Dual-Player",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "source/cj-15448847090049.json",
+          "sha256": "451e63b251546aac1d738f9b7f626fd1fed23a87010936dee919d970c72a990e"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/native-15448847090049.json",
+          "sha256": "d655df0e6464e139187653f1c2213e7df8e9d41b1b01268c01500675fbc8d362"
+        }
+      ],
+      "lookupResolution": {
+        "type": "variantSku",
+        "value": null,
+        "pid": "2603260305031630400",
+        "resolution": "CJ-<pid/UUID> maps to pid; CJ-CJ... means remove only the wrapper CJ- and retain the CJ prefix before variantSku. No digits were truncated and no SKU was invented."
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-2603260305031630400",
+          "cjVariantSku": "CJYD280483601AZ",
+          "cjVariantKey": "White-SF3500",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: SF3500 Handheld Game Console HD Dual-Player Battle",
+        "CJ description excerpt (sanitized): Product information: Additional Features: MP4 Video Player Interface Type: USB Number of Users: 2 Product Dimensions: 23.6 x 12.7 x 5 cm Packing list: 1 * Handheld gaming console Product Image: <img src=\"https://oss-cf.cjdropshipping.com/product/2026/03/26/03/61f1c340-4fd3-44a"
+      ],
+      "openQuestions": [
+        "Die Packliste nennt nur ein Handheld, während die Produktdaten zwei Nutzer und das Bild eine kabellose Joystickverbindung nennt; zusätzlicher Controller nicht bestätigt.",
+        "Batterie/Akku, Stromversorgung, Ladezubehör, Spieleumfang und Speicherkarte sind nicht spezifiziert.",
+        "Auflösung/Display ist nur in der Abbildung als 5-inch IPS bezeichnet.",
+        "Kompatibilität und Rechte zu sichtbaren Plattform-/Spielgrafiken unbekannt.",
+        "Die Massangabe in der Produktbeschreibung (23.6 × 12.7 × 5 cm) weicht von der CJ-Variantennorm (238 × 121 × 35 mm) ab; Bezugsgrösse/Gerätemass ist unklar, daher kein Mass im Kundentext."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": null,
+        "cjImageCount": 5,
+        "filenameMatch": "all CJ basenames matched",
+        "byteComparison": "not established",
+        "rights": "unknown",
+        "visualNote": "White handheld with built-in screen and controls; supplier images state 5-inch IPS and MP4/video-player/other platform graphics. No specific compatibility asserted; rights unknown."
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 1,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "15448847417729",
+      "currentTitle": "HD Mini-Handheld-Konsole für zwei Spieler",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "source/cj-15448847417729.json",
+          "sha256": "7564debc2034606c6591c445c930f0250d2f4508a451f2485d0275a4d778a6de"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/native-15448847417729.json",
+          "sha256": "a19b8b847450662638c3979c243da1e6d0a003dfbe98c7dd179c59e31471bbb7"
+        }
+      ],
+      "lookupResolution": {
+        "type": "variantSku",
+        "value": "CJYD271508301AZ",
+        "pid": "2601060727261609600",
+        "resolution": "CJ-<pid/UUID> maps to pid; CJ-CJ... means remove only the wrapper CJ- and retain the CJ prefix before variantSku. No digits were truncated and no SKU was invented."
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Einzel, Rot / Blau",
+          "shopifySKU": "CJ-CJYD271508301AZ",
+          "cjVariantSku": "CJYD271508301AZ",
+          "cjVariantKey": "Singles-Red And Blue",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Einzel, Rot / Weiss",
+          "shopifySKU": "CJ-CJYD271508302BY",
+          "cjVariantSku": "CJYD271508302BY",
+          "cjVariantKey": "Singles-Red And White",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Einzel, Blau / Gelb",
+          "shopifySKU": "CJ-CJYD271508303CX",
+          "cjVariantSku": "CJYD271508303CX",
+          "cjVariantKey": "Singles-Blue And Yellow",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Einzel, Blau / Schwarz",
+          "shopifySKU": "CJ-CJYD271508304DW",
+          "cjVariantSku": "CJYD271508304DW",
+          "cjVariantKey": "Singles-Blue And Black",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Doppel, Rot / Blau",
+          "shopifySKU": "CJ-CJYD271508305EV",
+          "cjVariantSku": "CJYD271508305EV",
+          "cjVariantKey": "Doubles-Red And Blue",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Doppel, Rot / Weiss",
+          "shopifySKU": "CJ-CJYD271508306FU",
+          "cjVariantSku": "CJYD271508306FU",
+          "cjVariantKey": "Doubles-Red And White",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Doppel, Blau / Gelb",
+          "shopifySKU": "CJ-CJYD271508307GT",
+          "cjVariantSku": "CJYD271508307GT",
+          "cjVariantKey": "Doubles-Blue And Yellow",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Doppel, Blau / Schwarz",
+          "shopifySKU": "CJ-CJYD271508308HS",
+          "cjVariantSku": "CJYD271508308HS",
+          "cjVariantKey": "Doubles-Blue And Black",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: HD Handheld Dual-player Mini Game Console",
+        "CJ description excerpt (sanitized): Product information: Interface Type: USB Package Contents: Main unit, charging cable, AV cable, manual Suitable Number of Users: Two people Product Dimensions: 18.5 x 9 x 5.2 cm Applicable Age Group: Universal Style: Nostalgic style Packing list: &nbsp;Main unit, charging cable, AV cable, manual <img src=\"https://oss-cf.cjdropshipping.com/product/2"
+      ],
+      "openQuestions": [
+        "Stückzahl der Haupteinheiten bei Shop-Ausführung «Doppel» ist nicht eindeutig; Text-Packliste nennt allgemein eine Haupteinheit.",
+        "Spielezahl, Titel und Speicherkarte sind nicht verlässlich bestätigt; Bildwerbung nicht als bestätigter Umfang übernommen.",
+        "Stromversorgung/Adapter und genaue Auflösung nicht spezifiziert.",
+        "Rechte an sichtbaren Spielebildern unbekannt."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": null,
+        "cjImageCount": 6,
+        "filenameMatch": "all CJ basenames matched",
+        "byteComparison": "not established",
+        "rights": "unknown",
+        "visualNote": "Small handheld bodies shown in four color combinations; one promotional image claims a large game count, not verified by text; rights unknown."
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 8,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "15446267724161",
+      "currentTitle": "HD Wireless Game Simulator für zwei Spieler",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "source/cj-15446267724161.json",
+          "sha256": "80047c40b4bf52b788324ac54b7ae58f10e1d274ee17f23b4697e601399868d0"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/native-15446267724161.json",
+          "sha256": "443fa1684da05fa50583bd5ad1797f7ce4a84218acddcfaea651e06aafb26708"
+        }
+      ],
+      "lookupResolution": {
+        "type": "variantSku",
+        "value": "CJYD217297401AZ",
+        "pid": "2410270545361603400",
+        "resolution": "CJ-<pid/UUID> maps to pid; CJ-CJ... means remove only the wrapper CJ- and retain the CJ prefix before variantSku. No digits were truncated and no SKU was invented."
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Game Machine 32g",
+          "shopifySKU": "CJ-CJYD217297401AZ",
+          "cjVariantSku": "CJYD217297401AZ",
+          "cjVariantKey": "Game Machine 32g",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "64g Game Machine",
+          "shopifySKU": "CJ-CJYD217297402BY",
+          "cjVariantSku": "CJYD217297402BY",
+          "cjVariantKey": "64g Game Machine",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: HD Wireless Doubles Game Machine Simulator",
+        "CJ description excerpt (sanitized): Product information: Interface: HDIM Material: ABS Product Size: 24*18 * 7CM Style: M8PRO rocker handle game machine 32G,M8PRO rocker handle game machine 64g Packing list: Wireless Controller x2 Game Stick x1 USBCablex1 HD Extension Cable x1 Packing Box x1 Manual x1 TF Card x1 Receiver x1&nbsp;&nbsp; Product Image:"
+      ],
+      "openQuestions": [
+        "Bedeutung/Art der Shop-Auswahl «32g» und «64g» ist nicht weiter erklärt.",
+        "Eine TF-Karte ist im CJ-Lieferumfang aufgeführt; Spielezahl, konkrete Titel und Software-/Lizenzstatus sind nicht bestätigt.",
+        "Netzteil und Stromversorgungsdetails nicht spezifiziert.",
+        "Rechte an sichtbaren Spiele-/Plattformgrafiken unbekannt; keine Kompatibilitätsaussage daraus abgeleitet.",
+        "Die Massangabe in der Produktbeschreibung (24 × 18 × 7 cm) weicht von der CJ-Variantennorm (160 × 120 × 110 mm) ab; Bezugsgrösse/Gerätemass ist unklar, daher kein Mass im Kundentext."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": null,
+        "cjImageCount": 9,
+        "filenameMatch": "all CJ basenames matched",
+        "byteComparison": "not established",
+        "rights": "unknown",
+        "visualNote": "HDMI-style game stick, receiver and two wireless controllers shown; visuals do not establish compatibility with named third-party consoles; rights unknown."
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 2,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448846958977",
+      "currentTitle": "Klassische HD Mini TV-Spielkonsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-3/cj-CJSP100347802BY-raw.json",
+          "sha256": "ecc0271c8c9a93268c3dece5a2a48f911faee77c3038bcdd0db165bc28815942"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448846958977.json",
+          "sha256": "dbc280e6cdd7d0b6e94d9a5df2116b9007cea4627ba0413774f8122d036d4146"
+        }
+      ],
+      "lookupResolution": {
+        "type": "get_product_detail(variantSku)",
+        "value": "CJSP100347802BY",
+        "pid": "1356414160862318592",
+        "resolution": "Shopify SKU CJ-CJ…; entfernte genau den ersten CJ-Wrapper."
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Grau-EU",
+          "shopifySKU": "CJ-CJSP100347802BY",
+          "cjVariantSku": "CJSP100347802BY",
+          "cjVariantId": "1356414160895873025",
+          "cjVariantKey": "Grey-EU",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: FC Red And White Classic TV Game Console",
+        "CJ product SKU: CJSP1003478",
+        "Keine vollständige Packliste; Controllerzahl/Zubehör nicht verifiziert.",
+        "Anschluss und Stromversorgung unklar.",
+        "821-Spiele-Werbung ohne Titelliste/unabhängige Bestätigung; keine Spiele- oder Lizenzgarantie."
+      ],
+      "openQuestions": [
+        "Keine vollständige Packliste; Controllerzahl/Zubehör nicht verifiziert.",
+        "Anschluss und Stromversorgung unklar.",
+        "821-Spiele-Werbung ohne Titelliste/unabhängige Bestätigung; keine Spiele- oder Lizenzgarantie.",
+        "Gewichtsdaten weichen zwischen CJ-Produkt-/Variantfeldern ab; weggelassen."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 5,
+        "filenameExactBasenameMatches": 5,
+        "filenameMatch": "basename match count; no byte comparison implied",
+        "byteComparison": "not established",
+        "rights": "unknown",
+        "visualNote": "Featured Shopify image visually checked against CJ productImageSet; same product identity; for the fan, both color variants shown in source images. No editing or rights claim."
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 1,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15510328934785",
+      "currentTitle": "Micro Snow Raspberry Display Game Konsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-3/cj-1416989197218222080-raw.json",
+          "sha256": "4cad1871f2f6f93d3a6da18d4b3e25ec5a0d4abb13d43f3a256c5ffdd55cbf81"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15510328934785.json",
+          "sha256": "77289f0b4f20d91ec73cacd5917ce52cb04aba8e338ee616ef3c0f60e0c2e348"
+        }
+      ],
+      "lookupResolution": {
+        "type": "get_product_detail(pid)",
+        "value": "1416989197218222080",
+        "pid": "1416989197218222080",
+        "resolution": "Shopify SKU CJ-<numeric PID>; entfernte nur CJ-."
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-1416989197218222080",
+          "cjVariantSku": null,
+          "cjVariantId": null,
+          "cjVariantKey": null,
+          "status": "parent_only"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-1416989197218222080",
+          "cjVariantSku": null,
+          "cjVariantId": null,
+          "cjVariantKey": null,
+          "status": "parent_only"
+        }
+      ],
+      "sourceFacts": [
+        "CJ product name: Micro Snow RaspberryRaspberry  Display Game Console Wireless Keyboard And Mouse Kit",
+        "CJ product SKU: CJJY1219035",
+        "Lieferanten-CPU-Angabe nicht übernommen; nicht näher verifiziert.",
+        "Nur Board in Packliste; Zubehör/Netzteil/Display/Software/SD-Karte nicht als enthalten bestätigt.",
+        "WLAN/Ethernet/PoE-Beschreibung ohne Standards/Bandbreiten; keine Zubehörkompatibilität behauptet."
+      ],
+      "openQuestions": [
+        "Lieferanten-CPU-Angabe nicht übernommen; nicht näher verifiziert.",
+        "Nur Board in Packliste; Zubehör/Netzteil/Display/Software/SD-Karte nicht als enthalten bestätigt.",
+        "WLAN/Ethernet/PoE-Beschreibung ohne Standards/Bandbreiten; keine Zubehörkompatibilität behauptet.",
+        "Kein Spiel-/Speicher-/Gaming-Beleg."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 6,
+        "filenameExactBasenameMatches": 6,
+        "filenameMatch": "basename match count; no byte comparison implied",
+        "byteComparison": "not established",
+        "rights": "unknown",
+        "visualNote": "Featured Shopify image visually checked against CJ productImageSet; same product identity; for the fan, both color variants shown in source images. No editing or rights claim."
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 1,
+        "unresolvedVariantMappings": 1
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15479484383617",
+      "currentTitle": "Mini FC 8-Bit Retro-Konsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-3/cj-8D2D2DCA-2473-4FA7-8BD9-F8BA30A6FCF5-raw.json",
+          "sha256": "e21e3e8c0cf5ccfc5127bc4e00376993295257eee3c7fae3845d36863812767a"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15479484383617.json",
+          "sha256": "9e2e7bc21abe06d25cf7a055055ec3af5fedf901b651bbdc81b75e03f07d1d5f"
+        }
+      ],
+      "lookupResolution": {
+        "type": "get_product_detail(pid)",
+        "value": "8D2D2DCA-2473-4FA7-8BD9-F8BA30A6FCF5",
+        "pid": "8D2D2DCA-2473-4FA7-8BD9-F8BA30A6FCF5",
+        "resolution": "Shopify SKU CJ-<UUID>; entfernte genau CJ- und bewahrte UUID unverändert."
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-8D2D2DCA-2473-4FA7-8BD9-F8BA30A6FCF5",
+          "cjVariantSku": null,
+          "cjVariantId": null,
+          "cjVariantKey": null,
+          "status": "parent_only"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-8D2D2DCA-2473-4FA7-8BD9-F8BA30A6FCF5",
+          "cjVariantSku": null,
+          "cjVariantId": null,
+          "cjVariantKey": null,
+          "status": "parent_only"
+        }
+      ],
+      "sourceFacts": [
+        "CJ product name: Mini FC game console",
+        "CJ product SKU: CJXFSPZS00061",
+        "Controllerzahl/Kabel/Netzteil nicht durch Packliste bestätigt.",
+        "Kein Spielekatalog, Spielezahl oder Speicherkarte bestätigt.",
+        "Masse/Gewicht aus Produkt-/Variantfeldern nicht eindeutig Gerätemassen; weggelassen."
+      ],
+      "openQuestions": [
+        "Controllerzahl/Kabel/Netzteil nicht durch Packliste bestätigt.",
+        "Kein Spielekatalog, Spielezahl oder Speicherkarte bestätigt.",
+        "Masse/Gewicht aus Produkt-/Variantfeldern nicht eindeutig Gerätemassen; weggelassen.",
+        "AV Eingang am Käufer-TV muss vorhanden sein; Adapter nicht bestätigt.",
+        "Produktbezeichnung enthält einen numerischen Games-Hinweis, jedoch keine verifizierte Spielezahl oder Titelliste; nicht als Umfang zugesichert."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 5,
+        "filenameExactBasenameMatches": 5,
+        "filenameMatch": "basename match count; no byte comparison implied",
+        "byteComparison": "not established",
+        "rights": "unknown",
+        "visualNote": "Featured Shopify image visually checked against CJ productImageSet; same product identity; for the fan, both color variants shown in source images. No editing or rights claim."
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 1,
+        "unresolvedVariantMappings": 1
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448852038017",
+      "currentTitle": "Mini Gaming-Konsole mit Handventilator",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-3/cj-CJZS106440301AZ-raw.json",
+          "sha256": "a63e74b0e97c7f445108f9178a887d1458fe938a92f9d45207296f6ceb3c6e13"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448852038017.json",
+          "sha256": "32da54e3a61cf13442856200856ce1511d6bff1c64697f6770da58b79ca24318"
+        }
+      ],
+      "lookupResolution": {
+        "type": "get_product_detail(variantSku)",
+        "value": "CJZS106440301AZ",
+        "pid": "1378177016905469952",
+        "resolution": "Shopify SKU CJ-CJ…; entfernte genau den ersten CJ-Wrapper."
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Pink",
+          "shopifySKU": "CJ-CJZS106440301AZ",
+          "cjVariantSku": "CJZS106440301AZ",
+          "cjVariantId": "1378177018327339008",
+          "cjVariantKey": "Pink",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Dunkelgrün",
+          "shopifySKU": "CJ-CJZS106440302BY",
+          "cjVariantSku": "CJZS106440302BY",
+          "cjVariantId": "1378177018386059264",
+          "cjVariantKey": "Dark Green",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: Gaming Mini Videogames Machine Player Mini Summer Handheld Fan Personal Games Console Fan for Office Outdoor Travel",
+        "CJ product SKU: CJZS1064403",
+        "Die Produktbeschreibung bewirbt 500 klassische Spiele; ohne Titelliste oder unabhängige Bestätigung wird die Zahl nicht als garantiert zugesichert. Keine Lizenzbelege.",
+        "Akku-Details, Laufzeit, Lademethode und Netzteil nicht dokumentiert.",
+        "Speichergrösse und genaue USB-Funktion nicht spezifiziert."
+      ],
+      "openQuestions": [
+        "Die Produktbeschreibung bewirbt 500 klassische Spiele; ohne Titelliste oder unabhängige Bestätigung wird die Zahl nicht als garantiert zugesichert. Keine Lizenzbelege.",
+        "Akku-Details, Laufzeit, Lademethode und Netzteil nicht dokumentiert.",
+        "Speichergrösse und genaue USB-Funktion nicht spezifiziert.",
+        "Deutsch nicht in Lieferanten-Sprachenliste; nicht zugesichert."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 5,
+        "filenameExactBasenameMatches": 5,
+        "filenameMatch": "basename match count; no byte comparison implied",
+        "byteComparison": "not established",
+        "rights": "unknown",
+        "visualNote": "Featured Shopify image visually checked against CJ productImageSet; same product identity; for the fan, both color variants shown in source images. No editing or rights claim."
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 2,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15495082705281",
+      "currentTitle": "Mini TV-Spielkonsole mit 620 Games",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-4/p1-cj-raw.json",
+          "sha256": "a808ae47e1eff721dccae2be54d944a767bb5fc150d3eb9753df8ee9c30dbf35"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15495082705281.json",
+          "sha256": "4eea3c61e574592e3e12f5971f0e5f93463a8b5c55924cbdbd0b7185ed8ffd6c"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "1465643611478691840",
+        "pid": "1465643611478691840",
+        "resolution": "CJ detail read by exact product pid; child variants mapped from current shop SKU and CJ child SKU"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-1465643611478691840",
+          "cjVariantSku": null,
+          "cjVariantId": null,
+          "cjVariantKey": null,
+          "status": "product_pid_only"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-1465643611478691840",
+          "cjVariantSku": null,
+          "cjVariantId": null,
+          "cjVariantKey": null,
+          "status": "product_pid_only"
+        }
+      ],
+      "sourceFacts": [
+        "CJ product ID 1465643611478691840, CJ product SKU CJYX1367707; English name “Built-in 620 TV Game Console Wireless Bluetooth Handle Mini”.",
+        "CJ description: game console; RPG role playing; lightweight version; RAM 4GB; double-player; ages 6–14; wireless; packing list “Wireless Bluetooth handle*1”. These claims are not all reflected consistently elsewhere.",
+        "All 5 current Shopify image filenames exactly match filenames in CJ productImageSet; contact sheet visually shows small black TV/game stick, wireless control, and promotional “4K UltraHD”, “620 games”, and dual-player images. Image text is not treate"
+      ],
+      "openQuestions": [
+        "Lieferantentext nennt 620 games, but no verifiable title list; product images include 620 and 4K claims not supported by details. Confirm game count, resolution and memory before claiming.",
+        "Shop images show two controllers and a “dual game player” claim; source packing list says one wireless Bluetooth handle. Confirm actual count and contents.",
+        "Confirm video connector, power source, voltage and any included cable/adapter.",
+        "Supplier says 4GB RAM, but it is unsupported elsewhere and should not be published unless confirmed."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 5,
+        "cjImageCount": 5,
+        "sameFilenameCount": 5,
+        "sameStemCount": 5,
+        "byteComparison": "not established",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 1,
+        "unresolvedVariantMappings": 1
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448848007553",
+      "currentTitle": "Retro Arcade Gaming Konsole für Zuhause",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-4/p2-cj-raw.json",
+          "sha256": "d7e63a3ae91a9820ba2daa98a693a4ab48b3da27c8347a9dc144da961a9fbcb2"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448848007553.json",
+          "sha256": "75a18f0b53f51fd4426afe9a988fdb5cadf0be38ba7115458ceb20d08fc2e332"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "2504181128591602400",
+        "pid": "2504181128591602400",
+        "resolution": "CJ detail read by exact product pid; child variants mapped from current shop SKU and CJ child SKU"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "M1564G Grosses Paket",
+          "shopifySKU": "CJ-CJYD235723601AZ",
+          "cjVariantSku": "CJYD235723601AZ",
+          "cjVariantId": "2504181128591602600",
+          "cjVariantKey": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "M1564G Kleines Paket",
+          "shopifySKU": "CJ-CJYD235723602BY",
+          "cjVariantSku": "CJYD235723602BY",
+          "cjVariantId": "2504181128591603000",
+          "cjVariantKey": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "M15128G Grosses Paket",
+          "shopifySKU": "CJ-CJYD235723603CX",
+          "cjVariantSku": "CJYD235723603CX",
+          "cjVariantId": "2504181128591603200",
+          "cjVariantKey": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "M15128G Kleines Paket",
+          "shopifySKU": "CJ-CJYD235723604DW",
+          "cjVariantSku": "CJYD235723604DW",
+          "cjVariantId": "2504181128591603400",
+          "cjVariantKey": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "M1564G Customized",
+          "shopifySKU": "CJ-CJYD235723605EV",
+          "cjVariantSku": "CJYD235723605EV",
+          "cjVariantId": "2504181128591603500",
+          "cjVariantKey": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "M15128G Customized",
+          "shopifySKU": "CJ-CJYD235723606FU",
+          "cjVariantSku": "CJYD235723606FU",
+          "cjVariantId": "2504181128591603700",
+          "cjVariantKey": null,
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ source resolved from wrapper SKU CJ-CJYD235723601AZ by removing only outer CJ-; call used variantSku CJYD235723601AZ. CJ PID 2504181128591602400; product SKU CJYD2357236.",
+        "CJ description says HDMI output, 1080p/720p, plastic, one host, one HDMI, one USB charging cable, two wireless handles, double configuration; product size 24×18×7.2 cm.",
+        "CJ has six current Shopify options mapped by variantSku: CJYD235723601AZ/602BY/603CX/604DW/605EV/606FU. CJ product images use all seven current Shopify image UUID stems, with suffix/extension transformations. Contact sheet shows M15 stick, gamepads a"
+      ],
+      "openQuestions": [
+        "Confirm exact meaning of M1564G/M15128G and what storage/capacity is being described; do not promise included card or onboard memory.",
+        "Confirm difference in contents for Grosses Paket, Kleines Paket and Customized variants; selector images imply TF cards/receiver/etc, while written packing list does not enumerate those.",
+        "Resolution conflict: detail names 1080p/720p while images claim 4K/3D. Keep resolution unclaimed pending reliable confirmation.",
+        "Clarify USB power requirements and whether USB cable is for charging or powering console.",
+        "CJ says product size 24×18×7.2 cm, while its variant package dimensions are 26×23×14 cm; omit size unless source clarifies product vs package."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 7,
+        "cjImageCount": 7,
+        "sameFilenameCount": 4,
+        "sameStemCount": 7,
+        "byteComparison": "not established",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 6,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448847548801",
+      "currentTitle": "Retro Arcade Handheld-Konsole X9",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-4/p3-cj-raw.json",
+          "sha256": "c39e3af6af6ad23a67173f74af6e6b0b4edc12e410d14fdbe81411227b84a232"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448847548801.json",
+          "sha256": "b207afb0374b4a1491d178ad9c759052097d57e66c05d1e7f9564b9320aa7c2f"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "2511040749021615000",
+        "pid": "2511040749021615000",
+        "resolution": "CJ detail read by exact product pid; child variants mapped from current shop SKU and CJ child SKU"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-2511040749021615000",
+          "cjVariantSku": null,
+          "cjVariantId": null,
+          "cjVariantKey": null,
+          "status": "product_pid_only"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-2511040749021615000",
+          "cjVariantSku": null,
+          "cjVariantId": null,
+          "cjVariantKey": null,
+          "status": "product_pid_only"
+        }
+      ],
+      "sourceFacts": [
+        "CJ source queried by pid 2511040749021615000, linked to CJ variant SKU CJYD258036301AZ; product SKU CJYD2580363.",
+        "CJ description: Model X9 black/white English version; additional MP4 video player; packing list host, manual, charging cable, AV cable; extra line Gamepad x1.",
+        "CJ variant dimensions 220×120×50 mm conflict with text description 24.5×14.2×5.2 cm. We omit size. Supplier describes 8-simulator portable device in English productName, but no game count is used in customer copy."
+      ],
+      "openQuestions": [
+        "CJ description says product 24.5×14.2×5.2 cm, but current CJ variant measurements are 22×12×5 cm; do not publish dimensions until product/package distinction is resolved.",
+        "Pack list includes a conflicting “Gamepad x1” separate line although device is a handheld; confirm whether a separate controller is included.",
+        "Confirm battery type, capacity, charging method, runtime, supported files for MP4 player, storage and game list if these are to be advertised.",
+        "Supplier product images/text advertise screen size and multiple emulators; no precise verified screen spec or game count should be added."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 6,
+        "cjImageCount": 6,
+        "sameFilenameCount": 0,
+        "sameStemCount": 6,
+        "byteComparison": "not established",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 1,
+        "unresolvedVariantMappings": 1
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448848302465",
+      "currentTitle": "Retro Arcade HD Spielkonsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-4/p4-cj-raw.json",
+          "sha256": "483cf219e32cd894063de121dcce714fbdb017dd0d26ceda8554227594b67127"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448848302465.json",
+          "sha256": "c6f48de3c61d53b8855f1080283b9b71cb7b75979cc4a2f9cb8023f30cf36cbd"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "2501160706381600400",
+        "pid": "2501160706381600400",
+        "resolution": "CJ detail read by exact product pid; child variants mapped from current shop SKU and CJ child SKU"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "M8 128GB",
+          "shopifySKU": "CJ-CJYD227225701AZ",
+          "cjVariantSku": "CJYD227225701AZ",
+          "cjVariantId": "2501160706381602400",
+          "cjVariantKey": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "M8 64GB",
+          "shopifySKU": "CJ-CJYD227225702BY",
+          "cjVariantSku": "CJYD227225702BY",
+          "cjVariantId": "2501160706381604000",
+          "cjVariantKey": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "M8 32GB",
+          "shopifySKU": "CJ-CJYD227225703CX",
+          "cjVariantSku": "CJYD227225703CX",
+          "cjVariantId": "2501160706381605100",
+          "cjVariantKey": null,
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ source resolved from wrapper SKU CJ-CJYD227225701AZ by removing only outer CJ-; call used variantSku CJYD227225701AZ. CJ PID 2501160706381600400; product SKU CJYD2272257.",
+        "CJ description explicitly says HDMI interface, ABS material, size 49×35×36.7, styles M8 128/64/32GB, packing list “Game console * 1”. Dimensions inconsistent with variant measures and visual scale; omitted from customer proposal.",
+        "All 8 current Shopify image UUID stems match CJ productImageSet; 7 filenames match exactly and one transformed suffix/extension. Contact sheet visually shows HDMI stick and controllers/accessory/memory promotional graphics; written packing list does "
+      ],
+      "openQuestions": [
+        "CJ says HDMI/ABS, but current variant dimensions are 49×35×36.7 cm and images show stick-scale device; omit dimensions.",
+        "CJ written packing list says only game console *1, while Shopify/CJ images show controller(s), USB cable, adapter/receiver, memory-related items. Confirm actual exact pack list before claiming any accessory.",
+        "Current Shopify options say M8 32/64/128GB; CJ detail uses same variant names and images show TF card, but the data does not say if this is built-in storage, included card, or another option. Clarify before advertising memory.",
+        "Images claim 4K, dual gamepads, games; source detail does not verify resolution, game count or controllers. Do not use those claims.",
+        "Confirm required power source, included cables, voltage and compatible TVs."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 8,
+        "cjImageCount": 8,
+        "sameFilenameCount": 7,
+        "sameStemCount": 8,
+        "byteComparison": "not established",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 3,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448849711489",
+      "currentTitle": "Retro Super Console X Cube",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-5/cj-15448849711489.json",
+          "sha256": "ba60962879f7406044aa8400f029f81b06b0bb0cf906be280f8fcfa6aaedc05d"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/native-15448849711489.json",
+          "sha256": "a63c136b27ab8f16f11fffc1c1157ae389ade5e63db94b524b788c1e152147f0"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-5/evidence-15448849711489.json",
+          "sha256": "b140139a7fa183651c60353e4e0a83c57d276d49aa5e02a960fe72dee1daf5d9"
+        }
+      ],
+      "lookupResolution": {
+        "type": "product pid / variantSku as listed per variant",
+        "pid": "1595349808276058112",
+        "resolution": "see variant entries; exactChildMatch indicates direct CJ child SKU match"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Muster 10-EU",
+          "shopifySKU": "CJ-CJZS161956215OL",
+          "cjVariantSku": "CJZS161956215OL",
+          "cjVariantKey": "Style10-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 11-EU",
+          "shopifySKU": "CJ-CJZS161956219SH",
+          "cjVariantSku": "CJZS161956219SH",
+          "cjVariantKey": "Style11-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 12-EU",
+          "shopifySKU": "CJ-CJZS161956223WD",
+          "cjVariantSku": "CJZS161956223WD",
+          "cjVariantKey": "Style12-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 2-EU",
+          "shopifySKU": "CJ-CJZS161956227AZ",
+          "cjVariantSku": "CJZS161956227AZ",
+          "cjVariantKey": "Style2-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 3-EU",
+          "shopifySKU": "CJ-CJZS161956216PK",
+          "cjVariantSku": "CJZS161956216PK",
+          "cjVariantKey": "Style3-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 4-EU",
+          "shopifySKU": "CJ-CJZS161956218RI",
+          "cjVariantSku": "CJZS161956218RI",
+          "cjVariantKey": "Style4-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 5-EU",
+          "shopifySKU": "CJ-CJZS161956220TG",
+          "cjVariantSku": "CJZS161956220TG",
+          "cjVariantKey": "Style5-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 6-EU",
+          "shopifySKU": "CJ-CJZS161956222VE",
+          "cjVariantSku": "CJZS161956222VE",
+          "cjVariantKey": "Style6-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 7-EU",
+          "shopifySKU": "CJ-CJZS161956224XC",
+          "cjVariantSku": "CJZS161956224XC",
+          "cjVariantKey": "Style7-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 8-EU",
+          "shopifySKU": "CJ-CJZS161956226ZA",
+          "cjVariantSku": "CJZS161956226ZA",
+          "cjVariantKey": "Style8-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Muster 9-EU",
+          "shopifySKU": "CJ-CJZS161956228BY",
+          "cjVariantSku": "CJZS161956228BY",
+          "cjVariantKey": "Style9-EU",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "cjProductSku: CJZS1619562",
+        "cjPid: 1595349808276058112"
+      ],
+      "openQuestions": [
+        "Die 11 Shopify-SKUs matchen exakt auf CJ-Varianten Style2-EU bis Style12-EU; daraus ist keine physische Muster-/Speicher-/Spielezuordnung belegt.",
+        "CJ-Beschreibung nennt 64/128/256 GB allgemein, RPG, Android-Plattform, EmuELEC, MP4, bis zu 4 Spieler und mehrere Packlisten; die Zahlen/Ausstattung sind nicht je Variante belegt, werden daher nicht als zugesicherte Auswahlmerkmale verwendet.",
+        "Shop-Auswahloption heisst Farbe, tatsächliche Labels sind Muster 10-EU bis Muster 9-EU; keine Rename-Änderung vorgesehen.",
+        "Vorhandene Shopbilder enthalten nicht geprüfte Marketing-Overlays zu Spielen/Speicher; Bildmaterial und Zuordnung bleiben unverändert, Rechte ungeklärt.",
+        "Ladegerät/Adapter, Speicherkarte, Handbuch und genaue Controller-/Kabel-Zahl aus Lieferanten-Listen widersprechen/überschneiden sich.",
+        "Controllerzahl widersprüchlich: Produkttext/Packliste nennt 2, Shopify-Hauptbild bzw. Alt-Text zeigt 4; nicht als fixe Lieferumfangszahl zusichern."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 8,
+        "cjImageCount": 14,
+        "commonBasenameCount": 7,
+        "filenameMatch": "common basename only; counts may differ",
+        "byteComparison": "different bytes recorded for matched images",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 11,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15495146635649",
+      "currentTitle": "SNES 16 Bit Mini-Replika",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-5/cj-15495146635649.json",
+          "sha256": "ab048e55cffefb2a2214484da9af65e0bd8456e2673d11779697a066445069d4"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/native-15495146635649.json",
+          "sha256": "0e64e57b7bc2de0a22336aa8dadb6b700760985a292630ae3bb2cf2fd2260460"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-5/evidence-15495146635649.json",
+          "sha256": "d28095e131a78b1ab87d74310c4ad473f91d48c2382b0d858fda6ed2f5c0160a"
+        }
+      ],
+      "lookupResolution": {
+        "type": "product pid / variantSku as listed per variant",
+        "pid": "33003710-7EB3-4742-8C4E-878E66A95CF9",
+        "resolution": "see variant entries; exactChildMatch indicates direct CJ child SKU match"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-33003710-7EB3-4742-8C4E-878E66A95CF9",
+          "cjVariantSku": null,
+          "cjVariantKey": null,
+          "cjVariantId": null,
+          "status": "SKU wrapper stripped to exact CJ product pid; no child option encoded"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-33003710-7EB3-4742-8C4E-878E66A95CF9",
+          "cjVariantSku": null,
+          "cjVariantKey": null,
+          "cjVariantId": null,
+          "status": "SKU wrapper stripped to exact CJ product pid; no child option encoded"
+        }
+      ],
+      "sourceFacts": [
+        "cjProductSku: CJXFSPYX00476",
+        "cjPid: 33003710-7EB3-4742-8C4E-878E66A95CF9"
+      ],
+      "openQuestions": [
+        "Shopify besitzt nur eine Default-Title-Variante mit SKU CJ-33003710-7EB3-4742-8C4E-878E66A95CF9; diese normalisiert auf CJ-PID 33003710-7EB3-4742-8C4E-878E66A95CF9. CJ führt darunter vier Image-EU/AU/UK/US-Kindvarianten; die Shopify-Variante ist keiner Kindvariante zugeordnet.",
+        "CJ-Beschreibung nennt 21 integrierte Spiele und Speichern von Spielständen, aber keine verifizierte Titelliste. Zusätzliche Emulator-/TF-Karten-Funktion ist unklar und nicht als Kompatibilitätszusage formuliert.",
+        "CJ-Quelle nennt einen USB-Stromkabelsatz ohne AC-Adapter, jedoch ist die konkrete regionale Untervariante im Shopify-Eintrag nicht bekannt; die Adapter-/Steckervariante muss vor finalem Checkout bestätigt werden.",
+        "Vorhandene Bilder enthalten Spielelogos/Listen und regionale Steckerbilder, darunter Variantenbilder AU/UK/US/EU. Sie werden nicht als Nachweis für die Standardvariante interpretiert; Bilder bleiben unverändert, Rechte ungeklärt."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 10,
+        "cjImageCount": 10,
+        "commonBasenameCount": 10,
+        "filenameMatch": "common basename only; counts may differ",
+        "byteComparison": "different bytes recorded for matched images",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 1,
+        "unresolvedVariantMappings": 1
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448846860673",
+      "currentTitle": "Split Wireless HD-Heimkonsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-5/cj-15448846860673.json",
+          "sha256": "c5811819d8ab03f2646eae131c2f82036c0571a203970c2196aa630623a35232"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/native-15448846860673.json",
+          "sha256": "50414b1fdca24116933831dc950d6a5e1f33f5a82575369835e638ea77a32149"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-5/evidence-15448846860673.json",
+          "sha256": "e26afd75ad491a8120fd287b221ce1a15a44ea1b66768fdef1c0df5ad38fd38a"
+        }
+      ],
+      "lookupResolution": {
+        "type": "product pid / variantSku as listed per variant",
+        "pid": "1368824806279090176",
+        "resolution": "see variant entries; exactChildMatch indicates direct CJ child SKU match"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Rotweiss-USB",
+          "shopifySKU": "CJ-CJSP103463301AZ",
+          "cjVariantSku": "CJSP103463301AZ",
+          "cjVariantKey": "red white-USB",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Weiss-USB",
+          "shopifySKU": "CJ-CJSP103463302BY",
+          "cjVariantSku": "CJSP103463302BY",
+          "cjVariantKey": "White-USB",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Rot-USB",
+          "shopifySKU": "CJ-CJSP103463303CX",
+          "cjVariantSku": "CJSP103463303CX",
+          "cjVariantKey": "Red-USB",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Gelb-USB",
+          "shopifySKU": "CJ-CJSP103463304DW",
+          "cjVariantSku": "CJSP103463304DW",
+          "cjVariantKey": "Yellow-USB",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "cjProductSku: CJSP1034633",
+        "cjPid: 1368824806279090176"
+      ],
+      "openQuestions": [
+        "Alle 4 Shop-SKUs nach Entfernen des CJ- Wrappers matchen exakt auf CJ-Varianten red white-USB, White-USB, Red-USB, Yellow-USB. Die Farbzuordnung ist sauber.",
+        "CJ-Produkttext nennt wireless und HDMI; Variantennamen enthalten USB, die Funktion dieses USB wird nicht erklärt. Kein unqualifizierter Wireless-Controller-/Wireless-Bildübertragungs-Claim.",
+        "CJ-Packliste nennt Standard-Host, 2 rocker/controllers, Power cord, 8 suction cups, instructions. Adapterfunktion, Controllerverbindung und Zweck der Saugnäpfe nicht erklärt.",
+        "Keine Spieleliste, Speicherdetails, RAM-/Auflösungs- oder Plattformkompatibilität in den Kundentext übernommen; existierende Bilder nicht als unabhängige technische Bestätigung genutzt."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 6,
+        "cjImageCount": 6,
+        "commonBasenameCount": 6,
+        "filenameMatch": "common basename only; counts may differ",
+        "byteComparison": "different bytes recorded for matched images",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 4,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15446267265409",
+      "currentTitle": "Wiederaufladbares Retro-Game-Set mit 2 Controllern",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-5/cj-15446267265409.json",
+          "sha256": "3638ccf29ae7ff2e7f350b655ce161388af2eb27e27fc6da6e617a7baae75fd1"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/native-15446267265409.json",
+          "sha256": "f54ea6d067bf4f8ac1f59ec0b87e528e20225b7584689c13de3310971d337d74"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-5/evidence-15446267265409.json",
+          "sha256": "32819e7a874072183e2265909178b6df97112df0409d1eceb94c5694036c85b9"
+        }
+      ],
+      "lookupResolution": {
+        "type": "product pid / variantSku as listed per variant",
+        "pid": "2505080526451625500",
+        "resolution": "see variant entries; exactChildMatch indicates direct CJ child SKU match"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "64GBP3 Rechargeable Handle",
+          "shopifySKU": "CJ-CJYD237113501AZ",
+          "cjVariantSku": "CJYD237113501AZ",
+          "cjVariantKey": "64GBP3 Rechargeable Handle",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "128GBP3 Rechargeable Handle",
+          "shopifySKU": "CJ-CJYD237113502BY",
+          "cjVariantSku": "CJYD237113502BY",
+          "cjVariantKey": "128GBP3 Rechargeable Handle",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "256GBP3 Rechargeable Handle",
+          "shopifySKU": "CJ-CJYD237113503CX",
+          "cjVariantSku": "CJYD237113503CX",
+          "cjVariantKey": "256GBP3 Rechargeable Handle",
+          "cjVariantId": null,
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "cjProductSku: CJYD2371135",
+        "cjPid: 2505080526451625500"
+      ],
+      "openQuestions": [
+        "Alle 3 Shop-SKUs nach Entfernen des CJ- Wappers matchen auf die drei CJ-Varianten 64GBP3/128GBP3/256GBP3 Rechargeable Handle.",
+        "Shopoption heisst Farbe, tatsächliche Labels referenzieren Rechargeable Handle. CJ-Daten führen BATTERY, klären aber weder welche Komponente wiederaufladbar ist noch technische Lade-/Laufzeitwerte; keine Akku-/Drahtloszusage.",
+        "Codes 64GBP3/128GBP3/256GBP3 sind keine belegten Speicher- oder Spielekapazitäten; keine Zuordnung zu Spielen oder Memory.",
+        "CJ-Packliste bestätigt Gerät, zwei Controller, USB-Kabel, HDMI-Verlängerung und Anleitung; keine Spieleliste oder Controller-/Konsolen-Verbindungsart belegt.",
+        "Shopbilder zeigen Marketingtexte zu 4K, Games, 128/256GB und Wireless. Diese visuellen Aussagen sind nicht als technische Belege übernommen; Bildmaterial bleibt unverändert und Rechte ungeklärt."
+      ],
+      "imageIdentity": {
+        "shopifyImageCount": 11,
+        "cjImageCount": 8,
+        "commonBasenameCount": 8,
+        "filenameMatch": "common basename only; counts may differ",
+        "byteComparison": "different bytes recorded for matched images",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 3,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15452706341249",
+      "currentTitle": "Wireless Mini-Game-Konsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-6/cj-raw-15452706341249.json",
+          "sha256": "cac402067947b84663bd9019ee7472c796667ae5de3791ed4667ba0d92bdb01e"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15452706341249.json",
+          "sha256": "2b3c8f04298b2409b55bb1187d3fa7f62e09b9e971760546ad6f5bfe50d8ac3a"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-6/source-evidence-15452706341249.json",
+          "sha256": "c19290dbe8ffd3d64c46ba2b0a15afc1e4988b3f9d5e25deff7ec98483339e3c"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "1640935195803136000",
+        "pid": "1640935195803136000",
+        "resolution": "Shopify product-ID wrapper resolved by exact CJ pid read; child SKU listed per variant"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Default Title",
+          "shopifySKU": "CJ-1640935195803136000",
+          "cjVariantSku": "CJYX171896301AZ",
+          "cjVariantId": "1640935195828301824",
+          "cjVariantKey": "Black",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: Hd Game Console Home Wireless Mini",
+        "CJ product SKU: CJYX1718963"
+      ],
+      "openQuestions": [
+        "Keine bestätigte Spieleliste oder verifizierbare Spielezahl in der Produktbeschreibung; keine Titel-/Vorinstallationszusage.",
+        "Keine pauschale Kompatibilitäts-, Lizenz-, Akku-, Stromversorgungs-, Liefer- oder Rabattzusage.",
+        "Bildrechte wurden nicht geprüft; keine Rechtefreigabe behauptet.",
+        "Lieferant nennt 4 GB Speicher ohne Typ.",
+        "Shopify-SKU CJ-1640935195803136000 ist ein Produkt-ID-Wrapper; gezielter CJ PID-Read liefert tatsächliches Produkt 1640935195803136000, SKU CJYX1718963 und Variante CJYX171896301AZ. Packlistenwortlaut zu Gamepad-Paar/Datenkabel bleibt knapp."
+      ],
+      "imageIdentity": {
+        "variantImageChecks": [
+          {
+            "shopifySku": null,
+            "variantSku": "CJYX171896301AZ",
+            "identityStatus": "exact Shopify gallery image stem match; variant visual reviewed",
+            "sameStem": true,
+            "sha256Equal": false
+          }
+        ],
+        "byteComparison": "per-image SHA256 values compared where present; unmatched photos remain unresolved",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 1,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448847319425",
+      "currentTitle": "X10 PRO TV Retro Arcade Spielkonsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-6/cj-raw-15448847319425.json",
+          "sha256": "fb3bc9d660045ee5fff050032771ef365eceeed81ae60edda9fc89b9e37badc1"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448847319425.json",
+          "sha256": "c904650298241cb6952e68196a3690a22a9f56ec1d8b9188259a5cd0e7bb04af"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-6/source-evidence-15448847319425.json",
+          "sha256": "488c4fc79373f0dd4a4d6255a286a31f7d3cdb49d8d9a9664e2a333848247bb2"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "2602100325121609900",
+        "pid": "2602100325121609900",
+        "resolution": "Shopify product-ID wrapper resolved by exact CJ pid read; child SKU listed per variant"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "Hurricane Blau Griff",
+          "shopifySKU": "CJ-CJYD275940101AZ",
+          "cjVariantSku": "CJYD275940101AZ",
+          "cjVariantId": "2602100325131600200",
+          "cjVariantKey": "Hurricane Blue Handle",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "Storm Blau Griff",
+          "shopifySKU": "CJ-CJYD275940102BY",
+          "cjVariantSku": "CJYD275940102BY",
+          "cjVariantId": "2602100325131600500",
+          "cjVariantKey": "Storm Blue Handle",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: X10 PRO TV Retro Arcade Home Game Console",
+        "CJ product SKU: CJYD2759401"
+      ],
+      "openQuestions": [
+        "Keine bestätigte Spieleliste oder verifizierbare Spielezahl in der Produktbeschreibung; keine Titel-/Vorinstallationszusage.",
+        "Keine pauschale Kompatibilitäts-, Lizenz-, Akku-, Stromversorgungs-, Liefer- oder Rabattzusage.",
+        "Bildrechte wurden nicht geprüft; keine Rechtefreigabe behauptet.",
+        "CJ führt Receiver doppelt in der Packliste auf; Anzahl bleibt offen. Angegebene Gerätemasse wurden wegen unklarer Abgrenzung von Set/Packung nicht in den Kundentext übernommen. Spielwerbung auf Bildern wurde nicht als Quellenfakt übernommen."
+      ],
+      "imageIdentity": {
+        "variantImageChecks": [
+          {
+            "shopifySku": null,
+            "variantSku": "CJYD275940101AZ",
+            "identityStatus": "exact Shopify gallery image stem match; variant visual reviewed",
+            "sameStem": true,
+            "sha256Equal": false
+          },
+          {
+            "shopifySku": null,
+            "variantSku": "CJYD275940102BY",
+            "identityStatus": "exact Shopify gallery image stem match; variant visual reviewed",
+            "sameStem": true,
+            "sha256Equal": false
+          }
+        ],
+        "byteComparison": "per-image SHA256 values compared where present; unmatched photos remain unresolved",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 2,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15446267396481",
+      "currentTitle": "X2 Blue 4K Wireless Gaming Konsole",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-6/cj-raw-15446267396481.json",
+          "sha256": "9dcc058c868172c31455950f23ac66ba9490657accd4925a4d3f1b821f8a1a52"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15446267396481.json",
+          "sha256": "f5a7c0c846998e88c98cd4111582f07675ba527f57799242f0515e238ed7b886"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-6/source-evidence-15446267396481.json",
+          "sha256": "012e028f93a16e03d1ea5d2ac4baefc63da14940fc93f730870b60db19776ccf"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "2503140526221602800",
+        "pid": "2503140526221602800",
+        "resolution": "Shopify product-ID wrapper resolved by exact CJ pid read; child SKU listed per variant"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "X2 Blau 64g wiederaufladbar Modell-USB",
+          "shopifySKU": "CJ-CJYX232730801AZ",
+          "cjVariantSku": "CJYX232730801AZ",
+          "cjVariantId": "2503140526221603000",
+          "cjVariantKey": "X2 Blue 64g rechargeable model-USB",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "X2 Blau 128g Akku-Version-USB",
+          "shopifySKU": "CJ-CJYX232730802BY",
+          "cjVariantSku": "CJYX232730802BY",
+          "cjVariantId": "2503140526221603200",
+          "cjVariantKey": "X2 Blue 128g charging model-USB",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "X2 Blau 256g Akku-Version-USB",
+          "shopifySKU": "CJ-CJYX232730803CX",
+          "cjVariantSku": "CJYX232730803CX",
+          "cjVariantId": "2503140526221603400",
+          "cjVariantKey": "X2 Blue 256g charging model-USB",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: X2 Blue Game Console 4K Double Connection Battle Wireless",
+        "CJ product SKU: CJYX2327308"
+      ],
+      "openQuestions": [
+        "Keine bestätigte Spieleliste oder verifizierbare Spielezahl in der Produktbeschreibung; keine Titel-/Vorinstallationszusage.",
+        "Keine pauschale Kompatibilitäts-, Lizenz-, Akku-, Stromversorgungs-, Liefer- oder Rabattzusage.",
+        "Bildrechte wurden nicht geprüft; keine Rechtefreigabe behauptet.",
+        "CJ-Packlisten widersprechen sich: einmal ein drahtloser Controller, einmal zwei. Zwei TF-Karten sind aufgeführt, Kapazität/Inhalt unbekannt. 64g/128g/256g sowie Ladebegriffe sind nicht technisch erklärt. Angegebene Gerätemasse wurden wegen unklarer Abgrenzung von Set/Packung nicht in den Kundentext übernommen."
+      ],
+      "imageIdentity": {
+        "variantImageChecks": [
+          {
+            "shopifySku": null,
+            "variantSku": "CJYX232730801AZ",
+            "identityStatus": "exact Shopify gallery image stem match; variant visual reviewed",
+            "sameStem": true,
+            "sha256Equal": false
+          },
+          {
+            "shopifySku": null,
+            "variantSku": "CJYX232730802BY",
+            "identityStatus": "exact Shopify gallery image stem match; variant visual reviewed",
+            "sameStem": true,
+            "sha256Equal": false
+          },
+          {
+            "shopifySku": null,
+            "variantSku": "CJYX232730803CX",
+            "identityStatus": "exact Shopify gallery image stem match; variant visual reviewed",
+            "sameStem": true,
+            "sha256Equal": false
+          }
+        ],
+        "byteComparison": "per-image SHA256 values compared where present; unmatched photos remain unresolved",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 3,
+        "unresolvedVariantMappings": 0
+      }
+    },
+    {
+      "productId": "gid://shopify/Product/15448848597377",
+      "currentTitle": "X2 Ultra HD Wireless Konsole für 2 Spieler",
+      "sourceFiles": [
+        {
+          "role": "CJ raw/detail",
+          "path": "group-6/cj-raw-15448848597377.json",
+          "sha256": "82f1b28133241d4027223aab1c9b51d5e2ef9810f856c91d4cf2af3fdf743362"
+        },
+        {
+          "role": "Shopify native/source",
+          "path": "source/product-15448848597377.json",
+          "sha256": "cb31537c46295a461200695a56dc8d21b29fba5299f50e26a7a6bdaf9d464b55"
+        },
+        {
+          "role": "evidence/audit",
+          "path": "group-6/source-evidence-15448848597377.json",
+          "sha256": "a03bfe7e8a60232a7acf247179501eb4576fcaff4a449d2de455c85f0a206830"
+        }
+      ],
+      "lookupResolution": {
+        "type": "pid",
+        "value": "2411150952521616400",
+        "pid": "2411150952521616400",
+        "resolution": "Shopify product-ID wrapper resolved by exact CJ pid read; child SKU listed per variant"
+      },
+      "currentSkuToCJChildMappings": [
+        {
+          "shopifyLabel": "128 GB",
+          "shopifySKU": "CJ-CJYD219688602BY",
+          "cjVariantSku": "CJYD219688602BY",
+          "cjVariantId": "2411150952521616600",
+          "cjVariantKey": "128GB",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "128GB Charging Handle",
+          "shopifySKU": "CJ-CJYD219688603CX",
+          "cjVariantSku": "CJYD219688603CX",
+          "cjVariantId": "2411150952521616700",
+          "cjVariantKey": "128GB Charging Handle",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "256 GB",
+          "shopifySKU": "CJ-CJYD219688604DW",
+          "cjVariantSku": "CJYD219688604DW",
+          "cjVariantId": "2411150952521616900",
+          "cjVariantKey": "256GB",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "256GB Charging Handle",
+          "shopifySKU": "CJ-CJYD219688605EV",
+          "cjVariantSku": "CJYD219688605EV",
+          "cjVariantId": "2411150952521617000",
+          "cjVariantKey": "256GB Charging Handle",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "64 GB",
+          "shopifySKU": "CJ-CJYD219688606FU",
+          "cjVariantSku": "CJYD219688606FU",
+          "cjVariantId": "2411150952521617200",
+          "cjVariantKey": "64GB",
+          "status": "exact_child_match"
+        },
+        {
+          "shopifyLabel": "64GB Charging Handle",
+          "shopifySKU": "CJ-CJYD219688607GT",
+          "cjVariantSku": "CJYD219688607GT",
+          "cjVariantId": "2411150952521617300",
+          "cjVariantKey": "64GB Charging Handle",
+          "status": "exact_child_match"
+        }
+      ],
+      "parentOnlyOrUnresolvedMappings": [],
+      "sourceFacts": [
+        "CJ product name: X2 Ultra Home TV Game Console HD 24g Wireless HDMI Double Player Arcade 3D",
+        "CJ product SKU: CJYD2196886"
+      ],
+      "openQuestions": [
+        "Keine bestätigte Spieleliste oder verifizierbare Spielezahl in der Produktbeschreibung; keine Titel-/Vorinstallationszusage.",
+        "Keine pauschale Kompatibilitäts-, Lizenz-, Akku-, Stromversorgungs-, Liefer- oder Rabattzusage.",
+        "Bildrechte wurden nicht geprüft; keine Rechtefreigabe behauptet.",
+        "Drei CJ-Variantbild-Stems ohne exakt gleichnamige Shopify-Medien: 128GB (603888aa…), 128GB Charging Handle (a57efb69…), 64GB Charging Handle (4724bd3d…).",
+        "GB-Variantenlabels erläutern nicht, ob interner Speicher oder Kartenkapazität gemeint ist. Charging-Handle-Unterschied und Energieversorgung ungeklärt. Angegebene Gerätemasse wurden wegen nicht unabhängig geklärtem Kontext nicht in den Kundentext übernommen."
+      ],
+      "imageIdentity": {
+        "variantImageChecks": [
+          {
+            "shopifySku": null,
+            "variantSku": "CJYD219688602BY",
+            "identityStatus": "supplier variant image reviewed; no exact Shopify gallery stem match",
+            "sameStem": false,
+            "sha256Equal": null
+          },
+          {
+            "shopifySku": null,
+            "variantSku": "CJYD219688603CX",
+            "identityStatus": "supplier variant image reviewed; no exact Shopify gallery stem match",
+            "sameStem": false,
+            "sha256Equal": null
+          },
+          {
+            "shopifySku": null,
+            "variantSku": "CJYD219688604DW",
+            "identityStatus": "exact Shopify gallery image stem match; variant visual reviewed",
+            "sameStem": true,
+            "sha256Equal": false
+          },
+          {
+            "shopifySku": null,
+            "variantSku": "CJYD219688605EV",
+            "identityStatus": "exact Shopify gallery image stem match; variant visual reviewed",
+            "sameStem": true,
+            "sha256Equal": false
+          },
+          {
+            "shopifySku": null,
+            "variantSku": "CJYD219688606FU",
+            "identityStatus": "exact Shopify gallery image stem match; variant visual reviewed",
+            "sameStem": true,
+            "sha256Equal": false
+          },
+          {
+            "shopifySku": null,
+            "variantSku": "CJYD219688607GT",
+            "identityStatus": "supplier variant image reviewed; no exact Shopify gallery stem match",
+            "sameStem": false,
+            "sha256Equal": null
+          }
+        ],
+        "byteComparison": "per-image SHA256 values compared where present; unmatched photos remain unresolved",
+        "rights": "unknown"
+      },
+      "imageRights": "unknown",
+      "completeness": {
+        "cjSourceAndSha256Present": true,
+        "shopifySourceAndSha256Present": true,
+        "unavailableFiles": [],
+        "variantCount": 6,
+        "unresolvedVariantMappings": 0
+      }
+    }
+  ],
+  "summary": {
+    "products": 24,
+    "groups": 6,
+    "productsWithCJRawSha256": 24,
+    "productsWithShopifySourceSha256": 24,
+    "productsWithUnresolvedMappings": 6,
+    "variantMappings": 73,
+    "unresolvedVariantMappings": 6
+  }
+}
