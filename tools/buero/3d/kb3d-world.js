@@ -1,4 +1,4 @@
-/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-20).
+/* KB3D Welt: gemeinsamer Campus für Webansicht und Claude-Paket (Design campus-einheitlich-23).
    Sieben eigene Pavillons (je rund 10,4 × 8 m) stehen in zwei Spalten mit Gassen dazwischen: Chefbüro und Krypto, Shop und Versand, dann der
    Campusplatz mit dem Zentralmonitor, danach Social Media, Entwicklerbüro und das YouTube-Studio. Jeder Raum hat eine hohe Rückwand im Norden
    mit einem grossen Liveboard (Monitor mit Zahlen aus den Zeilen dieses Raums) und davor genug Platz zwischen den Schreibtischen.
@@ -56,7 +56,7 @@
   var PANTS = ['#3c4252', '#2f3a4d', '#4a4036', '#2b2f38', '#50566a'];
   var TOP = { oak: '#d6b88c', white: '#f0eee9', dark: '#3b4050', exec: '#edf2ef', metal: '#c3c9d1' };
   SEATS.forEach(function (s) { var r = ROOMS[s.room]; s.x = r.x0 + s.u; s.z = r.z0 + s.v; });
-  K.DESIGN_VERSION = 'campus-einheitlich-22';
+  K.DESIGN_VERSION = 'campus-einheitlich-23';
   K.SEATS = SEATS;
   K.ROOMS = ROOMS;
   K.ROOM_SIZE = [RW, RD];
@@ -169,6 +169,17 @@
     /* Das Liveboard an der Nordwand: Rahmen, Leuchtleiste, Bild (wird von W.updateLive gezeichnet). uc = Mitte in u. */
     function liveBoard(name, uc) {
       var d = ROOMS[name], t = 0.18, rahmenB = new K.Builder();
+      // Ruhiges Wandfeld und niedriges Medienmöbel: Schirme bleiben vollständig frei.
+      // Alle Bauteile gehören zum vorhandenen statischen Netz, ohne neue Texturen.
+      var akzent = THEMEN[name][1];
+      B.box(uc, 1.79, t + 0.018, BW + 0.7, 3.24, 0.036, akzent);
+      B.box(uc, 1.79, t + 0.043, BW + 0.61, 3.15, 0.018, '#eaece5');
+      B.box(uc, 0.105, t + 0.15, BW + 0.02, 0.13, 0.24, '#344c4a');
+      B.box(uc, 0.245, t + 0.17, BW + 0.12, 0.22, 0.3, akzent);
+      B.box(uc, 0.369, t + 0.18, BW + 0.17, 0.028, 0.34, '#c6ae89');
+      // Vier grifflose Fronten, gemeinsame Schattenfuge unter der warmen Deckplatte.
+      B.box(uc, 0.33, t + 0.326, BW + 0.03, 0.018, 0.014, '#304344');
+      for (var front = 1; front < 4; front++) B.box(uc - (BW + 0.12) / 2 + front * (BW + 0.12) / 4, 0.234, t + 0.326, 0.012, 0.17, 0.014, '#304344');
       rahmenB.t(wingX, 0, wingZ);
       gehaeuse(uc, BY, t + 0.04, BW + 0.42, BH + 0.42, 0.12, 0.14, '#82969a', 0, rahmenB);
       gehaeuse(uc, BY, t + 0.07, BW + 0.24, BH + 0.24, 0.1, 0.10, '#122b35', 0, rahmenB);
@@ -202,6 +213,14 @@
       var hasDesk = !!mdl('desk');
       if (hasDesk) {
         place('desk', dc[0], 0, dc[1], s.h, sc, { tischplatte: top, kante: K.shade(top, 0.78), gestell: s.style === 'dark' ? '#2b303c' : s.style === 'exec' ? '#344a53' : '#4b5260', container: s.style === 'dark' ? '#30343f' : s.style === 'exec' ? '#dce6e3' : '#e6e3dc' });
+        // Kabelführung unter der vorhandenen Tischplatte, hinter dem Sitzplatz.
+        // Keine neue Tischdekoration und keine Leitung quer durch die Laufwege.
+        B.push().t(dc[0], 0, dc[1]).ry(s.h).s(sc, sc, sc);
+        B.box(0, 0.61, 0.25, 0.82, 0.055, 0.13, '#465a5c');
+        B.box(-0.28, 0.66, 0.25, 0.024, 0.07, 0.08, '#82908d');
+        B.box(0.28, 0.66, 0.25, 0.024, 0.07, 0.08, '#82908d');
+        B.box(0.38, 0.43, 0.25, 0.035, 0.34, 0.04, '#344448');
+        B.pop();
         place('chair', s.x, 0, s.z, s.h + PI, s.boss ? 1.1 : 1, { polster: s.chair, akzent: K.shade(s.chair, 1.25) });
         var sp = loc(0, zc + 0.17 * sc - 0.004);
         o.screens.push({ x: sp[0], y: 1.12 * sc, z: sp[1], ry: s.h + PI, tilt: 0, w: 0.53 * sc, h: 0.29 * sc });
@@ -464,7 +483,13 @@
       var sx=-6.65+sl*0.289;
       B.box(sx,2.9,CZ-0.65,0.13,5.4,0.18,sl%3?'#a68a66':'#947655');
     }
-    gehaeuse(0, 0.22, CZ, 12.1, 0.32, 1.6, 0.14, '#335254');
+    // Geerdete Medienbank: zurückgesetzter Fuss, Steinoberfläche und Holzfront.
+    // Die Bank endet unter dem Monitorrahmen; Bild und Hittest bleiben unverändert.
+    B.box(0, 0.02, CZ, 11.7, 0.15, 1.32, '#304945');
+    gehaeuse(0, 0.22, CZ, 12.1, 0.32, 1.6, 0.14, '#b8c4b9');
+    B.box(0, 0.22, CZ + 0.803, 11.72, 0.2, 0.018, '#b89b74');
+    [-4, -2, 0, 2, 4].forEach(function(x){ B.box(x, 0.22, CZ + 0.816, 0.016, 0.2, 0.014, '#7d735d'); });
+    B.box(0, 0.345, CZ + 0.805, 11.72, 0.018, 0.025, '#4b6258');
     [-6.1, 6.1].forEach(function(x){
       gehaeuse(x, 3.1, CZ - 0.3, 0.3, 6.0, 0.42, 0.08, '#345c5b');
       B.box(x, 3.1, CZ - 0.06, 0.065, 5.5, 0.04, '#9bd4bf', 0.22);
@@ -483,12 +508,20 @@
     var ovM = stat(quad({ x: 0, y: CY, z: CZ + 0.16, w: CW, h: CH, emi: 1, tex: ovTex }));
     W.overview = { mesh: ovM, caseMesh: zentralCase, tex: ovTex, key: '', c: [0, CY, CZ + 0.16], w: CW, h: CH, az: 0 };
     W.campusPanel = { mn: [-CW / 2 - 0.15, CY - CH / 2 - 0.15, CZ - 0.1], mx: [CW / 2 + 0.15, CY + CH / 2 + 0.15, CZ + 0.35] };
-    // Sitzbereiche und Pflanzen auf dem Platz
+    // Sitzbereiche: echte Lamellenabstände, offene Metallbügel, Auflage am Boden.
+    // Ruhige Holz-/Grüntöne greifen die Materialien der Pavillons wieder auf.
     [-8.2, 8.2].forEach(function (x) {
-      B.box(x, 0.38, 12.6, 2.9, 0.18, 0.85, '#b99a73');
-      B.box(x, 0.74, 12.26, 2.9, 0.64, 0.12, '#7b9c91');
-      B.box(x - 1.1, 0.15, 12.6, 0.14, 0.35, 0.6, '#405862');
-      B.box(x + 1.1, 0.15, 12.6, 0.14, 0.35, 0.6, '#405862');
+      B.box(x, 0.29, 12.6, 2.76, 0.08, 0.66, '#38584f');
+      for (var latte = 0; latte < 5; latte++) B.box(x, 0.38, 12.27 + latte * 0.165, 2.9, 0.1, 0.145, latte % 2 ? '#c4a77e' : '#b99c72');
+      for (var lehne = 0; lehne < 3; lehne++) B.box(x, 0.6 + lehne * 0.18, 12.26, 2.9, 0.15, 0.09, lehne % 2 ? '#c4a77e' : '#b99c72');
+      [-1.15, 1.15].forEach(function(fuss){
+        B.box(x + fuss, GY + 0.018, 12.6, 0.22, 0.036, 0.74, '#273f3b');
+        B.box(x + fuss, 0.06, 12.34, 0.1, 0.42, 0.1, '#416358');
+        B.box(x + fuss, 0.06, 12.86, 0.1, 0.42, 0.1, '#416358');
+        B.box(x + fuss, 0.62, 12.21, 0.07, 0.8, 0.07, '#416358');
+        B.box(x + fuss, 0.55, 12.83, 0.07, 0.28, 0.07, '#416358');
+        B.box(x + fuss, 0.7, 12.54, 0.13, 0.06, 0.66, '#37544c');
+      });
       place('planter', x, 0, 8.5, 0, 0.72);
     });
     place('planter', -4.8, 0, 8.6, 0, 0.7); place('planter', 4.8, 0, 8.6, 0, 0.7);

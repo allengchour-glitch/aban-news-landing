@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Büro-Arbeitsstände und Raumdetails ·16.11.2026
+
+Design23 ergänzt vier getrennte Gruppen/Filter geladener Arbeitsstände, vollständiges Zentraljournal, nächsten Schritt und aufklappbare Quelle/Messzeit. Kein Verkaufs-/Gewinnzähler. Reproduzierter Quellenfokus-Verlust korrigiert. Statische Monitorwände, Medienmöbel, Kabelwannen und Bankdetails; keine neue Quelle, Frequenz, Kontoaktion oder Higgsfield-Revision.17 Modell-,21 Bot-,44 Bau- und31 Mutationsprüfungen grün; Browser-/CI-/Bereitstellungsbelege im zugehörigen PR. Nutzen: offene Arbeit schneller erkennen, finanzielle Wirkung ungemessen. Claude übernimmt vollständigen Drei-Seiten-Bau mit kb-stil.css unter Erhalt privater Daten/Eingaben; privater Upload erst nach Quittung bestätigt. Details in der kanonischen Übergabe.
+
+
 ## Lebenspfad: Atmosphäre und eigene Objekte ·16.11.2026
 
 Besitzerauftrag mit bestehender Live-Freigabe: acht abgestimmte Licht-/Himmelspaletten, korrekt kodierter Nebel, zwei feste Bergzüge und drei selbst modellierte Blender-GLBs. Willkommenstor am Start, Erinnerungsplatz im Familienkapitel, Sternwarte im Lebensabend; sichere Terrainplätze, auch mobil im Bild. Drei Assets zusammen254.156Bytes, fünf Materialien je Modell. Higgsfield-Anschluss hier nicht verfügbar; lokal mit Blender4.3.2 erzeugt, reproduzierbares bpy-Rezept und geprüfter Reimport liegen bei.

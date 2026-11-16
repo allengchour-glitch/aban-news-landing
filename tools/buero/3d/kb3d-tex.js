@@ -210,10 +210,11 @@
       g.fillStyle = '#f2f7fc'; g.font = 'bold 22px ' + FONT; g.fillText(lbFit(g, z.name, w - 32), x + 16, y + 29);
       g.fillStyle = c; g.font = '14px ' + FONT; g.fillText(lbFit(g, z.ergebnisWort + ' · ' + z.alter, w - 32), x + 16, y + 52);
       g.fillStyle = '#becfdd'; g.font = '18px ' + FONT;
-      lbZeilen(g, z.befund || z.text || 'Kein Befund übermittelt.', w - 32, h > 120 ? 3 : 2).forEach(function (t, i) { g.fillText(t, x + 16, y + 77 + i * 22); });
+      lbZeilen(g, z.befund || z.text || 'Kein Befund übermittelt.', w - 32, h > 120 && !z.naechster ? 3 : 2).forEach(function (t, i) { g.fillText(t, x + 16, y + 77 + i * 22); });
+      if (h > 120 && z.naechster) { g.fillStyle = '#a5e9df'; g.font = '14px ' + FONT; g.fillText(lbFit(g, 'Weiter: ' + z.naechster, w - 32), x + 16, y + 135); }
     }
     g.fillStyle = '#8fb0c8'; g.font = 'bold 15px ' + FONT; g.fillText('LETZTE ABSCHLÜSSE UND MELDUNGEN', 76, 130); g.fillText('AUFMERKSAMKEIT', 658, 130);
-    var links = (m.abgeschlossen || []).concat(m.meldungen || []).sort(function(a,b){return b.sortZeit-a.sortZeit;}).slice(0, 3);
+    var links = (m.zeilen || (m.abgeschlossen || []).concat(m.meldungen || []).sort(function(a,b){return b.sortZeit-a.sortZeit;})).slice(0, 3);
     if (!links.length) { g.fillStyle = '#c3d6e2'; g.font = '24px ' + FONT; lbZeilen(g, 'Noch keine datierte Arbeitsmeldung geladen.', 530, 3).forEach(function (z, i) { g.fillText(z, 92, 196 + i * 34); }); }
     links.forEach(function (z, i) { karte(z, 76, 146 + i * 106, 558, 98); });
     var rechts = (m.blocker || []).slice(0, 2);

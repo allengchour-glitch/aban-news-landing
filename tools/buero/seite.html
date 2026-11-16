@@ -535,9 +535,22 @@
 @media(max-width:640px){.kb3-viewer{padding:10px;border-radius:20px}.kb3-licht{gap:6px}.kb3-licht>span{flex-basis:100%}.kb3-licht .kb3-tool{flex:1;padding:10px 8px;min-width:0}.kb3-licht small{margin:3px 0 0;flex-basis:100%}.kb3-stage{border-radius:14px}}
 @media(prefers-color-scheme:dark){.kb3-stage{background:radial-gradient(ellipse at 50% 25%,#3c4847,#223639 65%,#15292e)}}
 @media(prefers-reduced-motion:reduce){.kb3-tool,.kb3-chip{transition:none}}
+
+/* Arbeitslage: Zähler beziehen sich ausschliesslich auf die geladenen Einträge. */
+.ll-ueberblick{padding:18px;border:1px solid var(--color-border-line);border-radius:14px;background:var(--color-bg);margin:16px 0 20px}
+.ll-ueberblick>strong{font-size:20px;letter-spacing:-.025em}.kb3-live-text .ll-einordnung{font-size:13px!important;max-width:80ch}
+.ll-verteilung{display:flex;gap:3px;height:8px;border-radius:6px;overflow:hidden;margin:14px 0;background:var(--color-panel)}.ll-verteilung span{flex-basis:0}
+.ll-gemeldet{background:#3f8175}.ll-aufmerksamkeit{background:#bd8730}.ll-veraltet{background:#85849c}.ll-ohneZeit{background:#8b959b}
+.ll-filter{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.ll-filter button{padding:12px 10px;border:1px solid var(--color-border-line);border-radius:10px;background:var(--color-panel);color:var(--color-fg);font:inherit;cursor:pointer;display:flex;flex-direction:column;gap:5px;align-items:flex-start;text-align:left}
+.ll-filter button strong{font-size:25px;font-variant-numeric:tabular-nums}.ll-filter button span{font-size:12px}.ll-filter button[aria-pressed="true"]{background:#234c50;border-color:#234c50;color:#fff}
+.ll-filter button:focus-visible,.ll-quelle summary:focus-visible{outline:3px solid var(--color-fg);outline-offset:3px}
+.ll-weiter,.ll-quelle{grid-column:2/-1;min-width:0}.ll-weiter{border-left:3px solid #8db4a7;padding:8px 12px;margin-top:12px;background:var(--color-panel);border-radius:0 8px 8px 0}
+.ll-weiter strong{font-size:12px;letter-spacing:.03em}.kb3-live-text .ll-weiter p{font-size:14px;line-height:1.5;color:var(--color-fg);margin:4px 0 0}
+.ll-quelle{border-top:1px solid var(--color-border-line);margin-top:12px;padding-top:8px;overflow-wrap:anywhere}.ll-quelle summary{font-size:13px;cursor:pointer;padding:8px 0;min-height:36px}.kb3-live-text .ll-quelle p{font-size:12px;line-height:1.5}.kb3-live-text .ll-leer{padding:16px;border:1px dashed var(--color-border-line);border-radius:12px}
+@media(max-width:640px){.ll-ueberblick{padding:14px}.ll-filter{grid-template-columns:repeat(2,minmax(0,1fr))}.ll-filter button:first-child{grid-column:1/-1;flex-direction:row;align-items:center;gap:12px}.ll-filter button{min-height:68px}.ll-filter button:first-child{min-height:44px}.ll-ueberblick>strong{font-size:18px}}
 </style>
 
-<div class="kb" data-design="campus-einheitlich-22">
+<div class="kb" data-design="campus-einheitlich-23">
   <header class="kb-head">
     <span class="kb-eyebrow">Arbeitsstand</span>
     <h1 class="kb-title">KI-Büro</h1>
@@ -1567,6 +1580,8 @@
 
   if (root) {
     root.addEventListener('click', function (ev) {
+      var mf=ev.target.closest&&ev.target.closest('[data-monitor-filter]');
+      if(mf&&root.contains(mf)&&made3d){var mn=made3d.monitorName();if(mn){monitorFilter[mn]=mf.dataset.monitorFilter;liveText(mn);}return;}
       var alles=ev.target.closest&&ev.target.closest('[data-alles-anzeigen]');
       if(alles&&root.contains(alles)){
         suchtext='';nurOffen=false;
@@ -1723,10 +1738,14 @@
     zeigeArbeitsmeldungen(box, K.arbeitsJournal(zustand3d(data, Date.now())));
   });
   /* Textfassung des gerade grossen Liveboards (am Handy lesbar, für Screenreader): nur Werte aus dem Modell der Szene */
+  var monitorFilter = {};
   var LL_WORT = { gruen: 'okay', gelb: 'prüfen', rot: 'Fehler', du: 'für dich', alt: 'alt' }, LL_ZEICHEN = { gruen: '●', gelb: '▲', rot: '■', du: '◆', alt: '○' };
   function liveText(name) {
     var box = viewer && viewer.querySelector('[data-live-text]');
     if (!box) return;
+    var fokus = box.contains(document.activeElement) ? document.activeElement.getAttribute('data-monitor-filter') : null;
+    var fokusQuelle = box.contains(document.activeElement) && document.activeElement.matches('.ll-quelle summary') ? document.activeElement.parentElement.dataset.monitorQuelle : null;
+    var offeneQuellen = Array.from(box.querySelectorAll('details[open]')).map(function(d){return d.dataset.monitorQuelle;});
     box.replaceChildren();
     var mo = name && made3d && made3d.liveModelle ? made3d.liveModelle() : null;
     if (!mo) { box.hidden = true; return; }
@@ -1736,19 +1755,49 @@
     box.appendChild(kopf);
     var stand = (m || u || {}).stand;
     box.appendChild(el('p', 'll-messstand', stand ? 'Messstand ' + stand : 'Messstand unbekannt.'));
-    var ul = el('ul'), liste = m ? m.zeilen : u ? (u.abgeschlossen || []).slice(0, 4).concat(u.meldungen || []).slice(0, 8) : [];
-    liste.forEach(function (z) {
+    var liste = m ? m.zeilen : u ? u.zeilen || [] : [], inhalt = null;
+    if (!(m && m.bot)) {
+      inhalt = window.KB3D.monitorInhalt(liste, monitorFilter[name]);liste = inhalt.zeilen;
+      var kasten = el('div', 'll-ueberblick'), legende = [['gemeldet','Stand gemeldet'],['aufmerksamkeit','Prüfen'],['veraltet','Veraltet'],['ohneZeit','Ohne Messzeit']];
+      kasten.appendChild(el('strong', '', inhalt.anzahl + ' geladene Arbeitsstände'));
+      kasten.appendChild(el('p', 'll-einordnung', 'Zeigt gemeldete Zustände, keine Verkäufe oder Gewinne. Fehlende und veraltete Messungen bleiben sichtbar.'));
+      var balken = el('div', 'll-verteilung');balken.setAttribute('aria-hidden','true');
+      legende.forEach(function(k){if(inhalt.zahlen[k[0]]){var s=el('span','ll-'+k[0]);s.style.flexGrow=inhalt.zahlen[k[0]];balken.appendChild(s);}});
+      kasten.appendChild(balken);
+      var filter = el('div','ll-filter');filter.setAttribute('role','group');filter.setAttribute('aria-label','Arbeitsstände filtern');
+      [['alle','Alle']].concat(legende).forEach(function(k){
+        var b=el('button','ll-filter-'+k[0]);b.type='button';b.dataset.monitorFilter=k[0];b.setAttribute('aria-pressed',String(inhalt.filter===k[0]));
+        b.appendChild(el('strong','',k[0]==='alle'?inhalt.anzahl:inhalt.zahlen[k[0]]));b.appendChild(el('span','',k[1]));filter.appendChild(b);
+      });kasten.appendChild(filter);box.appendChild(kasten);
+    }
+    var ul = el('ul');
+    liste.forEach(function (z, i) {
       var li = el('li'), l = el('span', 'll-lampe', LL_ZEICHEN[z.state] || '○'); l.style.color = farben[z.state] || farben.alt;
       li.appendChild(l); li.appendChild(el('span', 'll-name', z.name + ' – ' + (z.ergebnisWort || LL_WORT[z.state] || z.state)));
+      if (z.bereich) li.appendChild(el('span','ll-ereignis',z.bereich));
       if (z.text) li.appendChild(el('span', 'll-ereignis', z.text));
       if (z.befund) li.appendChild(el('span', 'll-befund', z.befund));
-      li.appendChild(el('span', 'll-ereignis', z.alter || 'Nicht gemessen')); ul.appendChild(li);
+      li.appendChild(el('span', 'll-ereignis', z.alter || 'Nicht gemessen'));
+      if (z.naechster) {var weiter=el('div','ll-weiter');weiter.appendChild(el('strong','','Nächster Schritt'));weiter.appendChild(el('p','',z.naechster));li.appendChild(weiter);}
+      if (!(m && m.bot)) {
+        var quelle=el('details','ll-quelle'), key=z.id || name+':'+i;quelle.dataset.monitorQuelle=key;quelle.open=offeneQuellen.indexOf(key)>=0;
+        quelle.appendChild(el('summary','','Quelle und Messung'));
+        quelle.appendChild(el('p','',z.quelle || 'Quelle nicht angegeben.'));
+        quelle.appendChild(el('p','',z.gemessen ? 'Gemessen: '+new Date(z.gemessen).toLocaleString('de-CH',{timeZone:'Europe/Zurich'})+' (Zürich)' : 'Keine gültige Messzeit.'));
+        li.appendChild(quelle);
+      }
+      ul.appendChild(li);
     });
-    if (!liste.length) box.appendChild(el('p', '', 'Noch keine datierte Arbeitsmeldung geladen.'));
+    if (!liste.length) box.appendChild(el('p', 'll-leer', inhalt && inhalt.anzahl ? 'Keine Arbeitsstände in diesem Filter. Unter «Alle» stehen die übrigen geladenen Einträge.' : 'Noch keine Arbeitsstände geladen. Eine fehlende Quelle ist kein fehlerfreier Betrieb.'));
     box.appendChild(ul);
     var zeit = (m || u || {}).zeit;
     if (zeit) box.appendChild(el('p', 'll-uhr', 'Büro-Uhr · ' + zeit + ' · Zürich. Die Uhr ist keine neue Messung.'));
     box.hidden = false;
+    if(fokus)box.querySelectorAll('[data-monitor-filter]').forEach(function(b){if(b.dataset.monitorFilter===fokus)b.focus({preventScroll:true});});
+    if(fokusQuelle){
+      var ziel=null;box.querySelectorAll('.ll-quelle').forEach(function(d){if(d.dataset.monitorQuelle===fokusQuelle)ziel=d.querySelector('summary');});
+      if(!ziel){kopf.tabIndex=-1;ziel=kopf;}ziel.focus({preventScroll:true});
+    }
   }
   function beschriftung3d(ent) {
     if (ent.id === '__chef') return klon('kb-label3d-du');
