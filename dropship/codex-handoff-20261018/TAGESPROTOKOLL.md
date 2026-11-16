@@ -3120,3 +3120,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](PROJEKTOR-SOCIAL-STATUS-20261116-R259.md) · [Belege](PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json) · [Produktionsgates](PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md) · [Captions](PROJEKTOR-KANALCAPTIONS-20261116-R259.json) · [Kategorieentwurf](LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md).
 
 [LUXESTYLE_R259_20261116]
+
+
+### R260 – Produktdetails, Varianten und Quellenblocker
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kontinuität | Core5/Revision 259 und heutigen Block frisch gelesen; Identitäten geprüft. | Historie, 24 Aufgaben, Tagesgrenzen und beendete Kaufwatch erhalten. |
+| Quellen | Vier Zweier-Suchen und sieben gezielte CJ-Detailabfragen inklusive einer belegten SKU-Normalisierung, Bilder/Varianten geprüft. | Drei schreibbare Angebote; drei Quellenblocker unverändert, keine Retry-Schleife. |
+| Produktdetails / SEO | Drei Titel, Body-Texte und SEO-Paare gezielt aktualisiert. | Fünf Writes an drei Produkten nativ bestätigt, Schutzfelder erhalten; öffentliche/mobile Prüfung im Beleg. |
+| Auswahl / Tabellen | Fünf Setfarben, zwei Organizerfarben und eine Standardausführung erklärt; Optionslabel nativ/Produkt-JSON Grösse zu Farbe korrigiert, HTML-Anzeige noch Grösse; separate Spezifikation geprüft. | Alle Options-/Werte-/Varianten-IDs und Werte erhalten; kein Versandgewicht als unbestätigtes Produktgewicht übernommen. |
+| Social / Kennzahlen | Offene R259-Tonentscheidung erhalten; keine Planer-Writes oder neuen Berichte. | R259-Planung nur datierter Beleg, keine neue Freigabe angenommen. |
+| Fortsetzung | Arbeitsliste ohne Reset um drei Live-Texte und drei Quellenfälle ergänzt. | 50 belegte Identitäten; globale Fertigquote und Merchant-Fehlerzahl unbekannt. |
+
+[Bericht](PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R260.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv).
+
+[LUXESTYLE_R260_20261116]

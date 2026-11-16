@@ -1,0 +1,2509 @@
+{
+  "run": "R260",
+  "atUtc": "2026-11-16T15:37:58Z",
+  "identity": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currencyCode": "CHF",
+      "ianaTimezone": "Europe/Zurich",
+      "primaryDomain": {
+        "host": "luxestyle.ch"
+      }
+    },
+    "brand": {
+      "id": 6227837,
+      "timezone": "Europe/Zurich",
+      "networks": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    },
+    "atUtc": "2026-11-16 15:03:05 UTC"
+  },
+  "scope": "Three existing product copy/SEO updates; three other source candidates blocked without edits. No whole-catalogue or current Merchant diagnostic claim.",
+  "allowedWriteFields": [
+    "title",
+    "descriptionHtml",
+    "seo.title",
+    "seo.description",
+    "oneExistingOption.name"
+  ],
+  "expectedOptionDiff": {
+    "id": "gid://shopify/ProductOption/17937980588417",
+    "before": "Grösse",
+    "after": "Farbe",
+    "strategy": "LEAVE_AS_IS",
+    "optionValuesUnchanged": true,
+    "mirroredSelectedOptionNameOnly": true
+  },
+  "shopifyMutationCalls": 5,
+  "initialProductCopyUpdates": 3,
+  "bodyAmendments": 1,
+  "optionNameUpdates": 1,
+  "reviewedInputs": [
+    {
+      "productId": "gid://shopify/Product/15493859312001",
+      "input": {
+        "id": "gid://shopify/Product/15493859312001",
+        "title": "19-teiliges Silikon-Küchenhelfer-Set – 5 Farben",
+        "descriptionHtml": "<p>Das 19-teilige Silikon-Küchenhelfer-Set verbindet verschiedene Küchenwerkzeuge mit einer farblich abgestimmten Aufbewahrung. Du kannst zwischen fünf Ausführungen wählen. Die Bilder zeigen unter anderem Löffel, Wender, Schneebesen und Schneidwerkzeuge in passenden Haltern. Welche 19 Einzelteile genau zur Lieferung gehören, ist in der schriftlichen Stückliste des Lieferanten noch nicht vollständig aufgeschlüsselt.</p>\n<h2>Welche Farbe passt zu deiner Küche?</h2>\n<p>Alle fünf angebotenen Ausführungen sind als 19-teiliges Set bezeichnet. Die Auswahl ändert die Farbe des Sets. Die englischen Bezeichnungen im Auswahlfeld entsprechen folgenden Farben:</p>\n<table><thead><tr><th>Auswahl im Shop</th><th>Farbe</th></tr></thead><tbody><tr><td>Kitchenware 19PCs Light Green</td><td>Hellgrün</td></tr><tr><td>Kitchenware 19PCs Pink</td><td>Pink</td></tr><tr><td>Kitchenware 19PCs Gray</td><td>Grau</td></tr><tr><td>Kitchenware 19PCs Black</td><td>Schwarz</td></tr><tr><td>Kitchenware 19PCs Dark Green</td><td>Dunkelgrün</td></tr></tbody></table>\n<p>Orientiere dich zusätzlich am Bild der gewählten Ausführung. Bestellt wird ein Set in dieser Farbe; die fünf Farben werden nicht zusammen geliefert.</p>\n\n<div class=\"ls-produktdetails\"><ul><li><strong>Ausführung:</strong> 19-teiliges Küchenhelfer-Set laut Lieferant.</li><li><strong>Material:</strong> Silikon laut Lieferantenbeschreibung; die Materialzusammensetzung von Griffen, Haltern und jedem einzelnen Werkzeug ist nicht vollständig ausgewiesen.</li><li><strong>Farben:</strong> Hellgrün, Pink, Grau, Schwarz oder Dunkelgrün.</li><li><strong>Masse:</strong> Einzelmasse der Werkzeuge und Halter noch nicht bestätigt.</li><li><strong>Gewicht:</strong> Produktgewicht noch nicht abschliessend bestätigt.</li><li><strong>Lieferumfang:</strong> Ein Küchenhelfer-Set in der gewählten Farbe; vollständige Stückliste der 19 Bestandteile noch offen.</li></ul></div>\n<h2>Vor dem Kauf und der ersten Nutzung</h2>\n<p>Wenn du ein bestimmtes Werkzeug benötigst, prüfe dessen Lieferumfang vor der Bestellung. Die Produktbilder helfen bei der Ansicht von Form und Farbe, ersetzen aber keine vollständige Packliste. Abgebildete Küchenutensilien lassen sich nicht einzeln über die Farbauswahl bestellen.</p>\n<p>Temperaturgrenzen, Spülmaschineneignung und die Eignung für bestimmte Kochflächen sind noch nicht bestätigt. Aus der Bezeichnung Silikon lässt sich keine Freigabe für direkten Kontakt mit Herdplatten oder Backofenhitze ableiten. Beachte vor der Nutzung vorhandene Pflege- und Anwendungshinweise.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "seo": {
+          "title": "19-teiliges Silikon-Küchenhelfer-Set | LuxeStyle",
+          "description": "19-teiliges Silikon-Küchenhelfer-Set in fünf Farben. Vergleiche die Farbvarianten und erfahre mehr zu Material, Lieferumfang und offenen Produktangaben."
+        }
+      },
+      "sourceFiles": [
+        "kitchen/15493859312001-cj-detail-raw.json"
+      ],
+      "sourceReview": "Five current native SKUs match five CJ children exactly; Root viewed all five image pairs. Silicone is explicitly named in supplier prose; generic Others classification does not disprove it. No unsupported all-silicone, heat, dishwasher or food-contact certification claim. Individual contents and actual product weight remain open. Existing managed cross-sell suffix retained exactly.",
+      "wordCount": 275
+    },
+    {
+      "productId": "gid://shopify/Product/15448836899201",
+      "input": {
+        "id": "gid://shopify/Product/15448836899201",
+        "title": "Seitlicher Tassen-Organizer für Getränkemaschinen",
+        "descriptionHtml": "<p>Dieser seitliche Organizer hält Becher, Deckel und Trinkhalme an einem Ort, statt sie lose neben der Getränkemaschine aufzubewahren. Die Produktbilder zeigen ein schwarzes Ablageelement mit getrennten Haltern, das an der Seite einer Maschine angebracht wird. Die Lieferantenbeschreibung nennt Becher, Deckel und Trinkhalme als vorgesehene Inhalte der Ablagen.</p>\n<h2>Aufstellung und Modellpassung</h2>\n<p>Der Lieferant führt den Organizer für die Slushie-Maschinen Ninja FS301 und FS300 auf. Diese Modellangabe stammt aus der Produktbeschreibung und ist keine unabhängige Passformprüfung. Da keine Einbaumasse und keine Angaben zur Befestigung mitgeliefert werden, solltest du vor dem Kauf Modellbezeichnung und verfügbare Seitenfläche an deiner Maschine vergleichen. Eine allgemeine Kompatibilität mit allen Getränkemaschinen lässt sich aus den Angaben nicht ableiten.</p>\n<p>Vor der Nutzung solltest du prüfen, wo am Gerät der Halter angebracht werden kann und ob genug Platz für Maschine und Organizer bleibt. Die Lieferantenbeschreibung nennt eine seitliche Montage, erklärt aber weder die Befestigung noch den benötigten Freiraum. Eine konkrete Montageanleitung liegt nicht vor.</p>\n<h2>Ausführung und Lieferumfang</h2>\n<p>Im Shop gibt es eine Standardauswahl ohne separaten Farbwechsel. Die angebotene Ausführung ist Schwarz; auch das Produktbild zeigt einen schwarzen Organizer. Die Packangabe zählt keine enthaltenen Teile einzeln auf. Becher, Deckel und Trinkhalme sind als Aufbewahrungszweck beschrieben, nicht als mitgelieferte Produkte. Ob Befestigungsteile beiliegen, ist offen. Die Materialzusammensetzung und die Gerätemasse sind nicht eindeutig ausgewiesen.</p>\n<div class=\"ls-produktdetails\"><h4>Produktdetails</h4><ul><li><strong>Material:</strong> in den verfügbaren Angaben nicht näher bezeichnet</li><li><strong>Gewicht:</strong> Produktgewicht noch nicht eindeutig bestätigt</li><li><strong>Masse:</strong> nicht eindeutig als Produktmasse bestätigt</li></ul></div>\n<h2>Häufige Fragen</h2>\n<p><strong>Was lässt sich darin aufbewahren?</strong><br>Die Lieferantenbeschreibung nennt Becher, Deckel und Trinkhalme. Welche Abmessungen hineinpassen, ist nicht angegeben.</p>\n<p><strong>Passt der Organizer auf meine Maschine?</strong><br>Als Zielmodelle werden Ninja FS301 und FS300 genannt. Prüfe vorab deine genaue Modellbezeichnung und Montagefläche; eine allgemeine Passform ist nicht belegt.</p>\n<p><strong>Was ist im Paket enthalten?</strong><br>Die Packangabe listet keine Einzelteile. Aus den Ablagebeispielen lässt sich kein Zubehörumfang ableiten; Befestigungsteile sind nicht bestätigt.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "seo": {
+          "title": "Tassenhalter mit Deckel- und Trinkhalmablage | LuxeStyle",
+          "description": "Seitlicher Organizer für Becher, Deckel und Trinkhalme. Lieferantenangaben nennen Ninja FS301/FS300; bitte die Passung vor dem Kauf prüfen."
+        }
+      },
+      "wordCount": 313,
+      "sourceFiles": [
+        "home/cup-organizer-cj.json"
+      ],
+      "sourceReview": [
+        "Präzise Geräte-/Montagemasse und Befestigungsart fehlen; Gerätepassung für FS301/FS300 nicht unabhängig geprüft.",
+        "Paketliste nennt keine Einzelteile; Rack/Befestigungsteile beziehungsweise Montagezubehör klären.",
+        "Materialzusammensetzung ist im strukturierten Lieferantenfeld nicht näher ausgewiesen.",
+        "Shop bietet Default Title ohne Auswahlwert; der einzige CJ-Child ist Schwarz. Root soll die native Produktsku/Optionsbindung vor Write final abgleichen.",
+        "Die Lieferantenwerte 250×150×150 mm sind nicht klar als Produkt- oder Versandmass gekennzeichnet; nicht als Gerätemass publizieren."
+      ]
+    },
+    {
+      "productId": "gid://shopify/Product/15447868146049",
+      "input": {
+        "id": "gid://shopify/Product/15447868146049",
+        "title": "Schreibtisch-Organizer mit kabelloser Ladefunktion",
+        "descriptionHtml": "<p>Dieser Schreibtisch-Organizer verbindet ein offenes Stiftefach mit einer Fläche für kabelloses Laden. Die Produktbilder zeigen beide Bereiche auf einer gemeinsamen Basis: ein Fach für Stifte und eine aufrecht stehende Ladefläche. So liegen Schreibutensilien geordnet bereit, während ein geeignetes Gerät zum Laden abgelegt werden kann. Die Lieferantenangaben führen das Produkt als Desktop-Organizer mit Wireless Charging; genaue technische Ladeangaben fehlen.</p>\n<h2>Weiss oder Schwarz auswählen</h2>\n<p>Im Shop stehen zwei Ausführungen zur Wahl. Die Bildzuordnung zeigt die weisse und die schwarze Variante jeweils mit passender Farbansicht. Wähle die gewünschte Farbe direkt in der vorhandenen Produktoption:</p>\n<table><thead><tr><th>Shop-Auswahl</th><th>Ausführung</th></tr></thead><tbody><tr><td>Weiss</td><td>Weisser Organizer</td></tr><tr><td>Schwarz</td><td>Schwarzer Organizer</td></tr></tbody></table>\n<p>Die beiden Ausführungen zeigen dieselbe Grundform; in den vorliegenden Angaben ist nur die Gehäusefarbe als Unterschied beschrieben. Auswahlwerte zu Grösse, Ladeleistung oder zusätzlichem Zubehör gibt es nicht. Das Stiftefach dient als Ablage; eine bestimmte Stiftzahl oder passende Abmessung wird nicht angegeben.</p>\n<h2>Material und Ladefunktion</h2>\n<p>Der Lieferant nennt Kunststoff als Material. Die genauen Aussenmasse sind noch nicht bestätigt; die vorliegenden Massangaben unterscheiden nicht eindeutig zwischen Gerät und Verpackung. Ladeleistung, Ladeanschluss, unterstützter Ladestandard und konkrete Gerätekompatibilität sind ebenfalls nicht angegeben. Prüfe deshalb vor der Nutzung, ob dein Gerät kabelloses Laden unterstützt und wie es auf der Ladefläche liegen muss. Ein bestimmter Ladestandard oder eine Ladegeschwindigkeit wird hier nicht zugesichert.</p>\n<div class=\"ls-produktdetails\"><h4>Produktdetails</h4><ul><li><strong>Material:</strong> Kunststoff laut Lieferantenangabe</li><li><strong>Gewicht:</strong> nicht eindeutig bestätigt</li><li><strong>Masse:</strong> nicht eindeutig als Produktmasse ausgewiesen</li></ul></div>\n<h2>Häufige Fragen</h2>\n<p><strong>Welche Farben kann ich auswählen?</strong><br>Im Shop sind Weiss und Schwarz als getrennte Ausführungen hinterlegt. Wähle die gewünschte Farbe direkt am Produkt.</p>\n<p><strong>Welche Geräte lassen sich laden?</strong><br>Die Produktquelle nennt kabelloses Laden, führt aber weder Standard noch kompatible Gerätemodelle oder Leistung auf. Prüfe die Eignung deines Geräts vorab.</p>\n<p><strong>Ist ein Kabel oder Netzteil enthalten?</strong><br>Die Lieferanten-Packliste benennt Kabel oder Netzteil nicht eindeutig. Diese Teile werden deshalb nicht als enthalten zugesichert.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+        "seo": {
+          "title": "Schreibtisch-Organizer mit kabelloser Ladefunktion | LuxeStyle",
+          "description": "Schreibtisch-Organizer aus Kunststoff mit Stiftefach und kabelloser Ladefunktion. Wähle Weiss oder Schwarz; Ladeleistung und Kabelumfang sind offen."
+        }
+      },
+      "wordCount": 304,
+      "sourceFiles": [
+        "home/desktop-organizer-cj.json"
+      ],
+      "sourceReview": [
+        "Kompatible Ladestandards, Ladeleistung, Eingang/Anschluss und konkrete Geräteliste fehlen.",
+        "Packlistenbegriff «Charging x1» ist mehrdeutig; Lieferumfang (Organizer, Kabel, Netzteil) klären.",
+        "Variantendaten 165×75×108 sind nicht eindeutig als Gerätemasse von Verpackungs-/Logistikmass unterscheidbar; nicht als Produktmass verwenden.",
+        "Supplier productWeight 180 g versus variantWeight/packingWeight 200 g; productWeight is 180 g but variant/packing weight is 200 g; no verified device weight.",
+        "Weiss/Schwarz child SKUs and matching images are confirmed by filename stem, but image rights remain unknown."
+      ]
+    }
+  ],
+  "nativeBefore": {
+    "15493859312001": {
+      "id": "gid://shopify/Product/15493859312001",
+      "title": "19-teiliges Silikon-Küchenhelfer-Set",
+      "descriptionHtml": "<!-- ls-var-v1 --><p>Dieses 19-teilige Küchenhelfer-Set aus Silikon ist eine praktische Ergänzung für jede moderne Küche. Das Set bietet eine umfassende Auswahl an Werkzeugen, die für eine Vielzahl von Koch- und Backaufgaben geeignet sind.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Umfassendes 19-teiliges Set für vielseitigen Küchengebrauch</li>\n<li>Hergestellt aus hochwertigem Silikonmaterial</li>\n\n<li>Modernes und schlichtes Design</li>\n<li>Praktische Ergänzung für jede Küche</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "19-teiliges Silikon-Küchenhelfer-Set | LuxeStyle CH",
+        "description": "19-teiliges Silikon-Küchenhelfer-Set bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "updatedAt": "2026-11-02T06:50:03Z",
+      "status": "ACTIVE",
+      "handle": "19-teiliges-silikon-kuchenhelfer-set-605300",
+      "onlineStoreUrl": "https://luxestyle.ch/products/19-teiliges-silikon-kuchenhelfer-set-605300",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "kuechenhelfer",
+        "neuheit",
+        "rueckhol-0907",
+        "sort-kochutensilien-sets",
+        "sort-kochutensilien-silikon",
+        "sort-kuechenhelfer",
+        "varianten-nachgezogen-1025"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17937980588417",
+          "name": "Grösse",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305540999",
+              "name": "Kitchenware 19PCs Light Green",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305573767",
+              "name": "Kitchenware 19PCs Pink",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305606535",
+              "name": "Kitchenware 19PCs Gray",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305639303",
+              "name": "Kitchenware 19PCs Black",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305672071",
+              "name": "Kitchenware 19PCs Dark Green",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70478976123265",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 2 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5843cff-cc32-4095-b3af-bded84226e08.jpg?v=1786424270",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976090497",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 1 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/113f3fce-59df-4ab0-bfda-088708bce8e9.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976156033",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 3 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/58491dab-fd2d-423f-8483-4cdaebd1465d.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976188801",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 4 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/530637be-1716-4c02-b5b0-e5f130dbb759.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976221569",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 5 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3b9ca772-7fd5-4f3c-ae09-3417fd790d3e.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976254337",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 6 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5ca3bec0-fc49-4c64-a36f-9e7cfd61b589.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976287105",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 7 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f5a74498-b32f-4a54-969b-6f3e927d18f6.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/77918363582855",
+            "mediaContentType": "IMAGE",
+            "alt": "",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/530637be-1716-4c02-b5b0-e5f130dbb759_89541e0f-ef22-4dc2-85f9-0cdfcd6a9aa8.jpg?v=1793584037",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3NzkxODM2MzU4Mjg1NSwibGFzdF92YWx1ZSI6IjgifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67870932042119",
+            "title": "Kitchenware 19PCs Light Green",
+            "sku": "CJYD234107701AZ",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "Kitchenware 19PCs Light Green"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624544647",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70478976221569"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDQ3ODk3NjIyMTU2OSwibGFzdF92YWx1ZSI6NzA0Nzg5NzYyMjE1Njl9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67870932074887",
+            "title": "Kitchenware 19PCs Pink",
+            "sku": "CJYD234107702BY",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "Kitchenware 19PCs Pink"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624577415",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70478976156033"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDQ3ODk3NjE1NjAzMywibGFzdF92YWx1ZSI6NzA0Nzg5NzYxNTYwMzN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67870932107655",
+            "title": "Kitchenware 19PCs Gray",
+            "sku": "CJYD234107703CX",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "Kitchenware 19PCs Gray"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624610183",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70478976287105"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDQ3ODk3NjI4NzEwNSwibGFzdF92YWx1ZSI6NzA0Nzg5NzYyODcxMDV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67870932140423",
+            "title": "Kitchenware 19PCs Black",
+            "sku": "CJYD234107704DW",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "Kitchenware 19PCs Black"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624642951",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/77918363582855"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3NzkxODM2MzU4Mjg1NSwibGFzdF92YWx1ZSI6Nzc5MTgzNjM1ODI4NTV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67870932173191",
+            "title": "Kitchenware 19PCs Dark Green",
+            "sku": "CJYD234107705EV",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Grösse",
+                "value": "Kitchenware 19PCs Dark Green"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624675719",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70478976090497"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDQ3ODk3NjA5MDQ5NywibGFzdF92YWx1ZSI6NzA0Nzg5NzYwOTA0OTd9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2Nzg3MDkzMjE3MzE5MSwibGFzdF92YWx1ZSI6NX0="
+        }
+      }
+    },
+    "15448836899201": {
+      "id": "gid://shopify/Product/15448836899201",
+      "title": "Tassen-Organizer für Getränkemaschinen",
+      "descriptionHtml": "<p>Dieser praktische Tassen-Organizer wurde speziell für Getränkemaschinen entwickelt und sorgt für Ordnung in jeder Küche, Bar oder im Büro. Er kombiniert nahtlose Integration mit optimaler Benutzerfreundlichkeit und bietet eine zuverlässige Aufbewahrungslösung für Becher und Deckel.</p><p>Dank seines vielseitigen Designs kannst du nicht nur Becher und Deckel, sonderst auch Strohhalme übersichtlich verstauen. Die innovative, platzsparende Konfiguration hilft, den Bereich rund um deine Getränkemaschine stets organisiert zu halten. Das robuste Design gewährleistet eine langlebige Nutzung und ist zudem leicht zu reinigen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Optimaler Spender für Tassen und Deckel</li>\n<li>Vielseitige Aufbewahrung für Becher, Deckel und Strohhalme</li>\n<li>Platzsparendes Design zur besseren Organisation</li>\n<li>Robuste Konstruktion für langanhaltende Leistung</li>\n<li>Einfache Reinigung</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Tassen-Organizer für Getränkemaschinen | LuxeStyle CH",
+        "description": "Tassen-Organizer für Getränkemaschinen bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "updatedAt": "2026-10-25T23:09:43Z",
+      "status": "ACTIVE",
+      "handle": "tassen-organizer-fur-getrankemaschinen-640961",
+      "onlineStoreUrl": "https://luxestyle.ch/products/tassen-organizer-fur-getrankemaschinen-640961",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "geschenkwelt-unter100",
+        "geschenkwelt-unter50",
+        "getraenkemaschinen",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "rueckhol-0907",
+        "sort-kuechenorganizer"
+      ],
+      "hasOnlyDefaultVariant": true,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17880354357633",
+          "name": "Title",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12026488095105",
+              "name": "Default Title",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69861242143105",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f9600368-eed3-4e87-8f99-cf4b46159caa.jpg?v=1783188526",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861242175873",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen – Ansicht 2",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fe432954-d783-40a0-bc13-fcbc4a58c9df.jpg?v=1783188527",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861242208641",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen – Ansicht 3",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4d0d7736-d3b4-42f9-bcda-dc7691d2b9ec.jpg?v=1783188526",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861242241409",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen – Ansicht 4",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/73bc0b2d-8925-4857-82aa-8f42b506a861.jpg?v=1783188526",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861242274177",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen – Ansicht 5",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4dfe9ee6-9f78-4102-9377-437a4b83fb24.jpg?v=1783188526",
+              "width": 1000,
+              "height": 1000
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTg2MTI0MjI3NDE3NywibGFzdF92YWx1ZSI6IjUifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55877816484225",
+            "title": "Default Title",
+            "sku": "CJ-2072848792217640961",
+            "price": "41.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55230059970945",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 400,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTg3NzgxNjQ4NDIyNSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    "15447868146049": {
+      "id": "gid://shopify/Product/15447868146049",
+      "title": "Organizer mit Wireless Charger",
+      "descriptionHtml": "<p>Dieser vielseitige Desktop-Organizer bringt Ordnung auf jeden Schreibtisch. Er kombiniert einen praktischen Stifthalter mit einer integrierten kabellosen Ladefunktion, ideal für Smartphones und andere kompatible Geräte. So bleiben deine wichtigsten Utensilien stets griffbereit und dein Gerät ist immer geladen, ohne Kabelsalat. Das moderne Design fügt sich nahtlos in jede Büroumgebung ein und ist in den Farben Weiss und Schwarz erhältlich. Ein Must-have für alle, die Wert auf Effizienz und eine aufgeräumte Arbeitsfläche legen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Kabelloses Laden für kompatible Geräte</li>\n<li>Integrierter Stifthalter für mehr Ordnung</li>\n<li>Lieferung wie abgebildet</li>\n<li>Universelles Design für jeden Schreibtisch</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Organizer mit Wireless Charger | LuxeStyle CH",
+        "description": "Organizer mit Wireless Charger bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+      },
+      "updatedAt": "2026-10-24T06:23:53Z",
+      "status": "ACTIVE",
+      "handle": "organizer-mit-wireless-charger-604400",
+      "onlineStoreUrl": "https://luxestyle.ch/products/organizer-mit-wireless-charger-604400",
+      "vendor": "LuxeStyle",
+      "productType": "Elektronik",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "rueckhol-0907",
+        "tech"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17879262200193",
+          "name": "Farbe",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12309890138497",
+              "name": "Weiss",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12309890171265",
+              "name": "Schwarz",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69852385444225",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger – Ansicht 5",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ff67531-8dae-4649-bced-d1db5f6c6258_trans.jpg?v=1783113594",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69852385313153",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/757c7adc-9504-4ba5-a643-8f383d8a439d_trans.jpg?v=1783113594",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69852385345921",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger – Ansicht 2",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eb3747f2-085d-46f7-b7cb-da77a560f8c2_trans.jpg?v=1783113595",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69852385378689",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger – Ansicht 3",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/050a2884-045b-4664-b759-131b798a9d36_trans.jpg?v=1783113594",
+              "width": 900,
+              "height": 900
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69852385411457",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger – Ansicht 4",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d0d8846e-0133-478c-869f-a15df825c9d0_trans.jpg?v=1783113594",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70553495536001",
+            "mediaContentType": "IMAGE",
+            "alt": "LuxeStyle Organizer mit Wireless Charger – Bild 6 – LuxeStyle Schweiz",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ff67531-8dae-4649-bced-d1db5f6c6258_trans_6ee2d346-ec32-4d39-9d59-016dd98e14ce.jpg?v=1786912814",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70553495568769",
+            "mediaContentType": "IMAGE",
+            "alt": "LuxeStyle Organizer mit Wireless Charger – Bild 7 – LuxeStyle Schweiz",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/050a2884-045b-4664-b759-131b798a9d36_trans_c5f048f4-b52f-422e-a19d-3342dc2905d0.jpg?v=1786912813",
+              "width": 900,
+              "height": 900
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3MDU1MzQ5NTU2ODc2OSwibGFzdF92YWx1ZSI6IjcifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56063703810433",
+            "title": "Weiss",
+            "sku": "CJ-CJYD272573001AZ",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Weiss"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55419621605761",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 200,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70553495536001"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDU1MzQ5NTUzNjAwMSwibGFzdF92YWx1ZSI6NzA1NTM0OTU1MzYwMDF9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063703843201",
+            "title": "Schwarz",
+            "sku": "CJ-CJYD272573002BY",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Schwarz"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55419621638529",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 200,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70553495568769"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDU1MzQ5NTU2ODc2OSwibGFzdF92YWx1ZSI6NzA1NTM0OTU1Njg3Njl9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NjA2MzcwMzg0MzIwMSwibGFzdF92YWx1ZSI6Mn0="
+        }
+      }
+    }
+  },
+  "nativeAfter": {
+    "15493859312001": {
+      "id": "gid://shopify/Product/15493859312001",
+      "title": "19-teiliges Silikon-Küchenhelfer-Set – 5 Farben",
+      "descriptionHtml": "<p>Das 19-teilige Silikon-Küchenhelfer-Set verbindet verschiedene Küchenwerkzeuge mit einer farblich abgestimmten Aufbewahrung. Du kannst zwischen fünf Ausführungen wählen. Die Bilder zeigen unter anderem Löffel, Wender, Schneebesen und Schneidwerkzeuge in passenden Haltern. Welche 19 Einzelteile genau zur Lieferung gehören, ist in der schriftlichen Stückliste des Lieferanten noch nicht vollständig aufgeschlüsselt.</p>\n<h2>Welche Farbe passt zu deiner Küche?</h2>\n<p>Alle fünf angebotenen Ausführungen sind als 19-teiliges Set bezeichnet. Die Auswahl ändert die Farbe des Sets. Die englischen Bezeichnungen im Auswahlfeld entsprechen folgenden Farben:</p>\n<table>\n<thead><tr>\n<th>Auswahl im Shop</th>\n<th>Farbe</th>\n</tr></thead>\n<tbody>\n<tr>\n<td>Kitchenware 19PCs Light Green</td>\n<td>Hellgrün</td>\n</tr>\n<tr>\n<td>Kitchenware 19PCs Pink</td>\n<td>Pink</td>\n</tr>\n<tr>\n<td>Kitchenware 19PCs Gray</td>\n<td>Grau</td>\n</tr>\n<tr>\n<td>Kitchenware 19PCs Black</td>\n<td>Schwarz</td>\n</tr>\n<tr>\n<td>Kitchenware 19PCs Dark Green</td>\n<td>Dunkelgrün</td>\n</tr>\n</tbody>\n</table>\n<p>Orientiere dich zusätzlich am Bild der gewählten Ausführung. Bestellt wird ein Set in dieser Farbe; die fünf Farben werden nicht zusammen geliefert.</p>\n\n<div class=\"ls-produktdetails\"><ul>\n<li>\n<strong>Ausführung:</strong> 19-teiliges Küchenhelfer-Set laut Lieferant.</li>\n<li>\n<strong>Material:</strong> Silikon laut Lieferantenbeschreibung; die Materialzusammensetzung von Griffen, Haltern und jedem einzelnen Werkzeug ist nicht vollständig ausgewiesen.</li>\n<li>\n<strong>Farben:</strong> Hellgrün, Pink, Grau, Schwarz oder Dunkelgrün.</li>\n<li>\n<strong>Masse:</strong> Einzelmasse der Werkzeuge und Halter noch nicht bestätigt.</li>\n<li>\n<strong>Gewicht:</strong> Produktgewicht noch nicht abschliessend bestätigt.</li>\n<li>\n<strong>Lieferumfang:</strong> Ein Küchenhelfer-Set in der gewählten Farbe; vollständige Stückliste der 19 Bestandteile noch offen.</li>\n</ul></div>\n<h2>Vor dem Kauf und der ersten Nutzung</h2>\n<p>Wenn du ein bestimmtes Werkzeug benötigst, prüfe dessen Lieferumfang vor der Bestellung. Die Produktbilder helfen bei der Ansicht von Form und Farbe, ersetzen aber keine vollständige Packliste. Abgebildete Küchenutensilien lassen sich nicht einzeln über die Farbauswahl bestellen.</p>\n<p>Temperaturgrenzen, Spülmaschineneignung und die Eignung für bestimmte Kochflächen sind noch nicht bestätigt. Aus der Bezeichnung Silikon lässt sich keine Freigabe für direkten Kontakt mit Herdplatten oder Backofenhitze ableiten. Beachte vor der Nutzung vorhandene Pflege- und Anwendungshinweise.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "19-teiliges Silikon-Küchenhelfer-Set | LuxeStyle",
+        "description": "19-teiliges Silikon-Küchenhelfer-Set in fünf Farben. Vergleiche die Farbvarianten und erfahre mehr zu Material, Lieferumfang und offenen Produktangaben."
+      },
+      "updatedAt": "2026-11-16T15:25:43Z",
+      "status": "ACTIVE",
+      "handle": "19-teiliges-silikon-kuchenhelfer-set-605300",
+      "onlineStoreUrl": "https://luxestyle.ch/products/19-teiliges-silikon-kuchenhelfer-set-605300",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "kuechenhelfer",
+        "neuheit",
+        "rueckhol-0907",
+        "sort-kochutensilien-sets",
+        "sort-kochutensilien-silikon",
+        "sort-kuechenhelfer",
+        "varianten-nachgezogen-1025"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17937980588417",
+          "name": "Farbe",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305540999",
+              "name": "Kitchenware 19PCs Light Green",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305573767",
+              "name": "Kitchenware 19PCs Pink",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305606535",
+              "name": "Kitchenware 19PCs Gray",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305639303",
+              "name": "Kitchenware 19PCs Black",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/58741305672071",
+              "name": "Kitchenware 19PCs Dark Green",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70478976123265",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 2 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5843cff-cc32-4095-b3af-bded84226e08.jpg?v=1786424270",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976090497",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 1 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/113f3fce-59df-4ab0-bfda-088708bce8e9.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976156033",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 3 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/58491dab-fd2d-423f-8483-4cdaebd1465d.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976188801",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 4 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/530637be-1716-4c02-b5b0-e5f130dbb759.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976221569",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 5 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3b9ca772-7fd5-4f3c-ae09-3417fd790d3e.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976254337",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 6 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5ca3bec0-fc49-4c64-a36f-9e7cfd61b589.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70478976287105",
+            "mediaContentType": "IMAGE",
+            "alt": "19-teiliges Silikon-Küchenhelfer-Set – Bild 7 | LuxeStyle",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f5a74498-b32f-4a54-969b-6f3e927d18f6.jpg?v=1786424269",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/77918363582855",
+            "mediaContentType": "IMAGE",
+            "alt": "",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/530637be-1716-4c02-b5b0-e5f130dbb759_89541e0f-ef22-4dc2-85f9-0cdfcd6a9aa8.jpg?v=1793584037",
+              "width": 800,
+              "height": 800
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3NzkxODM2MzU4Mjg1NSwibGFzdF92YWx1ZSI6IjgifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/67870932042119",
+            "title": "Kitchenware 19PCs Light Green",
+            "sku": "CJYD234107701AZ",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Kitchenware 19PCs Light Green"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624544647",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70478976221569"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDQ3ODk3NjIyMTU2OSwibGFzdF92YWx1ZSI6NzA0Nzg5NzYyMjE1Njl9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67870932074887",
+            "title": "Kitchenware 19PCs Pink",
+            "sku": "CJYD234107702BY",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Kitchenware 19PCs Pink"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624577415",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70478976156033"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDQ3ODk3NjE1NjAzMywibGFzdF92YWx1ZSI6NzA0Nzg5NzYxNTYwMzN9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67870932107655",
+            "title": "Kitchenware 19PCs Gray",
+            "sku": "CJYD234107703CX",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Kitchenware 19PCs Gray"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624610183",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70478976287105"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDQ3ODk3NjI4NzEwNSwibGFzdF92YWx1ZSI6NzA0Nzg5NzYyODcxMDV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67870932140423",
+            "title": "Kitchenware 19PCs Black",
+            "sku": "CJYD234107704DW",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Kitchenware 19PCs Black"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624642951",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/77918363582855"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3NzkxODM2MzU4Mjg1NSwibGFzdF92YWx1ZSI6Nzc5MTgzNjM1ODI4NTV9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/67870932173191",
+            "title": "Kitchenware 19PCs Dark Green",
+            "sku": "CJYD234107705EV",
+            "price": "59.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Kitchenware 19PCs Dark Green"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/69887624675719",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 0,
+                  "unit": "KILOGRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70478976090497"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDQ3ODk3NjA5MDQ5NywibGFzdF92YWx1ZSI6NzA0Nzg5NzYwOTA0OTd9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2Nzg3MDkzMjE3MzE5MSwibGFzdF92YWx1ZSI6NX0="
+        }
+      }
+    },
+    "15448836899201": {
+      "id": "gid://shopify/Product/15448836899201",
+      "title": "Seitlicher Tassen-Organizer für Getränkemaschinen",
+      "descriptionHtml": "<p>Dieser seitliche Organizer hält Becher, Deckel und Trinkhalme an einem Ort, statt sie lose neben der Getränkemaschine aufzubewahren. Die Produktbilder zeigen ein schwarzes Ablageelement mit getrennten Haltern, das an der Seite einer Maschine angebracht wird. Die Lieferantenbeschreibung nennt Becher, Deckel und Trinkhalme als vorgesehene Inhalte der Ablagen.</p>\n<h2>Aufstellung und Modellpassung</h2>\n<p>Der Lieferant führt den Organizer für die Slushie-Maschinen Ninja FS301 und FS300 auf. Diese Modellangabe stammt aus der Produktbeschreibung und ist keine unabhängige Passformprüfung. Da keine Einbaumasse und keine Angaben zur Befestigung mitgeliefert werden, solltest du vor dem Kauf Modellbezeichnung und verfügbare Seitenfläche an deiner Maschine vergleichen. Eine allgemeine Kompatibilität mit allen Getränkemaschinen lässt sich aus den Angaben nicht ableiten.</p>\n<p>Vor der Nutzung solltest du prüfen, wo am Gerät der Halter angebracht werden kann und ob genug Platz für Maschine und Organizer bleibt. Die Lieferantenbeschreibung nennt eine seitliche Montage, erklärt aber weder die Befestigung noch den benötigten Freiraum. Eine konkrete Montageanleitung liegt nicht vor.</p>\n<h2>Ausführung und Lieferumfang</h2>\n<p>Im Shop gibt es eine Standardauswahl ohne separaten Farbwechsel. Die angebotene Ausführung ist Schwarz; auch das Produktbild zeigt einen schwarzen Organizer. Die Packangabe zählt keine enthaltenen Teile einzeln auf. Becher, Deckel und Trinkhalme sind als Aufbewahrungszweck beschrieben, nicht als mitgelieferte Produkte. Ob Befestigungsteile beiliegen, ist offen. Die Materialzusammensetzung und die Gerätemasse sind nicht eindeutig ausgewiesen.</p>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> in den verfügbaren Angaben nicht näher bezeichnet</li>\n<li>\n<strong>Gewicht:</strong> Produktgewicht noch nicht eindeutig bestätigt</li>\n<li>\n<strong>Masse:</strong> nicht eindeutig als Produktmasse bestätigt</li>\n</ul>\n</div>\n<h2>Häufige Fragen</h2>\n<p><strong>Was lässt sich darin aufbewahren?</strong><br>Die Lieferantenbeschreibung nennt Becher, Deckel und Trinkhalme. Welche Abmessungen hineinpassen, ist nicht angegeben.</p>\n<p><strong>Passt der Organizer auf meine Maschine?</strong><br>Als Zielmodelle werden Ninja FS301 und FS300 genannt. Prüfe vorab deine genaue Modellbezeichnung und Montagefläche; eine allgemeine Passform ist nicht belegt.</p>\n<p><strong>Was ist im Paket enthalten?</strong><br>Die Packangabe listet keine Einzelteile. Aus den Ablagebeispielen lässt sich kein Zubehörumfang ableiten; Befestigungsteile sind nicht bestätigt.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Tassenhalter mit Deckel- und Trinkhalmablage | LuxeStyle",
+        "description": "Seitlicher Organizer für Becher, Deckel und Trinkhalme. Lieferantenangaben nennen Ninja FS301/FS300; bitte die Passung vor dem Kauf prüfen."
+      },
+      "updatedAt": "2026-11-16T15:20:03Z",
+      "status": "ACTIVE",
+      "handle": "tassen-organizer-fur-getrankemaschinen-640961",
+      "onlineStoreUrl": "https://luxestyle.ch/products/tassen-organizer-fur-getrankemaschinen-640961",
+      "vendor": "LuxeStyle",
+      "productType": "Küche & Bar",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "geschenkwelt-unter100",
+        "geschenkwelt-unter50",
+        "getraenkemaschinen",
+        "haushalt",
+        "kochen",
+        "kueche",
+        "rueckhol-0907",
+        "sort-kuechenorganizer"
+      ],
+      "hasOnlyDefaultVariant": true,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17880354357633",
+          "name": "Title",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12026488095105",
+              "name": "Default Title",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69861242143105",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f9600368-eed3-4e87-8f99-cf4b46159caa.jpg?v=1783188526",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861242175873",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen – Ansicht 2",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fe432954-d783-40a0-bc13-fcbc4a58c9df.jpg?v=1783188527",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861242208641",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen – Ansicht 3",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4d0d7736-d3b4-42f9-bcda-dc7691d2b9ec.jpg?v=1783188526",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861242241409",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen – Ansicht 4",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/73bc0b2d-8925-4857-82aa-8f42b506a861.jpg?v=1783188526",
+              "width": 1000,
+              "height": 1000
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69861242274177",
+            "mediaContentType": "IMAGE",
+            "alt": "Tassen-Organizer für Getränkemaschinen – Ansicht 5",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4dfe9ee6-9f78-4102-9377-437a4b83fb24.jpg?v=1783188526",
+              "width": 1000,
+              "height": 1000
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo2OTg2MTI0MjI3NDE3NywibGFzdF92YWx1ZSI6IjUifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/55877816484225",
+            "title": "Default Title",
+            "sku": "CJ-2072848792217640961",
+            "price": "41.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Title",
+                "value": "Default Title"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55230059970945",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 400,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": null
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NTg3NzgxNjQ4NDIyNSwibGFzdF92YWx1ZSI6MX0="
+        }
+      }
+    },
+    "15447868146049": {
+      "id": "gid://shopify/Product/15447868146049",
+      "title": "Schreibtisch-Organizer mit kabelloser Ladefunktion",
+      "descriptionHtml": "<p>Dieser Schreibtisch-Organizer verbindet ein offenes Stiftefach mit einer Fläche für kabelloses Laden. Die Produktbilder zeigen beide Bereiche auf einer gemeinsamen Basis: ein Fach für Stifte und eine aufrecht stehende Ladefläche. So liegen Schreibutensilien geordnet bereit, während ein geeignetes Gerät zum Laden abgelegt werden kann. Die Lieferantenangaben führen das Produkt als Desktop-Organizer mit Wireless Charging; genaue technische Ladeangaben fehlen.</p>\n<h2>Weiss oder Schwarz auswählen</h2>\n<p>Im Shop stehen zwei Ausführungen zur Wahl. Die Bildzuordnung zeigt die weisse und die schwarze Variante jeweils mit passender Farbansicht. Wähle die gewünschte Farbe direkt in der vorhandenen Produktoption:</p>\n<table>\n<thead><tr>\n<th>Shop-Auswahl</th>\n<th>Ausführung</th>\n</tr></thead>\n<tbody>\n<tr>\n<td>Weiss</td>\n<td>Weisser Organizer</td>\n</tr>\n<tr>\n<td>Schwarz</td>\n<td>Schwarzer Organizer</td>\n</tr>\n</tbody>\n</table>\n<p>Die beiden Ausführungen zeigen dieselbe Grundform; in den vorliegenden Angaben ist nur die Gehäusefarbe als Unterschied beschrieben. Auswahlwerte zu Grösse, Ladeleistung oder zusätzlichem Zubehör gibt es nicht. Das Stiftefach dient als Ablage; eine bestimmte Stiftzahl oder passende Abmessung wird nicht angegeben.</p>\n<h2>Material und Ladefunktion</h2>\n<p>Der Lieferant nennt Kunststoff als Material. Die genauen Aussenmasse sind noch nicht bestätigt; die vorliegenden Massangaben unterscheiden nicht eindeutig zwischen Gerät und Verpackung. Ladeleistung, Ladeanschluss, unterstützter Ladestandard und konkrete Gerätekompatibilität sind ebenfalls nicht angegeben. Prüfe deshalb vor der Nutzung, ob dein Gerät kabelloses Laden unterstützt und wie es auf der Ladefläche liegen muss. Ein bestimmter Ladestandard oder eine Ladegeschwindigkeit wird hier nicht zugesichert.</p>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff laut Lieferantenangabe</li>\n<li>\n<strong>Gewicht:</strong> nicht eindeutig bestätigt</li>\n<li>\n<strong>Masse:</strong> nicht eindeutig als Produktmasse ausgewiesen</li>\n</ul>\n</div>\n<h2>Häufige Fragen</h2>\n<p><strong>Welche Farben kann ich auswählen?</strong><br>Im Shop sind Weiss und Schwarz als getrennte Ausführungen hinterlegt. Wähle die gewünschte Farbe direkt am Produkt.</p>\n<p><strong>Welche Geräte lassen sich laden?</strong><br>Die Produktquelle nennt kabelloses Laden, führt aber weder Standard noch kompatible Gerätemodelle oder Leistung auf. Prüfe die Eignung deines Geräts vorab.</p>\n<p><strong>Ist ein Kabel oder Netzteil enthalten?</strong><br>Die Lieferanten-Packliste benennt Kabel oder Netzteil nicht eindeutig. Diese Teile werden deshalb nicht als enthalten zugesichert.</p><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+      "seo": {
+        "title": "Schreibtisch-Organizer mit kabelloser Ladefunktion | LuxeStyle",
+        "description": "Schreibtisch-Organizer aus Kunststoff mit Stiftefach und kabelloser Ladefunktion. Wähle Weiss oder Schwarz; Ladeleistung und Kabelumfang sind offen."
+      },
+      "updatedAt": "2026-11-16T15:20:08Z",
+      "status": "ACTIVE",
+      "handle": "organizer-mit-wireless-charger-604400",
+      "onlineStoreUrl": "https://luxestyle.ch/products/organizer-mit-wireless-charger-604400",
+      "vendor": "LuxeStyle",
+      "productType": "Elektronik",
+      "tags": [
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "rueckhol-0907",
+        "tech"
+      ],
+      "hasOnlyDefaultVariant": false,
+      "totalInventory": 0,
+      "options": [
+        {
+          "id": "gid://shopify/ProductOption/17879262200193",
+          "name": "Farbe",
+          "position": 1,
+          "optionValues": [
+            {
+              "id": "gid://shopify/ProductOptionValue/12309890138497",
+              "name": "Weiss",
+              "hasVariants": true
+            },
+            {
+              "id": "gid://shopify/ProductOptionValue/12309890171265",
+              "name": "Schwarz",
+              "hasVariants": true
+            }
+          ]
+        }
+      ],
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/69852385444225",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger – Ansicht 5",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ff67531-8dae-4649-bced-d1db5f6c6258_trans.jpg?v=1783113594",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69852385313153",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/757c7adc-9504-4ba5-a643-8f383d8a439d_trans.jpg?v=1783113594",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69852385345921",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger – Ansicht 2",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eb3747f2-085d-46f7-b7cb-da77a560f8c2_trans.jpg?v=1783113595",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69852385378689",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger – Ansicht 3",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/050a2884-045b-4664-b759-131b798a9d36_trans.jpg?v=1783113594",
+              "width": 900,
+              "height": 900
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/69852385411457",
+            "mediaContentType": "IMAGE",
+            "alt": "Organizer mit Wireless Charger – Ansicht 4",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d0d8846e-0133-478c-869f-a15df825c9d0_trans.jpg?v=1783113594",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70553495536001",
+            "mediaContentType": "IMAGE",
+            "alt": "LuxeStyle Organizer mit Wireless Charger – Bild 6 – LuxeStyle Schweiz",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7ff67531-8dae-4649-bced-d1db5f6c6258_trans_6ee2d346-ec32-4d39-9d59-016dd98e14ce.jpg?v=1786912814",
+              "width": 800,
+              "height": 800
+            }
+          },
+          {
+            "id": "gid://shopify/MediaImage/70553495568769",
+            "mediaContentType": "IMAGE",
+            "alt": "LuxeStyle Organizer mit Wireless Charger – Bild 7 – LuxeStyle Schweiz",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/050a2884-045b-4664-b759-131b798a9d36_trans_c5f048f4-b52f-422e-a19d-3342dc2905d0.jpg?v=1786912813",
+              "width": 900,
+              "height": 900
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo3MDU1MzQ5NTU2ODc2OSwibGFzdF92YWx1ZSI6IjcifQ=="
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/56063703810433",
+            "title": "Weiss",
+            "sku": "CJ-CJYD272573001AZ",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Weiss"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55419621605761",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 200,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70553495536001"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDU1MzQ5NTUzNjAwMSwibGFzdF92YWx1ZSI6NzA1NTM0OTU1MzYwMDF9"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/ProductVariant/56063703843201",
+            "title": "Schwarz",
+            "sku": "CJ-CJYD272573002BY",
+            "price": "14.90",
+            "compareAtPrice": null,
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "availableForSale": true,
+            "taxable": true,
+            "requiresComponents": false,
+            "selectedOptions": [
+              {
+                "name": "Farbe",
+                "value": "Schwarz"
+              }
+            ],
+            "inventoryItem": {
+              "id": "gid://shopify/InventoryItem/55419621638529",
+              "tracked": false,
+              "requiresShipping": true,
+              "measurement": {
+                "weight": {
+                  "value": 200,
+                  "unit": "GRAMS"
+                }
+              }
+            },
+            "media": {
+              "nodes": [
+                {
+                  "id": "gid://shopify/MediaImage/70553495568769"
+                }
+              ],
+              "pageInfo": {
+                "hasNextPage": false,
+                "endCursor": "eyJsYXN0X2lkIjo3MDU1MzQ5NTU2ODc2OSwibGFzdF92YWx1ZSI6NzA1NTM0OTU1Njg3Njl9"
+              }
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false,
+          "endCursor": "eyJsYXN0X2lkIjo1NjA2MzcwMzg0MzIwMSwibGFzdF92YWx1ZSI6Mn0="
+        }
+      }
+    }
+  },
+  "writeCheckpoint": {
+    "run": "R260",
+    "phase": "CONFIRMED",
+    "allowedFields": [
+      "title",
+      "descriptionHtml",
+      "seo.title",
+      "seo.description",
+      "oneExistingOption.name"
+    ],
+    "attempted": [
+      "15493859312001",
+      "15448836899201",
+      "15447868146049"
+    ],
+    "confirmed": [
+      {
+        "id": "15493859312001",
+        "productId": "gid://shopify/Product/15493859312001",
+        "title": "19-teiliges Silikon-Küchenhelfer-Set – 5 Farben",
+        "url": "https://luxestyle.ch/products/19-teiliges-silikon-kuchenhelfer-set-605300",
+        "variantIds": [
+          "gid://shopify/ProductVariant/67870932042119",
+          "gid://shopify/ProductVariant/67870932074887",
+          "gid://shopify/ProductVariant/67870932107655",
+          "gid://shopify/ProductVariant/67870932140423",
+          "gid://shopify/ProductVariant/67870932173191"
+        ],
+        "optionIds": [
+          "gid://shopify/ProductOption/17937980588417"
+        ],
+        "mediaIds": [
+          "gid://shopify/MediaImage/70478976123265",
+          "gid://shopify/MediaImage/70478976090497",
+          "gid://shopify/MediaImage/70478976156033",
+          "gid://shopify/MediaImage/70478976188801",
+          "gid://shopify/MediaImage/70478976221569",
+          "gid://shopify/MediaImage/70478976254337",
+          "gid://shopify/MediaImage/70478976287105",
+          "gid://shopify/MediaImage/77918363582855"
+        ],
+        "userErrors": [],
+        "checks": {
+          "title": true,
+          "bodyTextAndMarkup": true,
+          "seo": true,
+          "protectedFields": true
+        },
+        "inputBodyExactMatch": false,
+        "bodyFormattingOnly": true,
+        "updatedAt": "2026-11-16T15:15:31Z"
+      },
+      {
+        "id": "15448836899201",
+        "productId": "gid://shopify/Product/15448836899201",
+        "title": "Seitlicher Tassen-Organizer für Getränkemaschinen",
+        "url": "https://luxestyle.ch/products/tassen-organizer-fur-getrankemaschinen-640961",
+        "variantIds": [
+          "gid://shopify/ProductVariant/55877816484225"
+        ],
+        "optionIds": [
+          "gid://shopify/ProductOption/17880354357633"
+        ],
+        "mediaIds": [
+          "gid://shopify/MediaImage/69861242143105",
+          "gid://shopify/MediaImage/69861242175873",
+          "gid://shopify/MediaImage/69861242208641",
+          "gid://shopify/MediaImage/69861242241409",
+          "gid://shopify/MediaImage/69861242274177"
+        ],
+        "userErrors": [],
+        "checks": {
+          "title": true,
+          "bodyTextAndMarkup": true,
+          "seo": true,
+          "protectedFields": true
+        },
+        "updatedAt": "2026-11-16T15:20:03Z"
+      },
+      {
+        "id": "15447868146049",
+        "productId": "gid://shopify/Product/15447868146049",
+        "title": "Schreibtisch-Organizer mit kabelloser Ladefunktion",
+        "url": "https://luxestyle.ch/products/organizer-mit-wireless-charger-604400",
+        "variantIds": [
+          "gid://shopify/ProductVariant/56063703810433",
+          "gid://shopify/ProductVariant/56063703843201"
+        ],
+        "optionIds": [
+          "gid://shopify/ProductOption/17879262200193"
+        ],
+        "mediaIds": [
+          "gid://shopify/MediaImage/69852385444225",
+          "gid://shopify/MediaImage/69852385313153",
+          "gid://shopify/MediaImage/69852385345921",
+          "gid://shopify/MediaImage/69852385378689",
+          "gid://shopify/MediaImage/69852385411457",
+          "gid://shopify/MediaImage/70553495536001",
+          "gid://shopify/MediaImage/70553495568769"
+        ],
+        "userErrors": [],
+        "checks": {
+          "title": true,
+          "bodyTextAndMarkup": true,
+          "seo": true,
+          "protectedFields": true
+        },
+        "updatedAt": "2026-11-16T15:20:08Z"
+      }
+    ],
+    "unknown": [],
+    "excludedCandidates": [
+      "gid://shopify/Product/15412304773505",
+      "gid://shopify/Product/15448961614209",
+      "gid://shopify/Product/15411565429121"
+    ],
+    "socialWrites": 0,
+    "inflight": null,
+    "resolvedUncertainties": [
+      {
+        "original": {
+          "id": "15493859312001",
+          "checks": {
+            "title": true,
+            "body": false,
+            "seo": true,
+            "protectedFields": true
+          }
+        },
+        "resolution": "One targeted reread of the same existing product; only whitespace inserted between HTML tags. Removing exclusively inter-tag whitespace yields exact text/markup equality. No second mutation.",
+        "checks": {
+          "title": true,
+          "bodyTextAndMarkup": true,
+          "seo": true,
+          "protectedFields": true
+        }
+      }
+    ],
+    "bodyAmendmentAttempts": [
+      {
+        "id": "15493859312001",
+        "reason": "Remove exactly one rendered-empty H2"
+      }
+    ],
+    "bodyAmendments": [
+      {
+        "id": "15493859312001",
+        "reason": "One exact empty H2 removed after actual public projection finding",
+        "userErrors": [],
+        "checks": {
+          "body": true,
+          "everythingElsePreserved": true,
+          "onlyOrphanH2Removed": true
+        },
+        "updatedAt": "2026-11-16T15:23:45Z"
+      }
+    ],
+    "optionRenameAttempts": [
+      {
+        "id": "15493859312001",
+        "optionId": "gid://shopify/ProductOption/17937980588417",
+        "before": "Grösse",
+        "after": "Farbe"
+      }
+    ],
+    "optionRenames": [
+      {
+        "id": "15493859312001",
+        "optionId": "gid://shopify/ProductOption/17937980588417",
+        "before": "Grösse",
+        "after": "Farbe",
+        "variantStrategy": "LEAVE_AS_IS",
+        "checks": {
+          "existingOptionId": true,
+          "optionName": true,
+          "optionValuesPreserved": true,
+          "allOtherFieldsExact": true
+        },
+        "userErrors": [],
+        "updatedAt": "2026-11-16T15:25:43Z"
+      }
+    ],
+    "optionNameScopeReason": "Owner asked for product details and variant-selection information; actual rendered color choices were mislabeled as size. One existing option name corrected, source-matched values retained."
+  },
+  "copyAudit": {
+    "passed": true,
+    "rootReviewedProducts": [
+      "gid://shopify/Product/15493859312001",
+      "gid://shopify/Product/15448836899201",
+      "gid://shopify/Product/15447868146049"
+    ],
+    "independentAudit": "Kitchen passed. Home passed after terminology replacements and removing untyped 400g physical weight claim. No further API reads required for these copy fixes.",
+    "safeSpecRows": true,
+    "preservedSuffixes": true,
+    "noSupplierCosts": true,
+    "htmlNormalizationPolicy": "Only whitespace between tags may be normalized; any text/attribute/structure difference stops write. Kitchen initial byte guard resolved by targeted existing-ID reread, no mutation retry.",
+    "additionalVerifiedAmendments": [
+      "Remove one actual rendered-empty H2 only, no new claim.",
+      "Rename existing color-option label Grösse to Farbe withLEAVE_AS_IS; allvariantIDs,values,prices,SKU/media preserved."
+    ]
+  },
+  "sourceReferences": [
+    {
+      "localFile": "kitchen/15493859312001-cj-detail-raw.json",
+      "sha256": "ab1ec0ec5da53cce6c265db8cae3ec7ebf88cc6a63c92efa79473c2ceb3bcfdc",
+      "rawPrivateNotUploaded": true
+    },
+    {
+      "localFile": "kitchen/15412304773505-cj-detail-raw.json",
+      "sha256": "ac74712a6969186384c92e29cd625c94567b551fafd41fb36986c05dd5a913cd",
+      "rawPrivateNotUploaded": true
+    },
+    {
+      "localFile": "kitchen/15411565429121-cj-detail-raw.json",
+      "sha256": "75228d83469feedfae4c9bad33ec5d251bad003098e43bd495fe7f5a202a237a",
+      "rawPrivateNotUploaded": true
+    },
+    {
+      "localFile": "home/cup-organizer-cj.json",
+      "sha256": "0c94e919c109e659e97acd344c287c8dd2a2d6d1fc1c20973939a9aca79af360",
+      "rawPrivateNotUploaded": true
+    },
+    {
+      "localFile": "home/storage-box-cj.json",
+      "sha256": "7fea69a45a47f5d22520bae4ae98dc7674abaa0cb001d67155fc2044f8c432bb",
+      "rawPrivateNotUploaded": true
+    },
+    {
+      "localFile": "home/desktop-organizer-cj.json",
+      "sha256": "3392f7329daf4bc659e1c545fe52a0857b33b89fbb4e7cf1db60a9f43f2e270c",
+      "rawPrivateNotUploaded": true
+    },
+    {
+      "localFile": "kitchen/15411565429121-cj-detail-normalized-input-raw.json",
+      "sha256": "add10073d35570343dc608c22d5135146b8fdceab59db2d78e83ddada4b00c72",
+      "rawPrivateNotUploaded": true
+    }
+  ],
+  "sanitizedSourceSnapshots": [
+    {
+      "sourceLocalReference": "kitchen/15493859312001-cj-detail-raw.json",
+      "sourceFields": {
+        "pid": "2503300901231605300",
+        "productName": "[\"硅胶厨具套装19件套刀具菜板组合套装收纳筒麦秆彩色套刀厨房刀座\",\"硅胶厨具套装19件套刀具\",\"菜板组合套装收纳筒麦秆\"]",
+        "productNameEn": "Silicone Kitchenware Set 19 Pieces Storage Container Straw Color",
+        "productSku": "CJYD2341077",
+        "productImage": "[\"https://cf.cjdropshipping.com/quick/product/d5843cff-cc32-4095-b3af-bded84226e08.jpg\",\"https://cf.cjdropshipping.com/quick/product/5ca3bec0-fc49-4c64-a36f-9e7cfd61b589.jpg\",\"https://cf.cjdropshipping.com/quick/product/3b9ca772-7fd5-4f3c-ae09-3417fd790d3e.jpg\",\"https://cf.cjdropshipping.com/quick/product/58491dab-fd2d-423f-8483-4cdaebd1465d.jpg\",\"https://cf.cjdropshipping.com/quick/product/f5a74498-b32f-4a54-969b-6f3e927d18f6.jpg\",\"https://cf.cjdropshipping.com/quick/product/530637be-1716-4c02-b5b0-e5f130dbb759.jpg\",\"https://cf.cjdropshipping.com/quick/product/113f3fce-59df-4ab0-bfda-088708bce8e9.jpg\"]",
+        "productImageSet": [
+          "https://cf.cjdropshipping.com/quick/product/113f3fce-59df-4ab0-bfda-088708bce8e9.jpg",
+          "https://cf.cjdropshipping.com/quick/product/d5843cff-cc32-4095-b3af-bded84226e08.jpg",
+          "https://cf.cjdropshipping.com/quick/product/58491dab-fd2d-423f-8483-4cdaebd1465d.jpg",
+          "https://cf.cjdropshipping.com/quick/product/530637be-1716-4c02-b5b0-e5f130dbb759.jpg",
+          "https://cf.cjdropshipping.com/quick/product/3b9ca772-7fd5-4f3c-ae09-3417fd790d3e.jpg",
+          "https://cf.cjdropshipping.com/quick/product/5ca3bec0-fc49-4c64-a36f-9e7cfd61b589.jpg",
+          "https://cf.cjdropshipping.com/quick/product/f5a74498-b32f-4a54-969b-6f3e927d18f6.jpg"
+        ],
+        "productWeight": "2240.00",
+        "productUnit": null,
+        "materialNameEn": "[\"Others\"]",
+        "description": "<p><b>Product information:</b><br>Material: Silicone<br> Size: 19 PCs silicone kitchenware (light green),19 PCs silicone kitchenware (pink),19 PCs silicone kitchenware (gray),19 PCs silicone kitchenware (black),19 PCs silicone kitchenware set (dark green)<br> Style: modern simplicity<br></p>\n<br>\n<b>Packing list: </b>\n<br> Kitchenware suit x1set\n<br>\n<b>Product Image:</b>\n<br>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/af4135b1-1f1a-451f-ac0d-96ab6df71547_fine.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/f911561c-c0a7-4bac-b6c7-b591a251a6f6_fine.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/c2a4ce5f-5db1-4efa-ae35-5480f2c23c1d_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/5806a061-570c-43d7-9c38-b560bb0fd0e1_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/9732fb2b-2a39-4844-a6c7-58175d0707e1_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/3b6e1aa7-5928-45e5-be96-6eab9bf28049_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/5a677190-d1ff-4d17-8661-d5241620c1c3_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/f563d0df-5f80-42b3-a28f-46c7ed9a0f73_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/3b34dbb7-3f20-41ff-99e2-6b2340fd2066_trans.jpeg\">\n<img src=\"https://oss-cf.cjdropshipping.com/product/2025/03/30/08/9142b754-2045-4bbd-8b5b-eebac06f525c_trans.jpeg\">",
+        "variants": [
+          {
+            "vid": "2503300901231606300",
+            "variantSku": "CJYD234107701AZ",
+            "variantNameEn": "Silicone Kitchenware Set 19 Pieces Storage Container Straw Color Kitchenware 19PCs Light Green",
+            "variantKey": "Kitchenware 19PCs Light Green",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/3b9ca772-7fd5-4f3c-ae09-3417fd790d3e.jpg",
+            "variantWeight": 2280,
+            "variantLength": 390,
+            "variantWidth": 230,
+            "variantHeight": 140
+          },
+          {
+            "vid": "2503300901231607600",
+            "variantSku": "CJYD234107702BY",
+            "variantNameEn": "Silicone Kitchenware Set 19 Pieces Storage Container Straw Color Kitchenware 19PCs Pink",
+            "variantKey": "Kitchenware 19PCs Pink",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/58491dab-fd2d-423f-8483-4cdaebd1465d.jpg",
+            "variantWeight": 2280,
+            "variantLength": 390,
+            "variantWidth": 230,
+            "variantHeight": 140
+          },
+          {
+            "vid": "2503300901231607900",
+            "variantSku": "CJYD234107703CX",
+            "variantNameEn": "Silicone Kitchenware Set 19 Pieces Storage Container Straw Color Kitchenware 19PCs Gray",
+            "variantKey": "Kitchenware 19PCs Gray",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/f5a74498-b32f-4a54-969b-6f3e927d18f6.jpg",
+            "variantWeight": 2280,
+            "variantLength": 390,
+            "variantWidth": 230,
+            "variantHeight": 140
+          },
+          {
+            "vid": "2503300901231608200",
+            "variantSku": "CJYD234107704DW",
+            "variantNameEn": "Silicone Kitchenware Set 19 Pieces Storage Container Straw Color Kitchenware 19PCs Black",
+            "variantKey": "Kitchenware 19PCs Black",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/530637be-1716-4c02-b5b0-e5f130dbb759.jpg",
+            "variantWeight": 2280,
+            "variantLength": 390,
+            "variantWidth": 230,
+            "variantHeight": 140
+          },
+          {
+            "vid": "2503300901231608800",
+            "variantSku": "CJYD234107705EV",
+            "variantNameEn": "Silicone Kitchenware Set 19 Pieces Storage Container Straw Color Kitchenware 19PCs Dark Green",
+            "variantKey": "Kitchenware 19PCs Dark Green",
+            "variantImage": "https://cf.cjdropshipping.com/quick/product/113f3fce-59df-4ab0-bfda-088708bce8e9.jpg",
+            "variantWeight": 2280,
+            "variantLength": 390,
+            "variantWidth": 230,
+            "variantHeight": 140
+          }
+        ]
+      },
+      "privacy": "Supplier costs, supplier identities and credentials excluded."
+    },
+    {
+      "sourceLocalReference": "kitchen/15412304773505-cj-detail-raw.json",
+      "sourceFields": {
+        "pid": "2605291307171625300",
+        "productName": "[\"汽车座椅收纳箱批发皮革储物盒车载分隔收纳盒车用多功能置物箱\",\"汽车座椅收纳箱批发皮革\",\"储物盒车载分隔收纳\"]",
+        "productNameEn": "Kitchen Precision Knife Sharpener Tool",
+        "productSku": "CJYD2915301",
+        "productImage": "[\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/8e260ef1-cee0-48ce-bea8-a579cc2d9a53.jpg\",\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/650669bb-1dcf-4dd3-aa0c-951a6b0bddb8.jpg\",\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/5996bf32-3d51-45f6-8bb4-d0f7048124e5.jpg\",\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/e7a849cd-3d01-49f0-82a8-8a99ec992b41.jpg\",\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/cc72a7c6-6d15-476a-853d-00a265f98753.jpg\"]",
+        "productImageSet": [
+          "https://oss-cf.cjdropshipping.com/product/2026/05/29/13/5996bf32-3d51-45f6-8bb4-d0f7048124e5.jpg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/29/13/650669bb-1dcf-4dd3-aa0c-951a6b0bddb8.jpg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/29/13/e7a849cd-3d01-49f0-82a8-8a99ec992b41.jpg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/29/13/8e260ef1-cee0-48ce-bea8-a579cc2d9a53.jpg",
+          "https://oss-cf.cjdropshipping.com/product/2026/05/29/13/cc72a7c6-6d15-476a-853d-00a265f98753.jpg"
+        ],
+        "productWeight": "150.00-180.00",
+        "productUnit": null,
+        "materialNameEn": "[\"Cloth\"]",
+        "description": "<p><b>Product information:</b><br />Color classification: Precision Sharpener, Precision Sharpener+2 Grinding Plates</p><br><b>Packing list: </b><br />Sharpener * 1/, 1 * Precision Sharpener+2 * Grinding Disc<br /></p><b>Product Image:</b><br /><img  src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/afe876c8-215d-42ef-9d37-cc62e001a437.jpg\" ><img  src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/c064b092-00a1-433a-8a33-15ccc48b6504.jpg\" ><img  src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/e1155f54-a82c-4789-8f84-cb3b065eeb28.jpg\" ><img  src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/25ea3b2b-1758-4ceb-9401-88f6689ec10e.jpg\" ><img  src=\"https://oss-cf.cjdropshipping.com/product/2026/05/29/13/c84bbfe1-1649-4952-a823-73c14610a789.jpg\" >",
+        "variants": [
+          {
+            "vid": "2605291307171625900",
+            "variantSku": "CJYD291530101AZ",
+            "variantNameEn": "Kitchen Precision Knife Sharpener Tool Sharpener",
+            "variantKey": "Sharpener",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/29/13/5996bf32-3d51-45f6-8bb4-d0f7048124e5.jpg",
+            "variantWeight": 170,
+            "variantLength": 200,
+            "variantWidth": 150,
+            "variantHeight": 30
+          },
+          {
+            "vid": "2605291307171626300",
+            "variantSku": "CJYD291530102BY",
+            "variantNameEn": "Kitchen Precision Knife Sharpener Tool With 2 Grinding Discs",
+            "variantKey": "With 2 Grinding Discs",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/05/29/13/e7a849cd-3d01-49f0-82a8-8a99ec992b41.jpg",
+            "variantWeight": 200,
+            "variantLength": 200,
+            "variantWidth": 150,
+            "variantHeight": 30
+          }
+        ]
+      },
+      "privacy": "Supplier costs, supplier identities and credentials excluded."
+    },
+    {
+      "sourceLocalReference": "home/cup-organizer-cj.json",
+      "sourceFields": {
+        "pid": "2072848792217640961",
+        "productName": "[\"Cup Organizer\",\"Organizer\",\"Cup Holder\"]",
+        "productNameEn": "Cup Organizer For Machine - Paper Cup Holder Lid Dispenser - Side-Mounted Storage Rack, Drinkware Stand For Restaurant, Breakroom, Home, Gym",
+        "productSku": "CJCJ2965183",
+        "productImage": "[\"https://cf.cjdropshipping.com/f9600368-eed3-4e87-8f99-cf4b46159caa.jpg\",\"https://cf.cjdropshipping.com/fe432954-d783-40a0-bc13-fcbc4a58c9df.jpg\",\"https://cf.cjdropshipping.com/73bc0b2d-8925-4857-82aa-8f42b506a861.jpg\",\"https://cf.cjdropshipping.com/4d0d7736-d3b4-42f9-bcda-dc7691d2b9ec.jpg\",\"https://cf.cjdropshipping.com/4dfe9ee6-9f78-4102-9377-437a4b83fb24.jpg\"]",
+        "productImageSet": [
+          "https://cf.cjdropshipping.com/f9600368-eed3-4e87-8f99-cf4b46159caa.jpg",
+          "https://cf.cjdropshipping.com/fe432954-d783-40a0-bc13-fcbc4a58c9df.jpg",
+          "https://cf.cjdropshipping.com/4d0d7736-d3b4-42f9-bcda-dc7691d2b9ec.jpg",
+          "https://cf.cjdropshipping.com/73bc0b2d-8925-4857-82aa-8f42b506a861.jpg",
+          "https://cf.cjdropshipping.com/4dfe9ee6-9f78-4102-9377-437a4b83fb24.jpg"
+        ],
+        "productWeight": "400",
+        "productUnit": null,
+        "materialNameEn": "[\"Others\"]",
+        "description": "\n <p><b><font size=\"5\">Cup Organizer for Machine - Paper Cup Holder Lid Dispenser - Side-Mounted Storage Rack, Drinkware Stand for Restaurant, Breakroom, Home, Gym</font></b><br>Optimal Dispenser Functionality: This lid dispenser is designed for drinks machines, combining seamless integration, a tight fit, and improved usability in a dependable storage solution<br>Versatile Kitchen Storage Helper: Provides multi-functional utility by securely holding cups, lids, and straws, providing an organized setup with its innovative space-efficient configuration<br>Dependable Blender Accessory: Promotes user experience with long-lasting performance and a sturdy build, providing dependable blender accessory use while being easy to clean for lasting convenience<br>Optimized Storage Solution: Featuring a space-saving side mount, this dispenser rack improves storage efficiency and keeps accessories within easy reach<br>Stylish Blender Display: With its modern design, this dispenser improves visual appeal and complements any decor, providing a stylish way to display your blender while maintaining an elegant and cohesive look in your space<br>Cup Organizer For Ninja Slushie Machine FS301 &amp; FS300-3-in-1 Side-Mounted Holder For Cups, Lids &amp; Straws - Accessories For Ninja Slushie Machine<br><img src=\"https://cf.cjdropshipping.com/31a325d8-7e14-4885-ad09-8899ce058719.jpg\" style=\"max-width:100%;\" contenteditable=\"false\"><img src=\"https://cf.cjdropshipping.com/77195d4c-6196-403c-a055-8d3c67f963be.jpg\" style=\"max-width:100%;\" contenteditable=\"false\"><img src=\"https://cf.cjdropshipping.com/6400468c-619a-427a-8716-4465e630ac1f.jpg\" style=\"max-width:100%;\" contenteditable=\"false\"><img src=\"https://cf.cjdropshipping.com/539e7c92-2f1f-4a86-b1f6-24f6af71b2bc.jpg\" style=\"max-width:100%;\" contenteditable=\"false\"><img src=\"https://cf.cjdropshipping.com/78d12e79-195a-4d01-be9d-39f5bca163fa.jpg\" style=\"max-width:100%;\" contenteditable=\"false\"></p>\n",
+        "variants": [
+          {
+            "vid": "2072848792385413121",
+            "variantSku": "CJCJ296518301AZ",
+            "variantNameEn": "",
+            "variantKey": "BLACK",
+            "variantImage": "https://cf.cjdropshipping.com/f9600368-eed3-4e87-8f99-cf4b46159caa.jpg",
+            "variantWeight": 400,
+            "variantLength": 250,
+            "variantWidth": 150,
+            "variantHeight": 150
+          }
+        ]
+      },
+      "privacy": "Supplier costs, supplier identities and credentials excluded."
+    },
+    {
+      "sourceLocalReference": "home/desktop-organizer-cj.json",
+      "sourceFields": {
+        "pid": "2601120623561604400",
+        "productName": "[\"创意笔筒无线充电器\",\"批发创意笔筒无线充电器\",\"桌面收纳盒手机立式\"]",
+        "productNameEn": "Creative Desktop Organizer Pen Holder With Wireless Charging",
+        "productSku": "CJYD2725730",
+        "productImage": "[\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/757c7adc-9504-4ba5-a643-8f383d8a439d_trans.jpeg\",\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/d0d8846e-0133-478c-869f-a15df825c9d0_trans.jpeg\",\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/eb3747f2-085d-46f7-b7cb-da77a560f8c2_trans.jpeg\",\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/7ff67531-8dae-4649-bced-d1db5f6c6258_trans.jpeg\",\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/050a2884-045b-4664-b759-131b798a9d36_trans.jpeg\"]",
+        "productImageSet": [
+          "https://oss-cf.cjdropshipping.com/product/2026/01/12/06/757c7adc-9504-4ba5-a643-8f383d8a439d_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/01/12/06/eb3747f2-085d-46f7-b7cb-da77a560f8c2_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/01/12/06/050a2884-045b-4664-b759-131b798a9d36_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/01/12/06/d0d8846e-0133-478c-869f-a15df825c9d0_trans.jpeg",
+          "https://oss-cf.cjdropshipping.com/product/2026/01/12/06/7ff67531-8dae-4649-bced-d1db5f6c6258_trans.jpeg"
+        ],
+        "productWeight": "180.00",
+        "productUnit": null,
+        "materialNameEn": "[\"Plastic\"]",
+        "description": "<p><b>Product information:</b><br/>Color: white, black<br/>Style: Universal<br/></p>\n<br/>\n<b>Packing list: </b>\n<br/>Charging*1\n<br/>\n\n<b>Product Image:</b>\n<br/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/f3faf6c9-2766-40ae-9ed2-77d8542fe2e4_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/71d3ed87-4943-4dc9-99fa-712de389f4fc_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/c4b83c72-1faf-4531-a752-41ab59844c15_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/5d9c8b34-51c5-4644-b145-e04887b7bdab_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/aba0e974-f961-47b2-83e3-1e6cf2aef735_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/2bddff38-ff0a-4858-b741-caaa7a7af485_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/a6d6b61c-6d22-47a8-817b-5186c51c1152_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/9ec0fcff-2b16-498c-bf67-193a0faec341_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/7ad14cde-5609-44b1-8e6f-31f98babace6_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/2cfa35cf-5959-48c3-a70e-929fc22f93fc_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/819bce3b-c4b6-4667-b6b8-f3636eda3ec5_trans.jpeg\"/>\n<img src=\"https://oss-cf.cjdropshipping.com/product/2026/01/12/06/4923677f-ad74-4bca-96d8-ae4a1f9a0454_trans.jpeg\"/>",
+        "variants": [
+          {
+            "vid": "2601120623561604600",
+            "variantSku": "CJYD272573001AZ",
+            "variantNameEn": "Creative Desktop Organizer Pen Holder With Wireless Charging White",
+            "variantKey": "White",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/01/12/06/7ff67531-8dae-4649-bced-d1db5f6c6258_trans.jpeg",
+            "variantWeight": 200,
+            "variantLength": 165,
+            "variantWidth": 75,
+            "variantHeight": 108
+          },
+          {
+            "vid": "2601120623561604800",
+            "variantSku": "CJYD272573002BY",
+            "variantNameEn": "Creative Desktop Organizer Pen Holder With Wireless Charging Black",
+            "variantKey": "Black",
+            "variantImage": "https://oss-cf.cjdropshipping.com/product/2026/01/12/06/050a2884-045b-4664-b759-131b798a9d36_trans.jpeg",
+            "variantWeight": 200,
+            "variantLength": 165,
+            "variantWidth": 75,
+            "variantHeight": 108
+          }
+        ]
+      },
+      "privacy": "Supplier costs, supplier identities and credentials excluded."
+    },
+    {
+      "sourceLocalReference": "kitchen/15411565429121-cj-detail-normalized-input-raw.json",
+      "sourceFields": {
+        "pid": "1642778841326292992",
+        "productName": "[\"厨房滚筒电动多功能切菜器 蔬菜切片器切片机土豆擦丝切丝刨丝器\",\"多功能切菜器\",\"刨丝器\"]",
+        "productNameEn": "Electric Vegetable Slicer Multifunctional Potato Carrot Cutter Shred Chopper Kitchen Accessories Grater Home Gadget Tools",
+        "productSku": "CJJT1723938",
+        "productImage": "[\"https://cf.cjdropshipping.com/2b4c1794-d254-44b8-a72b-f8b022ce640e.jpg\",\"https://cf.cjdropshipping.com/c54ee112-d90d-49e8-9c3f-4b40ec9c8155.jpg\",\"https://cf.cjdropshipping.com/0e876df5-e540-49bf-9d52-c15d2ae96e6b.jpg\",\"https://cf.cjdropshipping.com/40dbe808-1bf6-47ea-8c89-e8b6e53060f1.jpg\",\"https://cf.cjdropshipping.com/90a44ae5-04fe-4eac-94db-d131ab0849d8.jpg\",\"https://cf.cjdropshipping.com/ecbb6b0e-4d91-4b1e-a566-388188dae461.jpg\",\"https://cf.cjdropshipping.com/31fc4b33-579e-4be3-ba6c-8b3ed9ccd058.jpg\",\"https://cf.cjdropshipping.com/0df17dad-ba0b-49a8-84ae-c223caa5e6aa.jpg\",\"https://cf.cjdropshipping.com/00bb32fb-0df0-42b8-8fb1-eb653ab39a0f.jpg\"]",
+        "productImageSet": [
+          "https://cf.cjdropshipping.com/0e876df5-e540-49bf-9d52-c15d2ae96e6b.jpg",
+          "https://cf.cjdropshipping.com/40dbe808-1bf6-47ea-8c89-e8b6e53060f1.jpg",
+          "https://cf.cjdropshipping.com/90a44ae5-04fe-4eac-94db-d131ab0849d8.jpg",
+          "https://cf.cjdropshipping.com/31fc4b33-579e-4be3-ba6c-8b3ed9ccd058.jpg",
+          "https://cf.cjdropshipping.com/ecbb6b0e-4d91-4b1e-a566-388188dae461.jpg",
+          "https://cf.cjdropshipping.com/2b4c1794-d254-44b8-a72b-f8b022ce640e.jpg",
+          "https://cf.cjdropshipping.com/00bb32fb-0df0-42b8-8fb1-eb653ab39a0f.jpg",
+          "https://cf.cjdropshipping.com/c54ee112-d90d-49e8-9c3f-4b40ec9c8155.jpg",
+          "https://cf.cjdropshipping.com/0df17dad-ba0b-49a8-84ae-c223caa5e6aa.jpg"
+        ],
+        "productWeight": "1600.00",
+        "productUnit": null,
+        "materialNameEn": "[\"Plastic\"]",
+        "description": "<p><b>Overview:</b></p><p>1. Efficient Rotary Grater: One-click automatic cutting for quick preparation and higher efficiency.<br/>2. Multifunctional Grater for Kitchen, Manual Round Tumbling Slicer with Strong Suction Base.<br/>3. Fast Cleaning Rotary Cheese Graters: This vegetable slicer is easy to clean and assemble.</p><p><b><br/></b></p><p><b>Product Information :<br/></b>Style: modern and simple<br/>Color: white (with adapter), white (wireless charging)<br/>Function: Multifunctional<br/>Material: Plastic<br/><br/><b>Size Information:<br/></b><img src=\"https://cf.cjdropshipping.com/a67763bb-02b6-46f2-8aa2-210216dbf6d0.png\" style=\"max-width:100%;\"/></p><p><br/></p><p><br/><br/><b>Packing list:<br/></b>Main machine *1 feeding port *1 pressing rod *1 blade barrel *1 blade *3 pairs, charging line *1</p><p><br/></p><p><b>Product Image:</b></p><p><b><br/></b></p><p><b><br/></b></p><p><b><br/></b></p><p><b><br/></b></p><p><b><br/></b></p><p><b><br/></b></p><p><b><br/></b></p><p><b><br/></b></p><p><b><br/></b></p><p><img src=\"https://cf.cjdropshipping.com/164b9fd3-8cc0-47a2-b639-7102b0f75e65.jpg\" style=\"max-width:100%;\"/><img src=\"https://cf.cjdropshipping.com/723ff133-7b0a-41e1-a972-e8716b906e64.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/8ddd193f-9ec6-4420-9da5-206000f827c9.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/dad74acd-a92b-4ec7-9562-e8c664a17ff5.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/dbadb7ff-d4c0-40f4-ae61-3a64a4351178.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/003c8c58-1e6f-4b6c-a5ed-db1eb2415023.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/2526e11d-f4a6-46e9-90b7-e38eec4e9dec.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/f8f3c913-7447-4a07-b1e5-5488c9da349d.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/c99cadc2-78a3-4ccd-8709-9f0f9dc07e4f.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/65811929-5caa-4287-8c8b-6cdde80280a8.jpg\" style=\"max-width: 100%;\"/><img src=\"https://cf.cjdropshipping.com/b215262a-c1ed-41cb-b295-1309a5b4deea.jpg\" style=\"max-width: 100%;\"/><b><br/></b></p>",
+        "variants": [
+          {
+            "vid": "1642784905375518720",
+            "variantSku": "CJJT172393801AZ",
+            "variantNameEn": "Electric Vegetable Slicer Multifunctional Potato Carrot Cutter Shred Chopper Kitchen Accessories Grater Home Gadget Tools White with adapter 220V US",
+            "variantKey": "White with adapter-220V US",
+            "variantImage": "https://cf.cjdropshipping.com/0df17dad-ba0b-49a8-84ae-c223caa5e6aa.jpg",
+            "variantWeight": 1620,
+            "variantLength": 190,
+            "variantWidth": 190,
+            "variantHeight": 310
+          },
+          {
+            "vid": "1653268220524109824",
+            "variantSku": "CJJT172393804DW",
+            "variantNameEn": "Electric Vegetable Slicer Multifunctional Potato Carrot Cutter Shred Chopper Kitchen Accessories Grater Home Gadget Tools Green USB",
+            "variantKey": "Green-USB",
+            "variantImage": "https://cf.cjdropshipping.com/00bb32fb-0df0-42b8-8fb1-eb653ab39a0f.jpg",
+            "variantWeight": 1620,
+            "variantLength": 190,
+            "variantWidth": 190,
+            "variantHeight": 310
+          }
+        ]
+      },
+      "privacy": "Supplier costs, supplier identities and credentials excluded."
+    }
+  ],
+  "sourceDetailCalls": {
+    "count": 7,
+    "successfulResponses": 5,
+    "failedOrRemoved": 2,
+    "blindRetries": 0,
+    "correctedDifferentInputReads": 1,
+    "forEditedProducts": 3
+  },
+  "blockedCandidates": [
+    {
+      "productId": "gid://shopify/Product/15412304773505",
+      "title": "Profi Messerschärfer – Präzisions-Schleifer für scharfe Küchenmesser",
+      "url": "https://luxestyle.ch/products/profi-messerscharfer-prazisions-schleifer-fur-scharfe-kuchenmesser",
+      "status": "UNKNOWN_MODEL_IMAGE_TEXT_CONFLICT",
+      "publicReason": "CJ liefert widersprüchliche Angaben zu chinesischem Namen, Kategorie und Material; englische Benennung und Bild sind mit einem Schärfwerkzeug vereinbar.",
+      "productWrites": 0,
+      "sourceRetries": 0
+    },
+    {
+      "productId": "gid://shopify/Product/15448961614209",
+      "title": "3-lagige Aufbewahrungsbox, Weiss",
+      "url": "https://luxestyle.ch/products/3-lagige-aufbewahrungsbox-weiss-051457",
+      "status": "BLOCKED_SOURCE_REMOVED",
+      "publicReason": "Ein CJ-Abruf meldet «Product has been removed from shelves»; keine erneute Abfrage und keine Shopify-Statusänderung.",
+      "productWrites": 0,
+      "sourceRetries": 0
+    },
+    {
+      "productId": "gid://shopify/Product/15411565429121",
+      "title": "Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln",
+      "url": "https://luxestyle.ch/products/elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln",
+      "status": "BLOCKED_VARIANT_APPEARANCE_AFTER_NORMALIZATION",
+      "publicReason": "Die bekannte CJ-SKU-Schreibweise wurde nach geprüftem Helfer normalisiert: aktuelle Quelle und Child-SKU sind bestätigt. Die genaue Variante Green-USB zeigt jedoch ein grünes Gerät, die Shop-Galerie ein weisses. Farb-/Ausführungszuordnung bleibt offen.",
+      "productWrites": 0,
+      "sourceRetries": 0,
+      "normalizationResolved": true,
+      "correctedDifferentInputReads": 1
+    }
+  ],
+  "publicAfter": {
+    "run": "R260 final public QA, bounded read-only",
+    "capturedDate": "2026-11-16",
+    "result": "PASS_WITH_LIMITS",
+    "scope": "Three final products only; public page and product.js; desktop/mobile spot checks at 360/390 px. No Shopify writes, no cart/checkout/consent action, no additional network probes beyond existing captures.",
+    "summary": "Customer-facing SEO metadata, canonical/indexability, rendered description projection, JSON-LD offers, native variant/price mapping, and responsive width checks pass for all three products. All visible product-weight rows explicitly remain unconfirmed. One concrete kitchen option-label mismatch remains open.",
+    "importantOpenIssue": {
+      "productId": "15493859312001",
+      "nativeOptionName": "Farbe",
+      "latestProductJsOptionName": "Farbe",
+      "publicHtmlVisiblePickerLabel": "Grösse",
+      "evidence": "Fresh HTML/JS response pair at 2026-11-16T15:30:55Z; HTML/JS were HTTP 200 and marked CF DYNAMIC, without Age/Last-Modified. Current public HTML includes data-lx-opt=Grösse and visible Grösse caption while matching JS and native option are Farbe.",
+      "assessment": "Propagation/rendering cause unknown. Do not claim the option label passed; no theme change or retry made."
+    },
+    "products": [
+      {
+        "productId": "15493859312001",
+        "handle": "19-teiliges-silikon-kuchenhelfer-set-605300",
+        "publicChecks": {
+          "html200": true,
+          "js200": true,
+          "h1SeoMetaCanonicalIndexability": true,
+          "nativeDescriptionProjectionMatchesRenderedBody": true,
+          "jsDescriptionEqualsNative": true,
+          "jsonLdOffersMatchNative": true,
+          "visibleWeightRow": "Produktgewicht noch nicht abschliessend bestätigt",
+          "mobile360And390NoHorizontalOverflow": true
+        },
+        "variantProbe": {
+          "publicLatestJsOptionName": "Farbe",
+          "nativeOptionName": "Farbe",
+          "liveHtmlPickerLabel": "Grösse",
+          "status": "MISMATCH_OPEN_PROPAGATION_UNKNOWN"
+        },
+        "variants": [
+          {
+            "name": "Kitchenware 19PCs Light Green",
+            "id": "67870932042119",
+            "sku": "CJYD234107701AZ",
+            "priceCHF": "59.90"
+          },
+          {
+            "name": "Kitchenware 19PCs Pink",
+            "id": "67870932074887",
+            "sku": "CJYD234107702BY",
+            "priceCHF": "59.90"
+          },
+          {
+            "name": "Kitchenware 19PCs Gray",
+            "id": "67870932107655",
+            "sku": "CJYD234107703CX",
+            "priceCHF": "59.90"
+          },
+          {
+            "name": "Kitchenware 19PCs Black",
+            "id": "67870932140423",
+            "sku": "CJYD234107704DW",
+            "priceCHF": "59.90"
+          },
+          {
+            "name": "Kitchenware 19PCs Dark Green",
+            "id": "67870932173191",
+            "sku": "CJYD234107705EV",
+            "priceCHF": "59.90"
+          }
+        ],
+        "uiOnlyPinkClick": {
+          "clicked": true,
+          "selectedVariantId": "67870932074887",
+          "priceCHF": "59.90",
+          "selectedThumbnailVisiblyPink": true,
+          "scrollX": 0,
+          "note": "The full gallery image source was empty in the post-click DOM capture; do not claim the main image changed. No cart action."
+        },
+        "proofFiles": [
+          "15493859312001-final-fetch.json",
+          "15493859312001-cacheheaders-proof.json",
+          "15493859312001-pink-custom-picker-proof.json",
+          "15493859312001-final-390.png",
+          "15493859312001-pink-custom-picker.png"
+        ]
+      },
+      {
+        "productId": "15448836899201",
+        "handle": "tassen-organizer-fur-getrankemaschinen-640961",
+        "publicChecks": {
+          "html200": true,
+          "js200": true,
+          "h1SeoMetaCanonicalIndexability": true,
+          "nativeDescriptionProjectionMatchesRenderedBody": true,
+          "jsDescriptionEqualsNative": true,
+          "jsonLdOffersMatchNative": true,
+          "visibleWeightRow": "Produktgewicht noch nicht eindeutig bestätigt",
+          "mobile360And390NoHorizontalOverflow": true,
+          "stable390": {
+            "scrollX": 0,
+            "documentWidth": 390,
+            "h1X": 16,
+            "h1Right": 374,
+            "formX": 16,
+            "formRight": 374,
+            "descriptionX": 16,
+            "descriptionRight": 374
+          }
+        },
+        "variant": {
+          "id": "55877816484225",
+          "sku": "CJ-2072848792217640961",
+          "priceCHF": "41.90",
+          "singleDefaultVariantNoPicker": true
+        },
+        "proofFiles": [
+          "15448836899201-390-stable-proof.json",
+          "15448836899201-390-stable-top.png",
+          "15448836899201-390-stable-description.png",
+          "15448836899201-390-stable-control.png"
+        ]
+      },
+      {
+        "productId": "15447868146049",
+        "handle": "organizer-mit-wireless-charger-604400",
+        "publicChecks": {
+          "html200": true,
+          "js200": true,
+          "h1SeoMetaCanonicalIndexability": true,
+          "nativeDescriptionProjectionMatchesRenderedBody": true,
+          "jsDescriptionEqualsNative": true,
+          "jsonLdOffersMatchNative": true,
+          "visibleWeightRow": "nicht eindeutig bestätigt",
+          "mobile360And390NoHorizontalOverflow": true,
+          "stable390": {
+            "scrollX": 0,
+            "documentWidth": 390,
+            "h1X": 16,
+            "h1Right": 374,
+            "formX": 16,
+            "formRight": 374,
+            "descriptionX": 16,
+            "descriptionRight": 374
+          }
+        },
+        "variants": [
+          {
+            "name": "Weiss",
+            "id": "56063703810433",
+            "sku": "CJ-CJYD272573001AZ",
+            "priceCHF": "14.90",
+            "selectedByDefault": true
+          },
+          {
+            "name": "Schwarz",
+            "id": "56063703843201",
+            "sku": "CJ-CJYD272573002BY",
+            "priceCHF": "14.90",
+            "selectedByDefault": false
+          }
+        ],
+        "proofFiles": [
+          "15447868146049-390-stable-proof.json",
+          "15447868146049-390-stable-top.png",
+          "15447868146049-390-stable-description.png",
+          "15447868146049-390-stable-control.png"
+        ]
+      }
+    ],
+    "bodyProjection": "For public rendered-body equality, compare native description after removing only the exact ls-produktdetails div, which the theme renders as a separate visible #lux-spezi details block. Root validated the projected description text/structure for all three; public product.js description equals native description. Kitchen orphan H2 removal is reflected in current native and public HTML.",
+    "safetyAndScope": {
+      "shopWritesByReviewer": 0,
+      "userInteractions": "Only UI variant selection on kitchen Pink; no add-to-cart, checkout, or account/consent actions. Network route guard blocked disallowed routes/requests.",
+      "rejectedTargets": "15412304773505 and 15448961614209 remain excluded from final verification after source checks."
+    },
+    "evidenceDirectory": "/dev/shm/luxestyle-review/r260/public/after",
+    "coreChecksPassed": true,
+    "allChecksPassed": false,
+    "openPublicOptionLabel": true,
+    "rootReview": {
+      "viewedActualScreenshots": true,
+      "sourcePhotosViewed": true,
+      "rootPlatformMutationCount": 5,
+      "publicQAAgentWrites": 0,
+      "scopeClarification": "No-Shopify-writes statements inside the public QA describe only that read-only agent; Root writes are separately recorded."
+    }
+  },
+  "sourceAndImageReview": {
+    "run": "R260",
+    "basis": "Root inspected current retained CJ descriptions and actual Shopify/source image comparisons. Existing photo inspection supports text identity, not new advertising/image rights.",
+    "editedProducts": [
+      "gid://shopify/Product/15493859312001",
+      "gid://shopify/Product/15448836899201",
+      "gid://shopify/Product/15447868146049"
+    ],
+    "kitchen": {
+      "fiveNativeSkuMatches": true,
+      "siliconeExplicitSupplierProse": true,
+      "genericOthersDoesNotDisproveSpecificProse": true,
+      "completeItemRoster": "UNKNOWN",
+      "individualMaterialComposition": "UNKNOWN",
+      "heatDishwasherFoodContactClaims": "NOT_MADE",
+      "deviceWeight": "UNKNOWN; product2240 and variant2280 source values not treated as verified product weight",
+      "fiveNativeOptionValueLabelsPreserved": true,
+      "optionNameCorrection": "Existing17937980588417 Grösse to Farbe, verified current five choices are colors only; values and IDs unchanged."
+    },
+    "cup": {
+      "nativeGenericPidResolvesOneBlackChild": true,
+      "rootPhotoViewed": true,
+      "deviceFit": "Supplier FS301/FS300 claim only; no independent fit/fastener proof",
+      "material": "UNKNOWN",
+      "weight": "UNKNOWN; source raw values400 do not have an explicit unit, native inventory400GRAMS is a shipping measurement, no physical weight claim published.",
+      "packContents": "Not individually itemized; no included cups/straws/machine claim"
+    },
+    "desktop": {
+      "twoColorsExactCurrentVariantSkuSuffixesAndImages": true,
+      "skuPrefix": "Existing Shopify CJ- prefix retained; supplier child base SKUs mapped explicitly, no variant edit",
+      "rootWhiteAndBlackPhotosViewed": true,
+      "material": "Plastic source field",
+      "deviceWeight": "UNKNOWN;180/200 source values conflict",
+      "chargingPowerStandardModelsCableAdapter": "UNKNOWN; no fast/Qi/MagSafe claim"
+    },
+    "images": {
+      "uploads": 0,
+      "edits": 0,
+      "newRightsClearanceClaim": false
+    },
+    "crossSell": {
+      "existingSuffixPreservedExactly": true,
+      "twoTargets": {
+        "capturedAtUTC": "2026-11-16T15:10:51.778807+00:00",
+        "scope": "Exactly two existing collection URLs from current copy suffixes; no platform/analytics calls.",
+        "results": [
+          {
+            "url": "https://luxestyle.ch/collections/trends-gadgets",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/trends-gadgets",
+            "contentType": "text/html; charset=utf-8",
+            "requestCount": 1,
+            "unknown": false
+          },
+          {
+            "url": "https://luxestyle.ch/collections/bestseller-premium-heroes",
+            "status": 200,
+            "finalUrl": "https://luxestyle.ch/collections/bestseller-premium-heroes",
+            "contentType": "text/html; charset=utf-8",
+            "requestCount": 1,
+            "unknown": false
+          }
+        ]
+      }
+    }
+  },
+  "slicerNormalizedInputFollowup": {
+    "status": "NORMALIZATION_CONFIRMED_VARIANT_APPEARANCE_UNCONFIRMED",
+    "writePerformed": false,
+    "lookup": {
+      "originalInput": {
+        "field": "variantSku",
+        "value": "CJ-CJJT172393804DW",
+        "result": "INVALID_ARGUMENT — Product not found",
+        "rawResponse": "15411565429121-cj-detail-raw.json"
+      },
+      "normalizationRule": {
+        "operation": "remove exactly one leading CJ- only when immediately followed by CJ",
+        "normalizedInput": {
+          "field": "variantSku",
+          "value": "CJJT172393804DW"
+        },
+        "repoEvidence": [
+          {
+            "file": "/workspace/luxestyle-review/r146-cj-ch-route/automation/cj_variantenbilder.mjs",
+            "line": 42,
+            "snippet": "export function cjSku(sku) { return String(sku || '').replace(/^CJ-(?=CJ)/, ''); }"
+          },
+          {
+            "file": "/workspace/luxestyle-review/r146-cj-ch-route/automation/cj_variantenbilder_test.mjs",
+            "line": 55,
+            "snippet": "cjSku('CJ-CJWY289988501AZ') → CJWY289988501AZ"
+          },
+          {
+            "file": "/workspace/luxestyle-review/r146-cj-ch-route/automation/cj_variantenbilder_test.mjs",
+            "line": 57,
+            "snippet": "CJ-<pid> remains unchanged"
+          }
+        ]
+      },
+      "correctedLookupOrdinal": "7th R260 CJ detail call, per root count; not a complete final count claim",
+      "correctedRawResponse": "15411565429121-cj-detail-normalized-input-raw.json",
+      "returnedProduct": {
+        "pid": "1642778841326292992",
+        "productSku": "CJJT1723938",
+        "productNameEn": "Electric Vegetable Slicer Multifunctional Potato Carrot Cutter Shred Chopper Kitchen Accessories Grater Home Gadget Tools"
+      },
+      "exactReturnedVariant": {
+        "vid": "1653268220524109824",
+        "variantSku": "CJJT172393804DW",
+        "variantKey": "Green-USB",
+        "variantNameEn": "Electric Vegetable Slicer Multifunctional Potato Carrot Cutter Shred Chopper Kitchen Accessories Grater Home Gadget Tools Green USB",
+        "variantImage": "https://cf.cjdropshipping.com/00bb32fb-0df0-42b8-8fb1-eb653ab39a0f.jpg",
+        "variantWeight": 1620,
+        "variantDimensions": [
+          190,
+          190,
+          310
+        ]
+      },
+      "exactSkuMatch": true
+    },
+    "shopifySnapshot": {
+      "productId": "gid://shopify/Product/15411565429121",
+      "title": "Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln",
+      "status": "ACTIVE",
+      "type": "Küche & Bar",
+      "variant": {
+        "id": "gid://shopify/ProductVariant/55743355060609",
+        "title": "Default Title",
+        "sku": "CJ-CJJT172393804DW",
+        "price": "74.90",
+        "currency": "CHF"
+      },
+      "images": [
+        "a67763bb-02b6-46f2-8aa2-210216dbf6d0.png",
+        "164b9fd3-8cc0-47a2-b639-7102b0f75e65.jpg",
+        "723ff133-7b0a-41e1-a972-e8716b906e64.jpg",
+        "8ddd193f-9ec6-4420-9da5-206000f827c9.jpg",
+        "dad74acd-a92b-4ec7-9562-e8c664a17ff5.jpg",
+        "dbadb7ff-d4c0-40f4-ae61-3a64a4351178.jpg",
+        "elektrischer-gemuseschneider-multifunktional-schneiden-reibe-edit.jpg"
+      ]
+    },
+    "imageIdentity": {
+      "decision": "SAME_PRODUCT_FAMILY; EXACT_VARIANT_APPEARANCE_UNCONFIRMED",
+      "shopGalleryMain": "a67763bb-02b6-46f2-8aa2-210216dbf6d0.png, white body",
+      "cjExactVariant": "00bb32fb-0df0-42b8-8fb1-eb653ab39a0f.jpg, green body, key Green-USB",
+      "shopSelectedOptions": "Default Title; no current color/power selection",
+      "visualReview": "Contact sheet shows the same electric rotary vegetable grater design, but white Shopify gallery vs green CJ exact child image; Shopify gallery also depicts type-C charging, while exact CJ key says USB. Do not assert precise color/charging match or use the child image as exact native variant media.",
+      "contactSheet": "images/slicer-normalized/slicer-source-vs-shop-contact.jpg",
+      "downloadedExactVariantImage": "/dev/shm/luxestyle-review/r260/kitchen/images/slicer-normalized/cj-green-usb-00bb32fb-0df0-42b8-8fb1-eb653ab39a0f.jpg"
+    },
+    "safetyConclusion": "SKU normalization closes the lookup error and confirms an exact source SKU, but source-to-current-single-variant presentation remains unresolved because the matched CJ child is Green-USB while Shopify offers Default Title with a white gallery. No product copy or selection claim added.",
+    "priorSnapshotNote": "Earlier candidate-selection.json and README record the original failed exact-SKU attempt before this one permitted normalization follow-up; this file is the dated follow-up and supersedes that status for lookup only."
+  },
+  "finalNativeIntegrity": {
+    "passed": true,
+    "products": [
+      {
+        "id": "15493859312001",
+        "checks": {
+          "allFieldsEqualExpected": true,
+          "allVariantIdsPreserved": true,
+          "allOptionValueIdsPreserved": true,
+          "allMediaPreserved": true
+        },
+        "variants": 5,
+        "options": 1,
+        "optionValues": 5,
+        "media": 8
+      },
+      {
+        "id": "15448836899201",
+        "checks": {
+          "allFieldsEqualExpected": true,
+          "allVariantIdsPreserved": true,
+          "allOptionValueIdsPreserved": true,
+          "allMediaPreserved": true
+        },
+        "variants": 1,
+        "options": 1,
+        "optionValues": 1,
+        "media": 5
+      },
+      {
+        "id": "15447868146049",
+        "checks": {
+          "allFieldsEqualExpected": true,
+          "allVariantIdsPreserved": true,
+          "allOptionValueIdsPreserved": true,
+          "allMediaPreserved": true
+        },
+        "variants": 2,
+        "options": 1,
+        "optionValues": 2,
+        "media": 7
+      }
+    ],
+    "expectedExceptions": "Only title/body/SEO plus one existing option-name and mirrored selected-option names; HTML intertag whitespace ignored, all other fields exact."
+  },
+  "optionNamePublicState": "Native and public product.js are Farbe; rendered HTML caption remains Grösse. Current live rendering cause unresolved; no repeated native rename or theme write.",
+  "dailyReportsRepeated": false,
+  "orderWatchRepeated": false,
+  "metricoolPlanningReadR260": false,
+  "metricoolWrites": 0,
+  "toneDecision": "Still unresolved from R259; no interpretation of weiter as tone clearance. R259 planner status is dated evidence, not a fresh R260 state.",
+  "otherWrites": {
+    "merchant": 0,
+    "theme": 0,
+    "flows": 0,
+    "dns": 0,
+    "budget": 0,
+    "discountSettings": 0,
+    "shopSettings": 0,
+    "variantOrMediaWrites": 0
+  },
+  "shippingThresholdsPreserved": "CHF50 public / CHF45 after discount internal; account.luxestyle.com.co unchanged",
+  "noNewAutomation": true,
+  "workflowDispatch": 0,
+  "customerOrSupplierMessages": 0,
+  "paidRenders": 0,
+  "rawSupplierCostsCustomerDataOrCredentialsIncluded": false,
+  "globalCompletionPercent": "UNKNOWN",
+  "remainingMerchantErrorCount": "UNKNOWN",
+  "claudeReceipt": "unknown"
+}

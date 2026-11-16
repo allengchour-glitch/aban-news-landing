@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 259,
-  "updatedAt": "2026-11-16T14:47:39Z",
+  "revision": 260,
+  "updatedAt": "2026-11-16T15:37:58Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-16",
     "currentDayEvidenceKind": "R255 Produkttexte, native Reads und öffentliche/mobile QA",
-    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung.",
+    "currentDayEvidence": "FrischeRevision250/Core4/fehlenden16NovTagesblock vorReads geprüft. Genau zwei begrenzte GSC-Webabfragen final06–12Nov für drei exakteKategoriepfade/Audioquerys plus eineAudioURLInspection. Keine MetricoolKennzahlen/Klaviyo/breiteSales/Bestellungen/KaufWatch inR251. FehlendeRowsunknown, AudioCrawl06NovvorCopy. GSCheuteohne neuenBefundnichtwiederholen; andere heutigeReports nicht als durchgeführt zählen. R252: KeineGSC-/MetricoolKennzahl-/Klaviyo-/breiteSales-/Bestellwiederholung. NurfünfkleinePlanfenster/gezielteMerchant-Quellen-/Produkt-/Theme-/MediengegenprobenundbestehendenfremdenVersandjobgelesen;5ShopifyProduktwrites. KeineWorkflowstarts/neueAutomation. R253 Morgenlauf: nachfrischerRevision252/Core4/Tagesstand-Prüfungerstmalsheutegenau6MetricoolDefinitionen+6kleineKanalreads09–15Novund1KlaviyoFlowreportnachW7XTVDDiscovery. DreiqualitätsbedingtealteVideoUUIDHoldsfrischzurückaufDraft/APaus,keineNeuanlage. GSCausR251nichtwiederholt;keinebreitenSales/Bestellwatch. Fehlende/nullunknown,CHF/USDgetrennt. ReportsheuteohneNeubefundnichtwiederholen. R254 direkteSEOTextfortsetzung:2genauabgegrenzteShopifyProduktwritesundnative/öffentliche/mobileSchutzgegenproben.36erKonsolenliste12/36redaktionell,24offen;keinShopgesamtprozentsatz.KeineGSC/MetricoolKennzahl/Klaviyo/breitenSales/BestellWatch-Wiederholung. R255: 24 Produktseiten mit 24 Initialänderungen und vier Body-Polishes nativ bestätigt; die 36er-Liste ist redaktionell 36/36 abgeschlossen. Öffentliche Prüfung: 24 Seiten/73 Varianten und 48 Viewports bestanden. Zwei Auswahlproben bleiben unverified. Quellenfragen und Bildrechte offen; keine Shopgesamtquote. Keine Tagesreports wiederholt. R256: Ein gezielter neuer Produkttext-/SEO-Write samt Quellen/Native/Public/Mobil-Gegenprobe; zwei Konsolenbindungen eng geprüft. Keine Kennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R257:1Produkt/2gezielteWrites(Body+vorhandeneGrayMedienrelation),33SKUQuellenzuordnungen undöffentlich/mobilgeprüft.2kleineCJListenreadswegenwiederholterSeitegestoppt;lokalerGuardEntwurf.5DetailreadswegenSpeicherfehlerdokumentiert. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R258:6initialeProduktText/SEO-Writes+2Body-Tabellenkorrekturen nach neuem sichtbarem Befund und6gesicherteCJDetailreads;native/public/mobilegeprüft.44erArbeitsliste fortgeschrieben. ExakteProduktzählung mit IDGegenprobe als Umfang,nichtalsQualitätsquote. KeineKennzahl-/Flow-/GSC-/Breitsales-/Bestellwatch-Wiederholung. R260: Fünf bestätigte Writes an drei Produkten (3Text/SEO+1Bodyüberschrift+1Optionsname) mit nativer und öffentlicher/mobiler Prüfung; drei weitere Quellenblocker. Keine Kennzahl-/Flow-/GSC-/Bestellwatch-Wiederholung.",
     "completedReports": {
       "searchConsole": {
         "localDate": "2026-11-16",
@@ -765,24 +765,19 @@
       "id": "product-attribute-completeness",
       "priority": 1,
       "priorityKind": "SETZUNG",
-      "state": "r258_all_catalogue_goal_six_more_product_details_live_44_working_rows",
+      "state": "r260_three_product_copy_updates_native_public_checked_50_worklist_rows",
       "title": "Grösse, Farbe, Material und echte Masse nachpflegen und Fortschritt sauber messen",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R258_SIX_LIVE_PRODUCT_TEXTS_NATIVE_PUBLIC_MOBILE_WORKLIST",
-      "lastEvidence": "R258: Gesamtkatalogauftrag aufgenommen.6weitere Produkte aus Licht/Taschen/Tierbedarf mit236–247Wörtertext, präziseren Titeln und individuellen SEO-Paaren live.8bestätigteMutationen(6initial+2gezielteBodyKorrekturen)/nativeVollrücklesen, öffentliche/mobileGegenprobe. Alle6nurDefault; keine zusätzlichen Auswahlen erfunden.44belegteArbeitszeilen, offeneFaktenOPEN; ausserhalbHistorieUNKNOWN.",
-      "nextAllowedStep": "Fortlaufende44erArbeitsliste verwenden und nächste kleine Produktgruppe mit kurzen/irreführenden Texten in bestehenden Läufen prüfen. Je Produkt aktuellen Shop-/Quellenbeleg, reale Varianten und konkrete Fakten sichern, dann autorisierte Text-/SEO-Korrektur mit Diff/Readback. Danach auch eigenständige Spezifikationstabellen und echte Auswahlansicht gegenprüfen, nicht nur den Body; Versandgewichte nicht als automatisch bestätigte Produktgewichte übernehmen. Keine Vollkatalog-Pagination oder Prozentquote aus blossen Produktzählern.",
+      "belegArt": "GEMESSEN_R260_PRODUCT_NATIVE_PUBLIC_SOURCE",
+      "lastEvidence": "R260: Drei Produkt-Titel/Body/SEO-Updates, eine Body-Überschrift und eine Optionsbeschriftung (Grösse zu Farbe) nativ und öffentlich/mobil geprüft; fünf Setfarben, zwei Organizerfarben und Standardausführung erklärt. Drei weitere Kandidaten bleiben wegen konkreter Quellenblocker unverändert. 50 belegte Arbeitszeilen (44 erhalten+3 live+3 blockiert), keine globale Quote. R259-Tonkonflikt offen; keine Social-Writes oder neuen Tagesberichte.",
+      "nextAllowedStep": "50er-Arbeitsliste fortführen; drei konkrete Quellenfragen klären und nächste kleine belegte Produktgruppe bearbeiten. Tonkonflikt nicht durch weiter auflösen; für neue Social-Aktionen sämtliche Rechte-/Qualitäts-/Kanal-/Historiengates prüfen.",
       "blockers": [
-        "R258Leuchten: genaueBefestigung/Lade-/Modus-/Mass-/Zubehörangaben offen.",
-        "R258Halfter: Materialzuordnung, Grösse/Farbe/Passform offen; keine S/M/L-/Logobestellung.",
-        "R258Tränke: Anschluss/Druck/Montage/Zubehör offen.",
-        "R258Taschen: Innen-/Aussenmasse, Zubehör/Traglast/Schutzklasse bzw nutzbares Volumen offen.",
-        "Katalogzählung ist keine globale Qualitäts-/Bearbeitungsquote; frühere nicht gelistete Arbeit unbekannt.",
-        "Hängematte:150vs250kg, Einzel-vsDoppelnutzung,270vs300cm und Zubehörumfang nicht eindeutig.",
-        "Keine neue Medienrechte-Freigabe; vorhandene Gray-Aufnahme nur am selben Produkt zugeordnet.",
-        "Katzenspielzeug: Gesamtmassbezug, Lauf-/Ladezeit, Netzadapter/Anleitungssprache und Medienrechte bleiben offen.",
-        "Konsolen Xgame/SUPER21: Zielantworten belegen keine genaue bestehende CJ-Kindbindung; keine automatische Neuverknüpfung.",
-        "Produkt- und Lieferantenfragen sowie Bildrechte sind nicht geschlossen.",
-        "Zwei Auswahlproben timeouteten vor einer Auswahl und bleiben unverified."
+        "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+        "Becherhalter: genaue Passform/Montage und Material offen.",
+        "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+        "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+        "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+        "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt."
       ],
       "acceptance": [
         "Grösse/Farbe/Material/Masse je Produktart sinnvoll eingeordnet",
@@ -1972,6 +1967,30 @@
           "sha256": "4ef9dfeb481166b6eefb8a239981efda6be6211794052304d195b2c626ee3296",
           "gitBlobSha": "0637616d7c22683245303da16b36a8573ba28752",
           "readAt": "2026-11-16T11:29:23Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+          "bytes": 7215,
+          "sha256": "68a28fb62a748197f8dfbc4a3c9f6667927051d6ab65dbc89d271e3e08123979",
+          "gitBlobSha": "e40692e03e58c83d4eb857367af27b87131b0933",
+          "readAt": "2026-11-16T15:37:58Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R260.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R260.json",
+          "bytes": 129884,
+          "sha256": "78df600e150788525b37ac053ea4bcafd6a28bd6fb4f83b9270214ab53a14ced",
+          "gitBlobSha": "034963c8f04ba57b8fb8287aa16964f245cf9e24",
+          "readAt": "2026-11-16T15:37:58Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+          "bytes": 20811,
+          "sha256": "2ed12a16ccf717a2fe3ff75b175bb1203ee82b04c284c73351c78df2ec884ced",
+          "gitBlobSha": "b9b44642a9534c43d5996aa0a195c3e626f02c95",
+          "readAt": "2026-11-16T15:37:58Z"
         }
       ],
       "requiresFreshVerification": true,
@@ -5123,6 +5142,30 @@
               "Zwei Auswahlproben timeouteten vor einer Auswahl und bleiben unverified."
             ]
           }
+        },
+        {
+          "archivedByRun": "R260",
+          "recordedAt": "2026-11-16T15:37:58Z",
+          "previous": {
+            "state": "r258_all_catalogue_goal_six_more_product_details_live_44_working_rows",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R258_SIX_LIVE_PRODUCT_TEXTS_NATIVE_PUBLIC_MOBILE_WORKLIST",
+            "lastEvidence": "R258: Gesamtkatalogauftrag aufgenommen.6weitere Produkte aus Licht/Taschen/Tierbedarf mit236–247Wörtertext, präziseren Titeln und individuellen SEO-Paaren live.8bestätigteMutationen(6initial+2gezielteBodyKorrekturen)/nativeVollrücklesen, öffentliche/mobileGegenprobe. Alle6nurDefault; keine zusätzlichen Auswahlen erfunden.44belegteArbeitszeilen, offeneFaktenOPEN; ausserhalbHistorieUNKNOWN.",
+            "nextAllowedStep": "Fortlaufende44erArbeitsliste verwenden und nächste kleine Produktgruppe mit kurzen/irreführenden Texten in bestehenden Läufen prüfen. Je Produkt aktuellen Shop-/Quellenbeleg, reale Varianten und konkrete Fakten sichern, dann autorisierte Text-/SEO-Korrektur mit Diff/Readback. Danach auch eigenständige Spezifikationstabellen und echte Auswahlansicht gegenprüfen, nicht nur den Body; Versandgewichte nicht als automatisch bestätigte Produktgewichte übernehmen. Keine Vollkatalog-Pagination oder Prozentquote aus blossen Produktzählern.",
+            "blockers": [
+              "R258Leuchten: genaueBefestigung/Lade-/Modus-/Mass-/Zubehörangaben offen.",
+              "R258Halfter: Materialzuordnung, Grösse/Farbe/Passform offen; keine S/M/L-/Logobestellung.",
+              "R258Tränke: Anschluss/Druck/Montage/Zubehör offen.",
+              "R258Taschen: Innen-/Aussenmasse, Zubehör/Traglast/Schutzklasse bzw nutzbares Volumen offen.",
+              "Katalogzählung ist keine globale Qualitäts-/Bearbeitungsquote; frühere nicht gelistete Arbeit unbekannt.",
+              "Hängematte:150vs250kg, Einzel-vsDoppelnutzung,270vs300cm und Zubehörumfang nicht eindeutig.",
+              "Keine neue Medienrechte-Freigabe; vorhandene Gray-Aufnahme nur am selben Produkt zugeordnet.",
+              "Katzenspielzeug: Gesamtmassbezug, Lauf-/Ladezeit, Netzadapter/Anleitungssprache und Medienrechte bleiben offen.",
+              "Konsolen Xgame/SUPER21: Zielantworten belegen keine genaue bestehende CJ-Kindbindung; keine automatische Neuverknüpfung.",
+              "Produkt- und Lieferantenfragen sowie Bildrechte sind nicht geschlossen.",
+              "Zwei Auswahlproben timeouteten vor einer Auswahl und bleiben unverified."
+            ]
+          }
         }
       ],
       "additionalProductCleanups": [
@@ -6905,6 +6948,18 @@
         "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R258.csv",
         "writes": 8,
         "sourceQuestionsRemainOpen": true
+      },
+      "run260": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R260.json",
+        "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+        "productWrites": 5,
+        "confirmedProducts": 3,
+        "initialCopyUpdates": 3,
+        "bodyAmendments": 1,
+        "optionNameUpdates": 1,
+        "worklistRows": 50,
+        "blockedCandidates": 3
       }
     },
     {
@@ -7845,16 +7900,19 @@
       "id": "luxe-zusammenarbeit-20261028",
       "priority": 60,
       "priorityKind": "SETZUNG",
-      "state": "r259_social_reactivation_conflict_master_drafts_continued_memory_receipt_unknown",
+      "state": "r260_three_product_copy_updates_native_public_checked_50_worklist_rows",
       "title": "Aktuellen Projektstand für Claude Code übergeben; R3-Codehistorie erhalten",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R259_SOCIAL_HOLDS_MASTER_GATES_DRAFTS",
-      "lastEvidence": "R259: 14 eigene Hold-Schreibereignisse; aktueller Stand sechs Posts/sieben Platzierungen gehalten, acht Posts/neun Platzierungen vom bestehenden geplanten Freigabelauf reaktiviert. Absicht UNKNOWN; widersprüchliche Tonanweisung wartet auf Klärung. Sechs Caption-Drafts, ein bedingter Taxonomieentwurf, Master bleibt blockiert. R258-Arbeitsliste 44 Zeilen unverändert; Historie ausserhalb der belegten Scopes UNKNOWN.",
-      "nextAllowedStep": "R259-Bericht und geprüfte Belege übernehmen; nächste Arbeit im bestehenden Ablauf, keine neuen Posts oder Kategorien ohne jeweilige Gates.",
+      "belegArt": "GEMESSEN_R260_PRODUCT_NATIVE_PUBLIC_SOURCE",
+      "lastEvidence": "R260: Drei Produkt-Titel/Body/SEO-Updates, eine Body-Überschrift und eine Optionsbeschriftung (Grösse zu Farbe) nativ und öffentlich/mobil geprüft; fünf Setfarben, zwei Organizerfarben und Standardausführung erklärt. Drei weitere Kandidaten bleiben wegen konkreter Quellenblocker unverändert. 50 belegte Arbeitszeilen (44 erhalten+3 live+3 blockiert), keine globale Quote. R259-Tonkonflikt offen; keine Social-Writes oder neuen Tagesberichte.",
+      "nextAllowedStep": "50er-Arbeitsliste fortführen; drei konkrete Quellenfragen klären und nächste kleine belegte Produktgruppe bearbeiten. Tonkonflikt nicht durch weiter auflösen; für neue Social-Aktionen sämtliche Rechte-/Qualitäts-/Kanal-/Historiengates prüfen.",
       "blockers": [
-        "Claude-Empfang ohne Quittung UNKNOWN.",
-        "Kein fertiger Master und offene Rechte.",
-        "R258-Liste ist belegter Scope, keine vollständige Historie."
+        "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+        "Becherhalter: genaue Passform/Montage und Material offen.",
+        "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+        "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+        "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+        "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt."
       ],
       "acceptance": [
         "Aktuelle Zielhashes und Diff stimmen",
@@ -9492,7 +9550,31 @@
         "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
         "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
         "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
-        "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
+        "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md",
+        {
+          "file": "PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+          "bytes": 7215,
+          "sha256": "68a28fb62a748197f8dfbc4a3c9f6667927051d6ab65dbc89d271e3e08123979",
+          "gitBlobSha": "e40692e03e58c83d4eb857367af27b87131b0933",
+          "readAt": "2026-11-16T15:37:58Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R260.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R260.json",
+          "bytes": 129884,
+          "sha256": "78df600e150788525b37ac053ea4bcafd6a28bd6fb4f83b9270214ab53a14ced",
+          "gitBlobSha": "034963c8f04ba57b8fb8287aa16964f245cf9e24",
+          "readAt": "2026-11-16T15:37:58Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+          "bytes": 20811,
+          "sha256": "2ed12a16ccf717a2fe3ff75b175bb1203ee82b04c284c73351c78df2ec884ced",
+          "gitBlobSha": "b9b44642a9534c43d5996aa0a195c3e626f02c95",
+          "readAt": "2026-11-16T15:37:58Z"
+        }
       ],
       "requiresFreshVerification": true,
       "assignedRole": "codex_preparation_claude_coordination",
@@ -16215,6 +16297,22 @@
               "Claude-Empfang unbekannt."
             ]
           }
+        },
+        {
+          "archivedByRun": "R260",
+          "recordedAt": "2026-11-16T15:37:58Z",
+          "previous": {
+            "state": "r259_social_reactivation_conflict_master_drafts_continued_memory_receipt_unknown",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R259_SOCIAL_HOLDS_MASTER_GATES_DRAFTS",
+            "lastEvidence": "R259: 14 eigene Hold-Schreibereignisse; aktueller Stand sechs Posts/sieben Platzierungen gehalten, acht Posts/neun Platzierungen vom bestehenden geplanten Freigabelauf reaktiviert. Absicht UNKNOWN; widersprüchliche Tonanweisung wartet auf Klärung. Sechs Caption-Drafts, ein bedingter Taxonomieentwurf, Master bleibt blockiert. R258-Arbeitsliste 44 Zeilen unverändert; Historie ausserhalb der belegten Scopes UNKNOWN.",
+            "nextAllowedStep": "R259-Bericht und geprüfte Belege übernehmen; nächste Arbeit im bestehenden Ablauf, keine neuen Posts oder Kategorien ohne jeweilige Gates.",
+            "blockers": [
+              "Claude-Empfang ohne Quittung UNKNOWN.",
+              "Kein fertiger Master und offene Rechte.",
+              "R258-Liste ist belegter Scope, keine vollständige Historie."
+            ]
+          }
         }
       ],
       "reviewPacket": {
@@ -18952,6 +19050,18 @@
         "production": "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
         "captions": "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
         "categoryDraft": "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
+      },
+      "run260": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R260.json",
+        "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+        "productWrites": 5,
+        "confirmedProducts": 3,
+        "initialCopyUpdates": 3,
+        "bodyAmendments": 1,
+        "optionNameUpdates": 1,
+        "worklistRows": 50,
+        "blockedCandidates": 3
       }
     },
     {
@@ -32155,16 +32265,19 @@
       "id": "seo-landing-visibility-20261101",
       "priority": 3,
       "priorityKind": "SETZUNG",
-      "state": "r259_conditional_worklight_taxonomy_draft_only",
+      "state": "r260_three_product_copy_updates_native_public_checked_50_worklist_rows",
       "title": "Sichtbarkeit über passende Such-Landeseiten und bestehende Shopgrundlagen verbessern",
       "lastEvidenceDate": "2026-11-16",
-      "belegArt": "GEMESSEN_R259_SOCIAL_HOLDS_MASTER_GATES_DRAFTS",
-      "lastEvidence": "R259: bedingter Google-Kategorieentwurf 5592 für die Vierfachleuchte, nicht angewandt. Shopify-Google-Metafeld geprüft, aktuelles Merchant-Angebot nicht. Kein Google-Approval oder Fehlerresolution belegt; Metricool/Klaviyo R253 nur wiederverwendet.",
-      "nextAllowedStep": "Produkt-/Quellenidentität vor jeder möglichen Metafeldänderung bestätigen; native Metafeld-Rücklese und späteren passenden Merchant-Datensatz getrennt prüfen.",
+      "belegArt": "GEMESSEN_R260_PRODUCT_NATIVE_PUBLIC_SOURCE",
+      "lastEvidence": "R260: Drei Produkt-Titel/Body/SEO-Updates, eine Body-Überschrift und eine Optionsbeschriftung (Grösse zu Farbe) nativ und öffentlich/mobil geprüft; fünf Setfarben, zwei Organizerfarben und Standardausführung erklärt. Drei weitere Kandidaten bleiben wegen konkreter Quellenblocker unverändert. 50 belegte Arbeitszeilen (44 erhalten+3 live+3 blockiert), keine globale Quote. R259-Tonkonflikt offen; keine Social-Writes oder neuen Tagesberichte.",
+      "nextAllowedStep": "50er-Arbeitsliste fortführen; drei konkrete Quellenfragen klären und nächste kleine belegte Produktgruppe bearbeiten. Tonkonflikt nicht durch weiter auflösen; für neue Social-Aktionen sämtliche Rechte-/Qualitäts-/Kanal-/Historiengates prüfen.",
       "blockers": [
-        "Modellidentität offen.",
-        "5592 ist bedingter Draft; kein Shopify-/Merchant-Write.",
-        "Klaviyo-Daten UNKNOWN, keine neuen Berichte."
+        "Küchenset: vollständige Einzelstückliste, Materialaufteilung und Temperatur-/Pflegenachweise offen.",
+        "Becherhalter: genaue Passform/Montage und Material offen.",
+        "Wireless-Organizer: Ladeleistung, Standard, Gerätekompatibilität und Zubehör offen.",
+        "Drei zusätzliche Quellenfälle unbehandelt; keine globale Inhalts-/Merchant-Fehlerfreiheitsquote.",
+        "Küchenset-Optionsname nativ/Produkt-JSON Farbe, gerendertes HTML nochGrösse; Renderursacheoffen,keinThemerewriteaufVerdacht.",
+        "R259-Tonvorgabe ungeklärt, Claude-Empfang ohne Beleg unbekannt."
       ],
       "acceptance": [
         "Kein erfundenesMaterial, keine unbewieseneBeliebtheit oder Ranking-/Umsatzwirkung",
@@ -33127,7 +33240,31 @@
         "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
         "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
         "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
-        "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
+        "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md",
+        {
+          "file": "PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+          "bytes": 7215,
+          "sha256": "68a28fb62a748197f8dfbc4a3c9f6667927051d6ab65dbc89d271e3e08123979",
+          "gitBlobSha": "e40692e03e58c83d4eb857367af27b87131b0933",
+          "readAt": "2026-11-16T15:37:58Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-BELEGE-20261116-R260.json",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R260.json",
+          "bytes": 129884,
+          "sha256": "78df600e150788525b37ac053ea4bcafd6a28bd6fb4f83b9270214ab53a14ced",
+          "gitBlobSha": "034963c8f04ba57b8fb8287aa16964f245cf9e24",
+          "readAt": "2026-11-16T15:37:58Z"
+        },
+        {
+          "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+          "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+          "bytes": 20811,
+          "sha256": "2ed12a16ccf717a2fe3ff75b175bb1203ee82b04c284c73351c78df2ec884ced",
+          "gitBlobSha": "b9b44642a9534c43d5996aa0a195c3e626f02c95",
+          "readAt": "2026-11-16T15:37:58Z"
+        }
       ],
       "requiresFreshVerification": true,
       "assignedRole": "codex_preparation_claude_coordination",
@@ -36106,6 +36243,22 @@
               "Zwei Auswahlproben bleiben unverified."
             ]
           }
+        },
+        {
+          "archivedByRun": "R260",
+          "recordedAt": "2026-11-16T15:37:58Z",
+          "previous": {
+            "state": "r259_conditional_worklight_taxonomy_draft_only",
+            "lastEvidenceDate": "2026-11-16",
+            "belegArt": "GEMESSEN_R259_SOCIAL_HOLDS_MASTER_GATES_DRAFTS",
+            "lastEvidence": "R259: bedingter Google-Kategorieentwurf 5592 für die Vierfachleuchte, nicht angewandt. Shopify-Google-Metafeld geprüft, aktuelles Merchant-Angebot nicht. Kein Google-Approval oder Fehlerresolution belegt; Metricool/Klaviyo R253 nur wiederverwendet.",
+            "nextAllowedStep": "Produkt-/Quellenidentität vor jeder möglichen Metafeldänderung bestätigen; native Metafeld-Rücklese und späteren passenden Merchant-Datensatz getrennt prüfen.",
+            "blockers": [
+              "Modellidentität offen.",
+              "5592 ist bedingter Draft; kein Shopify-/Merchant-Write.",
+              "Klaviyo-Daten UNKNOWN, keine neuen Berichte."
+            ]
+          }
         }
       ],
       "visibilitySupplementR49": {
@@ -37939,6 +38092,18 @@
         "production": "dropship/codex-handoff-20261018/PROJEKTOR-A-PRODUKTIONSGATES-20261116-R259.md",
         "captions": "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
         "categoryDraft": "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
+      },
+      "run260": {
+        "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+        "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R260.json",
+        "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+        "productWrites": 5,
+        "confirmedProducts": 3,
+        "initialCopyUpdates": 3,
+        "bodyAmendments": 1,
+        "optionNameUpdates": 1,
+        "worklistRows": 50,
+        "blockedCandidates": 3
       }
     },
     {
@@ -48702,6 +48867,16 @@
         "dropship/codex-handoff-20261018/PROJEKTOR-KANALCAPTIONS-20261116-R259.json",
         "dropship/codex-handoff-20261018/LED-WORKLIGHT-GOOGLE-KATEGORIE-ENTWURF-20261116-R259.md"
       ]
+    },
+    {
+      "revision": 260,
+      "at": "2026-11-16T15:37:58Z",
+      "summary": "Three source-bound product-copy and SEO updates plus one heading amendment and one option-name correction live (five mutations), native/public/mobile verified; three other candidates blocked by source conflict/removal/lookup. Existing44 worklist rows retained, total50. No new reports or Social writes; tone conflict remains unresolved.",
+      "sources": [
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R260.json",
+        "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv"
+      ]
     }
   ],
   "salesGoal": {
@@ -50054,7 +50229,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 259,
+    "latestCanonicalRevision": 260,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -51054,6 +51229,12 @@
       "atUtc": "2026-11-16T14:47:39Z",
       "report": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-STATUS-20261116-R259.md",
       "proof": "dropship/codex-handoff-20261018/PROJEKTOR-SOCIAL-BELEGE-20261116-R259.json",
+      "receipt": "unknown"
+    },
+    "run260": {
+      "atUtc": "2026-11-16T15:37:58Z",
+      "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+      "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
       "receipt": "unknown"
     }
   },
@@ -76904,5 +77085,30 @@
     "masterRendered": false,
     "R258WorklistRowsUnchanged": 44,
     "unlistedHistory": "UNKNOWN"
+  },
+  "run260": {
+    "report": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+    "proof": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R260.json",
+    "worklist": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+    "productWrites": 5,
+    "confirmedProducts": 3,
+    "initialCopyUpdates": 3,
+    "bodyAmendments": 1,
+    "optionNameUpdates": 1,
+    "publicQaState": "PASS_WITH_LIMITS",
+    "publicOptionLabelPending": true,
+    "confirmedProductIds": [
+      "gid://shopify/Product/15493859312001",
+      "gid://shopify/Product/15448836899201",
+      "gid://shopify/Product/15447868146049"
+    ],
+    "worklistRows": 50,
+    "priorRowsPreserved": 44,
+    "newBlockedSourceRows": 3,
+    "metricoolWrites": 0,
+    "newDailyReports": 0,
+    "toneClarificationPending": true,
+    "globalCompletionPercent": "UNKNOWN",
+    "merchantErrorCount": "UNKNOWN"
   }
 }

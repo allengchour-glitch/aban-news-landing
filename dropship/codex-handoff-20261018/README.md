@@ -1,3 +1,13 @@
+# R260 – Drei Produktseiten mit mehr Details live – 16.11.2026
+
+Küchenset, Becherhalter und Schreibtisch-Organizer haben neue Titel, ausführliche Produktangaben, reale Auswahlhilfe und individuelle SEO-Texte. Fünf bestätigte Mutationen an drei Produkten, danach native und öffentliche/mobile Gegenprüfung. Beim Küchenset sind eine leere Zwischenüberschrift entfernt und «Grösse» nativ zu «Farbe» präzisiert; das sichtbare HTML-Label steht noch auf «Grösse» und bleibt offen. Preise, SKUs, Varianten-/Options-/Werte-IDs, Werte, Bilder, Status, Tags, Inventar und URLs erhalten. [Bericht](PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md) · [Belege](PRODUKTDETAILS-BELEGE-20261116-R260.json).
+
+Drei weitere Kandidaten bleiben wegen konkreter Quellenprobleme unbearbeitet. Die [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv) erhält 44 alte Zeilen und ergänzt drei Live-Texte plus drei Quellenfälle: 50 belegte Identitäten, keine Gesamtquote. Keine neue Merchant-Fehlerfreiheit, Indexierung oder Verkäufe behauptet.
+
+Der Tonkonflikt aus R259 ist weiterhin ungeklärt; keine neuen Metricool-Schreibversuche und keine aktuelle Neuinterpretation der damaligen Planung. Keine Tagesreport-/Bestellwatch-Wiederholung, keine neue Automation oder Frequenzänderung. Alle 24 Aufgaben und Historie erhalten. Claude-Empfang unbekannt. Memory am Schluss des Nutzerberichts verlinken.
+
+---
+
 # R259 – Social-Freigabekonflikt, Master und Entwürfe – 16.11.2026
 
 14 eigene erfolgreiche Hold-Schreibereignisse sind belegt. Eine spätere geplante Freigabeautomation hat acht betroffene Posts/neun Providerplatzierungen wieder aktiviert; sechs Posts/sieben Platzierungen bleiben gehalten. Die technische Ursache ist auf Workflow 43881112008 zurückgeführt, menschliche Absicht bleibt UNKNOWN. Pflichtmusik im Automationstask widerspricht einer als Besitzeranweisung gespeicherten Repo-Notiz «Ton aus»; Klärung steht aus. Weitere widersprüchliche Schreibversuche bleiben pausiert.

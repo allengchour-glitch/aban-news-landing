@@ -1,0 +1,31 @@
+{
+  "run": "R260",
+  "atUtc": "2026-11-16T15:37:58Z",
+  "files": [
+    {
+      "file": "PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-KUECHE-ORGANIZER-20261116-R260.md",
+      "bytes": 7215,
+      "sha256": "68a28fb62a748197f8dfbc4a3c9f6667927051d6ab65dbc89d271e3e08123979",
+      "gitBlobSha": "e40692e03e58c83d4eb857367af27b87131b0933",
+      "readAt": "2026-11-16T15:37:58Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-BELEGE-20261116-R260.json",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-BELEGE-20261116-R260.json",
+      "bytes": 129884,
+      "sha256": "78df600e150788525b37ac053ea4bcafd6a28bd6fb4f83b9270214ab53a14ced",
+      "gitBlobSha": "034963c8f04ba57b8fb8287aa16964f245cf9e24",
+      "readAt": "2026-11-16T15:37:58Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R260.csv",
+      "bytes": 20811,
+      "sha256": "2ed12a16ccf717a2fe3ff75b175bb1203ee82b04c284c73351c78df2ec884ced",
+      "gitBlobSha": "b9b44642a9534c43d5996aa0a195c3e626f02c95",
+      "readAt": "2026-11-16T15:37:58Z"
+    }
+  ],
+  "scope": "Three new artifacts; manifest and Core5 excluded."
+}
