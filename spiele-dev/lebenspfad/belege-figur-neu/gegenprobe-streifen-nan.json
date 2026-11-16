@@ -1,0 +1,133 @@
+{
+  "scope": "Browser-Fixtures Desktop/Mobil; keine FPS/kein echter Netztransport",
+  "checks": [
+    {
+      "name": "desktop Vorschau Standard",
+      "passed": true,
+      "data": {
+        "margin": 0.1837763957921763,
+        "finite": true,
+        "count": 40140,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Mann",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163986,
+        "finite": true,
+        "count": 45084,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 0",
+      "passed": true,
+      "data": {
+        "margin": 0.1837763957921763,
+        "finite": true,
+        "count": 40140,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 1",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 48372,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 2",
+      "passed": true,
+      "data": {
+        "margin": 0.1654350719163984,
+        "finite": true,
+        "count": 40836,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop Vorschau Accessoire 3",
+      "passed": false,
+      "data": {
+        "margin": null,
+        "finite": false,
+        "count": 38928,
+        "encoding": 3001,
+        "rendererEncoding": 3001
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "profile": "desktop",
+      "previews": [
+        {
+          "name": "Standard",
+          "margin": 0.1837763957921763,
+          "finite": true,
+          "count": 40140,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Mann",
+          "margin": 0.1654350719163986,
+          "finite": true,
+          "count": 45084,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 0",
+          "margin": 0.1837763957921763,
+          "finite": true,
+          "count": 40140,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 1",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 48372,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 2",
+          "margin": 0.1654350719163984,
+          "finite": true,
+          "count": 40836,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "Accessoire 3",
+          "margin": null,
+          "finite": false,
+          "count": 38928,
+          "encoding": 3001,
+          "rendererEncoding": 3001
+        }
+      ],
+      "ages": [],
+      "motions": []
+    }
+  ],
+  "errors": [
+    "THREE.BufferGeometry.computeBoundingSphere(): Computed radius is NaN. The \"position\" attribute is likely to have NaN values. En"
+  ],
+  "status": "failed",
+  "failure": "Error: desktop Vorschau Accessoire 3\n    at check (/workspace/aban-lebenspfad-figur/spiele-dev/lebenspfad/figur-neu-qa.cjs:46:88)\n    at /workspace/aban-lebenspfad-figur/spiele-dev/lebenspfad/figur-neu-qa.cjs:58:126"
+}

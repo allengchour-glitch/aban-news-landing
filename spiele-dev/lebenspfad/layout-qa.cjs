@@ -73,7 +73,10 @@ function checkFeet(s){assert(!s.emote,`${s.label}: Emote noch aktiv`);assert(s.c
 async function sample(page,label){return page.evaluate(label=>{
  const q=__qaRead,T=q.THREE,p=q.pawns[0],f=q.fields[q.G.players[0].tile],surface=f.disc.position.y+.13;
  p.updateWorldMatrix(true,true);const feet=[];
- p.traverse(n=>{if(n.isMesh&&n.geometry?.type==='SphereGeometry'&&n.parent?.position.y===.5)feet.push(new T.Box3().setFromObject(n).min.y);});
+ // Tatsächliche Unterkante beider Rig-Beine; funktioniert auch nach Materialbündelung.
+ const limbs=p.userData.limbs;
+ if(limbs?.ll&&limbs?.rl)[limbs.ll,limbs.rl].forEach(leg=>feet.push(new T.Box3().setFromObject(leg).min.y));
+ else p.traverse(n=>{if(n.isMesh&&n.geometry?.type==='SphereGeometry'&&n.parent?.position.y===.5)feet.push(new T.Box3().setFromObject(n).min.y);});
  // Auch für vom Eltern-Agenten erzeugte Familienfixtures nutzbar: tatsächliche XZ-Unterstützung lesen.
  const followers=(p.followers||[]).map(a=>{const support=q.fields.filter(f=>Math.hypot(f.x-a.position.x,f.z-a.position.z)<f.disc.geometry.parameters.radiusTop).sort((a,b)=>b.disc.position.y-a.disc.position.y)[0];return {visible:a.visible,x:a.position.x,z:a.position.z,minY:new T.Box3().setFromObject(a).min.y,supportY:support?support.disc.position.y+.13:0};});
  return {label,tile:q.G.players[0].tile,stage:p.userData.ageStage,emote:p.userData.emote?{t:p.userData.emote.t}:null,surface,feet,clearance:feet.map(y=>y-surface),followers};

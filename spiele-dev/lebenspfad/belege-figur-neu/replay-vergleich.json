@@ -1,0 +1,21 @@
+{
+  "checks": {
+    "status": true,
+    "counts": true,
+    "rngDraws": true,
+    "allCheckpoints": true,
+    "checkpointHashes": true,
+    "final": true
+  },
+  "passed": true,
+  "reference": "belege-charakter/lockstep.json",
+  "referenceSha256": "51c1bfb8f33de9aae974230844c146d3596f844840128f2c6e5e8495d6eaeb13",
+  "rngDraws": 31,
+  "finalSeed": 47926930,
+  "counts": {
+    "roll": 16,
+    "pick": 9,
+    "fork": 2
+  },
+  "checkpoints": 26
+}
