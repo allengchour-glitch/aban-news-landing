@@ -1,0 +1,144 @@
+--- a/automation/metricool_freigabe.py
++++ b/automation/metricool_freigabe.py
+@@ -141,18 +141,36 @@
+     return len(t) >= 6 and any((t in w or w in t) for w in zt if len(w) >= 6)
+ 
+ 
+-LINK_RE = re.compile(r'luxestyle\.ch/(?:[a-z]{2}/)?products/([a-z0-9][a-z0-9-]*)', re.I)
++LINK_RE = re.compile(
++    r"""(?<![\w./:@?=&%+-])(?:[a-z][a-z0-9+.-]*://|luxestyle\.ch/)[^\s<>"'«»]+""",
++    re.I,
++)
++PRODUKT_PFAD_RE = re.compile(r'/(?:[a-z]{2}/)?products/([a-z0-9][a-z0-9-]*)/?', re.I)
+ 
+ 
+ def verlinkte_handles(text):
+-    """Produkt-Handles aus Links auf luxestyle.ch/products/<handle> (Reihenfolge wie im Text, ohne Doppel)."""
++    """HTTPS-Produktlinks des exakten Shops; luxestyle.ch/... bleibt als Kurzform erlaubt."""
+     out = []
+-    for h in LINK_RE.findall(text or ''):
+-        h = h.lower()
++    # Ganze URLs lesen, damit ein Shop-Link in einem fremden Pfad/Query nicht selbst als Link gilt.
++    for kandidat in LINK_RE.findall(text or ''):
++        kandidat = kandidat.rstrip('.,;!)]}')
++        if kandidat.lower().startswith('luxestyle.ch/'):
++            kandidat = 'https://' + kandidat
++        try:
++            url = urllib.parse.urlsplit(kandidat)
++            if (url.scheme.lower() != 'https' or url.hostname != 'luxestyle.ch'
++                    or url.username is not None or url.password is not None
++                    or url.port not in (None, 443)):
++                continue
++        except ValueError:
++            continue
++        pfad = PRODUKT_PFAD_RE.fullmatch(url.path)
++        if not pfad:
++            continue
++        h = pfad.group(1).lower()
+         if h not in out:
+             out.append(h)
+     return out
+-
+ 
+ def finde_produkte(text, produkte):
+     # Ein Link auf die Produktseite sagt eindeutig, welches Produkt beworben wird. Wortvergleiche
+--- a/automation/metricool_freigabe_test.py
++++ b/automation/metricool_freigabe_test.py
+@@ -87,6 +87,61 @@
+ gl(pp, ['verlinktes Produkt nicht in der Wegweiser-Sammlung: fremdes-produkt-123456'], 'klarer Grund beim Halten')
+ pp, tr = m.pruefe_produkte(TW, PRODUKTE_L)
+ gl((pp, [p['handle'] for p in tr]), ([], ['led-wasserwellen-projektionsleuchte-677504']), 'Wasserwellen-Beitrag besteht mit genau einem Produkt')
++
++# ---- URL-Grenzen: nur der tatsächliche Shop darf den Wortvergleich überstimmen
++for link in (
++    'https://notluxestyle.ch/products/a-b',
++    'https://shop.luxestyle.ch/products/a-b',
++    'https://luxestyle.ch.example.org/products/a-b',
++    'https://example.org/luxestyle.ch/products/a-b',
++    'https://example.org/https://luxestyle.ch/products/a-b',
++    'https://example.org/?next=https://luxestyle.ch/products/a-b',
++    'https://example.org/#https://luxestyle.ch/products/a-b',
++    'https://luxestyle.ch@evil.example/products/a-b',
++    'https://user@luxestyle.ch/products/a-b',
++    'https://user:pass@luxestyle.ch/products/a-b',
++    'https://luxestyle.ch:8443/products/a-b',
++    'https://luxestyle.ch:ungültig/products/a-b',
++    'https://[luxestyle.ch/products/a-b',
++    'http://luxestyle.ch/products/a-b',
++    'ftp://luxestyle.ch/products/a-b',
++    'javascript:https://luxestyle.ch/products/a-b',
++    '//luxestyle.ch/products/a-b',
++    'notluxestyle.ch/products/a-b',
++    'mail@luxestyle.ch/products/a-b',
++    '/products/a-b',
++    '[Produkt](/products/a-b)',
++    'https://luxestyle.ch/products/a-b/weiter',
++    'https://luxestyle.ch/products/a_b',
++    'https://luxestyle.ch/products/a-b%2Fweiter',
++):
++    gl(m.verlinkte_handles(link), [], f'kein vertrauenswürdiger Produktlink: {link}')
++
++for link in (
++    'https://luxestyle.ch/products/a-b',
++    'HTTPS://LuxeStyle.CH/products/A-B',
++    'luxestyle.ch/products/a-b',
++    'https://luxestyle.ch:443/products/a-b',
++    'https://luxestyle.ch/products/a-b/',
++    'https://luxestyle.ch/fr/products/a-b?country=CH&utm_source=instagram#details',
++    '[Produkt](https://luxestyle.ch/products/a-b?utm_medium=social)',
++    '<https://luxestyle.ch/products/a-b>',
++    '«https://luxestyle.ch/products/a-b».',
++):
++    gl(m.verlinkte_handles(link), ['a-b'], f'echter Produktlink bleibt: {link}')
++
++gl(m.verlinkte_handles('https://notluxestyle.ch/products/falsch '
++                      '[A](https://luxestyle.ch/products/a-b) '
++                      'luxestyle.ch/products/c-d https://luxestyle.ch/products/a-b'),
++   ['a-b', 'c-d'], 'fremden Host ignorieren, echte Links geordnet und ohne Doppel')
++_grenzprodukte = [prod('Plüsch Panda', 'plusch-panda', [19.9]),
++                  prod('Unabhängiger Artikel', 'q7', [99.9])]
++_grenztext = 'Plüsch Panda https://notluxestyle.ch/products/q7'
++gl([p['handle'] for p in m.finde_produkte(_grenztext, _grenzprodukte)],
++   ['plusch-panda'], 'fremder Host erzwingt kein anderes Produkt als der Wortvergleich')
++gl([p['handle'] for p in m.finde_produkte(
++    'Plüsch Panda https://luxestyle.ch/products/q7', _grenzprodukte)],
++   ['q7'], 'echter Produktlink hat weiterhin Vorrang')
+ 
+ # ---- Produkt- und Preisprüfung
+ pp, tr = m.pruefe_produkte('Plüsch Panda, 15 cm · CHF 19.90 · Versand CHF 7, ab CHF 50 gratis nach Rabatt', PRODUKTE)
+--- a/automation/metricool_freigabe_mutationsprobe.py
++++ b/automation/metricool_freigabe_mutationsprobe.py
+@@ -1,15 +1,15 @@
+ #!/usr/bin/env python3
+-"""Mutationsprobe für metricool_freigabe.py: ändert den Code absichtlich an 62 Stellen und prüft, dass der Test jedes Mal rot wird.
+-Aufruf: python3 automation/metricool_freigabe_mutationsprobe.py   (Ausgabe: «Mutanten: 62 | erkannt: 62 | überlebt/nicht anwendbar: 0»)"""
++"""Mutationsprobe für metricool_freigabe.py: ändert den Code absichtlich an 67 Stellen und prüft, dass der Test jedes Mal rot wird.
++Aufruf: python3 automation/metricool_freigabe_mutationsprobe.py   (Ausgabe: «Mutanten: 67 | erkannt: 67 | überlebt/nicht anwendbar: 0»)"""
+ import os, shutil, subprocess, sys, tempfile
+ SRC = os.path.dirname(os.path.abspath(__file__))
+ W = tempfile.mkdtemp(prefix='mfmut-')
+ M = [
+  ("    if links:\n        nach_handle", "    if False:\n        nach_handle"),
+- ("products/([a-z0-9][a-z0-9-]*)', re.I)", "products/([a-z0-9][a-z0-9-]*)')"),
+- ("luxestyle\\.ch/(?:[a-z]{2}/)?products", "luxestyle\\.ch/products"),
+- ("luxestyle\\.ch/(?:[a-z]{2}/)?products", "[a-z.]+/(?:[a-z]{2}/)?products"),
+- ("        h = h.lower()\n", "        pass\n"),
++ ("PRODUKT_PFAD_RE = re.compile(r'/(?:[a-z]{2}/)?products/([a-z0-9][a-z0-9-]*)/?', re.I)", "PRODUKT_PFAD_RE = re.compile(r'/(?:[a-z]{2}/)?products/([a-z0-9][a-z0-9-]*)/?')"),
++ ("r'/(?:[a-z]{2}/)?products/", "r'/products/"),
++ ("url.hostname != 'luxestyle.ch'", 'False'),
++ ('        h = pfad.group(1).lower()', '        h = pfad.group(1)'),
+  ("        if h not in out:\n", "        if True:\n"),
+  ("        return [nach_handle[h] for h in links if h in nach_handle]", "        return [p for p in produkte if p['handle'].lower() in links]"),
+  ("        if links:\n            return [f\"verlinktes", "        if False:\n            return [f\"verlinktes"),
+@@ -61,6 +61,11 @@
+  ('medium_erreichbar if not planer_datei else (lambda u: True), halten)', 'medium_erreichbar if not planer_datei else (lambda u: True))'),
+  ('    except FileNotFoundError:\n        halten = {}', '    except FileNotFoundError:\n        raise'),
+  ("            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt): ' + grund)", "            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt)')"),
++ ("url.scheme.lower() != 'https'", 'False'),
++ ('url.username is not None', 'False'),
++ ('url.port not in (None, 443)', 'False'),
++ ('PRODUKT_PFAD_RE.fullmatch(url.path)', 'PRODUKT_PFAD_RE.match(url.path)'),
++ ('(?<![\\w./:@?=&%+-])', ''),
+ ]
+ M += [
+  # Besitzer 16.11.: nur noch Videos, kein TikTok-Sound; Bestand 0 heisst nicht ausverkauft

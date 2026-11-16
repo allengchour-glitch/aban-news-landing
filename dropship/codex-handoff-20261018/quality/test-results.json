@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "offlineTests": 18,
+  "compile": "PASS",
+  "networkCalls": 0,
+  "installs": 0,
+  "cases": [
+    "correct details-root main price passes despite wrong recommendation price",
+    "missing or wrong main price cannot fall back to sticky price",
+    "wrong product ID or selected variant cannot pass",
+    "same-ID recommendation outside the main details component cannot pass",
+    "strict CHF parser accepts valid Swiss separators and rejects suffixes, multiple amounts, repeated/mixed grouping separators, and non-two-digit decimals",
+    "canonical product URL rejects query, fragment, credentials, non-HTTPS, untrusted host, and non-default port",
+    "urllib fake redirect handler rejects untrusted targets before following",
+    "browser request validation rejects unsafe initial URLs",
+    "browser fake route fetches with max_redirects=0 and aborts 3xx; safe 200 is fulfilled without route.continue_",
+    "cache-buster uses URL components without string concatenation",
+    "explicit target input is bounded and deduplicated"
+  ],
+  "sha256": {
+    "verify_product_details.py": "420c6217b63f3283061be9a646ca514269e090f6a56ad7dfbb07b0712d561b91",
+    "test_price_gate.py": "2addbaa8a789b81ede9bed0b0715c6838d46cd687ed53734baf13f4c0693a8f3",
+    "r264-to-r265.patch": "cd502c2255839d86630fa4cf54eb0bea75afb6f45ab95b6eb0f2dd1416d759c5"
+  }
+}

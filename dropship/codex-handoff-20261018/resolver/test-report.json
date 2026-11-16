@@ -1,0 +1,91 @@
+{
+  "baseCommit": "1667fc056033e756cf55a52574c35da0c10c8f72",
+  "repository": "allengchour-glitch/aban-news-landing",
+  "reviewedAtUTC": "2026-11-16T17:56:15.100270+00:00",
+  "status": "LOCAL_FIX_READY_FOR_CLAUDE_REVIEW",
+  "bugReproduced": true,
+  "tests": [
+    {
+      "label": "GEMESSEN",
+      "suite": "Original focused unit tests",
+      "passed": 148,
+      "exitCode": 0
+    },
+    {
+      "label": "GEMESSEN",
+      "suite": "Fixed focused unit tests",
+      "passed": 184,
+      "newChecks": 36,
+      "exitCode": 0
+    },
+    {
+      "label": "GEMESSEN",
+      "suite": "Original code with new regression tests",
+      "exitCode": 1,
+      "expectedFailure": "https://notluxestyle.ch/products/a-b incorrectly returned a-b"
+    },
+    {
+      "label": "GEMESSEN",
+      "suite": "Adapted existing mutation suite",
+      "mutations": 67,
+      "detected": 67,
+      "survivedOrInapplicable": 0,
+      "exitCode": 0
+    }
+  ],
+  "offlineRunner": "run_offline.py blocks socket and urllib network calls for tests and mutation child processes; temporary files under resolver-fix/tmp; no live credentials printed or used.",
+  "workflowWiring": "Pinned .github/workflows/metricool-freigabe.yml already invokes the modified test and mutation files for matching pull requests; workflow was read only and not changed/run.",
+  "changedFiles": [
+    "automation/metricool_freigabe.py",
+    "automation/metricool_freigabe_test.py",
+    "automation/metricool_freigabe_mutationsprobe.py"
+  ],
+  "compatibility": {
+    "preserved": [
+      "HTTPS canonical product URL",
+      "bare luxestyle.ch/products shorthand interpreted as HTTPS",
+      "two-letter language prefix",
+      "query incl. country and UTM",
+      "fragment",
+      "uppercase host and handle",
+      "order and deduplication",
+      "ordinary Markdown and angle-bracket links"
+    ],
+    "intentionallyRejected": [
+      "foreign and prefixed/suffixed/subdomain hosts",
+      "foreign path/query/fragment embedding",
+      "userinfo",
+      "non-HTTPS schemes",
+      "nondefault or invalid ports",
+      "partial/extra product path",
+      "scheme-relative URLs"
+    ],
+    "relativeLinks": "No new relative-link support; /products/... was not recognised by the original function.",
+    "port443": "Explicit HTTPS default port 443 is accepted."
+  },
+  "limits": [
+    "No external repository/platform writes, workflow execution, deployment, scheduling or social changes.",
+    "Not a demonstrated runtime incident: synthetic counterexamples prove the pinned-code resolver bug.",
+    "The existing keyword fallback remains unchanged. Rejecting a foreign link as authoritative does not independently prevent that text from matching product keywords.",
+    "Full ci_simulation.sh not run: task requested only focused offline tests and no workflow/install/deployment; review artifact is uncommitted.",
+    "Source pinned at one main SHA; Claude must rebase/review if main changes."
+  ],
+  "hashes": {
+    "original/AGENTS.md": "17cace2720ba6aa1a20fde8edef7d47c9be9ff9a517dedc27a1a67e783da6844",
+    "original/docs/ARBEITSTEILUNG-1011.md": "e6212abfc4924f2ba98f6e5d47bf8ea6fcb26f844ccf244750baeacf68965ff2",
+    "original/automation/metricool_freigabe_mutationsprobe.py": "d817a98b922fb3d9c84bd3acbd8ec495d8b5914ba838ecbd5f098c13398ea052",
+    "original/automation/metricool_freigabe_test.py": "6fd949ba08c18a187e3320ff739a57965096c6c9cf27aac3e91d601e7b526fdc",
+    "original/automation/metricool_freigabe.py": "a35762d820c25dcdf3d7bc35c7d05e34593dfdbc2e874352483579e22ba0707b",
+    "original/.github/workflows/metricool-freigabe.yml": "a1a7bc53da1fecf807f36854eca751f08baa65212fc3f6f1b20bd1a612825d8b",
+    "original/.claude/skills/shop-messen-nicht-raten/SKILL.md": "fb1c81c26c9b569928ebfbfd2750923c6c17a32a66e8c75a3a0aa28c08195736",
+    "fixed/automation/metricool_freigabe_mutationsprobe.py": "af11acbcba1bb31dc47a5538b4db23d2ae8d2bdab349a5a69941354ddf111667",
+    "fixed/automation/metricool_freigabe_test.py": "4a23ff24aa1e0deecba32f3e381028a522727a7b83be73e8b469a0624cbd538c",
+    "fixed/automation/metricool_freigabe.py": "1b52ded003d549ea8e8c55991f3cd9edf2717ffeababa9537243db8d00783a3a"
+  },
+  "patchSha256": "c7bdd6070c1ef094894ed1c28f3084ee851bbe40e3640514bcb364095f56991b",
+  "patchCheck": {
+    "command": "git apply --check resolver-host-boundary.patch (from original/)",
+    "exitCode": 0,
+    "label": "GEMESSEN"
+  }
+}

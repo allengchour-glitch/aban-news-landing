@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "scope": "Independent offline review of the three requested hardening areas, including two additional regressions fixed during review. No external reads/writes, installs or platform actions.",
+  "reviewedAtUTC": "2026-11-16T18:15:19.802336+00:00",
+  "findings": [],
+  "tests": {
+    "unittest": {
+      "command": "python -B -m unittest -v test_price_gate.py",
+      "count": 18,
+      "passed": 18,
+      "exitCode": 0
+    },
+    "syntaxCompile": "PASS",
+    "staticDOMBrowserCases": 3,
+    "additionalMalformedPriceExamplesRejected": 4,
+    "realBrowserRedirectCountercheck": "PASS: pre-fix local redirect target was fetched without guard; final real route.fetch(max_redirects=0) aborted 302 after only the initial loopback GET."
+  },
+  "verifiedCorrections": [
+    {
+      "area": "PDP scope",
+      "result": "Both browser extraction paths scope price nodes under product-information-details and exact product-id, exclude cards/recommendations, and evaluator requires corresponding ancestry flags. Actual static DOM tested missing main with same-ID recommendations outside and inside details, plus valid main with a wrong same-ID card."
+    },
+    {
+      "area": "Strict CHF parsing",
+      "result": "Whole-string match, consistent single grouping separator, exactly two fractional digits or none, Decimal conversion without quantization. Suffix/multiple-value/third-decimal/repeated-separator false-PASS examples now reject."
+    },
+    {
+      "area": "Redirect pre-follow guard",
+      "result": "urllib validates every resolved Location before constructing follow-up request. Browser initial URL is validated and every 3xx is rejected after route.fetch(max_redirects=0), without route.continue_. Safe responses are fulfilled. Production call site invokes guarded_browser_route."
+    }
+  ],
+  "limitations": [
+    "No live storefront QA and no PASS assertion for any product or current displayed price.",
+    "Static DOM tests use the actual browser_snapshot extraction and a known fixture variant id; live variant-changing controls were not exercised.",
+    "Real browser redirect test only contacted loopback. Its URL validator was temporarily replaced in memory to permit the exact local HTTP fixture; production HTTPS/host validation is checked by unit tests and code review.",
+    "All browser 3xx responses, including legitimate shop redirects, are now deliberately aborted. Such responses can cause bounded QA to fail or become unavailable rather than a false PASS.",
+    "No repository/platform write, workflow, deployment or full catalogue assessment."
+  ],
+  "hashes": {
+    "verify_product_details.py": "420c6217b63f3283061be9a646ca514269e090f6a56ad7dfbb07b0712d561b91",
+    "test_price_gate.py": "2addbaa8a789b81ede9bed0b0715c6838d46cd687ed53734baf13f4c0693a8f3",
+    "test-results.json": "27221fcd0856b79714c5cbdd95a51fa433bcd8e7f8348a07b3128733fba8007a",
+    "r264-to-r265.patch": "cd502c2255839d86630fa4cf54eb0bea75afb6f45ab95b6eb0f2dd1416d759c5",
+    "browser-redirect-local-repro.json": "51a9037f1cfdcee8ce6474cc260c817525616914cac29484f28fa3c608dbe86b",
+    "browser-redirect-local-fixed.json": "acb81f39698c51c36c3b0713d062337d1683473f39d6dc0f38be277bc7ef29b0",
+    "independent-dom-check.json": "0fac1a5f95980432df4409977cfd0b2627686984e625725b2b0ac5322069a4cc"
+  }
+}

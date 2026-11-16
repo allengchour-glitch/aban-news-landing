@@ -1,0 +1,33 @@
+{
+  "run": "R265",
+  "productId": "15507734135169",
+  "status": "BLOCKED_NO_COPY_READY",
+  "nativeStatus": "ACTIVE",
+  "nativeVariantCount": 1,
+  "exactChildVariantBinding": "UNKNOWN",
+  "evidence": {
+    "nativeVariantUsesSyntheticParentIdentifier": true,
+    "returnedChildSkuMatchesNativeVariant": false,
+    "exactConnectionLookupReturnedRecords": 0,
+    "interpretation": "No binding record for the exact filters; this does not establish that no connection exists elsewhere.",
+    "matchingGalleryImageExists": true,
+    "nativeVariantMediaAssigned": false
+  },
+  "openQuestions": [
+    "Prove exact current supplier child to native variant mapping before customer copy.",
+    "Resolve which parts the supplier dimensions describe and which straps/accessories are included."
+  ],
+  "preservedFields": [
+    "title",
+    "description",
+    "SEO",
+    "variant",
+    "price",
+    "inventory",
+    "tags",
+    "status",
+    "media"
+  ],
+  "mutations": 0,
+  "rawSupplierAndMetafieldValuesExcluded": true
+}

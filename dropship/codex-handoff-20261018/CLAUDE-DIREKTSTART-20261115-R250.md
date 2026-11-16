@@ -1,3 +1,9 @@
+# R265 — lokale Resolver-/QA-Prüfung, Produktblocker dokumentiert — 16.11.2026
+
+Nur lokale Dokumentation und Belege. Die Resolver-Korrektur bestand 184 gezielte Prüfungen; die Mutationsprobe erkannte 67 von 67 Mutationen. Der Patch ist als Hand-off-Prüfartefakt abgelegt; er wurde nicht in die operative Automation übernommen oder veröffentlicht. Der QA-Helfer bestand 18 Offline-Tests und eine unabhängige Abschlussprüfung; öffentliche Prüfungen gab es nicht. Tasche 15507734135169 bleibt wegen einer unbekannten exakten Lieferantenvarianten-Zuordnung und offener Zubehör- und Massfragen blockiert. [Bericht](R265-REPORT-20261116.md) · [Belege](R265-PROOF-20261116.json) · [Arbeitsliste mit 65 Zeilen](PRODUKTDETAILS-ARBEITSLISTE-20261116-R265.csv). R266 Premium-Unterkategorien läuft; Ergebnis offen.
+
+---
+
 # R264 – Zwei weitere Produktseiten live, Auswahl und Farbzuordnung verbessert – 16.11.2026
 
 Vorratsdose700/1400ml und Trinkglas980ml: zwei neue Titel/Beschreibungen/SEO-Paare live; DoseFarbe→Dekor und Inhalt. Drei bestätigte Mutationen, zehn Varianten unverändert. Astra fand die gelbe Bildfarbe der alsOrange bezeichneten Variante; Text vorWrite korrigiert. [Bericht](PRODUKTDETAILS-KUECHE-20261116-R264.md) · [Native/Quellen/öffentliche/mobile Belege](PRODUKTDETAILS-BELEGE-20261116-R264.json).

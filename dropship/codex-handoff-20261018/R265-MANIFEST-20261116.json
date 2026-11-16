@@ -1,0 +1,175 @@
+{
+  "run": "R265",
+  "date": "2026-11-16",
+  "files": [
+    {
+      "file": "R265-REPORT-20261116.md",
+      "path": "dropship/codex-handoff-20261018/R265-REPORT-20261116.md",
+      "bytes": 1773,
+      "sha256": "14dab005a29bce4fc0430cba2c1df421ae08340e6c5d0ef9e26f41d45d159362",
+      "gitBlobSha": "47ecc02ce2c731ce335a6baca8d1ba8d0b6b47fa",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "R265-PROOF-20261116.json",
+      "path": "dropship/codex-handoff-20261018/R265-PROOF-20261116.json",
+      "bytes": 7060,
+      "sha256": "244764ce2a2e4db612c07ff2dafc7125e7e4f8007538f4165937cdad9117fc31",
+      "gitBlobSha": "67496abfb827bd81d73af9a078f5501823dd64f9",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "PRODUKTDETAILS-ARBEITSLISTE-20261116-R265.csv",
+      "path": "dropship/codex-handoff-20261018/PRODUKTDETAILS-ARBEITSLISTE-20261116-R265.csv",
+      "bytes": 26732,
+      "sha256": "053be5b25332b79cc7a332aceb4bd5ce09be828300ecb669358f5a5fed8ac652",
+      "gitBlobSha": "947d54d51e556ce37cb5aa1dee89644a89a7f63e",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "TASCHE-QUELLENBLOCKER-20261116-R265.json",
+      "path": "dropship/codex-handoff-20261018/TASCHE-QUELLENBLOCKER-20261116-R265.json",
+      "bytes": 1007,
+      "sha256": "2cd05c1e8fb31b2c7b1234deb4062da6895a86d3725a5a9b7d6a9788cb82e7e9",
+      "gitBlobSha": "0410bc3d760a7b652dd0344e61778b36019c04e4",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "resolver/README.md",
+      "path": "dropship/codex-handoff-20261018/resolver/README.md",
+      "bytes": 2064,
+      "sha256": "94af1deb39b40630a98f43046751d7ea707687632e7451806114cf759da4e2a3",
+      "gitBlobSha": "3317d0666cf017cbd66521e4db79520ad7bd8e9e",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "resolver/resolver-host-boundary.patch",
+      "path": "dropship/codex-handoff-20261018/resolver/resolver-host-boundary.patch",
+      "bytes": 7732,
+      "sha256": "c7bdd6070c1ef094894ed1c28f3084ee851bbe40e3640514bcb364095f56991b",
+      "gitBlobSha": "4920671d7fdd944440ccfbefc1d2a51d0b7345bc",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "resolver/test-report.json",
+      "path": "dropship/codex-handoff-20261018/resolver/test-report.json",
+      "bytes": 4397,
+      "sha256": "5207e7573fa91984f9360f94d47f040883a2aa20e16960fcd7c3cbdc8961624a",
+      "gitBlobSha": "3df1b110918e0929ece322f92a215d5e0079d539",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "resolver/local-verification.json",
+      "path": "dropship/codex-handoff-20261018/resolver/local-verification.json",
+      "bytes": 444,
+      "sha256": "59fcb952824e741a9585f59a6da5442e453d2049af8df3f6952d69a4b632c1cb",
+      "gitBlobSha": "6a3c7cf5c9ea8d65d0d6bb3a3238170a401a9d1c",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "quality/README.md",
+      "path": "dropship/codex-handoff-20261018/quality/README.md",
+      "bytes": 1740,
+      "sha256": "a1c5a8b3ceb5e890dc9f058c8aaa274ae7af0ebcedcccbe1f6dd37b0511555e5",
+      "gitBlobSha": "6f3ef5938619251b492b770a25ad5ce1baa8fe3b",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "quality/verify_product_details.py",
+      "path": "dropship/codex-handoff-20261018/quality/verify_product_details.py",
+      "bytes": 29696,
+      "sha256": "420c6217b63f3283061be9a646ca514269e090f6a56ad7dfbb07b0712d561b91",
+      "gitBlobSha": "4d3a043e1c3ada0e08db288af386d6ca8d8f4ded",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "quality/test_price_gate.py",
+      "path": "dropship/codex-handoff-20261018/quality/test_price_gate.py",
+      "bytes": 10909,
+      "sha256": "2addbaa8a789b81ede9bed0b0715c6838d46cd687ed53734baf13f4c0693a8f3",
+      "gitBlobSha": "bb3d317d5b8ac09b28fa77c343bbaeef3e8ee877",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "quality/r264-to-r265.patch",
+      "path": "dropship/codex-handoff-20261018/quality/r264-to-r265.patch",
+      "bytes": 43862,
+      "sha256": "cd502c2255839d86630fa4cf54eb0bea75afb6f45ab95b6eb0f2dd1416d759c5",
+      "gitBlobSha": "7616ce180c6aa556fa6c59c903cfbea2d7583374",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "quality/root-retest.json",
+      "path": "dropship/codex-handoff-20261018/quality/root-retest.json",
+      "bytes": 3496,
+      "sha256": "35a4f12a204e77de1e32a7de118e89219e94e5e5b12c3354de249c2bdd859255",
+      "gitBlobSha": "b7dbaddfdb1f6e6b2b666862bcb18ddfb586f849",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "quality/test-results.json",
+      "path": "dropship/codex-handoff-20261018/quality/test-results.json",
+      "bytes": 1368,
+      "sha256": "27221fcd0856b79714c5cbdd95a51fa433bcd8e7f8348a07b3128733fba8007a",
+      "gitBlobSha": "9f4457846bb5c986a9f900460460415a4c03b07f",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "quality/independent-review.md",
+      "path": "dropship/codex-handoff-20261018/quality/independent-review.md",
+      "bytes": 2175,
+      "sha256": "2ab877318039ee8010c6ba294ebbb950ca3645944357659d4ee2c2224e3d4fb8",
+      "gitBlobSha": "165f67aad5acaa6d45ce16e5371624286e719a85",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "quality/independent-review.json",
+      "path": "dropship/codex-handoff-20261018/quality/independent-review.json",
+      "bytes": 3321,
+      "sha256": "c587e21a9553d88bc29b853838b55f20f61a8658fcae22d120adefd8e32513d2",
+      "gitBlobSha": "6a89e1964a31d767cc0fbea2115ac85982f62eb3",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "README.md",
+      "path": "dropship/codex-handoff-20261018/README.md",
+      "bytes": 610176,
+      "sha256": "8d2f4e753d8d8d127466cd6dcd9700435322ce4a76fb52ecaf59e60f71823209",
+      "gitBlobSha": "3cc7927ff07ef3cb9eda841af2c6b76aa21dc688",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "PROJEKTGEDAECHTNIS.md",
+      "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+      "bytes": 485787,
+      "sha256": "577596a950811eb8dfc91e8e274bc7727d226d56d31026023d8c43a599324533",
+      "gitBlobSha": "ee64f25fb2f4297541bfdbb5f0a922ba0c4684c5",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "CLAUDE-DIREKTSTART-20261115-R250.md",
+      "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+      "bytes": 31069,
+      "sha256": "96c636a335baac319ce57fecbf2005ad85f1f71f3a2fd7de47c88a37c16d4b5c",
+      "gitBlobSha": "69d06f272cfdcb601359f0de9b0dabb12b1421e4",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "TAGESPROTOKOLL.md",
+      "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+      "bytes": 661276,
+      "sha256": "5cd659024483b3415dc9a91e5e2ae768e50ef4a9a221a9a3a116485b4ca82f2a",
+      "gitBlobSha": "18f1c264863ba59ba646d066c2e8aeb31a78756b",
+      "readAt": "2026-11-16T18:24:08Z"
+    },
+    {
+      "file": "ARBEITSSTAND.json",
+      "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+      "bytes": 4511273,
+      "sha256": "1256c6f616a0cba4b2d55448ced7da3d8e953064bdace2d1b860a3f2ee54c3e8",
+      "gitBlobSha": "6e5b2a132b155a82cb597d75105a0fcc91cf16b8",
+      "readAt": "2026-11-16T18:24:08Z"
+    }
+  ],
+  "selfIncluded": false
+}

@@ -1,0 +1,17 @@
+{
+  "status": "LOCAL_FIX_READY_FOR_CLAUDE_REVIEW",
+  "originalFocusedTests": 148,
+  "fixedFocusedTests": 184,
+  "newChecks": 36,
+  "mutationChecks": 67,
+  "mutationDetected": 67,
+  "originalCountercheck": "EXPECTED_FAIL",
+  "patchCheck": {
+    "command": "git apply --check resolver-host-boundary.patch (from original/)",
+    "exitCode": 0,
+    "label": "GEMESSEN"
+  },
+  "deployed": false,
+  "repositoryWrite": false,
+  "workflowRun": false
+}

@@ -1,0 +1,136 @@
+{
+  "run": "R265",
+  "date": "2026-11-16",
+  "baselineRevision": 264,
+  "scope": "local documentation and offline review package only",
+  "branchPrewriteRead": {
+    "readAtUTC": "2026-11-16T18:23:48Z",
+    "branch": "codex/luxestyle-claude-handoff-20261018",
+    "currentHead": "ccf8b77e541ba875732a5088eb0217a5e8ec3e93",
+    "expectedR264Head": "ccf8b77e541ba875732a5088eb0217a5e8ec3e93",
+    "currentTree": "8caa58d611b0e9889821f6d3e0a8e599134e17f6",
+    "coreFilesMatchR264Baseline": true,
+    "coreGitBlobShas": {
+      "README.md": "2aefde7f4954779f9f563458e982824816d3699c",
+      "PROJEKTGEDAECHTNIS.md": "fb1357d4b503a235e935739bbbb3b56a38e6c138",
+      "CLAUDE-DIREKTSTART-20261115-R250.md": "e850d95bbf73d37a05a126ffa8855549b78fe29d",
+      "TAGESPROTOKOLL.md": "ba02ab4fb3a48c83c38b9b4a29e9cdba571d7702",
+      "ARBEITSSTAND.json": "b303afbd1576edf6a706b052d342713518e60f20"
+    }
+  },
+  "shopIdentity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "currencyCode": "CHF",
+    "ianaTimezone": "Europe/Zurich",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "productWrites": 0,
+  "themeWrites": 0,
+  "merchantWrites": 0,
+  "metricoolWrites": 0,
+  "newOffers": 0,
+  "publicQARequests": 0,
+  "dailyReportsRepeated": false,
+  "ordersOrCustomersRead": false,
+  "resolver": {
+    "status": "LOCAL_FIX_READY_FOR_CLAUDE_REVIEW",
+    "originalFocusedTests": 148,
+    "fixedFocusedTests": 184,
+    "newChecks": 36,
+    "mutationChecks": 67,
+    "mutationDetected": 67,
+    "originalCountercheck": "EXPECTED_FAIL",
+    "patchCheck": {
+      "command": "git apply --check resolver-host-boundary.patch (from original/)",
+      "exitCode": 0,
+      "label": "GEMESSEN"
+    },
+    "deployed": false,
+    "repositoryWrite": false,
+    "workflowRun": false
+  },
+  "qualityHelper": {
+    "status": "PASS",
+    "offlineTests": 18,
+    "compile": "PASS",
+    "networkCalls": 0,
+    "installs": 0,
+    "cases": [
+      "correct details-root main price passes despite wrong recommendation price",
+      "missing or wrong main price cannot fall back to sticky price",
+      "wrong product ID or selected variant cannot pass",
+      "same-ID recommendation outside the main details component cannot pass",
+      "strict CHF parser accepts valid Swiss separators and rejects suffixes, multiple amounts, repeated/mixed grouping separators, and non-two-digit decimals",
+      "canonical product URL rejects query, fragment, credentials, non-HTTPS, untrusted host, and non-default port",
+      "urllib fake redirect handler rejects untrusted targets before following",
+      "browser request validation rejects unsafe initial URLs",
+      "browser fake route fetches with max_redirects=0 and aborts 3xx; safe 200 is fulfilled without route.continue_",
+      "cache-buster uses URL components without string concatenation",
+      "explicit target input is bounded and deduplicated"
+    ],
+    "sha256": {
+      "verify_product_details.py": "420c6217b63f3283061be9a646ca514269e090f6a56ad7dfbb07b0712d561b91",
+      "test_price_gate.py": "2addbaa8a789b81ede9bed0b0715c6838d46cd687ed53734baf13f4c0693a8f3",
+      "r264-to-r265.patch": "cd502c2255839d86630fa4cf54eb0bea75afb6f45ab95b6eb0f2dd1416d759c5"
+    }
+  },
+  "independentQAReview": {
+    "status": "PASS",
+    "scope": "Independent offline review of the three requested hardening areas, including two additional regressions fixed during review. No external reads/writes, installs or platform actions.",
+    "reviewedAtUTC": "2026-11-16T18:15:19.802336+00:00",
+    "findings": [],
+    "tests": {
+      "unittest": {
+        "command": "python -B -m unittest -v test_price_gate.py",
+        "count": 18,
+        "passed": 18,
+        "exitCode": 0
+      },
+      "syntaxCompile": "PASS",
+      "staticDOMBrowserCases": 3,
+      "additionalMalformedPriceExamplesRejected": 4,
+      "realBrowserRedirectCountercheck": "PASS: pre-fix local redirect target was fetched without guard; final real route.fetch(max_redirects=0) aborted 302 after only the initial loopback GET."
+    },
+    "verifiedCorrections": [
+      {
+        "area": "PDP scope",
+        "result": "Both browser extraction paths scope price nodes under product-information-details and exact product-id, exclude cards/recommendations, and evaluator requires corresponding ancestry flags. Actual static DOM tested missing main with same-ID recommendations outside and inside details, plus valid main with a wrong same-ID card."
+      },
+      {
+        "area": "Strict CHF parsing",
+        "result": "Whole-string match, consistent single grouping separator, exactly two fractional digits or none, Decimal conversion without quantization. Suffix/multiple-value/third-decimal/repeated-separator false-PASS examples now reject."
+      },
+      {
+        "area": "Redirect pre-follow guard",
+        "result": "urllib validates every resolved Location before constructing follow-up request. Browser initial URL is validated and every 3xx is rejected after route.fetch(max_redirects=0), without route.continue_. Safe responses are fulfilled. Production call site invokes guarded_browser_route."
+      }
+    ],
+    "limitations": [
+      "No live storefront QA and no PASS assertion for any product or current displayed price.",
+      "Static DOM tests use the actual browser_snapshot extraction and a known fixture variant id; live variant-changing controls were not exercised.",
+      "Real browser redirect test only contacted loopback. Its URL validator was temporarily replaced in memory to permit the exact local HTTP fixture; production HTTPS/host validation is checked by unit tests and code review.",
+      "All browser 3xx responses, including legitimate shop redirects, are now deliberately aborted. Such responses can cause bounded QA to fail or become unavailable rather than a false PASS.",
+      "No repository/platform write, workflow, deployment or full catalogue assessment."
+    ],
+    "hashes": {
+      "verify_product_details.py": "420c6217b63f3283061be9a646ca514269e090f6a56ad7dfbb07b0712d561b91",
+      "test_price_gate.py": "2addbaa8a789b81ede9bed0b0715c6838d46cd687ed53734baf13f4c0693a8f3",
+      "test-results.json": "27221fcd0856b79714c5cbdd95a51fa433bcd8e7f8348a07b3128733fba8007a",
+      "r264-to-r265.patch": "cd502c2255839d86630fa4cf54eb0bea75afb6f45ab95b6eb0f2dd1416d759c5",
+      "browser-redirect-local-repro.json": "51a9037f1cfdcee8ce6474cc260c817525616914cac29484f28fa3c608dbe86b",
+      "browser-redirect-local-fixed.json": "acb81f39698c51c36c3b0713d062337d1683473f39d6dc0f38be277bc7ef29b0",
+      "independent-dom-check.json": "0fac1a5f95980432df4409977cfd0b2627686984e625725b2b0ac5322069a4cc"
+    }
+  },
+  "blockedCandidate": "TASCHE-QUELLENBLOCKER-20261116-R265.json",
+  "worklist": {
+    "preservedPrefixRows": 64,
+    "newBlockedRows": 1,
+    "totalRows": 65,
+    "catalogCompletionClaim": false
+  },
+  "R266": "Premium-Unterkategorien-Auftrag begonnen; Ergebnis offen.",
+  "privacy": "No raw supplier response, supplier SKU, source prose, metafield value, price, credential, or session HTML included."
+}
