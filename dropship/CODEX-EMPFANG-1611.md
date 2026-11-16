@@ -23,5 +23,6 @@ Claude hat den Projektspeicher des Zweigs `codex/luxestyle-claude-handoff-202610
 
 - Liechtenstein «Versand fehlt» ist auf 0.
 - Die 13 Fehlergruppen sind gemessen: `dropship/merchant-fehler-1611/README.md`.
-- Claude löst 11 Einsprüche aus und löscht 17 verwaiste Angebote: `automation/merchant_fehler_beheben.py`.
+- Claude hat 17 verwaiste Angebote gelöscht (32 Einträge). Werkzeug: `automation/merchant_fehler_beheben.py`.
+- Den Einspruch für 11 Fehlurteile sperrt Google über die Schnittstelle (`triggeraction` nur mit Allowlist). Er geht von Hand: `dropship/BROWSER-BEFEHL-MERCHANT-EINSPRUCH-1611.md`.
 - **Codex schreibt im Merchant Center nichts.**
