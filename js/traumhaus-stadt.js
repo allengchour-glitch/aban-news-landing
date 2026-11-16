@@ -65,20 +65,63 @@ function cameraClip(buildings,a,b){
   });return best;
 }
 function createWorld(T,scene,solid){
-  var P=plan(),root=new T.Group(),groups=[],materials=[],box=new T.BoxGeometry(1,1,1),plane=new T.PlaneGeometry(1,1),tmp=new T.Object3D(),pal=[0xc2b5a1,0xa6b3ad,0xd0c3aa,0x8f9c9e,0xc8b5a6,0xada9b1];root.name='Oststadt, Nordstadt und Motorsportpark';scene.add(root);
-  var bodyMat=new T.MeshLambertMaterial({color:0xffffff}),glassMat=new T.MeshLambertMaterial({color:0x476b77,emissive:0xf6cb7a,emissiveIntensity:0}),roofMat=new T.MeshLambertMaterial({color:0x727b78}),roadMat=new T.MeshLambertMaterial({color:0x41484e}),paveMat=new T.MeshLambertMaterial({color:0xb5b8ae}),lineMat=new T.MeshBasicMaterial({color:0xf0e9cf}),redMat=new T.MeshLambertMaterial({color:0xad5946}),parkMat=new T.MeshLambertMaterial({color:0x6d9567});materials.push(glassMat);
+  var P=plan(),root=new T.Group(),groups=[],materials=[],box=new T.BoxGeometry(1,1,1),plane=new T.PlaneGeometry(1,1),tmp=new T.Object3D(),pal=[0xe4d7bd,0xb5cec2,0xc3d2dd,0xd5b09d,0xd7d3c7,0x99b6bd];root.name='Oststadt, Nordstadt und Motorsportpark';scene.add(root);
+  var bodyMat=new T.MeshLambertMaterial({color:0xffffff}),glassMat=new T.MeshLambertMaterial({color:0xffffff,emissive:0xf6cb7a,emissiveIntensity:0}),roofMat=new T.MeshLambertMaterial({color:0xffffff}),roadMat=new T.MeshLambertMaterial({color:0x303b43}),paveMat=new T.MeshLambertMaterial({color:0xcdd0c2}),lineMat=new T.MeshBasicMaterial({color:0xf7f0dc}),redMat=new T.MeshLambertMaterial({color:0xad5946}),parkMat=new T.MeshLambertMaterial({color:0x6d9567});materials.push(glassMat);
   var chunks={};function add(kind,x,y,z,w,h,d,rot,color){var k=Math.floor(x/80)+'_'+Math.floor(z/80),b=chunks[k]||(chunks[k]={x:Math.floor(x/80)*80+40,z:Math.floor(z/80)*80+40,body:[],glass:[],roof:[]});b[kind].push({x:x,y:y,z:z,w:w,h:h,d:d,rot:rot||0,color:color||0xffffff});}
-  P.buildings.forEach(function(b){add('body',b.x,b.h/2,b.z,b.w,b.h,b.d,0,pal[b.seed%pal.length]);add('roof',b.x,b.h+.2,b.z,b.w+.4,.4,b.d+.4);add('glass',b.x,1.7,b.z+b.d/2+.04,b.w*.68,2,1,0);add('glass',b.x,1.7,b.z-b.d/2-.04,b.w*.68,2,1,Math.PI);
-    /* Geschaeftssockel, Vordach und Dachaufbau brechen die gleiche Silhouette. */
-    add('body',b.x,2.85,b.z+b.d/2+.15,b.w*.9,.35,.5,0,[0x486d70,0xa4664f,0x7d8057,0x7d6680][b.seed%4]);
-    add('body',b.x,.95,b.z+b.d/2+.08,1.5,1.9,.14,0,0x344f53);
-    if(b.seed%3===0)add('roof',b.x+2,b.h+1.3,b.z-2,b.w*.4,2.2,b.d*.36);
-    if(b.seed%4===0)for(var f9=1;f9<4;f9++)add('body',b.x,f9*2.8+3,b.z+b.d/2+.65,b.w*.7,.22,1.3,0,0xc4c4af);
-    for(var f=0;f<b.floors;f++)for(var c=-1;c<=1;c++){var y=4.4+f*2.8;[1,-1].forEach(function(side){add('glass',b.x+c*4,y,b.z+side*(b.d/2+.035),1.65,1.6,1,side>0?0:Math.PI);add('glass',b.x+side*(b.w/2+.035),y,b.z+c*3.4,1.65,1.6,1,side*Math.PI/2);});}
-    solid(b.x,b.z,b.w,b.d);});
-  Object.keys(chunks).forEach(function(k){var b=chunks[k];['body','glass','roof'].forEach(function(kind){var rows=b[kind];if(!rows.length)return;var geo=(kind==='glass'?plane:box).clone();geo.boundingSphere=new T.Sphere(new T.Vector3(0,25,0),80);var m=new T.InstancedMesh(geo,kind==='glass'?glassMat:(kind==='body'?bodyMat:roofMat),rows.length);m.position.set(b.x,0,b.z);rows.forEach(function(a,i){tmp.position.set(a.x-b.x,a.y,a.z-b.z);tmp.rotation.set(0,a.rot,0);tmp.scale.set(a.w,a.h,a.d);tmp.updateMatrix();m.setMatrixAt(i,tmp.matrix);if(kind==='body')m.setColorAt(i,new T.Color(a.color));});m.instanceMatrix.needsUpdate=true;m.updateMatrix();m.matrixAutoUpdate=false;root.add(m);groups.push({mesh:m,x:b.x,z:b.z,detail:kind==='glass'});});});
-  function slab(x,z,w,d,mat,y){var m=new T.Mesh(box,mat);m.position.set(x,y===undefined?.02:y,z);m.scale.set(w,.06,d);m.updateMatrix();m.matrixAutoUpdate=false;root.add(m);return m;}
-  P.roads.forEach(function(r){var dx=r.b[0]-r.a[0],dz=r.b[1]-r.a[1],len=Math.hypot(dx,dz),x=(r.a[0]+r.b[0])/2,z=(r.a[1]+r.b[1])/2,rot=-Math.atan2(dz,dx);var a=slab(x,z,len+r.w,r.w+7,paveMat,.015);a.rotation.y=rot;a.updateMatrix();var b=slab(x,z,len+r.w,r.w,roadMat,.055);b.rotation.y=rot;b.updateMatrix();for(var t=5;t<len-5;t+=12){var q=t/len,m=slab(r.a[0]+dx*q,r.a[1]+dz*q,4,.14,lineMat,.092);m.rotation.y=rot;m.updateMatrix();}});
+  P.buildings.forEach(function(b){
+    var style=b.seed%3,base=pal[b.seed%pal.length],trim=[0x477f7a,0x526b7e,0xa56e50][style],glass=[0x355767,0x4b7280,0x40685f][style],stone=[0xece3cf,0xd9e0d8,0xe5d0b4][style];
+    add('body',b.x,b.h/2,b.z,b.w,b.h,b.d,0,base);
+    /* Ein dunkler Sockel und helle Gesimse geben jedem Haus ein lesbares Erdgeschoss. */
+    add('body',b.x,1.45,b.z,b.w+.03,2.9,b.d+.03,0,0x566663);
+    add('body',b.x,3,b.z,b.w+.18,.22,b.d+.18,0,stone);
+    add('roof',b.x,b.h+.2,b.z,b.w+.4,.4,b.d+.4,0,stone);
+    add('roof',b.x,b.h+.43,b.z,b.w-1,.08,b.d-1,0,0x66746f);
+    [1,-1].forEach(function(side){
+      add('glass',b.x,1.55,b.z+side*(b.d/2+.06),b.w*.75,1.95,1,side>0?0:Math.PI,glass);
+      add('body',b.x,2.63,b.z+side*(b.d/2+.21),b.w*.84,.32,.45,0,trim);
+      add('body',b.x,.96,b.z+side*(b.d/2+.12),1.45,1.92,.16,0,0x253d43);
+    });
+    /* Drei Fassadenfamilien: einzelne Fenster, breite Baender, vertikale Erker. */
+    for(var f=0;f<b.floors;f++){
+      var y=4.4+f*2.8;
+      [1,-1].forEach(function(side){
+        if(style===1){
+          add('glass',b.x,y,b.z+side*(b.d/2+.055),b.w*.79,1.48,1,side>0?0:Math.PI,glass);
+          add('glass',b.x+side*(b.w/2+.055),y,b.z,b.d*.76,1.48,1,side*Math.PI/2,glass);
+        }else for(var c=-1;c<=1;c++){
+          var ww=style===2?2.05:1.6;
+          add('glass',b.x+c*4,y,b.z+side*(b.d/2+.055),ww,1.65,1,side>0?0:Math.PI,(c+f+b.seed)%7===0?0x91b0ae:glass);
+          add('glass',b.x+side*(b.w/2+.055),y,b.z+c*3.4,ww,1.65,1,side*Math.PI/2,(c+f+b.seed)%7===0?0x91b0ae:glass);
+        }
+      });
+      if(f%3===2&&style!==2)add('body',b.x,y-1.2,b.z,b.w+.12,.15,b.d+.12,0,stone);
+    }
+    if(style===2){
+      [-1,1].forEach(function(side){add('body',b.x+side*2,3+(b.h-3)/2,b.z+b.d/2+.075,.22,b.h-3,.12,0,stone);});
+      for(var f9=1;f9<Math.min(5,b.floors);f9+=2){var y9=f9*2.8+3;
+        add('body',b.x,y9,b.z+b.d/2+.65,b.w*.68,.2,1.3,0,stone);
+        add('body',b.x,y9+.5,b.z+b.d/2+1.24,b.w*.68,.8,.12,0,trim);
+      }
+    }
+    if(b.seed%3===0){add('roof',b.x+2,b.h+1.3,b.z-2,b.w*.4,2.2,b.d*.36,0,base);add('roof',b.x+2,b.h+2.43,b.z-2,b.w*.4+.3,.12,b.d*.36+.3,0,stone);}
+    solid(b.x,b.z,b.w,b.d);
+  });
+  Object.keys(chunks).forEach(function(k){var b=chunks[k];['body','glass','roof'].forEach(function(kind){var rows=b[kind];if(!rows.length)return;var geo=(kind==='glass'?plane:box).clone();geo.boundingSphere=new T.Sphere(new T.Vector3(0,25,0),80);var m=new T.InstancedMesh(geo,kind==='glass'?glassMat:(kind==='body'?bodyMat:roofMat),rows.length);m.position.set(b.x,0,b.z);rows.forEach(function(a,i){tmp.position.set(a.x-b.x,a.y,a.z-b.z);tmp.rotation.set(0,a.rot,0);tmp.scale.set(a.w,a.h,a.d);tmp.updateMatrix();m.setMatrixAt(i,tmp.matrix);m.setColorAt(i,new T.Color(a.color));});m.instanceMatrix.needsUpdate=true;m.updateMatrix();m.matrixAutoUpdate=false;root.add(m);groups.push({mesh:m,x:b.x,z:b.z,detail:kind==='glass'});});});
+  /* Markierungen sind flache Instanzen: zwei Dreiecke statt zwoelf je Strich. */
+  var markPlane=new T.PlaneGeometry(1,1),crossings=[];
+  function slab(x,z,w,d,mat,y){var flat=mat===lineMat,m=new T.Mesh(flat?markPlane:box,mat);m.position.set(x,(y===undefined?.02:y)+(flat?.03:0),z);if(flat){m.rotation.order='YXZ';m.rotation.x=-Math.PI/2;m.scale.set(w,d,1);}else m.scale.set(w,.06,d);m.updateMatrix();m.matrixAutoUpdate=false;root.add(m);return m;}
+  P.roads.forEach(function(h){if(h.a[1]!==h.b[1]||h.w<10)return;P.roads.forEach(function(v){if(v.a[0]!==v.b[0]||v.w<10)return;var x=v.a[0],z=h.a[1];if(x<Math.min(h.a[0],h.b[0])||x>Math.max(h.a[0],h.b[0])||z<Math.min(v.a[1],v.b[1])||z>Math.max(v.a[1],v.b[1]))return;
+    if(crossings.some(function(c){return c.x===x&&c.z===z;}))return;
+    crossings.push({x:x,z:z,h:h,v:v});
+  });});
+  P.roads.forEach(function(r){var dx=r.b[0]-r.a[0],dz=r.b[1]-r.a[1],len=Math.hypot(dx,dz),x=(r.a[0]+r.b[0])/2,z=(r.a[1]+r.b[1])/2,rot=-Math.atan2(dz,dx);var a=slab(x,z,len+r.w,r.w+7,paveMat,.015);a.rotation.y=rot;a.updateMatrix();var b=slab(x,z,len+r.w,r.w,roadMat,.055);b.rotation.y=rot;b.updateMatrix();for(var t=5;t<len-5;t+=12){var q=t/len,mx=r.a[0]+dx*q,mz=r.a[1]+dz*q;if(crossings.some(function(c){return Math.hypot(c.x-mx,c.z-mz)<15;}))continue;var m=slab(mx,mz,3.5,.12,lineMat,.097);m.rotation.y=rot;m.updateMatrix();}});
+  crossings.forEach(function(c){
+    [[1,0,c.h,c.v.w],[-1,0,c.h,c.v.w],[0,1,c.v,c.h.w],[0,-1,c.v,c.h.w]].forEach(function(a){
+      var ux=a[0],uz=a[1],r=a[2],reach=ux?Math.max((r.a[0]-c.x)*ux,(r.b[0]-c.x)*ux):Math.max((r.a[1]-c.z)*uz,(r.b[1]-c.z)*uz);
+      if(reach<16)return;var offset=a[3]/2+3.4;
+      for(var k=-3;k<=3;k++){var x=c.x+ux*offset-uz*k*1.4,z=c.z+uz*offset+ux*k*1.4;slab(x,z,ux?3.2:.65,ux?.65:3.2,lineMat,.1);}
+    });
+  });
   slab(680,120,57,57,paveMat,.04);slab(680,120,28,28,parkMat,.09);
   /* Hofbelag und Stellplaetze liegen ausserhalb der Grundflaechen; Zufahrten bleiben offen. */
   P.courtyards.forEach(function(p){slab(p[0],p[1],22,22,paveMat,.04);});
@@ -95,11 +138,11 @@ function createWorld(T,scene,solid){
   for(var i=0;i<track.points.length;i++){var a=track.points[Math.max(0,i-1)],b=track.points[Math.min(track.points.length-1,i+1)],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz)||1;[-1,1].forEach(function(s){pos.push(track.points[i][0]-dz/l*7*s,.095,track.points[i][1]+dx/l*7*s);uv.push(track.lengths[i]/12,(s+1)/2);});if(i){var k=i*2;idx.push(k-2,k-1,k,k-1,k+1,k);}}
   var tg=new T.BufferGeometry();tg.setAttribute('position',new T.Float32BufferAttribute(pos,3));tg.setAttribute('uv',new T.Float32BufferAttribute(uv,2));tg.setIndex(idx);tg.computeVertexNormals();var tm=new T.Mesh(tg,new T.MeshLambertMaterial({color:0x38434a,side:T.DoubleSide}));root.add(tm);
   for(var i=0;i<track.points.length-1;i++){var a=track.points[i],b=track.points[i+1],dx=b[0]-a[0],dz=b[1]-a[1],l=Math.hypot(dx,dz);[-1,1].forEach(function(side){var m=slab((a[0]+b[0])/2-dz/l*7.5*side,(a[1]+b[1])/2+dx/l*7.5*side,l+1,1,i%2?redMat:lineMat,.11);m.rotation.y=-Math.atan2(dz,dx);m.updateMatrix();});}
-  for(var i=0;i<8;i++)for(var j=0;j<2;j++)slab(754+i,340-5+j*5,1,5,(i+j)%2?lineMat:roofMat,.13);
+  for(var i=0;i<8;i++)for(var j=0;j<2;j++)slab(754+i,340-5+j*5,1,5,(i+j)%2?lineMat:roadMat,.13);
   slab(770,320,34,22,paveMat,.08);for(var i=0;i<3;i++)slab(685,503+i*2,58,2,paveMat,.7+i*.6);
   /* Markierungen, Gehwege und Randsteine gemeinsam zeichnen statt je Strich. */
-  var flat={};root.children.slice().forEach(function(m){if(m.isMesh&&!m.isInstancedMesh&&m.geometry===box){(flat[m.material.uuid]||(flat[m.material.uuid]=[])).push(m);}});
-  Object.keys(flat).forEach(function(k){var a=flat[k],g=box.clone();g.boundingSphere=new T.Sphere(new T.Vector3(440,0,100),600);var im=new T.InstancedMesh(g,a[0].material,a.length);a.forEach(function(m,i){im.setMatrixAt(i,m.matrix);root.remove(m);});im.instanceMatrix.needsUpdate=true;im.updateMatrix();im.matrixAutoUpdate=false;root.add(im);});
+  var flat={};root.children.slice().forEach(function(m){if(m.isMesh&&!m.isInstancedMesh&&(m.geometry===box||m.geometry===markPlane)){var key=m.material.uuid+'_'+m.geometry.id;(flat[key]||(flat[key]=[])).push(m);}});
+  Object.keys(flat).forEach(function(k){var a=flat[k],g=a[0].geometry.clone();g.boundingSphere=new T.Sphere(new T.Vector3(440,0,100),600);var im=new T.InstancedMesh(g,a[0].material,a.length);a.forEach(function(m,i){im.setMatrixAt(i,m.matrix);root.remove(m);});im.instanceMatrix.needsUpdate=true;im.updateMatrix();im.matrixAutoUpdate=false;root.add(im);});
   var roadPoints=P.roads.map(function(r){return [r.a,r.b];});
   return {root:root,plan:P,track:track,groups:groups,cameraClip:function(a,b){return cameraClip(P.buildings,a,b);},onRoad:function(x,z){if(P.roads.some(function(r){return x>=Math.min(r.a[0],r.b[0])-r.w/2&&x<=Math.max(r.a[0],r.b[0])+r.w/2&&z>=Math.min(r.a[1],r.b[1])-r.w/2&&z<=Math.max(r.a[1],r.b[1])+r.w/2&&projekt([x,z],r.a,r.b).d<r.w/2;}))return true;if(x>570&&x<810&&z>330&&z<490&&abstand([x,z],P.track,true)<8)return true;return false;},tick:function(x,z,night){groups.forEach(function(g){var d=Math.hypot(g.x-x,g.z-z);g.mesh.visible=d<(g.detail?200:570);});glassMat.emissiveIntensity=night?.55:0;}};
 }
