@@ -1,0 +1,2540 @@
+{
+  "kind": "Browser-Regressionsfixtures; Messwerte ohne Schatten/Brett; keine FPS-Messung",
+  "base": "http://127.0.0.1:8150",
+  "negative": true,
+  "checks": [
+    {
+      "name": "desktop: Vorschau Rand frau",
+      "passed": false,
+      "data": {
+        "count": 9192,
+        "finite": true,
+        "minMargin": -0.18719257511692056,
+        "zMin": 0.9285172662790583,
+        "zMax": 0.9515204525552686,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau sRGB frau",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau Rand mann",
+      "passed": false,
+      "data": {
+        "count": 10059,
+        "finite": true,
+        "minMargin": -0.18719257511692056,
+        "zMin": 0.9321187152518783,
+        "zMax": 0.9468569368850502,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau sRGB mann",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau Rand krone",
+      "passed": false,
+      "data": {
+        "count": 10344,
+        "finite": true,
+        "minMargin": -0.18719257511692056,
+        "zMin": 0.9298207486075999,
+        "zMax": 0.9515204525552686,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau sRGB krone",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau Rand hut",
+      "passed": false,
+      "data": {
+        "count": 9712,
+        "finite": true,
+        "minMargin": -0.18719257511692056,
+        "zMin": 0.9294786834801149,
+        "zMax": 0.9474414399966722,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau sRGB hut",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau Rand frisur-0",
+      "passed": false,
+      "data": {
+        "count": 9076,
+        "finite": true,
+        "minMargin": -0.18719257511692056,
+        "zMin": 0.9298207486075999,
+        "zMax": 0.9515204525552686,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau sRGB frisur-0",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau Rand frisur-1",
+      "passed": false,
+      "data": {
+        "count": 8774,
+        "finite": true,
+        "minMargin": -0.18719257511692056,
+        "zMin": 0.9298207486075999,
+        "zMax": 0.9515204525552686,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau sRGB frisur-1",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau Rand frisur-2",
+      "passed": false,
+      "data": {
+        "count": 8592,
+        "finite": true,
+        "minMargin": -0.18719257511692056,
+        "zMin": 0.9298207486075999,
+        "zMax": 0.9515204525552686,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau sRGB frisur-2",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau Rand frisur-3",
+      "passed": false,
+      "data": {
+        "count": 8532,
+        "finite": true,
+        "minMargin": -0.18719257511692056,
+        "zMin": 0.9298207486075999,
+        "zMax": 0.9515204525552686,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau sRGB frisur-3",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau Rand frisur-4",
+      "passed": false,
+      "data": {
+        "count": 8865,
+        "finite": true,
+        "minMargin": -0.18719257511692056,
+        "zMin": 0.9298207486075999,
+        "zMax": 0.9515204525552686,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "desktop: Vorschau sRGB frisur-4",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "desktop: Zeichenaufrufe sinken f",
+      "passed": false,
+      "data": {
+        "actual": 78,
+        "baseline": 78
+      }
+    },
+    {
+      "name": "desktop: richtiges Mobilprofil f",
+      "passed": true,
+      "data": false
+    },
+    {
+      "name": "desktop: Kopfgruppe dreht f",
+      "passed": false,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 14,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "desktop: kein Schädel-/Gesichtsdrift f",
+      "passed": false,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 14,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "desktop: Blinzeln f",
+      "passed": true,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 14,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "desktop: Laufen und Anhalten f",
+      "passed": true,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 14,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "desktop: Zeichenaufrufe sinken m",
+      "passed": false,
+      "data": {
+        "actual": 81,
+        "baseline": 81
+      }
+    },
+    {
+      "name": "desktop: richtiges Mobilprofil m",
+      "passed": true,
+      "data": false
+    },
+    {
+      "name": "desktop: Kopfgruppe dreht m",
+      "passed": false,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 12,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "desktop: kein Schädel-/Gesichtsdrift m",
+      "passed": false,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 12,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "desktop: Blinzeln m",
+      "passed": true,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 12,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "desktop: Laufen und Anhalten m",
+      "passed": true,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 12,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "desktop: Streifen ohne Aufpolsterung",
+      "passed": false,
+      "data": {
+        "basic": {
+          "cfg": {
+            "g": "f",
+            "style": 9,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 0
+          },
+          "options": {},
+          "coarse": false,
+          "calls": 76,
+          "triangles": 13316,
+          "meshes": 76,
+          "outlines": 18,
+          "size": [
+            0.9084144258499145,
+            1.987015239070952,
+            0.9317760169029236
+          ]
+        },
+        "stripe": {
+          "cfg": {
+            "g": "f",
+            "style": 9,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 3
+          },
+          "options": {},
+          "coarse": false,
+          "calls": 84,
+          "triangles": 15780,
+          "meshes": 84,
+          "outlines": 22,
+          "size": [
+            0.9084144258499145,
+            1.987015239070952,
+            0.9317760169029236
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop: Alter 0",
+      "passed": true,
+      "data": {
+        "stage": 0,
+        "scaleY": 1.0989,
+        "headScale": 1.0988,
+        "headStoop": 0,
+        "bodyFactor": 0.74,
+        "headFactor": 1.34,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.13186799999999999,
+        "shoes": [
+          0.41151648158538784,
+          0.41151648158538784
+        ],
+        "worldY": 0.541868
+      }
+    },
+    {
+      "name": "desktop: Standhöhe 0",
+      "passed": true,
+      "data": {
+        "stage": 0,
+        "scaleY": 1.0989,
+        "headScale": 1.0988,
+        "headStoop": 0,
+        "bodyFactor": 0.74,
+        "headFactor": 1.34,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.13186799999999999,
+        "shoes": [
+          0.41151648158538784,
+          0.41151648158538784
+        ],
+        "worldY": 0.541868,
+        "allowedGap": 0.0015164815853878617
+      }
+    },
+    {
+      "name": "desktop: Alter 1",
+      "passed": true,
+      "data": {
+        "stage": 1,
+        "scaleY": 1.3365000000000002,
+        "headScale": 0.9347999999999999,
+        "headStoop": 0,
+        "bodyFactor": 0.9,
+        "headFactor": 1.14,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.16038000000000002,
+        "shoes": [
+          0.411844369495742,
+          0.411844369495742
+        ],
+        "worldY": 0.5703800000000001
+      }
+    },
+    {
+      "name": "desktop: Standhöhe 1",
+      "passed": true,
+      "data": {
+        "stage": 1,
+        "scaleY": 1.3365000000000002,
+        "headScale": 0.9347999999999999,
+        "headStoop": 0,
+        "bodyFactor": 0.9,
+        "headFactor": 1.14,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.16038000000000002,
+        "shoes": [
+          0.411844369495742,
+          0.411844369495742
+        ],
+        "worldY": 0.5703800000000001,
+        "allowedGap": 0.0018443694957419943
+      }
+    },
+    {
+      "name": "desktop: Alter 2",
+      "passed": true,
+      "data": {
+        "stage": 2,
+        "scaleY": 1.4850000000000003,
+        "headScale": 0.82,
+        "headStoop": 0,
+        "bodyFactor": 1,
+        "headFactor": 1,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.17820000000000003,
+        "shoes": [
+          0.4120492994397133,
+          0.4120492994397133
+        ],
+        "worldY": 0.5882000000000001
+      }
+    },
+    {
+      "name": "desktop: Standhöhe 2",
+      "passed": true,
+      "data": {
+        "stage": 2,
+        "scaleY": 1.4850000000000003,
+        "headScale": 0.82,
+        "headStoop": 0,
+        "bodyFactor": 1,
+        "headFactor": 1,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.17820000000000003,
+        "shoes": [
+          0.4120492994397133,
+          0.4120492994397133
+        ],
+        "worldY": 0.5882000000000001,
+        "allowedGap": 0.002049299439713327
+      }
+    },
+    {
+      "name": "desktop: Alter 3",
+      "passed": true,
+      "data": {
+        "stage": 3,
+        "scaleY": 1.4256000000000002,
+        "headScale": 0.8363999999999999,
+        "headStoop": 0.22,
+        "bodyFactor": 0.96,
+        "headFactor": 1.02,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.17107200000000003,
+        "shoes": [
+          0.41196732746212483,
+          0.41196732746212483
+        ],
+        "worldY": 0.581072
+      }
+    },
+    {
+      "name": "desktop: Standhöhe 3",
+      "passed": true,
+      "data": {
+        "stage": 3,
+        "scaleY": 1.4256000000000002,
+        "headScale": 0.8363999999999999,
+        "headStoop": 0.22,
+        "bodyFactor": 0.96,
+        "headFactor": 1.02,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.17107200000000003,
+        "shoes": [
+          0.41196732746212483,
+          0.41196732746212483
+        ],
+        "worldY": 0.581072,
+        "allowedGap": 0.0019673274621247938
+      }
+    },
+    {
+      "name": "desktop: altersunabhängiger Sohlenabstand",
+      "passed": true,
+      "data": [
+        0.0013799996227025278,
+        0.0013799996227025278,
+        0.001379999622702551,
+        0.001379999622702551,
+        0.0013799996227025386,
+        0.0013799996227025386,
+        0.0013799996227025822,
+        0.0013799996227025822
+      ]
+    },
+    {
+      "name": "mobile: Vorschau Rand frau",
+      "passed": false,
+      "data": {
+        "count": 6186,
+        "finite": true,
+        "minMargin": -0.17658349540248364,
+        "zMin": 0.9285928598540268,
+        "zMax": 0.9513946786633125,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau sRGB frau",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau Rand mann",
+      "passed": false,
+      "data": {
+        "count": 6651,
+        "finite": true,
+        "minMargin": -0.17658349540248364,
+        "zMin": 0.9321133372583148,
+        "zMax": 0.9466317957110807,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau sRGB mann",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau Rand krone",
+      "passed": false,
+      "data": {
+        "count": 7042,
+        "finite": true,
+        "minMargin": -0.17658349540248364,
+        "zMin": 0.9300558730387335,
+        "zMax": 0.9513946786633125,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau sRGB krone",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau Rand hut",
+      "passed": false,
+      "data": {
+        "count": 6432,
+        "finite": true,
+        "minMargin": -0.18141429162738087,
+        "zMin": 0.9296605747126208,
+        "zMax": 0.9473311681038562,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau sRGB hut",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau Rand frisur-0",
+      "passed": false,
+      "data": {
+        "count": 6102,
+        "finite": true,
+        "minMargin": -0.17658349540248364,
+        "zMin": 0.9300558730387335,
+        "zMax": 0.9513946786633125,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau sRGB frisur-0",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau Rand frisur-1",
+      "passed": false,
+      "data": {
+        "count": 5896,
+        "finite": true,
+        "minMargin": -0.17658349540248364,
+        "zMin": 0.9300558730387335,
+        "zMax": 0.9513946786633125,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau sRGB frisur-1",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau Rand frisur-2",
+      "passed": false,
+      "data": {
+        "count": 5778,
+        "finite": true,
+        "minMargin": -0.17658349540248364,
+        "zMin": 0.9300558730387335,
+        "zMax": 0.9513946786633125,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau sRGB frisur-2",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau Rand frisur-3",
+      "passed": false,
+      "data": {
+        "count": 5734,
+        "finite": true,
+        "minMargin": -0.17658349540248364,
+        "zMin": 0.9300558730387335,
+        "zMax": 0.9513946786633125,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau sRGB frisur-3",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau Rand frisur-4",
+      "passed": false,
+      "data": {
+        "count": 5906,
+        "finite": true,
+        "minMargin": -0.17658349540248364,
+        "zMin": 0.9300558730387335,
+        "zMax": 0.9513946786633125,
+        "encoding": 3000,
+        "rendererEncoding": 3001
+      }
+    },
+    {
+      "name": "mobile: Vorschau sRGB frisur-4",
+      "passed": false,
+      "data": {
+        "target": 3000,
+        "renderer": 3001
+      }
+    },
+    {
+      "name": "mobile: Editor innerhalb Viewport",
+      "passed": true,
+      "data": {
+        "left": 76,
+        "right": 314,
+        "viewport": 390
+      }
+    },
+    {
+      "name": "mobile: Zeichenaufrufe sinken f",
+      "passed": false,
+      "data": {
+        "actual": 74,
+        "baseline": 74
+      }
+    },
+    {
+      "name": "mobile: richtiges Mobilprofil f",
+      "passed": true,
+      "data": true
+    },
+    {
+      "name": "mobile: Kopfgruppe dreht f",
+      "passed": false,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 14,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobile: kein Schädel-/Gesichtsdrift f",
+      "passed": false,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 14,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobile: Blinzeln f",
+      "passed": true,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 14,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobile: Laufen und Anhalten f",
+      "passed": true,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 14,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobile: Zeichenaufrufe sinken m",
+      "passed": false,
+      "data": {
+        "actual": 75,
+        "baseline": 75
+      }
+    },
+    {
+      "name": "mobile: richtiges Mobilprofil m",
+      "passed": true,
+      "data": true
+    },
+    {
+      "name": "mobile: Kopfgruppe dreht m",
+      "passed": false,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 12,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobile: kein Schädel-/Gesichtsdrift m",
+      "passed": false,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 12,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobile: Blinzeln m",
+      "passed": true,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 12,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobile: Laufen und Anhalten m",
+      "passed": true,
+      "data": {
+        "groupBefore": [
+          0,
+          0,
+          0
+        ],
+        "groupAfter": [
+          0,
+          0,
+          0
+        ],
+        "relativeDrift": 0.45066000628795083,
+        "movedParts": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "parts": 12,
+        "closed": [
+          0.12,
+          0.12
+        ],
+        "opened": [
+          1,
+          1
+        ],
+        "walking": [
+          0.7425784202528833,
+          -0.7425784202528833,
+          -0.5940627362023067,
+          0.5940627362023067
+        ],
+        "stopped": [
+          1.6416472206533473e-7,
+          -1.6416472206533473e-7,
+          -1.3133177765226785e-7,
+          1.3133177765226785e-7
+        ]
+      }
+    },
+    {
+      "name": "mobile: Streifen ohne Aufpolsterung",
+      "passed": false,
+      "data": {
+        "basic": {
+          "cfg": {
+            "g": "f",
+            "style": 9,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 0
+          },
+          "options": {},
+          "coarse": true,
+          "calls": 72,
+          "triangles": 8516,
+          "meshes": 72,
+          "outlines": 14,
+          "size": [
+            0.8861716272354125,
+            1.9819332390493154,
+            0.9317760169029236
+          ]
+        },
+        "stripe": {
+          "cfg": {
+            "g": "f",
+            "style": 9,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 3
+          },
+          "options": {},
+          "coarse": true,
+          "calls": 80,
+          "triangles": 9956,
+          "meshes": 80,
+          "outlines": 18,
+          "size": [
+            0.8861716272354125,
+            1.9819332390493154,
+            0.9317760169029236
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile: Alter 0",
+      "passed": true,
+      "data": {
+        "stage": 0,
+        "scaleY": 1.0989,
+        "headScale": 1.0988,
+        "headStoop": 0,
+        "bodyFactor": 0.74,
+        "headFactor": 1.34,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.13186799999999999,
+        "shoes": [
+          0.4165933996070027,
+          0.4165933996070027
+        ],
+        "worldY": 0.541868
+      }
+    },
+    {
+      "name": "mobile: Standhöhe 0",
+      "passed": true,
+      "data": {
+        "stage": 0,
+        "scaleY": 1.0989,
+        "headScale": 1.0988,
+        "headStoop": 0,
+        "bodyFactor": 0.74,
+        "headFactor": 1.34,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.13186799999999999,
+        "shoes": [
+          0.4165933996070027,
+          0.4165933996070027
+        ],
+        "worldY": 0.541868,
+        "allowedGap": 0.0065933996070027074
+      }
+    },
+    {
+      "name": "mobile: Alter 1",
+      "passed": true,
+      "data": {
+        "stage": 1,
+        "scaleY": 1.3365000000000002,
+        "headScale": 0.9347999999999999,
+        "headStoop": 0,
+        "bodyFactor": 0.9,
+        "headFactor": 1.14,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.16038000000000002,
+        "shoes": [
+          0.41801899952203037,
+          0.41801899952203037
+        ],
+        "worldY": 0.5703800000000001
+      }
+    },
+    {
+      "name": "mobile: Standhöhe 1",
+      "passed": true,
+      "data": {
+        "stage": 1,
+        "scaleY": 1.3365000000000002,
+        "headScale": 0.9347999999999999,
+        "headStoop": 0,
+        "bodyFactor": 0.9,
+        "headFactor": 1.14,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.16038000000000002,
+        "shoes": [
+          0.41801899952203037,
+          0.41801899952203037
+        ],
+        "worldY": 0.5703800000000001,
+        "allowedGap": 0.00801899952203032
+      }
+    },
+    {
+      "name": "mobile: Alter 2",
+      "passed": true,
+      "data": {
+        "stage": 2,
+        "scaleY": 1.4850000000000003,
+        "headScale": 0.82,
+        "headStoop": 0,
+        "bodyFactor": 1,
+        "headFactor": 1,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.17820000000000003,
+        "shoes": [
+          0.41890999946892254,
+          0.41890999946892254
+        ],
+        "worldY": 0.5882000000000001
+      }
+    },
+    {
+      "name": "mobile: Standhöhe 2",
+      "passed": true,
+      "data": {
+        "stage": 2,
+        "scaleY": 1.4850000000000003,
+        "headScale": 0.82,
+        "headStoop": 0,
+        "bodyFactor": 1,
+        "headFactor": 1,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.17820000000000003,
+        "shoes": [
+          0.41890999946892254,
+          0.41890999946892254
+        ],
+        "worldY": 0.5882000000000001,
+        "allowedGap": 0.00890999946892258
+      }
+    },
+    {
+      "name": "mobile: Alter 3",
+      "passed": true,
+      "data": {
+        "stage": 3,
+        "scaleY": 1.4256000000000002,
+        "headScale": 0.8363999999999999,
+        "headStoop": 0.22,
+        "bodyFactor": 0.96,
+        "headFactor": 1.02,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.17107200000000003,
+        "shoes": [
+          0.4185535994901657,
+          0.4185535994901657
+        ],
+        "worldY": 0.581072
+      }
+    },
+    {
+      "name": "mobile: Standhöhe 3",
+      "passed": true,
+      "data": {
+        "stage": 3,
+        "scaleY": 1.4256000000000002,
+        "headScale": 0.8363999999999999,
+        "headStoop": 0.22,
+        "bodyFactor": 0.96,
+        "headFactor": 1.02,
+        "baseHead": 0.82,
+        "tallY": 1.1,
+        "surface": 0.41000000000000003,
+        "clearance": 0.17107200000000003,
+        "shoes": [
+          0.4185535994901657,
+          0.4185535994901657
+        ],
+        "worldY": 0.581072,
+        "allowedGap": 0.008553599490165676
+      }
+    },
+    {
+      "name": "mobile: altersunabhängiger Sohlenabstand",
+      "passed": true,
+      "data": [
+        0.005999999642372072,
+        0.005999999642372072,
+        0.005999999642372116,
+        0.005999999642372116,
+        0.005999999642372062,
+        0.005999999642372062,
+        0.00599999964237209,
+        0.00599999964237209
+      ]
+    },
+    {
+      "name": "keine Browser-JavaScript-Fehler",
+      "passed": true,
+      "data": []
+    }
+  ],
+  "profiles": [
+    {
+      "profile": "desktop",
+      "previews": [
+        {
+          "name": "frau",
+          "count": 9192,
+          "finite": true,
+          "minMargin": -0.18719257511692056,
+          "zMin": 0.9285172662790583,
+          "zMax": 0.9515204525552686,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "mann",
+          "count": 10059,
+          "finite": true,
+          "minMargin": -0.18719257511692056,
+          "zMin": 0.9321187152518783,
+          "zMax": 0.9468569368850502,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "krone",
+          "count": 10344,
+          "finite": true,
+          "minMargin": -0.18719257511692056,
+          "zMin": 0.9298207486075999,
+          "zMax": 0.9515204525552686,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "hut",
+          "count": 9712,
+          "finite": true,
+          "minMargin": -0.18719257511692056,
+          "zMin": 0.9294786834801149,
+          "zMax": 0.9474414399966722,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-0",
+          "count": 9076,
+          "finite": true,
+          "minMargin": -0.18719257511692056,
+          "zMin": 0.9298207486075999,
+          "zMax": 0.9515204525552686,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-1",
+          "count": 8774,
+          "finite": true,
+          "minMargin": -0.18719257511692056,
+          "zMin": 0.9298207486075999,
+          "zMax": 0.9515204525552686,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-2",
+          "count": 8592,
+          "finite": true,
+          "minMargin": -0.18719257511692056,
+          "zMin": 0.9298207486075999,
+          "zMax": 0.9515204525552686,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-3",
+          "count": 8532,
+          "finite": true,
+          "minMargin": -0.18719257511692056,
+          "zMin": 0.9298207486075999,
+          "zMax": 0.9515204525552686,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-4",
+          "count": 8865,
+          "finite": true,
+          "minMargin": -0.18719257511692056,
+          "zMin": 0.9298207486075999,
+          "zMax": 0.9515204525552686,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        }
+      ],
+      "figures": [
+        {
+          "cfg": {
+            "g": "f",
+            "style": 0,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 0
+          },
+          "options": {},
+          "coarse": false,
+          "calls": 78,
+          "triangles": 13316,
+          "meshes": 78,
+          "outlines": 19,
+          "size": [
+            0.9084144258499145,
+            2.005055239070952,
+            0.9317760169029236
+          ]
+        },
+        {
+          "cfg": {
+            "g": "m",
+            "style": 1,
+            "skin": 1,
+            "hair": -1,
+            "pants": 1,
+            "cloth": -1,
+            "top": 1
+          },
+          "options": {},
+          "coarse": false,
+          "calls": 81,
+          "triangles": 15102,
+          "meshes": 81,
+          "outlines": 19,
+          "size": [
+            0.8397312285661698,
+            1.987015239070952,
+            0.5343846493148803
+          ]
+        }
+      ],
+      "motions": [
+        {
+          "g": "f",
+          "groupBefore": [
+            0,
+            0,
+            0
+          ],
+          "groupAfter": [
+            0,
+            0,
+            0
+          ],
+          "relativeDrift": 0.45066000628795083,
+          "movedParts": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "parts": 14,
+          "closed": [
+            0.12,
+            0.12
+          ],
+          "opened": [
+            1,
+            1
+          ],
+          "walking": [
+            0.7425784202528833,
+            -0.7425784202528833,
+            -0.5940627362023067,
+            0.5940627362023067
+          ],
+          "stopped": [
+            1.6416472206533473e-7,
+            -1.6416472206533473e-7,
+            -1.3133177765226785e-7,
+            1.3133177765226785e-7
+          ]
+        },
+        {
+          "g": "m",
+          "groupBefore": [
+            0,
+            0,
+            0
+          ],
+          "groupAfter": [
+            0,
+            0,
+            0
+          ],
+          "relativeDrift": 0.45066000628795083,
+          "movedParts": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "parts": 12,
+          "closed": [
+            0.12,
+            0.12
+          ],
+          "opened": [
+            1,
+            1
+          ],
+          "walking": [
+            0.7425784202528833,
+            -0.7425784202528833,
+            -0.5940627362023067,
+            0.5940627362023067
+          ],
+          "stopped": [
+            1.6416472206533473e-7,
+            -1.6416472206533473e-7,
+            -1.3133177765226785e-7,
+            1.3133177765226785e-7
+          ]
+        }
+      ],
+      "ages": [
+        {
+          "stage": 0,
+          "scaleY": 1.0989,
+          "headScale": 1.0988,
+          "headStoop": 0,
+          "bodyFactor": 0.74,
+          "headFactor": 1.34,
+          "baseHead": 0.82,
+          "tallY": 1.1,
+          "surface": 0.41000000000000003,
+          "clearance": 0.13186799999999999,
+          "shoes": [
+            0.41151648158538784,
+            0.41151648158538784
+          ],
+          "worldY": 0.541868
+        },
+        {
+          "stage": 1,
+          "scaleY": 1.3365000000000002,
+          "headScale": 0.9347999999999999,
+          "headStoop": 0,
+          "bodyFactor": 0.9,
+          "headFactor": 1.14,
+          "baseHead": 0.82,
+          "tallY": 1.1,
+          "surface": 0.41000000000000003,
+          "clearance": 0.16038000000000002,
+          "shoes": [
+            0.411844369495742,
+            0.411844369495742
+          ],
+          "worldY": 0.5703800000000001
+        },
+        {
+          "stage": 2,
+          "scaleY": 1.4850000000000003,
+          "headScale": 0.82,
+          "headStoop": 0,
+          "bodyFactor": 1,
+          "headFactor": 1,
+          "baseHead": 0.82,
+          "tallY": 1.1,
+          "surface": 0.41000000000000003,
+          "clearance": 0.17820000000000003,
+          "shoes": [
+            0.4120492994397133,
+            0.4120492994397133
+          ],
+          "worldY": 0.5882000000000001
+        },
+        {
+          "stage": 3,
+          "scaleY": 1.4256000000000002,
+          "headScale": 0.8363999999999999,
+          "headStoop": 0.22,
+          "bodyFactor": 0.96,
+          "headFactor": 1.02,
+          "baseHead": 0.82,
+          "tallY": 1.1,
+          "surface": 0.41000000000000003,
+          "clearance": 0.17107200000000003,
+          "shoes": [
+            0.41196732746212483,
+            0.41196732746212483
+          ],
+          "worldY": 0.581072
+        }
+      ],
+      "stripes": {
+        "basic": {
+          "cfg": {
+            "g": "f",
+            "style": 9,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 0
+          },
+          "options": {},
+          "coarse": false,
+          "calls": 76,
+          "triangles": 13316,
+          "meshes": 76,
+          "outlines": 18,
+          "size": [
+            0.9084144258499145,
+            1.987015239070952,
+            0.9317760169029236
+          ]
+        },
+        "stripe": {
+          "cfg": {
+            "g": "f",
+            "style": 9,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 3
+          },
+          "options": {},
+          "coarse": false,
+          "calls": 84,
+          "triangles": 15780,
+          "meshes": 84,
+          "outlines": 22,
+          "size": [
+            0.9084144258499145,
+            1.987015239070952,
+            0.9317760169029236
+          ]
+        }
+      }
+    },
+    {
+      "profile": "mobile",
+      "previews": [
+        {
+          "name": "frau",
+          "count": 6186,
+          "finite": true,
+          "minMargin": -0.17658349540248364,
+          "zMin": 0.9285928598540268,
+          "zMax": 0.9513946786633125,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "mann",
+          "count": 6651,
+          "finite": true,
+          "minMargin": -0.17658349540248364,
+          "zMin": 0.9321133372583148,
+          "zMax": 0.9466317957110807,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "krone",
+          "count": 7042,
+          "finite": true,
+          "minMargin": -0.17658349540248364,
+          "zMin": 0.9300558730387335,
+          "zMax": 0.9513946786633125,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "hut",
+          "count": 6432,
+          "finite": true,
+          "minMargin": -0.18141429162738087,
+          "zMin": 0.9296605747126208,
+          "zMax": 0.9473311681038562,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-0",
+          "count": 6102,
+          "finite": true,
+          "minMargin": -0.17658349540248364,
+          "zMin": 0.9300558730387335,
+          "zMax": 0.9513946786633125,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-1",
+          "count": 5896,
+          "finite": true,
+          "minMargin": -0.17658349540248364,
+          "zMin": 0.9300558730387335,
+          "zMax": 0.9513946786633125,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-2",
+          "count": 5778,
+          "finite": true,
+          "minMargin": -0.17658349540248364,
+          "zMin": 0.9300558730387335,
+          "zMax": 0.9513946786633125,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-3",
+          "count": 5734,
+          "finite": true,
+          "minMargin": -0.17658349540248364,
+          "zMin": 0.9300558730387335,
+          "zMax": 0.9513946786633125,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        },
+        {
+          "name": "frisur-4",
+          "count": 5906,
+          "finite": true,
+          "minMargin": -0.17658349540248364,
+          "zMin": 0.9300558730387335,
+          "zMax": 0.9513946786633125,
+          "encoding": 3000,
+          "rendererEncoding": 3001
+        }
+      ],
+      "figures": [
+        {
+          "cfg": {
+            "g": "f",
+            "style": 0,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 0
+          },
+          "options": {},
+          "coarse": true,
+          "calls": 74,
+          "triangles": 8516,
+          "meshes": 74,
+          "outlines": 15,
+          "size": [
+            0.8861716272354125,
+            1.9999732390493155,
+            0.9317760169029236
+          ]
+        },
+        {
+          "cfg": {
+            "g": "m",
+            "style": 1,
+            "skin": 1,
+            "hair": -1,
+            "pants": 1,
+            "cloth": -1,
+            "top": 1
+          },
+          "options": {},
+          "coarse": true,
+          "calls": 75,
+          "triangles": 9525,
+          "meshes": 75,
+          "outlines": 13,
+          "size": [
+            0.839040001487732,
+            1.9819332390493154,
+            0.521400584108719
+          ]
+        }
+      ],
+      "motions": [
+        {
+          "g": "f",
+          "groupBefore": [
+            0,
+            0,
+            0
+          ],
+          "groupAfter": [
+            0,
+            0,
+            0
+          ],
+          "relativeDrift": 0.45066000628795083,
+          "movedParts": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "parts": 14,
+          "closed": [
+            0.12,
+            0.12
+          ],
+          "opened": [
+            1,
+            1
+          ],
+          "walking": [
+            0.7425784202528833,
+            -0.7425784202528833,
+            -0.5940627362023067,
+            0.5940627362023067
+          ],
+          "stopped": [
+            1.6416472206533473e-7,
+            -1.6416472206533473e-7,
+            -1.3133177765226785e-7,
+            1.3133177765226785e-7
+          ]
+        },
+        {
+          "g": "m",
+          "groupBefore": [
+            0,
+            0,
+            0
+          ],
+          "groupAfter": [
+            0,
+            0,
+            0
+          ],
+          "relativeDrift": 0.45066000628795083,
+          "movedParts": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "parts": 12,
+          "closed": [
+            0.12,
+            0.12
+          ],
+          "opened": [
+            1,
+            1
+          ],
+          "walking": [
+            0.7425784202528833,
+            -0.7425784202528833,
+            -0.5940627362023067,
+            0.5940627362023067
+          ],
+          "stopped": [
+            1.6416472206533473e-7,
+            -1.6416472206533473e-7,
+            -1.3133177765226785e-7,
+            1.3133177765226785e-7
+          ]
+        }
+      ],
+      "ages": [
+        {
+          "stage": 0,
+          "scaleY": 1.0989,
+          "headScale": 1.0988,
+          "headStoop": 0,
+          "bodyFactor": 0.74,
+          "headFactor": 1.34,
+          "baseHead": 0.82,
+          "tallY": 1.1,
+          "surface": 0.41000000000000003,
+          "clearance": 0.13186799999999999,
+          "shoes": [
+            0.4165933996070027,
+            0.4165933996070027
+          ],
+          "worldY": 0.541868
+        },
+        {
+          "stage": 1,
+          "scaleY": 1.3365000000000002,
+          "headScale": 0.9347999999999999,
+          "headStoop": 0,
+          "bodyFactor": 0.9,
+          "headFactor": 1.14,
+          "baseHead": 0.82,
+          "tallY": 1.1,
+          "surface": 0.41000000000000003,
+          "clearance": 0.16038000000000002,
+          "shoes": [
+            0.41801899952203037,
+            0.41801899952203037
+          ],
+          "worldY": 0.5703800000000001
+        },
+        {
+          "stage": 2,
+          "scaleY": 1.4850000000000003,
+          "headScale": 0.82,
+          "headStoop": 0,
+          "bodyFactor": 1,
+          "headFactor": 1,
+          "baseHead": 0.82,
+          "tallY": 1.1,
+          "surface": 0.41000000000000003,
+          "clearance": 0.17820000000000003,
+          "shoes": [
+            0.41890999946892254,
+            0.41890999946892254
+          ],
+          "worldY": 0.5882000000000001
+        },
+        {
+          "stage": 3,
+          "scaleY": 1.4256000000000002,
+          "headScale": 0.8363999999999999,
+          "headStoop": 0.22,
+          "bodyFactor": 0.96,
+          "headFactor": 1.02,
+          "baseHead": 0.82,
+          "tallY": 1.1,
+          "surface": 0.41000000000000003,
+          "clearance": 0.17107200000000003,
+          "shoes": [
+            0.4185535994901657,
+            0.4185535994901657
+          ],
+          "worldY": 0.581072
+        }
+      ],
+      "stripes": {
+        "basic": {
+          "cfg": {
+            "g": "f",
+            "style": 9,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 0
+          },
+          "options": {},
+          "coarse": true,
+          "calls": 72,
+          "triangles": 8516,
+          "meshes": 72,
+          "outlines": 14,
+          "size": [
+            0.8861716272354125,
+            1.9819332390493154,
+            0.9317760169029236
+          ]
+        },
+        "stripe": {
+          "cfg": {
+            "g": "f",
+            "style": 9,
+            "skin": 0,
+            "hair": -1,
+            "pants": 0,
+            "cloth": -1,
+            "hstyle": 0,
+            "outfit": 0,
+            "top": 3
+          },
+          "options": {},
+          "coarse": true,
+          "calls": 80,
+          "triangles": 9956,
+          "meshes": 80,
+          "outlines": 18,
+          "size": [
+            0.8861716272354125,
+            1.9819332390493154,
+            0.9317760169029236
+          ]
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "negativeControls": [
+    {
+      "name": "Vorschau Rand",
+      "detected": true
+    },
+    {
+      "name": "Vorschau sRGB",
+      "detected": true
+    },
+    {
+      "name": "Kopfgruppe dreht",
+      "detected": true
+    },
+    {
+      "name": "kein Schädel-/Gesichtsdrift",
+      "detected": true
+    },
+    {
+      "name": "Zeichenaufrufe sinken",
+      "detected": true
+    },
+    {
+      "name": "Streifen ohne Aufpolsterung",
+      "detected": true
+    }
+  ],
+  "unexpectedFailures": [],
+  "status": "baseline-negative-confirmed"
+}
