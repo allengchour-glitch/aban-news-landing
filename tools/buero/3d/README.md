@@ -122,3 +122,21 @@ Das private Dashboard immer mit `../dashboard/bauen.py` bauen (drei Seiten erhal
 ## Design 16: Materialien und Arbeitsjournal (11.11.2026)
 
 Besitzer: mehr konkrete aktuelle Arbeit direkt anzeigen, keine Linkzentrale. Die gleiche reine Funktion `K.arbeitsJournal(state)` bedient 3D und den Textteil auch ohne WebGL. Explizite Laufdaten, Befunde und Duplikaterkennung bleiben von der Grafik unabhängig. Der echte 12er-Ablaufbericht passt jetzt zum vorhandenen öffentlichen Leser. Rendering mit materialabhängiger Rauheit, näherungsweise linearem Licht, korrigierten Normalen und gerundeten Monitorgehäusen. Die Fokusansicht rendert nur den gewählten Monitor, damit Wände keine Daten verdecken. Details, Gegenproben und Grenzen: `docs/KI-BUERO-DESIGN-16.md`. Privates Dashboard weiterhin nur mit dem kombinierten Drei-Seiten-Bauer aktualisieren.
+
+### Galerie und lesbare Monitore ·16.11.2026
+
+Design `campus-einheitlich-21`: Tageslicht, Galerie und Abend sind manuell wählbare Lichtstimmungen.
+Sie ändern nur Beleuchtung und Materialien; Büro-Uhr, Daten, Messstände und Statusfarben bleiben ihre eigenen Werte.
+Eiche im Chefbüro und statische Lamellen hinter der Zentralwand ergänzen die vorhandene Raumgestaltung.
+Keine neue Animation, Texturdatei, Netzabfrage oder Hintergrundautomation. Die Monitoransicht zeigt dieselben
+Meldungen zusätzlich in lesbaren Karten auf Desktop und Handy. Monitor-/Raumwechsel und Tastatur bleiben erhalten.
+
+Sicherer Browserlauf mit synthetischer `buero.json`, gebauten Dateien und `harness.py`:
+`python3 tools/buero/pruefung/panorama.py /tmp/buero-pruefordner /tmp/buero-bilder`.
+Der Lauf blockiert alle externen Abrufe. Lichtwahl, Auswahlzustand, Monitor/Rückkehr, unveränderte Daten,
+Überbreite und JavaScript-Fehler werden geprüft. Software-WebGL ist kein Beleg für echte Handy-Leistung.
+
+Die private Higgsfield-Gestaltung wird über `higgsfield/05_galerie_feinschliff.py` verfeinert:
+prozedurale Eiche, 61 instanzierte Akustiklamellen, vier Tastatur-/Maus-/Leuchtenplätze und Handläufe.
+Die Kamera und vorhandene Einrichtung bleiben erhalten. Maserung ist im Render sichtbar und wird vom GLB
+nicht zuverlässig übernommen; die Webansicht verwendet ihre eigenen Materialien und ist keine GLB-Einbettung.
