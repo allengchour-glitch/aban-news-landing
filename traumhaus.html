@@ -294,6 +294,14 @@ canvas{display:block}
 @media (max-width:900px) and (orientation:portrait){#rotHint{display:flex !important}}
 #emoteBar{position:fixed;right:calc(72px + env(safe-area-inset-right));top:max(calc(8px + env(safe-area-inset-top)),calc(100% - 320px - env(safe-area-inset-bottom)));z-index:23;display:none;flex-wrap:wrap;gap:6px;width:244px;max-width:calc(100vw - 88px - env(safe-area-inset-right));max-height:calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow-y:auto;padding:8px;box-sizing:border-box;border-radius:18px;background:rgba(255,253,246,.98);box-shadow:0 6px 24px rgba(60,40,10,.28)}
 
+
+#rundenErgebnis{position:fixed;inset:0;z-index:38;display:none;align-items:center;justify-content:center;background:rgba(20,30,24,.76);padding:12px;box-sizing:border-box}
+.ergebnis-karte{width:100%;max-width:420px;max-height:calc(100dvh - 24px);overflow-y:auto;box-sizing:border-box;padding:22px;border-radius:24px;background:#fffdf6;color:#304d39;text-align:center;box-shadow:0 18px 60px #0005;animation:ergebnisRein .3s ease-out}
+#ergebnisSymbol{font-size:2.4rem}#ergebnisTitel{font-size:1.35rem;margin:6px 0}#ergebnisSterne{display:flex;justify-content:center;gap:8px;margin:10px 0;font-size:1.7rem;color:#d8d9ce}#ergebnisSterne .verdient{color:#dc9e24;animation:sternRein .4s ease-out both}#ergebnisWert{font-size:1.7rem;font-weight:900;color:#956b16}#ergebnisText{font-size:.9rem;line-height:1.5;margin:8px 0 16px}.ergebnis-knopf{display:flex;gap:8px}.ergebnis-knopf button{flex:1;min-height:48px;padding:10px;border:0;border-radius:14px;font-weight:800;font-size:.95rem;cursor:pointer;background:#e7eee0;color:#304d39}#ergebnisNochmal{background:#31553e;color:#fffdf6}
+@keyframes ergebnisRein{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}@keyframes sternRein{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
+@media(max-height:420px){.ergebnis-karte{padding:12px 18px}#ergebnisSymbol{font-size:1.7rem}#ergebnisTitel{font-size:1.15rem;margin:3px 0}#ergebnisSterne{margin:6px 0;font-size:1.4rem}#ergebnisWert{font-size:1.4rem}#ergebnisText{margin:5px 0 10px}}
+@media(prefers-reduced-motion:reduce){.ergebnis-karte,#ergebnisSterne .verdient{animation:none}}
+
 #achPanel,#hetzePanel{z-index:35!important}#tanz,#angel,#koch{z-index:36!important}
 .aktivitaeten{display:grid;gap:10px;margin-top:12px}.aktiv-karte{padding:14px;border-radius:16px;background:#edf4e9;border:1px solid #c9dac0;color:#304d39}.aktiv-karte:nth-child(2){background:#f5eaf6;border-color:#dfc7e4;color:#733d81}.aktiv-karte p{font-size:.85rem;line-height:1.4;margin:6px 0 10px}.aktiv-wahl{display:flex;flex-wrap:wrap;gap:6px}.aktiv-wahl button{flex:1;min-height:44px;border:0;border-radius:12px;background:#fffdf6;color:inherit;padding:9px;font-weight:800;cursor:pointer}.aktiv-wahl button:hover{background:#ffedb8}.aktiv-karte small{display:block;margin-top:6px}
 #rallyHud{position:fixed;top:calc(64px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:16;display:none;align-items:center;gap:8px;width:280px;max-width:calc(100vw - 290px);padding:8px 10px;border-radius:14px;color:#fffdf6;background:rgba(30,64,47,.95);box-shadow:0 4px 18px #0003;font-size:.8rem;pointer-events:none}#rallyHud>div{flex:1;min-width:0}#rallyTitel,#rallyText{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#rallyText{margin-top:3px}#rallyAbbruch{flex:0 0 44px;width:44px;height:44px;pointer-events:auto;border:0;border-radius:12px;color:inherit;background:#ffffff20;font-size:1rem;cursor:pointer}.rally-leiste{height:4px;border-radius:4px;margin-top:6px;background:#ffffff30;overflow:hidden}.rally-leiste i{display:block;height:100%;background:#ffda78;width:0;transition:width .25s ease}
@@ -573,6 +581,9 @@ input[type=text]{padding:11px;border-radius:14px;border:2px solid #b8cee0;font-s
     <div id="questTxt" style="margin-top:10px;padding:9px 12px;border-radius:14px;background:#fff4dc;border:1px dashed #d8a84a;font-size:.85rem;color:#7a5a20"></div>
     <div id="achList" style="margin-top:10px;display:flex;flex-direction:column;gap:6px"></div>
   </div>
+</div>
+<div id="rundenErgebnis" role="dialog" aria-modal="true" aria-labelledby="ergebnisTitel" aria-describedby="ergebnisText">
+  <div class="ergebnis-karte"><div id="ergebnisSymbol" aria-hidden="true"></div><h2 id="ergebnisTitel"></h2><div id="ergebnisSterne" aria-label="Sterne"></div><div id="ergebnisWert"></div><p id="ergebnisText"></p><div class="ergebnis-knopf"><button type="button" id="ergebnisZu">Zurück zur Stadt</button><button type="button" id="ergebnisNochmal">Nochmal spielen</button></div></div>
 </div>
 <div id="rallyHud" role="region" aria-label="Aktuelle Stadttour"><div><b id="rallyTitel"></b><div id="rallyText"></div><div class="rally-leiste"><i id="rallyFortschritt"></i></div></div><button type="button" id="rallyAbbruch" aria-label="Stadttour beenden">✕</button></div>
 <div id="hetzePanel" style="position:fixed;inset:0;z-index:29;display:none;align-items:center;justify-content:center;background:rgba(30,25,20,.66)">
@@ -14977,6 +14988,7 @@ function snapshot(){return {gw:GW,gh:GH,floors:floors,walls:Object.keys(walls).r
   hzl:HETZE.letzte||[],
   il:immoLv,rg:rangGezahlt};}  /* Runde 103: Haus-Ausbaustufen, ausgezahlter Buergerrang (der Zeitstempel zt kommt in saveGame dazu — nicht hier, sonst waere der Umweg speichern(laden(speichern(x))) nie gleich) */  /* 🏁 bester Hetze-Punktestand */      /* 🎯 schon ausgesprochene "nur noch eins"-Anstupser */
 function loadSnapshot(sn){
+  if(MINI_ERG&&MINI_ERG.on)rundeSchliessen();
   if(RALLY&&RALLY.an)rallyEnde(false);
   var mx9=Math.round((GW-(sn.gw||18))/2),my9=Math.round((GH-(sn.gh||14))/2); // alte Saves mittig einpassen
   (sn.furn||[]).forEach(function(f9){var m9=/^f(\d+)/.exec(f9.fid||"");if(m9)fidC=Math.max(fidC,+m9[1]+1);}); // fid-Zaehler fortsetzen
@@ -16571,7 +16583,9 @@ function updNpcs(dt,now){
       ud2.ll.rotation.x=sw2*0.6;ud2.rl.rotation.x=-sw2*0.6;ud2.la.rotation.x=-sw2*0.4;ud2.ra.rotation.x=sw2*0.4;}
   }}
 /* Kleine additive Gesten auf dem vorhandenen Rig: keine weiteren Modelle oder Mixer. */
-function simGeste(s,art){if(!s)return;s.geste={art:art,t:0,dauer:art==="freude"?2.6:2};}
+function simGeste(s,art){if(!s)return;var von=null;
+  if(s.geste&&s.gelenke){von={};for(var k in s.gelenke)von[k]=s.gelenke[k].bone.quaternion.clone();}
+  s.geste={art:art,t:0,dauer:art==="freude"?2.6:2,von:von};}
 function simGelenkeZurueck(s){if(!s.gelenke)return;for(var k in s.gelenke){var g=s.gelenke[k];if(g.aktiv){g.bone.quaternion.copy(g.basis);g.aktiv=false;}}}
 function simGelenk(s,name,x,y,z){var g=s.gelenke&&s.gelenke[name];if(!g)return;g.basis.copy(g.bone.quaternion);g.aktiv=true;g.bone.rotateX(x);g.bone.rotateY(y);g.bone.rotateZ(z);}
 var _gestPos=new THREE.Vector3(),_gestRichtung=new THREE.Vector3(),_gestZiel=new THREE.Vector3(),_gestQ1=new THREE.Quaternion(),_gestQ2=new THREE.Quaternion(),_gestQ3=new THREE.Quaternion();
@@ -16598,6 +16612,11 @@ function simGestenTakt(s,dt,now){
     simArmZiel(s,"LeftArm",.35,-.35,.7,w);simArmZiel(s,"RightArm",-.35,-.35,.7,w);
     simArmZiel(s,"LeftForeArm",-.65,.55,.1,w);simArmZiel(s,"RightForeArm",.65,.55,.1,w);simGelenk(s,"Head",.12*w,0,0);
   }else{simArmZiel(s,"RightArm",-.65,.8,0,w);simArmZiel(s,"RightForeArm",Math.sin(t*13)*.45,1,.05,w);simGelenk(s,"Head",0,-.12*w,0);}
+  /* Neue Geste aus der gerade sichtbaren Pose einblenden, auch beim Gehen. */
+  if(g&&g.von){var f=Math.min(1,g.t/.2);for(var name in g.von){var j=s.gelenke[name];if(!j)continue;
+    if(!j.aktiv){j.basis.copy(j.bone.quaternion);j.aktiv=true;}
+    _gestQ3.copy(j.bone.quaternion);j.bone.quaternion.copy(g.von[name]).slerp(_gestQ3,f);}
+    if(f===1)g.von=null;}
 }
 function updSim(s,si,dt,now){
   if(MPs&&!mpHost){ // Gast
@@ -17346,7 +17365,7 @@ document.addEventListener("visibilitychange",function(){
   joy.addEventListener("lostpointercapture",joyEnd);
 })();
 function steerVec(si){
-  if(si===meinSi()&&(TANZ.on||KOCH.on||ANGEL.on||MG.on))return null;
+  if(si===meinSi()&&(MINI_ERG.on||TANZ.on||KOCH.on||ANGEL.on||MG.on))return null;
   /* ⚠️ Frueher: „Gast: Host rechnet" -> null. Das hiess, die eigene Figur des
      Gasts bewegte sich AUSSCHLIESSLICH auf Host-Schnappschuesse hin, die
      alle 350 ms eintreffen. Vom Tastendruck bis zur ersten Bewegung lag damit
@@ -18270,11 +18289,37 @@ function mgTick(ts){
   MG.pos+=MG.dir*MG.speed*dt9;
   if(MG.pos>=1){MG.pos=1;MG.dir=-1;}if(MG.pos<=0){MG.pos=0;MG.dir=1;}
   mgDraw();MG.raf=requestAnimationFrame(mgTick);}
+/* Ein gemeinsamer Abschluss fuer die kurzen Spielrunden, ohne weitere Belohnungsauszahlung. */
+var MINI_ERG={on:false,nochmal:null,fokus:null};
+function rundeSchliessen(){
+  MINI_ERG.on=false;MINI_ERG.nochmal=null;document.getElementById("rundenErgebnis").style.display="none";
+  var f=MINI_ERG.fokus;MINI_ERG.fokus=null;if(!f||!f.isConnected||!f.getClientRects().length)f=document.getElementById("achBtn");if(f)f.focus();
+}
+function rundeZeigen(o){
+  MINI_ERG.nochmal=o.nochmal;MINI_ERG.fokus=document.activeElement;MINI_ERG.on=true;
+  document.getElementById("ergebnisSymbol").textContent=o.symbol;
+  document.getElementById("ergebnisTitel").textContent=o.titel;
+  document.getElementById("ergebnisWert").textContent=o.wert;
+  document.getElementById("ergebnisText").textContent=o.text;
+  var box=document.getElementById("ergebnisSterne");box.textContent="";box.setAttribute("aria-label",o.sterne+" von 3 Sternen");
+  for(var i=0;i<3;i++){var st=document.createElement("span");st.textContent="★";st.setAttribute("aria-hidden","true");if(i<o.sterne)st.className="verdient";st.style.animationDelay=(i*.1)+"s";box.appendChild(st);}
+  steer.x=0;steer.z=0;var me=sims[meinSi()];if(me)me._manualT=performance.now();
+  document.getElementById("rundenErgebnis").style.display="flex";document.getElementById("rundenErgebnis").firstElementChild.scrollTop=0;
+  document.getElementById("ergebnisNochmal").focus();
+}
+document.getElementById("ergebnisZu").onclick=rundeSchliessen;
+document.getElementById("ergebnisNochmal").onclick=function(){var fn=MINI_ERG.nochmal;rundeSchliessen();if(fn)fn();};
+document.addEventListener("keydown",function(e){if(!MINI_ERG.on)return;e.stopPropagation();
+  if(e.key==="Escape"){e.preventDefault();rundeSchliessen();}
+  else if(e.key==="Tab"){var a=document.getElementById("ergebnisZu"),b=document.getElementById("ergebnisNochmal");
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();b.focus();}else if(!e.shiftKey&&document.activeElement===b){e.preventDefault();a.focus();}}
+});
+
 /* Stadttouren benutzen vorhandene Kartenorte und GPS-Geometrien. */
 var RALLY={an:false,zeitrennen:false,route:[],i:0,t:0,dauer:0,vergangen:0,best:0,altGPS:null,_hud:0,ziel:null};
 try{var rb=+localStorage.getItem("th_rally_best_v1");if(isFinite(rb)&&rb>0&&rb<=1000)RALLY.best=rb;}catch(e){}
 function rallyStart(zeitrennen){
-  if(!running||fahren||HETZE.an||TANZ.on||KOCH.on||ANGEL.on||MG.on){hint("Beende zuerst deine aktuelle Aktion und steige zum Start kurz aus.");return false;}
+  if(!running||HETZE.an||TANZ.on||KOCH.on||ANGEL.on||MG.on){hint("Beende zuerst deine aktuelle Aktion.");return false;}
   if(RALLY.an)rallyEnde(false);
   var p=spielerPos(),x=p.x,z=p.z,route=[],weg=0;
   var pool=WORLD_POIS.filter(function(o){var d=Math.hypot(o[0]-x,o[1]-z);return d>28&&d<200;});
@@ -18295,24 +18340,28 @@ function rallyStart(zeitrennen){
   rallyZiel();hint(zeitrennen?"Drei Checkpoints – zu Fuss oder mit dem Auto. Folge dem GPS!":"Deine Stadttour: drei Orte, ohne Zeitdruck. Folge dem GPS!");return true;
 }
 function rallyZiel(){var o=RALLY.route[RALLY.i];RALLY.ziel=o;gpsSetz(o[0],o[1]);RALLY._hud=0;}
-function rallyEnde(fertig){
+function rallyEnde(fertig,abgelaufen){
   if(!RALLY.an)return;RALLY.an=false;document.getElementById("rallyHud").style.display="none";
   var ziel=RALLY.ziel;
   if(!GPS.aktiv||(ziel&&GPS.x===ziel[0]&&GPS.z===ziel[1])){gpsWeg();if(RALLY.altGPS)gpsSetz(RALLY.altGPS.x,RALLY.altGPS.z);}
   RALLY.altGPS=null;RALLY.ziel=null;
-  if(!fertig){hint("Stadttour beendet. Du kannst jederzeit neu starten.");return;}
+  var zeitrennen=RALLY.zeitrennen;
+  if(!fertig){if(abgelaufen)rundeZeigen({symbol:"🏁",titel:"Die Zeit ist um",wert:RALLY.i+" / 3 Checkpoints",text:"Folge der GPS-Linie. Zu Fuss und mit dem Auto spielbar.",sterne:RALLY.i,nochmal:function(){rallyStart(true);}});
+    else hint("Stadttour beendet. Du kannst jederzeit neu starten.");return;}
   var punkte=Math.min(1000,Math.max(100,Math.round(100+900*RALLY.t/RALLY.dauer))),rek=RALLY.zeitrennen&&punkte>RALLY.best;
   if(rek){RALLY.best=punkte;try{localStorage.setItem("th_rally_best_v1",String(punkte));}catch(e){}}
   simGeste(sims[meinSi()],"freude");
-  gtaBanner(RALLY.zeitrennen?(rek?"Neuer Rallye-Bestwert!":"Rallye geschafft!"):"Stadttour geschafft!",RALLY.zeitrennen?punkte+" Punkte · "+RALLY.vergangen.toFixed(1)+" Sekunden":"Drei Orte entdeckt – deine Stadt wartet auf die nächste Tour.","gut");
+  rundeZeigen({symbol:zeitrennen?"🏁":"🧭",titel:zeitrennen?(rek?"Neuer Rallye-Bestwert!":"Rallye geschafft!"):"Stadttour geschafft!",
+    wert:zeitrennen?punkte+" Punkte":"3 Orte entdeckt",text:zeitrennen?RALLY.vergangen.toFixed(1)+" Sekunden · Bestwert: "+RALLY.best+" Punkte":"Starte eine neue Tour zu drei Zielen in deiner Nähe.",
+    sterne:zeitrennen?(punkte>=700?3:(punkte>=400?2:1)):3,nochmal:function(){rallyStart(zeitrennen);}});
   beep(880,.15,"triangle",.05);
 }
 function rallyTakt(dt){
   if(!RALLY.an)return;
-  var pause=buildMode||document.hidden||TANZ.on||KOCH.on||ANGEL.on||MG.on||document.getElementById("achPanel").style.display==="flex"||document.getElementById("bigmapWrap").style.display==="flex";
+  var pause=buildMode||document.hidden||MINI_ERG.on||TANZ.on||KOCH.on||ANGEL.on||MG.on||document.getElementById("achPanel").style.display==="flex"||document.getElementById("bigmapWrap").style.display==="flex";
   var hud=document.getElementById("rallyHud");hud.style.display=pause?"none":"flex";if(pause)return;
   RALLY.vergangen+=dt;if(RALLY.zeitrennen)RALLY.t=Math.max(0,RALLY.t-dt);
-  if(RALLY.zeitrennen&&RALLY.t<=0){rallyEnde(false);gtaBanner("Zeit abgelaufen",RALLY.i+"/3 Checkpoints – nächste Runde schaffst du mehr.");return;}
+  if(RALLY.zeitrennen&&RALLY.t<=0){rallyEnde(false,true);return;}
   var p=spielerPos(),o=RALLY.route[RALLY.i],d=Math.hypot(p.x-o[0],p.z-o[1]);
   if(d<18){RALLY.i++;simGeste(sims[meinSi()],"freude");beep(740,.07,"triangle",.04);
     if(RALLY.i===RALLY.route.length){rallyEnde(true);return;}rallyZiel();o=RALLY.route[RALLY.i];d=Math.hypot(p.x-o[0],p.z-o[1]);}
@@ -18321,13 +18370,14 @@ function rallyTakt(dt){
   document.getElementById("rallyText").textContent=o[2]+" "+o[3]+" · "+Math.round(d)+" m";
   document.getElementById("rallyFortschritt").style.width=(100*RALLY.i/3)+"%";
 }
-var TANZ={on:false,beat:0,t0:0,scores:[],raf:0,hitDone:false,TEMPO:850,fenster:130,stufe:1};
+var TANZ={on:false,beat:0,t0:0,scores:[],raf:0,hitDone:false,TEMPO:850,fenster:130,stufe:1,pauseAb:null,best:[0,0,0],kette:0,maxKette:0};
+try{var _tb=JSON.parse(localStorage.getItem("th_tanz_best_v1")||"null");if(Array.isArray(_tb)&&_tb.length===3)TANZ.best=_tb.map(function(v){return typeof v==="number"&&isFinite(v)?Math.max(0,Math.min(100,v)):0;});}catch(e){}
 function tanzStart(stufe){
   if(fahren){hint("Steige zum Tanzen zuerst aus.");return;}
   if(TANZ.on||ANGEL.on||KOCH.on||MG.on)return;
   TANZ.stufe=typeof stufe==="number"?Math.max(0,Math.min(2,Math.floor(stufe))):1;
   TANZ.TEMPO=[1050,850,650][TANZ.stufe];TANZ.fenster=[190,130,85][TANZ.stufe];
-  TANZ.on=true;TANZ.beat=0;TANZ.scores=[];
+  TANZ.on=true;TANZ.beat=0;TANZ.scores=[];TANZ.pauseAb=null;TANZ.kette=0;TANZ.maxKette=0;
   document.getElementById("achPanel").style.display="none";
   if(buildMode)document.getElementById("modeBtn").click();
   document.getElementById("tanzInfo").textContent=["Locker","Groove","Profi"][TANZ.stufe]+" · Tippe, wenn der Ring den Kreis trifft!";
@@ -18341,10 +18391,10 @@ function tanzBeat(){
   beep(160,.09,"square",.06);
   TANZ.raf=requestAnimationFrame(tanzFrame);}
 function tanzFrame(){
-  if(!TANZ.on)return;
+  if(!TANZ.on||document.hidden)return;
   var t=(performance.now()-TANZ.t0)/TANZ.TEMPO,r=document.getElementById("tanzRing");
   if(t>=1.25){
-    if(!TANZ.hitDone){TANZ.scores.push(0);tanzFb("💨 verpasst");}
+    if(!TANZ.hitDone){TANZ.scores.push(0);TANZ.kette=0;tanzFb("💨 verpasst");}
     if(TANZ.beat>=8)return tanzEnd();
     return tanzBeat();}
   var ph=t*Math.PI*2,fig=document.getElementById("tanzFigur");
@@ -18358,25 +18408,34 @@ function tanzFrame(){
   r.style.transform="scale("+Math.max(1,2.1-1.1*Math.min(t,1))+")";
   TANZ.raf=requestAnimationFrame(tanzFrame);}
 function tanzTap(){
-  if(!TANZ.on||TANZ.hitDone)return;
+  if(!TANZ.on||TANZ.hitDone||document.hidden)return;
   TANZ.hitDone=true;
   var err=Math.abs((performance.now()-TANZ.t0)-TANZ.TEMPO);
   var sc=err<TANZ.fenster?1:(err<TANZ.fenster*2.15?0.5:0);
-  TANZ.scores.push(sc);
+  TANZ.scores.push(sc);TANZ.kette=sc>0?TANZ.kette+1:0;TANZ.maxKette=Math.max(TANZ.maxKette,TANZ.kette);
   beep(sc===1?920:(sc>0?680:240),.09,sc>0?"triangle":"sawtooth",.05);
   tanzFb(sc===1?"🌟 PERFEKT!":(sc>0?"👍 gut":"😕 daneben ("+Math.round(err)+" ms)"));}
 function tanzFb(txt){
-  document.getElementById("tanzScore").textContent="Beat "+TANZ.beat+"/8 · "+txt;}
+  document.getElementById("tanzScore").textContent="Beat "+TANZ.beat+"/8 · "+txt+(TANZ.kette>=2?" · 🔥 "+TANZ.kette+"er-Serie":"");}
 function tanzEnd(){
-  tanzPoseEnde();
+  if(!TANZ.on)return;
+  tanzPoseEnde();TANZ.pauseAb=null;
   TANZ.on=false;cancelAnimationFrame(TANZ.raf);
   document.getElementById("tanz").style.display="none";
   var sum=0;TANZ.scores.forEach(function(x){sum+=x;});
   var avg=TANZ.scores.length?sum/TANZ.scores.length:0;
   if(avg>=0.999)stats.tanzPerfekt=(stats.tanzPerfekt||0)+1;
   if(MPs&&!mpHost)netSend({t:"tanzBoost",s:avg});else tanzApply(avg);
-  hint(avg>=0.999?"💃🕺 PERFEKTE Tanz-Session. Die Liebe glüht":
-       avg>=0.55?"🎶 Was für ein Abend! Alle sind happy":"🎵 Übung macht den Meister …");}
+  var stufe=TANZ.stufe,pct=Math.round(avg*100),rek=pct>TANZ.best[stufe];
+  if(rek){TANZ.best[stufe]=pct;try{localStorage.setItem("th_tanz_best_v1",JSON.stringify(TANZ.best));}catch(e){}}
+  if(avg>=.55)simGeste(sims[meinSi()],"freude");
+  rundeZeigen({symbol:"💃",titel:rek?"Neuer Tanz-Bestwert!":(avg>=.55?"Im Groove!":"Noch eine Runde?"),wert:pct+" % im Takt",
+    text:["Locker","Groove","Profi"][stufe]+" · Beste Serie: "+TANZ.maxKette+" · Bestwert: "+TANZ.best[stufe]+" %",sterne:avg>=.9?3:(avg>=.55?2:(avg>0?1:0)),nochmal:function(){tanzStart(stufe);}});}
+/* Beim App-Wechsel bleibt derselbe Beat stehen, statt im Hintergrund Treffer zu verlieren. */
+document.addEventListener("visibilitychange",function(){if(!TANZ.on)return;
+  if(document.hidden){TANZ.pauseAb=performance.now();cancelAnimationFrame(TANZ.raf);}
+  else if(TANZ.pauseAb!==null){TANZ.t0+=performance.now()-TANZ.pauseAb;TANZ.pauseAb=null;TANZ.raf=requestAnimationFrame(tanzFrame);}
+});
 function tanzApply(avg){
   sims.forEach(function(s2){s2.needs.spass=Math.min(100,s2.needs.spass+10+25*avg);simEmoji(s2,avg>=0.55?"💃":"🎵");});
   if(!MPs||mpHost){liebe=Math.min(100,liebe+Math.round(3+8*avg));if(avg>=0.5)skillXp("liebe",1);updHUD();}}
@@ -18384,7 +18443,7 @@ document.getElementById("tanzBox").addEventListener("pointerdown",function(e){
   if(e.target.id==="tanzQuit")return;tanzTap();});
 function tanzPoseEnde(){var s=sims[meinSi()];if(s&&s.state==="dance"){s.state="idle";s.useT=0;}}
 document.getElementById("tanzQuit").onclick=function(e){
-  tanzPoseEnde();e.stopPropagation();TANZ.on=false;cancelAnimationFrame(TANZ.raf);
+  tanzPoseEnde();TANZ.pauseAb=null;e.stopPropagation();TANZ.on=false;cancelAnimationFrame(TANZ.raf);
   document.getElementById("tanz").style.display="none";};
 var ANGEL={on:false,phase:"idle",round:0,fang:0,geldSum:0,t0:0,tmr:null};
 var FISCHE=[["🐠 Prachtfisch",70,300],["🐟 Barsch",28,600],["🐟 Rotauge",12,999999]];
