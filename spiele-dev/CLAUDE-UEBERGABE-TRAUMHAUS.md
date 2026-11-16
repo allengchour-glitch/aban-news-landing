@@ -89,6 +89,10 @@ Repository-Regeln: `AGENTS.md` lesen, keine Änderungen an fremden Projekten. Ä
 
 Der Besitzer hat Higgsfield ausdrücklich einbezogen. Erste Generierung: Modell `tripo_3d`, Parkuhr als kleiner Orientierungspunkt, Zielbudget 1’500 Flächen, Textur standard, PBR aus. Kostenvoranschlag 5 Credits; Auftrag `6f107f39-ce69-42da-8c11-40a497a69890` wurde angenommen, ist jedoch mit Status `failed` beendet. Kein GLB erhalten; Kostenabrechnung beziehungsweise Rückerstattung nicht bestätigt. Nicht erneut absenden. Die leichte Nordpark-Grafik für eine Stadttafel wurde gestartet unter Auftrag `7c02cc48-8fe3-417e-8b68-6a698e6a21cf`, Modell `gpt_image_2_6`, Kostenschätzung 0,5 Credits. Auch dieser Auftrag ist mit Status `failed` beendet. Kein Bild erhalten, keine konkretere Ursache vom Dienst. Keine weiteren Generierungen gestartet und keine Erstattung behauptet. Beide Aufträge vor jedem weiteren Generierungsversuch im Higgsfield-Konto prüfen. Es wurde kein Higgsfield-Asset ins Spiel eingebaut.
 
+## Nächste Arbeit durch Claude Code
+
+Letzter Besitzerauftrag: dieses Paket fertigstellen; anschliessend nur weitere Verbesserungen suchen und für Claude Code dokumentieren. Keine weitere Umsetzung neuer Vorschläge in dieser Sitzung. Die priorisierte, noch nicht umgesetzte Liste steht in [Nächste Schritte](TRAUMHAUS-CLAUDE-NAECHSTE-SCHRITTE.md). Der Traumhaus-Verweis im gemeinsamen `SHARED-MEMORY.md` und der eigene Abschnitt in `docs/CODEX-CLAUDE-UEBERGABE.md` führen zu dieser Datei. Nach abgeschlossenen Paketen und erfolgreicher Veröffentlichung aktualisieren.
+
 ## Zurückgestellte, belegte Kandidaten
 
 - Egoansicht Seepark: Profillauf2’293 Aufrufe vollständig zugeordnet. Frachtschiff `th15_frachtschiff.glb` allein424 Aufrufe bei18Materialien, Landbus `th40_bus.glb`176. Bündelung ist noch nicht bildlich gegengeprüft, daher nicht umgesetzt.

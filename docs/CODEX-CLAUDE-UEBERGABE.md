@@ -754,3 +754,12 @@ Diese Datei nach abgeschlossenen Codex-Arbeiten aktualisieren. Ein 21:00-Start v
 - Neu für die Auffrischung: `messen.py`, `aktualisieren.py`, `--werte` und `--web-zeilen` (Anleitung: `docs/KI-BUERO-SEITE.md`, Abschnitt «Auffrischen»). Gemessene Lage: der Bestellwächter-Wecker ist am 08.11. 19:21 am Nutzungslimit gescheitert (Zeile rot), sechs bezahlte Bestellungen (#1034–#1039) stehen in Shopify noch auf «nicht versendet».
 - **Fund an Deiner Fassung:** der Shop-Raum hat sechs 3D-Plätze, aber sieben Zeilen (`bewertungen` hat keinen Platz in 3D); `tools/buero/pruefung/test.js` und `test3d.js` erwarten noch feste Zahlen der Fassung vom 05.11. und schlagen schon auf Deinen Standarddaten fehl. Beides nicht behoben (Deine Dateien); die Rauchprobe `tools/buero/pruefung/rauchprobe.js` ersetzt die Tests bis dahin.
 - Zusätzlich wieder an: der tägliche Spam-Wächter für Instagram und Facebook (`social-comment-moderate.yml`, 12:23 UTC, blendet nur aus und lässt sich zurückholen; Besitzer «ja» vom 06.11.). Antworten auf Kommentare bleiben ohne Zeitplan.
+
+
+## Traumhaus: Abschluss und regelmässige Memory-Übergabe · 16.11.2026
+
+Letzter Besitzerauftrag: laufende Verbesserungen langsam fertigstellen, Memory regelmässig teilen und danach nur nächste Verbesserungen für Claude Code suchen. Kanonischer Stand: [Traumhaus-Übergabe](../spiele-dev/CLAUDE-UEBERGABE-TRAUMHAUS.md); [Strassenbericht](../spiele-dev/TRAUMHAUS-STRASSEN.md); [priorisierte Vorschläge](../spiele-dev/TRAUMHAUS-CLAUDE-NAECHSTE-SCHRITTE.md).
+
+Bereits öffentlich geprüft: Nordstadt/Missionen PR3209, Stadtbild PR3211, Kamera/Renderfilter PR3212. PR3216 enthält die abschliessend lokal geprüfte Strassenrunde und den Pausenfix; endgültige CI, Produktionslauf und öffentlicher Abruf sind vor Live-Meldung noch zu bestätigen. GEMESSEN: 16’776 Strassenpunkte, 80 GPS-Routen, alle fünf ÖV-Linien mit Ein-/Mit-/Aussteigen, 16 Renncheckpoints über zwei Runden, 16 Fahrzeug-Pausenfälle. Drei alte Hoftiere in die bestehende Koppel integriert, Tierzahl erhalten. Letzte Ortstafel steht im geladenen Bild 1,93 Meter neben der Fahrbahn. Kein realer Handy-60-FPS-Nachweis.
+
+Die nächsten Vorschläge betreffen gemessene Ego-Renderlast, Auffindbarkeit der Missionen und situationsgerechte Rennbeschriftung. Keine weitere Umsetzung dieser Vorschläge in dieser Sitzung. Beide Higgsfield-Generierungen sind fehlgeschlagen; kein Asset eingebaut. Auftragskennungen und Wiederaufnahmehinweise in der kanonischen Übergabe. Speicherung ist keine Bestätigung, dass Claude die Übergabe bereits gelesen hat.

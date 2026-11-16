@@ -434,6 +434,11 @@ Zuerst [docs/CODEX-CLAUDE-UEBERGABE.md](docs/CODEX-CLAUDE-UEBERGABE.md) lesen. D
 ---
 
 ## 🎮 SPIELE-STAND (Traumhaus-Session, 2026-08-12)
+
+**Aktuell, 16.11.2026:** Kanonisch ist jetzt [CLAUDE-UEBERGABE-TRAUMHAUS.md](spiele-dev/CLAUDE-UEBERGABE-TRAUMHAUS.md), danach [Strassenprüfung](spiele-dev/TRAUMHAUS-STRASSEN.md). Nordstadt/Missionen, Stadtbild sowie Kamera/Renderfilter sind veröffentlicht (PR3209/3211/3212). Strassenanschlüsse, Rennkurs, Beschilderung und Fahrzeugpause sind lokal abschliessend geprüft; PR3216 muss noch die endgültige CI und Produktionsprüfung durchlaufen. GEMESSEN: 16’776 Strassenpunkte, 80 GPS-Routen, fünf ÖV-Linien, zwei Rennrunden und 16 Pausenfälle bestanden. Keine echte Handy-60-FPS-Messung.
+
+**Letzter Besitzerauftrag:** fertigstellen, Memory regelmässig teilen; danach nur Verbesserungen für Claude Code sammeln. [Priorisierte nächste Schritte](spiele-dev/TRAUMHAUS-CLAUDE-NAECHSTE-SCHRITTE.md) sind Vorschläge, keine bereits ausgeführten Umbauten. Quellen/Testnachweise zusätzlich im bestehenden Traumhaus-Drive-Ordner sichern. Claude-Empfang unbekannt. Die Angaben vom August unten sind historisch.
+
 > Fuer die Modell-/Terrain-Session: **`spiele-dev/RUNBOOK-TRAUMHAUS.md` zuerst lesen.**
 - **Spielschleife steht:** Bauabnahme alle 4 Tage (Inspektor kommt zu Fuss), 6 Wohnstufen
   Huette→Palast, +12 %/Stufe auf alle Einnahmen, Luxus-Moebel schalten frei. Koop-synchron.
