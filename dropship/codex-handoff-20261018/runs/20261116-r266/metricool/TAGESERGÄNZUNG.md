@@ -1,0 +1,3 @@
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Metricool-Abendlauf | R264/Core5 sowie R253/R259-Tagesstand gelesen; Marke und alle sechs Kanalidentitäten frisch verifiziert; acht kleine Tagesplanungsreads 16.–23.11. offline auf UUIDs, Medien, Flags, Zustände und Duplikate geprüft. | 57 erhaltene UUIDs, 15 spätere Reaktivierungen unbekannter aktueller Quelle; 59 rollierende/62 kalenderbezogene technische Pending-Platzierungen, nach bekannten QC-Fällen 45/48. Heute fünf fremde PUBLISHED-Meldungen, Projektor-Instagram PUBLISHING ohne Abschluss. Keine eigenen Writes/Publikationen oder neuen Kennzahlen. Ton-/Master-/Ledgergates offen. |

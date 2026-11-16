@@ -3218,3 +3218,21 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R265-REPORT-20261116.md) · [Beleg](R265-PROOF-20261116.json) · [Arbeitsliste](PRODUKTDETAILS-ARBEITSLISTE-20261116-R265.csv).
 
 [LUXESTYLE_R265_20261116]
+
+
+### R266 – Kategorien und Hinweise: Entwurf gespeichert, Prüfung bestanden
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kategorie-Seiten | Bestehende Hierarchie mit Bildkacheln, Elternpfad, Unterkategorien und 24 Produkten pro Seite in 15 Implementierungsdateien plus DESIGN.md gespeichert. | Drei bestätigte Theme-Commits; 16 Bodytexte zurückgelesen. Nur Entwurf 214169584007, MAIN unverändert. |
+| Schrift und Icons | Fünf vorhandene Hinweise auf 14 px / 20.3 px und neutrale dekorative SVGs umgestellt; 44-px-Bedienelemente geprüft. | Im echten Browser bestätigt. Angebotstexte, Ausschlüsse und CHF-50-Versandgrenze erhalten. |
+| Kategoriestruktur | Vorhandene Menü- und Metafeldhierarchie gezielt geprüft; vier öffentliche Hierarchiefälle getestet. | 98 bestehende Admin-Referenz-URLs, keine neuen Collections und keine Aussage über 98 HTTP-Prüfungen. |
+| Gestaltung | Ein dekoratives taupefarbenes Higgsfield-Bild erstellt, geprüft und als Shopify-Datei hochgeladen. | Keine erfundenen Produktbilder. Offerte 2.75 Credits; tatsächliche Abbuchung unbekannt. Kein Video. |
+| Browserprüfung | Kategorien mobil/desktop, tiefe Seite, Folgeansicht, Filter und Rücksetzen geprüft; mobile Pfeile und lange Titel korrigiert und erneut geprüft. | Begrenztes PASS: zehn Titel vollständig, keine Überlappung oder horizontaler Überlauf. Offizieller Theme Check nicht verfügbar. |
+| Veröffentlichung | Gespeicherten Entwurf und unveränderte MAIN-Rolle zurückgelesen; Sperre nicht umgangen. | Noch nicht live. publish_refused bleibt konkreter Blocker; keine erneute Freigabe desselben Umfangs angefordert. |
+| Claude-Memory | R266-Ergänzungs-Diff und belegtes Paket auf bestätigtem R265 vorbereitet; Historien und stabile Aufgaben erhalten. | Revision 266 lokal vorbereitet; tatsächliche Git-Persistenz und Readback erfolgen separat. Claude-Empfang unbekannt. |
+| Metricool-Abendlauf | Identitäten und acht kleine Tagesplanungsreads 16.–23.11. geprüft; Duplikate und UUID-Verlauf offline gegengeprüft. | 57 UUIDs; 59/62 technische Pending-Plätze; 45/48 nach Ausschluss historisch gesperrter UUIDs, keine Qualitätsfreigabe. Fünf fremde PUBLISHED, Projektor-IG PUBLISHING. Keine eigenen Social-Writes oder neuen Tagesreports. |
+
+[Bericht](R266-REPORT-20261116.md) · [Belege](R266-PROOF-20261116.json).
+
+[LUXESTYLE_R266_20261116]

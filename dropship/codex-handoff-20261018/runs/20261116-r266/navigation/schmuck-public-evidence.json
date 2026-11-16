@@ -1,0 +1,94 @@
+{
+  "requestedURL": "https://luxestyle.ch/collections/schmuck",
+  "finalURL": "https://luxestyle.ch/collections/schmuck",
+  "httpStatus": 200,
+  "redirects": 0,
+  "responseBytes": 1772653,
+  "responseSha256": "8d51bb52c98a4a029745a4ad5db7108cbfb226b975f259c373d3c000b33c6eb3",
+  "safeHeaders": [
+    "HTTP/1.1 200 OK",
+    "date: Mon, 16 Nov 2026 18:02:58 GMT",
+    "HTTP/2 200 ",
+    "date: Mon, 16 Nov 2026 18:03:00 GMT",
+    "content-type: text/html; charset=utf-8"
+  ],
+  "title": "Schmuck online kaufen | LuxeStyle CH Twint Visa Mastercard American Express PayPal Klarna Apple Pay Google Pay",
+  "h1": [
+    "Schmuck"
+  ],
+  "canonical": [
+    "https://luxestyle.ch/collections/schmuck"
+  ],
+  "metadata": [
+    {
+      "name": "og:title",
+      "content": "Schmuck online kaufen | LuxeStyle CH"
+    },
+    {
+      "name": "og:description",
+      "content": "Schmuck: Halsketten, Ohrringe, Armbänder, Ringe und Schmuck-Sets. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+    },
+    {
+      "name": "description",
+      "content": "Schmuck: Halsketten, Ohrringe, Armbänder, Ringe und Schmuck-Sets. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+    }
+  ],
+  "chipNavAriaLabel": "Unterkategorien und Filter",
+  "chipLinks": [
+    {
+      "href": "/collections/sub-ringe",
+      "class": "lx-kc__t",
+      "text": "Ringe"
+    },
+    {
+      "href": "/collections/sub-ohrringe",
+      "class": "lx-kc__t",
+      "text": "Ohrringe"
+    },
+    {
+      "href": "/collections/halsketten-alle",
+      "class": "lx-kc__t",
+      "text": "Halsketten & Anhänger"
+    },
+    {
+      "href": "/collections/sub-armbaender",
+      "class": "lx-kc__t",
+      "text": "Armbänder & Armreifen"
+    },
+    {
+      "href": "/collections/schmuck-herren-gruppe",
+      "class": "lx-kc__t",
+      "text": "Für Herren"
+    },
+    {
+      "href": "/collections/schmuck-personalisiert-gruppe",
+      "class": "lx-kc__t lx-kc__x",
+      "text": "Gravur & Namen"
+    },
+    {
+      "href": "/collections/schmuck-motiv-gruppe",
+      "class": "lx-kc__t lx-kc__x",
+      "text": "Motive"
+    },
+    {
+      "href": "/collections/schmuck-stil-gruppe",
+      "class": "lx-kc__t lx-kc__x",
+      "text": "Stile"
+    },
+    {
+      "href": "/collections/schmuck-sets-gruppe",
+      "class": "lx-kc__t lx-kc__x",
+      "text": "Sets & Besonderes"
+    },
+    {
+      "href": "/collections/schmuck-zubehoer-gruppe",
+      "class": "lx-kc__t lx-kc__x",
+      "text": "Zubehör"
+    }
+  ],
+  "chipLinkClassCounts": {
+    "lx-kc__t": 10,
+    "lx-kc__x": 5
+  },
+  "interpretation": "Rendered nav contained 10 .lx-kc__t links; none were .lx-kc__f filter anchors. Five links also had .lx-kc__x; the inspected snippet hides these while the desktop row is collapsed and exposes them when expanded. All 10 hrefs are collection paths."
+}

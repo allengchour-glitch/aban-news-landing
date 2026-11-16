@@ -1,0 +1,108 @@
+{
+  "scope": "Expected navigation from existing menu and complete collection-reference lists; no HTTP or product-content completeness claim",
+  "createdAtUTC": "2026-11-16T18:22:59.198964+00:00",
+  "uniqueCollections": 98,
+  "targets": [
+    {
+      "id": "gid://shopify/Collection/755392840071",
+      "title": "Schmuck",
+      "handle": "schmuck",
+      "url": "/collections/schmuck",
+      "templateSuffix": null,
+      "productsCount": 2650,
+      "seo": {
+        "title": "Schmuck online kaufen | LuxeStyle CH",
+        "description": "Schmuck: Halsketten, Ohrringe, Armbänder, Ringe und Schmuck-Sets. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parentId": null,
+      "children": [
+        "gid://shopify/Collection/688577282433",
+        "gid://shopify/Collection/688563650945",
+        "gid://shopify/Collection/755666977159",
+        "gid://shopify/Collection/688563683713",
+        "gid://shopify/Collection/755669303687",
+        "gid://shopify/Collection/755669336455",
+        "gid://shopify/Collection/755669369223",
+        "gid://shopify/Collection/755669401991",
+        "gid://shopify/Collection/755669434759",
+        "gid://shopify/Collection/755669467527"
+      ],
+      "childHandles": [
+        "sub-ringe",
+        "sub-ohrringe",
+        "halsketten-alle",
+        "sub-armbaender",
+        "schmuck-herren-gruppe",
+        "schmuck-personalisiert-gruppe",
+        "schmuck-motiv-gruppe",
+        "schmuck-stil-gruppe",
+        "schmuck-sets-gruppe",
+        "schmuck-zubehoer-gruppe"
+      ],
+      "parentHandle": null
+    },
+    {
+      "id": "gid://shopify/Collection/688563650945",
+      "title": "Ohrringe",
+      "handle": "sub-ohrringe",
+      "url": "/collections/sub-ohrringe",
+      "templateSuffix": null,
+      "productsCount": 255,
+      "seo": {
+        "title": "Ohrstecker Silber, Creolen & Ohrhänger Schweiz | LuxeStyle",
+        "description": "Ohrstecker aus Silber mit Zirkonia, Perlen oder Moissanit, dazu Creolen, Ohrhänger und Ohrclips aus dem Schweizer Onlineshop. Gratisversand CH ab CHF 50."
+      },
+      "parentId": "gid://shopify/Collection/755392840071",
+      "children": [
+        "gid://shopify/Collection/755666780551",
+        "gid://shopify/Collection/755666747783",
+        "gid://shopify/Collection/755666715015",
+        "gid://shopify/Collection/755666878855",
+        "gid://shopify/Collection/755666911623",
+        "gid://shopify/Collection/755666944391"
+      ],
+      "childHandles": [
+        "ohrstecker",
+        "ohrhaenger-tropfenohrringe",
+        "creolen-ohrclips",
+        "silber-ohrringe",
+        "perlen-ohrringe",
+        "zirkonia-strass-ohrringe"
+      ],
+      "parentHandle": "schmuck"
+    },
+    {
+      "id": "gid://shopify/Collection/755666780551",
+      "title": "Ohrstecker",
+      "handle": "ohrstecker",
+      "url": "/collections/ohrstecker",
+      "templateSuffix": null,
+      "productsCount": 71,
+      "seo": {
+        "title": "Ohrstecker online kaufen | LuxeStyle CH",
+        "description": "Ohrstecker online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parentId": "gid://shopify/Collection/688563650945",
+      "children": [
+        "gid://shopify/Collection/755666813319",
+        "gid://shopify/Collection/755666846087"
+      ],
+      "childHandles": [
+        "ohrstecker-silber",
+        "ohrstecker-vintage"
+      ],
+      "parentHandle": "sub-ohrringe"
+    },
+    {
+      "id": "gid://shopify/Collection/755666813319",
+      "title": "Silber-Ohrstecker",
+      "handle": "ohrstecker-silber",
+      "url": "/collections/ohrstecker-silber",
+      "productsCount": 22,
+      "parentId": "gid://shopify/Collection/755666780551",
+      "children": [],
+      "childHandles": [],
+      "parentHandle": "ohrstecker"
+    }
+  ]
+}

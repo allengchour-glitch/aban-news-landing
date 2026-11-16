@@ -1,0 +1,27 @@
+{
+  "source": "Shopify Admin GraphQL introspection/query validation",
+  "collectionFieldsObserved": [
+    "id",
+    "title",
+    "handle",
+    "templateSuffix",
+    "productsCount",
+    "seo",
+    "metafield"
+  ],
+  "onlineStoreUrl": {
+    "available": false,
+    "note": "Collection schema has no onlineStoreUrl field; exact relative collection routes are taken from menu hrefs/public GET."
+  },
+  "metafields": {
+    "namespace": "lux",
+    "keys": [
+      "unterfilter",
+      "eltern"
+    ],
+    "observedTypes": [
+      "list.collection_reference",
+      "collection_reference"
+    ]
+  }
+}

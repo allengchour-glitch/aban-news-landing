@@ -1,0 +1,212 @@
+{
+  "run": "R266",
+  "atUtc": "2026-11-16T19:05:54Z",
+  "baselineRevision": 265,
+  "baselineCommit": "3cc1ab537a3bf2006af7efb19d084f55a9c793f9",
+  "rootEvidence": {
+    "status": "ROOT_FINAL_RESULTS_CONFIRMED",
+    "dateZurich": "2026-11-16",
+    "scope": "R266: Kategoriengestaltung, Schrift und Icons im unveröffentlichten LuxeStyle-Entwurf; begrenzte Prüfung und gemeinsame Dokumentation.",
+    "baselineRevision": 265,
+    "baselineCommit": "3cc1ab537a3bf2006af7efb19d084f55a9c793f9",
+    "shop": {
+      "id": "94368563585",
+      "domain": "luxestyle.ch",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "currency": "CHF",
+      "timezone": "Europe/Zurich"
+    },
+    "theme": {
+      "id": "214169584007",
+      "role": "UNPUBLISHED",
+      "finalCommit": "801c1d508fbdda98a542d19fffa65bd6fa5f4e48",
+      "commits": [
+        "3e38e8fdb1ddd308721f92007cf504f14580d02e",
+        "ee4b0b8c688bd97bc84542fdcdfad39e366d63c4",
+        "801c1d508fbdda98a542d19fffa65bd6fa5f4e48"
+      ],
+      "savedFiles": 16,
+      "pushErrors": [],
+      "pendingFiles": [],
+      "deletedFiles": [],
+      "returnedBodiesExact": 16,
+      "readbackLimitation": "Bei zwei JSON-Templates weicht der MD5 der API-Bodydarstellung von Shopifys Checksum-Metadaten ab; die exportierten Bodytexte und geprüften Konfigurationen stimmen überein.",
+      "liveMain": {
+        "id": "213991391623",
+        "updatedAt": "2026-11-16T03:55:52Z",
+        "changedByR266": false
+      }
+    },
+    "changes": [
+      "Bestehende Unterkategorien als Bildkacheln mit weissen Titeln; 2 Spalten auf dem Handy, vollständige Namen und versetzte Pfeile.",
+      "Eigene bestehende Collection-Seiten mit Elternpfad, Unterkategorien und nativer Produktliste; 24 Produkte pro Seite, kompakte Ansicht bei Filterung und Folgeseiten.",
+      "Fünf vorhandene Hinweise mit 14-px-Schrift, 20.3-px-Zeilenhöhe und neutralen dekorativen SVG-Icons; Wörter, Angebote, Ausschlüsse und Versandgrenze erhalten.",
+      "Drei alte Collagen im Schmuck-Einstieg durch vorhandene echte Produktbilder der jeweiligen Kategorie ersetzt.",
+      "Ein dekorativer taupefarbener Hintergrund mit Higgsfield erstellt und als Shopify-Datei gespeichert; kein erfundenes Produktmotiv."
+    ],
+    "navigation": {
+      "existingUniqueCollectionURLs": 98,
+      "newCollectionsCreated": 0,
+      "all98PublicHTTPVerified": false,
+      "publicHierarchyCases": 4,
+      "childCounts": [
+        10,
+        6,
+        2,
+        0
+      ],
+      "note": "Die 98 Referenzen stammen aus gezielter Admin-Menü-/Metafeldprüfung, nicht aus 98 öffentlichen Seitenabrufen."
+    },
+    "quality": {
+      "rootVisualApproval": "PASS",
+      "rootViewedFinal": "quality/draft-preview-20261116T184949Z/schmuck-mobile-category-section.png",
+      "reviewerSummary": "quality/QA-summary.json",
+      "finalMobileTitlesChecked": 10,
+      "titleArrowOverlaps": 0,
+      "clippedTitles": 0,
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "functionalTestsCommit": "ee4b0b8c688bd97bc84542fdcdfad39e366d63c4",
+      "functionalTests": "PASS: Root mobil/desktop, tiefste Seite, Folgeseite, direkte Filterung, AJAX-Filter und Zurücksetzen, Schrift/Icon/44-px-Bedienelemente.",
+      "finalChangeScope": "Danach ausschliesslich mobile Pfeilposition und Titelumbruch geändert und erneut mobil geprüft.",
+      "officialThemeCheck": "UNAVAILABLE: @shopify/theme-check-common fehlt; keine Installation.",
+      "nativeScreenshotLimitation": "Nativer Screenshot-Renderer stellte sowohl MAIN als auch Entwurf ohne vollständiges Basis-CSS dar. Endprüfung erfolgte deshalb im echten Chromium-Browser mit bestätigter Draft-ID."
+    },
+    "higgsfield": {
+      "jobId": "849d03fc-5354-4156-99d6-3a0e6922bc15",
+      "model": "gpt_image_2_6",
+      "quotedCredits": 2.75,
+      "actualChargedCredits": "UNKNOWN",
+      "shopifyMediaId": "gid://shopify/MediaImage/78094093615495",
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-kategorien-atelier-r266.webp?v=1794852100",
+      "scope": "Ein dekoratives Hintergrundbild ohne Personen, Produktbehauptungen oder Logos; kein Video."
+    },
+    "metricool": {
+      "scope": "Nur Leseprüfung; keine eigenen Publikationen oder Änderungen.",
+      "brandId": 6227837,
+      "identities": "Alle sechs Kanalidentitäten bestätigt.",
+      "planSnapshotDateZurich": "2026-11-16",
+      "proofDirectory": "metricool",
+      "knownBlockedYouTubeDates": [
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20"
+      ],
+      "note": "Technische Termine und fremde Publikationszustände belegen weder eigene Veröffentlichung noch Qualitätsfreigabe."
+    },
+    "publication": {
+      "state": "UNPUBLISHED",
+      "permissionAlreadyGranted": true,
+      "blocker": "Shopify-Veröffentlichungsversuch R262 wurde mit publish_refused / Only agent-created themes can be published here abgelehnt. R266 bleibt gespeicherter Entwurf; kein Umgehen und kein erneuter blinder Versuch.",
+      "editor": "https://admin.shopify.com/store/au3j0y-hq/themes/214169584007/editor"
+    },
+    "privacyReviewed": true,
+    "limits": [
+      "Begrenzter Design-/Funktionsnachweis; keine Aussage über 100 % des Katalogs oder null Merchant-Fehler.",
+      "Keine erneute Kauf-Watch-Abfrage, keine zusätzlichen Tageskennzahlen, keine Kundenansprache oder neue Automation.",
+      "Geteiltes Repository-Memory ist ein Übergabebeleg, kein Beleg, dass Claude es bereits gelesen hat."
+    ],
+    "nextStep": "R266 im bestehenden gemeinsamen Handoff mit aktuellem SHA ergänzen und exakt zurücklesen. Den geprüften Entwurf über den legitimen Shopify-Editor veröffentlichen lassen; anschliessend die Live-Ansicht gezielt nachprüfen.",
+    "memoryWriteState": "PENDING"
+  },
+  "rootProofSHA256": "d31fc28159bbded45aa9e9941e5c506184a0ae951364758eae3476f4bff22bd2",
+  "designWriteState": "DRAFT_SAVED",
+  "publicationState": "UNPUBLISHED",
+  "fontIconState": "CONFIRMED",
+  "previewState": "CONFIRMED",
+  "decorativeBackground": {
+    "run": "R266",
+    "generation": {
+      "jobId": "849d03fc-5354-4156-99d6-3a0e6922bc15",
+      "model": "gpt_image_2_6",
+      "count": 1,
+      "costQuoteCredits": 2.75,
+      "status": "completed",
+      "purpose": "Decorative backdrop only; no represented products",
+      "visualReviewed": true
+    },
+    "shopifyImage": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-kategorien-atelier-r266.webp?v=1794852100",
+      "fileId": "gid://shopify/MediaImage/78094093615495",
+      "filename": "luxe-kategorien-atelier-r266.webp",
+      "alt": ""
+    },
+    "nativeReadback": {
+      "id": "gid://shopify/MediaImage/78094093615495",
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-kategorien-atelier-r266.webp?v=1794852100",
+        "width": 2688,
+        "height": 1520
+      }
+    },
+    "themeComparison": [
+      {
+        "filename": "AGENTS.md",
+        "mainMd5": "11947bfa3323a9f8f0cb9f661769f36a",
+        "draftMd5": "11947bfa3323a9f8f0cb9f661769f36a"
+      },
+      {
+        "filename": "locales/de.json",
+        "mainMd5": "1dea0b19fa05c68fa82304b826b7edff",
+        "draftMd5": "1dea0b19fa05c68fa82304b826b7edff"
+      },
+      {
+        "filename": "locales/de.schema.json",
+        "mainMd5": "a222f0d39134070b5d79885a0c0c2048",
+        "draftMd5": "a222f0d39134070b5d79885a0c0c2048"
+      },
+      {
+        "filename": "locales/en.default.json",
+        "mainMd5": "4705e4658f482b3fbc0c38ad2bb6535d",
+        "draftMd5": "4705e4658f482b3fbc0c38ad2bb6535d"
+      },
+      {
+        "filename": "locales/en.default.schema.json",
+        "mainMd5": "1759b218e989ed47c347db999bfcc75a",
+        "draftMd5": "1759b218e989ed47c347db999bfcc75a"
+      },
+      {
+        "filename": "snippets/lx-kopf-chips.liquid",
+        "mainMd5": "74104de0caa980fb1d751e0261f5d6bd",
+        "draftMd5": "74104de0caa980fb1d751e0261f5d6bd"
+      },
+      {
+        "filename": "snippets/lx-kopf-pfad.liquid",
+        "mainMd5": "69565ad5f8d9fde2fe6825f0afa87b5e",
+        "draftMd5": "69565ad5f8d9fde2fe6825f0afa87b5e"
+      },
+      {
+        "filename": "snippets/meta-tags.liquid",
+        "mainMd5": "723ee098a1cd88e7795a8a1d69e589ec",
+        "draftMd5": "fa92ed374a03d14d60ffc7d70e112ff5"
+      },
+      {
+        "filename": "templates/collection.json",
+        "mainMd5": "f7592acb1a336cbcd98552693fd08ff4",
+        "draftMd5": "f7592acb1a336cbcd98552693fd08ff4"
+      }
+    ]
+  },
+  "metricool": {
+    "proof": "runs/20261116-r266/metricool/PLANUNG-AUSWERTUNG.json",
+    "checkedWindowStart": "2026-11-16T19:08:59+01:00",
+    "rollingActiveProviderStates": 59,
+    "calendarActiveProviderStates": 62,
+    "ownWrites": 0,
+    "ownPublications": 0,
+    "analyticsCalls": 0,
+    "klaviyoCalls": 0,
+    "orderCalls": 0
+  },
+  "dailyReportsRepeated": false,
+  "claudeReceipt": "UNKNOWN",
+  "limitations": [
+    "UNPUBLISHED: Die Shopify-Schnittstelle hatte die Veröffentlichung mit publish_refused und «Only agent-created themes can be published here» abgelehnt. Kein Umgehen der Sperre und kein blinder erneuter Versuch.",
+    "Die Prüfung betrifft diesen Designblock; sie belegt weder einen vollständig geprüften Katalog noch null Merchant-Center-Fehler oder höhere Verkäufe.",
+    "Die Roh-HTML-Dateien, Netzwerkprotokolle und Screenshots bleiben lokale Arbeitsbelege; im Repository-Paket liegen nur freigegebene Quellen und kompakte Nachweise. Lokale Screenshot-Pfade sind keine öffentlichen Medien-URLs.",
+    "Die Übergabe ist kein Empfangsbeleg für Claude. Alte Ton-, Rechte-, Master- und Publikationsregister-Blocker bleiben bestehen."
+  ],
+  "localPackageBuilderAccountOrGitWrites": 0,
+  "privacy": "Explicit reviewed allow-list; no session HTML, raw post captions or creator email included."
+}

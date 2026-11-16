@@ -1,0 +1,368 @@
+{
+  "run": "R266",
+  "date": "2026-11-16",
+  "baselineCommit": "3cc1ab537a3bf2006af7efb19d084f55a9c793f9",
+  "files": [
+    {
+      "file": "runs/20261116-r266/design/files/templates/collection.lxwelten.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/templates/collection.lxwelten.json",
+      "bytes": 5876,
+      "sha256": "21017ccdbb59c917dd0f37f98b7abd90805d30444c1dd4345129745f0c9f8056",
+      "gitBlobSha": "c3652838ab793812d205238275a2413f6194736c",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/templates/collection.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/templates/collection.json",
+      "bytes": 5876,
+      "sha256": "21017ccdbb59c917dd0f37f98b7abd90805d30444c1dd4345129745f0c9f8056",
+      "gitBlobSha": "c3652838ab793812d205238275a2413f6194736c",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/snippets/lx-kopf-pfad.liquid",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/snippets/lx-kopf-pfad.liquid",
+      "bytes": 7325,
+      "sha256": "8f73e3eaddfe7489d7e7c5c57ea3438f15ef3bcdf1109d4fcd9d7d80ac983c9f",
+      "gitBlobSha": "956aaeced34ef79678a6de2a144abf7f9d6f5342",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/snippets/lx-collection-welten-card.liquid",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/snippets/lx-collection-welten-card.liquid",
+      "bytes": 1795,
+      "sha256": "9c085ff9a067c46f5bc3944bb830a49933003953c667ffd6d0151c9c3c529c1d",
+      "gitBlobSha": "4a0d03c4e15a0b7c93a73a9f5c2a97eadcbc2b59",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/sections/lx-collection-welten.liquid",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/sections/lx-collection-welten.liquid",
+      "bytes": 14868,
+      "sha256": "c3a927bd08287e207461fcf5ac2c83796222e636156e761bce09ed3ee6b1aed2",
+      "gitBlobSha": "614d40931b7035214b8c601baf8a7a8812dbe643",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/sections/lx-collection-details.liquid",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/sections/lx-collection-details.liquid",
+      "bytes": 7362,
+      "sha256": "6cd148bc41431f45e7f70d62c649cdf39f62dccc2c7fae6eeab6c7ae7498b5c4",
+      "gitBlobSha": "0372c7c7c085a471b735657d76179450f90f5568",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/sections/header-group.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/sections/header-group.json",
+      "bytes": 11991,
+      "sha256": "628c0d64676623578393cf56afbddddfc0aae2a26ff3ce2f8274cf5cce82bcd3",
+      "gitBlobSha": "4250329724303e93c5a3933bf1a05be44b8a99ab",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/sections/header-announcements.liquid",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/sections/header-announcements.liquid",
+      "bytes": 5415,
+      "sha256": "4a8abd29a452f8b4840990311b701ecb5fc1f2f33f534c60a7101ab7b0f4a9a4",
+      "gitBlobSha": "77acff27149eb19535939e9d8b8f1e974723c391",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/locales/fr.schema.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/locales/fr.schema.json",
+      "bytes": 52699,
+      "sha256": "8fd575acbea6ad2617e7f5945f3cffdacc0aa09e4449617c3bc60f65e229e9c0",
+      "gitBlobSha": "2dcc470f01f818615c9a19feea31e991d337622a",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/locales/fr.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/locales/fr.json",
+      "bytes": 32557,
+      "sha256": "a484f950c840bb214861d9979993e0e8b19372a293fbae75e01990bbcd946372",
+      "gitBlobSha": "a721780fdfd1b59e208d260ff4015eb13e4a348e",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/locales/en.default.schema.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/locales/en.default.schema.json",
+      "bytes": 52556,
+      "sha256": "2be6e52a5eef283262a973e6fc3f15f8d585449b6536aa50bbf98aa3801914ae",
+      "gitBlobSha": "5da18623de9160bad87839c96ea703eb192c18fe",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/locales/en.default.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/locales/en.default.json",
+      "bytes": 51075,
+      "sha256": "43aca3597df1b2ebecc8dda6dc079becbb61c1bc9e8c8b3e1ba1c65fcf3fe84c",
+      "gitBlobSha": "888398616a5f0e2bcb2d3f4b95318a942fae9e89",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/locales/de.schema.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/locales/de.schema.json",
+      "bytes": 51418,
+      "sha256": "92ee05ce0f1c9e32d531a9bd5ca3bff04b3f6fb5ff4cd203d77aba4c98be7ac6",
+      "gitBlobSha": "2add9958fd8c09cb61b023bfdf01613292cee52b",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/locales/de.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/locales/de.json",
+      "bytes": 53845,
+      "sha256": "84a7634506f51e731c62a9a0da959e332cd91bf7dbe270073e569e4c490b9d17",
+      "gitBlobSha": "e28fc66641001e439cb4311949174c6f00a16c0d",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/files/blocks/_announcement.liquid",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/files/blocks/_announcement.liquid",
+      "bytes": 8101,
+      "sha256": "b0322fb923335387041cdd9f4931327463f3bee093285bf71c9cd33a91389a28",
+      "gitBlobSha": "4bf21ebe73e96eef4b3da54d1431f0492ac6fb95",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/DESIGN.md",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/DESIGN.md",
+      "bytes": 1797,
+      "sha256": "f03f2efc23cbbf66b5be4ec7a5b9f1acb8a7056673b8c68836d8d677ec55300e",
+      "gitBlobSha": "610ae936af559bf8721e658ea294b3a06336a1a4",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/FINAL-MANIFEST.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/FINAL-MANIFEST.json",
+      "bytes": 6835,
+      "sha256": "668b919d768926000cd52900ecf1f10abb4e259010cd9c78563b7af4fd23133f",
+      "gitBlobSha": "71d4d8e8da65eea378e6b635b9dd39d9e0deb501",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/first-commit-readback.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/first-commit-readback.json",
+      "bytes": 3717,
+      "sha256": "1c50f992ca9492b4b3293a78f0bb12aaf6d9a36289b97b2214fce62c0060bcbe",
+      "gitBlobSha": "3e932ea9cd2fc24693b5684097cabb7c7c7d325d",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/fix-commit-readback.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/fix-commit-readback.json",
+      "bytes": 1392,
+      "sha256": "9050b78b9c16795d4bebbacffe7c8caa1346f1125f0d0c0e6dfeef1134f73c7b",
+      "gitBlobSha": "815699520c40454b21548128480e3bb0497ccc9e",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/final-commit-readback.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/final-commit-readback.json",
+      "bytes": 580,
+      "sha256": "a5d13dd8c9bc16f4e0ea5b3746b9f1ee01a033a5f9de832f47d07c4a7c35bfab",
+      "gitBlobSha": "f258ce1f531e3d54431b23609ab1dfa5ae57d898",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/quality/toolkit-validation-limitation.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/quality/toolkit-validation-limitation.json",
+      "bytes": 333,
+      "sha256": "ee61db0aa1c10ef81b57a9427659bcaf8bf5912a771ed266854172c7a4c8430f",
+      "gitBlobSha": "07c62efae65105540d16f3c6960b9adfad826aa5",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/quality/QA-summary.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/quality/QA-summary.json",
+      "bytes": 3072,
+      "sha256": "9d31e666f83f270c34b9a20192546e71fe300b4a94c8b1b885585740745cd0af",
+      "gitBlobSha": "f5a97d98e8de7b5eee6fcf4ef292d1eeb158ad4e",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/quality/navigation-expectations.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/quality/navigation-expectations.json",
+      "bytes": 3818,
+      "sha256": "de545942308820aa57448ef8beff45e2a7fad3b48bd0f9fdd52ade5cac5977ff",
+      "gitBlobSha": "c60f80991eaea744566c517c128c5b34fe7a6bde",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/navigation/report.md",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/navigation/report.md",
+      "bytes": 3770,
+      "sha256": "7310d6e6aa7bccb2a66a23240d52751068702bb7fb83b1ad25365e301d2545a1",
+      "gitBlobSha": "1fcd4b7c60684bc454ccfb68d59297ba81e87099",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/navigation/schema-notes.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/navigation/schema-notes.json",
+      "bytes": 594,
+      "sha256": "cd1031030d3b374669f4fa7002eef4812cc3048b69c114ecb00e56123b8c21ff",
+      "gitBlobSha": "e4a3356aa166a885e4673e0ce349891aade12009",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/navigation/schmuck-collections.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/navigation/schmuck-collections.json",
+      "bytes": 33440,
+      "sha256": "41a6498f1d8f7a6cc4e2888dbca9d5f233b9b2e64c86305aafe6e92cfae9a1fd",
+      "gitBlobSha": "5852e2ffbc8e398d75bbcdb084abdc76fbee240d",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/navigation/schmuck-menu-branch.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/navigation/schmuck-menu-branch.json",
+      "bytes": 65791,
+      "sha256": "571d3844b3805dfd525a58cc5ba6632ac22f1917a9bb7b635d66205de6e5146c",
+      "gitBlobSha": "04e0fd4ff622b836e5674f5247bd0477a45adfbc",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/navigation/schmuck-metafield-hierarchy.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/navigation/schmuck-metafield-hierarchy.json",
+      "bytes": 37133,
+      "sha256": "fb364150dc85cb4448053f4b11f52e3898dbcab632927ad5b59e0b75911644c3",
+      "gitBlobSha": "a07511d254ba494e9aefa2e6d6f45721601d56d8",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/navigation/schmuck-public-evidence.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/navigation/schmuck-public-evidence.json",
+      "bytes": 2835,
+      "sha256": "a7a7eaf0a63acdc4eda2259ecee4242e281a03b9b146830f1ba0611ef1d2036f",
+      "gitBlobSha": "8ecd1ad2d26d136bbd79ccf5f34c2da0c73902ea",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/navigation/shop-identity.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/navigation/shop-identity.json",
+      "bytes": 216,
+      "sha256": "5c506f0243c9506f363628c4ed6e317a1279b4bcde4e3a50a6706875b26a6834",
+      "gitBlobSha": "b7fb71eaeb7f8376801924d2725d1b261f44f70c",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/metricool/IDENTITAET.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/metricool/IDENTITAET.json",
+      "bytes": 490,
+      "sha256": "38bc384846565bd488d6dab9177a8a46b38e17a2645ff5149404e24e687b68e8",
+      "gitBlobSha": "0140efef0bf92e178516ed76f221f38c8d770690",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/metricool/PLANUNG-AUSWERTUNG.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/metricool/PLANUNG-AUSWERTUNG.json",
+      "bytes": 151598,
+      "sha256": "2d35fe9595cef71bc439f9e4a8520f1e73fecfc70a93c8205bc1b4941918ea27",
+      "gitBlobSha": "3575a4d630f398ccbaa39f394f9f801dcd501758",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/metricool/BERICHT.md",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/metricool/BERICHT.md",
+      "bytes": 6588,
+      "sha256": "3e6b74a33f07c5aaa3706f9fe90ebe8f931d68f35034c4c4586025140ad1ce3d",
+      "gitBlobSha": "0eaac929f2c3a0762fc37c8eea7d9a4d32f3f7df",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/metricool/TAGESERGÄNZUNG.md",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/metricool/TAGESERGÄNZUNG.md",
+      "bytes": 673,
+      "sha256": "684875369c72c531fb0d10f1870ec07c4bc54c1b05df7790687284639b2efc3b",
+      "gitBlobSha": "73f9391bdf27317ca3f80dbda5ed9259728ced90",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/metricool/INDEPENDENT-REVIEW.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/metricool/INDEPENDENT-REVIEW.json",
+      "bytes": 66325,
+      "sha256": "801b7b8580d2f6ee26511b1dc04bd6962467a86c715ad203d7fa4d098a2a94f6",
+      "gitBlobSha": "68c9a6165248ca53ae105d2394f6671ce4b26493",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/metricool/VALIDIERUNG.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/metricool/VALIDIERUNG.json",
+      "bytes": 1157,
+      "sha256": "b70f046088c61e4bdcfb0138f17fafdeaf2c3f648c4945a58cc4f12ec3a7930d",
+      "gitBlobSha": "f056ba62bd7743b174c68446079d1be413fd60c3",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/R266-DESIGN.patch",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/R266-DESIGN.patch",
+      "bytes": 57106,
+      "sha256": "11968de41e6c8b77f2966d86f311bce30a898d9d1c84360e05b4de52b83508a9",
+      "gitBlobSha": "8499ff1bc08a11dbdcbe4c7212ce6a4a64d23b0f",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "runs/20261116-r266/design/R266-DESIGN-PLAN.json",
+      "path": "dropship/codex-handoff-20261018/runs/20261116-r266/design/R266-DESIGN-PLAN.json",
+      "bytes": 4884,
+      "sha256": "05a249d8a92f2f5a10a86f67d54da75aabdf8d247718799cd39153e4d339859c",
+      "gitBlobSha": "aebe73d36ffb1cbbebc27ebff3819105eafffd51",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "R266-REPORT-20261116.md",
+      "path": "dropship/codex-handoff-20261018/R266-REPORT-20261116.md",
+      "bytes": 4976,
+      "sha256": "753bd6648894a1fee64acd65848d07939023e1487f58c556fe9eafd48d20a58f",
+      "gitBlobSha": "000c366af7f258dc06536f1d36a83c2ef2c9e996",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "R266-PROOF-20261116.json",
+      "path": "dropship/codex-handoff-20261018/R266-PROOF-20261116.json",
+      "bytes": 9849,
+      "sha256": "48eb145018d8f5d0af763f52378e37c28c441d82fcde02712ada8ec99507824f",
+      "gitBlobSha": "9caa0cdf4ee32ce3b9dfb6dfcb775ea47a56b411",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "README.md",
+      "path": "dropship/codex-handoff-20261018/README.md",
+      "bytes": 610882,
+      "sha256": "f279ab622f0efa9530ed1ad443d5748d731961ee10acc37b9d4028644bf22946",
+      "gitBlobSha": "3d5f055d60d51e04230f7a2122770061112045d9",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "PROJEKTGEDAECHTNIS.md",
+      "path": "dropship/codex-handoff-20261018/PROJEKTGEDAECHTNIS.md",
+      "bytes": 486493,
+      "sha256": "2e68de3ea30a83d47a0280fb022da6785e086e4ffbfa054c3eb8fa1fe2f49da3",
+      "gitBlobSha": "76ae446f07e550735a81e53ff441f65b59bb676e",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "CLAUDE-DIREKTSTART-20261115-R250.md",
+      "path": "dropship/codex-handoff-20261018/CLAUDE-DIREKTSTART-20261115-R250.md",
+      "bytes": 31775,
+      "sha256": "803c311d636040bb468680afdc5f8954e48b58c69dafc8de306d3ee7c8d8402a",
+      "gitBlobSha": "7a6e3f6a3019389e65cc829e1c96decb390be838",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "TAGESPROTOKOLL.md",
+      "path": "dropship/codex-handoff-20261018/TAGESPROTOKOLL.md",
+      "bytes": 663664,
+      "sha256": "bd66620cc22c1201e34cc26d6006c9cb1798ebedb5e841445b54fe56ce165be2",
+      "gitBlobSha": "3bf7e0379cbf6e3e7283f43decb9d1adac8e9972",
+      "readAt": "2026-11-16T19:05:57Z"
+    },
+    {
+      "file": "ARBEITSSTAND.json",
+      "path": "dropship/codex-handoff-20261018/ARBEITSSTAND.json",
+      "bytes": 4525058,
+      "sha256": "8db445137539740cc6de4fcc30992f6811fe034e74e5d366bf11587e1ba616fd",
+      "gitBlobSha": "8744d52b4058bcf585271c31e8c82e30953235a9",
+      "readAt": "2026-11-16T19:05:57Z"
+    }
+  ],
+  "selfIncluded": false
+}

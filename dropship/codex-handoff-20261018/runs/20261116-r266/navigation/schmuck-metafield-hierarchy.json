@@ -1,0 +1,1016 @@
+{
+  "source": "Shopify Admin GraphQL, exact 67 menu-branch collection metafields and exact 31 referenced-child collections; first:30 references and all pageInfo.hasNextPage=false",
+  "metafieldSemantics": {
+    "parentKey": "lux.unterfilter",
+    "type": "list.collection_reference",
+    "backlinkKey": "lux.eltern",
+    "typeForBacklink": "collection_reference"
+  },
+  "parents": [
+    {
+      "id": "gid://shopify/Collection/755666780551",
+      "title": "Ohrstecker",
+      "handle": "ohrstecker",
+      "url": "/collections/ohrstecker",
+      "productsCount": 71,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755666813319",
+          "gid://shopify/Collection/755666846087"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755666813319",
+          "title": "Silber-Ohrstecker",
+          "handle": "ohrstecker-silber",
+          "url": "/collections/ohrstecker-silber",
+          "productsCount": 22
+        },
+        {
+          "id": "gid://shopify/Collection/755666846087",
+          "title": "Vintage-Ohrstecker",
+          "handle": "ohrstecker-vintage",
+          "url": "/collections/ohrstecker-vintage",
+          "productsCount": 20
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755667108231",
+      "title": "Anhänger & Ketten mit Anhänger",
+      "handle": "ketten-mit-anhaenger",
+      "url": "/collections/ketten-mit-anhaenger",
+      "productsCount": 142,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755667140999",
+          "gid://shopify/Collection/755667173767"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755667140999",
+          "title": "Anhänger aus Edelstahl & Titan",
+          "handle": "ketten-mit-anhaenger-stahl",
+          "url": "/collections/ketten-mit-anhaenger-stahl",
+          "productsCount": 28
+        },
+        {
+          "id": "gid://shopify/Collection/755667173767",
+          "title": "Herz-Anhänger",
+          "handle": "ketten-mit-anhaenger-herz",
+          "url": "/collections/ketten-mit-anhaenger-herz",
+          "productsCount": 22
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755667304839",
+      "title": "Armreifen & Manschettenarmbänder",
+      "handle": "armreifen-bangles",
+      "url": "/collections/armreifen-bangles",
+      "productsCount": 109,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755667337607"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755667337607",
+          "title": "Armreifen mit Zirkonia & Strass",
+          "handle": "armreifen-bangles-zirkonia",
+          "url": "/collections/armreifen-bangles-zirkonia",
+          "productsCount": 48
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755667370375",
+      "title": "Lederarmbänder",
+      "handle": "lederarmbaender",
+      "url": "/collections/lederarmbaender",
+      "productsCount": 66,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755667403143",
+          "gid://shopify/Collection/755667435911"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755667403143",
+          "title": "Leder mit Edelstahl & Titan",
+          "handle": "lederarmbaender-stahl",
+          "url": "/collections/lederarmbaender-stahl",
+          "productsCount": 25
+        },
+        {
+          "id": "gid://shopify/Collection/755667435911",
+          "title": "Lederarmbänder für Herren",
+          "handle": "lederarmbaender-herren",
+          "url": "/collections/lederarmbaender-herren",
+          "productsCount": 21
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755667665287",
+      "title": "Edelstahl- & Titanarmbänder",
+      "handle": "edelstahl-titanarmbaender",
+      "url": "/collections/edelstahl-titanarmbaender",
+      "productsCount": 198,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755667698055",
+          "gid://shopify/Collection/755667730823",
+          "gid://shopify/Collection/755667763591"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755667698055",
+          "title": "Edelstahl mit Zirkonia & Strass",
+          "handle": "edelstahl-titanarmbaender-zirkonia",
+          "url": "/collections/edelstahl-titanarmbaender-zirkonia",
+          "productsCount": 28
+        },
+        {
+          "id": "gid://shopify/Collection/755667730823",
+          "title": "Edelstahl mit Leder",
+          "handle": "edelstahl-titanarmbaender-leder",
+          "url": "/collections/edelstahl-titanarmbaender-leder",
+          "productsCount": 25
+        },
+        {
+          "id": "gid://shopify/Collection/755667763591",
+          "title": "Vergoldete Edelstahlarmbänder",
+          "handle": "edelstahl-titanarmbaender-vergoldet",
+          "url": "/collections/edelstahl-titanarmbaender-vergoldet",
+          "productsCount": 19
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755668091271",
+      "title": "Herz-Schmuck",
+      "handle": "herz-schmuck",
+      "url": "/collections/herz-schmuck",
+      "productsCount": 158,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755668124039",
+          "gid://shopify/Collection/755668156807",
+          "gid://shopify/Collection/755668189575",
+          "gid://shopify/Collection/755668222343",
+          "gid://shopify/Collection/755668255111",
+          "gid://shopify/Collection/755668287879"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755668124039",
+          "title": "Herz-Armbänder & -Armreifen",
+          "handle": "herz-schmuck-armbaender",
+          "url": "/collections/herz-schmuck-armbaender",
+          "productsCount": 56
+        },
+        {
+          "id": "gid://shopify/Collection/755668156807",
+          "title": "Herz mit Zirkonia & Strass",
+          "handle": "herz-schmuck-zirkonia",
+          "url": "/collections/herz-schmuck-zirkonia",
+          "productsCount": 40
+        },
+        {
+          "id": "gid://shopify/Collection/755668189575",
+          "title": "Herz-Ketten & Anhänger",
+          "handle": "herz-schmuck-ketten",
+          "url": "/collections/herz-schmuck-ketten",
+          "productsCount": 36
+        },
+        {
+          "id": "gid://shopify/Collection/755668222343",
+          "title": "Herz-Ringe",
+          "handle": "herz-schmuck-ringe",
+          "url": "/collections/herz-schmuck-ringe",
+          "productsCount": 23
+        },
+        {
+          "id": "gid://shopify/Collection/755668255111",
+          "title": "Herz-Schmuck aus Silber",
+          "handle": "herz-schmuck-silber",
+          "url": "/collections/herz-schmuck-silber",
+          "productsCount": 22
+        },
+        {
+          "id": "gid://shopify/Collection/755668287879",
+          "title": "Herz aus Edelstahl & Titan",
+          "handle": "herz-schmuck-stahl",
+          "url": "/collections/herz-schmuck-stahl",
+          "productsCount": 22
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755668353415",
+      "title": "Blumen- & Schmetterlingsschmuck",
+      "handle": "blumen-schmetterlingsschmuck",
+      "url": "/collections/blumen-schmetterlingsschmuck",
+      "productsCount": 164,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755668386183",
+          "gid://shopify/Collection/755668418951",
+          "gid://shopify/Collection/755668451719",
+          "gid://shopify/Collection/755668484487",
+          "gid://shopify/Collection/755668517255",
+          "gid://shopify/Collection/755668550023"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755668386183",
+          "title": "Zirkonia-Blumen & -Schmetterlinge",
+          "handle": "blumen-schmetterlingsschmuck-zirkonia",
+          "url": "/collections/blumen-schmetterlingsschmuck-zirkonia",
+          "productsCount": 33
+        },
+        {
+          "id": "gid://shopify/Collection/755668418951",
+          "title": "Blumen- & Schmetterlingsringe",
+          "handle": "blumen-schmetterlingsschmuck-ringe",
+          "url": "/collections/blumen-schmetterlingsschmuck-ringe",
+          "productsCount": 35
+        },
+        {
+          "id": "gid://shopify/Collection/755668451719",
+          "title": "Blumen- & Schmetterlings-Ohrringe",
+          "handle": "blumen-schmetterlingsschmuck-ohrringe",
+          "url": "/collections/blumen-schmetterlingsschmuck-ohrringe",
+          "productsCount": 35
+        },
+        {
+          "id": "gid://shopify/Collection/755668484487",
+          "title": "Blumen- & Schmetterlings-Armbänder",
+          "handle": "blumen-schmetterlingsschmuck-armbaender",
+          "url": "/collections/blumen-schmetterlingsschmuck-armbaender",
+          "productsCount": 34
+        },
+        {
+          "id": "gid://shopify/Collection/755668517255",
+          "title": "Blumen & Schmetterlinge mit Perlen",
+          "handle": "blumen-schmetterlingsschmuck-perlen",
+          "url": "/collections/blumen-schmetterlingsschmuck-perlen",
+          "productsCount": 23
+        },
+        {
+          "id": "gid://shopify/Collection/755668550023",
+          "title": "Silber-Blumen & -Schmetterlinge",
+          "handle": "blumen-schmetterlingsschmuck-silber",
+          "url": "/collections/blumen-schmetterlingsschmuck-silber",
+          "productsCount": 21
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755668582791",
+      "title": "Tier-Schmuck",
+      "handle": "tier-schmuck",
+      "url": "/collections/tier-schmuck",
+      "productsCount": 86,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755668615559"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755668615559",
+          "title": "Tier-Armbänder & -Armreifen",
+          "handle": "tier-schmuck-armbaender",
+          "url": "/collections/tier-schmuck-armbaender",
+          "productsCount": 29
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755668648327",
+      "title": "Punk-, Gothic- & Hip-Hop-Schmuck",
+      "handle": "punk-gothic-schmuck",
+      "url": "/collections/punk-gothic-schmuck",
+      "productsCount": 48,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755668681095"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755668681095",
+          "title": "Punk-Armbänder & -Armreifen",
+          "handle": "punk-gothic-schmuck-armbaender",
+          "url": "/collections/punk-gothic-schmuck-armbaender",
+          "productsCount": 20
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755668779399",
+      "title": "Vintage- & Retro-Schmuck",
+      "handle": "vintage-retro-schmuck",
+      "url": "/collections/vintage-retro-schmuck",
+      "productsCount": 192,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755668812167",
+          "gid://shopify/Collection/755668844935",
+          "gid://shopify/Collection/755668877703",
+          "gid://shopify/Collection/755668910471",
+          "gid://shopify/Collection/755668943239"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755668812167",
+          "title": "Vintage-Armbänder & -Armreifen",
+          "handle": "vintage-retro-schmuck-armbaender",
+          "url": "/collections/vintage-retro-schmuck-armbaender",
+          "productsCount": 66
+        },
+        {
+          "id": "gid://shopify/Collection/755668844935",
+          "title": "Vintage-Ringe",
+          "handle": "vintage-retro-schmuck-ringe",
+          "url": "/collections/vintage-retro-schmuck-ringe",
+          "productsCount": 40
+        },
+        {
+          "id": "gid://shopify/Collection/755668877703",
+          "title": "Vintage-Ohrringe",
+          "handle": "vintage-retro-schmuck-ohrringe",
+          "url": "/collections/vintage-retro-schmuck-ohrringe",
+          "productsCount": 34
+        },
+        {
+          "id": "gid://shopify/Collection/755668910471",
+          "title": "Vintage mit Zirkonia & Strass",
+          "handle": "vintage-retro-schmuck-zirkonia",
+          "url": "/collections/vintage-retro-schmuck-zirkonia",
+          "productsCount": 22
+        },
+        {
+          "id": "gid://shopify/Collection/755668943239",
+          "title": "Vintage aus Edelstahl & Titan",
+          "handle": "vintage-retro-schmuck-stahl",
+          "url": "/collections/vintage-retro-schmuck-stahl",
+          "productsCount": 24
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/Collection/755669008775",
+      "title": "Minimalistischer Schmuck",
+      "handle": "minimalistischer-schmuck",
+      "url": "/collections/minimalistischer-schmuck",
+      "productsCount": 73,
+      "metafield": {
+        "namespace": "lux",
+        "key": "unterfilter",
+        "type": "list.collection_reference",
+        "valueIds": [
+          "gid://shopify/Collection/755669041543",
+          "gid://shopify/Collection/755669074311"
+        ],
+        "referencesComplete": true
+      },
+      "children": [
+        {
+          "id": "gid://shopify/Collection/755669041543",
+          "title": "Minimalistische Armbänder",
+          "handle": "minimalistischer-schmuck-armbaender",
+          "url": "/collections/minimalistischer-schmuck-armbaender",
+          "productsCount": 32
+        },
+        {
+          "id": "gid://shopify/Collection/755669074311",
+          "title": "Minimalistische Ringe",
+          "handle": "minimalistischer-schmuck-ringe",
+          "url": "/collections/minimalistischer-schmuck-ringe",
+          "productsCount": 22
+        }
+      ]
+    }
+  ],
+  "childCollections": [
+    {
+      "id": "gid://shopify/Collection/755666813319",
+      "title": "Silber-Ohrstecker",
+      "handle": "ohrstecker-silber",
+      "url": "/collections/ohrstecker-silber",
+      "templateSuffix": null,
+      "productsCount": 22,
+      "seo": {
+        "title": "Silber-Ohrstecker online kaufen | LuxeStyle CH",
+        "description": "Silber-Ohrstecker online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755666780551",
+        "title": "Ohrstecker",
+        "handle": "ohrstecker"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755666846087",
+      "title": "Vintage-Ohrstecker",
+      "handle": "ohrstecker-vintage",
+      "url": "/collections/ohrstecker-vintage",
+      "templateSuffix": null,
+      "productsCount": 20,
+      "seo": {
+        "title": "Vintage-Ohrstecker online kaufen | LuxeStyle CH",
+        "description": "Vintage-Ohrstecker online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755666780551",
+        "title": "Ohrstecker",
+        "handle": "ohrstecker"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755667140999",
+      "title": "Anhänger aus Edelstahl & Titan",
+      "handle": "ketten-mit-anhaenger-stahl",
+      "url": "/collections/ketten-mit-anhaenger-stahl",
+      "templateSuffix": null,
+      "productsCount": 28,
+      "seo": {
+        "title": "Anhänger aus Edelstahl & Titan online kaufen | LuxeStyle CH",
+        "description": "Anhänger aus Edelstahl & Titan online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755667108231",
+        "title": "Anhänger & Ketten mit Anhänger",
+        "handle": "ketten-mit-anhaenger"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755667173767",
+      "title": "Herz-Anhänger",
+      "handle": "ketten-mit-anhaenger-herz",
+      "url": "/collections/ketten-mit-anhaenger-herz",
+      "templateSuffix": null,
+      "productsCount": 22,
+      "seo": {
+        "title": "Herz-Anhänger online kaufen | LuxeStyle CH",
+        "description": "Herz-Anhänger online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755667108231",
+        "title": "Anhänger & Ketten mit Anhänger",
+        "handle": "ketten-mit-anhaenger"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755667337607",
+      "title": "Armreifen mit Zirkonia & Strass",
+      "handle": "armreifen-bangles-zirkonia",
+      "url": "/collections/armreifen-bangles-zirkonia",
+      "templateSuffix": null,
+      "productsCount": 48,
+      "seo": {
+        "title": "Armreifen mit Zirkonia & Strass online kaufen | LuxeStyle CH",
+        "description": "Armreifen mit Zirkonia & Strass online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755667304839",
+        "title": "Armreifen & Manschettenarmbänder",
+        "handle": "armreifen-bangles"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755667403143",
+      "title": "Leder mit Edelstahl & Titan",
+      "handle": "lederarmbaender-stahl",
+      "url": "/collections/lederarmbaender-stahl",
+      "templateSuffix": null,
+      "productsCount": 25,
+      "seo": {
+        "title": "Leder mit Edelstahl & Titan online kaufen | LuxeStyle CH",
+        "description": "Leder mit Edelstahl & Titan online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755667370375",
+        "title": "Lederarmbänder",
+        "handle": "lederarmbaender"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755667435911",
+      "title": "Lederarmbänder für Herren",
+      "handle": "lederarmbaender-herren",
+      "url": "/collections/lederarmbaender-herren",
+      "templateSuffix": null,
+      "productsCount": 21,
+      "seo": {
+        "title": "Lederarmbänder für Herren online kaufen | LuxeStyle CH",
+        "description": "Lederarmbänder für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755667370375",
+        "title": "Lederarmbänder",
+        "handle": "lederarmbaender"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755667698055",
+      "title": "Edelstahl mit Zirkonia & Strass",
+      "handle": "edelstahl-titanarmbaender-zirkonia",
+      "url": "/collections/edelstahl-titanarmbaender-zirkonia",
+      "templateSuffix": null,
+      "productsCount": 28,
+      "seo": {
+        "title": "Edelstahl mit Zirkonia & Strass online kaufen | LuxeStyle CH",
+        "description": "Edelstahl mit Zirkonia & Strass online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755667665287",
+        "title": "Edelstahl- & Titanarmbänder",
+        "handle": "edelstahl-titanarmbaender"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755667730823",
+      "title": "Edelstahl mit Leder",
+      "handle": "edelstahl-titanarmbaender-leder",
+      "url": "/collections/edelstahl-titanarmbaender-leder",
+      "templateSuffix": null,
+      "productsCount": 25,
+      "seo": {
+        "title": "Edelstahl mit Leder online kaufen | LuxeStyle CH",
+        "description": "Edelstahl mit Leder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755667665287",
+        "title": "Edelstahl- & Titanarmbänder",
+        "handle": "edelstahl-titanarmbaender"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755667763591",
+      "title": "Vergoldete Edelstahlarmbänder",
+      "handle": "edelstahl-titanarmbaender-vergoldet",
+      "url": "/collections/edelstahl-titanarmbaender-vergoldet",
+      "templateSuffix": null,
+      "productsCount": 19,
+      "seo": {
+        "title": "Vergoldete Edelstahlarmbänder online kaufen | LuxeStyle CH",
+        "description": "Vergoldete Edelstahlarmbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755667665287",
+        "title": "Edelstahl- & Titanarmbänder",
+        "handle": "edelstahl-titanarmbaender"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668124039",
+      "title": "Herz-Armbänder & -Armreifen",
+      "handle": "herz-schmuck-armbaender",
+      "url": "/collections/herz-schmuck-armbaender",
+      "templateSuffix": null,
+      "productsCount": 56,
+      "seo": {
+        "title": "Herz-Armbänder & -Armreifen online kaufen | LuxeStyle CH",
+        "description": "Herz-Armbänder & -Armreifen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668091271",
+        "title": "Herz-Schmuck",
+        "handle": "herz-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668156807",
+      "title": "Herz mit Zirkonia & Strass",
+      "handle": "herz-schmuck-zirkonia",
+      "url": "/collections/herz-schmuck-zirkonia",
+      "templateSuffix": null,
+      "productsCount": 40,
+      "seo": {
+        "title": "Herz mit Zirkonia & Strass online kaufen | LuxeStyle CH",
+        "description": "Herz mit Zirkonia & Strass online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668091271",
+        "title": "Herz-Schmuck",
+        "handle": "herz-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668189575",
+      "title": "Herz-Ketten & Anhänger",
+      "handle": "herz-schmuck-ketten",
+      "url": "/collections/herz-schmuck-ketten",
+      "templateSuffix": null,
+      "productsCount": 36,
+      "seo": {
+        "title": "Herz-Ketten & Anhänger online kaufen | LuxeStyle CH",
+        "description": "Herz-Ketten & Anhänger online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668091271",
+        "title": "Herz-Schmuck",
+        "handle": "herz-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668222343",
+      "title": "Herz-Ringe",
+      "handle": "herz-schmuck-ringe",
+      "url": "/collections/herz-schmuck-ringe",
+      "templateSuffix": null,
+      "productsCount": 23,
+      "seo": {
+        "title": "Herz-Ringe online kaufen | LuxeStyle CH",
+        "description": "Herz-Ringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668091271",
+        "title": "Herz-Schmuck",
+        "handle": "herz-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668255111",
+      "title": "Herz-Schmuck aus Silber",
+      "handle": "herz-schmuck-silber",
+      "url": "/collections/herz-schmuck-silber",
+      "templateSuffix": null,
+      "productsCount": 22,
+      "seo": {
+        "title": "Herz-Schmuck aus Silber online kaufen | LuxeStyle CH",
+        "description": "Herz-Schmuck aus Silber online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668091271",
+        "title": "Herz-Schmuck",
+        "handle": "herz-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668287879",
+      "title": "Herz aus Edelstahl & Titan",
+      "handle": "herz-schmuck-stahl",
+      "url": "/collections/herz-schmuck-stahl",
+      "templateSuffix": null,
+      "productsCount": 22,
+      "seo": {
+        "title": "Herz aus Edelstahl & Titan online kaufen | LuxeStyle CH",
+        "description": "Herz aus Edelstahl & Titan online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668091271",
+        "title": "Herz-Schmuck",
+        "handle": "herz-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668386183",
+      "title": "Zirkonia-Blumen & -Schmetterlinge",
+      "handle": "blumen-schmetterlingsschmuck-zirkonia",
+      "url": "/collections/blumen-schmetterlingsschmuck-zirkonia",
+      "templateSuffix": null,
+      "productsCount": 33,
+      "seo": {
+        "title": "Zirkonia-Blumen & -Schmetterlinge online kaufen",
+        "description": "Zirkonia-Blumen & -Schmetterlinge online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668353415",
+        "title": "Blumen- & Schmetterlingsschmuck",
+        "handle": "blumen-schmetterlingsschmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668418951",
+      "title": "Blumen- & Schmetterlingsringe",
+      "handle": "blumen-schmetterlingsschmuck-ringe",
+      "url": "/collections/blumen-schmetterlingsschmuck-ringe",
+      "templateSuffix": null,
+      "productsCount": 35,
+      "seo": {
+        "title": "Blumen- & Schmetterlingsringe online kaufen | LuxeStyle CH",
+        "description": "Blumen- & Schmetterlingsringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668353415",
+        "title": "Blumen- & Schmetterlingsschmuck",
+        "handle": "blumen-schmetterlingsschmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668451719",
+      "title": "Blumen- & Schmetterlings-Ohrringe",
+      "handle": "blumen-schmetterlingsschmuck-ohrringe",
+      "url": "/collections/blumen-schmetterlingsschmuck-ohrringe",
+      "templateSuffix": null,
+      "productsCount": 35,
+      "seo": {
+        "title": "Blumen- & Schmetterlings-Ohrringe online kaufen",
+        "description": "Blumen- & Schmetterlings-Ohrringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668353415",
+        "title": "Blumen- & Schmetterlingsschmuck",
+        "handle": "blumen-schmetterlingsschmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668484487",
+      "title": "Blumen- & Schmetterlings-Armbänder",
+      "handle": "blumen-schmetterlingsschmuck-armbaender",
+      "url": "/collections/blumen-schmetterlingsschmuck-armbaender",
+      "templateSuffix": null,
+      "productsCount": 34,
+      "seo": {
+        "title": "Blumen- & Schmetterlings-Armbänder online kaufen",
+        "description": "Blumen- & Schmetterlings-Armbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668353415",
+        "title": "Blumen- & Schmetterlingsschmuck",
+        "handle": "blumen-schmetterlingsschmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668517255",
+      "title": "Blumen & Schmetterlinge mit Perlen",
+      "handle": "blumen-schmetterlingsschmuck-perlen",
+      "url": "/collections/blumen-schmetterlingsschmuck-perlen",
+      "templateSuffix": null,
+      "productsCount": 23,
+      "seo": {
+        "title": "Blumen & Schmetterlinge mit Perlen online kaufen",
+        "description": "Blumen & Schmetterlinge mit Perlen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668353415",
+        "title": "Blumen- & Schmetterlingsschmuck",
+        "handle": "blumen-schmetterlingsschmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668550023",
+      "title": "Silber-Blumen & -Schmetterlinge",
+      "handle": "blumen-schmetterlingsschmuck-silber",
+      "url": "/collections/blumen-schmetterlingsschmuck-silber",
+      "templateSuffix": null,
+      "productsCount": 21,
+      "seo": {
+        "title": "Silber-Blumen & -Schmetterlinge online kaufen | LuxeStyle CH",
+        "description": "Silber-Blumen & -Schmetterlinge online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668353415",
+        "title": "Blumen- & Schmetterlingsschmuck",
+        "handle": "blumen-schmetterlingsschmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668615559",
+      "title": "Tier-Armbänder & -Armreifen",
+      "handle": "tier-schmuck-armbaender",
+      "url": "/collections/tier-schmuck-armbaender",
+      "templateSuffix": null,
+      "productsCount": 29,
+      "seo": {
+        "title": "Tier-Armbänder & -Armreifen online kaufen | LuxeStyle CH",
+        "description": "Tier-Armbänder & -Armreifen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668582791",
+        "title": "Tier-Schmuck",
+        "handle": "tier-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668681095",
+      "title": "Punk-Armbänder & -Armreifen",
+      "handle": "punk-gothic-schmuck-armbaender",
+      "url": "/collections/punk-gothic-schmuck-armbaender",
+      "templateSuffix": null,
+      "productsCount": 20,
+      "seo": {
+        "title": "Punk-Armbänder & -Armreifen online kaufen | LuxeStyle CH",
+        "description": "Punk-Armbänder & -Armreifen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668648327",
+        "title": "Punk-, Gothic- & Hip-Hop-Schmuck",
+        "handle": "punk-gothic-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668812167",
+      "title": "Vintage-Armbänder & -Armreifen",
+      "handle": "vintage-retro-schmuck-armbaender",
+      "url": "/collections/vintage-retro-schmuck-armbaender",
+      "templateSuffix": null,
+      "productsCount": 66,
+      "seo": {
+        "title": "Vintage-Armbänder & -Armreifen online kaufen | LuxeStyle CH",
+        "description": "Vintage-Armbänder & -Armreifen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668779399",
+        "title": "Vintage- & Retro-Schmuck",
+        "handle": "vintage-retro-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668844935",
+      "title": "Vintage-Ringe",
+      "handle": "vintage-retro-schmuck-ringe",
+      "url": "/collections/vintage-retro-schmuck-ringe",
+      "templateSuffix": null,
+      "productsCount": 40,
+      "seo": {
+        "title": "Vintage-Ringe online kaufen | LuxeStyle CH",
+        "description": "Vintage-Ringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668779399",
+        "title": "Vintage- & Retro-Schmuck",
+        "handle": "vintage-retro-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668877703",
+      "title": "Vintage-Ohrringe",
+      "handle": "vintage-retro-schmuck-ohrringe",
+      "url": "/collections/vintage-retro-schmuck-ohrringe",
+      "templateSuffix": null,
+      "productsCount": 34,
+      "seo": {
+        "title": "Vintage-Ohrringe online kaufen | LuxeStyle CH",
+        "description": "Vintage-Ohrringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668779399",
+        "title": "Vintage- & Retro-Schmuck",
+        "handle": "vintage-retro-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668910471",
+      "title": "Vintage mit Zirkonia & Strass",
+      "handle": "vintage-retro-schmuck-zirkonia",
+      "url": "/collections/vintage-retro-schmuck-zirkonia",
+      "templateSuffix": null,
+      "productsCount": 22,
+      "seo": {
+        "title": "Vintage mit Zirkonia & Strass online kaufen | LuxeStyle CH",
+        "description": "Vintage mit Zirkonia & Strass online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668779399",
+        "title": "Vintage- & Retro-Schmuck",
+        "handle": "vintage-retro-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755668943239",
+      "title": "Vintage aus Edelstahl & Titan",
+      "handle": "vintage-retro-schmuck-stahl",
+      "url": "/collections/vintage-retro-schmuck-stahl",
+      "templateSuffix": null,
+      "productsCount": 24,
+      "seo": {
+        "title": "Vintage aus Edelstahl & Titan online kaufen | LuxeStyle CH",
+        "description": "Vintage aus Edelstahl & Titan online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755668779399",
+        "title": "Vintage- & Retro-Schmuck",
+        "handle": "vintage-retro-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755669041543",
+      "title": "Minimalistische Armbänder",
+      "handle": "minimalistischer-schmuck-armbaender",
+      "url": "/collections/minimalistischer-schmuck-armbaender",
+      "templateSuffix": null,
+      "productsCount": 32,
+      "seo": {
+        "title": "Minimalistische Armbänder online kaufen | LuxeStyle CH",
+        "description": "Minimalistische Armbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755669008775",
+        "title": "Minimalistischer Schmuck",
+        "handle": "minimalistischer-schmuck"
+      },
+      "unterfilter": null
+    },
+    {
+      "id": "gid://shopify/Collection/755669074311",
+      "title": "Minimalistische Ringe",
+      "handle": "minimalistischer-schmuck-ringe",
+      "url": "/collections/minimalistischer-schmuck-ringe",
+      "templateSuffix": null,
+      "productsCount": 22,
+      "seo": {
+        "title": "Minimalistische Ringe online kaufen | LuxeStyle CH",
+        "description": "Minimalistische Ringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      },
+      "parent": {
+        "id": "gid://shopify/Collection/755669008775",
+        "title": "Minimalistischer Schmuck",
+        "handle": "minimalistischer-schmuck"
+      },
+      "unterfilter": null
+    }
+  ],
+  "validation": {
+    "branchCollectionsRead": 67,
+    "parentsWithUnterfilter": 11,
+    "referencedChildCount": 31,
+    "allReferencesComplete": true,
+    "allChildIdsMatchParentLists": true,
+    "allChildBacklinksMatch": true,
+    "allChildrenHaveNoFurtherUnterfilter": true,
+    "rootAndDirectChildrenMetafieldsEmpty": true
+  }
+}

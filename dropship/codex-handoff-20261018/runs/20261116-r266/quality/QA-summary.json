@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "scope": "Begrenzte Prüfung des unveröffentlichten R266-Entwurfs; keine Live-Veröffentlichung durch QA.",
+  "themeId": "214169584007",
+  "themeRole": "unpublished",
+  "finalCommit": "801c1d508fbdda98a542d19fffa65bd6fa5f4e48",
+  "reviewedAtUTC": "2026-11-16T18:51:00.870494+00:00",
+  "finalVisual": {
+    "status": "PASS",
+    "freshTopLevelNavigations": 1,
+    "viewport": "390x844",
+    "documentWidth": 390,
+    "titlesChecked": 10,
+    "titleArrowOverlaps": 0,
+    "clippedTitles": 0,
+    "categoryImagesLoaded": true,
+    "legacyCollageFallbackVerified": true
+  },
+  "functionalEvidence": {
+    "status": "PASS",
+    "testedCommit": "ee4b0b8c688bd97bc84542fdcdfad39e366d63c4",
+    "retainedAfterFinalChange": "Nur mobile Pfeilposition und Titelumbruch wurden danach geändert.",
+    "rootMobileAndDesktop": "PASS",
+    "deepLeafNoOverflow": "PASS",
+    "page2Compact": "PASS",
+    "directFilterCompact": "PASS",
+    "ajaxFilterCompact": "PASS",
+    "ajaxClearRestores10Tiles": "PASS",
+    "noticeTypography": "14px / 20.3px",
+    "noticeSVG": "Echte monochrome SVG-Pfade, dekorativ verborgen",
+    "noticeControls": "44x44px",
+    "navigationHierarchy": "10/6/2/0 Kinder und Elternlinks im ersten Vier-Seiten-Test bestätigt; mittlere Ebenen unverändert."
+  },
+  "openBlockingFindings": [],
+  "remoteWrites": 0,
+  "evidence": {
+    "finalVisualReport": "/dev/shm/luxestyle-review/r266/quality/draft-preview-20261116T184949Z/report.json",
+    "mobileScreenshot": "/dev/shm/luxestyle-review/r266/quality/draft-preview-20261116T184949Z/schmuck-mobile-390x844.png",
+    "mobileFullScreenshot": "/dev/shm/luxestyle-review/r266/quality/draft-preview-20261116T184949Z/schmuck-mobile-full.png",
+    "categorySectionScreenshot": "/dev/shm/luxestyle-review/r266/quality/draft-preview-20261116T184949Z/schmuck-mobile-category-section.png",
+    "functionalRetestReport": "/dev/shm/luxestyle-review/r266/quality/draft-preview-20261116T184545Z/report.json",
+    "fourLevelNavigationReport": "/dev/shm/luxestyle-review/r266/quality/draft-preview-20261116T183649Z/report.json"
+  },
+  "evidenceSHA256": {
+    "finalVisualReport": "cdfe7cd948cac93c2fc316fe343d3d61c64e161bc9fb1ae3ef5ec5dfb2307556",
+    "mobileScreenshot": "160ed12456ddcdd3f073309ebe9cd1cb7528aa963acb0d3936531b56e17ddcf0",
+    "mobileFullScreenshot": "4b218671a62cc1b7d03ac92f50dc98e9c77c11610be2b114cbf4ab2ad9cf4fac",
+    "categorySectionScreenshot": "966ad11111331ea8308932a3621fd843433ffb3f8640782d52617c6db90dd77c",
+    "functionalRetestReport": "3fca7edc7717827a322200336e2b4a8d855cea08b585c3de0eaf6067c23cec6b",
+    "fourLevelNavigationReport": "4afe66a34d7a647ed120d52444a503e968b313874a1e3a4f48d8dc5bd3465fab"
+  },
+  "limits": [
+    "Keine vollständige Katalogprüfung; keine Aussage zu sämtlichen Merchant-Center-Fehlern.",
+    "Shopify Theme Check war lokal nicht verfügbar. Quelle und begrenzte Browserfälle wurden geprüft.",
+    "Draft-Screenshots enthalten die Shopify-Vorschauleiste; nicht sichtbare Produktbilder im Vollseitenbild können noch lazy geladen sein."
+  ]
+}

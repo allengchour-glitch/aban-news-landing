@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-11-16T18:08:59Z",
+  "linkName": "lux",
+  "brandId": "6227837",
+  "label": "Luxestyle",
+  "timezone": "Europe/Zurich",
+  "channels": {
+    "facebookData": "1049840534888592",
+    "instagramData": "luxestyle.ch",
+    "threadsData": "luxestyle.ch",
+    "tiktokData": "luxestyle.ch",
+    "pinterestData": "luxestyleCH",
+    "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA"
+  },
+  "allExpectedMatch": true,
+  "source": "native Metricool getBrandSettings; filtered to LuxeStyle"
+}

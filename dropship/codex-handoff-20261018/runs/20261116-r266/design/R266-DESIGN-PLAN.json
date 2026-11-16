@@ -1,0 +1,104 @@
+{
+  "run": "R266",
+  "designWriteState": "DRAFT_SAVED",
+  "publicationState": "UNPUBLISHED",
+  "fontIconState": "CONFIRMED",
+  "previewState": "CONFIRMED",
+  "themeScope": {
+    "themeId": "214169584007",
+    "role": "UNPUBLISHED",
+    "finalCommit": "801c1d508fbdda98a542d19fffa65bd6fa5f4e48",
+    "liveMainChanged": false
+  },
+  "designFileCount": 15,
+  "files": [
+    {
+      "path": "templates/collection.lxwelten.json",
+      "sha256": "21017ccdbb59c917dd0f37f98b7abd90805d30444c1dd4345129745f0c9f8056",
+      "originalSHA256": null
+    },
+    {
+      "path": "templates/collection.json",
+      "sha256": "21017ccdbb59c917dd0f37f98b7abd90805d30444c1dd4345129745f0c9f8056",
+      "originalSHA256": "66b1a1a8b02fd03297bb2271e0635126c0ba5b995878e91873fe52e34958e4d8"
+    },
+    {
+      "path": "snippets/lx-kopf-pfad.liquid",
+      "sha256": "8f73e3eaddfe7489d7e7c5c57ea3438f15ef3bcdf1109d4fcd9d7d80ac983c9f",
+      "originalSHA256": "72bd3babf1c403e3fb4e836439c1eedc74fc106397acccdde2dfb88b7b0eeb9e"
+    },
+    {
+      "path": "snippets/lx-collection-welten-card.liquid",
+      "sha256": "9c085ff9a067c46f5bc3944bb830a49933003953c667ffd6d0151c9c3c529c1d",
+      "originalSHA256": null
+    },
+    {
+      "path": "sections/lx-collection-welten.liquid",
+      "sha256": "c3a927bd08287e207461fcf5ac2c83796222e636156e761bce09ed3ee6b1aed2",
+      "originalSHA256": null
+    },
+    {
+      "path": "sections/lx-collection-details.liquid",
+      "sha256": "6cd148bc41431f45e7f70d62c649cdf39f62dccc2c7fae6eeab6c7ae7498b5c4",
+      "originalSHA256": null
+    },
+    {
+      "path": "sections/header-group.json",
+      "sha256": "628c0d64676623578393cf56afbddddfc0aae2a26ff3ce2f8274cf5cce82bcd3",
+      "originalSHA256": "be8d71416a66b2dcd85e99e6b15b42243693b313e299a7d25c9cdf96231a517f"
+    },
+    {
+      "path": "sections/header-announcements.liquid",
+      "sha256": "4a8abd29a452f8b4840990311b701ecb5fc1f2f33f534c60a7101ab7b0f4a9a4",
+      "originalSHA256": "de51c916ba6e89db9778a2a62ec3bd36a4538bd9e991e9380c2f44f717df7e05"
+    },
+    {
+      "path": "locales/fr.schema.json",
+      "sha256": "8fd575acbea6ad2617e7f5945f3cffdacc0aa09e4449617c3bc60f65e229e9c0",
+      "originalSHA256": "c8f26b748470a32a82cd10bcb7a81776eaf6c5920ffcb7f1a8b994a0462c2c87"
+    },
+    {
+      "path": "locales/fr.json",
+      "sha256": "a484f950c840bb214861d9979993e0e8b19372a293fbae75e01990bbcd946372",
+      "originalSHA256": "00d43cd8d2c25c3bef40ae2a712f13356a5e247354eb5376da2b6c907b48f850"
+    },
+    {
+      "path": "locales/en.default.schema.json",
+      "sha256": "2be6e52a5eef283262a973e6fc3f15f8d585449b6536aa50bbf98aa3801914ae",
+      "originalSHA256": "db16d74a3d2dbd3879546cba0d3fe2549c83efdafb10272418199840364cec70"
+    },
+    {
+      "path": "locales/en.default.json",
+      "sha256": "43aca3597df1b2ebecc8dda6dc079becbb61c1bc9e8c8b3e1ba1c65fcf3fe84c",
+      "originalSHA256": "28e29ae65ca6c072d563e802510ae1eeaeb4906556e84d99a969cb8385aa5d53"
+    },
+    {
+      "path": "locales/de.schema.json",
+      "sha256": "92ee05ce0f1c9e32d531a9bd5ca3bff04b3f6fb5ff4cd203d77aba4c98be7ac6",
+      "originalSHA256": "2a66ca590f39c983452360067c4fa8a6ab9c1e7aa651805617bfe7f2437e68ba"
+    },
+    {
+      "path": "locales/de.json",
+      "sha256": "84a7634506f51e731c62a9a0da959e332cd91bf7dbe270073e569e4c490b9d17",
+      "originalSHA256": "9b133a4c0d7c4a5f60b555082d4127479569590bd970ee259b66438e41278013"
+    },
+    {
+      "path": "blocks/_announcement.liquid",
+      "sha256": "b0322fb923335387041cdd9f4931327463f3bee093285bf71c9cd33a91389a28",
+      "originalSHA256": "51cfa7f073d0dfe52119ad943eb0b2941df8d2ddc6e96ed0c87b5b6f00121518"
+    }
+  ],
+  "existingCollections": {
+    "menu": 67,
+    "additionalReferenceChildren": 31,
+    "total": 98,
+    "all98PublicHTTPVerified": false
+  },
+  "limitations": [
+    "UNPUBLISHED: Die Shopify-Schnittstelle hatte die Veröffentlichung mit publish_refused und «Only agent-created themes can be published here» abgelehnt. Kein Umgehen der Sperre und kein blinder erneuter Versuch.",
+    "Die Prüfung betrifft diesen Designblock; sie belegt weder einen vollständig geprüften Katalog noch null Merchant-Center-Fehler oder höhere Verkäufe.",
+    "Die Roh-HTML-Dateien, Netzwerkprotokolle und Screenshots bleiben lokale Arbeitsbelege; im Repository-Paket liegen nur freigegebene Quellen und kompakte Nachweise. Lokale Screenshot-Pfade sind keine öffentlichen Medien-URLs.",
+    "Die Übergabe ist kein Empfangsbeleg für Claude. Alte Ton-, Rechte-, Master- und Publikationsregister-Blocker bleiben bestehen."
+  ],
+  "nextStep": "Die geprüfte Entwurfsversion über den legitimen Shopify-Editor veröffentlichen lassen und danach die Live-Ansicht gezielt gegenprüfen. Vorher den R266-Handoff mit frischen Datei-SHAs und geprüftem Ergänzungs-Diff speichern und alle geschriebenen Dateien exakt zurücklesen; kein neuer Publisher oder Frequenzwechsel."
+}

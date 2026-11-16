@@ -1,0 +1,2208 @@
+{
+  "reviewedAtUtc": "2026-11-16T18:13:19.989087+00:00",
+  "reviewer": "independent offline verifier child",
+  "scope": "eight saved R266 daily Metricool responses and supplied R259 flat baseline only; no network/API/metrics/account writes",
+  "brandId": "6227837",
+  "timezone": "Europe/Zurich",
+  "activeDefinition": "draft=false AND global autoPublish=true AND provider.status=PENDING; exclude any delivered channel autoPublish=false and concrete delivered errors. Missing channel AP flags separately disclosed. This is scheduler eligibility, not creative/product/rights/audio approval.",
+  "readEvidence": [
+    {
+      "file": "plan-2026-11-16.json",
+      "sha256": "088e235f76964a6b603109404412ddd99b711bf58f60ffc26763c73c4c36f57d",
+      "from": "2026-11-16T00:00:00+01:00",
+      "to": "2026-11-16T23:59:59+01:00",
+      "objects": 8
+    },
+    {
+      "file": "plan-2026-11-17.json",
+      "sha256": "37a7e49d206abedb095c4497866794cb336bd814faea903323e0200df2918e1c",
+      "from": "2026-11-17T00:00:00+01:00",
+      "to": "2026-11-17T23:59:59+01:00",
+      "objects": 9
+    },
+    {
+      "file": "plan-2026-11-18.json",
+      "sha256": "8068f1e340701798985b6e562999db1d21abef37516dcfe24c261c8fb530de08",
+      "from": "2026-11-18T00:00:00+01:00",
+      "to": "2026-11-18T23:59:59+01:00",
+      "objects": 8
+    },
+    {
+      "file": "plan-2026-11-19.json",
+      "sha256": "81544d8777fdf7d2ac0f500eb55c9e8c5b4b51ea6dd1d02bacdfb4225e671bba",
+      "from": "2026-11-19T00:00:00+01:00",
+      "to": "2026-11-19T23:59:59+01:00",
+      "objects": 5
+    },
+    {
+      "file": "plan-2026-11-20.json",
+      "sha256": "65fe889a8f212eeaf08a35309d5640511ff594e4f5ccffd7c184b39f2c7da356",
+      "from": "2026-11-20T00:00:00+01:00",
+      "to": "2026-11-20T23:59:59+01:00",
+      "objects": 6
+    },
+    {
+      "file": "plan-2026-11-21.json",
+      "sha256": "9726ce96641e26d6eb8a3867b0583de8c7a3074dc27fb1b217230e2b9e0c3544",
+      "from": "2026-11-21T00:00:00+01:00",
+      "to": "2026-11-21T23:59:59+01:00",
+      "objects": 7
+    },
+    {
+      "file": "plan-2026-11-22.json",
+      "sha256": "e0f97b37b0fc96c0551f482277fc28fd4fe9305f9a3651acd0e7aedb98a39937",
+      "from": "2026-11-22T00:00:00+01:00",
+      "to": "2026-11-22T23:59:59+01:00",
+      "objects": 7
+    },
+    {
+      "file": "plan-2026-11-23.json",
+      "sha256": "2a3882343bf14c0158b28786bb695abe9a89b71769f9cb49f4b447087cea67c9",
+      "from": "2026-11-23T00:00:00+01:00",
+      "to": "2026-11-23T23:59:59+01:00",
+      "objects": 7
+    }
+  ],
+  "unknownReads": [],
+  "allSavedContext": {
+    "objects": 57,
+    "uniquePostIds": 57,
+    "uniqueUUIDs": 57,
+    "missingPostIds": 0,
+    "missingUUIDs": 0,
+    "duplicateUUIDs": [],
+    "duplicatePostIds": [],
+    "providerStates": {
+      "PUBLISHED": 5,
+      "PENDING": 65,
+      "PUBLISHING": 1
+    },
+    "postDraftCounts": {
+      "False": 55,
+      "True": 2
+    },
+    "postGlobalAPCounts": {
+      "True": 55,
+      "False": 2
+    },
+    "sourceUUIDTypes": {
+      "str": 57
+    },
+    "unknownPublicationTimes": []
+  },
+  "rollingWindow": {
+    "name": "rolling_seven_days",
+    "startInclusive": "2026-11-16T19:08:59+01:00",
+    "endExclusive": "2026-11-23T19:08:59+01:00",
+    "objectsDelivered": 48,
+    "uniqueUUIDs": 48,
+    "providerStatesDelivered": {
+      "PENDING": 59
+    },
+    "activeScheduledObjects": 48,
+    "activeScheduledChannelStates": 59,
+    "activeByChannel": {
+      "facebook": 11,
+      "instagram": 11,
+      "threads": 8,
+      "pinterest": 7,
+      "tiktok": 14,
+      "youtube": 8
+    },
+    "activeChannelsWithMissingAPFlag": {
+      "pinterest": 7,
+      "threads": 8,
+      "facebook": 11,
+      "tiktok": 14,
+      "youtube": 8
+    },
+    "dailyCoverage": [
+      {
+        "day": "2026-11-16",
+        "observedWindowFrom": "2026-11-16T19:08:59+01:00",
+        "observedWindowToExclusive": "2026-11-17T00:00:00+01:00",
+        "partialDay": true,
+        "objects": 1,
+        "providerCountsDelivered": {
+          "pinterest": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 0,
+          "instagram": 0,
+          "threads": 0,
+          "pinterest": 1,
+          "tiktok": 0,
+          "youtube": 0
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": [
+          "facebook",
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ]
+      },
+      {
+        "day": "2026-11-17",
+        "observedWindowFrom": "2026-11-17T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-18T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 9,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 3,
+          "youtube": 2
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 3,
+          "youtube": 2
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-18",
+        "observedWindowFrom": "2026-11-18T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-19T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 8,
+        "providerCountsDelivered": {
+          "threads": 2,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-19",
+        "observedWindowFrom": "2026-11-19T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-20T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 5,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 1,
+          "instagram": 1,
+          "pinterest": 1,
+          "tiktok": 1,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 1,
+          "instagram": 1,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 1,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-20",
+        "observedWindowFrom": "2026-11-20T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-21T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 6,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 1,
+          "instagram": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 1,
+          "instagram": 1,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-21",
+        "observedWindowFrom": "2026-11-21T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-22T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 7,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-22",
+        "observedWindowFrom": "2026-11-22T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-23T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 7,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-23",
+        "observedWindowFrom": "2026-11-23T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-23T19:08:59+01:00",
+        "partialDay": true,
+        "objects": 5,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 1,
+          "instagram": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 1,
+          "instagram": 1,
+          "threads": 1,
+          "pinterest": 0,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": [
+          "pinterest"
+        ]
+      }
+    ],
+    "duplicateGroupsAllDeliveredFuture": {
+      "exactMediaURLByChannel": [],
+      "querylessMediaURLByChannel": [],
+      "exactTextByChannel": [],
+      "whitespaceNormalisedTextByChannel": [],
+      "sameSlotByChannel": []
+    },
+    "duplicateGroupsActiveOnly": {
+      "exactMediaURLByChannel": [],
+      "querylessMediaURLByChannel": [],
+      "exactTextByChannel": [],
+      "whitespaceNormalisedTextByChannel": [],
+      "sameSlotByChannel": []
+    }
+  },
+  "futureThroughCalendarEnd": {
+    "name": "now_through_full_23Nov",
+    "startInclusive": "2026-11-16T19:08:59+01:00",
+    "endExclusive": "2026-11-24T00:00:00+01:00",
+    "objectsDelivered": 50,
+    "uniqueUUIDs": 50,
+    "providerStatesDelivered": {
+      "PENDING": 62
+    },
+    "activeScheduledObjects": 50,
+    "activeScheduledChannelStates": 62,
+    "activeByChannel": {
+      "facebook": 12,
+      "instagram": 12,
+      "threads": 8,
+      "pinterest": 8,
+      "tiktok": 14,
+      "youtube": 8
+    },
+    "activeChannelsWithMissingAPFlag": {
+      "pinterest": 8,
+      "threads": 8,
+      "facebook": 12,
+      "tiktok": 14,
+      "youtube": 8
+    },
+    "dailyCoverage": [
+      {
+        "day": "2026-11-16",
+        "observedWindowFrom": "2026-11-16T19:08:59+01:00",
+        "observedWindowToExclusive": "2026-11-17T00:00:00+01:00",
+        "partialDay": true,
+        "objects": 1,
+        "providerCountsDelivered": {
+          "pinterest": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 0,
+          "instagram": 0,
+          "threads": 0,
+          "pinterest": 1,
+          "tiktok": 0,
+          "youtube": 0
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": [
+          "facebook",
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ]
+      },
+      {
+        "day": "2026-11-17",
+        "observedWindowFrom": "2026-11-17T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-18T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 9,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 3,
+          "youtube": 2
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 3,
+          "youtube": 2
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-18",
+        "observedWindowFrom": "2026-11-18T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-19T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 8,
+        "providerCountsDelivered": {
+          "threads": 2,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-19",
+        "observedWindowFrom": "2026-11-19T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-20T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 5,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 1,
+          "instagram": 1,
+          "pinterest": 1,
+          "tiktok": 1,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 1,
+          "instagram": 1,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 1,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-20",
+        "observedWindowFrom": "2026-11-20T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-21T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 6,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 1,
+          "instagram": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 1,
+          "instagram": 1,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-21",
+        "observedWindowFrom": "2026-11-21T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-22T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 7,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-22",
+        "observedWindowFrom": "2026-11-22T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-23T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 7,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-23",
+        "observedWindowFrom": "2026-11-23T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-24T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 7,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      }
+    ],
+    "duplicateGroupsAllDeliveredFuture": {
+      "exactMediaURLByChannel": [],
+      "querylessMediaURLByChannel": [],
+      "exactTextByChannel": [],
+      "whitespaceNormalisedTextByChannel": [],
+      "sameSlotByChannel": []
+    },
+    "duplicateGroupsActiveOnly": {
+      "exactMediaURLByChannel": [],
+      "querylessMediaURLByChannel": [],
+      "exactTextByChannel": [],
+      "whitespaceNormalisedTextByChannel": [],
+      "sameSlotByChannel": []
+    }
+  },
+  "nextSevenFullCalendarDays": {
+    "name": "17_to_23Nov_complete_dates",
+    "startInclusive": "2026-11-17T00:00:00+01:00",
+    "endExclusive": "2026-11-24T00:00:00+01:00",
+    "objectsDelivered": 49,
+    "uniqueUUIDs": 49,
+    "providerStatesDelivered": {
+      "PENDING": 61
+    },
+    "activeScheduledObjects": 49,
+    "activeScheduledChannelStates": 61,
+    "activeByChannel": {
+      "facebook": 12,
+      "instagram": 12,
+      "threads": 8,
+      "pinterest": 7,
+      "tiktok": 14,
+      "youtube": 8
+    },
+    "activeChannelsWithMissingAPFlag": {
+      "threads": 8,
+      "facebook": 12,
+      "pinterest": 7,
+      "tiktok": 14,
+      "youtube": 8
+    },
+    "dailyCoverage": [
+      {
+        "day": "2026-11-17",
+        "observedWindowFrom": "2026-11-17T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-18T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 9,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 3,
+          "youtube": 2
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 3,
+          "youtube": 2
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-18",
+        "observedWindowFrom": "2026-11-18T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-19T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 8,
+        "providerCountsDelivered": {
+          "threads": 2,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-19",
+        "observedWindowFrom": "2026-11-19T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-20T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 5,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 1,
+          "instagram": 1,
+          "pinterest": 1,
+          "tiktok": 1,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 1,
+          "instagram": 1,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 1,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-20",
+        "observedWindowFrom": "2026-11-20T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-21T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 6,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 1,
+          "instagram": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 1,
+          "instagram": 1,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-21",
+        "observedWindowFrom": "2026-11-21T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-22T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 7,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-22",
+        "observedWindowFrom": "2026-11-22T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-23T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 7,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      },
+      {
+        "day": "2026-11-23",
+        "observedWindowFrom": "2026-11-23T00:00:00+01:00",
+        "observedWindowToExclusive": "2026-11-24T00:00:00+01:00",
+        "partialDay": false,
+        "objects": 7,
+        "providerCountsDelivered": {
+          "threads": 1,
+          "facebook": 2,
+          "instagram": 2,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "activeScheduledChannels": {
+          "facebook": 2,
+          "instagram": 2,
+          "threads": 1,
+          "pinterest": 1,
+          "tiktok": 2,
+          "youtube": 1
+        },
+        "channelsWithNoActiveScheduleInDeliveredWindow": []
+      }
+    ],
+    "duplicateGroupsAllDeliveredFuture": {
+      "exactMediaURLByChannel": [],
+      "querylessMediaURLByChannel": [],
+      "exactTextByChannel": [],
+      "whitespaceNormalisedTextByChannel": [],
+      "sameSlotByChannel": []
+    },
+    "duplicateGroupsActiveOnly": {
+      "exactMediaURLByChannel": [],
+      "querylessMediaURLByChannel": [],
+      "exactTextByChannel": [],
+      "whitespaceNormalisedTextByChannel": [],
+      "sameSlotByChannel": []
+    }
+  },
+  "allPendingExcludedFromActive": [
+    {
+      "postId": "428827820",
+      "uuid": "2242731246724795766",
+      "when": "2026-11-16T14:00:00+01:00",
+      "network": "instagram",
+      "status": "PENDING",
+      "platformId": null,
+      "reasons": [
+        "draft_true_or_missing",
+        "global_AP_not_true",
+        "channel_AP_false"
+      ]
+    },
+    {
+      "postId": "429731963",
+      "uuid": "-1463494076488727798",
+      "when": "2026-11-16T18:30:00+01:00",
+      "network": "tiktok",
+      "status": "PENDING",
+      "platformId": null,
+      "reasons": [
+        "draft_true_or_missing",
+        "global_AP_not_true"
+      ]
+    },
+    {
+      "postId": "429731963",
+      "uuid": "-1463494076488727798",
+      "when": "2026-11-16T18:30:00+01:00",
+      "network": "youtube",
+      "status": "PENDING",
+      "platformId": null,
+      "reasons": [
+        "draft_true_or_missing",
+        "global_AP_not_true"
+      ]
+    }
+  ],
+  "concreteDeliveredErrors": [],
+  "todayAlreadyDue": {
+    "cutoff": "2026-11-16T19:08:59+01:00",
+    "objects": 7,
+    "providerStateCounts": {
+      "PUBLISHED": 5,
+      "PENDING": 3,
+      "PUBLISHING": 1
+    },
+    "confirmedPublishedChannelStates": [
+      {
+        "postId": "424392566",
+        "uuid": "-8080777271331700055",
+        "when": "2026-11-16T11:00:00+01:00",
+        "network": "threads",
+        "status": "PUBLISHED",
+        "platformId": "18077184107480436"
+      },
+      {
+        "postId": "424392702",
+        "uuid": "7991040995405613204",
+        "when": "2026-11-16T16:00:00+01:00",
+        "network": "facebook",
+        "status": "PUBLISHED",
+        "platformId": "1049840534888592_122153622417350792"
+      },
+      {
+        "postId": "424392702",
+        "uuid": "7991040995405613204",
+        "when": "2026-11-16T16:00:00+01:00",
+        "network": "instagram",
+        "status": "PUBLISHED",
+        "platformId": "https://www.instagram.com/p/DfzospyCESH/"
+      },
+      {
+        "postId": "429732386",
+        "uuid": "-580082399036486516",
+        "when": "2026-11-16T18:00:00+01:00",
+        "network": "tiktok",
+        "status": "PUBLISHED",
+        "platformId": "7708818024698072353"
+      },
+      {
+        "postId": "430111296",
+        "uuid": "6680239273933357186",
+        "when": "2026-11-16T19:00:00+01:00",
+        "network": "facebook",
+        "status": "PUBLISHED",
+        "platformId": "1130119220008240"
+      }
+    ],
+    "deliveredErrors": [],
+    "otherUnconfirmedChannelStates": [
+      {
+        "postId": "428827820",
+        "uuid": "2242731246724795766",
+        "when": "2026-11-16T14:00:00+01:00",
+        "network": "instagram",
+        "status": "PENDING",
+        "platformId": null,
+        "draft": true,
+        "globalAP": false,
+        "channelAP": "explicit_false"
+      },
+      {
+        "postId": "429731963",
+        "uuid": "-1463494076488727798",
+        "when": "2026-11-16T18:30:00+01:00",
+        "network": "tiktok",
+        "status": "PENDING",
+        "platformId": null,
+        "draft": true,
+        "globalAP": false,
+        "channelAP": "not_delivered"
+      },
+      {
+        "postId": "429731963",
+        "uuid": "-1463494076488727798",
+        "when": "2026-11-16T18:30:00+01:00",
+        "network": "youtube",
+        "status": "PENDING",
+        "platformId": null,
+        "draft": true,
+        "globalAP": false,
+        "channelAP": "not_delivered"
+      },
+      {
+        "postId": "430111185",
+        "uuid": "4156060813550767248",
+        "when": "2026-11-16T19:00:00+01:00",
+        "network": "instagram",
+        "status": "PUBLISHING",
+        "platformId": null,
+        "draft": false,
+        "globalAP": true,
+        "channelAP": "explicit_true"
+      }
+    ],
+    "meaning": "Existing supplied objects; reviewer did not publish. PUBLISHING is inflight, no completion proof and no blind retry."
+  },
+  "comparisonR259": {
+    "sourceSha256": "32ee39c7179fd39ded29a7fcefadeeb1f031377c4e475e0ce94f89099092131d",
+    "baselineObjects": 57,
+    "baselineUniqueUUIDs": 57,
+    "currentUniqueUUIDs": 57,
+    "commonUUIDs": 57,
+    "newCurrentUUIDs": [],
+    "notDeliveredNowUUIDs": [],
+    "identityFlagsStateOrTimeChanges": [
+      {
+        "uuid": "-2465489348702877951",
+        "previousPostId": "430115445",
+        "currentPostId": "430174204",
+        "changes": {
+          "id": {
+            "before": "430115445",
+            "now": "430174204"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "-3668679867663038577",
+        "previousPostId": "430141753",
+        "currentPostId": "430172417",
+        "changes": {
+          "id": {
+            "before": "430141753",
+            "now": "430172417"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "-3731207601091163105",
+        "previousPostId": "430142769",
+        "currentPostId": "430173224",
+        "changes": {
+          "id": {
+            "before": "430142769",
+            "now": "430173224"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "-5744419852756302478",
+        "previousPostId": "430115814",
+        "currentPostId": "430174912",
+        "changes": {
+          "id": {
+            "before": "430115814",
+            "now": "430174912"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          },
+          "channels": {
+            "instagram": {
+              "effectiveDeliveredChannelAPFlag": {
+                "before": "explicit_false",
+                "now": "explicit_true"
+              }
+            }
+          }
+        }
+      },
+      {
+        "uuid": "-580082399036486516",
+        "previousPostId": "429732386",
+        "currentPostId": "429732386",
+        "changes": {
+          "channels": {
+            "tiktok": {
+              "status": {
+                "before": "PENDING",
+                "now": "PUBLISHED"
+              },
+              "id": {
+                "before": null,
+                "now": "7708818024698072353"
+              },
+              "detailedStatus": {
+                "beforeSha256": "331551b0de4157c9abc7b72b61b96a2a928fd6db3cdf029c1fc44b08ad633aa6",
+                "nowSha256": "2ef42ec21d9300dd21ae3c7ca3711806cce3003fa4edafd22ee744fe86599799"
+              }
+            }
+          }
+        }
+      },
+      {
+        "uuid": "-8305910546945982140",
+        "previousPostId": "430142510",
+        "currentPostId": "430172877",
+        "changes": {
+          "id": {
+            "before": "430142510",
+            "now": "430172877"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "-8339089096074181290",
+        "previousPostId": "430142367",
+        "currentPostId": "430172686",
+        "changes": {
+          "id": {
+            "before": "430142367",
+            "now": "430172686"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "-9065821347695736937",
+        "previousPostId": "430115754",
+        "currentPostId": "430174735",
+        "changes": {
+          "id": {
+            "before": "430115754",
+            "now": "430174735"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "3079092356396699209",
+        "previousPostId": "430115518",
+        "currentPostId": "430174384",
+        "changes": {
+          "id": {
+            "before": "430115518",
+            "now": "430174384"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          },
+          "channels": {
+            "instagram": {
+              "effectiveDeliveredChannelAPFlag": {
+                "before": "explicit_false",
+                "now": "explicit_true"
+              }
+            }
+          }
+        }
+      },
+      {
+        "uuid": "326333773610569562",
+        "previousPostId": "430115974",
+        "currentPostId": "430178878",
+        "changes": {
+          "id": {
+            "before": "430115974",
+            "now": "430178878"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "3542888520035747573",
+        "previousPostId": "430115901",
+        "currentPostId": "430178720",
+        "changes": {
+          "id": {
+            "before": "430115901",
+            "now": "430178720"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "4156060813550767248",
+        "previousPostId": "430111185",
+        "currentPostId": "430111185",
+        "changes": {
+          "channels": {
+            "instagram": {
+              "status": {
+                "before": "PENDING",
+                "now": "PUBLISHING"
+              },
+              "detailedStatus": {
+                "beforeSha256": "331551b0de4157c9abc7b72b61b96a2a928fd6db3cdf029c1fc44b08ad633aa6",
+                "nowSha256": "a06dfb75557ac13fc62ce173e68167130251cb1abfd5c39c8dd9443b26b7edc4"
+              }
+            }
+          }
+        }
+      },
+      {
+        "uuid": "4203099149753077097",
+        "previousPostId": "430115371",
+        "currentPostId": "430174037",
+        "changes": {
+          "id": {
+            "before": "430115371",
+            "now": "430174037"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "4659816415037836014",
+        "previousPostId": "430142174",
+        "currentPostId": "430172560",
+        "changes": {
+          "id": {
+            "before": "430142174",
+            "now": "430172560"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          },
+          "channels": {
+            "instagram": {
+              "effectiveDeliveredChannelAPFlag": {
+                "before": "explicit_false",
+                "now": "explicit_true"
+              }
+            }
+          }
+        }
+      },
+      {
+        "uuid": "6126976967238501889",
+        "previousPostId": "430115683",
+        "currentPostId": "430174564",
+        "changes": {
+          "id": {
+            "before": "430115683",
+            "now": "430174564"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "6680239273933357186",
+        "previousPostId": "430111296",
+        "currentPostId": "430111296",
+        "changes": {
+          "channels": {
+            "facebook": {
+              "status": {
+                "before": "PENDING",
+                "now": "PUBLISHED"
+              },
+              "id": {
+                "before": null,
+                "now": "1130119220008240"
+              },
+              "detailedStatus": {
+                "beforeSha256": "331551b0de4157c9abc7b72b61b96a2a928fd6db3cdf029c1fc44b08ad633aa6",
+                "nowSha256": "2ef42ec21d9300dd21ae3c7ca3711806cce3003fa4edafd22ee744fe86599799"
+              }
+            }
+          }
+        }
+      },
+      {
+        "uuid": "733493005328404096",
+        "previousPostId": "430142949",
+        "currentPostId": "430173535",
+        "changes": {
+          "id": {
+            "before": "430142949",
+            "now": "430173535"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          }
+        }
+      },
+      {
+        "uuid": "7991040995405613204",
+        "previousPostId": "424392702",
+        "currentPostId": "424392702",
+        "changes": {
+          "channels": {
+            "facebook": {
+              "status": {
+                "before": "PENDING",
+                "now": "PUBLISHED"
+              },
+              "id": {
+                "before": null,
+                "now": "1049840534888592_122153622417350792"
+              },
+              "detailedStatus": {
+                "beforeSha256": "331551b0de4157c9abc7b72b61b96a2a928fd6db3cdf029c1fc44b08ad633aa6",
+                "nowSha256": "2ef42ec21d9300dd21ae3c7ca3711806cce3003fa4edafd22ee744fe86599799"
+              }
+            },
+            "instagram": {
+              "status": {
+                "before": "PENDING",
+                "now": "PUBLISHED"
+              },
+              "id": {
+                "before": null,
+                "now": "https://www.instagram.com/p/DfzospyCESH/"
+              },
+              "detailedStatus": {
+                "beforeSha256": "331551b0de4157c9abc7b72b61b96a2a928fd6db3cdf029c1fc44b08ad633aa6",
+                "nowSha256": "2ef42ec21d9300dd21ae3c7ca3711806cce3003fa4edafd22ee744fe86599799"
+              }
+            }
+          }
+        }
+      },
+      {
+        "uuid": "852070180004119115",
+        "previousPostId": "430116045",
+        "currentPostId": "430179052",
+        "changes": {
+          "id": {
+            "before": "430116045",
+            "now": "430179052"
+          },
+          "draft": {
+            "before": true,
+            "now": false
+          },
+          "autoPublish": {
+            "before": false,
+            "now": true
+          },
+          "channels": {
+            "instagram": {
+              "effectiveDeliveredChannelAPFlag": {
+                "before": "explicit_false",
+                "now": "explicit_true"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "windowWarning": "Supplied R259 flat file does not include its query request boundaries; compare matching UUIDs only. Missing outside actual shared window cannot be interpreted as deletion. Current rolling window and now-through-calendar-end have different final partial-day coverage.",
+    "draftFalseGlobalAPTrueReactivationCount": 15
+  },
+  "futureMusicConfigurationFields": [],
+  "audioConflictR259": "open; no rendered audio or rights audit performed; publication status and absence of music fields do not establish approval",
+  "actualMediaFileHashesAndFullMasterHistory": "unknown; URL fingerprints are comparisons only",
+  "ownPublicationsByReviewer": 0,
+  "nativeNetworkCallsByReviewer": 0,
+  "analyticsCallsByReviewer": 0,
+  "accountWritesByReviewer": 0,
+  "historicalQCHoldCountercheck": {
+    "sourceFileSha256": "aff388275a8b3157347179d06e8b5d59393f3e924a725bcb2d58eb8c2a84ccb2",
+    "ownConfirmedHoldEntries": 14,
+    "currentExactMediaURLMatches": 14,
+    "checks": [
+      {
+        "uuid": "-7002936161864562103",
+        "historicalBeforeHoldPostId": "429949375",
+        "historicalConfirmedHoldPostId": "430101963",
+        "currentPostId": "430111412",
+        "historicalProviderNetworks": [
+          "youtube"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d",
+        "historicQCReason": "Exact retained R253 media; nonempty full audio decode is all zero, no audible canonical music.",
+        "conservativeExclusionNetworks": [
+          "youtube"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "2172266762404316928",
+        "historicalBeforeHoldPostId": "429949477",
+        "historicalConfirmedHoldPostId": "430102295",
+        "currentPostId": "430111520",
+        "historicalProviderNetworks": [
+          "tiktok"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d",
+        "historicQCReason": "Exact retained R253 media; nonempty full audio decode is all zero, no audible canonical music.",
+        "conservativeExclusionNetworks": [
+          "tiktok"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "3963843144054620883",
+        "historicalBeforeHoldPostId": "429949772",
+        "historicalConfirmedHoldPostId": "430102388",
+        "currentPostId": "430111824",
+        "historicalProviderNetworks": [
+          "facebook",
+          "instagram"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "2edf38839954c4d8cc895984f85d7ba8e073af802d2cbb791c4f665618f3357d",
+        "historicQCReason": "Exact retained R253 media; nonempty full audio decode is all zero, no audible canonical music.",
+        "conservativeExclusionNetworks": [
+          "facebook",
+          "instagram"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "4156060813550767248",
+        "historicalBeforeHoldPostId": "429949059",
+        "historicalConfirmedHoldPostId": "430102466",
+        "currentPostId": "430111185",
+        "historicalProviderNetworks": [
+          "instagram"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+        "historicQCReason": "New 18s25fps/450frame still/graphic montage; effectively silent full audio at-91dB, canonical music and A/motif/film rights not cleared.",
+        "conservativeExclusionNetworks": [
+          "instagram"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "6680239273933357186",
+        "historicalBeforeHoldPostId": "429949278",
+        "historicalConfirmedHoldPostId": "430105449",
+        "currentPostId": "430111296",
+        "historicalProviderNetworks": [
+          "facebook"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+        "historicQCReason": "New 18s25fps/450frame still/graphic montage; effectively silent full audio at-91dB, canonical music and A/motif/film rights not cleared.",
+        "conservativeExclusionNetworks": [
+          "facebook"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "3614365779669041576",
+        "historicalBeforeHoldPostId": "429949644",
+        "historicalConfirmedHoldPostId": "430105794",
+        "currentPostId": "430111643",
+        "historicalProviderNetworks": [
+          "tiktok"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+        "historicQCReason": "New 18s25fps/450frame still/graphic montage; effectively silent full audio at-91dB, canonical music and A/motif/film rights not cleared.",
+        "conservativeExclusionNetworks": [
+          "tiktok"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "-7647174116509334899",
+        "historicalBeforeHoldPostId": "429950297",
+        "historicalConfirmedHoldPostId": "430105912",
+        "currentPostId": "430111922",
+        "historicalProviderNetworks": [
+          "youtube"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+        "historicQCReason": "New 18s25fps/450frame still/graphic montage; effectively silent full audio at-91dB, canonical music and A/motif/film rights not cleared.",
+        "conservativeExclusionNetworks": [
+          "youtube"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "5345343768312041034",
+        "historicalBeforeHoldPostId": "429951887",
+        "historicalConfirmedHoldPostId": "430107948",
+        "currentPostId": "430112117",
+        "historicalProviderNetworks": [
+          "youtube"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+        "historicQCReason": "New existing YouTube post has a complete nonempty audio decode of 616448 samples, all zero; required canonical music absent and rights unverified. Different content; no duplicate claim.",
+        "conservativeExclusionNetworks": [
+          "youtube"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "-3668679867663038577",
+        "historicalBeforeHoldPostId": "429949565",
+        "historicalConfirmedHoldPostId": "430141753",
+        "currentPostId": "430172417",
+        "historicalProviderNetworks": [
+          "youtube"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "7c88b3c89b9429a12e1e78eda11b2f2fa38842a668258cd7d18847e3c2688c67",
+        "historicQCReason": "Fresh full AAC decode616448samples all zero. Organizer handling is visible; filename does not imply medical claim. Required canonical music absent; rights not cleared.",
+        "conservativeExclusionNetworks": [
+          "youtube"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "4659816415037836014",
+        "historicalBeforeHoldPostId": "429949857",
+        "historicalConfirmedHoldPostId": "430142174",
+        "currentPostId": "430172560",
+        "historicalProviderNetworks": [
+          "facebook",
+          "instagram"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+        "historicQCReason": "Fresh full AAC decode933888samples all zero. Garlic/chopper scenes sampled; model/material/rights not confirmed. Required canonical music absent.",
+        "conservativeExclusionNetworks": [
+          "facebook",
+          "instagram"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "-8339089096074181290",
+        "historicalBeforeHoldPostId": "429949952",
+        "historicalConfirmedHoldPostId": "430142367",
+        "currentPostId": "430172686",
+        "historicalProviderNetworks": [
+          "threads"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+        "historicQCReason": "Fresh full AAC decode933888samples all zero. Garlic/chopper scenes sampled; model/material/rights not confirmed. Required canonical music absent.",
+        "conservativeExclusionNetworks": [
+          "threads"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "-8305910546945982140",
+        "historicalBeforeHoldPostId": "429950075",
+        "historicalConfirmedHoldPostId": "430142510",
+        "currentPostId": "430172877",
+        "historicalProviderNetworks": [
+          "tiktok"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+        "historicQCReason": "Fresh full AAC decode933888samples all zero. Garlic/chopper scenes sampled; model/material/rights not confirmed. Required canonical music absent.",
+        "conservativeExclusionNetworks": [
+          "tiktok"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "-3731207601091163105",
+        "historicalBeforeHoldPostId": "429950197",
+        "historicalConfirmedHoldPostId": "430142769",
+        "currentPostId": "430173224",
+        "historicalProviderNetworks": [
+          "youtube"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "4dd6b921c1a39c2327aeeb29076642615f9e0c81e6cc7ca0dab1ccba9816d5c0",
+        "historicQCReason": "Fresh full AAC decode933888samples all zero. Garlic/chopper scenes sampled; model/material/rights not confirmed. Required canonical music absent.",
+        "conservativeExclusionNetworks": [
+          "youtube"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      },
+      {
+        "uuid": "733493005328404096",
+        "historicalBeforeHoldPostId": "429951792",
+        "historicalConfirmedHoldPostId": "430142949",
+        "currentPostId": "430173535",
+        "historicalProviderNetworks": [
+          "tiktok"
+        ],
+        "retainedExactMediaURLListMatches": true,
+        "historicalMediaFileSha256": "819e996aa17f22156061236449622e2c7b56ec94499b1fce90f94270f71c4ba8",
+        "historicQCReason": "Fresh Shopify file byte-identical to reviewed YouTube clip; positive full PCM sample count with every sample zero. Required canonical music absent. Cross-platform reuse is not itself a duplicate violation.",
+        "conservativeExclusionNetworks": [
+          "tiktok"
+        ],
+        "currentMediaFileDownloadedOrRehashed": false,
+        "qualityClearanceInferredFromCurrentStatus": false
+      }
+    ],
+    "scopeWarning": "Exact URL continuity is not a new media-file hash or fresh audio QC. Historical QC blockers remain unresolved conservatively; no status or flag clears the R259 audio/quality conflict. Exclusion is limited to historical held UUID+provider placements.",
+    "adjustedCoverage": {
+      "rollingWindow": {
+        "objectsWithRemainingTechnicallyEligibleChannel": 36,
+        "remainingProviderPlacements": 45,
+        "remainingByChannel": {
+          "facebook": 9,
+          "instagram": 9,
+          "threads": 7,
+          "pinterest": 7,
+          "tiktok": 10,
+          "youtube": 3
+        },
+        "excludedKnownQCProviderPlacements": 14,
+        "excludedPlacements": [
+          {
+            "postId": "430111412",
+            "uuid": "-7002936161864562103",
+            "network": "youtube"
+          },
+          {
+            "postId": "430111520",
+            "uuid": "2172266762404316928",
+            "network": "tiktok"
+          },
+          {
+            "postId": "430111643",
+            "uuid": "3614365779669041576",
+            "network": "tiktok"
+          },
+          {
+            "postId": "430111824",
+            "uuid": "3963843144054620883",
+            "network": "facebook"
+          },
+          {
+            "postId": "430111824",
+            "uuid": "3963843144054620883",
+            "network": "instagram"
+          },
+          {
+            "postId": "430172417",
+            "uuid": "-3668679867663038577",
+            "network": "youtube"
+          },
+          {
+            "postId": "430172560",
+            "uuid": "4659816415037836014",
+            "network": "facebook"
+          },
+          {
+            "postId": "430172560",
+            "uuid": "4659816415037836014",
+            "network": "instagram"
+          },
+          {
+            "postId": "430172686",
+            "uuid": "-8339089096074181290",
+            "network": "threads"
+          },
+          {
+            "postId": "430172877",
+            "uuid": "-8305910546945982140",
+            "network": "tiktok"
+          },
+          {
+            "postId": "430173224",
+            "uuid": "-3731207601091163105",
+            "network": "youtube"
+          },
+          {
+            "postId": "430111922",
+            "uuid": "-7647174116509334899",
+            "network": "youtube"
+          },
+          {
+            "postId": "430112117",
+            "uuid": "5345343768312041034",
+            "network": "youtube"
+          },
+          {
+            "postId": "430173535",
+            "uuid": "733493005328404096",
+            "network": "tiktok"
+          }
+        ],
+        "dailyCoverageAfterHistoricalQCExclusion": [
+          {
+            "day": "2026-11-16",
+            "partialDay": true,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "facebook",
+              "instagram",
+              "threads",
+              "tiktok",
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 0,
+              "instagram": 0,
+              "threads": 0,
+              "pinterest": 1,
+              "tiktok": 0,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-17",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-18",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-19",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-20",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-21",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [],
+            "remainingByChannel": {
+              "facebook": 2,
+              "instagram": 2,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 2,
+              "youtube": 1
+            }
+          },
+          {
+            "day": "2026-11-22",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [],
+            "remainingByChannel": {
+              "facebook": 2,
+              "instagram": 2,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 2,
+              "youtube": 1
+            }
+          },
+          {
+            "day": "2026-11-23",
+            "partialDay": true,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "pinterest"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 0,
+              "tiktok": 2,
+              "youtube": 1
+            }
+          }
+        ],
+        "meaning": "Scheduling-flag subset excluding retained known QC hold URLs; remaining items are not declared rights/quality/audio approved"
+      },
+      "futureThroughCalendarEnd": {
+        "objectsWithRemainingTechnicallyEligibleChannel": 38,
+        "remainingProviderPlacements": 48,
+        "remainingByChannel": {
+          "facebook": 10,
+          "instagram": 10,
+          "threads": 7,
+          "pinterest": 8,
+          "tiktok": 10,
+          "youtube": 3
+        },
+        "excludedKnownQCProviderPlacements": 14,
+        "excludedPlacements": [
+          {
+            "postId": "430111412",
+            "uuid": "-7002936161864562103",
+            "network": "youtube"
+          },
+          {
+            "postId": "430111520",
+            "uuid": "2172266762404316928",
+            "network": "tiktok"
+          },
+          {
+            "postId": "430111643",
+            "uuid": "3614365779669041576",
+            "network": "tiktok"
+          },
+          {
+            "postId": "430111824",
+            "uuid": "3963843144054620883",
+            "network": "facebook"
+          },
+          {
+            "postId": "430111824",
+            "uuid": "3963843144054620883",
+            "network": "instagram"
+          },
+          {
+            "postId": "430172417",
+            "uuid": "-3668679867663038577",
+            "network": "youtube"
+          },
+          {
+            "postId": "430172560",
+            "uuid": "4659816415037836014",
+            "network": "facebook"
+          },
+          {
+            "postId": "430172560",
+            "uuid": "4659816415037836014",
+            "network": "instagram"
+          },
+          {
+            "postId": "430172686",
+            "uuid": "-8339089096074181290",
+            "network": "threads"
+          },
+          {
+            "postId": "430172877",
+            "uuid": "-8305910546945982140",
+            "network": "tiktok"
+          },
+          {
+            "postId": "430173224",
+            "uuid": "-3731207601091163105",
+            "network": "youtube"
+          },
+          {
+            "postId": "430111922",
+            "uuid": "-7647174116509334899",
+            "network": "youtube"
+          },
+          {
+            "postId": "430112117",
+            "uuid": "5345343768312041034",
+            "network": "youtube"
+          },
+          {
+            "postId": "430173535",
+            "uuid": "733493005328404096",
+            "network": "tiktok"
+          }
+        ],
+        "dailyCoverageAfterHistoricalQCExclusion": [
+          {
+            "day": "2026-11-16",
+            "partialDay": true,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "facebook",
+              "instagram",
+              "threads",
+              "tiktok",
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 0,
+              "instagram": 0,
+              "threads": 0,
+              "pinterest": 1,
+              "tiktok": 0,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-17",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-18",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-19",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-20",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-21",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [],
+            "remainingByChannel": {
+              "facebook": 2,
+              "instagram": 2,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 2,
+              "youtube": 1
+            }
+          },
+          {
+            "day": "2026-11-22",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [],
+            "remainingByChannel": {
+              "facebook": 2,
+              "instagram": 2,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 2,
+              "youtube": 1
+            }
+          },
+          {
+            "day": "2026-11-23",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [],
+            "remainingByChannel": {
+              "facebook": 2,
+              "instagram": 2,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 2,
+              "youtube": 1
+            }
+          }
+        ],
+        "meaning": "Scheduling-flag subset excluding retained known QC hold URLs; remaining items are not declared rights/quality/audio approved"
+      },
+      "nextSevenFullCalendarDays": {
+        "objectsWithRemainingTechnicallyEligibleChannel": 37,
+        "remainingProviderPlacements": 47,
+        "remainingByChannel": {
+          "facebook": 10,
+          "instagram": 10,
+          "threads": 7,
+          "pinterest": 7,
+          "tiktok": 10,
+          "youtube": 3
+        },
+        "excludedKnownQCProviderPlacements": 14,
+        "excludedPlacements": [
+          {
+            "postId": "430111412",
+            "uuid": "-7002936161864562103",
+            "network": "youtube"
+          },
+          {
+            "postId": "430111520",
+            "uuid": "2172266762404316928",
+            "network": "tiktok"
+          },
+          {
+            "postId": "430111643",
+            "uuid": "3614365779669041576",
+            "network": "tiktok"
+          },
+          {
+            "postId": "430111824",
+            "uuid": "3963843144054620883",
+            "network": "facebook"
+          },
+          {
+            "postId": "430111824",
+            "uuid": "3963843144054620883",
+            "network": "instagram"
+          },
+          {
+            "postId": "430172417",
+            "uuid": "-3668679867663038577",
+            "network": "youtube"
+          },
+          {
+            "postId": "430172560",
+            "uuid": "4659816415037836014",
+            "network": "facebook"
+          },
+          {
+            "postId": "430172560",
+            "uuid": "4659816415037836014",
+            "network": "instagram"
+          },
+          {
+            "postId": "430172686",
+            "uuid": "-8339089096074181290",
+            "network": "threads"
+          },
+          {
+            "postId": "430172877",
+            "uuid": "-8305910546945982140",
+            "network": "tiktok"
+          },
+          {
+            "postId": "430173224",
+            "uuid": "-3731207601091163105",
+            "network": "youtube"
+          },
+          {
+            "postId": "430111922",
+            "uuid": "-7647174116509334899",
+            "network": "youtube"
+          },
+          {
+            "postId": "430112117",
+            "uuid": "5345343768312041034",
+            "network": "youtube"
+          },
+          {
+            "postId": "430173535",
+            "uuid": "733493005328404096",
+            "network": "tiktok"
+          }
+        ],
+        "dailyCoverageAfterHistoricalQCExclusion": [
+          {
+            "day": "2026-11-17",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-18",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-19",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-20",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [
+              "youtube"
+            ],
+            "remainingByChannel": {
+              "facebook": 1,
+              "instagram": 1,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 1,
+              "youtube": 0
+            }
+          },
+          {
+            "day": "2026-11-21",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [],
+            "remainingByChannel": {
+              "facebook": 2,
+              "instagram": 2,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 2,
+              "youtube": 1
+            }
+          },
+          {
+            "day": "2026-11-22",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [],
+            "remainingByChannel": {
+              "facebook": 2,
+              "instagram": 2,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 2,
+              "youtube": 1
+            }
+          },
+          {
+            "day": "2026-11-23",
+            "partialDay": false,
+            "channelsWithNoRemainingEligibleSchedule": [],
+            "remainingByChannel": {
+              "facebook": 2,
+              "instagram": 2,
+              "threads": 1,
+              "pinterest": 1,
+              "tiktok": 2,
+              "youtube": 1
+            }
+          }
+        ],
+        "meaning": "Scheduling-flag subset excluding retained known QC hold URLs; remaining items are not declared rights/quality/audio approved"
+      }
+    }
+  }
+}

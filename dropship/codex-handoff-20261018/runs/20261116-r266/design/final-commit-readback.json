@@ -1,0 +1,19 @@
+{
+  "commit": {
+    "commit": "801c1d508fbdda98a542d19fffa65bd6fa5f4e48",
+    "saved": [
+      "sections/lx-collection-welten.liquid"
+    ],
+    "deleted": [],
+    "pending": [],
+    "pushErrors": [],
+    "rejectedReason": null
+  },
+  "themeId": "gid://shopify/OnlineStoreTheme/214169584007",
+  "role": "UNPUBLISHED",
+  "updatedAt": "2026-11-16T18:49:05Z",
+  "filename": "sections/lx-collection-welten.liquid",
+  "checksumMd5": "22b2bbb68773b30fed84c24f037f5c62",
+  "returnedContentMatchesReviewed": true,
+  "scope": "Mobile arrow position/title wrapping only; no publication."
+}

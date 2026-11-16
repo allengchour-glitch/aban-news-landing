@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-11-16T18:45:15.823Z",
+  "commit": {
+    "commit": "ee4b0b8c688bd97bc84542fdcdfad39e366d63c4",
+    "saved": [
+      "blocks/_announcement.liquid",
+      "sections/header-announcements.liquid",
+      "sections/lx-collection-welten.liquid",
+      "snippets/lx-collection-welten-card.liquid"
+    ],
+    "deleted": [],
+    "pending": [],
+    "pushErrors": [],
+    "rejectedReason": null
+  },
+  "draft": {
+    "id": "gid://shopify/OnlineStoreTheme/214169584007",
+    "role": "UNPUBLISHED",
+    "updatedAt": "2026-11-16T18:44:49Z"
+  },
+  "main": {
+    "id": "gid://shopify/OnlineStoreTheme/213991391623",
+    "role": "MAIN",
+    "updatedAt": "2026-11-16T03:55:52Z"
+  },
+  "checks": [
+    {
+      "filename": "blocks/_announcement.liquid",
+      "checksumMd5": "05af35e397cd6f35ba6843fb85667bff",
+      "equal": true
+    },
+    {
+      "filename": "sections/header-announcements.liquid",
+      "checksumMd5": "a923b48f858e861ceec9c705dd38a9d4",
+      "equal": true
+    },
+    {
+      "filename": "sections/lx-collection-welten.liquid",
+      "checksumMd5": "a941099e8a15b99bfec38fd8832e013e",
+      "equal": true
+    },
+    {
+      "filename": "snippets/lx-collection-welten-card.liquid",
+      "checksumMd5": "c11dddc06b732a600e47d7a9a585fff1",
+      "equal": true
+    }
+  ],
+  "scope": "Only four files corrected following the real draft browser findings; no publication."
+}

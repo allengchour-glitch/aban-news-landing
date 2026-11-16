@@ -1,0 +1,168 @@
+{
+  "finalThemeCommit": "801c1d508fbdda98a542d19fffa65bd6fa5f4e48",
+  "themeId": "214169584007",
+  "role": "UNPUBLISHED",
+  "files": [
+    {
+      "filename": "DESIGN.md",
+      "md5": "878cebab534908a233a1d90281bdf10a",
+      "sha1": "7678c7aabc84dbd58b1a931aa287e1a886759f1b",
+      "sha256": "f03f2efc23cbbf66b5be4ec7a5b9f1acb8a7056673b8c68836d8d677ec55300e",
+      "bytes": 1797,
+      "nativeChecksumMd5": "878cebab534908a233a1d90281bdf10a",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "templates/collection.lxwelten.json",
+      "md5": "b354330b872ceaeaa931b9b53314fb7b",
+      "sha1": "66dd533db01a28db57954ff5a57b17779df89fe7",
+      "sha256": "21017ccdbb59c917dd0f37f98b7abd90805d30444c1dd4345129745f0c9f8056",
+      "bytes": 5876,
+      "nativeChecksumMd5": "5c7679555dad4d7517d8f30dd469ccd2",
+      "nativeMd5Matches": false,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "templates/collection.json",
+      "md5": "b354330b872ceaeaa931b9b53314fb7b",
+      "sha1": "66dd533db01a28db57954ff5a57b17779df89fe7",
+      "sha256": "21017ccdbb59c917dd0f37f98b7abd90805d30444c1dd4345129745f0c9f8056",
+      "bytes": 5876,
+      "nativeChecksumMd5": "5c7679555dad4d7517d8f30dd469ccd2",
+      "nativeMd5Matches": false,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "snippets/lx-kopf-pfad.liquid",
+      "md5": "3923b1faf74afe6d9b06e3480912813f",
+      "sha1": "29e25d0c8dfd595243947ef84aa812018b7a5b26",
+      "sha256": "8f73e3eaddfe7489d7e7c5c57ea3438f15ef3bcdf1109d4fcd9d7d80ac983c9f",
+      "bytes": 7325,
+      "nativeChecksumMd5": "3923b1faf74afe6d9b06e3480912813f",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "snippets/lx-collection-welten-card.liquid",
+      "md5": "c11dddc06b732a600e47d7a9a585fff1",
+      "sha1": "069ebe3fbc0922b712d6dfcca860cb2900a8dec0",
+      "sha256": "9c085ff9a067c46f5bc3944bb830a49933003953c667ffd6d0151c9c3c529c1d",
+      "bytes": 1795,
+      "nativeChecksumMd5": "c11dddc06b732a600e47d7a9a585fff1",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "sections/lx-collection-welten.liquid",
+      "md5": "22b2bbb68773b30fed84c24f037f5c62",
+      "sha1": "1c241f33d3edd25e6ae9ec4c27dc3e17701c4097",
+      "sha256": "c3a927bd08287e207461fcf5ac2c83796222e636156e761bce09ed3ee6b1aed2",
+      "bytes": 14868,
+      "nativeChecksumMd5": "22b2bbb68773b30fed84c24f037f5c62",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "sections/lx-collection-details.liquid",
+      "md5": "b43228aabae5d04574e1bfb6a8697cfd",
+      "sha1": "1736d74d5c346837221a8cbed60dcaf461749eb2",
+      "sha256": "6cd148bc41431f45e7f70d62c649cdf39f62dccc2c7fae6eeab6c7ae7498b5c4",
+      "bytes": 7362,
+      "nativeChecksumMd5": "b43228aabae5d04574e1bfb6a8697cfd",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "sections/header-group.json",
+      "md5": "a090c8fc08c62a81b679aa43343cf01b",
+      "sha1": "9d09acebfb29c29367775e36edc76809a25825bc",
+      "sha256": "628c0d64676623578393cf56afbddddfc0aae2a26ff3ce2f8274cf5cce82bcd3",
+      "bytes": 11991,
+      "nativeChecksumMd5": "a090c8fc08c62a81b679aa43343cf01b",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "sections/header-announcements.liquid",
+      "md5": "a923b48f858e861ceec9c705dd38a9d4",
+      "sha1": "8bda40907a62a4946d7b2395d374921835d26d97",
+      "sha256": "4a8abd29a452f8b4840990311b701ecb5fc1f2f33f534c60a7101ab7b0f4a9a4",
+      "bytes": 5415,
+      "nativeChecksumMd5": "a923b48f858e861ceec9c705dd38a9d4",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "locales/fr.schema.json",
+      "md5": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+      "sha1": "ea2c5e6cd7fdb0ad48839c2b3bb42d9629965a51",
+      "sha256": "8fd575acbea6ad2617e7f5945f3cffdacc0aa09e4449617c3bc60f65e229e9c0",
+      "bytes": 52699,
+      "nativeChecksumMd5": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "locales/fr.json",
+      "md5": "6a998951e85c24eab2c8a577d477bda8",
+      "sha1": "35bee9a2e41c6346a8ae0d2e12e62afeb2440829",
+      "sha256": "a484f950c840bb214861d9979993e0e8b19372a293fbae75e01990bbcd946372",
+      "bytes": 32557,
+      "nativeChecksumMd5": "6a998951e85c24eab2c8a577d477bda8",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "locales/en.default.schema.json",
+      "md5": "57512d1064a003a0a5bc8d632650b06d",
+      "sha1": "a8b95071f0abd3000fc516c0e439d02a8978a8f3",
+      "sha256": "2be6e52a5eef283262a973e6fc3f15f8d585449b6536aa50bbf98aa3801914ae",
+      "bytes": 52556,
+      "nativeChecksumMd5": "57512d1064a003a0a5bc8d632650b06d",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "locales/en.default.json",
+      "md5": "b12df48be4468b89edbe8743be2020f1",
+      "sha1": "dc0a57e1d0c5ea339fa4470068ebe2b9290d6502",
+      "sha256": "43aca3597df1b2ebecc8dda6dc079becbb61c1bc9e8c8b3e1ba1c65fcf3fe84c",
+      "bytes": 51075,
+      "nativeChecksumMd5": "b12df48be4468b89edbe8743be2020f1",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "locales/de.schema.json",
+      "md5": "1c38f38260f84023fce55c08b25f12a4",
+      "sha1": "1ef31e90c13aafa6d6cf49f75f4473d57c40c66d",
+      "sha256": "92ee05ce0f1c9e32d531a9bd5ca3bff04b3f6fb5ff4cd203d77aba4c98be7ac6",
+      "bytes": 51418,
+      "nativeChecksumMd5": "1c38f38260f84023fce55c08b25f12a4",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "locales/de.json",
+      "md5": "6cdb896f31cad66a9cc2f3f0936f39fd",
+      "sha1": "466f4bcc6ba83977fc9edf5e43fd68146141dcb5",
+      "sha256": "84a7634506f51e731c62a9a0da959e332cd91bf7dbe270073e569e4c490b9d17",
+      "bytes": 53845,
+      "nativeChecksumMd5": "6cdb896f31cad66a9cc2f3f0936f39fd",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    },
+    {
+      "filename": "blocks/_announcement.liquid",
+      "md5": "05af35e397cd6f35ba6843fb85667bff",
+      "sha1": "9c4d672cf209465f12f7cea752cb782c9e3563a8",
+      "sha256": "b0322fb923335387041cdd9f4931327463f3bee093285bf71c9cd33a91389a28",
+      "bytes": 8101,
+      "nativeChecksumMd5": "05af35e397cd6f35ba6843fb85667bff",
+      "nativeMd5Matches": true,
+      "returnedContentExact": true
+    }
+  ],
+  "note": "All 16 exported files exactly match returned native body text. Two JSON template body representations have a different MD5 than Shopify checksum metadata; their parsed values also match the reviewed configuration."
+}

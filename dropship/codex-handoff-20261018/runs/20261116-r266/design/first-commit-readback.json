@@ -1,0 +1,129 @@
+{
+  "checkedAt": "2026-11-16T18:36:10.251Z",
+  "commit": {
+    "commit": "3e38e8fdb1ddd308721f92007cf504f14580d02e",
+    "saved": [
+      "DESIGN.md",
+      "blocks/_announcement.liquid",
+      "locales/de.json",
+      "locales/de.schema.json",
+      "locales/en.default.json",
+      "locales/en.default.schema.json",
+      "locales/fr.json",
+      "locales/fr.schema.json",
+      "sections/header-announcements.liquid",
+      "sections/header-group.json",
+      "sections/lx-collection-details.liquid",
+      "sections/lx-collection-welten.liquid",
+      "snippets/lx-collection-welten-card.liquid",
+      "snippets/lx-kopf-pfad.liquid",
+      "templates/collection.json",
+      "templates/collection.lxwelten.json"
+    ],
+    "deleted": [],
+    "pending": [],
+    "pushErrors": [],
+    "rejectedReason": null
+  },
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "draft": {
+    "id": "gid://shopify/OnlineStoreTheme/214169584007",
+    "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+    "role": "UNPUBLISHED",
+    "updatedAt": "2026-11-16T18:35:27Z"
+  },
+  "main": {
+    "id": "gid://shopify/OnlineStoreTheme/213991391623",
+    "role": "MAIN",
+    "updatedAt": "2026-11-16T03:55:52Z"
+  },
+  "files": [
+    {
+      "filename": "blocks/_announcement.liquid",
+      "checksumMd5": "e5d7fc91e082f096240856302886a703",
+      "chars": 8029
+    },
+    {
+      "filename": "DESIGN.md",
+      "checksumMd5": "878cebab534908a233a1d90281bdf10a",
+      "chars": 1779
+    },
+    {
+      "filename": "locales/de.json",
+      "checksumMd5": "6cdb896f31cad66a9cc2f3f0936f39fd",
+      "chars": 53419
+    },
+    {
+      "filename": "locales/de.schema.json",
+      "checksumMd5": "1c38f38260f84023fce55c08b25f12a4",
+      "chars": 50999
+    },
+    {
+      "filename": "locales/en.default.json",
+      "checksumMd5": "b12df48be4468b89edbe8743be2020f1",
+      "chars": 50991
+    },
+    {
+      "filename": "locales/en.default.schema.json",
+      "checksumMd5": "57512d1064a003a0a5bc8d632650b06d",
+      "chars": 52540
+    },
+    {
+      "filename": "locales/fr.json",
+      "checksumMd5": "6a998951e85c24eab2c8a577d477bda8",
+      "chars": 31948
+    },
+    {
+      "filename": "locales/fr.schema.json",
+      "checksumMd5": "03cdadce5df0f7a9da59eec5a7e0cb4d",
+      "chars": 51935
+    },
+    {
+      "filename": "sections/header-announcements.liquid",
+      "checksumMd5": "e90c3d1e00db7a711ee780e755d96568",
+      "chars": 5295
+    },
+    {
+      "filename": "sections/header-group.json",
+      "checksumMd5": "a090c8fc08c62a81b679aa43343cf01b",
+      "chars": 11965
+    },
+    {
+      "filename": "sections/lx-collection-details.liquid",
+      "checksumMd5": "b43228aabae5d04574e1bfb6a8697cfd",
+      "chars": 7362
+    },
+    {
+      "filename": "sections/lx-collection-welten.liquid",
+      "checksumMd5": "402da77693e92660bd0b77d4c1deba55",
+      "chars": 13611
+    },
+    {
+      "filename": "snippets/lx-collection-welten-card.liquid",
+      "checksumMd5": "ccc929e35a2e8c8d782ac8b5ef82652f",
+      "chars": 1560
+    },
+    {
+      "filename": "snippets/lx-kopf-pfad.liquid",
+      "checksumMd5": "3923b1faf74afe6d9b06e3480912813f",
+      "chars": 7308
+    },
+    {
+      "filename": "templates/collection.json",
+      "checksumMd5": "5c7679555dad4d7517d8f30dd469ccd2",
+      "chars": 5876
+    },
+    {
+      "filename": "templates/collection.lxwelten.json",
+      "checksumMd5": "5c7679555dad4d7517d8f30dd469ccd2",
+      "chars": 5876
+    }
+  ],
+  "nativePreviewLimitation": "Native theme_screenshot loses base stylesheet styling even for unchanged MAIN; public Chromium baseline passes. Final real draft browser QA pending.",
+  "published": false
+}

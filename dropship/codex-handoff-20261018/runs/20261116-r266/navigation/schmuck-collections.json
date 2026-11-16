@@ -1,0 +1,818 @@
+{
+  "source": "Shopify Admin GraphQL exact-handle queries, bounded batches 50+17; no next pages",
+  "collections": [
+    {
+      "id": "gid://shopify/Collection/688563650945",
+      "title": "Ohrringe",
+      "handle": "sub-ohrringe",
+      "url": "/collections/sub-ohrringe",
+      "templateSuffix": null,
+      "productsCount": 255,
+      "seo": {
+        "title": "Ohrstecker Silber, Creolen & Ohrhänger Schweiz | LuxeStyle",
+        "description": "Ohrstecker aus Silber mit Zirkonia, Perlen oder Moissanit, dazu Creolen, Ohrhänger und Ohrclips aus dem Schweizer Onlineshop. Gratisversand CH ab CHF 50."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/688563683713",
+      "title": "Armbänder",
+      "handle": "sub-armbaender",
+      "url": "/collections/sub-armbaender",
+      "templateSuffix": null,
+      "productsCount": 1173,
+      "seo": {
+        "title": "Armband Damen: Armreifen & Perlenarmbänder | LuxeStyle",
+        "description": "Armband für Damen: Armreifen, Kettenarmbänder, Perlenarmbänder, Herz-Armbänder und geflochtene Boho-Armbänder. Versand in die ganze Schweiz."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/688577282433",
+      "title": "Ringe",
+      "handle": "sub-ringe",
+      "url": "/collections/sub-ringe",
+      "templateSuffix": null,
+      "productsCount": 550,
+      "seo": {
+        "title": "Ringe Damen – Zirkonia, verstellbar & Statement-Ringe | LuxeStyle CH",
+        "description": "Ringe für Damen bei LuxeStyle Schweiz: funkelnde Zirkonia-Ringe als günstige Diamant-Alternative & verstellbare Blumenringe. Gratis-Versand CH ab CHF 50."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755392840071",
+      "title": "Schmuck",
+      "handle": "schmuck",
+      "url": "/collections/schmuck",
+      "templateSuffix": null,
+      "productsCount": 2650,
+      "seo": {
+        "title": "Schmuck online kaufen | LuxeStyle CH",
+        "description": "Schmuck: Halsketten, Ohrringe, Armbänder, Ringe und Schmuck-Sets. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666485639",
+      "title": "Moissanit-Ringe",
+      "handle": "moissanit-ringe",
+      "url": "/collections/moissanit-ringe",
+      "templateSuffix": null,
+      "productsCount": 56,
+      "seo": {
+        "title": "Moissanit-Ringe online kaufen | LuxeStyle CH",
+        "description": "Moissanit-Ringe online kaufen. Ringe mit Moissanit, als Solitär oder mit Halo. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666518407",
+      "title": "Edelstein- & Geburtsstein-Ringe",
+      "handle": "edelstein-geburtsstein-ringe",
+      "url": "/collections/edelstein-geburtsstein-ringe",
+      "templateSuffix": null,
+      "productsCount": 91,
+      "seo": {
+        "title": "Edelstein- & Geburtsstein-Ringe online kaufen | LuxeStyle CH",
+        "description": "Edelstein- & Geburtsstein-Ringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666551175",
+      "title": "Silberringe",
+      "handle": "silberringe",
+      "url": "/collections/silberringe",
+      "templateSuffix": null,
+      "productsCount": 49,
+      "seo": {
+        "title": "Silberringe online kaufen | LuxeStyle CH",
+        "description": "Silberringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666583943",
+      "title": "Edelstahl- & Titanringe",
+      "handle": "edelstahl-titanringe",
+      "url": "/collections/edelstahl-titanringe",
+      "templateSuffix": null,
+      "productsCount": 67,
+      "seo": {
+        "title": "Edelstahl- & Titanringe online kaufen | LuxeStyle CH",
+        "description": "Edelstahl- & Titanringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666616711",
+      "title": "Zirkonia- & Strassringe",
+      "handle": "zirkonia-strassringe",
+      "url": "/collections/zirkonia-strassringe",
+      "templateSuffix": null,
+      "productsCount": 99,
+      "seo": {
+        "title": "Zirkonia- & Strassringe online kaufen | LuxeStyle CH",
+        "description": "Zirkonia- & Strassringe online kaufen. Funkelnde Ringe mit Zirkonia oder Strass. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666649479",
+      "title": "Ringsets & Stapelringe",
+      "handle": "ringsets-stapelringe",
+      "url": "/collections/ringsets-stapelringe",
+      "templateSuffix": null,
+      "productsCount": 26,
+      "seo": {
+        "title": "Ringsets & Stapelringe online kaufen | LuxeStyle CH",
+        "description": "Ringsets & Stapelringe online kaufen. Mehrere Ringe im Set oder zum Stapeln und Kombinieren. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666682247",
+      "title": "Verstellbare & offene Ringe",
+      "handle": "verstellbare-offene-ringe",
+      "url": "/collections/verstellbare-offene-ringe",
+      "templateSuffix": null,
+      "productsCount": 64,
+      "seo": {
+        "title": "Verstellbare & offene Ringe online kaufen | LuxeStyle CH",
+        "description": "Verstellbare & offene Ringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666715015",
+      "title": "Creolen, Ohrclips & Ear Cuffs",
+      "handle": "creolen-ohrclips",
+      "url": "/collections/creolen-ohrclips",
+      "templateSuffix": null,
+      "productsCount": 23,
+      "seo": {
+        "title": "Creolen, Ohrclips & Ear Cuffs online kaufen | LuxeStyle CH",
+        "description": "Creolen, Ohrclips & Ear Cuffs online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666747783",
+      "title": "Ohrhänger & Tropfenohrringe",
+      "handle": "ohrhaenger-tropfenohrringe",
+      "url": "/collections/ohrhaenger-tropfenohrringe",
+      "templateSuffix": null,
+      "productsCount": 37,
+      "seo": {
+        "title": "Ohrhänger & Tropfenohrringe online kaufen | LuxeStyle CH",
+        "description": "Ohrhänger & Tropfenohrringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666780551",
+      "title": "Ohrstecker",
+      "handle": "ohrstecker",
+      "url": "/collections/ohrstecker",
+      "templateSuffix": null,
+      "productsCount": 71,
+      "seo": {
+        "title": "Ohrstecker online kaufen | LuxeStyle CH",
+        "description": "Ohrstecker online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666878855",
+      "title": "Silber-Ohrringe",
+      "handle": "silber-ohrringe",
+      "url": "/collections/silber-ohrringe",
+      "templateSuffix": null,
+      "productsCount": 46,
+      "seo": {
+        "title": "Silber-Ohrringe online kaufen | LuxeStyle CH",
+        "description": "Silber-Ohrringe online kaufen. Ohrringe aus 925er Sterlingsilber und Silber in vielen Formen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666911623",
+      "title": "Perlen-Ohrringe",
+      "handle": "perlen-ohrringe",
+      "url": "/collections/perlen-ohrringe",
+      "templateSuffix": null,
+      "productsCount": 26,
+      "seo": {
+        "title": "Perlen-Ohrringe online kaufen | LuxeStyle CH",
+        "description": "Perlen-Ohrringe online kaufen. Ohrringe mit Perlen, als Ohrstecker oder Ohrhänger. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666944391",
+      "title": "Zirkonia- & Strass-Ohrringe",
+      "handle": "zirkonia-strass-ohrringe",
+      "url": "/collections/zirkonia-strass-ohrringe",
+      "templateSuffix": null,
+      "productsCount": 40,
+      "seo": {
+        "title": "Zirkonia- & Strass-Ohrringe online kaufen | LuxeStyle CH",
+        "description": "Zirkonia- & Strass-Ohrringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755666977159",
+      "title": "Halsketten & Anhänger",
+      "handle": "halsketten-alle",
+      "url": "/collections/halsketten-alle",
+      "templateSuffix": null,
+      "productsCount": 452,
+      "seo": {
+        "title": "Halsketten & Anhänger online kaufen | LuxeStyle CH",
+        "description": "Halsketten & Anhänger online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667009927",
+      "title": "Perlenketten",
+      "handle": "perlenketten",
+      "url": "/collections/perlenketten",
+      "templateSuffix": null,
+      "productsCount": 60,
+      "seo": {
+        "title": "Perlenketten online kaufen | LuxeStyle CH",
+        "description": "Perlenketten online kaufen. Halsketten mit Perlen, darunter Ketten mit Süsswasserperlen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667042695",
+      "title": "Choker & mehrlagige Ketten",
+      "handle": "choker-layering-ketten",
+      "url": "/collections/choker-layering-ketten",
+      "templateSuffix": null,
+      "productsCount": 22,
+      "seo": {
+        "title": "Choker & mehrlagige Ketten online kaufen | LuxeStyle CH",
+        "description": "Choker & mehrlagige Ketten online kaufen. Kurze Choker und mehrlagige Ketten zum Kombinieren. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667075463",
+      "title": "Glieder- & Hip-Hop-Ketten",
+      "handle": "glieder-hiphop-ketten",
+      "url": "/collections/glieder-hiphop-ketten",
+      "templateSuffix": null,
+      "productsCount": 18,
+      "seo": {
+        "title": "Glieder- & Hip-Hop-Ketten online kaufen | LuxeStyle CH",
+        "description": "Glieder- & Hip-Hop-Ketten online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667108231",
+      "title": "Anhänger & Ketten mit Anhänger",
+      "handle": "ketten-mit-anhaenger",
+      "url": "/collections/ketten-mit-anhaenger",
+      "templateSuffix": null,
+      "productsCount": 142,
+      "seo": {
+        "title": "Anhänger & Ketten mit Anhänger online kaufen | LuxeStyle CH",
+        "description": "Anhänger & Ketten mit Anhänger online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667206535",
+      "title": "Silberketten",
+      "handle": "silberketten",
+      "url": "/collections/silberketten",
+      "templateSuffix": null,
+      "productsCount": 47,
+      "seo": {
+        "title": "Silberketten online kaufen | LuxeStyle CH",
+        "description": "Silberketten online kaufen. Halsketten und Anhänger aus 925er Sterlingsilber und Silber. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667239303",
+      "title": "Edelstahl- & Titanketten",
+      "handle": "edelstahl-titanketten",
+      "url": "/collections/edelstahl-titanketten",
+      "templateSuffix": null,
+      "productsCount": 71,
+      "seo": {
+        "title": "Edelstahl- & Titanketten online kaufen | LuxeStyle CH",
+        "description": "Edelstahl- & Titanketten online kaufen. Halsketten aus Edelstahl und Titanstahl. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667272071",
+      "title": "Zirkonia- & Moissanit-Ketten",
+      "handle": "zirkonia-moissanit-ketten",
+      "url": "/collections/zirkonia-moissanit-ketten",
+      "templateSuffix": null,
+      "productsCount": 45,
+      "seo": {
+        "title": "Zirkonia- & Moissanit-Ketten online kaufen | LuxeStyle CH",
+        "description": "Zirkonia- & Moissanit-Ketten online kaufen. Halsketten mit Zirkonia, Strass oder Moissanit. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667304839",
+      "title": "Armreifen & Manschettenarmbänder",
+      "handle": "armreifen-bangles",
+      "url": "/collections/armreifen-bangles",
+      "templateSuffix": null,
+      "productsCount": 109,
+      "seo": {
+        "title": "Armreifen & Manschettenarmbänder online kaufen",
+        "description": "Armreifen & Manschettenarmbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667370375",
+      "title": "Lederarmbänder",
+      "handle": "lederarmbaender",
+      "url": "/collections/lederarmbaender",
+      "templateSuffix": null,
+      "productsCount": 66,
+      "seo": {
+        "title": "Lederarmbänder online kaufen | LuxeStyle CH",
+        "description": "Lederarmbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667468679",
+      "title": "Perlen- & Edelsteinarmbänder",
+      "handle": "perlen-edelsteinarmbaender",
+      "url": "/collections/perlen-edelsteinarmbaender",
+      "templateSuffix": null,
+      "productsCount": 207,
+      "seo": {
+        "title": "Perlen- & Edelsteinarmbänder online kaufen | LuxeStyle CH",
+        "description": "Perlen- & Edelsteinarmbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667534215",
+      "title": "Glieder- & Tennisarmbänder",
+      "handle": "gliederarmbaender",
+      "url": "/collections/gliederarmbaender",
+      "templateSuffix": null,
+      "productsCount": 40,
+      "seo": {
+        "title": "Glieder- & Tennisarmbänder online kaufen | LuxeStyle CH",
+        "description": "Glieder- & Tennisarmbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667566983",
+      "title": "Kupfer- & Magnetarmbänder",
+      "handle": "kupfer-magnetarmbaender",
+      "url": "/collections/kupfer-magnetarmbaender",
+      "templateSuffix": null,
+      "productsCount": 82,
+      "seo": {
+        "title": "Kupfer- & Magnetarmbänder online kaufen | LuxeStyle CH",
+        "description": "Kupfer- & Magnetarmbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667599751",
+      "title": "Geflochtene Armbänder",
+      "handle": "geflochtene-wickelarmbaender",
+      "url": "/collections/geflochtene-wickelarmbaender",
+      "templateSuffix": null,
+      "productsCount": 26,
+      "seo": {
+        "title": "Geflochtene Armbänder online kaufen | LuxeStyle CH",
+        "description": "Geflochtene Armbänder online kaufen. Armbänder aus geflochtenen Bändern und Kordeln. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667632519",
+      "title": "Silberarmbänder",
+      "handle": "silberarmbaender",
+      "url": "/collections/silberarmbaender",
+      "templateSuffix": null,
+      "productsCount": 89,
+      "seo": {
+        "title": "Silberarmbänder online kaufen | LuxeStyle CH",
+        "description": "Silberarmbänder online kaufen. Armbänder und Armreifen aus 925er Sterlingsilber und Silber. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667665287",
+      "title": "Edelstahl- & Titanarmbänder",
+      "handle": "edelstahl-titanarmbaender",
+      "url": "/collections/edelstahl-titanarmbaender",
+      "templateSuffix": null,
+      "productsCount": 198,
+      "seo": {
+        "title": "Edelstahl- & Titanarmbänder online kaufen | LuxeStyle CH",
+        "description": "Edelstahl- & Titanarmbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667796359",
+      "title": "Vergoldete Armbänder",
+      "handle": "vergoldete-armbaender",
+      "url": "/collections/vergoldete-armbaender",
+      "templateSuffix": null,
+      "productsCount": 52,
+      "seo": {
+        "title": "Vergoldete Armbänder online kaufen | LuxeStyle CH",
+        "description": "Vergoldete Armbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667829127",
+      "title": "Zirkonia- & Strassarmbänder",
+      "handle": "zirkonia-strassarmbaender",
+      "url": "/collections/zirkonia-strassarmbaender",
+      "templateSuffix": null,
+      "productsCount": 184,
+      "seo": {
+        "title": "Zirkonia- & Strassarmbänder online kaufen | LuxeStyle CH",
+        "description": "Zirkonia- & Strassarmbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667861895",
+      "title": "Herren- & Unisex-Ringe",
+      "handle": "herrenringe",
+      "url": "/collections/herrenringe",
+      "templateSuffix": null,
+      "productsCount": 25,
+      "seo": {
+        "title": "Herren- & Unisex-Ringe online kaufen | LuxeStyle CH",
+        "description": "Herren- & Unisex-Ringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667894663",
+      "title": "Herrenarmbänder",
+      "handle": "herrenarmbaender",
+      "url": "/collections/herrenarmbaender",
+      "templateSuffix": null,
+      "productsCount": 46,
+      "seo": {
+        "title": "Herrenarmbänder online kaufen | LuxeStyle CH",
+        "description": "Herrenarmbänder online kaufen. Armbänder für Herren aus Leder, Stahl und Kupfer. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667927431",
+      "title": "Personalisierte Ringe",
+      "handle": "personalisierte-ringe",
+      "url": "/collections/personalisierte-ringe",
+      "templateSuffix": null,
+      "productsCount": 39,
+      "seo": {
+        "title": "Personalisierte Ringe online kaufen | LuxeStyle CH",
+        "description": "Personalisierte Ringe online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667960199",
+      "title": "Personalisierte Armbänder",
+      "handle": "personalisierte-armbaender",
+      "url": "/collections/personalisierte-armbaender",
+      "templateSuffix": null,
+      "productsCount": 66,
+      "seo": {
+        "title": "Personalisierte Armbänder online kaufen | LuxeStyle CH",
+        "description": "Personalisierte Armbänder online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755667992967",
+      "title": "Personalisierte Ketten",
+      "handle": "personalisierte-ketten",
+      "url": "/collections/personalisierte-ketten",
+      "templateSuffix": null,
+      "productsCount": 31,
+      "seo": {
+        "title": "Personalisierte Ketten online kaufen | LuxeStyle CH",
+        "description": "Personalisierte Ketten online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668025735",
+      "title": "Glücks- & Schutzschmuck",
+      "handle": "gluecks-schutzschmuck",
+      "url": "/collections/gluecks-schutzschmuck",
+      "templateSuffix": null,
+      "productsCount": 52,
+      "seo": {
+        "title": "Glücks- & Schutzschmuck online kaufen | LuxeStyle CH",
+        "description": "Glücks- & Schutzschmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668058503",
+      "title": "Kreuz-Schmuck",
+      "handle": "kreuz-schmuck",
+      "url": "/collections/kreuz-schmuck",
+      "templateSuffix": null,
+      "productsCount": 40,
+      "seo": {
+        "title": "Kreuz-Schmuck online kaufen | LuxeStyle CH",
+        "description": "Kreuz-Schmuck online kaufen. Ketten, Ringe, Armbänder und Anhänger mit Kreuz. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668091271",
+      "title": "Herz-Schmuck",
+      "handle": "herz-schmuck",
+      "url": "/collections/herz-schmuck",
+      "templateSuffix": null,
+      "productsCount": 158,
+      "seo": {
+        "title": "Herz-Schmuck online kaufen | LuxeStyle CH",
+        "description": "Herz-Schmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668320647",
+      "title": "Stern-, Mond- & Sonnenschmuck",
+      "handle": "stern-mond-schmuck",
+      "url": "/collections/stern-mond-schmuck",
+      "templateSuffix": null,
+      "productsCount": 54,
+      "seo": {
+        "title": "Stern-, Mond- & Sonnenschmuck online kaufen | LuxeStyle CH",
+        "description": "Stern-, Mond- & Sonnenschmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668353415",
+      "title": "Blumen- & Schmetterlingsschmuck",
+      "handle": "blumen-schmetterlingsschmuck",
+      "url": "/collections/blumen-schmetterlingsschmuck",
+      "templateSuffix": null,
+      "productsCount": 164,
+      "seo": {
+        "title": "Blumen- & Schmetterlingsschmuck online kaufen | LuxeStyle CH",
+        "description": "Blumen- & Schmetterlingsschmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668582791",
+      "title": "Tier-Schmuck",
+      "handle": "tier-schmuck",
+      "url": "/collections/tier-schmuck",
+      "templateSuffix": null,
+      "productsCount": 86,
+      "seo": {
+        "title": "Tier-Schmuck online kaufen | LuxeStyle CH",
+        "description": "Tier-Schmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669303687",
+      "title": "Schmuck für Herren",
+      "handle": "schmuck-herren-gruppe",
+      "url": "/collections/schmuck-herren-gruppe",
+      "templateSuffix": null,
+      "productsCount": 71,
+      "seo": {
+        "title": "Schmuck für Herren online kaufen | LuxeStyle CH",
+        "description": "Schmuck für Herren online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669336455",
+      "title": "Personalisierter Schmuck",
+      "handle": "schmuck-personalisiert-gruppe",
+      "url": "/collections/schmuck-personalisiert-gruppe",
+      "templateSuffix": null,
+      "productsCount": 136,
+      "seo": {
+        "title": "Personalisierter Schmuck online kaufen | LuxeStyle CH",
+        "description": "Personalisierter Schmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669369223",
+      "title": "Schmuck nach Motiv",
+      "handle": "schmuck-motiv-gruppe",
+      "url": "/collections/schmuck-motiv-gruppe",
+      "templateSuffix": null,
+      "productsCount": 554,
+      "seo": {
+        "title": "Schmuck nach Motiv online kaufen | LuxeStyle CH",
+        "description": "Schmuck nach Motiv online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669401991",
+      "title": "Schmuck nach Stil",
+      "handle": "schmuck-stil-gruppe",
+      "url": "/collections/schmuck-stil-gruppe",
+      "templateSuffix": null,
+      "productsCount": 460,
+      "seo": {
+        "title": "Schmuck nach Stil online kaufen | LuxeStyle CH",
+        "description": "Schmuck nach Stil online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/687724560769",
+      "title": "Premium Schmuck",
+      "handle": "premium-schmuck",
+      "url": "/collections/premium-schmuck",
+      "templateSuffix": null,
+      "productsCount": 124,
+      "seo": {
+        "title": "Premium Schmuck kaufen | LuxeStyle Schweiz",
+        "description": "Premium Schmuck online kaufen bei LuxeStyle: grosse Auswahl, Gratis-Versand ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/688587407745",
+      "title": "Schmuck-Sets",
+      "handle": "schmuck-sets",
+      "url": "/collections/schmuck-sets",
+      "templateSuffix": null,
+      "productsCount": 36,
+      "seo": {
+        "title": "Schmuckset Damen: Ring-Sets & Armband-Sets | LuxeStyle",
+        "description": "Schmuckset Damen: Ring-Sets, Armband- und Armreif-Sets, Sets aus Halskette und Ohrringen sowie Ohrclip-Sets. Versand in die ganze Schweiz."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/689775378817",
+      "title": "Sonnenbrillen (alle)",
+      "handle": "sonnenbrillen-alle",
+      "url": "/collections/sonnenbrillen-alle",
+      "templateSuffix": null,
+      "productsCount": 46,
+      "seo": {
+        "title": "Sonnenbrillen kaufen | LuxeStyle Schweiz",
+        "description": "Sonnenbrillen bei LuxeStyle Schweiz. Produktdetails, Preis und Verfügbarkeit online ansehen."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755392577927",
+      "title": "Schmuckaufbewahrung & Displays",
+      "handle": "schmuckaufbewahrung",
+      "url": "/collections/schmuckaufbewahrung",
+      "templateSuffix": null,
+      "productsCount": 135,
+      "seo": {
+        "title": "Schmuckbox & Schmuckaufbewahrung online kaufen | LuxeStyle",
+        "description": "Schmuckbox, Schmuckkästchen, Ringbox, Uhrenbox, Reise-Etui und Ständer: Modelle aus Samt, Leder, Holz und mehr. Auswahl für die Schweiz bei LuxeStyle."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755393298823",
+      "title": "Broschen & Pins",
+      "handle": "broschen-pins",
+      "url": "/collections/broschen-pins",
+      "templateSuffix": null,
+      "productsCount": 54,
+      "seo": {
+        "title": "Broschen & Pins online kaufen | LuxeStyle CH",
+        "description": "Broschen & Pins: Anstecknadeln und Revers-Pins aus Metall und Emaille. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755393331591",
+      "title": "Körper- & Fussschmuck",
+      "handle": "koerper-fussschmuck",
+      "url": "/collections/koerper-fussschmuck",
+      "templateSuffix": null,
+      "productsCount": 22,
+      "seo": {
+        "title": "Körper- & Fussschmuck online kaufen | LuxeStyle CH",
+        "description": "Körper- & Fussschmuck: Fussketten, Taillenketten und Körperschmuck. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668648327",
+      "title": "Punk-, Gothic- & Hip-Hop-Schmuck",
+      "handle": "punk-gothic-schmuck",
+      "url": "/collections/punk-gothic-schmuck",
+      "templateSuffix": null,
+      "productsCount": 48,
+      "seo": {
+        "title": "Punk-, Gothic- & Hip-Hop-Schmuck online kaufen",
+        "description": "Punk-, Gothic- & Hip-Hop-Schmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668713863",
+      "title": "Boho-, Ethno- & Wikinger-Schmuck",
+      "handle": "boho-ethno-schmuck",
+      "url": "/collections/boho-ethno-schmuck",
+      "templateSuffix": null,
+      "productsCount": 41,
+      "seo": {
+        "title": "Boho-, Ethno- & Wikinger-Schmuck online kaufen",
+        "description": "Boho-, Ethno- & Wikinger-Schmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668746631",
+      "title": "Schmuck im Korea-, Frankreich- & Old-Money-Stil",
+      "handle": "korea-frankreich-oldmoney-schmuck",
+      "url": "/collections/korea-frankreich-oldmoney-schmuck",
+      "templateSuffix": null,
+      "productsCount": 39,
+      "seo": {
+        "title": "Schmuck im Korea-, Frankreich- & Old-Money-Stil",
+        "description": "Schmuck im Korea-, Frankreich- & Old-Money-Stil online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668779399",
+      "title": "Vintage- & Retro-Schmuck",
+      "handle": "vintage-retro-schmuck",
+      "url": "/collections/vintage-retro-schmuck",
+      "templateSuffix": null,
+      "productsCount": 192,
+      "seo": {
+        "title": "Vintage- & Retro-Schmuck online kaufen | LuxeStyle CH",
+        "description": "Vintage- & Retro-Schmuck online kaufen. Schmuck im Vintage-, Retro- und Antik-Stil. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755668976007",
+      "title": "Geometrischer Schmuck",
+      "handle": "geometrischer-schmuck",
+      "url": "/collections/geometrischer-schmuck",
+      "templateSuffix": null,
+      "productsCount": 67,
+      "seo": {
+        "title": "Geometrischer Schmuck online kaufen | LuxeStyle CH",
+        "description": "Geometrischer Schmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669008775",
+      "title": "Minimalistischer Schmuck",
+      "handle": "minimalistischer-schmuck",
+      "url": "/collections/minimalistischer-schmuck",
+      "templateSuffix": null,
+      "productsCount": 73,
+      "seo": {
+        "title": "Minimalistischer Schmuck online kaufen | LuxeStyle CH",
+        "description": "Minimalistischer Schmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669107079",
+      "title": "Schmuck selber machen",
+      "handle": "schmuck-selbermachen",
+      "url": "/collections/schmuck-selbermachen",
+      "templateSuffix": null,
+      "productsCount": 43,
+      "seo": {
+        "title": "Schmuck selber machen online kaufen | LuxeStyle CH",
+        "description": "Schmuck selber machen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669139847",
+      "title": "Schlüssel- & Taschenanhänger",
+      "handle": "schluessel-taschenanhaenger",
+      "url": "/collections/schluessel-taschenanhaenger",
+      "templateSuffix": null,
+      "productsCount": 26,
+      "seo": {
+        "title": "Schlüssel- & Taschenanhänger online kaufen | LuxeStyle CH",
+        "description": "Schlüssel- & Taschenanhänger online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669172615",
+      "title": "Kombi-Sets aus Kette, Armband & Ohrringen",
+      "handle": "kombisets-kette-armband-ohrringe",
+      "url": "/collections/kombisets-kette-armband-ohrringe",
+      "templateSuffix": null,
+      "productsCount": 29,
+      "seo": {
+        "title": "Kombi-Sets aus Kette, Armband & Ohrringen online kaufen",
+        "description": "Kombi-Sets aus Kette, Armband & Ohrringen online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669434759",
+      "title": "Sets, Broschen & Körperschmuck",
+      "handle": "schmuck-sets-gruppe",
+      "url": "/collections/schmuck-sets-gruppe",
+      "templateSuffix": null,
+      "productsCount": 141,
+      "seo": {
+        "title": "Sets, Broschen & Körperschmuck online kaufen | LuxeStyle CH",
+        "description": "Sets, Broschen & Körperschmuck online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/755669467527",
+      "title": "Zubehör & Aufbewahrung",
+      "handle": "schmuck-zubehoer-gruppe",
+      "url": "/collections/schmuck-zubehoer-gruppe",
+      "templateSuffix": null,
+      "productsCount": 250,
+      "seo": {
+        "title": "Zubehör & Aufbewahrung online kaufen | LuxeStyle CH",
+        "description": "Zubehör & Aufbewahrung online kaufen. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt."
+      }
+    }
+  ],
+  "validation": {
+    "rows": 67,
+    "allMenuBranchHandlesFound": true,
+    "allProductsCountPositive": true,
+    "templateSuffixCounts": {
+      "null": 67
+    },
+    "notes": "SEO title/description are current collection fields. API schema did not expose onlineStoreUrl."
+  }
+}

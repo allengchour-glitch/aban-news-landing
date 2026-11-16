@@ -1,3 +1,9 @@
+# R266 – Kategorieseiten und Hinweise im geprüften Entwurf – 16.11.2026
+
+Der unveröffentlichte Shopify-Entwurf 214169584007 enthält jetzt vollständige Bildkacheln mit weissen Kategorietiteln, bestehende Unterkategorien mit Elternnavigation sowie fünf Hinweise in 14-px-Schrift mit neutralen SVG-Icons. Drei Theme-Commits wurden gespeichert und zurückgelesen; die begrenzte echte Browserprüfung ist bestanden. MAIN bleibt unverändert. Die Veröffentlichung ist weiterhin durch publish_refused blockiert; der gespeicherte Entwurf ist kein Live-Nachweis. [Bericht](R266-REPORT-20261116.md) · [Belege](R266-PROOF-20261116.json). 24 Aufgaben und Historien erhalten; Claude-Empfang unbekannt.
+
+---
+
 # R265 — lokale Resolver-/QA-Prüfung, Produktblocker dokumentiert — 16.11.2026
 
 Nur lokale Dokumentation und Belege. Die Resolver-Korrektur bestand 184 gezielte Prüfungen; die Mutationsprobe erkannte 67 von 67 Mutationen. Der Patch ist als Hand-off-Prüfartefakt abgelegt; er wurde nicht in die operative Automation übernommen oder veröffentlicht. Der QA-Helfer bestand 18 Offline-Tests und eine unabhängige Abschlussprüfung; öffentliche Prüfungen gab es nicht. Tasche 15507734135169 bleibt wegen einer unbekannten exakten Lieferantenvarianten-Zuordnung und offener Zubehör- und Massfragen blockiert. [Bericht](R265-REPORT-20261116.md) · [Belege](R265-PROOF-20261116.json) · [Arbeitsliste mit 65 Zeilen](PRODUKTDETAILS-ARBEITSLISTE-20261116-R265.csv). R266 Premium-Unterkategorien läuft; Ergebnis offen.

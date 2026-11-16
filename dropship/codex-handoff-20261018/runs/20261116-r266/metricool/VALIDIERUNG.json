@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-11-16T18:15:24.498592+00:00",
+  "checks": {
+    "eightSuccessfulDailyQueries": true,
+    "brandExpected": true,
+    "uniqueUUIDs": true,
+    "all57PriorUUIDsPreserved": true,
+    "allFourDuplicateChecksEmpty": true,
+    "fifteenDraftToActiveChanges": true,
+    "historical14QCGatesPreserved": true,
+    "noAnalyticsOrAccountWrites": true,
+    "independentOfflineReviewCompleted": true
+  },
+  "files": {
+    "IDENTITAET.json": {
+      "bytes": 490,
+      "sha256": "38bc384846565bd488d6dab9177a8a46b38e17a2645ff5149404e24e687b68e8"
+    },
+    "PLANUNG-AUSWERTUNG.json": {
+      "bytes": 151598,
+      "sha256": "2d35fe9595cef71bc439f9e4a8520f1e73fecfc70a93c8205bc1b4941918ea27"
+    },
+    "BERICHT.md": {
+      "bytes": 6588,
+      "sha256": "3e6b74a33f07c5aaa3706f9fe90ebe8f931d68f35034c4c4586025140ad1ce3d"
+    },
+    "TAGESERGÄNZUNG.md": {
+      "bytes": 673,
+      "sha256": "684875369c72c531fb0d10f1870ec07c4bc54c1b05df7790687284639b2efc3b"
+    },
+    "INDEPENDENT-REVIEW.json": {
+      "bytes": 66325,
+      "sha256": "801b7b8580d2f6ee26511b1dc04bd6962467a86c715ad203d7fa4d098a2a94f6"
+    }
+  },
+  "privateRawIncluded": false
+}

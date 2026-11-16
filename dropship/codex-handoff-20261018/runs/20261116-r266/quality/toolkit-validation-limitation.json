@@ -1,0 +1,1 @@
+{"officialToolkitAttempt":"node _validate_theme.mjs --help","result":"UNAVAILABLE","error":"ERR_MODULE_NOT_FOUND: @shopify/theme-check-common","installed":false,"fallback":"Schema JSON and code review, followed by Shopify native rendering/screenshot and bounded public preview checks; do not report official Theme Check as passed."}
