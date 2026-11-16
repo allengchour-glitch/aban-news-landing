@@ -1,0 +1,226 @@
+{% comment %}
+  Collection-owned description and leaf sibling navigation, below the native product list.
+  The collection description is emitted as stored so its existing links and markup survive.
+{% endcomment %}
+{%- liquid
+  assign lx_parent = collection.metafields.lux.eltern.value
+  assign lx_menu_siblings = '' | split: ','
+  assign lx_menu = section.settings.menu
+  assign lx_menu_parent = blank
+  assign lx_menu_children = '' | split: ','
+
+  if lx_menu != blank
+    for lx_top in lx_menu.links
+      assign lx_top_collection = lx_top.object
+      for lx_sub in lx_top.links
+        assign lx_sub_collection = lx_sub.object
+        if lx_sub.type == 'collection_link' and lx_sub_collection != blank and lx_sub_collection.id == collection.id
+          assign lx_menu_parent = lx_top_collection
+          assign lx_menu_siblings = lx_top.links
+        elsif lx_sub.type == 'collection_link' and lx_sub_collection == blank and lx_sub.url == collection.url
+          assign lx_menu_parent = lx_top_collection
+          assign lx_menu_siblings = lx_top.links
+        endif
+        for lx_leaf in lx_sub.links
+          assign lx_leaf_collection = lx_leaf.object
+          if lx_leaf.type == 'collection_link' and lx_leaf_collection != blank and lx_leaf_collection.id == collection.id
+            assign lx_menu_parent = lx_sub_collection
+            assign lx_menu_siblings = lx_sub.links
+          elsif lx_leaf.type == 'collection_link' and lx_leaf_collection == blank and lx_leaf.url == collection.url
+            assign lx_menu_parent = lx_sub_collection
+            assign lx_menu_siblings = lx_sub.links
+          endif
+        endfor
+      endfor
+    endfor
+  endif
+
+  if lx_parent == blank
+    assign lx_parent = lx_menu_parent
+  endif
+
+  assign lx_has_children = false
+  if collection.metafields.lux.unterfilter.value != blank
+    assign lx_has_children = true
+  else
+    for lx_item in lx_menu_siblings
+      assign lx_item_collection = lx_item.object
+      if lx_item.type == 'collection_link' and lx_item_collection != blank and lx_item_collection.id == collection.id and lx_item.links.size > 0
+        assign lx_has_children = true
+      endif
+    endfor
+  endif
+
+  assign lx_is_leaf = false
+  if lx_parent != blank and lx_has_children == false
+    assign lx_is_leaf = true
+  endif
+
+  assign lx_sibling_count = 0
+  capture lx_sibling_links
+    assign lx_seen_ids = '|'
+    if lx_parent != blank
+      for lx_sibling in lx_parent.metafields.lux.unterfilter.value
+        if lx_sibling != blank and lx_sibling.id != collection.id
+          assign lx_key = lx_sibling.id | prepend: '|' | append: '|'
+          unless lx_seen_ids contains lx_key
+            assign lx_seen_ids = lx_seen_ids | append: lx_sibling.id | append: '|'
+            assign lx_sibling_count = lx_sibling_count | plus: 1
+            echo '<li><a href="'
+            echo lx_sibling.url | escape
+            echo '">'
+            echo lx_sibling.title | escape
+            echo '</a></li>'
+          endunless
+        endif
+      endfor
+    endif
+    for lx_link in lx_menu_siblings
+      assign lx_sibling = lx_link.object
+      if lx_link.type == 'collection_link' and lx_sibling != blank and lx_sibling.id != collection.id
+        assign lx_key = lx_sibling.id | prepend: '|' | append: '|'
+        unless lx_seen_ids contains lx_key
+          assign lx_seen_ids = lx_seen_ids | append: lx_sibling.id | append: '|'
+          assign lx_sibling_count = lx_sibling_count | plus: 1
+          echo '<li><a href="'
+          echo lx_sibling.url | escape
+          echo '">'
+          echo lx_sibling.title | escape
+          echo '</a></li>'
+        endunless
+      endif
+    endfor
+  endcapture
+
+  assign lx_show_details = false
+  if collection.description != blank
+    assign lx_show_details = true
+  endif
+  if section.settings.additional_content != blank
+    assign lx_show_details = true
+  endif
+  if lx_is_leaf and lx_sibling_count > 0
+    assign lx_show_details = true
+  endif
+-%}
+
+{% if lx_show_details %}
+  <section class="lx-collection-details color-{{ section.settings.color_scheme }}" aria-labelledby="lx-collection-details-title-{{ section.id }}">
+    <div class="lx-collection-details__inner">
+      <h2 class="visually-hidden" id="lx-collection-details-title-{{ section.id }}">{{ 'lx_welten.details_section_heading' | t: title: collection.title | escape }}</h2>
+      {% if collection.description != blank %}
+        <details class="lx-collection-details__description">
+          <summary>{{ 'lx_welten.about_collection' | t: title: collection.title | escape }}</summary>
+          <div class="lx-collection-details__rte">{{ collection.description }}</div>
+        </details>
+      {% endif %}
+      {% if section.settings.additional_content != blank %}
+        <div class="lx-collection-details__additional rte">{{ section.settings.additional_content }}</div>
+      {% endif %}
+      {% if lx_is_leaf and lx_sibling_count > 0 %}
+        <nav class="lx-collection-details__siblings" aria-label="{{ 'lx_welten.neighbor_categories' | t | escape }}">
+          <h2>{{ 'lx_welten.more_categories' | t | escape }}</h2>
+          <ul role="list">{{ lx_sibling_links }}</ul>
+        </nav>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+{% stylesheet %}
+  .lx-collection-details {
+    padding-block: 1.5rem 3rem;
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  .lx-collection-details__inner {
+    width: min(100% - 2rem, 1000px);
+    margin-inline: auto;
+  }
+
+  .lx-collection-details__description,
+  .lx-collection-details__additional,
+  .lx-collection-details__siblings {
+    padding-block: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .lx-collection-details__description summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--color-foreground-heading);
+    font-weight: 650;
+  }
+
+  .lx-collection-details__rte {
+    max-width: 72ch;
+    padding-block-start: .75rem;
+    line-height: 1.6;
+  }
+
+  .lx-collection-details__rte a,
+  .lx-collection-details__siblings a {
+    color: var(--color-foreground-heading);
+    text-decoration: underline;
+    text-underline-offset: .16em;
+  }
+
+  .lx-collection-details__siblings h2 {
+    margin-block: 0 .5rem;
+    font-size: 1.125rem;
+  }
+
+  .lx-collection-details__siblings ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .lx-collection-details__siblings a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .lx-collection-details a:focus-visible,
+  .lx-collection-details summary:focus-visible {
+    outline: 3px solid var(--color-foreground-heading);
+    outline-offset: 3px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:lx_welten.details_section_name",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:lx_welten.menu_label",
+      "default": "main-menu"
+    },
+    {
+      "type": "richtext",
+      "id": "additional_content",
+      "label": "t:lx_welten.additional_content_label",
+      "info": "t:lx_welten.additional_content_info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}
+

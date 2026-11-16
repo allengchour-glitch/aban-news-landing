@@ -1,16 +1,24 @@
 {%- comment -%}
-  lx-menu-knoten (16.11.2026, Claude): findet die aktuelle Sammlung im Menü auch dann,
+  lx-menu-knoten (16.11.2026, Claude, Fassung 2): findet die aktuelle Sammlung im Menü auch dann,
   wenn der Menüeintrag als normaler Link (http_link) auf /collections/<handle> gespeichert ist.
   Codex' Abschnitte lx-collection-welten und lx-collection-details lasen nur collection_link;
   34 Übersichtsseiten (Damen, Herren, Geschenke …) bekamen darum keine Kacheln.
-  Ausgabe (eine Zeile, nichts sonst): K=<kind>,<kind>;E=<eltern>;G=<geschwister>,<geschwister>
-  K = Kinder aller Einträge, die auf diese Sammlung zeigen (vereinigt, Menüreihenfolge),
-  E und G = Eltern-Eintrag und dessen Kinder beim ERSTEN Treffer in Menüreihenfolge.
-  Nur Links der Form …/collections/<handle> zählen (kein Unterpfad); Seiten, Blogs, Produkte nicht.
+  Nur Kacheln, Nachbarn und Blatt-Erkennung nutzen dieses Snippet; der Brotkrumen-Pfad bleibt Codex' Logik.
+
+  Ausgabe (eine Zeile): ⟦K⟧kinder⟦E⟧eltern⟦G⟧geschwister⟦Z⟧ (⟦Z⟧ schliesst ab, damit leere Felder beim Zerlegen nicht wegfallen)
+  - Einträge in K und G: handle¦Menü-Beschriftung, getrennt durch ¶.
+  - K: Kinder der Treffer auf Ebene 2 (vereinigt); nur wenn diese keine Kinder haben, die Kinder des Treffers auf Ebene 1.
+    So bekommt eine Seite, auf die zusätzlich ein Hauptpunkt mit anderem Namen zeigt, nicht dessen ganze Liste.
+  - E und G: Eltern-Eintrag und dessen Kinder beim ERSTEN Treffer in Menüreihenfolge. Ein Eltern-Eintrag ohne
+    Sammlungs-URL oder mit derselben Sammlung zählt nicht. G enthält weder die Seite selbst noch den Eltern-Eintrag.
+  - Nur Links der Form …/collections/<handle> zählen (kein Unterpfad); Seiten, Blogs, Produkte nicht.
+  - Ausgeschlossen als Kachel und Nachbar: smoke-zubehoer (18+).
   Aufruf: capture x; render 'lx-menu-knoten', menu: section.settings.menu, ziel: collection.handle; endcapture
 {%- endcomment -%}
 {%- liquid
-  assign k_liste = ''
+  assign aus = '|smoke-zubehoer|'
+  assign k1 = ''
+  assign k2 = ''
   assign e_handle = ''
   assign g_liste = ''
   assign gefunden = false
@@ -23,18 +31,22 @@
           assign ah = rest | url_decode | downcase
         endunless
       endif
-      assign a_kinder = ''
-      for b in a.links
-        if b.url contains '/collections/'
-          assign rest = b.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
-          unless rest contains '/'
-            assign bh = rest | url_decode | downcase
-            assign a_kinder = a_kinder | append: bh | append: ','
-          endunless
-        endif
-      endfor
       if ah != '' and ah == ziel
-        assign k_liste = k_liste | append: a_kinder
+        for b in a.links
+          assign kh = ''
+          if b.url contains '/collections/'
+            assign rest = b.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+            unless rest contains '/'
+              assign kh = rest | url_decode | downcase
+            endunless
+          endif
+          assign kh_key = kh | prepend: '|' | append: '|'
+          if kh != '' and kh != ziel
+            unless aus contains kh_key
+              assign k1 = k1 | append: kh | append: '¦' | append: b.title | append: '¶'
+            endunless
+          endif
+        endfor
       endif
       for b in a.links
         assign bh = ''
@@ -44,38 +56,77 @@
             assign bh = rest | url_decode | downcase
           endunless
         endif
-        assign b_kinder = ''
-        for c in b.links
-          if c.url contains '/collections/'
-            assign rest = c.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
-            unless rest contains '/'
-              assign ch = rest | url_decode | downcase
-              assign b_kinder = b_kinder | append: ch | append: ','
-            endunless
-          endif
-        endfor
-        for c in b.links
-          if gefunden == false and c.url contains '/collections/'
-            assign rest = c.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
-            unless rest contains '/'
-              assign ch = rest | url_decode | downcase
-              if ch == ziel
-                assign gefunden = true
-                assign e_handle = bh
-                assign g_liste = b_kinder
-              endif
-            endunless
-          endif
-        endfor
         if bh != '' and bh == ziel
-          assign k_liste = k_liste | append: b_kinder
-          if gefunden == false
+          for c in b.links
+            assign kh = ''
+            if c.url contains '/collections/'
+              assign rest = c.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+              unless rest contains '/'
+                assign kh = rest | url_decode | downcase
+              endunless
+            endif
+            assign kh_key = kh | prepend: '|' | append: '|'
+            if kh != '' and kh != ziel
+              unless aus contains kh_key
+                assign k2 = k2 | append: kh | append: '¦' | append: c.title | append: '¶'
+              endunless
+            endif
+          endfor
+          if gefunden == false and ah != '' and ah != ziel
             assign gefunden = true
             assign e_handle = ah
-            assign g_liste = a_kinder
+            for g in a.links
+              assign gh = ''
+              if g.url contains '/collections/'
+                assign rest = g.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+                unless rest contains '/'
+                  assign gh = rest | url_decode | downcase
+                endunless
+              endif
+              assign gh_key = gh | prepend: '|' | append: '|'
+              if gh != '' and gh != ziel and gh != ah
+                unless aus contains gh_key
+                  assign g_liste = g_liste | append: gh | append: '¦' | append: g.title | append: '¶'
+                endunless
+              endif
+            endfor
           endif
+        endif
+        if gefunden == false and bh != '' and bh != ziel
+          for c in b.links
+            assign ch = ''
+            if c.url contains '/collections/'
+              assign rest = c.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+              unless rest contains '/'
+                assign ch = rest | url_decode | downcase
+              endunless
+            endif
+            if ch != '' and ch == ziel and gefunden == false
+              assign gefunden = true
+              assign e_handle = bh
+              for g in b.links
+                assign gh = ''
+                if g.url contains '/collections/'
+                  assign rest = g.url | split: '/collections/' | last | split: '?' | first | split: '#' | first
+                  unless rest contains '/'
+                    assign gh = rest | url_decode | downcase
+                  endunless
+                endif
+                assign gh_key = gh | prepend: '|' | append: '|'
+                if gh != '' and gh != ziel and gh != bh
+                  unless aus contains gh_key
+                    assign g_liste = g_liste | append: gh | append: '¦' | append: g.title | append: '¶'
+                  endunless
+                endif
+              endfor
+            endif
+          endfor
         endif
       endfor
     endfor
   endif
--%}K={{ k_liste }};E={{ e_handle }};G={{ g_liste }}
+  assign k_liste = k2
+  if k2 == ''
+    assign k_liste = k1
+  endif
+-%}⟦K⟧{{ k_liste }}⟦E⟧{{ e_handle }}⟦G⟧{{ g_liste }}⟦Z⟧

@@ -1,0 +1,50 @@
+{% comment %}
+  Accessible, full-image card for one existing child collection.
+  The link text names the resource; the image is decorative and uses empty alt.
+{% endcomment %}
+{%- liquid
+  assign lx_card_image = image_override
+  if lx_card_image == blank
+    assign lx_card_image = child.image
+    if lx_card_image.src contains 'pinnwand-'
+      assign lx_clean_product = child.products.first
+      if lx_clean_product.featured_image != blank
+        assign lx_card_image = lx_clean_product.featured_image
+      endif
+    endif
+  endif
+  if lx_card_image == blank
+    assign lx_card_product = child.products.first
+    if lx_card_product != blank
+      assign lx_card_image = lx_card_product.featured_image
+    endif
+  endif
+  assign lx_loading = 'lazy'
+  assign lx_fetchpriority = 'auto'
+  if index <= 2
+    assign lx_loading = 'eager'
+  endif
+  if index == 1
+    assign lx_fetchpriority = 'high'
+  endif
+-%}
+{%- if child != blank -%}
+  <li class="lx-welten__item">
+    <a class="lx-welten__card{% if lx_card_image == blank %} lx-welten__card--no-image{% endif %}" href="{{ child.url | escape }}" style="--lx-welten-image-position: {{ image_position | default: '50% 50%' | escape }};">
+      {% if lx_card_image != blank %}
+        {{ lx_card_image
+          | image_url: width: 1400
+          | image_tag:
+            widths: '320, 480, 640, 800, 1000, 1200, 1400',
+            sizes: '(min-width: 1100px) 25vw, (min-width: 750px) 33vw, 50vw',
+            loading: lx_loading,
+            fetchpriority: lx_fetchpriority,
+            alt: '',
+            class: 'lx-welten__card-image'
+        }}
+      {% endif %}
+      <span class="lx-welten__card-title">{{ child.title | escape }}</span>
+      <span class="lx-welten__card-arrow" aria-hidden="true">→</span>
+    </a>
+  </li>
+{%- endif -%}

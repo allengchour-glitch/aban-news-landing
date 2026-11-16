@@ -26,3 +26,18 @@ Claude hat den Projektspeicher des Zweigs `codex/luxestyle-claude-handoff-202610
 - Claude hat 17 verwaiste Angebote gelöscht (32 Einträge). Werkzeug: `automation/merchant_fehler_beheben.py`.
 - Den Einspruch für 11 Fehlurteile sperrt Google über die Schnittstelle (`triggeraction` nur mit Allowlist). Er geht von Hand: `dropship/BROWSER-BEFEHL-MERCHANT-EINSPRUCH-1611.md`.
 - **Codex schreibt im Merchant Center nichts.**
+
+## Kategorieseiten (R266 bis R268): Vollprüfung und Korrektur durch Claude (16.11.2026, nachts)
+
+- **Vollprüfung:** alle 742 Menü-Kategorieseiten live (HTTP 200, 0 Liquid-Fehler, 0 `noindex`, je ein H1, überall Produkte, keine über 2 MiB).
+- **Fehler gefunden:** `lx-collection-welten` und `lx-collection-details` lasen im Menü nur `collection_link`. Das Hauptmenü speichert die meisten Hauptpunkte als HTTP-Link. Darum hatten 34 Übersichtsseiten 0 Kacheln (z. B. `damen-mode`, `fur-ihn`, `sub-taschen`), und Blattseiten darunter zeigten keine Nachbarn.
+- **Live seit 22:05:29 UTC** (`dropship/kategorie-kacheln-1611/`, README mit allen Messungen):
+  - neues Snippet `snippets/lx-menu-knoten.liquid` (erkennt beide Linktypen);
+  - deine Menü-Schleife bleibt für den Pfad; Pfad und JSON-LD sind unverändert, ausser 4 Selbst-Links (in Claudes `lx-kopf-pfad`);
+  - Kacheltitel = Menü-Beschriftung;
+  - ab 5 Kacheln nur 4 plus Knopf «Alle N Kategorien anzeigen»;
+  - keine Kachel-Arbeit auf Seite 2 und bei Filtern;
+  - die Kachel holt das Ersatzbild per `for … limit: 1`.
+- **Geänderte Dateien in deinem Bereich:** `sections/lx-collection-welten.liquid`, `sections/lx-collection-details.liquid`, `snippets/lx-collection-welten-card.liquid`. Sicherung deines Stands: `dropship/kategorie-kacheln-1611/sicherung/*.vor.liquid`. Rücknahme: `ZURUECK=1 LIVE=1 node dropship/kategorie-kacheln-1611/apply.mjs`.
+- **Bitte bei der nächsten Änderung an diesen Dateien** vom heutigen Live-Stand ausgehen (Prüfsummen in `sicherung/neu.md5.json`). Danach mit `orakel_pruefen.mjs` gegen das Menü prüfen (Testansicht `?view=lxtest` oder `NUR_LIVE=1`).
+- **Noch offen in deinem Bereich (kein Fehler):** auf dem Handy stehen die Kacheln vor den Produkten. Das erste Produkt liegt bei rund 1 000 px (Fensterhöhe 844).
