@@ -105,6 +105,29 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
+**📌 2026-11-16 abends, spät (🧾 Merchant «13 Fehlergruppen» · 🎨 Codex-Theme ist MAIN, nachgemessen · 🔎 Index-Liste 16.11.; Besitzer «13 fehlergruppen», «brauche 10 indexdierungslink für heute», Codex-Projektgedächtnis-Link; PR #3222, #3223, #3224):**
+- **Theme-Wechsel (GEMESSEN 20:01 UTC):**
+  - Der Besitzer hat Codex' Theme `214169584007` veröffentlicht (R268), es ist jetzt MAIN. `213991391623` ist unveröffentlicht.
+  - Prüfsummen alt gegen neu: 18 Dateien verschieden, alle Codex-Änderungen vom 16.11.
+  - Im alten MAIN wurde nach Codex' Kopie (16:57 UTC) nichts mehr geändert. **Keine Claude-Änderung verloren.**
+  - Kategorieseiten: Statt `lx-kopf-kompakt`, `lx-kopf-chips` und FAQ-Block stehen jetzt `lx-collection-welten` (Bildkacheln) und `lx-collection-details` (Beschreibung aufklappbar unter den Produkten). Das ist der Entscheid des Besitzers, nicht zurückgenommen.
+  - Live: 6 von 6 Seiten HTTP 200, 0 Liquid-Fehler, höchstens 2 037 396 Byte. Der FAQ-Block trug kein Schema.
+  - **og:price folgt jetzt der gewählten Variante** (Codex R262, live; unabhängige Prüfung 10 von 10). Rest: Preise ab 1000 erscheinen als «1,180.90». Fix wäre `| remove: ','`, nicht gemacht.
+  - **Merke:** Theme-Arbeit ab jetzt auf MAIN `214169584007`, nicht mehr auf `213991391623`.
+- **Index:** Die Liste vom 15.11. ist ganz indexiert. Neue Liste `dropship/INDEX-LISTE-1611.md` mit 10 Seiten (alle 200, kein noindex, 1,50 bis 1,76 MB). Messen am 17.11. früh.
+- **Merchant (GEMESSEN 20:00 UTC, `dropship/merchant-fehler-1611/README.md`):**
+  - Liechtenstein «Versand fehlt» 0, am Vortag 160 095. Der Autofeed ist weg. 137 106 Zeilen, nur Shopify-App.
+  - Die meisten Gruppen betreffen nur Remarketing.
+  - Sperrend sind 45 Angebote in 36 Produkten. **17 davon sind verwaist** (Shopify-Variante gelöscht), darunter **alle 9 «Anzeigen-Overlay»**: Google hält alte Daten und Bilder.
+  - Googles Aktion «Meiner Meinung nach liegt kein Problem vor» (`disagree`) ist über `issueresolution triggeraction` auslösbar. Lesemodus `aktionen` in `merchant_bildprobleme.py`.
+  - **Besitzer auf Rückfrage: «Ja, Einspruch» (11 Fehlurteile) und «Löschen» (17 verwaiste).** Werkzeug `automation/merchant_fehler_beheben.py`, Workflow `merchant-fehler-beheben.yml`, Ziele in `plan.json`. Ergebnis: **Lauf 43949547904 (20:25 bis 20:30 UTC):** 32 von 32 verwaisten Einträgen gelöscht (17 Angebote, de und fr; Variante vorher frisch als fehlend bestätigt; 90 s später 0 sichtbar). **Einspruch 0 von 18: HTTP 403**, `triggeraction` ist nur für freigeschaltete Projekte offen (QUELLE Google-Doku). Einspruch von Hand: `dropship/BROWSER-BEFEHL-MERCHANT-EINSPRUCH-1611.md` (Besitzer oder PC-Claude; bei Tabak und Waffen einzeln, nie die Gruppen-Aktion). Nachmessen 17.11. (`laender`).
+- **Lehren:**
+  1. Ein Theme, das der Besitzer veröffentlicht, ändert die MAIN-ID. Vor jeder Theme-Arbeit `themes(roles:MAIN)` lesen und alt gegen neu per `checksumMd5` vergleichen.
+  2. «Overlay bleibt trotz neuem Bild» kann ein verwaistes Angebot sein: zuerst die Variante der Angebots-ID im Shop lesen (`nodes`), dann am Bild arbeiten.
+  3. `python3 -I` ignoriert `PYTHONDONTWRITEBYTECODE`; beim Bündeln von Testordnern `__pycache__` vorher löschen (eine `.pyc` rutschte in einen Commit, mit Folge-Commit entfernt).
+  4. Ein neuer Workflow mit `workflow_dispatch` lässt sich erst starten, wenn er auf `main` liegt.
+  5. Eine Methode, die rendert, heisst nicht, dass ihr Gegenstück auslösen darf: vor dem Bau eines Schreibwegs die Referenzseite der Schreibmethode lesen (`triggeraction` steht dort als Allowlist).
+  6. Der Trockenlauf fand zweimal, was der Test nicht fand: den Pflichtgrund im Dialog, dann die genauen Optionstexte. Erst der zweite Trockenlauf mit 0 «übersprungen» berechtigt zum scharfen Lauf.
 **📌 2026-11-16 abends (🤖 ABAN-Papierbot: Codex-Übergabe aus Drive geprüft, NICHT startklar, nichts nach `main`; Besitzer: Drive-Link `CLAUDE-CODE-BOT-AKTUELL.md`, Auswahl «Prüfen und ins Repo», dann «nutze model für token sparen»; Doku `docs/CODEX-CLAUDE-UEBERGABE.md` Abschnitt «ABAN-Papierbot»):**
 - **GEMESSEN:**
   - Prüfsummen: ZIP `5954af99…` und Bootstrap `d623973f…` gleich Übergabe und SHA-Datei.

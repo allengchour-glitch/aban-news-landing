@@ -71,3 +71,31 @@ Hier ist nichts zu tun.
 - **Bildlink (Laternenstab, QS19):** Googles Verarbeitung. Abwarten.
 
 **Wirkung auf Verkäufe:** klein. Es geht um 36 von rund 25 500 Produkten der App.
+
+## Ausführung (16.11.2026, Freigabe des Besitzers auf Rückfrage: «Ja, Einspruch» und «Löschen»)
+
+**Werkzeug:** `automation/merchant_fehler_beheben.py`, Workflow `merchant-fehler-beheben.yml`, Ziele in `plan.json`.
+
+**Trockenläufe:**
+- 43948374756: Der Einspruch-Dialog verlangt den Pflichtgrund «Nennen Sie einen Grund». Das Werkzeug übersprang korrekt.
+- 43949111008: Jetzt fester Grund je Code. Es waren 18 Einsprüche und 32 Löschungen geplant, 0 Fehler.
+
+**Scharfer Lauf 43949547904 (20:25 bis 20:30 UTC, GEMESSEN):**
+- **32 von 32 verwaisten Einträgen gelöscht.**
+  - Es sind 17 Angebote, deutsch und französisch.
+  - Darunter sind alle 9 «Anzeigen-Overlay» und der Milchshaker («Lokale Anforderungen»).
+  - Vor jedem Löschen war die Shopify-Variante frisch als fehlend bestätigt.
+  - 90 Sekunden später gelesen: 0 noch sichtbar.
+- **Einspruch 0 von 18:** Alle Aufrufe gaben HTTP 403 «This API endpoint is not enabled for your cloud project id».
+  - QUELLE Google-Doku: `triggeraction` ist nur für freigeschaltete Projekte offen (Antrag über das «Shopping API Support Form»).
+  - Das Rendern der Probleme geht, das Auslösen nicht.
+  - **Weg:** Einspruch von Hand im Merchant Center, Auftrag `dropship/BROWSER-BEFEHL-MERCHANT-EINSPRUCH-1611.md`.
+
+**Was danach noch sperrt** (Hypothese, bis zur nächsten Messung):
+- Tabak (6 Fehlurteile, 1 echt)
+- Lebende Tiere (4)
+- Waffenteile (Schrittzähler-Uhr, 2 Nachtsichtgeräte, Gunstock)
+- Alkohol (nur Liechtenstein)
+- Bildlink (2, Google verarbeitet)
+
+**Nachmessen:** 17.11. mit `merchant-bildprobleme.yml`, Modus `laender`. Erwartung: «Anzeigen-Overlay» und «Lokale Anforderungen» bei 0.

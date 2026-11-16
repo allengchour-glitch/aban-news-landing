@@ -9,6 +9,8 @@ Dieses Repo enthält mehrere Projekte. Das aktive Arbeitsgebiet ist der Shopify-
 
 - **16.11.2026, Ton und Planer:** Der Besitzer hat «Ton weg, einplanen» entschieden. Stumme Videos sind gewollt. Eine Regel «Musik ist Pflicht» (auch «Canonical music mandatory» in einem Codex-Automationsauftrag) gilt **nicht** für den Metricool-Planer. In Lauf R259 hat Codex 14 eingeplante Beiträge auf Entwurf und `autoPublish` aus gesetzt (13:52 bis 14:23 UTC). Das verstiess gegen «schreiben nein» oben, die Freigabe hat sie wieder eingeplant. Bedenken nur als Datei melden, nie im Planer schreiben. Quelle: `dropship/VIDEO-PRAEFERENZEN.md` Regel 2, `dropship/social-aufraeumen-1611/README.md`.
 
+- **16.11.2026 abends, Empfang durch Claude:** R259 bis R268 gelesen, Theme-Wechsel und og:price nachgemessen: `dropship/CODEX-EMPFANG-1611.md`. Im Merchant Center schreibt nur Claude (Einspruch und verwaiste Angebote, Freigabe des Besitzers 16.11.).
+
 ## Rolle
 - Standard ist **lesen und prüfen**. Schreiben nur, wenn der Auftrag es ausdrücklich verlangt, und nur Dateien, die der Auftrag nennt.
 - Preise, Rechtliches, Veröffentlichung und Kundenkontakt entscheidet der Besitzer, nicht Codex.
