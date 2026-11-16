@@ -6,13 +6,19 @@ import merchant_versand as mv
 
 KONTO = "4815162342"  # Kontonummer der Attrappe: darf nie in Ausgabe, Zusammenfassung oder Telegram stehen
 CH1 = {"serviceName": "flat_7.00_CHF_standard", "active": True, "deliveryCountries": ["CH"], "currencyCode": "CHF",
-       "deliveryTime": {"minTransitDays": 9, "maxTransitDays": 19, "minHandlingDays": 1, "maxHandlingDays": 1},
+       "deliveryTime": {"minTransitDays": 9, "maxTransitDays": 19, "minHandlingDays": 1, "maxHandlingDays": 1,
+                        "cutoffTime": {"hour": 14, "minute": 0, "timeZone": "Europe/Zurich"}},
        "rateGroups": [{"singleValue": {"flatRate": {"amountMicros": "7000000", "currencyCode": "CHF"}}}], "shipmentType": "DELIVERY"}
 CH2 = {"serviceName": "price_based_CHF_gratis", "active": True, "deliveryCountries": ["CH"], "currencyCode": "CHF",
        "deliveryTime": {"minTransitDays": 9, "maxTransitDays": 19, "minHandlingDays": 1, "maxHandlingDays": 1},
        "minimumOrderValue": {"amountMicros": "45000000", "currencyCode": "CHF"},
        "rateGroups": [{"mainTable": {"rows": [{"cells": [{"noShipping": True}]}]}}]}
 LAGER = [{"name": "Lager Zürich", "shippingAddress": {"regionCode": "CH", "postalCode": "8000"}}]
+MOFR = {"businessDays": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"]}
+# Soll-Lieferzeit für LI: nur die Annahmezeit aus der Vorlage, eigene Tage, Werktage ausdrücklich Montag bis Freitag
+SOLL_OHNE_ANNAHME = {"minHandlingDays": 1, "maxHandlingDays": 3, "minTransitDays": 10, "maxTransitDays": 29,
+                     "handlingBusinessDayConfig": MOFR, "transitBusinessDayConfig": MOFR}
+SOLL_LZ = dict(SOLL_OHNE_ANNAHME, cutoffTime={"hour": 14, "minute": 0, "timeZone": "Europe/Zurich"})
 
 
 class Antwort:
@@ -67,6 +73,15 @@ class FalscheApi:
         if "api.telegram.org" in url:
             self.telegram.append(json["text"]); return Antwort(200, {"ok": True})
         self.inserts.append(copy.deepcopy(json))
+        namen = [d.get("serviceName") for d in json.get("services") or [] if isinstance(d, dict)]
+        if len(namen) != len(set(namen)):  # Referenz: serviceName muss im Konto eindeutig sein
+            return Antwort(400, None, f"duplicate serviceName for accounts/{KONTO}")
+        for d in json.get("services") or []:
+            dt = (d.get("deliveryTime") or {}) if isinstance(d, dict) else {}
+            if dt.get("transitTimeTable") and ("minTransitDays" in dt or "maxTransitDays" in dt):
+                return Antwort(400, None, "transitTimeTable and min/maxTransitDays both set")
+            if dt.get("warehouseBasedDeliveryTimes") and any(k in dt for k in ("minTransitDays", "maxTransitDays", "transitTimeTable")):
+                return Antwort(400, None, "warehouseBasedDeliveryTimes with other transit fields")
         if self.insert_code != 200:
             return Antwort(self.insert_code, None, f"{self.fehlertext} for accounts/{KONTO} and {KONTO}")
         if json.get("etag") != self.aktuell_etag:  # veraltetes etag: Google lehnt ab
@@ -134,6 +149,11 @@ def laufe(api, modus, env=None):
         os.chdir(cwd); os.environ.clear(); os.environ.update(alt)
 
 
+def ergebnis():
+    z = [l for l in AUSGABE[0].splitlines() if l.startswith("ERGEBNIS")]
+    return z[-1] if z else ""
+
+
 def ohne_konto(api):
     texte = AUSGABE[:3] + api.telegram
     return all(KONTO not in t for t in texte)
@@ -152,7 +172,11 @@ pruef("waechter legt an: Exit 0", c == 0); pruef("genau ein insert", len(a.inser
 s = a.inserts[0]["services"] if a.inserts else []
 pruef("alte Dienste unverändert mitgeschickt", s[:2] == [CH1, CH2])
 pruef("neuer Dienst LI 14.90", len(s) == 3 and s[2]["deliveryCountries"] == ["LI"] and s[2]["rateGroups"][0]["singleValue"]["flatRate"]["amountMicros"] == "14900000")
-pruef("Lieferzeit vom Schweizer Dienst", len(s) == 3 and s[2]["deliveryTime"] == CH1["deliveryTime"])
+pruef("Lieferzeit: Vorlage vom Schweizer Dienst, Zeiten für Liechtenstein",
+      len(s) == 3 and s[2]["deliveryTime"] == SOLL_LZ)
+pruef("Lieferzeit LI: 1-3 Bearbeitung, 10-29 Transit", len(s) == 3 and s[2]["deliveryTime"]["minHandlingDays"] == 1
+      and s[2]["deliveryTime"]["maxHandlingDays"] == 3 and s[2]["deliveryTime"]["minTransitDays"] == 10
+      and s[2]["deliveryTime"]["maxTransitDays"] == 29 and s[2]["deliveryTime"]["cutoffTime"] == CH1["deliveryTime"]["cutoffTime"])
 pruef("etag mitgeschickt", a.inserts and a.inserts[0].get("etag") == "e1")
 pruef("Lager unverändert mitgeschickt", a.inserts and a.inserts[0].get("warehouses") == LAGER)
 pruef("name nicht im insert-Body", a.inserts and "name" not in a.inserts[0])
@@ -329,7 +353,7 @@ CH_OHNE_ZEIT = {k: v for k, v in CH1.items() if k != "deliveryTime"}
 CH_OHNE_ZEIT["serviceName"] = "ohne Zeit"
 a = FalscheApi([CH_LOKAL, CH_INAKTIV, CH_OHNE_ZEIT, CH1, CH2]); c = laufe(a, "waechter")
 s3 = a.inserts[0]["services"][-1] if a.inserts else {}
-pruef("Vorlage: lokal und inaktiv übersprungen", c == 0 and s3.get("deliveryTime") == CH1["deliveryTime"])
+pruef("Vorlage: lokal und inaktiv übersprungen", c == 0 and s3.get("deliveryTime") == SOLL_LZ)
 pruef("Vorlage: Versandart übernommen", s3.get("shipmentType") == "DELIVERY")
 a = FalscheApi([CH_LOKAL, CH_INAKTIV, CH_OHNE_ZEIT]); pruef("Vorlage: nur lokal/inaktiv/ohne Zeit: Exit 5", laufe(a, "waechter") == 5 and a.inserts == [])
 # 31. LI-Dienst mit Abholung/lokal zählt nicht als vorhanden; SHIPMENT_TYPE_UNSPECIFIED zählt
@@ -404,6 +428,392 @@ pruef("zurueck ignoriert, Lager weg: Exit 7", c == 7); pruef("zurueck ignoriert,
 alt_v = mv.RUECKLESEN_VERSUCHE; mv.RUECKLESEN_VERSUCHE = 0
 a = FalscheApi([CH1, CH2]); c = laufe(a, "waechter"); mv.RUECKLESEN_VERSUCHE = alt_v
 pruef("Versuche 0: einmal gelesen, Exit 0", c == 0 and a.gets == 2 and SCHLAEFE == [])
+
+# 40. Lieferzeit angleichen: unser Dienst mit den alten Schweizer Zeiten
+alt_eigen = copy.deepcopy(eigen); alt_eigen["deliveryTime"] = dict(CH1["deliveryTime"])
+a = FalscheApi([CH1, CH2, alt_eigen], lager=LAGER); c = laufe(a, "waechter")
+pruef("Wächter, Lieferzeit alt: Exit 0, kein insert", c == 0 and a.inserts == [])
+pruef("Wächter, Lieferzeit alt: Hinweis im Log", "weicht von der Vorgabe" in AUSGABE[0] and "Transit 9-19" in AUSGABE[0])
+pruef("Wächter, Lieferzeit alt: kein Telegram", a.telegram == [])
+a = FalscheApi([CH1, CH2, alt_eigen]); c = laufe(a, "pruefen", {"ZEITPLAN": "1"})
+pruef("Zeitplan prüfen, Lieferzeit alt: Exit 0 (nicht 10), kein insert", c == 0 and a.inserts == [])
+# 41. schreiben gleicht an: ein insert, nur unsere Lieferzeit ändert sich
+a = FalscheApi([CH1, CH2, alt_eigen], lager=LAGER); c = laufe(a, "schreiben")
+pruef("schreiben, Lieferzeit: Exit 0", c == 0); pruef("schreiben, Lieferzeit: ein insert", len(a.inserts) == 1)
+s4 = a.inserts[0]["services"] if a.inserts else []
+pruef("schreiben, Lieferzeit: CH-Dienste unverändert", s4[:2] == [CH1, CH2])
+pruef("schreiben, Lieferzeit: neue Zeiten, Rest des Dienstes gleich",
+      len(s4) == 3 and s4[2]["deliveryTime"] == SOLL_LZ
+      and {k: v for k, v in s4[2].items() if k != "deliveryTime"} == {k: v for k, v in alt_eigen.items() if k != "deliveryTime"})
+pruef("schreiben, Lieferzeit: Lager und etag", a.inserts and a.inserts[0].get("warehouses") == LAGER and a.inserts[0].get("etag") == "e1")
+pruef("schreiben, Lieferzeit: Text", "angeglichen" in AUSGABE[0] and "GLEICH" in AUSGABE[0])
+pruef("schreiben, Lieferzeit: kein Telegram", a.telegram == [])
+# 42. danach: nichts mehr zu tun
+a.stand, a.neu = a.neu or a.stand, None; n = len(a.inserts); c = laufe(a, "schreiben")
+pruef("schreiben, Lieferzeit stimmt: nichts zu tun", c == 0 and len(a.inserts) == n and "nichts zu tun" in AUSGABE[0])
+# 43. Verzug beim Angleichen: wiederholen, dann Erfolg; dauernd: mit Antwort 0, ohne Antwort 7
+a = FalscheApi([CH1, CH2, alt_eigen], verzug=3); c = laufe(a, "schreiben")
+pruef("Lieferzeit mit Verzug: Exit 0 nach Warten", c == 0 and SCHLAEFE == [15.0, 15.0, 15.0])
+a = FalscheApi([CH1, CH2, alt_eigen], verzug=99); c = laufe(a, "schreiben")
+pruef("Lieferzeit dauernder Verzug mit Antwort: Exit 0 mit Hinweis", c == 0 and "noch nicht sichtbar" in AUSGABE[0])
+a = FalscheApi([CH1, CH2, alt_eigen], verzug=99); a.antwort_ohne_json = True; c = laufe(a, "schreiben")
+pruef("Lieferzeit dauernder Verzug ohne Antwort: Exit 7", c == 7)
+# 44. Google verändert dabei einen App-Dienst: Exit 7, nicht gewartet
+a = FalscheApi([CH1, CH2, alt_eigen]); a.aendere_app_dienst = True; c = laufe(a, "schreiben")
+pruef("Lieferzeit, App-Dienst verändert: Exit 7", c == 7 and SCHLAEFE == [])
+# 45. Antwort ohne neue Lieferzeit: Exit 7
+class AntwortAlt(FalscheApi):
+    def post(self, url, json=None, **kw):
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and isinstance(r._d, dict):
+            for d in r._d.get("services", []):
+                if d["serviceName"] == mv.NAME: d["deliveryTime"] = dict(CH1["deliveryTime"])
+        return r
+a = AntwortAlt([CH1, CH2, alt_eigen]); c = laufe(a, "schreiben")
+pruef("Lieferzeit, Antwort ohne neue Zeit: Exit 7", c == 7)
+# 46. ohne etag: nicht angleichen
+a = FalscheApi([CH1, CH2, alt_eigen], etag=None); c = laufe(a, "schreiben")
+pruef("Lieferzeit ohne etag: Exit 4, kein insert", c == 4 and a.inserts == [])
+# 47. Fehler nach dem Senden der Lieferzeit: Text nennt das Senden, ohne Kontonummer
+alt_lnd = mv.lieferzeit_nach_dem_senden
+def wirft_l(*a_): raise KeyError("x")
+mv.lieferzeit_nach_dem_senden = wirft_l
+a = FalscheApi([CH1, CH2, alt_eigen]); c = laufe(a, "schreiben"); mv.lieferzeit_nach_dem_senden = alt_lnd
+pruef("Lieferzeit, Fehler nach Senden: Exit 9 und Text", c == 9 and "Lieferzeit wurde gesendet" in AUSGABE[0] and ohne_konto(a))
+# 47b. Abbruch nach dem Senden der Lieferzeit: Code bleibt, Text nennt das Senden
+def wirft_a(*a_): raise mv.Abbruch(4, "Lesefehler")
+mv.lieferzeit_nach_dem_senden = wirft_a
+a = FalscheApi([CH1, CH2, alt_eigen]); c = laufe(a, "schreiben"); mv.lieferzeit_nach_dem_senden = alt_lnd
+pruef("Lieferzeit, Abbruch nach Senden: Code 4 bleibt", c == 4 and "Lieferzeit wurde gesendet" in AUSGABE[0])
+# 47c. Lager verändert beim Angleichen: Exit 7
+a = FalscheApi([CH1, CH2, alt_eigen], lager=LAGER); a.aendere_lager = True; c = laufe(a, "schreiben")
+pruef("Lieferzeit, Lager verändert: Exit 7 mit Grund", c == 7 and "übrige Dienste oder Lager" in AUSGABE[0])
+# 47d. jedes Zurücklesen scheitert: mit Antwort Exit 7 (nie Erfolg)
+a = FalscheApi([CH1, CH2, alt_eigen]); a.lesefehler_nach_insert = 99; c = laufe(a, "schreiben")
+pruef("Lieferzeit, Zurücklesen scheitert immer: Exit 7", c == 7 and "Zurücklesen scheiterte" in AUSGABE[0])
+a = FalscheApi([CH1, CH2, alt_eigen]); a.lesefehler_nach_insert = 2; c = laufe(a, "schreiben")
+pruef("Lieferzeit, zwei Lesefehler, dann lesbar: Exit 0", c == 0 and "GLEICH" in AUSGABE[0])
+# 48. fremder aktiver LI-Dienst: Lieferzeit wird nie angefasst
+fremd_li = {"serviceName": "App LI", "active": True, "deliveryCountries": ["LI"], "currencyCode": "CHF",
+            "deliveryTime": {"minTransitDays": 2, "maxTransitDays": 3}}
+a = FalscheApi([CH1, fremd_li]); c = laufe(a, "schreiben")
+pruef("fremder LI-Dienst, schreiben: nichts zu tun", c == 0 and a.inserts == [])
+# 50. Angleichen, Google speichert unseren Dienst inaktiv: Exit 7 ohne langes Warten (Prüfer-Befund 1)
+a = FalscheApi([CH1, CH2, alt_eigen]); a.speicher_inaktiv = True; c = laufe(a, "schreiben")
+pruef("Lieferzeit, inaktiv gespeichert: Exit 7", c == 7)
+pruef("Lieferzeit, inaktiv gespeichert: nicht gewartet", SCHLAEFE == [])
+pruef("Lieferzeit, inaktiv gespeichert: Text", "nicht aktiv" in AUSGABE[0] and "Senden" in AUSGABE[0])
+# 51. Antwort mit neuer Zeit, gespeichert ist ein neues etag mit der alten Zeit: Exit 7 ohne Warten
+class SpeichertAlt(FalscheApi):
+    def post(self, url, json=None, **kw):
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and self.neu:
+            self.neu["services"] = copy.deepcopy(self.stand["services"])
+        return r
+a = SpeichertAlt([CH1, CH2, alt_eigen]); c = laufe(a, "schreiben")
+pruef("Lieferzeit, neues etag ohne neue Zeit: Exit 7", c == 7 and SCHLAEFE == [])
+pruef("Lieferzeit, neues etag ohne neue Zeit: Text", "nicht wie gesendet" in AUSGABE[0])
+a = FalscheApi([CH1, CH2, alt_eigen]); a.ignoriere_dienste = True; c = laufe(a, "schreiben")
+pruef("Lieferzeit, Antwort mit alter Zeit: Exit 7", c == 7 and "insert-Antwort" in ergebnis())
+# 52. Zahlen als Zeichenkette: gilt als gleich, kein Dauersenden (Prüfer-Befund 2)
+str_eigen = copy.deepcopy(eigen); str_eigen["deliveryTime"] = {k: str(v) for k, v in eigen["deliveryTime"].items() if k in mv.LIEFERZEIT_LI}
+a = FalscheApi([CH1, CH2, str_eigen]); c = laufe(a, "schreiben")
+pruef("Lieferzeit als Zeichenkette: nichts zu tun", c == 0 and a.inserts == [] and "nichts zu tun" in AUSGABE[0])
+a = FalscheApi([CH1, CH2, str_eigen]); c = laufe(a, "waechter")
+pruef("Lieferzeit als Zeichenkette, Wächter: kein Hinweis", c == 0 and "weicht" not in AUSGABE[0] and a.telegram == [])
+# 53. Transit-Tabelle am eigenen Dienst: schreiben Exit 8 ohne insert, Wächter nur Hinweis (Prüfer-Befund 3)
+tab_eigen = copy.deepcopy(alt_eigen); tab_eigen["deliveryTime"]["transitTimeTable"] = {"rows": []}
+a = FalscheApi([CH1, CH2, tab_eigen]); c = laufe(a, "schreiben")
+pruef("Transit-Tabelle, schreiben: Exit 8 ohne insert", c == 8 and a.inserts == [])
+a = FalscheApi([CH1, CH2, tab_eigen]); c = laufe(a, "waechter")
+pruef("Transit-Tabelle, Wächter: Hinweis, Exit 0", c == 0 and a.inserts == [] and "Transit-Tabelle" in AUSGABE[0])
+lag_eigen = copy.deepcopy(eigen); lag_eigen["deliveryTime"]["warehouseBasedDeliveryTimes"] = [{"warehouse": "x"}]
+a = FalscheApi([CH1, CH2, lag_eigen]); c = laufe(a, "schreiben")
+pruef("Lager-Lieferzeiten, sonst richtig: schreiben Exit 8 ohne insert", c == 8 and a.inserts == [])
+# 54. Werktage der Vorlage (mit Samstag) werden nicht übernommen (Prüfer-Befund 4)
+SAMSTAG = {"businessDays": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]}
+CH1S = copy.deepcopy(CH1); CH1S["deliveryTime"]["handlingBusinessDayConfig"] = SAMSTAG
+CH1S["deliveryTime"]["transitBusinessDayConfig"] = SAMSTAG
+d54 = mv.neuer_dienst({"services": [CH1S]})["deliveryTime"]
+pruef("Vorlage mit Samstag: Werktage ausdrücklich Montag bis Freitag", all(d54.get(k) == MOFR for k in mv.WERKTAG_FELDER))
+pruef("Vorlage mit Samstag: Annahmezeit und LI-Zeiten", d54.get("cutoffTime") == CH1["deliveryTime"]["cutoffTime"]
+      and all(d54[k] == v for k, v in mv.LIEFERZEIT_LI.items()))
+CH1T = copy.deepcopy(CH1); CH1T["deliveryTime"]["warehouseBasedDeliveryTimes"] = [{"w": 1}]
+pruef("Vorlage mit Lager-Lieferzeiten: nicht übernommen",
+      "warehouseBasedDeliveryTimes" not in mv.neuer_dienst({"services": [CH1T]})["deliveryTime"])
+# 55. eigener Dienst mit Samstag: Wächter Hinweis, schreiben entfernt die Werktage, Zahlen bleiben
+sa_eigen = copy.deepcopy(eigen); sa_eigen["deliveryTime"]["handlingBusinessDayConfig"] = SAMSTAG
+a = FalscheApi([CH1, CH2, sa_eigen]); c = laufe(a, "waechter")
+pruef("eigener Dienst mit Samstag, Wächter: Hinweis", c == 0 and a.inserts == [] and "Montag bis Freitag" in AUSGABE[0])
+a = FalscheApi([CH1, CH2, sa_eigen]); c = laufe(a, "schreiben")
+g55 = [d for d in (a.inserts[0]["services"] if a.inserts else []) if d["serviceName"] == mv.NAME]
+pruef("eigener Dienst mit Samstag, schreiben: Werktage Mo-Fr, GLEICH", c == 0 and len(g55) == 1
+      and g55[0]["deliveryTime"]["handlingBusinessDayConfig"] == MOFR and "GLEICH" in AUSGABE[0])
+mofr = copy.deepcopy(eigen); mofr["deliveryTime"]["transitBusinessDayConfig"] = {"businessDays": list(reversed(mv.WERKTAGE))}
+a = FalscheApi([CH1, CH2, mofr]); c = laufe(a, "schreiben")
+pruef("Werktage ausdrücklich Mo-Fr: nichts zu tun", c == 0 and a.inserts == [])
+# 56. zwei eigene aktive Dienste, Google speichert nur einen neu: Exit 7 (Prüfer-Befund 5)
+alt_eigen2 = copy.deepcopy(alt_eigen); alt_eigen2["rateGroups"][0]["name"] = "zweite Gruppe"
+alt_eigen2["serviceName"] = "STANDARD LIECHTENSTEIN"  # nur Verteidigung: zweiter eigener Dienst in anderer Schreibweise
+class NurEiner(FalscheApi):
+    def post(self, url, json=None, **kw):
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and self.neu:
+            for d in self.neu["services"]:
+                if d.get("rateGroups") and d["rateGroups"][0].get("name") == "zweite Gruppe":
+                    d["deliveryTime"] = dict(CH1["deliveryTime"])
+        return r
+a = NurEiner([CH1, CH2, alt_eigen, alt_eigen2]); c = laufe(a, "schreiben")
+pruef("zwei eigene, nur einer gespeichert: Exit 7", c == 7)
+a = FalscheApi([CH1, CH2, alt_eigen, alt_eigen2]); c = laufe(a, "schreiben")
+pruef("zwei eigene, beide gespeichert: Exit 0", c == 0 and "GLEICH" in AUSGABE[0])
+# 57. eigener inaktiver Dienst plus fremder aktiver LI-Dienst: nichts zu tun, kein insert
+inakt_alt = copy.deepcopy(alt_eigen); inakt_alt["active"] = False
+a = FalscheApi([CH1, CH2, inakt_alt, fremd_li]); c = laufe(a, "schreiben")
+pruef("eigener inaktiv + fremder aktiv: nichts zu tun", c == 0 and a.inserts == [] and "nichts zu tun" in AUSGABE[0])
+# 58. eigener inaktiver und eigener aktiver Dienst: nur der aktive wird geändert
+inakt_alt2 = copy.deepcopy(inakt_alt); inakt_alt2["rateGroups"][0]["name"] = "inaktive Gruppe"
+inakt_alt2["serviceName"] = "standard Liechtenstein"
+a = FalscheApi([CH1, CH2, inakt_alt2, alt_eigen]); c = laufe(a, "schreiben")
+g58 = a.inserts[0]["services"] if a.inserts else []
+pruef("inaktiver eigener bleibt unverändert", inakt_alt2 in g58)
+pruef("aktiver eigener angeglichen, Exit 0", c == 0 and any(mv.ist_unser_dienst(d) and d.get("active") and mv.lieferzeit_ok(d) for d in g58))
+# 59. Google ändert dabei den inaktiven eigenen Dienst: Exit 7
+class AendereInaktiv(FalscheApi):
+    def post(self, url, json=None, **kw):
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and self.neu:
+            for d in self.neu["services"]:
+                if d.get("rateGroups") and d["rateGroups"][0].get("name") == "inaktive Gruppe":
+                    d["currencyCode"] = "EUR"
+        return r
+a = AendereInaktiv([CH1, CH2, inakt_alt2, alt_eigen]); c = laufe(a, "schreiben")
+pruef("inaktiver eigener verändert: Exit 7 mit Grund", c == 7 and "übrige Dienste oder Lager" in AUSGABE[0])
+# 60. gleichnamiger Dienst mit anderem Tarif neben fremdem LI-Dienst: unsere Lieferzeit-Regel fasst ihn nicht an
+anders_tarif = copy.deepcopy(alt_eigen); anders_tarif["rateGroups"][0]["singleValue"]["flatRate"]["amountMicros"] = "9900000"
+a = FalscheApi([CH1, CH2, fremd_li, anders_tarif]); c = laufe(a, "schreiben")
+pruef("gleichnamig, anderer Tarif: kein insert", a.inserts == [] and c == 0)
+# 61. Zeitlimit beim POST: Exit 9 «möglicherweise gesendet», ohne Kontonummer
+class PostZeitlimit(FalscheApi):
+    def post(self, url, json=None, **kw):
+        if "telegram" in url:
+            return super().post(url, json=json, **kw)
+        raise TimeoutError(f"read timeout accounts/{KONTO}")
+a = PostZeitlimit([CH1, CH2, alt_eigen]); c = laufe(a, "schreiben")
+pruef("POST-Zeitlimit beim Angleichen: Exit 9 möglicherweise gesendet", c == 9 and "möglicherweise gesendet" in AUSGABE[0] and ohne_konto(a))
+a = PostZeitlimit([CH1, CH2]); c = laufe(a, "waechter")
+pruef("POST-Zeitlimit beim Anlegen: Exit 9, Telegram ohne Konto", c == 9 and "möglicherweise gesendet" in AUSGABE[0]
+      and len(a.telegram) == 1 and ohne_konto(a))
+# 62. insert-Antwort mit Eintrag, der kein Objekt ist: Exit 9 «nach dem Senden», kein Absturz in der Anzeige
+class AntwortKaputt(FalscheApi):
+    def post(self, url, json=None, **kw):
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and isinstance(r._d, dict):
+            r._d["services"].append(7)
+        return r
+a = AntwortKaputt([CH1, CH2, alt_eigen]); c = laufe(a, "schreiben")
+pruef("Antwort mit Nicht-Objekt: Exit 9 nach dem Senden", c == 9 and "Lieferzeit wurde gesendet" in AUSGABE[0])
+# 63. insert-Antwort im Log geschwärzt (lange Ziffern der App-Dienstnamen)
+CHZ = copy.deepcopy(CH1); CHZ["serviceName"] = "flat_7.00_CHF_123456789012_1234567890123_standard"
+a = FalscheApi([CHZ, CH2, alt_eigen]); c = laufe(a, "schreiben")
+pruef("Log ohne lange Ziffern", c == 0 and "123456789012" not in AUSGABE[0] and "insert-Antwort" in AUSGABE[0])
+# 64. eigener Dienst ohne Lieferzeit: Annahmezeit aus der Vorlage, LI-Zeiten
+ohne_lz = copy.deepcopy(eigen); ohne_lz.pop("deliveryTime")
+a = FalscheApi([CH1, CH2, ohne_lz]); c = laufe(a, "schreiben")
+g64 = [d for d in (a.inserts[0]["services"] if a.inserts else []) if d["serviceName"] == mv.NAME]
+pruef("ohne Lieferzeit: Vorlage und LI-Zeiten", c == 0 and len(g64) == 1
+      and g64[0]["deliveryTime"] == SOLL_LZ)
+a = FalscheApi([ohne_lz]); c = laufe(a, "schreiben")
+g64b = [d for d in (a.inserts[0]["services"] if a.inserts else []) if d["serviceName"] == mv.NAME]
+pruef("ohne Lieferzeit und ohne Vorlage: nur LI-Zeiten", c == 0 and len(g64b) == 1 and g64b[0]["deliveryTime"] == SOLL_OHNE_ANNAHME)
+pruef("lieferzeit_text ohne Lieferzeit stürzt nicht ab", "None" in mv.lieferzeit_text({"deliveryTime": None}))
+# 65. unvollständige Lieferzeit am eigenen Dienst: kein Absturz, Hinweis
+teil = copy.deepcopy(eigen); teil["deliveryTime"] = {"minTransitDays": 9}
+a = FalscheApi([CH1, CH2, teil]); c = laufe(a, "waechter")
+pruef("unvollständige Lieferzeit, Wächter: Exit 0 mit Hinweis", c == 0 and "weicht von der Vorgabe" in AUSGABE[0])
+# 66. Google speichert unseren Dienst mit anderer Währung, Lieferzeit stimmt: Exit 7
+class AndereWaehrung(FalscheApi):
+    def post(self, url, json=None, **kw):
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and self.neu:
+            for d in self.neu["services"]:
+                if d["serviceName"] == mv.NAME:
+                    d["currencyCode"] = "EUR"
+        return r
+a = AndereWaehrung([CH1, CH2, alt_eigen]); c = laufe(a, "schreiben")
+pruef("eigener Dienst anders gespeichert (Währung): Exit 7", c == 7 and "nicht wie gesendet" in AUSGABE[0])
+# 67. inaktiv gespeichert und etag unverändert: trotzdem sofort Exit 7 (nicht 8 Versuche warten)
+class InaktivGleichesEtag(FalscheApi):
+    def post(self, url, json=None, **kw):
+        alt_etag = self.stand.get("etag")
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and self.neu:
+            self.neu["etag"] = alt_etag
+            for d in self.neu["services"]:
+                if d["serviceName"] == mv.NAME:
+                    d["active"] = False
+        return r
+a = InaktivGleichesEtag([CH1, CH2, alt_eigen]); c = laufe(a, "schreiben")
+pruef("inaktiv gespeichert, gleiches etag: Exit 7 ohne Warten", c == 7 and SCHLAEFE == [])
+# 68. inaktiver eigener Dienst schon vorher da, Verzug beim Zurücklesen: kein Fehlalarm
+a = FalscheApi([CH1, CH2, inakt_alt2, alt_eigen], verzug=2); c = laufe(a, "schreiben")
+pruef("vorher inaktiver eigener + Verzug: Exit 0 GLEICH", c == 0 and "GLEICH" in AUSGABE[0])
+# 69. Prüfer Runde 3 (Zusätze Z1 bis Z10, angepasst)
+a = FalscheApi([CH1, CH2, fremd_li, alt_eigen]); c = laufe(a, "schreiben")
+b = a.inserts[0]["services"] if a.inserts else []
+pruef("Z1 fremder LI-Dienst im Body unverändert", c == 0 and fremd_li in b)
+klein_anders = copy.deepcopy(alt_eigen); klein_anders["serviceName"] = "standard liechtenstein"
+klein_anders["rateGroups"][0]["singleValue"]["flatRate"]["amountMicros"] = "9900000"
+a = FalscheApi([CH1, CH2, klein_anders, alt_eigen]); c = laufe(a, "schreiben")
+b = a.inserts[0]["services"] if a.inserts else []
+pruef("Z2 gleichnamig anderer Tarif unverändert", c == 0 and klein_anders in b)
+fuenf = copy.deepcopy(eigen); fuenf["deliveryTime"]["transitBusinessDayConfig"] = {"businessDays": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "SATURDAY"]}
+a = FalscheApi([CH1, CH2, fuenf]); c = laufe(a, "waechter")
+pruef("Z3 fünf Tage mit Samstag: Hinweis", c == 0 and "Montag bis Freitag" in AUSGABE[0])
+tr_sa = copy.deepcopy(eigen); tr_sa["deliveryTime"]["transitBusinessDayConfig"] = SAMSTAG
+a = FalscheApi([CH1, CH2, tr_sa]); c = laufe(a, "schreiben")
+g = [d for d in (a.inserts[0]["services"] if a.inserts else []) if d["serviceName"] == mv.NAME]
+pruef("Z4 Transit-Werktage mit Samstag: auf Mo-Fr gesetzt", c == 0 and len(g) == 1 and g[0]["deliveryTime"]["transitBusinessDayConfig"] == MOFR)
+class ErstAltDannFehler(FalscheApi):
+    def get(self, url, **kw):
+        if self.inserts and not url.endswith("pageSize=50"):
+            self.z = getattr(self, "z", 0) + 1
+            if self.z > 1:
+                self.gets += 1
+                return Antwort(503, None, "backend")
+        return super().get(url, **kw)
+a = ErstAltDannFehler([CH1, CH2, alt_eigen], verzug=99); c = laufe(a, "schreiben")
+pruef("Z9 Lieferzeit, alt dann Fehler: Exit 7 (nicht bestätigt)", c == 7 and "teilweise gescheitert" in ergebnis())
+a = ErstAltDannFehler([CH1, CH2], verzug=99); c = laufe(a, "waechter")
+pruef("Z9 Anlegen, alt dann Fehler: Exit 7 (nicht bestätigt)", c == 7 and "teilweise gescheitert" in ergebnis())
+pruef("Z10 sieben Ziffern geschwärzt", "1234567" not in mv.schwaerzen("id 1234567 x"))
+pruef("Z10 sechs Ziffern bleiben", "123456" in mv.schwaerzen("id 123456 x"))
+# 70. jede Meldung nach dem Senden nennt das Senden (Anlegen und Angleichen)
+class AntwortOhneZeit(FalscheApi):  # Anlegen: Antwort trägt unseren Dienst mit Schweizer Zeit
+    def post(self, url, json=None, **kw):
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and isinstance(r._d, dict):
+            for d in r._d.get("services") or []:
+                if d.get("serviceName") == mv.NAME:
+                    d["deliveryTime"] = dict(CH1["deliveryTime"])
+        return r
+class SpeichertSchweizerZeit(FalscheApi):  # Anlegen: gespeichert mit Schweizer Zeit, Antwort richtig
+    def post(self, url, json=None, **kw):
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and self.neu:
+            for d in self.neu["services"]:
+                if d["serviceName"] == mv.NAME:
+                    d["deliveryTime"] = dict(CH1["deliveryTime"])
+        return r
+def mit(**kw):
+    def bau(dienste, cls=FalscheApi, **k2):
+        a = cls(dienste, **k2)
+        for k, v in kw.items(): setattr(a, k, v)
+        return a
+    return bau
+FAELLE = [
+    ("Anlegen, App-Dienst verändert", lambda: mit(aendere_app_dienst=True)([CH1, CH2]), "waechter"),
+    ("Anlegen, inaktiv gespeichert", lambda: mit(speicher_inaktiv=True)([CH1, CH2]), "waechter"),
+    ("Anlegen, Antwort ohne LI", lambda: mit(antwort_ohne_li=True)([CH1, CH2]), "waechter"),
+    ("Anlegen, Antwort ohne Zeit", lambda: AntwortOhneZeit([CH1, CH2]), "waechter"),
+    ("Anlegen, gespeichert mit Schweizer Zeit", lambda: SpeichertSchweizerZeit([CH1, CH2]), "waechter"),
+    ("Anlegen, ohne LI gespeichert", lambda: mit(speicher_ohne_li=True)([CH1, CH2]), "waechter"),
+    ("Anlegen, Verzug ohne Antwort", lambda: mit(antwort_ohne_json=True)([CH1, CH2], verzug=99), "waechter"),
+    ("Anlegen, Lesefehler", lambda: mit(lesefehler_nach_insert=99)([CH1, CH2]), "waechter"),
+    ("Angleichen, App-Dienst verändert", lambda: mit(aendere_app_dienst=True)([CH1, CH2, alt_eigen]), "schreiben"),
+    ("Angleichen, inaktiv gespeichert", lambda: mit(speicher_inaktiv=True)([CH1, CH2, alt_eigen]), "schreiben"),
+    ("Angleichen, Antwort ohne neue Zeit", lambda: AntwortAlt([CH1, CH2, alt_eigen]), "schreiben"),
+    ("Angleichen, alt gespeichert", lambda: SpeichertAlt([CH1, CH2, alt_eigen]), "schreiben"),
+    ("Angleichen, ohne LI gespeichert", lambda: mit(speicher_ohne_li=True)([CH1, CH2, alt_eigen]), "schreiben"),
+    ("Angleichen, Verzug ohne Antwort", lambda: mit(antwort_ohne_json=True)([CH1, CH2, alt_eigen], verzug=99), "schreiben"),
+    ("Angleichen, Lesefehler", lambda: mit(lesefehler_nach_insert=99)([CH1, CH2, alt_eigen]), "schreiben"),
+    ("Angleichen, Lager verändert", lambda: mit(aendere_lager=True)([CH1, CH2, alt_eigen], lager=LAGER), "schreiben"),
+]
+for titel, bau, modus in FAELLE:
+    a = bau(); c = laufe(a, modus); e = ergebnis()
+    pruef(f"nach dem Senden: {titel}: Exit 7", c == 7)
+    pruef(f"nach dem Senden: {titel}: Text nennt das Senden", "Senden" in e or "gesendet" in e)
+    if modus == "waechter":
+        pruef(f"nach dem Senden: {titel}: Telegram nennt das Senden", len(a.telegram) == 1 and ("Senden" in a.telegram[0] or "gesendet" in a.telegram[0]))
+# 71. Anlegen: gespeichert mit Schweizer Zeit oder ohne unseren Dienst: sofort Exit 7 (nicht warten)
+a = SpeichertSchweizerZeit([CH1, CH2]); c = laufe(a, "waechter")
+pruef("Anlegen, Schweizer Zeit gespeichert: ohne Warten", c == 7 and SCHLAEFE == [] and "Lieferzeit" in ergebnis())
+a = FalscheApi([CH1, CH2]); a.speicher_ohne_li = True; c = laufe(a, "waechter")
+pruef("Anlegen, neuer Stand ohne unseren Dienst: ohne Warten, Text", c == 7 and SCHLAEFE == [] and "Google-App" in ergebnis())
+a = FalscheApi([CH1, CH2, alt_eigen]); a.speicher_ohne_li = True; c = laufe(a, "schreiben")
+pruef("Angleichen, neuer Stand ohne unseren Dienst: Text", c == 7 and "fehlt im neuen Stand" in ergebnis())
+a = AntwortOhneZeit([CH1, CH2]); c = laufe(a, "waechter")
+pruef("Anlegen, Antwort abweichend: Stand einmal gezeigt", c == 7 and "Nach dem Senden gelesen" in AUSGABE[0])
+# 72. Versandart: eigener Dienst mit lokaler Zustellung wird nicht angeglichen
+lokal_eigen = copy.deepcopy(alt_eigen); lokal_eigen["shipmentType"] = "LOCAL_DELIVERY"
+a = FalscheApi([CH1, CH2, fremd_li, lokal_eigen]); c = laufe(a, "schreiben")
+pruef("eigener lokaler Dienst + fremder: nichts zu tun", c == 0 and a.inserts == [])
+a = FalscheApi([CH1, CH2, lokal_eigen]); c = laufe(a, "schreiben")
+pruef("nur eigener lokaler Dienst: Exit 8", c == 8 and a.inserts == [])
+# 73. insert schickt jedes gelesene Feld mit (ausser name)
+a = FalscheApi([CH1, CH2, alt_eigen]); a.stand["kuenftiges_feld"] = {"x": 1}; c = laufe(a, "schreiben")
+pruef("insert: unbekanntes Feld mitgeschickt, name nicht", a.inserts and a.inserts[0].get("kuenftiges_feld") == {"x": 1}
+      and "name" not in a.inserts[0])
+# 74. Vorlage mit Annahmezeit wird vorgezogen
+a = FalscheApi([CH2, CH1]); c = laufe(a, "waechter")
+s74 = [d for d in (a.inserts[0]["services"] if a.inserts else []) if d["serviceName"] == mv.NAME]
+pruef("Vorlage mit Annahmezeit vorgezogen", c == 0 and len(s74) == 1 and s74[0]["deliveryTime"] == SOLL_LZ)
+# 75. LIEFERZEIT_LI bleibt nach Läufen unverändert; Attrappe lehnt doppelte Namen ab (Gegenprobe)
+pruef("LIEFERZEIT_LI unverändert", mv.LIEFERZEIT_LI == {"minHandlingDays": 1, "maxHandlingDays": 3, "minTransitDays": 10, "maxTransitDays": 29})
+a = FalscheApi([CH1, CH2]); r75 = a.post("https://x/shippingSettings:insert", json={"services": [CH1, CH1], "etag": "e1"})
+pruef("Attrappe: doppelter Name gibt 400", r75.status_code == 400)
+# 76. zwei Schweizer Dienste mit Annahmezeit: der erste ist die Vorlage
+CH3 = copy.deepcopy(CH1); CH3["serviceName"] = "flat_9.00_CHF_express"
+CH3["deliveryTime"]["cutoffTime"] = {"hour": 10, "minute": 0, "timeZone": "Europe/Zurich"}
+a = FalscheApi([CH1, CH3, CH2]); c = laufe(a, "waechter")
+s76 = [d for d in (a.inserts[0]["services"] if a.inserts else []) if d["serviceName"] == mv.NAME]
+pruef("zwei Vorlagen mit Annahmezeit: die erste", c == 0 and len(s76) == 1 and s76[0]["deliveryTime"]["cutoffTime"]["hour"] == 14)
+# 77. Lesestand ohne etag gilt nicht als neuer Stand (Verzug, Antwort bestätigt): Exit 0 mit Hinweis
+class VerzugOhneEtag(FalscheApi):
+    def get(self, url, **kw):
+        r = super().get(url, **kw)
+        if self.inserts and isinstance(r._d, dict) and self.neu is not None:
+            r._d.pop("etag", None)
+        return r
+a = VerzugOhneEtag([CH1, CH2, alt_eigen], verzug=99); c = laufe(a, "schreiben")
+pruef("Verzug, Lesestand ohne etag: Exit 0 mit Hinweis", c == 0 and "noch nicht sichtbar" in ergebnis())
+# 78. Anlegen: inaktiv gespeichert bei gleichem etag: sofort Exit 7
+a = InaktivGleichesEtag([CH1, CH2]); c = laufe(a, "waechter")
+pruef("Anlegen, inaktiv bei gleichem etag: ohne Warten", c == 7 and SCHLAEFE == [])
+# 79. Anlegen: App-Dienst verändert und unser Dienst fehlt, gleiches etag: sofort Exit 7
+class AppVeraendertGleichesEtag(FalscheApi):
+    def post(self, url, json=None, **kw):
+        alt_etag = self.stand.get("etag")
+        r = super().post(url, json=json, **kw)
+        if "telegram" not in url and self.neu:
+            self.neu["etag"] = alt_etag
+            self.neu["services"] = [dict(d, currencyCode="EUR") if i == 0 else d
+                                    for i, d in enumerate(self.neu["services"]) if d["serviceName"] != mv.NAME]
+        return r
+a = AppVeraendertGleichesEtag([CH1, CH2]); c = laufe(a, "waechter")
+pruef("Anlegen, App-Dienst verändert, gleiches etag: ohne Warten", c == 7 and SCHLAEFE == [] and "übrige Dienste" in ergebnis())
+# 80. Angleichen: abweichende Antwort zeigt den Stand einmal; Lesefehler dabei bricht nicht ab
+a = AntwortAlt([CH1, CH2, alt_eigen]); c = laufe(a, "schreiben")
+pruef("Angleichen, Antwort abweichend: Stand einmal gezeigt", c == 7 and "Nach dem Senden gelesen" in AUSGABE[0])
+a = AntwortAlt([CH1, CH2, alt_eigen]); a.wirf_nach_insert = True; c = laufe(a, "schreiben")
+pruef("Antwort abweichend, Lesen scheitert: Exit 7, kein Abbruch", c == 7 and "nicht möglich" in AUSGABE[0] and ohne_konto(a))
+# 81. ein Werktag-Feld mit Samstag, das andere fehlt: Hinweis nennt die Werktage
+halb = copy.deepcopy(eigen); halb["deliveryTime"]["handlingBusinessDayConfig"] = SAMSTAG; halb["deliveryTime"].pop("transitBusinessDayConfig")
+a = FalscheApi([CH1, CH2, halb]); c = laufe(a, "waechter")
+pruef("ein Werktag-Feld mit Samstag, anderes fehlt: Hinweis", c == 0 and "(Werktage nicht Montag bis Freitag)" in ergebnis())
+# 82. zwei eigene aktive, der erste stimmt: der Hinweis nennt den abweichenden
+zweit = copy.deepcopy(alt_eigen2)
+a = FalscheApi([CH1, CH2, eigen, zweit]); c = laufe(a, "waechter")
+pruef("Hinweis nennt den abweichenden Dienst", c == 0 and "Transit 9-19" in ergebnis())
+# 83. leere Lieferzeit {} am eigenen Dienst: Annahmezeit aus der Vorlage
+leer = copy.deepcopy(eigen); leer["deliveryTime"] = {}
+a = FalscheApi([CH1, CH2, leer]); c = laufe(a, "schreiben")
+g83 = [d for d in (a.inserts[0]["services"] if a.inserts else []) if d["serviceName"] == mv.NAME]
+pruef("leere Lieferzeit: Vorlage und LI-Zeiten", c == 0 and len(g83) == 1 and g83[0]["deliveryTime"] == SOLL_LZ)
+# 49. lieferzeit_ok
+pruef("lieferzeit_ok ja", mv.lieferzeit_ok({"deliveryTime": dict(mv.LIEFERZEIT_LI, cutoffTime={})}))
+pruef("lieferzeit_ok nein", not mv.lieferzeit_ok({"deliveryTime": dict(mv.LIEFERZEIT_LI, maxTransitDays=19)}))
+pruef("lieferzeit_ok ohne Zeit nein", not mv.lieferzeit_ok({}))
 
 print(f"ok {ok}, fehler {fehler}")
 sys.exit(1 if fehler else 0)

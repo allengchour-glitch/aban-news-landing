@@ -13,8 +13,10 @@ tägliche Prüfung, die den Dienst nur dann anlegt, wenn er fehlt (Modus waechte
 
 MODUS (Umgebung):
   pruefen   (Vorgabe) lesen und Trockenlauf; mit ZEITPLAN=1 Exit 10, wenn Liechtenstein fehlt (Lauf wird rot)
-  schreiben Dienst anlegen, wenn er fehlt, dann frisch zurücklesen (mit Wartezeit)
-  waechter  wie schreiben, für den täglichen Zeitplan: meldet per Telegram, wenn er eingreifen musste oder scheitert
+  schreiben Dienst anlegen, wenn er fehlt, dann frisch zurücklesen (mit Wartezeit); steht unser Dienst schon,
+            aber mit anderer Lieferzeit, wird nur diese an LIEFERZEIT_LI angeglichen
+  waechter  wie schreiben, für den täglichen Zeitplan: meldet per Telegram, wenn er eingreifen musste oder scheitert;
+            gleicht nie eine Lieferzeit an (nennt die Abweichung nur im Protokoll)
   zurueck   nur den hier angelegten Dienst (Name, nur LI, CHF 14.90) wieder entfernen
 Gibt keine Merchant-Nummer aus: Fehlertexte werden geschwärzt, unerwartete Fehler nur mit ihrem Typ gemeldet.
 
@@ -30,6 +32,18 @@ except ImportError:  # Offline-Test ohne requests: HTTP wird dort ersetzt
 SCOPE = "https://www.googleapis.com/auth/content"
 NAME = "Standard Liechtenstein"
 TARIF_MICROS = "14900000"  # CHF 14.90 wie im Shopify-Versandprofil
+# Lieferzeit für Liechtenstein (16.11.2026): Versandseite und PostNL nennen 15 bis 45 Tage. In Werktagen (Merchant-Vorgabe
+# Montag bis Freitag): Bearbeitung 1 bis 3 plus Transit 10 bis 29 = 11 bis 32 Werktage, rund 15 bis 45 Kalendertage.
+# Bis 15.11. kopierte das Werkzeug die Schweizer Zeiten (1 Tag plus 9 bis 19 Tage), das versprach Google zu wenig.
+LIEFERZEIT_LI = {"minHandlingDays": 1, "maxHandlingDays": 3, "minTransitDays": 10, "maxTransitDays": 29}
+# Die Rechnung oben gilt nur für Montag bis Freitag. Die Vorgabe ohne Werktag-Einstellung beschreibt Google
+# widersprüchlich (API-Referenz: Montag bis Freitag; Merchant-Center-Hilfe: Montag bis Samstag, Prüfung 16.11.).
+# Darum setzt das Werkzeug beide Werktag-Felder ausdrücklich auf Montag bis Freitag und übernimmt sie nie aus der
+# Schweizer Vorlage. Aus der Vorlage kommt nur die Annahmezeit (cutoffTime).
+WERKTAGE = ("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY")
+WERKTAG_FELDER = ("handlingBusinessDayConfig", "transitBusinessDayConfig")
+# Andere Formen der Transitzeit: laut API nicht zusammen mit min/maxTransitDays erlaubt; nie übernehmen oder überschreiben.
+ANDERE_TRANSIT = ("transitTimeTable", "warehouseBasedDeliveryTimes")
 MODI = ("pruefen", "schreiben", "waechter", "zurueck")
 API = "https://merchantapi.googleapis.com/accounts/v1"
 HTTP = requests          # in Tests ersetzbar
@@ -107,7 +121,8 @@ def _zeigen(titel, s):
         print(schwaerzen(f"  - {d.get('serviceName')!r} aktiv={d.get('active')} Länder={d.get('deliveryCountries')} "
               f"Währung={d.get('currencyCode')} Tarife={tarife} Mindestbestellwert={mindest} "
               f"Bearbeitung={dt.get('minHandlingDays')}-{dt.get('maxHandlingDays')} "
-              f"Transit={dt.get('minTransitDays')}-{dt.get('maxTransitDays')} Typ={d.get('shipmentType')}"))
+              f"Transit={dt.get('minTransitDays')}-{dt.get('maxTransitDays')} Werktage={werktage_text(dt)} "
+              f"Typ={d.get('shipmentType')}"))
     print(f"  Lager: {len(s.get('warehouses') or [])}, etag vorhanden: {bool(s.get('etag'))}")
 
 
@@ -152,37 +167,106 @@ def li_unklar(s):
             if ("LI" in (d.get("deliveryCountries") or []) or _name(d) == NAME.casefold()) and d not in li_vorhanden(s)]
 
 
+def angleichbar(d):
+    """Unser aktiver Dienst mit Zustellung nach Hause: nur dessen Lieferzeit wird angeglichen."""
+    return ist_unser_dienst(d) and bool(d.get("active")) and d.get("shipmentType") in VERSANDARTEN
+
+
 def ist_unser_dienst(d):
     gruppen = d.get("rateGroups") or []
     return (_name(d) == NAME.casefold() and d.get("deliveryCountries") == ["LI"] and len(gruppen) == 1
             and ((gruppen[0].get("singleValue") or {}).get("flatRate") or {}).get("amountMicros") == TARIF_MICROS)
 
 
-def neuer_dienst(s):
+def vorlage(s):
     ch = [d for d in s.get("services") or [] if "CH" in (d.get("deliveryCountries") or []) and d.get("active")
           and d.get("shipmentType") in VERSANDARTEN and (d.get("deliveryTime") or {}).get("maxTransitDays") is not None]
     if not ch:
         raise Abbruch(5, "kein aktiver Schweizer Dienst (Zustellung, mit Lieferzeit) als Vorlage für Lieferzeiten")
-    vorlage = ch[0]
+    mit_annahmezeit = [d for d in ch if (d.get("deliveryTime") or {}).get("cutoffTime")]
+    return (mit_annahmezeit or ch)[0]
+
+
+def neuer_dienst(s):
+    vorlage_d = vorlage(s)
     dienst = {
         "serviceName": NAME,
         "active": True,
         "deliveryCountries": ["LI"],
         "currencyCode": "CHF",
-        "deliveryTime": copy.deepcopy(vorlage.get("deliveryTime") or {}),
+        "deliveryTime": li_lieferzeit(vorlage_d.get("deliveryTime")),
         "rateGroups": [{"name": NAME, "applicableShippingLabels": [],
                         "singleValue": {"flatRate": {"amountMicros": TARIF_MICROS, "currencyCode": "CHF"}}}],
     }
-    if vorlage.get("shipmentType"):  # nur DELIVERY oder unbestimmt (siehe Vorlagenwahl)
-        dienst["shipmentType"] = vorlage["shipmentType"]
+    if vorlage_d.get("shipmentType"):  # nur DELIVERY oder unbestimmt (siehe Vorlagenwahl)
+        dienst["shipmentType"] = vorlage_d["shipmentType"]
     return dienst
+
+
+def li_lieferzeit(basis):
+    """Lieferzeit für LI: nur die Annahmezeit aus basis, die Tage aus LIEFERZEIT_LI, Werktage ausdrücklich Montag bis Freitag."""
+    dt = {}
+    if isinstance(basis, dict) and isinstance(basis.get("cutoffTime"), dict):
+        dt["cutoffTime"] = copy.deepcopy(basis["cutoffTime"])
+    dt.update(LIEFERZEIT_LI)
+    for f in WERKTAG_FELDER:
+        dt[f] = {"businessDays": list(WERKTAGE)}
+    return dt
+
+
+def _zahl(x):
+    try:
+        return int(x)
+    except (TypeError, ValueError):
+        return None
+
+
+def _werktage_ok(cfg):
+    """Genau Montag bis Freitag. Fehlt die Einstellung, gilt das als gleich (so kein Fehlalarm, falls Google den
+    ausdrücklich gesendeten Vorgabewert beim Speichern weglässt; gesendet wird er immer ausdrücklich)."""
+    if not cfg:
+        return True
+    tage = cfg.get("businessDays") if isinstance(cfg, dict) else None
+    return isinstance(tage, list) and len(tage) == len(WERKTAGE) and set(tage) == set(WERKTAGE)
+
+
+def lieferzeit_ok(d):
+    dt = d.get("deliveryTime")
+    if not isinstance(dt, dict):
+        return False
+    return (all(_zahl(dt.get(k)) == v for k, v in LIEFERZEIT_LI.items())
+            and all(_werktage_ok(dt.get(f)) for f in WERKTAG_FELDER)
+            and not any(dt.get(f) for f in ANDERE_TRANSIT))
+
+
+def werktage_text(dt):
+    if not any(dt.get(f) for f in WERKTAG_FELDER):
+        return "Vorgabe"
+    if all(_werktage_ok(dt.get(f)) for f in WERKTAG_FELDER):
+        return "Mo-Fr"
+    return "abweichend"
+
+
+def lieferzeit_text(d):
+    dt = d.get("deliveryTime") if isinstance(d.get("deliveryTime"), dict) else {}
+    text = (f"Bearbeitung {dt.get('minHandlingDays')}-{dt.get('maxHandlingDays')}, "
+            f"Transit {dt.get('minTransitDays')}-{dt.get('maxTransitDays')} Werktage")
+    if werktage_text(dt) == "abweichend":
+        text += " (Werktage nicht Montag bis Freitag)"
+    if any(dt.get(f) for f in ANDERE_TRANSIT):
+        text += " (mit Transit-Tabelle oder Lager-Lieferzeiten)"
+    return text
 
 
 def einfuegen(h, name, s):
     if not s.get("etag"):
         raise Abbruch(4, "kein etag gelesen: schreibe nicht (Schutz gegen das Überschreiben neuerer Dienste)")
-    body = {k: v for k, v in s.items() if k in ("services", "warehouses", "etag")}
-    r = HTTP.post(f"{API}/{name}/shippingSettings:insert", headers=h, json=body, timeout=60)
+    body = {k: v for k, v in s.items() if k != "name"}  # insert ersetzt alles: jedes gelesene Feld mitschicken
+    try:
+        r = HTTP.post(f"{API}/{name}/shippingSettings:insert", headers=h, json=body, timeout=60)
+    except Exception as e:  # Zeitlimit oder Netz: die Anfrage kann bei Google angekommen sein
+        raise Abbruch(9, f"shippingSettings:insert möglicherweise gesendet ({type(e).__name__}): "
+                         "nicht sofort wiederholen, der nächste Lauf prüft")
     if r.status_code != 200:
         raise Abbruch(6, f"shippingSettings:insert HTTP {r.status_code}: {schwaerzen(r.text)[:300]}")
     try:
@@ -192,7 +276,8 @@ def einfuegen(h, name, s):
     if not isinstance(antwort, dict):
         print("insert-Antwort ohne lesbares JSON-Objekt")
         return None
-    print("insert-Antwort, Dienste:", [d.get("serviceName") for d in antwort.get("services") or []])
+    namen = [d.get("serviceName") if isinstance(d, dict) else type(d).__name__ for d in antwort.get("services") or []]
+    print(schwaerzen(f"insert-Antwort, Dienste: {namen}"))
     return antwort
 
 
@@ -212,7 +297,7 @@ def unveraendert(alte, nach, lager=None):
 def zuruecklesen(h, name, pruef):
     """Liest so lange zurück, bis pruef(stand) nicht mehr «warten» meldet (höchstens RUECKLESEN_VERSUCHE Mal).
     pruef gibt (fertig, ok) zurück: fertig=True beendet das Warten."""
-    nach, ok = None, False
+    nach, ok, fehler = None, False, 0
     versuche = max(1, RUECKLESEN_VERSUCHE)
     for versuch in range(1, versuche + 1):
         try:
@@ -220,6 +305,7 @@ def zuruecklesen(h, name, pruef):
         except Exception as e:  # ein Lesefehler heisst «noch nicht sichtbar», nicht «gescheitert»
             print(f"Rücklesen {versuch}/{versuche}: Lesefehler {type(e).__name__}")
             fertig, ok = False, False
+            fehler += 1
         else:
             nach = stand
             fertig, ok = pruef(nach)
@@ -228,7 +314,15 @@ def zuruecklesen(h, name, pruef):
             break
         if versuch < versuche:
             SCHLAF(RUECKLESEN_PAUSE_S)
-    return nach, ok
+    return nach, ok, fehler
+
+
+def einmal_zeigen(h, name):
+    """Nach einer abweichenden insert-Antwort den gespeicherten Stand einmal zeigen (nur Anzeige, nie Abbruch)."""
+    try:
+        zeigen("Nach dem Senden gelesen:", lesen(h, name))
+    except Exception as e:
+        print(f"Nach dem Senden gelesen: nicht möglich ({type(e).__name__})")
 
 
 def telegram(text):
@@ -273,7 +367,7 @@ def lauf(modus, h):
         lager_z = vorher.get("warehouses") or []
         neu = copy.deepcopy(vorher); neu["services"] = rest
         einfuegen(h, name, neu)
-        nach, ok = zuruecklesen(h, name, lambda s: (
+        nach, ok, _ = zuruecklesen(h, name, lambda s: (
             not any(ist_unser_dienst(d) for d in s.get("services") or []) or not unveraendert(rest, s, lager_z),
             not any(ist_unser_dienst(d) for d in s.get("services") or []) and unveraendert(rest, s, lager_z)))
         if nach is not None:
@@ -281,7 +375,35 @@ def lauf(modus, h):
         return (0, "Rücknahme ausgeführt, übrige Dienste und Lager unverändert", True) if ok else \
                (7, "Rücknahme gesendet, aber Zurücklesen bestätigt sie nicht (oder übrige Dienste/Lager verändert)", True)
     if li_vorhanden(vorher):
-        return 0, "Liechtenstein hat einen aktiven Dienst, nichts zu tun", False
+        unsere = [d for d in dienste if angleichbar(d)]
+        falsch = [d for d in unsere if not lieferzeit_ok(d)]
+        if not falsch:
+            return 0, "Liechtenstein hat einen aktiven Dienst, nichts zu tun", False
+        soll = lieferzeit_text({"deliveryTime": LIEFERZEIT_LI})
+        if modus != "schreiben":  # Wächter und Prüfung überschreiben nie eine Lieferzeit, die jemand anders gesetzt hat
+            return 0, (f"Liechtenstein hat einen aktiven Dienst; Lieferzeit {lieferzeit_text(falsch[0])} weicht von der "
+                       f"Vorgabe {soll} ab (angleichen mit MODUS schreiben)"), False
+        if any(isinstance(d.get("deliveryTime"), dict) and any(d["deliveryTime"].get(f) for f in ANDERE_TRANSIT)
+               for d in falsch):
+            return 8, "Lieferzeit unseres Dienstes trägt eine Transit-Tabelle oder Lager-Lieferzeiten: von Hand prüfen", False
+        neu = copy.deepcopy(vorher)
+        for d in neu["services"]:
+            if angleichbar(d) and not lieferzeit_ok(d):
+                basis = d.get("deliveryTime")
+                if not isinstance(basis, dict) or not basis:  # ohne Lieferzeit: Annahmezeit wie beim Anlegen aus der Vorlage
+                    try:
+                        basis = vorlage(vorher).get("deliveryTime")
+                    except Abbruch:
+                        basis = {}
+                d["deliveryTime"] = li_lieferzeit(basis)
+        print("Lieferzeit angleichen auf:", soll)
+        antwort = einfuegen(h, name, neu)
+        try:
+            return lieferzeit_nach_dem_senden(h, name, vorher, antwort)
+        except Abbruch as e:
+            raise Abbruch(e.code, f"nach dem Senden (Lieferzeit wurde gesendet, nicht sofort wiederholen): {e}")
+        except Exception as e:
+            raise Abbruch(9, f"nach dem Senden (Lieferzeit wurde gesendet, nicht sofort wiederholen): unerwarteter Fehler {type(e).__name__}")
     if li_unklar(vorher):
         return 8, "Dienst für Liechtenstein vorhanden, aber nicht aktiv oder ohne Versand: von Hand prüfen", False
     dienst = neuer_dienst(vorher)
@@ -301,33 +423,99 @@ def lauf(modus, h):
         raise Abbruch(9, f"nach dem Senden (Dienst wurde gesendet, nicht sofort wiederholen): unerwarteter Fehler {type(e).__name__}")
 
 
+def neuer_stand(s, vorher):
+    """Neues etag: Google hat gespeichert, ein Verzug beim Zurücklesen ist es dann nicht mehr (Annahme: ein veralteter
+    Lesestand trägt auch das alte etag; Doku: das etag ändert sich bei jeder Änderung der Versandeinstellungen)."""
+    return bool(s.get("etag")) and s.get("etag") != vorher.get("etag")
+
+
 def nach_dem_senden(h, name, vorher, dienste, antwort):
-    if antwort is not None and not any(ist_unser_dienst(d) and d.get("active") for d in antwort.get("services") or []):
-        return 7, "insert-Antwort enthält den Liechtenstein-Dienst nicht", True
+    """Nach dem Anlegen: übrige Dienste und Lager unverändert, unser Dienst aktiv mit der Lieferzeit für LI."""
+    def li_ok(s):
+        return any(ist_unser_dienst(d) and d.get("active") and lieferzeit_ok(d) for d in s.get("services") or [])
+    if antwort is not None and not li_ok(antwort):
+        einmal_zeigen(h, name)
+        return 7, "Liechtenstein gesendet, aber die insert-Antwort enthält den Dienst nicht wie gesendet: nicht sofort wiederholen", True
 
     lager = vorher.get("warehouses") or []
 
-    def falsch_sichtbar(s):  # unser Name ist da, aber nicht als aktiver Dienst LI CHF 14.90
-        return any(_name(d) == NAME.casefold() and not (ist_unser_dienst(d) and d.get("active"))
+    def falsch_sichtbar(s):  # unser Name ist da, aber nicht als aktiver Dienst LI CHF 14.90 mit der Lieferzeit für LI
+        return any(_name(d) == NAME.casefold() and not (ist_unser_dienst(d) and d.get("active") and lieferzeit_ok(d))
                    for d in s.get("services") or [])
 
     def pruef(s):
         alt_ok = unveraendert(dienste, s, lager)
-        li_ok = any(ist_unser_dienst(d) and d.get("active") for d in s.get("services") or [])
-        return (li_ok or not alt_ok or falsch_sichtbar(s)), (li_ok and alt_ok)
-    nach, ok = zuruecklesen(h, name, pruef)
+        return (li_ok(s) or not alt_ok or falsch_sichtbar(s) or neuer_stand(s, vorher)), (li_ok(s) and alt_ok)
+    nach, ok, fehler = zuruecklesen(h, name, pruef)
     if nach is None:
         return 7, "Liechtenstein gesendet, Zurücklesen scheiterte bei jedem Versuch: nächster Lauf prüft, nicht sofort wiederholen", True
     zeigen("Frisch zurückgelesen:", nach)
     if ok:
         return 0, "Liechtenstein angelegt, alte Dienste unverändert (GLEICH)", True
     if not unveraendert(dienste, nach, lager):
-        return 7, "WEICHT AB: übrige Dienste oder Lager haben sich verändert, von Hand prüfen", True
+        return 7, "WEICHT AB nach dem Senden: übrige Dienste oder Lager haben sich verändert, von Hand prüfen", True
     if falsch_sichtbar(nach):
-        return 7, "WEICHT AB: Dienst «Standard Liechtenstein» gespeichert, aber nicht aktiv oder mit anderem Tarif/Land", True
+        return 7, "WEICHT AB nach dem Senden: Dienst «Standard Liechtenstein» gespeichert, aber nicht aktiv, mit anderem Tarif/Land oder anderer Lieferzeit", True
+    if neuer_stand(nach, vorher):
+        return 7, ("WEICHT AB nach dem Senden: neuer Stand ohne unseren Dienst (vermutlich von der Google-App neu "
+                   "geschrieben); der Wächter legt ihn beim nächsten Lauf neu an"), True
+    if fehler:
+        return 7, "Liechtenstein gesendet, Zurücklesen teilweise gescheitert und nicht bestätigt: nächster Lauf prüft, nicht sofort wiederholen", True
     if antwort is not None:
         return 0, "Liechtenstein laut Antwort von Google angelegt, beim Zurücklesen noch nicht sichtbar: der nächste Lauf prüft", True
-    return 7, "WEICHT AB: Liechtenstein beim Zurücklesen nicht sichtbar", True
+    return 7, "WEICHT AB nach dem Senden: Liechtenstein beim Zurücklesen nicht sichtbar", True
+
+
+def lieferzeit_nach_dem_senden(h, name, vorher, antwort):
+    """Nach dem Angleichen: alle übrigen Dienste (auch inaktive eigene) und Lager unverändert, jeder aktive eigene
+    Dienst ausser der Lieferzeit gleich und mit der Vorgabe. Jeder Text nennt, dass gesendet wurde."""
+    alte = vorher.get("services") or []
+    andere = [d for d in alte if not angleichbar(d)]
+    lager = vorher.get("warehouses") or []
+
+    def ohne_lz(d):
+        return json.dumps({k: v for k, v in d.items() if k != "deliveryTime"}, sort_keys=True)
+
+    def eigene(s):
+        return [d for d in s.get("services") or [] if angleichbar(d)]
+    soll_eigene = sorted(ohne_lz(d) for d in eigene(vorher))
+
+    def neu_ok(s):
+        e = eigene(s)
+        return sorted(ohne_lz(d) for d in e) == soll_eigene and all(lieferzeit_ok(d) for d in e)  # soll_eigene ist nie leer
+
+    def falsch_sichtbar(s):  # unser Name in einem Zustand, den es vorher nicht gab (z. B. inaktiv gespeichert)
+        return any(_name(d) == NAME.casefold() and not (ist_unser_dienst(d) and d.get("active"))
+                   and not any(gleich(d, a) for a in alte) for d in s.get("services") or [])
+
+    if antwort is not None and not neu_ok(antwort):
+        einmal_zeigen(h, name)
+        return 7, "Lieferzeit gesendet, aber die insert-Antwort enthält sie nicht wie gesendet: nicht sofort wiederholen", True
+
+    def pruef(s):
+        alt_ok = unveraendert(andere, s, lager)
+        return (neu_ok(s) or not alt_ok or falsch_sichtbar(s) or neuer_stand(s, vorher)), (neu_ok(s) and alt_ok)
+    nach, ok, fehler = zuruecklesen(h, name, pruef)
+    if nach is None:
+        return 7, "Lieferzeit gesendet, Zurücklesen scheiterte bei jedem Versuch: nächster Lauf prüft, nicht sofort wiederholen", True
+    zeigen("Frisch zurückgelesen:", nach)
+    if ok:
+        return 0, "Lieferzeit Liechtenstein angeglichen, übrige Dienste unverändert (GLEICH)", True
+    if not unveraendert(andere, nach, lager):
+        return 7, "WEICHT AB nach dem Senden der Lieferzeit: übrige Dienste oder Lager haben sich verändert, von Hand prüfen", True
+    if falsch_sichtbar(nach):
+        return 7, "WEICHT AB nach dem Senden der Lieferzeit: unser Dienst ist nicht aktiv oder anders gespeichert", True
+    if neuer_stand(nach, vorher) and not eigene(nach):
+        return 7, ("WEICHT AB nach dem Senden der Lieferzeit: unser Dienst fehlt im neuen Stand (vermutlich von der "
+                   "Google-App neu geschrieben); der Wächter legt ihn beim nächsten Lauf neu an"), True
+    if neuer_stand(nach, vorher):
+        return 7, "WEICHT AB nach dem Senden der Lieferzeit: Google hat gespeichert, aber nicht wie gesendet (Lieferzeit oder unser Dienst anders)", True
+    if fehler:
+        return 7, "Lieferzeit gesendet, Zurücklesen teilweise gescheitert und nicht bestätigt: mit MODUS pruefen nachprüfen, nicht sofort wiederholen", True
+    if antwort is not None:
+        return 0, ("Lieferzeit laut Antwort von Google angeglichen, beim Zurücklesen noch nicht sichtbar: in 2 Minuten mit "
+                   "MODUS pruefen nachprüfen (der Wächter meldet eine abweichende Lieferzeit nicht)"), True
+    return 7, "WEICHT AB nach dem Senden der Lieferzeit: neue Lieferzeit beim Zurücklesen nicht sichtbar", True
 
 
 def main():
