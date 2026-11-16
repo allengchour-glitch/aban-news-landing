@@ -83,6 +83,8 @@ Beispiele (Vorher: «<Titel> bei LuxeStyle – Schweizer Online-Shop. Gratis-Ver
 
 **Zweiter Fehler, nach dem Merge (Lauf 5, 16.11.):** GitHub schwärzt im Protokoll «{» und «}», weil das der Inhalt einzelner Zeilen des JSON-Schlüssels ist. Darum sollten die Zählungen als Text erscheinen. Die neue Hilfsfunktion dafür hiess `liste`, genau wie eine lokale Variable in `main()`. Der Lauf brach deshalb mit `TypeError` ab. Der Selbsttest hatte `main()` nie aufgerufen. Behoben: Die Funktion heisst jetzt `als_text`. Ausserdem lässt der Selbsttest `main()` einmal mit Attrappen für Shopify und Merchant durchlaufen. Dieser Probelauf prüft Gruppen, Zählung und Urteil. Er prüft auch, dass weder Konto-Nummer noch Feed-Label noch Klammern in der Ausgabe stehen. Mutationsprobe: 7 von 7 erkannt.
 
+**Nachmessung mit dem behobenen Leser (GEMESSEN 16.11. 08:45 UTC, Lauf 43833669895):** Die Zahlen sind dieselben wie um 08:22 UTC. Pilot: 16 Sachtext, 75 Werbezeile, 238 nicht im Kanal. Kontrolle: 33 Werbezeile, 5 echte Beschreibung, 1 andere, 266 nicht im Kanal. Die Zeile zu `updatedAt` steht jetzt im Klartext: «keine». Bei Google gefunden wurden 360 der 1 859 abgefragten Angebote. Im Protokoll stehen weder Konto-Nummer noch Feed-Label.
+
 **Entscheid des Besitzers:** behalten und in einigen Tagen neu messen (Handstart von `merchant-beschreibung.yml`), oder zurücknehmen (`ZURUECK=1 LIVE=1 python3 dropship/merchant-beschreibung-0911/pilot_pullover.py`).
 
 ## Messrezept

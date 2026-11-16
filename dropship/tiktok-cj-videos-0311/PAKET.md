@@ -42,6 +42,7 @@ Der Besitzer lehnte am 10.11. die Musik ab («musik ist scheisse», Stück «new
   - TikTok 13:00 (id 429390445, ohne `autoAddMusic`)
   - Reel Instagram/Facebook 20:00 (id 429395222)
   - Alle drei mit `autoPublish`, Texte unverändert, je einmal im Planer, Status PENDING (frisch gelesen 15.11. 23:47 UTC).
+  - **Zurückgestellt (GEMESSEN 16.11. 08:5x UTC):** Alle drei stehen als Entwurf ohne `autoPublish`. Die neuen ids sind 429675848 (YouTube), 429676883 (TikTok) und 429676896 (Reel), die uuid ist gleich geblieben. Umgestellt wurden sie zwischen 07:20 und 07:22 UTC. Laut Halteliste der Shop-Sitzung (`dropship/METRICOOL-HALTEN.txt`, PR #3180) hat der Besitzer sie selbst zurückgestellt. Nicht neu einplanen, solange sie auf der Halteliste stehen.
 - **Ersetzt:** Die drei Entwürfe vom 13.11. mit dem abgelehnten Stück tragen jetzt die stille Datei. `updateScheduledPost` vergibt eine neue id und behält die uuid; die alten ids waren 426613132, 426613082 und 427286519.
 - **Ungemessen:**
   - ob TikTok und Instagram einen stillen Clip schwächer ausspielen;
