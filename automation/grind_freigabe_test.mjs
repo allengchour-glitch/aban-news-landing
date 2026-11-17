@@ -112,6 +112,11 @@ await t('Tor: zu wenige Bilder, Bild nicht READY, Hauptbild zu klein', () => {
   rot(p => { p.media.nodes[0].image.width = 699; }, 'Hauptbild');
   rot(p => { p.media.nodes[0].image.height = 400; }, 'Hauptbild');
 });
+await t('Tor: Silber-Feingehaltsangabe im Text blockiert (Edelmetallkontrolle, 17.11.2026)', () => {
+  rot(p => { p.descriptionHtml += '<p>Material: 925 Sterling Silber</p>'; }, 'Silber-Feingehalt');
+  rot(p => { p.title = 'S925 Armband'; }, 'Silber-Feingehalt');
+  const p = gut(); p.descriptionHtml += '<p>Edelstahl, silberfarben.</p>'; assert.ok(tore(p, { kanaele: KAN }).every(x => x.ok === true));
+});
 await t('Tor: Hauptbild genau 700 px besteht (Grenze)', () => { const p = gut(); p.media.nodes[0].image.width = 700; p.media.nodes[0].image.height = 700; assert.ok(tore(p, { kanaele: KAN }).every(x => x.ok === true)); });
 await t('Tor: SKU fehlt, SKU doppelt, keine Variante', () => {
   rot(p => { p.variants.nodes[0].sku = ''; }, 'SKU');

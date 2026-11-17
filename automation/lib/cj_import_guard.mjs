@@ -1,6 +1,7 @@
 import { sperrTags } from './kanal_sperren.mjs';
 import { titelDeutschGenug } from './seo_titel.mjs';
 import { pruefeDeText } from './storefront_sprache.mjs';
+import { silberFeingehalt, belegText } from './silber_feingehalt.mjs';
 
 export const CJ_IMPORT_STATUS = 'DRAFT';
 export const CJ_IMPORT_SPERRTAG = 'compliance-pruefen';
@@ -96,6 +97,9 @@ export function pruefeCjImportText({ sourceTitle, title, html } = {}) {
   }
 
   const gruende = [];
+  // 17.11.2026: Silber-Feingehaltsangaben (925, S925, Sterling, 999 Silber …) sind bis zur Antwort der Edelmetallkontrolle nicht im Verkauf.
+  const silber = silberFeingehalt({ title, description: html });
+  if (silber.treffer) gruende.push(`Text nennt eine Silber-Feingehaltsangabe (Edelmetallkontrolle): ${belegText(silber)}`);
   if (norm(sourceTitle) && norm(sourceTitle) === norm(title)) {
     gruende.push('Titel entspricht unveraendert dem englischen CJ-Original');
   }

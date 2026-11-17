@@ -1,1250 +1,1640 @@
 {
- "gelesenAktiv": 56495,
- "erzeugt": "2026-11-17T09:44:11.941Z",
+ "gelesenAktiv": 56288,
+ "erzeugt": "2026-11-17T12:00:43.212Z",
  "schonMitArbeitsTag": 0,
- "anzahl": 207,
+ "anzahl": 204,
  "eintraege": [
   {
-   "id": "gid://shopify/Product/15430422692225",
-   "handle": "925-silber-armband-cerchio-circle-link",
-   "title": "925-Silber Armband «Cerchio» · Circle-Link",
-   "productType": "Armband"
+   "id": "gid://shopify/Product/15449446121857",
+   "handle": "2-ct-prinzessschliff-moissanit-ring-pave-band-778177",
+   "title": "2 ct Prinzessschliff Moissanit-Ring, Pavé-Band, Platinbeschichtet, GRA-Zertifikat",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «-vvs1-stone und pavé-band aus 925er silber (3,04 g) ist platinb» | beschreibung/925: «7×7 mm, d-vvs1) pavé-band aus 925er silber (3 g) platinbeschich»"
+  },
+  {
+   "id": "gid://shopify/Product/15510318055809",
+   "handle": "2-karat-moissanit-ring-smaragd-schliff-619500",
+   "title": "2 Karat Moissanit Ring Smaragd-Schliff",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «fassung. der ring besteht aus 925er sterlingsilber, die form is» | beschreibung/sterling: «g. der ring besteht aus 925er sterlingsilber, die form ist geometris»"
+  },
+  {
+   "id": "gid://shopify/Product/15454036164993",
+   "handle": "4er-set-aus-su-wasserperlen-halskette-ohrsteck-18c26d",
+   "title": "4er-Set aus Süsswasserperlen (Halskette, Ohrstecker, Ring)",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « stark und harmoniert mit dem 925er silber.das zeichnet es aus »"
+  },
+  {
+   "id": "gid://shopify/Product/15412960067969",
+   "handle": "999-silber-anhanger-fortuna-glucksmunze-filigran",
+   "title": "999 Silber-Anhänger «Fortuna» – Glücksmünze filigran",
+   "productType": "Halskette",
+   "regel": "text",
+   "beleg": "titel/feingehalt-zahl: «999 silber-anhänger «fortuna» – glücksmü» | beschreibung/sterling: «filigraner anhänger aus 999er sterling-silber im hollow-cutout-desig» | beschreibung/sterling: «ymbol für jeden tag. 💎 999er sterling-silber ✨ filigranes cutout-de»"
+  },
+  {
+   "id": "gid://shopify/Product/15412964852097",
+   "handle": "999-silber-armband-trefle-kleeblatt-mit-zirkonia",
+   "title": "999 Silber-Armband «Trèfle» – Kleeblatt mit Zirkonia",
+   "productType": "Armband",
+   "regel": "text",
+   "beleg": "titel/feingehalt-zahl: «999 silber-armband «trèfle» – kleeblatt » | beschreibung/925: «) ist reiner als gewöhnliches 925er silber und läuft dadurch la» | beschreibung/925: «silber läuft langsamer an als 925er silber, kann aber mit der z»"
+  },
+  {
+   "id": "gid://shopify/Product/15449588892033",
+   "handle": "adjustable-silberringe-616300",
+   "title": "Verstellbare Silberringe",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «h oder katze aus hochwertigem sterling-silber gefertigt einzelstück »"
+  },
+  {
+   "id": "gid://shopify/Product/15523180544385",
+   "handle": "aquamarin-ring-aus-s999-sterlingsilber-625600",
+   "title": "Aquamarin-Ring, silberfarben, offen und verstellbar",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «dieser ring aus s999 sterlingsilber ist mit einem natürlich» | beschreibung/feingehalt-zahl: «dieser ring aus s999 sterlingsilber ist mit einem natürlichen aqu»"
+  },
+  {
+   "id": "gid://shopify/Product/15524699865473",
+   "handle": "armband-mit-drei-strasssteinen-und-wassertropfen-612100",
+   "title": "Armband mit drei Strasssteinen und Wassertropfen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «em dezenten glanz. es ist aus 925er silber gefertigt und zeigt » | beschreibung/925: «alten.das zeichnet es aus aus 925er silber gefertigt wellen- un»"
+  },
+  {
+   "id": "gid://shopify/Product/15497458254209",
+   "handle": "armband-mit-glyzinienblute-aus-999er-sterlings-617400",
+   "title": "Armband mit Glyzinienblüte aus 999er Sterlingsilber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: « mit glyzinienblüte aus 999er sterlingsilber» | titel/feingehalt-zahl: «rmband mit glyzinienblüte aus 999er sterlingsilber» | beschreibung/sterling: «nd ist aus hochwertigem 999er sterlingsilber gefertigt, was für sein»"
+  },
+  {
+   "id": "gid://shopify/Product/15524873535873",
+   "handle": "armband-mit-schloss-design-628300",
+   "title": "Armband mit Schloss-Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «anisiert. das schloss ist aus 925er silber, 5.5 x 5.5 mm gross » | beschreibung/925: «kettenlänge 23 cm schloss aus 925er silber schlossgrösse 5.5 x »"
+  },
+  {
+   "id": "gid://shopify/Product/15525500617089",
+   "handle": "armband-mit-zirkon-akzenten-624500",
+   "title": "Armband mit Zirkon-Akzenten",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «r dein handgelenk. es ist aus 925er silber gefertigt und wahlwe» | beschreibung/925: «efert.das zeichnet es aus aus 925er silber gefertigt mit platin»"
+  },
+  {
+   "id": "gid://shopify/Product/15524700619137",
+   "handle": "armband-silber-halbseil-halbketten-design-619600",
+   "title": "Armband Silber Halbseil, Halbketten-Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «en konzipiert und besteht aus 925er silber. das armband ist gal» | beschreibung/925: «efert.das zeichnet es aus aus 925er silber gefertigt mit silber»"
+  },
+  {
+   "id": "gid://shopify/Product/15493320343937",
+   "handle": "barockperlen-armband-mit-paperclip-kette-636800",
+   "title": "Barockperlen-Armband mit Paperclip-Kette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «en barockperle. gefertigt aus 925er sterling silber, ist es ein» | beschreibung/925: « hergestellt aus hochwertigem 925er sterling silber modernes pa» | beschreibung/sterling: «ockperle. gefertigt aus 925er sterling silber, ist es ein vielseitig»"
   },
   {
-   "id": "gid://shopify/Product/15430406734209",
-   "handle": "925-silber-armband-maglia-mesh-verstellbar",
-   "title": "925-Silber Armband «Maglia» · Mesh, verstellbar",
-   "productType": "Armband"
+   "id": "gid://shopify/Product/15525489639809",
+   "handle": "birnenformiger-zirkon-ring-610900",
+   "title": "Birnenförmiger Zirkon-Ring",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «arbeitungder ring besteht aus 925er silber. der zirkon ist in d»"
   },
   {
-   "id": "gid://shopify/Product/15430422659457",
-   "handle": "925-silber-armband-onda-kleeblatt-glieder",
-   "title": "925-Silber Armband «Onda» · Kleeblatt-Glieder",
-   "productType": "Armband"
+   "id": "gid://shopify/Product/15510920724865",
+   "handle": "bogen-zirkon-ohrstecker-fur-frauen-627600",
+   "title": "Bogen Zirkon Ohrstecker für Frauen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «e. gefertigt aus hochwertigem 925 sterling silber, bieten diese» | beschreibung/925: «zeichnet es aus gefertigt aus 925 sterling silber mit funkelnde» | beschreibung/sterling: «efertigt aus hochwertigem 925 sterling silber, bieten diese ohrsteck»"
   },
   {
-   "id": "gid://shopify/Product/15430345621889",
-   "handle": "925-silber-fusskettchen-riva-emaille-perlen",
-   "title": "925-Silber Fusskettchen «Riva» · Emaille-Perlen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16615331594631",
+   "handle": "bogenknopf-armband-fur-damen-635900",
+   "title": "Bogenknopf-Armband für Damen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «chst. das armband besteht aus 925‐silber und ist mit einer elec» | beschreibung/925: «rt.das zeichnet es aus silber 925 electroplating‐beschichtung b»"
   },
   {
-   "id": "gid://shopify/Product/15510318186881",
-   "handle": "925-silber-marquise-ring-mit-strasssteinen-636900",
-   "title": "925 Silber Marquise Ring mit Strasssteinen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16613634507143",
+   "handle": "brosche-mit-schmetterling-aus-strass-619800",
+   "title": "Brosche mit Schmetterling aus Strass",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «big in 14k gold‐imitation und sterling silver. einsetzbar, kann als »"
   },
   {
-   "id": "gid://shopify/Product/15453760029057",
-   "handle": "925-silber-ring-313216",
-   "title": "925 Silber Ring",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15509387542913",
+   "handle": "buntes-herz-armband-mit-diamant-burstung-601200",
+   "title": "Buntes Herz-Armband mit Diamant-Bürstung",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «uckstück ist aus hochwertigem 925er silber gefertigt und bestic» | beschreibung/925: «zeichnet es aus gefertigt aus 925er silber erhältlich in pink u»"
   },
   {
-   "id": "gid://shopify/Product/15430406832513",
-   "handle": "925-silber-ring-anello-mesh-verstellbar",
-   "title": "925-Silber Ring «Anello» · Mesh, verstellbar",
-   "productType": "Ring"
+   "id": "gid://shopify/Product/15448902009217",
+   "handle": "c-formige-creolen-mit-zirkonia-aus-sterlingsil-392898",
+   "title": "C-förmige Creolen mit Zirkonia aus Sterlingsilber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «mige creolen mit zirkonia aus sterlingsilber» | beschreibung/sterling: «igen creolen aus hochwertigem sterlingsilber sind ein blickfang für » | beschreibung/sterling: « hergestellt aus hochwertigem sterlingsilber premium-design für einz»"
   },
   {
-   "id": "gid://shopify/Product/15430345556353",
-   "handle": "925-silber-ring-fleur-filigrane-blute",
-   "title": "925-Silber Ring «Fleur» · filigrane Blüte",
-   "productType": "Ring"
+   "id": "gid://shopify/Product/15478396387713",
+   "handle": "cuban-link-kette-633500",
+   "title": "Cuban-Link Kette · Damen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «verarbeitung mit galvanischem 925er silber sorgt fur eine dauer» | beschreibung/925: «buste kupferkette galvanische 925er silber-oberflache verfugbar»"
   },
   {
-   "id": "gid://shopify/Product/15454037442945",
-   "handle": "925-sterling-silber-ohrstecker-mit-naturlichen-38d4d5",
-   "title": "925er Silber-Ohrstecker mit Süsswasserperlen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15478428696961",
+   "handle": "damenring-mit-grunem-moosachat-637600",
+   "title": "Damenring mit grünem Moosachat",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ge-inspirierte damenring aus s925 silber besticht durch einen n» | beschreibung/925: «zeichnet es aus vintage-stil s925 silber mit weissgold-plattier»"
   },
   {
-   "id": "gid://shopify/Product/15453725458817",
-   "handle": "925-sterlingsilber-barockperle-halskette-in-go-763520",
-   "title": "925 Sterlingsilber Barockperle Halskette in Gold",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15525489705345",
+   "handle": "damenring-mit-rechteckigem-moissanit-628300",
+   "title": "Damenring mit rechteckigem Moissanit oder Zirkon",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser damenring besteht aus 925er silber und trägt einen rech»"
   },
   {
-   "id": "gid://shopify/Product/16615327957383",
-   "handle": "armband-aus-925er-silber-mit-blasen-design-608400",
-   "title": "Armband aus 925er Silber mit Blasen-Design",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15491507585409",
+   "handle": "delikate-halskette-610400",
+   "title": "Delikate Halskette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «diese exklusive halskette aus 925er sterling-silber ist fuer fr» | beschreibung/925: «das zeichnet es aus material: 925er sterling-silber verarbeitun» | beschreibung/sterling: «exklusive halskette aus 925er sterling-silber ist fuer frauen konzip»"
   },
   {
-   "id": "gid://shopify/Product/15525500158337",
-   "handle": "armband-aus-925er-silber-mit-zirkonia-626500",
-   "title": "Armband aus 925er Silber mit Zirkonia",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15517584195969",
+   "handle": "diamant-armband-mit-geometrischem-muster-625700",
+   "title": "Diamant Armband mit geometrischem Muster",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieses luxuriöse armband aus 925er silber ist ein exquisites a» | beschreibung/925: « hergestellt aus hochwertigem 925er silber ideal für frauen und»"
   },
   {
-   "id": "gid://shopify/Product/15525500748161",
-   "handle": "armband-aus-925er-silber-mit-zirkonia-nieten-633000",
-   "title": "Armband aus 925er Silber mit Zirkonia-Nieten",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15493577146753",
+   "handle": "diy-armband-verschluss-mit-planeten-motiv-605200",
+   "title": "DIY Armband-Verschluss mit Planeten-Motiv",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ten möchten. aus hochwertigem 925er silber gefertigt und galvan» | beschreibung/925: «chmuckzubehör hergestellt aus 925er silber elegante galvanische»"
   },
   {
-   "id": "gid://shopify/Product/15520389464449",
-   "handle": "armband-mit-london-blautopas-925er-silber-615500",
-   "title": "Armband mit London Blautopas & 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449076597121",
+   "handle": "doppelbandring-mit-54-moissanit-steinen-platin-006337",
+   "title": "Doppelbandring mit 54 Moissanit-Steinen, Platin vergoldet",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « elegante doppelbandring aus s925 sterlingsilber ist mit 54 fun» | beschreibung/925: « präsent.das zeichnet es aus s925 sterlingsilber 54 d-vvs1 mois» | beschreibung/sterling: «gante doppelbandring aus s925 sterlingsilber ist mit 54 funkelnden d»"
   },
   {
-   "id": "gid://shopify/Product/15523906650497",
-   "handle": "armband-mit-stern-anhanger-aus-925er-silber-634200",
-   "title": "Armband mit Stern-Anhänger aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478168961",
+   "handle": "doppelherz-halskette-aus-sterling-silber-218817",
+   "title": "Doppelherz-Halskette aus Sterling-Silber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «doppelherz-halskette aus sterling-silber» | beschreibung/925: «egante halskette besteht aus s925-sterling-silber mit einer ros» | beschreibung/925: «it d-vvs1-moissanite-steinen s925-sterling-silber mit rose-gold»"
   },
   {
-   "id": "gid://shopify/Product/15475905692033",
-   "handle": "blumen-ohrclips-aus-925er-sterling-silber-608100",
-   "title": "Blumen Ohrclips aus 925er Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15450859078017",
+   "handle": "doppelkreuz-zirkonring-kupfer-verstellbar-550912",
+   "title": "Doppelkreuz Zirkonring, Kupfer, verstellbar",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «nden zirkonia-steinen, die in sterlingsilber gefasst sind, verleiht » | beschreibung/sterling: « besatz: zirkonia, gefasst in sterlingsilber stil: schlicht, geometr»"
   },
   {
-   "id": "gid://shopify/Product/15450835583361",
-   "handle": "damonenauge-halskette-aus-925er-sterlingsilber-943104",
-   "title": "Dämonenauge-Halskette aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15510930620801",
+   "handle": "doppellagiges-herzarmband-mit-weissem-chalcedo-612600",
+   "title": "Doppellagiges Herzarmband mit weissem Chalcedon",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «. es besteht aus hochwertigem sterlingsilber und präsentiert sich mi» | beschreibung/sterling: « hergestellt aus hochwertigem sterlingsilber doppellagiges design mi»"
   },
   {
-   "id": "gid://shopify/Product/15496372650369",
-   "handle": "delfin-armband-fur-damen-aus-925-sterling-silb-633300",
-   "title": "Delfin Armband für Damen aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15520302039425",
+   "handle": "doppelreihiges-armband-aus-999er-feinsilber-ma-633200",
+   "title": "Doppelreihiges Armband aus 999er Feinsilber, matt",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/fein: «pelreihiges armband aus 999er feinsilber, matt» | titel/feingehalt-zahl: «doppelreihiges armband aus 999er feinsilber, matt» | beschreibung/fein: «n-design. gefertigt aus 999er feinsilber, präsentiert es sich in einer»"
   },
   {
-   "id": "gid://shopify/Product/15510280143233",
-   "handle": "diy-armband-aus-925-sterling-silber-619500",
-   "title": "DIY Armband aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16654418674055",
+   "handle": "doppelreihiges-armband-mit-perlen-620000",
+   "title": "Doppelreihiges Armband mit Perlen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «elreihige armband. es ist aus 925er silber gefertigt und verfüg» | beschreibung/925: «look robuste verarbeitung aus 925er silber verstellbare länge f»"
   },
   {
-   "id": "gid://shopify/Product/16615311016327",
-   "handle": "doppel-partnerringe-aus-925er-sterlingsilber-625300",
-   "title": "Doppel-Partnerringe aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16615225229703",
+   "handle": "edelstahl-halskette-fur-herren-612600",
+   "title": "Edelstahl-Halskette für Herren",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «gt und hat einen anhänger aus 925er sterlingsilber. die kette i» | beschreibung/sterling: « hat einen anhänger aus 925er sterlingsilber. die kette ist 51 cm bi»"
   },
   {
-   "id": "gid://shopify/Product/15421328359809",
-   "handle": "doppel-ring-duo-s925-silber-mit-zirkonia-topas-blau",
-   "title": "Doppel-Ring «Duo» · S925 Silber mit Zirkonia & Topas-Blau",
-   "productType": "Ring"
+   "id": "gid://shopify/Product/15458843951489",
+   "handle": "edle-moissanite-halskette-608400",
+   "title": "Edle Moissanite-Halskette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «die moissanite-halskette aus 925er sterling-silber ist schlich» | beschreibung/925: «d aus silber mit der reinheit 925 und galvanisiert. die kette i» | beschreibung/925: «na. technische daten material 925 sterling silber verarbeitung »"
   },
   {
-   "id": "gid://shopify/Product/15470659928449",
-   "handle": "doppellagige-925er-silber-halskette-mit-wellen-613300",
-   "title": "Doppellagige 925er Silber Halskette mit Wellen-Design",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15454036787585",
+   "handle": "edle-perlenohrringe-a29c9d",
+   "title": "Edle Perlenohrringe",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «net es aus mit 3a-zirkon und s925-silbernadeln für eine hochwer»"
   },
   {
-   "id": "gid://shopify/Product/15510336012673",
-   "handle": "doppellagiges-armband-aus-925er-sterling-silbe-630300",
-   "title": "Doppellagiges Armband aus 925er Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453996974465",
+   "handle": "edle-silberohrringe-mit-strass-inlay-611400",
+   "title": "Edle Silberohrringe mit Strass-Inlay",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «us gefertigt aus hochwertigem 925er silber mit platin oder gold»"
   },
   {
-   "id": "gid://shopify/Product/15520301711745",
-   "handle": "doppellagiges-kreuzarmband-aus-925er-silber-639700",
-   "title": "Doppellagiges Kreuzarmband aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478463873",
+   "handle": "edle-tranenformige-ohrhanger-400066",
+   "title": "Edle Tränenförmige Ohrhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ese exklusiven ohrhänger aus s925-sterlingsilber bestechen durc» | beschreibung/925: «as zeichnet es aus material: s925-sterlingsilber, platinbeschic» | beschreibung/sterling: «exklusiven ohrhänger aus s925-sterlingsilber bestechen durch ihre el»"
   },
   {
-   "id": "gid://shopify/Product/15496379367809",
-   "handle": "doppellagiges-s925-silber-armband-mit-sternen-613500",
-   "title": "Doppellagiges S925 Silber Armband mit Sternen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449477906817",
+   "handle": "edler-moissanite-halsketten-anhanger-081473",
+   "title": "Edler Moissanite-Halsketten-Anhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «egante halskette besteht aus s925 sterling silber und verfügt ü» | beschreibung/925: «et.das zeichnet es aus edles s925 sterling silber 1ct moissanit» | beschreibung/sterling: «te halskette besteht aus s925 sterling silber und verfügt über zwei »"
   },
   {
-   "id": "gid://shopify/Product/15474790760833",
-   "handle": "doppellagiges-sternenarmband-aus-925er-sterlin-619200",
-   "title": "Doppellagiges Sternenarmband aus 925er Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478398337",
+   "handle": "edles-rubin-armband-365441",
+   "title": "Edles Rubin-Armband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieses elegante armband aus s925-sterlingsilber besticht durch» | beschreibung/sterling: «ses elegante armband aus s925-sterlingsilber besticht durch seine 6,»"
   },
   {
-   "id": "gid://shopify/Product/15524874944897",
-   "handle": "doppelreihiges-armband-aus-925er-silber-624100",
-   "title": "Doppelreihiges Armband aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15450145915265",
+   "handle": "edles-silber-pendant-mit-moissanit-631700",
+   "title": "Edler Silber-Anhänger mit Moissanit",
+   "productType": "Basteln & DIY",
+   "regel": "text",
+   "beleg": "beschreibung/925: «s material: sterling-silber (s925) moissanit-stein, 1 karat sno» | beschreibung/sterling: «efertigte pendant besteht aus sterling-silber und ist mit einem hoch» | beschreibung/sterling: «das zeichnet es aus material: sterling-silber (s925) moissanit-stein»"
   },
   {
-   "id": "gid://shopify/Product/16615317242247",
-   "handle": "doppelring-halskette-aus-925er-sterlingsilber-636000",
-   "title": "Doppelring-Halskette aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449477939585",
+   "handle": "edles-smaragd-armband-326466",
+   "title": "Edles Smaragd-Armband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «armband aus sterling-silber (s925) besticht durch drei lab-gezü» | beschreibung/925: «te smaragde sterling-silber (s925) platin beschichtete kette ei» | beschreibung/sterling: «dieses elegante armband aus sterling-silber (s925) besticht durch »"
   },
   {
-   "id": "gid://shopify/Product/15443219218817",
-   "handle": "edelstein-anhaenger-rubin-smaragd-2ct-925-silber-088513",
-   "title": "Edelstein-Anhänger «Rubin & Smaragd» 2 ct · 925 Silber Halo",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15458840904065",
+   "handle": "einfache-ohrring-klipse-614100",
+   "title": "Einfache Ohrring-Klipse",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «e ohrring-klipse bestehen aus 925er sterling-silber und haben e» | beschreibung/925: «das zeichnet es aus material: 925er silber farbe: gelb, weiss f» | beschreibung/sterling: «ing-klipse bestehen aus 925er sterling-silber und haben ein geometri»"
   },
   {
-   "id": "gid://shopify/Product/15443241173377",
-   "handle": "edelstein-anhanger-bluten-halo-925-silber-661890",
-   "title": "Edelstein-Anhänger «Blüten-Halo» · 925 Silber",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15449117655425",
+   "handle": "elegante-emaille-blumen-ohrringe-mit-perlen-615554",
+   "title": "Elegante Emaille-Blumen-Ohrringe mit Perlen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «r damen sind aus hochwertigem sterlingsilber gefertigt und bestechen» | beschreibung/sterling: «us gefertigt aus hochwertigem sterlingsilber verziert mit detaillier»"
   },
   {
-   "id": "gid://shopify/Product/15443241075073",
-   "handle": "edelstein-halskette-rubin-saphir-925-silber-344322",
-   "title": "Edelstein-Halskette «Rubin & Saphir» · 925 Silber",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15485395403137",
+   "handle": "elegante-ohrhaken-mit-perlen-610600",
+   "title": "Elegante Ohrhaken mit Perlen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «. gefertigt aus hochwertigem s925 silber, bestechen sie durch i» | beschreibung/925: «eichnet es aus gefertigt aus s925 silber elegantes, minimalisti»"
   },
   {
-   "id": "gid://shopify/Product/15443219186049",
-   "handle": "edelstein-halskette-rubin-smaragd-925-silber-136513",
-   "title": "Edelstein-Halskette «Rubin & Smaragd» · 925 Silber Doppel-Halo",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15453996646785",
+   "handle": "elegante-saphir-sonnenblumen-ohrstecker-fur-de-607800",
+   "title": "Elegante Saphir-Sonnenblumen Ohrstecker für den Alltag",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «it synthetischen saphiren und 925er silber bieten einen florale» | beschreibung/925: «alten synthesestein als inlay 925er silber als metallmaterial m»"
   },
   {
-   "id": "gid://shopify/Product/15443241206145",
-   "handle": "edelstein-kleeblatt-rubin-saphir-925-silber-913089",
-   "title": "Edelstein-Kleeblatt · 925 Silber · Rubin, Saphir, Smaragd oder Peridot",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449171460481",
+   "handle": "eleganter-2ct-moissanit-ring-mit-doppeltem-hal-889665",
+   "title": "Eleganter 2ct Moissanit Ring mit doppeltem Halo",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser exquisite ring aus s925 sterlingsilber präsentiert ei» | beschreibung/925: «er moissanit (7x9mm, d-vvs1) s925 sterlingsilber mit platinbesc» | beschreibung/sterling: «ieser exquisite ring aus s925 sterlingsilber präsentiert einen beein»"
   },
   {
-   "id": "gid://shopify/Product/15443241140609",
-   "handle": "edelstein-kreuz-anhanger-rubin-925-silber-567554",
-   "title": "Edelstein-Kreuz-Anhänger «Rubin» · 925 Silber",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15508406337921",
+   "handle": "eleganter-moissanit-ring-im-taubenei-design-615000",
+   "title": "Eleganter Moissanit Ring im «Taubenei»-Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «i»-design. gefasst ist er in s925-silber mit einer galvanischen»"
   },
   {
-   "id": "gid://shopify/Product/15491991830913",
-   "handle": "elegante-s925-silber-ohrclips-fur-damen-630000",
-   "title": "Elegante S925 Silber Ohrclips für Damen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15510317924737",
+   "handle": "eleganter-moissanit-ring-in-tropfenform-616700",
+   "title": "Eleganter Moissanit-Ring in Tropfenform",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «; gearbeitet ist der ring aus 925 sterling silber, er wiegt 5 g» | beschreibung/sterling: «arbeitet ist der ring aus 925 sterling silber, er wiegt 5 g. der ste»"
   },
   {
-   "id": "gid://shopify/Product/15478652043649",
-   "handle": "eleganter-4-karat-radiant-schliff-s925-silberr-605600",
-   "title": "Eleganter 4 Karat Radiant-Schliff S925 Silberring",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15510920331649",
+   "handle": "eleganter-moissanite-ring-mit-4-5-karat-ovalsc-614800",
+   "title": "Eleganter Moissanite Ring mit 4.5 Karat Ovalschliff",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «, der ring selbst besteht aus 925 sterling silber und wiegt 5 g» | beschreibung/sterling: «r ring selbst besteht aus 925 sterling silber und wiegt 5 g. das des»"
   },
   {
-   "id": "gid://shopify/Product/15510920462721",
-   "handle": "eleganter-925-silber-moissanite-ring-fur-damen-621200",
-   "title": "Eleganter 925 Silber Moissanite Ring für Damen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15485395337601",
+   "handle": "eleganter-ring-mit-gelbem-diamant-effekt-613100",
+   "title": "Eleganter Ring mit gelbem Diamant-Effekt",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «xus. das schmuckstück ist aus 925er sterlingsilber gefertigt un» | beschreibung/925: «eeignet für: frauen material: 925er sterlingsilber form: geomet» | beschreibung/sterling: «as schmuckstück ist aus 925er sterlingsilber gefertigt und besticht »"
   },
   {
-   "id": "gid://shopify/Product/15492035084673",
-   "handle": "eleganter-925er-silberring-mit-3-karat-moissan-639500",
-   "title": "Eleganter 925er Silberring mit 3 Karat Moissanit",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15504117334401",
+   "handle": "eleganter-zirkonia-ring-im-koreanischen-stil-633200",
+   "title": "Eleganter Zirkonia Ring im koreanischen Stil",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «t sind. der ring besteht aus s925-silber und ist als geschlosse»"
   },
   {
-   "id": "gid://shopify/Product/15447585489281",
-   "handle": "eleganter-topasring-aus-925er-silber-632000",
-   "title": "Eleganter Topasring aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15522286633345",
+   "handle": "elegantes-armband-mit-strass-besatz-zum-12-geburtstag-620200",
+   "title": "Elegantes Armband mit Strass-Besatz zum 12. Geburtstag",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «niertes design. gefertigt aus 925er sterlingsilber, ist es sowo» | beschreibung/925: « hergestellt aus hochwertigem 925er sterlingsilber unisex-desig» | beschreibung/sterling: «s design. gefertigt aus 925er sterlingsilber, ist es sowohl für mädc»"
   },
   {
-   "id": "gid://shopify/Product/15516217868673",
-   "handle": "elegantes-armband-aus-925er-silber-609400",
-   "title": "Elegantes Armband aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15473076666753",
+   "handle": "elegantes-kreuzkettchen-624400",
+   "title": "Elegantes Kreuzkettchen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «old verfügbar und besteht aus 925er silber.das zeichnet es aus » | beschreibung/925: «e handwerkskunst hochwertiges 925er silber verfügbar in verschi» | option/925: «farbe: weissgold-925 silber / roségold-925 silber »"
   },
   {
-   "id": "gid://shopify/Product/15476178190721",
-   "handle": "engelsflugel-halskette-aus-925er-silber-622000",
-   "title": "Engelsflügel-Halskette aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15459837215105",
+   "handle": "emeraldgruener-vintage-armreif-633400",
+   "title": "Smaragdgrünes Vintage-Armband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «verarbeitungals material ist s925 sterlingsilber genannt, die o» | beschreibung/sterling: «rbeitungals material ist s925 sterlingsilber genannt, die oberfläche»"
   },
   {
-   "id": "gid://shopify/Product/15503281848705",
-   "handle": "fang-ziru-stein-set-damenring-aus-925er-silber-622300",
-   "title": "Fang Ziru Stein-Set Damenring aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16615332970887",
+   "handle": "fusskette-mit-wassertropfen-anhanger-613300",
+   "title": "Fusskette mit Wassertropfen-Anhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ckt. das schmuckstück ist aus 925er sterlingsilber gefertigt un» | beschreibung/925: « mit edelsteinen verziert aus 925er sterlingsilber erhältlich i» | beschreibung/sterling: «as schmuckstück ist aus 925er sterlingsilber gefertigt und mit edels»"
   },
   {
-   "id": "gid://shopify/Product/15510930456961",
-   "handle": "funkelndes-zirkon-armband-mit-schleife-aus-925-626000",
-   "title": "Funkelndes Zirkon Armband mit Schleife aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453623845249",
+   "handle": "gestapelte-ringkombination-europaisch-amerikan-638700",
+   "title": "Gestapelte Ringkombination europäisch-amerikanischer Stil",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «hergestellt aus 925er sterlingsilber, bietet dies» | beschreibung/925: «n möchten.das zeichnet es aus 925er sterlingsilber geometrische» | beschreibung/sterling: «hergestellt aus 925er sterlingsilber, bietet dieser ring ein»"
   },
   {
-   "id": "gid://shopify/Product/16603691090311",
-   "handle": "fusskette-mit-herzanhanger-aus-925er-sterlings-634600",
-   "title": "Fusskette mit Herzanhänger aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15503026422145",
+   "handle": "glucks-armband-mit-999er-feinsilber-anhanger-615700",
+   "title": "Glücks-Armband mit 999er Feinsilber-Anhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/fein: «glücks-armband mit 999er feinsilber-anhänger» | titel/feingehalt-zahl: «glücks-armband mit 999er feinsilber-anhänger» | beschreibung/fein: «dgefertigte armband aus 999er feinsilber ist ein traditionelles schmuc»"
   },
   {
-   "id": "gid://shopify/Product/15525489312129",
-   "handle": "fusskette-schildkrote-und-seestern-aus-925er-s-601800",
-   "title": "Fusskette Schildkröte und Seestern aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15511942431105",
+   "handle": "glucksarmband-mit-katze-aus-feinsilber-615000",
+   "title": "Glücksarmband mit Katze aus Feinsilber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/fein: «glücksarmband mit katze aus feinsilber»"
   },
   {
-   "id": "gid://shopify/Product/15458844672385",
-   "handle": "geburtstein-halskette-aus-925er-silber-620400",
-   "title": "Geburtstein-Halskette aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15510335914369",
+   "handle": "glucksklee-bead-set-fur-diy-armbander-600200",
+   "title": "Glücksklee-Bead Set für DIY Armbänder",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « filigranen anhänger sind aus 925er sterlingsilber gefertigt un» | beschreibung/925: «erden.das zeichnet es aus aus 925er sterlingsilber gefertigt ve» | beschreibung/sterling: «ranen anhänger sind aus 925er sterlingsilber gefertigt und verleihen»"
   },
   {
-   "id": "gid://shopify/Product/15414270820737",
-   "handle": "geflochtenes-herz-armband-925-versilbert-gruner-zirkonia",
-   "title": "Geflochtenes Herz-Armband · 925-versilbert, grüner Zirkonia",
-   "productType": "Armband"
+   "id": "gid://shopify/Product/15455661261185",
+   "handle": "goldgeplattete-zirkonia-ohrringe-minimalistisc-603000",
+   "title": "Goldgeplättete Zirkonia-Ohrringe minimalistisch",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «edle ohrringe mit s925 silberstiften und kupferner b» | beschreibung/925: « kupfer mit 14k goldüberzug, s925 silberstifte farboptionen: go»"
   },
   {
-   "id": "gid://shopify/Product/15491991404929",
-   "handle": "geometrische-moissanit-ohrringe-aus-925er-silb-631000",
-   "title": "Geometrische Moissanit-Ohrringe aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15472058892673",
+   "handle": "gourde-armband-mit-moissanit-steinen-626600",
+   "title": "Gourde Armband mit Moissanit Steinen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieses elegante armband aus 925er sterlingsilber ist ein wund» | beschreibung/925: «us gefertigt aus hochwertigem 925er sterlingsilber verziert mit» | beschreibung/sterling: «es elegante armband aus 925er sterlingsilber ist ein wunderschönes a»"
   },
   {
-   "id": "gid://shopify/Product/15493577474433",
-   "handle": "glucks-kleeblatt-glasperle-aus-925er-silber-605900",
-   "title": "Glücks-Kleeblatt Glasperle aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500640616833",
+   "handle": "grasformband-602400",
+   "title": "Grasformband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «das grasformband aus 925-sterlingsilber ist ein stilvo» | beschreibung/925: «ättrige kleeblätter material: 925-sterlingsilber stil: frauen \ud83d» | beschreibung/sterling: «das grasformband aus 925-sterlingsilber ist ein stilvolles acce»"
   },
   {
-   "id": "gid://shopify/Product/15493442732417",
-   "handle": "goldring-925-silber-634300",
-   "title": "Goldring 925 Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449477677441",
+   "handle": "gruner-moissanit-solitar-ring-579906",
+   "title": "Grüner Moissanit Solitär Ring",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser elegante ring aus s925 sterling silber verfügt über » | beschreibung/sterling: «dieser elegante ring aus s925 sterling silber verfügt über einen 6x6»"
   },
   {
-   "id": "gid://shopify/Product/15491989209473",
-   "handle": "halskette-mit-moissanit-anhanger-aus-925er-sil-600900",
-   "title": "Halskette mit Moissanit-Anhänger aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15455650742657",
+   "handle": "haifisch-anhanger-624600",
+   "title": "Haifisch-Anhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «. er besteht aus hochwertigem 925er silber und wurde mittels el» | beschreibung/925: «iges haifisch-motiv material: 925 silber verarbeitung: elektrop»"
   },
   {
-   "id": "gid://shopify/Product/15510336471425",
-   "handle": "handgeflochtenes-armband-aus-925er-sterlingsil-621400",
-   "title": "Handgeflochtenes Armband aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15481889128833",
+   "handle": "halskette-mit-doppeltem-halo-tropfenformigem-d-619800",
+   "title": "Halskette mit doppeltem Halo & tropfenförmigem Diamant-Akzent",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «gt.gefertigt aus hochwertigem 925er sterlingsilber und veredelt» | beschreibung/925: «zeichnet es aus gefertigt aus 925er sterlingsilber edle goldpla» | beschreibung/sterling: «ertigt aus hochwertigem 925er sterlingsilber und veredelt mit einer »"
   },
   {
-   "id": "gid://shopify/Product/15510920593793",
-   "handle": "handgemachter-offener-ring-aus-925-sterling-si-618700",
-   "title": "Handgemachter offener Ring aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15491417604481",
+   "handle": "halskette-wassertropfen-mit-zirkonia-611200",
+   "title": "Halskette \"Wassertropfen\" mit Zirkonia",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «icht einfangen. gefertigt aus 925er sterlingsilber, garantiert » | beschreibung/925: «reuzketten-stil gefertigt aus 925er sterlingsilber trendiges wa» | beschreibung/sterling: «infangen. gefertigt aus 925er sterlingsilber, garantiert diese halsk»"
   },
   {
-   "id": "gid://shopify/Product/15504199352705",
-   "handle": "herz-ohrstecker-aus-925er-sterlingsilber-626000",
-   "title": "Herz-Ohrstecker aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15503284601217",
+   "handle": "herren-business-uhr-mit-kalender-497088",
+   "title": "Herren Business-Uhr mit Kalender",
+   "productType": "Uhren",
+   "regel": "text",
+   "beleg": "option/sterling: « / reingold / silber / gold / sterlingsilber / schwarz / gold / schw»"
   },
   {
-   "id": "gid://shopify/Product/15481756778881",
-   "handle": "herz-ring-aus-925-sterling-silber-628200",
-   "title": "Herz-Ring aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449171788161",
+   "handle": "herz-moissanit-ring-mit-split-shank-pave-halo-602370",
+   "title": "Herz Moissanit Ring mit Split Shank Pave Halo",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser elegante ring aus s925 sterlingsilber präsentiert ei» | beschreibung/925: « vereint.das zeichnet es aus s925 sterlingsilber, platin-platti» | beschreibung/sterling: «dieser elegante ring aus s925 sterlingsilber präsentiert einen 1 kar»"
   },
   {
-   "id": "gid://shopify/Product/15520389333377",
-   "handle": "herzarmband-aus-925-sterling-silber-620200",
-   "title": "Herzarmband aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449171755393",
+   "handle": "herz-schleife-moissanit-ring-1-karat-silber-009153",
+   "title": "Herz Schleife Moissanit Ring, 1 Karat, Silber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ertigem, platin-beschichtetem 925er sterling silber gefertigt u» | beschreibung/925: « karat d-farbe vvs1 moissanit 925er sterling silber mit platin-» | beschreibung/sterling: «m, platin-beschichtetem 925er sterling silber gefertigt und wiegt 2.»"
   },
   {
-   "id": "gid://shopify/Product/15521391903105",
-   "handle": "herzarmband-aus-925er-sterlingsilber-626300",
-   "title": "Herzarmband aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453728440705",
+   "handle": "herzanhanger-minimalistisch-633000",
+   "title": "Herzanhänger minimalistisch",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «auch.das zeichnet es aus aus s925 silber gefertigt vintage insp»"
   },
   {
-   "id": "gid://shopify/Product/15522285945217",
-   "handle": "huan-cai-armband-mit-grunem-zirkon-925-silber-607500",
-   "title": "Huan Cai Armband mit grünem Zirkon (925 Silber)",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478332801",
+   "handle": "herzformige-huggie-ohrringe-mit-moissanite-012801",
+   "title": "Herzförmige Huggie-Ohrringe mit Moissanite",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «se romantischen ohrringe aus s925-sterlingsilber bestechen durc» | beschreibung/925: «1ct d-vvs1 moissanite-steine s925-sterlingsilber mit platin-bes» | beschreibung/sterling: «omantischen ohrringe aus s925-sterlingsilber bestechen durch ihre he»"
   },
   {
-   "id": "gid://shopify/Product/15497421160833",
-   "handle": "irisierender-opalring-aus-925-sterling-silber-614500",
-   "title": "Irisierender Opalring aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478070657",
+   "handle": "herzformige-ohrstecker-mit-rubin-oder-saphir-422785",
+   "title": "Herzförmige Ohrstecker mit Rubin oder Saphir",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «diese edlen ohrstecker aus s925 sterling silber bestechen dur» | beschreibung/sterling: «ese edlen ohrstecker aus s925 sterling silber bestechen durch ihr he»"
   },
   {
-   "id": "gid://shopify/Product/15453996876161",
-   "handle": "katzenohrringe-aus-925er-silber-mit-perlmutt-u-609100",
-   "title": "Katzenohrringe aus 925er Silber mit Perlmutt und Platin-Finish",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15493320999297",
+   "handle": "herzformiger-ring-aus-sterlingsilber-615000",
+   "title": "Herzförmiger Ring aus Sterlingsilber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «herzförmiger ring aus sterlingsilber» | beschreibung/sterling: «ser vielseitige damenring aus sterling silber ist ein stilvolles acc» | beschreibung/sterling: «.das zeichnet es aus ring aus sterling silber herzförmiges, geometri»"
   },
   {
-   "id": "gid://shopify/Product/15451923841409",
-   "handle": "katzenpfoten-armband-aus-925-sterling-silber-630200",
-   "title": "Pfoten-Armband 925 Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453728571777",
+   "handle": "herzformiger-silberchoker-634400",
+   "title": "Herzförmiger Silberchoker",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ein herz-förmiger choker aus s925 sterling silber, ideal für fr» | beschreibung/925: «auen.das zeichnet es aus aus s925 sterling silber gefertigt her» | beschreibung/sterling: «herz-förmiger choker aus s925 sterling silber, ideal für frauen.das »"
   },
   {
-   "id": "gid://shopify/Product/15489579942273",
-   "handle": "keltischer-knoten-anhanger-aus-925-sterling-si-614600",
-   "title": "Keltischer Knoten Anhänger aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15509386527105",
+   "handle": "herzformiges-armband-im-minimalistischen-stil-601000",
+   "title": "Herzförmiges Armband im minimalistischen Stil",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «zeichnet es aus gefertigt aus 925er silber für langanhaltenden »"
   },
   {
-   "id": "gid://shopify/Product/15467039883649",
-   "handle": "kleeblatt-halskette-aus-925er-sterlingsilber-626600",
-   "title": "Kleeblatt-Halskette aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15512289739137",
+   "handle": "iris-armband-mit-funkelnden-strasssteinen-622800",
+   "title": "Iris Armband mit funkelnden Strasssteinen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieses elegante armband aus 925er silber ist ein wunderschöne» | beschreibung/925: «us gefertigt aus hochwertigem 925er silber elegantes florales d»"
   },
   {
-   "id": "gid://shopify/Product/15453673750913",
-   "handle": "kreis-und-karo-hochwertiger-925-silberohrclip-604000",
-   "title": "Kreis und Karo Hochwertiger 925 Silberohrclip",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15454893605249",
+   "handle": "kaffee-zirkon-ring-628100",
+   "title": "Kaffee-Zirkon Ring",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «geschenk.das zeichnet es aus s925 silberne platte mit 14k gold »"
   },
   {
-   "id": "gid://shopify/Product/15503281389953",
-   "handle": "kristallarmband-mit-925er-silber-601700",
-   "title": "Kristallarmband mit 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16612772643207",
+   "handle": "kaisertasse-aus-sterlingsilber-mit-emaille-blu-628200",
+   "title": "Kaisertasse aus Sterlingsilber mit Emaille-Blumen",
+   "productType": "Küche & Bar",
+   "regel": "text",
+   "beleg": "titel/sterling: «kaisertasse aus sterlingsilber mit emaille-blumen» | beschreibung/sterling: «ebeständigem glas und ist mit sterlingsilber verziert.das zeichnet e» | beschreibung/sterling: «ster im kaiserlichen stil aus sterlingsilber gefertigt produktdetail»"
   },
   {
-   "id": "gid://shopify/Product/15521392361857",
-   "handle": "lowentanz-armband-aus-925er-sterlingsilber-613900",
-   "title": "Löwentanz Armband aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15507826344321",
+   "handle": "katzen-und-blumenarmband-aus-999er-silber-617700",
+   "title": "Katzen- und Blumenarmband aus 999er Silber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/feingehalt-zahl: «katzen- und blumenarmband aus 999er silber» | beschreibung/fein: «es elegante armband aus 999er feinsilber ist das perfekte accessoire f» | beschreibung/fein: «ertigt aus hochwertigem 999er feinsilber verziert mit trendigen katzen»"
   },
   {
-   "id": "gid://shopify/Product/15449594823041",
-   "handle": "lucky-cat-doppelring-kette-aus-925er-silber-fu-639700",
-   "title": "Lucky Cat Doppelring Kette aus 925er Silber für Damen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449590563201",
+   "handle": "katzenring-anpassbar-383937",
+   "title": "Katzenring anpassbar",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «erden.das zeichnet es aus mit 925er plattierung für eine edle o»"
   },
   {
-   "id": "gid://shopify/Product/15447585685889",
-   "handle": "luxurioser-strassring-aus-s925-sterlingsilber-613900",
-   "title": "Luxuriöser Strassring aus S925 Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15510920692097",
+   "handle": "klassische-herz-zirkon-ohrstecker-612900",
+   "title": "Klassische Herz Zirkon Ohrstecker",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «auch von luxus. gefertigt aus 925er silber, stehen sie für rein» | beschreibung/925: «unst: diamant-setting farbe: s925 silber ohrstecker material: 9» | beschreibung/925: «5 silber ohrstecker material: 925er silber form: geometrisches »"
   },
   {
-   "id": "gid://shopify/Product/15510333653377",
-   "handle": "mattes-retro-armband-aus-925er-silber-612400",
-   "title": "Mattes Retro-Armband aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478037889",
+   "handle": "kleeblatt-ohrstecker-mit-smaragd-739650",
+   "title": "Kleeblatt-Ohrstecker mit Smaragd",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «diese ohrstecker aus s925 sterling silber zeigen ein kl» | beschreibung/925: «ragd als zentrum pavé-ränder s925 sterling silber platin-schich» | beschreibung/sterling: «diese ohrstecker aus s925 sterling silber zeigen ein kleeblatt-d»"
   },
   {
-   "id": "gid://shopify/Product/15497444163969",
-   "handle": "minimalistischer-925-sterling-silber-ring-fur-630700",
-   "title": "Minimalistischer 925 Sterling Silber Ring für Frauen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16615347945863",
+   "handle": "kreuzring-mit-strasssteinen-617500",
+   "title": "Kreuzring mit Strasssteinen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «sführung der ring besteht aus 925 sterlingsilber und ist galvan» | beschreibung/sterling: «rung der ring besteht aus 925 sterlingsilber und ist galvanisiert, a»"
   },
   {
-   "id": "gid://shopify/Product/15481756713345",
-   "handle": "minimalistisches-925-silber-moissanit-armband-617600",
-   "title": "Minimalistisches 925 Silber Moissanit Armband",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500542706049",
+   "handle": "kubanisches-armband-schlicht-vielseitig-600200",
+   "title": "Kubanisches Armband – schlicht & vielseitig",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « für jeden tag. gefertigt aus 925er sterlingsilber, besticht es» | beschreibung/925: «us gefertigt aus hochwertigem 925er sterlingsilber minimalistis» | beschreibung/sterling: «eden tag. gefertigt aus 925er sterlingsilber, besticht es durch sein»"
   },
   {
-   "id": "gid://shopify/Product/15520301941121",
-   "handle": "mobius-armband-aus-925er-weissgold-619500",
-   "title": "Möbius Armband aus 925er Weissgold",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15501006078337",
+   "handle": "kubanisches-solitar-armband-602200",
+   "title": "Kubanisches Solitär-Armband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «fit aufwertet. es besteht aus 925er sterlingsilber und ist in z» | beschreibung/925: «us gefertigt aus hochwertigem 925er sterlingsilber veredelt mit» | beschreibung/sterling: «fwertet. es besteht aus 925er sterlingsilber und ist in zwei elegant»"
   },
   {
-   "id": "gid://shopify/Product/15477526921601",
-   "handle": "moissanit-armband-aus-925er-sterling-silber-627900",
-   "title": "Moissanit Armband aus 925er Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500601622913",
+   "handle": "luxus-butterfly-armreif-608500",
+   "title": "Luxus-Butterfly-Armreif",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/feingehalt-zahl: «der armreif besteht aus 999 feinem silber und verfügt über eine elegant» | beschreibung/feingehalt-zahl: «t ihn aus exquisites handwerk 999 feines silber 🛡️ sorglos shoppen: ✅ geprüf»"
   },
   {
-   "id": "gid://shopify/Product/15525489213825",
-   "handle": "moissanit-armband-aus-925er-sterlingsilber-608700",
-   "title": "Moissanit Armband aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453623976321",
+   "handle": "meeresschmuck-set-mit-sternfisch-muscheldesign-842754",
+   "title": "Meeresschmuck-Set mit Sternfisch & Muscheldesign",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «ffenen, anpassbaren ringe aus sterlingsilber sind ideal für den zeig» | beschreibung/sterling: «tion für zeigefinger robustes sterlingsilber mit glänzendem finish p»"
   },
   {
-   "id": "gid://shopify/Product/15443182846337",
-   "handle": "moissanit-halskette-aurora-1ct-925-silber-079489",
-   "title": "Moissanit-Halskette «Aurora» 1 ct · 925 Silber Tropfen-Halo",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15477524955521",
+   "handle": "minimalistischer-anhanger-615200",
+   "title": "Minimalistischer Anhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « er besteht aus hochwertigem s925 silber und moissanit und biet» | beschreibung/925: «täbiger fassung hochwertiges s925 silber und moissanit verfügba»"
   },
   {
-   "id": "gid://shopify/Product/15443241107841",
-   "handle": "moissanit-ohrhanger-halo-1-ct-925-silber-759426",
-   "title": "Moissanit-Ohrhänger «Halo» 1 ct · 925 Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15467038802305",
+   "handle": "minimalistischer-silberring-mit-kugeldesign-609600",
+   "title": "Minimalistischer Silberring mit Kugeldesign",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « und doch stilvolle ring aus s925 silber ist perfekt für den tä» | beschreibung/925: «chnet es aus aus hochwertigem 925er silber gefertigt. minimalis»"
   },
   {
-   "id": "gid://shopify/Product/15443182879105",
-   "handle": "moissanit-ohrstecker-bluete-925-silber-739713",
-   "title": "Moissanit-Ohrstecker «Blüte» 0,5 ct · 925 Sterling-Silber",
-   "productType": "Ohrringe"
+   "id": "gid://shopify/Product/15502188249473",
+   "handle": "minimalistischer-zirkon-ring-mit-drei-steinen-634600",
+   "title": "Minimalistischer Zirkon-Ring mit drei Steinen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ing mit drei steinen ist aus s925-silber gefertigt und galvanis»"
   },
   {
-   "id": "gid://shopify/Product/15443241042305",
-   "handle": "moissanit-ohrstecker-bogen-0-5-ct-925-silber-169153",
-   "title": "Moissanit-Ohrstecker «Bogen» 0,5 ct · 925 Silber",
-   "productType": "Ohrringe"
+   "id": "gid://shopify/Product/15512289411457",
+   "handle": "minimalistisches-armband-mit-buchstaben-gravur-603700",
+   "title": "Minimalistisches Armband mit Buchstaben-Gravur",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «rsönliche note. gefertigt aus 925er silber und veredelt durch e» | beschreibung/925: «das zeichnet es aus material: 925er silber veredelung: galvanis»"
   },
   {
-   "id": "gid://shopify/Product/15443240944001",
-   "handle": "moissanit-ohrstecker-duo-0-5-2-ct-925-silber-464257",
-   "title": "Moissanit-Ohrstecker «Duo» 0,5 & 2 ct · 925 Silber",
-   "productType": "Ohrringe"
+   "id": "gid://shopify/Product/15510333718913",
+   "handle": "minimalistisches-layering-armband-fur-damen-631400",
+   "title": "Minimalistisches Layering-Armband für Damen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «armband ist aus hochwertigem s925 sterling silber gefertigt und» | beschreibung/925: « aus handgefertigt material: s925 sterling silber stil: minimal» | beschreibung/sterling: «and ist aus hochwertigem s925 sterling silber gefertigt und in den f»"
   },
   {
-   "id": "gid://shopify/Product/15443240976769",
-   "handle": "moissanit-ohrstecker-schleife-1-ct-925-silber-132994",
-   "title": "Moissanit-Ohrstecker «Schleife» 1 ct · 925 Silber",
-   "productType": "Ohrringe"
+   "id": "gid://shopify/Product/15449478005121",
+   "handle": "minimalistisches-moissanite-halskette-645121",
+   "title": "Minimalistisches Moissanite-Halskette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «diese elegante halskette aus s925-sterlingsilber besticht durch» | beschreibung/sterling: «e elegante halskette aus s925-sterlingsilber besticht durch ihre sch»"
   },
   {
-   "id": "gid://shopify/Product/15443182911873",
-   "handle": "moissanit-ohrstecker-solitaer-3ct-925-silber-641601",
-   "title": "Moissanit-Ohrstecker «Solitär» 3 ct · 925 Silber Cushion-Halo",
-   "productType": "Ohrringe"
+   "id": "gid://shopify/Product/15524700258689",
+   "handle": "moissanit-armband-verstellbar-613700",
+   "title": "Moissanit Armband verstellbar",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ag tragen kannst. es ist aus s925 silber gefertigt und mit mois» | beschreibung/925: «fert.das zeichnet es aus aus s925 silber gefertigt mit moissani»"
   },
   {
-   "id": "gid://shopify/Product/15443241009537",
-   "handle": "moissanit-ohrstecker-trilogie-1-ct-925-silber-860354",
-   "title": "Moissanit-Ohrstecker «Trilogie» 1 ct · 925 Silber",
-   "productType": "Ohrringe"
+   "id": "gid://shopify/Product/15449171526017",
+   "handle": "moissanit-ring-mit-doppeltem-halo-platinbeschi-853377",
+   "title": "Moissanit-Ring mit doppeltem Halo, Platinbeschichtet",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ieser exquisite ring ist aus s925 sterlingsilber gefertigt und » | beschreibung/925: «ene und detaillierte galerie s925 sterlingsilber, platinbeschic» | beschreibung/sterling: «r exquisite ring ist aus s925 sterlingsilber gefertigt und verfügt ü»"
   },
   {
-   "id": "gid://shopify/Product/15465984491905",
-   "handle": "moissanit-ring-aus-925er-sterling-silber-639800",
-   "title": "Moissanit Ring aus 925er Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15477418262913",
+   "handle": "moissanit-ring-mit-radiant-schliff-629800",
+   "title": "Moissanit Ring mit Radiant-Schliff",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «z. gefertigt aus hochwertigem 925er sterlingsilber, ist er eine» | beschreibung/925: «code geliefert. gefertigt aus 925er sterlingsilber für dauerhaf» | beschreibung/sterling: «ertigt aus hochwertigem 925er sterlingsilber, ist er eine stilvolle »"
   },
   {
-   "id": "gid://shopify/Product/15449171624321",
-   "handle": "moissanit-ring-aus-925er-sterlingsilber-mit-st-188994",
-   "title": "Moissanit-Ring aus 925er Sterlingsilber mit Sternen-Halo",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449172083073",
+   "handle": "moissanit-ring-prinzessschliff-2ct-platin-plat-771650",
+   "title": "Moissanit Ring Prinzessschliff, 2ct, Platin Plattiert",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser elegante ring aus s925 sterlingsilber präsentiert ei» | beschreibung/925: «en- und runden akzentsteinen s925 sterlingsilber, platin platti» | beschreibung/sterling: «dieser elegante ring aus s925 sterlingsilber präsentiert einen 2 kar»"
   },
   {
-   "id": "gid://shopify/Product/15449171198337",
-   "handle": "moissanit-ring-aus-s925-sterling-silber-platin-512385",
-   "title": "Moissanit-Ring aus S925 Sterling Silber, Platinbeschichtet",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449171394945",
+   "handle": "moissanit-verlobungsring-2-karat-3-steine-silb-366850",
+   "title": "Moissanit-Verlobungsring 2 Karat, 3 Steine, Silber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «seitensteinen. gefertigt aus s925 sterlingsilber mit platinbesc» | beschreibung/925: «g bringt. ein innenliegender s925 stempel bestätigt die echthei» | beschreibung/925: «n mit marquise-seitensteinen s925 sterlingsilber mit hochwertig»"
   },
   {
-   "id": "gid://shopify/Product/15443182813569",
-   "handle": "moissanit-ring-marquise-4ct-925-silber-625300",
-   "title": "Moissanit-Ring «Marquise» 4 ct · 925 Sterling-Silber",
-   "productType": "Ring"
+   "id": "gid://shopify/Product/15449477775745",
+   "handle": "moissanite-halskette-mit-twist-anhanger-567106",
+   "title": "Moissanite Halskette mit Twist-Anhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «diese elegante halskette aus s925 sterling silber besteht aus e» | beschreibung/sterling: «e elegante halskette aus s925 sterling silber besteht aus einem 1ct »"
   },
   {
-   "id": "gid://shopify/Product/15503127511425",
-   "handle": "moissanit-ring-mit-krappenfassung-aus-925er-si-629800",
-   "title": "Moissanit-Ring mit Krappenfassung aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15510318317953",
+   "handle": "moissanite-ring-im-rechteckigen-kissenschliff-600300",
+   "title": "Moissanite Ring im rechteckigen Kissenschliff",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «uckstück ist aus hochwertigem 925er sterling silber gefertigt, » | beschreibung/925: « krappenfassung gefertigt aus 925er sterling silber lieferung m» | beschreibung/sterling: «ck ist aus hochwertigem 925er sterling silber gefertigt, was für lan»"
   },
   {
-   "id": "gid://shopify/Product/15449171689857",
-   "handle": "moissanit-ring-s925-silber-sonnenblumen-halo-p-637826",
-   "title": "Moissanit-Ring S925 Silber, Sonnenblumen-Halo, Platin",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449477710209",
+   "handle": "moissanite-ring-mit-cluster-halo-680257",
+   "title": "Moissanite-Ring mit Cluster-Halo",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser elegante ring aus s925-sterling-silber verfügt über » | beschreibung/sterling: «dieser elegante ring aus s925-sterling-silber verfügt über einen 2-k»"
   },
   {
-   "id": "gid://shopify/Product/15443182944641",
-   "handle": "moissanit-verlobungsring-solitaer-1ct-925-silber-119746",
-   "title": "Moissanit-Verlobungsring «Solitär» 1 ct · 925 Silber D-VVS1",
-   "productType": "Ring"
+   "id": "gid://shopify/Product/15449446023553",
+   "handle": "moissanite-ring-mit-doppelhallo-109954",
+   "title": "Moissanite Ring mit Doppelhallo",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser elegante ring aus s925 sterling silber verfügt über » | beschreibung/sterling: «dieser elegante ring aus s925 sterling silber verfügt über einen mar»"
   },
   {
-   "id": "gid://shopify/Product/15500927107457",
-   "handle": "moissanite-925-sterling-silber-ring-mit-liebe-604700",
-   "title": "Moissanite 925 Sterling Silber Ring mit Liebe",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449477742977",
+   "handle": "moissanite-ring-sterling-silber-898306",
+   "title": "Moissanite Ring Sterling Silber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «moissanite ring sterling silber» | beschreibung/925: «besteht aus sterling silber (s925) und verfügt über einen 9mm r» | beschreibung/sterling: «ser elegante ring besteht aus sterling silber (s925) und verfügt übe»"
   },
   {
-   "id": "gid://shopify/Product/15503026225537",
-   "handle": "moissanite-armband-aus-925er-sterlingsilber-632700",
-   "title": "Moissanite Armband aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449076695425",
+   "handle": "moissanite-solitaire-halskette-platinbeschicht-548738",
+   "title": "Moissanite Solitaire Halskette, Platinbeschichtet",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «. die transparente kette aus s925 sterlingsilber lässt den stei» | beschreibung/925: «ssanite solitär transparente s925 sterlingsilberkette, platinbe» | beschreibung/sterling: «e transparente kette aus s925 sterlingsilber lässt den stein scheinb»"
   },
   {
-   "id": "gid://shopify/Product/15449076728193",
-   "handle": "moissanite-halskette-aus-925er-sterlingsilber-143490",
-   "title": "Moissanite Halskette aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478431105",
+   "handle": "moissanite-verlobungsring-591809",
+   "title": "Moissanite Verlobungsring",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « elegante verlobungsring aus s925 sterling silber besteht aus e» | beschreibung/925: «as zeichnet es aus material: s925 sterling silber stein: moissa» | beschreibung/sterling: «gante verlobungsring aus s925 sterling silber besteht aus einem rund»"
   },
   {
-   "id": "gid://shopify/Product/15421414211969",
-   "handle": "moissanite-herzkette-coeur-s925-silber-infinity",
-   "title": "Moissanite-Herzkette «Coeur» · S925 Silber, Infinity",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15522285060481",
+   "handle": "mozambique-flower-tennis-armband-627000",
+   "title": "Mozambique Flower Tennis Armband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «n. gefertigt aus hochwertigem 925er silber, besticht es durch s» | beschreibung/925: «isten.das zeichnet es aus aus 925er silber mit strass-inlay mod»"
   },
   {
-   "id": "gid://shopify/Product/15430345490817",
-   "handle": "moissanite-kette-aurora-925-silber-gra-zertifiziert",
-   "title": "Moissanite-Kette «Aurora» · 925 Silber, GRA-zertifiziert",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15455656608129",
+   "handle": "mozanite-schlusselbein-kette-damen-613400",
+   "title": "Mozanite Schlüsselbein-Kette Damen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «die s925 silber schlüsselbein-kette mi» | beschreibung/925: «as zeichnet es aus material: s925 silber hauptstein: blauer moi»"
   },
   {
-   "id": "gid://shopify/Product/15421167436161",
-   "handle": "moissanite-ohrstecker-eclat-s925-silber-0-5-1-karat",
-   "title": "Moissanite-Ohrstecker «Éclat» · S925 Silber (0,5 / 1 Karat)",
-   "productType": "Ohrringe"
+   "id": "gid://shopify/Product/15453725229441",
+   "handle": "naturlich-elegante-feinsilber-ohrstecker-mit-o-457536",
+   "title": "Natürlich Elegante Feinsilber-Ohrstecker mit Olivzweig",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/fein: «natürlich elegante feinsilber-ohrstecker mit olivzweig» | beschreibung/925: «iese eleganten ohrstecker aus 925er feinsilber verzaubern mit e» | beschreibung/925: «überzeugt.das zeichnet es aus 925er feinsilber hypoallergen für»"
   },
   {
-   "id": "gid://shopify/Product/15516218130817",
-   "handle": "moissanite-ring-aus-rhodiniertem-925er-silber-600700",
-   "title": "Moissanite Ring aus rhodiniertem 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16654378631559",
+   "handle": "neunfaches-vajra-knoten-armband-607400",
+   "title": "Neunfaches Vajra-Knoten Armband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «til eines partnerarmbands mit sterling silber sechs-zeichen-mantra p»"
   },
   {
-   "id": "gid://shopify/Product/15500960694657",
-   "handle": "moissanite-ring-ensemble-aus-925er-silber-612400",
-   "title": "Moissanite Ring Ensemble aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15493346001281",
+   "handle": "offener-ring-mit-perlmutt-und-geometrie-608500",
+   "title": "Offener Ring mit Perlmutt und Geometrie",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «es accessoire. gefertigt aus s925 sterlingsilber, garantiert er» | beschreibung/925: « minimalistisches design aus s925 sterlingsilber gefertigt mit » | beschreibung/sterling: «ccessoire. gefertigt aus s925 sterlingsilber, garantiert er langlebi»"
   },
   {
-   "id": "gid://shopify/Product/15495110164865",
-   "handle": "moissanite-ring-mit-2-karat-smaragd-und-925er-607800",
-   "title": "Moissanite Ring mit 2 Karat Smaragd und 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15493087986049",
+   "handle": "ohrringe-mit-kyanit-perlen-und-u-form-609500",
+   "title": "Ohrringe mit Kyanit, Perlen und U-Form",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «. die ohrstecker bestehen aus 925er silber für hohen tragekomfo»"
   },
   {
-   "id": "gid://shopify/Product/15510336831873",
-   "handle": "moissanite-ring-mit-925er-silberband-608500",
-   "title": "Moissanite Ring mit 925er-Silberband",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15485395534209",
+   "handle": "ohrstecker-rose-sterling-silber-629900",
+   "title": "Ohrstecker Rose Sterling Silber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «ohrstecker rose sterling silber» | beschreibung/925: « minimalistisch. sie sind aus 925 sterling silber gefertigt und» | beschreibung/925: «zeichnet es aus gefertigt aus 925 sterling silber poliert für e»"
   },
   {
-   "id": "gid://shopify/Product/15493575639425",
-   "handle": "moissanite-stapelring-aus-925er-sterling-silbe-624300",
-   "title": "Moissanite Stapelring aus 925er Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15463691125121",
+   "handle": "ohrstecker-silber-matt-rund-635100",
+   "title": "Ohrstecker Silber Matt Rund",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ese stilvollen ohrstecker aus 925er sterlingsilber präsentieren» | beschreibung/925: «ürstete, matte oberfläche aus 925er sterlingsilber gefertigt vi» | beschreibung/sterling: «ilvollen ohrstecker aus 925er sterlingsilber präsentieren sich in ei»"
   },
   {
-   "id": "gid://shopify/Product/15449076498817",
-   "handle": "niedlicher-eulen-anhanger-aus-925er-sterling-s-637200",
-   "title": "Niedlicher Eulen-Anhänger aus 925er Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15460672242049",
+   "handle": "olivegrune-zirkon-ohrstecker-625900",
+   "title": "Olivegrüne Zirkon-Ohrstecker",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «upfer, echter goldauflage und 925er silber-bügeln sorgt für ein» | beschreibung/925: «kupfer und echter goldauflage 925er silber-bügel für hypoallerg»"
   },
   {
-   "id": "gid://shopify/Product/15477527118209",
-   "handle": "o-link-halskette-aus-925-sterling-silber-635900",
-   "title": "O-Link Halskette aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449589154177",
+   "handle": "opalring-mit-iris-effekt-604400",
+   "title": "Opalring mit Iris-Effekt",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «t es aus natürlicher opal in s925-silber mit 10k-goldplattierun»"
   },
   {
-   "id": "gid://shopify/Product/15497647784321",
-   "handle": "offener-ring-kirschblute-schmetterling-925-sil-614200",
-   "title": "Offener Ring Kirschblüte & Schmetterling 925 Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15484389491073",
+   "handle": "paar-armband-607700",
+   "title": "Paar-Armband · Damen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: « oder silber) hergestellt aus sterling-silber 🛡️ sorglos shoppen: ✅»"
   },
   {
-   "id": "gid://shopify/Product/15485395501441",
-   "handle": "ohrhaken-ethno-blume-aus-925er-sterlingsilber-633600",
-   "title": "Ohrhaken \"Ethno-Blume\" aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15517429760385",
+   "handle": "partnerarmband-mit-berg-und-baum-motiv-615800",
+   "title": "Partnerarmband mit Berg- und Baum-Motiv",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « stilvolle partnerarmband aus 925er silber ist das ideale gesch» | beschreibung/925: «zeichnet es aus gefertigt aus 925er silber erhältlich als herre»"
   },
   {
-   "id": "gid://shopify/Product/15466887217537",
-   "handle": "ohrringe-blatt-bambus-aus-s925-silber-635200",
-   "title": "Ohrringe 'Blatt & Bambus' aus S925 Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15477525119361",
+   "handle": "perlen-halskette-aus-s999-sterlingsilber-600400",
+   "title": "Perlen-Halskette aus S999 Sterlingsilber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «perlen-halskette aus s999 sterlingsilber» | titel/feingehalt-zahl: «perlen-halskette aus s999 sterlingsilber» | beschreibung/sterling: «rnem stil. gefertigt aus s999 sterlingsilber, präsentiert sie eine 1»"
   },
   {
-   "id": "gid://shopify/Product/15489580171649",
-   "handle": "ohrringe-plain-hoop-aus-925er-silber-604600",
-   "title": "Ohrringe “Plain Hoop” aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15450848592257",
+   "handle": "perlenkette-mit-rundem-medaillon-und-susswasse-812672",
+   "title": "Perlenkette mit rundem Medaillon und Süsswasserperlen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «us gefertigt aus hochwertigem 925er silber für langanhaltenden »"
   },
   {
-   "id": "gid://shopify/Product/15504199156097",
-   "handle": "ohrringe-stern-halbmond-s925-silber-615700",
-   "title": "Ohrringe Stern & Halbmond S925 Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15491417112961",
+   "handle": "personalisierbarer-silberring-mit-zirkonia-635200",
+   "title": "Personalisierbarer Silberring mit Zirkonia",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «sonalisierbare class ring aus 925er sterlingsilber ist ein zeit» | beschreibung/925: «us gefertigt aus hochwertigem 925er sterlingsilber besetzt mit » | beschreibung/sterling: «sierbare class ring aus 925er sterlingsilber ist ein zeitloses acces»"
   },
   {
-   "id": "gid://shopify/Product/15431606731137",
-   "handle": "ohrstecker-minou-katzchen-925-silber",
-   "title": "Ohrstecker «Minou» · Kätzchen, 925 Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15484390343041",
+   "handle": "personalisierte-retro-ohrringe-mit-quaste-625400",
+   "title": "Personalisierte Retro-Ohrringe mit Quaste",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «und bestehen aus hochwertigem 925er sterlingsilber, was langleb» | beschreibung/925: «zeichnet es aus gefertigt aus 925er sterlingsilber geometrische» | beschreibung/sterling: «stehen aus hochwertigem 925er sterlingsilber, was langlebigkeit und »"
   },
   {
-   "id": "gid://shopify/Product/15506708595073",
-   "handle": "opal-halskette-aus-925er-silber-oval-blau-weis-622400",
-   "title": "Opal-Halskette aus 925er Silber, oval, blau-weiss",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16652027265415",
+   "handle": "personalisierter-retro-silberring-mit-unregelm-622300",
+   "title": "Personalisierter Retro Silberring mit unregelmässiger Form",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «m alltag bietet ein ring aus s925‐sterlingsilber eine unregelmä» | beschreibung/sterling: «ltag bietet ein ring aus s925‐sterlingsilber eine unregelmässige, ge»"
   },
   {
-   "id": "gid://shopify/Product/15493444534657",
-   "handle": "opal-ohrclip-aus-925er-sterling-silber-613700",
-   "title": "Opal-Ohrclip aus 925er Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15455821726081",
+   "handle": "pfau-pendant-614400",
+   "title": "Pfauen-Anhänger · Damen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «hnet es aus sterling-silber (s925) öl-tropfen-verarbeitungstech» | beschreibung/sterling: «elegante pfau-pendant ist aus sterling-silber gefertigt und besticht» | beschreibung/sterling: «geliefert.das zeichnet es aus sterling-silber (s925) öl-tropfen-vera»"
   },
   {
-   "id": "gid://shopify/Product/15472047653249",
-   "handle": "ovale-s925-sterling-silber-ohrstecker-mit-mois-614000",
-   "title": "Ovale S925 Sterling Silber Ohrstecker mit Moissanit",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15492004970881",
+   "handle": "pferdeauge-silberring-619300",
+   "title": "Pferdeauge Silberring",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «t. er ist aus sterling silber 925 gefertigt und mit moissanit-e» | beschreibung/sterling: «n linien besticht. er ist aus sterling silber 925 gefertigt und mit »"
   },
   {
-   "id": "gid://shopify/Product/15493828837761",
-   "handle": "ovale-vintage-opal-ohrringe-aus-925er-sterling-600600",
-   "title": "Ovale Vintage Opal-Ohrringe aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15494855786881",
+   "handle": "pferdeaugen-zirkonia-armband-vergoldet-626300",
+   "title": "Pferdeaugen Zirkonia Armband, vergoldet",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « armband besteht aus massivem 925er sterlingsilber und ist mit » | beschreibung/925: «.das zeichnet es aus massives 925er sterlingsilber funkelnde 4a» | beschreibung/sterling: «nd besteht aus massivem 925er sterlingsilber und ist mit funkelnden »"
   },
   {
-   "id": "gid://shopify/Product/15455953682817",
-   "handle": "ovaler-minimalistischer-moissanit-ring-aus-925-623600",
-   "title": "Ovaler Minimalistischer Moissanit-Ring aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449171493249",
+   "handle": "prinzessschliff-moissanit-verlobungsring-set-067393",
+   "title": "Prinzessschliff Moissanit Verlobungsring-Set",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ige ring-set aus rhodiniertem 925er sterling silber ist die per» | beschreibung/925: «band. beide ringe tragen die s925-punze im inneren. der moissan» | beschreibung/925: « vvs1 klarheit) gefertigt aus 925er sterling silber mit platinb»"
   },
   {
-   "id": "gid://shopify/Product/15510336766337",
-   "handle": "ovaler-moissanit-ring-s925-silber-18k-vergoldu-628100",
-   "title": "Ovaler Moissanit-Ring, S925 Silber, 18K Vergoldung",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449169592705",
+   "handle": "reise-charm-anhanger-flugzeug-koffer-kamera-614000",
+   "title": "Reise-Charm-Anhänger (Flugzeug, Koffer, Kamera)",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «originelle charm-anhänger aus 925er silber ist das perfekte acc» | beschreibung/925: «us gefertigt aus hochwertigem 925er silber originelles design m»"
   },
   {
-   "id": "gid://shopify/Product/15455824052609",
-   "handle": "perlen-halskette-mit-925er-silber-629300",
-   "title": "Perlen-Halskette mit 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15522281652609",
+   "handle": "retro-armband-mit-pflaumenbluten-design-628200",
+   "title": "Retro Armband mit Pflaumenblüten-Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «zeichnet es aus gefertigt aus 925er silber für langlebigkeit un»"
   },
   {
-   "id": "gid://shopify/Product/15496372486529",
-   "handle": "pluto-armband-aus-925er-sterlingsilber-624400",
-   "title": "Pluto Armband aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16652030017927",
+   "handle": "rosen-perlen-ring-aus-sterlingsilber-608300",
+   "title": "Rosen-Perlen-Ring aus Sterlingsilber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «rosen-perlen-ring aus sterlingsilber»"
   },
   {
-   "id": "gid://shopify/Product/15493852234113",
-   "handle": "rechteckiger-tansanit-ring-aus-925er-sterlings-622900",
-   "title": "Rechteckiger Tansanit-Ring aus 925er Sterlingsilber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478529409",
+   "handle": "rubin-blumen-halskette-955329",
+   "title": "Rubin-Blumen-Halskette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «egante halskette besteht aus s925 sterling silber und ziert ein» | beschreibung/sterling: «te halskette besteht aus s925 sterling silber und ziert eine blume a»"
   },
   {
-   "id": "gid://shopify/Product/15492131619201",
-   "handle": "retro-tarot-anhanger-aus-925er-silber-602100",
-   "title": "Retro Tarot-Anhänger aus 925er Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453997498753",
+   "handle": "schlangenformige-ohrstecker-mit-moosachat-635800",
+   "title": "Schlangenförmige Ohrstecker mit Moosachat",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ker in schlangenform sind aus 925er sterling-silber gefertigt u» | beschreibung/925: «dy mit chalcedonstein robuste 925er sterling-silber qualität el» | beschreibung/sterling: « schlangenform sind aus 925er sterling-silber gefertigt und verfügen»"
   },
   {
-   "id": "gid://shopify/Product/15516218098049",
-   "handle": "runder-ehering-aus-925-sterling-silber-626200",
-   "title": "Runder Ehering aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15521323614593",
+   "handle": "schlangenketten-armband-mit-runden-strasssteinen-625200",
+   "title": "Schlangenketten-Armband mit runden Strasssteinen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «s schlangenketten-armband aus sterlingsilber mit funkelnden, runden » | beschreibung/sterling: « hergestellt aus hochwertigem sterlingsilber 🛡️ sorglos shoppen: ✅ »"
   },
   {
-   "id": "gid://shopify/Product/15522282832257",
-   "handle": "s925-herzformiges-paperclip-armband-616700",
-   "title": "S925 Herzförmiges Paperclip Armband",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15504012476801",
+   "handle": "schlankes-schlangenketten-armband-612000",
+   "title": "Schlankes Schlangenketten-Armband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «. gefertigt aus hochwertigem s925 silber, besticht es durch sei» | beschreibung/925: «eichnet es aus gefertigt aus s925 silber flaches schlangenkette»"
   },
   {
-   "id": "gid://shopify/Product/15509388099969",
-   "handle": "s925-silber-armband-mit-funf-moissanit-bluten-624200",
-   "title": "S925 Silber Armband mit fünf Moissanit-Blüten",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15493811962241",
+   "handle": "schmetterlings-ohrhanger-mit-quasten-638800",
+   "title": "Schmetterlings-Ohrhänger mit Quasten",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « ist. die ohrstecker sind aus 925er sterlingsilber gefertigt un» | beschreibung/925: «old-ohrstecker ohrstecker aus 925er sterlingsilber (hypoallerge» | beschreibung/sterling: «die ohrstecker sind aus 925er sterlingsilber gefertigt und somit hyp»"
   },
   {
-   "id": "gid://shopify/Product/15521591689601",
-   "handle": "s925-silber-armband-mit-roten-quasten-605200",
-   "title": "S925 Silber Armband mit roten Quasten",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15521661124993",
+   "handle": "schneeflocken-armband-mit-1-karat-moissanit-631300",
+   "title": "Schneeflocken Armband mit 1-Karat Moissanit",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «g. gefertigt aus hochwertigem 925er sterlingsilber, besticht es» | beschreibung/925: «lor moissanit hergestellt aus 925er sterlingsilber veredelt dur» | beschreibung/sterling: «ertigt aus hochwertigem 925er sterlingsilber, besticht es durch sein»"
   },
   {
-   "id": "gid://shopify/Product/15481756680577",
-   "handle": "s925-silber-armband-mit-stern-und-herz-motiv-619400",
-   "title": "S925 Silber Armband mit Stern- und Herz-Motiv",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15455080677761",
+   "handle": "schwarze-perlenkette-616200",
+   "title": "Schwarze Perlenkette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «e stylische kette besteht aus 925er sterling-silber und ist mit» | beschreibung/925: «das zeichnet es aus material: 925er sterling-silber form: geome» | beschreibung/sterling: «ische kette besteht aus 925er sterling-silber und ist mit einer elec»"
   },
   {
-   "id": "gid://shopify/Product/15510281486721",
-   "handle": "s925-silber-armband-mit-strukturiertem-herz-638900",
-   "title": "S925 Silber Armband mit strukturiertem Herz",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449446089089",
+   "handle": "silber-2ct-moissanstein-ring-mit-blumenakzent-994881",
+   "title": "Silber 2ct Moissanstein Ring mit Blumenakzent, GRA-Zertifiziert",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser ring aus 925er sterlingsilber mit 2 karat » | beschreibung/925: «össen 5-9.das zeichnet es aus 925er sterlingsilber mit platinüb» | beschreibung/sterling: «dieser ring aus 925er sterlingsilber mit 2 karat moissanstei»"
   },
   {
-   "id": "gid://shopify/Product/15521590903169",
-   "handle": "s925-silber-dreireihiges-schlangenketten-armba-630000",
-   "title": "S925 Silber dreireihiges Schlangenketten-Armband",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15473059430785",
+   "handle": "silber-amulett-625200",
+   "title": "Silber-Amulett · Damen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «tige schmuckstück besteht aus 925er silber und vereint verschie» | beschreibung/925: «das zeichnet es aus material: 925 silber einzigartiges design ö»"
   },
   {
-   "id": "gid://shopify/Product/16603691155847",
-   "handle": "s925-silber-fusskette-mit-zirkonia-sternen-612900",
-   "title": "S925 Silber Fusskette mit Zirkonia Sternen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500577014145",
+   "handle": "silber-tennisarmband-625000",
+   "title": "Silber-Tennisarmband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ber-tennisarmband besteht aus 925 sterling silber und hat einen» | beschreibung/sterling: «tennisarmband besteht aus 925 sterling silber und hat einen geometri»"
   },
   {
-   "id": "gid://shopify/Product/16604851274119",
-   "handle": "s925-silber-geburstete-schmetterlingsbrosche-626400",
-   "title": "S925 Silber Gebürstete Schmetterlingsbrosche",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453601890689",
+   "handle": "silberarmband-614500",
+   "title": "Silberarmband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «ck für frauen. es besteht aus sterling-silber und überzeugt durch se» | beschreibung/feingehalt-zahl: «das s999 silberarmband ist ein wunderschönes » | beschreibung/92,5: «das zeichnet es aus material: silver mit einer reinheit von etwa 92,5% feine verarbeitung und edles»"
   },
   {
-   "id": "gid://shopify/Product/15412960002433",
-   "handle": "s925-silber-halskette-camelia-bluten-anhanger",
-   "title": "S925 Silber-Halskette «Camélia» – Blüten-Anhänger",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15493851414913",
+   "handle": "silberarmband-mit-lab-grown-diamant-626300",
+   "title": "Silberarmband mit Lab-Grown Diamant",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieses elegante armband aus 925er sterlingsilber ist ein viel» | beschreibung/925: «leiht.das zeichnet es aus aus 925er sterlingsilber gefertigt mi» | beschreibung/sterling: «es elegante armband aus 925er sterlingsilber ist ein vielseitiges ac»"
   },
   {
-   "id": "gid://shopify/Product/15412902756737",
-   "handle": "s925-silber-halskette-eclat-1-karat-moissanite",
-   "title": "S925 Silber-Halskette «Éclat» – 1 Karat Moissanite",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15525499863425",
+   "handle": "silberarmband-mit-moissanit-besatz-613200",
+   "title": "Silberarmband mit Moissanit-Besatz",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «anit besetzt und besteht aus s925 sterlingsilber. das armband h» | beschreibung/925: «2-karat-moissanit-besatz aus s925 sterlingsilber gefertigt u-fö» | beschreibung/sterling: « besetzt und besteht aus s925 sterlingsilber. das armband hat ein u-»"
   },
   {
-   "id": "gid://shopify/Product/15412959871361",
-   "handle": "s925-silber-halskette-eternal-herz-anhanger",
-   "title": "S925 Silber-Halskette «Eternal» – Herz-Anhänger",
-   "productType": "Halskette"
+   "id": "gid://shopify/Product/15524700717441",
+   "handle": "silberarmband-mit-paraiba-blasen-639000",
+   "title": "Silberarmband mit Paraíba-Blasen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: « zu deinem outfit. es ist aus 925er sterlingsilber gefertigt. d» | beschreibung/925: «efert.das zeichnet es aus aus 925er sterlingsilber mit edelstei» | beschreibung/sterling: «inem outfit. es ist aus 925er sterlingsilber gefertigt. das armband »"
   },
   {
-   "id": "gid://shopify/Product/15472058990977",
-   "handle": "s925-silber-halskette-minimalistische-goldkett-610100",
-   "title": "S925 Silber Halskette Minimalistische Goldkette",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15522283553153",
+   "handle": "silberarmband-mit-runden-perlen-628000",
+   "title": "Silberarmband mit runden Perlen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «es handgefertigte armband aus 925er sterlingsilber ist ein zeit» | beschreibung/925: « armband ist aus hochwertigem 925er silber gefertigt und bestic» | beschreibung/925: «das zeichnet es aus material: 925er sterlingsilber design: rund»"
   },
   {
-   "id": "gid://shopify/Product/15463690699137",
-   "handle": "s925-silber-halskette-mit-boxkette-632100",
-   "title": "S925 Silber Halskette mit Boxkette",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15501006340481",
+   "handle": "silberarmreif-geburstet-633500",
+   "title": "Silberarmreif gebürstet",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/feingehalt-zahl: «istische armreif aus massivem 999er silber besticht durch sein schlichte» | beschreibung/feingehalt-zahl: «.das zeichnet es aus massives 999er silber gebürstetes finish minimalist»"
   },
   {
-   "id": "gid://shopify/Product/15453724639617",
-   "handle": "s925-silber-herz-halskette-mit-doppelt-gravier-603200",
-   "title": "S925 Silber Herz-Halskette mit doppelt graviertem Herz",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16615290569095",
+   "handle": "silberkette-und-armband-mit-lotus-anhanger-633200",
+   "title": "Silberkette und Armband mit Lotus-Anhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «es schmuckset. es besteht aus 925er sterlingsilber und ist mit » | beschreibung/sterling: «muckset. es besteht aus 925er sterlingsilber und ist mit einem jade-»"
   },
   {
-   "id": "gid://shopify/Product/15474494701953",
-   "handle": "s925-silber-lebensbaum-herz-bead-602400",
-   "title": "S925 Silber Lebensbaum Herz-Bead",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15489662288257",
+   "handle": "silberne-bh-korbchen-halter-626000",
+   "title": "Silberne BH-Körbchen-Halter",
+   "productType": "Aufbewahrung & Organizer",
+   "regel": "text",
+   "beleg": "beschreibung/925: «tische accessoire besteht aus 925er silber mit einer galvanisch» | beschreibung/925: «das zeichnet es aus material: 925er silber minimalistischer sti» | beschreibung/feingehalt-zahl: «n. die ausführung umfasst ein 999er silberstück und einen silberplattierten silikonring, ideal»"
   },
   {
-   "id": "gid://shopify/Product/15449171427713",
-   "handle": "s925-silber-moissanit-ring-3-reihen-pave-265985",
-   "title": "S925 Silber Moissanit Ring – 3 Reihen Pavé",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500542542209",
+   "handle": "silberne-schmuckkette-600200",
+   "title": "Silberne Schmuckkette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «immering bracelet besteht aus 925 sterling-silber und hat eine » | beschreibung/sterling: «ring bracelet besteht aus 925 sterling-silber und hat eine japanisch»"
   },
   {
-   "id": "gid://shopify/Product/15496426815873",
-   "handle": "s925-silber-moissanit-ring-fur-damen-627400",
-   "title": "S925 Silber Moissanit Ring für Damen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16652015862151",
+   "handle": "silberner-damenring-mit-pferdaugen-schliff-620200",
+   "title": "Silberner Damenring mit Pferdaugen-Schliff",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «listischen design. er ist aus 925er silber gefertigt und wurde »"
   },
   {
-   "id": "gid://shopify/Product/15449171591553",
-   "handle": "s925-silber-moissanit-ring-mit-halo-twist-band-990914",
-   "title": "S925 Silber Moissanit Ring mit Halo & Twist Band",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15509386166657",
+   "handle": "silbernes-armband-mit-runden-perlen-und-quaste-602400",
+   "title": "Silbernes Armband mit runden Perlen und Quaste",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «eganten quaste. gefertigt aus 925er silber und hochglanzpoliert» | beschreibung/925: «us gefertigt aus hochwertigem 925er silber hochglanzpolierte ob»"
   },
   {
-   "id": "gid://shopify/Product/15509360968065",
-   "handle": "s925-silber-perlen-armband-mit-funf-blutenblat-627400",
-   "title": "S925 Silber Perlen-Armband mit fünf Blütenblättern",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15506810601857",
+   "handle": "silberring-mit-breiter-band-und-herz-design-627700",
+   "title": "Silberring mit breiter Band und Herz-Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser elegante damenring aus 925er sterlingsilber besticht dur» | beschreibung/925: «us gefertigt aus hochwertigem 925er sterlingsilber breites band» | beschreibung/sterling: « elegante damenring aus 925er sterlingsilber besticht durch sein bre»"
   },
   {
-   "id": "gid://shopify/Product/16604851011975",
-   "handle": "s925-silber-pfingstrosen-brosche-605500",
-   "title": "S925 Silber Pfingstrosen-Brosche",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16652084412807",
+   "handle": "silberring-mit-hochkarbon-strasssteinen-610700",
+   "title": "Silberring mit Hochkarbon-Strasssteinen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «hauch von eleganz. er ist aus 925er sterlingsilber gefertigt un» | beschreibung/sterling: «von eleganz. er ist aus 925er sterlingsilber gefertigt und verfügt ü»"
   },
   {
-   "id": "gid://shopify/Product/15493577310593",
-   "handle": "s925-silber-planet-spacer-bead-anhanger-611200",
-   "title": "S925 Silber Planet Spacer Bead Anhänger",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15524885102977",
+   "handle": "silberring-mit-moissanit-diamant-620700",
+   "title": "Silberring mit Moissanit-Diamant",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «us mit moissanit-diamant aus s925 sterlingsilber minimalistisch» | beschreibung/sterling: «it moissanit-diamant aus s925 sterlingsilber minimalistisches design»"
   },
   {
-   "id": "gid://shopify/Product/15454093115777",
-   "handle": "s925-silber-suuswasserperlen-schwan-ohrstecker-4ef7d6",
-   "title": "S925 Silber Süüswasserperlen-Schwan-Ohrstecker",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15477524693377",
+   "handle": "silberring-mit-moosachat-und-zirkonia-619900",
+   "title": "Silberring mit Moosachat und Zirkonia",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «dieser elegante ring aus s925 sterlingsilber vereint modern» | beschreibung/925: «sen zirkonia aus hochwertigem 925 sterlingsilber gefertigt vere» | beschreibung/sterling: «dieser elegante ring aus s925 sterlingsilber vereint modernes design»"
   },
   {
-   "id": "gid://shopify/Product/15453674209665",
-   "handle": "s925-silber-vintage-rhombus-tassel-ohrstecker-750530",
-   "title": "S925 Silber Vintage Rhombus Tassel Ohrstecker",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16654379942279",
+   "handle": "silberring-mit-naturlichem-granat-628500",
+   "title": "Silberring mit natürlichem Granat",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «fit ergänzt. der ring ist aus 925er sterlingsilber gefertigt un» | beschreibung/sterling: «gänzt. der ring ist aus 925er sterlingsilber gefertigt und verfügt ü»"
   },
   {
-   "id": "gid://shopify/Product/15494856278401",
-   "handle": "s925-silber-vintage-totenkopf-armband-fur-dame-634700",
-   "title": "S925 Silber Vintage Totenkopf-Armband für Damen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16615218217351",
+   "handle": "sterling-silber-armband-mit-blumen-und-schmett-621900",
+   "title": "Sterling Silber Armband mit Blumen- und Schmetterlingsmotiv",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling silber armband mit blumen- un» | beschreibung/925: «gänzt, ist dieses armband aus 925er sterlingsilber geeignet. es» | beschreibung/sterling: « ist dieses armband aus 925er sterlingsilber geeignet. es ist mit ei»"
   },
   {
-   "id": "gid://shopify/Product/15524700815745",
-   "handle": "s925-silber-zirkon-armband-mit-auge-607300",
-   "title": "S925 Silber Zirkon-Armband mit Auge",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500925632897",
+   "handle": "sterling-silber-armreif-603900",
+   "title": "Sterling Silber Armreif",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling silber armreif» | beschreibung/925: «das new 925 sterling silver smooth hammer» | beschreibung/925: «creative bracelet besteht aus 925-feinster silber mit einem gla»"
   },
   {
-   "id": "gid://shopify/Product/15524874191233",
-   "handle": "s925-silberarmband-mit-blasen-design-626200",
-   "title": "S925 Silberarmband mit Blasen-Design",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500601131393",
+   "handle": "sterling-silber-glucksarmband-613000",
+   "title": "Sterling Silber Glücksarmband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling silber glücksarmband» | beschreibung/sterling: «das sterling silber glücksarmband ist ein » | beschreibung/sterling: «s besteht aus 100-prozentigem sterling silber. das armband ist unise»"
   },
   {
-   "id": "gid://shopify/Product/16607159878023",
-   "handle": "s925-silberarmband-mit-naturlichem-topas-602700",
-   "title": "S925 Silberarmband mit natürlichem Topas",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500571607425",
+   "handle": "sterling-silber-handschmuck-605400",
+   "title": "Sterling-Silber-Handschmuck",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling-silber-handschmuck» | beschreibung/925: «ilber-handschmuck besteht aus 925 sterling silber und ist handg» | beschreibung/925: «r sterling-silber-handschmuck 925 sterling silber breite: 4,5 c»"
   },
   {
-   "id": "gid://shopify/Product/15508406206849",
-   "handle": "s925-silberring-mit-edelstein-verstellbar-601200",
-   "title": "S925 Silberring mit Edelstein, verstellbar",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500640452993",
+   "handle": "sterling-silber-liebesarmband-600700",
+   "title": "Sterling-Silber-Liebesarmband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling-silber-liebesarmband» | beschreibung/sterling: «das sterling-silber-liebesarmband besteht »"
   },
   {
-   "id": "gid://shopify/Product/15495237075329",
-   "handle": "s925-silberring-mit-krappenfassung-610000",
-   "title": "S925 Silberring mit Krappenfassung",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500577079681",
+   "handle": "sterling-silber-luftschlaucharm-628400",
+   "title": "Sterling Silber Luftschlaucharm",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling silber luftschlaucharm» | beschreibung/925: « schmuckstück. er besteht aus 925 sterling silber und ist mit e» | beschreibung/925: «das zeichnet es aus verwendet 925 sterling silber ein d-e/flawl»"
   },
   {
-   "id": "gid://shopify/Product/15493499519361",
-   "handle": "s925-silberring-mit-ovalem-design-630500",
-   "title": "S925 Silberring mit ovalem Design",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16607163416967",
+   "handle": "sterling-silber-minimalistischer-ring-608400",
+   "title": "Minimalistischer Ring aus Sterlingsilber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «minimalistischer ring aus sterlingsilber» | beschreibung/925: « klare linien. er besteht aus 925 sterlingsilber, verfügt über » | beschreibung/sterling: «re linien. er besteht aus 925 sterlingsilber, verfügt über ein diama»"
   },
   {
-   "id": "gid://shopify/Product/15510920397185",
-   "handle": "s925-silberring-mit-rechteckigem-aquamarin-600500",
-   "title": "S925 Silberring mit rechteckigem Aquamarin",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15473422532993",
+   "handle": "sterling-silber-ring-612700",
+   "title": "Sterling Silber Ring",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling silber ring» | beschreibung/925: « es aus aus sterling silber (s925) gefertigt mit moissanitstein» | beschreibung/sterling: «ein eleganter sterling silber ring mit moissanitstei»"
   },
   {
-   "id": "gid://shopify/Product/15496372388225",
-   "handle": "s925-sterling-silber-18k-vergoldetes-schleifen-612600",
-   "title": "S925 Sterling Silber 18K vergoldetes Schleifenarmband",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15500542837121",
+   "handle": "sterling-silber-schlangearmband-629600",
+   "title": "Sterling Silber Schlangearmband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling silber schlangearmband» | beschreibung/925: «r schlangearmband besteht aus 925 sterling silber und ist in ei» | beschreibung/sterling: «das sterling silber schlangearmband besteh»"
   },
   {
-   "id": "gid://shopify/Product/15522284208513",
-   "handle": "s925-sterling-silber-3d-herz-armband-631100",
-   "title": "S925 Sterling Silber 3D Herz Armband",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15456003817857",
+   "handle": "sterling-silber-sternenring-607100",
+   "title": "Sterling Silber Sternenring",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling silber sternenring» | beschreibung/sterling: «dieser sternenring aus sterling silber ist ein echter hinguck» | beschreibung/sterling: «ser goldton anpassbare grösse sterling silber 🛡️ sorglos shoppen: ✅»"
   },
   {
-   "id": "gid://shopify/Product/15510318481793",
-   "handle": "s925-sterling-silber-aquamarin-wurfel-ring-604500",
-   "title": "S925 Sterling Silber Aquamarin Würfel-Ring",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15503281684865",
+   "handle": "sterling-silber-zirkon-ring-set-607700",
+   "title": "Sterling Silber Zirkon Ring Set",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterling silber zirkon ring set» | beschreibung/sterling: «dieses elegante ring-set aus sterling silber ist ein vielseitiges a» | beschreibung/sterling: «n.das zeichnet es aus set aus sterling silber ringen mit zirkon-einl»"
   },
   {
-   "id": "gid://shopify/Product/15521392624001",
-   "handle": "s925-sterling-silber-armband-mit-mini-rubin-604600",
-   "title": "S925 Sterling Silber Armband mit Mini-Rubin",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449477972353",
+   "handle": "sterlingsilber-armband-mit-lab-grown-edelstein-185858",
+   "title": "Sterlingsilber Armband mit Lab-Grown Edelsteinen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterlingsilber armband mit lab-grown e» | beschreibung/925: « armband aus sterlingsilber (s925) besticht durch seine drei la» | beschreibung/925: «t es aus aus sterlingsilber (s925) mit drei lab-grown edelstein»"
   },
   {
-   "id": "gid://shopify/Product/15516217835905",
-   "handle": "s925-sterling-silber-armband-mit-opal-einlagen-614100",
-   "title": "S925 Sterling Silber Armband mit Opal-Einlagen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453727981953",
+   "handle": "sterlingsilber-armband-set-633400",
+   "title": "Sterlingsilber-Armband-Set",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterlingsilber-armband-set» | beschreibung/925: «besteht aus sterling-silber (s925) und ermöglicht es dir, dein » | beschreibung/925: « es aus aus sterling-silber (s925) enthält verschiedene perlen »"
   },
   {
-   "id": "gid://shopify/Product/15522282209665",
-   "handle": "s925-sterling-silber-armband-mit-scheiben-und-626500",
-   "title": "S925 Sterling Silber Armband mit Scheiben und Herzen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449595576705",
+   "handle": "sterlingsilber-halskette-mit-quadratischem-des-734721",
+   "title": "Sterlingsilber-Halskette mit quadratischem Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterlingsilber-halskette mit quadratis» | beschreibung/925: «diese exklusive halskette aus 925er sterlingsilber besticht dur» | beschreibung/925: «us gefertigt aus hochwertigem 925er sterlingsilber quadratsches»"
   },
   {
-   "id": "gid://shopify/Product/15500925763969",
-   "handle": "s925-sterling-silber-armband-mit-schleife-611300",
-   "title": "S925 Sterling Silber Armband mit Schleife",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478234497",
+   "handle": "sterlingsilber-herz-moissanite-halskette-090690",
+   "title": "Sterlingsilber Herz Moissanite Halskette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterlingsilber herz moissanite halsket» | beschreibung/925: «alskette aus sterlingsilber (s925) besteht aus einem herzanhäng» | beschreibung/sterling: «diese elegante halskette aus sterlingsilber (s925) besteht aus eine»"
   },
   {
-   "id": "gid://shopify/Product/15510336373121",
-   "handle": "s925-sterling-silber-armband-mit-schwarzem-ony-615700",
-   "title": "S925 Sterling Silber Armband mit schwarzem Onyx",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15459912483201",
+   "handle": "sterlingsilber-hohlring-mit-herz-sutra-unisex-605700",
+   "title": "Sterlingsilber Hohlring mit Herz-Sutra (Unisex Paar, anpassbar)",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterlingsilber hohlring mit herz-sutra» | beschreibung/sterling: «der sterlingsilber-hohlring mit klassische» | beschreibung/sterling: «das zeichnet es aus material: sterlingsilber stil: retro, unisex far»"
   },
   {
-   "id": "gid://shopify/Product/15485395599745",
-   "handle": "s925-sterling-silber-camellia-perlen-ohrstecke-609500",
-   "title": "S925 Sterling Silber Camellia Perlen-Ohrstecker",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453997400449",
+   "handle": "sterlingsilber-katzenpfoten-ohrhanger-634500",
+   "title": "Sterlingsilber Katzenpfoten-Ohrhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterlingsilber katzenpfoten-ohrhänger» | beschreibung/sterling: « für frauen. sie bestehen aus sterlingsilber mit einer hohen reinhei» | beschreibung/sterling: «das zeichnet es aus material: sterlingsilber (999 fein) farbe: plati»"
   },
   {
-   "id": "gid://shopify/Product/15485757981057",
-   "handle": "s925-sterling-silber-embrace-love-halskette-604600",
-   "title": "S925 Sterling Silber Embrace Love Halskette",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478201729",
+   "handle": "sterlingsilber-kreuzanhanger-mit-moissanit-480898",
+   "title": "Sterlingsilber Kreuzanhänger mit Moissanit",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterlingsilber kreuzanhänger mit moiss» | beschreibung/925: «anhänger aus sterlingsilber (s925) ist mit einem 3,5 mm grossen» | beschreibung/925: «t es aus aus sterlingsilber (s925) mit 3,5 mm moissanit-stein i»"
   },
   {
-   "id": "gid://shopify/Product/15449478365569",
-   "handle": "s925-sterling-silber-halskette-mit-lab-emerald-072962",
-   "title": "S925 Sterling Silber Halskette mit Lab-Emerald",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15453622829441",
+   "handle": "sterlingsilber-veredelter-lotosblumen-armreif-609300",
+   "title": "Sterlingsilber veredelter Lotosblumen Armreif",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «sterlingsilber veredelter lotosblumen » | beschreibung/sterling: «sblumen-design aus veredeltem sterlingsilber. dieser elegante schmuc» | beschreibung/sterling: « geflochtene optik veredeltes sterlingsilber neo-chinesischer stil r»"
   },
   {
-   "id": "gid://shopify/Product/15521590509953",
-   "handle": "s925-sterling-silber-herz-armband-617100",
-   "title": "S925 Sterling Silber Herz Armband",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478103425",
+   "handle": "sterne-mond-anhanger-467842",
+   "title": "Sterne & Mond Anhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «chmuck, der aus hochwertigem s925 sterling silber gefertigt ist» | beschreibung/925: «8+3cm verstellbare kette aus s925 sterling silber platin beschi» | beschreibung/sterling: «ck, der aus hochwertigem s925 sterling silber gefertigt ist. die obe»"
   },
   {
-   "id": "gid://shopify/Product/15509355725185",
-   "handle": "s925-sterling-silber-katzen-armband-fur-damen-604500",
-   "title": "S925 Sterling Silber Katzen-Armband für Damen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15449478300033",
+   "handle": "sterne-ohrringe-mit-smaragd-431298",
+   "title": "Sterne Ohrringe mit Smaragd",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «diese edlen ohrringe aus s925 sterling silber bestechen dur» | beschreibung/925: «entraler akzent ohrringe aus s925 sterling silber mit platin-sc» | beschreibung/sterling: «diese edlen ohrringe aus s925 sterling silber bestechen durch ihre s»"
   },
   {
-   "id": "gid://shopify/Product/15512245666177",
-   "handle": "s925-sterling-silber-katzenring-verstellbar-611600",
-   "title": "S925 Sterling Silber Katzenring, verstellbar",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15467075961217",
+   "handle": "strassbesetzte-creolen-637200",
+   "title": "Strassbesetzte Creolen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «die eleganten creolen aus 925er sterling-silber sind mit st» | beschreibung/925: «vanische verbindung material: 925er sterling-silber stile: old » | beschreibung/sterling: «e eleganten creolen aus 925er sterling-silber sind mit strasssteinen»"
   },
   {
-   "id": "gid://shopify/Product/15467098145153",
-   "handle": "s925-sterling-silber-kite-ohrringe-637700",
-   "title": "S925 Sterling Silber Kite-Ohrringe",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16615802274183",
+   "handle": "strukturierter-netzschal-606300",
+   "title": "Strukturierter Netzschal",
+   "productType": "Accessoires",
+   "regel": "text",
+   "beleg": "beschreibung/925: «ehr. der anhänger besteht aus 925er silber.das zeichnet es aus »"
   },
   {
-   "id": "gid://shopify/Product/15481805734273",
-   "handle": "s925-sterling-silber-moissanit-ring-635800",
-   "title": "S925 Sterling Silber Moissanit Ring",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15468316557697",
+   "handle": "su-e-schmetterling-ohrringe-606500",
+   "title": "Süsse Schmetterling-Ohrringe",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «r hingucker. sie bestehen aus 925er sterling-silber und sind mi» | beschreibung/925: «das zeichnet es aus material: 925er sterling-silber electroplat» | beschreibung/sterling: «ucker. sie bestehen aus 925er sterling-silber und sind mit einer ele»"
   },
   {
-   "id": "gid://shopify/Product/15449172148609",
-   "handle": "s925-sterling-silber-moissanit-ring-asscher-cu-310146",
-   "title": "S925 Sterling Silber Moissanit Ring, Asscher Cut",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15451921908097",
+   "handle": "tennis-armband-mit-zirkonia-steinen-636300",
+   "title": "Tennis-Armband mit Zirkonia-Steinen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «arbenfrohe tennis-armband aus 925er sterlingsilber ist ein echt» | beschreibung/925: «rbenfrohes tennis-armband aus 925er sterlingsilber gefertigt be» | beschreibung/sterling: «rohe tennis-armband aus 925er sterlingsilber ist ein echter hingucke»"
   },
   {
-   "id": "gid://shopify/Product/15449171853697",
-   "handle": "s925-sterling-silber-moissanit-ring-mit-goldhe-974530",
-   "title": "S925 Sterling Silber Moissanit Ring mit Goldherz-Krappen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15521491616129",
+   "handle": "teufelsauge-armband-mit-emaille-glasur-611400",
+   "title": "Teufelsauge Armband mit Emaille-Glasur",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «stilvolle note. gefertigt aus 925er silber und veredelt mit ein» | beschreibung/925: « hergestellt aus hochwertigem 925er silber. einzigartige drippi»"
   },
   {
-   "id": "gid://shopify/Product/15449171100033",
-   "handle": "s925-sterling-silber-moissanit-ring-mit-stern-220162",
-   "title": "S925 Sterling Silber Moissanit Ring mit Stern-Halo",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15460664738177",
+   "handle": "turkis-ohrringe-fur-frauen-614800",
+   "title": "Türkis-Ohrringe für Frauen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «diese eleganten ohrringe aus 925er sterlingsilber vereinen min» | beschreibung/925: «das zeichnet es aus material: 925er sterlingsilber stil: minima» | beschreibung/sterling: « eleganten ohrringe aus 925er sterlingsilber vereinen minimalistisch»"
   },
   {
-   "id": "gid://shopify/Product/15449171952001",
-   "handle": "s925-sterling-silber-moissanit-ring-v-halo-782146",
-   "title": "S925 Sterling Silber Moissanit Ring V-Halo",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15493811798401",
+   "handle": "unisex-ring-aus-sterlingsilber-einzigartiges-d-602700",
+   "title": "Unisex-Ring aus Sterlingsilber, einzigartiges Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «unisex-ring aus sterlingsilber, einzigartiges design» | beschreibung/sterling: «dieser einzigartige ring aus sterlingsilber ist für damen und herre»"
   },
   {
-   "id": "gid://shopify/Product/15493811863937",
-   "handle": "s925-sterling-silber-ohrringe-mit-langen-perle-605500",
-   "title": "S925 Sterling Silber Ohrringe mit langen Perlen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15489580335489",
+   "handle": "unregelmassiges-anhanger-600500",
+   "title": "Unregelmässiges Anhänger",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «nger-schmuckstück besteht aus 925er sterlingsilber und verfügt » | beschreibung/925: «das zeichnet es aus material: 925er sterlingsilber quadratische» | beschreibung/sterling: «chmuckstück besteht aus 925er sterlingsilber und verfügt über eine q»"
   },
   {
-   "id": "gid://shopify/Product/15467076256129",
-   "handle": "s925-sterling-silber-ohrringe-mit-zirkonia-628800",
-   "title": "S925 Sterling Silber Ohrringe mit Zirkonia",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15510317793665",
+   "handle": "vergoldeter-moissanit-ring-mit-gedrehter-rings-628200",
+   "title": "Vergoldeter Moissanit-Ring mit gedrehter Ringschiene",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «klassische moissanit-ring aus sterlingsilber mit 18k vergoldung best»"
   },
   {
-   "id": "gid://shopify/Product/15510317171073",
-   "handle": "s925-sterling-silber-perlenblumen-armband-615700",
-   "title": "S925 Sterling Silber Perlenblumen Armband",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15524001644929",
+   "handle": "verstellbarer-fingerring-mit-zirkon-620100",
+   "title": "Verstellbarer Fingerring mit Zirkon",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/sterling: «ich tragen kannst. er ist aus sterlingsilber gefertigt und hat ein r» | beschreibung/sterling: «eichnet es aus runde form aus sterlingsilber verstellbare ringschien»"
   },
   {
-   "id": "gid://shopify/Product/15510281060737",
-   "handle": "s925-sterling-silber-pig-nose-armband-vergolde-627200",
-   "title": "S925 Sterling Silber Pig-Nose Armband vergoldet/versilbert",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15447584309633",
+   "handle": "verstellbarer-offener-ring-mit-wassertropfen-d-627000",
+   "title": "Verstellbarer Offener Ring mit Wassertropfen-Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «g. gefertigt aus hochwertigem 925er sterlingsilber, besticht er» | beschreibung/925: «duelle passform gefertigt aus 925er sterlingsilber modernes, ge» | beschreibung/sterling: «ertigt aus hochwertigem 925er sterlingsilber, besticht er durch sein»"
   },
   {
-   "id": "gid://shopify/Product/15503282372993",
-   "handle": "s925-sterling-silber-ring-mit-runden-strasssteinen-608300",
-   "title": "S925 Sterling Silber Ring mit runden Strasssteinen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16615341457799",
+   "handle": "verstellbarer-ring-fur-paare-639300",
+   "title": "Verstellbarer Ring für Paare",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «eschenk für paare. er ist aus 925er silber gefertigt und verfüg»"
   },
   {
-   "id": "gid://shopify/Product/15507836830081",
-   "handle": "s925-sterling-silber-ring-schlicht-verstellbar-607700",
-   "title": "S925 Sterling Silber Ring, schlicht & verstellbar",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15524002300289",
+   "handle": "verstellbarer-ring-im-ozean-stil-fur-damen-613100",
+   "title": "Verstellbarer Ring im Ozean-Stil für Damen",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «t verstellbar und besteht aus 925er silber. er wird einzeln gel» | beschreibung/925: «er ring für damen designt aus 925er silber gefertigt wird als e»"
   },
   {
-   "id": "gid://shopify/Product/15478569730433",
-   "handle": "s925-sterling-silber-stern-ohrringe-601100",
-   "title": "S925 Sterling Silber Stern Ohrringe",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/16652014059911",
+   "handle": "verstellbarer-ring-mit-glyzinien-motiv-613600",
+   "title": "Verstellbarer Ring mit Glyzinien-Motiv",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «erstellbaren ring. er ist aus 925er sterlingsilber gefertigt un» | beschreibung/sterling: «lbaren ring. er ist aus 925er sterlingsilber gefertigt und verfügt ü»"
   },
   {
-   "id": "gid://shopify/Product/15453725360513",
-   "handle": "s925-sterlingsilber-damen-ohrstecker-langbogen-047296",
-   "title": "S925 Sterlingsilber Damen Ohrstecker Langbogen",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15506812207489",
+   "handle": "verstellbarer-ring-mit-noten-design-623500",
+   "title": "Verstellbarer Ring mit Noten-Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «egante, verstellbare ring aus 925er sterlingsilber ist ein echt» | beschreibung/925: «für individuelle passform aus 925er sterlingsilber gefertigt ed» | beschreibung/sterling: «, verstellbare ring aus 925er sterlingsilber ist ein echter blickfan»"
   },
   {
-   "id": "gid://shopify/Product/15453623583105",
-   "handle": "s925-sterlingsilber-minimalkatze-offener-ring-612400",
-   "title": "S925 Sterlingsilber Minimalkatze Offener Ring Ohrring",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15450855539073",
+   "handle": "verstellbarer-umarmungsring-aus-legierung-290176",
+   "title": "Verstellbarer Umarmungsring aus Legierung",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "option/925: «t-1 stück / silber-50 stück / 925sliver-woman / 925sliver-man /» | option/925: «-50 stück / 925sliver-woman / 925sliver-man / gold set-1 stück »"
   },
   {
-   "id": "gid://shopify/Product/15493811732865",
-   "handle": "saphirring-aus-925er-sterling-silber-635300",
-   "title": "Saphirring aus 925er Sterling Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15503282700673",
-   "handle": "schlichter-925er-silber-bandring-611000",
-   "title": "Schlichter 925er Silber Bandring",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15458843197825",
-   "handle": "schlusselloch-kette-s925-silber-tassel-platin-635200",
-   "title": "Schlüsselloch-Kette S925 Silber Tassel Platin-beschichtet Instagram-Style",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15443241238913",
-   "handle": "schmetterling-ohrstecker-marquise-925-silber-572930",
-   "title": "Schmetterling-Ohrstecker «Marquise» · 925 Silber",
-   "productType": "Ohrringe"
-  },
-  {
-   "id": "gid://shopify/Product/15524700914049",
-   "handle": "schmetterlingsarmband-aus-925er-sterlingsilber-633500",
-   "title": "Schmetterlingsarmband aus 925er Sterlingsilber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15443243696513",
-   "handle": "schmuck-set-trio-925-silber-kette-ohrringe-armba-866688",
-   "title": "Schmuck-Set «Trio» · 925 Silber (Kette · Ohrringe · Armband)",
-   "productType": "Ohrringe"
-  },
-  {
-   "id": "gid://shopify/Product/15509388886401",
-   "handle": "schwalben-armband-aus-925-sterling-silber-631300",
-   "title": "Schwalben Armband aus 925 Sterling Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15421442228609",
-   "handle": "silber-armreif-serpent-s925-schlangenschuppen-optik",
-   "title": "Silber-Armreif «Serpent» · S925, Schlangenschuppen-Optik",
-   "productType": "Armband"
-  },
-  {
-   "id": "gid://shopify/Product/15500515344769",
-   "handle": "strass-armband-fur-damen-aus-925er-silber-627800",
-   "title": "Strass-Armband für Damen aus 925er Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15506038882689",
-   "handle": "strassbesetztes-kreuz-armband-aus-925er-silber-613900",
-   "title": "Strassbesetztes Kreuz-Armband aus 925er Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15430422561153",
-   "handle": "susswasserperlen-armband-perla-925-silber-infinity",
-   "title": "Süsswasserperlen-Armband «Perla» · 925 Silber, Infinity",
-   "productType": "Armband"
-  },
-  {
-   "id": "gid://shopify/Product/15430406668673",
-   "handle": "susswasserperlen-kette-perla-925-silber-bar-design",
-   "title": "Süsswasserperlen-Kette «Perla» · 925 Silber, Bar-Design",
-   "productType": "Halskette"
-  },
-  {
-   "id": "gid://shopify/Product/15430345589121",
-   "handle": "susswasserperlen-ohrringe-perla-925-silber",
-   "title": "Süsswasserperlen-Ohrringe «Perla» · 925 Silber",
-   "productType": "Ohrringe"
-  },
-  {
-   "id": "gid://shopify/Product/15453728276865",
-   "handle": "tarot-schmuckarmband-mit-s925-silber-anhanger-609100",
-   "title": "Tarot-Schmuckarmband mit S925 Silber Anhänger",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/16654412841351",
-   "handle": "tibetisches-mantra-armband-aus-925-silber-639700",
-   "title": "Tibetisches Mantra-Armband aus 925-Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15521257161089",
-   "handle": "vergoldetes-925er-silberarmband-mit-perlen-620800",
-   "title": "Vergoldetes 925er Silberarmband mit Perlen",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15524883169665",
-   "handle": "verstellbarer-clownfisch-ring-aus-925er-silber-604100",
-   "title": "Verstellbarer Clownfisch-Ring aus 925er Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15524883661185",
-   "handle": "verstellbarer-herz-ring-aus-925er-sterlingsilb-634700",
-   "title": "Verstellbarer Herz-Ring aus 925er Sterlingsilber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15524883464577",
-   "handle": "verstellbarer-offener-ring-aus-925er-sterlings-615400",
-   "title": "Verstellbarer offener Ring aus 925er Sterlingsilber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15523180642689",
-   "handle": "verstellbarer-s925-sterling-silber-ring-608700",
-   "title": "Verstellbarer S925 Sterling Silber Ring",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15509385904513",
-   "handle": "vielseitiges-moissanit-armband-aus-925er-silbe-626700",
-   "title": "Vielseitiges Moissanit Armband aus 925er Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15500926222721",
-   "handle": "vintage-armband-aus-925-sterling-silber-618000",
-   "title": "Vintage Armband aus 925 Sterling Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15449118179713",
-   "handle": "vintage-c-formige-925-silber-nadel-ohrringe-640834",
-   "title": "Vintage C-förmige 925 Silber Nadel Ohrringe",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15506813518209",
-   "handle": "vintage-ring-mit-altschliff-diamant-s925-silbe-639000",
-   "title": "Vintage Ring mit Altschliff-Diamant & S925 Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15506139152769",
-   "handle": "vintage-turkisring-aus-925er-sterlingsilber-625400",
-   "title": "Vintage Türkisring aus 925er Sterlingsilber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/16607162892679",
-   "handle": "vollkristall-ring-aus-s925-sterlingsilber-615700",
-   "title": "Ring aus 925er Sterlingsilber mit Kristallbesatz",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15520302006657",
-   "handle": "wellen-armband-aus-925er-silber-631200",
-   "title": "Wellen-Armband aus 925er Silber",
-   "productType": "Schmuck"
-  },
-  {
-   "id": "gid://shopify/Product/15521590673793",
-   "handle": "zirkonia-armband-aus-925-sterling-silber-612000",
-   "title": "Zirkonia Armband aus 925 Sterling Silber",
-   "productType": "Schmuck"
+   "id": "gid://shopify/Product/15520156582273",
+   "handle": "verstellbares-armband-mit-zirkonia-rundschliff-638500",
+   "title": "Verstellbares Armband mit Zirkonia-Rundschliff",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «r jeden anlass. gefertigt aus 925er silber und erhältlich in de» | beschreibung/925: «mfort.das zeichnet es aus aus 925er silber gefertigt erhältlich»"
+  },
+  {
+   "id": "gid://shopify/Product/15463690862977",
+   "handle": "vielseitige-achtzackige-stern-halskette-634400",
+   "title": "Vielseitige achtzackige Stern Halskette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «tte für damen ist aus echtem s925 sterlingsilber gefertigt und » | beschreibung/925: «s zeichnet es aus aus echtem s925 sterlingsilber gefertigt erhä» | beschreibung/sterling: «für damen ist aus echtem s925 sterlingsilber gefertigt und besticht »"
+  },
+  {
+   "id": "gid://shopify/Product/15500158632321",
+   "handle": "vierblattriges-gluck-626100",
+   "title": "Vierblättriges Glück",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «in schmaler silberarmband aus 925er silber, das sich perfekt fü»"
+  },
+  {
+   "id": "gid://shopify/Product/15463691256193",
+   "handle": "vintage-hofstil-herz-ohrringe-mit-emaille-stra-634200",
+   "title": "Vintage Hofstil Herz-Ohrringe mit Emaille & Strass",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «it hypoallergenen pfosten aus 925er silber. vakuumplattierung s»"
+  },
+  {
+   "id": "gid://shopify/Product/15454270587265",
+   "handle": "vintage-ohrclips-mit-saturn-motiv-639900",
+   "title": "Vintage Ohrclips mit Saturn-Motiv",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «e ohrclips für damen sind aus 925er sterling-silber gefertigt u» | beschreibung/925: «zeichnet es aus gefertigt aus 925er sterling-silber geometrisch» | beschreibung/sterling: «lips für damen sind aus 925er sterling-silber gefertigt und zeichnen»"
+  },
+  {
+   "id": "gid://shopify/Product/15453728604545",
+   "handle": "vintage-rosen-ohrstecker-600000",
+   "title": "Vintage Rosen Ohrstecker",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «. gefertigt aus hochwertigem s925 sterling silber, bieten sie e» | beschreibung/925: «eichnet es aus gefertigt aus s925 sterling silber für eine hohe» | beschreibung/sterling: «fertigt aus hochwertigem s925 sterling silber, bieten sie eine elega»"
+  },
+  {
+   "id": "gid://shopify/Product/15510333817217",
+   "handle": "vintage-schmetterling-armband-doppellagig-630700",
+   "title": "Vintage Schmetterling Armband, doppellagig",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «zeichnet es aus gefertigt aus 925er silber veredelt durch galva»"
+  },
+  {
+   "id": "gid://shopify/Product/15453674307969",
+   "handle": "vintage-steckerohr-sterlingsilber-luxus-043010",
+   "title": "Vintage-Steckerohr Sterlingsilber Luxus",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "titel/sterling: «vintage-steckerohr sterlingsilber luxus» | beschreibung/925: «modernem look hergestellt aus 925er sterlingsilber passend für » | beschreibung/sterling: «edle vintage-steckerohr aus sterlingsilber für damen. hochwertige,»"
+  },
+  {
+   "id": "gid://shopify/Product/15492005036417",
+   "handle": "wei-e-perlen-schmetterlings-armband-610000",
+   "title": "Weisse Perlen-Schmetterlings-Armband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «eine elegante kombination aus 925er sterling-silber und einer r» | beschreibung/925: «ierung für ein edles aussehen 925er sterling-silber für eine ho» | beschreibung/sterling: «legante kombination aus 925er sterling-silber und einer rose-gold-pl»"
+  },
+  {
+   "id": "gid://shopify/Product/15455029100929",
+   "handle": "weisses-diamant-halsband-619900",
+   "title": "Weisses Diamant-Halsband",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «und leichte halsband ist aus s925 sterling-silber gefertigt und» | beschreibung/925: «gebrauch.das zeichnet es aus s925 sterling-silber 0,8 karat moi» | beschreibung/sterling: «leichte halsband ist aus s925 sterling-silber gefertigt und verfügt »"
+  },
+  {
+   "id": "gid://shopify/Product/15506165334401",
+   "handle": "yinyun-doppelring-mit-rotem-achat-und-turkis-615300",
+   "title": "Yinyun Doppelring mit rotem Achat und Türkis",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «n. gefertigt aus hochwertigem 925er silber, kombiniert dieser r» | beschreibung/925: «is (magnesit) hergestellt aus 925er silber poliert und galvanis»"
+  },
+  {
+   "id": "gid://shopify/Product/15453724967297",
+   "handle": "zartes-zuckerstuck-feine-zirkonia-su-wasserper-895104",
+   "title": "Zartes Zuckerstück Feine Zirkonia Süsswasserperlen-Ring",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «sserperlen eleganter ring aus 925 sterling silber deliktes desi» | beschreibung/sterling: «perlen eleganter ring aus 925 sterling silber deliktes design für tä»"
+  },
+  {
+   "id": "gid://shopify/Product/15497420898689",
+   "handle": "zirkon-armreif-mit-buchstaben-design-616900",
+   "title": "Zirkon-Armreif mit Buchstaben-Design",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/925: «n design ist aus hochwertigem 925er sterlingsilber gefertigt un» | beschreibung/925: «zeichnet es aus gefertigt aus 925er sterlingsilber galvanisiert» | beschreibung/sterling: «gn ist aus hochwertigem 925er sterlingsilber gefertigt und für dauer»"
   }
  ]
 }

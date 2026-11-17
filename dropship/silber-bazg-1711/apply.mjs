@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Silber «925» vorläufig auf ENTWURF (Besitzer 17.11.2026 «2 ja»). Nur der Status ändert sich (dazu der Arbeits-Tag), nichts wird gelöscht.
+ * Silber-Feingehalt («925», «S925», «Sterling», «999 Silber» …) vorläufig auf ENTWURF (Besitzer 17.11.2026 «2 ja», erweitert am selben Tag auf den ganzen Text). Nur der Status ändert sich (dazu der Arbeits-Tag), nichts wird gelöscht.
  *   node dropship/silber-bazg-1711/liste.mjs                      erst die Liste frisch lesen (nur lesen)
  *   node dropship/silber-bazg-1711/apply.mjs                      Trockenlauf (Vorgabe): zeigt, was geschehen würde, schreibt nichts
  *   SICHERN=1 node …/apply.mjs                                    schreibt NUR die Sicherung (Status, Tags, Kanäle je Produkt); der Shop wird nicht verändert. Danach ins Repo committen.
@@ -14,7 +14,7 @@
 import { readFileSync, writeFileSync, appendFileSync, existsSync, renameSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { MARKER, hat925, LESEN, flach, entscheide, publikationsLuecken, schreibMutation, anweisungEntwurf, anweisungZurueck, mutationsFehler, PUBLIZIEREN, probeBestanden } from './lib.mjs';
+import { MARKER, hat925, trifft, LESEN, flach, entscheide, publikationsLuecken, schreibMutation, anweisungEntwurf, anweisungZurueck, mutationsFehler, PUBLIZIEREN, probeBestanden } from './lib.mjs';
 
 const STAPEL = 10;
 
@@ -131,8 +131,8 @@ export async function lauf(o) {
   const eintraege = nurWahl(liste?.eintraege || []);
   if (!eintraege.length) { log('Liste leer (oder ONLY trifft nichts)'); return 2; }
   if (new Set(eintraege.map((e) => e.id)).size !== eintraege.length) { log('Liste enthält doppelte IDs'); return 2; }
-  const falsch = eintraege.filter((e) => !hat925(e.title));
-  if (falsch.length) { log('Liste unplausibel: Titel ohne 925: ' + falsch.slice(0, 3).map((e) => e.handle).join(', ')); return 2; }
+  const falsch = eintraege.filter((e) => !(hat925(e.title) || e.regel));    // Einträge der erweiterten Regel tragen `regel` und `beleg` (liste.mjs)
+  if (falsch.length) { log('Liste unplausibel: weder 925 im Titel noch eine Regel-Angabe: ' + falsch.slice(0, 3).map((e) => e.handle).join(', ')); return 2; }
   if (eintraege.length > (o.maxAnzahl ?? 260)) { log(`Liste hat ${eintraege.length} Einträge, mehr als die Obergrenze ${o.maxAnzahl ?? 260}`); return 2; }
   if ((o.live || o.sichern) && liste.erzeugt) {
     const alterH = (jetzt() - new Date(liste.erzeugt)) / 3600000;
@@ -142,7 +142,8 @@ export async function lauf(o) {
   const sichAlt = o.sicherung.lesen() || [];
   const sichIds = new Set(sichAlt.map((s) => s.id));
   const ist = await lese(eintraege.map((e) => e.id));
-  const plan = eintraege.map((e) => ({ e, i: ist.get(e.id), d: entscheide(ist.get(e.id), { inSicherung: sichIds.has(e.id) }) }));
+  const ausnahmen = o.ausnahmen || new Set();
+  const plan = eintraege.map((e) => ({ e, i: ist.get(e.id), d: entscheide(ist.get(e.id), { inSicherung: sichIds.has(e.id), ausnahmen }) }));
   const tun = plan.filter((x) => x.d.tun);
   for (const x of plan.filter((y) => !y.d.tun)) log(`ÜBERSPRUNGEN ${x.e.handle}: ${x.d.grund}`);
   for (const x of tun.filter((y) => y.d.grund)) log(`HINWEIS ${x.e.handle}: ${x.d.grund}`);
@@ -252,6 +253,8 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     body: JSON.stringify({ client_id: process.env.SHOPIFY_CLIENT_ID, client_secret: CS, grant_type: 'client_credentials' }) });
   const tok = (await r.json()).access_token; if (!tok) { console.error('Kein Shopify-Token'); process.exit(1); }
   const zurueck = process.env.ZURUECK === '1';
+  const AUSN = process.env.AUSNAHMEN || join(HIER, 'ausnahmen.json');
+  const ausnahmen = new Set((existsSync(AUSN) ? JSON.parse(readFileSync(AUSN, 'utf8')).handles : []) || []);
   const liste = !zurueck ? (existsSync(LISTE) ? JSON.parse(readFileSync(LISTE, 'utf8')) : null) : null;
   if (!zurueck && !liste) { console.error('liste.json fehlt: erst liste.mjs laufen lassen'); process.exit(1); }
   /** Atomar schreiben: erst in eine Nebendatei, dann umbenennen (ein Abbruch mitten im Schreiben zerstört nie die alte Datei). */
@@ -260,7 +263,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   try {
     const code = await lauf({
       q: (a, b) => shopifyGql(SHOP, '2025-01', tok, a, b),
-      liste, live: process.env.LIVE === '1', zurueck, probe: process.env.PROBE === '1', sichern: process.env.SICHERN === '1',
+      liste, ausnahmen, live: process.env.LIVE === '1', zurueck, probe: process.env.PROBE === '1', sichern: process.env.SICHERN === '1',
       ohneTagOk: process.env.OHNE_TAG_OK === '1',
       nur: (process.env.ONLY || '').split(',').map((s) => s.trim()).filter(Boolean),
       listeMaxH: Number(process.env.LISTE_MAX_H || 6), maxAnzahl: Number(process.env.MAX_ANZAHL || 260),

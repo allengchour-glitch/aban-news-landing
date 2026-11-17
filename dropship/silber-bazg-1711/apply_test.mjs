@@ -1,5 +1,5 @@
 // Test für lib.mjs und apply.mjs gegen eine strenge Attrappe des Shops (kein Netz). Lauf: node dropship/silber-bazg-1711/apply_test.mjs
-import { MARKER, hat925, waehleAusKatalog, entscheide, flach, publikationsLuecken, schreibMutation, anweisungEntwurf, anweisungZurueck, mutationsFehler, probeBestanden, LESEN, PUBLIZIEREN } from './lib.mjs';
+import { MARKER, hat925, trifft, waehleAusKatalog, entscheide, flach, publikationsLuecken, schreibMutation, anweisungEntwurf, anweisungZurueck, mutationsFehler, probeBestanden, LESEN, PUBLIZIEREN } from './lib.mjs';
 import { lauf } from './apply.mjs';
 
 let ok = 0, schlecht = 0;
@@ -43,6 +43,8 @@ class Shop {
         const p = quelle.get(id); if (!p) return null;
         const n = { id: p.id };
         if (hat('handle')) n.handle = p.handle; if (hat('title')) n.title = p.title; if (hat('status')) n.status = p.status; if (hat('tags')) n.tags = [...p.tags]; if (hat('productType')) n.productType = p.productType;
+        if (hat('description')) n.description = p.description ?? '';
+        if (/options\s*\{\s*name\s+values\s*\}/.test(query)) n.options = p.options || [];
         const nurVer = /pub:resourcePublicationsV2\(first:\s*\d+,\s*onlyPublished:\s*true/.test(query);   // onlyPublished:false liefert auch die nur vorgemerkten
         const grenzePub = Number((/pub:resourcePublicationsV2\(first:\s*(\d+)/.exec(query) || [])[1] || 0);
         if (query.includes('pub:resourcePublicationsV2')) n.pub = { nodes: [...p.pubs, ...(nurVer ? [] : p.unveroeff)].slice(0, grenzePub).map((x) => ({ publication: { id: x } })) };
@@ -485,5 +487,63 @@ for (const t of ['Ring 19250 Stück', 'A9251 Modell', 'Baujahr 1925 Ring', 'Silb
   gleich('Zweiter Zyklus: Rücknahme Exit 0', await lauf(z2.o), 0);
   gleich('Zweiter Zyklus: bewusst entfernte Kanäle werden NICHT wieder veröffentlicht', s.p.get('gid://p/1').pubs.join(), 'P1');
 }
+
+// ================================================================ Erweiterte Regel (17.11. «925 ist doch Silberanteil»): Beschreibung, Optionen, Sterling, Ausnahmen
+{
+  const kat = [
+    { id: 'a', handle: 'a-text', title: 'Perlenohrringe', tags: [], description: 'Ohrstecker-Nadel S925, Körper Legierung.', options: [] },
+    { id: 'b', handle: 'b-option', title: 'Ring Zirkonia', tags: [], description: '', options: [{ name: 'Material', values: ['925 Silber', 'Gold'] }] },
+    { id: 'c', handle: 'c-sterling', title: 'Sterlingsilber Kette', tags: [], description: '' },
+    { id: 'd', handle: 'd-titel', title: 'Ring 925', tags: [], description: '' },
+    { id: 'e', handle: 'e-edelstahl', title: 'Armband silberfarben', tags: [], description: 'Edelstahl, silberfarben.' },
+    { id: 'f', handle: 'f-negiert', title: 'Ring', tags: [], description: 'Messing, kein Sterlingsilber.' },
+    { id: 'g', handle: 'g-marker', title: 'Ring', tags: [MARKER], description: 'S925' },
+    { id: 'h', handle: 'h-ausnahme', title: 'Ring', tags: [], description: 'Material S925 laut Lieferant' },
+  ];
+  const w = waehleAusKatalog(kat, { ausnahmen: new Set(['h-ausnahme']) });
+  gleich('erweitert: Text, Option, Sterling und Titel treffen; Edelstahl, Verneinung, Marker und Ausnahme nicht', w.map((x) => x.handle), ['a-text', 'b-option', 'c-sterling', 'd-titel']);
+  gleich('erweitert: regel je Eintrag', w.map((x) => x.regel), ['text', 'text', 'text', 'titel-925']);
+  pruefe('erweitert: jeder Eintrag trägt einen Beleg', w.every((x) => typeof x.beleg === 'string' && x.beleg.length > 3));
+  pruefe('erweitert: ohne Ausnahmeliste trifft auch «h-ausnahme»', waehleAusKatalog(kat).some((x) => x.handle === 'h-ausnahme'));
+  pruefe('trifft: Beschreibung allein genügt, Edelstahl nicht', trifft({ title: 'Ring', description: 'S925' }) && !trifft({ title: 'Ring', description: 'Edelstahl' }));
+  const basis = { id: 'x', handle: 'h', title: 'Perlenohrringe', description: 'Nadel S925', options: [], status: 'ACTIVE', tags: [], productType: '', pubs: [], pubsAlle: [] };
+  gleich('entscheide: Treffer nur in der Beschreibung → voll', [entscheide(basis).tun, entscheide(basis).art], [true, 'voll']);
+  gleich('entscheide: Beschreibung wurde geändert (keine Angabe mehr) → nichts', entscheide({ ...basis, description: 'Edelstahl' }).tun, false);
+  gleich('entscheide: Ausnahmeliste → nichts', entscheide(basis, { ausnahmen: new Set(['h']) }).tun, false);
+  pruefe('LESEN holt Beschreibung und Optionen', /description/.test(LESEN) && /options\s*\{\s*name\s+values\s*\}/.test(LESEN));
+  gleich('flach: Beschreibung und Optionen übernommen, Vorgabe leer', [flach({ id: 'i', description: 'x', options: [{ name: 'M', values: ['a'] }] }).description, flach({ id: 'i' }).options], ['x', []]);
+}
+{
+  const s = new Shop();
+  s.add('gid://p/1', 'ohrringe-text', 'Perlenohrringe', { description: 'Ohrstecker-Nadel S925, Körper Legierung.' });
+  s.add('gid://p/2', 'ring-option', 'Ring Zirkonia', { options: [{ name: 'Material', values: ['Sterling Silver'] }] });
+  s.add('gid://p/3', 'edelstahl', 'Armband silberfarben', { description: 'Edelstahl.' });
+  s.add('gid://p/4', 'altes-925', 'Ring 925 Silber', {});
+  const liste = { erzeugt: '2026-11-17T08:00:00Z', eintraege: waehleAusKatalog([...s.p.values()]) };
+  gleich('Liste der erweiterten Regel: drei Einträge', liste.eintraege.map((e) => e.handle), ['altes-925', 'ohrringe-text', 'ring-option']);
+  const { i, o } = lade(s, { o: { live: true, liste } });
+  gleich('Live mit erweiterter Liste: Exit 0', await lauf(o), 0);
+  pruefe('Live: Text-, Option- und Titel-Treffer sind Entwurf mit Arbeits-Tag', ['gid://p/1', 'gid://p/2', 'gid://p/4'].every((id) => s.p.get(id).status === 'DRAFT' && s.p.get(id).tags.includes(MARKER)));
+  pruefe('Live: Edelstahl-Armband unberührt', s.p.get('gid://p/3').status === 'ACTIVE' && !s.p.get('gid://p/3').tags.includes(MARKER));
+  gleich('Live: Sicherung hat alle drei', i.st.sich.length, 3);
+}
+{
+  const s = new Shop();
+  s.add('gid://p/1', 'a', 'Perlenohrringe', { description: 'Nadel S925' });
+  s.add('gid://p/2', 'b', 'Armband', { description: 'Nadel S925' });
+  const liste = { erzeugt: '2026-11-17T08:00:00Z', eintraege: waehleAusKatalog([...s.p.values()]) };
+  s.p.get('gid://p/2').description = 'Edelstahl';                                  // nach dem Erstellen der Liste geändert
+  const { i, o } = lade(s, { o: { live: true, liste, ausnahmen: new Set(['a']) } });
+  gleich('Alte Liste, geänderter Text, Ausnahme: Exit 0 (nichts zu tun)', await lauf(o), 0);
+  pruefe('Geänderter Text und Ausnahme werden NICHT auf Entwurf gesetzt', s.p.get('gid://p/1').status === 'ACTIVE' && s.p.get('gid://p/2').status === 'ACTIVE' && s.mutationen === 0);
+  pruefe('Überspringen wird protokolliert', i.st.log.some((z) => /Ausnahmeliste/.test(z)) && i.st.log.some((z) => /keine Silber-Feingehaltsangabe mehr/.test(z)));
+}
+{
+  const s = new Shop(); s.add('gid://p/1', 'x', 'Armband', { description: 'Edelstahl' });
+  const liste = { erzeugt: '2026-11-17T08:00:00Z', eintraege: [{ id: 'gid://p/1', handle: 'x', title: 'Armband', productType: 'Schmuck' }] };
+  const { o } = lade(s, { o: { live: true, liste } });
+  gleich('Eintrag ohne 925 im Titel und ohne Regel-Angabe: unplausibel, Exit 2', await lauf(o), 2);
+}
+
 console.log(`${ok} Prüfungen bestanden, ${schlecht} Fehler`);
 process.exit(schlecht ? 1 : 0);
