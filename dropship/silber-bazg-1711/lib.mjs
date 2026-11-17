@@ -64,9 +64,10 @@ const FEHLER = '{userErrors{field message}}';
  * Status zuerst, Tag danach: fällt der Tag aus, bleibt das Produkt auf der sicheren Seite (offline).
  */
 export function schreibMutation(eintraege) {
-  const vars = { g: [MARKER] };
-  const kopf = ['$g:[String!]!'];
+  const vars = {};
+  const kopf = [];
   const teile = [];
+  let braucheTag = false;                                  // `$g` nur deklarieren, wenn ein Tag-Feld es benutzt: Shopify lehnt ungenutzte Variablen ab (variableNotUsed)
   eintraege.forEach((e, i) => {
     if (e.status !== undefined) {
       if (!['DRAFT', 'ACTIVE'].includes(e.status)) throw new Error('Zielstatus nicht erlaubt: ' + e.status);
@@ -76,12 +77,14 @@ export function schreibMutation(eintraege) {
     }
     if (e.tag !== undefined) {
       if (!['add', 'remove'].includes(e.tag)) throw new Error('Tag-Art nicht erlaubt: ' + e.tag);
+      braucheTag = true;
       vars[`i${i}`] = e.id;
       kopf.push(`$i${i}:ID!`);
       teile.push(`t${i}:${e.tag === 'add' ? 'tagsAdd' : 'tagsRemove'}(id:$i${i},tags:$g)${FEHLER}`);
     }
     if (e.status === undefined && e.tag === undefined) throw new Error('Eintrag ohne Auftrag: ' + e.id);
   });
+  if (braucheTag) { vars.g = [MARKER]; kopf.unshift('$g:[String!]!'); }
   return { query: `mutation(${kopf.join(',')}){${teile.join(' ')}}`, variables: vars };
 }
 

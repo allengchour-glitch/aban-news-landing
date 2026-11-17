@@ -36,7 +36,8 @@ def mutanten():
         # ---- lib.mjs: Mutation
         (L, 'Tag-Art vertauscht', "e.tag === 'add' ? 'tagsAdd' : 'tagsRemove'", "e.tag === 'add' ? 'tagsRemove' : 'tagsAdd'"),
         (L, 'Variablentyp ProductInput statt ProductUpdateInput', "kopf.push(`$p${i}:ProductUpdateInput!`);", "kopf.push(`$p${i}:ProductInput!`);"),
-        (L, 'Tag-Variable ohne Pflicht [String]', "const kopf = ['$g:[String!]!'];", "const kopf = ['$g:[String]'];"),
+        (L, 'Tag-Variable ohne Pflicht [String]', "kopf.unshift('$g:[String!]!');", "kopf.unshift('$g:[String]');"),
+        (L, '$g immer deklariert (variableNotUsed)', "if (braucheTag) { vars.g", "if (true) { vars.g"),
         (L, 'Zielstatus ARCHIVED erlaubt', "if (!['DRAFT', 'ACTIVE'].includes(e.status)) throw", "if (false) throw"),
         (L, 'Tag-Art unbekannt erlaubt', "if (!['add', 'remove'].includes(e.tag)) throw", "if (false) throw"),
         (L, 'leerer Auftrag erlaubt', "if (e.status === undefined && e.tag === undefined) throw new Error('Eintrag ohne Auftrag: ' + e.id);", ""),

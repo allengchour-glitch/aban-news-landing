@@ -27,6 +27,8 @@ class Shop {
     const body = query.slice(query.indexOf('{'));
     for (const v of new Set([...body.matchAll(/\$(\w+)/g)].map((m) => m[1]))) { if (!(v in typen)) throw new Error('GraphQL: Variable $' + v + ' nicht deklariert'); }
     for (const v of Object.keys(typen)) if (!(v in vars)) throw new Error('GraphQL: Variable $' + v + ' ohne Wert');
+    // wie Shopify: eine deklarierte, aber nirgends benutzte Variable ist ein Fehler (variableNotUsed); an der echten Probe am 17.11. gefunden
+    for (const v of Object.keys(typen)) if (!new RegExp('\\$' + v + '\\b').test(body)) throw new Error('GraphQL: Variable $' + v + ' is declared by anonymous mutation but not used (variableNotUsed)');
 
     if (/^\s*query/.test(query) && query.includes('nodes(ids')) {
       if (vars.ids.length > 250) throw new Error('GraphQL: zu viele IDs');
@@ -139,6 +141,10 @@ for (const t of ['Ring 19250 Stück', 'A9251 Modell', 'Baujahr 1925 Ring', 'Silb
   const d = schreibMutation([{ id: 'gid://p/1', status: 'DRAFT', tag: 'add' }, { id: 'gid://p/2', tag: 'add' }, { id: 'gid://p/3', status: 'ACTIVE', tag: 'remove' }, { id: 'gid://p/4', tag: 'remove' }]);
   pruefe('Mutation: Aliase und Felder', /s0:productUpdate/.test(d.query) && /t0:tagsAdd/.test(d.query) && !/s1:/.test(d.query) && /t1:tagsAdd/.test(d.query) && /s2:productUpdate/.test(d.query) && /t2:tagsRemove/.test(d.query) && /t3:tagsRemove/.test(d.query) && !/s3:/.test(d.query));
   pruefe('Mutation: Status vor Tag je Produkt', d.query.indexOf('s0:') < d.query.indexOf('t0:'));
+  const nurStatus = schreibMutation([{ id: 'gid://p/1', status: 'ACTIVE' }]);
+  pruefe('Mutation nur Status: kein $g deklariert, keine Variable g (Shopify: variableNotUsed)', !/\$g/.test(nurStatus.query) && !('g' in nurStatus.variables) && /\$p0/.test(nurStatus.query));
+  const nurTag = schreibMutation([{ id: 'gid://p/1', tag: 'add' }]);
+  pruefe('Mutation nur Tag: $g deklariert und benutzt', /\$g:\[String!\]!/.test(nurTag.query) && /tags:\$g/.test(nurTag.query) && !/\$p0/.test(nurTag.query));
   gleich('Mutation: Variablen', [d.variables.p0, d.variables.i1, d.variables.p2, d.variables.i3, d.variables.g], [{ id: 'gid://p/1', status: 'DRAFT' }, 'gid://p/2', { id: 'gid://p/3', status: 'ACTIVE' }, 'gid://p/4', [MARKER]]);
   for (const [n, e] of [['Status ARCHIVED', { id: 'x', status: 'ARCHIVED' }], ['Tag-Art unbekannt', { id: 'x', tag: 'loeschen' }], ['leerer Auftrag', { id: 'x' }]]) { let w = null; try { schreibMutation([e]); } catch (x) { w = x; } pruefe('Mutation wirft: ' + n, !!w); }
   gleich('Entwurf-Anweisung voll', anweisungEntwurf({ id: 'a' }, 'voll'), { id: 'a', status: 'DRAFT', tag: 'add' });
