@@ -1,7 +1,13 @@
+// Baut aus den im Shop gelesenen Produkten (ziel*_produkte.json) die Karat-Liste: Regeln (regeln.mjs) + Einzelkorrekturen (patches*.mjs), mit Alt-Stand als Sicherung.
+// Aufruf (Ordner egal): node liste_bauen.mjs [Eingabe=ziel_produkte.json] [Ausgabe=../karat-liste.json] [Patchmodul=./patches.mjs]; Pfade relativ zum Ordner dieses Skripts.
 import { readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { dirname, resolve } from 'node:path';
 import { wende, wendeHtml, PRUEF } from './regeln.mjs';
-import { PATCHES, TITEL } from './patches.mjs';
-const P = JSON.parse(readFileSync(new URL('./ziel_produkte.json', import.meta.url), 'utf8'));
+const HIER = dirname(fileURLToPath(import.meta.url));
+const { PATCHES, TITEL } = await import(pathToFileURL(resolve(HIER, process.argv[4] || './patches.mjs')).href);
+const EIN = resolve(HIER, process.argv[2] || 'ziel_produkte.json'), AUS = resolve(HIER, process.argv[3] || '../karat-liste.json');
+const P = JSON.parse(readFileSync(EIN, 'utf8'));
 const treffer = (hs, key) => key.startsWith('*') ? hs.filter((h) => h.startsWith(key.slice(1))) : hs.filter((h) => h === key);
 const handles = P.map((p) => p.handle);
 const zaehl = (s, t) => s.split(t).length - 1;
@@ -37,4 +43,4 @@ for (const p of P) {
   if (Object.keys(neu).length) out.push({ handle: p.handle, id: p.id, tagsEntfernt: e.tagsEntfernt, alt, neu });
 }
 console.log({ produkte: P.length, eintraege: out.length, fehler });
-writeFileSync(new URL('../karat-liste.json', import.meta.url), JSON.stringify({ eintraege: out }, null, 1));
+writeFileSync(AUS, JSON.stringify({ eintraege: out }, null, 1));

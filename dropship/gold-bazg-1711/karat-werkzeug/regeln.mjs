@@ -37,10 +37,11 @@ export const REGELN = [
   // --- übrige Plattierungswörter ----------------------------------------------------------------
   R('echtes-goldplattiert', S`echte[rsnm]?\s+gold[\s\-‑]?plattiert(\w*)`, (m, a, ...r) => E('vergoldet' + a)(m, a, ...r)),
   R('goldplattiert-adj', S`gold[\s\-‑]?(?:plattiert|verplattet|gefüllt)(\w*)`, (m, a, ...r) => E('vergoldet' + a)(m, a, ...r)),
-  R('gold-nomen', S`(?<![\w-])(?:gold[\s\-‑]?plattierung|gold[\s\-‑]?platierung|goldauflage|gold[\s\-‑]?verplattung|goldverplattung|gold[\s\-‑]?füllung|goldfüllung|goldgefüllung)(?![\w-])`, () => 'Vergoldung'),
+  R('gold-nomen', S`(?<![\w-])(?:gold[\s\-‑]?plattierung|gold[\s\-‑]?platierung|gold[\s\-‑]?auflage|gold[\s\-‑]?verplattung|goldverplattung|gold[\s\-‑]?füllung|goldfüllung|goldgefüllung)(?![\w-])`, () => 'Vergoldung'),
   R('bindestrich-plattierung', S`(?<=\w)-gold[\s\-‑]?plattierung(\w*)`, (m, a) => '-Vergoldung' + a),
   R('kupfer-echtgold', S`(\w+)-echtgold-plattierung`, (m, a) => 'Vergoldung auf ' + a),
   R('echtvergoldung', S`(?<![\w-])echt[\s\-‑]?vergoldung`, () => 'Vergoldung'),
+  R('echtvergoldet', S`(?<![\w-])echt[\s\-‑]?vergoldet`, () => 'vergoldet'),
   R('echtgold-nomen2', S`(?<![\w-])echtgold[\s\-‑]?(?:galvanisierung|beschichtung|plattierung|vergoldung)`, () => 'Vergoldung'),
   R('echtes-gold-durch', S`echtes\s+gold\s+durch\s+elektroplattierung`, () => 'Vergoldung durch Elektroplattierung'),
   R('vergoldet-mit-gold', S`vergoldet\s+mit\s+(?:${KT}\s+)?gold(?![\w-])`, () => 'vergoldet'),

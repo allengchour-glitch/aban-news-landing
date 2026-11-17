@@ -1,6 +1,6 @@
 // Test für karat_texte.mjs (Karat und «goldplattiert» bei vergoldeter Ware): Behauptungs-Erkennung, Tore, Trockenlauf, Schreiben, Rücklesen, Idempotenz, Rücknahme, Schutzgitter.
 // Der Shop ist eine strenge Attrappe: sie lehnt unbekannte Abfragen, falsche Variablen und nicht erlaubte Felder ab. Lauf: node dropship/gold-bazg-1711/karat_texte_test.mjs
-import { lauf, pruefeEintrag, belege, trefferZahl, norm, felderVon, flach, LESEN, SCHREIBEN } from './karat_texte.mjs';
+import { lauf, pruefeEintrag, belege, trefferZahl, norm, felderVon, flach, gleichFeld, LESEN, SCHREIBEN } from './karat_texte.mjs';
 
 let ok = 0, schlecht = 0;
 const pruefe = (name, bed, info = '') => { if (bed) ok++; else { schlecht++; console.error('FEHLER:', name, info); } };
@@ -101,6 +101,7 @@ function shop(start, opt = {}) {
       if (i.title !== undefined) stand.title = i.title;
       if (i.descriptionHtml !== undefined) stand.descriptionHtml = i.descriptionHtml;
       if (i.seo) { if ('title' in i.seo) stand.seoTitle = i.seo.title; if ('description' in i.seo) stand.seoDescription = i.seo.description; if (opt.seoLoeschtAnderes) { if (!('title' in i.seo)) stand.seoTitle = null; if (!('description' in i.seo)) stand.seoDescription = null; } }
+      if (opt.seoTitelLeerBeiGleichheit) { const titel = stand.title ?? p.title; if (stand.seoTitle !== undefined && stand.seoTitle === titel) stand.seoTitle = ''; }
       if (opt.statusAendert) stand.status = 'DRAFT';
       if (opt.verzoegert) { p.neuerStand = { ...(p.neuerStand || {}), ...stand }; p.noch = opt.verzoegert; } else Object.assign(p, stand);
       return { productUpdate: { product: { id: p.id }, userErrors: [] } };
@@ -277,6 +278,32 @@ pruefe('Tor: Kommentare in anderer Reihenfolge → Problem', probleme({ alt: { .
 { const s = neuStart(); s.produkte.get('armband-2').title = 'Von jemand anderem geändert';
   const r = await fahre(s, [e1, e2, e3], {});
   pruefe('Trockenlauf mit Problem (fremd verändert): Exit 6, nichts geschrieben', r.code === 6 && s.schreibAufrufe().length === 0 && r.log.some((x) => /1 Probleme/.test(x)), JSON.stringify(r)); }
+
+// SEO-Titel gleich Produkttitel: Shopify liest ihn leer zurück (gemessen 17.11.2026)
+{ const e = eint(1, { alt: { title: '18K Armband', seoTitle: '18K Armband…' }, neu: { title: 'Vergoldetes Armband', seoTitle: 'Vergoldetes Armband' } });
+  const s = shop({ 'armband-1': { title: '18K Armband', descriptionHtml: '<p>x</p>', seoTitle: '18K Armband…', seoDescription: 'B' } }, { seoTitelLeerBeiGleichheit: true });
+  const r = await fahre(s, [e], { live: true, leseVersuche: 2 });
+  pruefe('SEO-Titel gleich Produkttitel (Shopify liest leer zurück): geschrieben, Exit 0, kein Alarm', r.code === 0 && s.produkte.get('armband-1').title === 'Vergoldetes Armband' && s.produkte.get('armband-1').seoTitle === '' && r.led.some((x) => /\|GESCHRIEBEN\|armband-1\|/.test(x)), JSON.stringify(r));
+  const r2 = await fahre(s, [e], { live: true, leseVersuche: 2 });
+  pruefe('SEO-Titel gleich Produkttitel: zweiter Lauf erkennt «schon erledigt»', r2.code === 0 && r2.log.some((x) => /^schon erledigt: armband-1/.test(x)) && s.schreibAufrufe().length === 1, JSON.stringify(r2));
+  const z = await fahre(s, [e], { zurueck: true, live: true, leseVersuche: 2 });
+  pruefe('SEO-Titel gleich Produkttitel: Rücknahme stellt alt wieder her', z.code === 0 && s.produkte.get('armband-1').title === '18K Armband' && s.produkte.get('armband-1').seoTitle === '18K Armband…', JSON.stringify([z, s.produkte.get('armband-1')])); }
+{ const e = eint(1, { alt: { seoTitle: '18K Armband' }, neu: { seoTitle: 'Armband' } });
+  const s = shop({ 'armband-1': { title: 'Anderer Titel', descriptionHtml: '<p>x</p>', seoTitle: '', seoDescription: 'B' } });
+  const r = await fahre(s, [e], { live: true, leseVersuche: 2 });
+  pruefe('leerer SEO-Titel gilt NICHT als gleich, wenn er nicht dem Produkttitel entspricht: fremd verändert', r.code === 6 && r.log.some((x) => /FREMD VERÄNDERT armband-1: seoTitle/.test(x)) && s.schreibAufrufe().length === 0, JSON.stringify(r)); }
+
+// ───────────────────────── gleichFeld (a = im Shop gelesener Stand, b = Soll): Sonderfall SEO-Titel gleich Produkttitel
+pruefe('gleichFeld: gleiche Werte', gleichFeld('title', { title: 'A' }, { title: 'A' }) && gleichFeld('seoTitle', { seoTitle: 'X' }, { seoTitle: 'X' }));
+pruefe('gleichFeld: andere Werte', !gleichFeld('title', { title: 'A' }, { title: 'B' }) && !gleichFeld('seoTitle', { seoTitle: 'X', title: 'A' }, { seoTitle: 'Y', title: 'A' }));
+pruefe('gleichFeld: gelesener SEO-Titel leer, Soll = gelesener Produkttitel → gleich', gleichFeld('seoTitle', { title: 'A', seoTitle: '' }, { title: 'B', seoTitle: 'A' }));
+pruefe('gleichFeld: gelesener SEO-Titel null, Soll = gelesener Produkttitel → gleich', gleichFeld('seoTitle', { title: 'A', seoTitle: null }, { title: 'B', seoTitle: 'A' }));
+pruefe('gleichFeld: Soll-SEO-Titel gleich dem Soll-Titel (nicht dem gelesenen) → NICHT gleich', !gleichFeld('seoTitle', { title: 'A', seoTitle: '' }, { title: 'B', seoTitle: 'B' }));
+pruefe('gleichFeld: gelesener SEO-Titel leer, Soll anderer Text → NICHT gleich', !gleichFeld('seoTitle', { title: 'A', seoTitle: '' }, { title: 'A', seoTitle: 'Anderer Text' }));
+pruefe('gleichFeld: beide SEO-Titel leer (null gegen leer) → gleich', gleichFeld('seoTitle', { title: 'A', seoTitle: null }, { title: 'B', seoTitle: '' }));
+pruefe('gleichFeld: Sonderfall gilt nur für seoTitle', !gleichFeld('seoDescription', { title: 'A', seoDescription: '' }, { title: 'B', seoDescription: 'A' }) && !gleichFeld('title', { title: '' }, { title: 'A' }));
+pruefe('gleichFeld: Zeilenende und Endleerraum zählen nicht', gleichFeld('seoTitle', { title: 'A b', seoTitle: '' }, { title: 'X', seoTitle: 'A b \r\n' }));
+pruefe('gleichFeld: gelesener SEO-Titel gesetzt, Soll leer → NICHT gleich (keine Gegenrichtung)', !gleichFeld('seoTitle', { title: 'A', seoTitle: 'A' }, { title: 'A', seoTitle: '' }));
 
 console.log(`${ok} Prüfungen bestanden, ${schlecht} Fehler`);
 process.exit(schlecht ? 1 : 0);

@@ -49,7 +49,14 @@ const tags = (h) => String(h).replace(/<!--[\s\S]*?-->/g, '').match(/<\/?[a-zA-Z
 const zaehle = (l) => l.reduce((m, x) => (m.set(x, (m.get(x) || 0) + 1), m), new Map());
 const klarText = (h) => String(h).replace(/<[^>]*>/g, '').trim();
 export const trefferZahl = (stand, felder = FELDER) => felder.reduce((n, f) => n + belege(stand?.[f]).length, 0);
-const gleichStand = (a, b, felder) => felder.every((f) => norm(a?.[f]) === norm(b?.[f]));
+/** Feldvergleich (a = gelesener Stand, b = Soll). Sonderfall SEO-Titel: Shopify speichert einen SEO-Titel, der dem Produkttitel gleicht, als «nicht gesetzt» und liest ihn leer zurück (am 17.11.2026 an einem echten Produkt gemessen). */
+const leer = (v) => v == null || norm(v) === '';
+export const gleichFeld = (f, a, b) => {
+  if (norm(a?.[f]) === norm(b?.[f])) return true;
+  if (f !== 'seoTitle') return false;
+  return leer(a?.seoTitle) && !leer(b?.seoTitle) && norm(b.seoTitle) === norm(a?.title); // a = der im Shop gelesene Stand
+};
+const gleichStand = (a, b, felder) => felder.every((f) => gleichFeld(f, a, b));
 const MAX_LAENGE = { seoTitle: 70, seoDescription: 160 };
 
 /**
@@ -119,7 +126,7 @@ export async function lauf(o) {
   };
   const soll = (e) => (o.zurueck ? e.alt : e.neu);
   // fremd = ein Feld hat weder den alten noch den neuen Wert; ein Teilstand bleibt fortsetzbar
-  const fremdFelder = (e, ist) => felderVon(e).filter((f) => norm(ist[f]) !== norm(e.alt[f]) && norm(ist[f]) !== norm(e.neu[f]));
+  const fremdFelder = (e, ist) => felderVon(e).filter((f) => !gleichFeld(f, ist, e.alt) && !gleichFeld(f, ist, e.neu));
   let schlecht = 0, geschrieben = 0, schon = 0, ausgelassen = 0;
   for (const e of eintraege) {
     const k = e.handle, felder = felderVon(e), z = soll(e);
@@ -130,9 +137,9 @@ export async function lauf(o) {
     const fremd = fremdFelder(e, ist);
     if (fremd.length && !o.fremdUeberschreiben) { log(`FREMD VERÄNDERT ${k}: ${fremd.join(', ')} weder alt noch neu, nicht überschrieben`); ledger('FREMD', k, fremd.join(',')); schlecht++; continue; }
     if (o.live && geschrieben >= max) { ausgelassen++; continue; }
-    log(`${o.live ? 'SCHREIBE' : 'würde schreiben'} ${k} [${felder.filter((f) => norm(ist[f]) !== norm(z[f])).join(', ')}]: Behauptungen ${trefferZahl(ist, felder)} → ${trefferZahl(z, felder)}`);
+    log(`${o.live ? 'SCHREIBE' : 'würde schreiben'} ${k} [${felder.filter((f) => !gleichFeld(f, ist, z)).join(', ')}]: Behauptungen ${trefferZahl(ist, felder)} → ${trefferZahl(z, felder)}`);
     if (!o.live) continue;
-    const aend = felder.filter((f) => norm(ist[f]) !== norm(z[f]));
+    const aend = felder.filter((f) => !gleichFeld(f, ist, z));
     const eingabe = { id: ist.id };
     for (const f of aend.filter((x) => x === 'title' || x === 'descriptionHtml')) eingabe[f] = z[f];
     const seoF = aend.filter((f) => f === 'seoTitle' || f === 'seoDescription');
@@ -156,7 +163,7 @@ export async function lauf(o) {
       if (i < versuche) await pause(lesePause);
     }
     if (ok) {
-      const unveraendert = FELDER.filter((f) => !felder.includes(f)).every((f) => norm(nach[f]) === norm(ist[f])) && nach.status === ist.status;
+      const unveraendert = FELDER.filter((f) => !felder.includes(f)).every((f) => gleichFeld(f, nach, ist)) && nach.status === ist.status;
       if (!unveraendert) { ledger('ABWEICHUNG', k, 'Feld ausserhalb des Eintrags oder Status hat sich geändert'); log(`ABWEICHUNG ${k}: ein Feld ausserhalb des Eintrags oder der Status hat sich geändert, Halt`); return 6; }
     }
     ledger(ok ? (o.zurueck ? 'ZURUECK' : 'GESCHRIEBEN') : 'ABWEICHUNG', k, ok ? '' : 'zurückgelesener Text weicht ab');
