@@ -99,3 +99,22 @@ Hier ist nichts zu tun.
 - Bildlink (2, Google verarbeitet)
 
 **Nachmessen:** 17.11. mit `merchant-bildprobleme.yml`, Modus `laender`. Erwartung: «Anzeigen-Overlay» und «Lokale Anforderungen» bei 0.
+
+## Nachmessung 17.11.2026 (Wiedervorlage, Modus `laender`, nur lesend)
+
+Lauf 44033064468 auf `main`, 06:41 bis 06:42 UTC, 137 177 Zeilen aus 138 Seiten gelesen (GEMESSEN): 136 765 ELIGIBLE, 381 ELIGIBLE_LIMITED, 29 NOT_ELIGIBLE_OR_DISAPPROVED, 2 PENDING. Eine Zeile ist ein Angebot je Sprache; die Zahlen sind keine Produktzahlen und nicht direkt mit den 36 Produkten oben vergleichbar.
+
+**Erwartung vom 16.11.: «Anzeigen-Overlay» und «Lokale Anforderungen» bei 0. Teilweise erfüllt.**
+- `local_requirements`: **0** (der Milchshaker ist weg).
+- `image_unwanted_overlays`: **1 Angebot, 3 Länderzeilen CH, nicht 0.** Es ist `shopify_ZZ_15525458248065_67948435472775` = «6-Farben wasserfester Nude-Matt-Lippenstift» (Shopify: ACTIVE, Bestand 0). Das Hauptbild ist laut Shopify seit 11.11. eine Higgsfield-Datei (`hf_20261111_…`). **Hypothese, nicht belegt:** Google hat das neue Bild noch nicht neu bewertet, oder das neue Bild trägt selbst eine Einblendung. Dieses Produkt war nicht unter den 32 gelöschten (alle 9 früheren Overlay-Einträge waren verwaiste Angebote ohne Shopify-Variante, dieses hat eine). Nichts angefasst; erneut messen am 20.11.
+
+**Unverändert, wie erwartet** (die Einsprüche aus `dropship/BROWSER-BEFEHL-MERCHANT-EINSPRUCH-1611.md` sind laut diesen Zahlen vermutlich noch nicht eingereicht oder nicht entschieden; ob sie eingereicht wurden, ist ungemessen):
+- Tabak 12 Angebote (deutsch und französisch, also etwa 6 Produkte; CH 36 Länderzeilen, LI 6), Waffenteile 9, Alkohol 7 (nur Liechtenstein), lebende Tiere 4.
+- Bildlink: `image_link_pending_crawl` 2 (Angebot `…_15470074691969_55970996191617`), `image_link_internal_error` 2 (`…_15481068421505_67814850527623`): Google verarbeitet, kein Eingriff.
+- `landing_page_error` 1: `…_15479485038977_56001286439297` = «Smartwatch 4 mit drehbarer Kamera», in Shopify **DRAFT**, das Angebot steht bei Google noch. Hypothese: die Entfernung dauert; kein Eingriff.
+
+**Nur eingeschränkt** (nur Display-Anzeigen, die kostenlosen Einträge und Shopping-Anzeigen laufen): personal_hardships 285, sexual_interests 51, restricted_nfs 51, legal_restrictions 23, restricted_adult 12, identity_and_belief 10. Das ist die dynamische Remarketing-Einschränkung, bewusst nicht angefasst.
+
+**Nächste Messung:** 20.11. mit `merchant-bildprobleme.yml`, Modus `laender`.
+
+**Lehre:** Die Zusammenfassung des Laufs («CODES je Herkunft») nennt keine Angebots-Kennung; die steht nur in den Zeilen `FEHLER|…` und `BILD|…` des Rohprotokolls. Der Download-Link des Protokolls (`get_job_logs`, `return_content=false`) gilt nur rund 10 Minuten.
