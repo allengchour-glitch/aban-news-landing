@@ -6,6 +6,7 @@ on:
       - 'automation/lib/**'
       - 'dropship/edel-test-1711/**'
       - 'dropship/silber-bazg-1711/**'
+      - '.github/workflows/silber-waechter.yml'
       - 'codex-mods/**'
       - 'AGENTS.md'
       - 'automation/autopilot/shop_pulse.mjs'
@@ -174,6 +175,8 @@ jobs:
             dropship/tiktok-cj-videos-0311
             automation/auswahl_durchlauf.sh
             .github/workflows/luxestyle-automation-tests.yml
+            .github/workflows/silber-waechter.yml
+            dropship/SILBER-WAECHTER-FREI.txt
             .github/workflows/cj-gaps.yml
             .github/workflows/cj-reviews.yml
             .github/workflows/gmc-schaufenster.yml
@@ -268,6 +271,7 @@ jobs:
           node dropship/silber-bazg-1711/melden_test.mjs
           node dropship/silber-bazg-1711/abgleich_test.mjs
           node dropship/silber-bazg-1711/sammlungstexte_test.mjs
+          node dropship/silber-bazg-1711/waechter_workflow_test.mjs
           node --check dropship/silber-bazg-1711/melden.mjs
           node automation/lib/shopify_secret_test.mjs
           node automation/autopilot/merchant_feed_auth_test.mjs
