@@ -315,6 +315,7 @@ if os.path.exists(_hf):
 
 # ---- main() offline: die Datei METRICOOL-HALTEN.txt wirkt wirklich (Trockenlauf mit Dateien, nie Netz, nie live)
 import contextlib, io, json, tempfile
+from unittest.mock import patch
 from datetime import timedelta
 _morgen = (datetime.now() + timedelta(days=1)).replace(hour=10, minute=0, second=0, microsecond=0)
 _pl = [post(501, _morgen.strftime('%Y-%m-%dT%H:%M'), ['tiktok'], PA, uuid='uMain-1')]
@@ -323,15 +324,53 @@ _pf, _kf, _hf2 = f'{_tmp}/planer.json', f'{_tmp}/produkte.json', f'{_tmp}/halten
 json.dump(_pl, open(_pf, 'w', encoding='utf-8')); json.dump(PRODUKTE, open(_kf, 'w', encoding='utf-8'))
 _alt_env = {k: os.environ.pop(k, None) for k in ('LIVE', 'GITHUB_STEP_SUMMARY', 'METRICOOL_USER_TOKEN')}
 _alt_pfad = m.HALTEN_DATEI
-def _lauf():
+def _lauf(status=False):
     puffer = io.StringIO()
     with contextlib.redirect_stdout(puffer):
-        rc = m.main(['--planer-datei', _pf, '--produkte-datei', _kf])
+        rc = m.main(['--planer-datei', _pf, '--produkte-datei', _kf] + (['--status'] if status else []))
     return rc, puffer.getvalue()
 try:
     m.HALTEN_DATEI = f'{_tmp}/gibt-es-nicht.txt'
+    try:
+        _lauf()
+    except RuntimeError as e:
+        ok('Halteliste nicht lesbar' in str(e) and 'UNKNOWN' in str(e), 'fehlende Halteliste bleibt unbekannt')
+    else:
+        ok(False, 'main ohne Halteliste darf keinen Entwurf freigeben')
+    # Selbst LIVE=1 darf beim fehlenden Register weder Provider lesen/schreiben noch Shopify/Telegram aufrufen.
+    with patch.dict(os.environ, {'LIVE': '1', 'METRICOOL_USER_TOKEN': 'test-no-network'}), \
+         patch.object(m.Metricool, 'planer', side_effect=AssertionError('kein Providerzugriff')) as plan_spy, \
+         patch.object(m.Metricool, 'call', side_effect=AssertionError('kein Providerwrite')) as put_spy, \
+         patch.object(m, 'shopify_token', side_effect=AssertionError('kein Shopifyzugriff')) as shop_spy, \
+         patch.object(m, 'telegram', side_effect=AssertionError('keine Nachricht')) as message_spy:
+        try:
+            m.main([])
+        except RuntimeError as e:
+            ok('UNKNOWN' in str(e), 'LIVE stoppt bei fehlender Halteliste')
+        else:
+            ok(False, 'LIVE ohne Halteliste muss stoppen')
+        gl([plan_spy.call_count, put_spy.call_count, shop_spy.call_count, message_spy.call_count], [0, 0, 0, 0],
+           'fehlende Halteliste: keine Provider-/Shopify-/Nachrichtenaufrufe')
+    rc, aus = _lauf(status=True)
+    ok(rc == 0 and 'Status:' in aus, 'reine Statusdiagnose bleibt bei fehlender Halteliste möglich')
+    with patch('builtins.open', side_effect=PermissionError('test')):
+        try:
+            m.main([])
+        except RuntimeError as e:
+            ok('UNKNOWN' in str(e), 'unlesbare Halteliste stoppt mit unbekanntem Zustand')
+        else:
+            ok(False, 'unlesbare Halteliste muss stoppen')
+    open(_hf2, 'wb').write(b'\xff')
+    m.HALTEN_DATEI = _hf2
+    try:
+        _lauf()
+    except RuntimeError as e:
+        ok('UNKNOWN' in str(e), 'nicht dekodierbare Halteliste bleibt unbekannt')
+    else:
+        ok(False, 'ungueltiges UTF-8 muss stoppen')
+    open(_hf2, 'w', encoding='utf-8').write('')
     rc, aus = _lauf()
-    ok(rc == 0 and 'FREI   ' in aus and 'Halteliste' not in aus, 'main ohne Halteliste-Datei: Entwurf wird frei')
+    ok(rc == 0 and 'FREI   ' in aus, 'vorhandene wirklich leere Halteliste bleibt erlaubt')
     open(_hf2, 'w', encoding='utf-8').write('# nur Kommentar\n')
     m.HALTEN_DATEI = _hf2
     rc, aus = _lauf()

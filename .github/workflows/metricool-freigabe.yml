@@ -6,7 +6,8 @@ name: Metricool-Freigabe (Entwürfe prüfen und einplanen)
 # ACTIVE, lieferbar (mindestens eine kaufbare Ausführung; Bestand 0 mit Nachbestellung zählt als lieferbar) · jeder Preis stimmt mit dem Shop · Medien erreichbar
 # · ≥ 3 h Abstand je Netzwerk · keine Kopie (uuid mehrfach) · Video im Beitrag (Besitzer 16.11.: «nur noch Videos»; NUR_VIDEOS=0 schaltet ab).
 # Halteliste: steht die uuid oder id eines Entwurfs in dropship/METRICOOL-HALTEN.txt (eine je Zeile, danach «# Grund»), bleibt er Entwurf (Besitzer oder prüfende
-# Sitzung bremst, ohne im Planer zu schreiben). Fehlt die Datei, gilt keine Bremse. Sie hält nur Entwürfe; eingeplante Beiträge fasst die Automation nie an.
+# Sitzung bremst, ohne im Planer zu schreiben). Fehlt die Datei oder ist sie unlesbar, stoppt die Freigabe vor Netz-/Schreibzugriffen; die Statusdiagnose bleibt lesbar.
+# Die Liste hält nur Entwürfe; eingeplante Beiträge fasst die Automation nie an.
 # Doku: dropship/metricool-freigabe-0911/README.md · Skript: automation/metricool_freigabe.py · Test + Mutationsprobe daneben.
 #
 # TROCKENLAUF IST DIE VORGABE: ohne die Datei dropship/METRICOOL-FREIGABE-FREI.txt (= das Ja des Besitzers vom 09.11.2026) wird nichts geändert und nichts
