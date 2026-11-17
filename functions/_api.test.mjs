@@ -360,6 +360,69 @@ async function run() {
     check(name+': einmal manuell nach Erholung freischaltbar',calls===2&&unlocked&&saved.length===1&&context.key==='demo-neuer-schluessel');
   }
 
+  console.log("\nTest 17 — Cockpit-Lizenzantwort und manuelle Wiederaufnahme:");
+  const cockpitSource=readFileSync(new URL('../cockpit-app.html',import.meta.url),'utf8');
+  const cockpitValidate=cockpitSource.slice(cockpitSource.indexOf('  if($("#pro_activate"))'),cockpitSource.indexOf('  if($("#pro_remove"))'));
+  function cockpitHarness(fetcher){
+    const timers=new Map(),saved=[],messages=[];let id=0,click;
+    const btn={disabled:false,textContent:'Freischalten',addEventListener:(_,fn)=>{click=fn;}},input={value:'demo-neuer-schluessel'},status={textContent:''};
+    const context={AbortController,Promise,JSON,Error,Array,
+      $:selector=>selector==='#pro_activate'?btn:selector==='#pro_key'?input:status,
+      set:(...args)=>saved.push(args),renderProStatus:()=>{},toast:msg=>messages.push(msg),fetch:fetcher,
+      setTimeout:(fn,ms)=>{timers.set(++id,{fn,ms});return id;},clearTimeout:tid=>timers.delete(tid)};
+    vm.createContext(context);vm.runInContext(cockpitValidate,context);
+    return {context,btn,input,status,timers,saved,messages,click:()=>click.call(btn)};
+  }
+  for(const [name,status,data] of [...brokenReplies,['stoerung',200,{valid:false,status:'error'}],['ungueltig',200,{valid:false,status:'invalid'}]]){
+    let calls=0;const h=cockpitHarness(async()=>{calls++;return {ok:status>=200&&status<300,json:async()=>data};});
+    h.click();await new Promise(resolve=>setImmediate(resolve));
+    check('Cockpit '+name+': keine Freigabe oder gespeicherten Daten überschrieben',h.saved.length===0);
+    check('Cockpit '+name+': richtige Meldung, Schlüssel und Bedienung erhalten',!h.btn.disabled&&h.timers.size===0&&h.input.value==='demo-neuer-schluessel'&&
+      (name==='ungueltig'?h.messages.some(m=>m.includes('ungültig')):h.status.textContent.includes('nicht nochmals kaufen')));
+    h.context.fetch=async()=>{calls++;return {ok:true,json:async()=>({valid:true,tier:null})};};
+    h.click();await new Promise(resolve=>setImmediate(resolve));
+    check('Cockpit '+name+': genau eine manuelle Wiederprüfung gibt frei',calls===2&&h.saved.length===1&&h.saved[0][0]==='abanCockpit_pro'&&h.saved[0][1].ok===true&&h.saved[0][1].key==='demo-neuer-schluessel'&&!h.btn.disabled&&h.timers.size===0);
+  }
+  for(const phase of ['transport','inhalt']){
+    let calls=0,finish,signal;
+    const h=cockpitHarness(async(_,opts)=>{calls++;signal=opts.signal;const pending=new Promise(resolve=>{finish=resolve;});return phase==='transport'?pending:{ok:true,json:()=>pending};});
+    h.click();await new Promise(resolve=>setImmediate(resolve));
+    h.click();await new Promise(resolve=>setImmediate(resolve)); // Während pending kein zweiter Abruf.
+    const timer=[...h.timers.values()].find(t=>t.ms===15000);
+    check('Cockpit '+phase+': feste 15-Sekundenfrist vorhanden',!!timer);
+    if(timer)timer.fn();await new Promise(resolve=>setImmediate(resolve));
+    check('Cockpit '+phase+': beendet, kein Retry, Signal und Timer bereinigt',calls===1&&signal?.aborted===true&&!h.btn.disabled&&h.timers.size===0);
+    check('Cockpit '+phase+': Schlüssel erhalten und Störung erklärt',h.saved.length===0&&h.input.value==='demo-neuer-schluessel'&&h.status.textContent.includes('nicht nochmals kaufen'));
+    finish(phase==='transport'?{ok:true,json:async()=>({valid:true})}:{valid:true});await new Promise(resolve=>setImmediate(resolve));
+    check('Cockpit '+phase+': verspätete Freigabe ignoriert',h.saved.length===0);
+    h.context.fetch=async()=>{calls++;return {ok:true,json:async()=>({valid:true})};};
+    h.click();await new Promise(resolve=>setImmediate(resolve));
+    check('Cockpit '+phase+': manuelle Wiederaufnahme möglich',calls===2&&h.saved.length===1&&!h.btn.disabled&&h.timers.size===0);
+  }
+
+  console.log("\nTest 18 — Cockpit-Update erreicht den Offline-Cache:");
+  {
+    const handlers={},alt='aban-cockpit-v3',fremd='andere-app',cache=new Map([[alt,new Map([['/cockpit-app.html','Altstand']])],[fremd,new Map()]]);
+    let skipped=false,claimed=false,network=0;
+    const sw={location:{origin:'https://demo.invalid'},addEventListener:(name,fn)=>{handlers[name]=fn;},skipWaiting:async()=>{skipped=true;},clients:{claim:async()=>{claimed=true;}}};
+    const context={URL,Promise,self:sw,
+      caches:{open:async name=>{if(!cache.has(name))cache.set(name,new Map());return {addAll:async paths=>{paths.forEach(path=>cache.get(name).set(path,'Neuer Appstand'));}};},
+        keys:async()=>[...cache.keys()],delete:async name=>cache.delete(name),match:async key=>{for(const values of cache.values())if(values.has(key))return values.get(key);}},
+      fetch:async()=>{network++;throw new Error('Kein Netz in dieser Offline-Prüfung');}};
+    vm.createContext(context);vm.runInContext(readFileSync(new URL('../cockpit-sw.js',import.meta.url),'utf8'),context);
+    check('Cockpit: neuer Cache getrennt vom installierten Altstand',context.CACHE!==alt);
+    let pending;handlers.install({waitUntil:p=>{pending=p;}});await pending;
+    check('Cockpit: neue App precached, Altstand noch bis Aktivierung erhalten',cache.get(context.CACHE).get('/cockpit-app.html')==='Neuer Appstand'&&cache.has(alt)&&skipped);
+    handlers.activate({waitUntil:p=>{pending=p;}});await pending;
+    check('Cockpit: nur alter eigener Cache entfernt, Clients übernommen',!cache.has(alt)&&cache.has(fremd)&&claimed);
+    for(const path of ['/cockpit-app','/cockpit-app.html']){
+      handlers.fetch({request:{method:'GET',url:'https://demo.invalid'+path},respondWith:p=>{pending=p;}});
+      check('Cockpit '+path+': aktualisierte App offline erreichbar',await pending==='Neuer Appstand'&&network===0);
+    }
+    let touched=false;handlers.fetch({request:{method:'POST',url:'https://demo.invalid/api/pro-validate'},respondWith:()=>{touched=true;}});
+    check('Cockpit: Lizenz-POST wird nicht offline beantwortet',!touched);
+  }
+
   console.log("\n" + (fail === 0 ? "✅ ALLE TESTS BESTANDEN" : "❌ " + fail + " FEHLER") +
     "  (" + pass + " ok, " + fail + " fehlerhaft)");
   process.exit(fail === 0 ? 0 : 1);

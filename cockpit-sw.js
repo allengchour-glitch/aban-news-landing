@@ -1,7 +1,7 @@
 /* aban Business-Cockpit — Service Worker
    Macht die Cockpit-App offline nutzbar. Cached NUR die App-Seite + ihre Icons;
    alle anderen Anfragen laufen unangetastet durchs Netz (stört den Rest der Site nicht). */
-var CACHE = "aban-cockpit-v3";
+var CACHE = "aban-cockpit-v4";
 var ASSETS = [
   "/cockpit-app.html",
   "/qr-lib.js",
