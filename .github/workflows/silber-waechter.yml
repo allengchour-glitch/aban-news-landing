@@ -44,9 +44,6 @@ jobs:
     env:
       EREIGNIS: ${{ github.event_name }}
       SCHREIBEN_EINGABE: ${{ inputs.schreiben }}
-      LISTE: ${{ runner.temp }}/silber-liste.json
-      SICHERUNG: ${{ runner.temp }}/silber-sicherung.json
-      LEDGER: ${{ runner.temp }}/silber-ledger.txt
     steps:
       - uses: actions/checkout@v4
         with:
@@ -66,6 +63,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+
+      # Die Pfade stehen hier und nicht im Job-Kopf: der Context `runner` ist im `env` auf Job-Ebene nicht erlaubt (GitHub lehnt den ganzen Workflow ab, auch den Zeitplan).
+      - name: Pfade festlegen
+        run: |
+          {
+            echo "LISTE=$RUNNER_TEMP/silber-liste.json"
+            echo "SICHERUNG=$RUNNER_TEMP/silber-sicherung.json"
+            echo "LEDGER=$RUNNER_TEMP/silber-ledger.txt"
+          } >> "$GITHUB_ENV"
 
       - name: Schreiben oder nur lesen?
         id: modus
