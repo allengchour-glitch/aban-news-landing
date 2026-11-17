@@ -144,6 +144,30 @@
     "btc": 65305.0625,
     "eth": 1835.4952392578125
    }
+  },
+  {
+   "stand": "2026-11-16",
+   "zeit": "2026-11-17T13:26:36+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 862,
+   "kosten_usd": 0.023932,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.1,
+    "begruendung": "Trend klar abwärts: 7 T. -13,8 %, 30 T. -20,3 %, Kurs 11 % unter dem 200-Tage-Schnitt. Gleichzeitig ist BTC stark überverkauft: 18 % unter dem 50-Tage-Schnitt, Angst&Gier bei 10. Die letzten zwei Tage stabilisierten sich um 64–65k, eine Gegenbewegung ist wahrscheinlich. Ich halte den kleinen Short von -0,10 und vermeide damit auch Gebühren. Ausbauen will ich ihn wegen des Rebound-Risikos nicht.",
+    "sicherheit": 0.35
+   },
+   "eth": {
+    "position": -0.1,
+    "begruendung": "ETH ist schwächer als BTC: 30 T. -24,2 %, 23 % unter dem 50-Tage-Schnitt. Dagegen sprechen ein MVRV von 0,84 (unterbewertet), negatives Funding und extreme Angst, also Kapitulationsnähe und Short-Squeeze-Gefahr. Ich halte den Short bei -0,10, ohne Umschichtung. Bei negativem Funding zahlt der Short leicht, das ist bei dieser Grösse vernachlässigbar.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Abwärtstrend intakt, aber extrem überverkauft und Stimmung auf Panikniveau. Ich bleibe nur leicht short, um Gebühren und Squeeze-Risiko gering zu halten. Ein Schluss über ca. 68k (BTC) bzw. 1'930 (ETH) wäre der Anlass, flach zu gehen. Ein neuer Bruch unter 64k bzw. 1'770 rechtfertigt, den Short moderat zu erhöhen.",
+   "kurse": {
+    "btc": 64855.84375,
+    "eth": 1819.27587890625
+   }
   }
  ]
 }
