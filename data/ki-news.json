@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-16T12:41:39Z",
+ "stand": "2026-11-17T13:15:21Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Freshworks alums raise $53M to take on Salesforce, HubSpot with AI-native CRM",
-   "u": "https://techcrunch.com/2026/11/16/freshworks-alums-raise-53m-to-take-on-salesforce-hubspot-with-ai-native-crm/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-16T12:30:00Z",
-   "s": "Dreamteam has signed up more than 100 customers across 13 countries, with some businesses switching from established CRMs.",
-   "sprache": "en"
-  },
-  {
-   "t": "Autonome Killerroboter: Staaten ringen um Verbot KI-basierter Waffen",
-   "u": "https://www.golem.de/news/autonome-killerroboter-staaten-ringen-um-verbot-ki-basierter-waffen-2611-215262.html",
-   "q": "Golem",
-   "d": "2026-11-16T12:16:01Z",
-   "s": "Angeblich kommen im Ukraine-Krieg schon autonome Killerdrohnen zum Einsatz. Doch weltweit könnten solche Waffen verboten werden. (Militär, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Zuschauen statt posten: Wie Jugendliche 2026 Medien und KI nutzen",
-   "u": "https://www.heise.de/hintergrund/JIM-Studie-Kommunikation-per-Messenger-ganz-vorne-passiver-bei-Social-Media-11526368.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Zahlen, bitte! Gemini 12: Letzte Station vor Apollos Weg zum Mond",
+   "u": "https://www.heise.de/hintergrund/Zahlen-bitte-Gemini-12-Letzte-Station-vor-Apollos-Weg-zum-Mond-11527474.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-16T12:08:00Z",
-   "s": "Laut JIM-Studie 2026 posten Jugendliche seltener selbst, suchen aber häufiger per KI-Chatbot. KI-Antworten nehmen Jüngere eher hin als Ältere.",
+   "d": "2026-11-17T12:41:00Z",
+   "s": "Gemini 12 lieferte die letzten Raumflugerkenntnisse vor dem Apollo-Programm – und Buzz Aldrin schoss das erste Selfie im All.",
    "sprache": "de"
   },
   {
-   "t": "1000 Kilowatt pro Schrank: KI-Chips drohen Rechenzentren zu sprengen",
-   "u": "https://www.heise.de/news/1000-Kilowatt-pro-Schrank-KI-Chips-drohen-Rechenzentren-zu-sprengen-11526263.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "heise+ | Adobes Designchef im Interview: Was Kreative noch selbst können müssen",
+   "u": "https://www.heise.de/hintergrund/Adobes-Designchef-im-Interview-Was-Kreative-noch-selbst-koennen-muessen-11523224.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
    "q": "heise",
-   "d": "2026-11-16T11:32:00Z",
-   "s": "Moderne Prozessoren heizen so stark, dass Wasser direkt an den Chip muss und neue 800-Volt-Stromnetze entstehen. Die Politik streitet über Effizienzregeln.",
+   "d": "2026-11-17T12:30:00Z",
+   "s": "Gestaltende Agenten und Vibe-Coding-Konkurrenz: KI verändert die kreative Welt. Wir sprachen mit Adobes Designchef über die Zukunft der Adobe Creative Cloud.",
    "sprache": "de"
   },
   {
-   "t": "Gamedev: Mobile-Games-Studios setzen besonders häufig auf KI",
-   "u": "https://www.golem.de/news/gamedev-mobile-games-studios-setzen-besonders-haeufig-auf-ki-2611-215252.html",
+   "t": "Datensammlung: Windows 11 meldet Coding-Agenten und Entwickler-Tools an Microsoft",
+   "u": "https://www.golem.de/news/datensammlung-windows-11-meldet-coding-agenten-und-entwickler-tools-an-microsoft-2611-215308.html",
    "q": "Golem",
-   "d": "2026-11-16T10:25:01Z",
-   "s": "Eine große Entwicklerumfrage zeigt auch, wofür KI tatsächlich genutzt wird: Es sind eher nicht finale Spielinhalte. (GDC 2027, KI)",
+   "d": "2026-11-17T11:40:02Z",
+   "s": "Die Nutzungsdaten von Coding-Agenten und Developer-Tools sammelt Windows 11 zusammen mit optionalen Diagnosedaten. (Betriebssysteme, KI)",
    "sprache": "de"
   },
   {
-   "t": "Otto-Chef Boris Ewenstein: „Mit KI schließen wir die Lücke zum Kauferlebnis im stationären Handel\"",
-   "u": "https://t3n.de/news/otto-chef-boris-ewenstein-mit-ki-schliessen-wir-die-luecke-zum-kauferlebnis-im-stationaeren-handel-1772862/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Rubin HPC: Nvidia bringt eigene Rubin-GPU für Supercomputer",
+   "u": "https://www.golem.de/news/rubin-hpc-nvidia-bringt-eigene-rubin-gpu-fuer-supercomputer-2611-215305.html",
+   "q": "Golem",
+   "d": "2026-11-17T11:06:01Z",
+   "s": "Nvidias Fokus verschob sich bei Hardware für Rechenzentren zu KI. Supercomputer profitieren davon aber nicht immer. AMD hatte hier vorgelegt. (Supercomputer, Grafikkarten)",
+   "sprache": "de"
+  },
+  {
+   "t": "Claudes Office-Funktionen ausprobiert: Muss Microsoft jetzt Angst haben?",
+   "u": "https://t3n.de/news/claudes-office-funktionen-ausprobiert-muss-microsoft-jetzt-angst-haben-1773849/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-16T10:00:28Z",
-   "s": "Vom Katalog zur KI: Otto-Chef Boris Ewenstein verrät im t3n-Interview, wie sich die Shoppingplattform verändert – und wie sie trotz neuer Checkout-Kanäle relevaweiterlesen auf t3n.de",
+   "d": "2026-11-17T10:30:11Z",
+   "s": "Claude übernimmt zunehmend auch klassische Office-Funktionen. Warum sich Anthropics Ansatz grundsätzlich von Microsofts Copilot unterscheidet – und warum das KIweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "ChatGPT Wallet: So soll die KI künftig für euch shoppen",
-   "u": "https://t3n.de/news/chatgpt-wallet-so-soll-die-ki-kuenftig-fuer-euch-shoppen-1773710/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "COP 31: Auch die Weltklimakonferenz geht die Umweltfolgen des KI-Booms nicht an",
+   "u": "https://t3n.de/news/cop-31-weltklimakonferenz-ki-rechenzentren-umweltfolgen-1772649/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-16T09:00:37Z",
-   "s": "OpenAI hat eine eigene Bezahlfunktion zur Verwendung durch KI-Agenten gestartet. Damit kann ChatGPT im Namen der Nutzer:innen Produkte kaufen – freigegeben per Biometrie.weiterlesen auf t3n.de",
+   "d": "2026-11-17T10:15:00Z",
+   "s": "Auch bei der Weltklimakonferenz geht es um den steigenden Ressourcenverbrauch von KI‑Rechenzentren. Doch die dort zirkulierende Selbstverpflichtung ist das Papier nicht wert, auf dem sie steht.weiterl…",
    "sprache": "de"
   },
   {
-   "t": "LVMH’s Media Division announces strategic partnership with OpenAI",
-   "u": "https://openai.com/index/lvmh-media-division-partnership",
+   "t": "Strengthening NATO and allied cyber defenses with AI",
+   "u": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
    "q": "OpenAI",
-   "d": "2026-11-16T09:00:00Z",
-   "s": "LVMH’s Media Division and OpenAI announce a partnership to support journalism with AI and make its publications more accessible through ChatGPT.",
+   "d": "2026-11-17T00:00:00Z",
+   "s": "How OpenAI is working with NATO and allied cyber agencies to help trusted defenders find vulnerabilities, test fixes and protect essential systems.",
    "sprache": "en"
   },
   {
-   "t": "Apple launches new app to study how people use AI for health",
-   "u": "https://techcrunch.com/2026/11/15/apple-launches-new-app-to-study-how-people-use-ai-for-health/",
+   "t": "Cybersecurity AI startup Corma reaches $1B valuation in about 3 months",
+   "u": "https://techcrunch.com/2026/11/16/cybersecurity-ai-startup-corma-reaches-1b-valuation-in-about-3-months/",
    "q": "TechCrunch AI",
-   "d": "2026-11-16T01:30:00Z",
-   "s": "Apple's new app for a study will answer everyday medical questions",
+   "d": "2026-11-16T23:32:32Z",
+   "s": "Three months since introducing its product, AI cybersecurity startup Corba has raised a $125 million Series A at a $1 billion valuation led by NEA.",
    "sprache": "en"
   },
   {
-   "t": "The King’s Trust and OpenAI launch £1m partnership",
-   "u": "https://openai.com/index/the-kings-trust-and-openai",
-   "q": "OpenAI",
-   "d": "2026-11-16T00:00:00Z",
-   "s": "The King’s Trust and OpenAI launch a £1m partnership to help up to 25,000 young people across the UK build practical AI skills for work.",
+   "t": "All the questions Nvidia should answer on Tuesday — but probably won’t",
+   "u": "https://techcrunch.com/2026/11/16/all-the-questions-nvidia-should-answer-on-tuesday-but-probably-wont/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-16T22:03:02Z",
+   "s": "Nvidia interim CEO and longtime CFO Colette Kress is about to have one of the biggest days of her career on Tuesday when the company reports its third-quarter results. Given the turmoil Nvidia is in, …",
+   "sprache": "en"
+  },
+  {
+   "t": "The open-source movement wants Jensen Huang back",
+   "u": "https://www.technologyreview.com/2026/11/16/1148624/the-open-source-movement-wants-jensen-huang-back/",
+   "q": "MIT Tech Review",
+   "d": "2026-11-16T18:38:47Z",
+   "s": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. On Friday, a petition to reinstate Jensen Huang as CEO of Nvid…",
    "sprache": "en"
   }
  ]
