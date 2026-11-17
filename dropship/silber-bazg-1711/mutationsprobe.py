@@ -1,14 +1,28 @@
 #!/usr/bin/env python3
-"""Mutationsprobe für lib.mjs und apply.mjs: je Mutant eine Kopie im Wegwerf-Ordner, apply_test.mjs muss ROT werden. Ausgangslage muss grün sein.
+"""Mutationsprobe für lib.mjs, apply.mjs und die Regel automation/lib/silber_feingehalt.mjs: je Mutant eine Kopie im Wegwerf-Ordner (mit der Verzeichnisform des Repos),
+apply_test.mjs bzw. silber_feingehalt_test.mjs muss ROT werden. Ausgangslage muss grün sein.
 Lauf (Repo-Wurzel): python3 dropship/silber-bazg-1711/mutationsprobe.py"""
 import os, shutil, subprocess, sys, tempfile
 HIER = os.path.dirname(os.path.abspath(__file__))
 NODE = os.environ.get('NODE', '/opt/node22/bin/node')
-DATEIEN = ['lib.mjs', 'apply.mjs', 'apply_test.mjs']
+WURZEL = os.path.abspath(os.path.join(HIER, '..', '..'))
+TOOL = ['lib.mjs', 'apply.mjs', 'apply_test.mjs']                       # nach dropship/silber-bazg-1711/
+REGEL = ['silber_feingehalt.mjs', 'silber_feingehalt_test.mjs']         # nach automation/lib/
+R = 'silber_feingehalt.mjs'
 
-def lauf(ordner):
-    r = subprocess.run([NODE, os.path.join(ordner, 'apply_test.mjs')], capture_output=True, text=True, timeout=180)
+def lauf(tmp, test):
+    r = subprocess.run([NODE, test], capture_output=True, text=True, timeout=180)
     return r.returncode, (r.stdout + r.stderr)[-300:]
+
+def pfad(tmp, datei):
+    return os.path.join(tmp, 'automation', 'lib', datei) if datei in REGEL else os.path.join(tmp, 'dropship', 'silber-bazg-1711', datei)
+
+def quelle_von(datei):
+    return os.path.join(WURZEL, 'automation', 'lib', datei) if datei in REGEL else os.path.join(HIER, datei)
+
+def aufbauen(tmp):
+    for d in TOOL + REGEL:
+        ziel = pfad(tmp, d); os.makedirs(os.path.dirname(ziel), exist_ok=True); shutil.copy(quelle_von(d), ziel)
 
 def mutanten():
     """(Datei, Name, alt, neu). `alt` muss genau einmal vorkommen, sonst gilt der Mutant als nicht anwendbar."""
@@ -17,16 +31,16 @@ def mutanten():
         # ---- lib.mjs: Auswahl
         (L, 'Muster ohne Lookbehind (1925 träfe)', "const MUSTER = /(?<![0-9])925(?![0-9])/;", "const MUSTER = /925(?![0-9])/;"),
         (L, 'Muster ohne Lookahead (19250 träfe)', "const MUSTER = /(?<![0-9])925(?![0-9])/;", "const MUSTER = /(?<![0-9])925/;"),
-        (L, 'waehle: Arbeits-Tag nicht ausgeschlossen', " && !(p.tags || []).includes(MARKER))\n    .map", ")\n    .map"),
+        (L, 'waehle: Arbeits-Tag nicht ausgeschlossen', " && !(p.tags || []).includes(MARKER) && !ausnahmen.has(p.handle))\n    .map", " && !ausnahmen.has(p.handle))\n    .map"),
         (L, 'waehle: nicht sortiert', "\n    .sort((a, b) => a.handle.localeCompare(b.handle));", ";"),
-        (L, 'waehle: 925 nicht verlangt', "p.handle && hat925(p.title) && ", "p.handle && "),
+        (L, 'waehle: Regel nicht verlangt', "p.handle && trifft(p) && ", "p.handle && "),
         # ---- lib.mjs: Lesen
         (L, 'LESEN: Kanal-Liste anders benannt', "pub:resourcePublicationsV2(first:50, onlyPublished:true)", "pubx:resourcePublicationsV2(first:50, onlyPublished:true)"),
         (L, 'LESEN: onlyPublished:false (vorgemerkte zählen als veröffentlicht)', "pub:resourcePublicationsV2(first:50, onlyPublished:true)", "pub:resourcePublicationsV2(first:50, onlyPublished:false)"),
         (L, 'LESEN: nur 5 Kanäle', "pub:resourcePublicationsV2(first:50, onlyPublished:true)", "pub:resourcePublicationsV2(first:5, onlyPublished:true)"),
         (L, 'flach: Kanäle nicht sortiert', ".map((x) => x.publication.id).sort(),", ".map((x) => x.publication.id),"),
         # ---- lib.mjs: Entscheid
-        (L, 'entscheide: 925 nicht geprüft', "if (!hat925(ist.title)) return", "if (false) return"),
+        (L, 'entscheide: Regel nicht geprüft', "if (!trifft(ist)) return", "if (false) return"),
         (L, 'entscheide: aktiv mit Tag wird übersprungen', "if (ist.status === 'ACTIVE') return { tun: true,", "if (ist.status === 'ACTIVE' && !tag) return { tun: true,"),
         (L, 'entscheide: Entwurf mit Tag wird nochmals geschrieben', "if (tag) return { tun: false, grund: 'schon Entwurf mit Arbeits-Tag' };", ""),
         (L, 'entscheide: Sicherung wird nicht beachtet (nurTag nie)', "if (inSicherung) return { tun: true, art: 'nurTag'", "if (false) return { tun: true, art: 'nurTag'"),
@@ -109,23 +123,90 @@ def mutanten():
         (A, 'Rücknahme: erledigte bleiben in der Sicherung', "if (erledigt.length) o.sicherung.entfernen?.(erledigt);", ""),
         (A, 'Rücknahme: kein Halt bei Abweichung', "if (abweichung) { log('Rücknahme: Halt wegen Abweichung", "if (false) { log('Rücknahme: Halt wegen Abweichung"),
         (A, 'Rücknahme: Verbucht Abweichung als ZURUECK', "ledger(ok ? 'ZURUECK' : 'ABWEICHUNG-ZURUECK', x.e.handle,", "ledger('ZURUECK', x.e.handle,"),
+        # ---- lib.mjs: erweiterte Regel (17.11.), Ausnahmeliste, Lesen von Beschreibung und Optionen
+        (L, 'trifft: Beschreibung nicht beachtet', "istSilberFeingehalt({ title: p?.title, description: p?.description, options: p?.options });", "istSilberFeingehalt({ title: p?.title, options: p?.options });"),
+        (L, 'trifft: Optionen nicht beachtet', "istSilberFeingehalt({ title: p?.title, description: p?.description, options: p?.options });", "istSilberFeingehalt({ title: p?.title, description: p?.description });"),
+        (L, 'waehle: Ausnahmeliste nicht beachtet', " && !ausnahmen.has(p.handle))\n    .map", ")\n    .map"),
+        (L, 'waehle: regel immer «text»', "regel: hat925(p.title) ? 'titel-925' : 'text',", "regel: 'text',"),
+        (L, 'waehle: Beleg fehlt', "      beleg: belegText(silberFeingehalt({ title: p.title, description: p.description, options: p.options })).slice(0, 300),\n", "      beleg: '',\n"),
+        (L, 'entscheide: Ausnahmeliste nicht beachtet', "  if (ausnahmen.has(ist.handle)) return", "  if (false) return"),
+        (L, 'LESEN: Beschreibung fehlt', " productType description options{name values}\n", " productType options{name values}\n"),
+        (L, 'LESEN: Optionen fehlen', " productType description options{name values}\n", " productType description\n"),
+        (L, 'flach: Beschreibung nicht übernommen', "    description: n.description ?? '', options: n.options || [],", "    description: '', options: n.options || [],"),
+        (L, 'flach: Optionen nicht übernommen', "    description: n.description ?? '', options: n.options || [],", "    description: n.description ?? '', options: [],"),
+        (A, 'Liste: Regel-Angabe ersetzt die Prüfung nicht (nur Titel-925 zählt)', "!(hat925(e.title) || e.regel)", "!hat925(e.title)"),
+        (A, 'Liste: jede Liste gilt als plausibel', "!(hat925(e.title) || e.regel)", "false"),
+        (A, 'Ausnahmeliste wird nicht an entscheide gegeben', "{ inSicherung: sichIds.has(e.id), ausnahmen }", "{ inSicherung: sichIds.has(e.id) }"),
+        # ---- automation/lib/silber_feingehalt.mjs: Regel
+        (R, 'Regel: Zahl darf Teil einer längeren sein (Lookbehind weg)', "const NICHT_ZAHL = '(?<![0-9])(?<![0-9][.,])';", "const NICHT_ZAHL = '';"),
+        (R, 'Regel: Komma nach Ziffer zählt nicht als Zahlenteil', "const NICHT_ZAHL = '(?<![0-9])(?<![0-9][.,])';", "const NICHT_ZAHL = '(?<![0-9])';"),
+        (R, 'Regel: Komma ohne Ziffer davor blockiert', "const NICHT_ZAHL = '(?<![0-9])(?<![0-9][.,])';", "const NICHT_ZAHL = '(?<![0-9.,])';"),
+        (R, 'Regel: Zahl darf weitergehen (19250 träfe)', "const ZAHL_ENDE = '(?![0-9])';", "const ZAHL_ENDE = '';"),
+        (R, 'Regel: Einheiten (925 mAh) werden nicht ausgeschlossen', "const EINHEIT_NACH = '(?!", "const EINHEIT_NACH = '(?=|(?!"),
+        (R, 'Regel: Einheit «Stück» fehlt', "|stk|stück|stueck|pieces|", "|stk|stueck|pieces|"),
+        (R, 'Regel: Einheit ohne Wortgrenze (Münze träfe als «m»)', "|meter|m)(?![\\\\p{L}])|%))';", "|meter|m)|%))';"),
+        (R, 'Regel: Muster 925 entfernt', "  ['925', new RegExp(`${NICHT_ZAHL}925${ZAHL_ENDE}${EINHEIT_NACH}`, 'gu')],\n", ""),
+        (R, 'Regel: Sterling entfernt', "  ['sterling', /sterling/g],\n", ""),
+        (R, 'Regel: Feinsilber-Wörter entfernt', "  ['fein', /feinsilber|fine silver|pure silver|echtsilber|echtes silber|real silver|genuine silver|solid silver|massivsilber|massives silber/g],\n", ""),
+        (R, 'Regel: «Echtsilber» fehlt', "feinsilber|fine silver|pure silver|echtsilber|echtes silber|", "feinsilber|fine silver|pure silver|echtes silber|"),
+        (R, 'Regel: Feingehalt-Zahl neben Silber entfernt', "  ['feingehalt-zahl', new RegExp(`${SILBERWORT}.{0,25}", "  ['feingehalt-zahl-aus', new RegExp(`${SILBERWORT}x{9}"),
+        (R, 'Regel: Feingehalt 999 fehlt', "const FEINGEHALTE = '(?:999|990|958|950|900|835|800)';", "const FEINGEHALTE = '(?:990|958|950|900|835|800)';"),
+        (R, 'Regel: Feingehalt 800 fehlt', "|900|835|800)';", "|900|835)';"),
+        (R, 'Regel: Silberwort ohne Ag', "const SILBERWORT = '(?:silber|silver|sterling|\\\\bag\\\\b)';", "const SILBERWORT = '(?:silber|silver|sterling)';"),
+        (R, 'Regel: 92,5 % entfernt', "  ['92,5', new RegExp(", "  ['92,5-aus', new RegExp(`xx${SILBERWORT}xx`+"),
+        (R, 'Regel: 92,5 mit Punkt nicht erkannt', "92[.,]5${ZAHL_ENDE}|", "92[,]5${ZAHL_ENDE}|"),
+        (R, 'Regel: Verneinung «kein» entfernt', "(?:kein(?:e[nrsm]?)?|nicht|", "(?:nicht|"),
+        (R, 'Regel: Verneinung «nicht» entfernt', "|nicht|ohne|statt|", "|ohne|statt|"),
+        (R, 'Regel: Verneinung «ohne» entfernt', "|nicht|ohne|statt|", "|nicht|statt|"),
+        (R, 'Regel: Verneinung «statt» entfernt', "|ohne|statt|anstelle", "|ohne|anstelle"),
+        (R, 'Regel: englische Verneinung «not» entfernt', "|no|not|without|", "|no|without|"),
+        (R, 'Regel: Verneinung zählt auch weit davor (mehr als zwei Wörter)', "(?:[\\p{L}\\p{N}-]+\\s+){0,3}$/u;", "(?:[\\p{L}\\p{N}-]+\\s+){0,9}$/u;"),
+        (R, 'Regel: Verneinung ohne Wort dazwischen nicht erkannt', "(?:[\\p{L}\\p{N}-]+\\s+){0,3}$/u;", "(?:[\\p{L}\\p{N}-]+\\s+){1,3}$/u;"),
+        (R, 'Regel: Verneintes wird als Treffer gezählt', "(VERNEINUNG_DAVOR.test(davor) ? verneint : treffer).push(", "(false ? verneint : treffer).push("),
+        (R, 'Regel: bereinige entfernt kein HTML', "    .replace(/<[^>]*>/g, ' ')\n", ""),
+        (R, 'Regel: bereinige kennt nbsp nicht', "    .replace(/&nbsp;|&#160;/gi, ' ')\n", ""),
+        (R, 'Regel: bereinige schreibt nicht klein', "    .toLowerCase();", "    ;"),
+        (R, 'Regel: Titel nicht beachtet', "const felder = [['titel', p?.title], ", "const felder = ["),
+        (R, 'Regel: Beschreibung nicht beachtet', "['beschreibung', p?.description ?? p?.descriptionHtml], ", ""),
+        (R, 'Regel: descriptionHtml nicht beachtet', "p?.description ?? p?.descriptionHtml", "p?.description"),
+        (R, 'Regel: Optionen nicht beachtet', ", ['option', optionsText(p?.options)]];", "];"),
+        (R, 'Regel: Optionsliste als Text ohne Werte', "(x?.values || []).join(' / ')", "''"),
+        (R, 'Regel: treffer immer wahr', "return { treffer: belege.length > 0, belege, verneint };", "return { treffer: true, belege, verneint };"),
+        (R, 'Regel: treffer immer falsch', "return { treffer: belege.length > 0, belege, verneint };", "return { treffer: false, belege, verneint };"),
+        (R, 'Regel: Beleg ohne Feldname', "belege.push(...f.treffer.map((x) => ({ feld, ...x })));", "belege.push(...f.treffer.map((x) => ({ ...x })));"),
+        (R, 'Regel: Belegtext zeigt mehr als drei', "r.belege.slice(0, 3).map(", "r.belege.slice(0, 9).map("),
+        (R, 'Regel: Blockgrenzen (</li>, <br>) sind kein Satzende', r"""    .replace(/<\s*(?:br|\/p|\/li|\/div|\/h[1-6]|\/tr|\/td|\/ul|\/ol)\b[^>]*>/gi, ' . ')
+""", ""),
+        (R, 'Regel: Zeilenumbruch ist kein Satzende', r"""    .replace(/\r?\n+/g, ' . ')
+""", ""),
+        (R, 'Regel: nur <br> zählt als Blockgrenze', r"(?:br|\/p|\/li|\/div|\/h[1-6]|\/tr|\/td|\/ul|\/ol)", r"(?:br)"),
+        (R, 'Regel: </li> zählt nicht als Blockgrenze', r"|\/li|\/div|", r"|\/div|"),
+        (R, 'Regel: Vergleich «anders als» entfernt', "|weder|anders als|im gegensatz zu|", "|weder|im gegensatz zu|"),
+        (R, 'Regel: Vergleich «im Gegensatz zu» entfernt', "|anders als|im gegensatz zu|im vergleich zu|", "|anders als|im vergleich zu|"),
+        (R, 'Regel: Vergleich «im Vergleich zu» entfernt', "|im vergleich zu|im unterschied zu|", "|im unterschied zu|"),
+        (R, 'Regel: Vergleich «gegenüber» entfernt', "|im unterschied zu|gegenüber|versus|", "|im unterschied zu|versus|"),
+        (R, 'Regel: Vergleich «compared to» entfernt', "|vs|compared to|no|", "|vs|no|"),
+        # gleichwertig (bewusst nicht aufgeführt): die Schutzzeile gegen leere Treffer (Endlosschleife) — kein Muster kann leer treffen
     ]
 
 def main():
     tmp = tempfile.mkdtemp(prefix='silbermut_')
     try:
-        for d in DATEIEN: shutil.copy(os.path.join(HIER, d), os.path.join(tmp, d))
-        rc, aus = lauf(tmp)
-        if rc != 0: print('Ausgangslage NICHT grün:', aus); return 2
-        print('Ausgangslage grün:', aus.strip().splitlines()[-1])
+        aufbauen(tmp)
+        t_tool = os.path.join(tmp, 'dropship', 'silber-bazg-1711', 'apply_test.mjs')
+        t_regel = os.path.join(tmp, 'automation', 'lib', 'silber_feingehalt_test.mjs')
+        for test in (t_tool, t_regel):
+            rc, aus = lauf(tmp, test)
+            if rc != 0: print('Ausgangslage NICHT grün:', os.path.basename(test), aus); return 2
+            print('Ausgangslage grün:', os.path.basename(test), aus.strip().splitlines()[-1])
         erkannt = nicht = n_a = 0
         for datei, name, alt, neu in mutanten():
-            quelle = open(os.path.join(HIER, datei), encoding='utf8').read()
+            quelle = open(quelle_von(datei), encoding='utf8').read()
             if quelle.count(alt) != 1:
                 n_a += 1; print(f'? nicht anwendbar ({quelle.count(alt)} Treffer): {name}'); continue
-            for d in DATEIEN: shutil.copy(os.path.join(HIER, d), os.path.join(tmp, d))
-            open(os.path.join(tmp, datei), 'w', encoding='utf8').write(quelle.replace(alt, neu))
-            rc, aus = lauf(tmp)
+            aufbauen(tmp)
+            open(pfad(tmp, datei), 'w', encoding='utf8').write(quelle.replace(alt, neu))
+            rc, aus = lauf(tmp, t_regel if datei == R else t_tool)
             if rc != 0: erkannt += 1
             else: nicht += 1; print(f'✗ ÜBERLEBT: {name}')
         print(f'\n{erkannt} erkannt, {nicht} überlebt, {n_a} nicht anwendbar (von {erkannt + nicht + n_a})')

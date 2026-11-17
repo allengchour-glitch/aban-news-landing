@@ -1,0 +1,136 @@
+name: "Silber-Wächter (Feingehaltsangaben auf Entwurf)"
+
+# Hintergrund (Besitzer 17.11.2026): Die Schweizer Edelmetallkontrolle verlangt für Silberwaren im Handel eine Feingehaltsangabe und eine registrierte
+# Verantwortlichkeitsmarke. Ob das für Direktversand ab Lieferant den Shop trifft, ist offen (Anfrage liegt als Gmail-Entwurf,
+# dropship/silber-bazg-1711/ANFRAGE-EDELMETALLKONTROLLE.md). Bis zur Antwort stehen alle Produkte, deren Text («925», «S925», «Sterling», «999 Silber» …)
+# einen Silber-Feingehalt nennt, auf ENTWURF. Import und Grind können laufend neue solche Produkte bringen: dieser Wächter fängt sie täglich auf.
+#
+# Er liest alle AKTIVEN Produkte (Bulk, rund eine Minute) und setzt Treffer auf ENTWURF (mit Arbeits-Tag bazg-gehalten-1711). Es wird nichts gelöscht.
+# Regel: automation/lib/silber_feingehalt.mjs · Werkzeug: dropship/silber-bazg-1711/ (README dort: Rücknahme, Ausnahmeliste, Lehren).
+#
+# Zwei Stufen, bewusst getrennt (wie beim Lager-Wächter):
+#   - Ohne Freigabedatei: nur LESEN, die Meldung nennt die Treffer.
+#   - Mit Freigabedatei dropship/SILBER-WAECHTER-FREI.txt im Repo: setzt im Zeitplan LIVE auf Entwurf. Datei löschen = Stopp.
+# Sicherungen: höchstens 25 Produkte je Lauf (mehr = Halt und Meldung, das ist dann kein normaler Zufluss), jedes Paket wird zurückgelesen, beim ersten Fehler Halt.
+# Die Sicherung der Lauf-Änderungen (Status, Tags, Kanäle) liegt als Artefakt des Laufs (90 Tage); Rücknahme: ZURUECK=1 LIVE=1 node dropship/silber-bazg-1711/apply.mjs.
+# Irrtümer: ein Produkt, das KEINE Feingehaltsangabe macht (Verneinung, Fremdwort), steht in dropship/silber-bazg-1711/ausnahmen.json und wird nie angefasst.
+# Meldung per Telegram nur bei Treffern oder Fehlern. Zeitplan: einmal täglich 05:29 UTC (nicht neben Schaufenster 04:41, Lager-Wächter 05:17).
+
+on:
+  schedule:
+    - cron: '29 5 * * *'
+  workflow_dispatch:
+    inputs:
+      schreiben:
+        description: 'Wirklich auf Entwurf setzen (nur mit Freigabedatei dropship/SILBER-WAECHTER-FREI.txt); sonst nur lesen'
+        type: boolean
+        default: false
+      immer_melden:
+        description: 'Auch bei «keine Treffer» melden (Test des Meldewegs)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: silber-waechter
+  cancel-in-progress: false
+
+jobs:
+  waechter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      EREIGNIS: ${{ github.event_name }}
+      SCHREIBEN_EINGABE: ${{ inputs.schreiben }}
+      LISTE: ${{ runner.temp }}/silber-liste.json
+      SICHERUNG: ${{ runner.temp }}/silber-sicherung.json
+      LEDGER: ${{ runner.temp }}/silber-ledger.txt
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            automation/lib/shopify_gql.mjs
+            automation/lib/shopify_secret.mjs
+            automation/lib/shopify_host.mjs
+            automation/lib/silber_feingehalt.mjs
+            dropship/silber-bazg-1711/lib.mjs
+            dropship/silber-bazg-1711/apply.mjs
+            dropship/silber-bazg-1711/liste.mjs
+            dropship/silber-bazg-1711/melden.mjs
+            dropship/silber-bazg-1711/ausnahmen.json
+            dropship/SILBER-WAECHTER-FREI.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Schreiben oder nur lesen?
+        id: modus
+        run: |
+          live=0
+          if [ -f dropship/SILBER-WAECHTER-FREI.txt ]; then
+            if [ "$EREIGNIS" = "schedule" ] || [ "$SCHREIBEN_EINGABE" = "true" ]; then live=1; fi
+          fi
+          echo "live=$live" >> "$GITHUB_OUTPUT"
+          if [ "$live" = "1" ]; then echo "Modus: auf Entwurf setzen (Freigabe liegt im Repo)"; else echo "Modus: nur lesen"; fi
+
+      - name: Katalog lesen (nur lesen)
+        id: lesen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          set +e
+          node dropship/silber-bazg-1711/liste.mjs
+          echo "rc=$?" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Treffer auf Entwurf setzen
+        id: setzen
+        if: steps.lesen.outputs.rc == '0'
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          LIVE: ${{ steps.modus.outputs.live == '1' && '1' || '' }}
+          OHNE_PROBE: '1'        # die Probe des Entwurf-Wechsels ist dokumentiert (README, Ledger vom 17.11.2026); der Wächter schreibt höchstens 25 Produkte
+          MAX_ANZAHL: '25'
+          LISTE_MAX_H: '2'
+        run: |
+          set +e
+          anzahl=$(node -e "console.log(JSON.parse(require('fs').readFileSync(process.env.LISTE,'utf8')).anzahl)")
+          echo "Treffer: $anzahl"
+          if [ "$anzahl" = "0" ]; then echo "rc=" >> "$GITHUB_OUTPUT"; exit 0; fi
+          node dropship/silber-bazg-1711/apply.mjs
+          echo "rc=$?" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Melden (Telegram) und Lauf bewerten
+        if: always()
+        env:
+          LISTE_RC: ${{ steps.lesen.outputs.rc }}
+          APPLY_RC: ${{ steps.setzen.outputs.rc }}
+          MODUS: ${{ steps.modus.outputs.live == '1' && 'live' || 'lesen' }}
+          LAUFLINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ALWAYS_NOTIFY: ${{ inputs.immer_melden && '1' || '' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          node dropship/silber-bazg-1711/melden.mjs 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
+          exit "${PIPESTATUS[0]}"
+
+      - name: Protokoll und Sicherung aufbewahren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: silber-waechter-protokoll
+          path: |
+            ${{ runner.temp }}/silber-liste.json
+            ${{ runner.temp }}/silber-sicherung.json
+            ${{ runner.temp }}/silber-ledger.txt
+          if-no-files-found: ignore
+          retention-days: 90

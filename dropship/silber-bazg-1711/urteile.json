@@ -1,0 +1,1297 @@
+{
+ "stand": "2026-11-17",
+ "quelle": "zwei unabhängige Durchgänge A und B je Produkt (Workflow wf_b7d1ead4-208); Text-Belege in der CLAUDE.md",
+ "urteile": {
+  "2-ct-prinzessschliff-moissanit-ring-pave-band-778177": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "2-karat-moissanit-ring-smaragd-schliff-619500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "4er-set-aus-su-wasserperlen-halskette-ohrsteck-18c26d": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "90w-lotspitze-messerformig-5mm-637100": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": false
+  },
+  "999-silber-anhanger-fortuna-glucksmunze-filigran": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "999-silber-armband-trefle-kleeblatt-mit-zirkonia": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "adjustable-silberringe-616300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "ak38-smartwatch-fur-damen-452032": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": true
+  },
+  "aquamarin-ring-aus-s999-sterlingsilber-625600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "armband-mit-drei-strasssteinen-und-wassertropfen-612100": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "armband-mit-glyzinienblute-aus-999er-sterlings-617400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "armband-mit-schloss-design-628300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "armband-mit-zirkon-akzenten-624500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "armband-silber-halbseil-halbketten-design-619600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "barockperlen-armband-mit-paperclip-kette-636800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "birnenformiger-zirkon-ring-610900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "bogen-zirkon-ohrstecker-fur-frauen-627600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "bogenknopf-armband-fur-damen-635900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "brosche-mit-schmetterling-aus-strass-619800": {
+   "a": "unklar",
+   "b": "unklar",
+   "urteil": "unklar",
+   "regel": true
+  },
+  "buntes-herz-armband-mit-diamant-burstung-601200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "c-formige-creolen-mit-zirkonia-aus-sterlingsil-392898": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "cuban-link-kette-633500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "damenring-mit-grunem-moosachat-637600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "damenring-mit-rechteckigem-moissanit-628300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "delikate-halskette-610400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "diamant-armband-mit-geometrischem-muster-625700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "diy-armband-verschluss-mit-planeten-motiv-605200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "doppelbandring-mit-54-moissanit-steinen-platin-006337": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "doppelherz-halskette-aus-sterling-silber-218817": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "doppelkreuz-zirkonring-kupfer-verstellbar-550912": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "doppellagiges-herzarmband-mit-weissem-chalcedo-612600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "doppelreihiges-armband-aus-999er-feinsilber-ma-633200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "doppelreihiges-armband-mit-perlen-620000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "edelstahl-halskette-fur-herren-612600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "edle-moissanite-halskette-608400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "edle-perlenohrringe-a29c9d": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "edle-silberohrringe-mit-strass-inlay-611400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "edle-tranenformige-ohrhanger-400066": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "edler-moissanite-halsketten-anhanger-081473": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "edles-rubin-armband-365441": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "edles-silber-pendant-mit-moissanit-631700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "edles-smaragd-armband-326466": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "einfache-ohrring-klipse-614100": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "elegante-emaille-blumen-ohrringe-mit-perlen-615554": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "elegante-ohrhaken-mit-perlen-610600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "elegante-saphir-sonnenblumen-ohrstecker-fur-de-607800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "eleganter-2ct-moissanit-ring-mit-doppeltem-hal-889665": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "eleganter-moissanit-ring-im-taubenei-design-615000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "eleganter-moissanit-ring-in-tropfenform-616700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "eleganter-moissanite-ring-mit-4-5-karat-ovalsc-614800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "eleganter-ring-mit-gelbem-diamant-effekt-613100": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "eleganter-zirkonia-ring-im-koreanischen-stil-633200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "elegantes-armband-mit-strass-besatz-zum-12-geburtstag-620200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "elegantes-kreuzkettchen-624400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "emeraldgruener-vintage-armreif-633400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "fusskette-mit-wassertropfen-anhanger-613300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "gestapelte-ringkombination-europaisch-amerikan-638700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "glucks-armband-mit-999er-feinsilber-anhanger-615700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "glucksarmband-mit-katze-aus-feinsilber-615000": {
+   "a": "unklar",
+   "b": "unklar",
+   "urteil": "unklar",
+   "regel": true
+  },
+  "glucksklee-bead-set-fur-diy-armbander-600200": {
+   "a": null,
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true,
+   "vermerk": "nur ein Durchgang (B)"
+  },
+  "goldgeplattete-zirkonia-ohrringe-minimalistisc-603000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "gourde-armband-mit-moissanit-steinen-626600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "grasformband-602400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "gruner-moissanit-solitar-ring-579906": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "haifisch-anhanger-624600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "halskette-mit-doppeltem-halo-tropfenformigem-d-619800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "halskette-wassertropfen-mit-zirkonia-611200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "herren-business-uhr-mit-kalender-497088": {
+   "a": "unklar",
+   "b": "unklar",
+   "urteil": "unklar",
+   "regel": true
+  },
+  "herz-moissanit-ring-mit-split-shank-pave-halo-602370": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "herz-schleife-moissanit-ring-1-karat-silber-009153": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "herzanhanger-minimalistisch-633000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "herzformige-huggie-ohrringe-mit-moissanite-012801": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "herzformige-ohrstecker-mit-rubin-oder-saphir-422785": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "herzformiger-ring-aus-sterlingsilber-615000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "herzformiger-silberchoker-634400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "herzformiges-armband-im-minimalistischen-stil-601000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "iris-armband-mit-funkelnden-strasssteinen-622800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "kaffee-zirkon-ring-628100": {
+   "a": "unklar",
+   "b": "unklar",
+   "urteil": "unklar",
+   "regel": true
+  },
+  "kaisertasse-aus-sterlingsilber-mit-emaille-blu-628200": {
+   "a": "unklar",
+   "b": "silber-feingehalt",
+   "urteil": "unklar",
+   "regel": true
+  },
+  "katzen-und-blumenarmband-aus-999er-silber-617700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "katzenring-anpassbar-383937": {
+   "a": "unklar",
+   "b": "unklar",
+   "urteil": "unklar",
+   "regel": true
+  },
+  "klassische-herz-zirkon-ohrstecker-612900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "kleeblatt-ohrstecker-mit-smaragd-739650": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "koreanische-lila-kristallblumen-ohrstecker-516226": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": false
+  },
+  "kreuzring-mit-strasssteinen-617500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "kubanisches-armband-schlicht-vielseitig-600200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "kubanisches-solitar-armband-602200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "kurze-damen-jacke-mit-kapuze-636200": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": false
+  },
+  "luxus-butterfly-armreif-608500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "mechanische-armbanduhr-mit-skelett-design-600300": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": true
+  },
+  "meeresschmuck-set-mit-sternfisch-muscheldesign-842754": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "minimalistischer-anhanger-615200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "minimalistischer-silberring-mit-kugeldesign-609600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "minimalistischer-zirkon-ring-mit-drei-steinen-634600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "minimalistisches-armband-mit-buchstaben-gravur-603700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "minimalistisches-layering-armband-fur-damen-631400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "minimalistisches-moissanite-halskette-645121": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanit-armband-verstellbar-613700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanit-ring-mit-doppeltem-halo-platinbeschi-853377": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanit-ring-mit-radiant-schliff-629800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanit-ring-prinzessschliff-2ct-platin-plat-771650": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanit-verlobungsring-2-karat-3-steine-silb-366850": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanite-halskette-mit-twist-anhanger-567106": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanite-ring-im-rechteckigen-kissenschliff-600300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanite-ring-mit-cluster-halo-680257": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanite-ring-mit-doppelhallo-109954": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanite-ring-sterling-silber-898306": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanite-solitaire-halskette-platinbeschicht-548738": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "moissanite-verlobungsring-591809": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "mozambique-flower-tennis-armband-627000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "mozanite-schlusselbein-kette-damen-613400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "naturlich-elegante-feinsilber-ohrstecker-mit-o-457536": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "neunfaches-vajra-knoten-armband-607400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "offener-ring-mit-perlmutt-und-geometrie-608500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "ohrringe-mit-kyanit-perlen-und-u-form-609500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "ohrstecker-rose-sterling-silber-629900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "ohrstecker-silber-matt-rund-635100": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "olivegrune-zirkon-ohrstecker-625900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "opalring-mit-iris-effekt-604400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "paar-armband-607700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "partnerarmband-mit-berg-und-baum-motiv-615800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "perlen-halskette-aus-s999-sterlingsilber-600400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "perlenkette-mit-rundem-medaillon-und-susswasse-812672": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "personalisierbarer-silberring-mit-zirkonia-635200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "personalisierte-retro-ohrringe-mit-quaste-625400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "personalisierter-retro-silberring-mit-unregelm-622300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "pfau-pendant-614400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "pferdeauge-silberring-619300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "pferdeaugen-zirkonia-armband-vergoldet-626300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "prinzessschliff-moissanit-verlobungsring-set-067393": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "reise-charm-anhanger-flugzeug-koffer-kamera-614000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "retro-armband-mit-pflaumenbluten-design-628200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "retro-langarmhemd-im-ethno-stil-618900": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": true
+  },
+  "retro-rucksack-aus-canvas-40e425": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": false
+  },
+  "rosen-perlen-ring-aus-sterlingsilber-608300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "rubin-blumen-halskette-955329": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "schlangenformige-ohrstecker-mit-moosachat-635800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "schlangenketten-armband-mit-runden-strasssteinen-625200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "schlankes-schlangenketten-armband-612000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "schmetterlings-ohrhanger-mit-quasten-638800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "schneeflocken-armband-mit-1-karat-moissanit-631300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "schwarze-perlenkette-616200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silber-2ct-moissanstein-ring-mit-blumenakzent-994881": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silber-amulett-625200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silber-tennisarmband-625000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberarmband-614500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberarmband-mit-lab-grown-diamant-626300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberarmband-mit-moissanit-besatz-613200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberarmband-mit-paraiba-blasen-639000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberarmband-mit-runden-perlen-628000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberarmreif-geburstet-633500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberkette-und-armband-mit-lotus-anhanger-633200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberne-bh-korbchen-halter-626000": {
+   "a": "unklar",
+   "b": "silber-feingehalt",
+   "urteil": "unklar",
+   "regel": true
+  },
+  "silberne-schmuckkette-600200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberner-damenring-mit-pferdaugen-schliff-620200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silbernes-armband-mit-runden-perlen-und-quaste-602400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberring-mit-breiter-band-und-herz-design-627700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberring-mit-hochkarbon-strasssteinen-610700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberring-mit-moissanit-diamant-620700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberring-mit-moosachat-und-zirkonia-619900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "silberring-mit-naturlichem-granat-628500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-armband-mit-blumen-und-schmett-621900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-armreif-603900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-glucksarmband-613000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-handschmuck-605400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-liebesarmband-600700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-luftschlaucharm-628400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-minimalistischer-ring-608400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-ring-612700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-schlangearmband-629600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-sternenring-607100": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterling-silber-zirkon-ring-set-607700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterlingsilber-armband-mit-lab-grown-edelstein-185858": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterlingsilber-armband-set-633400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterlingsilber-halskette-mit-quadratischem-des-734721": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterlingsilber-herz-moissanite-halskette-090690": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterlingsilber-hohlring-mit-herz-sutra-unisex-605700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterlingsilber-katzenpfoten-ohrhanger-634500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterlingsilber-kreuzanhanger-mit-moissanit-480898": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterlingsilber-veredelter-lotosblumen-armreif-609300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterne-mond-anhanger-467842": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "sterne-ohrringe-mit-smaragd-431298": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "strassbesetzte-creolen-637200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "strukturierter-netzschal-606300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "su-e-schmetterling-ohrringe-606500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "tennis-armband-mit-zirkonia-steinen-636300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "teufelsauge-armband-mit-emaille-glasur-611400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "tiefes-salatschalen-set-603300": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": false
+  },
+  "turkis-ohrringe-fur-frauen-614800": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "unisex-ring-aus-sterlingsilber-einzigartiges-d-602700": {
+   "a": "unklar",
+   "b": "unklar",
+   "urteil": "unklar",
+   "regel": true
+  },
+  "unregelmassiges-anhanger-600500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "vergoldeter-moissanit-ring-mit-gedrehter-rings-628200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "verstellbarer-fingerring-mit-zirkon-620100": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "verstellbarer-offener-ring-mit-wassertropfen-d-627000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "verstellbarer-ring-fur-paare-639300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "verstellbarer-ring-im-ozean-stil-fur-damen-613100": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "verstellbarer-ring-mit-glyzinien-motiv-613600": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "verstellbarer-ring-mit-noten-design-623500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "verstellbarer-umarmungsring-aus-legierung-290176": {
+   "a": "unklar",
+   "b": "unklar",
+   "urteil": "unklar",
+   "regel": true
+  },
+  "verstellbares-armband-mit-zirkonia-rundschliff-638500": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "vielseitige-achtzackige-stern-halskette-634400": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "vierblattriges-gluck-626100": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "vintage-hofstil-herz-ohrringe-mit-emaille-stra-634200": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "vintage-ohrclips-mit-saturn-motiv-639900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "vintage-rosen-ohrstecker-600000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "vintage-schmetterling-armband-doppellagig-630700": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "vintage-steckerohr-sterlingsilber-luxus-043010": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "wasserdichte-kuchenmatte-607300": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": false
+  },
+  "waterproof-stainless-steel-jewelry-set-18k-gold-tarnish-free": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": false
+  },
+  "wei-e-perlen-schmetterlings-armband-610000": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "weisses-diamant-halsband-619900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "yinyun-doppelring-mit-rotem-achat-und-turkis-615300": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "zartes-zuckerstuck-feine-zirkonia-su-wasserper-895104": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "zirkon-armreif-mit-buchstaben-design-616900": {
+   "a": "silber-feingehalt",
+   "b": "silber-feingehalt",
+   "urteil": "silber-feingehalt",
+   "regel": true
+  },
+  "zirkonia-kette-stella-kleeblatt-anhanger-silber-optik": {
+   "a": "kein-feingehalt",
+   "b": "kein-feingehalt",
+   "urteil": "kein-feingehalt",
+   "regel": true
+  }
+ }
+}

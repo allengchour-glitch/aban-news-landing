@@ -47,6 +47,17 @@ for (const titel of [
 }
 
 assert.equal(pruefeCjImportText({ ...deutsch, title: '' }).status, 'BLOCKED');
+// 17.11.2026: Silber-Feingehaltsangaben blockieren den Import (Edelmetallkontrolle)
+for (const [title, html] of [
+  ['Silberring mit Zirkonia', '<p>Der Ring ist aus 925 Sterlingsilber gefertigt und passt zu jedem Anlass.</p>'],
+  ['S925 Ohrstecker mit Perle', deutsch.html],
+  ['Zierliche Kette', '<p>Die Kette besteht aus Sterling Silber und ist für den Alltag gedacht.</p>'],
+]) {
+  const r = pruefeCjImportText({ ...deutsch, title, html });
+  assert.equal(r.status, 'BLOCKED', title);
+  assert.ok(r.gruende.some((g) => /Silber-Feingehaltsangabe/.test(g)), title + ' ' + JSON.stringify(r.gruende));
+}
+assert.equal(pruefeCjImportText({ ...deutsch, title: 'Armband silberfarben', html: '<p>Das Armband aus Edelstahl ist silberfarben und wasserfest für den Alltag.</p>' }).gruende.some((g) => /Silber-Feingehaltsangabe/.test(g)), false);
 assert.equal(pruefeCjImportText({ ...deutsch, sourceTitle: '' }).status, 'BLOCKED');
 assert.equal(pruefeCjImportText({ ...deutsch, html: '' }).status, 'BLOCKED');
 assert.equal(pruefeCjImportText({

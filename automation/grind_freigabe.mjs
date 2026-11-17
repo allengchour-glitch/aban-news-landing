@@ -28,6 +28,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, appendFileSync } fr
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sperrTags } from './lib/kanal_sperren.mjs';
+import { silberFeingehalt, belegText } from './lib/silber_feingehalt.mjs';
 import { kanaeleAusReferenz } from './grind2.mjs';
 
 const HIER = dirname(fileURLToPath(import.meta.url));
@@ -89,6 +90,7 @@ export function tore(p, { kanaele = null, minPreis = MIN_PREIS } = {}) {
   const t = p.tags || [], bs = bilder(p), vs = p.variants?.nodes || [], html = String(p.descriptionHtml || '');
   const skus = vs.map(v => String(v.sku || '').trim());
   const erstes = bs[0]?.image;
+  const sf = silberFeingehalt({ title: p.title, description: html, options: (p.options || []) });
   return [
     { name: 'Status ENTWURF', vorab: true, ok: p.status === 'DRAFT', detail: p.status },
     { name: 'Marken grind2 und cj-real', vorab: true, ok: t.includes('grind2') && t.includes('cj-real') },
@@ -101,6 +103,8 @@ export function tore(p, { kanaele = null, minPreis = MIN_PREIS } = {}) {
     { name: 'Google-Kategorie im Metafeld', ok: !!String(p.gpc?.value || '').trim() },
     { name: 'Kanalliste ableitbar', ok: Array.isArray(kanaele) && kanaele.length >= 3, detail: Array.isArray(kanaele) ? `${kanaele.length} Kanäle` : 'keine' },
     { name: `Tag ${TAG_OFFEN} weg`, ok: !t.includes(TAG_OFFEN) },
+    // 17.11.2026: Silber-Feingehaltsangaben («925», «Sterling» …) sind bis zur Antwort der Edelmetallkontrolle nicht im Verkauf (dropship/silber-bazg-1711/README.md)
+    { name: 'keine Silber-Feingehaltsangabe im Text', vorab: true, ok: !sf.treffer, detail: sf.treffer ? belegText(sf) : '' },
   ];
 }
 

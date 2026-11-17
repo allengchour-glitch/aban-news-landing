@@ -1,6 +1,8 @@
 // Silber «925» vorläufig auf ENTWURF (Besitzer 17.11.2026 «2 ja»): reine Bausteine, kein Netz, kein Shop-Zugriff.
 // Anlass: Schweizer Edelmetallkontrolle (BAZG-FAQ): Silberwaren im Handel brauchen Feingehaltsangabe + registrierte Verantwortlichkeitsmarke.
 // Ob das für Direktversand ab Lieferant den Shop trifft, ist offen (Anfrage an das Zentralamt, ANFRAGE-EDELMETALLKONTROLLE.md). Bis zur Antwort: Entwurf, nicht löschen.
+// Umfang (Besitzer 17.11. «925 ist doch Silberanteil … mach das alles fix und live»): jede Silber-Feingehaltsangabe im Text (Titel, Beschreibung, Optionen), nicht nur «925» im Titel.
+import { istSilberFeingehalt, silberFeingehalt, belegText } from '../../automation/lib/silber_feingehalt.mjs';
 
 /**
  * Arbeits-Tag: macht die gehaltenen Produkte im Admin filterbar und zeigt der Rücknahme, welche Entwürfe von diesem Werkzeug stammen.
@@ -14,15 +16,26 @@ export const MARKER = 'bazg-gehalten-1711';
 const MUSTER = /(?<![0-9])925(?![0-9])/;
 export const hat925 = (titel) => MUSTER.test(String(titel ?? ''));
 
-/** Aus dem Bulk-Katalog (nur aktive Produkte): alle mit 925 im Titel, die nicht schon vom Arbeits-Tag erfasst sind. Sortiert nach Handle (stabile Liste). */
-export function waehleAusKatalog(produkte) {
+/** Trifft die Regel dieses Produkts? Eine Silber-Feingehaltsangabe in Titel, Beschreibung oder Optionen (automation/lib/silber_feingehalt.mjs). Sie schliesst «925» im Titel ein: alle 207 Titel der ersten Fassung vom 17.11. werden von ihr erfasst (gemessen). */
+export const trifft = (p) => istSilberFeingehalt({ title: p?.title, description: p?.description, options: p?.options });
+
+/**
+ * Aus dem Bulk-Katalog (nur aktive Produkte): alle, auf die die Regel zutrifft und die nicht schon vom Arbeits-Tag erfasst oder in der Ausnahmeliste sind.
+ * `ausnahmen` = Menge von Handles, die nach Einzelprüfung KEINE Feingehaltsangabe nennen (urteile.json). Sortiert nach Handle (stabile Liste).
+ * Jeder Eintrag trägt `regel` ('titel-925' oder 'text') und `beleg` (kurze Fundstelle) für das Protokoll.
+ */
+export function waehleAusKatalog(produkte, { ausnahmen = new Set() } = {}) {
   return (produkte || [])
-    .filter((p) => p && p.id && p.handle && hat925(p.title) && !(p.tags || []).includes(MARKER))
-    .map((p) => ({ id: p.id, handle: p.handle, title: p.title, productType: p.productType || '' }))
+    .filter((p) => p && p.id && p.handle && trifft(p) && !(p.tags || []).includes(MARKER) && !ausnahmen.has(p.handle))
+    .map((p) => ({
+      id: p.id, handle: p.handle, title: p.title, productType: p.productType || '',
+      regel: hat925(p.title) ? 'titel-925' : 'text',
+      beleg: belegText(silberFeingehalt({ title: p.title, description: p.description, options: p.options })).slice(0, 300),
+    }))
     .sort((a, b) => a.handle.localeCompare(b.handle));
 }
 
-export const LESEN = `query($ids:[ID!]!){nodes(ids:$ids){... on Product{id handle title status tags productType
+export const LESEN = `query($ids:[ID!]!){nodes(ids:$ids){... on Product{id handle title status tags productType description options{name values}
   pub:resourcePublicationsV2(first:50, onlyPublished:true){nodes{publication{id}}}
   alle:resourcePublicationsV2(first:50, onlyPublished:false){nodes{isPublished publication{id}}}}}}`;
 
@@ -31,6 +44,7 @@ export function flach(n) {
   if (!n || !n.id) return null;
   return {
     id: n.id, handle: n.handle, title: n.title, status: n.status, tags: n.tags || [], productType: n.productType || '',
+    description: n.description ?? '', options: n.options || [],
     pubs: (n.pub?.nodes || []).map((x) => x.publication.id).sort(),
     pubsAlle: (n.alle?.nodes || []).map((x) => ({ id: x.publication.id, an: !!x.isPublished })),
   };
@@ -41,9 +55,10 @@ export function flach(n) {
  * Rückgabe {tun, art, grund}; art 'voll' = Status ENTWURF + Arbeits-Tag, 'nurTag' = nur der Arbeits-Tag fehlt (Rest eines abgebrochenen Laufs).
  * ACTIVE (mit oder ohne Tag) wird (wieder) auf ENTWURF gesetzt; ENTWURF ohne Tag nur dann nachgetaggt, wenn WIR es laut Sicherung entworfen haben.
  */
-export function entscheide(ist, { inSicherung = false } = {}) {
+export function entscheide(ist, { inSicherung = false, ausnahmen = new Set() } = {}) {
   if (!ist) return { tun: false, grund: 'Produkt nicht lesbar' };
-  if (!hat925(ist.title)) return { tun: false, grund: 'Titel enthält kein 925 mehr, nicht angefasst' };
+  if (ausnahmen.has(ist.handle)) return { tun: false, grund: 'steht in der Ausnahmeliste (nach Einzelprüfung keine Feingehaltsangabe), nicht angefasst' };
+  if (!trifft(ist)) return { tun: false, grund: 'Text nennt keine Silber-Feingehaltsangabe mehr, nicht angefasst' };
   const tag = ist.tags.includes(MARKER);
   if (ist.status === 'ACTIVE') return { tun: true, art: 'voll', grund: tag ? 'aktiv trotz Arbeits-Tag (Rest eines abgebrochenen Laufs)' : '' };
   if (ist.status === 'DRAFT') {
