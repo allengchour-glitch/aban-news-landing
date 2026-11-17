@@ -699,7 +699,7 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
     </div>
     <div class="panel">
       <h2>aban Pro freischalten</h2>
-      <p class="note" id="pro_status" style="margin-top:0"></p>
+      <p class="note" id="pro_status" role="status" aria-live="polite" style="margin-top:0"></p>
       <div class="row"><div class="fld"><label>Lizenzschlüssel</label><input id="pro_key" placeholder="z. B. 1234ABCD-5678-…" spellcheck="false"></div></div>
       <div class="btnrow"><button class="btn" id="pro_activate" type="button">Freischalten</button><button class="btn ghost" id="pro_remove" type="button" style="display:none">Entfernen</button></div>
       <p class="note" style="margin-bottom:2px">Pro schaltet frei: 💰 Finanzen-Suite · 🧾 E-Rechnung-XML · 🌍 mehrsprachige Rechnungen (FR/IT/EN).</p>
@@ -1528,10 +1528,17 @@ footer{border-top:1px solid var(--line);padding:18px 0;font-size:.78rem;color:va
   function gateFinanz(){var l=$("#finanz_lock");if(!l)return;var locked=!isPro();l.style.display=locked?"":"none";var t=$("#f_tabs");if(t)t.style.display=locked?"none":"";$$("#v-finanz .lsec").forEach(function(s){s.style.display=locked?"none":""})}
   if($("#finanz_unlock"))$("#finanz_unlock").addEventListener("click",function(){proGate("Finanzen-Suite")});
   if($("#pro_activate"))$("#pro_activate").addEventListener("click",function(){var key=$("#pro_key").value.trim();if(!key){toast("Bitte Lizenzschlüssel eingeben");return}
+    if(this.disabled)return;
     var btn=this;btn.disabled=true;btn.textContent="Prüfe …";renderProStatus();$("#pro_key").value=key;
-    fetch("/api/pro-validate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({license_key:key})}).then(function(r){return r.json()}).then(function(d){
-      if(d&&d.valid){set("abanCockpit_pro",{ok:true,tier:d.tier||null,key:key});renderProStatus();toast("aban Pro aktiv ✓")}else if(!d||d.status==="error"||d.error){var msg="Lizenzprüfung derzeit nicht möglich. Schlüssel behalten und später erneut prüfen. Bitte nicht nochmals kaufen.";$("#pro_status").textContent=msg;toast(msg)}else{toast("Schlüssel ungültig oder nicht erkannt")}
-    }).catch(function(){var msg="Lizenzprüfung derzeit nicht möglich. Schlüssel behalten und später erneut prüfen. Bitte nicht nochmals kaufen.";$("#pro_status").textContent=msg;toast(msg)}).then(function(){btn.disabled=false;btn.textContent="Freischalten"})});
+    var controller=new AbortController(),timer;
+    // Gemeinsame Frist für Transport und Inhalt; Wiederholung nur auf erneuten Klick.
+    var deadline=new Promise(function(_,reject){timer=setTimeout(function(){controller.abort();reject(new Error("Lizenzprüfung abgelaufen"))},15000)});
+    Promise.race([fetch("/api/pro-validate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({license_key:key}),signal:controller.signal})
+      .then(function(r){if(!r.ok)throw new Error("Lizenzprüfung nicht verfügbar");return r.json()}),deadline]).then(function(d){
+      if(!d||typeof d!=="object"||Array.isArray(d)||typeof d.valid!=="boolean"||d.status==="error"||d.error)throw new Error("Lizenzantwort nicht prüfbar");
+      if(d.valid===true){set("abanCockpit_pro",{ok:true,tier:d.tier||null,key:key});renderProStatus();toast("aban Pro aktiv ✓")}else{var msg="Schlüssel ungültig oder nicht erkannt";$("#pro_status").textContent=msg;toast(msg)}
+    }).catch(function(){var msg="Lizenzprüfung derzeit nicht möglich. Schlüssel behalten und später erneut prüfen. Bitte nicht nochmals kaufen.";$("#pro_status").textContent=msg;toast(msg)})
+      .finally(function(){clearTimeout(timer);btn.disabled=false;btn.textContent="Freischalten"})});
   if($("#pro_remove"))$("#pro_remove").addEventListener("click",function(){set("abanCockpit_pro",null);renderProStatus();toast("Pro entfernt")});
 
   /* ===== Darstellung + Demo + Reset ===== */

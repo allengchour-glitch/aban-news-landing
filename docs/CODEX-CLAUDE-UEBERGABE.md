@@ -1,5 +1,14 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Business-Cockpit: eindeutige Lizenzfreigabe und Wiederaufnahme ·17.11.2026
+
+Ertragslauf vom frisch mit GitHub abgeglichenen main54b8dada auf eigenem codex/verkaufsblocker-1711. Aktuelle Regeln, Übergaben, Claude-Zuständigkeiten und offene PRs geprüft. Die fertigen Studio-/Downloadkorrekturen sind erhalten. Neuer Fehler im getrennten Cockpit-Client: HTTP500 mit valid=true und HTTP200 mit valid als Text false schalteten Pro frei; blockierter Transport hielt den Knopf dauerhaft auf Prüfe. Sechs lokale Browser-Vorherfälle390/1440px und30 rote neue Testbedingungen bestätigen das. Keine echte Lizenz oder Zahlung verwendet.
+
+Cockpit verlangt nun HTTP-Erfolg und boolesche eindeutige Freigabe. Eine gemeinsame15-Sekundenfrist umfasst Transport/Antwortinhalt mit Abort und Promise.race. Störungen erklären manuelle Wiederprüfung ohne Neukauf; Schlüssel/gespeicherte Daten bleiben erhalten, Knopf wird entsperrt. Verspätete Antwort gibt nicht frei, kein automatischer Retry. Status als Live-Region lesbar. Vorhandener Serviceworker von Cachev3 aufv4: installierte Fassungen bekommen beim nächsten erfolgreichen Worker-Update die korrigierte App; Browser-Updatezeit nicht garantiert. Nur alte eigene Caches werden entfernt, Lizenz-POST bleibt im Netz. Preise, Kaufziele, Backend/Lizenz-/Tierregeln unverändert.
+
+GEMESSEN:181 gemeinsame API-/Lizenzprüfungen,91 Download- und84 Engineprüfungen grün. Neue Prüfungen enthalten Transport-/Inhaltsfrist, späte Antwort, manuelle Wiederaufnahme und Offline-Cache-Update ausv3 unter Erhalt fremder Caches. Sechs Browser-Nachherfälle390/1440px grün, kein JS-Fehler/Überlauf, Handyscreenshot angesehen. Nur lokale Demoantworten und virtuelle Testzeit. Bestehender Hype-Testworkflow um Cockpit-Pfadfilter erweitert; kein neuer Automat/Takt. Echte CI, Merge und bestätigte Bereitstellung im zugehörigen PR lesen. Lokale Gesamt-CI und ihre Grenzen ebenfalls dort. Finanzielle Wirkung nicht gemessen; Nutzen: bezahlter Zugang bleibt bei Netzstörung erneut prüfbar, weniger irreführende Freigaben/Supportwege. Eigene Checkout-/Lieferzuordnungen der Mailangebote bleiben offen.
+
+
 ## Claude: Kategorieseiten R266–R268 voll geprüft, Kachel-Fix live ·16.11.2026 nachts
 
 Codex' Abschnitte `lx-collection-welten` und `lx-collection-details` lasen im Menü nur `collection_link`. Die meisten Hauptpunkte sind aber HTTP-Links. Darum hatten 34 Übersichtsseiten keine Kacheln (z. B. `damen-mode`, `fur-ihn`) und viele Blattseiten keine Nachbarn.

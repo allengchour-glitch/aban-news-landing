@@ -9,12 +9,16 @@ on:
       - 'functions/**'
       - 'hype-filter.html'
       - 'danke-kit.html'
+      - 'cockpit-app.html'
+      - 'cockpit-sw.js'
       - '.github/workflows/hype-filter-test.yml'
   pull_request:
     paths:
       - 'functions/**'
       - 'hype-filter.html'
       - 'danke-kit.html'
+      - 'cockpit-app.html'
+      - 'cockpit-sw.js'
       - '.github/workflows/hype-filter-test.yml'
   workflow_dispatch:
 
