@@ -159,6 +159,9 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   4. Ein neuer Workflow mit `workflow_dispatch` lässt sich erst starten, wenn er auf `main` liegt.
   5. Eine Methode, die rendert, heisst nicht, dass ihr Gegenstück auslösen darf: vor dem Bau eines Schreibwegs die Referenzseite der Schreibmethode lesen (`triggeraction` steht dort als Allowlist).
   6. Der Trockenlauf fand zweimal, was der Test nicht fand: den Pflichtgrund im Dialog, dann die genauen Optionstexte. Erst der zweite Trockenlauf mit 0 «übersprungen» berechtigt zum scharfen Lauf.
+**📌 2026-11-17 früh (📈 Quellen neu gemessen, Wiedervorlage `trig_014i6zw9p2wbapYKj7ze3ZnS`; Messung durch Sonnet-Unteragent, nur lesend; Zeilen `chatgpt` und `besucher` im KI-Büro nachgeführt (`datasets/offen` Version 11), nicht im gelöschten Artefakt):**
+- **GEMESSEN 17.11. ca. 07:10 UTC (14 Tage):** 3 167 Sitzungen, 2 826 ohne Herkunft. ChatGPT 318 (10.11.: 272), 96 % Schweiz, 86 % Handy, 18 mit Warenkorb (22), 7 mit Kasse, 1 Kauf (4). Pinterest 12, Instagram-Bio 2 (10.11.: 0). Landeseiten breit gestreut (Top 8 = 50 von 318). 16.11. nur 9 Sitzungen (Tag evtl. unvollständig).
+- **Bestellungen seit 27.10.:** 13 (#1029 bis #1041, CHF 643.32); 6 mit ChatGPT-Besuch (CHF 395.56), dieselben wie am 10.11.; seit 08.11. keine ChatGPT-Bestellung, seit 11.11. gar keine neue. Bei so kleinen Zahlen Tendenz, kein Beweis. Nachmessung 25.11.
 **📌 2026-11-16 abends (🤖 ABAN-Papierbot: Codex-Übergabe aus Drive geprüft, NICHT startklar, nichts nach `main`; Besitzer: Drive-Link `CLAUDE-CODE-BOT-AKTUELL.md`, Auswahl «Prüfen und ins Repo», dann «nutze model für token sparen»; Doku `docs/CODEX-CLAUDE-UEBERGABE.md` Abschnitt «ABAN-Papierbot»):**
 - **GEMESSEN:**
   - Prüfsummen: ZIP `5954af99…` und Bootstrap `d623973f…` gleich Übergabe und SHA-Datei.
