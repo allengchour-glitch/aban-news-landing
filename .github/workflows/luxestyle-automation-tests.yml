@@ -154,6 +154,7 @@ jobs:
             dropship/ads/render_brand_video.py
             dropship/ads/test_render_brand_video.py
             dropship/mode-taxonomie-2610
+            dropship/menu-bereinigung-1711
             dropship/kategorie-schaufenster-pins.json
             dropship/schaufenster-1111
             dropship/pod-auswahl
@@ -252,6 +253,8 @@ jobs:
           node --check automation/hero_image_guard.mjs
           node automation/lib/menu_verschieben_test.mjs
           node --check automation/menu_eintrag_verschieben.mjs
+          node automation/lib/menu_bereinigen_test.mjs
+          node --check automation/menu_bereinigen.mjs
           node automation/lib/shopify_secret_test.mjs
           node automation/autopilot/merchant_feed_auth_test.mjs
           node automation/lib/kanal_sperren_test.mjs
