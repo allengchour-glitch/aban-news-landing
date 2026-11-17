@@ -1,0 +1,24 @@
+{
+ "gelesenAktiv": 56084,
+ "erzeugt": "2026-11-17T13:28:23.779Z",
+ "schonMitArbeitsTag": 0,
+ "anzahl": 2,
+ "eintraege": [
+  {
+   "id": "gid://shopify/Product/15517429891457",
+   "handle": "breiter-offener-armreif-aus-geburstetem-altsil-621900",
+   "title": "Breiter offener Armreif aus gebürstetem Altsilber",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/fein: «h sein design aus gebürstetem reinsilber mit vintage-finish. das unise»"
+  },
+  {
+   "id": "gid://shopify/Product/15500577210753",
+   "handle": "silber-emperorkette-639000",
+   "title": "Silber-Emperorkette",
+   "productType": "Schmuck",
+   "regel": "text",
+   "beleg": "beschreibung/feingehalt-zahl: «lber-emperorkette besteht aus 9999er silber und wird handwerklich geferti» | beschreibung/feingehalt-zahl: «s geschenk geeignet material: 9999er silber 🛡️ sorglos shoppen: ✅ geprüf»"
+  }
+ ]
+}

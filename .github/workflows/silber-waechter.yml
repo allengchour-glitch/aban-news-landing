@@ -12,7 +12,9 @@ name: "Silber-Wächter (Feingehaltsangaben auf Entwurf)"
 #   - Ohne Freigabedatei: nur LESEN, die Meldung nennt die Treffer.
 #   - Mit Freigabedatei dropship/SILBER-WAECHTER-FREI.txt im Repo: setzt im Zeitplan LIVE auf Entwurf. Datei löschen = Stopp.
 # Sicherungen: höchstens 25 Produkte je Lauf (mehr = Halt und Meldung, das ist dann kein normaler Zufluss), jedes Paket wird zurückgelesen, beim ersten Fehler Halt.
-# Die Sicherung der Lauf-Änderungen (Status, Tags, Kanäle) liegt als Artefakt des Laufs (90 Tage); Rücknahme: ZURUECK=1 LIVE=1 node dropship/silber-bazg-1711/apply.mjs.
+# Die Sicherung der Lauf-Änderungen (Status, Tags, Kanäle) liegt NUR als Artefakt des Laufs (90 Tage), nicht im Repo.
+# Rücknahme eines Laufs: 1) dropship/SILBER-WAECHTER-FREI.txt löschen, 2) Artefakt «silber-waechter-protokoll» laden, 3) SICHERUNG=<Pfad>/silber-sicherung.json ZURUECK=1 LIVE=1 node dropship/silber-bazg-1711/apply.mjs
+#    (ohne SICHERUNG liest apply.mjs die Sicherung vom 17.11. und stellt die 411 Produkte der Edelmetall-Aktion zurück).
 # Irrtümer: ein Produkt, das KEINE Feingehaltsangabe macht (Verneinung, Fremdwort), steht in dropship/silber-bazg-1711/ausnahmen.json und wird nie angefasst.
 # Meldung per Telegram nur bei Treffern oder Fehlern. Zeitplan: einmal täglich 05:29 UTC (nicht neben Schaufenster 04:41, Lager-Wächter 05:17).
 
@@ -40,7 +42,7 @@ concurrency:
 jobs:
   waechter:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     env:
       EREIGNIS: ${{ github.event_name }}
       SCHREIBEN_EINGABE: ${{ inputs.schreiben }}
@@ -48,6 +50,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
+          filter: blob:none
           sparse-checkout: |
             automation/lib/shopify_gql.mjs
             automation/lib/shopify_secret.mjs
@@ -76,10 +79,12 @@ jobs:
       - name: Schreiben oder nur lesen?
         id: modus
         run: |
-          live=0
+          live=0; frei=0
           if [ -f dropship/SILBER-WAECHTER-FREI.txt ]; then
+            frei=1
             if [ "$EREIGNIS" = "schedule" ] || [ "$SCHREIBEN_EINGABE" = "true" ]; then live=1; fi
           fi
+          echo "frei=$frei" >> "$GITHUB_OUTPUT"
           echo "live=$live" >> "$GITHUB_OUTPUT"
           if [ "$live" = "1" ]; then echo "Modus: auf Entwurf setzen (Freigabe liegt im Repo)"; else echo "Modus: nur lesen"; fi
 
@@ -121,6 +126,7 @@ jobs:
           LISTE_RC: ${{ steps.lesen.outputs.rc }}
           APPLY_RC: ${{ steps.setzen.outputs.rc }}
           MODUS: ${{ steps.modus.outputs.live == '1' && 'live' || 'lesen' }}
+          FREIGABE: ${{ steps.modus.outputs.frei == '1' && '1' || '' }}
           LAUFLINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           ALWAYS_NOTIFY: ${{ inputs.immer_melden && '1' || '' }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -140,3 +146,4 @@ jobs:
             ${{ runner.temp }}/silber-ledger.txt
           if-no-files-found: ignore
           retention-days: 90
+          overwrite: true

@@ -1,5 +1,10 @@
 // Test für melden.mjs (Telegram-Meldung des Silber-Wächters). Lauf: node dropship/silber-bazg-1711/melden_test.mjs
-import { meldung, sende } from './melden.mjs';
+import { meldung, sende, RUECKNAHME } from './melden.mjs';
+import { createServer } from 'node:http';
+import { writeFileSync, mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 let ok = 0, schlecht = 0;
 const pruefe = (name, bed, info = '') => { if (bed) ok++; else { schlecht++; console.error('FEHLER:', name, info); } };
@@ -45,6 +50,58 @@ const ledger = (art, n) => Array.from({ length: n }, (_, i) => `2026-11-18T05:30
   pruefe('sende: richtige Adresse und Nutzlast', r === true && aufrufe[0][0] === 'https://tg.test/botT/sendMessage' && aufrufe[0][1].chat_id === 'C' && aufrufe[0][1].text === 'Hallo');
   pruefe('sende: HTTP-Fehler → false', (await sende('x', { token: 'T', chat: 'C', holen: async () => ({ ok: false }) })) === false);
   pruefe('sende: Ausnahme → false, kein Absturz', (await sende('x', { token: 'T', chat: 'C', holen: async () => { throw new Error('Netz'); } })) === false);
+}
+
+// Fail-closed: ohne Ergebnis des Lese-Schritts ist es ein Fehler, kein ruhiger Tag
+{
+  const m = meldung({ liste: null, listeRc: '', applyRc: '', modus: 'lesen' });
+  pruefe('Lese-Schritt nicht gelaufen (kein Exit-Code, keine Liste): rot und gemeldet', m.senden && m.rot && /nicht gelesen/.test(m.text), JSON.stringify(m));
+  pruefe('Lese-Schritt gelaufen, 0 Treffer: weiterhin ruhig', meldung({ liste: L(0), listeRc: '0' }).rot === false && meldung({ liste: L(0), listeRc: '0' }).senden === false);
+}
+// Rücknahme-Anleitung: Freigabedatei löschen, Artefakt, SICHERUNG=, nicht die Sicherung vom 17.11.
+{
+  pruefe('Rücknahme nennt Freigabedatei, Artefakt und SICHERUNG=', /SILBER-WAECHTER-FREI\.txt löschen/.test(RUECKNAHME) && /Artefakt/.test(RUECKNAHME) && /SICHERUNG=/.test(RUECKNAHME) && /411/.test(RUECKNAHME));
+  const m = meldung({ liste: L(2), ledgerZeilen: ledger('ENTWURF', 2), modus: 'live', applyRc: '0' });
+  pruefe('Live-Meldung trägt die ganze Rücknahme-Anleitung', m.text.includes(RUECKNAHME));
+}
+// Meldetexte stimmen im Einzelfall
+{
+  pruefe('Handstart ohne Schreiben mit Freigabedatei sagt nicht «keine Freigabedatei»', !/keine Freigabedatei/.test(meldung({ liste: L(1), modus: 'lesen', freigabe: true }).text) && /Handstart ohne Schreiben/.test(meldung({ liste: L(1), modus: 'lesen', freigabe: true }).text));
+  pruefe('Ohne Freigabedatei: «keine Freigabedatei»', /keine Freigabedatei/.test(meldung({ liste: L(1), modus: 'lesen', freigabe: false }).text));
+  const m = meldung({ liste: L(3), ledgerZeilen: [], modus: 'live', applyRc: '0' });
+  pruefe('Live mit 0 gesetzten Produkten: eigene Meldung statt «0 von 3 gesetzt»', m.senden && !m.rot && /keiner wurde auf Entwurf gesetzt/.test(m.text) && !/0 von 3/.test(m.text), m.text);
+}
+// Der Aufruf von der Kommandozeile: Telegram-Fehler machen den Lauf rot
+{
+  const dir = mkdtempSync(join(tmpdir(), 'melden-'));
+  const listeDatei = join(dir, 'liste.json'); writeFileSync(listeDatei, JSON.stringify(L(2)));
+  const leer = join(dir, 'leer.json'); writeFileSync(leer, JSON.stringify(L(0)));
+  const skript = fileURLToPath(new URL('./melden.mjs', import.meta.url));
+  let antwort = 200; const aufrufe = [];
+  const srv = createServer((req, res) => { let b = ''; req.on('data', (d) => (b += d)); req.on('end', () => { aufrufe.push(req.url); res.statusCode = antwort; res.end('{}'); }); });
+  await new Promise((r) => srv.listen(0, '127.0.0.1', r));
+  const basis = `http://127.0.0.1:${srv.address().port}`;
+  const lauf = (env) => new Promise((resolve) => {
+    import('node:child_process').then(({ spawn }) => {
+      const k = spawn(process.execPath, [skript], { env: { PATH: process.env.PATH, ...env } });
+      let out = ''; k.stdout.on('data', (d) => (out += d)); k.stderr.on('data', (d) => (out += d)); k.on('close', (code) => resolve({ code, out }));
+    });
+  });
+  const mitTreffern = { LISTE: listeDatei, LISTE_RC: '0', MODUS: 'lesen', TELEGRAM_BOT_TOKEN: 'T', TELEGRAM_CHAT_ID: 'C', TELEGRAM_BASIS: basis };
+  antwort = 200; let r = await lauf(mitTreffern);
+  pruefe('CLI: Treffer, Telegram nimmt an → Exit 0 und genau ein Aufruf', r.code === 0 && aufrufe.length === 1 && aufrufe[0] === '/botT/sendMessage', `${r.code} ${aufrufe}`);
+  antwort = 500; r = await lauf(mitTreffern);
+  pruefe('CLI: Treffer, Telegram antwortet 500 → Exit 1 (nicht still verloren)', r.code === 1 && /NICHT gesendet/.test(r.out), `${r.code} ${r.out.slice(-200)}`);
+  r = await lauf({ ...mitTreffern, TELEGRAM_BOT_TOKEN: '', TELEGRAM_CHAT_ID: '' });
+  pruefe('CLI: Treffer ohne Telegram-Zugangsdaten → Exit 1', r.code === 1 && /NICHT gesendet/.test(r.out), `${r.code}`);
+  r = await lauf({ ...mitTreffern, DRY: '1', TELEGRAM_BOT_TOKEN: '' });
+  pruefe('CLI: DRY=1 sendet nichts und endet mit 0', r.code === 0 && /Keine Telegram-Meldung \(DRY\)/.test(r.out), `${r.code}`);
+  const vorher = aufrufe.length;
+  r = await lauf({ LISTE: leer, LISTE_RC: '0', MODUS: 'lesen', TELEGRAM_BOT_TOKEN: '', TELEGRAM_CHAT_ID: '' });
+  pruefe('CLI: 0 Treffer ohne Zugangsdaten → Exit 0 (nichts zu melden)', r.code === 0 && /Nichts zu melden/.test(r.out) && aufrufe.length === vorher, `${r.code}`);
+  r = await lauf({ LISTE: join(dir, 'gibt-es-nicht.json'), LISTE_RC: '', MODUS: 'lesen', DRY: '1' });
+  pruefe('CLI: Lese-Schritt ausgefallen (Datei fehlt, kein Exit-Code) → Exit 1', r.code === 1 && /nicht gelesen/.test(r.out), `${r.code} ${r.out.slice(-150)}`);
+  srv.close();
 }
 console.log(`${ok} Prüfungen bestanden, ${schlecht} Fehler`);
 process.exit(schlecht ? 1 : 0);
