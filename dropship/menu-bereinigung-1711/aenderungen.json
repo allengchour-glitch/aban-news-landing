@@ -1,0 +1,10 @@
+{
+  "ops": [
+    { "op": "entfernen", "pfad": ["Sport & Party", "Partydeko & Ballone"], "handle": "party-deko-ch" },
+    { "op": "entfernen", "pfad": ["Sport & Party", "Taschenlampen & Stirnlampen"], "handle": "taschenlampen" },
+    { "op": "entfernen", "pfad": ["Wohnen & Garten", "Fenster, Wand & Uhren", "Wecker"], "handle": "wecker" },
+    { "op": "einfuegen", "eltern": ["Beauty & Pflege", "Körper, Mund & Düfte"], "pos": 0, "titel": "Parfum & Düfte", "handle": "parfum-duefte", "fr": "Parfums & fragrances" },
+    { "op": "entfernen", "pfad": ["🎁 Geschenke & Weihnachten", "Kiffer-Zubehör (18+)"], "handle": "smoke-zubehoer" }
+  ],
+  "verwaistOk": ["wecker", "smoke-zubehoer"]
+}
