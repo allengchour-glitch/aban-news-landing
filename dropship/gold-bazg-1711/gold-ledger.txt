@@ -1,0 +1,10 @@
+2026-11-17T16:19:11.747Z|ENTWURF|regenbogenring-614600|vorher ACTIVE, Kanäle 6
+2026-11-17T16:19:26.281Z|ZURUECK|regenbogenring-614600|Status ACTIVE, Kanäle fehlend am Ende 0
+2026-11-17T16:19:42.027Z|ENTWURF|diy-gold-perle-fur-individuellen-schmuck-619300|vorher ACTIVE, Kanäle 6
+2026-11-17T16:19:42.028Z|ENTWURF|perlen-ohrhanger-damen-1e5228|vorher ACTIVE, Kanäle 7
+2026-11-17T16:19:42.028Z|ENTWURF|18k-gold-akoya-perlen-armband-fcb661|vorher ACTIVE, Kanäle 7
+2026-11-17T16:19:42.028Z|ENTWURF|perlenarmband-aus-susswasserperlen-439a4d|vorher ACTIVE, Kanäle 7
+2026-11-17T16:19:48.355Z|ENTWURF|seewasserperle-hanf-armband-14k-gold-8bf2bf|vorher ACTIVE, Kanäle 7
+2026-11-17T16:19:48.355Z|ENTWURF|perlen-halskette-mit-18k-gold-5bf6ea|vorher ACTIVE, Kanäle 7
+2026-11-17T16:19:48.355Z|ENTWURF|armband-mit-susswasserperlen-und-tiermotiv-626500|vorher ACTIVE, Kanäle 7
+2026-11-17T16:19:48.355Z|ENTWURF|regenbogenring-614600|vorher ACTIVE, Kanäle 6

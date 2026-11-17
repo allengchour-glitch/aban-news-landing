@@ -40,16 +40,19 @@ Gelesen wurden Titel, Beschreibung, Optionsnamen und -werte (Tags, Preise, Bilde
 - **Eigene Gegenzählung (Wörter, 17.11. 15:2x UTC, vollständiger Export):** «goldplattiert»/«Goldplattierung»/«Plaqué»/«Gold filled» in **132 Produkten** (19 im Titel; Liste `listen/plaque_woerter.txt`; nach der Sprachfalle oben eine Plaqué-Bezeichnung), «vergoldet»/«gold plated» in 222 (99 im Titel; zulässig, wenn ohne Karat), «Elektroplattierung» in 227. **Gold filled** (verboten) in 3 Produkten: `18k-gold-fullung-ovaler-zirkon-clip-armband-843778`, `18k-goldgefullte-farbige-ovale-cz-anpassbare-a-334209`, `verstellbares-armband-mit-bunten-zirkonia-276226`.
 - Die Teilung C1/C2 ist regelbasiert gezählt (nicht von Hand): wer C2 nicht als Plattierung zählt, hat C = 263 und D = 3 510.
 
-## Entscheide des Besitzers (offen, Stand dieses Eintrags)
+## Entscheid des Besitzers und Umsetzung (17.11.2026)
 
-1. **Die 8 Produkte (A: 5 massiv, 3 unklar) auf Entwurf**, wie beim Silber (Begründung: Gold-Feingehalt ohne Marke, oder falsche Angabe).
-2. **Karat-Angaben bei vergoldeter Ware streichen** (B, rund 138 Produkte, 33 bis 42 davon im Titel): «18K vergoldet» wird «vergoldet», «18K Goldauflage» wird «Goldauflage». Text- und Titeländerung mit Sicherung und Rücknahme, kein Entwurf.
-3. **«goldplattiert», «Plaqué», «Gold filled» durch «vergoldet» ersetzen** (132 Produkte).
-4. Nichts ändern, nur Bericht.
+Gezielte Frage mit vier Wahlmöglichkeiten; der Besitzer wählte **nur Punkt 1**: die 8 Gold-Produkte auf Entwurf. Nicht beauftragt und darum **nicht geändert:** Karat bei vergoldeter Ware streichen (rund 138 Produkte), «goldplattiert», «Plaqué», «Gold filled» ersetzen (132 Produkte). Vergoldete Ware (C, D) bleibt aktiv. Der Brief an die Edelmetallkontrolle (Gmail-Entwurf `r3249781972994260897`) ist weiter nicht gesendet.
 
-Vergoldete Ware (C, D) wird nicht pauschal auf Entwurf gesetzt: «vergoldet» ist erlaubt. Der Brief an die Edelmetallkontrolle (Gmail-Entwurf `r3249781972994260897`) ist weiter nicht gesendet.
+**LIVE 17.11. 16:19 UTC (`gold_entwurf.mjs`, 8 von 8 auf ENTWURF, zurückgelesen, Exit 0):** `diy-gold-perle-fur-individuellen-schmuck-619300`, `perlen-ohrhanger-damen-1e5228`, `18k-gold-akoya-perlen-armband-fcb661`, `perlenarmband-aus-susswasserperlen-439a4d`, `seewasserperle-hanf-armband-14k-gold-8bf2bf`, `perlen-halskette-mit-18k-gold-5bf6ea`, `armband-mit-susswasserperlen-und-tiermotiv-626500`, `regenbogenring-614600`. Arbeits-Tag `bazg-gold-1711`, nichts gelöscht, Preise, Bilder, Sammlungen und Kanäle unverändert gesichert (`gold-sicherung.json`, vor dem Schreiben im Zweig gepusht).
 
-## Werkzeug (nur lesend)
+- **Vorher an einem Produkt geprobt:** `regenbogenring-614600` auf Entwurf (Seite antwortet 302), dann Rücknahme mit `ZURUECK=1 LIVE=1 ONLY=…` (wieder ACTIVE, 6 von 6 Kanälen zurück, Tag weg, Seite HTTP 200), danach erst alle acht.
+- **Unabhängig nachgemessen (frisch aus Shopify):** 8 von 8 DRAFT mit Arbeits-Tag, genau 8 Produkte tragen den Tag, 0 aktive Silber-Produkte mit dem Silber-Arbeits-Tag; zwei Produktadressen per `curl` HTTP 302 (Entwurf leitet auf die Startseite). Keine Seite und kein Artikel verlinkt die acht; sie stehen weder im Wegweiser noch in den Startseiten-Pools (nur in `bestseller-unter-50` und Geschenk-Sammlungen, dort verschwinden sie mit dem Entwurf von selbst).
+- **Rücknahme:** `ZURUECK=1 LIVE=1 node dropship/gold-bazg-1711/gold_entwurf.mjs` (Trockenlauf ohne `LIVE`; ein Produkt: `ONLY=<handle>`). Sie setzt den gesicherten Status, entfernt den Tag, prüft die Kanäle gegen die Sicherung und veröffentlicht fehlende einzeln.
+- **Werkzeug:** Trockenlauf Vorgabe; Tore je Produkt (Handle und ID gleich der Liste, Status ACTIVE, ein Beleg-Satz steht noch im Text; wurde der Text berichtigt, bleibt das Produkt aktiv); Sicherung ist Pflicht; Pakete zu 4, Rücklesen mit Wiederholung, Halt beim ersten Fehler. Test `gold_entwurf_test.mjs` **116 Prüfungen** (strenge Attrappe: Variablen deklariert und benutzt, Lesen mit Verzögerung, Kanalverlust beim Reaktivieren, Fehler einspielen), Mutationsprobe `mutationsprobe_gold.py` **45 von 45 erkannt** (die erste Fassung der Tests liess 9 überleben: Rücklesen von Status und Tag einzeln, Rücknahme-Prüfungen, ungültige Liste).
+- **Ungemessen:** ob die 8 Produkte bei CJ echtes Gold sind (Preise gegen Goldwert, Bilder, Punzen nicht geprüft; Hypothese: nein), Wirkung auf Google, Meta, TikTok und Pinterest (die Kanäle sehen die Entwürfe erst beim nächsten Abgleich). **Kein Gold-Wächter gebaut:** neue Produkte mit Gold-Feingehalt würden nicht automatisch erfasst (der Silber-Wächter kennt nur Silber); auf Wunsch erweitern.
+
+## Werkzeuge der Messung (nur lesend)
 
 `werkzeug/abgleich/messen.mjs` startet `messer1` und `messer2` und gleicht ab (Pfade `BASE` und `EINGABE` im Kopf anpassen, Eingabe = `export_katalog.mjs`, Soll-sha256 im Kopf). `werkzeug/plattiert_wort.mjs` zählt die deutschen Plattierungswörter. Beide Zähler sind bitgleich wiederholbar.
 
