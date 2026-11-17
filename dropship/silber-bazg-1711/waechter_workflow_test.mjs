@@ -59,6 +59,11 @@ pruefe('Schreiben nur mit Freigabedatei: Test auf die Datei im Schritt «Schreib
 pruefe('Zeitlimit gesetzt', /timeout-minutes:\s*\d+/.test(text));
 pruefe('Pfade aus RUNNER_TEMP in $GITHUB_ENV', /RUNNER_TEMP\/silber-liste\.json/.test(text) && /GITHUB_ENV/.test(text));
 pruefe('Höchstens 25 Produkte je Lauf', /MAX_ANZAHL:\s*'25'/.test(text));
+pruefe('Checkout ohne alle Blobs (filter: blob:none, wie lager-waechter.yml)', /filter:\s*blob:none/.test(text));
+pruefe('Zeitlimit des Jobs deckt Warten (8 min) und Lesen (20 min): mindestens 35 Minuten', Number((text.match(/timeout-minutes:\s*(\d+)/) || [])[1]) >= 35);
+pruefe('Artefakt wird bei Wiederholung überschrieben (overwrite: true)', /overwrite:\s*true/.test(text));
+pruefe('Artefakt auch nach Fehlern hochgeladen (if: always())', /if:\s*always\(\)/.test(text));
+pruefe('Melden-Schritt kennt die Freigabe (FREIGABE)', /FREIGABE:/.test(text));
 pruefe('Zeitplan einmal täglich', /cron:\s*'29 5 \* \* \*'/.test(text));
 pruefe('Telegram-Zugangsdaten nur im Melden-Schritt (secrets)', (text.match(/secrets\.TELEGRAM_BOT_TOKEN/g) || []).length === 1);
 

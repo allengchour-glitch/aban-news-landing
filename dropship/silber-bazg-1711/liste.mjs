@@ -21,12 +21,18 @@ const r = await fetch(`https://${SHOP}/admin/oauth/access_token`, { method: 'POS
   body: JSON.stringify({ client_id: process.env.SHOPIFY_CLIENT_ID, client_secret: CS, grant_type: 'client_credentials' }) });
 const tok = (await r.json()).access_token; if (!tok) { console.error('Kein Shopify-Token'); process.exit(1); }
 const q = (a, b) => shopifyGql(SHOP, '2025-01', tok, a, b);
-const lauf = (await q(`{currentBulkOperation(type:QUERY){status}}`)).currentBulkOperation;
-if (lauf && ['CREATED', 'RUNNING'].includes(lauf.status)) { console.error('Es läuft schon eine Bulk-Abfrage, abwarten'); process.exit(1); }
+// Shopify erlaubt nur EINE Bulk-Abfrage je App gleichzeitig (auch das Schaufenster-Werkzeug nutzt sie): erst warten, bis eine laufende fertig ist (höchstens 8 Minuten), nicht sofort aufgeben.
+for (let i = 0; ; i++) {
+  const lauf = (await q(`{currentBulkOperation(type:QUERY){status}}`)).currentBulkOperation;
+  if (!lauf || !['CREATED', 'RUNNING', 'CANCELING'].includes(lauf.status)) break;
+  if (i >= 32) { console.error('Es läuft seit über 8 Minuten eine andere Bulk-Abfrage (Status ' + lauf.status + '), abgebrochen'); process.exit(1); }
+  if (i === 0) console.error('Es läuft schon eine Bulk-Abfrage (' + lauf.status + '), warte bis sie fertig ist');
+  await schlaf(15000);
+}
 const inner = `{ products(query:"status:active") { edges { node { id handle title productType tags description options { name values } } } } }`;
 const m = (await q(`mutation($q:String!){bulkOperationRunQuery(query:$q){bulkOperation{id} userErrors{message}}}`, { q: inner })).bulkOperationRunQuery;
 if (m.userErrors?.length) { console.error(JSON.stringify(m.userErrors)); process.exit(1); }
-for (let i = 0; i < 240; i++) {
+for (let i = 0; i < 120; i++) {                       // höchstens 20 Minuten (der Job hat 40)
   await schlaf(10000);
   const s = (await q(`{currentBulkOperation(type:QUERY){status errorCode objectCount url}}`)).currentBulkOperation;
   if (s.status === 'COMPLETED') {

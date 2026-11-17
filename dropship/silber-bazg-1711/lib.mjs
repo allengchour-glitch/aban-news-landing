@@ -20,13 +20,14 @@ export const hat925 = (titel) => MUSTER.test(String(titel ?? ''));
 export const trifft = (p) => istSilberFeingehalt({ title: p?.title, description: p?.description, options: p?.options });
 
 /**
- * Aus dem Bulk-Katalog (nur aktive Produkte): alle, auf die die Regel zutrifft und die nicht schon vom Arbeits-Tag erfasst oder in der Ausnahmeliste sind.
+ * Aus dem Bulk-Katalog (nur aktive Produkte): alle, auf die die Regel zutrifft und die nicht in der Ausnahmeliste sind. Ein AKTIVES Produkt mit Arbeits-Tag gehört dazu: es wurde wieder aktiviert
+ * (Redaktion, Import) oder ein Lauf brach ab; `entscheide()` setzt es erneut auf Entwurf (Fund eines unabhängigen Prüfers am 17.11.2026: mit Tag-Ausschluss blieb es für immer unbemerkt).
  * `ausnahmen` = Menge von Handles, die nach Einzelprüfung KEINE Feingehaltsangabe nennen (urteile.json). Sortiert nach Handle (stabile Liste).
  * Jeder Eintrag trägt `regel` ('titel-925' oder 'text') und `beleg` (kurze Fundstelle) für das Protokoll.
  */
 export function waehleAusKatalog(produkte, { ausnahmen = new Set() } = {}) {
   return (produkte || [])
-    .filter((p) => p && p.id && p.handle && trifft(p) && !(p.tags || []).includes(MARKER) && !ausnahmen.has(p.handle))
+    .filter((p) => p && p.id && p.handle && trifft(p) && !ausnahmen.has(p.handle))
     .map((p) => ({
       id: p.id, handle: p.handle, title: p.title, productType: p.productType || '',
       regel: hat925(p.title) ? 'titel-925' : 'text',

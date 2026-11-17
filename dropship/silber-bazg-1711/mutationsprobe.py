@@ -24,6 +24,189 @@ def aufbauen(tmp):
     for d in TOOL + REGEL:
         ziel = pfad(tmp, d); os.makedirs(os.path.dirname(ziel), exist_ok=True); shutil.copy(quelle_von(d), ziel)
 
+def _ohne(tokens, i):
+    return tokens[:i] + tokens[i + 1:]
+
+def regel_mutanten():
+    """Mutanten der Regel automation/lib/silber_feingehalt.mjs. Fünftes Element: erwartete Trefferzahl von `alt` (Vorgabe 1; bei 2 wird jede Stelle ersetzt)."""
+    M = []
+    def add(name, alt, neu, anzahl=1): M.append((R, 'Regel: ' + name, alt, neu, anzahl))
+    # --- Zahlenränder
+    add('Zahl darf Teil einer längeren sein (Lookbehind weg)', "const NICHT_ZAHL = '(?<![0-9])(?<![0-9][.,])';", "const NICHT_ZAHL = '';")
+    add('Komma nach Ziffer zählt nicht als Zahlenteil', "const NICHT_ZAHL = '(?<![0-9])(?<![0-9][.,])';", "const NICHT_ZAHL = '(?<![0-9])';")
+    add('Komma ohne Ziffer davor blockiert', "const NICHT_ZAHL = '(?<![0-9])(?<![0-9][.,])';", "const NICHT_ZAHL = '(?<![0-9.,])';")
+    add('Zahl darf weitergehen (19250 träfe)', "const ZAHL_ENDE = '(?![0-9])';", "const ZAHL_ENDE = '';")
+    # --- Einheiten: jede einzeln
+    E = ['mah','mm','cm','ml','kg','gr','gramm','g','v','w','kw','watt','hz','khz','mhz','ghz','pa','hpa','kpa','lumen','lm','px','pixel','pcs','stk','stück','stueck','pieces','teile','perlen','blatt','steine','euro','eur','chf','usd','grad','ohm','stunden','std','min','minuten','tage','jahre','bewertungen','bewertung','kunden','sterne','mal','tvl','rpm','series','serie','millimeter','zentimeter','l(?:/h)?','meter','m']
+    liste = '|'.join(E)
+    for i, t in enumerate(E):
+        add(f'Einheit «{t}» fehlt', "(?:(?:" + liste + ")(?![\\\\p{L}])", "(?:(?:" + '|'.join(_ohne(E, i)) + ")(?![\\\\p{L}])")
+    add('Einheit ohne Wortgrenze (Münze träfe als «m»)', "|meter|m)(?![\\\\p{L}])|%", "|meter|m)|%")
+    add('Prozentzeichen ist keine Einheit', "(?![\\\\p{L}])|%|[.,][0-9]|", "(?![\\\\p{L}])|[.,][0-9]|")
+    add('Dezimalstelle hinter der Zahl ist keine Einheit', "|%|[.,][0-9]|[x", "|%|[x")
+    add('«x» als Mass-Zeichen entfällt', "|[x×*]\\\\s?[0-9]|", "|[×*]\\\\s?[0-9]|")
+    add('«×» als Mass-Zeichen entfällt', "|[x×*]\\\\s?[0-9]|", "|[x*]\\\\s?[0-9]|")
+    add('«*» als Mass-Zeichen entfällt', "|[x×*]\\\\s?[0-9]|", "|[x×]\\\\s?[0-9]|")
+    add('Bindestrich-Bereich (925-1050) entfällt', "|-[0-9]|\\\\s[0-9]{2}", "|\\\\s[0-9]{2}")
+    add('Rufnummer (925 12 34) entfällt', "|\\\\s[0-9]{2}\\\\s[0-9]{2}))';", "))';")
+    # --- Muster 925
+    add('Muster 925 entfernt', "['925', new RegExp(`", "['925', new RegExp(`(?!)")
+    add('925: «#» und «/» davor nicht ausgeschlossen', "(?<![\\\\p{L}#/])|(?<=", "(?<![\\\\p{L}])|(?<=")
+    add('925: «#» davor nicht ausgeschlossen', "(?<![\\\\p{L}#/])|(?<=", "(?<![\\\\p{L}/])|(?<=")
+    add('925: «/» davor nicht ausgeschlossen', "(?<![\\\\p{L}#/])|(?<=", "(?<![\\\\p{L}#])|(?<=")
+    add('925: Buchstaben davor nicht ausgeschlossen', "(?<![\\\\p{L}#/])|(?<=", "(?<![#/])|(?<=")
+    add('925: «S925» ohne «s»', "(?:s|ag)))${NICHT_ZAHL}", "(?:ag)))${NICHT_ZAHL}")
+    add('925: «Ag925» ohne «ag»', "(?:s|ag)))${NICHT_ZAHL}", "(?:s)))${NICHT_ZAHL}")
+    add('925: «S925» nur direkt (Wortgrenze davor fehlt)', "(?<=(?<![\\\\p{L}])(?:s|ag)", "(?<=(?:s|ag)")
+    P = ['chf','eur','usd','€','\\\\$','nr\\\\.?','tel\\\\.?','sku','seite','preis:?','price:?']
+    for i, t in enumerate(P):
+        add(f'925: Präfix «{t}» fehlt', "(?<!(?:" + '|'.join(P) + ")\\\\s?)925", "(?<!(?:" + '|'.join(_ohne(P, i)) + ")\\\\s?)925")
+    add('925: Leerzeichen nach dem Präfix nicht erlaubt', ")\\\\s?)925${ZAHL_ENDE}", ")925${ZAHL_ENDE}")
+    # --- Sterling, fein
+    add('Sterling entfernt', "['sterling', /sterling/g],", "['sterling', /(?!)sterling/g],")
+    add('«fein»-Muster entfernt', "['fein', /(?<![\\p{L}])(?:", "['fein', /(?!)(?<![\\p{L}])(?:")
+    add('«fein»: Buchstabe davor erlaubt (Geschlechter silber)', "['fein', /(?<![\\p{L}])(?:", "['fein', /(?:")
+    for st in ['echt', 'rein', 'massiv']:
+        add(f'«fein»: Stamm «{st}» fehlt', "(?:echt|rein|massiv)", "(?:" + '|'.join(x for x in ['echt','rein','massiv'] if x != st) + ")", 2)
+    for suf in ['e', 'er', 'em', 'en', 'es']:
+        add(f'«fein»: Endung «{suf}» fehlt', "(?:e|er|em|en|es)[ -]?silber", "(?:" + '|'.join(x for x in ['e','er','em','en','es'] if x != suf) + ")[ -]?silber")
+    add('«fein»: Bindestrich nach der Endung entfällt', "(?:e|er|em|en|es)[ -]?silber", "(?:e|er|em|en|es)[ ]?silber")
+    add('«fein»: Leerzeichen nach der Endung entfällt', "(?:e|er|em|en|es)[ -]?silber", "(?:e|er|em|en|es)[-]?silber")
+    add('«fein»: Endung muss stehen', "(?:e|er|em|en|es)[ -]?silber", "(?:e|er|em|en|es)silber")
+    add('«fein»: Stamm+silber ohne Endung entfällt', "|(?:echt|rein|massiv)silber|", "|")
+    add('«fein»: Feinsilber entfällt', "|feinsilber|", "|")
+    add('«fein»: «silber massiv» entfällt', "|silber massiv(?![\\p{L}])|", "|")
+    add('«fein»: «silber massiv» ohne Wortgrenze (massivholz)', "silber massiv(?![\\p{L}])", "silber massiv")
+    W = ['fine','pure','real','genuine','solid','true']
+    for i, w in enumerate(W):
+        add(f'«fein»: «{w} silver» entfällt', "(?:" + '|'.join(W) + ")[ -]silver", "(?:" + '|'.join(_ohne(W, i)) + ")[ -]silver")
+    add('«fein»: «fine-silver» mit Bindestrich entfällt', "[ -]silver|argentium", "[ ]silver|argentium")
+    add('«fein»: «fine silver» mit Leerzeichen entfällt', "[ -]silver|argentium", "[-]silver|argentium")
+    add('«fein»: Argentium entfällt', "|argentium|", "|")
+    add('«fein»: plata de ley entfällt', "|plata de ley|", "|")
+    add('«fein»: argent massif entfällt', "|argent massif|", "|")
+    # --- Feingehalt-Zahl
+    add('Feingehalt-Zahl neben Silber entfernt', "['feingehalt-zahl', new RegExp(`", "['feingehalt-zahl', new RegExp(`(?!)")
+    FG = ['9999','999','990','958','950','935','900','875','835','800']
+    for i, z in enumerate(FG):
+        add(f'Feingehalt {z} fehlt', "const FEINGEHALTE = '(?:" + '|'.join(FG) + ")';", "const FEINGEHALTE = '(?:" + '|'.join(_ohne(FG, i)) + ")';")
+    add('Feingehalt: Abstand nach Silber nur 2', "${SILBERWORT}.{0,25}${NICHT_ZAHL}${FEINGEHALTE}", "${SILBERWORT}.{0,2}${NICHT_ZAHL}${FEINGEHALTE}")
+    add('Feingehalt: Abstand vor Silber nur 2', "${EINHEIT_NACH}.{0,25}${SILBERWORT}", "${EINHEIT_NACH}.{0,2}${SILBERWORT}")
+    add('Feingehalt: Abstand nach Silber unbegrenzt', "${SILBERWORT}.{0,25}${NICHT_ZAHL}${FEINGEHALTE}", "${SILBERWORT}.{0,90}${NICHT_ZAHL}${FEINGEHALTE}")
+    add('Feingehalt: Abstand vor Silber unbegrenzt', "${EINHEIT_NACH}.{0,25}${SILBERWORT}", "${EINHEIT_NACH}.{0,90}${SILBERWORT}")
+    add('Feingehalt: Zahl vor Silber entfällt', "|${NICHT_ZAHL}${FEINGEHALTE}${ZAHL_ENDE}${EINHEIT_NACH}.{0,25}${SILBERWORT}", "")
+    add('Feingehalt: Zahl nach Silber entfällt', "${SILBERWORT}.{0,25}${NICHT_ZAHL}${FEINGEHALTE}${ZAHL_ENDE}${EINHEIT_NACH}|", "(?!)|")
+    # --- S999 / Ag999
+    add('«s-feingehalt» entfernt', "['s-feingehalt', new RegExp(`", "['s-feingehalt', new RegExp(`(?!)")
+    add('«s-feingehalt»: Buchstabe davor erlaubt', "(?<![\\\\p{L}\\\\p{N}])(?:(?:s|ag)", "(?:(?:s|ag)")
+    add('«s-feingehalt»: Ziffer davor erlaubt', "(?<![\\\\p{L}\\\\p{N}])(?:(?:s|ag)", "(?<![\\\\p{L}])(?:(?:s|ag)")
+    add('«s-feingehalt»: «ag» fehlt', "(?:(?:s|ag)[ -]?(?:9999|999|990)|ag(?:958", "(?:(?:s)[ -]?(?:9999|999|990)|ag(?:958")
+    add('«s-feingehalt»: «s» fehlt', "(?:(?:s|ag)[ -]?(?:9999|999|990)|ag(?:958", "(?:(?:ag)[ -]?(?:9999|999|990)|ag(?:958")
+    for z in ['9999', '999', '990']:
+        add(f'«s-feingehalt»: {z} fehlt', "(?:s|ag)[ -]?(?:9999|999|990)", "(?:s|ag)[ -]?(?:" + '|'.join(x for x in ['9999','999','990'] if x != z) + ")")
+    add('«s-feingehalt»: Trenner nicht erlaubt', "(?:s|ag)[ -]?(?:9999|999|990)", "(?:s|ag)(?:9999|999|990)")
+    add('«s-feingehalt»: «Ag950» ohne Zahlenliste', "|ag(?:958|950|935|900|875|835|800))${ZAHL_ENDE}", ")${ZAHL_ENDE}")
+    add('«s-feingehalt»: Zahl darf weitergehen', "|ag(?:958|950|935|900|875|835|800))${ZAHL_ENDE}${EINHEIT_NACH}", "|ag(?:958|950|935|900|875|835|800))${EINHEIT_NACH}")
+    add('«s-feingehalt»: Einheit nicht ausgeschlossen', "|ag(?:958|950|935|900|875|835|800))${ZAHL_ENDE}${EINHEIT_NACH}`", "|ag(?:958|950|935|900|875|835|800))${ZAHL_ENDE}`")
+    # --- 92,5
+    add('«92,5» entfernt', "['92,5', new RegExp(`", "['92,5', new RegExp(`(?!)")
+    ZZ = '(?:92[.,]50?|99[.,]9|0[.,]925|0[.,]999)'
+    for alt_z, name in [('92[.,]50?|99[.,]9|0[.,]925|0[.,]999', 'Alle'),]:
+        pass
+    add('«92,5»: nur Komma (Punkt fehlt)', ZZ.replace('92[.,]50?', '92[.,]50?'), '(?:92[,]50?|99[.,]9|0[.,]925|0[.,]999)', 2)
+    add('«92,5»: Form «92,50» fehlt', ZZ, '(?:92[.,]5|99[.,]9|0[.,]925|0[.,]999)', 2)
+    add('«92,5»: «99,9» fehlt', ZZ, '(?:92[.,]50?|0[.,]925|0[.,]999)', 2)
+    add('«92,5»: «0,925» fehlt', ZZ, '(?:92[.,]50?|99[.,]9|0[.,]999)', 2)
+    add('«92,5»: «0,999» fehlt', ZZ, '(?:92[.,]50?|99[.,]9|0[.,]925)', 2)
+    add('«92,5»: Abstand nach Silber nur 2', "${SILBERWORT}.{0,30}${NICHT_ZAHL}" + ZZ, "${SILBERWORT}.{0,2}${NICHT_ZAHL}" + ZZ)
+    add('«92,5»: Abstand vor Silber nur 2', "${EINHEIT_NACH}.{0,30}${SILBERWORT}`, 'gu')],\n  ['prozent'", "${EINHEIT_NACH}.{0,2}${SILBERWORT}`, 'gu')],\n  ['prozent'")
+    add('«92,5»: Abstand nach Silber unbegrenzt', "${SILBERWORT}.{0,30}${NICHT_ZAHL}" + ZZ, "${SILBERWORT}.{0,90}${NICHT_ZAHL}" + ZZ)
+    add('«92,5»: Abstand vor Silber unbegrenzt', "${EINHEIT_NACH}.{0,30}${SILBERWORT}`, 'gu')],\n  ['prozent'", "${EINHEIT_NACH}.{0,90}${SILBERWORT}`, 'gu')],\n  ['prozent'")
+    # --- Prozent
+    add('«prozent» entfernt', "['prozent', new RegExp(`", "['prozent', new RegExp(`(?!)")
+    PZ = ['100', '99[.,]9', '99', '95', '92[.,]50?', '90', '80']
+    for i, t in enumerate(PZ):
+        add(f'Prozent: Wert «{t}» fehlt', "(?:" + '|'.join(PZ) + ")", "(?:" + '|'.join(_ohne(PZ, i)) + ")", 2)
+    add('Prozent: «aus» als Füllwort fehlt', "(?:aus |von |echtem |reinem )?", "(?:von |echtem |reinem )?")
+    add('Prozent: «von» als Füllwort fehlt', "(?:aus |von |echtem |reinem )?", "(?:aus |echtem |reinem )?")
+    add('Prozent: ohne Wortgrenze nach Silber (Silbergrau)', "silber(?![\\\\p{L}])|silber(?:anteil", "silber|silber(?:anteil")
+    add('Prozent: «anteil» fehlt', "silber(?:anteil|gehalt|feingehalt)?[: ]{1,3}", "silber(?:gehalt|feingehalt)?[: ]{1,3}")
+    add('Prozent: «gehalt» fehlt', "silber(?:anteil|gehalt|feingehalt)?[: ]{1,3}", "silber(?:anteil|feingehalt)?[: ]{1,3}")
+    add('Prozent: «feingehalt» fehlt', "silber(?:anteil|gehalt|feingehalt)?[: ]{1,3}", "silber(?:anteil|gehalt)?[: ]{1,3}")
+    add('Prozent: Wortzusätze (anteil …) entfallen', "silber(?:anteil|gehalt|feingehalt)?[: ]{1,3}", "silber[: ]{1,3}")
+    add('Prozent: nur ein Trennzeichen', "[: ]{1,3}", "[: ]{1,1}")
+    # --- Verneinung
+    FW = ['aus','um','von','vom','mit','für','fuer','ein','eine','einen','einem','einer','eines','der','die','das','dem','den','des','echt\\\\p{L}*','rein\\\\p{L}*','massiv\\\\p{L}*','pur\\\\p{L}*','solid','real','genuine','any','a','an','the','to','als','zu','oder','und','or','and','of','from','silber','silver','sterling','[\\\\p{L}\\\\p{N}]+-','[\\\\p{L}\\\\p{N}]+\\\\s+(?:oder|or)']
+    for i, t in enumerate(FW):
+        add(f'Füllwort «{t}» fehlt', "const FUELLWORT = '(?:" + '|'.join(FW) + ")';", "const FUELLWORT = '(?:" + '|'.join(_ohne(FW, i)) + ")';")
+    VW = ['kein(?:e[nrsm]?)?','nicht','ohne','statt','anstelle(?: von)?','anstatt','nie','weder','anders als','im gegensatz zu','im vergleich zu','im unterschied zu','gegenüber','versus','vs','compared to','no','not','without','instead of','unlike']
+    for i, t in enumerate(VW):
+        add(f'Verneinung «{t}» fehlt', "(?:" + '|'.join(VW) + ")\\\\s+(?:${FUELLWORT}", "(?:" + '|'.join(_ohne(VW, i)) + ")\\\\s+(?:${FUELLWORT}")
+    for suf in 'nrsm':
+        add(f'Verneinung «kein» ohne Endung «{suf}»', "kein(?:e[nrsm]?)?", "kein(?:e[" + ''.join(c for c in 'nrsm' if c != suf) + "]?)?")
+    add('Verneinung «keine» ohne Endungsgruppe', "kein(?:e[nrsm]?)?", "kein")
+    add('Verneinung: kein Wortanfang nötig (Genie, Anno)', "(?:^|[\\\\s(])(?:kein", "(?:kein")
+    add('Verneinung: Textanfang zählt nicht', "(?:^|[\\\\s(])(?:kein", "(?:[\\\\s(])(?:kein")
+    add('Verneinung: Klammer zählt nicht als Anfang', "(?:^|[\\\\s(])(?:kein", "(?:^|[\\\\s])(?:kein")
+    add('Verneinung: kein Leerzeichen nach Füllwort nötig', "(?:${FUELLWORT}\\\\s+){0,4}$`", "(?:${FUELLWORT}\\\\s*){0,4}$`")
+    add('Verneinung: keine Füllwörter erlaubt', "{0,4}$`, 'u');", "{0,0}$`, 'u');")
+    add('Verneinung: bis zu neun Füllwörter', "{0,4}$`, 'u');", "{0,9}$`, 'u');")
+    add('Verneinung: Ende der Umgebung nicht verlangt', "(?:${FUELLWORT}\\\\s+){0,4}$`", "(?:${FUELLWORT}\\\\s+){0,4}`")
+    add('Verneintes wird als Treffer gezählt', "(VERNEINUNG_DAVOR.test(davor) ? verneint : treffer).push(", "(false ? verneint : treffer).push(")
+    add('Verneinung: nur zehn Zeichen davor gelesen', "Math.max(0, m.index - 40), m.index)", "Math.max(0, m.index - 10), m.index)")
+    # --- bereinige
+    add('bereinige entfernt kein HTML', "    .replace(/<\\/?[a-z!][^<>]{0,500}>/gi, ' ')\n", "")
+    add('bereinige: Tags länger als 500 Zeichen bleiben stehen', "[^<>]{0,500}>/gi, ' ')", "[^<>]{0,5}>/gi, ' ')")
+    add('bereinige: &nbsp; bleibt stehen', "    .replace(/&nbsp;|&#160;/gi, ' ')\n", "    .replace(/&#160;/gi, ' ')\n")
+    add('bereinige: &#160; bleibt stehen', "    .replace(/&nbsp;|&#160;/gi, ' ')\n", "    .replace(/&nbsp;/gi, ' ')\n")
+    add('bereinige: &amp; wird nicht aufgelöst', "    .replace(/&amp;/gi, '&')\n", "")
+    add('bereinige: &shy; bleibt stehen', "    .replace(/&shy;|&#173;|&#xad;/gi, '')\n", "    .replace(/&#173;|&#xad;/gi, '')\n")
+    add('bereinige: &#173; bleibt stehen', "    .replace(/&shy;|&#173;|&#xad;/gi, '')\n", "    .replace(/&shy;|&#xad;/gi, '')\n")
+    add('bereinige: &#xad; bleibt stehen', "    .replace(/&shy;|&#173;|&#xad;/gi, '')\n", "    .replace(/&shy;|&#173;/gi, '')\n")
+    add('bereinige: unsichtbare Zeichen bleiben stehen', "    .replace(/[\\u00ad\\u200b-\\u200d\\u2060\\ufeff]/g, '')\n", "")
+    add('bereinige: U+00AD bleibt', "[\\u00ad\\u200b-\\u200d\\u2060\\ufeff]", "[\\u200b-\\u200d\\u2060\\ufeff]")
+    add('bereinige: U+200B bis U+200D bleibt', "[\\u00ad\\u200b-\\u200d\\u2060\\ufeff]", "[\\u00ad\\u2060\\ufeff]")
+    add('bereinige: U+2060 bleibt', "[\\u00ad\\u200b-\\u200d\\u2060\\ufeff]", "[\\u00ad\\u200b-\\u200d\\ufeff]")
+    add('bereinige: U+FEFF bleibt', "[\\u00ad\\u200b-\\u200d\\u2060\\ufeff]", "[\\u00ad\\u200b-\\u200d\\u2060]")
+    add('bereinige: NFKC entfällt (Vollbreite Ziffern)', "    .normalize('NFKC')\n", "")
+    add('bereinige: Leerraum wird nicht zusammengefasst', "    .replace(/\\s+/g, ' ')\n", "")
+    add('bereinige schreibt nicht klein', "    .toLowerCase();", "    ;")
+    BG = ['br','\\/p','\\/li','\\/div','\\/h[1-6]','\\/tr','\\/td','\\/ul','\\/ol']
+    for i, t in enumerate(BG):
+        add(f'Blockgrenze «{t}» fehlt', "(?:" + '|'.join(BG) + ")\\b", "(?:" + '|'.join(_ohne(BG, i)) + ")\\b")
+    add('Blockgrenzen: ohne Wortgrenze (<breadcrumb>)', "ol)\\b[^<>]{0,300}>", "ol)[^<>]{0,300}>")
+    add('Blockgrenzen: Attribute im Tag nicht erlaubt', "ol)\\b[^<>]{0,300}>", "ol)\\b>")
+    add('Blockgrenzen (</li>, <br>) sind kein Satzende', "    .replace(/<\\s*(?:br|\\/p|\\/li|\\/div|\\/h[1-6]|\\/tr|\\/td|\\/ul|\\/ol)\\b[^<>]{0,300}>/gi, ' . ')\n", "")
+    add('Zeilenumbruch ist kein Satzende', "    .replace(/[\\r\\n\\u2028\\u2029]+/g, ' . ')\n", "")
+    add('Zeilenumbruch: «\\r» allein zählt nicht', "[\\r\\n\\u2028\\u2029]+", "[\\n\\u2028\\u2029]+")
+    add('Zeilenumbruch: «\\n» zählt nicht', "[\\r\\n\\u2028\\u2029]+", "[\\r\\u2028\\u2029]+")
+    add('Zeilenumbruch: U+2028 zählt nicht', "[\\r\\n\\u2028\\u2029]+", "[\\r\\n\\u2029]+")
+    add('Zeilenumbruch: U+2029 zählt nicht', "[\\r\\n\\u2028\\u2029]+", "[\\r\\n\\u2028]+")
+    # --- Felder und Eingaben
+    add('Titel nicht beachtet', "const felder = [['titel', p?.title], ", "const felder = [")
+    add('Beschreibung nicht beachtet', "['beschreibung', [p?.description, p?.descriptionHtml].filter(Boolean).join('\\n')], ", "")
+    add('descriptionHtml nicht beachtet', "[p?.description, p?.descriptionHtml].filter(Boolean)", "[p?.description].filter(Boolean)")
+    add('description nicht beachtet', "[p?.description, p?.descriptionHtml].filter(Boolean)", "[p?.descriptionHtml].filter(Boolean)")
+    add('Beschreibungsfelder ohne Satzgrenze verbunden', "filter(Boolean).join('\\n')", "filter(Boolean).join(' ')")
+    add('Optionen nicht beachtet', ", ['option', optionsText(p?.options)]];", "];")
+    add('«fein» zählt auch in Optionen (Farbnamen)', "ohneFein: feld === 'option'", "ohneFein: false")
+    add('«fein» wird nie übersprungen', "if (ohneFein && art === 'fein') continue;", "")
+    add('optionsText: Werte (values) fehlen', "x.values ?? []", "[]")
+    add('optionsText: optionValues fehlen', "(x.optionValues ?? [])", "[]")
+    add('optionsText: Zeichenketten in optionValues fehlen', "(typeof v === 'string' ? v : v?.name ?? '')", "(v?.name ?? '')")
+    add('optionsText: leerer Eintrag in optionValues stürzt', "v?.name ?? ''", "v.name")
+    add('optionsText: value fehlt', "x.value ?? []", "[]")
+    add('optionsText: Einträge ohne Trenner verbunden', ".join(' ; ')", ".join(' ')")
+    add('optionsText: Name ohne Doppelpunkt', "`${x.name ?? ''}: ${werte.join(' / ')}`", "`${x.name ?? ''} ${werte.join(' / ')}`")
+    add('optionsText: Zeichenketten in der Liste fehlen', "if (typeof x === 'string') return x;", "")
+    add('optionsText: leerer Eintrag stürzt', "if (x == null) return '';", "")
+    add('optionsText: einzelnes Objekt wird nicht gelesen', "(Array.isArray(o) ? o : [o])", "(Array.isArray(o) ? o : [])")
+    add('treffer immer wahr', "return { treffer: belege.length > 0, belege, verneint };", "return { treffer: true, belege, verneint };")
+    add('treffer immer falsch', "return { treffer: belege.length > 0, belege, verneint };", "return { treffer: false, belege, verneint };")
+    add('Beleg ohne Feldname', "belege.push({ feld, ...x })", "belege.push({ ...x })")
+    add('Belegtext zeigt mehr als drei', "r.belege.slice(0, 3).map(", "r.belege.slice(0, 9).map(")
+    return M
+
 def mutanten():
     """(Datei, Name, alt, neu). `alt` muss genau einmal vorkommen, sonst gilt der Mutant als nicht anwendbar."""
     L, A = 'lib.mjs', 'apply.mjs'
@@ -31,7 +214,7 @@ def mutanten():
         # ---- lib.mjs: Auswahl
         (L, 'Muster ohne Lookbehind (1925 träfe)', "const MUSTER = /(?<![0-9])925(?![0-9])/;", "const MUSTER = /925(?![0-9])/;"),
         (L, 'Muster ohne Lookahead (19250 träfe)', "const MUSTER = /(?<![0-9])925(?![0-9])/;", "const MUSTER = /(?<![0-9])925/;"),
-        (L, 'waehle: Arbeits-Tag nicht ausgeschlossen', " && !(p.tags || []).includes(MARKER) && !ausnahmen.has(p.handle))\n    .map", " && !ausnahmen.has(p.handle))\n    .map"),
+        (L, 'waehle: Arbeits-Tag schliesst wieder aus (reaktivierte Produkte unbemerkt)', " && trifft(p) && !ausnahmen.has(p.handle))\n    .map", " && trifft(p) && !(p.tags || []).includes(MARKER) && !ausnahmen.has(p.handle))\n    .map"),
         (L, 'waehle: nicht sortiert', "\n    .sort((a, b) => a.handle.localeCompare(b.handle));", ";"),
         (L, 'waehle: Regel nicht verlangt', "p.handle && trifft(p) && ", "p.handle && "),
         # ---- lib.mjs: Lesen
@@ -137,57 +320,8 @@ def mutanten():
         (A, 'Liste: Regel-Angabe ersetzt die Prüfung nicht (nur Titel-925 zählt)', "!(hat925(e.title) || e.regel)", "!hat925(e.title)"),
         (A, 'Liste: jede Liste gilt als plausibel', "!(hat925(e.title) || e.regel)", "false"),
         (A, 'Ausnahmeliste wird nicht an entscheide gegeben', "{ inSicherung: sichIds.has(e.id), ausnahmen }", "{ inSicherung: sichIds.has(e.id) }"),
-        # ---- automation/lib/silber_feingehalt.mjs: Regel
-        (R, 'Regel: Zahl darf Teil einer längeren sein (Lookbehind weg)', "const NICHT_ZAHL = '(?<![0-9])(?<![0-9][.,])';", "const NICHT_ZAHL = '';"),
-        (R, 'Regel: Komma nach Ziffer zählt nicht als Zahlenteil', "const NICHT_ZAHL = '(?<![0-9])(?<![0-9][.,])';", "const NICHT_ZAHL = '(?<![0-9])';"),
-        (R, 'Regel: Komma ohne Ziffer davor blockiert', "const NICHT_ZAHL = '(?<![0-9])(?<![0-9][.,])';", "const NICHT_ZAHL = '(?<![0-9.,])';"),
-        (R, 'Regel: Zahl darf weitergehen (19250 träfe)', "const ZAHL_ENDE = '(?![0-9])';", "const ZAHL_ENDE = '';"),
-        (R, 'Regel: Einheiten (925 mAh) werden nicht ausgeschlossen', "const EINHEIT_NACH = '(?!", "const EINHEIT_NACH = '(?=|(?!"),
-        (R, 'Regel: Einheit «Stück» fehlt', "|stk|stück|stueck|pieces|", "|stk|stueck|pieces|"),
-        (R, 'Regel: Einheit ohne Wortgrenze (Münze träfe als «m»)', "|meter|m)(?![\\\\p{L}])|%))';", "|meter|m)|%))';"),
-        (R, 'Regel: Muster 925 entfernt', "  ['925', new RegExp(`${NICHT_ZAHL}925${ZAHL_ENDE}${EINHEIT_NACH}`, 'gu')],\n", ""),
-        (R, 'Regel: Sterling entfernt', "  ['sterling', /sterling/g],\n", ""),
-        (R, 'Regel: Feinsilber-Wörter entfernt', "  ['fein', /feinsilber|fine silver|pure silver|echtsilber|echtes silber|real silver|genuine silver|solid silver|massivsilber|massives silber/g],\n", ""),
-        (R, 'Regel: «Echtsilber» fehlt', "feinsilber|fine silver|pure silver|echtsilber|echtes silber|", "feinsilber|fine silver|pure silver|echtes silber|"),
-        (R, 'Regel: Feingehalt-Zahl neben Silber entfernt', "  ['feingehalt-zahl', new RegExp(`${SILBERWORT}.{0,25}", "  ['feingehalt-zahl-aus', new RegExp(`${SILBERWORT}x{9}"),
-        (R, 'Regel: Feingehalt 999 fehlt', "const FEINGEHALTE = '(?:999|990|958|950|900|835|800)';", "const FEINGEHALTE = '(?:990|958|950|900|835|800)';"),
-        (R, 'Regel: Feingehalt 800 fehlt', "|900|835|800)';", "|900|835)';"),
-        (R, 'Regel: Silberwort ohne Ag', "const SILBERWORT = '(?:silber|silver|sterling|\\\\bag\\\\b)';", "const SILBERWORT = '(?:silber|silver|sterling)';"),
-        (R, 'Regel: 92,5 % entfernt', "  ['92,5', new RegExp(", "  ['92,5-aus', new RegExp(`xx${SILBERWORT}xx`+"),
-        (R, 'Regel: 92,5 mit Punkt nicht erkannt', "92[.,]5${ZAHL_ENDE}|", "92[,]5${ZAHL_ENDE}|"),
-        (R, 'Regel: Verneinung «kein» entfernt', "(?:kein(?:e[nrsm]?)?|nicht|", "(?:nicht|"),
-        (R, 'Regel: Verneinung «nicht» entfernt', "|nicht|ohne|statt|", "|ohne|statt|"),
-        (R, 'Regel: Verneinung «ohne» entfernt', "|nicht|ohne|statt|", "|nicht|statt|"),
-        (R, 'Regel: Verneinung «statt» entfernt', "|ohne|statt|anstelle", "|ohne|anstelle"),
-        (R, 'Regel: englische Verneinung «not» entfernt', "|no|not|without|", "|no|without|"),
-        (R, 'Regel: Verneinung zählt auch weit davor (mehr als zwei Wörter)', "(?:[\\p{L}\\p{N}-]+\\s+){0,3}$/u;", "(?:[\\p{L}\\p{N}-]+\\s+){0,9}$/u;"),
-        (R, 'Regel: Verneinung ohne Wort dazwischen nicht erkannt', "(?:[\\p{L}\\p{N}-]+\\s+){0,3}$/u;", "(?:[\\p{L}\\p{N}-]+\\s+){1,3}$/u;"),
-        (R, 'Regel: Verneintes wird als Treffer gezählt', "(VERNEINUNG_DAVOR.test(davor) ? verneint : treffer).push(", "(false ? verneint : treffer).push("),
-        (R, 'Regel: bereinige entfernt kein HTML', "    .replace(/<[^>]*>/g, ' ')\n", ""),
-        (R, 'Regel: bereinige kennt nbsp nicht', "    .replace(/&nbsp;|&#160;/gi, ' ')\n", ""),
-        (R, 'Regel: bereinige schreibt nicht klein', "    .toLowerCase();", "    ;"),
-        (R, 'Regel: Titel nicht beachtet', "const felder = [['titel', p?.title], ", "const felder = ["),
-        (R, 'Regel: Beschreibung nicht beachtet', "['beschreibung', p?.description ?? p?.descriptionHtml], ", ""),
-        (R, 'Regel: descriptionHtml nicht beachtet', "p?.description ?? p?.descriptionHtml", "p?.description"),
-        (R, 'Regel: Optionen nicht beachtet', ", ['option', optionsText(p?.options)]];", "];"),
-        (R, 'Regel: Optionsliste als Text ohne Werte', "(x?.values || []).join(' / ')", "''"),
-        (R, 'Regel: treffer immer wahr', "return { treffer: belege.length > 0, belege, verneint };", "return { treffer: true, belege, verneint };"),
-        (R, 'Regel: treffer immer falsch', "return { treffer: belege.length > 0, belege, verneint };", "return { treffer: false, belege, verneint };"),
-        (R, 'Regel: Beleg ohne Feldname', "belege.push(...f.treffer.map((x) => ({ feld, ...x })));", "belege.push(...f.treffer.map((x) => ({ ...x })));"),
-        (R, 'Regel: Belegtext zeigt mehr als drei', "r.belege.slice(0, 3).map(", "r.belege.slice(0, 9).map("),
-        (R, 'Regel: Blockgrenzen (</li>, <br>) sind kein Satzende', r"""    .replace(/<\s*(?:br|\/p|\/li|\/div|\/h[1-6]|\/tr|\/td|\/ul|\/ol)\b[^>]*>/gi, ' . ')
-""", ""),
-        (R, 'Regel: Zeilenumbruch ist kein Satzende', r"""    .replace(/\r?\n+/g, ' . ')
-""", ""),
-        (R, 'Regel: nur <br> zählt als Blockgrenze', r"(?:br|\/p|\/li|\/div|\/h[1-6]|\/tr|\/td|\/ul|\/ol)", r"(?:br)"),
-        (R, 'Regel: </li> zählt nicht als Blockgrenze', r"|\/li|\/div|", r"|\/div|"),
-        (R, 'Regel: Vergleich «anders als» entfernt', "|weder|anders als|im gegensatz zu|", "|weder|im gegensatz zu|"),
-        (R, 'Regel: Vergleich «im Gegensatz zu» entfernt', "|anders als|im gegensatz zu|im vergleich zu|", "|anders als|im vergleich zu|"),
-        (R, 'Regel: Vergleich «im Vergleich zu» entfernt', "|im vergleich zu|im unterschied zu|", "|im unterschied zu|"),
-        (R, 'Regel: Vergleich «gegenüber» entfernt', "|im unterschied zu|gegenüber|versus|", "|im unterschied zu|versus|"),
-        (R, 'Regel: Vergleich «compared to» entfernt', "|vs|compared to|no|", "|vs|no|"),
         # gleichwertig (bewusst nicht aufgeführt): die Schutzzeile gegen leere Treffer (Endlosschleife) — kein Muster kann leer treffen
-    ]
+    ] + regel_mutanten()
 
 def main():
     tmp = tempfile.mkdtemp(prefix='silbermut_')
@@ -200,10 +334,12 @@ def main():
             if rc != 0: print('Ausgangslage NICHT grün:', os.path.basename(test), aus); return 2
             print('Ausgangslage grün:', os.path.basename(test), aus.strip().splitlines()[-1])
         erkannt = nicht = n_a = 0
-        for datei, name, alt, neu in mutanten():
+        for m in mutanten():
+            datei, name, alt, neu = m[:4]
+            anzahl = m[4] if len(m) > 4 else 1
             quelle = open(quelle_von(datei), encoding='utf8').read()
-            if quelle.count(alt) != 1:
-                n_a += 1; print(f'? nicht anwendbar ({quelle.count(alt)} Treffer): {name}'); continue
+            if quelle.count(alt) != anzahl:
+                n_a += 1; print(f'? nicht anwendbar ({quelle.count(alt)} Treffer statt {anzahl}): {name}'); continue
             aufbauen(tmp)
             open(pfad(tmp, datei), 'w', encoding='utf8').write(quelle.replace(alt, neu))
             rc, aus = lauf(tmp, t_regel if datei == R else t_tool)

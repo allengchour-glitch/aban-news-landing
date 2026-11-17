@@ -119,7 +119,7 @@ for (const t of ['Ring 19250 Stück', 'A9251 Modell', 'Baujahr 1925 Ring', 'Silb
 {
   const kat = [{ id: 'b', handle: 'b-ring', title: 'Ring 925', tags: [], productType: 'Ring' }, { id: 'a', handle: 'a-ring', title: 'S925 Kette', tags: ['x'] },
     { id: 'c', handle: 'c', title: 'Edelstahl', tags: [] }, { id: 'd', handle: 'd', title: 'Ring 925', tags: [MARKER] }, { handle: 'e', title: '925' }, null];
-  gleich('waehle: nur 925 ohne Marker, sortiert', waehleAusKatalog(kat).map((x) => x.handle), ['a-ring', 'b-ring']);
+  gleich('waehle: alle Treffer, auch ein aktives Produkt mit Arbeits-Tag (wieder aktiviert), sortiert', waehleAusKatalog(kat).map((x) => x.handle), ['a-ring', 'b-ring', 'd']);
   gleich('waehle: leere Eingabe', waehleAusKatalog(undefined), []);
 }
 {
@@ -501,11 +501,13 @@ for (const t of ['Ring 19250 Stück', 'A9251 Modell', 'Baujahr 1925 Ring', 'Silb
     { id: 'h', handle: 'h-ausnahme', title: 'Ring', tags: [], description: 'Material S925 laut Lieferant' },
   ];
   const w = waehleAusKatalog(kat, { ausnahmen: new Set(['h-ausnahme']) });
-  gleich('erweitert: Text, Option, Sterling und Titel treffen; Edelstahl, Verneinung, Marker und Ausnahme nicht', w.map((x) => x.handle), ['a-text', 'b-option', 'c-sterling', 'd-titel']);
-  gleich('erweitert: regel je Eintrag', w.map((x) => x.regel), ['text', 'text', 'text', 'titel-925']);
+  gleich('erweitert: Text, Option, Sterling, Titel und ein wieder aktiviertes Produkt mit Arbeits-Tag treffen; Edelstahl, Verneinung und Ausnahme nicht', w.map((x) => x.handle), ['a-text', 'b-option', 'c-sterling', 'd-titel', 'g-marker']);
+  gleich('erweitert: regel je Eintrag', w.map((x) => x.regel), ['text', 'text', 'text', 'titel-925', 'text']);
   pruefe('erweitert: jeder Eintrag trägt einen Beleg', w.every((x) => typeof x.beleg === 'string' && x.beleg.length > 3));
   pruefe('erweitert: ohne Ausnahmeliste trifft auch «h-ausnahme»', waehleAusKatalog(kat).some((x) => x.handle === 'h-ausnahme'));
   pruefe('trifft: Beschreibung allein genügt, Edelstahl nicht', trifft({ title: 'Ring', description: 'S925' }) && !trifft({ title: 'Ring', description: 'Edelstahl' }));
+  pruefe('trifft: Titel ohne Satzzeichen «Ohne Nickel 925 Sterling Silber» wird nicht als Verneinung gelesen', trifft({ title: 'Ohne Nickel 925 Sterling Silber Ohrringe' }));
+  pruefe('trifft: Optionen in der Form des Freigabe-Tors (optionValues)', trifft({ title: 'Ring', options: [{ name: 'Material', optionValues: [{ name: '925 Silver' }] }] }));
   const basis = { id: 'x', handle: 'h', title: 'Perlenohrringe', description: 'Nadel S925', options: [], status: 'ACTIVE', tags: [], productType: '', pubs: [], pubsAlle: [] };
   gleich('entscheide: Treffer nur in der Beschreibung → voll', [entscheide(basis).tun, entscheide(basis).art], [true, 'voll']);
   gleich('entscheide: Beschreibung wurde geändert (keine Angabe mehr) → nichts', entscheide({ ...basis, description: 'Edelstahl' }).tun, false);
