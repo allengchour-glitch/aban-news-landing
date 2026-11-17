@@ -1,5 +1,10 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Kaufbedienung beim Shop-Nachladen erhalten ·17.11.2026
+
+DE/EN-Shop verlor bei geändertem frischem Katalog den fokussierten Kaufbutton und sprang erneut zum ursprünglichen Produkt. Vier Browser-Vorherfälle mit Sprüngen2489–9133px bestätigt. Jetzt Fokus nur auf demselben Karten-/Linkziel mit preventScroll, Produktsprung einmal nach tatsächlich gefundenem Ziel. Zwölf Haupt- und sechs Randfälle, sieben Katalogtests sowie Konsistenz/Syntax grün; Preise/Kaufziele unverändert. Keine neue Automation/Kontoaktion. Finanzielle Wirkung ungemessen; echte CI/Bereitstellung im zugehörigen PR. Details in der kanonischen Übergabe.
+
+
 ## Codex: Cockpit-Lizenzclient abgesichert ·17.11.2026
 
 Getrennter Cockpit-Client akzeptierte HTTP500/valid als Text und hing ohne Frist; sechs Browser-Vorherfälle und30 neue rote Bedingungen bestätigt. Jetzt strikte erfolgreiche boolesche Freigabe,15-Sekundenfrist über Transport/Inhalt, Schlüssel erhalten/manuell erneut prüfen, verspätete Antwort ignoriert. Offline-Cachev4 liefert korrigierte App beim nächsten erfolgreichen Worker-Update.181 API-/Lizenz-,91 Download-,84 Engineprüfungen und sechs Browserfälle grün. Bestehenden Hype-Test auf Cockpit-Pfade erweitert, keine neue Automation/Frequenz/Kontoaktion. Preise/Checkout/Backend unverändert; finanzielle Wirkung ungemessen. Echte CI/Bereitstellung im zugehörigen PR; vollständige Details in der kanonischen Übergabe.

@@ -1,5 +1,14 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Shop: Kaufbutton und Leseposition beim Katalogabgleich erhalten ·17.11.2026
+
+Ertragslauf auf eigenem codex/shop-kauffokus-1711 vom frisch mit GitHub abgeglichenen mainf576c0ba. Regeln, Übergaben und offene Arbeiten geprüft; Cockpit/Downloadkorrekturen bereits vorhanden. Neuer Browserbefund: eine verspätete Katalogantwort mit lediglich geänderter Beschreibung ersetzte alle Karten, verlor den fokussierten Kaufbutton und wiederholte den ursprünglichen Produktsprung. Vier Vorherfälle DE/EN bei390/1440px fehlerhaft: Sprünge9133/4630 beziehungsweise5142/2489px. Acht Kontrollen mit gleichem Katalog oderHTTP503 stabil. Preise und Kaufziele im Versuch unverändert, keine Checkouts geöffnet.
+
+Beide Shopseiten erhalten beim Neuzeichnen den aktiven Link über Karten-ID und exakt gleiches href, mit preventScroll. Entfernte/geänderte Ziele werden nicht durch einen anderen Link ersetzt. Produkthervorhebung bleibt erhalten; automatischer Sprung nur beim ersten tatsächlich gefundenen Ziel und ohne bereits aktiven Shoplink. Ein anfangs fehlendes Ziel wird bei späterer Verfügbarkeit weiterhin angesteuert. Katalog, Preise, Zahlungs-/Lieferwege und Abruffrequenz unverändert.
+
+GEMESSEN: zwölf Browser-Hauptfälle und sechs gezielte Randfälle grün;31 deutsche und22 englische Kartentitel/Preise/Kaufziele gegen vorhandene Kataloge verglichen. Keine JS-Fehler/Überbreite in den Hauptfällen. Sieben bestehende Katalogregressionen sowie Konsistenz- und Syntaxprüfung grün; unabhängiges Diffreview ohne Blocker. Randprüfung berücksichtigt den vorhandenen24px-Scrollrand. Nur lokale synthetische Antwortänderungen, keine Käufe oder geschützten Downloads. Echte CI und bestätigte Bereitstellung im zugehörigen PR. Nutzen: Kaufbedienung bleibt beim Nachladen erreichbar; finanzielle Wirkung nicht gemessen. Eigene Checkout-/Lieferzuordnungen der Mailangebote weiterhin offen.
+
+
 ## Claude: Kachel-Fix nachgemessen, CJ «edel und teuer» gemessen ·17.11.2026 nachts
 - **Kategorieseiten:** 742 von 742 Menü-Seiten nach dem Fix live gemessen und in Ordnung; die 22 Funde der ersten Prüferrunde sind abgeglichen (12 behoben, 4 teilweise, 3 Menü, 3 kleine Code-Kandidaten, nichts davon eingespielt). Details: `dropship/kategorie-kacheln-1611/README.md` «Nachprüfung 17.11.», Hinweise an dich: `dropship/CODEX-EMPFANG-1611.md` (Pfeil bei grosser Schrift, Kachelbilder).
 - **CJ:** Preisbänder, edle Kandidaten und Frachtmessung CN nach CH: `dropship/cj-edel-teuer-1711/README.md`. Kein Shop-Schreibzugriff. Der Besitzer entscheidet über einen kleinen Test (5 bis 8 Entwürfe plus Muster).
