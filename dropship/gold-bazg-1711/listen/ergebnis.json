@@ -1,0 +1,387 @@
+{
+ "gelaufen_utc": "2026-11-17T15:54:40.360Z",
+ "eingabe": {
+  "pfad": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/edel/produkte.jsonl",
+  "sha256": "9351d36f431fb8abf41d47f451e82b39adc0c8f10791a9498b77e9e0bbfc5ab7",
+  "sha_erwartet": true,
+  "zeilen": 56082
+ },
+ "zahlen": {
+  "A": {
+   "analyst1": 12,
+   "analyst2": 8,
+   "abgeglichen": 11
+  },
+  "E": {
+   "analyst1": 2,
+   "analyst2": 1,
+   "abgeglichen": 2
+  },
+  "B": {
+   "analyst1": 128,
+   "analyst2": 123,
+   "abgeglichen": 133
+  },
+  "C": {
+   "analyst1": 323,
+   "analyst2": 626,
+   "abgeglichen": 554
+  },
+  "D": {
+   "analyst1": 3486,
+   "analyst2": 3171,
+   "abgeglichen": 3219
+  }
+ },
+ "x_kein_edelmetallbezug": 99,
+ "union": 4018,
+ "kreuztabelle_m1_m2": {
+  "A|A": 8,
+  "A|D": 3,
+  "A|B": 1,
+  "E|C": 1,
+  "E|E": 1,
+  "B|B": 121,
+  "B|-": 3,
+  "B|C": 4,
+  "C|C": 301,
+  "C|-": 15,
+  "C|D": 6,
+  "C|X": 1,
+  "D|D": 3149,
+  "D|-": 22,
+  "D|C": 313,
+  "D|B": 1,
+  "D|X": 1,
+  "X|X": 20,
+  "X|-": 1,
+  "X|D": 3,
+  "-|C": 7,
+  "-|D": 10,
+  "-|X": 26
+ },
+ "unterschiede": {
+  "anzahl": 418,
+  "m1_gleich_abgleich": 105,
+  "m2_gleich_abgleich": 334,
+  "weder_noch": 5,
+  "gemeinsame_klasse_korrigiert": 23
+ },
+ "regel_D_C": {
+  "gesamt": 301,
+  "template_nur": 7,
+  "schmuck_C": 269,
+  "nichtschmuck_D": 25
+ },
+ "untergruppen": {
+  "C1_metall_genannt": 263,
+  "C2_verfahren_ohne_metall": 291,
+  "C_schmuck_uhr": 528,
+  "C_nicht_schmuck": 26,
+  "C_technisch_kontakte": 5,
+  "C_nur_silber": 33,
+  "D_mit_karatzahl_im_farbnamen": 3,
+  "A_urteile": {
+   "massiv": 5,
+   "unklar": 3,
+   "farbe": 2,
+   "plattiert": 1
+  }
+ },
+ "karat_rest_in_CDX": [
+  {
+   "handle": "minimalistischer-ring-aus-silber-mit-geometris-601500",
+   "klasse": "D",
+   "kontext": "ing. Er ist aus Silber gefertigt und in 18K Gold oder Platin erhältlich. Der Ring h"
+  },
+  {
+   "handle": "armband-mit-zirkonia-edelsteinen-610800",
+   "klasse": "D",
+   "kontext": "n den edlen Farben Platin, Roségold und 18K Gold, lässt sich dieses Armband vielsei"
+  },
+  {
+   "handle": "kleiner-hammer-mit-messinggriff-fa8a81",
+   "klasse": "D",
+   "kontext": "ibung.Das zeichnet es aus Erhältlich in 18K Gold Version mit schwarzem Walnussgriff"
+  },
+  {
+   "handle": "24k-rosegold-elixir-make-up-ol-56a538",
+   "klasse": "X",
+   "kontext": "24k Roségold Elixir Make-up Öl ‖ Dieses lux"
+  },
+  {
+   "handle": "ultraschall-gesichtsreiniger-78ac40",
+   "klasse": "X",
+   "kontext": "erfügt über eine Vibrationsfrequenz von 24K und arbeitet mit einer Nennleistung von"
+  },
+  {
+   "handle": "24k-anti-aging-serum-710722",
+   "klasse": "X",
+   "kontext": "24k Anti-Aging-Serum ‖ Das 24k Anti-Aging-S"
+  },
+  {
+   "handle": "dr-24k-anti-aging-reinigungsgel-142402",
+   "klasse": "X",
+   "kontext": "DR 24K Anti-Aging Reinigungsgel ‖ Das DR 24K A"
+  },
+  {
+   "handle": "24k-anti-aging-tonikum-231106",
+   "klasse": "X",
+   "kontext": "24k Anti-Aging-Tonikum ‖ Das 24k Anti-Aging"
+  },
+  {
+   "handle": "24k-anti-aging-augenserum-fur-straffe-augen-440386",
+   "klasse": "X",
+   "kontext": "24k Anti-Aging Augenserum für straffe Augen"
+  }
+ ],
+ "karat_ohne_klasse_recall": [
+  {
+   "handle": "sternenhafte-meeres-mehrfach-anhanger-halskett-616500",
+   "typ": "Schmuck",
+   "kontext": "afte Meeres-Mehrfach-Anhänger-Halskette 18 Karat Edelstahl ‖ Diese Halskette aus 18 Kara"
+  },
+  {
+   "handle": "luxus-uhr-als-manschettenknopfe-937024",
+   "typ": "Uhren",
+   "kontext": "und bestehen aus hochwertigem Stahl mit 18K-Purität.Das zeichnet es aus Elektronisc"
+  }
+ ],
+ "recall_drittes_muster_ohne_klasse": [],
+ "gemeinsam_korrigiert": [
+  {
+   "handle": "hd-schwimmbrille-fur-kinder-mit-nasenschutz-625400",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: «Vergoldet» nur als Optionsname einer Schwimmbrille"
+  },
+  {
+   "handle": "schwimmbrille-fur-kinder-mit-nasenschutz-626300",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: «Vergoldet» nur als Optionsname einer Schwimmbrille"
+  },
+  {
+   "handle": "halskette-fur-hunde-edelstahl-gold-silber-546560",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: Hundehalsband, Vakuum-Galvanisierung nur als Oberflächenfarbe, kein Schmuck"
+  },
+  {
+   "handle": "seiden-kissenbezug-1-paar-einfarbig-249344",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: «Vergoldung» nur als Farbname eines Kissenbezugs"
+  },
+  {
+   "handle": "bronzing-bedrucktes-ripsband-fur-kleideraccess-928576",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: «Vergoldungsprozess» = Heissprägedruck auf Band"
+  },
+  {
+   "handle": "etagere-fur-desserts-und-snacks-040448",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: «handgemaltem Gold» auf Porzellan"
+  },
+  {
+   "handle": "wimpern-nahrlosung-fur-lange-dichte-571264",
+   "von": "C|C",
+   "nach": "X",
+   "grund": "Einzelentscheid: «Schwarzvergoldung Modelle» nur Verpackungsname"
+  },
+  {
+   "handle": "schmuckkastchen-aus-pu-leder-mit-doppelfunktio-610600",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: «Goldprägung» auf PU-Leder"
+  },
+  {
+   "handle": "ethereal-drum-8-ton-12-zoll-zungentrommel-231424",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: «Diamant Vergoldet» nur als Farbname einer Zungentrommel"
+  },
+  {
+   "handle": "keramik-box-fur-kosmetiktucher-618800",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: Keramikbox «matt versilbert» = Glasur/Farbe"
+  },
+  {
+   "handle": "funkelndes-quasten-armband-mit-zirkon-stern-611100",
+   "von": "C|C",
+   "nach": "B",
+   "grund": "Einzelentscheid: «echte 18-karätige Goldplattierung»: «karätig» erkannte keiner"
+  },
+  {
+   "handle": "kurzer-rollgabelschlussel-6-75mm-190144",
+   "von": "C|C",
+   "nach": "X",
+   "grund": "Einzelentscheid: «vergoldet» nur als Beispiel für zu schonende Rohre"
+  },
+  {
+   "handle": "usb-midi-adapterkabel-fur-elektronische-keyboa-073856",
+   "von": "C|C",
+   "nach": "X",
+   "grund": "Einzelentscheid: technische Kontaktbeschichtung, kein Schmuck"
+  },
+  {
+   "handle": "herren-langarmhemd-mit-feder-manschette-628500",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: Hemd, «Goldbeschichtung» als Musterfarbe auf Stoff"
+  },
+  {
+   "handle": "goldbeschichtete-kerze-mit-geburtstagsnachrich-160448",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: Paraffinkerze, handbemalt in Gold"
+  },
+  {
+   "handle": "muschel-dekotablett-fur-den-schreibtisch-605400",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: Dekotablett, goldene/silberne Ränder als Optik"
+  },
+  {
+   "handle": "weihnachtsbaumdecke-mit-vergoldung-738496",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: Polyesterdecke, «Vergoldung» als Farbe/Aufdruck"
+  },
+  {
+   "handle": "kopfstutze-mit-lendenstutze-624600",
+   "von": "C|C",
+   "nach": "X",
+   "grund": "Einzelentscheid: «Vergoldete Jahre Braun» nur Farbname"
+  },
+  {
+   "handle": "mountainbike-helm-mit-led-warnlicht-484736",
+   "von": "C|C",
+   "nach": "X",
+   "grund": "Einzelentscheid: «versilberte Brillengläser» technische Spiegelbeschichtung"
+  },
+  {
+   "handle": "sport-visier-fur-kinder-444352",
+   "von": "C|C",
+   "nach": "X",
+   "grund": "Einzelentscheid: Visier: Rahmenfarbe «elektroplattiert in Silber ... Gold», kein Edelmetall der Ware"
+  },
+  {
+   "handle": "tragbare-schmuckbox-fur-ringe-halsketten-632600",
+   "von": "C|C",
+   "nach": "D",
+   "grund": "Einzelentscheid: «vergoldetem Grün» nur Designname einer Schmuckbox"
+  },
+  {
+   "handle": "verdunkelndes-rollo-silberbeschichtet-610000",
+   "von": "C|C",
+   "nach": "X",
+   "grund": "Einzelentscheid: technische Silberbeschichtung von Textil"
+  },
+  {
+   "handle": "vergoldetes-edelstahlarmband-624700",
+   "von": "C|C",
+   "nach": "B",
+   "grund": "Einzelentscheid: «18-karätigen Vergoldung»: «karätig» erkannte keiner"
+  }
+ ],
+ "handles_A": [
+  {
+   "handle": "18k-gold-akoya-perlen-armband-fcb661",
+   "titel": "18K-Gold Akoya-Perlen Armband",
+   "urteil": "massiv",
+   "beleg": "Armband mit japanischen Akoya-Perlen aus 18 Kaltgold. Die Perlen sind in",
+   "grund": "«Kaltgold» vermutlich Übersetzung von K-Gold; Titel «18K-Gold»; Echtheit ungeprüft"
+  },
+  {
+   "handle": "armband-mit-susswasserperlen-und-tiermotiv-626500",
+   "titel": "Armband mit Süsswasserperlen und Tiermotiv",
+   "urteil": "unklar",
+   "beleg": "Verarbeitung in 3D-Hartgold-Technik. Es ist mit unregelmässigen Süsswasserperlen besetzt",
+   "grund": "«Hartgold» kann Legierung oder technische Hartvergoldung heissen; Material nicht genannt"
+  },
+  {
+   "handle": "diy-gold-perle-fur-individuellen-schmuck-619300",
+   "titel": "DIY Gold-Perle für individuellen Schmuck",
+   "urteil": "massiv",
+   "beleg": "Hergestellt aus 999er Feingold Polierte Oberfläche für edlen Glanz",
+   "grund": "Text behauptet 999er Feingold; Optionswerte «Spiegelgold, Antikgold» sprechen für Farbe; Preis/Punze unbekannt (Hypothese: eher Farbe)"
+  },
+  {
+   "handle": "ei-formige-armbanduhr-fur-damen-602700",
+   "titel": "Ei-förmige Armbanduhr für Damen",
+   "urteil": "farbe",
+   "beleg": "ei-förmiges Design wasserdicht Material: Gold Dicke: 10 mm",
+   "grund": "Optionswert «Farbe: Gold Mit Box»; Hypothese Goldfarbe"
+  },
+  {
+   "handle": "gold-case-uhr-mit-goldteller-mediterraner-stil-602500",
+   "titel": "Gold-Case-Uhr mit Goldteller – Mediterraner Stil",
+   "urteil": "farbe",
+   "beleg": "Das Gehäuse ist aus Gold gefertigt und kann mit einem Goldteller",
+   "grund": "gleicher Text: «Material: Metall», Farbe «Gold-Schwarz»; Hypothese Goldfarbe"
+  },
+  {
+   "handle": "gold-pearl-halskette-631800",
+   "titel": "Gold-Pearl-Halskette",
+   "urteil": "plattiert",
+   "beleg": "Sie besteht aus Edelstahl und 18k Gold, was sie sehr robust und langlebig macht.",
+   "grund": "Grundmetall Edelstahl genannt, kein Plattierungswort: Plattierung erschlossen (Hypothese)"
+  },
+  {
+   "handle": "perlen-halskette-mit-18k-gold-5bf6ea",
+   "titel": "Perlen-Halskette mit 18K Gold",
+   "urteil": "unklar",
+   "beleg": "Edles Material: 18K Gold Pendant-Material: Perlmutt Farbe: rose gold",
+   "grund": "Material 18K Gold, aber «goldfarbene Ausführung» und Farbe rose gold im selben Text"
+  },
+  {
+   "handle": "perlen-ohrhanger-damen-1e5228",
+   "titel": "Perlen Ohrhänger Damen",
+   "urteil": "massiv",
+   "beleg": "Perlen-Durchmesser: 8-9 mm 14k Gold Ohrhänger handgefertigte Verarbeitung",
+   "grund": "nennt 14k Gold ohne Plattierungswort und ohne Grundmetall; Echtheit ungeprüft"
+  },
+  {
+   "handle": "perlenarmband-aus-susswasserperlen-439a4d",
+   "titel": "Perlenarmband aus Süsswasserperlen",
+   "urteil": "massiv",
+   "beleg": "sind an einer 14K-Gold-Kette mit einer Länge von 15-18cm befestigt",
+   "grund": "nennt 14K-Gold-Kette ohne Plattierungswort; Echtheit ungeprüft"
+  },
+  {
+   "handle": "regenbogenring-614600",
+   "titel": "Regenbogenring · Damen",
+   "urteil": "unklar",
+   "beleg": "Inlay-Material: Platinum/K-Gold mit Edelsteinen Unisex-Design im europäischen",
+   "grund": "K-Gold ohne Zahl, Option «Platinfarbe»; Etikett für Einlage/Fassung, vermutlich plattiert oder Farbe"
+  },
+  {
+   "handle": "seewasserperle-hanf-armband-14k-gold-8bf2bf",
+   "titel": "Seewasserperle-Hanf-Armband 14K Gold",
+   "urteil": "massiv",
+   "beleg": "Material: 14 Karat Gold, Hanf",
+   "grund": "nennt 14 Karat Gold als Material ohne Plattierungswort; Echtheit ungeprüft"
+  }
+ ],
+ "handles_E": [
+  {
+   "handle": "elegantes-zirkon-armband-mit-krone-611200",
+   "titel": "Elegantes Zirkon Armband mit Krone",
+   "urteil": "plattiert",
+   "beleg": "Einlagematerial: Platin/K-Gold mit Edelstein-Einlage Design: Krone",
+   "grund": "Kupfer mit «Echtvergoldung»; Platin/K-Gold nur als Etikett des Einlagematerials"
+  },
+  {
+   "handle": "lotpaste-fur-bga-reparaturen-625000",
+   "titel": "Lötpaste für BGA-Reparaturen",
+   "urteil": "unklar",
+   "beleg": "aus einer Mischung von 63% Zinn und 37% Palladium mit einer Partikelgrösse von 20-38 µm",
+   "grund": "Lötpaste, kein Schmuck; Palladium-Angabe vermutlich Datenfehler (Hypothese: Blei, Sn63/Pb37)"
+  }
+ ],
+ "handles_B_anzahl": 133
+}
