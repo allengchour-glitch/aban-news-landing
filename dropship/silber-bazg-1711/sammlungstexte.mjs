@@ -20,9 +20,9 @@ const FELDER = ['descriptionHtml', 'seoTitle', 'seoDescription'];
 
 /** Gelesene Sammlung in die Form {descriptionHtml, seoTitle, seoDescription}. Leere Werte zählen als null (Shopify liefert null oder ''). */
 export const flach = (n) => ({ id: n.id, handle: n.handle, descriptionHtml: n.descriptionHtml || '', seoTitle: n.seo?.title || null, seoDescription: n.seo?.description || null });
-const gleichFelder = (a, b) => FELDER.every((f) => (a?.[f] || null) === (b?.[f] || null) || ((a?.[f] ?? '') === '' && (b?.[f] ?? '') === ''));
+const gleichFelder = (a, b) => FELDER.every((f) => (a?.[f] || null) === (b?.[f] || null));      // null und '' zählen als gleich (Shopify liefert beides)
 
-const kommentare = (h) => (String(h).match(/<!--[\s\S]*?-->/g) || []).slice().sort();
+const kommentare = (h) => String(h).match(/<!--[\s\S]*?-->/g) || [];            // in der Reihenfolge des Textes
 const tags = (h) => (String(h).replace(/<!--[\s\S]*?-->/g, '').match(/<[a-zA-Z][^>]*>/g) || []);
 const zaehle = (l) => l.reduce((m, x) => (m.set(x, (m.get(x) || 0) + 1), m), new Map());
 

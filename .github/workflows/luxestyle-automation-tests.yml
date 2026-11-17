@@ -267,6 +267,7 @@ jobs:
           node automation/lib/silber_feingehalt_test.mjs
           node dropship/silber-bazg-1711/melden_test.mjs
           node dropship/silber-bazg-1711/abgleich_test.mjs
+          node dropship/silber-bazg-1711/sammlungstexte_test.mjs
           node --check dropship/silber-bazg-1711/melden.mjs
           node automation/lib/shopify_secret_test.mjs
           node automation/autopilot/merchant_feed_auth_test.mjs
