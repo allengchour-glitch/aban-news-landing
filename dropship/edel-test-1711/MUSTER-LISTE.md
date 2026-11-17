@@ -1,5 +1,7 @@
 # Muster-Liste Edel-Test (17.11.2026, nach der Prüfung durch zwei unabhängige Prüfer)
 
+**Entscheid des Besitzers 17.11.2026: keine Muster bestellen.** Die Liste bleibt als Vorrat, falls der Test später wieder aufgenommen wird. Nichts ist bestellt.
+
 Zweck: Ehe ein Edel-Produkt veröffentlicht wird, braucht jedes ein Muster bei CJ. Der Lieferant behauptet Material und Steine, wir können sie nicht belegen. **Ich bestelle nichts und bezahle nichts bei CJ.** Eine Muster-Bestellung geht an eine Adresse (deine oder die einer Vertrauensperson) und kostet Geld; das entscheidest du.
 
 Preise sind CJ-Einkauf in USD plus Fracht CN nach CH (günstigste Linie bis 20 Tage, GEMESSEN 17.11.2026). Kurs 0.82435.

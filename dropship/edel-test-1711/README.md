@@ -4,6 +4,8 @@ Frage des Besitzers: gibt es bei CJ edle und teure Produkte, und lohnt ein klein
 
 ## Stand
 
+**Entscheid des Besitzers 17.11.2026 (nach dem Merge von PR #3233): «keine Muster bestellen».** Damit ruht der Edel-Test: die sechs Entwürfe bleiben Entwurf (ohne Kanal, ohne Sammlung), veröffentlicht wird nichts ohne Muster und ohne sein neues Ja. Bei CJ ist nichts bestellt oder bezahlt. Die Muster-Liste bleibt als Vorrat. Die Silber-Frage lief getrennt weiter: Brief an die Edelmetallkontrolle fertig, die Silberprodukte des Shops mit «925» im Titel vorläufig auf Entwurf (`dropship/silber-bazg-1711/README.md`).
+
 **LIVE 17.11.2026 06:47 bis 06:51 UTC: sechs Entwürfe angelegt (`status DRAFT`), ohne Kanal, ohne Sammlung, nichts bei CJ bestellt, nichts bezahlt, nichts veröffentlicht.** Unabhängig vom Skript frisch aus Shopify gelesen (Admin-Abfrage 06:5x UTC): alle sechs DRAFT, `resourcePublicationsV2` leer (0 Kanäle), `onlineStoreUrl` null, alle 40 Medien READY (5, 9, 5, 6, 9, 6), 29 Varianten mit den SKUs, Preisen und Einkaufskosten des Plans und je einem eigenen Bild; die Shop-Adressen leiten auf die Startseite um (HTTP 302, nicht erreichbar).
 
 | Entwurf | Shopify-ID | Handle | Varianten | Preis CHF | Einkauf+Fracht CHF | Besonderes Tag |
