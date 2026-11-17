@@ -1,0 +1,159 @@
+name: "Gold-Wächter (Gold-/Platin-Feingehaltsangaben auf Entwurf)"
+
+# Hintergrund (Besitzer 17.11.2026): Echtes Gold, Platin und Palladium brauchen nach dem Schweizer Edelmetallkontrollgesetz einen gesetzlichen Feingehalt UND eine registrierte
+# Verantwortlichkeitsmarke (EMKG Art. 7, 9; BAZG R-243); auf Ersatzware («vergoldet») sind Karat und Feingehalt verboten. Der Besitzer hat die Produkte, deren Text Gold-Feingehalt oder
+# Karat als MATERIAL behauptet, am 17.11.2026 auf ENTWURF gesetzt (dropship/gold-bazg-1711/README.md) und diesen täglichen Wächter für neue Fälle bejaht. Import und Grind können laufend
+# neue solche Produkte bringen: dieser Wächter fängt sie auf. Er arbeitet wie der Silber-Wächter (silber-waechter.yml), ist aber enger: vergoldete Ware mit Karat wird NICHT entworfen
+# (nur ein Hinweis in der Zusammenfassung), nur Texte ohne jede Plattierungsangabe.
+#
+# Er liest alle AKTIVEN Produkte (Bulk, rund eine Minute) und setzt Treffer auf ENTWURF (mit Arbeits-Tag bazg-gold-1711). Es wird nichts gelöscht.
+# Regel: automation/lib/gold_feingehalt.mjs · Werkzeug: dropship/gold-bazg-1711/ (gold_liste.mjs liest, gold_entwurf.mjs schreibt, gold_melden.mjs meldet; README dort).
+#
+# Zwei Stufen, bewusst getrennt (wie beim Silber- und beim Lager-Wächter):
+#   - Ohne Freigabedatei: nur LESEN, die Meldung nennt die Treffer.
+#   - Mit Freigabedatei dropship/GOLD-WAECHTER-FREI.txt im Repo: setzt im Zeitplan LIVE auf Entwurf. Datei löschen = Stopp.
+# Sicherungen: höchstens 12 Produkte je Lauf (mehr = Halt und Meldung, das ist dann kein normaler Zufluss), jedes Paket wird zurückgelesen, beim ersten Fehler Halt.
+# Die Sicherung der Lauf-Änderungen (Status, Tags, Kanäle) liegt NUR als Artefakt des Laufs (90 Tage), nicht im Repo.
+# Rücknahme eines Laufs: 1) dropship/GOLD-WAECHTER-FREI.txt löschen, 2) Artefakt «gold-waechter-protokoll» laden, 3) SICHERUNG=<Pfad>/gold-sicherung.json ZURUECK=1 LIVE=1 node dropship/gold-bazg-1711/gold_entwurf.mjs
+# Irrtümer: ein Produkt, das KEINE Gold-Feingehaltsangabe macht (Verneinung, Fremdwort), steht in dropship/gold-bazg-1711/gold-ausnahmen.json und wird nie angefasst.
+# Meldung per Telegram nur bei Treffern oder Fehlern. Zeitplan: einmal täglich 05:37 UTC (nach dem Silber-Wächter 05:29: beide nutzen die eine Bulk-Abfrage, die Shopify je App erlaubt).
+
+on:
+  schedule:
+    - cron: '37 5 * * *'
+  workflow_dispatch:
+    inputs:
+      schreiben:
+        description: 'Wirklich auf Entwurf setzen (nur mit Freigabedatei dropship/GOLD-WAECHTER-FREI.txt); sonst nur lesen'
+        type: boolean
+        default: false
+      immer_melden:
+        description: 'Auch bei «keine Treffer» melden (Test des Meldewegs)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gold-waechter
+  cancel-in-progress: false
+
+jobs:
+  waechter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      EREIGNIS: ${{ github.event_name }}
+      SCHREIBEN_EINGABE: ${{ inputs.schreiben }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            automation/lib/shopify_gql.mjs
+            automation/lib/shopify_secret.mjs
+            automation/lib/shopify_host.mjs
+            automation/lib/silber_feingehalt.mjs
+            automation/lib/gold_feingehalt.mjs
+            dropship/silber-bazg-1711/lib.mjs
+            dropship/gold-bazg-1711/gold_liste.mjs
+            dropship/gold-bazg-1711/gold_wahl.mjs
+            dropship/gold-bazg-1711/gold_entwurf.mjs
+            dropship/gold-bazg-1711/gold_melden.mjs
+            dropship/gold-bazg-1711/gold-ausnahmen.json
+            dropship/GOLD-WAECHTER-FREI.txt
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Die Pfade stehen hier und nicht im Job-Kopf: der Context `runner` ist im `env` auf Job-Ebene nicht erlaubt (GitHub lehnt den ganzen Workflow ab, auch den Zeitplan).
+      - name: Pfade festlegen
+        run: |
+          {
+            echo "LISTE=$RUNNER_TEMP/gold-liste.json"
+            echo "SICHERUNG=$RUNNER_TEMP/gold-sicherung.json"
+            echo "LEDGER=$RUNNER_TEMP/gold-ledger.txt"
+          } >> "$GITHUB_ENV"
+
+      - name: Schreiben oder nur lesen?
+        id: modus
+        run: |
+          live=0; frei=0
+          if [ -f dropship/GOLD-WAECHTER-FREI.txt ]; then
+            frei=1
+            if [ "$EREIGNIS" = "schedule" ] || [ "$SCHREIBEN_EINGABE" = "true" ]; then live=1; fi
+          fi
+          echo "frei=$frei" >> "$GITHUB_OUTPUT"
+          echo "live=$live" >> "$GITHUB_OUTPUT"
+          if [ "$live" = "1" ]; then echo "Modus: auf Entwurf setzen (Freigabe liegt im Repo)"; else echo "Modus: nur lesen"; fi
+
+      - name: Katalog lesen (nur lesen)
+        id: lesen
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          MAX_ANZAHL: '12'
+        run: |
+          set +e
+          node dropship/gold-bazg-1711/gold_liste.mjs
+          echo "rc=$?" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Treffer auf Entwurf setzen
+        id: setzen
+        if: steps.lesen.outputs.rc == '0'
+        env:
+          SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          LIVE_MODUS: ${{ steps.modus.outputs.live }}
+        run: |
+          set +e
+          anzahl=$(node -e "console.log(JSON.parse(require('fs').readFileSync(process.env.LISTE,'utf8')).anzahl)")
+          zuviele=$(node -e "console.log(JSON.parse(require('fs').readFileSync(process.env.LISTE,'utf8')).zuViele)")
+          echo "Treffer: $anzahl (über der Obergrenze: $zuviele)"
+          if [ "$zuviele" = "true" ] || [ "$anzahl" = "0" ]; then echo "rc=" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if [ "$LIVE_MODUS" = "1" ]; then
+            # erst NUR die Sicherung (Status, Tags, Kanäle), dann schreiben; beides mit derselben Liste und derselben Sicherungsdatei
+            SICHERN=1 node dropship/gold-bazg-1711/gold_entwurf.mjs
+            rc=$?
+            if [ "$rc" != "0" ]; then echo "Sicherung fehlgeschlagen (Exit $rc), es wird nichts geschrieben"; echo "rc=$rc" >> "$GITHUB_OUTPUT"; exit 0; fi
+            LIVE=1 node dropship/gold-bazg-1711/gold_entwurf.mjs
+            echo "rc=$?" >> "$GITHUB_OUTPUT"
+          else
+            node dropship/gold-bazg-1711/gold_entwurf.mjs
+            echo "rc=$?" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      - name: Melden (Telegram) und Lauf bewerten
+        if: always()
+        env:
+          LISTE_RC: ${{ steps.lesen.outputs.rc }}
+          APPLY_RC: ${{ steps.setzen.outputs.rc }}
+          MODUS: ${{ steps.modus.outputs.live == '1' && 'live' || 'lesen' }}
+          FREIGABE: ${{ steps.modus.outputs.frei == '1' && '1' || '' }}
+          LAUFLINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ALWAYS_NOTIFY: ${{ inputs.immer_melden && '1' || '' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          node dropship/gold-bazg-1711/gold_melden.mjs 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
+          exit "${PIPESTATUS[0]}"
+
+      - name: Protokoll und Sicherung aufbewahren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gold-waechter-protokoll
+          path: |
+            ${{ runner.temp }}/gold-liste.json
+            ${{ runner.temp }}/gold-sicherung.json
+            ${{ runner.temp }}/gold-ledger.txt
+          if-no-files-found: ignore
+          retention-days: 90
+          overwrite: true
