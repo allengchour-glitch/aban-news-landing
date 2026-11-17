@@ -1,0 +1,16 @@
+--- a/pod/v6/lspod-designer-v6-6.4.2.js
++++ b/pod/v6/lspod-designer-v6-6.4.2.js
+@@ -3621,7 +3621,12 @@
+         var ruck = el('div', { class: 'lsp6-checker' + (grund === 'dunkel' ? ' lsp6-checker-dunkel' : ''), 'data-grund': grund === 'dunkel' ? 'dunkel' : 'hell' }, [el('img', { src: url, alt: '', style: 'display:block;max-width:82vw;max-height:58vh' })]);
+         modal.appendChild(ruck);
+         var zuBtn = el('button', { type: 'button', class: 'go', text: T.close });
+-        function zu() { modal.remove(); try { URL.revokeObjectURL(url); } catch (x) { /* egal */ } }
++        function zu() {
++          modal.remove();
++          try { URL.revokeObjectURL(url); } catch (x) { /* egal */ }
++          try { ui.preview.focus({ preventScroll: true }); }
++          catch (x) { try { ui.preview.focus(); } catch (x2) { /* egal */ } }
++        }
+         zuBtn.addEventListener('click', zu);
+         modal.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') zu(); });
+         modal.appendChild(zuBtn);
