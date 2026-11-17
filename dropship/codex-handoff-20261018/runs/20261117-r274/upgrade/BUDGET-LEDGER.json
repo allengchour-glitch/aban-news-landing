@@ -1,0 +1,37 @@
+{
+  "masterId": "luxe-home-atelier-multishot-20261116",
+  "scope": "Website hero creative iterations, no Social publication permission",
+  "ownerText": "ja nutze 1000 credits",
+  "budgetCapCredits": 1000,
+  "newGenerationQuoteTotalCredits": 840,
+  "historicalR272QuoteCredits": 90,
+  "subtotalIncludingOnlyR272Credits": 930,
+  "actualAccountDebits": "UNKNOWN",
+  "noTopUpSubscriptionOrAdsAuthorization": true,
+  "submissions": [
+    {
+      "creativeRevision": 2,
+      "jobId": "f00c3900-1d32-4b4c-a6cc-4226d7c7436a",
+      "quotedCredits": 420,
+      "status": "COMPLETED",
+      "sha256": "4b31520ceca71cc0db8a2253a697239114ddd269774e613619c16d97b331ba44",
+      "review": "Provisional product-fidelity pass; motion mostly still-image zooms; retain review candidate",
+      "creativeApproval": false
+    },
+    {
+      "creativeRevision": 3,
+      "jobId": "adbdd1b7-703a-4290-92fc-1f1a1e3a396b",
+      "quotedCredits": 420,
+      "status": "COMPLETED",
+      "reason": "Deliberate new six-shot prompt after completed first candidate's measured weak-motion finding; not a blind retry",
+      "creativeApproval": false,
+      "sha256": "f382eea64d6c6a1312388673a5fd62419bbe3d03bf7953a8219af47971971fe4",
+      "webSha256": "15f2c9c700553650619e82bc1792578eb2c2eccc0343b162fc5f3132807111dd",
+      "review": "Astra provisional product fidelity pass; six shots, better focus/detail-light changes; restrained physical movement; preferred review candidate",
+      "previewMediaId": "fbf37221-d51b-48d8-96ca-9d1f173d5757"
+    }
+  ],
+  "furtherPaidSubmissionsPlanned": 0,
+  "existingR272NativeBindingChanged": false,
+  "published": false
+}

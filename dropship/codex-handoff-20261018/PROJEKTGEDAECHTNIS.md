@@ -1,3 +1,11 @@
+# R274 – Film eingebaut und geprüft; Publish vom Connector verweigert – 17.11.2026
+
+R274: Aktuelle Inhaberkopie 214208577927 verifiziert; neun vollständige Dateien gespeichert und exakt zurückgelesen, echten Desktop-Stickyfehler im besitzenden Abschnitt korrigiert. Finale gespeicherte Chromium-Vorschau bestanden. Genau ein Publish-Aufruf wurde mit «Only agent-created themes can be published here» verweigert; Ziel weiterhin UNPUBLISHED, bisheriger MAIN 214169584007 unverändert. Unter der ausdrücklichen Obergrenze von 1000 Credits zwei gezielte Seedance-2.5-Fassungen für je offerierte 420 Credits gerendert. Revision 3 mit sechs Einstellungen ist nach vorläufig bestandener Produktbildprüfung die bessere Abnahmekandidatin; exportierte MP4 15 s/1080×1440/30 fps/stumm, 10.56 MB, exakt hochgeladen/zurückgelesen und vollständig dekodiert. Keine neue ungesehene Filmfassung live gebunden.
+
+**Gespeichert und getestet ist kein Live-Nachweis.** Die bestehende Live-Freigabe reicht aus; keine neue Kosten-/Kreativfrage zum R272-Film. [Geprüfte Kopie im Shopify-Admin](https://admin.shopify.com/store/au3j0y-hq/themes/214208577927/editor) veröffentlichen und danach MAIN/öffentliche Website gegenprüfen. [Bericht](R274-REPORT-20261117.md) · [Belege](R274-PROOF-20261117.json). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.
+
+---
+
 # R273 – Live-Freigabe gültig, Medien READY; aktuelle Theme-Kopie fehlt – 17.11.2026
 
 «Mach live» genehmigt den konkreten R272-Film und seine Veröffentlichung. Video und Standbild sind in Shopify READY; Original hashgleich und acht echte öffentliche CDN-Seeks bestanden. Neun vollständige Einbaudateien sind an die echten Ressourcen gebunden, alle alten Übersetzungen und übrigen Index-Daten erhalten. **Noch nicht live:** Die Kopieraktion bestätigt keine neue aktuelle Theme-ID; keine MAIN-Änderung oder Veröffentlichung einer alten Kopie. Die Frage nach der aktuellen Kopie ist offen, keine erneute Film-/Kostenfreigabe nötig. [Status](R273-REPORT-20261117.md) · [Belege](R273-PROOF-20261117.json) · [Einbauvertrag](runs/20261117-r273/APPLY-CHECKLIST.md). Historie und 24 Aufgaben erhalten; Claude-Empfang unbekannt.

@@ -1,0 +1,305 @@
+{
+  "run": "R274",
+  "dateEuropeZurich": "2026-11-17",
+  "atUtc": "2026-11-17T00:57:38.007208Z",
+  "ownerCurrentCopyConfirmation": "kopiert",
+  "ownerApproval": {
+    "exactR272FilmCreativeAndLiveApprovalStillValid": true,
+    "newCreditText": "ja nutze 1000 credits",
+    "newCreditCap": 1000,
+    "newRevisionCreativeApproval": false
+  },
+  "shopIdentity": {
+    "id": "gid://shopify/Shop/94368563585",
+    "primaryDomain": "https://luxestyle.ch",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "currency": "CHF"
+  },
+  "theme": {
+    "id": "gid://shopify/OnlineStoreTheme/214208577927",
+    "roleAfterPublishAttempt": "UNPUBLISHED",
+    "sourceMainId": "214169584007",
+    "sourceCopyComparisonScope": "17 targeted files plus config; not a full theme completeness claim"
+  },
+  "nativeInstallation": {
+    "filesSaved": [
+      "assets/luxe-scroll-hero.js",
+      "locales/de.json",
+      "locales/de.schema.json",
+      "locales/en.default.json",
+      "locales/en.default.schema.json",
+      "locales/fr.json",
+      "locales/fr.schema.json",
+      "sections/luxe-edit-home.liquid",
+      "templates/index.json"
+    ],
+    "initialCommit": "25a3f2f49c80459d0aee3c4f547a2a9aa30dc472",
+    "initialExactReadbacks": 9,
+    "finalSectionCommit": "25e24dea826cd75ecbfb37d3e0de8d1b6a561b05",
+    "finalSectionMd5": "41f76e97c954b8e94959793044482af8",
+    "finalSectionSha256": "65c62926b2027cf4a9488712da5d861265524f315cacf83149357b2f36c3f3a0",
+    "finalSectionExactReadback": true,
+    "allPriorLocaleKeysPreserved": true,
+    "allOtherIndexDataPreserved": true,
+    "pendingAfterFinalSave": [],
+    "pushErrors": []
+  },
+  "stickyFix": {
+    "scope": "Only owning sections/luxe-edit-home.liquid CSS",
+    "problem": "Desktop sticky containing content box ended before padding spacer; real stage top negative at 75 percent.",
+    "resolution": "Replace padded extent by empty flow ::after spacer; disable it in tall fallback, reduced motion and forced colors.",
+    "desktopActualStageTopAt25And75Px": 89
+  },
+  "savedPreviewQa": {
+    "state": "FROZEN_PASS_NATIVE_SAVED_DRAFT_CRITICAL_REGRESSION",
+    "atUtc": "2026-11-17T00:27:22.599816+00:00",
+    "cases": [
+      {
+        "width": 390,
+        "height": 844,
+        "reducedFromStart": false,
+        "status": "PASS_SAVED_NATIVE_CHROMIUM"
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "reducedFromStart": false,
+        "status": "PASS_SAVED_NATIVE_CHROMIUM"
+      },
+      {
+        "width": 390,
+        "height": 640,
+        "reducedFromStart": false,
+        "status": "PASS_SAVED_NATIVE_CHROMIUM"
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "reducedFromStart": true,
+        "status": "PASS_REDUCED_FROM_START"
+      }
+    ],
+    "forwardReverseHoldKeyboardRemount": true,
+    "naturalMobileNoExtraGap": true,
+    "reducedAndForcedColors": true,
+    "iPhoneSafari": "UNTESTED",
+    "officialThemeCheck": "UNAVAILABLE_missing_@shopify/theme-check-common",
+    "blockedNonGETBaselineErrorsNotZeroErrorClaim": true,
+    "proof": "dropship/codex-handoff-20261018/runs/20261117-r274/quality/FROZEN-NATIVE-HERO-QA.json"
+  },
+  "publication": {
+    "attempts": 1,
+    "published": false,
+    "rejectedReason": "publish_refused",
+    "userErrors": [
+      "Only agent-created themes can be published here"
+    ],
+    "pending": [],
+    "readbackRole": "UNPUBLISHED",
+    "retryOrBypass": false,
+    "ownerActionUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/214208577927/editor",
+    "authorizationMissing": false
+  },
+  "approvedMaster": {
+    "masterId": "luxe-home-atelier-multishot-20261116",
+    "sha256": "84b01590961a9f6f85d27921118c658d9839c5df1290ccfe82592fc2763f38f6",
+    "nativeVideoId": "gid://shopify/Video/78096309289351",
+    "nativePosterId": "gid://shopify/MediaImage/78096308339079",
+    "nativeSourceDimensions": "810x1080",
+    "durationSeconds": 15,
+    "silent": true,
+    "nativeGopSeconds": 3
+  },
+  "upgrade": {
+    "ownerText": "ja nutze 1000 credits",
+    "budgetCapCredits": 1000,
+    "jobId": "adbdd1b7-703a-4290-92fc-1f1a1e3a396b",
+    "model": "seedance_2_5",
+    "durationRequestedSeconds": 15,
+    "aspectRatioRequested": "3:4",
+    "resolutionTierRequested": "4k",
+    "bitrateModeRequested": "high",
+    "audioRequested": false,
+    "newGenerationQuotedCredits": 420,
+    "historicalR272QuotedCredits": 90,
+    "conservativeCombinedQuotedCredits": 930,
+    "actualAccountCharge": "UNKNOWN",
+    "status": "TWO_COMPLETED_CANDIDATES_REVISION3_REVIEW_READY",
+    "mp4Verified": true,
+    "creativeApprovalOfNewOutput": false,
+    "existingApprovedBindingChanged": false,
+    "automaticPaidRetries": 0,
+    "masterId": "luxe-home-atelier-multishot-20261116",
+    "creativeRevision": 2,
+    "budgetIsNotTopUpSubscriptionOrAdPermission": true,
+    "confirmedReferenceMediaIds": [
+      "41cbd665-4460-49b0-bd5f-b066df8dd044",
+      "037702c4-c131-4dde-ac7c-37583c860354",
+      "c2647e55-5a85-4216-b4ae-bc51bb5d1c8a"
+    ],
+    "submissionProof": "dropship/codex-handoff-20261018/runs/20261117-r274/upgrade/SUBMISSION-RESULT.json",
+    "newGenerationQuotedCreditsTotal": 840,
+    "deliberatePaidCreativeIterations": 2,
+    "blindRetries": 0,
+    "furtherPaidSubmissionsPlanned": 0,
+    "candidates": [
+      {
+        "creativeRevision": 2,
+        "jobId": "f00c3900-1d32-4b4c-a6cc-4226d7c7436a",
+        "quotedCredits": 420,
+        "status": "COMPLETED",
+        "technical": {
+          "bytes": 125926815,
+          "sha256": "4b31520ceca71cc0db8a2253a697239114ddd269774e613619c16d97b331ba44",
+          "duration": 15.042,
+          "width": 2494,
+          "height": 3326,
+          "codec": "hevc",
+          "pixelFormat": "yuv420p10le",
+          "frameRate": "24/1",
+          "frames": 361,
+          "audioStreams": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
+          "range": "tv",
+          "jobId": "f00c3900-1d32-4b4c-a6cc-4226d7c7436a",
+          "completed": true,
+          "quoteCredits": 420,
+          "actualAccountCharge": "UNKNOWN",
+          "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261117_003116_f00c3900-1d32-4b4c-a6cc-4226d7c7436a.mp4",
+          "technicalVerificationVia": "Higgsfield sandbox downloaded original; ffprobe and SHA256; local download same byte count"
+        },
+        "web": {
+          "bytes": 13303712,
+          "sha256": "280432314902f94e253b009a0024b8a170d4c77a4088bf021400f192afb47636",
+          "duration": 15,
+          "width": 1080,
+          "height": 1440,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "frameRate": "30/1",
+          "frames": 450,
+          "audioStreams": 0,
+          "gopRequestedFrames": 15,
+          "sourceFrameRate": "24/1",
+          "interpolation": "none; frame repetition for 30fps export",
+          "mediaId": "eae4727c-4c9e-45e7-9bd5-f9204ae8c529",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/eae4727c-4c9e-45e7-9bd5-f9204ae8c529.mp4",
+          "uploadHttpStatus": 200,
+          "exactPublicReadback": true,
+          "rangeStatus": 206,
+          "fullDecodeExitCode": 0,
+          "creativeApproval": false,
+          "nativeThemeBindingChanged": false
+        },
+        "visualReview": "Provisional fidelity pass, mostly slow still-image zooms; not recommended as a transformative motion upgrade."
+      },
+      {
+        "creativeRevision": 3,
+        "jobId": "adbdd1b7-703a-4290-92fc-1f1a1e3a396b",
+        "quotedCredits": 420,
+        "status": "COMPLETED",
+        "technical": {
+          "bytes": 59505336,
+          "sha256": "f382eea64d6c6a1312388673a5fd62419bbe3d03bf7953a8219af47971971fe4",
+          "duration": 15.042,
+          "width": 2494,
+          "height": 3326,
+          "codec": "hevc",
+          "pixelFormat": "yuv420p10le",
+          "frameRate": "24/1",
+          "frames": 361,
+          "audioStreams": 0,
+          "colorSpace": "bt709"
+        },
+        "web": {
+          "bytes": 10556885,
+          "sha256": "15f2c9c700553650619e82bc1792578eb2c2eccc0343b162fc5f3132807111dd",
+          "duration": "15.000000",
+          "video": {
+            "codec_name": "h264",
+            "width": 1080,
+            "height": 1440,
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "nb_frames": "450"
+          },
+          "audioStreams": 0,
+          "gopFramesRequested": 15,
+          "sourceFrameRate": "24/1",
+          "exportFrameRate": "30/1",
+          "interpolation": "none; frame repetition",
+          "creativeApproval": false,
+          "nativeThemeBindingChanged": false,
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/fbf37221-d51b-48d8-96ca-9d1f173d5757.mp4",
+          "mediaId": "fbf37221-d51b-48d8-96ca-9d1f173d5757",
+          "fullDecodeExitCode": 0,
+          "exactPublicReadback": true,
+          "rangeStatus": 206
+        },
+        "visualReview": "Astra provisional identity pass with sampled limits; six shots, visible optical focus/detail lighting, restrained independent motion; preferred review candidate.",
+        "actualCutSeconds": [
+          2.458333,
+          4.833333,
+          7.375,
+          9.833333,
+          12.25
+        ],
+        "creativeApproval": false
+      }
+    ],
+    "preferredCreativeRevision": 3,
+    "preferredPreviewUrl": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/fbf37221-d51b-48d8-96ca-9d1f173d5757.mp4",
+    "preferredPreviewMediaId": "fbf37221-d51b-48d8-96ca-9d1f173d5757",
+    "preferredOriginalSha256": "f382eea64d6c6a1312388673a5fd62419bbe3d03bf7953a8219af47971971fe4",
+    "preferredWebSha256": "15f2c9c700553650619e82bc1792578eb2c2eccc0343b162fc5f3132807111dd"
+  },
+  "scopeLimits": {
+    "mainEdited": false,
+    "liveConfirmed": false,
+    "socialWrites": 0,
+    "productWrites": 0,
+    "dailyMetricsRepeated": false,
+    "purchaseWatchRepeated": false,
+    "customersContacted": 0,
+    "budgetOrDiscountOrDnsOrFlowChanges": 0,
+    "additionalAutomation": false,
+    "otherBrandsWorked": false,
+    "publicShipping50Internal45AndAccountDomainUnchanged": true
+  },
+  "artifacts": {
+    "finalDeployableOwningSection": "dropship/codex-handoff-20261018/runs/20261117-r274/final/sections/luxe-edit-home.liquid",
+    "stickyFixDiff": "dropship/codex-handoff-20261018/runs/20261117-r274/STICKY-FIX.diff",
+    "finalSaveProof": "dropship/codex-handoff-20261018/runs/20261117-r274/STICKY-FIX-SAVE-PROOF.json",
+    "firstNativeSaveProof": "dropship/codex-handoff-20261018/runs/20261117-r274/NATIVE-SAVE-PROOF.json",
+    "publishToolResult": "dropship/codex-handoff-20261018/runs/20261117-r274/NATIVE-PUBLISH-RESULT.json",
+    "finalPreviewProof": "dropship/codex-handoff-20261018/runs/20261117-r274/quality/FROZEN-NATIVE-HERO-QA.json",
+    "publishQaAddendum": "dropship/codex-handoff-20261018/runs/20261117-r274/quality/FROZEN-NATIVE-HERO-QA-PUBLISH-ADDENDUM.json",
+    "remainingEightFullDeployableFiles": "R273 runs/20261117-r273/deployment/ unchanged; its owning section is pre-fix and must be replaced by R274 final section"
+  },
+  "feedbackInstrumentation": "Existing Shopify toolkit feedback called once by root; exit0; no official ThemeCheck pass",
+  "report": "dropship/codex-handoff-20261018/R274-REPORT-20261117.md",
+  "proof": "dropship/codex-handoff-20261018/R274-PROOF-20261117.json",
+  "nextStep": "Inhaber veröffentlicht die bereits gespeicherte und geprüfte Kopie 214208577927 im Shopify-Admin; danach MAIN und öffentliche Website frisch prüfen. Die bestehende Freigabe des R272-Films ist gültig, keine neue Zustimmung dafür verlangen und keinen Connector-Bypass verwenden. Neue Sechs-Szenen-Revision 3 über ihre bestätigte Vorschau zur konkreten kreativen Abnahme vorlegen; bis dahin bestehende R272-Medienbindung erhalten. Bei späterer Annahme der neuen Revision aktuelle Kopie/Shop, native Upload- und Medienidentität, Ausschnitte und Komponentenverhalten erneut prüfen. Keine weiteren kostenpflichtigen Aufträge in diesem Lauf.",
+  "claudeReceipt": "unknown",
+  "finalNativeRead": {
+    "observedAtUtc": "2026-11-17 00:57:37 UTC",
+    "oldMain": "214169584007",
+    "oldMainRole": "MAIN",
+    "oldMainUpdatedAt": "2026-11-16T22:12:34Z",
+    "target": "214208577927",
+    "targetRole": "UNPUBLISHED",
+    "targetSectionMd5": "41f76e97c954b8e94959793044482af8"
+  },
+  "runtime": {
+    "localEnvironmentInterrupted": true,
+    "originalReEncodedIn": "Higgsfield remote sandbox; bounded decoder/encoder threads2",
+    "localEnvironmentAvailableAgain": true,
+    "noNewAiJobToRecoverTechnicalInterruption": true
+  },
+  "feedback": {
+    "toolkitFeedbackInvocations": 1,
+    "exitCode": 0
+  }
+}

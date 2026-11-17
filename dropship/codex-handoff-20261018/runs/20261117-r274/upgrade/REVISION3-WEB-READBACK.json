@@ -1,0 +1,11 @@
+{
+  "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/fbf37221-d51b-48d8-96ca-9d1f173d5757.mp4",
+  "mediaId": "fbf37221-d51b-48d8-96ca-9d1f173d5757",
+  "bytes": 10556885,
+  "sha256": "15f2c9c700553650619e82bc1792578eb2c2eccc0343b162fc5f3132807111dd",
+  "exactUploadReadback": true,
+  "rangeStatus": 206,
+  "contentRange": "bytes 0-1023/10556885",
+  "rangeBytesRead": 1024,
+  "nativeBindingChanged": false
+}

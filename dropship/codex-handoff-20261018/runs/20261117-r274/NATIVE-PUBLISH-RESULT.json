@@ -1,0 +1,27 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "not published: Shopify refused it:\nOnly agent-created themes can be published here"
+    },
+    {
+      "type": "text",
+      "text": "{\"themeId\":\"gid://shopify/OnlineStoreTheme/214208577927\",\"published\":false,\"pending\":[],\"userErrors\":[\"Only agent-created themes can be published here\"],\"rejectedReason\":\"publish_refused\"}",
+      "annotations": {
+        "audience": [
+          "assistant"
+        ]
+      }
+    }
+  ],
+  "structuredContent": {
+    "themeId": "gid://shopify/OnlineStoreTheme/214208577927",
+    "published": false,
+    "pending": [],
+    "userErrors": [
+      "Only agent-created themes can be published here"
+    ],
+    "rejectedReason": "publish_refused"
+  },
+  "isError": false
+}

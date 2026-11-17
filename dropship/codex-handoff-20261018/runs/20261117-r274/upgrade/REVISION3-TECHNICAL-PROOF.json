@@ -1,0 +1,41 @@
+{
+  "jobId": "adbdd1b7-703a-4290-92fc-1f1a1e3a396b",
+  "creativeRevision": 3,
+  "original": {
+    "bytes": 59505336,
+    "sha256": "f382eea64d6c6a1312388673a5fd62419bbe3d03bf7953a8219af47971971fe4",
+    "duration": 15.042,
+    "width": 2494,
+    "height": 3326,
+    "codec": "hevc",
+    "pixelFormat": "yuv420p10le",
+    "frameRate": "24/1",
+    "frames": 361,
+    "audioStreams": 0,
+    "colorSpace": "bt709"
+  },
+  "web": {
+    "bytes": 10556885,
+    "sha256": "15f2c9c700553650619e82bc1792578eb2c2eccc0343b162fc5f3132807111dd",
+    "duration": "15.000000",
+    "video": {
+      "codec_name": "h264",
+      "width": 1080,
+      "height": 1440,
+      "r_frame_rate": "30/1",
+      "avg_frame_rate": "30/1",
+      "nb_frames": "450"
+    },
+    "audioStreams": 0,
+    "gopFramesRequested": 15,
+    "sourceFrameRate": "24/1",
+    "exportFrameRate": "30/1",
+    "interpolation": "none; frame repetition",
+    "creativeApproval": false,
+    "nativeThemeBindingChanged": false
+  },
+  "mediaId": "fbf37221-d51b-48d8-96ca-9d1f173d5757",
+  "previewUrl": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/fbf37221-d51b-48d8-96ca-9d1f173d5757.mp4",
+  "creativeApproval": false,
+  "nativeThemeBindingChanged": false
+}

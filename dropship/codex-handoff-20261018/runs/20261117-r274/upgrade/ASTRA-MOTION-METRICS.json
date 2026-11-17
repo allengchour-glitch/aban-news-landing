@@ -1,0 +1,26 @@
+{
+  "B": {
+    "start_seconds": 4,
+    "end_seconds": 7,
+    "matches": 1565,
+    "inlier_fraction": 0.9616613418530351,
+    "scale": 1.0647285714021513,
+    "translation_px_at_1000w": [
+      -29.721111881272325,
+      -27.01439115284869
+    ],
+    "inlier_median_residual_px": 0.6238730549812317
+  },
+  "C": {
+    "start_seconds": 7.5,
+    "end_seconds": 10.5,
+    "matches": 2781,
+    "inlier_fraction": 0.974829198130169,
+    "scale": 1.0312339728494513,
+    "translation_px_at_1000w": [
+      -17.267537788476584,
+      -23.655134812031843
+    ],
+    "inlier_median_residual_px": 0.34439221024513245
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "state": "FROZEN_PASS_NATIVE_SAVED_DRAFT_CRITICAL_REGRESSION",
+  "atUtc": "2026-11-17T00:27:22.599816+00:00",
+  "themeId": "214208577927",
+  "roleObserved": "UNPUBLISHED",
+  "sectionMd5Verified": "41f76e97c954b8e94959793044482af8",
+  "sectionSha256ReportedByRoot": "65c62926b2027cf4a9488712da5d861265524f315cacf83149357b2f36c3f3a0",
+  "nativeCommitReportedByRoot": "25e24dea826cd75ecbfb37d3e0de8d1b6a561b05",
+  "actualCurrentNativeReads": "RoleUNPUBLISHED and matching sectionMD5 read independently before this final browser run.",
+  "cases": [
+    {
+      "width": 390,
+      "height": 844,
+      "reducedFromStart": false,
+      "status": "PASS_SAVED_NATIVE_CHROMIUM",
+      "actualThemeId": 214208577927,
+      "newOwnerCount": 1,
+      "actualNativeVideoDimensions": [
+        810,
+        1080
+      ],
+      "source": "https://luxestyle.ch/cdn/shop/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.HD-1080p-4.8Mbps-101621626.mp4?v=0",
+      "newCSSLoaded": true,
+      "moduleLoaded": true,
+      "firstTime": 0,
+      "forwardTime": 11.269264,
+      "backwardTime": 3.749104,
+      "pausePassed": true,
+      "keyboardPassed": true,
+      "remountPassed": true,
+      "naturalNoExtraGap": true,
+      "desktopActualPin": null,
+      "forcedColorsNoVisibleMotionAndNoSpacer": null,
+      "overflow": false,
+      "observedPageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "reducedFromStart": false,
+      "status": "PASS_SAVED_NATIVE_CHROMIUM",
+      "actualThemeId": 214208577927,
+      "newOwnerCount": 1,
+      "actualNativeVideoDimensions": [
+        810,
+        1080
+      ],
+      "source": "https://luxestyle.ch/cdn/shop/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.HD-1080p-4.8Mbps-101621626.mp4?v=0",
+      "newCSSLoaded": true,
+      "moduleLoaded": true,
+      "firstTime": 0,
+      "forwardTime": 11.245927,
+      "backwardTime": 3.746427,
+      "pausePassed": true,
+      "keyboardPassed": true,
+      "remountPassed": true,
+      "naturalNoExtraGap": null,
+      "desktopActualPin": true,
+      "forcedColorsNoVisibleMotionAndNoSpacer": true,
+      "overflow": false,
+      "observedPageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "pinGeometry": {
+        "forwardDom": {
+          "stageTop": 89,
+          "headerInset": "89px",
+          "documentVisible": "visible",
+          "documentHidden": false
+        },
+        "backwardDom": {
+          "stageTop": 89,
+          "headerInset": "89px",
+          "documentVisible": "visible",
+          "documentHidden": false
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 640,
+      "reducedFromStart": false,
+      "status": "PASS_SAVED_NATIVE_CHROMIUM",
+      "actualThemeId": 214208577927,
+      "newOwnerCount": 1,
+      "actualNativeVideoDimensions": [
+        810,
+        1080
+      ],
+      "source": "https://luxestyle.ch/cdn/shop/videos/c/vp/aa2fde9011d8483db61d3b1d34a5e7b2/aa2fde9011d8483db61d3b1d34a5e7b2.HD-1080p-4.8Mbps-101621626.mp4?v=0",
+      "newCSSLoaded": true,
+      "moduleLoaded": true,
+      "firstTime": 0,
+      "forwardTime": 11.275668,
+      "backwardTime": 3.748897,
+      "pausePassed": true,
+      "keyboardPassed": true,
+      "remountPassed": true,
+      "naturalNoExtraGap": true,
+      "desktopActualPin": null,
+      "forcedColorsNoVisibleMotionAndNoSpacer": null,
+      "overflow": false,
+      "observedPageErrors": [
+        "Failed to fetch",
+        "Failed to fetch",
+        "Failed to fetch"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "reducedFromStart": true,
+      "status": "PASS_REDUCED_FROM_START",
+      "actualThemeId": 214208577927,
+      "newOwnerCount": 1,
+      "actualNativeVideoDimensions": [
+        0,
+        0
+      ],
+      "source": "",
+      "newCSSLoaded": true,
+      "moduleLoaded": true,
+      "firstTime": 0,
+      "forwardTime": null,
+      "backwardTime": null,
+      "pausePassed": null,
+      "keyboardPassed": null,
+      "remountPassed": null,
+      "naturalNoExtraGap": null,
+      "desktopActualPin": null,
+      "forcedColorsNoVisibleMotionAndNoSpacer": null,
+      "overflow": false,
+      "observedPageErrors": [
+        "Failed to fetch",
+        "Failed to fetch"
+      ],
+      "heroMediaRequests": [],
+      "videoSrcAbsent": true
+    }
+  ],
+  "imagesViewed": [
+    {
+      "file": "native-saved-390x844-dress.png",
+      "bytes": 140100,
+      "sha256": "393bfce0fa00bef6e52043143f04e406a753acf6c2c33d21f7a02e904b7583cc"
+    },
+    {
+      "file": "native-saved-1440x900-jar.png",
+      "bytes": 454541,
+      "sha256": "37323b3169f3a9df9d72a80b75713ebf62bf2723245c97321ddd279d85c1d0c7"
+    },
+    {
+      "file": "native-saved-desktop-forced-colors-FINAL.png",
+      "bytes": 78142,
+      "sha256": "cad48c985b01dbff6ffa9722fb5a7ac920320a21814ff5981ae24a4fae87096d"
+    }
+  ],
+  "visualObservations": [
+    "Real native header and CSS healthy. Dress/ceramic frames full inside contain media, copy on separate dark panel, no product-text overlap.",
+    "Desktop post-fix stage remains89px below header at both25%and75%scroll.",
+    "Mobile tall modes scroll naturally with no artificial pseudo-spacer or horizontaloverflow.",
+    "Reducedmotionfromstart loads poster only and requests no newheroMP4.",
+    "Forcedcolors hides motion/controls/spacer; text and navigation remain readable. Decorative photography is suppressed in this mode."
+  ],
+  "limits": [
+    "No iPhone/Safari or continuous framerate guarantee. Actual original24fps→30fps export facts remain unchanged.",
+    "Cold source seeks can exceed500ms; waits assert the intended currentTime rather than sampling a previous frame.",
+    "Two/three generic Failedtofetch pageerrors also occur under the same noPOST/analytics guard in the unchanged savedcopy/MAIN baseline; not a claim of zero page errors.",
+    "This agent did not publish or change any native theme file. Root still must use allowed publication and verify public MAIN afterward."
+  ],
+  "report": "NATIVE-SAVED-HERO-QA-FINAL.json",
+  "nativeWrites": 0,
+  "externalFormActions": 0,
+  "publicationByThisAgent": false
+}

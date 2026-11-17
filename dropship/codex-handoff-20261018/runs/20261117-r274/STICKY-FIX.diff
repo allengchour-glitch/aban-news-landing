@@ -1,0 +1,25 @@
+--- r273/sections/luxe-edit-home.liquid
++++ r274/sections/luxe-edit-home.liquid
+@@ -791,11 +791,13 @@
+   body:has(#header-component[sticky='scroll-up'][data-sticky-state='active']) .lx-scroll-root {
+     --lx-scroll-sticky-top: var(--header-height, 0px);
+   }
+-  .lx-home .lx-scroll-root[data-scroll-enhanced] { padding-block-end: min(84svh, 800px); }
++  .lx-home .lx-scroll-root[data-scroll-enhanced] { padding-block-end: 0; }
++  .lx-home .lx-scroll-root[data-scroll-enhanced]::after { content: ''; display: block; block-size: min(84svh, 800px); pointer-events: none; }
+   .lx-home .lx-scroll-root[data-scroll-enhanced] .lx-scroll-hero {
+     position: sticky; top: var(--lx-scroll-sticky-top); margin-block-start: 0;
+   }
+   .lx-home .lx-scroll-root[data-scroll-tall] { padding-block-end: 0; }
++  .lx-home .lx-scroll-root[data-scroll-tall]::after { display: none; }
+   .lx-home .lx-scroll-root[data-scroll-tall] .lx-scroll-hero { position: relative; top: auto; }
+   .lx-home .lx-scroll-root { padding-block-start: 20px; }
+   .lx-home .lx-scroll-root .lx-scroll-hero { margin-block-start: 0; }
+@@ -842,6 +844,7 @@
+   }
+   @media (prefers-reduced-motion: reduce), (forced-colors: active) {
+     .lx-home .lx-scroll-root[data-scroll-enhanced] { padding-block-end: 0; }
++    .lx-home .lx-scroll-root[data-scroll-enhanced]::after { display: none; }
+     .lx-home .lx-scroll-root[data-scroll-enhanced] .lx-scroll-hero { position: relative; top: auto; }
+     .lx-home .lx-scroll-hero__video { display: none; }
+     .lx-home .lx-scroll-hero__controls { display: none; }

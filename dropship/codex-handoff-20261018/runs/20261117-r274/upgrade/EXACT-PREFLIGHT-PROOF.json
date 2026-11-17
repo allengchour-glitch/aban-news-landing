@@ -1,0 +1,42 @@
+{
+  "quote": {
+    "cost": {
+      "credits": 420,
+      "credits_exact": 420
+    },
+    "adjustments": {
+      "medias[0].role": {
+        "requested": "image",
+        "used": "image_references",
+        "reason": "Seedance 2.5 backend expects schema-key media roles"
+      },
+      "medias[1].role": {
+        "requested": "image",
+        "used": "image_references",
+        "reason": "Seedance 2.5 backend expects schema-key media roles"
+      },
+      "medias[2].role": {
+        "requested": "image",
+        "used": "image_references",
+        "reason": "Seedance 2.5 backend expects schema-key media roles"
+      }
+    }
+  },
+  "inputReferenceRoles": [
+    {
+      "role": "image",
+      "value": "41cbd665-4460-49b0-bd5f-b066df8dd044"
+    },
+    {
+      "role": "image",
+      "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96d12900-9474-44ca-8364-d91e975014ba_0e040f68-9668-479d-8aca-731f42a9d896.jpg?v=1786819403"
+    },
+    {
+      "role": "image",
+      "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be03d88a-60a5-4dd4-8f06-a1b40067d2e1.jpg?v=1788517064"
+    }
+  ],
+  "quoteIsNotAJob": true,
+  "jobCount": 0,
+  "creativeReviewRequired": true
+}

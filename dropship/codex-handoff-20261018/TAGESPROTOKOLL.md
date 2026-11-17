@@ -3348,3 +3348,20 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Status](R273-REPORT-20261117.md) · [Belege](R273-PROOF-20261117.json).
 
 [LUXESTYLE_R273_20261117]
+
+
+### R274 – Nativer Film-Einbau, Schlussprüfung und Publish-Grenze
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität und Kopie | Shop/Domain/CHF und die neue Inhaberkopie 214208577927 frisch geprüft; 17 gezielte Quelldateien plus Konfiguration mit MAIN verglichen. | Aktueller legitimer Entwurf bestätigt; Kopie-Blocker aus R273 gelöst. Keine Vollständigkeitsbehauptung über den ganzen Theme-Dateibaum. |
+| Nativer Einbau | Neun vollständige Dateien installiert, gespeichert und exakt zurückgelesen. | Commit 25a3f2f49c80459d0aee3c4f547a2a9aa30dc472, keine Pending-Dateien/Pushfehler. Bestehende Übersetzungsschlüssel und übrige Index-Daten erhalten. |
+| Konkrete Korrektur | Echten Desktop-Stickyfehler im besitzenden Abschnitt mit leerem Flow-Spacer korrigiert, nativ gespeichert und hashgleich zurückgelesen. | Commit 25e24dea826cd75ecbfb37d3e0de8d1b6a561b05; finales MD5 41f76e97c954b8e94959793044482af8. Kein globaler Header-/Theme-Umbau. |
+| Schlussprüfung | Gespeicherte echte Vorschau mit nativer MP4 auf Mobil-/Desktopgrössen und Reduced Motion geprüft. | Vorwärts/Rückwärts, Halt, Tastatur, Remount und Desktop-Pin bestanden; Forced Colors ohne Bewegung/Spacer. Mobile natürliche Darstellung ohne Zusatzlücke. iPhone/Safari ungeprüft; kein offizieller Theme-Check-Pass behauptet. |
+| Veröffentlichung | Nach bestehender Live-Freigabe genau einmal publish aufgerufen und Zielrolle nachgelesen. | Connector verweigert «Only agent-created themes can be published here»; Ziel UNPUBLISHED, kein Live-Erfolg. Manuelles Veröffentlichen im Admin erforderlich; kein Retry oder Bypass. |
+| Neue Produktionsfreigabe | «ja nutze 1000 credits» als Obergrenze aufgenommen; nach Prüfung des ersten Ergebnisses zwei gezielt unterschiedliche Produktionen für zusammen 840 offerierte Credits eingereicht. | Zwei nach Ergebnisprüfung gezielt unterschiedliche Seedance-2.5-Fassungen tatsächlich gerendert: f00c3900-1d32-4b4c-a6cc-4226d7c7436a und adbdd1b7-703a-4290-92fc-1f1a1e3a396b, je 420 Credits offeriert, zusammen 840 von maximal 1000. Revision 2 überwiegend Zoom; Revision 3 mit sechs Einstellungen, Detaillicht/Fokus und subtiler Faltenbewegung bevorzugt zur Abnahme. MP4 15 s/1080×1440/30-fps-Export/stumm; 24-fps-Quelle ohne optische Zwischenbild-Erfindung. Upload/Hash/Range206 und vollständige Web-Dekodierung bestanden. Tatsächliche Kontobelastung unbekannt; keine neue Filmfassung aktiviert. |
+| Abgrenzung und Memory | Ergebnisse und Grenzen in denselben Tagesblock und bestehende Aufgaben/Historie übernommen. | Keine Social-/Produkt-/Rabatt-/Budget-/Flow-/DNS-Änderung, keine neue Automation oder wiederholte Tagesreports. 24 Aufgaben erhalten; Claude-Empfang unbekannt. |
+
+[Bericht](R274-REPORT-20261117.md) · [Belege](R274-PROOF-20261117.json).
+
+[LUXESTYLE_R274_20261117]

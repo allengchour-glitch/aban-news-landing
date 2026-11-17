@@ -1,0 +1,20 @@
+{
+  "phase": "LOCAL_DRAFT_NO_GITHUB_WRITE",
+  "baseHead": "1ff611a60d8b73f9774f10b79ff8b2986015cbeb",
+  "revisionBefore": 273,
+  "revisionAfter": 274,
+  "taskIdsAndOrder": 24,
+  "unrelatedTasksDeepIdentical": 21,
+  "changedTasksArchived": 3,
+  "changedTaskHistoryPrefixes": true,
+  "globalHistoryPrefix": true,
+  "historyBefore": 236,
+  "historyAfter": 237,
+  "salesGoalPreserved": true,
+  "dailyReadPolicyPreserved": true,
+  "r272R273AndR268HistoricalRecordsPreserved": true,
+  "coreTextHistoryRetained": true,
+  "dayBlock": "17.11.2026",
+  "generationStatusAtBuild": "TWO_COMPLETED_CANDIDATES_REVISION3_REVIEW_READY",
+  "atUtc": "2026-11-17T00:57:38.007208Z"
+}

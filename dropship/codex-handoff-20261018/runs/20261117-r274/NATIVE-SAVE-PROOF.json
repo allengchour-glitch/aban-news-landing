@@ -1,0 +1,70 @@
+{
+  "themeId": "gid://shopify/OnlineStoreTheme/214208577927",
+  "nativeCommit": {
+    "commit": "25a3f2f49c80459d0aee3c4f547a2a9aa30dc472",
+    "saved": [
+      "assets/luxe-scroll-hero.js",
+      "locales/de.json",
+      "locales/de.schema.json",
+      "locales/en.default.json",
+      "locales/en.default.schema.json",
+      "locales/fr.json",
+      "locales/fr.schema.json",
+      "sections/luxe-edit-home.liquid",
+      "templates/index.json"
+    ],
+    "deleted": [],
+    "pending": [],
+    "pushErrors": [],
+    "rejectedReason": null
+  },
+  "readback": [
+    {
+      "file": "assets/luxe-scroll-hero.js",
+      "md5": "72f09dc8ca0b49dcd8584c6adc391b33",
+      "match": true
+    },
+    {
+      "file": "locales/de.json",
+      "md5": "edb3189a485215f5687cd27e6fd1e098",
+      "match": true
+    },
+    {
+      "file": "locales/de.schema.json",
+      "md5": "7fa4bbc69879da3a36fec78566851c8f",
+      "match": true
+    },
+    {
+      "file": "locales/en.default.json",
+      "md5": "cef2109ae01cd0740480eb141d35ed85",
+      "match": true
+    },
+    {
+      "file": "locales/en.default.schema.json",
+      "md5": "cb2859a77516fc168fd95753ccef9d3b",
+      "match": true
+    },
+    {
+      "file": "locales/fr.json",
+      "md5": "3b9ee128246922a1bce737f2a458db0b",
+      "match": true
+    },
+    {
+      "file": "locales/fr.schema.json",
+      "md5": "4b0ac566457923184c670dfe6d0837d3",
+      "match": true
+    },
+    {
+      "file": "sections/luxe-edit-home.liquid",
+      "md5": "6abada20fae36fbf402817460fcdfd66",
+      "match": true
+    },
+    {
+      "file": "templates/index.json",
+      "md5": "2abbd14d5a350b6859bac1f269781f99",
+      "match": true
+    }
+  ],
+  "pendingRendererCSSLimitation": true,
+  "publication": "NOT_ATTEMPTED_YET"
+}

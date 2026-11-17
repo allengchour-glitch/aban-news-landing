@@ -1,0 +1,18 @@
+{
+  "save": {
+    "commit": "25e24dea826cd75ecbfb37d3e0de8d1b6a561b05",
+    "saved": [
+      "sections/luxe-edit-home.liquid"
+    ],
+    "deleted": [],
+    "pending": [],
+    "pushErrors": [],
+    "rejectedReason": null
+  },
+  "exactReadback": true,
+  "md5": "41f76e97c954b8e94959793044482af8",
+  "sha256": "65c62926b2027cf4a9488712da5d861265524f315cacf83149357b2f36c3f3a0",
+  "themeRole": "UNPUBLISHED",
+  "onlyFile": "sections/luxe-edit-home.liquid",
+  "live": false
+}

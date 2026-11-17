@@ -1,0 +1,32 @@
+{
+  "state": "QA_PASS_SAVED_DRAFT_PUBLICATION_REFUSED_NOT_LIVE",
+  "atUtc": "2026-11-17T00:33:37.972586+00:00",
+  "qaReport": "quality/FROZEN-NATIVE-HERO-QA.json",
+  "qaVerdictUnchanged": "FROZEN_PASS_NATIVE_SAVED_DRAFT_CRITICAL_REGRESSION",
+  "themeId": "214208577927",
+  "publishResultSource": "NATIVE-PUBLISH-RESULT.json",
+  "published": false,
+  "pending": [],
+  "rejectedReason": "publish_refused",
+  "toolReasonExact": [
+    "Only agent-created themes can be published here"
+  ],
+  "publishAttemptsReportedByRoot": 1,
+  "afterAttemptRoleReportedByRoot": "UNPUBLISHED",
+  "mainRoleClaim": false,
+  "liveClaim": false,
+  "ownerApprovalStillValid": true,
+  "newApprovalRequiredForSameScope": false,
+  "bypassAttempted": false,
+  "retries": 0,
+  "nextAction": {
+    "actor": "Owner in their Shopify Admin",
+    "url": "https://admin.shopify.com/store/au3j0y-hq/themes",
+    "instruction": "Publish the already saved, tested current copy214208577927 through Shopify Admin. This is an execution action, not a new approval request.",
+    "afterPublication": "Fresh MAIN identity and public homepage verification are still required before reporting live."
+  },
+  "classification": "Connector publication-scope restriction; no automatic approval-review rejection claimed.",
+  "newBrowserTests": 0,
+  "nativeWritesByThisAgent": 0,
+  "githubWrites": 0
+}

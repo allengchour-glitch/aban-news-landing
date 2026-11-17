@@ -1,0 +1,23 @@
+{
+  "bytes": 13303712,
+  "sha256": "280432314902f94e253b009a0024b8a170d4c77a4088bf021400f192afb47636",
+  "duration": 15,
+  "width": 1080,
+  "height": 1440,
+  "codec": "h264",
+  "pixelFormat": "yuv420p",
+  "frameRate": "30/1",
+  "frames": 450,
+  "audioStreams": 0,
+  "gopRequestedFrames": 15,
+  "sourceFrameRate": "24/1",
+  "interpolation": "none; frame repetition for 30fps export",
+  "mediaId": "eae4727c-4c9e-45e7-9bd5-f9204ae8c529",
+  "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/eae4727c-4c9e-45e7-9bd5-f9204ae8c529.mp4",
+  "uploadHttpStatus": 200,
+  "exactPublicReadback": true,
+  "rangeStatus": 206,
+  "fullDecodeExitCode": 0,
+  "creativeApproval": false,
+  "nativeThemeBindingChanged": false
+}

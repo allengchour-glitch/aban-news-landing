@@ -1,0 +1,115 @@
+{
+  "technical": {
+    "decision": "provisional_product_fidelity_pass",
+    "recommendation": "Prefer revision 3 over revision 2 for user review; do not automatically replace R272",
+    "motion": "Meaningful editorial improvement through six shots, focus and light changes; independent cloth motion remains subtle",
+    "source": {
+      "job": "adbdd1b7-703a-4290-92fc-1f1a1e3a396b",
+      "bytes": 59505336,
+      "sha256": "f382eea64d6c6a1312388673a5fd62419bbe3d03bf7953a8219af47971971fe4",
+      "width": 2494,
+      "height": 3326,
+      "fps": 24,
+      "frames": 361,
+      "duration_seconds": 15.041667,
+      "audio": false
+    },
+    "cuts_seconds": [
+      2.4583333333333335,
+      4.833333333333333,
+      7.375,
+      9.833333333333334,
+      12.25
+    ],
+    "cut_frames_zero_based": [
+      59,
+      116,
+      177,
+      236,
+      294
+    ],
+    "visual_scope": "31 exact 0.5-second frame samples, three source references, five larger source-endpoint comparison sheets; no uninterrupted playback",
+    "unverified": [
+      "brief inter-frame flicker",
+      "exact microtexture",
+      "seamless looping",
+      "responsive website placement"
+    ],
+    "blocking_identity_issue_observed": false,
+    "theme_modified": false
+  },
+  "motion": {
+    "dress-full": {
+      "matches": 1656,
+      "inlier_fraction": 0.8285024154589372,
+      "scale": 0.998089772404434,
+      "translation_px_at_900w": [
+        0.9621409116348089,
+        0.44399052569368924
+      ],
+      "inlier_median_residual_px": 0.5092118978500366,
+      "all_match_residual_median": 0.5954903364181519,
+      "lower_half_residual_median": 1.2216204404830933,
+      "upper_half_residual_median": 0.3628368675708771
+    },
+    "dress-detail": {
+      "matches": 3651,
+      "inlier_fraction": 0.9884963023829088,
+      "scale": 0.9999209564745984,
+      "translation_px_at_900w": [
+        -0.07562111870115809,
+        -0.016858812719871843
+      ],
+      "inlier_median_residual_px": 0.15061841905117035,
+      "all_match_residual_median": 0.15251918137073517,
+      "lower_half_residual_median": 0.16414585709571838,
+      "upper_half_residual_median": 0.1404770314693451
+    },
+    "gallery-full": {
+      "matches": 255,
+      "inlier_fraction": 0.9372549019607843,
+      "scale": 1.0065130511803502,
+      "translation_px_at_900w": [
+        -2.960359406575143,
+        -3.7648137242181745
+      ],
+      "inlier_median_residual_px": 0.5779072642326355,
+      "all_match_residual_median": 0.6536456942558289,
+      "lower_half_residual_median": 0.6318715214729309,
+      "upper_half_residual_median": 0.7013877034187317
+    },
+    "gallery-detail": {
+      "matches": 325,
+      "inlier_fraction": 0.9661538461538461,
+      "scale": 0.9997763654070182,
+      "translation_px_at_900w": [
+        -0.733715882246199,
+        0.5386440376412583
+      ],
+      "inlier_median_residual_px": 0.32836997509002686,
+      "all_match_residual_median": 0.34848490357398987,
+      "lower_half_residual_median": 0.32836997509002686,
+      "upper_half_residual_median": 0.41343554854393005
+    },
+    "atelier-final": {
+      "matches": 460,
+      "inlier_fraction": 0.6782608695652174,
+      "scale": 0.9985140564467251,
+      "translation_px_at_900w": [
+        -20.722828121507266,
+        -0.7719690081537531
+      ],
+      "inlier_median_residual_px": 0.9805211424827576,
+      "all_match_residual_median": 1.5532710552215576,
+      "lower_half_residual_median": 1.155138611793518,
+      "upper_half_residual_median": 2.289669990539551
+    }
+  },
+  "cuts": [
+    2.45833,
+    4.83333,
+    7.375,
+    9.83333,
+    12.25
+  ]
+}

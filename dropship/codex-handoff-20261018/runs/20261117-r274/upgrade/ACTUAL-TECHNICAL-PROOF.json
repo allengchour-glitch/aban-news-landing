@@ -1,0 +1,22 @@
+{
+  "bytes": 125926815,
+  "sha256": "4b31520ceca71cc0db8a2253a697239114ddd269774e613619c16d97b331ba44",
+  "duration": 15.042,
+  "width": 2494,
+  "height": 3326,
+  "codec": "hevc",
+  "pixelFormat": "yuv420p10le",
+  "frameRate": "24/1",
+  "frames": 361,
+  "audioStreams": 0,
+  "colorSpace": "bt709",
+  "colorTransfer": "bt709",
+  "colorPrimaries": "bt709",
+  "range": "tv",
+  "jobId": "f00c3900-1d32-4b4c-a6cc-4226d7c7436a",
+  "completed": true,
+  "quoteCredits": 420,
+  "actualAccountCharge": "UNKNOWN",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3Ly9t2SDIlj5VDIADsgpzL1SPBh/hf_20261117_003116_f00c3900-1d32-4b4c-a6cc-4226d7c7436a.mp4",
+  "technicalVerificationVia": "Higgsfield sandbox downloaded original; ffprobe and SHA256; local download same byte count"
+}

@@ -1,0 +1,38 @@
+{
+  "masterId": "luxe-home-atelier-multishot-20261116",
+  "creativeRevision": 2,
+  "ownerBudgetText": "ja nutze 1000 credits",
+  "budgetCapCredits": 1000,
+  "oneNewGenerationQuotedCredits": 420,
+  "previousR272QuotedCredits": 90,
+  "conservativeCombinedQuotedCredits": 510,
+  "paidRetriesPlanned": 0,
+  "creativeApprovalOfNewOutput": false,
+  "changeCurrentApprovedLiveBinding": false,
+  "params": {
+    "model": "seedance_2_5",
+    "mode": "omni_reference",
+    "duration": 15,
+    "resolution": "4k",
+    "bitrate_mode": "high",
+    "generate_audio": false,
+    "aspect_ratio": "3:4",
+    "count": 1,
+    "use_unlim": false,
+    "prompt": "Create ONE fifteen-second premium silent website brand film for LuxeStyle, using only the three supplied reference images in their given order. This is a considered editorial film, not a slideshow, collage, generic stock montage or a transformation effect. Reference 1 is the approved decorative silk/travertine/amber atelier. Reference 2 is the exact cream floral midi dress, Aprikose/S. Reference 3 is the exact ceramic storage-jar still life; the small floral jar at the front left is the product anchor. Keep the products unmistakably identical to the references. Reference separation is strict: use reference 1 only in shots 1 and 4, reference 2 only in shot 2, and reference 3 only in shot 3. These are independent locations separated by clean cuts. Never transfer dress print, ceramic decoration, atelier textures, objects or lighting geometry into another scene. Product identity wins over camera travel.\n\nTimeline, total exactly 15 seconds:\n0.0–3.0: Open in the atelier. Make a slow, physically plausible short forward-and-sideways camera glide with subtle depth parallax, a single gentle silk wave, and a controlled sweep of warm window light. Reframe the wide source as a right-weighted 3:4 view around the complete silk loop, amber orb and visible base, preserving their proportions and placement. Cropping peripheral architecture or the far fabric-tail edge is acceptable; no stretching, compressed architecture or invented surroundings. Keep camera displacement very small; fabric and light provide the visible action. No new decorative objects. The movement should be visible but restrained, not a static hold or digital photo zoom.\n3.0–7.0: A precise editorial cut to the dress in its existing plain light studio setting. Keep the complete garment visible, including both straps and hem. Keep breathing room above both straps and below the hem. Use a barely perceptible frontal translation, a soft light shift and at most one small movement confined to existing lower skirt folds. Keep bodice, straps, waist and neckline stable. Printed motifs remain attached to the same fabric areas, moving only with fabric without redrawing, blooming, hue changes or sliding. Preserve neckline, waist, seams, strap width, silhouette, length, cream base and prominent orange/blue floral positions. No person, mannequin, accessories or unseen back; do not rotate or deform the dress. Lighting may move, product colour and print must not.\n7.0–11.0: A precise cut to the ceramic still life. Preserve every visible jar shape, lid position, handles, dark-brown rim and blue flower/spiral decoration, with stable relative sizes. Keep the front-left floral jar, its seated lid, visible handles and entire base fully in frame. Retain the original relative positions and existing right-edge crop; do not reconstruct the partly hidden or cropped rightmost jar. Keep the camera effectively frontal with a tiny drift revealing no new sides. A soft light shift supplies motion; all jars and the separate loose lid remain stationary. Preserve ceramic white and blue decoration. No hands, opening, pouring, additional contents or invented functions. Do not imply the arrangement is a purchased set.\n11.0–15.0: Return with a precise cut to the same atelier. Finish the gentle silk/light movement and settle toward the initial recognizable composition. First/last continuity is a goal for later inspection, not an excuse for a frozen shot.\n\nArt direction: premium photographic realism, clean cream/taupe, natural amber accents, consistent controlled light, precise pacing. Native portrait 3:4 composition; no stretching, aggressive product crop, borders that hide product parts, floating text, logos, captions, CTA, voice, music or audio. Text and purchase buttons belong to the website HTML. No morphing from one subject into another, invented product action, feature, material, review or Swiss-made claim. Preserve product identity over spectacular motion.",
+    "medias": [
+      {
+        "role": "image",
+        "value": "41cbd665-4460-49b0-bd5f-b066df8dd044"
+      },
+      {
+        "role": "image",
+        "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/96d12900-9474-44ca-8364-d91e975014ba_0e040f68-9668-479d-8aca-731f42a9d896.jpg?v=1786819403"
+      },
+      {
+        "role": "image",
+        "value": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/be03d88a-60a5-4dd4-8f06-a1b40067d2e1.jpg?v=1788517064"
+      }
+    ]
+  }
+}
