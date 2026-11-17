@@ -98,11 +98,14 @@
 <script>
   (function(){
     var el=document.getElementById('shop');
-    var gezeigt;
+    var gezeigt,hashGesprungen=false;
     function render(items){
       var stand=JSON.stringify(items);
       if(stand===gezeigt)return;
       gezeigt=stand;
+      var aktiv=el.contains(document.activeElement)&&document.activeElement.tagName==='A'?document.activeElement:null;
+      var karte=aktiv&&aktiv.closest('.card');
+      var fokus=karte?{id:karte.id,href:aktiv.getAttribute('href')}:null;
       if(!items||!items.length){el.innerHTML='<p>Kits are in preparation. <a href="https://abannews.beehiiv.com/subscribe" style="color:#b45309">Subscribe</a> to hear first.</p>';return;}
       el.innerHTML=items.map(function(p){
         var btn=p.buy?('<a class="btn" href="'+p.buy+'" target="_blank" rel="noopener">Buy — '+p.price+'</a>')
@@ -113,7 +116,13 @@
       }).join('');
       if(location.hash){
         var t=document.getElementById(location.hash.slice(1));
-        if(t){t.style.borderColor='#b45309';t.style.boxShadow='0 0 0 2px rgba(180,83,9,.15)';t.scrollIntoView({block:'center'});}
+        if(t){t.style.borderColor='#b45309';t.style.boxShadow='0 0 0 2px rgba(180,83,9,.15)';if(!hashGesprungen&&!fokus)t.scrollIntoView({block:'center'});hashGesprungen=true;}
+      }
+      // Nur denselben unveränderten Link wieder fokussieren, ohne die Seite zu verschieben.
+      if(fokus){
+        var neu=document.getElementById(fokus.id);
+        var ziel=neu&&Array.from(neu.querySelectorAll('a[href]')).find(function(a){return a.getAttribute('href')===fokus.href;});
+        if(ziel)ziel.focus({preventScroll:true});
       }
     }
     // Vorhandene Kaufkarten zeigen, auch wenn der frische Abruf hängt.
