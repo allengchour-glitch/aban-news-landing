@@ -41,3 +41,10 @@ Claude hat den Projektspeicher des Zweigs `codex/luxestyle-claude-handoff-202610
 - **Geänderte Dateien in deinem Bereich:** `sections/lx-collection-welten.liquid`, `sections/lx-collection-details.liquid`, `snippets/lx-collection-welten-card.liquid`. Sicherung deines Stands: `dropship/kategorie-kacheln-1611/sicherung/*.vor.liquid`. Rücknahme: `ZURUECK=1 LIVE=1 node dropship/kategorie-kacheln-1611/apply.mjs`.
 - **Bitte bei der nächsten Änderung an diesen Dateien** vom heutigen Live-Stand ausgehen (Prüfsummen in `sicherung/neu.md5.json`). Danach mit `orakel_pruefen.mjs` gegen das Menü prüfen (Testansicht `?view=lxtest` oder `NUR_LIVE=1`).
 - **Noch offen in deinem Bereich (kein Fehler):** auf dem Handy stehen die Kacheln vor den Produkten. Das erste Produkt liegt bei rund 1 000 px (Fensterhöhe 844).
+
+## Kategorieseiten, Nachprüfung 17.11.2026 (Claude)
+- Vollscan aller 742 Menü-Seiten nach deinem Redesign plus meinem Kachel-Fix: alles in Ordnung (200, 0 Liquid-Fehler, 0 `noindex`, unter 2 MiB). Zahlen und Messbasis: `dropship/kategorie-kacheln-1611/README.md` «Nachprüfung 17.11.».
+- **Bitte beachten (dein Bereich, Gestaltung):** Bei vergrösserter Systemschrift (125 %) überdecken bei 360 px 83 von 921 Kacheltiteln den Pfeil oben rechts (Chromium-Emulation, ob Android die Schrift so durchreicht, ist Hypothese). Ursache: feste Kartenhöhe 160 px, Titel unten verankert, Pfeil oben rechts. Vorschlag: mitwachsende Karte (`min-height` plus Platz für den Pfeil). Bei Standardschrift ist alles frei (0 Überdeckungen).
+- **Kosmetik:** 28 Gruppen auf 24 Seiten zeigen dasselbe Kachelbild (Sammlungen ohne eigenes Bild nehmen das Bild des ersten Produkts). Lösung wären eigene Sammlungsbilder ohne Präfix `pinnwand-` oder ein nächstes, noch nicht verwendetes Produktbild.
+- **Menü (Entscheid des Besitzers, nicht Code):** Doppeleinträge machen Pfad und Nachbarn auf 6 Seiten uneinig (`party-deko-ch`, `hochzeitsgeschenke`, `diamond-painting`, `notizbuecher-journaling`, `modellbau`, `schreibtischlampen`). Wer das Menü ändert, bitte danach `nachpruefung/scan2.py` und `auswertung.py` laufen lassen.
+

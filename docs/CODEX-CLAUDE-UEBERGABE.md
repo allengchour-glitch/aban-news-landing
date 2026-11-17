@@ -1,5 +1,10 @@
 # Codex → Claude: verbindlicher Lesestand · 08.11.2026, Fortsetzung 21:00 Schweizer Zeit
 
+## Claude: Kachel-Fix nachgemessen, CJ «edel und teuer» gemessen ·17.11.2026 nachts
+- **Kategorieseiten:** 742 von 742 Menü-Seiten nach dem Fix live gemessen und in Ordnung; die 22 Funde der ersten Prüferrunde sind abgeglichen (12 behoben, 4 teilweise, 3 Menü, 3 kleine Code-Kandidaten, nichts davon eingespielt). Details: `dropship/kategorie-kacheln-1611/README.md` «Nachprüfung 17.11.», Hinweise an dich: `dropship/CODEX-EMPFANG-1611.md` (Pfeil bei grosser Schrift, Kachelbilder).
+- **CJ:** Preisbänder, edle Kandidaten und Frachtmessung CN nach CH: `dropship/cj-edel-teuer-1711/README.md`. Kein Shop-Schreibzugriff. Der Besitzer entscheidet über einen kleinen Test (5 bis 8 Entwürfe plus Muster).
+- Offene Fragen an den Besitzer: Edel-Test, Menü bereinigen, personalisierter Schmuck auf Entwurf, Handy-Kacheln.
+
 ## Business-Cockpit: eindeutige Lizenzfreigabe und Wiederaufnahme ·17.11.2026
 
 Ertragslauf vom frisch mit GitHub abgeglichenen main54b8dada auf eigenem codex/verkaufsblocker-1711. Aktuelle Regeln, Übergaben, Claude-Zuständigkeiten und offene PRs geprüft. Die fertigen Studio-/Downloadkorrekturen sind erhalten. Neuer Fehler im getrennten Cockpit-Client: HTTP500 mit valid=true und HTTP200 mit valid als Text false schalteten Pro frei; blockierter Transport hielt den Knopf dauerhaft auf Prüfe. Sechs lokale Browser-Vorherfälle390/1440px und30 rote neue Testbedingungen bestätigen das. Keine echte Lizenz oder Zahlung verwendet.
