@@ -5,6 +5,7 @@ on:
     paths:
       - 'automation/lib/**'
       - 'dropship/edel-test-1711/**'
+      - 'dropship/silber-bazg-1711/**'
       - 'codex-mods/**'
       - 'AGENTS.md'
       - 'automation/autopilot/shop_pulse.mjs'
@@ -157,6 +158,7 @@ jobs:
             dropship/mode-taxonomie-2610
             dropship/menu-bereinigung-1711
             dropship/edel-test-1711
+            dropship/silber-bazg-1711
             dropship/kategorie-schaufenster-pins.json
             dropship/schaufenster-1111
             dropship/pod-auswahl
@@ -259,6 +261,9 @@ jobs:
           node --check automation/menu_bereinigen.mjs
           node dropship/edel-test-1711/anlegen_test.mjs
           node --check dropship/edel-test-1711/anlegen.mjs
+          node dropship/silber-bazg-1711/apply_test.mjs
+          node --check dropship/silber-bazg-1711/apply.mjs
+          node --check dropship/silber-bazg-1711/liste.mjs
           node automation/lib/shopify_secret_test.mjs
           node automation/autopilot/merchant_feed_auth_test.mjs
           node automation/lib/kanal_sperren_test.mjs
