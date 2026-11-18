@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-17T13:15:21Z",
+ "stand": "2026-11-18T12:59:50Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Zahlen, bitte! Gemini 12: Letzte Station vor Apollos Weg zum Mond",
-   "u": "https://www.heise.de/hintergrund/Zahlen-bitte-Gemini-12-Letzte-Station-vor-Apollos-Weg-zum-Mond-11527474.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-17T12:41:00Z",
-   "s": "Gemini 12 lieferte die letzten Raumflugerkenntnisse vor dem Apollo-Programm – und Buzz Aldrin schoss das erste Selfie im All.",
-   "sprache": "de"
-  },
-  {
-   "t": "heise+ | Adobes Designchef im Interview: Was Kreative noch selbst können müssen",
-   "u": "https://www.heise.de/hintergrund/Adobes-Designchef-im-Interview-Was-Kreative-noch-selbst-koennen-muessen-11523224.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-11-17T12:30:00Z",
-   "s": "Gestaltende Agenten und Vibe-Coding-Konkurrenz: KI verändert die kreative Welt. Wir sprachen mit Adobes Designchef über die Zukunft der Adobe Creative Cloud.",
-   "sprache": "de"
-  },
-  {
-   "t": "Datensammlung: Windows 11 meldet Coding-Agenten und Entwickler-Tools an Microsoft",
-   "u": "https://www.golem.de/news/datensammlung-windows-11-meldet-coding-agenten-und-entwickler-tools-an-microsoft-2611-215308.html",
+   "t": "(g+) Lokale KI: Wann sich ein eigener KI-Server rechnet und wann er nur beruhigt",
+   "u": "https://www.golem.de/news/lokale-ki-wann-sich-ein-eigener-ki-server-rechnet-und-wann-er-nur-beruhigt-2611-215216.html",
    "q": "Golem",
-   "d": "2026-11-17T11:40:02Z",
-   "s": "Die Nutzungsdaten von Coding-Agenten und Developer-Tools sammelt Windows 11 zusammen mit optionalen Diagnosedaten. (Betriebssysteme, KI)",
+   "d": "2026-11-18T12:30:02Z",
+   "s": "Ein eigener KI-Server soll Kosten sparen und unabhängiger von Cloudanbietern machen. Doch was kostet er tatsächlich? Ein Deep Dive von Benedikt Matthes (KI, Nvidia)",
    "sprache": "de"
   },
   {
-   "t": "Rubin HPC: Nvidia bringt eigene Rubin-GPU für Supercomputer",
-   "u": "https://www.golem.de/news/rubin-hpc-nvidia-bringt-eigene-rubin-gpu-fuer-supercomputer-2611-215305.html",
+   "t": "Nach der Sperrung von Facebook-Konten: Meta-Agent reicht selbstständig Klage ein – gegen Meta",
+   "u": "https://t3n.de/news/nach-der-sperrung-von-facebook-konten-meta-agent-reicht-selbststaendig-klage-ein-gegen-meta-1774119/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-18T12:00:37Z",
+   "s": "Im Unternehmen von Joe Thomas spielt Metas KI-Agent Muse eine zentrale Rolle. Er verwaltet Social-Media-Konten, plant Marketing-Inhalte und verschickt E-Mails. Jetzt ist er für ihn sogar vor Gericht g…",
+   "sprache": "de"
+  },
+  {
+   "t": "Felicis leads $7.5M bet on Unsiloed AI to make enterprise documents usable by AI agents",
+   "u": "https://techcrunch.com/2026/11/18/felicis-leads-7-5m-bet-on-unsiloed-ai-to-make-enterprise-documents-usable-by-ai-agents/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-18T12:00:00Z",
+   "s": "With a team of just seven, Unsiloed AI plans to compete with tech giants and specialized startups in the crowded AI document-processing market.",
+   "sprache": "en"
+  },
+  {
+   "t": "India’s Humyn Labs raises $47M to feed U.S. robotics companies the data they need",
+   "u": "https://techcrunch.com/2026/11/18/accel-backs-indias-humyn-labs-to-supply-training-data-needed-by-u-s-robotics-ai-developers/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-18T11:30:00Z",
+   "s": "Founded in February, Humyn Labs competes with startups including Mecka AI and XDOF, with about 90% of its revenue coming from the U.S.",
+   "sprache": "en"
+  },
+  {
+   "t": "Anzeige: Microsoft Surface Laptop zum Black-Friday-Preis bei Amazon",
+   "u": "https://www.golem.de/news/anzeige-microsoft-surface-laptop-zum-black-friday-preis-bei-amazon-2611-215352.html",
    "q": "Golem",
-   "d": "2026-11-17T11:06:01Z",
-   "s": "Nvidias Fokus verschob sich bei Hardware für Rechenzentren zu KI. Supercomputer profitieren davon aber nicht immer. AMD hatte hier vorgelegt. (Supercomputer, Grafikkarten)",
+   "d": "2026-11-18T11:20:01Z",
+   "s": "Ein Microsoft Surface Laptop mit Touchscreen, Snapdragon-Prozessor und Copilot-KI ist zum Black-Friday-Start bei Amazon stark reduziert. (Surface, Microsoft)",
    "sprache": "de"
   },
   {
-   "t": "Claudes Office-Funktionen ausprobiert: Muss Microsoft jetzt Angst haben?",
-   "u": "https://t3n.de/news/claudes-office-funktionen-ausprobiert-muss-microsoft-jetzt-angst-haben-1773849/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Bitkom: Mehr KI-Nutzung bei Symptomen, Vorbehalte gegenüber KI wachsen ebenfalls",
+   "u": "https://www.heise.de/news/Bitkom-Mehr-KI-Nutzung-bei-Symptomen-Vorbehalte-gegenueber-KI-wachsen-ebenfalls-11529059.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-18T11:03:00Z",
+   "s": "Viele nutzen KI-Chatbots für Gesundheitsfragen. Zugleich wachsen Vorbehalte gegen KI in der Medizin und Sorgen um persönliche Daten.",
+   "sprache": "de"
+  },
+  {
+   "t": "Gravierende Sicherheitslücke in Java entdeckt: Wie eine KI für nur 200 Dollar einen Exploit fand",
+   "u": "https://t3n.de/news/scherheitsluecke-java-ki-200-dollar-1774110/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-17T10:30:11Z",
-   "s": "Claude übernimmt zunehmend auch klassische Office-Funktionen. Warum sich Anthropics Ansatz grundsätzlich von Microsofts Copilot unterscheidet – und warum das KIweiterlesen auf t3n.de",
+   "d": "2026-11-18T11:00:26Z",
+   "s": "Sicherheitsforscher:innen eines amerikanischen Startups haben ein gravierendes Problem in Java entdeckt. Darüber lässt sich aus der Ferne Code ausführen. Da eine Vielzahl von Programmen Java nutzt, si…",
    "sprache": "de"
   },
   {
-   "t": "COP 31: Auch die Weltklimakonferenz geht die Umweltfolgen des KI-Booms nicht an",
-   "u": "https://t3n.de/news/cop-31-weltklimakonferenz-ki-rechenzentren-umweltfolgen-1772649/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-17T10:15:00Z",
-   "s": "Auch bei der Weltklimakonferenz geht es um den steigenden Ressourcenverbrauch von KI‑Rechenzentren. Doch die dort zirkulierende Selbstverpflichtung ist das Papier nicht wert, auf dem sie steht.weiterl…",
-   "sprache": "de"
-  },
-  {
-   "t": "Strengthening NATO and allied cyber defenses with AI",
-   "u": "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
-   "q": "OpenAI",
-   "d": "2026-11-17T00:00:00Z",
-   "s": "How OpenAI is working with NATO and allied cyber agencies to help trusted defenders find vulnerabilities, test fixes and protect essential systems.",
-   "sprache": "en"
-  },
-  {
-   "t": "Cybersecurity AI startup Corma reaches $1B valuation in about 3 months",
-   "u": "https://techcrunch.com/2026/11/16/cybersecurity-ai-startup-corma-reaches-1b-valuation-in-about-3-months/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-16T23:32:32Z",
-   "s": "Three months since introducing its product, AI cybersecurity startup Corba has raised a $125 million Series A at a $1 billion valuation led by NEA.",
-   "sprache": "en"
-  },
-  {
-   "t": "All the questions Nvidia should answer on Tuesday — but probably won’t",
-   "u": "https://techcrunch.com/2026/11/16/all-the-questions-nvidia-should-answer-on-tuesday-but-probably-wont/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-16T22:03:02Z",
-   "s": "Nvidia interim CEO and longtime CFO Colette Kress is about to have one of the biggest days of her career on Tuesday when the company reports its third-quarter results. Given the turmoil Nvidia is in, …",
-   "sprache": "en"
-  },
-  {
-   "t": "The open-source movement wants Jensen Huang back",
-   "u": "https://www.technologyreview.com/2026/11/16/1148624/the-open-source-movement-wants-jensen-huang-back/",
+   "t": "This smell startup says its AI nose is as good as a human’s",
+   "u": "https://www.technologyreview.com/2026/11/18/1148816/smell-startup-osmo-ai-nose-good-as-humans/",
    "q": "MIT Tech Review",
-   "d": "2026-11-16T18:38:47Z",
-   "s": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. On Friday, a petition to reinstate Jensen Huang as CEO of Nvid…",
+   "d": "2026-11-18T10:20:30Z",
+   "s": "In a lab near Newark Airport in New Jersey, a team of around 30 experienced human sniffers are slowly working their way through every odor on Earth. Their careful notes—“nutty,” “peachy,” “marine”—are…",
+   "sprache": "en"
+  },
+  {
+   "t": "IT-Probleme bei US-Banken und NSA angeblich wegen zu vieler Patches",
+   "u": "https://www.heise.de/news/IT-Probleme-bei-US-Banken-und-NSA-angeblich-wegen-zu-vieler-Patches-11529019.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-18T10:20:00Z",
+   "s": "In den USA sorgt eine Reihe von IT-Problemen für Aufsehen. Für zwei sollen zu viele Patches gegen Lücken verantwortlich sein, die KI-Technik identifiziert hat.",
+   "sprache": "de"
+  },
+  {
+   "t": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT",
+   "u": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+   "q": "OpenAI",
+   "d": "2026-11-18T00:00:00Z",
+   "s": "Le Groupe Figaro and OpenAI partner to bring Le Figaro’s journalism to ChatGPT through summaries and excerpts, with links to original stories.",
    "sprache": "en"
   }
  ]
