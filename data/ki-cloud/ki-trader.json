@@ -168,6 +168,30 @@
     "btc": 64855.84375,
     "eth": 1819.27587890625
    }
+  },
+  {
+   "stand": "2026-11-17",
+   "zeit": "2026-11-18T13:10:03+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 900,
+   "kosten_usd": 0.024692,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.1,
+    "begruendung": "Klarer Abwärtstrend: 7 T. -12 %, 30 T. -21 %, Kurs 18 % unter dem 50-Tage-Schnitt und unter allen langen Schnitten. Dagegen sprechen extreme Angst (12), stark überverkaufter Zustand und drei Tage Seitwärtslage um 64'000–65'000 nach dem Absturz. Das Risiko einer Gegenbewegung ist hoch. Deshalb bleibt der Short klein, unverändert -0,10, ohne neue Gebühr. Das Funding ist neutral.",
+    "sicherheit": 0.3
+   },
+   "eth": {
+    "position": -0.1,
+    "begruendung": "ETH ist schwächer als BTC: 30 T. -24 %, 22 % unter dem 50-Tage-Schnitt, 90 T. -19 %. Der Trend spricht weiter für einen Short. MVRV 0,88 (Unterbewertung), negatives Funding (Shorts zahlen leicht) und extreme Angst erhöhen aber das Rebound-Risiko. Ich halte -0,10 unverändert, um Gebühren zu sparen und bei einer Erholung nur begrenzt zu verlieren.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Beide Positionen bleiben bei kleinem Short. Der Trend ist klar negativ, der Markt ist aber stark überverkauft und stabilisiert sich seit drei Tagen. Bei einem Bruch unter die jüngsten Tiefs (BTC ~64'000, ETH ~1'770) würde ich den Short ausbauen. Bei einer Erholung über BTC ~68'000 bzw. ETH ~1'930 gehe ich flach.",
+   "kurse": {
+    "btc": 64893.9453125,
+    "eth": 1822.9613037109375
+   }
   }
  ]
 }
