@@ -1,0 +1,5 @@
+S1	Früh am Morgen erntet Pia frisches Gemüse in ihrem Garten.	Ein Morgen im Garten
+S2	Dann bringt sie einen vollen Korb ins Dorf und lädt ihre Nachbarn zum Essen ein.	Alle sind eingeladen
+S3	Gemeinsam kochen alle am Feuer. Nur mit Pflanzen, Kräutern und viel Freude.	Gemeinsam kochen
+S4	Am langen Tisch ist Platz für alle. Und weil Essen etwa ein Viertel der weltweiten Treibhausgase ausmacht, zählt jede Mahlzeit.	Essen: etwa ¼ der Treibhausgase
+S5	Eine friedliche Welt beginnt oft ganz einfach am Tisch.	Friedlich beginnt am Tisch

@@ -1,0 +1,374 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Pia und die Frage nach dem Essen — Strichmännchen-Short, ca. 28 s</title>
+<style>
+  @property --v { syntax: "<integer>"; initial-value: 0; inherits: false; }
+  html,body{margin:0;padding:0;width:1080px;height:1920px;overflow:hidden;background:#f3d9b0;font-family:Inter,"DejaVu Sans",sans-serif}
+  .bg{position:absolute;inset:0}
+  /* Himmel in drei Stimmungen, über die Zeit überblendet. Papierkorn: fertig gerechnete Kachel (ein SVG-Rauschfilter kostete über 2/3 der Renderzeit) */
+  #bg{background:url(korn.png),linear-gradient(180deg,#8fc7e8 0%,#f6d9b4 46%,#ffeccb 100%)}
+  #truebe{background:url(korn.png),linear-gradient(180deg,#7f93aa 0%,#b9c5cc 50%,#dfe3de 100%);opacity:0}
+  #abend{background:url(korn.png),linear-gradient(180deg,#4d3f7d 0%,#c8607a 34%,#f59a5a 62%,#ffd08a 100%);opacity:0}
+  svg,#ui{position:absolute;inset:0}
+  #ui{width:1080px;height:1920px}
+  /* Textschilder wie im Referenzvideo: gelbes Schild, dunkle Schrift */
+  .cap{position:absolute;left:180px;width:720px;top:215px;box-sizing:border-box;padding:24px 36px;border-radius:30px;background:#ffd21f;border:5px solid #1d1d22;
+       box-shadow:0 10px 0 rgba(29,29,34,.30);color:#1d1d22;text-align:center;font-weight:900;line-height:1.14;opacity:0;font-size:60px}
+  .cap .w{display:inline-block;margin:0 .13em}
+  .karte{background:#fff;border:5px solid #1d1d22;border-radius:34px;box-shadow:0 11px 0 rgba(29,29,34,.25)}
+  .t{position:absolute;color:#1d1d22;font-weight:800}
+  .quelle{position:absolute;left:270px;width:630px;box-sizing:border-box;padding:8px 14px;text-align:center;font-size:25px;font-weight:800;color:#1d1d22;background:#fff;border:4px solid #1d1d22;border-radius:18px;box-shadow:0 6px 0 rgba(29,29,34,.22);opacity:0}
+  #zaehler{counter-reset:v var(--v)}
+  #zaehler::after{content:counter(v)}
+  .szui{position:absolute;inset:0;opacity:0}
+  .spur{position:absolute;height:58px;border:4px solid #1d1d22;border-radius:29px;background:#ece6d8;overflow:hidden}
+  .fuell{position:absolute;left:0;top:0;height:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#d49a62,#b9763f)}
+</style>
+<div class="bg" id="bg"></div>
+<div class="bg" id="truebe"></div>
+<div class="bg" id="abend"></div>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <!-- leichtes Wackeln der Linien (statisch): wirkt wie von Hand gezeichnet -->
+    <filter id="wackel" filterUnits="userSpaceOnUse" x="-80" y="-80" width="1240" height="2080">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <radialGradient id="glut"><stop offset="0" stop-color="#fff3bf" stop-opacity=".95"/><stop offset="1" stop-color="#fff3bf" stop-opacity="0"/></radialGradient>
+    <radialGradient id="wolkeG" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#fff" stop-opacity=".98"/><stop offset="1" stop-color="#ffd9c9" stop-opacity=".85"/></radialGradient>
+    <linearGradient id="hang1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9c9a0"/><stop offset="1" stop-color="#8fb78a"/></linearGradient>
+    <linearGradient id="hang2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8dbb7a"/><stop offset="1" stop-color="#6f9f62"/></linearGradient>
+    <linearGradient id="boden" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9d177"/><stop offset="1" stop-color="#8fae55"/></linearGradient>
+    <filter id="weich1" filterUnits="userSpaceOnUse" x="-200" y="1000" width="1500" height="700"><feGaussianBlur stdDeviation="1.8"/></filter>
+    <filter id="weich2" filterUnits="userSpaceOnUse" x="-300" y="1500" width="1700" height="520"><feGaussianBlur stdDeviation="5"/></filter>
+    <radialGradient id="lichtG" cx="82%" cy="34%" r="85%"><stop offset="0" stop-color="#ffd89a" stop-opacity=".42"/><stop offset=".55" stop-color="#ffd89a" stop-opacity=".12"/><stop offset="1" stop-color="#ffd89a" stop-opacity="0"/></radialGradient>
+    <radialGradient id="vignette" cx="50%" cy="52%" r="75%"><stop offset=".55" stop-color="#2b1d12" stop-opacity="0"/><stop offset="1" stop-color="#2b1d12" stop-opacity=".38"/></radialGradient>
+    <linearGradient id="dunst" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3dc" stop-opacity="0"/><stop offset=".5" stop-color="#fff3dc" stop-opacity=".55"/><stop offset="1" stop-color="#fff3dc" stop-opacity="0"/></linearGradient>
+    <linearGradient id="strahl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff6c9" stop-opacity=".28"/><stop offset="1" stop-color="#fff6c9" stop-opacity="0"/></linearGradient>
+    <linearGradient id="krone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#79b46a"/><stop offset="1" stop-color="#4c8a50"/></linearGradient>
+  </defs>
+</svg>
+<div id="ui">
+  <!-- Szene 2: Fläche gegen Kalorien -->
+  <div class="szui" id="ui2">
+    <div class="karte" style="position:absolute;left:270px;top:560px;width:630px;height:480px"></div>
+    <div class="t" style="left:305px;top:588px;font-size:36px">Agrarfläche für Tiere</div>
+    <div class="spur" style="left:305px;top:644px;width:560px"><div class="fuell" id="b1" style="width:75%"></div></div>
+    <div class="t" id="w1" style="left:305px;top:712px;font-size:58px;color:#a8642f;opacity:0">etwa ¾</div>
+    <div class="t" style="left:305px;top:812px;font-size:36px">Kalorien aus Tierprodukten</div>
+    <div class="spur" style="left:305px;top:868px;width:560px"><div class="fuell" id="b2" style="width:18%"></div></div>
+    <div class="t" id="w2" style="left:305px;top:936px;font-size:58px;color:#a8642f;opacity:0">etwa 18 %</div>
+    <div class="quelle" id="q2" style="top:1060px">Quelle: Our World in Data (FAO; Poore &amp; Nemecek 2018)</div>
+  </div>
+  <!-- Szene 3: Zähler und Punkte -->
+  <div class="szui" id="ui3">
+    <div class="karte" style="position:absolute;left:270px;top:560px;width:630px;height:490px"></div>
+    <div class="t" id="zaehler" style="left:270px;width:630px;text-align:center;top:575px;font-size:170px;font-weight:900"></div>
+    <div class="t" style="left:270px;width:630px;text-align:center;top:770px;font-size:33px">Milliarden Landtiere im Jahr 2022</div>
+    <div id="dots" style="position:absolute;left:304px;top:838px;width:565px;height:175px"></div>
+    <div class="quelle" id="q3" style="top:1066px">Quelle: Our World in Data (FAO)</div>
+  </div>
+</div>
+<script src="../../motion.js"></script>
+<script src="../../stickman.js"></script>
+<script src="zeiten.js"></script>
+<script>
+(function () {
+  const M = Motion, E = M.EASE, Z = window.__ZEITEN, T = Z.gesamt;
+  const SZ = Z.szenen; // [{id,t0,t1,zeilen:[{start,dauer,text,titel}]}]
+  const s = document.getElementById('s');
+  const g = (p, a) => M.svg('g', a || {}, p);
+  const kf = (pairs) => pairs.map(p => ({ offset: p[0] / T, ...p[1] }));
+  const TINTE = '#2b2118', STRICH = '#1d1d22', GY = 1560;   // GY = Bodenlinie
+  const rr = M.rnd(11);
+  const aussenInnen = (parent, x, y) => g(g(parent, { transform: `translate(${x},${y})` }));   // aussen Position, innen Animation (sonst überschreibt CSS-transform das Attribut)
+  const unten = (e, ox, oy) => { e.style.transformBox = 'fill-box'; e.style.transformOrigin = `${ox || '50%'} ${oy || '100%'}`; };
+  const t0s = SZ.map(z => z.t0), t1s = SZ.map(z => z.t1);
+
+  /* ============ Stimmung: Morgen → trübe (Szene 3) → Abendrot (Szene 4) → zurück (Loop) ============ */
+  M.at('#truebe', kf([[0, { opacity: 0 }], [t0s[2] - .2, { opacity: 0 }], [t0s[2] + .6, { opacity: 1 }], [t1s[2] - .2, { opacity: 1 }], [t1s[2] + .6, { opacity: 0 }], [T, { opacity: 0 }]]), { t: 0, d: T, ease: E.linear });
+  M.at('#abend', kf([[0, { opacity: 0 }], [t0s[3], { opacity: 0 }], [t0s[3] + 2.2, { opacity: 1 }], [T - 1.5, { opacity: 1 }], [T - .15, { opacity: 0 }], [T, { opacity: 0 }]]), { t: 0, d: T, ease: E.linear });
+
+  /* ============ Welt (Bilderbuch-Hintergrund, über die ganze Zeit) ============ */
+  const welt = g(s), wFern = g(welt), wBerge = g(welt), wMitte = g(welt), wNah = g(welt);   // Tiefenebenen: Himmel, ferne Berge, Mitte, Nähe
+  // Sterne (nur im Abendhimmel)
+  const sterne = g(wFern);
+  for (let i = 0; i < 16; i++) { const st = M.svg('circle', { cx: (40 + rr() * 1000).toFixed(0), cy: (60 + rr() * 560).toFixed(0), r: (2 + rr() * 3).toFixed(1), fill: '#fff' }, sterne);
+    M.loop(st, [{ opacity: .35 }, { opacity: 1 }, { opacity: .35 }], { t: rr() * 2, d: 1.6 + rr(), n: Math.ceil(T / 1.6) }); }
+  M.at(sterne, kf([[0, { opacity: 0 }], [t0s[3] + 1, { opacity: 0 }], [t0s[3] + 3, { opacity: 1 }], [T - 1.5, { opacity: 1 }], [T - .15, { opacity: 0 }], [T, { opacity: 0 }]]), { t: 0, d: T, ease: E.linear });
+  // Sonne: steigt (Szene 1), steht (2, 3), sinkt zum Horizont (4), dann unsichtbar
+  const sonne = g(wFern), sonneIn = g(sonne);
+  const strahlen = g(sonneIn);
+  for (let i = 0; i < 12; i++) M.svg('path', { d: 'M0 0 L1100 -70 L1100 70Z', fill: 'url(#strahl)', transform: `rotate(${i * 30})` }, strahlen);
+  M.at(strahlen, [{ transform: 'rotate(0deg)' }, { transform: 'rotate(30deg)' }], { t: 0, d: T, ease: E.linear });
+  M.svg('circle', { r: 210, fill: 'url(#glut)' }, sonneIn);
+  M.svg('circle', { r: 74, fill: '#ffd166', stroke: '#e8a53a', 'stroke-width': 5 }, sonneIn);
+  M.at(sonne, kf([[0, { transform: 'translate(900px,1180px)', opacity: 0 }], [.3, { transform: 'translate(900px,1180px)', opacity: 1 }], [t1s[0], { transform: 'translate(900px,700px)', opacity: 1 }],
+    [t1s[2], { transform: 'translate(880px,740px)', opacity: 1 }], [t0s[3] + 5, { transform: 'translate(720px,1210px)', opacity: 1 }], [T - 1.5, { transform: 'translate(720px,1260px)', opacity: 1 }], [T - .15, { transform: 'translate(720px,1300px)', opacity: 0 }], [T, { transform: 'translate(900px,1180px)', opacity: 0 }]]), { t: 0, d: T, ease: E.inOut });
+  // Wolken (weich, rosig), ziehen langsam, unsichtbar an den Enden
+  function wolke(x, y, sc, dx) {
+    const o = g(wFern, { transform: `translate(${x},${y}) scale(${sc})` }), w = g(o);
+    [[0, 0, 80, 34], [-70, 10, 62, 28], [64, 12, 66, 26], [20, -22, 56, 30]].forEach(([cx, cy, rx, ry]) => M.svg('ellipse', { cx: cx, cy: cy, rx: rx, ry: ry, fill: 'url(#wolkeG)' }, w));
+    M.at(w, kf([[0, { transform: 'translateX(0)', opacity: 0 }], [2, { transform: `translateX(${dx * 2 / T}px)`, opacity: 1 }], [T - 2, { transform: `translateX(${dx * (T - 2) / T}px)`, opacity: 1 }], [T, { transform: `translateX(${dx}px)`, opacity: 0 }]]), { t: 0, d: T, ease: E.linear });
+  }
+  wolke(200, 800, 1.2, 240); wolke(760, 900, .95, -200); wolke(130, 1040, .75, 200);
+  // ferne blaue Berge (Tiefe)
+  M.svg('path', { d: 'M-60 1330 L120 1190 L230 1270 L380 1130 L520 1260 L640 1200 L790 1300 L930 1160 L1160 1300 V1500 H-60Z', fill: '#b9cde0', opacity: .75, stroke: 'rgba(43,33,24,.25)', 'stroke-width': 3, 'stroke-linejoin': 'round' }, wBerge);
+  M.svg('path', { d: 'M380 1130 L338 1198 L372 1186 L398 1214 L420 1180 L452 1198Z M930 1160 L890 1222 L922 1210 L944 1236 L966 1204 L996 1220Z', fill: '#fff', opacity: .85 }, wBerge);
+  // ferne Hügel + Tannenwald
+  M.svg('path', { d: 'M-60 1400 C100 1290 260 1280 420 1340 S720 1380 900 1300 S1090 1290 1160 1330 V1920 H-60Z', fill: 'url(#hang1)', stroke: 'rgba(43,33,24,.45)', 'stroke-width': 3 }, wMitte);
+  for (let i = 0; i < 14; i++) {   // Tannen auf dem fernen Hügel
+    const x = 30 + i * 78 + rr() * 30, y = 1342 + Math.sin(i * .9) * 22, h = 70 + rr() * 40, w = g(g(wMitte, { transform: `translate(${x.toFixed(0)},${y.toFixed(0)})` }));
+    M.svg('path', { d: `M0 0 L-${(h * .32).toFixed(0)} ${(h * .42).toFixed(0)} h${(h * .16).toFixed(0)} L-${(h * .4).toFixed(0)} ${(h * .8).toFixed(0)} h${(h * .3).toFixed(0)} V${(h * 1.0).toFixed(0)} h${(h * .2).toFixed(0)} V${(h * .8).toFixed(0)} h${(h * .3).toFixed(0)} L${(h * .24).toFixed(0)} ${(h * .42).toFixed(0)} h${(h * .16).toFixed(0)} Z`, transform: `translate(0,${-h})`, fill: '#5f9a7a', stroke: 'rgba(43,33,24,.5)', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, w);
+  }
+  M.svg('path', { d: 'M-60 1490 C200 1410 420 1420 600 1462 S900 1490 1160 1420 V1920 H-60Z', fill: 'url(#hang2)', stroke: 'rgba(43,33,24,.5)', 'stroke-width': 3.5 }, wMitte);
+  M.svg('rect', { x: -40, y: 1330, width: 1160, height: 160, fill: 'url(#dunst)' }, wMitte);   // Dunst zwischen den Ebenen
+  // Vordergrund: Wiese
+  M.svg('rect', { x: -200, y: GY - 40, width: 1480, height: 520, fill: 'url(#boden)' }, wNah);
+  // Pinselstriche im Boden
+  for (let i = 0; i < 40; i++) { const x = rr() * 1100, y = GY + 20 + rr() * 330, l = 30 + rr() * 60;
+    M.svg('path', { d: `M${x.toFixed(0)} ${y.toFixed(0)} q${(l / 2).toFixed(0)} -8 ${l.toFixed(0)} 0`, stroke: rr() > .5 ? 'rgba(255,255,255,.22)' : 'rgba(43,33,24,.14)', 'stroke-width': 5, 'stroke-linecap': 'round', fill: 'none' }, wNah); }
+  // Weizen: goldene Halme links und rechts im Vordergrund (nie vor Pia, damit die Füsse frei bleiben)
+  function halm(parent, x, y, h) {
+    const p = M.svg('path', { d: `M${x} ${y} Q${x + 6} ${y - h * .5} ${x + 2} ${y - h}`, stroke: '#b58a38', 'stroke-width': 4.5, 'stroke-linecap': 'round', fill: 'none' }, parent);
+    let d = ''; for (let k = 0; k < 4; k++) d += `M${x + 2} ${y - h + k * 11} q-13 -9 -15 -24 q14 4 15 24 M${x + 2} ${y - h + k * 11} q13 -9 15 -24 q-14 4 -15 24 `;
+    M.svg('path', { d: d, fill: '#e6bf52', stroke: '#9c7430', 'stroke-width': 1.8 }, parent);
+    return p;
+  }
+  function weizenBueschel(x, y, n, hoehe) {
+    const w = g(g(wNah, { transform: 'translate(0,0)' }));
+    for (let i = 0; i < n; i++) halm(w, x + (i - n / 2) * 22 + rr() * 8, y + rr() * 14, hoehe * (.75 + rr() * .5));
+    unten(w, `${x}px`, `${y}px`);
+    w.style.transformBox = 'view-box'; w.style.transformOrigin = `${x}px ${y}px`;
+    const kw = 9 + Math.floor(rr() * 4);   // ganzzahlig viele Schwingungen und Start bei 0: Ende = Anfang (Loop)
+    M.loop(w, [{ transform: 'rotate(-2.2deg)' }, { transform: 'rotate(2.2deg)' }, { transform: 'rotate(-2.2deg)' }], { t: 0, d: T / kw, n: kw });
+  }
+  [[40, GY + 70], [150, GY + 150], [60, GY + 260], [960, GY + 80], [1040, GY + 170], [900, GY + 270], [1000, GY + 320]].forEach(([x, y]) => weizenBueschel(x, y, 5, 130 + (y - GY) * .35));
+  // Blumen in der Wiese
+  const bl = ['#ffffff', '#ffe066', '#ff8fa3', '#c8a2ff'];
+  for (let i = 0; i < 22; i++) {
+    const x = 30 + rr() * 1020, y = GY + 50 + rr() * 330, f = bl[i % 4], w = g(g(wNah, { transform: `translate(${x.toFixed(0)},${y.toFixed(0)})` }));
+    M.svg('path', { d: 'M0 0 q-3 -20 0 -40', stroke: '#4f8a45', 'stroke-width': 4, fill: 'none', 'stroke-linecap': 'round' }, w);
+    for (let k = 0; k < 5; k++) M.svg('circle', { cx: (Math.cos(k * 1.2566) * 8).toFixed(1), cy: (-44 + Math.sin(k * 1.2566) * 8).toFixed(1), r: 6.5, fill: f, stroke: 'rgba(43,33,24,.55)', 'stroke-width': 1.6 }, w);
+    M.svg('circle', { cx: 0, cy: -44, r: 4.5, fill: '#f2a93b' }, w);
+    unten(w, '50%', '100%');
+    const kb = 9 + Math.floor(rr() * 5);
+    M.loop(w, [{ transform: 'rotate(-4deg)' }, { transform: 'rotate(4deg)' }, { transform: 'rotate(-4deg)' }], { t: 0, d: T / kb, n: kb });
+  }
+  // dunkle Grasspitzen am unteren Bildrand (rahmen das Bild)
+  let gd = 'M-200 1930'; for (let x = -200; x <= 1290; x += 34) gd += ` L${x} ${1880 - Math.round(rr() * 46)} L${x + 17} 1930`; gd += ' Z';
+  M.svg('path', { d: gd, fill: '#476f38', stroke: 'rgba(0,0,0,.25)', 'stroke-width': 3 }, wNah);
+  // Licht von der Sonnenseite (rechts oben) über alle Ebenen
+  const wLicht = g(welt);
+  M.svg('rect', { x: -200, y: -40, width: 1500, height: 2000, fill: 'url(#lichtG)' }, wLicht);
+  // grosse unscharfe Grashalme ganz vorn (Tiefenunschärfe), nur an den Rändern
+  const wVorn = g(welt), vf = g(wVorn);
+  [[-90, 1], [-10, .8], [70, 1.15], [930, 1.1], [1010, .85], [1090, 1.2]].forEach(([x, sc]) => {
+    M.svg('path', { d: `M${x} 1940 C${x + 8} 1850 ${x + 30} 1790 ${x + 64 * sc} 1700 C${x + 58} 1790 ${x + 56} 1880 ${x + 78} 1940Z`, fill: '#3b6a30', opacity: .95 }, vf);
+  });
+  vf.setAttribute('filter', 'url(#weich2)');
+  wBerge.setAttribute('filter', 'url(#weich1)');   // ferne Berge leicht unscharf
+  // Parallaxe: jede Ebene wandert anders weit hin und her (Loop-sicher: Anfang = Ende)
+  [[wFern, 8], [wBerge, 16], [wMitte, 30], [wNah, 62], [wVorn, 120]].forEach(([e, d]) => M.at(e, [{ transform: 'translateX(0)' }, { transform: `translateX(${-d}px)` }, { transform: 'translateX(0)' }], { t: 0, d: T, ease: E.inOut }));
+  // Vignette (dunkelt die Bildränder leicht ab, lenkt den Blick in die Mitte)
+  M.svg('rect', { x: -40, y: -40, width: 1160, height: 2000, fill: 'url(#vignette)' }, welt);
+  welt.setAttribute('filter', 'url(#wackel)');
+
+  /* ============ Helfer ============ */
+  function herz(parent, x, y, t, farbe) {
+    const h = aussenInnen(parent, x, y);
+    M.svg('path', { d: 'M0 26 C-60 -16 -40 -60 0 -30 C40 -60 60 -16 0 26Z', fill: farbe || '#ef476f', stroke: STRICH, 'stroke-width': 6, 'stroke-linejoin': 'round' }, h);
+    M.svg('path', { d: 'M-24 -24 q-8 6 -8 16', stroke: '#fff', 'stroke-width': 5, 'stroke-linecap': 'round', fill: 'none', opacity: .8 }, h);
+    unten(h, '50%', '70%');
+    M.at(h, [{ opacity: 0, transform: 'scale(0)' }, { opacity: 1, transform: 'scale(1.15)' }, { opacity: 1, transform: 'scale(1)' }], { t: t, d: .6, ease: E.out });
+    M.at(h, [{ opacity: 1, transform: 'translateY(0) scale(1)' }, { opacity: 0, transform: 'translateY(-50px) scale(1.1)' }], { t: t + 1.7, d: 1.0, ease: E.out, fill: 'forwards' });
+  }
+  function funkeln(parent, x, y, t) {   // kleiner vierzackiger Stern
+    const o = aussenInnen(parent, x, y);
+    M.svg('path', { d: 'M0 -18 Q3 -3 18 0 Q3 3 0 18 Q-3 3 -18 0 Q-3 -3 0 -18Z', fill: '#ffd166', stroke: STRICH, 'stroke-width': 4, 'stroke-linejoin': 'round' }, o);
+    unten(o, '50%', '50%');
+    M.at(o, [{ opacity: 0, transform: 'scale(0) rotate(0deg)' }, { opacity: 1, transform: 'scale(1) rotate(90deg)' }, { opacity: 0, transform: 'scale(.2) rotate(180deg)' }], { t: t, d: 1.2, ease: E.out });
+  }
+  // Szene: Wisch-Übergang (von rechts herein, nach links hinaus), leichte Kamerafahrt, Wackel-Filter
+  function szene(i) {
+    const t0 = SZ[i].t0, t1 = i === SZ.length - 1 ? SZ[i].t1 - .15 : SZ[i].t1, d = t1 - t0, f = Math.min(.6, d / 4) / d;
+    const aussen = g(s), cam = g(aussen);
+    aussen.setAttribute('filter', 'url(#wackel)');
+    M.at(aussen, [{ opacity: 0, transform: 'translateX(90px)', offset: 0 }, { opacity: 1, transform: 'translateX(0)', offset: f }, { opacity: 1, transform: 'translateX(0)', offset: 1 - f }, { opacity: 0, transform: 'translateX(-90px)', offset: 1 }], { t: t0, d: d, ease: E.out });
+    cam.style.transformOrigin = '540px ' + GY + 'px';
+    M.at(cam, [{ transform: 'scale(1)' }, { transform: 'scale(1.04)' }], { t: t0, d: d, ease: E.linear });
+    return cam;
+  }
+  const L = (i, k) => SZ[i].zeilen[k];
+  function baum(parent, x, y, sc) {   // Laubbaum mit dickem Stamm und dreitonigem Blattwerk
+    const o = g(parent, { transform: `translate(${x},${y}) scale(${sc})` }), w = g(o);
+    M.svg('path', { d: 'M-26 2 L-230 12 L-60 30 L26 24Z', fill: 'rgba(20,24,30,.22)' }, w);   // Schlagschatten nach links
+    M.svg('path', { d: 'M-22 0 Q-16 -120 -30 -190 L30 -190 Q16 -120 22 0Z', fill: '#8a5f3a', stroke: STRICH, 'stroke-width': 5, 'stroke-linejoin': 'round' }, w);
+    M.svg('path', { d: 'M-8 -20 q4 -60 -2 -110', stroke: 'rgba(43,33,24,.35)', 'stroke-width': 4, fill: 'none', 'stroke-linecap': 'round' }, w);
+    [[0, -300, 130, '#4c8a50'], [-92, -240, 96, '#4c8a50'], [96, -240, 96, '#4c8a50'], [-30, -330, 100, '#79b46a'], [60, -300, 92, '#79b46a'], [-70, -270, 70, '#9bd079']].forEach(([cx, cy, r, f]) =>
+      M.svg('circle', { cx: cx, cy: cy, r: r, fill: f, stroke: STRICH, 'stroke-width': 4.5 }, w));
+    w.style.transformBox = 'fill-box'; w.style.transformOrigin = '50% 100%';
+    M.loop(w, [{ transform: 'rotate(0deg)' }, { transform: 'rotate(1.3deg)' }, { transform: 'rotate(0deg)' }], { t: 0, d: 3.6, n: Math.ceil(T / 3.6) });
+    return o;
+  }
+  function tisch(parent, x, breite, hoehe) {   // Holztisch mit Tischdecke
+    const t = g(parent), oben = GY - hoehe;
+    M.svg('ellipse', { cx: x + breite / 2, cy: GY + 4, rx: breite / 2 + 10, ry: 13, fill: 'rgba(30,30,40,.18)' }, t);
+    M.svg('line', { x1: x + 34, y1: oben, x2: x + 34, y2: GY, stroke: STRICH, 'stroke-width': 12, 'stroke-linecap': 'round' }, t);
+    M.svg('line', { x1: x + breite - 34, y1: oben, x2: x + breite - 34, y2: GY, stroke: STRICH, 'stroke-width': 12, 'stroke-linecap': 'round' }, t);
+    M.svg('rect', { x: x, y: oben - 10, width: breite, height: 28, rx: 10, fill: '#d9a458', stroke: STRICH, 'stroke-width': 6 }, t);
+    M.svg('path', { d: `M${x + 18} ${oben + 18} v22 l14 -10 l14 10 l14 -10 l14 10 l14 -10 v-12`, fill: '#fff', stroke: STRICH, 'stroke-width': 5, 'stroke-linejoin': 'round' }, t);
+    return oben - 10;
+  }
+  const PIA = { kleid: '#b9763f', flicken: '#e3c58a' };
+
+  /* ============ Szene 1: Pia wünscht sich eine friedliche Welt ============ */
+  (function () {
+    const sc = szene(0);
+    baum(sc, 100, GY - 6, .8);
+    const pia = Stickman(sc, Object.assign({ x: -230, y: GY, s: 1.9, haarSeed: 21 }, PIA));
+    pia.gehen(.5, 3.0, { dx: 770 / 1.9, per: .75 });
+    pia.pose(3.6, 'jubeln', .6).mund(3.6, 'lachen');
+    pia.huepfen(4.3, 1.0);
+    herz(sc, 540, GY - 760, 4.4, '#ef476f');
+    funkeln(sc, 340, GY - 640, 4.6); funkeln(sc, 740, GY - 690, 4.9); funkeln(sc, 410, GY - 790, 5.1);
+    // Vögel
+    [[1000, 900, .2], [880, 980, .9]].forEach(([x, y, v], i) => {
+      const o = aussenInnen(sc, x, y), fl = g(o);
+      M.svg('path', { d: 'M-22 0 q11 -16 22 0 q11 -16 22 0', fill: 'none', stroke: STRICH, 'stroke-width': 5, 'stroke-linecap': 'round' }, fl);
+      unten(fl, '50%', '100%');
+      M.loop(fl, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(.3)' }, { transform: 'scaleY(1)' }], { t: v, d: .6, n: 12 });
+      M.at(o, [{ transform: 'translate(0px,0px)' }, { transform: 'translate(-900px,-60px)' }], { t: v, d: 6, ease: E.linear });
+    });
+  })();
+
+  /* ============ Szene 2: Frage beim Frühstück, Fakt 1 ============ */
+  (function () {
+    const sc = szene(1), a = L(1, 0), b = L(1, 1);
+    baum(sc, 960, GY - 10, 1.05);
+    const pia = Stickman(sc, Object.assign({ x: 215, y: GY, s: 1.4, haarSeed: 21 }, PIA));
+    pia.pose(SZ[1].t0 + .3, 'denken', .6);
+    pia.mund(b.start + 1.8, 'sorge');
+    const oben = tisch(sc, 590, 430, 96);
+    M.svg('ellipse', { cx: 800, cy: oben - 4, rx: 104, ry: 17, fill: '#fff', stroke: STRICH, 'stroke-width': 6 }, sc);
+    M.svg('circle', { cx: 760, cy: oben - 34, r: 30, fill: '#ef476f', stroke: STRICH, 'stroke-width': 6 }, sc);
+    M.svg('path', { d: `M760 ${oben - 64} q4 -14 18 -16`, stroke: '#4fb069', 'stroke-width': 7, fill: 'none', 'stroke-linecap': 'round' }, sc);
+    M.svg('ellipse', { cx: 826, cy: oben - 20, rx: 36, ry: 18, fill: '#f6c667', stroke: STRICH, 'stroke-width': 6 }, sc);
+    // Denkblase mit Fragezeichen
+    const bk = aussenInnen(sc, 400, 1060);
+    M.svg('circle', { cx: -78, cy: 142, r: 10, fill: '#fff', stroke: STRICH, 'stroke-width': 5 }, bk);
+    M.svg('circle', { cx: -46, cy: 100, r: 16, fill: '#fff', stroke: STRICH, 'stroke-width': 5 }, bk);
+    M.svg('ellipse', { cx: 20, cy: 24, rx: 104, ry: 74, fill: '#fff', stroke: STRICH, 'stroke-width': 6 }, bk);
+    const fz = M.svg('text', { x: 20, y: 62, 'text-anchor': 'middle', 'font-size': 120, 'font-weight': 900, fill: STRICH, 'font-family': 'Inter, DejaVu Sans, sans-serif' }, bk); fz.textContent = '?';
+    unten(bk, '30%', '95%');
+    M.at(bk, [{ opacity: 0, transform: 'scale(0)' }, { opacity: 1, transform: 'scale(1.1)' }, { opacity: 1, transform: 'scale(1)' }], { t: a.start + .9, d: .7, ease: E.out });
+    M.at(bk, [{ opacity: 1 }, { opacity: 0 }], { t: b.start - .1, d: .4, ease: E.linear, fill: 'forwards' });
+    // Infografik (HTML)
+    const ui = document.getElementById('ui2');
+    M.fenster(ui, b.start - .1, SZ[1].t1, .5);
+    M.at(ui, [{ transform: 'translateY(26px) scale(.97)' }, { transform: 'translateY(0) scale(1)' }], { t: b.start - .1, d: .6, ease: E.back });
+    M.at('#b1', [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { t: b.start + .6, d: 1.5, ease: E.inOut });
+    M.at('#w1', [{ opacity: 0, transform: 'scale(.7)' }, { opacity: 1, transform: 'scale(1)' }], { t: b.start + 1.9, d: .5, ease: E.back });
+    M.at('#b2', [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { t: b.start + 2.7, d: 1.0, ease: E.inOut });
+    M.at('#w2', [{ opacity: 0, transform: 'scale(.7)' }, { opacity: 1, transform: 'scale(1)' }], { t: b.start + 3.5, d: .5, ease: E.back });
+    M.at('#q2', [{ opacity: 0 }, { opacity: 1 }], { t: b.start + 3.9, d: .5, ease: E.out });
+  })();
+
+  /* ============ Szene 3: Fakt 2, Zähler (trübe Stimmung) ============ */
+  (function () {
+    const sc = szene(2), z = L(2, 0);
+    const pia = Stickman(sc, Object.assign({ x: 215, y: GY, s: 1.4, haarSeed: 21 }, PIA));
+    pia.pose(SZ[2].t0 + .2, 'denken', .5).mund(SZ[2].t0 + .2, 'sorge');
+    const ui = document.getElementById('ui3');
+    M.fenster(ui, z.start - .1, SZ[2].t1, .5);
+    M.at(ui, [{ transform: 'translateY(26px) scale(.97)' }, { transform: 'translateY(0) scale(1)' }], { t: z.start - .1, d: .6, ease: E.back });
+    const lauf = Math.max(2.5, z.dauer - 1.2);
+    M.at('#zaehler', [{ '--v': 0 }, { '--v': 83 }], { t: z.start + .6, d: lauf, ease: E.inOut });
+    const dots = document.getElementById('dots'), pts = [];
+    for (let i = 0; i < 83; i++) {
+      const d = document.createElement('div');
+      d.style.cssText = `position:absolute;width:22px;height:22px;border-radius:11px;background:#8a98a3;border:3px solid #1d1d22;box-sizing:border-box;opacity:0;left:${(i % 17) * 33}px;top:${Math.floor(i / 17) * 35}px`;
+      dots.appendChild(d); pts.push(d);
+    }
+    M.stagger(pts, [{ opacity: 0, transform: 'scale(.3)' }, { opacity: 1, transform: 'scale(1)' }], { t: z.start + .6, d: .25, gap: lauf / 83, ease: E.out });
+    M.at('#q3', [{ opacity: 0 }, { opacity: 1 }], { t: z.start + z.dauer - .6, d: .5, ease: E.out });
+  })();
+
+  /* ============ Szene 4: Pia kocht pflanzlich am Lagerfeuer (Abendrot) ============ */
+  (function () {
+    const sc = szene(3), z = L(3, 0), t0 = SZ[3].t0;
+    const fx = 760;   // Feuerstelle
+    // Dreibein und Topf
+    M.svg('path', { d: `M${fx - 110} ${GY} L${fx} ${GY - 270} M${fx + 110} ${GY} L${fx} ${GY - 270} M${fx} ${GY} L${fx} ${GY - 270}`, stroke: '#6b4a2f', 'stroke-width': 11, 'stroke-linecap': 'round', fill: 'none' }, sc);
+    M.svg('path', { d: `M${fx} ${GY - 270} v50`, stroke: STRICH, 'stroke-width': 5, 'stroke-dasharray': '10 6', fill: 'none' }, sc);
+    M.svg('path', { d: `M${fx - 78} ${GY - 220} h156 q4 70 -26 96 h-104 q-30 -26 -26 -96Z`, fill: '#4a4f57', stroke: STRICH, 'stroke-width': 7, 'stroke-linejoin': 'round' }, sc);
+    M.svg('path', { d: `M${fx - 68} ${GY - 214} h136`, stroke: '#9aa3ad', 'stroke-width': 8, 'stroke-linecap': 'round' }, sc);
+    // Feuer: Holzscheite und drei Flammen, die flackern (Perioden teilen die Videolänge nicht, darum n aufgerundet)
+    M.svg('rect', { x: fx - 100, y: GY - 34, width: 200, height: 30, rx: 14, fill: '#7a5230', stroke: STRICH, 'stroke-width': 5, transform: `rotate(-10 ${fx} ${GY - 20})` }, sc);
+    M.svg('rect', { x: fx - 100, y: GY - 34, width: 200, height: 30, rx: 14, fill: '#8a6038', stroke: STRICH, 'stroke-width': 5, transform: `rotate(10 ${fx} ${GY - 20})` }, sc);
+    [['#ff8a1f', 1.0, .5, 0], ['#ffc83d', .72, .42, .15], ['#fff2a8', .42, .36, .3]].forEach(([farbe, sk, per, v]) => {
+      const f = aussenInnen(sc, fx, GY - 30), fl = g(f);
+      M.svg('path', { d: `M0 0 C-60 -20 -52 -92 -8 -150 C-12 -102 18 -92 14 -128 C60 -88 66 -26 0 0Z`, fill: farbe, transform: `scale(${sk * 1.45})` }, fl);
+      unten(fl, '50%', '100%');
+      M.loop(fl, [{ transform: 'scale(1,1)' }, { transform: 'scale(.9,1.14)' }, { transform: 'scale(1.06,.9)' }, { transform: 'scale(1,1)' }], { t: z.start + v, d: per, n: Math.ceil(T / per) });
+      M.at(f, [{ opacity: 0 }, { opacity: 1 }], { t: t0 + .2, d: .5, ease: E.out });
+    });
+    // Glut-Schein auf dem Boden
+    const schein = M.svg('ellipse', { cx: fx, cy: GY + 6, rx: 300, ry: 52, fill: '#ffb347', opacity: .0 }, sc);
+    M.loop(schein, [{ opacity: .25 }, { opacity: .42 }, { opacity: .25 }], { t: t0 + .3, d: .8, n: Math.ceil(T / .8) });
+    // Dampf
+    for (let i = 0; i < 3; i++) {
+      const d = M.svg('path', { d: `M${fx - 30 + i * 30} ${GY - 236} q-16 -28 0 -56 q16 -28 0 -56`, stroke: 'rgba(255,255,255,.85)', 'stroke-width': 8, fill: 'none', 'stroke-linecap': 'round' }, sc);
+      M.at(d, [{ opacity: 0, transform: 'translateY(0)' }, { opacity: .9, transform: 'translateY(-14px)' }, { opacity: 0, transform: 'translateY(-50px)' }], { t: z.start + 1 + i * .5, d: 1.7, n: 4, ease: E.linear, fill: 'forwards' });
+    }
+    // Korb mit Gemüse poppt auf
+    const kx = 960, ky = GY + 40;
+    M.svg('path', { d: `M${kx - 64} ${ky - 50} h128 l-16 70 h-96Z`, fill: '#c9954a', stroke: STRICH, 'stroke-width': 6, 'stroke-linejoin': 'round' }, sc);
+    M.svg('path', { d: `M${kx - 58} ${ky - 30} h116 M${kx - 52} ${ky - 8} h104`, stroke: '#8a6226', 'stroke-width': 4, fill: 'none' }, sc);
+    const brokkoli = aussenInnen(sc, kx - 24, ky - 50);
+    M.svg('rect', { x: -7, y: -4, width: 14, height: 26, rx: 4, fill: '#a7d948', stroke: STRICH, 'stroke-width': 5 }, brokkoli);
+    [[-17, -22], [0, -32], [17, -22]].forEach(([cx, cy]) => M.svg('circle', { cx: cx, cy: cy, r: 18, fill: '#4fb069', stroke: STRICH, 'stroke-width': 5 }, brokkoli));
+    const tomate = aussenInnen(sc, kx + 22, ky - 70);
+    M.svg('circle', { r: 28, fill: '#ef476f', stroke: STRICH, 'stroke-width': 6 }, tomate);
+    M.svg('path', { d: 'M-10 -26 l10 8 l10 -8', stroke: '#4fb069', 'stroke-width': 6, fill: 'none', 'stroke-linecap': 'round' }, tomate);
+    const karotte = aussenInnen(sc, kx + 44, ky - 52);
+    M.svg('path', { d: 'M-30 -4 L24 -26 L30 -6Z', fill: '#f78c1f', stroke: STRICH, 'stroke-width': 5, 'stroke-linejoin': 'round' }, karotte);
+    M.svg('path', { d: 'M24 -26 l16 -10 M24 -26 l18 2 M24 -26 l10 -18', stroke: '#4fb069', 'stroke-width': 6, 'stroke-linecap': 'round' }, karotte);
+    [brokkoli, tomate, karotte].forEach((e, i) => { unten(e, '50%', '100%');
+      M.at(e, [{ opacity: 0, transform: 'scale(0)' }, { opacity: 1, transform: 'scale(1.18)' }, { opacity: 1, transform: 'scale(1)' }], { t: z.start + .3 + i * .5, d: .6, ease: E.out }); });
+    // Pia kocht und lächelt
+    const pia = Stickman(sc, Object.assign({ x: 460, y: GY, s: 1.8, haarSeed: 21, licht: '#ffb25a' }, PIA));
+    pia.mund(t0 + .1, 'lachen');
+    pia.pose(t0 + .1, 'kochen', .6);
+    pia.ruehren(t0 + .8, z.dauer - .4);
+    // Glühwürmchen
+    for (let i = 0; i < 8; i++) {
+      const o = aussenInnen(sc, 120 + rr() * 840, 900 + rr() * 520), c = g(o);
+      M.svg('circle', { r: 14, fill: 'rgba(255,240,150,.35)' }, c); M.svg('circle', { r: 5, fill: '#fff6a8' }, c);
+      M.loop(c, [{ opacity: .2 }, { opacity: 1 }, { opacity: .2 }], { t: z.start + rr() * 1.5, d: 1.2 + rr(), n: 12 });
+      const fr = [], n = 14; for (let k = 0; k <= n; k++) { const u = k / n; fr.push({ transform: `translate(${(Math.sin(u * 6.28 + i) * 40).toFixed(0)}px,${(Math.sin(u * 9.4 + i * 2) * 30 - u * 40).toFixed(0)}px)` }); }
+      M.at(o, fr, { t: z.start + .5, d: z.dauer, ease: E.linear });
+    }
+    herz(sc, 470, GY - 720, z.start + z.dauer - 1.6, '#ef476f');
+    funkeln(sc, 640, GY - 640, z.start + z.dauer - 1.2);
+  })();
+
+  /* ============ Titel (gelbe Schilder wie im Referenzvideo) aus den Zeilen ============ */
+  const alle = [];
+  SZ.forEach((sz) => sz.zeilen.forEach((zl) => alle.push(zl)));
+  const caps = document.createElement('div'); document.getElementById('ui').appendChild(caps);
+  alle.forEach((zl, i) => {
+    if (!zl.titel) return;
+    const naechst = alle[i + 1], t0 = zl.start - .1;
+    const t1 = naechst ? Math.min(zl.start + zl.dauer + .6, naechst.start - .1) : zl.start + zl.dauer + .6;
+    const c = document.createElement('div'); c.className = 'cap';
+    zl.titel.replace(/ %/g, ' %').split(' ').forEach((w) => { const sp = document.createElement('span'); sp.className = 'w'; sp.textContent = w; c.appendChild(sp); });
+    caps.appendChild(c);
+    M.fenster(c, t0, t1, .35);
+    M.at(c, [{ transform: 'translateY(-22px) rotate(-1.4deg)' }, { transform: 'translateY(0) rotate(0deg)' }], { t: t0, d: .5, ease: E.back });
+    M.stagger(c.querySelectorAll('.w'), [{ opacity: 0, transform: 'translateY(20px)' }, { opacity: 1, transform: 'translateY(0)' }], { t: t0 + .08, d: .45, gap: .07, ease: E.out });
+  });
+
+  M.fertig(T);
+})();
+</script>

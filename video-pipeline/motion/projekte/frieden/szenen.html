@@ -1,0 +1,325 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Wie eine friedliche Welt aussieht — YouTube Short, 35 s</title>
+<style>
+  html,body{margin:0;padding:0;width:1080px;height:1920px;overflow:hidden;background:#ffd9b0;font-family:Inter,"DejaVu Sans",sans-serif}
+  .sky{position:absolute;inset:0}
+  #dawn{background:linear-gradient(180deg,#f7a6a0 0%,#ffcfa8 45%,#fff0d6 100%)}
+  #day{background:linear-gradient(180deg,#7cc2ee 0%,#bfe6fb 55%,#eaf7ff 100%);opacity:0}
+  #gold{background:linear-gradient(180deg,#f3a96d 0%,#ffd39a 50%,#fff0c9 100%);opacity:0}
+  svg{position:absolute;inset:0}
+  /* Titel-Pillen: bewusst in der oberen Hälfte und links der rechten Randzone (YouTube legt dort Knöpfe über das Bild) */
+  .cap{position:absolute;left:180px;width:720px;top:230px;box-sizing:border-box;padding:30px 40px;border-radius:48px;
+       background:rgba(18,40,66,.62);color:#fff;text-align:center;font-weight:800;line-height:1.16;opacity:0}
+  .cap .w{display:inline-block;margin:0 .14em}
+  .cap .sub{display:block;margin-top:14px;font-weight:600;font-size:46px;color:#ffe9c2}
+</style>
+<div class="sky" id="dawn"></div>
+<div class="sky" id="day"></div>
+<div class="sky" id="gold"></div>
+<svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+<div id="caps"></div>
+<script src="../../motion.js"></script>
+<script>
+(function () {
+  const M = Motion, E = M.EASE, T = 35;                       // Gesamtdauer in Sekunden
+  const s = document.getElementById('s');
+  const g = (parent, attrs) => M.svg('g', attrs || {}, parent || s);
+  const kf = (pairs) => pairs.map(p => ({ offset: p[0] / T, ...p[1] }));  // Keyframes mit absoluten Sekunden
+
+  /* ---------- Himmel: Morgenrot → Tag → goldenes Licht → zurück zum Morgenrot (Loop) ---------- */
+  M.at('#day',  kf([[0, { opacity: 0 }], [3, { opacity: 0 }], [6.5, { opacity: 1 }], [25, { opacity: 1 }], [29, { opacity: 0 }], [35, { opacity: 0 }]]), { t: 0, d: T, ease: E.linear });
+  M.at('#gold', kf([[0, { opacity: 0 }], [25, { opacity: 0 }], [29, { opacity: 1 }], [31.5, { opacity: 1 }], [35, { opacity: 0 }]]), { t: 0, d: T, ease: E.linear });
+
+  /* ---------- Sonne: geht auf (0–3 s), wandert leicht, geht am Ende wieder «zurück» (Loop) ---------- */
+  const defs = M.svg('defs', {}, s);
+  const rg = M.svg('radialGradient', { id: 'glow' }, defs);
+  M.svg('stop', { offset: '0', 'stop-color': '#fff6c9', 'stop-opacity': '.95' }, rg);
+  M.svg('stop', { offset: '1', 'stop-color': '#fff6c9', 'stop-opacity': '0' }, rg);
+  const sonne = g(s);
+  const halo = M.svg('circle', { r: 300, fill: 'url(#glow)' }, sonne);
+  M.svg('circle', { r: 92, fill: '#ffd166' }, sonne);
+  M.svg('circle', { r: 92, fill: 'none', stroke: '#ffe9a8', 'stroke-width': 8, opacity: .7 }, sonne);
+  M.at(sonne, kf([
+    [0,  { transform: 'translate(760px,1240px)' }],
+    [3,  { transform: 'translate(760px,800px)' }],
+    [30, { transform: 'translate(560px,740px)' }],
+    [33, { transform: 'translate(560px,740px)' }],
+    [35, { transform: 'translate(760px,1240px)' }]
+  ]), { t: 0, d: T, ease: E.inOut });
+  // «Atmen» des Halos: 5 Perioden à 7 s = exakt 35 s → nahtloser Loop
+  M.at(halo, kf([[0, { transform: 'scale(1)' }], [3.5, { transform: 'scale(1.12)' }], [7, { transform: 'scale(1)' }]]), { t: 0, d: 7, n: 5, ease: E.inOut });
+
+  /* ---------- Wolken: driften, sind am Anfang/Ende unsichtbar (Loop) ---------- */
+  function wolke(x, y, sc, dx, delay) {
+    const o = g(s, { transform: `translate(${x},${y}) scale(${sc})` });
+    const w = g(o);
+    M.svg('rect', { x: -90, y: -22, width: 180, height: 44, rx: 22, fill: '#fff' }, w);
+    M.svg('circle', { cx: -35, cy: -26, r: 34, fill: '#fff' }, w);
+    M.svg('circle', { cx: 12, cy: -40, r: 44, fill: '#fff' }, w);
+    M.at(w, kf([[0, { transform: 'translateX(0)', opacity: 0 }], [2, { transform: `translateX(${dx * 2 / T}px)`, opacity: .9 }],
+      [33, { transform: `translateX(${dx * 33 / T}px)`, opacity: .9 }], [35, { transform: `translateX(${dx}px)`, opacity: 0 }]]), { t: 0, d: T, ease: E.linear });
+  }
+  wolke(200, 640, 1.2, 260, 0); wolke(820, 560, .9, -200, 0); wolke(120, 1000, .8, 220, 0); wolke(900, 940, 1.0, -240, 0);
+
+  /* ---------- Hügel (Parallax: sehr langsam, Loop-sicher) ---------- */
+  const hFern = g(), hMitte = g();
+  M.svg('path', { d: 'M-40 1235 C130 1150 300 1140 460 1200 S760 1250 900 1170 S1060 1150 1120 1190 V1920 H-40Z', fill: '#a8d8b9' }, hFern);
+  M.svg('path', { d: 'M-40 1305 C200 1240 380 1260 560 1305 S900 1335 1120 1270 V1920 H-40Z', fill: '#7fc79a' }, hMitte);
+  M.at(hFern,  kf([[0, { transform: 'translateX(0)' }], [17.5, { transform: 'translateX(-14px)' }], [35, { transform: 'translateX(0)' }]]), { t: 0, d: T, ease: E.inOut });
+  M.at(hMitte, kf([[0, { transform: 'translateX(0)' }], [17.5, { transform: 'translateX(-26px)' }], [35, { transform: 'translateX(0)' }]]), { t: 0, d: T, ease: E.inOut });
+
+  /* ---------- kleine Figuren-Helfer ---------- */
+  const HAUT = ['#f5cba7', '#d9a066', '#a9714b', '#7a4a2b'];
+  // Figur: Ursprung = Füsse, wächst nach oben
+  function figur(parent, hautIdx, farbe, sc) {
+    const o = g(parent), k = g(o, { transform: `scale(${sc || 1})` });
+    M.svg('rect', { x: -13, y: -50, width: 26, height: 40, rx: 12, fill: farbe }, k);
+    M.svg('rect', { x: -10, y: -14, width: 8, height: 14, rx: 4, fill: '#35405a' }, k);
+    M.svg('rect', { x: 2, y: -14, width: 8, height: 14, rx: 4, fill: '#35405a' }, k);
+    M.svg('circle', { cx: 0, cy: -64, r: 15, fill: HAUT[hautIdx % 4] }, k);
+    M.svg('path', { d: 'M-15 -66 q15 -22 30 0 q-15 -8 -30 0z', fill: ['#4b3621', '#2b2118', '#8c5a2b', '#d4a24a'][hautIdx % 4] }, k);
+    return o;
+  }
+  function wippen(o, t0, t1, per, amp) {   // Gehen: kleines Auf und Ab
+    const n = Math.max(1, Math.round((t1 - t0) / per));
+    M.at(o, [{ transform: 'translateY(0)' }, { transform: `translateY(-${amp}px)` }, { transform: 'translateY(0)' }], { t: t0, d: per, n: n, ease: E.inOut });
+  }
+  function pop(target, t, d, from) {
+    return M.at(target, [{ opacity: 0, transform: `scale(${from === undefined ? 0 : from})` }, { opacity: 1, transform: 'scale(1)' }], { t: t, d: d || .5, ease: E.back });
+  }
+  const unten = (e, ox, oy) => { e.style.transformBox = 'fill-box'; e.style.transformOrigin = `${ox || '50%'} ${oy || '100%'}`; };
+  function herz(parent, x, y, t, farbe) {
+    const o = g(parent, { transform: `translate(${x},${y})` }), h = g(o);
+    M.svg('path', { d: 'M0 14 C-34 -10 -22 -34 0 -16 C22 -34 34 -10 0 14Z', fill: farbe || '#ef476f' }, h);
+    unten(h, '50%', '60%'); pop(h, t, .6);
+    M.at(h, [{ transform: 'translateY(0) scale(1)', opacity: 1 }, { transform: 'translateY(-36px) scale(1.1)', opacity: 0 }], { t: t + 1.4, d: 1.1, ease: E.out, fill: 'forwards' });
+    return o;
+  }
+
+  /* ---------- Szene 1 (3–9 s): Morgen ohne Angst ---------- */
+  const dorf = g();
+  const haeuser = [[90, 150, 150, '#e27d60'], [300, 170, 165, '#e8a87c'], [520, 150, 140, '#c38d9e'], [700, 180, 170, '#85cdca']];
+  const fenster = [];
+  haeuser.forEach(([x, b, h, dach], i) => {
+    const o = g(dorf);
+    M.svg('rect', { x: x, y: 1365 - h, width: b, height: h, fill: '#fff4e0' }, o);
+    M.svg('path', { d: `M${x - 14} ${1365 - h} L${x + b / 2} ${1365 - h - 80} L${x + b + 14} ${1365 - h}Z`, fill: dach }, o);
+    M.svg('rect', { x: x + b / 2 - 16, y: 1365 - 62, width: 32, height: 62, rx: 6, fill: '#8b5e3c' }, o);
+    [[x + 18, 1365 - h + 26], [x + b - 52, 1365 - h + 26]].forEach(([wx, wy]) => {
+      const f = M.svg('rect', { x: wx, y: wy, width: 34, height: 40, rx: 6, fill: '#ffd166' }, o);
+      f.style.opacity = 0; fenster.push(f);
+    });
+  });
+  // Schule rechts mit Fahne
+  const schule = g(dorf);
+  M.svg('rect', { x: 880, y: 1230, width: 230, height: 135, fill: '#fff4e0' }, schule);
+  M.svg('path', { d: 'M866 1230 L995 1160 L1124 1230Z', fill: '#d1495b' }, schule);
+  M.svg('rect', { x: 975, y: 1300, width: 40, height: 65, rx: 6, fill: '#8b5e3c' }, schule);
+  M.svg('rect', { x: 993, y: 1090, width: 5, height: 72, fill: '#6b4a2f' }, schule);
+  const fahne = M.svg('path', { d: 'M998 1092 h46 l-14 16 l14 16 h-46Z', fill: '#06d6a0' }, schule);
+  fahne.style.transformBox = 'fill-box'; fahne.style.transformOrigin = '0% 50%';
+  M.loop(fahne, [{ transform: 'skewY(0deg)' }, { transform: 'skewY(8deg)' }, { transform: 'skewY(0deg)' }], { t: 3, d: 1.4, n: 5 });
+  M.svg('rect', { x: -40, y: 1385, width: 1160, height: 66, fill: '#f1dfb9' }, dorf);
+  // Fenster gehen nacheinander an (Licht = «hier ist jemand zuhause»)
+  M.stagger(fenster, [{ opacity: 0 }, { opacity: 1 }], { t: 3.8, d: .4, gap: .35, ease: E.out });
+  // Kinder gehen zur Schule
+  [[0, '#ef476f', 0], [1, '#ffd166', .55], [2, '#118ab2', 1.1], [3, '#06d6a0', 1.65]].forEach(([hi, farbe, delay]) => {
+    const w = g(dorf), f = figur(w, hi, farbe, 1.0);
+    M.at(w, [{ transform: 'translate(-80px,1440px)' }, { transform: 'translate(900px,1440px)' }], { t: 3.4 + delay, d: 5.2, ease: E.linear });
+    wippen(f, 3.4 + delay, 8.6 + delay, .52, 7);
+  });
+  M.fenster(dorf, 3, 9.4, .7);
+
+  /* ---------- Szene 2 (9–16 s): Alle haben genug, man teilt ---------- */
+  const garten = g();
+  function pflanze(x, base, h, farbe) {
+    const p = g(garten);
+    M.svg('path', { d: `M${x} ${base} q-8 -${h / 2} 0 -${h}`, fill: 'none', stroke: '#3f9a54', 'stroke-width': 8, 'stroke-linecap': 'round' }, p);
+    M.svg('ellipse', { cx: x - 22, cy: base - h * .55, rx: 22, ry: 10, fill: '#4fb069', transform: `rotate(-28 ${x - 22} ${base - h * .55})` }, p);
+    M.svg('ellipse', { cx: x + 22, cy: base - h * .7, rx: 22, ry: 10, fill: '#4fb069', transform: `rotate(28 ${x + 22} ${base - h * .7})` }, p);
+    M.svg('circle', { cx: x, cy: base - h - 8, r: 17, fill: farbe }, p);
+    p.style.transformOrigin = `${x}px ${base}px`;
+    return p;
+  }
+  M.svg('rect', { x: -40, y: 1385, width: 1160, height: 66, fill: '#f1dfb9' }, garten);
+  const beete = [];
+  [[110, '#ef476f'], [215, '#f78c6b'], [320, '#ef476f'], [760, '#ffd166'], [865, '#f78c6b'], [970, '#ffd166']].forEach(([x, fa]) => beete.push(pflanze(x, 1440, 110 + (x % 3) * 18, fa)));
+  M.stagger(beete, [{ transform: 'scaleY(0)', opacity: 0 }, { transform: 'scaleY(1)', opacity: 1 }], { t: 9.6, d: .9, gap: .22, ease: E.back });
+  // Tisch mit drei Körben
+  const tisch = g(garten);
+  M.svg('rect', { x: 330, y: 1380, width: 420, height: 22, rx: 8, fill: '#8b5e3c' }, tisch);
+  M.svg('rect', { x: 360, y: 1402, width: 18, height: 72, fill: '#6b4a2f' }, tisch);
+  M.svg('rect', { x: 702, y: 1402, width: 18, height: 72, fill: '#6b4a2f' }, tisch);
+  const fruchtFarben = ['#ef476f', '#ffb703', '#8ac926'];
+  [[420, 0], [540, 1], [660, 2]].forEach(([x, i]) => {
+    M.svg('path', { d: `M${x - 46} 1380 l12 -46 h68 l12 46Z`, fill: '#c9954a' }, tisch);
+    for (let k = 0; k < 4; k++) {
+      const c = M.svg('circle', { cx: x - 24 + k * 16, cy: 1330 - (k % 2) * 10, r: 15, fill: fruchtFarben[(i + k) % 3] }, tisch);
+      c.style.transformBox = 'fill-box'; c.style.transformOrigin = '50% 100%';
+      pop(c, 11.2 + i * .6 + k * .18, .45);
+    }
+  });
+  // drei Personen am Tisch, wippen zufrieden
+  [[300, 0, '#f78c6b', 1.15], [815, 2, '#118ab2', 1.15], [560, 1, '#ffd166', 1.05]].forEach(([x, hi, fa, sc], i) => {
+    const w = g(garten, { transform: `translate(${x},${i === 2 ? 1500 : 1468})` }), f = figur(w, hi, fa, sc);
+    pop(f, 10.2 + i * .3, .5); unten(f);
+    M.at(f, [{ transform: 'translateY(0)' }, { transform: 'translateY(-6px)' }, { transform: 'translateY(0)' }], { t: 12 + i * .2, d: 1.2, n: 4, ease: E.inOut, fill: 'forwards' });
+  });
+  herz(garten, 540, 1235, 13.6, '#ef476f');
+  M.fenster(garten, 9, 16.4, .7);
+
+  /* ---------- Szene 3 (16–23 s): Streit wird geredet, nicht gekämpft ---------- */
+  const bruecke = g(s, { transform: 'translate(540 1190) scale(1.5) translate(-540 -1330)' });
+  const lueft = g();
+  const P = (u) => { const x0 = 392, y0 = 1318, cx = 540, cy = 1190, x1 = 688, y1 = 1318;   // Bézier-Kurve der Brücke
+    return [(1 - u) ** 2 * x0 + 2 * (1 - u) * u * cx + u * u * x1, (1 - u) ** 2 * y0 + 2 * (1 - u) * u * cy + u * u * y1]; };
+  // Fluss
+  const fluss = g(bruecke);
+  M.svg('rect', { x: 360, y: 1440, width: 360, height: 120, fill: '#5fb4e8' }, fluss);
+  for (let i = 0; i < 4; i++) M.svg('path', { d: `M${360 + i * 60 - 60} ${1470 + (i % 2) * 28} q15 -12 30 0 t30 0 t30 0 t30 0 t30 0`, fill: 'none', stroke: '#cfeeff', 'stroke-width': 5, 'stroke-linecap': 'round' }, fluss);
+  M.loop(fluss.lastChild, [{ transform: 'translateX(0)' }, { transform: 'translateX(24px)' }], { t: 16, d: 1.6, n: 5 });
+  // Felsen links/rechts
+  const fels = (d) => { M.svg('path', { d: d, fill: '#9a7b5a' }, bruecke); };
+  fels('M-40 1330 H392 V1560 H-40Z'); fels('M688 1330 H1120 V1560 H688Z');
+  M.svg('path', { d: 'M-40 1330 Q150 1290 392 1318 V1336 H-40Z', fill: '#5db16f' }, bruecke);
+  M.svg('path', { d: 'M688 1318 Q930 1290 1120 1330 V1336 H688Z', fill: '#5db16f' }, bruecke);
+  // Brücke zeichnet sich
+  const deck = M.svg('path', { d: 'M392 1318 Q540 1190 688 1318', fill: 'none', stroke: '#8b5e3c', 'stroke-width': 22, 'stroke-linecap': 'round' }, bruecke);
+  M.zeichnen(deck, { t: 16.7, d: 1.9, ease: E.inOut });
+  [.15, .3, .45, .55, .7, .85].forEach((u, i) => {
+    const [px, py] = P(u), post = M.svg('rect', { x: px - 3, y: py + 10, width: 6, height: 44, fill: '#6b4a2f' }, bruecke);
+    post.style.transformBox = 'fill-box'; post.style.transformOrigin = '50% 0%';
+    M.at(post, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { t: 18.4 + i * .1, d: .4, ease: E.out });
+  });
+  // zwei Menschen gehen aufeinander zu und treffen sich in der Mitte
+  function gehen(hi, farbe, u0, u1, t0, d) {
+    const w = g(bruecke), f = figur(w, hi, farbe, 1.0);
+    const n = 24, frames = [];
+    for (let i = 0; i <= n; i++) { const [px, py] = P(u0 + (u1 - u0) * i / n); frames.push({ transform: `translate(${px.toFixed(1)}px,${(py - 11).toFixed(1)}px)` }); }
+    M.at(w, frames, { t: t0, d: d, ease: E.inOut, whole: true });
+    wippen(f, t0, t0 + d, .5, 6);
+    return w;
+  }
+  gehen(1, '#f78c6b', 0.0, .445, 19, 2.2);
+  gehen(3, '#118ab2', 1.0, .555, 19, 2.2);
+  // Sprechblasen mit drei Punkten («sie reden»)
+  function blase(x, y, t) {
+    const b = g(bruecke, { transform: `translate(${x},${y})` }), k = g(b);
+    M.svg('rect', { x: -48, y: -30, width: 96, height: 56, rx: 26, fill: '#fff' }, k);
+    M.svg('path', { d: 'M-8 24 l8 20 l12 -20Z', fill: '#fff' }, k);
+    [-22, 0, 22].forEach((dx, i) => { const p = M.svg('circle', { cx: dx, cy: -2, r: 7, fill: '#47698c' }, k);
+      M.loop(p, [{ opacity: .25 }, { opacity: 1 }, { opacity: .25 }], { t: t + i * .2, d: .9, n: 2 }); });
+    unten(k); pop(k, t, .5);
+    M.at(k, [{ opacity: 1 }, { opacity: 0 }], { t: t + 1.8, d: .5, ease: E.linear, fill: 'forwards' });
+  }
+  blase(485, 1150, 21.5); blase(595, 1110, 22.0);
+  herz(bruecke, 540, 1130, 22.3, '#ef476f');
+  // Tauben
+  function taube(t0, d, y0, y1) {
+    const o = g(lueft), k = g(o);
+    M.svg('ellipse', { cx: 0, cy: 0, rx: 20, ry: 9, fill: '#fff', stroke: '#d9e4ee', 'stroke-width': 2 }, k);
+    M.svg('circle', { cx: 18, cy: -6, r: 7, fill: '#fff', stroke: '#d9e4ee', 'stroke-width': 2 }, k);
+    M.svg('path', { d: 'M24 -6 l9 3 l-9 3Z', fill: '#f4a261' }, k);
+    const fl = M.svg('path', { d: 'M-6 -4 q-10 -34 16 -26 q-6 16 -10 28Z', fill: '#fff', stroke: '#d9e4ee', 'stroke-width': 2 }, k);
+    fl.style.transformBox = 'fill-box'; fl.style.transformOrigin = '50% 100%';
+    M.loop(fl, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(-.5)' }, { transform: 'scaleY(1)' }], { t: t0, d: .5, n: Math.ceil(d / .5) });
+    const fr = [], n = 20;
+    for (let i = 0; i <= n; i++) { const u = i / n; fr.push({ transform: `translate(${(-80 + u * 1240).toFixed(0)}px,${(y0 + (y1 - y0) * u + Math.sin(u * 9) * 22).toFixed(0)}px)` }); }
+    M.at(o, fr, { t: t0, d: d, ease: E.linear });
+  }
+  taube(18.8, 4.2, 930, 860); taube(19.4, 4.2, 1010, 960); taube(20.0, 4.2, 880, 820);
+  M.fenster(lueft, 16, 23.4, .7);
+  M.fenster(bruecke, 16, 23.4, .7);
+
+  /* ---------- Szene 4 (23–30 s): Die Natur erholt sich ---------- */
+  const natur = g();
+  // Regenbogen
+  const farben = ['#ef476f', '#f78c6b', '#ffd166', '#06d6a0', '#118ab2', '#9b5de5'];
+  farben.forEach((f, i) => { const r = 470 - i * 30, p = M.svg('path', { d: `M${540 - r} 1380 A${r} ${r} 0 0 1 ${540 + r} 1380`, fill: 'none', stroke: f, 'stroke-width': 30, opacity: .85 }, natur);
+    M.zeichnen(p, { t: 24.2 + i * .18, d: 1.7, ease: E.inOut }); });
+  M.svg('rect', { x: -40, y: 1380, width: 1160, height: 80, fill: '#7fc79a' }, natur);
+  // Bäume wachsen
+  function baum(x, base, sc, farbe, t) {
+    const o = g(natur, { transform: `translate(${x},${base}) scale(${sc})` }), k = g(o);
+    const st = M.svg('rect', { x: -12, y: -150, width: 24, height: 150, rx: 8, fill: '#7a5230' }, k);
+    const kr = g(k);
+    M.svg('circle', { cx: 0, cy: -190, r: 82, fill: farbe }, kr);
+    M.svg('circle', { cx: -52, cy: -150, r: 54, fill: farbe }, kr);
+    M.svg('circle', { cx: 52, cy: -150, r: 54, fill: farbe }, kr);
+    st.style.transformBox = 'fill-box'; st.style.transformOrigin = '50% 100%';
+    kr.style.transformBox = 'fill-box'; kr.style.transformOrigin = '50% 100%';
+    M.at(st, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { t: t, d: .7, ease: E.out });
+    M.at(kr, [{ transform: 'scale(0)' }, { transform: 'scale(1)' }], { t: t + .45, d: .8, ease: E.back });
+    M.loop(kr, [{ transform: 'rotate(0deg)' }, { transform: 'rotate(1.6deg)' }, { transform: 'rotate(0deg)' }], { t: t + 1.4, d: 2.4, n: 3 });
+  }
+  [[100, 1440, .78, '#4fb069', 24.0], [270, 1450, .95, '#5fa85a', 24.4], [450, 1438, .7, '#6cc07a', 24.8], [640, 1452, 1.0, '#4fb069', 25.2],
+   [820, 1440, .8, '#5fa85a', 25.6], [980, 1448, .9, '#6cc07a', 26.0]].forEach(a => baum(...a));
+  // Vögel
+  function vogel(t0, d, y0) {
+    const o = g(natur), v = M.svg('path', { d: 'M-20 0 q10 -16 20 0 q10 -16 20 0', fill: 'none', stroke: '#2b3a55', 'stroke-width': 5, 'stroke-linecap': 'round' }, o);
+    v.style.transformBox = 'fill-box'; v.style.transformOrigin = '50% 100%';
+    M.loop(v, [{ transform: 'scaleY(1)' }, { transform: 'scaleY(.35)' }, { transform: 'scaleY(1)' }], { t: t0, d: .6, n: Math.ceil(d / .6) });
+    const fr = [], n = 16;
+    for (let i = 0; i <= n; i++) { const u = i / n; fr.push({ transform: `translate(${(1150 - u * 1260).toFixed(0)}px,${(y0 + Math.sin(u * 7) * 20).toFixed(0)}px)` }); }
+    M.at(o, fr, { t: t0, d: d, ease: E.linear });
+  }
+  vogel(24, 5.5, 960); vogel(24.5, 5.5, 1010); vogel(25.2, 5.5, 910);
+  M.fenster(natur, 23, 30.4, .7);
+
+  /* ---------- Vordergrund-Hügel + Blumen (ab 24 s sprossen sie) ---------- */
+  M.svg('path', { d: 'M-40 1490 C250 1440 520 1460 760 1500 S1000 1510 1120 1480 V1920 H-40Z', fill: '#55a96d' }, s);
+  const blumen = g(), rr = M.rnd(7), fl = [];
+  const bf = ['#ffffff', '#ffd166', '#ef476f', '#f78c6b', '#9b5de5'];
+  for (let i = 0; i < 26; i++) {
+    const x = 40 + rr() * 1000, y = 1560 + rr() * 280, o = g(blumen, { transform: `translate(${x.toFixed(0)},${y.toFixed(0)})` }), k = g(o);
+    M.svg('rect', { x: -2, y: -34, width: 4, height: 34, fill: '#3f9a54' }, k);
+    for (let a = 0; a < 5; a++) M.svg('circle', { cx: Math.cos(a * 1.2566) * 9, cy: -40 + Math.sin(a * 1.2566) * 9, r: 7, fill: bf[i % 5] }, k);
+    M.svg('circle', { cx: 0, cy: -40, r: 5, fill: '#ffb703' }, k);
+    k.style.transformBox = 'fill-box'; k.style.transformOrigin = '50% 100%'; fl.push(k);
+  }
+  M.stagger(fl, [{ transform: 'scale(0)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }], { t: 24.6, d: .6, gap: .1, ease: E.back });
+  M.at(blumen, [{ opacity: 1 }, { opacity: 0 }], { t: 33, d: 1.6, ease: E.linear });   // zum Loop-Ende verschwinden die Blumen wieder
+
+  /* ---------- Schluss (30–35 s): Es beginnt im Kleinen ---------- */
+  const ende = g(s, { transform: 'translate(540 1560) scale(1.5) translate(-540 -1560)' });
+  M.svg('ellipse', { cx: 540, cy: 1560, rx: 120, ry: 28, fill: '#7a5230' }, ende);
+  const stiel = M.svg('path', { d: 'M540 1556 Q522 1480 540 1410', fill: 'none', stroke: '#3f9a54', 'stroke-width': 14, 'stroke-linecap': 'round' }, ende);
+  M.zeichnen(stiel, { t: 30.7, d: 1.2, ease: E.out });
+  [[-1, 31.7], [1, 32.0]].forEach(([dir, t]) => {
+    const b = g(ende, { transform: 'translate(540,1424)' }), k = g(b);
+    M.svg('ellipse', { cx: dir * 34, cy: 0, rx: 38, ry: 17, fill: '#6fcf7f', transform: `rotate(${dir * -24} ${dir * 34} 0)` }, k);
+    k.style.transformBox = 'fill-box'; k.style.transformOrigin = dir < 0 ? '100% 50%' : '0% 50%';
+    pop(k, t, .6);
+  });
+  const stern = g(ende, { transform: 'translate(540,1380)' }), sk = g(stern);
+  M.svg('circle', { r: 26, fill: '#fff6c9', opacity: .9 }, sk);
+  M.svg('circle', { r: 12, fill: '#ffd166' }, sk);
+  pop(sk, 32.3, .6); M.loop(sk, [{ transform: 'scale(1)' }, { transform: 'scale(1.25)' }, { transform: 'scale(1)' }], { t: 33, d: 1, n: 2 });
+  M.fenster(ende, 30, 34.6, .7);
+
+  /* ---------- Nahe Hügel-Kante liegt über allem Fuss-Material, darum zuletzt Vordergrund: erledigt oben ---------- */
+
+  /* ---------- Titel (Pillen) ---------- */
+  const texte = [
+    { t0: .2,   t1: 3.4,  z: 'Wie sieht eine friedliche Welt aus?', px: 80 },
+    { t0: 3.6,  t1: 8.8,  z: 'Morgens gehen Kinder ohne Angst zur Schule.', px: 66 },
+    { t0: 9.6,  t1: 15.8, z: 'Alle haben genug und teilen die Ernte.', px: 66 },
+    { t0: 16.6, t1: 22.8, z: 'Streit wird mit Worten gelöst, nicht mit Waffen.', px: 64 },
+    { t0: 23.6, t1: 29.6, z: 'Die Natur darf sich erholen.', px: 70 },
+    { t0: 30.4, t1: 34.6, z: 'Sie beginnt im Kleinen.', px: 74, sub: 'Mit einem freundlichen Wort.' }
+  ];
+  const caps = document.getElementById('caps');
+  texte.forEach((x) => {
+    const c = document.createElement('div'); c.className = 'cap'; c.style.fontSize = x.px + 'px';
+    x.z.split(' ').forEach((w) => { const sp = document.createElement('span'); sp.className = 'w'; sp.textContent = w; c.appendChild(sp); });
+    if (x.sub) { const sb = document.createElement('span'); sb.className = 'sub'; sb.textContent = x.sub; c.appendChild(sb); }
+    caps.appendChild(c);
+    M.fenster(c, x.t0, x.t1, .5);
+    M.stagger(c.querySelectorAll('.w'), [{ opacity: 0, transform: 'translateY(26px)' }, { opacity: 1, transform: 'translateY(0)' }], { t: x.t0 + .12, d: .55, gap: .09, ease: E.out });
+    if (x.sub) M.at(c.querySelector('.sub'), [{ opacity: 0 }, { opacity: 1 }], { t: x.t0 + 1.4, d: .6, ease: E.out });
+  });
+
+  M.fertig(T);
+})();
+</script>

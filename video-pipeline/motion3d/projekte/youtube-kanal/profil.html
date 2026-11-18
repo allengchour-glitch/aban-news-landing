@@ -1,0 +1,29 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>YouTube-Profilbild Pia</title>
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"../../node_modules/three/build/three.module.js","three/addons/":"../../node_modules/three/examples/jsm/"}}</script>
+<script src="../../../motion/motion.js"></script>
+<script type="module">
+import * as THREE from 'three';
+import { toon } from '../../lib/toon.js';
+import { erzeugePia, spieler } from '../../lib/pia3d.js';
+import { nachbearbeitung } from '../../lib/post.js';
+const W = 800, H = 800;
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.shadowMap.enabled = true;
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0xf6c98a);
+const cam = new THREE.PerspectiveCamera(24, 1, 0.1, 100);
+scene.add(new THREE.HemisphereLight(0xfff1dc, 0xd9a86c, 1.3));
+const sonne = new THREE.DirectionalLight(0xfff0cf, 2.2); sonne.position.set(3, 5, 6); scene.add(sonne);
+const pia = erzeugePia({ skala: 1 }); scene.add(pia.wurzel);
+const sp = spieler(pia, [{ t0: 0, t1: 99, clip: 'winken' }], [{ t: 0, x: 0, z: 0, ry: 0 }]);
+const post = nachbearbeitung(renderer, scene, cam, W, H, { samples: 4, bloom: 0.1 });
+window.__seek3d = async () => {
+  sp.setzeZeit(0.7);
+  cam.position.set(0, 2.55, 5.6); cam.lookAt(0, 2.45, 0); cam.updateProjectionMatrix();
+  post.setze({ blende: 1, bild: 2, waerme: 0.3, vig: 0.12, korn: 0.015 }); post.render();
+};
+Motion.fertig(1);
+</script>

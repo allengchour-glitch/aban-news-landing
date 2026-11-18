@@ -1,0 +1,34 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>M2: Clip-Test der 3D-Pia</title>
+<style>html,body{margin:0;background:#cfeaf5;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"../../node_modules/three/build/three.module.js","three/addons/":"../../node_modules/three/examples/jsm/"}}</script>
+<script src="../../../motion/motion.js"></script>
+<script type="module">
+import * as THREE from 'three';
+import { toon } from '../../lib/toon.js';
+import { erzeugePia, spieler } from '../../lib/pia3d.js';
+const W = 1080, H = 1920;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1); renderer.setSize(W, H); renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0xf6d9b4); scene.fog = new THREE.Fog(0xf6d9b4, 25, 70);
+const cam = new THREE.PerspectiveCamera(36, W / H, 0.1, 200);
+scene.add(new THREE.HemisphereLight(0xcfeaf5, 0x8fae55, 0.9));
+const sonne = new THREE.DirectionalLight(0xfff0cf, 2.4); sonne.position.set(8, 14, 7); sonne.castShadow = true;
+sonne.shadow.mapSize.set(2048, 2048); sonne.shadow.bias = -0.0006; sonne.shadow.normalBias = 0.04;
+Object.assign(sonne.shadow.camera, { left: -12, right: 12, top: 12, bottom: -12, near: 1, far: 40 }); scene.add(sonne); scene.add(sonne.target);
+const boden = new THREE.Mesh(new THREE.PlaneGeometry(120, 120), toon(0x8fb85a, { rim: 0 })); boden.rotation.x = -Math.PI / 2; boden.receiveShadow = true; scene.add(boden);
+const pia = erzeugePia(); scene.add(pia.wurzel);
+const clips = ['idle', 'gehen', 'winken', 'denken', 'jubeln', 'ruehren', 'ernten', 'tragen', 'anstossen', 'sitzen', 'staunen'];
+const req = { ruehren: 'loeffel', tragen: 'korb', anstossen: 'becher' };
+const segmente = clips.map((c, i) => ({ t0: i * 2, t1: i * 2 + 2, clip: c, requisit: req[c] }));
+const sp = spieler(pia, segmente, [{ t: 0, x: 0, z: 0, ry: 0 }, { t: 2, x: 0, z: 0, ry: 0 }, { t: 4, x: 2.8, z: 0, ry: Math.PI / 2, lin: true }, { t: 4.4, x: 2.8, z: 0, ry: 0 }, { t: 22, x: 2.8, z: 0, ry: 0 }]);
+window.__seek3d = async (t) => {
+  sp.setzeZeit(t);
+  const r = pia.wurzel.position; sonne.target.position.copy(r); sonne.position.set(r.x + 8, 14, r.z + 7);
+  cam.position.set(r.x + 3.8, 2.6, r.z + 9.6); cam.lookAt(r.x, 1.7, r.z);
+  renderer.render(scene, cam); renderer.getContext().finish();
+};
+Motion.fertig(22);
+</script>

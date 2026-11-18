@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>Baustein 5: Brücke zeichnet sich</title>
+<link rel="stylesheet" href="_basis.css">
+<div class="stage"><svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script src="../motion.js"></script>
+<script>
+ const M = Motion, s = document.getElementById('s');
+ M.svg('rect', { width: 1080, height: 1920, fill: '#e8f3fb' }, s);
+ M.svg('path', { d: 'M0 1100 Q220 1000 380 1100 V1920 H0Z', fill: '#6fa8cc' }, s);
+ M.svg('path', { d: 'M1080 1100 Q860 1000 700 1100 V1920 H1080Z', fill: '#6fa8cc' }, s);
+ const b = M.svg('path', { d: 'M360 1090 Q540 880 720 1090', fill: 'none', stroke: '#16324f', 'stroke-width': 22, 'stroke-linecap': 'round' }, s);
+ // Lernpunkt: Linie zeichnen = stroke-dasharray auf die Pfadlänge, dann stroke-dashoffset animieren.
+ M.zeichnen(b, { t: 0.4, d: 1.8, ease: M.EASE.inOut });
+ M.fertig(3);
+</script>
