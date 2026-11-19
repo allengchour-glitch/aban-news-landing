@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-18T12:59:50Z",
+ "stand": "2026-11-19T12:57:02Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "(g+) Lokale KI: Wann sich ein eigener KI-Server rechnet und wann er nur beruhigt",
-   "u": "https://www.golem.de/news/lokale-ki-wann-sich-ein-eigener-ki-server-rechnet-und-wann-er-nur-beruhigt-2611-215216.html",
-   "q": "Golem",
-   "d": "2026-11-18T12:30:02Z",
-   "s": "Ein eigener KI-Server soll Kosten sparen und unabhängiger von Cloudanbietern machen. Doch was kostet er tatsächlich? Ein Deep Dive von Benedikt Matthes (KI, Nvidia)",
-   "sprache": "de"
-  },
-  {
-   "t": "Nach der Sperrung von Facebook-Konten: Meta-Agent reicht selbstständig Klage ein – gegen Meta",
-   "u": "https://t3n.de/news/nach-der-sperrung-von-facebook-konten-meta-agent-reicht-selbststaendig-klage-ein-gegen-meta-1774119/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-18T12:00:37Z",
-   "s": "Im Unternehmen von Joe Thomas spielt Metas KI-Agent Muse eine zentrale Rolle. Er verwaltet Social-Media-Konten, plant Marketing-Inhalte und verschickt E-Mails. Jetzt ist er für ihn sogar vor Gericht g…",
-   "sprache": "de"
-  },
-  {
-   "t": "Felicis leads $7.5M bet on Unsiloed AI to make enterprise documents usable by AI agents",
-   "u": "https://techcrunch.com/2026/11/18/felicis-leads-7-5m-bet-on-unsiloed-ai-to-make-enterprise-documents-usable-by-ai-agents/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-18T12:00:00Z",
-   "s": "With a team of just seven, Unsiloed AI plans to compete with tech giants and specialized startups in the crowded AI document-processing market.",
-   "sprache": "en"
-  },
-  {
-   "t": "India’s Humyn Labs raises $47M to feed U.S. robotics companies the data they need",
-   "u": "https://techcrunch.com/2026/11/18/accel-backs-indias-humyn-labs-to-supply-training-data-needed-by-u-s-robotics-ai-developers/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-18T11:30:00Z",
-   "s": "Founded in February, Humyn Labs competes with startups including Mecka AI and XDOF, with about 90% of its revenue coming from the U.S.",
-   "sprache": "en"
-  },
-  {
-   "t": "Anzeige: Microsoft Surface Laptop zum Black-Friday-Preis bei Amazon",
-   "u": "https://www.golem.de/news/anzeige-microsoft-surface-laptop-zum-black-friday-preis-bei-amazon-2611-215352.html",
-   "q": "Golem",
-   "d": "2026-11-18T11:20:01Z",
-   "s": "Ein Microsoft Surface Laptop mit Touchscreen, Snapdragon-Prozessor und Copilot-KI ist zum Black-Friday-Start bei Amazon stark reduziert. (Surface, Microsoft)",
-   "sprache": "de"
-  },
-  {
-   "t": "Bitkom: Mehr KI-Nutzung bei Symptomen, Vorbehalte gegenüber KI wachsen ebenfalls",
-   "u": "https://www.heise.de/news/Bitkom-Mehr-KI-Nutzung-bei-Symptomen-Vorbehalte-gegenueber-KI-wachsen-ebenfalls-11529059.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Microsofts KI-Framework verteilt Malware: So bekamen Angreifer Zugang",
+   "u": "https://www.heise.de/news/Microsofts-KI-Framework-verteilt-Malware-So-bekamen-Angreifer-Zugang-11530977.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-18T11:03:00Z",
-   "s": "Viele nutzen KI-Chatbots für Gesundheitsfragen. Zugleich wachsen Vorbehalte gegen KI in der Medizin und Sorgen um persönliche Daten.",
+   "d": "2026-11-19T11:55:00Z",
+   "s": "Bei einem Hackerangriff wurde das Agent-Framework von Microsoft mit Malware infiziert, die an User ausgespielt wurde. Was Betroffene jetzt wissen müssen.",
    "sprache": "de"
   },
   {
-   "t": "Gravierende Sicherheitslücke in Java entdeckt: Wie eine KI für nur 200 Dollar einen Exploit fand",
-   "u": "https://t3n.de/news/scherheitsluecke-java-ki-200-dollar-1774110/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Google Genie 4: Interaktive KI-Welten jetzt für Abonnenten verfügbar",
+   "u": "https://www.heise.de/news/Google-Genie-4-Interaktive-KI-Welten-jetzt-fuer-Abonnenten-verfuegbar-11530791.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-19T11:20:00Z",
+   "s": "Genie 4 ist jetzt für Abonnenten von Google AI Ultra zugänglich. Nutzer können damit interaktive Umgebungen erschaffen, erkunden, verändern und teilen.",
+   "sprache": "de"
+  },
+  {
+   "t": "Preview-Version bereits verfügbar: Windows Server 2028 soll besser gegen Angriffe geschützt sein",
+   "u": "https://www.golem.de/news/preview-version-bereits-verfuegbar-windows-server-2028-soll-besser-gegen-angriffe-geschuetzt-sein-2611-215406.html",
+   "q": "Golem",
+   "d": "2026-11-19T11:08:01Z",
+   "s": "Neben einer gehärteten Server-Core-Installation soll Windows Server 2028 auch Laufzeit- und Inferenz-Engines für lokale KI-Modelle unterstützen. (KI, Microsoft)",
+   "sprache": "de"
+  },
+  {
+   "t": "Organisationsforscher Phanish Puranam: „Das mittlere Management einfach zu streichen, erzeugt nur Chaos“",
+   "u": "https://t3n.de/news/organisationsforscher-phanish-puranam-das-mittlere-management-einfach-zu-streichen-erzeugt-nur-chaos-1772882/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-18T11:00:26Z",
-   "s": "Sicherheitsforscher:innen eines amerikanischen Startups haben ein gravierendes Problem in Java entdeckt. Darüber lässt sich aus der Ferne Code ausführen. Da eine Vielzahl von Programmen Java nutzt, si…",
+   "d": "2026-11-19T10:30:18Z",
+   "s": "Unternehmen scheitern oft bei der flächendeckenden Einführung von KI. Organisationsforscher und Buchautor Phanish Puranam erklärt, wie Firmen eine sinnvolle Balweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "This smell startup says its AI nose is as good as a human’s",
-   "u": "https://www.technologyreview.com/2026/11/18/1148816/smell-startup-osmo-ai-nose-good-as-humans/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-18T10:20:30Z",
-   "s": "In a lab near Newark Airport in New Jersey, a team of around 30 experienced human sniffers are slowly working their way through every odor on Earth. Their careful notes—“nutty,” “peachy,” “marine”—are…",
+   "t": "Microsofts KI-Framework verteilt Malware: So konnten sich Angreifer Zugang verschaffen",
+   "u": "https://t3n.de/news/microsoft-ki-framework-malware-infiziert-1774234/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-19T09:30:56Z",
+   "s": "Microsoft ist zum Ziel eines Hackerangriffs geworden. Unbekannte konnten so das Agent-Framework des Unternehmens mit Malware infizieren, die an User:innen ausgespielt wurde. Was Betroffene jetzt wisse…",
+   "sprache": "de"
+  },
+  {
+   "t": "Sam Altman: Ein Wendehals ohne Rücksicht auf Verluste",
+   "u": "https://www.golem.de/news/sam-altman-ein-wendehals-ohne-ruecksicht-auf-verluste-2611-215344.html",
+   "q": "Golem",
+   "d": "2026-11-19T09:12:02Z",
+   "s": "Der OpenAI-Chef fällt immer wieder mit Wortmeldungen auf - zu denen er aber selten steht. Im politischen Dickicht taucht er mal da, mal dort auf. Eine Kolumne von Claudia Zettel (Tech-Bro-Watchblog, P…",
+   "sprache": "de"
+  },
+  {
+   "t": "Microsoft CEO Satya Nadella explains why he asked 60K employees to quit",
+   "u": "https://techcrunch.com/2026/11/18/microsoft-ceo-satya-nadella-explains-why-he-asked-60k-employees-to-quit/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-19T00:42:56Z",
+   "s": "Microsoft CEO Satya Nadella explained why he offered buyouts to 60,000 of his employees in October, essentially urging them to voluntarily quit, rather than reducing the workforce via another massive …",
    "sprache": "en"
   },
   {
-   "t": "IT-Probleme bei US-Banken und NSA angeblich wegen zu vieler Patches",
-   "u": "https://www.heise.de/news/IT-Probleme-bei-US-Banken-und-NSA-angeblich-wegen-zu-vieler-Patches-11529019.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-18T10:20:00Z",
-   "s": "In den USA sorgt eine Reihe von IT-Problemen für Aufsehen. Für zwei sollen zu viele Patches gegen Lücken verantwortlich sein, die KI-Technik identifiziert hat.",
-   "sprache": "de"
+   "t": "Amidst fears of AI cyberattacks, Satya Nadella says lots of critical infrastructure is ‘unpatchable’",
+   "u": "https://techcrunch.com/2026/11/18/amidst-fears-of-ai-cyberattacks-satya-nadella-says-lots-of-critical-infrastructure-is-unpatchable/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-18T23:45:00Z",
+   "s": "The Microsoft CEO downplayed the recent Outlook outage while noting that AI was causing both opportunities and new challenges for securing much of the connected world.",
+   "sprache": "en"
   },
   {
-   "t": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT",
-   "u": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
-   "q": "OpenAI",
-   "d": "2026-11-18T00:00:00Z",
-   "s": "Le Groupe Figaro and OpenAI partner to bring Le Figaro’s journalism to ChatGPT through summaries and excerpts, with links to original stories.",
+   "t": "DaisyRose-27B: Pushing the Frontier of Post-Training Efficiency",
+   "u": "https://huggingface.co/blog/RadixArk/daisyrose-27b-pushing-the-frontier-of-post-trainin",
+   "q": "Hugging Face",
+   "d": "2026-11-18T19:54:56Z",
+   "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "Why your fine-tuning job takes longer than the FLOPs say",
+   "u": "https://huggingface.co/blog/Dharma-AI/predicting-fine-tuning-time",
+   "q": "Hugging Face",
+   "d": "2026-11-18T18:53:43Z",
+   "s": "",
    "sprache": "en"
   }
  ]
