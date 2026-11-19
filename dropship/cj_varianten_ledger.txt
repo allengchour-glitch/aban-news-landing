@@ -51254,3 +51254,591 @@ lustiges-hunde-kopfkissen-074432 · 2026-11-18T03:15:43.918Z · UEBERSPRUNGEN ·
 sofaabdeckung-mit-kariertem-muster-623900 · 2026-11-18T03:15:45.823Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (66 > 40) — später, wenn das Tageskontingent reicht
 tischtuch-mit-botanischem-blumenmuster-619700 · 2026-11-18T03:15:47.957Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (90 > 40) — später, wenn das Tageskontingent reicht
 muse-schonheits-accessoire-6f8de2 · 2026-11-18T03:15:49.968Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (168 > 40) — später, wenn das Tageskontingent reicht
+gebetsteppich-fur-muslimische-kinder-618688 · 2026-11-19T02:53:25.411Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: Übersetzung macht Werte von «Color» gleich
+usb-kondensatormikrofon-fur-mobile-pc-559424 · 2026-11-19T02:53:27.601Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Standard"},{"option":"Modell","wert":
+gps-tracker-fur-kinder-senioren-und-haustiere-609000 · 2026-11-19T02:53:28.586Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"2G ST 904"},{"option":"Ausführung
+smartwatch-schutzhulle-mit-displayschutz-509184 · 2026-11-19T02:53:29.893Z · GESCHRIEBEN · 4 Varianten
+digitale-kuchenwaage-aus-edelstahl-dbbe7b · 2026-11-19T02:53:32.502Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"5KG1g"},{"option":"Modell","wert":"10
+weinoffner-mit-luftdruckpumpe-198db1 · 2026-11-19T02:53:33.219Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Upgrade"},{"option":"Modell","wert":"
+hindernisvermeidender-aufklarungshelikopter-969856 · 2026-11-19T02:53:39.314Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Gray 1"},{"option":"Farbe","wert":"Gol
+wifi-temperaturregler-566720 · 2026-11-19T02:53:39.482Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"XY SA10"},{"option":"Modell","wert":"
+manueller-3d-prageetikettendrucker-c3c565 · 2026-11-19T02:53:40.792Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"9mm wood color 3D W25"},{"option":"Far
+selbstausloser-mit-licht-613000 · 2026-11-19T02:53:41.031Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"L20 set"},{"option":"Farbe","wert":"L2
+pinsel-set-fur-augen-make-up-089e00 · 2026-11-19T02:53:45.406Z · GESCHRIEBEN · 4 Varianten
+multifunktions-hundeleine-mit-puffer-455232 · 2026-11-19T02:53:49.286Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Bobbi"},{"option":"Farbe","wert":"Sunr
+multifunktionales-nagelverlangerungsgel-15ml-617600 · 2026-11-19T02:53:50.501Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"01 Transparent Color"},{"option":"Farb
+front-trunk-aufbewahrungsbeutel-610200 · 2026-11-19T02:53:51.855Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Tesla Y"},{"option":"Modell","wert":"
+kabelloses-ansteckmikrofon-fur-outdoor-aufnahm-620600 · 2026-11-19T02:53:55.580Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"TypeC PU3082B"},{"option":"Farbe","wer
+usb-stick-aus-holz-ec97c8 · 2026-11-19T02:53:56.100Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Bamboo"},{"option":"Farbe","wert":"Car
+30-steine-hautroller-b724cc · 2026-11-19T02:53:58.110Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"30 germanium pink"},{"option":"Farbe",
+ohrhoererschutz-mit-sternenmuster-621600 · 2026-11-19T02:54:00.662Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Quilted Black Star"},{"option":"Farbe"
+ultra-leichter-lauf-und-sportrucksack-fur-mara-635600 · 2026-11-19T02:54:03.174Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Black set"},{"option":"Farbe","wert":"
+3-in-1-warmluftburste-fur-locken-und-glatten-615400 · 2026-11-19T02:54:08.340Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Leistung","wert":"Gold European Standard"},{"option":
+futterautomat-mit-kamera-fur-hunde-und-katzen-294976 · 2026-11-19T02:54:08.699Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"White 4L"},{"option":"Modell","wert":
+peep-toe-slipper-231872 · 2026-11-19T02:54:15.194Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Black A"},{"option":"Farbe","wert":"Wh
+drahtloses-ansteckmikrofon-mit-rauschunterdruc-651776 · 2026-11-19T02:54:16.457Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"BY WM3T1 U1"},{"option":"Farbe","wert"
+nackenkissen-fur-bett-abnehm-waschbar-782464 · 2026-11-19T02:54:22.600Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+rgb-computer-mikrofon-fur-live-calls-und-gamin-322368 · 2026-11-19T02:54:22.844Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Blu ray"},{"option":"Modell","wert":"
+liebeshalskette-0bb6ab · 2026-11-19T02:54:24.193Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Color"},{"option":"Farbe","wert":"Blac
+smart-wifi-turklingel-763c29 · 2026-11-19T02:54:30.370Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"16GB"},{"option":"Modell","wert":"1UK
+kabelloses-lavalier-mikrofon-mit-rauschunterdr-633100 · 2026-11-19T02:54:36.605Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Android Interface"},{"option":"Au
+memory-schaum-beinkissen-zur-beinauflage-606700 · 2026-11-19T02:54:37.757Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"white diamond quilted"},{"option":"Far
+buchstaben-armband-aus-edelstahl-604700 · 2026-11-19T02:54:40.044Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"1 name"},{"option":"Modell","wert":"2
+silikonform-fur-mousse-3er-set-e69065 · 2026-11-19T02:55:03.464Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Set G"},{"option":"Modell","wert":"Se
+initialanhanger-603600 · 2026-11-19T02:55:06.372Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (52 > 40) — später, wenn das Tageskontingent reicht
+goldener-armband-605400 · 2026-11-19T02:55:06.785Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (52 > 40) — später, wenn das Tageskontingent reicht
+hufeisen-herz-halskette-mit-namen-602100 · 2026-11-19T02:55:08.675Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+leichte-wasserdichte-outdoor-jacke-442845 · 2026-11-19T02:55:10.788Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (89 > 40) — später, wenn das Tageskontingent reicht
+armband-mit-zirkonia-edelsteinen-610800 · 2026-11-19T02:55:11.953Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Platinum"},{"option":"Farbe","wert":"1
+velo-frontlicht-mit-hupe-6-modi-akku-666944 · 2026-11-19T02:55:13.118Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"8LED 20SMD"},{"option":"Farbe","wert":
+minimalistischer-ring-aus-silber-mit-geometris-601500 · 2026-11-19T02:55:14.764Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"18K Gold"},{"option":"Farbe","wert":"W
+sommer-tanzschuhe-636600 · 2026-11-19T02:55:15.236Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+musikalische-taschenuhr-individuell-609100 · 2026-11-19T02:55:15.857Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Black P6001C"},{"option":"Farbe","wert
+kupfer-armband-618700 · 2026-11-19T02:55:18.701Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"White Gold Color 3mm"},{"option":
+eleganter-edelstahlring-fur-herren-631700 · 2026-11-19T02:55:19.045Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"18K Gold"},{"option":"Farbe","wert":"P
+smartwatch-mit-grossem-display-gesundheits-tra-158080 · 2026-11-19T02:55:20.676Z · GESCHRIEBEN · 3 Varianten
+armbanduhr-mit-kalender-und-24h-anzeige-966d2b · 2026-11-19T02:55:22.345Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"C09 2"},{"option":"Farbe","wert":"C09 
+vergoldetes-zirkonia-tennis-armband-610200 · 2026-11-19T02:55:25.747Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Gold A"}]
+18k-gold-damenring-edelstahl-639500 · 2026-11-19T02:55:27.814Z · GESCHRIEBEN · 2 Varianten
+camouflage-fahrradtasche-967040 · 2026-11-19T02:55:28.919Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Mud color"},{"option":"Farbe","wert":"
+kompass-armband-fur-herren-615000 · 2026-11-19T02:55:30.186Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"PG854 Gold"},{"option":"Farbe","wert":
+mehrzweck-babypflaster-fur-muttermilch-stillki-629200 · 2026-11-19T02:55:30.681Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Forest Paradise"},{"option":"Farbe","w
+anti-rutsch-tpe-yogamatte-mit-trageschlaufe-816960 · 2026-11-19T02:55:30.845Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: Übersetzung macht Werte von «Color» gleich
+wasserbeutel-furs-rad-710016 · 2026-11-19T02:55:31.594Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"CP camouflage"}]
+faltbare-anti-rutsch-yoga-und-fitnessmatte-612900 · 2026-11-19T02:55:32.453Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (62 > 40) — später, wenn das Tageskontingent reicht
+lateinische-tanzschuhe-fur-damen-600000 · 2026-11-19T02:55:33.190Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (68 > 40) — später, wenn das Tageskontingent reicht
+trendige-velo-schultertasche-fur-sport-freizei-959488 · 2026-11-19T02:55:36.900Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"400D black"},{"option":"Farbe","wert":
+fitness-kettlebell-fur-zuhause-472576 · 2026-11-19T02:55:38.303Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"4kg black"},{"option":"Farbe","wert":"
+funf-finger-river-schuhe-fur-damen-627400 · 2026-11-19T02:55:40.539Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (84 > 40) — später, wenn das Tageskontingent reicht
+titan-cuban-bracelet-634400 · 2026-11-19T02:55:40.958Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"KB154554 Z"},{"option":"Farbe","wert":
+smart-armband-mit-bluetooth-anruf-herzfrequenz-939840 · 2026-11-19T02:55:42.563Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Golden tape"},{"option":"Farbe","wert"
+massage-twisting-disk-fur-fitness-und-gewichts-253056 · 2026-11-19T02:55:47.285Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Gray smart"},{"option":"Farbe","wert":
+carryan-herren-quarzuhr-mit-stahlarmband-626200 · 2026-11-19T02:55:49.855Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"White × White × White"},{"option":"Far
+kugelkettchen-halskette-632800 · 2026-11-19T02:55:51.749Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+smartwatch-mit-hd-display-und-bluetooth-anrufe-628900 · 2026-11-19T02:55:53.089Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Black set"},{"option":"Farbe","wert":"
+kupferring-mit-zirkonia-und-unregelmassiger-fo-636700 · 2026-11-19T02:55:53.428Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (90 > 40) — später, wenn das Tageskontingent reicht
+personalisierter-buchstabenarmreif-628900 · 2026-11-19T02:55:54.985Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (52 > 40) — später, wenn das Tageskontingent reicht
+schutzdeckel-fur-steckdosen-166784 · 2026-11-19T02:55:55.392Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"2 White"},{"option":"Farbe","wert":"2 
+fitness-rollenzug-set-fur-zuhause-374464 · 2026-11-19T02:55:55.398Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"STR 1"},{"option":"Ausführung","w
+rockbros-velo-frontlicht-usb-ladefunktion-0d243e · 2026-11-19T02:55:56.329Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"LUMEN TD"},{"option":"Modell","wert":
+personalisierbarer-geburtsstein-ring-633800 · 2026-11-19T02:55:56.752Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (80 > 40) — später, wenn das Tageskontingent reicht
+laufschuhe-mit-rollen-604100 · 2026-11-19T02:55:57.248Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (81 > 40) — später, wenn das Tageskontingent reicht
+unisex-fitnessschuhe-atmungsaktiv-rutschfest-950848 · 2026-11-19T02:55:58.959Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (42 > 40) — später, wenn das Tageskontingent reicht
+smartwatch-mit-bluetooth-telefonie-und-taschen-606100 · 2026-11-19T02:56:04.256Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"TK18 Black"},{"option":"Farbe","wert":
+b6-smart-armband-mit-farbdisplay-und-anrufanze-813440 · 2026-11-19T02:56:05.973Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Gold b"},{"option":"Farbe","wert":"Bla
+luminose-herrenquarzuhren-mit-alloy-armband-603600 · 2026-11-19T02:56:09.441Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+crunches-hilfsseil-fur-yoga-fitness-732288 · 2026-11-19T02:56:10.743Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Emerald Green"},{"option":"Farbe","wer
+sanda-smartwatch-kalorien-wasserdicht-stossfes-605700 · 2026-11-19T02:56:16.714Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"2145 Black"},{"option":"Farbe","wert":
+smartwatch-mit-1-6-zoll-hd-bildschirm-und-blue-669696 · 2026-11-19T02:56:16.722Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Black Steel"},{"option":"Farbe","wert"
+gt20-smartwatch-mit-bluetooth-telefonie-gesund-422528 · 2026-11-19T02:56:17.106Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"GT20 black"},{"option":"Farbe","wert":
+innstar-huftring-widerstandsband-683648 · 2026-11-19T02:56:18.476Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Star Gold"},{"option":"Farbe","wert":"
+hip-hop-kette-aus-edelstahl-vergoldet-oder-sta-618900 · 2026-11-19T02:56:18.782Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (60 > 40) — später, wenn das Tageskontingent reicht
+taktische-umhangetasche-fur-outdoor-sport-624800 · 2026-11-19T02:56:19.468Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Italian Camouflage"},{"option":"Farbe"
+smart-armband-mit-bluetooth-telefonie-amoled-d-446528 · 2026-11-19T02:56:20.042Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Orange set"},{"option":"Farbe","wert":
+smartwatch-mit-silikonarmband-fur-freizeit-617500 · 2026-11-19T02:56:22.883Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"C20 Vinyl"},{"option":"Farbe","wert":"
+x8x9x10-smartwatch-mit-powerbank-headset-638600 · 2026-11-19T02:56:26.125Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"X9 Black"},{"option":"Modell","wert":
+a58plus-smartwatch-620400 · 2026-11-19T02:56:26.297Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"A58PLUS Black"},{"option":"Ausfüh
+offener-ring-geometrisch-chic-618500 · 2026-11-19T02:56:27.223Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"1203A Gold"},{"option":"Farbe","wert":
+dopamin-halskette-mit-initialen-626200 · 2026-11-19T02:56:29.095Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (96 > 40) — später, wenn das Tageskontingent reicht
+dopamine-buchstaben-halskette-620700 · 2026-11-19T02:56:30.850Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (96 > 40) — später, wenn das Tageskontingent reicht
+tennis-halskette-mit-zirkonia-einlagen-626800 · 2026-11-19T02:56:32.554Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (42 > 40) — später, wenn das Tageskontingent reicht
+multifunktionale-auto-sitzplatte-fur-kinder-143360 · 2026-11-19T02:56:34.098Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Happy travel"},{"option":"Farbe","wert
+herrenuhr-mit-englischem-kalender-und-leuchtze-604800 · 2026-11-19T02:56:34.604Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+belly-band-aus-nylon-627700 · 2026-11-19T02:56:36.340Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (42 > 40) — später, wenn das Tageskontingent reicht
+smartwatch-mit-hd-display-gesundheitsmonitorin-622100 · 2026-11-19T02:56:37.008Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+akryl-blechlinge-631100 · 2026-11-19T02:56:40.776Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Purple B"},{"option":"Farbe","wert":"G
+u-formiges-schwangerschaftskissen-679488 · 2026-11-19T02:56:43.927Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+just-breathe-ring-fur-damen-603600 · 2026-11-19T02:56:45.585Z · GESCHRIEBEN · 8 Varianten
+umhangetasche-fur-laptop-620200 · 2026-11-19T02:56:45.743Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"8005 Horizontal Black"},{"option":"Far
+doppelseitiger-schal-621300 · 2026-11-19T02:56:47.827Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"02 Korean Fans"},{"option":"Farbe","we
+muttertags-ring-mit-rohstein-621600 · 2026-11-19T02:56:48.428Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (84 > 40) — später, wenn das Tageskontingent reicht
+retro-eisgrau-blau-schmetterling-haarclip-613300 · 2026-11-19T02:56:49.812Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"15mm Ring"},{"option":"Farbe","wert":"
+regenbogen-zirkonia-ring-aus-edelstahl-600000 · 2026-11-19T02:56:50.209Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (90 > 40) — später, wenn das Tageskontingent reicht
+tarnfarben-sportuhr-mit-doppelanzeige-608700 · 2026-11-19T02:56:50.409Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Camouflage Green"},{"option":"Farbe","
+seidenschal-quadratisch-53-53-cm-612900 · 2026-11-19T02:56:51.174Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (41 > 40) — später, wenn das Tageskontingent reicht
+geburtsstein-ring-im-wassertropfen-design-605800 · 2026-11-19T02:56:51.882Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (84 > 40) — später, wenn das Tageskontingent reicht
+komfortables-armband-aus-echtem-rindsleder-629900 · 2026-11-19T02:56:51.983Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (93 > 40) — später, wenn das Tageskontingent reicht
+armband-aus-edelstahl-verschiedene-farben-635100 · 2026-11-19T02:56:52.398Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+halskette-mit-initialen-kupfer-kreuzkette-609400 · 2026-11-19T02:56:53.912Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+buchstaben-halskette-620200 · 2026-11-19T02:56:53.998Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+englische-buchstaben-halskette-601700 · 2026-11-19T02:56:54.090Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+business-armbanduhr-mit-dual-datum-und-stahlba-633900 · 2026-11-19T02:56:54.905Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"2831H Black"},{"option":"Farbe","wert"
+englische-buchstabenkette-622300 · 2026-11-19T02:56:55.662Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (96 > 40) — später, wenn das Tageskontingent reicht
+dopamine-buchstaben-halskette-fur-frauen-613700 · 2026-11-19T02:56:56.323Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+stahlarmband-627300 · 2026-11-19T02:56:57.455Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (99 > 40) — später, wenn das Tageskontingent reicht
+stahl-schmuckkette-anpassbar-632700 · 2026-11-19T02:57:00.164Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Gold 4"},{"option":"Farbe","wert":"Ste
+herzfrequenz-tracker-fur-iphone-f7b2f6 · 2026-11-19T02:57:01.424Z · GESCHRIEBEN · 7 Varianten
+sonnenblumenring-618600 · 2026-11-19T02:57:01.895Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (45 > 40) — später, wenn das Tageskontingent reicht
+kashmirahnlicher-karomuster-schal-619500 · 2026-11-19T02:57:10.118Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"WT1582 Black"},{"option":"Farbe","wert
+exzentrisch-geometrischer-damenring-628200 · 2026-11-19T02:57:16.194Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"A573 Gold Small"},{"option":"Farbe","w
+armband-mit-kleeblatt-design-fur-damen-622000 · 2026-11-19T02:57:17.345Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Wishing Star"},{"option":"Farbe","wert
+milan-magnetisches-armbandband-aus-edelstahl-653504 · 2026-11-19T02:57:19.362Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (49 > 40) — später, wenn das Tageskontingent reicht
+schmuckband-mit-kristallanhanger-aus-edelstahl-143040 · 2026-11-19T02:57:21.086Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (90 > 40) — später, wenn das Tageskontingent reicht
+schal-aus-wolle-633300 · 2026-11-19T02:57:21.182Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Barbie Pink"},{"option":"Farbe","wert"
+smart-armband-und-elektronische-uhr-639600 · 2026-11-19T02:57:22.595Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+plaid-schal-in-mintgrun-pink-lila-schwarz-blau-605600 · 2026-11-19T02:57:22.986Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Retro Pink"},{"option":"Farbe","wert":
+wollschal-in-grautonen-100-210-cm-602800 · 2026-11-19T02:57:23.700Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+18k-gold-bicolor-pigstone-ring-616300 · 2026-11-19T02:57:30.427Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Gold White Diamond"},{"option":"Farbe"
+mannliche-armbanduhren-601800 · 2026-11-19T02:57:32.666Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Silver Case Green"},{"option":"Farbe",
+buchstabenarmband-personalisierbar-617700 · 2026-11-19T02:57:32.844Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+wasserdichte-outdoor-tasche-4-l-442722 · 2026-11-19T02:57:35.419Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+buchstaben-armband-aus-kupfer-638600 · 2026-11-19T02:57:37.336Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (96 > 40) — später, wenn das Tageskontingent reicht
+smartwatch-mit-fernbedienung-fur-sport-kamera-423424 · 2026-11-19T02:57:43.038Z · GESCHRIEBEN · 15 Varianten
+schlanke-herrenuhr-mit-kalenderfunktion-003072 · 2026-11-19T02:57:43.703Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Blue bottom black border"},{"option":"
+winterthermal-schal-mit-langen-pompons-622700 · 2026-11-19T02:57:45.259Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+herren-armband-aus-edelstahl-und-leder-639900 · 2026-11-19T02:57:47.407Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"M934 Gold"},{"option":"Farbe","wert":"
+chiffon-schal-mit-strasssteinen-und-perlen-610300 · 2026-11-19T02:57:48.208Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"C1 Skin Red"},{"option":"Farbe","wert"
+kartenhalter-aus-carbonfaser-600100 · 2026-11-19T02:57:49.050Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Carbon Blue"},{"option":"Farbe","wert"
+zitronenarmband-633300 · 2026-11-19T02:57:51.689Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"10MM Jinba Upgrade Fortune"},{"option"
+armband-mit-schmetterling-aus-edelstahl-628800 · 2026-11-19T02:57:58.826Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"B275 Steel Color"},{"option":"Farbe","
+taschenliner-3-l-in-tarnfarbe-e7f2c7 · 2026-11-19T02:58:01.540Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Jungle camouflage"},{"option":"Farbe",
+kopfbedeckung-aus-mercerisiertem-baumwollgarn-611800 · 2026-11-19T02:58:05.174Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+jungen-sneaker-rutschfest-612700 · 2026-11-19T02:58:05.510Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"C206 Beige"},{"option":"Farbe","wert":
+buchstaben-armband-personalisierbar-638600 · 2026-11-19T02:58:07.138Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+elegantes-langkleid-sommer-636700 · 2026-11-19T02:58:07.240Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (45 > 40) — später, wenn das Tageskontingent reicht
+taktische-oxford-umhangetasche-fur-outdoor-spo-762816 · 2026-11-19T02:58:08.465Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Sansha Digital"},{"option":"Farbe","we
+langes-freizeitkleid-fur-damen-618700 · 2026-11-19T02:58:08.877Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (64 > 40) — später, wenn das Tageskontingent reicht
+herren-t-shirt-mit-horror-schadel-druck-634000 · 2026-11-19T02:58:09.420Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (72 > 40) — später, wenn das Tageskontingent reicht
+kettenhalsband-mit-buchstaben-638300 · 2026-11-19T02:58:10.339Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+eleganter-valentinstag-ring-im-quadrat-design-636800 · 2026-11-19T02:58:10.709Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (42 > 40) — später, wenn das Tageskontingent reicht
+dopamine-buchstaben-halskette-fur-damen-618200 · 2026-11-19T02:58:12.107Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+schlichter-moissanit-ring-mit-rundschliff-611900 · 2026-11-19T02:58:13.115Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (44 > 40) — später, wenn das Tageskontingent reicht
+golduberzogener-namensanhanger-631900 · 2026-11-19T02:58:13.733Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (72 > 40) — später, wenn das Tageskontingent reicht
+sonnenschutz-schal-fur-frauen-626200 · 2026-11-19T02:58:14.827Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Pink And White"},{"option":"Farbe","we
+sportliche-herrenuhr-mit-vielen-funktionen-841856 · 2026-11-19T02:58:14.998Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Camouflage army green"},{"option":"Far
+geburtsstein-ring-624700 · 2026-11-19T02:58:15.312Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (80 > 40) — später, wenn das Tageskontingent reicht
+zirkon-armband-mit-26-buchstaben-fur-damen-604800 · 2026-11-19T02:58:17.004Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (52 > 40) — später, wenn das Tageskontingent reicht
+herrenarmbanduhr-multifunktional-623900 · 2026-11-19T02:58:17.052Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (81 > 40) — später, wenn das Tageskontingent reicht
+perlen-haarband-870528 · 2026-11-19T02:58:17.057Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"D2160KC gold"},{"option":"Farbe","wert
+wasserdichte-trekkinghose-fur-herren-630700 · 2026-11-19T02:58:18.916Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (54 > 40) — später, wenn das Tageskontingent reicht
+quadratische-ausschnitt-taille-geknopft-elegan-606100 · 2026-11-19T02:58:18.922Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (84 > 40) — später, wenn das Tageskontingent reicht
+personalisierter-ring-mit-stein-602600 · 2026-11-19T02:58:20.482Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+geburtsstein-blumenring-fur-mutter-625500 · 2026-11-19T02:58:20.611Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (84 > 40) — später, wenn das Tageskontingent reicht
+vintage-armband-mit-ineinandergreifenden-diama-625200 · 2026-11-19T02:58:21.203Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"ZYSL0074 Gold"},{"option":"Modell","w
+gestreifter-natursteinring-fur-damen-604801 · 2026-11-19T02:58:22.440Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Lapis Lazuli"},{"option":"Farbe","wert
+personalisiertes-armband-mit-zwei-initialen-638300 · 2026-11-19T02:58:24.111Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+taschenschal-mit-grossem-karomuster-637500 · 2026-11-19T02:58:25.401Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"01 Red Plaid"},{"option":"Farbe","wert
+titanstahl-ring-mit-emaille-und-grossem-edelst-621500 · 2026-11-19T02:58:25.822Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (60 > 40) — später, wenn das Tageskontingent reicht
+stahl-armband-mit-mehreren-namen-fur-kinder-622800 · 2026-11-19T02:58:27.356Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"1 name"},{"option":"Modell","wert":"2
+edelstahlarmband-618300 · 2026-11-19T02:58:29.032Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (59 > 40) — später, wenn das Tageskontingent reicht
+retro-dreadlock-armband-mit-quaste-616000 · 2026-11-19T02:58:29.165Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"SL0137 Silver"},{"option":"Farbe","wer
+edelstahl-carbonfaser-armbander-fur-paare-609500 · 2026-11-19T02:58:29.185Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"KB206642 KFC"},{"option":"Farbe","wert
+offener-armreif-im-retro-stil-626300 · 2026-11-19T02:58:30.688Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Ancient Silver"},{"option":"Farbe","we
+armband-mit-stern-und-mondanhanger-614200 · 2026-11-19T02:58:32.440Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (96 > 40) — später, wenn das Tageskontingent reicht
+herzarmband-mit-zirkonia-steinen-603000 · 2026-11-19T02:58:34.139Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (72 > 40) — später, wenn das Tageskontingent reicht
+mehrreihiges-titan-armband-fur-damen-614500 · 2026-11-19T02:58:36.202Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"E576 Steel Color"},{"option":"Farbe","
+armband-mit-namen-und-strass-626000 · 2026-11-19T02:58:42.222Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"1 name"},{"option":"Modell","wert":"2
+stretchbare-ankel-boot-socken-907328 · 2026-11-19T02:58:43.960Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Terracotta Warriors"}]
+edelstahl-armband-mit-buchstaben-603400 · 2026-11-19T02:58:44.178Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Steel Color"},{"option":"Modell","wert
+sport-visier-fur-kinder-444352 · 2026-11-19T02:58:44.686Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Aurora Gold"},{"option":"Farbe","wert"
+fleece-cardigan-fur-outdoor-sport-827392 · 2026-11-19T02:58:46.391Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (56 > 40) — später, wenn das Tageskontingent reicht
+multifunktions-outdoor-uhr-fur-herren-601500 · 2026-11-19T02:58:48.044Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: doppelte Kombination «Army green braided rope»
+lederarmband-mit-titan-stahl-akzenten-fur-herr-606200 · 2026-11-19T02:58:49.456Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"PG979 Steel Lion's Head"},{"option":"F
+armband-aus-edelstahl-fur-manner-und-frauen-614800 · 2026-11-19T02:58:49.810Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Atlas Set Silver"},{"option":"Farbe","
+perlen-strap-armband-207104 · 2026-11-19T02:58:51.204Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Versa2 generation"},{"option":"Modell
+outdoor-workpants-fur-herren-622400 · 2026-11-19T02:58:51.303Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (56 > 40) — später, wenn das Tageskontingent reicht
+armband-mit-silikonperlen-602300 · 2026-11-19T02:58:52.172Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Blue Daisy"},{"option":"Farbe","wert":
+edelstahl-armreif-couleur-verstellbar-gold · 2026-11-19T02:58:52.855Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+elegante-bluse-mit-festem-farbton-620100 · 2026-11-19T02:58:52.921Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (54 > 40) — später, wenn das Tageskontingent reicht
+multikant-stahlkombi-ringset-633800 · 2026-11-19T02:58:53.040Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (98 > 40) — später, wenn das Tageskontingent reicht
+herz-ring-604200 · 2026-11-19T02:58:54.580Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (72 > 40) — später, wenn das Tageskontingent reicht
+moissanite-tennis-armband-hexagonal-639500 · 2026-11-19T02:58:55.388Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"14K Gold"}]
+holz-uhr-manner-r12-r13-43-7-mm-a006e2 · 2026-11-19T02:58:57.181Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"R12 1"},{"option":"Modell","wert":"R1
+apple-watch-armband-mit-trendigen-designs-715456 · 2026-11-19T02:58:59.054Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (60 > 40) — später, wenn das Tageskontingent reicht
+retro-minimalistische-herrenuhr-mit-gro-em-zif-616300 · 2026-11-19T02:59:00.547Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"White X White X G"},{"option":"Farbe",
+paar-uhr-mit-kalenderfunktion-637100 · 2026-11-19T02:59:03.104Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Blue X White X Blue"},{"option":"Farbe
+armband-und-halskette-mit-drei-kreisen-636500 · 2026-11-19T02:59:04.630Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Ningguang Gold"},{"option":"Farbe","we
+kupferarmband-im-retro-stil-fur-herren-639500 · 2026-11-19T02:59:05.419Z · GESCHRIEBEN · 2 Varianten
+rhinestone-buchstaben-armband-637300 · 2026-11-19T02:59:07.435Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (52 > 40) — später, wenn das Tageskontingent reicht
+gestrickter-dreiecksschal-mit-bambusmuster-616500 · 2026-11-19T02:59:12.487Z · GESCHRIEBEN · 11 Varianten
+geometrische-metall-disc-layered-halskette-602400 · 2026-11-19T02:59:14.845Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"01 Gold 7602"},{"option":"Farbe","wert
+outdoor-uhr-612300 · 2026-11-19T02:59:15.002Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"3008 All Black"},{"option":"Farbe","we
+vielseitiges-edelstahl-armband-mit-susswasserp-629400 · 2026-11-19T02:59:16.801Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"OD B20272"},{"option":"Modell","wert"
+camouflage-tasche-130432 · 2026-11-19T02:59:20.120Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"ACU digital"},{"option":"Farbe","wert"
+solar-lufterkappe-mit-led-und-akku-093376 · 2026-11-19T02:59:24.256Z · GESCHRIEBEN · 4 Varianten
+einfarbiger-schal-aus-baumwoll-modal-mischung-615500 · 2026-11-19T02:59:26.677Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"2 Gray"},{"option":"Farbe","wert":"3 P
+rindsleder-schultertasche-fur-den-alltag-616100 · 2026-11-19T02:59:27.447Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: Übersetzung macht Werte von «Color» gleich
+sonnenblumen-ring-mit-zirkonia-vergoldet-603100 · 2026-11-19T02:59:28.351Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"A704 Gold"},{"option":"Modell","wert"
+leichter-strick-kimono-fur-damen-615100 · 2026-11-19T02:59:29.216Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (80 > 40) — später, wenn das Tageskontingent reicht
+midilange-kleid-mit-reverskragen-618600 · 2026-11-19T02:59:31.106Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (50 > 40) — später, wenn das Tageskontingent reicht
+magnetarmband-aus-rotem-kupfer-fur-damen-627200 · 2026-11-19T02:59:31.573Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"CB012"},{"option":"Farbe","wert":"CB01
+waxed-canvas-schultertasche-123136 · 2026-11-19T02:59:31.988Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"S8 Army Green"},{"option":"Farbe","wer
+goldfarbener-ring-aus-wolframstahl-mit-zirkoni-602700 · 2026-11-19T02:59:33.325Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (60 > 40) — später, wenn das Tageskontingent reicht
+stapelring-set-gold-mix · 2026-11-19T02:59:34.989Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+personalisiertes-3d-kupferarmband-610500 · 2026-11-19T02:59:36.775Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (90 > 40) — später, wenn das Tageskontingent reicht
+softshell-sportanzug-fur-herren-245e4d · 2026-11-19T02:59:38.609Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (103 > 40) — später, wenn das Tageskontingent reicht
+sportliche-umhangetasche-mit-usb-ladeanschluss-371648 · 2026-11-19T02:59:38.671Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Wolf Brown"},{"option":"Farbe","wert":
+kurzarm-radanzug-431040 · 2026-11-19T02:59:40.410Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+chaopai-umhangetasche-fur-herren-453696 · 2026-11-19T02:59:40.595Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+manner-uhren-multifunktional-wasserdicht-620000 · 2026-11-19T02:59:41.730Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"White X White X Blue"},{"option":"Farb
+armband-mit-zwei-initialen-609700 · 2026-11-19T02:59:42.131Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (78 > 40) — später, wenn das Tageskontingent reicht
+holzquarz-uhr-mit-zeiger-178943 · 2026-11-19T02:59:45.462Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"B02 1"},{"option":"Farbe","wert":"B02 
+taktische-brusttasche-fur-trail-running-607700 · 2026-11-19T02:59:47.991Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: Übersetzung macht Werte von «Color» gleich
+gestrickter-kapuzen-schal-mit-quasten-607700 · 2026-11-19T02:59:49.674Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: Übersetzung macht Werte von «Color» gleich
+brust-und-umhangetasche-fur-herren-105664 · 2026-11-19T02:59:50.324Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Wolf brown"},{"option":"Farbe","wert":
+langarmliges-rundhals-t-shirt-fur-alltag-605500 · 2026-11-19T02:59:51.886Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (42 > 40) — später, wenn das Tageskontingent reicht
+fleece-thermopullover-rossi-781056 · 2026-11-19T02:59:52.122Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (99 > 40) — später, wenn das Tageskontingent reicht
+fleece-kapuzenpullover-fur-damen-515328 · 2026-11-19T02:59:53.668Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (59 > 40) — später, wenn das Tageskontingent reicht
+einrad-roller-fur-kinder-375488 · 2026-11-19T02:59:53.757Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (44 > 40) — später, wenn das Tageskontingent reicht
+armband-drache-pi-xiu-leopard-muster-615200 · 2026-11-19T02:59:53.989Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+leichte-damen-sneaker-mit-mesh-606800 · 2026-11-19T02:59:55.724Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (66 > 40) — später, wenn das Tageskontingent reicht
+schwimmring-mit-sonnenschutz-fur-babys-623900 · 2026-11-19T02:59:55.898Z · GESCHRIEBEN · 13 Varianten
+hellbeige-nachthemd-aus-baumwolle-seide-ohne-a-626500 · 2026-11-19T02:59:57.328Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (55 > 40) — später, wenn das Tageskontingent reicht
+modisches-damenkleid-mit-digitaldruck-617300 · 2026-11-19T02:59:58.986Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (90 > 40) — später, wenn das Tageskontingent reicht
+herren-automatikuhr-mechanisch-lederarmband-912000 · 2026-11-19T02:59:59.982Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+cairen-quarz-uhr-mit-kalender-und-lederarmband-622500 · 2026-11-19T03:00:01.006Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+metallarmband-mit-doppelreihigen-strasssteinen-292800 · 2026-11-19T03:00:04.276Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: Schlüssel passen nicht zu 2 Optionen
+hemede-marine-lord-sbdx001-stahlarmband-62df91 · 2026-11-19T03:00:05.117Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+wasserdichte-quarzuhr-aus-stahl-f38db3 · 2026-11-19T03:00:07.615Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Gold Bule"},{"option":"Farbe","wert":"
+mechanische-holz-uhr-mit-lumen-und-chronograph-eb7374 · 2026-11-19T03:00:17.341Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"D27 1"},{"option":"Farbe","wert":"D27 
+armreif-mit-geometrischen-zirkonia-akzenten-637100 · 2026-11-19T03:00:30.150Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+retro-paraiba-ring-mit-aquamarin-cz-524802 · 2026-11-19T03:00:40.618Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Paraiba Ring"},{"option":"Farbe","wert
+armband-hohles-herz-mit-zirkonia-630600 · 2026-11-19T03:00:44.190Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (72 > 40) — später, wenn das Tageskontingent reicht
+kupferarmband-mit-herz-fur-damen-600300 · 2026-11-19T03:00:57.126Z · GESCHRIEBEN · 2 Varianten
+4mm-zirkonia-armband-fur-herren-602700 · 2026-11-19T03:01:06.282Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Gold 4mm"},{"option":"Farbe","wert":"P
+damen-gepolsterte-kniepolster-fur-laufschuhe-m-606700 · 2026-11-19T03:01:09.295Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (63 > 40) — später, wenn das Tageskontingent reicht
+afro-kinky-bulk-echthaar-perucke-193088 · 2026-11-19T03:01:11.719Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (77 > 40) — später, wenn das Tageskontingent reicht
+ebenholz-quarzuhr-d7125f · 2026-11-19T03:01:24.094Z · GESCHRIEBEN · 3 Varianten
+bobobird-quarzuhr-fur-herren-leuchtzeiger-8cc874 · 2026-11-19T03:01:37.005Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"GT015 2A"},{"option":"Farbe","wert":"G
+lige-wolframstahl-automatikuhr-808384 · 2026-11-19T03:01:52.476Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Steel belt gold blue"},{"option":"Farb
+elektrischer-heissloffel-533248 · 2026-11-19T03:01:55.967Z · UEBERSPRUNGEN · CJ führt nur 1 Variante — kein Auswahlproblem
+automatischer-duftspender-fur-wandmontage-621300 · 2026-11-19T03:01:58.459Z · UEBERSPRUNGEN · CJ führt nur 1 Variante — kein Auswahlproblem
+usb-aroma-diffuser-mit-farblicht-157760 · 2026-11-19T03:02:01.225Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Dark wood grain"},{"option":"Farbe","w
+faltbarer-mini-ventilator-753c2c · 2026-11-19T03:02:02.264Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"2000Ma"},{"option":"Modell","wert":"1
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben · 2026-11-19T03:02:03.952Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Deep wood grain"},{"option":"Farbe","w
+ventilator-mit-farblicht-akku-620800 · 2026-11-19T03:02:04.469Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Cartoon Black"},{"option":"Farbe","wer
+ultraschall-aroma-diffusor-mit-nachtlicht-66e432 · 2026-11-19T03:02:06.563Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Wood grain"},{"option":"Modell","wert"
+holzoptik-diffusor-3d6200 · 2026-11-19T03:02:11.603Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Deep wood grain"},{"option":"Farbe","w
+schlupfhulle-aus-mulberry-seide-602100 · 2026-11-19T03:02:14.121Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Midnight Blue"},{"option":"Farbe","wer
+sofabett-mit-modernem-muster-617500 · 2026-11-19T03:02:16.533Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Earrings Girl"},{"option":"Farbe","wer
+weihnachtsbaum-rock-mit-druck-899008 · 2026-11-19T03:02:20.949Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Santa Claus"},{"option":"Ausführu
+vierer-deckenbezug-set-160x210-cm-613000 · 2026-11-19T03:02:24.800Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Adorable grayish"},{"option":"Modell"
+kuchen-geschirrschrank-mit-auszugregal-611700 · 2026-11-19T03:02:33.751Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Off white"},{"option":"Farbe","wert":"
+marmor-seifenspender-nordischer-stil-637900 · 2026-11-19T03:02:36.880Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Circular"},{"option":"Modell","wert":
+3d-glas-aroma-diffusor-mit-farblicht-677613 · 2026-11-19T03:02:38.715Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"AU3pcs"},{"option":"Ausführung","
+mehrlagige-musselindecke-aus-baumwolle-608000 · 2026-11-19T03:02:39.824Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Ink Flower Fragrance"},{"option":"Farb
+acryl-handtuchhalter-229952 · 2026-11-19T03:02:41.659Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Style1"},{"option":"Farbe","wert":"Sty
+pizzateller-aus-schwarznuss-7f9db1 · 2026-11-19T03:02:46.400Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"B 36x17x2cm"},{"option":"Modell","wer
+elektrische-lunchbox-mit-heizfunktion-607100 · 2026-11-19T03:02:46.403Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Beige"},{"option":"Ausführung","w
+metall-organizer-mit-ablagefach-618000 · 2026-11-19T03:02:49.280Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Black 01"},{"option":"Farbe","wert":"G
+elektrische-heiztasse-mit-316er-edelstahl-line-626200 · 2026-11-19T03:02:53.380Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"MD BW01B Gray"},{"option":"Farbe","wer
+u-formiges-seitenschlaferkissen-mit-beinstutze-257472 · 2026-11-19T03:02:54.020Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Tibetan Youth Association Shua"},{"opt
+katzenmuster-bettwasche-601300 · 2026-11-19T03:02:55.483Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Muster","wert":"Cat"},{"option":"Muster","wert":"Gray
+japanische-dinnerplatte-huaishi-9-zoll-keramik-617000 · 2026-11-19T03:02:55.602Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Yellow mountain green fields"},{"optio
+durchsichtige-schubladenbox-613200 · 2026-11-19T03:02:58.420Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"JL M02 B"},{"option":"Farbe","wert":"3
+nordisches-bone-china-teller-792a45 · 2026-11-19T03:03:01.279Z · GESCHRIEBEN · 11 Varianten
+donut-nackenkissen-fur-reisen-578048 · 2026-11-19T03:03:05.642Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Purple S"},{"option":"Farbe","wert":"R
+celadon-ge-kiln-teekanne-mit-eisriss-glasur-604100 · 2026-11-19T03:03:08.934Z · GESCHRIEBEN · 8 Varianten
+keramik-geschirrset-fur-den-haushalt-782784 · 2026-11-19T03:03:09.493Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Cat X24pcs"},{"option":"Modell","wert
+usb-lade-wischmaschine-fur-nass-und-trockenbod-b6c899 · 2026-11-19T03:03:11.502Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Tyrant gold"}]
+nackenstutzkissen-mit-magnetfeldtherapie-338240 · 2026-11-19T03:03:17.831Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"A set"},{"option":"Farbe","wert":"B se
+stahlflasche-sport-damen-500-ml-631500 · 2026-11-19T03:03:18.791Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"French Riviera"},{"option":"Modell","
+keramik-essteller-im-nordischen-stil-612800 · 2026-11-19T03:03:19.147Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"E673 1 P 08182 75"},{"option":"Farbe",
+elektrische-lunchbox-mit-edelstahl-liner-614800 · 2026-11-19T03:03:24.357Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Bean Green"},{"option":"Ausführung","w
+kaffee-und-teetasse-mit-untertasse-aus-porzell-125696 · 2026-11-19T03:03:27.871Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Morocco A"},{"option":"Farbe","wert":"
+elektrischer-grillpan-619200 · 2026-11-19T03:03:29.495Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"CN"},{"option":"Ausführung","wert
+walnut-tamper-aufbewahrung-605700 · 2026-11-19T03:03:36.089Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"58mm Universal"},{"option":"Ausfü
+taktische-hundeweste-fur-grosse-hunde-563fdf · 2026-11-19T03:03:38.572Z · GESCHRIEBEN · 32 Varianten
+kuchenutensilien-set-aus-edelstahl-438080 · 2026-11-19T03:03:38.593Z · GESCHRIEBEN · 8 Varianten
+atmungsaktives-cartoon-eisseidenkissen-fur-den-612400 · 2026-11-19T03:03:40.317Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Brownie NI"},{"option":"Farbe","wert":
+farbenfrohes-schnuffelkissen-875392 · 2026-11-19T03:03:48.172Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Rainbow Candy"},{"option":"Farbe","wer
+nordische-palast-teller-065408 · 2026-11-19T03:03:51.113Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"See flowers in the mist"},{"option":"
+kabelloser-mini-food-processor-a67010 · 2026-11-19T03:03:54.142Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"White 250ml"},{"option":"Farbe","wert"
+titan-schneidebrett-antibakteriell-schimmelres-629500 · 2026-11-19T03:03:55.401Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Small Size"},{"option":"Ausführun
+erhohter-verstellbarer-futternapf-fur-hunde-603200 · 2026-11-19T03:03:58.593Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Double Stainless Steel"},{"option
+katzen-und-hundeschussel-aus-keramik-f9a377 · 2026-11-19T03:03:58.659Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Green B"},{"option":"Farbe","wert":"Gr
+stylische-wasserflasche-fur-den-sommer-631900 · 2026-11-19T03:03:59.708Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Pink Holiday"},{"option":"Farbe","wert
+antihaft-hotpot-mit-trennwand-fur-gas-und-indu-623300 · 2026-11-19T03:04:02.591Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Deep Soup Pot 20cm"},{"option":"Farbe"
+feuchtigkeitsspendende-body-lotion-622300 · 2026-11-19T03:04:02.911Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"350":{"linien":0,"urteil":"nicht_lieferbar"}})
+gesichtsdampfer-mit-heissdampf-243392 · 2026-11-19T03:04:07.388Z · SKU_GESETZT · SKU CJ-1465216715901243392 → CJMB136627502BY
+keramikpfanne-fur-eine-person-064768 · 2026-11-19T03:04:10.901Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Ceramic Gourmet 20cm"},{"option":
+feuchtigkeitsspendende-korperbutter-613300 · 2026-11-19T03:04:10.985Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Tobacco Vanille"},{"option":"Ausf
+olfilterbehalter-304-edelstahl-grosser-filter-628800 · 2026-11-19T03:04:11.588Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Style2 1.5L"},{"option":"Ausführu
+professionelle-antihaft-doppelpfanne-635f6a · 2026-11-19T03:04:13.030Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"28cm logo"},{"option":"Modell","wert"
+mildes-haarentfernungsspray-636000 · 2026-11-19T03:04:13.450Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"890":{"linien":0,"urteil":"nicht_lieferbar"},"1470":{"linien":0,"urt
+spatel-aus-buchenholz-d4dde8 · 2026-11-19T03:04:14.845Z · GESCHRIEBEN · 10 Varianten
+petal-shower-gel-mit-wolken-fefoam-170050 · 2026-11-19T03:04:15.794Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"700":{"linien":0,"urteil":"nicht_lieferbar"}})
+intensive-shampoo-fur-trockenes-haar-444609 · 2026-11-19T03:04:20.030Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"630":{"linien":0,"urteil":"nicht_lieferbar"}})
+usb-spielball-fur-katzen-5bc930 · 2026-11-19T03:04:20.202Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Ball blue"},{"option":"Farbe","wert":"
+beauty-gesichtsreinigungsgerat-cc4176 · 2026-11-19T03:04:20.589Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Pink luxury"},{"option":"Farbe","wert"
+kabelloser-automatischer-lockenstab-637000 · 2026-11-19T03:04:24.008Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"AE520 13 Black Gold"},{"option":"Mode
+doppelfunktioner-glatte-linse-0420dd · 2026-11-19T03:04:24.993Z · SKU_GESETZT · SKU CJ-CDE7297B-5909-449C-AE70-C270A20420DD → CJBJMRJF00008-EU
+funffach-wellenstab-fur-sanfte-locken-056832 · 2026-11-19T03:04:25.657Z · SKU_GESETZT · SKU CJ-1432856287368056832 → CJJF127101601AZ
+ionen-dampfgerat-fur-zuhause-a9ea46 · 2026-11-19T03:04:27.307Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Violet"},{"option":"Farbe","wert":"Pin
+haarglatter-mit-integriertem-kamm-545152 · 2026-11-19T03:04:28.902Z · SKU_GESETZT · SKU CJ-1371316627370545152 → CJTF104216902BY
+usb-mini-haarglatter-9bba4c · 2026-11-19T03:04:29.517Z · SKU_GESETZT · SKU CJ-5EBF234E-813A-4444-A9E0-4C1A1E9BBA4C → CJBJMRTF00063-EU
+2-in-1-dampf-haarglatter-mit-turmalin-keramik-60bf87 · 2026-11-19T03:04:30.249Z · SKU_GESETZT · SKU CJ-5F49BB2E-23AF-4597-A3B0-1BF21860BF87 → CJBJMRTF00021-EU
+automatischer-lockenstab-mit-leopard-print-626400 · 2026-11-19T03:04:30.676Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+schnellheizende-klammer-zweifach-638400 · 2026-11-19T03:04:32.276Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+antihaft-bratpfanne-mit-holzgriff-624800 · 2026-11-19T03:04:32.557Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"30cm Earless"},{"option":"Farbe","wert
+nano-titanium-haarglatter-136384 · 2026-11-19T03:04:33.499Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+infrarot-haarglatter-mit-lcd-display-543296 · 2026-11-19T03:04:33.790Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+tubular-haarwickler-5-in-1-mit-negativ-ionen-603100 · 2026-11-19T03:04:34.399Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+haarglatter-mit-temperaturregelung-144896 · 2026-11-19T03:04:35.700Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kleiner-haarkrauser-mit-drehfunktion-606600 · 2026-11-19T03:04:36.769Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kurzlockiger-styler-804032 · 2026-11-19T03:04:37.060Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+lockenstab-fur-grosse-wellen-625000 · 2026-11-19T03:04:38.044Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+haar-eisen-strahner-fd02aa · 2026-11-19T03:04:38.658Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+katzen-und-hundereisenschussel-mit-schragen-of-310528 · 2026-11-19T03:04:39.490Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"White 1"},{"option":"Farbe","wert":"Bl
+dampf-haarstyler-fur-glattes-haar-a813ec · 2026-11-19T03:04:40.271Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wasserfeste-semi-baked-gel-nagelsticker-028544 · 2026-11-19T03:04:40.980Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"}})
+waves-permitter-094016 · 2026-11-19T03:04:41.199Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionales-haarstyling-gerat-052928 · 2026-11-19T03:04:41.801Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kabelloses-nagel-lichttherapiegerat-08ee9c · 2026-11-19T03:04:43.535Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mini-haarglatter-fur-manner-f15d6d · 2026-11-19T03:04:44.304Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wii-ladestation-2f5d3c · 2026-11-19T03:04:44.325Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nageltrockner-120w-9ebd7d · 2026-11-19T03:04:45.115Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+traditioneller-unbeschichteter-eisenwok-611900 · 2026-11-19T03:04:45.366Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"30cm Vertical Cover Style"},{"option":
+half-moon-led-nagellampe-mit-handyhalterung-626900 · 2026-11-19T03:04:46.488Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+x19-uv-led-nagellampe-72-lampen-601300 · 2026-11-19T03:04:48.022Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+doppelzweck-glattungskamm-603700 · 2026-11-19T03:04:48.407Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+4k-wireless-controller-mit-android-11-bluetoot-604500 · 2026-11-19T03:04:48.454Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+glattburste-mit-anionen-haarpflege-329344 · 2026-11-19T03:04:48.660Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+uv-led-lampe-9fd25c · 2026-11-19T03:04:49.845Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+katzenrucksack-mit-32l-kapazitat-604500 · 2026-11-19T03:04:51.067Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Beige Radio"},{"option":"Farbe","wert"
+glattungskamm-mit-haarpflege-ol-570304 · 2026-11-19T03:04:51.395Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+yg310-mini-beamer-heimkino-led-758528 · 2026-11-19T03:04:51.564Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionaler-haarglatter-297664 · 2026-11-19T03:04:51.750Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nagel-erweiterung-set-618000 · 2026-11-19T03:04:51.918Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"280":{"linien":0,"urteil":"nicht_lieferbar"}})
+tragbarer-2-in-1-styling-stab-fur-pony-74d4ba · 2026-11-19T03:04:54.542Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+full-hd-heimprojektor-mit-screen-casting-626900 · 2026-11-19T03:04:54.807Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionaler-dampf-glattkamm-699520 · 2026-11-19T03:04:55.075Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+hdmi-switch-4x1-mit-audio-extraktion-877952 · 2026-11-19T03:04:57.067Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+5-in-1-haarstyling-tool-569792 · 2026-11-19T03:04:57.469Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+usb-c-magsafe-lader-624100 · 2026-11-19T03:04:57.745Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+farbtemperaturen-kurlock-622200 · 2026-11-19T03:04:58.070Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+x5-smart-hd-bluetooth-projektor-fur-zuhause-629800 · 2026-11-19T03:05:00.203Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+100w-gan-multibuchse-mit-retraktabel-632800 · 2026-11-19T03:05:00.863Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nagel-phototherapie-gerat-032610 · 2026-11-19T03:05:01.638Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+sommer-gel-nagel-sticker-uv-halbgebacken-070144 · 2026-11-19T03:05:01.807Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"}})
+mini-beamer-fur-smartphone-projektion-872128 · 2026-11-19T03:05:03.891Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+gps-ortungsgerat-fur-haustiere-625500 · 2026-11-19T03:05:04.765Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"White Protective Case Lanyard"},{"opti
+mini-beamer-fur-home-office-heimkino-623500 · 2026-11-19T03:05:05.550Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+c80-mini-heimprojektor-720p-161152 · 2026-11-19T03:05:07.834Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+semi-cured-gel-nagelsticker-3d-bronzing-658816 · 2026-11-19T03:05:07.884Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"}})
+mini-projektor-fur-heim-und-burogebrauch-617280 · 2026-11-19T03:05:08.583Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nacken-und-schultermassagekissen-176640 · 2026-11-19T03:05:09.102Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"1820":{"linien":0,"urteil":"nicht_lieferbar"}})
+kamera-helikopter-fur-luftaufnahmen-220608 · 2026-11-19T03:05:10.172Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"590":{"linien":0,"urteil":"nicht_lieferbar"},"610":{"linien":0,"urte
+android-tv-box-mit-wi-fi-und-hdmi-601500 · 2026-11-19T03:05:11.315Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+full-hd-heimkino-beamer-mit-autofokus-629800 · 2026-11-19T03:05:12.235Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+heizschussel-fur-haustiere-628800 · 2026-11-19T03:05:13.743Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+heimprojektor-yg400-hd-296704 · 2026-11-19T03:05:13.812Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+high-power-haartrockner-fur-zuhause-170880 · 2026-11-19T03:05:13.885Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+smarter-full-hd-heimkino-projektor-954944 · 2026-11-19T03:05:14.480Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nagelverlangerung-gel-kit-15-ml-soak-off-uv-429312 · 2026-11-19T03:05:15.351Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Set A1"},{"option":"Farbe","wert":"Set
+outdoor-handfunkgerat-50-mini-pilot-version-183808 · 2026-11-19T03:05:16.143Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+3-in-1-lockenstab-kombination-fur-grosse-welle-617400 · 2026-11-19T03:05:17.339Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+professionelles-fm-intercom-bf-uv5r-plus-6fc615 · 2026-11-19T03:05:17.372Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mini-beamer-fur-zuhause-mit-bildschirm-617024 · 2026-11-19T03:05:17.569Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+smart-mini-beamer-kabelloses-heimkino-589568 · 2026-11-19T03:05:18.527Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+sturmfeuerzeug-im-stift-design-923776 · 2026-11-19T03:05:19.839Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"319":{"linien":0,"urteil":"nicht_lieferbar"},"450":{"linien":0,"urte
+smartes-wlan-gsm-tuya-alarmsystem-685f3d · 2026-11-19T03:05:20.167Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+dual-use-lockenstab-glatteisen-black-gold-276352 · 2026-11-19T03:05:20.613Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+drahtloses-fm-buhnenmikrofon-2er-set-606500 · 2026-11-19T03:05:20.693Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+720p-full-hd-mini-beamer-mit-autofokus-623700 · 2026-11-19T03:05:22.447Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionaler-lcd-projektor-2c8ab0 · 2026-11-19T03:05:22.784Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+usb-3-0-festplattengehause-fur-2-5-3-5-zoll-hd-539584 · 2026-11-19T03:05:23.466Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+locken-und-glatte-styler-056768 · 2026-11-19T03:05:23.784Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+intelligenter-wlan-gsm-touch-alarm-70f001 · 2026-11-19T03:05:24.035Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+sturmfeuerzeug-mit-power-display-und-puncher-605700 · 2026-11-19T03:05:25.388Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"194":{"linien":0,"urteil":"nicht_lieferbar"}})
+hd-mini-beamer-fur-heimkino-buro-454912 · 2026-11-19T03:05:25.592Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+vhf-funkmikrofon-set-fur-karaoke-628700 · 2026-11-19T03:05:26.243Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+2-in-1-glatteisen-lockenstab-mit-3d-muster-276160 · 2026-11-19T03:05:26.844Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+temperaturregulierender-steckdosenanschluss-101c79 · 2026-11-19T03:05:26.930Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wlan-1080p-uberwachungskamera-mit-360-panorama-510528 · 2026-11-19T03:05:27.369Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+outdoor-kompass-feuerzeug-mit-usb-impuls-897536 · 2026-11-19T03:05:29.182Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"128":{"linien":0,"urteil":"nicht_lieferbar"}})
+uberwachungskamera-mit-nachtsicht-021568 · 2026-11-19T03:05:29.205Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+3-in-1-wireless-ladestation-fur-uhr-kopfhorer-300736 · 2026-11-19T03:05:29.388Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+tragbarer-harter-1eafce · 2026-11-19T03:05:29.956Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+rasche-ladestation-24-352576 · 2026-11-19T03:05:30.611Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+elektrischer-haarglattungs-kamm-fur-damen-und-086016 · 2026-11-19T03:05:30.808Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+660w-gallium-nitride-multiport-ladegerat-614700 · 2026-11-19T03:05:32.973Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+haarglatter-mit-turmalin-keramik-6b3838 · 2026-11-19T03:05:34.012Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kleinflugzeug-mit-kamera-614464 · 2026-11-19T03:05:34.405Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"305":{"linien":0,"urteil":"nicht_lieferbar"}})
+vollgesichtsmaske-fur-umfassenden-schutz-0c88c4 · 2026-11-19T03:05:35.096Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"787":{"linien":0,"urteil":"nicht_lieferbar"},"844":{"linien":0,"urte
+glide-ionen-glattburste-fur-geschmeidiges-haar-522112 · 2026-11-19T03:05:37.251Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+massagekamm-fur-nasses-und-trockenes-haar-476874 · 2026-11-19T03:05:37.393Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+holz-stock-mit-3-abschnitten-612200 · 2026-11-19T03:05:37.839Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"1500":{"linien":0,"urteil":"nicht_lieferbar"},"1800":{"linien":0,"ur
+led-nagellampe-72w-trockner-fur-nagellack-577536 · 2026-11-19T03:05:40.082Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+oxford-polyester-rucksack-outdoor-camping-334720 · 2026-11-19T03:05:40.099Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"ACU"},{"option":"Farbe","wert":"CP"},{
+handgemachte-french-finish-press-on-nagel-618300 · 2026-11-19T03:05:40.654Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"},"55":{"linien":0,"urteil
+nude-mandel-manikure-zum-aufkleben-624800 · 2026-11-19T03:05:41.289Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+handgemachte-wiederverwendbare-nagel-patches-619500 · 2026-11-19T03:05:41.454Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+abnehmbare-kunstnagel-north-sea-king-624900 · 2026-11-19T03:05:42.654Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"},"55":{"linien":0,"urteil
+120w-high-power-lichthartungsgerat-fur-nagel-147200 · 2026-11-19T03:05:43.120Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+keratine-kamm-mit-massagefunktion-376448 · 2026-11-19T03:05:43.366Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nationale-stil-nagel-sticker-drachen-biographi-579712 · 2026-11-19T03:05:44.292Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+grosser-nageltrockner-mit-doppelter-lichtquell-155456 · 2026-11-19T03:05:46.161Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+bartglatter-mit-turmalin-keramik-19f136 · 2026-11-19T03:05:47.276Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+naughty-dog-uv-nagelsticker-fur-kinder-608300 · 2026-11-19T03:05:48.761Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"},"55":{"linien":0,"urteil
+handgemachte-mandel-french-manicure-611900 · 2026-11-19T03:05:50.309Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"},"55":{"linien":0,"urteil
+uv-semi-cured-gel-nagelsticker-866304 · 2026-11-19T03:05:50.420Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+sommerliche-blaue-french-nagel-zum-aufkleben-619000 · 2026-11-19T03:05:51.234Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"80":{"linien":0,"urteil":"nicht_lieferbar"},"85":{"linien":0,"urteil
+mini-ladegerat-71ee64 · 2026-11-19T03:05:51.274Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"320":{"linien":0,"urteil":"nicht_lieferbar"}})
+dunkelgruner-jade-look-zum-aufkleben-106816 · 2026-11-19T03:05:51.414Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"32":{"linien":0,"urteil":"nicht_lieferbar"},"35":{"linien":0,"urteil
+lange-press-on-nagel-mit-skorpion-design-609800 · 2026-11-19T03:05:53.036Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"60":{"linien":0,"urteil":"nicht_lieferbar"}})
+mandelformige-french-press-on-nagel-mit-turkis-spitzen-611100 · 2026-11-19T03:05:54.164Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"}})
+untertisch-heizung-634400 · 2026-11-19T03:05:54.290Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+gel-nagelsticker-fur-fototherapie-903296 · 2026-11-19T03:05:54.290Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"}})
+cat-eye-oval-kunstnagel-transparent-fluorescen-609700 · 2026-11-19T03:05:55.008Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+handgemachte-3d-cat-eye-press-on-nagel-620100 · 2026-11-19T03:05:55.973Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"45":{"linien":0,"urteil":"nicht_lieferbar"}})
+blumenwelt-manikure-604000 · 2026-11-19T03:05:57.086Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"34":{"linien":0,"urteil":"nicht_lieferbar"}})
+mini-vortex-mischer-fur-nagellack-gele-ea08d8 · 2026-11-19T03:05:57.121Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+luftreiniger-fur-zuhause-366656 · 2026-11-19T03:05:57.264Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+led-nebelmaschine-mit-fernbedienung-500w-52e48c · 2026-11-19T03:05:57.274Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionaler-haarkamm-dd36ed · 2026-11-19T03:05:57.980Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+handgemachte-nagel-sea-blue-moonlight-sugar-621200 · 2026-11-19T03:05:59.727Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"150":{"linien":0,"urteil":"nicht_lieferbar"}})
+smarter-rollladenmotor-mit-app-steuerung-783744 · 2026-11-19T03:06:00.261Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+reise-organizer-fur-dokumente-und-handy-599489 · 2026-11-19T03:06:01.212Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"109":{"linien":0,"urteil":"nicht_lieferbar"}})
+gegensprechanlagen-netzteil-ta208k-d-289088 · 2026-11-19T03:06:01.255Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"420":{"linien":0,"urteil":"nicht_lieferbar"}})
+moderne-wandleuchte-fur-wohn-und-schlafzimmer-633900 · 2026-11-19T03:06:01.353Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"520":{"linien":0,"urteil":"nicht_lieferbar"}})
+aun-mini-led-beamer-d40w-52330d · 2026-11-19T03:06:03.351Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionales-reparatur-set-fur-elektronik-8e045e · 2026-11-19T03:06:04.436Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mini-handwarmer-powerbank-007936 · 2026-11-19T03:06:05.503Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"165":{"linien":0,"urteil":"nicht_lieferbar"}})
+little-brown-bear-kinder-kunstliche-nagel-263744 · 2026-11-19T03:06:05.720Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"30":{"linien":0,"urteil":"nicht_lieferbar"}})
+blue-butterfly-press-on-nagel-606500 · 2026-11-19T03:06:07.577Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"},"55":{"linien":0,"urteil
+mini-full-hd-led-projektor-fur-zuhause-971072 · 2026-11-19T03:06:08.390Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+holzoptik-luftreiniger-d76518 · 2026-11-19T03:06:08.821Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wlan-repeater-ac1200-dualband-884ba3 · 2026-11-19T03:06:08.881Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+ozon-generator-zur-sterilisation-geruchsentfer-618700 · 2026-11-19T03:06:10.821Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+zierkissen-im-vintage-stil-601000 · 2026-11-19T03:06:11.267Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"550":{"linien":0,"urteil":"nicht_lieferbar"},"720":{"linien":0,"urte
+signaldetektor-gegen-wanzen-und-kameras-d7fc48 · 2026-11-19T03:06:11.522Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+digitaler-6-in-1-ph-meter-wassertester-622200 · 2026-11-19T03:06:11.914Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kreativer-stabfeuerzeug-mit-spray-funktion-581632 · 2026-11-19T03:06:12.792Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"180":{"linien":0,"urteil":"nicht_lieferbar"},"200":{"linien":0,"urte
+kleiner-heizlufter-fur-hande-und-fusse-624896 · 2026-11-19T03:06:14.308Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+verstellbarer-kinderschreibtisch-fur-zu-hause-611300 · 2026-11-19T03:06:14.806Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"1000":{"linien":0,"urteil":"nicht_lieferbar"}})
+ennio-7-zoll-farb-video-tursprechanlage-0065d7 · 2026-11-19T03:06:14.880Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+elektrische-munddusche-mit-10-druckstufen-d574df · 2026-11-19T03:06:15.994Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+ol-elektrischer-hybrid-feuerzeug-186752 · 2026-11-19T03:06:16.406Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"435":{"linien":0,"urteil":"nicht_lieferbar"}})
+glitzer-marker-mit-doppelspitze-604300 · 2026-11-19T03:06:16.582Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"194":{"linien":0,"urteil":"nicht_lieferbar"},"368":{"linien":0,"urte
+aquarium-terrarium-temperaturregler-875328 · 2026-11-19T03:06:18.100Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wlan-uberwachungskamera-aussenbereich-1080p-174464 · 2026-11-19T03:06:18.778Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+netzwerk-extender-300-meter-signalverstarker-276800 · 2026-11-19T03:06:19.675Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+new-year-white-and-red-cat-s-eye-nagel-082560 · 2026-11-19T03:06:20.395Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"46":{"linien":0,"urteil":"nicht_lieferbar"}})
+lithium-ionen-akkumulator-fur-ferngesteuerte-f-414464 · 2026-11-19T03:06:20.869Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"1870":{"linien":0,"urteil":"nicht_lieferbar"},"1890":{"linien":0,"ur
+wlan-signalverstarker-mit-zwei-netzwerkanschlu-870016 · 2026-11-19T03:06:21.252Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+yilot-funk-uberwachungskamera-mit-nachtsicht-664064 · 2026-11-19T03:06:22.248Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+luftblaser-mit-temperaturregelung-0928a1 · 2026-11-19T03:06:23.283Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+handgemachte-french-blau-gradient-nagel-mit-sc-612000 · 2026-11-19T03:06:24.057Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"30":{"linien":0,"urteil":"nicht_lieferbar"},"40":{"linien":0,"urteil
+thermo-hygrometer-fur-innen-und-aussenbereich-0264ea · 2026-11-19T03:06:24.242Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wlan-uberwachungskamera-mit-ki-e73535 · 2026-11-19T03:06:25.662Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+reise-wlan-luftdruckpumpe-604400 · 2026-11-19T03:06:27.962Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"850":{"linien":0,"urteil":"nicht_lieferbar"}})
+mini-fast-charge-24w-wireless-charger-159488 · 2026-11-19T03:06:28.647Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+glattungs-bartkamm-fur-manner-cacb15 · 2026-11-19T03:06:31.735Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+cat-eye-3d-blumen-nagelset-432000 · 2026-11-19T03:06:31.800Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"46":{"linien":0,"urteil":"nicht_lieferbar"}})
+weisse-nagel-tips-mit-strass-fertig-designt-605000 · 2026-11-19T03:06:31.897Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"},"45":{"linien":0,"urteil
+french-blue-love-white-nagel-789056 · 2026-11-19T03:06:33.230Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"35":{"linien":0,"urteil":"nicht_lieferbar"},"40":{"linien":0,"urteil
+usb-2-0-festplatten-dockingstation-mit-kartenl-950720 · 2026-11-19T03:06:35.218Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+waben-bratpfanne-aus-edelstahl-doppelseitig-615000 · 2026-11-19T03:06:35.603Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Frying Pan 28cm"},{"option":"Ausf
+handgemachte-nagel-mit-kirschrot-cat-eye-350528 · 2026-11-19T03:06:37.126Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+abnehmbare-kunstnagel-mit-uv-schutz-521664 · 2026-11-19T03:06:37.128Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"}})
+erdbeer-kaninchen-design-zum-aufkleben-403648 · 2026-11-19T03:06:37.994Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"}})
+hitzebestandige-gummi-abtropfmatten-273858 · 2026-11-19T03:06:38.710Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"500":{"linien":0,"urteil":"nicht_lieferbar"}})
+manikure-set-french-style-classic-gold-164224 · 2026-11-19T03:06:41.744Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+rote-rose-magic-mirror-effekt-nagel-012992 · 2026-11-19T03:06:44.838Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"},"75":{"linien":0,"urteil
+handbemalte-nagel-purple-tulip-mit-spiegeleffe-298112 · 2026-11-19T03:06:45.648Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"},"75":{"linien":0,"urteil
+hundehalsband-leuchtend-4be4f7 · 2026-11-19T03:06:46.699Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Set B"},{"option":"Modell","wert":"Se
+press-on-nagel-in-morandi-farbtonen-953600 · 2026-11-19T03:06:49.157Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+barocke-schmetterlings-manikure-zum-aufkleben-772992 · 2026-11-19T03:06:54.128Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"},"50":{"linien":0,"urteil
+automatischer-futterspender-5l-622900 · 2026-11-19T03:06:54.208Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+keramik-futternapf-fur-haustiere-602200 · 2026-11-19T03:06:56.912Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"A Pink"},{"option":"Ausführung","
+keramik-napf-fur-hund-katze-gross-300-ml-253120 · 2026-11-19T03:06:57.084Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+personalisierte-nagel-fliessendes-meerwasser-451776 · 2026-11-19T03:06:57.476Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+kopfstutze-und-lordosenstutze-fur-auto-310912 · 2026-11-19T03:06:57.597Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Y Type Black"},{"option":"Farbe","wert
+watercolor-blooming-mountain-galaxy-nagel-997568 · 2026-11-19T03:07:00.755Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+peach-blush-beige-nagel-set-065088 · 2026-11-19T03:07:05.221Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+rundes-haustierbett-mit-belegung-637900 · 2026-11-19T03:07:05.447Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Donut Dark Gray"},{"option":"Farbe","w
+lidschattenpalette-mit-8-farben-918784 · 2026-11-19T03:07:06.002Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+haustier-rucksack-cat-bag-mit-sichtfenster-072064 · 2026-11-19T03:07:07.380Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Red eyes"},{"option":"Farbe","wert":"U
+halsband-mit-grosser-schleife-fur-katzen-hunde-877120 · 2026-11-19T03:07:09.285Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (52 > 40) — später, wenn das Tageskontingent reicht
+hochwertige-keramik-hundeschussel-086400 · 2026-11-19T03:07:10.665Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+titanium-halsband-001920 · 2026-11-19T03:07:11.029Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (60 > 40) — später, wenn das Tageskontingent reicht
+automatischer-lockenstab-fur-zuhause-899328 · 2026-11-19T03:07:12.573Z · UEBERSPRUNGEN · zurückgestellt: SKU mehrdeutig: verworfene Variante «Gold-110V US» unterscheidet sich nicht nur im Stecker von «Black-EU»
+handgefertigtes-geschirrset-fur-katzen-und-hun-288256 · 2026-11-19T03:07:13.552Z · GESCHRIEBEN · 24 Varianten
+smartes-roll-und-zahnspielzeug-fur-haustiere-621400 · 2026-11-19T03:07:14.921Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"T04 Spinning Top Ball Blue"},{"option"
+katzchen-sicherheitsnest-480640 · 2026-11-19T03:07:21.689Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+gps-hundehalsband-mit-locator-479680 · 2026-11-19T03:07:22.211Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+portable-haarkrausler-612000 · 2026-11-19T03:07:25.090Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"No infraredpink"},{"option":"Farbe","w
+verstellbares-katzenhalsband-mit-halstuch-616800 · 2026-11-19T03:07:25.115Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+outdoor-fishing-rucksack-aus-oxford-614900 · 2026-11-19T03:07:25.463Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"0.85 M Black"},{"option":"Farbe","wert
+mini-schnittmaschine-50-mm-metall-474624 · 2026-11-19T03:07:28.800Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nano-ionen-dampfgerat-2fbb30 · 2026-11-19T03:07:30.988Z · GESCHRIEBEN · 9 Varianten
+mini-drehbank-fur-holzbearbeitung-906048 · 2026-11-19T03:07:31.825Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+katzen-t-shirt-mit-krawatte-und-kopfbedeckung-426624 · 2026-11-19T03:07:34.438Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Kira Yoshikage"},{"option":"Farbe","we
+anion-roller-comb-fur-glattes-oder-lockiges-ha-603200 · 2026-11-19T03:07:35.248Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+weiche-magnetische-wimpern-dicht-haltbar-und-w-602500 · 2026-11-19T03:07:35.590Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Prague"},{"option":"Ausführung","
+semi-cured-gel-nagelsticker-mit-3d-effekt-369600 · 2026-11-19T03:07:36.190Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"BSS0139"},{"option":"Ausführung",
+led-deckenleuchte-635200 · 2026-11-19T03:07:41.537Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"1550":{"linien":0,"urteil":"nicht_lieferbar"},"2200":{"linien":0,"ur
+warm-sensation-gesichtsreinigungsburste-623500 · 2026-11-19T03:07:41.722Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"5135 Green"},{"option":"Farbe","wert":
+handgemalte-nagel-mit-eiseffekt-612500 · 2026-11-19T03:07:42.433Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"}})
+nordische-minimallampen-design-fur-innen-und-a-636800 · 2026-11-19T03:07:46.786Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"830":{"linien":0,"urteil":"nicht_lieferbar"},"1000":{"linien":0,"urt
+handgemachte-blac-peach-herz-nagelsticker-588800 · 2026-11-19T03:07:47.523Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"46":{"linien":0,"urteil":"nicht_lieferbar"}})
+fliegende-tier-magnet-stoffpuppe-621500 · 2026-11-19T03:07:48.648Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Shiba Inu"},{"option":"Farbe","wert":"
+hand-spa-pflege-wachsgerat-3efd9f · 2026-11-19T03:07:49.868Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionaler-5-in-1-lockenstab-mit-geraus-611600 · 2026-11-19T03:07:51.004Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Black set"},{"option":"Ausführung","we
+brow-pencil-spinning-round-3-in-1-augenbrauens-fbc5e3 · 2026-11-19T03:07:51.991Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+firecow-schnelllade-dockingstation-60c48e · 2026-11-19T03:07:53.047Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kunstliche-nagel-sternenhimmel-004800 · 2026-11-19T03:07:55.492Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"},"42":{"linien":0,"urteil
+interaktiver-spielball-fur-haustiere-mit-fernb-268032 · 2026-11-19T03:07:58.660Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Blue And Yellow"},{"option":"Ausführun
+kunstliche-nagel-pure-hand-drawing-613300 · 2026-11-19T03:07:59.424Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"47":{"linien":0,"urteil":"nicht_lieferbar"}})
+japanisches-halsband-fur-kleine-hunde-900096 · 2026-11-19T03:08:00.440Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (88 > 40) — später, wenn das Tageskontingent reicht
+kunstliche-nagel-zum-aufkleben-001152 · 2026-11-19T03:08:03.492Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"35":{"linien":0,"urteil":"nicht_lieferbar"}})
+haarkurllinie-612300 · 2026-11-19T03:08:04.340Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Leistung","wert":"Pink 20mm"},{"option":"Leistung","w
+zehnfarben-lidschattenpalette-matt-und-glitzer-669696 · 2026-11-19T03:08:05.250Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+leder-leinen-und-halsband-set-fur-hunde-168064 · 2026-11-19T03:08:06.902Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Set A"},{"option":"Modell","wert":"Se
+handgemachte-kurze-nagel-zum-aufkleben-507456 · 2026-11-19T03:08:07.529Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"35":{"linien":0,"urteil":"nicht_lieferbar"}})
+5-in-1-gesichts-und-korperpflegegerat-8b2603 · 2026-11-19T03:08:11.162Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+doppelkopf-haustierleine-reissfest-472448 · 2026-11-19T03:08:14.572Z · GESCHRIEBEN · 10 Varianten
+akupressur-kissen-set-aus-bio-leinen-675264 · 2026-11-19T03:08:19.081Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: Übersetzung macht Werte von «Color» gleich
+nagelclipper-fur-senioren-5-7-cm-8-cm-138112 · 2026-11-19T03:08:22.966Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: Übersetzung macht Werte von «style» gleich
+diy-stickset-mit-50-garnfarben-cb3e23 · 2026-11-19T03:08:23.086Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"136pcs"},{"option":"Modell","wert":"1
+nagel-schmuck-gold-silber-mond-design-914752 · 2026-11-19T03:08:29.122Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"K gold"}]
+warmer-gelbton-nagelset-kurz-rund-053888 · 2026-11-19T03:08:30.400Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"},"55":{"linien":0,"urteil
+led-leuchtcollar-mit-zugleine-wiederaufladbar-561728 · 2026-11-19T03:08:30.686Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Dog Collar Black"},{"option":"Farbe","
+lip-mud-macaron-reverse-lip-mud-air-milk-mist-139840 · 2026-11-19T03:08:34.735Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"NEW101 Good Apricot"},{"option":"Farbe
+weinrote-press-on-nagel-173248 · 2026-11-19T03:08:37.203Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"60":{"linien":0,"urteil":"nicht_lieferbar"},"70":{"linien":0,"urteil
+butter-balm-feuchtigkeitscreme-617600 · 2026-11-19T03:08:38.439Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Tobacco Vanille"},{"option":"Ausf
+bedruckter-leinenstoff-fur-vielseitige-diy-pro-883200 · 2026-11-19T03:08:40.145Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Vintage large orchid"},{"option":"Farb
+weisse-ab-relief-magic-mirror-effekt-puder-nag-341952 · 2026-11-19T03:08:40.632Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+metall-lighter-451136 · 2026-11-19T03:08:44.014Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"100":{"linien":0,"urteil":"nicht_lieferbar"}})
+opal-look-press-on-nagel-mit-herzmuster-783552 · 2026-11-19T03:08:45.158Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+matte-naturbraun-lippenstift-fur-helle-haut-638000 · 2026-11-19T03:08:46.831Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"S01 Soil Elephant"},{"option":"Farbe",
+handgemachtes-meerjungfrau-ozean-nagel-set-544640 · 2026-11-19T03:08:48.353Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"45":{"linien":0,"urteil":"nicht_lieferbar"}})
+krokodil-kunstleder-gold-und-silber-781504 · 2026-11-19T03:08:49.997Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+ultraschall-reinigungsmaschine-fur-nagelwerkze-947840 · 2026-11-19T03:08:51.542Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+dopamin-teufelchen-3d-monsteraugen-nagel-562112 · 2026-11-19T03:08:51.633Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"35":{"linien":0,"urteil":"nicht_lieferbar"},"37":{"linien":0,"urteil
+qianjinmingyuan-sanfte-manikure-140608 · 2026-11-19T03:08:53.823Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+handy-signalverstarker-fur-zuhause-664448 · 2026-11-19T03:08:54.590Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+v30-banknotenzahler-fur-diverse-wahrungen-dfdf64 · 2026-11-19T03:08:54.762Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+handgemachte-sommer-nagelspitzen-751296 · 2026-11-19T03:08:57.269Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+3d-hologramm-ventilator-60cm-343362 · 2026-11-19T03:08:57.611Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+uv-phototherapie-staubabsaugung-2-in-1-289856 · 2026-11-19T03:08:57.728Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wasserdichte-winddichte-campingdecke-200x140-c-617900 · 2026-11-19T03:08:57.967Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Lake View"},{"option":"Modell","wert"
+kurzlocken-perms-708736 · 2026-11-19T03:09:00.651Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+caramel-foam-polo-design-nagel-tips-881280 · 2026-11-19T03:09:00.928Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+fluffy-splint-haarwurzel-dauerwelle-165440 · 2026-11-19T03:09:04.608Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+smartplayer-air-electronic-drum-kit-618900 · 2026-11-19T03:09:07.923Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Black Basic Style"},{"option":"Farbe",
+diy-stickset-vibrato-decompress-411904 · 2026-11-19T03:09:25.022Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Flowers"},{"option":"Farbe","wert":"Cu
+iced-tea-grau-cat-s-eye-nagel-627400 · 2026-11-19T03:09:33.000Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"},"55":{"linien":0,"urteil
+barocke-perlen-nagel-zum-aufkleben-616300 · 2026-11-19T03:09:37.193Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"}})
+mandelformige-french-press-on-nagel-612000 · 2026-11-19T03:09:44.537Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"},"75":{"linien":0,"urteil
+bartglatter-mit-keramikbeschichtung-ab599b · 2026-11-19T03:09:47.654Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+doppelseiten-schreibtischlampe-fur-bett-621500 · 2026-11-19T03:09:50.738Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+lotfreies-laptop-handy-netzteil-mit-akkubox-819712 · 2026-11-19T03:09:54.224Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"300":{"linien":0,"urteil":"nicht_lieferbar"}})
+leiser-kompakt-entfeuchter-fur-zuhause-609300 · 2026-11-19T03:09:57.190Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+beheizbarer-futternapf-fur-haustiere-075648 · 2026-11-19T03:10:00.188Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+lithium-polymer-akku-fur-modellflugzeuge-621100 · 2026-11-19T03:10:07.014Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"180":{"linien":0,"urteil":"nicht_lieferbar"},"226":{"linien":0,"urte
+4g-dual-mode-wlan-router-mit-super-signal-3c87be · 2026-11-19T03:10:10.165Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+ersatz-lithium-akku-fur-elektrowerkzeuge-603800 · 2026-11-19T03:10:14.384Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"650":{"linien":0,"urteil":"nicht_lieferbar"}})
+usb-aufladbares-feuerzeug-231cbd · 2026-11-19T03:10:21.035Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"115":{"linien":0,"urteil":"nicht_lieferbar"},"180":{"linien":0,"urte
+kerosin-feuerzeug-084160 · 2026-11-19T03:10:24.893Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"}})
+einfacher-farbekamm-fur-braunes-haar-627100 · 2026-11-19T03:10:28.789Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"256":{"linien":0,"urteil":"nicht_lieferbar"}})
+handgemachte-french-manikure-mit-schmetterling-712576 · 2026-11-19T03:10:33.355Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"35":{"linien":0,"urteil":"nicht_lieferbar"}})
+kunstliche-nagel-schonende-patches-237184 · 2026-11-19T03:10:37.559Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"}})
+fiona-fang-selbstklebende-nagel-patches-475072 · 2026-11-19T03:10:41.606Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"}})
+alice-wonderland-aufklebbare-nagel-669824 · 2026-11-19T03:10:45.910Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"40":{"linien":0,"urteil":"nicht_lieferbar"}})
+macaron-style-press-on-nagel-448192 · 2026-11-19T03:10:54.100Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"42":{"linien":0,"urteil":"nicht_lieferbar"},"47":{"linien":0,"urteil
+bunte-candy-xingx-nagelsticker-zum-aufkleben-054336 · 2026-11-19T03:11:03.358Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"70":{"linien":0,"urteil":"nicht_lieferbar"},"75":{"linien":0,"urteil
+wiederverwendbare-kind-nagel-mit-schmetterling-616448 · 2026-11-19T03:11:10.950Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"30":{"linien":0,"urteil":"nicht_lieferbar"},"34":{"linien":0,"urteil
+bunte-herbst-bluten-zum-aufkleben-845824 · 2026-11-19T03:11:14.708Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"50":{"linien":0,"urteil":"nicht_lieferbar"}})
+funny-egg-puff-3d-manikure-zum-aufkleben-967040 · 2026-11-19T03:11:18.625Z · UEBERSPRUNGEN · Lieferbarkeit nicht bewiesen ({"30":{"linien":0,"urteil":"nicht_lieferbar"}})
