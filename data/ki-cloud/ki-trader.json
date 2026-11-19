@@ -192,6 +192,30 @@
     "btc": 64893.9453125,
     "eth": 1822.9613037109375
    }
+  },
+  {
+   "stand": "2026-11-18",
+   "zeit": "2026-11-19T13:06:03+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 686,
+   "kosten_usd": 0.020412,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.1,
+    "begruendung": "Klarer Abwärtstrend: -14.8 % in 7 Tagen, -23 % in 30 Tagen, Kurs 13 bis 20 % unter allen Schnitten. Neues Tief bei 62'987. Dagegen spricht das Rückprallrisiko: Angst&Gier steht bei 11, der Markt ist stark überverkauft. Ich halte den kleinen Short, damit keine Gebühr anfällt.",
+    "sicherheit": 0.35
+   },
+   "eth": {
+    "position": -0.1,
+    "begruendung": "ETH ist schwächer als BTC: -26 % in 30 Tagen, 23.7 % unter dem 50-Tage-Schnitt. Dagegen sprechen ein MVRV von 0.86 (unter Einstandswert), leicht negatives Funding und extreme Angst. Das erhöht die Gefahr eines Short-Squeeze. Ich halte den kleinen Short unverändert.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Der Trend spricht klar für Short, die Stimmung ist aber extrem überverkauft. Deshalb nur kleine Shorts und keine Änderung, um Gebühren zu sparen. Bei einem deutlichen Rückprall über rund 66'000 BTC bzw. 1'900 ETH stelle ich auf flach.",
+   "kurse": {
+    "btc": 62987.265625,
+    "eth": 1774.7491455078125
+   }
   }
  ]
 }
