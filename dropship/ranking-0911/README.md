@@ -81,3 +81,22 @@ Basiswerte für den Vergleich stehen in `gsc_basis_0911.json` unter `text_geaend
 3. **Eine von Hand gesetzte JSON-Datei nicht mit `json.dump` neu schreiben:** das Format (Ein-Zeilen-Objekte) ging verloren und der Unterschied zeigte 186 statt 3 Zeilen; Neues als Text anhängen.
 4. **Belege zählen statt behaupten:** das Werkzeug bricht ab, wenn eine Aussage des Textes in den Produkten ihre Mindestzahl nicht erreicht. So steht «Laptopfach» nur im Text, weil 16 Produkte es im Beschreibungstext nennen.
 5. **Uhrzeiten nie aus dem Kopf eintragen:** ich schrieb zuerst «21:19» und «21:36» in README, Gedächtnis und Dashboard, gemessen waren 21:11 und 21:16 (Zeit der Sicherungsdateien), das Dashboard sogar mit einer Zeit in der Zukunft («21:40» bei 21:22). Vor jedem festen «Stand»-Text `date -u` lesen oder die Zeit aus der Sicherungsdatei nehmen.
+
+## Nachmessung 18.11.2026 (Wecker, nur lesend)
+
+**Search Console, 28 Tage (19.10. bis 15.11.) gegen Basis vom 09.11. (10.10. bis 06.11.), GEMESSEN:**
+
+| Seite | Einblendungen | Klicks | Position |
+|---|---|---|---|
+| weihnachtspyjama-familie | 327 → 246 | 0 → 0 | 24,3 → 27,1 |
+| weihnachtspullover | 77 → 71 | 0 → 0 | 38,3 → 42,4 |
+| Ratgeber weihnachtsgeschenke-2026-schweiz-ideen | 9 → 29 | 0 → 0 | 6,6 → 4,7 |
+| trinkbrunnen-katzen | 329 → 278 | 0 → 0 | 49,4 → 47,0 |
+| buero-organizer-ablage | 111 → 186 | 0 → 0 | 67,1 → 66,6 |
+| freizeit-sportrucksaecke | 42 → 102 | 0 → 0 | 32,9 → 34,6 |
+| Rizinusöl-Wickel (Produkt) | 167 → 345 | 13 → 25 | 7,1 → 8,1 |
+| Gesamt | 15 980 → 18 540 | 96 → 127 | 52,9 → 53,0 |
+
+- **Deutung (Hinweis, kein Beleg):** Die Sammlungen mit neuem Titel oder Text (Weihnachtspyjama, Trinkbrunnen) haben keinen Zuwachs, keine Seite hat Klicks. Gewachsen sind das Rizinusöl-Produkt und Seiten, die wir nicht angefasst haben (Büro-Organizer, Sportrucksäcke). Die Saison wirkt mit, die Fenster sind nicht deckungsgleich.
+- **Messgrenze:** Das Gesamtmass der Basis (52,9) war der Schweiz-Wert, das neue ist über alle Geräte nach Einblendungen gewichtet gerechnet; nur die Zahlen 18 540 und 127 sind direkt vergleichbar.
+- **Index der 735 Menü-Kategorien: NICHT neu gemessen.** Die sechs Hilfsagenten brauchten für `inspect_urls` je Freigabe und wurden durch einen Container-Neustart gestoppt; es liegen nur 40 Zeilen vor (je die ersten 10 von vier Paketen, 22 indexiert, 4 «gefunden», 14 «nicht bekannt»), zu wenig für eine Aussage. Stand bleibt der vom 11.11. (286 indexiert). Die Messung kostet rund 1,4 Mio. Token und wurde auf Wunsch «token sparen» nicht wiederholt; auf Zuruf «Index voll messen» mit dem Rezept oben.
