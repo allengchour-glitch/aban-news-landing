@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-19T12:57:02Z",
+ "stand": "2026-11-20T12:48:26Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Microsofts KI-Framework verteilt Malware: So bekamen Angreifer Zugang",
-   "u": "https://www.heise.de/news/Microsofts-KI-Framework-verteilt-Malware-So-bekamen-Angreifer-Zugang-11530977.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-19T11:55:00Z",
-   "s": "Bei einem Hackerangriff wurde das Agent-Framework von Microsoft mit Malware infiziert, die an User ausgespielt wurde. Was Betroffene jetzt wissen müssen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Google Genie 4: Interaktive KI-Welten jetzt für Abonnenten verfügbar",
-   "u": "https://www.heise.de/news/Google-Genie-4-Interaktive-KI-Welten-jetzt-fuer-Abonnenten-verfuegbar-11530791.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-19T11:20:00Z",
-   "s": "Genie 4 ist jetzt für Abonnenten von Google AI Ultra zugänglich. Nutzer können damit interaktive Umgebungen erschaffen, erkunden, verändern und teilen.",
-   "sprache": "de"
-  },
-  {
-   "t": "Preview-Version bereits verfügbar: Windows Server 2028 soll besser gegen Angriffe geschützt sein",
-   "u": "https://www.golem.de/news/preview-version-bereits-verfuegbar-windows-server-2028-soll-besser-gegen-angriffe-geschuetzt-sein-2611-215406.html",
+   "t": "Weltraumrechenzentren: Google setzt beim Satellitenstart auf Blue Origin",
+   "u": "https://www.golem.de/news/weltraumrechenzentren-google-setzt-beim-satellitenstart-auf-blue-origin-2611-215470.html",
    "q": "Golem",
-   "d": "2026-11-19T11:08:01Z",
-   "s": "Neben einer gehärteten Server-Core-Installation soll Windows Server 2028 auch Laufzeit- und Inferenz-Engines für lokale KI-Modelle unterstützen. (KI, Microsoft)",
+   "d": "2026-11-20T12:45:02Z",
+   "s": "Das Project Suncatcher geht in die nächste Phase: Blue Origin soll 2029 mehrere Satelliten mit KI-Chips von Google in den Orbit befördern. (Google, KI)",
    "sprache": "de"
   },
   {
-   "t": "Organisationsforscher Phanish Puranam: „Das mittlere Management einfach zu streichen, erzeugt nur Chaos“",
-   "u": "https://t3n.de/news/organisationsforscher-phanish-puranam-das-mittlere-management-einfach-zu-streichen-erzeugt-nur-chaos-1772882/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "KI-Mini-Workstations mit Nvidia RTX Spark jetzt ab 4600 Euro erhältlich",
+   "u": "https://www.heise.de/news/KI-Mini-Workstations-mit-Nvidia-RTX-Spark-jetzt-ab-4600-Euro-erhaeltlich-11532573.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-20T12:37:00Z",
+   "s": "Asus und MSI liefern kompakte Windows-11-PCs mit RTX Spark und bis zu 128 GByte; einige Konkurrenten mit AMD Ryzen AI Max Pro sind billiger, einer hat mehr RAM.",
+   "sprache": "de"
+  },
+  {
+   "t": "OpenAIs KI‑Agent versucht, Mails an Dritte weiterzuleiten – obwohl das Tool nur ein Dokument erstellen sollte",
+   "u": "https://t3n.de/news/openai-ki-agent-fitnessdokument-mails-weiterleiten-1774567/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-19T10:30:18Z",
-   "s": "Unternehmen scheitern oft bei der flächendeckenden Einführung von KI. Organisationsforscher und Buchautor Phanish Puranam erklärt, wie Firmen eine sinnvolle Balweiterlesen auf t3n.de",
+   "d": "2026-11-20T11:35:19Z",
+   "s": "OpenAI hat einen erneuten Vorfall beim KI-Training zu vermelden. Demnach hat ein Agent bei einer vermeintlich einfachen Aufgabe plötzlich ganz andere Aktionen vorgenommen. Wie es dazu kommen konnte. w…",
    "sprache": "de"
   },
   {
-   "t": "Microsofts KI-Framework verteilt Malware: So konnten sich Angreifer Zugang verschaffen",
-   "u": "https://t3n.de/news/microsoft-ki-framework-malware-infiziert-1774234/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-19T09:30:56Z",
-   "s": "Microsoft ist zum Ziel eines Hackerangriffs geworden. Unbekannte konnten so das Agent-Framework des Unternehmens mit Malware infizieren, die an User:innen ausgespielt wurde. Was Betroffene jetzt wisse…",
-   "sprache": "de"
-  },
-  {
-   "t": "Sam Altman: Ein Wendehals ohne Rücksicht auf Verluste",
-   "u": "https://www.golem.de/news/sam-altman-ein-wendehals-ohne-ruecksicht-auf-verluste-2611-215344.html",
+   "t": "Von AMD und Nvidia: US-Handelsministerium genehmigte Chipverkäufe an China",
+   "u": "https://www.golem.de/news/von-amd-und-nvidia-us-handelsministerium-genehmigte-chipverkaeufe-an-china-2611-215462.html",
    "q": "Golem",
-   "d": "2026-11-19T09:12:02Z",
-   "s": "Der OpenAI-Chef fällt immer wieder mit Wortmeldungen auf - zu denen er aber selten steht. Im politischen Dickicht taucht er mal da, mal dort auf. Eine Kolumne von Claudia Zettel (Tech-Bro-Watchblog, P…",
+   "d": "2026-11-20T11:30:01Z",
+   "s": "Das US-Handelsministerium hat auch Lieferungen genehmigt, die an Scheinfirmen oder Großkonzerne wie Alibaba und Tencent gehen sollten. (KI, AMD)",
    "sprache": "de"
   },
   {
-   "t": "Microsoft CEO Satya Nadella explains why he asked 60K employees to quit",
-   "u": "https://techcrunch.com/2026/11/18/microsoft-ceo-satya-nadella-explains-why-he-asked-60k-employees-to-quit/",
+   "t": "Metas KI-Gadget für die Hosentasche soll 300 Dollar kosten",
+   "u": "https://www.heise.de/news/Metas-KI-Gadget-fuer-die-Hosentasche-soll-300-Dollar-kosten-11532549.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-20T11:29:00Z",
+   "s": "Metas KI-Gadget Muse Charm dürfte noch vor Jahresende erscheinen. Einem Bericht zufolge soll es 300 US-Dollar kosten und mit kostenlosem 5G starten.",
+   "sprache": "de"
+  },
+  {
+   "t": "Muse Charm: So viel soll Metas neues KI-Gadget kosten",
+   "u": "https://t3n.de/news/muse-charm-metas-neues-ki-gadget-preis-1774564/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-20T10:30:58Z",
+   "s": "Mit dem Muse Charm will der Facebook-Konzern ein eigenes KI-Gadget auf den Markt bringen. Jetzt sind erste Informationen zum Preis durchgesickert. weiterlesen auf t3n.de",
+   "sprache": "de"
+  },
+  {
+   "t": "Apple may be developing its own AI agent that runs your Mac",
+   "u": "https://techcrunch.com/2026/11/19/apple-may-be-developing-its-own-ai-agent-that-runs-your-mac/",
    "q": "TechCrunch AI",
-   "d": "2026-11-19T00:42:56Z",
-   "s": "Microsoft CEO Satya Nadella explained why he offered buyouts to 60,000 of his employees in October, essentially urging them to voluntarily quit, rather than reducing the workforce via another massive …",
+   "d": "2026-11-20T00:56:01Z",
+   "s": "The iPhone maker appears to be building agents that can compete with the likes of Meta Muse, Instinct, Claude, and OpenAI Dots.",
    "sprache": "en"
   },
   {
-   "t": "Amidst fears of AI cyberattacks, Satya Nadella says lots of critical infrastructure is ‘unpatchable’",
-   "u": "https://techcrunch.com/2026/11/18/amidst-fears-of-ai-cyberattacks-satya-nadella-says-lots-of-critical-infrastructure-is-unpatchable/",
+   "t": "Anthropic’s 7 founders cashed out nearly $2B in record-breaking IPO",
+   "u": "https://techcrunch.com/2026/11/19/anthropics-7-founders-cashed-out-nearly-2b-in-record-breaking-ipo/",
    "q": "TechCrunch AI",
-   "d": "2026-11-18T23:45:00Z",
-   "s": "The Microsoft CEO downplayed the recent Outlook outage while noting that AI was causing both opportunities and new challenges for securing much of the connected world.",
+   "d": "2026-11-20T00:43:50Z",
+   "s": "At the upgraded $83/share IPO price, Anthropic's seven founders each pocketed $280 million, while the company nabbed nearly $105 billion.",
    "sprache": "en"
   },
   {
-   "t": "DaisyRose-27B: Pushing the Frontier of Post-Training Efficiency",
-   "u": "https://huggingface.co/blog/RadixArk/daisyrose-27b-pushing-the-frontier-of-post-trainin",
-   "q": "Hugging Face",
-   "d": "2026-11-18T19:54:56Z",
-   "s": "",
+   "t": "Introducing Tool Retrieval in the Gemini API",
+   "u": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/",
+   "q": "Google AI",
+   "d": "2026-11-19T18:00:00Z",
+   "s": "Give your agents access to hundreds of tools while using fewer tokens with Tool Retrieval, now in preview in the Gemini API.",
    "sprache": "en"
   },
   {
-   "t": "Why your fine-tuning job takes longer than the FLOPs say",
-   "u": "https://huggingface.co/blog/Dharma-AI/predicting-fine-tuning-time",
-   "q": "Hugging Face",
-   "d": "2026-11-18T18:53:43Z",
-   "s": "",
+   "t": "Walter Isaacson on curiosity and creativity in the AI age.",
+   "u": "https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/",
+   "q": "Google AI",
+   "d": "2026-11-19T17:00:00Z",
+   "s": "Walter Isaacson joins Google to discuss how history’s greatest innovators inspire creativity and human judgment in the AI age. Watch the episode.",
    "sprache": "en"
   }
  ]
