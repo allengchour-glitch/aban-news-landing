@@ -1,3 +1,15 @@
+# R277 – sechs parallele Arbeitspakete fortgesetzt – 21.11.2026
+
+Vier Instagram-Fehler vom 17.–20. November und ein Threads-Fehler vom 19. November frisch bestätigt; die jeweiligen Facebook-Teile sind veröffentlicht. Die Fotoentwürfe vom 25.–28. November stehen bewusst auf der Halteliste. Der Kartenetui-Pin trägt zusätzlich einen aktuellen rueckhol-Blocker. Kein pauschaler Retry oder Aktivierungswrite.
+
+Derselbe Modellvergleich-Vorschlag ist nun als Zwei-Dateien-Diff mit sechs bestandenen begrenzten Offline-Browserfällen vorbereitet. Native Vorschau und Freigabe bleiben offen. CJ-Metadatenweg offiziell belegt, öffentliche Produktseite liefert eine Validierungsseite; kein neuer Film. Sechs Hilfsagenten, Hauptagent prüfte die kritischen Belege selbst. Keine hundert Agenten behauptet.
+
+[Fortschritt und Tagestabelle](R277-REPORT-20261121.md) · [Belege](R277-PROOF-20261121.json) · [konkreter Verkaufsentwurf](runs/20261121-r277/sales/README.md) · [Instagram-Reparaturplan](runs/20261121-r277/instagram/BEFUND-UND-REPARATURPLAN.md).
+
+R276 und ältere Historie bleiben erhalten; Claude-Empfang der neuen Fortschreibung unbekannt. Nach Zürcher Zeit gehört diese Fortsetzung zum 21. November, UTC noch 20. November.
+
+---
+
 # R276 – aktuelles Claude-Memory geladen, Auslieferungsfehler und Planungslücken geprüft – 20.11.2026
 
 R276: Neueste Claude-/Shared-Memory-Fassung geladen und datiert; Identitäten passen. Planung20.–28.11. in fünf kleinen Fenstern: aktive tägliche Termine21.–24.11. auf sechs Kanälen, Lücken25.–27.11. ausser Threads25.11. Instagram20.11. ERROR bei Lichterbaum-Bild3; alle drei Bilder aktuell HTTP200/RGBJPEG, Ursache unbekannt. Einmalige Kanalzahlen13.–19.11. mit Datenlücken; Klaviyo-Reauth blockiert. Zwei Produkte und CJ-A-Quelle bestätigt. Derselbe18s-Master um konkreten Aufnahmebeleg und sechs bedingte Captions fortgeführt; kein fertiger Film. Ein Modellvergleich-Link als Verkaufsentwurf. Keine operativen Writes.

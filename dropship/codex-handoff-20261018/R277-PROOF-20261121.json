@@ -1,0 +1,467 @@
+{
+  "run": "R277",
+  "atUTC": "2026-11-20T23:27:32Z",
+  "localDate": "2026-11-21",
+  "timezone": "Europe/Zurich",
+  "request": "mache mit 100 agent weiter",
+  "team": {
+    "requested": 100,
+    "availableConcurrentSlots": 7,
+    "actualSubagents": 6,
+    "root": 1,
+    "completedPackages": [
+      "instagram_diagnose",
+      "pinterest_preflight",
+      "master_source",
+      "sales_draft",
+      "guard_review",
+      "handoff_review"
+    ],
+    "hundredAgentsClaimed": false
+  },
+  "baseMain": "6de5d543780340ea316b82b7838b78db7926dde1",
+  "baseHandoff": "d94f7937280219fdd06e8f464cbced4f3c1b0a1f",
+  "identities": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "currencyCode": "CHF",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "primaryDomain": {
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "metricool": {
+      "id": 6227837,
+      "label": "Luxestyle",
+      "timezone": "Europe/Zurich",
+      "networksData": {
+        "facebookData": "1049840534888592",
+        "instagramData": "luxestyle.ch",
+        "threadsData": "luxestyle.ch",
+        "pinterestData": "luxestyleCH",
+        "tiktokData": "luxestyle.ch",
+        "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+        "googleAdsData": "7198263241",
+        "tiktokAdsData": "7691398659300179974"
+      }
+    }
+  },
+  "planning": {
+    "readAtUTC": "2026-11-20 23:24:55 UTC",
+    "timezone": "Europe/Zurich",
+    "fullDays": [
+      "2026-11-21",
+      "2026-11-22",
+      "2026-11-23",
+      "2026-11-24",
+      "2026-11-25",
+      "2026-11-26",
+      "2026-11-27",
+      "2026-11-28"
+    ],
+    "objects": 44,
+    "activeObjects": 29,
+    "activeProviderRows": 37,
+    "gaps": {
+      "instagram": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "facebook": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "tiktok": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "pinterest": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "threads": [
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ],
+      "youtube": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28"
+      ]
+    },
+    "rows": [
+      {
+        "id": 426961960,
+        "uuid": "-325577156053548845",
+        "day": "2026-11-21",
+        "network": "threads",
+        "status": "PENDING"
+      },
+      {
+        "id": 426962036,
+        "uuid": "4464007380148308511",
+        "day": "2026-11-21",
+        "network": "facebook",
+        "status": "PENDING"
+      },
+      {
+        "id": 426962036,
+        "uuid": "4464007380148308511",
+        "day": "2026-11-21",
+        "network": "instagram",
+        "status": "PENDING"
+      },
+      {
+        "id": 426962209,
+        "uuid": "1277216616076757571",
+        "day": "2026-11-21",
+        "network": "pinterest",
+        "status": "PENDING"
+      },
+      {
+        "id": 426962312,
+        "uuid": "7447187506709285656",
+        "day": "2026-11-22",
+        "network": "threads",
+        "status": "PENDING"
+      },
+      {
+        "id": 426962393,
+        "uuid": "2057359447521839535",
+        "day": "2026-11-22",
+        "network": "facebook",
+        "status": "PENDING"
+      },
+      {
+        "id": 426962393,
+        "uuid": "2057359447521839535",
+        "day": "2026-11-22",
+        "network": "instagram",
+        "status": "PENDING"
+      },
+      {
+        "id": 427963279,
+        "uuid": "-2010279446251812932",
+        "day": "2026-11-22",
+        "network": "pinterest",
+        "status": "PENDING"
+      },
+      {
+        "id": 429733044,
+        "uuid": "1244897565051602488",
+        "day": "2026-11-21",
+        "network": "tiktok",
+        "status": "PENDING"
+      },
+      {
+        "id": 429733094,
+        "uuid": "-5766619704983925146",
+        "day": "2026-11-22",
+        "network": "tiktok",
+        "status": "PENDING"
+      },
+      {
+        "id": 430174037,
+        "uuid": "4203099149753077097",
+        "day": "2026-11-21",
+        "network": "youtube",
+        "status": "PENDING"
+      },
+      {
+        "id": 430174204,
+        "uuid": "-2465489348702877951",
+        "day": "2026-11-21",
+        "network": "tiktok",
+        "status": "PENDING"
+      },
+      {
+        "id": 430174384,
+        "uuid": "3079092356396699209",
+        "day": "2026-11-21",
+        "network": "facebook",
+        "status": "PENDING"
+      },
+      {
+        "id": 430174384,
+        "uuid": "3079092356396699209",
+        "day": "2026-11-21",
+        "network": "instagram",
+        "status": "PENDING"
+      },
+      {
+        "id": 430174564,
+        "uuid": "6126976967238501889",
+        "day": "2026-11-22",
+        "network": "youtube",
+        "status": "PENDING"
+      },
+      {
+        "id": 430174735,
+        "uuid": "-9065821347695736937",
+        "day": "2026-11-22",
+        "network": "tiktok",
+        "status": "PENDING"
+      },
+      {
+        "id": 430174912,
+        "uuid": "-5744419852756302478",
+        "day": "2026-11-22",
+        "network": "facebook",
+        "status": "PENDING"
+      },
+      {
+        "id": 430174912,
+        "uuid": "-5744419852756302478",
+        "day": "2026-11-22",
+        "network": "instagram",
+        "status": "PENDING"
+      },
+      {
+        "id": 427963339,
+        "uuid": "6021130583306817207",
+        "day": "2026-11-23",
+        "network": "threads",
+        "status": "PENDING"
+      },
+      {
+        "id": 427963400,
+        "uuid": "86409981883271248",
+        "day": "2026-11-23",
+        "network": "facebook",
+        "status": "PENDING"
+      },
+      {
+        "id": 427963400,
+        "uuid": "86409981883271248",
+        "day": "2026-11-23",
+        "network": "instagram",
+        "status": "PENDING"
+      },
+      {
+        "id": 427963505,
+        "uuid": "4778381096143572123",
+        "day": "2026-11-23",
+        "network": "pinterest",
+        "status": "PENDING"
+      },
+      {
+        "id": 427963563,
+        "uuid": "-9063222304088897978",
+        "day": "2026-11-24",
+        "network": "threads",
+        "status": "PENDING"
+      },
+      {
+        "id": 428863176,
+        "uuid": "8860603444619136695",
+        "day": "2026-11-24",
+        "network": "facebook",
+        "status": "PENDING"
+      },
+      {
+        "id": 428863176,
+        "uuid": "8860603444619136695",
+        "day": "2026-11-24",
+        "network": "instagram",
+        "status": "PENDING"
+      },
+      {
+        "id": 428863280,
+        "uuid": "-276288314981989029",
+        "day": "2026-11-24",
+        "network": "pinterest",
+        "status": "PENDING"
+      },
+      {
+        "id": 429733230,
+        "uuid": "7920135771193035363",
+        "day": "2026-11-23",
+        "network": "tiktok",
+        "status": "PENDING"
+      },
+      {
+        "id": 429898809,
+        "uuid": "-8683217346672965369",
+        "day": "2026-11-24",
+        "network": "tiktok",
+        "status": "PENDING"
+      },
+      {
+        "id": 430178720,
+        "uuid": "3542888520035747573",
+        "day": "2026-11-23",
+        "network": "youtube",
+        "status": "PENDING"
+      },
+      {
+        "id": 430178878,
+        "uuid": "326333773610569562",
+        "day": "2026-11-23",
+        "network": "tiktok",
+        "status": "PENDING"
+      },
+      {
+        "id": 430179052,
+        "uuid": "852070180004119115",
+        "day": "2026-11-23",
+        "network": "facebook",
+        "status": "PENDING"
+      },
+      {
+        "id": 430179052,
+        "uuid": "852070180004119115",
+        "day": "2026-11-23",
+        "network": "instagram",
+        "status": "PENDING"
+      },
+      {
+        "id": 430179176,
+        "uuid": "847496671868702490",
+        "day": "2026-11-24",
+        "network": "youtube",
+        "status": "PENDING"
+      },
+      {
+        "id": 430179319,
+        "uuid": "8928632528143663868",
+        "day": "2026-11-24",
+        "network": "tiktok",
+        "status": "PENDING"
+      },
+      {
+        "id": 430179483,
+        "uuid": "4634872805851283869",
+        "day": "2026-11-24",
+        "network": "facebook",
+        "status": "PENDING"
+      },
+      {
+        "id": 430179483,
+        "uuid": "4634872805851283869",
+        "day": "2026-11-24",
+        "network": "instagram",
+        "status": "PENDING"
+      },
+      {
+        "id": 428863336,
+        "uuid": "5841040031029612394",
+        "day": "2026-11-25",
+        "network": "threads",
+        "status": "PENDING"
+      }
+    ],
+    "qualityAndRightsUniversalApproval": false
+  },
+  "delivery": {
+    "targetedCountercheckCalls": 2,
+    "reason": "New concrete finding in existing workflow status log",
+    "failedProviderRecords": 5,
+    "instagramFailedDates": [
+      "2026-11-17",
+      "2026-11-18",
+      "2026-11-19",
+      "2026-11-20"
+    ],
+    "threadsFailedDate": "2026-11-19",
+    "facebookPublishedOnFourMixedPosts": true,
+    "mediaCause": "UNKNOWN",
+    "retryPath": "UNKNOWN_no_proven_provider_only_method",
+    "ownRetries": 0,
+    "originals": "runs/20261121-r277/FAILED-PROVIDERS.json"
+  },
+  "intentionalHolds": {
+    "currentHoldBlob": "5e264cf2c6d0949996ca71066adc73d6c2e27ec2",
+    "existingRunId": 44752664874,
+    "held15": 15,
+    "released": 0,
+    "pinterestExactUuid": "-3377774544048468147",
+    "walletProductId": "gid://shopify/Product/15473085514113",
+    "rootCurrentTagCountercheck": {
+      "id": "gid://shopify/Product/15473085514113",
+      "status": "ACTIVE",
+      "tags": [
+        "aufbewahrung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "geschenkwelt-wichtel",
+        "haushalt",
+        "organizer",
+        "rueckhol-0907",
+        "sort-damen-kartenetuis",
+        "sort-herren-kartenetuis",
+        "sort-kartenhalter",
+        "wohnen"
+      ]
+    },
+    "scope": "Deliberate photo holds25–28Nov, not accidental scheduling failures"
+  },
+  "master": {
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "cjReads": 1,
+    "cjReadReason": "New attempt to resolve known public product URL; no repeated catalog scan",
+    "publicProductGet": "HTTP200_validation_page_not_product_content",
+    "officialVideoMetadataEndpointVerified": true,
+    "videoMetadataQueryExecuted": false,
+    "sourceMP4": "UNKNOWN_not_read",
+    "rightsAndUnitMotif": "UNKNOWN",
+    "finishedFilm": false
+  },
+  "sales": {
+    "proposalCount": 1,
+    "scope": "Comparison-link on one projector product, DE/main selector only",
+    "nativeSourceFiles": 2,
+    "candidateFiles": 2,
+    "offlineBrowserCases": 6,
+    "offlinePassed": 6,
+    "nativeLiquidRender": false,
+    "interactiveVariantSwitchTest": false,
+    "shopWrites": 0
+  },
+  "guard": {
+    "pr": 3235,
+    "status": "OPEN_DRAFT_UNMERGED",
+    "sourceDrift": false,
+    "testsToday": 0,
+    "priorFocusedCI": "2026-11-17_SUCCESS",
+    "productivePRJob": "SKIPPED",
+    "allCIGreenClaimed": false
+  },
+  "review": {
+    "r276BlockingFindings": [],
+    "youTubeDraftGateStrengthened": true,
+    "originalR276Preserved": true
+  },
+  "dailyReports": {
+    "metricoolMetricReads": 0,
+    "klaviyoReads": 0,
+    "gscReads": 0,
+    "broadSalesReads": 0,
+    "ordersOrPurchaseWatch": 0,
+    "newDayReportsNotClaimed": true
+  },
+  "writes": {
+    "metricool": 0,
+    "shopify": 0,
+    "klaviyo": 0,
+    "merchant": 0,
+    "holdFile": 0,
+    "workflowDispatch": 0,
+    "customerMessages": 0,
+    "paidRenders": 0,
+    "newAutomation": 0
+  },
+  "claudeReceipt": "UNKNOWN_no_new_ack"
+}

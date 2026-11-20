@@ -1,0 +1,67 @@
+{
+  "post": {
+    "id": 425726329,
+    "publicationDate": {
+      "dateTime": "2026-11-20T17:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "creationDate": {
+      "dateTime": "2026-11-12T15:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "text": "Ein Tannenbaum, der leuchtet und zugleich eine Musikbox ist: die Lichterbaum-Musikbox. 🎄\n\nEine Lichterkette mit bunten Lichtern zieht sich um den Baum. An der Spitze sitzt ein roter Stern. Zwischen den verschneiten Zweigen stehen kleine Häuser.\n\nDie Musikbox misst 10 × 10 × 20 cm und ist als festliche Deko für Wohnzimmer und Schlafzimmer gedacht.\n\nLichterbaum-Musikbox · CHF 27.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsdeko #musikbox #lichterbaum #wohndeko #luxestyle\n\nShop: luxestyle.ch/ig",
+    "firstCommentText": "",
+    "providers": [
+      {
+        "network": "facebook",
+        "id": "1049840534888592_122154525537350792",
+        "status": "PUBLISHED",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/122154525537350792",
+        "detailedStatus": "Published"
+      },
+      {
+        "network": "instagram",
+        "status": "ERROR",
+        "detailedStatus": "The media could not be fetched from this URI: https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating"
+      }
+    ],
+    "media": [
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+    ],
+    "autoPublish": true,
+    "saveExternalMediaFiles": false,
+    "mediaAltText": [
+      "Lichterbaum-Musikbox 10x10x20 cm, Bild 1",
+      "Lichterbaum-Musikbox 10x10x20 cm, Bild 2",
+      "Lichterbaum-Musikbox 10x10x20 cm, Bild 3"
+    ],
+    "shortener": false,
+    "draft": false,
+    "imageVariants": false,
+    "twitterData": {
+      "type": "POST"
+    },
+    "facebookData": {
+      "type": "POST"
+    },
+    "instagramData": {
+      "autoPublish": true,
+      "type": "POST",
+      "showReelOnFeed": true,
+      "isAiGenerated": false,
+      "isPaidPartnership": false
+    },
+    "hasNotReadNotes": false,
+    "uuid": "108318075245381964",
+    "brandTags": []
+  },
+  "sourceShas": {
+    "AGENTS": "d1eece61d2876c94d9d9629db6ce9cc9831c827f",
+    "division": "55a24aa29a980b8a7c28d276a14c8c3a0c2dbd6b",
+    "releaseHelper": "2415675930266c072c329f9f6cc2b317e7f4a03a",
+    "scheduler": "c8814e25d09d2df3c47f204911f4a0f09a98f3b4"
+  },
+  "scope": "read-only actual post and three image files, existing helper offline only; no analytics, no contacts, no retries, no writes"
+}

@@ -1,0 +1,242 @@
+{
+  "run": "R277",
+  "atUTC": "2026-11-20T23:20:54Z",
+  "localDateZurich": "2026-11-21",
+  "scope": "Read-only review DraftPR3235; no workflow logs for daily freigabe read",
+  "sources": {
+    "mainCommit": "6de5d543780340ea316b82b7838b78db7926dde1",
+    "handoffCommit": "d94f7937280219fdd06e8f464cbced4f3c1b0a1f",
+    "prUrl": "https://github.com/allengchour-glitch/aban-news-landing/pull/3235",
+    "head": "a34031fd4b06d3ea4e426baad88e16c7d490be9e",
+    "base": "c9e60e97645b0ef9d9b459435301d29de48a7a1b",
+    "rules": {
+      "agentsSha": "d1eece61d2876c94d9d9629db6ce9cc9831c827f",
+      "rolesSha": "55a24aa29a980b8a7c28d276a14c8c3a0c2dbd6b"
+    }
+  },
+  "pr": {
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "mergeableState": "unstable",
+    "reviewCount": 0,
+    "inlineCommentCount": 0,
+    "issueCommentCount": 4,
+    "issueCommentsOnlyDeployBots": true
+  },
+  "files": [
+    {
+      "path": ".github/workflows/metricool-freigabe.yml",
+      "baseSha": "ca3318c6035511bb76b1bb683c22e4b1b6d559ef",
+      "mainSha": "ca3318c6035511bb76b1bb683c22e4b1b6d559ef",
+      "headSha": "77540ee3038d944964a7929af044969352890832",
+      "mainEqualsBase": true,
+      "mainContainsCandidate": false
+    },
+    {
+      "path": "automation/metricool_freigabe.py",
+      "baseSha": "2415675930266c072c329f9f6cc2b317e7f4a03a",
+      "mainSha": "2415675930266c072c329f9f6cc2b317e7f4a03a",
+      "headSha": "b97fc30c9a6122bfba2af3b3ca345aa23309d7b8",
+      "mainEqualsBase": true,
+      "mainContainsCandidate": false
+    },
+    {
+      "path": "automation/metricool_freigabe_mutationsprobe.py",
+      "baseSha": "8627977a5db7e546050bcb9cda5a4f851b46c9eb",
+      "mainSha": "8627977a5db7e546050bcb9cda5a4f851b46c9eb",
+      "headSha": "cfa86893e6afa25755127d8b959a40f8c58743d7",
+      "mainEqualsBase": true,
+      "mainContainsCandidate": false
+    },
+    {
+      "path": "automation/metricool_freigabe_test.py",
+      "baseSha": "5ec6da821dbffeb0cf4a8e6ac3441242e7a09e75",
+      "mainSha": "5ec6da821dbffeb0cf4a8e6ac3441242e7a09e75",
+      "headSha": "db36e7867ae7829738787866f826aba1e63c0cf4",
+      "mainEqualsBase": true,
+      "mainContainsCandidate": false
+    }
+  ],
+  "patches": [
+    {
+      "path": ".github/workflows/metricool-freigabe.yml",
+      "patch": "@@ -6,7 +6,8 @@ name: Metricool-Freigabe (Entwürfe prüfen und einplanen)\n # ACTIVE, lieferbar (mindestens eine kaufbare Ausführung; Bestand 0 mit Nachbestellung zählt als lieferbar) · jeder Preis stimmt mit dem Shop · Medien erreichbar\n # · ≥ 3 h Abstand je Netzwerk · keine Kopie (uuid mehrfach) · Video im Beitrag (Besitzer 16.11.: «nur noch Videos»; NUR_VIDEOS=0 schaltet ab).\n # Halteliste: steht die uuid oder id eines Entwurfs in dropship/METRICOOL-HALTEN.txt (eine je Zeile, danach «# Grund»), bleibt er Entwurf (Besitzer oder prüfende\n-# Sitzung bremst, ohne im Planer zu schreiben). Fehlt die Datei, gilt keine Bremse. Sie hält nur Entwürfe; eingeplante Beiträge fasst die Automation nie an.\n+# Sitzung bremst, ohne im Planer zu schreiben). Fehlt die Datei oder ist sie unlesbar, stoppt die Freigabe vor Netz-/Schreibzugriffen; die Statusdiagnose bleibt lesbar.\n+# Die Liste hält nur Entwürfe; eingeplante Beiträge fasst die Automation nie an.\n # Doku: dropship/metricool-freigabe-0911/README.md · Skript: automation/metricool_freigabe.py · Test + Mutationsprobe daneben.\n #\n # TROCKENLAUF IST DIE VORGABE: ohne die Datei dropship/METRICOOL-FREIGABE-FREI.txt (= das Ja des Besitzers vom 09.11.2026) wird nichts geändert und nichts"
+    },
+    {
+      "path": "automation/metricool_freigabe.py",
+      "patch": "@@ -21,6 +21,7 @@\n   8. Der Entwurf kommt nur einmal im Planer vor (gleiche uuid mehrfach = Kopie, wird nie angefasst).\n   9. Der Entwurf steht NICHT auf der Halteliste dropship/METRICOOL-HALTEN.txt (eine uuid oder id je Zeile, danach «# Grund»).\n      So kann der Besitzer oder eine prüfende Sitzung (Codex) einen Entwurf anhalten, ohne im Planer zu schreiben.\n+     Fehlt die Datei oder ist sie unlesbar, werden keine Freigaben vorgenommen (UNKNOWN).\n      Die Liste hält nur Entwürfe zurück; bereits eingeplante Beiträge fasst diese Automation nie an.\n \n Nach jedem Update wird der Planer frisch gelesen: genau ein Beitrag mit der uuid, geplant, Datum/Text/Medien wie erwartet.\n@@ -341,6 +342,15 @@ def lade_halten(text):\n     return out\n \n \n+def lese_halten_datei(pfad):\n+    \"\"\"Fehlende/unlesbare Halteliste ist unbekannt, nicht eine bestaetigt leere Liste.\"\"\"\n+    try:\n+        with open(pfad, encoding='utf-8') as f:\n+            return lade_halten(f.read())\n+    except (OSError, UnicodeError) as e:\n+        raise RuntimeError('Halteliste nicht lesbar; keine Freigaben (UNKNOWN).') from e\n+\n+\n def halte_grund(post, halten):\n     \"\"\"Grund, falls der Entwurf auf der Halteliste steht (nach uuid oder id), sonst None.\"\"\"\n     for schluessel in (str(post['uuid']).lower(), str(post['id']).lower()):\n@@ -584,6 +594,8 @@ def main(argv):\n     max_lauf = int(os.environ.get('MAX_JE_LAUF') or 12)\n     token = os.environ.get('METRICOOL_USER_TOKEN', '')\n     mc = Metricool(token, os.environ.get('METRICOOL_USER_ID') or '4801419', os.environ.get('METRICOOL_BLOG_ID') or '6227837')\n+    # Statusdiagnose bleibt lesbar; jede Freigabe braucht zuvor eine lesbare Halteliste.\n+    halten = lese_halten_datei(HALTEN_DATEI) if not status_modus else {}\n     jetzt = jetzt_lokal()\n     tg = (os.environ.get('TELEGRAM_BOT_TOKEN', '').strip(), os.environ.get('TELEGRAM_CHAT_ID', '').strip())\n     zusammen = []\n@@ -613,10 +625,6 @@ def main(argv):\n         produkte = wegweiser_produkte(shop, shopify_token(shop, os.environ.get('SHOPIFY_CLIENT_ID', ''), os.environ.get('SHOPIFY_CLIENT_SECRET', '')))\n     print(f'Planer: {len(planer)} Beiträge | Wegweiser-Produkte: {len(produkte)} | {\"LIVE\" if live else \"Trockenlauf\"} | jetzt {jetzt:%d.%m. %H:%M}')\n \n-    try:\n-        halten = lade_halten(open(HALTEN_DATEI, encoding='utf-8').read())\n-    except FileNotFoundError:\n-        halten = {}\n     if halten:\n         print(f'Halteliste: {len(halten)} Eintrag/Einträge ({\", \".join(sorted(halten)[:6])})')\n     entscheidungen = plane_lauf(planer, produkte, jetzt, horizont, max_lauf, medium_erreichbar if not planer_datei else (lambda u: True), halten)"
+    },
+    {
+      "path": "automation/metricool_freigabe_mutationsprobe.py",
+      "patch": "@@ -57,9 +57,9 @@\n  (' and halte_grund(p, halten) is None}', '}'),\n  (\"if not any('Kopie' in p or 'angehalten' in p for p in e['probleme'])\", \"if not any('Kopie' in p for p in e['probleme'])\"),\n  ('    halten = halten or {}\\n', '    halten = {}\\n'),\n- (\"        halten = lade_halten(open(HALTEN_DATEI, encoding='utf-8').read())\", '        halten = {}'),\n+ (\"    halten = lese_halten_datei(HALTEN_DATEI) if not status_modus else {}\", '    halten = {}'),\n  ('medium_erreichbar if not planer_datei else (lambda u: True), halten)', 'medium_erreichbar if not planer_datei else (lambda u: True))'),\n- ('    except FileNotFoundError:\\n        halten = {}', '    except FileNotFoundError:\\n        raise'),\n+ (\"        raise RuntimeError('Halteliste nicht lesbar; keine Freigaben (UNKNOWN).') from e\", '        return {}'),\n  (\"            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt): ' + grund)\", \"            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt)')\"),\n ]\n M += ["
+    },
+    {
+      "path": "automation/metricool_freigabe_test.py",
+      "patch": "@@ -315,6 +315,7 @@ def halt(i, dt, grund):\n \n # ---- main() offline: die Datei METRICOOL-HALTEN.txt wirkt wirklich (Trockenlauf mit Dateien, nie Netz, nie live)\n import contextlib, io, json, tempfile\n+from unittest.mock import patch\n from datetime import timedelta\n _morgen = (datetime.now() + timedelta(days=1)).replace(hour=10, minute=0, second=0, microsecond=0)\n _pl = [post(501, _morgen.strftime('%Y-%m-%dT%H:%M'), ['tiktok'], PA, uuid='uMain-1')]\n@@ -323,15 +324,53 @@ def halt(i, dt, grund):\n json.dump(_pl, open(_pf, 'w', encoding='utf-8')); json.dump(PRODUKTE, open(_kf, 'w', encoding='utf-8'))\n _alt_env = {k: os.environ.pop(k, None) for k in ('LIVE', 'GITHUB_STEP_SUMMARY', 'METRICOOL_USER_TOKEN')}\n _alt_pfad = m.HALTEN_DATEI\n-def _lauf():\n+def _lauf(status=False):\n     puffer = io.StringIO()\n     with contextlib.redirect_stdout(puffer):\n-        rc = m.main(['--planer-datei', _pf, '--produkte-datei', _kf])\n+        rc = m.main(['--planer-datei', _pf, '--produkte-datei', _kf] + (['--status'] if status else []))\n     return rc, puffer.getvalue()\n try:\n     m.HALTEN_DATEI = f'{_tmp}/gibt-es-nicht.txt'\n+    try:\n+        _lauf()\n+    except RuntimeError as e:\n+        ok('Halteliste nicht lesbar' in str(e) and 'UNKNOWN' in str(e), 'fehlende Halteliste bleibt unbekannt')\n+    else:\n+        ok(False, 'main ohne Halteliste darf keinen Entwurf freigeben')\n+    # Selbst LIVE=1 darf beim fehlenden Register weder Provider lesen/schreiben noch Shopify/Telegram aufrufen.\n+    with patch.dict(os.environ, {'LIVE': '1', 'METRICOOL_USER_TOKEN': 'test-no-network'}), \\\n+         patch.object(m.Metricool, 'planer', side_effect=AssertionError('kein Providerzugriff')) as plan_spy, \\\n+         patch.object(m.Metricool, 'call', side_effect=AssertionError('kein Providerwrite')) as put_spy, \\\n+         patch.object(m, 'shopify_token', side_effect=AssertionError('kein Shopifyzugriff')) as shop_spy, \\\n+         patch.object(m, 'telegram', side_effect=AssertionError('keine Nachricht')) as message_spy:\n+        try:\n+            m.main([])\n+        except RuntimeError as e:\n+            ok('UNKNOWN' in str(e), 'LIVE stoppt bei fehlender Halteliste')\n+        else:\n+            ok(False, 'LIVE ohne Halteliste muss stoppen')\n+        gl([plan_spy.call_count, put_spy.call_count, shop_spy.call_count, message_spy.call_count], [0, 0, 0, 0],\n+           'fehlende Halteliste: keine Provider-/Shopify-/Nachrichtenaufrufe')\n+    rc, aus = _lauf(status=True)\n+    ok(rc == 0 and 'Status:' in aus, 'reine Statusdiagnose bleibt bei fehlender Halteliste möglich')\n+    with patch('builtins.open', side_effect=PermissionError('test')):\n+        try:\n+            m.main([])\n+        except RuntimeError as e:\n+            ok('UNKNOWN' in str(e), 'unlesbare Halteliste stoppt mit unbekanntem Zustand')\n+        else:\n+            ok(False, 'unlesbare Halteliste muss stoppen')\n+    open(_hf2, 'wb').write(b'\\xff')\n+    m.HALTEN_DATEI = _hf2\n+    try:\n+        _lauf()\n+    except RuntimeError as e:\n+        ok('UNKNOWN' in str(e), 'nicht dekodierbare Halteliste bleibt unbekannt')\n+    else:\n+        ok(False, 'ungueltiges UTF-8 muss stoppen')\n+    open(_hf2, 'w', encoding='utf-8').write('')\n     rc, aus = _lauf()\n-    ok(rc == 0 and 'FREI   ' in aus and 'Halteliste' not in aus, 'main ohne Halteliste-Datei: Entwurf wird frei')\n+    ok(rc == 0 and 'FREI   ' in aus, 'vorhandene wirklich leere Halteliste bleibt erlaubt')\n     open(_hf2, 'w', encoding='utf-8').write('# nur Kommentar\\n')\n     m.HALTEN_DATEI = _hf2\n     rc, aus = _lauf()"
+    }
+  ],
+  "ci": {
+    "checkedNowButExecutionHistorical": true,
+    "focusedRun": 44038763405,
+    "focusedJobs": [
+      {
+        "id": 133887949504,
+        "name": "tests",
+        "status": "completed",
+        "conclusion": "success",
+        "started_at": "2026-11-17T07:26:50Z",
+        "completed_at": "2026-11-17T07:27:00Z",
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1,
+            "started_at": "2026-11-17T07:26:51Z",
+            "completed_at": "2026-11-17T07:26:51Z"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2,
+            "started_at": "2026-11-17T07:26:51Z",
+            "completed_at": "2026-11-17T07:26:52Z"
+          },
+          {
+            "name": "Tests (kein Netz)",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3,
+            "started_at": "2026-11-17T07:26:52Z",
+            "completed_at": "2026-11-17T07:26:53Z"
+          },
+          {
+            "name": "Mutationsprobe (nur bei Änderungen)",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4,
+            "started_at": "2026-11-17T07:26:53Z",
+            "completed_at": "2026-11-17T07:26:59Z"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8,
+            "started_at": "2026-11-17T07:26:59Z",
+            "completed_at": "2026-11-17T07:26:59Z"
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9,
+            "started_at": "2026-11-17T07:26:59Z",
+            "completed_at": "2026-11-17T07:26:59Z"
+          }
+        ]
+      },
+      {
+        "id": 133888044150,
+        "name": "freigabe",
+        "status": "completed",
+        "conclusion": "skipped",
+        "started_at": "2026-11-17T07:27:01Z",
+        "completed_at": "2026-11-17T07:27:01Z",
+        "steps": []
+      }
+    ],
+    "checks": [
+      {
+        "name": "freigabe",
+        "status": "completed",
+        "conclusion": "skipped",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/44038763405/job/133888044150"
+      },
+      {
+        "name": "Deploy to Cloudflare Pages",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/44038763524/job/133887950415"
+      },
+      {
+        "name": "Pre-deploy validation",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/44038763569/job/133887949678"
+      },
+      {
+        "name": "tests",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/44038763405/job/133887949504"
+      },
+      {
+        "name": "check",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/44038763515/job/133887949471"
+      },
+      {
+        "name": "Workers Builds: aban-news-landing",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://dash.cloudflare.com/33e5217c0d0a92d76b120ca536cffd33/workers/services/view/aban-news-landing/production/builds/272c97b1-2524-4c3c-8464-165e4c3eaa91"
+      },
+      {
+        "name": "Workers Builds: ki-verzeichnis",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://dash.cloudflare.com/33e5217c0d0a92d76b120ca536cffd33/workers/services/view/ki-verzeichnis/production/builds/4afed189-33c8-4558-8c8a-6017d28ed4df"
+      },
+      {
+        "name": "Workers Builds: aban-a",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://dash.cloudflare.com/33e5217c0d0a92d76b120ca536cffd33/workers/services/view/aban-a/production/builds/f00cb582-523b-4ef8-aaba-8df4d2b8dd77"
+      },
+      {
+        "name": "Cloudflare Pages: foerder-radar",
+        "status": "in_progress",
+        "conclusion": null,
+        "url": "https://dash.cloudflare.com/?to=/33e5217c0d0a92d76b120ca536cffd33/pages/view/foerder-radar/5e6329ed-5a7c-4581-9b0b-0dc1ed2681f8"
+      },
+      {
+        "name": "check",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/44038758005/job/133887930397"
+      }
+    ],
+    "statuses": {
+      "state": "pending",
+      "count": 0
+    },
+    "allCiGreenClaim": false
+  },
+  "assessment": {
+    "sourceDrift": false,
+    "newConcreteBugProven": false,
+    "missingUnreadableInvalidUtf8GateBeforeNetwork": true,
+    "statusModeIntentionallyExempt": true,
+    "constructorHasNoIO": true,
+    "existingEmptyListAllowed": true,
+    "tonePolicyChanged": false,
+    "holdRowsChanged": false,
+    "workflowChangeCommentOnly": true,
+    "notProofOfCurrentQueueOrRightsCompliance": true
+  },
+  "actions": {
+    "githubWrites": 0,
+    "merge": 0,
+    "workflowDispatches": 0,
+    "shopWrites": 0,
+    "metricoolWrites": 0,
+    "localTestsRun": 0,
+    "newCodeChanges": 0,
+    "installs": 0
+  },
+  "nextStep": "Claude reviews the draft and merges through regular process if appropriate. No production execution or tone conflict resolution inferred."
+}

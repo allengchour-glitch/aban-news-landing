@@ -1,0 +1,32 @@
+{
+  "guardReview": "Statische Quellcodeprüfung, kein Liquid-Interpreter verfügbar",
+  "positive": "Produktseite, main-Sektion, globales Produkt15521256604033, product_resource.id=product.id, de, genaue H2 vorhanden",
+  "negative": [
+    {
+      "context": "Fremdes Produkt",
+      "blockedBy": "product.id == 15521256604033"
+    },
+    {
+      "context": "Featured-Product auf Startseite",
+      "blockedBy": "request.page_type == product"
+    },
+    {
+      "context": "Featured-/Quickview-Sektion auf Produktseite",
+      "blockedBy": "luxe_comparison_section == main"
+    },
+    {
+      "context": "Ressource weicht von globalem Produkt ab",
+      "blockedBy": "product_resource.id == product.id"
+    },
+    {
+      "context": "FR",
+      "blockedBy": "request.locale.iso_code == de"
+    },
+    {
+      "context": "Vergleichsüberschrift geändert oder fehlt",
+      "blockedBy": "product_resource.description contains exact H2"
+    }
+  ],
+  "nativeLiquidRender": "NOT_PERFORMED",
+  "writes": 0
+}

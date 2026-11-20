@@ -1,0 +1,157 @@
+[
+  {
+    "path": "instagram/ARTIFACTS.json",
+    "bytes": 1239,
+    "sha256": "caf56e740b383d7881e7e69184696a400d6af7b783ed291741699e9b27cd6264"
+  },
+  {
+    "path": "instagram/IMAGE3-COLOR-PROFILE.json",
+    "bytes": 404,
+    "sha256": "d0511bc6c3678f47c4b947f39901ee218bd42912d11270a5a47d5d4e6c1276df"
+  },
+  {
+    "path": "instagram/BEFUND-UND-REPARATURPLAN.md",
+    "bytes": 4982,
+    "sha256": "f7eed00072f023e2eaee88191e5c0ee830db69c2bd9ee36eb1e284b913e5b794"
+  },
+  {
+    "path": "instagram/SOURCE-MANIFEST.json",
+    "bytes": 3046,
+    "sha256": "f88b551066e54cc4c89c471bf38d3d19a1de439dbbf6dbdff7d8d6bbb6a3d959"
+  },
+  {
+    "path": "instagram/META-DOC-EVIDENCE.json",
+    "bytes": 4937,
+    "sha256": "e1049addde4f6d5d789f920f2cba921ed7fb4228a83ca666bee1b894743e1fc0"
+  },
+  {
+    "path": "instagram/HELPER-OFFLINE-CHECK.json",
+    "bytes": 1192,
+    "sha256": "58dd4f09923d3a6e0f68b3ef49e921ab38a86f8d87fae8a00ab1eae4bab8232e"
+  },
+  {
+    "path": "instagram/POST-READBACK.json",
+    "bytes": 2514,
+    "sha256": "7ed4eea7607ce2f85a09c26e4d33654fe301f0a7d380d22d602b1ef3dea7f6cd"
+  },
+  {
+    "path": "instagram/MEDIA-HTTP-DETAILS.json",
+    "bytes": 5295,
+    "sha256": "39f025a4276e2a95f0daeffe46b47e4b8707fe8c1180bdaaea8c5077b68f739e"
+  },
+  {
+    "path": "guard/GUARD-REVIEW.md",
+    "bytes": 2693,
+    "sha256": "883a8f181bddc776cda11b1f89dbb5d9ea123b3fb5b031e9a9fcb9ea8e3517b3"
+  },
+  {
+    "path": "guard/GUARD-PR3235-READBACK.json",
+    "bytes": 16822,
+    "sha256": "7558d6e21ee030c2f16fcf3e4e3b9349210bab3a193119936d5ad15e0309e188"
+  },
+  {
+    "path": "pinterest/GUARD-CHECK.json",
+    "bytes": 109,
+    "sha256": "ce685a263d2c26126ede9323ae1049896ae1bf3050d50d820864ae797a56d189"
+  },
+  {
+    "path": "pinterest/HOLD-SOURCE.txt",
+    "bytes": 3648,
+    "sha256": "d1596fb5cc7e4424e3741ee03e1409f370d8a319622a8d74b6b4032d40b67326"
+  },
+  {
+    "path": "pinterest/POST-CURRENT.json",
+    "bytes": 1890,
+    "sha256": "e386a3450a6829dcf802f26be3963815ff2716d8293a1b9ec985cbcde3dbc50b"
+  },
+  {
+    "path": "pinterest/REPORT.md",
+    "bytes": 2717,
+    "sha256": "8954c1392121430abbe14f45a787c501c57bfad87587ceed76b806f0b1f929c8"
+  },
+  {
+    "path": "pinterest/PINTEREST-PREFLIGHT.json",
+    "bytes": 4725,
+    "sha256": "8c009fe070afdef480b403a4eae4f91853b1eaaef7e7607decb2e9d1f87bf06a"
+  },
+  {
+    "path": "pinterest/IMAGE-CHECK.json",
+    "bytes": 349,
+    "sha256": "835cce25806227e7370c347e89d429b91d523e567a5f7a64be9ebbc919eb9f62"
+  },
+  {
+    "path": "master/MANIFEST.json",
+    "bytes": 888,
+    "sha256": "cfbd45a6a09ffad7ff144882f1dfc329950dcc874c964f50aed27c7b47082074"
+  },
+  {
+    "path": "master/CJ-OFFICIAL-VIDEO-SECTION.md",
+    "bytes": 6045,
+    "sha256": "3aaf2afd8d294fa86bec063d74565ab810824f5344a890638bc2670bfe9dd150"
+  },
+  {
+    "path": "master/VIDEO-METADATEN-LESEVERTRAG.json",
+    "bytes": 2204,
+    "sha256": "f6143ed6a35723ffe84fd0f5577f6a902a34f594bfdfbd75726f7ae217e3f7b4"
+  },
+  {
+    "path": "master/MASTER-SOURCE-PROOF.json",
+    "bytes": 4891,
+    "sha256": "a07c124e8ecc97aa0ec92d5e0f5aca09892b49a6f5e313e014082cff14d9d966"
+  },
+  {
+    "path": "master/MASTER-SOURCE-REPORT.md",
+    "bytes": 3094,
+    "sha256": "687db43aee92c4921da6fb1b44ba959153063983df50dbacd271f73729243301"
+  },
+  {
+    "path": "master/public-product-get.json",
+    "bytes": 1089,
+    "sha256": "b1cf547342bf975da825dc62eab6a5b6c4c9c720ed6c89099f3c677278e12024"
+  },
+  {
+    "path": "review/R276-REVIEW.json",
+    "bytes": 2520,
+    "sha256": "bb0e43c0b0d9950db6ba3b606f333092ea90b05a047ffb92339df19eac76e3d5"
+  },
+  {
+    "path": "sales/README.md",
+    "bytes": 3951,
+    "sha256": "f96bf02d1722f60fa70c178bd905ec5fcba34fd6d628ff4b6e52198bda6f9b77"
+  },
+  {
+    "path": "sales/MODELLVERGLEICH-ENTWURF.patch",
+    "bytes": 10713,
+    "sha256": "feb9259d61c2dd9f01e8800b26f78ff09d2d08a50a6011ebf57f6589ade515a9"
+  },
+  {
+    "path": "sales/SOURCE-MANIFEST.json",
+    "bytes": 920,
+    "sha256": "d51310822f1185c8c41d2d371ef524de3ff86366c1b96e9a3a04d7869a71bac2"
+  },
+  {
+    "path": "sales/GUARD-REVIEW.json",
+    "bytes": 1001,
+    "sha256": "de98e186585045e17b3c4f11fd39295ee6acb219026e77013d5c987cf8209b39"
+  },
+  {
+    "path": "sales/BROWSER-QA.json",
+    "bytes": 4384,
+    "sha256": "a048911049aa53de1cd96b00c798bad37955de3adac36e596d3e2c9dc81b03dd"
+  },
+  {
+    "path": "sales/check_browser.py",
+    "bytes": 4821,
+    "sha256": "2f2c545e7fb2b477318a32beca285703507ab93aea2978203af4b6bd6200bcc4"
+  },
+  {
+    "path": "sales/candidate/blocks/variant-picker.liquid",
+    "bytes": 3157,
+    "sha256": "9c0711ef196980f7d2c2e1b63866e327902c49b861275707e5db1754caa3c1f6"
+  },
+  {
+    "path": "sales/candidate/description-custom-liquid.txt",
+    "bytes": 4730,
+    "sha256": "ef685ef5e2e56e85d30de3141ae8386b7abbcc13efc8873419e2845892b0ae28"
+  }
+]

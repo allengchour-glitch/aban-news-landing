@@ -3386,3 +3386,23 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R276-REPORT-20261120.md) · [Belege](R276-PROOF-20261120.json).
 
 [LUXESTYLE_R276_20261120]
+
+
+## 21.11.2026
+
+### R277 – sechs parallele Arbeitspakete, konkrete Diagnose und lokaler Verkaufsentwurf
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Team / Memory | Sechs Hilfsagenten beauftragt, ihre sechs Ergebnisse geprüft; R276 und Tagesstand frisch gelesen | Sieben gleichzeitige Plätze inklusive Hauptagent, keine100Agenten behauptet; R276 bleibt erhalten |
+| Planung | Vier kleine Fenster21.–28.11. frisch gelesen und Konten abgeglichen | 44Objekte,29aktive Objekte/37aktive Kanalplätze. Tägliche Plätze21.–24.11.;25.–28.11. Lücken auf fünf Kanälen, Threads26.–28.11. |
+| Auslieferung | Fünf konkrete Fehlerposts17.–20.11. nach neuem Workflowbefund zurückgelesen; aktuellen IG-Fall und Bild-/Helfergrenzen geprüft | Instagram17./18./19./20.11.ERROR, Threads19.11.ERROR; vierFB-TeilePUBLISHED. Ursache unbekannt, kein Retry |
+| Bewusste Sperren | Haltedatei und bestehenden Lauf44752664874 samt Ergebnis gelesen; Kartenetui-Produkt/Pin eng gegengeprüft | Fremder Automationslauf:15gehalten/0freigegeben. Exakte Pin-UUID gehalten, aktuellesrueckhol-0907 blockiert zusätzlich; keine Entfernung/Aktivierung |
+| Verkauf | Tatsächliche Theme-Dateien lokalisiert, Zwei-Dateien-Diff für denselben Modellvergleich-Link entwickelt und Root-Grenzfund korrigiert | Sechs Offlinefälle A/B×360/390/1440 mit Fokus und unverändertem Zustand bestanden. NativeLiquid-/Liveprüfung offen, nicht umgesetzt |
+| Masterquelle | Vorhandenen CJ-Videometadatenhelfer und offizielleDoku gegengeprüft, öffentlicheURL aus genau einem gezieltenProduktread verfolgt | ÖffentlicheQuelle ist Validierungsseite, keineMP4 gelesen. Enger einmaligerVideometadaten-Lesevertrag vorbereitet, nicht ausgeführt |
+| Qualität / Code | R276-Struktur unabhängig geprüft und YouTube-Entwurfsgate präzisiert; PR3235/Diff/CI aktuell gelesen | Keine blockierendenR276Dokufehlbefunde. PRweiterDraft/ungemergt, Quelldrift0; alteTests nicht als heute ausgeführt behauptet |
+| Tagesgrenzen | Keine Kennzahlen-/Klaviyo-/GSC-/breitenVerkaufs-/Bestellabfragen wiederholt | HeutigeReports nicht durchgeführt; Kauf-Watch bleibt beendet. Keine neuenPosts, Kosten, Kontakte oder Workflows |
+
+[Bericht](R277-REPORT-20261121.md) · [Belege](R277-PROOF-20261121.json).
+
+[LUXESTYLE_R277_20261121]

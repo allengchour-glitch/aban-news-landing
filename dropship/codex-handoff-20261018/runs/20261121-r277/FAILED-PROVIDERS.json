@@ -1,0 +1,139 @@
+[
+  {
+    "id": 424393422,
+    "uuid": "8906814597211638530",
+    "date": {
+      "dateTime": "2026-11-17T17:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "providers": [
+      {
+        "network": "facebook",
+        "id": "1049840534888592_122153862027350792",
+        "status": "PUBLISHED",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/122153862027350792",
+        "detailedStatus": "Published"
+      },
+      {
+        "network": "instagram",
+        "status": "ERROR",
+        "detailedStatus": "The media could not be fetched from this URI: https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating"
+      }
+    ],
+    "media": [
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_85aafe82-72e1-40a9-9855-886967d9c858.jpg?v=1794397380",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_d58fb735-15fc-4b68-befb-62e988372118.jpg?v=1794397387",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_70a2e6dd-e239-493d-8810-00af7b292191.jpg?v=1794397395"
+    ],
+    "draft": false,
+    "autoPublish": true
+  },
+  {
+    "id": 425725034,
+    "uuid": "5511347900019396585",
+    "date": {
+      "dateTime": "2026-11-18T17:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "providers": [
+      {
+        "network": "facebook",
+        "id": "1049840534888592_122154064431350792",
+        "status": "PUBLISHED",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/122154064431350792",
+        "detailedStatus": "Published"
+      },
+      {
+        "network": "instagram",
+        "status": "ERROR",
+        "detailedStatus": "The media could not be fetched from this URI: https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating"
+      }
+    ],
+    "media": [
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_cb0d6ae2-3cba-4dcd-b7d8-a48b25f1c7f7.jpg?v=1794397459",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_0d9797b8-e769-4d25-aab7-91a714dbe765.jpg?v=1794397466",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_3a131e55-ec3f-4155-88a6-75e6a8ff5833.jpg?v=1794397470"
+    ],
+    "draft": false,
+    "autoPublish": true
+  },
+  {
+    "id": 425725415,
+    "uuid": "2120727659527094958",
+    "date": {
+      "dateTime": "2026-11-19T11:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "providers": [
+      {
+        "network": "threads",
+        "status": "ERROR",
+        "detailedStatus": "The media could not be fetched from this URI: https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fb120a45-22f1-4844-aefd-f6be8ba24795.jpg?v=1794397616.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating"
+      }
+    ],
+    "media": [
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fb120a45-22f1-4844-aefd-f6be8ba24795.jpg?v=1794397616"
+    ],
+    "draft": false,
+    "autoPublish": true
+  },
+  {
+    "id": 425725555,
+    "uuid": "4792908094992761420",
+    "date": {
+      "dateTime": "2026-11-19T17:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "providers": [
+      {
+        "network": "facebook",
+        "id": "1049840534888592_122154278445350792",
+        "status": "PUBLISHED",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/122154278445350792",
+        "detailedStatus": "Published"
+      },
+      {
+        "network": "instagram",
+        "status": "ERROR",
+        "detailedStatus": "The media could not be fetched from this URI: https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating"
+      }
+    ],
+    "media": [
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_fd9bdfee-76e0-46b6-9dd6-a8a16afe2fdb.jpg?v=1794397532",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_ba7cd0cb-c0cf-4a6b-a741-0c3b62c11f61.jpg?v=1794397536",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_23db72c1-010a-4835-8eea-dd1d81e39805.jpg?v=1794397544",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_4.jpg?v=1794397552"
+    ],
+    "draft": false,
+    "autoPublish": true
+  },
+  {
+    "id": 425726329,
+    "uuid": "108318075245381964",
+    "date": {
+      "dateTime": "2026-11-20T17:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "providers": [
+      {
+        "network": "facebook",
+        "id": "1049840534888592_122154525537350792",
+        "status": "PUBLISHED",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/122154525537350792",
+        "detailedStatus": "Published"
+      },
+      {
+        "network": "instagram",
+        "status": "ERROR",
+        "detailedStatus": "The media could not be fetched from this URI: https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating"
+      }
+    ],
+    "media": [
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+    ],
+    "draft": false,
+    "autoPublish": true
+  }
+]

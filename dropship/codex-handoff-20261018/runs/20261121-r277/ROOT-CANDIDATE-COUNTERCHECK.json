@@ -1,0 +1,18 @@
+{
+  "files": [
+    {
+      "path": "blocks/variant-picker.liquid",
+      "sourceMatches": true,
+      "candidateMatches": true
+    },
+    {
+      "path": "templates/product.json",
+      "sourceMatches": true,
+      "candidateMatches": true
+    }
+  ],
+  "wholeTemplateTreePreservedExceptOneSetting": true,
+  "browserCases": 6,
+  "focusAndVariantStatePass": true,
+  "nativeLiquidRender": false
+}

@@ -1,0 +1,27 @@
+{
+  "sourceGitBlob": "2415675930266c072c329f9f6cc2b317e7f4a03a",
+  "offlineOnly": true,
+  "realNetworkCalls": 0,
+  "currentPostCandidateDecisions": [],
+  "statusFindings": [
+    {
+      "id": 425726329,
+      "netz": "instagram",
+      "status": "ERROR",
+      "detail": "The media could not be fetched from this URI: https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating",
+      "zeit": "2026-11-20T17:00:00",
+      "text": "Ein Tannenbaum, der leuchtet und zugleic"
+    }
+  ],
+  "genericPutProviderArray": [
+    {
+      "network": "facebook"
+    },
+    {
+      "network": "instagram"
+    }
+  ],
+  "genericPutPreservesPublishedProviderReceipt": false,
+  "genericPutIsNotProviderOnlyRecovery": true,
+  "interpretation": "Existing release helper intentionally handles drafts only. The actual mixed PUBLISHED/ERROR post is not a release candidate. Its generic PUT includes both providers; do not repurpose for a partial-provider retry."
+}

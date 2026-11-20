@@ -1,0 +1,145 @@
+{
+  "run": "R277",
+  "subtask": "pinterest_preflight",
+  "observedAtUTC": "2026-11-20 23:20:51 UTC",
+  "localDate": "2026-11-21",
+  "target": {
+    "id": 424681868,
+    "uuid": "-3377774544048468147",
+    "publicationDate": {
+      "dateTime": "2026-11-25T20:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "draft": true,
+    "autoPublish": false,
+    "pinterestData": {
+      "boardId": "1111333714239114020",
+      "pinTitle": "Kartenetui aus Aluminium in fünf Farben: Rot, Blau, Schwarz, Dunkelgrau, Silber",
+      "pinLink": "https://luxestyle.ch/products/kartenetui-aus-aluminium-618500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_kartenetui-aus-aluminium-618500",
+      "pinNewFormat": true,
+      "isAiGenerated": false,
+      "isAiGeneratedPerson": false
+    },
+    "media": [
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_9bf03d0a-5b73-4a62-9757-e4058028302a.png?v=1794416335"
+    ]
+  },
+  "sources": {
+    "rules": {
+      "path": "AGENTS.md",
+      "sha": "d1eece61d2876c94d9d9629db6ce9cc9831c827f"
+    },
+    "roles": {
+      "path": "docs/ARBEITSTEILUNG-1011.md",
+      "sha": "55a24aa29a980b8a7c28d276a14c8c3a0c2dbd6b"
+    },
+    "pack": {
+      "path": "dropship/social-2211/kartenetui-aus-aluminium-618500/pack.json",
+      "sha": "c937cfdc8feee64db15331eb54d411036958a855"
+    },
+    "creationLedger": {
+      "path": "dropship/social-2211/angelegt.json",
+      "sha": "a3bbb2fffc0e5c6f12baa2770422ae31a63f98b5"
+    },
+    "hold": {
+      "path": "dropship/METRICOOL-HALTEN.txt",
+      "sha": "5e264cf2c6d0949996ca71066adc73d6c2e27ec2"
+    },
+    "ownerAutomation": {
+      "path": "dropship/METRICOOL-FREIGABE-FREI.txt",
+      "sha": "83f16a4fcdd4d18cd06986b24692bb5335502e73"
+    }
+  },
+  "currentShopifySummary": {
+    "shopId": "gid://shopify/Shop/94368563585",
+    "currencyCode": "CHF",
+    "domain": "https://luxestyle.ch",
+    "productId": "gid://shopify/Product/15473085514113",
+    "handle": "kartenetui-aus-aluminium-618500",
+    "status": "ACTIVE",
+    "tags": [
+      "aufbewahrung",
+      "bild-ok",
+      "bildmass-ok-0906",
+      "cj-real",
+      "dropship",
+      "geschenkwelt-wichtel",
+      "haushalt",
+      "organizer",
+      "rueckhol-0907",
+      "sort-damen-kartenetuis",
+      "sort-herren-kartenetuis",
+      "sort-kartenhalter",
+      "wohnen"
+    ],
+    "variantIds": [
+      "56069774672257",
+      "56069774705025",
+      "56069774737793",
+      "56069774770561",
+      "56069774803329"
+    ],
+    "pricesCHF": [
+      "15.90",
+      "15.90",
+      "15.90",
+      "15.90",
+      "15.90"
+    ],
+    "tracked": false,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "notUsedAsSoldOutEvidence": true
+  },
+  "gates": {
+    "ownerHold": {
+      "state": "BLOCKED",
+      "exactLine": "-3377774544048468147   # Claude 16.11.: Kartenetui Pinterest 25.11. 20:00, Foto statt Video",
+      "reason": "Repo documents owner16Nov only videos and deliberate hold of15photo drafts25–28Nov"
+    },
+    "extraAnyRueckholOwnerRule": {
+      "state": "BLOCKED",
+      "matchedTag": "rueckhol-0907"
+    },
+    "boardMembership": {
+      "state": "UNKNOWN",
+      "boardId": "1111333714239114020",
+      "note": "Present in historical pack and current planner, not proof of current account membership. No board-read tool exposed."
+    },
+    "commercialImageEditingRights": {
+      "state": "UNKNOWN",
+      "note": "pack documents source/crop/background reconstruction, not actual commercial licence or exact image-specific grant"
+    },
+    "productIdentity": {
+      "state": "CONFIRMED",
+      "source": "one current native Shopify product query"
+    },
+    "mediaTechnical": {
+      "state": "PASS_READ_ONLY",
+      "source": "IMAGE-CHECK.json",
+      "width": 1000,
+      "height": 1500,
+      "format": "PNG",
+      "mode": "RGB",
+      "sha256": "c9b636c146269b24e35e457307c96a6ac7b91e059d0b9b03c1a6cde42964c307",
+      "seen": true
+    },
+    "history": {
+      "state": "PARTIAL",
+      "creationReceiptMatchesStableUuid": true,
+      "currentStateDraft": true,
+      "specificMasterPublicationLedger": "UNKNOWN_not_in_four_returned_handoff_register_files",
+      "fullChannelHistory": "UNKNOWN_not_scanned_after_decisive_hold_and_rueckhol_block"
+    }
+  },
+  "conclusion": "DO_NOT_ACTIVATE_EXISTING_PHOTO_DRAFT",
+  "proposedActivationDiff": null,
+  "performedWrites": {
+    "metricool": 0,
+    "shopify": 0,
+    "tags": 0,
+    "holdFile": 0
+  },
+  "nextAllowedStep": "Preserve exact UUID and intentional hold. Use source-qualified real video only after owner format rules, product tags and current board/rights/history gates resolve; do not re-encode a still as replacement film."
+}
+

@@ -1,0 +1,42 @@
+{
+  "url": "https://www.cjdropshipping.com/product/galaxy-projector-starry-sky-projection-bedroom-bedside-decoration-night-light-p-1477820492730732544.html",
+  "finalUrl": "https://frontend.cjdropshipping.com/egg/cj/validation.html?rd=https://www.cjdropshipping.com/product/galaxy-projector-starry-sky-projection-bedroom-bedside-decoration-night-light-p-1477820492730732544.html",
+  "httpStatus": 200,
+  "contentType": "text/html",
+  "bytes": 20107,
+  "sha256": "6db4eb4c2cf9a15cfc36d7836e081b6dfdc04c4e4154276dc27a20678e082b59",
+  "truncated": false,
+  "mediaURLs": [],
+  "hits": [
+    {
+      "term": "1602963697889193984",
+      "count": 0,
+      "snippets": []
+    },
+    {
+      "term": "1477820492730732544",
+      "count": 0,
+      "snippets": []
+    },
+    {
+      "term": "queryVideosByProductId",
+      "count": 0,
+      "snippets": []
+    },
+    {
+      "term": "videoUrl",
+      "count": 0,
+      "snippets": []
+    },
+    {
+      "term": "videoList",
+      "count": 0,
+      "snippets": []
+    },
+    {
+      "term": "login",
+      "count": 0,
+      "snippets": []
+    }
+  ]
+}

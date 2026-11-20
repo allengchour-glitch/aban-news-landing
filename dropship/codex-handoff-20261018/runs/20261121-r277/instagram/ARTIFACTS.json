@@ -1,0 +1,37 @@
+[
+  {
+    "path": "/dev/shm/luxe-r277/instagram/BEFUND-UND-REPARATURPLAN.md",
+    "bytes": 4982,
+    "sha256": "f7eed00072f023e2eaee88191e5c0ee830db69c2bd9ee36eb1e284b913e5b794"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/instagram/SOURCE-MANIFEST.json",
+    "bytes": 3046,
+    "sha256": "f88b551066e54cc4c89c471bf38d3d19a1de439dbbf6dbdff7d8d6bbb6a3d959"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/instagram/POST-READBACK.json",
+    "bytes": 2514,
+    "sha256": "7ed4eea7607ce2f85a09c26e4d33654fe301f0a7d380d22d602b1ef3dea7f6cd"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/instagram/MEDIA-HTTP-DETAILS.json",
+    "bytes": 5295,
+    "sha256": "39f025a4276e2a95f0daeffe46b47e4b8707fe8c1180bdaaea8c5077b68f739e"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/instagram/HELPER-OFFLINE-CHECK.json",
+    "bytes": 1192,
+    "sha256": "58dd4f09923d3a6e0f68b3ef49e921ab38a86f8d87fae8a00ab1eae4bab8232e"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/instagram/META-DOC-EVIDENCE.json",
+    "bytes": 4937,
+    "sha256": "e1049addde4f6d5d789f920f2cba921ed7fb4228a83ca666bee1b894743e1fc0"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/instagram/IMAGE3-COLOR-PROFILE.json",
+    "bytes": 404,
+    "sha256": "d0511bc6c3678f47c4b947f39901ee218bd42912d11270a5a47d5d4e6c1276df"
+  }
+]

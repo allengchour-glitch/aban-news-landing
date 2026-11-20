@@ -1,0 +1,52 @@
+{
+  "review": "R277 independent documentation review of R276",
+  "reviewedCommit": "d94f7937280219fdd06e8f464cbced4f3c1b0a1f",
+  "baseCommit": "47e3d781e23eddf8b97f98f86be911bba7fc7f65",
+  "scope": "R276 report/proof, raw selected metrics, planner, captions, master and salesdraft; full base/current ARBEITSSTAND object comparison",
+  "externalPlatformCalls": 0,
+  "repoWrites": 0,
+  "verified": {
+    "changedTopLevelKeys": [
+      "revision",
+      "updatedAt",
+      "dailyReadPolicy",
+      "tasks",
+      "history",
+      "dailyReadPolicyHistory",
+      "claudeCodeHandoff",
+      "run276"
+    ],
+    "onlyFourTasksAppendRun276": true,
+    "allTaskIdsAndPreviousTaskFieldsPreserved": true,
+    "historyPrefixPreserved": true,
+    "historyNewEntries": 1,
+    "endedSalesGoalUnchanged": true,
+    "priorDailyReadPolicyArchivedExact": true,
+    "plannerUniqueUuids": 50,
+    "futureActiveObjects21to27": 29,
+    "futureActivePlacements21to27": 37,
+    "metricObservedSumsAndMissingDaysAgree": true,
+    "captionsCount": 6,
+    "captionUrlsDistinct": true,
+    "singleSalesProposal": true,
+    "masterVersusWebsiteFilmSeparated": true,
+    "r275LossExplicitAndNoHistoricalTestClaimsToday": true,
+    "errorCauseNotAsserted": true
+  },
+  "blockingFindings": [],
+  "improvements": [
+    {
+      "severity": "low",
+      "source": "runs/20261120-r276/CAPTIONS.json youtube draft",
+      "finding": "YouTube caption draft has no explicit target UUID or audience-setting preservation gate. R276 madeForKids=false evidence refers to five OTHER currently returned YouTube posts; it is not a fresh audience check for the pending projector master.",
+      "fix": "On the eventual concrete projector target record UUID and freshly preserve/read madeForKids=false. Add a caption gate stating that the setting on another post is not sufficient. Draft-only status currently prevents publication; no present false publication claim."
+    }
+  ],
+  "preexistingNotes": [
+    {
+      "source": "ARBEITSSTAND.json claudeCodeHandoff",
+      "note": "documentationRevision=184 and old hash/path scope remain a dated R184 snapshot while latestCanonicalRevision=276. Pre-existing from base, not introduced by R276. Do not overwrite old receipt/history; a new explicit run276 pointer is already present."
+    }
+  ],
+  "limits": "No live platform re-query, no complete historical master publication audit, no creative or rights approval. Input-row order used as declared requestedIds; sums independently recomputed from persisted raw rows."
+}

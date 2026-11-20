@@ -1,0 +1,53 @@
+{
+  "id": 424681868,
+  "publicationDate": {
+    "dateTime": "2026-11-25T20:00:00",
+    "timezone": "Europe/Zurich"
+  },
+  "creationDate": {
+    "dateTime": "2026-11-11T17:58:00",
+    "timezone": "Europe/Zurich"
+  },
+  "text": "Schlichtes Kartenetui aus Aluminiumlegierung im urbanen, minimalistischen Stil, für Kreditkarten und andere Karten. Ein schwarzes Band umschliesst Etui und Karten. Erhältlich in Rot, Blau, Schwarz, Dunkelgrau und Silber. Für den Alltag gedacht und eine kleine Geschenkidee.",
+  "firstCommentText": "",
+  "providers": [
+    {
+      "network": "pinterest",
+      "status": "PENDING",
+      "detailedStatus": "Pending"
+    }
+  ],
+  "media": [
+    "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/pin_9bf03d0a-5b73-4a62-9757-e4058028302a.png?v=1794416335"
+  ],
+  "autoPublish": false,
+  "saveExternalMediaFiles": false,
+  "mediaAltText": [
+    "Fünf Kartenetuis aus Metall in Rot, Silber, Blau, Dunkelgrau und Schwarz, gestaffelt übereinander vor hellgrauem Grund. Darunter der Schriftzug «Kartenetui aus Aluminium» und luxestyle.ch."
+  ],
+  "shortener": false,
+  "draft": true,
+  "imageVariants": false,
+  "twitterData": {
+    "type": "POST"
+  },
+  "instagramData": {
+    "autoPublish": false,
+    "type": "POST",
+    "showReelOnFeed": true,
+    "isAiGenerated": false,
+    "isPaidPartnership": false
+  },
+  "pinterestData": {
+    "boardId": "1111333714239114020",
+    "pinTitle": "Kartenetui aus Aluminium in fünf Farben: Rot, Blau, Schwarz, Dunkelgrau, Silber",
+    "pinLink": "https://luxestyle.ch/products/kartenetui-aus-aluminium-618500?utm_source=pinterest&utm_medium=organic_social&utm_campaign=luxe_pinterest_202611&utm_content=w2211_kartenetui-aus-aluminium-618500",
+    "pinNewFormat": true,
+    "isAiGenerated": false,
+    "isAiGeneratedPerson": false
+  },
+  "hasNotReadNotes": false,
+  "uuid": "-3377774544048468147",
+  "brandTags": []
+}
+

@@ -1,0 +1,26 @@
+{
+  "themeId": 214169584007,
+  "role": "MAIN",
+  "productId": 15521256604033,
+  "writes": 0,
+  "files": [
+    {
+      "path": "blocks/variant-picker.liquid",
+      "sourceMd5": "f299d1a228fcaa40fff605bdd6e3860e",
+      "sourceSha256": "4564e67ea05623cef09775a5096782f69d051dd03f30b95b27369033585630a3",
+      "candidateMd5": "84db771207d51a263d38e76457779c5a",
+      "candidateSha256": "9c0711ef196980f7d2c2e1b63866e327902c49b861275707e5db1754caa3c1f6",
+      "bytesBefore": 2257,
+      "bytesAfter": 3157
+    },
+    {
+      "path": "templates/product.json",
+      "sourceMd5": "3d989256216e0d5ebbb65987d4a8398e",
+      "sourceSha256": "a1cb1441aae715b21e25e2cb46e114b8346bf9d61a2dc7814585d94aaec00f18",
+      "candidateMd5": "0244ca4694b1f2a4fc45e46ea088ff17",
+      "candidateSha256": "4fc38ca2b0156e0db67b1eb9ecc8a247888d3b51793f7fb68883481a3a1e2535",
+      "bytesBefore": 82335,
+      "bytesAfter": 82803
+    }
+  ]
+}

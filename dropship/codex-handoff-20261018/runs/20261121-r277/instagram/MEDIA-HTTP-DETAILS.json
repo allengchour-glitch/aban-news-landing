@@ -1,0 +1,151 @@
+{
+  "checkedAtUTC": "2026-11-20T23:20:02.637733+00:00",
+  "checks": [
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+      "checks": [
+        {
+          "userAgent": "default",
+          "status": 200,
+          "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+          "sha256": "cfeea863a86d7d2b80a1841ae76302ecccc6c9972fa51efc0adea07d0f3775ac",
+          "bytes": 408228,
+          "headers": {
+            "content-type": "image/jpeg",
+            "content-length": "408228",
+            "cache-control": "public, max-age=31557600",
+            "last-modified": "Fri, 20 Nov 2026 23:20:01 GMT",
+            "accept-ranges": "bytes"
+          },
+          "format": "JPEG",
+          "mode": "RGB",
+          "size": [
+            1080,
+            1350
+          ],
+          "progressive": true,
+          "iccBytes": 424,
+          "exifBytes": 172
+        },
+        {
+          "userAgent": "facebookexternalhit (local impersonation only)",
+          "status": 200,
+          "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+          "sha256": "cfeea863a86d7d2b80a1841ae76302ecccc6c9972fa51efc0adea07d0f3775ac",
+          "bytes": 408228,
+          "headers": {
+            "content-length": "408228",
+            "cache-control": "public, max-age=31557600",
+            "content-type": "image/jpeg"
+          },
+          "format": "JPEG",
+          "mode": "RGB",
+          "size": [
+            1080,
+            1350
+          ],
+          "progressive": true,
+          "iccBytes": 424,
+          "exifBytes": 172
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+      "checks": [
+        {
+          "userAgent": "default",
+          "status": 200,
+          "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+          "sha256": "01743a97a8a873ce15f83e6c6980a565e5a0d97aa80ff39437a850cb33a0eb94",
+          "bytes": 260493,
+          "headers": {
+            "content-length": "260493",
+            "cache-control": "public, max-age=31557600",
+            "content-type": "image/jpeg"
+          },
+          "format": "JPEG",
+          "mode": "RGB",
+          "size": [
+            1080,
+            1350
+          ],
+          "progressive": true,
+          "iccBytes": 424,
+          "exifBytes": 172
+        },
+        {
+          "userAgent": "facebookexternalhit (local impersonation only)",
+          "status": 200,
+          "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+          "sha256": "01743a97a8a873ce15f83e6c6980a565e5a0d97aa80ff39437a850cb33a0eb94",
+          "bytes": 260493,
+          "headers": {
+            "content-type": "image/jpeg",
+            "content-length": "260493",
+            "cache-control": "public, max-age=31557600",
+            "last-modified": "Fri, 20 Nov 2026 23:20:02 GMT",
+            "accept-ranges": "bytes"
+          },
+          "format": "JPEG",
+          "mode": "RGB",
+          "size": [
+            1080,
+            1350
+          ],
+          "progressive": true,
+          "iccBytes": 424,
+          "exifBytes": 172
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675",
+      "checks": [
+        {
+          "userAgent": "default",
+          "status": 200,
+          "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675",
+          "sha256": "b466f7bba251763e3da0894fc13cd2341eeeea55ed104881ffcdb5d562ea5011",
+          "bytes": 140106,
+          "headers": {
+            "content-length": "140106",
+            "cache-control": "public, max-age=31557600",
+            "content-type": "image/jpeg"
+          },
+          "format": "JPEG",
+          "mode": "RGB",
+          "size": [
+            1080,
+            1350
+          ],
+          "progressive": true,
+          "iccBytes": 424,
+          "exifBytes": 172
+        },
+        {
+          "userAgent": "facebookexternalhit (local impersonation only)",
+          "status": 200,
+          "finalUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675",
+          "sha256": "b466f7bba251763e3da0894fc13cd2341eeeea55ed104881ffcdb5d562ea5011",
+          "bytes": 140106,
+          "headers": {
+            "content-length": "140106",
+            "cache-control": "public, max-age=31557600",
+            "content-type": "image/jpeg"
+          },
+          "format": "JPEG",
+          "mode": "RGB",
+          "size": [
+            1080,
+            1350
+          ],
+          "progressive": true,
+          "iccBytes": 424,
+          "exifBytes": 172
+        }
+      ]
+    }
+  ],
+  "warning": "These local requests are not Meta server-side fetches; they cannot prove Meta origin accessibility."
+}

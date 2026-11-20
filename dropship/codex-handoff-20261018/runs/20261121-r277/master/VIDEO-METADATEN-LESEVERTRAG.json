@@ -1,0 +1,78 @@
+{
+  "state": "PREPARED_NOT_EXECUTED",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "request": {
+    "method": "POST",
+    "url": "https://developers.cjdropshipping.com/api2.0/v1/product/queryVideosByProductId",
+    "headers": {
+      "Content-Type": "application/json",
+      "CJ-Access-Token": "Runtime-binding only; never store or print"
+    },
+    "body": {
+      "productId": "1477820492730732544"
+    }
+  },
+  "budget": {
+    "videoMetadataRequests": 1,
+    "retries": 0,
+    "pagination": 0,
+    "autoPurchase": false,
+    "automaticDownload": false,
+    "render": false,
+    "maxResponseBytes": 2097152,
+    "timeoutMs": 15000
+  },
+  "resultValidation": {
+    "httpSuccessRequired": true,
+    "successStrictTrue": true,
+    "codeStrict0": true,
+    "dataArrayRequired": true,
+    "identity": {
+      "locProductId": "1477820492730732544",
+      "expectedCloudVideoId": "1602963697889193984",
+      "distinguishRecordIdFromVideoId": true
+    },
+    "candidate": {
+      "videoState": "ON_STATE",
+      "isFree": "1",
+      "positiveDimensionsAndDuration": true,
+      "paidOrUnknownPrice": "DO_NOT_BUY_OR_DOWNLOAD"
+    },
+    "errors": "401/403/429/Auth/Quota/5xx/invalidJSON/oversize/identityMismatch remain UNKNOWN; no retries"
+  },
+  "captureFields": [
+    "id",
+    "locProductId",
+    "videoId",
+    "videoUrl",
+    "videoState",
+    "isFree",
+    "copyright",
+    "copyrightPrice",
+    "notCopyrightPrice",
+    "copyrightBuyType",
+    "isBuy",
+    "payType",
+    "duration",
+    "width",
+    "height",
+    "videoSize",
+    "videoByOut"
+  ],
+  "rightsReceipt": {
+    "rightsholder": null,
+    "grantDate": null,
+    "sourceVideoId": "1602963697889193984",
+    "sourceFileSha256": null,
+    "editing": null,
+    "organicSocialChannels": null,
+    "advertisingChannels": null,
+    "territories": null,
+    "expiry": null,
+    "voiceLogoGraphicPermissions": null,
+    "ownerCreativeApproval": null,
+    "note": "isFree/copyrightBuyType/isBuy and catalogassociation do not fill licence fields"
+  },
+  "nextGate": "Nur mit legitimer Laufzeitbindung und aktueller Identitätsprüfung ausführen; vorhandenenMaster beibehalten. KeineCJ-VideoURL direkt als Metricool-Medium einsetzen."
+}
+

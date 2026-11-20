@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/dev/shm/luxe-r277/master/MASTER-SOURCE-REPORT.md",
+    "bytes": 3094,
+    "sha256": "687db43aee92c4921da6fb1b44ba959153063983df50dbacd271f73729243301"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/master/MASTER-SOURCE-PROOF.json",
+    "bytes": 4891,
+    "sha256": "a07c124e8ecc97aa0ec92d5e0f5aca09892b49a6f5e313e014082cff14d9d966"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/master/VIDEO-METADATEN-LESEVERTRAG.json",
+    "bytes": 2204,
+    "sha256": "f6143ed6a35723ffe84fd0f5577f6a902a34f594bfdfbd75726f7ae217e3f7b4"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/master/CJ-OFFICIAL-VIDEO-SECTION.md",
+    "bytes": 6045,
+    "sha256": "3aaf2afd8d294fa86bec063d74565ab810824f5344a890638bc2670bfe9dd150"
+  },
+  {
+    "path": "/dev/shm/luxe-r277/master/public-product-get.json",
+    "bytes": 1089,
+    "sha256": "b1cf547342bf975da825dc62eab6a5b6c4c9c720ed6c89099f3c677278e12024"
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "readAtUTC": "2026-11-20 23:24:55 UTC",
+  "run": {
+    "id": 44752664874,
+    "conclusion": "success",
+    "event": "schedule",
+    "created_at": "2026-11-20T14:21:28Z",
+    "head_sha": "ea75750859b3ce559913b5322ba2307f34570eb9",
+    "status": "completed",
+    "url": "https://github.com/allengchour-glitch/aban-news-landing/actions/runs/44752664874"
+  },
+  "jobs": [
+    {
+      "id": 136344245187,
+      "name": "tests",
+      "conclusion": "success"
+    },
+    {
+      "id": 136344311601,
+      "name": "freigabe",
+      "conclusion": "success"
+    }
+  ],
+  "selectedLogLines": [
+    "dropship/METRICOOL-HALTEN.txt",
+    "2026-11-20T14:21:40.9675395Z Freigabe: live=1",
+    "2026-11-20T14:21:59.6962428Z Halteliste: 17 Eintrag/Einträge (-1463494076488727798, -1468535623523548454, -1964548612124357329, -2282068295365802712, -2369369075505934881, -269455241548050534)",
+    "2026-11-20T14:21:59.6964256Z HALTEN 25.11. 17:00 facebook+instagram (id 424680965) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Kartenetui IG+FB 25.11. 17:00, Foto statt Video",
+    "2026-11-20T14:21:59.6965426Z HALTEN 25.11. 18:00 tiktok (id 429898741) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Kartenetui TikTok 25.11. 18:00, Foto statt Video, autoAddMusic",
+    "2026-11-20T14:21:59.6966579Z HALTEN 25.11. 20:00 pinterest (id 424681868) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Kartenetui Pinterest 25.11. 20:00, Foto statt Video",
+    "2026-11-20T14:21:59.6967823Z HALTEN 26.11. 11:00 threads (id 424682498) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Kaffeebecher Threads 26.11. 11:00, Foto statt Video",
+    "2026-11-20T14:21:59.6968983Z HALTEN 26.11. 17:00 facebook+instagram (id 424682135) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Kaffeebecher IG+FB 26.11. 17:00, Foto statt Video",
+    "2026-11-20T14:21:59.6970109Z HALTEN 26.11. 18:00 tiktok (id 429898943) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Kaffeebecher TikTok 26.11. 18:00, Foto statt Video, autoAddMusic",
+    "2026-11-20T14:21:59.6971229Z HALTEN 26.11. 20:00 pinterest (id 424682696) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Kaffeebecher Pinterest 26.11. 20:00, Foto statt Video",
+    "2026-11-20T14:21:59.6972312Z HALTEN 27.11. 11:00 threads (id 424577428) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Wichtel Threads 27.11. 11:00, Foto statt Video",
+    "2026-11-20T14:21:59.6973357Z HALTEN 27.11. 17:00 facebook+instagram (id 424576529) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Wichtel IG+FB 27.11. 17:00, Foto statt Video",
+    "2026-11-20T14:21:59.6974556Z HALTEN 27.11. 18:00 tiktok (id 429898886) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Wichtel TikTok 27.11. 18:00, Foto statt Video, autoAddMusic",
+    "2026-11-20T14:21:59.6975719Z HALTEN 27.11. 20:00 pinterest (id 424577618) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Wichtel Pinterest 27.11. 20:00, Foto statt Video",
+    "2026-11-20T14:21:59.6976805Z HALTEN 28.11. 11:00 threads (id 424684295) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Girlande Threads 28.11. 11:00, Foto statt Video",
+    "2026-11-20T14:21:59.6978151Z HALTEN 28.11. 17:00 facebook+instagram (id 424683188) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Girlande IG+FB 28.11. 17:00, Foto statt Video",
+    "2026-11-20T14:21:59.6979445Z HALTEN 28.11. 18:00 tiktok (id 429899024) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Girlande TikTok 28.11. 18:00, Foto statt Video, autoAddMusic",
+    "2026-11-20T14:21:59.6980718Z HALTEN 28.11. 20:00 pinterest (id 424684564) | angehalten (METRICOOL-HALTEN.txt): Claude 16.11.: Girlande Pinterest 28.11. 20:00, Foto statt Video",
+    "2026-11-20T14:21:59.6981650Z Entwürfe geprüft: 15 | frei: 0 | gehalten: 15"
+  ],
+  "interpretation": "Existing foreign scheduled execution confirmed;15drafts intentionally held,0released. Successful workflow doesnotprove platformpublication.",
+  "ownDispatch": false
+}

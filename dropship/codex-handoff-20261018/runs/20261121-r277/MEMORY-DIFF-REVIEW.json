@@ -1,0 +1,39 @@
+{
+  "baseCommit": "d94f7937280219fdd06e8f464cbced4f3c1b0a1f",
+  "baseFileShas": {
+    "ARBEITSSTAND.json": "2a60871f976b50a0532165e77e37a313f48e7ee6",
+    "README.md": "7a4d169d92d837604ddacab4e2eb2f18068e2b05",
+    "PROJEKTGEDAECHTNIS.md": "8afa759bca838fbce1eb332bb9c9c19f6a4773a3",
+    "TAGESPROTOKOLL.md": "15b736433db9bdbd65ce9ff95fffa13ea37ae3b4",
+    "CLAUDE-DIREKTSTART-20261115-R250.md": "7afee39c02f54097d27c5b0d7f342eb88ed988e8"
+  },
+  "checks": {
+    "taskIdsPreserved": true,
+    "historyPrefixPreserved": true,
+    "salesGoalUnchanged": true,
+    "allPriorTaskFieldsPreserved": true,
+    "untouchedTasksUnchanged": true,
+    "priorMarkdownPreserved": true,
+    "logPrefixPreserved": true,
+    "newDayCorrect": true,
+    "sixCaptions": true
+  },
+  "touchedTaskIds": [
+    "luxe-zusammenarbeit-20261028",
+    "external-video-review-20261103",
+    "master-projector-15521256604033",
+    "product-attribute-completeness"
+  ],
+  "headAddition": "# R277 – sechs parallele Arbeitspakete fortgesetzt – 21.11.2026\n\nVier Instagram-Fehler vom 17.–20. November und ein Threads-Fehler vom 19. November frisch bestätigt; die jeweiligen Facebook-Teile sind veröffentlicht. Die Fotoentwürfe vom 25.–28. November stehen bewusst auf der Halteliste. Der Kartenetui-Pin trägt zusätzlich einen aktuellen rueckhol-Blocker. Kein pauschaler Retry oder Aktivierungswrite.\n\nDerselbe Modellvergleich-Vorschlag ist nun als Zwei-Dateien-Diff mit sechs bestandenen begrenzten Offline-Browserfällen vorbereitet. Native Vorschau und Freigabe bleiben offen. CJ-Metadatenweg offiziell belegt, öffentliche Produktseite liefert eine Validierungsseite; kein neuer Film. Sechs Hilfsagenten, Hauptagent prüfte die kritischen Belege selbst. Keine hundert Agenten behauptet.\n\n[Fortschritt und Tagestabelle](R277-REPORT-20261121.md) · [Belege](R277-PROOF-20261121.json) · [konkreter Verkaufsentwurf](runs/20261121-r277/sales/README.md) · [Instagram-Reparaturplan](runs/20261121-r277/instagram/BEFUND-UND-REPARATURPLAN.md).\n\nR276 und ältere Historie bleiben erhalten; Claude-Empfang der neuen Fortschreibung unbekannt. Nach Zürcher Zeit gehört diese Fortsetzung zum 21. November, UTC noch 20. November.\n\n---\n\n",
+  "logAddition": "\n\n## 21.11.2026\n\n### R277 – sechs parallele Arbeitspakete, konkrete Diagnose und lokaler Verkaufsentwurf\n\n| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Team / Memory | Sechs Hilfsagenten beauftragt, ihre sechs Ergebnisse geprüft; R276 und Tagesstand frisch gelesen | Sieben gleichzeitige Plätze inklusive Hauptagent, keine100Agenten behauptet; R276 bleibt erhalten |\n| Planung | Vier kleine Fenster21.–28.11. frisch gelesen und Konten abgeglichen | 44Objekte,29aktive Objekte/37aktive Kanalplätze. Tägliche Plätze21.–24.11.;25.–28.11. Lücken auf fünf Kanälen, Threads26.–28.11. |\n| Auslieferung | Fünf konkrete Fehlerposts17.–20.11. nach neuem Workflowbefund zurückgelesen; aktuellen IG-Fall und Bild-/Helfergrenzen geprüft | Instagram17./18./19./20.11.ERROR, Threads19.11.ERROR; vierFB-TeilePUBLISHED. Ursache unbekannt, kein Retry |\n| Bewusste Sperren | Haltedatei und bestehenden Lauf44752664874 samt Ergebnis gelesen; Kartenetui-Produkt/Pin eng gegengeprüft | Fremder Automationslauf:15gehalten/0freigegeben. Exakte Pin-UUID gehalten, aktuellesrueckhol-0907 blockiert zusätzlich; keine Entfernung/Aktivierung |\n| Verkauf | Tatsächliche Theme-Dateien lokalisiert, Zwei-Dateien-Diff für denselben Modellvergleich-Link entwickelt und Root-Grenzfund korrigiert | Sechs Offlinefälle A/B×360/390/1440 mit Fokus und unverändertem Zustand bestanden. NativeLiquid-/Liveprüfung offen, nicht umgesetzt |\n| Masterquelle | Vorhandenen CJ-Videometadatenhelfer und offizielleDoku gegengeprüft, öffentlicheURL aus genau einem gezieltenProduktread verfolgt | ÖffentlicheQuelle ist Validierungsseite, keineMP4 gelesen. Enger einmaligerVideometadaten-Lesevertrag vorbereitet, nicht ausgeführt |\n| Qualität / Code | R276-Struktur unabhängig geprüft und YouTube-Entwurfsgate präzisiert; PR3235/Diff/CI aktuell gelesen | Keine blockierendenR276Dokufehlbefunde. PRweiterDraft/ungemergt, Quelldrift0; alteTests nicht als heute ausgeführt behauptet |\n| Tagesgrenzen | Keine Kennzahlen-/Klaviyo-/GSC-/breitenVerkaufs-/Bestellabfragen wiederholt | HeutigeReports nicht durchgeführt; Kauf-Watch bleibt beendet. Keine neuenPosts, Kosten, Kontakte oder Workflows |\n\n[Bericht](R277-REPORT-20261121.md) · [Belege](R277-PROOF-20261121.json).\n\n[LUXESTYLE_R277_20261121]\n",
+  "stateScope": [
+    "revision",
+    "updatedAt",
+    "run277",
+    "history append",
+    "four tasks append run277 only",
+    "dailyReadPolicy archived then new21Nov noanalytics record",
+    "claudeCodeHandoff latestCanonicalRevision/run277"
+  ],
+  "onlyLuxeStyleDocumentation": true
+}

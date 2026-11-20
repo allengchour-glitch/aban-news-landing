@@ -1,0 +1,153 @@
+{
+  "run": "R277",
+  "localDateEuropeZurich": "2026-11-21",
+  "checkedAtUTC": "2026-11-20 23:23:13 UTC",
+  "scope": "Derselbe eine Projektor-Master; Quellenzugang, kein Render",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "productId": "gid://shopify/Product/15521256604033",
+  "variantId": "gid://shopify/ProductVariant/68122445283719",
+  "sku": "CJSN139239101AZ",
+  "currentCjRead": {
+    "calls": 1,
+    "reason": "Neu begrenzter Zweck: bisher nicht gesichertes öffentliches productUrl ermitteln; ausdrücklich vom Root beauftragt, kein Wiederholungsreport",
+    "query": {
+      "variantSku": "CJSN139239101AZ",
+      "features": "enable_video"
+    },
+    "pid": "1477820492730732544",
+    "productSku": "CJSN1392391",
+    "productUrl": "https://www.cjdropshipping.com/product/galaxy-projector-starry-sky-projection-bedroom-bedside-decoration-night-light-p-1477820492730732544.html",
+    "productVideoIds": [
+      "1602963697889193984"
+    ],
+    "variantA": [
+      {
+        "vid": "1477826312449167360",
+        "sku": "CJSN139239101AZ",
+        "image": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg"
+      }
+    ]
+  },
+  "officialDocumentation": {
+    "url": "https://developers.cjdropshipping.cn/en/api/api2/api/product.html#_6-1-query-product-videos-post",
+    "liveScrape": true,
+    "httpStatus": 200,
+    "endpoint": "https://developers.cjdropshipping.com/api2.0/v1/product/queryVideosByProductId",
+    "method": "POST",
+    "body": {
+      "productId": "1477820492730732544"
+    },
+    "documentedSuccess": {
+      "success": true,
+      "code": 0
+    },
+    "resultFields": [
+      "id",
+      "locProductId",
+      "videoId",
+      "videoUrl",
+      "videoState",
+      "isFree",
+      "copyright",
+      "copyrightPrice",
+      "notCopyrightPrice",
+      "copyrightBuyType",
+      "isBuy",
+      "payType",
+      "duration",
+      "width",
+      "height",
+      "videoSize",
+      "videoByOut"
+    ],
+    "downloadReferer": "https://developers.cjdropshipping.com/",
+    "commercialEditingAdvertisingGrant": "not stated by listed flags"
+  },
+  "repositoryFindings": [
+    {
+      "path": "dropship/tiktok-cj-videos-0311/cj_videos_holen.mjs",
+      "sha": "adecbfc647c9eb9c72183aa515199147e282870b",
+      "role": "Konkreter vorhandener Metadatenweg; Gesamtskript nicht ausgeführt",
+      "executionProblems": [
+        "holtShopifyTokenundCJToken",
+        "Token-Datei",
+        "redundanteSKU/PID-Auflösung",
+        "bis4Retries/60s",
+        "akzeptiertsuccessoderresultohnestriktecode0-Prüfung"
+      ]
+    },
+    {
+      "path": "automation/lib/cj_video.mjs",
+      "sha": "1e365c175e775b78d1adaee9ba77652d35366452",
+      "role": "Kommentar vom24.10. zur Nichtexistenz weitererVideoAPI überholt; nicht als aktuellen Negativbeweis verwenden"
+    },
+    {
+      "path": "dropship/assistant/CJ-READ-MCP.md",
+      "sha": "31986b150a27d182ad7cedfbcbd988cacb07d952",
+      "role": "Vorhandener enger MCP stellt Produkt/Lager bereit, keinenVideolisten-Leser; nicht pauschal fehlenderCJConnector"
+    },
+    {
+      "path": "dropship/tiktok-cj-videos-0311/PAKET.md",
+      "sha": "7b91517fe38d9e0a411b055408183af3350eb0c6",
+      "role": "DatiertInhaber03Nov 'es ist erlaubt'; keinehashgebundeneCJ-Bearbeitungslizenz"
+    }
+  ],
+  "actualPlayableVideoRead": false,
+  "videoDownloadCalls": 0,
+  "authenticatedVideoMetadataCalls": 0,
+  "videoLevelRights": "UNKNOWN",
+  "actions": {
+    "cjProductReads": 1,
+    "publicProductPageGets": 1,
+    "publicOfficialDocReads": 2,
+    "paidRenders": 0,
+    "purchases": 0,
+    "contacts": 0,
+    "shopWrites": 0,
+    "plannerWrites": 0,
+    "workflowStarts": 0,
+    "credentialSearches": 0
+  },
+  "publicProductGet": {
+    "url": "https://www.cjdropshipping.com/product/galaxy-projector-starry-sky-projection-bedroom-bedside-decoration-night-light-p-1477820492730732544.html",
+    "finalUrl": "https://frontend.cjdropshipping.com/egg/cj/validation.html?rd=https://www.cjdropshipping.com/product/galaxy-projector-starry-sky-projection-bedroom-bedside-decoration-night-light-p-1477820492730732544.html",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "bytes": 20107,
+    "sha256": "6db4eb4c2cf9a15cfc36d7836e081b6dfdc04c4e4154276dc27a20678e082b59",
+    "truncated": false,
+    "mediaURLs": [],
+    "hits": [
+      {
+        "term": "1602963697889193984",
+        "count": 0,
+        "snippets": []
+      },
+      {
+        "term": "1477820492730732544",
+        "count": 0,
+        "snippets": []
+      },
+      {
+        "term": "queryVideosByProductId",
+        "count": 0,
+        "snippets": []
+      },
+      {
+        "term": "videoUrl",
+        "count": 0,
+        "snippets": []
+      },
+      {
+        "term": "videoList",
+        "count": 0,
+        "snippets": []
+      },
+      {
+        "term": "login",
+        "count": 0,
+        "snippets": []
+      }
+    ]
+  }
+}

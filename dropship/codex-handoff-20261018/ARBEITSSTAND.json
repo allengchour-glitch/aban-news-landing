@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 276,
-  "updatedAt": "2026-11-20T21:55:38Z",
+  "revision": 277,
+  "updatedAt": "2026-11-20T23:28:45Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -16,29 +16,31 @@
     "checkLogBeforeReading": true,
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
-    "currentDayEvidenceDate": "2026-11-20",
-    "currentDayEvidenceKind": "R276_FIRST_DAILY_METRICOOL_READ_AND_KLAVIYO_AUTH_BLOCK",
-    "currentDayEvidence": "Before queries fresh R274 memory/log and source-main read; no20Nov block. Once13–19Nov:6metric definitions+6small data reads, null/missing unknown. Klaviyo1account+1metric discovery UNAUTHORIZED,0flowreports.5planning windows20–28Nov;2products and1CJdetail targeted.0orders/watch/broadSales/GSC/Merchant/writes/workflowstarts. Reuse today without new reason.",
+    "currentDayEvidenceDate": "2026-11-21",
+    "currentDayEvidenceKind": "R277_TARGETED_CONTINUATION_NO_NEW_DAILY_ANALYTICS",
+    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged.",
     "completedReports": {
       "metricool": {
-        "localDate": "2026-11-20",
-        "range": "2026-11-13/2026-11-19",
-        "definitionCalls": 6,
-        "dataCalls": 6,
-        "missingIsUnknown": true,
-        "proof": "dropship/codex-handoff-20261018/R276-PROOF-20261120.json"
+        "localDate": "2026-11-21",
+        "status": "NOT_READ",
+        "definitionCalls": 0,
+        "dataCalls": 0
       },
       "klaviyo": {
-        "localDate": "2026-11-20",
-        "accountReads": 1,
-        "metricDiscoveryCalls": 1,
-        "flowReportCalls": 0,
-        "status": "AUTH_BLOCKED_UNAUTHORIZED",
-        "currentFlowStatus": "UNKNOWN"
+        "localDate": "2026-11-21",
+        "status": "NOT_READ",
+        "calls": 0
       },
       "ordersQueried": false,
       "purchaseWatchEnded": true,
       "broadSalesRead": false
+    },
+    "targetedContinuation": {
+      "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+      "actualSubagents": 6,
+      "metricsReportsClaimedComplete": false,
+      "priorDayReportDate": "2026-11-20",
+      "existingCadenceUnchanged": true
     }
   },
   "expectedIdentity": {
@@ -6644,6 +6646,14 @@
         "sourceBlocker": "Exakte Lieferantenvarianten-Zuordnung für 15507734135169 unbekannt",
         "resolverDeployment": "nicht übernommen oder veröffentlicht",
         "nextStep": "R266 läuft; Ergebnis offen"
+      },
+      "run277": {
+        "atUTC": "2026-11-20T23:28:45Z",
+        "report": "dropship/codex-handoff-20261018/R277-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+        "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
+        "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
+        "state": "ONE_MODEL_COMPARISON_DRAFT_TWO_SOURCE_FILES_SIX_OFFLINE_CASES_NOT_APPLIED"
       }
     },
     {
@@ -19542,6 +19552,14 @@
         "captions": "dropship/codex-handoff-20261018/runs/20261120-r276/CAPTIONS.json",
         "salesDraft": "dropship/codex-handoff-20261018/runs/20261120-r276/VERKAUFSENTWURF.md",
         "currentEvidence": "Latest memory loaded; R275 persistence gap preserved; R276 documentation only"
+      },
+      "run277": {
+        "atUTC": "2026-11-20T23:28:45Z",
+        "report": "dropship/codex-handoff-20261018/R277-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+        "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
+        "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
+        "state": "SIX_SUBAGENT_PACKAGES_RECONCILED_NO_NEW_ACK"
       }
     },
     {
@@ -23495,6 +23513,14 @@
         "captions": "dropship/codex-handoff-20261018/runs/20261120-r276/CAPTIONS.json",
         "salesDraft": "dropship/codex-handoff-20261018/runs/20261120-r276/VERKAUFSENTWURF.md",
         "currentEvidence": "A metadata, exact reference image and CJ confirmed; take receipt prepared, no rendered master"
+      },
+      "run277": {
+        "atUTC": "2026-11-20T23:28:45Z",
+        "report": "dropship/codex-handoff-20261018/R277-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+        "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
+        "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
+        "state": "CJ_METADATA_ROUTE_KNOWN_PUBLIC_PAGE_VALIDATION_NO_PLAYABLE_SOURCE"
       }
     },
     {
@@ -45785,6 +45811,14 @@
         "captions": "dropship/codex-handoff-20261018/runs/20261120-r276/CAPTIONS.json",
         "salesDraft": "dropship/codex-handoff-20261018/runs/20261120-r276/VERKAUFSENTWURF.md",
         "currentEvidence": "Instagram425726329 ERROR;25–27Nov gaps; no planner writes"
+      },
+      "run277": {
+        "atUTC": "2026-11-20T23:28:45Z",
+        "report": "dropship/codex-handoff-20261018/R277-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+        "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
+        "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
+        "state": "FOUR_INSTAGRAM_AND_ONE_THREADS_FAILURE_CONFIRMED_INTENTIONAL_FUTURE_PHOTO_HOLDS"
       }
     },
     {
@@ -50500,6 +50534,15 @@
         "dropship/codex-handoff-20261018/R276-REPORT-20261120.md",
         "dropship/codex-handoff-20261018/R276-PROOF-20261120.json"
       ]
+    },
+    {
+      "revision": 277,
+      "at": "2026-11-20T23:28:45Z",
+      "summary": "Mit sechs Hilfsagenten weitergearbeitet. Vier Instagram-Abruffehler vom17.–20.11. und ein Threads-Fehler vom19.11. frisch bestätigt; Facebook auf den vier Mischposts veröffentlicht. Bestehender Freigabelauf hielt15Fotoentwürfe bewusst, kein neuer Dispatcher. Kartenetui-Pin zusätzlich durch aktuellesrueckhol blockiert. Ein Modellvergleich-Diff an zwei echten Themequellen konkretisiert, sechs Offline-Browserfälle bestanden, nicht im Shop angewendet. Projektor-Medienweg offiziell bestätigt, öffentlicheQuelle endet auf Validierungsseite; kein neuerFilm. YouTube-Caption-Gate verbessert. Keine operativen Writes.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R277-REPORT-20261121.md",
+        "dropship/codex-handoff-20261018/R277-PROOF-20261121.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -52540,6 +52583,40 @@
           "reportsRepeated": false
         }
       }
+    },
+    {
+      "dateZurich": "2026-11-20",
+      "archivedByRun": "R277",
+      "record": {
+        "timezone": "Europe/Zurich",
+        "checkLogBeforeReading": true,
+        "metricsFlowAndBroadSalesMaxPerDay": 1,
+        "exception": "new_concrete_finding_with_recorded_reason",
+        "currentDayEvidenceDate": "2026-11-20",
+        "currentDayEvidenceKind": "R276_FIRST_DAILY_METRICOOL_READ_AND_KLAVIYO_AUTH_BLOCK",
+        "currentDayEvidence": "Before queries fresh R274 memory/log and source-main read; no20Nov block. Once13–19Nov:6metric definitions+6small data reads, null/missing unknown. Klaviyo1account+1metric discovery UNAUTHORIZED,0flowreports.5planning windows20–28Nov;2products and1CJdetail targeted.0orders/watch/broadSales/GSC/Merchant/writes/workflowstarts. Reuse today without new reason.",
+        "completedReports": {
+          "metricool": {
+            "localDate": "2026-11-20",
+            "range": "2026-11-13/2026-11-19",
+            "definitionCalls": 6,
+            "dataCalls": 6,
+            "missingIsUnknown": true,
+            "proof": "dropship/codex-handoff-20261018/R276-PROOF-20261120.json"
+          },
+          "klaviyo": {
+            "localDate": "2026-11-20",
+            "accountReads": 1,
+            "metricDiscoveryCalls": 1,
+            "flowReportCalls": 0,
+            "status": "AUTH_BLOCKED_UNAUTHORIZED",
+            "currentFlowStatus": "UNKNOWN"
+          },
+          "ordersQueried": false,
+          "purchaseWatchEnded": true,
+          "broadSalesRead": false
+        }
+      }
     }
   ],
   "reviewPacketHistory": [
@@ -52579,7 +52656,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 276,
+    "latestCanonicalRevision": 277,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -53695,6 +53772,23 @@
         "pr": 3235,
         "state": "OPEN_DRAFT_UNMERGED"
       }
+    },
+    "run277": {
+      "atUTC": "2026-11-20T23:28:45Z",
+      "localDate": "2026-11-21",
+      "summary": "Mit sechs Hilfsagenten weitergearbeitet. Vier Instagram-Abruffehler vom17.–20.11. und ein Threads-Fehler vom19.11. frisch bestätigt; Facebook auf den vier Mischposts veröffentlicht. Bestehender Freigabelauf hielt15Fotoentwürfe bewusst, kein neuer Dispatcher. Kartenetui-Pin zusätzlich durch aktuellesrueckhol blockiert. Ein Modellvergleich-Diff an zwei echten Themequellen konkretisiert, sechs Offline-Browserfälle bestanden, nicht im Shop angewendet. Projektor-Medienweg offiziell bestätigt, öffentlicheQuelle endet auf Validierungsseite; kein neuerFilm. YouTube-Caption-Gate verbessert. Keine operativen Writes.",
+      "report": "dropship/codex-handoff-20261018/R277-REPORT-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+      "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
+      "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
+      "actualSubagents": 6,
+      "requestedAgents": 100,
+      "simultaneousLimitIncludingRoot": 7,
+      "externalWrites": 0,
+      "planningGapThrough": "2026-11-28",
+      "metricsReadToday": false,
+      "masterReady": false,
+      "claudeReceipt": "UNKNOWN"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -80750,5 +80844,22 @@
       "pr": 3235,
       "state": "OPEN_DRAFT_UNMERGED"
     }
+  },
+  "run277": {
+    "atUTC": "2026-11-20T23:28:45Z",
+    "localDate": "2026-11-21",
+    "summary": "Mit sechs Hilfsagenten weitergearbeitet. Vier Instagram-Abruffehler vom17.–20.11. und ein Threads-Fehler vom19.11. frisch bestätigt; Facebook auf den vier Mischposts veröffentlicht. Bestehender Freigabelauf hielt15Fotoentwürfe bewusst, kein neuer Dispatcher. Kartenetui-Pin zusätzlich durch aktuellesrueckhol blockiert. Ein Modellvergleich-Diff an zwei echten Themequellen konkretisiert, sechs Offline-Browserfälle bestanden, nicht im Shop angewendet. Projektor-Medienweg offiziell bestätigt, öffentlicheQuelle endet auf Validierungsseite; kein neuerFilm. YouTube-Caption-Gate verbessert. Keine operativen Writes.",
+    "report": "dropship/codex-handoff-20261018/R277-REPORT-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+    "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
+    "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
+    "actualSubagents": 6,
+    "requestedAgents": 100,
+    "simultaneousLimitIncludingRoot": 7,
+    "externalWrites": 0,
+    "planningGapThrough": "2026-11-28",
+    "metricsReadToday": false,
+    "masterReady": false,
+    "claudeReceipt": "UNKNOWN"
   }
 }
