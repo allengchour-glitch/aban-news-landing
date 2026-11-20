@@ -1,0 +1,45 @@
+{
+  "base": "7830aaa29506eaee40f41a878abf777977836647",
+  "originalBlobs": {
+    "README.md": "4a41198425281939d367ece63e47fb549bbff1f5",
+    "PROJEKTGEDAECHTNIS.md": "bfd66b63392b777198c750c79d5f6c8c4c5be37d",
+    "TAGESPROTOKOLL.md": "2c6c95b8f6e9841c815ce6dcfd6284a8ed970630",
+    "ARBEITSSTAND.json": "164687423f89211cd98902398bc867cc276b680b"
+  },
+  "checks": {
+    "taskIds": true,
+    "pastFields": true,
+    "history": true,
+    "purchaseStop": true,
+    "oldLog": true,
+    "singleDateBlock": true,
+    "oldMarkdown": true,
+    "oldPriorDayHistory": true,
+    "revision": true
+  },
+  "appendedToTasks": [
+    "luxe-zusammenarbeit-20261028",
+    "external-video-review-20261103",
+    "master-projector-15521256604033",
+    "product-attribute-completeness"
+  ],
+  "newTopEntry": "# R278 – Projektorquelle geprüft und Veröffentlichungen zugeordnet – 21.11.2026\n\nR278: Shopify-Original des Projektors vollständig dekodiert und visuell geprüft. Variante und Motiv sind ungeklärt, im Hochformat fehlen Teile der Hand und der Stütze. Vier veröffentlichte alte Projektor-Beiträge zeigen bytegleiche Metricool-Referenzdateien. Modellvergleich im lokalen Browser mit echtem A-zu-B-Wechsel geprüft. Supportentwurf für fünf Medienfehler vorbereitet. Tageskennzahlen mit fehlenden Tagen und drei zugeordneten Shorts gespeichert. Klaviyo verlangt erneute Anmeldung.\n\n[Fortschritt und Tagestabelle](R278-REPORT-20261121.md) · [Maschinenbeleg](R278-PROOF-20261121.json) · [Drehnotiz](runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md) · [Verkaufsprüfung](runs/20261121-r278/sales/BROWSER-LAUFZEIT.json)\n\n---\n \n",
+  "appendToDay": "\n### R278 – Projektorquelle, Auslieferung und Modellvergleich\n\n| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Projektorfilm | Shopify-Original vollständig dekodiert und zwölf Bildzeitpunkte mit der A-Referenz verglichen | Quelle erreichbar. Die genaue Variante, die Motive und die Rechte bleiben offen. Im geprüften Hochformat-Ausschnitt fehlen Teile der Hand und der Stütze. |\n| Publikationshistorie | Vier stabile UUIDs zurückgelesen und die jeweils referenzierte MP4 gehasht | Instagram, Facebook, TikTok und YouTube melden PUBLISHED und verweisen auf bytegleiche alte MP4s. Der professionelle Master bleibt in Arbeit. |\n| Auslieferung | Offizielle Metricool-Hilfe und Connector geprüft und einen Supportentwurf für fünf Fehler erstellt | Original-Meta-Code und kanalgetrennter Wiederholungsweg fehlen. Supportentwurf ungesendet. |\n| Verkaufsentwurf | Reales Variantenverhalten und den lokal eingefügten Modellvergleich-Link bei 390 und 1440 px geprüft | A → B ändert Preis und Auswahl korrekt. Der Link übersteht den Wechsel, fokussiert das Ziel und erhält die Konfiguration. Native Liquid-Vorschau und Freigabe offen. |\n| Kennzahlen | Erste kanalbezogene Tagesabfrage für 14.–20.11. und eine kleine YouTube-Abfrage zur Wiedergabezeit ausgewertet | Keine vollständige Siebentage-Summe in den gewählten Reihen. Drei Shorts mit Wiedergabedaten anhand ihrer Plattform-IDs zugeordnet. |\n| Konten | Shopify und sechs Metricool-Kanalidentitäten bestätigt. Klaviyo-Kontozugang gelesen | Identitäten stimmen. Klaviyo verlangt erneute Anmeldung, aktuelle Flow-Ergebnisse unbekannt. |\n\n[Bericht](R278-REPORT-20261121.md) · [Belege](R278-PROOF-20261121.json)\n\n[LUXESTYLE_R278_20261121]\n",
+  "files": [
+    "runs/20261121-r278/master/MASTER-READBACK-PROOF.json",
+    "runs/20261121-r278/instagram/ERROR-DETAILS-ACCESS.json",
+    "runs/20261121-r278/instagram/SUPPORT-ANFRAGE-ENTWURF.md",
+    "runs/20261121-r278/PROJEKTOR-LEGACY-VEROEFFENTLICHUNGEN.json",
+    "runs/20261121-r278/METRICOOL-MESSUNG.json",
+    "runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
+    "runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
+    "runs/20261121-r278/master/QUELLENPRUEFUNG.md",
+    "R278-REPORT-20261121.md",
+    "R278-PROOF-20261121.json",
+    "README.md",
+    "PROJEKTGEDAECHTNIS.md",
+    "TAGESPROTOKOLL.md",
+    "ARBEITSSTAND.json"
+  ],
+  "sourceOnlyForLuxeStyle": true
+}

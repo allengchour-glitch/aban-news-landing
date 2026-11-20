@@ -1,0 +1,266 @@
+{
+  "run": "R278",
+  "localDateEuropeZurich": "2026-11-21",
+  "checkedAtUTC": "2026-11-20 23:33:32 UTC",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "identityAndMedia": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "currencyCode": "CHF",
+      "myshopifyDomain": "au3j0y-hq.myshopify.com",
+      "primaryDomain": {
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "node": {
+      "id": "gid://shopify/Video/77496185356679",
+      "filename": "cj-1477820492730732544.mp4",
+      "status": "READY",
+      "fileStatus": "READY",
+      "duration": 27960,
+      "createdAt": "2026-10-12T00:39:06Z",
+      "updatedAt": "2026-11-05T02:32:33Z",
+      "originalSource": {
+        "url": "https://cdn.shopify.com/videos/c/o/v/6490c6357dae4df69bb910178acb2912.mp4",
+        "width": 960,
+        "height": 540,
+        "fileSize": 3679836,
+        "mimeType": "video/mp4",
+        "format": "mp4"
+      },
+      "sources": [
+        {
+          "url": "https://cdn.shopify.com/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.SD-480p-1.0Mbps-97141328.mp4",
+          "width": 852,
+          "height": 480,
+          "fileSize": null,
+          "mimeType": "video/mp4",
+          "format": "mp4"
+        },
+        {
+          "url": "https://cdn.shopify.com/videos/c/vp/6490c6357dae4df69bb910178acb2912/6490c6357dae4df69bb910178acb2912.m3u8",
+          "width": 852,
+          "height": 480,
+          "fileSize": null,
+          "mimeType": "application/x-mpegURL",
+          "format": "m3u8"
+        }
+      ]
+    }
+  },
+  "association": {
+    "product": {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70733173424513",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173260673",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173457281",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173490049",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173522817",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173555585",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173588353",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173621121",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173653889",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173686657",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173719425",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/MediaImage/70733173752193",
+            "mediaContentType": "IMAGE"
+          },
+          {
+            "id": "gid://shopify/Video/77496185356679",
+            "mediaContentType": "VIDEO"
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    },
+    "variant": {
+      "id": "gid://shopify/ProductVariant/68122445283719",
+      "sku": "CJSN139239101AZ",
+      "title": "A · Grundmodell · USB",
+      "media": {
+        "nodes": [
+          {
+            "id": "gid://shopify/MediaImage/70733173719425",
+            "image": {
+              "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+              "width": 800,
+              "height": 654,
+              "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle"
+            }
+          }
+        ],
+        "pageInfo": {
+          "hasNextPage": false
+        }
+      }
+    }
+  },
+  "sourceAccess": {
+    "type": "Existing Shopify original, internal review only",
+    "actualDownloaded": true,
+    "httpStatus": 200,
+    "mimeType": "video/mp4",
+    "bytes": 3679836,
+    "sha256": "2bb28156f28beed60f7db0980e870fff89c5e0648911a06ab91324f27fdf1d57",
+    "matchesNov8LocalFile": true
+  },
+  "technical": {
+    "durationSeconds": 27.96,
+    "width": 960,
+    "height": 540,
+    "codec": "h264",
+    "frameRate": "25/1",
+    "frames": 699,
+    "audio": {
+      "codec": "aac",
+      "sampleRate": 44100,
+      "meanVolumeDb": -16.5,
+      "maxVolumeDb": -1,
+      "silence": false,
+      "listened": false,
+      "speechOrMusicIdentity": "UNKNOWN"
+    },
+    "fullDecodeExitCode": 0,
+    "fullDecodeErrorOutput": ""
+  },
+  "visualReview": {
+    "sampleSeconds": [
+      0,
+      2,
+      4,
+      7,
+      10,
+      12,
+      15,
+      17.2,
+      18.8,
+      21,
+      24,
+      27
+    ],
+    "sampleFrames": 12,
+    "totalFrames": 699,
+    "samplingNotFullVisualAcceptance": true,
+    "observations": [
+      {
+        "times": [
+          0
+        ],
+        "finding": "Schwarzes Quellbild am ausgewählten Startframe; Dauer des Schwarzbeginns nicht aus diesem Einzelbild abgeleitet"
+      },
+      {
+        "times": [
+          2,
+          4,
+          7
+        ],
+        "finding": "Reales weisses rundliches Gerät in U-Stütze, USB-Zuleitung und Hände/Tastenhandlung sichtbar"
+      },
+      {
+        "times": [
+          10,
+          12,
+          15,
+          21,
+          24,
+          27
+        ],
+        "finding": "Planeten-/Galaxie- und Sternprojektionen; keine eindeutige Bindung dieser Motive an GrundmodellA"
+      },
+      {
+        "times": [
+          17.2,
+          18.8
+        ],
+        "finding": "Nahe Innen-/Haubenansicht mit Hand, nicht als neue A-Funktion oder Lieferumfang freigegeben"
+      }
+    ],
+    "reference": {
+      "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+      "sha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+      "currentVariantImageMatch": true,
+      "visuallySeen": true,
+      "genericShapeCompatible": true,
+      "exactPhysicalVariantAProof": false
+    }
+  },
+  "cropReview": {
+    "actualDiagnosticImageCreated": true,
+    "frameTimeSeconds": 4,
+    "sourceCrop": {
+      "x": 328,
+      "y": 0,
+      "width": 304,
+      "height": 540
+    },
+    "retainedWidthPercent": 31.666666666666664,
+    "requiredVerticalUpscale": 3.5555555555555554,
+    "observed": "Rechte Hand und rechte Produktstütze werden abgeschnitten",
+    "scope": "Nur dieser geprüfte mittige Ausschnitt; keine Behauptung über jeden möglichen Crop",
+    "masterOrPublishExport": false
+  },
+  "gates": {
+    "playableSourceAccess": "RESOLVED_CURRENT_SHOPIFY_ORIGINAL",
+    "sourceNewOrImproved": "NO_same_original_as_Nov8",
+    "exactAVariant": "UNKNOWN_no_variant_video_binding",
+    "motifAndPacking": "UNKNOWN",
+    "commercialEditingAdvertisingRights": "UNKNOWN",
+    "newPremiumVerticalMaster": "NOT_CREATED",
+    "creativeApproval": "NOT_GRANTED"
+  },
+  "actions": {
+    "shopifySchemaReads": 2,
+    "shopifyQueries": 2,
+    "cjReads": 0,
+    "videoGets": 1,
+    "referenceImageGets": 1,
+    "newVideoRenders": 0,
+    "paidRenders": 0,
+    "uploads": 0,
+    "shopWrites": 0,
+    "plannerWrites": 0,
+    "credentialSearches": 0
+  }
+}
+

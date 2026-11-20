@@ -1,0 +1,138 @@
+{
+  "run": "R278",
+  "checkedAtUTC": "2026-11-20 23:32:54 UTC",
+  "localDate": "2026-11-21",
+  "priorFiveErrorSource": {
+    "path": "dropship/codex-handoff-20261018/runs/20261121-r277/FAILED-PROVIDERS.json",
+    "gitBlobSha": "2819f9d57847eda1ac5539e966d1757e14c52e42",
+    "note": "Five IDs/UUIDs read from repository. Only post425726329 freshly reread in R278."
+  },
+  "freshPost": {
+    "id": 425726329,
+    "publicationDate": {
+      "dateTime": "2026-11-20T17:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "creationDate": {
+      "dateTime": "2026-11-12T15:00:00",
+      "timezone": "Europe/Zurich"
+    },
+    "text": "Ein Tannenbaum, der leuchtet und zugleich eine Musikbox ist: die Lichterbaum-Musikbox. 🎄\n\nEine Lichterkette mit bunten Lichtern zieht sich um den Baum. An der Spitze sitzt ein roter Stern. Zwischen den verschneiten Zweigen stehen kleine Häuser.\n\nDie Musikbox misst 10 × 10 × 20 cm und ist als festliche Deko für Wohnzimmer und Schlafzimmer gedacht.\n\nLichterbaum-Musikbox · CHF 27.90. Versand in der Schweiz CHF 7, ab CHF 50 gratis nach Rabatt.\n\n#weihnachtsdeko #musikbox #lichterbaum #wohndeko #luxestyle\n\nShop: luxestyle.ch/ig",
+    "firstCommentText": "",
+    "providers": [
+      {
+        "network": "facebook",
+        "id": "1049840534888592_122154525537350792",
+        "status": "PUBLISHED",
+        "publicUrl": "https://facebook.com/122108214291350792/posts/122154525537350792",
+        "detailedStatus": "Published"
+      },
+      {
+        "network": "instagram",
+        "status": "ERROR",
+        "detailedStatus": "The media could not be fetched from this URI: https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675.Please check the limitations section in our development document for more information: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media#creating"
+      }
+    ],
+    "media": [
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+      "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675"
+    ],
+    "autoPublish": true,
+    "saveExternalMediaFiles": false,
+    "mediaAltText": [
+      "Lichterbaum-Musikbox 10x10x20 cm, Bild 1",
+      "Lichterbaum-Musikbox 10x10x20 cm, Bild 2",
+      "Lichterbaum-Musikbox 10x10x20 cm, Bild 3"
+    ],
+    "shortener": false,
+    "draft": false,
+    "imageVariants": false,
+    "twitterData": {
+      "type": "POST"
+    },
+    "facebookData": {
+      "type": "POST"
+    },
+    "instagramData": {
+      "autoPublish": true,
+      "type": "POST",
+      "showReelOnFeed": true,
+      "isAiGenerated": false,
+      "isPaidPartnership": false
+    },
+    "hasNotReadNotes": false,
+    "uuid": "108318075245381964",
+    "brandTags": []
+  },
+  "originalErrorFields": {
+    "numericMetaErrorCode": "UNKNOWN_not_exposed",
+    "numericMetaSubcode": "UNKNOWN_not_exposed",
+    "fbtraceId": "UNKNOWN_not_exposed",
+    "containerId": "UNKNOWN_not_exposed",
+    "containerStatus": "UNKNOWN_not_exposed",
+    "metricoolInternalRequestId": "UNKNOWN_not_exposed"
+  },
+  "availableCapabilityCheck": {
+    "metricoolTools": [
+      "mcp__codex_apps__metricool_createscheduledpost",
+      "mcp__codex_apps__metricool_createscheduledpostforreview",
+      "mcp__codex_apps__metricool_getanalyticsavailablemetrics",
+      "mcp__codex_apps__metricool_getanalyticsdatabymetrics",
+      "mcp__codex_apps__metricool_getbesttimetopostbynetwork",
+      "mcp__codex_apps__metricool_getbrandsettings",
+      "mcp__codex_apps__metricool_getscheduledposts",
+      "mcp__codex_apps__metricool_sendscheduledpostforreview",
+      "mcp__codex_apps__metricool_updatescheduledpost"
+    ],
+    "errorLogReadTool": false,
+    "providerOnlyRetryTool": false,
+    "browserSkillRead": "skill://plugin_connector_1p_51c1ba70f47481919149861084681943/control-browser/SKILL.md",
+    "exposedBrowserJsOrTabTools": [],
+    "privateBrowserStateOrCredentialsSearched": false,
+    "updateContract": "Whole post replacement, immediate overwrite, ID may change; UUID stable. No documented provider-only retry guarantee."
+  },
+  "sources": [
+    {
+      "url": "https://help.metricool.com/instagram-posting-errors-troubleshooting-fkhpc",
+      "checkedAtUTC": "2026-11-20 23:32:54 UTC",
+      "summary": "Fehlerdetails lassen sich im Beitrag öffnen. Für erneute Veröffentlichung beschreibt die Hilfe eine neue Kopie; wiederholte schnelle Versuche können problematisch sein. Nicht beschriebene Fehler gehören in den Supportchat.",
+      "scope": "Documented generic ERROR path; no proven same-UUID per-network retry."
+    },
+    {
+      "url": "https://help.metricool.com/how-to-duplicate-posts-in-metricool-17prr",
+      "checkedAtUTC": "2026-11-20 23:32:54 UTC",
+      "summary": "Der Planer kann bestehende Beiträge einzeln kopieren und für eine neue Zeit speichern.",
+      "scope": "Creates a duplicated item; not a same-object retry proof."
+    },
+    {
+      "url": "https://help.metricool.com/why-does-my-post-appear-as-sent-in-metricool-and-not-auto-published-467xf",
+      "checkedAtUTC": "2026-11-20 23:32:54 UTC",
+      "summary": "Bei einer Kopie sollen bereits publizierte Netzwerke abgewählt werden, um doppelte Beiträge zu vermeiden.",
+      "scope": "This article concerns SENT, whereas our posts are ERROR. Only the general duplicate-prevention principle is transferable."
+    },
+    {
+      "url": "https://help.metricool.com/how-to-manage-your-calendar-in-metricool-xhlbw",
+      "checkedAtUTC": "2026-11-20 23:32:54 UTC",
+      "summary": "Der rote Fehlerstatus verweist auf die Nachricht in den Beitragsdetails.",
+      "scope": "User-interface route; not confirmation of deeper error fields for these specific posts."
+    },
+    {
+      "url": "https://status.metricool.com/",
+      "checkedAtUTC": "2026-11-20 23:32:54 UTC",
+      "result": "UNREADABLE_BY_WEB_TOOL",
+      "scope": "Not proof of an incident or of no incident"
+    },
+    {
+      "url": "https://metastatus.com/",
+      "checkedAtUTC": "2026-11-20 23:32:54 UTC",
+      "result": "NO_READABLE_LINES",
+      "scope": "Not proof of an incident or of no incident"
+    }
+  ],
+  "allActionsReadOnly": true,
+  "metricsCalls": 0,
+  "externalContacts": 0,
+  "writes": 0,
+  "retries": 0
+}

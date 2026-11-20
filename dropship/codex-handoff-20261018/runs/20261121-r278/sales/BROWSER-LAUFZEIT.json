@@ -1,0 +1,86 @@
+{
+  "run": "R278",
+  "scope": "Lokale lesende Chromium-Prüfung des bestehenden Storefront-Controllers und lokal injizierten R277-Fragmentkandidaten",
+  "nativeWrites": 0,
+  "productId": "15521256604033",
+  "themeId": "214169584007",
+  "themeRole": "MAIN",
+  "sourceMd5MatchesR277": true,
+  "sourceMd5": {
+    "blocks/variant-picker.liquid": "f299d1a228fcaa40fff605bdd6e3860e",
+    "templates/product.json": "3d989256216e0d5ebbb65987d4a8398e"
+  },
+  "control": {
+    "actualVariantClick": "A→B",
+    "idBefore": [
+      "68122445283719"
+    ],
+    "idAfter": [
+      "68122445316487"
+    ],
+    "pricesBefore": [
+      "CHF 34.90",
+      "CHF 34.90"
+    ],
+    "pricesAfter": [
+      "CHF 37.90",
+      "CHF 37.90"
+    ],
+    "quantityBefore": [
+      "1"
+    ],
+    "quantityAfter": [
+      "1"
+    ],
+    "headingObjectPreserved": true,
+    "productInformationObjectPreserved": true,
+    "pickerObjectPreserved": true,
+    "nativeProductGetObserved": true
+  },
+  "candidateCases": [
+    {
+      "viewportWidth": 390,
+      "aLinkPreservesSelectedPriceQuantity": true,
+      "bLinkPreservesSelectedPriceQuantity": true,
+      "realVariantChangedToB": true,
+      "linkCountAfterChange": 1,
+      "targetCountAfterChange": 1,
+      "headingObjectSurvivesRealChange": true,
+      "bHeadingFocusedAfterEnter": true,
+      "headingTopAfterBLink": 84.453125,
+      "headerBottomAfterBLink": 59,
+      "headingNotObscuredByMeasuredHeader": true,
+      "queryAndFragmentPreserved": true
+    },
+    {
+      "viewportWidth": 1440,
+      "aLinkPreservesSelectedPriceQuantity": true,
+      "bLinkPreservesSelectedPriceQuantity": true,
+      "realVariantChangedToB": true,
+      "linkCountAfterChange": 1,
+      "targetCountAfterChange": 1,
+      "headingObjectSurvivesRealChange": true,
+      "bHeadingFocusedAfterEnter": true,
+      "headingTopAfterBLink": 112.78125,
+      "headerBottomAfterBLink": 87.578125,
+      "headingNotObscuredByMeasuredHeader": true,
+      "queryAndFragmentPreserved": true
+    }
+  ],
+  "network": {
+    "policy": "GET nur Shop/Shopify-Assethosts; alle Nicht-GET, cart/checkout/account und fremde Hosts vor Fortsetzung abgefangen",
+    "blockedRequestsAreAttemptsNotSuccessfulSends": true,
+    "controlBlockedNonGetAttempts": 77,
+    "candidateBlockedNonGetAttempts": 169,
+    "cartOrCheckoutOpened": false,
+    "serviceWorkers": "blocked",
+    "rawRequestUrlsPersistedHere": false,
+    "errorDetails": "Erwartete Fehler wegen geblockter Drittanbieter-/Tracking-/Worker-Aufrufe; keine vollständige Fehlerfreiheit behauptet"
+  },
+  "limits": [
+    "Kandidat nur lokal im Browser eingefügt; keine serverseitige Liquid- oder native Entwurfsspeicherung",
+    "Nur beobachteter A→B-Pfad, keine universelle Re-Render-Zusage",
+    "Keine FR-/Featured-Negativkontrolle im nativen Liquid-Render",
+    "Keine echte Kundensitzung, kein Kauf, kein iPhone/Safari, keine Umsatzwirkung"
+  ]
+}

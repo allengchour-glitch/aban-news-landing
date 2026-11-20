@@ -3406,3 +3406,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R277-REPORT-20261121.md) · [Belege](R277-PROOF-20261121.json).
 
 [LUXESTYLE_R277_20261121]
+
+### R278 – Projektorquelle, Auslieferung und Modellvergleich
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Projektorfilm | Shopify-Original vollständig dekodiert und zwölf Bildzeitpunkte mit der A-Referenz verglichen | Quelle erreichbar. Die genaue Variante, die Motive und die Rechte bleiben offen. Im geprüften Hochformat-Ausschnitt fehlen Teile der Hand und der Stütze. |
+| Publikationshistorie | Vier stabile UUIDs zurückgelesen und die jeweils referenzierte MP4 gehasht | Instagram, Facebook, TikTok und YouTube melden PUBLISHED und verweisen auf bytegleiche alte MP4s. Der professionelle Master bleibt in Arbeit. |
+| Auslieferung | Offizielle Metricool-Hilfe und Connector geprüft und einen Supportentwurf für fünf Fehler erstellt | Original-Meta-Code und kanalgetrennter Wiederholungsweg fehlen. Supportentwurf ungesendet. |
+| Verkaufsentwurf | Reales Variantenverhalten und den lokal eingefügten Modellvergleich-Link bei 390 und 1440 px geprüft | A → B ändert Preis und Auswahl korrekt. Der Link übersteht den Wechsel, fokussiert das Ziel und erhält die Konfiguration. Native Liquid-Vorschau und Freigabe offen. |
+| Kennzahlen | Erste kanalbezogene Tagesabfrage für 14.–20.11. und eine kleine YouTube-Abfrage zur Wiedergabezeit ausgewertet | Keine vollständige Siebentage-Summe in den gewählten Reihen. Drei Shorts mit Wiedergabedaten anhand ihrer Plattform-IDs zugeordnet. |
+| Konten | Shopify und sechs Metricool-Kanalidentitäten bestätigt. Klaviyo-Kontozugang gelesen | Identitäten stimmen. Klaviyo verlangt erneute Anmeldung, aktuelle Flow-Ergebnisse unbekannt. |
+
+[Bericht](R278-REPORT-20261121.md) · [Belege](R278-PROOF-20261121.json)
+
+[LUXESTYLE_R278_20261121]

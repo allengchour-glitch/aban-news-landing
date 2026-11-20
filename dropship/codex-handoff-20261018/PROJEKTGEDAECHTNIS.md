@@ -1,3 +1,11 @@
+# R278 – Projektorquelle geprüft und Veröffentlichungen zugeordnet – 21.11.2026
+
+R278: Shopify-Original des Projektors vollständig dekodiert und visuell geprüft. Variante und Motiv sind ungeklärt, im Hochformat fehlen Teile der Hand und der Stütze. Vier veröffentlichte alte Projektor-Beiträge zeigen bytegleiche Metricool-Referenzdateien. Modellvergleich im lokalen Browser mit echtem A-zu-B-Wechsel geprüft. Supportentwurf für fünf Medienfehler vorbereitet. Tageskennzahlen mit fehlenden Tagen und drei zugeordneten Shorts gespeichert. Klaviyo verlangt erneute Anmeldung.
+
+[Fortschritt und Tagestabelle](R278-REPORT-20261121.md) · [Maschinenbeleg](R278-PROOF-20261121.json) · [Drehnotiz](runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md) · [Verkaufsprüfung](runs/20261121-r278/sales/BROWSER-LAUFZEIT.json)
+
+---
+ 
 # R277 – sechs parallele Arbeitspakete fortgesetzt – 21.11.2026
 
 Vier Instagram-Fehler vom 17.–20. November und ein Threads-Fehler vom 19. November frisch bestätigt; die jeweiligen Facebook-Teile sind veröffentlicht. Die Fotoentwürfe vom 25.–28. November stehen bewusst auf der Halteliste. Der Kartenetui-Pin trägt zusätzlich einen aktuellen rueckhol-Blocker. Kein pauschaler Retry oder Aktivierungswrite.

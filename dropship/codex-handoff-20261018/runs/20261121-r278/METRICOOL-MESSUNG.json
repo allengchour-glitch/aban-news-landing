@@ -1,0 +1,861 @@
+{
+  "localRange": "2026-11-14/2026-11-20",
+  "timezone": "Europe/Zurich",
+  "brandId": 6227837,
+  "asOf": "2026-11-20 23:32:02 UTC",
+  "definitionsCalls": 6,
+  "dataCalls": 6,
+  "channels": {
+    "instagram": [
+      {
+        "id": "IGEV12",
+        "label": "Instagram Evolution > Feed Posts Views",
+        "daysObserved": 3,
+        "missing": [
+          "20261117",
+          "20261118",
+          "20261119",
+          "20261120"
+        ],
+        "observedSum": 104,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 20,
+          "20261115": 49,
+          "20261116": 35,
+          "20261117": null,
+          "20261118": null,
+          "20261119": null,
+          "20261120": null
+        }
+      },
+      {
+        "id": "IGEV09",
+        "label": "Instagram Evolution > Feed Posts Interactions",
+        "daysObserved": 1,
+        "missing": [
+          "20261114",
+          "20261115",
+          "20261116",
+          "20261117",
+          "20261118",
+          "20261119"
+        ],
+        "observedSum": 0,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": null,
+          "20261115": null,
+          "20261116": null,
+          "20261117": null,
+          "20261118": null,
+          "20261119": null,
+          "20261120": 0
+        }
+      },
+      {
+        "id": "IGEV23",
+        "label": "Instagram Evolution > Reels Views",
+        "daysObserved": 4,
+        "missing": [
+          "20261115",
+          "20261119",
+          "20261120"
+        ],
+        "observedSum": 293,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 23,
+          "20261115": null,
+          "20261116": 16,
+          "20261117": 122,
+          "20261118": 132,
+          "20261119": null,
+          "20261120": null
+        }
+      }
+    ],
+    "facebook": [
+      {
+        "id": "FBEV49",
+        "label": "Facebook Evolution > Page Media View",
+        "daysObserved": 6,
+        "missing": [
+          "20261120"
+        ],
+        "observedSum": 54,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 7,
+          "20261115": 17,
+          "20261116": 10,
+          "20261117": 9,
+          "20261118": 3,
+          "20261119": 8,
+          "20261120": null
+        }
+      },
+      {
+        "id": "FBEV34",
+        "label": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+        "daysObserved": 1,
+        "missing": [
+          "20261114",
+          "20261115",
+          "20261116",
+          "20261117",
+          "20261118",
+          "20261119"
+        ],
+        "observedSum": 0,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": null,
+          "20261115": null,
+          "20261116": null,
+          "20261117": null,
+          "20261118": null,
+          "20261119": null,
+          "20261120": 0
+        }
+      }
+    ],
+    "tiktok": [
+      {
+        "id": "TKEV02",
+        "label": "TikTok Evolution > Views",
+        "daysObserved": 6,
+        "missing": [
+          "20261120"
+        ],
+        "observedSum": 2814,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 738,
+          "20261115": 269,
+          "20261116": 237,
+          "20261117": 744,
+          "20261118": 712,
+          "20261119": 114,
+          "20261120": null
+        }
+      },
+      {
+        "id": "TKEV06",
+        "label": "TikTok Evolution > Interactions",
+        "daysObserved": 6,
+        "missing": [
+          "20261120"
+        ],
+        "observedSum": 14,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 2,
+          "20261115": 0,
+          "20261116": 0,
+          "20261117": 6,
+          "20261118": 6,
+          "20261119": 0,
+          "20261120": null
+        }
+      },
+      {
+        "id": "TKEV08",
+        "label": "TikTok Evolution > New Followers",
+        "daysObserved": 5,
+        "missing": [
+          "20261114",
+          "20261120"
+        ],
+        "observedSum": 1,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": null,
+          "20261115": 1,
+          "20261116": -2,
+          "20261117": 2,
+          "20261118": 1,
+          "20261119": -1,
+          "20261120": null
+        }
+      }
+    ],
+    "threads": [
+      {
+        "id": "THEV06",
+        "label": "Threads Evolution > Post Views",
+        "daysObserved": 4,
+        "missing": [
+          "20261115",
+          "20261119",
+          "20261120"
+        ],
+        "observedSum": 16,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 4,
+          "20261115": null,
+          "20261116": 3,
+          "20261117": 1,
+          "20261118": 8,
+          "20261119": null,
+          "20261120": null
+        }
+      },
+      {
+        "id": "THEV05",
+        "label": "Threads Evolution > Interactions",
+        "daysObserved": 1,
+        "missing": [
+          "20261114",
+          "20261115",
+          "20261116",
+          "20261117",
+          "20261118",
+          "20261119"
+        ],
+        "observedSum": 0,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": null,
+          "20261115": null,
+          "20261116": null,
+          "20261117": null,
+          "20261118": null,
+          "20261119": null,
+          "20261120": 0
+        }
+      }
+    ],
+    "youtube": [
+      {
+        "id": "YTEV02",
+        "label": "Youtube Evolution > Video Views",
+        "daysObserved": 4,
+        "missing": [
+          "20261118",
+          "20261119",
+          "20261120"
+        ],
+        "observedSum": 426,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 147,
+          "20261115": 25,
+          "20261116": 26,
+          "20261117": 228,
+          "20261118": null,
+          "20261119": null,
+          "20261120": null
+        }
+      },
+      {
+        "id": "YTEV05",
+        "label": "Youtube Evolution > Followers Gained",
+        "daysObserved": 4,
+        "missing": [
+          "20261118",
+          "20261119",
+          "20261120"
+        ],
+        "observedSum": 0,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 0,
+          "20261115": 0,
+          "20261116": 0,
+          "20261117": 0,
+          "20261118": null,
+          "20261119": null,
+          "20261120": null
+        }
+      },
+      {
+        "id": "YTEV10",
+        "label": "Youtube Evolution > Published Videos Likes",
+        "daysObserved": 5,
+        "missing": [
+          "20261119",
+          "20261120"
+        ],
+        "observedSum": 3,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 1,
+          "20261115": 1,
+          "20261116": 0,
+          "20261117": 1,
+          "20261118": 0,
+          "20261119": null,
+          "20261120": null
+        }
+      }
+    ],
+    "pinterest": [
+      {
+        "id": "PIEV01",
+        "label": "Pinterest Evolution > Impressions in period",
+        "daysObserved": 4,
+        "missing": [
+          "20261118",
+          "20261119",
+          "20261120"
+        ],
+        "observedSum": 1339,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 547,
+          "20261115": 260,
+          "20261116": 417,
+          "20261117": 115,
+          "20261118": null,
+          "20261119": null,
+          "20261120": null
+        }
+      },
+      {
+        "id": "PIEV04",
+        "label": "Pinterest Evolution > Interactions in period",
+        "daysObserved": 4,
+        "missing": [
+          "20261118",
+          "20261119",
+          "20261120"
+        ],
+        "observedSum": 15,
+        "weeklyTotal": null,
+        "byDay": {
+          "20261114": 7,
+          "20261115": 6,
+          "20261116": 1,
+          "20261117": 1,
+          "20261118": null,
+          "20261119": null,
+          "20261120": null
+        }
+      }
+    ]
+  },
+  "rawPerChannel": [
+    {
+      "channel": "instagram",
+      "metrics": [
+        "IGEV12",
+        "IGEV09",
+        "IGEV23"
+      ],
+      "definitions": [
+        {
+          "fieldId": "IGEV09",
+          "network": "instagram",
+          "connector": "evolution",
+          "index": 9,
+          "metricName": "interactions",
+          "metricLabel": "Instagram Evolution > Feed Posts Interactions",
+          "description": "Interactions (likes, comments, saves and shares) received by feed posts only (photos and carousels). Does NOT include reels. For all content use Instagram Evolution > Total Content Interactions.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "IGEV12",
+          "network": "instagram",
+          "connector": "evolution",
+          "index": 12,
+          "metricName": "postsViews",
+          "metricLabel": "Instagram Evolution > Feed Posts Views",
+          "description": "Number of times feed posts (photos and carousels) were displayed. Does NOT include reels or stories. Organic data.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "IGEV23",
+          "network": "instagram",
+          "connector": "evolution",
+          "index": 23,
+          "metricName": "reelsViews",
+          "metricLabel": "Instagram Evolution > Reels Views",
+          "description": "Number of times your Reels' video was viewed",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "data": {
+        "rows": [
+          [
+            null,
+            "0.0",
+            null,
+            "20261120"
+          ],
+          [
+            "20.0",
+            null,
+            "23.0",
+            "20261114"
+          ],
+          [
+            "49.0",
+            null,
+            null,
+            "20261115"
+          ],
+          [
+            "35.0",
+            null,
+            "16.0",
+            "20261116"
+          ],
+          [
+            null,
+            null,
+            "122.0",
+            "20261117"
+          ],
+          [
+            null,
+            null,
+            "132.0",
+            "20261118"
+          ]
+        ]
+      }
+    },
+    {
+      "channel": "facebook",
+      "metrics": [
+        "FBEV49",
+        "FBEV34"
+      ],
+      "definitions": [
+        {
+          "fieldId": "FBEV34",
+          "network": "facebook",
+          "connector": "evolution",
+          "index": 34,
+          "metricName": "postsInteractions",
+          "metricLabel": "Facebook Evolution > Total Content Interactions (feed posts + reels)",
+          "description": "Interactions received by all Page content: feed posts + reels. Does not include stories.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "FBEV49",
+          "network": "facebook",
+          "connector": "evolution",
+          "index": 49,
+          "metricName": "pageMediaView",
+          "metricLabel": "Facebook Evolution > Page Media View",
+          "description": "Page content views.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "data": {
+        "rows": [
+          [
+            null,
+            "0.0",
+            "20261120"
+          ],
+          [
+            "7.0",
+            null,
+            "20261114"
+          ],
+          [
+            "17.0",
+            null,
+            "20261115"
+          ],
+          [
+            "10.0",
+            null,
+            "20261116"
+          ],
+          [
+            "9.0",
+            null,
+            "20261117"
+          ],
+          [
+            "3.0",
+            null,
+            "20261118"
+          ],
+          [
+            "8.0",
+            null,
+            "20261119"
+          ]
+        ]
+      }
+    },
+    {
+      "channel": "tiktok",
+      "metrics": [
+        "TKEV02",
+        "TKEV06",
+        "TKEV08"
+      ],
+      "definitions": [
+        {
+          "fieldId": "TKEV02",
+          "network": "tiktok",
+          "connector": "evolution",
+          "index": 2,
+          "metricName": "views",
+          "metricLabel": "TikTok Evolution > Views",
+          "description": "Number of views reached by the videos published in the period",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "TKEV06",
+          "network": "tiktok",
+          "connector": "evolution",
+          "index": 6,
+          "metricName": "interactions",
+          "metricLabel": "TikTok Evolution > Interactions",
+          "description": "Number of interactions on videos: Likes, Comments and Shares.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "TKEV08",
+          "network": "tiktok",
+          "connector": "evolution",
+          "index": 8,
+          "metricName": "newFollowers",
+          "metricLabel": "TikTok Evolution > New Followers",
+          "description": "Balance of daily followers gained or lost",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "data": {
+        "rows": [
+          [
+            "738.0",
+            "2.0",
+            null,
+            "20261114"
+          ],
+          [
+            "269.0",
+            "0.0",
+            "1.0",
+            "20261115"
+          ],
+          [
+            "237.0",
+            "0.0",
+            "-2.0",
+            "20261116"
+          ],
+          [
+            "744.0",
+            "6.0",
+            "2.0",
+            "20261117"
+          ],
+          [
+            "712.0",
+            "6.0",
+            "1.0",
+            "20261118"
+          ],
+          [
+            "114.0",
+            "0.0",
+            "-1.0",
+            "20261119"
+          ]
+        ]
+      }
+    },
+    {
+      "channel": "threads",
+      "metrics": [
+        "THEV06",
+        "THEV05"
+      ],
+      "definitions": [
+        {
+          "fieldId": "THEV05",
+          "network": "threads",
+          "connector": "evolution",
+          "index": 5,
+          "metricName": "interactions",
+          "metricLabel": "Threads Evolution > Interactions",
+          "description": "Number of interactions: Likes, Replies, Reposts and Quotes",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "THEV06",
+          "network": "threads",
+          "connector": "evolution",
+          "index": 6,
+          "metricName": "views",
+          "metricLabel": "Threads Evolution > Post Views",
+          "description": "Total number of times that the post is displayed.",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "data": {
+        "rows": [
+          [
+            null,
+            "0.0",
+            "20261120"
+          ],
+          [
+            "4.0",
+            null,
+            "20261114"
+          ],
+          [
+            "3.0",
+            null,
+            "20261116"
+          ],
+          [
+            "1.0",
+            null,
+            "20261117"
+          ],
+          [
+            "8.0",
+            null,
+            "20261118"
+          ]
+        ]
+      }
+    },
+    {
+      "channel": "youtube",
+      "metrics": [
+        "YTEV02",
+        "YTEV05",
+        "YTEV10"
+      ],
+      "definitions": [
+        {
+          "fieldId": "YTEV02",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 2,
+          "metricName": "videoViews",
+          "metricLabel": "Youtube Evolution > Video Views",
+          "description": "Number of times the videos were watched",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV05",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 5,
+          "metricName": "gained",
+          "metricLabel": "Youtube Evolution > Followers Gained",
+          "description": "Subscribers gained in the period selected.",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "YTEV10",
+          "network": "youtube",
+          "connector": "evolution",
+          "index": 10,
+          "metricName": "publishedVideoLikes",
+          "metricLabel": "Youtube Evolution > Published Videos Likes",
+          "description": "Number of likes of the videos Published in Range",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "data": {
+        "rows": [
+          [
+            "147.0",
+            "0.0",
+            "1.0",
+            "20261114"
+          ],
+          [
+            "25.0",
+            "0.0",
+            "1.0",
+            "20261115"
+          ],
+          [
+            "26.0",
+            "0.0",
+            "0.0",
+            "20261116"
+          ],
+          [
+            "228.0",
+            "0.0",
+            "1.0",
+            "20261117"
+          ],
+          [
+            null,
+            null,
+            "0.0",
+            "20261118"
+          ]
+        ]
+      }
+    },
+    {
+      "channel": "pinterest",
+      "metrics": [
+        "PIEV01",
+        "PIEV04"
+      ],
+      "definitions": [
+        {
+          "fieldId": "PIEV01",
+          "network": "pinterest",
+          "connector": "evolution",
+          "index": 1,
+          "metricName": "pinterestImpressions",
+          "metricLabel": "Pinterest Evolution > Impressions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        },
+        {
+          "fieldId": "PIEV04",
+          "network": "pinterest",
+          "connector": "evolution",
+          "index": 4,
+          "metricName": "pinterestInteractions",
+          "metricLabel": "Pinterest Evolution > Interactions in period",
+          "description": "",
+          "dataAggregation": "SUM"
+        }
+      ],
+      "data": {
+        "rows": [
+          [
+            "547.0",
+            "7.0",
+            "20261114"
+          ],
+          [
+            "260.0",
+            "6.0",
+            "20261115"
+          ],
+          [
+            "417.0",
+            "1.0",
+            "20261116"
+          ],
+          [
+            "115.0",
+            "1.0",
+            "20261117"
+          ]
+        ]
+      }
+    }
+  ],
+  "youtubeWatch": {
+    "definitions": {
+      "connector": "videos published in range",
+      "found": [
+        {
+          "id": "YTVP05",
+          "label": "Youtube Published in range videos > Video url",
+          "name": "watchUrl",
+          "description": "Url of the video"
+        },
+        {
+          "id": "YTVP07",
+          "label": "Youtube Published in range videos > Watch Minutes",
+          "name": "watchMinutes",
+          "description": "Total time that videos have been watched. Create a formula field to get this field in DURATION type (Multiply by 60)"
+        },
+        {
+          "id": "YTVP08",
+          "label": "Youtube Published in range videos > Avg View Duration",
+          "name": "averageViewDuration",
+          "description": "Average time that videos have been watched."
+        }
+      ],
+      "error": null
+    },
+    "data": {
+      "fields": [
+        "YTVP05",
+        "YTVP07",
+        "YTVP08"
+      ],
+      "range": "2026-11-17/2026-11-20",
+      "data": {
+        "rows": [
+          [
+            "https://www.youtube.com/watch?v=u7maUT-AgXM",
+            "29.26295",
+            "3"
+          ],
+          [
+            "https://www.youtube.com/watch?v=Qb17SsAax3Y",
+            "2.4321666666666664",
+            "2"
+          ],
+          [
+            "https://www.youtube.com/watch?v=M8R5SmT-w7g",
+            "5.636833333333333",
+            "2"
+          ]
+        ]
+      },
+      "isError": false
+    },
+    "plannerMatches": [
+      {
+        "id": 430111412,
+        "uuid": "-7002936161864562103",
+        "scheduled": "2026-11-17T13:00:00",
+        "title": "Zucchini-Spiralen mit Handkurbel: Gemüsehobel im Einsatz #Shorts",
+        "state": "PUBLISHED",
+        "publicUrl": "https://www.youtube.com/shorts/M8R5SmT-w7g",
+        "platformId": "M8R5SmT-w7g",
+        "matchedWatchRow": true
+      },
+      {
+        "id": 430172417,
+        "uuid": "-3668679867663038577",
+        "scheduled": "2026-11-17T18:30:00",
+        "title": "8 Fächer, kompakt verstaut | LuxeStyle #Shorts",
+        "state": "PUBLISHED",
+        "publicUrl": "https://www.youtube.com/shorts/Qb17SsAax3Y",
+        "platformId": "Qb17SsAax3Y",
+        "matchedWatchRow": true
+      },
+      {
+        "id": 430173224,
+        "uuid": "-3731207601091163105",
+        "scheduled": "2026-11-18T18:00:00",
+        "title": "Knoblauch und Zwiebeln per Druck hacken #Shorts",
+        "state": "PUBLISHED",
+        "publicUrl": "https://www.youtube.com/shorts/u7maUT-AgXM",
+        "platformId": "u7maUT-AgXM",
+        "matchedWatchRow": true
+      },
+      {
+        "id": 430111922,
+        "uuid": "-7647174116509334899",
+        "scheduled": "2026-11-19T19:00:00",
+        "title": "Sternenlicht-Projektor im Detail #Shorts",
+        "state": "PUBLISHED",
+        "publicUrl": "https://www.youtube.com/shorts/N6ud3swkxFs",
+        "platformId": "N6ud3swkxFs",
+        "matchedWatchRow": false
+      },
+      {
+        "id": 430112117,
+        "uuid": "5345343768312041034",
+        "scheduled": "2026-11-20T19:30:00",
+        "title": "Licht wie Wasserwellen | LuxeStyle #Shorts",
+        "state": "PUBLISHED",
+        "publicUrl": "https://www.youtube.com/shorts/D3QLJigVfpw",
+        "platformId": "D3QLJigVfpw",
+        "matchedWatchRow": false
+      }
+    ],
+    "interpretation": "Video cohort from17–20Nov, three matched returned rows, two additional published IDs absent; avg duration unit not declared in Metricool field definition. Do not infer purchases."
+  }
+}

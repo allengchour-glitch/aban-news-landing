@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 277,
-  "updatedAt": "2026-11-20T23:28:45Z",
+  "revision": 278,
+  "updatedAt": "2026-11-20T23:36:41Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -17,19 +17,26 @@
     "metricsFlowAndBroadSalesMaxPerDay": 1,
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-21",
-    "currentDayEvidenceKind": "R277_TARGETED_CONTINUATION_NO_NEW_DAILY_ANALYTICS",
-    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged.",
+    "currentDayEvidenceKind": "R277_TARGETED_CONTINUATION_PLUS_R278_FIRST_DAILY_REPORT",
+    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged. R278: First Metricool report for 14–20 Nov, 6 field + 6 data calls, 1 YouTube Watch field + 1 bounded Watch query 17–20 Nov. Three video rows matched, missing data unknown. One Klaviyo account attempt returned UNAUTHORIZED; no flow report. Targeted past planner calls to verify legacy IDs/media and Watch cohort after new findings. No orders, merchant read, GSC, broad sales or business writes.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-11-21",
-        "status": "NOT_READ",
-        "definitionCalls": 0,
-        "dataCalls": 0
+        "range": "2026-11-14/2026-11-20",
+        "definitionCalls": 6,
+        "dataCalls": 6,
+        "missingIsUnknown": true,
+        "watchDefinitionCalls": 1,
+        "watchDataCalls": 1,
+        "watchRange": "2026-11-17/2026-11-20",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r278/METRICOOL-MESSUNG.json"
       },
       "klaviyo": {
         "localDate": "2026-11-21",
-        "status": "NOT_READ",
-        "calls": 0
+        "accountAttempts": 1,
+        "metricDiscoveryCalls": 0,
+        "flowReports": 0,
+        "status": "AUTH_BLOCKED_UNAUTHORIZED"
       },
       "ordersQueried": false,
       "purchaseWatchEnded": true,
@@ -41,7 +48,12 @@
       "metricsReportsClaimedComplete": false,
       "priorDayReportDate": "2026-11-20",
       "existingCadenceUnchanged": true
-    }
+    },
+    "r277BeforeFirstDailyQueries": {
+      "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
+      "noReportsInR277": true
+    },
+    "dailyReportContinuation": "dropship/codex-handoff-20261018/R278-PROOF-20261121.json"
   },
   "expectedIdentity": {
     "shopDomain": "luxestyle.ch",
@@ -6654,6 +6666,15 @@
         "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
         "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
         "state": "ONE_MODEL_COMPARISON_DRAFT_TWO_SOURCE_FILES_SIX_OFFLINE_CASES_NOT_APPLIED"
+      },
+      "run278": {
+        "atUTC": "2026-11-20T23:36:41Z",
+        "report": "dropship/codex-handoff-20261018/R278-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R278-PROOF-20261121.json",
+        "publicationObservation": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-LEGACY-VEROEFFENTLICHUNGEN.json",
+        "shootingNote": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
+        "salesQa": "dropship/codex-handoff-20261018/runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
+        "evidence": "Existing model comparison draft survived real public storefront A-to-B variant change in local Chromium"
       }
     },
     {
@@ -19560,6 +19581,15 @@
         "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
         "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
         "state": "SIX_SUBAGENT_PACKAGES_RECONCILED_NO_NEW_ACK"
+      },
+      "run278": {
+        "atUTC": "2026-11-20T23:36:41Z",
+        "report": "dropship/codex-handoff-20261018/R278-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R278-PROOF-20261121.json",
+        "publicationObservation": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-LEGACY-VEROEFFENTLICHUNGEN.json",
+        "shootingNote": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
+        "salesQa": "dropship/codex-handoff-20261018/runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
+        "evidence": "R278 work and evidence ready, no documented Claude acknowledgement"
       }
     },
     {
@@ -23521,6 +23551,15 @@
         "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
         "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
         "state": "CJ_METADATA_ROUTE_KNOWN_PUBLIC_PAGE_VALIDATION_NO_PLAYABLE_SOURCE"
+      },
+      "run278": {
+        "atUTC": "2026-11-20T23:36:41Z",
+        "report": "dropship/codex-handoff-20261018/R278-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R278-PROOF-20261121.json",
+        "publicationObservation": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-LEGACY-VEROEFFENTLICHUNGEN.json",
+        "shootingNote": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
+        "salesQa": "dropship/codex-handoff-20261018/runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
+        "evidence": "Shopify original reachable. Exact variant, motif, portrait footage and commercial rights remain open"
       }
     },
     {
@@ -45819,6 +45858,15 @@
         "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/README.md",
         "master": "dropship/codex-handoff-20261018/runs/20261121-r277/master/MASTER-SOURCE-REPORT.md",
         "state": "FOUR_INSTAGRAM_AND_ONE_THREADS_FAILURE_CONFIRMED_INTENTIONAL_FUTURE_PHOTO_HOLDS"
+      },
+      "run278": {
+        "atUTC": "2026-11-20T23:36:41Z",
+        "report": "dropship/codex-handoff-20261018/R278-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R278-PROOF-20261121.json",
+        "publicationObservation": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-LEGACY-VEROEFFENTLICHUNGEN.json",
+        "shootingNote": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
+        "salesQa": "dropship/codex-handoff-20261018/runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
+        "evidence": "Four old projector posts confirmed, no documented same-UUID provider-only retry"
       }
     },
     {
@@ -50543,6 +50591,15 @@
         "dropship/codex-handoff-20261018/R277-REPORT-20261121.md",
         "dropship/codex-handoff-20261018/R277-PROOF-20261121.json"
       ]
+    },
+    {
+      "revision": 278,
+      "at": "2026-11-20T23:36:41Z",
+      "summary": "R278: Shopify-Original des Projektors vollständig dekodiert und visuell geprüft. Variante und Motiv sind ungeklärt, im Hochformat fehlen Teile der Hand und der Stütze. Vier veröffentlichte alte Projektor-Beiträge zeigen bytegleiche Metricool-Referenzdateien. Modellvergleich im lokalen Browser mit echtem A-zu-B-Wechsel geprüft. Supportentwurf für fünf Medienfehler vorbereitet. Tageskennzahlen mit fehlenden Tagen und drei zugeordneten Shorts gespeichert. Klaviyo verlangt erneute Anmeldung.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R278-REPORT-20261121.md",
+        "dropship/codex-handoff-20261018/R278-PROOF-20261121.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -52656,7 +52713,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 277,
+    "latestCanonicalRevision": 278,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -53788,6 +53845,21 @@
       "planningGapThrough": "2026-11-28",
       "metricsReadToday": false,
       "masterReady": false,
+      "claudeReceipt": "UNKNOWN"
+    },
+    "run278": {
+      "atUTC": "2026-11-20T23:36:41Z",
+      "localDate": "2026-11-21",
+      "summary": "R278: Shopify-Original des Projektors vollständig dekodiert und visuell geprüft. Variante und Motiv sind ungeklärt, im Hochformat fehlen Teile der Hand und der Stütze. Vier veröffentlichte alte Projektor-Beiträge zeigen bytegleiche Metricool-Referenzdateien. Modellvergleich im lokalen Browser mit echtem A-zu-B-Wechsel geprüft. Supportentwurf für fünf Medienfehler vorbereitet. Tageskennzahlen mit fehlenden Tagen und drei zugeordneten Shorts gespeichert. Klaviyo verlangt erneute Anmeldung.",
+      "report": "dropship/codex-handoff-20261018/R278-REPORT-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/R278-PROOF-20261121.json",
+      "publicationObservation": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-LEGACY-VEROEFFENTLICHUNGEN.json",
+      "shootingNote": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
+      "salesQa": "dropship/codex-handoff-20261018/runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
+      "subagents": 3,
+      "operationalWrites": 0,
+      "legacyPublicationsConfirmed": 4,
+      "professionalMasterReady": false,
       "claudeReceipt": "UNKNOWN"
     }
   },
@@ -80860,6 +80932,21 @@
     "planningGapThrough": "2026-11-28",
     "metricsReadToday": false,
     "masterReady": false,
+    "claudeReceipt": "UNKNOWN"
+  },
+  "run278": {
+    "atUTC": "2026-11-20T23:36:41Z",
+    "localDate": "2026-11-21",
+    "summary": "R278: Shopify-Original des Projektors vollständig dekodiert und visuell geprüft. Variante und Motiv sind ungeklärt, im Hochformat fehlen Teile der Hand und der Stütze. Vier veröffentlichte alte Projektor-Beiträge zeigen bytegleiche Metricool-Referenzdateien. Modellvergleich im lokalen Browser mit echtem A-zu-B-Wechsel geprüft. Supportentwurf für fünf Medienfehler vorbereitet. Tageskennzahlen mit fehlenden Tagen und drei zugeordneten Shorts gespeichert. Klaviyo verlangt erneute Anmeldung.",
+    "report": "dropship/codex-handoff-20261018/R278-REPORT-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/R278-PROOF-20261121.json",
+    "publicationObservation": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-LEGACY-VEROEFFENTLICHUNGEN.json",
+    "shootingNote": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
+    "salesQa": "dropship/codex-handoff-20261018/runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
+    "subagents": 3,
+    "operationalWrites": 0,
+    "legacyPublicationsConfirmed": 4,
+    "professionalMasterReady": false,
     "claudeReceipt": "UNKNOWN"
   }
 }

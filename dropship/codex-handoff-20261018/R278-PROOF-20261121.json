@@ -1,0 +1,68 @@
+{
+  "run": "R278",
+  "dateLocal": "2026-11-21",
+  "atUTC": "2026-11-20T23:35:13Z",
+  "base": "7830aaa29506eaee40f41a878abf777977836647",
+  "main": "6de5d543780340ea316b82b7838b78db7926dde1",
+  "subagentCount": 3,
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "metricool": {
+    "id": 6227837,
+    "label": "Luxestyle",
+    "timezone": "Europe/Zurich",
+    "networksData": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "googleAdsData": "7198263241",
+      "tiktokAdsData": "7691398659300179974"
+    }
+  },
+  "lastFullPlanRead": "R277 2026-11-21 local, current turn performed targeted history readbacks only",
+  "metricoolEvolutionCalls": {
+    "definitions": 6,
+    "data": 6
+  },
+  "watchCalls": {
+    "definitions": 1,
+    "data": 1,
+    "rowsMatched": 3
+  },
+  "klaviyo": {
+    "accountAttempts": 1,
+    "code": "UNAUTHORIZED",
+    "metricDiscoveryCalls": 0,
+    "flowReports": 0
+  },
+  "legacyPosts": 4,
+  "legacyHashMatch": true,
+  "masterMP4Ready": false,
+  "shopChanges": 0,
+  "plannerChanges": 0,
+  "sends": 0,
+  "workflowDispatch": 0,
+  "paidRenders": 0,
+  "orderQueries": 0,
+  "reportFiles": [
+    "runs/20261121-r278/master/MASTER-READBACK-PROOF.json",
+    "runs/20261121-r278/instagram/ERROR-DETAILS-ACCESS.json",
+    "runs/20261121-r278/instagram/SUPPORT-ANFRAGE-ENTWURF.md",
+    "runs/20261121-r278/PROJEKTOR-LEGACY-VEROEFFENTLICHUNGEN.json",
+    "runs/20261121-r278/METRICOOL-MESSUNG.json",
+    "runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
+    "runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
+    "runs/20261121-r278/master/QUELLENPRUEFUNG.md",
+    "R278-REPORT-20261121.md"
+  ]
+}

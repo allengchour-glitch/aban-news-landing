@@ -1,0 +1,162 @@
+{
+  "run": "R278",
+  "observedAtUTC": "2026-11-20 23:34:22 UTC",
+  "brandId": 6227837,
+  "timezone": "Europe/Zurich",
+  "recordType": "legacy_publication_observation_not_ledger_initialization",
+  "historicalAssociation": "luxe_sternenprojektor_master_20261018",
+  "productId": "gid://shopify/Product/15521256604033",
+  "actualFilmVariantId": null,
+  "nextMasterReferenceVariantId": "gid://shopify/ProductVariant/68122445283719",
+  "priorHoldCheckpointBlob": "e1b8e43e0a649103d500d1dda57d4c34dd2cd271",
+  "priorCheckpointMediaSha256": "fac2f7679cf633f0ed6db8702f215c27cf1cdbdbaea50456d946d09e8e27df6a",
+  "legacyVariantAndRightsUnconfirmed": true,
+  "newProfessionalMasterApproved": false,
+  "distributionOrigin": "previous activity; read back in R278",
+  "posts": [
+    {
+      "id": 430111185,
+      "uuid": "4156060813550767248",
+      "draft": false,
+      "autoPublish": true,
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "instagram",
+          "id": "https://www.instagram.com/reel/Dfz9umbEZMH/",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.instagram.com/reel/Dfz9umbEZMH/",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-15511589642552380795.mp4"
+      ],
+      "previousMetricoolId": 429127242,
+      "metricoolMediaRead": {
+        "status": 200,
+        "url": "https://static.metricool.com/planner/202611/6227837-file-15511589642552380795.mp4",
+        "bytes": 5107087,
+        "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91"
+      },
+      "actualPlatformPublicationTimestamp": null
+    },
+    {
+      "id": 430111296,
+      "uuid": "6680239273933357186",
+      "draft": false,
+      "autoPublish": true,
+      "publicationDate": {
+        "dateTime": "2026-11-16T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "facebook",
+          "id": "1130119220008240",
+          "status": "PUBLISHED",
+          "publicUrl": "https://facebook.com/reel/1130119220008240",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-18069782442414770458.mp4"
+      ],
+      "previousMetricoolId": 429127259,
+      "metricoolMediaRead": {
+        "status": 200,
+        "url": "https://static.metricool.com/planner/202611/6227837-file-18069782442414770458.mp4",
+        "bytes": 5107087,
+        "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91"
+      },
+      "actualPlatformPublicationTimestamp": null
+    },
+    {
+      "id": 430111643,
+      "uuid": "3614365779669041576",
+      "draft": false,
+      "autoPublish": true,
+      "publicationDate": {
+        "dateTime": "2026-11-17T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "tiktok",
+          "id": "7709203187554651425",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.tiktok.com/@luxestyle.ch/video/7709203187554651425",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-6017425296879370036.mp4"
+      ],
+      "previousMetricoolId": 429127272,
+      "metricoolMediaRead": {
+        "status": 200,
+        "url": "https://static.metricool.com/planner/202611/6227837-file-6017425296879370036.mp4",
+        "bytes": 5107087,
+        "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91"
+      },
+      "actualPlatformPublicationTimestamp": null
+    },
+    {
+      "id": 430111922,
+      "uuid": "-7647174116509334899",
+      "draft": false,
+      "autoPublish": true,
+      "publicationDate": {
+        "dateTime": "2026-11-19T19:00:00",
+        "timezone": "Europe/Zurich"
+      },
+      "providers": [
+        {
+          "network": "youtube",
+          "id": "N6ud3swkxFs",
+          "status": "PUBLISHED",
+          "publicUrl": "https://www.youtube.com/shorts/N6ud3swkxFs",
+          "detailedStatus": "Published"
+        }
+      ],
+      "media": [
+        "https://static.metricool.com/planner/202611/6227837-file-4976117013583399734.mp4"
+      ],
+      "youtubeData": {
+        "title": "Sternenlicht-Projektor im Detail #Shorts",
+        "type": "short",
+        "privacy": "public",
+        "tags": [
+          "sternlicht",
+          "lichtmomente",
+          "luxestyle"
+        ],
+        "madeForKids": false,
+        "isAiGeneratedContent": false
+      },
+      "previousMetricoolId": 429127286,
+      "metricoolMediaRead": {
+        "status": 200,
+        "url": "https://static.metricool.com/planner/202611/6227837-file-4976117013583399734.mp4",
+        "type": "video/mp4",
+        "bytes": 5107087,
+        "sha256": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91"
+      },
+      "actualPlatformPublicationTimestamp": null
+    }
+  ],
+  "fourMatchingMetricoolMediaHashes": true,
+  "platformBinaryIndividualChecks": false,
+  "existingRegisterChanged": false,
+  "newLedgerInitialized": false,
+  "doNotRescheduleLegacyUuidOrMedia": true,
+  "legacyVisualSample": {
+    "method": "three frames from one of the four hash-identical files, internal review",
+    "visible": "Opening still with text; later projection samples with overlays",
+    "newMaster": false,
+    "noFramesPublishedByThisRun": true
+  }
+}
