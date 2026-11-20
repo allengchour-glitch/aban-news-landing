@@ -216,6 +216,30 @@
     "btc": 62987.265625,
     "eth": 1774.7491455078125
    }
+  },
+  {
+   "stand": "2026-11-19",
+   "zeit": "2026-11-20T12:57:58+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 858,
+   "kosten_usd": 0.023852,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.1,
+    "begruendung": "Klarer Abwärtstrend: -13,2 % in 7 Tagen, -25,4 % in 30 Tagen, 20,8 % unter dem 50-Tage-Schnitt, fast jeden Tag ein neues Tief. Dagegen sprechen Angst&Gier 10, negatives Funding (Shorts sind überfüllt) und eine starke Überdehnung. Das Risiko einer Gegenbewegung ist hoch. Ich halte den kleinen Short unverändert, das spart auch Gebühren.",
+    "sicherheit": 0.35
+   },
+   "eth": {
+    "position": -0.05,
+    "begruendung": "Der Trend ist ebenso schwach: -13 % in 7 Tagen, 23,9 % unter dem 50-Tage-Schnitt. Der MVRV von 0,86 zeigt aber, dass die Halter im Schnitt im Verlust sind, und die Stimmung steht auf extremer Angst. Bei 60 % Jahresschwankung ist ein Rückschlag nach oben wahrscheinlicher als bei BTC. Ich halbiere den Short auf -0,05.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Der Abverkauf läuft weiter, ist aber überdehnt. Bei Angst&Gier 10 und negativem Funding halte ich nur kleine Shorts. Wenn ein Tag mit über +5 % über das Hoch der letzten 2–3 Tage schliesst, gehe ich flach.",
+   "kurse": {
+    "btc": 61901.8203125,
+    "eth": 1755.1898193359375
+   }
   }
  ]
 }
