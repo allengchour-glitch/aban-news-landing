@@ -1,0 +1,35 @@
+{
+  "base": "fb48f562a9db3fbc471d06c1afa8484258641808",
+  "originalShas": {
+    "state": "871a00fb69b72c054b5acf7bc57a87ea22aed8c3",
+    "README.md": "9124741a9035d13a511b0b20a61ddb37a9e615c4",
+    "PROJEKTGEDAECHTNIS.md": "c2606889db3fa433bdbbb0dfb210c1b8b11addef",
+    "TAGESPROTOKOLL.md": "494ef30ed9a11c7470bd81c7b90985bb9af8332f"
+  },
+  "mainChanges": [
+    "R279-PROOF-20261121.json",
+    "runs/20261121-r279/THEME-DIFF-UND-VORSCHAU.json",
+    "runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json",
+    "R279-REPORT-20261121.md",
+    "README.md",
+    "PROJEKTGEDAECHTNIS.md",
+    "TAGESPROTOKOLL.md",
+    "ARBEITSSTAND.json"
+  ],
+  "checks": {
+    "revision": 279,
+    "historyPreserved": true,
+    "tasksPreserved": true,
+    "purchaseStopPreserved": true,
+    "logAddedToExistingDay": true,
+    "priorMarkdownPreserved": true,
+    "todayPriorReportsPreserved": true
+  },
+  "lead": "# R279 – SEO-Korrekturen live und Theme geprüft – 21.11.2026\n\nSieben SEO- und Inhaltskorrekturen öffentlich bestätigt. Vier technische Änderungen in Shopify-Kopie 214526394759 gespeichert und auf sieben echten Vorschauseiten geprüft. Dateivergleich der beiden 561-Dateien-Themes zeigt exakt vier Abweichungen. Veröffentlichung der benannten Kopie steht aus. Eine begrenzte Search-Console-Messung gespeichert.\n\n[Bericht](R279-REPORT-20261121.md) · [Belege](R279-PROOF-20261121.json) · [Geprüftes Theme](https://admin.shopify.com/store/au3j0y-hq/themes/214526394759/editor)\n\n---\n\n",
+  "logAppend": "\n### R279 – Suchmetadaten, interne Links, Übersetzungen und Theme\n\n| Bereich | Was Codex gemacht hat | Ergebnis / Status |\n|---|---|---|\n| Produkt | Meta-Beschreibung der magnetischen Ladestation an das Produkt angepasst | Live. Meta- und Open-Graph-Beschreibung stimmen, Variante und Betrag bestätigt. |\n| Sammlungen | Berufseinstieg, Geschenkideen und Retro-Hub redigiert und passende interne Ziele ergänzt | Drei Änderungen live und öffentlich geprüft. |\n| Ratgeber | Deutschen Weihnachtsratgeber mit drei internen Links und abgestimmten FAQ verbessert | Live, vier FAQ in gültigem JSON-LD. |\n| Französisch | Retro-Kategorie und Weihnachtsratgeber übersetzt | Beide Inhalte mit Metadaten live, bestehender Indexschutz im aktuell aktiven Theme. |\n| Theme | Preisformat, Projektor-Videodaten, doppelt codiertes & und Indexierbarkeit des FR-Artikels korrigiert | Unveröffentlichte Kopie. Sieben Vorschauseiten bestanden. Genau vier geänderte Dateien von 561. |\n| Suchdaten | Eine kleine Search-Console-Abfrage für fünf URLs ausgeführt | Zeitraum 4.–17.11. Zwei fehlende Zeilen und spätere Google-Indexierung unbekannt. |\n\n[Bericht](R279-REPORT-20261121.md) · [Belege](R279-PROOF-20261121.json)\n\n[LUXESTYLE_R279_20261121]\n",
+  "tasksOnlyAppended": [
+    "seo-landing-visibility-20261101",
+    "product-attribute-completeness",
+    "luxe-zusammenarbeit-20261028"
+  ]
+}

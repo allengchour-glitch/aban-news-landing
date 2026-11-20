@@ -1,0 +1,52 @@
+{
+  "rows": [
+    {
+      "keys": [
+        "https://luxestyle.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen"
+      ],
+      "clicks": 0,
+      "impressions": 29,
+      "ctr": 0,
+      "position": 4.206896551724138
+    },
+    {
+      "keys": [
+        "https://luxestyle.ch/collections/kopfhoerer-audio"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 77.5
+    },
+    {
+      "keys": [
+        "https://luxestyle.ch/pages/alle-kategorien"
+      ],
+      "clicks": 0,
+      "impressions": 9,
+      "ctr": 0,
+      "position": 2.7777777777777777
+    }
+  ],
+  "row_count": 3,
+  "truncated": false,
+  "query": {
+    "start_date": "2026-11-04",
+    "end_date": "2026-11-17",
+    "search_type": "web",
+    "data_state": "final",
+    "dimensions": [
+      "page"
+    ],
+    "row_limit": 5,
+    "start_row": 0,
+    "filters": [
+      {
+        "dimension": "page",
+        "operator": "includingRegex",
+        "expression": "^(?:https://luxestyle\\.ch/collections/kopfhoerer-audio|https://luxestyle\\.ch/collections/pc-gaming|https://luxestyle\\.ch/collections/spielkonsolen-retro-handhelds|https://luxestyle\\.ch/pages/alle-kategorien|https://luxestyle\\.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen)$"
+      }
+    ],
+    "estimated_data_finalized_through": "2026-11-17"
+  }
+}

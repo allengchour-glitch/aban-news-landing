@@ -1,3 +1,11 @@
+# R279 – SEO-Korrekturen live und Theme geprüft – 21.11.2026
+
+Sieben SEO- und Inhaltskorrekturen öffentlich bestätigt. Vier technische Änderungen in Shopify-Kopie 214526394759 gespeichert und auf sieben echten Vorschauseiten geprüft. Dateivergleich der beiden 561-Dateien-Themes zeigt exakt vier Abweichungen. Veröffentlichung der benannten Kopie steht aus. Eine begrenzte Search-Console-Messung gespeichert.
+
+[Bericht](R279-REPORT-20261121.md) · [Belege](R279-PROOF-20261121.json) · [Geprüftes Theme](https://admin.shopify.com/store/au3j0y-hq/themes/214526394759/editor)
+
+---
+
 # R278 – Projektorquelle geprüft und Veröffentlichungen zugeordnet – 21.11.2026
 
 R278: Shopify-Original des Projektors vollständig dekodiert und visuell geprüft. Variante und Motiv sind ungeklärt, im Hochformat fehlen Teile der Hand und der Stütze. Vier veröffentlichte alte Projektor-Beiträge zeigen bytegleiche Metricool-Referenzdateien. Modellvergleich im lokalen Browser mit echtem A-zu-B-Wechsel geprüft. Supportentwurf für fünf Medienfehler vorbereitet. Tageskennzahlen mit fehlenden Tagen und drei zugeordneten Shorts gespeichert. Klaviyo verlangt erneute Anmeldung.

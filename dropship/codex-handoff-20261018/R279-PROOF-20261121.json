@@ -1,0 +1,1005 @@
+{
+  "run": "R279",
+  "dateLocal": "2026-11-21",
+  "atUTC": "2026-11-20 23:53:48 UTC",
+  "timezone": "Europe/Zurich",
+  "shop": "gid://shopify/Shop/94368563585",
+  "ownerScope": "seo verbesserungen alles 100 % fix",
+  "verifiedLiveChanges": 7,
+  "operations": [
+    {
+      "id": "gid://shopify/Product/15447560978817",
+      "change": {
+        "id": "gid://shopify/Product/15447560978817",
+        "before": {
+          "title": "3-in-1 Magnetische Ladestation | LuxeStyle CH",
+          "description": "3-in-1 Magnetische Ladestation bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10."
+        },
+        "after": {
+          "title": "3-in-1 Magnetische Ladestation | LuxeStyle CH",
+          "description": "Magnetische 3-in-1-Ladestation mit USB-C-Anschluss. Wähle Grau oder Silber und prüfe die Angaben zur Ladeleistung für deine Geräte."
+        },
+        "beforeUpdatedAt": "2026-11-11T20:05:53Z",
+        "protected": {
+          "title": "3-in-1 Magnetische Ladestation",
+          "descriptionHtml": "<p>Diese elegante 3-in-1 Ladestation aus Aluminiumlegierung bietet eine praktische Lösung, um deine Apple-Geräte gleichzeitig und kabellos zu laden. Verfügbar in den Farben Deep Space Gray und Ice River Silver, fügt sie sich nahtlos in jede Umgebung ein. Mit ihrem kompakten Design ist sie ideal für den Schreibtisch oder Nachttisch und sorgt für Ordnung ohne Kabelsalat.</p><p>Die Ladestation wird über ein Type-C Kabel mit Strom versorgt und ist bereit für den sofortigen Einsatz. Geniesse die Bequemlichkeit des kabellosen Ladens für dein Smartphone, deine AirPods und deine Apple Watch an einem zentralen Ort.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Magnetische kabellose Ladeleistung: 5W/7.5W/10W/15W (Maximal)</li>\n<li>AirPods kabellose Ladeleistung: 5W (Maximal)</li>\n<li>Apple Watch kabellose Ladeleistung: 3W/5W (Maximal)</li>\n<li>Eingangsleistung: 9V - 3A, 12V - 3A</li>\n<li>Material: Hochwertige Aluminiumlegierung</li>\n<li>Anschluss: Type-C Kabel</li>\n<li>Farben: Deep Space Gray, Ice River Silver</li>\n</ul>\n\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n📖 <strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/wireless-charger-3in1-ratgeber\">3 in 1 Wireless Charger: Der Ratgeber für iPhone, AirPods und Apple Watch</a>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+          "handle": "3-in-1-magnetische-ladestation-621500",
+          "status": "ACTIVE",
+          "variants": {
+            "nodes": [
+              {
+                "id": "gid://shopify/ProductVariant/56063588598145",
+                "title": "Grau-Einzeln",
+                "sku": "CJ-CJSJ290134301AZ",
+                "price": "196.90"
+              },
+              {
+                "id": "gid://shopify/ProductVariant/56063588630913",
+                "title": "Silber-Einzeln",
+                "sku": "CJ-CJSJ290134302BY",
+                "price": "196.90"
+              }
+            ]
+          },
+          "onlineStoreUrl": "https://luxestyle.ch/products/3-in-1-magnetische-ladestation-621500"
+        }
+      },
+      "mutation": {
+        "data": {
+          "productUpdate": {
+            "product": {
+              "id": "gid://shopify/Product/15447560978817",
+              "updatedAt": "2026-11-20T23:41:04Z",
+              "seo": {
+                "title": "3-in-1 Magnetische Ladestation | LuxeStyle CH",
+                "description": "Magnetische 3-in-1-Ladestation mit USB-C-Anschluss. Wähle Grau oder Silber und prüfe die Angaben zur Ladeleistung für deine Geräte."
+              }
+            },
+            "userErrors": []
+          }
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/687535030657",
+      "change": {
+        "before": {
+          "id": "gid://shopify/Collection/687535030657",
+          "title": "Berufseinstieg & Abschluss",
+          "handle": "berufseinstieg-abschluss",
+          "updatedAt": "2026-10-26T05:58:01Z",
+          "descriptionHtml": "<p>Herzlich willkommen bei LuxeStyle, deiner ersten Adresse für den erfolgreichen Start ins Berufsleben! Entdecke unsere sorgfältig kuratierte Kollektion «Berufseinstieg &amp; Abschluss», die speziell darauf ausgerichtet ist, Absolventen und Berufseinsteiger optimal auszustatten – von modernsten 3D-Druck-Lösungen über professionelle Schreibwaren &amp; Büroartikel bis hin zu essenzieller Büroausstattung, die deinen Arbeitsalltag effizienter gestaltet. Profitiere bei LuxeStyle stets von unserem Gratis-Versand in der Schweiz ab CHF 50 und einem unkomplizierten 30-Tage-Rückgaberecht, damit du sorgenfrei in deine Zukunft investieren kannst.</p>",
+          "seo": {
+            "title": "Berufseinstieg & Abschluss kaufen | LuxeStyle Schweiz",
+            "description": "Berufseinstieg & Abschluss online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+          },
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/16655827042695",
+                "title": "Geschenkset: Geldbörse, Stift, Uhr in Geschenkbox",
+                "handle": "geschenkset-geldborse-stift-uhr-in-geschenkbox-611400"
+              },
+              {
+                "id": "gid://shopify/Product/16655826846087",
+                "title": "Vinyl-Schallplattenspieler-Schallkopf (28×10 mm)",
+                "handle": "vinyl-schallplattenspieler-schallkopf-28-10-mm-626100"
+              },
+              {
+                "id": "gid://shopify/Product/16655826551175",
+                "title": "Mechanische Tastatur 87 Tasten, Bluetooth",
+                "handle": "mechanische-tastatur-87-tasten-bluetooth-627800"
+              },
+              {
+                "id": "gid://shopify/Product/16655826452871",
+                "title": "Doppelfach-Stoff-Taschenset für Stifte",
+                "handle": "doppelfach-stoff-taschenset-fur-stifte-618000"
+              },
+              {
+                "id": "gid://shopify/Product/16655826223495",
+                "title": "Ergonomischer Sitzkissen zur Haltungskorrektur",
+                "handle": "ergonomischer-sitzkissen-zur-haltungskorrektur-622700"
+              }
+            ]
+          }
+        },
+        "after": {
+          "id": "gid://shopify/Collection/687535030657",
+          "seo": {
+            "title": "Geschenke zum Berufseinstieg und Abschluss | LuxeStyle",
+            "description": "Geschenkideen zum Abschluss und Berufseinstieg: Entdecke Geschenksets mit Stift, Stifttaschen und Zubehör für den ersten Arbeitsplatz."
+          },
+          "descriptionHtml": "<p>Finde Geschenkideen zum Abschluss oder zum Start ins Berufsleben. Zur Auswahl gehören unter anderem Geschenksets mit Stift, Stifttaschen und Tastaturen für den Arbeitsplatz.</p><p>Vergleiche Ausstattung und Produktdetails. Prüfe bei technischem Zubehör, ob es zu den vorhandenen Geräten passt.</p>"
+        }
+      },
+      "mutation": {
+        "data": {
+          "collectionUpdate": {
+            "collection": {
+              "id": "gid://shopify/Collection/687535030657",
+              "updatedAt": "2026-10-26T05:58:01Z",
+              "descriptionHtml": "<p>Finde Geschenkideen zum Abschluss oder zum Start ins Berufsleben. Zur Auswahl gehören unter anderem Geschenksets mit Stift, Stifttaschen und Tastaturen für den Arbeitsplatz.</p><p>Vergleiche Ausstattung und Produktdetails. Prüfe bei technischem Zubehör, ob es zu den vorhandenen Geräten passt.</p>",
+              "seo": {
+                "title": "Geschenke zum Berufseinstieg und Abschluss | LuxeStyle",
+                "description": "Geschenkideen zum Abschluss und Berufseinstieg: Entdecke Geschenksets mit Stift, Stifttaschen und Zubehör für den ersten Arbeitsplatz."
+              }
+            },
+            "userErrors": []
+          }
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/687793897857",
+      "change": {
+        "before": {
+          "id": "gid://shopify/Collection/687793897857",
+          "title": "Geschenkideen",
+          "handle": "premium-geschenke",
+          "updatedAt": "2026-11-17T12:06:16Z",
+          "descriptionHtml": "<p>Finde Geschenkideen für Weihnachten und andere Anlässe. Wähle nach Person oder entdecke kleine Aufmerksamkeiten.</p><p><strong>Für wen?</strong> <a href=\"/collections/geschenke-fuer-sie\">Für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Für Kinder</a></p><p><strong>Weitere Ideen:</strong> <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Kleine Geschenke</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichteln &amp; Mitbringsel</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a> · <a href=\"/collections/ft-maske\">Masken</a></p>",
+          "seo": {
+            "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+            "description": "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder."
+          },
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/16610052637063"
+              },
+              {
+                "id": "gid://shopify/Product/15450853245313"
+              },
+              {
+                "id": "gid://shopify/Product/16604951314823"
+              }
+            ]
+          }
+        },
+        "after": {
+          "id": "gid://shopify/Collection/687793897857",
+          "descriptionHtml": "<p>Finde Geschenkideen für Weihnachten und andere Anlässe. Wähle nach Person oder entdecke kleine Aufmerksamkeiten.</p><p><strong>Für wen?</strong> <a href=\"/collections/geschenke-fuer-sie\">Für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Für Kinder</a></p><p><strong>Weitere Ideen:</strong> <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Kleine Geschenke</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichteln &amp; Mitbringsel</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a> · <a href=\"/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen\">Ratgeber zu Weihnachtsgeschenken 2026</a></p>"
+        },
+        "oldAnchor": " · <a href=\"/collections/ft-maske\">Masken</a>",
+        "newAnchor": " · <a href=\"/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen\">Ratgeber zu Weihnachtsgeschenken 2026</a>"
+      },
+      "mutation": {
+        "data": {
+          "collectionUpdate": {
+            "collection": {
+              "id": "gid://shopify/Collection/687793897857",
+              "updatedAt": "2026-11-20T23:42:08Z",
+              "descriptionHtml": "<p>Finde Geschenkideen für Weihnachten und andere Anlässe. Wähle nach Person oder entdecke kleine Aufmerksamkeiten.</p><p><strong>Für wen?</strong> <a href=\"/collections/geschenke-fuer-sie\">Für Sie</a> · <a href=\"/collections/geschenke-fuer-ihn\">Für Ihn</a> · <a href=\"/collections/geschenke-fuer-kinder\">Für Kinder</a></p><p><strong>Weitere Ideen:</strong> <a href=\"/collections/%F0%9F%8E%81-geschenke-bis-chf-30\">Kleine Geschenke</a> · <a href=\"/collections/kleine-geschenke-mitbringsel\">Wichteln &amp; Mitbringsel</a> · <a href=\"/collections/weihnachten-2026\">Weihnachtsdeko</a> · <a href=\"/collections/adventskalender\">Adventskalender</a> · <a href=\"/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen\">Ratgeber zu Weihnachtsgeschenken 2026</a></p>",
+              "seo": {
+                "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+                "description": "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder."
+              }
+            },
+            "userErrors": []
+          }
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/756134183303",
+      "change": {
+        "before": {
+          "resourceId": "gid://shopify/Collection/756134183303",
+          "translatableContent": [
+            {
+              "key": "title",
+              "digest": "01d61d9b354278d155f78c77dd9dd2647d2f3d42573461c70e9255b7f9930a05",
+              "locale": "de"
+            },
+            {
+              "key": "body_html",
+              "digest": "8560076e6435b32a03b506c71cc2d44534a52357535534874c82064293f270b2",
+              "locale": "de"
+            },
+            {
+              "key": "handle",
+              "digest": "efaba8c78a3c906b390fe4c6e95e55c49fab495afb6bbecb3ae500c73d3af25e",
+              "locale": "de"
+            },
+            {
+              "key": "meta_title",
+              "digest": "cd5ba4814c1ffebab8f448850db9f7c6f057e6e3677d0cd1d0d75beea6c64df7",
+              "locale": "de"
+            },
+            {
+              "key": "meta_description",
+              "digest": "1d146395c6bfe5038373170cab29b0da73ac3c203def7fb4f9126648e5fa185e",
+              "locale": "de"
+            }
+          ],
+          "translations": [
+            {
+              "key": "title",
+              "value": "Consoles de jeu & consoles portables rétro",
+              "outdated": false,
+              "locale": "fr"
+            }
+          ]
+        },
+        "after": {
+          "resourceId": "gid://shopify/Collection/756134183303",
+          "translations": [
+            {
+              "key": "body_html",
+              "value": "<p>Les consoles de jeu et les consoles portables rétro se distinguent par leur usage, leurs branchements et le contenu de la boîte. Pour le modèle choisi, vérifiez si un écran intégré est mentionné ou quel écran externe est nécessaire.</p>\n<h2>Console de salon ou console portable ?</h2><ul>\n<li><strong>Écran et connectique :</strong> comparez les caractéristiques de l’écran et vérifiez la connexion au téléviseur ou au moniteur indiquée pour le modèle.</li>\n<li><strong>Commandes :</strong> vérifiez si les commandes sont intégrées et si des manettes séparées figurent parmi les éléments fournis.</li>\n<li><strong>Alimentation :</strong> consultez les indications sur la recharge ou l’alimentation secteur et vérifiez quels câbles ou adaptateurs sont indiqués comme fournis.</li>\n</ul>\n<h2>Jeux, carte mémoire et contenu du lot</h2><p>Fiez-vous aux informations de la version choisie. Vérifiez séparément quels jeux sont annoncés ou combien de jeux sont indiqués, si une carte mémoire est incluse et ce que contient le lot. Une option de stockage ne garantit aucune sélection de jeux. Si la fiche ne précise pas les jeux fournis, leur présence et leur nombre ne sont pas confirmés.</p>\n<p>Retrouvez des accessoires dans les collections <a href=\"/fr/collections/gamepads-controller\">Manettes de jeu</a> et <a href=\"/fr/collections/konsolen-zubehoer\">Accessoires pour consoles</a>. Pour élargir votre recherche, consultez la sélection <a href=\"/fr/collections/gaming\">Gaming</a>.</p>",
+              "translatableContentDigest": "8560076e6435b32a03b506c71cc2d44534a52357535534874c82064293f270b2",
+              "locale": "fr"
+            },
+            {
+              "key": "meta_title",
+              "value": "Consoles de jeu et consoles portables rétro | LuxeStyle CH",
+              "translatableContentDigest": "cd5ba4814c1ffebab8f448850db9f7c6f057e6e3677d0cd1d0d75beea6c64df7",
+              "locale": "fr"
+            },
+            {
+              "key": "meta_description",
+              "value": "Comparez les consoles de jeu et les modèles portables rétro : usage sur TV ou en déplacement, écran, connectique, stockage et contenu de la boîte.",
+              "translatableContentDigest": "1d146395c6bfe5038373170cab29b0da73ac3c203def7fb4f9126648e5fa185e",
+              "locale": "fr"
+            }
+          ]
+        }
+      },
+      "mutation": {
+        "data": {
+          "translationsRegister": {
+            "translations": [
+              {
+                "key": "body_html",
+                "locale": "fr",
+                "value": "<p>Les consoles de jeu et les consoles portables rétro se distinguent par leur usage, leurs branchements et le contenu de la boîte. Pour le modèle choisi, vérifiez si un écran intégré est mentionné ou quel écran externe est nécessaire.</p>\n<h2>Console de salon ou console portable ?</h2><ul>\n<li><strong>Écran et connectique :</strong> comparez les caractéristiques de l’écran et vérifiez la connexion au téléviseur ou au moniteur indiquée pour le modèle.</li>\n<li><strong>Commandes :</strong> vérifiez si les commandes sont intégrées et si des manettes séparées figurent parmi les éléments fournis.</li>\n<li><strong>Alimentation :</strong> consultez les indications sur la recharge ou l’alimentation secteur et vérifiez quels câbles ou adaptateurs sont indiqués comme fournis.</li>\n</ul>\n<h2>Jeux, carte mémoire et contenu du lot</h2><p>Fiez-vous aux informations de la version choisie. Vérifiez séparément quels jeux sont annoncés ou combien de jeux sont indiqués, si une carte mémoire est incluse et ce que contient le lot. Une option de stockage ne garantit aucune sélection de jeux. Si la fiche ne précise pas les jeux fournis, leur présence et leur nombre ne sont pas confirmés.</p>\n<p>Retrouvez des accessoires dans les collections <a href=\"/fr/collections/gamepads-controller\">Manettes de jeu</a> et <a href=\"/fr/collections/konsolen-zubehoer\">Accessoires pour consoles</a>. Pour élargir votre recherche, consultez la sélection <a href=\"/fr/collections/gaming\">Gaming</a>.</p>",
+                "outdated": false
+              },
+              {
+                "key": "meta_title",
+                "locale": "fr",
+                "value": "Consoles de jeu et consoles portables rétro | LuxeStyle CH",
+                "outdated": false
+              },
+              {
+                "key": "meta_description",
+                "locale": "fr",
+                "value": "Comparez les consoles de jeu et les modèles portables rétro : usage sur TV ou en déplacement, écran, connectique, stockage et contenu de la boîte.",
+                "outdated": false
+              }
+            ],
+            "userErrors": []
+          }
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Collection/689698570625",
+      "change": {
+        "before": {
+          "id": "gid://shopify/Collection/689698570625",
+          "handle": "retro-handheld",
+          "title": "Retro & Handheld-Gaming",
+          "seo": {
+            "title": "Retro & Handheld-Gaming kaufen | LuxeStyle Schweiz",
+            "description": "Retro & Handheld-Gaming online kaufen bei LuxeStyle: Gratis-Versand in der Schweiz ab CHF 50, 30 Tage Rückgabe, Lieferzeit auf jeder Produktseite."
+          },
+          "descriptionHtml": "<p><strong>👾 Retro &amp; Handheld-Gaming</strong> – die passende Auswahl für dich. Faire Preise, Lieferzeit auf jeder Produktseite. In der Schweiz gratis ab CHF 50.</p>",
+          "updatedAt": "2026-11-16T08:42:59Z",
+          "products": {
+            "nodes": [
+              {
+                "id": "gid://shopify/Product/15496936423809",
+                "title": "Retro-Spielkonsole mit 2 Controllern"
+              },
+              {
+                "id": "gid://shopify/Product/16642737045895",
+                "title": "Handheld Chain Tote mit Lunchbox"
+              },
+              {
+                "id": "gid://shopify/Product/16638859116935",
+                "title": "Silikon-Hülle für Spielkonsole – Drop-Protection"
+              },
+              {
+                "id": "gid://shopify/Product/16617977741703",
+                "title": "Retro-Handheld Spiegel aus Kupfer, einseitig"
+              },
+              {
+                "id": "gid://shopify/Product/15532258361729",
+                "title": "Laptoptasche Handheld, 14 Zoll, stossfest"
+              }
+            ]
+          }
+        },
+        "after": {
+          "id": "gid://shopify/Collection/689698570625",
+          "seo": {
+            "title": "Retro-Gaming, Handhelds und Zubehör | LuxeStyle",
+            "description": "Einstieg ins Retro-Gaming: Entdecke Konsolen, Handhelds und Zubehör. Prüfe beim gewählten Modell Anschlüsse, Steuerung und Lieferumfang."
+          },
+          "descriptionHtml": "<p>Du suchst eine Konsole für klassische Spiele oder einen Handheld für unterwegs? Starte mit der Auswahl <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>.</p><p>Für ein vorhandenes Gerät findest du <a href=\"/collections/gamepads-controller\">Gamepads und Controller</a> sowie <a href=\"/collections/konsolen-zubehoer\">Konsolenzubehör</a>. Prüfe beim gewählten Produkt Anschlüsse, Kompatibilität und Lieferumfang.</p>"
+        },
+        "observedMixedProductSample": true
+      },
+      "mutation": {
+        "data": {
+          "collectionUpdate": {
+            "collection": {
+              "id": "gid://shopify/Collection/689698570625",
+              "updatedAt": "2026-11-16T08:42:59Z",
+              "seo": {
+                "title": "Retro-Gaming, Handhelds und Zubehör | LuxeStyle",
+                "description": "Einstieg ins Retro-Gaming: Entdecke Konsolen, Handhelds und Zubehör. Prüfe beim gewählten Modell Anschlüsse, Steuerung und Lieferumfang."
+              },
+              "descriptionHtml": "<p>Du suchst eine Konsole für klassische Spiele oder einen Handheld für unterwegs? Starte mit der Auswahl <a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a>.</p><p>Für ein vorhandenes Gerät findest du <a href=\"/collections/gamepads-controller\">Gamepads und Controller</a> sowie <a href=\"/collections/konsolen-zubehoer\">Konsolenzubehör</a>. Prüfe beim gewählten Produkt Anschlüsse, Kompatibilität und Lieferumfang.</p>"
+            },
+            "userErrors": []
+          }
+        }
+      }
+    },
+    {
+      "id": "gid://shopify/Article/1001547137409",
+      "locale": "de",
+      "before": {
+        "id": "gid://shopify/Article/1001547137409",
+        "title": "Weihnachtsgeschenke 2026 Schweiz: Ideen und Elektronik",
+        "handle": "weihnachtsgeschenke-2026-schweiz-ideen",
+        "updatedAt": "2026-11-09T23:41:31Z",
+        "publishedAt": "2026-05-29T13:35:19Z",
+        "body": "<p>Wer Weihnachtsgeschenke in der Schweiz sucht, braucht vor allem eine klare Auswahl: Was passt zur beschenkten Person, welches Budget ist vorgesehen und welche Produktangaben müssen vor der Bestellung geprüft werden? Dieser Ratgeber bündelt Geschenkideen für Weihnachten 2026 und setzt einen neuen Schwerpunkt auf Elektronik-Geschenke.</p>\n<h2>Welche Elektronik-Geschenke passen zu Weihnachten 2026?</h2>\n<p>Eine belastbare Rangliste der beliebtesten Elektronik-Geschenke liegt für LuxeStyle nicht vor. Als Ausgangspunkt eignen sich diese erreichbaren Kategorien:</p>\n<ul>\n<li>\n<a href=\"/collections/kopfhoerer-audio\">Kopfhörer und Audiogeräte</a> für Menschen, die Musik oder Hörinhalte mögen</li>\n<li>\n<a href=\"/collections/handy-zubehoer\">Handy-Zubehör</a> für den täglichen Gebrauch</li>\n<li>\n<a href=\"/collections/gaming\">Spielzubehör</a> für Konsolen- und Computerspiel-Fans</li>\n<li>\n<a href=\"/collections/pc-homeoffice\">Computer- und Büro-Zubehör</a> für Arbeitsplatz und Homeoffice</li>\n<li>\n<a href=\"/collections/beamer-heimkino\">Beamer und Heimkino</a> für gemeinsame Filmabende</li>\n<li><a href=\"/collections/smart-home-gadgets\">Produkte für das vernetzte Zuhause</a></li>\n<li>\n<a href=\"/collections/drohnen-kameras\">Drohnen und Kameras</a> für Foto- und Video-Interessierte</li>\n</ul>\n<p>Prüfe bei Elektronik vor der Bestellung immer die Kompatibilität, die gewählte Ausführung, den Lieferumfang und die aktuellen Angaben auf der Produktseite.</p>\n<h2>Geschenkideen nach Empfänger</h2>\n<ul>\n<li>\n<a href=\"/collections/geschenke-fuer-sie\">Geschenke für sie</a>: eine breite Auswahl für unterschiedliche Interessen und Budgets</li>\n<li>\n<a href=\"/collections/geschenke-fuer-ihn\">Geschenke für ihn</a>: Ideen für Alltag, Freizeit und Zuhause</li>\n<li>\n<a href=\"/collections/geschenke-fuer-kinder\">Geschenke für Kinder</a>: altersgerechte Auswahl anhand der jeweiligen Produktangaben</li>\n<li>\n<a href=\"/collections/weihnachten-2026\">Weihnachten 2026</a>: saisonale Geschenkideen und Weihnachtsartikel</li>\n</ul>\n<h2>Geschenke nach Budget auswählen</h2>\n<p>Lege zuerst einen Preisrahmen pro Person fest. Kleine Aufmerksamkeiten eignen sich für Wichtelrunden und Mitbringsel. Für ein Hauptgeschenk lohnt sich eine engere Auswahl anhand der Interessen der beschenkten Person. Wer mehrere Geschenke gemeinsam bestellt, kann die öffentliche Gratisversand-Schwelle von CHF 50 berücksichtigen.</p>\n<h2>Vier Punkte vor der Bestellung prüfen</h2>\n<ol>\n<li>\n<strong>Bedarf:</strong> Passt das Geschenk zu den Interessen und zum Alltag der Person?</li>\n<li>\n<strong>Kompatibilität:</strong> Funktioniert Zubehör mit den bereits vorhandenen Geräten?</li>\n<li>\n<strong>Ausführung:</strong> Stimmen Farbe, Grösse, Variante und Lieferumfang auf der Produktseite?</li>\n<li>\n<strong>Zeitplanung:</strong> Ist die aktuelle Lieferangabe für den gewünschten Termin ausreichend?</li>\n</ol>\n<h2>Weihnachtsgeschenke in der Schweiz bestellen</h2>\n<p>Die Lieferzeit kann je nach Produkt unterschiedlich sein. Prüfe deshalb die aktuelle Lieferangabe direkt auf der jeweiligen Produktseite und plane vor Weihnachten genügend Zeit ein. Für Bestellungen in der Schweiz gilt die öffentliche Gratisversand-Schwelle von CHF 50.</p>\n<h2>Häufige Fragen</h2>\n<h3>Welche Elektronik-Geschenke eignen sich zu Weihnachten 2026?</h3><p>Eine belastbare Rangliste der beliebtesten Elektronik-Geschenke liegt für LuxeStyle nicht vor. Als Ausgangspunkt eignen sich Kopfhörer und Audiogeräte, Handy-Zubehör, Spielzubehör, Computer-Zubehör, Heimkino, Produkte für das vernetzte Zuhause sowie Drohnen und Kameras. Entscheidend sind die Interessen der beschenkten Person und die Angaben auf der jeweiligen Produktseite.</p>\n<h3>Worauf sollte ich bei einem Elektronik-Geschenk achten?</h3><p>Prüfe vor der Bestellung die Kompatibilität, die gewählte Ausführung und die aktuellen Produktangaben. Masse, Lieferumfang und technische Eigenschaften sollten zur beschenkten Person und zu bereits vorhandenen Geräten passen.</p>\n<h3>Wann sollte ich Weihnachtsgeschenke bestellen?</h3><p>Die Lieferzeit kann je nach Produkt unterschiedlich sein. Prüfe deshalb die aktuelle Lieferangabe direkt auf der Produktseite und plane vor Weihnachten genügend Zeit ein.</p>\n<h3>Ab welchem Bestellwert ist der Versand gratis?</h3><p>Für Bestellungen in der Schweiz gilt die öffentliche Gratisversand-Schwelle von CHF 50.</p>\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Welche Elektronik-Geschenke eignen sich zu Weihnachten 2026?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Eine belastbare Rangliste der beliebtesten Elektronik-Geschenke liegt für LuxeStyle nicht vor. Als Ausgangspunkt eignen sich Kopfhörer und Audiogeräte, Handy-Zubehör, Spielzubehör, Computer-Zubehör, Heimkino, Produkte für das vernetzte Zuhause sowie Drohnen und Kameras. Entscheidend sind die Interessen der beschenkten Person und die Angaben auf der jeweiligen Produktseite.\"}},{\"@type\":\"Question\",\"name\":\"Worauf sollte ich bei einem Elektronik-Geschenk achten?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Prüfe vor der Bestellung die Kompatibilität, die gewählte Ausführung und die aktuellen Produktangaben. Masse, Lieferumfang und technische Eigenschaften sollten zur beschenkten Person und zu bereits vorhandenen Geräten passen.\"}},{\"@type\":\"Question\",\"name\":\"Wann sollte ich Weihnachtsgeschenke bestellen?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Die Lieferzeit kann je nach Produkt unterschiedlich sein. Prüfe deshalb die aktuelle Lieferangabe direkt auf der Produktseite und plane vor Weihnachten genügend Zeit ein.\"}},{\"@type\":\"Question\",\"name\":\"Ab welchem Bestellwert ist der Versand gratis?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Für Bestellungen in der Schweiz gilt die öffentliche Gratisversand-Schwelle von CHF 50.\"}}]}</script>\n<h2>Weitere Geschenkideen</h2>\n<ul>\n<li><a href=\"/collections/adventskalender\">Adventskalender</a></li>\n<li><a href=\"/collections/weihnachten-2026\">Weihnachten 2026</a></li>\n<li><a href=\"/blogs/ratgeber/geschenke-fuer-frauen-2026-schweiz\">Geschenke für Frauen 2026</a></li>\n<li><a href=\"/blogs/ratgeber/geschenke-fuer-maenner-2026-schweiz\">Geschenke für Männer 2026</a></li>\n</ul>",
+        "summary": "Geschenkideen für Weihnachten 2026 in der Schweiz: Elektronik, Ideen nach Empfänger und Budget sowie Hinweise für Auswahl und Bestellung."
+      },
+      "afterNative": {
+        "id": "gid://shopify/Article/1001547137409",
+        "title": "Weihnachtsgeschenke 2026 Schweiz: Ideen und Elektronik",
+        "handle": "weihnachtsgeschenke-2026-schweiz-ideen",
+        "updatedAt": "2026-11-20T23:42:47Z",
+        "publishedAt": "2026-05-29T13:35:19Z",
+        "body": "<p>Wer Weihnachtsgeschenke in der Schweiz sucht, braucht vor allem eine klare Auswahl: Was passt zur beschenkten Person, welches Budget ist vorgesehen und welche Produktangaben müssen vor der Bestellung geprüft werden? Dieser Ratgeber bündelt Geschenkideen für Weihnachten 2026 und setzt einen neuen Schwerpunkt auf Elektronik-Geschenke.</p>\n<h2>Welche Elektronik-Geschenke passen zu Weihnachten 2026?</h2>\n<p>Wähle nach den Interessen der beschenkten Person. Diese Kategorien helfen dir beim Einstieg:</p>\n<ul>\n<li>\n<a href=\"/collections/kopfhoerer-audio\">Kopfhörer und Audiogeräte</a> für Menschen, die Musik oder Hörinhalte mögen</li>\n<li>\n<a href=\"/collections/handy-zubehoer\">Handy-Zubehör</a> für den täglichen Gebrauch</li>\n<li>\n<a href=\"/collections/gaming\">Spielzubehör</a> für Konsolen- und Computerspiel-Fans</li>\n<li>\n<a href=\"/collections/pc-gaming\">PC-Gaming</a> für die Auswahl von Zubehör zum Spielen am Computer</li>\n<li>\n<a href=\"/collections/spielkonsolen-retro-handhelds\">Spielkonsolen und Retro-Handhelds</a> für Fans klassischer Spiele</li>\n<li>\n<a href=\"/collections/pc-homeoffice\">Computer- und Büro-Zubehör</a> für Arbeitsplatz und Homeoffice</li>\n<li>\n<a href=\"/collections/beamer-heimkino\">Beamer und Heimkino</a> für gemeinsame Filmabende</li>\n<li><a href=\"/collections/smart-home-gadgets\">Produkte für das vernetzte Zuhause</a></li>\n<li>\n<a href=\"/collections/drohnen-kameras\">Drohnen und Kameras</a> für Foto- und Video-Interessierte</li>\n</ul>\n<p>Prüfe bei Elektronik vor der Bestellung immer die Kompatibilität, die gewählte Ausführung, den Lieferumfang und die aktuellen Angaben auf der Produktseite.</p>\n<h2>Geschenkideen nach Empfänger</h2>\n<ul>\n<li>\n<a href=\"/collections/geschenke-fuer-sie\">Geschenke für sie</a>: eine breite Auswahl für unterschiedliche Interessen und Budgets</li>\n<li>\n<a href=\"/collections/geschenke-fuer-ihn\">Geschenke für ihn</a>: Ideen für Alltag, Freizeit und Zuhause</li>\n<li>\n<a href=\"/collections/geschenke-fuer-kinder\">Geschenke für Kinder</a>: altersgerechte Auswahl anhand der jeweiligen Produktangaben</li>\n<li>\n<a href=\"/collections/weihnachten-2026\">Weihnachten 2026</a>: saisonale Geschenkideen und Weihnachtsartikel</li>\n</ul>\n<h2>Geschenke nach Budget auswählen</h2>\n<p>Lege zuerst einen Preisrahmen pro Person fest. Kleine Aufmerksamkeiten eignen sich für Wichtelrunden und Mitbringsel. Für ein Hauptgeschenk lohnt sich eine engere Auswahl anhand der Interessen der beschenkten Person. Wer mehrere Geschenke gemeinsam bestellt, kann die öffentliche Gratisversand-Schwelle von CHF 50 berücksichtigen.</p>\n<h2>Vier Punkte vor der Bestellung prüfen</h2>\n<ol>\n<li>\n<strong>Bedarf:</strong> Passt das Geschenk zu den Interessen und zum Alltag der Person?</li>\n<li>\n<strong>Kompatibilität:</strong> Funktioniert Zubehör mit den bereits vorhandenen Geräten?</li>\n<li>\n<strong>Ausführung:</strong> Stimmen Farbe, Grösse, Variante und Lieferumfang auf der Produktseite?</li>\n<li>\n<strong>Zeitplanung:</strong> Ist die aktuelle Lieferangabe für den gewünschten Termin ausreichend?</li>\n</ol>\n<h2>Weihnachtsgeschenke in der Schweiz bestellen</h2>\n<p>Die Lieferzeit kann je nach Produkt unterschiedlich sein. Prüfe deshalb die aktuelle Lieferangabe direkt auf der jeweiligen Produktseite und plane vor Weihnachten genügend Zeit ein. Für Bestellungen in der Schweiz gilt die öffentliche Gratisversand-Schwelle von CHF 50.</p>\n<h2>Häufige Fragen</h2>\n<h3>Welche Elektronik-Geschenke eignen sich zu Weihnachten 2026?</h3><p>Je nach Interesse eignen sich Kopfhörer und Audiogeräte, Handy-Zubehör, Spielzubehör, Computer-Zubehör, Heimkino, Produkte für das vernetzte Zuhause sowie Drohnen und Kameras. Entscheidend sind die Interessen der beschenkten Person und die Angaben auf der jeweiligen Produktseite.</p>\n<h3>Worauf sollte ich bei einem Elektronik-Geschenk achten?</h3><p>Prüfe vor der Bestellung die Kompatibilität, die gewählte Ausführung und die aktuellen Produktangaben. Masse, Lieferumfang und technische Eigenschaften sollten zur beschenkten Person und zu bereits vorhandenen Geräten passen.</p>\n<h3>Wann sollte ich Weihnachtsgeschenke bestellen?</h3><p>Die Lieferzeit kann je nach Produkt unterschiedlich sein. Prüfe deshalb die aktuelle Lieferangabe direkt auf der Produktseite und plane vor Weihnachten genügend Zeit ein.</p>\n<h3>Ab welchem Bestellwert ist der Versand gratis?</h3><p>Für Bestellungen in der Schweiz gilt die öffentliche Gratisversand-Schwelle von CHF 50.</p>\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Welche Elektronik-Geschenke eignen sich zu Weihnachten 2026?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Je nach Interesse eignen sich Kopfhörer und Audiogeräte, Handy-Zubehör, Spielzubehör, Computer-Zubehör, Heimkino, Produkte für das vernetzte Zuhause sowie Drohnen und Kameras. Entscheidend sind die Interessen der beschenkten Person und die Angaben auf der jeweiligen Produktseite.\"}},{\"@type\":\"Question\",\"name\":\"Worauf sollte ich bei einem Elektronik-Geschenk achten?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Prüfe vor der Bestellung die Kompatibilität, die gewählte Ausführung und die aktuellen Produktangaben. Masse, Lieferumfang und technische Eigenschaften sollten zur beschenkten Person und zu bereits vorhandenen Geräten passen.\"}},{\"@type\":\"Question\",\"name\":\"Wann sollte ich Weihnachtsgeschenke bestellen?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Die Lieferzeit kann je nach Produkt unterschiedlich sein. Prüfe deshalb die aktuelle Lieferangabe direkt auf der Produktseite und plane vor Weihnachten genügend Zeit ein.\"}},{\"@type\":\"Question\",\"name\":\"Ab welchem Bestellwert ist der Versand gratis?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Für Bestellungen in der Schweiz gilt die öffentliche Gratisversand-Schwelle von CHF 50.\"}}]}</script>\n<h2>Weitere Geschenkideen</h2>\n<ul>\n<li><a href=\"/collections/premium-geschenke\">Alle Geschenkideen nach Person und Anlass</a></li>\n<li><a href=\"/collections/adventskalender\">Adventskalender</a></li>\n<li><a href=\"/collections/weihnachten-2026\">Weihnachten 2026</a></li>\n<li><a href=\"/blogs/ratgeber/geschenke-fuer-frauen-2026-schweiz\">Geschenke für Frauen 2026</a></li>\n<li><a href=\"/blogs/ratgeber/geschenke-fuer-maenner-2026-schweiz\">Geschenke für Männer 2026</a></li>\n</ul>",
+        "summary": "Geschenkideen für Weihnachten 2026 in der Schweiz: Elektronik, Ideen nach Empfänger und Budget sowie Hinweise für Auswahl und Bestellung."
+      },
+      "protectedFieldsAndFaqVerified": true
+    },
+    {
+      "id": "gid://shopify/Article/1001547137409",
+      "locale": "fr",
+      "was": {
+        "resourceId": "gid://shopify/Article/1001547137409",
+        "translatableContent": [
+          {
+            "key": "title",
+            "digest": "317a3bd30f6e09dd868a263837d945c47c1fad40c562082db694e32bdabd2e20",
+            "locale": "de"
+          },
+          {
+            "key": "body_html",
+            "digest": "02fb89bd18a78a28f75210ad86e02455b716c2f7b4abaab9500dd13d4d4f4410",
+            "locale": "de"
+          },
+          {
+            "key": "summary_html",
+            "digest": "1e89836eb3ffa99f5005d7413707cd29bf51de0a18da0f4ec9a31a07aea41086",
+            "locale": "de"
+          },
+          {
+            "key": "handle",
+            "digest": "bedf5cd6812d50dc4952a0c3acc5d64c88469acd217d9a31d751b279df731aa3",
+            "locale": "de"
+          },
+          {
+            "key": "meta_title",
+            "digest": "a0bd8315912837cf0e4e225e654acf4da4fa864c52883cdbaee94ac8374f01c5",
+            "locale": "de"
+          },
+          {
+            "key": "meta_description",
+            "digest": "28e350352a2888bf0cd456afaa283ee3d446b5400ce8291d91d5fe90388826bb",
+            "locale": "de"
+          }
+        ],
+        "translations": []
+      },
+      "next": {
+        "resourceId": "gid://shopify/Article/1001547137409",
+        "translations": [
+          {
+            "locale": "fr",
+            "key": "title",
+            "value": "Cadeaux de Noël 2026 en Suisse : idées et électronique",
+            "translatableContentDigest": "317a3bd30f6e09dd868a263837d945c47c1fad40c562082db694e32bdabd2e20"
+          },
+          {
+            "locale": "fr",
+            "key": "body_html",
+            "value": "<p>Pour choisir des cadeaux de Noël en Suisse, partez de la personne qui les recevra, du budget prévu et des informations à vérifier avant la commande. Ce guide réunit des idées pour Noël 2026, avec un accent sur l’électronique.</p>\n<h2>Quels cadeaux high-tech choisir pour Noël 2026 ?</h2>\n<p>Choisissez selon les centres d’intérêt de la personne. Voici des catégories pour commencer :</p>\n<ul>\n<li><a href=\"/fr/collections/kopfhoerer-audio\">Écouteurs et appareils audio</a> pour écouter de la musique ou des contenus audio</li>\n<li><a href=\"/fr/collections/handy-zubehoer\">Accessoires pour téléphone</a> pour le quotidien</li>\n<li><a href=\"/fr/collections/gaming\">Accessoires de jeu</a> pour les adeptes des jeux sur console ou sur ordinateur</li>\n<li><a href=\"/collections/pc-gaming\">Accessoires de jeu sur PC (en allemand)</a> pour choisir du matériel pour jouer sur ordinateur</li>\n<li><a href=\"/fr/collections/spielkonsolen-retro-handhelds\">Consoles de jeu et consoles portables rétro</a> pour les amateurs de jeux classiques</li>\n<li><a href=\"/fr/collections/pc-homeoffice\">Accessoires pour ordinateur et bureau</a> pour le travail ou le télétravail</li>\n<li><a href=\"/fr/collections/beamer-heimkino\">Projecteurs et home cinéma</a> pour partager une soirée film</li>\n<li><a href=\"/collections/smart-home-gadgets\">Produits pour la maison connectée (en allemand)</a></li>\n<li><a href=\"/fr/collections/drohnen-kameras\">Drones et caméras</a> pour les amateurs de photo ou de vidéo</li>\n</ul>\n<p>Avant de commander un appareil électronique, vérifiez sa compatibilité, la variante choisie, le contenu de la boîte et les indications actuelles sur la fiche produit.</p>\n<h2>Idées de cadeaux selon la personne</h2>\n<ul>\n<li><a href=\"/fr/collections/geschenke-fuer-sie\">Cadeaux pour elle</a> : un choix varié pour différents centres d’intérêt et budgets</li>\n<li><a href=\"/fr/collections/geschenke-fuer-ihn\">Cadeaux pour lui</a> : des idées pour le quotidien, les loisirs et la maison</li>\n<li><a href=\"/fr/collections/geschenke-fuer-kinder\">Cadeaux pour enfants</a> : vérifiez la tranche d’âge indiquée pour chaque produit</li>\n<li><a href=\"/fr/collections/weihnachten-2026\">Noël 2026</a> : idées de cadeaux et articles de saison</li>\n</ul>\n<h2>Choisir des cadeaux selon son budget</h2>\n<p>Fixez d’abord un budget par personne. Les petites attentions conviennent à un échange de cadeaux ou à une invitation. Pour un cadeau principal, resserrez votre choix selon les centres d’intérêt de la personne. Si vous regroupez plusieurs cadeaux dans une commande, tenez compte de la livraison offerte dès CHF 50.</p>\n<h2>Quatre points à vérifier avant de commander</h2>\n<ol>\n<li><strong>Utilité :</strong> le cadeau correspond-il aux intérêts et au quotidien de la personne ?</li>\n<li><strong>Compatibilité :</strong> l’accessoire fonctionne-t-il avec ses appareils ?</li>\n<li><strong>Variante :</strong> la couleur, la taille, la version et le contenu de la boîte correspondent-ils à ce que vous recherchez ?</li>\n<li><strong>Délai :</strong> le délai actuellement indiqué convient-il à la date souhaitée ?</li>\n</ol>\n<h2>Commander des cadeaux de Noël en Suisse</h2>\n<p>Le délai de livraison peut varier selon le produit. Vérifiez le délai indiqué sur la fiche produit et prévoyez une marge avant Noël. En Suisse, la livraison est offerte dès CHF 50.</p>\n<h2>Questions fréquentes</h2>\n<h3>Quels cadeaux high-tech offrir à Noël 2026 ?</h3><p>Selon les centres d’intérêt, pensez aux écouteurs et appareils audio, aux accessoires pour téléphone ou pour jouer, au matériel informatique, au home cinéma, aux objets pour la maison connectée, aux drones et aux caméras. Tenez compte des préférences de la personne et des indications sur la fiche produit.</p>\n<h3>Que faut-il vérifier avant d’offrir un appareil ou un accessoire électronique ?</h3><p>Vérifiez la compatibilité, la variante choisie et les informations sur la fiche produit. Les dimensions, le contenu de la boîte et les caractéristiques techniques doivent convenir à la personne et aux appareils qu’elle utilise déjà.</p>\n<h3>Quand commander ses cadeaux de Noël ?</h3><p>Le délai de livraison peut varier selon le produit. Vérifiez le délai indiqué sur la fiche produit et prévoyez une marge avant Noël.</p>\n<h3>À partir de quel montant la livraison est-elle gratuite ?</h3><p>En Suisse, la livraison est offerte dès CHF 50.</p>\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Quels cadeaux high-tech offrir à Noël 2026 ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Selon les centres d’intérêt, pensez aux écouteurs et appareils audio, aux accessoires pour téléphone ou pour jouer, au matériel informatique, au home cinéma, aux objets pour la maison connectée, aux drones et aux caméras. Tenez compte des préférences de la personne et des indications sur la fiche produit.\"}},{\"@type\":\"Question\",\"name\":\"Que faut-il vérifier avant d’offrir un appareil ou un accessoire électronique ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Vérifiez la compatibilité, la variante choisie et les informations sur la fiche produit. Les dimensions, le contenu de la boîte et les caractéristiques techniques doivent convenir à la personne et aux appareils qu’elle utilise déjà.\"}},{\"@type\":\"Question\",\"name\":\"Quand commander ses cadeaux de Noël ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Le délai de livraison peut varier selon le produit. Vérifiez le délai indiqué sur la fiche produit et prévoyez une marge avant Noël.\"}},{\"@type\":\"Question\",\"name\":\"À partir de quel montant la livraison est-elle gratuite ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"En Suisse, la livraison est offerte dès CHF 50.\"}}]}</script>\n<h2>Autres idées de cadeaux</h2>\n<ul>\n<li><a href=\"/fr/collections/premium-geschenke\">Toutes les idées de cadeaux selon la personne et l’occasion</a></li>\n<li><a href=\"/fr/collections/adventskalender\">Calendriers de l’Avent</a></li>\n<li><a href=\"/fr/collections/weihnachten-2026\">Noël 2026</a></li>\n<li><a href=\"/blogs/ratgeber/geschenke-fuer-frauen-2026-schweiz\">Cadeaux pour femmes en 2026 (en allemand)</a></li>\n<li><a href=\"/blogs/ratgeber/geschenke-fuer-maenner-2026-schweiz\">Cadeaux pour hommes en 2026 (en allemand)</a></li>\n</ul>",
+            "translatableContentDigest": "02fb89bd18a78a28f75210ad86e02455b716c2f7b4abaab9500dd13d4d4f4410"
+          },
+          {
+            "locale": "fr",
+            "key": "summary_html",
+            "value": "Idées de cadeaux pour Noël 2026 en Suisse : électronique, suggestions selon la personne et le budget, et conseils pour choisir et commander.",
+            "translatableContentDigest": "1e89836eb3ffa99f5005d7413707cd29bf51de0a18da0f4ec9a31a07aea41086"
+          },
+          {
+            "locale": "fr",
+            "key": "meta_title",
+            "value": "Cadeaux de Noël 2026 en Suisse : idées high-tech",
+            "translatableContentDigest": "a0bd8315912837cf0e4e225e654acf4da4fa864c52883cdbaee94ac8374f01c5"
+          },
+          {
+            "locale": "fr",
+            "key": "meta_description",
+            "value": "Trouvez des idées de cadeaux de Noël 2026 en Suisse selon la personne et le budget. Vérifiez la compatibilité, la variante et le délai avant de commander.",
+            "translatableContentDigest": "28e350352a2888bf0cd456afaa283ee3d446b5400ce8291d91d5fe90388826bb"
+          }
+        ]
+      },
+      "mutation": {
+        "data": {
+          "translationsRegister": {
+            "translations": [
+              {
+                "key": "title",
+                "locale": "fr",
+                "outdated": false
+              },
+              {
+                "key": "body_html",
+                "locale": "fr",
+                "outdated": false
+              },
+              {
+                "key": "summary_html",
+                "locale": "fr",
+                "outdated": false
+              },
+              {
+                "key": "meta_title",
+                "locale": "fr",
+                "outdated": false
+              },
+              {
+                "key": "meta_description",
+                "locale": "fr",
+                "outdated": false
+              }
+            ],
+            "userErrors": []
+          }
+        }
+      },
+      "nativeReadback": {
+        "resourceId": "gid://shopify/Article/1001547137409",
+        "keys": [
+          "title",
+          "body_html",
+          "summary_html",
+          "meta_title",
+          "meta_description"
+        ],
+        "exact": true
+      }
+    }
+  ],
+  "publicLive": {
+    "ladestation": {
+      "path": "/products/3-in-1-magnetische-ladestation-621500",
+      "status": 200,
+      "title": "3-in-1 Magnetische Ladestation | LuxeStyle CH",
+      "description": "Magnetische 3-in-1-Ladestation mit USB-C-Anschluss. Wähle Grau oder Silber und prüfe die Angaben zur Ladeleistung für deine Geräte.",
+      "ogDescription": "Magnetische 3-in-1-Ladestation mit USB-C-Anschluss. Wähle Grau oder Silber und prüfe die Angaben zur Ladeleistung für deine Geräte.",
+      "robots": null,
+      "canonicals": [
+        "https://luxestyle.ch/products/3-in-1-magnetische-ladestation-621500"
+      ],
+      "h1": 1,
+      "liquidErrors": 0
+    },
+    "berufseinstieg": {
+      "path": "/collections/berufseinstieg-abschluss",
+      "status": 200,
+      "title": "Geschenke zum Berufseinstieg und Abschluss | LuxeStyle",
+      "description": "Geschenkideen zum Abschluss und Berufseinstieg: Entdecke Geschenksets mit Stift, Stifttaschen und Zubehör für den ersten Arbeitsplatz.",
+      "ogDescription": "Geschenkideen zum Abschluss und Berufseinstieg: Entdecke Geschenksets mit Stift, Stifttaschen und Zubehör für den ersten Arbeitsplatz.",
+      "robots": null,
+      "canonicals": [
+        "https://luxestyle.ch/collections/berufseinstieg-abschluss"
+      ],
+      "h1": 1,
+      "liquidErrors": 0,
+      "bodyVisible": true,
+      "old3D": false
+    },
+    "geschenke": {
+      "path": "/collections/premium-geschenke",
+      "status": 200,
+      "title": "Geschenkideen & Weihnachtsgeschenke | LuxeStyle Schweiz",
+      "description": "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder.",
+      "ogDescription": "Geschenkideen und Weihnachtsgeschenke: Uhren, Schmuck, Taschen, Kuscheldecken, Diffuser, Tech und Spielzeug – Ideen für Sie, Ihn und Kinder.",
+      "robots": null,
+      "canonicals": [
+        "https://luxestyle.ch/collections/premium-geschenke"
+      ],
+      "h1": 1,
+      "liquidErrors": 0,
+      "guideAnchor": true,
+      "oldMaskIntro": false
+    },
+    "ratgeber": {
+      "path": "/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen",
+      "status": 200,
+      "title": "Weihnachtsgeschenke 2026 Schweiz: Elektronik-Ideen – LuxeStyle",
+      "description": "Weihnachtsgeschenke 2026 in der Schweiz: Elektronik-Ideen nach Empfänger und Budget sowie Hinweise zu Kompatibilität, Auswahl und Bestellung.",
+      "ogDescription": "Weihnachtsgeschenke 2026 in der Schweiz: Elektronik-Ideen nach Empfänger und Budget sowie Hinweise zu Kompatibilität, Auswahl und Bestellung.",
+      "robots": null,
+      "canonicals": [
+        "https://luxestyle.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen"
+      ],
+      "h1": 1,
+      "liquidErrors": 0,
+      "newArticleLinks": [
+        "/collections/pc-gaming",
+        "/collections/spielkonsolen-retro-handhelds",
+        "/collections/premium-geschenke"
+      ],
+      "oldRank": false,
+      "publicFaqQuestions": 4,
+      "faqFirstAnswer": "Je nach Interesse eignen sich Kopfhörer und Audiogeräte, Handy-Zubehör, Spielzubehör, Computer-Zubehör, Heimkino, Produkte für das vernetzte Zuhause sowie Drohnen und Kameras. Entscheidend sind die Interessen der beschenkten Person und die Angaben auf der jeweiligen Produktseite.",
+      "articleTopicAnchors": true
+    },
+    "frRetro": {
+      "status": 200,
+      "canonical": [
+        "<link\n  rel=\"canonical\"\n  href=\"https://luxestyle.ch/fr/collections/spielkonsolen-retro-handhelds\"\n>"
+      ],
+      "title": [
+        "Consoles de jeu et consoles portables rétro | LuxeStyle CH"
+      ],
+      "description": [],
+      "robots": [
+        "<meta name=\"robots\" content=\"noindex, follow\">"
+      ],
+      "translatedBody": true,
+      "liquidError": 0
+    },
+    "frArticle": {
+      "status": 200,
+      "themeId": 214169584007,
+      "land": "https://luxestyle.ch/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen",
+      "cookiesSet": [
+        "_shopify_essential",
+        "_shopify_analytics",
+        "_shopify_marketing",
+        "cart_currency",
+        "localization",
+        "_shopify_cmp"
+      ],
+      "robots": [
+        "noindex, follow"
+      ],
+      "title": [
+        "\n  Cadeaux de Noël 2026 en Suisse : idées high-tech\n &ndash; LuxeStyle"
+      ],
+      "canonical": [
+        "https://luxestyle.ch/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen"
+      ],
+      "description": [
+        "Trouvez des idées de cadeaux de Noël 2026 en Suisse selon la personne et le budget. Vérifiez la compatibilité, la variante et le délai avant de commander."
+      ],
+      "translatedIntro": true,
+      "fourFaq": true,
+      "giftLink": true,
+      "liquidErrors": 0
+    },
+    "retroHub": {
+      "status": 200,
+      "title": [
+        "Retro-Gaming, Handhelds und Zubehör | LuxeStyle"
+      ],
+      "descriptions": [
+        "Einstieg ins Retro-Gaming: Entdecke Konsolen, Handhelds und Zubehör. Prüfe beim gewählten Modell Anschlüsse, Steuerung und Lieferumfang."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/collections/retro-handheld"
+      ],
+      "intro": true,
+      "deepLink": true,
+      "noindex": false,
+      "liquidErrors": 0
+    }
+  },
+  "protectedTheme": {
+    "pendingDraft": {
+      "id": "gid://shopify/OnlineStoreTheme/214526394759",
+      "name": "LuxeStyle SEO 21.11.2026 R279",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-20T23:50:04Z",
+      "files": [
+        {
+          "filename": "layout/theme.liquid",
+          "md5": "3b9b8d9efe3deaf1cdf4e3920ce7fdc1",
+          "exact": true
+        },
+        {
+          "filename": "sections/lx-collection-details.liquid",
+          "md5": "19f74674e94c562c0ff9dee74cf1c7a1",
+          "exact": true
+        },
+        {
+          "filename": "sections/product-information.liquid",
+          "md5": "7d57b891be072eecd57a3699e58d5566",
+          "exact": true
+        },
+        {
+          "filename": "snippets/meta-tags.liquid",
+          "md5": "4059cb2855cb4d2cb167371ba604803e",
+          "exact": true
+        }
+      ],
+      "exactScope": {
+        "main": "gid://shopify/OnlineStoreTheme/214169584007",
+        "draft": "gid://shopify/OnlineStoreTheme/214526394759",
+        "mainCount": 561,
+        "draftCount": 561,
+        "changes": [
+          {
+            "path": "layout/theme.liquid",
+            "before": "62a77592ae9e0648d2ccec60bdf23979",
+            "after": "3b9b8d9efe3deaf1cdf4e3920ce7fdc1"
+          },
+          {
+            "path": "sections/lx-collection-details.liquid",
+            "before": "8ceeccb466cd2af6ad729f9d6e7ec946",
+            "after": "19f74674e94c562c0ff9dee74cf1c7a1"
+          },
+          {
+            "path": "sections/product-information.liquid",
+            "before": "9d9646c79c920779614ad848847d1e0d",
+            "after": "7d57b891be072eecd57a3699e58d5566"
+          },
+          {
+            "path": "snippets/meta-tags.liquid",
+            "before": "fa92ed374a03d14d60ffc7d70e112ff5",
+            "after": "4059cb2855cb4d2cb167371ba604803e"
+          }
+        ],
+        "exactScope": true
+      },
+      "previewChecks": {
+        "correctThemeEverywhere": true,
+        "highPriceDE": true,
+        "highPriceFR": true,
+        "variantBPrice": true,
+        "projectorVideoScope": true,
+        "targetArticleIndexable": true,
+        "otherFrenchProtected": true,
+        "encodedHeadingFixed": true
+      },
+      "publicSeoThemePublished": false
+    },
+    "finalPreview": {
+      "high_price_de": {
+        "previewUrl": "https://au3j0y-hq.myshopify.com/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591&preview_theme_id=214526394759",
+        "finalUrl": "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591",
+        "status": 200,
+        "bytes": 1040441,
+        "theme": {
+          "name": "LuxeStyle SEO 21.11.2026 R279",
+          "id": 214526394759,
+          "role": "unpublished"
+        },
+        "exactDraft": true,
+        "title": "Selbstzentrierendes Vierbacken-Drehfutter | LuxeStyle CH",
+        "lang": "de",
+        "robots": [],
+        "description": [
+          "Für präzises Spannen von Werkstücken an der Drehmaschine verwendest du dieses selbstzentrierende Vierbacken-Drehfutter. Verschiedene K12-Modelle."
+        ],
+        "amount": [
+          "4245.90"
+        ],
+        "currency": [
+          "CHF"
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200"
+        ],
+        "headlineCount": 1,
+        "jsonLdTypes": [
+          "Organization",
+          "Product",
+          "BreadcrumbList"
+        ],
+        "jsonLdParseErrors": 0,
+        "liquidErrors": 0,
+        "frBody": false,
+        "videoMediaVisible": false,
+        "doubleEncodedHeading": false,
+        "frArticleIntro": false
+      },
+      "high_price_fr": {
+        "previewUrl": "https://au3j0y-hq.myshopify.com/fr/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591&preview_theme_id=214526394759",
+        "finalUrl": "https://luxestyle.ch/fr/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591",
+        "status": 200,
+        "bytes": 1002729,
+        "theme": {
+          "name": "LuxeStyle SEO 21.11.2026 R279",
+          "id": 214526394759,
+          "role": "unpublished"
+        },
+        "exactDraft": true,
+        "title": "Selbstzentrierendes Vierbacken-Drehfutter | LuxeStyle CH",
+        "lang": "fr",
+        "robots": [
+          "noindex, follow"
+        ],
+        "description": [
+          "Für präzises Spannen von Werkstücken an der Drehmaschine verwendest du dieses selbstzentrierende Vierbacken-Drehfutter. Verschiedene K12-Modelle."
+        ],
+        "amount": [
+          "4245.90"
+        ],
+        "currency": [
+          "CHF"
+        ],
+        "canonical": [
+          "https://luxestyle.ch/fr/products/selbstzentrierendes-vierbacken-drehfutter-609200"
+        ],
+        "headlineCount": 1,
+        "jsonLdTypes": [
+          "Organization",
+          "Product",
+          "BreadcrumbList"
+        ],
+        "jsonLdParseErrors": 0,
+        "liquidErrors": 0,
+        "frBody": false,
+        "videoMediaVisible": false,
+        "doubleEncodedHeading": false,
+        "frArticleIntro": false
+      },
+      "projector": {
+        "previewUrl": "https://au3j0y-hq.myshopify.com/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445316487&preview_theme_id=214526394759",
+        "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445316487",
+        "status": 200,
+        "bytes": 1125867,
+        "theme": {
+          "name": "LuxeStyle SEO 21.11.2026 R279",
+          "id": 214526394759,
+          "role": "unpublished"
+        },
+        "exactDraft": true,
+        "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+        "lang": "de",
+        "robots": [],
+        "description": [
+          "Sternenlicht-Projektor mit sieben Ausführungen: Grundmodell, Motivscheiben, Bluetooth oder Spieluhr. Ausstattung und Lieferumfang A–G im Detail vergleichen."
+        ],
+        "amount": [
+          "37.90"
+        ],
+        "currency": [
+          "CHF"
+        ],
+        "canonical": [
+          "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+        ],
+        "headlineCount": 1,
+        "jsonLdTypes": [
+          "Organization",
+          "ProductGroup",
+          "BreadcrumbList"
+        ],
+        "jsonLdParseErrors": 0,
+        "liquidErrors": 0,
+        "frBody": false,
+        "videoMediaVisible": true,
+        "doubleEncodedHeading": false,
+        "frArticleIntro": false
+      },
+      "retro_fr": {
+        "previewUrl": "https://au3j0y-hq.myshopify.com/fr/collections/spielkonsolen-retro-handhelds?preview_theme_id=214526394759",
+        "finalUrl": "https://luxestyle.ch/fr/collections/spielkonsolen-retro-handhelds",
+        "status": 200,
+        "bytes": 1440660,
+        "theme": {
+          "name": "LuxeStyle SEO 21.11.2026 R279",
+          "id": 214526394759,
+          "role": "unpublished"
+        },
+        "exactDraft": true,
+        "title": "Consoles de jeu et consoles portables rétro | LuxeStyle CH",
+        "lang": "fr",
+        "robots": [
+          "noindex, follow"
+        ],
+        "description": [
+          "Comparez les consoles de jeu et les modèles portables rétro : usage sur TV ou en déplacement, écran, connectique, stockage et contenu de la boîte."
+        ],
+        "amount": [],
+        "currency": [],
+        "canonical": [
+          "https://luxestyle.ch/fr/collections/spielkonsolen-retro-handhelds"
+        ],
+        "headlineCount": 1,
+        "jsonLdTypes": [
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdParseErrors": 0,
+        "liquidErrors": 0,
+        "frBody": true,
+        "videoMediaVisible": false,
+        "doubleEncodedHeading": false,
+        "frArticleIntro": false
+      },
+      "retro_de": {
+        "previewUrl": "https://au3j0y-hq.myshopify.com/collections/spielkonsolen-retro-handhelds?preview_theme_id=214526394759",
+        "finalUrl": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds",
+        "status": 200,
+        "bytes": 1477474,
+        "theme": {
+          "name": "LuxeStyle SEO 21.11.2026 R279",
+          "id": 214526394759,
+          "role": "unpublished"
+        },
+        "exactDraft": true,
+        "title": "Spielkonsolen und Retro-Handhelds | LuxeStyle CH",
+        "lang": "de",
+        "robots": [],
+        "description": [
+          "Spielkonsolen und Retro-Handhelds vergleichen: Einsatz am TV oder unterwegs, Anschlüsse, Display, Speicheroptionen und bestätigten Lieferumfang prüfen."
+        ],
+        "amount": [],
+        "currency": [],
+        "canonical": [
+          "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds"
+        ],
+        "headlineCount": 1,
+        "jsonLdTypes": [
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdParseErrors": 0,
+        "liquidErrors": 0,
+        "frBody": false,
+        "videoMediaVisible": false,
+        "doubleEncodedHeading": false,
+        "frArticleIntro": false
+      },
+      "other_fr": {
+        "previewUrl": "https://au3j0y-hq.myshopify.com/fr/collections/damen-mode?preview_theme_id=214526394759",
+        "finalUrl": "https://luxestyle.ch/fr/collections/damen-mode",
+        "status": 200,
+        "bytes": 1520437,
+        "theme": {
+          "name": "LuxeStyle SEO 21.11.2026 R279",
+          "id": 214526394759,
+          "role": "unpublished"
+        },
+        "exactDraft": true,
+        "title": "Mode femme : blouses, robes, chaussures & sacs | LuxeStyle",
+        "lang": "fr",
+        "robots": [
+          "noindex, follow"
+        ],
+        "description": [
+          "Mode femme chez LuxeStyle : blouses, t-shirts, robes, sandales, escarpins, bottes, sacs à main et portemonnaies pour tous les jours. Paiement TWINT ou Klarna."
+        ],
+        "amount": [],
+        "currency": [],
+        "canonical": [
+          "https://luxestyle.ch/fr/collections/damen-mode"
+        ],
+        "headlineCount": 1,
+        "jsonLdTypes": [
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdParseErrors": 0,
+        "liquidErrors": 0,
+        "frBody": false,
+        "videoMediaVisible": false,
+        "doubleEncodedHeading": false,
+        "frArticleIntro": false
+      },
+      "article_fr": {
+        "previewUrl": "https://au3j0y-hq.myshopify.com/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen?preview_theme_id=214526394759",
+        "finalUrl": "https://luxestyle.ch/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen",
+        "status": 200,
+        "bytes": 908142,
+        "theme": {
+          "name": "LuxeStyle SEO 21.11.2026 R279",
+          "id": 214526394759,
+          "role": "unpublished"
+        },
+        "exactDraft": true,
+        "title": "Cadeaux de Noël 2026 en Suisse : idées high-tech – LuxeStyle",
+        "lang": "fr",
+        "robots": [],
+        "description": [
+          "Trouvez des idées de cadeaux de Noël 2026 en Suisse selon la personne et le budget. Vérifiez la compatibilité, la variante et le délai avant de commander."
+        ],
+        "amount": [],
+        "currency": [],
+        "canonical": [
+          "https://luxestyle.ch/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen"
+        ],
+        "headlineCount": 1,
+        "jsonLdTypes": [
+          "Organization",
+          "FAQPage",
+          "Article"
+        ],
+        "jsonLdParseErrors": 0,
+        "liquidErrors": 0,
+        "frBody": false,
+        "videoMediaVisible": false,
+        "doubleEncodedHeading": false,
+        "frArticleIntro": true
+      }
+    },
+    "publishState": "explicit approval requested, unpublished at verification"
+  },
+  "gsc": {
+    "property": "sc-domain:luxestyle.ch",
+    "boundedCalls": 1,
+    "rows": [
+      {
+        "keys": [
+          "https://luxestyle.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen"
+        ],
+        "clicks": 0,
+        "impressions": 29,
+        "ctr": 0,
+        "position": 4.206896551724138
+      },
+      {
+        "keys": [
+          "https://luxestyle.ch/collections/kopfhoerer-audio"
+        ],
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 77.5
+      },
+      {
+        "keys": [
+          "https://luxestyle.ch/pages/alle-kategorien"
+        ],
+        "clicks": 0,
+        "impressions": 9,
+        "ctr": 0,
+        "position": 2.7777777777777777
+      }
+    ],
+    "row_count": 3,
+    "truncated": false,
+    "query": {
+      "start_date": "2026-11-04",
+      "end_date": "2026-11-17",
+      "search_type": "web",
+      "data_state": "final",
+      "dimensions": [
+        "page"
+      ],
+      "row_limit": 5,
+      "start_row": 0,
+      "filters": [
+        {
+          "dimension": "page",
+          "operator": "includingRegex",
+          "expression": "^(?:https://luxestyle\\.ch/collections/kopfhoerer-audio|https://luxestyle\\.ch/collections/pc-gaming|https://luxestyle\\.ch/collections/spielkonsolen-retro-handhelds|https://luxestyle\\.ch/pages/alle-kategorien|https://luxestyle\\.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen)$"
+        }
+      ],
+      "estimated_data_finalized_through": "2026-11-17"
+    }
+  },
+  "open": {
+    "indexing": "unknown until Google recrawl; missing GSC row unknown",
+    "frRetro": "translated collection head and choices; German product cards observed; still noindex",
+    "retroHubProducts": "Mixed native first five cards; no rule/distribution edit",
+    "allSorted": "HTTP500 and one 200 with Liquid error; later 200 without error, cause unknown"
+  }
+}

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 278,
-  "updatedAt": "2026-11-20T23:36:41Z",
+  "revision": 279,
+  "updatedAt": "2026-11-20T23:54:18Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-21",
     "currentDayEvidenceKind": "R277_TARGETED_CONTINUATION_PLUS_R278_FIRST_DAILY_REPORT",
-    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged. R278: First Metricool report for 14–20 Nov, 6 field + 6 data calls, 1 YouTube Watch field + 1 bounded Watch query 17–20 Nov. Three video rows matched, missing data unknown. One Klaviyo account attempt returned UNAUTHORIZED; no flow report. Targeted past planner calls to verify legacy IDs/media and Watch cohort after new findings. No orders, merchant read, GSC, broad sales or business writes.",
+    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged. R278: First Metricool report for 14–20 Nov, 6 field + 6 data calls, 1 YouTube Watch field + 1 bounded Watch query 17–20 Nov. Three video rows matched, missing data unknown. One Klaviyo account attempt returned UNAUTHORIZED; no flow report. Targeted past planner calls to verify legacy IDs/media and Watch cohort after new findings. No orders, merchant read, GSC, broad sales or business writes. R279: Exactly one new bounded Search Console report for 5 URLs, 4–17 Nov, separate SEO owner task. Prior Metricool/Klaviyo reports retained without repetition.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-11-21",
@@ -40,7 +40,17 @@
       },
       "ordersQueried": false,
       "purchaseWatchEnded": true,
-      "broadSalesRead": false
+      "broadSalesRead": false,
+      "searchConsole": {
+        "localDate": "2026-11-21",
+        "range": "2026-11-04/2026-11-17",
+        "property": "sc-domain:luxestyle.ch",
+        "calls": 1,
+        "targets": 5,
+        "rows": 3,
+        "missingUnknown": true,
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json"
+      }
     },
     "targetedContinuation": {
       "proof": "dropship/codex-handoff-20261018/R277-PROOF-20261121.json",
@@ -6675,6 +6685,15 @@
         "shootingNote": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
         "salesQa": "dropship/codex-handoff-20261018/runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
         "evidence": "Existing model comparison draft survived real public storefront A-to-B variant change in local Chromium"
+      },
+      "run279": {
+        "report": "dropship/codex-handoff-20261018/R279-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R279-PROOF-20261121.json",
+        "themeEvidence": "dropship/codex-handoff-20261018/runs/20261121-r279/THEME-DIFF-UND-VORSCHAU.json",
+        "gsc": "dropship/codex-handoff-20261018/runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json",
+        "atUTC": "2026-11-20T23:54:18Z",
+        "liveContentChanges": 7,
+        "stagedSeoTheme": "214526394759"
       }
     },
     {
@@ -19590,6 +19609,15 @@
         "shootingNote": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
         "salesQa": "dropship/codex-handoff-20261018/runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
         "evidence": "R278 work and evidence ready, no documented Claude acknowledgement"
+      },
+      "run279": {
+        "report": "dropship/codex-handoff-20261018/R279-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R279-PROOF-20261121.json",
+        "themeEvidence": "dropship/codex-handoff-20261018/runs/20261121-r279/THEME-DIFF-UND-VORSCHAU.json",
+        "gsc": "dropship/codex-handoff-20261018/runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json",
+        "atUTC": "2026-11-20T23:54:18Z",
+        "liveContentChanges": 7,
+        "stagedSeoTheme": "214526394759"
       }
     },
     {
@@ -39367,6 +39395,15 @@
         "resolvedHistoricalBlockers": [
           "R262 aktuell: ThemePublish von Connector verweigert (Only agent-created themes can be published here), Entwurf214169584007 bleibt UNPUBLISHED."
         ]
+      },
+      "run279": {
+        "report": "dropship/codex-handoff-20261018/R279-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R279-PROOF-20261121.json",
+        "themeEvidence": "dropship/codex-handoff-20261018/runs/20261121-r279/THEME-DIFF-UND-VORSCHAU.json",
+        "gsc": "dropship/codex-handoff-20261018/runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json",
+        "atUTC": "2026-11-20T23:54:18Z",
+        "liveContentChanges": 7,
+        "stagedSeoTheme": "214526394759"
       }
     },
     {
@@ -50600,6 +50637,15 @@
         "dropship/codex-handoff-20261018/R278-REPORT-20261121.md",
         "dropship/codex-handoff-20261018/R278-PROOF-20261121.json"
       ]
+    },
+    {
+      "revision": 279,
+      "at": "2026-11-20T23:54:18Z",
+      "summary": "Sieben SEO- und Inhaltskorrekturen öffentlich bestätigt. Vier technische Änderungen in Shopify-Kopie 214526394759 gespeichert und auf sieben echten Vorschauseiten geprüft. Dateivergleich der beiden 561-Dateien-Themes zeigt exakt vier Abweichungen. Veröffentlichung der benannten Kopie steht aus. Eine begrenzte Search-Console-Messung gespeichert.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R279-REPORT-20261121.md",
+        "dropship/codex-handoff-20261018/R279-PROOF-20261121.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -52713,7 +52759,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 278,
+    "latestCanonicalRevision": 279,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -53861,6 +53907,22 @@
       "legacyPublicationsConfirmed": 4,
       "professionalMasterReady": false,
       "claudeReceipt": "UNKNOWN"
+    },
+    "run279": {
+      "atUTC": "2026-11-20T23:54:18Z",
+      "dateLocal": "2026-11-21",
+      "summary": "Sieben SEO- und Inhaltskorrekturen öffentlich bestätigt. Vier technische Änderungen in Shopify-Kopie 214526394759 gespeichert und auf sieben echten Vorschauseiten geprüft. Dateivergleich der beiden 561-Dateien-Themes zeigt exakt vier Abweichungen. Veröffentlichung der benannten Kopie steht aus. Eine begrenzte Search-Console-Messung gespeichert.",
+      "report": "dropship/codex-handoff-20261018/R279-REPORT-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/R279-PROOF-20261121.json",
+      "themeEvidence": "dropship/codex-handoff-20261018/runs/20261121-r279/THEME-DIFF-UND-VORSCHAU.json",
+      "gsc": "dropship/codex-handoff-20261018/runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json",
+      "themeId": "214526394759",
+      "verifiedLiveContentWrites": 7,
+      "stagedTechnicalFixes": 4,
+      "previewPassed": 7,
+      "themeRole": "UNPUBLISHED",
+      "themePublishWaitingForExactOwnerApproval": true,
+      "indexingAfterRecrawl": "UNKNOWN"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -80948,5 +81010,21 @@
     "legacyPublicationsConfirmed": 4,
     "professionalMasterReady": false,
     "claudeReceipt": "UNKNOWN"
+  },
+  "run279": {
+    "atUTC": "2026-11-20T23:54:18Z",
+    "dateLocal": "2026-11-21",
+    "summary": "Sieben SEO- und Inhaltskorrekturen öffentlich bestätigt. Vier technische Änderungen in Shopify-Kopie 214526394759 gespeichert und auf sieben echten Vorschauseiten geprüft. Dateivergleich der beiden 561-Dateien-Themes zeigt exakt vier Abweichungen. Veröffentlichung der benannten Kopie steht aus. Eine begrenzte Search-Console-Messung gespeichert.",
+    "report": "dropship/codex-handoff-20261018/R279-REPORT-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/R279-PROOF-20261121.json",
+    "themeEvidence": "dropship/codex-handoff-20261018/runs/20261121-r279/THEME-DIFF-UND-VORSCHAU.json",
+    "gsc": "dropship/codex-handoff-20261018/runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json",
+    "themeId": "214526394759",
+    "verifiedLiveContentWrites": 7,
+    "stagedTechnicalFixes": 4,
+    "previewPassed": 7,
+    "themeRole": "UNPUBLISHED",
+    "themePublishWaitingForExactOwnerApproval": true,
+    "indexingAfterRecrawl": "UNKNOWN"
   }
 }

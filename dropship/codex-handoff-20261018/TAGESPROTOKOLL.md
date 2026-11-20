@@ -3421,3 +3421,18 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R278-REPORT-20261121.md) · [Belege](R278-PROOF-20261121.json)
 
 [LUXESTYLE_R278_20261121]
+
+### R279 – Suchmetadaten, interne Links, Übersetzungen und Theme
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Produkt | Meta-Beschreibung der magnetischen Ladestation an das Produkt angepasst | Live. Meta- und Open-Graph-Beschreibung stimmen, Variante und Betrag bestätigt. |
+| Sammlungen | Berufseinstieg, Geschenkideen und Retro-Hub redigiert und passende interne Ziele ergänzt | Drei Änderungen live und öffentlich geprüft. |
+| Ratgeber | Deutschen Weihnachtsratgeber mit drei internen Links und abgestimmten FAQ verbessert | Live, vier FAQ in gültigem JSON-LD. |
+| Französisch | Retro-Kategorie und Weihnachtsratgeber übersetzt | Beide Inhalte mit Metadaten live, bestehender Indexschutz im aktuell aktiven Theme. |
+| Theme | Preisformat, Projektor-Videodaten, doppelt codiertes & und Indexierbarkeit des FR-Artikels korrigiert | Unveröffentlichte Kopie. Sieben Vorschauseiten bestanden. Genau vier geänderte Dateien von 561. |
+| Suchdaten | Eine kleine Search-Console-Abfrage für fünf URLs ausgeführt | Zeitraum 4.–17.11. Zwei fehlende Zeilen und spätere Google-Indexierung unbekannt. |
+
+[Bericht](R279-REPORT-20261121.md) · [Belege](R279-PROOF-20261121.json)
+
+[LUXESTYLE_R279_20261121]

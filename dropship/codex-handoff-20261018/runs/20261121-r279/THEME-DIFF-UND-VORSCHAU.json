@@ -1,0 +1,621 @@
+{
+  "manifest": {
+    "main": "gid://shopify/OnlineStoreTheme/214169584007",
+    "draft": "gid://shopify/OnlineStoreTheme/214526394759",
+    "mainCount": 561,
+    "draftCount": 561,
+    "changes": [
+      {
+        "path": "layout/theme.liquid",
+        "before": "62a77592ae9e0648d2ccec60bdf23979",
+        "after": "3b9b8d9efe3deaf1cdf4e3920ce7fdc1"
+      },
+      {
+        "path": "sections/lx-collection-details.liquid",
+        "before": "8ceeccb466cd2af6ad729f9d6e7ec946",
+        "after": "19f74674e94c562c0ff9dee74cf1c7a1"
+      },
+      {
+        "path": "sections/product-information.liquid",
+        "before": "9d9646c79c920779614ad848847d1e0d",
+        "after": "7d57b891be072eecd57a3699e58d5566"
+      },
+      {
+        "path": "snippets/meta-tags.liquid",
+        "before": "fa92ed374a03d14d60ffc7d70e112ff5",
+        "after": "4059cb2855cb4d2cb167371ba604803e"
+      }
+    ],
+    "exactScope": true
+  },
+  "initialEdits": {
+    "snippets/meta-tags.liquid": [
+      [
+        "  {%- assign og_price = og_price_variant.price | default: product.price -%}",
+        "  {%- assign og_price = og_price_variant.price | default: product.price -%}\n  {%- assign og_price_major = og_price | divided_by: 100 -%}\n  {%- assign og_price_minor = og_price | modulo: 100 | prepend: '00' | slice: -2, 2 -%}"
+      ],
+      [
+        "content=\"{{ og_price | money_without_currency | strip_html }}\"",
+        "content=\"{{ og_price_major }}.{{ og_price_minor }}\""
+      ]
+    ],
+    "sections/product-information.liquid": [
+      [
+        "  {%- if luxe_vsrc and luxe_vid.preview_image -%}",
+        "  {%- comment -%} Für dieses Video ist das ausgegebene Produktdatum als Upload-Datum widerlegt. Den sichtbaren Player erhalten. {%- endcomment -%}\n  {%- if luxe_vsrc and luxe_vid.preview_image and luxe_vid.id != 77496185356679 -%}"
+      ]
+    ],
+    "layout/theme.liquid": [
+      [
+        "  {%- if request.locale.primary == false -%}\n    {%- if template.name == 'product' or template.name == 'collection' or template.name == 'article' or template.name == 'blog' -%}\n      <meta name=\"robots\" content=\"noindex, follow\">\n    {%- endif -%}\n  {%- endif -%}",
+        "  {%- if request.locale.primary == false -%}\n    {%- if template.name == 'product' or template.name == 'collection' or template.name == 'article' or template.name == 'blog' -%}\n      {%- assign lx_nonprimary_indexable = false -%}\n      {%- if request.locale.iso_code == 'fr' and template.name == 'collection' and collection.id == 756134183303 -%}\n        {%- assign lx_nonprimary_indexable = true -%}\n      {%- endif -%}\n      {%- unless lx_nonprimary_indexable -%}\n        <meta name=\"robots\" content=\"noindex, follow\">\n      {%- endunless -%}\n    {%- endif -%}\n  {%- endif -%}"
+      ]
+    ]
+  },
+  "refinement": {
+    "layout/theme.liquid": [
+      [
+        "request.locale.iso_code == 'fr' and template.name == 'collection' and collection.id == 756134183303",
+        "request.locale.iso_code == 'fr' and template.name == 'article' and article.id == 1001547137409"
+      ]
+    ],
+    "sections/lx-collection-details.liquid": [
+      [
+        "'lx_welten.details_section_heading' | t: title: collection.title | escape",
+        "'lx_welten.details_section_heading' | t: title: collection.title | escape_once"
+      ],
+      [
+        "'lx_welten.about_collection' | t: title: collection.title | escape",
+        "'lx_welten.about_collection' | t: title: collection.title | escape_once"
+      ]
+    ]
+  },
+  "savedTheme": {
+    "id": "gid://shopify/OnlineStoreTheme/214526394759",
+    "name": "LuxeStyle SEO 21.11.2026 R279",
+    "role": "UNPUBLISHED",
+    "updatedAt": "2026-11-20T23:50:04Z",
+    "files": [
+      {
+        "filename": "layout/theme.liquid",
+        "md5": "3b9b8d9efe3deaf1cdf4e3920ce7fdc1",
+        "exact": true
+      },
+      {
+        "filename": "sections/lx-collection-details.liquid",
+        "md5": "19f74674e94c562c0ff9dee74cf1c7a1",
+        "exact": true
+      },
+      {
+        "filename": "sections/product-information.liquid",
+        "md5": "7d57b891be072eecd57a3699e58d5566",
+        "exact": true
+      },
+      {
+        "filename": "snippets/meta-tags.liquid",
+        "md5": "4059cb2855cb4d2cb167371ba604803e",
+        "exact": true
+      }
+    ],
+    "exactScope": {
+      "main": "gid://shopify/OnlineStoreTheme/214169584007",
+      "draft": "gid://shopify/OnlineStoreTheme/214526394759",
+      "mainCount": 561,
+      "draftCount": 561,
+      "changes": [
+        {
+          "path": "layout/theme.liquid",
+          "before": "62a77592ae9e0648d2ccec60bdf23979",
+          "after": "3b9b8d9efe3deaf1cdf4e3920ce7fdc1"
+        },
+        {
+          "path": "sections/lx-collection-details.liquid",
+          "before": "8ceeccb466cd2af6ad729f9d6e7ec946",
+          "after": "19f74674e94c562c0ff9dee74cf1c7a1"
+        },
+        {
+          "path": "sections/product-information.liquid",
+          "before": "9d9646c79c920779614ad848847d1e0d",
+          "after": "7d57b891be072eecd57a3699e58d5566"
+        },
+        {
+          "path": "snippets/meta-tags.liquid",
+          "before": "fa92ed374a03d14d60ffc7d70e112ff5",
+          "after": "4059cb2855cb4d2cb167371ba604803e"
+        }
+      ],
+      "exactScope": true
+    },
+    "previewChecks": {
+      "correctThemeEverywhere": true,
+      "highPriceDE": true,
+      "highPriceFR": true,
+      "variantBPrice": true,
+      "projectorVideoScope": true,
+      "targetArticleIndexable": true,
+      "otherFrenchProtected": true,
+      "encodedHeadingFixed": true
+    },
+    "publicSeoThemePublished": false
+  },
+  "preview": {
+    "high_price_de": {
+      "previewUrl": "https://au3j0y-hq.myshopify.com/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591&preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591",
+      "status": 200,
+      "bytes": 1040441,
+      "theme": {
+        "name": "LuxeStyle SEO 21.11.2026 R279",
+        "id": 214526394759,
+        "role": "unpublished"
+      },
+      "exactDraft": true,
+      "title": "Selbstzentrierendes Vierbacken-Drehfutter | LuxeStyle CH",
+      "lang": "de",
+      "robots": [],
+      "description": [
+        "Für präzises Spannen von Werkstücken an der Drehmaschine verwendest du dieses selbstzentrierende Vierbacken-Drehfutter. Verschiedene K12-Modelle."
+      ],
+      "amount": [
+        "4245.90"
+      ],
+      "currency": [
+        "CHF"
+      ],
+      "canonical": [
+        "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "Product",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": false,
+      "doubleEncodedHeading": false,
+      "frArticleIntro": false
+    },
+    "high_price_fr": {
+      "previewUrl": "https://au3j0y-hq.myshopify.com/fr/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591&preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/fr/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591",
+      "status": 200,
+      "bytes": 1002729,
+      "theme": {
+        "name": "LuxeStyle SEO 21.11.2026 R279",
+        "id": 214526394759,
+        "role": "unpublished"
+      },
+      "exactDraft": true,
+      "title": "Selbstzentrierendes Vierbacken-Drehfutter | LuxeStyle CH",
+      "lang": "fr",
+      "robots": [
+        "noindex, follow"
+      ],
+      "description": [
+        "Für präzises Spannen von Werkstücken an der Drehmaschine verwendest du dieses selbstzentrierende Vierbacken-Drehfutter. Verschiedene K12-Modelle."
+      ],
+      "amount": [
+        "4245.90"
+      ],
+      "currency": [
+        "CHF"
+      ],
+      "canonical": [
+        "https://luxestyle.ch/fr/products/selbstzentrierendes-vierbacken-drehfutter-609200"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "Product",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": false,
+      "doubleEncodedHeading": false,
+      "frArticleIntro": false
+    },
+    "projector": {
+      "previewUrl": "https://au3j0y-hq.myshopify.com/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445316487&preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445316487",
+      "status": 200,
+      "bytes": 1125867,
+      "theme": {
+        "name": "LuxeStyle SEO 21.11.2026 R279",
+        "id": 214526394759,
+        "role": "unpublished"
+      },
+      "exactDraft": true,
+      "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+      "lang": "de",
+      "robots": [],
+      "description": [
+        "Sternenlicht-Projektor mit sieben Ausführungen: Grundmodell, Motivscheiben, Bluetooth oder Spieluhr. Ausstattung und Lieferumfang A–G im Detail vergleichen."
+      ],
+      "amount": [
+        "37.90"
+      ],
+      "currency": [
+        "CHF"
+      ],
+      "canonical": [
+        "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "ProductGroup",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": true,
+      "doubleEncodedHeading": false,
+      "frArticleIntro": false
+    },
+    "retro_fr": {
+      "previewUrl": "https://au3j0y-hq.myshopify.com/fr/collections/spielkonsolen-retro-handhelds?preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/fr/collections/spielkonsolen-retro-handhelds",
+      "status": 200,
+      "bytes": 1440660,
+      "theme": {
+        "name": "LuxeStyle SEO 21.11.2026 R279",
+        "id": 214526394759,
+        "role": "unpublished"
+      },
+      "exactDraft": true,
+      "title": "Consoles de jeu et consoles portables rétro | LuxeStyle CH",
+      "lang": "fr",
+      "robots": [
+        "noindex, follow"
+      ],
+      "description": [
+        "Comparez les consoles de jeu et les modèles portables rétro : usage sur TV ou en déplacement, écran, connectique, stockage et contenu de la boîte."
+      ],
+      "amount": [],
+      "currency": [],
+      "canonical": [
+        "https://luxestyle.ch/fr/collections/spielkonsolen-retro-handhelds"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": true,
+      "videoMediaVisible": false,
+      "doubleEncodedHeading": false,
+      "frArticleIntro": false
+    },
+    "retro_de": {
+      "previewUrl": "https://au3j0y-hq.myshopify.com/collections/spielkonsolen-retro-handhelds?preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds",
+      "status": 200,
+      "bytes": 1477474,
+      "theme": {
+        "name": "LuxeStyle SEO 21.11.2026 R279",
+        "id": 214526394759,
+        "role": "unpublished"
+      },
+      "exactDraft": true,
+      "title": "Spielkonsolen und Retro-Handhelds | LuxeStyle CH",
+      "lang": "de",
+      "robots": [],
+      "description": [
+        "Spielkonsolen und Retro-Handhelds vergleichen: Einsatz am TV oder unterwegs, Anschlüsse, Display, Speicheroptionen und bestätigten Lieferumfang prüfen."
+      ],
+      "amount": [],
+      "currency": [],
+      "canonical": [
+        "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": false,
+      "doubleEncodedHeading": false,
+      "frArticleIntro": false
+    },
+    "other_fr": {
+      "previewUrl": "https://au3j0y-hq.myshopify.com/fr/collections/damen-mode?preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/fr/collections/damen-mode",
+      "status": 200,
+      "bytes": 1520437,
+      "theme": {
+        "name": "LuxeStyle SEO 21.11.2026 R279",
+        "id": 214526394759,
+        "role": "unpublished"
+      },
+      "exactDraft": true,
+      "title": "Mode femme : blouses, robes, chaussures & sacs | LuxeStyle",
+      "lang": "fr",
+      "robots": [
+        "noindex, follow"
+      ],
+      "description": [
+        "Mode femme chez LuxeStyle : blouses, t-shirts, robes, sandales, escarpins, bottes, sacs à main et portemonnaies pour tous les jours. Paiement TWINT ou Klarna."
+      ],
+      "amount": [],
+      "currency": [],
+      "canonical": [
+        "https://luxestyle.ch/fr/collections/damen-mode"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": false,
+      "doubleEncodedHeading": false,
+      "frArticleIntro": false
+    },
+    "article_fr": {
+      "previewUrl": "https://au3j0y-hq.myshopify.com/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen?preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen",
+      "status": 200,
+      "bytes": 908142,
+      "theme": {
+        "name": "LuxeStyle SEO 21.11.2026 R279",
+        "id": 214526394759,
+        "role": "unpublished"
+      },
+      "exactDraft": true,
+      "title": "Cadeaux de Noël 2026 en Suisse : idées high-tech – LuxeStyle",
+      "lang": "fr",
+      "robots": [],
+      "description": [
+        "Trouvez des idées de cadeaux de Noël 2026 en Suisse selon la personne et le budget. Vérifiez la compatibilité, la variante et le délai avant de commander."
+      ],
+      "amount": [],
+      "currency": [],
+      "canonical": [
+        "https://luxestyle.ch/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "FAQPage",
+        "Article"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": false,
+      "doubleEncodedHeading": false,
+      "frArticleIntro": true
+    }
+  },
+  "priorLiveOutput": {
+    "high_price_de": {
+      "previewUrl": "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591&preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591",
+      "status": 200,
+      "bytes": 1039488,
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "role": "main"
+      },
+      "exactDraft": false,
+      "title": "Selbstzentrierendes Vierbacken-Drehfutter | LuxeStyle CH",
+      "lang": "de",
+      "robots": [],
+      "description": [
+        "Für präzises Spannen von Werkstücken an der Drehmaschine verwendest du dieses selbstzentrierende Vierbacken-Drehfutter. Verschiedene K12-Modelle."
+      ],
+      "amount": [
+        "4,245.90"
+      ],
+      "currency": [
+        "CHF"
+      ],
+      "canonical": [
+        "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "Product",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": false
+    },
+    "high_price_fr": {
+      "previewUrl": "https://luxestyle.ch/fr/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591&preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/fr/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591",
+      "status": 200,
+      "bytes": 1001772,
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "role": "main"
+      },
+      "exactDraft": false,
+      "title": "Selbstzentrierendes Vierbacken-Drehfutter | LuxeStyle CH",
+      "lang": "fr",
+      "robots": [
+        "noindex, follow"
+      ],
+      "description": [
+        "Für präzises Spannen von Werkstücken an der Drehmaschine verwendest du dieses selbstzentrierende Vierbacken-Drehfutter. Verschiedene K12-Modelle."
+      ],
+      "amount": [
+        "4,245.90"
+      ],
+      "currency": [
+        "CHF"
+      ],
+      "canonical": [
+        "https://luxestyle.ch/fr/products/selbstzentrierendes-vierbacken-drehfutter-609200"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "Product",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": false
+    },
+    "projector": {
+      "previewUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445316487&preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445316487",
+      "status": 200,
+      "bytes": 1125842,
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "role": "main"
+      },
+      "exactDraft": false,
+      "title": "Sternenlicht-Projektor fürs Schlafzimmer | LuxeStyle",
+      "lang": "de",
+      "robots": [],
+      "description": [
+        "Sternenlicht-Projektor mit sieben Ausführungen: Grundmodell, Motivscheiben, Bluetooth oder Spieluhr. Ausstattung und Lieferumfang A–G im Detail vergleichen."
+      ],
+      "amount": [
+        "37.90"
+      ],
+      "currency": [
+        "CHF"
+      ],
+      "canonical": [
+        "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "ProductGroup",
+        "VideoObject",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": true
+    },
+    "retro_fr": {
+      "previewUrl": "https://luxestyle.ch/fr/collections/spielkonsolen-retro-handhelds?preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/fr/collections/spielkonsolen-retro-handhelds",
+      "status": 200,
+      "bytes": 1441039,
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "role": "main"
+      },
+      "exactDraft": false,
+      "title": "Consoles de jeu et consoles portables rétro | LuxeStyle CH",
+      "lang": "fr",
+      "robots": [
+        "noindex, follow"
+      ],
+      "description": [
+        "Comparez les consoles de jeu et les modèles portables rétro : usage sur TV ou en déplacement, écran, connectique, stockage et contenu de la boîte."
+      ],
+      "amount": [],
+      "currency": [],
+      "canonical": [
+        "https://luxestyle.ch/fr/collections/spielkonsolen-retro-handhelds"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": true,
+      "videoMediaVisible": false
+    },
+    "retro_de": {
+      "previewUrl": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds?preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds",
+      "status": 200,
+      "bytes": 1476531,
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "role": "main"
+      },
+      "exactDraft": false,
+      "title": "Spielkonsolen und Retro-Handhelds | LuxeStyle CH",
+      "lang": "de",
+      "robots": [],
+      "description": [
+        "Spielkonsolen und Retro-Handhelds vergleichen: Einsatz am TV oder unterwegs, Anschlüsse, Display, Speicheroptionen und bestätigten Lieferumfang prüfen."
+      ],
+      "amount": [],
+      "currency": [],
+      "canonical": [
+        "https://luxestyle.ch/collections/spielkonsolen-retro-handhelds"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": false
+    },
+    "other_fr": {
+      "previewUrl": "https://luxestyle.ch/fr/collections/damen-mode?preview_theme_id=214526394759",
+      "finalUrl": "https://luxestyle.ch/fr/collections/damen-mode",
+      "status": 200,
+      "bytes": 1519508,
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "role": "main"
+      },
+      "exactDraft": false,
+      "title": "Mode femme : blouses, robes, chaussures & sacs | LuxeStyle",
+      "lang": "fr",
+      "robots": [
+        "noindex, follow"
+      ],
+      "description": [
+        "Mode femme chez LuxeStyle : blouses, t-shirts, robes, sandales, escarpins, bottes, sacs à main et portemonnaies pour tous les jours. Paiement TWINT ou Klarna."
+      ],
+      "amount": [],
+      "currency": [],
+      "canonical": [
+        "https://luxestyle.ch/fr/collections/damen-mode"
+      ],
+      "headlineCount": 1,
+      "jsonLdTypes": [
+        "Organization",
+        "BreadcrumbList"
+      ],
+      "jsonLdParseErrors": 0,
+      "liquidErrors": 0,
+      "frBody": false,
+      "videoMediaVisible": false
+    }
+  },
+  "rollback": "Previous MAIN preserved as source. Only switch back if legitimate publish route and authorization are available.",
+  "nativeHtmlRoute": "The custom-domain preview attempt redirected to MAIN. The myshopify preview with the normal redirect/cookie flow returned the exact draft theme on all seven pages."
+}
