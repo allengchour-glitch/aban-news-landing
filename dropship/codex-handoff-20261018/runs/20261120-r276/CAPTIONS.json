@@ -1,0 +1,69 @@
+{
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "state": "SCRIPT_ONLY_CONDITIONAL_ON_ACTUAL_APPROVED_FILM",
+  "drafts": [
+    {
+      "channel": "instagram",
+      "title": null,
+      "caption": "Dein Raum. Neues Licht. Ein Blick auf den Sternenlicht-Projektor in Ausführung A. Welche Lichtstimmung passt zu deinem Raum? Produkt ansehen: Link in Bio.",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=instagram&utm_medium=organic_social&utm_campaign=sternenlicht_master_18s&utm_content=master_a_instagram",
+      "urlPlacement": "Nur verifiziertes Bio-Ziel; nicht als klickbaren Caption-Link ausgeben",
+      "gates": [
+        "Fertiger professioneller Master, tatsächliche Abnahme und Rechte fehlen",
+        "Aktuelles Bio-Ziel unbekannt"
+      ]
+    },
+    {
+      "channel": "tiktok",
+      "title": null,
+      "caption": "Vom Detail zum Raum: der Sternenlicht-Projektor in Ausführung A. Welche Einstellung möchtest du genauer sehen? Produkt ansehen: Link in Bio.",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=tiktok&utm_medium=organic_social&utm_campaign=sternenlicht_master_18s&utm_content=master_a_tiktok",
+      "urlPlacement": "Nur verifiziertes Bio-Ziel; nicht als klickbaren Caption-Link ausgeben",
+      "gates": [
+        "Fertiger professioneller Master, tatsächliche Abnahme und Rechte fehlen",
+        "Aktuelles Bio-Ziel unbekannt"
+      ]
+    },
+    {
+      "channel": "youtube",
+      "title": "Sternenlicht-Projektor A: Licht im Detail",
+      "caption": "Sternenlicht-Projektor in Ausführung A: vom Gerät zur echten Raumaufnahme. Produktdetails auf LuxeStyle.ch.",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=youtube&utm_medium=organic_social&utm_campaign=sternenlicht_master_18s&utm_content=master_a_youtube",
+      "urlPlacement": "Verifiziertes Kanalziel; Shorts-Beschreibung nicht als klickbar darstellen",
+      "gates": [
+        "Fertiger professioneller Master, tatsächliche Abnahme und Rechte fehlen"
+      ]
+    },
+    {
+      "channel": "facebook",
+      "title": null,
+      "caption": "Licht im Detail. Sieh dir die Ausführung A des Sternenlicht-Projektors und die Angaben zur Auswahl an. https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_18s&utm_content=master_a_facebook",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=facebook&utm_medium=organic_social&utm_campaign=sternenlicht_master_18s&utm_content=master_a_facebook",
+      "urlPlacement": "Direktes Produktziel",
+      "gates": [
+        "Fertiger professioneller Master, tatsächliche Abnahme und Rechte fehlen"
+      ]
+    },
+    {
+      "channel": "threads",
+      "title": null,
+      "caption": "Welche Ausführung passt zu deinem Raum? Hier findest du die Produktdetails zum Sternenlicht-Projektor A. https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_18s&utm_content=master_a_threads",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=threads&utm_medium=organic_social&utm_campaign=sternenlicht_master_18s&utm_content=master_a_threads",
+      "urlPlacement": "Direktes Produktziel",
+      "gates": [
+        "Fertiger professioneller Master, tatsächliche Abnahme und Rechte fehlen"
+      ]
+    },
+    {
+      "channel": "pinterest",
+      "title": "Sternenlicht-Projektor A für dein Zimmer",
+      "caption": "Sternenlicht-Projektor in Ausführung A. Vom Produktdetail zur Raumaufnahme. Modell und Ausstattung auf der Produktseite prüfen.",
+      "utmProductUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=pinterest&utm_medium=organic_social&utm_campaign=sternenlicht_master_18s&utm_content=master_a_pinterest",
+      "urlPlacement": "Direktes Produktziel",
+      "gates": [
+        "Fertiger professioneller Master, tatsächliche Abnahme und Rechte fehlen",
+        "Kontoboard-Mitgliedschaft frisch bestätigen, keine Board-ID erraten"
+      ]
+    }
+  ]
+}

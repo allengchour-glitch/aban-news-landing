@@ -1,0 +1,732 @@
+{
+  "run": "R276",
+  "localDate": "2026-11-20",
+  "atUTC": "2026-11-20T21:55:38Z",
+  "sourceMain": "6de5d543780340ea316b82b7838b78db7926dde1",
+  "sourceHandoff": "47e3d781e23eddf8b97f98f86be911bba7fc7f65",
+  "memoryLoaded": {
+    "claudeSha": "7226c88a50fd32625a9b3c5059d00a53f25130ac",
+    "sharedSha": "caa2f9421c9f9a5b3dd196e70099679fc077ecdc",
+    "latestDatedClaudeLuxeStyleEntry": "2026-11-17",
+    "claudeReceipt": "Only R259-R268 documented; R274/R275/R276 unknown"
+  },
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "myshopifyDomain": "au3j0y-hq.myshopify.com",
+    "primaryDomain": {
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "metricool": {
+    "brandId": 6227837,
+    "timezone": "Europe/Zurich",
+    "networks": {
+      "facebookData": "1049840534888592",
+      "instagramData": "luxestyle.ch",
+      "threadsData": "luxestyle.ch",
+      "pinterestData": "luxestyleCH",
+      "tiktokData": "luxestyle.ch",
+      "youtubeData": "UCSfCEYjAsdOyYxyfTClXRZA",
+      "googleAdsData": "7198263241",
+      "tiktokAdsData": "7691398659300179974"
+    }
+  },
+  "planning": {
+    "checkedAtUTC": "2026-11-20T21:55:38Z",
+    "timezone": "Europe/Zurich",
+    "requestedRollingEnd": "2026-11-27T22:51:28+01:00",
+    "calendarReadRange": "2026-11-20/2026-11-28",
+    "calls": 5,
+    "objects": 50,
+    "futureObjectsThrough27": 40,
+    "activeFutureObjects": 29,
+    "activeFutureProviderRows": 37,
+    "gaps": {
+      "instagram": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27"
+      ],
+      "facebook": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27"
+      ],
+      "tiktok": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27"
+      ],
+      "pinterest": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27"
+      ],
+      "threads": [
+        "2026-11-26",
+        "2026-11-27"
+      ],
+      "youtube": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27"
+      ]
+    },
+    "observedPublishedToday": [
+      {
+        "day": "2026-11-20",
+        "id": 425726070,
+        "uuid": "-6491658134482960242",
+        "network": "threads",
+        "status": "PUBLISHED",
+        "active": true
+      },
+      {
+        "day": "2026-11-20",
+        "id": 425726329,
+        "uuid": "108318075245381964",
+        "network": "facebook",
+        "status": "PUBLISHED",
+        "active": true
+      },
+      {
+        "day": "2026-11-20",
+        "id": 425726479,
+        "uuid": "-457707186698434580",
+        "network": "pinterest",
+        "status": "PUBLISHED",
+        "active": true
+      },
+      {
+        "day": "2026-11-20",
+        "id": 429732939,
+        "uuid": "5095221239706765903",
+        "network": "tiktok",
+        "status": "PUBLISHED",
+        "active": true
+      },
+      {
+        "day": "2026-11-20",
+        "id": 430112117,
+        "uuid": "5345343768312041034",
+        "network": "youtube",
+        "status": "PUBLISHED",
+        "active": true
+      },
+      {
+        "day": "2026-11-20",
+        "id": 430173535,
+        "uuid": "733493005328404096",
+        "network": "tiktok",
+        "status": "PUBLISHED",
+        "active": true
+      }
+    ],
+    "errors": [
+      {
+        "day": "2026-11-20",
+        "id": 425726329,
+        "uuid": "108318075245381964",
+        "network": "instagram",
+        "status": "ERROR",
+        "active": true
+      }
+    ],
+    "duplicateExactCaptionOrderedMediaPerChannel": [],
+    "fullMasterHistory": "UNKNOWN_not_reset",
+    "madeForKidsFalseOnAllFiveReturnedYouTubePosts": true,
+    "boardMembership": "UNKNOWN_only_post_board_ids_observed",
+    "verifiedBioDestination": "UNKNOWN",
+    "mediaCreativeRights": "NOT_ESTABLISHED_FOR_NEW_WRITES",
+    "writes": 0
+  },
+  "metrics": {
+    "range": "2026-11-13/2026-11-19",
+    "definitionCalls": 6,
+    "dataCalls": 6,
+    "ids": {
+      "instagram": [
+        "IGEV12",
+        "IGEV09",
+        "IGEV23"
+      ],
+      "facebook": [
+        "FBEV49",
+        "FBEV34"
+      ],
+      "tiktok": [
+        "TKEV02",
+        "TKEV06",
+        "TKEV08"
+      ],
+      "threads": [
+        "THEV06",
+        "THEV05"
+      ],
+      "youtube": [
+        "YTEV02",
+        "YTEV05",
+        "YTEV10"
+      ],
+      "pinterest": [
+        "PIEV01",
+        "PIEV04"
+      ]
+    },
+    "summary": {
+      "instagram": [
+        {
+          "id": "IGEV12",
+          "observed": 4,
+          "totalObserved": 154,
+          "missingDates": [
+            "20261117",
+            "20261118",
+            "20261119"
+          ],
+          "weekTotal": "UNKNOWN"
+        },
+        {
+          "id": "IGEV09",
+          "observed": 1,
+          "totalObserved": 0,
+          "missingDates": [
+            "20261113",
+            "20261114",
+            "20261115",
+            "20261116",
+            "20261117",
+            "20261118"
+          ],
+          "weekTotal": "UNKNOWN"
+        },
+        {
+          "id": "IGEV23",
+          "observed": 4,
+          "totalObserved": 293,
+          "missingDates": [
+            "20261113",
+            "20261115",
+            "20261119"
+          ],
+          "weekTotal": "UNKNOWN"
+        }
+      ],
+      "facebook": [
+        {
+          "id": "FBEV49",
+          "observed": 7,
+          "totalObserved": 75,
+          "missingDates": [],
+          "weekTotal": 75
+        },
+        {
+          "id": "FBEV34",
+          "observed": 1,
+          "totalObserved": 0,
+          "missingDates": [
+            "20261113",
+            "20261114",
+            "20261115",
+            "20261116",
+            "20261117",
+            "20261118"
+          ],
+          "weekTotal": "UNKNOWN"
+        }
+      ],
+      "tiktok": [
+        {
+          "id": "TKEV02",
+          "observed": 7,
+          "totalObserved": 3321,
+          "missingDates": [],
+          "weekTotal": 3321
+        },
+        {
+          "id": "TKEV06",
+          "observed": 7,
+          "totalObserved": 14,
+          "missingDates": [],
+          "weekTotal": 14
+        },
+        {
+          "id": "TKEV08",
+          "observed": 6,
+          "totalObserved": 0,
+          "missingDates": [
+            "20261113"
+          ],
+          "weekTotal": "UNKNOWN"
+        }
+      ],
+      "threads": [
+        {
+          "id": "THEV06",
+          "observed": 4,
+          "totalObserved": 16,
+          "missingDates": [
+            "20261113",
+            "20261115",
+            "20261119"
+          ],
+          "weekTotal": "UNKNOWN"
+        },
+        {
+          "id": "THEV05",
+          "observed": 1,
+          "totalObserved": 0,
+          "missingDates": [
+            "20261113",
+            "20261114",
+            "20261115",
+            "20261116",
+            "20261117",
+            "20261118"
+          ],
+          "weekTotal": "UNKNOWN"
+        }
+      ],
+      "youtube": [
+        {
+          "id": "YTEV02",
+          "observed": 5,
+          "totalObserved": 530,
+          "missingDates": [
+            "20261118",
+            "20261119"
+          ],
+          "weekTotal": "UNKNOWN"
+        },
+        {
+          "id": "YTEV05",
+          "observed": 5,
+          "totalObserved": 0,
+          "missingDates": [
+            "20261118",
+            "20261119"
+          ],
+          "weekTotal": "UNKNOWN"
+        },
+        {
+          "id": "YTEV10",
+          "observed": 6,
+          "totalObserved": 3,
+          "missingDates": [
+            "20261119"
+          ],
+          "weekTotal": "UNKNOWN"
+        }
+      ],
+      "pinterest": [
+        {
+          "id": "PIEV01",
+          "observed": 5,
+          "totalObserved": 2859,
+          "missingDates": [
+            "20261118",
+            "20261119"
+          ],
+          "weekTotal": "UNKNOWN"
+        },
+        {
+          "id": "PIEV04",
+          "observed": 5,
+          "totalObserved": 31,
+          "missingDates": [
+            "20261118",
+            "20261119"
+          ],
+          "weekTotal": "UNKNOWN"
+        }
+      ]
+    },
+    "watchTime": "UNKNOWN_not_exposed_by_selected_evolution_metrics",
+    "salesInferred": false
+  },
+  "klaviyo": {
+    "accountRead": 1,
+    "metricDiscovery": 1,
+    "code": "UNAUTHORIZED",
+    "flowReports": 0,
+    "flowStatus": "UNKNOWN",
+    "captureStatus": "UNKNOWN",
+    "recoveryStatus": "UNKNOWN",
+    "currency": "UNKNOWN_current",
+    "writes": 0
+  },
+  "products": [
+    {
+      "id": "gid://shopify/Product/15521256604033",
+      "title": "Sternenlicht-Projektor für Schlafzimmer",
+      "handle": "sternenlicht-projektor-fur-schlafzimmer-732544",
+      "status": "ACTIVE",
+      "tags": [
+        "auswahl-offen",
+        "beleuchtung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "elektronik",
+        "gadget",
+        "sort-nachtlichter",
+        "sort-nachttischlampen",
+        "tech",
+        "varianten-nachgezogen-1025"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "featuredMedia": {
+        "id": "gid://shopify/MediaImage/70733173424513",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090",
+          "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 2 | LuxeStyle"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/68122445283719",
+            "title": "A · Grundmodell · USB",
+            "sku": "CJSN139239101AZ",
+            "price": "34.90",
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          }
+        ]
+      },
+      "socialTagGate": {
+        "helperBlobSha": "3adab7369f90945769331910525c08b3778b4371",
+        "nonemptyTags": true,
+        "helperMatches": [],
+        "ownerAnyRueckholMatches": [],
+        "passed": true
+      }
+    },
+    {
+      "id": "gid://shopify/Product/15524879008129",
+      "title": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml",
+      "handle": "keramik-vorratsdose-fur-die-kuche-886976",
+      "status": "ACTIVE",
+      "tags": [
+        "aufbewahrung",
+        "bild-ok",
+        "bildmass-ok-0906",
+        "cj-real",
+        "dropship",
+        "haushalt",
+        "neuheit",
+        "organizer",
+        "sort-vorratsdosen",
+        "varianten-nachgezogen-1025",
+        "wohnen"
+      ],
+      "onlineStoreUrl": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976",
+      "featuredMedia": {
+        "id": "gid://shopify/MediaImage/70800736420225",
+        "image": {
+          "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/82466e8f-8072-4a4f-8a92-bdc497a3f10b.jpg?v=1788517063",
+          "altText": "Keramik-Vorratsdose für die Küche | LuxeStyle"
+        }
+      },
+      "variants": {
+        "nodes": [
+          {
+            "id": "gid://shopify/ProductVariant/68122741014919",
+            "title": "Kirschblüte 700ml",
+            "sku": "CJYD205154101AZ",
+            "price": "24.90",
+            "inventoryQuantity": 0,
+            "inventoryPolicy": "CONTINUE",
+            "inventoryItem": {
+              "tracked": false
+            }
+          }
+        ]
+      },
+      "socialTagGate": {
+        "helperBlobSha": "3adab7369f90945769331910525c08b3778b4371",
+        "nonemptyTags": true,
+        "helperMatches": [],
+        "ownerAnyRueckholMatches": [],
+        "passed": true
+      }
+    }
+  ],
+  "variantA": {
+    "id": "gid://shopify/ProductVariant/68122445283719",
+    "media": {
+      "nodes": [
+        {
+          "id": "gid://shopify/MediaImage/70733173719425",
+          "image": {
+            "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+            "width": 800,
+            "height": 654,
+            "altText": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle"
+          }
+        }
+      ]
+    }
+  },
+  "cj": {
+    "productReadCalls": 1,
+    "pid": "1477820492730732544",
+    "productSku": "CJSN1392391",
+    "variantA": [
+      {
+        "vid": "1477826312449167360",
+        "pid": "1477820492730732544",
+        "variantName": null,
+        "variantNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light A USB",
+        "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg",
+        "variantSku": "CJSN139239101AZ",
+        "barcode": "1598450393712",
+        "variantUnit": "个",
+        "variantProperty": "[]",
+        "variantKey": "A-USB",
+        "variantLength": 165,
+        "variantWidth": 155,
+        "variantHeight": 140,
+        "variantVolume": 3580500,
+        "variantWeight": 671,
+        "variantSellPrice": 14.23,
+        "createTime": 1641176224000,
+        "variantStandard": "long=165,width=155,height=140",
+        "variantSugSellPrice": 80.83,
+        "combineNum": null,
+        "inventoryNum": null,
+        "combineVariants": null,
+        "inventories": null
+      }
+    ],
+    "productVideoIds": [
+      "1602963697889193984"
+    ],
+    "videoUrl": "UNKNOWN_not_returned",
+    "videoRights": "UNKNOWN_not_returned"
+  },
+  "theme": [
+    {
+      "id": "gid://shopify/OnlineStoreTheme/214208577927",
+      "name": "Kopie von LuxeStyle – Variantenpreis SEO 16.11....",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-17T00:30:47Z"
+    },
+    {
+      "id": "gid://shopify/OnlineStoreTheme/214169584007",
+      "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+      "role": "MAIN",
+      "updatedAt": "2026-11-16T22:12:34Z"
+    }
+  ],
+  "music": {
+    "sha": "61de48704b2b3ae22fb028e6cf0a3c88e4826a7c",
+    "size": 11343950,
+    "path": "automation/music/luxe-premium.wav",
+    "localSha256": "a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688",
+    "hashMatches": true,
+    "rightsBuildListening": "UNKNOWN",
+    "repoSilentRuleConflictsWithCurrentAutomation": true
+  },
+  "continuity": {
+    "missingPreparedR275LocalFiles": true,
+    "r275DocumentationPersisted": false,
+    "r275Pr3235": "OPEN_DRAFT_UNMERGED",
+    "r275HistoricalTests": "Not rerun or claimed as today",
+    "revision275Reserved": true
+  },
+  "writes": {
+    "shop": 0,
+    "metricool": 0,
+    "klaviyo": 0,
+    "merchant": 0,
+    "dns": 0,
+    "customerMessages": 0,
+    "paidRenders": 0,
+    "workflowStarts": 0
+  },
+  "purchaseWatch": "ENDED_no_queries",
+  "publicChecks": {
+    "instagramFailedMedia": [
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_1_15190633-c270-49b7-bbea-8c846ac45c37.jpg?v=1794397657",
+        "status": 200,
+        "content_type": "image/jpeg",
+        "bytes": 408228,
+        "sha256": "cfeea863a86d7d2b80a1841ae76302ecccc6c9972fa51efc0adea07d0f3775ac",
+        "format": "JPEG",
+        "size": [
+          1080,
+          1350
+        ],
+        "mode": "RGB",
+        "ratio": 0.8
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_2_918c10d1-920f-49bc-8231-37026ee945c2.jpg?v=1794397666",
+        "status": 200,
+        "content_type": "image/jpeg",
+        "bytes": 260493,
+        "sha256": "01743a97a8a873ce15f83e6c6980a565e5a0d97aa80ff39437a850cb33a0eb94",
+        "format": "JPEG",
+        "size": [
+          1080,
+          1350
+        ],
+        "mode": "RGB",
+        "ratio": 0.8
+      },
+      {
+        "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ig_3_88a057b6-4440-4789-8bae-5f8bd320f742.jpg?v=1794397675",
+        "status": 200,
+        "content_type": "image/jpeg",
+        "bytes": 140106,
+        "sha256": "b466f7bba251763e3da0894fc13cd2341eeeea55ed104881ffcdb5d562ea5011",
+        "format": "JPEG",
+        "size": [
+          1080,
+          1350
+        ],
+        "mode": "RGB",
+        "ratio": 0.8
+      }
+    ],
+    "storefront": [
+      {
+        "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+        "http": 200,
+        "sha256": "508a63545415cebf526cad8e2beb39246e3b05ea526c8c32be3e57f2f1ab0516",
+        "variant": {
+          "id": 68122445283719,
+          "title": "A · Grundmodell · USB",
+          "option1": "A · Grundmodell · USB",
+          "option2": null,
+          "option3": null,
+          "sku": "CJSN139239101AZ",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": {
+            "id": 83513734431105,
+            "product_id": 15521256604033,
+            "position": 11,
+            "created_at": "2026-08-31T07:11:27+02:00",
+            "updated_at": "2026-08-31T07:11:30+02:00",
+            "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+            "width": 800,
+            "height": 654,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+            "variant_ids": [
+              68122445283719
+            ]
+          },
+          "available": true,
+          "name": "Sternenlicht-Projektor für Schlafzimmer - A · Grundmodell · USB",
+          "public_title": "A · Grundmodell · USB",
+          "options": [
+            "A · Grundmodell · USB"
+          ],
+          "price": 3490,
+          "weight": 0,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "featured_media": {
+            "alt": "Sternenlicht-Projektor für Schlafzimmer – Bild 11 | LuxeStyle",
+            "id": 70733173719425,
+            "position": 11,
+            "preview_image": {
+              "aspect_ratio": 1.223,
+              "height": 654,
+              "width": 800,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090"
+            }
+          },
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        },
+        "productTitle": "Sternenlicht-Projektor für Schlafzimmer"
+      },
+      {
+        "url": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976.js",
+        "http": 200,
+        "sha256": "b93e2b6e7e4848bc13dc92321c7b29ac4c33cd9626dd008109a80d682f92a144",
+        "variant": {
+          "id": 68122741014919,
+          "title": "Kirschblüte 700ml",
+          "option1": "Kirschblüte 700ml",
+          "option2": null,
+          "option3": null,
+          "sku": "CJYD205154101AZ",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": {
+            "id": 83582440407425,
+            "product_id": 15524879008129,
+            "position": 12,
+            "created_at": "2026-09-04T12:17:40+02:00",
+            "updated_at": "2026-09-04T12:17:43+02:00",
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 12 | LuxeStyle",
+            "width": 800,
+            "height": 800,
+            "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg?v=1788517063",
+            "variant_ids": [
+              68122741014919
+            ]
+          },
+          "available": true,
+          "name": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml - Kirschblüte 700ml",
+          "public_title": "Kirschblüte 700ml",
+          "options": [
+            "Kirschblüte 700ml"
+          ],
+          "price": 2490,
+          "weight": 0,
+          "compare_at_price": null,
+          "inventory_management": null,
+          "barcode": null,
+          "featured_media": {
+            "alt": "Keramik-Vorratsdose für die Küche – Bild 12 | LuxeStyle",
+            "id": 70800736780673,
+            "position": 12,
+            "preview_image": {
+              "aspect_ratio": 1,
+              "height": 800,
+              "width": 800,
+              "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg?v=1788517063"
+            }
+          },
+          "quantity_rule": {
+            "min": 1,
+            "max": null,
+            "increment": 1
+          },
+          "quantity_price_breaks": [],
+          "requires_selling_plan": false,
+          "selling_plan_allocations": []
+        },
+        "productTitle": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml"
+      }
+    ],
+    "home": {
+      "http": 200,
+      "bytes": 1068671,
+      "sha256": "fe4408a0db753e4b204fe3efb08a46e5a3ae39916ab1c9b51b276f1024401d2a",
+      "scrollHeroPresent": false,
+      "approvedVideoIdInHtml": false,
+      "r274ThemeIdInHtml": false
+    }
+  },
+  "errorInterpretation": "Image URI error confirmed at provider; all three files currently HTTP200/RGBJPEG1080x1350. Cause UNKNOWN, not reproduced. No retry."
+}

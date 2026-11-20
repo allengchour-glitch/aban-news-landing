@@ -3365,3 +3365,24 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R274-REPORT-20261117.md) · [Belege](R274-PROOF-20261117.json).
 
 [LUXESTYLE_R274_20261117]
+
+
+## 20.11.2026
+
+### R276 – neuestes Memory geladen und überprüfbar fortgesetzt
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Memory | main6de5d543 und Handoff47e3d781 frisch gelesen; Claude-/Shared-Memory, Übergabe, Skill und Tagesstand abgeglichen | Jüngster Claude-LuxeStyle-Eintrag auf main17.11.; HandoffR274. Empfang nur bisR268 belegt |
+| Identitäten und Planung | Shop und sechs Markenkanäle bestätigt;20.–28.11. in fünf kleinen Fenstern gelesen | 50UUIDs, im Zukunftsfenster21.–27.11.29aktive Objekte/37Kanalplätze.21.–24.11. strukturell alle6Kanäle;25.–27.11. Lücken ausser Threads25.11. Keine neue Qualitätsfreigabe |
+| Auslieferung | Bestehende Kanalzustände und Instagram-Fehleruuid108318075245381964 geprüft; drei Bilddateien vollständig gelesen | Heute6PUBLISHED-Kanalzustände aus Fremdabläufen, InstagramERROR; Bilder aktuellHTTP200/RGBJPEG1080×1350, Ursache unbekannt. Keine Wiederholung oder Ersatzpost |
+| Kennzahlen | Einmalig sechs Definitionen und sechs kleine Kanalabfragen13.–19.11. gelesen | TikTok3321Views/14Interaktionen7/7Tage; andere Reihen teils lückenhaft. Keine Verkäufe daraus abgeleitet |
+| Klaviyo | Konto und Placed-Order-Metrikliste frisch anzufragen versucht | BeideUNAUTHORIZED, erneute App-Anmeldung erforderlich;0Flowreports/0Sends. Aktuelle Flows/Capture unbekannt |
+| Produkte und Quellen | Zwei aktive Produkte, exakte Varianten, Tags/Wächter, Storefront und Bildquelle geprüft; einen CJ-Produktread ausgeführt | ACHF34.90 und DoseCHF24.90 kaufbar;0Bestand untracked/CONTINUE. CJ-A-SKU bestätigt, nurVideo-ID ohne Quelle/Rechte. Keine Lieferzusage |
+| Master | Bestehenden18s-Plan auf heutige A-Quelle gebunden, Aufnahmebeleg und sechs bedingte Kanaltexte/UTMs erstellt; Musikdatei hashgleich geprüft | Produktionsvorbereitung, keine MP4/kein Render. Physische Probe, Motiv-/Film-/Musikrechte und Abnahme offen; Tonregelkonflikt dokumentiert |
+| Verkauf und Website | Genau einen Modellvergleich-Sprunglink zur Freigabe vorbereitet; bestehende Theme-Rollen und öffentliche Startseite gelesen | Nicht umgesetzt. Film-Theme214208577927 weiterhinUNPUBLISHED; MAIN214169584007, neuerHero öffentlich nicht vorhanden |
+| Kontinuität | R275-PR3235 frisch als offen/Draft/nicht gemergt gelesen; fehlendes lokales R275-Paket dokumentiert | Frühere lokale Prüfartefakte nicht wiederherstellbar; nicht als heute geprüft oder gespeichert behauptet. Historie nicht zurückgesetzt |
+
+[Bericht](R276-REPORT-20261120.md) · [Belege](R276-PROOF-20261120.json).
+
+[LUXESTYLE_R276_20261120]

@@ -1,3 +1,12 @@
+# R276 – aktuelles Claude-Memory geladen, Auslieferungsfehler und Planungslücken geprüft – 20.11.2026
+
+R276: Neueste Claude-/Shared-Memory-Fassung geladen und datiert; Identitäten passen. Planung20.–28.11. in fünf kleinen Fenstern: aktive tägliche Termine21.–24.11. auf sechs Kanälen, Lücken25.–27.11. ausser Threads25.11. Instagram20.11. ERROR bei Lichterbaum-Bild3; alle drei Bilder aktuell HTTP200/RGBJPEG, Ursache unbekannt. Einmalige Kanalzahlen13.–19.11. mit Datenlücken; Klaviyo-Reauth blockiert. Zwei Produkte und CJ-A-Quelle bestätigt. Derselbe18s-Master um konkreten Aufnahmebeleg und sechs bedingte Captions fortgeführt; kein fertiger Film. Ein Modellvergleich-Link als Verkaufsentwurf. Keine operativen Writes.
+
+[Heutiger Stand](R276-REPORT-20261120.md) · [Belege](R276-PROOF-20261120.json) · [ein Master/Storyboard](runs/20261120-r276/MASTER-18S.md) · [eine Verkaufsaktion zur Freigabe](runs/20261120-r276/VERKAUFSENTWURF.md).
+R275 blieb vor dem Neustart ungespeichert; PR3235 ist vorhanden, Draft und ungemergt. Alte Historie bleibt erhalten. Claude-Empfang nurR259–R268 dokumentiert; neuere Kenntnisnahme unbekannt.
+
+---
+
 # R274 – Film eingebaut und geprüft; Publish vom Connector verweigert – 17.11.2026
 
 R274: Aktuelle Inhaberkopie 214208577927 verifiziert; neun vollständige Dateien gespeichert und exakt zurückgelesen, echten Desktop-Stickyfehler im besitzenden Abschnitt korrigiert. Finale gespeicherte Chromium-Vorschau bestanden. Genau ein Publish-Aufruf wurde mit «Only agent-created themes can be published here» verweigert; Ziel weiterhin UNPUBLISHED, bisheriger MAIN 214169584007 unverändert. Unter der ausdrücklichen Obergrenze von 1000 Credits zwei gezielte Seedance-2.5-Fassungen für je offerierte 420 Credits gerendert. Revision 3 mit sechs Einstellungen ist nach vorläufig bestandener Produktbildprüfung die bessere Abnahmekandidatin; exportierte MP4 15 s/1080×1440/30 fps/stumm, 10.56 MB, exakt hochgeladen/zurückgelesen und vollständig dekodiert. Keine neue ungesehene Filmfassung live gebunden.

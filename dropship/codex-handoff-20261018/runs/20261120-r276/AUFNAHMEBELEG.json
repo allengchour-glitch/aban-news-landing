@@ -1,0 +1,112 @@
+{
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "productId": "gid://shopify/Product/15521256604033",
+  "variantId": "gid://shopify/ProductVariant/68122445283719",
+  "sku": "CJSN139239101AZ",
+  "state": "PENDING_REAL_MATERIAL",
+  "unitId": null,
+  "variantSpecificPackingEvidence": null,
+  "discId": null,
+  "continuousUnitDiscProjectionEvidence": null,
+  "rights": {
+    "commercialEditing": null,
+    "organicSocial": null,
+    "advertising": null,
+    "graphicMotif": null,
+    "music": null
+  },
+  "takes": [
+    {
+      "takeId": "hook_room",
+      "unitId": null,
+      "discId": null,
+      "originalFile": null,
+      "sha256": null,
+      "sourceFps": null,
+      "inFrameInclusive": null,
+      "outFrameExclusive": null,
+      "evidence": null,
+      "accepted": false
+    },
+    {
+      "takeId": "hook_detail",
+      "unitId": null,
+      "discId": null,
+      "originalFile": null,
+      "sha256": null,
+      "sourceFps": null,
+      "inFrameInclusive": null,
+      "outFrameExclusive": null,
+      "evidence": null,
+      "accepted": false
+    },
+    {
+      "takeId": "real_operation",
+      "unitId": null,
+      "discId": null,
+      "originalFile": null,
+      "sha256": null,
+      "sourceFps": null,
+      "inFrameInclusive": null,
+      "outFrameExclusive": null,
+      "evidence": null,
+      "accepted": false
+    },
+    {
+      "takeId": "device_usb",
+      "unitId": null,
+      "discId": null,
+      "originalFile": null,
+      "sha256": null,
+      "sourceFps": null,
+      "inFrameInclusive": null,
+      "outFrameExclusive": null,
+      "evidence": null,
+      "accepted": false
+    },
+    {
+      "takeId": "real_projection",
+      "unitId": null,
+      "discId": null,
+      "originalFile": null,
+      "sha256": null,
+      "sourceFps": null,
+      "inFrameInclusive": null,
+      "outFrameExclusive": null,
+      "evidence": null,
+      "accepted": false
+    },
+    {
+      "takeId": "device_room",
+      "unitId": null,
+      "discId": null,
+      "originalFile": null,
+      "sha256": null,
+      "sourceFps": null,
+      "inFrameInclusive": null,
+      "outFrameExclusive": null,
+      "evidence": null,
+      "accepted": false
+    },
+    {
+      "takeId": "cta_end",
+      "unitId": null,
+      "discId": null,
+      "originalFile": null,
+      "sha256": null,
+      "sourceFps": null,
+      "inFrameInclusive": null,
+      "outFrameExclusive": null,
+      "evidence": null,
+      "accepted": false
+    }
+  ],
+  "approval": {
+    "creative": null,
+    "identity": null,
+    "sound": null,
+    "readability": null,
+    "crops": null
+  },
+  "note": "Leere Nachweisvorlage. Weder Aufnahme noch Render, Rechtefreigabe oder Publikationsregister."
+}

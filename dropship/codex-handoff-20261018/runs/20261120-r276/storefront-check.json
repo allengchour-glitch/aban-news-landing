@@ -1,0 +1,122 @@
+[
+  {
+    "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544.js",
+    "http": 200,
+    "sha256": "508a63545415cebf526cad8e2beb39246e3b05ea526c8c32be3e57f2f1ab0516",
+    "variant": {
+      "id": 68122445283719,
+      "title": "A \u00b7 Grundmodell \u00b7 USB",
+      "option1": "A \u00b7 Grundmodell \u00b7 USB",
+      "option2": null,
+      "option3": null,
+      "sku": "CJSN139239101AZ",
+      "requires_shipping": true,
+      "taxable": true,
+      "featured_image": {
+        "id": 83513734431105,
+        "product_id": 15521256604033,
+        "position": 11,
+        "created_at": "2026-08-31T07:11:27+02:00",
+        "updated_at": "2026-08-31T07:11:30+02:00",
+        "alt": "Sternenlicht-Projektor f\u00fcr Schlafzimmer \u2013 Bild 11 | LuxeStyle",
+        "width": 800,
+        "height": 654,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+        "variant_ids": [
+          68122445283719
+        ]
+      },
+      "available": true,
+      "name": "Sternenlicht-Projektor f\u00fcr Schlafzimmer - A \u00b7 Grundmodell \u00b7 USB",
+      "public_title": "A \u00b7 Grundmodell \u00b7 USB",
+      "options": [
+        "A \u00b7 Grundmodell \u00b7 USB"
+      ],
+      "price": 3490,
+      "weight": 0,
+      "compare_at_price": null,
+      "inventory_management": null,
+      "barcode": null,
+      "featured_media": {
+        "alt": "Sternenlicht-Projektor f\u00fcr Schlafzimmer \u2013 Bild 11 | LuxeStyle",
+        "id": 70733173719425,
+        "position": 11,
+        "preview_image": {
+          "aspect_ratio": 1.223,
+          "height": 654,
+          "width": 800,
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090"
+        }
+      },
+      "quantity_rule": {
+        "min": 1,
+        "max": null,
+        "increment": 1
+      },
+      "quantity_price_breaks": [],
+      "requires_selling_plan": false,
+      "selling_plan_allocations": []
+    },
+    "productTitle": "Sternenlicht-Projektor f\u00fcr Schlafzimmer"
+  },
+  {
+    "url": "https://luxestyle.ch/products/keramik-vorratsdose-fur-die-kuche-886976.js",
+    "http": 200,
+    "sha256": "b93e2b6e7e4848bc13dc92321c7b29ac4c33cd9626dd008109a80d682f92a144",
+    "variant": {
+      "id": 68122741014919,
+      "title": "Kirschbl\u00fcte 700ml",
+      "option1": "Kirschbl\u00fcte 700ml",
+      "option2": null,
+      "option3": null,
+      "sku": "CJYD205154101AZ",
+      "requires_shipping": true,
+      "taxable": true,
+      "featured_image": {
+        "id": 83582440407425,
+        "product_id": 15524879008129,
+        "position": 12,
+        "created_at": "2026-09-04T12:17:40+02:00",
+        "updated_at": "2026-09-04T12:17:43+02:00",
+        "alt": "Keramik-Vorratsdose f\u00fcr die K\u00fcche \u2013 Bild 12 | LuxeStyle",
+        "width": 800,
+        "height": 800,
+        "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg?v=1788517063",
+        "variant_ids": [
+          68122741014919
+        ]
+      },
+      "available": true,
+      "name": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml - Kirschbl\u00fcte 700ml",
+      "public_title": "Kirschbl\u00fcte 700ml",
+      "options": [
+        "Kirschbl\u00fcte 700ml"
+      ],
+      "price": 2490,
+      "weight": 0,
+      "compare_at_price": null,
+      "inventory_management": null,
+      "barcode": null,
+      "featured_media": {
+        "alt": "Keramik-Vorratsdose f\u00fcr die K\u00fcche \u2013 Bild 12 | LuxeStyle",
+        "id": 70800736780673,
+        "position": 12,
+        "preview_image": {
+          "aspect_ratio": 1.0,
+          "height": 800,
+          "width": 800,
+          "src": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/89c8ab7b-2c88-47e9-beee-bc6d76bab355.jpg?v=1788517063"
+        }
+      },
+      "quantity_rule": {
+        "min": 1,
+        "max": null,
+        "increment": 1
+      },
+      "quantity_price_breaks": [],
+      "requires_selling_plan": false,
+      "selling_plan_allocations": []
+    },
+    "productTitle": "Keramik-Vorratsdose mit Deckel, 700 oder 1400 ml"
+  }
+]

@@ -1,0 +1,91 @@
+{
+  "shopify": {
+    "id": "gid://shopify/Product/15521256604033",
+    "descriptionHtml": "<p>Der Sternenlicht-Projektor kombiniert dekorative Lichtprojektion mit einer Nachtlicht-Funktion für Innenräume. Je nach Modell nutzt du zusätzliche Motivscheiben und stellst den Fokus für die Projektion ein. Die sieben Modelle unterscheiden sich bei Motivscheiben, Stromversorgung, Bluetooth, Spieluhr und Drehfunktion.</p>\n<h2>Welche Ausführung passt zu dir?</h2>\n<p>Der angezeigte Preis gilt für die ausgewählte Variante. Die Ausstattung eines anderen Modells gehört nicht automatisch dazu.</p>\n<ul>\n<li>\n<strong>A · Grundmodell · USB:</strong> Ausführung zum Einstecken. Zusätzliche Motivscheiben, Bluetooth oder eine Spieluhr sind für dieses Grundmodell nicht zugesichert.</li>\n<li>\n<strong>B · 6 Motivscheiben · USB:</strong> Ausführung zum Einstecken mit sechs Motivscheiben.</li>\n<li>\n<strong>C · Galaxie-Scheibe + 6 Motivscheiben · USB:</strong> Ausführung zum Einstecken mit einer Galaxie-Scheibe und sechs Motivscheiben.</li>\n<li>\n<strong>D · Akku, Bluetooth, 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth und sechs Motivscheiben.</li>\n<li>\n<strong>E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben:</strong> Aufladbare Ausführung mit Bluetooth, einer Galaxie-Scheibe und sechs Motivscheiben.</li>\n<li>\n<strong>F · Akku-Spieluhr · 18 Musikstücke · 6 Sternenlicht-Scheiben:</strong> Aufladbare Spieluhr-Ausführung mit 18 Musikstücken und sechs Sternenlicht-Scheiben. Laut Variantenbeschreibung ohne Galaxie-Scheibe.</li>\n<li>\n<strong>G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung:</strong> Drehende Ausführung zum Einstecken mit einer Galaxie-Scheibe und drei Farbscheiben. Laut Variantenbeschreibung ohne Fernbedienung.</li>\n</ul>\n<h2>Technische Angaben</h2>\n<ul>\n<li>\n<strong>Gehäusemasse laut Produktdatenblatt:</strong> 121 × 110 × 121 mm.</li>\n<li>\n<strong>Lampenschirm:</strong> PVC.</li>\n<li>\n<strong>Leistung laut Datenblatt:</strong> 4 W.</li>\n<li>\n<strong>Bedienung:</strong> Tasten am Gerät; Schärfeeinstellung durch Drehen.</li>\n<li>\n<strong>Stromversorgung:</strong> USB-Ausführungen; A, B, C und G zum Einstecken, D, E und F aufladbar.</li>\n</ul>\n<h2>Lieferumfang nach Modell</h2>\n<p>Du erhältst einen Projektor in der gewählten Ausführung. Anzahl und Art der zusätzlichen Scheiben sowie Bluetooth-, Spieluhr- oder Drehfunktion richten sich nach der obigen Auswahl A–G. Eine Gesamtübersicht aller Extras ist keine Packliste für jede einzelne Ausführung.</p>\n<p>Ein Netzteil sowie eine Fernbedienung für die anderen Modelle sind in den zugeordneten Variantenangaben nicht eindeutig bestätigt. Für G ist ausdrücklich keine Fernbedienung angegeben.</p>\n<h2>Bedienung und Pflege</h2>\n<p>Für die Nachtlicht-Funktion wird der Lampenschirm aufgesetzt. Für die Projektion stellst du die Schärfe durch Drehen ein. Zum Wechseln eines Motivs öffnest du die Filmbox, tauschst die Scheibe beziehungsweise den Filmträger und schiebst ihn wieder ein.</p>\n<p>Nur für Innenräume verwenden. Vor Wärmequellen, direkter Sonne und starken Feuchtigkeitsschwankungen schützen. Die Oberfläche mit einem weichen Baumwolltuch reinigen und keine ätzenden Reinigungsmittel verwenden. Das mitgelieferte USB-Kabel ist laut Anleitung für dieses Produkt vorgesehen.</p>",
+    "variants": {
+      "nodes": [
+        {
+          "id": "gid://shopify/ProductVariant/68122445283719",
+          "title": "A · Grundmodell · USB",
+          "sku": "CJSN139239101AZ",
+          "price": "34.90"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445316487",
+          "title": "B · 6 Motivscheiben · USB",
+          "sku": "CJSN139239102BY",
+          "price": "37.90"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445349255",
+          "title": "C · Galaxie-Scheibe + 6 Motivscheiben · USB",
+          "sku": "CJSN139239103CX",
+          "price": "40.90"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445382023",
+          "title": "D · Akku, Bluetooth, 6 Motivscheiben",
+          "sku": "CJSN139239104DW",
+          "price": "49.90"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445414791",
+          "title": "E · Akku, Bluetooth, Galaxie-Scheibe + 6 Motivscheiben",
+          "sku": "CJSN139239105EV",
+          "price": "51.90"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445447559",
+          "title": "F · Akku-Spieluhr · 18 Musikstücke · 6 Sternenlicht-Scheiben",
+          "sku": "CJSN139239106FU",
+          "price": "44.90"
+        },
+        {
+          "id": "gid://shopify/ProductVariant/68122445480327",
+          "title": "G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung",
+          "sku": "CJSN139239107GT",
+          "price": "35.90"
+        }
+      ]
+    }
+  },
+  "cj": {
+    "pid": "1477820492730732544",
+    "productSku": "CJSN1392391",
+    "variantA": [
+      {
+        "vid": "1477826312449167360",
+        "pid": "1477820492730732544",
+        "variantName": null,
+        "variantNameEn": "Galaxy Projector Starry Sky Projection Bedroom Bedside Decoration Night Light A USB",
+        "variantImage": "https://cf.cjdropshipping.com/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg",
+        "variantSku": "CJSN139239101AZ",
+        "barcode": "1598450393712",
+        "variantUnit": "个",
+        "variantProperty": "[]",
+        "variantKey": "A-USB",
+        "variantLength": 165,
+        "variantWidth": 155,
+        "variantHeight": 140,
+        "variantVolume": 3580500,
+        "variantWeight": 671,
+        "variantSellPrice": 14.23,
+        "createTime": 1641176224000,
+        "variantStandard": "long=165,width=155,height=140",
+        "variantSugSellPrice": 80.83,
+        "combineNum": null,
+        "inventoryNum": null,
+        "combineVariants": null,
+        "inventories": null
+      }
+    ],
+    "productVideo": [
+      "1602963697889193984"
+    ]
+  },
+  "imageUrl": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/752b9e0c-e2c0-40d0-a56a-1ae8aa4c2a15.jpg?v=1788153090",
+  "imageSha256": "5fa8b110b3115cd0a98324c42a06a8fdd41981e3536010f9d657b93bd1539612",
+  "imageSeen": true,
+  "physicalUnitConfirmed": false,
+  "rightsConfirmed": false
+}
