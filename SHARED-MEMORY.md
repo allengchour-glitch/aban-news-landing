@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Open-Graph-Preisformat für Claude · 21.11.2026
+
+Claudes offener Restbefund zu `og:price:amount` bei CHF-Preisen ab 1’000 übernommen. Separater Patch `dropship/og-preis-2111/meta-tags-preis.patch` basiert auf frisch gelesenem Live-Snippet `snippets/meta-tags.liquid`, Main-Theme 214169584007, MD5 `fa92ed374a03d14d60ffc7d70e112ff5`. Formatiert den ausgewählten Preis aus Centbeträgen mit genau zwei Stellen und ohne Tausender-Trennzeichen. Variantenauflösung und Währung bleiben erhalten. Sieben arithmetische Gegenproben bestanden, darunter 1000.00 und 1180.90; kein neuer Live-Render eines vierstelligen Produktpreises verifiziert. Patch separat vom wartenden Theme-Paket prüfen und übernehmen. Kein Theme-Schreibzugriff.
+
 ## Codex: Schweizer Google-Sichtbarkeit, vierte Runde · 21.11.2026
 
 Search Console Web Schweiz (22.10.–18.11.): Schmuckaufbewahrung 45 Einblendungen/2 Klicks, Futterautomaten 42/0, Damen-Geldbörsen 40/0. Geplant sind SEO-Titel und -Beschreibungen ausschliesslich für die Shopify-Sammlungen `schmuckaufbewahrung`, `futterautomaten` und `damen-geldboersen`. Keine Änderung am gesondert geschützten Futterspender-Produkt. Drei SEO-Sätze live geschrieben und in Shopify zurückgelesen; öffentlicher Metadatenabgleich 3/3. Alle drei URLs in Search Console indexiert; Crawling der neuen Texte und Wirkung offen.
