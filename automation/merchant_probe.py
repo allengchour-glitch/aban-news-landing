@@ -30,6 +30,8 @@ CASES = {
     },
 }
 MARKER = "LUXE_MERCHANT_READ_V1"
+CSS_LIMIT_CASE = "css-produktlimit"
+CSS_LIMIT_SCOPE = "ADS_EEA"
 
 
 def _emit(obj, stream=None):
@@ -37,7 +39,7 @@ def _emit(obj, stream=None):
 
 
 def _unknown(case, code):
-    _emit({"marker": MARKER, "case": case if case in CASES else "unknown", "result": "unknown", "errorCode": code})
+    _emit({"marker": MARKER, "case": case if case in CASES or case == CSS_LIMIT_CASE else "unknown", "result": "unknown", "errorCode": code})
     return 2
 
 
@@ -79,13 +81,44 @@ def _get_json(url, bearer, get=None):
         return None, "invalid_json"
 
 
+def _read_css_limit(bearer, get=None):
+    resource = f"accounts/{ACCOUNT_ID}/limits/products~{CSS_LIMIT_SCOPE}"
+    response, error = _get_json(f"https://{API_HOST}/quota/v1/{resource}", bearer, get)
+    if error:
+        return _unknown(CSS_LIMIT_CASE, error)
+
+    products = response.get("products") if isinstance(response, dict) else None
+    if not isinstance(products, dict) or response.get("name") != resource:
+        return _unknown(CSS_LIMIT_CASE, "limit_response_mismatch")
+
+    limit = products.get("limit")
+    if (
+        products.get("scope") != CSS_LIMIT_SCOPE
+        or not isinstance(limit, str)
+        or not limit.isascii()
+        or not limit.isdecimal()
+        or not 1 <= len(limit) <= 19
+        or not 0 <= int(limit) <= 2**63 - 1
+    ):
+        return _unknown(CSS_LIMIT_CASE, "limit_response_mismatch")
+
+    _emit({
+        "marker": MARKER,
+        "case": CSS_LIMIT_CASE,
+        "result": "ok",
+        "scope": CSS_LIMIT_SCOPE,
+        "productLimit": limit,
+    })
+    return 0
+
+
 def _reader(case, env, bearer, get=None):
     # Produktmodus vor jedem API-Aufruf oder Erneuern der Zugangsdaten absichern.
     if env.get("REGISTRIEREN", "").strip().lower() == "true":
         return _unknown(case, "registration_blocked")
     if env.get("MERCHANT_ID", "").strip() != ACCOUNT_ID:
         return _unknown(case, "account_input_mismatch")
-    if case not in CASES:
+    if case not in CASES and case != CSS_LIMIT_CASE:
         return _unknown(case, "case_not_allowed")
 
     account_url = f"https://{API_HOST}/accounts/v1/accounts/{ACCOUNT_ID}"
@@ -94,6 +127,9 @@ def _reader(case, env, bearer, get=None):
         return _unknown(case, error)
     if not isinstance(account, dict) or account.get("accountId") != ACCOUNT_ID or account.get("name") != f"accounts/{ACCOUNT_ID}" or account.get("accountName") != ACCOUNT_NAME:
         return _unknown(case, "account_response_mismatch")
+
+    if case == CSS_LIMIT_CASE:
+        return _read_css_limit(bearer, get)
 
     spec = CASES[case]
     key = _encoded_product_key(spec)
@@ -369,7 +405,7 @@ def main():
     case = env.get("MERCHANT_CASE", "account-probe").strip() or "account-probe"
     if case == "account-probe":
         return _legacy_main()
-    if case not in CASES:
+    if case not in CASES and case != CSS_LIMIT_CASE:
         return _unknown(case, "case_not_allowed")
     # Unzulässige Eingaben vor dem Lesen oder Erneuern der Zugangsdaten abweisen.
     if env.get("REGISTRIEREN", "").strip().lower() == "true":

@@ -333,5 +333,66 @@ class MerchantReaderTests(unittest.TestCase):
         self.assertNotIn("secret", json.dumps(result).lower())
 
 
+
+class CssProductLimitTests(unittest.TestCase):
+    def setUp(self):
+        self.env = {"MERCHANT_ID": probe.ACCOUNT_ID, "REGISTRIEREN": "false"}
+        self.resource = f"accounts/{probe.ACCOUNT_ID}/limits/products~ADS_EEA"
+        self.account = {"accountId": probe.ACCOUNT_ID, "accountName": probe.ACCOUNT_NAME,
+                        "name": f"accounts/{probe.ACCOUNT_ID}"}
+        self.limit = {"name": self.resource, "products": {"scope": "ADS_EEA", "limit": "150000"}}
+
+    def read(self, account=None, limit=None, status=200):
+        def reply(code, body):
+            return Mock(status_code=code, json=Mock(return_value=body))
+
+        send = Mock(side_effect=[
+            reply(200, self.account if account is None else account),
+            reply(status, self.limit if limit is None else limit),
+        ])
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            code = probe._reader(probe.CSS_LIMIT_CASE, self.env, "stub-secret", send)
+        return code, json.loads(output.getvalue()), send
+
+    def test_css_limit_is_read_only_and_reports_no_usage(self):
+        code, result, send = self.read()
+        self.assertEqual(code, 0)
+        self.assertEqual(result["scope"], "ADS_EEA")
+        self.assertEqual(result["productLimit"], "150000")
+        self.assertNotIn("quotaUsage", result)
+        self.assertNotIn("stub-secret", json.dumps(result))
+        self.assertEqual([c.args[0] for c in send.call_args_list], [
+            f"https://merchantapi.googleapis.com/accounts/v1/accounts/{probe.ACCOUNT_ID}",
+            f"https://merchantapi.googleapis.com/quota/v1/{self.resource}",
+        ])
+        self.assertTrue(all(c.kwargs["allow_redirects"] is False for c in send.call_args_list))
+
+    def test_wrong_account_never_reads_limit(self):
+        code, result, send = self.read(account={**self.account, "accountName": "Other"})
+        self.assertEqual((code, result["errorCode"], send.call_count), (2, "account_response_mismatch", 1))
+
+    def test_scope_and_value_are_validated(self):
+        for scope, value in [("FREE_LISTINGS", "150000"), ("ADS_EEA", "-1"),
+                             ("ADS_EEA", "unknown"), ("ADS_EEA", 150000)]:
+            with self.subTest(scope=scope, value=value):
+                response = {"name": self.resource, "products": {"scope": scope, "limit": value}}
+                code, result, _ = self.read(limit=response)
+                self.assertEqual((code, result["errorCode"]), (2, "limit_response_mismatch"))
+
+    def test_http_failures_never_become_empty_or_zero(self):
+        for status, field in [(401, "http_401"), (403, "http_403"), (429, "http_429"),
+                              (302, "redirect_blocked")]:
+            with self.subTest(status=status):
+                code, result, _ = self.read(status=status)
+                self.assertEqual((code, result["errorCode"]), (2, field))
+                self.assertNotIn("productLimit", result)
+
+    def test_registration_is_blocked_for_limit_mode(self):
+        self.env["REGISTRIEREN"] = "true"
+        code, result, send = self.read()
+        self.assertEqual((code, result["errorCode"], send.call_count), (2, "registration_blocked", 0))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -19,6 +19,7 @@ on:
           - preis-draft
           - nagellack-1
           - nagellack-6
+          - css-produktlimit
         default: account-probe
   push:
     branches: [claude/merchant-probe-1111]
