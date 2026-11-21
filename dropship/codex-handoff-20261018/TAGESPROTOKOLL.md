@@ -3612,3 +3612,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Film- und Prüfbeleg](R294-360-GALERIE-20261121.md)
 
 [LUXESTYLE_R294_20261121]
+
+### R295 – Grössere Galerie und Bedienfeld
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Websitefilm | 360°-Runde näher gerahmt und um Ambre, Pois und ein laufendes Fenster mit Keramik ergänzt. | Sieben Produkte, 16 Sekunden, konstant 60 fps. UHD und Hochformat dekodiert und je acht Chromium-Zeitsprünge geprüft. Beide Dateien liegen als Vorschau vor. |
+| Shopify-Vorschau | Das gezeigte Bedienfeld standardmässig ausgeblendet. Desktop-, Mobil- und Reduced-Motion-Prüfung durchgeführt. | Bedienfeld bleibt über Tastaturfokus nutzbar. Scroll-Film reagiert weiter. Theme-Kopie gespeichert, keine neue Filmbindung und keine Veröffentlichung. |
+
+[Film- und Theme-Beleg](R295-NAHER-PIP-20261121.md)
+
+[LUXESTYLE_R295_20261121]
