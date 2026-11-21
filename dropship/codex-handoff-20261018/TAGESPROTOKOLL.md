@@ -3656,3 +3656,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Film, Bilder und Prüfung](R298-ACHTZEHN-PRODUKTE-20261121.md)
 
 [LUXESTYLE_R298_20261121]
+
+### R299 – Live-Freigabe für die Startseite
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify-Medien | Beide freigegebenen R298-Originale hochgeladen und als READY zurückgelesen. CDN-Abruf, Hash, Auflösung, 60 fps und Teilabruf geprüft. | Desktop und Hochformat liegen vor. |
+| Startseite | Aus geprüftem Diff Film, Aufmacher und 16 Kacheln zusammengeführt, Desktop- und Mobil-Vorschau korrigiert und auf MAIN als wartende Version gespeichert. | Commit fa3792c8e27964110f26a485c7936e4fb051144b. Öffentliche Seite noch auf bisherigem Stand. |
+| Veröffentlichung | Gesamten Publikationsumfang aus dem Commit geprüft. | Shopify bündelt 13 weitere wartende Dateien. Getrennte Freigabe erfordert die Zustimmung zur Theme-Kopie. |
+
+[Shopify-Videos, vorbereitete Version und Blocker](R299-STARTSEITE-LIVE-20261121.md)
+
+[LUXESTYLE_R299_20261121]
