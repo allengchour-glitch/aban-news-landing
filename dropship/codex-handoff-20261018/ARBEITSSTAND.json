@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 288,
-  "updatedAt": "2026-11-21T13:13:31Z",
+  "revision": 289,
+  "updatedAt": "2026-11-21T13:24:01Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50859,6 +50859,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R288-REPORT-20261121.md"
       ]
+    },
+    {
+      "revision": 289,
+      "at": "2026-11-21T13:24:01Z",
+      "summary": "Gezielter Threads-Rücklesestand bestätigt unveränderten Medienfehler. Bereichsabruf und bytegleicher Abruf ohne Versionsparameter erfolgreich. FR-Quellprüfung zeigt fehlenden Sprachwert und vollständigen Speicherumfang. K01-Kontrolltake und getrennte Textzone für Projektor A vorbereitet.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R289-FORTSETZUNG-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -81573,6 +81581,42 @@
     "saleDraft": "FR_Existing_Comparison_Heading_And_Note",
     "metricoolConcurrentDayReportReused": "R278",
     "klaviyo": "UNAUTHORIZED_REAUTH_REQUIRED",
+    "claudeReceipt": "unknown"
+  },
+  "run289": {
+    "atUTC": "2026-11-21T13:24:01Z",
+    "localDate": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R289-FORTSETZUNG-20261121.md",
+    "summary": "Gezielter Threads-Rücklesestand bestätigt unveränderten Medienfehler. Bereichsabruf und bytegleicher Abruf ohne Versionsparameter erfolgreich. FR-Quellprüfung zeigt fehlenden Sprachwert und vollständigen Speicherumfang. K01-Kontrolltake und getrennte Textzone für Projektor A vorbereitet.",
+    "threads": {
+      "id": "426961960",
+      "uuid": "-325577156053548845",
+      "status": "ERROR",
+      "exactURLRangeStatus": 206,
+      "fullWithoutVersionStatus": 200,
+      "fullHashMatchesR288": true,
+      "dedicatedChannelReplay": false
+    },
+    "frComparison": {
+      "shopifyProductId": "15521256604033",
+      "key": "body_html",
+      "targetLocale": "fr",
+      "existingTranslation": false,
+      "writeScope": "full_locale_value",
+      "writePerformed": false,
+      "localReversibleTwoTextDiffChecked": true
+    },
+    "master": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "shootProof": "K01",
+      "plannedTextBoxY": [
+        256,
+        336
+      ],
+      "productAreaStartsY": 360,
+      "filmReady": false
+    },
+    "newMetricReads": false,
     "claudeReceipt": "unknown"
   }
 }
