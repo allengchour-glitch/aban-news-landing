@@ -1,7 +1,7 @@
 name: Hype-Filter Tests
 
-# Prüft bei Push/PR auf functions/** und hype-filter.html:
-# Engine-Unit-Tests, optionaler API-Test und HTML-Sanity-Check.
+# Prüft API, geschützte Lieferung, Lizenzclients und Studio-Werkzeuge bei relevanten Änderungen.
+# Engine-Unit-Tests, Client-/API-Tests und HTML-Sanity-Check.
 # Kein npm install — Node direkt nutzen, damit CF Pages keinen Build erkennt.
 on:
   push:
@@ -11,6 +11,9 @@ on:
       - 'danke-kit.html'
       - 'cockpit-app.html'
       - 'cockpit-sw.js'
+      - 'js/ki-studio.js'
+      - 'ki-studio.html'
+      - 'en/ki-studio.html'
       - '.github/workflows/hype-filter-test.yml'
   pull_request:
     paths:
@@ -19,6 +22,9 @@ on:
       - 'danke-kit.html'
       - 'cockpit-app.html'
       - 'cockpit-sw.js'
+      - 'js/ki-studio.js'
+      - 'ki-studio.html'
+      - 'en/ki-studio.html'
       - '.github/workflows/hype-filter-test.yml'
   workflow_dispatch:
 
@@ -39,6 +45,9 @@ jobs:
 
       - name: Bezahlte Kit-Downloads und erneute Prüfung
         run: node functions/_kit_download.test.mjs
+
+      - name: KI-Studio Werkzeuganfragen und manuelle Wiederaufnahme
+        run: node functions/_studio_client.test.mjs
 
       # API-Tests nur ausführen, wenn die Datei bereits existiert
       - name: API-Tests (_api.test.mjs, optional)

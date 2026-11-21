@@ -12,6 +12,7 @@
     licenseUnavailable: 'License check temporarily unavailable. Keep your key and try again later. Please do not buy again.',
     saved: 'Pro unlocked — tools are live.', enterKey: 'Enter your Pro key above first.',
     working: 'Working …', off: 'Pro AI is not active yet (admin setup pending).',
+    requestTimeout: 'No confirmed response after 45 seconds. The request may already have been processed. Your input is preserved. Nothing is retried automatically; wait before starting again manually.',
     proReq: 'This needs an active aban Pro key.', rate: 'Too many requests — wait a moment.',
     err: 'Something went wrong. Try again.', empty: 'No input.', soon: 'Checkout starts soon — join the list.'
   } : {
@@ -19,6 +20,7 @@
     licenseUnavailable: 'Lizenzprüfung derzeit nicht möglich. Schlüssel behalten und später erneut prüfen. Bitte nicht nochmals kaufen.',
     saved: 'Pro freigeschaltet — die Tools laufen live.', enterKey: 'Erst oben deinen Pro-Schlüssel eingeben.',
     working: 'Arbeite …', off: 'Pro-KI ist noch nicht aktiv (Admin-Setup ausstehend).',
+    requestTimeout: 'Keine bestätigte Antwort nach 45 Sekunden. Die Anfrage kann bereits verarbeitet worden sein. Deine Eingaben bleiben erhalten. Keine automatische Wiederholung; vor einem manuellen Neustart bitte kurz warten.',
     proReq: 'Dafür braucht es einen aktiven aban-Pro-Schlüssel.', rate: 'Zu viele Anfragen — kurz warten.',
     err: 'Etwas ist schiefgelaufen. Bitte nochmal.', empty: 'Keine Eingabe.', soon: 'Checkout startet in Kürze — trag dich auf die Liste.'
   };
@@ -101,14 +103,16 @@
   if (key) { if (input) input.value = key; validate(key, true); }
 
   // ---------- Tools ----------
-  function post(url, body) {
+  function post(url, body, signal) {
+    // Nach Ablauf der gesamten Werkzeugkette keine neue Modellanfrage beginnen.
+    if (signal && signal.aborted) return Promise.reject(new Error('Werkzeuganfrage abgelaufen'));
     // Sprache mitsenden → die Engine antwortet auf der Seitensprache (DE/EN).
     var payload = body || {};
     if (payload.lang == null) payload.lang = EN ? 'en' : 'de';
     return fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Pro-Key': key || '' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload), signal: signal
     }).then(function (r) { return r.json().then(function (d) { return { status: r.status, d: d }; }); });
   }
   function errText(status, d) {
@@ -136,22 +140,37 @@
   var STATUS_MSGS = null;
   function show(outId, text) {
     var o = $(outId); if (!o) return;
+    o.setAttribute('role', 'status'); o.setAttribute('aria-live', 'polite');
     o.textContent = text; o.className = 'out show';
-    if (!STATUS_MSGS) STATUS_MSGS = [T.working, T.enterKey, T.off, T.proReq, T.rate, T.err, T.empty];
+    if (!STATUS_MSGS) STATUS_MSGS = [T.working, T.enterKey, T.off, T.proReq, T.rate, T.err, T.empty, T.requestTimeout];
     if (text && STATUS_MSGS.indexOf(text) === -1 && text.length > 8) addCopy(o, text);
   }
   function run(toolId, btn, outId, fn) {
+    if (btn.disabled) return;
     var tool = $(toolId);
     if (!key || (tool && tool.getAttribute('data-locked') === '1')) {
       show(outId, T.enterKey); if (input) input.focus(); return;
     }
     var label = btn.textContent; btn.disabled = true; btn.textContent = T.working;
+    if (tool) tool.setAttribute('aria-busy', 'true');
     show(outId, T.working);
-    fn().then(function (res) {
+    var controller = new AbortController(), timer, timedOut = false;
+    // Über der serverseitigen Lizenz-/Modellfrist; umfasst auch Marktdaten und JSON.
+    // Abbruch bestätigt keinen serverseitigen Abschluss und löst keinen Retry aus.
+    var deadline = new Promise(function (_, reject) {
+      timer = setTimeout(function () {
+        timedOut = true;
+        controller.abort(); reject(new Error('Werkzeuganfrage abgelaufen'));
+      }, 45000);
+    });
+    Promise.race([Promise.resolve().then(function () { return fn(controller.signal); }), deadline]).then(function (res) {
       if (res.status >= 200 && res.status < 300) show(outId, res.text || '');
       else show(outId, errText(res.status, res.d));
-    }).catch(function () { show(outId, T.err); })
-      .finally(function () { btn.disabled = false; btn.textContent = label; });
+    }).catch(function () { show(outId, timedOut ? T.requestTimeout : T.err); })
+      .finally(function () {
+        clearTimeout(timer); btn.disabled = false; btn.textContent = label;
+        if (tool) tool.setAttribute('aria-busy', 'false');
+      });
   }
 
   function val(id) { var e = $(id); return e ? e.value.trim() : ''; }
@@ -162,20 +181,20 @@
     var tool = btn.getAttribute('data-tool');
 
     if (tool === 'chat') {
-      run('toolChat', btn, 'outChat', function () {
-        return post('/api/chat', { q: val('chatQ'), context: [] })
+      run('toolChat', btn, 'outChat', function (signal) {
+        return post('/api/chat', { q: val('chatQ'), context: [] }, signal)
           .then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.answer }; });
       });
     } else if (tool === 'generate') {
-      run('toolGen', btn, 'outGen', function () {
+      run('toolGen', btn, 'outGen', function (signal) {
         return post('/api/generate', {
           kind: val('genKind') || 'text', branche: val('genBranche'), ziel: val('genZiel'),
           ton: val('genTon'), zielgruppe: val('genZg'), laenge: ($('genLen') ? $('genLen').value : '')
-        }).then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
+        }, signal).then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
       });
     } else if (tool === 'hype') {
-      run('toolHype', btn, 'outHype', function () {
-        return post('/api/hype-check', { text: val('hypeText'), action: 'rewrite' })
+      run('toolHype', btn, 'outHype', function (signal) {
+        return post('/api/hype-check', { text: val('hypeText'), action: 'rewrite' }, signal)
           .then(function (r) {
             var t = r.d && (r.d.aiRewrite || r.d.ruleRewrite) || '';
             if (r.d && r.d.proRequired) t = T.proReq;
@@ -183,8 +202,8 @@
           });
       });
     } else if (tool === 'aeo') {
-      run('toolAeo', btn, 'outAeo', function () {
-        return post('/api/ki-erwaehnung', { firma: val('aeoFirma'), branche: val('aeoBranche'), input: val('aeoBranche') })
+      run('toolAeo', btn, 'outAeo', function (signal) {
+        return post('/api/ki-erwaehnung', { firma: val('aeoFirma'), branche: val('aeoBranche'), input: val('aeoBranche') }, signal)
           .then(function (r) {
             var d = r.d || {}, t = d.kiCheck || '';
             if (!t && d.proRequired) t = T.proReq;
@@ -194,20 +213,20 @@
           });
       });
     } else if (tool === 'translate') {
-      run('toolTranslate', btn, 'outTr', function () {
-        return post('/api/generate', { kind: 'translate', text: val('trText'), ziel: val('trZiel') || (EN ? 'German, natural' : 'Englisch, natürlich') })
+      run('toolTranslate', btn, 'outTr', function (signal) {
+        return post('/api/generate', { kind: 'translate', text: val('trText'), ziel: val('trZiel') || (EN ? 'German, natural' : 'Englisch, natürlich') }, signal)
           .then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
       });
     } else if (tool === 'prompt') {
-      run('toolPrompt', btn, 'outPr', function () {
-        return post('/api/generate', { kind: 'prompt', text: val('prText') })
+      run('toolPrompt', btn, 'outPr', function (signal) {
+        return post('/api/generate', { kind: 'prompt', text: val('prText') }, signal)
           .then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
       });
     } else if (tool === 'brief') {
-      run('toolBrief', btn, 'outBrief', function () {
-        return marketSummary().then(function (txt) {
+      run('toolBrief', btn, 'outBrief', function (signal) {
+        return marketSummary(signal).then(function (txt) {
           if (!txt) return { status: 200, d: {}, text: T.err };
-          return post('/api/generate', { kind: 'marketbrief', text: txt })
+          return post('/api/generate', { kind: 'marketbrief', text: txt }, signal)
             .then(function (r) { return { status: r.status, d: r.d, text: r.d && r.d.text }; });
         });
       });
@@ -215,8 +234,8 @@
   });
 
   // Kompaktes Markt-Datenpaket aus /data/markets.json (für das Markt-Briefing).
-  function marketSummary() {
-    return fetch('/data/markets.json', { cache: 'no-cache' }).then(function (r) { return r.json(); })
+  function marketSummary(signal) {
+    return fetch('/data/markets.json', { cache: 'no-cache', signal: signal }).then(function (r) { return r.json(); })
       .then(function (d) {
         var as = (d.assets || []).filter(function (a) { return typeof a.change_24h === 'number'; });
         if (!as.length) return '';
