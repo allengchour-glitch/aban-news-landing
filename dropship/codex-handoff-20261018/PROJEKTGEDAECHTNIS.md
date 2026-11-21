@@ -1,3 +1,11 @@
+# R302 – Flüssiger Startseitenfilm und klarere Einkaufskacheln – 21.11.2026
+
+Öffentliche Startseite flüssiger und kompakter gemacht. 18-Produkte-Film mit leichteren Shopify-MP4s, Haustierwelt, Originalmotive und sechs verlinkte Social-Symbole. Genau sieben Dateiänderungen live bestätigt; 30 fps im öffentlichen Browsertest auf Desktop und Mobil.
+
+[Live-Korrektur und Prüfbelege](R302-STARTSEITE-KORREKTUR-20261121.md)
+
+---
+
 # R301 – LuxeStyle-Abendlauf – 21.11.2026
 
 Abendplanung frisch bis Ende 28.11. geprüft. 23 aktive Objekte und 30 Kanalplätze, keine neuen Termine. Projektor A erneut kaufbar bestätigt, denselben 18-Sekunden-Master weiter vorbereitet und den französischen Beschrieb als einzige Verkaufsfreigabe benannt. Klaviyo verlangt erneute Anmeldung.
