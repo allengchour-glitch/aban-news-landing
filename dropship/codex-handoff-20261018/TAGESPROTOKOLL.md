@@ -3552,3 +3552,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Fortsetzungsbericht](R289-FORTSETZUNG-20261121.md)
 
 [LUXESTYLE_R289_20261121]
+
+### R290 – FR-Vergleich und gezielte Metricool-Sperren
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify FR | Gezeigte zwei Textstellen im neuen französischen Sprachwert für die Projektor-Produktbeschreibung gespeichert und Admin sowie DE/FR öffentlich gegengeprüft. | Beide Seiten HTTP 200 und korrekter Abschnitt je einmal. Rest des FR-Werts aktuell deutsch, künftige DE-Änderungen laufen nicht automatisch in den neuen Wert ein. |
+| Metricool | Drei künftige Objekte zum verifizierten Schmuckkästchen mit aktuellem Sperrtag `rueckhol-0907` gezielt auf Entwurf und Autopublish aus gesetzt. | FB/IG 17:00, TikTok 18:00 und Pinterest 20:00 gehalten. Alle drei UUIDs und Termine erhalten. Threads 14:00 weiter ERROR und ohne Retry. |
+| Medien-Rücklesen | Originale und nach dem Hold gelieferte Dateien verglichen. | FB/IG-URLs neu, vier Dateien bytegleich. TikTok-Medienlinks identisch. Pinterest vom Connector als visuell übereinstimmendes JPEG neu kodiert. Original-PNG bleibt abrufbar. |
+| Planung | Ursprungsanlage und heutigen Status auf betroffene Produkt-UUIDs geprüft. | Kein vierter künftiger Termin desselben Produkts im zuvor geprüften Fenster gefunden. Kein neuer Post, keine neuen Kennzahlen. |
+
+[Änderungs- und Rücklesebeleg](R290-FIX-20261121.md)
+
+[LUXESTYLE_R290_20261121]
