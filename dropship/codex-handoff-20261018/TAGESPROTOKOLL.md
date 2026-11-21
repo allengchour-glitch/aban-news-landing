@@ -3539,3 +3539,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht und Kanaltexte](R288-REPORT-20261121.md)
 
 [LUXESTYLE_R288_20261121]
+
+### R289 – gezielte Fortsetzung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Threads | Bestehende UUID gezielt zurückgelesen, Bildbereich und Abruf ohne Versionsparameter geprüft und Supportentwurf ergänzt. | Status weiterhin ERROR. HTTP 206 und HTTP 200, vollständiges JPEG stimmt mit R288 überein. Kein dedizierter Kanal-Retry verfügbar. Kein Versand, Retry oder neuer Post. |
+| Französisch | Shopify-Quellschlüssel und Digest gelesen. Lokal genau den bestehenden Überschrift-/Hinweisblock ersetzt und wiederhergestellt. | FR-Übersetzung fehlt. Ein späterer Write würde den vollständigen Sprachwert anlegen. Der Textdiff ist geprüft und bleibt Entwurf. |
+| Master | Ausfüllbaren K01-Dreh- und Abnahmebeleg erstellt. Die tatsächliche Textbox vom vorgesehenen Motivbereich getrennt. | 24 px Abstand in der Planzeichnung. Physische A-Probe, Originalmaterial, Motiv, Rechte und Abnahme sind weiter offen. Kein neuer Film. |
+| Messung | Den R288-Tagesstand für die gezielte Fortsetzung übernommen. | Keine Kennzahlen neu erhoben. |
+
+[Fortsetzungsbericht](R289-FORTSETZUNG-20261121.md)
+
+[LUXESTYLE_R289_20261121]
