@@ -1,3 +1,11 @@
+# R312 – Kaufweg zum Projektor – 21.11.2026
+
+Verkaufsentwurf aus R291 live. Französischer Projektor-Beschrieb und acht Auswahltexte bestätigt. Weihnachtsratgeber DE und FR führen direkt zum USB-Grundmodell A. A→G auf Handy und Desktop im echten Shop getestet.
+
+[Live-Verkaufsweg und Prüfdaten](R312-VERKAUFSWEG-PROJEKTOR-20261121.md)
+
+---
+
 # R311 – Katalogzuordnungen und Merchant-Gegenprobe – 21.11.2026
 
 Zwei falsch als Küche erfasste Produkte korrigiert und öffentliche Sortimentszuordnung geprüft. Begrenzte Merchant-Gegenprobe nach Löschung zeigt 13 CSS- und 12 Bildzeilen. Fünf weitere CJ-Setbilder mit Einblendungen, Stückliste offen.
