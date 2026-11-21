@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 297,
-  "updatedAt": "2026-11-21T16:55:09Z",
+  "revision": 298,
+  "updatedAt": "2026-11-21T17:36:13Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50931,6 +50931,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R297-ORIGINAL-KATEGORIEBILDER-20261121.md"
       ]
+    },
+    {
+      "revision": 298,
+      "at": "2026-11-21T17:36:13Z",
+      "summary": "360°-Websitefilm von neun auf 18 unterschiedliche Produkte erweitert. Drei neue Galerieszenen aus Original-Shopbildern, 32 Sekunden, geprüfte UHD- und Hochformatvorschau mit je 60 fps.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R298-ACHTZEHN-PRODUKTE-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82119,6 +82127,129 @@
       320
     ],
     "publicComparison": true,
+    "claudeReceipt": "unknown"
+  },
+  "run298": {
+    "date": "2026-11-21",
+    "scope": "Lokaler Websitefilm mit achtzehn Produkten",
+    "report": "dropship/codex-handoff-20261018/R298-ACHTZEHN-PRODUKTE-20261121.md",
+    "reportBlob": "7e6a9dbeb84fd2622d465f81ba26e9e31a636cb5",
+    "previousVersion": 296,
+    "shop": 94368563585,
+    "productCount": 18,
+    "addedProducts": [
+      {
+        "productId": 15412945224065,
+        "variantId": 55747981214081,
+        "originalImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1156d146-6e27-4d13-b46d-39c2a83da89a.jpg?v=1780244334",
+        "sha256": "221fa7d979ccf9d16f14cb471e8d0db6b83f16118ec6b035d18eeec73cc90836"
+      },
+      {
+        "productId": 16603738472839,
+        "variantId": 67790139130247,
+        "originalImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1623394885274.jpg?v=1790910695",
+        "sha256": "59ff567a90689aecbd247a8dedf61866b04c18a2154b5d4415702149c2572286"
+      },
+      {
+        "productId": 15453768089985,
+        "variantId": 67789787988359,
+        "originalImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a6d5bfd7-5789-4709-b44e-545c08660b82.jpg?v=1783805957",
+        "sha256": "b2f0e390fb4be0da121165ca7b93b629eb165ebe10595d98e1215c34ce8c2167"
+      },
+      {
+        "productId": 15504177136001,
+        "variantId": 67789402210695,
+        "originalImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1619490117574.jpg?v=1787124960",
+        "sha256": "499aa9448cd5084a7a5010c0903f4f9384cd4d39ae8f77febe5e4a367b811b1b"
+      },
+      {
+        "productId": 15493718147457,
+        "variantId": 67789587939719,
+        "originalImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/821d3b93-b919-4b17-8d0c-e9d29516a11e.jpg?v=1786396297",
+        "sha256": "6d20e800c18e5da15671b882109747e958eb6af2ed456894ba123e43c813c944"
+      },
+      {
+        "productId": 16610052637063,
+        "variantId": 67948149768583,
+        "originalImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f063c370-68c0-4a22-b95e-06ae6c3a3a34_fine.jpg?v=1791347186",
+        "sha256": "90a52195958b9fe560c4fd653f55b5340dc9c05eda6643a5c57f5062ff04a9e5"
+      },
+      {
+        "productId": 15452706013569,
+        "variantId": 67790002520455,
+        "originalImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1723897508855418880.jpg?v=1783660874",
+        "sha256": "1f4f49bf54464f40e64b640915098e5f108e4a4ce39f12399b6557c381322a9f"
+      },
+      {
+        "productId": 16638445683079,
+        "variantId": 67801548456327,
+        "originalImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cf60dc11-c6ca-4f17-9df3-33a369aeb1be_trans.jpg?v=1792008328",
+        "sha256": "231c1489d4962bd11643d7ac2eaf01d83c8f50bc7852cea88789029ddff84d46"
+      },
+      {
+        "productId": 15413083898241,
+        "variantId": 55748880073089,
+        "originalImage": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5709219f-d799-4308-a56e-b376dd24765f.jpg?v=1780268122",
+        "sha256": "5c01fb836bbb97bf3ed6475e35dcb7084a2aa9b654911af7d2d4780fc12104c3"
+      }
+    ],
+    "files": [
+      {
+        "file": "LuxeStyle-360-Achtzehn-Produkte-4K60.mp4",
+        "width": 3840,
+        "height": 2160,
+        "frames": 1920,
+        "fps": 60,
+        "seconds": 32,
+        "bytes": 19305638,
+        "sha256": "2bd87343cebc6889e73cab525e06510dca2cc35f57bd7826a1fb722219141c90",
+        "priorFrameMatches": [
+          2.15,
+          13.3,
+          19
+        ],
+        "inspectedLeadFrames": [
+          1227,
+          1315,
+          1398,
+          1467,
+          1555,
+          1638,
+          1707,
+          1795,
+          1878
+        ]
+      },
+      {
+        "file": "LuxeStyle-360-Achtzehn-Produkte-Mobil-60fps.mp4",
+        "width": 1080,
+        "height": 1920,
+        "frames": 1920,
+        "fps": 60,
+        "seconds": 32,
+        "bytes": 8456378,
+        "sha256": "afae0004b3177217a64f2b5f9773ef3aad3b2e9b0fde21780139be357796d058",
+        "priorFrameMatches": [
+          2.15,
+          13.3,
+          19
+        ],
+        "inspectedLeadFrames": [
+          1227,
+          1315,
+          1398,
+          1467,
+          1555,
+          1638,
+          1707,
+          1795,
+          1878
+        ]
+      }
+    ],
+    "browserSeeksPerFile": 15,
+    "themeBindingChanged": false,
+    "published": false,
     "claudeReceipt": "unknown"
   }
 }
