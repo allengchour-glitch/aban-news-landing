@@ -3758,3 +3758,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Lesebeleg und aktualisierter Antrag](R307-MERCHANT-CSS-LIMIT-20261121.md)
 
 [LUXESTYLE_R307_20261121]
+
+### R308 – Merchant-Quellen geprüft
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Merchant-Quellen | Bestehenden manuellen Nur-Lese-Job um eine gezielte Quellenabfrage ergänzt, getestet und ausgeführt. | Vier Quellen vollständig. Zwei Shopify-Hauptquellen für die vorgesehenen Sprachen und Länder, früherer AUTOFEED nicht gelistet. 29 lokale und 29 Runner-Tests grün. |
+| Anzeigenkontingent | Struktur und aktive Ziele separat von den belegten Google-Quotenzahlen geprüft. | Keine falsche Hauptquelle oder falsches Zielland belegt. Angebots-CSV fehlt für gezielte Bereinigung, Kontingent unverändert. |
+
+[Quellenbeleg und nächster Eingriff](R308-MERCHANT-QUELLEN-20261121.md)
+
+[LUXESTYLE_R308_20261121]
