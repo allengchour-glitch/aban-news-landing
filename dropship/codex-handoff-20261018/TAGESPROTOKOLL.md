@@ -3704,3 +3704,13 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Korrektur und Prüfbelege](R302-STARTSEITE-KORREKTUR-20261121.md)
 
 [LUXESTYLE_R302_20261121]
+
+### R303 – Handy-Film korrigiert
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Startseitenfilm auf Mobilgeräten | Nachladepausen reproduziert, denselben 18-Produkte-Film fürs Handy komprimiert, Querformat und Standbild beim Puffern geprüft. | Live im Haupttheme. Filmdatei 1,3 MB statt 5,8 MB. Nach dem Start im öffentlichen mobilen 1-Mbit/s-Browsertest 0 statt 12 Pufferpausen. |
+
+[Live-Korrektur und Prüfdaten](R303-MOBILER-STARTSEITENFILM-20261121.md)
+
+[LUXESTYLE_R303_20261121]
