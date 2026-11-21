@@ -3668,3 +3668,27 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Shopify-Videos, vorbereitete Version und Blocker](R299-STARTSEITE-LIVE-20261121.md)
 
 [LUXESTYLE_R299_20261121]
+
+### R300 – Geprüfte separate Startseiten-Kopie
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify-Theme | Nach ausdrücklicher Freigabe Kopie 214565814663 erstellt und zehn geprüfte Startseiten-Dateien gespeichert. Vollvergleich durchgeführt. | Preview Desktop/Hochformat und 16 Bilder bestätigt. Ein App-Manifest aktualisiert drei CDN-Icon-URLs, Bilddateien identisch. |
+| Live-Schaltung | Shopify-Connector-Publish versucht und Admin-Rollen sowie öffentliche Startseite zurückgelesen. | publish_refused («Only agent-created themes can be published here»). Vorbereitete Kopie im Admin verlinkt. Öffentliche Seite meldete 214169584007. |
+
+[Prüfbeleg und Admin-Link](R300-STARTSEITE-VEROEFFENTLICHUNG-20261121.md)
+
+[LUXESTYLE_R300_20261121]
+
+### R301 – Abendprüfung und Freigabepaket
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Metricool | Shop, sechs Kanäle, rollenden Plan, Tags und fällige Zustände abgeglichen. | 23 aktive Planobjekte, 30 Kanalplätze. 25.11. nur Threads, 26.–28.11. alle sechs mit Lücken. Keine neue Terminierung. |
+| Auslieferung | Je einen bestehenden TikTok und YouTube Short, Threads-Fehler und drei bewusste Holds gelesen. | Zwei PUBLISHED-Meldungen, Threads ERROR, die drei Holds bestehen. Keine eigene Veröffentlichung. |
+| Produkt und Master | Exakte Variante A samt Originalbild frisch geprüft. Kontrollaufnahme für bestehende K01-Abnahme, Schnitt und bedingte Kanaltexte präzisiert. | A öffentlich verfügbar, CHF 34.90. Geeignete Originalaufnahme, Rechte und Abnahme offen. Entwurf. |
+| Verkauf und Klaviyo | Engen Accountcheck und FR-Body-Gegenprobe durchgeführt. | Klaviyo verlangt erneute Anmeldung. Vollständiger FR-Beschrieb mit acht Auswahltexten bleibt eine Aktion zur Freigabe. |
+
+[Abendprüfung, Master und Verkaufsaktion](R301-ABENDLAUF-20261121.md)
+
+[LUXESTYLE_R301_20261121]
