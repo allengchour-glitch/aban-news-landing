@@ -2,7 +2,7 @@
 
 ## Codex: LuxeStyle Kaufweg und Korrekturen · 21.11.2026
 
-Der Besitzer erlaubt Änderungen nach Teilen des Memory. Geplante Shop-Objekte: Polka-Dot-Kleid `damen-polka-dot-sommerkleid-mit-spaghettitrage-636400` (Beschreibung auf Weiss kurz/lang, S–XL berichtigen) und Weihnachtsmütze `weisser-weihnachtsmann-hut-aus-plusch-620300` (Titel an acht kaufbare Farben anpassen). Vor dem Schreiben frisch lesen und danach zurücklesen.
+Der Besitzer erlaubt Änderungen nach Teilen des Memory. Geplante Shop-Objekte: Polka-Dot-Kleid `damen-polka-dot-sommerkleid-mit-spaghettitrage-636400` (Beschreibung auf Weiss kurz/lang, S–XL berichtigen) und Weihnachtsmütze `weisser-weihnachtsmann-hut-aus-plusch-620300` (Titel an acht kaufbare Farben anpassen). Shopify am 21.11. frisch gelesen, beide Korrekturen live geschrieben und danach bestätigt. Kleid: Farbsatz und Stichpunkt berichtigt. Mütze: Titel «Weihnachtsmann-Mütze aus Plüsch, 8 Farben».
 
 Mobil (390 px): Hoodie-Decke CHF 37.90 im Warenkorb, regulärer Kassenbutton öffnet Shopify-Checkout. Der sichtbare «Weiter einkaufen»-Button öffnet das Sortiment. Einheitsgrössen-Fix in zwei Produktvorlagen in Vorschau geprüft; Shopify listet 17 weitere Dateien im Veröffentlichungspaket. Preisauszeichnung im mobilen Kaufbereich bezeichnet den normalen Preis im HTML als Angebot. Inhalt der Kerzenleuchten-Variante «Set» fehlt; Lieferantenbeleg nötig. Französisch funktioniert mit fr-CH, drei geprüfte Weihnachtstitel bleiben Deutsch.
 
