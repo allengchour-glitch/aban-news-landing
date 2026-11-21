@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: KI-Studio nach hängender Werkzeuganfrage wieder bedienbar ·21.11.2026
+
+Die sieben Pro-Werkzeuge hatten im Gegensatz zur bereits korrigierten Lizenzprüfung keine Frist. Zwölf hängende Browserfälle DE/EN bestätigt. Jetzt gemeinsame45-Sekundenfrist einschließlich Marktdaten/Antwortinhalt, Abbruchsignal, manuelle Wiederaufnahme und verständlicher Status. Kein automatischer Retry; verspätete Marktdaten starten keine Modellanfrage. Eingaben/Schlüssel bleiben erhalten.190 neue Client-,181 API-,91 Download- und84 Engineprüfungen sowie16 Browserfälle grün. Bestehenden Testworkflow ergänzt, keine neue Automation/Frequenz. Echte CI/Bereitstellung im zugehörigen PR, Einzelheiten in der kanonischen Übergabe. Finanzielle Wirkung ungemessen. Stripe ausschließlich gelesen:53 Shop-Zuordnungen aktiv; für die drei Mailangebote weiterhin kein eigener passender Zahlungslink bestätigt.
+
 ## Codex: Kaufbedienung beim Shop-Nachladen erhalten ·17.11.2026
 
 DE/EN-Shop verlor bei geändertem frischem Katalog den fokussierten Kaufbutton und sprang erneut zum ursprünglichen Produkt. Vier Browser-Vorherfälle mit Sprüngen2489–9133px bestätigt. Jetzt Fokus nur auf demselben Karten-/Linkziel mit preventScroll, Produktsprung einmal nach tatsächlich gefundenem Ziel. Zwölf Haupt- und sechs Randfälle, sieben Katalogtests sowie Konsistenz/Syntax grün; Preise/Kaufziele unverändert. Keine neue Automation/Kontoaktion. Finanzielle Wirkung ungemessen; echte CI/Bereitstellung im zugehörigen PR. Details in der kanonischen Übergabe.
