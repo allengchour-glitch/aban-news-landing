@@ -2,7 +2,7 @@
 
 ## Codex: Schweizer Google-Sichtbarkeit · 21.11.2026
 
-Search Console Web, Schweiz, 22.10.–18.11. final: Büro-Organizer 186 Einblendungen/0 Klicks/Position 66.6, Beamer 159/0/64.7, Damen-Sportbekleidung 106/0/57.3. Geplant: ausschliesslich SEO-Titel und SEO-Beschreibungen dieser drei Sammlungen anhand Suchanfragen und sichtbarer Artikel präzisieren (`buero-organizer-ablage`, `beamer-heimkino`, `damen-sportbekleidung`). Ausgangswerte für spätere Nachmessung; tiefe Positionen erklären einen Teil der fehlenden Klicks.
+Search Console Web, Schweiz, 22.10.–18.11. final: Büro-Organizer 186 Einblendungen/0 Klicks/Position 66.6, Beamer 159/0/64.7, Damen-Sportbekleidung 106/0/57.3. Geplant: ausschliesslich SEO-Titel und SEO-Beschreibungen dieser drei Sammlungen anhand Suchanfragen und sichtbarer Artikel präzisieren (`buero-organizer-ablage`, `beamer-heimkino`, `damen-sportbekleidung`). Ausgangswerte für spätere Nachmessung; tiefe Positionen erklären einen Teil der fehlenden Klicks. Live in Shopify geschrieben und zurückgelesen. Öffentliche Metadaten geprüft: buero-organizer-ablage HTTP 200 – Schreibtisch-Organizer, Stiftehalter & Ablage | LuxeStyle; beamer-heimkino HTTP 200 – Beamer fürs Handy & Heimkino: Mini-Beamer | LuxeStyle; damen-sportbekleidung HTTP 200 – Damen-Sportbekleidung: Leggings & Yoga | LuxeStyle. Google-Rankingwirkung und erneute Crawls noch offen.
 
 ## Codex: Google Merchant Center und Search Console · 21.11.2026
 
