@@ -1,3 +1,11 @@
+# R288 – 14-Uhr-Lauf, Auslieferung und Aufnahmerahmen – 21.11.2026
+
+Sieben-Tage-Plan frisch gelesen. Zwei bestehende Social-Veröffentlichungen bestätigt. Neuer Threads-Medienabruf fehlgeschlagen, exakte Shopify-JPEG-URI öffentlich gültig. Projektor A ergänzt um geprüften 9:16-Aufnahmerahmen und neuen Frame-0-Befund. Ein FR-Vergleichstext zur Freigabe. Tagesmessung übernommen, Klaviyo erneut reauth-pflichtig.
+
+[Bericht, Storyboard und Kanaltexte](R288-REPORT-20261121.md)
+
+---
+
 # R287 – Katalogzählung, Margenstichprobe und Voll-Export – 21.11.2026
 
 Shopify-Katalog vollständig gezählt und Leseexport erfolgreich abgeschlossen. Der Connector gibt die Exportdatei nicht frei. Eine gezielte Live-Stichprobe aus 78 Produkten und 413 Varianten ausgewertet. Für die flächendeckende Einstandsprüfung fehlt der Shopify-Produktexport.
