@@ -3623,3 +3623,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Film- und Theme-Beleg](R295-NAHER-PIP-20261121.md)
 
 [LUXESTYLE_R295_20261121]
+
+### R296 – Neun Motive im Websitefilm
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Websitefilm | Aus zwei belegten Shopbildern zwei Grossaufnahmen erstellt und an die bestehende Galerie mit Keramikfenster angefügt. | 20 Sekunden, 9 Produkte, UHD und Hochformat bei konstanten 60 fps. 1200 Frames je Datei dekodiert und in Chromium geprüft. Lokale Vorschauen. |
+| Shopify | Produktidentität und verfügbare Varianten des Projektors und des Mini-Staubsaugers geprüft. | Keine neue Filmbindung. |
+
+[Film- und Produktbeleg](R296-TECH-MOTIVE-20261121.md)
+
+[LUXESTYLE_R296_20261121]
