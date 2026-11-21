@@ -1,0 +1,12 @@
+diff --git a/snippets/meta-tags.liquid b/snippets/meta-tags.liquid
+--- a/snippets/meta-tags.liquid
++++ b/snippets/meta-tags.liquid
+@@ -155,7 +155,7 @@
+   {%- assign og_price = og_price_variant.price | default: product.price -%}
+   <meta
+     property="og:price:amount"
+-    content="{{ og_price | money_without_currency | strip_html }}"
++    content="{{ og_price | divided_by: 100 }}.{{ og_price | modulo: 100 | plus: 100 | append: '' | slice: 1, 2 }}"
+   >
+   <meta
+     property="og:price:currency"
