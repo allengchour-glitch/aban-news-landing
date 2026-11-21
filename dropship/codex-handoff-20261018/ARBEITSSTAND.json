@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 303,
-  "updatedAt": "2026-11-21T18:48:54Z",
+  "revision": 304,
+  "updatedAt": "2026-11-21T18:57:03Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50979,6 +50979,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R303-MOBILER-STARTSEITENFILM-20261121.md"
       ]
+    },
+    {
+      "revision": 304,
+      "at": "2026-11-21T18:57:03Z",
+      "summary": "Vier geprüfte SEO-Korrekturen im öffentlichen Haupttheme bestätigt, darunter die Indexierbarkeit des französischen Weihnachtsratgebers. Neun öffentliche Seiten geprüft. Retro-Sammlung mit sechs sichtbaren Artikeln zur Sortierfreigabe vorbereitet.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R304-KUNDENGEWINNUNG-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82480,5 +82488,40 @@
       "played": 12.3468
     },
     "physicalDevice": "unknown"
+  },
+  "run304": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R304-KUNDENGEWINNUNG-20261121.md",
+    "reportBlob": "ee8d502d2d83f3bb573dfc05d7b2c6f751964ecc",
+    "shop": 94368563585,
+    "themeId": 214565814663,
+    "themeCommit": "35fb1e475e76a72990442a6140a10d46e5caf2a1",
+    "published": true,
+    "publicCases": 9,
+    "changedFiles": [
+      "layout/theme.liquid",
+      "sections/lx-collection-details.liquid",
+      "sections/product-information.liquid",
+      "snippets/meta-tags.liquid"
+    ],
+    "frArticleIndexable": true,
+    "googleIndexing": "unknown",
+    "gscPriorRef": "runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json",
+    "salesProposal": {
+      "collection": 689698570625,
+      "operation": "manual reorder draft",
+      "topSix": [
+        15496936423809,
+        15496982397313,
+        16638859116935,
+        15524699079041,
+        15506409128321,
+        15496579481985
+      ],
+      "adminMembers": 66,
+      "publicSample": 53,
+      "observedProposedState": "not applied"
+    },
+    "claudeReceipt": "unknown"
   }
 }
