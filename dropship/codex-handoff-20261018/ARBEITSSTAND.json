@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 308,
-  "updatedAt": "2026-11-21T21:49:23Z",
+  "revision": 309,
+  "updatedAt": "2026-11-21T22:44:11Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51019,6 +51019,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R308-MERCHANT-QUELLEN-20261121.md"
       ]
+    },
+    {
+      "revision": 309,
+      "at": "2026-11-21T22:44:11Z",
+      "summary": "Merchant-Reports bestätigt in 25 Angebotszeilen 13 aktuelle CSS-Fälle, alle mit aktiven Shopify-Varianten. Fünf separate 404-Angebote und sieben Bildfälle abgegrenzt. Dauerhafte Löschung der fünf 404-Angebote zur konkreten Bestätigung vorgelegt.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R309-MERCHANT-ANGEBOTE-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82726,5 +82734,43 @@
     ],
     "affectedOfferCsv": null,
     "merchantWrites": 0
+  },
+  "run309": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R309-MERCHANT-ANGEBOTE-20261121.md",
+    "reportBlob": "a196fac78b6b02d65440795aa426de28d6b9cbd8",
+    "shop": 94368563585,
+    "merchant": "5797470070",
+    "googleQuota": 150000,
+    "scope": "SHOPPING_ADS",
+    "reportRows": 25,
+    "issueCounts": {
+      "item_limit_reached_ads_css": 13,
+      "landing_page_error": 5,
+      "image_unwanted_overlays": 7
+    },
+    "cssActiveVariants": 13,
+    "staleLandingOffers": [
+      "shopify_ZZ_15447889969537_56063730352513",
+      "shopify_ZZ_15447889969537_56063730549121",
+      "shopify_ZZ_15447889969537_56063730581889",
+      "shopify_ZZ_15447921066369_56052967244161",
+      "shopify_ZZ_15449171952001_55879851409793"
+    ],
+    "staleDeleteApproval": "requested",
+    "imageCases": [
+      "shopify_ZZ_15450848723329_55889898307969",
+      "shopify_ZZ_15450848723329_55889898340737",
+      "shopify_ZZ_15450848723329_55889898373505",
+      "shopify_ZZ_15450848723329_55889898406273",
+      "shopify_ZZ_15450848723329_55889898439041",
+      "shopify_ZZ_15450848723329_55889898471809",
+      "shopify_ZZ_15450848723329_55889898504577"
+    ],
+    "job": 137011071392,
+    "run": 44958251931,
+    "commit": "54434fb431e150fb87be7bbf50ca7734ea83ded3",
+    "tests": 32,
+    "feedWrites": 0
   }
 }
