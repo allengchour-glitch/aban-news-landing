@@ -439,5 +439,50 @@ class MerchantSourceTests(unittest.TestCase):
         self.assertNotIn("sourceCount", result)
 
 
+
+class ShoppingIssueReportTests(unittest.TestCase):
+    def report(self, payload, status=200):
+        send = Mock(return_value=Mock(status_code=status, json=Mock(return_value=payload)))
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            rc = probe._read_shopping_report("stub-secret", send)
+        return rc, [json.loads(line) for line in output.getvalue().splitlines()], send
+
+    def test_report_sample_is_bounded_to_shopping_ads(self):
+        rc, records, send = self.report({"results": [{"productView": {
+            "offerId": "sku-123", "languageCode": "de", "feedLabel": "CH",
+            "itemIssues": [{"type": {"code": "mock_css_issue"}}],
+        }}], "nextPageToken": "hidden-token"})
+        self.assertEqual(rc, 0)
+        self.assertEqual(records[0]["issueCodes"], ["mock_css_issue"])
+        self.assertEqual(records[-1]["rowCount"], 1)
+        self.assertTrue(records[-1]["nextPageExists"])
+        self.assertNotIn("hidden-token", json.dumps(records))
+        self.assertNotIn("stub-secret", json.dumps(records))
+        self.assertEqual(send.call_count, 1)
+        self.assertEqual(send.call_args.args[0],
+                         f"https://merchantapi.googleapis.com/reports/v1/accounts/{probe.ACCOUNT_ID}/reports:search")
+        self.assertEqual(send.call_args.kwargs["json"]["pageSize"], 25)
+        self.assertIn("reporting_context = 'SHOPPING_ADS'", send.call_args.kwargs["json"]["query"])
+        self.assertIn("LIMIT 25", send.call_args.kwargs["json"]["query"])
+        self.assertFalse(send.call_args.kwargs["allow_redirects"])
+
+    def test_permission_failure_has_no_row_count(self):
+        rc, records, _ = self.report({}, status=403)
+        self.assertEqual((rc, records[0]["errorCode"]), (2, "http_403"))
+        self.assertNotIn("rowCount", records[0])
+
+    def test_report_case_requires_matching_account_before_post(self):
+        get = Mock(return_value=Mock(status_code=200, json=Mock(return_value={
+            "accountId": probe.ACCOUNT_ID, "accountName": "Other", "name": f"accounts/{probe.ACCOUNT_ID}",
+        })))
+        post = Mock()
+        env = {"MERCHANT_ID": probe.ACCOUNT_ID, "REGISTRIEREN": "false"}
+        with contextlib.redirect_stdout(io.StringIO()):
+            code = probe._reader(probe.REPORT_CASE, env, "stub-secret", get, post)
+        self.assertEqual(code, 2)
+        post.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -33,6 +33,7 @@ MARKER = "LUXE_MERCHANT_READ_V1"
 CSS_LIMIT_CASE = "css-produktlimit"
 CSS_LIMIT_SCOPE = "ADS_EEA"
 SOURCE_CASE = "css-quellen"
+REPORT_CASE = "css-angebote"
 
 
 def _emit(obj, stream=None):
@@ -40,7 +41,7 @@ def _emit(obj, stream=None):
 
 
 def _unknown(case, code):
-    _emit({"marker": MARKER, "case": case if case in CASES or case in (CSS_LIMIT_CASE, SOURCE_CASE) else "unknown", "result": "unknown", "errorCode": code})
+    _emit({"marker": MARKER, "case": case if case in CASES or case in (CSS_LIMIT_CASE, SOURCE_CASE, REPORT_CASE) else "unknown", "result": "unknown", "errorCode": code})
     return 2
 
 
@@ -161,13 +162,78 @@ def _read_data_sources(bearer, get=None):
     return 0
 
 
-def _reader(case, env, bearer, get=None):
+def _read_shopping_report(bearer, post=None):
+    """Eine begrenzte ProductView-Lesestichprobe. Die Reports-API verlangt POST."""
+    if post is None:
+        import requests
+        post = requests.post
+
+    query = (
+        "SELECT id, offer_id, language_code, feed_label, "
+        "aggregated_reporting_context_status, item_issues "
+        "FROM product_view WHERE reporting_context = 'SHOPPING_ADS' "
+        "AND aggregated_reporting_context_status IN "
+        "('ELIGIBLE_LIMITED', 'NOT_ELIGIBLE_OR_DISAPPROVED') LIMIT 25"
+    )
+    try:
+        response = post(
+            f"https://{API_HOST}/reports/v1/accounts/{ACCOUNT_ID}/reports:search",
+            json={"query": query, "pageSize": 25},
+            headers={"Authorization": "Bearer " + bearer, "Accept": "application/json"},
+            timeout=20,
+            allow_redirects=False,
+        )
+    except Exception:
+        return _unknown(REPORT_CASE, "report_transport")
+
+    if response.status_code != 200:
+        known = {400: "http_400", 401: "http_401", 403: "http_403", 429: "http_429"}
+        return _unknown(REPORT_CASE, known.get(response.status_code, "report_http_other"))
+
+    try:
+        data = response.json()
+    except Exception:
+        return _unknown(REPORT_CASE, "invalid_json")
+    if not isinstance(data, dict):
+        return _unknown(REPORT_CASE, "report_response_mismatch")
+    rows = data.get("results", [])
+    if not isinstance(rows, list) or len(rows) > 25:
+        return _unknown(REPORT_CASE, "report_response_mismatch")
+
+    results = []
+    for row in rows:
+        product = row.get("productView") if isinstance(row, dict) else None
+        if not isinstance(product, dict) or not isinstance(product.get("offerId"), str):
+            return _unknown(REPORT_CASE, "report_response_mismatch")
+        issues = product.get("itemIssues", [])
+        if not isinstance(issues, list) or not all(isinstance(issue, dict) for issue in issues):
+            return _unknown(REPORT_CASE, "report_response_mismatch")
+        results.append({
+            "id": product.get("id"),
+            "offerId": product["offerId"],
+            "language": product.get("languageCode"),
+            "feedLabel": product.get("feedLabel"),
+            "status": product.get("aggregatedReportingContextStatus"),
+            "issueCodes": [
+                issue["type"].get("code") for issue in issues if isinstance(issue.get("type"), dict)
+            ],
+        })
+
+    for row in results:
+        _emit({"marker": MARKER, "case": REPORT_CASE, "result": "row", **row})
+    _emit({"marker": MARKER, "case": REPORT_CASE, "result": "ok",
+           "rowCount": len(results), "nextPageExists": bool(data.get("nextPageToken")),
+           "boundedSample": True})
+    return 0
+
+
+def _reader(case, env, bearer, get=None, post=None):
     # Produktmodus vor jedem API-Aufruf oder Erneuern der Zugangsdaten absichern.
     if env.get("REGISTRIEREN", "").strip().lower() == "true":
         return _unknown(case, "registration_blocked")
     if env.get("MERCHANT_ID", "").strip() != ACCOUNT_ID:
         return _unknown(case, "account_input_mismatch")
-    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE):
+    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE, REPORT_CASE):
         return _unknown(case, "case_not_allowed")
 
     account_url = f"https://{API_HOST}/accounts/v1/accounts/{ACCOUNT_ID}"
@@ -181,6 +247,8 @@ def _reader(case, env, bearer, get=None):
         return _read_css_limit(bearer, get)
     if case == SOURCE_CASE:
         return _read_data_sources(bearer, get)
+    if case == REPORT_CASE:
+        return _read_shopping_report(bearer, post)
 
     spec = CASES[case]
     key = _encoded_product_key(spec)
@@ -456,7 +524,7 @@ def main():
     case = env.get("MERCHANT_CASE", "account-probe").strip() or "account-probe"
     if case == "account-probe":
         return _legacy_main()
-    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE):
+    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE, REPORT_CASE):
         return _unknown(case, "case_not_allowed")
     # Unzulässige Eingaben vor dem Lesen oder Erneuern der Zugangsdaten abweisen.
     if env.get("REGISTRIEREN", "").strip().lower() == "true":
