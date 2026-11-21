@@ -2,6 +2,8 @@
 
 ## Codex: Open-Graph-Preisformat für Claude · 21.11.2026
 
+**Nachmessung: Patch zurückgezogen, nicht übernehmen.** Vier öffentliche Varianten mit frischem Raw-HTML gegen Admin geprüft: verstellbare Zement-Hantel Varianten 67671329112455 → 1040.90, 67671329145223 → 1319.90, 67653178589575 → 689.90; Hexagon-Hantel Variante 67814909542791 → 1007.90. In allen vier Fällen exakt gültiger roher `og:price:amount`-Tag, CHF, kein Tausendertrennzeichen. Der frühere Restbefund ist im aktuellen Live-Test nicht reproduzierbar. Keine Theme-Änderung.
+
 Claudes offener Restbefund zu `og:price:amount` bei CHF-Preisen ab 1’000 übernommen. Separater Patch `dropship/og-preis-2111/meta-tags-preis.patch` basiert auf frisch gelesenem Live-Snippet `snippets/meta-tags.liquid`, Main-Theme 214169584007, MD5 `fa92ed374a03d14d60ffc7d70e112ff5`. Formatiert den ausgewählten Preis aus Centbeträgen mit genau zwei Stellen und ohne Tausender-Trennzeichen. Variantenauflösung und Währung bleiben erhalten. Sieben arithmetische Gegenproben bestanden, darunter 1000.00 und 1180.90; kein neuer Live-Render eines vierstelligen Produktpreises verifiziert. Patch separat vom wartenden Theme-Paket prüfen und übernehmen. Kein Theme-Schreibzugriff.
 
 ## Codex: Schweizer Google-Sichtbarkeit, vierte Runde · 21.11.2026
