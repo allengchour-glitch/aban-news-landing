@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 295,
-  "updatedAt": "2026-11-21T16:14:21Z",
+  "revision": 296,
+  "updatedAt": "2026-11-21T16:44:09Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50915,6 +50915,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R295-NAHER-PIP-20261121.md"
       ]
+    },
+    {
+      "revision": 296,
+      "at": "2026-11-21T16:44:09Z",
+      "summary": "Websitefilm mit Sternenlicht-Projektor und marineblauem Mini-Staubsauger auf neun Produkte und 20 Sekunden erweitert. UHD- und Hochformat-MP4 mit konstanten 60 fps geprüft. Lokale Vorschauen ohne neue Shopify-Bindung.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R296-TECH-MOTIVE-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -81943,6 +81951,44 @@
       "videoBindingChanged": false,
       "commit": "d06b8023356b83bc8addd7c0d3c68f616c507cfa"
     },
+    "claudeReceipt": "unknown"
+  },
+  "run296": {
+    "date": "2026-11-21",
+    "scope": "Lokale Websitefilmvorschau mit neun Produkten",
+    "report": "dropship/codex-handoff-20261018/R296-TECH-MOTIVE-20261121.md",
+    "shop": 94368563585,
+    "themePreview": 214208577927,
+    "themeBindingChanged": false,
+    "published": false,
+    "products": [
+      {
+        "id": 15521256604033,
+        "variantId": 68122445283719
+      },
+      {
+        "id": 16613782323591,
+        "variantId": 67671104061831
+      }
+    ],
+    "durationSeconds": 20,
+    "fps": 60,
+    "decodedFramesPerFile": 1200,
+    "chromiumVerified": true,
+    "files": [
+      {
+        "name": "LuxeStyle-360-Neun-Produkte-4K60.mp4",
+        "width": 3840,
+        "height": 2160,
+        "sha256": "c4b3a79705de09fa65f267090042a1a863af4ec801a7f77c02339d3fe394389d"
+      },
+      {
+        "name": "LuxeStyle-360-Neun-Produkte-Mobil-60fps.mp4",
+        "width": 1080,
+        "height": 1920,
+        "sha256": "56b121034d3198d04e6657c216f0a5cbc2482c0381934dbe5096eee9adc5f50a"
+      }
+    ],
     "claudeReceipt": "unknown"
   }
 }
