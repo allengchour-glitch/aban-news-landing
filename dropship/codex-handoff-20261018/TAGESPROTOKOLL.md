@@ -3466,3 +3466,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R281-REPORT-20261121.md) · [Belege](runs/20261121-r281/PRUEFBELEGE.json)
 
 [LUXESTYLE_R281_20261121]
+
+### R282 – Freigegebener Modellvergleich und Übergabe
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify | Freigegebenen DE-Modellvergleich in einer Kopie des aktuellen Hauptthemes gespeichert. | Kopie `214532882823` auf UNPUBLISHED. Der Manifestvergleich bestätigt zwei Änderungen bei 561 Dateien. |
+| Prüfung | Native HTML-Vorschau für A, G, FR und ein Kontrollprodukt gelesen. Tastatur und A → G → A in Chromium bei 360 und 1440 Pixeln geprüft. | Vier von vier Seiten und sechs von sechs Browserprüfungen bestanden. |
+| Freigabe | Bestätigung für den vom Shopify-Connector verlangten Wechsel auf die konkret benannte Kopie angefragt. | `214169584007` ist weiter MAIN. |
+
+[Übergabe](R282-UEBERGABE-20261121.md) · [Prüfbelege](runs/20261121-r282/MODELLVERGLEICH-PRUEFBELEG.json)
+
+[LUXESTYLE_R282_20261121]

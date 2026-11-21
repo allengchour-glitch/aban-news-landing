@@ -1,3 +1,11 @@
+# R282 – Modellvergleich in nativer Shopify-Vorschau – 21.11.2026
+
+Freigegebenen Modellvergleich für die deutsche Projektor-Seite in Shopify-Kopie 214532882823 gespeichert. Genau zwei von 561 Dateien unterscheiden sich. Vier native HTML-Prüfungen und sechs echte Browserprüfungen bestanden. Shopify verlangt Bestätigung dieser benannten Kopie für den Wechsel ins Live-Theme.
+
+[Übergabe](R282-UEBERGABE-20261121.md) · [Prüfbelege](runs/20261121-r282/MODELLVERGLEICH-PRUEFBELEG.json)
+
+---
+
 # R281 – Sieben-Tage-Plan und Projektor-Drehplan – 21.11.2026
 
 Rollenden Metricool-Plan 21.–28.11. frisch geprüft, 29 aktive Zeitplanobjekte und 15 gehaltene Entwürfe. Vier Filmthemen und gestrige Veröffentlichung mit 14 Medienhashes verglichen. Instagram-CDN-Fehler mit sieben JPEG-Rücklesen eingegrenzt. Projektor-Drehplan nach quantitativem 9:16-Befund und Verkaufsentwurf nach sechs Browserprüfungen weiterentwickelt. Google bestätigt die korrigierte Öl-Sprühflasche.

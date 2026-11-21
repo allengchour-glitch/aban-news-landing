@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 281,
-  "updatedAt": "2026-11-21T07:04:29Z",
+  "revision": 282,
+  "updatedAt": "2026-11-21T07:10:01Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -19643,6 +19643,12 @@
         "source": "dropship/codex-handoff-20261018/R281-REPORT-20261121.md",
         "at": "2026-11-21T07:04:29Z",
         "proof": "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json"
+      },
+      "run282": {
+        "at": "2026-11-21T07:10:01Z",
+        "report": "dropship/codex-handoff-20261018/R282-UEBERGABE-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r282/MODELLVERGLEICH-PRUEFBELEG.json",
+        "status": "SHARED_HANDOFF_UPDATED_CLAUDE_RECEIPT_UNKNOWN"
       }
     },
     {
@@ -50754,6 +50760,15 @@
         "dropship/codex-handoff-20261018/runs/20261121-r281/PROJEKTOR-A-STORYBOARD.md",
         "dropship/codex-handoff-20261018/runs/20261121-r281/MODELLVERGLEICH.md"
       ]
+    },
+    {
+      "revision": 282,
+      "at": "2026-11-21T07:10:01Z",
+      "summary": "Freigegebenen Modellvergleich für die deutsche Projektor-Seite in Shopify-Kopie 214532882823 gespeichert. Genau zwei von 561 Dateien unterscheiden sich. Vier native HTML-Prüfungen und sechs echte Browserprüfungen bestanden. Shopify verlangt Bestätigung dieser benannten Kopie für den Wechsel ins Live-Theme.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R282-UEBERGABE-20261121.md",
+        "dropship/codex-handoff-20261018/runs/20261121-r282/MODELLVERGLEICH-PRUEFBELEG.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -52867,7 +52882,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 281,
+    "latestCanonicalRevision": 282,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -54102,6 +54117,23 @@
       "professionalProjectorMP4": false,
       "metricoolConcurrentDayReportReused": "R278",
       "klaviyo": "AUTH_BLOCKED_R278_NO_REPEAT",
+      "claudeReceipt": "UNKNOWN"
+    },
+    "run282": {
+      "atUTC": "2026-11-21T07:10:01Z",
+      "localDate": "2026-11-21",
+      "summary": "Freigegebenen Modellvergleich für die deutsche Projektor-Seite in Shopify-Kopie 214532882823 gespeichert. Genau zwei von 561 Dateien unterscheiden sich. Vier native HTML-Prüfungen und sechs echte Browserprüfungen bestanden. Shopify verlangt Bestätigung dieser benannten Kopie für den Wechsel ins Live-Theme.",
+      "report": "dropship/codex-handoff-20261018/R282-UEBERGABE-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/runs/20261121-r282/MODELLVERGLEICH-PRUEFBELEG.json",
+      "scopedLinkApproved": true,
+      "preparedTheme": "214532882823",
+      "preparedThemeName": "LuxeStyle Modellvergleich 21.11.2026",
+      "themeRole": "UNPUBLISHED",
+      "currentMain": "214169584007",
+      "seoCopy": "214526394759",
+      "exactThemeConfirmationPending": true,
+      "nativeHTMLCasesPassed": 4,
+      "nativeBrowserChecksPassed": 6,
       "claudeReceipt": "UNKNOWN"
     }
   },
@@ -81277,6 +81309,23 @@
     "professionalProjectorMP4": false,
     "metricoolConcurrentDayReportReused": "R278",
     "klaviyo": "AUTH_BLOCKED_R278_NO_REPEAT",
+    "claudeReceipt": "UNKNOWN"
+  },
+  "run282": {
+    "atUTC": "2026-11-21T07:10:01Z",
+    "localDate": "2026-11-21",
+    "summary": "Freigegebenen Modellvergleich für die deutsche Projektor-Seite in Shopify-Kopie 214532882823 gespeichert. Genau zwei von 561 Dateien unterscheiden sich. Vier native HTML-Prüfungen und sechs echte Browserprüfungen bestanden. Shopify verlangt Bestätigung dieser benannten Kopie für den Wechsel ins Live-Theme.",
+    "report": "dropship/codex-handoff-20261018/R282-UEBERGABE-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/runs/20261121-r282/MODELLVERGLEICH-PRUEFBELEG.json",
+    "scopedLinkApproved": true,
+    "preparedTheme": "214532882823",
+    "preparedThemeName": "LuxeStyle Modellvergleich 21.11.2026",
+    "themeRole": "UNPUBLISHED",
+    "currentMain": "214169584007",
+    "seoCopy": "214526394759",
+    "exactThemeConfirmationPending": true,
+    "nativeHTMLCasesPassed": 4,
+    "nativeBrowserChecksPassed": 6,
     "claudeReceipt": "UNKNOWN"
   }
 }

@@ -1,0 +1,512 @@
+{
+  "run": "R282",
+  "brand": "LuxeStyle",
+  "ownerInstruction": "ja veröffentlichen und memory teilen",
+  "interpretedScope": "German projector model comparison link approved in context. Specific new theme publication confirmation requested through Shopify flow.",
+  "sourceTheme": "gid://shopify/OnlineStoreTheme/214169584007",
+  "theme": "gid://shopify/OnlineStoreTheme/214532882823",
+  "themeName": "LuxeStyle Modellvergleich 21.11.2026",
+  "seoTheme": "gid://shopify/OnlineStoreTheme/214526394759",
+  "originalPatch": "dropship/codex-handoff-20261018/runs/20261121-r277/sales/MODELLVERGLEICH-ENTWURF.patch",
+  "originalPatchSha": "b88332ec2934a60cf931493de8ca3c4df72d32fc",
+  "saveresult": {
+    "upsertedThemeFiles": [
+      {
+        "filename": "blocks/variant-picker.liquid",
+        "checksumMd5": "84db771207d51a263d38e76457779c5a"
+      },
+      {
+        "filename": "templates/product.json",
+        "checksumMd5": "0244ca4694b1f2a4fc45e46ea088ff17"
+      }
+    ],
+    "job": null,
+    "userErrors": []
+  },
+  "manifest": {
+    "count": 561,
+    "baseFiles": 561,
+    "diff": [
+      {
+        "file": "blocks/variant-picker.liquid",
+        "old": "f299d1a228fcaa40fff605bdd6e3860e",
+        "new": "84db771207d51a263d38e76457779c5a"
+      },
+      {
+        "file": "templates/product.json",
+        "old": "3d989256216e0d5ebbb65987d4a8398e",
+        "new": "0244ca4694b1f2a4fc45e46ea088ff17"
+      }
+    ],
+    "ok": true,
+    "role": "UNPUBLISHED",
+    "name": "LuxeStyle Modellvergleich 21.11.2026",
+    "id": "gid://shopify/OnlineStoreTheme/214532882823",
+    "updatedAt": "2026-11-21T07:07:40Z"
+  },
+  "preview": [
+    {
+      "http": 200,
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "chars": 1124726,
+      "case": "de-a",
+      "lang": "de",
+      "theme": {
+        "id": 214532882823,
+        "name": "LuxeStyle Modellvergleich 21.11.2026",
+        "role": "unpublished"
+      },
+      "links": 1,
+      "targets": 1,
+      "focusableTargets": 1,
+      "expectedVariant": "68122445283719",
+      "variantSelected": true,
+      "expectedPrice": "34.90",
+      "priceInNativeHTML": true,
+      "liquidError": false,
+      "pass": true
+    },
+    {
+      "http": 200,
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "chars": 1125167,
+      "case": "de-g",
+      "lang": "de",
+      "theme": {
+        "id": 214532882823,
+        "name": "LuxeStyle Modellvergleich 21.11.2026",
+        "role": "unpublished"
+      },
+      "links": 1,
+      "targets": 1,
+      "focusableTargets": 1,
+      "expectedVariant": "68122445480327",
+      "variantSelected": true,
+      "expectedPrice": "35.90",
+      "priceInNativeHTML": true,
+      "liquidError": false,
+      "pass": true
+    },
+    {
+      "http": 200,
+      "url": "https://luxestyle.ch/fr/products/sternenlicht-projektor-fur-schlafzimmer-732544",
+      "chars": 1086637,
+      "case": "fr-a",
+      "lang": "fr",
+      "theme": {
+        "id": 214532882823,
+        "name": "LuxeStyle Modellvergleich 21.11.2026",
+        "role": "unpublished"
+      },
+      "links": 0,
+      "targets": 0,
+      "focusableTargets": 0,
+      "expectedVariant": "68122445283719",
+      "variantSelected": true,
+      "expectedPrice": "34.90",
+      "priceInNativeHTML": true,
+      "liquidError": false,
+      "pass": true
+    },
+    {
+      "http": 200,
+      "url": "https://luxestyle.ch/products/2-in-1-ol-spruhflasche-fur-kuche-bbq-376320",
+      "chars": 1261002,
+      "case": "de-control",
+      "lang": "de",
+      "theme": {
+        "id": 214532882823,
+        "name": "LuxeStyle Modellvergleich 21.11.2026",
+        "role": "unpublished"
+      },
+      "links": 0,
+      "targets": 0,
+      "focusableTargets": 0,
+      "expectedVariant": "55889898275201",
+      "variantSelected": true,
+      "expectedPrice": "15.90",
+      "priceInNativeHTML": true,
+      "liquidError": false,
+      "pass": true
+    }
+  ],
+  "approval": {
+    "scopedChangeApproved": true,
+    "namedThemePublishConfirmed": false,
+    "asked": true
+  },
+  "publicThemeAfter": {
+    "id": "gid://shopify/OnlineStoreTheme/214169584007",
+    "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+    "role": "MAIN",
+    "updatedAt": "2026-11-16T22:12:34Z"
+  },
+  "browser": {
+    "nativeTheme": 214532882823,
+    "mode": "preview",
+    "domInjected": false,
+    "blockedWrites": true,
+    "routeScope": "GET only on permitted Shop/asset hosts, cart/checkout/account and tracking blocked",
+    "checks": [
+      {
+        "px": [
+          360,
+          800
+        ],
+        "blocked": {
+          "nonGet": 89,
+          "otherHosts": 42,
+          "transactionOrTracking": 7
+        },
+        "nativeProductReads": [
+          {
+            "keys": [
+              "section_id",
+              "utm_medium",
+              "utm_source",
+              "variant"
+            ]
+          },
+          {
+            "keys": [
+              "section_id",
+              "utm_medium",
+              "utm_source",
+              "variant"
+            ]
+          },
+          {
+            "keys": [
+              "option_values"
+            ]
+          },
+          {
+            "keys": [
+              "option_values"
+            ]
+          }
+        ],
+        "cases": [
+          {
+            "expected": "68122445283719",
+            "before": {
+              "id": "68122445283719",
+              "quantity": "1",
+              "price": [
+                "CHF 34.90",
+                "CHF 34.90"
+              ],
+              "selected": "68122445283719",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": false,
+              "headingTop": 2633.640625,
+              "headerBottom": 160.1875,
+              "optionPressed": [
+                "A · Grundmodell · USB"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445283719"
+            },
+            "after": {
+              "id": "68122445283719",
+              "quantity": "1",
+              "price": [
+                "CHF 34.90",
+                "CHF 34.90"
+              ],
+              "selected": "68122445283719",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": true,
+              "headingTop": 402.640625,
+              "headerBottom": 59,
+              "optionPressed": [
+                "A · Grundmodell · USB"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445283719#luxe-modellvergleich"
+            },
+            "pass": true
+          },
+          {
+            "expected": "68122445480327",
+            "before": {
+              "id": "68122445480327",
+              "quantity": "1",
+              "price": [
+                "CHF 35.90",
+                "CHF 35.90"
+              ],
+              "selected": "68122445480327",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": false,
+              "headingTop": 2050.140625,
+              "headerBottom": 59,
+              "optionPressed": [
+                "G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445480327#luxe-modellvergleich"
+            },
+            "after": {
+              "id": "68122445480327",
+              "quantity": "1",
+              "price": [
+                "CHF 35.90",
+                "CHF 35.90"
+              ],
+              "selected": "68122445480327",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": true,
+              "headingTop": 104.140625,
+              "headerBottom": 59,
+              "optionPressed": [
+                "G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445480327#luxe-modellvergleich"
+            },
+            "pass": true
+          },
+          {
+            "expected": "68122445283719",
+            "before": {
+              "id": "68122445283719",
+              "quantity": "1",
+              "price": [
+                "CHF 34.90",
+                "CHF 34.90"
+              ],
+              "selected": "68122445283719",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": false,
+              "headingTop": 2466.640625,
+              "headerBottom": 59,
+              "optionPressed": [
+                "A · Grundmodell · USB"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445283719#luxe-modellvergleich"
+            },
+            "after": {
+              "id": "68122445283719",
+              "quantity": "1",
+              "price": [
+                "CHF 34.90",
+                "CHF 34.90"
+              ],
+              "selected": "68122445283719",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": true,
+              "headingTop": 445.640625,
+              "headerBottom": 59,
+              "optionPressed": [
+                "A · Grundmodell · USB"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445283719#luxe-modellvergleich"
+            },
+            "pass": true
+          }
+        ],
+        "theme": {
+          "id": 214532882823,
+          "role": "unpublished"
+        },
+        "actualProductGets": 4
+      },
+      {
+        "px": [
+          1440,
+          900
+        ],
+        "blocked": {
+          "nonGet": 97,
+          "otherHosts": 40,
+          "transactionOrTracking": 7
+        },
+        "nativeProductReads": [
+          {
+            "keys": [
+              "section_id",
+              "utm_medium",
+              "utm_source",
+              "variant"
+            ]
+          },
+          {
+            "keys": [
+              "section_id",
+              "utm_medium",
+              "utm_source",
+              "variant"
+            ]
+          },
+          {
+            "keys": [
+              "option_values"
+            ]
+          },
+          {
+            "keys": [
+              "option_values"
+            ]
+          }
+        ],
+        "cases": [
+          {
+            "expected": "68122445283719",
+            "before": {
+              "id": "68122445283719",
+              "quantity": "1",
+              "price": [
+                "CHF 34.90",
+                "CHF 34.90"
+              ],
+              "selected": "68122445283719",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": false,
+              "headingTop": 2157.78125,
+              "headerBottom": 160.171875,
+              "optionPressed": [
+                "A · Grundmodell · USB"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445283719"
+            },
+            "after": {
+              "id": "68122445283719",
+              "quantity": "1",
+              "price": [
+                "CHF 34.90",
+                "CHF 34.90"
+              ],
+              "selected": "68122445283719",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": true,
+              "headingTop": 137.78125,
+              "headerBottom": 87.578125,
+              "optionPressed": [
+                "A · Grundmodell · USB"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445283719#luxe-modellvergleich"
+            },
+            "pass": true
+          },
+          {
+            "expected": "68122445480327",
+            "before": {
+              "id": "68122445480327",
+              "quantity": "1",
+              "price": [
+                "CHF 35.90",
+                "CHF 35.90"
+              ],
+              "selected": "68122445480327",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": false,
+              "headingTop": 2179.53125,
+              "headerBottom": 160.171875,
+              "optionPressed": [
+                "G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445480327#luxe-modellvergleich"
+            },
+            "after": {
+              "id": "68122445480327",
+              "quantity": "1",
+              "price": [
+                "CHF 35.90",
+                "CHF 35.90"
+              ],
+              "selected": "68122445480327",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": true,
+              "headingTop": 461.53125,
+              "headerBottom": 87.578125,
+              "optionPressed": [
+                "G · drehend · Galaxie-Scheibe + 3 Farbscheiben · USB · ohne Fernbedienung"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445480327#luxe-modellvergleich"
+            },
+            "pass": true
+          },
+          {
+            "expected": "68122445283719",
+            "before": {
+              "id": "68122445283719",
+              "quantity": "1",
+              "price": [
+                "CHF 34.90",
+                "CHF 34.90"
+              ],
+              "selected": "68122445283719",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": false,
+              "headingTop": 2157.78125,
+              "headerBottom": 160.171875,
+              "optionPressed": [
+                "A · Grundmodell · USB"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445283719#luxe-modellvergleich"
+            },
+            "after": {
+              "id": "68122445283719",
+              "quantity": "1",
+              "price": [
+                "CHF 34.90",
+                "CHF 34.90"
+              ],
+              "selected": "68122445283719",
+              "linkCount": 1,
+              "headingCount": 1,
+              "pickerPreserved": true,
+              "headingPreserved": true,
+              "focused": true,
+              "headingTop": 144.78125,
+              "headerBottom": 87.578125,
+              "optionPressed": [
+                "A · Grundmodell · USB"
+              ],
+              "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?utm_medium=organic_social&utm_source=instagram&variant=68122445283719#luxe-modellvergleich"
+            },
+            "pass": true
+          }
+        ],
+        "theme": {
+          "id": 214532882823,
+          "role": "unpublished"
+        },
+        "actualProductGets": 4
+      }
+    ]
+  },
+  "atUTC": "2026-11-21T07:10:01Z",
+  "status": "NATIVE_PREVIEW_READY_WAITING_ON_NAMED_THEME_CONFIRMATION",
+  "originalApprovalAppliesToProductLink": true
+}
