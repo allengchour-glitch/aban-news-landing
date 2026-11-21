@@ -1,3 +1,11 @@
+# R305 – Retro-Sammlung sortiert – 21.11.2026
+
+Die sechs freigegebenen Karten in der Retro-Sammlung im öffentlichen Shop vorn bestätigt. Alle 66 Mitglieder und die Reihenfolge der übrigen 60 blieben erhalten.
+
+[Live-Sortierung und Prüfdaten](R305-RETRO-SORTIERUNG-20261121.md)
+
+---
+
 # R304 – Organische Kundengewinnung und Kaufweg – 21.11.2026
 
 Vier geprüfte SEO-Korrekturen im öffentlichen Haupttheme bestätigt, darunter die Indexierbarkeit des französischen Weihnachtsratgebers. Neun öffentliche Seiten geprüft. Retro-Sammlung mit sechs sichtbaren Artikeln zur Sortierfreigabe vorbereitet.
