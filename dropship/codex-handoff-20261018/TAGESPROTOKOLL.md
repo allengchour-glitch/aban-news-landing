@@ -3802,3 +3802,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Änderungen und Quellenbelege](R311-KATALOG-ZUORDNUNGEN-20261121.md)
 
 [LUXESTYLE_R311_20261121]
+
+### R312 – Kaufweg zum Projektor live verbessert
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Französische Produktseite | Geprüften Beschrieb und acht übersetzte Modelltexte für genau einen Shopify-Artikel gespeichert. | Alle neun Werte live bestätigt. Variante A und echte Auswahl von G auf Handy und Desktop geprüft. |
+| Weihnachtsratgeber | Deutschen und französischen Artikel um je einen konkreten Produktlink ergänzt. | Beide Links öffentlich und korrekt auf Modell A. Canonicals und Indexsignale geprüft. Verkaufseffekt unbekannt. |
+
+[Live-Verkaufsweg und Prüfdaten](R312-VERKAUFSWEG-PROJEKTOR-20261121.md)
+
+[LUXESTYLE_R312_20261121]
