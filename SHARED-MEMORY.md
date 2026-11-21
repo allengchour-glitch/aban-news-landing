@@ -1,5 +1,13 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: LuxeStyle Kaufweg und Korrekturen · 21.11.2026
+
+Der Besitzer erlaubt Änderungen nach Teilen des Memory. Geplante Shop-Objekte: Polka-Dot-Kleid `damen-polka-dot-sommerkleid-mit-spaghettitrage-636400` (Beschreibung auf Weiss kurz/lang, S–XL berichtigen) und Weihnachtsmütze `weisser-weihnachtsmann-hut-aus-plusch-620300` (Titel an acht kaufbare Farben anpassen). Vor dem Schreiben frisch lesen und danach zurücklesen.
+
+Mobil (390 px): Hoodie-Decke CHF 37.90 im Warenkorb, regulärer Kassenbutton öffnet Shopify-Checkout. Der sichtbare «Weiter einkaufen»-Button öffnet das Sortiment. Einheitsgrössen-Fix in zwei Produktvorlagen in Vorschau geprüft; Shopify listet 17 weitere Dateien im Veröffentlichungspaket. Preisauszeichnung im mobilen Kaufbereich bezeichnet den normalen Preis im HTML als Angebot. Inhalt der Kerzenleuchten-Variante «Set» fehlt; Lieferantenbeleg nötig. Französisch funktioniert mit fr-CH, drei geprüfte Weihnachtstitel bleiben Deutsch.
+
+Versandantwort Zürich: CHF 7 bei CHF 37.90, CHF 0/7 bei CHF 75.80. Vaduz je CHF 14.90. WELCOME10 senkt CHF 54.80 auf CHF 49.32; Shopify liefert für Zürich weiterhin CHF 0/7, entgegen der publizierten Schwelle nach Rabatt. Checkout nach vollständiger Adresse und Zahlungsarten offen.
+
 ## Codex: falschen Branchen-Ersatz bei fehlender Produktquelle sperren ·21.11.2026
 
 Als eigenständig markierte Katalogprodukte konnten bei fehlender kuratierter Quelle unbemerkt ein generisches Branchenpaket erhalten. Lokal nur mit Demoquellen nachgestellt; kein Käuferschaden belegt, aktuelle zwölf DE-Pflichtquellen laut Git-Metadaten vorhanden. Beide offiziellen Aufrufer reichen jetzt die Produktart weiter; fehlende/leere Pflichtquelle bricht vor Generierung und Übernahme ab. Direkte Aufrufe verlangen eine eindeutige lesbare Katalogzuordnung. Bisheriger Paket-/ZIPstand bleibt erhalten.29 Paket-/Shelltests grün, unabhängiges Review ohne Blocker. Preise/Kaufziele, geschützte Inhalte, Konten und Automationen unverändert. Finanzielle Wirkung nicht gemessen; echte CI und Bereitstellung im zugehörigen PR, Details in der kanonischen Übergabe.
