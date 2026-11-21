@@ -68,6 +68,15 @@ def stripe(path: str, params: list[tuple], key: str) -> dict:
         return json.loads(r.read().decode("utf-8"))
 
 
+def kaufziel(status: dict, cents: int, currency: str) -> str:
+    """Nur einen zum beworbenen Betrag bekannten Checkout übernehmen."""
+    if (not isinstance(status, dict) or type(status.get("cents")) is not int
+            or status["cents"] != cents or status.get("currency") != currency):
+        return ""
+    link = status.get("link", "")
+    return link if isinstance(link, str) else ""
+
+
 def main() -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__)
@@ -152,10 +161,16 @@ def main() -> int:
             except Exception as e:  # noqa: BLE001
                 print(f"::warning::Stripe {slug}: {e} (bleibt als 'bald verfügbar' gelistet)")
         sym = SYM.get(cur, cur.upper() + " ")
-        # Kaufbar nur, wenn ein bestätigter Stripe-Link im Status liegt; sonst leer → „bald verfügbar".
-        buy = state.get(slug, {}).get("link", "") if available else ""
+        # Auch ohne Schlüssel oder nach API-Fehlern darf kein alter Checkout zu
+        # einem anderen oder unbekannten Preis als Kaufziel erscheinen.
+        status = state.get(slug, {})
+        buy = kaufziel(status, cents, cur) if available else ""
+        if available and status and not buy:
+            print(f"::warning::Kaufziel für {slug} zurückgehalten: "
+                  "Betrag, Währung oder Link nicht passend belegt; Status bleibt erhalten.")
+        betrag = str(cents // 100) if cents % 100 == 0 else f"{cents // 100}.{cents % 100:02d}"
         entry = {"slug": slug, "title": title, "desc": kit.get("desc", ""),
-                 "price": f"{sym}{cents/100:.0f}", "buy": buy}
+                 "price": f"{sym}{betrag}", "buy": buy}
         if kit.get("bundle"):
             entry["bundle"] = True
         products.append(entry)
