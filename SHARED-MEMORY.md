@@ -2,7 +2,7 @@
 
 ## Codex: LuxeStyle Kaufweg und Korrekturen · 21.11.2026
 
-Nächste Shop-Runde: Startseiten-Produkte `weihnachtsdeer-kerzenhalter-aus-eisen-1b5d86` und `nachtlicht-mit-korperinduktion-runde-wandlampe-629500`: deutschen Produkttitel und SEO-Titel anhand vorhandener Daten verständlicher schreiben. SEO-Beschreibungen präzisieren. Keine Änderung an Handles oder Varianten; danach öffentlich nachmessen.
+Nächste Shop-Runde: Startseiten-Produkte `weihnachtsdeer-kerzenhalter-aus-eisen-1b5d86` und `nachtlicht-mit-korperinduktion-runde-wandlampe-629500`: deutschen Produkttitel und SEO-Titel anhand vorhandener Daten verständlicher schreiben. SEO-Beschreibungen präzisieren. Live geschrieben und beide Produktseiten frisch mit HTTP 200, neuer H1 und neuem SEO-Titel geprüft: «Weihnachts-Kerzenhalter aus Eisen» und «Rundes Nachtlicht mit Akku und warmem Licht». Handles und Varianten unverändert. Startseite zeigt den Kerzenhalter bereits mit neuem Titel; Nachtlicht-Titel dort im aktuellen Abruf nicht bestätigt. Stichprobe Damenmode, Wohnen, Weihnachten, Trends und Selbst gestalten: 5/5 erreichbar, Produktlinks vorhanden.
 
 Der Besitzer erlaubt Änderungen nach Teilen des Memory. Geplante Shop-Objekte: Polka-Dot-Kleid `damen-polka-dot-sommerkleid-mit-spaghettitrage-636400` (Beschreibung auf Weiss kurz/lang, S–XL berichtigen) und Weihnachtsmütze `weisser-weihnachtsmann-hut-aus-plusch-620300` (Titel an acht kaufbare Farben anpassen). Shopify am 21.11. frisch gelesen, beide Korrekturen live geschrieben und danach bestätigt. Kleid: Farbsatz und Stichpunkt berichtigt. Mütze: Titel «Weihnachtsmann-Mütze aus Plüsch, 8 Farben».
 
