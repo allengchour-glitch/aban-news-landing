@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 304,
-  "updatedAt": "2026-11-21T18:57:03Z",
+  "revision": 305,
+  "updatedAt": "2026-11-21T20:10:22Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50987,6 +50987,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R304-KUNDENGEWINNUNG-20261121.md"
       ]
+    },
+    {
+      "revision": 305,
+      "at": "2026-11-21T20:10:22Z",
+      "summary": "Die sechs freigegebenen Karten in der Retro-Sammlung im öffentlichen Shop vorn bestätigt. Alle 66 Mitglieder und die Reihenfolge der übrigen 60 blieben erhalten.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R305-RETRO-SORTIERUNG-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82523,5 +82531,48 @@
       "observedProposedState": "not applied"
     },
     "claudeReceipt": "unknown"
+  },
+  "run305": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R305-RETRO-SORTIERUNG-20261121.md",
+    "reportBlob": "b487c7eb27289fba39175db395e8f24b78009c7f",
+    "shop": 94368563585,
+    "collection": 689698570625,
+    "sortOrder": "MANUAL",
+    "moves": [
+      {
+        "id": "gid://shopify/Product/15496982397313",
+        "newPosition": "1"
+      },
+      {
+        "id": "gid://shopify/Product/16638859116935",
+        "newPosition": "2"
+      },
+      {
+        "id": "gid://shopify/Product/15524699079041",
+        "newPosition": "3"
+      },
+      {
+        "id": "gid://shopify/Product/15506409128321",
+        "newPosition": "4"
+      },
+      {
+        "id": "gid://shopify/Product/15496579481985",
+        "newPosition": "5"
+      }
+    ],
+    "verifiedAt": "2026-11-21T21:10:22+01:00",
+    "memberCount": 66,
+    "exactOrderVerified": true,
+    "publicFirstSix": [
+      "klassischer-game-controller-42f504",
+      "4k-hdmi-videospielkonsole-5a2af5",
+      "silikon-hulle-fur-spielkonsole-drop-protection-612600",
+      "tastatur-maus-adapter-fur-spielkonsolen-826688",
+      "tragetasche-fur-handheld-spielkonsole-612300",
+      "aufbewahrungsbox-fur-spielkonsole-615100"
+    ],
+    "job": "gid://shopify/Job/e5440f59-7372-47b0-9f38-6d5d924eba8c",
+    "completed": true
   }
 }
