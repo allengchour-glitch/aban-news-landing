@@ -34,13 +34,13 @@ class EinzelpaketFrischTest(unittest.TestCase):
                 (extra / 'DEMO.txt').write_text('ALTER ZUSATZ')
                 (curated / 'INHALT.json').write_text(json.dumps({'ordner': {'zusatz': 'zusatz'}}))
                 with patch.object(produktbau, 'REPO', root):
-                    first = produktbau.build_single('demo', lang)
+                    first = produktbau.build_single('demo', lang, require_curated=True)
                     with zipfile.ZipFile(first) as z:
                         self.assertEqual(z.read('zusatz/DEMO.txt').decode(), 'ALTER ZUSATZ')
                         self.assertIn('ALT.txt', z.namelist())
                     (curated / 'ALT.txt').unlink()
                     (curated / 'INHALT.json').unlink()
-                    archive = produktbau.build_single('demo', lang)
+                    archive = produktbau.build_single('demo', lang, require_curated=True)
                 with zipfile.ZipFile(archive) as z:
                     self.assertIsNone(z.testzip())
                     self.assertEqual(set(z.namelist()), {'AKTUELL.txt', 'LIESMICH.txt'})
@@ -56,9 +56,9 @@ class EinzelpaketFrischTest(unittest.TestCase):
             pdf.parent.mkdir(parents=True)
             pdf.write_bytes(b'NUR DEMO-PDF')
             with patch.object(produktbau, 'REPO', root), patch.object(produktbau, 'gen_prompts', return_value='DEMO'):
-                produktbau.build_single('demo')
+                produktbau.build_single('demo', require_curated=False)
                 pdf.unlink()
-                archive = produktbau.build_single('demo')
+                archive = produktbau.build_single('demo', require_curated=False)
             with zipfile.ZipFile(archive) as z:
                 self.assertEqual(set(z.namelist()), {'prompts.md', 'checkliste.md', 'LIESMICH.txt'})
 
@@ -69,12 +69,12 @@ class EinzelpaketFrischTest(unittest.TestCase):
             curated.mkdir(parents=True)
             (curated / 'DEMO.txt').write_text('ALTER DEMOSTAND')
             with patch.object(produktbau, 'REPO', root):
-                archive = produktbau.build_single('demo')
+                archive = produktbau.build_single('demo', require_curated=True)
                 before = archive.read_bytes()
                 (curated / 'DEMO.txt').write_text('NEUER DEMOSTAND')
                 (curated / 'INHALT.json').write_text(json.dumps({'ordner': {'zusatz': 'fehlt'}}))
                 with self.assertRaises(FileNotFoundError):
-                    produktbau.build_single('demo')
+                    produktbau.build_single('demo', require_curated=True)
             self.assertEqual(archive.read_bytes(), before)
             self.assertEqual((archive.with_suffix('') / 'DEMO.txt').read_text(), 'ALTER DEMOSTAND')
             self.assertFalse(list(archive.parent.glob('.pack-bau-*')))
@@ -86,7 +86,7 @@ class EinzelpaketFrischTest(unittest.TestCase):
             curated.mkdir(parents=True)
             (curated / 'DEMO.txt').write_text('ALTER DEMOSTAND')
             with patch.object(produktbau, 'REPO', root):
-                archive = produktbau.build_single('demo')
+                archive = produktbau.build_single('demo', require_curated=True)
                 before = archive.read_bytes()
                 (curated / 'DEMO.txt').write_text('NEUER DEMOSTAND')
                 replace = Path.replace
@@ -95,10 +95,198 @@ class EinzelpaketFrischTest(unittest.TestCase):
                         raise OSError('NUR TEST: Archiv nicht schreibbar')
                     return replace(path, target)
                 with patch.object(Path, 'replace', fail_archive), self.assertRaises(OSError):
-                    produktbau.build_single('demo')
+                    produktbau.build_single('demo', require_curated=True)
             self.assertEqual(archive.read_bytes(), before)
             self.assertEqual((archive.with_suffix('') / 'DEMO.txt').read_text(), 'ALTER DEMOSTAND')
             self.assertFalse(list(archive.parent.glob('.pack-bau-*')))
+
+
+class KuratiertePflichtquelleTest(unittest.TestCase):
+    """Produktzuordnung und vollständige Quellen mit rein erfundenen Paketen prüfen."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        (self.root / 'data').mkdir()
+        (self.root / 'automation').mkdir()
+
+    def katalog(self, lang, rows, path=None):
+        path = path or self.root / 'data' / ('kit-catalog-en.json' if lang == 'en' else 'kit-catalog.json')
+        path.write_text(json.dumps(rows))
+        return path
+
+    def altstand(self, slug, lang):
+        pack = self.root / 'downloads/packs' / (lang if lang != 'de' else '') / slug
+        pack.mkdir(parents=True)
+        (pack / 'BEHALTEN.txt').write_bytes(b'NUR ERFUNDENER ALTER PAKETSTAND')
+        archive = Path(str(pack) + '.zip')
+        with zipfile.ZipFile(archive, 'w') as z:
+            z.writestr('BEHALTEN.txt', 'NUR ERFUNDENER ALTER PAKETSTAND')
+        return pack, archive, archive.read_bytes()
+
+    def unveraendert(self, pack, archive, vorher):
+        self.assertEqual(archive.read_bytes(), vorher)
+        self.assertEqual({p.name for p in pack.iterdir()}, {'BEHALTEN.txt'})
+        self.assertEqual((pack / 'BEHALTEN.txt').read_bytes(), b'NUR ERFUNDENER ALTER PAKETSTAND')
+        self.assertFalse(list(pack.parent.glob('.pack-bau-*')))
+
+    def test_unbrauchbare_pflichtquelle_stoppt_ohne_generischen_ersatz(self):
+        for lang in ('de', 'en'):
+            for zustand in ('fehlt', 'leer', 'nullbyte', 'datei', 'leeres-inhalt'):
+                with self.subTest(lang=lang, zustand=zustand):
+                    slug = 'demo-' + lang + '-' + zustand
+                    self.katalog(lang, [{'slug': slug, 'standalone': True}])
+                    curated = self.root / 'content/packs' / lang / slug
+                    curated.parent.mkdir(parents=True, exist_ok=True)
+                    if zustand == 'datei':
+                        curated.write_text('NUR DEMO, KEIN QUELLVERZEICHNIS')
+                    elif zustand != 'fehlt':
+                        curated.mkdir()
+                        if zustand == 'nullbyte':
+                            (curated / 'LEER.txt').write_bytes(b'')
+                        elif zustand == 'leeres-inhalt':
+                            (curated / 'INHALT.json').write_text('{"ordner":{},"dateien":{}}')
+                    pack, archive, vorher = self.altstand(slug, lang)
+                    with patch.object(produktbau, 'REPO', self.root), patch.object(produktbau, 'gen_prompts', return_value='UNERLAUBTER DEMOFALLBACK') as generieren:
+                        with self.assertRaises((ValueError, FileNotFoundError)):
+                            produktbau.build_single(slug, lang)
+                        generieren.assert_not_called()
+                    self.unveraendert(pack, archive, vorher)
+
+    def test_kuratierte_dateien_und_manifest_zusatz_bleiben_bytegleich(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang):
+                slug = 'demo-' + lang
+                self.katalog(lang, [{'slug': slug, 'standalone': True}])
+                curated = self.root / 'content/packs' / lang / slug
+                curated.mkdir(parents=True)
+                (curated / 'DEMO.bin').write_bytes(b'\x00NUR DEMO\xff')
+                (curated / 'LIESMICH.txt').write_text('NUR KURATIERTE DEMOANLEITUNG')
+                (self.root / 'zusatz.txt').write_bytes(b'NUR ZUSATZ')
+                (curated / 'INHALT.json').write_text(json.dumps({'dateien': {'unterordner/zusatz.txt': 'zusatz.txt'}}))
+                with patch.object(produktbau, 'REPO', self.root), patch.object(produktbau, 'gen_prompts') as generieren:
+                    archive = produktbau.build_single(slug, lang)
+                    generieren.assert_not_called()
+                with zipfile.ZipFile(archive) as z:
+                    self.assertEqual(z.read('DEMO.bin'), b'\x00NUR DEMO\xff')
+                    self.assertEqual(z.read('LIESMICH.txt'), b'NUR KURATIERTE DEMOANLEITUNG')
+                    self.assertEqual(z.read('unterordner/zusatz.txt'), b'NUR ZUSATZ')
+                    self.assertNotIn('INHALT.json', z.namelist())
+                    self.assertNotIn('prompts.md', z.namelist())
+                    self.assertIsNone(z.testzip())
+
+    def test_generisches_branchenpaket_bleibt_ausdruecklich_moeglich(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang), patch.object(produktbau, 'REPO', self.root), \
+                 patch.object(produktbau, 'gen_prompts', return_value='NUR DEMOPROMPTS') as generieren:
+                archive = produktbau.build_single('generisch-' + lang, lang, require_curated=False)
+                generieren.assert_called_once()
+                with zipfile.ZipFile(archive) as z:
+                    self.assertEqual(z.read('prompts.md'), b'NUR DEMOPROMPTS')
+                    self.assertIn('checkliste.md', z.namelist())
+
+    def test_direktaufruf_leitet_pflicht_aus_richtiger_sprache_ab(self):
+        self.katalog('de', [{'slug': 'demo', 'standalone': False}])
+        self.katalog('en', [{'slug': 'demo', 'standalone': True}])
+        with patch.object(produktbau, 'REPO', self.root), patch.object(produktbau, 'gen_prompts', return_value='NUR DEMOPROMPTS') as generieren:
+            archive = produktbau.build_single('demo', 'de')
+            self.assertTrue(archive.is_file())
+            with self.assertRaises((ValueError, FileNotFoundError)):
+                produktbau.build_single('demo', 'en')
+            generieren.assert_called_once()
+
+    def test_unlesbarer_standardkatalog_ist_keine_erlaubnis_zum_fallback(self):
+        for lang in ('de', 'en'):
+            for inhalt in (None, 'KEIN JSON', '{}', '[null]'):
+                with self.subTest(lang=lang, inhalt=inhalt):
+                    path = self.root / 'data' / ('kit-catalog-en.json' if lang == 'en' else 'kit-catalog.json')
+                    path.unlink(missing_ok=True)
+                    if inhalt is not None:
+                        path.write_text(inhalt)
+                    with patch.object(produktbau, 'REPO', self.root), patch.object(produktbau, 'gen_prompts', return_value='UNERLAUBTER DEMOFALLBACK') as generieren:
+                        with self.assertRaises((ValueError, FileNotFoundError)):
+                            produktbau.build_single('demo', lang)
+                        generieren.assert_not_called()
+
+    def test_direktaufruf_verlangt_eindeutige_eigene_katalogzuordnung(self):
+        for lang in ('de', 'en'):
+            for rows in ([], [{'slug': 'anderes-produkt'}],
+                         [{'slug': 'demo', 'standalone': True}, {'slug': 'demo', 'standalone': False}]):
+                with self.subTest(lang=lang, rows=rows):
+                    self.katalog(lang, rows)
+                    slug = 'demo'
+                    pack = self.root / 'downloads/packs' / (lang if lang != 'de' else '') / slug
+                    if not pack.exists():
+                        pack, archive, vorher = self.altstand(slug, lang)
+                    else:
+                        archive = Path(str(pack) + '.zip')
+                        vorher = archive.read_bytes()
+                    with patch.object(produktbau, 'REPO', self.root), \
+                         patch.object(produktbau, 'gen_prompts', return_value='UNERLAUBTER DEMOFALLBACK') as generieren:
+                        with self.assertRaises(ValueError):
+                            produktbau.build_single(slug, lang)
+                        generieren.assert_not_called()
+                    self.unveraendert(pack, archive, vorher)
+
+    def test_cli_verwendet_pflicht_aus_ausdruecklich_gewaehltem_katalog(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang):
+                self.katalog(lang, [{'slug': 'demo', 'standalone': False}])
+                custom = self.katalog(lang, [{'slug': 'demo', 'standalone': True}], self.root / 'gewaehlt.json')
+                pack, archive, vorher = self.altstand('demo', lang)
+                argv = ['build_product_pack.py', '--lang', lang, '--slugs', 'demo', '--catalog', str(custom)]
+                with patch.object(produktbau, 'REPO', self.root), patch.object(sys, 'argv', argv), \
+                     patch.object(produktbau, 'gen_prompts', return_value='UNERLAUBTER DEMOFALLBACK') as generieren:
+                    with self.assertRaises((ValueError, FileNotFoundError)):
+                        produktbau.main()
+                    generieren.assert_not_called()
+                self.unveraendert(pack, archive, vorher)
+
+    def test_cli_kann_generische_zuordnung_abweichend_vom_standard_waehlen(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang):
+                self.katalog(lang, [{'slug': 'demo', 'standalone': True}])
+                custom = self.katalog(lang, [{'slug': 'demo'}], self.root / 'gewaehlt-generisch.json')
+                argv = ['build_product_pack.py', '--lang', lang, '--slugs', 'demo', '--catalog', str(custom)]
+                with patch.object(produktbau, 'REPO', self.root), patch.object(sys, 'argv', argv), \
+                     patch.object(produktbau, 'gen_prompts', return_value='NUR DEMOPROMPTS'), redirect_stdout(io.StringIO()):
+                    self.assertEqual(produktbau.main(), 0)
+                archive = self.root / 'downloads/packs' / (lang if lang != 'de' else '') / 'demo.zip'
+                with zipfile.ZipFile(archive) as z:
+                    self.assertEqual(z.read('prompts.md'), b'NUR DEMOPROMPTS')
+
+    def test_deploy_mit_echtem_produktbauer_stoppt_ohne_generischen_ersatz(self):
+        for lang in ('de', 'en'):
+            for zustand in ('fehlt', 'leer', 'nullbyte'):
+                with self.subTest(lang=lang, zustand=zustand):
+                    slug = 'eigen-' + lang + '-' + zustand
+                    self.katalog('de', [{'slug': 'branche'}] + ([{'slug': slug, 'standalone': True}] if lang == 'de' else []))
+                    self.katalog('en', [{'slug': slug, 'standalone': True}] if lang == 'en' else [])
+                    curated = self.root / 'content/packs' / lang / slug
+                    if zustand != 'fehlt':
+                        curated.mkdir(parents=True)
+                        if zustand == 'nullbyte':
+                            (curated / 'LEER.txt').write_bytes(b'')
+                    pack, archive, vorher = self.altstand(slug, lang)
+                    kits = self.root / 'downloads/kits'
+                    kits.mkdir(parents=True, exist_ok=True)
+                    (kits / 'bisher.zip').write_bytes(b'NUR ALTER GESCHUETZTER DEMOSTAND')
+                    (kits / 'notiz.txt').write_bytes(b'NUR DEMONOTIZ')
+                    stdout = io.StringIO()
+                    with patch.object(produktbau, 'REPO', self.root), patch.object(bau, 'REPO', self.root), \
+                         patch.object(bau, 'KITS', kits), patch.object(bau, 'build_single', side_effect=produktbau.build_single), \
+                         patch.object(produktbau, 'gen_prompts', return_value='NUR BRANCHENDEMOPROMPTS') as generieren, \
+                         patch.dict(os.environ, {'DOWNLOAD_SALT': 'nur-demo-salt'}, clear=True), redirect_stdout(stdout):
+                        self.assertEqual(bau.main(), 1)
+                        generieren.assert_called_once()  # Nur das vorher gebaute Branchenkit.
+                    self.unveraendert(pack, archive, vorher)
+                    self.assertEqual({p.name for p in kits.iterdir()}, {'bisher.zip', 'notiz.txt'})
+                    self.assertEqual((kits / 'bisher.zip').read_bytes(), b'NUR ALTER GESCHUETZTER DEMOSTAND')
+                    self.assertEqual((kits / 'notiz.txt').read_bytes(), b'NUR DEMONOTIZ')
+                    self.assertFalse(list((self.root / 'automation').glob('.kit-bau-*')))
+                    self.assertNotIn('nur-demo-salt', stdout.getvalue())
+                    self.assertNotIn(str(self.root), stdout.getvalue())
 
 
 class BundleVollstaendigTest(unittest.TestCase):
@@ -157,7 +345,7 @@ class KitBauTest(unittest.TestCase):
         for lang, rows in [("", de), ("-en", en)]:
             (self.root / f"data/kit-catalog{lang}.json").write_text(json.dumps(rows))
 
-    def archive(self, slug, lang):
+    def archive(self, slug, lang, **kwargs):
         out = self.root / "fixtures" / (lang + "-" + slug + ".zip")
         with zipfile.ZipFile(out, "w", compression=zipfile.ZIP_STORED) as z:
             z.writestr("DEMO.txt", "NUR-ERFUNDENE-TESTDATEN")
@@ -178,7 +366,7 @@ class KitBauTest(unittest.TestCase):
         self.assertEqual({p.name for p in self.kits.iterdir()}, {"bisher.zip", "behalten.txt"})
 
     def test_ohne_salt_kein_bau_und_keine_loeschung(self):
-        def forbidden(*args):
+        def forbidden(*args, **kwargs):
             self.fail("Paketbau ohne Salt")
         self.assertEqual(self.run_build(single=forbidden, salt="  ")[0], 0)
         self.old_unchanged()
@@ -198,7 +386,8 @@ class KitBauTest(unittest.TestCase):
     def test_bundle_kommt_nach_einzelpaketen_ohne_standalone_im_bundle(self):
         self.catalog([{"slug": "bundle", "bundle": True}, {"slug": "demo"}, {"slug": "eigen", "standalone": True}], [])
         order = []
-        def single(slug, lang):
+        def single(slug, lang, *, require_curated=None):
+            self.assertEqual(require_curated, slug == 'eigen')
             order.append(slug)
             return self.archive(slug, lang)
         def bundle(slug, members, lang):
@@ -209,7 +398,7 @@ class KitBauTest(unittest.TestCase):
 
     def test_fehler_nach_erster_zip_gibt_keinen_teilbestand_frei(self):
         self.catalog([{"slug": "demo"}, {"slug": "kaputt"}], [])
-        def single(slug, lang):
+        def single(slug, lang, **kwargs):
             if slug == "kaputt":
                 raise RuntimeError("NICHT-IN-LOGS-SCHREIBEN")
             return self.archive(slug, lang)
@@ -221,7 +410,7 @@ class KitBauTest(unittest.TestCase):
 
     def test_en_fehler_nach_de_bau_behaelt_alten_satz(self):
         self.catalog([{"slug": "demo"}], [{"slug": "en-demo"}])
-        def single(slug, lang):
+        def single(slug, lang, **kwargs):
             if lang == "en":
                 raise OSError("nur Test")
             return self.archive(slug, lang)
@@ -256,7 +445,7 @@ class KitBauTest(unittest.TestCase):
                         pass
                 else:
                     p.write_bytes(b"keine ZIP")
-                self.assertEqual(self.run_build(single=lambda *args: p)[0], 1)
+                self.assertEqual(self.run_build(single=lambda *args, **kwargs: p)[0], 1)
                 self.old_unchanged()
 
     def test_falsche_crc_wird_vor_der_uebernahme_erkannt(self):
@@ -264,7 +453,7 @@ class KitBauTest(unittest.TestCase):
         data = p.read_bytes()
         self.assertIn(b"NUR-ERFUNDENE-TESTDATEN", data)
         p.write_bytes(data.replace(b"NUR-ERFUNDENE-TESTDATEN", b"XUR-ERFUNDENE-TESTDATEN"))
-        self.assertEqual(self.run_build(single=lambda *args: p)[0], 1)
+        self.assertEqual(self.run_build(single=lambda *args, **kwargs: p)[0], 1)
         self.old_unchanged()
 
     def test_uebernahmefehler_bricht_ab_ohne_alte_dateien_zu_loeschen(self):

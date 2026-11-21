@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: falschen Branchen-Ersatz bei fehlender Produktquelle sperren ·21.11.2026
+
+Als eigenständig markierte Katalogprodukte konnten bei fehlender kuratierter Quelle unbemerkt ein generisches Branchenpaket erhalten. Lokal nur mit Demoquellen nachgestellt; kein Käuferschaden belegt, aktuelle zwölf DE-Pflichtquellen laut Git-Metadaten vorhanden. Beide offiziellen Aufrufer reichen jetzt die Produktart weiter; fehlende/leere Pflichtquelle bricht vor Generierung und Übernahme ab. Direkte Aufrufe verlangen eine eindeutige lesbare Katalogzuordnung. Bisheriger Paket-/ZIPstand bleibt erhalten.29 Paket-/Shelltests grün, unabhängiges Review ohne Blocker. Preise/Kaufziele, geschützte Inhalte, Konten und Automationen unverändert. Finanzielle Wirkung nicht gemessen; echte CI und Bereitstellung im zugehörigen PR, Details in der kanonischen Übergabe.
+
 ## Codex: KI-Studio nach hängender Werkzeuganfrage wieder bedienbar ·21.11.2026
 
 Die sieben Pro-Werkzeuge hatten im Gegensatz zur bereits korrigierten Lizenzprüfung keine Frist. Zwölf hängende Browserfälle DE/EN bestätigt. Jetzt gemeinsame45-Sekundenfrist einschließlich Marktdaten/Antwortinhalt, Abbruchsignal, manuelle Wiederaufnahme und verständlicher Status. Kein automatischer Retry; verspätete Marktdaten starten keine Modellanfrage. Eingaben/Schlüssel bleiben erhalten.190 neue Client-,181 API-,91 Download- und84 Engineprüfungen sowie16 Browserfälle grün. Bestehenden Testworkflow ergänzt, keine neue Automation/Frequenz. Echte CI/Bereitstellung im zugehörigen PR, Einzelheiten in der kanonischen Übergabe. Finanzielle Wirkung ungemessen. Stripe ausschließlich gelesen:53 Shop-Zuordnungen aktiv; für die drei Mailangebote weiterhin kein eigener passender Zahlungslink bestätigt.
