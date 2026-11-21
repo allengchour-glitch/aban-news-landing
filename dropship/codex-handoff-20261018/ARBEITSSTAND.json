@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 287,
-  "updatedAt": "2026-11-21T09:15:04Z",
+  "revision": 288,
+  "updatedAt": "2026-11-21T13:13:31Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50851,6 +50851,14 @@
         "dropship/codex-handoff-20261018/R287-MARGENPRUEFUNG-20261121.md",
         "dropship/codex-handoff-20261018/runs/20261121-r287/KATALOG-ABGLEICH.json"
       ]
+    },
+    {
+      "revision": 288,
+      "at": "2026-11-21T13:13:31Z",
+      "summary": "Sieben-Tage-Plan frisch gelesen. Zwei bestehende Social-Veröffentlichungen bestätigt. Neuer Threads-Medienabruf fehlgeschlagen, exakte Shopify-JPEG-URI öffentlich gültig. Projektor A ergänzt um geprüften 9:16-Aufnahmerahmen und neuen Frame-0-Befund. Ein FR-Vergleichstext zur Freigabe. Tagesmessung übernommen, Klaviyo erneut reauth-pflichtig.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R288-REPORT-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -81539,5 +81547,32 @@
     "bulkState": "COMPLETED_SIGNED_URL_WITHHELD",
     "requiresOwnerCsv": true,
     "claudeReceipt": "UNKNOWN"
+  },
+  "run288": {
+    "atUTC": "2026-11-21T13:13:31Z",
+    "localDate": "2026-11-21",
+    "summary": "Sieben-Tage-Plan frisch gelesen. Zwei bestehende Social-Veröffentlichungen bestätigt. Neuer Threads-Medienabruf fehlgeschlagen, exakte Shopify-JPEG-URI öffentlich gültig. Projektor A ergänzt um geprüften 9:16-Aufnahmerahmen und neuen Frame-0-Befund. Ein FR-Vergleichstext zur Freigabe. Tagesmessung übernommen, Klaviyo erneut reauth-pflichtig.",
+    "report": "dropship/codex-handoff-20261018/R288-REPORT-20261121.md",
+    "planning": {
+      "brandId": 6227837,
+      "timezone": "Europe/Zurich",
+      "activeObjects": 26,
+      "activePlacements": 34,
+      "heldThroughWholeDay28": 15,
+      "newPublications": 0,
+      "threadsErrorPostId": "426961960"
+    },
+    "projector": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "variantId": "68122445283719",
+      "priceCHF": "34.90",
+      "professionalMP4": false,
+      "altFirstVisibleSeconds": 0.16,
+      "guideSHA256": "4a3560ed26089d0aa08ffd58166570757628176ee578336842e7f78530821af7"
+    },
+    "saleDraft": "FR_Existing_Comparison_Heading_And_Note",
+    "metricoolConcurrentDayReportReused": "R278",
+    "klaviyo": "UNAUTHORIZED_REAUTH_REQUIRED",
+    "claudeReceipt": "unknown"
   }
 }
