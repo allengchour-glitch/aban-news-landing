@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 305,
-  "updatedAt": "2026-11-21T20:10:22Z",
+  "revision": 306,
+  "updatedAt": "2026-11-21T20:20:24Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50995,6 +50995,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R305-RETRO-SORTIERUNG-20261121.md"
       ]
+    },
+    {
+      "revision": 306,
+      "at": "2026-11-21T20:20:24Z",
+      "summary": "CSS-Anzeigenkontingent geprüft. Screenshot meldet 19’100 betroffene Produkte. Der bestehende Shopify-Quotenlauf zählte 77’028 Kanalvarianten und null Abwahlen. DE- und FR-Quellen anhand von zwei Live-Angeboten bestätigt. Verteilung und konkretes Google-Limit offen, Kontingentantrag vorbereitet.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R306-MERCHANT-ANZEIGENKONTINGENT-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82574,5 +82582,29 @@
     ],
     "job": "gid://shopify/Job/e5440f59-7372-47b0-9f38-6d5d924eba8c",
     "completed": true
+  },
+  "run306": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R306-MERCHANT-ANZEIGENKONTINGENT-20261121.md",
+    "reportBlob": "f0ac627f4a9ba72810c5547fc24e0ec85b2c7167",
+    "shop": 94368563585,
+    "merchantAccount": "5797470070",
+    "scope": "CSS shopping ads quota",
+    "ownerScreenshotAffected": 19100,
+    "ownerScreenshotAffectedPct": 11.3,
+    "liveGoogleQuota": null,
+    "quotaUsageBySource": null,
+    "guardRun": 44906477337,
+    "guardJob": 136853042859,
+    "shopifyGoogleVariants": 77028,
+    "shopifyGuardLimit": 78000,
+    "guardDeselections": 0,
+    "liveSources": [
+      "10667445201",
+      "10762220830"
+    ],
+    "offerProbeCount": 2,
+    "quotaRequest": "draft; authentication required",
+    "merchantWriteCount": 0
   }
 }
