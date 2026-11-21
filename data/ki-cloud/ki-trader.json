@@ -240,6 +240,30 @@
     "btc": 61901.8203125,
     "eth": 1755.1898193359375
    }
+  },
+  {
+   "stand": "2026-11-20",
+   "zeit": "2026-11-21T12:44:48+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 813,
+   "kosten_usd": 0.022952,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.1,
+    "begruendung": "Klarer Abwärtstrend: -30 % in 30 Tagen, Abstand zum 50-Tage-Schnitt -24 %, Verkäufe beschleunigen sich (-5 % am Schlusstag). Dagegen spricht die starke Überverkauftheit: Angst&Gier 12, Funding leicht negativ, MVRV 1,10. Ein Short-Squeeze ist jederzeit möglich. Deshalb bleibt der Short klein und unverändert, ohne Ausbau und ohne zusätzliche Gebühr.",
+    "sicherheit": 0.3
+   },
+   "eth": {
+    "position": -0.05,
+    "begruendung": "ETH ist schwächer als BTC: -34,5 % in 30 Tagen, -29 % unter dem 50-Tage-Schnitt, Schwankung 66 %. Ein MVRV von 0,80 heisst aber, dass der Durchschnittshalter im Verlust liegt. Das ist historisch eine Kapitulationszone mit hohem Rückprallrisiko. Der Mini-Short wird nur gehalten und nicht erhöht.",
+    "sicherheit": 0.25
+   },
+   "kommentar": "Der Trend spricht für Short, die Extremwerte bei Stimmung und Bewertung warnen vor einer Gegenbewegung. Darum keine Aufstockung, nur Bestand halten. Erholt sich der Kurs deutlich, etwa mit einem Tagesschluss über 64'000 bei BTC oder über 1'800 bei ETH, stelle ich flach. Bei weiterem Fall ohne Zeichen von Kapitulation erhöhe ich den Short höchstens moderat.",
+   "kurse": {
+    "btc": 58798.98046875,
+    "eth": 1619.43212890625
+   }
   }
  ]
 }
