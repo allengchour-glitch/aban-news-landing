@@ -3565,3 +3565,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Änderungs- und Rücklesebeleg](R290-FIX-20261121.md)
 
 [LUXESTYLE_R290_20261121]
+
+### R291 – Französisch und Qualitätsprüfung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify FR | Vollständigen französischen Projektor-Beschrieb und acht Auswahltexte anhand nativer Quellen vorbereitet. Sieben Varianten, CHF-Preise und Shoplinks bei 360 und 1440 px in lokaler Vorschau abgeglichen. | Entwurf zur Freigabe. Zwei frühere FR-Textstellen bleiben im Vorschlag gleich. Kein Shopify-Write. |
+| Projektorfilm | Technischen Kamera- und Lichttest für denselben 18-Sekunden-Master erstellt und lokal prüfen lassen. | Testplan für echte Handbewegung, Flackern, Fokus und Projektion bereit. A-Rohmaterial, Rechte und Filmabnahme weiter offen. |
+| Metricool | Drei gesperrte UUIDs gezielt zurückgelesen. Letzten Wochenstand für 25.–28.11. übernommen. | Alle drei Entwurf und Autopublish aus. Keine neue Terminierung und keine Kennzahlenwiederholung. |
+| Startseite | Öffentliche Homepage und Shopify-Rollen der Haupt- und Vorschau-Themes gegengeprüft. | Vorbereitete Kopie weiterhin unveröffentlicht. Bestehender Connector-Publish für diese Kopie abgewiesen. |
+
+[Entwurf und Prüfbelege](R291-PREMIUM-20261121.md)
+
+[LUXESTYLE_R291_20261121]
