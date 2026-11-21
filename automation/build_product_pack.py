@@ -139,6 +139,8 @@ def build_single(slug: str, lang: str = "de", *, require_curated: bool | None = 
         products = [k for k in _catalog_rows(catalog) if k["slug"] == slug]
         if len(products) != 1:
             raise ValueError("Produkt nicht eindeutig im Katalog zugeordnet")
+        if products[0].get("available", True) is not True:
+            raise ValueError("Produktquelle nicht zur Lieferung freigegeben")
         require_curated = bool(products[0].get("standalone"))
     pack = REPO / "downloads" / "packs" / (lang if lang != "de" else "") / slug
     pack.parent.mkdir(parents=True, exist_ok=True)
@@ -267,6 +269,13 @@ def main() -> int:
     bundles = _bundle_slugs(catalog)
     standalone = _standalone_slugs(catalog)
     all_slugs = [s.strip() for s in args.slugs.split(",") if s.strip()]
+    gesperrt = {k["slug"] for k in _catalog_rows(catalog) if k.get("available", True) is not True}
+    for slug in all_slugs:
+        if slug in gesperrt:
+            print(f"::warning::Paket {slug}: Quelle nicht freigegeben, kein Ersatzbau.")
+    all_slugs = [s for s in all_slugs if s not in gesperrt]
+    if not all_slugs:
+        raise ValueError("Keine freigegebenen Produkte zum Bauen ausgewählt")
     singles = [s for s in all_slugs if s not in bundles]
     # Branchen-Bundle enthält nur die Branchen-Kits, NICHT die eigenständigen Premium-Produkte.
     bundle_members = [s for s in singles if s not in standalone]

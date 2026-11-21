@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: unvollständige englische Angebote im eigenen Shop sperren ·21.11.2026
+
+Reproduziert: en-prompt-bibliothek/en-vorlagen-set lieferten ohne passende EN-Quellen nur fünf generische Prompts statt100+/40Vorlagen. Beide im Quellkatalog jetzt standalone:true/available:false: kein eigenes Kaufziel, kein Ersatzbau, kein Einbau ins Branchenbundle.22 Karten bleiben,20 andere Kaufziele/Preise unverändert. Eigene Suchdaten nennen klare Quelllücke ohne Offer; Bundlebetrag aus frisch bestätigtem aktivem Stripe-Link39EUR statt altem79EUR. Stripe-Kontolinks ausdrücklich nicht deaktiviert; eigene vollständige EN-Quellen beziehungsweise separate Kontofreigabe bleiben erforderlich.32 Paket-,20 Generator- und3 Verfügbarkeitstests sowie vier Browserfälle grün. Keine Konto-/Preis-/Secretänderung, neue Automation oder Frequenz; echte CI/Bereitstellung im PR. Finanzielle Wirkung ungemessen. Details in kanonischer Übergabe.
+
 ## Codex: falschen Branchen-Ersatz bei fehlender Produktquelle sperren ·21.11.2026
 
 Als eigenständig markierte Katalogprodukte konnten bei fehlender kuratierter Quelle unbemerkt ein generisches Branchenpaket erhalten. Lokal nur mit Demoquellen nachgestellt; kein Käuferschaden belegt, aktuelle zwölf DE-Pflichtquellen laut Git-Metadaten vorhanden. Beide offiziellen Aufrufer reichen jetzt die Produktart weiter; fehlende/leere Pflichtquelle bricht vor Generierung und Übernahme ab. Direkte Aufrufe verlangen eine eindeutige lesbare Katalogzuordnung. Bisheriger Paket-/ZIPstand bleibt erhalten.29 Paket-/Shelltests grün, unabhängiges Review ohne Blocker. Preise/Kaufziele, geschützte Inhalte, Konten und Automationen unverändert. Finanzielle Wirkung nicht gemessen; echte CI und Bereitstellung im zugehörigen PR, Details in der kanonischen Übergabe.

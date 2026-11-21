@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Schreibt Suchmaschinen- und Ersatzanzeige aus demselben vorhandenen Shop-Katalog.
+"""Schreibt DE-Suchliste, EN-Bundleangebot und Ersatzanzeigen aus eigenen Shop-Katalogen.
 
 Ersatzkatalog und Suchmaschinenliste dürfen nicht vom regulären Shop abweichen. Der bestehende
 Stripe-Katalogworkflow ruft dieses Werkzeug nach dem Abgleich auf; es selbst liest nur lokale Dateien.
@@ -17,6 +17,7 @@ SHOP, DATEN = ROOT / "shop.html", ROOT / "data" / "shop-products.json"
 FALLBACK = ROOT / "js" / "shop-config.js"
 EN_DATEN = ROOT / "data" / "shop-products-en.json"
 EN_FALLBACK = ROOT / "js" / "shop-config-en.js"
+EN_SHOP = ROOT / "en" / "shop.html"
 
 
 def preis(text: str):
@@ -41,12 +42,60 @@ def itemlist(produkte: list) -> str:
                        "url": "https://abannews.com/shop.html", "itemListElement": items}, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
 
 
-def neu_schreiben(html: str, produkte: list) -> str:
+def _itemlist_block(html: str):
     bloecke = list(re.finditer(r'(<script type="application/ld\+json">\s*)(.*?)(\s*</script>)', html, re.S))
     treffer = [b for b in bloecke if '"@type":"ItemList"' in b.group(2).replace(" ", "")]
-    assert len(treffer) == 1, f"genau ein ItemList-Block erwartet, gefunden {len(treffer)}"
-    b = treffer[0]
+    if len(treffer) != 1:
+        raise ValueError(f"Genau ein ItemList-Block erwartet, gefunden {len(treffer)}")
+    return treffer[0]
+
+
+def neu_schreiben(html: str, produkte: list) -> str:
+    b = _itemlist_block(html)
     return html[:b.start(2)] + itemlist(produkte) + html[b.end(2):]
+
+
+def en_angebote_schreiben(html: str, produkte: list) -> str:
+    """Bundle abgleichen und nicht kaufbare Angebote entfernen; übrigen Umfang erhalten."""
+    bundles = [p for p in produkte if p.get("bundle")]
+    ziel = {p["title"]: p for p in bundles}
+    if len(ziel) != len(bundles):
+        raise ValueError("Bundle-Titel nicht eindeutig")
+    b = _itemlist_block(html)
+    daten = json.loads(b.group(2))
+    alle = {p["title"]: p for p in produkte}
+    gefunden = {name: 0 for name in ziel}
+    for eintrag in daten.get("itemListElement", []):
+        produkt = eintrag.get("item", {})
+        name = produkt.get("name")
+        if name not in alle:
+            if produkt.get("offers"):
+                raise ValueError("Suchangebot ohne eigene Katalogzuordnung")
+            continue
+        if name in ziel:
+            gefunden[name] += 1
+        quelle = alle[name]
+        if not quelle.get("buy"):
+            produkt.pop("offers", None)
+            if name not in ziel:
+                produkt["description"] = quelle.get("desc", "")
+            continue
+        if name not in ziel and "offers" in produkt:
+            continue
+        if name not in ziel:
+            produkt["description"] = quelle.get("desc", "")
+        text = quelle.get("price", "")
+        if not isinstance(text, str) or not re.fullmatch(r"\s*(CHF|€|\$|[A-Z]{3})\s*\d+(?:\.\d{1,2})?\s*", text):
+            raise ValueError("Bundle-Preis nicht prüfbar")
+        betrag, waehrung = preis(text)
+        angebot = produkt.setdefault("offers", {"@type": "Offer"})
+        if not isinstance(angebot, dict) or angebot.get("@type") != "Offer":
+            raise ValueError("Bundle-Angebot nicht eindeutig")
+        angebot.update(price=betrag, priceCurrency=waehrung, url=quelle["buy"])
+    if any(anzahl != 1 for anzahl in gefunden.values()):
+        raise ValueError("Bundle nicht eindeutig in Suchdaten zugeordnet")
+    payload = json.dumps(daten, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    return html[:b.start(2)] + payload + html[b.end(2):]
 
 
 def ersatzkatalog(produkte: list, quelle="data/shop-products.json", variable="ABAN_SHOP") -> str:
@@ -65,14 +114,16 @@ def main() -> int:
     ersatz = ersatzkatalog(produkte)
     en_produkte = json.loads(EN_DATEN.read_text(encoding="utf-8"))
     en_ersatz = ersatzkatalog(en_produkte, "data/shop-products-en.json", "ABAN_SHOP_EN")
-    dateien = [(SHOP, neu), (FALLBACK, ersatz), (EN_FALLBACK, en_ersatz)]
-    veraltet = [pfad.name for pfad, text in dateien
+    en_neu = en_angebote_schreiben(EN_SHOP.read_text(encoding="utf-8"), en_produkte)
+    dateien = [(SHOP, neu), (EN_SHOP, en_neu), (FALLBACK, ersatz), (EN_FALLBACK, en_ersatz)]
+    veraltet = [pfad for pfad, text in dateien
                 if not pfad.exists() or pfad.read_text(encoding="utf-8") != text]
     if "--pruefen" in sys.argv:
-        print("Shop-Anzeigen aktuell" if not veraltet else "Veraltet: " + ", ".join(veraltet))
+        print("Shop-Anzeigen aktuell" if not veraltet else "Veraltet: " + ", ".join(
+            str(p.relative_to(ROOT)) if p.is_relative_to(ROOT) else str(p) for p in veraltet))
         return 1 if veraltet else 0
     for pfad, text in dateien:
-        if pfad.name in veraltet:
+        if pfad in veraltet:
             pfad.write_text(text, encoding="utf-8")
     print(f"→ Shop-Anzeigen: {len(produkte)} DE- und {len(en_produkte)} EN-Katalogeinträge aus ihren eigenen Quellen")
     return 0

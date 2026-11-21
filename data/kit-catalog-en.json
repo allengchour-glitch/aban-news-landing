@@ -143,15 +143,19 @@
   {
     "slug": "en-prompt-bibliothek",
     "title": "AI Prompt Library for Solo Professionals",
-    "desc": "100+ proven copy-paste prompts — outreach, clients, marketing, admin & research. Cross-industry, honest, no hype.",
+    "desc": "English source pack not ready. Currently unavailable to buy.",
     "price_cents": 1400,
-    "currency": "eur"
+    "currency": "eur",
+    "standalone": true,
+    "available": false
   },
   {
     "slug": "en-vorlagen-set",
     "title": "Ready-made Text Templates for Solo Professionals",
-    "desc": "40 ready-to-use templates for quotes, emails, invoices & rejections. Copy, replace placeholders, send.",
+    "desc": "English source pack not ready. Currently unavailable to buy.",
     "price_cents": 1400,
-    "currency": "eur"
+    "currency": "eur",
+    "standalone": true,
+    "available": false
   }
 ]
