@@ -3791,3 +3791,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Löschbeleg und offene Merchant-Themen](R310-MERCHANT-404-BEREINIGUNG-20261121.md)
 
 [LUXESTYLE_R310_20261121]
+
+### R311 – Zwei falsche Katalogzuordnungen korrigiert
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify-Katalog | Bei Toilettenpapierhalter und Uhrenzeiger-Set belegte Typen gesetzt und falsche Küchen-Tags entfernt. | Zwei bestätigte Writes, beide Produkte öffentlich korrekt zugeordnet. WC-Sammlung und andere Mitgliedschaften erhalten. |
+| Merchant | Begrenzte 25er-Gegenprobe nach Löschungen gelesen. Fünf neue CJ-Setbilder geprüft. | 13 CSS- und 12 Bildmeldungen. Fünf gelöschte Angebote fehlen in der Stichprobe. Neue Setbilder mit Einblendungen, Lieferumfang offen. |
+
+[Live-Änderungen und Quellenbelege](R311-KATALOG-ZUORDNUNGEN-20261121.md)
+
+[LUXESTYLE_R311_20261121]
