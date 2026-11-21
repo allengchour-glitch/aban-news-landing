@@ -3747,3 +3747,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Prüfbelege und Antragstext](R306-MERCHANT-ANZEIGENKONTINGENT-20261121.md)
 
 [LUXESTYLE_R306_20261121]
+
+### R307 – Tatsächliches CSS-Kontingent verifiziert
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Merchant-Kontingent | Bestehenden manuellen Reader im separaten Branch um eine gezielte GET-Abfrage ergänzt und geprüft ausgeführt. | Google bestätigt 150’000 Angebote für ADS_EEA. Aktuelle Auslastung liefert die Resource nicht. 26 lokale und 26 Runner-Tests grün. |
+| Feed und Antrag | Vier alte DRAFT-Angebote mit der deutschen Quelle und den öffentlichen 404-Seiten abgeglichen. Antrag mit verifiziertem Limit ergänzt. | Vier Landingpage-Fehler. Quotenänderung erfordert Google-Anmeldung. Keine Feed-Schreiboperation und keine Einreichung. |
+
+[Live-Lesebeleg und aktualisierter Antrag](R307-MERCHANT-CSS-LIMIT-20261121.md)
+
+[LUXESTYLE_R307_20261121]
