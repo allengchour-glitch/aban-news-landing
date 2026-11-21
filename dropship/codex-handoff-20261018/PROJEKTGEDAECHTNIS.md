@@ -1,3 +1,11 @@
+# R297 – Originalprodukte in den Einkaufskacheln – 21.11.2026
+
+Alle 16 Einkaufskacheln der Shopify-Theme-Vorschau mit Originalbildern verfügbarer Kategorieprodukte ausgestattet. Zuschnitte, Lesbarkeit und Links bei 1440, 390 und 320 px geprüft. Vorschau gespeichert.
+
+[Shopify-Vorschau und Bildquellen](R297-ORIGINAL-KATEGORIEBILDER-20261121.md)
+
+---
+
 # R296 – Neun Produkte in der 360°-Galerie – 21.11.2026
 
 Websitefilm mit Sternenlicht-Projektor und marineblauem Mini-Staubsauger auf neun Produkte und 20 Sekunden erweitert. UHD- und Hochformat-MP4 mit konstanten 60 fps geprüft. Lokale Vorschauen ohne neue Shopify-Bindung.
