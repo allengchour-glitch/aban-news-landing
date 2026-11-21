@@ -3769,3 +3769,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Quellenbeleg und nächster Eingriff](R308-MERCHANT-QUELLEN-20261121.md)
 
 [LUXESTYLE_R308_20261121]
+
+### R309 – Tatsächliche Merchant-Fehler je Angebot geprüft
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Anzeigenkontingent | Bestehenden manuellen Reader um eine begrenzte Reports-Stichprobe ergänzt. Die 13 CSS-IDs einzeln mit Shopify abgeglichen. | 13 aktive Varianten mit bestätigtem Quotenproblem. Ein Beispiel zeigt CH-Shopping-Sperre bei genehmigten Free Listings. |
+| Feed-Qualität | Fünf 404-Angebote und sieben Bildfälle in derselben Stichprobe abgegrenzt. Quotenantrag aktualisiert. | Löschung der fünf konkreten 404-Angebote zur Bestätigung vorgelegt. Bilder benötigen passende Vorlagen. Kein Feed-Write. |
+
+[Live-Stichprobe und Antragstext](R309-MERCHANT-ANGEBOTE-20261121.md)
+
+[LUXESTYLE_R309_20261121]
