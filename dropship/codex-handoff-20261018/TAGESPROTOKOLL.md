@@ -3692,3 +3692,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Abendprüfung, Master und Verkaufsaktion](R301-ABENDLAUF-20261121.md)
 
 [LUXESTYLE_R301_20261121]
+
+### R302 – Öffentliche Startseite verbessert
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Startseitenfilm | Scrollgebundene Zeitsprünge durch automatische Wiedergabe im Sichtfeld ersetzt. Vorhandene leichtere Shopify-Filmdateien gebunden. | Live. Auf Desktop und Mobil je 75 Bilder in rund 2,5 s, keine verworfenen Bilder oder Wiedergabesprünge. |
+| Einkaufskacheln | Mobilen Einstieg gekürzt, Fotos aufgehellt und zwei Originalmotive eingesetzt. Karte «Haustiere» auf die Hunde- und Katzenkollektion verlinkt. | Vorschau und öffentliche Kachel geprüft, im Haupttheme live. |
+| Social-Links und Shopify | Pinterest und YouTube im bestehenden Footer ergänzt. Veröffentlichung und Dateiprüfsummen zurückgelesen. | Sechs Profillinks, genau sieben Dateiänderungen im Haupttheme bestätigt. |
+
+[Live-Korrektur und Prüfbelege](R302-STARTSEITE-KORREKTUR-20261121.md)
+
+[LUXESTYLE_R302_20261121]
