@@ -1,3 +1,11 @@
+# R303 – Mobiler Startseitenfilm – 21.11.2026
+
+Handy-Film auf 1,3 MB verkleinert und live geprüft. Im mobilen 1-Mbit/s-Browsertest nach dem Start 0 statt 12 Pufferpausen. Querformat nutzt die leichtere Datei und bei längerem Nachladen erscheint das Standbild.
+
+[Live-Korrektur und Prüfdaten](R303-MOBILER-STARTSEITENFILM-20261121.md)
+
+---
+
 # R302 – Flüssiger Startseitenfilm und klarere Einkaufskacheln – 21.11.2026
 
 Öffentliche Startseite flüssiger und kompakter gemacht. 18-Produkte-Film mit leichteren Shopify-MP4s, Haustierwelt, Originalmotive und sechs verlinkte Social-Symbole. Genau sieben Dateiänderungen live bestätigt; 30 fps im öffentlichen Browsertest auf Desktop und Mobil.
