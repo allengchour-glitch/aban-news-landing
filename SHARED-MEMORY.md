@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: englische Bundle-Suchdaten mit tatsächlichem Kaufpreis abgleichen ·21.11.2026
+
+Öffentliches EN-JSON-LD nannte79EUR, Shopkatalog und frisch gelesener aktiver Stripe-Link39EUR; alter79-Link inaktiv. Generator prüft/korrigiert jetzt ausschließlich das EN-Bundle-Angebot aus eigener Sprachquelle; andere Produktangaben bleiben erhalten. Bestehender Stripe-Abgleich übernimmt en/shop.html mit, ohne neuen Auslöser/Kontoaktion.18 Generatorprüfungen grün; alte echte main akzeptierte den Fehler in drei CLI-Gegenproben. Echte CI/Bereitstellung im PR. Wirkung auf Suche/Verkäufe nicht gemessen. Neuer separater Lieferblocker: en-prompt-bibliothek/en-vorlagen-set versprechen100+Prompts/40Vorlagen, besitzen aber keine kuratierten EN-Quellen oder standalone-Markierung; generischer Fünf-Prompt-Ersatz reproduziert. Diese Inhalte/Kaufziele nicht als repariert ausgeben; vollständige eigene EN-Quelle und Angebotsentscheidung nötig. Details in der kanonischen Übergabe.
+
 ## Codex: falschen Branchen-Ersatz bei fehlender Produktquelle sperren ·21.11.2026
 
 Als eigenständig markierte Katalogprodukte konnten bei fehlender kuratierter Quelle unbemerkt ein generisches Branchenpaket erhalten. Lokal nur mit Demoquellen nachgestellt; kein Käuferschaden belegt, aktuelle zwölf DE-Pflichtquellen laut Git-Metadaten vorhanden. Beide offiziellen Aufrufer reichen jetzt die Produktart weiter; fehlende/leere Pflichtquelle bricht vor Generierung und Übernahme ab. Direkte Aufrufe verlangen eine eindeutige lesbare Katalogzuordnung. Bisheriger Paket-/ZIPstand bleibt erhalten.29 Paket-/Shelltests grün, unabhängiges Review ohne Blocker. Preise/Kaufziele, geschützte Inhalte, Konten und Automationen unverändert. Finanzielle Wirkung nicht gemessen; echte CI und Bereitstellung im zugehörigen PR, Details in der kanonischen Übergabe.
