@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 299,
-  "updatedAt": "2026-11-21T18:00:48Z",
+  "revision": 301,
+  "updatedAt": "2026-11-21T18:12:32Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50947,6 +50947,22 @@
       "sources": [
         "dropship/codex-handoff-20261018/R299-STARTSEITE-LIVE-20261121.md"
       ]
+    },
+    {
+      "revision": 300,
+      "at": "2026-11-21T18:12:32Z",
+      "summary": "Kopie des aktuellen Live-Themes nach Inhaberzustimmung erstellt und nur die freigegebene Startseite gespeichert. Desktop, Hochformat und 16 Originalkacheln geprüft. Shopify-Verbindung verweigert die Veröffentlichung.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R300-STARTSEITE-VEROEFFENTLICHUNG-20261121.md"
+      ]
+    },
+    {
+      "revision": 301,
+      "at": "2026-11-21T18:12:32Z",
+      "summary": "Abendplanung frisch bis Ende 28.11. geprüft. 23 aktive Objekte und 30 Kanalplätze, keine neuen Termine. Projektor A erneut kaufbar bestätigt, denselben 18-Sekunden-Master weiter vorbereitet und den französischen Beschrieb als einzige Verkaufsfreigabe benannt. Klaviyo verlangt erneute Anmeldung.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R301-ABENDLAUF-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82320,6 +82336,63 @@
       }
     ],
     "blocker": "Shopify bündelt eigene und 13 bereits wartende andere Dateien in einer Veröffentlichung. Zustimmung zu separater Kopie angefragt.",
+    "claudeReceipt": "unknown"
+  },
+  "run300": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R300-STARTSEITE-VEROEFFENTLICHUNG-20261121.md",
+    "reportBlob": "195a441038c6d1db59003e60af72d39b62cb26ca",
+    "shop": 94368563585,
+    "mainTheme": 214169584007,
+    "releaseTheme": 214565814663,
+    "releaseThemeName": "LuxeStyle – Startseite 21.11.2026",
+    "ownerCopyApproved": true,
+    "commit": "e9c6fabe002964fdb7d48f174a1dfe2565758b17",
+    "savedHomepageFiles": 10,
+    "automaticManifestIconURLs": 3,
+    "verifiedViewportWidths": [
+      1440,
+      390
+    ],
+    "published": false,
+    "publicationResponse": "publish_refused",
+    "publishedBlocker": "Only agent-created themes can be published here",
+    "adminUrl": "https://admin.shopify.com/store/au3j0y-hq/themes/214565814663/editor",
+    "claudeReceipt": "unknown"
+  },
+  "run301": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R301-ABENDLAUF-20261121.md",
+    "reportBlob": "ab7681057ed1533bf9df28c083b02d0330396648",
+    "shop": 94368563585,
+    "metricoolBrand": 6227837,
+    "timeZone": "Europe/Zurich",
+    "cutoff": "2026-11-21T19:03:08+01:00",
+    "checkedUntilLocal": "2026-11-28T23:59:59+01:00",
+    "uniquePlannerObjects": 44,
+    "draftObjects": 18,
+    "futureActiveObjects": 23,
+    "futureChannelPlacements": 30,
+    "explicitChannelAutopublishTrue": 7,
+    "missingChannelAutopublishField": 23,
+    "daysAllChannels": [
+      "2026-11-22",
+      "2026-11-23",
+      "2026-11-24"
+    ],
+    "threadsOnlyDay": "2026-11-25",
+    "allChannelsGapDays": [
+      "2026-11-26",
+      "2026-11-27",
+      "2026-11-28"
+    ],
+    "newPosts": 0,
+    "metricReadsRepeated": false,
+    "klaviyo": "UNAUTHORIZED / Reauthentication required",
+    "showcaseProduct": 15521256604033,
+    "showcaseVariant": 68122445283719,
+    "salesReview": "R291 französischer Projektorbeschrieb und 8 Auswahltexte zur Freigabe",
+    "socialMaster": "luxe_sternenprojektor_master_20261018",
     "claudeReceipt": "unknown"
   }
 }
