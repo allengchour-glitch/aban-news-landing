@@ -3714,3 +3714,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Korrektur und Prüfdaten](R303-MOBILER-STARTSEITENFILM-20261121.md)
 
 [LUXESTYLE_R303_20261121]
+
+### R304 – Suchseiten und Einkaufsauswahl geprüft
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Organische Suche | Vorhandene Search-Console-Stichprobe ausgewertet, Einstieg über den Weihnachtsratgeber in DE und FR geprüft. | In der Stichprobe 29 Impressionen und null Klicks für den deutschen Ratgeber. Spätere Indexierung und Wirkung offen. |
+| Technisches SEO | Vier früher freigegebene Theme-Korrekturen auf das Haupttheme übertragen und live zurückgelesen. | Neun öffentliche URLs geprüft. FR-Ratgeber indexierbar, Preisformat und Metadaten korrigiert. |
+| Einkaufsauswahl | Aktive Karten einer Retro-Sammlung geprüft und sechs passende Einstiegskacheln in Reihenfolge vorgeschlagen. | Sortierung zur Freigabe vorbereitet. |
+
+[SEO-Livebeleg und Sortiervorschlag](R304-KUNDENGEWINNUNG-20261121.md)
+
+[LUXESTYLE_R304_20261121]
