@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 284,
-  "updatedAt": "2026-11-21T08:17:57Z",
+  "revision": 286,
+  "updatedAt": "2026-11-21T08:39:01Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -19661,6 +19661,12 @@
         "status": "R284_HANDOFF_READY_RECEIPT_UNKNOWN",
         "report": "dropship/codex-handoff-20261018/R284-SEO-PUSH-20261121.md",
         "proof": "dropship/codex-handoff-20261018/runs/20261121-r284/SEO-PRUEFBELEG.json"
+      },
+      "run286": {
+        "at": "2026-11-21T08:39:01Z",
+        "status": "24_PRICES_VERIFIED_LIVE_RECEIPT_UNKNOWN",
+        "report": "dropship/codex-handoff-20261018/R286-JACKENPREIS-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r286/JACKENPREIS-BELEG.json"
       }
     },
     {
@@ -50805,6 +50811,15 @@
         "dropship/codex-handoff-20261018/R284-SEO-PUSH-20261121.md",
         "dropship/codex-handoff-20261018/runs/20261121-r284/SEO-PRUEFBELEG.json"
       ]
+    },
+    {
+      "revision": 286,
+      "at": "2026-11-21T08:39:01Z",
+      "summary": "Farbblockjacke auf freigegebene CHF 31.90 statt CHF 23.90 angehoben. Alle 24 Varianten live in Shopify und im öffentlichen Shop bestätigt. Margenbeispiele anhand der CJ-Fracht und des aktuellen Schweizer Versandprofils nachgerechnet.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R286-JACKENPREIS-20261121.md",
+        "dropship/codex-handoff-20261018/runs/20261121-r286/JACKENPREIS-BELEG.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -52918,7 +52933,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 284,
+    "latestCanonicalRevision": 286,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -54204,6 +54219,21 @@
       "liveDescriptions": 2,
       "pagesVerified": 4,
       "searchConsoleRepeat": false,
+      "claudeReceipt": "UNKNOWN"
+    },
+    "run286": {
+      "atUTC": "2026-11-21T08:39:01Z",
+      "localDate": "2026-11-21",
+      "summary": "Farbblockjacke auf freigegebene CHF 31.90 statt CHF 23.90 angehoben. Alle 24 Varianten live in Shopify und im öffentlichen Shop bestätigt. Margenbeispiele anhand der CJ-Fracht und des aktuellen Schweizer Versandprofils nachgerechnet.",
+      "report": "dropship/codex-handoff-20261018/R286-JACKENPREIS-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/runs/20261121-r286/JACKENPREIS-BELEG.json",
+      "ownerInstruction": "jaa passe alles an bitte",
+      "productId": "gid://shopify/Product/16652069667207",
+      "oldPriceCHF": 23.9,
+      "newPriceCHF": 31.9,
+      "verifiedVariants": 24,
+      "storefrontVerified": true,
+      "profitBasisCjRoute": "CJPacket Ordinary F",
       "claudeReceipt": "UNKNOWN"
     }
   },
@@ -81430,6 +81460,21 @@
     "liveDescriptions": 2,
     "pagesVerified": 4,
     "searchConsoleRepeat": false,
+    "claudeReceipt": "UNKNOWN"
+  },
+  "run286": {
+    "atUTC": "2026-11-21T08:39:01Z",
+    "localDate": "2026-11-21",
+    "summary": "Farbblockjacke auf freigegebene CHF 31.90 statt CHF 23.90 angehoben. Alle 24 Varianten live in Shopify und im öffentlichen Shop bestätigt. Margenbeispiele anhand der CJ-Fracht und des aktuellen Schweizer Versandprofils nachgerechnet.",
+    "report": "dropship/codex-handoff-20261018/R286-JACKENPREIS-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/runs/20261121-r286/JACKENPREIS-BELEG.json",
+    "ownerInstruction": "jaa passe alles an bitte",
+    "productId": "gid://shopify/Product/16652069667207",
+    "oldPriceCHF": 23.9,
+    "newPriceCHF": 31.9,
+    "verifiedVariants": 24,
+    "storefrontVerified": true,
+    "profitBasisCjRoute": "CJPacket Ordinary F",
     "claudeReceipt": "UNKNOWN"
   }
 }

@@ -3502,3 +3502,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R284-SEO-PUSH-20261121.md) · [Prüfbelege](runs/20261121-r284/SEO-PRUEFBELEG.json)
 
 [LUXESTYLE_R284_20261121]
+
+### R286 – Preis der Farbblockjacke
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Fracht und Kalkulation | Alle 24 exakten CJ-Varianten abgeglichen, vier CH-Frachtraten und das Shopify-Versandprofil geprüft. | Ein- und Zweierbeispiele für M und XXXL mit CHF-Referenzkurs nachgerechnet. |
+| Shopify | Den freigegebenen Preis von CHF 31.90 für alle 24 Varianten gesetzt. | Shopify und öffentliche Produktdatei bestätigten alle Preise. Vier HTML-Stichproben bestanden. |
+
+[Bericht](R286-JACKENPREIS-20261121.md) · [Prüfbeleg](runs/20261121-r286/JACKENPREIS-BELEG.json)
+
+[LUXESTYLE_R286_20261121]

@@ -1,3 +1,11 @@
+# R286 – Farbblockjacke neu kalkuliert und Preis live – 21.11.2026
+
+Farbblockjacke auf freigegebene CHF 31.90 statt CHF 23.90 angehoben. Alle 24 Varianten live in Shopify und im öffentlichen Shop bestätigt. Margenbeispiele anhand der CJ-Fracht und des aktuellen Schweizer Versandprofils nachgerechnet.
+
+[Bericht](R286-JACKENPREIS-20261121.md) · [Prüfbeleg](runs/20261121-r286/JACKENPREIS-BELEG.json)
+
+---
+
 # R284 – SEO-Beschreibungen live und Theme-Status – 21.11.2026
 
 Zwei SEO-Beschreibungen für Kategorienübersicht und Öl-Sprühflasche live und in Shopify sowie öffentlichem HTML bestätigt. Der freigegebene Wechsel auf die geprüfte SEO-Kopie 214526394759 wurde vom Shopify-Connector abgelehnt. Technische Korrekturen weiterhin im Entwurf.

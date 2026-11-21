@@ -1,0 +1,857 @@
+{
+  "run": "R286",
+  "atUTC": "2026-11-21T08:39:01Z",
+  "scope": "24 prices of exact approved jacket only",
+  "productId": "gid://shopify/Product/16652069667207",
+  "sourceShop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "before": [
+    {
+      "id": "gid://shopify/ProductVariant/67737637454215",
+      "sku": "CJ-CJJK265898101AZ",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637486983",
+      "sku": "CJ-CJJK265898102BY",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637519751",
+      "sku": "CJ-CJJK265898103CX",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637552519",
+      "sku": "CJ-CJJK265898104DW",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637585287",
+      "sku": "CJ-CJJK265898105EV",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637618055",
+      "sku": "CJ-CJJK265898106FU",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637650823",
+      "sku": "CJ-CJJK265898107GT",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637683591",
+      "sku": "CJ-CJJK265898108HS",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637716359",
+      "sku": "CJ-CJJK265898109IR",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637749127",
+      "sku": "CJ-CJJK265898110JQ",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637781895",
+      "sku": "CJ-CJJK265898111KP",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637814663",
+      "sku": "CJ-CJJK265898112LO",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637847431",
+      "sku": "CJ-CJJK265898113MN",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637880199",
+      "sku": "CJ-CJJK265898114NM",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637912967",
+      "sku": "CJ-CJJK265898115OL",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637945735",
+      "sku": "CJ-CJJK265898116PK",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737637978503",
+      "sku": "CJ-CJJK265898117QJ",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737638011271",
+      "sku": "CJ-CJJK265898118RI",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737638044039",
+      "sku": "CJ-CJJK265898119SH",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737638076807",
+      "sku": "CJ-CJJK265898120TG",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737638109575",
+      "sku": "CJ-CJJK265898121UF",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737638142343",
+      "sku": "CJ-CJJK265898122VE",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737638175111",
+      "sku": "CJ-CJJK265898123WD",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67737638207879",
+      "sku": "CJ-CJJK265898124XC",
+      "price": "23.90",
+      "recordedUnitCost": {
+        "amount": "17.69",
+        "currencyCode": "CHF"
+      }
+    }
+  ],
+  "after": {
+    "updatedAt": "2026-11-21T08:36:54Z",
+    "prices": [
+      {
+        "id": "gid://shopify/ProductVariant/67737637454215",
+        "sku": "CJ-CJJK265898101AZ",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637486983",
+        "sku": "CJ-CJJK265898102BY",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637519751",
+        "sku": "CJ-CJJK265898103CX",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637552519",
+        "sku": "CJ-CJJK265898104DW",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637585287",
+        "sku": "CJ-CJJK265898105EV",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637618055",
+        "sku": "CJ-CJJK265898106FU",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637650823",
+        "sku": "CJ-CJJK265898107GT",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637683591",
+        "sku": "CJ-CJJK265898108HS",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637716359",
+        "sku": "CJ-CJJK265898109IR",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637749127",
+        "sku": "CJ-CJJK265898110JQ",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637781895",
+        "sku": "CJ-CJJK265898111KP",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637814663",
+        "sku": "CJ-CJJK265898112LO",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637847431",
+        "sku": "CJ-CJJK265898113MN",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637880199",
+        "sku": "CJ-CJJK265898114NM",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637912967",
+        "sku": "CJ-CJJK265898115OL",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637945735",
+        "sku": "CJ-CJJK265898116PK",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737637978503",
+        "sku": "CJ-CJJK265898117QJ",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737638011271",
+        "sku": "CJ-CJJK265898118RI",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737638044039",
+        "sku": "CJ-CJJK265898119SH",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737638076807",
+        "sku": "CJ-CJJK265898120TG",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737638109575",
+        "sku": "CJ-CJJK265898121UF",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737638142343",
+        "sku": "CJ-CJJK265898122VE",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737638175111",
+        "sku": "CJ-CJJK265898123WD",
+        "price": "31.90"
+      },
+      {
+        "id": "gid://shopify/ProductVariant/67737638207879",
+        "sku": "CJ-CJJK265898124XC",
+        "price": "31.90"
+      }
+    ]
+  },
+  "native": {
+    "yes": true,
+    "eq": true,
+    "locked": true,
+    "prices": [
+      "31.90"
+    ],
+    "count": 24
+  },
+  "publicCheck": {
+    "yes": true,
+    "seq": true,
+    "count": 24,
+    "prices": [
+      3190
+    ]
+  },
+  "publicHtml": [
+    {
+      "url": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300?variant=67737637454215",
+      "status": 200,
+      "resolved": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300?variant=67737637454215",
+      "variantIds": [
+        "67737637454215"
+      ],
+      "og": {
+        "price": "31.90",
+        "currency": "CHF"
+      },
+      "productSchemaTypes": [
+        "ProductGroup"
+      ],
+      "canonical": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300",
+      "h1": 1,
+      "checks": {
+        "http": true,
+        "canonical": true,
+        "variant": true,
+        "price": true,
+        "currency": true,
+        "singleH1": true
+      },
+      "sha256": "7009ef5a3d7a9a6945469b4e4be8ac0be1bc55170cc823d8c27b36c90e1fa1d2"
+    },
+    {
+      "url": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300?variant=67737637650823",
+      "status": 200,
+      "resolved": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300?variant=67737637650823",
+      "variantIds": [
+        "67737637650823"
+      ],
+      "og": {
+        "price": "31.90",
+        "currency": "CHF"
+      },
+      "productSchemaTypes": [
+        "ProductGroup"
+      ],
+      "canonical": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300",
+      "h1": 1,
+      "checks": {
+        "http": true,
+        "canonical": true,
+        "variant": true,
+        "price": true,
+        "currency": true,
+        "singleH1": true
+      },
+      "sha256": "fc6d13330cca920e9aa1378e317fe2d9f4ba62dfeff0f2072a674e5c79d5825d"
+    },
+    {
+      "url": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300?variant=67737637847431",
+      "status": 200,
+      "resolved": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300?variant=67737637847431",
+      "variantIds": [
+        "67737637847431"
+      ],
+      "og": {
+        "price": "31.90",
+        "currency": "CHF"
+      },
+      "productSchemaTypes": [
+        "ProductGroup"
+      ],
+      "canonical": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300",
+      "h1": 1,
+      "checks": {
+        "http": true,
+        "canonical": true,
+        "variant": true,
+        "price": true,
+        "currency": true,
+        "singleH1": true
+      },
+      "sha256": "52c16f69fe6b8b149d002bf4092c7738dbe5be3229ff7e00b9f576ebea3d3fa8"
+    },
+    {
+      "url": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300?variant=67737638207879",
+      "status": 200,
+      "resolved": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300?variant=67737638207879",
+      "variantIds": [
+        "67737638207879"
+      ],
+      "og": {
+        "price": "31.90",
+        "currency": "CHF"
+      },
+      "productSchemaTypes": [
+        "ProductGroup"
+      ],
+      "canonical": "https://luxestyle.ch/products/gefutterte-jacke-mit-farbblocken-639300",
+      "h1": 1,
+      "checks": {
+        "http": true,
+        "canonical": true,
+        "variant": true,
+        "price": true,
+        "currency": true,
+        "singleH1": true
+      },
+      "sha256": "f987559793493c167bbf22204ec598715d0875259de96f9b87e3c06b9e6e5f81"
+    }
+  ],
+  "supplier": {
+    "product": {
+      "pid": "2512190235471639300",
+      "sku": "CJJK2658981",
+      "logisticsAttributes": [
+        "Clothes"
+      ],
+      "variants": [
+        {
+          "sku": "CJJK265898101AZ",
+          "variant": "Black-S",
+          "catalogPriceUSD": 14.1,
+          "weightG": 720
+        },
+        {
+          "sku": "CJJK265898102BY",
+          "variant": "Black-M",
+          "catalogPriceUSD": 14.1,
+          "weightG": 740
+        },
+        {
+          "sku": "CJJK265898103CX",
+          "variant": "Black-L",
+          "catalogPriceUSD": 14.1,
+          "weightG": 760
+        },
+        {
+          "sku": "CJJK265898104DW",
+          "variant": "Black-XL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 780
+        },
+        {
+          "sku": "CJJK265898105EV",
+          "variant": "Black-XXL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 800
+        },
+        {
+          "sku": "CJJK265898106FU",
+          "variant": "Black-XXXL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 820
+        },
+        {
+          "sku": "CJJK265898107GT",
+          "variant": "Apricot-S",
+          "catalogPriceUSD": 14.1,
+          "weightG": 720
+        },
+        {
+          "sku": "CJJK265898108HS",
+          "variant": "Apricot-M",
+          "catalogPriceUSD": 14.1,
+          "weightG": 740
+        },
+        {
+          "sku": "CJJK265898109IR",
+          "variant": "Apricot-L",
+          "catalogPriceUSD": 14.1,
+          "weightG": 760
+        },
+        {
+          "sku": "CJJK265898110JQ",
+          "variant": "Apricot-XL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 780
+        },
+        {
+          "sku": "CJJK265898111KP",
+          "variant": "Apricot-XXL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 800
+        },
+        {
+          "sku": "CJJK265898112LO",
+          "variant": "Apricot-XXXL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 820
+        },
+        {
+          "sku": "CJJK265898113MN",
+          "variant": "Gray-S",
+          "catalogPriceUSD": 14.1,
+          "weightG": 720
+        },
+        {
+          "sku": "CJJK265898114NM",
+          "variant": "Gray-M",
+          "catalogPriceUSD": 14.1,
+          "weightG": 740
+        },
+        {
+          "sku": "CJJK265898115OL",
+          "variant": "Gray-L",
+          "catalogPriceUSD": 14.1,
+          "weightG": 760
+        },
+        {
+          "sku": "CJJK265898116PK",
+          "variant": "Gray-XL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 780
+        },
+        {
+          "sku": "CJJK265898117QJ",
+          "variant": "Gray-XXL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 800
+        },
+        {
+          "sku": "CJJK265898118RI",
+          "variant": "Gray-XXXL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 820
+        },
+        {
+          "sku": "CJJK265898119SH",
+          "variant": "Deep Khaki-S",
+          "catalogPriceUSD": 14.1,
+          "weightG": 720
+        },
+        {
+          "sku": "CJJK265898120TG",
+          "variant": "Deep Khaki-M",
+          "catalogPriceUSD": 14.1,
+          "weightG": 740
+        },
+        {
+          "sku": "CJJK265898121UF",
+          "variant": "Deep Khaki-L",
+          "catalogPriceUSD": 14.1,
+          "weightG": 760
+        },
+        {
+          "sku": "CJJK265898122VE",
+          "variant": "Deep Khaki-XL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 780
+        },
+        {
+          "sku": "CJJK265898123WD",
+          "variant": "Deep Khaki-XXL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 800
+        },
+        {
+          "sku": "CJJK265898124XC",
+          "variant": "Deep Khaki-XXXL",
+          "catalogPriceUSD": 14.1,
+          "weightG": 820
+        }
+      ]
+    },
+    "shipping": {
+      "origin": "CN",
+      "destination": "CH",
+      "route": "CJPacket Ordinary F",
+      "postalCodeIncluded": false,
+      "notAConfirmedBooking": true,
+      "observations": [
+        {
+          "weightG": 740,
+          "normalUSD": 14.44,
+          "datedAs": "current country-only quote"
+        },
+        {
+          "weightG": 820,
+          "normalUSD": 15.48,
+          "datedAs": "current country-only quote"
+        },
+        {
+          "weightG": 1480,
+          "normalUSD": 24.04,
+          "datedAs": "actual CJ #1044 and current country-only quote"
+        },
+        {
+          "weightG": 1640,
+          "normalUSD": 26.12,
+          "datedAs": "current country-only quote"
+        }
+      ]
+    }
+  },
+  "delivery": {
+    "purpose": "Read-only exact configured shipping methods for jacket in Shopify Admin. No simulated checkout, cart writes or confirmed display.",
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "currencyCode": "CHF",
+      "taxesIncluded": true,
+      "taxShipping": false
+    },
+    "product": {
+      "id": "gid://shopify/Product/16652069667207",
+      "title": "Gefütterte Jacke mit Farbblöcken",
+      "variantsChecked": 24,
+      "allVariantsOnSameProfile": true,
+      "allTaxable": true,
+      "requestedVariant": "gid://shopify/ProductVariant/67737637454215"
+    },
+    "deliveryProfile": {
+      "id": "gid://shopify/DeliveryProfile/132124180865",
+      "name": "Allgemeines Profil",
+      "default": true,
+      "CH": {
+        "profileLocationGroupId": "gid://shopify/DeliveryLocationGroup/134126436737",
+        "zone": "Domestic",
+        "countryCodes": [
+          "CH"
+        ],
+        "methods": [
+          {
+            "id": "gid://shopify/DeliveryMethodDefinition/1108712784257",
+            "name": "Standard",
+            "active": true,
+            "methodConditions": [],
+            "rateProvider": {
+              "__typename": "DeliveryRateDefinition",
+              "price": {
+                "amount": "7.0",
+                "currencyCode": "CHF"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/DeliveryMethodDefinition/1527737287047",
+            "name": "Kostenloser Versand",
+            "active": true,
+            "methodConditions": [
+              {
+                "field": "TOTAL_PRICE",
+                "operator": "GREATER_THAN_OR_EQUAL_TO",
+                "conditionCriteria": {
+                  "amount": "45.0",
+                  "currencyCode": "CHF"
+                }
+              }
+            ],
+            "rateProvider": {
+              "__typename": "DeliveryRateDefinition",
+              "price": {
+                "amount": "0.0",
+                "currencyCode": "CHF"
+              }
+            }
+          },
+          {
+            "id": "gid://shopify/DeliveryMethodDefinition/1540193485191",
+            "name": "Kostenloser Versand",
+            "active": false,
+            "methodConditions": [
+              {
+                "field": "TOTAL_PRICE",
+                "operator": "GREATER_THAN_OR_EQUAL_TO",
+                "conditionCriteria": {
+                  "amount": "50.0",
+                  "currencyCode": "CHF"
+                }
+              }
+            ],
+            "rateProvider": {
+              "__typename": "DeliveryRateDefinition",
+              "price": {
+                "amount": "0.0",
+                "currencyCode": "CHF"
+              }
+            }
+          }
+        ]
+      },
+      "LI": {
+        "profileLocationGroupId": "gid://shopify/DeliveryLocationGroup/134126436737",
+        "zone": "Liechtenstein",
+        "countryCodes": [
+          "LI"
+        ],
+        "methods": [
+          {
+            "id": "gid://shopify/DeliveryMethodDefinition/1538225242503",
+            "name": "Standard Liechtenstein",
+            "active": true,
+            "methodConditions": [],
+            "rateProvider": {
+              "__typename": "DeliveryRateDefinition",
+              "price": {
+                "amount": "14.9",
+                "currencyCode": "CHF"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "publicShippingPolicy": {
+      "url": "https://luxestyle.ch/policies/shipping-policy",
+      "observedHTTP": 200,
+      "advertisesCHFreeThresholdCHF": 50,
+      "afterDiscount": true,
+      "quoteUnderThreshold": "Bei einem Bestellwert (nach Abzug von Rabatten) unter CHF 50.– werden die Versandkosten transparent im Warenkorb und im Checkout angezeigt, bevor du die Bestellung verbindlich abschliesst."
+    },
+    "configuredSingleJacketCH": {
+      "retailCHF": 31.9,
+      "configuredStandardRateCHF": 7,
+      "expectedConfiguredTotalCHF": 38.9,
+      "checkoutVerified": false,
+      "assumptions": [
+        "The order contains one jacket only and ships to CH",
+        "No promotion, other shipping configurations or order-specific effects are applied",
+        "Taxes included at shop level"
+      ]
+    }
+  },
+  "margins": {
+    "sourceFX": "ECB reference 2026-11-19",
+    "rate": 0.8426128093158661,
+    "feesFromExactOrder": {
+      "rate": 0.0299,
+      "fixedCHF": 0.35,
+      "feeTaxModeled": 0.081
+    },
+    "assumptions": "Prepared on displayed CJ route without postcode, configured Shopify CH standard rates, no future order checkout, no additional costs",
+    "s": [
+      {
+        "name": "single_m",
+        "quantity": 1,
+        "weight": 740,
+        "subtotal": 31.9,
+        "customerShipping": 7,
+        "collected": 38.9,
+        "landedUSD": 28.54,
+        "landedCHF": 24.05,
+        "fees": 1.63,
+        "contribution": 13.22,
+        "marginPct": 33.98
+      },
+      {
+        "name": "single_xxxl",
+        "quantity": 1,
+        "weight": 820,
+        "subtotal": 31.9,
+        "customerShipping": 7,
+        "collected": 38.9,
+        "landedUSD": 29.58,
+        "landedCHF": 24.92,
+        "fees": 1.63,
+        "contribution": 12.35,
+        "marginPct": 31.75
+      },
+      {
+        "name": "double_m",
+        "quantity": 2,
+        "weight": 1480,
+        "subtotal": 63.8,
+        "customerShipping": 0,
+        "collected": 63.8,
+        "landedUSD": 52.24,
+        "landedCHF": 44.02,
+        "fees": 2.44,
+        "contribution": 17.34,
+        "marginPct": 27.18
+      },
+      {
+        "name": "double_xxxl",
+        "quantity": 2,
+        "weight": 1640,
+        "subtotal": 63.8,
+        "customerShipping": 0,
+        "collected": 63.8,
+        "landedUSD": 54.32,
+        "landedCHF": 45.77,
+        "fees": 2.44,
+        "contribution": 15.59,
+        "marginPct": 24.44
+      }
+    ]
+  }
+}
