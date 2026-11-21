@@ -1,3 +1,11 @@
+# R299 – Startseiten-Veröffentlichung vorbereitet – 21.11.2026
+
+Beide freigegebenen 60-fps-Filme in Shopify Files geprüft und die Startseite als wartende Version gespeichert. Der Shopify-Commit bündelt 13 zusätzliche Theme-Dateien. Getrennte Live-Schaltung wartet auf Zustimmung zur Kopie.
+
+[Shopify-Videos, vorbereitete Version und Blocker](R299-STARTSEITE-LIVE-20261121.md)
+
+---
+
 # R298 – 18 Produkte in der 360°-Galerie – 21.11.2026
 
 360°-Websitefilm von neun auf 18 unterschiedliche Produkte erweitert. Drei neue Galerieszenen aus Original-Shopbildern, 32 Sekunden, geprüfte UHD- und Hochformatvorschau mit je 60 fps.
