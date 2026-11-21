@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Schweizer Google-Sichtbarkeit, dritte Runde · 21.11.2026
+
+Search Console Web Schweiz (22.10.–18.11.): Armaturen & Duschen 49 Einblendungen/0 Klicks, Damen-Winterschuhe 46/0, Handschuhe 44/0. Geplant: ausschliesslich SEO-Titel und SEO-Beschreibung der Sammlungen `armaturen-duschen`, `damen-winterschuhe` und `handschuhe` am verfügbaren Sortiment und an sichtbaren Suchanfragen präzisieren.
+
 ## Codex: Schweizer Google-Sichtbarkeit, zweite Runde · 21.11.2026
 
 Search Console Web Schweiz (22.10.–18.11.): Fussball & Fanshop 98 Einblendungen/0 Klicks, Damen-Jeans 75/0, Handwärmer 58/0. Vorgesehen sind nur SEO-Titel und SEO-Beschreibungen der drei Sammlungen nach Abgleich mit dem sichtbaren Sortiment. Vereins-Fanshop-Suchanfragen belegen keine Verfügbarkeit offizieller Vereinsware. Drei Sammlungen in Shopify live aktualisiert. Öffentliche Titel und Beschreibungen geprüft: 3 von 3. Alle drei URLs in Search Console indexiert; neue Metadaten im Google-Index und Wirkung noch offen.
