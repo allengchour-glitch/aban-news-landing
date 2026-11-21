@@ -54,7 +54,8 @@ def build_for(catalog_path: Path, lang: str, salt: str, target: Path) -> int:
     # Einzel-Pakete zuerst (Bundle braucht sie).
     for slug in [s for s in slugs if s not in bundles] + [s for s in slugs if s in bundles]:
         try:
-            zip_path = build_bundle(slug, members, lang) if slug in bundles else build_single(slug, lang)
+            zip_path = build_bundle(slug, members, lang) if slug in bundles else build_single(
+                slug, lang, require_curated=(slug in standalone))
             with zipfile.ZipFile(zip_path) as archive:
                 if not any(not item.is_dir() for item in archive.infolist()) or archive.testzip() is not None:
                     raise zipfile.BadZipFile("Leeres oder beschädigtes Paket")

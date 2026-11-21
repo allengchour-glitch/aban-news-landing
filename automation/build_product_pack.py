@@ -8,8 +8,9 @@ Bündelt pro Branche ein verkaufbares Paket nach downloads/packs/<slug>/:
   - checkliste.md               (kurze Umsetz-Checkliste)
   - LIESMICH.txt                (was drin ist + Lizenzhinweis)
 
-Verkauf über Lemon Squeezy (Link in js/shop-config.js + Shop-Seite shop.html).
+Verkauf über den bestehenden Shop; geschützte ZIPs baut build_kit_zips.py.
 No-op-sicher: ohne Gemini-Key wird ein generischer (ehrlicher) Prompt-Satz genutzt.
+Eigenständige Katalogprodukte benötigen ihre kuratierte Quelle; kein Branchen-Ersatz.
 
     python3 automation/build_product_pack.py --slugs aerzte,handwerker,steuerberater
 """
@@ -106,13 +107,19 @@ def _bundle_slugs(catalog: Path) -> set:
         return set()
 
 
-def _standalone_slugs(catalog: Path) -> set:
-    """Slugs, die NICHT ins Branchen-Bundle gehören (eigenständige Premium-Produkte)."""
+def _catalog_rows(catalog: Path) -> list:
+    """Unbekannte Katalogzuordnung ist keine Fallback-Freigabe."""
     import json
-    try:
-        return {k["slug"] for k in json.loads(catalog.read_text(encoding="utf-8")) if k.get("standalone")}
-    except Exception:  # noqa: BLE001
-        return set()
+    rows = json.loads(catalog.read_text(encoding="utf-8"))
+    if not isinstance(rows, list) or any(not isinstance(k, dict)
+            or not isinstance(k.get("slug"), str) or not k["slug"] for k in rows):
+        raise ValueError("Ungültiger Produktkatalog")
+    return rows
+
+
+def _standalone_slugs(catalog: Path) -> set:
+    """Eigenständige Produkte gehören nicht ins Branchen-Bundle."""
+    return {k["slug"] for k in _catalog_rows(catalog) if k.get("standalone")}
 
 
 def _base_slug(slug: str, lang: str) -> str:
@@ -125,14 +132,20 @@ def _curated_dir(slug: str, lang: str) -> Path:
     return REPO / "content" / "packs" / lang / slug
 
 
-def build_single(slug: str, lang: str = "de") -> Path:
+def build_single(slug: str, lang: str = "de", *, require_curated: bool | None = None) -> Path:
     """Jedes Paket frisch bauen; entfernte Quellen dürfen nicht weiterleben."""
+    if require_curated is None:
+        catalog = REPO / "data" / ("kit-catalog-en.json" if lang == "en" else "kit-catalog.json")
+        products = [k for k in _catalog_rows(catalog) if k["slug"] == slug]
+        if len(products) != 1:
+            raise ValueError("Produkt nicht eindeutig im Katalog zugeordnet")
+        require_curated = bool(products[0].get("standalone"))
     pack = REPO / "downloads" / "packs" / (lang if lang != "de" else "") / slug
     pack.parent.mkdir(parents=True, exist_ok=True)
     target = Path(str(pack) + ".zip")
     with tempfile.TemporaryDirectory(prefix=".pack-bau-", dir=pack.parent) as tmp:
         stage = Path(tmp) / "neu"
-        archive = _build_single(slug, lang, stage)
+        archive = _build_single(slug, lang, stage, require_curated=require_curated)
         backup = Path(tmp) / "vorher"
         installed = False
         try:
@@ -150,7 +163,7 @@ def build_single(slug: str, lang: str = "de") -> Path:
     return target
 
 
-def _build_single(slug: str, lang: str, pack: Path) -> Path:
+def _build_single(slug: str, lang: str, pack: Path, *, require_curated: bool) -> Path:
     base = _base_slug(slug, lang)
     label = label_from_slug(base)
     pack.mkdir(parents=True, exist_ok=True)
@@ -158,6 +171,8 @@ def _build_single(slug: str, lang: str, pack: Path) -> Path:
     # Premium-Produkte: kuratierte Inhalte 1:1 übernehmen (nicht neu generieren),
     # damit die Qualität über Workflow-Läufe erhalten bleibt.
     curated = _curated_dir(slug, lang)
+    if require_curated and not curated.is_dir():
+        raise ValueError("Kuratierte Produktquelle fehlt")
     if curated.is_dir():
         for f in sorted(curated.iterdir()):
             if f.is_file():
@@ -176,6 +191,9 @@ def _build_single(slug: str, lang: str, pack: Path) -> Path:
             for zieldatei, quelle in spec.get("dateien", {}).items():
                 (pack / zieldatei).parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy(REPO / quelle, pack / zieldatei)
+        # Ein automatisch ergänztes README ist kein Ersatz für bezahlte Produktinhalte.
+        if require_curated and not any(f.is_file() and f.stat().st_size > 0 for f in pack.rglob("*")):
+            raise ValueError("Kuratierte Produktquelle ist leer")
         if not (pack / "LIESMICH.txt").exists():
             (pack / "LIESMICH.txt").write_text(
                 f"{label_from_slug(slug)} — aban news\n\n"
@@ -255,7 +273,7 @@ def main() -> int:
     sub = (args.lang + "/") if args.lang != "de" else ""
     built = 0
     for slug in singles:
-        zip_path = build_single(slug, args.lang)
+        zip_path = build_single(slug, args.lang, require_curated=(slug in standalone))
         built += 1
         print(f"✓ Paket gebaut: downloads/packs/{sub}{slug}/  →  {zip_path.name} (upload-fertig)")
     # Bundles ZULETZT (brauchen die fertigen Einzel-Packs). Mitglieder = nur Branchen-Kits.
