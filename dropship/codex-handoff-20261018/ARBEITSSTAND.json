@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 306,
-  "updatedAt": "2026-11-21T20:20:24Z",
+  "revision": 307,
+  "updatedAt": "2026-11-21T21:41:38Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51003,6 +51003,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R306-MERCHANT-ANZEIGENKONTINGENT-20261121.md"
       ]
+    },
+    {
+      "revision": 307,
+      "at": "2026-11-21T21:41:38Z",
+      "summary": "Google bestätigt 150’000 Angebote im CSS-Anzeigenkontingent ADS_EEA. Vier alte Shopify-Angebote frisch als Landingpage-Fälle abgegrenzt. Antragstext ergänzt. Einreichung erfordert Google-Anmeldung.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R307-MERCHANT-CSS-LIMIT-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82606,5 +82614,29 @@
     "offerProbeCount": 2,
     "quotaRequest": "draft; authentication required",
     "merchantWriteCount": 0
+  },
+  "run307": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R307-MERCHANT-CSS-LIMIT-20261121.md",
+    "reportBlob": "fe4c0204dc3e74e0d4f6d1e0b68d4560a8ac15ec",
+    "shopifyShop": 94368563585,
+    "merchantAccount": "5797470070",
+    "quotaScope": "ADS_EEA",
+    "googleProductLimit": 150000,
+    "googleUsage": null,
+    "ownerScreenshotAffected": 19100,
+    "probeRun": 44952839947,
+    "probeJob": 136994343666,
+    "probeCommit": "288c0d7e80b64bab7cc03ae381e1d416aa7877cf",
+    "probeTests": 26,
+    "staleOfferIds": [
+      "shopify_ZZ_15447889969537_56063730352513",
+      "shopify_ZZ_15447889969537_56063730549121",
+      "shopify_ZZ_15447889969537_56063730581889",
+      "shopify_ZZ_15447921066369_56052967244161"
+    ],
+    "staleOfferIssue": "landing_page_error",
+    "quotaRequest": "draft; authentication required",
+    "merchantWrites": 0
   }
 }
