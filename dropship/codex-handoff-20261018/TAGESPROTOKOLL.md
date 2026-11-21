@@ -3578,3 +3578,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Entwurf und Prüfbelege](R291-PREMIUM-20261121.md)
 
 [LUXESTYLE_R291_20261121]
+
+### R292 – Startseitenfilm und Produktwechsel
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Startseitenfilm | Aus vorhandenen Website-Ausschnitten einen stummen 7-Sekunden-Schnitt mit Atelier und Keramik erstellt und mit passendem Standbild in Shopify Files gespeichert. | Shopify READY. Originaldownload stimmt bytegenau. Kein Kleid im Schnitt, keine neuen kostenpflichtigen Renderaufträge. |
+| Theme | Vollflächige Medienebene hinter Titel und Schaltflächen in Kopie 214208577927 eingebaut. Separaten Kleid-Banner durch Keramik-Vorratsdose und Aroma-Diffuser ersetzt. | Zwei Dateien gespeichert und exakt zurückgelesen. Theme-Kopie UNPUBLISHED, öffentlich weiterhin MAIN 214169584007. |
+| Vorschau | Native Desktop-/Mobil-Scrollrichtung, stabile Titelposition, Hauptlink und Standbild bei reduzierter Bewegung gegengeprüft. Beide neuen Produktkarten bei 1440, 390 und 320 px geprüft und ausgerichtet. | Chromium-Prüfung bestanden. iPhone/Safari offen. Keine Live-Schaltung. |
+
+[Startseiten- und Medienbeleg](R292-STARTSEITE-20261121.md)
+
+[LUXESTYLE_R292_20261121]
