@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-20T12:48:26Z",
+ "stand": "2026-11-21T12:34:33Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Weltraumrechenzentren: Google setzt beim Satellitenstart auf Blue Origin",
-   "u": "https://www.golem.de/news/weltraumrechenzentren-google-setzt-beim-satellitenstart-auf-blue-origin-2611-215470.html",
+   "t": "Anthropic: Mathematiker will mit Claude Riemann-Vermutung gelöst haben",
+   "u": "https://www.golem.de/news/anthropic-mathematiker-will-mit-claude-riemann-vermutung-geloest-haben-2611-215500.html",
    "q": "Golem",
-   "d": "2026-11-20T12:45:02Z",
-   "s": "Das Project Suncatcher geht in die nächste Phase: Blue Origin soll 2029 mehrere Satelliten mit KI-Chips von Google in den Orbit befördern. (Google, KI)",
+   "d": "2026-11-21T11:06:02Z",
+   "s": "Levent Alpöge will mit Claude die Riemann-Vermutung bewiesen haben. Die Prüfung des Lean-Codes läuft noch. (Claude, Wissen)",
    "sprache": "de"
   },
   {
-   "t": "KI-Mini-Workstations mit Nvidia RTX Spark jetzt ab 4600 Euro erhältlich",
-   "u": "https://www.heise.de/news/KI-Mini-Workstations-mit-Nvidia-RTX-Spark-jetzt-ab-4600-Euro-erhaeltlich-11532573.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-20T12:37:00Z",
-   "s": "Asus und MSI liefern kompakte Windows-11-PCs mit RTX Spark und bis zu 128 GByte; einige Konkurrenten mit AMD Ryzen AI Max Pro sind billiger, einer hat mehr RAM.",
-   "sprache": "de"
-  },
-  {
-   "t": "OpenAIs KI‑Agent versucht, Mails an Dritte weiterzuleiten – obwohl das Tool nur ein Dokument erstellen sollte",
-   "u": "https://t3n.de/news/openai-ki-agent-fitnessdokument-mails-weiterleiten-1774567/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-20T11:35:19Z",
-   "s": "OpenAI hat einen erneuten Vorfall beim KI-Training zu vermelden. Demnach hat ein Agent bei einer vermeintlich einfachen Aufgabe plötzlich ganz andere Aktionen vorgenommen. Wie es dazu kommen konnte. w…",
-   "sprache": "de"
-  },
-  {
-   "t": "Von AMD und Nvidia: US-Handelsministerium genehmigte Chipverkäufe an China",
-   "u": "https://www.golem.de/news/von-amd-und-nvidia-us-handelsministerium-genehmigte-chipverkaeufe-an-china-2611-215462.html",
+   "t": "KI-Wettlauf: Trump droht Rechenzentren im Ausland mit enormer Steuer",
+   "u": "https://www.golem.de/news/ki-wettlauf-trump-droht-rechenzentren-im-ausland-mit-enormer-steuer-2611-215502.html",
    "q": "Golem",
-   "d": "2026-11-20T11:30:01Z",
-   "s": "Das US-Handelsministerium hat auch Lieferungen genehmigt, die an Scheinfirmen oder Großkonzerne wie Alibaba und Tencent gehen sollten. (KI, AMD)",
+   "d": "2026-11-21T10:23:01Z",
+   "s": "Trump will Konzerne zum Bau in den USA drängen. Der Ausbau stößt bei Wählern allerdings auf Widerstand. (Donald Trump, KI)",
    "sprache": "de"
   },
   {
-   "t": "Metas KI-Gadget für die Hosentasche soll 300 Dollar kosten",
-   "u": "https://www.heise.de/news/Metas-KI-Gadget-fuer-die-Hosentasche-soll-300-Dollar-kosten-11532549.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-20T11:29:00Z",
-   "s": "Metas KI-Gadget Muse Charm dürfte noch vor Jahresende erscheinen. Einem Bericht zufolge soll es 300 US-Dollar kosten und mit kostenlosem 5G starten.",
-   "sprache": "de"
-  },
-  {
-   "t": "Muse Charm: So viel soll Metas neues KI-Gadget kosten",
-   "u": "https://t3n.de/news/muse-charm-metas-neues-ki-gadget-preis-1774564/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Googlebooks im Test: Lohnt sich der Kauf wirklich?",
+   "u": "https://t3n.de/news/googlebooks-test-review-1773419/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-20T10:30:58Z",
-   "s": "Mit dem Muse Charm will der Facebook-Konzern ein eigenes KI-Gadget auf den Markt bringen. Jetzt sind erste Informationen zum Preis durchgesickert. weiterlesen auf t3n.de",
+   "d": "2026-11-21T09:45:00Z",
+   "s": "Mit teurer Hardware, viel KI und nahtloser Android-Integration will Google Kunden die Googlebooks schmackhaft machen. Für wen werden die Geräte interessant und weiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Apple may be developing its own AI agent that runs your Mac",
-   "u": "https://techcrunch.com/2026/11/19/apple-may-be-developing-its-own-ai-agent-that-runs-your-mac/",
+   "t": "Human in the Lead: Wie man KI-Agenten zähmt, ohne sie auszubremsen",
+   "u": "https://t3n.de/news/agentische-ki-human-in-the-lead-steuerung-1773694/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-21T09:25:00Z",
+   "s": "War der Hugging-Face-Hack nur Schlamperei – oder haben wir es mit einer neuen Bedrohung zu tun? Oder lenkt beides tatsächlich von einer viel grundsätzlicheren Frage ab: Wie wird ein Fehler korrigiert,…",
+   "sprache": "de"
+  },
+  {
+   "t": "Riemannsche Vermutung: Anthropic-Mathematiker will KI-Beweis gefunden haben",
+   "u": "https://www.heise.de/news/Riemannsche-Vermutung-Anthropic-Mathematiker-will-KI-Beweis-gefunden-haben-11533452.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-21T09:09:00Z",
+   "s": "Levent Alpöge will mit Claude die Riemannsche Vermutung bewiesen haben. Die Prüfung läuft, ein zweiter Ansatz ohne KI liegt vor.",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Kennzeichnung und National Geographic – die Fotonews der Woche 47/2026",
+   "u": "https://www.heise.de/news/KI-Kennzeichnung-und-National-Geographic-die-Fotonews-der-Woche-47-2026-11532822.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-21T09:00:00Z",
+   "s": "Frankfurter Gericht stärkt Fotografen-Rechte bei KI-Bildern. National Geographic kürt Pictures of the Year. Und VSCO startet einen Desktop-Editor.",
+   "sprache": "de"
+  },
+  {
+   "t": "Daniel Ek backs AI researcher’s fusion power startup. Here’s what they’re building.",
+   "u": "https://techcrunch.com/2026/11/20/daniel-ek-backs-ai-researchers-fusion-power-startup-heres-what-theyre-building/",
    "q": "TechCrunch AI",
-   "d": "2026-11-20T00:56:01Z",
-   "s": "The iPhone maker appears to be building agents that can compete with the likes of Meta Muse, Instinct, Claude, and OpenAI Dots.",
+   "d": "2026-11-20T19:53:41Z",
+   "s": "Spotify founder Daniel Ek is backing Europa Fusion, a fusion power startup founded by an AI researcher. Here's what the startup is building.",
    "sprache": "en"
   },
   {
-   "t": "Anthropic’s 7 founders cashed out nearly $2B in record-breaking IPO",
-   "u": "https://techcrunch.com/2026/11/19/anthropics-7-founders-cashed-out-nearly-2b-in-record-breaking-ipo/",
+   "t": "AI claimed a solution to the 167-year-old Riemann hypothesis — and a human did, too",
+   "u": "https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too/",
    "q": "TechCrunch AI",
-   "d": "2026-11-20T00:43:50Z",
-   "s": "At the upgraded $83/share IPO price, Anthropic's seven founders each pocketed $280 million, while the company nabbed nearly $105 billion.",
+   "d": "2026-11-20T19:32:08Z",
+   "s": "Mathematicians are having their minds blown by the latest AI-driven result — and there's a competing human solution, too.",
    "sprache": "en"
   },
   {
-   "t": "Introducing Tool Retrieval in the Gemini API",
-   "u": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/",
-   "q": "Google AI",
-   "d": "2026-11-19T18:00:00Z",
-   "s": "Give your agents access to hundreds of tools while using fewer tokens with Tool Retrieval, now in preview in the Gemini API.",
+   "t": "The most misunderstood graph in AI just got a major update",
+   "u": "https://www.technologyreview.com/2026/11/20/1149399/the-most-misunderstood-graph-in-ai-just-got-a-major-update/",
+   "q": "MIT Tech Review",
+   "d": "2026-11-20T18:15:15Z",
+   "s": "A new report from the AI evaluation nonprofit METR finds that some AI capabilities are continuing to improve along an exponential trajectory—but it also indicates that models aren’t quite as good at t…",
    "sprache": "en"
   },
   {
-   "t": "Walter Isaacson on curiosity and creativity in the AI age.",
-   "u": "https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/",
-   "q": "Google AI",
-   "d": "2026-11-19T17:00:00Z",
-   "s": "Walter Isaacson joins Google to discuss how history’s greatest innovators inspire creativity and human judgment in the AI age. Watch the episode.",
+   "t": "Combatting adversarial distillation",
+   "u": "https://openai.com/index/combatting-adversarial-distillation",
+   "q": "OpenAI",
+   "d": "2026-11-20T10:00:00Z",
+   "s": "OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to protect against capability extraction.",
    "sprache": "en"
   }
  ]
