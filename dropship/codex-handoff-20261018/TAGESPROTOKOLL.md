@@ -3780,3 +3780,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Stichprobe und Antragstext](R309-MERCHANT-ANGEBOTE-20261121.md)
 
 [LUXESTYLE_R309_20261121]
+
+### R310 – Fünf 404-Angebote bereinigt
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Merchant-Feed | Fünf einzelne alte Angebote von drei unveröffentlichten Shopify-Produkten geprüft und in der deutschen API-Quelle gelöscht. | Fünf bestätigte Writes und fünfmal HTTP 404 im direkten Google-Rücklesen. Kontrollangebot HTTP 200. |
+| Weitere Fehler | Kontrollangebot auf CSS-Status geprüft und zwei offizielle Sprühflaschen-Zweierpackbilder betrachtet. | Kontingentmeldung beim Kontrollangebot weiterhin aktiv. Beide Bildvorlagen mit Einblendungen. |
+
+[Löschbeleg und offene Merchant-Themen](R310-MERCHANT-404-BEREINIGUNG-20261121.md)
+
+[LUXESTYLE_R310_20261121]
