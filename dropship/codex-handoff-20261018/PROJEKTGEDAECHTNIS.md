@@ -1,3 +1,11 @@
+# R298 – 18 Produkte in der 360°-Galerie – 21.11.2026
+
+360°-Websitefilm von neun auf 18 unterschiedliche Produkte erweitert. Drei neue Galerieszenen aus Original-Shopbildern, 32 Sekunden, geprüfte UHD- und Hochformatvorschau mit je 60 fps.
+
+[Film, Bilder und Prüfung](R298-ACHTZEHN-PRODUKTE-20261121.md)
+
+---
+
 # R297 – Originalprodukte in den Einkaufskacheln – 21.11.2026
 
 Alle 16 Einkaufskacheln der Shopify-Theme-Vorschau mit Originalbildern verfügbarer Kategorieprodukte ausgestattet. Zuschnitte, Lesbarkeit und Links bei 1440, 390 und 320 px geprüft. Vorschau gespeichert.
