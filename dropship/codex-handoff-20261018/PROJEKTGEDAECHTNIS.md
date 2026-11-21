@@ -1,3 +1,11 @@
+# R311 – Katalogzuordnungen und Merchant-Gegenprobe – 21.11.2026
+
+Zwei falsch als Küche erfasste Produkte korrigiert und öffentliche Sortimentszuordnung geprüft. Begrenzte Merchant-Gegenprobe nach Löschung zeigt 13 CSS- und 12 Bildzeilen. Fünf weitere CJ-Setbilder mit Einblendungen, Stückliste offen.
+
+[Live-Änderungen und Quellenbelege](R311-KATALOG-ZUORDNUNGEN-20261121.md)
+
+---
+
 # R310 – Fünf veraltete Merchant-Angebote entfernt – 21.11.2026
 
 Fünf geprüfte veraltete 404-Angebote aus der deutschen Merchant-Hauptquelle entfernt. Google-Rücklesung: fünfmal HTTP 404, aktives Kontrollangebot HTTP 200. CSS-Kontingent weiterhin offen.
