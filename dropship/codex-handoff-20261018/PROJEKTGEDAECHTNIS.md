@@ -1,3 +1,11 @@
+# R306 – Merchant-Anzeigenkontingent – 21.11.2026
+
+CSS-Anzeigenkontingent geprüft. Screenshot meldet 19’100 betroffene Produkte. Der bestehende Shopify-Quotenlauf zählte 77’028 Kanalvarianten und null Abwahlen. DE- und FR-Quellen anhand von zwei Live-Angeboten bestätigt. Verteilung und konkretes Google-Limit offen, Kontingentantrag vorbereitet.
+
+[Prüfbelege und Antragstext](R306-MERCHANT-ANZEIGENKONTINGENT-20261121.md)
+
+---
+
 # R305 – Retro-Sammlung sortiert – 21.11.2026
 
 Die sechs freigegebenen Karten in der Retro-Sammlung im öffentlichen Shop vorn bestätigt. Alle 66 Mitglieder und die Reihenfolge der übrigen 60 blieben erhalten.
