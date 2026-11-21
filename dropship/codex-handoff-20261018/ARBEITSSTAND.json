@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 298,
-  "updatedAt": "2026-11-21T17:36:13Z",
+  "revision": 299,
+  "updatedAt": "2026-11-21T18:00:48Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50939,6 +50939,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R298-ACHTZEHN-PRODUKTE-20261121.md"
       ]
+    },
+    {
+      "revision": 299,
+      "at": "2026-11-21T18:00:48Z",
+      "summary": "Beide freigegebenen 60-fps-Filme in Shopify Files geprüft und die Startseite als wartende Version gespeichert. Der Shopify-Commit bündelt 13 zusätzliche Theme-Dateien. Getrennte Live-Schaltung wartet auf Zustimmung zur Kopie.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R299-STARTSEITE-LIVE-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82250,6 +82258,68 @@
     "browserSeeksPerFile": 15,
     "themeBindingChanged": false,
     "published": false,
+    "claudeReceipt": "unknown"
+  },
+  "run299": {
+    "date": "2026-11-21",
+    "scope": "Freigegebene Startseiten-Veröffentlichung vorbereitet",
+    "report": "dropship/codex-handoff-20261018/R299-STARTSEITE-LIVE-20261121.md",
+    "reportBlob": "e3d528c2d3ff745ca8316d3d9640f41106d0e74c",
+    "shop": 94368563585,
+    "activeTheme": 214169584007,
+    "existingPreviewTheme": 214208577927,
+    "commit": "fa3792c8e27964110f26a485c7936e4fb051144b",
+    "published": false,
+    "scopeFiles": [
+      "assets/luxe-edit.css",
+      "assets/luxe-scroll-hero.js",
+      "locales/de.json",
+      "locales/de.schema.json",
+      "locales/en.default.json",
+      "locales/en.default.schema.json",
+      "locales/fr.json",
+      "locales/fr.schema.json",
+      "sections/luxe-edit-home.liquid",
+      "templates/index.json"
+    ],
+    "unexpectedAdditionalAwaitingPublish": [
+      "DESIGN.md",
+      "blocks/_announcement.liquid",
+      "sections/header-announcements.liquid",
+      "sections/header-group.json",
+      "sections/lx-collection-details.liquid",
+      "sections/lx-collection-welten.liquid",
+      "snippets/lx-collection-welten-card.liquid",
+      "snippets/lx-kopf-pfad.liquid",
+      "snippets/meta-tags.liquid",
+      "templates/collection.json",
+      "templates/collection.lxwelten.json",
+      "templates/product.json",
+      "templates/product.lxszene.json"
+    ],
+    "videos": [
+      {
+        "id": "gid://shopify/Video/78154351313287",
+        "filename": "luxestyle-startseite-18-produkte-4k60-20261121.mp4",
+        "url": "https://cdn.shopify.com/videos/c/o/v/bd45f8cab78849a5970b0fc8f9073cd8.mp4",
+        "width": 3840,
+        "height": 2160,
+        "fps": 60,
+        "seconds": 32,
+        "sha256": "2bd87343cebc6889e73cab525e06510dca2cc35f57bd7826a1fb722219141c90"
+      },
+      {
+        "id": "gid://shopify/Video/78154351346055",
+        "filename": "luxestyle-startseite-18-produkte-mobil60-20261121.mp4",
+        "url": "https://cdn.shopify.com/videos/c/o/v/2a85604fa9fd4a1abb0270fd5b993cd8.mp4",
+        "width": 1080,
+        "height": 1920,
+        "fps": 60,
+        "seconds": 32,
+        "sha256": "afae0004b3177217a64f2b5f9773ef3aad3b2e9b0fde21780139be357796d058"
+      }
+    ],
+    "blocker": "Shopify bündelt eigene und 13 bereits wartende andere Dateien in einer Veröffentlichung. Zustimmung zu separater Kopie angefragt.",
     "claudeReceipt": "unknown"
   }
 }
