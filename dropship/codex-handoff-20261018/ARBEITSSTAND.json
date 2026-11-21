@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 289,
-  "updatedAt": "2026-11-21T13:24:01Z",
+  "revision": 290,
+  "updatedAt": "2026-11-21T13:57:16Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50867,6 +50867,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R289-FORTSETZUNG-20261121.md"
       ]
+    },
+    {
+      "revision": 290,
+      "at": "2026-11-21T13:57:16Z",
+      "summary": "Französischer Vergleichskopf und Kaufhinweis auf der Projektor-Produktseite live bestätigt. Drei anstehende Metricool-Termine für das rückholmarkierte Schmuckkästchen auf Entwurf gestellt und unter denselben UUIDs zurückgelesen. Threads verbleibt im Fehlerstatus des ursprünglichen Versuchs. Medienumstellung des Connectors dokumentiert.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R290-FIX-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -81617,6 +81625,71 @@
       "filmReady": false
     },
     "newMetricReads": false,
+    "claudeReceipt": "unknown"
+  },
+  "run290": {
+    "atUTC": "2026-11-21T13:57:16Z",
+    "localDate": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R290-FIX-20261121.md",
+    "summary": "Französischer Vergleichskopf und Kaufhinweis auf der Projektor-Produktseite live bestätigt. Drei anstehende Metricool-Termine für das rückholmarkierte Schmuckkästchen auf Entwurf gestellt und unter denselben UUIDs zurückgelesen. Threads verbleibt im Fehlerstatus des ursprünglichen Versuchs. Medienumstellung des Connectors dokumentiert.",
+    "french": {
+      "productId": "gid://shopify/Product/15521256604033",
+      "key": "body_html",
+      "locale": "fr",
+      "confirmedInAdminAndPublic": true,
+      "contentScope": "comparison_heading_and_note",
+      "newFullLocaleValue": true
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "productId": "gid://shopify/Product/15503083372929",
+      "tag": "rueckhol-0907",
+      "held": [
+        {
+          "oldId": 426962036,
+          "newId": 436691726,
+          "uuid": "4464007380148308511",
+          "publicationDate": {
+            "dateTime": "2026-11-21T17:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            "facebook",
+            "instagram"
+          ]
+        },
+        {
+          "oldId": 429733044,
+          "newId": 436692567,
+          "uuid": "1244897565051602488",
+          "publicationDate": {
+            "dateTime": "2026-11-21T18:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            "tiktok"
+          ]
+        },
+        {
+          "oldId": 426962209,
+          "newId": 436692585,
+          "uuid": "1277216616076757571",
+          "publicationDate": {
+            "dateTime": "2026-11-21T20:00:00",
+            "timezone": "Europe/Zurich"
+          },
+          "providers": [
+            "pinterest"
+          ]
+        }
+      ],
+      "failedThreadsRetried": false,
+      "newPosts": 0,
+      "fbIgMediaByteIdentical": true,
+      "pinterestConnectorReencodedPngAsJpeg": true,
+      "tiktokMediaUrlsPreserved": true
+    },
+    "metricsRerun": false,
     "claudeReceipt": "unknown"
   }
 }
