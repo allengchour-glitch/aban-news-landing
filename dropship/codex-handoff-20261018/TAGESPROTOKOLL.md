@@ -3634,3 +3634,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Film- und Produktbeleg](R296-TECH-MOTIVE-20261121.md)
 
 [LUXESTYLE_R296_20261121]
+
+### R297 – Originalbilder in den Einkaufskacheln
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Startseite | 16 vorhandene Bildpicker mit Originalbildern passender, im Shop verfügbarer Produkte belegt und Bildausschnitte auf die Kacheln abgestimmt. | Shopify-Vorschau gespeichert. 16 geladene Originalbilder auf Desktop und Mobil. |
+| Prüfung | Auf 1440, 390 und 320 px Bilder, Titel, Kategorielinks und Fokus geprüft. Theme-Dateien und öffentliche Startseite gelesen. | Vorschau bleibt unveröffentlicht. Commit 6ffd299748129689ddc1aed65f53be200137b5eb. |
+
+[Shopify-Vorschau und Bildquellen](R297-ORIGINAL-KATEGORIEBILDER-20261121.md)
+
+[LUXESTYLE_R297_20261121]
