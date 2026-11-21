@@ -1,3 +1,11 @@
+# R294 – 360°-Galeriefahrt mit fünf Produkten – 21.11.2026
+
+Einen 12-Sekunden-Websitefilm mit vollständiger virtueller 360°-Kamerafahrt um fünf belegte Produktmotive gerendert. UHD- und separater Hochformatexport sind bei konstanten 60 fps geprüft. Lokale Vorschauen ohne neue Shopify-Bindung.
+
+[Film- und Prüfbeleg](R294-360-GALERIE-20261121.md)
+
+---
+
 # R293 – UHD-Startseitenfilm mit drei Wohnprodukten – 21.11.2026
 
 Einen 11-Sekunden-Websitefilm in UHD bei konstanten 60 fps als lokale Vorschau gerendert und geprüft. Keramik, Aroma-Diffuser und Teppichläufer gezeigt. Gespeicherte Shopify-Vorschau aus R292 ohne neue Medienbindung.
