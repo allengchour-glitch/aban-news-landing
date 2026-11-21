@@ -1,3 +1,11 @@
+# R293 – UHD-Startseitenfilm mit drei Wohnprodukten – 21.11.2026
+
+Einen 11-Sekunden-Websitefilm in UHD bei konstanten 60 fps als lokale Vorschau gerendert und geprüft. Keramik, Aroma-Diffuser und Teppichläufer gezeigt. Gespeicherte Shopify-Vorschau aus R292 ohne neue Medienbindung.
+
+[Film- und Produktbeleg](R293-4K60-WOHNEN-20261121.md)
+
+---
+
 # R292 – Startseite mit vollflächigem Scroll-Hintergrund – 21.11.2026
 
 Startseitenfilm hinter Titel und Schaltflächen gelegt, Kleidpassage durch einen Sieben-Sekunden-Schnitt aus Atelier und Keramik ersetzt und den separaten Kleid-Banner durch zwei Wohnprodukte abgelöst. Theme-Kopie gespeichert und geprüft; Live-Theme weiterhin MAIN.
