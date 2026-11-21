@@ -3726,3 +3726,13 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [SEO-Livebeleg und Sortiervorschlag](R304-KUNDENGEWINNUNG-20261121.md)
 
 [LUXESTYLE_R304_20261121]
+
+### R305 – Retro-Sammlung sortiert
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Retro-Sammlung | Vorbereitung aus R304 umgesetzt. Fünf Positionen verschoben, da Platz eins bereits passte. Shopify-Job und öffentliche Standardansicht zurückgelesen. | Zwei Konsolen und vier Zubehörartikel stehen vorn. Alle 66 Mitglieder und die relative Reihenfolge der übrigen 60 sind bestätigt. |
+
+[Live-Sortierung und Prüfdaten](R305-RETRO-SORTIERUNG-20261121.md)
+
+[LUXESTYLE_R305_20261121]
