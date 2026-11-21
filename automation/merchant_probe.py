@@ -32,6 +32,7 @@ CASES = {
 MARKER = "LUXE_MERCHANT_READ_V1"
 CSS_LIMIT_CASE = "css-produktlimit"
 CSS_LIMIT_SCOPE = "ADS_EEA"
+SOURCE_CASE = "css-quellen"
 
 
 def _emit(obj, stream=None):
@@ -39,7 +40,7 @@ def _emit(obj, stream=None):
 
 
 def _unknown(case, code):
-    _emit({"marker": MARKER, "case": case if case in CASES or case == CSS_LIMIT_CASE else "unknown", "result": "unknown", "errorCode": code})
+    _emit({"marker": MARKER, "case": case if case in CASES or case in (CSS_LIMIT_CASE, SOURCE_CASE) else "unknown", "result": "unknown", "errorCode": code})
     return 2
 
 
@@ -112,13 +113,61 @@ def _read_css_limit(bearer, get=None):
     return 0
 
 
+def _read_data_sources(bearer, get=None):
+    prefix = f"accounts/{ACCOUNT_ID}/dataSources"
+    data, error = _get_json(f"https://{API_HOST}/datasources/v1/{prefix}?pageSize=10", bearer, get)
+    if error:
+        return _unknown(SOURCE_CASE, error)
+
+    sources = data.get("dataSources") if isinstance(data, dict) else None
+    if not isinstance(sources, list) or len(sources) > 10:
+        return _unknown(SOURCE_CASE, "data_sources_response_mismatch")
+
+    rows = []
+    for item in sources:
+        source_id = item.get("dataSourceId") if isinstance(item, dict) else None
+        if (
+            not isinstance(source_id, str)
+            or not source_id.isascii()
+            or not source_id.isdecimal()
+            or item.get("name") != f"{prefix}/{source_id}"
+        ):
+            return _unknown(SOURCE_CASE, "data_source_identity_mismatch")
+
+        source_types = (
+            "primaryProductDataSource", "supplementalProductDataSource",
+            "localInventoryDataSource", "regionalInventoryDataSource",
+            "promotionDataSource", "productReviewDataSource", "merchantReviewDataSource",
+        )
+        source_type = next((kind for kind in source_types if isinstance(item.get(kind), dict)), None)
+        source = item.get(source_type, {})
+        destinations = source.get("destinations")
+        row = {
+            "sourceId": source_id,
+            "input": item.get("input"),
+            "sourceType": source_type,
+            "feedLabel": source.get("feedLabel"),
+            "language": source.get("contentLanguage"),
+            "countries": source.get("countries"),
+            "destinations": [
+                {"destination": entry.get("destination"), "state": entry.get("state")}
+                for entry in destinations if isinstance(entry, dict)
+            ] if isinstance(destinations, list) else None,
+        }
+        rows.append(row)
+
+    _emit({"marker": MARKER, "case": SOURCE_CASE, "result": "ok",
+           "sourceCount": len(rows), "truncated": bool(data.get("nextPageToken")), "sources": rows})
+    return 0
+
+
 def _reader(case, env, bearer, get=None):
     # Produktmodus vor jedem API-Aufruf oder Erneuern der Zugangsdaten absichern.
     if env.get("REGISTRIEREN", "").strip().lower() == "true":
         return _unknown(case, "registration_blocked")
     if env.get("MERCHANT_ID", "").strip() != ACCOUNT_ID:
         return _unknown(case, "account_input_mismatch")
-    if case not in CASES and case != CSS_LIMIT_CASE:
+    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE):
         return _unknown(case, "case_not_allowed")
 
     account_url = f"https://{API_HOST}/accounts/v1/accounts/{ACCOUNT_ID}"
@@ -130,6 +179,8 @@ def _reader(case, env, bearer, get=None):
 
     if case == CSS_LIMIT_CASE:
         return _read_css_limit(bearer, get)
+    if case == SOURCE_CASE:
+        return _read_data_sources(bearer, get)
 
     spec = CASES[case]
     key = _encoded_product_key(spec)
@@ -405,7 +456,7 @@ def main():
     case = env.get("MERCHANT_CASE", "account-probe").strip() or "account-probe"
     if case == "account-probe":
         return _legacy_main()
-    if case not in CASES and case != CSS_LIMIT_CASE:
+    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE):
         return _unknown(case, "case_not_allowed")
     # Unzulässige Eingaben vor dem Lesen oder Erneuern der Zugangsdaten abweisen.
     if env.get("REGISTRIEREN", "").strip().lower() == "true":

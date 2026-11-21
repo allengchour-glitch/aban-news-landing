@@ -20,6 +20,7 @@ on:
           - nagellack-1
           - nagellack-6
           - css-produktlimit
+          - css-quellen
         default: account-probe
   push:
     branches: [claude/merchant-probe-1111]

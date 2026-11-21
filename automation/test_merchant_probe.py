@@ -394,5 +394,50 @@ class CssProductLimitTests(unittest.TestCase):
         self.assertEqual((code, result["errorCode"], send.call_count), (2, "registration_blocked", 0))
 
 
+
+class MerchantSourceTests(unittest.TestCase):
+    def test_source_response_omits_source_credentials_and_file_settings(self):
+        source = {"name": f"accounts/{probe.ACCOUNT_ID}/dataSources/123", "dataSourceId": "123",
+                  "input": "API", "fileInput": {"privateUrl": "mock-secret"},
+                  "primaryProductDataSource": {"contentLanguage": "de", "countries": ["CH", "LI"],
+                      "destinations": [{"destination": "SHOPPING_ADS", "state": "ENABLED"}]}}
+        query = Mock(return_value=Mock(status_code=200,
+                    json=Mock(return_value={"dataSources": [source], "nextPageToken": "hidden-token"})))
+        captured = io.StringIO()
+        with contextlib.redirect_stdout(captured):
+            code = probe._read_data_sources("mock-token", query)
+        self.assertEqual(code, 0)
+        result = json.loads(captured.getvalue())
+        self.assertTrue(result["truncated"])
+        self.assertEqual(result["sources"][0]["countries"], ["CH", "LI"])
+        self.assertEqual(result["sources"][0]["destinations"],
+                         [{"destination": "SHOPPING_ADS", "state": "ENABLED"}])
+        self.assertNotIn("secret", captured.getvalue())
+        self.assertNotIn("hidden-token", captured.getvalue())
+        self.assertEqual(query.call_count, 1)
+        self.assertEqual(query.call_args.args[0],
+                         f"https://merchantapi.googleapis.com/datasources/v1/accounts/{probe.ACCOUNT_ID}/dataSources?pageSize=10")
+        self.assertFalse(query.call_args.kwargs["allow_redirects"])
+
+    def test_untrusted_source_account_cannot_be_reported(self):
+        data = {"dataSources": [{"name": "accounts/1/dataSources/123", "dataSourceId": "123"}]}
+        query = Mock(return_value=Mock(status_code=200, json=Mock(return_value=data)))
+        captured = io.StringIO()
+        with contextlib.redirect_stdout(captured):
+            code = probe._read_data_sources("mock-token", query)
+        self.assertEqual(code, 2)
+        self.assertEqual(json.loads(captured.getvalue())["errorCode"], "data_source_identity_mismatch")
+
+    def test_failed_source_read_is_not_an_empty_list(self):
+        query = Mock(return_value=Mock(status_code=429))
+        captured = io.StringIO()
+        with contextlib.redirect_stdout(captured):
+            code = probe._read_data_sources("mock-token", query)
+        self.assertEqual(code, 2)
+        result = json.loads(captured.getvalue())
+        self.assertEqual(result["errorCode"], "http_429")
+        self.assertNotIn("sourceCount", result)
+
+
 if __name__ == "__main__":
     unittest.main()
