@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 290,
-  "updatedAt": "2026-11-21T13:57:16Z",
+  "revision": 291,
+  "updatedAt": "2026-11-21T14:13:19Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50875,6 +50875,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R290-FIX-20261121.md"
       ]
+    },
+    {
+      "revision": 291,
+      "at": "2026-11-21T14:13:19Z",
+      "summary": "Vollständigen französischen Projektor-Beschrieb und Modellauswahl A–G zur Freigabe vorbereitet. Sieben Varianten in der lokalen Mobil- und Desktopvorschau geprüft. Kamera- und Lichttest für den bestehenden 18-Sekunden-Master dokumentiert. Drei Metricool-Sperren und die unveröffentlichte Startseitenkopie erneut bestätigt.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R291-PREMIUM-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -81690,6 +81698,54 @@
       "tiktokMediaUrlsPreserved": true
     },
     "metricsRerun": false,
+    "claudeReceipt": "unknown"
+  },
+  "run291": {
+    "atUTC": "2026-11-21T14:13:19Z",
+    "localDate": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R291-PREMIUM-20261121.md",
+    "summary": "Vollständigen französischen Projektor-Beschrieb und Modellauswahl A–G zur Freigabe vorbereitet. Sieben Varianten in der lokalen Mobil- und Desktopvorschau geprüft. Kamera- und Lichttest für den bestehenden 18-Sekunden-Master dokumentiert. Drei Metricool-Sperren und die unveröffentlichte Startseitenkopie erneut bestätigt.",
+    "shopId": "gid://shopify/Shop/94368563585",
+    "french": {
+      "productId": "gid://shopify/Product/15521256604033",
+      "locale": "fr",
+      "preparedScope": [
+        "body_html",
+        "ProductOption.name",
+        "seven ProductOptionValue.name"
+      ],
+      "publicVariantsVerified": 7,
+      "localPreviewWidths": [
+        360,
+        1440
+      ],
+      "draftSHA256": "932e161ded57fbbb8c1d179cb9fd3d5ae4b22f38f9b35e43f0fc80c87794e904",
+      "saved": false
+    },
+    "master": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "cameraTest": "dropship/codex-handoff-20261018/runs/20261121-r291/master/K02-KAMERA-LICHTTEST.md",
+      "cameraWorksheet": "dropship/codex-handoff-20261018/runs/20261121-r291/master/K02-KAMERA-LICHTTEST.json",
+      "recorded": false,
+      "rendered": false
+    },
+    "metricool": {
+      "brandId": 6227837,
+      "verifiedAtLocal": "2026-11-21T15:09:50+01:00",
+      "heldUUIDs": [
+        "4464007380148308511",
+        "1244897565051602488",
+        "1277216616076757571"
+      ],
+      "metricsRerun": false,
+      "postsWritten": 0
+    },
+    "website": {
+      "mainThemeId": "214169584007",
+      "stagedThemeId": "214208577927",
+      "stageRole": "UNPUBLISHED",
+      "write": false
+    },
     "claudeReceipt": "unknown"
   }
 }
