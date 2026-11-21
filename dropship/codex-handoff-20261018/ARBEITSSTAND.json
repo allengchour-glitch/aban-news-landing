@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 311,
-  "updatedAt": "2026-11-21T23:11:57Z",
+  "revision": 312,
+  "updatedAt": "2026-11-21T23:55:23Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51043,6 +51043,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R311-KATALOG-ZUORDNUNGEN-20261121.md"
       ]
+    },
+    {
+      "revision": 312,
+      "at": "2026-11-21T23:55:23Z",
+      "summary": "Verkaufsentwurf aus R291 live. Französischer Projektor-Beschrieb und acht Auswahltexte bestätigt. Weihnachtsratgeber DE und FR führen direkt zum USB-Grundmodell A. A→G auf Handy und Desktop im echten Shop getestet.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R312-VERKAUFSWEG-PROJEKTOR-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82852,5 +82860,54 @@
     },
     "merchantWrites": 0,
     "merchantResyncOfShopifyTypeChanges": "unknown"
+  },
+  "run312": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R312-VERKAUFSWEG-PROJEKTOR-20261121.md",
+    "reportBlob": "3c2dd80a850e5814e8e96493f510544e5849721b",
+    "shop": 94368563585,
+    "product": 15521256604033,
+    "variant": 68122445283719,
+    "otherVariantTested": 68122445480327,
+    "verifiedPriceCHF": "34.90",
+    "article": 1001547137409,
+    "articleLocales": [
+      "de",
+      "fr"
+    ],
+    "translationCount": 9,
+    "articleWrites": 2,
+    "publicChecks": [
+      {
+        "locale": "de",
+        "article": "https://luxestyle.ch/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen",
+        "link": "/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719",
+        "canonical": true,
+        "indexedAllowed": true
+      },
+      {
+        "locale": "fr",
+        "article": "https://luxestyle.ch/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen",
+        "link": "/fr/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719",
+        "canonical": true,
+        "indexedAllowed": true
+      },
+      {
+        "viewport": 390,
+        "labels": 7,
+        "variantOnLoad": "68122445283719",
+        "selectedVariant": "68122445480327",
+        "frenchCopy": true
+      },
+      {
+        "viewport": 1440,
+        "labels": 7,
+        "variantOnLoad": "68122445283719",
+        "selectedVariant": "68122445480327",
+        "frenchCopy": true
+      }
+    ],
+    "googleEffect": "unknown",
+    "saleEffect": "unknown"
   }
 }
