@@ -3601,3 +3601,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Film- und Produktbeleg](R293-4K60-WOHNEN-20261121.md)
 
 [LUXESTYLE_R293_20261121]
+
+### R294 – 360°-Websitevorschau
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Websitefilm | Virtuelle Runde um fünf belegte Produktmotive aufgebaut und als UHD- sowie zugeschnittene Hochformatfassung gerendert. | Beide 12 Sekunden, 60 fps, je 720 Frames. Keine erfundenen Produktrückseiten. Lokale Vorschauen. |
+| Prüfung | Lückenlose Bildzeitstempel, vollständige Dekodierung, alle fünf Frontmotive und sechs Chromium-Sprünge je Datei geprüft. | Beide MP4s geprüft, keine neue Theme-Bindung und kein kostenpflichtiger Render. |
+
+[Film- und Prüfbeleg](R294-360-GALERIE-20261121.md)
+
+[LUXESTYLE_R294_20261121]
