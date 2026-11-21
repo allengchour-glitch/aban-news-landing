@@ -1,3 +1,11 @@
+# R295 – Grössere 360°-Galerie, Videofenster und Scroll-Bedienfeld – 21.11.2026
+
+360°-Galerie mit rund 30 % grösseren Vordergrundmotiven, zwei weiteren Produkten und laufendem Keramik-Videofenster als zwei 16-Sekunden-Vorschauen exportiert. Scroll-Bedienfeld in der Shopify-Theme-Kopie standardmässig ausgeblendet und nativ geprüft.
+
+[Film- und Theme-Beleg](R295-NAHER-PIP-20261121.md)
+
+---
+
 # R294 – 360°-Galeriefahrt mit fünf Produkten – 21.11.2026
 
 Einen 12-Sekunden-Websitefilm mit vollständiger virtueller 360°-Kamerafahrt um fünf belegte Produktmotive gerendert. UHD- und separater Hochformatexport sind bei konstanten 60 fps geprüft. Lokale Vorschauen ohne neue Shopify-Bindung.
