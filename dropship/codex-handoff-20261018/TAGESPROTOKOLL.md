@@ -3513,3 +3513,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R286-JACKENPREIS-20261121.md) · [Prüfbeleg](runs/20261121-r286/JACKENPREIS-BELEG.json)
 
 [LUXESTYLE_R286_20261121]
+
+### R287 – Katalogprüfung auf Margenrisiken
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Gesamtkatalog | Shopify-Produkt- und Variantenzählungen abgeglichen und einen reinen Leseexport bis zum abgeschlossenen Status verfolgt. | 87’795 Produkte, 683’610 Varianten. Der Connector sperrt den Download der Exportdatei. |
+| Margen | Vier aktuelle Produktgruppen mit nach Varianten-ID abgeglichenem Einstand geprüft. | 78 Produkte, 413 Varianten in der Stichprobe. Detailrechnung und Variantenliste im Arbeitsbereich. |
+| Lieferanten | Zwei exakte CJ-SKUs gegen Länderfracht geprüft und einen Printful-Katalogartikel zugeordnet. | Lieferantenfracht, konkreter Abrechnungskurs und tatsächliche Kosten variieren je Bestellung. |
+
+[Bericht](R287-MARGENPRUEFUNG-20261121.md) · [Katalogabgleich](runs/20261121-r287/KATALOG-ABGLEICH.json)
+
+[LUXESTYLE_R287_20261121]

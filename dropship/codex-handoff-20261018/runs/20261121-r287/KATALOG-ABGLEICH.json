@@ -1,0 +1,69 @@
+{
+  "run": "R287",
+  "atUTC": "2026-11-21T09:15:04Z",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch"
+    }
+  },
+  "productCount": {
+    "count": 87795,
+    "precision": "EXACT"
+  },
+  "variantCount": {
+    "count": 683610,
+    "precision": "EXACT"
+  },
+  "statusCounts": {
+    "active": {
+      "count": 56074,
+      "precision": "EXACT"
+    },
+    "draft": {
+      "count": 31560,
+      "precision": "EXACT"
+    },
+    "archive": {
+      "count": 161,
+      "precision": "EXACT"
+    },
+    "unlisted": {
+      "count": 0,
+      "precision": "EXACT"
+    }
+  },
+  "storePublicationCounts": {
+    "publishedActive": {
+      "count": 56073,
+      "precision": "EXACT"
+    }
+  },
+  "bulk": {
+    "id": "gid://shopify/BulkOperation/13096151417223",
+    "type": "QUERY",
+    "status": "COMPLETED",
+    "createdAt": "2026-11-21T09:03:46Z",
+    "completedAt": "2026-11-21T09:14:07Z",
+    "errorCode": null,
+    "fileSize": "316976450",
+    "objectCount": "771405",
+    "rootObjectCount": "87795",
+    "readback": "Completed and matched exact counts",
+    "fileAccess": "Signed URL withheld by the Shopify app"
+  },
+  "sample": {
+    "products": 78,
+    "variants": 413,
+    "groups": [
+      "recent_cj",
+      "old_cj",
+      "recent_non_cj",
+      "low_price",
+      "loss_tag"
+    ],
+    "supplierCounterChecks": 2
+  },
+  "scope": "No historical customer or checkout records required. Variant details and supplier monetary data kept in the task working area."
+}

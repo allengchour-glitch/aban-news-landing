@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 286,
-  "updatedAt": "2026-11-21T08:39:01Z",
+  "revision": 287,
+  "updatedAt": "2026-11-21T09:15:04Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -46389,6 +46389,28 @@
           "evidence": "Beige 1 Stück variantenbezogenes Original in Shopify READY und öffentlich geprüft. Merchant hat die neue URL übernommen, Bildablehnung steht noch."
         }
       ]
+    },
+    {
+      "id": "catalog-margin-audit-20261121",
+      "priority": 50,
+      "priorityKind": "margin_quality",
+      "state": "catalog_bulk_completed_file_access_blocked_sample_done",
+      "title": "Einstand und Verkaufspreise über den LuxeStyle-Katalog prüfen",
+      "lastEvidenceDate": "2026-11-21",
+      "belegArt": "COMPLETED_BULK_METADATA_AND_BOUNDED_SHOPIFY_READING",
+      "lastEvidence": "Shopify-Katalog vollständig gezählt und Leseexport erfolgreich abgeschlossen. Der Connector gibt die Exportdatei nicht frei. Eine gezielte Live-Stichprobe aus 78 Produkten und 413 Varianten ausgewertet. Für die flächendeckende Einstandsprüfung fehlt der Shopify-Produktexport.",
+      "nextAllowedStep": "Shopify-Produktexport mit Verkaufspreis und Kosten je Variante verarbeiten, Zeilen und Katalogsumme abgleichen und Fehlkosten und niedrige kalkulatorische Margen belegen. Auffällige SKUs anhand der jeweils zutreffenden Lieferantenrechnung prüfen.",
+      "blockers": [
+        "Download der Bulk-Ergebnisdatei wird vom bestehenden Connector nicht freigegeben.",
+        "Kosten je Variante und echte Lieferantenfracht sind für den ganzen Katalog ungeprüft."
+      ],
+      "acceptance": "Alle aktiven Varianten und Statusstände im bereitgestellten Export abgeglichen. Margen nach hinterlegten Kosten sowie fehlende Kosten ausgewiesen. Tatsächliche Lieferantenkosten nur bei Beleg.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R287-MARGENPRUEFUNG-20261121.md",
+        "dropship/codex-handoff-20261018/runs/20261121-r287/KATALOG-ABGLEICH.json"
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "claude"
     }
   ],
   "history": [
@@ -50820,6 +50842,15 @@
         "dropship/codex-handoff-20261018/R286-JACKENPREIS-20261121.md",
         "dropship/codex-handoff-20261018/runs/20261121-r286/JACKENPREIS-BELEG.json"
       ]
+    },
+    {
+      "revision": 287,
+      "at": "2026-11-21T09:15:04Z",
+      "summary": "Shopify-Katalog vollständig gezählt und Leseexport erfolgreich abgeschlossen. Der Connector gibt die Exportdatei nicht frei. Eine gezielte Live-Stichprobe aus 78 Produkten und 413 Varianten ausgewertet. Für die flächendeckende Einstandsprüfung fehlt der Shopify-Produktexport.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R287-MARGENPRUEFUNG-20261121.md",
+        "dropship/codex-handoff-20261018/runs/20261121-r287/KATALOG-ABGLEICH.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -52933,7 +52964,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 286,
+    "latestCanonicalRevision": 287,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -54234,6 +54265,22 @@
       "verifiedVariants": 24,
       "storefrontVerified": true,
       "profitBasisCjRoute": "CJPacket Ordinary F",
+      "claudeReceipt": "UNKNOWN"
+    },
+    "run287": {
+      "atUTC": "2026-11-21T09:15:04Z",
+      "localDate": "2026-11-21",
+      "summary": "Shopify-Katalog vollständig gezählt und Leseexport erfolgreich abgeschlossen. Der Connector gibt die Exportdatei nicht frei. Eine gezielte Live-Stichprobe aus 78 Produkten und 413 Varianten ausgewertet. Für die flächendeckende Einstandsprüfung fehlt der Shopify-Produktexport.",
+      "report": "dropship/codex-handoff-20261018/R287-MARGENPRUEFUNG-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/runs/20261121-r287/KATALOG-ABGLEICH.json",
+      "scope": "Full catalogue read-only margin audit",
+      "shopProducts": 87795,
+      "shopVariants": 683610,
+      "activeProducts": 56074,
+      "subsetProducts": 78,
+      "subsetVariants": 413,
+      "bulkState": "COMPLETED_SIGNED_URL_WITHHELD",
+      "requiresOwnerCsv": true,
       "claudeReceipt": "UNKNOWN"
     }
   },
@@ -81475,6 +81522,22 @@
     "verifiedVariants": 24,
     "storefrontVerified": true,
     "profitBasisCjRoute": "CJPacket Ordinary F",
+    "claudeReceipt": "UNKNOWN"
+  },
+  "run287": {
+    "atUTC": "2026-11-21T09:15:04Z",
+    "localDate": "2026-11-21",
+    "summary": "Shopify-Katalog vollständig gezählt und Leseexport erfolgreich abgeschlossen. Der Connector gibt die Exportdatei nicht frei. Eine gezielte Live-Stichprobe aus 78 Produkten und 413 Varianten ausgewertet. Für die flächendeckende Einstandsprüfung fehlt der Shopify-Produktexport.",
+    "report": "dropship/codex-handoff-20261018/R287-MARGENPRUEFUNG-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/runs/20261121-r287/KATALOG-ABGLEICH.json",
+    "scope": "Full catalogue read-only margin audit",
+    "shopProducts": 87795,
+    "shopVariants": 683610,
+    "activeProducts": 56074,
+    "subsetProducts": 78,
+    "subsetVariants": 413,
+    "bulkState": "COMPLETED_SIGNED_URL_WITHHELD",
+    "requiresOwnerCsv": true,
     "claudeReceipt": "UNKNOWN"
   }
 }

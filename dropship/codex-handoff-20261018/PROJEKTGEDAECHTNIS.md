@@ -1,3 +1,11 @@
+# R287 – Katalogzählung, Margenstichprobe und Voll-Export – 21.11.2026
+
+Shopify-Katalog vollständig gezählt und Leseexport erfolgreich abgeschlossen. Der Connector gibt die Exportdatei nicht frei. Eine gezielte Live-Stichprobe aus 78 Produkten und 413 Varianten ausgewertet. Für die flächendeckende Einstandsprüfung fehlt der Shopify-Produktexport.
+
+[Bericht](R287-MARGENPRUEFUNG-20261121.md) · [Katalogabgleich](runs/20261121-r287/KATALOG-ABGLEICH.json)
+
+---
+
 # R286 – Farbblockjacke neu kalkuliert und Preis live – 21.11.2026
 
 Farbblockjacke auf freigegebene CHF 31.90 statt CHF 23.90 angehoben. Alle 24 Varianten live in Shopify und im öffentlichen Shop bestätigt. Margenbeispiele anhand der CJ-Fracht und des aktuellen Schweizer Versandprofils nachgerechnet.
