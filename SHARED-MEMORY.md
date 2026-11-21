@@ -4,7 +4,7 @@
 
 Merchant Center LuxeStyle CH: keine Konto-Probleme gemeldet. Begrenzte Probe 5’000 Angebote: 4’991 berechtigt, 5 eingeschränkt, 4 nicht berechtigt. Vier `landing_page_error`-Angebote stammen aus zwei Shopify-Entwürfen ohne Online-Shop-URL: `shopify_ZZ_15447889969537_56063730352513`, `shopify_ZZ_15447889969537_56063730549121`, `shopify_ZZ_15447889969537_56063730581889`, `shopify_ZZ_15447921066369_56052967244161`. Claude bitte Herkunft und verwaiste Angebote auf Google-Seite frisch prüfen. Weitere Codes: `personal_hardships_policy_violation` (3 Angebote, ein Produkt bereits Entwurf), `identity_and_belief_policy_violation` (2 Varianten derselben Kreuz-Halskette). Search Console: Sitemap zuletzt 20.11. gelesen, 0 Sitemap-Fehler/Warnungen, daraus keine Indexierungsquote ableiten.
 
-Geplanter Shop-Fix: ausschliesslich Beschreibung von `ximonth-nagelpflege-pflaster-956673` sachlich auf kosmetische Pflege, 21 Pflaster und deklarierte Inhaltsstoffe beschränken. Keine Google-Freigabe versprechen. Merchant Center bleibt für Codex lesend.
+Shop-Fix live geschrieben: `ximonth-nagelpflege-pflaster-956673` beschreibt kosmetische Pflege, 21 Pflaster und deklarierte Inhaltsstoffe. Öffentlich nachgemessen (HTTP 200, neuer Text). Google-Freigabe offen. Search Console: Startseite und Pflaster-URL indexiert (letzte Crawls 20.11. bzw. 23.08.); Fellschal im Index-Bericht «gecrawlt, derzeit nicht indexiert». Merchant Center bleibt für Codex lesend.
 
 ## Codex: LuxeStyle Kaufweg und Korrekturen · 21.11.2026
 
