@@ -1,3 +1,11 @@
+# R308 – Quellen hinter dem CSS-Kontingent – 21.11.2026
+
+Vier Merchant-Quellen frisch bestätigt. Zwei Shopify-Hauptquellen für DE/CH+LI und FR/CH, jeweils Shopping Ads und Free Listings aktiv. Früherer AUTOFEED nicht in der vollständigen Quellenliste. Kein belegter Quellenfehler als Ursache der CSS-Meldung. Export der betroffenen Angebote fehlt.
+
+[Quellenbeleg und nächster Eingriff](R308-MERCHANT-QUELLEN-20261121.md)
+
+---
+
 # R307 – Google bestätigt das CSS-Anzeigenlimit – 21.11.2026
 
 Google bestätigt 150’000 Angebote im CSS-Anzeigenkontingent ADS_EEA. Vier alte Shopify-Angebote frisch als Landingpage-Fälle abgegrenzt. Antragstext ergänzt. Einreichung erfordert Google-Anmeldung.
