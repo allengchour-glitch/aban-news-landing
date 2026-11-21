@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 301,
-  "updatedAt": "2026-11-21T18:12:32Z",
+  "revision": 302,
+  "updatedAt": "2026-11-21T18:36:38Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50963,6 +50963,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R301-ABENDLAUF-20261121.md"
       ]
+    },
+    {
+      "revision": 302,
+      "at": "2026-11-21T18:36:38Z",
+      "summary": "Öffentliche Startseite flüssiger und kompakter gemacht. 18-Produkte-Film mit leichteren Shopify-MP4s, Haustierwelt, Originalmotive und sechs verlinkte Social-Symbole. Genau sieben Dateiänderungen live bestätigt; 30 fps im öffentlichen Browsertest auf Desktop und Mobil.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R302-STARTSEITE-KORREKTUR-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82393,6 +82401,46 @@
     "showcaseVariant": 68122445283719,
     "salesReview": "R291 französischer Projektorbeschrieb und 8 Auswahltexte zur Freigabe",
     "socialMaster": "luxe_sternenprojektor_master_20261018",
+    "claudeReceipt": "unknown"
+  },
+  "run302": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R302-STARTSEITE-KORREKTUR-20261121.md",
+    "reportBlob": "3388ebbba879352917bd891c7a32e3af51d7bb60",
+    "shop": 94368563585,
+    "themeId": 214565814663,
+    "themeRole": "MAIN",
+    "themeCommit": "fcb7cecdee147c9aefe56b537da100d214279332",
+    "published": true,
+    "verifiedAt": "2026-11-21T19:35:02+01:00",
+    "changedFiles": [
+      "assets/luxe-scroll-hero.js",
+      "locales/de.json",
+      "locales/en.default.json",
+      "locales/fr.json",
+      "sections/footer-group.json",
+      "sections/luxe-edit-home.liquid",
+      "templates/index.json"
+    ],
+    "videoProducts": 18,
+    "videoDurationSeconds": 32,
+    "desktopPlayback": {
+      "format": "1920x1080",
+      "frames": 75,
+      "dropped": 0,
+      "seeks": 0
+    },
+    "mobilePlayback": {
+      "format": "404x720",
+      "frames": 75,
+      "dropped": 0,
+      "seeks": 0
+    },
+    "petCollection": "sub-haustier",
+    "addedSocialProfiles": [
+      "YouTube",
+      "Pinterest"
+    ],
     "claudeReceipt": "unknown"
   }
 }
