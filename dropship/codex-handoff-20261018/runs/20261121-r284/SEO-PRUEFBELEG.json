@@ -1,0 +1,208 @@
+{
+  "run": "R284",
+  "atUTC": "2026-11-21T08:17:57Z",
+  "scope": "seo push",
+  "shop": {
+    "id": "gid://shopify/Shop/94368563585",
+    "name": "LuxeStyle",
+    "currencyCode": "CHF",
+    "primaryDomain": {
+      "host": "luxestyle.ch",
+      "url": "https://luxestyle.ch"
+    }
+  },
+  "prePublishManifest": {
+    "main": "gid://shopify/OnlineStoreTheme/214169584007",
+    "seo": "gid://shopify/OnlineStoreTheme/214526394759",
+    "files": 561,
+    "diff": [
+      {
+        "path": "layout/theme.liquid",
+        "before": "62a77592ae9e0648d2ccec60bdf23979",
+        "after": "3b9b8d9efe3deaf1cdf4e3920ce7fdc1"
+      },
+      {
+        "path": "sections/lx-collection-details.liquid",
+        "before": "8ceeccb466cd2af6ad729f9d6e7ec946",
+        "after": "19f74674e94c562c0ff9dee74cf1c7a1"
+      },
+      {
+        "path": "sections/product-information.liquid",
+        "before": "9d9646c79c920779614ad848847d1e0d",
+        "after": "7d57b891be072eecd57a3699e58d5566"
+      },
+      {
+        "path": "snippets/meta-tags.liquid",
+        "before": "fa92ed374a03d14d60ffc7d70e112ff5",
+        "after": "4059cb2855cb4d2cb167371ba604803e"
+      }
+    ],
+    "exactScope": true
+  },
+  "publishResult": {
+    "themeId": "gid://shopify/OnlineStoreTheme/214526394759",
+    "published": false,
+    "pending": [],
+    "userErrors": [
+      "Only agent-created themes can be published here"
+    ],
+    "rejectedReason": "publish_refused"
+  },
+  "themesAfter": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "name": "LuxeStyle",
+      "currencyCode": "CHF",
+      "primaryDomain": {
+        "host": "luxestyle.ch",
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "seo": {
+      "id": "gid://shopify/OnlineStoreTheme/214526394759",
+      "name": "LuxeStyle SEO 21.11.2026 R279",
+      "role": "UNPUBLISHED",
+      "processing": false,
+      "updatedAt": "2026-11-21T08:15:01Z"
+    },
+    "main": {
+      "id": "gid://shopify/OnlineStoreTheme/214169584007",
+      "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+      "role": "MAIN",
+      "processing": false,
+      "updatedAt": "2026-11-16T22:12:34Z"
+    },
+    "model": {
+      "id": "gid://shopify/OnlineStoreTheme/214532882823",
+      "name": "LuxeStyle Modellvergleich 21.11.2026",
+      "role": "UNPUBLISHED",
+      "processing": false,
+      "updatedAt": "2026-11-21T07:07:40Z"
+    }
+  },
+  "technicalLiveControls": [
+    {
+      "case": "fr_article",
+      "url": "https://luxestyle.ch/fr/blogs/ratgeber/weihnachtsgeschenke-2026-schweiz-ideen",
+      "http": 200,
+      "theme": 214169584007,
+      "meta": {
+        "robots": "noindex, follow"
+      }
+    },
+    {
+      "case": "formatted_price",
+      "url": "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591",
+      "http": 200,
+      "theme": 214169584007,
+      "meta": {
+        "og:price:amount": "4,245.90",
+        "og:price:currency": "CHF"
+      }
+    }
+  ],
+  "contentDiff": {
+    "page": {
+      "ownerId": "gid://shopify/Page/700378120577",
+      "from": "Alle Kategorien von LuxeStyle auf einen Blick: Mode, Schmuck, Beauty, Technik, Wohnen, Geschenke und Kostüme – meist zwei Klicks bis zum passenden Produkt.",
+      "to": "Entdecke die Kategorien von LuxeStyle. Finde Mode, Schmuck, Beauty, Technik, Wohnen, Geschenke und Kostüme über die Shop-Übersicht.",
+      "compareDigest": "3c9c4118ae1568e4462277eb34b75dc5db6cd13d5cd945789f800d311081321a",
+      "type": "multi_line_text_field"
+    },
+    "product": {
+      "ownerId": "gid://shopify/Product/15450848723329",
+      "from": "2-in-1 Öl-Sprühflasche für Küche & BBQ bei LuxeStyle – Schweizer Online-Shop. Gratis-Versand ab CHF 50, 30 Tage Rückgabe. Jetzt –10% mit Code WELCOME10.",
+      "to": "Mit der 470-ml-Öl-Sprühflasche aus Glas kannst du Öl sprühen und giessen. Wähle aus vier Farben und vergleiche Einzelflaschen und 2er-Packs.",
+      "title": "2-in-1 Öl-Sprühflasche für Küche & BBQ | LuxeStyle CH",
+      "expectedUpdatedAt": "2026-11-21T00:02:58Z",
+      "compareBeforeDigest": "2b0b95f6d0ecef6c6a36ecb52b13bddcb44a1df5dfa6b491b3b93c4c86d1a7cb"
+    }
+  },
+  "nativeComparison": {
+    "pageDesc": "Entdecke die Kategorien von LuxeStyle. Finde Mode, Schmuck, Beauty, Technik, Wohnen, Geschenke und Kostüme über die Shop-Übersicht.",
+    "productSeo": {
+      "title": "2-in-1 Öl-Sprühflasche für Küche & BBQ | LuxeStyle CH",
+      "description": "Mit der 470-ml-Öl-Sprühflasche aus Glas kannst du Öl sprühen und giessen. Wähle aus vier Farben und vergleiche Einzelflaschen und 2er-Packs."
+    },
+    "pageElse": true,
+    "productElse": true,
+    "productMatchingSeoMetafield": true
+  },
+  "publicQA": [
+    {
+      "key": "categories",
+      "http": 200,
+      "url": "https://luxestyle.ch/pages/alle-kategorien",
+      "themeId": 214169584007,
+      "themeRole": "main",
+      "desc": [
+        "Entdecke die Kategorien von LuxeStyle. Finde Mode, Schmuck, Beauty, Technik, Wohnen, Geschenke und Kostüme über die Shop-Übersicht."
+      ],
+      "og": [
+        "Entdecke die Kategorien von LuxeStyle. Finde Mode, Schmuck, Beauty, Technik, Wohnen, Geschenke und Kostüme über die Shop-Übersicht."
+      ],
+      "canonical": [
+        "https://luxestyle.ch/pages/alle-kategorien"
+      ],
+      "robots": [],
+      "xrobots": "",
+      "h1": 1,
+      "title": "Alle Kategorien — der ganze Shop auf einen Blick\n &ndash; LuxeStyle",
+      "variant": null,
+      "variantSelected": null,
+      "priceCHF": null,
+      "expectedPriceConfirmed": true,
+      "collectionLinks": 1009,
+      "pass": true
+    },
+    {
+      "url": "https://luxestyle.ch/products/2-in-1-ol-spruhflasche-fur-kuche-bbq-376320",
+      "checks": {
+        "http": true,
+        "canonical": true,
+        "title": true,
+        "singleH1": true,
+        "amount": true,
+        "currency": true,
+        "variant": true,
+        "metaDescription": true,
+        "ogDescription": true
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/2-in-1-ol-spruhflasche-fur-kuche-bbq-376320?variant=55889898275201",
+      "checks": {
+        "http": true,
+        "canonical": true,
+        "title": true,
+        "singleH1": true,
+        "amount": true,
+        "currency": true,
+        "variant": true,
+        "metaDescription": true,
+        "ogDescription": true
+      }
+    },
+    {
+      "url": "https://luxestyle.ch/products/2-in-1-ol-spruhflasche-fur-kuche-bbq-376320?variant=55889898406273",
+      "checks": {
+        "http": true,
+        "canonical": true,
+        "title": true,
+        "singleH1": true,
+        "amount": true,
+        "currency": true,
+        "variant": true,
+        "metaDescription": true,
+        "ogDescription": true
+      }
+    }
+  ],
+  "beforeSource": {
+    "directory": "Existing live category page, body and native SEO value verified",
+    "oil": "Native product and joined CJ variant CJYD199961001AZ, 20 Shopify variants including 8 single or double cases; observed prices in CHF"
+  },
+  "adminThemeLibrary": "https://admin.shopify.com/store/au3j0y-hq/themes",
+  "searchConsoleHistoricalOnly": "R279 for 2026-11-04..17",
+  "currentIndexingAfterAnyRecrawl": "UNKNOWN"
+}

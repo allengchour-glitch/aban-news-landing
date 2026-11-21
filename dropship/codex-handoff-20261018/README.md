@@ -1,3 +1,11 @@
+# R284 – SEO-Beschreibungen live und Theme-Status – 21.11.2026
+
+Zwei SEO-Beschreibungen für Kategorienübersicht und Öl-Sprühflasche live und in Shopify sowie öffentlichem HTML bestätigt. Der freigegebene Wechsel auf die geprüfte SEO-Kopie 214526394759 wurde vom Shopify-Connector abgelehnt. Technische Korrekturen weiterhin im Entwurf.
+
+[Bericht](R284-SEO-PUSH-20261121.md) · [Prüfbelege](runs/20261121-r284/SEO-PRUEFBELEG.json)
+
+---
+
 # R283 – Freigegebener Theme-Wechsel vom Connector abgelehnt – 21.11.2026
 
 Inhaber bestätigte den Livegang der namentlich benannten Modellvergleich-Kopie. Shopify-Connector lehnte ihn mit «Only agent-created themes can be published here» ab. Admin und vier öffentliche Seiten bestätigen weiterhin Haupttheme 214169584007. Die geprüfte Kopie 214532882823 ist in der Shopify-Theme-Bibliothek bereit.

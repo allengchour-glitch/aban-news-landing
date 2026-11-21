@@ -3490,3 +3490,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Übergabe](R283-UEBERGABE-20261121.md) · [Belege](runs/20261121-r283/THEME-PUBLIKATION.json)
 
 [LUXESTYLE_R283_20261121]
+
+### R284 – SEO auf Kategorienübersicht und Produkt
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Kategorienübersicht | Such- und Open-Graph-Beschreibung durch passende Kategorien ersetzt. | Live. Bestehende URL und Seiteninhalt bestätigt. |
+| Öl-Sprühflasche | Rabatt-Standardtext im Such-Snippet durch verifizierte Produktdetails ersetzt. | Live auf der Produktseite und zwei beigen Varianten. Beträge und Variantenwahl erneut geprüft. |
+| Technisches SEO | 561 Theme-Dateien abgeglichen, genau vier Unterschiede bestätigt und die benannte SEO-Kopie zur Veröffentlichung übergeben. | Connector verweigert die Veröffentlichung. R279 bleibt UNPUBLISHED. FR-Artikel weiter `noindex`, bisheriges Preisformat live bestätigt. |
+
+[Bericht](R284-SEO-PUSH-20261121.md) · [Prüfbelege](runs/20261121-r284/SEO-PRUEFBELEG.json)
+
+[LUXESTYLE_R284_20261121]

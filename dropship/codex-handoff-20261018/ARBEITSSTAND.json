@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 283,
-  "updatedAt": "2026-11-21T07:34:57Z",
+  "revision": 284,
+  "updatedAt": "2026-11-21T08:17:57Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -19655,6 +19655,12 @@
         "report": "dropship/codex-handoff-20261018/R283-UEBERGABE-20261121.md",
         "proof": "dropship/codex-handoff-20261018/runs/20261121-r283/THEME-PUBLIKATION.json",
         "status": "LIVE_APPROVED_CONNECTOR_REFUSED_PUBLISH_MEMORY_UPDATED_CLAUDE_RECEIPT_UNKNOWN"
+      },
+      "run284": {
+        "at": "2026-11-21T08:17:57Z",
+        "status": "R284_HANDOFF_READY_RECEIPT_UNKNOWN",
+        "report": "dropship/codex-handoff-20261018/R284-SEO-PUSH-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r284/SEO-PRUEFBELEG.json"
       }
     },
     {
@@ -39467,6 +39473,12 @@
         "atUTC": "2026-11-20T23:54:18Z",
         "liveContentChanges": 7,
         "stagedSeoTheme": "214526394759"
+      },
+      "run284": {
+        "at": "2026-11-21T08:17:57Z",
+        "status": "TWO_COPY_CHANGES_VERIFIED_LIVE_TECH_THEME_REFUSED",
+        "report": "dropship/codex-handoff-20261018/R284-SEO-PUSH-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r284/SEO-PRUEFBELEG.json"
       }
     },
     {
@@ -50784,6 +50796,15 @@
         "dropship/codex-handoff-20261018/R283-UEBERGABE-20261121.md",
         "dropship/codex-handoff-20261018/runs/20261121-r283/THEME-PUBLIKATION.json"
       ]
+    },
+    {
+      "revision": 284,
+      "at": "2026-11-21T08:17:57Z",
+      "summary": "Zwei SEO-Beschreibungen für Kategorienübersicht und Öl-Sprühflasche live und in Shopify sowie öffentlichem HTML bestätigt. Der freigegebene Wechsel auf die geprüfte SEO-Kopie 214526394759 wurde vom Shopify-Connector abgelehnt. Technische Korrekturen weiterhin im Entwurf.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R284-SEO-PUSH-20261121.md",
+        "dropship/codex-handoff-20261018/runs/20261121-r284/SEO-PRUEFBELEG.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -52897,7 +52918,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 283,
+    "latestCanonicalRevision": 284,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -54167,6 +54188,23 @@
       "adminThemeLibrary": "https://admin.shopify.com/store/au3j0y-hq/themes",
       "claudeReceipt": "UNKNOWN",
       "livePreference": "Veröffentlichung verifizierter freigegebener Änderungen ist das Ziel. Jeweils fortgeltende Freigaben, Qualitätsvoraussetzungen und verfügbare Publikationswege prüfen."
+    },
+    "run284": {
+      "atUTC": "2026-11-21T08:17:57Z",
+      "localDate": "2026-11-21",
+      "summary": "Zwei SEO-Beschreibungen für Kategorienübersicht und Öl-Sprühflasche live und in Shopify sowie öffentlichem HTML bestätigt. Der freigegebene Wechsel auf die geprüfte SEO-Kopie 214526394759 wurde vom Shopify-Connector abgelehnt. Technische Korrekturen weiterhin im Entwurf.",
+      "report": "dropship/codex-handoff-20261018/R284-SEO-PUSH-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/runs/20261121-r284/SEO-PRUEFBELEG.json",
+      "scope": "seo push",
+      "theme": "214526394759",
+      "themeName": "LuxeStyle SEO 21.11.2026 R279",
+      "themePublished": false,
+      "activeTheme": "214169584007",
+      "seoConnectorStatus": "PUBLISH_REFUSED_AGENT_CREATED_THEME_REQUIRED",
+      "liveDescriptions": 2,
+      "pagesVerified": 4,
+      "searchConsoleRepeat": false,
+      "claudeReceipt": "UNKNOWN"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -81376,5 +81414,22 @@
     "adminThemeLibrary": "https://admin.shopify.com/store/au3j0y-hq/themes",
     "claudeReceipt": "UNKNOWN",
     "livePreference": "Veröffentlichung verifizierter freigegebener Änderungen ist das Ziel. Jeweils fortgeltende Freigaben, Qualitätsvoraussetzungen und verfügbare Publikationswege prüfen."
+  },
+  "run284": {
+    "atUTC": "2026-11-21T08:17:57Z",
+    "localDate": "2026-11-21",
+    "summary": "Zwei SEO-Beschreibungen für Kategorienübersicht und Öl-Sprühflasche live und in Shopify sowie öffentlichem HTML bestätigt. Der freigegebene Wechsel auf die geprüfte SEO-Kopie 214526394759 wurde vom Shopify-Connector abgelehnt. Technische Korrekturen weiterhin im Entwurf.",
+    "report": "dropship/codex-handoff-20261018/R284-SEO-PUSH-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/runs/20261121-r284/SEO-PRUEFBELEG.json",
+    "scope": "seo push",
+    "theme": "214526394759",
+    "themeName": "LuxeStyle SEO 21.11.2026 R279",
+    "themePublished": false,
+    "activeTheme": "214169584007",
+    "seoConnectorStatus": "PUBLISH_REFUSED_AGENT_CREATED_THEME_REQUIRED",
+    "liveDescriptions": 2,
+    "pagesVerified": 4,
+    "searchConsoleRepeat": false,
+    "claudeReceipt": "UNKNOWN"
   }
 }
