@@ -1,3 +1,19 @@
+# R301 – LuxeStyle-Abendlauf – 21.11.2026
+
+Abendplanung frisch bis Ende 28.11. geprüft. 23 aktive Objekte und 30 Kanalplätze, keine neuen Termine. Projektor A erneut kaufbar bestätigt, denselben 18-Sekunden-Master weiter vorbereitet und den französischen Beschrieb als einzige Verkaufsfreigabe benannt. Klaviyo verlangt erneute Anmeldung.
+
+[Abendprüfung, Master und Verkaufsaktion](R301-ABENDLAUF-20261121.md)
+
+---
+
+# R300 – Separate Startseiten-Kopie – 21.11.2026
+
+Kopie des aktuellen Live-Themes nach Inhaberzustimmung erstellt und nur die freigegebene Startseite gespeichert. Desktop, Hochformat und 16 Originalkacheln geprüft. Shopify-Verbindung verweigert die Veröffentlichung.
+
+[Shopify-Freigabestand und Admin-Link](R300-STARTSEITE-VEROEFFENTLICHUNG-20261121.md)
+
+---
+
 # R299 – Startseiten-Veröffentlichung vorbereitet – 21.11.2026
 
 Beide freigegebenen 60-fps-Filme in Shopify Files geprüft und die Startseite als wartende Version gespeichert. Der Shopify-Commit bündelt 13 zusätzliche Theme-Dateien. Getrennte Live-Schaltung wartet auf Zustimmung zur Kopie.
