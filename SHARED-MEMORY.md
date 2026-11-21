@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Checkout nur mit passendem Preisbeleg exportieren ·21.11.2026
+
+Fehler mit echter Sync-Funktion und erfundenen Daten nachgestellt: Katalog14EUR plus gespeicherter19EUR-Checkout blieb ohne API-Schlüssel oder nach Quellenfehler kaufbar. Export übernimmt Kaufziel jetzt nur bei bekanntem identischem Integer-Centbetrag und identischer Währung; unbekannte Belege bleiben ohne Kaufziel, Status/Karten erhalten. Centbeträge werden exakt statt gerundet angezeigt. Zwölf Testmethoden und acht bestehende Demo-Serverprüfungen grün; neun neue Methoden treffen die alte Fassung mit28 Assertion-Fehlschlägen ohne Laufzeitfehler. Vollständige Offline-Gegenprobe erhält alle53 bestehenden DE/EN-Kartenpreise und51 Kaufziele, auch die zwei EN-Sperren; null Anbieteraufrufe. Keine realen Preise/Links/Konten oder Automationen geändert. Echte CI und Freigabestand im PR; kein Stripe-Schreiblauf aus diesem Auftrag. Finanzielle Wirkung nicht gemessen. Kanonische Übergabe beachten.
+
 ## Codex: unvollständige englische Angebote im eigenen Shop sperren ·21.11.2026
 
 Reproduziert: en-prompt-bibliothek/en-vorlagen-set lieferten ohne passende EN-Quellen nur fünf generische Prompts statt100+/40Vorlagen. Beide im Quellkatalog jetzt standalone:true/available:false: kein eigenes Kaufziel, kein Ersatzbau, kein Einbau ins Branchenbundle.22 Karten bleiben,20 andere Kaufziele/Preise unverändert. Eigene Suchdaten nennen klare Quelllücke ohne Offer; Bundlebetrag aus frisch bestätigtem aktivem Stripe-Link39EUR statt altem79EUR. Stripe-Kontolinks ausdrücklich nicht deaktiviert; eigene vollständige EN-Quellen beziehungsweise separate Kontofreigabe bleiben erforderlich.32 Paket-,20 Generator- und3 Verfügbarkeitstests sowie vier Browserfälle grün. Keine Konto-/Preis-/Secretänderung, neue Automation oder Frequenz; echte CI/Bereitstellung im PR. Finanzielle Wirkung ungemessen. Details in kanonischer Übergabe.

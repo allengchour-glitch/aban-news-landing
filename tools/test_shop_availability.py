@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
+import urllib.error
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,19 +40,126 @@ class ShopVerfuegbarkeitTest(unittest.TestCase):
                                 'cents': 1200, 'currency': 'eur'},
         }
 
-    def run_sync(self, key='sk_demo_not_real'):
+    def run_sync(self, key='sk_demo_not_real', api=None):
         self.catalog.write_text(json.dumps(self.products))
         self.state.write_text(json.dumps(self.old_state))
         argv = ['stripe_sync.py', '--catalog', str(self.catalog), '--state', str(self.state), '--out', str(self.out)]
         env = {'STRIPE_API_KEY': key, 'DOWNLOAD_SALT': 'nur-demo-salt'}
         with patch('sys.argv', argv), patch.dict(os.environ, env, clear=True), \
-             patch.object(sync, 'stripe', side_effect=AssertionError('Kein Stripe-Schreibaufruf im Test')) as write_api, \
+             patch.object(sync, 'stripe', side_effect=api or AssertionError('Kein Stripe-Schreibaufruf im Test')) as write_api, \
              patch.object(sync, 'stripe_get', side_effect=AssertionError('Kein Stripe-Leseaufruf im Test')) as read_api, \
              contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(sync.main(), 0)
-            write_api.assert_not_called()
+            if api is None:
+                write_api.assert_not_called()
             read_api.assert_not_called()
         return {p['slug']: p for p in json.loads(self.out.read_text())}
+
+    def test_abweichender_betrag_ohne_schluessel_ohne_kaufziel(self):
+        self.products[0]['available'] = True
+        result = self.run_sync('')
+        self.assertEqual(result['en-demo-eigen']['buy'], '')
+        self.assertEqual(result['en-demo-eigen']['price'], '€14')
+        self.assertEqual(json.loads(self.state.read_text()), self.old_state)
+        self.assertEqual(result['en-demo-branche']['buy'], self.old_state['en-demo-branche']['link'])
+
+    def test_abweichende_waehrung_ohne_schluessel_ohne_kaufziel(self):
+        for currency in ('chf', 'usd'):
+            with self.subTest(currency=currency):
+                self.products[0]['available'] = True
+                self.products[0]['price_cents'] = 1900
+                self.old_state['en-demo-eigen']['currency'] = currency
+                result = self.run_sync('')
+                self.assertEqual(result['en-demo-eigen']['buy'], '')
+                self.assertEqual(result['en-demo-eigen']['price'], '€19')
+                self.assertEqual(json.loads(self.state.read_text()), self.old_state)
+
+    def test_fehlender_oder_ungueltiger_preisbeleg_bleibt_unbekannt(self):
+        self.products[0]['available'] = True
+        self.products[0]['price_cents'] = 1900
+        for field, value in (('cents', None), ('cents', '1900'), ('cents', 1900.0),
+                             ('cents', True), ('cents', 'kaputt'), ('currency', None),
+                             ('link', None), ('link', False)):
+            with self.subTest(field=field, value=value):
+                old = dict(self.old_state['en-demo-eigen'])
+                self.old_state['en-demo-eigen'][field] = value
+                result = self.run_sync('')
+                self.assertEqual(result['en-demo-eigen']['buy'], '')
+                self.assertEqual(json.loads(self.state.read_text()), self.old_state)
+                self.old_state['en-demo-eigen'] = old
+        for field in ('cents', 'currency'):
+            with self.subTest(fehlendes_feld=field):
+                value = self.old_state['en-demo-eigen'].pop(field)
+                result = self.run_sync('')
+                self.assertEqual(result['en-demo-eigen']['buy'], '')
+                self.assertEqual(json.loads(self.state.read_text()), self.old_state)
+                self.old_state['en-demo-eigen'][field] = value
+
+    def test_api_fehler_belassen_keinen_falschen_checkout(self):
+        self.products[0]['available'] = True
+        for currency, schritte in (('eur', ('/prices', '/payment_links',
+                                           '/payment_links/plink_demo_eigen', '/prices/price_demo_eigen')),
+                                   ('chf', ('/products', '/prices', '/payment_links'))):
+            self.old_state['en-demo-eigen']['currency'] = currency
+            for schritt in schritte:
+                with self.subTest(currency=currency, schritt=schritt):
+                    def antwort(path, params, key):
+                        if path == schritt:
+                            raise OSError('synthetischer Quellenfehler')
+                        return {'id': 'demo_neu', 'url': 'https://example.invalid/neu-14'}
+                    result = self.run_sync(api=antwort)
+                    self.assertEqual(result['en-demo-eigen']['buy'], '')
+                    self.assertEqual(json.loads(self.state.read_text()), self.old_state)
+                    self.assertEqual(result['en-demo-branche']['buy'], self.old_state['en-demo-branche']['link'])
+
+    def test_passender_checkout_nach_erfolgreichem_demo_update(self):
+        self.products[0]['available'] = True
+        def antwort(path, params, key):
+            return {'id': 'demo_neu', 'url': 'https://example.invalid/neu-14'}
+        result = self.run_sync(api=antwort)
+        self.assertEqual(result['en-demo-eigen']['buy'], 'https://example.invalid/neu-14')
+        self.assertEqual(result['en-demo-eigen']['price'], '€14')
+        self.assertEqual(json.loads(self.state.read_text())['en-demo-eigen']['cents'], 1400)
+
+    def test_http_fehler_haelt_alten_preislink_zurueck(self):
+        self.products[0]['available'] = True
+        for code in (401, 403, 429, 500):
+            with self.subTest(http=code):
+                def antwort(path, params, key):
+                    raise urllib.error.HTTPError('https://example.invalid', code,
+                                                 'Demo-Fehler', {}, io.BytesIO(b'Nur Testdaten'))
+                result = self.run_sync(api=antwort)
+                self.assertEqual(result['en-demo-eigen']['buy'], '')
+                self.assertEqual(json.loads(self.state.read_text()), self.old_state)
+                self.assertEqual(result['en-demo-branche']['buy'], self.old_state['en-demo-branche']['link'])
+
+    def test_fehlende_cents_werden_auch_mit_key_nicht_angenommen(self):
+        self.products[0]['available'] = True
+        self.old_state['en-demo-eigen'].pop('cents')
+        result = self.run_sync()
+        self.assertEqual(result['en-demo-eigen']['buy'], '')
+        self.assertEqual(json.loads(self.state.read_text()), self.old_state)
+
+    def test_neues_verfuegbares_produkt_ohne_key_bleibt_ohne_kaufziel(self):
+        self.products[0]['available'] = True
+        self.old_state.pop('en-demo-eigen')
+        result = self.run_sync('')
+        self.assertEqual(len(result), len(self.products))
+        self.assertEqual(result['en-demo-eigen']['buy'], '')
+        self.assertEqual(result['en-demo-eigen']['price'], '€14')
+        self.assertEqual(json.loads(self.state.read_text()), self.old_state)
+
+    def test_centbetraege_werden_ohne_rundung_angezeigt(self):
+        for currency, expected in (('eur', '€12.95'), ('chf', 'CHF 12.95'), ('usd', '$12.95')):
+            with self.subTest(currency=currency):
+                self.products[1]['price_cents'] = 1295
+                self.products[1]['currency'] = currency
+                self.old_state['en-demo-branche']['cents'] = 1295
+                self.old_state['en-demo-branche']['currency'] = currency
+                result = self.run_sync('')
+                self.assertEqual(result['en-demo-branche']['price'], expected)
+                self.assertEqual(result['en-demo-branche']['buy'], self.old_state['en-demo-branche']['link'])
+                self.assertEqual(json.loads(self.state.read_text()), self.old_state)
 
     def test_gesperrtes_produkt_bleibt_trotz_key_ohne_kaufziel_und_api(self):
         for key in ('sk_demo_not_real', ''):
