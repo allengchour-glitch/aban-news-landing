@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 296,
-  "updatedAt": "2026-11-21T16:44:09Z",
+  "revision": 297,
+  "updatedAt": "2026-11-21T16:55:09Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50923,6 +50923,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R296-TECH-MOTIVE-20261121.md"
       ]
+    },
+    {
+      "revision": 297,
+      "at": "2026-11-21T16:55:09Z",
+      "summary": "Alle 16 Einkaufskacheln der Shopify-Theme-Vorschau mit Originalbildern verfügbarer Kategorieprodukte ausgestattet. Zuschnitte, Lesbarkeit und Links bei 1440, 390 und 320 px geprüft. Vorschau gespeichert.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R297-ORIGINAL-KATEGORIEBILDER-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -81989,6 +81997,128 @@
         "sha256": "56b121034d3198d04e6657c216f0a5cbc2482c0381934dbe5096eee9adc5f50a"
       }
     ],
+    "claudeReceipt": "unknown"
+  },
+  "run297": {
+    "date": "2026-11-21",
+    "scope": "Startseiten-Einkaufskacheln in vorhandener Shopify-Vorschau",
+    "report": "dropship/codex-handoff-20261018/R297-ORIGINAL-KATEGORIEBILDER-20261121.md",
+    "reportBlob": "92d17c19814fadd92c66ccc7bd39cd126bf2be37",
+    "shop": 94368563585,
+    "previewTheme": 214208577927,
+    "mainTheme": 214169584007,
+    "commit": "6ffd299748129689ddc1aed65f53be200137b5eb",
+    "saved": [
+      "assets/luxe-edit.css",
+      "templates/index.json"
+    ],
+    "themeRole": "UNPUBLISHED",
+    "published": false,
+    "originalImages": 16,
+    "productEvidence": [
+      {
+        "collection": "selbst-gestalten-1",
+        "productId": 15422811439489,
+        "variantId": 55777948008833,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/rsi7j3aos1oot7eyjog4.png?v=1781719036"
+      },
+      {
+        "collection": "damen-mode",
+        "productId": 16615552614791,
+        "variantId": 67666854445447,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5d5418a8-6552-49e0-b48e-20b57f1b31db.jpg?v=1791739390"
+      },
+      {
+        "collection": "fur-ihn",
+        "productId": 16655747219847,
+        "variantId": 67757023854983,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb34d7c9-4b7c-4e74-9b94-11a608e7557a.jpg?v=1792577850"
+      },
+      {
+        "collection": "sub-baby-kids",
+        "productId": 15450837680513,
+        "variantId": 55889803706753,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1126921759284.jpg?v=1783469849"
+      },
+      {
+        "collection": "schuhe",
+        "productId": 15413083898241,
+        "variantId": 55748880073089,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5709219f-d799-4308-a56e-b376dd24765f.jpg?v=1780268122"
+      },
+      {
+        "collection": "sub-taschen",
+        "productId": 16603738472839,
+        "variantId": 67790139130247,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1623394885274.jpg?v=1790910695"
+      },
+      {
+        "collection": "schmuck",
+        "productId": 15421167042945,
+        "variantId": 55775135269249,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/945cd3e7-0f3c-4d14-aa52-06f70a4123fc.jpg?v=1780877301"
+      },
+      {
+        "collection": "uhren",
+        "productId": 15412945224065,
+        "variantId": 55747981214081,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1156d146-6e27-4d13-b46d-39c2a83da89a.jpg?v=1780244334"
+      },
+      {
+        "collection": "beauty-pflege",
+        "productId": 15453768089985,
+        "variantId": 67789787988359,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a6d5bfd7-5789-4709-b44e-545c08660b82.jpg?v=1783805957"
+      },
+      {
+        "collection": "wohnen-dekoration",
+        "productId": 15493718147457,
+        "variantId": 67789587939719,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/821d3b93-b919-4b17-8d0c-e9d29516a11e.jpg?v=1786396297"
+      },
+      {
+        "collection": "sub-kueche",
+        "productId": 15504177136001,
+        "variantId": 67789402210695,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1619490117574.jpg?v=1787124960"
+      },
+      {
+        "collection": "elektronik-technik",
+        "productId": 15521256604033,
+        "variantId": 68122445283719,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/680d1ad3-95b3-47bd-9522-899efd79a301.jpg?v=1788153090"
+      },
+      {
+        "collection": "gaming",
+        "productId": 15452706013569,
+        "variantId": 67790002520455,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1723897508855418880.jpg?v=1783660874"
+      },
+      {
+        "collection": "hundewelt",
+        "productId": 16654280753543,
+        "variantId": 67747895443847,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6415c179-9d1e-43f2-8b98-f14786523155.jpg?v=1792469527"
+      },
+      {
+        "collection": "sport-outdoor",
+        "productId": 16638445683079,
+        "variantId": 67801548456327,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cf60dc11-c6ca-4f17-9df3-33a369aeb1be_trans.jpg?v=1792008328"
+      },
+      {
+        "collection": "premium-geschenke",
+        "productId": 16610052637063,
+        "variantId": 67948149768583,
+        "image": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f063c370-68c0-4a22-b95e-06ae6c3a3a34_fine.jpg?v=1791347186"
+      }
+    ],
+    "verifiedViewportWidths": [
+      1440,
+      390,
+      320
+    ],
+    "publicComparison": true,
     "claudeReceipt": "unknown"
   }
 }
