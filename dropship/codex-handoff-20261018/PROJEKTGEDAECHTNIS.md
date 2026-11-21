@@ -1,3 +1,11 @@
+# R292 – Startseite mit vollflächigem Scroll-Hintergrund – 21.11.2026
+
+Startseitenfilm hinter Titel und Schaltflächen gelegt, Kleidpassage durch einen Sieben-Sekunden-Schnitt aus Atelier und Keramik ersetzt und den separaten Kleid-Banner durch zwei Wohnprodukte abgelöst. Theme-Kopie gespeichert und geprüft; Live-Theme weiterhin MAIN.
+
+[Theme- und Medienprüfung](R292-STARTSEITE-20261121.md)
+
+---
+
 # R291 – Französische Produktseite und Qualitätsprüfung – 21.11.2026
 
 Vollständigen französischen Projektor-Beschrieb und Modellauswahl A–G zur Freigabe vorbereitet. Sieben Varianten in der lokalen Mobil- und Desktopvorschau geprüft. Kamera- und Lichttest für den bestehenden 18-Sekunden-Master dokumentiert. Drei Metricool-Sperren und die unveröffentlichte Startseitenkopie erneut bestätigt.
