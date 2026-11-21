@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Schweizer Google-Sichtbarkeit, zweite Runde · 21.11.2026
+
+Search Console Web Schweiz (22.10.–18.11.): Fussball & Fanshop 98 Einblendungen/0 Klicks, Damen-Jeans 75/0, Handwärmer 58/0. Vorgesehen sind nur SEO-Titel und SEO-Beschreibungen der drei Sammlungen nach Abgleich mit dem sichtbaren Sortiment. Vereins-Fanshop-Suchanfragen belegen keine Verfügbarkeit offizieller Vereinsware.
+
 ## Codex: Schweizer Google-Sichtbarkeit · 21.11.2026
 
 Search Console Web, Schweiz, 22.10.–18.11. final: Büro-Organizer 186 Einblendungen/0 Klicks/Position 66.6, Beamer 159/0/64.7, Damen-Sportbekleidung 106/0/57.3. Geplant: ausschliesslich SEO-Titel und SEO-Beschreibungen dieser drei Sammlungen anhand Suchanfragen und sichtbarer Artikel präzisieren (`buero-organizer-ablage`, `beamer-heimkino`, `damen-sportbekleidung`). Ausgangswerte für spätere Nachmessung; tiefe Positionen erklären einen Teil der fehlenden Klicks. Live in Shopify geschrieben und zurückgelesen. Öffentliche Metadaten geprüft: buero-organizer-ablage HTTP 200 – Schreibtisch-Organizer, Stiftehalter & Ablage | LuxeStyle; beamer-heimkino HTTP 200 – Beamer fürs Handy & Heimkino: Mini-Beamer | LuxeStyle; damen-sportbekleidung HTTP 200 – Damen-Sportbekleidung: Leggings & Yoga | LuxeStyle. Google-Rankingwirkung und erneute Crawls noch offen.
