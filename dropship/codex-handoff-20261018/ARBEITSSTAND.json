@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 293,
-  "updatedAt": "2026-11-21T15:30:18Z",
+  "revision": 294,
+  "updatedAt": "2026-11-21T15:51:39Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50899,6 +50899,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R293-4K60-WOHNEN-20261121.md"
       ]
+    },
+    {
+      "revision": 294,
+      "at": "2026-11-21T15:51:39Z",
+      "summary": "Einen 12-Sekunden-Websitefilm mit vollständiger virtueller 360°-Kamerafahrt um fünf belegte Produktmotive gerendert. UHD- und separater Hochformatexport sind bei konstanten 60 fps geprüft. Lokale Vorschauen ohne neue Shopify-Bindung.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R294-360-GALERIE-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -81833,6 +81841,51 @@
     "checkedInChromium": true,
     "shopifyBound": false,
     "socialWrites": 0,
+    "claudeReceipt": "unknown"
+  },
+  "run294": {
+    "atUTC": "2026-11-21T15:51:39Z",
+    "localDate": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R294-360-GALERIE-20261121.md",
+    "masterId": "luxe-home-atelier-multishot-20261116",
+    "virtualCameraOrbitDegrees": 360,
+    "renderedFPS": 60,
+    "framesPerExport": 720,
+    "durationSeconds": 12,
+    "productIds": [
+      "15421167042945",
+      "15411554320769",
+      "15524879008129",
+      "16609707622791",
+      "16606106157447"
+    ],
+    "exports": [
+      {
+        "file": "LuxeStyle-360-4K60.mp4",
+        "width": 3840,
+        "height": 2160,
+        "bytes": 13293157,
+        "sha256": "eec6cdcbad6fb9a5400ffb3524a9a3cbf3c2c39f82fdf0d684350f8aaf9ada2f"
+      },
+      {
+        "file": "LuxeStyle-360-Mobil-60fps.mp4",
+        "width": 1080,
+        "height": 1920,
+        "bytes": 6602151,
+        "sha256": "e3508445285f769a6a25c6540d5da20a3449f48d9d19bc0f54263a21f99bd719"
+      }
+    ],
+    "localOnly": true,
+    "shopifyBound": false,
+    "checkedAngleFrames": [
+      0,
+      129,
+      277,
+      442,
+      590,
+      719
+    ],
+    "checkedInChromium": true,
     "claudeReceipt": "unknown"
   }
 }
