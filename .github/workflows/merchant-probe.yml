@@ -22,6 +22,7 @@ on:
           - css-produktlimit
           - css-quellen
           - css-angebote
+          - 404-gegenprobe
         default: account-probe
   push:
     branches: [claude/merchant-probe-1111]

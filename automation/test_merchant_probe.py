@@ -484,5 +484,37 @@ class ShoppingIssueReportTests(unittest.TestCase):
         post.assert_not_called()
 
 
+
+class RemovedOfferReadbackTests(unittest.TestCase):
+    def check(self, statuses, control_source=None):
+        control_source = control_source or f"accounts/{probe.ACCOUNT_ID}/dataSources/{probe.VERIFICATION_SOURCE_ID}"
+        control = {"offerId": probe.CONTROL_OFFER_ID, "contentLanguage": "de",
+                   "feedLabel": probe.VERIFICATION_FEED_LABEL, "dataSource": control_source}
+        transport = Mock(side_effect=[Mock(status_code=code, json=Mock(return_value=control))
+                                      for code in statuses])
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            rc = probe._verify_removed_offers("stub-secret", transport)
+        return rc, [json.loads(line) for line in output.getvalue().splitlines()], transport
+
+    def test_confirm_only_exact_404s_and_positive_control(self):
+        rc, records, transport = self.check([404] * 5 + [200])
+        self.assertEqual((rc, records[-1]["notFound"], records[-1]["controlPresent"]), (0, 5, True))
+        self.assertEqual(transport.call_count, 6)
+        self.assertNotIn("stub-secret", json.dumps(records))
+        self.assertTrue(all(c.kwargs["allow_redirects"] is False for c in transport.call_args_list))
+
+    def test_permission_and_quota_failures_are_unknown(self):
+        rc, records, _ = self.check([403, 429, 500, 404, 404, 200])
+        self.assertEqual(rc, 2)
+        self.assertEqual([row["result"] for row in records[:3]], ["unknown"] * 3)
+        self.assertEqual(records[-1]["notFound"], 2)
+
+    def test_wrong_source_control_does_not_confirm_deletions(self):
+        rc, records, _ = self.check([404] * 5 + [200], control_source="unexpected")
+        self.assertEqual((rc, records[-1]["result"], records[-1]["controlPresent"]),
+                         (2, "readback_pending", False))
+
+
 if __name__ == "__main__":
     unittest.main()

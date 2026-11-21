@@ -34,6 +34,7 @@ CSS_LIMIT_CASE = "css-produktlimit"
 CSS_LIMIT_SCOPE = "ADS_EEA"
 SOURCE_CASE = "css-quellen"
 REPORT_CASE = "css-angebote"
+VERIFY_CASE = "404-gegenprobe"
 
 
 def _emit(obj, stream=None):
@@ -41,7 +42,7 @@ def _emit(obj, stream=None):
 
 
 def _unknown(case, code):
-    _emit({"marker": MARKER, "case": case if case in CASES or case in (CSS_LIMIT_CASE, SOURCE_CASE, REPORT_CASE) else "unknown", "result": "unknown", "errorCode": code})
+    _emit({"marker": MARKER, "case": case if case in CASES or case in (CSS_LIMIT_CASE, SOURCE_CASE, REPORT_CASE, VERIFY_CASE) else "unknown", "result": "unknown", "errorCode": code})
     return 2
 
 
@@ -227,13 +228,59 @@ def _read_shopping_report(bearer, post=None):
     return 0
 
 
+REMOVED_OFFER_IDS = (
+    "shopify_ZZ_15447889969537_56063730352513",
+    "shopify_ZZ_15447889969537_56063730549121",
+    "shopify_ZZ_15447889969537_56063730581889",
+    "shopify_ZZ_15447921066369_56052967244161",
+    "shopify_ZZ_15449171952001_55879851409793",
+)
+CONTROL_OFFER_ID = "shopify_ZZ_15447592272257_56063643877761"
+VERIFICATION_FEED_LABEL = "CHF_99383214465"
+VERIFICATION_SOURCE_ID = "10667445201"
+
+
+def _verify_removed_offers(bearer, get=None):
+    results = {}
+    for offer_id in (*REMOVED_OFFER_IDS, CONTROL_OFFER_ID):
+        spec = {"offerId": offer_id, "contentLanguage": "de", "feedLabel": VERIFICATION_FEED_LABEL}
+        key = _encoded_product_key(spec)
+        resource = f"accounts/{ACCOUNT_ID}/products/{key}"
+        status = None
+        state = "unknown"
+        try:
+            response = _api_get(f"https://{API_HOST}/products/v1/{resource}", bearer, get)
+            status = response.status_code
+            if status == 404:
+                state = "not_found"
+            elif status == 200:
+                product = response.json()
+                if (
+                    isinstance(product, dict)
+                    and all(product.get(field) == value for field, value in spec.items())
+                    and product.get("dataSource") == f"accounts/{ACCOUNT_ID}/dataSources/{VERIFICATION_SOURCE_ID}"
+                ):
+                    state = "present"
+        except Exception:
+            pass  # Ausnahmeinhalte können Zugangsdaten enthalten.
+        results[offer_id] = state
+        _emit({"marker": MARKER, "case": VERIFY_CASE, "result": state,
+               "offerId": offer_id, "httpStatus": status})
+
+    ok = results[CONTROL_OFFER_ID] == "present" and all(results[i] == "not_found" for i in REMOVED_OFFER_IDS)
+    _emit({"marker": MARKER, "case": VERIFY_CASE, "result": "ok" if ok else "readback_pending",
+           "notFound": sum(results[i] == "not_found" for i in REMOVED_OFFER_IDS),
+           "controlPresent": results[CONTROL_OFFER_ID] == "present"})
+    return 0 if ok else 2
+
+
 def _reader(case, env, bearer, get=None, post=None):
     # Produktmodus vor jedem API-Aufruf oder Erneuern der Zugangsdaten absichern.
     if env.get("REGISTRIEREN", "").strip().lower() == "true":
         return _unknown(case, "registration_blocked")
     if env.get("MERCHANT_ID", "").strip() != ACCOUNT_ID:
         return _unknown(case, "account_input_mismatch")
-    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE, REPORT_CASE):
+    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE, REPORT_CASE, VERIFY_CASE):
         return _unknown(case, "case_not_allowed")
 
     account_url = f"https://{API_HOST}/accounts/v1/accounts/{ACCOUNT_ID}"
@@ -249,6 +296,8 @@ def _reader(case, env, bearer, get=None, post=None):
         return _read_data_sources(bearer, get)
     if case == REPORT_CASE:
         return _read_shopping_report(bearer, post)
+    if case == VERIFY_CASE:
+        return _verify_removed_offers(bearer, get)
 
     spec = CASES[case]
     key = _encoded_product_key(spec)
@@ -524,7 +573,7 @@ def main():
     case = env.get("MERCHANT_CASE", "account-probe").strip() or "account-probe"
     if case == "account-probe":
         return _legacy_main()
-    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE, REPORT_CASE):
+    if case not in CASES and case not in (CSS_LIMIT_CASE, SOURCE_CASE, REPORT_CASE, VERIFY_CASE):
         return _unknown(case, "case_not_allowed")
     # Unzulässige Eingaben vor dem Lesen oder Erneuern der Zugangsdaten abweisen.
     if env.get("REGISTRIEREN", "").strip().lower() == "true":
