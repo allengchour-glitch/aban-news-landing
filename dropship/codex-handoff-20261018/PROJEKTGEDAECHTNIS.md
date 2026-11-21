@@ -1,3 +1,11 @@
+# R304 – Organische Kundengewinnung und Kaufweg – 21.11.2026
+
+Vier geprüfte SEO-Korrekturen im öffentlichen Haupttheme bestätigt, darunter die Indexierbarkeit des französischen Weihnachtsratgebers. Neun öffentliche Seiten geprüft. Retro-Sammlung mit sechs sichtbaren Artikeln zur Sortierfreigabe vorbereitet.
+
+[SEO-Livebeleg und Sortiervorschlag](R304-KUNDENGEWINNUNG-20261121.md)
+
+---
+
 # R303 – Mobiler Startseitenfilm – 21.11.2026
 
 Handy-Film auf 1,3 MB verkleinert und live geprüft. Im mobilen 1-Mbit/s-Browsertest nach dem Start 0 statt 12 Pufferpausen. Querformat nutzt die leichtere Datei und bei längerem Nachladen erscheint das Standbild.
