@@ -3736,3 +3736,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Sortierung und Prüfdaten](R305-RETRO-SORTIERUNG-20261121.md)
 
 [LUXESTYLE_R305_20261121]
+
+### R306 – Merchant-Anzeigenkontingent geprüft
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Merchant und Shopify | Neues Screenshot-Problem mit gezielten Konto-, Quellen-, Einzelangebots- und Protokolllesungen eingegrenzt. | Screenshot 19’100. Shopify-Quotenlauf 77’028 Kanalvarianten, null Abwahlen. Zwei Sprachquellen in der Live-Stichprobe bestätigt. Google-Quotenwert und Aufteilung offen. |
+| Kontingentantrag | Offizielle Google-Voraussetzungen und Formularzugriff geprüft, Textentwurf erstellt. | Google-Anmeldung erforderlich. Keine Einreichung und kein Feed-Write. |
+
+[Prüfbelege und Antragstext](R306-MERCHANT-ANZEIGENKONTINGENT-20261121.md)
+
+[LUXESTYLE_R306_20261121]
