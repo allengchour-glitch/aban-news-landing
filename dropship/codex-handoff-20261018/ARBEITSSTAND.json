@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 309,
-  "updatedAt": "2026-11-21T22:44:11Z",
+  "revision": 310,
+  "updatedAt": "2026-11-21T23:03:34Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51027,6 +51027,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R309-MERCHANT-ANGEBOTE-20261121.md"
       ]
+    },
+    {
+      "revision": 310,
+      "at": "2026-11-21T23:03:34Z",
+      "summary": "Fünf geprüfte veraltete 404-Angebote aus der deutschen Merchant-Hauptquelle entfernt. Google-Rücklesung: fünfmal HTTP 404, aktives Kontrollangebot HTTP 200. CSS-Kontingent weiterhin offen.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R310-MERCHANT-404-BEREINIGUNG-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82772,5 +82780,32 @@
     "commit": "54434fb431e150fb87be7bbf50ca7734ea83ded3",
     "tests": 32,
     "feedWrites": 0
+  },
+  "run310": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R310-MERCHANT-404-BEREINIGUNG-20261121.md",
+    "reportBlob": "b4df874ff91748f1690fc63086a4b03c23cd8df8",
+    "shop": 94368563585,
+    "merchantAccount": "5797470070",
+    "dataSource": "10667445201",
+    "language": "de",
+    "feedLabel": "CHF_99383214465",
+    "deleted": [
+      "shopify_ZZ_15447889969537_56063730352513",
+      "shopify_ZZ_15447889969537_56063730549121",
+      "shopify_ZZ_15447889969537_56063730581889",
+      "shopify_ZZ_15447921066369_56052967244161",
+      "shopify_ZZ_15449171952001_55879851409793"
+    ],
+    "confirmedNotFound": 5,
+    "positiveControl": "shopify_ZZ_15447592272257_56063643877761",
+    "positiveControlHttp": 200,
+    "quotaIssueStillPresentOnControl": true,
+    "googleProductLimit": 150000,
+    "probeRun": 44959863262,
+    "probeJob": 137016070082,
+    "probeCommit": "30a3c1326c403a9263701ea0b3794694bd805733",
+    "tests": 35,
+    "preDeleteBackupSha256": "8f429a406d5e1e7f7c0f3b4fd8d07a730229f134404fda43dfd2fe5071cd7b50"
   }
 }
