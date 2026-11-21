@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 292,
-  "updatedAt": "2026-11-21T14:38:42Z",
+  "revision": 293,
+  "updatedAt": "2026-11-21T15:30:18Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50891,6 +50891,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R292-STARTSEITE-20261121.md"
       ]
+    },
+    {
+      "revision": 293,
+      "at": "2026-11-21T15:30:18Z",
+      "summary": "Einen 11-Sekunden-Websitefilm in UHD bei konstanten 60 fps als lokale Vorschau gerendert und geprüft. Keramik, Aroma-Diffuser und Teppichläufer gezeigt. Gespeicherte Shopify-Vorschau aus R292 ohne neue Medienbindung.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R293-4K60-WOHNEN-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -81800,6 +81808,31 @@
       }
     },
     "operationalSocialWrites": 0,
+    "claudeReceipt": "unknown"
+  },
+  "run293": {
+    "atUTC": "2026-11-21T15:30:18Z",
+    "localDate": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R293-4K60-WOHNEN-20261121.md",
+    "masterId": "luxe-home-atelier-multishot-20261116",
+    "artifact": "LuxeStyle-Wohnen-4K60.mp4",
+    "sha256": "2da680ddba00e9c3832f1f243d907e99490f28436ee2ea826151d34a0e5edd08",
+    "width": 3840,
+    "height": 2160,
+    "fps": 60,
+    "frames": 660,
+    "seconds": 11,
+    "bytes": 14426209,
+    "actualSourceFPS": 24,
+    "method": "temporal_frame_blend",
+    "products": [
+      "15524879008129",
+      "15411554320769",
+      "16606106157447"
+    ],
+    "checkedInChromium": true,
+    "shopifyBound": false,
+    "socialWrites": 0,
     "claudeReceipt": "unknown"
   }
 }
