@@ -3525,3 +3525,17 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R287-MARGENPRUEFUNG-20261121.md) · [Katalogabgleich](runs/20261121-r287/KATALOG-ABGLEICH.json)
 
 [LUXESTYLE_R287_20261121]
+
+### R288 – 14-Uhr-Lauf, Auslieferung und Aufnahmerahmen
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Konten und Plan | Shopify und sechs Metricool-Kanäle bestätigt. Acht Tage bis einschliesslich 28.11. und fällige Zustände gelesen. | 26 aktive Planobjekte, 34 Kanalplätze, 15 gehaltene Entwürfe im erweiterten Fenster. Am 25.11. nur Threads, am 26.–28.11. auf allen Kanälen Lücken. |
+| Auslieferung | Zwei bestehende PUBLISHED-Meldungen gelesen und die Medien-URI des neuen Threads-Fehlers geprüft. | TikTok und YouTube 13:00 veröffentlicht. Threads 14:00 ERROR. Shopify lieferte das JPEG als HTTP 200, Ursache beim Zustelldienst offen. Kein Retry und keine eigene Veröffentlichung. |
+| Produkt und Master | A-Variante und Bild frisch verifiziert, transparente 9:16-Aufnahmeschablone erstellt und Schwarzbeginn der Altquelle gemessen. | A ist im Shop für CHF 34.90 verfügbar. Der erste sichtbare Altframe liegt bei 0,16 s. Passende native A-Rohaufnahmen, Motiv- und Rechtebeleg sowie Abnahme fehlen. Storyboard und sechs Kanaltexte sind im Bericht. |
+| Verkauf | DE- und FR-Variante öffentlich gelesen. Einen engen FR-Entwurf für Überschrift und Hinweis vorbereitet. | Beide HTTP 200. Deutsch im französischen Vergleich bleibt belegt. Entwurf zur Freigabe. DE-Livefreigabe R283 bleibt als erteilt und vom Connector blockiert dokumentiert. |
+| Messung und Zugang | R278-Teilmessungen wiederverwendet und Klaviyo-Konto eng gegengeprüft. DNS-Stand aus R281 gelesen. | Keine neue Kennzahlenabfrage. Klaviyo verlangt erneute Anmeldung, Flow-Report unbekannt. Authentifizierter DNS-Schreibzugang fehlt. |
+
+[Bericht und Kanaltexte](R288-REPORT-20261121.md)
+
+[LUXESTYLE_R288_20261121]
