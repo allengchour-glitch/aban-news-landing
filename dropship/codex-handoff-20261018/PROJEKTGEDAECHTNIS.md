@@ -1,3 +1,11 @@
+# R310 – Fünf veraltete Merchant-Angebote entfernt – 21.11.2026
+
+Fünf geprüfte veraltete 404-Angebote aus der deutschen Merchant-Hauptquelle entfernt. Google-Rücklesung: fünfmal HTTP 404, aktives Kontrollangebot HTTP 200. CSS-Kontingent weiterhin offen.
+
+[Löschbeleg und offene Merchant-Themen](R310-MERCHANT-404-BEREINIGUNG-20261121.md)
+
+---
+
 # R309 – Betroffene Merchant-Angebote – 21.11.2026
 
 Merchant-Reports bestätigt in 25 Angebotszeilen 13 aktuelle CSS-Fälle, alle mit aktiven Shopify-Varianten. Fünf separate 404-Angebote und sieben Bildfälle abgegrenzt. Dauerhafte Löschung der fünf 404-Angebote zur konkreten Bestätigung vorgelegt.
