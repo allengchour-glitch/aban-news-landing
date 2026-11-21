@@ -3590,3 +3590,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Startseiten- und Medienbeleg](R292-STARTSEITE-20261121.md)
 
 [LUXESTYLE_R292_20261121]
+
+### R293 – UHD-Filmvorschau
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Websitefilm | Aus zwei vorhandenen Ausschnitten und zwei aktuellen Shopbildern einen stummen Schnitt mit Keramik, Diffuser und Teppichläufer erstellt. | 11 Sekunden, 3840 × 2160, konstant 60 fps mit berechneten Zwischenbildern. Alle 660 Frames dekodiert. Chromium-Sprünge getestet. Lokale Vorschau. |
+| Shopify | Aktuelle Produktzuordnung und verfügbaren Teppichläufer geprüft. | Theme-Kopie weiter mit der Webfassung aus R292. Kein Shopify- oder Metricool-Write. |
+
+[Film- und Produktbeleg](R293-4K60-WOHNEN-20261121.md)
+
+[LUXESTYLE_R293_20261121]
