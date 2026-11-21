@@ -1,3 +1,11 @@
+# R296 – Neun Produkte in der 360°-Galerie – 21.11.2026
+
+Websitefilm mit Sternenlicht-Projektor und marineblauem Mini-Staubsauger auf neun Produkte und 20 Sekunden erweitert. UHD- und Hochformat-MP4 mit konstanten 60 fps geprüft. Lokale Vorschauen ohne neue Shopify-Bindung.
+
+[Film- und Produktbeleg](R296-TECH-MOTIVE-20261121.md)
+
+---
+
 # R295 – Grössere 360°-Galerie, Videofenster und Scroll-Bedienfeld – 21.11.2026
 
 360°-Galerie mit rund 30 % grösseren Vordergrundmotiven, zwei weiteren Produkten und laufendem Keramik-Videofenster als zwei 16-Sekunden-Vorschauen exportiert. Scroll-Bedienfeld in der Shopify-Theme-Kopie standardmässig ausgeblendet und nativ geprüft.
