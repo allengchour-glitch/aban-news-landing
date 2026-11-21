@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 294,
-  "updatedAt": "2026-11-21T15:51:39Z",
+  "revision": 295,
+  "updatedAt": "2026-11-21T16:14:21Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -50907,6 +50907,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R294-360-GALERIE-20261121.md"
       ]
+    },
+    {
+      "revision": 295,
+      "at": "2026-11-21T16:14:21Z",
+      "summary": "360°-Galerie mit rund 30 % grösseren Vordergrundmotiven, zwei weiteren Produkten und laufendem Keramik-Videofenster als zwei 16-Sekunden-Vorschauen exportiert. Scroll-Bedienfeld in der Shopify-Theme-Kopie standardmässig ausgeblendet und nativ geprüft.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R295-NAHER-PIP-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -81886,6 +81894,55 @@
       719
     ],
     "checkedInChromium": true,
+    "claudeReceipt": "unknown"
+  },
+  "run295": {
+    "atUTC": "2026-11-21T16:14:21Z",
+    "localDate": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R295-NAHER-PIP-20261121.md",
+    "masterId": "luxe-home-atelier-multishot-20261116",
+    "mainOrbitDegrees": 360,
+    "mainFactor": 1.304347826,
+    "wholeSeconds": 16,
+    "fps": 60,
+    "framesPerExport": 960,
+    "productCount": 7,
+    "newProducts": [
+      {
+        "productId": "15421414277505",
+        "variantId": "55775559876993"
+      },
+      {
+        "productId": "15421167108481",
+        "variantId": "55775135760769"
+      }
+    ],
+    "exports": [
+      {
+        "file": "LuxeStyle-360-Sieben-Produkte-PIP-4K60.mp4",
+        "width": 3840,
+        "height": 2160,
+        "bytes": 8849218,
+        "sha256": "385fd696c9f8f30704925c24178de624cc1ca5087e9eb2699d4c1d65c34cdeef"
+      },
+      {
+        "file": "LuxeStyle-360-Sieben-Produkte-PIP-Mobil-60fps.mp4",
+        "width": 1080,
+        "height": 1920,
+        "bytes": 3998722,
+        "sha256": "798c9b8ad1bf4f0d102857fd189d98e5ab281589bfa3b11bd51108dbef5f7601"
+      }
+    ],
+    "checkedInChromium": true,
+    "shopify": {
+      "themeId": "214208577927",
+      "saved": true,
+      "published": false,
+      "controlsVisualDefault": "hidden",
+      "controlsKeyboardFocus": "visible",
+      "videoBindingChanged": false,
+      "commit": "d06b8023356b83bc8addd7c0d3c68f616c507cfa"
+    },
     "claudeReceipt": "unknown"
   }
 }
