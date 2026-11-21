@@ -57,9 +57,9 @@ M = [
  (' and halte_grund(p, halten) is None}', '}'),
  ("if not any('Kopie' in p or 'angehalten' in p for p in e['probleme'])", "if not any('Kopie' in p for p in e['probleme'])"),
  ('    halten = halten or {}\n', '    halten = {}\n'),
- ("        halten = lade_halten(open(HALTEN_DATEI, encoding='utf-8').read())", '        halten = {}'),
+ ("    halten = lese_halten_datei(HALTEN_DATEI) if not status_modus else {}", '    halten = {}'),
  ('medium_erreichbar if not planer_datei else (lambda u: True), halten)', 'medium_erreichbar if not planer_datei else (lambda u: True))'),
- ('    except FileNotFoundError:\n        halten = {}', '    except FileNotFoundError:\n        raise'),
+ ("        raise RuntimeError('Halteliste nicht lesbar; keine Freigaben (UNKNOWN).') from e", '        return {}'),
  ("            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt): ' + grund)", "            e['probleme'].append('angehalten (METRICOOL-HALTEN.txt)')"),
 ]
 M += [

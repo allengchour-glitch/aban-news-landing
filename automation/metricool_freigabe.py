@@ -21,6 +21,7 @@ Tore je Entwurf (jedes Nein = Entwurf bleibt):
   8. Der Entwurf kommt nur einmal im Planer vor (gleiche uuid mehrfach = Kopie, wird nie angefasst).
   9. Der Entwurf steht NICHT auf der Halteliste dropship/METRICOOL-HALTEN.txt (eine uuid oder id je Zeile, danach «# Grund»).
      So kann der Besitzer oder eine prüfende Sitzung (Codex) einen Entwurf anhalten, ohne im Planer zu schreiben.
+     Fehlt die Datei oder ist sie unlesbar, werden keine Freigaben vorgenommen (UNKNOWN).
      Die Liste hält nur Entwürfe zurück; bereits eingeplante Beiträge fasst diese Automation nie an.
 
 Nach jedem Update wird der Planer frisch gelesen: genau ein Beitrag mit der uuid, geplant, Datum/Text/Medien wie erwartet.
@@ -341,6 +342,15 @@ def lade_halten(text):
     return out
 
 
+def lese_halten_datei(pfad):
+    """Fehlende/unlesbare Halteliste ist unbekannt, nicht eine bestaetigt leere Liste."""
+    try:
+        with open(pfad, encoding='utf-8') as f:
+            return lade_halten(f.read())
+    except (OSError, UnicodeError) as e:
+        raise RuntimeError('Halteliste nicht lesbar; keine Freigaben (UNKNOWN).') from e
+
+
 def halte_grund(post, halten):
     """Grund, falls der Entwurf auf der Halteliste steht (nach uuid oder id), sonst None."""
     for schluessel in (str(post['uuid']).lower(), str(post['id']).lower()):
@@ -584,6 +594,8 @@ def main(argv):
     max_lauf = int(os.environ.get('MAX_JE_LAUF') or 12)
     token = os.environ.get('METRICOOL_USER_TOKEN', '')
     mc = Metricool(token, os.environ.get('METRICOOL_USER_ID') or '4801419', os.environ.get('METRICOOL_BLOG_ID') or '6227837')
+    # Statusdiagnose bleibt lesbar; jede Freigabe braucht zuvor eine lesbare Halteliste.
+    halten = lese_halten_datei(HALTEN_DATEI) if not status_modus else {}
     jetzt = jetzt_lokal()
     tg = (os.environ.get('TELEGRAM_BOT_TOKEN', '').strip(), os.environ.get('TELEGRAM_CHAT_ID', '').strip())
     zusammen = []
@@ -613,10 +625,6 @@ def main(argv):
         produkte = wegweiser_produkte(shop, shopify_token(shop, os.environ.get('SHOPIFY_CLIENT_ID', ''), os.environ.get('SHOPIFY_CLIENT_SECRET', '')))
     print(f'Planer: {len(planer)} Beiträge | Wegweiser-Produkte: {len(produkte)} | {"LIVE" if live else "Trockenlauf"} | jetzt {jetzt:%d.%m. %H:%M}')
 
-    try:
-        halten = lade_halten(open(HALTEN_DATEI, encoding='utf-8').read())
-    except FileNotFoundError:
-        halten = {}
     if halten:
         print(f'Halteliste: {len(halten)} Eintrag/Einträge ({", ".join(sorted(halten)[:6])})')
     entscheidungen = plane_lauf(planer, produkte, jetzt, horizont, max_lauf, medium_erreichbar if not planer_datei else (lambda u: True), halten)
