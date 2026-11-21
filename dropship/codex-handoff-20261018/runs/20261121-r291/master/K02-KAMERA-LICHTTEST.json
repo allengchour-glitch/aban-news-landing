@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "luxe-A-camera-light-preflight-1",
+  "masterId": "luxe_sternenprojektor_master_20261018",
+  "currentProduct": {
+    "productId": "15521256604033",
+    "variantId": "68122445283719",
+    "sku": "CJSN139239101AZ"
+  },
+  "purpose": "One practical technical preflight card for the existing A master; supplements K01 identity/action evidence, does not add a master or shot",
+  "sourceBasis": {
+    "latestExactRun": {
+      "path": "dropship/codex-handoff-20261018/R290-FIX-20261121.md",
+      "gitBlob": "19872173b12d35a1fbc9c76781c32d6b70d79a1a",
+      "freshGithubRead": true,
+      "localByteMatch": true
+    },
+    "exactSourceRecord": {
+      "path": "dropship/codex-handoff-20261018/MASTER-QUELLEN-20261116-R253.json",
+      "gitBlob": "3278b1f3f3c28e50f2ee64a86d85e0067cc7a5ed",
+      "freshGithubRead": true
+    },
+    "K01": {
+      "path": "/workspace/luxestyle-review/fortsetzung-20261121-r289/master/K01-ABNAHMEBELEG.json",
+      "sha256": "4ddcf1643475ccc0fcbfa46478c26a6d042b2bde02880cdfa354012028b470ec",
+      "sourceEvidenceStatus": "UNGEPRUEFT_and_original_fields_null"
+    },
+    "newAOriginalWithProvenanceAndRights": null,
+    "availabilityMeaning": "No newly cleared A original established in these exact records. No wider media catalogue or Prime search made; supplier availability itself is not disproven."
+  },
+  "unchangedMaster": {
+    "durationSeconds": 18,
+    "fps": 30,
+    "frames": 540,
+    "size": [
+      1080,
+      1920
+    ],
+    "storyboard": "R281",
+    "hookA": "Dein Raum. Neues Licht.",
+    "hookB": "Licht im Detail.",
+    "sixShotsUnchanged": true,
+    "captionsUtmsUnchanged": true,
+    "voiceover": false,
+    "onlyCanonicalMusicAllowed": "automation/music/luxe-premium.wav",
+    "musicApprovalNotChanged": true
+  },
+  "proposedCapture": {
+    "equipmentRule": "Use only already available camera, tripod, controllable diffuse light/reflector; no purchase, installation or rental",
+    "hardwareAvailable": "UNGEPRUEFT",
+    "orientation": "native portrait",
+    "preferredCapture": "True2160x3840 if available and detailed; minimum target1080x1920. Do not upscale a small crop to claim native detail.",
+    "frameRatePreference": 30,
+    "acceptedOtherRatesForLaterAssessment": [
+      25,
+      50,
+      60
+    ],
+    "colorWorkflow": "Prefer known SDR/Rec709 capture or a documented known color-managed route. Do not infer clipping from unknown HDR, log, bit depth or full/limited range.",
+    "locks": [
+      "manual or demonstrably locked exposure within each test window",
+      "locked white balance set with a neutral reference under the actual key light",
+      "locked focus during acting-hand and product-detail window",
+      "no automatic scene/HDR/color changes or digital beauty/AI replacement",
+      "original guide/text not burnt in"
+    ],
+    "firstShutterSeconds": 0.02,
+    "firstShutterDenominator": 50,
+    "firstShutterAngleAt30fps": 216,
+    "comparisonShutterSeconds": 0.01,
+    "comparisonShutterDenominator": 100,
+    "comparisonShutterAngleAt30fps": 108,
+    "comparisonExposureEVAtUnchangedSceneApertureIso": -1,
+    "optionalIsoCompensationFactorForComparableBrightness": 2,
+    "shutterQualification": "1/50 is a starting point for a50Hz-lit setup, not a flicker guarantee for this projector, LED driver, dimmer or rolling-shutter camera. Evaluate actual recordings. Compensating ISO may raise noise and must be recorded.",
+    "productSetup": {
+      "key": "Large diffuse key roughly45degrees to camera-left and30–45degrees above; adjust with actual hardware to preserve ribs/buttons/dome edge",
+      "fill": "Neutral white passive fill opposite if needed; taupe/cream styling stays in background, not a tint forced onto the unit",
+      "camera": "Tripod, straight product geometry; select an available optical view that keeps the whole support, hand path and cable within the existing guide, no digital zoom",
+      "focus": "Front controls and relevant support edge; test the real fingertip path before recording the master",
+      "projectionSpill": "Flag or aim key away from projection wall instead of increasing synthetic projection brightness"
+    },
+    "projectionSetup": {
+      "key": "Reduce or redirect only the external product key so the actual projected motif remains visible and the same unit is still readable",
+      "whiteBalance": "Keep the chosen neutral white-balance baseline; log any necessary actual setup change",
+      "exposure": "Set and lock per real setup; record values. Do not claim same exposure in different scenes if it was changed.",
+      "distance": "Choose actual optical focus/space on location and record camera/product/wall distances; no unverified product throw-distance claim",
+      "imageTreatment": "No replacement, recolouring, artificial motif sharpening or synthetic brightness comparison"
+    },
+    "subjectPlanRect": [
+      108,
+      360,
+      916,
+      1510
+    ],
+    "actualProposedTextRect": [
+      128,
+      256,
+      888,
+      336
+    ]
+  },
+  "preflightWindows": [
+    {
+      "id": "E01",
+      "goal": "Banding baseline",
+      "minimumSeconds": 5,
+      "plannedFramesAt30fps": 150,
+      "setup": "Tripod, actual A in front, neutral static card beside it outside the projection beam, illuminated only by the external key; fixed external light and actual projector state.30fps,1/50, recorded ISO/aperture/WB.",
+      "acceptance": "Review the entire static5s plus frame sequence for travelling bands or periodic bright/dark pulses on the card and actual product/projection. The card measures external-light stability only when exclusively key-lit; if mixed projector/spill light reaches it, do not assign the flicker to a separate source. Do not substitute the card for the projector check.",
+      "actualOriginal": null,
+      "timeIn": null,
+      "timeOut": null,
+      "status": "UNGEPRUEFT"
+    },
+    {
+      "id": "E02",
+      "goal": "Controlled shutter comparison",
+      "minimumSeconds": 5,
+      "plannedFramesAt30fps": 150,
+      "setup": "Same stable arrangement and white balance,30fps,1/100; retain exposure settings or record exactly any ISO/aperture compensation to compare brightness and noise.",
+      "acceptance": "Choose only by actual bands, real texture, brightness and noise.1/100 or an anti-flicker toggle is not an automatic pass; if neither setting works, leave camera/light choice open.",
+      "actualOriginal": null,
+      "timeIn": null,
+      "timeOut": null,
+      "status": "UNGEPRUEFT"
+    },
+    {
+      "id": "E03",
+      "goal": "Product/hand detail",
+      "minimumSeconds": 6,
+      "plannedFramesAt30fps": 180,
+      "setup": "Chosen recorded setting, diffuse product key; hold device still, move the real acting hand through the intended path, release and hold. No invented button function.",
+      "acceptance": "No focus pumping, clipped hands/support/cable, burned-out texture in body/buttons, motion smearing that prevents judging the actual action, or guide/text collisions. Inspect normal playback and100percent crop.",
+      "actualOriginal": null,
+      "timeIn": null,
+      "timeOut": null,
+      "status": "UNGEPRUEFT"
+    },
+    {
+      "id": "E04",
+      "goal": "Device and true projection balance",
+      "minimumSeconds": 6,
+      "plannedFramesAt30fps": 180,
+      "setup": "Same real A/motif traceable to K01; tripod, readable device and actual illuminated wall together, external key directed away from wall.",
+      "acceptance": "Motif and physical device stay identifiable, projection is not washed out by key, housing retains detail, no visible banding/pulsing or unrecorded exposure/WB drift. Record actual signal/color mode before interpreting waveform/clipping.",
+      "actualOriginal": null,
+      "timeIn": null,
+      "timeOut": null,
+      "status": "UNGEPRUEFT"
+    }
+  ],
+  "actualTestRecord": {
+    "cameraAndLens": null,
+    "tripodOrSupport": null,
+    "externalLightAndDimmerSetting": null,
+    "cameraProductDistance": null,
+    "productWallDistance": null,
+    "captureWidth": null,
+    "captureHeight": null,
+    "actualFps": null,
+    "actualShutter": null,
+    "actualIso": null,
+    "actualAperture": null,
+    "actualWhiteBalance": null,
+    "captureColorMode": null,
+    "bitDepth": null,
+    "videoRange": null,
+    "scopeOrMonitorMode": null,
+    "chosenWindowSetting": null,
+    "reasonForChoice": null,
+    "originalSha256": null,
+    "operator": null,
+    "testedAt": null,
+    "K01PhysicalUnitMotifLink": null,
+    "checks": {
+      "hardwareAndManualLocks": "UNGEPRUEFT",
+      "actualAAndMotifLink": "UNGEPRUEFT",
+      "allStaticWindowBandingAndPulsing": "UNGEPRUEFT",
+      "noiseAndBodyButtonDetail": "UNGEPRUEFT",
+      "focusAndActualHandPath": "UNGEPRUEFT",
+      "actualColorModeAndClippingInterpretation": "UNGEPRUEFT",
+      "productAndRealProjectionBalance": "UNGEPRUEFT",
+      "actualTextRegionClearance": "UNGEPRUEFT"
+    },
+    "allowedStates": [
+      "UNGEPRUEFT",
+      "ERFUELLT",
+      "NICHT_ERFUELLT"
+    ],
+    "technicalDecision": "UNGEPRUEFT",
+    "sourceRightsDecision": "UNGEPRUEFT",
+    "filmOrPublicationApproval": false
+  },
+  "decisionRule": "K02 technical pass requires actual originals/time windows/settings and all technical checks ERFUELLT. It never supplies K01 physical identity/motif/rights evidence by itself. K01 and K02 may be filmed in either practical order with traceable same-unit originals; no circular automatic approval. Final film/edit/mix/crop/rights/channel/ledger approvals remain separate.",
+  "actions": {
+    "cameraTestsActuallyRecorded": 0,
+    "newMediaSourcesCalled": 0,
+    "newSourceDownloads": 0,
+    "renders": 0,
+    "purchasesOrInstallations": 0,
+    "externalMessages": 0,
+    "remoteWrites": 0
+  }
+}
