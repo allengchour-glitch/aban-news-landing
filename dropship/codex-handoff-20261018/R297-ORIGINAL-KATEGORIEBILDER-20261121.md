@@ -1,6 +1,6 @@
 # R297 – Originalprodukte in allen Einkaufskacheln – 21.11.2026
 
-Die bestehenden 16 Einkaufskacheln unter «Was passt zu dir?» in der Shopify-Theme-Vorschau 214208577927 zeigen je ein Originalbild aus der passenden, aktuellen LuxeStyle-Produktgalerie. Die Fotos sind über die vorhandenen Bildpicker verknüpft. Zuschnitte und zurückhaltende Creme-/Taupe-Hintergründe für freigestellte Produktbilder entstehen im Theme. Die Karten behalten ihre Titel, Reihenfolge und Collection-Ziele. Die Bilder sind alternativlos dekorativ innerhalb der beschrifteten Links. Es gibt keine neuen Produkt- oder Variantenversprechen im Raster.
+Die bestehenden 16 Einkaufskacheln unter «Was passt zu dir?» in der Shopify-Theme-Vorschau 214208577927 zeigen je ein Originalbild aus der passenden, aktuellen LuxeStyle-Produktgalerie. Die Fotos sind über die vorhandenen Bildpicker verknüpft. Zuschnitte und zurückhaltende Creme-/Taupe-Hintergründe für Produktfotos mit hellem Hintergrund entstehen im Theme. Die Karten behalten ihre Titel, Reihenfolge und Collection-Ziele. Die beschrifteten Links verwenden leere Alt-Attribute für ihre dekorativen Bilder. Es gibt keine neuen Produkt- oder Variantenversprechen im Raster.
 
 ## Geprüfte Quellen
 
