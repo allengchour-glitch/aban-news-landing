@@ -1,3 +1,11 @@
+# R307 – Google bestätigt das CSS-Anzeigenlimit – 21.11.2026
+
+Google bestätigt 150’000 Angebote im CSS-Anzeigenkontingent ADS_EEA. Vier alte Shopify-Angebote frisch als Landingpage-Fälle abgegrenzt. Antragstext ergänzt. Einreichung erfordert Google-Anmeldung.
+
+[Live-Lesebeleg und aktualisierter Antrag](R307-MERCHANT-CSS-LIMIT-20261121.md)
+
+---
+
 # R306 – Merchant-Anzeigenkontingent – 21.11.2026
 
 CSS-Anzeigenkontingent geprüft. Screenshot meldet 19’100 betroffene Produkte. Der bestehende Shopify-Quotenlauf zählte 77’028 Kanalvarianten und null Abwahlen. DE- und FR-Quellen anhand von zwei Live-Angeboten bestätigt. Verteilung und konkretes Google-Limit offen, Kontingentantrag vorbereitet.
