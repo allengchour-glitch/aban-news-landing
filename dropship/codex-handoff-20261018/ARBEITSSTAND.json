@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 307,
-  "updatedAt": "2026-11-21T21:41:38Z",
+  "revision": 308,
+  "updatedAt": "2026-11-21T21:49:23Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51011,6 +51011,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R307-MERCHANT-CSS-LIMIT-20261121.md"
       ]
+    },
+    {
+      "revision": 308,
+      "at": "2026-11-21T21:49:23Z",
+      "summary": "Vier Merchant-Quellen frisch bestätigt. Zwei Shopify-Hauptquellen für DE/CH+LI und FR/CH, jeweils Shopping Ads und Free Listings aktiv. Früherer AUTOFEED nicht in der vollständigen Quellenliste. Kein belegter Quellenfehler als Ursache der CSS-Meldung. Export der betroffenen Angebote fehlt.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R308-MERCHANT-QUELLEN-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82637,6 +82645,86 @@
     ],
     "staleOfferIssue": "landing_page_error",
     "quotaRequest": "draft; authentication required",
+    "merchantWrites": 0
+  },
+  "run308": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R308-MERCHANT-QUELLEN-20261121.md",
+    "reportBlob": "5163ffea0c5cf09226f1fdff21f7f4dd4b83731d",
+    "merchantAccount": "5797470070",
+    "quotaScope": "ADS_EEA",
+    "googleProductLimit": 150000,
+    "sourceProbeRun": 44953499917,
+    "sourceProbeJob": 136996412367,
+    "sourceProbeCommit": "a588097577087cb4990bfc26e563b69eda9bb080",
+    "tests": 29,
+    "completeSourceList": true,
+    "sources": [
+      {
+        "id": "10667445201",
+        "input": "API",
+        "kind": "primaryProductDataSource",
+        "lang": "de",
+        "countries": [
+          "CH",
+          "LI"
+        ],
+        "destinations": [
+          [
+            "DISPLAY_ADS",
+            "ENABLED"
+          ],
+          [
+            "FREE_LISTINGS",
+            "ENABLED"
+          ],
+          [
+            "SHOPPING_ADS",
+            "ENABLED"
+          ]
+        ]
+      },
+      {
+        "id": "10668966945",
+        "input": null,
+        "kind": "promotionDataSource",
+        "lang": "en",
+        "countries": null,
+        "destinations": []
+      },
+      {
+        "id": "10762220830",
+        "input": "API",
+        "kind": "primaryProductDataSource",
+        "lang": "fr",
+        "countries": [
+          "CH"
+        ],
+        "destinations": [
+          [
+            "DISPLAY_ADS",
+            "ENABLED"
+          ],
+          [
+            "FREE_LISTINGS",
+            "ENABLED"
+          ],
+          [
+            "SHOPPING_ADS",
+            "ENABLED"
+          ]
+        ]
+      },
+      {
+        "id": "10795447118",
+        "input": "API",
+        "kind": "supplementalProductDataSource",
+        "lang": null,
+        "countries": null,
+        "destinations": []
+      }
+    ],
+    "affectedOfferCsv": null,
     "merchantWrites": 0
   }
 }
