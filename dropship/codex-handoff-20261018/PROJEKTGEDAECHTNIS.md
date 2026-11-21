@@ -1,3 +1,11 @@
+# R289 – Threads, FR-Quelle und Kontrolltake – 21.11.2026
+
+Gezielter Threads-Rücklesestand bestätigt unveränderten Medienfehler. Bereichsabruf und bytegleicher Abruf ohne Versionsparameter erfolgreich. FR-Quellprüfung zeigt fehlenden Sprachwert und vollständigen Speicherumfang. K01-Kontrolltake und getrennte Textzone für Projektor A vorbereitet.
+
+[Fortsetzungsbericht](R289-FORTSETZUNG-20261121.md)
+
+---
+
 # R288 – 14-Uhr-Lauf, Auslieferung und Aufnahmerahmen – 21.11.2026
 
 Sieben-Tage-Plan frisch gelesen. Zwei bestehende Social-Veröffentlichungen bestätigt. Neuer Threads-Medienabruf fehlgeschlagen, exakte Shopify-JPEG-URI öffentlich gültig. Projektor A ergänzt um geprüften 9:16-Aufnahmerahmen und neuen Frame-0-Befund. Ein FR-Vergleichstext zur Freigabe. Tagesmessung übernommen, Klaviyo erneut reauth-pflichtig.
