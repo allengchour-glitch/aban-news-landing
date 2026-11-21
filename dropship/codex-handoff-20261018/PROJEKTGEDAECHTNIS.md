@@ -1,3 +1,11 @@
+# R290 – FR-Vergleich und Metricool-Sperren – 21.11.2026
+
+Französischer Vergleichskopf und Kaufhinweis auf der Projektor-Produktseite live bestätigt. Drei anstehende Metricool-Termine für das rückholmarkierte Schmuckkästchen auf Entwurf gestellt und unter denselben UUIDs zurückgelesen. Threads verbleibt im Fehlerstatus des ursprünglichen Versuchs. Medienumstellung des Connectors dokumentiert.
+
+[Umsetzung und Rücklesen](R290-FIX-20261121.md)
+
+---
+
 # R289 – Threads, FR-Quelle und Kontrolltake – 21.11.2026
 
 Gezielter Threads-Rücklesestand bestätigt unveränderten Medienfehler. Bereichsabruf und bytegleicher Abruf ohne Versionsparameter erfolgreich. FR-Quellprüfung zeigt fehlenden Sprachwert und vollständigen Speicherumfang. K01-Kontrolltake und getrennte Textzone für Projektor A vorbereitet.
