@@ -1,3 +1,11 @@
+# R291 – Französische Produktseite und Qualitätsprüfung – 21.11.2026
+
+Vollständigen französischen Projektor-Beschrieb und Modellauswahl A–G zur Freigabe vorbereitet. Sieben Varianten in der lokalen Mobil- und Desktopvorschau geprüft. Kamera- und Lichttest für den bestehenden 18-Sekunden-Master dokumentiert. Drei Metricool-Sperren und die unveröffentlichte Startseitenkopie erneut bestätigt.
+
+[Entwurf und Prüfbelege](R291-PREMIUM-20261121.md)
+
+---
+
 # R290 – FR-Vergleich und Metricool-Sperren – 21.11.2026
 
 Französischer Vergleichskopf und Kaufhinweis auf der Projektor-Produktseite live bestätigt. Drei anstehende Metricool-Termine für das rückholmarkierte Schmuckkästchen auf Entwurf gestellt und unter denselben UUIDs zurückgelesen. Threads verbleibt im Fehlerstatus des ursprünglichen Versuchs. Medienumstellung des Connectors dokumentiert.
