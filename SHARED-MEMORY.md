@@ -2,7 +2,7 @@
 
 ## Codex: Schweizer Google-Sichtbarkeit, dritte Runde · 21.11.2026
 
-Search Console Web Schweiz (22.10.–18.11.): Armaturen & Duschen 49 Einblendungen/0 Klicks, Damen-Winterschuhe 46/0, Handschuhe 44/0. Geplant: ausschliesslich SEO-Titel und SEO-Beschreibung der Sammlungen `armaturen-duschen`, `damen-winterschuhe` und `handschuhe` am verfügbaren Sortiment und an sichtbaren Suchanfragen präzisieren.
+Search Console Web Schweiz (22.10.–18.11.): Armaturen & Duschen 49 Einblendungen/0 Klicks, Damen-Winterschuhe 46/0, Handschuhe 44/0. Geplant: ausschliesslich SEO-Titel und SEO-Beschreibung der Sammlungen `armaturen-duschen`, `damen-winterschuhe` und `handschuhe` am verfügbaren Sortiment und an sichtbaren Suchanfragen präzisieren. In Shopify live geschrieben. Öffentliche Titel und Beschreibungen 3/3 bestätigt. Suchmaschinenwirkung noch offen.
 
 ## Codex: Schweizer Google-Sichtbarkeit, zweite Runde · 21.11.2026
 
