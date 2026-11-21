@@ -1,8 +1,8 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
-## Codex: englische Bundle-Suchdaten mit tatsächlichem Kaufpreis abgleichen ·21.11.2026
+## Codex: unvollständige englische Angebote im eigenen Shop sperren ·21.11.2026
 
-Öffentliches EN-JSON-LD nannte79EUR, Shopkatalog und frisch gelesener aktiver Stripe-Link39EUR; alter79-Link inaktiv. Generator prüft/korrigiert jetzt ausschließlich das EN-Bundle-Angebot aus eigener Sprachquelle; andere Produktangaben bleiben erhalten. Bestehender Stripe-Abgleich übernimmt en/shop.html mit, ohne neuen Auslöser/Kontoaktion.18 Generatorprüfungen grün; alte echte main akzeptierte den Fehler in drei CLI-Gegenproben. Echte CI/Bereitstellung im PR. Wirkung auf Suche/Verkäufe nicht gemessen. Neuer separater Lieferblocker: en-prompt-bibliothek/en-vorlagen-set versprechen100+Prompts/40Vorlagen, besitzen aber keine kuratierten EN-Quellen oder standalone-Markierung; generischer Fünf-Prompt-Ersatz reproduziert. Diese Inhalte/Kaufziele nicht als repariert ausgeben; vollständige eigene EN-Quelle und Angebotsentscheidung nötig. Details in der kanonischen Übergabe.
+Reproduziert: en-prompt-bibliothek/en-vorlagen-set lieferten ohne passende EN-Quellen nur fünf generische Prompts statt100+/40Vorlagen. Beide im Quellkatalog jetzt standalone:true/available:false: kein eigenes Kaufziel, kein Ersatzbau, kein Einbau ins Branchenbundle.22 Karten bleiben,20 andere Kaufziele/Preise unverändert. Eigene Suchdaten nennen klare Quelllücke ohne Offer; Bundlebetrag aus frisch bestätigtem aktivem Stripe-Link39EUR statt altem79EUR. Stripe-Kontolinks ausdrücklich nicht deaktiviert; eigene vollständige EN-Quellen beziehungsweise separate Kontofreigabe bleiben erforderlich.32 Paket-,20 Generator- und3 Verfügbarkeitstests sowie vier Browserfälle grün. Keine Konto-/Preis-/Secretänderung, neue Automation oder Frequenz; echte CI/Bereitstellung im PR. Finanzielle Wirkung ungemessen. Details in kanonischer Übergabe.
 
 ## Codex: falschen Branchen-Ersatz bei fehlender Produktquelle sperren ·21.11.2026
 

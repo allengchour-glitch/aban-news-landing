@@ -47,6 +47,9 @@ def build_for(catalog_path: Path, lang: str, salt: str, target: Path) -> int:
     slugs = [k["slug"] for k in catalog]
     if len(slugs) != len(set(slugs)):
         raise ValueError("Doppelte Kit-Zuordnung")
+    # Bewusst gesperrte Quellen weder als Einzelpaket noch im Bundle ausliefern.
+    catalog = [k for k in catalog if k.get("available", True) is True]
+    slugs = [k["slug"] for k in catalog]
     bundles = {k["slug"] for k in catalog if k.get("bundle")}
     standalone = {k["slug"] for k in catalog if k.get("standalone")}
     members = [s for s in slugs if s not in bundles and s not in standalone]

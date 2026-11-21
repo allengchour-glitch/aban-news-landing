@@ -256,6 +256,81 @@ class KuratiertePflichtquelleTest(unittest.TestCase):
                 with zipfile.ZipFile(archive) as z:
                     self.assertEqual(z.read('prompts.md'), b'NUR DEMOPROMPTS')
 
+    def test_gesperrtes_produkt_wird_direkt_abgewiesen_und_in_cli_uebersprungen(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang):
+                slug = 'gesperrt-' + lang
+                self.katalog(lang, [{'slug': slug, 'standalone': True, 'available': False}])
+                pack, archive, vorher = self.altstand(slug, lang)
+                argv = ['build_product_pack.py', '--lang', lang, '--slugs', slug]
+                with patch.object(produktbau, 'REPO', self.root), \
+                     patch.object(produktbau, 'gen_prompts', return_value='UNERLAUBTER DEMOFALLBACK') as generieren:
+                    with self.assertRaises(ValueError):
+                        produktbau.build_single(slug, lang)
+                    with patch.object(sys, 'argv', argv), redirect_stdout(io.StringIO()):
+                        with self.assertRaises(ValueError):
+                            produktbau.main()
+                    generieren.assert_not_called()
+                self.katalog(lang, [{'slug': slug, 'standalone': True, 'available': False}, {'slug': 'freigegeben'}])
+                with patch.object(produktbau, 'REPO', self.root), \
+                     patch.object(produktbau, 'gen_prompts', return_value='NUR FREIGEGEBENE DEMOPROMPTS') as generieren, \
+                     patch.object(sys, 'argv', argv[:-1] + [slug + ',freigegeben']), redirect_stdout(io.StringIO()):
+                    self.assertEqual(produktbau.main(), 0)
+                    generieren.assert_called_once()
+                self.unveraendert(pack, archive, vorher)
+
+    def test_gesperrtes_produkt_fehlt_im_echten_bundle_und_im_freigegebenen_satz(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang):
+                blocked = 'gesperrt-' + lang
+                members = ['branche-eins-' + lang, 'branche-zwei-' + lang]
+                bundle = 'bundle-' + lang
+                rows = [{'slug': m} for m in members] + [
+                    {'slug': blocked, 'standalone': True, 'available': False}, {'slug': bundle, 'bundle': True}]
+                self.katalog('de', rows if lang == 'de' else [])
+                self.katalog('en', rows if lang == 'en' else [])
+                pack, archive, vorher = self.altstand(blocked, lang)
+                kits = self.root / 'downloads/kits'; kits.mkdir(parents=True, exist_ok=True)
+                blocked_zip = kits / (bau.dl_hash(blocked, 'nur-demo-salt') + '.zip')
+                blocked_zip.write_bytes(b'NUR ALTER GESPERRTER DEMOSTAND')
+                (kits / 'notiz.txt').write_text('NUR DEMONOTIZ')
+                with patch.object(produktbau, 'REPO', self.root), patch.object(bau, 'REPO', self.root), \
+                     patch.object(bau, 'KITS', kits), patch.object(bau, 'build_single', side_effect=produktbau.build_single), \
+                     patch.object(produktbau, 'gen_prompts', return_value='NUR BRANCHENDEMOPROMPTS') as generieren, \
+                     patch.dict(os.environ, {'DOWNLOAD_SALT': 'nur-demo-salt'}, clear=True), redirect_stdout(io.StringIO()):
+                    self.assertEqual(bau.main(), 0)
+                    self.assertEqual(generieren.call_count, 2)
+                expected = {bau.dl_hash(s, 'nur-demo-salt') + '.zip' for s in members + [bundle]}
+                self.assertEqual({p.name for p in kits.glob('*.zip')}, expected)
+                self.assertFalse(blocked_zip.exists())
+                self.assertEqual((kits / 'notiz.txt').read_text(), 'NUR DEMONOTIZ')
+                with zipfile.ZipFile(kits / (bau.dl_hash(bundle, 'nur-demo-salt') + '.zip')) as z:
+                    self.assertEqual({name.split('/')[0] for name in z.namelist()}, set(members) | {'LIESMICH.txt'})
+                    self.assertIsNone(z.testzip())
+                self.unveraendert(pack, archive, vorher)
+                self.assertFalse(list((self.root / 'automation').glob('.kit-bau-*')))
+
+    def test_gesperrte_altausgabe_wird_nicht_aus_fehlgeschlagenem_satz_entfernt(self):
+        for lang in ('de', 'en'):
+            with self.subTest(lang=lang):
+                blocked = 'gesperrt-' + lang
+                rows = [{'slug': 'branche-' + lang}, {'slug': blocked, 'standalone': True, 'available': False},
+                        {'slug': 'defekte-pflichtquelle-' + lang, 'standalone': True}]
+                self.katalog('de', rows if lang == 'de' else [])
+                self.katalog('en', rows if lang == 'en' else [])
+                kits = self.root / 'downloads/kits'; kits.mkdir(parents=True, exist_ok=True)
+                for name, content in ((bau.dl_hash(blocked, 'nur-demo-salt') + '.zip', b'NUR GESPERRTER ALTSTAND'),
+                                      ('aktiver-altstand.zip', b'NUR ANDERER ALTSTAND'), ('notiz.txt', b'NUR DEMONOTIZ')):
+                    (kits / name).write_bytes(content)
+                before = {p.name: p.read_bytes() for p in kits.iterdir()}
+                with patch.object(produktbau, 'REPO', self.root), patch.object(bau, 'REPO', self.root), \
+                     patch.object(bau, 'KITS', kits), patch.object(bau, 'build_single', side_effect=produktbau.build_single), \
+                     patch.object(produktbau, 'gen_prompts', return_value='NUR BRANCHENDEMOPROMPTS'), \
+                     patch.dict(os.environ, {'DOWNLOAD_SALT': 'nur-demo-salt'}, clear=True), redirect_stdout(io.StringIO()):
+                    self.assertEqual(bau.main(), 1)
+                self.assertEqual({p.name: p.read_bytes() for p in kits.iterdir()}, before)
+                self.assertFalse(list((self.root / 'automation').glob('.kit-bau-*')))
+
     def test_deploy_mit_echtem_produktbauer_stoppt_ohne_generischen_ersatz(self):
         for lang in ('de', 'en'):
             for zustand in ('fehlt', 'leer', 'nullbyte'):

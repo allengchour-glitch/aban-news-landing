@@ -146,15 +146,15 @@ window.ABAN_SHOP_EN = [
   {
     "slug": "en-prompt-bibliothek",
     "title": "AI Prompt Library for Solo Professionals",
-    "desc": "100+ proven copy-paste prompts — outreach, clients, marketing, admin \u0026 research. Cross-industry, honest, no hype.",
+    "desc": "English source pack not ready. Currently unavailable to buy.",
     "price": "€14",
-    "buy": "https://buy.stripe.com/dRm00l9mmcfqaIDceV5wI0Z"
+    "buy": ""
   },
   {
     "slug": "en-vorlagen-set",
     "title": "Ready-made Text Templates for Solo Professionals",
-    "desc": "40 ready-to-use templates for quotes, emails, invoices \u0026 rejections. Copy, replace placeholders, send.",
+    "desc": "English source pack not ready. Currently unavailable to buy.",
     "price": "€14",
-    "buy": "https://buy.stripe.com/28E6oJ0PQ6V61836UB5wI10"
+    "buy": ""
   }
 ];

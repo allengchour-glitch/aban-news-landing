@@ -101,7 +101,10 @@ def main() -> int:
         slug, title = kit["slug"], kit["title"]
         cents = int(kit["price_cents"])
         cur = kit.get("currency", "eur").lower()
-        if key:
+        available = kit.get("available", True) is True
+        if not available:
+            print(f"• Angebot gesperrt: {slug} — keine freigegebene Lieferquelle")
+        if key and available:
             try:
                 if slug not in state or state[slug].get("currency") != cur:
                     prod = stripe("/products", [("name", title), ("metadata[slug]", slug)], key)
@@ -150,7 +153,7 @@ def main() -> int:
                 print(f"::warning::Stripe {slug}: {e} (bleibt als 'bald verfügbar' gelistet)")
         sym = SYM.get(cur, cur.upper() + " ")
         # Kaufbar nur, wenn ein bestätigter Stripe-Link im Status liegt; sonst leer → „bald verfügbar".
-        buy = state.get(slug, {}).get("link", "")
+        buy = state.get(slug, {}).get("link", "") if available else ""
         entry = {"slug": slug, "title": title, "desc": kit.get("desc", ""),
                  "price": f"{sym}{cents/100:.0f}", "buy": buy}
         if kit.get("bundle"):

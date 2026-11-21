@@ -55,32 +55,35 @@ def neu_schreiben(html: str, produkte: list) -> str:
     return html[:b.start(2)] + itemlist(produkte) + html[b.end(2):]
 
 
-def bundle_angebote_schreiben(html: str, produkte: list) -> str:
-    """Nur vorhandene Bundle-Angebote abgleichen; übrige Produktangaben erhalten."""
+def en_angebote_schreiben(html: str, produkte: list) -> str:
+    """Bundle abgleichen und nicht kaufbare Angebote entfernen; übrigen Umfang erhalten."""
     bundles = [p for p in produkte if p.get("bundle")]
     ziel = {p["title"]: p for p in bundles}
     if len(ziel) != len(bundles):
         raise ValueError("Bundle-Titel nicht eindeutig")
     b = _itemlist_block(html)
     daten = json.loads(b.group(2))
-    bekannte_titel = {p["title"] for p in produkte}
-    for eintrag in daten.get("itemListElement", []):
-        produkt = eintrag.get("item", {})
-        if produkt.get("offers") and produkt.get("name") not in bekannte_titel:
-            raise ValueError("Suchangebot ohne eigene Katalogzuordnung")
-    if not bundles:
-        return html
+    alle = {p["title"]: p for p in produkte}
     gefunden = {name: 0 for name in ziel}
     for eintrag in daten.get("itemListElement", []):
         produkt = eintrag.get("item", {})
         name = produkt.get("name")
-        if name not in ziel:
+        if name not in alle:
+            if produkt.get("offers"):
+                raise ValueError("Suchangebot ohne eigene Katalogzuordnung")
             continue
-        gefunden[name] += 1
-        quelle = ziel[name]
+        if name in ziel:
+            gefunden[name] += 1
+        quelle = alle[name]
         if not quelle.get("buy"):
             produkt.pop("offers", None)
+            if name not in ziel:
+                produkt["description"] = quelle.get("desc", "")
             continue
+        if name not in ziel and "offers" in produkt:
+            continue
+        if name not in ziel:
+            produkt["description"] = quelle.get("desc", "")
         text = quelle.get("price", "")
         if not isinstance(text, str) or not re.fullmatch(r"\s*(CHF|€|\$|[A-Z]{3})\s*\d+(?:\.\d{1,2})?\s*", text):
             raise ValueError("Bundle-Preis nicht prüfbar")
@@ -111,7 +114,7 @@ def main() -> int:
     ersatz = ersatzkatalog(produkte)
     en_produkte = json.loads(EN_DATEN.read_text(encoding="utf-8"))
     en_ersatz = ersatzkatalog(en_produkte, "data/shop-products-en.json", "ABAN_SHOP_EN")
-    en_neu = bundle_angebote_schreiben(EN_SHOP.read_text(encoding="utf-8"), en_produkte)
+    en_neu = en_angebote_schreiben(EN_SHOP.read_text(encoding="utf-8"), en_produkte)
     dateien = [(SHOP, neu), (EN_SHOP, en_neu), (FALLBACK, ersatz), (EN_FALLBACK, en_ersatz)]
     veraltet = [pfad for pfad, text in dateien
                 if not pfad.exists() or pfad.read_text(encoding="utf-8") != text]

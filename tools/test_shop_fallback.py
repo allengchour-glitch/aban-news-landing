@@ -80,38 +80,53 @@ class Ersatzkatalog(unittest.TestCase):
         self.assertEqual(before,{k:p.read_bytes() for k,p in self.paths.items()})
 
     def test_en_bundle_abgleich_aendert_nur_drei_bestaetigte_offerfelder(self):
-        html=self.en_html(); result=shop.bundle_angebote_schreiben(html,self.en_products)
+        html=self.en_html(); result=shop.en_angebote_schreiben(html,self.en_products)
         expected=copy.deepcopy(self.en_itemlist)
         expected['itemListElement'][0]['item']['offers'].update(price='39',priceCurrency='EUR',url=self.en_products[-1]['buy'])
         self.assertEqual(self.en_tree(result),expected)
         self.assertTrue(result.startswith('<!doctype html><title>Unchanged English title</title>'))
         self.assertTrue(result.endswith('<main>Unchanged visible page</main>'))
-        self.assertEqual(shop.bundle_angebote_schreiben(result,self.en_products),result)
+        self.assertEqual(shop.en_angebote_schreiben(result,self.en_products),result)
 
     def test_en_bundle_ohne_checkout_hat_keinen_offer_und_kann_wiederkommen(self):
         products=copy.deepcopy(self.en_products);products[-1]['buy']=''
-        without=shop.bundle_angebote_schreiben(self.en_html(),products)
+        without=shop.en_angebote_schreiben(self.en_html(),products)
         product=self.en_tree(without)['itemListElement'][0]['item']
         self.assertNotIn('offers',product)
         expected=copy.deepcopy(self.en_itemlist['itemListElement'][0]['item']);expected.pop('offers')
         self.assertEqual(product,expected)
-        restored=shop.bundle_angebote_schreiben(without,self.en_products)
+        restored=shop.en_angebote_schreiben(without,self.en_products)
         offer=self.en_tree(restored)['itemListElement'][0]['item']['offers']
         self.assertEqual({k:offer[k] for k in ('price','priceCurrency','url')},
                          {'price':'39','priceCurrency':'EUR','url':self.en_products[-1]['buy']})
         self.assertEqual(self.en_tree(restored)['itemListElement'][1],self.en_itemlist['itemListElement'][1])
 
+    def test_gesperrtes_spezialangebot_verliert_offer_und_falsche_zusage(self):
+        products=copy.deepcopy(self.en_products);products[0]['buy']='';products[0]['desc']='English source pack not ready. Currently unavailable to buy.'
+        result=shop.en_angebote_schreiben(self.en_html(),products);tree=self.en_tree(result)
+        target=tree['itemListElement'][1]['item'];expected=copy.deepcopy(self.en_itemlist['itemListElement'][1]['item']);expected.pop('offers');expected['description']=products[0]['desc']
+        self.assertEqual(target,expected)
+        self.assertEqual(tree['itemListElement'][0]['item']['offers']['price'],'39')
+        self.assertEqual(shop.en_angebote_schreiben(result,products),result)
+
+    def test_spaeter_freigegebenes_spezialangebot_nutzt_wieder_eigene_quelle(self):
+        products=copy.deepcopy(self.en_products);products[0]['buy']='';products[0]['desc']='Not ready'
+        paused=shop.en_angebote_schreiben(self.en_html(),products)
+        restored=shop.en_angebote_schreiben(paused,self.en_products);item=self.en_tree(restored)['itemListElement'][1]['item']
+        self.assertEqual(item['description'],self.en_products[0]['desc'])
+        self.assertEqual(item['offers'],{'@type':'Offer','price':'19','priceCurrency':'USD','url':self.en_products[0]['buy']})
+
     def test_en_bundle_verweigert_fehlerhafte_preise(self):
         for price in ('','kein Preis','€3.4.5','EUR 39 trailing','CHF NaN',None):
             with self.subTest(price=price):
                 products=copy.deepcopy(self.en_products);products[-1]['price']=price
-                with self.assertRaises(ValueError):shop.bundle_angebote_schreiben(self.en_html(),products)
+                with self.assertRaises(ValueError):shop.en_angebote_schreiben(self.en_html(),products)
 
     def test_en_bundle_verweigert_fehlerhafte_offerform(self):
         for offer in ([],[{'@type':'Offer','price':'79'}],'kein Offer',{'@type':'AggregateOffer','lowPrice':'79'}):
             with self.subTest(offer=offer):
                 tree=copy.deepcopy(self.en_itemlist);tree['itemListElement'][0]['item']['offers']=offer
-                with self.assertRaises(ValueError):shop.bundle_angebote_schreiben(self.en_html(tree),self.en_products)
+                with self.assertRaises(ValueError):shop.en_angebote_schreiben(self.en_html(tree),self.en_products)
 
     def test_en_bundle_verlangt_eindeutiges_eigenes_bundleziel(self):
         for change in ('ziel-fehlt','ziel-doppelt','produkt-fehlt','produkt-doppelt'):
@@ -121,17 +136,17 @@ class Ersatzkatalog(unittest.TestCase):
                 elif change=='ziel-doppelt':tree['itemListElement'].append(copy.deepcopy(tree['itemListElement'][0]))
                 elif change=='produkt-fehlt':products.pop()
                 else:products.append(copy.deepcopy(products[-1]))
-                with self.assertRaises(ValueError):shop.bundle_angebote_schreiben(self.en_html(tree),products)
+                with self.assertRaises(ValueError):shop.en_angebote_schreiben(self.en_html(tree),products)
 
     def test_en_bundle_verlangt_genau_eine_itemlist(self):
         html=self.en_html()
         for malformed in ('<main>Keine ItemList</main>',html+html):
             with self.subTest(html=malformed):
-                with self.assertRaises(ValueError):shop.bundle_angebote_schreiben(malformed,self.en_products)
+                with self.assertRaises(ValueError):shop.en_angebote_schreiben(malformed,self.en_products)
 
     def test_en_bundle_haelt_json_im_script_sicher(self):
         tree=copy.deepcopy(self.en_itemlist);tree['itemListElement'][0]['item']['description']='Original </script> & unverändert'
-        html=shop.bundle_angebote_schreiben(self.en_html(tree),self.en_products)
+        html=shop.en_angebote_schreiben(self.en_html(tree),self.en_products)
         script=re.search(r'<script type="application/ld\+json">(.*?)</script>',html,re.S).group(1)
         self.assertNotIn('</script>',script)
         self.assertIn('\\u003c',script)
