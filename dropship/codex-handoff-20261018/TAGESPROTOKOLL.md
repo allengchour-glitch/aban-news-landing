@@ -3436,3 +3436,17 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R279-REPORT-20261121.md) · [Belege](R279-PROOF-20261121.json)
 
 [LUXESTYLE_R279_20261121]
+
+### R280 – Merchant-Center und Shopify-Produktbild
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Merchant und Shopify | LuxeStyle CH und den Shopify-Shop verifiziert. Eine Seite mit zehn Ablehnungen und ausgewählte Angebote geprüft. | Sechs Bildmeldungen derselben Öl-Sprühflasche und vier Landingpage-Meldungen in der Stichprobe. Fortsetzung vorhanden. |
+| Produktbild | Geprüftes CJ-Original der beigen 1er-Variante zugeordnet und öffentlich zurückgelesen. | Shopify `READY` und öffentlich sichtbar für CHF 15.90. Merchant übernimmt die neue URL. Die Bildablehnung wird weiterhin angezeigt. |
+| Vier Restangebote | Exakte Merchant-Einträge mit Shopify-Publikation und zwei HTTP-404-Seiten abgeglichen. | Beide Shopify-Produkte sind Entwürfe und vom Google-Kanal abgewählt. Exakte Feed-Löschfreigabe angefragt. Windsor-Lesezugriff durch Gratisplan-Kontolimit eingeschränkt. |
+| Weitere Bildfälle | Variantenfotos für Ladepad, Lippenstift und Öl-Sprühflasche gesichtet. | Für die offenen Varianten fehlen passende Originalbilder ohne Einblendungen oder belegte Bearbeitungsrechte. |
+| Frühere Fälle | QS19 Blau im Merchant Center und die aktuellen Ersatzvarianten von Milchshaker, Haarstyler und Ladepad im Shop geprüft. | QS19 Blau für CH und LI freigegeben. Neue Merchant-Ressourcen der anderen Beispiele unbestätigt. |
+
+[Bericht](R280-REPORT-20261121.md) · [Belege](R280-PROOF-20261121.json)
+
+[LUXESTYLE_R280_20261121]

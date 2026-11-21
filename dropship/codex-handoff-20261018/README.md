@@ -1,3 +1,11 @@
+# R280 – Gezielte Merchant-Korrektur – 21.11.2026
+
+Bildquelle der beigen 1er-Öl-Sprühflasche in Shopify korrigiert. Google hat die neue URL übernommen, die Bildablehnung wird noch angezeigt. Vier veraltete Merchant-Angebote gehören zu zwei bereits abgewählten Shopify-Entwürfen. Die Freigabe der vier konkreten Feed-Löschungen ist angefragt.
+
+[Bericht](R280-REPORT-20261121.md) · [Belege](R280-PROOF-20261121.json)
+
+---
+
 # R279 – SEO-Korrekturen live und Theme geprüft – 21.11.2026
 
 Sieben SEO- und Inhaltskorrekturen öffentlich bestätigt. Vier technische Änderungen in Shopify-Kopie 214526394759 gespeichert und auf sieben echten Vorschauseiten geprüft. Dateivergleich der beiden 561-Dateien-Themes zeigt exakt vier Abweichungen. Veröffentlichung der benannten Kopie steht aus. Eine begrenzte Search-Console-Messung gespeichert.

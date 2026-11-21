@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 279,
-  "updatedAt": "2026-11-20T23:54:18Z",
+  "revision": 280,
+  "updatedAt": "2026-11-21T00:05:45Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-21",
     "currentDayEvidenceKind": "R277_TARGETED_CONTINUATION_PLUS_R278_FIRST_DAILY_REPORT",
-    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged. R278: First Metricool report for 14–20 Nov, 6 field + 6 data calls, 1 YouTube Watch field + 1 bounded Watch query 17–20 Nov. Three video rows matched, missing data unknown. One Klaviyo account attempt returned UNAUTHORIZED; no flow report. Targeted past planner calls to verify legacy IDs/media and Watch cohort after new findings. No orders, merchant read, GSC, broad sales or business writes. R279: Exactly one new bounded Search Console report for 5 URLs, 4–17 Nov, separate SEO owner task. Prior Metricool/Klaviyo reports retained without repetition.",
+    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged. R278: First Metricool report for 14–20 Nov, 6 field + 6 data calls, 1 YouTube Watch field + 1 bounded Watch query 17–20 Nov. Three video rows matched, missing data unknown. One Klaviyo account attempt returned UNAUTHORIZED; no flow report. Targeted past planner calls to verify legacy IDs/media and Watch cohort after new findings. No orders, merchant read, GSC, broad sales or business writes. R279: Exactly one new bounded Search Console report for 5 URLs, 4–17 Nov, separate SEO owner task. Prior Metricool/Klaviyo reports retained without repetition. R280: First bounded Merchant sample, page of 10 and exact cases only. No repeated metrics, flows or broad sales reports.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-11-21",
@@ -50,6 +50,13 @@
         "rows": 3,
         "missingUnknown": true,
         "proof": "dropship/codex-handoff-20261018/runs/20261121-r279/SEARCH-CONSOLE-FUNF-SEITEN.json"
+      },
+      "merchant": {
+        "localDate": "2026-11-21",
+        "sampleSize": 10,
+        "hasNextPage": true,
+        "exactOffersOnlyAfterPage": true,
+        "proof": "dropship/codex-handoff-20261018/R280-PROOF-20261121.json"
       }
     },
     "targetedContinuation": {
@@ -7628,6 +7635,12 @@
           11
         ],
         "processedAndGoogleApproved": true
+      },
+      "run280": {
+        "report": "dropship/codex-handoff-20261018/R280-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R280-PROOF-20261121.json",
+        "atUTC": "2026-11-21T00:05:45Z",
+        "status": "OLD_OFFER_REMOVAL_HISTORICALLY_VERIFIED_CURRENT_REPLACEMENTS_UNKNOWN"
       }
     },
     {
@@ -19618,6 +19631,12 @@
         "atUTC": "2026-11-20T23:54:18Z",
         "liveContentChanges": 7,
         "stagedSeoTheme": "214526394759"
+      },
+      "run280": {
+        "report": "dropship/codex-handoff-20261018/R280-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R280-PROOF-20261121.json",
+        "atUTC": "2026-11-21T00:05:45Z",
+        "status": "R280_HANDOFF_READY_RECEIPT_UNKNOWN"
       }
     },
     {
@@ -28368,6 +28387,12 @@
         "implementedBy": "other session",
         "checkedNowReadOnly": true,
         "currentLiveServiceSnapshot": "unknown beyond that dated run"
+      },
+      "run280": {
+        "report": "dropship/codex-handoff-20261018/R280-REPORT-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/R280-PROOF-20261121.json",
+        "atUTC": "2026-11-21T00:05:45Z",
+        "status": "CURRENT_PRIMARY_APPROVAL_UNKNOWN"
       }
     },
     {
@@ -46271,6 +46296,28 @@
         "themeSavedUnpublished": true,
         "livePublish": false
       }
+    },
+    {
+      "id": "merchant-oil-overlay-15450848723329",
+      "priority": 50,
+      "priorityKind": "merchant_quality",
+      "state": "shopify_beige_image_ready_google_synced_overlay_status_remains",
+      "title": "Bild der Öl-Sprühflasche korrigieren",
+      "lastEvidenceDate": "2026-11-21",
+      "belegArt": "NATIVE_AND_PUBLIC_READBACK",
+      "lastEvidence": "Beige 1 Stück variantenbezogenes Original in Shopify READY und öffentlich geprüft. Merchant hat die neue URL übernommen, Bildablehnung steht noch.",
+      "nextAllowedStep": "Genaues Angebot nach Googles erneuter Bildprüfung gezielt zurücklesen. Für weitere geprüfte Farb- und Packungsvarianten echte passende Fotos bereitstellen.",
+      "blockers": [
+        "Google-Freigabe steht nach der Übernahme der neuen URL noch aus.",
+        "Keine passenden unbearbeiteten und overlayfreien Originale für die übrigen geprüften Varianten in den gesichteten Galerien."
+      ],
+      "acceptance": "Merchant zeigt das neue Bild und die Artikel-Freigabe für CH und LI.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R280-REPORT-20261121.md",
+        "dropship/codex-handoff-20261018/R280-PROOF-20261121.json"
+      ],
+      "requiresFreshVerification": true,
+      "assignedRole": "claude"
     }
   ],
   "history": [
@@ -50646,6 +50693,15 @@
         "dropship/codex-handoff-20261018/R279-REPORT-20261121.md",
         "dropship/codex-handoff-20261018/R279-PROOF-20261121.json"
       ]
+    },
+    {
+      "revision": 280,
+      "at": "2026-11-21T00:05:45Z",
+      "summary": "Bildquelle der beigen 1er-Öl-Sprühflasche in Shopify korrigiert. Google hat die neue URL übernommen, die Bildablehnung wird noch angezeigt. Vier veraltete Merchant-Angebote gehören zu zwei bereits abgewählten Shopify-Entwürfen.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R280-REPORT-20261121.md",
+        "dropship/codex-handoff-20261018/R280-PROOF-20261121.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -52759,7 +52815,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 279,
+    "latestCanonicalRevision": 280,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -53923,6 +53979,19 @@
       "themeRole": "UNPUBLISHED",
       "themePublishWaitingForExactOwnerApproval": true,
       "indexingAfterRecrawl": "UNKNOWN"
+    },
+    "run280": {
+      "atUTC": "2026-11-21T00:05:45Z",
+      "dateLocal": "2026-11-21",
+      "summary": "Bildquelle der beigen 1er-Öl-Sprühflasche in Shopify korrigiert. Google hat die neue URL übernommen, die Bildablehnung wird noch angezeigt. Vier veraltete Merchant-Angebote gehören zu zwei bereits abgewählten Shopify-Entwürfen.",
+      "report": "dropship/codex-handoff-20261018/R280-REPORT-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/R280-PROOF-20261121.json",
+      "shopifyReadyVariantMedia": 1,
+      "googleApprovalAfterChange": "NEW_IMAGE_SYNCED_OLD_ISSUE_STILL_REPORTED",
+      "draftFeedOfferRows": 4,
+      "feedDeletionAuthorization": "AWAITING_EXACT_OWNER_CONFIRMATION",
+      "writesToMerchant": 0,
+      "claudeReceipt": "UNKNOWN"
     }
   },
   "claudeCodeHandoffHistory": [
@@ -81026,5 +81095,18 @@
     "themeRole": "UNPUBLISHED",
     "themePublishWaitingForExactOwnerApproval": true,
     "indexingAfterRecrawl": "UNKNOWN"
+  },
+  "run280": {
+    "atUTC": "2026-11-21T00:05:45Z",
+    "dateLocal": "2026-11-21",
+    "summary": "Bildquelle der beigen 1er-Öl-Sprühflasche in Shopify korrigiert. Google hat die neue URL übernommen, die Bildablehnung wird noch angezeigt. Vier veraltete Merchant-Angebote gehören zu zwei bereits abgewählten Shopify-Entwürfen.",
+    "report": "dropship/codex-handoff-20261018/R280-REPORT-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/R280-PROOF-20261121.json",
+    "shopifyReadyVariantMedia": 1,
+    "googleApprovalAfterChange": "NEW_IMAGE_SYNCED_OLD_ISSUE_STILL_REPORTED",
+    "draftFeedOfferRows": 4,
+    "feedDeletionAuthorization": "AWAITING_EXACT_OWNER_CONFIRMATION",
+    "writesToMerchant": 0,
+    "claudeReceipt": "UNKNOWN"
   }
 }
