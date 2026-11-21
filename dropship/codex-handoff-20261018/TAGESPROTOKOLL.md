@@ -3645,3 +3645,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Shopify-Vorschau und Bildquellen](R297-ORIGINAL-KATEGORIEBILDER-20261121.md)
 
 [LUXESTYLE_R297_20261121]
+
+### R298 – 18 Produkte in der Websitegalerie
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Websitefilm | Neun weitere Original-Shopbilder in drei bewegten Szenen ergänzt. Exakte Produkt- und Varianten-IDs gegen die bisherigen neun geprüft. | 18 verschiedene Produkte, 32 Sekunden, stumme 4K- und Hochformatvorschau mit 60 fps. |
+| Prüfung | Je 1920 Bilder dekodiert und Zeitstempel, neun Grossansichten sowie 15 Chromium-Sprünge pro Datei geprüft. | Bisherige Galerie und Keramik-Videofenster in den übernommenen 20 Sekunden enthalten. Lokale Vorschauen. |
+
+[Film, Bilder und Prüfung](R298-ACHTZEHN-PRODUKTE-20261121.md)
+
+[LUXESTYLE_R298_20261121]
