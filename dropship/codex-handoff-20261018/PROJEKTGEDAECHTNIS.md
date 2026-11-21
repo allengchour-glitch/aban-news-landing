@@ -1,3 +1,11 @@
+# R309 – Betroffene Merchant-Angebote – 21.11.2026
+
+Merchant-Reports bestätigt in 25 Angebotszeilen 13 aktuelle CSS-Fälle, alle mit aktiven Shopify-Varianten. Fünf separate 404-Angebote und sieben Bildfälle abgegrenzt. Dauerhafte Löschung der fünf 404-Angebote zur konkreten Bestätigung vorgelegt.
+
+[Live-Stichprobe und Antragstext](R309-MERCHANT-ANGEBOTE-20261121.md)
+
+---
+
 # R308 – Quellen hinter dem CSS-Kontingent – 21.11.2026
 
 Vier Merchant-Quellen frisch bestätigt. Zwei Shopify-Hauptquellen für DE/CH+LI und FR/CH, jeweils Shopping Ads und Free Listings aktiv. Früherer AUTOFEED nicht in der vollständigen Quellenliste. Kein belegter Quellenfehler als Ursache der CSS-Meldung. Export der betroffenen Angebote fehlt.
