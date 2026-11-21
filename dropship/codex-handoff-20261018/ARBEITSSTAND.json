@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 291,
-  "updatedAt": "2026-11-21T14:13:19Z",
+  "revision": 292,
+  "updatedAt": "2026-11-21T14:38:42Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -45991,20 +45991,20 @@
       "id": "website-main-film-20261103",
       "priority": 65,
       "priorityKind": "SETZUNG",
-      "state": "r274_native_saved_qa_pass_publish_connector_refused_two_renders_review_candidate_ready",
+      "state": "r292_native_saved_scroll_background_without_dress_preview_only",
       "title": "Einen professionellen Hauptfilm für die LuxeStyle-Startseite herstellen",
-      "lastEvidenceDate": "2026-11-17",
-      "belegArt": "TATSAECHLICHE_NATIVE_THEME_SAVES_EXACT_READBACK_QA_PASS_PUBLISH_REFUSED_PAID_JOB_SUBMITTED",
-      "lastEvidence": "R274: Aktuelle Inhaberkopie 214208577927 verifiziert; neun vollständige Dateien gespeichert und exakt zurückgelesen, echten Desktop-Stickyfehler im besitzenden Abschnitt korrigiert. Finale gespeicherte Chromium-Vorschau bestanden. Genau ein Publish-Aufruf wurde mit «Only agent-created themes can be published here» verweigert; Ziel weiterhin UNPUBLISHED, bisheriger MAIN 214169584007 unverändert. Unter der ausdrücklichen Obergrenze von 1000 Credits zwei gezielte Seedance-2.5-Fassungen für je offerierte 420 Credits gerendert. Revision 3 mit sechs Einstellungen ist nach vorläufig bestandener Produktbildprüfung die bessere Abnahmekandidatin; exportierte MP4 15 s/1080×1440/30 fps/stumm, 10.56 MB, exakt hochgeladen/zurückgelesen und vollständig dekodiert. Keine neue ungesehene Filmfassung live gebunden.",
+      "lastEvidenceDate": "2026-11-21",
+      "belegArt": "NATIVE_THEME_SAVED_EXACT_READBACK_AND_VERIFY_UNPUBLISHED_COPY",
+      "lastEvidence": "R292: Startseitenfilm hinter Titel und Schaltflächen gelegt, Kleidpassage durch einen Sieben-Sekunden-Schnitt aus Atelier und Keramik ersetzt und den separaten Kleid-Banner durch zwei Wohnprodukte abgelöst. Theme-Kopie gespeichert und geprüft; Live-Theme weiterhin MAIN. Originalexport hashgleich im Shopify-Readback. Karten bei 1440/390/320 px nativ geprüft.",
       "ownerPurpose": "LuxeStyle als Marke zeigen; ausdrücklich im Chat bestätigt. Keine fertige kreative/Produkt-/Rechteabnahme daraus ableiten.",
       "proposedMasterId": "luxe_website_brand_master_20261103",
       "preservedSocialMasterId": "luxe_sternenprojektor_master_20261018",
-      "nextAllowedStep": "Inhaber veröffentlicht die bereits gespeicherte und geprüfte Kopie 214208577927 im Shopify-Admin; danach MAIN und öffentliche Website frisch prüfen. Die bestehende Freigabe des R272-Films ist gültig, keine neue Zustimmung dafür verlangen und keinen Connector-Bypass verwenden. Neue Sechs-Szenen-Revision 3 über ihre bestätigte Vorschau zur konkreten kreativen Abnahme vorlegen; bis dahin bestehende R272-Medienbindung erhalten. Bei späterer Annahme der neuen Revision aktuelle Kopie/Shop, native Upload- und Medienidentität, Ausschnitte und Komponentenverhalten erneut prüfen. Keine weiteren kostenpflichtigen Aufträge in diesem Lauf.",
+      "nextAllowedStep": "Die R292-Fassung in der Theme-Kopie 214208577927 zur konkreten Inhaberabnahme verwenden. Nach Freigabe über den Shopify-Admin publizieren, sofern der dedizierte Connector diese Kopie weiterhin nicht veröffentlichen kann. Danach MAIN und öffentlichen Hero frisch prüfen. Die alte R272-Freigabe gilt für die frühere Datei, und der separate Social-Master ist unberührt.",
       "blockers": [
-        "Bestehende Website-Quellen sind nach ausdrücklichem Auftrag genutzt; unabhängige kommerzielle Drittanbieter-Lizenzbestätigung bleibt unbekannt, keine Socialfreigabe ableiten.",
-        "R274: Gespeicherte geprüfte Kopie 214208577927 bleibt nach einem explizit verweigerten Publish UNPUBLISHED; Connector erlaubt nur agent-created themes. Manuelle Admin-Veröffentlichung erforderlich, keine fehlende Inhaberfreigabe.",
-        "R274: Echte iPhone-/Safari-Prüfung fehlt; aktuelle Chromium-Checks und native 3-s-Keyframes begründen keine universelle Scroll-Performancebehauptung.",
-        "R274: Neue Revision 3 als reale geprüfte MP4 zur kreativen Abnahme vorhanden; keine konkrete Inhaberabnahme dieser neuen Datei und keine native responsive Einbindung dieser Revision belegt. Bisherige freigegebene R272-Medienbindung erhalten."
+        "Die aktualisierte Theme-Kopie 214208577927 ist UNPUBLISHED. Der dedizierte Connector hatte diese Kopie explizit als nicht agent-created abgewiesen.",
+        "Die überarbeitete R292-Fassung liegt zur konkreten kreativen Abnahme vor. Die frühere R272-Freigabe gehört zur früheren Datei.",
+        "Browserprüfung nur in Chromium. iPhone/Safari bleibt offen.",
+        "Freigabe und Quellenverwendung beziehen sich auf die Website. Kommerzielle Drittanbieterrechte für eine Social-Ausspielung sind unbekannt."
       ],
       "acceptance": [
         "Ein Markenfilm aus aktuellen Website-Bildern und belegten Kategorien, keine erfundene Produktdemonstration.",
@@ -50882,6 +50882,14 @@
       "summary": "Vollständigen französischen Projektor-Beschrieb und Modellauswahl A–G zur Freigabe vorbereitet. Sieben Varianten in der lokalen Mobil- und Desktopvorschau geprüft. Kamera- und Lichttest für den bestehenden 18-Sekunden-Master dokumentiert. Drei Metricool-Sperren und die unveröffentlichte Startseitenkopie erneut bestätigt.",
       "sources": [
         "dropship/codex-handoff-20261018/R291-PREMIUM-20261121.md"
+      ]
+    },
+    {
+      "revision": 292,
+      "at": "2026-11-21T14:38:42Z",
+      "summary": "Startseitenfilm hinter Titel und Schaltflächen gelegt, Kleidpassage durch einen Sieben-Sekunden-Schnitt aus Atelier und Keramik ersetzt und den separaten Kleid-Banner durch zwei Wohnprodukte abgelöst. Theme-Kopie gespeichert und geprüft; Live-Theme weiterhin MAIN.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R292-STARTSEITE-20261121.md"
       ]
     }
   ],
@@ -81746,6 +81754,52 @@
       "stageRole": "UNPUBLISHED",
       "write": false
     },
+    "claudeReceipt": "unknown"
+  },
+  "run292": {
+    "atUTC": "2026-11-21T14:38:42Z",
+    "localDate": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R292-STARTSEITE-20261121.md",
+    "summary": "Startseitenfilm hinter Titel und Schaltflächen gelegt, Kleidpassage durch einen Sieben-Sekunden-Schnitt aus Atelier und Keramik ersetzt und den separaten Kleid-Banner durch zwei Wohnprodukte abgelöst. Theme-Kopie gespeichert und geprüft; Live-Theme weiterhin MAIN.",
+    "website": {
+      "themeCopy": "gid://shopify/OnlineStoreTheme/214208577927",
+      "role": "UNPUBLISHED",
+      "publicMain": "gid://shopify/OnlineStoreTheme/214169584007",
+      "masterId": "luxe-home-atelier-multishot-20261116",
+      "videoId": "gid://shopify/Video/78152711340423",
+      "videoSHA256": "d293d49c3e887f35b71a6bfcb6aa4200d26d416e4f701b8f4160518acaa4c554",
+      "posterId": "gid://shopify/MediaImage/78152711307655",
+      "duration": 7,
+      "muted": true,
+      "commits": [
+        "af90634eccb1fec7f8ef260ce4e37f97d17175ed",
+        "4de2c8b8f842069fd99093e2346cfc33e2501786"
+      ],
+      "products": [
+        "gid://shopify/Product/15524879008129",
+        "gid://shopify/Product/15411554320769"
+      ],
+      "nativeWidths": [
+        1440,
+        390,
+        320
+      ],
+      "newPaidRenders": 0,
+      "priorTask": {
+        "state": "r274_native_saved_qa_pass_publish_connector_refused_two_renders_review_candidate_ready",
+        "lastEvidenceDate": "2026-11-17",
+        "belegArt": "TATSAECHLICHE_NATIVE_THEME_SAVES_EXACT_READBACK_QA_PASS_PUBLISH_REFUSED_PAID_JOB_SUBMITTED",
+        "lastEvidence": "R274: Aktuelle Inhaberkopie 214208577927 verifiziert; neun vollständige Dateien gespeichert und exakt zurückgelesen, echten Desktop-Stickyfehler im besitzenden Abschnitt korrigiert. Finale gespeicherte Chromium-Vorschau bestanden. Genau ein Publish-Aufruf wurde mit «Only agent-created themes can be published here» verweigert; Ziel weiterhin UNPUBLISHED, bisheriger MAIN 214169584007 unverändert. Unter der ausdrücklichen Obergrenze von 1000 Credits zwei gezielte Seedance-2.5-Fassungen für je offerierte 420 Credits gerendert. Revision 3 mit sechs Einstellungen ist nach vorläufig bestandener Produktbildprüfung die bessere Abnahmekandidatin; exportierte MP4 15 s/1080×1440/30 fps/stumm, 10.56 MB, exakt hochgeladen/zurückgelesen und vollständig dekodiert. Keine neue ungesehene Filmfassung live gebunden.",
+        "nextAllowedStep": "Inhaber veröffentlicht die bereits gespeicherte und geprüfte Kopie 214208577927 im Shopify-Admin; danach MAIN und öffentliche Website frisch prüfen. Die bestehende Freigabe des R272-Films ist gültig, keine neue Zustimmung dafür verlangen und keinen Connector-Bypass verwenden. Neue Sechs-Szenen-Revision 3 über ihre bestätigte Vorschau zur konkreten kreativen Abnahme vorlegen; bis dahin bestehende R272-Medienbindung erhalten. Bei späterer Annahme der neuen Revision aktuelle Kopie/Shop, native Upload- und Medienidentität, Ausschnitte und Komponentenverhalten erneut prüfen. Keine weiteren kostenpflichtigen Aufträge in diesem Lauf.",
+        "blockers": [
+          "Bestehende Website-Quellen sind nach ausdrücklichem Auftrag genutzt; unabhängige kommerzielle Drittanbieter-Lizenzbestätigung bleibt unbekannt, keine Socialfreigabe ableiten.",
+          "R274: Gespeicherte geprüfte Kopie 214208577927 bleibt nach einem explizit verweigerten Publish UNPUBLISHED; Connector erlaubt nur agent-created themes. Manuelle Admin-Veröffentlichung erforderlich, keine fehlende Inhaberfreigabe.",
+          "R274: Echte iPhone-/Safari-Prüfung fehlt; aktuelle Chromium-Checks und native 3-s-Keyframes begründen keine universelle Scroll-Performancebehauptung.",
+          "R274: Neue Revision 3 als reale geprüfte MP4 zur kreativen Abnahme vorhanden; keine konkrete Inhaberabnahme dieser neuen Datei und keine native responsive Einbindung dieser Revision belegt. Bisherige freigegebene R272-Medienbindung erhalten."
+        ]
+      }
+    },
+    "operationalSocialWrites": 0,
     "claudeReceipt": "unknown"
   }
 }
