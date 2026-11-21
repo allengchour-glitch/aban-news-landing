@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 310,
-  "updatedAt": "2026-11-21T23:03:34Z",
+  "revision": 311,
+  "updatedAt": "2026-11-21T23:11:57Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51035,6 +51035,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R310-MERCHANT-404-BEREINIGUNG-20261121.md"
       ]
+    },
+    {
+      "revision": 311,
+      "at": "2026-11-21T23:11:57Z",
+      "summary": "Zwei falsch als Küche erfasste Produkte korrigiert und öffentliche Sortimentszuordnung geprüft. Begrenzte Merchant-Gegenprobe nach Löschung zeigt 13 CSS- und 12 Bildzeilen. Fünf weitere CJ-Setbilder mit Einblendungen, Stückliste offen.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R311-KATALOG-ZUORDNUNGEN-20261121.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82807,5 +82815,42 @@
     "probeCommit": "30a3c1326c403a9263701ea0b3794694bd805733",
     "tests": 35,
     "preDeleteBackupSha256": "8f429a406d5e1e7f7c0f3b4fd8d07a730229f134404fda43dfd2fe5071cd7b50"
+  },
+  "run311": {
+    "date": "2026-11-21",
+    "report": "dropship/codex-handoff-20261018/R311-KATALOG-ZUORDNUNGEN-20261121.md",
+    "reportBlob": "244841ee04dc826cd559cd1dfa13dbc11efc91ea",
+    "shop": 94368563585,
+    "merchantAccount": "5797470070",
+    "typeAndTagChanges": [
+      {
+        "id": "gid://shopify/Product/15517531472257",
+        "newType": "Wohnen & Deko",
+        "tagsRemoved": [
+          "kueche",
+          "kochen"
+        ]
+      },
+      {
+        "id": "gid://shopify/Product/15509575270785",
+        "newType": "Aufbewahrung & Organizer",
+        "tagsRemoved": [
+          "kueche",
+          "kochen"
+        ]
+      }
+    ],
+    "kitchenStorefrontConfirmed": true,
+    "merchantSample": {
+      "run": 44960336426,
+      "job": 137017525626,
+      "rows": 25,
+      "issues": {
+        "item_limit_reached_ads_css": 13,
+        "image_unwanted_overlays": 12
+      }
+    },
+    "merchantWrites": 0,
+    "merchantResyncOfShopifyTypeChanges": "unknown"
   }
 }
