@@ -1,3 +1,11 @@
+# R283 – Freigegebener Theme-Wechsel vom Connector abgelehnt – 21.11.2026
+
+Inhaber bestätigte den Livegang der namentlich benannten Modellvergleich-Kopie. Shopify-Connector lehnte ihn mit «Only agent-created themes can be published here» ab. Admin und vier öffentliche Seiten bestätigen weiterhin Haupttheme 214169584007. Die geprüfte Kopie 214532882823 ist in der Shopify-Theme-Bibliothek bereit.
+
+[Übergabe](R283-UEBERGABE-20261121.md) · [Belege](runs/20261121-r283/THEME-PUBLIKATION.json)
+
+---
+
 # R282 – Modellvergleich in nativer Shopify-Vorschau – 21.11.2026
 
 Freigegebenen Modellvergleich für die deutsche Projektor-Seite in Shopify-Kopie 214532882823 gespeichert. Genau zwei von 561 Dateien unterscheiden sich. Vier native HTML-Prüfungen und sechs echte Browserprüfungen bestanden. Shopify verlangt Bestätigung dieser benannten Kopie für den Wechsel ins Live-Theme.

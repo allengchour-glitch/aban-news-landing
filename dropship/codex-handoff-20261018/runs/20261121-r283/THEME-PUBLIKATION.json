@@ -1,0 +1,227 @@
+{
+  "atUTC": "2026-11-21T07:34:57Z",
+  "run": "R283",
+  "scope": "Exact approved DE projector model comparison theme",
+  "ownerApprovedExactTheme": true,
+  "explicitLiveContinuation": true,
+  "prePublishManifest": {
+    "source": {
+      "id": "gid://shopify/OnlineStoreTheme/214169584007",
+      "role": "MAIN",
+      "updatedAt": "2026-11-16T22:12:34Z"
+    },
+    "target": {
+      "id": "gid://shopify/OnlineStoreTheme/214532882823",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-21T07:07:40Z"
+    },
+    "files": 561,
+    "diff": [
+      {
+        "file": "blocks/variant-picker.liquid",
+        "old": "f299d1a228fcaa40fff605bdd6e3860e",
+        "new": "84db771207d51a263d38e76457779c5a"
+      },
+      {
+        "file": "templates/product.json",
+        "old": "3d989256216e0d5ebbb65987d4a8398e",
+        "new": "0244ca4694b1f2a4fc45e46ea088ff17"
+      }
+    ]
+  },
+  "publishResult": {
+    "themeId": "gid://shopify/OnlineStoreTheme/214532882823",
+    "published": false,
+    "pending": [],
+    "userErrors": [
+      "Only agent-created themes can be published here"
+    ],
+    "rejectedReason": "publish_refused"
+  },
+  "readback": {
+    "shop": {
+      "id": "gid://shopify/Shop/94368563585",
+      "primaryDomain": {
+        "url": "https://luxestyle.ch"
+      }
+    },
+    "active": {
+      "id": "gid://shopify/OnlineStoreTheme/214169584007",
+      "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+      "role": "MAIN",
+      "updatedAt": "2026-11-16T22:12:34Z"
+    },
+    "candidate": {
+      "id": "gid://shopify/OnlineStoreTheme/214532882823",
+      "name": "LuxeStyle Modellvergleich 21.11.2026",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-21T07:07:40Z",
+      "processing": false,
+      "files": {
+        "nodes": [
+          {
+            "filename": "blocks/variant-picker.liquid",
+            "checksumMd5": "84db771207d51a263d38e76457779c5a"
+          },
+          {
+            "filename": "templates/product.json",
+            "checksumMd5": "0244ca4694b1f2a4fc45e46ea088ff17"
+          }
+        ]
+      }
+    },
+    "seo": {
+      "id": "gid://shopify/OnlineStoreTheme/214526394759",
+      "name": "LuxeStyle SEO 21.11.2026 R279",
+      "role": "UNPUBLISHED",
+      "updatedAt": "2026-11-20T23:50:04Z"
+    }
+  },
+  "publicQA": [
+    {
+      "case": "de_a",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=guide_qa",
+      "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=guide_qa",
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main"
+      },
+      "lang": "de",
+      "status": 200,
+      "links": 0,
+      "targets": [],
+      "variantIds": [
+        "68122445283719"
+      ],
+      "price": {
+        "amount": "34.90",
+        "currency": "CHF"
+      },
+      "sha256": "e72d97b30dbd4b0832ba6cb2632bf95da9a3465325b2e15274f9a8ad722186d8",
+      "checks": {
+        "okHttp": true,
+        "ownShop": true,
+        "theme": true,
+        "language": true,
+        "link": true,
+        "target": true,
+        "variant": true,
+        "price": true,
+        "liquid": true
+      }
+    },
+    {
+      "case": "de_g",
+      "url": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445480327&utm_source=guide_qa",
+      "finalUrl": "https://luxestyle.ch/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445480327&utm_source=guide_qa",
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main"
+      },
+      "lang": "de",
+      "status": 200,
+      "links": 0,
+      "targets": [],
+      "variantIds": [
+        "68122445480327"
+      ],
+      "price": {
+        "amount": "35.90",
+        "currency": "CHF"
+      },
+      "sha256": "b095ea8f2890ed368d70a9bde30309a1c5366e13319e2db4dd2fb290056a80cf",
+      "checks": {
+        "okHttp": true,
+        "ownShop": true,
+        "theme": true,
+        "language": true,
+        "link": true,
+        "target": true,
+        "variant": true,
+        "price": true,
+        "liquid": true
+      }
+    },
+    {
+      "case": "fr_a",
+      "url": "https://luxestyle.ch/fr/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=guide_qa",
+      "finalUrl": "https://luxestyle.ch/fr/products/sternenlicht-projektor-fur-schlafzimmer-732544?variant=68122445283719&utm_source=guide_qa",
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main"
+      },
+      "lang": "fr",
+      "status": 200,
+      "links": 0,
+      "targets": [],
+      "variantIds": [
+        "68122445283719"
+      ],
+      "price": {
+        "amount": "34.90",
+        "currency": "CHF"
+      },
+      "sha256": "37697fd44789cbe06aaafa99fc5eaae1f383aa73cc8e6a458a7160dd4d4fc83c",
+      "checks": {
+        "okHttp": true,
+        "ownShop": true,
+        "theme": true,
+        "language": true,
+        "link": true,
+        "target": true,
+        "variant": true,
+        "price": true,
+        "liquid": true
+      }
+    },
+    {
+      "case": "other",
+      "url": "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591&utm_source=guide_qa",
+      "finalUrl": "https://luxestyle.ch/products/selbstzentrierendes-vierbacken-drehfutter-609200?variant=67641307955591&utm_source=guide_qa",
+      "theme": {
+        "name": "LuxeStyle – Variantenpreis SEO 16.11.2026",
+        "id": 214169584007,
+        "schema_name": "Horizon",
+        "schema_version": "3.5.1",
+        "theme_store_id": 2481,
+        "role": "main"
+      },
+      "lang": "de",
+      "status": 200,
+      "links": 0,
+      "targets": [],
+      "variantIds": [
+        "67641307955591"
+      ],
+      "price": {
+        "amount": "4,245.90",
+        "currency": "CHF"
+      },
+      "sha256": "86903abf5ae0370b3c73b645603f3aa7f96b37077286169b20f3adfab5585de3",
+      "checks": {
+        "okHttp": true,
+        "ownShop": true,
+        "theme": true,
+        "language": true,
+        "link": true,
+        "target": true,
+        "variant": true,
+        "price": true,
+        "liquid": true
+      }
+    }
+  ],
+  "adminThemeLibrary": "https://admin.shopify.com/store/au3j0y-hq/themes"
+}

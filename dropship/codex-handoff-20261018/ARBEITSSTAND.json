@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 282,
-  "updatedAt": "2026-11-21T07:10:01Z",
+  "revision": 283,
+  "updatedAt": "2026-11-21T07:34:57Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -19649,6 +19649,12 @@
         "report": "dropship/codex-handoff-20261018/R282-UEBERGABE-20261121.md",
         "proof": "dropship/codex-handoff-20261018/runs/20261121-r282/MODELLVERGLEICH-PRUEFBELEG.json",
         "status": "SHARED_HANDOFF_UPDATED_CLAUDE_RECEIPT_UNKNOWN"
+      },
+      "run283": {
+        "at": "2026-11-21T07:34:57Z",
+        "report": "dropship/codex-handoff-20261018/R283-UEBERGABE-20261121.md",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r283/THEME-PUBLIKATION.json",
+        "status": "LIVE_APPROVED_CONNECTOR_REFUSED_PUBLISH_MEMORY_UPDATED_CLAUDE_RECEIPT_UNKNOWN"
       }
     },
     {
@@ -50769,6 +50775,15 @@
         "dropship/codex-handoff-20261018/R282-UEBERGABE-20261121.md",
         "dropship/codex-handoff-20261018/runs/20261121-r282/MODELLVERGLEICH-PRUEFBELEG.json"
       ]
+    },
+    {
+      "revision": 283,
+      "at": "2026-11-21T07:34:57Z",
+      "summary": "Inhaber bestätigte den Livegang der namentlich benannten Modellvergleich-Kopie. Shopify-Connector lehnte ihn mit «Only agent-created themes can be published here» ab. Admin und vier öffentliche Seiten bestätigen weiterhin Haupttheme 214169584007. Die geprüfte Kopie 214532882823 ist in der Shopify-Theme-Bibliothek bereit.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R283-UEBERGABE-20261121.md",
+        "dropship/codex-handoff-20261018/runs/20261121-r283/THEME-PUBLIKATION.json"
+      ]
     }
   ],
   "salesGoal": {
@@ -52882,7 +52897,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 282,
+    "latestCanonicalRevision": 283,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -54135,6 +54150,23 @@
       "nativeHTMLCasesPassed": 4,
       "nativeBrowserChecksPassed": 6,
       "claudeReceipt": "UNKNOWN"
+    },
+    "run283": {
+      "atUTC": "2026-11-21T07:34:57Z",
+      "localDate": "2026-11-21",
+      "summary": "Inhaber bestätigte den Livegang der namentlich benannten Modellvergleich-Kopie. Shopify-Connector lehnte ihn mit «Only agent-created themes can be published here» ab. Admin und vier öffentliche Seiten bestätigen weiterhin Haupttheme 214169584007. Die geprüfte Kopie 214532882823 ist in der Shopify-Theme-Bibliothek bereit.",
+      "report": "dropship/codex-handoff-20261018/R283-UEBERGABE-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/runs/20261121-r283/THEME-PUBLIKATION.json",
+      "ownerInstruction": "mach weiter und live immer",
+      "ownerApprovedExactTheme": true,
+      "theme": "214532882823",
+      "themeName": "LuxeStyle Modellvergleich 21.11.2026",
+      "publication": "REFUSED_CONNECTOR_AGENT_CREATED_THEME_REQUIRED",
+      "liveTheme": "214169584007",
+      "publicModelComparisonVisible": false,
+      "adminThemeLibrary": "https://admin.shopify.com/store/au3j0y-hq/themes",
+      "claudeReceipt": "UNKNOWN",
+      "livePreference": "Veröffentlichung verifizierter freigegebener Änderungen ist das Ziel. Jeweils fortgeltende Freigaben, Qualitätsvoraussetzungen und verfügbare Publikationswege prüfen."
     }
   },
   "claudeCodeHandoffHistory": [
@@ -81327,5 +81359,22 @@
     "nativeHTMLCasesPassed": 4,
     "nativeBrowserChecksPassed": 6,
     "claudeReceipt": "UNKNOWN"
+  },
+  "run283": {
+    "atUTC": "2026-11-21T07:34:57Z",
+    "localDate": "2026-11-21",
+    "summary": "Inhaber bestätigte den Livegang der namentlich benannten Modellvergleich-Kopie. Shopify-Connector lehnte ihn mit «Only agent-created themes can be published here» ab. Admin und vier öffentliche Seiten bestätigen weiterhin Haupttheme 214169584007. Die geprüfte Kopie 214532882823 ist in der Shopify-Theme-Bibliothek bereit.",
+    "report": "dropship/codex-handoff-20261018/R283-UEBERGABE-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/runs/20261121-r283/THEME-PUBLIKATION.json",
+    "ownerInstruction": "mach weiter und live immer",
+    "ownerApprovedExactTheme": true,
+    "theme": "214532882823",
+    "themeName": "LuxeStyle Modellvergleich 21.11.2026",
+    "publication": "REFUSED_CONNECTOR_AGENT_CREATED_THEME_REQUIRED",
+    "liveTheme": "214169584007",
+    "publicModelComparisonVisible": false,
+    "adminThemeLibrary": "https://admin.shopify.com/store/au3j0y-hq/themes",
+    "claudeReceipt": "UNKNOWN",
+    "livePreference": "Veröffentlichung verifizierter freigegebener Änderungen ist das Ziel. Jeweils fortgeltende Freigaben, Qualitätsvoraussetzungen und verfügbare Publikationswege prüfen."
   }
 }

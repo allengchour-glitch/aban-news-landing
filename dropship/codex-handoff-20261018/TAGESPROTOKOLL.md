@@ -3478,3 +3478,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Übergabe](R282-UEBERGABE-20261121.md) · [Prüfbelege](runs/20261121-r282/MODELLVERGLEICH-PRUEFBELEG.json)
 
 [LUXESTYLE_R282_20261121]
+
+### R283 – Freigegebener Publikationsversuch
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify | Inhaberfreigabe entgegengenommen, Theme-Diff und Rollen frisch verglichen und exakt die benannte Kopie zur Veröffentlichung übergeben. | `publish_refused`, «Only agent-created themes can be published here». Kopie `214532882823` ist UNPUBLISHED. |
+| Rücklesen | Admin und vier öffentliche Seiten kontrolliert. | Haupttheme `214169584007` aktiv. Keine neue Modellvergleich-Ausgabe im Shop. |
+| Übergabe | Livewunsch, konkrete Freigabe, Blocker, Theme-ID und Shop-Rücklesung gespeichert. | Shopify-Admin-Weg für dieselbe geprüfte Kopie dokumentiert. |
+
+[Übergabe](R283-UEBERGABE-20261121.md) · [Belege](runs/20261121-r283/THEME-PUBLIKATION.json)
+
+[LUXESTYLE_R283_20261121]
