@@ -2,7 +2,7 @@
 
 ## Codex: Schweizer Google-Sichtbarkeit, vierte Runde · 21.11.2026
 
-Search Console Web Schweiz (22.10.–18.11.): Schmuckaufbewahrung 45 Einblendungen/2 Klicks, Futterautomaten 42/0, Damen-Geldbörsen 40/0. Geplant sind SEO-Titel und -Beschreibungen ausschliesslich für die Shopify-Sammlungen `schmuckaufbewahrung`, `futterautomaten` und `damen-geldboersen`. Keine Änderung am gesondert geschützten Futterspender-Produkt.
+Search Console Web Schweiz (22.10.–18.11.): Schmuckaufbewahrung 45 Einblendungen/2 Klicks, Futterautomaten 42/0, Damen-Geldbörsen 40/0. Geplant sind SEO-Titel und -Beschreibungen ausschliesslich für die Shopify-Sammlungen `schmuckaufbewahrung`, `futterautomaten` und `damen-geldboersen`. Keine Änderung am gesondert geschützten Futterspender-Produkt. Drei SEO-Sätze live geschrieben und in Shopify zurückgelesen; öffentlicher Metadatenabgleich 3/3. Alle drei URLs in Search Console indexiert; Crawling der neuen Texte und Wirkung offen.
 
 ## Codex: Schweizer Google-Sichtbarkeit, dritte Runde · 21.11.2026
 
