@@ -1,3 +1,11 @@
+# R281 – Sieben-Tage-Plan und Projektor-Drehplan – 21.11.2026
+
+Rollenden Metricool-Plan 21.–28.11. frisch geprüft, 29 aktive Zeitplanobjekte und 15 gehaltene Entwürfe. Vier Filmthemen und gestrige Veröffentlichung mit 14 Medienhashes verglichen. Instagram-CDN-Fehler mit sieben JPEG-Rücklesen eingegrenzt. Projektor-Drehplan nach quantitativem 9:16-Befund und Verkaufsentwurf nach sechs Browserprüfungen weiterentwickelt. Google bestätigt die korrigierte Öl-Sprühflasche.
+
+[Bericht](R281-REPORT-20261121.md) · [Storyboard und Kanaltexte](runs/20261121-r281/PROJEKTOR-A-STORYBOARD.md) · [Verkaufsentwurf](runs/20261121-r281/MODELLVERGLEICH.md) · [Belege](runs/20261121-r281/PRUEFBELEGE.json)
+
+---
+
 # R280 – Gezielte Merchant-Korrektur – 21.11.2026
 
 Bildquelle der beigen 1er-Öl-Sprühflasche in Shopify korrigiert. Google hat die neue URL übernommen, die Bildablehnung wird noch angezeigt. Vier veraltete Merchant-Angebote gehören zu zwei bereits abgewählten Shopify-Entwürfen. Die Freigabe der vier konkreten Feed-Löschungen ist angefragt.

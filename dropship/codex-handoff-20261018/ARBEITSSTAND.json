@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 280,
-  "updatedAt": "2026-11-21T00:05:45Z",
+  "revision": 281,
+  "updatedAt": "2026-11-21T07:04:29Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -18,7 +18,7 @@
     "exception": "new_concrete_finding_with_recorded_reason",
     "currentDayEvidenceDate": "2026-11-21",
     "currentDayEvidenceKind": "R277_TARGETED_CONTINUATION_PLUS_R278_FIRST_DAILY_REPORT",
-    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged. R278: First Metricool report for 14–20 Nov, 6 field + 6 data calls, 1 YouTube Watch field + 1 bounded Watch query 17–20 Nov. Three video rows matched, missing data unknown. One Klaviyo account attempt returned UNAUTHORIZED; no flow report. Targeted past planner calls to verify legacy IDs/media and Watch cohort after new findings. No orders, merchant read, GSC, broad sales or business writes. R279: Exactly one new bounded Search Console report for 5 URLs, 4–17 Nov, separate SEO owner task. Prior Metricool/Klaviyo reports retained without repetition. R280: First bounded Merchant sample, page of 10 and exact cases only. No repeated metrics, flows or broad sales reports.",
+    "currentDayEvidence": "R276 memory, complete log and date checked before work. ActualUTC20Nov23:20=21Nov00:20Zurich. No21Novmetricoolmetrics/Klaviyo/GSC/broadSales/orders queried. Previous20Novmetrics retained as datedhistory. Fresh identities, four21–28Novplanningwindows and two targetedpastwindows justifiedbynewworkflowerrorfinding; oneCJproductreadforpublicURL, notcatalogscan. Sixsubagentsprepared source/recovery/single salesdraft; nooperationalwrites orworkflowstarts. Existing08/14/19schedule unchanged. R278: First Metricool report for 14–20 Nov, 6 field + 6 data calls, 1 YouTube Watch field + 1 bounded Watch query 17–20 Nov. Three video rows matched, missing data unknown. One Klaviyo account attempt returned UNAUTHORIZED; no flow report. Targeted past planner calls to verify legacy IDs/media and Watch cohort after new findings. No orders, merchant read, GSC, broad sales or business writes. R279: Exactly one new bounded Search Console report for 5 URLs, 4–17 Nov, separate SEO owner task. Prior Metricool/Klaviyo reports retained without repetition. R280: First bounded Merchant sample, page of 10 and exact cases only. No repeated metrics, flows or broad sales reports. R281 morning: reuse earlier 21 Nov Metricool and Klaviyo evidence. Four planned windows plus 20 Nov actual delivery and one exact merchant offer follow-up. No further intensive reports or purchase-watch reads.",
     "completedReports": {
       "metricool": {
         "localDate": "2026-11-21",
@@ -19637,18 +19637,24 @@
         "proof": "dropship/codex-handoff-20261018/R280-PROOF-20261121.json",
         "atUTC": "2026-11-21T00:05:45Z",
         "status": "R280_HANDOFF_READY_RECEIPT_UNKNOWN"
+      },
+      "run281": {
+        "scope": "R281 mit Plan, Drehplan, Verkaufsentwurf und Messungswiederverwendung bereit. Kenntnisnahme unbekannt.",
+        "source": "dropship/codex-handoff-20261018/R281-REPORT-20261121.md",
+        "at": "2026-11-21T07:04:29Z",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json"
       }
     },
     {
       "id": "master-projector-15521256604033",
       "priority": 70,
       "priorityKind": "SETZUNG",
-      "state": "r259_a_variant_gates_current_master_not_rendered",
+      "state": "r281_native_portrait_A_control_take_required",
       "title": "Denselben professionellen 18-Sekunden-Master weiterentwickeln",
-      "lastEvidenceDate": "2026-11-16",
+      "lastEvidenceDate": "2026-11-21",
       "belegArt": "GEMESSEN_R259_SOCIAL_HOLDS_MASTER_GATES_DRAFTS",
-      "lastEvidence": "R259: aktuelle Variante A 68122445283719 / CJSN139239101AZ; Masterplan 18 s, kein fertiger Master. Physische Probe, A-spezifischer Inhalt, Motiv- und Rechtebindung, SoundFont-/Buildnachweis sowie kreative Abnahme offen.",
-      "nextAllowedStep": "Erst bei physischer A-Probe und belegter Motiv-/Packungsbindung drehen; Rechte, Musikbuild und Shotkontinuität vor internem Prüfrender belegen.",
+      "lastEvidence": "Derselbe Master. A-Variante, Preis, Bild und lokale Pflicht-WAV bestätigt. Dynamischer zweipunktiger Hochformatnachweis zeigt Bedarf an nativem 9:16-Take.",
+      "nextAllowedStep": "Physische A-Probe, zugehöriges Motiv, sichtbare Bedienung und Rechte im durchgehenden Hochformat-Kontrolltake belegen.",
       "blockers": [
         "Physische A-Probe und exakte Motiv-/Packungsbindung fehlen.",
         "Film-/Grafik-/Musikrechte und SoundFont-Build offen.",
@@ -22240,6 +22246,12 @@
               "KeinefertigeprofessionelleMasterMP4/Endabnahme, Bio-/frischeBoard-/Historiengatesoffen."
             ]
           }
+        },
+        {
+          "revision": 280,
+          "at": "2026-11-16",
+          "state": "r259_a_variant_gates_current_master_not_rendered",
+          "evidence": "R259: aktuelle Variante A 68122445283719 / CJSN139239101AZ; Masterplan 18 s, kein fertiger Master. Physische Probe, A-spezifischer Inhalt, Motiv- und Rechtebindung, SoundFont-/Buildnachweis sowie kreative Abnahme offen."
         }
       ],
       "visualAcceptanceDraft": {
@@ -23607,6 +23619,14 @@
         "shootingNote": "dropship/codex-handoff-20261018/runs/20261121-r278/PROJEKTOR-A-DREHNOTIZ.md",
         "salesQa": "dropship/codex-handoff-20261018/runs/20261121-r278/sales/BROWSER-LAUFZEIT.json",
         "evidence": "Shopify original reachable. Exact variant, motif, portrait footage and commercial rights remain open"
+      },
+      "run281": {
+        "state": "r281_native_portrait_A_control_take_required",
+        "scope": "Derselbe Master. A-Variante, Preis, Bild und lokale Pflicht-WAV bestätigt. Dynamischer zweipunktiger Hochformatnachweis zeigt Bedarf an nativem 9:16-Take.",
+        "next": "Physische A-Probe, zugehöriges Motiv, sichtbare Bedienung und Rechte im durchgehenden Hochformat-Kontrolltake belegen.",
+        "source": "dropship/codex-handoff-20261018/runs/20261121-r281/PROJEKTOR-A-STORYBOARD.md",
+        "at": "2026-11-21T07:04:29Z",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json"
       }
     },
     {
@@ -23848,6 +23868,12 @@
         "proof": "dropship/codex-handoff-20261018/CONTENT-VERKAUFSPAKET-20261116-R253.json",
         "historicalEvidencePreserved": true,
         "claudeReceipt": "unknown"
+      },
+      "run281": {
+        "scope": "Vier exakte Abfragen erneut ohne Match. Drei NXDOMAIN, TXT NOERROR ohne exakten Wert. Kein authentifizierter Anbieter-Schreibzugang verfügbar.",
+        "source": "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json",
+        "at": "2026-11-21T07:04:29Z",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json"
       }
     },
     {
@@ -46301,15 +46327,14 @@
       "id": "merchant-oil-overlay-15450848723329",
       "priority": 50,
       "priorityKind": "merchant_quality",
-      "state": "shopify_beige_image_ready_google_synced_overlay_status_remains",
+      "state": "r281_exact_beige_single_merchant_approved_other_variants_open",
       "title": "Bild der Öl-Sprühflasche korrigieren",
       "lastEvidenceDate": "2026-11-21",
       "belegArt": "NATIVE_AND_PUBLIC_READBACK",
-      "lastEvidence": "Beige 1 Stück variantenbezogenes Original in Shopify READY und öffentlich geprüft. Merchant hat die neue URL übernommen, Bildablehnung steht noch.",
-      "nextAllowedStep": "Genaues Angebot nach Googles erneuter Bildprüfung gezielt zurücklesen. Für weitere geprüfte Farb- und Packungsvarianten echte passende Fotos bereitstellen.",
+      "lastEvidence": "Exakter DE-Angebotseintrag der beigen 1er-Variante mit Bildkorrektur R280 für CH und LI freigegeben, keine Bildablehnung mehr. Fünf weitere Varianten aus Stichprobe offen.",
+      "nextAllowedStep": "Nur weitere exakt passende Bilder ohne Overlays mit zulässiger Nutzung prüfen.",
       "blockers": [
-        "Google-Freigabe steht nach der Übernahme der neuen URL noch aus.",
-        "Keine passenden unbearbeiteten und overlayfreien Originale für die übrigen geprüften Varianten in den gesichteten Galerien."
+        "Für fünf weitere in der Stichprobe betroffene Varianten fehlen passende Originalbilder ohne Einblendungen."
       ],
       "acceptance": "Merchant zeigt das neue Bild und die Artikel-Freigabe für CH und LI.",
       "sources": [
@@ -46317,7 +46342,23 @@
         "dropship/codex-handoff-20261018/R280-PROOF-20261121.json"
       ],
       "requiresFreshVerification": true,
-      "assignedRole": "claude"
+      "assignedRole": "claude",
+      "run281": {
+        "state": "r281_exact_beige_single_merchant_approved_other_variants_open",
+        "scope": "Exakter DE-Angebotseintrag der beigen 1er-Variante mit Bildkorrektur R280 für CH und LI freigegeben, keine Bildablehnung mehr. Fünf weitere Varianten aus Stichprobe offen.",
+        "next": "Nur weitere exakt passende Bilder ohne Overlays mit zulässiger Nutzung prüfen.",
+        "source": "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json",
+        "at": "2026-11-21T07:04:29Z",
+        "proof": "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json"
+      },
+      "evidenceHistory": [
+        {
+          "revision": 280,
+          "at": "2026-11-21",
+          "state": "shopify_beige_image_ready_google_synced_overlay_status_remains",
+          "evidence": "Beige 1 Stück variantenbezogenes Original in Shopify READY und öffentlich geprüft. Merchant hat die neue URL übernommen, Bildablehnung steht noch."
+        }
+      ]
     }
   ],
   "history": [
@@ -50702,6 +50743,17 @@
         "dropship/codex-handoff-20261018/R280-REPORT-20261121.md",
         "dropship/codex-handoff-20261018/R280-PROOF-20261121.json"
       ]
+    },
+    {
+      "revision": 281,
+      "at": "2026-11-21T07:04:29Z",
+      "summary": "Rollenden Metricool-Plan 21.–28.11. frisch geprüft, 29 aktive Zeitplanobjekte und 15 gehaltene Entwürfe. Vier Filmthemen und gestrige Veröffentlichung mit 14 Medienhashes verglichen. Instagram-CDN-Fehler mit sieben JPEG-Rücklesen eingegrenzt. Projektor-Drehplan nach quantitativem 9:16-Befund und Verkaufsentwurf nach sechs Browserprüfungen weiterentwickelt. Google bestätigt die korrigierte Öl-Sprühflasche.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R281-REPORT-20261121.md",
+        "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json",
+        "dropship/codex-handoff-20261018/runs/20261121-r281/PROJEKTOR-A-STORYBOARD.md",
+        "dropship/codex-handoff-20261018/runs/20261121-r281/MODELLVERGLEICH.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -52815,7 +52867,7 @@
     "localCurrentPointer": "/workspace/luxestyle-codex/memory/AKTUELL.md",
     "receiptState": "unknown_no_claude_receipt",
     "scope": "R184 Swiss competitor review and six approval-only UX cards; own mobile screenshot, no live changes",
-    "latestCanonicalRevision": 280,
+    "latestCanonicalRevision": 281,
     "snapshotNote": "IKEA/Westwing observed, Galaxus blocked; mobile CTA preview and missing original dimensions prioritised; current30-day public policy confirmed, no performance conclusions. R184 receipt unknown.",
     "merchantCsvSupplement": {
       "path": "dropship/codex-handoff-20261018/MERCHANT-CSV-REPARATUR-20261101-R41.json",
@@ -53991,6 +54043,65 @@
       "draftFeedOfferRows": 4,
       "feedDeletionAuthorization": "AWAITING_EXACT_OWNER_CONFIRMATION",
       "writesToMerchant": 0,
+      "claudeReceipt": "UNKNOWN"
+    },
+    "run281": {
+      "atUTC": "2026-11-21T07:04:29Z",
+      "localDate": "2026-11-21",
+      "summary": "Rollenden Metricool-Plan 21.–28.11. frisch geprüft, 29 aktive Zeitplanobjekte und 15 gehaltene Entwürfe. Vier Filmthemen und gestrige Veröffentlichung mit 14 Medienhashes verglichen. Instagram-CDN-Fehler mit sieben JPEG-Rücklesen eingegrenzt. Projektor-Drehplan nach quantitativem 9:16-Befund und Verkaufsentwurf nach sechs Browserprüfungen weiterentwickelt. Google bestätigt die korrigierte Öl-Sprühflasche.",
+      "report": "dropship/codex-handoff-20261018/R281-REPORT-20261121.md",
+      "proof": "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json",
+      "storyboard": "dropship/codex-handoff-20261018/runs/20261121-r281/PROJEKTOR-A-STORYBOARD.md",
+      "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r281/MODELLVERGLEICH.md",
+      "planning": {
+        "activeObjects": 29,
+        "providerRows": 37,
+        "drafts": 15,
+        "gaps": {
+          "instagram": [
+            "2026-11-25",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-28"
+          ],
+          "facebook": [
+            "2026-11-25",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-28"
+          ],
+          "tiktok": [
+            "2026-11-25",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-28"
+          ],
+          "pinterest": [
+            "2026-11-25",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-28"
+          ],
+          "threads": [
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-28"
+          ],
+          "youtube": [
+            "2026-11-25",
+            "2026-11-26",
+            "2026-11-27",
+            "2026-11-28"
+          ]
+        },
+        "scheduledNew": 0,
+        "ownPublished": 0
+      },
+      "salesDraftLocalBrowserPassed": 6,
+      "merchantOilApprovedCHLI": true,
+      "professionalProjectorMP4": false,
+      "metricoolConcurrentDayReportReused": "R278",
+      "klaviyo": "AUTH_BLOCKED_R278_NO_REPEAT",
       "claudeReceipt": "UNKNOWN"
     }
   },
@@ -81107,6 +81218,65 @@
     "draftFeedOfferRows": 4,
     "feedDeletionAuthorization": "AWAITING_EXACT_OWNER_CONFIRMATION",
     "writesToMerchant": 0,
+    "claudeReceipt": "UNKNOWN"
+  },
+  "run281": {
+    "atUTC": "2026-11-21T07:04:29Z",
+    "localDate": "2026-11-21",
+    "summary": "Rollenden Metricool-Plan 21.–28.11. frisch geprüft, 29 aktive Zeitplanobjekte und 15 gehaltene Entwürfe. Vier Filmthemen und gestrige Veröffentlichung mit 14 Medienhashes verglichen. Instagram-CDN-Fehler mit sieben JPEG-Rücklesen eingegrenzt. Projektor-Drehplan nach quantitativem 9:16-Befund und Verkaufsentwurf nach sechs Browserprüfungen weiterentwickelt. Google bestätigt die korrigierte Öl-Sprühflasche.",
+    "report": "dropship/codex-handoff-20261018/R281-REPORT-20261121.md",
+    "proof": "dropship/codex-handoff-20261018/runs/20261121-r281/PRUEFBELEGE.json",
+    "storyboard": "dropship/codex-handoff-20261018/runs/20261121-r281/PROJEKTOR-A-STORYBOARD.md",
+    "salesDraft": "dropship/codex-handoff-20261018/runs/20261121-r281/MODELLVERGLEICH.md",
+    "planning": {
+      "activeObjects": 29,
+      "providerRows": 37,
+      "drafts": 15,
+      "gaps": {
+        "instagram": [
+          "2026-11-25",
+          "2026-11-26",
+          "2026-11-27",
+          "2026-11-28"
+        ],
+        "facebook": [
+          "2026-11-25",
+          "2026-11-26",
+          "2026-11-27",
+          "2026-11-28"
+        ],
+        "tiktok": [
+          "2026-11-25",
+          "2026-11-26",
+          "2026-11-27",
+          "2026-11-28"
+        ],
+        "pinterest": [
+          "2026-11-25",
+          "2026-11-26",
+          "2026-11-27",
+          "2026-11-28"
+        ],
+        "threads": [
+          "2026-11-26",
+          "2026-11-27",
+          "2026-11-28"
+        ],
+        "youtube": [
+          "2026-11-25",
+          "2026-11-26",
+          "2026-11-27",
+          "2026-11-28"
+        ]
+      },
+      "scheduledNew": 0,
+      "ownPublished": 0
+    },
+    "salesDraftLocalBrowserPassed": 6,
+    "merchantOilApprovedCHLI": true,
+    "professionalProjectorMP4": false,
+    "metricoolConcurrentDayReportReused": "R278",
+    "klaviyo": "AUTH_BLOCKED_R278_NO_REPEAT",
     "claudeReceipt": "UNKNOWN"
   }
 }

@@ -3450,3 +3450,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Bericht](R280-REPORT-20261121.md) · [Belege](R280-PROOF-20261121.json)
 
 [LUXESTYLE_R280_20261121]
+
+### R281 – Morgenlauf mit Planprüfung und Projektor
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Identität und Planung | Shopify und sechs Metricool-Kanäle frisch bestätigt, Planung 21.–28.11. plus Auslieferung 20.11. gelesen, 14 MP4s gehasht. | 29 aktive Planobjekte und 15 gehaltene Entwürfe. Lücken 25.–28.11., Threads 26.–28.11. Im Prüffenster keine gleichkanalige Hash-, URL-, Text- oder Zeitkollision. |
+| Instagram | Den gestrigen Fehler und sieben verknüpfte JPEG-Dateien geprüft, darunter vier Bilder des heutigen Vergleichstermins. | Facebook-Partnerstatus PUBLISHED, Instagram ERROR. Sieben heutige HTTPS-Abrufe erfolgreich. Meta-Ursache offen. |
+| Projektorfilm | Variante A und Bild live abgeglichen, maximalen Hochformat-Ausschnitt gemessen, einen 18-Sekunden-Drehplan und sechs Kanaltexte ausgearbeitet. | Neuer 9:16-Kontrolltake mit echter A-Probe nötig. Rechte und Hörabnahme offen. |
+| Medienbestand | Altes Kristall-Original anhand SHA und sichtbarer Handlung geprüft. | Bildfolge ohne Produkthandlung. Korrigierte Datei lokal nicht verfügbar. Kein neuer freigabefähiger Medienkandidat. |
+| Verkauf | Link «Modelle A–G vergleichen» mit A → G → A bei 360 und 1440 Pixeln im lokalen Browser geprüft. | Sechs Prüfungen bestanden. Freigabe der zwei Liquid-Einfügungen und native Vorschau offen. |
+| Merchant | Exakte R280-Ölsprühflaschenvariante nochmals bei Google gelesen. | Shopping Ads und Free Listings in CH und LI bestätigt. Frühere Bildablehnung entfällt. |
+| Messung und DNS | Heutige Kennzahlen und Klaviyo-Status aus R278 übernommen. Vier genehmigte DNS-Werte öffentlich geprüft. | Teilmessung. Klaviyo-Zugang offen. Vier Einträge öffentlich weiterhin nicht nachgewiesen, Schreibzugang fehlt. |
+
+[Bericht](R281-REPORT-20261121.md) · [Belege](runs/20261121-r281/PRUEFBELEGE.json)
+
+[LUXESTYLE_R281_20261121]
