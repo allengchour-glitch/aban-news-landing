@@ -264,6 +264,30 @@
     "btc": 58798.98046875,
     "eth": 1619.43212890625
    }
+  },
+  {
+   "stand": "2026-11-21",
+   "zeit": "2026-11-22T12:43:20+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 851,
+   "kosten_usd": 0.023712,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.05,
+    "begruendung": "Der Abwärtstrend ist intakt: 30 Tage -26 % und 22 % unter dem 50-Tage-Schnitt. Gleichzeitig ist der Markt extrem überverkauft (Angst&Gier 12). Das Funding ist negativ, Shorts zahlen also derzeit. Nach dem +2,2 %-Tag ist eine Gegenbewegung wahrscheinlich. Deshalb halbiere ich den Short von -0,10 auf -0,05. Ich bleibe leicht short, weil der Trend klar nach unten zeigt.",
+    "sicherheit": 0.3
+   },
+   "eth": {
+    "position": 0.0,
+    "begruendung": "ETH ist 26 % unter dem 50-Tage-Schnitt und hat den stärkeren Rebound (+3,9 %). Das MVRV von 0,83 liegt unter 1, die Halter sind im Schnitt also im Verlust; das deutet historisch eher auf Bodennähe. Das Funding ist deutlich negativ, Shorts sind überfüllt und zahlen. Das Chance-Risiko-Verhältnis für einen weiteren Short ist schlecht. Ich gehe flach.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Der Trend bleibt baisse, die Extremwerte bei Stimmung, Funding und Abstand zu den Durchschnitten sprechen aber für Short-Squeeze-Gefahr. Ich reduziere das Risiko statt zu drehen. Einen Long gibt es erst, wenn sich eine Bodenbildung bestätigt.",
+   "kurse": {
+    "btc": 60094.08984375,
+    "eth": 1682.20458984375
+   }
   }
  ]
 }
