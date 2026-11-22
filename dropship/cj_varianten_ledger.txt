@@ -52446,3 +52446,253 @@ multifunktionales-reparatur-set-fur-elektronik-8e045e · 2026-11-21T02:58:41.159
 elektrische-munddusche-mit-10-druckstufen-d574df · 2026-11-21T02:58:44.084Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
 zozen-4d-floating-shaver-7d1828 · 2026-11-21T02:58:56.580Z · GESCHRIEBEN · 2 Varianten
 3d-hologramm-ventilator-60cm-343362 · 2026-11-21T02:58:59.466Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionale-elektrische-muhle-615800 · 2026-11-22T01:44:34.371Z · UEBERSPRUNGEN · CJ führt nur 1 Variante — kein Auswahlproblem
+solar-gartenleuchte-lumio-aluminium-automatisch · 2026-11-22T01:44:34.434Z · UEBERSPRUNGEN · CJ führt nur 1 Variante — kein Auswahlproblem
+elektrische-kochmaschine-fur-steak-sandwich-wa-603200 · 2026-11-22T01:44:34.466Z · UEBERSPRUNGEN · CJ führt nur 1 Variante — kein Auswahlproblem
+baby-mobile-fur-wiege-und-kinderwagen-630900 · 2026-11-22T01:44:35.922Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (57 > 40) — später, wenn das Tageskontingent reicht
+schwingender-geisterlicht-fur-halloween-629800 · 2026-11-22T01:44:35.956Z · UEBERSPRUNGEN · zurückgestellt: SKU mehrdeutig: übrige Variante nennt den Euro-Stecker nicht ausdrücklich («Swing Ghost Night Light-USB»)
+bequemer-riesen-sitzsack-3918d2 · 2026-11-22T01:44:36.042Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: Übersetzung macht Werte von «Size» gleich
+handdampfbugler-fur-haushalt-und-reisen-330304 · 2026-11-22T01:44:36.429Z · UEBERSPRUNGEN · CJ führt nur 1 Variante — kein Auswahlproblem
+hund-jacke-581056 · 2026-11-22T01:44:37.510Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (45 > 40) — später, wenn das Tageskontingent reicht
+beruhigende-angst-weste-fur-haustiere-155712 · 2026-11-22T01:44:37.668Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (95 > 40) — später, wenn das Tageskontingent reicht
+doppel-layer-verdunkelungsvorhang-608300 · 2026-11-22T01:44:37.983Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (45 > 40) — später, wenn das Tageskontingent reicht
+blumen-muster-vorhange-616600 · 2026-11-22T01:44:39.107Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (60 > 40) — später, wenn das Tageskontingent reicht
+grosse-hundebrustgeschirrleine-portabel-610300 · 2026-11-22T01:44:39.249Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+silikonkissen-fur-kinder-mit-wirbelsaulenstutz-623500 · 2026-11-22T01:44:39.519Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (45 > 40) — später, wenn das Tageskontingent reicht
+3d-kugel-puzzle-weihnachtsanhanger-60-teile-604800 · 2026-11-22T01:44:39.880Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Football 3D Puzzle"},{"option":"Model
+verdichter-duschvorhang-wasser-und-schimmelfes-706816 · 2026-11-22T01:44:40.672Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (80 > 40) — später, wenn das Tageskontingent reicht
+atmungsaktiver-komfort-harnisch-fur-hunde-600600 · 2026-11-22T01:44:40.815Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (81 > 40) — später, wenn das Tageskontingent reicht
+hundemutze-aus-wolle-xs-83786b · 2026-11-22T01:44:41.247Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+leoparden-pluschtier-leo-realistisch-weich-32-cm · 2026-11-22T01:44:41.726Z · UEBERSPRUNGEN · CJ führt nur 1 Variante — kein Auswahlproblem
+hundekleid-herbst-winter-622400 · 2026-11-22T01:44:42.319Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (60 > 40) — später, wenn das Tageskontingent reicht
+fleece-weste-mit-doppelfleece-626600 · 2026-11-22T01:44:42.861Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (50 > 40) — später, wenn das Tageskontingent reicht
+hangender-weihnachtsbaum-style-dekorationsstab-615100 · 2026-11-22T01:44:42.892Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"L2 5"},{"option":"Farbe","wert":"L2 6"
+kuchenvorhang-609300 · 2026-11-22T01:44:43.318Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (95 > 40) — später, wenn das Tageskontingent reicht
+warmes-hundecoat-mit-reflektor-623600 · 2026-11-22T01:44:43.944Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (42 > 40) — später, wenn das Tageskontingent reicht
+reflektierendes-hundehalsband-627500 · 2026-11-22T01:44:44.445Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (44 > 40) — später, wenn das Tageskontingent reicht
+halbtransparente-kuchengardine-mit-spitze-603300 · 2026-11-22T01:44:44.718Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (53 > 40) — später, wenn das Tageskontingent reicht
+halsband-mit-brusttasche-fur-hunde-5a3e0c · 2026-11-22T01:44:45.576Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+weisse-vorhang-622600 · 2026-11-22T01:44:46.489Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (44 > 40) — später, wenn das Tageskontingent reicht
+tierhalsband-mit-digitaldruck-639000 · 2026-11-22T01:44:47.161Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+cremefarbener-blumenvorhang-fur-badezimmer-604600 · 2026-11-22T01:44:48.025Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (82 > 40) — später, wenn das Tageskontingent reicht
+gebaude-modell-bausatz-fur-erwachsene-600200 · 2026-11-22T01:44:48.387Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Peking University Standard"},{"option"
+multifunktionaler-haarglatter-297664 · 2026-11-22T01:44:48.490Z · SKU_GESETZT · SKU CJ-1752231097389297664 → CJJF196021701AZ
+kissenbezug-im-franzosischen-stil-mit-ruschen-637600 · 2026-11-22T01:44:49.638Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+multifunktionaler-antihaft-shabu-shabu-grill-801664 · 2026-11-22T01:44:50.260Z · UEBERSPRUNGEN · CJ führt nur 1 Variante — kein Auswahlproblem
+high-power-haartrockner-fur-zuhause-170880 · 2026-11-22T01:44:51.413Z · SKU_GESETZT · SKU CJ-1541373233730170880 → CJJF151096102BY
+duschvorhang-mit-digitaldruck-187264 · 2026-11-22T01:44:51.841Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (42 > 40) — später, wenn das Tageskontingent reicht
+aufbewahrungskorb-aus-baumwollseil-mit-lowenmu-620100 · 2026-11-22T01:44:52.087Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Beige Lion"},{"option":"Modell","wert
+reflektierendes-hundehalsband-mit-traktionsrie-622100 · 2026-11-22T01:44:52.399Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Yellow QS076"},{"option":"Farbe","wert
+multifunktionaler-dampf-glattkamm-699520 · 2026-11-22T01:44:52.443Z · SKU_GESETZT · SKU CJ-1431435289246699520 → CJJF126694001AZ
+haustier-rucken-hosentrager-mit-rei-verschluss-701056 · 2026-11-22T01:44:53.523Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (45 > 40) — später, wenn das Tageskontingent reicht
+retro-tischlaufer-chenille-wasserdicht-636800 · 2026-11-22T01:44:53.906Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (80 > 40) — später, wenn das Tageskontingent reicht
+hundemantel-aus-wolle-xs-bis-l-45ec74 · 2026-11-22T01:44:55.087Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (77 > 40) — später, wenn das Tageskontingent reicht
+3-in-1-lockenstab-kombination-fur-grosse-welle-617400 · 2026-11-22T01:44:55.341Z · SKU_GESETZT · SKU CJ-2409060215031617400 → CJJF212970501AZ
+dampf-haarstyler-fur-glattes-haar-a813ec · 2026-11-22T01:44:56.398Z · SKU_GESETZT · SKU CJ-FDFDF8CA-0379-4658-B3AB-271B52A813EC → CJBJMRTF00004-EU
+infrarot-haarglatter-mit-lcd-display-543296 · 2026-11-22T01:44:56.820Z · SKU_GESETZT · SKU CJ-1384386865951543296 → CJTF108887304DW
+mini-haarglatter-fur-manner-f15d6d · 2026-11-22T01:44:58.317Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+led-nagellampe-72w-trockner-fur-nagellack-577536 · 2026-11-22T01:44:59.398Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+doppelwandiger-isolierbecher-mit-strohhalm-650-639600 · 2026-11-22T01:45:01.449Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Ice Blue"},{"option":"Farbe","wert":"P
+doppelzweck-glattungskamm-603700 · 2026-11-22T01:45:01.510Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+120w-high-power-lichthartungsgerat-fur-nagel-147200 · 2026-11-22T01:45:02.378Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+hundemantel-herbst-winter-warm-schmutzabweisen-613800 · 2026-11-22T01:45:03.336Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (68 > 40) — später, wenn das Tageskontingent reicht
+kleiner-haarkrauser-mit-drehfunktion-606600 · 2026-11-22T01:45:04.693Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+halsband-mit-zugseil-fur-hunde-777920 · 2026-11-22T01:45:05.052Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (80 > 40) — später, wenn das Tageskontingent reicht
+grosser-nageltrockner-mit-doppelter-lichtquell-155456 · 2026-11-22T01:45:05.602Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nymphen-gewebe-kreativ-fur-buhnenverzierung-918976 · 2026-11-22T01:45:07.344Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (56 > 40) — später, wenn das Tageskontingent reicht
+dual-use-lockenstab-glatteisen-black-gold-276352 · 2026-11-22T01:45:08.120Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wasser-und-windfester-klettmantel-fur-hunde-614900 · 2026-11-22T01:45:09.080Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"DZ307 Blue"},{"option":"Farbe","wert":
+locken-und-glatte-styler-056768 · 2026-11-22T01:45:11.176Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+holiday-limited-lippen-glanz-set-610000 · 2026-11-22T01:45:12.487Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Taotu orange"},{"option":"Farbe","wert
+edelstahl-sport-wasserflasche-615300 · 2026-11-22T01:45:13.961Z · GESCHRIEBEN · 20 Varianten
+2-in-1-glatteisen-lockenstab-mit-3d-muster-276160 · 2026-11-22T01:45:14.260Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+led-nebelmaschine-mit-fernbedienung-500w-52e48c · 2026-11-22T01:45:15.860Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kurzlockiger-styler-804032 · 2026-11-22T01:45:17.294Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+21-gitter-nagelschmuck-box-mit-glassteinen-018880 · 2026-11-22T01:45:18.609Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Round Drill"},{"option":"Ausführu
+doppelte-falsche-wimpern-609400 · 2026-11-22T01:45:20.397Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (54 > 40) — später, wenn das Tageskontingent reicht
+tragbarer-2-in-1-styling-stab-fur-pony-74d4ba · 2026-11-22T01:45:20.794Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+bunte-katze-und-alpaka-spielzeuge-615900 · 2026-11-22T01:45:21.705Z · GESCHRIEBEN · 6 Varianten
+tierhalsband-mit-muster-632700 · 2026-11-22T01:45:23.571Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+5-in-1-haarstyling-tool-569792 · 2026-11-22T01:45:24.089Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nagel-phototherapie-gerat-032610 · 2026-11-22T01:45:27.233Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+26-stuck-cake-box-set-farbige-dekoration-26-st-638700 · 2026-11-22T01:45:28.375Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"B2 1 Pink"},{"option":"Farbe","wert":"
+haarpflege-spray-607400 · 2026-11-22T01:45:29.864Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Untitled"},{"option":"Modell","wert":
+augenbrauen-wimpernstempel-fur-naturlichen-loo-639300 · 2026-11-22T01:45:30.009Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Color Ink Classic Black"},{"option":"F
+keramiktasse-400-ml-3d-zebra-624400 · 2026-11-22T01:45:35.925Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"3D Zebra"},{"option":"Modell","wert":
+winter-hundekleidung-034560 · 2026-11-22T01:45:37.661Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (95 > 40) — später, wenn das Tageskontingent reicht
+kleine-abs-teile-fur-bau-und-experimentierspie-987520 · 2026-11-22T01:45:38.305Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Sweetheart handmade"},{"option":"Mode
+belodi-partikel-kinder-bauklotze-445696 · 2026-11-22T01:45:38.685Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Beilidi 16248 Barbarian"},{"option":"F
+mehrfarbiger-hundehalsband-mit-zugseil-d29cf0 · 2026-11-22T01:45:39.203Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (42 > 40) — später, wenn das Tageskontingent reicht
+lenkradbezug-aus-leder-602800 · 2026-11-22T01:45:40.561Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (56 > 40) — später, wenn das Tageskontingent reicht
+leder-halsband-mit-brustgurt-fur-grosse-hunde-812369 · 2026-11-22T01:45:41.511Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (80 > 40) — später, wenn das Tageskontingent reicht
+transparente-bauklotze-fur-kinder-489856 · 2026-11-22T01:45:42.215Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Rounded corners 15pcs"},{"option":"Far
+nano-titanium-haarglatter-136384 · 2026-11-22T01:45:44.570Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+romantische-atmosphare-olmalerei-653056 · 2026-11-22T01:45:44.696Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"FS 004 01"},{"option":"Farbe","wert":"
+eierroll-styler-fur-locken-610300 · 2026-11-22T01:45:46.012Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Violet"},{"option":"Farbe","wert":"Alm
+glattungskamm-mit-haarpflege-ol-570304 · 2026-11-22T01:45:47.531Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+audi-r8-gt3-rs6-klemmbausteine-239168 · 2026-11-22T01:45:48.535Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Audi R8 GT3"},{"option":"Farbe","wert"
+glide-ionen-glattburste-fur-geschmeidiges-haar-522112 · 2026-11-22T01:45:49.235Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+nageltrockner-120w-9ebd7d · 2026-11-22T01:45:50.566Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+farbtemperaturen-kurlock-622200 · 2026-11-22T01:45:52.237Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+x19-uv-led-nagellampe-72-lampen-601300 · 2026-11-22T01:45:53.811Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+miniatur-diamant-partikel-hauschen-puzzle-616256 · 2026-11-22T01:45:55.447Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Sweetheart handmade"},{"option":"Mode
+multifunktionales-haarstyling-gerat-052928 · 2026-11-22T01:45:55.531Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+muckenschutz-vorhangstoff-mehrfarbig-90x200-10-624100 · 2026-11-22T01:45:56.061Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"R'deer Purple"},{"option":"Farbe","wer
+smartwatch-armband-aus-harz-006016 · 2026-11-22T01:45:57.903Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (95 > 40) — später, wenn das Tageskontingent reicht
+kabelloses-nagel-lichttherapiegerat-08ee9c · 2026-11-22T01:45:58.552Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mode-puzzle-bausteine-fur-kinder-244928 · 2026-11-22T01:46:00.353Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Dragon hunting vehicle"},{"option":"Fa
+smart-mini-beamer-kabelloses-heimkino-589568 · 2026-11-22T01:46:00.999Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+half-moon-led-nagellampe-mit-handyhalterung-626900 · 2026-11-22T01:46:01.570Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+falsche-wimpern-mit-strass-design-639900 · 2026-11-22T01:46:03.670Z · GESCHRIEBEN · 3 Varianten
+720p-full-hd-mini-beamer-mit-autofokus-623700 · 2026-11-22T01:46:04.007Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+uv-led-lampe-9fd25c · 2026-11-22T01:46:04.545Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+dichte-runde-wimpern-aus-mink-haar-609500 · 2026-11-22T01:46:05.726Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (96 > 40) — später, wenn das Tageskontingent reicht
+klettband-back-to-back-1-5-cm-3-m-dbd0ba · 2026-11-22T01:46:06.160Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (54 > 40) — später, wenn das Tageskontingent reicht
+silikon-lenkradhulle-rutschfest-griffig-606300 · 2026-11-22T01:46:06.903Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Horse Orange"},{"option":"Farbe","wert
+hd-mini-beamer-fur-heimkino-buro-454912 · 2026-11-22T01:46:07.127Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+bausatz-fur-8-raster-fahrzeug-153216 · 2026-11-22T01:46:07.833Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Roma"},{"option":"Modell","wert":"F1"
+drahtloses-kragenclip-mikrofon-h65-628000 · 2026-11-22T01:46:14.187Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"Android Apple Universal"},{"optio
+38-mm-muster-transfer-band-polyester-10-100-st-271232 · 2026-11-22T01:46:17.390Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"G 18831 1075"},{"option":"Farbe","wert
+3-in-1-wireless-ladestation-fur-uhr-kopfhorer-300736 · 2026-11-22T01:46:17.768Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+660w-gallium-nitride-multiport-ladegerat-614700 · 2026-11-22T01:46:21.065Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+perforierter-lenkradbezug-aus-nappaleder-638200 · 2026-11-22T01:46:24.277Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Autumn Mountain Chestnut"},{"option":"
+formel-auto-puzzle-bausatz-012288 · 2026-11-22T01:46:24.313Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Ferrari F40"},{"option":"Modell","wer
+sonnensystem-bausatz-fur-kreative-kopfe-477056 · 2026-11-22T01:46:25.673Z · GESCHRIEBEN · 22 Varianten
+stahlarmband-mit-tpu-rahmen-fur-apple-watch-806208 · 2026-11-22T01:46:27.820Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+edelstahl-uhrarmband-mit-drachendesign-408576 · 2026-11-22T01:46:29.599Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (48 > 40) — später, wenn das Tageskontingent reicht
+ombre-handmade-wearable-nails-629200 · 2026-11-22T01:46:30.891Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"23mm set"},{"option":"Ausführung"
+grosse-bausteine-fur-kinder-393536 · 2026-11-22T01:46:31.960Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Ling Xiangting"},{"option":"Modell","
+hdmi-switch-4x1-mit-audio-extraktion-877952 · 2026-11-22T01:46:32.845Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+windspiel-kolibri-fur-garten-balkon-630300 · 2026-11-22T01:46:34.620Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Hummingbird Style A"},{"option":"Farbe
+japanische-laterne-wasserfest-sonnenbestandig-628600 · 2026-11-22T01:46:35.669Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Bird Beige"},{"option":"Modell","wert
+x5-smart-hd-bluetooth-projektor-fur-zuhause-629800 · 2026-11-22T01:46:35.810Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+yg310-mini-beamer-heimkino-led-758528 · 2026-11-22T01:46:37.847Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+militar-modellbausatz-beweglicher-soldat-788480 · 2026-11-22T01:46:38.459Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Peacock blue"},{"option":"Farbe","wert
+mini-beamer-fur-smartphone-projektion-872128 · 2026-11-22T01:46:38.706Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+full-hd-heimprojektor-mit-screen-casting-626900 · 2026-11-22T01:46:40.889Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+c80-mini-heimprojektor-720p-161152 · 2026-11-22T01:46:41.672Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+aun-mini-led-beamer-d40w-52330d · 2026-11-22T01:46:41.700Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+sportwagen-bausteine-kleine-partikel-924928 · 2026-11-22T01:46:42.126Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"1310X3911 Sports car"},{"option":"Farb
+ohrstecker-subtil-luxurios-stilvoll-612700 · 2026-11-22T01:46:42.981Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Ear Studs"},{"option":"Farbe","wert":"
+full-hd-heimkino-beamer-mit-autofokus-629800 · 2026-11-22T01:46:44.563Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mini-full-hd-led-projektor-fur-zuhause-971072 · 2026-11-22T01:46:44.620Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+outdoor-handfunkgerat-50-mini-pilot-version-183808 · 2026-11-22T01:46:47.459Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+intelligenter-wlan-gsm-touch-alarm-70f001 · 2026-11-22T01:46:47.530Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+bluetooth-lautsprecher-fur-computer-616000 · 2026-11-22T01:46:50.017Z · GESCHRIEBEN · 4 Varianten
+usb-c-magsafe-lader-624100 · 2026-11-22T01:46:50.402Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wlan-1080p-uberwachungskamera-mit-360-panorama-510528 · 2026-11-22T01:46:50.616Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+uberwachungskamera-mit-nachtsicht-021568 · 2026-11-22T01:46:53.213Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+100w-gan-multibuchse-mit-retraktabel-632800 · 2026-11-22T01:46:53.333Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+warme-kompress-augenmaske-mit-dampf-600700 · 2026-11-22T01:46:55.402Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Camellia Green"},{"option":"Farbe","we
+geschenkverpackung-aus-hartpapier-606400 · 2026-11-22T01:46:56.300Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"1 Brushed Silver"},{"option":"Farbe","
+schutzfolie-aus-gehartetem-glas-fur-iphone-618100 · 2026-11-22T01:46:57.265Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Third generation HD"},{"option":"Farbe
+pp-armatur-fur-wasserrohrschlauch-antifreeze-s-d3ba55 · 2026-11-22T01:46:57.868Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Yellow 4points interface"},{"option":"
+iwatchs10-silikonarmband-mit-litschi-muster-607300 · 2026-11-22T01:46:59.570Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (50 > 40) — später, wenn das Tageskontingent reicht
+rasche-ladestation-24-352576 · 2026-11-22T01:47:00.431Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+hss-lochoffner-schnellbohrer-fur-metall-und-ku-12a7d4 · 2026-11-22T01:47:01.046Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"4341 material"},{"option":"Farbe","wer
+hdmi-distributor-4k-splitter-mit-usb-ladeansch-616200 · 2026-11-22T01:47:02.604Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+wii-ladestation-2f5d3c · 2026-11-22T01:47:02.717Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+schwieriges-puzzle-spielzeug-fur-jungen-271040 · 2026-11-22T01:47:03.199Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Flamma Orange"},{"option":"Farbe","wer
+selbstklebender-reparatur-sticker-fur-polster-046336 · 2026-11-22T01:47:04.223Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (95 > 40) — später, wenn das Tageskontingent reicht
+bodenmatte-mit-rutschfestem-griff-637700 · 2026-11-22T01:47:05.025Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Pure White"},{"option":"Farbe","wert":
+mini-beamer-fur-home-office-heimkino-623500 · 2026-11-22T01:47:05.655Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+sitzkissen-aus-plusch-fur-sofa-600500 · 2026-11-22T01:47:05.863Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (96 > 40) — später, wenn das Tageskontingent reicht
+luxus-sofa-kissen-labyrinth-630400 · 2026-11-22T01:47:06.802Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (60 > 40) — später, wenn das Tageskontingent reicht
+mini-projektor-fur-heim-und-burogebrauch-617280 · 2026-11-22T01:47:08.596Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+keratine-kamm-mit-massagefunktion-376448 · 2026-11-22T01:47:08.817Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionaler-freihand-reinigungshelfer-607500 · 2026-11-22T01:47:10.111Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"75cm Basic Model"},{"option":"Farbe","
+heimprojektor-yg400-hd-296704 · 2026-11-22T01:47:11.590Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+holzoptik-luftreiniger-d76518 · 2026-11-22T01:47:11.814Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kuhlkorper-mit-digitaler-anzeige-und-lichtabsc-616500 · 2026-11-22T01:47:13.828Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+professionelles-fm-intercom-bf-uv5r-plus-6fc615 · 2026-11-22T01:47:14.497Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+aquarium-terrarium-temperaturregler-875328 · 2026-11-22T01:47:14.779Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kissenbezug-ethno-muster-aus-baumwolle-und-lei-634000 · 2026-11-22T01:47:16.330Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Colorful Mountains"},{"option":"Farbe"
+drahtloses-fm-buhnenmikrofon-2er-set-606500 · 2026-11-22T01:47:17.379Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wlan-signalverstarker-mit-zwei-netzwerkanschlu-870016 · 2026-11-22T01:47:17.689Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+usb-2-0-festplatten-dockingstation-mit-kartenl-950720 · 2026-11-22T01:47:19.485Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+smartes-wlan-gsm-tuya-alarmsystem-685f3d · 2026-11-22T01:47:20.316Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mini-schnittmaschine-50-mm-metall-474624 · 2026-11-22T01:47:20.605Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionaler-haarkamm-dd36ed · 2026-11-22T01:47:22.568Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+usb-3-0-festplattengehause-fur-2-5-3-5-zoll-hd-539584 · 2026-11-22T01:47:23.438Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mini-drehbank-fur-holzbearbeitung-906048 · 2026-11-22T01:47:23.610Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mini-vortex-mischer-fur-nagellack-gele-ea08d8 · 2026-11-22T01:47:25.592Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+neon-wandleuchte-moon-cloud-605600 · 2026-11-22T01:47:26.305Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+anion-roller-comb-fur-glattes-oder-lockiges-ha-603200 · 2026-11-22T01:47:26.620Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+atmungsaktive-katzenleine-mit-fluchtsicherung-609200 · 2026-11-22T01:47:26.862Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Royal Blue Fu Bao"},{"option":"Farbe",
+einziehbares-krankenschwestern-stift-set-638500 · 2026-11-22T01:47:28.179Z · UEBERSPRUNGEN · zurückgestellt: Auswahl nicht baubar: doppelte Kombination «NURSE Heart Pen Set»
+untertisch-heizung-634400 · 2026-11-22T01:47:28.534Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+militar-puzzle-bausteine-800-teile-275456 · 2026-11-22T01:47:29.950Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"Battleship"},{"option":"Modell","wert
+ultraschall-reinigungsmaschine-fur-nagelwerkze-947840 · 2026-11-22T01:47:30.273Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+schutzfolie-fur-iphone-11-blaulicht-und-finger-245228 · 2026-11-22T01:47:30.864Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"2 HD"},{"option":"Farbe","wert":"2 Blu
+luftreiniger-fur-zuhause-366656 · 2026-11-22T01:47:31.602Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+soft-mesh-leine-fur-haustiere-616200 · 2026-11-22T01:47:32.522Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (88 > 40) — später, wenn das Tageskontingent reicht
+5-in-1-gesichts-und-korperpflegegerat-8b2603 · 2026-11-22T01:47:33.244Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+thermo-hygrometer-fur-innen-und-aussenbereich-0264ea · 2026-11-22T01:47:34.534Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+3d-hologramm-ventilator-60cm-343362 · 2026-11-22T01:47:37.453Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+lenkradbezug-aus-nappaleder-616100 · 2026-11-22T01:47:38.917Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"A FORTESLA"},{"option":"Farbe","wert":
+intelligenter-lichtschalter-d47368 · 2026-11-22T01:47:39.545Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Black 1Gang"},{"option":"Farbe","wert"
+smarter-rollladenmotor-mit-app-steuerung-783744 · 2026-11-22T01:47:42.027Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+warmendes-herzkissen-mit-3d-geometrie-602300 · 2026-11-22T01:47:42.549Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Cream Cake"},{"option":"Farbe","wert":
+silicone-uhrarmband-41-45-mm-schwarz-weiss-bla-835136 · 2026-11-22T01:47:43.622Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (52 > 40) — später, wenn das Tageskontingent reicht
+4k-wireless-controller-mit-android-11-bluetoot-604500 · 2026-11-22T01:47:46.546Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+usb-rucksack-mit-integrierter-usb-anschlusse-627fc2 · 2026-11-22T01:47:48.236Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"One Piece"},{"option":"Modell","wert"
+android-tv-box-mit-wi-fi-und-hdmi-601500 · 2026-11-22T01:47:49.456Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+smarter-full-hd-heimkino-projektor-954944 · 2026-11-22T01:47:52.574Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mini-beamer-fur-zuhause-mit-bildschirm-617024 · 2026-11-22T01:47:55.470Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionaler-lcd-projektor-2c8ab0 · 2026-11-22T01:47:58.395Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+grosses-kissen-mit-blumenstickerei-616300 · 2026-11-22T01:48:00.253Z · UEBERSPRUNGEN · vorläufig: KI-Dienst nicht erreichbar
+vhf-funkmikrofon-set-fur-karaoke-628700 · 2026-11-22T01:48:01.377Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kuhle-sommerdecke-mit-eiskrem-muster-615000 · 2026-11-22T01:48:02.151Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (65 > 40) — später, wenn das Tageskontingent reicht
+signaldetektor-gegen-wanzen-und-kameras-d7fc48 · 2026-11-22T01:48:04.281Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+temperaturregulierender-steckdosenanschluss-101c79 · 2026-11-22T01:48:05.179Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+hakel-set-fur-dekorativen-pflanzen-anhanger-624700 · 2026-11-22T01:48:05.502Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Big Green Hollow"},{"option":"Farbe","
+ennio-7-zoll-farb-video-tursprechanlage-0065d7 · 2026-11-22T01:48:07.226Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+aluminium-dekoration-rund-20-20-cm-629200 · 2026-11-22T01:48:07.301Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (56 > 40) — später, wenn das Tageskontingent reicht
+tragbarer-harter-1eafce · 2026-11-22T01:48:08.235Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+sofakissen-mit-wellenrand-und-blumenmuster-600500 · 2026-11-22T01:48:08.881Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (93 > 40) — später, wenn das Tageskontingent reicht
+wlan-uberwachungskamera-aussenbereich-1080p-174464 · 2026-11-22T01:48:10.256Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+weihnachtskugel-aus-plastik-24-6-cm-626300 · 2026-11-22T01:48:10.666Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"New MJXK Wine Red Dark Green"},{"optio
+heizschussel-fur-haustiere-628800 · 2026-11-22T01:48:11.237Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+ozon-generator-zur-sterilisation-geruchsentfer-618700 · 2026-11-22T01:48:11.942Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+yilot-funk-uberwachungskamera-mit-nachtsicht-664064 · 2026-11-22T01:48:13.305Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+bartglatter-mit-keramikbeschichtung-ab599b · 2026-11-22T01:48:14.204Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+netzwerk-extender-300-meter-signalverstarker-276800 · 2026-11-22T01:48:14.925Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+wlan-uberwachungskamera-mit-ki-e73535 · 2026-11-22T01:48:16.253Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+doppelseiten-schreibtischlampe-fur-bett-621500 · 2026-11-22T01:48:17.905Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+luftblaser-mit-temperaturregelung-0928a1 · 2026-11-22T01:48:17.932Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+hose-style-wandlampe-mit-minimalistischem-led-636200 · 2026-11-22T01:48:19.862Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"8001 3W"},{"option":"Modell","wert":"
+kleiner-heizlufter-fur-hande-und-fusse-624896 · 2026-11-22T01:48:20.910Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+hand-spa-pflege-wachsgerat-3efd9f · 2026-11-22T01:48:20.938Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+schutzhulle-fur-ipad-9-7-752c92 · 2026-11-22T01:48:23.394Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"New iPad 2018"},{"option":"Modell","w
+wlan-repeater-ac1200-dualband-884ba3 · 2026-11-22T01:48:23.889Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+firecow-schnelllade-dockingstation-60c48e · 2026-11-22T01:48:24.017Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+mini-fast-charge-24w-wireless-charger-159488 · 2026-11-22T01:48:26.729Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+digitaler-6-in-1-ph-meter-wassertester-622200 · 2026-11-22T01:48:26.889Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+fluffy-splint-haarwurzel-dauerwelle-165440 · 2026-11-22T01:48:27.018Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+samt-schmuckaufbewahrungsbox-634400 · 2026-11-22T01:48:28.550Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"J402 G80"},{"option":"Modell","wert":
+v30-banknotenzahler-fur-diverse-wahrungen-dfdf64 · 2026-11-22T01:48:29.845Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+uv-phototherapie-staubabsaugung-2-in-1-289856 · 2026-11-22T01:48:33.014Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+transparente-kuhle-handgemachte-nagel-635400 · 2026-11-22T01:48:38.853Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Ausführung","wert":"30mm Set"},{"option":"Ausführung"
+gerades-fraserkutter-mit-schaft-8-mm-e87ea5 · 2026-11-22T01:48:40.325Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Modell","wert":"8x3 4x25"},{"option":"Modell","wert":
+bucherregal-laterne-aus-eisen-614200 · 2026-11-22T01:48:48.487Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Lantern Type A Base"},{"option":"Farbe
+koreanischer-blumenkissenbezug-aus-baumwollgaz-638200 · 2026-11-22T01:48:50.767Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (97 > 40) — später, wenn das Tageskontingent reicht
+personliche-einkaufstasche-612900 · 2026-11-22T01:48:52.384Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (97 > 40) — später, wenn das Tageskontingent reicht
+haarstyling-kamm-fur-glatte-haare-943232 · 2026-11-22T01:48:53.952Z · UEBERSPRUNGEN · zurückgestellt: SKU mehrdeutig: Einkaufspreis +16 % (6.48 gegen 5.59 USD)
+multifunktionaler-schneeknauf-mit-allen-schlus-ca0491 · 2026-11-22T01:49:01.473Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Set C"},{"option":"Farbe","wert":"Gold
+retro-plusch-sofakissen-627900 · 2026-11-22T01:49:03.341Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (79 > 40) — später, wenn das Tageskontingent reicht
+massagekamm-fur-nasses-und-trockenes-haar-476874 · 2026-11-22T01:49:06.332Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+bartglatter-mit-turmalin-keramik-19f136 · 2026-11-22T01:49:09.344Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kissenbezug-baumwolle-100-muster-601500 · 2026-11-22T01:49:11.268Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Muster","wert":"Olive Green"},{"option":"Muster","wer
+beheizbarer-futternapf-fur-haustiere-075648 · 2026-11-22T01:49:12.308Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+4g-dual-mode-wlan-router-mit-super-signal-3c87be · 2026-11-22T01:49:15.351Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+handy-signalverstarker-fur-zuhause-664448 · 2026-11-22T01:49:18.449Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+neun-farben-augen-malpalette-mit-glitzer-731328 · 2026-11-22T01:49:21.011Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"P102 Toffee"},{"option":"Farbe","wert"
+sommer-bettlaken-set-viskose-866432 · 2026-11-22T01:49:22.778Z · UEBERSPRUNGEN · zurückgestellt: viele CJ-Varianten (64 > 40) — später, wenn das Tageskontingent reicht
+3d-masken-stativ-aus-umweltfreundlichem-kunsts-440a59 · 2026-11-22T01:49:31.027Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"X2 1"},{"option":"Farbe","wert":"X2 3"
+g40-gold-led-edison-gluhbirne-1w-611300 · 2026-11-22T01:49:37.545Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Leistung","wert":"1W E14 220V"},{"option":"Leistung",
+pluschtier-kissen-cartoon-tier-7cff1c · 2026-11-22T01:49:47.179Z · UEBERSPRUNGEN · zurückgestellt: unsicher übersetzt [{"option":"Farbe","wert":"Rabbit"},{"option":"Farbe","wert":"Shi
+glattungs-bartkamm-fur-manner-cacb15 · 2026-11-22T01:49:50.377Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+leiser-kompakt-entfeuchter-fur-zuhause-609300 · 2026-11-22T01:49:53.357Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+multifunktionales-reparatur-set-fur-elektronik-8e045e · 2026-11-22T01:49:56.440Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+elektrische-munddusche-mit-10-druckstufen-d574df · 2026-11-22T01:49:59.332Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
+kurzlocken-perms-708736 · 2026-11-22T01:50:02.346Z · UEBERSPRUNGEN · vorläufig: SKU-Deckel erreicht (5 in 20 Stunden)
