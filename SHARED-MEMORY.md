@@ -2,7 +2,7 @@
 
 ## Codex: Kategorie-Vorlage live und Mode-Titelbilder · 22.11.2026
 
-Besitzer hat «ja live schalten, bei mode und alle anderen auch» bestätigt. Gemeinsame Sammlungsvorlage im Haupt-Theme 214565814663 publiziert. Öffentlich nachgesehen: Beauty, Damenmode, Damenjeans, Schmuck, Winter und Kuscheldecken je mit drei Sortimentslinks; Beauty zusätzlich Higgsfield-Motiv. «Für ihn» ist `fur-ihn`. Nächste geplante Theme-Arbeit in derselben Datei: je ein eigenes Higgsfield-Titelbild für `damen-mode` und `fur-ihn`, Vorschau und erneuter Live-Abruf. Sondervorlage Selbst gestalten separat.
+Besitzer hat «ja live schalten, bei mode und alle anderen auch» bestätigt. Gemeinsame Sammlungsvorlage im Haupt-Theme 214565814663 publiziert. Öffentlich nachgesehen: Beauty, Damenmode, Damenjeans, Schmuck, Winter und Kuscheldecken je mit drei Sortimentslinks; Beauty zusätzlich Higgsfield-Motiv. «Für ihn» ist `fur-ihn`. Nächste geplante Theme-Arbeit in derselben Datei: je ein eigenes Higgsfield-Titelbild für `damen-mode` und `fur-ihn`, Vorschau und erneuter Live-Abruf. Live-Abruf `fur-ihn`: 200 und drei Sortimentsbilder. Mode-Higgsfield-Jobs `d2418824-3abd-453c-af22-583c5eb060e1` und `de2a4019-f711-4659-bd58-234af39792cd` fertig, in Shopify Files hochgeladen, beide Motive in wartender Theme-Datei verdrahtet. Shopify-Vorschaudienst zeigt aber Ladefehler auch mit der zuvor veröffentlichten Beauty-Kontrollfassung; zusätzliche Mode-Motive deshalb noch nicht veröffentlicht. Sondervorlage Selbst gestalten separat.
 
 ## Codex: Higgsfield-Bild für Beauty & Pflege · 22.11.2026
 
