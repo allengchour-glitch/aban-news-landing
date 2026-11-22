@@ -1,3 +1,11 @@
+# R319 – Edle Produkte ohne Kopf und Papierhalter – 22.11.2026
+
+Auf «nimm edle produkte» Cascade Modell 1 als Schmuckmotiv gewählt. Exaktes Shopify- und CJ-Variantenfoto pixelgleich. Zwei kostenlose Tests. Korrigierter 2,125-Sekunden-Ausschnitt ohne Kopf und Papierhalter geprüft. Ambre als zweite Produktauswahl.
+
+[Produktauswahl und Prüfdaten](R319-EDLER-SCHMUCKMASTER-20261122.md)
+
+---
+
 # R318 – Kostenloser Higgsfield-Studiotest – 22.11.2026
 
 Kostenfreier Higgsfield-Studiotest aus dem exakten A-USB-Referenzfoto abgeschlossen. 5,375 s, 718 × 1282, 24 fps, ohne Ton. Kamera und Licht funktionieren, das generierte Bedienfeld weicht vom Original ab. Test zur internen visuellen Referenz.
