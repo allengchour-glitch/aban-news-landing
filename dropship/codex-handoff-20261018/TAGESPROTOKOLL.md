@@ -3829,3 +3829,15 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Laufbericht und Belege](R313-MORGENLAUF-20261122.md)
 
 [LUXESTYLE_R313_20261122]
+
+### R314 – Französische Projektorseite und Suchfreigabe live
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Shopify Französisch | Drei freigegebene Produkt- und SEO-Felder für den Projektor übersetzt und gespeichert. | Rücklesen in Shopify und öffentlich bestätigt. Mobile und Desktop wechseln von A zu G. |
+| Suchfreigabe | Ausnahmeregel im bestehenden Live-Theme um genau das französische Produkt ergänzt und veröffentlicht. | Projektor und A-Link ohne noindex. FR-Futternapf und FR-Collection behalten die Regel. Google-Indexstatus unbekannt. |
+| Metricool | Sechs Kanalidentitäten und die offenen Kalendertage 25.–29.11. frisch gelesen. | Nur Threads 25.11. um 11:00 aktiv. Fehlende Film- und Bildrechtebelege sowie Kontoboardbestätigung. Keine neuen Termine. |
+
+[Öffentliche Gegenproben und gespeicherte Version](R314-FR-PROJEKTOR-LIVE-20261122.md)
+
+[LUXESTYLE_R314_20261122]
