@@ -1,3 +1,11 @@
+# R314 – Französischer Projektor und Suchfreigabe live – 22.11.2026
+
+FR-Projektor: drei Übersetzungen live. Geprüfte Einzelfreigabe im bestehenden Theme veröffentlicht. Öffentliche Head- und Mobil-/Desktop-Gegenproben erfolgreich. Metricool-Restlücken geprüft, keine freigabefähige neue Datei belegt.
+
+[Öffentliche Gegenproben und gespeicherte Version](R314-FR-PROJEKTOR-LIVE-20261122.md)
+
+---
+
 # R313 – Planung, Projektorfilm und FR-Verkaufsseite – 22.11.2026
 
 Metricool-Fenster bis 29.11. geprüft, 28 aktive Kanaltermine und Lücken ab 25.11. belegt. Projektor A bestätigt, fünf Schnittprüffenster vorbereitet. Live-Theme erklärt FR-noindex, Pilot für eine Produktseite vorbereitet. Klaviyo braucht Neuanmeldung.
