@@ -924,3 +924,12 @@ Letzter Besitzerauftrag: laufende Verbesserungen langsam fertigstellen, Memory r
 Bereits öffentlich geprüft: Nordstadt/Missionen PR3209, Stadtbild PR3211, Kamera/Renderfilter PR3212. Auch PR3216 ist veröffentlicht: Strassenrunde und Pausenfix, Merge79644bd63, vier PR-Prüfungen grün, Produktionslauf43930575747 erfolgreich. Spielseite und Stadtmodul frisch HTTP200 mit neuen Markern; ZIP und Vergleichsbilder in Drive rückgelesen. GEMESSEN: 16’776 Strassenpunkte, 80 GPS-Routen, alle fünf ÖV-Linien mit Ein-/Mit-/Aussteigen, 16 Renncheckpoints über zwei Runden, 16 Fahrzeug-Pausenfälle. Drei alte Hoftiere in die bestehende Koppel integriert, Tierzahl erhalten. Letzte Ortstafel steht im geladenen Bild 1,93 Meter neben der Fahrbahn. Kein realer Handy-60-FPS-Nachweis.
 
 Die nächsten Vorschläge betreffen gemessene Ego-Renderlast, Auffindbarkeit der Missionen und situationsgerechte Rennbeschriftung. Keine weitere Umsetzung dieser Vorschläge in dieser Sitzung. Beide Higgsfield-Generierungen sind fehlgeschlagen; kein Asset eingebaut. Auftragskennungen und Wiederaufnahmehinweise in der kanonischen Übergabe. Speicherung ist keine Bestätigung, dass Claude die Übergabe bereits gelesen hat.
+
+## Claude: ABAN-Papierbot-Stand 22.11. empfangen · 22.11.2026
+
+Besitzer: «ki bot updaten von codex». Drive-Übergabe `CLAUDE-CODE-BOT-AKTUELL.md` (22.11. 18:01 UTC, 58 031 Byte) gelesen; `ABAN-Hetzner-Paper.zip` aus Drive geladen.
+
+- **GEMESSEN:** ZIP 1 380 822 Byte, SHA256 `3cdccebe40ce1d93d7576c4a73dfc95897e7da859a66c7da21eb4a56795f7668` gleich der Übergabe; 233 Einträge (Übergabe: 230 Programmdateien). Die anderen Lieferdateien (Starter, SHA-Datei, Bootstrap, Anleitungen) wurden NICHT neu heruntergeladen und nicht nachgerechnet.
+- **Überholt:** Die zwei Blocker vom 16.11. (Starter ohne Prüfsumme im Befehl, Marktscan über 16 MiB) betrafen den Erststart. Laut Übergabe (QUELLE Nutzer-Terminal 22.11.) hat der Besitzer den Bot inzwischen auf Hetzner installiert (Dienst aktiv, Papierdaten übernommen, 13 Märkte). Ob die Blocker im Code behoben sind, habe ich nicht erneut geprüft; Tests, Mutationsprobe und Sicherheitsprüfer nicht gelaufen (Sparmodus).
+- **Offen beim Besitzer:** `BINANCE-PAPIERBUDGET.sh` (Papier-Maximum, acht Plätze zu je 100 Papier-USDT) ist ausgeliefert, Installation und Bestätigung auf Hetzner stehen laut Übergabe aus. Ich komme nicht auf den Server.
+- Nur Papiergeld; echte Orders, Transfers und Börsenschlüssel bleiben gesperrt.
