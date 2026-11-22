@@ -3854,3 +3854,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Laufbericht und Belege](R315-MITTAG-CJ-BEWERTUNGEN-20261122.md)
 
 [LUXESTYLE_R315_20261122]
+
+### R316 – Telegram und Metricool-Bildabruf
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Telegram | Statusmeldungen für neue Kanalprobleme gedrosselt. Routinebericht und Entwurfsdetails bleiben in GitHub. | PR 3256 auf main. Erster regulärer Lauf ausstehend. |
+| Metricool | Fünf Bildabruf-Fehler und drei Entwürfe mit den exakten UUIDs gegengeprüft. | Bilder erreichbar. Zwei Facebook-Anteile schon publiziert. Fehlerursache und Rechte für erneute Ausspielung offen. |
+
+[Laufbericht und Belege](R316-TELEGRAM-METRICOOL-20261122.md)
+
+[LUXESTYLE_R316_20261122]
