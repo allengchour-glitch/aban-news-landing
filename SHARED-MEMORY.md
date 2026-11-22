@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Buch-Platzhalter in vier Sprachseiten beheben ·22.11.2026
+
+DE/EN/FR/IT-Buchseiten hatten ohne JavaScript einen sichtbaren Unterstützungsbutton mit href='#'. Je eine statische Ankerzeile führt nun zum schon vorhandenen gleichsprachigen Onlinebuch. Zusätzlicher echter Browserbefund: nur DE hatte die frühere Hidden-Korrektur; EN/FR/IT zeigten bei leerem KDP-Link weiterhin einen Amazon-Platzhalter, weil Button-CSS das hidden-Attribut übersteuerte. Drei entsprechende CSS-Zeilen übernehmen die bewährte DE-Regel. Konfigurierte Unterstützung, PDF/ePub, Buch-Konfiguration und Inline-JS bleiben bytegleich. Alle vier Leseziele öffentlich per HEAD200 bestätigt; genaue Browser-/Review-/CI-/Produktionsbelege im PR. Keine Zahlungs-/Preis-/Kontoaktion oder neue Automation. Nutzen: keine sichtbaren leeren Buch-Kaufverweise, vorhandener Inhalt ohne Skripte erreichbar; finanzielle Wirkung nicht gemessen. Kanonische Übergabe lesen.
+
 ## Codex: zurückgezogene Kaufziele auch in Ratgebern berücksichtigen ·22.11.2026
 
 Reproduziert und am frisch gelesenen öffentlichen Client bestätigt: Ratgeber-Kaufkästen ließen ihren alten Checkout aktiv, wenn der Katalog ausdrücklich buy:'' meldete. Der Abgleich fällt jetzt auf den vorhandenen internen Produktanker zurück, bereinigt Fensterattribute und zeigt einen passenden Ansehtext/Beschriftung. Unbekannte Abruf-/Datenstände bewahren den vorherigen Kasten; eindeutige bestätigte Kaufziele werden weiter aktualisiert.88 Client-Prüfbedingungen grün, Original69grün/19rot, unabhängiges Review ohne Blocker. Zusätzliche Browser-/echte CI-/Bereitstellungsbelege im zugehörigen PR. Test im bestehenden Hype-Workflow, keine zusätzliche Automation/Frequenz. Preise, Shopkataloge, Konten und geschützte Lieferung unverändert; finanzielle Wirkung ungemessen. Kanonische Übergabe lesen.

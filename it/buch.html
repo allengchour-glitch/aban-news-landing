@@ -57,6 +57,7 @@
     .formats a{display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--line);border-radius:14px;padding:.5rem .8rem;text-decoration:none;font-size:.85rem;font-weight:600;background:#fff}
     .formats a:hover{border-color:var(--amber)}
     .pay{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+    .pay .btn[hidden]{display:none!important}
     .pay .note{font-size:.78rem;color:var(--muted)}
     section.block{padding:1.2rem 0;border-top:1px solid var(--line)}
     section.block h2{font-size:1.4rem;margin-bottom:.6rem}
@@ -134,7 +135,7 @@
         <span class="dl-state" data-dl-state="pdf" data-dl-label="✓ PDF scaricato il" hidden></span>
         <span class="dl-state" data-dl-state="epub" data-dl-label="✓ ePub scaricato il" hidden></span>
         <div class="pay">
-          <a href="#" class="btn" id="buy-btn">Presto: sostieni il libro →</a>
+          <a href="/it/ebook.html" class="btn" id="buy-btn">Leggi il libro online →</a>
           <a href="#" class="btn btn--ghost" id="kdp-btn" hidden>Su Amazon (Kindle/cartaceo)</a>
           <span class="note" id="pay-note">Edizione a pagamento e cartacea in preparazione.</span>
         </div>
