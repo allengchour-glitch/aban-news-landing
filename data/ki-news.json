@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-21T12:34:33Z",
+ "stand": "2026-11-22T12:31:47Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,68 +18,68 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Anthropic: Mathematiker will mit Claude Riemann-Vermutung gelöst haben",
-   "u": "https://www.golem.de/news/anthropic-mathematiker-will-mit-claude-riemann-vermutung-geloest-haben-2611-215500.html",
+   "t": "KI-Angst an der Wall Street: US-Tech-Aktien rutschen in den Bärenmarkt",
+   "u": "https://www.golem.de/news/ki-angst-an-der-wall-street-us-tech-aktien-rutschen-in-den-baerenmarkt-2611-215510.html",
    "q": "Golem",
-   "d": "2026-11-21T11:06:02Z",
-   "s": "Levent Alpöge will mit Claude die Riemann-Vermutung bewiesen haben. Die Prüfung des Lean-Codes läuft noch. (Claude, Wissen)",
+   "d": "2026-11-22T12:04:02Z",
+   "s": "Die US-Technologiebörse erlebt ihre schlechteste Woche seit der Coronakrise. Aus der Euphorie über KI ist Unbehagen geworden. (Börse, KI)",
    "sprache": "de"
   },
   {
-   "t": "KI-Wettlauf: Trump droht Rechenzentren im Ausland mit enormer Steuer",
-   "u": "https://www.golem.de/news/ki-wettlauf-trump-droht-rechenzentren-im-ausland-mit-enormer-steuer-2611-215502.html",
+   "t": "heise-Angebot: TDWI München 2027: Vorträge für die Konferenz zu Data, Analytics und KI gesucht",
+   "u": "https://www.heise.de/news/TDWI-Muenchen-2027-Vortraege-fuer-die-Konferenz-zu-Data-Analytics-und-KI-gesucht-11532059.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-22T12:00:00Z",
+   "s": "Im Juni 2027 findet die TDWI München als Deutschlands größter Treffpunkt für Data, Analytics und KI in einer neuen Location statt.",
+   "sprache": "de"
+  },
+  {
+   "t": "Black Friday Shopping mit KI: Warum du ChatGPT und Gemini nicht blind vertrauen solltest",
+   "u": "https://t3n.de/news/black-friday-shopping-ki-risiken-chatgpt-gemini-1773798/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-22T11:35:00Z",
+   "s": "Der beste Preis, das passende Produkt und gleich noch der richtige Händler: KI verspricht, die Schnäppchenjagd am Black Friday erheblich zu erleichtern. Doch unser Praxistest zeigt, dass ChatGPT, Gemi…",
+   "sprache": "de"
+  },
+  {
+   "t": "Mathematiker löst Riemannsche Hypothese – mithilfe von Claude",
+   "u": "https://t3n.de/news/mathematiker-loest-riemannsche-hypothese-mithilfe-von-claude-1774699/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-22T10:52:21Z",
+   "s": "Unabhängige Organisationen gratulieren dem Anthropic-Forscher. Aber nicht alle sind von seiner Arbeit begeistert. In der mathematischen Community wird die Kritik an der Verwendung von KI immer lauter.…",
+   "sprache": "de"
+  },
+  {
+   "t": "Smarte Lautsprecher und smarte Displays: Google schaltet Google Assistant nächstes Jahr ab",
+   "u": "https://www.golem.de/news/smarte-lautsprecher-und-smarte-displays-google-schaltet-google-assistant-naechstes-jahr-ab-2611-215511.html",
    "q": "Golem",
-   "d": "2026-11-21T10:23:01Z",
-   "s": "Trump will Konzerne zum Bau in den USA drängen. Der Ausbau stößt bei Wählern allerdings auf Widerstand. (Donald Trump, KI)",
+   "d": "2026-11-22T09:57:02Z",
+   "s": "Alle smarten Lautsprecher und smarten Displays mit Google Assistant sollen ab nächstem Sommer auf Gemini für Google Home umgestellt werden. (Google Home, Google)",
    "sprache": "de"
   },
   {
-   "t": "Googlebooks im Test: Lohnt sich der Kauf wirklich?",
-   "u": "https://t3n.de/news/googlebooks-test-review-1773419/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-21T09:45:00Z",
-   "s": "Mit teurer Hardware, viel KI und nahtloser Android-Integration will Google Kunden die Googlebooks schmackhaft machen. Für wen werden die Geräte interessant und weiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Human in the Lead: Wie man KI-Agenten zähmt, ohne sie auszubremsen",
-   "u": "https://t3n.de/news/agentische-ki-human-in-the-lead-steuerung-1773694/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-21T09:25:00Z",
-   "s": "War der Hugging-Face-Hack nur Schlamperei – oder haben wir es mit einer neuen Bedrohung zu tun? Oder lenkt beides tatsächlich von einer viel grundsätzlicheren Frage ab: Wie wird ein Fehler korrigiert,…",
-   "sprache": "de"
-  },
-  {
-   "t": "Riemannsche Vermutung: Anthropic-Mathematiker will KI-Beweis gefunden haben",
-   "u": "https://www.heise.de/news/Riemannsche-Vermutung-Anthropic-Mathematiker-will-KI-Beweis-gefunden-haben-11533452.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-21T09:09:00Z",
-   "s": "Levent Alpöge will mit Claude die Riemannsche Vermutung bewiesen haben. Die Prüfung läuft, ein zweiter Ansatz ohne KI liegt vor.",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-Kennzeichnung und National Geographic – die Fotonews der Woche 47/2026",
-   "u": "https://www.heise.de/news/KI-Kennzeichnung-und-National-Geographic-die-Fotonews-der-Woche-47-2026-11532822.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-21T09:00:00Z",
-   "s": "Frankfurter Gericht stärkt Fotografen-Rechte bei KI-Bildern. National Geographic kürt Pictures of the Year. Und VSCO startet einen Desktop-Editor.",
-   "sprache": "de"
-  },
-  {
-   "t": "Daniel Ek backs AI researcher’s fusion power startup. Here’s what they’re building.",
-   "u": "https://techcrunch.com/2026/11/20/daniel-ek-backs-ai-researchers-fusion-power-startup-heres-what-theyre-building/",
+   "t": "Signal restricts mobile screenshots as it confronts ‘existential threat’ of AI surveillance",
+   "u": "https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/",
    "q": "TechCrunch AI",
-   "d": "2026-11-20T19:53:41Z",
-   "s": "Spotify founder Daniel Ek is backing Europa Fusion, a fusion power startup founded by an AI researcher. Here's what the startup is building.",
+   "d": "2026-11-21T21:37:10Z",
+   "s": "Signal is limiting users' ability to take screenshots in both its Android and iOS apps.",
    "sprache": "en"
   },
   {
-   "t": "AI claimed a solution to the 167-year-old Riemann hypothesis — and a human did, too",
-   "u": "https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too/",
+   "t": "A tale of two Nvidias",
+   "u": "https://techcrunch.com/2026/11/21/a-tale-of-two-nvidias/",
    "q": "TechCrunch AI",
-   "d": "2026-11-20T19:32:08Z",
-   "s": "Mathematicians are having their minds blown by the latest AI-driven result — and there's a competing human solution, too.",
+   "d": "2026-11-21T21:07:42Z",
+   "s": "We got two very different pictures of Nvidia — the company’s latest earnings report vs. the tech executives loudly calling for Jensen Huang’s return.",
    "sprache": "en"
+  },
+  {
+   "t": "Fünf EU-Staaten wollen Zentrum für KI in der Verteidigung gründen",
+   "u": "https://www.heise.de/news/Fuenf-EU-Staaten-wollen-Zentrum-fuer-KI-in-der-Verteidigung-gruenden-11533498.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-21T14:48:00Z",
+   "s": "Deutschland, Frankreich, Italien, Polen und Schweden wollen gemeinsam ein internationales Zentrum für künstliche Intelligenz in der Verteidigung gründen.",
+   "sprache": "de"
   },
   {
    "t": "The most misunderstood graph in AI just got a major update",
