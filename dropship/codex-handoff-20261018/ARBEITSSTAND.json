@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 314,
-  "updatedAt": "2026-11-22T10:25:33Z",
+  "revision": 315,
+  "updatedAt": "2026-11-22T13:06:38Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51067,6 +51067,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R314-FR-PROJEKTOR-LIVE-20261122.md"
       ]
+    },
+    {
+      "revision": 315,
+      "at": "2026-11-22T13:06:38Z",
+      "summary": "CJ OAuth bestätigt, drei Grind-Kandidaten mit CH-Fracht und Bild geprüft. Vier Projektor-Bewertungen produktbezogen belegt. Herkunftshinweise in Judge.me zur Freigabe. Modell-A-Fotoreferenz auf CJ und Shopify abgeglichen. Zwei bestehende Metricool-Publikationen und ein Threads-Fehler bestätigt.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R315-MITTAG-CJ-BEWERTUNGEN-20261122.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -83051,6 +83059,48 @@
       "verifiedThrough": "2026-11-29",
       "nextActiveOnGapDates": "2026-11-25T11:00:00+01:00",
       "heldPhotoDrafts": 15
+    }
+  },
+  "run315": {
+    "status": "checked_and_prepared",
+    "report": "dropship/codex-handoff-20261018/R315-MITTAG-CJ-BEWERTUNGEN-20261122.md",
+    "cj": {
+      "shopId": "2605251603003533600",
+      "oauthVerified": true,
+      "searchRows": 22,
+      "candidateCount": 3,
+      "newCatalogWrites": 0,
+      "projectorPid": "1477820492730732544",
+      "projectorProductScores": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "reviewImports": 0
+    },
+    "metricool": {
+      "brandId": "6227837",
+      "rangeEnd": "2026-11-29T23:59:59+01:00",
+      "pendingChannels": 25,
+      "publishedExisting": 2,
+      "errors": 1,
+      "errorUuid": "7447187506709285656",
+      "writeCount": 0,
+      "analyticsRepeated": false
+    },
+    "master": {
+      "id": "luxe_sternenprojektor_master_20261018",
+      "variantId": "68122445283719",
+      "cjVid": "1477826312449167360",
+      "photoMotifMatches": true,
+      "cjProductVideo": "1602963697889193984",
+      "fileStatus": "storyboard_only"
+    },
+    "sale": {
+      "proposal": "judge_me_review_source_tags",
+      "pendingApproval": true,
+      "adminWriteAccess": false
     }
   }
 }
