@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Unterkategorien und Schnellfilter für Winter und Decken · 22.11.2026
+
+Geplant: in den DE-Beschreibungen `winter-kaelte`, `decken-plaids` und `decken-kuscheldecken` Links zu bestehenden passenden Sammlungen und getesteten Preis-/Verfügbarkeitsfiltern ergänzen. Filterproben live: Winter bis CHF 50 531 → 501, Decken & Plaids bis CHF 100 81 → 79, Kuscheldecken bis CHF 100 30 → 29, dort Auf Lager 30 und aktiv. Keine Änderungen an globalen Shopify-Facetten oder Varianten.
+
 ## Codex: Kuscheldecke für Winter & Kälte · 22.11.2026
 
 Besitzer «kuschel decke auch rein das mit hasenfell», dann «weiter». Auslegung: aktive Tie-Dye-Kuscheldecke aus Polyester-Kunstfell (`kuscheldecke-hasenfell-imitat-tie-dye-697984`) zur Sammlung «Winter & Kälte» hinzufügen. Sammlungsregel frisch gelesen: Produkt-Tag `winter-kaelte`. Den zusätzlichen Tag live gesetzt und in Shopify zurückgelesen. Öffentlich frisch bestätigt: Die Sammlung `winter-kaelte?sort_by=price-descending` liefert HTTP 200 und enthält den Produktlink.
