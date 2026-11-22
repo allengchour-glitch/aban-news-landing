@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 318,
-  "updatedAt": "2026-11-22T17:10:17Z",
+  "revision": 319,
+  "updatedAt": "2026-11-22T17:37:05Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51099,6 +51099,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R318-HIGGSFIELD-STUDIOTEST-20261122.md"
       ]
+    },
+    {
+      "revision": 319,
+      "at": "2026-11-22T17:37:05Z",
+      "summary": "Auf «nimm edle produkte» Cascade Modell 1 als Schmuckmotiv gewählt. Exaktes Shopify- und CJ-Variantenfoto pixelgleich. Zwei kostenlose Tests. Korrigierter 2,125-Sekunden-Ausschnitt ohne Kopf und Papierhalter geprüft. Ambre als zweite Produktauswahl.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R319-EDLER-SCHMUCKMASTER-20261122.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -83215,6 +83223,25 @@
       "result": "not_product_accurate",
       "notes": "Vorsprung über dem Bedienfeld und Tastenprägungen weichen ab"
     },
+    "metricoolWrites": 0
+  },
+  "run319": {
+    "status": "private_preview_only",
+    "report": "dropship/codex-handoff-20261018/R319-EDLER-SCHMUCKMASTER-20261122.md",
+    "masterId": "luxe_cascade_creolen_20261122",
+    "productId": "15431606829441",
+    "variantId": "67870931517831",
+    "sku": "CJLX293479401AZ",
+    "selectedVisual": "ohne Kopf und Papierhalter",
+    "preview": {
+      "seconds": 2.125,
+      "sha256": "aa3792897c2540decfcaa5141ca2e8838973b19e8b6a8058c54187386747d2c2",
+      "headVisible": false,
+      "paperHolderVisible": false,
+      "privateOnly": true
+    },
+    "freeRenders": 2,
+    "paidCredits": 0,
     "metricoolWrites": 0
   }
 }
