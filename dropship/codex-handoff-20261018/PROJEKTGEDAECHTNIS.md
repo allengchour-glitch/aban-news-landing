@@ -1,3 +1,11 @@
+# R318 – Kostenloser Higgsfield-Studiotest – 22.11.2026
+
+Kostenfreier Higgsfield-Studiotest aus dem exakten A-USB-Referenzfoto abgeschlossen. 5,375 s, 718 × 1282, 24 fps, ohne Ton. Kamera und Licht funktionieren, das generierte Bedienfeld weicht vom Original ab. Test zur internen visuellen Referenz.
+
+[Test und Prüfdaten](R318-HIGGSFIELD-STUDIOTEST-20261122.md)
+
+---
+
 # R317 – Metricool mit Master-Videos – 22.11.2026
 
 Weiterarbeit mit Master-Videos im Auftrag bestätigt. Im aktuellen Planer 25.–29.11. kein Video; drei vorhandene Altmedien bis 24.11. technisch getrennt. Projektor A nativ, im Shop und am Originalfoto geprüft. Drehkarte für dieselbe A-USB-Einheit vorbereitet; Originaltakes und Rechtebelege fehlen.
