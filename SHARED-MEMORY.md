@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Higgsfield-Bild für Beauty & Pflege · 22.11.2026
+
+Auftrag des Besitzers: Beispielseite «Beauty & Pflege» hochwertiger gestalten, mit Higgsfield. Ein redaktionelles Beauty-Motiv ohne Marken und Produkteigenschaftsversprechen in Higgsfield beauftragt (Job `ed80ccde-b1b2-4a52-9994-9a6359634907`, Kostenschätzung 8 Credits). Geplantes Shop-Objekt: die wartende gemeinsame Datei `sections/lx-collection-welten.liquid` im Theme 214565814663, Bild und spezifischer Einstieg nur für `beauty-pflege`. Bestehende Filter, Unterkategorien und Produktliste bleiben nutzbar. Keine Veröffentlichung angefordert.
+
 ## Codex: Mehr Kategorie-Bilder · 22.11.2026
 
 Besitzer zeigt «Beauty & Pflege» und möchte auf jeder Unterkategorie mehr Bilder. Vorschau derselben gemeinsamen Theme-Datei: maximal drei klickbare, vorhandene Produktbilder aus der jeweiligen Sammlung, mit begrenzter Höhe mobil und Bildfallback. In Beauty & Pflege bei 390 px visuell geprüft: drei verschiedene Sortimentsbilder im Kopf, darunter weiterhin Kategorie-Kacheln und Raster. Bildlinks haben den jeweiligen Produktnamen als zugängliche Beschriftung. Gilt für beide gemeinsamen Sammlungsvorlagen; separate Sondervorlagen ungeändert. Shopify-Commit `a9d1f96a809d41ee24e9c318623c6e6e58d30ca9`, Warteliste genau eine Datei, Veröffentlichung offen.
