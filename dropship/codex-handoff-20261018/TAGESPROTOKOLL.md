@@ -3813,3 +3813,19 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Live-Verkaufsweg und Prüfdaten](R312-VERKAUFSWEG-PROJEKTOR-20261121.md)
 
 [LUXESTYLE_R312_20261121]
+
+## 22.11.2026
+
+### R313 – Morgenlauf
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Metricool | Marke, Zeitzone, sechs Kanäle, Kalender und fälligen Termin geprüft. | 28 aktive Kanaltermine. IG/FB ab 25.11. offen, ab 26.11. alle sechs Kanäle. Bestehende FB-/IG-Auslieferung bestätigt. Keine neuen Termine. |
+| Kennzahlen | Einmalig sechs Metrikdefinitionen und sechs kleine Kanalabfragen für 15.–21.11. gelesen. | Teiltage und unbekannte Werte dokumentiert. |
+| Shopify und Film | Shop und A-Variante samt Originalbild geprüft. Prüffenster für fünf Schnitte im bestehenden 18-Sekunden-Master ergänzt. | A aktiv, CHF 34.90 und kaufbar. A-Originaltakes, Rechtebelege und fertige MP4 ausstehend. |
+| FR-Verkaufsseite | Die Ursache von noindex im veröffentlichten Theme gelesen. Einzelne Lokalisierung und Vorschau-Diff vorbereitet. | Bewusste Sprachregel bestätigt. Nur Projektor zur Freigabe vorgeschlagen. |
+| Klaviyo und DNS | Kontoanmeldung und die vier genehmigten öffentlichen Records geprüft. | Neuverbinden erforderlich. Flow-Daten unbekannt. DNS-Einträge fehlen in der öffentlichen Probe, Schreibzugang fehlt. |
+
+[Laufbericht und Belege](R313-MORGENLAUF-20261122.md)
+
+[LUXESTYLE_R313_20261122]
