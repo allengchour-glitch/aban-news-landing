@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Gemeinsames Design für Unterkategorien · 22.11.2026
+
+Besitzer wünscht jede Unterkategorie als hochwertig gestaltete Seite. Objekt für die erste Theme-Runde: `sections/lx-collection-welten.liquid` im Haupt-Theme 214565814663, Basis-MD5 `ab91dde84a4718ad3a1dd8506b1e98af`. Gemeinsame Vorlagen `collection.json` und `collection.lxwelten.json`: kompakter typografischer Einstieg, direkter Sprung zu Produkten, nativer Auf-Lager-Schnellfilter wo verfügbar; Karten und gefilterte Zustände mitprüfen. Sondervorlagen bleiben separat. Keine Freigabe zur Veröffentlichung des Themes erteilt.
+
 ## Codex: Unterkategorien und Schnellfilter für Winter und Decken · 22.11.2026
 
 Geplant: in den DE-Beschreibungen `winter-kaelte`, `decken-plaids` und `decken-kuscheldecken` Links zu bestehenden passenden Sammlungen und getesteten Preis-/Verfügbarkeitsfiltern ergänzen. Filterproben live: Winter bis CHF 50 531 → 501, Decken & Plaids bis CHF 100 81 → 79, Kuscheldecken bis CHF 100 30 → 29, dort Auf Lager 30 und aktiv. Keine Änderungen an globalen Shopify-Facetten oder Varianten. Drei deutsche Sammlungsbeschreibungen live geschrieben; öffentliche mobile Abfragen bestätigen 3/3 Schnellfilter-Blöcke. Die neuen Links erscheinen in den Sammlungsdetails unter der Produktliste.
