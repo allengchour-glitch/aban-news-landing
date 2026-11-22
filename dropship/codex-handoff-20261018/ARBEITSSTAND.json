@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 316,
-  "updatedAt": "2026-11-22T13:52:02Z",
+  "revision": 317,
+  "updatedAt": "2026-11-22T15:27:55Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51083,6 +51083,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R316-TELEGRAM-METRICOOL-20261122.md"
       ]
+    },
+    {
+      "revision": 317,
+      "at": "2026-11-22T15:27:55Z",
+      "summary": "Weiterarbeit mit Master-Videos im Auftrag bestätigt. Im aktuellen Planer 25.–29.11. kein Video; drei vorhandene Altmedien bis 24.11. technisch getrennt. Projektor A nativ, im Shop und am Originalfoto geprüft. Drehkarte für dieselbe A-USB-Einheit vorbereitet; Originaltakes und Rechtebelege fehlen.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R317-MASTERVIDEO-METRICOOL-20261122.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -83137,6 +83145,44 @@
     "tests": {
       "offlineChecks": 158,
       "detectedMutants": 63
+    }
+  },
+  "run317": {
+    "status": "checked_and_prepared",
+    "report": "dropship/codex-handoff-20261018/R317-MASTERVIDEO-METRICOOL-20261122.md",
+    "metricool": {
+      "brandId": "6227837",
+      "allSixVerified": true,
+      "readThrough": "2026-11-29T23:59:59+01:00",
+      "objects": 37,
+      "drafts": 15,
+      "videoDaysOpen": [
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29"
+      ],
+      "newWrites": 0
+    },
+    "master": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "variant": "68122445283719",
+      "sku": "CJSN139239101AZ",
+      "cjVid": "1477826312449167360",
+      "newFileStatus": "pending_footage_and_rights",
+      "shopifyMedia": {
+        "images": 12,
+        "videos": 1
+      },
+      "recordingBrief": "A-USB same physical unit and continuous verification",
+      "previousExportHash": "12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91",
+      "previousPublishedChannels": [
+        "Instagram",
+        "Facebook",
+        "TikTok",
+        "YouTube"
+      ]
     }
   }
 }
