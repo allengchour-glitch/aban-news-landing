@@ -3841,3 +3841,16 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Öffentliche Gegenproben und gespeicherte Version](R314-FR-PROJEKTOR-LIVE-20261122.md)
 
 [LUXESTYLE_R314_20261122]
+
+### R315 – CJ-Grind, Bewertungen und Mittagssichtung
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| CJ-Grind | 22 Suchtreffer gesichtet, drei Kandidaten mit SKU, Bild, Bewertungen und CH-Fracht geprüft. | Schnüffelmatte bleibt Kandidat. Holzpuzzle mit Markenbeleg offen, Vase widersprüchlich. Keine Importe. |
+| Bewertungen | Vier CJ-Rezensionen für den Projektor und fünf öffentliche Shopartikel geprüft. Judge.me-Herkunftseinstellung gefunden. | Quellenhinweise zur Freigabe vorgeschlagen. App-Schreibzugang fehlt. |
+| Metricool | Identität, 22.–29.11., fällige Zustände und Threads-Bild-URL geprüft. | TikTok und YouTube 13:00 bestätigt. Threads 11:00 ERROR. Alle Kanäle ab 26.11. offen. |
+| Master | A-Fotovorlage auf CJ und Shopify gebunden und dekodiert. Lieferanten-Videoebene geprüft. | Foto bestätigt. Filmbeleg für A und Nutzungsrechte offen. Drehplan und Kanaltexte bereit. |
+
+[Laufbericht und Belege](R315-MITTAG-CJ-BEWERTUNGEN-20261122.md)
+
+[LUXESTYLE_R315_20261122]
