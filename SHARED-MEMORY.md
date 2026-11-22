@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Unterkategorien-Vorschau weiter verfeinern · 22.11.2026
+
+Für dieselbe wartende Theme-Datei `sections/lx-collection-welten.liquid` (Vorschau-MD5 `1b63fe10bd112e8a9cce9cb83e7c2a68`): Schnelllinks lesbarer und mobil besser antippbar gestalten; Elternpfad der Deckenfamilie anhand bestehender Sammlungen korrigieren (Decken & Plaids → Kissen & Wohntextilien; die drei Decken-Unterkategorien → Decken & Plaids). Keine Veröffentlichung freigegeben.
+
 ## Codex: Gemeinsames Design für Unterkategorien · 22.11.2026
 
 Besitzer wünscht jede Unterkategorie als hochwertig gestaltete Seite. Objekt für die erste Theme-Runde: `sections/lx-collection-welten.liquid` im Haupt-Theme 214565814663, Basis-MD5 `ab91dde84a4718ad3a1dd8506b1e98af`. Gemeinsame Vorlagen `collection.json` und `collection.lxwelten.json`: kompakter typografischer Einstieg, direkter Sprung zu Produkten, nativer Auf-Lager-Schnellfilter wo verfügbar; Karten und gefilterte Zustände mitprüfen. Shopify-Vorschau geprüft: Decken & Plaids mobil, Damenjeans am Desktop, Kuscheldecken mit aktivem Lagerfilter mobil. Nach erster Vorschau Beschreibung von Navigationslinks getrennt und schnelle Unterkategorien aus den drei vorhandenen Sammlungsbeschreibungen über das Raster gezogen; korrigierter Decken-Einstieg erneut mobil geprüft. Shopify-Commit `1cb8a544554d8a662228d19c895a289a40a8fcaf`, zur Veröffentlichung steht genau `sections/lx-collection-welten.liquid` bereit. Sondervorlagen separat. Keine Freigabe zur Theme-Veröffentlichung erteilt.
