@@ -2,7 +2,7 @@
 
 ## Codex: Mehr Kategorie-Bilder · 22.11.2026
 
-Besitzer zeigt «Beauty & Pflege» und möchte auf jeder Unterkategorie mehr Bilder. Vorschau derselben gemeinsamen Theme-Datei: maximal drei klickbare, vorhandene Produktbilder aus der jeweiligen Sammlung, mit begrenzter Höhe mobil und Bildfallback. Beispiel Beauty & Pflege prüfen. Veröffentlichung weiterhin separat.
+Besitzer zeigt «Beauty & Pflege» und möchte auf jeder Unterkategorie mehr Bilder. Vorschau derselben gemeinsamen Theme-Datei: maximal drei klickbare, vorhandene Produktbilder aus der jeweiligen Sammlung, mit begrenzter Höhe mobil und Bildfallback. In Beauty & Pflege bei 390 px visuell geprüft: drei verschiedene Sortimentsbilder im Kopf, darunter weiterhin Kategorie-Kacheln und Raster. Bildlinks haben den jeweiligen Produktnamen als zugängliche Beschriftung. Gilt für beide gemeinsamen Sammlungsvorlagen; separate Sondervorlagen ungeändert. Shopify-Commit `a9d1f96a809d41ee24e9c318623c6e6e58d30ca9`, Warteliste genau eine Datei, Veröffentlichung offen.
 
 ## Codex: Bild und Typografie für Unterkategorien · 22.11.2026
 
