@@ -2,7 +2,7 @@
 
 ## Codex: Kuscheldecke für Winter & Kälte · 22.11.2026
 
-Besitzer «kuschel decke auch rein das mit hasenfell», dann «weiter». Auslegung: aktive Tie-Dye-Kuscheldecke aus Polyester-Kunstfell (`kuscheldecke-hasenfell-imitat-tie-dye-697984`) zur Sammlung «Winter & Kälte» hinzufügen. Sammlungsregel frisch gelesen: Produkt-Tag `winter-kaelte`. Den zusätzlichen Tag live gesetzt und in Shopify zurückgelesen. Automatische Sammlungszuordnung nach dem ersten Rücklesen noch nicht bestätigt.
+Besitzer «kuschel decke auch rein das mit hasenfell», dann «weiter». Auslegung: aktive Tie-Dye-Kuscheldecke aus Polyester-Kunstfell (`kuscheldecke-hasenfell-imitat-tie-dye-697984`) zur Sammlung «Winter & Kälte» hinzufügen. Sammlungsregel frisch gelesen: Produkt-Tag `winter-kaelte`. Den zusätzlichen Tag live gesetzt und in Shopify zurückgelesen. Öffentlich frisch bestätigt: Die Sammlung `winter-kaelte?sort_by=price-descending` liefert HTTP 200 und enthält den Produktlink.
 
 ## Codex: Open-Graph-Preisformat für Claude · 21.11.2026
 
