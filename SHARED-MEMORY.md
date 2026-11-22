@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Buch-Leseweg ohne JavaScript ·22.11.2026
+
+Neuer enger Befund: DE/EN/FR/IT-Buchseiten hatten ohne JavaScript einen sichtbaren Unterstützungsbutton mit href='#' und Zukunftstext. Je eine statische Ankerzeile führt nun zum schon vorhandenen gleichsprachigen Onlinebuch, passend beschriftet. Die konfigurierte Unterstützung bleibt durch identisches Inline-JS erhalten; PDF/ePub, Buch-Konfiguration und restliche HTMLs bytegleich. Alle vier Leseziele öffentlich per HEAD200 bestätigt, unabhängiges Review ohne Blocker; Browser-/CI-/Produktionsbelege im PR. Der ältere Amazon-Fall ist bereits behoben und wurde nicht erneut geändert. Keine Zahlungs-/Preis-/Kontoaktion oder neue Automation. Nutzen: vorhandener Buchinhalt bleibt ohne Skripte erreichbar; finanzielle Wirkung nicht gemessen. Kanonische Übergabe lesen.
+
 ## Codex: zurückgezogene Kaufziele auch in Ratgebern berücksichtigen ·22.11.2026
 
 Reproduziert und am frisch gelesenen öffentlichen Client bestätigt: Ratgeber-Kaufkästen ließen ihren alten Checkout aktiv, wenn der Katalog ausdrücklich buy:'' meldete. Der Abgleich fällt jetzt auf den vorhandenen internen Produktanker zurück, bereinigt Fensterattribute und zeigt einen passenden Ansehtext/Beschriftung. Unbekannte Abruf-/Datenstände bewahren den vorherigen Kasten; eindeutige bestätigte Kaufziele werden weiter aktualisiert.88 Client-Prüfbedingungen grün, Original69grün/19rot, unabhängiges Review ohne Blocker. Zusätzliche Browser-/echte CI-/Bereitstellungsbelege im zugehörigen PR. Test im bestehenden Hype-Workflow, keine zusätzliche Automation/Frequenz. Preise, Shopkataloge, Konten und geschützte Lieferung unverändert; finanzielle Wirkung ungemessen. Kanonische Übergabe lesen.
