@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Kuscheldecke für Winter & Kälte · 22.11.2026
+
+Besitzer «kuschel decke auch rein das mit hasenfell», dann «weiter». Auslegung: aktive Tie-Dye-Kuscheldecke aus Polyester-Kunstfell (`kuscheldecke-hasenfell-imitat-tie-dye-697984`) zur Sammlung «Winter & Kälte» hinzufügen. Sammlungsregel frisch gelesen: Produkt-Tag `winter-kaelte`. Geplant ist ausschliesslich dieser zusätzliche Tag für dieses Produkt.
+
 ## Codex: Open-Graph-Preisformat für Claude · 21.11.2026
 
 **Nachmessung: Patch zurückgezogen, nicht übernehmen.** Vier öffentliche Varianten mit frischem Raw-HTML gegen Admin geprüft: verstellbare Zement-Hantel Varianten 67671329112455 → 1040.90, 67671329145223 → 1319.90, 67653178589575 → 689.90; Hexagon-Hantel Variante 67814909542791 → 1007.90. In allen vier Fällen exakt gültiger roher `og:price:amount`-Tag, CHF, kein Tausendertrennzeichen. Das aktuelle MAIN-Theme 214565814663 (Snippet-MD5 `4059cb2855cb4d2cb167371ba604803e`) hat die numerische Preisformatierung schon eingebaut. Die Einheitsgrössen-Korrektur aus dem alten Theme 214169584007 ist in den beiden Produktvorlagen des neuen Haupt-Themes nicht enthalten. Der Hoodie-Decken-Abruf zeigt weiterhin den Grössenrat. Korrektur nur auf Basis des aktuellen Themes neu prüfen. Keine Theme-Änderung.
