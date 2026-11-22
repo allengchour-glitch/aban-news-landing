@@ -1,3 +1,11 @@
+# R317 – Metricool mit Master-Videos – 22.11.2026
+
+Weiterarbeit mit Master-Videos im Auftrag bestätigt. Im aktuellen Planer 25.–29.11. kein Video; drei vorhandene Altmedien bis 24.11. technisch getrennt. Projektor A nativ, im Shop und am Originalfoto geprüft. Drehkarte für dieselbe A-USB-Einheit vorbereitet; Originaltakes und Rechtebelege fehlen.
+
+[Planerabgleich, Filmhistorie und Drehkarte](R317-MASTERVIDEO-METRICOOL-20261122.md)
+
+---
+
 # R316 – Telegram und Metricool-Bildabruf – 22.11.2026
 
 Telegram-Korrektur für neue Metricool-Kanalbefunde und weniger Autopilot-Routinemeldungen auf main übernommen. Fünf Bildabruf-Fehler geprüft, drei Entwürfe bewusst gehalten.
