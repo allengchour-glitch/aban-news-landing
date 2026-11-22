@@ -2,7 +2,7 @@
 
 ## Codex: Bild und Typografie für Unterkategorien · 22.11.2026
 
-Besitzer «noch toller»: in der bestehenden Theme-Vorschau `sections/lx-collection-welten.liquid` den Kategorie-Einstieg mit getrenntem Bild und Text, konsistentem Kontrast und kompakter Mobilansicht verfeinern. Bestehende Bilder, Kategoriepfade und Schnellfilter verwenden. Vorschau zuerst prüfen; keine Veröffentlichung angefordert.
+Besitzer «noch toller»: in der bestehenden Theme-Vorschau `sections/lx-collection-welten.liquid` den Kategorie-Einstieg mit getrenntem Bild und Text, konsistentem Kontrast und kompakter Mobilansicht verfeinern. Bestehende Bilder, Kategoriepfade und Schnellfilter verwenden. Vorschau bei 1440 px (Damenjeans, Text links und Bild rechts) und 390 px (Kuschel- & Plüschdecken, kurzer Bildstreifen) korrigiert und nochmals visuell geprüft. Shopify-Commit `7c72503d246ff66673b6599b66b3d2b771ec176b`; genau eine gemeinsame Theme-Datei wartet auf Veröffentlichung.
 
 ## Codex: Unterkategorien-Vorschau weiter verfeinern · 22.11.2026
 
