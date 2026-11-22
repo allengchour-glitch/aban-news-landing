@@ -3876,3 +3876,13 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Planerabgleich, Filmhistorie und Drehkarte](R317-MASTERVIDEO-METRICOOL-20261122.md)
 
 [LUXESTYLE_R317_20261122]
+
+### R318 – Kostenloser Higgsfield-Studiotest
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Mastervideo | Originalfoto von Modell A gebunden, kostenfreien Higgsfield-Test gerendert und MP4 visuell geprüft. | 5,375 s, stumm, 0 Credits. Abweichung am Bedienfeld. Nur interner Studiotest, keine Termine. |
+
+[Test und Prüfdaten](R318-HIGGSFIELD-STUDIOTEST-20261122.md)
+
+[LUXESTYLE_R318_20261122]
