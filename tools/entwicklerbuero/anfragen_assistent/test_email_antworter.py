@@ -9,6 +9,80 @@ from email_antworter import verarbeiten
 
 
 class EmailTest(unittest.TestCase):
+    def raw_header(self, p, name, wert, doppelt=False):
+        kopf, trenner, text = p.read_bytes().partition(b'\n\n')
+        self.assertTrue(trenner)
+        zeilen = kopf.splitlines()
+        if not doppelt:
+            zeilen = [z for z in zeilen if not z.lower().startswith(name.lower().encode() + b':')]
+        zeilen.insert(0, name.encode() + b': ' + wert.encode())
+        p.write_bytes(b'\n'.join(zeilen) + b'\n\n' + text)
+
+    def ohne_headerabbruch(self, *args, **kwargs):
+        try:
+            return verarbeiten(*args, **kwargs)
+        except IndexError:
+            self.fail('Ein beschädigter Adressheader darf den EML-Stapel nicht abbrechen.')
+
+    def test_defekter_adressheader_erhaelt_gueltigen_firmenentwurf(self):
+        for header in ('From', 'Reply-To'):
+            for defekt_zuerst in (True, False):
+                with self.subTest(header=header, defekt_zuerst=defekt_zuerst), tempfile.TemporaryDirectory() as tmp:
+                    root = Path(tmp)
+                    source = root / 'eingang'
+                    source.mkdir()
+                    gut = self.mail(source, '02-gut.eml' if defekt_zuerst else '01-gut.eml',
+                                    Subject='Anfrage', **{'Reply-To': 'Antwort <antwort@example.invalid>'})
+                    m = BytesParser(policy=policy.default).parsebytes(gut.read_bytes())
+                    m.set_content('Welche Öffnungszeiten haben Sie?')
+                    gut.write_bytes(m.as_bytes())
+                    kaputt = self.mail(source, '01-unklar.eml' if defekt_zuerst else '02-unklar.eml', Subject='Anfrage')
+                    self.raw_header(kaputt, header, '"')
+                    original = {p.name: p.read_bytes() for p in source.iterdir()}
+                    faq = root / 'faq.json'
+                    faq.write_text(json.dumps({'faq': [{'stichwoerter': ['Öffnungszeiten'],
+                                                       'antwort': 'Montags 09–12 Uhr.'}]}))
+                    report = self.ohne_headerabbruch(source, root / 'out', 'Demobetrieb', 'buero@example.invalid', faq)
+                    self.assertEqual((report['gelesen'], report['entwuerfe'], report['versendet']), (2, 1, 0))
+                    zeilen = {z['quelldatei']: z for z in report['ergebnisse']}
+                    self.assertEqual(zeilen[kaputt.name]['status'], 'Übersprungen')
+                    self.assertEqual(zeilen[kaputt.name]['grund'], 'Antwortadresse unklar; manuell prüfen')
+                    self.assertNotIn('datei', zeilen[kaputt.name])
+                    self.assertEqual(zeilen[gut.name]['status'], 'Entwurf prüfen')
+                    self.assertEqual(len(list((root / 'out').glob('*.eml'))), 1)
+                    reply = BytesParser(policy=policy.default).parsebytes((root / 'out' / zeilen[gut.name]['datei']).read_bytes())
+                    self.assertEqual(reply['To'].addresses[0].addr_spec, 'antwort@example.invalid')
+                    self.assertEqual(reply['X-Unsent'], '1')
+                    self.assertIsNone(reply['Cc'])
+                    self.assertIsNone(reply['Bcc'])
+                    self.assertEqual(list(reply.iter_attachments()), [])
+                    self.assertIn('Montags 09–12 Uhr.', reply.get_content())
+                    self.assertEqual(original, {p.name: p.read_bytes() for p in source.iterdir()})
+                    seite = (root / 'out/index.html').read_text()
+                    self.assertIn(kaputt.name, seite)
+                    self.assertIn('Antwortadresse unklar; manuell prüfen', seite)
+
+    def test_defekter_einzeleingang_bleibt_ohne_antwort_entwurf(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            p = self.mail(root)
+            self.raw_header(p, 'Reply-To', '"')
+            report = self.ohne_headerabbruch(p, root / 'out', 'Demobetrieb', 'buero@example.invalid')
+            self.assertEqual((report['gelesen'], report['entwuerfe'], report['versendet']), (1, 0, 0))
+            self.assertEqual(report['ergebnisse'][0]['status'], 'Übersprungen')
+            self.assertFalse(list((root / 'out').glob('*.eml')))
+            self.assertIn('Antwortadresse unklar; manuell prüfen', (root / 'out/index.html').read_text())
+
+    def test_doppelte_adressheader_bleiben_unklar(self):
+        for header in ('From', 'Reply-To'):
+            with self.subTest(header=header), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                p = self.mail(root, **{'Reply-To': 'antwort@example.invalid'})
+                self.raw_header(p, header, 'andere@example.invalid', doppelt=True)
+                report = self.ohne_headerabbruch(p, root / 'out', 'Demobetrieb', 'buero@example.invalid')
+                self.assertEqual((report['entwuerfe'], report['versendet']), (0, 0))
+                self.assertEqual(report['ergebnisse'][0]['grund'], 'Absender unklar; manuell prüfen')
+
     def test_html_alternative_bei_leerem_textteil(self):
         for leer in ('', ' \n\t'):
             with self.subTest(leer=repr(leer)), tempfile.TemporaryDirectory() as tmp:

@@ -58,12 +58,13 @@ def mail_lesen(datei, absender):
     if datei.stat().st_size > MAX_BYTES:
         raise ValueError("Eine E-Mail überschreitet das Limit von 2 MiB.")
     msg = BytesParser(policy=policy.default).parsebytes(datei.read_bytes())
-    if len(msg.get_all("From", [])) != 1 or len(msg.get_all("Reply-To", [])) > 1:
-        return None, "Absender unklar; manuell prüfen"
     try:
+        # Bereits der Headerzugriff kann bei beschädigten Adressen scheitern.
+        if len(msg.get_all("From", [])) != 1 or len(msg.get_all("Reply-To", [])) > 1:
+            return None, "Absender unklar; manuell prüfen"
         original = adresse(msg["From"])
         ziel = adresse(msg["Reply-To"] if "Reply-To" in msg else msg["From"])
-    except ValueError:
+    except (ValueError, IndexError):
         return None, "Antwortadresse unklar; manuell prüfen"
     if msg.get("Auto-Submitted", "no").strip().lower() != "no":
         return None, "Automatische Nachricht"
