@@ -2,7 +2,7 @@
 
 ## Codex: Produktseiten vor dem Kaufen klarer · 22.11.2026
 
-Auftrag: ganze Website für mehr Käufe verbessern. Geplanter enger Theme-Schritt in `templates/product.json` und `templates/product.lxszene.json` des aktuellen Haupt-Themes 214565814663: Lieferdatum aus dem vorhandenen Produktblock direkt vor den Kaufbutton ziehen sowie allgemeine Grössentabelle/Grösser-wählen-Hinweis nur bei tatsächlichen Konfektionsgrössen zeigen. Gegenprobe mit Hoodie-Decke Einheitsgrösse und Polka-Dot-Kleid S–XL. Checkout, Preise und Versandtarife nicht bearbeiten. Vorschau und Änderungsumfang vor Veröffentlichung prüfen.
+Auftrag: ganze Website für mehr Käufe verbessern. Geplanter enger Theme-Schritt in `templates/product.json` und `templates/product.lxszene.json` des aktuellen Haupt-Themes 214565814663: Lieferdatum aus dem vorhandenen Produktblock direkt vor den Kaufbutton ziehen sowie allgemeine Grössentabelle/Grösser-wählen-Hinweis nur bei tatsächlichen Konfektionsgrössen zeigen. Gegenprobe mit Hoodie-Decke Einheitsgrösse und Polka-Dot-Kleid S–XL. Checkout, Preise und Versandtarife nicht bearbeiten. In beiden JSON-Vorlagen Parser und Blockreihenfolge geprüft. Mobile Shopify-Vorschau (390 px): Hoodie-Decke ohne falschen Grössenrat, Polka-Dot-Kleid mit Masstabelle; Lieferprognose bei beiden vor dem Warenkorbbutton. Standard-Versandpreis CHF 7 bleibt in der separaten Versandinformation darunter. Commit `9389594b6cd68c2fcdcfb9849e4d21a5595fcb0f`, zur Veröffentlichung genau die beiden Vorlagen; noch nicht live.
 
 ## Codex: Einstandskosten nach der ersten Preisrunde · 22.11.2026
 
