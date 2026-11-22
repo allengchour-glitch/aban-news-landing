@@ -1,3 +1,11 @@
+# R316 – Telegram und Metricool-Bildabruf – 22.11.2026
+
+Telegram-Korrektur für neue Metricool-Kanalbefunde und weniger Autopilot-Routinemeldungen auf main übernommen. Fünf Bildabruf-Fehler geprüft, drei Entwürfe bewusst gehalten.
+
+[Laufbericht und Belege](R316-TELEGRAM-METRICOOL-20261122.md)
+
+---
+
 # R315 – CJ-Grind, Bewertungen und Metricool – 22.11.2026
 
 CJ OAuth bestätigt, drei Grind-Kandidaten mit CH-Fracht und Bild geprüft. Vier Projektor-Bewertungen produktbezogen belegt. Herkunftshinweise in Judge.me zur Freigabe. Modell-A-Fotoreferenz auf CJ und Shopify abgeglichen. Zwei bestehende Metricool-Publikationen und ein Threads-Fehler bestätigt.
