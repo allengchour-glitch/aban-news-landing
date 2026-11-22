@@ -1,3 +1,11 @@
+# R313 – Planung, Projektorfilm und FR-Verkaufsseite – 22.11.2026
+
+Metricool-Fenster bis 29.11. geprüft, 28 aktive Kanaltermine und Lücken ab 25.11. belegt. Projektor A bestätigt, fünf Schnittprüffenster vorbereitet. Live-Theme erklärt FR-noindex, Pilot für eine Produktseite vorbereitet. Klaviyo braucht Neuanmeldung.
+
+[Laufbericht und Belege](R313-MORGENLAUF-20261122.md)
+
+---
+
 # R312 – Kaufweg zum Projektor – 21.11.2026
 
 Verkaufsentwurf aus R291 live. Französischer Projektor-Beschrieb und acht Auswahltexte bestätigt. Weihnachtsratgeber DE und FR führen direkt zum USB-Grundmodell A. A→G auf Handy und Desktop im echten Shop getestet.
