@@ -1,3 +1,11 @@
+# R315 – CJ-Grind, Bewertungen und Metricool – 22.11.2026
+
+CJ OAuth bestätigt, drei Grind-Kandidaten mit CH-Fracht und Bild geprüft. Vier Projektor-Bewertungen produktbezogen belegt. Herkunftshinweise in Judge.me zur Freigabe. Modell-A-Fotoreferenz auf CJ und Shopify abgeglichen. Zwei bestehende Metricool-Publikationen und ein Threads-Fehler bestätigt.
+
+[Laufbericht und Belege](R315-MITTAG-CJ-BEWERTUNGEN-20261122.md)
+
+---
+
 # R314 – Französischer Projektor und Suchfreigabe live – 22.11.2026
 
 FR-Projektor: drei Übersetzungen live. Geprüfte Einzelfreigabe im bestehenden Theme veröffentlicht. Öffentliche Head- und Mobil-/Desktop-Gegenproben erfolgreich. Metricool-Restlücken geprüft, keine freigabefähige neue Datei belegt.
