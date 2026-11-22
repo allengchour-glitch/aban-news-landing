@@ -3865,3 +3865,14 @@ Beleg WISSENSTRANSFER-CLAUDE-20261111-R180.md. Frühere heutige R175–R179 blei
 [Laufbericht und Belege](R316-TELEGRAM-METRICOOL-20261122.md)
 
 [LUXESTYLE_R316_20261122]
+
+### R317 – Metricool mit Master-Videos
+
+| Bereich | Was Codex gemacht hat | Ergebnis / Status |
+|---|---|---|
+| Metricool | Identität, Planerfenster und vorhandene MP4-Dateien überprüft. | 25.–29.11. keine Videos. Drei bestehende Kurzmedien unterschieden. Kein neuer Termin. |
+| Mastervideo | A-USB-Quellbestand geprüft und die Aufnahmevorgaben auf Modell und VID festgelegt. | Der 18-Sekunden-Master wartet auf Originaltakes und Nutzungsbelege. Kein Export. |
+
+[Planerabgleich, Filmhistorie und Drehkarte](R317-MASTERVIDEO-METRICOOL-20261122.md)
+
+[LUXESTYLE_R317_20261122]
