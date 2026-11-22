@@ -42,8 +42,6 @@ M = [
  ("        if p.get('media') != erwartet['media']:", "        if False:"),
  ("        if not (jetzt - timedelta(hours=rueckblick_h) <= z <= jetzt - timedelta(minutes=45)):\n            continue", "        if z > jetzt:\n            continue"),
  ("            if not medien_ok(url):", "            if False:"),
- ("            if not any('Kopie' in p or 'angehalten' in p for p in e['probleme']) and e['alt'] - jetzt <= timedelta(hours=stunden)]", "            if e['alt'] - jetzt <= timedelta(hours=stunden)]"),
- ("e['alt'] - jetzt <= timedelta(hours=stunden)]", "e['alt'] - jetzt <= timedelta(days=99)]"),
  ("    if braucht_video and medien and not all(ist_video(u) for u in medien):", "    if False:"),
  ("        if not pd.get('boardId') or not pd.get('pinTitle'):", "        if False:"),
  ("    if 'youtube' in netze:\n        yd = post.get('youtubeData') or {}\n        if not yd.get('title') or len(yd['title']) > 100:", "    if 'youtube' in netze:\n        yd = post.get('youtubeData') or {}\n        if not yd.get('title') or len(yd['title']) > 1000:"),
@@ -55,7 +53,6 @@ M = [
  ("        kopf, _, grund = zeile_.partition('#')", "        kopf, _, grund = zeile_.partition('//')"),
  ('        if not teile:\n            continue\n        out[', '        if False:\n            continue\n        out['),
  (' and halte_grund(p, halten) is None}', '}'),
- ("if not any('Kopie' in p or 'angehalten' in p for p in e['probleme'])", "if not any('Kopie' in p for p in e['probleme'])"),
  ('    halten = halten or {}\n', '    halten = {}\n'),
  ("        halten = lade_halten(open(HALTEN_DATEI, encoding='utf-8').read())", '        halten = {}'),
  ('medium_erreichbar if not planer_datei else (lambda u: True), halten)', 'medium_erreichbar if not planer_datei else (lambda u: True))'),
@@ -70,6 +67,12 @@ M += [
  ("        if 'tiktok' in netze and (p.get('tiktokData') or {}).get('autoAddMusic'):", "        if False:"),
  ("        if not any(v.get('availableForSale') for v in p.get('variants', [])):\n            if p.get('tracksInventory')", "        if True:\n            if p.get('tracksInventory')"),
  ("any(ist_video(u) for u in (p.get('media') or []))", "all(ist_video(u) for u in (p.get('media') or []))"),
+]
+M += [
+ ("[str(b['uuid']), b['netz'], b['zeit'].isoformat(), b['status']]", "[str(b['id']), b['netz'], b['zeit'].isoformat(), b['status']]"),
+ ("[str(b['uuid']), b['netz'], b['zeit'].isoformat(), b['status']]", "[str(b['uuid']), b['zeit'].isoformat(), b['status']]"),
+ ("if k not in gesehen}", "if True}"),
+ ("                print('Telegram: Zustellung unbestätigt. Meldestand bleibt erhalten.')\n                return", "                pass"),
 ]
 src = open(f'{SRC}/metricool_freigabe.py', encoding='utf-8').read()
 erkannt = 0; gleichwertig = []; ueberlebt = []

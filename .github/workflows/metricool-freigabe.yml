@@ -1,7 +1,7 @@
 name: Metricool-Freigabe (Entwürfe prüfen und einplanen)
 
-# Prüft Entwürfe im Metricool-Planer (Marke 6227837) und plant die geprüften mit autoPublish ein; alles andere bleibt Entwurf und wird gemeldet
-# (Telegram + Zusammenfassung). Löscht nie etwas, schreibt keinen Text um (ausser: Instagram höchstens 5 Hashtags, TikTok «Eigenwerbung» an und Bibliotheks-Sound aus).
+# Prüft Entwürfe im Metricool-Planer (Marke 6227837). Gehaltene Entwürfe stehen in der Zusammenfassung.
+# Telegram meldet neue Auslieferungsbefunde gesammelt und warnt bei einer unklaren Freigabe.
 # Tore (jedes Nein = Entwurf bleibt): Termin ≥ 2 h in der Zukunft · Pflichtfelder · keine verbotenen Textstellen · Produkt der Wegweiser-Sammlung erkannt,
 # ACTIVE, lieferbar (mindestens eine kaufbare Ausführung; Bestand 0 mit Nachbestellung zählt als lieferbar) · jeder Preis stimmt mit dem Shop · Medien erreichbar
 # · ≥ 3 h Abstand je Netzwerk · keine Kopie (uuid mehrfach) · Video im Beitrag (Besitzer 16.11.: «nur noch Videos»; NUR_VIDEOS=0 schaltet ab).
@@ -11,7 +11,7 @@ name: Metricool-Freigabe (Entwürfe prüfen und einplanen)
 #
 # TROCKENLAUF IST DIE VORGABE: ohne die Datei dropship/METRICOOL-FREIGABE-FREI.txt (= das Ja des Besitzers vom 09.11.2026) wird nichts geändert und nichts
 # gesendet; der Lauf zeigt nur den Plan in der Zusammenfassung. Datei löschen = zurück im Trockenlauf. Obergrenze: 12 Freigaben je Lauf.
-# Ein roter Lauf heisst: Update mit Abweichung (Kopie möglich) oder technischer Fehler. Gehaltene Entwürfe sind nicht rot, sie gehen per Telegram raus.
+# Ein roter Lauf heisst: Update mit Abweichung (Kopie möglich) oder technischer Fehler.
 # Zeitplan: 1x täglich (SHARED-MEMORY: «Crons nur einzeln, sparsam, max. 1x/Tag»), 05:41 UTC = 06:41 Schweizer Winterzeit. Dazwischen von Hand startbar.
 # Bei Änderungen an den Dateien läuft nur der Testjob (kein Netz, keine Zugangsdaten).
 
@@ -86,13 +86,30 @@ jobs:
           if [ -f dropship/METRICOOL-FREIGABE-FREI.txt ] && [ "${TROCKEN:-false}" != "true" ]; then live=1; fi
           echo "live=$live" >> "$GITHUB_OUTPUT"
           echo "Freigabe: live=$live"
-      - name: Status der letzten Tage (Fehler und Hänger melden)
+      - name: Telegram-Meldestand lesen
+        if: steps.frei.outputs.live == '1'
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: .metricool-telegram-state.json
+          key: luxestyle-metricool-telegram-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            luxestyle-metricool-telegram-v1-
+      - name: Status der letzten Tage (neue Kanalbefunde melden)
         env:
           METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           LIVE: ${{ steps.frei.outputs.live == '1' && '1' || '0' }}
+          METRICOOL_ALERT_STATE: .metricool-telegram-state.json
         run: python3 automation/metricool_freigabe.py --status
+      - name: Telegram-Meldestand sichern
+        if: steps.frei.outputs.live == '1' && hashFiles('.metricool-telegram-state.json') != ''
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: .metricool-telegram-state.json
+          key: luxestyle-metricool-telegram-v1-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Entwürfe prüfen und einplanen
         env:
           METRICOOL_USER_TOKEN: ${{ secrets.METRICOOL_USER_TOKEN }}

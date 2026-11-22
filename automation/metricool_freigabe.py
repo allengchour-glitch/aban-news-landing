@@ -5,7 +5,7 @@ Prüft Entwürfe im Metricool-Planer und plant die geprüften ein.
 Auftrag des Besitzers am 09.11.2026: «freigeben, einfach automation machen ohne zu fragen».
 
 Ohne LIVE=1 ist es ein Trockenlauf (nichts wird geändert). Bei LIVE=1 wird jeder Entwurf, der ALLE Tore
-besteht, mit autoPublish eingeplant; alles andere bleibt Entwurf und wird gemeldet (Telegram, Zusammenfassung).
+besteht, mit autoPublish eingeplant; gehaltene Entwürfe stehen in der Zusammenfassung.
 Es wird nie etwas gelöscht und nie ein Text umgeschrieben, ausser: Instagram-Beiträge auf höchstens fünf
 Hashtags kürzen (letzte zuerst) und beim TikTok-Beitrag die Kennzeichnung «Eigenwerbung» setzen.
 
@@ -34,7 +34,7 @@ Aufruf:
 
 ENV: METRICOOL_USER_TOKEN (Pflicht), METRICOOL_USER_ID (4801419), METRICOOL_BLOG_ID (6227837),
      SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID,
-     MAX_JE_LAUF (12), HORIZONT_TAGE (10).
+     METRICOOL_ALERT_STATE (Datei für Telegram-Deduplizierung), MAX_JE_LAUF (12), HORIZONT_TAGE (10).
 """
 import copy
 import json
@@ -47,6 +47,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
+from pathlib import Path
 
 try:
     from zoneinfo import ZoneInfo
@@ -472,7 +473,7 @@ def status_befunde(planer, jetzt, rueckblick_h=72):
         for q in p['providers']:
             s = (q.get('status') or '').upper()
             if s not in ('PUBLISHED', 'PUBLISHING'):
-                out.append({'id': p['id'], 'netz': q['network'], 'status': q.get('status'), 'detail': q.get('detailedStatus'),
+                out.append({'id': p['id'], 'uuid': p.get('uuid'), 'netz': q['network'], 'status': s, 'detail': q.get('detailedStatus'),
                             'zeit': z, 'text': p['text'][:40].replace('\n', ' ')})
     return out
 
@@ -556,17 +557,57 @@ def telegram(text, token, chat):
                                  headers={'Content-Type': 'application/json'})
     try:
         with urllib.request.urlopen(req, timeout=15) as r:
-            return r.status == 200
+            return r.status == 200 and json.load(r).get('ok') is True
     except Exception:
         return False
 
 
-def melde_liste(gehalten, jetzt, stunden=48):
-    """Welche gehaltenen Entwürfe per Telegram genannt werden: nur Termine in den nächsten 48 Stunden (oder gerade vorbei), keine Kopien.
-    So kommt jeder Entwurf höchstens zwei- bis dreimal vor, eine bekannte Kopie nie (sie lässt sich nur von Hand im Planer löschen),
-    ein bewusst angehaltener Entwurf (Halteliste) auch nie."""
-    return [e for e in gehalten
-            if not any('Kopie' in p or 'angehalten' in p for p in e['probleme']) and e['alt'] - jetzt <= timedelta(hours=stunden)]
+def melde_status(befunde, jetzt, zustand_datei, sende):
+    """Schickt pro Lauf höchstens eine Sammelmeldung für neue Kanalbefunde."""
+    if not zustand_datei:
+        print('Telegram: keine Zustandsdatei konfiguriert. Befunde stehen im Protokoll.')
+        return
+    datei = Path(zustand_datei)
+    try:
+        bisher = json.loads(datei.read_text(encoding='utf-8'))
+        if not isinstance(bisher, dict) or bisher.get('version') != 1 or not isinstance(bisher.get('gesehen'), dict):
+            raise ValueError('unbekanntes Format')
+        grenze = jetzt - timedelta(days=7)
+        gesehen = {k: wert for k, wert in bisher['gesehen'].items() if datetime.fromisoformat(wert) >= grenze}
+    except FileNotFoundError:
+        gesehen = None
+    except (OSError, ValueError, TypeError):
+        print('Telegram: Meldestand unlesbar. Ausgangsstand wird im Protokoll erfasst.')
+        gesehen = None
+
+    aktuell = {}
+    for b in befunde:
+        if b['uuid'] and b['status'] in {'ERROR', 'FAILED', 'PENDING'}:
+            # Die numerische Post-ID kann wechseln. Ein neuer Slot oder Status ist ein eigener Befund.
+            schluessel = json.dumps([str(b['uuid']), b['netz'], b['zeit'].isoformat(), b['status']])
+            aktuell[schluessel] = b
+
+    if gesehen is None:
+        print('Telegram: bestehende Befunde als Ausgangsstand erfasst.')
+        gesehen = {}
+        neue = aktuell
+    else:
+        neue = {k: b for k, b in aktuell.items() if k not in gesehen}
+        if neue:
+            zeilen = [f"{b['zeit']:%d.%m. %H:%M} {b['netz']}: {b['status']}" for b in list(neue.values())[:6]]
+            if len(neue) > len(zeilen):
+                zeilen.append(f'Weitere Befunde im Laufprotokoll: {len(neue) - len(zeilen)}')
+            if not sende(f"Metricool: {len(neue)} neue Kanalbefunde\n" + '\n'.join(zeilen)):
+                print('Telegram: Zustellung unbestätigt. Meldestand bleibt erhalten.')
+                return
+
+    gesehen.update(dict.fromkeys(neue, jetzt.isoformat()))
+    temporaer = datei.with_name(datei.name + '.tmp')
+    try:
+        temporaer.write_text(json.dumps({'version': 1, 'gesehen': gesehen}), encoding='utf-8')
+        temporaer.replace(datei)
+    except OSError:
+        print('Telegram: Meldestand konnte nicht gespeichert werden.')
 
 
 def zeile(e):
@@ -586,7 +627,6 @@ def main(argv):
     mc = Metricool(token, os.environ.get('METRICOOL_USER_ID') or '4801419', os.environ.get('METRICOOL_BLOG_ID') or '6227837')
     jetzt = jetzt_lokal()
     tg = (os.environ.get('TELEGRAM_BOT_TOKEN', '').strip(), os.environ.get('TELEGRAM_CHAT_ID', '').strip())
-    zusammen = []
 
     if planer_datei:
         planer = json.load(open(planer_datei, encoding='utf-8'))
@@ -594,15 +634,17 @@ def main(argv):
         if not token:
             print('METRICOOL_USER_TOKEN fehlt: nichts getan.')
             return 0
-        planer = mc.planer(jetzt - timedelta(days=4), jetzt + timedelta(days=horizont + 1))
+        if status_modus:
+            planer = mc.planer(jetzt - timedelta(hours=72), jetzt)
+        else:
+            planer = mc.planer(jetzt - timedelta(days=4), jetzt + timedelta(days=horizont + 1))
 
     if status_modus:
         befunde = status_befunde(planer, jetzt)
         for b in befunde:
             print(f"BEFUND {b['zeit']:%d.%m. %H:%M} {b['netz']} Status {b['status']}/{b['detail']} id {b['id']} {b['text']}")
-        if befunde and live:
-            telegram('⚠️ Metricool: ' + str(len(befunde)) + ' Beitrag/Beiträge nicht veröffentlicht:\n' + '\n'.join(
-                f"{b['zeit']:%d.%m. %H:%M} {b['netz']}: {b['status']} ({b['text']})" for b in befunde[:8]), *tg)
+        if live and all(tg):
+            melde_status(befunde, jetzt, os.environ.get('METRICOOL_ALERT_STATE'), lambda text: telegram(text, *tg))
         print(f'Status: {len(befunde)} Befund(e)')
         return 0
 
@@ -646,22 +688,12 @@ def main(argv):
             print(f"PUT {e['id']} HTTP {s} Kontrolle: {'OK' if not f else f}")
             if s != 200 or f:
                 print('STOPP: Abweichung, bitte von Hand im Planer prüfen (Kopien möglich).')
-                zusammen.append(f"🛑 Metricool-Freigabe gestoppt bei id {e['id']}: HTTP {s} {f or ''}. Bitte im Planer auf Kopien prüfen.")
+                telegram(f"Metricool-Freigabe gestoppt bei id {e['id']}: HTTP {s} {f or ''}. Bitte im Planer auf Kopien prüfen.", *tg)
                 fehler_lauf = True
                 break
             eingeplant += 1
             time.sleep(2)
 
-    if live:
-        if eingeplant:
-            zusammen.append(f'✅ Metricool: {eingeplant} Entwurf/Entwürfe geprüft und eingeplant:\n' + '\n'.join(
-                f"• {e['neu']:%d.%m. %H:%M} {'+'.join(e['netze'])}: {e['text'][:42].replace(chr(10), ' ')}" for e in ok[:eingeplant]))
-        melde = melde_liste(gehalten, jetzt)
-        if melde:
-            zusammen.append(f'⏸️ {len(melde)} Entwurf/Entwürfe bleiben Entwurf:\n' + '\n'.join(
-                f"• {zeile(e)}: {e['probleme'][0]}" for e in melde[:6]))
-        if zusammen:
-            telegram('\n\n'.join(zusammen), *tg)
     summary = os.environ.get('GITHUB_STEP_SUMMARY')
     if summary:
         with open(summary, 'a', encoding='utf-8') as f:
