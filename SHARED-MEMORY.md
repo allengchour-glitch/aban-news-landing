@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Versandkosten vor dem Kaufen · 22.11.2026
+
+Geplante Vorschau-Korrektur ausschliesslich in `templates/product.json` und `templates/product.lxszene.json` (`lux_delivery`): Länderverzweigung CH/LI und Standardpreise aus geprüften Versandbedingungen, CH CHF 7 / gratis ab CHF 50 nach Rabatt, LI CHF 14.90, vorhandene Schweizer-Lager-Sonderregel erhalten, FR-Texte ergänzen. Preisbasierte pauschale Gratisversand-Zusage entfernen. Keine Tarifänderung; Vorschau vor Veröffentlichung.
+
 ## Codex: Produktseiten vor dem Kaufen klarer · 22.11.2026
 
 Auftrag: ganze Website für mehr Käufe verbessern. Geplanter enger Theme-Schritt in `templates/product.json` und `templates/product.lxszene.json` des aktuellen Haupt-Themes 214565814663: Lieferdatum aus dem vorhandenen Produktblock direkt vor den Kaufbutton ziehen sowie allgemeine Grössentabelle/Grösser-wählen-Hinweis nur bei tatsächlichen Konfektionsgrössen zeigen. Gegenprobe mit Hoodie-Decke Einheitsgrösse und Polka-Dot-Kleid S–XL. Checkout, Preise und Versandtarife nicht bearbeiten. In beiden JSON-Vorlagen Parser und Blockreihenfolge geprüft. Mobile Shopify-Vorschau (390 px): Hoodie-Decke ohne falschen Grössenrat, Polka-Dot-Kleid mit Masstabelle; Lieferprognose bei beiden vor dem Warenkorbbutton. Standard-Versandpreis CHF 7 bleibt in der separaten Versandinformation darunter. Commit `9389594b6cd68c2fcdcfb9849e4d21a5595fcb0f`, genau die beiden Vorlagen nach Besitzerfreigabe «ja live» veröffentlicht. Öffentliche frische DE-CH-Mobilabrufe beider Artikel HTTP 200, Lieferinformation vor Haupt-Kaufbutton, Grössenhilfe nur beim Kleid und nicht bei der Einheitsgrössen-Decke.
