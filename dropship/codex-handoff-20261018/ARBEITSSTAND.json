@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 313,
-  "updatedAt": "2026-11-22T07:07:09Z",
+  "revision": 314,
+  "updatedAt": "2026-11-22T10:25:33Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51059,6 +51059,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R313-MORGENLAUF-20261122.md"
       ]
+    },
+    {
+      "revision": 314,
+      "at": "2026-11-22T10:25:33Z",
+      "summary": "FR-Projektor: drei Übersetzungen live. Geprüfte Einzelfreigabe im bestehenden Theme veröffentlicht. Öffentliche Head- und Mobil-/Desktop-Gegenproben erfolgreich. Metricool-Restlücken geprüft, keine freigabefähige neue Datei belegt.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R314-FR-PROJEKTOR-LIVE-20261122.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -83005,6 +83013,44 @@
     "dns": {
       "approvedRecordsPubliclyPresent": 0,
       "authenticatedWriteAccess": false
+    }
+  },
+  "run314": {
+    "status": "published_and_verified",
+    "report": "dropship/codex-handoff-20261018/R314-FR-PROJEKTOR-LIVE-20261122.md",
+    "productId": "15521256604033",
+    "variantId": "68122445283719",
+    "shopId": "94368563585",
+    "translationKeys": [
+      "title",
+      "meta_title",
+      "meta_description"
+    ],
+    "theme": {
+      "id": "214565814663",
+      "commit": "6ba009bed18e7ffa8d7b42c39a4062852b8429b2",
+      "layoutMd5": "b544c0a3c37711d83dd605ca816567ae",
+      "contentExact": true
+    },
+    "live": {
+      "frenchCanonical": true,
+      "noindexRemoved": true,
+      "controlNoindexPreserved": true,
+      "viewports": [
+        390,
+        1440
+      ],
+      "modelG": "68122445480327",
+      "priceCHF": "34.90",
+      "available": true
+    },
+    "googleIndexStatus": "unknown",
+    "salesEffect": "unknown",
+    "metricool": {
+      "changed": false,
+      "verifiedThrough": "2026-11-29",
+      "nextActiveOnGapDates": "2026-11-25T11:00:00+01:00",
+      "heldPhotoDrafts": 15
     }
   }
 }
