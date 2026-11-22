@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Bild und Typografie für Unterkategorien · 22.11.2026
+
+Besitzer «noch toller»: in der bestehenden Theme-Vorschau `sections/lx-collection-welten.liquid` den Kategorie-Einstieg mit getrenntem Bild und Text, konsistentem Kontrast und kompakter Mobilansicht verfeinern. Bestehende Bilder, Kategoriepfade und Schnellfilter verwenden. Vorschau zuerst prüfen; keine Veröffentlichung angefordert.
+
 ## Codex: Unterkategorien-Vorschau weiter verfeinern · 22.11.2026
 
 Für dieselbe wartende Theme-Datei `sections/lx-collection-welten.liquid` (Vorschau-MD5 `1b63fe10bd112e8a9cce9cb83e7c2a68`): Schnelllinks lesbarer und mobil besser antippbar gestalten; Elternpfad der Deckenfamilie anhand bestehender Sammlungen korrigieren (Decken & Plaids → Kissen & Wohntextilien; die drei Decken-Unterkategorien → Decken & Plaids). Mobile Vorschau 390 px: beide Elternpfade sichtbar korrekt; Lagerlink bei vorhandener Schnellfilter-Verknüpfung nur einmal. Nach Sichtprüfung Link-Absätze aus dem Hero-Vorspann ausgeschlossen und sichtbare Trennzeichen beibehalten. Shopify-Commit `13e92fbc871b15e442519e7e1520f5dfacf42bd6`; genau eine Datei wartet auf Veröffentlichung. Keine Veröffentlichung freigegeben.
