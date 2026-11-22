@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Kategorie-Vorlage live und Mode-Titelbilder · 22.11.2026
+
+Besitzer hat «ja live schalten, bei mode und alle anderen auch» bestätigt. Gemeinsame Sammlungsvorlage im Haupt-Theme 214565814663 publiziert. Öffentlich nachgesehen: Beauty, Damenmode, Damenjeans, Schmuck, Winter und Kuscheldecken je mit drei Sortimentslinks; Beauty zusätzlich Higgsfield-Motiv. «Für ihn» ist `fur-ihn`. Nächste geplante Theme-Arbeit in derselben Datei: je ein eigenes Higgsfield-Titelbild für `damen-mode` und `fur-ihn`, Vorschau und erneuter Live-Abruf. Sondervorlage Selbst gestalten separat.
+
 ## Codex: Higgsfield-Bild für Beauty & Pflege · 22.11.2026
 
 Auftrag des Besitzers: Beispielseite «Beauty & Pflege» hochwertiger gestalten, mit Higgsfield. Ein redaktionelles Beauty-Motiv ohne Marken und Produkteigenschaftsversprechen in Higgsfield beauftragt (Job `ed80ccde-b1b2-4a52-9994-9a6359634907`, Kostenschätzung 8 Credits). Geplantes Shop-Objekt: die wartende gemeinsame Datei `sections/lx-collection-welten.liquid` im Theme 214565814663, Bild und spezifischer Einstieg nur für `beauty-pflege`. Higgsfield-Recraft-Motiv fertig, Shopify-Datei `luxe-beauty-editorial-higgsfield-2211.png` hochgeladen. Layout bei 1440 px und 390 px im Shopify-Screenshot besichtigt: Header mit Bild, Kategorie-CTA, Produktsprung, Lagerfilter, Kategorien und drei verlinkte Sortimentsbilder. `e98b0447fdae680ef95019ea5e2346b5a1a97754` gespeichert, genau eine Datei wartet auf Veröffentlichung. Klickstrecke im Entwurf nicht separat getestet.
