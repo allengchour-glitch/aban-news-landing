@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Produktseiten vor dem Kaufen klarer · 22.11.2026
+
+Auftrag: ganze Website für mehr Käufe verbessern. Geplanter enger Theme-Schritt in `templates/product.json` und `templates/product.lxszene.json` des aktuellen Haupt-Themes 214565814663: Lieferdatum aus dem vorhandenen Produktblock direkt vor den Kaufbutton ziehen sowie allgemeine Grössentabelle/Grösser-wählen-Hinweis nur bei tatsächlichen Konfektionsgrössen zeigen. Gegenprobe mit Hoodie-Decke Einheitsgrösse und Polka-Dot-Kleid S–XL. Checkout, Preise und Versandtarife nicht bearbeiten. Vorschau und Änderungsumfang vor Veröffentlichung prüfen.
+
 ## Codex: Einstandskosten nach der ersten Preisrunde · 22.11.2026
 
 11 bezahlte Shopify-Bestellungen seit 01.11. als Priorisierung gelesen. Für zwei verkaufte Produkte 22 kaufbare Varianten mit exakter CJ-SKU, CJ-Einkauf und CN→CH-Quote am oberen Packgewicht verglichen (Repo-Kurs 0.82435). Shopify-unitCost beim Hundepullover Norwegermuster etwa CHF 10.02–10.03 über CJ-Modell; Katzenhängematte etwa CHF 7.35–7.36 darüber. Keine Preise/Kosten geschrieben: zuerst belastbare berechnete bzw. bezahlte Einstandskosten abgleichen. Lautsprecher BATTERY 350 g: schnelle CJ-Sensitive-Linien vorhanden, normale Linien nur 12–50 bzw. 15–45 Tage. Keine Preisänderung. Für #1044 CJ-Abrechnung nicht eindeutig gefunden. CHF-lokale Prüfliste `luxestyle-einstand-abgleich-2026-11-22.csv`.
