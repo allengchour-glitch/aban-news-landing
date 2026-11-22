@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: Damen- und Herrenmode-Titelbilder live · 22.11.2026
+
+Der Theme-Vorschauladefehler kam von einer abgeschnittenen Theme-Datei. Erster Publish wurde von Shopify abgelehnt, öffentlicher Shop blieb intakt. Änderung mit vollständigem Live-Inhalt aus der Shopify-Datei-API neu aufgebaut; `endstylesheet` und `endschema` vorhanden. Damenmode mobil und Herrenmode Desktop visuell geprüft. Nur `sections/lx-collection-welten.liquid` publiziert, Shopify-Commit `cf712ea30028c7398a5f65fd5e5fddd25b5c6c38`. Öffentlicher Roh-HTML-Abruf: Damen- und Herrenmode sowie Beauty je eigenes korrektes Higgsfield-Bild. Diese drei plus Schmuck, Wohnen, Sport und Garten je HTTP 200, Produktraster und drei verlinkte Sortimentsbilder. Sondervorlage Selbst gestalten bleibt separat.
+
 ## Codex: Kategorie-Vorlage live und Mode-Titelbilder · 22.11.2026
 
 Besitzer hat «ja live schalten, bei mode und alle anderen auch» bestätigt. Gemeinsame Sammlungsvorlage im Haupt-Theme 214565814663 publiziert. Öffentlich nachgesehen: Beauty, Damenmode, Damenjeans, Schmuck, Winter und Kuscheldecken je mit drei Sortimentslinks; Beauty zusätzlich Higgsfield-Motiv. «Für ihn» ist `fur-ihn`. Nächste geplante Theme-Arbeit in derselben Datei: je ein eigenes Higgsfield-Titelbild für `damen-mode` und `fur-ihn`, Vorschau und erneuter Live-Abruf. Live-Abruf `fur-ihn`: 200 und drei Sortimentsbilder. Mode-Higgsfield-Jobs `d2418824-3abd-453c-af22-583c5eb060e1` und `de2a4019-f711-4659-bd58-234af39792cd` fertig, in Shopify Files hochgeladen, beide Motive in wartender Theme-Datei verdrahtet. Shopify-Vorschaudienst zeigt aber Ladefehler auch mit der zuvor veröffentlichten Beauty-Kontrollfassung; zusätzliche Mode-Motive deshalb noch nicht veröffentlicht. Sondervorlage Selbst gestalten separat.
