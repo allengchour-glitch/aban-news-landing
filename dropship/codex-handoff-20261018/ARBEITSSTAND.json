@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 317,
-  "updatedAt": "2026-11-22T15:27:55Z",
+  "revision": 318,
+  "updatedAt": "2026-11-22T17:10:17Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51091,6 +51091,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R317-MASTERVIDEO-METRICOOL-20261122.md"
       ]
+    },
+    {
+      "revision": 318,
+      "at": "2026-11-22T17:10:17Z",
+      "summary": "Kostenfreier Higgsfield-Studiotest aus dem exakten A-USB-Referenzfoto abgeschlossen. 5,375 s, 718 × 1282, 24 fps, ohne Ton. Kamera und Licht funktionieren, das generierte Bedienfeld weicht vom Original ab. Test zur internen visuellen Referenz.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R318-HIGGSFIELD-STUDIOTEST-20261122.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -83184,5 +83192,29 @@
         "YouTube"
       ]
     }
+  },
+  "run318": {
+    "status": "private_look_test_completed",
+    "report": "dropship/codex-handoff-20261018/R318-HIGGSFIELD-STUDIOTEST-20261122.md",
+    "masterId": "luxe_sternenprojektor_master_20261018",
+    "referenceVariant": "68122445283719",
+    "provider": "Higgsfield",
+    "model": "hf_mult_replace_object",
+    "jobId": "1921bd50-5d34-4f39-a183-6430d1067877",
+    "credits": 0,
+    "usedFreeGenerations": 1,
+    "mp4": {
+      "sha256": "2da532e3a1fe2dbf6c190de254f5f3277e66e348397cf9c848cbabef523ed3e5",
+      "width": 718,
+      "height": 1282,
+      "fps": 24,
+      "seconds": 5.375,
+      "hasAudio": false
+    },
+    "qa": {
+      "result": "not_product_accurate",
+      "notes": "Vorsprung über dem Bedienfeld und Tastenprägungen weichen ab"
+    },
+    "metricoolWrites": 0
   }
 }
