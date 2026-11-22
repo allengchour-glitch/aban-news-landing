@@ -34,3 +34,16 @@ Der technische Abgleich bestätigt zwölf Produktbilder und genau ein READY-Vide
 Native 1080 × 1920 bei echten 30 fps. Unveränderte Originaldateien und Freigabe zur kommerziellen Bearbeitung und Social-Veröffentlichung zum gleichen Material sichern. Bei Drittquellen die konkrete Erlaubnis für diese Dateien beilegen. Kein Video gerendert oder hochgeladen. Die Musikdatei `automation/music/luxe-premium.wav` stimmt lokal mit dem aktuellen Git-Blob `61de48704b2b3ae22fb028e6cf0a3c88e4826a7c` und SHA-256 `a7674ecadb21fca447267be25c7e9cc44f35d2a1583ec0953d4185c7a3b16688` überein. Die Rechtekette des Builds und Hörabnahme bleiben offen. Der frühere technische Kristall-Entwurf ist am angegebenen Pfad derzeit nicht lesbar.
 
 Der Schnitt bleibt ein einziger 18-Sekunden-Master. 0–2 s Raumwirkung «Dein Raum. Neues Licht.» oder Nahaufnahme «Licht im Detail.». 2–5 s Bedienung, 5–9 s Detail, 9–13 s reale Projektion, 13–16 s Gerät im Raum, 16–18 s «Produkt ansehen». Die sechs kanalbezogenen Captions und UTM-Ziele liegen bereit. Bio-Ziele, Pinterest-Kontoboard, Zielgruppe des konkreten neuen Shorts und vollständiger Publikationsbeleg werden vor einer Terminierung geprüft. [Dreh- und Kanalentwürfe](R315-MITTAG-CJ-BEWERTUNGEN-20261122.md)
+
+## Gezielter Publikationsabgleich für den Altfilm
+
+Am 22.11. wurden die vier vorhandenen Kanalereignisse im Zeitraum 16.–21.11. erneut gelesen. Alle hatten `PUBLISHED`. Alle vier vollständigen MP4s umfassen 5’107’087 Bytes, SHA-256 `12bceafa52094eabd86e15ce68066f7359957474974cd8d10a10ae8bde036e91`, 18 Sekunden, 1080 × 1920, 25 fps.
+
+| Kanal | Zeitpunkt Zürich | Metricool-ID | UUID |
+|---|---|---|---|
+| Instagram | 16.11. 19:00 | 430111185 | 4156060813550767248 |
+| Facebook | 16.11. 19:00 | 430111296 | 6680239273933357186 |
+| TikTok | 17.11. 19:00 | 430111643 | 3614365779669041576 |
+| YouTube | 19.11. 19:00 | 430111922 | -7647174116509334899 |
+
+Die vier URLs bezeichnen denselben früheren Film. Dieser Abgleich erweitert das Master-Publikationsregister nicht um eine neue Veröffentlichung.
