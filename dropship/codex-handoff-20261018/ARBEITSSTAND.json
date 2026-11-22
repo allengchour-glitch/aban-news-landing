@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 315,
-  "updatedAt": "2026-11-22T13:06:38Z",
+  "revision": 316,
+  "updatedAt": "2026-11-22T13:52:02Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51075,6 +51075,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R315-MITTAG-CJ-BEWERTUNGEN-20261122.md"
       ]
+    },
+    {
+      "revision": 316,
+      "at": "2026-11-22T13:52:02Z",
+      "summary": "Telegram-Korrektur für neue Metricool-Kanalbefunde und weniger Autopilot-Routinemeldungen auf main übernommen. Fünf Bildabruf-Fehler geprüft, drei Entwürfe bewusst gehalten.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R316-TELEGRAM-METRICOOL-20261122.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -83101,6 +83109,34 @@
       "proposal": "judge_me_review_source_tags",
       "pendingApproval": true,
       "adminWriteAccess": false
+    }
+  },
+  "run316": {
+    "status": "merged_pending_scheduled_run",
+    "report": "dropship/codex-handoff-20261018/R316-TELEGRAM-METRICOOL-20261122.md",
+    "pr": 3256,
+    "mergeCommit": "d77c8e10418ac0eb9d6ab91572e8270e4a1fc538",
+    "productionRunVerified": false,
+    "metricool": {
+      "brandId": "6227837",
+      "errorUuids": [
+        "2120727659527094958",
+        "4792908094992761420",
+        "108318075245381964",
+        "-325577156053548845",
+        "7447187506709285656"
+      ],
+      "holdUuids": [
+        "4464007380148308511",
+        "1244897565051602488",
+        "1277216616076757571"
+      ],
+      "plannerWrites": 0,
+      "mediaNowReachable": true
+    },
+    "tests": {
+      "offlineChecks": 158,
+      "detectedMutants": 63
     }
   }
 }
