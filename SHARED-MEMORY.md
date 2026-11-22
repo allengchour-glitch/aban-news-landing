@@ -2,7 +2,7 @@
 
 ## Codex: Unterkategorien und Schnellfilter für Winter und Decken · 22.11.2026
 
-Geplant: in den DE-Beschreibungen `winter-kaelte`, `decken-plaids` und `decken-kuscheldecken` Links zu bestehenden passenden Sammlungen und getesteten Preis-/Verfügbarkeitsfiltern ergänzen. Filterproben live: Winter bis CHF 50 531 → 501, Decken & Plaids bis CHF 100 81 → 79, Kuscheldecken bis CHF 100 30 → 29, dort Auf Lager 30 und aktiv. Keine Änderungen an globalen Shopify-Facetten oder Varianten.
+Geplant: in den DE-Beschreibungen `winter-kaelte`, `decken-plaids` und `decken-kuscheldecken` Links zu bestehenden passenden Sammlungen und getesteten Preis-/Verfügbarkeitsfiltern ergänzen. Filterproben live: Winter bis CHF 50 531 → 501, Decken & Plaids bis CHF 100 81 → 79, Kuscheldecken bis CHF 100 30 → 29, dort Auf Lager 30 und aktiv. Keine Änderungen an globalen Shopify-Facetten oder Varianten. Drei deutsche Sammlungsbeschreibungen live geschrieben; öffentliche mobile Abfrage bestätigt 1/3 Schnellfilter-Blöcke.
 
 ## Codex: Kuscheldecke für Winter & Kälte · 22.11.2026
 
