@@ -6,8 +6,8 @@
  *   1) SEO-AUTOFIX     — neue/aktive Produkte ohne seo.title bekommen Titel + Meta-Description
  *                        (der bekannte Import-Defekt). Gebatcht, idempotent.
  *   2) BILD-QA         — meldet Produkte mit FAILED-Medien (kein Auto-Fix, nur Report).
- *   3) HEALTH-REPORT   — Kennzahlen (aktive Produkte, ohne SEO, FAILED-Bilder, Bestellungen 30 T).
- *   4) DIGEST          — optionaler Telegram-Tagesreport (wenn TELEGRAM_BOT_TOKEN/CHAT_ID gesetzt).
+ *   3) HEALTH-REPORT   — Kennzahlen im Laufprotokoll (aktive Produkte, ohne SEO, FAILED-Bilder, Bestellungen 30 T).
+ *   4) DIGEST          — bei manuellem Aufruf auf Wunsch zusätzlich per Telegram.
  *
  * No-op-sicher: ohne gültigen Shopify-Token passiert nichts. DRY ist Default, LIVE=1 schreibt.
  *
@@ -16,7 +16,7 @@
  *      TASK=all|seo|images|health   (Default all)
  *      SCAN=250            (wie viele zuletzt geänderte Produkte gescannt werden)
  *      LIVE=1             (schreibt; sonst Trockenlauf)
- *      TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID  (optional, für Digest)
+ *      SHOP_AUTOPILOT_TELEGRAM=1 + TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID  (optional)
  */
 import { shopifyClientSecret } from './lib/shopify_secret.mjs';
 const SHOP    = process.env.SHOPIFY_SHOP || '';
@@ -117,7 +117,7 @@ async function main(){
 
   // 4) Telegram-Digest (optional)
   const TG=process.env.TELEGRAM_BOT_TOKEN, CH=process.env.TELEGRAM_CHAT_ID;
-  if(TG&&CH){
+  if(process.env.SHOP_AUTOPILOT_TELEGRAM==='1'&&TG&&CH){
     const msg=[`🤖 LuxeStyle Autopilot ${report.ts.slice(0,16).replace('T',' ')}`,
       report.activeProducts!=null?`📦 ${report.activeProducts} aktive Produkte · 🛒 ${report.orders30d} Bestellungen/30T`:'',
       report.missingSeo!=null?`🔎 SEO fehlte: ${report.missingSeo}${report.seoFixed!=null?` → ${report.seoFixed} gefixt`:' (DRY)'}`:'',

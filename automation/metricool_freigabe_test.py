@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 """Prüfungen für metricool_freigabe.py (ohne Netz). Aufruf: python3 automation/metricool_freigabe_test.py"""
+import contextlib
+import io
+import json
 import os
 import sys
-from datetime import datetime
+import tempfile
+from datetime import datetime, timedelta
+from pathlib import Path
+from unittest.mock import patch
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import metricool_freigabe as m
@@ -253,16 +259,62 @@ gl(m.pflichtfelder(post(1, '2026-11-11T10:00', ['instagram'], 'x', media=('https
 ok(any('Pinterest' in q for q in m.pflichtfelder(post(1, '2026-11-11T10:00', ['pinterest'], 'x', media=('https://x.test/a.jpeg',)))), 'Pinterest ohne Board')
 gl(m.pflichtfelder(post(1, '2026-11-11T10:00', ['pinterest'], 'x', media=('https://x.test/a.jpeg',), pinterestData={'boardId': '1', 'pinTitle': 'T'})), [], 'Pinterest vollständig')
 
-# ---- Telegram-Liste der gehaltenen Entwürfe (kein täglicher Dauerton)
-def halt(i, dt, grund):
-    return {'id': i, 'alt': D(dt), 'probleme': [grund]}
-liste = m.melde_liste([halt(1, '2026-11-09T23:30', 'uuid kommt mehrfach vor (Kopie), nicht angefasst'),
-                       halt(2, '2026-11-20T10:00', 'Produkt nicht erkannt'),
-                       halt(3, '2026-11-10T18:00', 'Produkt nicht erkannt'),
-                       halt(4, '2026-11-09T10:00', 'Termin liegt in der Vergangenheit')], JETZT)
-gl([e['id'] for e in liste], [3, 4], 'nur Termine der nächsten 48 Stunden oder gerade vorbei, nie die Kopie')
-gl(m.melde_liste([halt(5, '2026-11-11T20:01', 'x')], JETZT), [], 'mehr als 48 Stunden entfernt: noch nicht melden')
-gl([e['id'] for e in m.melde_liste([halt(6, '2026-11-11T19:59', 'x')], JETZT)], [6], 'knapp unter 48 Stunden: melden')
+# ---- Telegram-Meldestand über mehrere Läufe, ohne Netz
+def sammelmeldung(text):
+    nachrichten.append(text)
+    return True
+
+
+with tempfile.TemporaryDirectory() as ordner, contextlib.redirect_stdout(io.StringIO()):
+    datei = Path(ordner) / 'meldestand.json'
+    erstes = befunde[0]
+    ersatz_id = dict(erstes, id=7301)
+    threads = dict(erstes, netz='threads')
+    pending = dict(erstes, uuid='neuer-kandidat', status='PENDING')
+    nachrichten = []
+
+    m.melde_status(befunde, JETZT, datei, sammelmeldung)
+    gl(nachrichten, [], 'historische Fehler als Ausgangsstand protokollieren')
+    ok(datei.is_file(), 'Ausgangsstand wird über den Lauf hinaus erfasst')
+    m.melde_status([], JETZT, datei, sammelmeldung)
+    m.melde_status([ersatz_id], JETZT, datei, sammelmeldung)
+    gl(nachrichten, [], 'gleicher Kanalbefund trotz neuer numerischer ID und einem Zwischenlauf')
+
+    m.melde_status([ersatz_id, threads, pending, pending, dict(pending, uuid=None),
+                    dict(pending, status='')], JETZT, datei, sammelmeldung)
+    gl(len(nachrichten), 1, 'neue gültige Probleme stehen in einer Sammelmeldung')
+    ok('2 neue Kanalbefunde' in nachrichten[0] and 'threads: ERROR' in nachrichten[0] and
+       'tiktok: PENDING' in nachrichten[0], 'Kanal, bestätigter Status und Dedupe im selben Lauf')
+    m.melde_status([threads, pending], JETZT, datei, sammelmeldung)
+    gl(len(nachrichten), 1, 'gelieferte Fehler werden nicht erneut versandt')
+
+    error = dict(pending, status='ERROR')
+    vorher = datei.read_text()
+    m.melde_status([error], JETZT, datei, lambda text: False)
+    gl(datei.read_text(), vorher, 'fehlende Telegram-Bestätigung verändert den Meldestand nicht')
+    m.melde_status([error], JETZT, datei, sammelmeldung)
+    gl(len(nachrichten), 2, 'PENDING zu ERROR ist ein neuer Befund')
+
+    verschoben = dict(error, zeit=error['zeit'] + timedelta(hours=1))
+    m.melde_status([verschoben], JETZT, datei, sammelmeldung)
+    gl(len(nachrichten), 3, 'neuer Termin ist ein eigener Zustellversuch')
+
+    datei.write_text('defekt', encoding='utf-8')
+    m.melde_status([error], JETZT, datei, sammelmeldung)
+    gl(json.loads(datei.read_text())['version'], 1, 'defekter Meldestand wird ohne Altalarm neu aufgebaut')
+    m.melde_status([error], JETZT, None, sammelmeldung)
+    gl(len(nachrichten), 3, 'unlesbarer oder fehlender Pfad löst keine Telegram-Flut aus')
+
+    env = {'LIVE': '1', 'METRICOOL_USER_TOKEN': 'test', 'TELEGRAM_BOT_TOKEN': 'test',
+           'TELEGRAM_CHAT_ID': 'test', 'GITHUB_STEP_SUMMARY': ''}
+    alter_entwurf = post(407, '2026-11-09T12:00', ['tiktok'], 'Plüsch Panda, CHF 19.90')
+    with patch.dict(os.environ, env), patch.object(m, 'jetzt_lokal', return_value=JETZT), \
+         patch.object(m.Metricool, 'planer', return_value=[alter_entwurf]), \
+         patch.object(m, 'shopify_token', return_value='test'), \
+         patch.object(m, 'wegweiser_produkte', return_value=PRODUKTE), \
+         patch.object(m, 'telegram') as bot:
+        gl(m.main([]), 0, 'Freigabe prüft den abgelaufenen Entwurf weiter')
+        ok(not bot.called, 'auch im Live-Modus keine Telegram-Nachricht für gehaltene Entwürfe')
 
 # ---- Halteliste (METRICOOL-HALTEN.txt)
 H = m.lade_halten("""# Kommentar am Anfang
@@ -303,10 +355,6 @@ q1 = {x['id']: x for x in m.plane_lauf(hq, PRODUKTE, JETZT, medien_ok=lambda u: 
 gl(q1[1]['neu'], D('2026-11-11T12:00'), 'der später geprüfte, angehaltene Nachbar zählt nicht als vorläufig besetzt: der andere behält seine Zeit')
 # Bereits eingeplante Beiträge (kein Entwurf) fasst die Halteliste nicht an, sie sind keine Kandidaten
 gl([x['id'] for x in m.plane_lauf([post(1, '2026-11-10T10:00', ['tiktok'], PA, draft=False, uuid='uA')], PRODUKTE, JETZT, halten={'ua': 'x'})], [], 'eingeplante Beiträge sind weiter keine Kandidaten')
-# Telegram: bewusst Angehaltene werden nie täglich gemeldet
-hl = m.melde_liste([{'id': 7, 'alt': D('2026-11-10T09:00'), 'probleme': ['angehalten (METRICOOL-HALTEN.txt): Codex']},
-                    {'id': 8, 'alt': D('2026-11-10T09:00'), 'probleme': ['Produkt nicht erkannt']}], JETZT)
-gl([e['id'] for e in hl], [8], 'Angehaltene stehen nicht in der Telegram-Liste')
 # Die echte Datei im Repo (falls vorhanden) ist lesbar
 _hf = m.HALTEN_DATEI
 if os.path.exists(_hf):
@@ -314,8 +362,6 @@ if os.path.exists(_hf):
 
 
 # ---- main() offline: die Datei METRICOOL-HALTEN.txt wirkt wirklich (Trockenlauf mit Dateien, nie Netz, nie live)
-import contextlib, io, json, tempfile
-from datetime import timedelta
 _morgen = (datetime.now() + timedelta(days=1)).replace(hour=10, minute=0, second=0, microsecond=0)
 _pl = [post(501, _morgen.strftime('%Y-%m-%dT%H:%M'), ['tiktok'], PA, uuid='uMain-1')]
 _tmp = tempfile.mkdtemp(prefix='mfhalten-')
