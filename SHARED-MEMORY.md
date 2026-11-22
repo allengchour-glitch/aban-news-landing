@@ -1,5 +1,9 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
+## Codex: zurückgezogene Kaufziele auch in Ratgebern berücksichtigen ·22.11.2026
+
+Reproduziert und am frisch gelesenen öffentlichen Client bestätigt: Ratgeber-Kaufkästen ließen ihren alten Checkout aktiv, wenn der Katalog ausdrücklich buy:'' meldete. Der Abgleich fällt jetzt auf den vorhandenen internen Produktanker zurück, bereinigt Fensterattribute und zeigt einen passenden Ansehtext/Beschriftung. Unbekannte Abruf-/Datenstände bewahren den vorherigen Kasten; eindeutige bestätigte Kaufziele werden weiter aktualisiert.88 Client-Prüfbedingungen grün, Original69grün/19rot, unabhängiges Review ohne Blocker. Zusätzliche Browser-/echte CI-/Bereitstellungsbelege im zugehörigen PR. Test im bestehenden Hype-Workflow, keine zusätzliche Automation/Frequenz. Preise, Shopkataloge, Konten und geschützte Lieferung unverändert; finanzielle Wirkung ungemessen. Kanonische Übergabe lesen.
+
 ## Codex: Checkout nur mit passendem Preisbeleg exportieren ·21.11.2026
 
 Fehler mit echter Sync-Funktion und erfundenen Daten nachgestellt: Katalog14EUR plus gespeicherter19EUR-Checkout blieb ohne API-Schlüssel oder nach Quellenfehler kaufbar. Export übernimmt Kaufziel jetzt nur bei bekanntem identischem Integer-Centbetrag und identischer Währung; unbekannte Belege bleiben ohne Kaufziel, Status/Karten erhalten. Centbeträge werden exakt statt gerundet angezeigt. Zwölf Testmethoden und acht bestehende Demo-Serverprüfungen grün; neun neue Methoden treffen die alte Fassung mit28 Assertion-Fehlschlägen ohne Laufzeitfehler. Vollständige Offline-Gegenprobe erhält alle53 bestehenden DE/EN-Kartenpreise und51 Kaufziele, auch die zwei EN-Sperren; null Anbieteraufrufe. Keine realen Preise/Links/Konten oder Automationen geändert. Echte CI und Freigabestand im PR; kein Stripe-Schreiblauf aus diesem Auftrag. Finanzielle Wirkung nicht gemessen. Kanonische Übergabe beachten.

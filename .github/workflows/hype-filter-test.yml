@@ -12,6 +12,7 @@ on:
       - 'cockpit-app.html'
       - 'cockpit-sw.js'
       - 'js/ki-studio.js'
+      - 'js/kit-preis.js'
       - 'ki-studio.html'
       - 'en/ki-studio.html'
       - '.github/workflows/hype-filter-test.yml'
@@ -23,6 +24,7 @@ on:
       - 'cockpit-app.html'
       - 'cockpit-sw.js'
       - 'js/ki-studio.js'
+      - 'js/kit-preis.js'
       - 'ki-studio.html'
       - 'en/ki-studio.html'
       - '.github/workflows/hype-filter-test.yml'
@@ -45,6 +47,9 @@ jobs:
 
       - name: Bezahlte Kit-Downloads und erneute Prüfung
         run: node functions/_kit_download.test.mjs
+
+      - name: Ratgeber-Kaufziele bei Katalogabgleich
+        run: node functions/_kit_preis.test.mjs
 
       - name: KI-Studio Werkzeuganfragen und manuelle Wiederaufnahme
         run: node functions/_studio_client.test.mjs
