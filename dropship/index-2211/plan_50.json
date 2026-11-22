@@ -1,0 +1,388 @@
+{
+ "tage": [
+  [
+   {
+    "handle": "sub-stiefel-boots",
+    "produkte": 723,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "Herbst & Übergang > Stiefel & Boots"
+   },
+   {
+    "handle": "geschenke-unter-50-franken",
+    "produkte": 400,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "🎁 Geschenke & Weihnachten > Geschenke unter CHF 50"
+   },
+   {
+    "handle": "geschenke-fuer-kinder",
+    "produkte": 371,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "🎁 Geschenke & Weihnachten > Geschenke für Kinder"
+   },
+   {
+    "handle": "waerme-komfort",
+    "produkte": 56,
+    "stand_2211": "Discovered - currently not indexed",
+    "pfad": "Herbst & Übergang > Wärme & Komfort 🔥"
+   },
+   {
+    "handle": "herren-jacken-maentel-lang",
+    "produkte": 32,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Herren > Jacken & Mäntel > Mäntel & Trenchcoats"
+   },
+   {
+    "handle": "kinder-hausschuhe",
+    "produkte": 32,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Schuhe > Kinderschuhe > Hausschuhe & Pantoffeln"
+   },
+   {
+    "handle": "damen-hausschuhe",
+    "produkte": 20,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Schuhe > Damenschuhe > Hausschuhe & Pantoffeln"
+   },
+   {
+    "handle": "heizkissen-waermegurte",
+    "produkte": 22,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Beauty & Pflege > Rücken, Gelenke & Alltagshilfen > Heizkissen & Wärmegürtel"
+   },
+   {
+    "handle": "hoodies-sweatshirts",
+    "produkte": 77,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Herbst & Übergang > Hoodies & Sweatshirts"
+   },
+   {
+    "handle": "damen-sturmhauben-gesichtsmasken",
+    "produkte": 39,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Damen > Sturmhauben & Gesichtsmasken"
+   }
+  ],
+  [
+   {
+    "handle": "herren-sturmhauben-gesichtsmasken",
+    "produkte": 37,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Herren > Sturmhauben & Gesichtsmasken"
+   },
+   {
+    "handle": "damen-jacken-cape",
+    "produkte": 21,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Damen > Jacken & Mäntel > Capes & Ponchos"
+   },
+   {
+    "handle": "herren-jacken-uebergang",
+    "produkte": 64,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Herren > Jacken & Mäntel > Übergangsjacken"
+   },
+   {
+    "handle": "damen-jacken-uebergang",
+    "produkte": 29,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Damen > Jacken & Mäntel > Übergangs- & Bomberjacken"
+   },
+   {
+    "handle": "herren-jacken-leder",
+    "produkte": 27,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Herren > Jacken & Mäntel > Leder- & Kunstlederjacken"
+   },
+   {
+    "handle": "trends-gadgets",
+    "produkte": 4015,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "Gaming & Gadgets > Lifestyle & Trends"
+   },
+   {
+    "handle": "smartwatches-wearables",
+    "produkte": 1033,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Uhren > Smartwatches & Wearables"
+   },
+   {
+    "handle": "smart-home-gadgets",
+    "produkte": 78,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Elektronik > Smart Home & smarte Gadgets"
+   },
+   {
+    "handle": "beamer-heimprojektoren",
+    "produkte": 74,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Elektronik > TV, Beamer & Streaming > Beamer & Heimprojektoren"
+   },
+   {
+    "handle": "kabel-adapter",
+    "produkte": 60,
+    "stand_2211": "Discovered - currently not indexed",
+    "pfad": "Elektronik > Kabel & Adapter"
+   }
+  ],
+  [
+   {
+    "handle": "damen-mode",
+    "produkte": 12879,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "Damen"
+   },
+   {
+    "handle": "damen-schuhe",
+    "produkte": 2352,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "Damen > Schuhe"
+   },
+   {
+    "handle": "herren-schuhe",
+    "produkte": 2037,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "Herren > Schuhe"
+   },
+   {
+    "handle": "herren-freizeitschuhe",
+    "produkte": 420,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "Schuhe > Herrenschuhe > Freizeitschuhe"
+   },
+   {
+    "handle": "herren-anzuege-sakkos",
+    "produkte": 66,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Herren > Anzüge & Sakkos"
+   },
+   {
+    "handle": "damen-nachtwaesche",
+    "produkte": 42,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Damen > Nachtwäsche & Loungewear"
+   },
+   {
+    "handle": "damen-wanderschuhe",
+    "produkte": 46,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Schuhe > Damenschuhe > Wanderschuhe"
+   },
+   {
+    "handle": "trainings-fitnessschuhe",
+    "produkte": 28,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Schuhe > Sportschuhe > Fitness- & Trainingsschuhe"
+   },
+   {
+    "handle": "damen-kleider-plissee",
+    "produkte": 62,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Damen > Kleider nach Material & Muster > Plisseekleider"
+   },
+   {
+    "handle": "damen-kleider-jeans",
+    "produkte": 56,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Damen > Kleider nach Material & Muster > Jeans- & Denimkleider"
+   }
+  ],
+  [
+   {
+    "handle": "outdoor-garten",
+    "produkte": 2507,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "Wohnen & Garten > Garten & Outdoor"
+   },
+   {
+    "handle": "malen-nach-zahlen",
+    "produkte": 69,
+    "stand_2211": "Discovered - currently not indexed",
+    "pfad": "Wohnen & Garten > Basteln & DIY > Malen nach Zahlen"
+   },
+   {
+    "handle": "luftreiniger-klimageraete",
+    "produkte": 55,
+    "stand_2211": "Discovered - currently not indexed",
+    "pfad": "Wohnen & Garten > Raumluft & Klima > Luftreiniger & Klimageräte"
+   },
+   {
+    "handle": "elektrowerkzeug",
+    "produkte": 38,
+    "stand_2211": "Discovered - currently not indexed",
+    "pfad": "Wohnen & Garten > Werkzeug & Maschinen > Elektrowerkzeug & Löten"
+   },
+   {
+    "handle": "wc-zubehoer-taschentuchboxen",
+    "produkte": 31,
+    "stand_2211": "Discovered - currently not indexed",
+    "pfad": "Wohnen & Garten > Bad > WC-Zubehör & Taschentuchboxen"
+   },
+   {
+    "handle": "suesses-esswaren",
+    "produkte": 31,
+    "stand_2211": "Discovered - currently not indexed",
+    "pfad": "Sport & Party > Süsses & Esswaren 🍬"
+   },
+   {
+    "handle": "taschenlampen",
+    "produkte": 27,
+    "stand_2211": "Discovered - currently not indexed",
+    "pfad": "Sport & Party > Wandern, Angeln & Wasser > Taschenlampen & Stirnlampen"
+   },
+   {
+    "handle": "kueche-kochen",
+    "produkte": 1456,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Küche"
+   },
+   {
+    "handle": "geschirr-tisch",
+    "produkte": 841,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Geschirr"
+   },
+   {
+    "handle": "kuechenhelfer-vorrat",
+    "produkte": 714,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Küche > Küchenhelfer & Vorrat"
+   }
+  ],
+  [
+   {
+    "handle": "laptop-business-rucksaecke",
+    "produkte": 640,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "Taschen & Rucksäcke > Rucksäcke > Laptop- & Business-Rucksäcke"
+   },
+   {
+    "handle": "velo-lauf-trinkrucksaecke",
+    "produkte": 64,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Taschen & Rucksäcke > Rucksäcke > Velo-, Lauf- & Trinkrucksäcke"
+   },
+   {
+    "handle": "herren-handtaschen",
+    "produkte": 62,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Taschen & Rucksäcke > Herren: Handtaschen"
+   },
+   {
+    "handle": "herren-kartenetuis",
+    "produkte": 43,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Taschen & Rucksäcke > Herren: Kartenetuis & Kartenhalter"
+   },
+   {
+    "handle": "damen-kartenetuis",
+    "produkte": 40,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Taschen & Rucksäcke > Damen: Kartenetuis & Kartenhalter"
+   },
+   {
+    "handle": "kinder-wickelrucksaecke",
+    "produkte": 40,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Taschen & Rucksäcke > Rucksäcke > Kinder- & Wickelrucksäcke"
+   },
+   {
+    "handle": "foto-drohnen-rucksaecke",
+    "produkte": 33,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Taschen & Rucksäcke > Spezial-Rucksäcke > Foto- & Drohnenrucksäcke"
+   },
+   {
+    "handle": "rucksaecke-motorrad",
+    "produkte": 31,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Taschen & Rucksäcke > Spezial-Rucksäcke > Motorrad-Rucksäcke"
+   },
+   {
+    "handle": "herren-clutches",
+    "produkte": 27,
+    "stand_2211": "URL is unknown to Google",
+    "pfad": "Taschen & Rucksäcke > Herren: Clutches & Abendtaschen"
+   },
+   {
+    "handle": "sub-baby-kids",
+    "produkte": 4519,
+    "stand_2211": "Crawled - currently not indexed",
+    "pfad": "Kinder & Baby"
+   }
+  ]
+ ],
+ "reserve": [
+  {
+   "handle": "herren-jacken-jeans",
+   "produkte": 53,
+   "stand_2211": "URL is unknown to Google",
+   "pfad": "Herren > Jacken & Mäntel > Jeansjacken"
+  },
+  {
+   "handle": "herren-jacken-hemdjacke",
+   "produkte": 37,
+   "stand_2211": "URL is unknown to Google",
+   "pfad": "Herren > Jacken & Mäntel > Hemdjacken & Workwear"
+  },
+  {
+   "handle": "herren-jacken-baseball-bomber",
+   "produkte": 27,
+   "stand_2211": "URL is unknown to Google",
+   "pfad": "Herren > Jacken & Mäntel > Bomber- & Baseballjacken"
+  },
+  {
+   "handle": "smartwatches",
+   "produkte": 592,
+   "stand_2211": "URL is unknown to Google",
+   "pfad": "Elektronik > Smartwatches & Wearables > Smartwatches"
+  },
+  {
+   "handle": "auto-ladegeraete",
+   "produkte": 75,
+   "stand_2211": "URL is unknown to Google",
+   "pfad": "Elektronik > Handy & Laden > Auto-Ladegeräte"
+  },
+  {
+   "handle": "netzwerk-router",
+   "produkte": 28,
+   "stand_2211": "Discovered - currently not indexed",
+   "pfad": "Elektronik > PC & Computer > Netzwerk & WLAN"
+  },
+  {
+   "handle": "geschirr-besteck-tisch",
+   "produkte": 433,
+   "stand_2211": "URL is unknown to Google",
+   "pfad": "Geschirr > Geschirr, Besteck & Tisch"
+  },
+  {
+   "handle": "kaffee-tee-trinken",
+   "produkte": 408,
+   "stand_2211": "URL is unknown to Google",
+   "pfad": "Geschirr > Kaffee, Tee & Trinken"
+  },
+  {
+   "handle": "kuechengeraete-alle",
+   "produkte": 387,
+   "stand_2211": "URL is unknown to Google",
+   "pfad": "Küche > Küchengeräte"
+  },
+  {
+   "handle": "kochen-grillen-backen",
+   "produkte": 355,
+   "stand_2211": "URL is unknown to Google",
+   "pfad": "Küche > Kochen, Grillen & Backen"
+  },
+  {
+   "handle": "sub-ringe",
+   "produkte": 550,
+   "stand_2211": "Crawled - currently not indexed",
+   "pfad": "Schmuck > Ringe"
+  },
+  {
+   "handle": "parfum-duefte",
+   "produkte": 1284,
+   "stand_2211": "Discovered - currently not indexed",
+   "pfad": "Beauty & Pflege > Körper, Mund & Düfte"
+  }
+ ]
+}
