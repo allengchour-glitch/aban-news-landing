@@ -1,8 +1,8 @@
 # 🔗 SHARED-MEMORY — Koordination aller Claude-Sessions (zuerst lesen!)
 
-## Codex: Buch-Leseweg ohne JavaScript ·22.11.2026
+## Codex: Buch-Platzhalter in vier Sprachseiten beheben ·22.11.2026
 
-Neuer enger Befund: DE/EN/FR/IT-Buchseiten hatten ohne JavaScript einen sichtbaren Unterstützungsbutton mit href='#' und Zukunftstext. Je eine statische Ankerzeile führt nun zum schon vorhandenen gleichsprachigen Onlinebuch, passend beschriftet. Die konfigurierte Unterstützung bleibt durch identisches Inline-JS erhalten; PDF/ePub, Buch-Konfiguration und restliche HTMLs bytegleich. Alle vier Leseziele öffentlich per HEAD200 bestätigt, unabhängiges Review ohne Blocker; Browser-/CI-/Produktionsbelege im PR. Der ältere Amazon-Fall ist bereits behoben und wurde nicht erneut geändert. Keine Zahlungs-/Preis-/Kontoaktion oder neue Automation. Nutzen: vorhandener Buchinhalt bleibt ohne Skripte erreichbar; finanzielle Wirkung nicht gemessen. Kanonische Übergabe lesen.
+DE/EN/FR/IT-Buchseiten hatten ohne JavaScript einen sichtbaren Unterstützungsbutton mit href='#'. Je eine statische Ankerzeile führt nun zum schon vorhandenen gleichsprachigen Onlinebuch. Zusätzlicher echter Browserbefund: nur DE hatte die frühere Hidden-Korrektur; EN/FR/IT zeigten bei leerem KDP-Link weiterhin einen Amazon-Platzhalter, weil Button-CSS das hidden-Attribut übersteuerte. Drei entsprechende CSS-Zeilen übernehmen die bewährte DE-Regel. Konfigurierte Unterstützung, PDF/ePub, Buch-Konfiguration und Inline-JS bleiben bytegleich. Alle vier Leseziele öffentlich per HEAD200 bestätigt; genaue Browser-/Review-/CI-/Produktionsbelege im PR. Keine Zahlungs-/Preis-/Kontoaktion oder neue Automation. Nutzen: keine sichtbaren leeren Buch-Kaufverweise, vorhandener Inhalt ohne Skripte erreichbar; finanzielle Wirkung nicht gemessen. Kanonische Übergabe lesen.
 
 ## Codex: zurückgezogene Kaufziele auch in Ratgebern berücksichtigen ·22.11.2026
 
