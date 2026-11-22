@@ -2,7 +2,7 @@
 
 ## Codex: Versandkosten vor dem Kaufen · 22.11.2026
 
-Geplante Vorschau-Korrektur ausschliesslich in `templates/product.json` und `templates/product.lxszene.json` (`lux_delivery`): Länderverzweigung CH/LI und Standardpreise aus geprüften Versandbedingungen, CH CHF 7 / gratis ab CHF 50 nach Rabatt, LI CHF 14.90, vorhandene Schweizer-Lager-Sonderregel erhalten, FR-Texte ergänzen. Preisbasierte pauschale Gratisversand-Zusage entfernen. Keine Tarifänderung; Vorschau vor Veröffentlichung.
+Geplante Vorschau-Korrektur ausschliesslich in `templates/product.json` und `templates/product.lxszene.json` (`lux_delivery`): Länderverzweigung CH/LI und Standardpreise aus geprüften Versandbedingungen, CH CHF 7 / gratis ab CHF 50 nach Rabatt, LI CHF 14.90, vorhandene Schweizer-Lager-Sonderregel erhalten, FR-Texte ergänzen. Preisbasierte pauschale Gratisversand-Zusage entfernen. Versandtarife wurden nicht geändert. Die mobile Vorschau der Hoodie-Decke zeigt den Schweizer Standardversand auf Deutsch und Französisch vor den Kaufbuttons. Die Liechtenstein-Verzweigung wurde im Liquid geprüft. Shopify-Version `9514b1684cacf393a21decc7513e8a403a9de1c6` wartet für beide Vorlagen auf Veröffentlichung.
 
 ## Codex: Produktseiten vor dem Kaufen klarer · 22.11.2026
 
