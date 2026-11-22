@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "brand": "luxestyle.ch",
-  "revision": 312,
-  "updatedAt": "2026-11-21T23:55:23Z",
+  "revision": 313,
+  "updatedAt": "2026-11-22T07:07:09Z",
   "timezone": "Europe/Zurich",
   "purpose": "project_memory_not_execution_authority",
   "coordinator": "claude",
@@ -51051,6 +51051,14 @@
       "sources": [
         "dropship/codex-handoff-20261018/R312-VERKAUFSWEG-PROJEKTOR-20261121.md"
       ]
+    },
+    {
+      "revision": 313,
+      "at": "2026-11-22T07:07:09Z",
+      "summary": "Metricool-Fenster bis 29.11. geprüft, 28 aktive Kanaltermine und Lücken ab 25.11. belegt. Projektor A bestätigt, fünf Schnittprüffenster vorbereitet. Live-Theme erklärt FR-noindex, Pilot für eine Produktseite vorbereitet. Klaviyo braucht Neuanmeldung.",
+      "sources": [
+        "dropship/codex-handoff-20261018/R313-MORGENLAUF-20261122.md"
+      ]
     }
   ],
   "salesGoal": {
@@ -82909,5 +82917,94 @@
     ],
     "googleEffect": "unknown",
     "saleEffect": "unknown"
+  },
+  "run313": {
+    "status": "checked_and_prepared",
+    "period": "2026-11-22 Europe/Zurich",
+    "report": "dropship/codex-handoff-20261018/R313-MORGENLAUF-20261122.md",
+    "shop": {
+      "domain": "luxestyle.ch",
+      "currency": "CHF",
+      "productId": "15521256604033",
+      "variantId": "68122445283719",
+      "sku": "CJSN139239101AZ",
+      "price": "34.90",
+      "available": true,
+      "tracked": false,
+      "inventoryPolicy": "CONTINUE"
+    },
+    "metricool": {
+      "brandId": "6227837",
+      "timezone": "Europe/Zurich",
+      "allSixIdentitiesVerified": true,
+      "calendarThrough": "2026-11-29T23:59:59+01:00",
+      "activeObjects": 22,
+      "activeChannelSlots": 28,
+      "drafts": 15,
+      "counts": "exact_snapshot",
+      "gaps": {
+        "Instagram": "25.–29.11.",
+        "Facebook": "25.–29.11.",
+        "TikTok": "25.–29.11.",
+        "Pinterest": "25.–29.11.",
+        "YouTube Shorts": "25.–29.11.",
+        "Threads": "26.–29.11."
+      },
+      "newWrites": 0,
+      "analyticsDays": [
+        "2026-11-15",
+        "2026-11-21"
+      ],
+      "kpiScopes": [
+        "7/7",
+        "7/7",
+        "4/7",
+        "7/7",
+        "5/7",
+        "5/7"
+      ],
+      "wholeHistory": "unknown"
+    },
+    "master": {
+      "masterId": "luxe_sternenprojektor_master_20261018",
+      "plannedCutWindows": [
+        [
+          54,
+          65
+        ],
+        [
+          144,
+          155
+        ],
+        [
+          264,
+          275
+        ],
+        [
+          384,
+          395
+        ],
+        [
+          474,
+          485
+        ]
+      ],
+      "status": "storyboard_only"
+    },
+    "sale": {
+      "action": "one_french_product_localisation_and_index_pilot_pending_approval",
+      "theme": "214565814663",
+      "themeChecksum": "3b9b8d9efe3deaf1cdf4e3920ce7fdc1",
+      "frenchRobots": "noindex, follow",
+      "shopWrites": 0
+    },
+    "klaviyo": {
+      "status": "UNAUTHORIZED",
+      "flowData": "unknown"
+    },
+    "dns": {
+      "approvedRecordsPubliclyPresent": 0,
+      "authenticatedWriteAccess": false
+    }
   }
 }
