@@ -46,7 +46,12 @@ const schlaf = ms => new Promise(r => setTimeout(r, ms));
 const MC_TOKEN = process.env.METRICOOL_USER_TOKEN || (() => { try { return (/METRICOOL_USER_TOKEN=([^\s'"]+)/.exec(fs.readFileSync('/tmp/metricool.env', 'utf8')) || [])[1] || ''; } catch { return ''; } })();
 const MC_Q = `userId=${process.env.METRICOOL_USER_ID || '4801419'}&blogId=${process.env.METRICOOL_BLOG_ID || '6227837'}`;
 const VIA_MC = !!MC_TOKEN && (process.env.WEG === 'metricool' || !TOK);
+// 23.11.2026: Das Shopify-CDN wählt das Bildformat nach dem Accept-Header (Vary: Accept). Dieselbe .jpg-Adresse kommt als WebP, wenn der
+// Abrufer WebP akzeptiert (gemessen). IG/Threads verlangen JPEG («The media could not be fetched», Metricool 22./23.11.). format=pjpg erzwingt
+// JPEG unabhängig vom Accept-Header; format=jpg tut das NICHT (gemessen: Accept image/webp + format=jpg → image/webp).
+function jpgFest(u){ if(!/^https:\/\/cdn\.shopify\.com\//i.test(u||'')) return u; try { const x = new URL(u); x.searchParams.set('format','pjpg'); return x.toString(); } catch { return u; } }
 async function mcNorm(url) {
+  url = jpgFest(url);
   const n = await fetch(`https://app.metricool.com/api/actions/normalize/image/url?url=${encodeURIComponent(url)}&${MC_Q}`, { headers: { 'X-Mc-Auth': MC_TOKEN } });
   const nt = await n.text();
   let norm = ''; try { const j = JSON.parse(nt); norm = j.data?.url || j.url || (typeof j.data === 'string' ? j.data : '') || (typeof j === 'string' ? j : ''); } catch { norm = nt.trim().replace(/^"|"$/g, ''); }
