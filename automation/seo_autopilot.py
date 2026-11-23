@@ -392,6 +392,53 @@ Nenne 1–3 deutsche Suchwörter für die PRODUKTE, um die es im Artikel geht �
 Antworte NUR als JSON: {{"woerter": ["…"]}}"""
 
 
+def _stämme(n):
+    """Suchwort (norm, ohne Leerzeichen) → Grundformen: «kerzen» → {kerzen, kerze}; nie kürzer als 5 Zeichen."""
+    st = {n}
+    for suf in ("en", "n", "s", "e"):
+        if n.endswith(suf) and len(n) - len(suf) >= 5:
+            st.add(n[: -len(suf)])
+    return st
+
+
+def titel_traegt(wort, titel):
+    """23.11.2026: Trägt der Produkttitel das Suchwort als KOPF eines Wortes? Deutsche Komposita tragen ihr Thema am ENDE
+    («Rizinusöl-Wickel», «Bauchwickel» = Wickel), nicht am Anfang («Wickel-Rock», «Wickelkleid», «Wickelarmband» = Rock,
+    Kleid, Armband). Der alte Teilwort-Test («wickel» steckt in «wickelrock») setzte am 23.11. vier Mode-Artikel unter den
+    Rizinusöl-Ratgeber. Bindestriche gehören zum Wort, Endungen -e/-n/-en/-s/-er/-es/-ern sind erlaubt."""
+    st = _stämme(norm(wort).replace(" ", ""))
+    roh = unicodedata.normalize("NFD", (titel or "").lower()).encode("ascii", "ignore").decode()
+    vorher = []                       # Wörter VOR dem Treffer: steht dort ein Zubehör-Kopf, ist das Produkt Zubehör
+    for tok in roh.split():
+        t = re.sub(r"[^a-z0-9]", "", tok)
+        if tok.rstrip("»«,.;:)").endswith("-"):        # «Kerzen- & Seifenform» = abgeschnittenes Kompositum → Kopf folgt später
+            vorher.append(t); continue
+        if any(t.endswith(s + e) for s in st for e in ("", "e", "n", "en", "s", "es", "er", "ern")):
+            if vorher and (vorher[-1] in PRAEP or (len(vorher) > 1 and vorher[-1] in ARTIKELW and vorher[-2] in PRAEP)):
+                return False                           # «Reparatur-Set für Elektronik», «Pflaster für die Gesichtspflege»
+            if any(v.endswith(ZUBEHOER) for v in vorher):   # «Silikonform Muschel-Kerzen», «Schaumform … Kerzen»
+                return False
+            return True
+        vorher.append(t)
+    return False
+
+
+PRAEP = {"fur", "fuer", "mit", "aus", "zum", "zur", "von", "und", "", "gegen", "ohne", "als", "oder"}
+ARTIKELW = {"der", "die", "das", "den", "dem", "des", "ein", "eine", "einen", "deine", "dein", "ihre", "ihr"}
+ZUBEHOER = ("form", "formen", "halter", "staender", "stander", "schablone", "zubehor", "zubehoer", "etui", "hulle", "huelle",
+            "organizer", "deko")
+
+
+def body_gleich(a, b):
+    """Shopify formt den Artikel-Body beim Speichern um («<ul><li>» → «<ul>\n<li>\n»): Rücklesen ohne Leerraum vergleichen.
+    Vorher war JEDES Auffrischen «fehler» (23.11.: 9 von 9) und derselbe Artikel kam bei jedem Lauf wieder dran."""
+    return re.sub(r"\s+", "", a or "") == re.sub(r"\s+", "", b or "")
+
+
+ERWACHSENE = re.compile(r"\b(manner|maenner|mann|herren|frauen|frau|damen|sie|ihn|mama|papa|muttertag|vatertag)\b")
+KIND = re.compile(r"\b(kind|kinder|baby|babys|kleinkind|madchen|maedchen|jungen|junge)\b")
+
+
 def ware_zum_thema(titel, handle):
     """Kaufbare Produkte zum Artikelthema, deren TITEL das Suchwort trägt — sonst [] (lieber kein Block als ein falscher).
     02.10.: erst «erste Kollektion» (Salzlampe → Quarzuhr), dann «längstes Titelwort» (Silk-Pillowcase → «Baumwolle»,
@@ -411,7 +458,9 @@ def ware_zum_thema(titel, handle):
                 {"q": f"status:active AND title:{stamm}*"})["products"]["nodes"]
         gut = []
         for p in d:
-            if stamm not in norm(p["title"]).replace(" ", "") or not (p.get("featuredMedia") or {}).get("preview"):
+            if not titel_traegt(w, p["title"]) or not (p.get("featuredMedia") or {}).get("preview"):
+                continue
+            if ERWACHSENE.search(norm(titel)) and KIND.search(norm(p["title"])):   # «Winter-Geschenkset für Kinder» im Männer-Ratgeber
                 continue
             if not any(v["availableForSale"] for v in p["variants"]["nodes"]):
                 continue
@@ -585,7 +634,7 @@ def auffrischen(n):
             continue
         r = gql('mutation($id:ID!,$a:ArticleUpdateInput!){articleUpdate(id:$id,article:$a){article{body} userErrors{message}}}',
                 {"id": a["id"], "a": {"body": body}})["articleUpdate"]
-        status = "ok" if not r["userErrors"] and r["article"] and r["article"]["body"] == body else "fehler"   # Rücklesen
+        status = "ok" if not r["userErrors"] and r["article"] and body_gleich(r["article"]["body"], body) else "fehler"   # Rücklesen
         if status == "ok" and "faq-später" in was:
             status = "teil"
         if r["userErrors"]:
