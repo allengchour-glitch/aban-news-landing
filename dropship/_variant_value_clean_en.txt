@@ -21788,3 +21788,13 @@ gid://shopify/Product/15449463226753	Ausführung	gid://shopify/ProductOptionValu
 gid://shopify/Product/15449463226753	Ausführung	gid://shopify/ProductOptionValue/58746242138503	Set4	Set 4	2026-11-23T15:47Z
 gid://shopify/Product/15449463226753	Ausführung	gid://shopify/ProductOptionValue/58746242171271	Set5	Set 5	2026-11-23T15:47Z
 gid://shopify/Product/15449466372481	Farbe	gid://shopify/ProductOptionValue/58745989038471	Kariert Grau	Grau kariert	2026-11-23T15:48Z
+gid://shopify/Product/15449488654721	Modell	gid://shopify/ProductOptionValue/58746002211207	Set1	Set 1	2026-11-23T15:50Z
+gid://shopify/Product/15449488654721	Modell	gid://shopify/ProductOptionValue/58746002243975	Set2	Set 2	2026-11-23T15:50Z
+gid://shopify/Product/15449489179009	Ausführung	gid://shopify/ProductOptionValue/58745994314119	Set1	Set 1	2026-11-23T15:50Z
+gid://shopify/Product/15449490489729	Farbe	gid://shopify/ProductOptionValue/58745992970631	Man Dämmerungs-Schwarz	Herren Dämmerungs-Schwarz	2026-11-23T15:50Z
+gid://shopify/Product/15449600557441	Grösse	gid://shopify/ProductOptionValue/58929482629511	45x45cm Pillow	45x45 cm Kissen	2026-11-23T15:51Z
+gid://shopify/Product/15449603572097	Grösse	gid://shopify/ProductOptionValue/58709792096647	Pillowcase	Kissenbezug	2026-11-23T15:51Z
+gid://shopify/Product/15449603572097	Grösse	gid://shopify/ProductOptionValue/58709792129415	Pillow	Kissen	2026-11-23T15:51Z
+gid://shopify/Product/15450215022977	Farbe	gid://shopify/ProductOptionValue/58745875923335	A2301 Leopard-Print Grau	A2301 Leopard-Grau bedruckt	2026-11-23T15:53Z
+gid://shopify/Product/15450215022977	Farbe	gid://shopify/ProductOptionValue/58745875956103	A2301 Leopard-Print Braun	A2301 Leopard-Braun bedruckt	2026-11-23T15:53Z
+gid://shopify/Product/15450559938945	Farbe	gid://shopify/ProductOptionValue/12043530895745	Schwarz Rose Nägel	Schwarz-Rosé Nägel	2026-11-23T15:53Z

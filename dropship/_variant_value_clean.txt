@@ -3956,3 +3956,12 @@ gid://shopify/Product/15449439895937	Farbe	1
 gid://shopify/Product/15449461850497	Ausführung	2
 gid://shopify/Product/15449463226753	Ausführung	5
 gid://shopify/Product/15449466372481	Farbe	1
+gid://shopify/Product/15449478660481	Grösse	1
+gid://shopify/Product/15449488654721	Modell	2
+gid://shopify/Product/15449489179009	Ausführung	1
+gid://shopify/Product/15449490489729	Farbe	1
+gid://shopify/Product/15449597444481	Farbe	5
+gid://shopify/Product/15449600557441	Grösse	1
+gid://shopify/Product/15449603572097	Grösse	2
+gid://shopify/Product/15450215022977	Farbe	2
+gid://shopify/Product/15450559938945	Farbe	1
