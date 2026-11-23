@@ -22225,3 +22225,12 @@ gid://shopify/Product/15509368668545	Modell	gid://shopify/ProductOptionValue/587
 gid://shopify/Product/15509368799617	Grösse	gid://shopify/ProductOptionValue/58766268367239	150x230cm thick	150x230 cm dick	2026-11-23T17:41Z
 gid://shopify/Product/15509368799617	Grösse	gid://shopify/ProductOptionValue/58766268432775	150x100cm thick	150x100 cm dick	2026-11-23T17:41Z
 gid://shopify/Product/15509368799617	Grösse	gid://shopify/ProductOptionValue/58766268465543	150x130cm thick	150x130 cm dick	2026-11-23T17:41Z
+gid://shopify/Product/15509384167809	Abmessung	gid://shopify/ProductOptionValue/58766558527879	Big	Gross	2026-11-23T17:42Z
+gid://shopify/Product/15509391409537	Modell	gid://shopify/ProductOptionValue/58625810432391	Olive	Oliv	2026-11-23T17:43Z
+gid://shopify/Product/15509395374465	Farbe	gid://shopify/ProductOptionValue/58800145662343	Sapphire	Saphirblau	2026-11-23T17:44Z
+gid://shopify/Product/15509395374465	Grösse	gid://shopify/ProductOptionValue/58800145760647	Width 1.0cm	Breite 1.0 cm	2026-11-23T17:44Z
+gid://shopify/Product/15509395374465	Grösse	gid://shopify/ProductOptionValue/58800145793415	Width 2.0cm	Breite 2.0 cm	2026-11-23T17:44Z
+gid://shopify/Product/15509400519041	Farbe	gid://shopify/ProductOptionValue/12443979645313	8, schwarz glänzend	8, Schwarz glänzend	2026-11-23T17:45Z
+gid://shopify/Product/15509431222657	Grösse	gid://shopify/ProductOptionValue/58848262291847	Green Box	Grün Box	2026-11-23T17:45Z
+gid://shopify/Product/15509431419265	Grösse	gid://shopify/ProductOptionValue/58710070722951	Big	Gross	2026-11-23T17:46Z
+gid://shopify/Product/15509506097537	Grösse	gid://shopify/ProductOptionValue/58757659361671	Upgraded	Upgrade	2026-11-23T17:46Z
