@@ -1316,3 +1316,26 @@ baby-tragen-wickeltaschen	ok	22	Babytragen & Wickeltaschen
 baby-baden-wickeln-pflege	http-429	0	Baden, Wickeln & Töpfchen
 baby-schlafen-kuscheln	ok	29	Schlafen, Decken & Babymöbel
 baby-kissen	http-429	0	Babykissen
+baby-decken-nester-tuecher	ok	24	Decken, Nester & Tücher
+baby-spielen-entdecken	ok	29	Spielmatten, Beissringe & Baby-Spielzeug
+baby-sicherheit-babyphone	ok	20	Sicherheit & Babyphone
+kindergeschirr-trinken	http-429	0	Kinder- & Babygeschirr, Trinkflaschen
+kinder-trinken-lunchbox	ok	24	Trinkflaschen, Becher & Lunchboxen
+kinder-geschirr-babynahrung	ok	28	Geschirr, Besteck & Babynahrung
+baby-zubehoer-geschenke	ok	23	Baby-Zubehör, Erinnerungen & Geschenke
+kinderzimmer-textilien-deko	ok	29	Kinderzimmer: Textilien, Deko & Aufbewahrung
+draussen-wasser-seifenblasen	ok	21	Draussen, Wasser & Seifenblasen
+laufschuhe-running	ok	29	Laufschuhe & Walking
+laufschuhe-kinder	ok	29	Kinder-Laufschuhe
+laufschuhe-herren	ok	29	Herren-Laufschuhe
+laufschuhe-mesh	ok	29	Mesh & atmungsaktiv
+trainings-fitnessschuhe	ok	29	Fitness- & Trainingsschuhe
+allround-sportschuhe	ok	29	Sportschuhe für Alltag & Freizeit
+sportschuhe-kinder	ok	29	Kinder-Sportschuhe
+sportschuhe-herren	ok	29	Herren-Sportschuhe
+sportschuhe-mesh	ok	29	Mesh & atmungsaktiv
+ballsportschuhe	ok	29	Fussball-, Basketball- & Golfschuhe
+hallen-kampfsportschuhe	ok	26	Hallen- & Kampfsportschuhe
+tanz-ballettschuhe	ok	29	Tanz- & Ballettschuhe
+skateschuhe	ok	22	Skateschuhe
+inline-skates-rollschuhe	ok	29	Inline-Skates & Rollschuhe
