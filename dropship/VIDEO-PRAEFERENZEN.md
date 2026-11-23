@@ -5,6 +5,7 @@
 
 ## Standing Rules
 1. **Stimme: seit 2.11.2026 erlaubt und erwünscht (Besitzer: «mit Hochdeutsch … gesprochene Stimme»), vorher galt «KEIN Voiceover» (12.6.2026).**
+   ⛔ **Keine Schweizer Stimme (Betreiber 23.11.2026: «kein ch stimme in zukunft»)** — keine de-CH-Stimmen (Azure/Edge `de-CH-JanNeural`, `de-CH-LeniNeural`) und keine Mundart; die alten Reel-Skripte auf `claude/luxestyle-status-tztnn1` ersetzen jede de-CH-Stimme jetzt durch `de-DE-FlorianMultilingualNeural`/`de-DE-SeraphinaMultilingualNeural`.
    Hochdeutsch (nicht Mundart), kurze Sätze (≤ 160 Zeichen, ≈ 8 s), keine Preise, Rabatte, Lieferzeiten, Bewertungen oder Versprechen.
    Stimme lokal und gratis mit Piper (`SPRECHER=…` in `dropship/reel-vorlage/reel_karte.sh`, Vorgabe `de_DE-thorsten-high`, Alternative `de_DE-ramona-low`);
    die Musik duckt unter der Stimme. On-screen-Text bleibt zusätzlich. Ältere Marken-Videos (`*-text.mp4`) bleiben stumm.
