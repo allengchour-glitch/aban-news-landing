@@ -41248,3 +41248,5 @@ gid://shopify/Product/15450836631937	keine-cj-referenz
 gid://shopify/Product/15430238634369	keine-cj-referenz
 gid://shopify/Product/15448887001473	cj-abgekuendigt-pruefen
 gid://shopify/Product/15450836631937	keine-cj-referenz
+gid://shopify/Product/16661098398087	CHF 23.19	2 Varianten	Wasserwellen-Projektor mit Sternenlicht, Bluetooth
+gid://shopify/Product/16672778289543	keine-cj-referenz

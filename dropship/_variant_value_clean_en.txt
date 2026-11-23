@@ -21859,3 +21859,14 @@ gid://shopify/Product/15460190421377	Menge	gid://shopify/ProductOptionValue/5884
 gid://shopify/Product/15460190421377	Menge	gid://shopify/ProductOptionValue/58848387957127	2PCS	2 Stück	2026-11-23T16:44Z
 gid://shopify/Product/15463728218497	Menge	gid://shopify/ProductOptionValue/59070456365447	1PCS	1 Stück	2026-11-23T16:46Z
 gid://shopify/Product/15463728218497	Menge	gid://shopify/ProductOptionValue/59070456398215	2PCS	2 Stück	2026-11-23T16:46Z
+gid://shopify/Product/15466023125377	Farbe	gid://shopify/ProductOptionValue/58756432068999	Matte Schwarz	Schwarz matt	2026-11-23T16:47Z
+gid://shopify/Product/15466023125377	Farbe	gid://shopify/ProductOptionValue/58756432101767	Khaki Beige	Khaki-Beige	2026-11-23T16:47Z
+gid://shopify/Product/15468317016449	Grösse	gid://shopify/ProductOptionValue/58741403779463	Small Size 50CM Long	Klein 50 cm lang	2026-11-23T16:48Z
+gid://shopify/Product/15468317016449	Grösse	gid://shopify/ProductOptionValue/58741403812231	Medium 58CM Long	Mittel 58 cm lang	2026-11-23T16:48Z
+gid://shopify/Product/15468317016449	Grösse	gid://shopify/ProductOptionValue/58741403844999	Large Size 67CM Long	Gross 67 cm lang	2026-11-23T16:48Z
+gid://shopify/Product/15468318359937	Modell	gid://shopify/ProductOptionValue/58597848056199	Type C 140W	USB-C 140 W	2026-11-23T16:49Z
+gid://shopify/Product/15468732842369	Farbe	gid://shopify/ProductOptionValue/58597944492423	Gun Black Schwarz	Gunmetal-Schwarz	2026-11-23T16:49Z
+gid://shopify/Product/15468732842369	Farbe	gid://shopify/ProductOptionValue/58597944525191	Gun Black Weiss	Gunmetal-Weiss	2026-11-23T16:49Z
+gid://shopify/Product/15468732842369	Farbe	gid://shopify/ProductOptionValue/58597944557959	Gun Black Rot	Gunmetal-Rot	2026-11-23T16:49Z
+gid://shopify/Product/15468732842369	Farbe	gid://shopify/ProductOptionValue/58597944590727	Gun Black Eisblau	Gunmetal-Eisblau	2026-11-23T16:49Z
+gid://shopify/Product/15468732842369	Farbe	gid://shopify/ProductOptionValue/58597944623495	Gun Black Tiefblau	Gunmetal-Tiefblau	2026-11-23T16:49Z
