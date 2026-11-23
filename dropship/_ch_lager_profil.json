@@ -1,5 +1,5 @@
 {
- "stand": "2026-10-23T19:10Z",
+ "stand": "2026-11-23T22:37Z",
  "profil": "gid://shopify/DeliveryProfile/152621121927",
  "stufe": 2,
  "stufe_seit": "2026-10-14",
@@ -7,15 +7,12 @@
  "tarife_ok": true,
  "befunde": [],
  "schwelle_befunde": [],
- "halloween_vorrang": 30,
+ "halloween_vorrang": 27,
  "stichprobe_handles": [
-  "edelweisshemd-langarm-geknopft-fgsshb2899",
-  "pluschjacke-langes-flor-fgssor97992",
   "pluschmutze-panda-fga90193",
   "pluschmutze-hase-fga90196",
   "mutze-affe-plusch-fga90202",
   "pluschjacke-lang-langes-flor-fgssor9985",
-  "pluschmutze-pingu-fga90192",
   "pluschmutze-eule-fga90203",
   "gotischer-kopfschmuck-schwarz-fgack13679",
   "plusch-angler-hut-turkisblau-fga965106",
@@ -39,18 +36,21 @@
   "einhornskelett-18-cm-fga910992",
   "spinnennetz-weiss-fga95405",
   "aufblasbarer-leuchtender-fga975036",
-  "tasche-klein-aus-kunstfell-ftck14064"
+  "tasche-klein-aus-kunstfell-ftck14064",
+  "wc-papier-rosa-4-rollen-red-label-3-lagig-ft25449rs",
+  "american-football-12x20-cm-ftbo01409",
+  "mini-saugnapfschild-mit-spruch-ftig001ms00964"
  ],
- "soll_produkte": 1624,
- "im_profil_varianten": 3245,
+ "soll_produkte": 1647,
+ "im_profil_varianten": 3303,
  "fehlt_varianten": 0,
  "falsch_varianten": 0,
  "google_produkte_im_soll": 31,
- "ch_lager_aktiv": 2371,
- "zugeordnet": 0,
+ "ch_lager_aktiv": 2323,
+ "zugeordnet": 58,
  "geloest": 0,
  "marke": {
-  "gesetzt": 0,
+  "gesetzt": 58,
   "entfernt": 0,
   "offen": 0
  }
