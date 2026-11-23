@@ -545,3 +545,6 @@ slug:perucke-valentina-neon-orange-fga974975
 slug:bildreel-zylinder-rot-deluxe-fga925708
 pid:15469984448897
 slug:zylinder-rot-deluxe-fga925708
+slug:bildreel-schamanen-maske-mit-horner-fga908481
+pid:15469985694081
+slug:schamanen-maske-mit-horner-fga908481
