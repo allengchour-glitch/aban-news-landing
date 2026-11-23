@@ -21748,3 +21748,11 @@ gid://shopify/Product/15445799436673	Ausführung	gid://shopify/ProductOptionValu
 gid://shopify/Product/15445799436673	Ausführung	gid://shopify/ProductOptionValue/12308490322305	Champagne, 20 Stück, Mit Pinselbehälter	Champagner, 20 Stück, Mit Pinselbehälter	2026-11-23T11:22Z
 gid://shopify/Product/15447910678913	Farbe	gid://shopify/ProductOptionValue/58593820344711	Transparent, grasgrün	Transparent, Grasgrün	2026-11-23T14:09Z
 gid://shopify/Product/15447910678913	Farbe	gid://shopify/ProductOptionValue/58593820606855	Set1	Set 1	2026-11-23T14:09Z
+gid://shopify/Product/15447952195969	Farbe	gid://shopify/ProductOptionValue/12018915705217	Kürbisfarbe, KID 80	Kürbisfarbe, Kinder 80	2026-11-23T14:10Z
+gid://shopify/Product/15447952195969	Farbe	gid://shopify/ProductOptionValue/12018915737985	Kürbisfarbe, KID 90	Kürbisfarbe, Kinder 90	2026-11-23T14:10Z
+gid://shopify/Product/15447952195969	Farbe	gid://shopify/ProductOptionValue/12018915770753	Kürbisfarbe, KID 100	Kürbisfarbe, Kinder 100	2026-11-23T14:10Z
+gid://shopify/Product/15447952195969	Farbe	gid://shopify/ProductOptionValue/12018915803521	Kürbisfarbe, KID 110	Kürbisfarbe, Kinder 110	2026-11-23T14:10Z
+gid://shopify/Product/15447952195969	Farbe	gid://shopify/ProductOptionValue/12018915836289	Kürbisfarbe, KID 120	Kürbisfarbe, Kinder 120	2026-11-23T14:10Z
+gid://shopify/Product/15447952195969	Farbe	gid://shopify/ProductOptionValue/12018915869057	Kürbisfarbe, KID 130	Kürbisfarbe, Kinder 130	2026-11-23T14:10Z
+gid://shopify/Product/15447952195969	Farbe	gid://shopify/ProductOptionValue/12018915901825	Kürbisfarbe, KID 140	Kürbisfarbe, Kinder 140	2026-11-23T14:10Z
+gid://shopify/Product/15447952195969	Farbe	gid://shopify/ProductOptionValue/12018915934593	Kürbisfarbe, KID 150	Kürbisfarbe, Kinder 150	2026-11-23T14:10Z
