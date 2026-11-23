@@ -1088,3 +1088,11 @@ canvas-canvas	ok	29	Canvas-Rucksäcke
 canvas-retro	ok	29	Retro- & Vintage-Rucksäcke
 canvas-laptop	ok	28	Canvas-Rucksäcke für Laptop & Business
 canvas-reise	ok	29	Canvas-Reiserucksäcke
+canvas-herren	ok	29	Canvas-Rucksäcke für Herren
+usb-lade-rucksaecke	ok	29	Rucksäcke mit Ladefunktion
+usb-business	ok	29	USB-Rucksäcke für Business & Laptop
+usb-wasserdicht	ok	21	Wasserdichte USB-Rucksäcke
+wasserdichte-rucksaecke	ok	29	Wasserdichte Rucksäcke
+wd-business	ok	29	Wasserdichte Business-Rucksäcke
+wd-outdoor	ok	29	Wasserdichte Outdoor-Rucksäcke
+wd-reise	ok	27	Wasserdichte Rucksäcke für Reisen
