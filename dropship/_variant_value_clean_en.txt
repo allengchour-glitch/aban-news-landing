@@ -21870,3 +21870,194 @@ gid://shopify/Product/15468732842369	Farbe	gid://shopify/ProductOptionValue/5859
 gid://shopify/Product/15468732842369	Farbe	gid://shopify/ProductOptionValue/58597944557959	Gun Black Rot	Gunmetal-Rot	2026-11-23T16:49Z
 gid://shopify/Product/15468732842369	Farbe	gid://shopify/ProductOptionValue/58597944590727	Gun Black Eisblau	Gunmetal-Eisblau	2026-11-23T16:49Z
 gid://shopify/Product/15468732842369	Farbe	gid://shopify/ProductOptionValue/58597944623495	Gun Black Tiefblau	Gunmetal-Tiefblau	2026-11-23T16:49Z
+gid://shopify/Product/15472377823617	Farbe	gid://shopify/ProductOptionValue/58677587739015	Set1	Set 1	2026-11-23T16:52Z
+gid://shopify/Product/15472377823617	Farbe	gid://shopify/ProductOptionValue/58677587771783	Set2	Set 2	2026-11-23T16:52Z
+gid://shopify/Product/15472377823617	Farbe	gid://shopify/ProductOptionValue/58677587804551	Set3	Set 3	2026-11-23T16:52Z
+gid://shopify/Product/15472377823617	Farbe	gid://shopify/ProductOptionValue/58677587837319	Set4	Set 4	2026-11-23T16:52Z
+gid://shopify/Product/15472377823617	Farbe	gid://shopify/ProductOptionValue/58677587870087	Set5	Set 5	2026-11-23T16:52Z
+gid://shopify/Product/15478610428289	Grösse	gid://shopify/ProductOptionValue/58597548884359	8MM	8 mm	2026-11-23T16:53Z
+gid://shopify/Product/15478610428289	Grösse	gid://shopify/ProductOptionValue/58597548917127	9MM	9 mm	2026-11-23T16:53Z
+gid://shopify/Product/15478610428289	Grösse	gid://shopify/ProductOptionValue/58597548949895	10MM	10 mm	2026-11-23T16:53Z
+gid://shopify/Product/15478610428289	Grösse	gid://shopify/ProductOptionValue/58597548982663	11MM	11 mm	2026-11-23T16:53Z
+gid://shopify/Product/15478610428289	Grösse	gid://shopify/ProductOptionValue/58597549015431	12MM	12 mm	2026-11-23T16:53Z
+gid://shopify/Product/15478610428289	Grösse	gid://shopify/ProductOptionValue/58597549048199	13MM	13 mm	2026-11-23T16:53Z
+gid://shopify/Product/15478610428289	Grösse	gid://shopify/ProductOptionValue/58597549080967	14MM	14 mm	2026-11-23T16:53Z
+gid://shopify/Product/15478610428289	Grösse	gid://shopify/ProductOptionValue/58597549113735	15MM	15 mm	2026-11-23T16:53Z
+gid://shopify/Product/15478613213569	Grösse	gid://shopify/ProductOptionValue/58799721218439	1.2m flat sheet	1.2 m Bettlaken	2026-11-23T16:53Z
+gid://shopify/Product/15478613213569	Grösse	gid://shopify/ProductOptionValue/58799721251207	1.5m flat sheet	1.5 m Bettlaken	2026-11-23T16:53Z
+gid://shopify/Product/15478613213569	Grösse	gid://shopify/ProductOptionValue/58799721283975	1.8m flat sheet	1.8 m Bettlaken	2026-11-23T16:53Z
+gid://shopify/Product/15478613213569	Grösse	gid://shopify/ProductOptionValue/58799721316743	2.0m fitted sheet	2.0 m Spannbettlaken	2026-11-23T16:53Z
+gid://shopify/Product/15478613213569	Grösse	gid://shopify/ProductOptionValue/58799721349511	1.5m fitted sheet	1.5 m Spannbettlaken	2026-11-23T16:53Z
+gid://shopify/Product/15478613213569	Grösse	gid://shopify/ProductOptionValue/58799721382279	1.8m fitted sheet	1.8 m Spannbettlaken	2026-11-23T16:53Z
+gid://shopify/Product/15478653419905	Abmessung	gid://shopify/ProductOptionValue/58848322355591	Matte Black	Mattschwarz	2026-11-23T16:53Z
+gid://shopify/Product/15478653419905	Abmessung	gid://shopify/ProductOptionValue/58848322388359	Matte White	Mattweiss	2026-11-23T16:53Z
+gid://shopify/Product/15479074226561	Farbe	gid://shopify/ProductOptionValue/58642198036871	3133 Transparent Grün Herren	3133 Transparent-Grün Herren	2026-11-23T16:53Z
+gid://shopify/Product/15479074226561	Farbe	gid://shopify/ProductOptionValue/58642198659463	942 Weiss Roségold Damen	942 Weiss-Roségold Damen	2026-11-23T16:53Z
+gid://shopify/Product/15479378182529	Farbe	gid://shopify/ProductOptionValue/58677416526215	Retro Rot	Retro-Rot	2026-11-23T16:53Z
+gid://shopify/Product/15479419404673	Farbe	gid://shopify/ProductOptionValue/58756671603079	Schwarz mit Plug	Schwarz mit Stecker	2026-11-23T16:53Z
+gid://shopify/Product/15479486808449	Modell	gid://shopify/ProductOptionValue/58642427511175	Set1	Set 1	2026-11-23T16:53Z
+gid://shopify/Product/15479486808449	Modell	gid://shopify/ProductOptionValue/58642427543943	Set2	Set 2	2026-11-23T16:53Z
+gid://shopify/Product/15479486808449	Modell	gid://shopify/ProductOptionValue/58642427576711	Set3	Set 3	2026-11-23T16:53Z
+gid://shopify/Product/15479486808449	Modell	gid://shopify/ProductOptionValue/58642427609479	Set4	Set 4	2026-11-23T16:53Z
+gid://shopify/Product/15479486808449	Modell	gid://shopify/ProductOptionValue/58642427642247	Set5	Set 5	2026-11-23T16:53Z
+gid://shopify/Product/15479486808449	Modell	gid://shopify/ProductOptionValue/58642427675015	Set6	Set 6	2026-11-23T16:53Z
+gid://shopify/Product/15479486808449	Modell	gid://shopify/ProductOptionValue/58642427707783	Set7	Set 7	2026-11-23T16:53Z
+gid://shopify/Product/15479486808449	Modell	gid://shopify/ProductOptionValue/58642427740551	Set8	Set 8	2026-11-23T16:53Z
+gid://shopify/Product/15480631591297	Farbe	gid://shopify/ProductOptionValue/58756420010375	Apple-Interface-Version	Apple-Anschluss-Version	2026-11-23T16:53Z
+gid://shopify/Product/15480830624129	Farbe	gid://shopify/ProductOptionValue/12451087876481	Gunmetal	Anthrazit	2026-11-23T16:53Z
+gid://shopify/Product/15480833114497	Grösse	gid://shopify/ProductOptionValue/59558092079495	Rechargeable version	Akku-Version	2026-11-23T16:53Z
+gid://shopify/Product/15481383682433	Modell	gid://shopify/ProductOptionValue/58677023310215	Typec	USB-C	2026-11-23T16:53Z
+gid://shopify/Product/15484500607361	Ausführung	gid://shopify/ProductOptionValue/58676875133319	Set1	Set 1	2026-11-23T16:54Z
+gid://shopify/Product/15484500607361	Ausführung	gid://shopify/ProductOptionValue/58676875166087	Set2	Set 2	2026-11-23T16:54Z
+gid://shopify/Product/15485454778753	Ausführung	gid://shopify/ProductOptionValue/58676870447495	001SY23PCS	001SY · 23 Stück	2026-11-23T16:54Z
+gid://shopify/Product/15485454778753	Ausführung	gid://shopify/ProductOptionValue/58676870480263	002SY21PCS	002SY · 21 Stück	2026-11-23T16:54Z
+gid://shopify/Product/15485454778753	Ausführung	gid://shopify/ProductOptionValue/58676870513031	003SY25PCS	003SY · 25 Stück	2026-11-23T16:54Z
+gid://shopify/Product/15485454778753	Ausführung	gid://shopify/ProductOptionValue/58676870545799	004SY18PCS	004SY · 18 Stück	2026-11-23T16:54Z
+gid://shopify/Product/15485454778753	Ausführung	gid://shopify/ProductOptionValue/58676870578567	005SY20PCS	005SY · 20 Stück	2026-11-23T16:54Z
+gid://shopify/Product/15485454778753	Ausführung	gid://shopify/ProductOptionValue/58676870611335	006SY20PCS	006SY · 20 Stück	2026-11-23T16:54Z
+gid://shopify/Product/15491507487105	Abmessung	gid://shopify/ProductOptionValue/58624437092743	1 Birthstone	1 Geburtsstein	2026-11-23T16:54Z
+gid://shopify/Product/15491507487105	Abmessung	gid://shopify/ProductOptionValue/58624437125511	2 Birthstone	2 Geburtsstein	2026-11-23T16:54Z
+gid://shopify/Product/15491507487105	Abmessung	gid://shopify/ProductOptionValue/58624437158279	3 Birthstone	3 Geburtsstein	2026-11-23T16:54Z
+gid://shopify/Product/15491507487105	Abmessung	gid://shopify/ProductOptionValue/58624437191047	4 Birthstone	4 Geburtsstein	2026-11-23T16:54Z
+gid://shopify/Product/15491507487105	Abmessung	gid://shopify/ProductOptionValue/58624437223815	5 Birthstone	5 Geburtsstein	2026-11-23T16:54Z
+gid://shopify/Product/15491507487105	Abmessung	gid://shopify/ProductOptionValue/58624437256583	6 Birthstone	6 Geburtsstein	2026-11-23T16:54Z
+gid://shopify/Product/15491507487105	Abmessung	gid://shopify/ProductOptionValue/58624437289351	7 Birthstone	7 Geburtsstein	2026-11-23T16:54Z
+gid://shopify/Product/15491767894401	Farbe	gid://shopify/ProductOptionValue/58741307244935	Apricot / Gelb	Aprikose / Gelb	2026-11-23T16:54Z
+gid://shopify/Product/15493059182977	Farbe	gid://shopify/ProductOptionValue/58655649988999	Mint / Grün	Mintgrün / Grün	2026-11-23T16:54Z
+gid://shopify/Product/15493152932225	Grösse	gid://shopify/ProductOptionValue/58655643206023	45x45cm pillowcase	45x45 cm Kissenbezug	2026-11-23T16:54Z
+gid://shopify/Product/15493189927297	Ausführung	gid://shopify/ProductOptionValue/59558091030919	3PCS	3 Stück	2026-11-23T16:54Z
+gid://shopify/Product/15493189927297	Ausführung	gid://shopify/ProductOptionValue/59558091063687	4pcs	4 Stück	2026-11-23T16:54Z
+gid://shopify/Product/15493243339137	Grösse	gid://shopify/ProductOptionValue/58655661490567	150x100cm thick	150x100 cm dick	2026-11-23T16:54Z
+gid://shopify/Product/15493243339137	Grösse	gid://shopify/ProductOptionValue/58655661556103	150x130cm thick	150x130 cm dick	2026-11-23T16:54Z
+gid://shopify/Product/15493243339137	Grösse	gid://shopify/ProductOptionValue/58655661588871	150x230cm thick	150x230 cm dick	2026-11-23T16:54Z
+gid://shopify/Product/15493243535745	Grösse	gid://shopify/ProductOptionValue/58655633310087	150x230cm thick	150x230 cm dick	2026-11-23T16:54Z
+gid://shopify/Product/15493243535745	Grösse	gid://shopify/ProductOptionValue/58655633342855	150x130cm thick	150x130 cm dick	2026-11-23T16:54Z
+gid://shopify/Product/15493243535745	Grösse	gid://shopify/ProductOptionValue/58655633375623	150x100cm thick	150x100 cm dick	2026-11-23T16:54Z
+gid://shopify/Product/15493258936705	Ausführung	gid://shopify/ProductOptionValue/58756469227911	English	Englisch	2026-11-23T16:54Z
+gid://shopify/Product/15493350228353	Farbe	gid://shopify/ProductOptionValue/58655661785479	Schwarz / apricot	Schwarz / Aprikose	2026-11-23T16:54Z
+gid://shopify/Product/15493476581761	Farbe	gid://shopify/ProductOptionValue/58655633801607	Creme / apricot	Creme / Aprikose	2026-11-23T16:54Z
+gid://shopify/Product/15493479006593	Farbe	gid://shopify/ProductOptionValue/58746250887559	Matt Schwarz	Schwarz matt	2026-11-23T16:54Z
+gid://shopify/Product/15493575442817	Farbe	gid://shopify/ProductOptionValue/58758041108871	8626 Classic Schwarz	8626 Klassisches Schwarz	2026-11-23T16:54Z
+gid://shopify/Product/15493575442817	Farbe	gid://shopify/ProductOptionValue/58758041207175	8626 Plaid Schwarz	8626 Schwarz kariert	2026-11-23T16:54Z
+gid://shopify/Product/15493620269441	Farbe	gid://shopify/ProductOptionValue/59070451777927	Rosa Set2	Rosa Set 2	2026-11-23T16:55Z
+gid://shopify/Product/15493705499009	Farbe	gid://shopify/ProductOptionValue/58848118014343	SET1	Set 1	2026-11-23T16:55Z
+gid://shopify/Product/15493705499009	Farbe	gid://shopify/ProductOptionValue/58848118047111	SET2	Set 2	2026-11-23T16:55Z
+gid://shopify/Product/15493705499009	Farbe	gid://shopify/ProductOptionValue/58848118079879	SET3	Set 3	2026-11-23T16:55Z
+gid://shopify/Product/15493705499009	Farbe	gid://shopify/ProductOptionValue/58848118112647	SET4	Set 4	2026-11-23T16:55Z
+gid://shopify/Product/15493705499009	Farbe	gid://shopify/ProductOptionValue/58848118145415	SET5	Set 5	2026-11-23T16:55Z
+gid://shopify/Product/15493778014593	Grösse	gid://shopify/ProductOptionValue/58655621349767	150x100cm thick	150x100 cm dick	2026-11-23T16:55Z
+gid://shopify/Product/15493778014593	Grösse	gid://shopify/ProductOptionValue/58655621382535	A 150x100cm	A 150x100 cm	2026-11-23T16:55Z
+gid://shopify/Product/15493778014593	Grösse	gid://shopify/ProductOptionValue/58655621415303	A 150x100cm thick	A 150x100 cm dick	2026-11-23T16:55Z
+gid://shopify/Product/15493778014593	Grösse	gid://shopify/ProductOptionValue/58655621448071	A 150x130cm	A 150x130 cm	2026-11-23T16:55Z
+gid://shopify/Product/15493778014593	Grösse	gid://shopify/ProductOptionValue/58655621480839	A 150x130cm thick	A 150x130 cm dick	2026-11-23T16:55Z
+gid://shopify/Product/15493778014593	Grösse	gid://shopify/ProductOptionValue/58655621513607	A 150x230cm	A 150x230 cm	2026-11-23T16:55Z
+gid://shopify/Product/15493778014593	Grösse	gid://shopify/ProductOptionValue/58655621546375	A 150x230cm thick	A 150x230 cm dick	2026-11-23T16:55Z
+gid://shopify/Product/15493778014593	Grösse	gid://shopify/ProductOptionValue/58655621677447	150x230cm thick	150x230 cm dick	2026-11-23T16:55Z
+gid://shopify/Product/15493778014593	Grösse	gid://shopify/ProductOptionValue/58655621710215	150x130cm thick	150x130 cm dick	2026-11-23T16:55Z
+gid://shopify/Product/15493778112897	Grösse	gid://shopify/ProductOptionValue/58655650742663	150x130cm thick	150x130 cm dick	2026-11-23T16:55Z
+gid://shopify/Product/15493778112897	Grösse	gid://shopify/ProductOptionValue/58655650840967	150x100cm thick	150x100 cm dick	2026-11-23T16:55Z
+gid://shopify/Product/15493778112897	Grösse	gid://shopify/ProductOptionValue/58655650873735	150x230cm thick	150x230 cm dick	2026-11-23T16:55Z
+gid://shopify/Product/15493778276737	Grösse	gid://shopify/ProductOptionValue/58799709421959	1.2m 3pcs	1.2 m · 3 Stück	2026-11-23T16:55Z
+gid://shopify/Product/15493778276737	Grösse	gid://shopify/ProductOptionValue/58799709454727	1.5m 4pcs	1.5 m · 4 Stück	2026-11-23T16:55Z
+gid://shopify/Product/15493778276737	Grösse	gid://shopify/ProductOptionValue/58799709487495	1.8m 4pcs	1.8 m · 4 Stück	2026-11-23T16:55Z
+gid://shopify/Product/15493778276737	Grösse	gid://shopify/ProductOptionValue/58799709520263	2.0m 4pcs	2.0 m · 4 Stück	2026-11-23T16:55Z
+gid://shopify/Product/15493778276737	Grösse	gid://shopify/ProductOptionValue/58799709553031	2.2m  4pcs	2.2 m · 4 Stück	2026-11-23T16:55Z
+gid://shopify/Product/15493829198209	Farbe	gid://shopify/ProductOptionValue/58642473648519	Golden Und Schwarz	Gold Und Schwarz	2026-11-23T16:55Z
+gid://shopify/Product/15493835653505	Grösse	gid://shopify/ProductOptionValue/58655613288839	Double	Doppelt	2026-11-23T16:55Z
+gid://shopify/Product/15493836964225	Grösse	gid://shopify/ProductOptionValue/58848366133639	Pillow	Kissen	2026-11-23T16:55Z
+gid://shopify/Product/15493836964225	Grösse	gid://shopify/ProductOptionValue/58848366166407	Pillowcase	Kissenbezug	2026-11-23T16:55Z
+gid://shopify/Product/15493850136961	Grösse	gid://shopify/ProductOptionValue/58597463327111	15 pieces	15 Stück	2026-11-23T16:55Z
+gid://shopify/Product/15493850136961	Grösse	gid://shopify/ProductOptionValue/58597463359879	13 pieces	13 Stück	2026-11-23T16:55Z
+gid://shopify/Product/15493850136961	Grösse	gid://shopify/ProductOptionValue/58597463392647	12 pieces	12 Stück	2026-11-23T16:55Z
+gid://shopify/Product/15493855117697	Grösse	gid://shopify/ProductOptionValue/58655602377095	45x45cm Pillowcase	45x45 cm Kissenbezug	2026-11-23T16:55Z
+gid://shopify/Product/15493855117697	Grösse	gid://shopify/ProductOptionValue/58655602409863	45x45cm Pillow	45x45 cm Kissen	2026-11-23T16:55Z
+gid://shopify/Product/15493911544193	Grösse	gid://shopify/ProductOptionValue/58848375406983	45X45cm Pillowcase	45x45 cm Kissenbezug	2026-11-23T16:55Z
+gid://shopify/Product/15493911544193	Grösse	gid://shopify/ProductOptionValue/58848375439751	45X45cm Pillow	45x45 cm Kissen	2026-11-23T16:55Z
+gid://shopify/Product/15493911544193	Grösse	gid://shopify/ProductOptionValue/58848375472519	55X55cm Pillowcase	55x55 cm Kissenbezug	2026-11-23T16:55Z
+gid://shopify/Product/15493911544193	Grösse	gid://shopify/ProductOptionValue/58848375505287	55X55cm Pillow	55x55 cm Kissen	2026-11-23T16:55Z
+gid://shopify/Product/15493911544193	Grösse	gid://shopify/ProductOptionValue/58848375538055	30X50cm Pillowcase	30x50 cm Kissenbezug	2026-11-23T16:55Z
+gid://shopify/Product/15493911544193	Grösse	gid://shopify/ProductOptionValue/58848375570823	30X50cm Pillow	30x50 cm Kissen	2026-11-23T16:55Z
+gid://shopify/Product/15493927666049	Farbe	gid://shopify/ProductOptionValue/58655573901703	12 Pieces Khaki	12 Stück Khaki	2026-11-23T16:55Z
+gid://shopify/Product/15493927666049	Farbe	gid://shopify/ProductOptionValue/58655573967239	12 Pieces Pink	12 Stück Pink	2026-11-23T16:55Z
+gid://shopify/Product/15494700827009	Ausführung	gid://shopify/ProductOptionValue/58655571116423	14 In 1 Grün · 166 · Grün	14 in 1 Grün · 166 · Grün	2026-11-23T16:55Z
+gid://shopify/Product/15495013892481	Farbe	gid://shopify/ProductOptionValue/58642462835079	Golden Weiss	Gold-Weiss	2026-11-23T16:55Z
+gid://shopify/Product/15495013892481	Farbe	gid://shopify/ProductOptionValue/58642462867847	Golden Grau	Gold-Grau	2026-11-23T16:55Z
+gid://shopify/Product/15495025656193	Farbe	gid://shopify/ProductOptionValue/58642411225479	C718 Golden Grün	C718 Gold-Grün	2026-11-23T16:55Z
+gid://shopify/Product/15495025656193	Farbe	gid://shopify/ProductOptionValue/58642411258247	C718 Gold Schwarz	C718 Gold-Schwarz	2026-11-23T16:55Z
+gid://shopify/Product/15495048757633	Modell	gid://shopify/ProductOptionValue/58929477681543	TYPEC und Apple	USB-C und Apple	2026-11-23T16:55Z
+gid://shopify/Product/15495048757633	Modell	gid://shopify/ProductOptionValue/58929477714311	TYPEC und TYPEC	USB-C und USB-C	2026-11-23T16:55Z
+gid://shopify/Product/15495067697537	Grösse	gid://shopify/ProductOptionValue/58848062865799	45x45cm pillowcase	45x45 cm Kissenbezug	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871494705543	Set1	Set 1	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871494738311	Set2	Set 2	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871494771079	Set3	Set 3	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871494803847	Set4	Set 4	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871494836615	Set5	Set 5	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871494869383	Set6	Set 6	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871494902151	Set7	Set 7	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871494934919	Set8	Set 8	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871494967687	Set9	Set 9	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871495000455	Set10	Set 10	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871495033223	Set11	Set 11	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871495065991	Set12	Set 12	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871495098759	Set13	Set 13	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871495131527	Set14	Set 14	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871495164295	Set15	Set 15	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871495197063	Set16	Set 16	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871495229831	Set17	Set 17	2026-11-23T16:55Z
+gid://shopify/Product/15495106298241	Farbe	gid://shopify/ProductOptionValue/58871495262599	Set18	Set 18	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339580666241	Weiss, 39 Woman	Weiss, 39 Damen	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339580699009	Weiss, 40 Woman	Weiss, 40 Damen	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339580731777	Weiss, 39 Man	Weiss, 39 Herren	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339580764545	Weiss, 40 Man	Weiss, 40 Herren	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339580830081	Schwarz, 39 Woman	Schwarz, 39 Damen	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339580862849	Schwarz, 40 Woman	Schwarz, 40 Damen	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339580895617	Schwarz, 39 Man	Schwarz, 39 Herren	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339580928385	Schwarz, 40 Man	Schwarz, 40 Herren	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339580993921	Grau, 39 Woman	Grau, 39 Damen	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339581026689	Grau, 40 Woman	Grau, 40 Damen	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339581059457	Grau, 39 Man	Grau, 39 Herren	2026-11-23T16:55Z
+gid://shopify/Product/15495106331009	Farbe	gid://shopify/ProductOptionValue/12339581092225	Grau, 40 Man	Grau, 40 Herren	2026-11-23T16:55Z
+gid://shopify/Product/15495113245057	Grösse	gid://shopify/ProductOptionValue/58655578096007	45X45cm pillowcase	45x45 cm Kissenbezug	2026-11-23T16:56Z
+gid://shopify/Product/15495127925121	Modell	gid://shopify/ProductOptionValue/58655570166151	Floral	Geblümt	2026-11-23T16:56Z
+gid://shopify/Product/15495213220225	Grösse	gid://shopify/ProductOptionValue/58655508955527	Pillowcase	Kissenbezug	2026-11-23T16:56Z
+gid://shopify/Product/15495213220225	Grösse	gid://shopify/ProductOptionValue/58655508988295	Pillow	Kissen	2026-11-23T16:56Z
+gid://shopify/Product/15495213351297	Grösse	gid://shopify/ProductOptionValue/58655451545991	45x45cm Pillowcase	45x45 cm Kissenbezug	2026-11-23T16:56Z
+gid://shopify/Product/15495213351297	Grösse	gid://shopify/ProductOptionValue/58655451578759	45x45cm Pillow	45x45 cm Kissen	2026-11-23T16:56Z
+gid://shopify/Product/15495239958913	Leistung	gid://shopify/ProductOptionValue/58800227975559	Set1	Set 1	2026-11-23T16:56Z
+gid://shopify/Product/15495240778113	Farbe	gid://shopify/ProductOptionValue/58642431803783	Golden Blau	Gold-Blau	2026-11-23T16:56Z
+gid://shopify/Product/15495595819393	Grösse	gid://shopify/ProductOptionValue/58848346800519	Large Size 70x50cm	Gross 70x50 cm	2026-11-23T16:56Z
+gid://shopify/Product/15495716962689	Grösse	gid://shopify/ProductOptionValue/58766531985799	43x43cm pillowcase	43x43 cm Kissenbezug	2026-11-23T16:56Z
+gid://shopify/Product/15495716962689	Grösse	gid://shopify/ProductOptionValue/58766532051335	53x53cm pillowcase	53x53 cm Kissenbezug	2026-11-23T16:56Z
+gid://shopify/Product/15496130363777	Grösse	gid://shopify/ProductOptionValue/58655291933063	Adult	Erwachsene	2026-11-23T16:56Z
+gid://shopify/Product/15496289157505	Grösse	gid://shopify/ProductOptionValue/58655290229127	30 50cm pillowcase	30 50 cm Kissenbezug	2026-11-23T16:56Z
+gid://shopify/Product/15496307343745	Farbe	gid://shopify/ProductOptionValue/58755344466311	Camo Blau	Tarnmuster-Blau	2026-11-23T16:56Z
+gid://shopify/Product/15496307343745	Farbe	gid://shopify/ProductOptionValue/58755344695687	Camo Rot	Tarnmuster-Rot	2026-11-23T16:56Z
+gid://shopify/Product/15496325136769	Farbe	gid://shopify/ProductOptionValue/58800186392967	Set1	Set 1	2026-11-23T16:56Z
+gid://shopify/Product/15496325136769	Farbe	gid://shopify/ProductOptionValue/58800186425735	Set2	Set 2	2026-11-23T16:56Z
+gid://shopify/Product/15496325136769	Farbe	gid://shopify/ProductOptionValue/58800186458503	Set3	Set 3	2026-11-23T16:56Z
+gid://shopify/Product/15496329593217	Farbe	gid://shopify/ProductOptionValue/58848341492103	SET1	Set 1	2026-11-23T16:56Z
+gid://shopify/Product/15496329593217	Farbe	gid://shopify/ProductOptionValue/58848341524871	SET2	Set 2	2026-11-23T16:56Z
+gid://shopify/Product/15496333394305	Modell	gid://shopify/ProductOptionValue/58755346203015	TYPEC	USB-C	2026-11-23T16:56Z
+gid://shopify/Product/15496335032705	Grösse	gid://shopify/ProductOptionValue/58848046088583	Pillowcase and pillow	Kissenbezug und Kissen	2026-11-23T16:56Z
+gid://shopify/Product/15496335032705	Grösse	gid://shopify/ProductOptionValue/58848046121351	Pillowcase	Kissenbezug	2026-11-23T16:56Z
+gid://shopify/Product/15496383660417	Farbe	gid://shopify/ProductOptionValue/58799753363847	Schwarz Gold Set1	Schwarz-Gold Set 1	2026-11-23T16:56Z
+gid://shopify/Product/15496383660417	Farbe	gid://shopify/ProductOptionValue/58799753396615	Schwarz Gold Set2	Schwarz-Gold Set 2	2026-11-23T16:56Z
+gid://shopify/Product/15496383660417	Farbe	gid://shopify/ProductOptionValue/58799753429383	Schwarz Gold Set3	Schwarz-Gold Set 3	2026-11-23T16:56Z
+gid://shopify/Product/15496383660417	Farbe	gid://shopify/ProductOptionValue/58799753462151	Schwarz Gold Set4	Schwarz-Gold Set 4	2026-11-23T16:56Z
+gid://shopify/Product/15496410399105	Grösse	gid://shopify/ProductOptionValue/58655246909831	48x74cm Pillowcase 1pc	48x74 cm Kissenbezug · 1 Stück	2026-11-23T16:56Z
+gid://shopify/Product/15496410399105	Grösse	gid://shopify/ProductOptionValue/58655246942599	48x74cm Pillowcase 2PCs	48x74 cm Kissenbezug · 2 Stück	2026-11-23T16:56Z
+gid://shopify/Product/15496529346945	Grösse	gid://shopify/ProductOptionValue/58741343224199	Gray 10 Pieces	Grau · 10 Stück	2026-11-23T16:56Z
+gid://shopify/Product/15496529346945	Grösse	gid://shopify/ProductOptionValue/58741343256967	Blue 10 Pieces	Blau · 10 Stück	2026-11-23T16:56Z
+gid://shopify/Product/15496529346945	Grösse	gid://shopify/ProductOptionValue/58741343322503	Gray 11 Pieces	Grau · 11 Stück	2026-11-23T16:56Z
+gid://shopify/Product/15496529346945	Grösse	gid://shopify/ProductOptionValue/58741343355271	Blue 11 Pieces	Blau · 11 Stück	2026-11-23T16:56Z
+gid://shopify/Product/15496981315969	Farbe	gid://shopify/ProductOptionValue/59486327964039	2500 mAh	2500 mAh	2026-11-23T16:57Z
+gid://shopify/Product/15496981315969	Farbe	gid://shopify/ProductOptionValue/59486327996807	5000 mAh	5000 mAh	2026-11-23T16:57Z
+gid://shopify/Product/15497213116801	Farbe	gid://shopify/ProductOptionValue/58755349053831	Matte Schwarz	Schwarz matt	2026-11-23T16:57Z
+gid://shopify/Product/15497425092993	Farbe	gid://shopify/ProductOptionValue/58799668822407	Set1	Set 1	2026-11-23T16:57Z
+gid://shopify/Product/15497425092993	Farbe	gid://shopify/ProductOptionValue/58799668855175	Set2	Set 2	2026-11-23T16:57Z
+gid://shopify/Product/15497425092993	Farbe	gid://shopify/ProductOptionValue/58799668887943	Set3	Set 3	2026-11-23T16:57Z
+gid://shopify/Product/15497431253377	Farbe	gid://shopify/ProductOptionValue/58800194486663	Set1	Set 1	2026-11-23T16:57Z
+gid://shopify/Product/15497431318913	Farbe	gid://shopify/ProductOptionValue/58800213950855	Set1	Set 1	2026-11-23T16:57Z
+gid://shopify/Product/15497432859009	Farbe	gid://shopify/ProductOptionValue/58642311446919	Room Gold und Schwarz Herren	Roségold und Schwarz Herren	2026-11-23T16:57Z
+gid://shopify/Product/15497437610369	Menge	gid://shopify/ProductOptionValue/58756429480327	1pc	1 Stück	2026-11-23T16:57Z
+gid://shopify/Product/15497442296193	Menge	gid://shopify/ProductOptionValue/58655121113479	1PC	1 Stück	2026-11-23T16:57Z
