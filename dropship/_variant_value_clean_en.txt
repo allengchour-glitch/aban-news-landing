@@ -22218,3 +22218,10 @@ gid://shopify/Product/15507831325057	Ausführung	gid://shopify/ProductOptionValu
 gid://shopify/Product/15508405223809	Farbe	gid://shopify/ProductOptionValue/58709540897159	Schwarz 2PCS	Schwarz · 2 Stück	2026-11-23T17:39Z
 gid://shopify/Product/15508412760449	Grösse	gid://shopify/ProductOptionValue/58766542176647	45x45cm pillowcase	45x45 cm Kissenbezug	2026-11-23T17:39Z
 gid://shopify/Product/15508547633537	Farbe	gid://shopify/ProductOptionValue/58800014492039	Schwarz Und Multicolor	Schwarz Und Bunt	2026-11-23T17:39Z
+gid://shopify/Product/15509368242561	Grösse	gid://shopify/ProductOptionValue/58766248870279	150x230cm thick	150x230 cm dick	2026-11-23T17:40Z
+gid://shopify/Product/15509368242561	Grösse	gid://shopify/ProductOptionValue/58766248903047	150x100cm thick	150x100 cm dick	2026-11-23T17:40Z
+gid://shopify/Product/15509368242561	Grösse	gid://shopify/ProductOptionValue/58766248968583	150x130cm thick	150x130 cm dick	2026-11-23T17:40Z
+gid://shopify/Product/15509368668545	Modell	gid://shopify/ProductOptionValue/58799813689735	Set1	Set 1	2026-11-23T17:41Z
+gid://shopify/Product/15509368799617	Grösse	gid://shopify/ProductOptionValue/58766268367239	150x230cm thick	150x230 cm dick	2026-11-23T17:41Z
+gid://shopify/Product/15509368799617	Grösse	gid://shopify/ProductOptionValue/58766268432775	150x100cm thick	150x100 cm dick	2026-11-23T17:41Z
+gid://shopify/Product/15509368799617	Grösse	gid://shopify/ProductOptionValue/58766268465543	150x130cm thick	150x130 cm dick	2026-11-23T17:41Z
