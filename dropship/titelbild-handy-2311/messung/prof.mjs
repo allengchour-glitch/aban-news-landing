@@ -1,0 +1,15 @@
+import { startArgumente, PLAYWRIGHT } from '/home/user/aban-news-landing/tools/browser.mjs';
+import { writeFileSync } from 'node:fs';
+const { chromium, devices } = await import(PLAYWRIGHT);
+const url = process.argv[2], out = process.argv[3];
+const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome', args: startArgumente() });
+const ctx = await browser.newContext({ ...devices['Pixel 5'], locale: 'de-CH' });
+const p = await ctx.newPage(); const c = await ctx.newCDPSession(p);
+await c.send('Network.enable'); await c.send('Network.setCacheDisabled', { cacheDisabled: true });
+await c.send('Network.emulateNetworkConditions', { offline: false, latency: 60, downloadThroughput: 9e6 / 8, uploadThroughput: 1.5e6 / 8 });
+await c.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+await c.send('Profiler.enable'); await c.send('Profiler.setSamplingInterval', { interval: 500 }); await c.send('Profiler.start');
+await p.goto(url + '?cb=' + Date.now(), { waitUntil: 'load', timeout: 120000 });
+await p.waitForTimeout(3000);
+const { profile } = await c.send('Profiler.stop');
+writeFileSync(out, JSON.stringify(profile)); await browser.close();

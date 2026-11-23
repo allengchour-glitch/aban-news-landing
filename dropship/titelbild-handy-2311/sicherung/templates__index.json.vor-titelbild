@@ -1,0 +1,63 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "luxe_home": {
+      "type": "luxe-edit-home",
+      "settings": {
+        "hero_campaign_image": "shopify://shop_images/luxe-wohnen-standbild-20261121.jpg",
+        "hero_campaign_mobile_focus": 79,
+        "home_feature_products": [
+          "keramik-vorratsdose-fur-die-kuche-886976",
+          "aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben"
+        ],
+        "more_products": [
+          "led-leucht-brustgeschirr-reissfest-933632",
+          "handgemachte-3d-liebesnagel-blue-ice-652096",
+          "elektrischer-nagelpolierer-mit-licht-545984",
+          "outdoor-schultertasche-fur-freizeit-kessel-329792",
+          "rosenquarz-gua-sha-set",
+          "lederarmband-mit-verschluss-unisex-604800",
+          "hufttasche-fur-hundetraining-625200",
+          "hundennasenmatte-aus-fleece-energie-intelligen-622000"
+        ],
+        "worlds_text_color": "#ffffff",
+        "worlds_kids_image": "shopify://shop_images/1126921759284.jpg",
+        "worlds_jewellery_image": "shopify://shop_images/945cd3e7-0f3c-4d14-aa52-06f70a4123fc.jpg",
+        "worlds_women_image": "shopify://shop_images/5d5418a8-6552-49e0-b48e-20b57f1b31db.jpg",
+        "worlds_men_image": "shopify://shop_images/bb34d7c9-4b7c-4e74-9b94-11a608e7557a.jpg",
+        "worlds_shoes_image": "shopify://shop_images/5709219f-d799-4308-a56e-b376dd24765f.jpg",
+        "worlds_home_image": "shopify://shop_images/821d3b93-b919-4b17-8d0c-e9d29516a11e.jpg",
+        "worlds_gifts_image": "shopify://shop_images/f063c370-68c0-4a22-b95e-06ae6c3a3a34_fine.jpg",
+        "worlds_design_image": "shopify://shop_images/rsi7j3aos1oot7eyjog4.png",
+        "worlds_bags_image": "shopify://shop_images/1623394885274.jpg",
+        "worlds_watches_image": "shopify://shop_images/1156d146-6e27-4d13-b46d-39c2a83da89a.jpg",
+        "worlds_kitchen_image": "shopify://shop_images/1619490117574.jpg",
+        "worlds_electronics_image": "shopify://shop_images/680d1ad3-95b3-47bd-9522-899efd79a301.jpg",
+        "worlds_gaming_image": "shopify://shop_images/1723897508855418880.jpg",
+        "worlds_dogs_image": "shopify://shop_images/6415c179-9d1e-43f2-8b98-f14786523155.jpg",
+        "worlds_beauty_image": "shopify://shop_images/a6d5bfd7-5789-4709-b44e-545c08660b82.jpg",
+        "worlds_sport_image": "shopify://shop_images/cf60dc11-c6ca-4f17-9df3-33a369aeb1be_trans.jpg",
+        "hero_scroll_enabled": true,
+        "hero_scroll_video": "shopify://files/videos/luxe-wohnen-hintergrund-20261121.mp4",
+        "hero_scroll_desktop_url": "https://cdn.shopify.com/videos/c/vp/bd45f8cab78849a5970b0fc8f9073cd8/bd45f8cab78849a5970b0fc8f9073cd8.HD-1080p-3.3Mbps-102249754.mp4",
+        "hero_scroll_mobile_url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/luxe-hero-handy-klein-1122.mp4?v=1795382554"
+      }
+    },
+    "luxe_reviews": {
+      "type": "luxe-home-reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "luxe_home",
+    "luxe_reviews"
+  ]
+}
