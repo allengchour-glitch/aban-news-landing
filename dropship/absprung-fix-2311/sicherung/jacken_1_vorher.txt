@@ -1,0 +1,1 @@
+Reihenfolge vorher (Pos. 1–7): gid://shopify/MediaImage/77777935499655, 77777935630727, 77777935663495, 77777935696263, 77777935729031, 77777935761799, 77777936318855. Rückweg: dieselbe Mutation mit moves [{"id":"gid://shopify/MediaImage/77777935729031","newPosition":"4"}]

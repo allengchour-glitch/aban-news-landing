@@ -1,0 +1,212 @@
+{
+ "id": "gid://shopify/Product/15501003817345",
+ "title": "Reines Ätherisches Öl (10 ml)",
+ "status": "ACTIVE",
+ "tags": [
+  "beauty",
+  "bild-ok",
+  "bildmass-ok-0906",
+  "cj-real",
+  "dropship",
+  "hautpflege",
+  "kat-aroma",
+  "mengenrabatt-a",
+  "pflege",
+  "skincare",
+  "sort-raeucherwerk-duftoele",
+  "varianten-nachgezogen-1025"
+ ],
+ "totalInventory": 0,
+ "variantsCount": {
+  "count": 13
+ },
+ "media": {
+  "nodes": [
+   {
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1106209291028.jpg?v=1786875903"
+    }
+   },
+   {
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/192479466631.jpg?v=1786875904"
+    }
+   },
+   {
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1419447721141.jpg?v=1786875903"
+    }
+   },
+   {
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1321597334593.jpg?v=1786875902"
+    }
+   },
+   {
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2834784529575.jpg?v=1786875903"
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67814964724103",
+    "title": "Jasmin",
+    "sku": "CJBJPFJY00219-Jasmine",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814964756871",
+    "title": "Vetiver",
+    "sku": "CJBJPFJY00219-Vetiver",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814964789639",
+    "title": "Weihrauch",
+    "sku": "CJBJPFJY00219-Frankincense",
+    "price": "17.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": -1,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814964822407",
+    "title": "Muskatellersalbei",
+    "sku": "CJBJPFJY00219-Clary Sage",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814964855175",
+    "title": "Bergamotte",
+    "sku": "CJBJPFJY00219-Bergamot",
+    "price": "17.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": -1,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814964887943",
+    "title": "Geranie",
+    "sku": "CJBJPFJY00219-Geranium",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814964920711",
+    "title": "Patschuli",
+    "sku": "CJBJPFJY00219-Patchouli",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814964953479",
+    "title": "Zedernholz",
+    "sku": "CJBJPFJY00219-Cedar Wood",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814964986247",
+    "title": "Fenchel",
+    "sku": "CJBJPFJY00219-Fennel",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814965019015",
+    "title": "Schwarzer Pfeffer",
+    "sku": "CJBJPFJY00219-Black pepper",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814965051783",
+    "title": "Zypresse",
+    "sku": "CJBJPFJY00219-Cypress",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814965084551",
+    "title": "Kamille",
+    "sku": "CJBJPFJY00219-Chamomile",
+    "price": "17.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67814965117319",
+    "title": "Zimt",
+    "sku": "CJBJPFJY00219-Cinnamon",
+    "price": "16.90",
+    "availableForSale": true,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryQuantity": 0,
+    "inventoryItem": {
+     "tracked": false
+    }
+   }
+  ]
+ }
+}
