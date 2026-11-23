@@ -378,3 +378,7 @@
 2026-10-21	gid://shopify/Product/16655513158023	finken	Badezimmer-Pantoffeln
 2026-10-22	gid://shopify/Product/16656522543495	natel	Universal Canvas Handygürteltasche
 2026-10-22	gid://shopify/Product/16656617832839	natel	One-Shoulder Handy-Tasche aus Polyester
+2026-11-23	gid://shopify/Product/15496706261377	natel	Gamepad für Smartphone mit Hühnchen-Griff
+2026-11-23	gid://shopify/Product/16732114452871	natel	VR-Headset für Smartphones 4,7–6,7" – 1080P
+2026-11-23	gid://shopify/Product/15483934441857	finken	Winter-Hausschuhe aus Baumwolle
+2026-11-23	gid://shopify/Product/16732218360199	finken	Plüsch Hausschuh für Kinder – dicke Fellfütterung
