@@ -53,3 +53,4 @@ article	1001546121601	bluetooth-speaker-wasserdicht-outdoor-guide	sonnenbrillen-
 article	1002487841153	rizinusoel-wickel-anwendung-anleitung	rizinusol-wickel-set-mit-bio-ol-323457 -> tunmate-rizinusol-382081
 article	1001473081729	echtleder-vs-kunstleder-wallet-kauf-guide	airtag-leder-portemonnaie-mit-rfid-schutz-026048 -> airtag-portemonnaie-mit-rfid-schutz-026048
 article	1001546449281	geschenkboxen-sets-verschenken-ideen	diamantbesetzte-schlussel-halskette-mit-gesche-628700 -> strassbesetzte-schlussel-halskette-mit-geschenkbox-628700
+article	1001936093569	winter-warme-zuhause-heizdecke-kuscheldecke-co-richtig-wahlen	small-blanket-nap-blanket-61368a -> kuscheldecke-klein-fuers-nickerchen-61368a

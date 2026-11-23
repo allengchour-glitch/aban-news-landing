@@ -1111,3 +1111,28 @@
 15496264384897	kein-stecker-merkmal	2026-10-23	Multifunktionale Ladestation für Nintendo Switch
 15496288829825	kein-stecker-merkmal	2026-10-23	Joy-Con Ladestation
 15496382415233	draft-kein-eu-stecker:US	2026-10-23	Qi 15W Fast Wireless Charger
+16731870921095	unklar-eu-vorhanden:CN/EU/UK/US	2026-11-23	30W GaN Schnellladegerät Dual-Port USB-A & USB-C
+16732007235975	kein-stecker-merkmal	2026-11-23	Magnetischer kabelloser Ladegerät
+16732012609927	kein-stecker-merkmal	2026-11-23	Handheld-Staubsauger-Batterie 21,6 V
+16732102394247	kein-stecker-merkmal	2026-11-23	USB-Ladegerät für AA/AAA-Batterien, 4 Slots
+16732309520775	kein-stecker-merkmal	2026-11-23	LED Nachttischlampe mit Ladestation
+15458649571713	eu-variante-belegt	2026-11-23	9mm Mini-Lockenstab mit zwei Thermostaten
+15496383168897	mehrere-varianten	2026-11-23	Runder Wireless Charger mit Spiegel und Ladeanzeige
+15496383594881	unklar-eu-vorhanden:EU/US	2026-11-23	Mini Fast Charge 24W Wireless Charger
+15496384577921	draft-kein-eu-stecker:US	2026-11-23	4-in-1 Wireless Charger für iPhone & Zubehör
+15496384708993	mehrere-varianten	2026-11-23	3-in-1 Wireless Charger für Handy, Watch, Headset
+15496408072577	kein-stecker-merkmal	2026-11-23	PS4VR Mini-Ladestation für zwei Controller
+15496409678209	kein-stecker-merkmal	2026-11-23	Switch Joy-Con & Pro Controller Ladestation
+15496426094977	kein-stecker-merkmal	2026-11-23	Xbox Controller Dual-Ladestation mit Akkus
+15496513520001	kein-stecker-merkmal	2026-11-23	VR-Controller Ladestation
+15496515420545	mehrere-varianten	2026-11-23	25W Dual Wireless Charger für iPhone
+15496519319937	mehrere-varianten	2026-11-23	Dual-Ladestation für PS5 Wireless Controller
+15496611955073	mehrere-varianten	2026-11-23	3-in-1 Wireless Charger
+15496612643201	kein-stecker-merkmal	2026-11-23	USB-C zu VGA + USB 3.0 + Ladeanschluss Adapter
+15496613134721	kein-stecker-merkmal	2026-11-23	Interaktiver Katzenball mit Ladestation
+15496614379905	mehrere-varianten	2026-11-23	Dual-Ladestation für PS5 Wireless Gamepads
+15496703345025	mehrere-varianten	2026-11-23	PS5 Controller Ladestation mit LED
+15496703607169	kein-stecker-merkmal	2026-11-23	Multifunktionale Ladestation für PS5, PS4, Switch Pro, Xbox
+15496891695489	kein-stecker-merkmal	2026-11-23	Gaming-Tastatur-Adapter
+15497149219201	kein-stecker-merkmal	2026-11-23	PS4/PS Move Controller Ladestation
+15497151021441	kein-stecker-merkmal	2026-11-23	LED Dual-Ladestation für PS4 Controller

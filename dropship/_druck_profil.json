@@ -273,5 +273,9 @@
  "gegen_regel": [],
  "soll_fehlt": [],
  "matrix_abweichend": 0,
- "naechste_stufe_ab": null
+ "naechste_stufe_ab": null,
+ "letzter_fehler": {
+  "zeit": "2026-11-23T22:01Z",
+  "text": "RuntimeError: dauerhaft gedrosselt"
+ }
 }

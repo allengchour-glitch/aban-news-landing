@@ -1,6 +1,9 @@
 {
- "stand": "2026-10-23T22:12:06Z",
- "befunde": [],
+ "stand": "2026-11-23T22:01:02Z",
+ "befunde": [
+  "Live-Abschnitt weicht von automation/theme/lux-assistent.liquid ab (von Hand geändert?)",
+  "Richtlinie REFUND_POLICY nennt nicht mehr «innerhalb von 7 Tagen nach Erhalt» — die Antwort des Assistenten ist vermutlich veraltet"
+ ],
  "seiten": 8,
  "kollektionen": 14,
  "fakten": 24

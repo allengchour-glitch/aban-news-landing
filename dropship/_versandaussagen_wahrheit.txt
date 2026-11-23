@@ -52551,3 +52551,50 @@ gid://shopify/Product/15446271721857	direkt	1	Ersatzfedern für Katzenangel
 gid://shopify/Product/15446271754625	direkt	1	Interaktiver Hunde-Spielball mit Seil
 gid://shopify/Product/15446271820161	direkt	1	Interaktiver Hüpfball für Hunde
 gid://shopify/Product/15446270738817	direkt	1	Beissfester Zahnungsstick für Haustiere
+gid://shopify/Product/15412297073025	direkt	1	Solar Camping-Laterne im Vintage-Look – wiederaufladbar, IP44 wetterfe
+gid://shopify/Product/15412302414209	direkt	1	Reise-Rucksack mit Kettengriff – kompakt, vegan-Leder, mehrere Fächer
+gid://shopify/Product/15411554910593	direkt	1	Aromadiffusor Holzmaserung
+gid://shopify/Product/15412301922689	direkt	1	Panda Handyhalter – süsser Schreibtisch-Ständer für Smartphones
+gid://shopify/Product/15411564446081	direkt	1	Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugn
+gid://shopify/Product/15412299760001	direkt	1	Vintage Sonnenbrille Oval – Metallrahmen, UV-Schutz (Damen)
+gid://shopify/Product/15411556614529	direkt	1	Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling
+gid://shopify/Product/15412304871809	direkt	1	Komfort-Fahrradsattel XXL – extrabreit, gefedert, ergonomisch gepolste
+gid://shopify/Product/15412306772353	direkt	1	Reise-Schallzahnbürste – 4 Modi, Magnetschwebe-Motor, antibakterielle 
+gid://shopify/Product/15412306215297	direkt	1	Augenmassagegerät mit Wärme & Musik – Bluetooth, faltbar
+gid://shopify/Product/15412432175489	direkt	1	Kühlende Sommerdecke – Cool-Feel, atmungsaktiv & waschbar
+gid://shopify/Product/15412659978625	direkt	1	Mini USB-Taschenlampe – Edelstahl, wiederaufladbar, für Schlüsselbund 
+gid://shopify/Product/15412463108481	direkt	1	Polarisierte Sonnenbrille – blendfrei, UV-Schutz, Fashion-Look (Herren
+gid://shopify/Product/15412677607809	direkt	1	Elektrischer Krallenschleifer für Hund & Katze – leise, USB-Akku, mit 
+gid://shopify/Product/15422811439489	pod	1	Unisex T-Shirt – Selbst gestalten
+gid://shopify/Product/15422815699329	pod	1	Unisex Sweatshirt & Bio-Hoodie – Selbst gestalten
+gid://shopify/Product/15422849188225	pod	1	Dad-Cap – Selbst gestalten
+gid://shopify/Product/15422823465345	pod	1	Keramik-Tasse – Selbst gestalten
+gid://shopify/Product/15422819991937	pod	1	Jutebeutel bedrucken · Bio-Baumwollbeutel selbst gestalten
+gid://shopify/Product/15422854463873	pod	1	Alltags-Umhängetasche – Selbst gestalten
+gid://shopify/Product/15412297007489	direkt	1	LED Solar-Lichterkette XL – 8 Leuchtmodi, wetterfest für Garten & Balk
+gid://shopify/Product/15422857642369	direkt	1	Klassisches Unisex T-Shirt – Selbst gestalten
+gid://shopify/Product/15422939988353	pod	1	iPhone-Hülle – Selbst gestalten
+gid://shopify/Product/15422940447105	pod	1	Edelstahl Trinkflasche mit Strohhalm – Selbst gestalten
+gid://shopify/Product/15422950474113	pod	1	Allover-Stoffbeutel – Selbst gestalten
+gid://shopify/Product/15427282633089	pod	1	Tasse bedrucken & selbst gestalten · dein Foto
+gid://shopify/Product/15428415226241	direkt	1	Reise-Tasche Wasserdicht XL – mit Schultergurt & Schuhfach
+gid://shopify/Product/15428421353857	direkt	2	Layering-Halsketten Set · Gliederkette Gold & Silber
+gid://shopify/Product/15428421386625	direkt	2	Kreuz-Halskette Gold · Edelstahl-Anhänger
+gid://shopify/Product/15412307100033	direkt	1	LED-Fahrradrucksack mit Blinker – Funk-Fernbedienung, wasserabweisend
+gid://shopify/Product/15427283157377	pod	1	T-Shirt bedrucken & selbst gestalten · dein Foto oder Motiv
+gid://shopify/Product/15428421419393	direkt	2	Armband «Just Breathe» · Edelstahl mit Gravur
+gid://shopify/Product/15428421452161	direkt	2	Tennis-Armband Bunt · Zirkonia funkelnd
+gid://shopify/Product/15428427940225	direkt	2	Statement-Ring Zirkonia · Grosser Kristall
+gid://shopify/Product/15428428071297	direkt	2	Ring Blauer Stein · elegant gefasst
+gid://shopify/Product/15428428005761	direkt	2	Herz-Ring Roségold · Zirkonia verziert
+gid://shopify/Product/15428428038529	direkt	2	Breiter Ring Silber · Floral durchbrochen
+gid://shopify/Product/15428428104065	direkt	2	Ring Schwarz · Regenbogen-Kristall
+gid://shopify/Product/15428427972993	direkt	2	Ring «You Light Up My Life» · Leucht-Stein
+gid://shopify/Product/15428428169601	direkt	2	Siegelring Marmor · Gold-Optik
+gid://shopify/Product/15428429513089	direkt	2	Retro Flammen-Tischlampe LED · aufladbar
+gid://shopify/Product/15428429578625	direkt	2	Isolier-Trinkflasche Edelstahl · mit Trage-Hülle
+gid://shopify/Product/15428497047937	direkt	2	Canvas-Shopper Tote · gross & nachhaltig
+gid://shopify/Product/15422942609793	pod	1	Aufkleber mit Konturschnitt – Selbst gestalten
+gid://shopify/Product/15428497015169	direkt	2	Edelstahl Coffee-to-go Becher · auslaufsicher
+gid://shopify/Product/15430408634753	direkt	1	Shield-Sonnenbrille «Vortex» · One-Piece, UV400
+gid://shopify/Product/15430345425281	direkt	1	Echtleder-Henkeltasche «Milano» · weiches Rindsleder
