@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 15:53 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 16:00 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **8'420**
-- Optionen mit englischen Werten (Kandidaten): 391
-- Optionen übersetzt: **32** · Werte übersetzt: **84**
+- Produkte gesehen: **10'252**
+- Optionen mit englischen Werten (Kandidaten): 525
+- Optionen übersetzt: **41** · Werte übersetzt: **113**
 - Optionen nur codebereinigt: 8
-- Werte mit unbekanntem Wort (unverändert): 878
+- Werte mit unbekanntem Wort (unverändert): 1'315
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 14
-- übersprungen «kleidungsstueck-im-wert»: 10
+- übersprungen «kollision-nach-uebersetzung»: 17
+- übersprungen «kleidungsstueck-im-wert»: 11
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -43,6 +43,9 @@
 - `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
 - `15449432555905` [Farbe] ems-bauch-und-muskel-trainer-b08b29: A Set1 → A Set 1; A Set2 → A Set 2; Set2 → Set 2; Set1 → Set 1; Yellow 3pcs → Gelb · 3 Stück
 - `15450036601217` [Farbe] retro-high-top-schuhe-fur-herren-600800: Black → Schwarz
+- `15450830176641` [Farbe] kuschel-hoodie-mit-grosser-tasche-052928: Dark gray → Dunkelgrau; Set1 → Set 1; Set2 → Set 2; Set3 → Set 3; Set4 → Set 4
+- `15450840596865` [Farbe] kompression-shorts-mit-taschen-ebe7fd: Weissweiss → Weiss; Schwarzschwarz → Schwarz
+- `15453570597249` [Farbe] hochtaillierte-caprihosen-638600: Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -72,5 +75,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`powder` 37, `diamond` 36, `⟨satzbau:adjektiv-vor-nomen⟩` 25, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `deer` 19, `degrees` 17, `one` 16, `tea` 16, `skin` 15, `cherry` 13, `carbon` 13, `blossom` 12, `elegant` 11, `feet` 11, `shell` 11, `titanium` 11, `size` 11, `hat` 10, `storage` 10, `⟨satzbau:adjektivfolge⟩` 10, `to` 10, `ding` 10, `bag` 9, `insert` 9, `milk` 8, `color` 8, `glittering` 8, `waist` 8, `rope` 8, `soft` 8, `cocoa` 8, `stone` 8, `sport` 8, `hot` 7, `machine` 7, `ice` 7, `washed` 7, `filter` 7, `kopfband` 7, `⟨satzbau:funktionswort⟩` 6, `models` 6, `handle` 6, `gun` 6, `four` 6, `electric` 6, `mocha` 6, `rice` 6, `three` 5, `1er` 5, `smoke` 5, `data` 5, `fog` 5, `fruit` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5
+`⟨satzbau:adjektiv-vor-nomen⟩` 45, `powder` 43, `diamond` 37, `high` 24, `end` 23, `eyelashes` 23, `plush` 22, `one` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `lamp` 19, `holder` 19, `cherry` 18, `line` 18, `tea` 17, `degrees` 17, `⟨satzbau:praeposition⟩` 17, `skin` 16, `blossom` 15, `tc` 15, `data` 14, `to` 14, `carbon` 13, `elegant` 12, `feet` 11, `bag` 11, `shell` 11, `titanium` 11, `size` 11, `hat` 10, `storage` 10, `color` 10, `⟨satzbau:adjektivfolge⟩` 10, `fiber` 10, `sunflower` 10, `ding` 10, `three` 9, `insert` 9, `cocoa` 9, `promax` 9, `ball` 9, `milk` 8, `full` 8, `gun` 8, `electric` 8, `glittering` 8, `waist` 8, `rope` 8, `ice` 8, `soft` 8, `stone` 8, `sport` 8, `button` 8, `hot` 7, `four` 7, `machine` 7, `washed` 7
 
