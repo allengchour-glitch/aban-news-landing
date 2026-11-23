@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 11:21 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 11:22 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **615**
-- Optionen mit englischen Werten (Kandidaten): 20
-- Optionen übersetzt: **8** · Werte übersetzt: **29**
-- Optionen nur codebereinigt: 2
-- Werte mit unbekanntem Wort (unverändert): 78
+- Produkte gesehen: **1'248**
+- Optionen mit englischen Werten (Kandidaten): 29
+- Optionen übersetzt: **10** · Werte übersetzt: **31**
+- Optionen nur codebereinigt: 3
+- Werte mit unbekanntem Wort (unverändert): 95
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -55,5 +55,5 @@ _keine_
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`diamond` 36, `skin` 10, `feet` 10, `⟨satzbau:funktionswort⟩` 6, `powder` 5, `plugin` 4, `models` 4, `drill` 4, `elegant` 3, `⟨satzbau:menge-vor-nomen⟩` 3, `220grams` 3, `spring` 2, `autumn` 2, `three` 2, `touch` 2, `modelle` 2, `⟨satzbau:nomen-nomen⟩` 2, `breathing` 2, `2pcsblack` 1, `translucent` 1, `foot` 1, `easter` 1, `one` 1, `christmas` 1, `five` 1, `pointed` 1, `star` 1, `drei` 1, `blaues` 1, `optic` 1, `tea` 1, `1er` 1, `2er` 1, `grain` 1, `rabbit` 1, `elephant` 1
+`diamond` 36, `skin` 10, `feet` 10, `⟨satzbau:funktionswort⟩` 6, `tea` 5, `powder` 5, `plugin` 4, `models` 4, `drill` 4, `elegant` 3, `⟨satzbau:menge-vor-nomen⟩` 3, `220grams` 3, `spring` 2, `autumn` 2, `three` 2, `touch` 2, `modelle` 2, `⟨satzbau:nomen-nomen⟩` 2, `breathing` 2, `milk` 2, `bag` 2, `2pcsblack` 1, `translucent` 1, `foot` 1, `easter` 1, `one` 1, `christmas` 1, `five` 1, `pointed` 1, `star` 1, `drei` 1, `blaues` 1, `optic` 1, `1er` 1, `2er` 1, `grain` 1, `rabbit` 1, `elephant` 1, `extended` 1, `packaginggray` 1, `kaki` 1, `obsidian` 1, `state` 1, `nail` 1, `tip` 1, `6pcs18` 1, `6pcs19` 1, `6pcs20` 1, `candy` 1, `cherry` 1, `cat` 1, `eye` 1, `flash` 1, `lovers` 1, `socket` 1, `zipper` 1
 

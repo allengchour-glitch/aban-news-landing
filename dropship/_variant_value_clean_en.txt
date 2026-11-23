@@ -21742,3 +21742,7 @@ gid://shopify/Product/15522281128321	Grösse	gid://shopify/ProductOptionValue/58
 gid://shopify/Product/15523176644993	Farbe	gid://shopify/ProductOptionValue/58679296065927	Set1	Set 1	2026-11-23T11:21Z
 gid://shopify/Product/15523176644993	Farbe	gid://shopify/ProductOptionValue/58679296098695	Set2	Set 2	2026-11-23T11:21Z
 gid://shopify/Product/15523176644993	Farbe	gid://shopify/ProductOptionValue/58679296131463	Set3	Set 3	2026-11-23T11:21Z
+gid://shopify/Product/15433464021377	Modell	gid://shopify/ProductOptionValue/58596461347207	TYPEC	USB-C	2026-11-23T11:22Z
+gid://shopify/Product/15445276197249	Farbe	gid://shopify/ProductOptionValue/12308486783361	Sternenblau Lila Set	Sternenblau-Lila Set	2026-11-23T11:22Z
+gid://shopify/Product/15445799436673	Ausführung	gid://shopify/ProductOptionValue/12308490224001	Champagne, 18 Stück, Mit Pinselbehälter	Champagner, 18 Stück, Mit Pinselbehälter	2026-11-23T11:22Z
+gid://shopify/Product/15445799436673	Ausführung	gid://shopify/ProductOptionValue/12308490322305	Champagne, 20 Stück, Mit Pinselbehälter	Champagner, 20 Stück, Mit Pinselbehälter	2026-11-23T11:22Z
