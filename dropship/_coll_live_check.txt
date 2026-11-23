@@ -696,3 +696,102 @@ damen-jeans	ok	29	Jeans
 damen-jeans-highwaist	ok	29	High-Waist-Jeans
 damen-jeans-weit	ok	29	Weite Jeans & Wide Leg
 damen-jeans-gerade	ok	29	Straight-Leg-Jeans
+damen-jeans-slim	ok	29	Slim- & Stretch-Jeans
+damen-jeans-flare	ok	29	Bootcut- & Flare-Jeans
+damen-jeans-ripped	ok	27	Ripped & Destroyed
+damen-hosen-weit	ok	29	Weite Hosen & Culottes
+damen-hosen-stoff	ok	29	Stoff- & Business-Hosen
+damen-hosen-jogging	ok	29	Jogging- & Freizeithosen
+damen-hosen-capri	ok	25	Capri- & Cropped-Hosen
+damen-shorts	ok	29	Shorts
+damen-shorts-jeans	ok	29	Jeansshorts
+damen-hoodies-sweatshirts	ok	29	Hoodies & Sweatshirts
+damen-hoodies-hoodie	ok	29	Hoodies
+damen-hoodies-sweatshirt	ok	29	Sweatshirts
+damen-hoodies-kapuzenpullover	ok	29	Kapuzenpullover
+damen-hoodies-zip	ok	29	Zip-Hoodies & Sweatjacken
+damen-hoodies-oversize	ok	29	Oversize-Hoodies
+damen-hoodies-fleece	ok	29	Fleece- & Plüsch-Hoodies
+damen-strickjacken	ok	29	Strickjacken & Cardigans
+damen-strickjacken-cardigan	ok	29	Cardigans
+damen-strickjacken-strickjacke	ok	28	Strickjacken
+damen-strickjacken-kapuze	ok	28	Cardigans mit Kapuze
+damen-pullover	ok	29	Pullover & Strick
+damen-pullover-rollkragen	ok	29	Rollkragenpullover
+damen-pullover-strick	ok	29	Strickpullover
+damen-pullover-v	ok	29	Pullover mit V-Ausschnitt
+damen-pullover-rundhals	ok	29	Rundhalspullover
+damen-pullover-grob	ok	25	Grobstrick- & Zopfmuster-Pullover
+damen-pullover-oversize	ok	29	Oversize-Pullover
+damen-pullover-weihnacht	ok	24	Weihnachts- & Motivpullover
+damen-blusen-hemden	ok	29	Blusen & Hemden
+damen-blusen-bluse	ok	29	Blusen
+damen-blusen-hemd	ok	29	Hemden
+damen-blusen-chiffon	ok	29	Chiffonblusen
+damen-blusen-leinen	ok	29	Leinenblusen & -hemden
+damen-blusen-satin	ok	29	Satin- & Seidenblusen
+damen-blusen-spitze	ok	29	Spitzenblusen
+damen-blusen-rueschen	ok	29	Blusen mit Rüschen
+damen-t-shirts	ok	29	T-Shirts & Langarmshirts
+damen-t-shirts-tshirt	ok	29	T-Shirts
+damen-t-shirts-langarm	ok	29	Langarmshirts
+damen-t-shirts-print	ok	29	Shirts mit Print
+damen-t-shirts-oversize	ok	29	Oversize-Shirts
+damen-tops	ok	29	Tops & Oberteile
+damen-tops-tank	ok	29	Tanktops
+damen-tops-cami	ok	29	Camisoles
+damen-tops-crop	ok	21	Crop-Tops & Bodys
+damen-tops-neckholder	ok	29	Neckholder- & Bandeau-Tops
+damen-tops-spitze	ok	29	Spitzentops
+damen-tops-strick	ok	29	Strick-Tops
+damen-tops-schulterfrei	ok	29	Schulterfreie Tops
+herren-sets	ok	29	Sets & Zweiteiler
+herren-anzuege-sakkos	ok	29	Anzüge & Sakkos
+herren-anzuege	ok	22	Anzüge
+herren-sakkos-blazer	ok	29	Sakkos & Blazer
+herren-hoodies-sweatshirts	ok	29	Hoodies & Sweatshirts
+herren-hoodies	ok	29	Hoodies
+herren-sweatshirts	ok	29	Sweatshirts
+herren-hoodies-zip	ok	29	Zip-Hoodies & Kapuzenjacken
+herren-hoodies-fleece	ok	29	Fleece-Hoodies
+herren-poloshirts	ok	29	Poloshirts
+herren-poloshirts-kurzarm	ok	29	Kurzarm
+herren-poloshirts-langarm	ok	29	Langarm
+herren-poloshirts-business	ok	22	Business & Golf
+herren-pullover-strick	ok	29	Pullover & Strick
+herren-pullover-strickpullover	ok	29	Strickpullover
+herren-pullover-cardigans	ok	29	Cardigans & Strickjacken
+herren-pullover-rollkragen	ok	28	Rollkragenpullover
+herren-pullover-halbzip	ok	27	Half-Zip & Troyer
+herren-pullover-v-ausschnitt	ok	29	V-Ausschnitt
+herren-pullover-fleece	ok	21	Fleece & Thermo
+herren-hemden-kurzarm	ok	29	Kurzarmhemden
+herren-hemden-langarm	ok	29	Langarmhemden
+herren-hemden-leinen	ok	29	Leinenhemden
+herren-hemden-freizeit	ok	29	Freizeithemden
+herren-hemden-hawaii-strand	ok	29	Hawaii- & Strandhemden
+herren-hemden-kariert	ok	29	Karo & Flanell
+herren-hemden-business	ok	29	Business-Hemden
+herren-hemden-jeans-cord	ok	29	Jeans- & Cordhemden
+herren-t-shirts	ok	29	T-Shirts & Shirts
+herren-t-shirts-kurzarm	ok	29	Kurzarm
+herren-t-shirts-langarm	ok	29	Langarm
+herren-t-shirts-tanktops	ok	23	Tanktops & Muskelshirts
+herren-t-shirts-henley	ok	21	Henley & Knopfleiste
+herren-t-shirts-print	ok	29	Print & Grafik
+herren-jacken-maentel	ok	29	Jacken & Mäntel
+herren-jacken-jeans	ok	29	Jeansjacken
+herren-jacken-leder	ok	29	Leder- & Kunstlederjacken
+herren-jacken-baseball-bomber	ok	29	Bomber- & Baseballjacken
+herren-jacken-uebergang	ok	29	Übergangsjacken
+herren-jacken-winter	ok	29	Winter- & Daunenjacken
+herren-jacken-outdoor	ok	29	Outdoor- & Windjacken
+herren-jacken-kapuze	ok	29	Kapuzenjacken
+herren-jacken-maentel-lang	ok	29	Mäntel & Trenchcoats
+herren-jacken-hemdjacke	ok	29	Hemdjacken & Workwear
+herren-westen	ok	29	Westen
+herren-westen-strick-anzug	ok	22	Strick- & Anzugwesten
+herren-westen-outdoor	ok	21	Outdoor- & Sportwesten
+herren-shorts	ok	25	Shorts
+herren-jeans-straight	ok	29	Straight
+herren-jeans-loose	ok	29	Loose & Baggy
