@@ -1,60 +1,60 @@
 {
- "stand": "2026-10-23T19:12Z",
+ "stand": "2026-11-23T13:12Z",
  "datum_in_kasse": true,
  "bearbeitungszeit_tage": 1,
  "versand_werktage": [
   [
-   "#1026",
-   5
+   "#1043",
+   2
   ],
   [
-   "#1025",
+   "#1041",
    3
   ],
   [
-   "#1023",
+   "#1040",
    2
   ],
   [
-   "#1022",
+   "#1039",
+   9
+  ],
+  [
+   "#1038",
+   6
+  ],
+  [
+   "#1037",
+   1
+  ],
+  [
+   "#1036",
    2
   ],
   [
-   "#1021",
+   "#1035",
+   2
+  ],
+  [
+   "#1034",
    5
   ],
   [
-   "#1018",
-   0
+   "#1032",
+   1
   ],
   [
-   "#1017",
-   0
+   "#1030",
+   4
   ],
   [
-   "#1015",
-   0
-  ],
-  [
-   "#1014",
-   2
-  ],
-  [
-   "#1013",
-   3
-  ],
-  [
-   "#1012",
-   2
-  ],
-  [
-   "#1011",
-   0
+   "#1029",
+   5
   ]
  ],
- "median": 2.0,
- "p80": 3.0,
- "empfohlen": 3,
+ "median": 2.5,
+ "p80": 5.0,
+ "empfohlen": 5,
  "zu_frueh": false,
  "ch_lager_profil": {
   "ch_lager": {
@@ -67,12 +67,14 @@
    "profile": [
     "General profile"
    ],
-   "anzahl": 53772
+   "anzahl": 53211
   }
  },
  "ch_lager_im_asien_profil": false,
  "theme_kassendatum": {
-  "befunde": [],
+  "befunde": [
+   "Theme nicht MAIN (UNPUBLISHED)"
+  ],
   "md5": {
    "templates/cart.json": "24c11d674873cd3ce8d5832afc871573",
    "templates/product.json": "f6625c20bb13716b520b3a3975ebb5b8"
