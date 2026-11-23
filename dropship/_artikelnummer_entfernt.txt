@@ -27,3 +27,4 @@ gid://shopify/Product/16613846974855	Kabellose Fernbedienung für Computer
 gid://shopify/Product/16615393460615	Fensterputzroboter mit geplanter Route
 gid://shopify/Product/16615822098823	Dreidimensionales Holz-Puzzle mit Musik
 gid://shopify/Product/16651340087687	Rollenpapier-Handwerkzeug
+gid://shopify/Product/15503127413121	Elektrischer Messerschärfer mit Diamant + Harz

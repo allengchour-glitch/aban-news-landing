@@ -1,15 +1,14 @@
 # Rankende Seiten, die es nicht mehr zu kaufen gibt
 
-> **Stand: 23.10.2026 04:31 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
+> **Stand: 23.11.2026 21:55 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
 > diese Liste in Stunden. Vor jeder Reparatur den Status am OBJEKT nachmessen.
 
 Automatisch erzeugt von `automation/tote_rankings.py`. Google schickt Besucher
 auf diese Adressen; für sie ist die Seite ein 404.
 
-## /products/schwingerhose-fgahb2887ml  — **DRAFT**
-Schwingerhose  ·  **~490 Suchen/Monat** betroffen
-- «schwingerhosen» — Position 57, 320/Monat
-- «zwilchhosen» — Position 67, 170/Monat
+## /products/strandtuch-selbst-gestalten  — **DRAFT**
+Strandtuch & Badetuch bedrucken · selbst gestalten  ·  **~590 Suchen/Monat** betroffen
+- «badetuch bedrucken lassen» — Position 66, 590/Monat
 
 ## /products/bluetooth-tastatur-927234  — **DRAFT**
 K68 Kabellose Mechanische 60% Gaming-Tastatur, Grau-Rot  ·  **~390 Suchen/Monat** betroffen

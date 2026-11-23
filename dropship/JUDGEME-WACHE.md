@@ -1,8 +1,8 @@
 # Judge.me-Wache — unechte Bewertungen (nur lesen)
 
-Stand: 2026-10-23 05:23 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 134 s
+Stand: 2026-11-23 21:55 UTC · Skript `automation/judgeme_fake_wache.py` (taeglich im Aufseher) · Dauer 83 s
 
-**JUDGEME: 0 verdaechtig · 0 Namen unmaskiert · 51 ausgeblendet · 14539 von 16891 gelesen · API-Deckel: Rest älter als ID 1199671739, zuletzt vollständig gelesen (ID ≤ 1368220721) · NACH-STOPP: 0 veroeffentlicht, 1191 ausgeblendet (Importer-Muster, ID > 1374773944), 0 neu seit der letzten Messung**
+**JUDGEME: 1 verdaechtig · 1 Namen unmaskiert · 51 ausgeblendet · 14557 von 17007 gelesen · API-Deckel: Rest älter als ID 1199671739, zuletzt vollständig gelesen (ID ≤ 1368220721) · NACH-STOPP: 114 veroeffentlicht, 1191 ausgeblendet (Importer-Muster, ID > 1374773944), 114 neu seit der letzten Messung ⚠️ SCHREIBT WEITER**
 
 Hausregel: NIE Fake-Reviews (UWG). Die Wache LIEST nur — jeder Befund ist ein Entscheid fuer einen Menschen:
 ausblenden = `PUT https://judge.me/api/v1/reviews/<id>` mit `{"curated":"spam"}` (privater Token + shop_domain),
@@ -37,27 +37,73 @@ Judge.me schreibt sie zeitverzoegert; der Waechter unten liest sie bei jedem Lau
 
 | Feld | Wert | updatedAt |
 |---|---|---|
-| all_reviews_count | 12539 | 2026-10-20T08:26:35Z |
+| all_reviews_count | 12573 | 2026-11-18T08:02:44Z |
 | all_reviews_rating | 4.83 | 2026-10-20T08:06:30Z |
-| reviews_grid.metafield_updated_at | 2026-10-20T08:21:01Z | 2026-10-20T08:21:04Z |
-| shop_reviews_count | 0 | 2026-09-23T00:11:06Z |
-| shop_reviews_rating | 0.00 | 2026-09-23T00:11:06Z |
+| reviews_grid.metafield_updated_at | 2026-11-18T08:05:51Z | 2026-11-18T08:05:54Z |
+| shop_reviews_count | 1 | 2026-10-23T17:49:16Z |
+| shop_reviews_rating | 1.00 | 2026-10-23T17:49:16Z |
 
-## Harte Befunde — veroeffentlicht (0)
+## Harte Befunde — veroeffentlicht (1)
 
-_keine_
+| ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |
+|---|---|---|---|---|---|---|---|---|
+| 1393194701 | 2026-10-23T17:44 | 1 | 0 | Paola  | po…@gmail.com | «Aber gerne doch! So kommt vielleicht endlich eine Reaktion. » | veröffentlicht | ohne Produkt (Shop-Bewertung); Name unmaskiert «Paola» |
 
-## Nach dem Stopp entstanden (Importer-Muster, ID > 1374773944) — veroeffentlicht (0) / ausgeblendet (1191)
+## Nach dem Stopp entstanden (Importer-Muster, ID > 1374773944) — veroeffentlicht (114) / ausgeblendet (1191)
 
 Grundlage: `dropship/_bewertungen_stopp.txt` (Betreiber-Entscheid A, 20.10.2026: der Import bleibt aus). Eine Bewertung mit `cj-import…@luxestyle.ch`
 und einer ID ÜBER der Grenze kann nur ein Schreiber erzeugt haben, der die Stopp-Datei nicht kennt (Beleg 20.10.: eine zweite Sitzung auf `main`).
 Echte Käufer (andere Adresse) zählen nie. Ausblenden = `PUT …/reviews/<id>` `{"curated":"spam"}` — umkehrbar, entscheidet der Betreiber.
 
-_keine_
+| ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |
+|---|---|---|---|---|---|---|---|---|
+| 1411503069 | 2026-11-08T22:42 | 1 | 15447869751681 | Z***z | cj…@luxestyle.ch | «Die 24V 100Ah Batterie lädt nie über 26V, obwohl der Control» | veröffentlicht | Importer-Muster nach Stopp |
+| 1418950183 | 2026-11-14T07:05 | 3 | 16656724984199 | N***r | cj…@luxestyle.ch | «Die Uhr ist schön und stylisch, aber das Schließen hält nich» | veröffentlicht | Importer-Muster nach Stopp |
+| 1416148927 | 2026-11-12T07:47 | 3 | 16656733536647 | T***w | cj…@luxestyle.ch | «Zerbrechlich! Sieht gut aus, aber macht keinen stabilen Eind» | veröffentlicht | Importer-Muster nach Stopp |
+| 1415377243 | 2026-11-11T19:53 | 3 | 16656764240263 | W***o | cj…@luxestyle.ch | «Gutes Material, sein Geld wert. Quelle: CJ-Produktbewertung.» | veröffentlicht | Importer-Muster nach Stopp |
+| 1425597933 | 2026-11-18T07:58 | 4 | 16656672424327 | H***z | cj…@luxestyle.ch | «Produkt wie beschrieben 👌 Quelle: CJ-Produktbewertung. Kein » | veröffentlicht | Importer-Muster nach Stopp |
+| 1411507055 | 2026-11-08T22:57 | 4 | 15448076976513 | T***k | cj…@luxestyle.ch | «Hammer Qualität! Bin jedes Mal wieder überrascht, wie gut di» | veröffentlicht | Importer-Muster nach Stopp |
+| 1405999775 | 2026-11-03T19:50 | 4 | 15447957963137 | T***r | cj…@luxestyle.ch | «Sie kamen perfekt, das weiße Modell ist super, und ich habe » | veröffentlicht | Importer-Muster nach Stopp |
+| 1405995926 | 2026-11-03T19:46 | 4 | 15447944135041 | M***o | cj…@luxestyle.ch | «Sie ist flach und nicht so breit wie abgebildet.» | veröffentlicht | Importer-Muster nach Stopp |
+| 1405995796 | 2026-11-03T19:46 | 4 | 15447943971201 | Z***b | cj…@luxestyle.ch | «Der Hut kam pünktlich, aber die Farbe weicht leicht vom Bild» | veröffentlicht | Importer-Muster nach Stopp |
+| 1405992951 | 2026-11-03T19:44 | 4 | 15447930732929 | J***k | cj…@luxestyle.ch | «Sie sind super, aber für jemanden mit starkem Arm könnte es » | veröffentlicht | Importer-Muster nach Stopp |
+| 1405990434 | 2026-11-03T19:41 | 4 | 15447922213249 | P***m | cj…@luxestyle.ch | «Sie sind sehr gut, warm, obwohl die Größe einheitlich ist un» | veröffentlicht | Importer-Muster nach Stopp |
+| 1405990416 | 2026-11-03T19:41 | 4 | 15447922213249 | Q***g | cj…@luxestyle.ch | «Die Farbe stimmt nicht mit dem Bild überein, es ist ein ande» | veröffentlicht | Importer-Muster nach Stopp |
+| 1405988920 | 2026-11-03T19:40 | 4 | 15447917330817 | B***r | cj…@luxestyle.ch | «Die Bügel sind etwas schwach, aber das Produkt ist schön und» | veröffentlicht | Importer-Muster nach Stopp |
+| 1405986389 | 2026-11-03T19:37 | 4 | 15447904616833 | S***r | cj…@luxestyle.ch | «Kann ich empfehlen, gefällt mir, Design ist schön, aber das » | veröffentlicht | Importer-Muster nach Stopp |
+| 1405986384 | 2026-11-03T19:37 | 4 | 15447904616833 | N***j | cj…@luxestyle.ch | «Ziemlich klein, bestell am besten die größte und bohr ein Lo» | veröffentlicht | Importer-Muster nach Stopp |
+| 1405985316 | 2026-11-03T19:36 | 4 | 15447898915201 | L***w | cj…@luxestyle.ch | «Ich musste es von Hand reparieren, damit es gut passt.» | veröffentlicht | Importer-Muster nach Stopp |
+| 1405929915 | 2026-11-03T18:40 | 4 | 15447891214721 | K***u | cj…@luxestyle.ch | «Sieht hübsch aus~ Ich dachte, es könnte etwas altmodisch wir» | veröffentlicht | Importer-Muster nach Stopp |
+| 1425597922 | 2026-11-18T07:58 | 5 | 16656672424327 | X***x | cj…@luxestyle.ch | «Gute Größe und Qualität! Du kannst darin komplett umziehen, » | veröffentlicht | Importer-Muster nach Stopp |
+| 1423763156 | 2026-11-17T08:33 | 5 | 16656674718087 | S***d | cj…@luxestyle.ch | «Die Uhr hat meine Erwartungen übertroffen – sie liegt schwer» | veröffentlicht | Importer-Muster nach Stopp |
+| 1423763132 | 2026-11-17T08:33 | 5 | 16656674718087 | L***c | cj…@luxestyle.ch | «Tolle Uhr! Sieht genauso aus wie auf dem Bild! Quelle: CJ-Pr» | veröffentlicht | Importer-Muster nach Stopp |
+| 1421051342 | 2026-11-15T19:09 | 5 | 16656675570055 | G***z | cj…@luxestyle.ch | «Es ist eine günstige Version anderer Marken, funktioniert ab» | veröffentlicht | Importer-Muster nach Stopp |
+| 1418950181 | 2026-11-14T07:05 | 5 | 16656724984199 | H***t | cj…@luxestyle.ch | «Mal sehen, ob mich dieses Modell motiviert und ich später da» | veröffentlicht | Importer-Muster nach Stopp |
+| 1418950157 | 2026-11-14T07:05 | 5 | 16656725311879 | R***n | cj…@luxestyle.ch | «Tolle Uhr, danke! Quelle: CJ-Produktbewertung. Kein verifizi» | veröffentlicht | Importer-Muster nach Stopp |
+| 1418950153 | 2026-11-14T07:05 | 5 | 16656725311879 | Z***k | cj…@luxestyle.ch | «Ist toll, ich empfehle es zu 100%. Quelle: CJ-Produktbewertu» | veröffentlicht | Importer-Muster nach Stopp |
+| 1418950137 | 2026-11-14T07:05 | 5 | 16656725672327 | V***d | cj…@luxestyle.ch | «Gut angekommen, genau das, was ich gesucht habe. Danke für d» | veröffentlicht | Importer-Muster nach Stopp |
+| 1416148944 | 2026-11-12T07:47 | 5 | 16656733536647 | S***c | cj…@luxestyle.ch | «Super Uhr, tolle Qualität! Hat mich nur ca. 15 Euro (60.000 » | veröffentlicht | Importer-Muster nach Stopp |
+| 1415377266 | 2026-11-11T19:53 | 5 | 16656764240263 | T***n | cj…@luxestyle.ch | «Genau wie beworben. Schnelle Lieferung, keine Probleme. Quel» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411507336 | 2026-11-08T22:57 | 5 | 15448077435265 | N***j | cj…@luxestyle.ch | «Liebe es! Quelle: CJ-Produktbewertung. Kein verifizierter Ka» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411507325 | 2026-11-08T22:57 | 5 | 15448077435265 | X***h | cj…@luxestyle.ch | «Qualität ist okay, kam schnell. Quelle: CJ-Produktbewertung.» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411507316 | 2026-11-08T22:57 | 5 | 15448077435265 | S***b | cj…@luxestyle.ch | «Größe passt, ist auch sehr schön. Material ist okay. Quelle:» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411507065 | 2026-11-08T22:57 | 5 | 15448076976513 | Q***q | cj…@luxestyle.ch | «Sehr gute Stoffqualität, super dehnbar und die Farbe ist gen» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411507060 | 2026-11-08T22:57 | 5 | 15448076976513 | W***r | cj…@luxestyle.ch | «Super bequem! Die Brustpolster sind zwar recht dick, lassen » | veröffentlicht | Importer-Muster nach Stopp |
+| 1411504765 | 2026-11-08T22:47 | 5 | 15447970152833 | G***e | cj…@luxestyle.ch | «Die Lieferung hat zu lange gedauert. Quelle: CJ-Produktbewer» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411504755 | 2026-11-08T22:47 | 5 | 15447970152833 | G***e | cj…@luxestyle.ch | «Die Lieferung hat zu lange gedauert. Quelle: CJ-Produktbewer» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411503090 | 2026-11-08T22:42 | 5 | 15447869751681 | Q***y | cj…@luxestyle.ch | «Guter Service, guter Preis. Quelle: CJ-Produktbewertung. Kei» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411503077 | 2026-11-08T22:42 | 5 | 15447869751681 | G***w | cj…@luxestyle.ch | «Der Servicepoint hat das Paket abgelehnt, ich musste extra z» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411502950 | 2026-11-08T22:42 | 5 | 15447866311041 | Q***t | cj…@luxestyle.ch | «Das Ladegerät lädt super schnell und hat sowohl USB- als auc» | veröffentlicht | Importer-Muster nach Stopp |
+| 1411502947 | 2026-11-08T22:42 | 5 | 15447866311041 | J***s | cj…@luxestyle.ch | «Der Versand war super schnell, mein Paket ist schon da. Hab'» | veröffentlicht | Importer-Muster nach Stopp |
+| 1406029800 | 2026-11-03T20:17 | 5 | 15448001773953 | Y***j | cj…@luxestyle.ch | «Einfach wunderbar, das Material ist ausgezeichnet – bestell » | veröffentlicht | Importer-Muster nach Stopp |
+| 1406029795 | 2026-11-03T20:17 | 5 | 15448001773953 | A***w | cj…@luxestyle.ch | «Du schenkst es deiner Mama, sie wird es lieben.» | veröffentlicht | Importer-Muster nach Stopp |
+… und 74 weitere (Deckel 40)
 
-## Namen unmaskiert — veroeffentlicht (0)
+## Namen unmaskiert — veroeffentlicht (1)
 
-_keine_
+| ID | erstellt | ★ | Produkt-ID | Name | E-Mail (maskiert) | Text | Zustand | Gruende |
+|---|---|---|---|---|---|---|---|---|
+| 1402275439 | 2026-10-31T15:50 | 5 | 15524003873153 | Paola  | po…@gmail.com | «produit désastreux livré, mais remboursement du prix sabs di» | veröffentlicht | Name unmaskiert «Paola» |
 
 ## Bereits ausgeblendet / unveroeffentlicht mit Befund (51)
 

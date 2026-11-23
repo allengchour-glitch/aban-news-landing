@@ -1,6 +1,6 @@
-# Tag «weihnachten» ohne Weihnachtsbezug — Stand 2026-10-23 04:29 UTC
+# Tag «weihnachten» ohne Weihnachtsbezug — Stand 2026-11-23 21:56 UTC
 
-Aktiv mit Tag: 300 · verdient (Weihnachtswort im Titel): 298 · unverdient Partydeko: 0 → entfernt 0, Fehler 0 · unverdient andere Quelle (nur gemeldet): 2
+Aktiv mit Tag: 312 · verdient (Weihnachtswort im Titel): 310 · unverdient Partydeko: 0 → entfernt 0, Fehler 0 · unverdient andere Quelle (nur gemeldet): 2
 
 Regel: `data/weihnachten_tag_regel.json`.
 
