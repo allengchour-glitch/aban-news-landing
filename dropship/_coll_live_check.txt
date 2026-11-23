@@ -665,3 +665,34 @@ damen-kleider-cocktail	ok	21	Cocktail- & Partykleider
 damen-kleider-business	ok	29	Business- & Etuikleider
 damen-kleider-sommer	ok	29	Sommerkleider
 damen-kleider-strand	ok	29	Strandkleider
+damen-kleider-boho	ok	28	Boho-Kleider
+damen-kleider-strick	ok	29	Strick- & Winterkleider
+damen-kleider-freizeit	ok	29	Freizeit- & Hemdblusenkleider
+damen-kleider-blumen	ok	29	Blumenkleider
+damen-kleider-spitze	ok	29	Spitzenkleider
+damen-kleider-langarm	ok	29	Langarmkleider
+damen-kleider-schulterfrei	ok	29	Schulterfreie Kleider
+damen-roecke	ok	29	Röcke
+damen-roecke-mini	ok	29	Miniröcke
+damen-roecke-midi	ok	29	Midiröcke
+damen-roecke-maxi	ok	29	Maxiröcke & lange Röcke
+damen-roecke-jeans	ok	29	Jeansröcke
+damen-roecke-plissee	ok	29	Plissee- & Faltenröcke
+damen-jumpsuits	ok	29	Jumpsuits & Overalls
+damen-jumpsuits-overall	ok	25	Overalls & Latzhosen
+damen-jumpsuits-playsuit	ok	21	Playsuits & kurze Jumpsuits
+damen-jumpsuits-sport	ok	22	Jumpsuits für Sport & Yoga
+damen-sets-hose	ok	29	Sets mit Hose
+damen-sets-rock	ok	25	Sets mit Rock
+damen-sets-sport	ok	27	Trainings- & Hoodie-Sets
+damen-sets-sommer	ok	29	Sommer- & Freizeit-Sets
+damen-jacken-maentel-maentel	ok	29	Mäntel
+damen-jacken-winter	ok	29	Winter- & Daunenjacken
+damen-jacken-westen	ok	29	Westen
+damen-jacken-blazer	ok	29	Blazer
+damen-jacken-kunstfell	ok	29	Fell- & Plüschjacken
+damen-jacken-kapuze	ok	29	Jacken mit Kapuze
+damen-jeans	ok	29	Jeans
+damen-jeans-highwaist	ok	29	High-Waist-Jeans
+damen-jeans-weit	ok	29	Weite Jeans & Wide Leg
+damen-jeans-gerade	ok	29	Straight-Leg-Jeans
