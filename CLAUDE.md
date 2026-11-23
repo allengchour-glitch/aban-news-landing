@@ -105,6 +105,11 @@ die KAUFEN.** Mehr Produkte sind dabei Mittel, nicht Selbstzweck. Bei jeder Drop
   Hauptmodell, darum bei Fable mit `model: "sonnet"` oder `"opus"` starten. Wirkung ab dem nächsten Sitzungsstart, ungemessen.
 
 ## Stand
+**📌 2026-11-23 (🤖 Papierbot: Ziel «rund 100 Papiertrades am Tag», Besitzer «es traidet zu wenig», «100 trades täglich ca», «du bist jetzt chef»; Auftrag `dropship/CODEX-AUFTRAG-100-TRADES-2311.md`):**
+- **Auslegung (meine, nicht bestätigt):** Claude leitet, Codex baut. Nur Papiergeld; echte Orders, Transfers und Börsenschlüssel bleiben gesperrt.
+- **GEMESSEN:** Starter `BINANCE-PAPIERBUDGET.sh` (SHA256 `eba29693…`), Bootstrap (`07492616…`) und Paket (`301e2224…`) gleich Übergabe und gleich den im Starter eingetragenen Werten; Papier-Maximum = 8 Plätze zu je 100 Papier-USDT, Befehl dem Besitzer gegeben, Ausführung auf Hetzner offen.
+- **Ungemessen:** wie viele Trades der Bot heute macht und welche Regel Signale blockiert; echter Gebührensatz im Papierdienst (Annahme 0,1 % je Seite, dann rund 20 USDT Gebühren bei 100 Trades). Mehr Trades heissen nicht mehr Gewinn.
+- **Nächste Schritte:** Besitzer gibt Codex den Auftrag; Abnahme durch Claude (Tests, Mutationsprobe, Rechenlauf gegen das alte Profil, Prüfsummen).
 **📌 2026-11-22 (🤖 KI-Bot-Update von Codex empfangen, nicht tief geprüft; Besitzer «ki bot updaten von codex», «token sparen»; Doku `docs/CODEX-CLAUDE-UEBERGABE.md` «ABAN-Papierbot-Stand 22.11.»):**
 - **GEMESSEN:** Drive-ZIP `ABAN-Hetzner-Paper.zip` 1 380 822 Byte, SHA256 `3cdccebe…7668` gleich der Übergabe vom 22.11. Der Bot läuft laut Übergabe (QUELLE Nutzer-Terminal) schon auf Hetzner; die Blocker vom 16.11. betrafen den Erststart und sind damit überholt.
 - **Ungemessen:** Code, Tests, Sicherheitsprüfung des neuen Pakets; die anderen Lieferdateien nicht nachgerechnet. Offen beim Besitzer: `BINANCE-PAPIERBUDGET.sh` auf Hetzner ausführen. Nur Papiergeld.
