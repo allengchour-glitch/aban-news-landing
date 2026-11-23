@@ -213,3 +213,8 @@
 16603332608391	uebersprungen-status	2026-11-23
 16603739390343	eu-sku-gesetzt:CJJF311004402BY	2026-11-23	Lockenstab für grosse Wellen
 15468317311361	eu-sku-gesetzt:CJSJ299945303CX	2026-11-23	All-in-one Ladestation für Smartwatches
+15479338664321	uebersprungen-status	2026-11-23
+15479417799041	uebersprungen-status	2026-11-23
+15479419142529	uebersprungen-status	2026-11-23
+15493807440257	eu-sku-gesetzt:CJXFLPCD00241-White-EU	2026-11-23	WII Ladestation
+15493808095617	eu-sku-gesetzt:CJXFLPCD00235-EU	2026-11-23	Multifunktionaler Ladeständer aus Bambus
