@@ -6006,3 +6006,5 @@ cordschnurhosen-fur-herren-plus-grosse-611000	hat-liste
 camo-cargo-hosen-607300	hat-liste
 leichter-business-rucksack-624200	gesetzt-2
 wc-burste-wandmontage-624700	gesetzt-2
+wc-burste-mit-langem-stiel-627700	gesetzt-2
+retro-camouflage-arbeitshose-herren-636700	gesetzt-4
