@@ -396,3 +396,23 @@ gid://shopify/Product/16655534850439	musikalische-taschenuhr-individuell-609100	
 gid://shopify/Product/16656675570055	taktischer-becher-mit-magazin-design-634600	Taktischer Becher mit Magazin-Design
 gid://shopify/Product/16656675668359	gold-case-uhr-mit-goldteller-mediterraner-stil-602500	Gold-Case-Uhr mit Goldteller – Mediterraner Stil
 gid://shopify/Product/16656701784455	3d-militarausgabe-jubilaumsbecher-634500	3D-Militärausgabe Jubiläumsbecher
+gid://shopify/Product/16661098398087	wasserwellen-projektor-mit-sternenlicht-bluetooth-musik-fernbedienung-nachtlicht-furs-schlafzimmer	Wasserwellen-Projektor mit Sternenlicht, Bluetooth-Musik & Fernbedienung – Nachtlicht fürs Schlafzimmer
+gid://shopify/Product/16732012806535	batterie-set-20-stuck-1-5-v-alkalisch-622000	Batterie-Set 20 Stück 1,5 V (alkalisch)
+gid://shopify/Product/16732012872071	leopardfransen-schal-mit-warmefunktion-620700	Leopardfransen-Schal mit Wärmefunktion
+gid://shopify/Product/16732102230407	kuscheliger-wollschal-in-schwarz-608800	Kuscheliger Wollschal in Schwarz
+gid://shopify/Product/16732102394247	usb-ladegerat-fur-aa-aaa-batterien-4-slots-600500	USB-Ladegerät für AA/AAA-Batterien, 4 Slots
+gid://shopify/Product/16732105834887	krokodilsprint-sandalen-mit-offenen-zehen-631900	Krokodilsprint Sandalen mit offenen Zehen
+gid://shopify/Product/16732106654087	chiffon-schal-mit-goldener-herbstmuster-619500	Chiffon-Schal mit goldener Herbstmuster
+gid://shopify/Product/16732114354567	kuscheliges-fellcape-in-beige-schwarz-40-cm-629300	Kuscheliges Fellcape in Beige/Schwarz – 40 cm
+gid://shopify/Product/16732114452871	vr-headset-fur-smartphones-4-7-6-7-1080p-616700	VR-Headset für Smartphones 4,7–6,7" – 1080P
+gid://shopify/Product/16732114485639	faux-leder-kleidermantel-mit-kragen-602700	Faux-Leder-Kleidermantel mit Kragen
+gid://shopify/Product/16732114518407	schwarze-flache-sandalen-mit-verstecktem-absat-606300	Schwarze flache Sandalen mit verstecktem Absatz
+gid://shopify/Product/16732156264839	kurz-geschnittene-steppjacke-mit-puffarmel-635000	Kurz geschnittene Steppjacke mit Puffärmel
+gid://shopify/Product/16732161147271	weisser-polyester-schal-mit-spitzzug-611800	Weisser Polyester-Schal mit Spitzzug
+gid://shopify/Product/16732214165895	winterfleece-stiefel-fur-kleinkinder-620300	Winterfleece-Stiefel für Kleinkinder
+gid://shopify/Product/16732214198663	kabelloser-gamecontroller-621200	Kabelloser Gamecontroller
+gid://shopify/Product/16732220260743	lauflernschuhe-pink-dunne-sohle-klettverschlus-600900	Lauflernschuhe Pink, dünne Sohle, Klettverschluss
+gid://shopify/Product/16732221145479	acryl-wandlampe-ohne-bohrung-618800	Acryl-Wandlampe ohne Bohrung
+gid://shopify/Product/16732257419655	baby-laufschuhe-mit-ledersohle-606900	Baby-Laufschuhe mit Ledersohle
+gid://shopify/Product/16732257517959	programmierbarer-roboter-mit-tanz-und-gesten-625300	Programmierbarer Roboter mit Tanz und Gesten
+gid://shopify/Product/16732296839559	zahncreme-deckel-weihnachtsmotiv-5-figuren-610800	Zahncreme-Deckel Weihnachtsmotiv (5 Figuren)
