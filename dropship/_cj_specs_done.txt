@@ -5940,3 +5940,6 @@ silberarmband-614500	nicht-aktiv
 laufschuhe-614400	gesetzt-5
 rotes-midi-kleid-602000	hat-liste
 laufschuhe-fur-kinder-038656	gesetzt-2
+smartwatch-mit-gesundheitsueberwachung-624500	gesetzt-3
+outdoor-uhr-612300	gesetzt-3
+weite-damen-jeans-604400	hat-liste
