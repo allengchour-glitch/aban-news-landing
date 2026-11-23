@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 17:53 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 17:58 UTC — **vollständig**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **53'453**
-- Optionen mit englischen Werten (Kandidaten): 1'722
-- Optionen übersetzt: **304** · Werte übersetzt: **772**
-- Optionen nur codebereinigt: 107
-- Werte mit unbekanntem Wort (unverändert): 4'283
+- Produkte gesehen: **56'285**
+- Optionen mit englischen Werten (Kandidaten): 1'780
+- Optionen übersetzt: **332** · Werte übersetzt: **971**
+- Optionen nur codebereinigt: 110
+- Werte mit unbekanntem Wort (unverändert): 4'471
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 36
+- übersprungen «kleidungsstueck-im-wert»: 37
 - übersprungen «kollision-nach-uebersetzung»: 30
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -97,5 +97,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 152, `powder` 107, `french` 84, `core` 75, `elegant` 73, `size` 70, `high` 66, `one` 65, `cherry` 59, `shell` 51, `diamond` 48, `four` 46, `⟨satzbau:mass-ohne-einheit⟩` 45, `chain` 40, `inner` 38, `lotus` 37, `(insole` 36, `color` 34, `avocado` 34, `×` 33, `end` 33, `space` 33, `blossom` 31, `tc` 31, `carbon` 31, `li` 31, `of` 30, `star` 29, `opp` 28, `intergold` 28, `tea` 27, `basic` 27, `plush` 27, `weiß` 26, `gel` 26, `stickers` 26, `skin` 25, `happy` 25, `gun` 24, `two` 24, `you` 24, `⟨satzbau:menge-vor-nomen⟩` 23, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `three` 22, `crown` 22, `no` 21, `to` 21, `love` 21, `inside` 21, `2er` 20, `rabbit` 20, `light` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `strawberry` 20, `oxford` 20
+`⟨satzbau:adjektiv-vor-nomen⟩` 164, `powder` 107, `inner` 92, `french` 84, `core` 78, `elegant` 75, `size` 71, `high` 69, `one` 65, `cherry` 59, `shell` 51, `diamond` 48, `four` 47, `⟨satzbau:mass-ohne-einheit⟩` 45, `chain` 40, `lotus` 39, `(insole` 36, `color` 34, `avocado` 34, `×` 33, `end` 33, `space` 33, `carbon` 32, `blossom` 31, `tc` 31, `li` 31, `of` 30, `star` 29, `tea` 28, `opp` 28, `intergold` 28, `basic` 27, `plush` 27, `weiß` 26, `gel` 26, `stickers` 26, `⟨satzbau:menge-vor-nomen⟩` 25, `skin` 25, `to` 25, `happy` 25, `gun` 24, `two` 24, `you` 24, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `three` 22, `crown` 22, `no` 21, `love` 21, `inside` 21, `2er` 20, `rabbit` 20, `light` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `strawberry` 20, `oxford` 20
 
