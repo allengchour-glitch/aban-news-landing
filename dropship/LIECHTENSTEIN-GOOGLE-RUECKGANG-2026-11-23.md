@@ -20,3 +20,12 @@ Ein Neu-Import am 21.11. (Versandänderung oder Shopifys Umstellung auf «Market
 1. Einstellungen (Zahnrad) → Versand und Rückgaben → Versanddienste: gibt es den Dienst für **Liechtenstein** (CHF, alle Produkte, CHF 14.90)?
 2. Fehlt er oder steht er auf inaktiv: neu anlegen — Land Liechtenstein, Währung CHF, Lieferzeit 15–45 Werktage, Pauschal CHF 14.90, für alle Produkte.
 3. Produkte → Diagnose → Filter Land LI: «Missing shipping information» sollte in 1–3 Tagen sinken.
+
+## ⚠️ Nachtrag 23.11. abends — Hypothese widerlegt (Merchant-Export «Produktprobleme», 19:34 Uhr, vom Betreiber)
+GEMESSEN im Export (45'757 Zeilen, 20'388 Artikel-IDs): **0 Zeilen «Versandinformationen fehlen»**, auch nicht für LI. LI hat nur 216 Zeilen (alle Sprache de):
+70 Artikel «Verzögerungen bei der Bildverarbeitung» (wartet) und 2 «Anzeigen-Overlay auf Bild». Der LI-Versanddienst wirkt also; die Betreiber-Klickliste oben ist hinfällig.
+Auffällig: In der Schweiz tragen 40'643 Zeilen die Sprache **fr** (4'938 Produkte nur fr), in LI nur de. Hypothese (nicht belegt): Google zeigt in LI nur noch
+deutschsprachige Angebote; die französischen Angebote, die bis 21.11. auch in LI zählten, fielen dort weg. Das wäre kein Schaden (LI ist deutschsprachig).
+Echte Gratis-Eintrags-Sperren in CH: 41 Artikel «Anzeigen-Overlay auf Bild» (21 Produkte, wird per Bildtausch behoben), Fehleinstufungen durch Google
+(«Verkauf lebender Tiere»: Hundeweste/-leine/Katzenpullover; «Tabak»: Kaffeetasse, Lockenstab; «Waffen»: Pfeffermühle; «Lokale Anforderungen»: Kinderschuhe; «Bild zu klein»: Wimpernkrümmer)
+→ im Merchant Center je Artikel «Überprüfung beantragen». 22'397 «Zu viele Produkte (CSS)» betreffen nur Shopping-Anzeigen.

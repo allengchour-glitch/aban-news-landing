@@ -577,3 +577,84 @@ glaetteisen	ok	29	Glätteisen & Haarglätter
 uhrenarmbaender	ok	29	Uhrenarmbänder & Smartwatch-Armbänder
 handtuchhalter	ok	21	Handtuchhalter & Handtuchstangen
 herren-jeans	ok	29	Herren-Jeans
+tassen-becher	ok	29	Tassen & Becher
+geschirr-teller	ok	29	Geschirr & Teller
+besteck	ok	29	Besteck & Essstäbchen
+toepfe-pfannen-backen	ok	29	Töpfe, Pfannen & Backen
+kuechenmaschinen-geraete	ok	29	Küchenmaschinen & Elektrogeräte
+kuechen-organizer	ok	29	Küchen-Organizer & Abtropfgestelle
+vorratsdosen	ok	29	Vorratsdosen & Frischhaltedosen
+waagen	ok	29	Waagen
+koerbe-behaelter	ok	29	Körbe & Behälter
+armaturen-duschen	ok	29	Armaturen & Duschen
+notizbuecher-journaling	ok	29	Notizbücher & Journaling
+kissen	ok	29	Kissen
+kissenbezuege	ok	29	Kissenbezüge & Kissenhüllen
+sitz-rueckenkissen	ok	29	Sitz- & Rückenkissen
+sofa-moebelueberzuege	ok	29	Sofa- & Möbelüberzüge
+wandbilder-poster	ok	29	Wandbilder & Poster
+vasen-blumentoepfe	ok	29	Vasen & Blumentöpfe
+tisch-nachttischlampen	ok	29	Tisch- & Stehlampen
+nachttischlampen	ok	29	Nachttischlampen
+wandleuchten	ok	29	Wandleuchten
+deckenleuchten	ok	29	Decken- & Pendelleuchten
+nachtlichter-ambiente	ok	30	Nachtlichter & Ambiente-Licht
+make-up-pinsel-tools	ok	29	Make-up Pinsel & Tools
+kunstnaegel-press-on	ok	29	Kunstnägel & Press-on
+haarbuersten-kaemme	ok	28	Haarbürsten & Kämme
+mundpflege	ok	29	Mundpflege & Zähne
+schmuckaufbewahrung	ok	29	Schmuckaufbewahrung & Displays
+naehen-sticken-stricken	ok	29	Nähen, Sticken & Stricken
+harz-giessformen	ok	29	Harz & Giessformen
+modellbau	ok	29	Modellbau & Bausätze
+sanitaer-schrauben-beschlaege	ok	29	Sanitär, Schrauben & Beschläge
+fahrrad-auto-werkzeug	ok	29	Fahrrad- & Autowerkzeug
+konsolen-zubehoer	ok	29	Konsolen & Zubehör
+3d-drucker-zubehoer	ok	28	3D-Drucker & Zubehör
+schmuck	ok	30	Schmuck
+portemonnaies-geldboersen	ok	29	Portemonnaies & Geldbörsen
+kartenhalter-kartenetuis	ok	29	Kartenhalter & Kartenetuis
+aktentaschen-messenger	ok	29	Aktentaschen & Messenger Bags
+kulturbeutel-organizer	ok	29	Kulturbeutel & Packorganizer
+baby-ausstattung	ok	29	Baby-Ausstattung & Zubehör
+bausteine-konstruktion	ok	29	Bausteine & Konstruktion
+puppen-spielfiguren	ok	29	Puppen & Spielfiguren
+puzzles-spiele	ok	29	Puzzles & Spiele
+schule-kindergarten	ok	29	Schule & Kindergarten
+tierbetten-kratzbaeume	ok	29	Betten, Kratzbäume & Möbel
+aquarium-fische	ok	24	Aquarium & Fische
+leinen-halsbaender-geschirre	ok	29	Leinen, Halsbänder & Geschirre
+hunde-katzen-kleidung	ok	28	Hunde- & Katzenkleidung
+broschen-pins	ok	29	Broschen & Pins
+koerper-fussschmuck	ok	22	Körper- & Fussschmuck
+wanderschuhe-trekking	ok	29	Wanderschuhe & Trekking
+arbeitsschuhe	ok	29	Arbeits- & Sicherheitsschuhe
+vr-brillen-headsets	ok	23	VR-Brillen & Headsets
+smarte-brillen-ki	ok	16	Smarte Brillen & KI-Gadgets
+buero-organizer-ablage	ok	29	Büro-Organizer & Ablage
+kalender-planer	ok	29	Kalender & Planer
+schreibwaren-stifte	ok	29	Schreibwaren & Stifte
+bueroelektronik	ok	29	Büroelektronik
+schreibtischlampen	ok	18	Schreibtisch- & Leselampen
+mauspads-unterlagen	ok	29	Mauspads & Schreibtischunterlagen
+solar-energie	ok	29	Solar & Outdoor-Energie
+retro-vintage	ok	29	Retro & Vintage
+damen-umstandsmode	ok	28	Umstandsmode
+damen-bademode	ok	29	Bademode
+damen-bademode-bikini	ok	29	Bikinis & Tankinis
+damen-bademode-badeanzug	ok	29	Badeanzüge
+damen-nachtwaesche	ok	29	Nachtwäsche & Loungewear
+damen-nachtwaesche-pyjama	ok	20	Pyjamas & Schlafanzüge
+damen-nachtwaesche-nachthemd	ok	28	Nachthemden & Morgenmäntel
+damen-dessous	ok	29	Dessous & Unterwäsche
+damen-dessous-bh	ok	29	BHs, Dessous & Korsetts
+damen-dessous-shapewear	ok	29	Shapewear
+damen-dessous-strumpfhosen	ok	29	Strumpfhosen, Strümpfe & Socken
+damen-sportbekleidung	ok	29	Sportbekleidung
+damen-sport-leggings	ok	29	Sport-Leggings
+damen-sport-yogahosen	ok	29	Yogahosen
+damen-sport-shorts	ok	26	Sport-Shorts
+damen-sport-sets	ok	23	Sets, Anzüge & Jumpsuits
+damen-sport-tops	ok	22	Sport-Tops & BHs
+damen-kleider	ok	28	Kleider
+damen-kleider-mini	ok	29	Minikleider
