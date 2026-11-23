@@ -6,8 +6,8 @@ Die Stimme laeuft deshalb als A/B (Anteil im Reel-Motor, Merkmal im Verlauf), ni
 
 Motor-Wahl GEMESSEN 23.09. (Probe «Kennst du das schon? Der Sternenhimmel-Projektor fuer neunundzwanzig Franken
 neunzig — jetzt bei LuxeStyle.», Whisper-small-Rueckhoeren + DNSMOS + Tonhoehen-Spanne; Tabelle automation/music/STIMME.md):
-  edge   de-CH-JanNeural   6.0 s · 5/5 Schluesselwoerter · P808 4.16 · Spanne 13.3 Halbtoene  <- Standard (Schweizer Stimme)
-  edge   de-CH-LeniNeural  7.1 s · 5/5 · P808 4.08 · Spanne 7.7 (flacher)                     <- Beauty/Schmuck (Hypothese, A/B)
+  edge   de-CH-JanNeural   6.0 s · 5/5 Schluesselwoerter · P808 4.16 · Spanne 13.3 Halbtoene  <- bis 23.11. Standard; ⛔ seit 23.11. gesperrt (Betreiber: keine CH-Stimme)
+  edge   de-CH-LeniNeural  7.1 s · 5/5 · P808 4.08 · Spanne 7.7 (flacher)                     <- ⛔ seit 23.11. gesperrt
   piper  thorsten-medium   5.9 s · 5/5 · P808 3.91 · Spitze 0 dBFS (clippt, wird hier gesenkt) <- Notnagel ohne Netz
   gemini flash-preview-tts 7.3 s · 2-3/5 («Projekt hier», «Luxusteil»)                           <- nur auf Wunsch (--motor gemini)
   espeak: im Container nicht installiert — kein Kandidat.
@@ -29,8 +29,19 @@ import argparse, asyncio, json, os, re, ssl, subprocess, sys, tempfile
 PIPER_DIR = os.environ.get('PIPER_DIR', '/tmp/piper_voices')
 PIPER_MODELL = os.environ.get('PIPER_MODELL', 'de_DE-thorsten-medium')
 PIPER_URL = 'https://huggingface.co/rhasspy/piper-voices/resolve/main/de/de_DE/thorsten/medium/'
-EDGE_STANDARD = 'de-CH-JanNeural'
-EDGE_WEIBLICH = 'de-CH-LeniNeural'
+# ⛔ 23.11.2026 Betreiber «kein ch stimme in zukunft»: keine Schweizer Stimme (de-CH-*) mehr. Standard ist Hochdeutsch.
+EDGE_STANDARD = 'de-DE-FlorianMultilingualNeural'
+EDGE_WEIBLICH = 'de-DE-SeraphinaMultilingualNeural'
+CH_ERSATZ = {'de-CH-JanNeural': EDGE_STANDARD, 'de-CH-LeniNeural': EDGE_WEIBLICH}
+
+
+def ohne_ch(stimme):
+    """Sperre (Betreiber 23.11.2026): jede de-CH-Stimme wird durch die hochdeutsche ersetzt, egal wer sie übergibt."""
+    if stimme and str(stimme).startswith('de-CH'):
+        neu = CH_ERSATZ.get(stimme, EDGE_STANDARD)
+        print(f'  Stimme {stimme} gesperrt (keine CH-Stimme) → {neu}', file=sys.stderr, flush=True)
+        return neu
+    return stimme
 ZIEL_LUFS = -16.0          # Sprache allein; die Mischung in make_reel.sh geht danach auf -14
 PROBE = 'Kennst du das schon? Der Sternenhimmel-Projektor für neunundzwanzig Franken neunzig — jetzt bei LuxeStyle.'
 
@@ -242,12 +253,13 @@ def veredeln(roh, out, tempo=1.0):
 
 def stimme_fuer(thema):
     if os.environ.get('STIMME_NAME'):
-        return os.environ['STIMME_NAME']
+        return ohne_ch(os.environ['STIMME_NAME'])
     return EDGE_WEIBLICH if thema in ('beauty', 'schmuck') else EDGE_STANDARD
 
 
 def sprich(text, out, motor, stimme, tmpdir, tempo=1.0):
     """-> (motor, stimme) oder Exception. Roh-Datei nach tmpdir, Endfassung nach out."""
+    stimme = ohne_ch(stimme)
     # auto: Azure nur wenn Schluessel da (gleiche Stimme, lizenzsauber), sonst piper (CC0); edge nur ausdruecklich
     # 23.09. 19:40: edge NIE automatisch (inoffizieller Dienst, keine Werbelizenz) — nur mit --motor edge ausdruecklich.
     reihe = (['azure'] if os.environ.get('AZURE_SPEECH_KEY') else []) + ['piper'] if motor == 'auto' else [motor]
@@ -282,7 +294,7 @@ def sprich(text, out, motor, stimme, tmpdir, tempo=1.0):
 
 def vergleich(ziel):
     os.makedirs(ziel, exist_ok=True)
-    kandidaten = [('edge', v) for v in ('de-CH-JanNeural', 'de-CH-LeniNeural', 'de-DE-FlorianMultilingualNeural',
+    kandidaten = [('edge', v) for v in ('de-DE-FlorianMultilingualNeural',
                                         'de-DE-SeraphinaMultilingualNeural', 'de-DE-ConradNeural')] + [('piper', PIPER_MODELL)]
     if os.environ.get('MIT_GEMINI') == '1':
         kandidaten.append(('gemini', 'Puck'))

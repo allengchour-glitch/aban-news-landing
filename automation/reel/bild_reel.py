@@ -358,7 +358,7 @@ def main():
     ap.add_argument("--hook", default="Schon gesehen?")
     ap.add_argument("--musik", default="")
     ap.add_argument("--musik-start", type=float, default=None, help="18.10.2026: Einstieg in Sekunden (sonst erster Eintrag aus _einstiege.json)")
-    ap.add_argument("--stimme", default="de-CH-JanNeural")
+    ap.add_argument("--stimme", default="de-DE-FlorianMultilingualNeural")   # 23.11.2026: keine CH-Stimme
     ap.add_argument("--dauer", type=float, default=11.0)
     ap.add_argument("--max-bilder", type=int, default=7)
     ap.add_argument("--out-dir", default="/tmp/bildreel")

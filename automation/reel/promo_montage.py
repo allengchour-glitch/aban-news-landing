@@ -90,7 +90,7 @@ VARIANTEN["kuscheltiere"] = {
     "titel": "LuxeStyle Kuscheltiere",
     "stimme": {"text": "Kuschelzeit! Berner Sennenhund, Hochlandrind, Waschbär, Alpaka und Adler – ab einundzwanzig Franken, "
                        "aus dem Schweizer Lager meist in zwei bis drei Werktagen bei dir. Jetzt bei LuxeStyle.",
-               "stimme": "de-CH-JanNeural", "start": 0.7},
+               "stimme": "de-DE-FlorianMultilingualNeural", "start": 0.7},
     "produkte": [
         {"handle": "liegender-plusch-berner-sennenhund-fga88255", "name": "Liegender Plüsch Berner Sennenhund", "bilder": [0, 1]},
         {"handle": "plusch-hochlandrind-fga59641", "name": "Plüsch Hochlandrind", "bilder": [0, 1]},
@@ -529,7 +529,7 @@ def stimme_rendern(var, tmp):
     wav = os.path.join(tmp, "stimme.wav")
     env = {**os.environ, "STIMME_MOTOR": "azure", "STIMME_PIP": "0"}
     r = subprocess.run([sys.executable, os.path.join(HIER, "voiceover.py"), "--out", wav, "--text", s["text"], "--motor", "azure",
-                        "--stimme", s.get("stimme", "de-CH-JanNeural"), "--max", str(DAUER)], capture_output=True, text=True, env=env)
+                        "--stimme", s.get("stimme", "de-DE-FlorianMultilingualNeural"), "--max", str(DAUER)], capture_output=True, text=True, env=env)
     try:
         j = json.loads(r.stdout.strip().split("\n")[-1])
     except Exception:

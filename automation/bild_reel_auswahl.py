@@ -664,7 +664,7 @@ def stimme_fuer(handle):
     anteil = float(os.environ.get("STIMME_ANTEIL", "0.5") or 0)
     if (num(handle) % 1000) / 1000 >= anteil:
         return None
-    return "de-CH-LeniNeural" if num(handle) % 2 else "de-CH-JanNeural"
+    return "de-DE-SeraphinaMultilingualNeural" if num(handle) % 2 else "de-DE-FlorianMultilingualNeural"   # 23.11.2026: keine CH-Stimme (Betreiber)
 
 
 # ---------------------------------------------------------------- Ablauf
