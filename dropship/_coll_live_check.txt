@@ -1061,3 +1061,30 @@ velo-velo	ok	29	Velo- & Fahrradrucksäcke
 velo-lauf	ok	23	Lauf- & Trailrucksäcke
 velo-trink	ok	27	Rucksäcke mit Trinksystem
 freizeit-sportrucksaecke	ok	29	Freizeit-, Mode- & Sportrucksäcke
+freizeit-sport	ok	29	Sportrucksäcke
+freizeit-mode	ok	29	Mode- & Stil-Rucksäcke
+freizeit-alltag	http-429	0	Alltags- & Stadtrucksäcke
+freizeit-leder	ok	22	Freizeitrucksäcke aus Leder & Kunstleder
+freizeit-wasserdicht	ok	21	Wasserdichte Freizeitrucksäcke
+freizeit-herren	ok	29	Freizeitrucksäcke für Herren
+kinder-wickelrucksaecke	ok	29	Kinder- & Wickelrucksäcke
+kinder-wickel	ok	20	Wickelrucksäcke & Mama-Rucksäcke
+kinder-kinder	ok	29	Kinderrucksäcke
+taktische-tarn-rucksaecke	ok	29	Taktische & Tarn-Rucksäcke
+takt-tarn	ok	29	Rucksäcke mit Tarnmuster
+takt-takt	ok	29	Taktische Rucksäcke
+takt-militaer	ok	20	Militär- & Kampfrucksäcke
+foto-drohnen-rucksaecke	ok	29	Foto- & Drohnenrucksäcke
+rucksaecke-motorrad	ok	29	Motorrad-Rucksäcke
+leder-kunstleder-rucksaecke	ok	29	Leder- & Kunstleder-Rucksäcke
+leder-echt	ok	29	Echtleder-Rucksäcke (Rindsleder, Crazy Horse)
+leder-kunst	ok	29	Kunstleder-Rucksäcke
+leder-business	ok	29	Lederrucksäcke für Business & Laptop
+leder-retro	ok	29	Retro- & Vintage-Lederrucksäcke
+leder-reise	ok	29	Leder-Reiserucksäcke
+leder-herren	ok	29	Lederrucksäcke für Herren
+canvas-vintage-rucksaecke	ok	29	Canvas-, Retro- & Vintage-Rucksäcke
+canvas-canvas	ok	29	Canvas-Rucksäcke
+canvas-retro	ok	29	Retro- & Vintage-Rucksäcke
+canvas-laptop	ok	28	Canvas-Rucksäcke für Laptop & Business
+canvas-reise	ok	29	Canvas-Reiserucksäcke
