@@ -288,6 +288,30 @@
     "btc": 60094.08984375,
     "eth": 1682.20458984375
    }
+  },
+  {
+   "stand": "2026-11-22",
+   "zeit": "2026-11-23T14:40:02+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 713,
+   "kosten_usd": 0.020952,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.05,
+    "begruendung": "Klarer Abwärtstrend: -24.6 % in 30 T., 20 % unter dem 50-Tage-Schnitt, tiefere Hochs seit 81'268. Dagegen stehen extreme Angst (11), MVRV 1.15 und zwei Erholungstage von 58'799 auf 61'162 (+4 %). Das Risiko einer Short-Squeeze-Erholung ist erhöht. Funding ist neutral, also kein Kostenvorteil. Ich halte den kleinen Short unverändert und spare mir die Gebühr.",
+    "sicherheit": 0.3
+   },
+   "eth": {
+    "position": 0.0,
+    "begruendung": "ETH ist schwächer als BTC (-27.8 % in 30 T., -23.4 % zum 50-T.-Schnitt), aber stark überverkauft: MVRV 0.85 unter 1, negatives Funding, also sind Shorts schon voll. Bei 67 % Schwankung ist ein Rückprall auf 1'800 bis 1'830 genauso plausibel wie ein neues Tief unter 1'619. Ich bleibe ohne Vorteil flach.",
+    "sicherheit": 0.25
+   },
+   "kommentar": "Der Trend spricht für Short, Stimmung und Bewertung für eine Erholung. Darum bleiben die Positionen minimal und unverändert, um keine Gebühren zu zahlen. Ein Short wird erst wieder aufgebaut, wenn das Tief (BTC 58'799 / ETH 1'619) bricht. Fällt die Erholung über BTC 65'000, wird der Rest geschlossen.",
+   "kurse": {
+    "btc": 61161.91015625,
+    "eth": 1721.07568359375
+   }
   }
  ]
 }
