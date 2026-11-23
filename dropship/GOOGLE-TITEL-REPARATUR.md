@@ -16,16 +16,21 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-10-23T07:18:21Z — SCHARF
+## Letzter Lauf 2026-11-23T17:51:54Z — SCHARF
 
-Gescannt 56669 aktive von 56669 (EXACT); Wächter-Stand 3 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 33x gewartet, 148 s gesamt.
+Gescannt 56264 aktive von 56247 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 6x gewartet, 26 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
+| infrarot-nachtsichtgerat-1080p-687680 | POLICY | +google-policy-flag,google-policy-waffen | ok |
+| game-gunstock-fur-nintendo-switch-300672 | POLICY | +google-policy-flag,google-policy-waffen | ok |
+| binokulares-infrarot-nachtsichtgerat-mit-foto-623600 | POLICY | +google-policy-flag,google-policy-waffen | ok |
+| bluetooth-pedometer-uhr-a6a3f1 | POLICY | +google-policy-flag,google-policy-waffen | ok |
+| akazien-pfeffer-und-salzmuhle-2er-set-mit-stan-570048 | POLICY | +google-policy-flag,google-policy-waffen | ok |
 
 ## Ledger gesamt
 
-52 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
+57 Produkte mit rückgelesenen Änderungen; 0 Beschreibungen noch offen (Text-Sperre belegt — der nächste Lauf holt sie nach).
 
 Geschriebene Titel (rückgelesen):
 
@@ -63,13 +68,18 @@ Geschriebene Titel (rückgelesen):
 
 Typ-/Tag-Korrekturen (rückgelesen):
 
+- akazien-pfeffer-und-salzmuhle-2er-set-mit-stan-570048: tags_dazu google-policy-flag,google-policy-waffen
 - arabische-shisha-mit-doppelrohr-580d31: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - aschenbecher-mit-deckel-602700: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - auberginen-zigarrenanzunder-mit-doppelflamme-947328: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - baustein-luxuslimousine-auf-raedern-334528: typ Spielzeug
 - biden-herren-quarzuhr-hohl-leger-052544: typ Uhren; tags_dazu uhren
+- binokulares-infrarot-nachtsichtgerat-mit-foto-623600: tags_dazu google-policy-flag,google-policy-waffen
+- bluetooth-pedometer-uhr-a6a3f1: tags_dazu google-policy-flag,google-policy-waffen
 - elektronischer-auto-aschenbecher-mit-ladefunkt-629500: typ Raucherzubehör; tags_dazu smoke-zubehoer
 - elektronisches-zigarren-hygrometer-619800: typ Raucherzubehör; tags_dazu smoke-zubehoer
+- game-gunstock-fur-nintendo-switch-300672: tags_dazu google-policy-flag,google-policy-waffen
+- infrarot-nachtsichtgerat-1080p-687680: tags_dazu google-policy-flag,google-policy-waffen
 - intelligenter-intimreiniger-fur-die-frau-723136: typ Wellness & Gesundheit; tags_dazu google-policy-flag,google-policy-titel,intimpflege
 - k68-signal-detektor-46ae1c: tags_dazu google-policy-flag,google-policy-hacking
 - keramik-aschenbecher-mit-spiral-muster-629100: typ Raucherzubehör; tags_dazu smoke-zubehoer

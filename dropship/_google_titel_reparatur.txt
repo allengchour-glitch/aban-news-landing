@@ -454,3 +454,8 @@
 2026-10-13T17:19:03Z	SCHREIB	gid://shopify/Product/15446275817857	zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100	EINZEL	kategorie	gid://shopify/TaxonomyCategory/hg	gid://shopify/TaxonomyCategory/hg-11-10-5-2	ok
 2026-10-18T23:22:48Z	SCHREIB	gid://shopify/Product/15454235394433	selbstausloser-mit-licht-613000	POLICY	tags_dazu		google-policy-flag,google-policy-waffen	ok
 2026-10-19T19:32:39Z	NACHMESSUNG	gid://shopify/Product/15454235394433	selbstausloser-mit-licht-613000	-	google		keine Google-Meldung	ok
+2026-11-23T17:51:50Z	SCHREIB	gid://shopify/Product/15449486328193	infrarot-nachtsichtgerat-1080p-687680	POLICY	tags_dazu		google-policy-flag,google-policy-waffen	ok
+2026-11-23T17:51:51Z	SCHREIB	gid://shopify/Product/15451639677313	game-gunstock-fur-nintendo-switch-300672	POLICY	tags_dazu		google-policy-flag,google-policy-waffen	ok
+2026-11-23T17:51:52Z	SCHREIB	gid://shopify/Product/15502587789697	binokulares-infrarot-nachtsichtgerat-mit-foto-623600	POLICY	tags_dazu		google-policy-flag,google-policy-waffen	ok
+2026-11-23T17:51:53Z	SCHREIB	gid://shopify/Product/15504227402113	bluetooth-pedometer-uhr-a6a3f1	POLICY	tags_dazu		google-policy-flag,google-policy-waffen	ok
+2026-11-23T17:51:54Z	SCHREIB	gid://shopify/Product/15508406731137	akazien-pfeffer-und-salzmuhle-2er-set-mit-stan-570048	POLICY	tags_dazu		google-policy-flag,google-policy-waffen	ok

@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 17:48 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 17:51 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **42'053**
-- Optionen mit englischen Werten (Kandidaten): 1'421
-- Optionen übersetzt: **215** · Werte übersetzt: **534**
-- Optionen nur codebereinigt: 84
-- Werte mit unbekanntem Wort (unverändert): 3'742
+- Produkte gesehen: **48'047**
+- Optionen mit englischen Werten (Kandidaten): 1'589
+- Optionen übersetzt: **258** · Werte übersetzt: **676**
+- Optionen nur codebereinigt: 97
+- Werte mit unbekanntem Wort (unverändert): 4'057
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 29
-- übersprungen «kleidungsstueck-im-wert»: 25
+- übersprungen «kollision-nach-uebersetzung»: 30
+- übersprungen «kleidungsstueck-im-wert»: 29
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -28,6 +28,7 @@
 - `15493919900033` [Farbe] **Hoodie-Set mit geradem Bein im Preppy-Stil** — hose · Titel nennt Set: Grau weite Hose | Grau K02 Hose | Grau / Schwarz Sweatpants | Grau Schlaghose | Grau Blumenhose | Grau / Blumen Hose | Weiss K02 Hose | Weiss / Schwarz Sweatpants
 - `15494642336129` [Farbe] **Figurbetonendes Camisole-Kleid im Zweiteiler-Set** — rock · Titel nennt Set: Skirt | Mantel Rock Anzug
 - `15503157526913` [Farbe] **Retro-Chic Midikleid mit Tüll-Oberteil** — pullover, rock: Schwarz Cardigan, Übergrösse L | Schwarz Cardigan, Übergrösse XL | Schwarz Cardigan, Übergrösse 2XL | Schwarz Cardigan, Übergrösse 3XL | Schwarz Cardigan, Übergrösse 4XL | Schwarz Cardigan | Ärmelloser Blumenrock, Übergrösse L | Ärmelloser Blumenrock, Übergrösse XL
+- `16603331658119` [Farbe] **Lange Steppweste mit Kapuze** — jacke, weste: Schwarz Vest Jacket | Khaki Cotton Jacket Vest Coat | Brown Cotton Coat Vest Coat
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -62,6 +63,7 @@
 - `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 3 Apricot → 3 Aprikose; 3 Apricot color → 3 Aprikose
 - `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
 - `15509446885761` [Grösse] magic-academy-freizeit-rucksack-2c9b67: 16 inches → 16 Zoll; 16inches → 16 Zoll
+- `15517782933889` [Farbe] a-linien-kleid-mit-spitze-und-ruschen-616000: Emerald Green → Smaragdgrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -91,5 +93,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 128, `powder` 103, `french` 84, `core` 69, `size` 64, `elegant` 61, `high` 56, `one` 55, `cherry` 55, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 41, `chain` 40, `inner` 38, `(insole` 36, `space` 33, `tc` 31, `li` 31, `blossom` 30, `end` 30, `avocado` 28, `carbon` 28, `intergold` 28, `of` 27, `opp` 27, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `two` 23, `×` 23, `eyelashes` 23, `⟨satzbau:menge-vor-nomen⟩` 22, `lotus` 22, `weiß` 22, `no` 21, `love` 21, `⟨satzbau:praeposition⟩` 21, `inside` 21, `skin` 20, `gun` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `2er` 19, `line` 19, `light` 19, `lamp` 19, `holder` 19, `⟨satzbau:mass-ohne-zahl⟩` 19, `three` 18, `full` 18
+`⟨satzbau:adjektiv-vor-nomen⟩` 147, `powder` 105, `french` 84, `core` 74, `elegant` 68, `one` 64, `high` 64, `size` 64, `cherry` 55, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 44, `chain` 40, `inner` 38, `(insole` 36, `color` 33, `×` 33, `space` 33, `blossom` 31, `tc` 31, `lotus` 31, `avocado` 31, `end` 31, `li` 31, `of` 30, `carbon` 30, `intergold` 28, `tea` 27, `opp` 27, `plush` 27, `gel` 26, `stickers` 26, `skin` 25, `happy` 25, `gun` 24, `two` 24, `weiß` 24, `you` 24, `star` 23, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `⟨satzbau:menge-vor-nomen⟩` 22, `no` 21, `love` 21, `inside` 21, `2er` 20, `light` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `three` 19, `cool` 19, `line` 19, `the` 19
 
