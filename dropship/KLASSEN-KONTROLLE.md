@@ -1,4 +1,4 @@
-# Klassen-Kontrolle (VOLLSCAN, 56670 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 56436 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
@@ -19,7 +19,17 @@ Vollstaendige Liste: `dropship/_klassen/sie-anrede-im-produkttext.txt`
 - `15509400781185` Wimpernkleber-Entferner mit Schallvibration
 - `15520411156865` HD Mini Heimprojektor für Kinder
 
-## Auswahl-Versprechen bei EINER Variante — 1204
+## Mess-Versprechen an Wearables — 1
+
+Kein optisches Armband misst Blutdruck, EKG oder Blutzucker (Lehre 11.08.).
+
+Reparatur: `automation/wearable_messversprechen.py  (QUELLE=live)`
+
+Vollstaendige Liste: `dropship/_klassen/mess-versprechen-an-wearables.txt`
+
+- `15479417766273` KT80 Smartwatch mit HD-Display & Bluetooth-Anrufen
+
+## Auswahl-Versprechen bei EINER Variante — 205
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -27,10 +37,7 @@ Reparatur: `automation/wahlversprechen.py  (meldet; FIX=1 nur fuer eindeutige Fa
 
 Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.txt`
 
-- `15408458170753` Bambus Aufbewahrungssystem Modular
 - `15446271000961` 2er-Set Leckknochen für Hunde
-- `15447577264513` Mikrojet-Reispapier für Kunstreproduktionen
-- `15447910678913` Retro Sonnenbrille für Damen und Herren
 - `15447915561345` Anti-Blaulicht-Brille mit UV-Schutz
 - `15448077697409` Perlen-Bodychain Neckholder-Top
 - `15448077730177` Punk Geometric Gemstone Suspender Top
@@ -40,17 +47,20 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15448665850241` Colorblock Strickjacke im Oversize-Look
 - `15448801509761` Matter Lipliner
 - `15448837030273` Pizza- und Teigrädchen aus Kunststoff
-- `15448905220481` Mechanische Armbanduhr mit Mondphase
-- `15448905908609` Mechanische Armbanduhr mit Skelett-Design
-- `15448906662273` Wasserdichte Automatikuhr für Herren
+- `15448890245505` Digitaler Kalenderwecker mit Medikamenten-Erinnerung
 - `15448912363905` Aromatherapie-Uhrenarmband aus Metall
-- `15448913871233` Lederrucksack für Herren
-- `15448914592129` Freizeit-Schultertasche
-- `15448918622593` Ma Pi Brusttasche aus Echtleder
-- `15448921571713` Minimalistischer Teppich, schmutzabweisend
-- `15448926060929` Weinroter Kissenbezug aus Rex Kaninchenfell
-- `15448927175041` Nackenstützkissen mit Massageperlen
-- `15448927666561` Wolkenkissen im französischen Stil
-- `15448944804225` Plüschtier mit Quietscher für Hunde
-- … und 1179 weitere
+- `15448948375937` Weihnachts-Plüschtier mit Sound für Hunde & Katzen
+- `15448960139649` Ausziehbares Staufach für Mittelkonsole
+- `15449057165697` Lockeres Sport-Top für Damen
+- `15449061982593` Strickpullover mit Rundhals und Knöpfen
+- `15449132695937` Falsche Wimpern mit Schwalbenschwanz-Enden
+- `15449174606209` Fensterfolie matt mit Blumenmuster
+- `15449459917185` Doppelseitiges Flüssig-Augen-Schatten-Set
+- `15449483706753` Reflektierendes Brustgeschirr
+- `15449510216065` Regenbogen-Mohair-Pullover
+- `15449580634497` Herbst-Pullover für Herren
+- `15450258145665` Handgenähtes Lenkradbezug Modifiziert
+- `15450831585665` Perlen Armreif vergoldet, Vintage-Stil
+- `15451640398209` Dynamische Reflexion Keramik-Kaffeetasse
+- … und 180 weitere
 
