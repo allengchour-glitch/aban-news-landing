@@ -1,9 +1,20 @@
-# Kollektionen mit gleicher Regel — Stand 2026-10-23T07:45:45Z
+# Kollektionen mit gleicher Regel — Stand 2026-11-23T17:52:14Z
 
-OFFEN: 0 · erledigt heute: 0 · übersprungen (Zahlen ungleich): 9 · Gruppen: 9 · SCHARF
+OFFEN: 0 · erledigt heute: 3 · übersprungen (Zahlen ungleich): 9 · Gruppen: 12 · SCHARF
 
 Regel: eine Bleiberin je Gruppe (Menü > Startseite > Rotation > Kanäle > Text), die anderen abgemeldet + 301. Ledger `dropship/_kollektion_doppel.txt`. Rückweg: Redirect löschen + publizieren.
 
+
+### UND TAG EQUALS «sort-tier-leinen»
+
+- `tier-leinen` «Hundeleinen & Katzenleinen» · 498 Produkte · 308 P. (online store, menü, 7 kanäle, text 0) · **BLEIBT**
+- `leinen-halsbaender-geschirre` «Leinen, Halsbänder & Geschirre» · 498 Produkte · 308 P. (online store, menü, 7 kanäle, text 0) · **→ 301**
+- ⚠️ gleichstand — Bleiberin nach Handle-Länge/Alphabet gewählt
+
+### UND TAG EQUALS «sort-tier-naepfe»
+
+- `tier-naepfe-fuettern` «Näpfe & Füttern» · 348 Produkte · 309 P. (online store, menü, 8 kanäle, text 0) · **BLEIBT**
+- `tier-naepfe` «Näpfe & Schüsseln» · 348 Produkte · 308 P. (online store, menü, 7 kanäle, text 0) · **→ 301**
 
 ### UND TAG EQUALS «bar»
 
@@ -28,6 +39,11 @@ Regel: eine Bleiberin je Gruppe (Menü > Startseite > Rotation > Kanäle > Text)
 - ⏭️ kein Mitglied im Online Store publiziert — keine Web-Adresse, nichts zusammenzulegen
 - `tauchen` «Tauchen & Schnorcheln» · 7 P. (4 kanäle, text 2)
 - `tauchen-schnorcheln` «Tauchen & Schnorcheln» · 5 P. (2 kanäle, text 2)
+
+### UND TAG EQUALS «sort-tier-pflege»
+
+- `tier-pflege-unterwegs` «Pflege & Unterwegs» · 38 Produkte · 309 P. (online store, menü, 8 kanäle, text 0) · **BLEIBT**
+- `tier-pflege` «Fell-, Krallen- & Zahnpflege» · 38 Produkte · 308 P. (online store, menü, 7 kanäle, text 0) · **→ 301**
 
 ### UND VENDOR EQUALS «reebok»
 

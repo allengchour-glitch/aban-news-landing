@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 17:51 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 17:53 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **48'047**
-- Optionen mit englischen Werten (Kandidaten): 1'589
-- Optionen übersetzt: **258** · Werte übersetzt: **676**
-- Optionen nur codebereinigt: 97
-- Werte mit unbekanntem Wort (unverändert): 4'057
+- Produkte gesehen: **53'453**
+- Optionen mit englischen Werten (Kandidaten): 1'722
+- Optionen übersetzt: **304** · Werte übersetzt: **772**
+- Optionen nur codebereinigt: 107
+- Werte mit unbekanntem Wort (unverändert): 4'283
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
+- übersprungen «kleidungsstueck-im-wert»: 36
 - übersprungen «kollision-nach-uebersetzung»: 30
-- übersprungen «kleidungsstueck-im-wert»: 29
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -29,6 +29,10 @@
 - `15494642336129` [Farbe] **Figurbetonendes Camisole-Kleid im Zweiteiler-Set** — rock · Titel nennt Set: Skirt | Mantel Rock Anzug
 - `15503157526913` [Farbe] **Retro-Chic Midikleid mit Tüll-Oberteil** — pullover, rock: Schwarz Cardigan, Übergrösse L | Schwarz Cardigan, Übergrösse XL | Schwarz Cardigan, Übergrösse 2XL | Schwarz Cardigan, Übergrösse 3XL | Schwarz Cardigan, Übergrösse 4XL | Schwarz Cardigan | Ärmelloser Blumenrock, Übergrösse L | Ärmelloser Blumenrock, Übergrösse XL
 - `16603331658119` [Farbe] **Lange Steppweste mit Kapuze** — jacke, weste: Schwarz Vest Jacket | Khaki Cotton Jacket Vest Coat | Brown Cotton Coat Vest Coat
+- `16603338408327` [Farbe] **Slim-Fit Daunenjacke mit weisser Federfüllung** — pullover: Beige Hooded | Light Purple Hoodie | Schwarz, Kapuze | Marineblau, Kapuze | Rosenrot, Kapuze | Weiss, Kapuze | Bohnengrün, Kapuze
+- `16603765899655` [Farbe] **Baby Strick-Set mit Hose und Haarband · 3 Stück** — hose, pullover · Titel nennt Set: Cardigan Sweater | Knitted Pants | Haarband | Three Piece Set
+- `16614832112007` [Farbe] **Halloween Kostümkleid Set** — rock · Titel nennt Set: 8735 One Skirt | 8735, Einzelner Umhang | 8735 Skirt Cloak
+- `16615656194439` [Farbe] **Jacquard Kleid-Set mit Schleife** — jacke, oberteil, rock · Titel nennt Set: Top Skirt Blazer | Oberteil, Rock, Bluse, Ärmel | Schwarz, Rockstütze
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -93,5 +97,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 147, `powder` 105, `french` 84, `core` 74, `elegant` 68, `one` 64, `high` 64, `size` 64, `cherry` 55, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 44, `chain` 40, `inner` 38, `(insole` 36, `color` 33, `×` 33, `space` 33, `blossom` 31, `tc` 31, `lotus` 31, `avocado` 31, `end` 31, `li` 31, `of` 30, `carbon` 30, `intergold` 28, `tea` 27, `opp` 27, `plush` 27, `gel` 26, `stickers` 26, `skin` 25, `happy` 25, `gun` 24, `two` 24, `weiß` 24, `you` 24, `star` 23, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `⟨satzbau:menge-vor-nomen⟩` 22, `no` 21, `love` 21, `inside` 21, `2er` 20, `light` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `three` 19, `cool` 19, `line` 19, `the` 19
+`⟨satzbau:adjektiv-vor-nomen⟩` 152, `powder` 107, `french` 84, `core` 75, `elegant` 73, `size` 70, `high` 66, `one` 65, `cherry` 59, `shell` 51, `diamond` 48, `four` 46, `⟨satzbau:mass-ohne-einheit⟩` 45, `chain` 40, `inner` 38, `lotus` 37, `(insole` 36, `color` 34, `avocado` 34, `×` 33, `end` 33, `space` 33, `blossom` 31, `tc` 31, `carbon` 31, `li` 31, `of` 30, `star` 29, `opp` 28, `intergold` 28, `tea` 27, `basic` 27, `plush` 27, `weiß` 26, `gel` 26, `stickers` 26, `skin` 25, `happy` 25, `gun` 24, `two` 24, `you` 24, `⟨satzbau:menge-vor-nomen⟩` 23, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `three` 22, `crown` 22, `no` 21, `to` 21, `love` 21, `inside` 21, `2er` 20, `rabbit` 20, `light` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `strawberry` 20, `oxford` 20
 

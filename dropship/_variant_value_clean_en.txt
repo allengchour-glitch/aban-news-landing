@@ -22402,3 +22402,102 @@ gid://shopify/Product/16603768029575	Grösse	gid://shopify/ProductOptionValue/58
 gid://shopify/Product/16603768029575	Grösse	gid://shopify/ProductOptionValue/58848334938503	30x50cm Pillow	30x50 cm Kissen	2026-11-23T17:51Z
 gid://shopify/Product/16603768029575	Grösse	gid://shopify/ProductOptionValue/58848334971271	30x70cm Pillowcase	30x70 cm Kissenbezug	2026-11-23T17:51Z
 gid://shopify/Product/16603768029575	Grösse	gid://shopify/ProductOptionValue/58848335004039	30x70cm Pillow	30x70 cm Kissen	2026-11-23T17:51Z
+gid://shopify/Product/16604867428743	Farbe	gid://shopify/ProductOptionValue/58800015081863	Gelb / Apricot	Gelb / Aprikose	2026-11-23T17:52Z
+gid://shopify/Product/16604889121159	Grösse	gid://shopify/ProductOptionValue/58766372798855	Flat Bottom 16L	Flache Sohle 16L	2026-11-23T17:52Z
+gid://shopify/Product/16606017454471	Grösse	gid://shopify/ProductOptionValue/58597794185607	Green One size 2pcs	Grün Einheitsgrösse · 2 Stück	2026-11-23T17:52Z
+gid://shopify/Product/16606017454471	Grösse	gid://shopify/ProductOptionValue/58597794218375	One size 2pcs	Einheitsgrösse · 2 Stück	2026-11-23T17:52Z
+gid://shopify/Product/16606107435399	Modell	gid://shopify/ProductOptionValue/58799873261959	Set1	Set 1	2026-11-23T17:52Z
+gid://shopify/Product/16606107435399	Modell	gid://shopify/ProductOptionValue/58799873294727	Set2	Set 2	2026-11-23T17:52Z
+gid://shopify/Product/16606107435399	Modell	gid://shopify/ProductOptionValue/58799873327495	Set3	Set 3	2026-11-23T17:52Z
+gid://shopify/Product/16606107435399	Modell	gid://shopify/ProductOptionValue/58799873360263	Set4	Set 4	2026-11-23T17:52Z
+gid://shopify/Product/16606107435399	Modell	gid://shopify/ProductOptionValue/58799873458567	Set5	Set 5	2026-11-23T17:52Z
+gid://shopify/Product/16606107435399	Modell	gid://shopify/ProductOptionValue/58799873491335	Set6	Set 6	2026-11-23T17:52Z
+gid://shopify/Product/16606107435399	Modell	gid://shopify/ProductOptionValue/58799873524103	Set7	Set 7	2026-11-23T17:52Z
+gid://shopify/Product/16606107435399	Modell	gid://shopify/ProductOptionValue/58799873556871	Set8	Set 8	2026-11-23T17:52Z
+gid://shopify/Product/16606107435399	Modell	gid://shopify/ProductOptionValue/58799873622407	Set9	Set 9	2026-11-23T17:52Z
+gid://shopify/Product/16606125392263	Grösse	gid://shopify/ProductOptionValue/58848146293127	Small Size	Klein	2026-11-23T17:52Z
+gid://shopify/Product/16606125392263	Grösse	gid://shopify/ProductOptionValue/58848146325895	Large Size	Gross	2026-11-23T17:52Z
+gid://shopify/Product/16606218027399	Farbe	gid://shopify/ProductOptionValue/58799780725127	Roségold set1	Roségold Set 1	2026-11-23T17:52Z
+gid://shopify/Product/16606218027399	Farbe	gid://shopify/ProductOptionValue/58799780757895	Set1	Set 1	2026-11-23T17:52Z
+gid://shopify/Product/16606218027399	Farbe	gid://shopify/ProductOptionValue/58799780790663	Set2	Set 2	2026-11-23T17:52Z
+gid://shopify/Product/16606907138439	Grösse	gid://shopify/ProductOptionValue/58766515536263	Long	Lang	2026-11-23T17:52Z
+gid://shopify/Product/16606907138439	Grösse	gid://shopify/ProductOptionValue/58766515601799	Short	Kurz	2026-11-23T17:52Z
+gid://shopify/Product/16607162106247	Farbe	gid://shopify/ProductOptionValue/58800174760327	Set1	Set 1	2026-11-23T17:52Z
+gid://shopify/Product/16608446349703	Farbe	gid://shopify/ProductOptionValue/58848159629703	Apricot Pink	Aprikose-Pink	2026-11-23T17:52Z
+gid://shopify/Product/16608455295367	Grösse	gid://shopify/ProductOptionValue/58848342704519	Pillowcase	Kissenbezug	2026-11-23T17:52Z
+gid://shopify/Product/16608455295367	Grösse	gid://shopify/ProductOptionValue/58848342737287	Pillow	Kissen	2026-11-23T17:52Z
+gid://shopify/Product/16608490357127	Grösse	gid://shopify/ProductOptionValue/58766330364295	Standard 2PCS	Standard · 2 Stück	2026-11-23T17:52Z
+gid://shopify/Product/16608491307399	Grösse	gid://shopify/ProductOptionValue/58848345129351	45x45cm Pillow	45x45 cm Kissen	2026-11-23T17:52Z
+gid://shopify/Product/16608491929991	Grösse	gid://shopify/ProductOptionValue/58848346145159	Medium	Mittel	2026-11-23T17:52Z
+gid://shopify/Product/16608491929991	Grösse	gid://shopify/ProductOptionValue/58848346177927	Extra Large	Extra gross	2026-11-23T17:52Z
+gid://shopify/Product/16608495206791	Grösse	gid://shopify/ProductOptionValue/58848411550087	Extra Large	Extra gross	2026-11-23T17:52Z
+gid://shopify/Product/16608495206791	Grösse	gid://shopify/ProductOptionValue/58848411582855	Large	Gross	2026-11-23T17:52Z
+gid://shopify/Product/16608495206791	Grösse	gid://shopify/ProductOptionValue/58848411615623	Medium	Mittel	2026-11-23T17:52Z
+gid://shopify/Product/16608495206791	Grösse	gid://shopify/ProductOptionValue/58848411648391	Small	Klein	2026-11-23T17:52Z
+gid://shopify/Product/16608629227911	Grösse	gid://shopify/ProductOptionValue/58799729508743	70 X42 Height 8cm	70 X42 Höhe 8 cm	2026-11-23T17:52Z
+gid://shopify/Product/16608629227911	Grösse	gid://shopify/ProductOptionValue/58799729541511	70 X42 Height 10cm	70 X42 Höhe 10 cm	2026-11-23T17:52Z
+gid://shopify/Product/16608629227911	Grösse	gid://shopify/ProductOptionValue/58799729574279	70 X42 Height 12cm	70 X42 Höhe 12 cm	2026-11-23T17:52Z
+gid://shopify/Product/16609707852167	Farbe	gid://shopify/ProductOptionValue/58642526175623	Set1	Set 1	2026-11-23T17:52Z
+gid://shopify/Product/16609707852167	Farbe	gid://shopify/ProductOptionValue/58642526208391	Set2	Set 2	2026-11-23T17:52Z
+gid://shopify/Product/16609707852167	Farbe	gid://shopify/ProductOptionValue/58642526241159	Set3	Set 3	2026-11-23T17:52Z
+gid://shopify/Product/16609707852167	Farbe	gid://shopify/ProductOptionValue/58642526273927	Set4	Set 4	2026-11-23T17:52Z
+gid://shopify/Product/16609707852167	Farbe	gid://shopify/ProductOptionValue/58642526306695	Set5	Set 5	2026-11-23T17:52Z
+gid://shopify/Product/16609707852167	Farbe	gid://shopify/ProductOptionValue/58642526339463	Set6	Set 6	2026-11-23T17:52Z
+gid://shopify/Product/16609707852167	Farbe	gid://shopify/ProductOptionValue/58642526372231	Set7	Set 7	2026-11-23T17:52Z
+gid://shopify/Product/16610141667719	Grösse	gid://shopify/ProductOptionValue/58848355778951	Large Size 55x60cm	Gross 55x60 cm	2026-11-23T17:52Z
+gid://shopify/Product/16610959196551	Farbe	gid://shopify/ProductOptionValue/58800138355079	Set1	Set 1	2026-11-23T17:52Z
+gid://shopify/Product/16610959196551	Farbe	gid://shopify/ProductOptionValue/58800138387847	Set2	Set 2	2026-11-23T17:52Z
+gid://shopify/Product/16610959196551	Farbe	gid://shopify/ProductOptionValue/58800138420615	Set3	Set 3	2026-11-23T17:52Z
+gid://shopify/Product/16612199661959	Farbe	gid://shopify/ProductOptionValue/58642253349255	Vintage Braun	Vintage-Braun	2026-11-23T17:52Z
+gid://shopify/Product/16612199661959	Farbe	gid://shopify/ProductOptionValue/58642253545863	Apricot / Gelb	Aprikose / Gelb	2026-11-23T17:52Z
+gid://shopify/Product/16612768743815	Grösse	gid://shopify/ProductOptionValue/58624713392519	2.6 cm thick	2.6 cm dick	2026-11-23T17:52Z
+gid://shopify/Product/16612768743815	Grösse	gid://shopify/ProductOptionValue/58624713425287	4.8 cm thick	4.8 cm dick	2026-11-23T17:52Z
+gid://shopify/Product/16612768743815	Grösse	gid://shopify/ProductOptionValue/58624713458055	2 cm thick	2 cm dick	2026-11-23T17:52Z
+gid://shopify/Product/16612770218375	Farbe	gid://shopify/ProductOptionValue/58848389300615	CT803 Standard Version Weiss	Standard-Version Weiss	2026-11-23T17:52Z
+gid://shopify/Product/16612770218375	Farbe	gid://shopify/ProductOptionValue/58848389333383	CT803 High-End Version Weiss	High-End Version Weiss	2026-11-23T17:52Z
+gid://shopify/Product/16612770218375	Farbe	gid://shopify/ProductOptionValue/58848389366151	CT803 Deluxe Edition Weiss	Deluxe Edition Weiss	2026-11-23T17:52Z
+gid://shopify/Product/16612770218375	Farbe	gid://shopify/ProductOptionValue/58848389398919	CT803 Standard Grün	Standard Grün	2026-11-23T17:52Z
+gid://shopify/Product/16612770218375	Farbe	gid://shopify/ProductOptionValue/58848389431687	CT803 High-End Version Grün	High-End Version Grün	2026-11-23T17:52Z
+gid://shopify/Product/16612770218375	Farbe	gid://shopify/ProductOptionValue/58848389464455	CT803 Deluxe Edition Grün	Deluxe Edition Grün	2026-11-23T17:52Z
+gid://shopify/Product/16612791353735	Modell	gid://shopify/ProductOptionValue/58755343122823	Blau-Lila-Gradient	Blau-Lila-Farbverlauf	2026-11-23T17:52Z
+gid://shopify/Product/16612998119815	Grösse	gid://shopify/ProductOptionValue/58766508622215	Diameter 15cm	Durchmesser 15 cm	2026-11-23T17:52Z
+gid://shopify/Product/16612998119815	Grösse	gid://shopify/ProductOptionValue/58766508687751	13cm	13 cm	2026-11-23T17:52Z
+gid://shopify/Product/16613766955399	Farbe	gid://shopify/ProductOptionValue/58848422297991	ABS matt Schwarz	ABS Schwarz matt	2026-11-23T17:52Z
+gid://shopify/Product/16613766955399	Farbe	gid://shopify/ProductOptionValue/58848422330759	Set1	Set 1	2026-11-23T17:52Z
+gid://shopify/Product/16613766955399	Farbe	gid://shopify/ProductOptionValue/58848422396295	Set2	Set 2	2026-11-23T17:52Z
+gid://shopify/Product/16613782290823	Farbe	gid://shopify/ProductOptionValue/58754908782983	2pcs Schwarz	2 Stück Schwarz	2026-11-23T17:53Z
+gid://shopify/Product/16613786485127	Farbe	gid://shopify/ProductOptionValue/58746264945031	Schwarz 2pc	Schwarz · 2 Stück	2026-11-23T17:53Z
+gid://shopify/Product/16613786485127	Farbe	gid://shopify/ProductOptionValue/58746265010567	2PC Schwarz	2 Stück Schwarz	2026-11-23T17:53Z
+gid://shopify/Product/16613835538823	Farbe	gid://shopify/ProductOptionValue/58746279068039	Schwarz 2PCS	Schwarz · 2 Stück	2026-11-23T17:53Z
+gid://shopify/Product/16613858378119	Grösse	gid://shopify/ProductOptionValue/58766245495175	150x100cm thick	150x100 cm dick	2026-11-23T17:53Z
+gid://shopify/Product/16613858378119	Grösse	gid://shopify/ProductOptionValue/58766245527943	150x130cm thick	150x130 cm dick	2026-11-23T17:53Z
+gid://shopify/Product/16613858378119	Grösse	gid://shopify/ProductOptionValue/58766245560711	150x230cm thick	150x230 cm dick	2026-11-23T17:53Z
+gid://shopify/Product/16614885065095	Farbe	gid://shopify/ProductOptionValue/58848008274311	Set1	Set 1	2026-11-23T17:53Z
+gid://shopify/Product/16614885065095	Farbe	gid://shopify/ProductOptionValue/58848008307079	Set2	Set 2	2026-11-23T17:53Z
+gid://shopify/Product/16614885065095	Farbe	gid://shopify/ProductOptionValue/58848008339847	Set3	Set 3	2026-11-23T17:53Z
+gid://shopify/Product/16614885065095	Farbe	gid://shopify/ProductOptionValue/58848008372615	Set4	Set 4	2026-11-23T17:53Z
+gid://shopify/Product/16614885065095	Farbe	gid://shopify/ProductOptionValue/58848008405383	Set5	Set 5	2026-11-23T17:53Z
+gid://shopify/Product/16614985761159	Grösse	gid://shopify/ProductOptionValue/58678616818055	15 15.6inch	15 15.6 Zoll	2026-11-23T17:53Z
+gid://shopify/Product/16614985761159	Grösse	gid://shopify/ProductOptionValue/58678616850823	13.3 14 inch	13.3 14 Zoll	2026-11-23T17:53Z
+gid://shopify/Product/16615201014151	Farbe	gid://shopify/ProductOptionValue/58642265768327	Set1	Set 1	2026-11-23T17:53Z
+gid://shopify/Product/16615377011079	Grösse	gid://shopify/ProductOptionValue/58848049332615	Default	Standard	2026-11-23T17:53Z
+gid://shopify/Product/16615380779399	Farbe	gid://shopify/ProductOptionValue/58400239387015	Claret	Bordeaux	2026-11-23T17:53Z
+gid://shopify/Product/16615388709255	Farbe	gid://shopify/ProductOptionValue/58799808381319	220V	220 V	2026-11-23T17:53Z
+gid://shopify/Product/16615388709255	Farbe	gid://shopify/ProductOptionValue/58799808414087	German	Deutsch	2026-11-23T17:53Z
+gid://shopify/Product/16615690502535	Grösse	gid://shopify/ProductOptionValue/58848157008263	Width 60X Height 90cm	Breite 60X Höhe 90 cm	2026-11-23T17:53Z
+gid://shopify/Product/16615690502535	Grösse	gid://shopify/ProductOptionValue/58848157041031	Width 60X Height 80cm	Breite 60X Höhe 80 cm	2026-11-23T17:53Z
+gid://shopify/Product/16615802405255	Farbe	gid://shopify/ProductOptionValue/58642260263303	T635 Olive	T635 Oliv	2026-11-23T17:53Z
+gid://shopify/Product/16616396816775	Modell	gid://shopify/ProductOptionValue/58848248660359	28B und 1550pcs	28B und 1550 Stück	2026-11-23T17:53Z
+gid://shopify/Product/16616502624647	Farbe	gid://shopify/ProductOptionValue/58757521277319	Camo-Sand	Tarnmuster-Sand	2026-11-23T17:53Z
+gid://shopify/Product/16616685175175	Farbe	gid://shopify/ProductOptionValue/58678417031559	Set2	Set 2	2026-11-23T17:53Z
+gid://shopify/Product/16617713402247	Grösse	gid://shopify/ProductOptionValue/58847985729927	Large Size	Gross	2026-11-23T17:53Z
+gid://shopify/Product/16617713402247	Grösse	gid://shopify/ProductOptionValue/58847985762695	Medium	Mittel	2026-11-23T17:53Z
+gid://shopify/Product/16617713402247	Grösse	gid://shopify/ProductOptionValue/58847985795463	Small Size	Klein	2026-11-23T17:53Z
+gid://shopify/Product/16638824644999	Farbe	gid://shopify/ProductOptionValue/58678415819143	Rose pink	Rosenpink	2026-11-23T17:53Z
+gid://shopify/Product/16638824644999	Farbe	gid://shopify/ProductOptionValue/58678415950215	Silber Room Gold	Silber-Roségold	2026-11-23T17:53Z
+gid://shopify/Product/16638909120903	Grösse	gid://shopify/ProductOptionValue/58678475784583	150x130cm thick	150x130 cm dick	2026-11-23T17:53Z
+gid://shopify/Product/16638909120903	Grösse	gid://shopify/ProductOptionValue/58678475882887	150x230cm thick	150x230 cm dick	2026-11-23T17:53Z
+gid://shopify/Product/16638909120903	Grösse	gid://shopify/ProductOptionValue/58678475915655	150x100cm thick	150x100 cm dick	2026-11-23T17:53Z
+gid://shopify/Product/16638909743495	Grösse	gid://shopify/ProductOptionValue/58678418440583	150x130cm thick	150x130 cm dick	2026-11-23T17:53Z
+gid://shopify/Product/16638909743495	Grösse	gid://shopify/ProductOptionValue/58678418473351	150x100cm thick	150x100 cm dick	2026-11-23T17:53Z
+gid://shopify/Product/16638909743495	Grösse	gid://shopify/ProductOptionValue/58678418506119	150x230cm thick	150x230 cm dick	2026-11-23T17:53Z

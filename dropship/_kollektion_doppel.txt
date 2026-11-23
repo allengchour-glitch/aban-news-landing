@@ -27,3 +27,6 @@
 2026-10-01T12:57:03Z	pool-schwimmen	pool	ODER TITLE CONTAINS «luftmatratze» · TITLE CONTAINS «pool» · TITLE CONTAINS «schwimmbrille» · TITLE CONTAINS «schwimmring»	pool 213 P. (online store, 10 kanäle, text 2) vs 5 P. (2 kanäle, text 2)	ok
 2026-10-01T12:57:09Z	strand-wasserspass	strand	UND TAG EQUALS «strand»	strand 213 P. (online store, 10 kanäle, text 2) vs 5 P. (2 kanäle, text 2)	ok
 2026-10-09T05:39:07Z	buero-schreibwaren	buro-home-office	UND TAG EQUALS «kat-buero»	buro-home-office 314 P. (online store, menü, 10 kanäle, text 3) vs 263 P. (online store, rotation, 10 kanäle, text 2)	ok
+2026-11-23T17:52:02Z	leinen-halsbaender-geschirre	tier-leinen	UND TAG EQUALS «sort-tier-leinen»	tier-leinen 308 P. (online store, menü, 7 kanäle, text 0) vs 308 P. (online store, menü, 7 kanäle, text 0)	ok
+2026-11-23T17:52:05Z	tier-naepfe	tier-naepfe-fuettern	UND TAG EQUALS «sort-tier-naepfe»	tier-naepfe-fuettern 309 P. (online store, menü, 8 kanäle, text 0) vs 308 P. (online store, menü, 7 kanäle, text 0)	ok
+2026-11-23T17:52:11Z	tier-pflege	tier-pflege-unterwegs	UND TAG EQUALS «sort-tier-pflege»	tier-pflege-unterwegs 309 P. (online store, menü, 8 kanäle, text 0) vs 308 P. (online store, menü, 7 kanäle, text 0)	ok
