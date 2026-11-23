@@ -3993,3 +3993,6 @@ gid://shopify/Product/15458673131905	Farbe	1
 gid://shopify/Product/15458851029377	Farbe	1
 gid://shopify/Product/15459760537985	Farbe	1
 gid://shopify/Product/15459989782913	Farbe	1
+gid://shopify/Product/15460190421377	Menge	2
+gid://shopify/Product/15460665033089	Farbe	2
+gid://shopify/Product/15463728218497	Menge	2

@@ -21855,3 +21855,7 @@ gid://shopify/Product/15454501798273	Farbe	gid://shopify/ProductOptionValue/5888
 gid://shopify/Product/15458851029377	Farbe	gid://shopify/ProductOptionValue/58677732540807	Blau Eiscreme	Blau-Eiscreme	2026-11-23T16:43Z
 gid://shopify/Product/15459760537985	Farbe	gid://shopify/ProductOptionValue/58677691122055	Gelb Camo	Gelb-Tarnmuster	2026-11-23T16:43Z
 gid://shopify/Product/15459989782913	Farbe	gid://shopify/ProductOptionValue/58677733294471	Set1	Set 1	2026-11-23T16:44Z
+gid://shopify/Product/15460190421377	Menge	gid://shopify/ProductOptionValue/58848387924359	1PCS	1 Stück	2026-11-23T16:44Z
+gid://shopify/Product/15460190421377	Menge	gid://shopify/ProductOptionValue/58848387957127	2PCS	2 Stück	2026-11-23T16:44Z
+gid://shopify/Product/15463728218497	Menge	gid://shopify/ProductOptionValue/59070456365447	1PCS	1 Stück	2026-11-23T16:46Z
+gid://shopify/Product/15463728218497	Menge	gid://shopify/ProductOptionValue/59070456398215	2PCS	2 Stück	2026-11-23T16:46Z
