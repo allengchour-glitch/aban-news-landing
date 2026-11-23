@@ -1,0 +1,46 @@
+{
+  "handle": "geschenke-fuer-kinder",
+  "art": "kategorie",
+  "kategorie_titel": "🎁 Geschenke & Weihnachten > Geschenke für Kinder",
+  "produkt_handle": "holzpuzzle-zum-zusammenbauen-627100",
+  "produkt_id": 16655516369287,
+  "produkt_titel": "Holzpuzzle zum Zusammenbauen",
+  "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c2118d0d-7490-4848-86c6-9831fea86289.png",
+  "original_lokal": "original.jpg (JPEG 800x800 trotz .png-Adresse)",
+  "higgsfield_media_id": "c515f75d-f299-4bba-b347-2c91d956b612",
+  "szene_job": "fc104e19-226c-485c-b66c-af237ad419a9",
+  "szene_modell": "nano_banana_2_1 (2k, 3:2)",
+  "szene_datei": "szene.png (2528x1696)",
+  "szene_pruefung": "Gegen original.jpg verglichen (vergleich.jpg): Baumhaus mit Dachfenster-Gitter, Klappfenster mit Topfpflanze, grauer Tuer, Balkongelaender, Seitenhuette, gelber Laterne, Wendeltreppe, Ringschaukel, Bullauge, Baenkchen und Sockelplatte vorhanden, Proportionen gleich. Bluetenkrone im warmen Innenlicht etwas lachsfarbener als im Original (Original vor blauem Himmel). Keine Schrift, keine Logos, keine Personen/Haende; im unscharfen Hintergrund zwei Pluesch-Spielfiguren (kein Produkt). Erster Versuch angenommen.",
+  "video_job": "9c9ffc43-f900-47f8-becc-93af6d9405fd",
+  "video_modell": "minimax_h3 (6 s, auto; Start- und Endbild = Szenen-Job)",
+  "video_roh": "roh.mp4 (2144x1440, 24 fps, 6.584 s, mit Tonspur, die kodieren.sh entfernt)",
+  "video_pruefung": "Kontaktbogen roh.bogen.jpg und Detailausschnitte (fr/produkt_reihe.jpg, fr/haus_reihe.jpg bei 0 / 3 / 6.4 s) angesehen: Produkt bleibt in allen Bildern gleich (Form, Farben, Fenster, Gelaender, Laterne, Treppe, Schaukel), keine neuen Objekte, keine Schrift. Bewegung: langsamer Kameraschub mit leichter Parallaxe, Lichtfleck wandert ueber den Tisch, Vorhang links schwingt sichtbar ins Bild (um 2 s deutlich, danach zurueck). SSIM Produktausschnitt gegen Bild 0: Tiefstwert 0.53 bei 2 s (Kamerabewegung + Licht), ab 3.5 s >= 0.90. Erster Versuch angenommen, kein Zweitversuch.",
+  "prompts": {
+    "szene": "Editorial e-commerce photograph. The exact product from the reference image (a laser-cut 3D wooden puzzle model of a fairy-tale treehouse, a tabletop display piece: a thick stylized tree trunk in warm tan and light-brown wood built from layered bark-shaped panels, with a round porthole window framed in wood and a wooden spiral staircase winding up the left side; a ring-shaped wooden swing hangs from a green leafy vine next to the stairs; on top of the trunk a two-storey cottage in natural beige plywood with peach-pink pitched roofs, a grey plank door, a small attic window with a white leaf-pattern lattice, a fold-up awning window with a tiny potted green plant, and a wraparound balcony with a white branch-pattern railing; a smaller side hut with its own pink roof and little balcony juts out on the right; a dense crown of soft coral-pink cherry-blossom foliage made of many layered wooden cut-outs spreads around and above the house; a small yellow wooden crate-lantern hangs on a string from a branch on the right; a small cream picket-back bench stands at the foot of the trunk; everything stands on an irregular flat wooden base plate with a pinkish stone-path pattern; matte natural wood with fine laser-cut edges and visible slot joints; palette of beige, tan, warm brown, peach-pink and a touch of green) standing on a light oak wooden table beside a softly lit window in a calm, airy children's room, with a few out-of-focus pine branches and one small kraft-paper gift box with a linen ribbon nearby, and plenty of quiet empty space around the model. Quiet, high-quality interior, soft natural diffused daylight from the window, late autumn / early winter mood in Switzerland, gently festive gift atmosphere but without any Christmas kitsch, muted warm whites and light wood tones. The model is shown as a finished tabletop model, real size about 25 cm tall, no real sky, no real grass. Do not change the product in any way: identical shape, proportions, colors, pattern, details and number of parts. No people, no hands, no faces, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+    "video": "Calm cinemagraph of a still-life scene. All objects stay completely still and unchanged: the laser-cut wooden treehouse puzzle model keeps its exact shape, colors and details, including the coral-pink blossom crown, the cottage with pink roofs, balcony railing, side hut, hanging yellow lantern, spiral staircase, ring swing, porthole window, small bench and base plate; the kraft-paper gift box with its linen ribbon, the pine branches, the plush toys and the furniture in the background also stay exactly as they are. Only the soft natural window light slowly drifts across the scene, a sheer white curtain at the window on the left moves very gently, faint soft shadows glide slowly over the oak table, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame."
+  },
+  "pruefwerte": {
+    "datei": "clip.mp4",
+    "bytes": 546432,
+    "poster_bytes": 89478,
+    "dauer": 6.0,
+    "groesse": "1200x806",
+    "tonspuren": 0,
+    "naht_ssim": 0.96028
+  },
+  "dateien": {
+    "clip_mp4": "clip.mp4",
+    "clip_webp": "clip.webp",
+    "bogen": "roh.bogen.jpg",
+    "szene": "szene.png",
+    "vergleich": "vergleich.jpg"
+  },
+  "credits": {
+    "szene": 2,
+    "video": 12,
+    "gesamt": 14,
+    "quelle": "Higgsfield transactions 23:45:37Z (-2, Nano Banana 2.1) und 23:46:46Z (-12, MiniMax H3)",
+    "stand_danach": 1083.74
+  }
+}

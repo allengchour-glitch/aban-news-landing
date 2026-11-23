@@ -1,0 +1,34 @@
+{
+  "handle": "damen-jacken-maentel",
+  "art": "kategorie",
+  "kategorie_titel": "Damen > Jacken & Mäntel",
+  "produkt_handle": "trenchcoat-im-slim-fit-fur-damen-601300",
+  "produkt_id": 16652085821831,
+  "produkt_titel": "Trenchcoat im Slim Fit für Damen",
+  "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d3c4418a-e9cf-4582-9926-1133d353ad75.png?v=1792375537",
+  "original_lokal": "original.jpg (800x800, JPEG trotz .png-Adresse)",
+  "higgsfield_media_id": "a5876f0c-1215-4a28-90b0-c4445f026017",
+  "szene_job": "a8b63b9d-6431-4ab8-b0a2-856e18eec516",
+  "szene_datei": "szene.png (2528x1696, nano_banana_2_1, 2k, 3:2, erster Versuch)",
+  "video_job": "19565ffd-726c-4f81-8eeb-ef789e581d91",
+  "video_job_verworfen": "84421f46-c4e5-484e-8c1a-a07e515a6478 (erster Versuch, Dateien v1_*)",
+  "modell_szene": "nano_banana_2_1",
+  "modell_video": "minimax_h3",
+  "prompts": {
+    "szene": "Editorial e-commerce photograph. The exact product from the reference image (a slim-fit women's single-breasted trench coat in light cream / stone beige: notched lapels with a wide collar and fine tonal topstitching along the edges, slightly puffed gathered shoulder seams, princess seams that shape a fitted waist, exactly three dark brown tortoiseshell-look buttons down the front, two slanted flap pockets at the hips, long sleeves with buttoned cuff tabs carrying one small brown button each, mid-thigh length with a gently flared hem, matching cream lining; smooth matte lightweight woven fabric, clean tailored lines, no print, no logo) hangs alone on a simple light wooden hanger from a slim brass rail against a softly lit warm-white plaster wall, the coat open and slightly turned so the lapels and the waist seams catch gentle morning light. Only the coat on its hanger: the orange handbag from the reference photo is not part of the product and must not appear. Calm, high-end interior, soft natural window light from the left, late autumn mood in Switzerland, muted warm neutral tones, a hint of pale wooden floor, gentle soft shadows on the wall. Do not change the product in any way: identical shape, proportions, colors, pattern, details and number of parts. No people, no hands, no faces, no mannequin, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+    "video_v1_verworfen": "Calm cinemagraph of a still-life scene. All objects stay completely still and unchanged: the cream trench coat on its wooden hanger keeps its exact shape, colors, lapels, puffed shoulders, three tortoiseshell buttons, flap pockets, cuff tabs and lining, and it does not swing or sway; the brass rail stays fixed. Only the soft natural morning light slowly drifts across the warm-white plaster wall and the pale wooden floor, a faint shadow of a sheer curtain from the window on the left moves very gently over the wall, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame.",
+    "video": "Calm cinemagraph of a still-life scene. The camera is locked off, only the light changes. The cream trench coat on its wooden hanger is frozen in place: it does not turn, rotate, swing or sway, and keeps its exact shape, colors, lapels, puffed shoulders, three tortoiseshell buttons, flap pockets, cuff tabs and lining in every frame. The brass rail, the wall, the floor and the window stay exactly as they are. Only the soft, diffuse morning light very slowly brightens and dims a little on the warm-white plaster wall, with soft gentle shadows only, no hard sunbeams. No curtains, no people, no hands, no text, no logos, no new objects, nothing enters the frame. Seamless loop: the last frame is identical to the first frame."
+  },
+  "pruefung_szene": "Gegen original.jpg geprüft (Gesamtbild und Ausschnitt): einreihiger Trenchcoat hell creme/steinbeige, gekerbtes Revers mit breitem Kragen und Ziernaht, leicht gepuffte Schulternähte, Teilungsnähte mit tailliertem Schnitt, genau drei dunkelbraune Schildpatt-Knöpfe, zwei schräge Pattentaschen, Ärmelriegel mit je einem braunen Knopf, Knopflochnähte, cremefarbenes Futter, oberschenkellang mit leicht ausgestelltem Saum. Orange Handtasche und weisses Shirt aus dem Original nicht übernommen (nicht Teil des Produkts). Keine Schrift, Logos, Personen, Hände. Mantel rechts der Mitte, links ruhige Wand mit Fenster. Treu, ein Versuch.",
+  "pruefung_video": "Versuch 1 (84421f46) verworfen: zwischen 1,5 und 4 s dreht sich der Mantel am Bügel (Silhouette schmaler, Revers anders), harte Fenster-Schlagschatten und ein heller Vorhang treten links ins Bild (neues Objekt); Mantelbereich mittlere Abweichung zu Bild 0 bis 40 Graustufen, Kanten-SSIM 0,64. Versuch 2 (19565ffd, Kamera fest, nur Licht): Kontaktbogen und Ausschnitte bei 0/2/3,3/4,5/6,2 s zeigen Form, Revers, gepuffte Schultern, drei Knöpfe, Pattentaschen, Ärmelriegel und Futter unverändert; Stange und Bügel stehen still, keine neuen Objekte, keine Schrift. Bewegung: das Licht wird zur Mitte heller (Mantel-Helligkeit 184 auf 209 von 255) und weiche Fensterschatten erscheinen auf der Wand, danach zurück. Kanten-SSIM Mantel 0,86-0,87 (Restabweichung durch Lichtwechsel). Entgegen dem Prompt entstehen leichte Fenster-Lichtflecken; ruhig genug, angenommen.",
+  "pruefwerte": "datei=clip.mp4 bytes=186740 poster_bytes=24624 dauer=6.000000 groesse=1200x806 tonspuren=0 naht_ssim=0.981460",
+  "roh": "roh.mp4 (2144x1440, 24 fps, 6,584 s)",
+  "credits": {
+    "vor_szene": 783.74,
+    "vor_video_1": 781.74,
+    "vor_video_2": 757.74,
+    "nach_video_2": 733.74,
+    "hinweis": "Kontostand wird von parallelen Läufen geteilt; Szene (nano_banana_2_1, 2k) rund 2 Credits; die Differenzen bei den Videos (24 je Lauf) enthalten wahrscheinlich parallele Läufe; Zuordnung über ledger.csv. Dieser Lauf: 1 Szene + 2 Videos."
+  },
+  "erstellt_utc": "2026-11-23T01:35Z"
+}

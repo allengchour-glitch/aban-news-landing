@@ -1,0 +1,65 @@
+{
+  "handle": "geschenke-fuer-ihn",
+  "art": "kategorie",
+  "kategorie_titel": "🎁 Geschenke & Weihnachten > Geschenke für ihn",
+  "produkt_handle": "grosser-rindsleder-rucksack-fur-herren-909760",
+  "produkt_id": 16647277052295,
+  "produkt_titel": "Grosser Rindsleder-Rucksack für Herren",
+  "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf6e7394-a225-47c6-a363-bcb917451019.jpg?v=1792185053",
+  "original_lokal": "original.jpg (800x800)",
+  "higgsfield_media_id": "b4531540-5ab9-4940-96ff-f6c1f03edc27",
+  "szene_job": "010f1cc2-7e2e-4689-ad3e-850c5ea3232d",
+  "szene_modell": "nano_banana_2_1 (2k, 3:2)",
+  "szene_datei": "szene.png (2528x1696, Verschluss lokal ersetzt)",
+  "video_job": "7380e347-688d-469f-a871-754fb7859161",
+  "video_modell": "minimax_h3 (6 s, auto, start_image = end_image = bearbeitete Szene, media_id 592f6d1d-59e7-44a9-a40d-735d02453357)",
+  "prompts": {
+    "szene": "Editorial e-commerce photograph. The exact product from the reference image (a large black men's backpack in smooth, slightly glossy black leather with a fine natural grain and soft creases: upright rectangular body with softly rounded top corners; a short padded black leather carry handle on top; a zipper running around the top edge with a black leather pull tab hanging at the upper right side; a full-width horizontal zip pocket across the upper front with a silver metal zipper and a narrow black leather pull tab hanging at its left end; below it a large front pocket with its own zipper along the top and a rounded black leather flap, closed in the middle by a slim vertical black leather strap with a small silver metal hook clasp; two vertical zipped side pockets with black leather pull tabs on silver rings; black webbing shoulder straps attached at the two bottom corners with small polished silver buckles; all hardware polished silver, no visible logo or lettering) stands upright on a dark oak plank floor beside a cognac-brown leather armchair, its shoulder straps resting naturally on the boards, facing the camera exactly as in the reference. Quiet, high-end men's study with warm low window light from the left, late autumn / early winter mood in Switzerland, subtly festive gift feeling: a folded wool blanket on the armchair and a faint warm bokeh glow far in the background, no Christmas kitsch. Do not change the product in any way: identical shape, proportions, colors, pattern, details and number of parts. No people, no hands, no faces, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+    "video_v1_verworfen": "Calm cinemagraph of a still-life scene. All objects stay completely still and unchanged: the black leather backpack keeps its exact shape, position, colors, leather grain, zippers, pull tabs, front flap, silver clasp, side pockets, shoulder straps and silver buckles; the cognac leather armchair, the green herringbone wool blanket and the oak floor stay exactly in place. Only the soft warm window light slowly drifts across the scene, the fire glow in the far, out-of-focus fireplace flickers very gently and the small bokeh lights shimmer faintly, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame.",
+    "video_v2_genommen": "Calm cinemagraph of a still-life scene. The camera is locked off, only the light changes. No camera movement at all: no pan, no zoom, no orbit, no sway. All objects stay completely still and unchanged at all times: the black leather backpack stays deep black and keeps its exact shape, position, leather grain, zippers, pull tabs, front flap, silver clasp, side pockets, shoulder straps and silver buckles; the cognac leather armchair, the green herringbone wool blanket and the dark oak floor stay exactly in place. Overall brightness and exposure stay constant. Only the soft warm light changes very slightly and evenly: a faint warm shadow line drifts a few centimeters across the floorboards, and the small fire glow in the far, out-of-focus fireplace flickers very gently. No sun beams, no light flashes, no sparkles, no lens flares, no exposure change. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame.",
+    "video_v3_genommen": "Calm cinemagraph of a still-life scene. The camera is locked off, only the light changes. No camera movement at all: no pan, no zoom, no orbit, no sway. All objects stay completely still and unchanged at all times: the black leather backpack stays deep black and keeps its exact shape, position, leather grain, zippers, pull tabs, front flap, silver clasp, side pockets, shoulder straps and silver buckles; the cognac leather armchair, the green herringbone wool blanket and the dark oak floor stay exactly in place. Overall brightness and exposure stay constant. Only the soft warm light changes very slightly and evenly: a faint warm shadow line drifts a few centimeters across the floorboards, and the small fire glow in the far, out-of-focus fireplace flickers very gently. No sun beams, no light flashes, no sparkles, no lens flares, no exposure change. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame. The two small silver hooks on the front strap stay silver and unchanged, no warm tint on metal parts."
+  },
+  "pruefwerte": {
+    "clip": "bytes=304619 poster_bytes=85320 dauer=6.000000 groesse=1200x806 tonspuren=0 naht_ssim=0.967082",
+    "roh": "2144x1440, 24 fps, 6.584 s, 158 Bilder (Roh-Datei mit Tonspur, Clip stumm)",
+    "kamera": "Phasenkorrelation gegen Bild 0, roh und clip: 0 px in allen Bildern",
+    "rucksack_diff": "rucksack_diff.py (1072x720, gleiches Messgeraet wie Vorrunde): roh max 3,42 (Vorrunde v2: 3,96), letztes Bild 2,48, Kanten max 2,81; clip max 2,79; Helligkeit Rucksack 49,5 bis 51,5",
+    "naht": "SSIM 0,967; mittlere Abweichung letztes->erstes Bild 1,02 (alter Clip v2: 1,07), Rucksack 1,25; Sichtvergleich r2/naht_vergleich.png ohne sichtbaren Sprung",
+    "verschluss": "roh bei 0/2/4 s und letztem Bild: hellste Hakenpixel neutral, R-B 1,6 / 1,8 / 2,7 / 2,3 (alte Platte im v2-Clip: 8,5 bis 10,4); Ausschnitte r2/verschluss_zeit_neu.png und r2/verschluss_clip_0_2_4_letzt.png: zwei getrennte silberne Haken in allen vier Bildern unveraendert",
+    "bogen": "roh.bogen.jpg: Rucksack in allen 9 Bildern gleich, keine neuen Objekte, keine Schrift, keine Personen; Bewegung: warme Lichtstreifen wandern ueber den Boden, Kaminglut flackert"
+  },
+  "sichtpruefung": {
+    "szene_gegen_original": "Treu: gleiche Form (aufrecht, oben abgerundete Ecken), gleicher kurzer Tragegriff, Reissverschluss rundum mit Zuglasche rechts oben, durchgehende obere Reissverschlusstasche mit Zuglasche links, Fronttasche mit Reissverschluss und abgerundeter Klappe, senkrechter Lederriemen mit silbernem Verschluss, zwei Seitentaschen mit Zuglaschen an silbernen Ringen, Gurtband-Schultergurte mit silbernen Schnallen unten. Proportionen gleich. Verschluss in Runde 2 lokal ersetzt: jetzt zwei getrennte offene silberne Drahthaken wie im Original (vorher Platte mit Praegung). Keine Schrift, Logos, Personen, Haende (Buchruecken im Regal unscharf, nicht lesbar). Szene hochwertig und glaubwuerdig (Cognac-Ledersessel, gruene Fischgrat-Wolldecke, dunkler Eichenboden, Kaminglut im Hintergrund).",
+    "video_v1": "verworfen: Belichtung des Rucksacks stieg zwischen 1,5 und 3,5 s um rund 78 % (schwarzes Leder wirkt grau-braun, Verschluss kupferfarben), Naht-SSIM 0,927; Form und Teile blieben gleich.",
+    "video_v2": "genommen: Kamera fest, Rucksack in Ausschnitten bei 0, 2, 3,5, 5 und 6,5 s gleich (Griff, Reissverschluesse, Zuglaschen, Klappe, Verschluss, Seitentaschen, Gurte, Schnallen), Farbe bleibt tiefschwarz; Bogen mit 9 Bildern ohne neue Objekte, Schrift, Personen. Bewegung: warme Lichtstreifen wandern ueber den Boden und verblassen, Kaminglut flackert leicht. Rest: Verschluss um 3,5 s leicht warm getoent.",
+    "video_v3": "genommen: Kamera fest, Rucksack unveraendert und tiefschwarz, Haken bleiben silbern und getrennt (0, 2, 4 s, letztes Bild), Licht auf dem Boden bewegt sich, Kamin flackert; Naht ohne sichtbaren Sprung."
+  },
+  "credits": {
+    "runde1": {
+      "vorher": 1123.74,
+      "nachher": 1079.74,
+      "verbraucht_geschaetzt": 28,
+      "hinweis": "Szene rund 4, zwei Videos minimax_h3 je rund 12 Credits (aus Ledger und Kontostand hergeleitet). Der Kontostand wurde von parallelen Laeufen mitbewegt (Differenz 44)."
+    },
+    "runde2": {
+      "vorher": 90.74,
+      "nachher": 64.74,
+      "verbraucht": 12,
+      "hinweis": "nur ein Video minimax_h3 (12 Credits); Szenen-Bearbeitung lokal ohne Credits; Kontostand von parallelem Lauf sub-stiefel-boots mitbewegt (Ledger)"
+    },
+    "gesamt_geschaetzt": 40
+  },
+  "erstellt_utc": "2026-11-22T23:58Z",
+  "szene_bearbeitung": {
+    "grund": "Pruefer Vorrunde: Verschluss war eine geschlossene Metallplatte mit Praegung (Buchstaben) und Bronze-Ton statt der zwei offenen Drahthaken des Originals.",
+    "verfahren": "lokal, ohne Generierung: Platte (Bereich x 1632-1728, y 1141-1232 von 2528x1696) mit Ledertextur der Szene gefuellt (tiefe Frequenzen harmonisch vom Rand, Textur aus x-95 bzw. Riemenkanten aus y+14), danach die zwei Drahthaken als Linienzug nach original.jpg (x 385-427, y 546-588, Massstab 1,95/2,02) neutral silbern eingezeichnet. Skripte: werkzeug/gfi_r2/ersetzen.py, maske.py, bildio.py",
+    "datei": "szene.png (bearbeitet, md5 3659abfe9a9b7713673317005bafaf2d); vorher: szene_vor_verschluss.png (md5 a80f9344fac2d1ed8dac4ba3043f4385)",
+    "higgsfield_media_id": "592f6d1d-59e7-44a9-a40d-735d02453357 (hochgeladen, Rueckdownload bytegleich)",
+    "pruefung": "geaenderte Pixel 7275, alle innerhalb der Maske (7280 px); Differenz ausserhalb der Maske 0 (max 0); warme Pixel (R-B>9) im Verschlussbereich 4220 -> 0; mittleres R-B in der Maske 12,97 -> 2,01 (Umgebung 2,50); Helligkeit Maske 26,3 gegen Umgebung 27,6. Sichtpruefung 3-fach (r2/verschluss_pruefung_3x.png): zwei getrennte silberne Haken, keine Platte, keine Praegung, keine Bronze-Toenung."
+  },
+  "video_jobs_frueher": {
+    "v1_verworfen": "ffd24b79-2004-4c80-894e-6db844e843a8",
+    "v2_ersetzt": "7fc170d9-1a65-4737-bba3-8e98f0c4a211 (Dateien in alt_v2/)"
+  },
+  "aktualisiert_utc": "2026-11-23T08:08Z"
+}

@@ -1,0 +1,223 @@
+{%- comment -%}
+  lx-welten-bewegt (22.11.2026, Korrekturrunden 23.11.): bewegter Kopf fuer das Kategorie-Layout lx-collection-welten.
+  Eigener Abschnitt (custom-liquid «lx_welten_bewegt») direkt nach «worlds», Inhalt: render 'lx-welten-bewegt'.
+  Aendert keine bestehende Datei und kein bestehendes Element ausser Klassen am Kopf (header.lx-welten__intro).
+  Nur ab 1100 px, nur bei prefers-reduced-motion: no-preference und ohne forced-colors (CSS und Skript pruefen beides):
+    - Ken Burns: die vorhandenen Kopfbilder (Galerie, Editorial, Einzelbild) driften langsam (Massstab hoechstens 1,08)
+      einmal hin und zurueck in einem Durchlauf (17 bis 25 s), danach Ruhe. Die Bildkaesten beschneiden schon heute
+      (overflow:hidden am Link bzw. am Bildbereich); hier wird kein overflow gesetzt (Lehre W1, 16.11.).
+      Start erst nach dem Laden der Seite und aller Kopfbilder (sonst neuer LCP-Kandidat). Wird das Fenster nach dem
+      Start schmaler als 1100 px, endet die Drift endgueltig (kein Neustart beim Verbreitern).
+      Waehrend der Drift zeichnet eine Ebene ueber dem Bild den Tastatur-Fokusrahmen der Galeriefelder (das driftende
+      Bild wuerde den Rahmen des Themes sonst verdecken).
+    - Clip (nur 5 Kategoriegruppen, nur Galerie und Einzelbild, nie Editorial): stummer Produktclip im grossen
+      Galeriefeld (Feld 1, absolut ueber dessen Rasterbereich, kein Layoutwechsel). Ist ein Clip vorgesehen, driftet kein
+      Bild (die Drift kostet Hauptthread-Zeit, das Video nicht); faellt der Clip weg, driften die Bilder als Ersatz.
+      Eingesetzt wird der Clip nur, wenn seine Bildflaeche sicher kleiner ist als das bisher groesste LCP-Element
+      (PerformanceObserver; ohne diese Schnittstelle wie Chrome gerechnet: sichtbare Flaeche von Feld 1 mal Datei-Bildpunkte
+      aus dem width-Parameter der Bildadresse durch Kastenflaeche, hoechstens 1),
+      sonst nicht: bei hochskaliertem Bild in Feld 1 wuerde das Poster sonst zum spaeten LCP-Element.
+      Das verdeckte Feld wird erst nach dem Laden des Posters versteckt (visibility, kein Layout), sein Bild pausiert.
+      Der Clip ist dann selbst ein Link auf das Clip-Produkt mit der gezeigten Ausfuehrung; hatte Feld 1 den Fokus, geht
+      er auf den Clip. Beim Einzelbild liegt der Clip dekorativ ueber dem Bild (nicht bei s01: im Querformat fehlt der
+      Sockel). Ein 1-px-Rahmen mit Verlaeufen in den Randfarben des Clips fuellt den Feldrand; Poster und Video liegen
+      1 px innen (kleiner als Feld 1).
+      Fail closed: Produkt verfuegbar, hinterlegte Ausfuehrung verfuegbar, Produkt Mitglied der aktuellen Sammlung,
+      Enddatum. Buehne in template: ohne JavaScript, unter 1100 px, bei reduzierter Bewegung, Save-Data oder 2G wird
+      nichts geladen; bei gespeichertem Halt nur das Poster. Das Video wird erst 2,5 s nach dem Poster angefordert;
+      es pausiert unter 1100 px, ausserhalb des Bildschirms, bei verborgenem Tab und auf Knopfdruck und endet nach rund
+      46 s Spielzeit auf dem letzten Bild. Abgebrochenes play() (AbortError) entfernt den Clip nicht, jeder andere Fehler
+      stellt das Feld wieder her.
+    - Knopf «Bewegung anhalten» (WCAG 2.2.2) unten rechts im Bildbereich, Wahl im Browser gespeichert (lx-kb-halt).
+      Galerie: Knopf im Bildbereich (schon position:relative). Editorial/Einzelbild: der Bildbereich ist aria-hidden, darum
+      liegt der Knopf im Kopf, der dafuer position:relative bekommt (im Nachbau pixelneutral gemessen).
+      Ist alle Bewegung von selbst zu Ende, verschwindet der Knopf (hat er den Fokus, erst nach dem Verlassen).
+      Verborgener Tab oder weggescrollter Kopf: Drift und Video pausieren.
+  Kompakter Kopf (Seite 2, Filter, Tags) und aktive AJAX-Filter: kein Bildbereich, also nichts (Knopf ausgeblendet).
+{%- endcomment -%}
+{%- liquid
+  assign lxwb_id = ''
+  case collection.handle
+    when 'schmuck', 'sub-armbaender', 'gliederarmbaender', 'zirkonia-strassarmbaender'
+      assign lxwb_id = 's03'
+    when 'sub-beleuchtung', 'nachtlichter-ambiente', 'wohnen-dekoration'
+      assign lxwb_id = 's01'
+    when 'weihnachten-2026'
+      assign lxwb_id = 's05'
+    when 'damen-reisetaschen', 'herren-reisetaschen', 'sub-reise'
+      assign lxwb_id = 's06'
+    when 'geschirr-tisch', 'kaffee-tee-trinken'
+      assign lxwb_id = 's09'
+  endcase
+  assign lxwb_f = '/cdn/shop/files/lx-kb-'
+  assign lxwb_bis = 0
+  assign lxwb_nurgal = false
+  case lxwb_id
+    when 's01'
+      assign lxwb_p = 'led-tulpen-planet-nachtlicht-fur-tisch-618400'
+      assign lxwb_var = '67679802950023'
+      assign lxwb_v = lxwb_f | append: 's01-quer-960.mp4?v=1794789685'
+      assign lxwb_b = lxwb_f | append: 's01-quer-960.webp?v=1794789691'
+      assign lxwb_pos = '50% 53%'
+      assign lxwb_z = '1'
+      assign lxwb_rand = 'linear-gradient(#070706,#1a1713,#171916,#2a2c28,#c7b8ab) 0 0/1px 100% no-repeat border-box,linear-gradient(#291911,#311e15,#342116,#402f25,#a69484) 100% 0/1px 100% no-repeat border-box,linear-gradient(90deg,#0b0b09,#141714,#131914,#101511,#191610) 0 0/100% 1px no-repeat border-box,linear-gradient(90deg,#ab9987,#a79482,#a69382,#a2907f,#9e8c7c) 0 100%/100% 1px no-repeat border-box'
+      assign lxwb_nurgal = true
+    when 's03'
+      assign lxwb_p = 'dreifachklinken-tennisarmband-mit-zirkon-613400'
+      assign lxwb_var = '67672760975751'
+      assign lxwb_v = lxwb_f | append: 's03-quer-960.mp4?v=1794789695'
+      assign lxwb_b = lxwb_f | append: 's03-quer-960.webp?v=1794789701'
+      assign lxwb_pos = '58% 62%'
+      assign lxwb_z = '1.25'
+      assign lxwb_rand = 'linear-gradient(#171c1b,#251c1a,#3d2620,#e1c4ac,#e1c7b8) 0 0/1px 100% no-repeat border-box,linear-gradient(#857873,#877874,#867772,#dec0aa,#e9cdbb) 100% 0/1px 100% no-repeat border-box,linear-gradient(90deg,#413126,#262e28,#1b2e28,#0b1716,#393737) 0 0/100% 1px no-repeat border-box,linear-gradient(90deg,#dac0b4,#dfc4b6,#e2c6b9,#e5c8b9,#e6caba) 0 100%/100% 1px no-repeat border-box'
+    when 's05'
+      assign lxwb_p = 'weihnachtskugeln-beflockt-9-stuck-625300'
+      assign lxwb_var = '67843689152903'
+      assign lxwb_bis = 20270106
+      assign lxwb_v = lxwb_f | append: 's05-quer-960.mp4?v=1794789706'
+      assign lxwb_b = lxwb_f | append: 's05-quer-960.webp?v=1794789712'
+      assign lxwb_pos = '54% 46%'
+      assign lxwb_z = '1.12'
+      assign lxwb_rand = 'linear-gradient(#e0b78a,#f9d4a7,#fae9e0,#f2ded4,#ead7ce) 0 0/1px 100% no-repeat border-box,linear-gradient(#e9d8d0,#d8c5ba,#b8a394,#a37f60,#a7764b) 100% 0/1px 100% no-repeat border-box,linear-gradient(90deg,#d8b085,#e4b98a,#e2bd95,#eadad1,#e8d8cf) 0 0/100% 1px no-repeat border-box,linear-gradient(90deg,#e7d3ca,#e7d4cb,#cea98c,#bd895a,#b48153) 0 100%/100% 1px no-repeat border-box'
+    when 's06'
+      assign lxwb_p = 'reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c'
+      assign lxwb_var = '67726147944839'
+      assign lxwb_v = lxwb_f | append: 's06-quer-960.mp4?v=1794789716'
+      assign lxwb_b = lxwb_f | append: 's06-quer-960.webp?v=1794789722'
+      assign lxwb_pos = '50% 46%'
+      assign lxwb_z = '1.1'
+      assign lxwb_rand = 'linear-gradient(#201411,#261814,#2d1c17,#170b0b,#1a0d0b) 0 0/1px 100% no-repeat border-box,linear-gradient(#141613,#1c1613,#2f1c16,#423026,#ba916f) 100% 0/1px 100% no-repeat border-box,linear-gradient(90deg,#8b817c,#362b28,#190f0e,#201513,#191513) 0 0/100% 1px no-repeat border-box,linear-gradient(90deg,#7a6255,#8f715f,#84614c,#836147,#7f5d43) 0 100%/100% 1px no-repeat border-box'
+    when 's09'
+      assign lxwb_p = 'retro-vogel-keramikbecher-mit-ballgriff-637200'
+      assign lxwb_var = '67675894710663'
+      assign lxwb_v = lxwb_f | append: 's09-quer-960.mp4?v=1794789727'
+      assign lxwb_b = lxwb_f | append: 's09-quer-960.webp?v=1794789733'
+      assign lxwb_pos = '64% 62%'
+      assign lxwb_z = '1.15'
+      assign lxwb_rand = 'linear-gradient(#442821,#44291e,#7b655a,#976e4b,#c28d5a) 0 0/1px 100% no-repeat border-box,linear-gradient(#020102,#050405,#4e3e2f,#e2b885,#dfb07c) 100% 0/1px 100% no-repeat border-box,linear-gradient(90deg,#41271f,#211310,#12120e,#111612,#0b0f0d) 0 0/100% 1px no-repeat border-box,linear-gradient(90deg,#bb8656,#c58f5b,#cf9c67,#daa974,#d2a06d) 0 100%/100% 1px no-repeat border-box'
+  endcase
+  if lxwb_id != ''
+    assign lxwb_ok = false
+    assign lxwb_prod = all_products[lxwb_p]
+    if lxwb_prod != blank and lxwb_prod.available == true
+      assign lxwb_vnr = lxwb_var | plus: 0
+      for lxwb_va in lxwb_prod.variants
+        if lxwb_va.id == lxwb_vnr and lxwb_va.available == true
+          assign lxwb_ok = true
+          break
+        endif
+      endfor
+      if lxwb_ok
+        assign lxwb_ok = false
+        for lxwb_c in lxwb_prod.collections
+          if lxwb_c.handle == collection.handle
+            assign lxwb_ok = true
+            break
+          endif
+        endfor
+      endif
+    endif
+    if lxwb_ok and lxwb_bis > 0
+      assign lxwb_heute = 'now' | date: '%Y%m%d' | plus: 0
+      if lxwb_heute > lxwb_bis
+        assign lxwb_ok = false
+      endif
+    endif
+    unless lxwb_ok
+      assign lxwb_id = ''
+    endunless
+  endif
+  case request.locale.iso_code
+    when 'fr'
+      assign lxwb_ta = 'Mettre l’animation en pause'
+      assign lxwb_tb = 'Reprendre l’animation'
+    when 'en'
+      assign lxwb_ta = 'Pause animation'
+      assign lxwb_tb = 'Resume animation'
+    else
+      assign lxwb_ta = 'Bewegung anhalten'
+      assign lxwb_tb = 'Bewegung fortsetzen'
+  endcase
+-%}
+<style>
+.lx-wb__clip,.lx-wb-knopf{display:none}
+@keyframes lxwb-a{50%{transform:scale(1.08) translate3d(-1.6%,-1.2%,0)}}
+@keyframes lxwb-b{50%{transform:scale(1.07) translate3d(1.5%,.8%,0)}}
+@keyframes lxwb-c{50%{transform:scale(1.06) translate3d(-1%,1.2%,0)}}
+@media (min-width:1100px) and (prefers-reduced-motion:no-preference) and (forced-colors:none){
+.lx-welten__intro.lx-wb-pos{position:relative}
+.lx-welten__intro.lx-wb-drift .lx-welten__intro-media .lx-welten__visual-image,.lx-welten__intro.lx-wb-drift .lx-welten__intro-media .lx-welten__intro-image,.lx-welten__intro.lx-wb-drift .lx-welten__beauty-visual img{animation:lxwb-a 21s ease-in-out 1;will-change:transform;backface-visibility:hidden}
+.lx-welten__intro.lx-wb-drift .lx-welten__visual-link~.lx-welten__visual-link img{animation-name:lxwb-b;animation-duration:25s}
+.lx-welten__intro.lx-wb-drift .lx-welten__visual-link~.lx-welten__visual-link~.lx-welten__visual-link img{animation-name:lxwb-c;animation-duration:17s}
+.lx-welten__intro.lx-wb-drift.lx-wb-mitclip .lx-welten__intro-media .lx-welten__visual-link img,.lx-welten__intro.lx-wb-drift.lx-wb-mitclip .lx-welten__intro-media>img{animation:none}
+.lx-welten__intro.lx-wb-halt .lx-welten__intro-media img,.lx-welten__intro.lx-wb-weg .lx-welten__intro-media img,.lx-welten__intro.lx-wb-clip .lx-welten__intro-media>img,.lx-welten__intro.lx-wb-clip .lx-welten__visuals>.lx-welten__visual-link:first-child img{animation-play-state:paused!important}
+.lx-welten__intro.lx-wb-drift .lx-welten__intro-media .lx-welten__visual-link:focus-visible::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;outline:3px solid var(--color-background);outline-offset:-6px}
+.lx-welten__intro .lx-wb-knopf{display:flex;position:absolute;right:12px;bottom:12px;z-index:2;width:36px;height:36px;box-sizing:border-box;align-items:center;justify-content:center;margin:0;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.6);background:rgba(20,14,8,.68);color:#fff;line-height:0;cursor:pointer}
+.lx-welten__intro .lx-wb-knopf:hover{background:rgba(20,14,8,.88)}
+.lx-welten__intro .lx-wb-knopf:focus-visible{outline:2px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px #1d140c}
+.lx-wb-knopf svg{width:13px;height:13px;fill:currentColor}
+.lx-welten__intro.lx-wb-halt .lx-wb-i1,.lx-welten__intro:not(.lx-wb-halt) .lx-wb-i2{display:none}
+main:has(results-list .facets__clear-all-link--active) .lx-welten__intro .lx-wb-knopf{display:none}
+{%- if lxwb_id != '' %}
+.lx-welten__intro .lx-wb__clip{display:block;position:absolute;inset:0;z-index:1;overflow:hidden;visibility:hidden;opacity:0;box-sizing:border-box;border:1px solid transparent;background:var(--lxwb-rand,none)}
+.lx-welten__visuals>.lx-wb__clip{grid-column:1 / 2;grid-row:1 / 2}
+.lx-welten__visuals--3>.lx-wb__clip{grid-row:1 / 3}
+.lx-welten__intro.lx-wb-clip .lx-wb__clip{visibility:visible;opacity:1;transition:opacity .6s ease}
+.lx-welten__intro.lx-wb-clip .lx-welten__visuals>.lx-welten__visual-link:first-child{visibility:hidden;transition:visibility 0s .6s}
+.lx-wb__clip img,.lx-wb__clip video{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:var(--lxwb-pos,50% 50%);transform:scale(var(--lxwb-z,1));transform-origin:var(--lxwb-pos,50% 50%)}
+.lx-wb__clip video{opacity:0;transition:opacity .9s ease}
+.lx-wb__clip.lx-wb--spielt video{opacity:1}
+.lx-welten__intro .lx-wb__clip::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none}
+.lx-welten__intro .lx-wb__clip:focus-visible{outline:none}
+.lx-welten__intro .lx-wb__clip:focus-visible::after{outline:3px solid var(--color-background);outline-offset:-6px;box-shadow:inset 0 0 0 7px rgba(29,20,12,.55)}
+{%- endif %}
+}
+</style>
+{%- if lxwb_id != '' -%}
+{%- assign lxwb_url = lxwb_prod.url | within: collection | append: '?variant=' | append: lxwb_var -%}
+<template class="lx-wb-vorlage"><a class="lx-wb__clip" href="{{ lxwb_url | escape }}" aria-label="{{ lxwb_prod.title | escape }}" data-lx-wb="{{ lxwb_id }}" data-video="{{ lxwb_v }}"{% if lxwb_nurgal %} data-nur-galerie{% endif %} style="--lxwb-pos:{{ lxwb_pos }};--lxwb-z:{{ lxwb_z }};--lxwb-rand:{{ lxwb_rand }}"><img class="lx-wb__poster" src="{{ lxwb_b }}" alt="" width="960" height="720" decoding="async"></a></template>
+{%- endif -%}
+<script>(function(){var s=document.currentScript,d=document,w=window,tA={{ lxwb_ta | json }},tB={{ lxwb_tb | json }};
+var sec=s&&s.closest?s.closest('.shopify-section'):null,vor=sec&&sec.previousElementSibling,wl=(vor&&vor.querySelector('.lx-welten'))||d.querySelector('.lx-welten');
+if(!wl||wl.classList.contains('lx-welten--compact'))return;var k=wl.querySelector('.lx-welten__intro--image'),m=k&&k.querySelector('.lx-welten__intro-media');
+var Q='(min-width: 1100px) and (prefers-reduced-motion: no-preference) and (forced-colors: none)';
+if(!m||k.hasAttribute('data-lx-wb')||!(w.matchMedia&&w.matchMedia(Q).matches))return;k.setAttribute('data-lx-wb','');
+var tp=sec&&sec.querySelector('template.lx-wb-vorlage'),gal=m.classList.contains('lx-welten__visuals'),ed=m.classList.contains('lx-welten__beauty-visual'),z1=gal?m.querySelector('.lx-welten__visual-link'):null;
+var halt=false,sicht=true,breit=true,fertig=false,aus=false,vEnde=false,gesp=0,tl=0,io=null,v=null,c=null,b=null,vAb=1/0,vt=0,lcp=0,lcpOk=false,wirt=m.getAttribute('aria-hidden')==='true'?k:m;
+try{halt=w.localStorage.getItem('lx-kb-halt')==='1';}catch(e){}
+function wegKl(){if(!fertig)k.classList.toggle('lx-wb-weg',!sicht||d.hidden);}
+{%- if lxwb_id != '' %}
+try{if(PerformanceObserver.supportedEntryTypes.indexOf('largest-contentful-paint')>-1){new PerformanceObserver(function(l){l.getEntries().forEach(function(e){if(e.size>lcp)lcp=e.size;});}).observe({type:'largest-contentful-paint',buffered:true});lcpOk=true;}}catch(e){}
+function fl(e,n){var r=e.getBoundingClientRect(),x=n?e.clientLeft:0,y=n?e.clientTop:0,de=d.documentElement,a=Math.min(r.right-x,de.clientWidth)-Math.max(r.left+x,0),h=Math.min(r.bottom-y,de.clientHeight)-Math.max(r.top+y,0);return a>0&&h>0?a*h:0;}
+function passt(){var a=fl(c,1),f=gal?z1:m,i=f&&f.querySelector('img'),ref=lcp,q;if(!a)return true;if(!lcpOk){q=/[?&]width=(\d+)/.exec(i&&i.currentSrc||'');q=q?+q[1]:i&&i.naturalWidth;ref=q&&i.naturalWidth?fl(f,0)*Math.min(1,q*q*i.naturalHeight/i.naturalWidth/Math.max(1,i.offsetWidth*i.offsetHeight)):0;}return a<ref*.995;}
+function plan(){var n=navigator.connection,el=tp&&tp.content?tp.content.querySelector('.lx-wb__clip'):null;return !!el&&!fertig&&breit&&!ed&&!(n&&(n.saveData||/2g/.test(n.effectiveType||'')))&&(gal?!!z1:!el.hasAttribute('data-nur-galerie'));}
+function ohne(){if(!k.classList.contains('lx-wb-mitclip'))return;k.classList.remove('lx-wb-mitclip');if(k.classList.contains('lx-wb-drift'))knopf();}
+function weg(){if(vt){clearTimeout(vt);vt=0;}if(v){v.pause();v.removeAttribute('src');try{v.load();}catch(e){}v=null;}if(c&&c.parentNode)c.parentNode.removeChild(c);c=null;k.classList.remove('lx-wb-clip');ohne();ende();}
+function los(){if(!c||fertig)return;if(halt||!sicht||!breit||d.hidden){if(v)v.pause();return;}if(!v){var r=vAb-Date.now();if(r>0){if(!vt&&r<1e9)vt=setTimeout(function(){vt=0;los();},r+20);return;}if(passt())video();else weg();return;}if(vEnde)return;var p=v.play();if(p&&p.catch)p.catch(function(e){if(!e||e.name!=='AbortError')weg();});}
+function video(){if(!c||v)return;var x=d.createElement('video');v=x;x.muted=true;x.defaultMuted=true;x.setAttribute('muted','');x.playsInline=true;x.setAttribute('playsinline','');x.loop=true;x.preload='metadata';x.setAttribute('aria-hidden','true');x.setAttribute('tabindex','-1');x.disablePictureInPicture=true;
+x.addEventListener('playing',function(){if(c)c.classList.add('lx-wb--spielt');});x.addEventListener('timeupdate',function(){var t=x.currentTime;if(t>tl&&t-tl<1)gesp+=t-tl;tl=t;if(gesp>=46)x.loop=false;});
+x.addEventListener('ended',function(){if(v===x){vEnde=true;ende();}});x.addEventListener('error',function(){if(v===x)weg();});x.src=c.getAttribute('data-video');c.appendChild(x);los();}
+function clip(){var el=tp&&tp.content?tp.content.querySelector('.lx-wb__clip'):null,q;if(c)return;if(!plan()){ohne();return;}
+c=d.importNode(el,false);if(gal){z1.parentNode.insertBefore(c,z1.nextSibling);}else{c.removeAttribute('href');c.removeAttribute('aria-label');c.setAttribute('aria-hidden','true');m.appendChild(c);}
+if(!passt()){c.parentNode.removeChild(c);c=null;ohne();return;}q=d.importNode(el.querySelector('img'),true);c.appendChild(q);
+function bereit(){if(!c)return;var f=!!z1&&d.activeElement===z1;vAb=Date.now()+2500;k.classList.add('lx-wb-clip');if(f){try{c.focus({preventScroll:true});}catch(e){}}knopf();los();}
+if(q.complete&&q.naturalWidth)bereit();else{q.addEventListener('load',bereit);q.addEventListener('error',weg);}}
+{%- else %}
+function los(){}function plan(){return false;}function ohne(){}function clip(){}
+{%- endif %}
+function zeig(){if(b){var t=halt?tB:tA;b.setAttribute('aria-label',t);b.title=t;}k.classList.toggle('lx-wb-halt',halt);los();}
+function knopf(){if(b||fertig)return;b=d.createElement('button');b.type='button';b.className='lx-wb-knopf';
+b.innerHTML='<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path class="lx-wb-i1" d="M3 2h3v10H3zM8 2h3v10H8z"/><path class="lx-wb-i2" d="M4 2l8 5-8 5z"/></svg>';
+b.addEventListener('click',function(){halt=!halt;try{w.localStorage.setItem('lx-kb-halt',halt?'1':'0');}catch(e){}zeig();});if(wirt===k)k.classList.add('lx-wb-pos');wirt.appendChild(b);zeig();}
+function ab(){if(!b)return;if(d.activeElement===b){b.addEventListener('blur',function(){setTimeout(ab,0);},{once:true});return;}if(b.parentNode)b.parentNode.removeChild(b);b=null;}
+function laeuft(){var im=m.querySelectorAll('img'),i,j,a;for(i=0;i<im.length;i++){if(c&&(c.contains(im[i])||(gal?z1&&z1.contains(im[i]):im[i].parentNode===m)))continue;a=im[i].getAnimations?im[i].getAnimations():[];for(j=0;j<a.length;j++)if(/^lxwb-/.test(a[j].animationName||'')&&a[j].playState!=='finished')return true;}return false;}
+function ende(){if(fertig||!(aus||k.classList.contains('lx-wb-drift'))||(c&&!vEnde)||laeuft())return;fertig=true;if(vt){clearTimeout(vt);vt=0;}if(v)v.pause();if(io)io.disconnect();k.classList.remove('lx-wb-drift','lx-wb-halt','lx-wb-weg','lx-wb-mitclip');k.classList.add('lx-wb-ende');ab();}
+function an(){if(aus){ende();return;}k.classList.add('lx-wb-drift');if(!k.classList.contains('lx-wb-mitclip'))knopf();}
+function drift(){var im=m.querySelectorAll('img'),n=0,i;function eins(){if(--n<=0)an();}k.classList.add('lx-wb-an');for(i=0;i<im.length;i++)if(!im[i].complete){n++;im[i].addEventListener('load',eins);im[i].addEventListener('error',eins);}if(!n&&im.length)an();}
+function spaeter(){if(plan())k.classList.add('lx-wb-mitclip');drift();setTimeout(function(){(w.requestIdleCallback||function(f){f();})(clip,{timeout:1500});},300);}
+if(d.readyState==='complete')spaeter();else w.addEventListener('load',spaeter);
+m.addEventListener('animationend',function(e){if(/^lxwb-/.test(e.animationName||''))ende();});
+var mq=w.matchMedia(Q),mw=function(){breit=mq.matches;if(!breit&&!fertig&&k.classList.contains('lx-wb-drift')){k.classList.remove('lx-wb-drift');aus=true;ende();}los();};breit=mq.matches;if(mq.addEventListener)mq.addEventListener('change',mw);else if(mq.addListener)mq.addListener(mw);
+d.addEventListener('visibilitychange',function(){wegKl();los();});
+if('IntersectionObserver' in w){io=new IntersectionObserver(function(e){sicht=e[e.length-1].isIntersecting;wegKl();los();},{rootMargin:'120px 0px'});io.observe(m);}
+})();</script>

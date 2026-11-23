@@ -1,0 +1,56 @@
+{
+  "handle": "parfum-duefte",
+  "art": "Beauty & Pflege > Parfum & Düfte",
+  "produkt_handle": "damenparfum-langanhaltend-618100",
+  "produkt_id": "gid://shopify/Product/16603617100167",
+  "produkt_titel": "Damenparfüm langanhaltend",
+  "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03d0cd25-e309-40f9-a7ca-aaa764feb5f7_water.jpg",
+  "original_media_id_higgsfield": "2fce5f44-9412-40ab-8427-a817e3ff11f8",
+  "szene_job": "0b482efe-48b4-4b18-977a-7e2d73a9d451",
+  "szene_modell": "nano_banana_2_1 (2k, 3:2), 2528x1696",
+  "szene_versuche": 1,
+  "video_job": "7b323358-c822-406b-9274-1cbb9216fea5",
+  "video_job_verworfen": "8940aa76-bf54-4161-a9ef-54b64d1e4266",
+  "video_modell": "minimax_h3 (6 s, auto, Start- und Endbild = Szene), roh 2144x1440, 24 fps, 6.584 s",
+  "video_versuche": 2,
+  "prompts": {
+    "szene": "Editorial e-commerce photograph. The exact product from the reference image (a 50 ml women's eau de parfum in a rounded, faceted crystal-cut glass bottle with gently flattened shoulders and a thick clear glass base, filled with pale blush-pink liquid; a large clear faceted crystal stopper cap in a diamond/jewel shape with a flat top, sitting on a short polished silver collar; around the neck a black satin ribbon bow with sheer black lace tails, centred by a round gold brooch set with a red cabochon gem framed by small clear rhinestones, from which a thin double strand of black chain hangs down the front of the bottle almost to its base; no label, no text, no logo on the bottle) standing upright on a white-and-blush marble vanity top, with a few loose pale pink rose petals and some scattered white pearls beside it, and a softly blurred clear glass vase of pink roses far in the background. Calm, high-end Swiss boudoir interior, soft natural morning light from a window falling across the marble, quiet late-autumn mood, muted warm blush and ivory tones, shallow depth of field. Do not change the product in any way: identical shape, proportions, colors, facets, cap, bow, brooch, chain and number of parts. No people, no hands, no faces, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+    "video_v1_verworfen": "Calm cinemagraph of a still-life scene. All objects stay completely still and unchanged: the perfume bottle with its faceted crystal-cut glass, pale blush-pink liquid, clear faceted jewel-shaped cap, silver collar, black satin and lace bow, gold brooch with red gem and black double chain keeps its exact shape, colors and details; the chain does not swing; the rose petals, pearls, vase and roses do not move. Only the soft natural morning light slowly drifts across the marble, delicate light reflections shimmer very gently in the facets of the glass, the sheer curtain in the background moves very gently, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame.",
+    "video": "Calm cinemagraph of a still-life photograph. The camera is locked off on a tripod and does not move at all; only the light changes. The perfume bottle is a rigid, frozen object: its faceted glass, pale blush-pink liquid, clear faceted jewel-shaped cap, silver collar, black ribbon bow, gold brooch with red gem and black double chain keep exactly the same shape, folds, position and details in every frame; the ribbon bow is stiff and does not change shape, the chain does not swing. Rose petals, pearls, vase and roses stay completely still. Only a soft warm patch of morning sunlight drifts very slowly across the marble top and tiny light sparkles glint gently in the glass facets. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame."
+  },
+  "pruefwerte": {
+    "datei": "clip.mp4",
+    "bytes": 293653,
+    "poster_bytes": 44858,
+    "dauer": 6.0,
+    "groesse": "1200x806",
+    "tonspuren": 0,
+    "naht_ssim": 0.972001
+  },
+  "stabilitaet_roh": {
+    "methode": "Korrelation (helligkeitsbereinigt) je Bereich gegen Bild 0, Graustufen 1072x720, Minimum ueber alle Bilder",
+    "v1_verworfen": {
+      "kappe": 0.759,
+      "schleife": 0.847,
+      "flasche_unten": 0.907,
+      "vase": 0.819
+    },
+    "v2_gewaehlt": {
+      "kappe": 0.99,
+      "schleife": 0.952,
+      "flasche_unten": 0.963,
+      "vase": 0.947
+    },
+    "verschiebung_v2": "dx=0 dy=0 in allen 27 Messpunkten (bewegung.py)"
+  },
+  "sichtpruefung": "Szene gegen Original (Ausschnitt nebeneinander): runde facettierte Flasche mit flachen Schultern und dickem Glasboden, blassrosa Fuellung, grosse facettierte Kristallkappe mit flacher Oberseite auf kurzem Silberkragen, schwarze Satinschleife mit Spitzenenden, goldene Brosche mit rotem Stein und Strasskranz, doppelte schwarze Kette bis fast zum Boden; Kette in der Szene etwas kuerzer als im Original. Keine Schrift, keine Logos, keine Personen, keine Haende. Produkt steht fast mittig (nicht klar rechts der Mitte), Vase mit Rosen links. Video v1 verworfen: Schleife aenderte zwischen 1,5 und 3,5 s ihre Faltenform (Schlaufen schmaler und steiler), Licht dunkelte deutlich ab. Video v2 (Kamera fest): Produkt in allen Bildern gleich, Schleife nur minimal veraendert, Kette ruhig; neu sind kurze sternfoermige Glanzlichter an Kappe und Flaschenschulter zwischen etwa 2 und 4 s (Lichteffekt, kein Objekt), dazu leichtes Wandern des Sonnenflecks; ab 4 s fast stehend.",
+  "credits": {
+    "vorher": 493.74,
+    "nachher_kontostand": 451.74,
+    "verbraucht": 26,
+    "szene": 2,
+    "video": 24,
+    "hinweis": "Kontostand nachher enthaelt parallele Laeufe anderer Kategorien; Verbrauch aus den Ledger-Staenden zwischen den eigenen Auftraegen gerechnet (Szene 2, je Video 12)"
+  },
+  "erstellt_utc": "2026-11-23T02:52Z"
+}

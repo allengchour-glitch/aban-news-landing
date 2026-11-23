@@ -1,0 +1,43 @@
+{
+  "handle": "trends-gadgets",
+  "art": "kategorie",
+  "kategorie_titel": "Gaming & Gadgets > Trends & Gadgets",
+  "produkt_handle": "galaxy-projektor-821248",
+  "produkt_id": 15483889779073,
+  "produkt_titel": "Galaxy-Projektor · Schwarz",
+  "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7bf4a371-8077-4f8f-8881-9be6789f1adc.jpg",
+  "original_lokal": "original.jpg (1500x1500)",
+  "higgsfield_media_id": "301ccc93-1893-41e1-8ab2-1b5590e29f83",
+  "szene_job": "1aa0c379-a23c-490a-8740-62f51e2e5289",
+  "szene_datei": "szene.png (2528x1696, nano_banana_2_1, 2k, 3:2, ein Versuch)",
+  "video_job": "39ef67ec-3a4a-4844-879f-5e58e5b9a0ab",
+  "video_job_verworfen": "de1977cb-2298-48a8-9adc-0c2eb930b029 (roh_v1.mp4, clip_v1.mp4: Form, Ständer und Tasten unverändert, aber das LED-Band wechselt zwischen 2 und 5 s in Regenbogenfarben (Gelb, Grün, Cyan, Blau); Anteil Grün/Cyan im Band bis 0.51, das Produktfoto zeigt nur Lavendel-Pink-Pfirsich-Gelb)",
+  "modell_szene": "nano_banana_2_1",
+  "modell_video": "minimax_h3",
+  "komposition": "Projektor rechts der Mitte im unteren Drittel auf Nussbaum-Nachttisch, Sternenhimmel-Projektion an Wand und Decke darüber, links ruhiges Bett mit Leinenkissen und kleine Tischlampe im Hintergrund.",
+  "prompts": {
+    "szene": "Editorial e-commerce photograph. The exact product from the reference image (a compact star and galaxy night-light projector: a matte black spherical body, slightly flattened on top and tilted toward the viewer, resting in a polished chrome wire stand made of two bent triangular loops; on the flat top face sits a raised black dome holding the main round glass projection lens, with a second small round lens near the front edge and a curved row of exactly four small round black push buttons near the back edge; fine concentric grooves run around the upper rim; a thin glowing LED light band circles the equator of the sphere in a soft gradient from lavender-violet through pink to warm peach and pale yellow; clean, modern, premium tech look, exactly one sphere, exactly two chrome wire loops) standing on its chrome wire stand on a dark walnut bedside table in the lower right third of the frame, seen from the same three-quarter front angle as in the reference, its lens gently casting a soft starry galaxy pattern of violet and deep blue light with tiny white star dots onto the plain wall and ceiling behind it. Calm, dimly lit Swiss bedroom on a late autumn evening: soft linen bedding just hinted at the edge, a muted warm neutral palette, a faint warm glow from a small lamp far in the background, gentle soft shadows, shallow depth of field, tidy and uncluttered, high-end and believable. Do not change the product in any way: identical shape, proportions, colors, pattern, details and number of parts. No people, no hands, no faces, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+    "video_versuch1_verworfen": "Calm cinemagraph of a still-life scene in a dim bedroom at night. All objects stay completely still and unchanged: the matte black spherical galaxy projector with its raised dome lens, small second lens, four round buttons, grooved rim, glowing lavender-pink-peach LED band and chrome wire stand keeps its exact shape, colors and details, standing motionless on the walnut bedside table; the bed, pillow and lamp stay still. Only the light moves: the soft violet and blue starry galaxy glow on the wall drifts very slowly and the tiny star dots twinkle gently, the LED band breathes very softly in brightness, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame.",
+    "video": "Calm cinemagraph of a still-life scene in a dim bedroom at night. The camera is locked off, only the light changes. All objects stay completely still and unchanged: the matte black spherical galaxy projector with its raised dome lens, small second lens, four round buttons, grooved rim and chrome wire stand stands motionless on the walnut bedside table. Its thin LED band keeps exactly the same fixed soft gradient of lavender-violet, pink and warm peach the whole time, with constant brightness and no color change, no rainbow, no green, no cyan. The only motion: the soft violet and blue starry galaxy glow on the wall drifts very slowly and the tiny star dots twinkle gently. The bed, pillow and lamp stay still. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame."
+  },
+  "pruefwerte": {
+    "kodieren": "datei=clip.mp4 bytes=237749 poster_bytes=40234 dauer=6.000000 groesse=1200x806 tonspuren=0 naht_ssim=0.973594",
+    "kodieren_versuch1_verworfen": "bytes=256564 poster_bytes=40232 dauer=6.000000 groesse=1200x806 tonspuren=0 naht_ssim=0.970956",
+    "roh": "2144x1440, 24 B/s, 6.584 s, 158 Bilder",
+    "bilddifferenz_max_gegen_bild0": {
+      "produkt": 3.9,
+      "hintergrund_links": 0.81
+    },
+    "led_band_anteil_gruen_cyan_max": {
+      "video": 0.0,
+      "versuch1": 0.51
+    },
+    "messwerkzeug": "werkzeug/projektor_diff.py (Massstab 1072x720, Produkt x 609..869 y 325..605)",
+    "sichtpruefung_szene": "gegen original.jpg: matt schwarze, oben abgeflachte Kugel, erhabene Kuppel mit Hauptlinse, zweite kleine Linse vorne links, Reihe aus vier runden Tasten, feine Rillen am oberen Rand, LED-Band Lavendel-Pink-Pfirsich, Chrom-Drahtständer aus zwei Dreiecksschlaufen: gleich. Kleine Aufdrucke (Timer, DC 5V) wie beim Original nur als unlesbare Miniaturzeichen; keine Logos, Personen, Hände. Szene ruhig und glaubwürdig.",
+    "sichtpruefung_video": "Kontaktbogen roh.bogen.jpg (9 Bilder) und Produktausschnitte produkt_bogen.jpg (8 Bilder): Form, Kuppel, Linsen, vier Tasten, Rillen und Ständer in allen Bildern unverändert, keine Verformung, keine neuen Objekte, keine Schrift. LED-Band bleibt in Lavendel, Pink und Pfirsich (kein Grün/Cyan), die Lage des Verlaufs wandert aber leicht (in der Mitte rechts kurz mehr Lavendel/Weiss statt Pfirsich). Sternenprojektion an der Wand wandert langsam, Bett und Lampe ruhig."
+  },
+  "credits": {
+    "verbraucht": 26,
+    "aufteilung": "Szene 2 (909.74 -> 907.74), Video Versuch 1: 12, Video Versuch 2: 12 (Kontostand 909.74 vor Beginn, 867.74 am Ende inkl. paralleler Laeufe anderer Kategorien, z. B. handy-zubehoer)"
+  }
+}
