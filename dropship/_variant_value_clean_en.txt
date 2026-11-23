@@ -22247,3 +22247,4 @@ gid://shopify/Product/15510925476225	Farbe	gid://shopify/ProductOptionValue/5870
 gid://shopify/Product/15510925476225	Farbe	gid://shopify/ProductOptionValue/58709504360839	SET2	Set 2	2026-11-23T17:48Z
 gid://shopify/Product/15510927901057	Grösse	gid://shopify/ProductOptionValue/58847978848647	Default	Standard	2026-11-23T17:48Z
 gid://shopify/Product/15511791862145	Farbe	gid://shopify/ProductOptionValue/58848099238279	Set1	Set 1	2026-11-23T17:48Z
+gid://shopify/Product/15512280727937	Grösse	gid://shopify/ProductOptionValue/58848175554951	Pillowcase	Kissenbezug	2026-11-23T17:48Z

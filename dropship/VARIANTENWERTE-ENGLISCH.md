@@ -6,11 +6,11 @@
 
 ## Zahlen
 
-- Produkte gesehen: **41'458**
-- Optionen mit englischen Werten (Kandidaten): 1'407
-- Optionen übersetzt: **212** · Werte übersetzt: **530**
-- Optionen nur codebereinigt: 83
-- Werte mit unbekanntem Wort (unverändert): 3'713
+- Produkte gesehen: **42'053**
+- Optionen mit englischen Werten (Kandidaten): 1'421
+- Optionen übersetzt: **215** · Werte übersetzt: **534**
+- Optionen nur codebereinigt: 84
+- Werte mit unbekanntem Wort (unverändert): 3'742
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 29
 - übersprungen «kleidungsstueck-im-wert»: 25
@@ -91,5 +91,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 128, `powder` 103, `french` 84, `core` 69, `size` 64, `elegant` 61, `high` 56, `one` 55, `cherry` 55, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 41, `chain` 40, `inner` 38, `(insole` 36, `space` 33, `tc` 31, `li` 31, `blossom` 30, `end` 30, `carbon` 28, `intergold` 28, `avocado` 27, `of` 27, `opp` 27, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `×` 23, `eyelashes` 23, `⟨satzbau:menge-vor-nomen⟩` 22, `weiß` 22, `two` 21, `lotus` 21, `no` 21, `love` 21, `⟨satzbau:praeposition⟩` 21, `skin` 20, `gun` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `2er` 19, `line` 19, `light` 19, `lamp` 19, `holder` 19, `⟨satzbau:mass-ohne-zahl⟩` 19, `three` 18, `full` 18, `color` 18
+`⟨satzbau:adjektiv-vor-nomen⟩` 128, `powder` 103, `french` 84, `core` 69, `size` 64, `elegant` 61, `high` 56, `one` 55, `cherry` 55, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 41, `chain` 40, `inner` 38, `(insole` 36, `space` 33, `tc` 31, `li` 31, `blossom` 30, `end` 30, `avocado` 28, `carbon` 28, `intergold` 28, `of` 27, `opp` 27, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `two` 23, `×` 23, `eyelashes` 23, `⟨satzbau:menge-vor-nomen⟩` 22, `lotus` 22, `weiß` 22, `no` 21, `love` 21, `⟨satzbau:praeposition⟩` 21, `inside` 21, `skin` 20, `gun` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `2er` 19, `line` 19, `light` 19, `lamp` 19, `holder` 19, `⟨satzbau:mass-ohne-zahl⟩` 19, `three` 18, `full` 18
 

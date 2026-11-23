@@ -4223,3 +4223,4 @@ gid://shopify/Product/15510925345153	Modell	1
 gid://shopify/Product/15510925476225	Farbe	2
 gid://shopify/Product/15510927901057	Grösse	1
 gid://shopify/Product/15511791862145	Farbe	1
+gid://shopify/Product/15512280727937	Grösse	1
