@@ -1,10 +1,14 @@
 {
- "stand": "2026-10-24T13:12Z",
- "gescannt": 0,
- "ohne_kategorie_vorher": 0,
- "gesetzt": 0,
- "ohne_kategorie_nachher": 0,
+ "stand": "2026-11-23T18:31Z",
+ "gescannt": 187,
+ "ohne_kategorie_vorher": 187,
+ "gesetzt": 184,
+ "ohne_kategorie_nachher": 3,
  "fehler": 0,
- "unbekannte_typen": {},
+ "unbekannte_typen": {
+  "Schmuckset": 1,
+  "Socken": 1,
+  "-": 1
+ },
  "scharf": true
 }
