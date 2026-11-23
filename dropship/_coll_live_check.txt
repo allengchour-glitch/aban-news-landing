@@ -658,3 +658,10 @@ damen-sport-sets	ok	23	Sets, Anzüge & Jumpsuits
 damen-sport-tops	ok	22	Sport-Tops & BHs
 damen-kleider	ok	28	Kleider
 damen-kleider-mini	ok	29	Minikleider
+damen-kleider-midi	ok	29	Midikleider
+damen-kleider-maxi	ok	29	Maxikleider
+damen-kleider-abend	ok	29	Abendkleider & festliche Kleider
+damen-kleider-cocktail	ok	21	Cocktail- & Partykleider
+damen-kleider-business	ok	29	Business- & Etuikleider
+damen-kleider-sommer	ok	29	Sommerkleider
+damen-kleider-strand	ok	29	Strandkleider
