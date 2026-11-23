@@ -1189,3 +1189,130 @@ drohnen-mini-faltbar	ok	29	Mini- & Falt-Drohnen
 drohnen-zubehoer-fpv	ok	29	Drohnen-Zubehör & FPV-Teile
 drohnen-zubehoer-akkus-lader	ok	21	Akkus & Ladegeräte
 drohnen-zubehoer-dji	ok	20	Für DJI & Mavic
+gamepads-controller	ok	29	Gamepads & Controller
+controller-handy-mobile	ok	29	Für Handy & Tablet
+controller-bluetooth-kabellos	ok	29	Kabellos & Bluetooth
+controller-konsole-pc	ok	29	Für PS, Xbox, Switch & PC
+spielkonsolen-retro-handhelds	ok	29	Spielkonsolen & Retro-Handhelds
+konsolen-retro-arcade	ok	24	Retro & Arcade
+konsolen-zubehoer-ladestationen	ok	29	Konsolen-Zubehör & Ladestationen
+konsolen-ladestationen	ok	29	Ladestationen & Netzteile
+konsolen-huellen-taschen	ok	29	Hüllen, Taschen & Skins
+vr-brillen-zubehoer	ok	29	VR-Brillen & VR-Zubehör
+smartwatches	ok	29	Smartwatches
+smartwatches-kinder	ok	29	Kinder-Smartwatches
+smartwatches-gps	ok	29	Mit GPS
+smartwatches-anruf	ok	29	Mit Anruffunktion
+smartwatches-damen	ok	27	Damen-Smartwatches
+fitness-tracker-smartbands	ok	29	Fitness-Tracker, Smartbands & Smart Rings
+tracker-herzfrequenz	ok	29	Mit Herzfrequenzmessung
+tracker-farbdisplay	ok	29	Mit Farbdisplay
+tracker-bluetooth-anruf	ok	29	Mit Bluetooth & Anruf
+smartwatch-zubehoer	ok	29	Smartwatch-Ladegeräte & Schutzhüllen
+uhrenarmbaender-smartwatch	ok	29	Uhren- & Smartwatch-Armbänder
+armbaender-silikon	ok	29	Silikonarmbänder
+armbaender-leder	ok	29	Uhrenarmbänder aus Leder
+armbaender-metall-edelstahl	ok	29	Metall- & Edelstahlarmbänder
+armbaender-apple-watch	ok	29	Für Apple Watch
+smart-home-geraete	ok	29	Smart-Home-Geräte
+batterien-akkus	ok	29	Batterien & Akkus
+akkus-18650-lithium	ok	29	Lithium-Akkus & 18650
+solar-panels-ladegeraete	ok	27	Solarpanels & Solar-Ladegeräte
+akku-ladegeraete	ok	29	Akku- & Batterieladegeräte
+werkzeugtaschen-aufbewahrung	ok	22	Werkzeugtaschen & Aufbewahrung
+taschenlampen-kopflampen	ok	29	Taschenlampen & Kopflampen
+gartengeraete-gartenpflege	ok	29	Gartengeräte & Gartenpflege
+bewaesserung-gartenschlauch	ok	28	Bewässerung & Gartenschläuche
+pflanztoepfe-pflanzenzubehoer	ok	29	Pflanztöpfe & Pflanzenzubehör
+gartendeko-windspiele	ok	29	Gartendeko, Windspiele & Vogelhäuser
+garten-aussenleuchten	ok	29	Garten- & Aussenleuchten
+hochdruckreiniger-schaumkanonen	ok	22	Hochdruckreiniger & Autowäsche
+grills-grillzubehoer	ok	29	Grills & Grillzubehör
+grills-geraete	ok	21	Grills & Feuerstellen
+grills-zubehoer	ok	29	Grillzubehör & Besteck
+pool-sonnenschutz-gartenmoebel	ok	29	Pool, Sonnenschutz & Gartenmöbel
+regen-sonnenschirme	ok	22	Regen- & Sonnenschirme
+wasserhaehne-armaturen	ok	29	Wasserhähne & Armaturen
+duschkoepfe-handbrausen	ok	26	Duschköpfe & Handbrausen
+abfluss-sanitaerzubehoer	ok	29	Abfluss & Sanitärzubehör
+rohre-ventile-pumpen	ok	23	Rohre, Ventile & Pumpen
+wasserfilter-wasserspender	ok	23	Wasserfilter & Wasserspender
+tueren-fenster-moebelbeschlaege	ok	29	Türen, Fenster & Möbelbeschläge
+schrauben-duebel-befestigung	ok	27	Schrauben, Dübel & Befestigung
+kleber-klebebaender-reparatur	ok	22	Kleber, Klebebänder & Reparaturmasse
+maler-spachtel-renovieren	ok	29	Maler- & Renovierbedarf
+elektro-installation	ok	22	Elektro-Installation & Klemmen
+schaedlingsabwehr-insektenschutz	ok	29	Schädlingsabwehr & Insektenfallen
+schaedlinge-fallen-lampen	ok	28	Mückenlampen, Fallen & Klatschen
+schaedlinge-vertreiber	ok	29	Vertreiber & Abwehr
+fliegengitter-insektenschutz-vorhaenge	ok	29	Fliegengitter & Insektenschutz-Vorhänge
+lenkradbezuege	ok	29	Lenkradbezüge & Lenkradhüllen
+lenkradbezuege-leder	ok	29	Leder & Kunstleder
+lenkradbezuege-sport	ok	21	Sportlich & rutschfest
+autositzbezuege-auflagen	ok	29	Autositzbezüge & Sitzauflagen
+auto-kissen-stuetzen	ok	29	Auto-Sitzkissen, Nacken- & Lendenstützen
+auto-kissen-nacken	ok	28	Nacken- & Kopfstützenkissen
+auto-kissen-sitz	ok	29	Sitzkissen & Polster
+auto-organizer-ablagen	ok	29	Auto-Organizer & Ablagen
+auto-organizer-ruecksitz	ok	25	Rücksitz- & Sitzlücken-Organizer
+auto-organizer-taschen-boxen	ok	29	Taschen, Boxen & Beutel
+auto-interieur-zierteile	ok	29	Armlehnen, Schaltknäufe & Zierteile
+auto-duft-luft	ok	29	Autoduft, Luftreiniger & Luftbefeuchter
+auto-komfort-reise	ok	21	Heizen, Kühlen & Reise-Komfort
+auto-aussen-dekor-licht	ok	29	Aufkleber, Folien & Beleuchtung
+auto-karosserie-wetterschutz	ok	26	Karosserie, Ersatzteile & Wetterschutz
+auto-schluessel-etuis	ok	29	Autoschlüssel, Etuis & Schutzhüllen
+auto-diebstahlschutz-sicherheit	ok	21	Diebstahlschutz, Gurte & Sicherheit
+dashcams-rueckfahrkameras	ok	20	Dashcams & Rückfahrkameras
+auto-multimedia-navi	ok	26	Auto-Multimedia, CarPlay & Navigation
+starthilfe-batterie-wandler	ok	29	Starthilfe, Batterieladegeräte & Spannungswandler
+auto-diagnose-messgeraete	ok	29	Diagnose, Messgeräte & Anzeigen
+autowaesche-reinigung	ok	29	Autowäsche & Innenreinigung
+autowaesche-pistolen-schaum	ok	22	Waschpistolen, Düsen & Schaum
+autowaesche-buersten-sauger	ok	28	Bürsten, Staubsauger & Sets
+autopflege-politur-lack	ok	29	Politur, Wachs & Scheibenpflege
+auto-reparatur-karosseriewerkzeug	ok	29	Karosserie-, Motor- & Spezialwerkzeug
+reifen-luftpumpen	ok	21	Reifen, Luftpumpen & Reifendruck
+motorrad-taschen-gepaeck	ok	29	Motorrad-Taschen & Gepäck
+motorrad-rucksaecke	ok	29	Motorrad-Rucksäcke
+motorrad-taschen-koffer	ok	29	Taschen, Koffer & Beutel
+motorrad-taschen-wasserdicht	ok	21	Wasserdicht
+motorrad-helme-bekleidung	ok	29	Motorradhelme, Schutz & Bekleidung
+motorrad-zubehoer-teile	ok	21	Motorrad-Zubehör, Teile & Werkzeug
+e-scooter-e-bike-zubehoer	ok	26	Scooter- & E-Bike-Zubehör
+bausteine-fahrzeug-bausaetze	ok	29	Fahrzeug- & Militär-Bausätze
+bausteine-fahrzeuge-sportwagen	ok	29	Sportwagen & Rennautos
+bausteine-fahrzeuge-militaer	ok	29	Panzer, Militär & Flugzeuge
+bausteine-fahrzeuge-gelaende	ok	28	Geländewagen, Trucks & Baufahrzeuge
+bausaetze-roboter-technik	ok	29	Roboter & Technik-Bausätze
+bausteine-gebaeude-staedte	ok	29	Häuser, Schlösser & Städte
+bausteine-blumen-deko	ok	29	Blumen, Retro & Deko-Modelle
+bausteine-tiere-weltraum	ok	29	Tiere, Dinosaurier & Weltraum
+bausteine-holz-magnet-gross	ok	29	Bauklötze, Magnet- & Grossbausteine
+bausteine-kinder-mikro	ok	29	Bausteine für Kinder & Mikrobausteine
+bausteine-weitere-sets	ok	29	Weitere Bausteine-Sets & Zubehör
+pluesch-kuscheltiere	ok	29	Plüsch- & Kuscheltiere
+puppen-figuren-miniaturen	ok	24	Puppen, Figuren & Miniaturwelten
+rollenspiel-spielsets	ok	24	Rollenspiel & Spielsets
+holzspielzeug-spielwelten	ok	21	Holzspielzeug & weitere Spielsachen
+rc-autos-trucks	ok	29	RC-Autos, Trucks & Boote
+rc-helikopter-flugzeuge	ok	29	RC-Helikopter, Flugzeuge & Flugspielzeug
+rc-helikopter	ok	29	RC-Helikopter
+rc-flugzeuge-gleiter	ok	29	RC-Flugzeuge & Gleiter
+spielzeug-roboter	ok	29	Roboter, RC-Tiere & interaktive Spielzeuge
+spielzeugautos-eisenbahn	ok	29	Spielzeugautos & Eisenbahnen
+puzzles-3d-holz	ok	29	Puzzles: 3D, Holz & Knobeln
+puzzles-holz	ok	29	Holzpuzzles
+puzzles-kinder-lernen	ok	25	Puzzles für Kinder & Lernpuzzles
+spiele-karten-geschick	ok	21	Gesellschafts-, Karten- & Geschicklichkeitsspiele
+lernspielzeug-experimentieren	ok	26	Lern-, Musik- & Experimentierspielzeug
+kinder-malen-basteln	http-429	0	Malen, Basteln & Kreatives für Kinder
+baby-stillen-fuettern	ok	29	Stillen, Flaschen & Füttern
+stillkissen-schwangerschaftskissen	ok	25	Still- & Schwangerschaftskissen
+flaschen-waermer-beikost	ok	25	Flaschen, Wärmer & Beikost
+baby-kinderwagen-unterwegs	ok	29	Kinderwagen, Tragen & Unterwegs
+kinderwagen-kindersitz-zubehoer	ok	28	Kinderwagen- & Kindersitz-Zubehör
+baby-tragen-wickeltaschen	ok	22	Babytragen & Wickeltaschen
+baby-baden-wickeln-pflege	http-429	0	Baden, Wickeln & Töpfchen
+baby-schlafen-kuscheln	ok	29	Schlafen, Decken & Babymöbel
+baby-kissen	http-429	0	Babykissen
