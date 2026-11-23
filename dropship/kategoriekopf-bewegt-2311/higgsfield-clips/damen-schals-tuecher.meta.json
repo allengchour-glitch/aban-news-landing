@@ -1,0 +1,38 @@
+{
+  "handle": "damen-schals-tuecher",
+  "art": "kategorie",
+  "kategorie_titel": "Damen > Schals & Tücher",
+  "produkt_handle": "kaschmirahnlicher-jacquard-schal-aus-viskose-659400",
+  "produkt_id": 16652013207943,
+  "produkt_titel": "Kaschmirähnlicher Jacquard-Schal aus Viskose",
+  "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/83f3431a-5432-42b5-8d83-6c5808834abf.jpg",
+  "original_lokal": "original.jpg (1200x1200)",
+  "higgsfield_media_id": "036ced07-60cf-4919-8fe8-1a16cbb4fd40",
+  "szene_job": "f83a6056-de48-4a66-b021-0905fb18d1f9",
+  "szene_modell": "nano_banana_2_1 (2k, 3:2)",
+  "szene_datei": "szene.png (2528x1696)",
+  "video_job": "15da3c84-fe3b-4974-adb4-3ada2ba231e0",
+  "video_modell": "minimax_h3 (6 s, auto, start_image = end_image = Szenen-Job)",
+  "prompts": {
+    "szene": "Editorial e-commerce photograph. The exact product from the reference image (a single long, soft woven jacquard scarf with a cashmere-like hand feel, matte and slightly textured, in deep navy/indigo and warm cream with small dusty periwinkle-blue accents; one end shows a fine cream-and-navy paisley jacquard with ornate teardrop motifs, the other end shows a bold ikat-style abstract pattern in navy on cream with a narrow geometric diamond border stripe; both short ends have short frayed self-fringe in greyish beige) draped loosely over the back of a light oak chair beside a window, hanging in soft folds, one fringed end pooling softly on a plain cream wool throw lying on the seat. Calm, high-end Scandinavian interior, light plaster wall, soft diffused morning light from the window, late autumn mood in Switzerland, muted warm neutral tones. Do not change the product in any way: identical shape, proportions, colors, pattern, details and number of parts. No people, no hands, no faces, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+    "video": "Calm cinemagraph of a still-life scene. All objects stay completely still and unchanged: the navy and cream jacquard scarf draped over the light oak chair keeps its exact shape, folds, position, colors, paisley pattern on the left end, ikat pattern and diamond border stripe on the right end, and its frayed fringes; the cream wool throw, the oak chair, the ceramic vase and the wooden floor stay exactly in place. Overall brightness and exposure stay constant. Only the soft diffused morning light from the window slowly drifts across the plaster wall, the out-of-focus autumn grasses outside the window sway very gently in a light breeze, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects, no light flashes. Seamless loop: the last frame is identical to the first frame."
+  },
+  "pruefwerte": {
+    "clip": "bytes=473554 poster_bytes=93170 dauer=6.000000 groesse=1200x806 tonspuren=0 naht_ssim=0.972233",
+    "roh": "2144x1440, 24 fps, 6.584 s, 158 Bilder (Roh-Datei mit Tonspur, Clip stumm)",
+    "kamera": "Phasenkorrelation gegen Bild 0, alle 6 Bilder: Verschiebung 0 px (Kamera steht; der verlangte Push-in kam nicht)",
+    "schal_diff": "mittlere Abweichung Schal-Bereich gegen Bild 0: hoechstens 6,41 (Spitze bei 2,5 s), am Ende 4,84; Helligkeit Schal 123,4 bis 127,5 (rund +-2 %)",
+    "wand_diff": "Wand links hoechstens 15,90 bei 3 s (wandernde Sonnenflecken mit Fensterschatten), Helligkeit Wand 174,9 bis 187,8, gegen Ende zurueck auf 178,6"
+  },
+  "sichtpruefung": {
+    "szene_gegen_original": "Treu: ein langer Schal, Paisley-Ende (cremefarben/marine, Tropfenmotive) links, Ikat-Ende (marine auf creme) rechts mit schmaler geometrischer Rautenborte, kurze ausgefranste graubeige Fransen an beiden Enden, matt und leicht strukturiert, weiche Falten; einzelne staubblaue Akzente sichtbar. Abweichungen: der Schal haengt ueber der Stuhllehne statt als Schlaufe (gewollt, Platzierung); die Ikat-Seite wirkt etwas dunkler/marinelastiger als im Original; die sichtbare Haengelaenge wirkt kuerzer als ein langer Stola-Schal (Rest liegt auf der Wolldecke). Keine Schrift, Logos, Personen, Haende. Szene hochwertig und glaubwuerdig (helle Eiche, Kalkputzwand, Wolldecke, Keramikvase, Herbstwiese vor dem Fenster).",
+    "video": "genommen (erster Versuch): Kamera fest, Schal in Ausschnitten bei 0, 2,5 und 6,5 s gleich (Falten, Paisley links, Ikat und Rautenborte rechts, Fransen), keine Musterwechsel, keine Verformung; Bogen mit 9 Bildern ohne neue Objekte, Schrift, Personen. Bewegung: Sonnenflecken mit Fensterschatten wandern ueber die Wand und verblassen wieder, Graeser vor dem Fenster bewegen sich leicht. Rest: leichte Schattenverschiebung auf dem Schal um 2,5 s."
+  },
+  "credits": {
+    "vorher": 1079.74,
+    "nachher": 1051.74,
+    "verbraucht_geschaetzt": 16,
+    "hinweis": "Szene rund 4, Video minimax_h3 rund 12 Credits (aus Ledger anderer Laeufe hergeleitet). Der Kontostand wurde von parallelen Laeufen mitbewegt (Differenz 28)."
+  },
+  "erstellt_utc": "2026-11-23T00:07Z"
+}

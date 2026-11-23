@@ -1,0 +1,31 @@
+{
+  "handle": "aroma-diffuser-duftlampen",
+  "art": "Wohnen & Garten > Aroma-Diffuser & Duftlampen",
+  "produkt_handle": "aroma-diffusor-aus-holz-3b7c22",
+  "produkt_id": "gid://shopify/Product/16608731496839",
+  "produkt_titel": "Aroma-Diffusor aus Holz",
+  "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2812476870898.jpg",
+  "original_media_id_higgsfield": "90585f66-9362-4de6-b33c-dfa2af5ef587",
+  "szene_job": "94db4b4a-43d9-4cf6-9fef-e5c0c539fa4e",
+  "szene_modell": "nano_banana_2_1 (2k, 3:2), 2528x1696",
+  "szene_versuche": 1,
+  "video_job": "9b5cbfe1-6c6d-4d40-8b91-e972d90b0b57",
+  "video_modell": "minimax_h3 (6 s, auto, Start- und Endbild = Szene), roh 2144x1440, 24 fps, 6.584 s",
+  "video_versuche": 1,
+  "prompts": {
+    "szene": "Editorial e-commerce photograph. The exact product from the reference image (a minimalist nebulizing essential-oil diffuser: one clear, transparent hand-blown round glass globe like a spherical flask, with a short angled glass neck spout at its upper right and a thin vertical glass nozzle tube visible inside the sphere; the globe sits directly on top of a solid cylindrical base of light natural pale wood, pine-like warm honey-beige tone, with visible vertical grain and fine growth rings along the top edge; a single small round brushed-silver metal control knob on the lower front of the wooden base; the base is slightly wider than the globe and about as tall as the globe is wide; no cable) standing on a pale oak sideboard next to a folded off-white linen cloth and a small plain ceramic dish, with a faint, delicate wisp of aromatic mist rising from the glass spout. Calm, high-end Scandinavian-Swiss interior, soft warm natural morning light from a window on the left, late autumn mood, muted warm neutral tones, shallow depth of field. Do not change the product in any way: identical shape, proportions, colors, wood grain, glass details, knob and number of parts. No people, no hands, no faces, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+    "video": "Calm cinemagraph of a still-life scene. All objects stay completely still and unchanged: the aroma diffuser with its clear round glass globe, angled glass spout, thin inner nozzle tube, pale wooden cylindrical base and small silver knob keeps its exact shape, colors, wood grain and details; the linen cloth, ceramic dish, picture frames and books do not move. Only the soft natural morning light slowly drifts across the scene, a faint wisp of white aromatic mist rises very gently and softly from the glass spout and dissolves, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame."
+  },
+  "pruefwerte": {
+    "datei": "clip.mp4",
+    "bytes": 252058,
+    "poster_bytes": 27858,
+    "dauer": 6.0,
+    "groesse": "1200x806",
+    "tonspuren": 0,
+    "naht_ssim": 0.972567
+  },
+  "sichtpruefung": "Szene gegen Original: Glaskugel mit schraegem Hals oben rechts, Duesenroehrchen innen, heller Holzsockel mit Jahresringen an der Oberkante, silberner Knopf vorne, Proportionen nahe am Original; keine Schrift, keine Logos, keine Personen, kein Kabel. Video: Kontaktbogen 9 Bilder und Ausschnitt Start gegen 3,3 s: Produkt unveraendert, nur Nebel und sehr langsames Heranfahren; Leinentuch, Schale, Bilder ruhig.",
+  "credits": {"vorher": 591.74, "nachher": 577.74, "verbraucht": 14, "szene": 2, "video": 12},
+  "erstellt_utc": "2026-11-23T02:18Z"
+}

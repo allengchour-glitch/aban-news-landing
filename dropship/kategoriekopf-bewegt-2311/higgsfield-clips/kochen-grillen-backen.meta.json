@@ -1,0 +1,50 @@
+{
+ "handle": "kochen-grillen-backen",
+ "art": "Küche > Kochen, Grillen & Backen",
+ "produkt_handle": "edelstahl-bratpfanne-mit-schragrand-638700",
+ "produkt_id": null,
+ "produkt_titel": "Edelstahl-Bratpfanne mit Schrägrand",
+ "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/637812e9-5d24-486a-881f-540f4e3d614f.jpg?v=1788052867",
+ "original_media_id": "8a131e16-b7f7-408d-9885-e3f921c80e3b",
+ "szene_job": "be9456dd-426c-4fbb-8135-9c984d43f7ca",
+ "szene_versuche": [
+  {
+   "job": "867de2c3-3941-40df-aae5-e6575f73f7e0",
+   "datei": "szene_v1.png",
+   "urteil": "verworfen: zwei erfundene Nietenköpfe innen in der kleinsten Pfanne (Original ohne Nieten, Griff aussen per Y-Steg), Produkt mittig statt rechts"
+  },
+  {
+   "job": "be9456dd-426c-4fbb-8135-9c984d43f7ca",
+   "datei": "szene_v2.png",
+   "urteil": "angenommen: drei Pfannen, Muster Boden (verzahnt) und Wand (Federmuster) gleich, keine Nieten, Y-Steg und Tropfenloch gleich, Produkt rechts der Mitte; Ölflasche ohne Etikett, keine Schrift/Logos/Personen; Arbeitsplatte mit Stufe leicht ungewöhnlich"
+  }
+ ],
+ "video_job": "510f1d81-3195-4d6d-8302-ce061f8cad89",
+ "prompts": {
+  "szene_v1": "Editorial e-commerce photograph. The exact product from the reference image (a set of exactly three round stainless steel frying pans in graduated sizes, nested ... handles angled toward the back right ...) ... Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+  "szene_v2": "Editorial e-commerce photograph. The exact product from the reference image (a set of exactly three round stainless steel frying pans in graduated sizes, nested inside each other and fanned slightly so all three long handles point the same way; polished mirror-bright stainless steel exterior and a thin bright steel rim; the cooking surface inside is dark charcoal-black with a fine raised silver interlocking pattern across the flat base and a finer feather-like scale pattern up the gently sloping walls; the inner walls are completely smooth with NO rivets, NO rivet heads and NO screws visible inside the pans, exactly as in the reference; long, slim, brushed stainless steel handles with a tapered grip, a teardrop-shaped hanging hole at the end, joined to the outside of the rim by a two-prong Y-shaped welded bracket) resting nested together on a warm light oak kitchen counter beside a matte dark stone stovetop, handles angled toward the back right, seen from a slightly elevated three-quarter angle so the black patterned interior is clearly visible. The pans sit in the right half of the frame. Calm, high-end Swiss kitchen in late autumn, soft natural morning window light from the left, a few fresh green herbs and a folded linen towel softly blurred far in the background. Do not change the product in any way: identical shape, proportions, colors, pattern, details and number of parts (exactly three pans, no lid, no rivets). No people, no hands, no faces, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered open oak counter and soft background on the left.",
+  "video": "Calm cinemagraph of a still-life scene. All objects stay completely still and unchanged: the three nested stainless steel frying pans keep their exact shape, colors, dark interlocking pattern, rims and handles; the herbs, the oil bottle and the linen towel do not move. Only the soft natural morning light slowly drifts across the oak counter, a faint warm glint glides very slowly along the polished steel rims and handles, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame."
+ },
+ "pruefwerte": {
+  "datei": "clip.mp4",
+  "bytes": 532900,
+  "poster_bytes": 80566,
+  "dauer": 6.0,
+  "groesse": "1200x806",
+  "tonspuren": 0,
+  "naht_ssim": 0.94602,
+  "roh": {
+   "groesse": "2144x1440",
+   "dauer": 6.584,
+   "fps": 24
+  }
+ },
+ "sichtpruefung_video": "Kontaktbogen und 4 Zoom-Bilder (0 / 2,2 / 3,3 / 4,4 s): drei Pfannen in allen Bildern, Form, Griffe, Y-Steg, Tropfenloch und Muster unverändert, keine neuen Objekte, keine Schrift. Lichtwechsel deutlich: in der Mitte des Clips zieht ein warmer, harter Sonnenstrahl mit Schatten über Platte und Pfannen, dabei wirkt das Bodenmuster durch Spiegelung zeitweise heller/schwächer. Kein zweiter Videoversuch nötig.",
+ "credits": {
+  "stand_vor_erster_generierung": 677.74,
+  "stand_nach_video": 647.74,
+  "beobachtete_differenz": 30.0,
+  "hinweis": "3 Generierungen (2 Szenen, 1 Video); Differenz kann Läufe paralleler Agenten enthalten"
+ },
+ "erstellt_utc": "2026-11-23T02:00Z"
+}

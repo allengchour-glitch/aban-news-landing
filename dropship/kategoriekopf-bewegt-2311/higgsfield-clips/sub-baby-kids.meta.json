@@ -1,0 +1,46 @@
+{
+ "handle": "sub-baby-kids",
+ "art": "Kinder & Baby",
+ "produkt_handle": "babysnowstiefel-828672",
+ "produkt_id": "gid://shopify/Product/15464284553601",
+ "produkt_titel": "Babysnowstiefel",
+ "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fedbde3e-44fc-4161-8c71-3e0de91f5956.jpg",
+ "original_media_id": "18543d79-b8dd-4b15-9722-683358cf7ada",
+ "szene_job": "28a10567-4bdf-4405-a271-d38e4139af18",
+ "video_job": "962f4ddb-9aa9-4b38-b682-3ba30de1238c",
+ "video_job_verworfen": {
+  "job": "5bf68ccf-a3a6-4d30-a95c-1131ee1ceaee",
+  "grund": "Schneeflocken fielen im Innenraum vor der Wand (neue Objekte); Produkt selbst unveraendert; Dateien in versuch1/"
+ },
+ "prompts": {
+  "szene": "Editorial e-commerce photograph. The exact product from the reference image (a pair of two identical toddler winter booties in warm khaki / sand-beige brushed faux suede with a soft suede-like nap, low ankle-height slip-on shape with a rounded, slightly bulbous toe, one wide hook-and-loop strap across the instep with a self-coloured piped edge, tan piped binding around the ankle opening, thick plush white fleece lining visible inside the opening, and a chunky light tan rubber sole with a ridged, sawtooth-like tread pattern along the sides; plain and clean, no logos, no text, no prints) standing side by side, toes angled slightly toward the camera, on a soft cream chunky-knit blanket draped over a light oak nursery bench beside a frosted window, in calm early-morning winter light. Quiet, high-quality Swiss winter home atmosphere, soft natural diffused daylight, gentle warm-neutral tones, shallow depth of field, everything tidy and calm. Do not change the product in any way: identical shape, proportions, colors, pattern, details and number of parts (exactly two booties). No people, no hands, no faces, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+  "video_1_verworfen": "Calm cinemagraph of a still-life scene. All objects stay completely still and unchanged: the pair of khaki faux-suede toddler winter booties with white fleece lining, hook-and-loop straps and light tan ridged soles keeps its exact shape, colors, texture and details, and the cream chunky-knit blanket and oak bench do not move. Only the soft natural winter light slowly drifts across the scene, a few faint snowflakes drift softly past the frosted window outside, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame.",
+  "video": "Calm cinemagraph of a still-life scene. The camera is locked off, only the light changes. All objects stay completely still and unchanged: the pair of khaki faux-suede toddler winter booties with white fleece lining, hook-and-loop straps and light tan ridged soles keeps its exact shape, colors, texture and details; the cream chunky-knit blanket, the oak bench and the room do not move. Only the soft natural winter daylight from the frosted window very slowly brightens and drifts across the blanket and the booties, with a gentle shift of soft shadows. No particles, no snowflakes or dust in the room, no people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame."
+ },
+ "pruefwerte": {
+  "datei": "clip.mp4",
+  "bytes": 347517,
+  "poster_bytes": 69370,
+  "dauer": 6.0,
+  "groesse": "1200x806",
+  "tonspuren": 0,
+  "naht_ssim": 0.96587,
+  "roh": {
+   "breite": 2144,
+   "hoehe": 1440,
+   "fps": 24,
+   "dauer": 6.584
+  }
+ },
+ "sichtpruefung": {
+  "szene": "treu: zwei Stiefelchen, Khaki-Velours, Klettriemen mit Paspel, weisses Fleecefutter, helle Saegezahn-Sohle, Proportionen gleich; keine Personen/Haende/Schrift sichtbar. Kleine Abweichungen (nur in 100%-Ansicht): weisse Ziernaht am Sohlenrand des rechten Stiefels (Original ohne sichtbare Naht), sehr schwache tonige Praegung am Sohlenrand hinten (pseudo-Buchstaben, bei 1200 px Breite nicht erkennbar); Steckdosenplatte an der linken Wand ohne Schrift.",
+  "video": "Kamera steht, nur Licht wandert (warme Sonnenflecken kommen und gehen); Stiefel in allen 9 Bildern und in Ausschnitten bei 0/2.5/4.5 s unveraendert, keine Verformung, keine neuen Objekte, keine Schrift."
+ },
+ "credits": {
+  "verbrauch_geschaetzt": 26,
+  "aufteilung": "Bild ca. 2 + zwei Videos je ca. 12 (Erfahrungswert aus ledger.csv; Kontostand wird parallel von anderen Laeufen belastet)",
+  "stand_vorher": 453.74,
+  "stand_nachher": 401.74
+ },
+ "erstellt_utc": "2026-11-23"
+}

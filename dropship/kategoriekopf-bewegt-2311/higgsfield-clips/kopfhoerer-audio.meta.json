@@ -1,0 +1,39 @@
+{
+  "handle": "kopfhoerer-audio",
+  "art": "kategorie",
+  "kategorie_titel": "Elektronik > Kopfhörer & Audio",
+  "produkt_handle": "kabellose-bluetooth-kopfhoerer-82e2b5",
+  "produkt_id": 15451605598593,
+  "produkt_titel": "Kabellose Bluetooth-Kopfhörer",
+  "original_bild": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1374339813797.jpg",
+  "original_lokal": "original.jpg (800x800)",
+  "higgsfield_media_id": "cbc17fa1-7591-442c-879b-9372207e6f59",
+  "szene_job": "3359719b-7036-4058-9df1-8798a8b0d2f7",
+  "szene_datei": "szene.png (2528x1696, nano_banana_2_1, 2k, 3:2, ein Versuch)",
+  "video_job": "90a1cd4e-3a3a-4462-8dbf-6a27a265f272",
+  "modell_szene": "nano_banana_2_1",
+  "modell_video": "minimax_h3",
+  "prompts": {
+    "szene": "Editorial e-commerce photograph. The exact product from the reference image (a pair of compact true-wireless earbuds with a round charging case: the case is a low, round puck with a smooth brushed-silver metallic finish and a flat circular silver lid that is swiveled sideways and slightly raised, uncovering most of the case; inside is a matte black tray with two kidney-shaped cradles, one holding a small glossy beige (warm skin-tone) pebble-shaped earbud with a small pale oval touch mark and a tiny blue LED dot, the other cradle empty and matte black, plus a short row of four tiny blue indicator lights on the tray; the second identical glossy beige pebble-shaped earbud lies loose beside the case; minimal smooth surfaces, exactly two earbuds in total, no logos, no text) resting on a smooth pale stone surface in the foreground of the scene, the silver case with its lid half open and the second beige earbud lying just in front of it. Calm, refined, tidy interior: the pale stone top of a minimal desk, behind it a softly blurred window with pale late-autumn daylight in Switzerland and a warm linen-coloured wall. Soft natural side light from the left, gentle soft shadows, muted warm neutral palette, shallow depth of field. Do not change the product in any way: identical shape, proportions, colors, pattern, details and number of parts. No people, no hands, no faces, no text, no letters, no logos, no brand marks, no watermarks. Landscape composition, product clearly visible right of center, calm uncluttered background on the left.",
+    "video": "Calm cinemagraph of a still-life scene. All objects stay completely still and unchanged: the round brushed-silver earbud charging case with its swiveled-open silver lid, the matte black tray with the glossy beige earbud and the tiny blue indicator lights, and the second beige earbud lying in front keep their exact shape, colors and details. Only the soft natural window light slowly drifts across the pale stone desk, the sheer white curtain in the background moves very gently, and the camera performs an extremely slow, subtle push-in. No people, no hands, no text, no logos, no new objects. Seamless loop: the last frame is identical to the first frame."
+  },
+  "pruefwerte": {
+    "clip": "bytes=263635 poster_bytes=16786 dauer=6.000000 groesse=1200x806 tonspuren=0 naht_ssim=0.977142",
+    "clip_bilder": "144 Bilder, 24 fps, H.264",
+    "roh": "2144x1440, 24 fps, 6.583 s, 158 Bilder",
+    "kamera_phasenkorrelation": "dx 0 bis +12 px bei 2144 Breite (max. bei 2.75 s), dy 0; ab 4.25 s wieder 0",
+    "etui_diff_gegen_bild0": "0.5 s 3.8 -> 2.5 s 36.0 (Hoechstwert, Push-in/Parallaxe) -> 4.5 s 4.4 -> letztes Bild 3.0",
+    "helligkeit_ganzes_bild": "168.8 bis 175.5 (stabil)",
+    "helligkeit_etui": "131.6 -> min 109.1 (2.5 s, ca. -17 %) -> 129.8"
+  },
+  "sichtpruefung_szene": "Gegen original.jpg geprueft: rundes, gebuerstet-silbernes Etui, flacher runder Deckel seitlich aufgedreht wie im Original, mattschwarzer Einsatz mit zwei Mulden, beiger glaenzender Ohrhoerer mit hellem Ovalfeld und blauer LED in der linken Mulde, rechte Mulde leer, Reihe mit vier blauen Punkten, zweiter beiger Ohrhoerer liegt vorne rechts. Keine Schrift, keine Logos, keine Personen, keine Haende. Kleine Abweichungen: der schwarze Einsatz in der leeren Mulde (mit Ladekontakten im Original) ist nur als dunkle Mulde zu sehen; der kleine weisse Punkt vorne am Etui fehlt; Silber durch Licht etwas waermer. Hintergrund: Steinplatte, unscharfes Fenster mit Vorhang, links ein unscharfer heller Laptop-Rand ohne Logo. Angenommen beim ersten Versuch.",
+  "sichtpruefung_video": "Kontaktbogen (9 Bilder) und Nahausschnitte bei 0, 1.2, 2.2, 2.5, 3.0, 4.0, 5.0 s: Etui, Deckel, Ohrhoerer, blaue LEDs und der lose Ohrhoerer bleiben in Form, Farbe und Anzahl unveraendert; keine neuen Objekte, keine Schrift, keine Personen. Die Kamera faehrt zwischen ca. 1 und 4 s etwas staerker als 'extrem langsam' heran und leicht seitlich (Parallaxe: Vorhang verschiebt sich sichtbar), dabei wird die Etui-Seite um ca. 17 % dunkler/grauer; danach kehrt sie zum Ausgangsbild zurueck. Ganzbild-Helligkeit stabil, kein Schattenbalken. Urteil: Produkt treu, Bewegung ruhig bis maessig; kein zweiter Videoversuch noetig.",
+  "credits": {
+    "vorher": 993.74,
+    "nach_szene": 991.74,
+    "nachher": 965.74,
+    "verbraucht_eigen": 14,
+    "hinweis": "Szene 2 Credits (993.74 -> 991.74 direkt gemessen), Video minimax_h3 rund 12 Credits (Wert aus frueheren Laeufen); die Gesamtdifferenz 28 enthaelt parallele Laeufe anderer Kategorien."
+  },
+  "erstellt_utc": "2026-11-23T00:31Z"
+}
