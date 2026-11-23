@@ -22243,3 +22243,7 @@ gid://shopify/Product/15510321561985	Farbe	gid://shopify/ProductOptionValue/5884
 gid://shopify/Product/15510829498753	Menge	gid://shopify/ProductOptionValue/58848376226183	3PCS	3 Stück	2026-11-23T17:48Z
 gid://shopify/Product/15510835003777	Grösse	gid://shopify/ProductOptionValue/58848300106119	Double	Doppelt	2026-11-23T17:48Z
 gid://shopify/Product/15510835003777	Grösse	gid://shopify/ProductOptionValue/58848300171655	Single	Einzeln	2026-11-23T17:48Z
+gid://shopify/Product/15510925476225	Farbe	gid://shopify/ProductOptionValue/58709504328071	SET1	Set 1	2026-11-23T17:48Z
+gid://shopify/Product/15510925476225	Farbe	gid://shopify/ProductOptionValue/58709504360839	SET2	Set 2	2026-11-23T17:48Z
+gid://shopify/Product/15510927901057	Grösse	gid://shopify/ProductOptionValue/58847978848647	Default	Standard	2026-11-23T17:48Z
+gid://shopify/Product/15511791862145	Farbe	gid://shopify/ProductOptionValue/58848099238279	Set1	Set 1	2026-11-23T17:48Z

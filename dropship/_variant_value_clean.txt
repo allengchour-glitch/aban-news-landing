@@ -4219,3 +4219,7 @@ gid://shopify/Product/15510321463681	Grösse	3
 gid://shopify/Product/15510321561985	Farbe	1
 gid://shopify/Product/15510829498753	Menge	1
 gid://shopify/Product/15510835003777	Grösse	2
+gid://shopify/Product/15510925345153	Modell	1
+gid://shopify/Product/15510925476225	Farbe	2
+gid://shopify/Product/15510927901057	Grösse	1
+gid://shopify/Product/15511791862145	Farbe	1
