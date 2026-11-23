@@ -22206,3 +22206,15 @@ gid://shopify/Product/15506271961473	Grösse	gid://shopify/ProductOptionValue/58
 gid://shopify/Product/15506272518529	Grösse	gid://shopify/ProductOptionValue/58766552170887	45x45 pillowcase	45x45 Kissenbezug	2026-11-23T17:38Z
 gid://shopify/Product/15506272977281	Grösse	gid://shopify/ProductOptionValue/58709558100359	30x50cm pillowcase	30x50 cm Kissenbezug	2026-11-23T17:38Z
 gid://shopify/Product/15506272977281	Grösse	gid://shopify/ProductOptionValue/58709558133127	40x60cm pillowcase	40x60 cm Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506297651585	Grösse	gid://shopify/ProductOptionValue/58904458264967	Small 45x65cm	Klein 45x65 cm	2026-11-23T17:38Z
+gid://shopify/Product/15506297651585	Grösse	gid://shopify/ProductOptionValue/58904458297735	Medium 50x120cm	Mittel 50x120 cm	2026-11-23T17:38Z
+gid://shopify/Product/15506297651585	Grösse	gid://shopify/ProductOptionValue/58904458330503	Large 50x150cm	Gross 50x150 cm	2026-11-23T17:38Z
+gid://shopify/Product/15506301124993	Farbe	gid://shopify/ProductOptionValue/58709550039431	01 Olive Gold Braun	01 Olivgold-Braun	2026-11-23T17:38Z
+gid://shopify/Product/15507581927809	Grösse	gid://shopify/ProductOptionValue/58766530249095	35x50cm pillowcase	35x50 cm Kissenbezug	2026-11-23T17:39Z
+gid://shopify/Product/15507831325057	Ausführung	gid://shopify/ProductOptionValue/58800144056711	Gradient Grün Klein	Farbverlauf Grün Klein	2026-11-23T17:39Z
+gid://shopify/Product/15507831325057	Ausführung	gid://shopify/ProductOptionValue/58800144089479	Gradient Blau Klein	Farbverlauf Blau Klein	2026-11-23T17:39Z
+gid://shopify/Product/15507831325057	Ausführung	gid://shopify/ProductOptionValue/58800144122247	Gradient Orange Klein	Farbverlauf Orange Klein	2026-11-23T17:39Z
+gid://shopify/Product/15507831325057	Ausführung	gid://shopify/ProductOptionValue/58800144155015	Gradient Orange Grün Klein	Farbverlauf Orange-Grün Klein	2026-11-23T17:39Z
+gid://shopify/Product/15508405223809	Farbe	gid://shopify/ProductOptionValue/58709540897159	Schwarz 2PCS	Schwarz · 2 Stück	2026-11-23T17:39Z
+gid://shopify/Product/15508412760449	Grösse	gid://shopify/ProductOptionValue/58766542176647	45x45cm pillowcase	45x45 cm Kissenbezug	2026-11-23T17:39Z
+gid://shopify/Product/15508547633537	Farbe	gid://shopify/ProductOptionValue/58800014492039	Schwarz Und Multicolor	Schwarz Und Bunt	2026-11-23T17:39Z

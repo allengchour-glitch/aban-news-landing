@@ -111,3 +111,11 @@
 2026-10-19T06:26:02Z	kaffee-maschinen	titel	Kaffeemaschinen & Espresso kaufen – Filter, Mokka, Mühlen | LuxeStyle CH	Kaffeemaschinen & Espresso kaufen – Filter, Mokka, Mühlen
 2026-10-19T06:26:03Z	messwerkzeug	beschreibung	Wasserwaagen, Laser-Wasserwaagen, Entfernungsmesser & Messschieber von Stanley, Bosch & Dewalt. Präzises Messwerkzeug für exakte Ergebnisse. Lieferung in die Schweiz.	Wasserwaagen, Laser-Wasserwaagen, Entfernungsmesser & Messschieber von Stanley, Bosch & Dewalt. Präzises Messwerkzeug für exakte Ergebnisse.
 2026-10-19T06:26:04Z	werkzeugkoffer-sets	beschreibung	Werkzeugkoffer, Werkzeugkästen, Werkzeug-Sets, Bit-Sets & Steckschlüsselsätze von Stanley, Bosch, Dewalt & Facom. Alles griffbereit an einem Ort. Lieferung in die Schweiz.	Werkzeugkoffer, Werkzeugkästen, Werkzeug-Sets, Bit-Sets & Steckschlüsselsätze von Stanley, Bosch, Dewalt & Facom. Alles griffbereit an einem Ort.
+2026-11-23T17:38:43Z	tassen-becher	beschreibung	Tassen & Becher für Kaffee und Tee: Keramik, Edelstahl-Thermobecher, Tassen-Sets und Schweizer Motive. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.	Tassen & Becher für Kaffee und Tee: Keramik, Edelstahl-Thermobecher, Tassen-Sets und Schweizer Motive. Gratis-Versand ab CHF 50 nach Rabatt.
+2026-11-23T17:38:44Z	notizbuecher-journaling	beschreibung	Notizbücher & Journaling: Notizbücher, Skizzenbücher, Wochenplaner und Zubehör für Journal und Tagebuch. Lieferung in die Schweiz, Gratis-Versand ab CHF 50 nach Rabatt.	Notizbücher & Journaling: Notizbücher, Skizzenbücher, Wochenplaner und Zubehör für Journal und Tagebuch. Gratis-Versand ab CHF 50 nach Rabatt.
+2026-11-23T17:38:45Z	mengenrabatt-ab-2-stueck	titel		Mengenrabatt: ab 2 Stück 5 %, ab 3 Stück 10 % kaufen | LuxeStyle
+2026-11-23T17:38:46Z	mengenrabatt-ab-3-stueck	titel		Mengenrabatt: ab 3 Stück 5 % kaufen | LuxeStyle Schweiz
+2026-11-23T17:38:46Z	startseite-pool-schmuck	titel		Startseite Pool Schmuck kaufen | LuxeStyle Schweiz
+2026-11-23T17:38:51Z	startseite-pool-wohnen	titel		Startseite Pool Wohnen kaufen | LuxeStyle Schweiz
+2026-11-23T17:38:52Z	startseite-pool-trends	titel		Startseite Pool Trends kaufen | LuxeStyle Schweiz
+2026-11-23T17:38:53Z	startseite-pool-mehr	titel		Startseite Pool Mehr kaufen | LuxeStyle Schweiz
