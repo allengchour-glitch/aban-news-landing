@@ -21852,3 +21852,6 @@ gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/5867
 gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174417287	16color	Farbton 16	2026-11-23T16:39Z
 gid://shopify/Product/15454497309057	Farbe	gid://shopify/ProductOptionValue/12315716551041	Roségold schwarz Oberfläche	Roségold-Schwarz Oberfläche	2026-11-23T16:40Z
 gid://shopify/Product/15454501798273	Farbe	gid://shopify/ProductOptionValue/58883798630791	Blau Eiscreme	Blau-Eiscreme	2026-11-23T16:40Z
+gid://shopify/Product/15458851029377	Farbe	gid://shopify/ProductOptionValue/58677732540807	Blau Eiscreme	Blau-Eiscreme	2026-11-23T16:43Z
+gid://shopify/Product/15459760537985	Farbe	gid://shopify/ProductOptionValue/58677691122055	Gelb Camo	Gelb-Tarnmuster	2026-11-23T16:43Z
+gid://shopify/Product/15459989782913	Farbe	gid://shopify/ProductOptionValue/58677733294471	Set1	Set 1	2026-11-23T16:44Z

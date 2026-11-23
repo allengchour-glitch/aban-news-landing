@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 16:40 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 16:43 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **13'838**
-- Optionen mit englischen Werten (Kandidaten): 653
-- Optionen übersetzt: **48** · Werte übersetzt: **139**
-- Optionen nur codebereinigt: 16
-- Werte mit unbekanntem Wort (unverändert): 1'660
+- Produkte gesehen: **14'436**
+- Optionen mit englischen Werten (Kandidaten): 688
+- Optionen übersetzt: **50** · Werte übersetzt: **141**
+- Optionen nur codebereinigt: 18
+- Werte mit unbekanntem Wort (unverändert): 1'782
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 22
+- übersprungen «kollision-nach-uebersetzung»: 23
 - übersprungen «kleidungsstueck-im-wert»: 13
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -51,6 +51,7 @@
 - `15454132371841` [Farbe] mid-rise-flared-jeans-629100: Medium Blue → Mittelblau
 - `15454235689345` [Farbe] high-waist-yoga-pants-mit-beutlifting-effekt-632800: Kaffeebraun-Braun → Kaffeebraun
 - `15455729582465` [Farbe] sonnenschutzpullover-mit-kragen-und-kurzarmel-629700: Mustard Yellow → Senfgelb
+- `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -80,5 +81,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`powder` 64, `⟨satzbau:adjektiv-vor-nomen⟩` 50, `diamond` 37, `high` 27, `end` 26, `cherry` 24, `eyelashes` 23, `plush` 22, `one` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `lamp` 19, `holder` 19, `four` 18, `line` 18, `of` 18, `tea` 17, `blossom` 17, `degrees` 17, `carbon` 17, `⟨satzbau:praeposition⟩` 17, `elegant` 16, `skin` 16, `tc` 15, `strawberry` 15, `shell` 14, `data` 14, `lotus` 14, `to` 14, `the` 14, `rain` 14, `pin` 13, `cup` 13, `bag` 12, `dragon` 12, `titanium` 12, `sunflower` 12, `feet` 11, `⟨satzbau:nomen-nomen⟩` 11, `⟨satzbau:adjektivfolge⟩` 11, `size` 11, `hat` 10, `storage` 10, `color` 10, `waist` 10, `deep` 10, `fiber` 10, `ding` 10, `three` 9, `milk` 9, `hot` 9, `zircon` 9, `insert` 9, `root` 9, `ice` 9, `cocoa` 9, `promax` 9
+`powder` 70, `⟨satzbau:adjektiv-vor-nomen⟩` 69, `diamond` 38, `high` 27, `end` 26, `cherry` 25, `plush` 24, `eyelashes` 23, `chain` 22, `one` 20, `four` 20, `deer` 20, `of` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `lamp` 19, `holder` 19, `line` 18, `elegant` 17, `skin` 17, `tea` 17, `blossom` 17, `degrees` 17, `carbon` 17, `⟨satzbau:praeposition⟩` 17, `tc` 15, `lotus` 15, `strawberry` 15, `shell` 14, `data` 14, `to` 14, `the` 14, `rain` 14, `pin` 13, `cup` 13, `bag` 12, `dragon` 12, `waist` 12, `titanium` 12, `sunflower` 12, `feet` 11, `three` 11, `⟨satzbau:nomen-nomen⟩` 11, `⟨satzbau:adjektivfolge⟩` 11, `deep` 11, `avocado` 11, `size` 11, `festive` 11, `hat` 10, `storage` 10, `color` 10, `ice` 10, `fiber` 10, `ding` 10, `milk` 9, `hot` 9, `zircon` 9, `insert` 9
 

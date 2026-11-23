@@ -3990,3 +3990,6 @@ gid://shopify/Product/15454915690881	Leistung	1
 gid://shopify/Product/15455428968833	Farbe	4
 gid://shopify/Product/15458649833857	Farbe	1
 gid://shopify/Product/15458673131905	Farbe	1
+gid://shopify/Product/15458851029377	Farbe	1
+gid://shopify/Product/15459760537985	Farbe	1
+gid://shopify/Product/15459989782913	Farbe	1
