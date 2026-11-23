@@ -210,3 +210,6 @@
 15502145749377	eu-sku-gesetzt:CJBJMRJF00175-EU	2026-11-23	3-in-1 Multifunktions-Haartrockner
 15502148469121	eu-sku-gesetzt:CJBJMRJF00165-Hair curler-EU	2026-11-23	Direktzerstäubendes Locken-/Glätteisen
 15506272223617	eu-sku-gesetzt:CJZN121245001AZ	2026-11-23	3-in-1 Wireless Ladestation für Uhr & Kopfhörer
+16603332608391	uebersprungen-status	2026-11-23
+16603739390343	eu-sku-gesetzt:CJJF311004402BY	2026-11-23	Lockenstab für grosse Wellen
+15468317311361	eu-sku-gesetzt:CJSJ299945303CX	2026-11-23	All-in-one Ladestation für Smartwatches

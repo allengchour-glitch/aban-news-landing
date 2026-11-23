@@ -1,11 +1,53 @@
-# Weiterleitungen ins Leere — Stand 2026-10-20 22:50 UTC (FIX, Lauf 2026-10-20T2250)
+# Weiterleitungen ins Leere — Stand 2026-11-23 22:09 UTC (FIX, Lauf 2026-11-23T2154)
 
 Erzeugt von `automation/weiterleitung_ziel_wache.py` (täglich im Aufseher). Regel und Anlass: Kopf des Skripts.
 
-- Weiterleitungen gesamt: 1803
-- Ziel lebt: 1771 · zwei Sprünge (Kette): 0 · ins Leere: 0 (0 tote Ziele) · Seiten/Blog/Datei (nicht geprüft): 32
-- Dieser Lauf: gedreht 0 · angelegt 0 · offen 0 · Fehler 0
+- Weiterleitungen gesamt: 1848
+- Ziel lebt: 1798 · zwei Sprünge (Kette): 0 · ins Leere: 16 (16 tote Ziele) · Seiten/Blog/Datei (nicht geprüft): 34
+- Dieser Lauf: gedreht 15 · angelegt 15 · offen 1 · Fehler 0
 - Set → Einzelteil (gemeldet, nicht gedreht): 14 bestehende · 0 verworfene Zwillinge
+
+## Offen (Mensch entscheidet)
+
+| totes Ziel | Quellen | Grund |
+|---|---:|---|
+| /products/y2hdmax-retro-gaming-konsole-3b78d0 | 1 | kein eindeutiges Ziel |
+
+## Neu angelegt (totes Ziel → Ersatz)
+
+- /products/smartwatch-mit-fitness-schlaf-tracking-601800 → /collections/smartwatches-wearables (Kategorie aus Produkt)
+- /products/smartwatch-mit-herzfrequenzmessung-639680 → /products/t8-smartwatch-fur-damen-mit-herzfrequenzmessun-426880 (Zwilling 1.15)
+- /products/laser-gesundheits-smartwatch-954432 → /collections/smartwatches-wearables (Kategorie aus Produkt)
+- /products/luxurioser-strassring-aus-s925-sterlingsilber-613900 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/edle-silberohrringe-mit-strass-inlay-611400 → /collections/sub-ohrringe (Kategorie aus Produkt)
+- /products/strassbesetzte-creolen-637200 → /collections/sub-ohrringe (Kategorie aus Produkt)
+- /products/strass-armband-fur-damen-aus-925er-silber-627800 → /collections/damen-mode (Kategorie aus Produkt)
+- /products/s925-sterling-silber-ring-mit-runden-strasssteinen-608300 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/strassbesetztes-kreuz-armband-aus-925er-silber-613900 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/925-silber-marquise-ring-mit-strasssteinen-636900 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/iris-armband-mit-funkelnden-strasssteinen-622800 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/elegantes-armband-mit-strass-besatz-zum-12-geburtstag-620200 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/armband-mit-drei-strasssteinen-und-wassertropfen-612100 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/schlangenketten-armband-mit-runden-strasssteinen-625200 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/black-friday-mega-deal-40-auf-premium-set → /collections/uhren (Kategorie aus Produkt)
+
+## Gedreht
+
+- /products/smartwatch-fur-blutdruck-blutsauerstoff-601800 : /products/smartwatch-mit-fitness-schlaf-tracking-601800 → /collections/smartwatches-wearables (Kategorie aus Produkt)
+- /products/smartwatch-mit-blutdruck-und-herzfrequenzmessu-639680 : /products/smartwatch-mit-herzfrequenzmessung-639680 → /products/t8-smartwatch-fur-damen-mit-herzfrequenzmessun-426880 (Zwilling 1.15)
+- /products/laser-ekg-blutdruck-gesundheits-smartwatch-954432 : /products/laser-gesundheits-smartwatch-954432 → /collections/smartwatches-wearables (Kategorie aus Produkt)
+- /products/luxurioser-diamantring-aus-s925-sterlingsilber-613900 : /products/luxurioser-strassring-aus-s925-sterlingsilber-613900 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/edle-silberohrringe-mit-diamant-inlay-611400 : /products/edle-silberohrringe-mit-strass-inlay-611400 → /collections/sub-ohrringe (Kategorie aus Produkt)
+- /products/diamantbesetzte-creolen-637200 : /products/strassbesetzte-creolen-637200 → /collections/sub-ohrringe (Kategorie aus Produkt)
+- /products/diamant-armband-fur-damen-aus-925er-silber-627800 : /products/strass-armband-fur-damen-aus-925er-silber-627800 → /collections/damen-mode (Kategorie aus Produkt)
+- /products/s925-sterling-silber-ring-mit-runden-diamanten-608300 : /products/s925-sterling-silber-ring-mit-runden-strasssteinen-608300 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/diamantbesetztes-kreuz-armband-aus-925er-silbe-613900 : /products/strassbesetztes-kreuz-armband-aus-925er-silber-613900 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/925-silber-marquise-ring-mit-diamanten-636900 : /products/925-silber-marquise-ring-mit-strasssteinen-636900 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/iris-armband-mit-funkelnden-diamanten-622800 : /products/iris-armband-mit-funkelnden-strasssteinen-622800 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/elegantes-armband-mit-diamant-besatz-zum-12-ge-620200 : /products/elegantes-armband-mit-strass-besatz-zum-12-geburtstag-620200 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/armband-mit-drei-diamanten-und-wassertropfen-612100 : /products/armband-mit-drei-strasssteinen-und-wassertropfen-612100 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/schlangenketten-armband-mit-runden-diamanten-625200 : /products/schlangenketten-armband-mit-runden-strasssteinen-625200 → /collections/schmuck-uhren (Kategorie aus Produkt)
+- /products/%f0%9f%a6%83-black-friday-mega-deal-40-auf-premium-set : /products/black-friday-mega-deal-40-auf-premium-set → /collections/uhren (Kategorie aus Produkt)
 
 ## Set/Stück/«mit X» fehlt im Ziel — melden, nicht drehen (automation/bestandteil_regel.py)
 

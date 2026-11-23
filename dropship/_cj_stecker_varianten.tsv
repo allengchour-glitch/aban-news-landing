@@ -1956,3 +1956,137 @@
 2026-11-23	15522211561857	68122752287111	CJTY116022801AZ	Nationale Vorschriften	sperren	DENY	True	0	gesperrt-belegt
 2026-11-23	15522211561857	68122752352647	CJTY116022803CX	Amerikanische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
 2026-11-23	15522211561857	68122752385415	CJTY116022804DW	Britische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948170871175	CJYD205920002BY	Weiss / National Standard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948170969479	CJYD205920007GT	Weiss / Australian Regulations	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171035015	CJYD205920009IR	Rosa / National Standard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171133319	CJYD205920014NM	Rosa / Australian Regulations	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171198855	CJYD205920016PK	Grau / National Standard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171297159	CJYD205920021UF	Grau / Australian Regulations	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171329927	CJYD205920022VE	Innenlampe Weiss / National Standard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171428231	CJYD205920027AZ	Innenlampe Weiss / Australian Regulations	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171460999	CJYD205920028BY	Innenlicht Rosa / National Standard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171559303	CJYD205920033GT	Innenlicht Rosa / Australian Regulations	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171592071	CJYD205920034HS	Innenlampe Grau / National Standard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948171690375	CJYD205920039MN	Innenlampe Grau / Australian Regulations	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15523905241473	67948170871175	CJYD205920002BY	Weiss / National Standard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948170969479	CJYD205920007GT	Weiss / Australian Regulations	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171035015	CJYD205920009IR	Rosa / National Standard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171133319	CJYD205920014NM	Rosa / Australian Regulations	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171198855	CJYD205920016PK	Grau / National Standard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171297159	CJYD205920021UF	Grau / Australian Regulations	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171329927	CJYD205920022VE	Innenlampe Weiss / National Standard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171428231	CJYD205920027AZ	Innenlampe Weiss / Australian Regulations	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171460999	CJYD205920028BY	Innenlicht Rosa / National Standard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171559303	CJYD205920033GT	Innenlicht Rosa / Australian Regulations	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171592071	CJYD205920034HS	Innenlampe Grau / National Standard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15523905241473	67948171690375	CJYD205920039MN	Innenlampe Grau / Australian Regulations	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122497581447	CJSN316202303CX	Einstellbare LED / Beige / US-Schlüsselschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122497646983	CJSN316202305EV	Einstellbare LED / Beige / US-Zugschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122497712519	CJSN316202307GT	Einstellbare LED / Rot / US-Schlüsselschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122497778055	CJSN316202309IR	Einstellbare LED / Rot / US-Zugschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122497843591	CJSN316202311KP	Lichtwechsel / Beige / US-Schlüsselschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122497909127	CJSN316202313MN	Lichtwechsel / Beige / US-Zugschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122497974663	CJSN316202315OL	Lichtwechsel / Rot / US-Schlüsselschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122498040199	CJSN316202317QJ	Lichtwechsel / Rot / US-Zugschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122498105735	CJSN316202319SH	Warmes Licht / Beige / US-Schlüsselschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122498171271	CJSN316202321UF	Warmes Licht / Beige / US-Zugschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122498236807	CJSN316202323WD	Warmes Licht / Rot / US-Schlüsselschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122498302343	CJSN316202325YB	Warmes Licht / Rot / US-Zugschalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16603338473863	68122497581447	CJSN316202303CX	Einstellbare LED / Beige / US-Schlüsselschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122497646983	CJSN316202305EV	Einstellbare LED / Beige / US-Zugschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122497712519	CJSN316202307GT	Einstellbare LED / Rot / US-Schlüsselschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122497778055	CJSN316202309IR	Einstellbare LED / Rot / US-Zugschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122497843591	CJSN316202311KP	Lichtwechsel / Beige / US-Schlüsselschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122497909127	CJSN316202313MN	Lichtwechsel / Beige / US-Zugschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122497974663	CJSN316202315OL	Lichtwechsel / Rot / US-Schlüsselschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122498040199	CJSN316202317QJ	Lichtwechsel / Rot / US-Zugschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122498105735	CJSN316202319SH	Warmes Licht / Beige / US-Schlüsselschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122498171271	CJSN316202321UF	Warmes Licht / Beige / US-Zugschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122498236807	CJSN316202323WD	Warmes Licht / Rot / US-Schlüsselschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16603338473863	68122498302343	CJSN316202325YB	Warmes Licht / Rot / US-Zugschalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591068551	CJSN298049301AZ	UK Standard Dimmung / A2 Transparent Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591101319	CJSN298049302BY	UK Standard Dimmung / A2 Bernstein Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591134087	CJSN298049303CX	UK Standard Dimmung / A3 Transparent Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591166855	CJSN298049304DW	UK Standard Dimmung / A3 Transparent Streifenmuster	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591330695	CJSN298049317QJ	AU Standard Dimmung / A3 Transparent Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591363463	CJSN298049322VE	AU Standard Dimmung / A6 Bernstein Kugelglas	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591396231	CJSN298049325YB	US Standard Dimmung / A2 Bernstein Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591428999	CJSN298049327AZ	US Standard Dimmung / A3 Transparent Streifenmuster	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591461767	CJSN298049331EV	US Standard Dimmung / A6 Bernstein Kugelglas	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591494535	CJSN298049332FU	UK Standard Zeitschaltung / A2 Transparent Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591527303	CJSN298049334HS	UK Standard Zeitschaltung / A3 Transparent Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591560071	CJSN298049335IR	UK Standard Zeitschaltung / A3 Transparent Streifenmuster	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591691143	CJSN298049349WD	AU Standard Zeitschaltung / A2 Transparent Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591723911	CJSN298049350XC	AU Standard Zeitschaltung / A2 Bernstein Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591756679	CJSN298049351YB	AU Standard Zeitschaltung / A3 Transparent Streifenmuster	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591789447	CJSN298049357EV	US Standard Zeitschaltung / A2 Transparent Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591822215	CJSN298049358FU	US Standard Zeitschaltung / A2 Bernstein Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591854983	CJSN298049359GT	US Standard Zeitschaltung / A3 Transparent Streifen	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591887751	CJSN298049363KP	US Standard Zeitschaltung / A6 Bernstein Kugelglas	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604925821319	68122591068551	CJSN298049301AZ	UK Standard Dimmung / A2 Transparent Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591101319	CJSN298049302BY	UK Standard Dimmung / A2 Bernstein Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591134087	CJSN298049303CX	UK Standard Dimmung / A3 Transparent Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591166855	CJSN298049304DW	UK Standard Dimmung / A3 Transparent Streifenmuster	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591330695	CJSN298049317QJ	AU Standard Dimmung / A3 Transparent Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591363463	CJSN298049322VE	AU Standard Dimmung / A6 Bernstein Kugelglas	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591396231	CJSN298049325YB	US Standard Dimmung / A2 Bernstein Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591428999	CJSN298049327AZ	US Standard Dimmung / A3 Transparent Streifenmuster	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591461767	CJSN298049331EV	US Standard Dimmung / A6 Bernstein Kugelglas	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591494535	CJSN298049332FU	UK Standard Zeitschaltung / A2 Transparent Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591527303	CJSN298049334HS	UK Standard Zeitschaltung / A3 Transparent Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591560071	CJSN298049335IR	UK Standard Zeitschaltung / A3 Transparent Streifenmuster	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591691143	CJSN298049349WD	AU Standard Zeitschaltung / A2 Transparent Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591723911	CJSN298049350XC	AU Standard Zeitschaltung / A2 Bernstein Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591756679	CJSN298049351YB	AU Standard Zeitschaltung / A3 Transparent Streifenmuster	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591789447	CJSN298049357EV	US Standard Zeitschaltung / A2 Transparent Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591822215	CJSN298049358FU	US Standard Zeitschaltung / A2 Bernstein Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591854983	CJSN298049359GT	US Standard Zeitschaltung / A3 Transparent Streifen	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604925821319	68122591887751	CJSN298049363KP	US Standard Zeitschaltung / A6 Bernstein Kugelglas	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16604926181767	68122749632903	CJYD297647704DW	Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16604926181767	68122749632903	CJYD297647704DW	Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16610064138631	67948189516167	CJYD222146102BY	Standardkonfiguration / Australische Vorschriften 220V	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16610064138631	67948189581703	CJYD222146106FU	Edelstahl / Australische Vorschriften 220V	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16610064138631	67948189516167	CJYD222146102BY	Standardkonfiguration / Australische Vorschriften 220V	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16610064138631	67948189581703	CJYD222146106FU	Edelstahl / Australische Vorschriften 220V	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16612770709895	67948113494407	CJCF109940203CX	Doppel ayer US-Vorschriften	sperren-ohne-eu	CONTINUE	False	0	sperre-geplant
+2026-11-23	16612770709895	67948113527175	CJCF109940204DW	Doppel britische Vorschriften	sperren-ohne-eu	CONTINUE	False	0	sperre-geplant
+2026-11-23	16612770709895	67948113494407	CJCF109940203CX	Doppel ayer US-Vorschriften	sperren-ohne-eu	DENY	True	0	gesperrt-belegt
+2026-11-23	16612770709895	67948113527175	CJCF109940204DW	Doppel britische Vorschriften	sperren-ohne-eu	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630704007	CJYD242388601AZ	Sonnenwarmlicht / US Vierkopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630736775	CJYD242388602BY	Sonnenwarmlicht / UK Zweikopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630769543	CJYD242388603CX	Sonnenwarmlicht / UK Dreikopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630802311	CJYD242388604DW	Sonnenwarmlicht / UK Vierkopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630835079	CJYD242388605EV	Sonnenwarmlicht / AU Einkopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630867847	CJYD242388606FU	Solarkaltlicht / US Vierkopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630900615	CJYD242388607GT	Solarkaltlicht / UK Zweikopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630933383	CJYD242388608HS	Solarkaltlicht / UK Dreikopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630966151	CJYD242388609IR	Solarkaltlicht / UK Vierkopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630998919	CJYD242388610JQ	Solarkaltlicht / AU Einkopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801631031687	CJYD242388611KP	Rot-Blau-Licht / US Vierkopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801631064455	CJYD242388612LO	Rot-Blau-Licht / UK Zweikopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801631097223	CJYD242388613MN	Rot-Blau-Licht / UK Dreikopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801631129991	CJYD242388614NM	Rot-Blau-Licht / UK Vierkopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801631162759	CJYD242388615OL	Rot-Blau-Licht / AU Einkopf	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615806206343	67801630704007	CJYD242388601AZ	Sonnenwarmlicht / US Vierkopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630736775	CJYD242388602BY	Sonnenwarmlicht / UK Zweikopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630769543	CJYD242388603CX	Sonnenwarmlicht / UK Dreikopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630802311	CJYD242388604DW	Sonnenwarmlicht / UK Vierkopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630835079	CJYD242388605EV	Sonnenwarmlicht / AU Einkopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630867847	CJYD242388606FU	Solarkaltlicht / US Vierkopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630900615	CJYD242388607GT	Solarkaltlicht / UK Zweikopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630933383	CJYD242388608HS	Solarkaltlicht / UK Dreikopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630966151	CJYD242388609IR	Solarkaltlicht / UK Vierkopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801630998919	CJYD242388610JQ	Solarkaltlicht / AU Einkopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801631031687	CJYD242388611KP	Rot-Blau-Licht / US Vierkopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801631064455	CJYD242388612LO	Rot-Blau-Licht / UK Zweikopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801631097223	CJYD242388613MN	Rot-Blau-Licht / UK Dreikopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801631129991	CJYD242388614NM	Rot-Blau-Licht / UK Vierkopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615806206343	67801631162759	CJYD242388615OL	Rot-Blau-Licht / AU Einkopf	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615812432263	67843676733831	CJHD249523103CX	Warmweiß / US 8 Blinkfunktion	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615812432263	67843676766599	CJHD249523104DW	Warmweiß / US 8 Blinkfunktion Fernbedienung	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615812432263	67843676897671	CJHD249523109IR	Wie abgebildet / US 8 Blinkfunktion	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615812432263	67843676930439	CJHD249523110JQ	Wie abgebildet / US 8 Blinkfunktion Fernbedienung	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	16615812432263	67843676733831	CJHD249523103CX	Warmweiß / US 8 Blinkfunktion	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615812432263	67843676766599	CJHD249523104DW	Warmweiß / US 8 Blinkfunktion Fernbedienung	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615812432263	67843676897671	CJHD249523109IR	Wie abgebildet / US 8 Blinkfunktion	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	16615812432263	67843676930439	CJHD249523110JQ	Wie abgebildet / US 8 Blinkfunktion Fernbedienung	sperren	DENY	True	0	gesperrt-belegt
