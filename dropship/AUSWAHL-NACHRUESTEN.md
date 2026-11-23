@@ -1,58 +1,97 @@
-# Auswahl nachrüsten — scharf 2026-10-23 09:15 UTC
+# Auswahl nachrüsten — scharf 2026-11-23 22:20 UTC
 
-umgebaut: 30 · MANUELL: 52 · Fehler: 0
+umgebaut: 0 · MANUELL: 91 · Fehler: 0
 
 ## MANUELL (Grund)
 
-- Herren-Quarzuhr mit Multifunktion (`herren-quarzuhr-mit-multifunktion-623900`): KI-Übersetzung fehlt/abgelehnt: ['Gold Shell Gold Surface', 'Silver Case Silver Surface']
-- Smart-Sportuhr mit GPS und Herzfrequenz (`smart-sportuhr-mit-gps-und-herzfrequenz-635100`): KI-Übersetzung fehlt/abgelehnt: ['Sports Vinyl', 'Sport Orange Glue']
-- Bratpfanne aus Edelstahl (`bratpfanne-aus-edelstahl-639200`): KI-Übersetzung fehlt/abgelehnt: ['304 Pairs Without Cover', 'Without Cover'] | ['26cm with Fried Shovel', '28cm with Fried Shovel', '30cm with Fried Shovel', '26and28a30cm with Fried Shovel']
-- Quadratische Damenuhr mit Stahlarmband (`quadratische-damenuhr-mit-stahlarmband-621900`): KI-Übersetzung fehlt/abgelehnt: ['Silver Steel Green Plate', 'Silver Steel Blue Dial', 'Silver Steel White Dial', 'Silver Steel Black Disc']
-- Alloy Craft Ornament Elektronische Uhr (`alloy-craft-ornament-elektronische-uhr-604100`): KI-Übersetzung fehlt/abgelehnt: ['Watch Without Box', 'With Black Gift Box']
-- Haushaltspfanne mit Antihaft-Beschichtung (`haushaltspfanne-mit-antihaft-beschichtung-631200`): Preisspreizung > 4× (7.41–32.82)
-- Quarzuhr mit gedrehtem Design (`quarzuhr-mit-gedrehtem-design-613800`): KI-Übersetzung fehlt/abgelehnt: ['Silver Shell Blue Band', 'Rose Gold Shell Brown Belt', 'Golden Shell Black Ribbon', 'Golden Shell Brown Belt']
-- Spatel aus Akazienholz (`spatel-aus-akazienholz-638400`): KI-Übersetzung fehlt/abgelehnt: ['4 sets 3 pieces each', '7 sets 1', '10 sets 4 pieces each']
-- Reisekoffer mit Teleskopgriff (`reisekoffer-mit-teleskopgriff-603800`): nicht mehr aktiv
-- Gürteltasche für Outdoor-Aktivitäten (`gurteltasche-fur-outdoor-aktivitaten-634400`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'Khaki', 'Army Green', 'Copy']
-- Grosses Holz-Bauklotz-Set für Kinder 4–6 Jahre (`grosses-holz-bauklotz-set-fur-kinder-4-6-jahre-603000`): KI-Übersetzung fehlt/abgelehnt: ['Printed wood', 'Beech wood', 'Learning'] | ['Bagged', 'Bucket', 'Upgraded version']
-- Acryl-Display-Box mit Doppelwand, staubgeschützt (`acryl-display-box-mit-doppelwand-staubgeschutz-603400`): KI-Übersetzung fehlt/abgelehnt: ['MINIGT', 'Tomica']
-- A4 Aktenordner mit 6 Fächern (`a4-aktenordner-mit-6-fachern-617500`): KI-Übersetzung fehlt/abgelehnt: ['Gradient Blue And White', 'Gradient Green And White', 'Gradient Orange And Black', 'Morandi White']
-- Crossbody-Tasche für Herren, 41 × 10 × 32 cm (`crossbody-tasche-fur-herren-41-10-32-cm-604000`): KI-Übersetzung fehlt/abgelehnt: ['Khaki', 'Black', 'Frosted Gray', 'New Gray Coffee Color']
-- Brusttasche für Sport – atmungsaktiv, wasserdicht (`brusttasche-fur-sport-atmungsaktiv-wasserdicht-610600`): KI-Übersetzung fehlt/abgelehnt: ['Army Green', 'Copy', 'Black CP', 'Black']
-- Personalisierte bestickte Geschenktasche 50×70 cm (`personalisierte-bestickte-geschenktasche-50-70-614600`): KI-Übersetzung fehlt/abgelehnt: ['White', 'Dark Red', 'Purple', 'Yellow'] | ['Single Color Embroidery', 'Mixed Color Embroidery']
-- Tyvek Grillthermo-Tasche 23" (braun) (`tyvek-grillthermo-tasche-23-braun-613800`): Titel nennt nur «Braun» (Variante: ['Braun', 'Schwarz', 'Doppelte Griffe · Schwarz', 'Doppelte Griffe · Braun']) → Titel prüfen (Mensch)
-- Nichthaftende Bratpfanne mit gebogener Handhabung (`nichthaftende-bratpfanne-mit-gebogener-handhab-626200`): KI-Übersetzung fehlt/abgelehnt: ['Bent Handle Gas Model White', 'Gas Payment White', 'Curved Handle White', 'Curved Handle White Gift']
-- Dumpling-Mold-Set 3D-gedruckt – Quadrat, Kreis, Herz (`dumpling-mold-set-3d-gedruckt-quadrat-kreis-he-620800`): Preissprung 2.9× zwischen zwei Varianten — Datenfehler oder Zubehör? → Mensch
-- Kissenbezug mit abstraktem Kunstmuster (`kissenbezug-mit-abstraktem-kunstmuster-620200`): Preisspreizung > 4× (2.21–10.07)
-- Sofa-Kissenbezug Retro Baumwoll-Leinen (`sofa-kissenbezug-retro-baumwoll-leinen-638300`): Preisspreizung > 4× (3.34–15.45)
-- Sofa-Bezug mit Textur-Muster (`sofa-bezug-mit-textur-muster-600500`): Preisspreizung > 4× (2.39–21.01)
-- Männer-Quarz-Uhr mit quadratischem Zifferblatt (`manner-quarz-uhr-mit-quadratischem-zifferblatt-614400`): KI-Übersetzung fehlt/abgelehnt: ['Wine Red', 'Green', 'Dark Blue', 'Coffee With A Gray Disc']
-- Quadratische Durchsicht-Uhr mit Openwork-Design (`quadratische-durchsicht-uhr-mit-openwork-desig-629000`): KI-Übersetzung fehlt/abgelehnt: ['Black With Silver Surface', 'Black With Gold Noodles']
-- Minimalistische 3D Instagram-Uhr – Gold/Schwarz (`minimalistische-3d-instagram-uhr-gold-schwarz-628900`): KI-Übersetzung fehlt/abgelehnt: ['Golden Black Surface', 'Golden White Surface', 'Golden Red Noodles', 'Gold Face']
-- Zwei-Farb-Chronograph-Uhr mit Lederarmband (`zwei-farb-chronograph-uhr-mit-lederarmband-608800`): KI-Übersetzung fehlt/abgelehnt: ['Rose Gold Shell Blue Surface', 'Silver Case Beige Noodles']
-- Männer-Uhr mit quadratischem Zifferblatt, 28×35 mm (`manner-uhr-mit-quadratischem-zifferblatt-28-35-632800`): KI-Übersetzung fehlt/abgelehnt: ['Green', 'Green Belt Gray Plate', 'Little Girl With Green Belt', 'Gradient Green Belt']
-- Hundemantel Winterwolle, monochrom (`hundemantel-winterwolle-monochrom-602700`): Titel nennt nur «Monochrom» (Variante: ['Monochrom', 'Zweifarbig']) → Titel prüfen (Mensch)
-- Smartwatch mit Bluetooth-Anruf (`smartwatch-mit-bluetooth-anruf-602700`): KI-Übersetzung fehlt/abgelehnt: ['Flagship Black Silicone', 'Flagship Red Silicone', 'Flagship Blue Silicone', 'Top Black Steel']
-- Multifunktionale Elektronische Armbanduhr (`multifunktionale-elektronische-armbanduhr-625900`): KI-Übersetzung fehlt/abgelehnt: ['Army Green', 'Black Black Machine', 'Black White Machine', 'Blue']
-- Sommer-Bettlaken-Set Viskose (`sommer-bettlaken-set-viskose-866432`): KI-Übersetzung fehlt/abgelehnt: ['Summer Mat Army Green', 'Summer Mat Beige', 'Summer Mat Dark Blue', 'Summer Mat Elegant Gray'] | ['120x200cm+1pc Pillowcase', '150x200cm+2pc Pillowcase', '180x200cm+2pc Pillowcase', '200x220cm+2pc Pillowcase']
-- Kühle Sommerdecke mit Eiskrem-Muster (`kuhle-sommerdecke-mit-eiskrem-muster-615000`): KI-Übersetzung fehlt/abgelehnt: ['Pink And Gray Colorblock', 'Pink Pintuo', 'Pink Jade', 'Hulan'] | ['105x150cm', '150x200cm', '180x200cm', '200x230cm']
-- Smart-Armbanduhr mit Herzfrequenz-Messung (`smart-armbanduhr-mit-herzfrequenz-messung-608800`): KI-Übersetzung fehlt/abgelehnt: ['Black Milan', 'Black Glue', 'Golden Milan', 'Pink Capsule']
-- Kopftuch aus Modal-Baumwolle mit Marmor-Print (`kopftuch-aus-modal-baumwolle-mit-marmor-print-609900`): Lesefehler: Zweitprüfer nicht erreichbar: Zweitprüfer-Antwort unvollständig (96 statt 63)
-- Elastischer Sofa-Bezug mit Pflanzenmuster (`elastischer-sofa-bezug-mit-pflanzenmuster-770c7e`): CJ-variantSku passt nicht zum Bestell-Automaten: 'CJJJJFKD00243-Core pillow-45×45cm'
-- Mauspad mit US-Dollar-Muster, 40 × 60 cm (`mauspad-mit-us-dollar-muster-40-60-cm-628900`): Titel nennt nur «40×60 cm» (Grösse: ['40×60 cm', '40×70 cm', '40×80 cm', '40×90 cm']) → Titel prüfen (Mensch)
-- Aktivkohle HEPA-Filter für Life Air Purifier (`aktivkohle-hepa-filter-fur-life-air-purifier-629900`): Preissprung 3.0× zwischen zwei Varianten — Datenfehler oder Zubehör? → Mensch
-- Aluminium-Case für Apple Watch – Schutzschale (`aluminium-case-fur-apple-watch-schutzschale-406144`): Farbe-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Uhrenarmband aus weissem Agate 40/38 mm (`uhrenarmband-aus-weissem-agate-40-38-mm-182336`): KI-Übersetzung fehlt/abgelehnt: ['White onyx', 'Grey agate', 'Pink crystal', 'Silver Purple Jade']
-- Automatisches Campingzelt, wasserfest, Allwetter (`automatisches-campingzelt-wasserfest-allwetter-622200`): KI-Übersetzung fehlt/abgelehnt: ['One Door And One Window', 'Two doors and two windows'] | ['Double', '2 to 3people']
-- Zusammenklappbarer Carbon-Trekkingstock 110 cm (`zusammenklappbarer-carbon-trekkingstock-110-cm-625500`): KI-Übersetzung fehlt/abgelehnt: ['105CM Pair Folding', '110CM Pair Folding', '130CM Pair Folding', 'Gold Gray 110CM Folding']
-- Hexagonaler Gummieinsatz-Dumbbell 12,5 kg (`hexagonaler-gummieinsatz-dumbbell-12-5-kg-39a41a`): Titel nennt nur «5 kg» (Grösse: ['2.5 kg', '5 kg', '6 kg', '7.5 kg']) → Titel prüfen (Mensch)
-- Octagonales Push-Up-Board (`octagonales-push-up-board-d84f09`): KI-Übersetzung fehlt/abgelehnt: ['Star anise', 'Foldable board with drawstring', 'Candy bar']
-- Faltenlampe aus Stoff und Metall – Aufladbare Tischlampe (`faltenlampe-aus-stoff-und-metall-aufladbare-ti-638500`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Fringe Fashion Casual Versatile Schal (`fringe-fashion-casual-versatile-schal-605200`): KI-Übersetzung fehlt/abgelehnt: ['Color', 'Red', 'Black']
-- Kurzschal aus Wolle, koreanischer Stil (`kurzschal-aus-wolle-koreanischer-stil-611200`): KI-Übersetzung fehlt/abgelehnt: ['Caramel Color', 'Gray', 'Green Velvet', 'Haze Blue']
-- Romantischer Schal in hellen Weisstönen (`romantischer-schal-in-hellen-weisstonen-610200`): KI-Übersetzung fehlt/abgelehnt: ['Deep Khaki', 'Brick Red', 'Mixed Flower Black', 'Solid Black']
-- Plaid-Schal in Mintgrün, Pink, Lila, Schwarz, Blau (`plaid-schal-in-mintgrun-pink-lila-schwarz-blau-605600`): KI-Übersetzung fehlt/abgelehnt: ['Mint Green', 'Retro Pink', 'Taro Purple', 'Classic Black']
-- Outdoor-Reiserucksack (`outdoor-reiserucksack-5c9abf`): KI-Übersetzung fehlt/abgelehnt: ['Grey', 'Light grey ozuko', 'Black ozuko', 'Black']
-- Portemonnaie mit Reissverschluss & Anti-Diebstahl (`portemonnaie-mit-reissverschluss-anti-diebstah-602600`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
-- Tragbarer 4G WLAN Router (`tragbarer-4g-wlan-router-603200`): KI-Übersetzung fehlt/abgelehnt: ['M65 Asian Edition', 'M6E Eurasian Version']
-- Tierkreiszeichen Ochse Bausteine für Kinder (`tierkreiszeichen-ochse-bausteine-fur-kinder-211904`): KI-Übersetzung fehlt/abgelehnt: ['Niuniu Girl', 'Niuniu Brother']
+- Aufblasbares Halloween-Kostüm für zwei Personen (`inflierbares-halloween-kostum-fur-zwei-persone-638900`): hat inzwischen mehrere Varianten
+- Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben (`aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben`): SKU ist nicht mehr CJ-<pid> ('CJ-CJJJJTJT22925') — schon umgestellt?
+- Mini Bluetooth Speaker Wasserdicht – Dusche, Outdoor & Reise mit Saugnapf (`mini-bluetooth-speaker-wasserdicht-dusche-outdoor-reise-mit-saugnapf`): hat inzwischen mehrere Varianten
+- Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`): SKU ist nicht mehr CJ-<pid> ('CJ-CJJT172393804DW') — schon umgestellt?
+- Handmixer mit 5 Geschwindigkeiten (`handmixer-mit-5-geschwindigkeiten-694c50`): nicht mehr aktiv
+- Aromadiffusor Holzmaserung (`aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht`): Produkt trägt schon eine echte Option: ['Grösse']
+- Rugged Smartwatch X5 – 5 ATM Wasserdicht, GPS, Bluetooth-Calling (`rugged-smartwatch-x5-5-atm-wasserdicht-gps-bluetooth-calling`): hat inzwischen mehrere Varianten
+- Magisches Katzenkratzbrett mit Orgel-Design (`magisches-katzenkratzbrett-mit-orgel-design-709120`): hat inzwischen mehrere Varianten
+- Vulkan Aroma Diffuser mit Flammen- & Quallen-Effekt (`vulkan-aroma-diffuser-mit-flammen-quallen-effe-771200`): nicht mehr aktiv
+- Sternenlicht-Projektor für Schlafzimmer (`sternenlicht-projektor-fur-schlafzimmer-732544`): hat inzwischen mehrere Varianten
+- DIY Stickset mit 50 Garnfarben (`diy-stickset-mit-50-garnfarben-cb3e23`): KI-Übersetzung fehlt/abgelehnt: ['136pcs', '10pcs', '12pcs', 'Set AC177']
+- 3D Glas Aroma Diffusor mit Farblicht (`3d-glas-aroma-diffusor-mit-farblicht-677613`): Stecker-Teil nicht in jedem Schlüssel genau einmal
+- ROCKBROS Velo Frontlicht USB-Ladefunktion (`rockbros-velo-frontlicht-usb-ladefunktion-0d243e`): KI-Übersetzung fehlt/abgelehnt: ['LUMEN TD', 'R31000', 'D31000', 'LUMEN BC02'] | ['100', '1000lumens bright headlights', '700', '200']
+- Handkurbel-Schäler für Äpfel und Birnen (`handkurbel-schaler-fur-apfel-und-birnen-5235a8`): hat inzwischen mehrere Varianten
+- Esszimmerstuhlhusse – Niedriger Rücken, Stretch (`esszimmerstuhlhusse-niedriger-rucken-stretch-823040`): hat inzwischen mehrere Varianten
+- Hundegeschirr-Set für kleine bis mittelgrosse Hunde (`hundegeschirr-set-fur-kleine-bis-mittelgrosse-e4d174`): hat inzwischen mehrere Varianten
+- Edelstahl-Armband «Amore» · Herz & Geburtsstein, Gold (`edelstahl-armband-amore-herz-geburtsstein-gold`): hat inzwischen mehrere Varianten
+- Magnetischer Telefonhalter (`magnetischer-telefonhalter-610000`): KI-Übersetzung fehlt/abgelehnt: ['Bean Purple', 'Qingshan Jade', 'Fog Purple', 'Silver'] | ['Ordinary Bag', 'Exquisite Boxed']
+- Dekorative Bücherregal-Laternenlampe (`dekorative-bucherregal-laternenlampe-607700`): hat inzwischen mehrere Varianten
+- USB-Stick Lippenstift-Design (`usb-stick-lippenstift-design-9a6739`): hat inzwischen mehrere Varianten
+- Mini LED Beamer für Handy & Heimkino (`mini-led-beamer-fur-handy-heimkino-150016`): hat inzwischen mehrere Varianten
+- Nordic Viking Runen Kompass Totem Armband aus Titanstahl (`nordic-viking-runen-kompass-totem-armband-aus-609200`): hat inzwischen mehrere Varianten
+- Astronauten-Handyhülle mit 3D-Motiv (`astronaut-phone-case-298816`): KI-Übersetzung fehlt/abgelehnt: ['Light cyan', 'Purple', 'Pink', 'Grey'] | ['Iphone13', 'Iphone13pro', 'Iphone13promax', 'Iphone13mini']
+- Kissenhülle Ahornblatt & Kürbis Stickerei (`kissenhulle-ahornblatt-kurbis-stickerei-608100`): hat inzwischen mehrere Varianten
+- Kabelloser Dual-Vibrations-Bluetooth-Controller (`kabelloser-dual-vibrations-bluetooth-controlle-7a05d6`): hat inzwischen mehrere Varianten
+- Flanell-Sofabezug (`flanell-sofabezug-604200`): KI-Übersetzung fehlt/abgelehnt: ['Red', 'Postcard', 'Four Stars', 'better']
+- Maiglöckchen Duftwärmer ohne Flamme (`lily-of-the-valley-duftwarmer-ohne-flamme-628300`): hat inzwischen mehrere Varianten
+- Edelstahl-Armband «Trésor» · Doppellagig mit Charms, Silber (`edelstahl-armband-tresor-doppellagig-mit-charms-silber`): hat inzwischen mehrere Varianten
+- 3D Holzpuzzle Berühmte Universität (`3d-holzpuzzle-beruhmte-universitat-566336`): nicht mehr aktiv
+- Leichter Schulrucksack mit Print (`leichter-schulrucksack-mit-print-612500`): hat inzwischen mehrere Varianten
+- Glättbürste mit Dampf-Sprühfunktion (`glattburste-mit-dampf-spruhfunktion-e765b5`): SKU ist nicht mehr CJ-<pid> ('CJ-CJBJMRJF00040-EU plug') — schon umgestellt?
+- Stickierter Vorhangstoff – Baumwolle, Polyester, Samt (`stickierter-vorhangstoff-baumwolle-polyester-s-ccafca`): hat inzwischen mehrere Varianten
+- Wandlampe im nordischen Minimal-Stil für Innen und Aussen (`nordische-minimallampen-design-fur-innen-und-a-636800`): Farbe-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Kreuz-Halskette Gold · Edelstahl-Anhänger (`kreuz-halskette-gold-edelstahl`): hat inzwischen mehrere Varianten
+- Marokkanisches Kissen mit Quasten (`marokkanisches-kissen-mit-quasten-890688`): hat inzwischen mehrere Varianten
+- Japanischer Schulrucksack mit hoher Kapazität (`japanischer-schulrucksack-mit-hoher-kapazitat-244608`): hat inzwischen mehrere Varianten
+- USB Powerbank mit Handwärmer und Massage (`usb-powerbank-mit-handwarmer-und-massage-45aeb2`): KI-Übersetzung fehlt/abgelehnt: ['Rose gold', 'Silver', 'Sky blue', 'Tyrant Gold']
+- Trolley-Schulrucksack mit Rollen (`trolley-schulrucksack-mit-rollen-613100`): hat inzwischen mehrere Varianten
+- Lenkradbezug Plüsch Pfotenabdruck 38cm (`lenkradbezug-plusch-pfotenabdruck-38cm-ebf475`): hat inzwischen mehrere Varianten
+- Pilz Luftbefeuchter mit Ventilator & Nachtlicht (`pilz-luftbefeuchter-mit-ventilator-nachtlicht-2a0a78`): hat inzwischen mehrere Varianten
+- Mattes portugiesisches Besteck-Set (24-teilig) (`mattes-portugiesisches-besteck-set-24-teilig-059968`): hat inzwischen mehrere Varianten
+- LED Ausziehbare Schmink-Wandleuchte (`led-ausziehbare-schmink-wandleuchte-610600`): hat inzwischen mehrere Varianten
+- Zirkon-Ring mit Silikon-Einlage im Tropfen-Design (`zirkon-ring-mit-silikon-einlage-im-tropfen-des-610900`): hat inzwischen mehrere Varianten
+- Tulpen Diffuser aus getrockneten Blumen (`tulpen-diffuser-aus-getrockneten-blumen-635900`): hat inzwischen mehrere Varianten
+- Edelstahl-Armreif «Couleur» · verstellbar, Gold (`edelstahl-armreif-couleur-verstellbar-gold`): SKU ist nicht mehr CJ-<pid> ('cj-CJSL2935438') — schon umgestellt?
+- Adventskalender 2026 mit Blind-Box-Überraschungen (`adventskalender-blind-box-sammlung-2026-636300`): hat inzwischen mehrere Varianten
+- Titanstahlring mit Roboter-Alien-Design (`titanstahlring-mit-roboter-alien-design-633100`): hat inzwischen mehrere Varianten
+- 65 W GaN Schnellladegerät – USB-C (`65-w-gan-schnellladegerat-usb-c-618500`): hat inzwischen mehrere Varianten
+- Grosses Rückenkissen für Erker und Bett (`grosses-ruckenkissen-fur-erker-und-bett-625000`): hat inzwischen mehrere Varianten
+- Klassische Herren-Armbanduhr (`klassische-herren-armbanduhr-780416`): hat inzwischen mehrere Varianten
+- Maniküre AB Diamond 3-teiliges Set (`manikure-ab-diamond-3-teiliges-set-517952`): hat inzwischen mehrere Varianten
+- Silikon-Kochschaufel mit Holzgriff (`silikon-kochschaufel-mit-holzgriff-9e2ada`): hat inzwischen mehrere Varianten
+- Wandlampe mit kreativen LED-Farben (`wandlampe-mit-kreativen-led-farben-621800`): hat inzwischen mehrere Varianten
+- Webteppich mit Leoparden-Motiv (`sofabett-mit-modernem-muster-617500`): KI-Übersetzung fehlt/abgelehnt: ['Earrings Girl', 'Female Newspaper Reader', 'Pink Panther', 'Shell']
+- Multifunktionales Silikon-Wärmepad (`multifunktionales-silikon-warmepad-625400`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Studentenrucksack Blumenmuster (`studentenrucksack-blumenmuster-617800`): hat inzwischen mehrere Varianten
+- Wandteppich mit Berglandschaft (`traumhafte-berglandschaft-wandteppich-5ea056`): hat inzwischen mehrere Varianten
+- Wasserdichte Angelrucksack aus TPU-Gewebe (`wasserdichte-angelrucksack-aus-tpu-gewebe-621700`): hat inzwischen mehrere Varianten
+- Moocare Aromatherapie-Öl (20 Stk.) (`moocare-aromatherapie-ol-20-stk-628100`): hat inzwischen mehrere Varianten
+- Kreativer Weindekanter – Pinguin oder Bohnensprosse (`kreativer-weindekanter-pinguin-oder-bohnenspro-613700`): hat inzwischen mehrere Varianten
+- Baumwoll-Leinen Vorhang mit Entenmotiv (`baumwoll-leinen-vorhang-mit-entenmotiv-671488`): nicht mehr aktiv
+- Weihnachtsdeko Foto-Requisiten (`weihnachtsdeko-foto-requisiten-629600`): hat inzwischen mehrere Varianten
+- Transparenter Häkelvorhang Landhausstil (`transparenter-hakelvorhang-landhausstil-003840`): hat inzwischen mehrere Varianten
+- Holz-Bausatz zum Selberbauen (`holz-bausatz-zum-selberbauen-529600`): hat inzwischen mehrere Varianten
+- Wandlampe aus Kupfer mit weissem Lampenschirm (`wandlampe-aus-kupfer-mit-weisser-lampenschirm-600000`): hat inzwischen mehrere Varianten
+- Makeup-Set für Einsteiger mit Concealer & Eyeliner (`makeup-set-fur-einsteiger-mit-concealer-eyelin-298240`): hat inzwischen mehrere Varianten
+- Solar-Gartenlampe Ente (`solar-gartenlampe-ente-616300`): hat inzwischen mehrere Varianten
+- Edelstahl-Armband «Cœur» · Herz, Gold (`edelstahl-armband-coeur-herz-gold`): hat inzwischen mehrere Varianten
+- Futterautomat mit Kamera für Hunde und Katzen (`futterautomat-mit-kamera-fur-hunde-und-katzen-294976`): Variante-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Vintage Baseball-Cap «Liberty» · Washed Schwarz (`vintage-baseball-cap-liberty-washed-schwarz`): hat inzwischen mehrere Varianten
+- 10-teiliges Badset aus Baumwolle (`10-teiliges-badset-aus-baumwolle-620600`): hat inzwischen mehrere Varianten
+- Dekorative Leinwandbilder Set – 3-teilige Wandkunst (`dekorative-leinwandbilder-set-3-teilige-wandku-604600`): hat inzwischen mehrere Varianten
+- Edelstein-Bauklötze aus Holz und Acryl (`edelstein-bauklotze-aus-holz-und-acryl-812480`): hat inzwischen mehrere Varianten
+- Baseball-Cap «L.A.» · Hellblau (`baseball-cap-l-a-hellblau`): hat inzwischen mehrere Varianten
+- Mechanische Herrenuhr – Business & Freizeit (`mechanische-herrenuhr-business-freizeit-625400`): hat inzwischen mehrere Varianten
+- Milchweisses Nagelverlängerungsgel zum Modellieren (`milchweisses-nagelverlangerungsgel-zum-modelli-085888`): hat inzwischen mehrere Varianten
+- Reise-Rucksack 20–35 L mit Schuhfach (`reise-rucksack-20-35-l-mit-schuhfach-615800`): hat inzwischen mehrere Varianten
+- HD Mini-Projektor für Zuhause (`home-hd-portable-projector-239616`): hat inzwischen mehrere Varianten
+- RGB Computer-Mikrofon für Live-Calls und Gaming (`rgb-computer-mikrofon-fur-live-calls-und-gamin-322368`): KI-Übersetzung fehlt/abgelehnt: ['Blu ray', 'Colorful']
+- Vorratsbox für Getreide (`vorratsbox-fur-getreide-8f38c8`): hat inzwischen mehrere Varianten
+- Armband für Apple Watch mit Dornschliesse (`armband-fur-apple-watch-mit-dornschliesse-204416`): hat inzwischen mehrere Varianten
+- Halskette «Rosée» · Kristall-Tropfen, Silber (`halskette-rosee-kristall-tropfen-silber`): hat inzwischen mehrere Varianten
+- Kabelloses Lavalier Mikrofon mit Ladecase (`kabelloses-lavalier-mikrofon-mit-ladecase-579648`): hat inzwischen mehrere Varianten
+- LED Schmuck-Geschenkbox (`led-schmuck-geschenkbox-608700`): hat inzwischen mehrere Varianten
+- Wandlampe im amerikanischen Vintage-Stil (`amerikanischer-vintage-wandlampenstil-602800`): hat inzwischen mehrere Varianten
+- Kissen für Balkonfenster – gestreift, 55×55 cm (`kissen-fur-balkonfenster-gestreift-55-55-cm-604500`): hat inzwischen mehrere Varianten
+- Gürtel Herrenuhr – Schlicht & Business-tauglich (`gurtel-herrenuhr-schlicht-business-tauglich-772160`): hat inzwischen mehrere Varianten
+- Silikon-Eiswürfelform für 36 Würfel (`silikon-eiswurfelform-fur-36-wurfel-bf7780`): hat inzwischen mehrere Varianten
+- Retro Magnetarmband aus rotem Bronze (`retro-magnetarmband-aus-rotem-bronze-628600`): hat inzwischen mehrere Varianten
+- Zehnfarben-Lidschattenpalette Matt und Glitzer (`zehnfarben-lidschattenpalette-matt-und-glitzer-669696`): KI-Übersetzung fehlt/abgelehnt: ['BD 111 Iron Sheet Reservation', 'BD 110 Is A Little Blue', 'BD 601 Reverse Emotion', 'BD 501 A Set Of Colors']
+- Weihnachtsfigur aus Kunstharz (`weihnachtsfigur-resin-deko-606100`): hat inzwischen mehrere Varianten

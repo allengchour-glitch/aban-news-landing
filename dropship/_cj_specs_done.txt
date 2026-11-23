@@ -5936,3 +5936,7 @@ sportuhr-612000	gesetzt-3
 besteck-organizer-aus-edelstahl-044226	gesetzt-1
 usb-led-taschenlampe-extrem-hell-995841	gesetzt-1
 e88pro-bildschirm-steuerung-doppelt-strom-837634	gesetzt-1
+silberarmband-614500	nicht-aktiv
+laufschuhe-614400	gesetzt-5
+rotes-midi-kleid-602000	hat-liste
+laufschuhe-fur-kinder-038656	gesetzt-2

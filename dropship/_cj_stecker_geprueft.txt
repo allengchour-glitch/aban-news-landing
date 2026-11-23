@@ -1136,3 +1136,28 @@
 15496891695489	kein-stecker-merkmal	2026-11-23	Gaming-Tastatur-Adapter
 15497149219201	kein-stecker-merkmal	2026-11-23	PS4/PS Move Controller Ladestation
 15497151021441	kein-stecker-merkmal	2026-11-23	LED Dual-Ladestation für PS4 Controller
+15497434202497	kein-stecker-merkmal	2026-11-23	Tasse mit Heizplatte & Wireless Charger
+15497434366337	mehrere-varianten	2026-11-23	Ladestation für PS4-Gamecontroller
+15497438069121	kein-stecker-merkmal	2026-11-23	Multifunktionale Kühl- und Ladestation
+15497438298497	kein-stecker-merkmal	2026-11-23	2-in-1 Aluminium Ladestation für Handy & Uhr
+15497442918785	kein-stecker-merkmal	2026-11-23	Baseus Huawei Minimalist Wireless Charger
+15497446326657	kein-stecker-merkmal	2026-11-23	Bluetooth Audio Adapter
+15497453076865	kein-stecker-merkmal	2026-11-23	2.4A USB-Schnellladeadapter
+15497471689089	kein-stecker-merkmal	2026-11-23	Stromadapter
+15497472475521	kein-stecker-merkmal	2026-11-23	3-in-1 Wireless Ladestation für Apple Geräte
+15497590833537	kein-stecker-merkmal	2026-11-23	Aromatherapie UV-Sterilisationsbox mit Wireless Charger
+15499103961473	kein-stecker-merkmal	2026-11-23	PS4 Multi-Funktions-Ladestation mit Kühlung
+15499303584129	mehrere-varianten	2026-11-23	Smart Make-up Spiegel mit Ladestation
+15499490951553	kein-stecker-merkmal	2026-11-23	Mobile Ladestation
+15499527389569	mehrere-varianten	2026-11-23	Galaxy Watch Active & Galaxy Buds 3-in-1 Ladestation
+15499594334593	mehrere-varianten	2026-11-23	Dreifach-Ladestation für Handy und Armband
+15499595186561	mehrere-varianten	2026-11-23	3-Port Ladestation mit LED-Lampe
+15499697979777	kein-stecker-merkmal	2026-11-23	Ladestation für Streaming-Handheld mit RGB-Licht
+15499698340225	draft-kein-eu-stecker:CN	2026-11-23	Dreifach-Wireless-Ladeschale
+15499699782017	kein-stecker-merkmal	2026-11-23	Dreifach-Ladestation
+15499700142465	kein-stecker-merkmal	2026-11-23	Magnetische 3-in-1-Ladestation
+15499724325249	kein-stecker-merkmal	2026-11-23	Titanium-Ladestation für Auto
+15499724849537	kein-stecker-merkmal	2026-11-23	Magnetische Ladestation
+15499725341057	mehrere-varianten	2026-11-23	Magnetische Dreifach-Ladestation
+15499783700865	mehrere-varianten	2026-11-23	Smartwatch-Ladestation
+15499805917569	mehrere-varianten	2026-11-23	Magnetische Nachtlicht-Ladestation

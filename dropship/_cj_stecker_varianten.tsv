@@ -2128,3 +2128,91 @@
 2026-11-23	15478568550785	67948411093383	CJYD230712914NM	Weiss ohne Diamanten / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
 2026-11-23	15479419142529	67874476261767	CJSJ241941201AZ	CN	sperren	CONTINUE	False	0	sperre-geplant
 2026-11-23	15479419142529	67874476261767	CJSJ241941201AZ	CN	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15480284709249	67874321432967	CJYD208712104DW	Gelb / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15480284709249	67874321498503	CJYD208712108HS	Blau / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15480284709249	67874321564039	CJYD208712112LO	Schwarz / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15480284709249	67874321432967	CJYD208712104DW	Gelb / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15480284709249	67874321498503	CJYD208712108HS	Blau / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15480284709249	67874321564039	CJYD208712112LO	Schwarz / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481680691585	67874339193223	CJYD208413204DW	Schwarz 216g / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481680691585	67874339258759	CJYD208413208HS	Weiß 18g / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481680691585	67874339193223	CJYD208413204DW	Schwarz 216g / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481680691585	67874339258759	CJYD208413208HS	Weiß 18g / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481680757121	67874342699399	CJYD208379201AZ	US-Standard 720p	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481680757121	67874342764935	CJYD208379204DW	Australische Vorschriften 720p	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481680757121	67874342699399	CJYD208379201AZ	US-Standard 720p	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481680757121	67874342764935	CJYD208379204DW	Australische Vorschriften 720p	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481681019265	68164999348615	CJYD204880304DW	Basis Kabel Gleiches Display / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481681019265	68164999414151	CJYD204880308HS	Android WLAN Bluetooth / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481681019265	68164999479687	CJYD204880312LO	Android Auslandsnutzung / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481681019265	68164999348615	CJYD204880304DW	Basis Kabel Gleiches Display / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481681019265	68164999414151	CJYD204880308HS	Android WLAN Bluetooth / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481681019265	68164999479687	CJYD204880312LO	Android Auslandsnutzung / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481681052033	67874364227975	CJYD204672403CX	Weiss / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481681052033	67874364293511	CJYD204672407GT	Schwarz / Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481681052033	67874364227975	CJYD204672403CX	Weiss / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481681052033	67874364293511	CJYD204672407GT	Schwarz / Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481700843905	68164999676295	CJYD249433004DW	Australien-Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481700843905	68164999709063	CJYD249433005EV	Koreastandard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15481700843905	68164999676295	CJYD249433004DW	Australien-Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15481700843905	68164999709063	CJYD249433005EV	Koreastandard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15482001359233	67841459782023	CJYD238550104DW	Luftfahrtstecker / Australischer Standard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15482001359233	67841459847559	CJYD238550108HS	DC-Stecker 5.5x2.5MM / Australischer Standard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15482001359233	67841459913095	CJYD238550112LO	DC-Stecker 5.5X2.1MM / Australischer Standard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15482001359233	67841459782023	CJYD238550104DW	Luftfahrtstecker / Australischer Standard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15482001359233	67841459847559	CJYD238550108HS	DC-Stecker 5.5x2.5MM / Australischer Standard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15482001359233	67841459913095	CJYD238550112LO	DC-Stecker 5.5X2.1MM / Australischer Standard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493808357761	67822169686407	CJXFLPCD00231-US.	US.	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493808357761	67822169686407	CJXFLPCD00231-US.	US.	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493848203649	67874473968007	CJXFLPCD00125-White and US adapter	Weiß und US‑Adapter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493848203649	67874474000775	CJXFLPCD00125-White and UK adapter	Weiß und UK‑Adapter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493848203649	67874474033543	CJXFLPCD00125-Black and US adapter	Schwarz und US‑Adapter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493848203649	67874474066311	CJXFLPCD00125-Black and UK adapter	Schwarz und UK‑Adapter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493848203649	67874473968007	CJXFLPCD00125-White and US adapter	Weiß und US‑Adapter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493848203649	67874474000775	CJXFLPCD00125-White and UK adapter	Weiß und UK‑Adapter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493848203649	67874474033543	CJXFLPCD00125-Black and US adapter	Schwarz und US‑Adapter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493848203649	67874474066311	CJXFLPCD00125-Black and UK adapter	Schwarz und UK‑Adapter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493854691713	67948179915143	CJYD237503301AZ	5 Liter Fleischwolf / Nationalstandard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493854691713	67948179980679	CJYD237503305EV	2 Liter Fleischwolf / Nationalstandard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493854691713	67948180046215	CJYD237503309IR	2 Liter Glas-Fleischwolf / Nationalstandard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493854691713	67948180111751	CJYD237503313MN	3 Liter Fleischwolf / Nationalstandard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493854691713	67948180177287	CJYD237503317QJ	3 L Glas-Fleischwolf / Nationalstandard	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493854691713	67948179915143	CJYD237503301AZ	5 Liter Fleischwolf / Nationalstandard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493854691713	67948179980679	CJYD237503305EV	2 Liter Fleischwolf / Nationalstandard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493854691713	67948180046215	CJYD237503309IR	2 Liter Glas-Fleischwolf / Nationalstandard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493854691713	67948180111751	CJYD237503313MN	3 Liter Fleischwolf / Nationalstandard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493854691713	67948180177287	CJYD237503317QJ	3 L Glas-Fleischwolf / Nationalstandard	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493863473537	68122762314119	CJXFLPCD00019-CN	CN	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493863473537	68122762314119	CJXFLPCD00019-CN	CN	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493920162177	67822131216775	CJYD189745703CX	Mais Verlaufend Rosa / Britischer Stecker	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493920162177	67822131282311	CJYD189745706FU	Mais Klammer Weiss / Britischer Stecker	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493920162177	67822131347847	CJYD189745709IR	Mais Klammer Blau / Britischer Stecker	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493920162177	67822131413383	CJYD189745712LO	Glatt Verlaufend Rosa / Britischer Stecker	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493920162177	67822131478919	CJYD189745715OL	Haarglätter Weiss / Britischer Stecker	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493920162177	67822131544455	CJYD189745718RI	Haarglätter Blau / Britischer Stecker	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15493920162177	67822131216775	CJYD189745703CX	Mais Verlaufend Rosa / Britischer Stecker	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493920162177	67822131282311	CJYD189745706FU	Mais Klammer Weiss / Britischer Stecker	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493920162177	67822131347847	CJYD189745709IR	Mais Klammer Blau / Britischer Stecker	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493920162177	67822131413383	CJYD189745712LO	Glatt Verlaufend Rosa / Britischer Stecker	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493920162177	67822131478919	CJYD189745715OL	Haarglätter Weiss / Britischer Stecker	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15493920162177	67822131544455	CJYD189745718RI	Haarglätter Blau / Britischer Stecker	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495012548993	67822062862727	CJSJ234549115OL	Koreanischer Standard Gelb	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495012548993	67822062862727	CJSJ234549115OL	Koreanischer Standard Gelb	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495104332161	67948178768263	CJYD210928801AZ	1350 W / CN	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495104332161	67948178801031	CJYD210928802BY	1500 W / CN	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495104332161	67948178833799	CJYD210928803CX	1750 W / CN	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495104332161	67948178768263	CJYD210928801AZ	1350 W / CN	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495104332161	67948178801031	CJYD210928802BY	1500 W / CN	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495104332161	67948178833799	CJYD210928803CX	1750 W / CN	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495136215425	67822075314567	CJZN110511701AZ	Millionen HD US-Regulierung	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495136215425	67822075314567	CJZN110511701AZ	Millionen HD US-Regulierung	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495190348161	67948439699847	CJBJMRTF00035-US regulations	US-Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495190348161	67948439798151	CJBJMRTF00035-Australian regulations	Australische Vorschriften	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495190348161	67948439699847	CJBJMRTF00035-US regulations	US-Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495190348161	67948439798151	CJBJMRTF00035-Australian regulations	Australische Vorschriften	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495214072193	67821887684999	CJCD165180801AZ	AU Doppelausgang 20W	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495214072193	67821887750535	CJCD165180803CX	UK Doppelausgang 20W	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495214072193	67821887783303	CJCD165180804DW	US Doppelausgang 20W	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-23	15495214072193	67821887684999	CJCD165180801AZ	AU Doppelausgang 20W	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495214072193	67821887750535	CJCD165180803CX	UK Doppelausgang 20W	sperren	DENY	True	0	gesperrt-belegt
+2026-11-23	15495214072193	67821887783303	CJCD165180804DW	US Doppelausgang 20W	sperren	DENY	True	0	gesperrt-belegt
