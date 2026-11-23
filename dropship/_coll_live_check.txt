@@ -938,3 +938,126 @@ herren-kopfbedeckung-muetzen	http-429	0	Mützen & Beanies
 herren-kopfbedeckung-huete	ok	22	Hüte
 herren-handschuhe	ok	29	Handschuhe
 herren-handschuhe-sport-outdoor	ok	23	Ski-, Velo- & Outdoor-Handschuhe
+herren-sonnenbrillen	ok	29	Sonnenbrillen
+kinder-lauflernschuhe	ok	29	Baby- & Lauflernschuhe
+kinder-stiefel	ok	29	Stiefel & Winterschuhe
+kinder-sandalen	ok	29	Sandalen & Pantoletten
+kinder-hausschuhe	ok	29	Hausschuhe & Pantoffeln
+kinder-sneaker	ok	29	Sneaker & Sportschuhe
+kinder-ballerinas	ok	28	Ballerinas & Halbschuhe
+kinder-freizeitschuhe	ok	29	Freizeit- & Schulschuhe
+kinder-accessoires	ok	29	Kinder-Accessoires
+mengenrabatt-ab-2-stueck	ok	29	Mengenrabatt: ab 2 Stück 5 %, ab 3 Stück 10 %
+mengenrabatt-ab-3-stueck	ok	29	Mengenrabatt: ab 3 Stück 5 %
+moissanit-ringe	ok	13	Moissanit-Ringe
+edelstein-geburtsstein-ringe	ok	29	Edelstein- & Geburtsstein-Ringe
+silberringe	ok	12	Silberringe
+edelstahl-titanringe	ok	29	Edelstahl- & Titanringe
+zirkonia-strassringe	ok	29	Zirkonia- & Strassringe
+ringsets-stapelringe	ok	26	Ringsets & Stapelringe
+verstellbare-offene-ringe	ok	29	Verstellbare & offene Ringe
+creolen-ohrclips	ok	20	Creolen, Ohrclips & Ear Cuffs
+ohrhaenger-tropfenohrringe	ok	29	Ohrhänger & Tropfenohrringe
+ohrstecker	ok	29	Ohrstecker
+ohrstecker-silber	ok	8	Silber-Ohrstecker
+ohrstecker-vintage	ok	22	Vintage-Ohrstecker
+silber-ohrringe	ok	10	Silber-Ohrringe
+perlen-ohrringe	ok	26	Perlen-Ohrringe
+zirkonia-strass-ohrringe	ok	29	Zirkonia- & Strass-Ohrringe
+halsketten-alle	ok	29	Halsketten & Anhänger
+perlenketten	ok	29	Perlenketten
+choker-layering-ketten	ok	24	Choker & mehrlagige Ketten
+glieder-hiphop-ketten	ok	21	Glieder- & Hip-Hop-Ketten
+ketten-mit-anhaenger	ok	29	Anhänger & Ketten mit Anhänger
+ketten-mit-anhaenger-stahl	ok	29	Anhänger aus Edelstahl & Titan
+ketten-mit-anhaenger-herz	ok	25	Herz-Anhänger
+silberketten	ok	7	Silberketten
+edelstahl-titanketten	ok	29	Edelstahl- & Titanketten
+zirkonia-moissanit-ketten	ok	29	Zirkonia- & Moissanit-Ketten
+armreifen-bangles	ok	29	Armreifen & Manschettenarmbänder
+armreifen-bangles-zirkonia	ok	29	Armreifen mit Zirkonia & Strass
+lederarmbaender	ok	29	Lederarmbänder
+lederarmbaender-stahl	ok	29	Leder mit Edelstahl & Titan
+lederarmbaender-herren	ok	26	Lederarmbänder für Herren
+perlen-edelsteinarmbaender	ok	29	Perlen- & Edelsteinarmbänder
+gliederarmbaender	ok	29	Glieder- & Tennisarmbänder
+kupfer-magnetarmbaender	ok	29	Kupfer- & Magnetarmbänder
+geflochtene-wickelarmbaender	ok	28	Geflochtene Armbänder
+silberarmbaender	ok	8	Silberarmbänder
+edelstahl-titanarmbaender	ok	29	Edelstahl- & Titanarmbänder
+edelstahl-titanarmbaender-zirkonia	ok	29	Edelstahl mit Zirkonia & Strass
+edelstahl-titanarmbaender-leder	ok	29	Edelstahl mit Leder
+edelstahl-titanarmbaender-vergoldet	ok	24	Vergoldete Edelstahlarmbänder
+vergoldete-armbaender	ok	29	Vergoldete Armbänder
+zirkonia-strassarmbaender	ok	29	Zirkonia- & Strassarmbänder
+herrenringe	ok	28	Herren- & Unisex-Ringe
+herrenarmbaender	ok	29	Herrenarmbänder
+personalisierte-ringe	http-429	0	Personalisierte Ringe
+personalisierte-armbaender	ok	29	Personalisierte Armbänder
+personalisierte-ketten	ok	29	Personalisierte Ketten
+gluecks-schutzschmuck	ok	29	Glücks- & Schutzschmuck
+kreuz-schmuck	ok	29	Kreuz-Schmuck
+herz-schmuck	ok	29	Herz-Schmuck
+herz-schmuck-armbaender	ok	29	Herz-Armbänder & -Armreifen
+herz-schmuck-zirkonia	ok	29	Herz mit Zirkonia & Strass
+herz-schmuck-ketten	ok	29	Herz-Ketten & Anhänger
+herz-schmuck-ringe	ok	21	Herz-Ringe
+herz-schmuck-silber	TOTE-SEITE	0	Herz-Schmuck aus Silber
+herz-schmuck-stahl	ok	27	Herz aus Edelstahl & Titan
+stern-mond-schmuck	ok	29	Stern-, Mond- & Sonnenschmuck
+blumen-schmetterlingsschmuck	http-429	0	Blumen- & Schmetterlingsschmuck
+blumen-schmetterlingsschmuck-zirkonia	http-429	0	Zirkonia-Blumen & -Schmetterlinge
+blumen-schmetterlingsschmuck-ringe	ok	29	Blumen- & Schmetterlingsringe
+blumen-schmetterlingsschmuck-ohrringe	ok	29	Blumen- & Schmetterlings-Ohrringe
+blumen-schmetterlingsschmuck-armbaender	ok	29	Blumen- & Schmetterlings-Armbänder
+blumen-schmetterlingsschmuck-perlen	ok	23	Blumen & Schmetterlinge mit Perlen
+blumen-schmetterlingsschmuck-silber	TOTE-SEITE	0	Silber-Blumen & -Schmetterlinge
+tier-schmuck	ok	29	Tier-Schmuck
+tier-schmuck-armbaender	ok	29	Tier-Armbänder & -Armreifen
+punk-gothic-schmuck	ok	29	Punk-, Gothic- & Hip-Hop-Schmuck
+punk-gothic-schmuck-armbaender	ok	24	Punk-Armbänder & -Armreifen
+boho-ethno-schmuck	ok	29	Boho-, Ethno- & Wikinger-Schmuck
+korea-frankreich-oldmoney-schmuck	ok	29	Schmuck im Korea-, Frankreich- & Old-Money-Stil
+vintage-retro-schmuck	ok	29	Vintage- & Retro-Schmuck
+vintage-retro-schmuck-armbaender	ok	29	Vintage-Armbänder & -Armreifen
+vintage-retro-schmuck-ringe	ok	29	Vintage-Ringe
+vintage-retro-schmuck-ohrringe	ok	29	Vintage-Ohrringe
+vintage-retro-schmuck-zirkonia	ok	26	Vintage mit Zirkonia & Strass
+vintage-retro-schmuck-stahl	ok	29	Vintage aus Edelstahl & Titan
+geometrischer-schmuck	ok	29	Geometrischer Schmuck
+minimalistischer-schmuck	ok	29	Minimalistischer Schmuck
+minimalistischer-schmuck-armbaender	ok	29	Minimalistische Armbänder
+minimalistischer-schmuck-ringe	ok	18	Minimalistische Ringe
+schmuck-selbermachen	ok	29	Schmuck selber machen
+schluessel-taschenanhaenger	ok	29	Schlüssel- & Taschenanhänger
+kombisets-kette-armband-ohrringe	ok	29	Kombi-Sets aus Kette, Armband & Ohrringen
+schmuck-herren-gruppe	ok	29	Schmuck für Herren
+schmuck-personalisiert-gruppe	ok	29	Personalisierter Schmuck
+schmuck-motiv-gruppe	ok	29	Schmuck nach Motiv
+schmuck-stil-gruppe	ok	29	Schmuck nach Stil
+schmuck-sets-gruppe	ok	29	Sets, Broschen & Körperschmuck
+schmuck-zubehoer-gruppe	ok	29	Zubehör & Aufbewahrung
+laptop-business-rucksaecke	ok	29	Laptop- & Business-Rucksäcke
+laptop-mit-usb	ok	29	Laptop-Rucksäcke mit USB-Anschluss
+laptop-anti-diebstahl	ok	24	Anti-Diebstahl-Laptoprucksäcke
+laptop-leder	ok	29	Laptoprucksäcke aus Leder & Kunstleder
+laptop-wasserdicht	ok	29	Wasserdichte Laptop-Rucksäcke
+laptop-kompression	ok	21	Erweiterbare Laptop-Rucksäcke
+laptop-reise	ok	29	Laptop-Rucksäcke für Geschäftsreisen
+laptop-gross	ok	21	Grosse Laptop-Rucksäcke ab 36 Liter
+schul-studentenrucksaecke	ok	29	Schul- & Studentenrucksäcke
+schul-studenten	ok	29	Studenten- & Uni-Rucksäcke
+wander-outdoor-rucksaecke	ok	29	Wander- & Outdoor-Rucksäcke
+wander-klettern	ok	29	Kletter- & Bergsteigerrucksäcke
+wander-wasserdicht	ok	29	Wasserdichte Wanderrucksäcke
+wander-gross	ok	29	Grosse Wanderrucksäcke ab 36 Liter
+reise-rucksaecke	ok	29	Reiserucksäcke
+reise-leder	ok	29	Reiserucksäcke aus Leder & Kunstleder
+reise-canvas	ok	29	Canvas- & Retro-Reiserucksäcke
+reise-wasserdicht	ok	20	Wasserdichte Reiserucksäcke
+reise-rucksaecke-outdoor	ok	29	Outdoor-Reiserucksäcke
+velo-lauf-trinkrucksaecke	ok	29	Velo-, Lauf- & Trinkrucksäcke
+velo-velo	ok	29	Velo- & Fahrradrucksäcke
+velo-lauf	ok	23	Lauf- & Trailrucksäcke
+velo-trink	ok	27	Rucksäcke mit Trinksystem
+freizeit-sportrucksaecke	ok	29	Freizeit-, Mode- & Sportrucksäcke
