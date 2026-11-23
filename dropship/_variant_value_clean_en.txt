@@ -22234,3 +22234,12 @@ gid://shopify/Product/15509400519041	Farbe	gid://shopify/ProductOptionValue/1244
 gid://shopify/Product/15509431222657	Grösse	gid://shopify/ProductOptionValue/58848262291847	Green Box	Grün Box	2026-11-23T17:45Z
 gid://shopify/Product/15509431419265	Grösse	gid://shopify/ProductOptionValue/58710070722951	Big	Gross	2026-11-23T17:46Z
 gid://shopify/Product/15509506097537	Grösse	gid://shopify/ProductOptionValue/58757659361671	Upgraded	Upgrade	2026-11-23T17:46Z
+gid://shopify/Product/15509836661121	Farbe	gid://shopify/ProductOptionValue/58799756181895	Rose Pink	Rosenpink	2026-11-23T17:47Z
+gid://shopify/Product/15509985886593	Abmessung	gid://shopify/ProductOptionValue/58709524939143	Big	Gross	2026-11-23T17:47Z
+gid://shopify/Product/15510280372609	Grösse	gid://shopify/ProductOptionValue/58597901697415	Big	Gross	2026-11-23T17:47Z
+gid://shopify/Product/15510320841089	Menge	gid://shopify/ProductOptionValue/58847848235399	1PCS	1 Stück	2026-11-23T17:48Z
+gid://shopify/Product/15510320841089	Menge	gid://shopify/ProductOptionValue/58847848268167	5PCS	5 Stück	2026-11-23T17:48Z
+gid://shopify/Product/15510321561985	Farbe	gid://shopify/ProductOptionValue/58848417218951	Set1	Set 1	2026-11-23T17:48Z
+gid://shopify/Product/15510829498753	Menge	gid://shopify/ProductOptionValue/58848376226183	3PCS	3 Stück	2026-11-23T17:48Z
+gid://shopify/Product/15510835003777	Grösse	gid://shopify/ProductOptionValue/58848300106119	Double	Doppelt	2026-11-23T17:48Z
+gid://shopify/Product/15510835003777	Grösse	gid://shopify/ProductOptionValue/58848300171655	Single	Einzeln	2026-11-23T17:48Z
