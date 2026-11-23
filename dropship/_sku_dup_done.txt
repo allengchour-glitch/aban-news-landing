@@ -714,3 +714,9 @@ gid://shopify/Product/15522211987841	CJ-CJYD280079701AZ	Plissiertes Baumwoll-Shi
 gid://shopify/Product/15522212151681	CJ-CJCS280077401AZ	Distressed Baumwoll-Shirt für Damen
 gid://shopify/Product/15447589028225	CJNS291439601AZ	Elegante Quarzuhr mit Silikonarmband
 gid://shopify/Product/15412361593217	CJSN290228901AZ	3D-Druck Nachttischlampe – warmes Nachtlicht & Deko-Objekt fürs Schlafzimmer
+gid://shopify/Product/15479486808449	CJJX235873301AZ	X5 Smartwatch mit Bluetooth & GPS
+gid://shopify/Product/15496425931137	CJSL292427701AZ	Personalisierbares Erbsen-Armband mit Zirkonia
+gid://shopify/Product/15495190544769	CJSL293135501AZ	Vintage Eulen-Fusskettchen aus Legierung
+gid://shopify/Product/15496579940737	CJLX293083901AZ	Feuerfliegenring
+gid://shopify/Product/15495129039233	CJSL293552301AZ	Gravierbares Armband mit Herzanhänger
+gid://shopify/Product/15495129170305	CJSL293548701AZ	Graviertes Edelstahl-Armband, doppellagig

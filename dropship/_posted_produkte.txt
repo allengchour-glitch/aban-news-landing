@@ -542,3 +542,6 @@ slug:augenmaske-teufel-fga908485
 slug:bildreel-perucke-valentina-neon-orange-fga974975
 pid:15469980811649
 slug:perucke-valentina-neon-orange-fga974975
+slug:bildreel-zylinder-rot-deluxe-fga925708
+pid:15469984448897
+slug:zylinder-rot-deluxe-fga925708

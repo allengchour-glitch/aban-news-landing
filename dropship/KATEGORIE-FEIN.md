@@ -1,4 +1,4 @@
-# Feinkategorie (automatisch, 2026-11-23 17:56 UTC)
+# Feinkategorie (automatisch, 2026-11-23 19:16 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
@@ -7,19 +7,18 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 | gleich | 35801 |
 | shopify-feiner | 16312 |
 | kein-google | 1643 |
-| rueckfall-grob | 1319 |
+| rueckfall-grob | 1320 |
 | anderer-zweig | 966 |
 | ohne-kategorie | 213 |
 | kreuz | 13 |
 | schon-im-ledger | 13 |
 | titelprobe-nein | 12 |
 | keine-zuordnung | 1 |
-| verfeinern | 1 |
-| **geschrieben** | 1 (Fehler 0) |
+| verfeinern | 0 |
+| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 1 → Tools > Measuring Tools & Sensors
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
