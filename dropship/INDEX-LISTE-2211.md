@@ -101,3 +101,11 @@ Jeden Morgen (07:00 Schweizer Zeit, Wecker per `send_later`): die zehn Seiten de
 ## Lehren
 - In der Hintergrund-Shell gibt es kein `ping`: Pausen in Skripten mit `python3 -c "import time; time.sleep(n)"`.
 - Eine strenge Rangfolge über 50 Plätze verdrängt die hinteren Gruppen ganz; bei «zuerst …, dann …» die Tage nach Gruppen aufteilen.
+
+## Rollende Warteschlange (ab 23.11.)
+Google liess am 22.11. nur 3 Anträge durch (ab Nr. 4 «Kontingent überschritten»). Darum gibt es statt fester Tageslisten eine Warteschlange: Jeden Morgen kommen die nächsten 10 offenen Seiten mit frischen Links. Du beantragst der Reihe nach, bis Google das Kontingent meldet, und schreibst die Nummer. Die Reihenfolge der 50 Seiten bleibt (Tage 1 bis 5 wie oben, dann Reserve).
+
+### 23.11. (gemessen 06:00 bis 06:07 UTC)
+- **Beantragt am 22.11. (Nr. 1 bis 3) und jetzt indexiert:** `sub-stiefel-boots`, `geschenke-unter-50-franken`, `geschenke-fuer-kinder` («Gesendet und indexiert», gecrawlt am 23.11. zwischen 00:31 und 00:46 UTC).
+- **Geliefert (10):** `waerme-komfort` (gefunden, nicht indexiert), `herren-jacken-maentel-lang`, `kinder-hausschuhe`, `damen-hausschuhe`, `heizkissen-waermegurte`, `hoodies-sweatshirts`, `damen-sturmhauben-gesichtsmasken`, `herren-sturmhauben-gesichtsmasken`, `damen-jacken-cape`, `herren-jacken-uebergang` (alle «URL ist Google nicht bekannt»). Alle HTTP 200, kein `noindex`, 1,47 bis 1,67 MB.
+- Noch offen in der Warteschlange: 59 Seiten (inkl. Reserve).
