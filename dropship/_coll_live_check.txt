@@ -1096,3 +1096,96 @@ wasserdichte-rucksaecke	ok	29	Wasserdichte Rucksäcke
 wd-business	ok	29	Wasserdichte Business-Rucksäcke
 wd-outdoor	ok	29	Wasserdichte Outdoor-Rucksäcke
 wd-reise	ok	27	Wasserdichte Rucksäcke für Reisen
+wd-gross	ok	27	Grosse wasserdichte Rucksäcke
+rucksaecke-spezial-gruppe	ok	29	Spezial-Rucksäcke
+rucksaecke-material-gruppe	http-429	0	Rucksäcke nach Material & Ausstattung
+powerbanks	ok	29	Powerbanks
+powerbanks-magnetisch	ok	29	Magnetisch & kabellos
+powerbanks-solar	ok	29	Solar-Powerbanks
+powerbanks-mit-kabel	ok	29	Mit eingebautem Kabel
+powerbanks-mini	ok	29	Mini & kompakt
+powerbanks-gross	ok	29	Grosse Kapazität (ab 20 000 mAh)
+auto-ladegeraete	ok	29	Auto-Ladegeräte
+auto-ladegeraete-kabellos	ok	29	Kabellos & magnetisch
+auto-ladegeraete-usb	ok	28	USB-Lader für den Zigarettenanzünder
+ladegeraete-netzteile	ok	29	Ladegeräte & Netzteile
+ladegeraete-gan-schnell	ok	29	GaN & Schnellladen
+ladegeraete-mehrfach-usb	ok	29	Mehrfach-Lader
+ladegeraete-ladestationen	ok	25	Ladestationen
+kabellos-laden	ok	29	Kabelloses Laden
+kabellos-laden-mehrfach	ok	29	Mehrfach-Lader (2-in-1 bis 6-in-1)
+kabellos-laden-kompakt	ok	26	Ladepads & kompakte Lader
+kabellos-laden-staender	ok	27	Ladeständer & Halterungen
+kabellos-laden-magnetisch	ok	29	Magnetisch & MagSafe
+ladekabel-datenkabel	ok	29	Ladekabel & Datenkabel
+handyhuellen-displayschutz	http-429	0	Handyhüllen & Displayschutz
+handyhalter-staender	ok	29	Handyhalter & Ständer
+handyhalter-magnet	ok	29	Magnetisch & MagSafe
+handyhalter-tisch	ok	24	Ständer, faltbar & verstellbar
+handyhalter-unterwegs	ok	24	Unterwegs & im Auto
+selfie-stative-foto	ok	29	Selfie, Stative & Foto-Zubehör
+tastaturen	ok	29	Tastaturen & Tastatur-Sets
+tastaturen-gaming	ok	25	Gaming-Tastaturen
+tastaturen-kabellos	ok	29	Kabellose & Bluetooth-Tastaturen
+tastaturen-sets	ok	23	Tastatur-Maus-Sets
+computer-maeuse	ok	29	Computer-Mäuse
+maeuse-gaming	ok	25	Gaming-Mäuse
+maeuse-kabellos	ok	26	Kabellose & Bluetooth-Mäuse
+tastenkappen	ok	29	Tastenkappen & Keycaps
+usb-flash-sticks	http-429	0	USB-Sticks
+ssd-festplatten	ok	20	SSD & externe Festplatten
+festplattengehaeuse-docks	ok	29	Festplattengehäuse & Festplatten-Docks
+gehaeuse-ssd-m2	ok	25	SSD- & M.2-Gehäuse
+gehaeuse-festplatte	ok	29	Festplatten-Gehäuse & -Docks
+speicherkarten-kartenleser	ok	25	Speicherkarten & Kartenleser
+laptop-tablet-staender	ok	26	Ständer & Kühler für Laptop, Tablet & Monitor
+laptop-taschen-huellen	ok	29	Laptop-Taschen & Hüllen
+usb-hubs-docks	ok	29	USB-Hubs & Docking-Stationen
+laptop-netzteile-akkus	ok	24	Laptop-Netzteile & Akkus
+pc-bauteile	ok	27	PC-Bauteile & Erweiterungskarten
+kabelmanagement	ok	22	Kabelhalter & Kabel-Organizer
+drucker-scanner-bueromaschinen	ok	24	Drucker, Scanner & Büromaschinen
+webcams-uebersetzer-rechner	ok	28	Webcams, Übersetzer & Taschenrechner
+ueberwachungskameras	ok	29	Überwachungskameras
+kameras-wlan	ok	29	WLAN-Kameras
+kameras-nachtsicht	ok	21	Kameras mit Nachtsicht
+kameras-aussen-solar	ok	22	Aussen- & Solarkameras
+tuerklingeln-tuerspione	ok	26	Türklingeln & Türspione
+alarm-sensoren-melder	ok	29	Alarm, Sensoren & Melder
+schloesser-safes	ok	29	Schlösser, Safes & Schlüsselboxen
+gps-tracker-ortung	ok	29	GPS-Tracker & Gegenstandsfinder
+arbeitsschutz-masken	ok	27	Arbeitsschutz & Schutzmasken
+kopfhoerer-ohrhoerer	ok	29	Kopfhörer, Ohrhörer & Headsets
+kopfhoerer-in-ear	ok	29	In-Ear- & Ohrhörer
+kopfhoerer-sport-knochenschall	ok	29	Sport, Open-Ear & Knochenschall
+kopfhoerer-kabellos-bluetooth	ok	29	Kabellos & Bluetooth
+kopfhoerer-geraeuschunterdrueckung	ok	20	Mit Geräuschunterdrückung
+kopfhoerer-headsets-mikrofon	ok	29	Headsets
+gaming-kopfhoerer-headsets	ok	29	Gaming-Headsets
+bluetooth-lautsprecher-boxen	ok	29	Bluetooth-Lautsprecher & Boxen
+lautsprecher-outdoor-wasserdicht	ok	21	Outdoor & wasserdicht
+lautsprecher-mit-licht	ok	20	Mit Licht & Lampe
+mikrofone-zubehoer	ok	29	Mikrofone & Zubehör
+mikrofone-funk-ansteck	ok	29	Funk- & Ansteckmikrofone
+mikrofone-usb-kondensator	ok	29	USB- & Kondensatormikrofone
+mikrofone-karaoke	ok	21	Karaoke- & Gesangsmikrofone
+radios-audioplayer-diktiergeraete	ok	29	Radios, MP3-Player & Diktiergeräte
+funkgeraete-megaphone	ok	20	Funkgeräte & Megaphone
+audio-zubehoer-adapter	ok	29	Audio-Zubehör & Bluetooth-Adapter
+audio-zubehoer-kopfhoerer	ok	29	Für Kopfhörer & Ohrhörer
+beamer-heimprojektoren	ok	29	Beamer & Heimprojektoren
+beamer-mini-tragbar	ok	29	Mini-Beamer
+beamer-wlan-smart	ok	29	Mit WLAN & Android
+streaming-hdmi-adapter	ok	29	TV-Boxen, Streaming & HDMI-Adapter
+fernbedienungen-universal	ok	29	Fernbedienungen
+action-sport-wildkameras	ok	29	Action-, Sport- & Wildkameras
+kameras-action-sport	ok	29	Action- & Sportkameras
+kameras-wasserdicht-4k	ok	26	Wasserdicht & 4K
+kamerataschen-foto-zubehoer	ok	29	Kamerataschen & Foto-Zubehör
+fernglaeser-nachtsicht	ok	22	Ferngläser, Teleskope & Nachtsicht
+kameradrohnen-quadrocopter	ok	29	Drohnen
+drohnen-mit-kamera-4k	ok	29	Drohnen mit Kamera
+drohnen-mini-faltbar	ok	29	Mini- & Falt-Drohnen
+drohnen-zubehoer-fpv	ok	29	Drohnen-Zubehör & FPV-Teile
+drohnen-zubehoer-akkus-lader	ok	21	Akkus & Ladegeräte
+drohnen-zubehoer-dji	ok	20	Für DJI & Mavic
