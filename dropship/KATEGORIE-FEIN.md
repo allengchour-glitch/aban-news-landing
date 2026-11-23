@@ -1,4 +1,4 @@
-# Feinkategorie (automatisch, 2026-11-23 15:43 UTC)
+# Feinkategorie (automatisch, 2026-11-23 16:58 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 

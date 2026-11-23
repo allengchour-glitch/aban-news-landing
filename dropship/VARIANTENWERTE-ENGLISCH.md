@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 16:57 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-23 11:19 UTC, Stand 2026-11-23 17:01 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **29'412**
-- Optionen mit englischen Werten (Kandidaten): 1'139
-- Optionen übersetzt: **128** · Werte übersetzt: **348**
-- Optionen nur codebereinigt: 49
-- Werte mit unbekanntem Wort (unverändert): 3'255
+- Produkte gesehen: **34'250**
+- Optionen mit englischen Werten (Kandidaten): 1'251
+- Optionen übersetzt: **161** · Werte übersetzt: **433**
+- Optionen nur codebereinigt: 66
+- Werte mit unbekanntem Wort (unverändert): 3'432
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 26
-- übersprungen «kleidungsstueck-im-wert»: 20
+- übersprungen «kollision-nach-uebersetzung»: 27
+- übersprungen «kleidungsstueck-im-wert»: 21
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -58,6 +58,7 @@
 - `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
 - `15480167530881` [Farbe] leder-sneaker-mit-seitenreissverschluss-630000: US8 → US 8; US9 → US 9; US9.5 → US 9.5; US10.5 → US 10.5; US11.5 → US 11.5
 - `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
+- `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 3 Apricot → 3 Aprikose; 3 Apricot color → 3 Aprikose
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -87,5 +88,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 122, `powder` 92, `french` 84, `size` 63, `elegant` 52, `high` 51, `shell` 50, `one` 48, `cherry` 47, `⟨satzbau:mass-ohne-einheit⟩` 45, `diamond` 44, `chain` 39, `four` 34, `space` 33, `tc` 31, `li` 31, `core` 30, `end` 29, `intergold` 28, `of` 27, `opp` 27, `carbon` 26, `plush` 26, `gel` 26, `stickers` 26, `inner` 26, `happy` 25, `tea` 24, `you` 24, `eyelashes` 23, `⟨satzbau:menge-vor-nomen⟩` 22, `blossom` 22, `two` 21, `lotus` 20, `no` 20, `deer` 20, `avocado` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `oxford` 20, `line` 19, `lamp` 19, `holder` 19, `skin` 18, `full` 18, `waist` 18, `to` 18, `titanium` 18, `three` 17, `rabbit` 17, `gun` 17, `color` 17, `degrees` 17, `ice` 17, `the` 17, `sunflower` 17, `⟨satzbau:praeposition⟩` 17
+`⟨satzbau:adjektiv-vor-nomen⟩` 123, `powder` 96, `french` 84, `size` 63, `elegant` 54, `cherry` 54, `high` 53, `core` 52, `one` 51, `shell` 50, `⟨satzbau:mass-ohne-einheit⟩` 45, `diamond` 44, `chain` 39, `four` 36, `space` 33, `inner` 33, `tc` 31, `li` 31, `blossom` 29, `end` 29, `carbon` 28, `intergold` 28, `of` 27, `opp` 27, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `avocado` 24, `you` 24, `×` 23, `eyelashes` 23, `⟨satzbau:menge-vor-nomen⟩` 22, `two` 21, `lotus` 20, `no` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `oxford` 20, `skin` 19, `gun` 19, `line` 19, `light` 19, `lamp` 19, `holder` 19, `three` 18, `full` 18, `color` 18, `waist` 18, `to` 18, `the` 18, `titanium` 18, `rabbit` 17, `degrees` 17, `ice` 17
 
