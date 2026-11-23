@@ -21746,3 +21746,5 @@ gid://shopify/Product/15433464021377	Modell	gid://shopify/ProductOptionValue/585
 gid://shopify/Product/15445276197249	Farbe	gid://shopify/ProductOptionValue/12308486783361	Sternenblau Lila Set	Sternenblau-Lila Set	2026-11-23T11:22Z
 gid://shopify/Product/15445799436673	Ausführung	gid://shopify/ProductOptionValue/12308490224001	Champagne, 18 Stück, Mit Pinselbehälter	Champagner, 18 Stück, Mit Pinselbehälter	2026-11-23T11:22Z
 gid://shopify/Product/15445799436673	Ausführung	gid://shopify/ProductOptionValue/12308490322305	Champagne, 20 Stück, Mit Pinselbehälter	Champagner, 20 Stück, Mit Pinselbehälter	2026-11-23T11:22Z
+gid://shopify/Product/15447910678913	Farbe	gid://shopify/ProductOptionValue/58593820344711	Transparent, grasgrün	Transparent, Grasgrün	2026-11-23T14:09Z
+gid://shopify/Product/15447910678913	Farbe	gid://shopify/ProductOptionValue/58593820606855	Set1	Set 1	2026-11-23T14:09Z

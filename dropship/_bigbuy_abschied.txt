@@ -295,3 +295,5 @@ gid://shopify/Product/16615812333959	Grosser Reise-Rucksack Polyester
 gid://shopify/Product/16616439185799	Business Casual Kalender-Uhr aus Edelstahl
 gid://shopify/Product/16616502919559	Sport-Outdoor-Rucksack wasserdicht
 gid://shopify/Product/16617708945799	Edelstahl-Blechschrauben M2, 800 Stück
+gid://shopify/Product/15524873830785	BB Cream Starter-Set mit 5 Ampullen
+gid://shopify/Product/15525189550465	Feinabgleichende und Aufhellende Foundation
