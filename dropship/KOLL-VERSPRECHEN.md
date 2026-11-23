@@ -1,13 +1,17 @@
-# Kollektionen: Versprechen ohne Beleg — Stand 2026-10-23 21:22 UTC
+# Kollektionen: Versprechen ohne Beleg — Stand 2026-11-23 22:52 UTC
 
-⚠️ KOLL-VERSPRECHEN: 0 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 0/1 · R5 0/0 · R6 0/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 9/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok
+⚠️ KOLL-VERSPRECHEN: 4 veröffentlicht / 42 unveröffentlicht (R1 0/0 · R3 0/0 · R4 0/1 · R5 0/0 · R6 4/0 · R9 0/41) · manuell 0/28 · Premium-Hinweis 4/4 · Ware-Hinweis 11/0 · JSON-LD Organization 1 (Soll 1) · Slogan ok
 
-Geprüft: 579 Kollektionen (419 im Onlineshop veröffentlicht, 160 nicht — die meisten davon hängen an «Luxe Style Headless», «Shop» oder «Google & YouTube»). Anteil profil-ch-lager live gemessen für 11 Kollektionen mit Tempo-/Werktage-Angabe. Theme gid://shopify/OnlineStoreTheme/187533001089. Regel: `automation/data/versprechen_regel.json` → `kollektion` (S3, 14.10.2026). Der Wächter schreibt nichts; ersetzt wird mit `automation/kollektion_versprechen_s3.py` (feste Satzpaare, dieselben Finder).
+Geprüft: 1732 Kollektionen (1561 im Onlineshop veröffentlicht, 171 nicht — die meisten davon hängen an «Luxe Style Headless», «Shop» oder «Google & YouTube»). Anteil profil-ch-lager live gemessen für 4 Kollektionen mit Tempo-/Werktage-Angabe. Theme gid://shopify/OnlineStoreTheme/214565814663. Regel: `automation/data/versprechen_regel.json` → `kollektion` (S3, 14.10.2026). Der Wächter schreibt nichts; ersetzt wird mit `automation/kollektion_versprechen_s3.py` (feste Satzpaare, dieselben Finder).
 
 R1 «✔ Geprüfte …» · R3 «Geprüft…» · R4 Tempo/Werktage ohne belegtes CH-Lager (Anteil < 95 %; 50–94 % nur Werktage in qualifiziertem Satzteil; der Lager-Ort allein ist kein Fund) · R5 «Premium-Marken/-Qualität» ausserhalb Premium-Kollektionen · R6 «ab CHF 50» ohne Land in der Nähe der Zusage · R9 Markenname ohne ein aktives Produkt im Shop (Liste `marken_ohne_ware`). «manuell» = Titel/SEO-Titel (das Werkzeug schreibt sie nicht), «Premium-Hinweis» = Premium-Kollektion (dort nur Satzpaare, PREMIUM_VOLL aus) — beide zählen nicht in die Rot-Zahl, stehen aber unten mit Handle. «Ware-Hinweis» = im Text genannte Ware, die in der Kollektion kein aktives Produkt hat (Liste `ware_im_text`, zählt nicht rot).
 
-## Im Onlineshop veröffentlicht (0)
+## Im Onlineshop veröffentlicht (4)
 
+- `aus-tiktok-und-instagram` — R6 descriptionHtml: «Versand CHF 7, gratis ab CHF 50 nach Rabatt»
+- `eu-lager-schnell` — R6 seo.description: «Lieferzeit auf jeder Produktseite, Gratis-Versand ab CHF 50 nach Rabatt»
+- `notizbuecher-journaling` — R6 seo.description: «Gratis-Versand ab CHF 50 nach Rabatt»
+- `tassen-becher` — R6 seo.description: «Gratis-Versand ab CHF 50 nach Rabatt»
 
 ## Nicht im Onlineshop veröffentlicht (42)
 
@@ -101,7 +105,7 @@ R1 «✔ Geprüfte …» · R3 «Geprüft…» · R4 Tempo/Werktage ohne belegte
 Roter Fund in einer Kollektion, die im Onlineshop unveröffentlicht ist, aber in anderen Verkaufskanälen steht (ohne Headless, Inbox, Luxe Style Headless, Online Store, Point of Sale). Ob diese Kanäle den Kollektionstext anzeigen, ist nicht geprüft; die Ampel zählt nur den Onlineshop.
 
 
-## Ware-Hinweis (im Text genannt, kein aktives Produkt in der Kollektion) (11)
+## Ware-Hinweis (im Text genannt, kein aktives Produkt in der Kollektion) (15)
 
 - `3d-drucker` — 3D-Drucker als Gerät (nur Zubehör «für 3D-Drucker») (0/13) · title
 - `3d-filament` — ABS-Filament (0/9) · seo.title
@@ -110,7 +114,11 @@ Roter Fund in einer Kollektion, die im Onlineshop unveröffentlicht ist, aber in
 - `auto-pflege` — Politur (0/8) · seo.title
 - `bar-glaeser` — Sektgläser (nur ein Organizer) (0/14) · seo.title
 - `bar-wein-accessoires` — Whisky (0/49) · seo.title
+- `beauty-geraete` — Epilierer (0/113) · descriptionHtml
+- `beauty-geraete` — IPL-Geräte (0/113) · descriptionHtml
 - `gesichtspflege-geraete` — Gesichtssaunen (0/40) · seo.title
 - `ipl-haarentfernung` — IPL-Geräte (0/17) · title, seo.title
 - `reise-gadgets` — Packwürfel (0/309) · seo.title
 - `wellness-gesundheit` — Blutdruckmessgeräte (0/27) · seo.title
+- `werkzeugkoffer-sets` — Bit-Sets — im Ersatztext genannt (19.10.: 3/11 aktiv) · descriptionHtml, seo.description
+- `werkzeugkoffer-sets` — Steckschlüsselsätze — im Ersatztext genannt (19.10.: 2/11 aktiv) · descriptionHtml, seo.description
