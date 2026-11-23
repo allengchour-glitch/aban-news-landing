@@ -3947,3 +3947,12 @@ gid://shopify/Product/15448848695681	Ausführung	3
 gid://shopify/Product/15448875827585	Farbe	2
 gid://shopify/Product/15448876220801	Farbe	9
 gid://shopify/Product/15448903385473	Farbe	2
+gid://shopify/Product/15448931074433	Leistung	2
+gid://shopify/Product/15449072730497	Farbe	2
+gid://shopify/Product/15449176277377	Modell	2
+gid://shopify/Product/15449407619457	Ausführung	1
+gid://shopify/Product/15449424953729	Farbe	2
+gid://shopify/Product/15449439895937	Farbe	1
+gid://shopify/Product/15449461850497	Ausführung	2
+gid://shopify/Product/15449463226753	Ausführung	5
+gid://shopify/Product/15449466372481	Farbe	1
