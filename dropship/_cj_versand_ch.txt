@@ -1659,3 +1659,7 @@ gid://shopify/Product/16656725737863	ok	Automatik-Mechanik-Uhr mit Lederarmband
 gid://shopify/Product/16656660070791	nicht-versendbar	Trolley Koffer für Business und Reise
 gid://shopify/Product/16656660332935	nicht-versendbar	Reisekoffer mit Zahlenschloss
 gid://shopify/Product/16656662626695	nicht-versendbar	Reisekoffer mit Teleskopgriff
+gid://shopify/Product/16732007891335	nicht-versendbar	21700 Lithium-Ionen-Batterie 48V/36V mit BMS
+gid://shopify/Product/15450838106497	ok	Astronaut Roboter Überwachungskamera
+gid://shopify/Product/16732099379591	ok	Aluminiumlegierung Powerbank-Gehäuse
+gid://shopify/Product/16732279341447	ok	Call-System Tischlampe mit USB-Ladefunktion

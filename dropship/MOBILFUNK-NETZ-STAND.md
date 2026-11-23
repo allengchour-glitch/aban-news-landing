@@ -362,3 +362,10 @@
 |---|---|---|
 | unklar | CJ nicht erreicht | [LEMFO Y99 Kinder Smartwatch mit 4G & GPS](https://luxestyle.ch/products/lemfo-y99-kinder-smartwatch-mit-4g-gps-323584) |
 | unklar | CJ nicht erreicht | [Smartwatch für Kinder mit Videoanruffunktion](https://luxestyle.ch/products/smartwatch-fur-kinder-mit-videoanruffunktion-091008) |
+
+## Lauf 2026-11-23 20:36 UTC
+
+| Urteil | Beleg | Produkt |
+|---|---|---|
+| unklar-sim | Anruf/Video ohne Netzangabe | [Smartwatch mit Bluetooth-Anruf, GPS & Herzfrequenz](https://luxestyle.ch/products/smartwatch-mit-bluetooth-anruf-gps-herzfrequen-614800) |
+| unklar-sim | SIM ohne Netz | [Mobiler Smart-Router ohne SIM-Karte](https://luxestyle.ch/products/mobiler-smart-router-ohne-sim-karte-620500) |
