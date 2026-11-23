@@ -816,3 +816,125 @@ kinder-sets-outfits	ok	29	Kinder-Sets & Outfits
 kinder-sets-pullover	ok	20	Pullover & Langarm
 kinder-oberteile-kleider-hosen	ok	29	Oberteile, Kleider, Hosen & Jacken
 kinder-nachtwaesche-bademode	ok	29	Nachtwäsche, Bademode & Unterwäsche
+kinder-familien-looks	ok	29	Familien-Looks
+kinder-familie-pyjamas	ok	25	Pyjamas & Hausanzüge
+kinder-familie-weihnachten	ok	21	Weihnachts-Looks
+partnerlook-paare	ok	29	Partnerlook & Paar-Outfits
+damen-wanderschuhe	ok	29	Wanderschuhe
+damen-winterschuhe	ok	29	Winterschuhe
+damen-stiefel	ok	29	Stiefel & Stiefeletten
+damen-stiefel-stiefeletten	ok	29	Stiefeletten & Ankle Boots
+damen-stiefel-hohe-stiefel	ok	29	Hohe Stiefel & Overknees
+damen-stiefel-cowboy-worker	ok	29	Cowboy-, Worker- & Bikerstiefel
+damen-flip-flops	ok	29	Flip-Flops & Badeschuhe
+damen-pantoletten	ok	29	Pantoletten, Mules & Clogs
+damen-keilsandalen	ok	29	Keil- & Plateausandalen
+damen-keilsandalen-keil	ok	29	Keilsandalen
+damen-keilsandalen-plateau	ok	29	Plateausandalen
+damen-sandalen	ok	29	Sandalen
+damen-sandalen-riemchen-roemer	ok	29	Riemchen- & Römersandalen
+damen-sandalen-sport-outdoor	ok	29	Sport- & Outdoor-Sandalen
+damen-sandalen-absatz	ok	29	Sandalen mit Absatz
+damen-sandalen-flach	ok	29	Flache Sandalen
+damen-hausschuhe	ok	25	Hausschuhe & Pantoffeln
+damen-sportschuhe	ok	29	Sport-, Lauf- & Tanzschuhe
+damen-sportschuhe-laufschuhe	ok	29	Laufschuhe
+damen-sportschuhe-training-fitness	ok	22	Trainings- & Fitnessschuhe
+damen-sneaker	ok	29	Sneaker
+damen-sneaker-plateau-chunky	ok	29	Plateau- & Chunky-Sneaker
+damen-sneaker-leder-sneaker	ok	20	Leder-Sneaker
+damen-sneaker-mesh-atmungsaktiv	ok	29	Mesh- & Atmungsaktive Sneaker
+damen-pumps	ok	29	Pumps & Absatzschuhe
+damen-pumps-stilettos	ok	29	Stilettos & High Heels
+damen-pumps-blockabsatz	ok	29	Blockabsatz
+damen-pumps-keilabsatz	ok	22	Keilabsatz & Wedges
+damen-pumps-plateau-pumps	ok	20	Plateau-Pumps
+damen-ballerinas	ok	29	Ballerinas, Loafer & Flache
+damen-ballerinas-ballerinas	ok	21	Ballerinas
+damen-ballerinas-loafer-mokassins	ok	29	Loafer & Mokassins
+damen-ballerinas-mary-janes	ok	29	Mary Janes
+damen-ballerinas-spitze-flats	ok	29	Spitze Flats
+damen-freizeitschuhe	ok	29	Freizeit- & Alltagsschuhe
+damen-reisetaschen	ok	29	Reise- & Sporttaschen
+damen-shopper	ok	24	Shopper & Tragetaschen
+damen-handtaschen	ok	29	Handtaschen
+damen-umhaengetaschen	ok	29	Umhänge- & Schultertaschen
+damen-umhaengetaschen-crossbody	ok	29	Crossbody Bags
+damen-umhaengetaschen-schultertaschen	ok	29	Schultertaschen
+damen-umhaengetaschen-leder	ok	29	Leder-Umhängetaschen
+damen-umhaengetaschen-nylon-canvas	ok	29	Nylon- & Canvas-Taschen
+damen-weitere-taschen	ok	29	Weitere Taschen & Rucksäcke
+damen-kartenetuis	ok	29	Kartenetuis & Kartenhalter
+damen-geldboersen	ok	29	Geldbörsen & Portemonnaies
+damen-geldboersen-langborsen	ok	24	Lange Geldbörsen
+damen-geldboersen-kurz	ok	25	Kurze Geldbörsen
+damen-geldboersen-leder	ok	29	Leder-Geldbörsen
+damen-guertel	ok	29	Gürtel
+damen-guertel-leder	ok	29	Ledergürtel
+damen-guertel-taillen	ok	22	Taillengürtel
+damen-sturmhauben-gesichtsmasken	ok	29	Sturmhauben & Gesichtsmasken
+damen-kopfbedeckung	ok	29	Mützen, Hüte & Caps
+damen-kopfbedeckung-caps	ok	29	Caps & Kappen
+damen-kopfbedeckung-muetzen	ok	25	Mützen & Beanies
+damen-kopfbedeckung-huete	ok	23	Hüte
+damen-schals-tuecher	ok	29	Schals & Tücher
+damen-schals-tuecher-schal	ok	29	Schals
+damen-schals-tuecher-tuch	ok	29	Tücher & Kopftücher
+damen-schals-tuecher-wolle-kaschmir	ok	29	Wolle & Kaschmir-Optik
+damen-handschuhe	ok	29	Handschuhe
+damen-handschuhe-strick-fleece	ok	26	Strick- & Fleecehandschuhe
+damen-handschuhe-sport-outdoor	ok	24	Ski-, Velo- & Outdoor-Handschuhe
+damen-sonnenbrillen	ok	29	Sonnenbrillen
+damen-haarschmuck	ok	29	Haarschmuck
+herren-wanderschuhe	ok	29	Wanderschuhe
+herren-winterschuhe	ok	29	Winterschuhe
+herren-stiefel	ok	29	Stiefel & Stiefeletten
+herren-stiefel-stiefeletten	http-429	0	Stiefeletten & Ankle Boots
+herren-stiefel-cowboy-worker	ok	29	Cowboy-, Worker- & Bikerstiefel
+herren-sandalen	ok	29	Sandalen & Pantoletten
+herren-sandalen-flip-flops	ok	25	Flip-Flops & Zehentrenner
+herren-sandalen-pantoletten-mules	ok	29	Pantoletten, Mules & Clogs
+herren-sandalen-badeschuhe	ok	29	Bade- & Wasserschuhe
+herren-hausschuhe	ok	24	Hausschuhe & Pantoffeln
+herren-sportschuhe	ok	29	Sport-, Lauf- & Tanzschuhe
+herren-sportschuhe-laufschuhe	ok	29	Laufschuhe
+herren-sportschuhe-training-fitness	ok	29	Trainings- & Fitnessschuhe
+herren-sportschuhe-kampfsport-ballsport	ok	29	Kampf- & Ballsportschuhe
+herren-sportschuhe-rad	ok	20	Radschuhe
+herren-sneaker	ok	29	Sneaker
+herren-sneaker-high-top	ok	29	High-Top-Sneaker
+herren-sneaker-low-top	ok	29	Low-Top-Sneaker
+herren-sneaker-plateau-chunky	ok	29	Plateau- & Chunky-Sneaker
+herren-sneaker-canvas-stoff	ok	29	Canvas- & Stoffschuhe
+herren-sneaker-slip-on	ok	28	Slip-on-Sneaker
+herren-sneaker-leder-sneaker	ok	29	Leder-Sneaker
+herren-sneaker-mesh-atmungsaktiv	ok	29	Mesh- & Atmungsaktive Sneaker
+herren-businessschuhe	ok	29	Business- & Halbschuhe
+herren-businessschuhe-derby-oxford	ok	29	Derby & Oxford
+herren-businessschuhe-loafer-slipper	ok	29	Loafer & Slipper
+herren-businessschuhe-lederschuhe	ok	29	Lederschuhe
+herren-freizeitschuhe	ok	29	Freizeitschuhe
+herren-brusttaschen	ok	29	Brust- & Gürteltaschen
+herren-reisetaschen	http-429	0	Reise- & Sporttaschen
+herren-aktentaschen	ok	29	Aktentaschen & Laptoptaschen
+herren-clutches	ok	29	Clutches & Abendtaschen
+herren-shopper	ok	23	Shopper & Tragetaschen
+herren-handtaschen	ok	29	Handtaschen
+herren-umhaengetaschen	http-429	0	Umhänge- & Schultertaschen
+herren-umhaengetaschen-crossbody	ok	29	Crossbody Bags
+herren-umhaengetaschen-schultertaschen	ok	29	Schultertaschen
+herren-umhaengetaschen-leder	ok	29	Leder-Umhängetaschen
+herren-umhaengetaschen-nylon-canvas	ok	29	Nylon- & Canvas-Taschen
+herren-weitere-taschen	ok	29	Weitere Taschen & Rucksäcke
+herren-kartenetuis	ok	29	Kartenetuis & Kartenhalter
+herren-geldboersen	ok	29	Geldbörsen & Portemonnaies
+herren-geldboersen-kurz	ok	24	Kurze Geldbörsen
+herren-geldboersen-leder	ok	29	Leder-Geldbörsen
+herren-guertel	ok	20	Gürtel
+herren-sturmhauben-gesichtsmasken	ok	29	Sturmhauben & Gesichtsmasken
+herren-kopfbedeckung	ok	29	Mützen, Hüte & Caps
+herren-kopfbedeckung-caps	ok	29	Caps & Kappen
+herren-kopfbedeckung-muetzen	http-429	0	Mützen & Beanies
+herren-kopfbedeckung-huete	ok	22	Hüte
+herren-handschuhe	ok	29	Handschuhe
+herren-handschuhe-sport-outdoor	ok	23	Ski-, Velo- & Outdoor-Handschuhe
