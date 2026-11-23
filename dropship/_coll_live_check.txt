@@ -795,3 +795,24 @@ herren-westen-outdoor	ok	21	Outdoor- & Sportwesten
 herren-shorts	ok	25	Shorts
 herren-jeans-straight	ok	29	Straight
 herren-jeans-loose	ok	29	Loose & Baggy
+herren-jeans-slim	ok	22	Slim & Skinny
+herren-jeans-bootcut	ok	21	Bootcut & Flared
+herren-jeans-destroyed	ok	29	Destroyed & Vintage
+herren-hosen-cargo	ok	29	Cargohosen
+herren-hosen-freizeit	ok	29	Freizeithosen
+herren-hosen-arbeit	ok	28	Workwear- & Arbeitshosen
+herren-hosen-outdoor	ok	29	Outdoor-Hosen
+herren-hosen-stoff-chino	ok	26	Chino- & Stoffhosen
+herren-overalls	ok	29	Overalls & Jumpsuits
+herren-sportbekleidung	ok	29	Sportbekleidung
+kinder-baby-sets	ok	29	Baby-Sets & Outfits
+kinder-baby-sets-sommer	ok	26	Sommer & Kurzarm
+kinder-baby-sets-langarm	ok	23	Langarm & Pullover
+kinder-baby-strampler-bodys	ok	29	Strampler, Bodys & Overalls
+kinder-baby-strampler	ok	29	Strampler
+kinder-baby-overalls	ok	22	Overalls & Jumpsuits
+kinder-baby-kleider-oberteile	ok	19	Baby-Kleider, Oberteile & Jacken
+kinder-sets-outfits	ok	29	Kinder-Sets & Outfits
+kinder-sets-pullover	ok	20	Pullover & Langarm
+kinder-oberteile-kleider-hosen	ok	29	Oberteile, Kleider, Hosen & Jacken
+kinder-nachtwaesche-bademode	ok	29	Nachtwäsche, Bademode & Unterwäsche
