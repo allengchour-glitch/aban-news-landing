@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-22T12:31:47Z",
+ "stand": "2026-11-23T14:30:57Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "KI-Angst an der Wall Street: US-Tech-Aktien rutschen in den Bärenmarkt",
-   "u": "https://www.golem.de/news/ki-angst-an-der-wall-street-us-tech-aktien-rutschen-in-den-baerenmarkt-2611-215510.html",
-   "q": "Golem",
-   "d": "2026-11-22T12:04:02Z",
-   "s": "Die US-Technologiebörse erlebt ihre schlechteste Woche seit der Coronakrise. Aus der Euphorie über KI ist Unbehagen geworden. (Börse, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "heise-Angebot: TDWI München 2027: Vorträge für die Konferenz zu Data, Analytics und KI gesucht",
-   "u": "https://www.heise.de/news/TDWI-Muenchen-2027-Vortraege-fuer-die-Konferenz-zu-Data-Analytics-und-KI-gesucht-11532059.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-22T12:00:00Z",
-   "s": "Im Juni 2027 findet die TDWI München als Deutschlands größter Treffpunkt für Data, Analytics und KI in einer neuen Location statt.",
-   "sprache": "de"
-  },
-  {
-   "t": "Black Friday Shopping mit KI: Warum du ChatGPT und Gemini nicht blind vertrauen solltest",
-   "u": "https://t3n.de/news/black-friday-shopping-ki-risiken-chatgpt-gemini-1773798/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-22T11:35:00Z",
-   "s": "Der beste Preis, das passende Produkt und gleich noch der richtige Händler: KI verspricht, die Schnäppchenjagd am Black Friday erheblich zu erleichtern. Doch unser Praxistest zeigt, dass ChatGPT, Gemi…",
-   "sprache": "de"
-  },
-  {
-   "t": "Mathematiker löst Riemannsche Hypothese – mithilfe von Claude",
-   "u": "https://t3n.de/news/mathematiker-loest-riemannsche-hypothese-mithilfe-von-claude-1774699/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-22T10:52:21Z",
-   "s": "Unabhängige Organisationen gratulieren dem Anthropic-Forscher. Aber nicht alle sind von seiner Arbeit begeistert. In der mathematischen Community wird die Kritik an der Verwendung von KI immer lauter.…",
-   "sprache": "de"
-  },
-  {
-   "t": "Smarte Lautsprecher und smarte Displays: Google schaltet Google Assistant nächstes Jahr ab",
-   "u": "https://www.golem.de/news/smarte-lautsprecher-und-smarte-displays-google-schaltet-google-assistant-naechstes-jahr-ab-2611-215511.html",
-   "q": "Golem",
-   "d": "2026-11-22T09:57:02Z",
-   "s": "Alle smarten Lautsprecher und smarten Displays mit Google Assistant sollen ab nächstem Sommer auf Gemini für Google Home umgestellt werden. (Google Home, Google)",
-   "sprache": "de"
-  },
-  {
-   "t": "Signal restricts mobile screenshots as it confronts ‘existential threat’ of AI surveillance",
-   "u": "https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/",
+   "t": "Nvidia reverses course and brings Jensen Huang back as CEO",
+   "u": "https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/",
    "q": "TechCrunch AI",
-   "d": "2026-11-21T21:37:10Z",
-   "s": "Signal is limiting users' ability to take screenshots in both its Android and iOS apps.",
+   "d": "2026-11-23T14:21:59Z",
+   "s": "The stunning reversal was supported by senior officials in the U.S. government.",
    "sprache": "en"
   },
   {
-   "t": "A tale of two Nvidias",
-   "u": "https://techcrunch.com/2026/11/21/a-tale-of-two-nvidias/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-21T21:07:42Z",
-   "s": "We got two very different pictures of Nvidia — the company’s latest earnings report vs. the tech executives loudly calling for Jensen Huang’s return.",
-   "sprache": "en"
-  },
-  {
-   "t": "Fünf EU-Staaten wollen Zentrum für KI in der Verteidigung gründen",
-   "u": "https://www.heise.de/news/Fuenf-EU-Staaten-wollen-Zentrum-fuer-KI-in-der-Verteidigung-gruenden-11533498.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "KI-Update kompakt: KI-Aktien, Gemini 4 Neon, Riemannsche Vermutung, Geschenktipp",
+   "u": "https://www.heise.de/news/KI-Update-kompakt-KI-Aktien-Gemini-4-Neon-Riemannsche-Vermutung-Geschenktipp-11532019.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-21T14:48:00Z",
-   "s": "Deutschland, Frankreich, Italien, Polen und Schweden wollen gemeinsam ein internationales Zentrum für künstliche Intelligenz in der Verteidigung gründen.",
+   "d": "2026-11-23T14:00:00Z",
+   "s": "Das „KI-Update“ liefert drei mal pro Woche eine Zusammenfassung der wichtigsten KI-Entwicklungen.",
    "sprache": "de"
   },
   {
-   "t": "The most misunderstood graph in AI just got a major update",
-   "u": "https://www.technologyreview.com/2026/11/20/1149399/the-most-misunderstood-graph-in-ai-just-got-a-major-update/",
+   "t": "The Download: AI’s judgment problem and carbon removal’s crop threat",
+   "u": "https://www.technologyreview.com/2026/11/23/1149548/the-download-ai-judgment-problem-carbon-removal-crop-threat/",
    "q": "MIT Tech Review",
-   "d": "2026-11-20T18:15:15Z",
-   "s": "A new report from the AI evaluation nonprofit METR finds that some AI capabilities are continuing to improve along an exponential trajectory—but it also indicates that models aren’t quite as good at t…",
+   "d": "2026-11-23T13:10:00Z",
+   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The most misunderstood graph in AI just got a major update A n…",
    "sprache": "en"
   },
   {
-   "t": "Combatting adversarial distillation",
-   "u": "https://openai.com/index/combatting-adversarial-distillation",
-   "q": "OpenAI",
-   "d": "2026-11-20T10:00:00Z",
-   "s": "OpenAI’s layered approach to adversarial distillation combines model training, safeguards, detection, and enforcement to protect against capability extraction.",
+   "t": "heise+ | AI Bill of Materials: KI-Bausteine im Inventar sichtbar machen",
+   "u": "https://www.heise.de/hintergrund/AI-Bill-of-Materials-KI-Bausteine-im-Inventar-sichtbar-machen-11509380.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
+   "q": "heise",
+   "d": "2026-11-23T12:30:00Z",
+   "s": "Eine Softwarestückliste erfasst Pakete, Bibliotheken und mehr. Bestehende SBOMs lassen sich auch um wichtige KI-Daten erweitern – das Ergebnis ist eine AI-BOM.",
+   "sprache": "de"
+  },
+  {
+   "t": "Alice Huang: Hinter Megaspeed stand ein komplexes Schmuggelnetzwerk",
+   "u": "https://www.golem.de/news/alice-huang-hinter-megaspeed-stand-ein-komplexes-schmuggelnetzwerk-2611-215533.html",
+   "q": "Golem",
+   "d": "2026-11-23T11:41:02Z",
+   "s": "Komplexe Firmengeflechte, Verbindungen zur organisierten Kriminalität: Der Schmuggel von Nvidia-Hardware nach China wurde aufwendig vorbereitet. (Nvidia, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Gaming: Anthropic-Chef sah Games als Mittel gegen KI-Unruhen",
+   "u": "https://www.golem.de/news/gaming-anthropic-chef-sah-games-als-mittel-gegen-ki-unruhen-2611-215529.html",
+   "q": "Golem",
+   "d": "2026-11-23T11:15:01Z",
+   "s": "Dario Amodei hat Computerspiele als Mittel gegen gesellschaftliche Konflikte durch KI-Arbeitslosigkeit ins Gespräch gebracht. (Anthropic, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Vermummungsverbot: Ein Mensch muss ins Gefängnis, weil er sein Gesicht schützte",
+   "u": "https://netzpolitik.org/2026/vermummungsverbot-ein-mensch-muss-ins-gefaengnis-weil-er-sein-gesicht-schuetzte/",
+   "q": "netzpolitik.org",
+   "d": "2026-11-23T10:07:43Z",
+   "s": "Ein Polizist prügelt auf Protestierende ein. Hinter dem Banner: der vermummte Tim. – Alle Rechte vorbehalten: Screenshot aus einem Video von OAP RosenheimEin Student hat sich auf einer Demonstration v…",
+   "sprache": "de"
+  },
+  {
+   "t": "Heiliger Gral der Mathematik: Anthropic-Mitarbeiter will mit Claude die Riemannsche Vermutung bewiesen haben",
+   "u": "https://t3n.de/news/heiliger-gral-der-mathematik-anthropic-mitarbeiter-will-mit-claude-die-riemannsche-vermutung-bewiesen-haben-1774754/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-23T08:00:48Z",
+   "s": "Der „Heilige Gral“ der Mathematik könnte gefunden sein. Das Problem: Der Beweis wäre für Menschen mehr als 250.000 Seiten lang – und selbst ihr Urheber versteht ihn noch nicht ganz.weiterlesen auf t3n…",
+   "sprache": "de"
+  },
+  {
+   "t": "Mensch oder ChatGPT: Neuer KI-Detektor soll erkennen, woher die Idee für einen Text kommt",
+   "u": "https://t3n.de/news/mensch-chatgpt-ki-detektor-idee-text-1773809/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-23T07:55:00Z",
+   "s": "Bisher untersuchen KI-Detektoren vor allem die Wortwahl und wiederkehrende Muster in einem Text. Ein neues Modell namens Idea Lens geht tiefer: Es soll erkennen können, ob bereits die Idee eines Texte…",
+   "sprache": "de"
+  },
+  {
+   "t": "How Notable Capital, GIC, and Baillie Gifford bet big on Anthropic before its IPO",
+   "u": "https://techcrunch.com/2026/11/22/how-notable-capital-gic-and-baillie-gifford-bet-big-on-anthropic-before-its-ipo/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-23T01:25:53Z",
+   "s": "Three significant backers share what gave them conviction to bet billions on Anthropic.",
    "sprache": "en"
   }
  ]
