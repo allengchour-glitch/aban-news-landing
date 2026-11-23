@@ -5945,3 +5945,8 @@ outdoor-uhr-612300	gesetzt-3
 weite-damen-jeans-604400	hat-liste
 smartwatch-mit-gesundheitsfunktionen-628500	gesetzt-4
 sicherheitsschuhe-926976	gesetzt-2
+lederarmbanduhr-622000	gesetzt-5
+bequeme-laufschuhe-708864	gesetzt-3
+herrenuhr-mit-leuchtfunktion-621200	gesetzt-3
+kampfsport-schuhe-333184	hat-liste
+einfaches-herrenarmbanduhr-603400	gesetzt-6
