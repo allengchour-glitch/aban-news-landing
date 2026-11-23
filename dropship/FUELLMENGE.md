@@ -1,18 +1,13 @@
-# Füllmenge fehlt — Stand 2026-10-23 09:17 UTC
+# Füllmenge fehlt — Stand 2026-11-23 18:02 UTC
 
-Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 142 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
+Werkzeug `automation/fuellmenge_nachtragen.py` · Kandidaten: 137 aktive Kosmetik-Flüssigprodukte ohne ml-Angabe · diesmal geschrieben: 0 · Text-Sperre belegt: 0
 
 Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sichten»: Bild ansehen, dann `{handle: "30 ml"}` in `dropship/_fuellmenge_gesichtet.json` eintragen.
 
 | Produkt | Menge | Status | Beleg (OCR) |
 |---|---|---|---|
-| [Kühlendes Gel mit Pflanzenextrakten](https://luxestyle.ch/products/kuhlendes-gel-mit-pflanzenextrakten-604500) | 50 ml | Vorschlag — sichten | 50 @ 29e06320-c409-4a47-8431-e1d00c98dc60.jpg; 50 @ eace5441-3694-41ab-a12f-96842a3de8ca.jpg; 50 @ 9f33a78a-9764-48a1-9cb2-418df1b5e42b.jpg |
-| [WNP 3 Hyaluronsäure Serum Ultra-Hydrating Vials](https://luxestyle.ch/products/wnp-3-hyaluronsaure-serum-ultra-hydrating-vial-606800) | 5 ml | Vorschlag — sichten | 5 @ 46e26515-4ba9-48b0-b1b2-2c6424632e9e_trans.jpg |
-| [Straffendes Serum & Feuchtigkeitscreme Set](https://luxestyle.ch/products/straffendes-serum-feuchtigkeitscreme-set-604900) | 30 ml | Vorschlag — sichten | 30 30 1.01 1.01 @ 29d78e6d-757f-4af4-8197-e50df6680ff2.jpg |
 | [DR Reismilch Gesichtsreiniger](https://luxestyle.ch/products/dr-reismilch-gesichtsreiniger-919106) | — | nichts lesbar |  |
 | [DR Reis Milch Gesichtswasser](https://luxestyle.ch/products/dr-reis-milch-gesichtswasser-405762) | — | nichts lesbar |  |
-| [Azelaic Acid & Niacinamide Serum](https://luxestyle.ch/products/azelaic-acid-niacinamide-serum-741570) | — | nichts lesbar |  |
-| [HUNMUI Feuchtigkeitsspendendes Fixierspray](https://luxestyle.ch/products/hunmui-feuchtigkeitsspendendes-fixierspray-860866) | — | nichts lesbar |  |
 | [2-in-1 Lipgloss & Lippenöl](https://luxestyle.ch/products/2-in-1-lipgloss-lippenol-610300) | — | nichts lesbar |  |
 | [Farbwechselnder feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/farbwechselnder-feuchtigkeitsspendender-lippen-617500) | — | nichts lesbar |  |
 | [Jaysuing Kurkuma Hautcreme](https://luxestyle.ch/products/jaysuing-kurkuma-hautcreme-083010) | — | nichts lesbar |  |
@@ -20,7 +15,7 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [SOUTH MOON Perianalpflege-Creme](https://luxestyle.ch/products/south-moon-perianalpflege-creme-056513) | — | nichts lesbar |  |
 | [OUHOE Feuchtigkeitsspendender Lippenbalsam](https://luxestyle.ch/products/ouhoe-feuchtigkeitsspendender-lippenbalsam-218241) | — | nichts lesbar |  |
 | [Florales festes Parfum](https://luxestyle.ch/products/florales-festes-parfum-956865) | — | nichts lesbar |  |
-| [Classic Aromatic Cologne Spray](https://luxestyle.ch/products/classic-aromatic-cologne-spray-843329) | — | nichts lesbar | 1.7 @ 7b38f857-9c1d-48a3-87f0-b2c914795ab1.jpg |
+| [Classic Aromatic Cologne Spray](https://luxestyle.ch/products/classic-aromatic-cologne-spray-843329) | — | nichts lesbar |  |
 | [Kameliensqualan Gesichtsöl](https://luxestyle.ch/products/kameliensqualan-gesichtsol-206978) | — | nichts lesbar |  |
 | [Langanhaltendes Unisex Parfum mit natürlichen Inhaltsstoffen](https://luxestyle.ch/products/langanhaltendes-unisex-parfum-mit-naturlichen-181186) | — | nichts lesbar |  |
 | [Natürliches Agarwood-Ätherisches Öl](https://luxestyle.ch/products/naturliches-agarwood-atherisches-ol-381634) | — | nichts lesbar |  |
@@ -50,7 +45,6 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Ganzkörper Sonnencreme SPF50 mit Lichtschutz](https://luxestyle.ch/products/ganzkorper-sonnencreme-spf50-mit-lichtschutz-624700) | — | nichts lesbar |  |
 | [7-in-1 Gesichtsreiniger & Lifter](https://luxestyle.ch/products/7-in-1-gesichtsreiniger-lifter-216832) | — | nichts lesbar |  |
 | [Kapsel-Reiniger für die Haut](https://luxestyle.ch/products/kapsel-reiniger-fur-die-haut-5a9ade) | — | nichts lesbar |  |
-| [Collagen-Peeling Halscreme](https://luxestyle.ch/products/collagen-peeling-halscreme-629500) | — | nichts lesbar |  |
 | [Hautpflegecreme zur Klärung und Feuchtigkeitsspendung](https://luxestyle.ch/products/hautpflegecreme-zur-klarung-und-feuchtigkeitss-c0b8e6) | — | nichts lesbar |  |
 | [Vorgesichtscreme](https://luxestyle.ch/products/vorgesichtscreme-b4f03d) | — | nichts lesbar |  |
 | [Feuchtigkeitsspendende leichte fettfreie Sonnencreme](https://luxestyle.ch/products/feuchtigkeitsspendende-leichte-fettfreie-sonne-628200) | — | nichts lesbar |  |
@@ -64,24 +58,24 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Seidig-zarte Hals- und Dekolletécreme](https://luxestyle.ch/products/seidig-zarte-hals-und-dekolletecreme-627300) | — | nichts lesbar |  |
 | [Kompakter, tragbarer Luftreiniger](https://luxestyle.ch/products/kompakter-tragbarer-luftreiniger-614912) | — | nichts lesbar |  |
 | [Farbwechselnder Lippenbalsam mit Feuchtigkeit](https://luxestyle.ch/products/farbwechselnder-lippenbalsam-mit-feuchtigkeit-617900) | — | nichts lesbar |  |
-| [Haar-Reparatur-Oel](https://luxestyle.ch/products/haar-reparatur-oel-accb94) | — | nichts lesbar | 3.3 @ 4193017171154.jpg |
+| [Haar-Reparatur-Oel](https://luxestyle.ch/products/haar-reparatur-oel-accb94) | — | nichts lesbar |  |
 | [Tattoo Model Sauerstoff-Injektions-Spray](https://luxestyle.ch/products/tattoo-model-sauerstoff-injektions-spray-617600) | — | nichts lesbar |  |
 | [Concealer Foundation Creme – Feuchtigkeitsspendend & Leicht](https://luxestyle.ch/products/concealer-foundation-creme-feuchtigkeitsspende-608000) | — | nichts lesbar |  |
 | [Elektrischer Pinselreiniger](https://luxestyle.ch/products/elektrischer-pinselreiniger-7db031) | — | nichts lesbar |  |
 | [Automatischer Make-up Pinselreiniger mit USB](https://luxestyle.ch/products/automatischer-make-up-pinselreiniger-mit-usb-809b7c) | — | nichts lesbar |  |
 | [Feuchtigkeitsspendendes Toner- und Lotion-Set](https://luxestyle.ch/products/feuchtigkeitsspendendes-toner-und-lotion-set-610200) | — | nichts lesbar |  |
 | [Übernacht-Creme](https://luxestyle.ch/products/ubernacht-creme-632200) | — | nichts lesbar |  |
-| [Feuchtigkeitscreme mit Pflanzenextrakten](https://luxestyle.ch/products/feuchtigkeitscreme-mit-pflanzenextrakten-636000) | — | nichts lesbar | 3.36 @ 31c13971-7d3c-42ff-b762-8354e5336c96.jpg |
+| [Feuchtigkeitscreme mit Pflanzenextrakten](https://luxestyle.ch/products/feuchtigkeitscreme-mit-pflanzenextrakten-636000) | — | nichts lesbar |  |
 | [Feuchtigkeitspflege Gesichtsöl](https://luxestyle.ch/products/feuchtigkeitspflege-gesichtsol-664640) | — | nichts lesbar |  |
 | [Hals- und Dekolleté-Pflegeöl mit Pflanzenextrakten](https://luxestyle.ch/products/hals-und-dekollete-pflegeol-mit-pflanzenextrak-223488) | — | nichts lesbar |  |
 | [Feuchtigkeitsspendende & straffende Gesichtscreme](https://luxestyle.ch/products/feuchtigkeitsspendende-straffende-gesichtscrem-614800) | — | nichts lesbar |  |
 | [Augencreme · pflegt die empfindliche Augenpartie](https://luxestyle.ch/products/augencreme-pflegt-die-empfindliche-augenpartie-603700) | — | nichts lesbar |  |
+| [Kühlendes Gel mit Pflanzenextrakten](https://luxestyle.ch/products/kuhlendes-gel-mit-pflanzenextrakten-604500) | — | nichts lesbar |  |
 | [Schafplazenta Kollagen Hefe Elastizitätscreme](https://luxestyle.ch/products/schafplazenta-kollagen-hefe-elastizitatscreme-618900) | — | nichts lesbar |  |
 | [Kopfhautpflege stärkendes Spray](https://luxestyle.ch/products/kopfhautpflege-starkendes-spray-473728) | — | nichts lesbar |  |
-| [Nährendes Wimpernserum](https://luxestyle.ch/products/nahrendes-wimpernserum-616600) | — | nichts lesbar |  |
-| [Straffendes Anti-Falten Körperöl mit Jojoba & Kollagen](https://luxestyle.ch/products/straffendes-anti-falten-korperol-mit-jojoba-ko-639900) | — | nichts lesbar | 1 @ 548b3575-9c1a-4a75-8f3a-c2917d9881da.jpg |
+| [Straffendes Anti-Falten Körperöl mit Jojoba & Kollagen](https://luxestyle.ch/products/straffendes-anti-falten-korperol-mit-jojoba-ko-639900) | — | nichts lesbar |  |
 | [Argan-Haaröl (Ölmischung) für geschmeidiges Haar](https://luxestyle.ch/products/marokkanisches-arganol-fur-geschmeidiges-haar-066f7d) | — | nichts lesbar |  |
-| [24k Roségold Elixir Make-up Öl](https://luxestyle.ch/products/24k-rosegold-elixir-make-up-ol-56a538) | — | nichts lesbar | 0.5 @ 68891925332.png |
+| [24k Roségold Elixir Make-up Öl](https://luxestyle.ch/products/24k-rosegold-elixir-make-up-ol-56a538) | — | nichts lesbar |  |
 | [Orangen Enzym Peeling Gel](https://luxestyle.ch/products/orangen-enzym-peeling-gel-603300) | — | nichts lesbar |  |
 | [Intelligenter Ohrreiniger für zuhause](https://luxestyle.ch/products/intelligenter-ohrreiniger-fur-zuhause-629200) | — | nichts lesbar |  |
 | [Mildes Haarentfernungsspray](https://luxestyle.ch/products/mildes-haarentfernungsspray-636000) | — | nichts lesbar |  |
@@ -97,7 +91,7 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Centella Asiatica Gesichtsreiniger](https://luxestyle.ch/products/centella-asiatica-gesichtsreiniger-617900) | — | nichts lesbar |  |
 | [Butter Balm Feuchtigkeitscreme](https://luxestyle.ch/products/butter-balm-feuchtigkeitscreme-617600) | — | nichts lesbar |  |
 | [Elektrische Pinselreiniger](https://luxestyle.ch/products/elektrische-pinselreiniger-489152) | — | nichts lesbar |  |
-| [Feuchtigkeitserhaltendes Gesichtsserum](https://luxestyle.ch/products/feuchtigkeitserhaltendes-gesichtsserum-623800) | — | nichts lesbar | 05 @ b24a6c14-4cbf-4200-b8f1-4c7414a182fe.jpg; 1.05 @ 61765682-3aba-4d11-9670-2604b5a631c6.jpg |
+| [Feuchtigkeitserhaltendes Gesichtsserum](https://luxestyle.ch/products/feuchtigkeitserhaltendes-gesichtsserum-623800) | — | nichts lesbar |  |
 | [Wimpern- & Augenbrauenserum](https://luxestyle.ch/products/wimpern-augenbrauenserum-691136) | — | nichts lesbar |  |
 | [Air Cushion Crystal Record Öl-Kontroll Make-up](https://luxestyle.ch/products/air-cushion-crystal-record-ol-kontroll-make-up-269440) | — | nichts lesbar |  |
 | [Lasting Fragrance Parfüm-Set für Damen](https://luxestyle.ch/products/lasting-fragrance-parfum-set-fur-damen-031040) | — | nichts lesbar |  |
@@ -113,6 +107,7 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Auto-Luftreiniger mit Anionen-Technologie](https://luxestyle.ch/products/auto-luftreiniger-mit-anionen-technologie-3c1fd2) | — | nichts lesbar |  |
 | [Little Angel Präge-Highlighter](https://luxestyle.ch/products/little-angel-prage-highlighter-701056) | — | nichts lesbar |  |
 | [Gesichts-Verjüngungs-Fluid](https://luxestyle.ch/products/gesichts-verjungungs-fluid-610900) | — | nichts lesbar |  |
+| [WNP 3 Hyaluronsäure Serum Ultra-Hydrating Vials](https://luxestyle.ch/products/wnp-3-hyaluronsaure-serum-ultra-hydrating-vial-606800) | — | nichts lesbar |  |
 | [Ultraschall-Gesichtsreiniger mit Ionen-Funktion](https://luxestyle.ch/products/ultraschall-gesichtsreiniger-mit-ionen-funktio-622300) | — | nichts lesbar |  |
 | [Elektrischer Gesichtsreiniger](https://luxestyle.ch/products/elektrischer-gesichtsreiniger-c9a3c1) | — | nichts lesbar |  |
 | [Ultraschall-Hautreiniger & Einschleuser](https://luxestyle.ch/products/ultraschall-hautreiniger-einschleuser-a0c85b) | — | nichts lesbar |  |
@@ -127,12 +122,12 @@ Sicher = ml und fl oz auf demselben Bild passen rechnerisch. «Vorschlag — sic
 | [Elektrischer Ohrenreiniger E80](https://luxestyle.ch/products/elektrischer-ohrenreiniger-e80-622200) | — | nichts lesbar |  |
 | [Anti-Falten Naturkern Creme](https://luxestyle.ch/products/anti-falten-naturkern-creme-603500) | — | nichts lesbar |  |
 | [Red Onion Shampoo Pflegeset](https://luxestyle.ch/products/red-onion-shampoo-pflegeset-617400) | — | nichts lesbar |  |
+| [Straffendes Serum & Feuchtigkeitscreme Set](https://luxestyle.ch/products/straffendes-serum-feuchtigkeitscreme-set-604900) | — | nichts lesbar |  |
 | [Ultraschall-Gesichtsreiniger für Tiefenreinigung](https://luxestyle.ch/products/ultraschall-gesichtsreiniger-fur-tiefenreinigu-600500) | — | nichts lesbar |  |
 | [Huancai Feuchtigkeitsgel fürs Gesicht](https://luxestyle.ch/products/huancai-feuchtigkeitsgel-furs-gesicht-602700) | — | nichts lesbar |  |
 | [Haarentfernungscreme Sanfte Reinigung](https://luxestyle.ch/products/haarentfernungscreme-sanfte-reinigung-610300) | — | nichts lesbar |  |
 | [Feuchtigkeitspflegecreme](https://luxestyle.ch/products/feuchtigkeitspflegecreme-9e5547) | — | nichts lesbar |  |
 | [Herzförmiger High-Gloss-Toner](https://luxestyle.ch/products/herzformiger-high-gloss-toner-d03e06) | — | nichts lesbar |  |
-| [Wimpernpflege-Fluid](https://luxestyle.ch/products/wimpernpflege-fluid-3f8a60) | — | nichts lesbar |  |
 | [Reiniger-Pads 5-Pack aus Baumwolle](https://luxestyle.ch/products/reiniger-pads-5-pack-aus-baumwolle-64ccb1) | — | nichts lesbar |  |
 | [Mushroom Luftkissen BB Creme](https://luxestyle.ch/products/mushroom-luftkissen-bb-creme-c5b628) | — | nichts lesbar |  |
 | [Feuchtigkeitsspendende CC Creme](https://luxestyle.ch/products/feuchtigkeitsspendende-cc-creme-6f4dc5) | — | nichts lesbar |  |
