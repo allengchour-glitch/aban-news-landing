@@ -403,5 +403,15 @@
     "condition": "buero"
    }
   ]
+ },
+ "damen-jacken-maentel": {
+  "appliedDisjunctively": false,
+  "rules": [
+   {
+    "column": "TAG",
+    "relation": "EQUALS",
+    "condition": "sort-damen-jacken-maentel"
+   }
+  ]
  }
 }
