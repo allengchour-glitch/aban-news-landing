@@ -1,23 +1,29 @@
-# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-10-24T12:29Z
+# Google-Diagnosen (product.feedback der App «Google & YouTube») — Stand 2026-11-23T17:37Z
 
-Gescannt: 56667 aktive Produkte in 227 Seiten (vollständig), 598 s. Meldungen nur für Shopping Ads (ignoriert): 15333.
+Gescannt: 56215 aktive Produkte in 225 Seiten (vollständig), 390 s. Meldungen nur für Shopping Ads (ignoriert): 4816.
 
-Rückmeldungs-Abdeckung (21.10.2026): 45180 von 56667 aktiven Produkten (79.7 %) haben KEINE Rückmeldung der App «Google & YouTube» — «leer» heisst NICHT «sauber», sondern «Google hat uns nichts gemeldet»; frisch (≤ 24 h / ≤ 72 h): 1238 / 1455, jüngste Rückmeldung 2026-10-24T08:30:19Z.
+Rückmeldungs-Abdeckung (21.10.2026): 51073 von 56215 aktiven Produkten (90.9 %) haben KEINE Rückmeldung der App «Google & YouTube» — «leer» heisst NICHT «sauber», sondern «Google hat uns nichts gemeldet»; frisch (≤ 24 h / ≤ 72 h): 29 / 33, jüngste Rückmeldung 2026-11-23T17:36:18Z.
 
-## Free-Listings-Blocker: 20
+## Free-Listings-Blocker: 46
 
 | Klasse | Produkte | davon ohne onlineStoreUrl | davon Ziel «[]» |
 |---|---:|---:|---:|
-| Promotional overlay on image | 18 | 0 | – |
-| Image processing or experiencing delays | 1 | 0 | – |
-| Adult-oriented content | 1 | 0 | 1 |
+| Restricted adult content | 12 | 0 | 12 |
+| Tobacco products & related equipment | 9 | 0 | – |
+| Promotional overlay on image | 6 | 0 | – |
+| Sale of live animals | 6 | 0 | – |
+| Guns and Parts | 4 | 0 | – |
+| Adult-oriented content | 4 | 0 | 4 |
+| Image processing or experiencing delays | 3 | 0 | – |
+| Image not processed | 1 | 0 | – |
+| Weapons | 1 | 0 | – |
 
-## Wartet bei Google (Prüfung, kein Fehler bei uns): 126
+## Wartet bei Google (Prüfung, kein Fehler bei uns): 1661
 
-- Image under review: 116
-- Title under review: 10
+- Title under review: 1612
+- Image under review: 49
 
-Verweildauer (dropship/_google_pruefung_seit.json): 22 länger als 14 Tage, ältestes seit 2026-10-03.
+Verweildauer (dropship/_google_pruefung_seit.json): 2 länger als 14 Tage, ältestes seit 2026-10-18.
 Nicht reagieren, solange die Verweildauer kurz ist: Google prüft. Wer hier ein Bild tauscht, setzt die Prüfung neu.
 
 Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in [Free_listings,Shopping_ads]»). Seit 14.10.: bei «Inappropriate image» vermutlich der Meldekontext Demand-Gen-Werbung (eigener Topf unten); für andere Klassen weiter UNBELEGT — Wahrheit = Status je Ziel im Merchant Center.
@@ -26,111 +32,188 @@ Ziel «[]» = die App nennt kein betroffenes Ziel («… in [] [CH]» statt «in
 
 Blockiert die Schweiz NICHT, aber die Gratis-Einträge in diesem Lieferland.
 
-- Missing shipping info in some countries [LI]: 8916
-- Alcoholic beverages [LI]: 1
+- Missing shipping info in some countries [LI]: 4
+- Alcoholic beverages [LI]: 4
 
 «Missing shipping info … [LI]»: In Shopify gibt es den Tarif (General profile, Zone «Liechtenstein» CHF 14.90, seit 09.10.), Google hat ihn nicht übernommen — und übernimmt ihn von selbst NIE: QUELLE Shopify Help (help.shopify.com/en/manual/online-sales-channels/google/requirements) «You can import rates to ship your products only to the target country in your Google & YouTube channel» — die automatische Versandübernahme gilt nur für das EINE Zielland (CH). «Versand neu importieren» hilft deshalb nicht (GEMESSEN: 9 Tage seit der Freigabe ohne Wirkung). Optionen (Betreiber): (a) nichts tun — die Schweiz ist nicht betroffen, LI ist ein sehr kleiner Markt; (b) im Merchant Center unter «Versand und Rückgaben» einen Service «Liechtenstein, CHF 14.90» von Hand anlegen — QUELLE Google (support.google.com/merchants/answer/14232591): der Shopify-Sync «may overwrite manual updates from Merchant Center», ob der LI-Service überlebt, ist UNBELEGT. NICHT das Land aus dem Shopify-Markt entfernen — LI ist Lieferland. Wirkung = diese Zahl beim nächsten Scan.
 
 ## Nur Demand-Gen-Werbung (blockiert Gratis-Einträge vermutlich NICHT — wir schalten keine Demand-Gen-Werbung)
 
-- Inappropriate image: 104
+- Inappropriate image: 307
 
 Quelle: Google Merchant Help «Demand Gen product ads format requirements» (answer/13389785): Waffen, Totenköpfe, Körperfokus, Rauch/Flammen u. a. sind nur für Demand-Gen-Bilder verboten; «disapproved Demand Gen assets may continue to run on Google's other properties». Bestätigung = Status je Ziel im Merchant Center (Betreiber). Kein Bildtausch dafür (Aufseher seit 14.10.).
 
 ## Nur personalisierte Werbung (blockiert Gratis-Einträge NICHT — Targeting-Regel, siehe Kopf)
 
-- Personalized advertising: personal hardships: 28
-- Personalized advertising: legal restrictions: 1
+- Personalized advertising: personal hardships: 73
+- Personalized advertising: Sexual interests: 12
+- Personalized advertising: legal restrictions: 7
+- Personalized advertising: Identity and belief: 4
 
 ## Meldungen anderer Kanal-Apps (kein Google-Blocker)
 
-- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 2
+- [Shop] Dieses Produkt ist in Shop nicht auffindbar. Prüfe den Angebotsstatus im Shop-Kanal: 27
 
 «ohne onlineStoreUrl» = nicht im Onlineshop publiziert, aber im Google-Kanal — Google sieht eine 404. Reparatur: Onlineshop-Publikation nachziehen oder aus dem Google-Kanal nehmen (Fixer folgt).
 
-### Image processing or experiencing delays (1)
+### Restricted adult content (12)
 
-- mousepad-fasnacht-mask
+- 3er-pack-ultra-soft-sheer-tights-382018
+- 3er-pack-sheer-tights-40d-mit-t-crotch-082753
+- strand-kimono-mit-v-ausschnitt-seitenschlitz-012290
+- nachthemd-aus-polyester-606600
+- bauch-und-busen-shaper-294336
+- durchsichtige-nachtrobe-613300
+- kabelloser-huft-sticker-fur-zuhause-677184
+- nackenkissen-mit-schaumstoffpartikeln-062cb9
+- kuschel-kissen-cola-becher-0f350c
+- kleines-top-mit-breiten-tragern-622500
+- mini-olmalerei-set-15-15-cm-658600
+- elektrischer-faszienball-zur-muskelentspannung-302656
 
-### Promotional overlay on image (18)
+### Guns and Parts (4)
 
-- painless-fast-nail-art-extension-set-621900
-- 10-paar-damen-fusslinge-seidig-glatt-257473
-- schimmernder-thermo-gel-nagellack-619200
-- 2-in-1-pflegehandschuh-fur-haustiere-477121
-- reflektierender-wasserdichter-halter-fur-airta-242112
-- klein-robust-4k-auflosung-626700
-- tragbare-2-in-1-trinkflasche-fur-hunde-269760
-- gesichtshochheber-nackenmassagegerat-2a3655
-- man-tgs-abschlepp-lkw-mit-bruder-roadster-fga03750
-- hautfarbenkorektur-fur-die-stirnlinie-622500
-- schuh-aufhellungs-und-reinigungsspray-988288
-- happy-mary-kinder-und-lauflernschuhe-99e12e
-- concealer-repair-puder-nass-trocken-268544
-- mandel-kunstnagel-mit-kamelien-strass-568896
-- langanhaltender-lidschatten-pen-12er-set-836480
-- multifunktionale-slr-kameratasche-5505ab
-- 18-farben-lidschatten-palette-rose-gold-184960
-- 6-farben-wasserfester-nude-matt-lippenstift-798464
+- infrarot-nachtsichtgerat-1080p-687680
+- game-gunstock-fur-nintendo-switch-300672
+- binokulares-infrarot-nachtsichtgerat-mit-foto-623600
+- bluetooth-pedometer-uhr-a6a3f1
 
-### Adult-oriented content (1)
+### Promotional overlay on image (6)
 
-- vibrierender-silikon-gesichtsreiniger-mit-warm-600400
+- 2-in-1-ol-spruhflasche-fur-kuche-bbq-376320
+- magnetisch-ladecable-044e0c
+- kurzwellen-kurllaser-990784
+- reflektierende-halsband-identifikationsplakett-31c087
+- kabelloses-15w-schnellladepad-25e6c7
+- focallure-plumpmax-lip-glow-high-shine-591616
 
-### wartet: Image under review (116) — die ältesten zuerst
+### Sale of live animals (6)
 
-- atmungsaktive-casual-schuhe-198016 (seit 2026-10-03)
-- cartoons-regenstiefel-614200 (seit 2026-10-05)
-- einlegesohlen-schuhe-mit-stickereien-610800 (seit 2026-10-05)
-- kinder-lauflernschuhe-fruhling-herbst-023168 (seit 2026-10-05)
-- kinder-lauflernschuhe-fur-latein-tanz-601800 (seit 2026-10-05)
-- kinder-schutzkappe-49c713 (seit 2026-10-05)
-- perlensandalen-fur-madchen-636300 (seit 2026-10-05)
-- professionelle-leichtathletik-schuhe-fur-schul-451328 (seit 2026-10-05)
-- wasserschuhe-fur-kinder-schnell-trocknend-616000 (seit 2026-10-05)
-- kinder-sandalen-sommer-212736 (seit 2026-10-07)
-- cartoon-lauflernschuhe-537088 (seit 2026-10-08)
-- kinder-badeschuhe-rutschfest-607800 (seit 2026-10-08)
-- kinder-sandalen-mit-bar-print-weiche-sohle-kle-628100 (seit 2026-10-08)
-- lauflern-socken-mit-grip-288576 (seit 2026-10-08)
-- lauflernschuhe-mit-bandern-619100 (seit 2026-10-08)
-- leichte-sommerschuhe-fur-kinder-051136 (seit 2026-10-08)
-- oxford-rucksack-fur-sport-und-freizeit-229248 (seit 2026-10-08)
-- regen-laufschuhe-mit-weicher-sohle-870400 (seit 2026-10-08)
-- trendige-kinder-canvas-schuhe-606800 (seit 2026-10-08)
-- hundepflegeol-mit-zitronenmelisse-969345 (seit 2026-10-09)
-- katzen-futternapf-mit-erhohtem-rahmen-603700 (seit 2026-10-09)
-- pod-sticker-retro-arcade (seit 2026-10-09)
-- ausziehbarer-veloschutz-mit-rucklicht-4eb858 (seit 2026-10-10)
-- bruder-zubehor-licht-und-ton-fga02803 (seit 2026-10-10)
-- crossover-tasche-fur-herren-615500 (seit 2026-10-10)
-- damen-shorts-mit-spitzenbesatz-639300 (seit 2026-10-10)
-- diy-kreuzstich-landschaft-cartoon-40x40-cm-625800 (seit 2026-10-10)
-- leopard-print-sandalen-mit-grippsohle-696704 (seit 2026-10-10)
-- meerjungfrauen-sandale-mit-schleife-233408 (seit 2026-10-10)
-- mountainbike-sattel-mit-rucklicht-f7bee5 (seit 2026-10-10)
-- rote-madchenstiefel-901056 (seit 2026-10-10)
-- schnurschuhe-mit-haarband-und-strass-611456 (seit 2026-10-10)
-- sofa-ruckenlehnenbezug-amerikanischem-stil-ver-619500 (seit 2026-10-10)
-- wetterfestes-zelt-636000 (seit 2026-10-10)
-- pod-sticker-grapes (seit 2026-10-12)
-- pod-sticker-seashell (seit 2026-10-12)
-- tasse-gaell (seit 2026-10-12)
-- magnetisches-fliegengitter-fur-turen-fenster-058241 (seit 2026-10-13)
-- futterautomat-fur-haustiere-71c2cf (seit 2026-10-14)
-- 3-in-1-wireless-ladegerat-632100 (seit 2026-10-18)
+- hundeweste-in-jeansoptik-626560
+- musikalischer-hupfball-fur-hunde-0ae969
+- halsbandglockchen-fur-haustiere-2er-set-468800
+- geflochtene-hundeleine-196288
+- multifunktions-hundeleine-mit-puffer-455232
+- schnuffelteppich-fur-hunde-689a4e
+
+### Image not processed (1)
+
+- qs19-smart-armband-mit-gesundheitsmonitoring-235136
+
+### Tobacco products & related equipment (9)
+
+- automatischer-seifenspender-1adb26
+- doppeldisplay-halter-bcc975
+- magnetische-handyhalterung-mit-ladefunktion-624800
+- mini-lockenstab-mit-usb-ladefunktion-444480
+- kabelloser-automatischer-lockenstab-mit-usb-la-2d2191
+- handyhalterung-mit-kabelloser-ladefunktion-9a077a
+- automatischer-lockenstab-usb-ladefunktion-412608
+- intelligente-tragbare-kaffeetasse-081792
+- cigarren-etui-aus-pu-leder-8er-8-stuck-473344
+
+### Adult-oriented content (4)
+
+- porenreiniger-mit-vakuum-saugfunktion-5236f9
+- brustgeschirr-mit-leine-fur-haustiere-513856
+- plusch-hundegeschirr-mit-leine-744320
+- tpr-aktivspielzeug-fur-hunde-625000
+
+### Weapons (1)
+
+- akazien-pfeffer-und-salzmuhle-2er-set-mit-stan-570048
+
+### Image processing or experiencing delays (3)
+
+- plus-size-wedge-platform-sandalen-in-schwarz-b-613500
+- gold-fish-mouth-sandalen-mit-runden-zehen-606500
+- plus-size-sportschuh-fur-herren-638500
+
+### wartet: Image under review (49) — die ältesten zuerst
+
+- 3-in-1-pet-flasche-mit-wasser-futter-mullbeute-387264 (seit 2026-11-23)
+- abtropfkorb-fur-essstaebchen-und-kuechenutensi-603600 (seit 2026-11-23)
+- ai-smart-bluetooth-kopfhorer-d55pro-624800 (seit 2026-11-23)
+- antihaft-pfanne-fur-4-spiegeleier-pancakes-c91d06 (seit 2026-11-23)
+- bluetooth-wireless-game-controller-823936 (seit 2026-11-23)
+- bratpfanne-304-edelstahl-24-cm-627600 (seit 2026-11-23)
+- business-casual-rucksack-mit-grosser-kapazitat-604100 (seit 2026-11-23)
+- business-rucksack-fur-freizeit-und-reisen-9cf087 (seit 2026-11-23)
+- business-rucksack-mit-streifenmuster-c469bf (seit 2026-11-23)
+- business-travel-rucksack-grosses-volumen-619400 (seit 2026-11-23)
+- cartoon-rucksack-mit-panda-motiv-93d00f (seit 2026-11-23)
+- denim-rucksack-fur-studium-freizeit-5d73d4 (seit 2026-11-23)
+- diamantuhren-610700 (seit 2026-11-23)
+- elektrischer-simulationsvogel-fur-katzen-606500 (seit 2026-11-23)
+- elektrischer-warm-und-kaltwasserhahn-636400 (seit 2026-11-23)
+- farbenfroher-kabel-organizer-in-pu-630700 (seit 2026-11-23)
+- farbiger-regenwolken-befeuchter-601900 (seit 2026-11-23)
+- freizeit-rucksack-im-college-stil-958b63 (seit 2026-11-23)
+- gaming-headset-mit-gerauschunterdruckung-620300 (seit 2026-11-23)
+- gold-fish-mouth-sandalen-mit-runden-zehen-606500 (seit 2026-11-23)
+- graffiti-farbsaule-wand-touch-lampe-mit-sprach-400000 (seit 2026-11-23)
+- grosse-isolierte-kuhltasche-mit-tiermuster-625300 (seit 2026-11-23)
+- grosser-laptop-rucksack-mit-regenhulle-36e172 (seit 2026-11-23)
+- hd-digital-camcorder-mit-flip-screen-610600 (seit 2026-11-23)
+- intelligenter-futternapf-611300 (seit 2026-11-23)
+- kapodaster-fur-folk-und-e-gitarren-fed160 (seit 2026-11-23)
+- keramik-wasser-bowl-fur-haustiere-639800 (seit 2026-11-23)
+- klettverschluss-sneaker-sandalen-631200 (seit 2026-11-23)
+- kuchen-timer-mit-countdown-funktion-007552 (seit 2026-11-23)
+- leichter-wasserdichter-tennisrucksack-fur-kind-845952 (seit 2026-11-23)
+- magnetisches-spielzeug-615500 (seit 2026-11-23)
+- matter-langanhaltender-flussiglippenstift-606500 (seit 2026-11-23)
+- mini-portable-ccd-kamera-insert-tasche-609000 (seit 2026-11-23)
+- minimalistischer-pendler-rucksack-fur-15-zoll-605600 (seit 2026-11-23)
+- nacht-luftbefeuchter-20c14d (seit 2026-11-23)
+- nagel-primer-versiegelungs-set-362752 (seit 2026-11-23)
+- ovaler-eiskubel-aus-zinnblech-616600 (seit 2026-11-23)
+- peach-blossom-frosted-handgemalte-nagel-316928 (seit 2026-11-23)
+- reisebecher-fur-sie-473ml-oder-591ml-610200 (seit 2026-11-23)
+- rucksack-600d-oxford-38x26x14-cm-0-7-kg-823ba6 (seit 2026-11-23)
 - …
 
-### wartet: Title under review (10) — die ältesten zuerst
+### wartet: Title under review (1612) — die ältesten zuerst
 
-- chelsea-boots-im-retro-look-fur-herren-634000 (seit 2026-10-24)
-- herren-kurzarmhemd-fur-strand-und-freizeit-600200 (seit 2026-10-24)
-- herren-leder-slipper-ubergrossen-630600 (seit 2026-10-24)
-- keile-sandalen-im-ethno-stil-638000 (seit 2026-10-24)
-- keilsandalen-aus-leinen-mit-lederfutter-620400 (seit 2026-10-24)
-- kupfer-armband-mit-diamant-kreis-fur-damen-634600 (seit 2026-10-24)
-- marathon-carbon-sneaker-mit-leuchteffekt-636800 (seit 2026-10-24)
-- multifunktionssportuhr-631100 (seit 2026-10-24)
-- smartwatch-rund-mit-bluetooth-telefonie-und-he-639700 (seit 2026-10-24)
-- wildleder-sandalen-mit-offenem-zeh-614200 (seit 2026-10-24)
+- grosser-wasserabweisender-reise-rucksack-613901 (seit 2026-10-18)
+- hundegurt-zur-fluchtsicherung-medium-large-625500 (seit 2026-10-19)
+- 10-teiliges-dampfgarer-set-aus-edelstahl-633800 (seit 2026-11-23)
+- 10-teiliges-silikon-kuchenhelfer-set-10-stuck-3739d2 (seit 2026-11-23)
+- 10-teiliges-silikon-kuchenhelfer-set-986048 (seit 2026-11-23)
+- 12-teiliges-kuchenhelfer-set-mit-drehbarem-sta-613100 (seit 2026-11-23)
+- 120-farben-palette-fur-augen-05d0be (seit 2026-11-23)
+- 130l-outdoor-rucksack-844800 (seit 2026-11-23)
+- 170-in-1-crv-stahl-schraubendreher-set-615600 (seit 2026-11-23)
+- 24-in-1-ratschenschraubendreher-set-607100 (seit 2026-11-23)
+- 25-farben-lidschatten-palette-red-girl-699008 (seit 2026-11-23)
+- 2er-set-goldene-dekokissenbezuge-d4317c (seit 2026-11-23)
+- 3-farben-licht-mitesser-entferner-138075 (seit 2026-11-23)
+- 3-in-1-elektrischer-papierzerstorer-605400 (seit 2026-11-23)
+- 3-in-1-kulturbeutel-mit-nass-trocken-trennung-603800 (seit 2026-11-23)
+- 3-in-1-laptop-sleeve-mit-wireless-charger-654900 (seit 2026-11-23)
+- 3-in-1-magnetischer-kabelloser-ladegerat-627200 (seit 2026-11-23)
+- 3-in-1-magnetisches-wireless-ladegerat-mit-led-831232 (seit 2026-11-23)
+- 3-in-1-matt-high-gloss-konturpalette-780160 (seit 2026-11-23)
+- 3-in-1-winkel-und-lochlehre-fur-holz-615300 (seit 2026-11-23)
+- 3-lagige-retro-schmuckbox-mit-schloss-603500 (seit 2026-11-23)
+- 3-teiliges-rucksack-set-fur-studierende-373053 (seit 2026-11-23)
+- 3-teiliges-schulrucksack-set-sternenhimmel-898624 (seit 2026-11-23)
+- 35-farben-glitter-palette-e96c90 (seit 2026-11-23)
+- 360-drehbarer-make-up-organizer-aus-acryl-9a531a (seit 2026-11-23)
+- 360-panorama-uberwachungskamera-218176 (seit 2026-11-23)
+- 360-panorama-uberwachungskamera-mit-nachtsicht-774528 (seit 2026-11-23)
+- 3d-augenbrauen-gel-set-451712 (seit 2026-11-23)
+- 3d-meeresbild-in-holzrahmen-608900 (seit 2026-11-23)
+- 3d-silikon-gesichtsreinigungsburste-48c08c (seit 2026-11-23)
+- 3d-stereoskopischer-rucksack-fur-kinder-607400 (seit 2026-11-23)
+- 3er-set-schneidebretter-aus-bambus-3-stuck-625300 (seit 2026-11-23)
+- 45-farben-lidschatten-fur-den-fruhling-622000 (seit 2026-11-23)
+- 5-kamera-fahrzeugaufzeichner-1080p-hd-nachtsic-642050 (seit 2026-11-23)
+- 5-sterne-hotel-kissen-feder-samt-fullung-ea268d (seit 2026-11-23)
+- 50-l-militartaktischer-rucksack-b56572 (seit 2026-11-23)
+- 50l-campingrucksack-fur-damen-und-herren-986240 (seit 2026-11-23)
+- 60l-wanderrucksack-mit-regenschutz-571264 (seit 2026-11-23)
+- 67w-gan-3-port-schnellladegerat-779968 (seit 2026-11-23)
+- 8-farben-eye-shadow-platte-706880 (seit 2026-11-23)
+- …
 

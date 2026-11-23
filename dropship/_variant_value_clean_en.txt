@@ -22153,3 +22153,56 @@ gid://shopify/Product/15503026487681	Farbe	gid://shopify/ProductOptionValue/5862
 gid://shopify/Product/15503026487681	Farbe	gid://shopify/ProductOptionValue/58624686555527	Blau Leder Style A	Blau Leder Muster A	2026-11-23T17:03Z
 gid://shopify/Product/15503026487681	Farbe	gid://shopify/ProductOptionValue/58624686588295	Grün Hülle Style A	Grün Hülle Muster A	2026-11-23T17:03Z
 gid://shopify/Product/15503026487681	Farbe	gid://shopify/ProductOptionValue/58624686686599	Blau Leder Style B	Blau Leder Muster B	2026-11-23T17:03Z
+gid://shopify/Product/15503039136129	Farbe	gid://shopify/ProductOptionValue/58642392514951	Room Gold Schwarz	Roségold-Schwarz	2026-11-23T17:36Z
+gid://shopify/Product/15503039136129	Farbe	gid://shopify/ProductOptionValue/58642392547719	Room Gold Blau	Roségold-Blau	2026-11-23T17:36Z
+gid://shopify/Product/15503039136129	Farbe	gid://shopify/ProductOptionValue/58642392744327	Rose / Weiss	Rosé / Weiss	2026-11-23T17:36Z
+gid://shopify/Product/15503039136129	Farbe	gid://shopify/ProductOptionValue/58642392777095	Rose / Schwarz	Rosé / Schwarz	2026-11-23T17:36Z
+gid://shopify/Product/15503039136129	Farbe	gid://shopify/ProductOptionValue/58642392809863	Rose / Blau	Rosé / Blau	2026-11-23T17:36Z
+gid://shopify/Product/15503086649729	Modell	gid://shopify/ProductOptionValue/58848055820679	Set1	Set 1	2026-11-23T17:37Z
+gid://shopify/Product/15503116239233	Grösse	gid://shopify/ProductOptionValue/58624962724231	Children No 5	Kinder Nr. 5	2026-11-23T17:37Z
+gid://shopify/Product/15503116239233	Grösse	gid://shopify/ProductOptionValue/58624962756999	Children No 6	Kinder Nr. 6	2026-11-23T17:37Z
+gid://shopify/Product/15503116239233	Grösse	gid://shopify/ProductOptionValue/58624962789767	Children's No 7	Kinder Nr. 7	2026-11-23T17:37Z
+gid://shopify/Product/15503116239233	Grösse	gid://shopify/ProductOptionValue/58624962822535	Adult No 8	Erwachsene Nr. 8	2026-11-23T17:37Z
+gid://shopify/Product/15503116239233	Grösse	gid://shopify/ProductOptionValue/58624962855303	Adult No 9	Erwachsene Nr. 9	2026-11-23T17:37Z
+gid://shopify/Product/15503116239233	Grösse	gid://shopify/ProductOptionValue/58624962888071	Adult No 10	Erwachsene Nr. 10	2026-11-23T17:37Z
+gid://shopify/Product/15503148319105	Grösse	gid://shopify/ProductOptionValue/58709668987271	Width 2cm 1.5m	Breite 2 cm 1.5 m	2026-11-23T17:37Z
+gid://shopify/Product/15503148319105	Grösse	gid://shopify/ProductOptionValue/58709669020039	Width 2cm 2m	Breite 2 cm 2 m	2026-11-23T17:37Z
+gid://shopify/Product/15503166013825	Farbe	gid://shopify/ProductOptionValue/58709659877767	Set1	Set 1	2026-11-23T17:37Z
+gid://shopify/Product/15503166013825	Farbe	gid://shopify/ProductOptionValue/58709659910535	Set2	Set 2	2026-11-23T17:37Z
+gid://shopify/Product/15503958147457	Farbe	gid://shopify/ProductOptionValue/58624635601287	Olive	Oliv	2026-11-23T17:37Z
+gid://shopify/Product/15503958638977	Farbe	gid://shopify/ProductOptionValue/58709635465607	Set2	Set 2	2026-11-23T17:37Z
+gid://shopify/Product/15503958835585	Farbe	gid://shopify/ProductOptionValue/58709662269831	Set1	Set 1	2026-11-23T17:37Z
+gid://shopify/Product/15503958835585	Farbe	gid://shopify/ProductOptionValue/58709662302599	Set2	Set 2	2026-11-23T17:37Z
+gid://shopify/Product/15503958835585	Farbe	gid://shopify/ProductOptionValue/58709662335367	Set3	Set 3	2026-11-23T17:37Z
+gid://shopify/Product/15504009789825	Farbe	gid://shopify/ProductOptionValue/58709633925511	Set1	Set 1	2026-11-23T17:37Z
+gid://shopify/Product/15504009789825	Farbe	gid://shopify/ProductOptionValue/58709633958279	Set2	Set 2	2026-11-23T17:37Z
+gid://shopify/Product/15504089645441	Grösse	gid://shopify/ProductOptionValue/58766460420487	60cm	60 cm	2026-11-23T17:37Z
+gid://shopify/Product/15504089645441	Grösse	gid://shopify/ProductOptionValue/58766460453255	100cm	100 cm	2026-11-23T17:37Z
+gid://shopify/Product/15504112124289	Grösse	gid://shopify/ProductOptionValue/58741356495239	Colorful	Bunt	2026-11-23T17:37Z
+gid://shopify/Product/15504137224577	Grösse	gid://shopify/ProductOptionValue/58766537032071	45X45CM pillowcase	45x45 cm Kissenbezug	2026-11-23T17:37Z
+gid://shopify/Product/15504137224577	Grösse	gid://shopify/ProductOptionValue/58766537064839	50X50CM pillowcase	50x50 cm Kissenbezug	2026-11-23T17:37Z
+gid://shopify/Product/15504137224577	Grösse	gid://shopify/ProductOptionValue/58766537097607	60X60CM pillowcase	60x60 cm Kissenbezug	2026-11-23T17:37Z
+gid://shopify/Product/15504137224577	Grösse	gid://shopify/ProductOptionValue/58766537130375	45X45CM pillow	45x45 cm Kissen	2026-11-23T17:37Z
+gid://shopify/Product/15504137224577	Grösse	gid://shopify/ProductOptionValue/58766537163143	50X50CM pillow	50x50 cm Kissen	2026-11-23T17:37Z
+gid://shopify/Product/15504137224577	Grösse	gid://shopify/ProductOptionValue/58766537195911	60X60CM pillow	60x60 cm Kissen	2026-11-23T17:37Z
+gid://shopify/Product/15504137748865	Grösse	gid://shopify/ProductOptionValue/58709628289415	30x50cm pillowcase	30x50 cm Kissenbezug	2026-11-23T17:37Z
+gid://shopify/Product/15504142467457	Farbe	gid://shopify/ProductOptionValue/58848098386311	Set1	Set 1	2026-11-23T17:38Z
+gid://shopify/Product/15504142467457	Farbe	gid://shopify/ProductOptionValue/58848098419079	Set2	Set 2	2026-11-23T17:38Z
+gid://shopify/Product/15504155574657	Grösse	gid://shopify/ProductOptionValue/58904456855943	45X45cm Pillowcase	45x45 cm Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15504155574657	Grösse	gid://shopify/ProductOptionValue/58904456888711	45X45cm Pillow	45x45 cm Kissen	2026-11-23T17:38Z
+gid://shopify/Product/15504287662465	Grösse	gid://shopify/ProductOptionValue/58709583135111	55x55cm pillowcase	55x55 cm Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506198036865	Grösse	gid://shopify/ProductOptionValue/59212048892295	Medium	Mittel	2026-11-23T17:38Z
+gid://shopify/Product/15506198036865	Grösse	gid://shopify/ProductOptionValue/59212048925063	Large Size	Gross	2026-11-23T17:38Z
+gid://shopify/Product/15506240143745	Farbe	gid://shopify/ProductOptionValue/58800181444999	Set1	Set 1	2026-11-23T17:38Z
+gid://shopify/Product/15506261639553	Grösse	gid://shopify/ProductOptionValue/58709566194055	1 Piece	1 Stück	2026-11-23T17:38Z
+gid://shopify/Product/15506261639553	Grösse	gid://shopify/ProductOptionValue/58709566226823	1 Pair	1 Paar	2026-11-23T17:38Z
+gid://shopify/Product/15506271568257	Grösse	gid://shopify/ProductOptionValue/58709576679815	30x50 pillowcase	30x50 Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506271568257	Grösse	gid://shopify/ProductOptionValue/58709576745351	40x60 pillowcase	40x60 Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506271797633	Grösse	gid://shopify/ProductOptionValue/58848335987079	45x45 pillowcase	45x45 Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506271797633	Grösse	gid://shopify/ProductOptionValue/58848336052615	50x50 pillowcase	50x50 Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506271961473	Grösse	gid://shopify/ProductOptionValue/58709569110407	30x50 pillowcase	30x50 Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506271961473	Grösse	gid://shopify/ProductOptionValue/58709569175943	45x45 pillowcase	45x45 Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506271961473	Grösse	gid://shopify/ProductOptionValue/58709569241479	50x50 pillowcase	50x50 Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506272518529	Grösse	gid://shopify/ProductOptionValue/58766552170887	45x45 pillowcase	45x45 Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506272977281	Grösse	gid://shopify/ProductOptionValue/58709558100359	30x50cm pillowcase	30x50 cm Kissenbezug	2026-11-23T17:38Z
+gid://shopify/Product/15506272977281	Grösse	gid://shopify/ProductOptionValue/58709558133127	40x60cm pillowcase	40x60 cm Kissenbezug	2026-11-23T17:38Z
