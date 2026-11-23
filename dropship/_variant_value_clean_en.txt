@@ -21827,3 +21827,28 @@ gid://shopify/Product/15453623189889	Farbe	gid://shopify/ProductOptionValue/5859
 gid://shopify/Product/15453726212481	Farbe	gid://shopify/ProductOptionValue/58642303189383	Apricot / Rot	Aprikose / Rot	2026-11-23T16:00Z
 gid://shopify/Product/15453744169345	Grösse	gid://shopify/ProductOptionValue/58612561838471	Plus Size 3XL	Übergrösse 3XL	2026-11-23T16:00Z
 gid://shopify/Product/15453769990529	Farbe	gid://shopify/ProductOptionValue/58642300961159	Mint / Grün	Mintgrün / Grün	2026-11-23T16:02Z
+gid://shopify/Product/15453792240001	Farbe	gid://shopify/ProductOptionValue/58624792363399	Set1	Set 1	2026-11-23T16:37Z
+gid://shopify/Product/15453897589121	Grösse	gid://shopify/ProductOptionValue/59028953858439	Small Size	Klein	2026-11-23T16:38Z
+gid://shopify/Product/15453897589121	Grösse	gid://shopify/ProductOptionValue/59028953891207	Large Size	Gross	2026-11-23T16:38Z
+gid://shopify/Product/15454049108353	Farbe	gid://shopify/ProductOptionValue/58597553963399	Set1	Set 1	2026-11-23T16:39Z
+gid://shopify/Product/15454049108353	Farbe	gid://shopify/ProductOptionValue/58597553996167	Set2	Set 2	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678173434247	Hellrosa Gelb Herzform	Hellrosa-Gelb Herzform	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678173729159	Rosa Gelb Herzform	Rosa-Gelb Herzform	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678173925767	01color	Farbton 01	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678173958535	02color	Farbton 02	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678173991303	03color	Farbton 03	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174024071	04color	Farbton 04	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174056839	05color	Farbton 05	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174089607	06color	Farbton 06	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174122375	07color	Farbton 07	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174155143	08color	Farbton 08	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174187911	09color	Farbton 09	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174220679	10color	Farbton 10	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174253447	11color	Farbton 11	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174286215	12color	Farbton 12	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174318983	13color	Farbton 13	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174351751	14color	Farbton 14	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174384519	15color	Farbton 15	2026-11-23T16:39Z
+gid://shopify/Product/15454111007105	Farbe	gid://shopify/ProductOptionValue/58678174417287	16color	Farbton 16	2026-11-23T16:39Z
+gid://shopify/Product/15454497309057	Farbe	gid://shopify/ProductOptionValue/12315716551041	Roségold schwarz Oberfläche	Roségold-Schwarz Oberfläche	2026-11-23T16:40Z
+gid://shopify/Product/15454501798273	Farbe	gid://shopify/ProductOptionValue/58883798630791	Blau Eiscreme	Blau-Eiscreme	2026-11-23T16:40Z

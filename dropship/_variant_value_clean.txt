@@ -3976,3 +3976,17 @@ gid://shopify/Product/15453744169345	Grösse	1
 gid://shopify/Product/15453760979329	Farbe	6
 gid://shopify/Product/15453767303553	Ausführung	3
 gid://shopify/Product/15453769990529	Farbe	1
+gid://shopify/Product/15453791158657	Farbe	6
+gid://shopify/Product/15453792108929	Farbe	3
+gid://shopify/Product/15453792240001	Farbe	1
+gid://shopify/Product/15453897589121	Grösse	2
+gid://shopify/Product/15453951328641	Farbe	4
+gid://shopify/Product/15454049108353	Farbe	2
+gid://shopify/Product/15454111007105	Farbe	18
+gid://shopify/Product/15454131356033	Ausführung	2
+gid://shopify/Product/15454497309057	Farbe	1
+gid://shopify/Product/15454501798273	Farbe	1
+gid://shopify/Product/15454915690881	Leistung	1
+gid://shopify/Product/15455428968833	Farbe	4
+gid://shopify/Product/15458649833857	Farbe	1
+gid://shopify/Product/15458673131905	Farbe	1
