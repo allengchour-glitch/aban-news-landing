@@ -5943,3 +5943,5 @@ laufschuhe-fur-kinder-038656	gesetzt-2
 smartwatch-mit-gesundheitsueberwachung-624500	gesetzt-3
 outdoor-uhr-612300	gesetzt-3
 weite-damen-jeans-604400	hat-liste
+smartwatch-mit-gesundheitsfunktionen-628500	gesetzt-4
+sicherheitsschuhe-926976	gesetzt-2

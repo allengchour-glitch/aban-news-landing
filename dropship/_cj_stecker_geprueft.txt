@@ -1161,3 +1161,28 @@
 15499725341057	mehrere-varianten	2026-11-23	Magnetische Dreifach-Ladestation
 15499783700865	mehrere-varianten	2026-11-23	Smartwatch-Ladestation
 15499805917569	mehrere-varianten	2026-11-23	Magnetische Nachtlicht-Ladestation
+15499806769537	mehrere-varianten	2026-11-23	Laptop-Stromadapter Schwarz
+15499995447681	kein-stecker-merkmal	2026-11-23	Dreifach-Ladestation mit Kabellosem Aufladen
+15499996627329	mehrere-varianten	2026-11-23	Autowandladestation
+15499997151617	mehrere-varianten	2026-11-23	Klein, universeller Ladestation
+15499998396801	mehrere-varianten	2026-11-23	Wireloser Ladestation
+15500000625025	kein-stecker-merkmal	2026-11-23	Dreifach-Ladestation für Handy, Armband und Kopfhörer
+15500069175681	unklar-eu-vorhanden:EU/UK/US	2026-11-23	Rasche Ladestation 24
+15500070191489	mehrere-varianten	2026-11-23	Magnetische WLAN-Ladestation
+15500070748545	kein-stecker-merkmal	2026-11-23	Ohrenfreundliche Ladestation
+15500258312577	kein-stecker-merkmal	2026-11-23	Nachtlicht-Ladestation
+15500259131777	mehrere-varianten	2026-11-23	Dreifach-Wireless-Ladestation
+15500259950977	kein-stecker-merkmal	2026-11-23	Baseus Swan 3-in-1 Wireless Ladestation
+15500261491073	kein-stecker-merkmal	2026-11-23	Batterie-Adapter
+15500262146433	mehrere-varianten	2026-11-23	Bluetooth Kopfhörer-Ladestation
+15500279021953	kein-stecker-merkmal	2026-11-23	Universal-Ladestation
+15500279808385	mehrere-varianten	2026-11-23	Mobiltelefon-Ladestation
+15500280988033	kein-stecker-merkmal	2026-11-23	Universal Ladestation
+15500283052417	mehrere-varianten	2026-11-23	Wireless-Ladestation
+15500509348225	mehrere-varianten	2026-11-23	3-in-1 Qi Wireless Ladestation
+15500510986625	kein-stecker-merkmal	2026-11-23	Magnetische Ladestation 10000mAh
+15500904202625	kein-stecker-merkmal	2026-11-23	Auto-Ladestation
+15501679001985	kein-stecker-merkmal	2026-11-23	Weisser Magnet-Charger für Smartwatches
+15501679755649	kein-stecker-merkmal	2026-11-23	Ladestation für Game-Kontrollen
+15501681295745	kein-stecker-merkmal	2026-11-23	Universal-Ladestation mit Wecker und Licht
+15501681787265	kein-stecker-merkmal	2026-11-23	Fünf-in-eins-Ladestation
