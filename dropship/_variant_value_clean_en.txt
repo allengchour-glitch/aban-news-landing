@@ -21713,3 +21713,32 @@ gid://shopify/Product/16656645456263	Farbe	gid://shopify/ProductOptionValue/5854
 gid://shopify/Product/16656645456263	Farbe	gid://shopify/ProductOptionValue/58540793725319	Yellow-No 3	Gelb-Nr. 3	2026-10-22T09:31Z
 gid://shopify/Product/16656645456263	Farbe	gid://shopify/ProductOptionValue/58540793758087	Yellow-No 4	Gelb-Nr. 4	2026-10-22T09:31Z
 gid://shopify/Product/16656645456263	Farbe	gid://shopify/ProductOptionValue/58540793790855	Yellow-No 5	Gelb-Nr. 5	2026-10-22T09:31Z
+gid://shopify/Product/15411556614529	Modell	gid://shopify/ProductOptionValue/58596720869767	Set1	Set 1	2026-11-23T11:20Z
+gid://shopify/Product/15411556614529	Modell	gid://shopify/ProductOptionValue/58596720902535	Set2	Set 2	2026-11-23T11:20Z
+gid://shopify/Product/15411556614529	Modell	gid://shopify/ProductOptionValue/58596720935303	Set3	Set 3	2026-11-23T11:20Z
+gid://shopify/Product/15411556614529	Modell	gid://shopify/ProductOptionValue/58596720968071	Set4	Set 4	2026-11-23T11:20Z
+gid://shopify/Product/15411556614529	Modell	gid://shopify/ProductOptionValue/58596721000839	Set5	Set 5	2026-11-23T11:20Z
+gid://shopify/Product/15411556614529	Modell	gid://shopify/ProductOptionValue/58596721033607	Set6	Set 6	2026-11-23T11:20Z
+gid://shopify/Product/15411556614529	Modell	gid://shopify/ProductOptionValue/58596721066375	Set7	Set 7	2026-11-23T11:20Z
+gid://shopify/Product/15411556614529	Modell	gid://shopify/ProductOptionValue/58596721099143	Set8	Set 8	2026-11-23T11:20Z
+gid://shopify/Product/15499698274689	Grösse	gid://shopify/ProductOptionValue/58655043846535	140 Long 300	140 lang 300	2026-11-23T11:20Z
+gid://shopify/Product/15499698274689	Grösse	gid://shopify/ProductOptionValue/58655043879303	Width 140 Length 140	Breite 140 Länge 140	2026-11-23T11:20Z
+gid://shopify/Product/15499698274689	Grösse	gid://shopify/ProductOptionValue/58655043912071	Width 140 Length 180	Breite 140 Länge 180	2026-11-23T11:20Z
+gid://shopify/Product/15499698274689	Grösse	gid://shopify/ProductOptionValue/58655043944839	Width 140 Length 200	Breite 140 Länge 200	2026-11-23T11:20Z
+gid://shopify/Product/15499698274689	Grösse	gid://shopify/ProductOptionValue/58655043977607	Width 140 Length 220	Breite 140 Länge 220	2026-11-23T11:20Z
+gid://shopify/Product/15499698274689	Grösse	gid://shopify/ProductOptionValue/58655044010375	Width 140 Length 260	Breite 140 Länge 260	2026-11-23T11:20Z
+gid://shopify/Product/16603400274311	Grösse	gid://shopify/ProductOptionValue/58848279298439	Small Size	Klein	2026-11-23T11:20Z
+gid://shopify/Product/16603400274311	Grösse	gid://shopify/ProductOptionValue/58848279331207	Large Size	Gross	2026-11-23T11:20Z
+gid://shopify/Product/15524002005377	Grösse	gid://shopify/ProductOptionValue/58848042287495	15x20 Cm With Frame	15x20 cm mit Rahmen	2026-11-23T11:20Z
+gid://shopify/Product/15412306215297	Farbe	gid://shopify/ProductOptionValue/58800211362183	Set1	Set 1	2026-11-23T11:20Z
+gid://shopify/Product/15412306215297	Farbe	gid://shopify/ProductOptionValue/58800211394951	Set2	Set 2	2026-11-23T11:20Z
+gid://shopify/Product/15509389246849	Grösse	gid://shopify/ProductOptionValue/58766550532487	60x120cm linen	60x120 cm Leinen	2026-11-23T11:20Z
+gid://shopify/Product/15522281128321	Grösse	gid://shopify/ProductOptionValue/58848335233415	35x50cm (style 1)	35x50 cm (Muster 1)	2026-11-23T11:21Z
+gid://shopify/Product/15522281128321	Grösse	gid://shopify/ProductOptionValue/58848335266183	50x50cm (style 1)	50x50 cm (Muster 1)	2026-11-23T11:21Z
+gid://shopify/Product/15522281128321	Grösse	gid://shopify/ProductOptionValue/58848335298951	35x50cm (style 2)	35x50 cm (Muster 2)	2026-11-23T11:21Z
+gid://shopify/Product/15522281128321	Grösse	gid://shopify/ProductOptionValue/58848335331719	45x45cm (style 2)	45x45 cm (Muster 2)	2026-11-23T11:21Z
+gid://shopify/Product/15522281128321	Grösse	gid://shopify/ProductOptionValue/58848335364487	45x45cm (style 1)	45x45 cm (Muster 1)	2026-11-23T11:21Z
+gid://shopify/Product/15522281128321	Grösse	gid://shopify/ProductOptionValue/58848335397255	50x50cm (style 2)	50x50 cm (Muster 2)	2026-11-23T11:21Z
+gid://shopify/Product/15523176644993	Farbe	gid://shopify/ProductOptionValue/58679296065927	Set1	Set 1	2026-11-23T11:21Z
+gid://shopify/Product/15523176644993	Farbe	gid://shopify/ProductOptionValue/58679296098695	Set2	Set 2	2026-11-23T11:21Z
+gid://shopify/Product/15523176644993	Farbe	gid://shopify/ProductOptionValue/58679296131463	Set3	Set 3	2026-11-23T11:21Z
