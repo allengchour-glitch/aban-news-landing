@@ -1,20 +1,20 @@
-# Preis-Verlustschutz — scharf 2026-11-24 18:24 UTC
+# Preis-Verlustschutz — scharf 2026-11-24 18:33 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **10** · Varianten gehoben: **84** · gesperrt (Faktor > 2.0): 6
-- Median-Faktor der Hebungen: 1.03× · Varianten ohne EK (nicht geprüft): 0
+- Produkte mit Anpassung: **10** · Varianten gehoben: **49** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.08× · Varianten ohne EK (nicht geprüft): 0
 - geschrieben: 10 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Kabelloses Ladegerät mit Uhr, Nacht- und Tischla | 48.90 | 40.61 | **50.90** | 1.04× |
-| Glitzerndes PU-Leder mit Pfauenmuster | 30.90 | 25.10 | **31.90** | 1.03× |
-| Cross Buckle Hollow Pumps aus Rindsleder | 48.90 | 39.48 | **49.90** | 1.02× |
-| Nacken- & Lendenwirbel-Massagekissen | 41.90 | 34.22 | **42.90** | 1.02× |
-| Vintage Messenger Bag aus Canvas und Leder | 48.90 | 39.77 | **49.90** | 1.02× |
-| LED Silikon 7-Farben Maske zur Hautverjüngung | 48.90 | 39.49 | **49.90** | 1.02× |
-| Damen Sandalen mit Absatz aus Schafleder | 48.90 | 39.51 | **49.90** | 1.02× |
-| Damen-Sandalen aus Leder | 48.90 | 39.67 | **49.90** | 1.02× |
-| Minimalistische LED-Wandlampe mit Dimmen | 48.90 | 40.22 | **49.90** | 1.02× |
-| Leisure Travel Bag aus Canvas mit Kuhleder | 49.90 | 40.70 | **50.90** | 1.02× |
+| Elektrischer, portabler Zahnspüler | 47.90 | 38.65 | **48.90** | 1.02× |
+| Personalisierte Wanduhr für Wohnzimmer | 48.90 | 39.69 | **49.90** | 1.02× |
+| Mechanische Holzuhr mit grauem Armband | 42.90 | 39.71 | **49.90** | 1.16× |
+| LED Ultraschall Schönheitsgerät 6-in-1 | 47.90 | 41.84 | **51.90** | 1.08× |
+| Britische High-Top Lederstiefel für Herren | 47.90 | 38.70 | **48.90** | 1.02× |
+| Home Touch Button Tragbarer Bluetooth-Lautsprech | 48.90 | 57.30 | **70.90** | 1.45× |
+| Sternenlicht-Projektor mit Musikfunktion | 41.90 | 35.70 | **44.90** | 1.07× |
+| Damen-Pantoletten aus Rindsleder | 47.90 | 43.92 | **54.90** | 1.15× |
+| Minimalistische Schreibtischlampe aus Plastik | 47.90 | 42.48 | **52.90** | 1.10× |
+| Wandlampe für Aussenbereiche | 43.90 | 39.50 | **49.90** | 1.14× |
