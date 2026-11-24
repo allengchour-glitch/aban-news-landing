@@ -19,3 +19,8 @@ Nur Bitcoin und 7 Jahre (wenige Zyklen); Gebühr/Rutschen angenommen; Funding un
 
 ## Papier-Lauf
 `node btc_trend_papier.mjs ledger.json` (einmal täglich nach 00:05 UTC, ein Lauf je Datum), Test `btc_trend_papier.test.mjs`. Läuft noch nirgends automatisch; Ablage und Zeitplan entscheidet der Besitzer. Der Minuten-Nachrechner `nachrechner_minutenprofil.mjs` hat feste Arbeitspfade (Paket entpackt, Kerzendateien).
+
+## Nachtrag: dieselbe Regel unverändert auf 30 Coins einzeln (GEMESSEN 24.11., `je_coin.mjs`, ab 2020, Kosten 0,15 % je Seite)
+- Kleinerer maximaler Rückgang als Halten: **24 von 30** Coins. Höhere Rendite als Halten: **19 von 30**.
+- Der Schutz vor Einbrüchen ist also breit belegt, ein Renditevorteil nicht: bei den grossen Gewinnern (BNB, SOL, TRX, XRP, ETH, LINK) liegt Halten klar vorn. Survivorship: nur heute gelistete Coins.
+- Folge: Die Regel ist ein Risikoschutz, kein Gewinnversprechen. Funding-Daten, 4h/1h-Kerzen und Short sind weiter ungemessen.
