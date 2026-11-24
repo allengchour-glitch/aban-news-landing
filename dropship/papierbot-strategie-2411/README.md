@@ -24,3 +24,10 @@ Nur Bitcoin und 7 Jahre (wenige Zyklen); Gebühr/Rutschen angenommen; Funding un
 - Kleinerer maximaler Rückgang als Halten: **24 von 30** Coins. Höhere Rendite als Halten: **19 von 30**.
 - Der Schutz vor Einbrüchen ist also breit belegt, ein Renditevorteil nicht: bei den grossen Gewinnern (BNB, SOL, TRX, XRP, ETH, LINK) liegt Halten klar vorn. Survivorship: nur heute gelistete Coins.
 - Folge: Die Regel ist ein Risikoschutz, kein Gewinnversprechen. Funding-Daten, 4h/1h-Kerzen und Short sind weiter ungemessen.
+
+## Nachtrag 2: Funding-Carry (GEMESSEN 24.11., Binance-Archiv `data.binance.vision`, Perp USDT-M, alle 8-h-Zahlungen)
+Summe der Funding-Sätze je Jahr (Short-Perp bekommt es bei positivem Satz), Anteil negativer Zahlungen:
+- **BTC:** 2020 +17,2 %, 2021 +30,6 %, 2022 +4,2 %, 2023 +7,9 %, 2024 +12,0 %, **2025 +5,1 %, 2026 (bis Oktober) +2,6 %** (rund 3,2 % aufs Jahr). 7 bis 25 % der Zahlungen negativ.
+- **ETH:** 2024 +13,0 %, 2025 +4,9 %, 2026 +1,7 %. **SOL:** 2022 −38 %, 2025 +0,4 %, 2026 −0,5 % (Carry dort unbrauchbar).
+- **Deutung (meine):** Der Carry ist stark geschrumpft. Bei Delta-neutral (Spot + Short-Perp) bindet er rund das Doppelte an Kapital und kostet vier Handelsseiten; 2025/26 bleibt netto etwa 1 bis 2,5 % aufs Kapital, bei Börsen-, Basis- und Liquidationsrisiko. Deckt sich mit der Recherche (Carry komprimiert). Für den Papierbot nicht umgesetzt, kein Beleg für einen Vorteil.
+- **Weiter ungemessen:** Kerzen unter einem Tag, Short, On-Chain-Daten.
