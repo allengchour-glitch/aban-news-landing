@@ -109,3 +109,8 @@ Google liess am 22.11. nur 3 Anträge durch (ab Nr. 4 «Kontingent überschritte
 - **Beantragt am 22.11. (Nr. 1 bis 3) und jetzt indexiert:** `sub-stiefel-boots`, `geschenke-unter-50-franken`, `geschenke-fuer-kinder` («Gesendet und indexiert», gecrawlt am 23.11. zwischen 00:31 und 00:46 UTC).
 - **Geliefert (10):** `waerme-komfort` (gefunden, nicht indexiert), `herren-jacken-maentel-lang`, `kinder-hausschuhe`, `damen-hausschuhe`, `heizkissen-waermegurte`, `hoodies-sweatshirts`, `damen-sturmhauben-gesichtsmasken`, `herren-sturmhauben-gesichtsmasken`, `damen-jacken-cape`, `herren-jacken-uebergang` (alle «URL ist Google nicht bekannt»). Alle HTTP 200, kein `noindex`, 1,47 bis 1,67 MB.
 - Noch offen in der Warteschlange: 59 Seiten (inkl. Reserve).
+
+### 24.11. (gemessen 06:01 bis 06:10 UTC)
+- **Lieferung vom 23.11. (10 Seiten) jetzt alle indexiert:** `waerme-komfort`, `herren-jacken-maentel-lang`, `kinder-hausschuhe`, `damen-hausschuhe`, `heizkissen-waermegurte`, `hoodies-sweatshirts`, `damen-sturmhauben-gesichtsmasken`, `herren-sturmhauben-gesichtsmasken`, `damen-jacken-cape`, `herren-jacken-uebergang` («Gesendet und indexiert», alle gecrawlt am 23.11. um 21:56 UTC). Ob alle zehn beantragt wurden, ist nicht gemeldet.
+- **Geliefert (10):** `damen-jacken-uebergang`, `herren-jacken-leder`, `smart-home-gadgets`, `beamer-heimprojektoren` (URL ist Google nicht bekannt), `trends-gadgets`, `damen-mode`, `damen-schuhe`, `herren-schuhe` (gecrawlt, nicht indexiert), `smartwatches-wearables`, `kabel-adapter` (gefunden, nicht indexiert). Alle HTTP 200, kein `noindex`, 1,48 bis 2,03 MB (`trends-gadgets` knapp unter 2 MiB).
+- Noch offen in der Warteschlange: 49 Seiten (inkl. Reserve; davon 10 heute geliefert).
