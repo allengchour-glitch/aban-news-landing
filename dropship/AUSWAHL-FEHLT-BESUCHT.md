@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 10:15 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 11:15 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 167 · **29 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 20, teilweise: 5, keine: 4; Preisspanne > 2×: 6) · 1 CJ-Variante: 138 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 166 · **28 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 19, teilweise: 5, keine: 4; Preisspanne > 2×: 6) · 1 CJ-Variante: 138 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -17,7 +17,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 21-Gitter Nagelschmuck-Box mit Glassteinen (`21-gitter-nagelschmuck-box-mit-glassteinen-018880`) | 23 | 4 | 9.6–12.48 | 29.90 | Round Drill, Dark Green, Light Red, Mineral Gold |
 | Aroma Diffuser Holzoptik 400ml – Ultraschall Luftbefeuchter mit 7 LED-Farben (`aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben`) | 16 | 0 | 13.38–16.35 | 44.90 | Deep wood grain-EU, Deep wood grain-US WiFi, Deep wood grain-UK, Deep wood grain-EU WiFi |
 | Einziehbares Krankenschwestern-Stift-Set (`einziehbares-krankenschwestern-stift-set-638500`) | 16 | 16 | 2.42–2.42 | 16.90 | Blood Duck Goose Pen Set, Pink Cat Bottle Pen Set, JUDGE Pen Set, Medical Knot Pen Set |
-| Geschenkbox mit Decke und Wellness-Produkten (`geschenkbox-mit-decke-und-wellness-produkten-605100`) | 13 | 13 | 20.25–24.97 | 36.90 | Rose fringed blanket, Lavender fringed blanket, Ocean fringed blanket, Sage Green fringed blanket |
 | Magnetischer Telefonhalter (`magnetischer-telefonhalter-610000`) | 12 | 12 | 3.44–3.69 | 14.90 | Bean Purple-Ordinary Bag, Bean Purple-Exquisite Boxed, Qingshan Jade-Ordinary Bag, Qingshan Jade-Exquisite Boxed |
 | Neon Wandleuchte «Moon cloud» (`neon-wandleuchte-moon-cloud-605600`) | 12 | 12 | 8.08–15.26 | 39.90 | Moon Cloud 43.5X30cm-5v Dimmable, Mountain 43X20cm-5v Dimmable, CELTICS 30X30CM-5v Dimmable, Gear 34X28cm-5v Dimmable |
 | Futterautomat mit Kamera für Hunde und Katzen (`futterautomat-mit-kamera-fur-hunde-und-katzen-294976`) | 11 | 11 | 34.0–43.12 | 129.90 | White 4L-Black Transparent Barrel, White 6L-Black Transparent Barrel, Black 4L-Black Transparent Barrel, Black 6L-Black Transparent Barrel |

@@ -1673,3 +1673,61 @@ wandbilder-uf-leinwand	ok	29	Leinwandbilder & Gemälde
 wandbilder-uf-poster	http-429	0	Poster & Kunstdrucke
 wandbilder-uf-metall	ok	22	Metall-Wanddeko
 wandteppiche-wandbehaenge	ok	29	Wandteppiche & Wandbehänge
+bilderrahmen-wandtattoos-tapeten	ok	29	Bilderrahmen, Wandtattoos & Klebefolien
+wanduhren-tischuhren	http-429	0	Wanduhren & Tischuhren
+wecker-radiowecker	ok	29	Wecker
+vasen-blumenvasen	ok	24	Vasen
+figuren-skulpturen	ok	29	Figuren & Skulpturen
+deko-objekte-accessoires	ok	29	Dekoobjekte & Accessoires
+saison-weihnachtsdeko	ok	29	Weihnachts- & Saisondeko
+saison-adventskalender	ok	29	Adventskalender & Countdown
+saison-christbaumschmuck	ok	29	Christbaumschmuck & Ornamente
+kerzen-kerzenhalter	ok	29	Kerzen & Kerzenhalter
+raeucherwerk-duftoele	ok	29	Räucherwerk & Duftöle
+aroma-diffuser-duftlampen	ok	29	Aroma-Diffuser & Duftlampen
+aroma-diffuser-holz	ok	27	Holzoptik
+aroma-diffuser-flamme-licht	ok	29	Mit Flammen- oder LED-Licht
+luftbefeuchter-raumbefeuchter	ok	29	Luftbefeuchter
+luftbefeuchter-aroma	ok	29	Mit Aroma-Funktion
+luftbefeuchter-mini-usb	ok	29	Mini- & USB-Luftbefeuchter
+luftbefeuchter-licht	ok	29	Mit Nachtlicht
+ventilatoren-handventilatoren	ok	29	Ventilatoren & Handventilatoren
+ventilatoren-hand-mini	ok	29	Hand- & Mini-Ventilatoren
+ventilatoren-tisch-usb	ok	25	Tisch- & USB-Ventilatoren
+led-streifen-lichterketten	ok	23	LED-Streifen & Lichterketten
+damen-kleider-aline	http-429	0	A-Linien-Kleider
+damen-kleider-wickel	ok	24	Wickelkleider
+damen-kleider-traeger	http-429	0	Träger- & Neckholderkleider
+damen-kleider-jeans	ok	29	Jeans- & Denimkleider
+damen-kleider-leinen	ok	28	Leinenkleider
+damen-kleider-plissee	ok	29	Plisseekleider
+damen-kleider-figurbetont	ok	29	Figurbetonte & Etuikleider
+damen-kleider-ruesche	ok	29	Rüschen- & Puffärmelkleider
+damen-kleider-satin	ok	29	Satin-, Seiden- & Chiffonkleider
+damen-kleider-samt	ok	29	Samt- & Paillettenkleider
+damen-kleider-gemustert	ok	29	Gepunktete & gestreifte Kleider
+damen-jacken-trench	ok	24	Trenchcoats
+damen-jacken-stepp	ok	29	Stepp- & Pufferjacken
+damen-jacken-uebergang	http-429	0	Übergangs- & Bomberjacken
+damen-jacken-cape	ok	26	Capes & Ponchos
+aus-tiktok-und-instagram	ok	29	Aus TikTok und Instagram
+kochen-grillen-backen	ok	29	Kochen, Grillen & Backen
+kuechenhelfer-vorrat	ok	29	Küchenhelfer & Vorrat
+kuechengeraete-alle	ok	29	Küchengeräte
+geschirr-besteck-tisch	ok	29	Geschirr, Besteck & Tisch
+kaffee-tee-trinken	ok	30	Kaffee, Tee & Trinken
+kueche-kochen	ok	29	Küchenbedarf & Kochzubehör
+geschirr-tisch	ok	30	Geschirr & Tisch
+startseite-pool-schmuck	ok	14	Startseite Pool Schmuck
+startseite-pool-wohnen	ok	16	Startseite Pool Wohnen
+startseite-pool-trends	ok	29	Startseite Pool Trends
+startseite-pool-mehr	ok	24	Startseite Pool Mehr
+shop-geschenkideen	unveroeffentlicht	0	Geschenkideen
+shop-licht-wohnen	unveroeffentlicht	0	Licht & Wohnen
+shop-beauty-ordnung	unveroeffentlicht	0	Beauty & Ordnung
+shop-neue-entdeckungen	unveroeffentlicht	0	Neue Entdeckungen
+shop-fuer-katzen	unveroeffentlicht	0	Für Katzen
+shop-weihnachten-zuhause	unveroeffentlicht	0	Weihnachten Zuhause
+shop-unterwegs-alltag	unveroeffentlicht	0	Unterwegs & Alltag
+shop-mode-stil	unveroeffentlicht	0	Mode & Stil
+shop-schmuck-accessoires	unveroeffentlicht	0	Schmuck & Accessoires
