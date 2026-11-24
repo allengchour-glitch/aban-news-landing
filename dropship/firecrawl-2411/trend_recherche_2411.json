@@ -1,0 +1,237 @@
+{
+ "themes": [
+  {
+   "theme_de": "Wide-Leg-Jeans Damen",
+   "title_regex_hint": "(wide[- ]?leg|weite[sm]? bein|weiter schnitt|marlene|palazzo) together with \\bjeans\\b|denim. Pitfalls: Jeansjacke, Jeanskleid, Jeansrock and Jeanshemd also contain 'jeans', so require 'jeans' not followed by jacke|kleid|rock|hemd. 'Wide Leg Hose' (fabric trousers) is not denim. Exclude Herren unless wanted. Baggy and Barrel are related cuts, optional.",
+   "cj_search_terms": [
+    "wide leg jeans women",
+    "high waist wide leg denim pants"
+   ],
+   "sources": [
+    "https://nypost.com/2026/11/09/shopping/google-holiday-100-the-most-searched-gifts-of-2026/ (09.11.2026, checked: 'Women's wide leg jeans' searches +600%)",
+    "https://www.galaxus.ch/de/page/holiday-100-diese-geschenkideen-basieren-auf-den-google-trends-des-jahres-44452 (19.11.2026, checked: 'beliebtestes Modell ... die klassische Wide Leg Jeans')"
+   ],
+   "confidence": "high",
+   "reason": "Biggest clothing jump in the Google Holiday 100 (+600%), and Galaxus CH picks it out for Swiss buyers. Caveat: the two pages are not independent. Both relay the same Google list (US search data). Fits the core women's fashion range at about 0.6-0.8 kg, and works well past Christmas. Sizing returns are the main risk."
+  },
+  {
+   "theme_de": "Perlen-Hängeohrringe",
+   "title_regex_hint": "\\bperl(e|en)?\\b near (ohrring|ohrhänger|ohrstecker|creole); dangle markers: hänge|tropfen|baumel|drop. Pitfalls: 'Perlmutt' and 'perlweiss' (colour), Perlenkette and Perlenarmband (not earrings), 'Perlon'. Only write 'Süsswasserperle' or 'nickelfrei' if CJ documents it.",
+   "cj_search_terms": [
+    "pearl drop earrings",
+    "dangle pearl earrings stainless steel"
+   ],
+   "sources": [
+    "https://nypost.com/2026/11/09/shopping/google-holiday-100-the-most-searched-gifts-of-2026/ (09.11.2026, checked: 'Dangle pearl earring' searches +245%)",
+    "https://www.galaxus.ch/de/page/holiday-100-diese-geschenkideen-basieren-auf-den-google-trends-des-jahres-44452 (19.11.2026, checked: Perlenohrringe, +245%)"
+   ],
+   "confidence": "high",
+   "reason": "Confirmed in both checked sources with the same Google figure (one underlying dataset). Light, ships cheaply, no rule risk, easy CHF 24-39 gift, and sits in the existing Ohrringe collection. Still works as a gift after the Christmas shipping cut-off."
+  },
+  {
+   "theme_de": "Satin-Halstuch in Seidenoptik",
+   "title_regex_hint": "Explicit compounds only: halstuch|nickituch|foulard|seidentuch|satintuch|kopftuch|vierecktuch|carré|bandana, or 'tuch' together with satin|seide. Pitfalls: a bare 'tuch' matches Handtuch, Badetuch, Strandtuch, Tischtuch, Mikrofasertuch, Brillenputztuch, Kühltuch and Hundehalstuch. Strickschal is a different item. Only write 'Seide' if it is real silk.",
+   "cj_search_terms": [
+    "satin square scarf",
+    "silk feel printed square scarf 70cm"
+   ],
+   "sources": [
+    "https://nypost.com/2026/11/09/shopping/google-holiday-100-the-most-searched-gifts-of-2026/ (09.11.2026, checked: 'how to wear silk scarf' searches +560%)",
+    "https://www.galaxus.ch/de/page/holiday-100-diese-geschenkideen-basieren-auf-den-google-trends-des-jahres-44452 (19.11.2026, checked: Seidentücher/Foulards)",
+    "https://www.teenvogue.com/gallery/best-tiktok-gifts (modified 02.11.2026, original 2023; section 'A colorful scarf')"
+   ],
+   "confidence": "high",
+   "reason": "Strong search signal (+560%), the CH retailer pick confirms it, and it is under 100 g, so shipping is very cheap. CJ scarves are mostly polyester satin, so title them 'Satin' or 'Seidenoptik', never 'Seide'. Use the 70x70 or 90x90 size or a 2-pack to stay at CHF 19 or more."
+  },
+  {
+   "theme_de": "Pyjama-Set (Satin/Flanell, Unisex & Paar)",
+   "title_regex_hint": "pyjama|pyjamas|pijama|schlafanzug|lounge-?set|homewear-?set, optionally with satin|flanell|unisex|paar|partner. Pitfalls: adult rule, so exclude négligé|babydoll|dessous|sexy|chemise. Exclude Kinder- or Baby-Pyjamas with licensed prints, Onesie or Jumpsuit in animal shapes (costume rule), and single 'Pyjamahose' pieces.",
+   "cj_search_terms": [
+    "satin pajama set women",
+    "flannel pajama set unisex",
+    "matching couple pajamas"
+   ],
+   "sources": [
+    "https://nypost.com/2026/11/09/shopping/google-holiday-100-the-most-searched-gifts-of-2026/ (09.11.2026, checked: 'unisex pjs' +240%)",
+    "https://www.teenvogue.com/gallery/best-tiktok-gifts (modified 02.11.2026, checked: 'cute and cozy set of pajamas')",
+    "https://shopping.yahoo.com/gift-ideas/article/gen-z-is-sharing-christmas-wish-lists-on-tiktok-and-these-trending-gifts-are-still-in-stock-170929916.html (UNDATED, checked: matching pajama set 'the most repeated gift idea I saw')"
+   ],
+   "confidence": "high",
+   "reason": "Three different outlets point the same way: Google search data, plus two TikTok wish-list guides. Yahoo carries no date and Teen Vogue is a refreshed 2023 page, but the Google figure is dated Nov 2026. Classic Christmas Eve gift, light, CHF 39-59. The couple-set angle fits the shop's existing Paar theme."
+  },
+  {
+   "theme_de": "Strick: Rote Strickjacke & Streifen-Pullover",
+   "title_regex_hint": "(strickjacke|cardigan) with \\brot\\b|weinrot|bordeaux|kirschrot; or (strickpullover|strickpulli|pullover|sweater) with streifen|gestreift|ringel. Pitfalls: \\brot\\b is required (otherwise it hits Rotgold or rotierend). Exclude Hunde- and Katzenpullover, Strickmütze, Strickschal and Pulloverkleid. Hässlicher Weihnachtspullover is a different motif.",
+   "cj_search_terms": [
+    "red knit cardigan women",
+    "striped crew neck knit sweater women"
+   ],
+   "sources": [
+    "https://www.galaxus.ch/de/page/holiday-100-diese-geschenkideen-basieren-auf-den-google-trends-des-jahres-44452 (19.11.2026, checked: 'Rote Strickjacken' CHF 39.90-49.90, 'Gestreifte Rundhalspullover' CHF 39.90-57.90)"
+   ],
+   "confidence": "medium",
+   "reason": "Named by the Swiss retailer as Google 2026 trends, with branded reference prices of CHF 40-58, which leaves room for an unbranded version. Only one checked source: the NY Post excerpt of the same Google list does not show these two items. Red also suits Christmas styling, and the items sell through February."
+  },
+  {
+   "theme_de": "Satin-Top mit Spitze (Party-Top)",
+   "title_regex_hint": "(satin|seidenoptik) near (top|trägertop|camisole|cami) near 'mit spitze'|spitzenbesatz|spitzen-?top. Pitfalls: 'spitze' also means tip or top quality (Spitzenqualität, Schuhspitze, spitze Nadel), so require 'mit Spitze' or 'Spitzentop'. 'top' matches Topf, Laptop and Top-Qualität. Adult rule: exclude BH, Bralette, Body, Dessous, Négligé and sexy.",
+   "cj_search_terms": [
+    "satin lace trim cami top",
+    "lace trim satin camisole top"
+   ],
+   "sources": [
+    "https://www.galaxus.ch/de/page/holiday-100-diese-geschenkideen-basieren-auf-den-google-trends-des-jahres-44452 (19.11.2026, checked: 'Oberteile mit Spitze ... so viele Party-Tops wie im Dezember', CHF 22-78)"
+   ],
+   "confidence": "medium",
+   "reason": "Single checked source, but it is a Swiss retailer naming it explicitly for December party season. Very light and cheap to ship. Must be shown and titled as an outer party top, not lingerie, so it stays clear of the adult-items filter."
+  },
+  {
+   "theme_de": "Retro-Digitalkamera (kompakt)",
+   "title_regex_hint": "digitalkamera|kompaktkamera|retro-?kamera|vintage-?kamera|fotokamera. Pitfalls: 'Mini-Kamera' usually means spy or hidden cameras (versteckt, Überwachung, WLAN-Kamera, Nanny); exclude these hard. Also exclude Kinderkamera (toy, often licensed cases), Dashcam, Webcam, Actioncam, Wildkamera, Kameratasche, Kameragurt and Objektiv. 'Sofortbildkamera' means Instax look-alikes (brand risk).",
+   "cj_search_terms": [
+    "retro compact digital camera",
+    "vintage point and shoot digital camera"
+   ],
+   "sources": [
+    "https://www.teenvogue.com/gallery/best-tiktok-gifts (modified 02.11.2026, original 2023; checked: section 'A digital camera', 'A retro digital camera isn't just trendy')",
+    "https://shopping.yahoo.com/gift-ideas/article/gen-z-is-sharing-christmas-wish-lists-on-tiktok-and-these-trending-gifts-are-still-in-stock-170929916.html (UNDATED, checked: 'Compact digital cameras have taken over nights out')",
+    "https://nypost.com/2026/11/09/shopping/google-holiday-100-the-most-searched-gifts-of-2026/ (09.11.2026, checked, adjacent only: 'Fujifilm instax holiday set' +190%)",
+    "https://www.dormtherapy.com/best-viral-tiktok-gifts-100010221 (31.10.2026 per researcher, NOT checked)"
+   ],
+   "confidence": "medium",
+   "reason": "Several editorial TikTok gift guides agree on the Gen Z digicam trend, and it fits a CHF 39-69 price. But the Teen Vogue page is a refreshed 2023 page and Yahoo carries no date. The built-in lithium battery is allowed (not standalone), but check that CJ has a CH shipping line for battery goods. No Kodak, Camp Snap or Fujifilm look-alikes."
+  },
+  {
+   "theme_de": "Ovale Sonnenbrille (schmal)",
+   "title_regex_hint": "\\boval\\w* near sonnenbrille (either order); schmal|slim|retro optional. Pitfalls: exclude Brillenetui, Lesebrille, Skibrille, Kinder-Sonnenbrille, and titles carrying Ray-Ban, Miu Miu or Gentle Monster names. Only write 'UV400' or 'polarisiert' if CJ documents it.",
+   "cj_search_terms": [
+    "slim oval sunglasses",
+    "small oval sunglasses women retro"
+   ],
+   "sources": [
+    "https://nypost.com/2026/11/09/shopping/google-holiday-100-the-most-searched-gifts-of-2026/ (09.11.2026, checked: 'slim oval sunglasses' +550%)",
+    "https://www.galaxus.ch/de/page/holiday-100-diese-geschenkideen-basieren-auf-den-google-trends-des-jahres-44452 (19.11.2026, checked: Ovale Sonnenbrillen)"
+   ],
+   "confidence": "medium",
+   "reason": "The data is strong (+550%, both checked) and the shop already has a Sonnenbrillen collection. Downgraded from high because December in Switzerland is off-season (pitch it for ski or holiday trips) and because CJ often copies Ray-Ban or Miu Miu shapes and logos (counterfeit risk), so pick only listings without a logo."
+  },
+  {
+   "theme_de": "Reise-Geschenk: Canvas-Weekender & Packwürfel-Set",
+   "title_regex_hint": "weekender|reisetasche|duffel|sporttasche together with canvas|segeltuch; or packwürfel|packing ?cubes?|koffer-?organizer|kleidertaschen-set. Pitfalls: a bare 'tasche' is far too broad (Kosmetiktasche, Laptoptasche, Kulturbeutel). Exclude designer look-alike monograms (counterfeit) and Reisekissen. Put the piece count in packing-cube titles (multipack rule).",
+   "cj_search_terms": [
+    "canvas weekender bag",
+    "compression packing cubes set"
+   ],
+   "sources": [
+    "https://nypost.com/2026/11/09/shopping/google-holiday-100-the-most-searched-gifts-of-2026/ (09.11.2026, checked: 'canvas weekend bag' +225%, 'packing cubes' +70%, 'laptop backpack' +200%)",
+    "https://cjdropshipping.com/blogs/winning-products/Best-Dropshipping-Products-November-2026 (19.10.2026, vendor list, not checked)"
+   ],
+   "confidence": "low",
+   "reason": "Real Google search growth, but US only, with no Swiss signal. Packing cubes grew only +70%. A weekender often weighs close to 1 kg, so check the CJ packed weight. A unisex gift that also serves men, and evergreen after the holidays."
+  },
+  {
+   "theme_de": "Decken-Hoodie / Sherpa-Kuscheldecke",
+   "title_regex_hint": "decken-?hoodie|hoodie-?decke|tragbare decke|kuscheldecke mit ärmeln|oversize(d)? hoodie near sherpa|fleece|plüsch; also sherpa-?decke|kuscheldecke. Pitfalls: 'decke' matches Deckenlampe and Deckenleuchte, Bettdecke, Tischdecke, Picknickdecke, Babydecke and Hundedecke. Exclude heated, electric or USB versions (rule). A plain 'Hoodie' is a normal sweatshirt and overlaps the existing Paar-Hoodies theme.",
+   "cj_search_terms": [
+    "wearable blanket hoodie",
+    "oversized sherpa blanket hoodie",
+    "sherpa fleece throw blanket"
+   ],
+   "sources": [
+    "https://cjdropshipping.com/blogs/winning-products/Best-Dropshipping-Products-November-2026 (19.10.2026, vendor list, not checked)",
+    "https://eprolo.com/best-dropshipping-products-november (21.10.2026, vendor list, not checked)",
+    "https://www.sourcinbox.com/blog/best-dropshipping-products-to-sell-in-november-and-december-2026 (14.10.2026, vendor; Amazon/Temu sales figures = CLAIM)",
+    "https://www.tiktok.com/q/holidays/tiktok-trends-holiday-gifting?lang=en (08.11.2026 per search snippet only, page not read)"
+   ],
+   "confidence": "low",
+   "reason": "Picked first by three separately dated October 2026 vendor lists, but vendor lists are advertising and none was checked here. The only non-vendor signal (TikTok 'cozy blanket' clips, Fox4 faux-fur throw) is a snippet or undated page. It fits the Swiss winter, but it is bulky (volumetric weight) and often around 1 kg, so check the packed weight before importing."
+  }
+ ],
+ "rejected": [
+  {
+   "idea": "Christmas squishy advent calendar",
+   "why": "Timing kills it: CN->CH takes 10-20 days, so it arrives after 1 December. Also a toy (EN71; the hype row excludes Spielzeug), and the viral version is the NeeDoh brand. The Reddit unit numbers are a snippet only."
+  },
+  {
+   "idea": "Squishy stress toy set (NeeDoh-style)",
+   "why": "Toy category, excluded from the hype row. The demand is for the NeeDoh/Schylling brand. Good Housekeeping and Mashable pages are undated snippets."
+  },
+  {
+   "idea": "Bag charms",
+   "why": "Teen Vogue names them in its intro only, and that page was first published in 2023. FastMoss figures are vendor estimates. The category is dominated by licensed characters (Labubu, Sanrio), and single charms are under CHF 19."
+  },
+  {
+   "idea": "Ski-motif ceramic mug",
+   "why": "Search growth is real (+235%, NY Post 09.11.2026, checked) but US only. Ceramic often breaks in CN->CH post, and a single mug is under CHF 19. Possible later as a 2-pack test only."
+  },
+  {
+   "idea": "Adult bento lunch box",
+   "why": "Largest Google jump (+735%, checked), but it is a food-contact item that needs LFGB proof, US data only, and off-brand for a fashion and gift shop."
+  },
+  {
+   "idea": "Sculptural candle holder / festive candles",
+   "why": "'Festive candles' +335% is checked, but candles bring a fragrance-oil risk and the Kerzenwärmer history. The candle-holder evidence is a single Galaxus editor pick (23.11., not checked), and metal holders often exceed 1 kg."
+  },
+  {
+   "idea": "Hot water bottle with knitted cover",
+   "why": "A single editor pick (Galaxus 23.11., not checked), with health-wording risk ('wärmt bei Schmerzen')."
+  },
+  {
+   "idea": "Crocodile / animal plush slippers",
+   "why": "Sources are vendor lists only (AutoDS, EPROLO, Sell The Trend; scores and saturation are CLAIMS). Character-shaped slippers risk licensed look-alikes, plus shoe sizing returns. The editorial slipper demand is for the Ugg brand, which is counterfeit-prone."
+  },
+  {
+   "idea": "Fleece-lined translucent tights / thermal leggings",
+   "why": "Evidence is a single FastMoss vendor estimate (US TikTok Shop) plus an AutoDS page first published in July 2026. No independent demand signal. Could be a cheap test later."
+  },
+  {
+   "idea": "Heatless curling rod set",
+   "why": "A recycled 2023-24 TikTok trend. Retails under CHF 19. Vendor market figures are CLAIMS, and there is a risk of 'prevents hair damage' style claims."
+  },
+  {
+   "idea": "Padded satin sleep mask / satin sleep set",
+   "why": "Single undated Yahoo source naming the Drowsy brand, plus a single CJ vendor list. Under CHF 19."
+  },
+  {
+   "idea": "Raised keyboard cover for long nails",
+   "why": "Source is a 2021 Today.com page with refreshed images. Tippy Type brand and Apple-fit issues. Very niche."
+  },
+  {
+   "idea": "Suction-cup dart game",
+   "why": "Toy/game category, Popdarts brand, and the source is a 2021 page with refreshed images."
+  },
+  {
+   "idea": "Window cat hammock",
+   "why": "Only an undated Instagram snippet with Australian prices."
+  },
+  {
+   "idea": "Initial/monogram cosmetic pouch",
+   "why": "Single undated Yahoo source. Real personalisation is not possible via CJ, and 26 letter variants for a sub-CHF 19 item is poor value."
+  },
+  {
+   "idea": "Jigsaw puzzle 1000 pieces",
+   "why": "Antenne Bayern page is undated and relies on 2024/2025 surveys recycled under a 2026 title. Licensed-motif risk."
+  },
+  {
+   "idea": "Fleece half-zip pullover",
+   "why": "Single undated Yahoo source (Aritzia brand). The NY Post 'Rhone quarter zip' figure (+185%) is a brand search, not a generic trend."
+  },
+  {
+   "idea": "Touchscreen gloves / beanie-scarf sets",
+   "why": "Vendor lists only (CJ, EPROLO, AutoDS, Sell The Trend, HyperSKU). Teen Vogue's 'A warm hat' heading is too weak. Fine as a seasonal staple, but not a trend; keep it out of the hype row."
+  },
+  {
+   "idea": "Magnetic windshield snow cover",
+   "why": "Vendor lists only (Sell The Trend page undated). A car accessory is off-brand, and paint-scratch and 'no ice' claim risks."
+  },
+  {
+   "idea": "Christmas ornament set / dog Christmas sweater",
+   "why": "Deadline-bound with CN->CH 10-20 days: anything ordered from about early December arrives after Christmas. Vendor-only sources (AutoDS page originally July 2026)."
+  },
+  {
+   "idea": "DIY diamond-painting / craft kit, travel jewelry case, washable pet bed",
+   "why": "Vendor-list-only evidence (sales numbers are CLAIMS). Glue tubes are liquids, pet beds are bulky, and jewelry cases are under CHF 19."
+  }
+ ],
+ "quelle_line": "Recherche vom 24.11.2026: Die Google-Holiday-100-Suchdaten (USA) stammen von nypost.com (09.11.2026) und galaxus.ch (19.11.2026), beide geprüft, aber auf derselben Google-Liste beruhend; die TikTok-Geschenklisten von teenvogue.com (aktualisiert 02.11.2026, Erstfassung 2023) und shopping.yahoo.com (undatiert) sind geprüft; die Anbieterlisten von cjdropshipping.com (19.10. und 13.11.2026), eprolo.com (21.10.2026) und sourcinbox.com (14.10.2026) sind ungeprüft, und alle Absatz-, Umsatz- und Sättigungszahlen von Dropshipping-Anbietern (CJ, EPROLO, SourcinBox, AutoDS, FastMoss, Sell The Trend) gelten als BEHAUPTUNG."
+}

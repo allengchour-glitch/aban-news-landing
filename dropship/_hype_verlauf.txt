@@ -268,3 +268,25 @@
 2026-10-19	Heizjacke	gid://shopify/Product/15449424789889	Heizjacke mit USB-Anschluss
 2026-10-19	Waffeleisen	gid://shopify/Product/15505602216321	Mini Waffeleisen für Zuhause
 2026-10-19	Thermo-Lockenbürste	gid://shopify/Product/15500911870337	Glätt- & Lockenbürste 2-in-1
+2026-11-24	Wide-Leg-Jeans	gid://shopify/Product/15448655659393	Figurformende Stretchy Jeans mit weitem Bein
+2026-11-24	Perlen-Ohrringe	gid://shopify/Product/15448901386625	Blumen-Ohrstecker mit Strass & Perlen
+2026-11-24	Gestreifter Pullover	gid://shopify/Product/15489435468161	Eleganter Strickpullover mit Farbstreifen
+2026-11-24	Beauty-Gerät	gid://shopify/Product/15525475418497	Tragbares USB-Haarentfernungsgerät
+2026-11-24	Schlaf-Stützkissen	gid://shopify/Product/15495720796545	U-förmiges Seitenschläferkissen mit Beinstütze
+2026-11-24	Mini-Beamer	gid://shopify/Product/15520410632577	T20 Mini Beamer – HD Heimkino für unterwegs
+2026-11-24	Hygiene-Gadget	gid://shopify/Product/15510318285185	LED UV-Desinfektionstasche
+2026-11-24	Ordnung & Aesthetic	gid://shopify/Product/15455081496961	Faltbare Aufbewahrungsbox
+2026-11-24	Shapewear	gid://shopify/Product/15447900258689	Atmungsaktiver Taillengürtel mit Fischgrät-Shapewear
+2026-11-24	Ladestation 3-in-1	gid://shopify/Product/15449826066817	USB-C MagSafe Lader
+2026-11-24	Haarglätter & Styler	gid://shopify/Product/15448929567105	Kabellose Ionen-Glättbürste mit LCD-Anzeige
+2026-11-24	Kerzenwärmer & Duft	gid://shopify/Product/15455301075329	Farbenfrohe Aromatherapie-Lampe für Schreibtisch
+2026-11-24	LED-Strip	gid://shopify/Product/15508419346817	Wasserdichter RGB LED-Streifen, 12V
+2026-11-24	Wärme & Kuschel	gid://shopify/Product/15516219638145	USB-Heizkissen mit Graphen-Technologie
+2026-11-24	Karaoke-Mikrofon	gid://shopify/Product/15481764282753	Funkmikrofon-Set mit Echo und Klangregelung
+2026-11-24	Ringlicht	gid://shopify/Product/15506273862017	Bodenstativ mit LED-Ringlicht für Livestreams
+2026-11-24	Futterautomat	gid://shopify/Product/16611921101191	Automatische Futter- und Trinkschale für Katze
+2026-11-24	Hoodie-Decke	gid://shopify/Product/15450839777665	XXL Hoodie-Decke mit Taschen für Sie & Ihn
+2026-11-24	Haustier-Spielzeug smart	gid://shopify/Product/15500350128513	Smart Hundespielzeug
+2026-11-24	Sternenhimmel-Projektor	gid://shopify/Product/15481680593281	USB Weltraum Kapsel Sternenprojektor
+2026-11-24	Kuscheldecke	gid://shopify/Product/15511944626561	Husky Nap Pillow Kuscheldecke
+2026-11-24	Waffeleisen	gid://shopify/Product/16617711239559	Multifunktionaler Sandwich- und Waffelautomat

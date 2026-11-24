@@ -817,3 +817,20 @@ search:baby snowsuit
 search:christmas tree skirt
 search:table runner christmas
 search:felt christmas ornaments
+
+# 24.11.2026 Firecrawl-Trendrecherche (wf_eb3cb179-5e1; Google Holiday 100 2026 via nypost 09.11. + galaxus 19.11.): Bestand dünn bei Perlen-Ohrringen (7), Halstuch (13, meist CHF 16), roter Strickjacke (0), Packwürfeln (0), Decken-Hoodie (1).
+search:high waist wide leg denim pants
+search:dangle pearl earrings stainless steel
+search:satin square scarf
+search:silk feel printed square scarf 70cm
+search:satin pajama set women
+search:flannel pajama set unisex
+search:matching couple pajamas
+search:red knit cardigan women
+search:striped crew neck knit sweater women
+search:satin lace trim cami top
+search:slim oval sunglasses
+search:wearable blanket hoodie
+search:sherpa fleece throw blanket
+search:compression packing cubes set
+search:canvas weekender bag
