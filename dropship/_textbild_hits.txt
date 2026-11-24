@@ -18836,3 +18836,4 @@ gid://shopify/Product/16732291039623	110->2	Langarm-Shirt mit Retro-3D-Print
 gid://shopify/Product/16732291105159	147->0	Multifunktionaler Angelrucksack 20-35 l
 gid://shopify/Product/16732294742407	47->0	Lammwollmantel für Herbst und Winter
 gid://shopify/Product/16732294807943	161->1	Cardigan mit Fleece-Innenfutter, lockere Passform
+gid://shopify/Product/16732295070087	37->0	Sportliches Langarm-Shirt für Herren

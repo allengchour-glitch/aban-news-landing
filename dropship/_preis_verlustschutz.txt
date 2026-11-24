@@ -347899,3 +347899,16 @@
 67675949859207	heben	38.90	48.90	38.85	2026-11-24	sandalen-aus-leder-mit-kristallabsatz-951104
 67675949891975	heben	38.90	48.90	39.17	2026-11-24	sandalen-aus-leder-mit-kristallabsatz-951104
 67675949924743	heben	38.90	49.90	39.50	2026-11-24	sandalen-aus-leder-mit-kristallabsatz-951104
+68122349601159	heben	36.90	37.90	29.80	2026-11-24	nordische-nachttischlampe-aus-massivem-holz-mi-628800
+67948123128199	heben	36.90	37.90	29.95	2026-11-24	faltbarer-waschekorb-aus-leder-wasserdicht-629600
+67948123160967	heben	36.90	37.90	29.95	2026-11-24	faltbarer-waschekorb-aus-leder-wasserdicht-629600
+67948123193735	heben	36.90	37.90	29.95	2026-11-24	faltbarer-waschekorb-aus-leder-wasserdicht-629600
+67948123226503	heben	36.90	37.90	29.95	2026-11-24	faltbarer-waschekorb-aus-leder-wasserdicht-629600
+67948123259271	heben	36.90	37.90	29.95	2026-11-24	faltbarer-waschekorb-aus-leder-wasserdicht-629600
+67879734575495	heben	36.90	41.90	33.21	2026-11-24	usb-lade-wecker-mit-led-anzeige-f28f90
+67879734608263	heben	36.90	41.90	33.21	2026-11-24	usb-lade-wecker-mit-led-anzeige-f28f90
+67879734641031	heben	36.90	41.90	33.21	2026-11-24	usb-lade-wecker-mit-led-anzeige-f28f90
+67874412953991	heben	36.90	40.90	32.35	2026-11-24	kabellose-hd-uberwachungskamera-406b9f
+67874412986759	heben	36.90	40.90	32.35	2026-11-24	kabellose-hd-uberwachungskamera-406b9f
+67874413019527	heben	36.90	40.90	32.35	2026-11-24	kabellose-hd-uberwachungskamera-406b9f
+67874413052295	heben	36.90	40.90	32.35	2026-11-24	kabellose-hd-uberwachungskamera-406b9f
