@@ -538,3 +538,40 @@ gid://shopify/Product/15469948600705	draft-ausverkauft	Kostüm 80er Jahre
 gid://shopify/Product/15469948666241	draft-ausverkauft	Kostüm Skelett · Widmann Nr. 91224
 gid://shopify/Product/15469948862849	draft-ausverkauft	Geister Umhang mit Kapuze
 gid://shopify/Product/15469948928385	draft-ausverkauft	Kostüm Märchenprinzessin
+gid://shopify/Product/15469949190529	draft-ausverkauft	Hawaiirock 78 cm blau
+gid://shopify/Product/15469949321601	draft-ausverkauft	Mexikanischer Poncho
+gid://shopify/Product/15469949518209	draft-ausverkauft	Kostüm Peace & Love
+gid://shopify/Product/15469949649281	draft-ausverkauft	Kostüm Skelett · Widmann Nr. 92848
+gid://shopify/Product/15469949747585	draft-ausverkauft	Kostüm Schulabgänger
+gid://shopify/Product/15469949976961	draft-ausverkauft	Weste S.W.A.T.
+gid://shopify/Product/15469950042497	draft-ausverkauft	Poncho Voodoo Priesterin
+gid://shopify/Product/15469950108033	draft-ausverkauft	Kostüm Robin of Sherwood
+gid://shopify/Product/15469950566785	draft-ausverkauft	Paradefrack für Damen
+gid://shopify/Product/15469950665089	draft-ausverkauft	Kostüm Pirat · Kindergrösse
+gid://shopify/Product/15469950861697	draft-ausverkauft	Hawaiirock 75cm vielfarbig
+gid://shopify/Product/15469950894465	draft-ausverkauft	Roter Kardinal
+gid://shopify/Product/15469950992769	draft-ausverkauft	Indianerkostüm
+gid://shopify/Product/15469951025537	draft-ausverkauft	Schwarzer Umhang mit Kapuze
+gid://shopify/Product/15469951156609	draft-ausverkauft	Kostüm Dieb T-Shirt
+gid://shopify/Product/15469951222145	draft-ausverkauft	Kinderkostüm Pirat · Hemd, Weste, Hose & Kopftuch (Widmann)
+gid://shopify/Product/15469951320449	draft-ausverkauft	Kostüm Mafiaboss
+gid://shopify/Product/15469951418753	draft-ausverkauft	Kostüm Mönch
+gid://shopify/Product/15469951713665	draft-ausverkauft	Kostüm Charleston Kleid
+gid://shopify/Product/15469951811969	draft-ausverkauft	Kostüm Kardinal
+gid://shopify/Product/15469951844737	draft-ausverkauft	Kinderkostüm Zorro
+gid://shopify/Product/15469951877505	draft-ausverkauft	Hawaiirock 75 cm blau
+gid://shopify/Product/15469951943041	draft-ausverkauft	Poncho Hippie oder Gaucho-Cowboy
+gid://shopify/Product/15469952041345	draft-ausverkauft	Dunkelroter Samt-Umhang
+gid://shopify/Product/15469952106881	draft-ausverkauft	Trainingsanzug Weihnachten
+gid://shopify/Product/15469952139649	draft-ausverkauft	Kostüm Mönchskutte Gr. L
+gid://shopify/Product/15469952205185	draft-ausverkauft	Kostüm Indianerin · beige-hautfarbig (Widmann)
+gid://shopify/Product/15469952303489	draft-ausverkauft	Grease Pink Ladies Jacke
+gid://shopify/Product/15469952336257	draft-ausverkauft	Kostüm Arabischer Prinz
+gid://shopify/Product/15469952401793	draft-ausverkauft	Kostüm Skelett · Widmann Nr. 94375
+gid://shopify/Product/15469952434561	draft-ausverkauft	Tutu neonpink
+gid://shopify/Product/15469952532865	draft-ausverkauft	Discohemd 70er Jahre lila
+gid://shopify/Product/15469953614209	draft-ausverkauft	Drachen Kinderkostüm
+gid://shopify/Product/15469953810817	draft-ausverkauft	Kostüm 70er Jahre Flower Power
+gid://shopify/Product/15469953974657	draft-ausverkauft	Bananenkostüm
+gid://shopify/Product/15469954040193	draft-ausverkauft	Skelettlady
+gid://shopify/Product/15469954171265	draft-ausverkauft	Hippie Hemd
