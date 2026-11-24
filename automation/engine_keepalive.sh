@@ -628,6 +628,15 @@ if [ -f /tmp/kost28.jsonl ] && [ -f "$REPO_AUTO/preis_verlustschutz.py" ] \
   ( cd "$K_REPO" && starte preis_verlustschutz bash -c "exec 9>/tmp/lock_preis_verlustschutz.lock; flock -n 9 || exit 0; echo \"START \$(date -u +%FT%TZ) (Keepalive)\"; SCHARF=1 EXPORT=/tmp/kost28.jsonl exec python3 automation/preis_verlustschutz.py" )
 fi
 
+# ── 3e. Firecrawl-Preisvergleich (24.11.2026, Betreiber «fireclaw nutzen oder ich kündige»): einmal je Tag die Startseiten-Pools
+# gegen den Schweizer Markt prüfen (nur Produkte, die 14 Tage nicht geprüft wurden → neue Pool-Ware). Schreibt nichts in den Shop,
+# nur dropship/_preisvergleich.tsv + dropship/PREISVERGLEICH.md. Credit-Deckel: LIMIT 40 Produkte (~680 Credits) und RESERVE 1500.
+if [ -n "$FIRECRAWL_API_KEY" ] && [ -f "$REPO_AUTO/firecrawl_preisvergleich.py" ] && [ ! -f /tmp/_preisvergleich_$(date -u +%F).stamp ] \
+   && ! ps -eo args --no-headers | grep -q '[f]irecrawl_preisvergleich.py'; then
+  touch /tmp/_preisvergleich_$(date -u +%F).stamp
+  ( cd "$K_REPO" && starte preisvergleich env LIMIT=40 RESERVE=1500 PARALLEL=2 python3 automation/firecrawl_preisvergleich.py --pools )
+fi
+
 timeout 180 python3 "$REPO_AUTO/bestell_ampel.py" 2>/dev/null || echo "BESTELLUNGEN: unklar (Ampel-Skript fehlt oder > 180 s)"   # 19.10. (AMP-6): timeout
 # 19.10.2026: Pflichten, die nur eine Claude-Sitzung erledigen kann (Search Console über den OpenSEO-Konnektor): als Zeile, die die 4-h-Routine liest
 python3 "$REPO/tools/gsc_schnappschuss.py" --faellig 2>/dev/null || true
