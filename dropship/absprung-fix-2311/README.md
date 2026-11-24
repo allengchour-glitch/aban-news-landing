@@ -31,3 +31,8 @@ Sicherungen (Stand vor dem Schreiben): `sicherung/`.
 - **CJBJPFJY00219:** CJ führt weiterhin alle 13 Varianten (status 3). `stock/queryByVid` meldet für ALLE ~10–14k «factoryInventory» (cjInventory 0), **auch für die laut Ticket eingestellte Bergamotte** → die CJ-Bestandszahl beweist hier nichts. Sperren Bergamotte/Weihrauch bleiben; die übrigen 11 bleiben offen (kein Beleg für eingestellt). Lehre: Ein CJ-Ticket «Discontinued» schlägt die API-Bestandszahl.
 - **CJWY2689967 (Jacke 636700):** Name bei CJ «Casual Down Jackets …», aber Material «Cloth», Kategorie «Women's Padded Jackets», kein Füllungs-/Daunen-Satz in der Beschreibung → Daunen nicht belegt. LIVE: Titel «Lange Steppjacke für Damen», SEO-Titel/-Beschreibung, «diese Steppjacke» im Text, 21 Alt-Texte (Handle bleibt). Rückweg: `sicherung/jacken_636700_titel_vorher.json`.
 - **LX1042 / SD2611172218050640600:** unverändert UNSHIPPED, USD 24.61, alle 3 Positionen noch im Auftrag → CJ hat noch nichts storniert; Antwort im Ticket weiter offen (Betreiber).
+
+## #1042 Kundin (24.11.)
+- 04:47 UTC erste Mail (Betreiber gesendet). 08:12 UTC Antwort Kundin: «Bitte 2 …Ich möchte unbedingt die 2 Wickel» → gelesen als: Wickel liefern.
+- 08:39 UTC Antwort an Kundin gesendet (info@luxestyle.ch): Wickel kommen, Bergamotte CHF 15.21 zurück, Weihrauch je nach CJ, Versand gratis; falls «2» doch Storno gemeint war, kurz melden.
+- Offen (Betreiber): CJ-Ticket-Antwort (Auftrag SD2611172218050640600 um 08:3x noch unverändert mit beiden Ölen), Shopify-Teilerstattung Bergamotte CHF 15.21.
