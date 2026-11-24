@@ -3688,3 +3688,5 @@
 16732295102855	Farbe:2:2	2026-11-24	anzugschutzbeutel-aus-oxford-stoff-magnetische-611800
 16732283404679	Modell:3:3	2026-11-24	holzpuzzle-wolf-fuchs-lernspiel-fur-kinder-und-616400
 16732221145479	Ausführung:2:2	2026-11-24	acryl-wandlampe-ohne-bohrung-618800
+16732007235975	Farbe:4+Leistung:3:8	2026-11-24	magnetischer-kabelloser-ladegerat-626100
+16731870658951	Modell:5:5	2026-11-24	auto-wireless-ladehalter-mit-ventilhalterung-632300
