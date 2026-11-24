@@ -1,0 +1,1445 @@
+{
+ "id": "gid://shopify/Product/15447929389441",
+ "handle": "elegante-damenbluse-mit-ruschen-und-knopfleist-606400",
+ "title": "Elegante Damenbluse mit Rüschen und Knopfleiste",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17879325835649",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857378177",
+     "name": "Rosa"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857410945",
+     "name": "Aprikose"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857443713",
+     "name": "Weiss"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857476481",
+     "name": "Rot"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857509249",
+     "name": "Schwarz"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857542017",
+     "name": "Braun"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857574785",
+     "name": "Himmelblau"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857607553",
+     "name": "Dunkelrosa"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857640321",
+     "name": "Khaki"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductOption/17879325868417",
+   "name": "Grösse",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857673089",
+     "name": "XS"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857705857",
+     "name": "S"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857738625",
+     "name": "M"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857771393",
+     "name": "L"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857804161",
+     "name": "XL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12018857836929",
+     "name": "2XL"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55873538589057",
+    "title": "Rosa / XS",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "XS"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723455361"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538621825",
+    "title": "Rosa / S",
+    "position": 2,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723455361"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538654593",
+    "title": "Rosa / M",
+    "position": 3,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723455361"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538687361",
+    "title": "Rosa / L",
+    "position": 4,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723455361"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538720129",
+    "title": "Rosa / XL",
+    "position": 5,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723455361"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538752897",
+    "title": "Rosa / 2XL",
+    "position": 6,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723455361"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538785665",
+    "title": "Aprikose / XS",
+    "position": 7,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "XS"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723488129"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538818433",
+    "title": "Aprikose / S",
+    "position": 8,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723488129"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538851201",
+    "title": "Aprikose / M",
+    "position": 9,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723488129"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538883969",
+    "title": "Aprikose / L",
+    "position": 10,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723488129"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538916737",
+    "title": "Aprikose / XL",
+    "position": 11,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723488129"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538949505",
+    "title": "Aprikose / 2XL",
+    "position": 12,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723488129"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873538982273",
+    "title": "Weiss / XS",
+    "position": 13,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "XS"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723520897"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539015041",
+    "title": "Weiss / S",
+    "position": 14,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723520897"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539047809",
+    "title": "Weiss / M",
+    "position": 15,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723520897"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539080577",
+    "title": "Weiss / L",
+    "position": 16,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723520897"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539113345",
+    "title": "Weiss / XL",
+    "position": 17,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723520897"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539146113",
+    "title": "Weiss / 2XL",
+    "position": 18,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723520897"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539178881",
+    "title": "Rot / XS",
+    "position": 19,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XS"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723553665"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539211649",
+    "title": "Rot / S",
+    "position": 20,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rot"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723553665"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539244417",
+    "title": "Rot / M",
+    "position": 21,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rot"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723553665"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539277185",
+    "title": "Rot / L",
+    "position": 22,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rot"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723553665"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539309953",
+    "title": "Rot / XL",
+    "position": 23,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723553665"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539342721",
+    "title": "Rot / 2XL",
+    "position": 24,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rot"
+     },
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723553665"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539375489",
+    "title": "Schwarz / XS",
+    "position": 25,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XS"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723586433"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539408257",
+    "title": "Schwarz / S",
+    "position": 26,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723586433"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539441025",
+    "title": "Schwarz / M",
+    "position": 27,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723586433"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539473793",
+    "title": "Schwarz / L",
+    "position": 28,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723586433"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539506561",
+    "title": "Schwarz / XL",
+    "position": 29,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723586433"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539539329",
+    "title": "Schwarz / 2XL",
+    "position": 30,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723586433"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539572097",
+    "title": "Braun / XS",
+    "position": 31,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "XS"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723619201"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539604865",
+    "title": "Braun / S",
+    "position": 32,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723619201"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539637633",
+    "title": "Braun / M",
+    "position": 33,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723619201"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539670401",
+    "title": "Braun / L",
+    "position": 34,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723619201"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539703169",
+    "title": "Braun / XL",
+    "position": 35,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723619201"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539735937",
+    "title": "Braun / 2XL",
+    "position": 36,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723619201"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539768705",
+    "title": "Himmelblau / XS",
+    "position": 37,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Himmelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XS"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723651969"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539801473",
+    "title": "Himmelblau / S",
+    "position": 38,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Himmelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723651969"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539834241",
+    "title": "Himmelblau / M",
+    "position": 39,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Himmelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723651969"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539867009",
+    "title": "Himmelblau / L",
+    "position": 40,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Himmelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723651969"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539899777",
+    "title": "Himmelblau / XL",
+    "position": 41,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Himmelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723651969"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539932545",
+    "title": "Himmelblau / 2XL",
+    "position": 42,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Himmelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723651969"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539965313",
+    "title": "Dunkelrosa / XS",
+    "position": 43,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelrosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "XS"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723684737"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873539998081",
+    "title": "Dunkelrosa / S",
+    "position": 44,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelrosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723684737"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540030849",
+    "title": "Dunkelrosa / M",
+    "position": 45,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelrosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723684737"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540063617",
+    "title": "Dunkelrosa / L",
+    "position": 46,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelrosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723684737"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540096385",
+    "title": "Dunkelrosa / XL",
+    "position": 47,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelrosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723684737"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540129153",
+    "title": "Dunkelrosa / 2XL",
+    "position": 48,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelrosa"
+     },
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723684737"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540161921",
+    "title": "Khaki / XS",
+    "position": 49,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Khaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "XS"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723717505"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540194689",
+    "title": "Khaki / S",
+    "position": 50,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Khaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723717505"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540227457",
+    "title": "Khaki / M",
+    "position": 51,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Khaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723717505"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540260225",
+    "title": "Khaki / L",
+    "position": 52,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Khaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723717505"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540292993",
+    "title": "Khaki / XL",
+    "position": 53,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Khaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723717505"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55873540325761",
+    "title": "Khaki / 2XL",
+    "position": 54,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Khaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "2XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70578723717505"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/69852637069697",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Ansicht 5",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5a125b97-3f38-4ce1-8eca-6db2b62624d8.jpg?v=1783116069",
+     "width": 1291,
+     "height": 1291
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852635857281",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c9fc1886-b8e8-43da-9a29-e11b018d6903.jpg?v=1783116068",
+     "width": 1239,
+     "height": 1239
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852636971393",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Ansicht 2",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8bf645ea-b18d-4da0-a63d-014bc63585f1.jpg?v=1783116070",
+     "width": 1080,
+     "height": 1150
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852637004161",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Ansicht 3",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9dbbdd95-b8cc-4928-b27f-0442012638c0.jpg?v=1783116069",
+     "width": 720,
+     "height": 960
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852637036929",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Ansicht 4",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f06ed133-4bc4-462e-8709-4854c087abbe.jpg?v=1783116069",
+     "width": 1080,
+     "height": 1440
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852637102465",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Ansicht 6",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/56d3ecf7-176b-4b6a-8aa4-9f87dee7946b.jpg?v=1783116068",
+     "width": 720,
+     "height": 960
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852637135233",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Ansicht 7",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bbf05b1f-1bea-4a7a-8a9a-556304437dd0.jpg?v=1783116068",
+     "width": 968,
+     "height": 968
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69852637168001",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Ansicht 8",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/982356d4-28b1-479b-86da-7d989a75d21c.jpg?v=1783116069",
+     "width": 720,
+     "height": 960
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70578723455361",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Bild 1 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c9fc1886-b8e8-43da-9a29-e11b018d6903_470f4e15-868a-4c14-b920-9a49ffd95db2.jpg?v=1787067777",
+     "width": 1239,
+     "height": 1239
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70578723488129",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Bild 2 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/fa3b03b1-11a1-4003-b1de-fdba5ffe26cd.jpg?v=1787067777",
+     "width": 1251,
+     "height": 1251
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70578723520897",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Bild 3 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5a125b97-3f38-4ce1-8eca-6db2b62624d8_d8a4147e-8264-4d9c-ac32-551d75cc5a1a.jpg?v=1787067777",
+     "width": 1291,
+     "height": 1291
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70578723553665",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Bild 4 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c9dc90bd-992e-425e-8ad1-fa1ff8a97957.jpg?v=1787067777",
+     "width": 1311,
+     "height": 1311
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70578723586433",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Bild 5 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9dbbdd95-b8cc-4928-b27f-0442012638c0_f75c88bd-357e-461b-9d18-6cda31dff482.jpg?v=1787067777",
+     "width": 720,
+     "height": 960
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70578723619201",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Bild 6 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/982356d4-28b1-479b-86da-7d989a75d21c_a80c467e-7e58-4820-b5fe-85330e21d766.jpg?v=1787067777",
+     "width": 720,
+     "height": 960
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70578723651969",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Bild 7 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8bf645ea-b18d-4da0-a63d-014bc63585f1_594a1a17-fb45-4905-a1ef-797257402db2.jpg?v=1787067776",
+     "width": 1080,
+     "height": 1150
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70578723684737",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Bild 8 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f06ed133-4bc4-462e-8709-4854c087abbe_abe10173-350b-444b-a021-92dbf49428a0.jpg?v=1787067776",
+     "width": 1080,
+     "height": 1440
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70578723717505",
+    "mediaContentType": "IMAGE",
+    "alt": "Elegante Damenbluse mit Rüschen und Knopfleiste – Bild 9 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/56d3ecf7-176b-4b6a-8aa4-9f87dee7946b_bda2db6a-8976-4c5e-85c0-c1193449d1a2.jpg?v=1787067777",
+     "width": 720,
+     "height": 960
+    }
+   }
+  ]
+ }
+}

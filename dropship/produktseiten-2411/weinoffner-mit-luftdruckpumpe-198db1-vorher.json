@@ -1,0 +1,203 @@
+{
+ "id": "gid://shopify/Product/15509317452161",
+ "handle": "weinoffner-mit-luftdruckpumpe-198db1",
+ "title": "Weinöffner mit Luftdruckpumpe",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17956520591745",
+   "name": "Title",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/12443451523457",
+     "name": "Default Title"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/56156119204225",
+    "title": "Default Title",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Title",
+      "value": "Default Title"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70622640537985",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/757115612208.jpg?v=1787351723",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640570753",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 2 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/786810691299.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640603521",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 3 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/83b24aee-8c47-4bc1-ad97-cb3db6cc4664.png?v=1787351725",
+     "width": 548,
+     "height": 477
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640636289",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 4 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1457139020100.jpg?v=1787351724",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640669057",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 5 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/711639900361853.jpg?v=1787351724",
+     "width": 640,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640701825",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 6 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/422022547449.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640734593",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 7 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/142086084660.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640767361",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 8 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/297815859197.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640800129",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 9 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3722703495421.jpg?v=1787351724",
+     "width": 640,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640832897",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 10 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/111073512621864.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640865665",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 11 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1302290357820.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640898433",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 12 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/531271114022.jpg?v=1787351724",
+     "width": 640,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640931201",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 13 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4626807385620.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640963969",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 14 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/151491504103407.jpg?v=1787351723",
+     "width": 600,
+     "height": 600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640996737",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 15 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1173563080334.jpg?v=1787351737",
+     "width": 782,
+     "height": 780
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622641029505",
+    "mediaContentType": "IMAGE",
+    "alt": "Weinöffner mit Luftdruckpumpe – Bild 16 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1426019663574.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/Video/77437947445639",
+    "mediaContentType": "VIDEO"
+   }
+  ]
+ }
+}

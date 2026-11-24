@@ -1,0 +1,981 @@
+{
+ "id": "gid://shopify/Product/15412911964545",
+ "handle": "2-teiliges-leinen-set-provence-hemd-wide-leg-hose",
+ "title": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17837995458945",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676049793",
+     "name": "Pink"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676082561",
+     "name": "Weiss"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676115329",
+     "name": "Weinrot"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676148097",
+     "name": "Camel"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676180865",
+     "name": "Jeansblau"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676213633",
+     "name": "Schwarz"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductOption/17837995491713",
+   "name": "Grösse",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676246401",
+     "name": "S"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676279169",
+     "name": "M"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676311937",
+     "name": "L"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676344705",
+     "name": "XL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676377473",
+     "name": "XXL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803676410241",
+     "name": "3XL"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55747875701121",
+    "title": "Pink / S",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961637249"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747875733889",
+    "title": "Pink / M",
+    "position": 2,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961637249"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747875766657",
+    "title": "Pink / L",
+    "position": 3,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961637249"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747875799425",
+    "title": "Pink / XL",
+    "position": 4,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961637249"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747875832193",
+    "title": "Pink / XXL",
+    "position": 5,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961637249"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747875864961",
+    "title": "Pink / 3XL",
+    "position": 6,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961637249"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747875897729",
+    "title": "Weiss / S",
+    "position": 7,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961670017"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747875930497",
+    "title": "Weiss / M",
+    "position": 8,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961670017"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747875963265",
+    "title": "Weiss / L",
+    "position": 9,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961670017"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747875996033",
+    "title": "Weiss / XL",
+    "position": 10,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961670017"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876028801",
+    "title": "Weiss / XXL",
+    "position": 11,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961670017"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876061569",
+    "title": "Weiss / 3XL",
+    "position": 12,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961670017"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876094337",
+    "title": "Weinrot / S",
+    "position": 13,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961702785"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876127105",
+    "title": "Weinrot / M",
+    "position": 14,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961702785"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876159873",
+    "title": "Weinrot / L",
+    "position": 15,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961702785"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876192641",
+    "title": "Weinrot / XL",
+    "position": 16,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961702785"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876225409",
+    "title": "Weinrot / XXL",
+    "position": 17,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961702785"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876258177",
+    "title": "Weinrot / 3XL",
+    "position": 18,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961702785"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876290945",
+    "title": "Camel / S",
+    "position": 19,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Camel"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961735553"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876323713",
+    "title": "Camel / M",
+    "position": 20,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Camel"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961735553"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876356481",
+    "title": "Camel / L",
+    "position": 21,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Camel"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961735553"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876389249",
+    "title": "Camel / XL",
+    "position": 22,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Camel"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961735553"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876422017",
+    "title": "Camel / XXL",
+    "position": 23,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Camel"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961735553"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876454785",
+    "title": "Camel / 3XL",
+    "position": 24,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Camel"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961735553"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876487553",
+    "title": "Jeansblau / S",
+    "position": 25,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Jeansblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961768321"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876520321",
+    "title": "Jeansblau / M",
+    "position": 26,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Jeansblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961768321"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876553089",
+    "title": "Jeansblau / L",
+    "position": 27,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Jeansblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961768321"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876585857",
+    "title": "Jeansblau / XL",
+    "position": 28,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Jeansblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961768321"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876618625",
+    "title": "Jeansblau / XXL",
+    "position": 29,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Jeansblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961768321"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876651393",
+    "title": "Jeansblau / 3XL",
+    "position": 30,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Jeansblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961768321"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876684161",
+    "title": "Schwarz / S",
+    "position": 31,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961801089"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876716929",
+    "title": "Schwarz / M",
+    "position": 32,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961801089"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876749697",
+    "title": "Schwarz / L",
+    "position": 33,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961801089"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876782465",
+    "title": "Schwarz / XL",
+    "position": 34,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961801089"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876815233",
+    "title": "Schwarz / XXL",
+    "position": 35,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961801089"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747876848001",
+    "title": "Schwarz / 3XL",
+    "position": 36,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551961801089"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/69551961670017",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/56f75d30-c61c-4a9c-96aa-e5cc32fe1e6f.jpg?v=1780241734",
+     "width": 1440,
+     "height": 1920
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551961637249",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d2c0ab74-69bb-4694-8d25-162701bdd442.jpg?v=1780241733",
+     "width": 900,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551961702785",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8027087c-d30f-4a1d-8c6e-fc4ca2b08d42.jpg?v=1780241733",
+     "width": 1440,
+     "height": 1920
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551961735553",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9ffa025a-28fc-431e-9927-7b1a89e82bdd.jpg?v=1780241733",
+     "width": 900,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551961768321",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7f2340b5-c755-431a-833c-43eb9858fd11.jpg?v=1780241732",
+     "width": 900,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551961801089",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b01ee901-19d9-43d4-af73-c2175a4cb93c.jpg?v=1780241733",
+     "width": 1440,
+     "height": 1920
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552063054209",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2dee1ee4-2afa-44b1-acbd-ed7e69cc8df6.jpg?v=1780245395",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552063086977",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2bc5db94-0034-46b3-9ec7-bb417ac2b663.jpg?v=1780245396",
+     "width": 1920,
+     "height": 1920
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552063119745",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f720546c-55de-41bb-8864-2f63826fe03c.jpg?v=1780245395",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552063152513",
+    "mediaContentType": "IMAGE",
+    "alt": "2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a2186e2e-e657-47d6-a719-4c7039934b18.jpg?v=1780245395",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650086461825",
+    "mediaContentType": "IMAGE",
+    "alt": "LuxeStyle-Edit · 2-teiliges Leinen-Set «Provence» – Hemd & Wide-Leg-Hose",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2-teiliges-leinen-set-provence-hemd-wide-leg-hose-edit.jpg?v=1781097309",
+     "width": 1080,
+     "height": 1080
+    }
+   },
+   {
+    "id": "gid://shopify/Video/69682255135105",
+    "mediaContentType": "VIDEO"
+   }
+  ]
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "handle": "weinoffner-mit-luftdruckpumpe-198db1",
+ "status": "geschrieben",
+ "medien_vorher": 17,
+ "medien_nachher": 11,
+ "erste_variante": "Default Title",
+ "erstes_bild_erste_variante": null,
+ "infografik": null,
+ "entfernt": [
+  "gid://shopify/MediaImage/70622641029505",
+  "gid://shopify/MediaImage/70622640800129",
+  "gid://shopify/MediaImage/70622640636289",
+  "gid://shopify/MediaImage/70622640734593",
+  "gid://shopify/MediaImage/70622640603521",
+  "gid://shopify/MediaImage/70622640963969"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "handle": "elegante-damenbluse-mit-ruschen-und-knopfleist-606400",
+ "status": "geschrieben",
+ "medien_vorher": 17,
+ "medien_nachher": 10,
+ "erste_variante": "Himmelblau / XS",
+ "erstes_bild_erste_variante": "gid://shopify/MediaImage/70578723651969",
+ "infografik": null,
+ "entfernt": [
+  "gid://shopify/MediaImage/69852637069697",
+  "gid://shopify/MediaImage/69852635857281",
+  "gid://shopify/MediaImage/69852636971393",
+  "gid://shopify/MediaImage/69852637004161",
+  "gid://shopify/MediaImage/69852637036929",
+  "gid://shopify/MediaImage/69852637102465",
+  "gid://shopify/MediaImage/69852637168001"
+ ]
+}

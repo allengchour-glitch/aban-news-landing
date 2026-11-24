@@ -1,0 +1,1599 @@
+{
+ "id": "gid://shopify/Product/15413083242881",
+ "handle": "boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose",
+ "title": "Boho Resort-Set · 2-teilig (Top & Hose)",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17838206878081",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11805847716225",
+     "name": "Weiss"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805847748993",
+     "name": "Schwarz"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805847814529",
+     "name": "Pink"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805847847297",
+     "name": "Orangerot"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805847880065",
+     "name": "Weinrot"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805847912833",
+     "name": "Dunkelblau"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805847945601",
+     "name": "Hellblau"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805847978369",
+     "name": "Hellgrün"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductOption/17838206910849",
+   "name": "Grösse",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11805848011137",
+     "name": "S"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805848043905",
+     "name": "M"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805848076673",
+     "name": "L"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805848109441",
+     "name": "XL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805848142209",
+     "name": "XXL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805848174977",
+     "name": "3XL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805848207745",
+     "name": "4XL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805848240513",
+     "name": "5XL"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55748870898049",
+    "title": "Weiss / S",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849092993"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748870930817",
+    "title": "Weiss / M",
+    "position": 2,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849092993"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748870963585",
+    "title": "Weiss / L",
+    "position": 3,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849092993"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748870996353",
+    "title": "Weiss / XL",
+    "position": 4,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849092993"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871029121",
+    "title": "Weiss / XXL",
+    "position": 5,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849092993"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871061889",
+    "title": "Weiss / 3XL",
+    "position": 6,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849092993"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871094657",
+    "title": "Weiss / 4XL",
+    "position": 7,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "4XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849092993"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871127425",
+    "title": "Weiss / 5XL",
+    "position": 8,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "5XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849092993"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871160193",
+    "title": "Schwarz / S",
+    "position": 9,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848961921"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871192961",
+    "title": "Schwarz / M",
+    "position": 10,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848961921"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871225729",
+    "title": "Schwarz / L",
+    "position": 11,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848961921"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871258497",
+    "title": "Schwarz / XL",
+    "position": 12,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848961921"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871291265",
+    "title": "Schwarz / XXL",
+    "position": 13,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848961921"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871324033",
+    "title": "Schwarz / 3XL",
+    "position": 14,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848961921"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871356801",
+    "title": "Schwarz / 4XL",
+    "position": 15,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "4XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848961921"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871389569",
+    "title": "Schwarz / 5XL",
+    "position": 16,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "5XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848961921"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871684481",
+    "title": "Pink / S",
+    "position": 17,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848994689"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871717249",
+    "title": "Pink / M",
+    "position": 18,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848994689"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871750017",
+    "title": "Pink / L",
+    "position": 19,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848994689"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871782785",
+    "title": "Pink / XL",
+    "position": 20,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848994689"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871815553",
+    "title": "Pink / XXL",
+    "position": 21,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848994689"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871848321",
+    "title": "Pink / 3XL",
+    "position": 22,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848994689"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871881089",
+    "title": "Pink / 4XL",
+    "position": 23,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "4XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848994689"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871913857",
+    "title": "Pink / 5XL",
+    "position": 24,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Pink"
+     },
+     {
+      "name": "Grösse",
+      "value": "5XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848994689"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871946625",
+    "title": "Orangerot / S",
+    "position": 25,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Orangerot"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849060225"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748871979393",
+    "title": "Orangerot / M",
+    "position": 26,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Orangerot"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849060225"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872012161",
+    "title": "Orangerot / L",
+    "position": 27,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Orangerot"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849060225"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872044929",
+    "title": "Orangerot / XL",
+    "position": 28,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Orangerot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849060225"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872077697",
+    "title": "Orangerot / XXL",
+    "position": 29,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Orangerot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849060225"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872110465",
+    "title": "Orangerot / 3XL",
+    "position": 30,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Orangerot"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849060225"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872143233",
+    "title": "Orangerot / 4XL",
+    "position": 31,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Orangerot"
+     },
+     {
+      "name": "Grösse",
+      "value": "4XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849060225"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872176001",
+    "title": "Orangerot / 5XL",
+    "position": 32,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Orangerot"
+     },
+     {
+      "name": "Grösse",
+      "value": "5XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849060225"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872208769",
+    "title": "Weinrot / S",
+    "position": 33,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849158529"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872241537",
+    "title": "Weinrot / M",
+    "position": 34,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849158529"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872274305",
+    "title": "Weinrot / L",
+    "position": 35,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849158529"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872307073",
+    "title": "Weinrot / XL",
+    "position": 36,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849158529"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872339841",
+    "title": "Weinrot / XXL",
+    "position": 37,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849158529"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872372609",
+    "title": "Weinrot / 3XL",
+    "position": 38,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849158529"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872405377",
+    "title": "Weinrot / 4XL",
+    "position": 39,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "4XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849158529"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872438145",
+    "title": "Weinrot / 5XL",
+    "position": 40,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "5XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849158529"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872470913",
+    "title": "Dunkelblau / S",
+    "position": 41,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848929153"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872503681",
+    "title": "Dunkelblau / M",
+    "position": 42,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848929153"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872536449",
+    "title": "Dunkelblau / L",
+    "position": 43,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848929153"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872569217",
+    "title": "Dunkelblau / XL",
+    "position": 44,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848929153"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872601985",
+    "title": "Dunkelblau / XXL",
+    "position": 45,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848929153"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872634753",
+    "title": "Dunkelblau / 3XL",
+    "position": 46,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848929153"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872667521",
+    "title": "Dunkelblau / 4XL",
+    "position": 47,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "4XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848929153"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872700289",
+    "title": "Dunkelblau / 5XL",
+    "position": 48,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "5XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848929153"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872733057",
+    "title": "Hellblau / S",
+    "position": 49,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849027457"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872765825",
+    "title": "Hellblau / M",
+    "position": 50,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849027457"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872798593",
+    "title": "Hellblau / L",
+    "position": 51,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849027457"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872831361",
+    "title": "Hellblau / XL",
+    "position": 52,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849027457"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872864129",
+    "title": "Hellblau / XXL",
+    "position": 53,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849027457"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872896897",
+    "title": "Hellblau / 3XL",
+    "position": 54,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849027457"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872929665",
+    "title": "Hellblau / 4XL",
+    "position": 55,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "4XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849027457"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872962433",
+    "title": "Hellblau / 5XL",
+    "position": 56,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellblau"
+     },
+     {
+      "name": "Grösse",
+      "value": "5XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552849027457"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748872995201",
+    "title": "Hellgrün / S",
+    "position": 57,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellgrün"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848896385"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748873027969",
+    "title": "Hellgrün / M",
+    "position": 58,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellgrün"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848896385"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748873060737",
+    "title": "Hellgrün / L",
+    "position": 59,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellgrün"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848896385"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748873093505",
+    "title": "Hellgrün / XL",
+    "position": 60,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellgrün"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848896385"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748873126273",
+    "title": "Hellgrün / XXL",
+    "position": 61,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellgrün"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848896385"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748873159041",
+    "title": "Hellgrün / 3XL",
+    "position": 62,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellgrün"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848896385"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748873191809",
+    "title": "Hellgrün / 4XL",
+    "position": 63,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellgrün"
+     },
+     {
+      "name": "Grösse",
+      "value": "4XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848896385"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748873224577",
+    "title": "Hellgrün / 5XL",
+    "position": 64,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Hellgrün"
+     },
+     {
+      "name": "Grösse",
+      "value": "5XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69552848896385"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/69552848896385",
+    "mediaContentType": "IMAGE",
+    "alt": "Boho Resort-Set Bild 1",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e8a83165-48b0-44fa-afdf-d166ad195908.jpg?v=1780267677",
+     "width": 900,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552848929153",
+    "mediaContentType": "IMAGE",
+    "alt": "Boho Resort-Set Bild 2",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f9b07cb1-d0a5-4c12-a5d6-cad0636d5310.jpg?v=1780267677",
+     "width": 900,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552848961921",
+    "mediaContentType": "IMAGE",
+    "alt": "Boho Resort-Set Bild 3",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02d94ee0-f14c-4c92-a1ae-52889e3bde8a.jpg?v=1780267677",
+     "width": 900,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552848994689",
+    "mediaContentType": "IMAGE",
+    "alt": "Boho Resort-Set Bild 4",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5565d037-31a9-41d0-be6c-be75c280a833.jpg?v=1780267677",
+     "width": 900,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552849027457",
+    "mediaContentType": "IMAGE",
+    "alt": "Boho Resort-Set Bild 5",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cb7def10-7677-427e-9b0b-58176a0b37b4.jpg?v=1780267677",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552849060225",
+    "mediaContentType": "IMAGE",
+    "alt": "Boho Resort-Set Bild 6",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3a0af592-89bd-4607-abc0-447dc8bca98c.jpg?v=1780267677",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552849092993",
+    "mediaContentType": "IMAGE",
+    "alt": "Boho Resort-Set Bild 7",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/17fa4a46-a2b1-4e2c-8c57-c9b3b9090577.jpg?v=1780267677",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552849125761",
+    "mediaContentType": "IMAGE",
+    "alt": "Boho Resort-Set Bild 8",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e0682bc0-de42-4d93-a3e5-bf5ba9a38f74.jpg?v=1780267678",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552849158529",
+    "mediaContentType": "IMAGE",
+    "alt": "Boho Resort-Set Bild 9",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/74400fe3-94fc-44b0-a557-9c635f718b4f.jpg?v=1780267677",
+     "width": 900,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650124767617",
+    "mediaContentType": "IMAGE",
+    "alt": "LuxeStyle-Edit · Boho Resort-Set · 2-teilig, Sommer-Kollektion 2026 (Top & Hose)",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose-edit.jpg?v=1781097509",
+     "width": 1080,
+     "height": 1080
+    }
+   }
+  ]
+ }
+}
