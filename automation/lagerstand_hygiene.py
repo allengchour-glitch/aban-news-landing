@@ -18,7 +18,7 @@ gestalten») aus dem Shop nehmen — laut Projektregel ein heiliger Bereich.
 
 DRY=1 meldet nur.
 """
-import datetime, json, os, re, subprocess, sys, time
+import datetime, json, os, re, subprocess, sys, time, urllib.request
 
 # Der Aufseher startet die /tmp-Kopie; dort fehlt klingenregel.json → immer die Repo-Fassung laden.
 sys.path.insert(0, "/home/user/aban-news-landing/automation")
@@ -30,6 +30,37 @@ TOK = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY") == "1"
 LEDGER = "dropship/_lagerstand_hygiene.txt"
 FORTURA_PAUSE = "dropship/_fortura_hygiene_pause.txt"
+
+
+POD_TAGS = {"printful_personalized_product", "selbst-gestalten", "wunschdesign", "pod-poster", "pod-shirt"}
+
+
+def ist_pod(p):
+    """Druck auf Bestellung (Printful-SKU «9000001_…» oder Editor-Tags) — hat kein eigenes Lager."""
+    tags = {str(x).lower() for x in (p.get("tags") or [])}
+    return bool(tags & POD_TAGS) or any(re.match(r"^\d{6,8}_\d{3,6}$", v.get("sku") or "") for v in p["variants"]["nodes"])
+
+
+def printful_lieferbar(vs):
+    """Nur ganz gesperrte POD-Produkte entsperren, und nur wenn Printful jede Variante druckt.
+    Teil-Sperren bleiben unberührt (Lehre 11.08.: Printful 5XL nur US → DENY ist dort eine Aussage)."""
+    key = os.environ.get("PRINTFUL_API_KEY")
+    for v in vs:
+        m = re.match(r"^9000001_(\d+)$", v.get("sku") or "")
+        if not m:
+            continue  # eigene Druckware (z. B. TRANSFER-A3 bei misterdtf.ch): kein Lager, kein Printful-Abgleich
+        if not key:
+            return False
+        try:
+            req = urllib.request.Request(f"https://api.printful.com/products/variant/{m.group(1)}",
+                                         headers={"Authorization": f"Bearer {key}", "User-Agent": "lx-hygiene"})
+            vv = json.load(urllib.request.urlopen(req, timeout=20))["result"]["variant"]
+            if not vv.get("in_stock"):
+                return False
+        except Exception:
+            return False
+        time.sleep(0.3)
+    return True
 
 
 def fortura_pause():
@@ -119,7 +150,7 @@ def main():
     for _seite in range(200):
         d = gql('query($c:String){products(first:100,after:$c,query:"status:ACTIVE AND inventory_total:0"){'
                 'pageInfo{hasNextPage endCursor} nodes{'
-                'id title tags variants(first:100){nodes{id inventoryPolicy '
+                'id title tags variants(first:100){nodes{id sku inventoryPolicy '
                 'inventoryItem{id tracked}}}}}}', {"c": cur})
         P = ((d.get("data") or {}).get("products") or {})
         nodes += P.get("nodes") or []
@@ -136,6 +167,21 @@ def main():
         vs = p["variants"]["nodes"]
         blockiert = [v for v in vs if v["inventoryPolicy"] == "DENY"
                      and v["inventoryItem"]["tracked"]]
+        if blockiert and len(blockiert) == len(vs) and ist_pod(p) and printful_lieferbar(blockiert):
+            # 24.11.2026: Druck auf Bestellung (Printful/Editor «Selbst gestalten») hat KEIN Lager. DENY + tracked + 0 heisst hier
+            # nur «falsch eingestellt», nicht «ausverkauft» → kaufbar stellen statt draften. Anlass: «Magnet zum Selbstgestalten»
+            # wurde am 23.11. von diesem Lauf gedraftet (6 Besuche/30 T liefen danach ins Leere, Editor ist heiliger Bereich).
+            print(f"  🎨 POD kaufbar stellen (kein Lager): {p['title'][:46]}", flush=True)
+            if not DRY:
+                gql('mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){userErrors{message}}}',
+                    {"p": p["id"], "v": [{"id": v["id"], "inventoryPolicy": "CONTINUE"} for v in blockiert]})
+                for v in blockiert:
+                    gql('mutation($id:ID!,$in:InventoryItemInput!){inventoryItemUpdate(id:$id,input:$in){userErrors{message}}}',
+                        {"id": v["inventoryItem"]["id"], "in": {"tracked": False}})
+                    time.sleep(0.2)
+                f.write(f"{p['id']}\tpod-kaufbar:{len(blockiert)}\t{p['title']}\n"); f.flush()
+            entkoppelt += len(blockiert)
+            continue
         if blockiert and len(blockiert) == len(vs):
             # Fall A: kein einziger Variantenkauf möglich -> aus dem Schaufenster nehmen.
             if pause and "fortura" in {str(t).lower() for t in (p.get("tags") or [])}:
