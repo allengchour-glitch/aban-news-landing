@@ -8605,3 +8605,7 @@ gid://shopify/Product/15477966111105	bild-urls-tot
 gid://shopify/Product/15486184882561	bild-urls-tot
 gid://shopify/Product/15486185275777	bild-urls-tot
 gid://shopify/Product/15486185570689	bild-urls-tot
+gid://shopify/Product/15496372420993	bild-urls-tot
+gid://shopify/Product/15496372945281	bild-urls-tot
+gid://shopify/Product/15496373109121	bild-urls-tot
+gid://shopify/Product/15496378188161	bild-urls-tot
