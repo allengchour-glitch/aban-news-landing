@@ -1376,3 +1376,34 @@ springseile	ok	29	Springseile
 bauchtrainer-liegestuetz-klimmzug	ok	29	Bauchtrainer, Liegestütz- & Klimmzuggeräte
 bauchtrainer-bauchroller	ok	29	Bauchroller & Bauchräder
 liegestuetz-klimmzug-geraete	ok	27	Liegestütz & Klimmzug
+balance-gymnastik	ok	29	Balance Boards, Gymnastikbälle & Steps
+kraftsport-handschuhe-guertel	ok	29	Kraftsport-Handschuhe, Gürtel & Bandagen
+trainingsgeraete-arm-bein-ganzkoerper	ok	29	Trainingsgeräte für Arme, Beine & Ganzkörper
+taillentrainer-hula-hoop	ok	24	Taillentrainer & Hula-Hoop
+yogamatten-fitnessmatten	ok	29	Yoga-, Fitness- & Gymnastikmatten
+yoga-pilates-zubehoer	ok	29	Yoga- & Pilates-Zubehör
+faszienrollen-massagebaelle	ok	25	Faszienrollen & Massagebälle
+zelte-zeltzubehoer	ok	27	Zelte & Zeltzubehör
+schlafsaecke-isomatten-luftbetten	ok	29	Schlafsäcke, Isomatten & Luftbetten
+campingmoebel-haengematten	ok	29	Campingmöbel & Hängematten
+haengematten-camping	ok	21	Hängematten
+camping-kocher-gaskocher	ok	29	Campingkocher & Gaskocher
+camping-geschirr-kochsets	ok	29	Camping-Geschirr, Kochsets & Grills
+picknick-kuehlrucksaecke	ok	29	Picknick & Kühlrucksäcke
+picknick-rucksaecke-taschen	ok	24	Rucksäcke & Taschen
+camping-licht-zubehoer	ok	26	Camping-Licht, Duschen & Zubehör
+wander-kletter-survival	ok	29	Wanderstöcke, Kletter- & Survival-Ausrüstung
+angeln-angelzubehoer	ok	29	Angeln & Angelzubehör
+schwimmen-tauchen-wassersport	ok	27	Schwimmen, Tauchen & Wassersport
+velohelme	ok	29	Velohelme
+velohelme-kinder	ok	22	Kinderhelme
+velohelme-mountainbike	ok	28	Mountainbike-Helme
+velohelme-mit-licht	ok	23	Mit Licht
+velolichter-reflektoren	ok	29	Velolichter & Reflektoren
+velolichter-ruecklichter	ok	29	Rücklichter
+velolichter-frontlichter	ok	29	Frontlichter & Scheinwerfer
+velolichter-usb	ok	29	USB-aufladbar
+velotaschen-rucksaecke	ok	29	Velotaschen & Fahrradrucksäcke
+velotaschen-heck-gepaecktraeger	ok	21	Heck- & Gepäckträgertaschen
+velotaschen-fahrradrucksaecke	ok	29	Fahrradrucksäcke
+velo-werkzeug-reparatur	ok	24	Velo-Werkzeug & Reparatur
