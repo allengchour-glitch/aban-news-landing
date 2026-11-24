@@ -312,6 +312,34 @@
     "btc": 61161.91015625,
     "eth": 1721.07568359375
    }
+  },
+  {
+   "stand": "2026-11-23",
+   "zeit": "2026-11-24T14:58:04+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 725,
+   "kosten_usd": 0.021607,
+   "stufe": "opus",
+   "eskaliert": {
+    "von": "claude-haiku-5-5",
+    "grund": "Haiku nur 0.50 sicher bei Bitcoin"
+   },
+   "btc": {
+    "position": -0.05,
+    "begruendung": "Klarer Abwärtstrend: 30 T. -24 %, Kurs 15–20 % unter allen Schnitten. Dagegen stehen Angst&Gier 11 und eine Stabilisierung seit dem Tief bei 58'799 (3 Tage +4 %). Das Risiko einer Gegenbewegung ist hoch. Ich halte den kleinen Short, weil eine Änderung nur Gebühren kostet und kein klares Signal liefert. Funding ist praktisch null.",
+    "sicherheit": 0.35
+   },
+   "eth": {
+    "position": 0.0,
+    "begruendung": "ETH ist schwächer als BTC (30 T. -27.5 %, 23 % unter dem 50-Tage-Schnitt). Das negative Funding zeigt aber, dass bereits viele short sind, und das MVRV von 0.85 spricht für Kapitulation. Mit 67 % Vola wäre ein Short-Squeeze teuer. Ich bleibe flach.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Der Trend ist klar bärisch, Stimmung und Bewertung sind aber extrem überverkauft. Darum halte ich die bisherigen Mini-Positionen und vermeide unnötige Gebühren. Einen grösseren Short erwäge ich erst, wenn das Tief bei 58'799 bzw. 1'619 bricht. Eine Long-Erwägung kommt erst bei einer Rückeroberung von etwa 65k bzw. 1'830 in Frage.",
+   "kurse": {
+    "btc": 61210.984375,
+    "eth": 1708.851318359375
+   }
   }
  ]
 }
