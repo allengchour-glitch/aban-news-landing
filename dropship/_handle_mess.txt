@@ -260,3 +260,11 @@ gid://shopify/Product/15507836731777	doppel-diamant-open-ring-aus-edelstahl-6382
 gid://shopify/Product/16654434075015	diamant-gestellter-blumenring-grosse-5-9-618500	offener-blumenring-mit-steinbesatz-grosse-59-618500	301
 gid://shopify/Product/15453770580353	damen-lauf-und-wanderschuhe-aus-leder-681920	damen-lauf-und-wanderschuhe-mit-mesh-obermaterial-681920	301
 gid://shopify/Product/15501005062529	vintage-herren-lederarmband-mit-leopardenkopf-605700	vintage-herren-armband-mit-leopardenkopf-605700	301
+gid://shopify/Product/15453793878401	elektrisch-leitende-yogamatte-aus-leder-654700	elektrisch-leitende-yogamatte-aus-kunstleder-654700	301
+gid://shopify/Product/16731868987783	plaid-leder-sandalen-mit-dicker-sohle-630800	plaid-kunstleder-sandalen-mit-dicker-sohle-630800	301
+gid://shopify/Product/16732151710087	retro-leder-gurtel-mit-stierkopf-schnalle-125-600000	retro-kunstleder-gurtel-mit-stierkopf-schnalle-125-cm-600000	301
+gid://shopify/Product/16732205547911	retro-britische-lederschuhe-leichte-runde-zehe-603400	retro-britische-kunstlederschuhe-leichte-runde-zehen-603400	301
+gid://shopify/Product/16732211872135	weiblicher-soft-leder-bondage-gurtel-611600	weiblicher-soft-kunstleder-bondage-gurtel-611600	301
+gid://shopify/Product/16732212003207	breite-lederwinter-stiefel-fur-herren-619800	breite-kunstlederwinter-stiefel-fur-herren-619800	301
+gid://shopify/Product/16732253553031	kinder-lederschuhe-mit-mikrofaserfutter-608100	kinder-kunstlederschuhe-mit-mikrofaserfutter-608100	301
+gid://shopify/Product/16732648309127	schuhpolitur-set-mit-burste-und-lederpflege-614700	schuhpolitur-set-mit-burste-und-kunstlederpflege-614700	301

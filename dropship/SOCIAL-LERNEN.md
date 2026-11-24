@@ -1,6 +1,6 @@
-# Social-Lernen — Stand 2026-11-24 06:36 UTC
+# Social-Lernen — Stand 2026-11-24 12:42 UTC
 
-Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pinterest 397 · Facebook-Reels 97 · YouTube 75 → **608 Inhalte**; 10 zu junge Posts nicht gezählt.
+Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 231 · TikTok 130 · Pinterest 398 · Facebook-Reels 96 · YouTube 75 → **610 Inhalte**; 10 zu junge Posts nicht gezählt.
 
 **So wird gerechnet:** Jeder Post wird am Median seines Kanals und Formats (±21 Tage) gemessen (×1.00 = typisch; +5 als Rauschboden, damit «7 statt 0 Impressionen» kein ×8 wird). Gewicht = exp(Σ ln(rel) / (n + 3)): Bayes-Glättung Richtung Durchschnitt, ein Einzelpost bewegt ein Gewicht höchstens um ×1.68. **n** = Inhalte. **Belastbar erst ab n ≥ 3** — alles darunter ist ein Hinweis, keine Erkenntnis. Der Reel-Motor bevorzugt nur belastbare Hooks.
 
@@ -10,13 +10,13 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pi
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| beauty | 29 | 1.38 | 1.26 | ja |
+| beauty | 29 | 1.39 | 1.33 | ja |
 | gadget | 41 | 1.28 | 1.02 | ja |
-| mode | 110 | 1.26 | 1.01 | ja |
-| kinder | 26 | 1.23 | 1.00 | ja |
+| mode | 110 | 1.26 | 1.00 | ja |
+| kinder | 26 | 1.24 | 1.00 | ja |
 | haustier | 54 | 1.21 | 1.03 | ja |
 | fitness | 19 | 1.14 | 1.12 | ja |
-| home | 132 | 1.01 | 0.95 | ja |
+| home | 134 | 1.01 | 0.96 | ja |
 | allgemein | 128 | 1.01 | 1.00 | ja |
 | kueche | 44 | 0.95 | 0.95 | ja |
 | schmuck | 25 | 0.94 | 0.98 | ja |
@@ -50,12 +50,12 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pi
 | facebook 21–24 | 9 | 1.79 | 1.50 | ja |
 | tiktok 21–24 | 12 | 1.52 | 1.02 | ja |
 | pinterest 03–06 | 84 | 1.44 | 1.29 | ja |
-| facebook 09–12 | 28 | 1.33 | 1.00 | ja |
-| instagram 12–15 | 28 | 1.33 | 1.23 | ja |
-| pinterest 18–21 | 42 | 1.28 | 0.89 | ja |
+| facebook 09–12 | 27 | 1.36 | 1.00 | ja |
+| instagram 12–15 | 29 | 1.32 | 1.22 | ja |
+| pinterest 18–21 | 42 | 1.28 | 0.90 | ja |
 | pinterest 09–12 | 7 | 1.27 | 1.33 | ja |
 | pinterest 15–18 | 14 | 1.27 | 0.89 | ja |
-| facebook 18–21 | 28 | 1.23 | 1.11 | ja |
+| facebook 18–21 | 28 | 1.24 | 1.15 | ja |
 | youtube 18–21 | 9 | 1.21 | 0.92 | ja |
 | youtube 21–24 | 7 | 1.19 | 0.86 | ja |
 | youtube 12–15 | 3 | 1.14 | 1.42 | ja |
@@ -64,18 +64,18 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pi
 | instagram 21–24 | 34 | 1.05 | 1.08 | ja |
 | tiktok 06–09 | 20 | 1.05 | 1.01 | ja |
 | pinterest 06–09 | 186 | 1.04 | 0.89 | ja |
+| instagram 00–03 | 17 | 1.03 | 1.19 | ja |
 | tiktok 09–12 | 26 | 1.03 | 1.00 | ja |
-| pinterest 12–15 | 12 | 1.02 | 0.82 | ja |
-| instagram 00–03 | 17 | 1.01 | 1.19 | ja |
+| pinterest 12–15 | 13 | 1.01 | 0.88 | ja |
 | instagram 09–12 | 38 | 1.01 | 0.99 | ja |
 | instagram 15–18 | 30 | 1.01 | 1.00 | ja |
 | tiktok 15–18 | 4 | 1.00 | 1.01 | ja |
 | facebook 12–15 | 10 | 0.99 | 1.35 | ja |
-| tiktok 12–15 | 20 | 0.98 | 1.00 | ja |
 | tiktok 18–21 | 46 | 0.97 | 0.99 | ja |
+| tiktok 12–15 | 21 | 0.96 | 1.00 | ja |
 | pinterest 00–03 | 13 | 0.95 | 0.78 | ja |
+| instagram 06–09 | 24 | 0.94 | 0.89 | ja |
 | youtube 15–18 | 29 | 0.94 | 1.17 | ja |
-| instagram 06–09 | 24 | 0.93 | 0.89 | ja |
 | instagram 03–06 | 15 | 0.91 | 0.88 | ja |
 | youtube 03–06 | 3 | 0.89 | 1.18 | ja |
 | facebook 06–09 | 7 | 0.84 | 0.78 | ja |
@@ -97,9 +97,9 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pi
 | #gadgets | 33 | 1.34 | 1.07 | ja |
 | #homedecor | 37 | 1.32 | 1.00 | ja |
 | #kochenmitliebe | 4 | 1.31 | 1.19 | ja |
+| #haarspange | 3 | 1.29 | 1.33 | ja |
+| #keks | 3 | 1.29 | 1.33 | ja |
 | #zuhause | 44 | 1.28 | 1.00 | ja |
-| #haarspange | 3 | 1.28 | 1.29 | ja |
-| #keks | 3 | 1.28 | 1.29 | ja |
 | #lautsprecher | 9 | 1.26 | 1.43 | ja |
 | #ledlicht | 9 | 1.26 | 1.43 | ja |
 | #küchengadget | 5 | 1.25 | 1.04 | ja |
@@ -113,30 +113,30 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pi
 | #wohnaccessoires | 4 | 1.22 | 1.22 | ja |
 | #outdoor | 4 | 1.21 | 1.12 | ja |
 | #luftbefeuchter | 8 | 1.21 | 1.61 | ja |
+| #bruder | 3 | 1.20 | 1.04 | ja |
+| #traktor | 3 | 1.20 | 1.04 | ja |
 | #duftbefeuchter | 9 | 1.19 | 1.45 | ja |
-| #bruder | 3 | 1.19 | 1.04 | ja |
-| #traktor | 3 | 1.19 | 1.04 | ja |
 | #fashionschweiz | 50 | 1.19 | 0.98 | ja |
 | #accessoires | 10 | 1.17 | 1.09 | ja |
 | #haustier | 53 | 1.16 | 1.00 | ja |
-| #zürich | 155 | 1.16 | 1.00 | ja |
+| #zürich | 156 | 1.16 | 1.00 | ja |
 | #sneaker | 4 | 1.15 | 1.38 | ja |
 | #wasserwellenlampe | 4 | 1.15 | 1.07 | ja |
 | #shoppingschweiz | 89 | 1.14 | 0.98 | ja |
 | #katze | 10 | 1.13 | 0.98 | ja |
+| #wichtelgeschenk | 7 | 1.13 | 1.00 | ja |
 | #alltag | 90 | 1.12 | 1.00 | ja |
 | #nachtlicht | 9 | 1.12 | 1.04 | ja |
 | #selfcare | 21 | 1.12 | 0.83 | ja |
-| #wichtelgeschenk | 7 | 1.12 | 1.00 | ja |
 | #viral | 15 | 1.11 | 1.02 | ja |
 | #smartwatch | 4 | 1.10 | 1.21 | ja |
 | #modeschweiz | 12 | 1.09 | 1.02 | ja |
 | #wohnideen | 26 | 1.09 | 1.00 | ja |
 | #stimmungslicht | 9 | 1.09 | 1.02 | ja |
+| #plüschtier | 5 | 1.08 | 1.17 | ja |
+| #kaiserpinguin | 3 | 1.07 | 1.17 | ja |
 | #mamaleben | 4 | 1.06 | 1.01 | ja |
-| #kaiserpinguin | 3 | 1.06 | 1.17 | ja |
-| #plüschtier | 5 | 1.06 | 1.15 | ja |
-| #gruselig | 9 | 1.06 | 1.00 | ja |
+| #luxestyle | 665 | 1.06 | 1.00 | ja |
 
 ### Musik
 
@@ -163,13 +163,13 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pi
 
 | Wert | n | Gewicht | Median rel | belastbar |
 |---|---:|---:|---:|---|
-| beauty | 29 | 1.38 | 1.26 | ja |
+| beauty | 29 | 1.39 | 1.33 | ja |
 | gadget | 41 | 1.28 | 1.02 | ja |
-| mode | 110 | 1.26 | 1.01 | ja |
-| kinder | 26 | 1.23 | 1.00 | ja |
+| mode | 110 | 1.26 | 1.00 | ja |
+| kinder | 26 | 1.24 | 1.00 | ja |
 | haustier | 54 | 1.21 | 1.03 | ja |
 | fitness | 19 | 1.14 | 1.12 | ja |
-| home | 132 | 1.01 | 0.95 | ja |
+| home | 134 | 1.01 | 0.96 | ja |
 | allgemein | 128 | 1.01 | 1.00 | ja |
 | kueche | 44 | 0.95 | 0.95 | ja |
 | schmuck | 25 | 0.94 | 0.98 | ja |
@@ -182,12 +182,12 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pi
 | facebook 21–24 | 9 | 1.79 | 1.50 | ja |
 | tiktok 21–24 | 12 | 1.52 | 1.02 | ja |
 | pinterest 03–06 | 84 | 1.44 | 1.29 | ja |
-| facebook 09–12 | 28 | 1.33 | 1.00 | ja |
-| instagram 12–15 | 28 | 1.33 | 1.23 | ja |
-| pinterest 18–21 | 42 | 1.28 | 0.89 | ja |
+| facebook 09–12 | 27 | 1.36 | 1.00 | ja |
+| instagram 12–15 | 29 | 1.32 | 1.22 | ja |
+| pinterest 18–21 | 42 | 1.28 | 0.90 | ja |
 | pinterest 09–12 | 7 | 1.27 | 1.33 | ja |
 | pinterest 15–18 | 14 | 1.27 | 0.89 | ja |
-| facebook 18–21 | 28 | 1.23 | 1.11 | ja |
+| facebook 18–21 | 28 | 1.24 | 1.15 | ja |
 | youtube 18–21 | 9 | 1.21 | 0.92 | ja |
 | youtube 21–24 | 7 | 1.19 | 0.86 | ja |
 | youtube 12–15 | 3 | 1.14 | 1.42 | ja |
@@ -196,19 +196,19 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pi
 | instagram 21–24 | 34 | 1.05 | 1.08 | ja |
 | tiktok 06–09 | 20 | 1.05 | 1.01 | ja |
 | pinterest 06–09 | 186 | 1.04 | 0.89 | ja |
+| instagram 00–03 | 17 | 1.03 | 1.19 | ja |
 | tiktok 09–12 | 26 | 1.03 | 1.00 | ja |
-| pinterest 12–15 | 12 | 1.02 | 0.82 | ja |
-| instagram 00–03 | 17 | 1.01 | 1.19 | ja |
+| pinterest 12–15 | 13 | 1.01 | 0.88 | ja |
 | instagram 09–12 | 38 | 1.01 | 0.99 | ja |
 | instagram 15–18 | 30 | 1.01 | 1.00 | ja |
 | tiktok 00–03 | 1 | 1.00 | 1.01 | vorläufig |
 | tiktok 15–18 | 4 | 1.00 | 1.01 | ja |
 | facebook 12–15 | 10 | 0.99 | 1.35 | ja |
-| tiktok 12–15 | 20 | 0.98 | 1.00 | ja |
 | tiktok 18–21 | 46 | 0.97 | 0.99 | ja |
+| tiktok 12–15 | 21 | 0.96 | 1.00 | ja |
 | pinterest 00–03 | 13 | 0.95 | 0.78 | ja |
+| instagram 06–09 | 24 | 0.94 | 0.89 | ja |
 | youtube 15–18 | 29 | 0.94 | 1.17 | ja |
-| instagram 06–09 | 24 | 0.93 | 0.89 | ja |
 | instagram 03–06 | 15 | 0.91 | 0.88 | ja |
 | youtube 03–06 | 3 | 0.89 | 1.18 | ja |
 | facebook 06–09 | 7 | 0.84 | 0.78 | ja |
@@ -283,14 +283,14 @@ Gelesen (letzte 90 Tage, Posts ab 24 h Alter): Instagram 230 · TikTok 129 · Pi
 
 | Kanal Format | n | Median-Score |
 |---|---:|---:|
+| instagram karussell | 49 | 13.2 |
 | instagram bild | 97 | 16 |
 | instagram reel | 85 | 37 |
-| instagram karussell | 48 | 13.3 |
-| tiktok reel | 129 | 273 |
-| facebook reel | 97 | 5 |
+| tiktok reel | 130 | 273 |
+| facebook reel | 96 | 5 |
 | youtube reel | 75 | 122 |
+| pinterest pin | 314 | 3 |
 | pinterest pin-video | 84 | 2 |
-| pinterest pin | 313 | 3 |
 
 ## Stärkste 5 (gegen den eigenen Kanal-Median)
 - ×8.00 (Score 26627, Median 278) · tiktok reel · Leicht wie Sommer, gemacht für den Herbst 🍂 Leinen-Set «Provence» – H · https://www.tiktok.com/@luxestyle.ch/video/7691437492066733344
