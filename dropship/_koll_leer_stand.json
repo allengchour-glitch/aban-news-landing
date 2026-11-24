@@ -1,22 +1,20 @@
 {
- "stand": "2026-11-24T07:36:45Z",
+ "stand": "2026-11-24T19:46:36Z",
  "scharf": true,
- "leer_gefunden": 3,
- "duenn": 6,
- "abgemeldet": 3,
+ "leer_gefunden": 0,
+ "duenn": 7,
+ "abgemeldet": 0,
  "leer_nach_lauf": 0,
  "wiederholt": [],
- "ohne_tabelle": [
-  "sg-wohnen",
-  "herz-schmuck-silber",
-  "blumen-schmetterlingsschmuck-silber"
- ],
+ "ohne_tabelle": [],
  "uebersprungen": [],
  "fehler": [],
  "veroeffentlicht_48h": {
-  "apps": {},
-  "von": null,
-  "bis": null,
-  "gesamt": 0
+  "apps": {
+   "autopilot2": 4
+  },
+  "von": "2026-11-24T16:39:09Z",
+  "bis": "2026-11-24T18:05:59Z",
+  "gesamt": 4
  }
 }

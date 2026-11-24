@@ -1,6 +1,6 @@
-# Auswahl nachrüsten — scharf 2026-11-24 18:19 UTC
+# Auswahl nachrüsten — scharf 2026-11-24 19:44 UTC
 
-umgebaut: 26 · MANUELL: 840 · Fehler: 0
+umgebaut: 15 · MANUELL: 952 · Fehler: 0
 
 ## MANUELL (Grund)
 
@@ -26,7 +26,6 @@ umgebaut: 26 · MANUELL: 840 · Fehler: 0
 - LED Schneeflocken Vorhanglampe 4 m (`led-schneeflocken-vorhanglampe-4-m-637800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Tischlampe im europäischen Stil (`tischlampe-im-europaischen-stil-636800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Nachtlampe mit ewiger Rose (`nachtlampe-mit-ewiger-rose-606100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Wachsschmelzlampa mit Timer und Dimmfunktion (`wachsschmelzlampa-mit-timer-und-dimmfunktion-609200`): Stecker-Teil nicht in jedem Schlüssel genau einmal
 - LED Nachttischlampe dimmbar, wiederaufladbar (`led-nachttischlampe-dimmbar-wiederaufladbar-626400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Lanternenfigur Fisch – Handlampe mit Batterie (`lanternenfigur-fisch-handlampe-mit-batterie-613600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Kabellose, ultradünne Bewegungssensor-Lampe (`kabellose-ultradunne-bewegungssensor-lampe-627500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -37,7 +36,6 @@ umgebaut: 26 · MANUELL: 840 · Fehler: 0
 - LED Kristallkoffer Einbauschranklicht (`led-kristallkoffer-einbauschranklicht-627500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Wachs-Schmelzlampen in minimalistischer Glasform (`wachs-schmelzlampen-in-minimalistischer-glasfo-611300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Tischlampe 12,5 × 31 cm, modern, 220 V (`tischlampe-12-5-31-cm-modern-220-v-625800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Nordic Retro Minimalist Nachttischlampe (`nordic-retro-minimalist-nachttischlampe-620800`): kein EU-Stecker bei CJ
 - Nordisches Minimalist-Kuppellicht in Macaron-Farbe (`nordisches-minimalist-kuppellicht-in-macaron-f-626300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Mid-Century Modern Deckenleuchte Creme (`mid-century-modern-deckenleuchte-creme-614700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Deckenleuchte Minimalistisch Nordisch Warmweiss (`deckenleuchte-minimalistisch-nordisch-warmweis-639400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -48,9 +46,7 @@ umgebaut: 26 · MANUELL: 840 · Fehler: 0
 - Keramische Butterlampe – Rot (`keramische-butterlampe-rot-633300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Schmuckbrosche mit Perlen und Pailletten (`schmuckbrosche-mit-perlen-und-pailletten-768832`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Brosche Retro-Rhinestone-Bogen (`brosche-retro-rhinestone-bogen-791360`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Kabelloses Nachtschein mit Körpererkennung (`kabelloses-nachtschein-mit-korpererkennung-622000`): Stecker-Teil nicht in jedem Schlüssel genau einmal
 - Nachttischlampe Retro & Rustik (`nachttischlampe-retro-rustik-623300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- 21 V Lithium-Batterie für Makita-Werkzeuge (`21-v-lithium-batterie-fur-makita-werkzeuge-637600`): nicht mehr aktiv
 - Mushroom-Ladestation Tischlampe (`mushroom-ladestation-tischlampe-600800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Brosche aus Titanstahl mit Namensbuchstaben (`brosche-aus-titanstahl-mit-namensbuchstaben-515776`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Minimalistisches Nachttisch-Licht mit Ladestation (`minimalistisches-nachttisch-licht-mit-ladestat-629200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -127,7 +123,6 @@ umgebaut: 26 · MANUELL: 840 · Fehler: 0
 - Teleskop mit Infrarot-Nachtsicht 6x-10x (`teleskop-mit-infrarot-nachtsicht-6x-10x-605600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Smartwatch mit Herzfrequenz, Blutsauerstoff & Telefon (`smartwatch-mit-herzfrequenz-blutsauerstoff-tel-606900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Smartwatch für Sport & Outdoor (`smartwatch-fur-sport-outdoor-623400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Retro-Kunstleder Gürtel mit Stierkopf-Schnalle, 125 cm (`retro-leder-gurtel-mit-stierkopf-schnalle-125-600000`): nicht mehr aktiv
 - Taillengürtel Shapewear mit Reissverschluss (`taillengurtel-shapewear-mit-reissverschluss-604300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Schal Plus Bar Split Doppelseitig (`schal-plus-bar-split-doppelseitig-657100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Batterie-Set 20 Stück 1,5 V (alkalisch) (`batterie-set-20-stuck-1-5-v-alkalisch-622000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
@@ -308,539 +303,656 @@ umgebaut: 26 · MANUELL: 840 · Fehler: 0
 - Dimension PD225W Fast Charge Power Bank (`dimension-pd225w-fast-charge-power-bank-629900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Magnetische Wireless Powerbank (`magnetische-wireless-powerbank-601800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Super-schnelle Mini Power Bank (`super-schnelle-mini-power-bank-639200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Multifunktionale digitale Wanduhr (`multifunktionale-digitale-wanduhr-608100`): hat inzwischen mehrere Varianten
-- Mini Helikopter 3.5 Kanal Fernsteuerung (`mini-helikopter-3-5-kanal-fernsteuerung-608400`): hat inzwischen mehrere Varianten
-- Klassisches Jurassic Dinosaurier-Modell (`klassisches-jurassic-dinosaurier-modell-831296`): hat inzwischen mehrere Varianten
-- Magnetischer Handyhalter aus Aluminiumlegierung (`magnetischer-handyhalter-aus-aluminiumlegierun-614700`): hat inzwischen mehrere Varianten
-- Full HD Smart Home Beamer Tragbar (`full-hd-smart-home-beamer-tragbar-614900`): Stecker-Teil nicht in jedem Schlüssel genau einmal
-- Atemaktiver Gurt für Schwangerschaft (`atemaktiver-gurt-fur-schwangerschaft-633728`): hat inzwischen mehrere Varianten
-- Hunde-Autositzmatte für die Rückbank (`hunde-autositzmatte-fur-die-ruckbank-280064`): hat inzwischen mehrere Varianten
-- Smartwatch Fitness Armband mit HD Bluetooth (`smartwatch-fitness-armband-mit-hd-bluetooth-620900`): hat inzwischen mehrere Varianten
-- Smartwatch Sportmodell (`smartwatch-sportmodell-611600`): hat inzwischen mehrere Varianten
-- TPU Silikon Schlüsselhülle für BMW (`tpu-silikon-schlusselhulle-fur-bmw-296128`): hat inzwischen mehrere Varianten
-- Schlüssel-Cover aus Carbon/Glasfaser (`schlussel-cover-aus-carbon-glasfaser-259904`): hat inzwischen mehrere Varianten
-- Vibrierender Wireless Bluetooth Gaming-Controller (`vibrierender-wireless-bluetooth-gaming-control-491008`): hat inzwischen mehrere Varianten
-- Smartwatch S15 (`smartwatch-s15-604400`): hat inzwischen mehrere Varianten
-- Holzpuzzle Wolf – Irreguläres Design (`holzpuzzle-wolf-irregulares-design-635400`): hat inzwischen mehrere Varianten
-- DIY Roboter Bausatz für Kinder (`diy-roboter-bausatz-fur-kinder-635800`): hat inzwischen mehrere Varianten
-- TF Card 32 GB für Handy, Kamera & Recorder (`tf-card-32-gb-fur-handy-kamera-recorder-634600`): hat inzwischen mehrere Varianten
-- M.2 SSD Gehäuse extern (`m-2-ssd-gehause-extern-405824`): hat inzwischen mehrere Varianten
-- Outdoor Smartwatch mit Gesundheitsfunktionen (`outdoor-smartwatch-mit-gesundheitsfunktionen-600300`): hat inzwischen mehrere Varianten
-- Unsichtbarer, ausziehbarer Selfie Stick (`unsichtbarer-ausziehbarer-selfie-stick-607900`): hat inzwischen mehrere Varianten
-- Smartwatch mit Sprachassistent & Offline-Zahlung (`smartwatch-mit-sprachassistent-offline-zahlung-602800`): hat inzwischen mehrere Varianten
-- Retro Bluetooth-Lautsprecher mit Plattenspieler-Design (`retro-bluetooth-lautsprecher-mit-plattenspiele-613800`): hat inzwischen mehrere Varianten
-- Drahtloses Kragen-Mikrofon-Set mit Ladebox (`drahtloses-kragen-mikrofon-set-mit-ladebox-611800`): hat inzwischen mehrere Varianten
-- Japanische Strassenszene Klemmbaustein-Modell (`japanische-strassenszene-klemmbaustein-modell-612300`): hat inzwischen mehrere Varianten
-- Streaming Line 18W Ladekabel für schnelles Laden (`streaming-line-18w-ladekabel-fur-schnelles-lad-606700`): hat inzwischen mehrere Varianten
-- KI Sprachübersetzer Kopfhörer (`ki-sprachubersetzer-kopfhorer-634900`): hat inzwischen mehrere Varianten
-- Sommerwellen-Nägel im Cat-Eye-Chic (`sommerwellen-nagel-im-cat-eye-chic-622400`): hat inzwischen mehrere Varianten
-- Handgemachte Press-on-Nägel mit Meeres-Design (`handgemachte-press-on-nagel-mit-meeres-design-638600`): hat inzwischen mehrere Varianten
 - Lenkradbezug aus Leder (`lenkradbezug-aus-leder-602800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Lenkradbezug Sportlich aus Rindsleder (`lenkradbezug-sportlich-aus-rindsleder-622300`): hat inzwischen mehrere Varianten
-- Tanzender Kaktus mit Tier-Design (`tanzender-kaktus-mit-tier-design-627600`): hat inzwischen mehrere Varianten
-- Dual-Channel LiPo-Balancer-Ladegerät (`dual-channel-lipo-balancer-ladegerat-630000`): hat inzwischen mehrere Varianten
 - Augenbrauen- & Wimpernstempel für natürlichen Look (`augenbrauen-wimpernstempel-fur-naturlichen-loo-639300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Minimalistisches Kissenbezug-Set (`minimalistisches-kissenbezug-set-607500`): hat inzwischen mehrere Varianten
-- Wabi-Sabi Sofakissenbezug mit Stickerei (`wabi-sabi-sofakissenbezug-mit-stickerei-625900`): hat inzwischen mehrere Varianten
-- Mini Waschmaschine (`mini-waschmaschine-626400`): hat inzwischen mehrere Varianten
-- Gepolstertes Kissen mit Kontrastfarben & Quasten (`gepolstertes-kissen-mit-kontrastfarben-quasten-606100`): hat inzwischen mehrere Varianten
-- Silikon-Armband für Samsung Galaxy Watch 7 (47mm) (`silikon-armband-fur-samsung-galaxy-watch-7-47m-600500`): hat inzwischen mehrere Varianten
-- Oktopus-Kuscheltier mit Sound für Welpen (`oktopus-kuscheltier-mit-sound-fur-welpen-618700`): hat inzwischen mehrere Varianten
-- Eleganter 4 Karat Radiant-Schliff S925 Silberring (`eleganter-4-karat-radiant-schliff-s925-silberr-605600`): nicht mehr aktiv
-- Maillard Doppel-Schicht-Garn Bettwäsche-Set (`maillard-doppel-schicht-garn-bettwasche-set-635500`): hat inzwischen mehrere Varianten
-- U-förmige Blatt Wimpernverlängerungen (`u-formige-blatt-wimpernverlangerungen-619700`): hat inzwischen mehrere Varianten
-- Smart Bluetooth Ring (`smart-bluetooth-ring-635200`): hat inzwischen mehrere Varianten
-- Cloud Spiegel (`cloud-spiegel-301888`): hat inzwischen mehrere Varianten
-- Aquarell-Farbstifte Geschenkset (`aquarell-farbstifte-geschenkset-632700`): hat inzwischen mehrere Varianten
-- Transferhilfe für bettlägerige Patienten (`transferhilfe-fur-bettlagerige-patienten-624100`): hat inzwischen mehrere Varianten
-- Halloween Gartenstecker mit Kunstblumen (`halloween-gartenstecker-mit-kunstblumen-626100`): hat inzwischen mehrere Varianten
 - Duftkerze im Aluminiumgehäuse (`duftkerze-im-aluminiumgehause-601100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Oversized Herzring aus Keramik und Titanstahl (`oversized-herzring-aus-keramik-und-titanstahl-622300`): hat inzwischen mehrere Varianten
-- Jacquard Kissenbezug mit Stickerei (`jacquard-kissenbezug-mit-stickerei-629200`): hat inzwischen mehrere Varianten
-- Geometrischer Kissenbezug mit Stickerei (`geometrischer-kissenbezug-mit-stickerei-607400`): hat inzwischen mehrere Varianten
-- Faltbarer Einkaufstrolley aus Aluminium (`faltbarer-einkaufstrolley-aus-aluminium-602800`): hat inzwischen mehrere Varianten
-- Moissanit Ring mit Radiant-Schliff (`moissanit-ring-mit-radiant-schliff-629800`): nicht mehr aktiv
-- Leopard-Print Kissenbezug Baumwoll-Leinen (`leopard-print-kissenbezug-baumwoll-leinen-615800`): hat inzwischen mehrere Varianten
-- Retro Keramik Seifenspender (`retro-keramik-seifenspender-639000`): hat inzwischen mehrere Varianten
-- Kühlende Eisseidenmatte für Haustiere (`kuhlende-eisseidenmatte-fur-haustiere-633600`): hat inzwischen mehrere Varianten
 - Kissenbezug im französischen Stil mit Rüschen (`kissenbezug-im-franzosischen-stil-mit-ruschen-637600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Faltbares Outdoor-Zelt für eine Person (`faltbares-outdoor-zelt-fur-eine-person-612600`): hat inzwischen mehrere Varianten
-- 3D Zeichenstift für Kinder – Kreativer Lernspass (`3d-zeichenstift-fur-kinder-kreativer-lernspass-638600`): hat inzwischen mehrere Varianten
-- Skelett-Automatik-Uhr im Tonneau-Gehäuse (`skelett-automatik-uhr-im-tonneau-gehause-624400`): hat inzwischen mehrere Varianten
 - Haarpflege-Spray (`haarpflege-spray-607400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Simple Canvas Umhängetasche (`simple-canvas-umhangetasche-625500`): hat inzwischen mehrere Varianten
-- Mahjong Set Multifunktionaler Make-up Organizer (`mahjong-set-multifunktionaler-make-up-organize-616100`): hat inzwischen mehrere Varianten
-- Deckenventilator mit Fernbedienung (`deckenventilator-mit-fernbedienung-628700`): hat inzwischen mehrere Varianten
 - Windspiel Kolibri für Garten & Balkon (`windspiel-kolibri-fur-garten-balkon-630300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Trolley Koffer Set (`trolley-koffer-set-887040`): hat inzwischen mehrere Varianten
-- Halskette im traditionellen chinesischen Stil (`halskette-im-traditionellen-chinesischen-stil-610100`): hat inzwischen mehrere Varianten
-- Minimalistische Multi-Stein Halskette (`minimalistische-multi-stein-halskette-613700`): hat inzwischen mehrere Varianten
-- Reisetasche mit Nass- und Trockenfach, 36-55L (`reisetasche-mit-nass-und-trockenfach-36-55l-813952`): hat inzwischen mehrere Varianten
-- Elastischer Kofferschutz mit Tiermotiven (`elastischer-kofferschutz-mit-tiermotiven-625000`): hat inzwischen mehrere Varianten
-- Lammfell-Kissenbezug aus Kunstfell (`lammfell-kissenbezug-aus-kunstfell-637500`): hat inzwischen mehrere Varianten
-- Halskette mit Frucht- oder Muschel-Anhänger (`halskette-mit-frucht-oder-muschel-anhanger-607200`): hat inzwischen mehrere Varianten
-- Bohemian Armband- und Halsketten-Set (`bohemian-armband-und-halsketten-set-623700`): hat inzwischen mehrere Varianten
-- Strassbesetzte Schlüssel-Halskette mit Geschenkbox (`strassbesetzte-schlussel-halskette-mit-geschenkbox-628700`): hat inzwischen mehrere Varianten
-- Silikonring mit Zirkonia-Einlagen (`silikonring-mit-zirkonia-einlagen-609100`): hat inzwischen mehrere Varianten
 - Sommerdecke aus Baumwollgaze mit Sojafasern (`sommerdecke-aus-baumwollgaze-mit-sojafasern-614300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Verstellbarer offener Goldring mit Katzen-Design (`verstellbarer-offener-goldring-mit-katzen-desi-636700`): hat inzwischen mehrere Varianten
-- Eleganter Edelstahl Kerzenständer im French Style (`eleganter-edelstahl-kerzenstander-im-french-st-625700`): hat inzwischen mehrere Varianten
-- Geometrischer Edelstahlring im French-Stil (`geometrischer-edelstahlring-im-french-stil-634500`): hat inzwischen mehrere Varianten
 - Beruhigende Angst-Weste für Haustiere (`beruhigende-angst-weste-fur-haustiere-155712`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Gesteppter Hunde-Wintermantel aus Baumwolle (`gesteppter-hunde-wintermantel-aus-baumwolle-382144`): hat inzwischen mehrere Varianten
-- Doppelkopf-Hundegeschirr (`doppelkopf-hundegeschirr-620200`): hat inzwischen mehrere Varianten
-- Automatische Einziehbare Haustierleine (`automatische-einziehbare-haustierleine-606700`): hat inzwischen mehrere Varianten
-- Vintage Morse Code Halskette (`vintage-morse-code-halskette-633200`): hat inzwischen mehrere Varianten
-- Magnetisches Spielzeug (`magnetisches-spielzeug-615500`): hat inzwischen mehrere Varianten
-- Business Schultertasche aus Leder (`business-schultertasche-aus-leder-648400`): hat inzwischen mehrere Varianten
-- Umhängetasche Vintage Crazy Horse Leder (`umhangetasche-vintage-crazy-horse-leder-602400`): hat inzwischen mehrere Varianten
-- Automatische Roll-Hundeleine mit Kotbeutelhalter (`automatische-roll-hundeleine-mit-kotbeutelhalt-627100`): hat inzwischen mehrere Varianten
-- Farbgetreue Titan-Stahl Zirkon Halskette (`farbgetreue-titan-stahl-zirkon-halskette-627500`): hat inzwischen mehrere Varianten
-- Herren Quarzuhr mit grossem Zifferblatt (`herren-quarzuhr-mit-grossem-zifferblatt-627500`): hat inzwischen mehrere Varianten
-- Schönes Hundehalter Seil-Müllbehälter-Set (`schones-hundehalter-seil-mullbehalter-set-645000`): hat inzwischen mehrere Varianten
-- Geprägter Titanlegierung Wok (`gepragter-titanlegierung-wok-613900`): hat inzwischen mehrere Varianten
-- Feng-Shui-Dekorationsmalerei (`feng-shui-dekorationsmalerei-608500`): hat inzwischen mehrere Varianten
-- Halsband für mittelgrosse Hunde (`halsband-fur-mittelgrosse-hunde-616100`): hat inzwischen mehrere Varianten
-- Herren-Mehrzweck-Kurz-Reissverschlusstasche (`herren-mehrzweck-kurz-rei-verschlusstasche-624700`): hat inzwischen mehrere Varianten
-- Retro Leder Dokumentenmappe mit Anti-Diebstahl (`retro-leder-dokumentenmappe-mit-anti-diebstahl-621100`): hat inzwischen mehrere Varianten
-- Sommer-Kühlweste für Haustiere (`sommer-kuhlweste-fur-haustiere-859072`): hat inzwischen mehrere Varianten
-- Goldene Jacke für Haustiere (`goldene-jacke-fur-haustiere-463936`): hat inzwischen mehrere Varianten
-- Beruhigende Hunde-Bekleidung für Trennungsangst (`beruhigende-hunde-bekleidung-fur-trennungsangs-629900`): hat inzwischen mehrere Varianten
 - Winter Haustierjacke in Kaschmir-Optik (`winter-cashmere-haustierjacke-600400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Warme Kleidung für Hund & Katze (`warme-kleidung-fur-hund-katze-618100`): hat inzwischen mehrere Varianten
-- 7-teiliges kabelloses Elektrobürsten-Set (`7-teiliges-kabelloses-elektrobursten-set-638100`): hat inzwischen mehrere Varianten
-- Sitzkissen mit integrierter Rückenlehne (`sitzkissen-mit-integrierter-ruckenlehne-616400`): hat inzwischen mehrere Varianten
 - Mückenschutz-Vorhangstoff, mehrfarbig, 90x200/100x200 cm (`muckenschutz-vorhangstoff-mehrfarbig-90x200-10-624100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Stahlbox-Set 4er-Set aus Edelstahl, 1–2 Liter (`stahlbox-set-4er-set-aus-edelstahl-1-2-liter-637400`): hat inzwischen mehrere Varianten
-- Herbst-Winter-Haustier-Cotton-Westen (`herbst-winter-haustier-cotton-westen-619200`): hat inzwischen mehrere Varianten
-- Herren Motorrad Hüfttasche Crossbody (`herren-motorrad-hufttasche-crossbody-328448`): hat inzwischen mehrere Varianten
-- Wasserdichte Regenjacke für Hunde (`wasserdichte-regenjacke-fur-hunde-602000`): hat inzwischen mehrere Varianten
-- Europäische Design-Uhr (`europaische-design-uhr-624400`): hat inzwischen mehrere Varianten
 - Mehrfarbiger Falttürvorhang (`mehrfarbiger-faltturvorhang-619600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Automatischer Futternapf für Katzen (`automatischer-futternapf-fur-katzen-601100`): hat inzwischen mehrere Varianten
-- Silikon-Armband für Apple Watch Ultra (`silikon-armband-fur-apple-watch-ultra-089408`): hat inzwischen mehrere Varianten
-- Soccer-Stiefel- Transport-Beutel (`soccer-stiefel-transport-beutel-620700`): hat inzwischen mehrere Varianten
-- Doppel-Leine für Hunde (`doppel-leine-fur-hunde-617700`): hat inzwischen mehrere Varianten
-- Bikehelm Herren & Damen Mountain/Strasse (`bikehelm-herren-damen-mountain-strasse-485568`): hat inzwischen mehrere Varianten
-- Multifunktionaler Pflegepinsel für Hals & Körper (`multifunktionaler-pflegepinsel-fur-hals-korper-618100`): hat inzwischen mehrere Varianten
 - Retro-Minimalistische Herrenuhr mit grossem Zifferblatt (`retro-minimalistische-herrenuhr-mit-gro-em-zif-616300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Retro Schreibtischkalender (`retro-schreibtischkalender-604900`): hat inzwischen mehrere Varianten
-- Lederjacke für mittelgrosse bis grosse Hunde (`lederjacke-fur-mittelgrosse-bis-grosse-hunde-614900`): hat inzwischen mehrere Varianten
-- Herren Leder Hüfttasche für Smartphone – Sport & Freizeit (`herren-leder-hufttasche-fur-smartphone-sport-f-624200`): hat inzwischen mehrere Varianten
-- Dauerhafte Kauwurst für Hunde (`dauerhafte-kauwurst-fur-hunde-601900`): hat inzwischen mehrere Varianten
-- Mountainbike-Headset mit Rücklicht (`mountainbike-headset-mit-rucklicht-500416`): hat inzwischen mehrere Varianten
 - Eleganter Valentinstag-Ring im Quadrat-Design (`eleganter-valentinstag-ring-im-quadrat-design-636800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Viking Edelstahl Herren Ring (`viking-edelstahl-herren-ring-630800`): hat inzwischen mehrere Varianten
-- Schädel-Piratenring Damen (`schadel-piratenring-damen-622600`): hat inzwischen mehrere Varianten
-- Herren Titan-Ring Stahl Vintage (`herren-titan-ring-stahl-vintage-603500`): hat inzwischen mehrere Varianten
-- Einfaches Baumwoll-Pyjama-Set (`einfaches-baumwoll-pyjama-set-608000`): hat inzwischen mehrere Varianten
-- Rundes Stein- und Metallarmband 2er Set (`rundes-stein-und-metallarmband-2er-set-636200`): hat inzwischen mehrere Varianten
-- Tiefes Salatschalen-Set (`tiefes-salatschalen-set-603300`): hat inzwischen mehrere Varianten
-- RFID-Kartenetui mit Münzfach aus PU-Leder (`rfid-kartenetui-mit-munzfach-aus-pu-leder-623700`): hat inzwischen mehrere Varianten
-- Engine Movement Herren Quarzuhr (`engine-movement-herren-quarzuhr-638600`): hat inzwischen mehrere Varianten
-- Reflektierendes Nylon-Halsband, verstellbar (`reflektierendes-nylon-halsband-verstellbar-036929`): hat inzwischen mehrere Varianten
-- Smart Beissfester Hundeball mit Zahnreinigung (`smart-beissfester-hundeball-mit-zahnreinigung-628600`): hat inzwischen mehrere Varianten
 - Dynamische Reflexion Keramik-Kaffeetasse (`dynamische-reflexion-keramik-kaffeetasse-621700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Handgenähtes Lenkradbezug Modifiziert (`handgenahtes-lenkradbezug-modifiziert-620500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- 3er-Set Seestern-Ölgemälde für Ihr Zuhause (`3er-set-seestern-olgemalde-fur-ihr-zuhause-754688`): hat inzwischen mehrere Varianten
-- Stickset «Blumenwiese» für Einsteiger (`stickset-blumenwiese-fur-einsteiger-277568`): hat inzwischen mehrere Varianten
-- Grosses, tragbares Wasser Glas für Kids (`grosses-tragbares-wasser-glas-fur-kids-631600`): hat inzwischen mehrere Varianten
-- Grosses Wimpern-Set mit 640 Stücken (`grosses-wimpern-set-mit-640-stucken-631200`): hat inzwischen mehrere Varianten
 - Reflektierendes Brustgeschirr (`reflektierendes-brustgeschirr-637300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Moissanite Verlobungsring (`moissanite-verlobungsring-591809`): nicht mehr aktiv
-- LED Faltbarer Schminkspiegel mit Lederetui (`led-faltbarer-schminkspiegel-mit-lederetui-635100`): hat inzwischen mehrere Varianten
-- Grosse Outdoor-Werkzeugtasche (`grosse-outdoor-werkzeugtasche-621300`): hat inzwischen mehrere Varianten
 - Falsche Wimpern mit Schwalbenschwanz-Enden (`falsche-wimpern-mit-schwalbenschwanz-enden-609600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Multi-Kartenleser USB 3.0 & Type-C (`multi-kartenleser-usb-3-0-type-c-662848`): hat inzwischen mehrere Varianten
-- 4-in-1 Cartoon Game USB Hub (`4-in-1-cartoon-game-usb-hub-646100`): hat inzwischen mehrere Varianten
-- G100 Wireless Screen Mirroring Device (`g100-wireless-screen-mirroring-device-602100`): hat inzwischen mehrere Varianten
-- HD8ultra Smartwatch mit Bluetooth-Telefonie (`hd8ultra-smartwatch-mit-bluetooth-telefonie-608300`): hat inzwischen mehrere Varianten
-- Hundegeschirr, reissfest (`hundegeschirr-reissfest-630700`): hat inzwischen mehrere Varianten
-- Little Monster Plüsch-Beissspielzeug mit Sound (`little-monster-plusch-beissspielzeug-mit-sound-600500`): hat inzwischen mehrere Varianten
-- Verdunkelungsvorhang Blickdicht Ohne Bohren (`verdunkelungsvorhang-blickdicht-ohne-bohren-609700`): hat inzwischen mehrere Varianten
-- Multifunktionale Camouflage Sportuhr (`multifunktionale-camouflage-sportuhr-628700`): hat inzwischen mehrere Varianten
-- Magnetisches Schnellverschluss Holster für Herren (`magnetisches-schnellverschluss-holster-fur-her-601900`): hat inzwischen mehrere Varianten
-- Retro Crossbody Bag aus echtem Leder für Herren (`retro-crossbody-bag-aus-echtem-leder-fur-herre-602000`): hat inzwischen mehrere Varianten
 - Ausziehbares Staufach für Mittelkonsole (`ausziehbares-staufach-fur-mittelkonsole-634700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Velo-Scheinwerfer mit USB-Ladefunktion (`velo-scheinwerfer-mit-usb-ladefunktion-725376`): hat inzwischen mehrere Varianten
-- Plüschtier mit Quietscher für Hunde (`pluschtier-mit-quietscher-fur-hunde-705474`): hat inzwischen mehrere Varianten
-- Wolkenkissen im französischen Stil (`wolkenkissen-im-franzosischen-stil-614600`): hat inzwischen mehrere Varianten
-- Nackenstützkissen mit Massageperlen (`nackenstutzkissen-mit-massageperlen-609000`): hat inzwischen mehrere Varianten
-- Weinroter Kissenbezug aus Rex Kaninchenfell (`weinroter-kissenbezug-aus-rex-kaninchenfell-600500`): nicht mehr aktiv
-- Minimalistischer Teppich, schmutzabweisend (`minimalistischer-teppich-schmutzabweisend-630800`): hat inzwischen mehrere Varianten
-- Ma Pi Brusttasche aus Echtleder (`ma-pi-brusttasche-aus-echtleder-611900`): hat inzwischen mehrere Varianten
-- Freizeit-Schultertasche (`freizeit-schultertasche-520770`): hat inzwischen mehrere Varianten
-- Lederrucksack für Herren (`lederrucksack-fur-herren-621700`): hat inzwischen mehrere Varianten
 - Aromatherapie-Uhrenarmband aus Metall (`aromatherapie-uhrenarmband-aus-metall-608200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Wasserdichte Automatikuhr für Herren (`wasserdichte-automatikuhr-fur-herren-626300`): hat inzwischen mehrere Varianten
-- Mechanische Armbanduhr mit Skelett-Design (`mechanische-armbanduhr-mit-skelett-design-600300`): hat inzwischen mehrere Varianten
-- Mechanische Armbanduhr mit Mondphase (`mechanische-armbanduhr-mit-mondphase-626400`): hat inzwischen mehrere Varianten
-- Mikrojet-Reispapier für Kunstreproduktionen (`mikrojet-reispapier-fur-kunstreproduktionen-168000`): hat inzwischen mehrere Varianten
-- Kompakter Durchlauferhitzer für Küche (`kompakter-durchlauferhitzer-fur-kuche-630400`): hat inzwischen mehrere Varianten
 - Dekokissen mit Pflanzenmuster (`dekokissen-mit-pflanzenmuster-648960`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Halsband mit Buchstabenmuster für Hunde (`halsband-mit-buchstabenmuster-fur-hunde-a00ef4`): hat inzwischen mehrere Varianten
-- Samt bestickter Kissenbezug mit Druck (`samt-bestickter-kissenbezug-mit-druck-af73bc`): hat inzwischen mehrere Varianten
-- 3D-Puzzle Eule (`3d-puzzle-eule-627200`): KI-Übersetzung fehlt/abgelehnt: ['Cat Medium Cat', 'Cat Nest', 'Christmas Night', 'Colorful Peacock']
 - Baukasten für Kinder: Kleine Partikel (`baukasten-fur-kinder-kleine-partikel-619500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Multifunktionaler Warmluftkamm (`multifunktionaler-warmluftkamm-e26a79`): hat inzwischen mehrere Varianten
-- Fussgelenk-Manschette für Beintraining (`fussgelenk-manschette-fur-beintraining-520512`): hat inzwischen mehrere Varianten
-- Infrarot-Photonen-LED-Gesichtsmaske (`infrarot-photonen-led-gesichtsmaske-600300`): hat inzwischen mehrere Varianten
-- Retro Armband aus Titanstahl (`retro-armband-aus-titanstahl-611700`): hat inzwischen mehrere Varianten
-- Wimpern- & Augenbrauenserum (`wimpern-augenbrauenserum-691136`): hat inzwischen mehrere Varianten
-- Wäsche-Trocknerball aus Filz (`wasche-trocknerball-aus-filz-801664`): hat inzwischen mehrere Varianten
-- Elektrischer Nagelclipper Explorer Edition (`elektrischer-nagelclipper-explorer-edition-617000`): hat inzwischen mehrere Varianten
-- Halbmond-LED-Tischleuchte für Nagelstudios (`halbmond-led-tischleuchte-fur-nagelstudios-614100`): hat inzwischen mehrere Varianten
-- Retro Filmkamera Bausteine (`retro-filmkamera-bausteine-600800`): hat inzwischen mehrere Varianten
-- Prinzessinnen-Geschirr mit Leine für Katzen (`prinzessinnen-geschirr-mit-leine-fur-katzen-312512`): hat inzwischen mehrere Varianten
-- Halsband für Hunde, Samt, Himmelblau (`halsband-fur-hunde-samt-himmelblau-4d2765`): hat inzwischen mehrere Varianten
-- Hundehalsband mit Schriftzug (`hundehalsband-mit-schriftzug-60c17d`): hat inzwischen mehrere Varianten
-- Leder-Leinen-Set für Hunde (`leder-leinen-set-fur-hunde-394304`): hat inzwischen mehrere Varianten
-- Rostrotes Kristall-Kissen (`rostrotes-kristall-kissen-983552`): hat inzwischen mehrere Varianten
-- Grosses Strickkissen mit Zopfmuster (`grosses-strickkissen-mit-zopfmuster-488896`): hat inzwischen mehrere Varianten
-- Leinen Kissenhülle mit oder ohne Füllung (`leinen-kissenhulle-mit-oder-ohne-fullung-643264`): Titel nennt nur «Kissenhülle» (Ausführung: ['Kissenhülle', 'Mit Füllung']) → Titel prüfen (Mensch)
-- Multifunktions-Herrenuhr Wasserdicht Leuchtend (`multifunktions-herrenuhr-wasserdicht-leuchtend-506752`): hat inzwischen mehrere Varianten
-- Minimalistischer Zirkon-Ring mit drei Steinen (`minimalistischer-zirkon-ring-mit-drei-steinen-634600`): nicht mehr aktiv
-- Retro-Doppelring «Sonne» aus Edelstahl (`retro-doppelring-sonne-aus-edelstahl-614700`): hat inzwischen mehrere Varianten
-- Mini-Metallauto-Set zum Schieben (`mini-metallauto-set-zum-schieben-626100`): hat inzwischen mehrere Varianten
-- Edelstahl-Armband mit Medizin-Symbol, verstellbar (`edelstahl-armband-mit-medizin-symbol-verstellb-626100`): hat inzwischen mehrere Varianten
-- Musik-Boxwand für intelligentes Heimtraining (`musik-boxwand-fur-intelligentes-heimtraining-623400`): hat inzwischen mehrere Varianten
-- Time Lidschatten-Palette – 12 Farben (`time-lidschatten-palette-12-farben-56ee23`): hat inzwischen mehrere Varianten
-- Professionelles Berggepäck (`professionelles-berggepack-518720`): hat inzwischen mehrere Varianten
-- Reise-Rucksack Outdoor (`reise-rucksack-outdoor-806016`): hat inzwischen mehrere Varianten
-- Blauer Leinenhalsband (`blauer-leinenhalsband-0295ec`): hat inzwischen mehrere Varianten
 - Halsband- und Leinen-Set aus geflochtener Baumwolle (`halsband-und-leinen-set-aus-geflochtener-baumw-847808`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Kautspielzeug für Hunde (`kautspielzeug-fur-hunde-878592`): hat inzwischen mehrere Varianten
-- Luxus-Streifen-Bezug (`luxus-streifen-bezug-503232`): hat inzwischen mehrere Varianten
-- Kissenbezug aus Baumwolle (`kissenbezug-aus-baumwolle-475392`): hat inzwischen mehrere Varianten
-- Quarz-Herrenuhr mit eckigem Stahlgehäuse (`quarz-herrenuhr-mit-eckigem-stahlgehause-756416`): hat inzwischen mehrere Varianten
-- Herren Quarzuhr – wasserdicht, sportlich-elegant (`herren-quarzuhr-wasserdicht-sportlich-elegant-612352`): hat inzwischen mehrere Varianten
-- Hetian Jade-Armband (`hetian-jade-armband-602200`): hat inzwischen mehrere Varianten
-- Titan-Stahlarmband (`titan-stahlarmband-624400`): hat inzwischen mehrere Varianten
-- Gold-Edelstein-Blume-Klips-Armband (`gold-edelstein-blume-klips-armband-628700`): hat inzwischen mehrere Varianten
-- Praktischer Wäscheschrank (`praktischer-wascheschrank-633700`): hat inzwischen mehrere Varianten
-- Solar Rechner mit Notiztafel (`solar-rechner-mit-notiztafel-058176`): hat inzwischen mehrere Varianten
-- Tortoise-Eisenkochtopf (`tortoise-eisenkochtopf-878656`): hat inzwischen mehrere Varianten
-- Knoblauchmixer (`knoblauchmixer-085952`): hat inzwischen mehrere Varianten
-- 38CM Nussknacker Holzfigur (`38cm-nussknacker-holzfigur-624600`): hat inzwischen mehrere Varianten
-- Beckenbodentrainer für Männer (`beckenbodentrainer-fur-manner-603300`): hat inzwischen mehrere Varianten
-- Grosse wasserdichte Multifunktions-Reisetasche (`grosse-wasserdichte-multifunktions-reisetasche-379008`): hat inzwischen mehrere Varianten
-- Taktisches Nylon-Hundehalsband (`taktisches-nylon-hundehalsband-278464`): hat inzwischen mehrere Varianten
 - Camouflage-Tasche (`camouflage-tasche-130432`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Belly Band aus Nylon (`belly-band-aus-nylon-627700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Farbenfrohes Schnüffelkissen (`farbenfrohes-schnuffelkissen-875392`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Taille-Trainingsgürtel (`taille-trainingsgurtel-611500`): hat inzwischen mehrere Varianten
-- Automatischer Katzen-Wasserhahn (`automatischer-katzen-wasserhahn-600200`): hat inzwischen mehrere Varianten
-- Macaron H-Geschirrset für Katzen & Hunde (`macaron-h-geschirrset-fur-katzen-hunde-071552`): hat inzwischen mehrere Varianten
-- Essenslöffel-Sets (`essensloffel-sets-593472`): hat inzwischen mehrere Varianten
-- Halsketten für Haustiere (`halsketten-fur-haustiere-885440`): hat inzwischen mehrere Varianten
 - Titanium-Halsband (`titanium-halsband-001920`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Katzen- und Hundeneckband (`katzen-und-hundeneckband-735360`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Halsband mit Glocke und Blumen-Design (`halsband-mit-glocke-und-blumen-design-050368`): hat inzwischen mehrere Varianten
-- Doppelseitige Spieltischauflage aus Vliesstoff (`doppelseitige-spieltischauflage-aus-vliesstoff-355776`): hat inzwischen mehrere Varianten
-- Elastischer Stuhlhussenbezug mit Muster (`elastischer-stuhlhussenbezug-mit-muster-334144`): hat inzwischen mehrere Varianten
-- Kissenbezug American Living Room Sofa (`kissenbezug-american-living-room-sofa-019392`): hat inzwischen mehrere Varianten
-- Dreieckiges Kissen, abnehmbar & waschbar (`dreieckiges-kissen-abnehmbar-waschbar-863744`): hat inzwischen mehrere Varianten
-- Kuhfell-Muster Samt-Kissen (`kuhfell-muster-samt-kissen-171584`): hat inzwischen mehrere Varianten
-- Gepolstertes Kissen mit Quasten (`gepolstertes-kissen-mit-quasten-638080`): hat inzwischen mehrere Varianten
-- Wasserdichter Anti-Diebstahl Digital-Rucksack (`wasserdichter-anti-diebstahl-digital-rucksack-222400`): hat inzwischen mehrere Varianten
-- Wasserdichte Leuchtuhr mit römischem Zifferblatt (`wasserdichte-leuchtuhr-mit-romischem-zifferbla-771136`): hat inzwischen mehrere Varianten
-- Wasserdichter Laptop-Rucksack für Alltag & Reise (`wasserdichter-laptop-rucksack-fur-alltag-reise-608384`): hat inzwischen mehrere Varianten
-- Skmei Fashion Damenuhr (`skmei-fashion-damenuhr-843456`): hat inzwischen mehrere Varianten
-- CUENA Herrenuhr Wasserdicht mit Kalender (`cuena-herrenuhr-wasserdicht-mit-kalender-894848`): hat inzwischen mehrere Varianten
-- Elektrischer Massagekamm (`elektrischer-massagekamm-618800`): hat inzwischen mehrere Varianten
-- V580 Tragbarer Elektrischer Wasser-Zahnstocher (`v580-tragbarer-elektrischer-wasser-zahnstocher-624800`): hat inzwischen mehrere Varianten
-- Personalisiertes Vintage-Stahl-Armband (`personalisiertes-vintage-stahl-armband-617600`): hat inzwischen mehrere Varianten
-- Zahnarzt Übungs-Set 3-teilig (`zahnarzt-ubungs-set-3-teilig-624400`): hat inzwischen mehrere Varianten
-- ins Lidschatten-Palette (`ins-lidschatten-palette-78cc54`): hat inzwischen mehrere Varianten
-- Wasserfeste Augenbrauencreme mit Doppelstift (`wasserfeste-augenbrauencreme-mit-doppelstift-624900`): hat inzwischen mehrere Varianten
-- Nordischer Ovaler Keramik-Suppentopf (`nordischer-ovaler-keramik-suppentopf-599552`): hat inzwischen mehrere Varianten
-- Retro Früchtekorb mit Abtropffunktion (`retro-fruchtekorb-mit-abtropffunktion-211648`): hat inzwischen mehrere Varianten
-- Business Laptop Rucksack (`business-laptop-rucksack-134656`): hat inzwischen mehrere Varianten
-- Grosses Casual Sport-Rucksack für Herren (`grosses-casual-sport-rucksack-fur-herren-309632`): hat inzwischen mehrere Varianten
 - Cat's Eye Nails: Abnehmbare Sticker in Mint (`cat-s-eye-nails-abnehmbare-sticker-in-mint-602500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- T100 Kabelloses Ladegerät mit Ständer (`t100-kabelloses-ladegerat-mit-stander-0ec2e8`): hat inzwischen mehrere Varianten
-- 3-in-1 OTG Kartenleser für Mobile Geräte (`3-in-1-otg-kartenleser-fur-mobile-gerate-d346ea`): hat inzwischen mehrere Varianten
-- Outdoor Nylon Hundeleine (`outdoor-nylon-hundeleine-449536`): hat inzwischen mehrere Varianten
 - Halsband mit grosser Schleife für Katzen & Hunde (`halsband-mit-grosser-schleife-fur-katzen-hunde-877120`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Halsband mit Schleife für Hunde und Katzen (`halsband-mit-schleife-fur-hunde-und-katzen-457152`): hat inzwischen mehrere Varianten
-- Multifunktionale Regenbogen-Hundeleine (`multifunktionale-regenbogen-hundeleine-716736`): hat inzwischen mehrere Varianten
-- Intelligenter Futterautomat mit Video (`intelligenter-futterautomat-mit-video-626400`): hat inzwischen mehrere Varianten
-- Rechteckiges Holztablett mit Metallgriff (`rechteckiges-holztablett-mit-metallgriff-633200`): hat inzwischen mehrere Varianten
-- Smarter 2L Futterautomat für Haustiere (`smarter-2l-futterautomat-fur-haustiere-605400`): hat inzwischen mehrere Varianten
-- Wasserdichte Outdoor-Matte aus Aluminiumfolie (`wasserdichte-outdoor-matte-aus-aluminiumfolie-614300`): hat inzwischen mehrere Varianten
 - Automatischer Futterspender (5L) (`automatischer-futterspender-5l-622900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Dunkelgrünes Kissen mit geometrischem Steppmuster (`dunkelgrunes-kissen-mit-geometrischem-steppmus-109440`): hat inzwischen mehrere Varianten
 - Keramik-Futternapf für Haustiere (`keramik-futternapf-fur-haustiere-602200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Belly Unterstützung (`belly-unterstutzung-608000`): hat inzwischen mehrere Varianten
 - Samtkissen mit geometrischem Loop-Muster (`samtkissen-mit-geometrischem-loop-muster-356672`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Moissanite Ring Ensemble aus 925er Silber (`moissanite-ring-ensemble-aus-925er-silber-612400`): nicht mehr aktiv
-- R6 Smart Ring – Wasserdicht mit Stressüberwachung (`r6-smart-ring-wasserdicht-mit-stressuberwachun-613300`): hat inzwischen mehrere Varianten
-- Modernes besticktes Kissen- oder Handtuchbezug (`modernes-besticktes-kissen-oder-handtuchbezug-383872`): hat inzwischen mehrere Varianten
-- Retro Oliven-Edelsteinring mit Ast-Design (`retro-oliven-edelsteinring-mit-ast-design-612000`): hat inzwischen mehrere Varianten
-- Loop Samt Bestickter Kissenbezug (`loop-samt-bestickter-kissenbezug-163008`): hat inzwischen mehrere Varianten
-- Samt-Kissenbezug mit Schlaufenmuster (`samt-kissenbezug-mit-schlaufenmuster-188160`): hat inzwischen mehrere Varianten
-- Sternzeichen Ring mit bunten Zirkonia aus Silber (`sternzeichen-ring-mit-bunten-zirkonia-aus-silb-604900`): hat inzwischen mehrere Varianten
-- Eleganter Unisex-Ring aus Wolframkarbid (`eleganter-unisex-ring-aus-wolframkarbid-607600`): hat inzwischen mehrere Varianten
-- Samt-Jacquard-Decke aus Polyesterfaser (`samt-jacquard-decke-aus-polyesterfaser-230848`): hat inzwischen mehrere Varianten
 - Armband mit Zirkonia-Edelsteinen (`armband-mit-zirkonia-edelsteinen-610800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Fussheberorthese mit Airbag (`fussheberorthese-mit-airbag-637000`): hat inzwischen mehrere Varianten
-- Gusseisen-Emaille-Topf 22cm (`gusseisen-emaille-topf-22cm-367872`): hat inzwischen mehrere Varianten
-- Grosser Multifunktionaler Nylon Rucksack (`grosser-multifunktionaler-nylon-rucksack-521920`): hat inzwischen mehrere Varianten
-- Wasserdichter Laptop-Rucksack mit USB-Ladefunktion (`wasserdichter-laptop-rucksack-mit-usb-ladefunk-946688`): hat inzwischen mehrere Varianten
-- Handgemachte Meerjungfrauen-Nagelpatches · Press-on-Nägel (`handgemachte-meerjungfrauen-nagelpatches-607100`): nicht mehr aktiv
 - Handgemachte Cat's Eye Shell Nägel (`handgemachte-cat-s-eye-shell-nagel-628000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Minimalistischer Silikon Spritzschutz für die Küche (`minimalistischer-silikon-spritzschutz-fur-die-619800`): hat inzwischen mehrere Varianten
-- Künstliche Fingernägel zum Aufkleben (`kunstliche-fingernagel-zum-aufkleben-209024`): hat inzwischen mehrere Varianten
-- Halsband oder Leine mit Gravur für Haustiere (`halsband-oder-leine-mit-gravur-fur-haustiere-477888`): hat inzwischen mehrere Varianten
-- Halsband-Sicherheitsleine (`halsband-sicherheitsleine-759872`): hat inzwischen mehrere Varianten
 - Hundehalsband mit Gravur und Zugfunktion (`hundehalsband-mit-gravur-und-zugfunktion-063168`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Energieeffizientes Heizgerät (`energieeffizientes-heizgerat-371840`): hat inzwischen mehrere Varianten
 - Plüsch-Sitzkissen für den Winter (`plusch-sitzkissen-fur-den-winter-731008`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Sonnensystem-Modellbausteine (`sonnensystem-modellbausteine-619100`): hat inzwischen mehrere Varianten
-- Mermaid-Pet-Kragen (`mermaid-pet-kragen-941376`): hat inzwischen mehrere Varianten
-- Schwarzes Wabenkissen (`schwarzes-wabenkissen-799488`): hat inzwischen mehrere Varianten
-- Baby-Kopfkissen mit Memory-Schaum (`baby-kopfkissen-mit-memory-schaum-577472`): hat inzwischen mehrere Varianten
-- Fressnapf Metall Hochbeinig Schräg (`fressnapf-metall-hochbeinig-schrag-602700`): hat inzwischen mehrere Varianten
-- Keramik Futternapf für Katzen, höhenverstellbar (`keramik-futternapf-fur-katzen-hohenverstellbar-603500`): hat inzwischen mehrere Varianten
-- Faltbarer Basketballkorb mit Saugnapf/Haken (`faltbarer-basketballkorb-mit-saugnapf-haken-611500`): hat inzwischen mehrere Varianten
-- Leichte Power Bank mit 10000 mAh (`leichte-power-bank-mit-10000-mah-646080`): Titel nennt nur «10000 mAh» (Akku: ['10000 mAh', '6000 mAh']) → Titel prüfen (Mensch)
-- Perlenarmband mit Zirkon-Design (`perlenarmband-mit-zirkon-design-630100`): hat inzwischen mehrere Varianten
-- Elastisches Obsidian-Armband für Damen (`elastisches-obsidian-armband-fur-damen-610600`): hat inzwischen mehrere Varianten
-- Magnetischer Türstopper aus Edelstahl (`magnetischer-turstopper-aus-edelstahl-570880`): hat inzwischen mehrere Varianten
-- Uhrenarmband-Zubehör aus Edelstahl mit Dornschliesse (`uhrenarmband-zubehor-aus-edelstahl-mit-dornsch-766080`): hat inzwischen mehrere Varianten
-- Katzenbauch-Kissen aus Memory-Schaum (`katzenbauch-kissen-aus-memory-schaum-327680`): hat inzwischen mehrere Varianten
-- Seitenschläferkissen mit abnehmbarem Taillenkissen (`seitenschlaferkissen-mit-abnehmbarem-taillenki-346432`): hat inzwischen mehrere Varianten
-- Niedliches Cartoon-Kissen für Sofa und Bett (`niedliches-cartoon-kissen-fur-sofa-und-bett-088384`): hat inzwischen mehrere Varianten
-- Handgeflochtener Rattan-Korb (`handgeflochtener-rattan-korb-603900`): hat inzwischen mehrere Varianten
 - Sofabezug aus Baumwolle und Leinen (`sofabezug-aus-baumwolle-und-leinen-017920`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Kreativer Stabfeuerzeug mit Spray-Funktion (`kreativer-stabfeuerzeug-mit-spray-funktion-581632`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Kabelloser 2-in-1 USB Haarglätter & Lockenstab (`kabelloser-2-in-1-usb-haarglatter-lockenstab-198400`): hat inzwischen mehrere Varianten
-- Casual Rucksack 3er-Set (`casual-rucksack-3er-set-839744`): hat inzwischen mehrere Varianten
-- Floral-Shoulder-Rucksack (`floral-shoulder-rucksack-273088`): hat inzwischen mehrere Varianten
-- Knie-Überstreckungsorthese (`knie-uberstreckungsorthese-615900`): hat inzwischen mehrere Varianten
-- AA/AAA Lithium-Akkus mit USB-C Ladefunktion (`aa-aaa-lithium-akkus-mit-usb-c-ladefunktion-688320`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Handgemachte Press-on Nägel „Sweet Star“ (`handgemachte-press-on-nagel-sweet-star-164160`): hat inzwischen mehrere Varianten
-- Nagelverstärkungstabletten (`nagelverstarkungstabletten-434560`): nicht mehr aktiv
-- Herzliche Nagelstifte (`herzliche-nagelstifte-522112`): nicht mehr aktiv
+- AA/AAA Lithium-Akkus mit USB-C Ladefunktion (`aa-aaa-lithium-akkus-mit-usb-c-ladefunktion-688320`): nicht mehr aktiv
 - Strawberry-Milch-Nagel-Tipps (`strawberry-milch-nagel-tipps-611100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Früchtiges Halsband (`fruchtiges-halsband-938176`): hat inzwischen mehrere Varianten
-- Schubladenbeutel (`schubladenbeutel-617300`): hat inzwischen mehrere Varianten
-- Schutzkragen für Hunde und Katzen (`schutzkragen-fur-hunde-und-katzen-941440`): hat inzwischen mehrere Varianten
-- Stillkissen für den Arm aus Baumwolle (`stillkissen-fur-den-arm-aus-baumwolle-089280`): hat inzwischen mehrere Varianten
-- Einfarbiger Samtkissenbezug – Pastoral, 45×45 cm (`einfarbiger-samtkissenbezug-pastoral-45-45-cm-057280`): hat inzwischen mehrere Varianten
-- Minimalistische Kissen (`minimalistische-kissen-419712`): hat inzwischen mehrere Varianten
-- Luxuriöses 6 mm Blau-Glasur-Armband (`luxurioses-6-mm-blau-glasur-armband-626900`): hat inzwischen mehrere Varianten
-- Silber-Tennisarmband (`silber-tennisarmband-625000`): nicht mehr aktiv
-- Blumen-Baukasten (`blumen-baukasten-600800`): hat inzwischen mehrere Varianten
-- Lederarmband (`lederarmband-608200`): hat inzwischen mehrere Varianten
-- Blumenstrauss-Musikbox Baustein-Set (`blumenstrauss-musikbox-baustein-set-602200`): hat inzwischen mehrere Varianten
-- Strass-Armband für Damen aus 925er Silber (`strass-armband-fur-damen-aus-925er-silber-627800`): nicht mehr aktiv
-- Tierpflegehandschuh zur Fellreinigung (`tierpflegehandschuh-zur-fellreinigung-799936`): hat inzwischen mehrere Varianten
-- Seersucker Stretch-Sofabezug (`seersucker-stretch-sofabezug-701632`): hat inzwischen mehrere Varianten
-- Gusseisen Teppanyaki Grillpfanne (`gusseisen-teppanyaki-grillpfanne-601900`): hat inzwischen mehrere Varianten
 - Verstellbares Ofen- und Mikrowellenregal (`verstellbares-ofen-und-mikrowellenregal-624700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Festlicher Tischläufer im New Chinese-Stil (`festlicher-tischlaufer-im-new-chinese-stil-619200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Cartoon-Sitzkissen für Zuhause (`cartoon-sitzkissen-fur-zuhause-340544`): hat inzwischen mehrere Varianten
-- Reisetasche mit USB-Ladefunktion (`reisetasche-mit-usb-ladefunktion-977152`): hat inzwischen mehrere Varianten
-- Dreifach-Haarstyler (`dreifach-haarstyler-643520`): hat inzwischen mehrere Varianten
-- Blauer Nylon-Halsband mit Skull-Design (`blauer-nylon-halsband-mit-skull-design-513920`): hat inzwischen mehrere Varianten
-- Schwarzer Hundehalsband (`schwarzer-hundehalsband-160256`): hat inzwischen mehrere Varianten
-- Weiches Goldkragenband für Hunde (`weiches-goldkragenband-fur-hunde-033280`): hat inzwischen mehrere Varianten
-- Gelenk-Gecko Spielzeug mit Hörnern (`gelenk-gecko-spielzeug-mit-hornern-620200`): hat inzwischen mehrere Varianten
-- Panyi DIY Baustein-Bilderrahmen (`panyi-diy-baustein-bilderrahmen-627300`): hat inzwischen mehrere Varianten
-- Winterwärmer Kissenbezug (`winterwarmer-kissenbezug-089472`): hat inzwischen mehrere Varianten
-- Gold Edelstein Armbanduhr (`gold-edelstein-armbanduhr-605952`): hat inzwischen mehrere Varianten
-- Geometrisches Lederarmband (`geometrisches-lederarmband-606300`): hat inzwischen mehrere Varianten
-- Skull-Ring aus Edelstahl (`skull-ring-aus-edelstahl-619600`): hat inzwischen mehrere Varianten
-- Amethystzodiakarmband (`amethystzodiakarmband-608800`): hat inzwischen mehrere Varianten
-- Hundeleinen-Tragegurt (`hundeleinen-tragegurt-447104`): hat inzwischen mehrere Varianten
-- Kartoon-Halsband für Hunde (`kartoon-halsband-fur-hunde-303360`): hat inzwischen mehrere Varianten
-- Uhrenkiste (`uhrenkiste-618400`): hat inzwischen mehrere Varianten
-- Tischtennisball-Verstärker (`tischtennisball-verstarker-612000`): hat inzwischen mehrere Varianten
-- Keramik-Utensilienhalter im Japan-Stil (`keramik-utensilienhalter-im-japan-stil-637800`): hat inzwischen mehrere Varianten
-- Silikon-Abdichtung für Spülmaschine (`silikon-abdichtung-fur-spulmaschine-984000`): hat inzwischen mehrere Varianten
-- Keramik-Griff (`keramik-griff-721280`): hat inzwischen mehrere Varianten
-- Grosses Reisegepäck · Polyester, 3 Grössen (S–XL) (`gro-es-reisegepack-511808`): hat inzwischen mehrere Varianten
-- Vintage Reise-Sporttasche Leder faltbar (`vintage-reise-sporttasche-leder-faltbar-420352`): hat inzwischen mehrere Varianten
-- Ledertasche für Männer (`ledertasche-fur-manner-377664`): hat inzwischen mehrere Varianten
-- Kupferwaschbecken (`kupferwaschbecken-833792`): hat inzwischen mehrere Varianten
-- Modernes Kissen mit minimalistischem Design (`modernes-kissen-mit-minimalistischem-design-883776`): hat inzwischen mehrere Varianten
-- Tierisch stilvoller Rucksack (`tierisch-stilvoller-rucksack-961472`): hat inzwischen mehrere Varianten
 - Cute Kissenkissen (`cute-kissenkissen-606400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Sportliches Silikon-Pedometer Armband (`sportliches-silikon-pedometer-armband-c84cbf`): hat inzwischen mehrere Varianten
-- Bluetooth Kopfhörer-Ladestation (`bluetooth-kopfhorer-ladestation-fa41cd`): hat inzwischen mehrere Varianten
-- Universal Ledersitzbezug (`universal-ledersitzbezug-602100`): hat inzwischen mehrere Varianten
-- Halsband für Hunde (`halsband-fur-hunde-039872`): hat inzwischen mehrere Varianten
-- Verstellbares Hundehalsband aus Nylon und Rindsleder (`verstellbares-hundehalsband-aus-nylon-und-rind-364608`): hat inzwischen mehrere Varianten
-- Lederverstärkter Hundehalsband (`lederverstarkter-hundehalsband-066240`): hat inzwischen mehrere Varianten
-- Silberner Haar-Curler Aufsatz für Dyson (`silberner-haar-curler-aufsatz-fur-dyson-863104`): hat inzwischen mehrere Varianten
-- Gummiband «Walking Horse», 12 mm (`gummiband-walking-horse-12-mm-e04600`): hat inzwischen mehrere Varianten
-- Hundehalsband für Labrador, Golden Retriever & Co. (`hundehalsband-fur-labrador-golden-retriever-co-475712`): hat inzwischen mehrere Varianten
-- Aufblasbarer Schutzring für Haustiere (`aufblasbarer-schutzring-fur-haustiere-336000`): hat inzwischen mehrere Varianten
-- USB Mini Lockenstab (`usb-mini-lockenstab-522368`): hat inzwischen mehrere Varianten
-- Leinenschleife (`leinenschleife-105600`): hat inzwischen mehrere Varianten
 - Stretch-Sofakappe (`stretch-sofakappe-619500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Kartoon-Kissen (`kartoon-kissen-605300`): hat inzwischen mehrere Varianten
-- Beinlift-Polster (`beinlift-polster-617200`): hat inzwischen mehrere Varianten
-- Überwurf für den Boden (`uberwurf-fur-den-boden-622000`): hat inzwischen mehrere Varianten
-- Reisebeutel (`reisebeutel-619200`): hat inzwischen mehrere Varianten
-- Elektrischer Kopfhaut-Massagekamm mit Rotlicht (`elektrischer-kopfhaut-massagekamm-mit-rotlicht-601400`): hat inzwischen mehrere Varianten
-- Tierkreis-Perlen-Bracelet (`tierkreis-perlen-bracelet-604200`): hat inzwischen mehrere Varianten
-- Wimpernverlängerung Applikator-Stäbchen (`wimpernverlangerung-applikator-stabchen-fea43c`): hat inzwischen mehrere Varianten
-- Wolf-Head-Band (`wolf-head-band-627700`): hat inzwischen mehrere Varianten
-- Stahlarmband für Herren (`stahlarmband-fur-herren-628200`): hat inzwischen mehrere Varianten
-- Gold-Schmuckring (`gold-schmuckring-635600`): hat inzwischen mehrere Varianten
-- Goldene Formkette (`goldene-formkette-615200`): hat inzwischen mehrere Varianten
-- Make-up-Set-Beutel (`make-up-set-beutel-937856`): hat inzwischen mehrere Varianten
-- Türstopper mit Alarm – Diebstahl- und Aufbruchschutz (`turstopper-mit-alarm-diebstahl-und-aufbruchsch-961408`): hat inzwischen mehrere Varianten
 - Kameliennagel (`kameliennagel-617100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Halsband mit Nylon-Seil (`halsband-mit-nylon-seil-887872`): hat inzwischen mehrere Varianten
-- Handliche Leder-Umhängetasche für Herren (`handliche-leder-umhangetasche-fur-herren-135488`): hat inzwischen mehrere Varianten
-- Taktisches Hundehalsband, verstellbar (`taktisches-hundehalsband-verstellbar-795008`): hat inzwischen mehrere Varianten
-- Schmutzabweisendes TPU Hundehalsband (`schmutzabweisendes-tpu-hundehalsband-592192`): hat inzwischen mehrere Varianten
-- Business Commute Umhängetasche (`business-commute-umhangetasche-021312`): hat inzwischen mehrere Varianten
-- Multifunktionale Anti-Diebstahl Umhängetasche (`multifunktionale-anti-diebstahl-umhangetasche-024064`): hat inzwischen mehrere Varianten
-- Regenbogen Halsband für Haustiere (`regenbogen-halsband-fur-haustiere-996864`): hat inzwischen mehrere Varianten
-- Edelstein-Halsband (`edelstein-halsband-115136`): hat inzwischen mehrere Varianten
-- Crossbody Schultertasche für Herren (`crossbody-schultertasche-fur-herren-314560`): hat inzwischen mehrere Varianten
-- Schwarzes Leder-Taschen (`schwarzes-leder-taschen-388864`): hat inzwischen mehrere Varianten
-- Violett Samt Halsband Leine (`violett-samt-halsband-leine-670464`): hat inzwischen mehrere Varianten
-- Checkered Hundeleine (`checkered-hundeleine-953216`): hat inzwischen mehrere Varianten
 - Grosses Outdoor-Rucksack (`gro-es-outdoor-rucksack-862016`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Moderne Kupfer-Kristallkugel Deko (`moderne-kupfer-kristallkugel-deko-460992`): hat inzwischen mehrere Varianten
-- Grosse Umhängetasche für Herren (`grosse-umhangetasche-fur-herren-027648`): hat inzwischen mehrere Varianten
-- Japanische Keramikschale, Unterglasur-Design (`japanische-keramikschale-unterglasur-design-600900`): hat inzwischen mehrere Varianten
-- Erdkeramik-Teller (`erdkeramik-teller-620700`): hat inzwischen mehrere Varianten
-- Doppelfunktionales Heisshalten-Box-Set (`doppelfunktionales-hei-halten-box-set-600400`): hat inzwischen mehrere Varianten
-- Schulrucksack-Set 5-teilig (`schulrucksack-set-5-teilig-203072`): hat inzwischen mehrere Varianten
-- Fischkissen für Katzen (`fischkissen-fur-katzen-993344`): hat inzwischen mehrere Varianten
-- Studenten-Rucksack (`studenten-rucksack-049152`): hat inzwischen mehrere Varianten
-- Heller Ohrstäbchen (`heller-ohrstabchen-837624`): hat inzwischen mehrere Varianten
-- Schutz-Hand-Rohr-Reflexions-Leine (`schutz-hand-rohr-reflexions-leine-998464`): hat inzwischen mehrere Varianten
-- Hundeleinen-Riese (`hundeleinen-riese-595840`): hat inzwischen mehrere Varianten
-- Leather-Halsband für Hunde (`leather-halsband-fur-hunde-226816`): hat inzwischen mehrere Varianten
-- Silikon-Portfoliobox (`silikon-portfoliobox-822208`): hat inzwischen mehrere Varianten
-- Porzellankessel (`porzellankessel-454656`): hat inzwischen mehrere Varianten
-- Diatomit-Tischmatte (`diatomit-tischmatte-610300`): hat inzwischen mehrere Varianten
-- Wintersofa-Bezug (`wintersofa-bezug-602300`): hat inzwischen mehrere Varianten
-- Schwelle in Grau (`schwelle-in-grau-622900`): hat inzwischen mehrere Varianten
-- Aroma Diffuser Holzmaserung (`aroma-diffuser-holzmaserung-e1d479`): hat inzwischen mehrere Varianten
-- 3-in-1 Magnetisches Kabelloses Ladegerät (`3-in-1-magnetisches-kabelloses-ladegerat-896256`): hat inzwischen mehrere Varianten
-- Wasserfeste Armlehnen-Tuch (`wasserfeste-armlehnen-tuch-612100`): hat inzwischen mehrere Varianten
 - Stretch Sofa-Decke (`stretch-sofa-decke-607000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Sofa-Überzug einfarbig (`sofa-uberzug-einfarbig-608000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
 - Chinesisches Sofa-Kissen (`chinesisches-sofa-kissen-609400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
-- Milchfaser-Kissenbezug, verschiedene Grössen (`milchfaser-kissenbezug-verschiedene-grossen-626600`): hat inzwischen mehrere Varianten
-- Farbige Polsterkissen (`farbige-polsterkissen-604100`): hat inzwischen mehrere Varianten
-- Wollkissen für Sofa und Fenster (`wollkissen-fur-sofa-und-fenster-603900`): hat inzwischen mehrere Varianten
-- Lendenkissen mit Geometrischem Muster (`lendenkissen-mit-geometrischem-muster-637700`): hat inzwischen mehrere Varianten
-- Galaxy Watch Active & Galaxy Buds 3-in-1 Ladestation (`galaxy-watch-active-galaxy-buds-3-in-1-ladesta-605900`): hat inzwischen mehrere Varianten
-- Hot Wheels Drift Board Skateboard (`hot-wheels-drift-board-skateboard-d3f87a`): hat inzwischen mehrere Varianten
-- Atmungsaktiver Bauch- und Taillenformer nach der Geburt (`atmungsaktiver-bauch-und-taillenformer-nach-de-600200`): hat inzwischen mehrere Varianten
-- Kabelloses Ladegerät fürs Smartphone (`kabelloses-ladegerat-furs-smartphone-4925ac`): hat inzwischen mehrere Varianten
-- Automatische Herrenuhr mit Lederarmband (`automatische-herrenuhr-mit-lederarmband-894208`): hat inzwischen mehrere Varianten
-- 8er-Set Make-up Pinsel mit Strass-Besatz (`8er-set-make-up-pinsel-mit-strass-besatz-614336`): hat inzwischen mehrere Varianten
-- Augenbrauen- und Eyelinerstift, automatisch (`augenbrauen-und-eyelinerstift-automatisch-013120`): hat inzwischen mehrere Varianten
-- Fashion Sports Silikon-Armbanduhr (`fashion-sports-silikon-armbanduhr-641088`): hat inzwischen mehrere Varianten
-- Herren Quarzuhr mit Mondphase und Leuchtzeigern (`herren-quarzuhr-mit-mondphase-und-leuchtzeiger-763840`): hat inzwischen mehrere Varianten
-- Coole magnetische Herrenuhr (`coole-magnetische-herrenuhr-854784`): hat inzwischen mehrere Varianten
-- Hip-Hop Quarzuhr mit Strass-Besatz für Herren (`hip-hop-quarzuhr-mit-strass-besatz-fur-herren-340416`): hat inzwischen mehrere Varianten
-- Digitale Quarzuhr aus Edelstahl (`digitale-quarzuhr-aus-edelstahl-782016`): hat inzwischen mehrere Varianten
-- Ovale Bilderrahmen aus Kunstharz (`ovale-bilderrahmen-aus-kunstharz-d31917`): hat inzwischen mehrere Varianten
-- Layered Beaded Multi-Wrap Armband (`layered-beaded-multi-wrap-armband-635000`): hat inzwischen mehrere Varianten
-- Faltbarer Outdoor-Abfalleimer mit Deckel (`faltbarer-outdoor-abfalleimer-mit-deckel-612000`): hat inzwischen mehrere Varianten
-- Kapsel-Füllbrett mit 400 Löchern (`kapsel-fullbrett-mit-400-lochern-627100`): hat inzwischen mehrere Varianten
-- Kinder-Sicherheitsschere mit Tiermotiv (`kinder-sicherheitsschere-mit-tiermotiv-601900`): hat inzwischen mehrere Varianten
-- Mini Drohne mit Fernsteuerung (`mini-drohne-mit-fernsteuerung-961cd1`): hat inzwischen mehrere Varianten
-- Japanische Porzellan-Schale für Nudeln & Reis (`japanische-porzellan-schale-fur-nudeln-reis-418688`): hat inzwischen mehrere Varianten
-- Ferngesteuerte Mini-Drohne mit LED-Licht (`ferngesteuerte-mini-drohne-mit-led-licht-c29170`): hat inzwischen mehrere Varianten
-- Möbel-Staubschutzhülle (`mobel-staubschutzhulle-d3332e`): hat inzwischen mehrere Varianten
-- Halsband mit Blumen-Fliege für Katzen (`halsband-mit-blumen-fliege-fur-katzen-655744`): hat inzwischen mehrere Varianten
-- Hübsche Katzen-Fliege mit Glöckchen (`hubsche-katzen-fliege-mit-glockchen-171136`): hat inzwischen mehrere Varianten
-- Plaid Polarfleece-Sofabezug (`plaid-polarfleece-sofabezug-4d015c`): hat inzwischen mehrere Varianten
-- Halsventilator mit Heiz- und Kühlfunktion (`halsventilator-mit-heiz-und-kuhlfunktion-632600`): hat inzwischen mehrere Varianten
-- Quadratische Herrenuhr mit Silikonarmband (`quadratische-herrenuhr-mit-silikonarmband-679296`): hat inzwischen mehrere Varianten
-- Sportliche Quarzuhr für Herren (`sportliche-quarzuhr-fur-herren-132864`): hat inzwischen mehrere Varianten
-- Herrenuhr mit bunten Kristallen (`herrenuhr-mit-bunten-kristallen-902016`): hat inzwischen mehrere Varianten
-- Gestreifter Ring im Instagram-Stil (`gestreifter-ring-im-instagram-stil-602700`): hat inzwischen mehrere Varianten
-- Vergoldeter Ring im Minimal-Design (`vergoldeter-ring-im-minimal-design-632800`): hat inzwischen mehrere Varianten
-- Reise Kompressionsbeutel 6er-Set (`reise-kompressionsbeutel-6er-set-627200`): hat inzwischen mehrere Varianten
-- Wasserdichtes Reise-Kompressionsbeutel-Set (`wasserdichtes-reise-kompressionsbeutel-set-601400`): hat inzwischen mehrere Varianten
-- Multifunktionales 12-teiliges Augenpinsel-Set (`multifunktionales-12-teiliges-augenpinsel-set-279680`): hat inzwischen mehrere Varianten
-- Faltbarer Oxford Stoff Wäschekorb (`faltbarer-oxford-stoff-waschekorb-631400`): hat inzwischen mehrere Varianten
-- 11-teiliges Make-up Pinselset mit Bambusgriff (`11-teiliges-make-up-pinselset-mit-bambusgriff-503040`): hat inzwischen mehrere Varianten
-- Niedliche 2D-Stil Umhängetasche für Kleinkinder (`niedliche-2d-stil-umhangetasche-fur-kleinkinde-619000`): hat inzwischen mehrere Varianten
-- Hexagon Wandregal-Set aus Schmiedeeisen (`hexagon-wandregal-set-aus-schmiedeeisen-628200`): hat inzwischen mehrere Varianten
-- Aufklebe-Nägel in Nude mit Cat-Eye-Effekt (`hand-worn-nail-nude-ice-through-cat-s-eye-610100`): hat inzwischen mehrere Varianten
-- Halsband mit Farbball-Anhänger für Haustiere (`halsband-mit-farbball-anhanger-fur-haustiere-814272`): hat inzwischen mehrere Varianten
-- Wasserdichte Motorrad-Tanktasche (`wasserdichte-motorrad-tanktasche-019136`): hat inzwischen mehrere Varianten
-- Katzen-Königsumhang mit Spitzenkragen (`katzen-konigsumhang-mit-spitzenkragen-294208`): hat inzwischen mehrere Varianten
-- Halsband und Leine Set Matcha Grün Samt (`halsband-und-leine-set-matcha-grun-samt-486848`): hat inzwischen mehrere Varianten
-- Halsband aus Baumwolle mit Metallschnalle (`halsband-aus-baumwolle-mit-metallschnalle-168576`): hat inzwischen mehrere Varianten
-- Business-Rucksack für Studenten (20-35L) (`business-rucksack-fur-studenten-20-35l-544384`): hat inzwischen mehrere Varianten
-- Auftau- und Frischhalteplatte (`auftau-und-frischhalteplatte-783872`): hat inzwischen mehrere Varianten
-- Nordisches Mandala Wandtuch (`nordisches-mandala-wandtuch-39bf1e`): hat inzwischen mehrere Varianten
-- Tongqu Kung Fu Teeset mit Purpursand-Ornament (`tongqu-kung-fu-teeset-mit-purpursand-ornament-594240`): hat inzwischen mehrere Varianten
-- Futter- und Wassernapf für Katzen, Glas (`futter-und-wassernapf-fur-katzen-glas-480896`): hat inzwischen mehrere Varianten
-- Schnelle Auftauplatte mit Silikonring (`schnelle-auftauplatte-mit-silikonring-000192`): hat inzwischen mehrere Varianten
-- Gestreifter Kissenbezug Schwarz-Weiss (`gestreifter-kissenbezug-schwarz-weiss-727360`): hat inzwischen mehrere Varianten
-- Chubby Flower Keramikteller (`chubby-flower-keramikteller-899712`): hat inzwischen mehrere Varianten
-- Quarz-Uhr aus Edelstahllegierung (`quarz-uhr-aus-edelstahllegierung-040320`): hat inzwischen mehrere Varianten
-- Damen-Armbanduhr mit Strass-Akzenten (`damen-armbanduhr-mit-strass-akzenten-097408`): hat inzwischen mehrere Varianten
-- Retro-Armbanduhr für Damen (`retro-armbanduhr-fur-damen-092608`): hat inzwischen mehrere Varianten
-- Hohle wasserdichte Quarzuhr für Herren (`hohle-wasserdichte-quarzuhr-fur-herren-048256`): hat inzwischen mehrere Varianten
-- Auto-Nothammer für Fenster (`auto-nothammer-fur-fenster-627300`): hat inzwischen mehrere Varianten
-- Backform-Set aus Silikon (`backform-set-aus-silikon-377856`): hat inzwischen mehrere Varianten
-- Pestizid-Entferner für Obst und Gemüse (`pestizid-entferner-fur-obst-und-gemuse-068992`): hat inzwischen mehrere Varianten
-- Runde Korean BBQ Platte aus Maifan-Stein (`runde-korean-bbq-platte-aus-maifan-stein-230720`): hat inzwischen mehrere Varianten
-- Universal Ölfiltertopf für Induktionsherde (`universal-olfiltertopf-fur-induktionsherde-235456`): hat inzwischen mehrere Varianten
-- Keramik-Teller mit Holzgriff (`keramik-teller-mit-holzgriff-120704`): hat inzwischen mehrere Varianten
-- LED Display Rucksack «Dynamic Duffel Bag» (`led-display-rucksack-dynamic-duffel-bag-857792`): hat inzwischen mehrere Varianten
-- Essstäbchen-Set aus Legierung, hitzebeständig · 10-teilig (`essstabchen-set-aus-legierung-hitzebestandig-263168`): hat inzwischen mehrere Varianten
-- Portables, schnelles, kabelloses Ladegerät (`portables-schnelles-kabelloses-ladegerat-4012be`): hat inzwischen mehrere Varianten
-- Kinder-Kopfkissen aus Naturlatex und Baumwolle (`kinder-kopfkissen-aus-naturlatex-und-baumwolle-9e92a9`): hat inzwischen mehrere Varianten
-- Hub USB-C Kartenleser (`hub-usb-c-kartenleser-7bbb27`): hat inzwischen mehrere Varianten
-- Stoff-Tatami-Futon – verschiedene Grössen (`stoff-tatami-futon-verschiedene-grossen-f62bca`): hat inzwischen mehrere Varianten
-- Rosenquarz- und Jade-Roller mit 3D-Metall (`rosenquarz-und-jade-roller-mit-3d-metall-609500`): hat inzwischen mehrere Varianten
-- Wasserdichte Velo-Hardcase-Tasche (`wasserdichte-velo-hardcase-tasche-636500`): hat inzwischen mehrere Varianten
-- Rhinestone-Uhrenarmband für Apple Watch (`rhinestone-uhrenarmband-fur-apple-watch-091904`): hat inzwischen mehrere Varianten
-- Herren Quarzuhr mit Kalenderfunktion (`herren-quarzuhr-mit-kalenderfunktion-709504`): hat inzwischen mehrere Varianten
-- 2-in-1 Wimpern- & Augenbrauen-Set (`2-in-1-wimpern-augenbrauen-set-627300`): hat inzwischen mehrere Varianten
-- Wasserdichte Herren-Quarzuhr aus Edelstahl (`wasserdichte-herren-quarzuhr-aus-edelstahl-765696`): hat inzwischen mehrere Varianten
-- Quadratische Damenuhr mit 18K Vergoldung (`quadratische-damenuhr-mit-18k-vergoldung-225856`): hat inzwischen mehrere Varianten
-- Outdoor-Reisetasche für Jungs mit viel Stauraum (`outdoor-reisetasche-fur-jungs-mit-viel-staurau-097152`): hat inzwischen mehrere Varianten
-- Geflochtenes Lederarmband aus Mikrofaser (`geflochtenes-lederarmband-aus-mikrofaser-612900`): hat inzwischen mehrere Varianten
-- Herrenarmband aus Edelstahl, doppelt geflochten (`herrenarmband-aus-edelstahl-doppelt-geflochten-603900`): hat inzwischen mehrere Varianten
-- Personalisiertes Armband mit 12 Geburtsblumen (`personalisiertes-armband-mit-12-geburtsblumen-620900`): hat inzwischen mehrere Varianten
-- Quadratischer Bodenablauf aus Edelstahl (`quadratischer-bodenablauf-aus-edelstahl-626600`): hat inzwischen mehrere Varianten
-- Hundehalsband im Brit-Stil mit Karomuster (`hundehalsband-im-brit-stil-mit-karomuster-705984`): hat inzwischen mehrere Varianten
-- Quadrocopter mit HD-Kamera für Kinder (`quadrocopter-mit-hd-kamera-fur-kinder-743488`): hat inzwischen mehrere Varianten
-- LED-Halsband für Haustiere, wasserdicht (`led-halsband-fur-haustiere-wasserdicht-879616`): hat inzwischen mehrere Varianten
-- Airtag Schutzhülle für Haustierhalsband (`airtag-schutzhulle-fur-haustierhalsband-302144`): hat inzwischen mehrere Varianten
-- Halsband und Leine für Haustiere – gestreift (`halsband-und-leine-fur-haustiere-gestreift-062208`): hat inzwischen mehrere Varianten
-- Katzenhalsband mit Fliege (`katzenhalsband-mit-fliege-745152`): hat inzwischen mehrere Varianten
-- Niedliches Bären-Geschirrset aus Keramik (`niedliches-baren-geschirrset-aus-keramik-393152`): hat inzwischen mehrere Varianten
-- 3-stöckiges Gewürzregal aus Metall (`3-stockiges-gewurzregal-aus-metall-761472`): hat inzwischen mehrere Varianten
-- Wasserdichter Reise-Rucksack für Herren (`wasserdichter-reise-rucksack-fur-herren-422272`): hat inzwischen mehrere Varianten
-- Beissfester Spielball zur Zahnreinigung (`beissfester-spielball-zur-zahnreinigung-601408`): hat inzwischen mehrere Varianten
-- Grosse, robuste Reisetasche aus Oxford-Stoff (`grosse-robuste-reisetasche-aus-oxford-stoff-882624`): hat inzwischen mehrere Varianten
-- Business Rucksack Herren – wasserdicht, gross (`business-rucksack-herren-wasserdicht-gross-073600`): hat inzwischen mehrere Varianten
-- Eleganter PU-Rucksack für Damen (`eleganter-pu-rucksack-fur-damen-324544`): hat inzwischen mehrere Varianten
-- Keramik Wasserset „Simple Living Room“ (`keramik-wasserset-simple-living-room-495552`): hat inzwischen mehrere Varianten
-- Keramik-Schale "Planet" (`keramik-schale-planet-128704`): hat inzwischen mehrere Varianten
-- LED Wasserhahn mit 360° Rotation und Temperaturkontrolle (`led-wasserhahn-mit-360-rotation-und-temperatur-160896`): hat inzwischen mehrere Varianten
-- Malen nach Zahlen – Kirschblüten-Allee (`diy-digital-olgemalde-nach-zahlen-465024`): hat inzwischen mehrere Varianten
-- Wäschekorb und Aufbewahrungsregal, 2-stufig (`waschekorb-und-aufbewahrungsregal-2-stufig-621700`): hat inzwischen mehrere Varianten
-- Baby Krabbelmatte „Blatt“ (`baby-krabbelmatte-blatt-5164d0`): hat inzwischen mehrere Varianten
-- Retro Kissenbezug aus Baumwolle (`retro-kissenbezug-aus-baumwolle-ce9c9d`): hat inzwischen mehrere Varianten
-- Squat Fuss-Pad für Kniebeugen (`squat-fuss-pad-fur-kniebeugen-617000`): hat inzwischen mehrere Varianten
-- Faltbare, feuerfeste Aufbewahrungsbox (`faltbare-feuerfeste-aufbewahrungsbox-613500`): hat inzwischen mehrere Varianten
-- Roran Leine aus hochwertigem PU-Leder (`roran-leine-aus-hochwertigem-pu-leder-603000`): hat inzwischen mehrere Varianten
-- Fashion Waffle Katzengeschirr mit Leine (`fashion-waffle-katzengeschirr-mit-leine-622700`): hat inzwischen mehrere Varianten
-- Tischtennisbelag T11 Anorganischer Carbon (`tischtennisbelag-t11-anorganischer-carbon-600800`): hat inzwischen mehrere Varianten
-- Reflektierende Outdoor-Hundeleine mit Elastik (`reflektierende-outdoor-hundeleine-mit-elastik-613800`): hat inzwischen mehrere Varianten
-- Silikon Massage-Gurt für Bauchformung (`silikon-massage-gurt-fur-bauchformung-613200`): hat inzwischen mehrere Varianten
-- Anti-Biss Halskrause für Hunde und Katzen (`anti-biss-halskrause-fur-hunde-und-katzen-032576`): hat inzwischen mehrere Varianten
-- Katzenhalsband Schal – Festliche Pompons & Glocke (`katzenhalsband-schal-festliche-pompons-glocke-726592`): hat inzwischen mehrere Varianten
-- Automatischer Lockenstab aus Metall (`automatischer-lockenstab-aus-metall-4bb229`): hat inzwischen mehrere Varianten
-- Mikrowellen-Wärmflasche (`mikrowellen-warmflasche-22b9d9`): hat inzwischen mehrere Varianten
+- Regenmantel für kleine bis mittelgrosse Hunde (`regenmantel-fur-kleine-bis-mittelgrosse-hunde-729216`): hat inzwischen mehrere Varianten
+- Doppelsprüh-Luftbefeuchter (`doppelspruh-luftbefeuchter-5dda1b`): hat inzwischen mehrere Varianten
+- Ferngesteuerter Modellhelikopter (`ferngesteuerter-modellhelikopter-139712`): hat inzwischen mehrere Varianten
+- RC Amphibienfahrzeug für Meer, Land & Luft (`rc-amphibienfahrzeug-fur-meer-land-luft-059072`): hat inzwischen mehrere Varianten
+- RC High-Speed Jeep im Massstab 1:16 (`rc-high-speed-jeep-im-massstab-1-16-382272`): hat inzwischen mehrere Varianten
+- Multifunktions-Chronograph Sportuhr (`multifunktions-chronograph-sportuhr-708672`): hat inzwischen mehrere Varianten
+- F22 Elektro-Schaumstoff-Stuntflieger (`f22-elektro-schaumstoff-stuntflieger-094848`): hat inzwischen mehrere Varianten
+- Quarz-Uhr mit transparentem Gehäuseboden (`quarz-uhr-mit-transparentem-gehauseboden-423680`): hat inzwischen mehrere Varianten
+- Wasserfester Eyelash Seal für präzise Linien (`wasserfester-eyelash-seal-fur-prazise-linien-603500`): hat inzwischen mehrere Varianten
+- 12er Set Make-up Pinsel (`12er-set-make-up-pinsel-239424`): hat inzwischen mehrere Varianten
+- Tigerauge-Armband Natur Gelb (`tigerauge-armband-natur-gelb-600100`): hat inzwischen mehrere Varianten
+- Lederarmband mit Axt-Anhänger aus Edelstahl (`lederarmband-mit-axt-anhanger-aus-edelstahl-639200`): hat inzwischen mehrere Varianten
+- Vintage Titanstahl Armreif mit Strasssteinen (`vintage-titanstahl-armreif-mit-strasssteinen-628100`): hat inzwischen mehrere Varianten
+- Multifunktionale Retro Umhängetasche (`multifunktionale-retro-umhangetasche-095296`): hat inzwischen mehrere Varianten
+- Wäschenetz für Kappen und Mützen (`waschenetz-fur-kappen-und-mutzen-619000`): hat inzwischen mehrere Varianten
+- Folien- und Frischhaltefolien-Dispenser (`folien-und-frischhaltefolien-dispenser-410048`): hat inzwischen mehrere Varianten
+- Wasserdichtes Ortungsgerät-Halsband (`wasserdichtes-ortungsgerat-halsband-973184`): hat inzwischen mehrere Varianten
+- Halskette für Haustiere (`halskette-fur-haustiere-347328`): hat inzwischen mehrere Varianten
+- Leichter, kompakter Reisekoffer (`leichter-kompakter-reisekoffer-618400`): hat inzwischen mehrere Varianten
+- Wasserdichtes LED-Hundehalsband, rund (`wasserdichtes-led-hundehalsband-rund-208576`): hat inzwischen mehrere Varianten
+- Anti-Verlust Hunde Halsband (`anti-verlust-hunde-halsband-112128`): hat inzwischen mehrere Varianten
+- Business Rucksack mit USB-Ladeanschluss (`business-rucksack-mit-usb-ladeanschluss-681408`): hat inzwischen mehrere Varianten
+- Schlichter Laptop-Rucksack (`schlichter-laptop-rucksack-871232`): hat inzwischen mehrere Varianten
+- AirTag-Halsband für Hunde (`airtag-halsband-fur-hunde-186176`): hat inzwischen mehrere Varianten
+- Unisex Canvas Rucksack für Freizeit & Alltag (`unisex-canvas-rucksack-fur-freizeit-alltag-676672`): hat inzwischen mehrere Varianten
+- Faltbarer, superweicher Halsring für Haustiere (`faltbarer-superweicher-halsring-fur-haustiere-077824`): hat inzwischen mehrere Varianten
+- USB Rucksack für Outdoor & Sport (`usb-rucksack-fur-outdoor-sport-846656`): hat inzwischen mehrere Varianten
+- Leuchtendes Hunde-Halsband aus Silikon (`leuchtendes-hunde-halsband-aus-silikon-951936`): hat inzwischen mehrere Varianten
+- Freizeitrucksack für Laptop bis 14 Zoll (`freizeitrucksack-fur-laptop-bis-14-zoll-266304`): hat inzwischen mehrere Varianten
+- Wurf- und Kauball für Hunde (`wurf-und-kauball-fur-hunde-234816`): hat inzwischen mehrere Varianten
+- Ultraschall Aroma Diffuser mit Nachtlicht (`ultraschall-aroma-diffuser-mit-nachtlicht-d6c36d`): kein EU-Stecker bei CJ
+- Beissfester Gummi-Trainingsball für Hunde (`beissfester-gummi-trainingsball-fur-hunde-898752`): hat inzwischen mehrere Varianten
+- M18 True Wireless In-Ear Headset (`m18-true-wireless-in-ear-headset-eed095`): hat inzwischen mehrere Varianten
+- Sonnenhut für Hunde und Katzen (`sonnenhut-fur-hunde-und-katzen-085632`): hat inzwischen mehrere Varianten
+- Katzenhalskette mit Perlen (`katzenhalskette-mit-perlen-962496`): hat inzwischen mehrere Varianten
+- Verstellbares Trainingshalsband für Hunde (`verstellbares-trainingshalsband-fur-hunde-180736`): hat inzwischen mehrere Varianten
+- Hundehalsband Reflektierend & Weich (`hundehalsband-reflektierend-weich-571200`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- LED Leuchtanhänger für Hunde (`led-leuchtanhanger-fur-hunde-711040`): hat inzwischen mehrere Varianten
+- Klimmzugband-Set für zuhause und draussen (`klimmzugband-set-fur-zuhause-und-draussen-600400`): hat inzwischen mehrere Varianten
+- RC-Flugzeug mit Kamera für Kinder (`rc-flugzeug-mit-kamera-fur-kinder-604900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Halsband aus Tauchschaum, reflektierend (`halsband-aus-tauchschaum-reflektierend-285120`): hat inzwischen mehrere Varianten
+- Wasserdichtes Leuchthalsband für Haustiere (`wasserdichtes-leuchthalsband-fur-haustiere-623808`): hat inzwischen mehrere Varianten
+- Halsband Cartoon-Farben für Hunde (`halsband-cartoon-farben-fur-hunde-378752`): hat inzwischen mehrere Varianten
+- Anti-Leck Halskrause für Katzen (`anti-leck-halskrause-fur-katzen-422208`): hat inzwischen mehrere Varianten
+- Halsband mit Spitze und Schleife für Katzen (`halsband-mit-spitze-und-schleife-fur-katzen-356352`): hat inzwischen mehrere Varianten
+- Bären-Kopfkissen aus Baumwolle (`baren-kopfkissen-aus-baumwolle-284800`): hat inzwischen mehrere Varianten
+- Velo Rücklicht «Breathing» (`velo-rucklicht-breathing-5ce5e3`): hat inzwischen mehrere Varianten
+- Ladestation für PS4-Gamecontroller (`ladestation-fur-ps4-gamecontroller-116234`): hat inzwischen mehrere Varianten
+- Blauer Elch Kissenbezug aus Baumwolle und Leinen (`blauer-elch-kissenbezug-aus-baumwolle-und-lein-242a8c`): hat inzwischen mehrere Varianten
+- Multifunktionaler Lockenstab mit Keramikbeschichtung (`multifunktionaler-lockenstab-mit-keramikbeschi-f1a472`): hat inzwischen mehrere Varianten
+- Multifunktions- Quarzuhr mit Leuchtzeigern (`multifunktions-quarzuhr-mit-leuchtzeigern-084800`): hat inzwischen mehrere Varianten
+- Edle Quarzuhr für Sie & Ihn (`edle-quarzuhr-fur-sie-ihn-956672`): hat inzwischen mehrere Varianten
+- Retro Canvas-Rucksack für Herren (`retro-canvas-rucksack-fur-herren-977792`): hat inzwischen mehrere Varianten
+- Augenmassagegerät mit Wärmefunktion (`augenmassagegerat-mit-warmefunktion-628400`): hat inzwischen mehrere Varianten
+- Friseur Rucksack für Haarwerkzeuge (`friseur-rucksack-fur-haarwerkzeuge-053248`): hat inzwischen mehrere Varianten
+- Nail Art Pinsel mit Glitzergriff (`nail-art-pinsel-mit-glitzergriff-445888`): hat inzwischen mehrere Varianten
+- 7-teiliges transparentes Make-up Pinselset (`7-teiliges-transparentes-make-up-pinselset-857856`): hat inzwischen mehrere Varianten
+- Handbemalte abnehmbare Nägel «Black Peach Heart» (`handbemalte-abnehmbare-nagel-black-peach-heart-616800`): hat inzwischen mehrere Varianten
+- Handbemalte 3D-Press-on-Nägel «Cute» (`handbemalte-3d-nagelsticker-cute-604800`): hat inzwischen mehrere Varianten
+- Leopard French Style Long Wear Armor (`leopard-french-style-long-wear-armor-626300`): nicht mehr aktiv
+- Bunte 3D-Blumen & Schmetterlinge zum Aufkleben · Press-on-Nägel (`bunte-3d-blumen-schmetterlinge-zum-aufkleben-622200`): hat inzwischen mehrere Varianten
+- Ovale, handgemachte French-Blumen Nägel (`ovale-handgemachte-french-blumen-nagel-629800`): hat inzwischen mehrere Varianten
+- Leder-Leine für mittelgrosse bis grosse Hunde (`leder-leine-fur-mittelgrosse-bis-grosse-hunde-602800`): hat inzwischen mehrere Varianten
+- Taktisches Outdoor-Hundehalsband für Arbeitshunde (`taktisches-outdoor-hundehalsband-fur-arbeitshu-640960`): hat inzwischen mehrere Varianten
+- Reflektierendes Hunde-Halsband mit Schnellverschluss (`reflektierendes-hunde-halsband-mit-schnellvers-687424`): hat inzwischen mehrere Varianten
+- Halsband mit Schleife und Tiermuster (`halsband-mit-schleife-und-tiermuster-565632`): hat inzwischen mehrere Varianten
+- Halsband-Set mit Schleife für Haustiere (`halsband-set-mit-schleife-fur-haustiere-419520`): hat inzwischen mehrere Varianten
+- Halsband aus echtem Rindsleder für Welpen (`halsband-aus-echtem-rindsleder-fur-welpen-405056`): hat inzwischen mehrere Varianten
+- Samtiges Haustierhalsband mit Leine (`samtiges-haustierhalsband-mit-leine-423808`): KI-Übersetzung fehlt/abgelehnt: ['Dog pen dog rope1', 'Dog Circle Dog Rope Bow1', 'Dog pen dog rope2', 'Dog Circle Dog Rope Bow2']
+- Halsband aus echtem Rindsleder für Hunde (`halsband-aus-echtem-rindsleder-fur-hunde-691456`): hat inzwischen mehrere Varianten
+- Red Feet Leckerli-Ball für Hunde (`red-feet-leckerli-ball-fur-hunde-374912`): hat inzwischen mehrere Varianten
+- Faltbarer Schnüffelball für Hunde (`faltbarer-schnuffelball-fur-hunde-039936`): hat inzwischen mehrere Varianten
+- Sisal Flying Fish Kratzbaum für Katzen (`sisal-flying-fish-kratzbaum-fur-katzen-270336`): hat inzwischen mehrere Varianten
+- Lustige Katzenbox Fünfstern (`lustige-katzenbox-funfstern-216704`): hat inzwischen mehrere Varianten
+- Multifunktionales Bauchmuskelrad mit Rebound (`multifunktionales-bauchmuskelrad-mit-rebound-628100`): hat inzwischen mehrere Varianten
+- Nordisch-marokkanischer Kissenbezug mit Quasten (`nordisch-marokkanischer-kissenbezug-mit-quaste-cf4e3b`): hat inzwischen mehrere Varianten
+- Kubanische Gliederkette (`kubanische-gliederkette-616500`): hat inzwischen mehrere Varianten
+- Holz-Serviertablett für Snacks & Früchte (`holz-serviertablett-fur-snacks-fruchte-626000`): hat inzwischen mehrere Varianten
+- Samt Schmuckbox mit grosser Kapazität (`samt-schmuckbox-mit-grosser-kapazitat-630700`): hat inzwischen mehrere Varianten
+- Grosser Fotorucksack für Profis (`grosser-fotorucksack-fur-profis-052288`): hat inzwischen mehrere Varianten
+- Kamera Rucksack Professional (`kamera-rucksack-professional-467840`): hat inzwischen mehrere Varianten
+- Multifunktionaler Rucksack mit USB-Anschluss (`multifunktionaler-rucksack-mit-usb-anschluss-572800`): hat inzwischen mehrere Varianten
+- Ultraschall Aroma Diffusor (`ultraschall-aroma-diffusor-b6ed24`): hat inzwischen mehrere Varianten
+- Elektrischer Milchschäumer für kalten und warmen Milchschaum (`elektrischer-milchschaumer-fur-kalten-und-warm-446784`): hat inzwischen mehrere Varianten
+- Automatischer Make-up Pinsel für unterwegs (`automatischer-make-up-pinsel-fur-unterwegs-393408`): hat inzwischen mehrere Varianten
+- Halsband aus reinem Rindsleder (`halsband-aus-reinem-rindsleder-395520`): hat inzwischen mehrere Varianten
+- Halskette für Hunde im Hip-Hop-Stil (`halskette-fur-hunde-im-hip-hop-stil-609856`): hat inzwischen mehrere Varianten
+- Hundehalsband mit Metallschnalle (`hundehalsband-mit-metallschnalle-237824`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Hunde Anti-Kollisionsring für Halsbänder (`hunde-anti-kollisionsring-fur-halsbander-172992`): hat inzwischen mehrere Varianten
+- Halsband mit Gravur für Hunde und Katzen (`halsband-mit-gravur-fur-hunde-und-katzen-056064`): hat inzwischen mehrere Varianten
+- Halsband für Hunde mit Schleife (`halsband-fur-hunde-mit-schleife-636096`): hat inzwischen mehrere Varianten
+- Halsband mit Schleife im Britischen Weihnachts-Stil (`halsband-mit-schleife-im-britischen-weihnachts-507648`): hat inzwischen mehrere Varianten
+- LED-Hundehalsband Fashion (`led-hundehalsband-fashion-843008`): hat inzwischen mehrere Varianten
+- Outdoor-Halsband für mittelgrosse bis grosse Hunde (`outdoor-halsband-fur-mittelgrosse-bis-grosse-h-323136`): hat inzwischen mehrere Varianten
+- USB Leuchthalsband für Hunde (`usb-leuchthalsband-fur-hunde-465280`): hat inzwischen mehrere Varianten
+- Leuchtendes LED-Halsband für Haustiere (`leuchtendes-led-halsband-fur-haustiere-804416`): hat inzwischen mehrere Varianten
+- Halloween-Deko: Realistische Kunststoffkette (`halloween-deko-realistische-kunststoffkette-658880`): hat inzwischen mehrere Varianten
+- Hundehalsband mit AirTag-Hülle (`hundehalsband-mit-airtag-hulle-193920`): hat inzwischen mehrere Varianten
+- Futter- und Wasserspender 2-in-1 (`futter-und-wasserspender-2-in-1-610700`): hat inzwischen mehrere Varianten
+- Futter- und Wasserspender 3.8l (`futter-und-wasserspender-3-8l-612000`): hat inzwischen mehrere Varianten
+- Keramik-Doppelnapf für Katzen mit Neigung (`keramik-doppelnapf-fur-katzen-mit-neigung-620800`): hat inzwischen mehrere Varianten
+- Sofa-Kissenbezug für Wohn- und Teeraum (`sofa-kissenbezug-fur-wohn-und-teeraum-718848`): hat inzwischen mehrere Varianten
+- Blumen Katzennapf aus Keramik (`blumen-katzennapf-aus-keramik-616100`): hat inzwischen mehrere Varianten
+- Faltbarer Reise-Napf für Hunde & Katzen (`faltbarer-reise-napf-fur-hunde-katzen-611700`): hat inzwischen mehrere Varianten
+- Xlite100 Intelligentes Velo-Rücklicht (`xlite100-intelligentes-velo-rucklicht-40565d`): hat inzwischen mehrere Varianten
+- PS5 Controller Ladestation mit LED (`ps5-controller-ladestation-mit-led-294f06`): hat inzwischen mehrere Varianten
+- Vokalisierender Spielball für Katzen (`vokalisierender-spielball-fur-katzen-950848`): hat inzwischen mehrere Varianten
+- Robustes Quietsch-Rugby für Hunde (`robustes-quietsch-rugby-fur-hunde-601792`): hat inzwischen mehrere Varianten
+- Wiederaufladbares, selbsterwärmendes Haustierspielzeug (`wiederaufladbares-selbsterwarmendes-haustiersp-311424`): hat inzwischen mehrere Varianten
+- Mini-Elektrotopf für Hotpot & Nudeln (`mini-elektrotopf-fur-hotpot-nudeln-968448`): hat inzwischen mehrere Varianten
+- Sportliche Quarzuhr mit Kautschukarmband (`sportliche-quarzuhr-mit-kautschukarmband-609700`): hat inzwischen mehrere Varianten
+- Luxuriöse Damenuhr mit Strasssteinen (`luxuriose-damenuhr-mit-strasssteinen-601800`): hat inzwischen mehrere Varianten
+- Herzli-Waffeleisen für de schnälle Zmorge (`herzli-waffeleisen-fur-de-schnalle-zmorge-556736`): hat inzwischen mehrere Varianten
+- Multifunktions-Herrenuhr mit Saphirglas (`multifunktions-herrenuhr-mit-saphirglas-623900`): hat inzwischen mehrere Varianten
+- Keramik-Rührschüssel mit Blumenmuster (`keramik-ruhrschussel-mit-blumenmuster-659200`): hat inzwischen mehrere Varianten
+- Multifunktionale Herren- Quarzuhr mit Silikonband (`multifunktionale-herren-quarzuhr-mit-silikonba-604700`): hat inzwischen mehrere Varianten
+- Silikon Eiswürfelform mit Presse (`silikon-eiswurfelform-mit-presse-190656`): hat inzwischen mehrere Varianten
+- Multifunktionale Quarz-Herrenuhr, eckig (`multifunktionale-quarz-herrenuhr-eckig-615800`): hat inzwischen mehrere Varianten
+- Multifunktionaler Wasserkocher für 1 Person (`multifunktionaler-wasserkocher-fur-1-person-653376`): hat inzwischen mehrere Varianten
+- Paris Courtyard Schmuck-Organizer (`paris-courtyard-schmuck-organizer-623700`): hat inzwischen mehrere Varianten
+- Mori Style Blumenring mit Zirkonia (`mori-style-blumenring-mit-zirkonia-639300`): hat inzwischen mehrere Varianten
+- Süsses Armband mit Süsswasserperlen (`susses-armband-mit-susswasserperlen-620300`): hat inzwischen mehrere Varianten
+- Kuscheldecke mit Motiv (`kuscheldecke-mit-motiv-af545c`): hat inzwischen mehrere Varianten
+- Geflochtenes Armband aus Titanstahl (`geflochtenes-armband-aus-titanstahl-627000`): hat inzwischen mehrere Varianten
+- Fauler Handy-Halter 203B (`fauler-handy-halter-203b-057216`): nicht mehr aktiv
+- Kabelloser Keramik Mini-Lockenstab (`kabelloser-keramik-mini-lockenstab-067840`): hat inzwischen mehrere Varianten
+- Schultertasche aus gewaschenem Kunstleder (`schultertasche-aus-gewaschenem-kunstleder-284608`): hat inzwischen mehrere Varianten
+- Sturmfeuerzeug mit Power-Display und Puncher (`sturmfeuerzeug-mit-power-display-und-puncher-605700`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Grosser Outdoor-Rucksack (56-75L) (`grosser-outdoor-rucksack-56-75l-113088`): hat inzwischen mehrere Varianten
+- Canvas Rucksack mit USB-Anschluss (`canvas-rucksack-mit-usb-anschluss-960832`): hat inzwischen mehrere Varianten
+- Edelstahl-Beckenarmatur für Warm- und Kaltwasser (`edelstahl-beckenarmatur-fur-warm-und-kaltwasse-621600`): hat inzwischen mehrere Varianten
+- Assault Tactics Rucksack 25L (`assault-tactics-rucksack-25l-326976`): hat inzwischen mehrere Varianten
+- USB Lade-Rucksack – Stylisch & Smart (`usb-lade-rucksack-stylisch-smart-665088`): hat inzwischen mehrere Varianten
+- Taktische Hip-Hop-Brusttasche im Hong Kong Style (`taktische-hip-hop-brusttasche-im-hong-kong-sty-925440`): hat inzwischen mehrere Varianten
+- Hollow Aroma Diffuser Ultraschall-Luftbefeuchter (`hollow-aroma-diffuser-ultraschall-luftbefeucht-649024`): hat inzwischen mehrere Varianten
+- Retro Dark Star Hunderucksack (`retro-dark-star-hunderucksack-014400`): hat inzwischen mehrere Varianten
+- Induktions-Ladegerät mit Tassenwärmer (`induktions-ladegerat-mit-tassenwarmer-885056`): hat inzwischen mehrere Varianten
+- Dinosaurier Rucksack für Damen und Herren (`dinosaurier-rucksack-fur-damen-und-herren-204736`): hat inzwischen mehrere Varianten
+- Zungenreiniger aus Edelstahl (`zungenreiniger-aus-edelstahl-614200`): hat inzwischen mehrere Varianten
+- 8-teiliges Dino-Geschirrset für Kinder (`8-teiliges-dino-geschirrset-fur-kinder-789248`): Typ-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Knieschoner Sport-Stützbandage (`knieschoner-sport-stutzbandage-631900`): hat inzwischen mehrere Varianten
+- Mini Drohne mit Musterrotation & Headless Modus (`mini-drohne-mit-musterrotation-headless-modus-f9e702`): hat inzwischen mehrere Varianten
+- LED Gesichts- und Halsmaske mit Rotlicht (`led-gesichts-und-halsmaske-mit-rotlicht-634900`): hat inzwischen mehrere Varianten
+- Keramik-Essteller mit Doppelraster (`keramik-essteller-mit-doppelraster-994048`): hat inzwischen mehrere Varianten
+- Grosser Freizeit-Rucksack mit Reissverschluss (`grosser-freizeit-rucksack-mit-reissverschluss-711872`): hat inzwischen mehrere Varianten
+- Mascara – Lang anhaltend & Schwung (`mascara-lang-anhaltend-schwung-622800`): hat inzwischen mehrere Varianten
+- Rucksack mit grossem Volumen und Schultergurt (`rucksack-mit-grossem-volumen-und-schultergurt-216768`): hat inzwischen mehrere Varianten
+- Grosser faltbarer Rucksack (`grosser-faltbarer-rucksack-549568`): hat inzwischen mehrere Varianten
+- Dark Goth Wind Metall-Nagelsticker (`dark-goth-wind-metall-nagelsticker-938560`): hat inzwischen mehrere Varianten
+- French Style Lily Fluid Ice Flower Manicure · Press-on-Nägel (`french-style-lily-fluid-ice-flower-manicure-617600`): hat inzwischen mehrere Varianten
+- Sweet Cool Pearl Edge French Manicure (`sweet-cool-pearl-edge-french-manicure-614900`): nicht mehr aktiv
+- HAILANG Muschel-Press-on-Nägel für den Sommer (`hailang-muschel-nagelsticker-fur-den-sommer-612000`): hat inzwischen mehrere Varianten
+- 3D-Qualle Sommer Marine Stil Nägel (`3d-qualle-sommer-marine-stil-nagel-623800`): hat inzwischen mehrere Varianten
+- Hunde-Brustgeschirr mit Leine (`hunde-brustgeschirr-mit-leine-627900`): hat inzwischen mehrere Varianten
+- Halskrause zum Schutz vor Lecken und Kratzen (`halskrause-zum-schutz-vor-lecken-und-kratzen-900352`): hat inzwischen mehrere Varianten
+- GB Warnlicht Haustier Anti-Verlust Halsband (`gb-warnlicht-haustier-anti-verlust-halsband-867520`): hat inzwischen mehrere Varianten
+- Halsband für kleine bis mittelgrosse Hunde (`halsband-fur-kleine-bis-mittelgrosse-hunde-306624`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Hundehalsband mit USB-Ladefunktion (`hundehalsband-mit-usb-ladefunktion-079232`): hat inzwischen mehrere Varianten
+- Halskette für Haustiere mit Kunstperlen (`halskette-fur-haustiere-mit-kunstperlen-730688`): hat inzwischen mehrere Varianten
+- Tragbare Flöten-Transportbox (`tragbare-floten-transportbox-603200`): hat inzwischen mehrere Varianten
+- Grosser hängender Reise-Organizer (`grosser-hangender-reise-organizer-635300`): hat inzwischen mehrere Varianten
+- Katzenhalsband – Leckschutz nach Sterilisation (`katzenhalsband-leckschutz-nach-sterilisation-614016`): hat inzwischen mehrere Varianten
+- LED Leuchthalsband für Hunde, wasserdicht (`led-leuchthalsband-fur-hunde-wasserdicht-890048`): hat inzwischen mehrere Varianten
+- Weihnachts-Set für Katzen (`weihnachts-set-fur-katzen-628800`): hat inzwischen mehrere Varianten
+- U-Tube Rückrahmen-Rücklicht (`u-tube-ruckrahmen-rucklicht-2f9fe8`): hat inzwischen mehrere Varianten
+- Verstellbares Katzenhalsband mit Halstuch (`verstellbares-katzenhalsband-mit-halstuch-616800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Multifunktionales Schwangerschaftskissen (`multifunktionales-schwangerschaftskissen-325312`): hat inzwischen mehrere Varianten
+- USB-Fahrradlampe für Nachtfahrten (`usb-fahrradlampe-fur-nachtfahrten-1aa5bf`): hat inzwischen mehrere Varianten
+- Semi-kontrolliertes P-Kettenhalsband aus Rindsleder (`semi-kontrolliertes-p-kettenhalsband-aus-rinds-628700`): hat inzwischen mehrere Varianten
+- Anti-Kratz- und Leckschutz für Katzen (`anti-kratz-und-leckschutz-fur-katzen-623800`): hat inzwischen mehrere Varianten
+- Nordisches Baumwoll-Bettwäsche-Set (`nordisches-baumwoll-bettwasche-set-191dc6`): hat inzwischen mehrere Varianten
+- Hundehalsband (`hundehalsband-627200`): hat inzwischen mehrere Varianten
+- Picnic-Decke (`picnic-decke-3435e6`): hat inzwischen mehrere Varianten
+- Schlafkissen Nackenschutz (`schlafkissen-nackenschutz-601900`): hat inzwischen mehrere Varianten
+- Leuchtendes Haustierhalsband mit LED-Ring (`leuchtendes-haustierhalsband-mit-led-ring-608800`): hat inzwischen mehrere Varianten
+- Verstellbares Anti-Verlust Hundehalsband (`verstellbares-anti-verlust-hundehalsband-609500`): hat inzwischen mehrere Varianten
+- Elastischer Anti-Rutsch Sofaüberzug aus Plüsch (`elastischer-anti-rutsch-sofauberzug-aus-plusch-1c1e14`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Hunde-Blindenring, verstellbar (`hunde-blindenring-verstellbar-603200`): hat inzwischen mehrere Varianten
+- Hundehalsband P-Kette für Spaziergänge (`hundehalsband-p-kette-fur-spaziergange-625900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Halsband & Leine Set: Gelb mit Polka Dots (`halsband-leine-set-gelb-mit-polka-dots-623600`): hat inzwischen mehrere Varianten
+- Federglöckchen Tumbler – Katzenspielzeug (`federglockchen-tumbler-katzenspielzeug-003584`): hat inzwischen mehrere Varianten
+- Kreative Magnet-Schwebeuhr (`kreative-magnet-schwebeuhr-627500`): hat inzwischen mehrere Varianten
+- Multifunktionale Herrenuhr mit Leuchtzifferblatt (`multifunktionale-herrenuhr-mit-leuchtzifferbla-607400`): hat inzwischen mehrere Varianten
+- Herren- Quarzuhr mit Stahlarmband (`herren-quarzuhr-mit-stahlarmband-605800`): hat inzwischen mehrere Varianten
+- Quarz-Armbanduhr mit Stahlband (`quarz-armbanduhr-mit-stahlband-613300`): hat inzwischen mehrere Varianten
+- LED Intelligenz-Spielball für Haustiere (`led-intelligenz-spielball-fur-haustiere-283264`): hat inzwischen mehrere Varianten
+- Erdbeer-Futterball für Hunde und Katzen (`erdbeer-futterball-fur-hunde-und-katzen-516160`): hat inzwischen mehrere Varianten
+- Herren Quarzuhr, eckig, Edelstahlarmband (`herren-quarzuhr-eckig-edelstahlarmband-628200`): hat inzwischen mehrere Varianten
+- USB-Rollball für Katzen (wiederaufladbar) (`usb-rollball-fur-katzen-wiederaufladbar-191424`): hat inzwischen mehrere Varianten
+- Simple Scale Bear Student's Watch (`simple-scale-bear-student-s-watch-611700`): hat inzwischen mehrere Varianten
+- Interaktives Haustierspielzeug für Hund & Katze (`interaktives-haustierspielzeug-fur-hund-katze-086656`): hat inzwischen mehrere Varianten
+- Durian-Kauspielzeug mit Soundeffekt (`durian-kauspielzeug-mit-soundeffekt-483520`): hat inzwischen mehrere Varianten
+- Personalisierter Woven Ring (`personalisierter-woven-ring-619600`): hat inzwischen mehrere Varianten
+- USB N64 Controller für PC (`usb-n64-controller-fur-pc-803840`): hat inzwischen mehrere Varianten
+- Geburtsstein-Ring im Wassertropfen-Design (`geburtsstein-ring-im-wassertropfen-design-605800`): Variante-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Retro Keramik-Teller aus Steingut (`retro-keramik-teller-aus-steingut-868992`): hat inzwischen mehrere Varianten
+- Armband mit Zirkonia-Einlagen (`armband-mit-zirkonia-einlagen-629400`): hat inzwischen mehrere Varianten
+- Türkis Armband mit feiner Kette (`turkis-armband-mit-feiner-kette-615400`): hat inzwischen mehrere Varianten
+- Japanische Keramikschale mit hohem Fuss (`japanische-keramikschale-mit-hohem-fuss-815552`): hat inzwischen mehrere Varianten
+- Rhombus Armband mit Zirkonia (`rhombus-armband-mit-zirkonia-621900`): hat inzwischen mehrere Varianten
+- Vibrations-Controller für NGC (`vibrations-controller-fur-ngc-021568`): hat inzwischen mehrere Varianten
+- Keramik-Teller im Western-Stil, mattiert (`keramik-teller-im-western-stil-mattiert-313280`): hat inzwischen mehrere Varianten
+- Lederarmband mit Kette aus Edelstahl für Herren (`lederarmband-mit-kette-aus-edelstahl-fur-herre-620400`): hat inzwischen mehrere Varianten
+- Intelligentes 4-Schacht-Ladegerät für AAA/AA-Akkus (`intelligentes-4-schacht-ladegerat-fur-aaa-aa-a-168064`): hat inzwischen mehrere Varianten
+- Multifunktionales Knochen-Sofakissen (`multifunktionales-knochen-sofakissen-605200`): hat inzwischen mehrere Varianten
+- Taktischer Rucksack (`taktischer-rucksack-930944`): hat inzwischen mehrere Varianten
+- Veneer Brust- und Schuhbeutel (`veneer-brust-und-schuhbeutel-693568`): hat inzwischen mehrere Varianten
+- 30W Multi-Funktions Netzteil mit USB (`30w-multi-funktions-netzteil-mit-usb-161024`): hat inzwischen mehrere Varianten
+- Glitzer-Schmetterling Rucksack für Damen (`glitzer-schmetterling-rucksack-fur-damen-348608`): hat inzwischen mehrere Varianten
+- Kissenbezug quadratisch (`kissenbezug-quadratisch-7a7cdd`): hat inzwischen mehrere Varianten
+- Street Trend Hip-Hop Brusttasche (`street-trend-hip-hop-brusttasche-846016`): hat inzwischen mehrere Varianten
+- Stossstangen Reparatur-Set (`stossstangen-reparatur-set-402240`): SKU ist nicht mehr CJ-<pid> ('CJCD110623402BY') — schon umgestellt?
+- Teleskop-Zauberstab für Seidenschal-Tricks (`teleskop-zauberstab-fur-seidenschal-tricks-618700`): hat inzwischen mehrere Varianten
+- Soft- und Hartdraht-Parallelverbinder (`soft-und-hartdraht-parallelverbinder-625400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Automatischer Lockenstab mit LCD-Temperaturanzeige (`automatischer-lockenstab-mit-lcd-temperaturanz-829376`): hat inzwischen mehrere Varianten
+- Automatischer Lockenstab mit Keramik-Rollaufsatz (`automatischer-lockenstab-mit-keramik-rollaufsa-ccefe7`): hat inzwischen mehrere Varianten
+- SIXI Schmuckbox aus Nussbaumholz für Uhren und Ringe (`sixi-schmuckbox-aus-nussbaumholz-fur-uhren-und-621100`): hat inzwischen mehrere Varianten
+- Muschelförmiges Schmuckkästchen aus Samt (`muschelformiges-schmuckkastchen-aus-samt-628301`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Keramik-Schmucktablett in Wolkenform (`keramik-schmucktablett-in-wolkenform-615000`): hat inzwischen mehrere Varianten
+- Mehrstufiges Weinregal aus Holz (`mehrstufiges-weinregal-aus-holz-614500`): hat inzwischen mehrere Varianten
+- Wanduhr aus Massivholz mit Pendel (`wanduhr-aus-massivholz-mit-pendel-085760`): hat inzwischen mehrere Varianten
+- 5 Make-up Pinsel mit Metallgriff (`5-make-up-pinsel-mit-metallgriff-274624`): hat inzwischen mehrere Varianten
+- 22-teiliges Lidschattenpinsel-Set (`22-teiliges-lidschattenpinsel-set-410944`): hat inzwischen mehrere Varianten
+- 8-teiliges Make-up Pinselset mit Aufbewahrungsbox (`8-teiliges-make-up-pinselset-mit-aufbewahrungs-622300`): hat inzwischen mehrere Varianten
+- Elektrischer Make-up-Puff für makellose Foundation (`elektrischer-make-up-puff-fur-makellose-founda-612200`): hat inzwischen mehrere Varianten
+- Infrarot Halsband mit Fernbedienung für Katzen (`infrarot-halsband-mit-fernbedienung-fur-katzen-626100`): hat inzwischen mehrere Varianten
+- Halsband mit abnehmbarer Schleife für Hunde (`halsband-mit-abnehmbarer-schleife-fur-hunde-621800`): hat inzwischen mehrere Varianten
+- V8 Mini RC Drohne mit HD-Kamera (`v8-mini-rc-drohne-mit-hd-kamera-ddac0e`): hat inzwischen mehrere Varianten
+- Halsband mit Gravur und Schleife (`halsband-mit-gravur-und-schleife-617300`): hat inzwischen mehrere Varianten
+- Luxuriöses Lederhalsband für Katzen (`luxurioses-lederhalsband-fur-katzen-601900`): hat inzwischen mehrere Varianten
+- Faltbarer HD-Mini-Quadrocopter für Luftaufnahmen (`faltbarer-hd-mini-quadrocopter-fur-luftaufnahm-8a67d2`): hat inzwischen mehrere Varianten
+- GPS-Halsband für Haustiere (`gps-halsband-fur-haustiere-628200`): hat inzwischen mehrere Varianten
+- Geprägtes Lederhalsband mit weichem Futter (`gepragtes-lederhalsband-mit-weichem-futter-604900`): hat inzwischen mehrere Varianten
+- 3A Common Style Add Resin Jelly Glue Wear Armor · Press-on-Nägel (`3a-common-style-add-resin-jelly-glue-wear-armo-627800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Plüsch-Haifisch-Spielzeug für Haustiere (`plusch-haifisch-spielzeug-fur-haustiere-2c7785`): hat inzwischen mehrere Varianten
+- Handgemachte Herz-Nägel mit Strasssteinen (`handgemachte-herz-nagel-mit-strasssteinen-618800`): hat inzwischen mehrere Varianten
+- Elektrisches Nagelfräser-Set (`elektrisches-nagelfraser-set-628000`): hat inzwischen mehrere Varianten
+- Faltbare TPE Yoga Matte, rutschfest (`faltbare-tpe-yoga-matte-rutschfest-622400`): hat inzwischen mehrere Varianten
+- 3-in-1 Wireless Charger für Handy, Watch, Headset (`3-in-1-wireless-charger-fur-handy-watch-headse-516992`): hat inzwischen mehrere Varianten
+- Tischtennis Kantenband 25m (Nylonfaser) (`tischtennis-kantenband-25m-nylonfaser-618800`): hat inzwischen mehrere Varianten
+- 4-in-1 Wireless Charger für iPhone & Zubehör (`4-in-1-wireless-charger-fur-iphone-zubehor-311616`): nicht mehr aktiv
+- Kuschelschaaf aus Baby-Schafwolle (`kuschelschaaf-aus-baby-schafwolle-8d6541`): hat inzwischen mehrere Varianten
+- Kabelloses 3-in-1 Ladegerät für Smartphone, Watch, Earbuds (`kabelloses-3-in-1-ladegerat-fur-smartphone-wat-416896`): hat inzwischen mehrere Varianten
+- Runder Wireless Charger mit Spiegel und Ladeanzeige (`runder-wireless-charger-mit-spiegel-und-ladean-514944`): hat inzwischen mehrere Varianten
+- Aufblasbare Outdoor-Isomatte für Zwei (`aufblasbare-outdoor-isomatte-fur-zwei-565bac`): hat inzwischen mehrere Varianten
+- Magnetische kabellose 15W Power Bank 10000mAh (`magnetische-kabellose-15w-power-bank-10000mah-478016`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Marokkanisches Kissen für Sofa und Wohnbereich (`marokkanisches-kissen-fur-sofa-und-wohnbereich-6701a4`): hat inzwischen mehrere Varianten
+- Multifunktionales Bluetooth KFZ-Ladegerät (`multifunktionales-bluetooth-kfz-ladegerat-610176`): hat inzwischen mehrere Varianten
+- Diatomit Badematte schnelltrocknend & rutschfest (`diatomit-badematte-schnelltrocknend-rutschfest-d1e878`): hat inzwischen mehrere Varianten
+- Magnetisches Desktop Wireless Ladegerät (`magnetisches-desktop-wireless-ladegerat-502336`): hat inzwischen mehrere Varianten
+- Sofaüberzug aus Seersucker-Stoff (`sofauberzug-aus-seersucker-stoff-f01e6a`): Farbe-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Hundehalsband mit Legierungsschnalle (`hundehalsband-mit-legierungsschnalle-622100`): hat inzwischen mehrere Varianten
+- Lederhalsband mit Schleife und Leine (`lederhalsband-mit-schleife-und-leine-604500`): hat inzwischen mehrere Varianten
+- Jacquard-Kissenhülle mit chinesischer Stickerei (`jacquard-kissenhulle-mit-chinesischer-stickere-2883a4`): hat inzwischen mehrere Varianten
+- Hundehalsband, PVC, verschiedene Farben (`hundehalsband-pvc-verschiedene-farben-621500`): hat inzwischen mehrere Varianten
+- Niedliches Tier-Kissen für Büro & Zuhause (`niedliches-tier-kissen-fur-buro-zuhause-152192`): hat inzwischen mehrere Varianten
+- Schnüffelteppich 'Gemüsefeld' für Haustiere (`schnuffelteppich-gemusefeld-fur-haustiere-543744`): hat inzwischen mehrere Varianten
+- Quarz-Armbanduhr mit Silikon-Zifferblatt (`quarz-armbanduhr-mit-silikon-zifferblatt-615200`): hat inzwischen mehrere Varianten
+- Quarz-Herrenuhr mit Kalender und Lederarmband (`quarz-herrenuhr-mit-kalender-und-lederarmband-601000`): hat inzwischen mehrere Varianten
+- Oktogonale Herrenuhr mit grossem Zifferblatt (`oktogonale-herrenuhr-mit-grossem-zifferblatt-616900`): hat inzwischen mehrere Varianten
+- Herren Quarzuhr mit Armband-Set (`herren-quarzuhr-mit-armband-set-610600`): hat inzwischen mehrere Varianten
+- Herren-Multifunktionsuhr mit Kalender (`herren-multifunktionsuhr-mit-kalender-626400`): hat inzwischen mehrere Varianten
+- Keramik Suppenschale mit Emaille-Glasur (`keramik-suppenschale-mit-emaille-glasur-626200`): hat inzwischen mehrere Varianten
+- Hängender Anti-Nassbart Trinknapf (`hangender-anti-nassbart-trinknapf-601500`): hat inzwischen mehrere Varianten
+- Futterball mit Saugnapf zur Zahnreinigung (`futterball-mit-saugnapf-zur-zahnreinigung-636288`): hat inzwischen mehrere Varianten
+- Schmuckbox aus PU-Leder mit abgerundeten Ecken (`schmuckbox-aus-pu-leder-mit-abgerundeten-ecken-606200`): hat inzwischen mehrere Varianten
+- Schnüffelball für Hunde und Katzen (`schnuffelball-fur-hunde-und-katzen-181696`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Interaktives Spielzeug (`interaktives-spielzeug-049344`): hat inzwischen mehrere Varianten
+- Medaillen- und Münz-Sammelbox aus Nussbaum (`medaillen-und-munz-sammelbox-aus-nussbaum-623400`): hat inzwischen mehrere Varianten
+- Chic Armband mit Zirkon-Schnalle (`chic-armband-mit-zirkon-schnalle-630600`): hat inzwischen mehrere Varianten
+- Zinnober-Armband «Dreifache Harmonie & Sechs Harmonien» (`zinnober-armband-dreifache-harmonie-sechs-harm-630400`): hat inzwischen mehrere Varianten
+- Wasserdichter Rucksack für Herren (`wasserdichter-rucksack-fur-herren-353344`): hat inzwischen mehrere Varianten
+- Mini Roboter Staubsauger für Tastatur & Tisch (`mini-roboter-staubsauger-fur-tastatur-tisch-092288`): hat inzwischen mehrere Varianten
+- Bambus Räucherstäbchenhalter Allegro (`bambus-raucherstabchenhalter-allegro-605900`): hat inzwischen mehrere Varianten
+- Eichhörnchen Baby Esslern-Set aus Silikon (`eichhornchen-baby-esslern-set-aus-silikon-557504`): hat inzwischen mehrere Varianten
+- Mini Greifautomat für Zuhause (`mini-greifautomat-fur-zuhause-421824`): hat inzwischen mehrere Varianten
+- Tragbarer Haustier-Rucksack (`tragbarer-haustier-rucksack-541760`): hat inzwischen mehrere Varianten
+- Jingdezhen Reisschale mit Goldrand, 4.5 Zoll (`jingdezhen-reisschale-mit-goldrand-4-5-zoll-555136`): hat inzwischen mehrere Varianten
+- Multifunktionaler Laptop-Rucksack (`multifunktionaler-laptop-rucksack-996352`): hat inzwischen mehrere Varianten
+- Uhr aus Massivholz mit leisem Uhrwerk (`uhr-aus-massivholz-mit-leisem-uhrwerk-426688`): hat inzwischen mehrere Varianten
+- Smart Übersetzer mit Foto- und Offline-Funktion (`smart-ubersetzer-mit-foto-und-offline-funktion-220096`): hat inzwischen mehrere Varianten
+- Antihaft-Spiegeleipfanne mit 4 Mulden (`antihaft-spiegeleipfanne-mit-4-mulden-047040`): hat inzwischen mehrere Varianten
+- USB Lade-Rucksack mit Tragegriff (`usb-lade-rucksack-mit-tragegriff-664512`): hat inzwischen mehrere Varianten
+- Baby-Teller-Set Hummer aus Silikon (`baby-teller-set-hummer-aus-silikon-756032`): hat inzwischen mehrere Varianten
+- Leichter Kinderrucksack für die Schule (`leichter-kinderrucksack-fur-die-schule-638016`): hat inzwischen mehrere Varianten
+- Ebony Edelstahl-Schneidebrett, doppelseitig (`ebony-edelstahl-schneidebrett-doppelseitig-891520`): hat inzwischen mehrere Varianten
+- Plüsch Kissenbezug für Sofa und Wohnzimmer (`plusch-kissenbezug-fur-sofa-und-wohnzimmer-624700`): hat inzwischen mehrere Varianten
+- Samt-Kissenbezug mit Stickerei und Quasten (`samt-kissenbezug-mit-stickerei-und-quasten-609300`): hat inzwischen mehrere Varianten
+- Retro Canvas Rucksack mit grossem Fassungsvermögen (`retro-canvas-rucksack-mit-grossem-fassungsverm-839296`): hat inzwischen mehrere Varianten
+- 11 cm PVC-Figur (Rot oder Schwarz) (`11-cm-pvc-figur-rot-oder-schwarz-352960`): hat inzwischen mehrere Varianten
+- Retro Aktentasche aus Rindsleder (`retro-aktentasche-aus-rindsleder-705408`): hat inzwischen mehrere Varianten
+- USB Lade-Rucksack für Business & Freizeit (`usb-lade-rucksack-fur-business-freizeit-834112`): hat inzwischen mehrere Varianten
+- Sitzsack-Hülle für Erwachsene (`sitzsack-hulle-fur-erwachsene-ac28e2`): hat inzwischen mehrere Varianten
+- MiG-35 Kampfjet-Modellanhänger (`mig-35-kampfjet-modellanhanger-416192`): hat inzwischen mehrere Varianten
+- Beruhigendes Halsband für Katzen und Hunde (`beruhigendes-halsband-fur-katzen-und-hunde-619300`): hat inzwischen mehrere Varianten
+- Bluetooth Wireless Game Controller (`bluetooth-wireless-game-controller-823936`): hat inzwischen mehrere Varianten
+- USB Gamepad mit Vibration für PS4/PS5/Xbox (`usb-gamepad-mit-vibration-fur-ps4-ps5-xbox-563328`): hat inzwischen mehrere Varianten
+- Kabelloses Bluetooth Gamepad mit Makro & Gyroskop (`kabelloses-bluetooth-gamepad-mit-makro-gyrosko-458944`): hat inzwischen mehrere Varianten
+- Aufblasbarer Schutzkragen für Hunde (`aufblasbarer-schutzkragen-fur-hunde-607400`): hat inzwischen mehrere Varianten
+- Switch Mini Bluetooth Gamepad (`switch-mini-bluetooth-gamepad-520896`): hat inzwischen mehrere Varianten
+- Kabelloser Bluetooth-Gamepad mit Vibration (`kabelloser-bluetooth-gamepad-mit-vibration-942720`): hat inzwischen mehrere Varianten
+- LED-Hundegeschirr mit Display (`led-hundegeschirr-mit-display-624700`): hat inzwischen mehrere Varianten
+- GameSir X2 Type-C Bluetooth Gamepad (`gamesir-x2-type-c-bluetooth-gamepad-134272`): hat inzwischen mehrere Varianten
+- Sisal-Kratzbaum mit Liegemulde (`sisal-kratzbaum-mit-liegemulde-866688`): hat inzwischen mehrere Varianten
+- Beissfestes Plüsch-Dinosaurier-Hundespielzeug mit Sound (`beissfestes-plusch-dinosaurier-hundespielzeug-625792`): hat inzwischen mehrere Varianten
+- Intelligentes, automatisches Katzenspielzeug (`intelligentes-automatisches-katzenspielzeug-353536`): hat inzwischen mehrere Varianten
+- Infrarot Dampf-Glätteisen (`infrarot-dampf-glatteisen-bfa686`): hat inzwischen mehrere Varianten
+- Winddichtes Fahrrad-Gesichtstuch (`winddichtes-fahrrad-gesichtstuch-c8b95a`): hat inzwischen mehrere Varianten
+- Kissenhülle Baumwolle gestreift mit Quasten (`kissenhulle-baumwolle-gestreift-mit-quasten-41f423`): hat inzwischen mehrere Varianten
+- Teddy-Samt Kissen mit Stickerei und Quasten (`teddy-samt-kissen-mit-stickerei-und-quasten-9211a9`): hat inzwischen mehrere Varianten
+- Kissenhülle mit Quasten im Boho-Stil (`kissenhulle-mit-quasten-im-boho-stil-335168`): hat inzwischen mehrere Varianten
+- Pinsel-Set für Einsteiger · 6-teilig (`pinsel-set-fur-einsteiger-615200`): hat inzwischen mehrere Varianten
+- Multifunktionales Pilates Fitness Board (`multifunktionales-pilates-fitness-board-615300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Marokkanisches Fransenkissen mit Zierquasten (`marokkanisches-fransenkissen-mit-zierquasten-774976`): hat inzwischen mehrere Varianten
+- Geknoteter Baumwoll-Kissenbezug (`geknoteter-baumwoll-kissenbezug-836224`): hat inzwischen mehrere Varianten
+- Velo-Rücklicht für Mountain- & Rennvelos (`velo-rucklicht-fur-mountain-rennvelos-602000`): hat inzwischen mehrere Varianten
+- Luminous Mirror & Pinselset (14-teilig) (`luminous-mirror-pinselset-14-teilig-603400`): hat inzwischen mehrere Varianten
+- Patella-Schutzband für Sportler (`patella-schutzband-fur-sportler-609800`): hat inzwischen mehrere Varianten
+- Kniegelenk-Entlastungshilfe für Sport & Fitness (`kniegelenk-entlastungshilfe-fur-sport-fitness-605800`): hat inzwischen mehrere Varianten
+- Wasserfester Augenbrauenstift – 4 Farben (`wasserfester-augenbrauenstift-4-farben-621000`): hat inzwischen mehrere Varianten
+- Plüsch-Bodenmatte «Lazy Mat» (`plusch-bodenmatte-lazy-mat-738368`): hat inzwischen mehrere Varianten
+- Runder Teppich für Stuhl und Boden (`runder-teppich-fur-stuhl-und-boden-382272`): hat inzwischen mehrere Varianten
+- Gewichtheben Kniebeugen Taillenstütze (`gewichtheben-kniebeugen-taillenstutze-645000`): hat inzwischen mehrere Varianten
+- Cahill Lidschatten-Palette – Dunkel & Matt (`cahill-lidschatten-palette-dunkel-matt-604200`): hat inzwischen mehrere Varianten
+- Bauchroller mit automatischem Rückzug (`bauchroller-mit-automatischem-ruckzug-603000`): hat inzwischen mehrere Varianten
+- Aufblasbares Outdoor-Doppelkissen (`aufblasbares-outdoor-doppelkissen-105664`): hat inzwischen mehrere Varianten
+- Rücken-Trainingsband für Frauen (`rucken-trainingsband-fur-frauen-606100`): hat inzwischen mehrere Varianten
+- Klimmzug-Griffhaken für mehr Power (`klimmzug-griffhaken-fur-mehr-power-651600`): hat inzwischen mehrere Varianten
+- Rundes Futonkissen für Meditation & Wohnen (`rundes-futonkissen-fur-meditation-wohnen-795712`): hat inzwischen mehrere Varianten
+- 4-in-1 Multifunktionaler Beauty-Pinsel (`4-in-1-multifunktionaler-beauty-pinsel-c709c3`): hat inzwischen mehrere Varianten
+- Khaki Kissenbezug mit Rüschen & Stickerei (`khaki-kissenbezug-mit-ruschen-stickerei-205120`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Multifunktionale, rutschfeste Spielzeug-Aufbewahrungsmatte (`multifunktionale-rutschfeste-spielzeug-aufbewa-612928`): hat inzwischen mehrere Varianten
+- Handgetufteter Kissenbezug mit Quasten (`handgetufteter-kissenbezug-mit-quasten-539904`): hat inzwischen mehrere Varianten
+- Herren Schulter-Laptop-Rucksack (`herren-schulter-laptop-rucksack-619008`): hat inzwischen mehrere Varianten
+- USB Lade-Rucksack für Damen und Herren (`usb-lade-rucksack-fur-damen-und-herren-512384`): hat inzwischen mehrere Varianten
+- 5-teiliges Make-up Pinselset „Small Waist“ (`5-teiliges-make-up-pinselset-small-waist-b4bd55`): hat inzwischen mehrere Varianten
+- Gürteltasche aus Leder für Herren (`gurteltasche-aus-leder-fur-herren-074688`): hat inzwischen mehrere Varianten
+- Atmungsaktiver Haustier-Rucksack für unterwegs (`atmungsaktiver-haustier-rucksack-fur-unterwegs-529792`): hat inzwischen mehrere Varianten
+- Oktopus-Kuschelkissen, 45 cm (`oktopus-kuschelkissen-45-cm-777664`): hat inzwischen mehrere Varianten
+- Sofaüberwurf mit Chaise Longue, Grau (`sofauberwurf-mit-chaise-longue-grau-105024`): hat inzwischen mehrere Varianten
+- Solar-Laderegler für Strassenlampen (`solar-laderegler-fur-strassenlampen-789376`): hat inzwischen mehrere Varianten
+- Doppelhaken für Perücken (`doppelhaken-fur-perucken-615900`): hat inzwischen mehrere Varianten
+- Kreuzbit-Schraubendreher-Set mit starkem Magnet (`kreuzbit-schraubendreher-set-mit-starkem-magne-611300`): hat inzwischen mehrere Varianten
+- Tragbares Gummiseil für Wassersport (`tragbares-gummiseil-fur-wassersport-626900`): hat inzwischen mehrere Varianten
+- Zeltleine-Spanner aus Aluminiumlegierung (`zeltleine-spanner-aus-aluminiumlegierung-625200`): hat inzwischen mehrere Varianten
+- Samtiges Hundehalsband-Set mit Leine und Schleife (`samtiges-hundehalsband-set-mit-leine-und-schle-621500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Mesh Strandtasche mit Reissverschluss (`mesh-strandtasche-mit-reissverschluss-634900`): hat inzwischen mehrere Varianten
+- Halsband und Leine für Hunde (`halsband-und-leine-fur-hunde-624200`): hat inzwischen mehrere Varianten
+- Hundehalsband gravierbar aus Sofaleder (`hundehalsband-gravierbar-aus-sofaleder-611600`): hat inzwischen mehrere Varianten
+- Nordic Cold Pattern Glas-Dekanter Diamant-Design (`nordic-cold-pattern-glas-dekanter-diamant-desi-699008`): hat inzwischen mehrere Varianten
+- Keramik-Schere für Babynahrung unterwegs (`keramik-schere-fur-babynahrung-unterwegs-904320`): hat inzwischen mehrere Varianten
+- Niedliches Halstuch für Haustiere im Schottenmuster (`niedliches-halstuch-fur-haustiere-im-schottenm-610800`): hat inzwischen mehrere Varianten
+- Keramik Suppenschale mit Doppelgriff (`keramik-suppenschale-mit-doppelgriff-370624`): hat inzwischen mehrere Varianten
+- Halsband für Hunde und Katzen (`halsband-fur-hunde-und-katzen-611400`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Halsband und Leine Set für Hunde (`halsband-und-leine-set-fur-hunde-612900`): hat inzwischen mehrere Varianten
+- Keramik Pfeffer- und Gewürzmühle (`keramik-pfeffer-und-gewurzmuhle-844928`): hat inzwischen mehrere Varianten
+- Teddy-Kragen (`teddy-kragen-621000`): hat inzwischen mehrere Varianten
+- Urne für Tierasche – Kiefernholz mit Kreuz (`urne-fur-tierasche-kiefernholz-mit-kreuz-625900`): hat inzwischen mehrere Varianten
+- Urne für Tierasche mit Pfotenabdruck (`urne-fur-tierasche-mit-pfotenabdruck-635800`): hat inzwischen mehrere Varianten
+- Staub- und feuchtigkeitsdichte Kleidersäcke (`staub-und-feuchtigkeitsdichte-kleidersacke-634300`): hat inzwischen mehrere Varianten
+- Dampfdüse für Kaffeemaschine (`dampfduse-fur-kaffeemaschine-513280`): hat inzwischen mehrere Varianten
+- Kupfer Teekessel 1.7L (`kupfer-teekessel-1-7l-230336`): hat inzwischen mehrere Varianten
+- Schmuckkästchen für Ringe, Ketten, Ohrringe (`schmuckkastchen-fur-ringe-ketten-ohrringe-630400`): hat inzwischen mehrere Varianten
+- Stifte- und Pinselhalter Schmetterling (`stifte-und-pinselhalter-schmetterling-612100`): hat inzwischen mehrere Varianten
+- Kabellose elektrische Spülbürste (`kabellose-elektrische-spulburste-515904`): hat inzwischen mehrere Varianten
+- LED Leuchthalsband für Hunde, 7 Farben (`led-leuchthalsband-fur-hunde-7-farben-617100`): hat inzwischen mehrere Varianten
+- Schlüsselbrett aus Massivholz (`schlusselbrett-aus-massivholz-612700`): hat inzwischen mehrere Varianten
+- Elektrische Lunchbox aus Edelstahl (`elektrische-lunchbox-aus-edelstahl-628480`): SKU ist nicht mehr CJ-<pid> ('CJYD197182303CX') — schon umgestellt?
+- Hakenleiste für Schranktüren und Wände (`hakenleiste-fur-schrankturen-und-wande-634900`): hat inzwischen mehrere Varianten
+- Grosser Rucksack für Studium und Freizeit (`grosser-rucksack-fur-studium-und-freizeit-459456`): hat inzwischen mehrere Varianten
+- Beissfester Quietschball für Hunde (`beissfester-quietschball-fur-hunde-638912`): hat inzwischen mehrere Varianten
+- Crossbody-Schultertasche für Herren (`crossbody-schultertasche-fur-herren-907840`): hat inzwischen mehrere Varianten
+- Intelligente ölfreie Heissluftfritteuse 6L (`intelligente-olfreie-heissluftfritteuse-6l-063552`): hat inzwischen mehrere Varianten
+- Leuchtendes Nylon-Hundehalsband für die Nacht (`leuchtendes-nylon-hundehalsband-fur-die-nacht-611200`): hat inzwischen mehrere Varianten
+- Pheromon Halsband für Haustiere, 3er-Pack (`pheromon-halsband-fur-haustiere-3er-pack-633200`): hat inzwischen mehrere Varianten
+- Monster-Hundespielzeug mit Sound (`monster-hundespielzeug-mit-sound-29b2da`): hat inzwischen mehrere Varianten
+- Fellball Deko-Kissen für Sofa (`fellball-deko-kissen-fur-sofa-807872`): hat inzwischen mehrere Varianten
+- Kleiner Teppich (`kleiner-teppich-444864`): hat inzwischen mehrere Varianten
+- Boho Kissenhülle aus Baumwolle (`boho-kissenhulle-aus-baumwolle-606720`): hat inzwischen mehrere Varianten
+- Flow Kissen mit Quasten, gestreift (`flow-kissen-mit-quasten-gestreift-764480`): hat inzwischen mehrere Varianten
+- Sofa-Überwurf aus Mischgewebe (`sofa-uberwurf-aus-mischgewebe-873664`): hat inzwischen mehrere Varianten
+- Kissenbezug American Retro, geometrisch (`kissenbezug-american-retro-geometrisch-576704`): hat inzwischen mehrere Varianten
+- Silikon-Topfuntersetzer für den Haushalt (`silikon-topfuntersetzer-fur-den-haushalt-261568`): hat inzwischen mehrere Varianten
+- Simulation Katzenrucksack-Puppe (`simulation-katzenrucksack-puppe-221248`): hat inzwischen mehrere Varianten
+- Katzen Kratzbaum mit Emoji-Design (`katzen-kratzbaum-mit-emoji-design-309696`): hat inzwischen mehrere Varianten
+- Bestickter Kissenbezug mit Fransen (`bestickter-kissenbezug-mit-fransen-478464`): hat inzwischen mehrere Varianten
+- Sofa- und Sesselbezug (`sofa-und-sesselbezug-477632`): hat inzwischen mehrere Varianten
+- Plüsch Beissspielzeug für Katzen und Hunde (`plusch-beissspielzeug-fur-katzen-und-hunde-521536`): hat inzwischen mehrere Varianten
+- Boho-Kissenbezug mit Füllung (`boho-kissenbezug-mit-fullung-758592`): hat inzwischen mehrere Varianten
+- RC-Rennboot "Speed Water" (`rc-rennboot-speed-water-013376`): hat inzwischen mehrere Varianten
+- Bohemian National Zierkissen (`bohemian-national-zierkissen-741568`): hat inzwischen mehrere Varianten
+- Mini-Drohne mit 4K Kamera und langer Flugzeit (`mini-drohne-mit-4k-kamera-und-langer-flugzeit-611392`): hat inzwischen mehrere Varianten
+- Mini RC Helikopter für Kinder (`mini-rc-helikopter-fur-kinder-103168`): hat inzwischen mehrere Varianten
+- Baumwoll-Leinen Kissen, Lendenkissen (`baumwoll-leinen-kissen-lendenkissen-463424`): hat inzwischen mehrere Varianten
+- Gesteppter Kissenbezug aus Spitze (`gesteppter-kissenbezug-aus-spitze-317952`): hat inzwischen mehrere Varianten
+- Leuchtende UFO-Drohne für Kinder (`leuchtende-ufo-drohne-fur-kinder-844608`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Jacquard Kissenbezug – Hotel-Stil (`jacquard-kissenbezug-hotel-stil-874112`): hat inzwischen mehrere Varianten
+- RC-Gleitflugzeug für Kinder (`rc-gleitflugzeug-fur-kinder-196096`): hat inzwischen mehrere Varianten
+- Luxuriöses Kissen mit Blumenmuster (`luxurioses-kissen-mit-blumenmuster-023168`): hat inzwischen mehrere Varianten
+- Fliegende Vogel-Drohne (`fliegende-vogel-drohne-de4165`): hat inzwischen mehrere Varianten
+- Kissenbezug aus Kunstseide (`kissenbezug-aus-kunstseide-248576`): hat inzwischen mehrere Varianten
+- Dekorativer Kissenbezug aus Samt (`dekorativer-kissenbezug-aus-samt-937280`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- RC Dinosaurier mit Musik, Tanz & Sprayfunktion (`rc-dinosaurier-mit-musik-tanz-sprayfunktion-d6af30`): hat inzwischen mehrere Varianten
+- Schaumstoff Drohne mit LED und Fernsteuerung (`schaumstoff-drohne-mit-led-und-fernsteuerung-605500`): hat inzwischen mehrere Varianten
+- FPV Racing Flower Flying Paddle Blade (`fpv-racing-flower-flying-paddle-blade-620200`): hat inzwischen mehrere Varianten
+- Interaktives Anti-Schling-Spielzeug für Hunde (`interaktives-anti-schling-spielzeug-fur-hunde-b5228d`): hat inzwischen mehrere Varianten
+- Elastischer Sofabezug mit Blumenmuster (`elastischer-sofabezug-mit-blumenmuster-015552`): hat inzwischen mehrere Varianten
+- Kissenhülle «Landhaus Blumen & Vögel» (`kissenhulle-landhaus-blumen-vogel-118912`): hat inzwischen mehrere Varianten
+- Gepolstertes Stroh-Sitzkissen für Erker (`gepolstertes-stroh-sitzkissen-fur-erker-399232`): hat inzwischen mehrere Varianten
+- Tischdecke mit Muster für Couch- und Esstisch (`tischdecke-mit-muster-fur-couch-und-esstisch-340416`): hat inzwischen mehrere Varianten
+- Magnetisches 3-in-1 Wireless Ladegerät für Apple (`magnetisches-3-in-1-wireless-ladegerat-fur-app-919552`): hat inzwischen mehrere Varianten
+- Wasserdichte Leucht-Quarzuhr für Herren (`wasserdichte-leucht-quarzuhr-fur-herren-616400`): hat inzwischen mehrere Varianten
+- Mori Style Rucksack mit grossem Fassungsvermögen (`mori-style-rucksack-mit-grossem-fassungsvermog-183552`): hat inzwischen mehrere Varianten
+- Herren-Armbanduhr im Casual-Look (`herren-armbanduhr-im-casual-look-622000`): hat inzwischen mehrere Varianten
+- Rindsleder-Rucksack für Herren im Retro-Stil (`rindsleder-rucksack-fur-herren-im-retro-stil-174016`): hat inzwischen mehrere Varianten
+- Multifunktionale, wasserdichte Quarzuhr (`multifunktionale-wasserdichte-quarzuhr-619600`): hat inzwischen mehrere Varianten
+- Quarz-Armbanduhr für Sie & Ihn mit Strass (`quarz-armbanduhr-fur-sie-ihn-mit-strass-623800`): hat inzwischen mehrere Varianten
+- Ovale Quarzuhr mit Lederarmband (`ovale-quarzuhr-mit-lederarmband-617300`): hat inzwischen mehrere Varianten
+- PU Leder Rucksack für Herren (`pu-leder-rucksack-fur-herren-293184`): hat inzwischen mehrere Varianten
+- Wasserdichte Leuchtende Herrenuhr (`wasserdichte-leuchtende-herrenuhr-607100`): hat inzwischen mehrere Varianten
+- Business Notebook Rucksack (`business-notebook-rucksack-850176`): hat inzwischen mehrere Varianten
+- Kabelloses Desktop-Ladegerät für Smartphones (`kabelloses-desktop-ladegerat-fur-smartphones-245312`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- 8-in-1 Stylingkamm & Anti-Warp Lockenwickler (`8-in-1-stylingkamm-anti-warp-lockenwickler-967936`): hat inzwischen mehrere Varianten
+- Magnetisches 3-in-1 Lade- und Datenkabel (`magnetisches-3-in-1-lade-und-datenkabel-017408`): hat inzwischen mehrere Varianten
+- Outdoor Freizeit Kletterrucksack (`outdoor-freizeit-kletterrucksack-745344`): hat inzwischen mehrere Varianten
+- Mini USB Lockenstab & Glätteisen (`mini-usb-lockenstab-glatteisen-311232`): hat inzwischen mehrere Varianten
+- Digitales 3-Port USB-Ladegerät mit Display (`digitales-3-port-usb-ladegerat-mit-display-057920`): hat inzwischen mehrere Varianten
+- Multifunktionaler Desktop-Ständer mit Wireless Charging (`multifunktionaler-desktop-stander-mit-wireless-932992`): hat inzwischen mehrere Varianten
+- Hip-Hop Quarzuhr mit römischen Ziffern (`hip-hop-quarzuhr-mit-romischen-ziffern-628600`): hat inzwischen mehrere Varianten
+- 3-in-1 magnetisches Wireless-Ladegerät mit Nachtlicht (`3-in-1-magnetisches-wireless-ladegerat-mit-nac-925632`): hat inzwischen mehrere Varianten
+- Herrenuhr mit Kalender (`herrenuhr-mit-kalender-601800`): hat inzwischen mehrere Varianten
+- Faltbares 4-in-1 Wireless-Ladegerät, 18W (`faltbares-4-in-1-wireless-ladegerat-18w-635136`): hat inzwischen mehrere Varianten
+- Kabelloser 2-in-1 Anion Haarglätter (`kabelloser-2-in-1-anion-haarglatter-297856`): hat inzwischen mehrere Varianten
+- Herren Quarzuhr mit Datum, Edelstahl (`herren-quarzuhr-mit-datum-edelstahl-621700`): hat inzwischen mehrere Varianten
+- Mini Akku-Haarglätter (`mini-akku-haarglatter-967936`): hat inzwischen mehrere Varianten
+- Kreuzstich-Stickgarn-Set (`kreuzstich-stickgarn-set-11a759`): hat inzwischen mehrere Varianten
+- Quarz-Herrenuhr mit Doppeldarstellung und Edelstahlarmband (`quarz-herrenuhr-mit-doppeldarstellung-und-edel-626200`): hat inzwischen mehrere Varianten
+- Cartoon Stoffbild Stickset (`cartoon-stoffbild-stickset-9bd335`): hat inzwischen mehrere Varianten
+- Horizontaler Ring mit Gravur (`horizontaler-ring-mit-gravur-638200`): hat inzwischen mehrere Varianten
+- Malen nach Zahlen – Landschaft, Tier oder Blume (`digitales-olgemalde-landschaft-tier-oder-blume-223040`): hat inzwischen mehrere Varianten
+- Unendlicher Geburtsstein-Ring mit Namen (`unendlicher-geburtsstein-ring-mit-namen-624600`): hat inzwischen mehrere Varianten
+- Retro Ring mit Geburtssteinen (`retro-ring-mit-geburtssteinen-605600`): hat inzwischen mehrere Varianten
+- Muttertags-Ring mit Rohstein (`muttertags-ring-mit-rohstein-621600`): Variante-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Herz-Armband aus Edelstahl (`herz-armband-aus-edelstahl-617600`): hat inzwischen mehrere Varianten
+- LED Silikon Photon Gesichtsmaske (`led-silikon-photon-gesichtsmaske-623400`): hat inzwischen mehrere Varianten
+- Blossom Damenuhr – Wasserdicht mit Blumenmuster (`blossom-damenuhr-wasserdicht-mit-blumenmuster-631500`): hat inzwischen mehrere Varianten
+- Vintage Schlangenknochen-Armband mit Strass (`vintage-schlangenknochen-armband-mit-strass-605800`): hat inzwischen mehrere Varianten
+- Grafikkarten-Halterung L-Typ (`grafikkarten-halterung-l-typ-613400`): hat inzwischen mehrere Varianten
+- Massage Gun Deep Vibration (`massage-gun-deep-vibration-521216`): hat inzwischen mehrere Varianten
+- Silikon-Eiswürfelbox mit Deckel (`silikon-eiswurfelbox-mit-deckel-137216`): hat inzwischen mehrere Varianten
+- Picknick-Kochset für 4-5 Personen (`picknick-kochset-fur-4-5-personen-650240`): hat inzwischen mehrere Varianten
+- Maniküre Staubabsauger für den Schreibtisch (`manikure-staubabsauger-fur-den-schreibtisch-609900`): hat inzwischen mehrere Varianten
+- Tiger Eye Leopard Print Kunstnägel (`tiger-eye-leopard-print-kunstnagel-615600`): hat inzwischen mehrere Varianten
+- Gel-Nagelverlängerungs-Set (`gel-nagelverlangerungs-set-c9b287`): hat inzwischen mehrere Varianten
+- Japanische Messenger Bag für Herren (`japanische-messenger-bag-fur-herren-738048`): hat inzwischen mehrere Varianten
+- Canvas Schultertasche "All-match" mit grosser Kapazität (`canvas-schultertasche-all-match-mit-grosser-ka-644608`): nicht mehr aktiv
+- Hohl-Spielball für Hunde & Katzen (`hohl-spielball-fur-hunde-katzen-123328`): hat inzwischen mehrere Varianten
+- Kratzbaum mit Sisal und Spielball (`kratzbaum-mit-sisal-und-spielball-214016`): hat inzwischen mehrere Varianten
+- Lade-Kit für GPD Handhelds · Ladegerät + Datenkabel (`lade-kit-fuer-gpd-handhelds-753152`): hat inzwischen mehrere Varianten
+- Interaktiver Spielball für Haustiere mit Fernbedienung (`interaktiver-spielball-fur-haustiere-mit-fernb-268032`): KI-Übersetzung fehlt/abgelehnt: ['Self Hi', 'Remote Control']
+- Tierisches Stickkissen aus Baumwoll-Canvas (`tierisches-stickkissen-aus-baumwoll-canvas-612700`): hat inzwischen mehrere Varianten
+- Minimalistisches Kissen mit Katzen-Stickerei (`minimalistisches-kissen-mit-katzen-stickerei-611000`): hat inzwischen mehrere Varianten
+- Elastischer Sofabezug für alle Jahreszeiten (`elastischer-sofabezug-fur-alle-jahreszeiten-953536`): hat inzwischen mehrere Varianten
+- Kaffeebohnen-Vorratsdose (`kaffeebohnen-vorratsdose-661120`): hat inzwischen mehrere Varianten
+- Ultraschall-Reiniger für Früchte & Gemüse (`ultraschall-reiniger-fur-fruchte-gemuse-199296`): hat inzwischen mehrere Varianten
+- Anti-Kick-Decke mit Ärmeln (`anti-kick-decke-mit-armeln-558976`): hat inzwischen mehrere Varianten
+- Nordische Strickdecke mit Quasten (`nordische-strickdecke-mit-quasten-002112`): hat inzwischen mehrere Varianten
+- Kissenbezug mit Quasten und Tufting (`kissenbezug-mit-quasten-und-tufting-427520`): hat inzwischen mehrere Varianten
+- Boho Kissenhülle mit Quasten (`boho-kissenhulle-mit-quasten-371904`): hat inzwischen mehrere Varianten
+- Quarz-Business-Uhr mit 3 kleinen Zeigern (`quarz-business-uhr-mit-3-kleinen-zeigern-627200`): hat inzwischen mehrere Varianten
+- Multifunktionale Herren-Quarzuhr, leuchtend (`multifunktionale-herren-quarzuhr-leuchtend-624100`): hat inzwischen mehrere Varianten
+- Geburtsstein-Ring mit verschiedenen Formen (`geburtsstein-ring-mit-verschiedenen-formen-612100`): hat inzwischen mehrere Varianten
+- Geburtsstein-Blumenring für Mütter (`geburtsstein-blumenring-fur-mutter-625500`): Variante-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Profi-UAV mit HD-Kamera (`profi-uav-mit-hd-kamera-bb5c4a`): hat inzwischen mehrere Varianten
+- Geburtsstein-Armband – Geometrischer Würfel (`geburtsstein-armband-geometrischer-wurfel-613200`): hat inzwischen mehrere Varianten
+- Kopfbedeckung für Outdoor-Aktivitäten · 27 × 32 cm (`shadow-warrior-headgear-3babaa`): hat inzwischen mehrere Varianten
+- Granitbohrer mit Sechskantschaft (`granitbohrer-mit-sechskantschaft-604800`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Mini Handventilator mit Sprühbefeuchtung & Powerbank (`mini-handventilator-mit-spruhbefeuchtung-power-470016`): hat inzwischen mehrere Varianten
+- Sofa-Kissenbezug mit Weihnachts-Digitaldruck (`sofa-kissenbezug-mit-weihnachts-digitaldruck-888832`): KI-Übersetzung fehlt/abgelehnt: ['Santa Claus', 'Christmas flowers'] | ['Individual', 'Double', 'Multiplayer']
+- Futterautomat mit Kamera für Katzen, 6L (`futterautomat-mit-kamera-fur-katzen-6l-619900`): hat inzwischen mehrere Varianten
+- Erhöhter, verstellbarer Futternapf für Hunde (`erhohter-verstellbarer-futternapf-fur-hunde-603200`): KI-Übersetzung fehlt/abgelehnt: ['Double Stainless Steel', 'Slow Food']
+- Herren Chronograph Sportuhr mit PU-Armband (`herren-chronograph-sportuhr-mit-pu-armband-613100`): hat inzwischen mehrere Varianten
+- Elektrischer Multifunktions-Zerkleinerer (`elektrischer-multifunktions-zerkleinerer-747008`): hat inzwischen mehrere Varianten
+- Antihaft-Hotpot mit Trennwand für Gas- und Induktion (`antihaft-hotpot-mit-trennwand-fur-gas-und-indu-623300`): Typ-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Antihaft Silikon Küchenhelfer Set (`antihaft-silikon-kuchenhelfer-set-602100`): hat inzwischen mehrere Varianten
+- Armband aus Edelstahl, verschiedene Farben (`armband-aus-edelstahl-verschiedene-farben-635100`): KI-Übersetzung fehlt/abgelehnt: ['A style', 'B style', 'C style', 'D style']
+- Multifunktionales 3-teiliges Edelstahl-Schüssel-Set (`multifunktionales-3-teiliges-edelstahl-schusse-618600`): hat inzwischen mehrere Varianten
+- Kupfer Wasserhahn, Gold-Optik (`kupfer-wasserhahn-gold-optik-621600`): hat inzwischen mehrere Varianten
+- Plüsch-Rucksack mit Hasenohren für Kinder (`plusch-rucksack-mit-hasenohren-fur-kinder-201408`): hat inzwischen mehrere Varianten
+- Duschkopfhalterung, verstellbar (`duschkopfhalterung-verstellbar-611900`): hat inzwischen mehrere Varianten
+- Elektrischer Drehteller für Produktpräsentationen (`elektrischer-drehteller-fur-produktprasentatio-090496`): hat inzwischen mehrere Varianten
+- Outdoor Taktik 5-teiliges Hundegeschirr-Set (`outdoor-taktik-5-teiliges-hundegeschirr-set-626700`): hat inzwischen mehrere Varianten
+- Verstellbares Katzen-Geschirr mit Leine (`verstellbares-katzen-geschirr-mit-leine-602300`): hat inzwischen mehrere Varianten
+- Add Water Luftbefeuchter 3L mit Aroma-Funktion (`add-water-luftbefeuchter-3l-mit-aroma-funktion-845056`): kein EU-Stecker bei CJ
+- Samt Kissenhülle mit Geometrischem Muster (`samt-kissenhulle-mit-geometrischem-muster-832704`): hat inzwischen mehrere Varianten
+- Herren-Armbanduhr im sportlichen Design (`herren-armbanduhr-im-sportlichen-design-612400`): hat inzwischen mehrere Varianten
+- Ultraflache Herrenuhr wasserdicht, leuchtend (`ultraflache-herrenuhr-wasserdicht-leuchtend-625900`): nicht mehr aktiv
+- Multifunktionaler Outdoor-Rucksack (`multifunktionaler-outdoor-rucksack-799296`): hat inzwischen mehrere Varianten
+- Regenbogen Zirkonia Ring aus Edelstahl (`regenbogen-zirkonia-ring-aus-edelstahl-600000`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Laptop-Tasche für Herren (`laptop-tasche-fur-herren-121536`): hat inzwischen mehrere Varianten
+- 67W GaN 3-Port Schnellladegerät (`67w-gan-3-port-schnellladegerat-779968`): hat inzwischen mehrere Varianten
+- Zerrspielzeug aus Baumwollseil (`zerrspielzeug-aus-baumwollseil-602000`): hat inzwischen mehrere Varianten
+- Oxford Rucksack für Sport und Freizeit (`oxford-rucksack-fur-sport-und-freizeit-229248`): hat inzwischen mehrere Varianten
+- Multifunktionale Kamera-Umhängetasche (`multifunktionale-kamera-umhangetasche-950400`): hat inzwischen mehrere Varianten
+- Vintage Canvas Rucksack für Alltag & Reise (`vintage-canvas-rucksack-fur-alltag-reise-094272`): hat inzwischen mehrere Varianten
+- Zahnpflege-Spielball für Hunde (`zahnpflege-spielball-fur-hunde-601200`): hat inzwischen mehrere Varianten
+- Interaktives Latex-Molarspielzeug (`interaktives-latex-molarspielzeug-850720`): hat inzwischen mehrere Varianten
+- GaN 30W Ladegerät mit Dual Port (`gan-30w-ladegerat-mit-dual-port-880896`): hat inzwischen mehrere Varianten
+- Hipster Mini Crossbody Bag (`hipster-mini-crossbody-bag-296448`): hat inzwischen mehrere Varianten
+- Interaktive Katzenmaus mit Ladefunktion (`interaktive-katzenmaus-mit-ladefunktion-620500`): hat inzwischen mehrere Varianten
+- Elektrische Spielzeugmaus für Katzen (`elektrische-spielzeugmaus-fur-katzen-628200`): hat inzwischen mehrere Varianten
+- Handgemachter Federfächer «Zhuge Liang» (`handgemachter-federfacher-zhuge-liang-617400`): hat inzwischen mehrere Varianten
+- Elektrische Grillplatte und Hot Pot (`elektrische-grillplatte-und-hot-pot-624300`): hat inzwischen mehrere Varianten
+- Nordischer Kissenbezug aus Baumwoll-Leinen (`nordischer-kissenbezug-aus-baumwoll-leinen-647936`): KI-Übersetzung fehlt/abgelehnt: ['Light Blue', 'Grey Green', 'Hemp Color', 'Graphite Grey']
+- Tragbarer Hüftventilator für Sommerhitze (`tragbarer-huftventilator-fur-sommerhitze-627000`): hat inzwischen mehrere Varianten
+- Vier Jahreszeiten Kissenbezug Baumwoll-Leinen (`vier-jahreszeiten-kissenbezug-baumwoll-leinen-939008`): KI-Übersetzung fehlt/abgelehnt: ['Lucky tree beige', 'Lucky tree grey', 'Lucky tree beige A', 'Youth tree beige'] | ['70x70cm', '70x120cm', '90x90cm', '90x180cm']
+- Leinen Kissenbezug fürs Sofa (`leinen-kissenbezug-furs-sofa-993344`): hat inzwischen mehrere Varianten
+- 7KW AC Ladestation für E-Fahrzeuge (GBT) (`7kw-ac-ladestation-fur-e-fahrzeuge-gbt-602500`): nicht mehr aktiv
+- Elastischer Sofabezug «Four Seasons» (`elastischer-sofabezug-four-seasons-374272`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Polster für Stühle (`polster-fur-stuhle-845632`): Modell-Auswahl, aber Variantenbilder nicht unterscheidbar
+- Herrenuhr Stahl Leder (`herrenuhr-stahl-leder-620000`): hat inzwischen mehrere Varianten
+- Olevs Quarzuhr für Damen (`olevs-quarzuhr-fur-damen-629500`): hat inzwischen mehrere Varianten
+- Ultraflache Quarzuhr, rechteckig (`ultraflache-quarzuhr-rechteckig-619000`): hat inzwischen mehrere Varianten
+- Quarz-Herrenuhr mit Farbverlauf & Kristallen (`quarz-herrenuhr-mit-farbverlauf-kristallen-610500`): hat inzwischen mehrere Varianten
+- Wasserdichte Luxus-Armbanduhr mit grossem Zifferblatt (`wasserdichte-luxus-armbanduhr-mit-grossem-ziff-618200`): hat inzwischen mehrere Varianten
+- Magnetische Aufhängungsuhr (`magnetische-aufhangungsuhr-628400`): hat inzwischen mehrere Varianten
+- Multifunktions- Quarzuhr für Herren mit Edelstahlarmband (`multifunktions-quarzuhr-fur-herren-mit-edelsta-628700`): hat inzwischen mehrere Varianten
+- Herren Business-Armbanduhr, Leder, Leuchtzeiger (`herren-business-armbanduhr-leder-leuchtzeiger-617900`): hat inzwischen mehrere Varianten
+- Hip Hop Quarzuhr mit bunten Kristallen (`hip-hop-quarzuhr-mit-bunten-kristallen-607200`): hat inzwischen mehrere Varianten
+- Hollow Belt Casual Herrenuhr (`hollow-belt-casual-herrenuhr-617100`): hat inzwischen mehrere Varianten
+- Handy- & Tablet-Ladegerät (`handy-tablet-ladegerat-616100`): hat inzwischen mehrere Varianten
+- Edelstahl Armband mit bunten Zirkonia (`edelstahl-armband-mit-bunten-zirkonia-617700`): hat inzwischen mehrere Varianten
+- Leichter Strick-Kimono für Damen (`leichter-strick-kimono-fur-damen-615100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Vielseitiger Damenring mit Zirkonia (`vielseitiger-damenring-mit-zirkonia-622100`): hat inzwischen mehrere Varianten
+- Faltbare Outdoor-Box mit Holzdeckel (`faltbare-outdoor-box-mit-holzdeckel-624800`): hat inzwischen mehrere Varianten
+- Ultraleichte, wasserdichte Picknickdecke (`ultraleichte-wasserdichte-picknickdecke-637300`): hat inzwischen mehrere Varianten
+- Transparenter Organizer für Schubladen (`transparenter-organizer-fur-schubladen-635800`): hat inzwischen mehrere Varianten
+- Rollender Messerschärfer mit Diamantbeschichtung (`rollender-messerscharfer-mit-diamantbeschichtu-627600`): CJ-Antwort ungültig (code 1602002: Product has been removed from shelves, pid:24090203410116276)
+- Schutzmatte für Küchen- und Badschränke (`schutzmatte-fur-kuchen-und-badschranke-607000`): hat inzwischen mehrere Varianten
+- Weihnachtsschmuck für Katzen (`weihnachtsschmuck-fur-katzen-795072`): hat inzwischen mehrere Varianten
+- Metall-Ablage für Spülbecken (`metall-ablage-fur-spulbecken-611500`): hat inzwischen mehrere Varianten
+- Antlers Katzenbett aus Massivholz (`antlers-katzenbett-aus-massivholz-612000`): hat inzwischen mehrere Varianten
+- Antibakterielles Schneidebrett aus Titan und Ebenholz (`antibakterielles-schneidebrett-aus-titan-und-e-629800`): hat inzwischen mehrere Varianten
+- Keramik Seifenspender mit Pumpfunktion (`keramik-seifenspender-mit-pumpfunktion-617000`): hat inzwischen mehrere Varianten
+- Messbecher- & Löffel-Set mit Skala · 13-teilig (`messbecher-loffel-set-mit-skala-605500`): hat inzwischen mehrere Varianten
+- Wasserdichter Outdoor Rucksack für Herren (`wasserdichter-outdoor-rucksack-fur-herren-238272`): hat inzwischen mehrere Varianten
+- Kinderrucksack Superleicht (`kinderrucksack-superleicht-330048`): hat inzwischen mehrere Varianten
+- Trolley Rucksack Ultraleicht – Grosses Volumen (`trolley-rucksack-ultraleicht-grosses-volumen-195776`): hat inzwischen mehrere Varianten
+- Business Commute Rucksack 3er-Set (`business-commute-rucksack-3er-set-063808`): hat inzwischen mehrere Varianten
+- Wasserdichte Anti-Rutsch Hundeschuhe · 4 Stück (`wasserdichte-anti-rutsch-hundeschuhe-620900`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Vocal Rugby Haustierspielzeug aus Naturkautschuk (`vocal-rugby-haustierspielzeug-aus-naturkautsch-068928`): hat inzwischen mehrere Varianten
+- Elektrischer Spielball für Haustiere (`elektrischer-spielball-fur-haustiere-607600`): hat inzwischen mehrere Varianten
+- Motorrad Rucksack – Hartschale (`motorrad-rucksack-hartschale-619400`): hat inzwischen mehrere Varianten
+- Retro Canvas Businesstasche für Herren (`retro-canvas-businesstasche-fur-herren-617700`): hat inzwischen mehrere Varianten
+- Hunde-Futterball, bissfest (`hunde-futterball-bissfest-611200`): hat inzwischen mehrere Varianten
+- Sitzkissen Daisy aus Baumwoll-Leinen (`sitzkissen-daisy-aus-baumwoll-leinen-143744`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Bein- und Kniekissen mit Kühlfunktion (`bein-und-kniekissen-mit-kuhlfunktion-605200`): hat inzwischen mehrere Varianten
+- Ionen-Haarglättungsbürste (`ionen-haarglattungsburste-6be8ed`): kein EU-Stecker bei CJ
+- Induktions-Marienkäfer für Kinder (`induktions-marienkafer-fur-kinder-9b50af`): hat inzwischen mehrere Varianten
+- Chenille Fussmatte – saugstark & rutschfest (`chenille-fussmatte-saugstark-rutschfest-628600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Hundebett für alle Jahreszeiten (`hundebett-fur-alle-jahreszeiten-025408`): hat inzwischen mehrere Varianten
+- Kindergeschirr-Set aus Silikon, 11-teilig (`kindergeschirr-set-aus-silikon-11-teilig-622900`): hat inzwischen mehrere Varianten
+- Silikon Küchenhelfer Set mit Holzgriff, 12-teilig (`silikon-kuchenhelfer-set-mit-holzgriff-12-teil-621900`): hat inzwischen mehrere Varianten
+- Dekokissen für Sofa und Bett (`dekokissen-fur-sofa-und-bett-618600`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Outdoor Rucksack für Velo und Wandern (`outdoor-rucksack-fur-velo-und-wandern-619900`): hat inzwischen mehrere Varianten
+- Memory Foam Stuhlkissen für langes Sitzen (`memory-foam-stuhlkissen-fur-langes-sitzen-943680`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- 3D Stereoskopischer Rucksack für Kinder (`3d-stereoskopischer-rucksack-fur-kinder-607400`): hat inzwischen mehrere Varianten
+- Samtkissen für Sofa, Stuhl oder Boden (`samtkissen-fur-sofa-stuhl-oder-boden-824512`): hat inzwischen mehrere Varianten
+- Schulrucksack für Alltag und Reisen (`schulrucksack-fur-alltag-und-reisen-628300`): hat inzwischen mehrere Varianten
+- Kinder Pyjama-Set aus Flanell (`kinder-pyjama-set-aus-flanell-87c149`): hat inzwischen mehrere Varianten
+- Mini Corn Lockenstab für mehr Volumen (`mini-corn-lockenstab-fur-mehr-volumen-011264`): hat inzwischen mehrere Varianten
+- Mini Glättbürste mit USB-Ladefunktion (`mini-glattburste-mit-usb-ladefunktion-385728`): hat inzwischen mehrere Varianten
+- Lederarmband mit Herz-Design für Smartwatches (`lederarmband-mit-herz-design-fur-smartwatches-261184`): hat inzwischen mehrere Varianten
+- Lederarmband mit Dreiecksverschluss für Smartwatches (`lederarmband-mit-dreiecksverschluss-fur-smartw-698496`): hat inzwischen mehrere Varianten
+- Atmungsaktive Denim-Leine für Hunde (`atmungsaktive-denim-leine-fur-hunde-609100`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Rustikales Kissen für stilvolles Wohnen (`rustikales-kissen-fur-stilvolles-wohnen-617000`): hat inzwischen mehrere Varianten
+- Rundes Nackenkissen aus Memory Foam (`rundes-nackenkissen-aus-memory-foam-620500`): hat inzwischen mehrere Varianten
+- New Nordic Kissenhülle mit Stickerei (`new-nordic-kissenhulle-mit-stickerei-531776`): hat inzwischen mehrere Varianten
+- New Nordic Kissenbezug mit Quasten (`new-nordic-kissenbezug-mit-quasten-299648`): hat inzwischen mehrere Varianten
+- Justice Kissenbezug mit Streifenmuster (`justice-kissenbezug-mit-streifenmuster-014592`): hat inzwischen mehrere Varianten
+- Bärendecke aus Musselin für Kinder (`barendecke-aus-musselin-fur-kinder-848832`): hat inzwischen mehrere Varianten
+- Halbfinger-Fitnesshandschuhe für Krafttraining (`halbfinger-fitnesshandschuhe-fur-krafttraining-659600`): hat inzwischen mehrere Varianten
+- Retro Sonnenbrille für Damen und Herren (`retro-sonnenbrille-fur-damen-und-herren-613700`): hat inzwischen mehrere Varianten
+- Personalisierbarer Schal mit Sutra-Text (`personalisierbarer-schal-mit-sutra-text-602600`): hat inzwischen mehrere Varianten
+- Farbiger Acetat-Haarkamm mit Luftkissen (`farbiger-acetat-haarkamm-mit-luftkissen-626800`): hat inzwischen mehrere Varianten
+- Business-Rucksack mit grosser Kapazität (`business-rucksack-mit-grosser-kapazitat-633700`): hat inzwischen mehrere Varianten
+- Leinenhemd im China-Stil für Herren (`leinenhemd-im-china-stil-fur-herren-620100`): hat inzwischen mehrere Varianten
+- Retro-Digitaluhr mit Multifunktionsanzeige (`retro-digitaluhr-mit-multifunktionsanzeige-606400`): hat inzwischen mehrere Varianten
+- Hip-Hop Uhren-, Armband- & Halsketten-Set (`hip-hop-uhren-armband-halsketten-set-619600`): hat inzwischen mehrere Varianten
+- Universal Smart Ring Fernbedienung (`universal-smart-ring-fernbedienung-616500`): hat inzwischen mehrere Varianten
+- In-Ear Gaming Headset, kabelgebunden, USB-C, Noise Cancelling (`gaming-headset-610800`): hat inzwischen mehrere Varianten
+- Mechanische Tastatur mit 104 Tasten, USB-C, Blue Switches (`mechanische-tastatur-617400`): hat inzwischen mehrere Varianten
+- USB Nagelfräser Übertragungsgerät (`usb-nagelfraser-ubertragungsgerat-927104`): hat inzwischen mehrere Varianten
+- Künstliche Nägel «Pure Hand Drawing» (`kunstliche-nagel-pure-hand-drawing-613300`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Weisse Nagel-Tips mit Strass, fertig designt (`weisse-nagel-tips-mit-strass-fertig-designt-605000`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Handgemalte Nägel mit Eiseffekt (`handgemalte-nagel-mit-eiseffekt-612500`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- UV-Nagelgel Sommerfarben 15ml (`uv-nagelgel-sommerfarben-15ml-890688`): hat inzwischen mehrere Varianten
+- Porzellanweiss Nageldesign-Blatt (`porzellanweiss-nageldesign-blatt-702400`): nicht mehr aktiv
+- Nagelclipper für Senioren – 5,7 cm & 8 cm (`nagelclipper-fur-senioren-5-7-cm-8-cm-138112`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
+- Keramik-Nagelpolierer zum Abschleifen (`keramik-nagelpolierer-zum-abschleifen-361088`): hat inzwischen mehrere Varianten
+- Französische Nagel-Patches zum Aufkleben (`franzosische-nagel-patches-zum-aufkleben-628800`): hat inzwischen mehrere Varianten
+- Glitzernder Wintergel Nagellack 7,5 ml (`glitzernder-wintergel-nagellack-7-5-ml-691264`): hat inzwischen mehrere Varianten
+- All-in-One Nagellack‑ und Entferner‑Maschine (`all-in-one-nagellack-und-entferner-maschine-563968`): hat inzwischen mehrere Varianten
+- 12 Stück Weihnachts-Nagelaufkleber Cartoon-Design · 12 Stück (`12-stuck-weihnachts-nagelaufkleber-cartoon-des-190336`): hat inzwischen mehrere Varianten
+- Nagelverlängerung Gel Kit 15 ml – Soak‑Off UV (`nagelverlangerung-gel-kit-15-ml-soak-off-uv-429312`): Lesefehler: KI nicht erreichbar: Groq-Tageskontingent leer (openai/gpt-oss-120b, qwen/qwen3.8-27b) — Schlüssel [1, 2, 3] als leer ge
