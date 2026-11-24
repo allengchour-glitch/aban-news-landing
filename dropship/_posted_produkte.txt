@@ -561,3 +561,6 @@ name:ledsensorlichtleiste
 pid:15450832863617
 slug:led-sensor-lichtleiste-5e2d3d
 slug:kabelloses-lavalier-mikrofon
+slug:cjreel-cjqcqccz00034-7903black-wireless
+pid:15450835059073
+slug:kabelloser-handstaubsauger-fur-auto-zuhause-3da44c
