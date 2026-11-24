@@ -1,6 +1,6 @@
 # SEO-Autopilot — Wirkung
 
-Stand 2026-11-24 11:42 UTC · Quelle ShopifyQL (human, 90 T)
+Stand 2026-11-24 13:12 UTC · Quelle ShopifyQL (human, 90 T)
 
 | Datum | Artikel | Phrase | Sitzungen | Warenkörbe | Urteil |
 |---|---|---|---|---|---|
@@ -24,4 +24,5 @@ Stand 2026-11-24 11:42 UTC · Quelle ShopifyQL (human, 90 T)
 | 2026-10-22 | [haarstyling-geraete-test-ratgeber](https://luxestyle.ch/blogs/ratgeber/haarstyling-geraete-test-ratgeber) | haarstyling geräte test | 0 | 0 | überarbeiten |
 | 2026-10-23 | [fotos-fuer-homepage-kaufen-ratgeber](https://luxestyle.ch/blogs/ratgeber/fotos-fuer-homepage-kaufen-ratgeber) | foto kaufen für homepage | 0 | 0 | überarbeiten |
 | 2026-10-24 | [tastaturen-test-fuer-deine-beduerfnisse](https://luxestyle.ch/blogs/ratgeber/tastaturen-test-fuer-deine-beduerfnisse) | tastaturen test | 0 | 0 | überarbeiten |
-| 2026-11-23 | [ventilatoren-test-die-besten-modelle-fuer-2026-im-ueberblick](https://luxestyle.ch/blogs/ratgeber/ventilatoren-test-die-besten-modelle-fuer-2026-im-ueberblick) | ventilatoren test | 0 | 0 | zu jung (1 T) |
+| 2026-11-23 | [ventilatoren-test-die-besten-modelle-fuer-2026-im-ueberblick](https://luxestyle.ch/blogs/ratgeber/ventilatoren-test-die-besten-modelle-fuer-2026-im-ueberblick) | ventilatoren test | 0 | 0 | zu jung (2 T) |
+| 2026-11-24 | [luftreiniger-test-worauf-du-beim-kauf-achten-solltest](https://luxestyle.ch/blogs/ratgeber/luftreiniger-test-worauf-du-beim-kauf-achten-solltest) | luftreiniger test | 0 | 0 | zu jung (1 T) |
