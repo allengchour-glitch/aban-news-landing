@@ -1,16 +1,17 @@
-# Preis-Verlustschutz — scharf 2026-11-24 17:30 UTC
+# Preis-Verlustschutz — scharf 2026-11-24 17:36 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **7** · Varianten gehoben: **72** · gesperrt (Faktor > 2.0): 2
-- Median-Faktor der Hebungen: 1.09× · Varianten ohne EK (nicht geprüft): 0
+- Produkte mit Anpassung: **7** · Varianten gehoben: **39** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.15× · Varianten ohne EK (nicht geprüft): 0
 - geschrieben: 7 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Retro Brusttasche aus echtem Leder | 54.90 | 44.44 | **55.90** | 1.02× |
-| Graffiti Sky Projektionslampe «Sternenhimmel» | 55.90 | 45.83 | **56.90** | 1.02× |
-| Spitze Mules mit Schnalle aus Leder | 55.90 | 47.11 | **58.90** | 1.05× |
-| Leder-Brusttasche für Alltag und Reise | 54.90 | 44.60 | **55.90** | 1.02× |
-| Motorradlederstiefel Herren braun | 54.90 | 65.55 | **81.90** | 1.49× |
-| Smartwatch mit HD-Display, Herzfrequenz | 55.90 | 45.26 | **56.90** | 1.02× |
+| Lederrucksack für Herren | 53.90 | 50.02 | **62.90** | 1.17× |
+| Tragbarer elektrischer Milchwärmer für unterwegs | 53.90 | 43.70 | **54.90** | 1.02× |
+| Halsventilator mit Heiz- und Kühlfunktion | 52.90 | 46.93 | **58.90** | 1.11× |
+| Reise-Rucksack Canvas & Leder | 53.90 | 46.23 | **57.90** | 1.07× |
+| Magnetischer Messerhalter für die Wand | 48.90 | 40.07 | **49.90** | 1.02× |
+| Hochleistungs-Mixer für vielseitige Zubereitunge | 52.90 | 43.16 | **53.90** | 1.02× |
+| Herren-Sneaker aus Vollnarbenleder | 53.90 | 55.94 | **69.90** | 1.30× |
