@@ -570,3 +570,6 @@ slug:ocean-wave-projektor-led-nachtlicht-33b26c
 name:lenkradtischfürunterwegs
 pid:15450851639681
 slug:lenkrad-tisch-fur-unterwegs-8f43ff
+name:quallenlavalampemit17farben
+pid:15450858193281
+slug:quallen-lava-lampe-mit-17-farben
