@@ -6,14 +6,14 @@
   "^GSPC": {
    "name": "S&P 500",
    "konto": 9506.65423098567,
-   "halten": 9372.751214061082,
+   "halten": 9344.8662246976,
    "wechsel": 2,
    "entscheid": {
-    "basis_datum": "2026-11-23",
-    "kurs": 7229.89990234375,
+    "basis_datum": "2026-11-24",
+    "kurs": 7208.39013671875,
     "position": 0,
     "regel": "Momentum 60 Tage",
-    "zeit": "2026-11-23T14:33:40Z"
+    "zeit": "2026-11-24T14:51:02Z"
    },
    "prognosen": [
     {
@@ -316,6 +316,13 @@
      "position": 0,
      "rendite": 0.046236,
      "richtig": false
+    },
+    {
+     "basis": "2026-11-23",
+     "tag": "2026-11-24",
+     "position": 0,
+     "rendite": -0.002975,
+     "richtig": true
     }
    ],
    "verlauf": [
@@ -576,28 +583,34 @@
      "konto": 9506.65,
      "halten": 9372.75,
      "position": 0
+    },
+    {
+     "datum": "2026-11-24",
+     "konto": 9506.65,
+     "halten": 9344.87,
+     "position": 0
     }
    ],
    "statistik": {
-    "tage": 43,
-    "treffer": 0.5116279069767442,
+    "tage": 44,
+    "treffer": 0.5227272727272727,
     "rendite": -0.04933457690143295,
-    "halten_rendite": -0.06272487859389186,
+    "halten_rendite": -0.06551337753024,
     "max_einbruch": -0.06212387878883552,
     "wechsel": 2
    }
   },
   "^SSMI": {
    "name": "SMI",
-   "konto": 10519.332949210084,
-   "halten": 10519.332949210084,
+   "konto": 10576.387865857932,
+   "halten": 10576.387865857932,
    "wechsel": 1,
    "entscheid": {
-    "basis_datum": "2026-11-23",
-    "kurs": 14659.3798828125,
+    "basis_datum": "2026-11-24",
+    "kurs": 14738.8896484375,
     "position": 1,
     "regel": "Gleitende Durchschnitte 50/150",
-    "zeit": "2026-11-23T14:33:41Z"
+    "zeit": "2026-11-24T14:51:02Z"
    },
    "prognosen": [
     {
@@ -900,6 +913,13 @@
      "position": 1,
      "rendite": 0.003425,
      "richtig": true
+    },
+    {
+     "basis": "2026-11-23",
+     "tag": "2026-11-24",
+     "position": 1,
+     "rendite": 0.005424,
+     "richtig": true
     }
    ],
    "verlauf": [
@@ -1160,28 +1180,34 @@
      "konto": 10519.33,
      "halten": 10519.33,
      "position": 1
+    },
+    {
+     "datum": "2026-11-24",
+     "konto": 10576.39,
+     "halten": 10576.39,
+     "position": 1
     }
    ],
    "statistik": {
-    "tage": 43,
-    "treffer": 0.627906976744186,
-    "rendite": 0.05193329492100829,
-    "halten_rendite": 0.05193329492100829,
+    "tage": 44,
+    "treffer": 0.6363636363636364,
+    "rendite": 0.057638786585793245,
+    "halten_rendite": 0.057638786585793245,
     "max_einbruch": -0.04032167998608549,
     "wechsel": 1
    }
   },
   "NESN.SW": {
    "name": "Nestlé",
-   "konto": 9927.32362669,
-   "halten": 10950.128898177862,
+   "konto": 10071.810259491675,
+   "halten": 11109.501888596786,
    "wechsel": 5,
    "entscheid": {
-    "basis_datum": "2026-11-23",
-    "kurs": 84.51000213623047,
+    "basis_datum": "2026-11-24",
+    "kurs": 85.73999786376953,
     "position": 1,
     "regel": "Momentum 250 Tage",
-    "zeit": "2026-11-23T14:33:41Z"
+    "zeit": "2026-11-24T14:51:02Z"
    },
    "prognosen": [
     {
@@ -1484,6 +1510,13 @@
      "position": 1,
      "rendite": -0.008913,
      "richtig": false
+    },
+    {
+     "basis": "2026-11-23",
+     "tag": "2026-11-24",
+     "position": 1,
+     "rendite": 0.014554,
+     "richtig": true
     }
    ],
    "verlauf": [
@@ -1744,13 +1777,19 @@
      "konto": 9927.32,
      "halten": 10950.13,
      "position": 1
+    },
+    {
+     "datum": "2026-11-24",
+     "konto": 10071.81,
+     "halten": 11109.5,
+     "position": 1
     }
    ],
    "statistik": {
-    "tage": 43,
-    "treffer": 0.3488372093023256,
-    "rendite": -0.007267637330999999,
-    "halten_rendite": 0.09501288981778622,
+    "tage": 44,
+    "treffer": 0.36363636363636365,
+    "rendite": 0.007181025949167363,
+    "halten_rendite": 0.11095018885967867,
     "max_einbruch": -0.04118511764830879,
     "wechsel": 5
    }
@@ -1758,14 +1797,14 @@
   "BTC-USD": {
    "name": "Bitcoin",
    "konto": 8420.859182838882,
-   "halten": 7531.370225619366,
+   "halten": 7145.243559579954,
    "wechsel": 2,
    "entscheid": {
-    "basis_datum": "2026-11-23",
-    "kurs": 63599.91015625,
+    "basis_datum": "2026-11-24",
+    "kurs": 60339.19921875,
     "position": 0,
     "regel": "Momentum 20 Tage",
-    "zeit": "2026-11-23T14:33:42Z"
+    "zeit": "2026-11-24T14:51:02Z"
    },
    "prognosen": [
     {
@@ -2194,6 +2233,13 @@
      "position": 0,
      "rendite": 0.049479,
      "richtig": false
+    },
+    {
+     "basis": "2026-11-23",
+     "tag": "2026-11-24",
+     "position": 0,
+     "rendite": -0.051269,
+     "richtig": true
     }
    ],
    "verlauf": [
@@ -2562,13 +2608,19 @@
      "konto": 8420.86,
      "halten": 7531.37,
      "position": 0
+    },
+    {
+     "datum": "2026-11-24",
+     "konto": 8420.86,
+     "halten": 7145.24,
+     "position": 0
     }
    ],
    "statistik": {
-    "tage": 61,
-    "treffer": 0.4918032786885246,
+    "tage": 62,
+    "treffer": 0.5,
     "rendite": -0.15791408171611188,
-    "halten_rendite": -0.2468629774380634,
+    "halten_rendite": -0.28547564404200454,
     "max_einbruch": -0.1579139999999999,
     "wechsel": 2
    }
@@ -2576,14 +2628,14 @@
   "EURCHF=X": {
    "name": "EUR/CHF",
    "konto": 9688.18187971112,
-   "halten": 9797.818932307673,
+   "halten": 9768.646126860545,
    "wechsel": 4,
    "entscheid": {
-    "basis_datum": "2026-11-23",
-    "kurs": 0.920229971408844,
+    "basis_datum": "2026-11-24",
+    "kurs": 0.9174900054931641,
     "position": 0,
     "regel": "Gleitende Durchschnitte 20/150",
-    "zeit": "2026-11-23T14:33:42Z"
+    "zeit": "2026-11-24T14:51:03Z"
    },
    "prognosen": [
     {
@@ -2893,6 +2945,13 @@
      "position": 1,
      "rendite": -0.002763,
      "richtig": false
+    },
+    {
+     "basis": "2026-11-23",
+     "tag": "2026-11-24",
+     "position": 0,
+     "rendite": -0.002977,
+     "richtig": true
     }
    ],
    "verlauf": [
@@ -3165,28 +3224,34 @@
      "konto": 9697.88,
      "halten": 9797.82,
      "position": 1
+    },
+    {
+     "datum": "2026-11-24",
+     "konto": 9688.18,
+     "halten": 9768.65,
+     "position": 0
     }
    ],
    "statistik": {
-    "tage": 44,
-    "treffer": 0.5227272727272727,
+    "tage": 45,
+    "treffer": 0.5333333333333333,
     "rendite": -0.031181812028888034,
-    "halten_rendite": -0.020218106769232636,
-    "max_einbruch": -0.0381491928605151,
+    "halten_rendite": -0.023135387313945488,
+    "max_einbruch": -0.03911125393254866,
     "wechsel": 4
    }
   },
   "GC=F": {
    "name": "Gold",
    "konto": 9166.166061629017,
-   "halten": 8510.461826589964,
+   "halten": 8390.518272564104,
    "wechsel": 4,
    "entscheid": {
-    "basis_datum": "2026-11-23",
-    "kurs": 3682.5,
+    "basis_datum": "2026-11-24",
+    "kurs": 3630.60009765625,
     "position": 0,
     "regel": "Gleitende Durchschnitte 20/150",
-    "zeit": "2026-11-23T14:33:43Z"
+    "zeit": "2026-11-24T14:51:03Z"
    },
    "prognosen": [
     {
@@ -3489,6 +3554,13 @@
      "position": 0,
      "rendite": 0.03131,
      "richtig": false
+    },
+    {
+     "basis": "2026-11-23",
+     "tag": "2026-11-24",
+     "position": 0,
+     "rendite": -0.014094,
+     "richtig": true
     }
    ],
    "verlauf": [
@@ -3749,13 +3821,19 @@
      "konto": 9166.17,
      "halten": 8510.46,
      "position": 0
+    },
+    {
+     "datum": "2026-11-24",
+     "konto": 9166.17,
+     "halten": 8390.52,
+     "position": 0
     }
    ],
    "statistik": {
-    "tage": 43,
-    "treffer": 0.4883720930232558,
+    "tage": 44,
+    "treffer": 0.5,
     "rendite": -0.08338339383709825,
-    "halten_rendite": -0.14895381734100355,
+    "halten_rendite": -0.16094817274358952,
     "max_einbruch": -0.08338299999999998,
     "wechsel": 4
    }
@@ -3763,14 +3841,14 @@
   "SI=F": {
    "name": "Silber",
    "konto": 10000.0,
-   "halten": 6725.1330479213675,
+   "halten": 6494.346047619975,
    "wechsel": 0,
    "entscheid": {
-    "basis_datum": "2026-11-23",
-    "kurs": 43.709999084472656,
+    "basis_datum": "2026-11-24",
+    "kurs": 42.209999084472656,
     "position": 0,
     "regel": "Gleitende Durchschnitte 50/150",
-    "zeit": "2026-11-23T14:33:43Z"
+    "zeit": "2026-11-24T14:51:03Z"
    },
    "prognosen": [
     {
@@ -4073,6 +4151,13 @@
      "position": 0,
      "rendite": 0.037749,
      "richtig": false
+    },
+    {
+     "basis": "2026-11-23",
+     "tag": "2026-11-24",
+     "position": 0,
+     "rendite": -0.034317,
+     "richtig": true
     }
    ],
    "verlauf": [
@@ -4333,13 +4418,19 @@
      "konto": 10000.0,
      "halten": 6725.13,
      "position": 0
+    },
+    {
+     "datum": "2026-11-24",
+     "konto": 10000.0,
+     "halten": 6494.35,
+     "position": 0
     }
    ],
    "statistik": {
-    "tage": 43,
-    "treffer": 0.627906976744186,
+    "tage": 44,
+    "treffer": 0.6363636363636364,
     "rendite": 0.0,
-    "halten_rendite": -0.3274866952078632,
+    "halten_rendite": -0.35056539523800245,
     "max_einbruch": 0.0,
     "wechsel": 0
    }
@@ -4347,14 +4438,14 @@
   "CL=F": {
    "name": "Öl (WTI)",
    "konto": 8787.28605163666,
-   "halten": 8840.250428644264,
+   "halten": 8774.519588847148,
    "wechsel": 4,
    "entscheid": {
-    "basis_datum": "2026-11-23",
-    "kurs": 82.04000091552734,
+    "basis_datum": "2026-11-24",
+    "kurs": 81.43000030517578,
     "position": 0,
     "regel": "Momentum 20 Tage",
-    "zeit": "2026-11-23T14:33:44Z"
+    "zeit": "2026-11-24T14:51:04Z"
    },
    "prognosen": [
     {
@@ -4657,6 +4748,13 @@
      "position": 0,
      "rendite": -0.001946,
      "richtig": true
+    },
+    {
+     "basis": "2026-11-23",
+     "tag": "2026-11-24",
+     "position": 0,
+     "rendite": -0.007435,
+     "richtig": true
     }
    ],
    "verlauf": [
@@ -4917,52 +5015,50 @@
      "konto": 8787.29,
      "halten": 8840.25,
      "position": 0
+    },
+    {
+     "datum": "2026-11-24",
+     "konto": 8787.29,
+     "halten": 8774.52,
+     "position": 0
     }
    ],
    "statistik": {
-    "tage": 43,
-    "treffer": 0.46511627906976744,
+    "tage": 44,
+    "treffer": 0.4772727272727273,
     "rendite": -0.12127139483633398,
-    "halten_rendite": -0.1159749571355736,
+    "halten_rendite": -0.12254804111528517,
     "max_einbruch": -0.1530069814134205,
     "wechsel": 4
    }
   }
  },
  "gesamt": {
-  "tage": 363,
-  "treffer": 0.509641873278237,
-  "depot_chf": 76015.8,
-  "halten_chf": 72247.25
+  "tage": 371,
+  "treffer": 0.5202156334231806,
+  "depot_chf": 76217.35,
+  "halten_chf": 71604.03
  },
- "stand": "2026-11-23T14:33:53Z",
+ "stand": "2026-11-24T14:51:08Z",
  "daytrading": {
   "hinweis": "Regel wird morgens eingefroren und gilt erst ab der nächsten Sitzung. Kosten 0.05 % pro Trade.",
   "maerkte": {
    "GC=F": {
     "name": "Gold",
-    "konto": 11677.315023346022,
+    "konto": 11757.571732781778,
     "regel": "Ausbruch aus 3-Std.-Spanne",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Ausbruch aus 3-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Ausbruch aus 3-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Ausbruch aus 3-Std.-Spanne"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Ausbruch aus 3-Std.-Spanne"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Ausbruch aus 3-Std.-Spanne"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Ausbruch aus 3-Std.-Spanne"
      }
     ],
@@ -5218,39 +5314,37 @@
       "regel": "Ausbruch aus 3-Std.-Spanne",
       "rendite": 0.012555,
       "richtig": true
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Ausbruch aus 3-Std.-Spanne",
+      "rendite": 0.006873,
+      "richtig": true
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 42,
-     "treffer": 0.6190476190476191,
-     "rendite": 0.1677315023346022
+     "trades": 43,
+     "treffer": 0.627906976744186,
+     "rendite": 0.17575717327817775
     }
    },
    "SI=F": {
     "name": "Silber",
-    "konto": 8756.825555848876,
+    "konto": 8915.321362403358,
     "regel": "Erste 1 Std. folgen",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Erste 1 Std. folgen"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Erste 3 Std. folgen"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Erste 3 Std. folgen"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Erste 1 Std. folgen"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Erste 1 Std. folgen"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Erste 1 Std. folgen"
      }
     ],
@@ -5506,39 +5600,37 @@
       "regel": "Erste 1 Std. folgen",
       "rendite": 0.033374,
       "richtig": true
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Erste 1 Std. folgen",
+      "rendite": 0.0181,
+      "richtig": true
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 42,
-     "treffer": 0.4523809523809524,
-     "rendite": -0.12431744441511239
+     "trades": 43,
+     "treffer": 0.46511627906976744,
+     "rendite": -0.10846786375966422
     }
    },
    "CL=F": {
     "name": "Öl (WTI)",
-    "konto": 8569.91982168281,
+    "konto": 8257.801577087794,
     "regel": "Ausbruch aus 2-Std.-Spanne",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Ausbruch aus 2-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Erste 2 Std. folgen"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Erste 2 Std. folgen"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Ausbruch aus 2-Std.-Spanne"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Ausbruch aus 2-Std.-Spanne"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Ausbruch aus 2-Std.-Spanne"
      }
     ],
@@ -5788,39 +5880,37 @@
       "regel": "Ausbruch aus 2-Std.-Spanne",
       "rendite": -0.00994,
       "richtig": false
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Ausbruch aus 2-Std.-Spanne",
+      "rendite": -0.03642,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 41,
-     "treffer": 0.43902439024390244,
-     "rendite": -0.14300801783171901
+     "trades": 42,
+     "treffer": 0.42857142857142855,
+     "rendite": -0.17421984229122067
     }
    },
    "ES=F": {
     "name": "S&P 500 (Future)",
-    "konto": 10337.658641730559,
+    "konto": 10601.654082717241,
     "regel": "Ausbruch aus 1-Std.-Spanne",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Ausbruch aus 1-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Ausbruch aus 1-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Ausbruch aus 1-Std.-Spanne"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Ausbruch aus 1-Std.-Spanne"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Ausbruch aus 1-Std.-Spanne"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Ausbruch aus 1-Std.-Spanne"
      }
     ],
@@ -6076,31 +6166,37 @@
       "regel": "Ausbruch aus 1-Std.-Spanne",
       "rendite": 0.034463,
       "richtig": true
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Ausbruch aus 1-Std.-Spanne",
+      "rendite": 0.025537,
+      "richtig": true
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 42,
-     "treffer": 0.47619047619047616,
-     "rendite": 0.033765864173055826
+     "trades": 43,
+     "treffer": 0.4883720930232558,
+     "rendite": 0.06016540827172401
     }
    },
    "BTC-USD": {
     "name": "Bitcoin",
-    "konto": 6557.510876441739,
+    "konto": 6552.635794235016,
     "regel": "Erste 3 Std. umkehren",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-22",
-      "regel": "Erste 3 Std. umkehren"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Erste 3 Std. umkehren"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Erste 3 Std. umkehren"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Erste 3 Std. umkehren"
      }
     ],
@@ -6464,39 +6560,37 @@
       "regel": "Erste 3 Std. umkehren",
       "rendite": 0.012328,
       "richtig": true
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Erste 3 Std. umkehren",
+      "rendite": -0.000743,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-11-22",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 60,
-     "treffer": 0.4166666666666667,
-     "rendite": -0.3442489123558261
+     "trades": 61,
+     "treffer": 0.4098360655737705,
+     "rendite": -0.34473642057649845
     }
    },
    "AAPL": {
     "name": "Apple",
-    "konto": 9391.487529005013,
+    "konto": 9351.341971019978,
     "regel": "Erste 2 Std. umkehren",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Erste 2 Std. umkehren"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Erste 2 Std. umkehren"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Erste 2 Std. umkehren"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Erste 2 Std. umkehren"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Erste 2 Std. umkehren"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Erste 2 Std. umkehren"
      }
     ],
@@ -6740,39 +6834,37 @@
       "regel": "Erste 2 Std. umkehren",
       "rendite": -0.014673,
       "richtig": false
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Erste 2 Std. umkehren",
+      "rendite": -0.004275,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 40,
-     "treffer": 0.375,
-     "rendite": -0.06085124709949874
+     "trades": 41,
+     "treffer": 0.36585365853658536,
+     "rendite": -0.06486580289800226
     }
    },
    "NVDA": {
     "name": "Nvidia",
-    "konto": 10211.152204094384,
+    "konto": 10300.061478717367,
     "regel": "Erste 2 Std. folgen",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Erste 2 Std. folgen"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Erste 2 Std. folgen"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Erste 2 Std. folgen"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Erste 2 Std. folgen"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Erste 2 Std. folgen"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Erste 2 Std. folgen"
      }
     ],
@@ -7016,39 +7108,37 @@
       "regel": "Erste 2 Std. folgen",
       "rendite": 0.080943,
       "richtig": true
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Erste 2 Std. folgen",
+      "rendite": 0.008707,
+      "richtig": true
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 40,
-     "treffer": 0.525,
-     "rendite": 0.021115220409438473
+     "trades": 41,
+     "treffer": 0.5365853658536586,
+     "rendite": 0.03000614787173661
     }
    },
    "TSLA": {
     "name": "Tesla",
-    "konto": 10007.005645046496,
+    "konto": 9843.500538491646,
     "regel": "Erste 1 Std. folgen",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Erste 3 Std. umkehren"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Erste 1 Std. folgen"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Erste 1 Std. folgen"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Erste 1 Std. folgen"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Erste 1 Std. folgen"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Erste 1 Std. folgen"
      }
     ],
@@ -7286,39 +7376,37 @@
       "regel": "Erste 3 Std. umkehren",
       "rendite": -0.018893,
       "richtig": false
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Erste 1 Std. folgen",
+      "rendite": -0.016339,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 39,
-     "treffer": 0.5641025641025641,
-     "rendite": 0.0007005645046496145
+     "trades": 40,
+     "treffer": 0.55,
+     "rendite": -0.01564994615083537
     }
    },
    "MSFT": {
     "name": "Microsoft",
-    "konto": 9696.411559402824,
+    "konto": 9591.698591454946,
     "regel": "Erste 3 Std. umkehren",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Erste 3 Std. umkehren"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Erste 3 Std. umkehren"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Erste 3 Std. umkehren"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Erste 3 Std. umkehren"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Erste 3 Std. umkehren"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Erste 3 Std. umkehren"
      }
     ],
@@ -7562,39 +7650,37 @@
       "regel": "Erste 3 Std. umkehren",
       "rendite": -0.008678,
       "richtig": false
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Erste 3 Std. umkehren",
+      "rendite": -0.010799,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 40,
-     "treffer": 0.375,
-     "rendite": -0.03035884405971756
+     "trades": 41,
+     "treffer": 0.36585365853658536,
+     "rendite": -0.040830140854505426
     }
    },
    "AMZN": {
     "name": "Amazon",
-    "konto": 9479.671663002222,
+    "konto": 9532.295245024485,
     "regel": "Erste 1 Std. folgen",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Erste 1 Std. folgen"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Erste 1 Std. folgen"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Erste 1 Std. folgen"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Erste 1 Std. folgen"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Erste 1 Std. folgen"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Erste 1 Std. folgen"
      }
     ],
@@ -7838,39 +7924,37 @@
       "regel": "Erste 1 Std. folgen",
       "rendite": -0.035926,
       "richtig": false
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Erste 1 Std. folgen",
+      "rendite": 0.005551,
+      "richtig": true
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 40,
-     "treffer": 0.475,
-     "rendite": -0.05203283369977785
+     "trades": 41,
+     "treffer": 0.4878048780487805,
+     "rendite": -0.046770475497551534
     }
    },
    "NESN.SW": {
     "name": "Nestlé",
-    "konto": 9591.482969008533,
+    "konto": 9628.18968283533,
     "regel": "Erste 1 Std. umkehren",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Erste 1 Std. umkehren"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Ausbruch aus 2-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Ausbruch aus 2-Std.-Spanne"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Erste 1 Std. umkehren"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Erste 1 Std. umkehren"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Erste 1 Std. umkehren"
      }
     ],
@@ -8102,39 +8186,37 @@
       "regel": "Erste 1 Std. umkehren",
       "rendite": -0.002022,
       "richtig": false
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Erste 1 Std. umkehren",
+      "rendite": 0.003827,
+      "richtig": true
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 38,
-     "treffer": 0.47368421052631576,
-     "rendite": -0.04085170309914665
+     "trades": 39,
+     "treffer": 0.48717948717948717,
+     "rendite": -0.03718103171646703
     }
    },
    "NOVN.SW": {
     "name": "Novartis",
-    "konto": 9620.73566667816,
+    "konto": 9575.21689925037,
     "regel": "Ausbruch aus 1-Std.-Spanne",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Ausbruch aus 1-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Ausbruch aus 1-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Ausbruch aus 1-Std.-Spanne"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Ausbruch aus 1-Std.-Spanne"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Ausbruch aus 1-Std.-Spanne"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Ausbruch aus 1-Std.-Spanne"
      }
     ],
@@ -8366,39 +8448,37 @@
       "regel": "Ausbruch aus 1-Std.-Spanne",
       "rendite": -0.003168,
       "richtig": false
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Ausbruch aus 1-Std.-Spanne",
+      "rendite": -0.004731,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 38,
-     "treffer": 0.42105263157894735,
-     "rendite": -0.03792643333218404
+     "trades": 39,
+     "treffer": 0.41025641025641024,
+     "rendite": -0.042478310074962944
     }
    },
    "RO.SW": {
     "name": "Roche",
-    "konto": 9493.313143982878,
+    "konto": 9493.231790885005,
     "regel": "Ausbruch aus 2-Std.-Spanne",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Ausbruch aus 2-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Ausbruch aus 2-Std.-Spanne"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Ausbruch aus 2-Std.-Spanne"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Ausbruch aus 2-Std.-Spanne"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Ausbruch aus 2-Std.-Spanne"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Ausbruch aus 2-Std.-Spanne"
      }
     ],
@@ -8618,39 +8698,37 @@
       "regel": "Ausbruch aus 2-Std.-Spanne",
       "rendite": -0.001993,
       "richtig": false
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Ausbruch aus 2-Std.-Spanne",
+      "rendite": -9e-06,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 36,
-     "treffer": 0.4722222222222222,
-     "rendite": -0.05066868560171223
+     "trades": 37,
+     "treffer": 0.4594594594594595,
+     "rendite": -0.0506768209114995
     }
    },
    "UBSG.SW": {
     "name": "UBS",
-    "konto": 9163.1767301057,
+    "konto": 8923.895091896025,
     "regel": "Erste 2 Std. umkehren",
-    "gilt_ab": "2026-11-24",
+    "gilt_ab": "2026-11-25",
     "einfrierungen": [
-     {
-      "ab": "2026-11-20",
-      "regel": "Erste 2 Std. umkehren"
-     },
-     {
-      "ab": "2026-11-21",
-      "regel": "Erste 2 Std. umkehren"
-     },
-     {
-      "ab": "2026-11-22",
-      "regel": "Erste 2 Std. umkehren"
-     },
      {
       "ab": "2026-11-23",
       "regel": "Erste 2 Std. umkehren"
      },
      {
       "ab": "2026-11-24",
+      "regel": "Erste 2 Std. umkehren"
+     },
+     {
+      "ab": "2026-11-25",
       "regel": "Erste 2 Std. umkehren"
      }
     ],
@@ -8894,20 +8972,26 @@
       "regel": "Erste 2 Std. umkehren",
       "rendite": -0.004541,
       "richtig": false
+     },
+     {
+      "tag": "2026-11-23",
+      "regel": "Erste 2 Std. umkehren",
+      "rendite": -0.026113,
+      "richtig": false
      }
     ],
-    "gebucht_bis": "2026-11-20",
+    "gebucht_bis": "2026-11-23",
     "statistik": {
-     "trades": 40,
-     "treffer": 0.4,
-     "rendite": -0.0836823269894299
+     "trades": 41,
+     "treffer": 0.3902439024390244,
+     "rendite": -0.10761049081039742
     }
    }
   },
   "gesamt": {
-   "trades": 578,
-   "treffer": 0.4619377162629758,
-   "depot_chf": 132553.67
+   "trades": 592,
+   "treffer": 0.46114864864864863,
+   "depot_chf": 132324.42
   }
  },
  "stil_vorwaerts": {
@@ -8928,179 +9012,179 @@
   "maerkte": {
    "^GSPC": {
     "halten": {
-     "konto": 9334.473361778437,
-     "basis": "2026-11-23",
-     "kurs": 7229.89990234375
+     "konto": 9306.702253332029,
+     "basis": "2026-11-24",
+     "kurs": 7208.39013671875
     },
     "stile": {
      "Trendfolge": {
-      "konto": 9334.473361778437,
+      "konto": 9306.702253332029,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 7229.89990234375,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 7208.39013671875,
+      "tage": 42,
       "richtig": 19,
       "wechsel": 1
      },
      "Momentum": {
-      "konto": 9334.473361778437,
+      "konto": 9306.702253332029,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 7229.89990234375,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 7208.39013671875,
+      "tage": 42,
       "richtig": 19,
       "wechsel": 1
      },
      "Ausbruch (Turtle)": {
       "konto": 9730.79470983976,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 7229.89990234375,
-      "tage": 41,
-      "richtig": 21,
+      "basis": "2026-11-24",
+      "kurs": 7208.39013671875,
+      "tage": 42,
+      "richtig": 22,
       "wechsel": 2
      },
      "Mean Reversion": {
       "konto": 10028.521569085375,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 7229.89990234375,
-      "tage": 41,
-      "richtig": 25,
+      "basis": "2026-11-24",
+      "kurs": 7208.39013671875,
+      "tage": 42,
+      "richtig": 26,
       "wechsel": 6
      },
      "Buy the Dip": {
-      "konto": 10065.274572845856,
+      "konto": 10035.329248576152,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 7229.89990234375,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 7208.39013671875,
+      "tage": 42,
       "richtig": 22,
       "wechsel": 1
      },
      "Swing": {
       "konto": 9756.946910852654,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 7229.89990234375,
-      "tage": 41,
-      "richtig": 21,
+      "basis": "2026-11-24",
+      "kurs": 7208.39013671875,
+      "tage": 42,
+      "richtig": 22,
       "wechsel": 6
      },
      "Saison: Sell in May": {
-      "konto": 9577.359768703836,
+      "konto": 9548.866045870365,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 7229.89990234375,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 7208.39013671875,
+      "tage": 42,
       "richtig": 19,
       "wechsel": 1
      },
      "Monatswechsel": {
       "konto": 10296.88401469528,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 7229.89990234375,
-      "tage": 41,
-      "richtig": 26,
+      "basis": "2026-11-24",
+      "kurs": 7208.39013671875,
+      "tage": 42,
+      "richtig": 27,
       "wechsel": 4
      },
      "Ruhige Phasen": {
       "konto": 9484.855162870852,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 7229.89990234375,
-      "tage": 41,
-      "richtig": 23,
+      "basis": "2026-11-24",
+      "kurs": 7208.39013671875,
+      "tage": 42,
+      "richtig": 24,
       "wechsel": 2
      }
     }
    },
    "^SSMI": {
     "halten": {
-     "konto": 10501.236971047112,
-     "basis": "2026-11-23",
-     "kurs": 14659.3798828125
+     "konto": 10558.193738455771,
+     "basis": "2026-11-24",
+     "kurs": 14738.8896484375
     },
     "stile": {
      "Trendfolge": {
-      "konto": 10501.236971047112,
+      "konto": 10558.193738455771,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 14659.3798828125,
-      "tage": 41,
-      "richtig": 27,
+      "basis": "2026-11-24",
+      "kurs": 14738.8896484375,
+      "tage": 42,
+      "richtig": 28,
       "wechsel": 1
      },
      "Momentum": {
-      "konto": 10501.236971047112,
+      "konto": 10558.193738455771,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 14659.3798828125,
-      "tage": 41,
-      "richtig": 27,
+      "basis": "2026-11-24",
+      "kurs": 14738.8896484375,
+      "tage": 42,
+      "richtig": 28,
       "wechsel": 1
      },
      "Ausbruch (Turtle)": {
-      "konto": 10073.581195803812,
+      "konto": 10128.218437371024,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 14659.3798828125,
-      "tage": 41,
-      "richtig": 16,
+      "basis": "2026-11-24",
+      "kurs": 14738.8896484375,
+      "tage": 42,
+      "richtig": 17,
       "wechsel": 1
      },
      "Mean Reversion": {
-      "konto": 9999.260302877483,
+      "konto": 10053.49444166512,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 14659.3798828125,
-      "tage": 41,
-      "richtig": 16,
+      "basis": "2026-11-24",
+      "kurs": 14738.8896484375,
+      "tage": 42,
+      "richtig": 17,
       "wechsel": 3
      },
      "Buy the Dip": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 14659.3798828125,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 14738.8896484375,
+      "tage": 42,
       "richtig": 14,
       "wechsel": 0
      },
      "Swing": {
       "konto": 9889.282294988892,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 14659.3798828125,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 14738.8896484375,
+      "tage": 42,
       "richtig": 14,
       "wechsel": 2
      },
      "Saison: Sell in May": {
-      "konto": 9934.429896894859,
+      "konto": 9988.312407549092,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 14659.3798828125,
-      "tage": 41,
-      "richtig": 15,
+      "basis": "2026-11-24",
+      "kurs": 14738.8896484375,
+      "tage": 42,
+      "richtig": 16,
       "wechsel": 1
      },
      "Monatswechsel": {
       "konto": 10130.935795474996,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 14659.3798828125,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 14738.8896484375,
+      "tage": 42,
       "richtig": 17,
       "wechsel": 4
      },
      "Ruhige Phasen": {
       "konto": 9907.099176702268,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 14659.3798828125,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 14738.8896484375,
+      "tage": 42,
       "richtig": 19,
       "wechsel": 10
      }
@@ -9108,449 +9192,449 @@
    },
    "NESN.SW": {
     "halten": {
-     "konto": 10940.196208021767,
-     "basis": "2026-11-23",
-     "kurs": 84.51000213623047
+     "konto": 11099.424633701063,
+     "basis": "2026-11-24",
+     "kurs": 85.73999786376953
     },
     "stile": {
      "Trendfolge": {
-      "konto": 9475.592904347308,
+      "konto": 9613.504849603903,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 84.51000213623047,
-      "tage": 41,
-      "richtig": 11,
+      "basis": "2026-11-24",
+      "kurs": 85.73999786376953,
+      "tage": 42,
+      "richtig": 12,
       "wechsel": 3
      },
      "Momentum": {
-      "konto": 10712.807842495866,
+      "konto": 10868.726757927627,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 84.51000213623047,
-      "tage": 41,
-      "richtig": 24,
+      "basis": "2026-11-24",
+      "kurs": 85.73999786376953,
+      "tage": 42,
+      "richtig": 25,
       "wechsel": 3
      },
      "Ausbruch (Turtle)": {
-      "konto": 10295.791723670027,
+      "konto": 10445.641203159237,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 84.51000213623047,
-      "tage": 41,
-      "richtig": 19,
+      "basis": "2026-11-24",
+      "kurs": 85.73999786376953,
+      "tage": 42,
+      "richtig": 20,
       "wechsel": 1
      },
      "Mean Reversion": {
-      "konto": 9969.944713017909,
+      "konto": 10115.05167184918,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 84.51000213623047,
-      "tage": 41,
-      "richtig": 15,
+      "basis": "2026-11-24",
+      "kurs": 85.73999786376953,
+      "tage": 42,
+      "richtig": 16,
       "wechsel": 1
      },
      "Buy the Dip": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 84.51000213623047,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 85.73999786376953,
+      "tage": 42,
       "richtig": 15,
       "wechsel": 0
      },
      "Swing": {
       "konto": 9978.577565357527,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 84.51000213623047,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 85.73999786376953,
+      "tage": 42,
       "richtig": 15,
       "wechsel": 4
      },
      "Saison: Sell in May": {
-      "konto": 9965.237360438456,
+      "konto": 10110.275806390608,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 84.51000213623047,
-      "tage": 41,
-      "richtig": 14,
+      "basis": "2026-11-24",
+      "kurs": 85.73999786376953,
+      "tage": 42,
+      "richtig": 15,
       "wechsel": 1
      },
      "Monatswechsel": {
       "konto": 9969.768512573875,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 84.51000213623047,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 85.73999786376953,
+      "tage": 42,
       "richtig": 16,
       "wechsel": 4
      },
      "Ruhige Phasen": {
-      "konto": 10806.069506495664,
+      "konto": 10963.345793189563,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 84.51000213623047,
-      "tage": 41,
-      "richtig": 25,
+      "basis": "2026-11-24",
+      "kurs": 85.73999786376953,
+      "tage": 42,
+      "richtig": 26,
       "wechsel": 3
      }
     }
    },
    "BTC-USD": {
     "halten": {
-     "konto": 7590.648110105283,
-     "basis": "2026-11-23",
-     "kurs": 63599.91015625
+     "konto": 7201.482319547925,
+     "basis": "2026-11-24",
+     "kurs": 60339.19921875
     },
     "stile": {
      "Trendfolge": {
-      "konto": 7590.648110105283,
+      "konto": 7201.482319547925,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 63599.91015625,
-      "tage": 59,
+      "basis": "2026-11-24",
+      "kurs": 60339.19921875,
+      "tage": 60,
       "richtig": 26,
       "wechsel": 1
      },
      "Momentum": {
       "konto": 8103.496555871252,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 63599.91015625,
-      "tage": 59,
-      "richtig": 24,
+      "basis": "2026-11-24",
+      "kurs": 60339.19921875,
+      "tage": 60,
+      "richtig": 25,
       "wechsel": 2
      },
      "Ausbruch (Turtle)": {
       "konto": 9693.414958062489,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 63599.91015625,
-      "tage": 59,
-      "richtig": 39,
+      "basis": "2026-11-24",
+      "kurs": 60339.19921875,
+      "tage": 60,
+      "richtig": 40,
       "wechsel": 2
      },
      "Mean Reversion": {
       "konto": 10396.509717835504,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 63599.91015625,
-      "tage": 59,
-      "richtig": 40,
+      "basis": "2026-11-24",
+      "kurs": 60339.19921875,
+      "tage": 60,
+      "richtig": 41,
       "wechsel": 8
      },
      "Buy the Dip": {
-      "konto": 8254.80814073226,
+      "konto": 7831.59145496459,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 63599.91015625,
-      "tage": 59,
+      "basis": "2026-11-24",
+      "kurs": 60339.19921875,
+      "tage": 60,
       "richtig": 23,
       "wechsel": 1
      },
      "Swing": {
       "konto": 9423.856085194735,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 63599.91015625,
-      "tage": 59,
-      "richtig": 35,
+      "basis": "2026-11-24",
+      "kurs": 60339.19921875,
+      "tage": 60,
+      "richtig": 36,
       "wechsel": 12
      },
      "Saison: Sell in May": {
-      "konto": 8159.577581349487,
+      "konto": 7741.243281827345,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 63599.91015625,
-      "tage": 59,
+      "basis": "2026-11-24",
+      "kurs": 60339.19921875,
+      "tage": 60,
       "richtig": 23,
       "wechsel": 1
      },
      "Monatswechsel": {
       "konto": 9642.811848494082,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 63599.91015625,
-      "tage": 59,
-      "richtig": 32,
+      "basis": "2026-11-24",
+      "kurs": 60339.19921875,
+      "tage": 60,
+      "richtig": 33,
       "wechsel": 4
      },
      "Ruhige Phasen": {
       "konto": 9068.750774921791,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 63599.91015625,
-      "tage": 59,
-      "richtig": 37,
+      "basis": "2026-11-24",
+      "kurs": 60339.19921875,
+      "tage": 60,
+      "richtig": 38,
       "wechsel": 2
      }
     }
    },
    "EURCHF=X": {
     "halten": {
-     "konto": 9735.665933099526,
-     "basis": "2026-11-23",
-     "kurs": 0.920229971408844
+     "konto": 9706.67818693614,
+     "basis": "2026-11-24",
+     "kurs": 0.9174900054931641
     },
     "stile": {
      "Trendfolge": {
-      "konto": 9735.665933099526,
+      "konto": 9706.67818693614,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 0.920229971408844,
-      "tage": 42,
+      "basis": "2026-11-24",
+      "kurs": 0.9174900054931641,
+      "tage": 43,
       "richtig": 23,
       "wechsel": 1
      },
      "Momentum": {
       "konto": 9736.57222726751,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 0.920229971408844,
-      "tage": 42,
-      "richtig": 22,
+      "basis": "2026-11-24",
+      "kurs": 0.9174900054931641,
+      "tage": 43,
+      "richtig": 23,
       "wechsel": 6
      },
      "Ausbruch (Turtle)": {
       "konto": 9835.002650536013,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 0.920229971408844,
-      "tage": 42,
-      "richtig": 21,
+      "basis": "2026-11-24",
+      "kurs": 0.9174900054931641,
+      "tage": 43,
+      "richtig": 22,
       "wechsel": 2
      },
      "Mean Reversion": {
       "konto": 9945.370488754981,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 0.920229971408844,
-      "tage": 42,
-      "richtig": 24,
+      "basis": "2026-11-24",
+      "kurs": 0.9174900054931641,
+      "tage": 43,
+      "richtig": 25,
       "wechsel": 4
      },
      "Buy the Dip": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 0.920229971408844,
-      "tage": 42,
-      "richtig": 19,
+      "basis": "2026-11-24",
+      "kurs": 0.9174900054931641,
+      "tage": 43,
+      "richtig": 20,
       "wechsel": 0
      },
      "Swing": {
       "konto": 10026.709831356196,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 0.920229971408844,
-      "tage": 42,
-      "richtig": 25,
+      "basis": "2026-11-24",
+      "kurs": 0.9174900054931641,
+      "tage": 43,
+      "richtig": 26,
       "wechsel": 8
      },
      "Saison: Sell in May": {
-      "konto": 9985.984622959826,
+      "konto": 9956.251558017892,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 0.920229971408844,
-      "tage": 42,
+      "basis": "2026-11-24",
+      "kurs": 0.9174900054931641,
+      "tage": 43,
       "richtig": 17,
       "wechsel": 1
      },
      "Monatswechsel": {
       "konto": 9989.353481820717,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 0.920229971408844,
-      "tage": 42,
-      "richtig": 20,
+      "basis": "2026-11-24",
+      "kurs": 0.9174900054931641,
+      "tage": 43,
+      "richtig": 21,
       "wechsel": 4
      },
      "Ruhige Phasen": {
       "konto": 9835.002650536013,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 0.920229971408844,
-      "tage": 42,
-      "richtig": 21,
+      "basis": "2026-11-24",
+      "kurs": 0.9174900054931641,
+      "tage": 43,
+      "richtig": 22,
       "wechsel": 2
      }
     }
    },
    "GC=F": {
     "halten": {
-     "konto": 8514.993017207273,
-     "basis": "2026-11-23",
-     "kurs": 3682.5
+     "konto": 8394.985602122202,
+     "basis": "2026-11-24",
+     "kurs": 3630.60009765625
     },
     "stile": {
      "Trendfolge": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 3682.5,
-      "tage": 41,
-      "richtig": 31,
+      "basis": "2026-11-24",
+      "kurs": 3630.60009765625,
+      "tage": 42,
+      "richtig": 32,
       "wechsel": 0
      },
      "Momentum": {
       "konto": 9481.940528552135,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 3682.5,
-      "tage": 41,
-      "richtig": 22,
+      "basis": "2026-11-24",
+      "kurs": 3630.60009765625,
+      "tage": 42,
+      "richtig": 23,
       "wechsel": 6
      },
      "Ausbruch (Turtle)": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 3682.5,
-      "tage": 41,
-      "richtig": 31,
+      "basis": "2026-11-24",
+      "kurs": 3630.60009765625,
+      "tage": 42,
+      "richtig": 32,
       "wechsel": 0
      },
      "Mean Reversion": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 3682.5,
-      "tage": 41,
-      "richtig": 31,
+      "basis": "2026-11-24",
+      "kurs": 3630.60009765625,
+      "tage": 42,
+      "richtig": 32,
       "wechsel": 0
      },
      "Buy the Dip": {
-      "konto": 9436.737102800214,
+      "konto": 9303.738940117533,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 3682.5,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 3630.60009765625,
+      "tage": 42,
       "richtig": 27,
       "wechsel": 1
      },
      "Swing": {
       "konto": 9829.084495084608,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 3682.5,
-      "tage": 41,
-      "richtig": 30,
+      "basis": "2026-11-24",
+      "kurs": 3630.60009765625,
+      "tage": 42,
+      "richtig": 31,
       "wechsel": 10
      },
      "Saison: Sell in May": {
-      "konto": 9395.524198697483,
+      "konto": 9263.106876666054,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 3682.5,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 3630.60009765625,
+      "tage": 42,
       "richtig": 24,
       "wechsel": 1
      },
      "Monatswechsel": {
       "konto": 10290.979763704023,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 3682.5,
-      "tage": 41,
-      "richtig": 30,
+      "basis": "2026-11-24",
+      "kurs": 3630.60009765625,
+      "tage": 42,
+      "richtig": 31,
       "wechsel": 4
      },
      "Ruhige Phasen": {
       "konto": 8248.222855565537,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 3682.5,
-      "tage": 41,
-      "richtig": 9,
+      "basis": "2026-11-24",
+      "kurs": 3630.60009765625,
+      "tage": 42,
+      "richtig": 10,
       "wechsel": 2
      }
     }
    },
    "SI=F": {
     "halten": {
-     "konto": 6748.518329294117,
-     "basis": "2026-11-23",
-     "kurs": 43.709999084472656
+     "konto": 6516.928814172459,
+     "basis": "2026-11-24",
+     "kurs": 42.209999084472656
     },
     "stile": {
      "Trendfolge": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 43.709999084472656,
-      "tage": 41,
-      "richtig": 26,
+      "basis": "2026-11-24",
+      "kurs": 42.209999084472656,
+      "tage": 42,
+      "richtig": 27,
       "wechsel": 0
      },
      "Momentum": {
       "konto": 7708.846010604985,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 43.709999084472656,
-      "tage": 41,
-      "richtig": 17,
+      "basis": "2026-11-24",
+      "kurs": 42.209999084472656,
+      "tage": 42,
+      "richtig": 18,
       "wechsel": 2
      },
      "Ausbruch (Turtle)": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 43.709999084472656,
-      "tage": 41,
-      "richtig": 26,
+      "basis": "2026-11-24",
+      "kurs": 42.209999084472656,
+      "tage": 42,
+      "richtig": 27,
       "wechsel": 0
      },
      "Mean Reversion": {
       "konto": 10000.0,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 43.709999084472656,
-      "tage": 41,
-      "richtig": 26,
+      "basis": "2026-11-24",
+      "kurs": 42.209999084472656,
+      "tage": 42,
+      "richtig": 27,
       "wechsel": 0
      },
      "Buy the Dip": {
-      "konto": 6748.518329294117,
+      "konto": 6516.928814172459,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 43.709999084472656,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 42.209999084472656,
+      "tage": 42,
       "richtig": 15,
       "wechsel": 1
      },
      "Swing": {
       "konto": 9901.05455501427,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 43.709999084472656,
-      "tage": 41,
-      "richtig": 27,
+      "basis": "2026-11-24",
+      "kurs": 42.209999084472656,
+      "tage": 42,
+      "richtig": 28,
       "wechsel": 10
      },
      "Saison: Sell in May": {
-      "konto": 8682.896856322377,
+      "konto": 8384.925097976808,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 43.709999084472656,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 42.209999084472656,
+      "tage": 42,
       "richtig": 23,
       "wechsel": 1
      },
      "Monatswechsel": {
       "konto": 10491.857406592637,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 43.709999084472656,
-      "tage": 41,
-      "richtig": 27,
+      "basis": "2026-11-24",
+      "kurs": 42.209999084472656,
+      "tage": 42,
+      "richtig": 28,
       "wechsel": 4
      },
      "Ruhige Phasen": {
-      "konto": 6748.518329294117,
+      "konto": 6516.928814172459,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 43.709999084472656,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 42.209999084472656,
+      "tage": 42,
       "richtig": 15,
       "wechsel": 1
      }
@@ -9558,89 +9642,89 @@
    },
    "CL=F": {
     "halten": {
-     "konto": 8882.406404722738,
-     "basis": "2026-11-23",
-     "kurs": 82.04000091552734
+     "konto": 8816.36211818195,
+     "basis": "2026-11-24",
+     "kurs": 81.43000030517578
     },
     "stile": {
      "Trendfolge": {
-      "konto": 8882.406404722738,
+      "konto": 8816.36211818195,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 82.04000091552734,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 81.43000030517578,
+      "tage": 42,
       "richtig": 18,
       "wechsel": 1
      },
      "Momentum": {
-      "konto": 8882.406404722738,
+      "konto": 8816.36211818195,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 82.04000091552734,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 81.43000030517578,
+      "tage": 42,
       "richtig": 18,
       "wechsel": 1
      },
      "Ausbruch (Turtle)": {
       "konto": 9758.60561699776,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 82.04000091552734,
-      "tage": 41,
-      "richtig": 23,
+      "basis": "2026-11-24",
+      "kurs": 81.43000030517578,
+      "tage": 42,
+      "richtig": 24,
       "wechsel": 4
      },
      "Mean Reversion": {
       "konto": 9575.249058009531,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 82.04000091552734,
-      "tage": 41,
-      "richtig": 22,
+      "basis": "2026-11-24",
+      "kurs": 81.43000030517578,
+      "tage": 42,
+      "richtig": 23,
       "wechsel": 6
      },
      "Buy the Dip": {
-      "konto": 8291.315298547874,
+      "konto": 8229.666013610162,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 82.04000091552734,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 81.43000030517578,
+      "tage": 42,
       "richtig": 15,
       "wechsel": 3
      },
      "Swing": {
       "konto": 9584.207889975272,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 82.04000091552734,
-      "tage": 41,
-      "richtig": 22,
+      "basis": "2026-11-24",
+      "kurs": 81.43000030517578,
+      "tage": 42,
+      "richtig": 23,
       "wechsel": 6
      },
      "Saison: Sell in May": {
-      "konto": 8204.82144512908,
+      "konto": 8143.815276997662,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 82.04000091552734,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 81.43000030517578,
+      "tage": 42,
       "richtig": 14,
       "wechsel": 1
      },
      "Monatswechsel": {
       "konto": 9573.677098734577,
       "pos": 0,
-      "basis": "2026-11-23",
-      "kurs": 82.04000091552734,
-      "tage": 41,
-      "richtig": 22,
+      "basis": "2026-11-24",
+      "kurs": 81.43000030517578,
+      "tage": 42,
+      "richtig": 23,
       "wechsel": 4
      },
      "Ruhige Phasen": {
-      "konto": 8882.406404722738,
+      "konto": 8816.36211818195,
       "pos": 1,
-      "basis": "2026-11-23",
-      "kurs": 82.04000091552734,
-      "tage": 41,
+      "basis": "2026-11-24",
+      "kurs": 81.43000030517578,
+      "tage": 42,
       "richtig": 18,
       "wechsel": 1
      }
@@ -9649,52 +9733,52 @@
   },
   "gesamt": {
    "Trendfolge": {
-    "konto": 75520.02,
-    "tage": 347,
-    "richtig": 181
+    "konto": 75202.92,
+    "tage": 355,
+    "richtig": 185
    },
    "Momentum": {
-    "konto": 74461.78,
-    "tage": 347,
-    "richtig": 173
+    "konto": 74580.84,
+    "tage": 355,
+    "richtig": 179
    },
    "Ausbruch (Turtle)": {
-    "konto": 79387.19,
-    "tage": 347,
-    "richtig": 196
+    "konto": 79591.68,
+    "tage": 355,
+    "richtig": 204
    },
    "Mean Reversion": {
-    "konto": 79914.86,
-    "tage": 347,
-    "richtig": 199
+    "konto": 80114.2,
+    "tage": 355,
+    "richtig": 207
    },
    "Buy the Dip": {
-    "konto": 72796.65,
-    "tage": 347,
-    "richtig": 150
+    "konto": 71917.25,
+    "tage": 355,
+    "richtig": 151
    },
    "Swing": {
     "konto": 78389.72,
-    "tage": 347,
-    "richtig": 189
+    "tage": 355,
+    "richtig": 195
    },
    "Saison: Sell in May": {
-    "konto": 73905.83,
-    "tage": 347,
-    "richtig": 149
+    "konto": 73136.8,
+    "tage": 355,
+    "richtig": 151
    },
    "Monatswechsel": {
     "konto": 80386.27,
-    "tage": 347,
-    "richtig": 190
+    "tage": 355,
+    "richtig": 196
    },
    "Ruhige Phasen": {
-    "konto": 72980.92,
-    "tage": 347,
-    "richtig": 167
+    "konto": 72840.57,
+    "tage": 355,
+    "richtig": 172
    }
   },
-  "halten_chf": 72248.14
+  "halten_chf": 71600.76
  },
  "verlauf": [
   {
@@ -10044,6 +10128,12 @@
    "bot": 76015.8,
    "halten": 72247.25,
    "daytrading": 132553.67
+  },
+  {
+   "datum": "2026-11-24",
+   "bot": 76217.35,
+   "halten": 71604.03,
+   "daytrading": 132324.42
   }
  ]
 }
