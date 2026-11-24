@@ -1407,3 +1407,79 @@ velotaschen-rucksaecke	ok	29	Velotaschen & Fahrradrucksäcke
 velotaschen-heck-gepaecktraeger	ok	21	Heck- & Gepäckträgertaschen
 velotaschen-fahrradrucksaecke	ok	29	Fahrradrucksäcke
 velo-werkzeug-reparatur	ok	24	Velo-Werkzeug & Reparatur
+velo-teile-zubehoer	ok	29	Velo-Teile & Zubehör
+velo-teile-saettel-komponenten	ok	24	Sättel & Komponenten
+boxen-kampfsport	ok	29	Boxen & Kampfsport
+ballsport-teamsport	ok	27	Fussball, Basketball & Ballsport
+schlagsport-tischtennis-tennis	ok	29	Tischtennis, Tennis & Badminton
+golf-billard	ok	26	Golf & Billard
+sport-schutzausruestung	ok	29	Sporthelme & Schutzausrüstung
+sport-schutzausruestung-helme	ok	29	Helme
+gesichtscreme-serum	ok	29	Gesichtscreme, Serum & Öl
+serum-essenzen-gesicht	ok	29	Seren & Essenzen
+gesichtscremes-lotionen	ok	29	Cremes & Lotionen
+gesichtsmasken-peelings	ok	29	Gesichtsmasken & Peelings
+gesichtsreinigung-toner	ok	29	Gesichtsreinigung & Toner
+hautpflege-sets	ok	29	Hautpflege-Sets & Geschenkboxen
+lippenpflege	ok	29	Lippenpflege
+sonnenschutz-braeunung	ok	20	Sonnenschutz & Selbstbräuner
+augen-make-up	ok	29	Augen-Make-up
+lidschatten-paletten	ok	29	Lidschatten & Paletten
+eyeliner-kajal	ok	29	Eyeliner & Augenstifte
+mascara-wimperntusche	ok	29	Mascara
+augenbrauen-wimpernpflege	ok	29	Augenbrauen & Wimpernserum
+kuenstliche-wimpern	ok	29	Künstliche Wimpern
+magnetische-wimpern	ok	29	Magnetische Wimpern
+wimpern-cluster-diy	ok	28	Cluster & DIY-Wimpern
+lippen-make-up	ok	29	Lippenstift & Lipgloss
+lippenstifte	ok	29	Lippenstifte
+lipgloss-lipglaze	ok	29	Lipgloss & Lip Glaze
+teint-make-up	ok	29	Foundation, Rouge & Puder
+foundation-concealer	ok	29	Foundation & Concealer
+rouge-bronzer-highlighter	ok	29	Rouge, Bronzer & Highlighter
+puder-fixierspray	ok	29	Puder & Fixierspray
+make-up-sets	ok	29	Make-up-Sets & Paletten
+nagellack-gel-lack	ok	29	Nagellack & Gel-Lack
+nagelsticker-nail-art	ok	29	Nagelsticker & Nail Art
+nagelsticker-folien	ok	29	Nagelsticker & Folien
+nail-art-stifte-pinsel	ok	29	Stifte, Pinsel & Stempel
+nagelschmuck-strass	ok	29	Strass & Nagelschmuck
+nagelverlaengerung-gel	ok	29	Nagelverlängerung & Modellage
+nagellampen-fraeser	ok	29	Nagellampen & Nagelfräser
+nagellampen-uv-led	ok	29	UV-/LED-Nagellampen
+nagelfraeser-polierer	ok	29	Nagelfräser & Polierer
+nagelpflege-werkzeuge	ok	29	Nagelpflege & Maniküre-Zubehör
+nagelknipser-trimmer	ok	22	Nagelknipser
+manikuere-sets	ok	29	Maniküre- & Pediküre-Sets
+nagelpflege-stifte-oele	ok	25	Nagelpflege-Stifte & Öle
+glaetteisen-locken-foehn	ok	29	Glätteisen, Lockenstäbe & Föhne
+glaetteisen-glaettkaemme	ok	29	Glätteisen & Glättkämme
+lockenstaebe-curler	ok	29	Lockenstäbe & Curler
+haartrockner-warmluft	ok	29	Haartrockner & Warmluftbürsten
+haarpflege-oele-shampoo	ok	29	Haarpflege, Haaröl & Haarfarbe
+haarschneider-trimmer	ok	29	Haarschneider & Trimmer
+haarentfernung-epilierer	ok	25	Haarentfernung & Epilierer
+led-masken-lichtgeraete	ok	29	LED-Masken & Lichtgeräte
+gesichtsreinigungsgeraete	ok	29	Gesichtsreinigungsgeräte & -bürsten
+porenreiniger-mitesser	ok	29	Porenreiniger & Mitesser-Entferner
+gesichtsdampfer-nanospray	ok	29	Gesichtsdampfer & Nano-Sprayer
+gua-sha-gesichtsroller	ok	22	Gua Sha & Gesichtsroller
+mikrostrom-lifting-geraete	ok	29	Mikrostrom-, EMS- & Ultraschallgeräte
+koerperpflege-bad	ok	29	Körperpflege & Bad
+fusspflege	ok	25	Fusspflege
+nacken-ruecken-massagegeraete	ok	29	Nacken-, Schulter- & Rückenmassage
+augenmassagegeraete	ok	29	Augenmassagegeräte
+faszien-massagepistolen	ok	29	Massagepistolen, Faszienbälle & Roller
+massagekissen-matten	ok	25	Massagekissen & Massagematten
+gesichts-kopf-massagegeraete	ok	29	Gesichts-, Kopf- & Körpermassage
+schlafmasken-nackenkissen	ok	29	Schlafmasken, Reisekissen & Schlafhilfen
+schlafmasken-augenmasken	ok	21	Schlafmasken
+reisekissen	ok	22	Reisekissen & Nackenkissen
+haltungsgurte-ruecken	ok	27	Haltungsgurte & Rückenstützen
+bandagen-gelenkstuetzen	ok	29	Bandagen & Gelenkstützen
+lendenstuetzen-rueckenkissen	ok	29	Lendenkissen & Lordosenstützen
+heizkissen-waermegurte	ok	27	Heizkissen & Wärmegürtel
+gesundheit-alltagshilfen	ok	29	Alltagshilfen & Gesundheitszubehör
+brillen-brillenzubehoer	ok	29	Brillen & Brillenzubehör
+tier-leinen	ok	29	Hundeleinen & Katzenleinen
+tier-leinen-roll	ok	29	Roll- & ausziehbare Leinen

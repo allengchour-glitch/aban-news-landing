@@ -178,3 +178,17 @@ gid://shopify/Product/16656524280199	2026-10-22	Schuhe
 gid://shopify/Product/16656714203527	2026-10-22	Uhren
 gid://shopify/Product/16604931948935	2026-10-22	Smartwatches & Wearables
 gid://shopify/Product/16617712124295	2026-10-24	Küche & Kochen
+gid://shopify/Product/16732105277831	2026-11-24	Damen-Mode
+gid://shopify/Product/16732291203463	2026-11-24	Herren-Mode
+gid://shopify/Product/16732148793735	2026-11-24	Schuhe
+gid://shopify/Product/15421171859841	2026-11-24	Premium Schmuck
+gid://shopify/Product/16656725672327	2026-11-24	Uhren
+gid://shopify/Product/16732488008071	2026-11-24	Wohnen & Dekoration
+gid://shopify/Product/16732205744519	2026-11-24	Elektronik & Technik
+gid://shopify/Product/16612780016007	2026-11-24	Smartwatches & Wearables
+gid://shopify/Product/15496862957953	2026-11-24	Gaming
+gid://shopify/Product/16615816757639	2026-11-24	Haustierwelt
+gid://shopify/Product/16732220031367	2026-11-24	Kinder & Baby
+gid://shopify/Product/16732279636359	2026-11-24	Spielzeug & Plüsch
+gid://shopify/Product/16616667185543	2026-11-24	Sport, Fitness & Outdoor
+gid://shopify/Product/16656672424327	2026-11-24	Taschen & Rucksäcke
