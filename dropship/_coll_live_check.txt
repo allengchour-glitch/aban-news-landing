@@ -1608,3 +1608,27 @@ bar-weinzubehoer	ok	29	Bar- & Weinzubehör
 bar-wein-weinzubehoer	ok	29	Wein-Zubehör
 bar-wein-cocktail	ok	29	Cocktail- & Bar-Zubehör
 teller-schalen-geschirrsets	ok	29	Teller, Schalen & Geschirrsets
+teller-schalen-teller	ok	29	Teller
+teller-schalen-schalen	ok	29	Schalen & Schüsseln
+teller-schalen-sets	ok	29	Geschirrsets
+servierplatten-etageren	ok	29	Servierplatten, Tabletts & Etageren
+servierplatten-tabletts	ok	29	Tabletts
+servierplatten-platten	ok	29	Servierplatten & Teller
+servierplatten-holz	ok	29	Holz & Bambus
+besteck-essstaebchen	ok	29	Besteck & Essstäbchen
+besteck-essstaebchen-sets	ok	29	Besteck-Sets
+tischdecken-schuerzen	ok	29	Tischdecken, Platzsets & Schürzen
+tischdecken-schuerzen-schuerzen	ok	26	Schürzen
+tischdecken-schuerzen-tischdecken-laeufer	ok	29	Tischdecken & Läufer
+lunchboxen-kuehltaschen	ok	29	Lunchboxen & Kühltaschen
+lunchboxen-bento	ok	29	Lunchboxen & Bento
+lunchboxen-kuehltaschen-picknick	ok	26	Kühltaschen & Picknick
+reinigungsmittel-buersten-mopps	ok	29	Putzen & Reinigen
+reinigung-buersten	ok	28	Bürsten
+reinigung-mopps-tuecher	ok	28	Mopps, Besen & Tücher
+reinigung-reiniger-sprays	ok	29	Reiniger & Sprays
+staubsauger-zubehoer	ok	29	Staubsauger & Zubehör
+staubsauger-saugroboter	ok	29	Saugroboter
+staubsauger-handstaubsauger	ok	29	Handstaubsauger & Zubehör
+desinfektion-reinigungsgeraete	ok	25	Desinfektions- & Reinigungsgeräte
+waesche-buegeln-fusselentferner	ok	29	Wäsche, Bügeln & Fusselentferner

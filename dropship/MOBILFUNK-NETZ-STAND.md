@@ -369,3 +369,9 @@
 |---|---|---|
 | unklar-sim | Anruf/Video ohne Netzangabe | [Smartwatch mit Bluetooth-Anruf, GPS & Herzfrequenz](https://luxestyle.ch/products/smartwatch-mit-bluetooth-anruf-gps-herzfrequen-614800) |
 | unklar-sim | SIM ohne Netz | [Mobiler Smart-Router ohne SIM-Karte](https://luxestyle.ch/products/mobiler-smart-router-ohne-sim-karte-620500) |
+
+## Lauf 2026-11-24 06:18 UTC
+
+| Urteil | Beleg | Produkt |
+|---|---|---|
+| unklar |  | [Schlüsselanhänger mit integriertem Locator](https://luxestyle.ch/products/schlusselanhanger-mit-integriertem-locator-601100) |
