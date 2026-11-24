@@ -8609,3 +8609,5 @@ gid://shopify/Product/15496372420993	bild-urls-tot
 gid://shopify/Product/15496372945281	bild-urls-tot
 gid://shopify/Product/15496373109121	bild-urls-tot
 gid://shopify/Product/15496378188161	bild-urls-tot
+gid://shopify/Product/15486307631489	zugeordnet	50	Samt-Top mit Kapuze und Kordelzug
+gid://shopify/Product/15486308319617	zugeordnet	6	Retro-Sweatshirt mit Streifen und Stickerei
