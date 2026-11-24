@@ -3,10 +3,6 @@
   "status": "CLOSED",
   "tracking": "06086397533485"
  },
- "LX1016": {
-  "status": "TRASH",
-  "tracking": ""
- },
  "LX1019": {
   "status": "TRASH",
   "tracking": ""
@@ -90,6 +86,10 @@
  "LX1044": {
   "status": "UNSHIPPED",
   "tracking": "EQKPT8613442800YQ"
+ },
+ "LX1045": {
+  "status": "UNSHIPPED",
+  "tracking": "YT2632800708577403"
  },
  "#1024": {
   "status": "MANUELL_MISTER_DTF_BESTELLT",
