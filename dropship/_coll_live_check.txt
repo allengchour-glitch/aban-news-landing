@@ -1506,3 +1506,105 @@ tier-naepfe-edelstahl	ok	29	Edelstahlnäpfe
 tier-naepfe-doppel	ok	29	Doppelnäpfe
 tier-naepfe-faltbar	ok	29	Faltbare Reisenäpfe & Trinkflaschen
 tier-futterautomaten	ok	30	Futterautomaten & Futterspender
+tier-futterautomaten-smart	ok	29	Mit App oder Kamera
+tier-trinkbrunnen	ok	29	Trinkbrunnen & Wasserspender
+tier-anti-schling	ok	29	Anti-Schling-Näpfe & Leckmatten
+tier-erhoehte-naepfe	ok	29	Erhöhte Näpfe & Futterstationen
+tier-napfzubehoer	ok	29	Napf-Zubehör & Futterbehälter
+tier-katzenspielzeug	ok	29	Katzenspielzeug
+tier-katzenspielzeug-elektrisch	ok	29	Elektrisches & interaktives Spielzeug
+tier-katzenspielzeug-feder	ok	29	Federangeln & Teaser
+tier-katzenspielzeug-minze	ok	22	Katzenminze-Spielzeug
+tier-kauspielzeug	ok	29	Kau-, Beiss- & Zerrspielzeug
+tier-baelle	ok	29	Bälle & Wurfspielzeug
+tier-plueschspielzeug	ok	29	Plüsch- & Quietschspielzeug
+tier-intelligenzspielzeug	ok	29	Intelligenz- & Schnüffelspielzeug
+tier-interaktives-spielzeug	ok	29	Interaktives & elektrisches Spielzeug
+tier-weiteres-spielzeug	ok	29	Weiteres Spielzeug & Spielsets
+tier-pullover	ok	29	Pullover, Strick & Hoodies
+tier-pullover-katzen	ok	22	Katzenpullover
+tier-pullover-hoodies	ok	20	Pullover & Hoodies für Haustiere
+tier-maentel-jacken	ok	28	Mäntel, Jacken & Westen
+tier-maentel-regen	ok	23	Regenjacken & wasserdichte Mäntel
+tier-maentel-winter	ok	29	Winterjacken & warme Mäntel
+tier-kleider-shirts	ok	29	Kleider, Shirts & Schlafanzüge
+tier-accessoires	ok	29	Accessoires & Schuhe
+tier-betten-koerbe	ok	29	Betten, Matten & Decken
+tier-betten-katzen	ok	29	Betten & Nester für Katzen
+tier-betten-hunde	ok	28	Betten & Matten für Hunde
+tier-betten-matten	ok	21	Matten, Decken & Kissen
+tier-kratzmoebel	ok	29	Kratzbäume, Kratzbretter & Kletterwände
+tier-kratz-baeume	ok	29	Kratzbäume
+tier-kratz-bretter	ok	23	Kratzbretter & -matten
+tier-pflege	ok	29	Fell-, Krallen- & Zahnpflege
+tier-toilette-hygiene	ok	25	Katzentoiletten, Streu & Kotbeutel
+tier-halskrausen	ok	29	Halskrausen & Schutzkragen
+tier-hilfsmittel	ok	29	Gehhilfen & Hilfsmittel
+tier-kleintiere-voegel	ok	23	Kleintiere, Vögel & Reptilien
+pfannen-woks	ok	29	Pfannen & Woks
+pfannen-woks-bratpfannen	ok	29	Bratpfannen
+pfannen-woks-woks	ok	22	Woks
+pfannen-woks-omelett	ok	25	Omelett- & Crêpe-Pfannen
+pfannen-woks-antihaft	ok	29	Antihaft
+toepfe-kochgeschirr-sets	ok	29	Töpfe & Kochgeschirr-Sets
+toepfe-kochgeschirr-suppentoepfe	ok	29	Koch- & Suppentöpfe
+toepfe-kochgeschirr-schmoertoepfe	ok	21	Schmor- & Gusseisentöpfe
+toepfe-kochgeschirr-sets-sets	ok	23	Kochgeschirr-Sets
+backformen-backbleche	ok	29	Backformen & Backbleche
+backformen-silikonformen	ok	29	Silikonformen
+backformen-kuchenformen	ok	29	Kuchen- & Brotformen
+kuechenformen-tortendeko	ok	29	Formen, Teigroller & Tortendeko
+kuechenformen-eiswuerfel	ok	22	Eiswürfel- & Eisformen
+kuechenformen-tortendeko-tuellen	ok	23	Tortendeko & Spritztüllen
+kuechenformen-burger-sushi	ok	25	Burger-, Sushi- & Pralinenformen
+grillpfannen-elektrogrills	ok	27	Grillpfannen & Elektrogrills
+schneidebretter-bretter	ok	29	Schneidebretter
+schneidebretter-holz-bambus	ok	29	Holz & Bambus
+schneidebretter-edelstahl-titan	ok	26	Edelstahl & Titan
+schneiden-reiben-schaelen	ok	29	Gemüseschneider, Schäler & Reiben
+schneiden-gemuesehobel	ok	29	Gemüseschneider & Hobel
+schneiden-schaeler	ok	25	Schäler & Entkerner
+schneiden-reiben-pressen-scheren	ok	29	Reiben, Pressen & Scheren
+kochutensilien-sets	ok	29	Kochlöffel, Zangen & Utensilien-Sets
+kochutensilien-silikon	ok	29	Silikon-Sets
+kochutensilien-holz	ok	28	Holz & Bambus
+kochutensilien-zangen-kellen	ok	24	Zangen, Wender & Kellen
+kochutensilien-edelstahl	ok	20	Edelstahl
+siebe-muehlen-messhilfen	ok	29	Siebe, Mühlen & Messhilfen
+siebe-muehlen-pfeffermuehlen	ok	27	Salz- & Pfeffermühlen
+siebe-muehlen-siebe	ok	26	Siebe & Abtropfkörbe
+siebe-muehlen-messbecher	ok	22	Messbecher, Thermometer & Timer
+siebe-muehlen-oelspender	ok	22	Öl- & Essigspender, Mörser
+kuechengadgets	ok	29	Küchengadgets
+kuechenwaagen-feinwaagen	ok	22	Küchen- & Feinwaagen
+mixer-entsafter-zerkleinerer	ok	29	Mixer, Entsafter & Zerkleinerer
+mixer-entsafter-entsafter	ok	29	Entsafter & Saftpressen
+mixer-entsafter-mixer	ok	26	Mixer & Blender
+mixer-entsafter-fleischwolf	ok	29	Fleischwölfe & Zerkleinerer
+fritteusen-kochfelder-oefen	ok	29	Fritteusen, Kochfelder & Öfen
+reiskocher-dampfgarer	ok	29	Reiskocher, Dampfgarer & Eierkocher
+waffeleisen-sandwichmaker-toaster	ok	29	Waffeleisen, Sandwichmaker & Toaster
+nudel-eis-snackmaschinen	ok	29	Nudel-, Eis- & Snackmaschinen
+kuechengeraete-weitere	ok	29	Weitere Küchengeräte
+kuechengeraete-zubehoer	ok	28	Zubehör für Küchengeräte
+messerschaerfer	ok	29	Messerschärfer
+wasserkocher-kaffeemaschinen	ok	29	Wasserkocher, Kaffeemaschinen & Mühlen
+wasserkocher-kaffee-wasserkocher	ok	22	Wasserkocher & Warmhalten
+wasserkocher-kaffee-muehlen	ok	21	Kaffeemühlen
+wasserkocher-kaffee-zubehoer	ok	29	Kaffee-Zubehör & Filter
+teekannen-kaffeeservice	ok	29	Teekannen, Tee- & Kaffeeservice
+tassen-kaffeebecher	ok	29	Tassen & Kaffeebecher
+tassen-kaffeebecher-motive	ok	29	Schweizer Motiv-Tassen
+tassen-kaffeebecher-keramik	ok	29	Keramik & Porzellan
+tassen-kaffeebecher-tee-kaffee	ok	29	Tee- & Kaffeetassen
+thermobecher-trinkbecher	ok	29	Thermobecher & Trinkbecher
+thermobecher-isoliert	ok	29	Isolierbecher aus Edelstahl
+thermobecher-strohhalm	ok	21	Becher mit Strohhalm
+trinkflaschen-thermosflaschen	ok	29	Trinkflaschen & Thermosflaschen
+trinkflaschen-thermos	ok	29	Thermos- & Isolierflaschen
+trinkflaschen-sport	ok	23	Sport & Outdoor
+trinkflaschen-strohhalm-tee	ok	27	Mit Strohhalm oder Teesieb
+bar-weinzubehoer	ok	29	Bar- & Weinzubehör
+bar-wein-weinzubehoer	ok	29	Wein-Zubehör
+bar-wein-cocktail	ok	29	Cocktail- & Bar-Zubehör
+teller-schalen-geschirrsets	ok	29	Teller, Schalen & Geschirrsets
