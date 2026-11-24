@@ -1668,3 +1668,8 @@ vorhaenge-gardinen-rollos	ok	29	Vorhänge, Gardinen & Rollos
 vorhaenge-verdunkelung	ok	29	Verdunkelungsvorhänge
 vorhaenge-gardinen-voile	ok	23	Gardinen & Voile
 vorhaenge-samt-leinen	http-429	0	Samt, Chenille & Leinen
+wandbilder-wanddeko	ok	29	Wandbilder & Wanddeko
+wandbilder-uf-leinwand	ok	29	Leinwandbilder & Gemälde
+wandbilder-uf-poster	http-429	0	Poster & Kunstdrucke
+wandbilder-uf-metall	ok	22	Metall-Wanddeko
+wandteppiche-wandbehaenge	ok	29	Wandteppiche & Wandbehänge
