@@ -97,8 +97,9 @@ def vergleich(p):
     kurz = re.sub(r'\s+', ' ', kurz).strip()[:300]
     prompt = (f"Our product: '{titel}'. Short description: {kurz!r}. On this page find the single offer most similar to our "
               "product. Return its name, its current price as a number, the currency (CHF or EUR or other), and whether it is "
-              "essentially the same kind of product (same product type, similar size/quantity/material; a premium brand "
-              "version of the same type still counts as same kind). If the page is a list, pick the closest item. "
+              "essentially the same kind of product (same product type, similar size/quantity/material). Designer, luxury or premium "
+              "outdoor brands (e.g. Moncler, Canada Goose, designer jewellery) are NOT the same kind for our no-name product: prefer a "
+              "comparable no-name or mid-range offer; if only luxury offers exist, set gleiche_art false. If the page is a list, pick the closest item. "
               "If there is no price, preis = null.")
     schema = {'type': 'object', 'properties': {'name': {'type': 'string'}, 'preis': {'type': ['number', 'null']},
               'waehrung': {'type': 'string'}, 'gleiche_art': {'type': 'boolean'}, 'shop': {'type': 'string'}},
