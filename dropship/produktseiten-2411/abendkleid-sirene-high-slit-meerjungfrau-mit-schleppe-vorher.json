@@ -1,0 +1,321 @@
+{
+ "id": "gid://shopify/Product/15412915110273",
+ "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+ "title": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17837999292801",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11803748893057",
+     "name": "Weinrot"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803748925825",
+     "name": "Weiss"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductOption/17837999325569",
+   "name": "Grösse",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11803748958593",
+     "name": "S"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803748991361",
+     "name": "M"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803749024129",
+     "name": "L"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11803749056897",
+     "name": "XL"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55747898114433",
+    "title": "Weinrot / S",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551982870913"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747898147201",
+    "title": "Weinrot / M",
+    "position": 2,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551982870913"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747898179969",
+    "title": "Weinrot / L",
+    "position": 3,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551982870913"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747898212737",
+    "title": "Weinrot / XL",
+    "position": 4,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551982870913"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747898245505",
+    "title": "Weiss / S",
+    "position": 5,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551982903681"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747898278273",
+    "title": "Weiss / M",
+    "position": 6,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551982903681"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747898311041",
+    "title": "Weiss / L",
+    "position": 7,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551982903681"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55747898343809",
+    "title": "Weiss / XL",
+    "position": 8,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69551982903681"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/69551982870913",
+    "mediaContentType": "IMAGE",
+    "alt": "Langes Abendkleid «Sirène» im Meerjungfrau-Schnitt mit High-Slit, Damen – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d83dfdec-8988-4191-bd19-31e3ed729ead.jpg?v=1780242313",
+     "width": 1252,
+     "height": 1920
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69551982903681",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d34cbed6-a861-4e5a-b20f-a75aa9a7adc1.jpg?v=1780242314",
+     "width": 1252,
+     "height": 1920
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552063218049",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/db8d3d8f-7fe6-41e9-ab70-ee756aaed201.jpg?v=1780245396",
+     "width": 1920,
+     "height": 1920
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552063250817",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1d558c46-81bf-4c6c-ba30-32ff5660f85e.jpg?v=1780245396",
+     "width": 1600,
+     "height": 1600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552063283585",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/124465ad-a188-47ed-8b06-2aa6bd9b24ba.jpg?v=1780245396",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552063316353",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c716d1f-43f0-45ed-a84f-1fdd3fedc130.jpg?v=1780245396",
+     "width": 1920,
+     "height": 1920
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552063349121",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5d22e697-91ed-404e-826f-18af81b9214d.jpg?v=1780245396",
+     "width": 1920,
+     "height": 1920
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69634308964737",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Sirène» – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/sirene_ccf6f785-07f9-4e77-bfda-05ceb2717d23.jpg?v=1780937178",
+     "width": 832,
+     "height": 1248
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650088132993",
+    "mediaContentType": "IMAGE",
+    "alt": "LuxeStyle-Edit · Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe-edit.jpg?v=1781097313",
+     "width": 1080,
+     "height": 1080
+    }
+   },
+   {
+    "id": "gid://shopify/Video/69682254840193",
+    "mediaContentType": "VIDEO"
+   }
+  ]
+ }
+}

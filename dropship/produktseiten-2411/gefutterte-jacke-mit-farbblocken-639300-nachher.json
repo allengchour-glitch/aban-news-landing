@@ -1,0 +1,18 @@
+{
+ "handle": "gefutterte-jacke-mit-farbblocken-639300",
+ "status": "geschrieben",
+ "medien_vorher": 13,
+ "medien_nachher": 6,
+ "erste_variante": "Dunkelkhaki / S",
+ "erstes_bild_erste_variante": "gid://shopify/MediaImage/77777998840199",
+ "infografik": null,
+ "entfernt": [
+  "gid://shopify/MediaImage/77777998250375",
+  "gid://shopify/MediaImage/77777998283143",
+  "gid://shopify/MediaImage/77777998315911",
+  "gid://shopify/MediaImage/77777998479751",
+  "gid://shopify/MediaImage/77777998348679",
+  "gid://shopify/MediaImage/77777998381447",
+  "gid://shopify/MediaImage/77777998414215"
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "handle": "led-wasserwellen-projektionsleuchte-677504",
+ "status": "geschrieben",
+ "medien_vorher": 17,
+ "medien_nachher": 15,
+ "erste_variante": "3W-16 Farben, Stecker quadratisch, 1 Stück",
+ "erstes_bild_erste_variante": null,
+ "infografik": null,
+ "entfernt": [
+  "gid://shopify/MediaImage/69887071584641",
+  "gid://shopify/MediaImage/69887071650177"
+ ]
+}

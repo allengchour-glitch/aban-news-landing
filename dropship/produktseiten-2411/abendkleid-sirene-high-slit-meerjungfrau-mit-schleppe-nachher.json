@@ -1,0 +1,14 @@
+{
+ "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+ "status": "geschrieben",
+ "medien_vorher": 10,
+ "medien_nachher": 7,
+ "erste_variante": "Weinrot / S",
+ "erstes_bild_erste_variante": "gid://shopify/MediaImage/69551982870913",
+ "infografik": null,
+ "entfernt": [
+  "gid://shopify/MediaImage/69552063250817",
+  "gid://shopify/MediaImage/69552063349121",
+  "gid://shopify/MediaImage/69650088132993"
+ ]
+}

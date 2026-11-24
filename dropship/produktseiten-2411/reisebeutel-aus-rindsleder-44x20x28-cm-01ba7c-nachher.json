@@ -1,0 +1,12 @@
+{
+ "handle": "reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c",
+ "status": "geschrieben",
+ "medien_vorher": 5,
+ "medien_nachher": 4,
+ "erste_variante": "Default Title",
+ "erstes_bild_erste_variante": null,
+ "infografik": null,
+ "entfernt": [
+  "gid://shopify/MediaImage/77769105506695"
+ ]
+}

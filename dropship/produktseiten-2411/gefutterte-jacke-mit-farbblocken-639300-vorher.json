@@ -1,0 +1,725 @@
+{
+ "id": "gid://shopify/Product/16652069667207",
+ "handle": "gefutterte-jacke-mit-farbblocken-639300",
+ "title": "Gefütterte Jacke mit Farbblöcken",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/19606138814855",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161531271",
+     "name": "Schwarz"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161564039",
+     "name": "Aprikose"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161596807",
+     "name": "Grau"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161629575",
+     "name": "Dunkelkhaki"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductOption/19606138847623",
+   "name": "Grösse",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161662343",
+     "name": "S"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161695111",
+     "name": "M"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161727879",
+     "name": "L"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161760647",
+     "name": "XL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161793415",
+     "name": "XXL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/58502161826183",
+     "name": "XXXL"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67737637454215",
+    "title": "Schwarz / S",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998741895"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637486983",
+    "title": "Schwarz / M",
+    "position": 2,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998741895"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637519751",
+    "title": "Schwarz / L",
+    "position": 3,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998741895"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637552519",
+    "title": "Schwarz / XL",
+    "position": 4,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998741895"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637585287",
+    "title": "Schwarz / XXL",
+    "position": 5,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998741895"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637618055",
+    "title": "Schwarz / XXXL",
+    "position": 6,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998741895"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637650823",
+    "title": "Aprikose / S",
+    "position": 7,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998774663"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637683591",
+    "title": "Aprikose / M",
+    "position": 8,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998774663"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637716359",
+    "title": "Aprikose / L",
+    "position": 9,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998774663"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637749127",
+    "title": "Aprikose / XL",
+    "position": 10,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998774663"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637781895",
+    "title": "Aprikose / XXL",
+    "position": 11,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998774663"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637814663",
+    "title": "Aprikose / XXXL",
+    "position": 12,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998774663"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637847431",
+    "title": "Grau / S",
+    "position": 13,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grau"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998807431"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637880199",
+    "title": "Grau / M",
+    "position": 14,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grau"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998807431"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637912967",
+    "title": "Grau / L",
+    "position": 15,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grau"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998807431"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637945735",
+    "title": "Grau / XL",
+    "position": 16,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998807431"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737637978503",
+    "title": "Grau / XXL",
+    "position": 17,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998807431"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737638011271",
+    "title": "Grau / XXXL",
+    "position": 18,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998807431"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737638044039",
+    "title": "Dunkelkhaki / S",
+    "position": 19,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelkhaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998840199"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737638076807",
+    "title": "Dunkelkhaki / M",
+    "position": 20,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelkhaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998840199"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737638109575",
+    "title": "Dunkelkhaki / L",
+    "position": 21,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelkhaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998840199"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737638142343",
+    "title": "Dunkelkhaki / XL",
+    "position": 22,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelkhaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998840199"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737638175111",
+    "title": "Dunkelkhaki / XXL",
+    "position": 23,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelkhaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998840199"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67737638207879",
+    "title": "Dunkelkhaki / XXXL",
+    "position": 24,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Dunkelkhaki"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77777998840199"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/77777998086535",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0e1f3967-199e-4b3d-ab9b-4da30c04cb65.png?v=1792375080",
+     "width": 522,
+     "height": 522
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998250375",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 2 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f5a0090d-fd2b-4b2c-bc40-3c14baf1520c.jpg?v=1792375091",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998283143",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 3 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2b00835c-d1f8-4335-bdd7-f1a5a24a0eaa.jpg?v=1792375091",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998315911",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 4 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5cacb92-59ed-4401-a116-9345ae4f39bb.jpg?v=1792375091",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998348679",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 5 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3c499491-f196-45f3-a25b-e1db3d728d51.jpg?v=1792375091",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998381447",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 6 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3ac23148-448e-45ce-9d1d-fd5126e4955f.jpg?v=1792375091",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998414215",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 7 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8e5d598f-b322-4a09-9a24-cae73d4b241e.jpg?v=1792375091",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998446983",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 8 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3cf64a4c-7b87-43f2-a6d8-4084e4de5151.jpg?v=1792375091",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998479751",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 9 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/91d25bdc-4148-49b8-a797-81f5bbb0b55c.jpg?v=1792375091",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998741895",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 10 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2b00835c-d1f8-4335-bdd7-f1a5a24a0eaa_7ee1deab-9679-4832-8418-dfcb4ffc8127.jpg?v=1792375135",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998774663",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 11 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/91d25bdc-4148-49b8-a797-81f5bbb0b55c_951edbdb-1d18-466b-aac1-654ab1fd96c7.jpg?v=1792375135",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998807431",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 12 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5cacb92-59ed-4401-a116-9345ae4f39bb_14ae5d05-396e-46d7-ad6a-4b5f96d2fca5.jpg?v=1792375135",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77777998840199",
+    "mediaContentType": "IMAGE",
+    "alt": "Gefütterte Jacke mit Farbblöcken – Bild 13 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f5a0090d-fd2b-4b2c-bc40-3c14baf1520c_b6e6baae-20fd-48bb-a544-05cb303ee379.jpg?v=1792375135",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ }
+}

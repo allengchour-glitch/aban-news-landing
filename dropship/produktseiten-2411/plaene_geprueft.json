@@ -1,0 +1,1483 @@
+[
+ {
+  "plan": {
+   "handle": "boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose",
+   "product_id": "gid://shopify/Product/15413083242881",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose/mobile.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/69552848896385",
+    "gid://shopify/MediaImage/69552848929153",
+    "gid://shopify/MediaImage/69552848961921",
+    "gid://shopify/MediaImage/69552848994689",
+    "gid://shopify/MediaImage/69552849027457",
+    "gid://shopify/MediaImage/69552849060225",
+    "gid://shopify/MediaImage/69552849092993",
+    "gid://shopify/MediaImage/69552849125761",
+    "gid://shopify/MediaImage/69552849158529",
+    "gid://shopify/MediaImage/69650124767617"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/69552849092993",
+   "hero_method": "reorder_media",
+   "first_variant_title": "",
+   "first_option_value_order": [],
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/69552849092993",
+    "gid://shopify/MediaImage/69552848961921",
+    "gid://shopify/MediaImage/69552848994689",
+    "gid://shopify/MediaImage/69552849060225",
+    "gid://shopify/MediaImage/69552849158529",
+    "gid://shopify/MediaImage/69552848929153",
+    "gid://shopify/MediaImage/69552849027457",
+    "gid://shopify/MediaImage/69552848896385",
+    "gid://shopify/MediaImage/69650124767617"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/69552849125761",
+     "reason": "Bild 8 = dasselbe schwarze Foto wie Bild 3 (Schwarz-Variantenbild), nur quadratisch gepolstert; keine Variante nutzt es. Weil das Theme nicht zugeordnete Bilder bei JEDER Farbe zeigt, erscheint es heute als 2. Bild nach 'Weiss' (Screenshot: 3 Punkte = Weiss, Schwarz-Duplikat, Hellblau-Edit)."
+    }
+   ],
+   "infographic": {
+    "wanted": false
+   },
+   "text_findings": [
+    "Beschreibung sagt '🎨 9 Farben', es gibt aber nur 8 Farb-Optionen (Weiss, Schwarz, Pink, Orangerot, Weinrot, Dunkelblau, Hellblau, Hellgrün).",
+    "Produktdetails nennen 'Hellgrau' (gibt es als Option nicht) und lassen Hellgrün weg ('… Hellblau u. a.').",
+    "Material steht nur unten in 'Technische Daten' (Baumwolle); oben nur 'leichter, atmungsaktiver Stoff' – könnte oben genannt werden.",
+    "'Passt dazu: … Kleider' verlinkt bei einem Hosen-Set auf Kleider.",
+    "Alle 9 Fotos sind dieselbe (KI-wirkende) Pose in anderer Farbe; es gibt kein Detail-/Stoffbild und kein getragenes Bild aus anderer Perspektive. Handle/Positionierung 'Sommer-Kollektion 2026' im November."
+   ],
+   "summary_de": "Das weisse Set steht jetzt auch in Kollektionen und bei Google als erstes Bild (statt Hellgrün), die Galerie folgt der Farbreihenfolge und das doppelte Schwarz-Bild, das bei jeder Farbe mitlief, fällt weg."
+  },
+  "review": {
+   "handle": "boho-resort-set-2-teilig-sommer-kollektion-2026-top-hose",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "Checked against the live data. The first variant is already 'Weiss / S', and its image is media 7 (white, 1200x1200), so hero 7 shows the first variant's colour. Moving it to the front only changes the collection card and Google image.",
+    "Drop 8 confirmed: a centre crop of 8 matches media 3 (the Schwarz variant image), RMSE 0.0096. No variant uses media 8.",
+    "new_media_order plus the drop covers all 10 media IDs, and the order follows the option order Weiss to Hellgrün.",
+    "Not blocking: the framed edit image 10 (Hellblau, 1080x1080 with a dark frame) is not linked to any variant, so it still shows under every colour. Dropping it later would leave each colour with only its own photo.",
+    "Text findings confirmed: '9 Farben' but only 8 options, 'Hellgrau' listed but no such option, 'Passt dazu: Kleider'. The text also says 'Dein Sommer-Statement' in November."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "weinoffner-mit-luftdruckpumpe-198db1",
+   "product_id": "gid://shopify/Product/15509317452161",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/weinoffner-mit-luftdruckpumpe-198db1/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/weinoffner-mit-luftdruckpumpe-198db1/mobile.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/70622640537985",
+    "gid://shopify/MediaImage/70622640570753",
+    "gid://shopify/MediaImage/70622640603521",
+    "gid://shopify/MediaImage/70622640636289",
+    "gid://shopify/MediaImage/70622640669057",
+    "gid://shopify/MediaImage/70622640701825",
+    "gid://shopify/MediaImage/70622640734593",
+    "gid://shopify/MediaImage/70622640767361",
+    "gid://shopify/MediaImage/70622640800129",
+    "gid://shopify/MediaImage/70622640832897",
+    "gid://shopify/MediaImage/70622640865665",
+    "gid://shopify/MediaImage/70622640898433",
+    "gid://shopify/MediaImage/70622640931201",
+    "gid://shopify/MediaImage/70622640963969",
+    "gid://shopify/MediaImage/70622640996737",
+    "gid://shopify/MediaImage/70622641029505",
+    "gid://shopify/Video/77437947445639"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/70622640570753",
+   "hero_method": "reorder_media",
+   "first_variant_title": "",
+   "first_option_value_order": [],
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/70622640570753",
+    "gid://shopify/Video/77437947445639",
+    "gid://shopify/MediaImage/70622640537985",
+    "gid://shopify/MediaImage/70622640898433",
+    "gid://shopify/MediaImage/70622640669057",
+    "gid://shopify/MediaImage/70622640931201",
+    "gid://shopify/MediaImage/70622640996737",
+    "gid://shopify/MediaImage/70622640701825",
+    "gid://shopify/MediaImage/70622640865665",
+    "gid://shopify/MediaImage/70622640832897",
+    "gid://shopify/MediaImage/70622640767361"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/70622641029505",
+     "reason": "Bild 16 = exaktes Duplikat von Bild 2 (Pixelvergleich RMSE 0)."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/70622640800129",
+     "reason": "Bild 9 = dasselbe Foto wie Bild 1 (goldener Pin), nur kleiner (640 statt 800 px); das Produkt hat keine Variantenbilder, also unbedenklich."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/70622640636289",
+     "reason": "Bild 4: grosser englischer Werbetext 'Removable & Compact Design / Enjoy wine party…' plus iPhone mit Apple-Logo (Fremdmarke)."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/70622640734593",
+     "reason": "Bild 7: englische Werbezeile 'Portable POCKET Air Pump Wine Opener' in Magenta, schwaches Bild."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/70622640603521",
+     "reason": "Bild 3: Geschenkbox-Set (CJ-Variante 'Silver-Set') mit anderem Modell und Zubehör, englischer Aufdruck 'AIR PRESSURE BOTTLE OPENER', nur 548x477 px; das Shop-Produkt bietet keine Set-Auswahl, die Box suggeriert Lieferumfang, der nicht zugesagt ist."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/70622640963969",
+     "reason": "Bild 14 zeigt nur einen Vakuum-Weinstopfen (Zubehör aus CJ 'Set 2'), nicht den Öffner; das Shop-Produkt hat nur eine Variante (CJ: Lieferumfang '1 * Opener')."
+    }
+   ],
+   "infographic": {
+    "wanted": false
+   },
+   "text_findings": [
+    "WICHTIG: Das Produkt hat nur EINE Variante 'Default Title' mit SKU = CJ-Produkt-ID (CJ-0EA586E3-…), keine CJ-Varianten-SKU; Tag 'auswahl-offen'. Bei CJ gibt es 6 Varianten (CJJJCFCJ05555): Gold-/Rot-/Silber-Upgrade = schlankes Taschenmodell (EK USD 6.62), Silver-Set/Black-Set 1/Black-Set 2 = Modell mit durchsichtigem Halter (EK USD 3.51–6.01). Unklar, welches Modell geliefert wird; der Bestell-Automat braucht eine Varianten-SKU. Danach Bilder des nicht verkauften Modells (6, 8, 11, 15) entfernen.",
+    "Beschreibung verspricht eine Auswahl 'in Gold, Silber, Schwarz und Rot … «Upgrade», «Set», «Set 1» oder «Set 2»', die Seite bietet aber keine Auswahl an; 'schau dir dazu die Produktbilder an' ist für Käufer nicht auflösbar.",
+    "Gewicht widersprüchlich: Fliesstext '70 g', Produktdetails '74g' (CJ: productWeight 70, Beschreibung 74g).",
+    "Brotkrumen auf dem Handy: 'Geschirr › Kaffee, Tee & Trinken' – passt schlecht zu einem Weinöffner (Tags nennen Bar/Weinzubehör).",
+    "Video (57 s, echte Anwendung des schlanken Modells) stand bisher als letztes Medium; es ist der beste Vertrauensbeweis und rückt an Position 2."
+   ],
+   "summary_de": "Statt einer nackten schwarzen Röhre sieht man zuerst den Öffner mit Weinflasche und Glas, gleich danach das echte Anwendungsvideo; Bilder mit englischer Werbung, iPhone-Logo, Geschenkbox und Doppelte fallen weg."
+  },
+  "review": {
+   "handle": "weinoffner-mit-luftdruckpumpe-198db1",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "new_media_order (11 items) plus the 6 drops covers all 17 IDs (16 images and 1 video).",
+    "Drop 16 is an exact duplicate of 2 (RMSE 0). Drop 9 is the same photo as 1, only smaller and zoomed out (checked visually). The product has only 'Default Title' and no variant images, so no drop can break a variant.",
+    "Hero 2 is a clean cut-out composite, not a real photo. The only real lifestyle photo (15) shows the other model (clear holder), so 2 is the best hero that matches the video. Frames I pulled from the 57 s video show the slim red-band model actually opening a bottle, so the video at position 2 is correct.",
+    "Open risk (pre-existing, not caused by this plan): it is unclear which model ships. The SKU is only the CJ product ID, there is no variant choice, and the tag is 'auswahl-offen'. If the order engine ends up buying the clear-holder model, hero 2 and the video show the wrong item. Both the current and the proposed hero show the slim model.",
+    "Drop 7 removes the only still photo of the slim opener standing on a bottle. It is justified by the English supplier headline, and the video covers that use case.",
+    "Drop 4 removes the only size reference for the slim model (0.79/5.47 inch). The drop is still correct because of the Apple iPhone and the English promo text."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "elegante-damenbluse-mit-ruschen-und-knopfleist-606400",
+   "product_id": "gid://shopify/Product/15447929389441",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/elegante-damenbluse-mit-ruschen-und-knopfleist-606400/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/elegante-damenbluse-mit-ruschen-und-knopfleist-606400/mobile.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/69852637069697",
+    "gid://shopify/MediaImage/69852635857281",
+    "gid://shopify/MediaImage/69852636971393",
+    "gid://shopify/MediaImage/69852637004161",
+    "gid://shopify/MediaImage/69852637036929",
+    "gid://shopify/MediaImage/69852637102465",
+    "gid://shopify/MediaImage/69852637135233",
+    "gid://shopify/MediaImage/69852637168001",
+    "gid://shopify/MediaImage/70578723455361",
+    "gid://shopify/MediaImage/70578723488129",
+    "gid://shopify/MediaImage/70578723520897",
+    "gid://shopify/MediaImage/70578723553665",
+    "gid://shopify/MediaImage/70578723586433",
+    "gid://shopify/MediaImage/70578723619201",
+    "gid://shopify/MediaImage/70578723651969",
+    "gid://shopify/MediaImage/70578723684737",
+    "gid://shopify/MediaImage/70578723717505"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/70578723651969",
+   "hero_method": "first_variant",
+   "first_variant_title": "Himmelblau / XS",
+   "first_option_value_order": [
+    "Himmelblau",
+    "Rosa",
+    "Aprikose",
+    "Weiss",
+    "Rot",
+    "Schwarz",
+    "Braun",
+    "Dunkelrosa",
+    "Khaki"
+   ],
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/70578723651969",
+    "gid://shopify/MediaImage/70578723684737",
+    "gid://shopify/MediaImage/70578723586433",
+    "gid://shopify/MediaImage/70578723717505",
+    "gid://shopify/MediaImage/70578723619201",
+    "gid://shopify/MediaImage/70578723553665",
+    "gid://shopify/MediaImage/70578723455361",
+    "gid://shopify/MediaImage/70578723520897",
+    "gid://shopify/MediaImage/70578723488129",
+    "gid://shopify/MediaImage/69852637135233"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/69852637069697",
+     "reason": "Bild 1 = exaktes Duplikat von Bild 11 (Weiss-Variantenbild), RMSE 0; heute zudem das Kollektions-Titelbild (Spiegel-Selfie-Collage)."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69852635857281",
+     "reason": "Bild 2 = exaktes Duplikat von Bild 9 (Rosa-Variantenbild), RMSE 0."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69852636971393",
+     "reason": "Bild 3 = exaktes Duplikat von Bild 15 (Himmelblau-Variantenbild), RMSE 0."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69852637004161",
+     "reason": "Bild 4 = exaktes Duplikat von Bild 13 (Schwarz-Variantenbild), RMSE 0."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69852637036929",
+     "reason": "Bild 5 = exaktes Duplikat von Bild 16 (Dunkelrosa-Variantenbild), RMSE 0."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69852637102465",
+     "reason": "Bild 6 = exaktes Duplikat von Bild 17 (Khaki-Variantenbild), RMSE 0."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69852637168001",
+     "reason": "Bild 8 = exaktes Duplikat von Bild 14 (Braun-Variantenbild), RMSE 0. Diese 7 nicht zugeordneten Duplikate laufen heute bei JEDER Farbe mit (Screenshot: 9 Punkte bei 'Rosa' = 1 Rosa-Bild + 8 fremde Farben)."
+    }
+   ],
+   "infographic": {
+    "wanted": false
+   },
+   "text_findings": [
+    "Farbnamen im Text passen nicht zu den Optionen: Text 'Hellrosa, Apricot, Kaffee, Tiefrosa' – Optionen 'Rosa, Aprikose, Braun, Dunkelrosa'; die Farbliste steht dreimal in der Beschreibung.",
+    "Grössen: Text 'XS bis XXL' bzw. 'XXL' – Option heisst '2XL'.",
+    "'Das zeichnet es aus' – bei einer Bluse 'sie'.",
+    "Floskeln 'hochwertigem Polyester (Dacron)', 'verspricht angenehmen Tragekomfort und Langlebigkeit'.",
+    "Keine Masstabelle und kein Hinweis 'asiatische Grössen fallen kleiner aus' (andere Mode-Produkte haben beides); Preis steigt je Grösse (XS 19.90, S/M 20.90, L–2XL 21.90) – auf dem Handy sieht man beim Laden nur 19.90."
+   ],
+   "summary_de": "Als erstes Bild erscheint das scharfe Einzelfoto der himmelblauen Bluse mit sichtbarem Gesicht statt der rosa Spiegel-Selfie-Collage, und bei jeder Farbe laufen nicht mehr acht doppelte Bilder anderer Farben mit."
+  },
+  "review": {
+   "handle": "elegante-damenbluse-mit-ruschen-und-knopfleist-606400",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "All 7 drops confirmed as exact duplicates (RMSE 0): 1=11, 2=9, 3=15, 4=13, 5=16, 6=17, 8=14. None is linked to a variant (variant images are 9 to 17).",
+    "A live mobile screenshot confirms the theme shows the first variant's image (Rosa, media 9) with 9 dots. So hero_method first_variant with 'Himmelblau / XS' is the right lever, and media 15 is that variant's image: a sharp single photo with the face visible, the highest resolution of the single shots.",
+    "new_media_order (10 items) plus the 7 drops covers all 17 IDs.",
+    "Not blocking: media 7 is a white-background cut-out of the same Aprikose shoot as variant image 10 (same model, bag and black trousers). It stays unlinked, so it becomes the 2nd image under every colour, showing a beige blouse even when Schwarz or Rot is selected. Consider dropping it later, or using it as the Aprikose swatch image if the cut-out edges are acceptable.",
+    "Second place 16 (Dunkelrosa mirror selfie, face hidden by the phone) is weaker than 13 (Schwarz, face visible). This only affects the hover image on collection cards. Minor."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "2-teiliges-leinen-set-provence-hemd-wide-leg-hose",
+   "product_id": "gid://shopify/Product/15412911964545",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/2-teiliges-leinen-set-provence-hemd-wide-leg-hose/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/2-teiliges-leinen-set-provence-hemd-wide-leg-hose/mobile.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/69551961670017",
+    "gid://shopify/MediaImage/69551961637249",
+    "gid://shopify/MediaImage/69551961702785",
+    "gid://shopify/MediaImage/69551961735553",
+    "gid://shopify/MediaImage/69551961768321",
+    "gid://shopify/MediaImage/69551961801089",
+    "gid://shopify/MediaImage/69552063054209",
+    "gid://shopify/MediaImage/69552063086977",
+    "gid://shopify/MediaImage/69552063119745",
+    "gid://shopify/MediaImage/69552063152513",
+    "gid://shopify/MediaImage/69650086461825",
+    "gid://shopify/Video/69682255135105"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/69551961670017",
+   "hero_method": "first_variant",
+   "first_variant_title": "Weiss / S",
+   "first_option_value_order": [
+    "Weiss",
+    "Pink",
+    "Weinrot",
+    "Camel",
+    "Jeansblau",
+    "Schwarz"
+   ],
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/69551961670017",
+    "gid://shopify/MediaImage/69551961637249",
+    "gid://shopify/Video/69682255135105",
+    "gid://shopify/MediaImage/69551961702785",
+    "gid://shopify/MediaImage/69551961735553",
+    "gid://shopify/MediaImage/69551961768321",
+    "gid://shopify/MediaImage/69551961801089",
+    "gid://shopify/MediaImage/69650086461825"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/69552063054209",
+     "reason": "Bild 7 = dasselbe Pink-Foto wie Bild 2 (Variantenbild), nur auf quadratische Leinwand erweitert (Mitte RMSE 0.003); keine Variante nutzt es."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69552063086977",
+     "reason": "Bild 8 = dasselbe Weiss-Foto wie Bild 1 (Variantenbild), quadratisch erweitert (Mitte RMSE 0.003)."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69552063119745",
+     "reason": "Bild 9 = Camel-Foto aus Bild 4 als Freisteller auf Weiss (ausgeschnittene Kanten) – Duplikat und schwächer."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69552063152513",
+     "reason": "Bild 10 = dasselbe Jeansblau-Foto wie Bild 5 (Variantenbild), quadratisch erweitert (Mitte RMSE 0.003)."
+    }
+   ],
+   "infographic": {
+    "wanted": false
+   },
+   "text_findings": [
+    "Material widersprüchlich: oben '🌿 Baumwoll-Leinen', in Produktdetails 'Material: Leinen'.",
+    "Titel sagt 'Hemd', Beschreibung 'V-Ausschnitt-Bluse' – einheitlich benennen.",
+    "Masstabelle nennt nur Brust und Länge des Hemds, keine Hosenmasse (Bund/Länge), obwohl es ein Set mit Wide-Leg-Hose ist.",
+    "'Passt dazu: … Kleider' verlinkt bei einem Hosen-Set auf Kleider.",
+    "Heute Widerspruch Karte/Seite: Kollektionskarte zeigt Weiss (Medium 1), die Produktseite öffnet aber Pink (erste Variante). Alle Fotos sind dieselbe KI-wirkende Pose; kein Stoff-/Detailbild."
+   ],
+   "summary_de": "Die Produktseite öffnet mit dem scharfen weissen Leinen-Set (1440x1920) wie die Kollektionskarte statt mit dem kleineren Pink-Bild, das Pink-Video rückt nach vorn und vier quadratische Doppelbilder, die bei jeder Farbe mitliefen, fallen weg."
+  },
+  "review": {
+   "handle": "2-teiliges-leinen-set-provence-hemd-wide-leg-hose",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "Hero media 1 (white, 1440x1920) is the image of the 'Weiss / S' variants. Moving Weiss to the front of the Farbe option makes the product page match the collection card. The current first variant is Pink / S with media 2 (900x1200).",
+    "The 4 drops are confirmed as unlinked: 7, 8 and 10 match the centre of variant images 2, 1 and 5 (RMSE 0.0125 to 0.0128). 9 is a white-background cut-out of the Camel photo 4 (same pose, weaker).",
+    "new_media_order (8 items) plus the 4 drops covers all 12 IDs, including the video. Frames I pulled show the 5 s video is the pink set: correct product, real movement.",
+    "Not blocking: the pink video and the framed edit image 11 (white) stay unlinked, so they still show under every colour.",
+    "Extra text issue: 'Versand CHF 7, ab CHF 50 gratis' is missing 'nach Rabatt' (house rule since 22.10.). The other text findings are confirmed: Baumwoll-Leinen vs Leinen, Hemd vs Bluse, no trouser measurements, 'Passt dazu: Kleider'."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
+   "product_id": "gid://shopify/Product/15422934647169",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/abendkleid-aurora-satin-spaghettitrager-schlitz/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/abendkleid-aurora-satin-spaghettitrager-schlitz/mobile.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/69634962620801",
+    "gid://shopify/MediaImage/69634962522497",
+    "gid://shopify/MediaImage/69634962555265",
+    "gid://shopify/MediaImage/69634962588033",
+    "gid://shopify/MediaImage/69634962653569",
+    "gid://shopify/MediaImage/69634962686337",
+    "gid://shopify/MediaImage/69646252212609",
+    "gid://shopify/Video/69682254774657"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/69634962686337",
+   "hero_method": "already_ok",
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/69634962686337",
+    "gid://shopify/MediaImage/69634962522497",
+    "gid://shopify/MediaImage/69634962555265",
+    "gid://shopify/MediaImage/69634962620801",
+    "gid://shopify/Video/69682254774657",
+    "gid://shopify/MediaImage/69634962588033",
+    "gid://shopify/MediaImage/69634962653569"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/69646252212609",
+     "reason": "Bild 7 «LuxeStyle-Edit»: dasselbe Foto wie Bild 2 (Aprikose), nur mit dunklem, unscharfem Rahmen. Wirkt billig und steht als Bild ohne Variante in der Galerie JEDER Farbe. Kein Variantenbild. Hinweis: automation/upload_edited_product_images.py erkennt erledigte Produkte am Alt-Präfix «LuxeStyle-Edit» und würde das Bild bei einem neuen Lauf wieder anlegen."
+    }
+   ],
+   "first_option_value_order": [],
+   "first_variant_title": "",
+   "infographic": {
+    "wanted": false
+   },
+   "text_findings": [
+    "Beschreibung «Für ein Fest im Dezember am besten bis Mitte November bestellen» ist seit dem 24.11. überholt; die Lieferschätzung der Seite liegt bei Mitte/Ende Dezember. Der Satz sollte weg oder angepasst werden.",
+    "Die Bilder 4 (Weinrot) und 5 (Blau) sind umgefärbte Fassungen desselben Fotos. Ihr Hintergrund ist sichtbar verschmiert (das rote Kleid im Schaufenster ist verzerrt). Es sind die einzigen Bilder in dieser Farbe am Model, deshalb bleiben sie und stehen hinten. Die Blau-Variante könnte auch das saubere Freisteller-Bild 1 tragen; dann käme aber Bild 5 als Bild ohne Variante in alle Farb-Galerien. Deshalb ist das nicht vorgeschlagen.",
+    "Das Produktvideo (5 s) zeigt nur die Farbe Aprikose."
+   ],
+   "summary_de": "Das grüne Kleid bleibt das erste Bild. Dahinter kommen die echten Fotos (Aprikose, Schwarz) und das saubere Freisteller-Bild, die doppelte Rahmen-Kopie fällt weg, und die Kollektionskarte zeigt neu das Kleid am Model statt des Freistellers."
+  },
+  "review": {
+   "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "I re-queried the product myself. There are 7 images and 1 video. The variant images are: Grün = image 6 (69634962686337), Schwarz = 3, Weinrot = 4, Aprikose = 2, Blau = 5. The first variant is Grün / S, so the hero is image 6. I checked it at 700 px: it is clean, real and 1000 px. Approved.",
+    "new_media_order holds every live id except the dropped image 7. The video is included. Approved.",
+    "Dropping image 7 (LuxeStyle-Edit) is OK. It is the apricot photo (image 2) inside a dark blurred frame, and no variant uses it. The re-add risk is low: .github/workflows/edited-product-images.yml runs only on workflow_dispatch, never on a schedule.",
+    "Images 4 (Weinrot) and 5 (Blau) are recoloured versions of the same photo with a smeared background. Keeping them at the end is correct, because they are the only on-model images for those colours."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "plateau-sandalen-damen-retro-style-mit-komfort-sohle-sommer-2026",
+   "product_id": "gid://shopify/Product/15413083832705",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/plateau-sandalen-damen-retro-style-mit-komfort-sohle-sommer-2026/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/plateau-sandalen-damen-retro-style-mit-komfort-sohle-sommer-2026/mobile.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/69552854630785",
+    "gid://shopify/MediaImage/69552854663553",
+    "gid://shopify/MediaImage/69552854696321",
+    "gid://shopify/MediaImage/69552854729089",
+    "gid://shopify/MediaImage/69552854761857",
+    "gid://shopify/MediaImage/69552854794625",
+    "gid://shopify/MediaImage/69552854827393",
+    "gid://shopify/MediaImage/69552854860161",
+    "gid://shopify/MediaImage/69552854892929",
+    "gid://shopify/MediaImage/69650125193601"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/69552854630785",
+   "hero_method": "variant_image",
+   "first_variant_title": "Weiss / 36",
+   "first_option_value_order": [
+    "Weiss",
+    "Braun",
+    "Schwarz",
+    "Beige"
+   ],
+   "variant_image_changes": [
+    {
+     "variant_title": "Braun / 36",
+     "media_id": "gid://shopify/MediaImage/69552854663553",
+     "reason": "Farbfoto zuweisen: Das Bild wechselt mit der Farbwahl, Bild-Swatch statt Textknopf (heute steht «Braun» gewählt, während eine weisse Sandale zu sehen ist)"
+    },
+    {
+     "variant_title": "Braun / 37",
+     "media_id": "gid://shopify/MediaImage/69552854663553",
+     "reason": "Farbfoto Braun (Bild 2)"
+    },
+    {
+     "variant_title": "Braun / 38",
+     "media_id": "gid://shopify/MediaImage/69552854663553",
+     "reason": "Farbfoto Braun (Bild 2)"
+    },
+    {
+     "variant_title": "Braun / 39",
+     "media_id": "gid://shopify/MediaImage/69552854663553",
+     "reason": "Farbfoto Braun (Bild 2)"
+    },
+    {
+     "variant_title": "Braun / 40",
+     "media_id": "gid://shopify/MediaImage/69552854663553",
+     "reason": "Farbfoto Braun (Bild 2)"
+    },
+    {
+     "variant_title": "Braun / 41",
+     "media_id": "gid://shopify/MediaImage/69552854663553",
+     "reason": "Farbfoto Braun (Bild 2)"
+    },
+    {
+     "variant_title": "Braun / 42",
+     "media_id": "gid://shopify/MediaImage/69552854663553",
+     "reason": "Farbfoto Braun (Bild 2)"
+    },
+    {
+     "variant_title": "Braun / 43",
+     "media_id": "gid://shopify/MediaImage/69552854663553",
+     "reason": "Farbfoto Braun (Bild 2)"
+    },
+    {
+     "variant_title": "Weiss / 36",
+     "media_id": "gid://shopify/MediaImage/69552854630785",
+     "reason": "Farbfoto Weiss (Bild 1). Wird erste Variante und damit Titelbild"
+    },
+    {
+     "variant_title": "Weiss / 37",
+     "media_id": "gid://shopify/MediaImage/69552854630785",
+     "reason": "Farbfoto Weiss (Bild 1)"
+    },
+    {
+     "variant_title": "Weiss / 38",
+     "media_id": "gid://shopify/MediaImage/69552854630785",
+     "reason": "Farbfoto Weiss (Bild 1)"
+    },
+    {
+     "variant_title": "Weiss / 39",
+     "media_id": "gid://shopify/MediaImage/69552854630785",
+     "reason": "Farbfoto Weiss (Bild 1)"
+    },
+    {
+     "variant_title": "Weiss / 40",
+     "media_id": "gid://shopify/MediaImage/69552854630785",
+     "reason": "Farbfoto Weiss (Bild 1)"
+    },
+    {
+     "variant_title": "Weiss / 41",
+     "media_id": "gid://shopify/MediaImage/69552854630785",
+     "reason": "Farbfoto Weiss (Bild 1)"
+    },
+    {
+     "variant_title": "Weiss / 42",
+     "media_id": "gid://shopify/MediaImage/69552854630785",
+     "reason": "Farbfoto Weiss (Bild 1)"
+    },
+    {
+     "variant_title": "Weiss / 43",
+     "media_id": "gid://shopify/MediaImage/69552854630785",
+     "reason": "Farbfoto Weiss (Bild 1)"
+    },
+    {
+     "variant_title": "Schwarz / 36",
+     "media_id": "gid://shopify/MediaImage/69552854794625",
+     "reason": "Farbfoto Schwarz (Bild 6, gleiche Aufnahmeart wie die anderen Farben)"
+    },
+    {
+     "variant_title": "Schwarz / 37",
+     "media_id": "gid://shopify/MediaImage/69552854794625",
+     "reason": "Farbfoto Schwarz (Bild 6)"
+    },
+    {
+     "variant_title": "Schwarz / 38",
+     "media_id": "gid://shopify/MediaImage/69552854794625",
+     "reason": "Farbfoto Schwarz (Bild 6)"
+    },
+    {
+     "variant_title": "Schwarz / 39",
+     "media_id": "gid://shopify/MediaImage/69552854794625",
+     "reason": "Farbfoto Schwarz (Bild 6)"
+    },
+    {
+     "variant_title": "Schwarz / 40",
+     "media_id": "gid://shopify/MediaImage/69552854794625",
+     "reason": "Farbfoto Schwarz (Bild 6)"
+    },
+    {
+     "variant_title": "Schwarz / 41",
+     "media_id": "gid://shopify/MediaImage/69552854794625",
+     "reason": "Farbfoto Schwarz (Bild 6)"
+    },
+    {
+     "variant_title": "Schwarz / 42",
+     "media_id": "gid://shopify/MediaImage/69552854794625",
+     "reason": "Farbfoto Schwarz (Bild 6)"
+    },
+    {
+     "variant_title": "Schwarz / 43",
+     "media_id": "gid://shopify/MediaImage/69552854794625",
+     "reason": "Farbfoto Schwarz (Bild 6)"
+    },
+    {
+     "variant_title": "Beige / 36",
+     "media_id": "gid://shopify/MediaImage/69552854827393",
+     "reason": "Farbfoto Beige (Bild 7)"
+    },
+    {
+     "variant_title": "Beige / 37",
+     "media_id": "gid://shopify/MediaImage/69552854827393",
+     "reason": "Farbfoto Beige (Bild 7)"
+    },
+    {
+     "variant_title": "Beige / 38",
+     "media_id": "gid://shopify/MediaImage/69552854827393",
+     "reason": "Farbfoto Beige (Bild 7)"
+    },
+    {
+     "variant_title": "Beige / 39",
+     "media_id": "gid://shopify/MediaImage/69552854827393",
+     "reason": "Farbfoto Beige (Bild 7)"
+    },
+    {
+     "variant_title": "Beige / 40",
+     "media_id": "gid://shopify/MediaImage/69552854827393",
+     "reason": "Farbfoto Beige (Bild 7)"
+    },
+    {
+     "variant_title": "Beige / 41",
+     "media_id": "gid://shopify/MediaImage/69552854827393",
+     "reason": "Farbfoto Beige (Bild 7)"
+    },
+    {
+     "variant_title": "Beige / 42",
+     "media_id": "gid://shopify/MediaImage/69552854827393",
+     "reason": "Farbfoto Beige (Bild 7)"
+    },
+    {
+     "variant_title": "Beige / 43",
+     "media_id": "gid://shopify/MediaImage/69552854827393",
+     "reason": "Farbfoto Beige (Bild 7)"
+    }
+   ],
+   "new_media_order": [
+    "gid://shopify/MediaImage/69552854630785",
+    "gid://shopify/MediaImage/69552854729089",
+    "gid://shopify/MediaImage/69552854663553",
+    "gid://shopify/MediaImage/69552854794625",
+    "gid://shopify/MediaImage/69552854827393",
+    "gid://shopify/MediaImage/69552854761857"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/69552854696321",
+     "reason": "Bild 3 ist eine exakte Kopie von Bild 1 (Weiss), gleicher md5-Wert"
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69552854860161",
+     "reason": "Bild 8 ist eine exakte Kopie von Bild 7 (Beige), gleicher md5-Wert"
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69552854892929",
+     "reason": "Bild 9 ist eine exakte Kopie von Bild 2 (Braun), gleicher md5-Wert"
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69650125193601",
+     "reason": "Bild 10 «LuxeStyle-Edit»: Bild 1 mit dunklem, unscharfem Rahmen, also eine Doppelung, die billig wirkt. Kein Variantenbild. Achtung: upload_edited_product_images.py legt es neu an, wenn das Skript wieder läuft (Erkennung über das Alt-Präfix)."
+    }
+   ],
+   "infographic": {
+    "wanted": false
+   },
+   "text_findings": [
+    "Der Titel sagt «Plateau-Sandalen», das Produkt ist aber eine offene Pantolette/Slide mit zwei Schnallenriemen ohne Fersenriemen. «Pantoletten» wäre genauer.",
+    "Unter «Produktdetails» steht «Muster: Unifarben», die Riemen tragen aber ein durchgehendes Blüten-/Rauten-Monogramm (sichtbar auf allen Fotos, keine Markenbuchstaben).",
+    "Die Beschreibung nennt «EU 36–41+», die Grössen-Option geht aber bis 43.",
+    "Saison passt nicht: Handle «…-sommer-2026», Text «Sommer-Liebling», Ratgeber-Link «Sommerschuhe 2026» – und heute ist der 24.11.",
+    "Heute (Mobil-Screenshot) steht «Braun» vorgewählt, das grosse Bild zeigt aber die weisse Sandale. Die Varianten haben keine Bilder, deshalb sind die Farbknöpfe nur Text. Das behebt dieser Plan."
+   ],
+   "summary_de": "Wählt man eine Farbe, wechselt jetzt das Bild dazu, und die Farbknöpfe zeigen Fotos. Weiss ist vorgewählt und passt damit zum Titelbild, das Gruppenbild mit allen vier Farben steht an zweiter Stelle, und vier doppelte Bilder fallen weg."
+  },
+  "review": {
+   "handle": "plateau-sandalen-damen-retro-style-mit-komfort-sohle-sommer-2026",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "The live check matches the plan. All 32 variants have no image today, and the option order is Braun, Weiss, Schwarz, Beige.",
+    "I compared md5 values on my own downloads. Image 1 = image 3, image 7 = image 8 and image 2 = image 9 are exact duplicates. Image 10 is image 1 in a blurred frame. All 4 drops are correct.",
+    "I checked the colour assignments on the contact sheet. Braun gets image 2, Weiss image 1, Schwarz image 6 (black on wood) and Beige image 7. All are correct, and all 32 variants (4 colours x 8 sizes) are covered.",
+    "Moving Weiss to the front of the option values makes Weiss / 36 the first variant, so its image 1 (white, 1200 px, worn) becomes the hero. That is consistent. The order holds all 6 kept ids.",
+    "At full resolution the strap print is a flower-and-rope monogram with no brand letters, so there is no logo to remove. The 'Unifarben' text finding is still valid."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "thermo-strumpfhose-mit-fleece-futter-065536",
+   "product_id": "gid://shopify/Product/15450828898689",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/thermo-strumpfhose-mit-fleece-futter-065536/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/thermo-strumpfhose-mit-fleece-futter-065536/mobile.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/69886870126977",
+    "gid://shopify/MediaImage/69886869963137",
+    "gid://shopify/MediaImage/69886869799297",
+    "gid://shopify/MediaImage/69886869438849",
+    "gid://shopify/MediaImage/69886869766529",
+    "gid://shopify/MediaImage/69886869832065",
+    "gid://shopify/MediaImage/69886869864833",
+    "gid://shopify/MediaImage/69886869897601",
+    "gid://shopify/MediaImage/69886869930369",
+    "gid://shopify/MediaImage/69886869995905",
+    "gid://shopify/MediaImage/69886870028673",
+    "gid://shopify/MediaImage/69886870061441",
+    "gid://shopify/MediaImage/69886870094209",
+    "gid://shopify/MediaImage/69886870159745",
+    "gid://shopify/MediaImage/69886870192513",
+    "gid://shopify/MediaImage/69886870225281",
+    "gid://shopify/MediaImage/69886870258049",
+    "gid://shopify/MediaImage/69886870290817",
+    "gid://shopify/MediaImage/69886870323585",
+    "gid://shopify/MediaImage/69886870356353"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/69886870126977",
+   "hero_method": "already_ok",
+   "variant_image_changes": [],
+   "first_option_value_order": [],
+   "first_variant_title": "",
+   "new_media_order": [
+    "gid://shopify/MediaImage/69886870126977",
+    "gid://shopify/MediaImage/69886870028673",
+    "gid://shopify/MediaImage/69886869963137",
+    "gid://shopify/MediaImage/69886870258049",
+    "gid://shopify/MediaImage/69886869799297",
+    "gid://shopify/MediaImage/69886869897601",
+    "gid://shopify/MediaImage/69886870159745",
+    "gid://shopify/MediaImage/69886870225281",
+    "gid://shopify/MediaImage/69886869995905"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/69886869766529",
+     "reason": "Bild 5 ist eine Collage mit einer Weihnachtssocke, die wir gar nicht verkaufen: Keine der 79 Varianten enthält Socken, auch Set 6/7 laut CJ nicht (das sind 3 Farben Strumpfhose). Das ist ein fremdes Produkt."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886869832065",
+     "reason": "Bild 6 ist ebenfalls eine Collage mit der Weihnachtssocke, also einem fremden Produkt."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886870192513",
+     "reason": "Bild 15 ist ebenfalls eine Collage mit der Weihnachtssocke, also einem fremden Produkt."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886870094209",
+     "reason": "Bild 13 ist eine exakte Kopie von Bild 8 (gleicher md5-Wert)."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886869438849",
+     "reason": "Bild 4: 482 px, englische Aufschrift «2pcs», eine weitere Bett-Aufnahme ohne Zusatzinfo."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886869864833",
+     "reason": "Bild 7: 448 px, Aufschrift «2pcs», schwache Doppelung."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886869930369",
+     "reason": "Bild 9: 432 px, Aufschrift «2pcs», schwache Doppelung."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886870061441",
+     "reason": "Bild 12: 397 px, Aufschrift «3pcs», schwache Doppelung."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886870290817",
+     "reason": "Bild 18: 392 px, Aufschrift «3pcs», schwache Doppelung."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886870356353",
+     "reason": "Bild 20: 484 px, Aufschrift «2pcs», schwache Doppelung."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69886870323585",
+     "reason": "Bild 19: fast dasselbe Foto wie Bild 1 (Pixelabweichung 1.6 %), aber mit grosser schwarzer Aufschrift «*3»."
+    }
+   ],
+   "infographic": {
+    "wanted": true,
+    "title": "Welche Thermo-Strumpfhose passt?",
+    "subtitle": "Schwarz, Kaffee oder Grau – mit Füssen oder mit Fusssteg",
+    "tiles": [
+     {
+      "media_id": "gid://shopify/MediaImage/69886870258049",
+      "label": "Mit Füssen · Schwarz, Kaffee, Grau"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69886869799297",
+      "label": "Mit Fusssteg · Schwarz, Kaffee, Grau"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69886869963137",
+      "label": "220 g und 300 g: innen Fleece"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69886870028673",
+      "label": "Hoher Bund, 7 cm"
+     }
+    ],
+    "footer_lines": [
+     "80 g – Frühling & Herbst, ohne Fleece",
+     "220 g – mit Fleece · 300 g – dickes Fleece",
+     "Normalgrösse: 40–70 kg, 155–175 cm",
+     "Grosse Grösse: 80 g 60–90 kg · 220 g 60–100 kg",
+     "Einzeln oder im Set mit 2, 3 oder 5 Stück"
+    ],
+    "fact_sources": "Aus der Shop-Beschreibung (ls-text-v2): drei Stärken 80 g Frühling/Herbst ohne Fleece, 220 g mit Fleece, 300 g mit dickem Fleece; Normalgrösse 40–70 kg und 155–175 cm; grosse Grösse 80 g 60–90 kg, 220 g 60–100 kg; Taille hoch geschnitten und 7 cm hoch; Sets mit 2, 3 oder 5 Stück. Aus den Optionen: Farben Schwarz/Kaffee/Grau, «mit Füssen» bzw. «Fusssteg». Bildzuordnung: Bild 17 = Versionen mit Füssen, Bild 3 = Versionen mit Fusssteg (selbst angesehen). Von CJ (CJDD1574160) nur zur Gegenprüfung: Polyester, gleiche Gewichts- und Grössentabelle."
+   },
+   "text_findings": [
+    "Die Option «Farbe» enthält 79 Werte, die Farbe, Fussform, Stärke, Stil und Stückzahl in einer Zeile mischen. Auf dem Handy ist das eine einzige lange Auswahlliste, und der erste Wert wird abgeschnitten («…220g, Fle…»). Eine Aufteilung (z. B. Farbe/Fussform · Stärke · Menge) oder mindestens kürzere Werte würden helfen.",
+    "Die Werte «Set 6, 80g, Übergrösse» und «Set 7, 80g, Frühling / Herbst Stil» sagen der Kundin nichts. Laut CJ ist es ein 3er-Set Schwarz + Kaffee + Grau (Lieferantenbild).",
+    "Unter «Produktdetails» steht «Material: Fleece». Der Fliesstext sagt aber Polyester (CJ ebenfalls: Polyester), und die 80-g-Ausführungen haben laut Text gar kein Fleece-Futter.",
+    "«Hautfarben Schwarz» gegenüber «Schwarz / Transparent Fusssteg» und «Schwarz mit Füssen» ist ohne Erklärung schwer zu unterscheiden (Fake-Transparent-Effekt).",
+    "Lieferantenhinweis: CJ nennt 300 g «extra large plush» für 60–100 kg. Die Shop-Beschreibung erwähnt 300 g in grosser Grösse nicht, obwohl es die Varianten gibt."
+   ],
+   "summary_de": "Statt 20 teils doppelter, kleiner und fremder Bilder (Weihnachtssocke, «2pcs»-Aufschriften) zeigt die Galerie neun klare Fotos: zuerst die Strumpfhose am Bein, dann das Fleece-Futter und die Farbübersichten. Dazu kommt auf Wunsch eine Übersichtsgrafik mit Stärken und Grössen."
+  },
+  "review": {
+   "handle": "thermo-strumpfhose-mit-fleece-futter-065536",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": false,
+   "infographic_corrections": "Tile for media 69886870028673 (image 11) is mislabelled. «Hoher Bund, 7 cm» does not fit the photo: it shows a woman pulling up grey tights to reveal the fleece lining. No waistband or height can be seen. Relabel the tile «Innen weiches Fleece (220 g / 300 g)» and label image 2 (69886869963137) «Fleece-Futter im Detail», or use a single fleece tile. Move the waistband fact to a footer line instead: «Hohe Taille, Bund 7 cm hoch». That fact is in the description. The other tiles are correct: image 17 shows three colours with feet, image 3 shows three colours with stirrup and toes visible. The other footer facts (80/220/300 g, 40–70 kg / 155–175 cm, large size 60–90 / 60–100 kg, sets of 2/3/5) all match the description text.",
+   "problems": [
+    "No variant has an image, so dropping images cannot break a variant link. The first variant is 'Hautfarben Schwarz mit Füssen, 220g…' and the hero is image 1 (black tights with feet). It matches and is already first.",
+    "I checked the drops. Images 5, 6 and 15 pair the tights with a Christmas sock, a product that is in no option value. Image 13 has the same md5 as image 8. Images 4, 7, 9, 12, 18 and 20 are low resolution and carry 'Npcs' text, and each has a clean 800 px twin that stays. Image 19 is image 1 with a big '*3' on it. All drops are correct.",
+    "new_media_order holds 9 ids and the plan drops 11, which accounts for all 20 live ids.",
+    "Infographic rejected only because of the tile-11 label (see corrections)."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "gefutterte-jacke-mit-farbblocken-639300",
+   "product_id": "gid://shopify/Product/16652069667207",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/gefutterte-jacke-mit-farbblocken-639300/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/gefutterte-jacke-mit-farbblocken-639300/mobile.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/77777998086535",
+    "gid://shopify/MediaImage/77777998250375",
+    "gid://shopify/MediaImage/77777998283143",
+    "gid://shopify/MediaImage/77777998315911",
+    "gid://shopify/MediaImage/77777998348679",
+    "gid://shopify/MediaImage/77777998381447",
+    "gid://shopify/MediaImage/77777998414215",
+    "gid://shopify/MediaImage/77777998446983",
+    "gid://shopify/MediaImage/77777998479751",
+    "gid://shopify/MediaImage/77777998741895",
+    "gid://shopify/MediaImage/77777998774663",
+    "gid://shopify/MediaImage/77777998807431",
+    "gid://shopify/MediaImage/77777998840199"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/77777998840199",
+   "hero_method": "first_variant",
+   "first_variant_title": "Dunkelkhaki / S",
+   "first_option_value_order": [
+    "Dunkelkhaki",
+    "Grau",
+    "Aprikose",
+    "Schwarz"
+   ],
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/77777998840199",
+    "gid://shopify/MediaImage/77777998807431",
+    "gid://shopify/MediaImage/77777998774663",
+    "gid://shopify/MediaImage/77777998741895",
+    "gid://shopify/MediaImage/77777998086535",
+    "gid://shopify/MediaImage/77777998446983"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/77777998250375",
+     "reason": "Bild 2 ist eine exakte Kopie von Bild 13 (Dunkelkhaki-Variantenbild), gleicher md5-Wert."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77777998283143",
+     "reason": "Bild 3 ist eine exakte Kopie von Bild 10 (Schwarz-Variantenbild), gleicher md5-Wert."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77777998315911",
+     "reason": "Bild 4 ist eine exakte Kopie von Bild 12 (Grau-Variantenbild), gleicher md5-Wert."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77777998479751",
+     "reason": "Bild 9 ist eine exakte Kopie von Bild 11 (Aprikose-Variantenbild), gleicher md5-Wert."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77777998348679",
+     "reason": "Bild 5 ist praktisch identisch mit Bild 12 (Pixelabweichung 0.8 %) und trägt dieselben fremden Galerie-Knöpfe ‹ ⌄ › am unteren Rand."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77777998381447",
+     "reason": "Bild 6 ist praktisch identisch mit Bild 13 (Pixelabweichung 0.6 %) und hat ebenfalls die fremden Galerie-Knöpfe."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/77777998414215",
+     "reason": "Bild 7 ist praktisch identisch mit Bild 11 (Pixelabweichung 1.7 %), hat voll sichtbare fremde Knöpfe ‹ × › und rechts einen weissen Rand."
+    }
+   ],
+   "infographic": {
+    "wanted": false
+   },
+   "text_findings": [
+    "BILDBEFUND (nicht über die Reihenfolge lösbar): Alle Lieferantenbilder ausser Bild 1 sind Screenshots einer fremden Shop-Galerie mit runden Knöpfen ‹ × › / ‹ ⌄ › am unteren Rand. Im Mobil-Screenshot sind sie direkt unter dem Titelbild zu sehen, beim Aprikose-Swatch (Bild 11) voll sichtbar. Abhilfe wäre, die unteren ~8 % der vier Variantenbilder (10, 11, 12, 13) und von Bild 8 abzuschneiden und neu hochzuladen.",
+    "Der Titel «mit Farbblöcken» führt in die Irre: Jede Jacke ist einfarbig. Sichtbar ist ein Materialmix aus Steppteil, Plüsch-/Fellflächen und Strickärmeln mit Kapuze, und davon steht nichts im Text.",
+    "Die Beschreibung ist sehr dünn und holprig («Sie besteht aus Polyesterfaser und bietet einen langen Ärmel», «Erhältlich in Schwarz und weiteren Farben»). Kapuze, Reissverschluss und Knopfleiste sind sichtbar, werden aber nicht erwähnt.",
+    "Die Alt-Texte sind generisch («Gefütterte Jacke mit Farbblöcken – Bild N | LuxeStyle») und nennen die Farbe nicht.",
+    "Die Farbe «Dunkelkhaki» ist auf dem Foto ein warmes Braun/Camel."
+   ],
+   "summary_de": "Titelbild ist neu die helle braune Jacke (Dunkelkhaki vorgewählt) statt der dunklen schwarzen mit abgeschnittenem Gesicht. Sieben doppelte bzw. fast gleiche Bilder fallen weg, sodass pro Farbe nur noch die klaren Fotos bleiben."
+  },
+  "review": {
+   "handle": "gefutterte-jacke-mit-farbblocken-639300",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "The live variant images are: Schwarz = image 10, Aprikose = 11, Grau = 12, Dunkelkhaki = 13. Reordering the option values to Dunkelkhaki, Grau, Aprikose, Schwarz makes Dunkelkhaki / S the first variant, so the hero becomes image 13 (the warm brown jacket on the model). That is consistent, and image 13 is a better hero than the dark, side-on black image 10.",
+    "I checked the drops. md5 is identical for 2 = 13, 3 = 10, 4 = 12 and 9 = 11. The RMSE between near-duplicate pairs is 1.4 % for 5 vs 12, 3.3 % for 6 vs 13 and 5.6 % for 7 vs 11 (image 7 also has a white side margin). None of the dropped ids is a variant image. Approved.",
+    "new_media_order (13, 12, 11, 10, 1, 8) plus the 7 drops covers all 13 ids.",
+    "A problem remains that reordering cannot fix: the hero 13 and every other on-model variant image still show the foreign round gallery buttons at the bottom edge, and on image 11 they are fully visible. Fixing this needs cropping the images and uploading them again, as the plan's text_findings say.",
+    "Like the old hero, image 13 also cuts the face off at the lips, so the face crop is not really an improvement. The colour and appeal are."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c",
+   "product_id": "gid://shopify/Product/16650187538823",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/reisebeutel/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/seite-1795548367860.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/77769105310087",
+    "gid://shopify/MediaImage/77769105408391",
+    "gid://shopify/MediaImage/77769105441159",
+    "gid://shopify/MediaImage/77769105473927",
+    "gid://shopify/MediaImage/77769105506695"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/77769105408391",
+   "hero_method": "reorder_media",
+   "first_variant_title": "",
+   "first_option_value_order": [],
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/77769105408391",
+    "gid://shopify/MediaImage/77769105473927",
+    "gid://shopify/MediaImage/77769105310087",
+    "gid://shopify/MediaImage/77769105441159"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/77769105506695",
+     "reason": "Exaktes Duplikat von Bild 2 (gleiche 3/4-Frontansicht mit Schultergurt, RMSE 1.9 %), nur in kleinerer Auflösung 800x800 statt 1000x1000. Keinem Variantenbild zugeordnet (einzige Variante hat kein Bild)."
+    }
+   ],
+   "infographic": {
+    "wanted": true,
+    "title": "Reisetasche aus Rindsleder",
+    "subtitle": "44 × 20 × 28 cm (L × B × H) · ca. 1.4 kg",
+    "tiles": [
+     {
+      "media_id": "gid://shopify/MediaImage/77769105408391",
+      "label": "Vorderseite mit Aussentaschen"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/77769105473927",
+      "label": "Innen: Computer-, Handy- und Ausweistasche"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/77769105310087",
+      "label": "Rückseite mit Reissverschlusstasche"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/77769105441159",
+      "label": "Boden"
+     }
+    ],
+    "footer_lines": [
+     "Leder, wasserabweisend",
+     "Innenfutter aus Polyester-Baumwolle",
+     "Weicher Tragegriff"
+    ],
+    "fact_sources": "Nur Produktbeschreibung im Shop (Masse 44 × 20 × 28 cm, Gewicht ca. 1.4 kg, Material Leder/Titel Rindsleder, wasserabweisend, Innenfutter Polyester-Baumwolle, Reissverschluss-/Handy-/Ausweis-/Computertasche, weicher Griff). CJ-Abfrage nicht möglich (API-Punkte heute 0, Fehler 16900500). Infografik als letztes Bild anhängen, nicht als Hero."
+   },
+   "text_findings": [
+    "Merkmal-Liste enthält englisches «Soft Handle» (deutsch: «Weicher Tragegriff»).",
+    "«Masse: 44cm × 20cm ×  28cm(L × W × H)» – fehlende Leerzeichen, doppeltes Leerzeichen und englisches «W»; besser «44 × 20 × 28 cm (L × B × H)».",
+    "Material-Widerspruch: Titel sagt «Rindsleder», Produktdetails nur «Leder» – bei Gelegenheit gegen Lieferantendaten prüfen (CJ-Punkte heute 0).",
+    "Satz «Ein weicher Griff und ein einzelner Tragegriff» passt nicht zu den Fotos: zu sehen sind zwei Tragegriffe plus ein abnehmbarer Schultergurt; der Schultergurt wird im Text gar nicht erwähnt.",
+    "«Reisebeutel» wirkt wie eine Übersetzung; im Deutschschweizer Sprachgebrauch üblich ist «Reisetasche» bzw. «Weekender» (nur Hinweis, Titel nicht geändert).",
+    "Bild-Hinweis: kein Bild zeigt die Tasche im Gebrauch (getragen/unterwegs); alle 4 verbleibenden Bilder sind Studio-Freisteller auf Weiss."
+   ],
+   "summary_de": "Auf dem Handy erscheint neu zuerst die 3/4-Frontansicht mit Aussentaschen und Schultergurt statt der flachen Rückseite, gefolgt vom geöffneten Innenraum; das doppelte Bild fällt weg."
+  },
+  "review": {
+   "handle": "reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": false,
+   "infographic_corrections": "Tile for gid://shopify/MediaImage/77769105473927 (opened bag): the label «Innen: Computer-, Handy- und Ausweistasche» places the phone, ID and computer pockets inside the bag. The description only lists these pockets as features and never says where they are, and the photo shows no phone or ID pocket. It shows the open main compartment with clothes, books and folders, plus the opened end compartments. Change the label to «Innenansicht» or «Geöffnet: Hauptfach». The other tiles are fine: 77769105408391 «Vorderseite mit Aussentaschen», 77769105310087 «Rückseite mit Reissverschlusstasche» (the zip pocket is clearly visible) and 77769105441159 «Boden» (bottom with metal feet). The subtitle (44 × 20 × 28 cm, ca. 1.4 kg) and the footer lines are all in the description. Minor: the infographic title says «Reisetasche» but the product title says «Reisebeutel». Use the product's own name or a neutral one so the image does not contradict the title. Put the infographic last, not as the hero.",
+   "problems": [
+    "Infographic tile label for the opened-bag image claims phone, ID and computer pockets are inside. That location is not in the description and those pockets are not visible in the photo.",
+    "Infographic title «Reisetasche» differs from the product title «Reisebeutel» (naming mismatch, not a fact error).",
+    "Verified: hero 77769105408391 is the 1000x1000 front 3/4 view with outer pockets and shoulder strap, the strongest photo. There is no variant image (Default Title), so reordering the media makes it the first image.",
+    "Verified: dropped image 77769105506695 is an exact downscaled duplicate of 77769105408391 (my own RMSE 1.9 % after resizing both to 800x800) and is not linked to any variant. The drop is safe.",
+    "Verified: new_media_order contains all 4 remaining ids (2,4,1,3) and only omits the dropped duplicate.",
+    "Opened-bag photo has small Asian-language text on the spines of the book props. It is not a promo overlay, so acceptable."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "kristallspitzen-set-8-teilig-holzbox",
+   "product_id": "gid://shopify/Product/15408458006913",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/kristall/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/seite-1795548370328.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/77451449958791",
+    "gid://shopify/MediaImage/77451449991559",
+    "gid://shopify/MediaImage/77451450024327",
+    "gid://shopify/MediaImage/77451450057095",
+    "gid://shopify/MediaImage/77451450089863"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/77451449958791",
+   "hero_method": "already_ok",
+   "first_variant_title": "",
+   "first_option_value_order": [],
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/77451449958791",
+    "gid://shopify/MediaImage/77451450024327",
+    "gid://shopify/MediaImage/77451450057095",
+    "gid://shopify/MediaImage/77451449991559",
+    "gid://shopify/MediaImage/77451450089863"
+   ],
+   "drop_media": [],
+   "infographic": {
+    "wanted": false,
+    "fact_sources": "Nicht nötig: Bild 2 ist bereits eine saubere Lieferumfang-Infografik mit den 8 Steinnamen (Rosenquarz, Tigerauge, Citrin, Aventurin, Lapislazuli, Amethyst, Bergkristall, Obsidian) und ca. 220 g aus der Beschreibung."
+   },
+   "text_findings": [
+    "Interne SKU «LX-23-KRISTALL-SET-3-TEILIG» widerspricht dem Titel «8-teilig» (kann in Bestell-/Feed-Daten auftauchen).",
+    "Mobile Breadcrumb zeigt «Home › Aus TikTok und Instagram» als Kategorie – für ein Kristall-Set wäre «Wohnen & Deko» als Pfad vertrauenswürdiger (Kollektions-/Theme-Thema, nicht Produkttext).",
+    "Beschreibung beginnt mit dem Lieferzeit-Block vor der eigentlichen Produktvorstellung; sonst sauber (Schweizer Schreibweise, keine Heilversprechen, «laut Hersteller» korrekt eingeschränkt).",
+    "Bild-Hinweis: Hero (Bild 1) ist gut und korrekt, das Set füllt aber nur das mittlere Drittel des quadratischen Bildes – ein enger zugeschnittener Hero würde auf dem Handy grösser wirken.",
+    "Bild-Hinweis: Bild 5 (leere Holzbox) ist ein Ausschnitt mit grünem Blattrest am oberen Rand und schwach; korrekt beschriftet («ohne Kristalle abgebildet»), daher nur ans Ende gestellt."
+   ],
+   "summary_de": "Der Hero bleibt das ganze Set in der Holzbox; beim Wischen kommen neu zuerst die zwei echten Nahaufnahmen der Steine, danach die Lieferumfang-Übersicht und zuletzt die leere Holzbox."
+  },
+  "review": {
+   "handle": "kristallspitzen-set-8-teilig-holzbox",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "Verified: hero 77451449958791 (full 8-piece set in the wooden box, 1200x1200) is the correct and most complete photo. There is no variant image (Default Title), so it is already first.",
+    "Verified: new_media_order contains all 5 ids (1,3,4,2,5). There are no drops and no variant changes.",
+    "Verified: the existing overview image 77451449991559 labels the 8 stones in the right order (Rosenquarz, Tigerauge, Citrin, Aventurin, Lapislazuli, Amethyst, Bergkristall, Obsidian) and shows ca. 220 g, both from the description. No new infographic is needed.",
+    "Note: detail shots 77451450024327 and 77451450057095 are upscaled crops (visibly soft at full size). Acceptable as detail images after the hero, but not hero material.",
+    "Note: 77451450089863 (empty box, green leaf remnant at the top edge) is weak. Keeping it last is correct."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "multifunktionaler-vertikal-spiralschneider-58cc21",
+   "product_id": "gid://shopify/Product/15508465025409",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/multifunktionaler-vertikal-spiralschneider-58cc21/big.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/multifunktionaler-vertikal-spiralschneider-58cc21/shot_top.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/70615418962305",
+    "gid://shopify/MediaImage/70615418929537",
+    "gid://shopify/MediaImage/70615418995073",
+    "gid://shopify/MediaImage/70615419027841",
+    "gid://shopify/MediaImage/70615419060609"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/70615418962305",
+   "hero_method": "already_ok",
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/70615418962305",
+    "gid://shopify/MediaImage/70615418995073",
+    "gid://shopify/MediaImage/70615419060609",
+    "gid://shopify/MediaImage/70615419027841",
+    "gid://shopify/MediaImage/70615418929537"
+   ],
+   "drop_media": [],
+   "first_option_value_order": [],
+   "first_variant_title": "",
+   "infographic": {
+    "wanted": false
+   },
+   "text_findings": [
+    "«Die Zubereitung gelingt mit einem sanften Schütteln» ist offenbar falsch übersetzt: Auf den Fotos wird der Griff von oben heruntergedrückt bzw. gekurbelt, geschüttelt wird nichts.",
+    "Farbe steht als «blau» bzw. «Blau» im Text, das Gerät ist auf allen Fotos türkis bzw. mint. Hier droht eine Reklamation wegen der Farbe.",
+    "Den Lieferumfang gibt es zweimal (im Fliesstext und unter «Technische Daten»). Die Masse sind uneinheitlich geschrieben: «26 × 14,8 cm» im Text, «26 × 14.8cm» bei den Produktdetails (ohne Leerzeichen, nur 2 Masse).",
+    "Bild 4 zeigt Spiralen in mehreren Breiten. Der Lieferumfang nennt aber keine Klingeneinsätze, und es bleibt offen, ob mehrere Schneideeinsätze dabei sind.",
+    "Alle Bilder sind nur ca. 800 px breit. Sie sind sauber und ohne Fremdtext, wirken beim Zoomen auf dem Handy aber etwas weich."
+   ],
+   "summary_de": "Das starke Hauptbild bleibt; danach kommen die zwei Anwendungsfotos mit Händen, dann die Spiralen-Ergebnisse, und die kleine Zweierbild-Collage rückt ans Ende."
+  },
+  "review": {
+   "handle": "multifunktionaler-vertikal-spiralschneider-58cc21",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "Live media re-queried (5 images, no variant images, single 'Default Title' variant). The hero, image 1 (792x808: device with bowls of spirals, no foreign text), is the strongest shot. The new order 1,3,5,4,2 contains all 5 ids and drops nothing. No problems."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+   "product_id": "gid://shopify/Product/15412915110273",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe/big.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe/shot_top.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/69551982870913",
+    "gid://shopify/MediaImage/69551982903681",
+    "gid://shopify/MediaImage/69552063218049",
+    "gid://shopify/MediaImage/69552063250817",
+    "gid://shopify/MediaImage/69552063283585",
+    "gid://shopify/MediaImage/69552063316353",
+    "gid://shopify/MediaImage/69552063349121",
+    "gid://shopify/MediaImage/69634308964737",
+    "gid://shopify/MediaImage/69650088132993",
+    "gid://shopify/Video/69682254840193"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/69551982870913",
+   "hero_method": "already_ok",
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/69551982870913",
+    "gid://shopify/MediaImage/69552063316353",
+    "gid://shopify/MediaImage/69634308964737",
+    "gid://shopify/Video/69682254840193",
+    "gid://shopify/MediaImage/69552063218049",
+    "gid://shopify/MediaImage/69552063283585",
+    "gid://shopify/MediaImage/69551982903681"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/69552063250817",
+     "reason": "Bild 4 ist dasselbe Foto wie das Hauptbild 1 (gleiche Pose), nur freigestellt und klein auf Weiss. Eine Wiederholung ohne neue Information."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69552063349121",
+     "reason": "Bild 7 ist exakt das Hauptbild 1 (gleiches Foto), nur seitlich auf ein Quadrat erweitert. Es ist ein Duplikat."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69650088132993",
+     "reason": "Bild 9 ist dieselbe Rückenansicht wie Bild 3, aber mit grauem Rahmen («LuxeStyle-Edit»). Das ist ein Duplikat und wirkt unsauber."
+    }
+   ],
+   "first_option_value_order": [],
+   "first_variant_title": "",
+   "infographic": {
+    "wanted": false
+   },
+   "text_findings": [
+    "«Für ein Fest im Dezember am besten bis Mitte November bestellen» ist veraltet (heute 24.11.). Die Seite zeigt eine Lieferung am 9.–23. Dez. Der Satz sollte heissen, bis wann man für Weihnachten/Silvester bestellen muss, oder er fällt weg.",
+    "Unter «Technische Daten» steht «Ärmel: Ärmellos». Der Text spricht vom «schulterfreien Carmen-Ausschnitt», und die Fotos zeigen kurze, drapierte Off-Shoulder-Ärmel. Das widerspricht sich.",
+    "Varianten Weiss/Weinrot: Für Weiss gibt es nur ein Einzelfoto (Bild 2) plus die Rückenansicht in der Collage (Bild 5). Es fehlt eine echte Rückenansicht in Weiss (nur Hinweis, kein Textfehler)."
+   ],
+   "summary_de": "Das Kleid zeigt weiterhin das Weinrot-Hauptfoto. Danach folgen die Seitenansicht, das Raum-Foto, das Video, die Rückenansicht, die Farbübersicht und Weiss; drei doppelte Bilder fallen weg."
+  },
+  "review": {
+   "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": true,
+   "infographic_corrections": "",
+   "problems": [
+    "I verified at 800 px that image 4 (1600 cut-out on white) and image 7 (1920 square extension) are the same photo as hero image 1. Image 9 is image 3's back view in a grey frame. None of the three dropped images is a variant image: the variants use 69551982870913 (Weinrot) and 69551982903681 (Weiss), and both are kept.",
+    "The new order has 7 ids, which equals the 10 current ids minus 3 drops, so it is complete. Weiss (variant image 2) goes last, which is fine because the theme jumps to it when Weiss is selected.",
+    "Minor: image 8 (832x1248, room shot at position 3) looks AI-generated (typical SDXL size, generic interior). It is acceptable as a lifestyle shot but should not be called a real customer or studio photo."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "led-wasserwellen-projektionsleuchte-677504",
+   "product_id": "gid://shopify/Product/15450836566401",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/led-wasserwellen-projektionsleuchte-677504/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/led-wasserwellen-projektionsleuchte-677504/shot_top.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/69887071486337",
+    "gid://shopify/MediaImage/69887071224193",
+    "gid://shopify/MediaImage/69887071453569",
+    "gid://shopify/MediaImage/69887071519105",
+    "gid://shopify/MediaImage/69887071551873",
+    "gid://shopify/MediaImage/69887071584641",
+    "gid://shopify/MediaImage/69887071617409",
+    "gid://shopify/MediaImage/69887071650177",
+    "gid://shopify/MediaImage/69887071682945",
+    "gid://shopify/MediaImage/69887071715713",
+    "gid://shopify/MediaImage/69887071748481",
+    "gid://shopify/MediaImage/69887071781249",
+    "gid://shopify/MediaImage/69887071814017",
+    "gid://shopify/MediaImage/69887071846785",
+    "gid://shopify/MediaImage/69887071879553",
+    "gid://shopify/MediaImage/69887071912321",
+    "gid://shopify/Video/77290422763911"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/69887071486337",
+   "hero_method": "already_ok",
+   "variant_image_changes": [
+    {
+     "variant_title": "3 W-Set 5-1 Stück",
+     "media_id": "gid://shopify/MediaImage/69887071617409",
+     "reason": "Set 5 hat bisher kein Bild. Das Muster der Variantenbilder ist eindeutig: Set 1–4 = Mond/Galaxie/Saturn/Sonnensystem-Kugel + Krone, Set 7 = Saturn + quadratisch (Bild 9), Set 8 = Sonnensystem + quadratisch (Bild 14). Set 5 ist demnach Mond + quadratisch = Bild 7, das keiner Variante zugeordnet ist. Nicht am Lieferanten bestätigt (CJ-API-Punkte heute 0)."
+    },
+    {
+     "variant_title": "3 W-Set 6-1 Stück",
+     "media_id": "gid://shopify/MediaImage/69887071814017",
+     "reason": "Set 6 hat bisher kein Bild. Nach demselben Muster ist Set 6 Galaxie + quadratisch = Bild 13, das keiner Variante zugeordnet ist. Nicht am Lieferanten bestätigt (CJ-API-Punkte heute 0)."
+    }
+   ],
+   "new_media_order": [
+    "gid://shopify/MediaImage/69887071486337",
+    "gid://shopify/Video/77290422763911",
+    "gid://shopify/MediaImage/69887071879553",
+    "gid://shopify/MediaImage/69887071551873",
+    "gid://shopify/MediaImage/69887071519105",
+    "gid://shopify/MediaImage/69887071715713",
+    "gid://shopify/MediaImage/69887071748481",
+    "gid://shopify/MediaImage/69887071453569",
+    "gid://shopify/MediaImage/69887071912321",
+    "gid://shopify/MediaImage/69887071617409",
+    "gid://shopify/MediaImage/69887071814017",
+    "gid://shopify/MediaImage/69887071682945",
+    "gid://shopify/MediaImage/69887071846785",
+    "gid://shopify/MediaImage/69887071781249"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/69887071224193",
+     "reason": "Bild 2 ist eine Werbetafel mit grossem englischem Text «Charging Touch» und dem Wasserzeichen «3MORE». Sie zeigt dieselbe Szene wie Bild 5. Ausserdem verspricht sie eine aufladbare Version, obwohl alle Varianten «Stecker» heissen. Das ist irreführend, und keine Variante nutzt das Bild."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69887071584641",
+     "reason": "Bild 6 ist zwar ein echtes Raumfoto, daneben steht aber gut sichtbar eine Handtasche mit «COACH»-Logo und C-Monogramm (fremde Marke), dazu private Personenfotos an der Wand. Keine Variante nutzt das Bild. Zuschneiden geht nicht, weil Tasche und Leuchte sich überlappen."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69887071650177",
+     "reason": "Bild 8 ist ein Lieferanten-Datenblatt mit englischem Text zu Umkarton, «Packing quantity: 40/piece» und Kartonmassen. Das sind Grosshandelsangaben, die Kundinnen verwirren. Keine Variante nutzt das Bild."
+    }
+   ],
+   "first_option_value_order": [],
+   "first_variant_title": "",
+   "infographic": {
+    "wanted": true,
+    "title": "Welche Ausführung passt?",
+    "subtitle": "Alle Varianten der Wasserwellen-Leuchte auf einen Blick",
+    "tiles": [
+     {
+      "media_id": "gid://shopify/MediaImage/69887071486337",
+      "label": "Quadratisch · 1–3 Stück"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071519105",
+      "label": "Kronenform · 1–3 Stück"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071715713",
+      "label": "Set 1"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071748481",
+      "label": "Set 2"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071453569",
+      "label": "Set 3"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071912321",
+      "label": "Set 4"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071617409",
+      "label": "Set 5"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071814017",
+      "label": "Set 6"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071682945",
+      "label": "Set 7"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071846785",
+      "label": "Set 8"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69887071781249",
+      "label": "Set 9–11"
+     }
+    ],
+    "footer_lines": [
+     "3 W · 16 Lichtfarben · Farbe und Helligkeit per Fernbedienung",
+     "Gehäuse 110 × 110 mm · Kunststoff (ABS und Acryl)",
+     "Im Paket: Nachtlicht und Fernbedienung"
+    ],
+    "fact_sources": "Optionswerte (Quadratisch/Krone 1–3 Stück, Set 1–11). Zuordnung Set → Bild aus den bestehenden Variantenbildern im Shop: Set 1=Bild 10, Set 2=11, Set 3=3, Set 4=16, Set 7=9, Set 8=14, Set 9–11=12, Krone=4. Set 5 (Bild 7) und Set 6 (Bild 13) nur zeigen, wenn die vorgeschlagene Variantenbild-Zuordnung übernommen wird. Fusszeilen aus der Beschreibung: 3 W, 16 Lichtfarben, Fernbedienung, Helligkeit, 110 × 110 mm, ABS und Acryl, Lieferumfang Nachtlicht + Fernbedienung. Keine Angaben zu Kugel-Inhalten erfunden, darum nur Set-Nummern."
+   },
+   "text_findings": [
+    "Die Varianten «3 W-Set 1-1 Stück» bis «3 W-Set 11-1 Stück» sind unverständlich. Laut Variantenbildern enthalten die Sets eine leuchtende Kristallkugel (Mond, Galaxie, Saturn, Sonnensystem) bzw. bei Set 9–11 einen weissen Sternenprojektor («2pcs»), jeweils zusammen mit einer Wasserwellen-Leuchte. Weder Variantennamen noch Beschreibung erwähnen das. Benennung und Inhalt sollten geklärt werden (am Lieferanten prüfen, CJ-Punkte waren heute 0).",
+    "Set 9, Set 10 und Set 11 haben dasselbe Bild, der Unterschied ist für Kundinnen nicht erkennbar.",
+    "Widerspruch beim Strom: Der Text sagt «über USB mit Strom versorgt» und «die quadratische Ausführung ist aufladbar». Die Produktdetails sagen «Stromversorgung: Batterie/Akku». Die Varianten heissen aber «Stecker quadratisch» bzw. «Stecker Krone», also zum Einstecken.",
+    "Die Masse «110 × 110mm» gelten laut Text für das Gehäuse. Das Lieferanten-Datenblatt (Bild 8) nennt für die Krone 12,5 × 12,5 cm und für die quadratische Form 11,5 × 11,5 cm. Bei «110 × 110mm» fehlt zudem das Leerzeichen.",
+    "Gewicht «ca. 318 g – 1.6 kg (je nach Variante)»: 1,6 kg deutet auf Sets mit mehreren Teilen hin, was die Variantennamen nicht erklären. «1.6» steht mit Punkt statt Komma.",
+    "Das Video hat einen grossen englischen TikTok-Text («I got the lamp that makes you feel like you're underwater»). Es wirkt wie ein fremdes Creator-Video, die Nutzungsrechte sollten geprüft werden. Es zeigt die Wirkung aber gut, deshalb bleibt es vorerst an Position 2.",
+    "Die Bild-Alt-Texte zählen doppelt («Bild 1…12», danach wieder «Bild 1…4»)."
+   ],
+   "summary_de": "Die Leuchte behält ihr sauberes Produktbild vorne. Gleich danach zeigen das Video und ein echtes Raumfoto den Wellen-Effekt; Datenblatt, «Charging»-Werbetafel und das Foto mit fremdem Markenlogo fallen weg, und Set 5/6 erhalten ihr passendes Bild."
+  },
+  "review": {
+   "handle": "led-wasserwellen-projektionsleuchte-677504",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [
+    "gid://shopify/MediaImage/69887071224193"
+   ],
+   "rejected_variant_changes": [],
+   "approve_infographic": false,
+   "infographic_corrections": "Reject as specified. (1) The subtitle says 'Alle Varianten … auf einen Blick', but the variant '3W-16 Farben, quadratischer Holzsockel, 1 Stück' (CJYD188109131EV) has no tile. (2) The footer 'Gehäuse 110 × 110 mm' is stated for all versions, but the supplier datasheet (image 8) gives square 11.5 × 11.5 cm and crown 12.5 × 12.5 cm, and the crown promo (image 4) says 120 × 120 mm. Leave out the size line or give it per version only once it is clarified. (3) 'Im Paket: Nachtlicht und Fernbedienung' is wrong for the 2- and 3-Stück variants and for Set 1–11, which include a crystal globe or a second projector (weights up to 1.6 kg). (4) The 'Quadratisch · 1–3 Stück' tile uses image 1. It cannot be shown whether image 1 has the plastic or the wooden base: the supplier image for 'plug in square' is image 5, and image 1 is neither variant's CJ image. (5) The Set tiles reuse supplier collages that carry the English 'Plug-in touch' spec panel and the 'MORE' watermark. If kept, the infographic should cover only the shape choice (Quadratisch / Krone / Holzsockel) and Set 1–8 = globe motif (Mond / Galaxie / Saturn / Sonnensystem) with crown (Set 1–4) or square (Set 5–8). That mapping is now supplier-confirmed (see problems).",
+   "problems": [
+    "The Set 5/6 variant image changes are CONFIRMED with CJ (product/query CJYD1881091). The CJ variantImage for Set5 is 94c1b302-…jpg, which is the shop's image 7 (69887071617409). For Set6 it is 53ab9705-…jpg, which is image 13 (69887071814017). Both assignments are correct.",
+    "The reason given for dropping image 2 is factually wrong. The CJ variant image of '3W-16 color square wooden base' (= shop variant 'quadratischer Holzsockel') is exactly this 'Charging Touch' picture, so a rechargeable version does exist (the Holzsockel variant). It is not true that 'all variants are Stecker'. The drop is still acceptable: the image has the '3MORE' watermark and a large English text block, it repeats image 5's scene, and no shop variant uses it.",
+    "Inconsistency: image 5 (69887071551873), kept at position 4, has the same faint 'MORE' watermark and the same large English spec block ('Plug-in touch … Size long 110*high 110MM …'). Image 4 (crown variant image, position 5) also carries a 'MO…' watermark and English text. Image 4 must stay because the crown variants use it. Image 5 has no shop variant link, so it should move to the end or be dropped like image 2.",
+    "I verified the image 6 drop at full size. It shows a COACH monogram bag plus polaroids of private people. Image 8 (packing datasheet) and image 2 are not variant images. The new order has 14 ids, which equals 17 minus 3 drops, so it is complete.",
+    "Image 15 (position 3) is a real room shot with a good wave effect. It shows a small framed wedding photo of private people and cluttered cosmetics, which is acceptable but not ideal.",
+    "The video (now position 2) shows the correct square cube lamp and remote, but it is a TikTok screen recording with a persistent English caption. The usage rights should be checked.",
+    "Text finding (new): the description says 'Die quadratische Ausführung ist aufladbar'. Per CJ, the 'Charging Touch' image belongs to the 'square wooden base' (Holzsockel) variant, while 'plug in square' is the plug-in version. The rechargeable version is therefore most likely the Holzsockel variant, not 'Stecker quadratisch'. The wording should be clarified with the supplier."
+   ]
+  }
+ },
+ {
+  "plan": {
+   "handle": "selbstreinigende-haarburste-894400",
+   "product_id": "gid://shopify/Product/15449407783297",
+   "contact_sheet": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/selbstreinigende-haarburste-894400/sheet.png",
+   "mobile_screenshot": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/besser2411/selbstreinigende-haarburste-894400/shot_top.png",
+   "media_ids_in_current_order": [
+    "gid://shopify/MediaImage/69871538110849",
+    "gid://shopify/MediaImage/69871538143617",
+    "gid://shopify/MediaImage/69871538176385",
+    "gid://shopify/MediaImage/69871538209153",
+    "gid://shopify/MediaImage/69871538241921",
+    "gid://shopify/MediaImage/69871538274689",
+    "gid://shopify/MediaImage/69871538307457",
+    "gid://shopify/MediaImage/69871538340225",
+    "gid://shopify/MediaImage/69871538372993",
+    "gid://shopify/MediaImage/69871538405761",
+    "gid://shopify/MediaImage/69871538438529",
+    "gid://shopify/MediaImage/69871538471297",
+    "gid://shopify/MediaImage/69871538504065",
+    "gid://shopify/MediaImage/69871538536833",
+    "gid://shopify/MediaImage/69871538569601",
+    "gid://shopify/MediaImage/69871538602369",
+    "gid://shopify/MediaImage/69871538635137",
+    "gid://shopify/MediaImage/69871538667905",
+    "gid://shopify/MediaImage/69871538700673",
+    "gid://shopify/MediaImage/69871538733441",
+    "gid://shopify/Video/77290420961671"
+   ],
+   "hero_media_id": "gid://shopify/MediaImage/69871538340225",
+   "hero_method": "reorder_media",
+   "variant_image_changes": [],
+   "new_media_order": [
+    "gid://shopify/MediaImage/69871538340225",
+    "gid://shopify/Video/77290420961671",
+    "gid://shopify/MediaImage/69871538602369",
+    "gid://shopify/MediaImage/69871538569601",
+    "gid://shopify/MediaImage/69871538405761",
+    "gid://shopify/MediaImage/69871538307457",
+    "gid://shopify/MediaImage/69871538733441",
+    "gid://shopify/MediaImage/69871538667905",
+    "gid://shopify/MediaImage/69871538110849",
+    "gid://shopify/MediaImage/69871538504065",
+    "gid://shopify/MediaImage/69871538536833",
+    "gid://shopify/MediaImage/69871538700673",
+    "gid://shopify/MediaImage/69871538635137",
+    "gid://shopify/MediaImage/69871538209153"
+   ],
+   "drop_media": [
+    {
+     "media_id": "gid://shopify/MediaImage/69871538143617",
+     "reason": "Bild 2 ist klein (483 × 550) und trägt den englischen roten Text «Can't remove hair with one click». Auf einem Produkt mit dem Titel «Selbstreinigende Haarbürste» schadet das. Dieselbe weisse Bürste zeigt Bild 18 sauber. Keine Variante nutzt das Bild."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69871538176385",
+     "reason": "Bild 3 ist ein Duplikat von Bild 17 (rosenrote Bürste mit grossem englischem Text «Rose red Pressed Hair Removal / 3D Self Cleaning Hair Brush»), zusätzlich mit «*2». Keine Variante nutzt das Bild."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69871538241921",
+     "reason": "Bild 5 ist eine winzige Collage (400 × 190) mit einem Haarglätter, also einem anderen Produkt, und englischem Text. Keine Variante nutzt das Bild."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69871538274689",
+     "reason": "Bild 6 ist eine schwache Zweifach-Collage mit viel Weissraum und dem englischen Text «Can't remove hair with one click». Der Inhalt steckt bereits in den Bildern 18 und 20. Keine Variante nutzt das Bild."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69871538372993",
+     "reason": "Bild 9 ist dasselbe Kleinbild wie Bild 2 mit «3PC» und «Can't remove hair with one click». Das 3er-Set zeigt Bild 13 sauber in 1200 px. Keine Variante nutzt das Bild."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69871538438529",
+     "reason": "Bild 11 ist eine winzige Collage (400 × 188) mit einem Jade-Roller, also einem anderen Produkt, und englischem Text. Keine Variante nutzt das Bild."
+    },
+    {
+     "media_id": "gid://shopify/MediaImage/69871538471297",
+     "reason": "Bild 12 ist eine winzige Collage (382 × 191) mit Jade-Roller und Gua-Sha, also einem anderen Produkt, und englischem Text. Keine Variante nutzt das Bild."
+    }
+   ],
+   "first_option_value_order": [],
+   "first_variant_title": "Weiss, gepresste Haarentfernung",
+   "infographic": {
+    "wanted": true,
+    "title": "Welche Bürste reinigt sich selbst?",
+    "subtitle": "Selbstreinigung nur bei «gepresste Haarentfernung»",
+    "tiles": [
+     {
+      "media_id": "gid://shopify/MediaImage/69871538569601",
+      "label": "Mit Selbstreinigung per Knopfdruck: Weiss · Rosenrot · Rot"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69871538307457",
+      "label": "Schwarzgold – ohne Selbstreinigung"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69871538667905",
+      "label": "Elegant Weiss – ohne Selbstreinigung"
+     },
+     {
+      "media_id": "gid://shopify/MediaImage/69871538733441",
+      "label": "Schwarzlila – ohne Selbstreinigung"
+     }
+    ],
+    "footer_lines": [
+     "Set-Varianten: mit Basis zum Aufhängen an der Wand",
+     "Für alle Haartypen · nass und trocken",
+     "Material: ABS · antistatisch"
+    ],
+    "fact_sources": "Beschreibung: «Die Reinigung per Tastendruck gibt es nur bei den Varianten mit ‹Pressed Hair Removal› im Namen, also in Weiss, Rosenrot und Rot. Die Varianten in Schwarzgold, Elegant white und Schwarzlila haben diese Funktion nicht.» Ausserdem: «Bei den Set-Varianten kommt eine Basis dazu … an der Wand aufhängen», «für alle Haartypen», «nass oder trocken», «Material ist ABS», «antistatische Bauweise». Bild 15 zeigt die drei Bürsten Weiss/Rosenrot/Rot mit Kissen-Bürstenkopf (gleiche Form wie im Video mit Knopfdruck). Die Bilder 7/18/20 zeigen die Hohl-Oval-Form in Schwarzgold, Weiss und Schwarzlila."
+   },
+   "text_findings": [
+    "Grösstes Vertrauensproblem: Der Titel sagt «Selbstreinigende Haarbürste», aber die vorausgewählte erste Variante «Schwarzgold» hat laut eigener Beschreibung KEINE Selbstreinigung. Ebenso Elegant Weiss und Schwarzlila. Wer ohne Umschalten kauft, bekommt eine normale Bürste. Vorschlag: «Weiss, gepresste Haarentfernung» (gleicher Preis CHF 14.90) als erste Variante. Dieselbe weisse Bürste zeigt auch das Video.",
+    "Der Optionswert «Grossrot» ist eine wörtliche Übersetzung von «Big red» und sollte «Rot» heissen. Die Beschreibung schreibt richtig «Rot».",
+    "Die Beschreibung enthält Englisch: «Pressed Hair Removal», «Elegant white». Die Optionen heissen «gepresste Haarentfernung» und «Elegant Weiss». «gepresste Haarentfernung» ist zudem holprig, verständlicher wäre z. B. «mit Reinigungsknopf».",
+    "52 Varianten, keine davon mit eigenem Bild. «Set A»–«Set Z», «Set 1»–«Set 9», «3 Stk Set A/B/C» und «Rot, ausgehöhltes Set» sind nirgends erklärt. Laut Lieferantenbildern enthalten manche Sets andere Produkte (Haarglätter, Jade-Roller). Der Set-Inhalt muss geklärt oder die Sets ausgeblendet werden. Set B kostet CHF 18.90 ohne erkennbaren Unterschied.",
+    "«Technische Daten»: «Farbe: Schwarz Gold» und «Lieferumfang: 1 Kamm, 1 Basis» gelten nicht für alle Varianten. Laut Text gibt es die Basis nur bei Sets. Ausserdem ist es eine Bürste, kein «Kamm».",
+    "Gewicht «ca. 68 g – 1.3 kg (je nach Variante)»: 1,3 kg für eine Bürste bestätigt, dass manche Sets weitere Produkte enthalten. «1.3» steht mit Punkt statt Komma.",
+    "Das Video hat englische TikTok-Texte («Customer: your self cleaning hairbrush doesn't clean itself» / «Me: have you tried pressing the back button?»). Es wirkt wie ein fremdes Creator-Video, die Nutzungsrechte sollten geprüft werden. Es zeigt die Selbstreinigung aber sehr überzeugend, deshalb steht es an Position 2."
+   ],
+   "summary_de": "Statt einer schwarz-goldenen Bürste auf lila Ständer sieht man zuerst ein ansprechendes Foto aller Bürsten an der Wand, gleich danach das Video der Selbstreinigung; sieben kleine Collagen mit Fremdprodukten und englischem Text fallen weg."
+  },
+  "review": {
+   "handle": "selbstreinigende-haarburste-894400",
+   "approve_hero": true,
+   "approve_order": true,
+   "rejected_drops": [],
+   "rejected_variant_changes": [],
+   "approve_infographic": false,
+   "infographic_corrections": "Tile 'Elegant Weiss – ohne Selbstreinigung' uses image 18 (69871538667905), and tile 'Schwarzlila – ohne Selbstreinigung' uses image 20 (69871538733441). Both images show the brush mounted on its round wall base. Per the description, the base only comes with the Set variants ('Bei den Set-Varianten kommt eine Basis dazu'), so these pictures show 'Set · Weiss' / 'Schwarz-Lila Set', not the plain variants named on the tiles. A buyer of plain 'Elegant Weiss' would expect the base. Use images without a base, e.g. crops from image 13 (white) and image 10 (lila), or label the tiles 'Elegant Weiss (Bild: Set mit Basis)'. The tile-15 label says 'Rot', but the option value is still 'Grossrot, gepresste Haarentfernung'. Use the option wording or make sure the rename happens first. Image 16 suggests that the 'Basis' variants (Weiss/Rosenrot/Grossrot, Basis) are the same cushion brush with 'One key press cleaning'. The subtitle 'Selbstreinigung nur bei «gepresste Haarentfernung»' follows the description but may be wrong for those 'Basis' variants. Soften it or clarify with the supplier first.",
+   "problems": [
+    "Variants have no images, so the theme shows the first media. The hero, image 8 (750x750 flat lay of cushion and hollow brushes on beige, no text), is the cleanest in-context shot and is accepted. It is only 750 px wide, and the purple brush is cropped at the bottom.",
+    "All 7 drops verified. 2 and 9 carry 'Can't remove hair with one click'. 3 has '*2' plus large English text and duplicates 17. 5, 11 and 12 are tiny collages with a hair straightener or jade roller/gua sha. 6 is a weak collage. No variant uses any image. The new order has 14 ids, which equals 21 minus 7, so it is complete.",
+    "Inconsistency: image 17 (rose, 'Rose red Pressed Hair Removal / 3D Self Cleaning Hair Brush') and image 4 (red, '3D Self Cleaning Hair Brush') keep the same large English promo text that was the reason for dropping 3. They sit at the end, which is acceptable because they are the only single shots of Rosenrot and Rot, but they still break the 'no large English overlays' rule. Image 16 (position 3) has small English labels ('One key press cleaning', 'Central airbag', 'Hair cleanup layer').",
+    "first_variant_title is set to 'Weiss, gepresste Haarentfernung', but first_option_value_order is empty, so nothing would change the preselected variant (it stays 'Schwarzgold', which does NOT self-clean). If the default change is intended, put 'Weiss, gepresste Haarentfernung' first in the Farbe option order. That variant has the same price, CHF 14.90 (CJJT153827209IR).",
+    "The video (position 2) shows the correct white self-cleaning cushion brush with the back-button release. Its English TikTok captions start with 'Customer: your self cleaning hairbrush doesn't clean itself' (negative framing in slot 2), and the usage rights are unclear.",
+    "Image 1 (kept at position 9) shows the Schwarzgold brush on a magenta base. This colour pairing is not explained by any variant name."
+   ]
+  }
+ }
+]

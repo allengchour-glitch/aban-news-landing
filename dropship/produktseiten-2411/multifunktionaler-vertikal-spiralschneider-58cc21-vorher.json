@@ -1,0 +1,89 @@
+{
+ "id": "gid://shopify/Product/15508465025409",
+ "handle": "multifunktionaler-vertikal-spiralschneider-58cc21",
+ "title": "Multifunktionaler Vertikal-Spiralschneider",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17955398025601",
+   "name": "Title",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/12436398670209",
+     "name": "Default Title"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/56150783361409",
+    "title": "Default Title",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Title",
+      "value": "Default Title"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70615418962305",
+    "mediaContentType": "IMAGE",
+    "alt": "Multifunktionaler Vertikal-Spiralschneider – Bild 2 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2585138495470.png?v=1787293697",
+     "width": 792,
+     "height": 808
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70615418929537",
+    "mediaContentType": "IMAGE",
+    "alt": "Multifunktionaler Vertikal-Spiralschneider | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2624925106004.png?v=1787293697",
+     "width": 809,
+     "height": 417
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70615418995073",
+    "mediaContentType": "IMAGE",
+    "alt": "Multifunktionaler Vertikal-Spiralschneider – Bild 3 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/19590784614975.png?v=1787293698",
+     "width": 802,
+     "height": 694
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70615419027841",
+    "mediaContentType": "IMAGE",
+    "alt": "Multifunktionaler Vertikal-Spiralschneider – Bild 4 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1068160807440.png?v=1787293698",
+     "width": 790,
+     "height": 588
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70615419060609",
+    "mediaContentType": "IMAGE",
+    "alt": "Multifunktionaler Vertikal-Spiralschneider – Bild 5 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/292813050846.png?v=1787293698",
+     "width": 790,
+     "height": 669
+    }
+   }
+  ]
+ }
+}

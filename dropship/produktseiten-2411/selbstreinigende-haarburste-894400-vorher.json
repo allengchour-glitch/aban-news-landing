@@ -1,0 +1,1161 @@
+{
+ "id": "gid://shopify/Product/15449407783297",
+ "handle": "selbstreinigende-haarburste-894400",
+ "title": "Selbstreinigende Haarbürste",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17881056805249",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/12034200994177",
+     "name": "Schwarzgold"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201026945",
+     "name": "Elegant Weiss"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201059713",
+     "name": "Schwarzlila"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201092481",
+     "name": "Schwarz-Gold Set"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201125249",
+     "name": "Set · Weiss"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201158017",
+     "name": "Schwarz-Lila Set"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201190785",
+     "name": "Weiss, gepresste Haarentfernung"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201223553",
+     "name": "Rosenrot, gepresste Haarentfernung"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201256321",
+     "name": "Grossrot, gepresste Haarentfernung"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201289089",
+     "name": "Weiss, Basis"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201321857",
+     "name": "Rosenrot, Basis"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201354625",
+     "name": "Grossrot, Basis"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201387393",
+     "name": "Set A"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201420161",
+     "name": "Set B"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201452929",
+     "name": "Set C"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201485697",
+     "name": "3 Stk Set C"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201518465",
+     "name": "3 Stk Set B"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201551233",
+     "name": "3 Stk Set A"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201584001",
+     "name": "Set D"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201616769",
+     "name": "Set E"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201649537",
+     "name": "Set F"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201682305",
+     "name": "Set G"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201715073",
+     "name": "Set H"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201747841",
+     "name": "Set I"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201780609",
+     "name": "Set K"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201813377",
+     "name": "Set J"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201846145",
+     "name": "Set L"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201878913",
+     "name": "Set M"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201911681",
+     "name": "Set N"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201944449",
+     "name": "Set O"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034201977217",
+     "name": "Set P"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202009985",
+     "name": "Set Q"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202042753",
+     "name": "Set R"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202075521",
+     "name": "Set S"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202108289",
+     "name": "Set T"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202141057",
+     "name": "Set U"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202173825",
+     "name": "Set V"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202206593",
+     "name": "Set W"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202239361",
+     "name": "Set X"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202272129",
+     "name": "Set Y"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202304897",
+     "name": "Set Z"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202337665",
+     "name": "Elegant Weiss 2 Stk"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202370433",
+     "name": "Set 1"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202403201",
+     "name": "Set 2"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202435969",
+     "name": "Set 3"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202468737",
+     "name": "Set 4"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202501505",
+     "name": "Set 5"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202534273",
+     "name": "Set 6"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202567041",
+     "name": "Rot, ausgehöhltes Set"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202599809",
+     "name": "Set 7"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202632577",
+     "name": "Set 8"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12034202665345",
+     "name": "Set 9"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55881572876673",
+    "title": "Schwarzgold",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarzgold"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881572909441",
+    "title": "Elegant Weiss",
+    "position": 2,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Elegant Weiss"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881572942209",
+    "title": "Schwarzlila",
+    "position": 3,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarzlila"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881572974977",
+    "title": "Schwarz-Gold Set",
+    "position": 4,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz-Gold Set"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573007745",
+    "title": "Set · Weiss",
+    "position": 5,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set · Weiss"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573040513",
+    "title": "Schwarz-Lila Set",
+    "position": 6,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz-Lila Set"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573073281",
+    "title": "Weiss, gepresste Haarentfernung",
+    "position": 7,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss, gepresste Haarentfernung"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573106049",
+    "title": "Rosenrot, gepresste Haarentfernung",
+    "position": 8,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rosenrot, gepresste Haarentfernung"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573138817",
+    "title": "Grossrot, gepresste Haarentfernung",
+    "position": 9,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grossrot, gepresste Haarentfernung"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573171585",
+    "title": "Weiss, Basis",
+    "position": 10,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss, Basis"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573204353",
+    "title": "Rosenrot, Basis",
+    "position": 11,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rosenrot, Basis"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573237121",
+    "title": "Grossrot, Basis",
+    "position": 12,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grossrot, Basis"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573269889",
+    "title": "Set A",
+    "position": 13,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set A"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573302657",
+    "title": "Set B",
+    "position": 14,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set B"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573335425",
+    "title": "Set C",
+    "position": 15,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set C"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573368193",
+    "title": "3 Stk Set C",
+    "position": 16,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "3 Stk Set C"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573400961",
+    "title": "3 Stk Set B",
+    "position": 17,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "3 Stk Set B"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573433729",
+    "title": "3 Stk Set A",
+    "position": 18,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "3 Stk Set A"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573466497",
+    "title": "Set D",
+    "position": 19,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set D"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573499265",
+    "title": "Set E",
+    "position": 20,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set E"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573532033",
+    "title": "Set F",
+    "position": 21,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set F"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573564801",
+    "title": "Set G",
+    "position": 22,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set G"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573597569",
+    "title": "Set H",
+    "position": 23,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set H"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573630337",
+    "title": "Set I",
+    "position": 24,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set I"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573663105",
+    "title": "Set K",
+    "position": 25,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set K"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573695873",
+    "title": "Set J",
+    "position": 26,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set J"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573728641",
+    "title": "Set L",
+    "position": 27,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set L"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573761409",
+    "title": "Set M",
+    "position": 28,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set M"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573794177",
+    "title": "Set N",
+    "position": 29,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set N"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573826945",
+    "title": "Set O",
+    "position": 30,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set O"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573859713",
+    "title": "Set P",
+    "position": 31,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set P"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573892481",
+    "title": "Set Q",
+    "position": 32,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set Q"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573925249",
+    "title": "Set R",
+    "position": 33,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set R"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573958017",
+    "title": "Set S",
+    "position": 34,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set S"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881573990785",
+    "title": "Set T",
+    "position": 35,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set T"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574023553",
+    "title": "Set U",
+    "position": 36,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set U"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574056321",
+    "title": "Set V",
+    "position": 37,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set V"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574089089",
+    "title": "Set W",
+    "position": 38,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set W"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574121857",
+    "title": "Set X",
+    "position": 39,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set X"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574154625",
+    "title": "Set Y",
+    "position": 40,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set Y"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574187393",
+    "title": "Set Z",
+    "position": 41,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set Z"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574220161",
+    "title": "Elegant Weiss 2 Stk",
+    "position": 42,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Elegant Weiss 2 Stk"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574252929",
+    "title": "Set 1",
+    "position": 43,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set 1"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574285697",
+    "title": "Set 2",
+    "position": 44,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set 2"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574318465",
+    "title": "Set 3",
+    "position": 45,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set 3"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574351233",
+    "title": "Set 4",
+    "position": 46,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set 4"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574384001",
+    "title": "Set 5",
+    "position": 47,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set 5"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574416769",
+    "title": "Set 6",
+    "position": 48,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set 6"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574449537",
+    "title": "Rot, ausgehöhltes Set",
+    "position": 49,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Rot, ausgehöhltes Set"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574482305",
+    "title": "Set 7",
+    "position": 50,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set 7"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574515073",
+    "title": "Set 8",
+    "position": 51,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set 8"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55881574547841",
+    "title": "Set 9",
+    "position": 52,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Set 9"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/69871538110849",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 1 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f476fc1b-682f-499c-bb91-0a14b2c0eae1.jpg?v=1783288229",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538143617",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 2 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f7390122-c568-45c6-99b6-df79a471219e.png?v=1783288230",
+     "width": 483,
+     "height": 550
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538176385",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 3 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/621f8de1-a157-481c-a7ae-cb9c8b46fa17.jpg?v=1783288230",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538209153",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 4 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eab07a42-7252-40b7-af54-dece9ecc4b04.jpg?v=1783288230",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538241921",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 5 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/303a3355-443b-48c0-9ead-dcea66ac3d53.png?v=1783288229",
+     "width": 400,
+     "height": 190
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538274689",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 6 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/eecc02d6-3207-41a4-a034-13d27c9125ba.png?v=1783288230",
+     "width": 695,
+     "height": 746
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538307457",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 7 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/75fb9d49-f48b-4cc8-8c47-592f90d08e0f.jpg?v=1783288230",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538340225",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 8 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a7b3f210-a677-4f12-8e42-ad323e590948.jpg?v=1783288230",
+     "width": 750,
+     "height": 750
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538372993",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 9 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d5eaf52f-536f-4082-8103-f8cc63dd90fe.png?v=1783288230",
+     "width": 483,
+     "height": 550
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538405761",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 10 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cb2bc4aa-b8a9-4be5-b8b4-64c331b83070.jpg?v=1783288230",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538438529",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 11 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9378be95-0aa7-4c3e-a197-1ee987d027fe.png?v=1783288230",
+     "width": 400,
+     "height": 188
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538471297",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 12 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f8584edf-ed50-4b3f-942f-c04849145e85.png?v=1783288229",
+     "width": 382,
+     "height": 191
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538504065",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 1 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7f4065db-789d-4901-b80d-66c9a0a5a302.jpg?v=1783288230",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538536833",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 2 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ea601a08-ebd9-4c6c-a9f9-686bff3d8cba.jpg?v=1783288230",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538569601",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 3 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/93f741a9-aba0-4ffe-a257-965f5c5c0be8.jpg?v=1783288230",
+     "width": 1001,
+     "height": 1001
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538602369",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 4 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ba91753b-e459-464e-81c5-a03a19169af9.jpg?v=1783288230",
+     "width": 1001,
+     "height": 1001
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538635137",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 5 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e48d546e-8148-40d3-917d-690b054674cc.jpg?v=1783288230",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538667905",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 6 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6c14f0dd-53d0-4ed0-b290-e258e5bd0e7d.jpg?v=1783288229",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538700673",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 7 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/59e9420f-bc22-4cbe-a5dc-9c731c3a96d0.jpg?v=1783288230",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69871538733441",
+    "mediaContentType": "IMAGE",
+    "alt": "Selbstreinigende Haarbürste – Bild 8 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20dbc111-3e9d-4594-8384-79e9bf06de92.jpg?v=1783288229",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/Video/77290420961671",
+    "mediaContentType": "VIDEO"
+   }
+  ]
+ }
+}

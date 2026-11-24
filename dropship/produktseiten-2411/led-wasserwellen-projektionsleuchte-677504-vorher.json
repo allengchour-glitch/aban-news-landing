@@ -1,0 +1,557 @@
+{
+ "id": "gid://shopify/Product/15450836566401",
+ "handle": "led-wasserwellen-projektionsleuchte-677504",
+ "title": "LED Wasserwellen Projektionsleuchte",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17882838237569",
+   "name": "Ausführung",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588051841",
+     "name": "3W-16 Farben, Stecker quadratisch, 1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588084609",
+     "name": "3W-16 Farben, Stecker Krone, 3 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588117377",
+     "name": "3W-16 Farben, Stecker Krone, 1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588150145",
+     "name": "3W-16 Farben, Stecker quadratisch, 2 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588182913",
+     "name": "3W-16 Farben, Stecker Krone, 2 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588215681",
+     "name": "3W-16 Farben, Stecker quadratisch, 3 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588248449",
+     "name": "3 W-Set 1-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588281217",
+     "name": "3 W-Set 2-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588313985",
+     "name": "3 W-Set 3-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588346753",
+     "name": "3 W-Set 4-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588379521",
+     "name": "3 W-Set 5-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588412289",
+     "name": "3 W-Set 6-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588445057",
+     "name": "3 W-Set 7-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588477825",
+     "name": "3 W-Set 8-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588510593",
+     "name": "3W-16 Farben, quadratischer Holzsockel, 1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588543361",
+     "name": "3 W-Set 9-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588576129",
+     "name": "3 W-Set 10-1 Stück"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/12046588608897",
+     "name": "3 W-Set 11-1 Stück"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55889781162369",
+    "title": "3W-16 Farben, Stecker quadratisch, 1 Stück",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3W-16 Farben, Stecker quadratisch, 1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781195137",
+    "title": "3W-16 Farben, Stecker Krone, 3 Stück",
+    "position": 2,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3W-16 Farben, Stecker Krone, 3 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071519105"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781227905",
+    "title": "3W-16 Farben, Stecker Krone, 1 Stück",
+    "position": 3,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3W-16 Farben, Stecker Krone, 1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071519105"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781260673",
+    "title": "3W-16 Farben, Stecker quadratisch, 2 Stück",
+    "position": 4,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3W-16 Farben, Stecker quadratisch, 2 Stück"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781293441",
+    "title": "3W-16 Farben, Stecker Krone, 2 Stück",
+    "position": 5,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3W-16 Farben, Stecker Krone, 2 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071519105"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781326209",
+    "title": "3W-16 Farben, Stecker quadratisch, 3 Stück",
+    "position": 6,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3W-16 Farben, Stecker quadratisch, 3 Stück"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781358977",
+    "title": "3 W-Set 1-1 Stück",
+    "position": 7,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 1-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071715713"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781391745",
+    "title": "3 W-Set 2-1 Stück",
+    "position": 8,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 2-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071748481"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781424513",
+    "title": "3 W-Set 3-1 Stück",
+    "position": 9,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 3-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071453569"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781457281",
+    "title": "3 W-Set 4-1 Stück",
+    "position": 10,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 4-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071912321"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781490049",
+    "title": "3 W-Set 5-1 Stück",
+    "position": 11,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 5-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781522817",
+    "title": "3 W-Set 6-1 Stück",
+    "position": 12,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 6-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781555585",
+    "title": "3 W-Set 7-1 Stück",
+    "position": 13,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 7-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071682945"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781588353",
+    "title": "3 W-Set 8-1 Stück",
+    "position": 14,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 8-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071846785"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781621121",
+    "title": "3W-16 Farben, quadratischer Holzsockel, 1 Stück",
+    "position": 15,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3W-16 Farben, quadratischer Holzsockel, 1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781653889",
+    "title": "3 W-Set 9-1 Stück",
+    "position": 16,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 9-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071781249"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781686657",
+    "title": "3 W-Set 10-1 Stück",
+    "position": 17,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 10-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071781249"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55889781719425",
+    "title": "3 W-Set 11-1 Stück",
+    "position": 18,
+    "selectedOptions": [
+     {
+      "name": "Ausführung",
+      "value": "3 W-Set 11-1 Stück"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69887071781249"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/69887071486337",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 1 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9de03875-2206-4cf1-908d-8669310bf0e1_trans.jpg?v=1783469542",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071224193",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 2 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ea68ea57-c53e-4772-a0f4-7e330a531443_trans.jpg?v=1783469542",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071453569",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 3 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/58b50823-6ad8-44dd-8ff3-3404d6635b8b.jpg?v=1783469542",
+     "width": 703,
+     "height": 704
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071519105",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 4 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8f18ef2e-6786-429b-8159-7ae9d4db7b21_trans.jpg?v=1783469543",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071551873",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 5 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3da12055-a929-461b-9626-0792e0069c3f_trans.jpg?v=1783469543",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071584641",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 6 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b1c21ce7-8d40-479b-ac5c-886968e76c1b_trans.jpg?v=1783469543",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071617409",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 7 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/94c1b302-b3ce-4e08-81ca-bed576c5cce3.jpg?v=1783469542",
+     "width": 773,
+     "height": 386
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071650177",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 8 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/394ffe15-753d-4e24-9a85-271757335131_trans.jpg?v=1783469542",
+     "width": 711,
+     "height": 995
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071682945",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 9 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/92d7d23a-9a6d-4fe1-b0b4-bf46d3b9854b.jpg?v=1783469542",
+     "width": 789,
+     "height": 388
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071715713",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 10 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a99858b9-5c18-4b32-a1fc-07283282f79e.jpg?v=1783469542",
+     "width": 729,
+     "height": 733
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071748481",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 11 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5a0bd9d9-a430-40bb-ad41-dd060ee37491.jpg?v=1783469542",
+     "width": 768,
+     "height": 765
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071781249",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 12 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2c0f734e-52b1-44a6-a81c-cad5cf9c6667.jpg?v=1783469543",
+     "width": 1128,
+     "height": 572
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071814017",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 1 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/53ab9705-35e1-4811-aabf-889b64006777.jpg?v=1783469543",
+     "width": 783,
+     "height": 384
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071846785",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 2 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d582b7f9-162f-4c4d-a3f5-d5c212f34d60.jpg?v=1783469542",
+     "width": 775,
+     "height": 388
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071879553",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 3 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6a74321a-b49c-4289-9f57-3fbd4df161aa_trans.jpg?v=1783469543",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69887071912321",
+    "mediaContentType": "IMAGE",
+    "alt": "LED Wasserwellen Projektionsleuchte – Bild 4 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3988d1fd-c2b0-43d8-a156-4b5fc94593e2.jpg?v=1783469542",
+     "width": 721,
+     "height": 718
+    }
+   },
+   {
+    "id": "gid://shopify/Video/77290422763911",
+    "mediaContentType": "VIDEO"
+   }
+  ]
+ }
+}

@@ -1,0 +1,805 @@
+{
+ "id": "gid://shopify/Product/15422934647169",
+ "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
+ "title": "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17849581044097",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743694721",
+     "name": "Grün"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743727489",
+     "name": "Schwarz"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743760257",
+     "name": "Weinrot"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743793025",
+     "name": "Aprikose"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743825793",
+     "name": "Blau"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductOption/17849581076865",
+   "name": "Grösse",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743858561",
+     "name": "S"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743891329",
+     "name": "M"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743924097",
+     "name": "L"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743956865",
+     "name": "XL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11856743989633",
+     "name": "XXL"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11856744022401",
+     "name": "3XL"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55778293907841",
+    "title": "Grün / S",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grün"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962686337"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778293940609",
+    "title": "Grün / M",
+    "position": 2,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grün"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962686337"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778293973377",
+    "title": "Grün / L",
+    "position": 3,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grün"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962686337"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294006145",
+    "title": "Grün / XL",
+    "position": 4,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grün"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962686337"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294038913",
+    "title": "Grün / XXL",
+    "position": 5,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grün"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962686337"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294071681",
+    "title": "Grün / 3XL",
+    "position": 6,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Grün"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962686337"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294104449",
+    "title": "Schwarz / S",
+    "position": 7,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962555265"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294137217",
+    "title": "Schwarz / M",
+    "position": 8,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962555265"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294169985",
+    "title": "Schwarz / L",
+    "position": 9,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962555265"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294202753",
+    "title": "Schwarz / XL",
+    "position": 10,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962555265"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294235521",
+    "title": "Schwarz / XXL",
+    "position": 11,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962555265"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294268289",
+    "title": "Schwarz / 3XL",
+    "position": 12,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962555265"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294301057",
+    "title": "Weinrot / S",
+    "position": 13,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962588033"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294333825",
+    "title": "Weinrot / M",
+    "position": 14,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962588033"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294366593",
+    "title": "Weinrot / L",
+    "position": 15,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962588033"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294399361",
+    "title": "Weinrot / XL",
+    "position": 16,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962588033"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294432129",
+    "title": "Weinrot / XXL",
+    "position": 17,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962588033"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294464897",
+    "title": "Weinrot / 3XL",
+    "position": 18,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weinrot"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962588033"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294497665",
+    "title": "Aprikose / S",
+    "position": 19,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962522497"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294530433",
+    "title": "Aprikose / M",
+    "position": 20,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962522497"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294563201",
+    "title": "Aprikose / L",
+    "position": 21,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962522497"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294595969",
+    "title": "Aprikose / XL",
+    "position": 22,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962522497"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294628737",
+    "title": "Aprikose / XXL",
+    "position": 23,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962522497"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294661505",
+    "title": "Aprikose / 3XL",
+    "position": 24,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Aprikose"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962522497"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294694273",
+    "title": "Blau / S",
+    "position": 25,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Blau"
+     },
+     {
+      "name": "Grösse",
+      "value": "S"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962653569"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294727041",
+    "title": "Blau / M",
+    "position": 26,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Blau"
+     },
+     {
+      "name": "Grösse",
+      "value": "M"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962653569"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294759809",
+    "title": "Blau / L",
+    "position": 27,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Blau"
+     },
+     {
+      "name": "Grösse",
+      "value": "L"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962653569"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294792577",
+    "title": "Blau / XL",
+    "position": 28,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Blau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962653569"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294825345",
+    "title": "Blau / XXL",
+    "position": 29,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Blau"
+     },
+     {
+      "name": "Grösse",
+      "value": "XXL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962653569"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55778294858113",
+    "title": "Blau / 3XL",
+    "position": 30,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Blau"
+     },
+     {
+      "name": "Grösse",
+      "value": "3XL"
+     }
+    ],
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69634962653569"
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/69634962620801",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz – Ansicht 4",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b673ac76-d824-41e9-b9fb-98203a572d8e.jpg?v=1780945305",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69634962522497",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/91a43421-f66a-4969-a3ef-d8b5b4abffeb.jpg?v=1780945304",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69634962555265",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz – Ansicht 2",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/48518ac4-2525-47fb-b58e-134dd5b740a5.jpg?v=1780945304",
+     "width": 517,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69634962588033",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz – Ansicht 3",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1e3885a7-c475-4bc3-a4c9-f23dcd73b56c.jpg?v=1780945305",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69634962653569",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz – Ansicht 5",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/10c5c56f-440d-4e66-8bfb-a08c308c3830.jpg?v=1780945305",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69634962686337",
+    "mediaContentType": "IMAGE",
+    "alt": "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz – Ansicht 6",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f6841ba1-c9c8-4563-8980-1686282c4691.jpg?v=1780945305",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69646252212609",
+    "mediaContentType": "IMAGE",
+    "alt": "LuxeStyle-Edit · Abendkleid «Aurora»",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/aurora-edit-clean.jpg?v=1781070169",
+     "width": 1080,
+     "height": 1080
+    }
+   },
+   {
+    "id": "gid://shopify/Video/69682254774657",
+    "mediaContentType": "VIDEO"
+   }
+  ]
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "handle": "selbstreinigende-haarburste-894400",
+ "status": "geschrieben",
+ "medien_vorher": 21,
+ "medien_nachher": 14,
+ "erste_variante": "Weiss, gepresste Haarentfernung",
+ "erstes_bild_erste_variante": null,
+ "infografik": null,
+ "entfernt": [
+  "gid://shopify/MediaImage/69871538143617",
+  "gid://shopify/MediaImage/69871538176385",
+  "gid://shopify/MediaImage/69871538241921",
+  "gid://shopify/MediaImage/69871538274689",
+  "gid://shopify/MediaImage/69871538372993",
+  "gid://shopify/MediaImage/69871538438529",
+  "gid://shopify/MediaImage/69871538471297"
+ ]
+}

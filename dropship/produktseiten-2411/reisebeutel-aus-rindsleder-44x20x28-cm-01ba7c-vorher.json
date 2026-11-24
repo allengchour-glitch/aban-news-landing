@@ -1,0 +1,89 @@
+{
+ "id": "gid://shopify/Product/16650187538823",
+ "handle": "reisebeutel-aus-rindsleder-44x20x28-cm-01ba7c",
+ "title": "Reisebeutel aus Rindsleder 44x20x28 cm",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/19603408322951",
+   "name": "Title",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/58477991756167",
+     "name": "Default Title"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67726147944839",
+    "title": "Default Title",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Title",
+      "value": "Default Title"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/77769105310087",
+    "mediaContentType": "IMAGE",
+    "alt": "Reisebeutel aus Rindsleder 44x20x28 cm | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/971519206452.jpg?v=1792282260",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77769105408391",
+    "mediaContentType": "IMAGE",
+    "alt": "Reisebeutel aus Rindsleder 44x20x28 cm – Bild 2 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/12720561416059.jpg?v=1792282260",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77769105441159",
+    "mediaContentType": "IMAGE",
+    "alt": "Reisebeutel aus Rindsleder 44x20x28 cm – Bild 3 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6391012914998.jpg?v=1792282260",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77769105473927",
+    "mediaContentType": "IMAGE",
+    "alt": "Reisebeutel aus Rindsleder 44x20x28 cm – Bild 4 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1780819116345.jpg?v=1792282260",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77769105506695",
+    "mediaContentType": "IMAGE",
+    "alt": "Reisebeutel aus Rindsleder 44x20x28 cm – Bild 5 | LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/893967973270.jpg?v=1792282260",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ }
+}

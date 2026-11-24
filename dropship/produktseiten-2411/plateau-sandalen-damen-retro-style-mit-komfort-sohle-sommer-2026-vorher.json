@@ -1,0 +1,751 @@
+{
+ "id": "gid://shopify/Product/15413083832705",
+ "handle": "plateau-sandalen-damen-retro-style-mit-komfort-sohle-sommer-2026",
+ "title": "Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17838207893889",
+   "name": "Farbe",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852696961",
+     "name": "Braun"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852729729",
+     "name": "Weiss"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852762497",
+     "name": "Schwarz"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852795265",
+     "name": "Beige"
+    }
+   ]
+  },
+  {
+   "id": "gid://shopify/ProductOption/17838207926657",
+   "name": "Grösse",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852828033",
+     "name": "36"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852860801",
+     "name": "37"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852893569",
+     "name": "38"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852926337",
+     "name": "39"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852959105",
+     "name": "40"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805852991873",
+     "name": "41"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805853024641",
+     "name": "42"
+    },
+    {
+     "id": "gid://shopify/ProductOptionValue/11805853057409",
+     "name": "43"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55748878631297",
+    "title": "Braun / 36",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "36"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878664065",
+    "title": "Braun / 37",
+    "position": 2,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "37"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878696833",
+    "title": "Braun / 38",
+    "position": 3,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "38"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878729601",
+    "title": "Braun / 39",
+    "position": 4,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "39"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878762369",
+    "title": "Braun / 40",
+    "position": 5,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "40"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878795137",
+    "title": "Braun / 41",
+    "position": 6,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "41"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878827905",
+    "title": "Braun / 42",
+    "position": 7,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "42"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878860673",
+    "title": "Braun / 43",
+    "position": 8,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Braun"
+     },
+     {
+      "name": "Grösse",
+      "value": "43"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878893441",
+    "title": "Weiss / 36",
+    "position": 9,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "36"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878926209",
+    "title": "Weiss / 37",
+    "position": 10,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "37"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878958977",
+    "title": "Weiss / 38",
+    "position": 11,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "38"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748878991745",
+    "title": "Weiss / 39",
+    "position": 12,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "39"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879024513",
+    "title": "Weiss / 40",
+    "position": 13,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "40"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879057281",
+    "title": "Weiss / 41",
+    "position": 14,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "41"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879090049",
+    "title": "Weiss / 42",
+    "position": 15,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "42"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879122817",
+    "title": "Weiss / 43",
+    "position": 16,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Weiss"
+     },
+     {
+      "name": "Grösse",
+      "value": "43"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879155585",
+    "title": "Schwarz / 36",
+    "position": 17,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "36"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879188353",
+    "title": "Schwarz / 37",
+    "position": 18,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "37"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879221121",
+    "title": "Schwarz / 38",
+    "position": 19,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "38"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879253889",
+    "title": "Schwarz / 39",
+    "position": 20,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "39"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879286657",
+    "title": "Schwarz / 40",
+    "position": 21,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "40"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879319425",
+    "title": "Schwarz / 41",
+    "position": 22,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "41"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879352193",
+    "title": "Schwarz / 42",
+    "position": 23,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "42"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879384961",
+    "title": "Schwarz / 43",
+    "position": 24,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Schwarz"
+     },
+     {
+      "name": "Grösse",
+      "value": "43"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879417729",
+    "title": "Beige / 36",
+    "position": 25,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Beige"
+     },
+     {
+      "name": "Grösse",
+      "value": "36"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879450497",
+    "title": "Beige / 37",
+    "position": 26,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Beige"
+     },
+     {
+      "name": "Grösse",
+      "value": "37"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879483265",
+    "title": "Beige / 38",
+    "position": 27,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Beige"
+     },
+     {
+      "name": "Grösse",
+      "value": "38"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879516033",
+    "title": "Beige / 39",
+    "position": 28,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Beige"
+     },
+     {
+      "name": "Grösse",
+      "value": "39"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879548801",
+    "title": "Beige / 40",
+    "position": 29,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Beige"
+     },
+     {
+      "name": "Grösse",
+      "value": "40"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879581569",
+    "title": "Beige / 41",
+    "position": 30,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Beige"
+     },
+     {
+      "name": "Grösse",
+      "value": "41"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879614337",
+    "title": "Beige / 42",
+    "position": 31,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Beige"
+     },
+     {
+      "name": "Grösse",
+      "value": "42"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/55748879647105",
+    "title": "Beige / 43",
+    "position": 32,
+    "selectedOptions": [
+     {
+      "name": "Farbe",
+      "value": "Beige"
+     },
+     {
+      "name": "Grösse",
+      "value": "43"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/69552854630785",
+    "mediaContentType": "IMAGE",
+    "alt": "Plateau-Sandalen im Retro-Style mit Komfort-Sohle, Damen – LuxeStyle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b4da0d58-e760-4691-b348-9dc4a3d13722.jpg?v=1780268094",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552854663553",
+    "mediaContentType": "IMAGE",
+    "alt": "Plateau-Sandalen Bild 2",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cf9f87a3-5791-4179-acad-1fd201738c45.jpg?v=1780268094",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552854696321",
+    "mediaContentType": "IMAGE",
+    "alt": "Plateau-Sandalen Bild 3",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ead92096-fcf6-4368-a7d7-9d7db836eb39.jpg?v=1780268094",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552854729089",
+    "mediaContentType": "IMAGE",
+    "alt": "Plateau-Sandalen Bild 4",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3a45e4c0-e8c1-49a3-9e32-b05625e0afbe.jpg?v=1780268094",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552854761857",
+    "mediaContentType": "IMAGE",
+    "alt": "Plateau-Sandalen Bild 5",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d35ec5b9-a3b9-4b4e-a96c-b7f4a314ea2e.jpg?v=1780268094",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552854794625",
+    "mediaContentType": "IMAGE",
+    "alt": "Plateau-Sandalen Bild 6",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/67319824-48d9-45cd-8144-5a80d817070d.jpg?v=1780268094",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552854827393",
+    "mediaContentType": "IMAGE",
+    "alt": "Plateau-Sandalen Bild 7",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ee99231d-3b38-4e90-98bd-d0996a3bd8c0.jpg?v=1780268094",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552854860161",
+    "mediaContentType": "IMAGE",
+    "alt": "Plateau-Sandalen Bild 8",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01552c6d-96c9-4551-ada9-9dc0451b00b3.jpg?v=1780268094",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69552854892929",
+    "mediaContentType": "IMAGE",
+    "alt": "Plateau-Sandalen Bild 9",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b259a982-b4ee-487c-9e82-f214355dfd66.jpg?v=1780268094",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69650125193601",
+    "mediaContentType": "IMAGE",
+    "alt": "LuxeStyle-Edit · Plateau-Sandalen · Damen, Retro-Style mit Komfort-Sohle (Sommer 2026)",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/plateau-sandalen-damen-retro-style-mit-komfort-sohle-sommer--edit.jpg?v=1781097512",
+     "width": 1080,
+     "height": 1080
+    }
+   }
+  ]
+ }
+}

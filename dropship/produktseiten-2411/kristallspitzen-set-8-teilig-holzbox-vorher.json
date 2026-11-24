@@ -1,0 +1,89 @@
+{
+ "id": "gid://shopify/Product/15408458006913",
+ "handle": "kristallspitzen-set-8-teilig-holzbox",
+ "title": "Kristallspitzen-Set 8-teilig in Holzbox",
+ "options": [
+  {
+   "id": "gid://shopify/ProductOption/17832969175425",
+   "name": "Title",
+   "optionValues": [
+    {
+     "id": "gid://shopify/ProductOptionValue/11778115240321",
+     "name": "Default Title"
+    }
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/55732479361409",
+    "title": "Default Title",
+    "position": 1,
+    "selectedOptions": [
+     {
+      "name": "Title",
+      "value": "Default Title"
+     }
+    ],
+    "media": {
+     "nodes": []
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/77451449958791",
+    "mediaContentType": "IMAGE",
+    "alt": "Kristallspitzen-Set 8-teilig in Holzbox",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/kristallspitzen-set-8-teilig-A_haupt.jpg?v=1791145638",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77451449991559",
+    "mediaContentType": "IMAGE",
+    "alt": "Lieferumfang: Rosenquarz, Tigerauge, Citrin, Aventurin, Lapislazuli, Amethyst, Bergkristall, Obsidian",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/kristallspitzen-set-8-teilig-B_lieferumfang.jpg?v=1791145637",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77451450024327",
+    "mediaContentType": "IMAGE",
+    "alt": "Detail: Rosenquarz, Tigerauge, Citrin, Aventurin",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/kristallspitzen-set-8-teilig-C_detail_links.jpg?v=1791145638",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77451450057095",
+    "mediaContentType": "IMAGE",
+    "alt": "Detail: Lapislazuli, Amethyst, Bergkristall, Obsidian",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/kristallspitzen-set-8-teilig-D_detail_rechts.jpg?v=1791145639",
+     "width": 1200,
+     "height": 1200
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77451450089863",
+    "mediaContentType": "IMAGE",
+    "alt": "Holzbox mit Holzwolle",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/kristallspitzen-set-8-teilig-E_holzbox.jpg?v=1791145637",
+     "width": 1200,
+     "height": 1200
+    }
+   }
+  ]
+ }
+}
