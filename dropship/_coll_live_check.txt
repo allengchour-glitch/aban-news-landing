@@ -1490,3 +1490,7 @@ tier-halsbaender	ok	29	Halsbänder
 tier-halsbaender-leder	ok	29	Lederhalsbänder
 tier-halsbaender-leuchten	ok	29	Leucht- & reflektierende Halsbänder
 tier-halsbaender-katzen	ok	29	Katzenhalsbänder
+tier-geschirre	ok	29	Geschirre & Brustgurte
+tier-geschirre-katzen	ok	28	Katzengeschirre
+tier-geschirre-reflektierend	ok	29	Reflektierende & Leucht-Geschirre
+tier-geschirre-outdoor	ok	23	Outdoor- & taktische Geschirre
