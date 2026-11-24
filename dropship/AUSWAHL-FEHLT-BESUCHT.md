@@ -1,13 +1,12 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 07:32 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 09:03 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 171 · **32 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 23, teilweise: 5, keine: 4; Preisspanne > 2×: 7) · 1 CJ-Variante: 138 · ohne Antwort: 1
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 167 · **29 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 20, teilweise: 5, keine: 4; Preisspanne > 2×: 6) · 1 CJ-Variante: 138 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
 | Produkt | CJ-Var. | Bilder da | CJ USD | Shop CHF | Beispiele |
 |---|---|---|---|---|---|
 | Astronauten-Handyhülle mit 3D-Motiv (`astronaut-phone-case-298816`) | 96 | 96 | 1.2–1.2 | 15.90 | Light cyan-Iphone13, Light cyan-Iphone13pro, Light cyan-Iphone13promax, Light cyan-Iphone13mini |
-| Plüsch-Sofaüberwurf für modulare Sofas (`plusch-sofauberwurf-fur-modulare-sofas-604700`) | 92 | 92 | 2.91–10.3 | 22.90 | White-60X60, White-60X120, White-60X150, White-60X210 |
 | Flanell-Sofabezug (`flanell-sofabezug-604200`) | 85 | 85 | 6.77–23.26 | 28.90 | Red-180x130cm , Red-180x150cm , Red-180x180cm , Red-180x200cm  |
 | Weihnachts-Geschenksäckli aus Baumwolle/Leinen (`weihnachts-geschenksackli-aus-baumwolle-leinen-638400`) | 78 | 78 | 2.63–3.19 | 14.90 | A-L, A-M, A-XL, B-L |
 | Halskette mit Initialen – Kupfer, Kreuzkette (`halskette-mit-initialen-kupfer-kreuzkette-609400`) | 78 | 53 | 3.84–3.84 | 16.90 | Gold-A-January, Gold-A-February, Gold-A-March, Gold-B-January |
@@ -28,13 +27,11 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | DIY Stickset mit 50 Garnfarben (`diy-stickset-mit-50-garnfarben-cb3e23`) | 7 | 0 | 2.57–7.17 | 21.90 | 136pcs, 10pcs, 12pcs, Set AC177 |
 | Weinöffner mit Luftdruckpumpe (`weinoffner-mit-luftdruckpumpe-198db1`) | 6 | 6 | 3.51–6.62 | 22.90 | Gold-Upgrade, Silver-Set, Black-Set 2, Red-Upgrade |
 | 3D-gedruckte Gummimatte (`3d-gedruckte-gummimatte-621900`) | 4 | 4 | 4.86–4.86 | 14.90 | Black-33x60cm-US, Black-33x60cm-UK, Black-33x60cm-AU, Black-33x60cm-EU |
-| YG310 Mini Beamer Heimkino LED (`yg310-mini-beamer-heimkino-led-758528`) | 4 | 4 | 23.9–23.9 | 51.90 | YG310-US, YG310-EU, YG310-UK, YG310-AU |
 | Gebäude-Modell Bausatz für Erwachsene (`gebaude-modell-bausatz-fur-erwachsene-600200`) | 4 | 4 | 2.19–2.19 | 16.90 | Peking University Standard, Tsinghua University Standard, Wuhan University Standard, Fudan University Standard |
 | USB Powerbank mit Handwärmer und Massage (`usb-powerbank-mit-handwarmer-und-massage-45aeb2`) | 4 | 0 | 5.24–5.24 | 17.90 | Rose gold-107X 60X 25mm, Silver-107X 60X 25mm, Sky blue-107X 60X 25mm, Tyrant Gold-107X 60X 25mm |
 | Stoppuhr mit grossem Display und Zyklus-Timer (`stoppuhr-mit-grossem-display-und-zyklus-timer-639700`) | 4 | 4 | 23.08–23.08 | 52.90 | US, UK, EU, AU |
 | Glättbürste mit Dampf-Sprühfunktion (`glattburste-mit-dampf-spruhfunktion-e765b5`) | 3 | 3 | 15.49–15.49 | 29.90 | UK plug, US plug, EU plug |
 | Elektrischer Gemüseschneider Multifunktional – Schneiden, Reiben & Hobeln (`elektrischer-gemuseschneider-multifunktional-schneiden-reiben-hobeln`) | 2 | 0 | 11.87–12.44 | 74.90 | White with adapter-220V US, Green-USB |
 | RGB Computer-Mikrofon für Live-Calls und Gaming (`rgb-computer-mikrofon-fur-live-calls-und-gamin-322368`) | 2 | 2 | 5.79–7.58 | 14.90 | Black-Blu ray, Black-Colorful |
-| Dual-Use Lockenstab & Glätteisen – Black Gold (`dual-use-lockenstab-glatteisen-black-gold-276352`) | 2 | 2 | 11.29–11.29 | 31.90 | Black Gold European Standard, Black Gold American Standard |
 | Astronaut Roboter Überwachungskamera (`astronaut-roboter-uberwachungskamera-90b6f7`) | 2 | 2 | 29.75–65.32 | 120.90 | US, LOGO |
 | Schwingendes Geisterlicht für Halloween (`schwingender-geisterlicht-fur-halloween-629800`) | 2 | 2 | 3.32–4.21 | 22.90 | Swing Ghost Night Light-US , Swing Ghost Night Light-USB |

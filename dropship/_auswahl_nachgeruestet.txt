@@ -3690,3 +3690,5 @@
 16732221145479	Ausführung:2:2	2026-11-24	acryl-wandlampe-ohne-bohrung-618800
 16732007235975	Farbe:4+Leistung:3:8	2026-11-24	magnetischer-kabelloser-ladegerat-626100
 16731870658951	Modell:5:5	2026-11-24	auto-wireless-ladehalter-mit-ventilhalterung-632300
+16733555163527	Farbe:4:4	2026-11-24	herzformiger-leder-schlusselanhanger-605900
+16733545660807	Farbe:3:3	2026-11-24	gluckskatze-schlusselanhanger-aus-pu-631900
