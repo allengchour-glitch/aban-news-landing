@@ -1,8 +1,8 @@
 {
- "stand": "2026-10-23T21:19:54Z",
+ "stand": "2026-11-24T10:15:18Z",
  "schichten": {
   "Standort: cjdropshipping": {
-   "proben": 2,
+   "proben": 3,
    "ohne_tarif": [],
    "unklar": 0
   },
@@ -17,11 +17,6 @@
    "unklar": 0
   },
   "Profil: CH-Lager": {
-   "proben": 3,
-   "ohne_tarif": [],
-   "unklar": 0
-  },
-  "Profil: Druck auf Bestellung": {
    "proben": 3,
    "ohne_tarif": [],
    "unklar": 0

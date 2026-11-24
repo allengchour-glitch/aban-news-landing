@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 09:04 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 10:15 UTC)
 
-Suche: `status:active AND created_at:>=2026-11-21` · gemessen 181 · **94 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 91, teilweise: 3, keine: 0; Preisspanne > 2×: 8) · 1 CJ-Variante: 86 · ohne Antwort: 1
+Suche: `status:active AND created_at:>=2026-11-21` · gemessen 179 · **92 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 89, teilweise: 3, keine: 0; Preisspanne > 2×: 8) · 1 CJ-Variante: 86 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -74,7 +74,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Wandlampe Streifenbeleuchtung 120 cm Sand/Schwarz (`wandlampe-streifenbeleuchtung-120-cm-sand-schw-628000`) | 4 | 4 | 14.24–20.14 | 47.90 | Three Colors-With switch sand white 120cm, Monochrome Warm Light-With switch sand white 120cm, Wuji Tmall Genie-With switch sand white 120cm, Bluetooth Version-With switch sand white 120cm |
 | Rotes Touch-Nachtlicht mit stufenloser Dimmung (`rotes-touch-nachtlicht-mit-stufenloser-dimmung-619400`) | 4 | 4 | 4.92–33.84 | 62.90 | 1to2.5W-Three Colors-1PCS, 1to2.5W-Three Colors-2PCS, 1to2.5W-Three Colors-3PCS, 4 to 5W-Red-1PCS |
 | Rundes Lichttherapie-Nachtlicht, 12 V, modern (`rundes-lichttherapie-nachtlicht-12-v-modern-613200`) | 4 | 4 | 15.09–21.23 | 35.90 | US, EU, UK, AU |
-| Herzförmiger Leder-Schlüsselanhänger (`herzformiger-leder-schlusselanhanger-605900`) | 4 | 4 | 2.5–2.5 | 16.90 | Brown, Black, Pink, Red |
 | Kabelloser Reifenpumpe mit Licht und Druckanzeige (`kabelloser-reifenpumpe-mit-licht-und-druckanze-635800`) | 3 | 3 | 7.95–9.17 | 26.90 | Wireless Rechargeable, USB Version, USB Cigarette Lighter Cable |
 | Teleskop mit Infrarot-Nachtsicht 6x-10x (`teleskop-mit-infrarot-nachtsicht-6x-10x-605600`) | 3 | 3 | 26.91–50.0 | 70.90 | SY102 Night Vision Device, SY102 Night Vision Device 2, R12 |
 | GT3MINI Dual-Lens Langzeit-Drohne (`gt3mini-dual-lens-langzeit-drohne-629800`) | 3 | 3 | 27.43–32.64 | 51.90 | 1 Electricity, 2 Electricity, 3 Electricity |
@@ -83,7 +82,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Florales Doppel-Tüll-Baumwollstoff (`florales-doppel-tull-baumwollstoff-621700`) | 3 | 3 | 2.21–2.21 | 16.90 | Small Floral-Other-50x135cm, Striped Floral-Other-50x135cm, Small Cherry-Other-50x135cm |
 | Bewegungssensor-Wandlicht für das Bett (`bewegungssensor-wandlicht-fur-das-bett-637800`) | 3 | 3 | 3.52–3.52 | 16.90 | White, Light Wood, Deep Wood |
 | LED-Nachtlicht Samojede-Figur aus Resin (`led-nachtlicht-samojede-figur-aus-resin-620500`) | 3 | 3 | 4.7–4.7 | 17.90 | Standing Position, Sitting Posture, Lying Position |
-| Glückskatze Schlüsselanhänger aus PU (`gluckskatze-schlusselanhanger-aus-pu-631900`) | 3 | 3 | 2.46–2.46 | 16.90 | White, Black, Brown |
 | Vintage Wandlampe aus Kupferglas (`vintage-wandlampe-aus-kupferglas-610100`) | 2 | 2 | 15.28–16.15 | 42.90 | No Bulb-12 Small Green Leaf Wall Lamps, Warm Light Bulb-12 Small Green Leaf Wall Lamps |
 | Vier-Achsen-Fernsteuerungs-Flugzeug-Spielzeug (`vier-achsen-fernsteuerungs-flugzeug-spielzeug-631400`) | 2 | 2 | 5.9–7.81 | 20.90 | E88 Gray Dual Camera, Gray single camera  1battery |
 | Nachttisch-Lampe mit Stoffschirm und Akku (`nachttisch-lampe-mit-stoffschirm-und-akku-609700`) | 2 | 2 | 7.46–7.46 | 27.90 | Brown Shade, Light Gray Lampshade |

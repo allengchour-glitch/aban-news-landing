@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 09:03 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 10:15 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 193 · **131 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 102, teilweise: 27, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 189 · **127 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 98, teilweise: 27, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -67,7 +67,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Mini Powerbank mit LED-Taschenlampe (`mini-powerbank-mit-led-taschenlampe-204f73`) | 12 | 4 | 2.99–3.83 | 22.90 | Black-3600mA, Blue-2400mA, Black-4500mA, Red-6000mA |
 | Alice Wonderland aufklebbare Nägel (`alice-wonderland-aufklebbare-nagel-669824`) | 12 | 12 | 2.41–2.41 | 21.90 | Short Ladder-Extra Small XS, Short Ladder-Small Size S, Short Ladder-Medium M, Short Ladder-Large L |
 | Full HD Smart Home Beamer Tragbar (`full-hd-smart-home-beamer-tragbar-614900`) | 10 | 10 | 45.69–54.35 | 84.90 | Medium Gauge-Android 4K Full HD Version, Medium Gauge-Same Screen Version, American Standard-Android 4K Full HD Version, American Standard-Same Screen Version |
-| Powerbank 10000 mAh mit integriertem Kabel (`powerbank-10000-mah-mit-integriertem-kabel-602500`) | 10 | 10 | 4.96–6.24 | 15.90 | Beige-10000 MA, Beige-20000 MA, White-10000 MA, White-20000 MA |
 | Sturmfeuerzeug mit Power-Display und Puncher (`sturmfeuerzeug-mit-power-display-und-puncher-605700`) | 10 | 10 | 6.38–6.38 | 19.90 | HB198 Blue, HB198 Black Brushed, HB198 Flame Red, HB198 Orange |
 | Hundehalsband mit Gravur und Zugfunktion (`hundehalsband-mit-gravur-und-zugfunktion-063168`) | 10 | 10 | 2.38–5.82 | 16.90 | Pink graffiti-L, Pink graffiti-M, Pink graffiti-S, Pink graffiti-XL |
 | Frischhaltedose für Mikrowelle, Silikon (`frischhaltedose-fur-mikrowelle-silikon-622500`) | 10 | 10 | 2.02–2.46 | 21.90 | Mintcream 700ml, Pink 700ml, Gray 700ml, Gray Blue 700ml |
@@ -91,7 +90,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Dimension PD225W Fast Charge Power Bank (`dimension-pd225w-fast-charge-power-bank-629900`) | 7 | 7 | 8.62–14.26 | 18.90 | P168K Black 10000-10000mah, P168K White 10000-10000mah, P169K Black 20000-10000mah, P169K White 20000-10000mah |
 | Trendige Velo-Schultertasche für Sport & Freizeit (`trendige-velo-schultertasche-fur-sport-freizei-959488`) | 7 | 7 | 5.51–5.51 | 18.90 | Green, Blue, Rose pink, Light Grey |
 | Glänzender matter Lidschatten-Stick (`glanzender-matter-lidschatten-stick-997696`) | 7 | 7 | 2.5–2.5 | 21.90 | Champagne purple sparkle, Diamond rose gold, Streamer bronze, Can Ruo Galaxy |
-| Outdoor Solar Powerbank 10000mAh mit LED & Kompass (`outdoor-solar-powerbank-10000mah-mit-led-kompass-602800`) | 6 | 6 | 2.7–3.4 | 14.90 | F5 Orange With Compass-20000 MA, F5 Black With Compass-20000 MA, F5 Red With Compass-20000 MA, F5 Green With Compass-20000 MA |
 | Handgemachte, abnehmbare Kunstnägel (Kurz) (`handgemachte-abnehmbare-kunstnagel-kurz-981056`) | 6 | 6 | 5.02–5.02 | 15.90 | Jasmine flower-M New Short Square, Jasmine flower-S New Short Square, Jasmine flower-XS New Short Square, Jasmine flower-XS Short Ladder |
 | Mini-Uhr-Ladegerät (`mini-uhr-ladegerat-290698`) | 6 | 2 | 2.15–2.35 | 14.90 | Green-2400mah, Pink-3600mah, Pink-2400mah, Green-3600mah |
 | Rollender Messerschärfer mit Diamantbeschichtung (`rollender-messerscharfer-mit-diamantbeschichtu-627600`) | 6 | 6 | 9.95–11.5 | 28.90 | Wood Black Leather, Wood Color Graywall, Black, Set1 |
@@ -100,7 +98,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Bucheriti Cat's Eye Press-on Nägel (`bucheriti-cat-s-eye-press-on-nagel-867712`) | 6 | 6 | 4.87–4.87 | 17.90 | XS Short Square, S Short Square, M Short Square, XS Short Ladder |
 | Retro-Minimalistische Herrenuhr mit grossem Zifferblatt (`retro-minimalistische-herrenuhr-mit-gro-em-zif-616300`) | 5 | 5 | 8.96–8.96 | 16.90 | White X White X G, G X G X G, Gold X Gold X Green, Gold X Gold X White |
 | 4L Trinkbrunnen für Haustiere (`4l-trinkbrunnen-fur-haustiere-634800`) | 5 | 4 | 15.38–18.92 | 38.90 | Water Droplet Shaped Window-US, Water Droplet Shaped Window-EU, Water Droplet Shaped Window-AU, Water Droplet Shaped Window-UK |
-| 45W Power Bank mit Kabel, 20000 mAh (`45w-power-bank-mit-kabel-20000-mah-629900`) | 5 | 5 | 9.76–10.61 | 24.90 | White-45W 20000 MA, Black-45W 20000 MA, Pink-45W 20000 MA, Violet-45W 20000 MA |
 | Carryan Herren-Quarzuhr mit Stahlarmband (`carryan-herren-quarzuhr-mit-stahlarmband-626200`) | 5 | 5 | 5.8–5.8 | 18.90 | White × White × White, White × White × Black, White × White × Green, White × White × Blue |
 | Ferngesteuertes Spielzeug für Haustiere (`ferngesteuertes-spielzeug-fur-haustiere-616400`) | 5 | 5 | 5.72–6.22 | 18.90 | Pet Owl, Funny Pet Yellow Chicken, Pet Bat, Funny Pet Honey Skunk |
 | Automatischer Futterspender (5L) (`automatischer-futterspender-5l-622900`) | 5 | 5 | 16.42–29.19 | 64.90 | 5L Button-Single Bowl, 5L Button-Double Bowl, 5L WIFI-Single Bowl, 5L WIFI-Double Bowl |
@@ -112,7 +109,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Handgemachte Schmetterlings-Maniküre zum Aufkleben · Press-on-Nägel (`handgemachte-schmetterlings-manikure-zum-aufkl-615600`) | 4 | 4 | 3.25–3.25 | 15.90 | Style 1456-XS, Style 1456-S, Style 1456-M, Style 1456-L |
 | Baby-Kopfkissen mit Hirsekissen (`baby-kopfkissen-mit-hirsekissen-635000`) | 4 | 4 | 4.9–4.9 | 44.90 | Whale Fall In The Starry Sea-41X29cm, Mushroom Kingdom-41X29cm, Green Bamboo Panda-41X29cm, Little Prince-41X29cm |
 | Barocke Beauty-Kamee Nagelsticker (`barocke-beauty-kamee-nagelsticker-793984`) | 4 | 4 | 2.55–2.55 | 15.90 | Camellia-Xs Extra Small, Camellia-S Small Size, Camellia-M Medium, Camellia-L Large Size |
-| Lange Weisse Kunstnägel (`lange-weisse-kunstnagel-731008`) | 4 | 4 | 7.32–7.32 | 20.90 | Long Ladder-S, Long Ladder-M, Long Ladder-L, Long Ladder-XS |
 | Panda Tee-Set Geschenkbox (`panda-tee-set-geschenkbox-619300`) | 4 | 4 | 7.96–7.96 | 24.90 | Panda Teacup Sandalwood, Panda Tea Cup Agarwood, Panda Teacup Laoshan, Panda Teacup Water Sink |
 | Waben-Bratpfanne aus Edelstahl, doppelseitig (`waben-bratpfanne-aus-edelstahl-doppelseitig-615000`) | 4 | 4 | 36.15–54.39 | 137.90 | Frying Pan 28cm, Wok 30cm, Wok 32cm, Wok 34cm |
 | Vollautomatisches Auto- und Fahrzeugladegerät (`vollautomatisches-auto-und-fahrzeugladegerat-602500`) | 4 | 4 | 6.97–6.97 | 28.90 | W08 GB-National Standard-Lead Acid Battery, W08 American Standard-American Standard-Lead Acid Battery, W08 European Standard-European Standard-Lead Acid Battery, W08 British Standard-British Standard-Lead Acid Battery |
