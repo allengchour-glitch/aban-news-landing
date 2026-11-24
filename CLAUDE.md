@@ -485,6 +485,8 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-11-24 · 🗣️ **Betreiber «weniger details wie codex»: Meldungen kurz — Ergebnis + was er tun muss, 1–3 Zeilen, keine Herleitung, keine IDs/Zahlenkolonnen ausser nötig.**
+
 - 2026-11-24 · ✉️💰 **Betreiber «du bist mail chef» + «mach du alles für mich»: Kundenmails selbst senden (frischen Thread lesen, info@luxestyle.ch) UND Rückerstattungen selbst auslösen (refundCreate). Preise: EK mit Versandgewicht neu (kosten_neu_runner, alle CJ-Produkte), Senker kosten_boden15 begrenzt, Codes > 15 % auch GEPLANTE prüfen (10 gelöscht, GIFT2026 15 %).** → Journal 24.11. ✉️💰
 
 - 2026-10-22 · 🧹 **Sauber-Runde (Betreiber «mache zuerst alles sauber bevor mehr Grind»): Grind pausiert bis 25.10. 15:38 UTC (`_GRIND_PAUSE_BIS`). Hetzner-Platte VOLL (20.10. 99 %, 21.10. 100 %, 115 MB) = Ursache von stillem Agenten/Wächter → `server_platte_wache.py` + Ampel; `platte-schlank.sh` vom Betreiber 22.10. ~18:40 ausgeführt, Agent-Puls 18:42Z. Filtergrenze: Herren/Schmuck & Uhren/Wohnen standen > 5'000 (keine Web-Filter) → `filtergrenze_reparieren.py` (Rückweg `--zurueck`), Wache schreibt Stand + Ampel; **Gegenprüfung (4 Prüfer, 24 von 30 Befunden bestätigt): der Schnitt hatte 221 Uhren + 9 Herrenschuhe unauffindbar gemacht → `verwaist()` prüft vor jedem Schnitt, Wache meldet Waisen.** Unterkategorien (Menü 218, Herren-Jeans neu), Lizenzfiguren-Liste in 4 Kopien gleichgehalten (`lizenz_figur_paritaet.py`), Pinterest-Vorab-Quittung fail-closed, Platzhalter «Color», Präfix-Sperr-Tags. Offen/Entscheide: `dropship/SAUBER-BILANZ-2026-10-22.md`.** → Journal 22.10. 🧹
