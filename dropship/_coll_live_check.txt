@@ -1494,3 +1494,12 @@ tier-geschirre	ok	29	Geschirre & Brustgurte
 tier-geschirre-katzen	ok	28	Katzengeschirre
 tier-geschirre-reflektierend	ok	29	Reflektierende & Leucht-Geschirre
 tier-geschirre-outdoor	ok	23	Outdoor- & taktische Geschirre
+tier-halsband-leine-sets	ok	29	Halsband-, Geschirr- & Leinen-Sets
+tier-sets-geschirr	ok	29	Geschirr mit Leine
+tier-sets-halsband	ok	29	Halsband mit Leine
+tier-tracker	ok	29	Tracker, Kameras & AirTag-Zubehör
+tier-transport	ok	29	Tragetaschen, Rucksäcke & Transport
+tier-auto	ok	29	Auto-Zubehör für Haustiere
+tier-naepfe	ok	29	Näpfe & Schüsseln
+tier-naepfe-keramik	ok	29	Keramiknäpfe
+tier-naepfe-edelstahl	ok	29	Edelstahlnäpfe
