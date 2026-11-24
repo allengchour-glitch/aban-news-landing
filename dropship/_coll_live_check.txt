@@ -1366,3 +1366,10 @@ musikinstrumente-trommeln-kalimba	ok	23	Musikinstrumente
 instrumenten-zubehoer	ok	29	Instrumenten-Zubehör
 instrumente-gitarre-ukulele	ok	25	Gitarre, Bass & Ukulele
 geschenkverpackung-boxen	ok	23	Geschenkverpackung & Boxen
+kunstblumen-kraenze-girlanden	ok	29	Kunstblumen, Kränze & Girlanden
+party-zubehoer-effekte	ok	22	Partyzubehör & Lichteffekte
+ornamente-anhaenger-dekofiguren	ok	29	Ornamente, Anhänger & Dekofiguren
+hanteln-kettlebells	ok	29	Hanteln, Kettlebells & Gewichte
+widerstandsbaender-expander	ok	29	Widerstandsbänder & Expander
+widerstandsbaender-sets	ok	21	Bänder-Sets
+springseile	ok	29	Springseile
