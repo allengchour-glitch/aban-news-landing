@@ -1,0 +1,150 @@
+{
+ "id": "gid://shopify/Product/15523863331201",
+ "handle": "handradiger-nuss-und-kasebrecher-619100",
+ "title": "Handradiger Nuss- und Käsebrecher",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Ein handbetriebener Nuss- und Käsebrecher für die Küche.</p><p>Er ist in Weiss, Rot und als 5‑teiliger Set erhältlich. Die Klingen bestehen aus Aluminiumlegierung und Edelstahl. Der Grinder wird mit einem Saugnapf geliefert, damit er fest an der Arbeitsfläche bleibt. Im Lieferumfang enthalten ist ein einzelner Grinder.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Aluminium‑Edelstahl‑Klingen</li>\n<li>Einzel- oder 5‑teiliger Set</li>\n<li>Saugnapf für sicheren Halt</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 740 g – 1.4 kg (je nach Variante)</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/wohnen-dekoration\">Wohnen &amp; Deko</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70769747263873",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4c7dfebc-3fea-466d-8400-1c4d10035475.jpg?v=1788397935",
+     "width": 1600,
+     "height": 1600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70769747198337",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11658c07-7914-4686-8c48-d863fe4c39d1.jpg?v=1788397935",
+     "width": 1600,
+     "height": 1600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70769747231105",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4c3bf9e6-7153-4178-8183-637443400dba.jpg?v=1788397935",
+     "width": 1600,
+     "height": 1600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70769747296641",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8e2d62ed-e18c-4b6b-93c7-d19ce826581c.jpg?v=1788397936",
+     "width": 1600,
+     "height": 1600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70769747329409",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cd330877-d1b8-42ff-a0d2-5c19cec16e7e.jpg?v=1788397934",
+     "width": 1600,
+     "height": 1600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70769747362177",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/23f42139-9c42-4497-ac90-6f9763064929.jpg?v=1788397935",
+     "width": 1600,
+     "height": 1600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70769747394945",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3a337f31-2746-4690-a39f-6bad7b889c57.jpg?v=1788397935",
+     "width": 1600,
+     "height": 1600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70769747427713",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/361cdc02-eb92-46bd-a5ef-09d4ae81af0e.jpg?v=1788397935",
+     "width": 1600,
+     "height": 1600
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70769747460481",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1c141c6e-dfa3-4b9e-bb2a-759e9b0e0a58.jpg?v=1788397935",
+     "width": 1600,
+     "height": 1600
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67948172050823",
+    "title": "Weiß Einzelmesser",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70769747263873"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948172083591",
+    "title": "160 Doppelmesser Weiß",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70769747394945"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948172116359",
+    "title": "160 Doppelmesser Rot",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70769747362177"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948172149127",
+    "title": "Weiß 5er Set",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70769747231105"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948172181895",
+    "title": "Saugnapf 5 Messer",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70769747460481"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

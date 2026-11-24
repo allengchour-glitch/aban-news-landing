@@ -1,0 +1,112 @@
+{
+ "id": "gid://shopify/Product/15510836216193",
+ "handle": "3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956800",
+ "title": "3-teiliges Fräser-Set für Holzbearbeitung",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Dieses hochwertige 3-teilige Fräser-Set ist ideal für präzise Holzbearbeitungsaufgaben. Die Fräser sind aus robustem Hartmetall gefertigt und eignen sich hervorragend für die Herstellung von 45-Grad-Zapfenverbindungen. Dank des runden Schafts mit einem Durchmesser von 12.7 mm (Britisches System) sind sie mit einer Vielzahl von Maschinen kompatibel. Die beschichtete Oberfläche sorgt für eine erhöhte Langlebigkeit und verbesserte Schnittleistung. Mit einer maximalen Schnitttiefe von 25 mm und einem maximalen Schneiddurchmesser von 40 mm sind diese Werkzeuge vielseitig einsetzbar für verschiedene Holzprojekte.</p><h3>Das zeichnet es aus</h3><ul>\n<li>3-teiliges Set aus 45-Grad-Zapfenfräsern</li>\n<li>Hergestellt aus langlebigem Hartmetall</li>\n<li>Schaftdurchmesser von 12.7 mm (rund, britisches System)</li>\n<li>Beschichtete Oberfläche für längere Haltbarkeit</li>\n<li>Maximale Schnitttiefe von 25 mm</li>\n<li>Maximale Schneiddurchmesser von 40 mm</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70637949321601",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617677746671.jpg?v=1787523314",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70637949419905",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617677746677.jpg?v=1787523314",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70637949452673",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617677746668.jpg?v=1787523314",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70637949485441",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617677746669.jpg?v=1787523314",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70637949518209",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617677746675.jpg?v=1787523314",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70637949550977",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1617677746672.jpg?v=1787523314",
+     "width": 1000,
+     "height": 1000
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/68122551157127",
+    "title": "A",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70637949452673"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122551189895",
+    "title": "B",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70637949550977"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122551222663",
+    "title": "C",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70637949321601"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122551255431",
+    "title": "D",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70637949485441"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

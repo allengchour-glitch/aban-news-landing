@@ -1,0 +1,90 @@
+{
+ "id": "gid://shopify/Product/16603739554183",
+ "handle": "farbige-kabellose-gaming-rgb-maus-mit-mute-tas-4413da",
+ "title": "Farbige kabellose Gaming RGB Maus mit Mute-Taste",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Für ein präzises Spielerlebnis am Computer nutzt du diese farbige kabellose Gaming Maus. Sie ist wiederaufladbar und verfügt über eine spezielle Mute-Taste. Die Maus ist mit RGB-Beleuchtung ausgestattet, die eine individuelle Atmosphäre schafft. Ihre kabellose Funktion bietet dir Bewegungsfreiheit am Schreibtisch.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Farbiges Design</li>\n<li>Wiederaufladbar</li>\n<li>Integrierte Mute-Taste</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff, Metall</li>\n<li>\n<strong>Gewicht:</strong> ca. 155 g – 161 g (je nach Variante)</li>\n<li>\n<strong>Stromversorgung:</strong> Batterie/Akku</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/77436715041159",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/20125041611889.jpg?v=1790910865",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436714975623",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/983942300053.jpg?v=1790910864",
+     "width": 600,
+     "height": 420
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436714942855",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/301077122240900.jpg?v=1790910864",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436715008391",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/19083876717243.jpg?v=1790910864",
+     "width": 790,
+     "height": 945
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436715073927",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/689409449278.jpg?v=1790910865",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77436715106695",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5178266231750.jpg?v=1790910864",
+     "width": 600,
+     "height": 416
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67870849040775",
+    "title": "Grau",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77436715106695"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870849073543",
+    "title": "Schwarz",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77436714975623"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

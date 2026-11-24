@@ -1,0 +1,108 @@
+{
+ "id": "gid://shopify/Product/15517783589249",
+ "handle": "elektrische-nagelfrasmaschine-v2-191040",
+ "title": "Elektrische Nagelfräsmaschine V2",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Die elektrische Nagelfräsmaschine V2 ist ein vielseitiges Werkzeug für professionelles Nageldesign und die Maniküre zu Hause. Mit ihrer hohen Drehzahl von 45'000 U/Min ermöglicht sie effizientes Polieren, Entfernen von Nagellack und Nagelaccessoires sowie das Glätten der Nägel. Das Gerät ist kompakt und in den Farben Weiss oder Pink erhältlich. Dank des integrierten Akkus bietet es eine Nutzungsdauer von 8 bis 10 Stunden und wird bequem über ein Type-C-Kabel geladen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Vielseitig einsetzbar für Polieren, Nagellack- und Accessoire-Entfernung</li>\n<li>Hohe Drehzahl von 45'000 U/Min für effizientes Arbeiten</li>\n<li>Lange Akkulaufzeit von 8-10 Stunden</li>\n<li>Kompaktes Design in Weiss oder Pink</li>\n<li>Inklusive 6 Metall-Polierköpfe und Zubehör</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70688634569089",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2bdf2325-2182-477d-9d78-2e25ab54827b.jpg?v=1787820540",
+     "width": 900,
+     "height": 900
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70688634438017",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6a1c3f89-8431-4261-a66c-11a39bddc43b.jpg?v=1787820540",
+     "width": 900,
+     "height": 900
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70688634601857",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/66712324-0877-4c2e-90e7-d859076b7299.jpg?v=1787820540",
+     "width": 900,
+     "height": 900
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70688634634625",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9d84c1ac-bd93-4d0e-9fba-973b19c381c2.jpg?v=1787820540",
+     "width": 900,
+     "height": 900
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70688634667393",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a1ac2811-2a02-4468-b94c-4b48854e6557.jpg?v=1787820541",
+     "width": 900,
+     "height": 900
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70688634700161",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ae1927c8-a368-44af-bf8e-d1fcd20dd206.jpg?v=1787820540",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70688634732929",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b2855658-2016-4d0f-9933-caa894bb4464.jpg?v=1787820540",
+     "width": 900,
+     "height": 900
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77939276382599",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2bdf2325-2182-477d-9d78-2e25ab54827b_e60c77af-9393-4ec1-a5fc-09947862a571.jpg?v=1793677659",
+     "width": 900,
+     "height": 900
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67879980138887",
+    "title": "Weiss",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77939276382599"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67879980171655",
+    "title": "Rosa",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70688634700161"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

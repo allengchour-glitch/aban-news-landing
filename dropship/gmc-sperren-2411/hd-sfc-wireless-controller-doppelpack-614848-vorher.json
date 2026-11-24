@@ -1,0 +1,108 @@
+{
+ "id": "gid://shopify/Product/15495112360321",
+ "handle": "hd-sfc-wireless-controller-doppelpack-614848",
+ "title": "HD SFC Wireless-Controller Doppelpack",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Der HD SFC Wireless-Controller ist ein kabelloser Doppelpack, der für stundenlangen Spielspass sorgt. Er ist ideal für gemeinsame Gaming-Sessions und bietet dank kabelloser Verbindung maximale Bewegungsfreiheit. Das Set beinhaltet zwei Controller, einen HD TV Stick, ein Verlängerungskabel, ein Ladekabel und einen 2.4G Empfänger. So kannst du direkt loslegen und deine Lieblingsspiele in hochauflösender Qualität geniessen. Die Controller sind aus robustem ABS-Material gefertigt und liegen gut in der Hand.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Kabellose Verbindung für maximale Bewegungsfreiheit</li>\n<li>Doppelpack für gemeinsames Gaming</li>\n<li>Inklusive HD TV Stick und Zubehör für sofortigen Spielstart</li>\n<li>Robustes ABS-Material</li>\n<li>Leichtgewicht mit nur 0.3 kg</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/gaming\">Gaming</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70499946201473",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1621235181075.jpg?v=1786514871",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499946561921",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1621235181076.jpg?v=1786514871",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499946594689",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1621235181073.jpg?v=1786514871",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499946627457",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1621235181074.jpg?v=1786514872",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499946660225",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1621235181078.jpg?v=1786514872",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70499946692993",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d875b4a2-5d84-48bd-9fe8-db0503bbc74a.png?v=1786514870",
+     "width": 370,
+     "height": 612
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77924831232391",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1621235181076_d79eb6c6-92ed-4e0b-880d-53541355d13c.jpg?v=1793637169",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77924831265159",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1621235181074_2d0cec21-8ec2-43f9-a541-b20d45deb9ad.jpg?v=1793637169",
+     "width": 1000,
+     "height": 1000
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67874180301191",
+    "title": "A",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77924831232391"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874180333959",
+    "title": "B",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77924831265159"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

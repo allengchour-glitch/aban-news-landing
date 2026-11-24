@@ -1,0 +1,110 @@
+{
+ "id": "gid://shopify/Product/16641195606407",
+ "handle": "pu-leder-reiserucksack-fur-manner-0de046",
+ "title": "PU-Leder-Reiserucksack für Männer",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Für den Alltag unterwegs, wenn du einen robusten Rucksack mit Laptop-Fach brauchst. Der Rucksack misst 27,5 × 9 × 38 cm und bietet 36‑55 L Kapazität. Er verfügt über ein ID‑Fach, ein Sandwich‑Reissverschluss‑Fach, ein Reissverschluss‑Tasche und ein Computerfach. Das Öffnen erfolgt per Reissverschluss. Der Rucksack ist aus PU‑Leder gefertigt, wasserdicht, verschleissfest, leicht und stossfest. Er kommt mit Schloss und optionalem Regenschutz.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Wasserdicht und stossfest</li>\n<li>Leichtes PU‑Leder</li>\n<li>Reissverschluss‑Öffnung</li>\n<li>Schloss inklusive</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> PU-Leder</li>\n<li>\n<strong>Gewicht:</strong> ca. 100 g</li>\n<li>\n<strong>Masse:</strong> 27.5 × 9 × 38cm</li>\n<li>\n<strong>Fassungsvermögen:</strong> 36-55L</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/77678883832199",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3675516922_193259652.jpg?v=1792067178",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77678883766663",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3673777408_193259652.jpg?v=1792067180",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77678883864967",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4138037472715.png?v=1792067179",
+     "width": 716,
+     "height": 593
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77678883897735",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3673780093_193259652.jpg?v=1792067178",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77678883930503",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3675528130_193259652.jpg?v=1792067178",
+     "width": 500,
+     "height": 500
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77678883963271",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3673786093_193259652.jpg?v=1792067178",
+     "width": 453,
+     "height": 453
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77678883996039",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3673055252_193259652.jpg?v=1792067178",
+     "width": 455,
+     "height": 455
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67870877942151",
+    "title": "Schwarz",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77678883832199"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870877974919",
+    "title": "Hellbraun",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77678883897735"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870878007687",
+    "title": "Marineblau / Braun",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77678883766663"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

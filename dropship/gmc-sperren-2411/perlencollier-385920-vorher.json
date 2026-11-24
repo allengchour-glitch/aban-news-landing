@@ -1,0 +1,108 @@
+{
+ "id": "gid://shopify/Product/15452919366017",
+ "handle": "perlencollier-385920",
+ "title": "Perlencollier",
+ "descriptionHtml": "<!-- ls-var-v1 --><!-- ls-text-v2 --><p>Dieses Perlencollier trägt einen Anhänger mit einer barocken Perle in eckiger, geometrischer Form, die ihm einen ganz eigenen Charakter gibt. Die Kette ist als Wasserwellenkette gearbeitet und in Silber gehalten. Das Collier ist für Frauen gedacht und lässt sich zu Alltagsoutfits ebenso tragen wie zu einer Party.</p><h4>Material und Geschenkidee</h4><p>Das Schmuckstück besteht aus Metall und wird einzeln verpackt, was es zu einem schönen Mitbringsel macht. Als Geschenk eignet es sich zum Beispiel für den Valentinstag, eine Hochzeit oder einen Geburtstag, aber auch als kleines Reisesouvenir. Im Lieferumfang ist ein Anhänger enthalten.</p><!-- /ls-text-v2 -->\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Metall</li>\n<li>\n<strong>Gewicht:</strong> ca. 6 g – 7 g (je nach Variante)</li>\n</ul>\n</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/premium-schmuck\">Schmuck &amp; Uhren</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/69906518278529",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1705b43a-c253-4e85-86e4-3e317a537823.jpg?v=1783684201",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69906518409601",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/afd98ac1-e282-461b-b2d4-6ffd1c054576.jpg?v=1783684201",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69906518442369",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a6e5f1e9-fa6f-470f-94ad-32d50ec636f1.png?v=1783684202",
+     "width": 230,
+     "height": 416
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69906518475137",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8ad078e8-4a41-496e-a85b-c30c97ead2f8.jpg?v=1783684201",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69906518507905",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e4c790e7-2170-46da-bf3e-ada15b083448.jpg?v=1783684201",
+     "width": 567,
+     "height": 793
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69906518540673",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7153de2b-9b23-4396-8293-32316aaeb206.jpg?v=1783684201",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69906518573441",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/6df1c924-9a28-4603-8650-42eab95cc0e1.jpg?v=1783684202",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/69906518606209",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4829a8c7-c9dd-45cd-a05b-3ddfb40cb1b5.jpg?v=1783684201",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/68305132126599",
+    "title": "Gold",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69906518409601"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68305132159367",
+    "title": "Silber",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/69906518507905"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

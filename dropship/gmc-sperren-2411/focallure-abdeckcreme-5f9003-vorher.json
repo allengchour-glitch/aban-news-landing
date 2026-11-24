@@ -1,0 +1,103 @@
+{
+ "id": "gid://shopify/Product/15525273731457",
+ "handle": "focallure-abdeckcreme-5f9003",
+ "title": "Focallure Abdeckcreme",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Diese Abdeckcreme kaschiert Unebenheiten und Rötungen im Gesicht für ein ebenmässigeres Hautbild. Du trägst sie punktuell auf oder verwendest sie grossflächig unter dem Make-up. Die Creme ist für alle Hauttypen geeignet und lässt sich leicht verblenden. Sie bietet eine zuverlässige Deckkraft, die den ganzen Tag hält.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Kaschiert Unebenheiten und Rötungen</li>\n<li>Für alle Hauttypen geeignet</li>\n<li>Leicht zu verblenden</li>\n<li>Bietet zuverlässige Deckkraft</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 40 g</li></ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70808444338561",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/60110434747475.jpg?v=1788562028",
+     "width": 640,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70808444404097",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1100545351668.jpg?v=1788562029",
+     "width": 640,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70808444436865",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1384694992725.jpg?v=1788562029",
+     "width": 640,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70808444469633",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/826230099870.jpg?v=1788562029",
+     "width": 640,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70808444502401",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/339635694000.jpg?v=1788562029",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/68122235076999",
+    "title": "1",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70808444469633"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122235109767",
+    "title": "4",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70808444338561"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122235142535",
+    "title": "2",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70808444436865"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122235175303",
+    "title": "3",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70808444404097"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

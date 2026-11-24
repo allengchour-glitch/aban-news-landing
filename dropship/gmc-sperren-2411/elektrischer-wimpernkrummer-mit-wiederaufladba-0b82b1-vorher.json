@@ -1,0 +1,99 @@
+{
+ "id": "gid://shopify/Product/16606217175431",
+ "handle": "elektrischer-wimpernkrummer-mit-wiederaufladba-0b82b1",
+ "title": "Elektrischer Wimpernkrümmer mit wiederaufladbarem Akku",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Für ein sofortiges, volles Wimpern‑Look bei jeder Gelegenheit. Mit elektrisch betriebenem Mechanismus krümmt er die Wimpern sanft. Er ist in Schwarz oder Weiss erhältlich und lässt sich wiederaufladen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Elektroantrieb</li>\n<li>Wiederaufladbar</li>\n<li>Schwarz oder Weiss</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 71 g</li>\n<li>\n<strong>Stromversorgung:</strong> Batterie/Akku</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/77447608697223",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/626790453596.jpg?v=1791090753",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77447609844103",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/199974490013.jpg?v=1791090764",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77447609876871",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1596958293228.jpg?v=1791090764",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77447609909639",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7455821220676.png?v=1791090764",
+     "width": 780,
+     "height": 704
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77447609942407",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1243484468329.png?v=1791090765",
+     "width": 785,
+     "height": 725
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77939365773703",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9508385973505.jpg?v=1793678920",
+     "width": 97,
+     "height": 95
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77939365806471",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/508867080621.jpg?v=1793678920",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67880034795911",
+    "title": "Weiss",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77939365773703"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67880034828679",
+    "title": "Schwarz",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77939365806471"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

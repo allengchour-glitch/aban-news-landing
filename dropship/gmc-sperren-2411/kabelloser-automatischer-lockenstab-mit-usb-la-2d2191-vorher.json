@@ -1,0 +1,108 @@
+{
+ "id": "gid://shopify/Product/15497433219457",
+ "handle": "kabelloser-automatischer-lockenstab-mit-usb-la-2d2191",
+ "title": "Kabelloser Automatischer Lockenstab mit USB-Ladefunktion",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Dieser automatische Lockenstab ermöglicht dir wunderschöne Locken, egal wo du bist. Dank des kabellosen Designs und der USB-Ladefunktion ist er der perfekte Begleiter für unterwegs. Das Gerät ist speziell für trockenes Haar konzipiert und verwendet hochwertige Turmalin-Keramik als Wärmeleiter, um dein Haar schonend zu stylen. Der Durchmesser des Wärmeleiters beträgt 15mm oder weniger, ideal für definierte Locken.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Vier Temperaturstufen und LCD-Anzeige für präzise Kontrolle</li>\n<li>Einstellbare Styling-Zeit (8-18 Sekunden) für individuelle Locken</li>\n<li>Umschaltbare Temperaturanzeige zwischen Fahrenheit und Celsius</li>\n<li>Schnellladefunktion: 3 Stunden Ladezeit für 1 Stunde kontinuierliche Nutzung</li>\n<li>Praktischer Android-Ladeanschluss</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70523186184577",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1158302896128.jpg?v=1786670963",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70523186086273",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/571961925462.jpg?v=1786670963",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70523186053505",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8700875050398.png?v=1786670962",
+     "width": 449,
+     "height": 457
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70523186119041",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/dc375bfa-2020-4d1c-ba58-32518a3c545a.jpg?v=1786670963",
+     "width": 750,
+     "height": 562
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70523186151809",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3101506802294.jpg?v=1786670963",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70523186217345",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1703826256833.jpg?v=1786670963",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70523186250113",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3722984a-8831-4768-bde4-628967b32a09.jpg?v=1786670963",
+     "width": 800,
+     "height": 599
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70523186282881",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9db1a49d-510b-4516-8cda-212ecbb61141.jpg?v=1786670963",
+     "width": 800,
+     "height": 599
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67870947115399",
+    "title": "Grau",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70523186053505"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870947148167",
+    "title": "Rosa",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70523186282881"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

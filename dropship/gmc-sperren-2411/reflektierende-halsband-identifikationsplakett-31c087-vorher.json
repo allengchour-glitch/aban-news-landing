@@ -1,0 +1,209 @@
+{
+ "id": "gid://shopify/Product/15501925450113",
+ "handle": "reflektierende-halsband-identifikationsplakett-31c087",
+ "title": "Reflektierende Halsband-Identifikationsplakette",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Das Reflektierende Halsband-Identifikationsplakette eignet sich für mittelgrosse bis grosse Hunde.</p><p>Es ist leicht anpassbar und bietet eine kostenlose Gravurservice.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Reflektierende Oberfläche für erhöhte Sichtbarkeit</li>\n<li>Easy-Anpassung für einen perfekten Pass</li>\n<li>Personalisierbare Gravur mit Namen, Geschlecht, Geburtstag oder Nummer</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/premium-schmuck\">Schmuck &amp; Uhren</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70559456100737",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5862280564820.jpg?v=1786952207",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70559456067969",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1799162466349.jpg?v=1786952206",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70559456133505",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/333411602839.jpg?v=1786952206",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70559456166273",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3278086027276.jpg?v=1786952205",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70559456199041",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5196784994633.jpg?v=1786952206",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70559456231809",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/328361326242.jpg?v=1786952207",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70559456264577",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3494913698478.jpg?v=1786952205",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67870992793991",
+    "title": "Rot / S",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456166273"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870992826759",
+    "title": "Orange / S",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456199041"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870992859527",
+    "title": "Orange / L",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456199041"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870992892295",
+    "title": "Grün / L",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456067969"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870992925063",
+    "title": "Grün / S",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456067969"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870992957831",
+    "title": "Blau / S",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456264577"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870992990599",
+    "title": "Rot / M",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456166273"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870993023367",
+    "title": "Blau / M",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456264577"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870993056135",
+    "title": "Orange / M",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456199041"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870993088903",
+    "title": "Blau / L",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456264577"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870993121671",
+    "title": "Grün / M",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456067969"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870993154439",
+    "title": "Rot / L",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70559456166273"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,112 @@
+{
+ "id": "gid://shopify/Product/15503090450817",
+ "handle": "intelligente-tragbare-kaffeetasse-081792",
+ "title": "Intelligente, tragbare Kaffeetasse",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Diese intelligente, tragbare Kaffeetasse im japanischen Stil ist der ideale Begleiter für alle, die auch unterwegs nicht auf ihren Kaffee verzichten möchten. Gefertigt aus hochwertigem 316er Edelstahl, garantiert sie Langlebigkeit und hält dein Getränk optimal temperiert. Mit einem Fassungsvermögen von 50 ml und weniger ist sie perfekt für einen schnellen Espresso oder eine kleine Dosis Koffein zwischendurch.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Hergestellt aus robustem 316er Edelstahl</li>\n<li>Kompaktes Design mit weniger als 50 ml Fassungsvermögen</li>\n\n<li>Praktischer japanischer Stil für unterwegs</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70569278243201",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c8aefa26-e62b-4be9-bcf7-b215debacc76.jpg?v=1787015677",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70569278472577",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2afb283d-a473-439e-945e-cefe70e1ab10.jpg?v=1787015677",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70569278505345",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/43028ee7-fdb1-47d2-b78b-c01cdd281848.jpg?v=1787015677",
+     "width": 750,
+     "height": 750
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70569278538113",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e6bba2f0-2488-434a-91bd-28b109d231b8.jpg?v=1787015677",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70569278570881",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/269b11cb-3442-423a-afc1-bf214d81a558.jpg?v=1787015677",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70569278603649",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/f9d3a2fe-5ae8-4211-9849-04282117fbd9.jpg?v=1787015677",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67879873675655",
+    "title": "Blau",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70569278472577"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67879873708423",
+    "title": "Orange",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70569278603649"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67879873741191",
+    "title": "Weiss",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70569278538113"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67879873773959",
+    "title": "Grau",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70569278243201"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

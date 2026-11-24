@@ -1,0 +1,132 @@
+{
+ "id": "gid://shopify/Product/16604860711303",
+ "handle": "katzenpullover-fur-herbst-und-winter-616000",
+ "title": "Katzenpullover für Herbst und Winter",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Für gemütliche Stunden zu Hause oder Spaziergänge an kühlen Tagen kleidest du deine Katze warm ein. Der Pullover besteht aus Polyester und ist in der Farbe Rhomben-Stickerei Kirschpullover-Rot gehalten. Die Grösse XS hat einen Brustumfang von 29 cm und ist für Katzen von 1,00 kg bis 1,50 kg geeignet. Die Grösse S passt Katzen mit einem Brustumfang von 34 cm und einem Gewicht von 2,00 kg bis 3,00 kg. Für Katzen von 6,50 kg bis 9,00 kg ist die Grösse XL mit einem Brustumfang von 49 cm vorgesehen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Für den allgemeinen Gebrauch</li>\n<li>Lässiger Stil</li>\n<li>Lieferumfang: 1 Katzenpullover</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<!--ls-feed-details--><h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Gewicht:</strong> ca. 60 g – 100 g (je nach Variante)</li>\n<li>\n<strong>Stil:</strong> Casual</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/77441872036231",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/9a7595fc-fd18-4d92-bb23-99f1501b2c63.jpg?v=1790987480",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77441872068999",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5ccc2282-ba22-4080-9fdc-1d3cf81efae1.jpg?v=1790987480",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77441872101767",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bc654b67-f961-417f-986a-22dc2b383a82.jpg?v=1790987480",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77441872134535",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2498daac-0206-4c92-8085-e7d9cb95b517.jpg?v=1790987481",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77441872167303",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/227fe716-ee79-4cba-9f05-00aee32e2cb2.jpg?v=1790987480",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77441872200071",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1241e91f-d346-4bc0-82eb-72c2d1a570b9.jpg?v=1790987481",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77919748129159",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/5ccc2282-ba22-4080-9fdc-1d3cf81efae1_0dd041e6-4e07-43e5-84f7-1ac644def9c9.jpg?v=1793595648",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67871309365639",
+    "title": "XS",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77919748129159"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67871309398407",
+    "title": "S",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77919748129159"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67871309431175",
+    "title": "M",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77919748129159"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67871309463943",
+    "title": "L",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77919748129159"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67871309496711",
+    "title": "XL",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77919748129159"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

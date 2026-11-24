@@ -1,0 +1,92 @@
+{
+ "id": "gid://shopify/Product/15500486738305",
+ "handle": "kurzwellen-kurllaser-990784",
+ "title": "Kurzwellen-Kurllaser",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Das Full-automatic Hair Curler Non-hurt Hair Lazy Egg Roll Large Wave Electric ist ein elektrischer Kurllaser mit einer Leistung von 35W und einer Spannung von 110-220V. Es verfügt über eine keramische Glasuren, die das Haar glatt und glänzend macht, ohne es zu beschädigen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Keramische Glasuren für glattes und glänzendes Haar</li>\n<li>Rapid Heating für schnelles Ergebnis</li>\n<li>Automatische Stromabschaltung nach 30 Sekunden</li>\n<li>Intelligente Temperaturregelung mit 4 Stufen</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70543275065729",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c0872409-a628-4901-865e-0be4beaa1268.jpg?v=1786785579",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70543275098497",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/abca2596-9c4f-4299-aee0-a3e184c5c3d0.jpg?v=1786785580",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70543275131265",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/07b3d965-b6eb-42aa-85be-5539d110830d.jpg?v=1786785580",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70543275164033",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/3ca1d8e1-0111-43e6-b9a4-c5bf147947d1.jpg?v=1786785580",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70543275196801",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b8c4b217-8a73-4160-ac3e-b941cc142c4e.jpg?v=1786785579",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67879979811207",
+    "title": "Rosa",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70543275131265"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67879979843975",
+    "title": "Violett",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70543275196801"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67879979876743",
+    "title": "Gelb",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70543275065729"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

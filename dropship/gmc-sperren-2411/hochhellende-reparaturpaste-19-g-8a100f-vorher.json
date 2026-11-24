@@ -1,0 +1,183 @@
+{
+ "id": "gid://shopify/Product/15525249712513",
+ "handle": "hochhellende-reparaturpaste-19-g-8a100f",
+ "title": "Hochhellende Reparaturpaste 19 g",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Die Hochhellende Reparaturpaste ist ein Produkt für das Make‑up, das die Helligkeit der Haut betont. Sie kommt in einer 19‑g‑Dose und ist in einer farbigen Box mit den Massen 5,1 × 5,1 × 1,4 cm verpackt. Die Paste wird in einzelnen Stückchen geliefert. </p><h3>Das zeichnet es aus</h3><ul>\n<li>19 g pro Stück</li>\n<li>Boxgrösse 5,1 × 5,1 × 1,4 cm</li>\n<li>Einfaches Auftragen</li>\n<li>Helle Wirkung</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul><li>\n<strong>Gewicht:</strong> ca. 16 g – 53 g (je nach Variante)</li></ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70807995351425",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/49610047305775.jpg?v=1788553752",
+     "width": 900,
+     "height": 900
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807995318657",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/21449706578481.jpg?v=1788553752",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807995384193",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/62732931841783.jpg?v=1788553751",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807995416961",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/667897840610.jpg?v=1788553752",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807995449729",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4444240610498.jpg?v=1788553751",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807995482497",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/32849635747444.jpg?v=1788553752",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807995515265",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/285035288014.jpg?v=1788553752",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807995548033",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/11473172257.jpg?v=1788553752",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807995580801",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1699508248167.jpg?v=1788553752",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/68122234093959",
+    "title": "Bronze",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70807995449729"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122234126727",
+    "title": "Creme",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70807995384193"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122234159495",
+    "title": "Bernstein",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70807995580801"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122234192263",
+    "title": "Undress",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70807995515265"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122234225031",
+    "title": "Lunaris",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70807995482497"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122234257799",
+    "title": "Solaris",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70807995416961"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122234290567",
+    "title": "Glitzer",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70807995548033"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122234323335",
+    "title": "Kupfer",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70807995318657"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

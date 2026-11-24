@@ -1,0 +1,110 @@
+{
+ "id": "gid://shopify/Product/15499061133697",
+ "handle": "faltbares-20w-solarpanel-098ae1",
+ "title": "Faltbares 20W Solarpanel",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Dieses faltbare Solarpanel ist dein idealer Begleiter für unterwegs, um deine Geräte mit umweltfreundlicher Solarenergie zu versorgen. Mit einer maximalen Leistung von 20 Watt und einer beeindruckenden Solarkonversionsrate von 20% lädt es zuverlässig Mobiltelefone und Powerbanks auf. Das Panel ist nach IP65 wasserdicht und somit bestens für Outdoor-Abenteuer gerüstet. Dank seines leichten und faltbaren Designs lässt es sich mühelos transportieren und verstauen.</p><h3>Das zeichnet es aus</h3><ul>\n<li>20 Watt maximale Leistung für effizientes Laden.</li>\n<li>Hohe Solarkonversionsrate von 20%.</li>\n<li>IP65 Wasserdichtigkeit für den Einsatz bei jedem Wetter.</li>\n<li>Kompakte Masse: 44x16.5x0.3cm (erweitert) und 10.5x16.5x1.5cm (gefaltet).</li>\n<li>Vielseitige Ausgabe: USB 5V und 18V DC.</li>\n<li>Einfach zu transportieren und zu verstauen dank faltbarem Design.</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70532641882497",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/117395874613.jpg?v=1786725303",
+     "width": 1001,
+     "height": 1001
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70532642111873",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/115558957394.jpg?v=1786725303",
+     "width": 1001,
+     "height": 1001
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70532642144641",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/22838418949013.jpg?v=1786725303",
+     "width": 1001,
+     "height": 1001
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70532642177409",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/434898603415.jpg?v=1786725303",
+     "width": 1001,
+     "height": 1001
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70532642210177",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2975354629609.jpg?v=1786725303",
+     "width": 1001,
+     "height": 1001
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70532642242945",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1656509793024.jpg?v=1786725303",
+     "width": 1001,
+     "height": 1001
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70532642275713",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7247f15f-9f0a-42f3-813f-78b3f7ceac57.jpg?v=1786725302",
+     "width": 595,
+     "height": 219
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67874140422535",
+    "title": "5seitige Direktladung",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70532642275713"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874140455303",
+    "title": "Schwarz",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70532642210177"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67874140488071",
+    "title": "Tarnung",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70532642242945"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

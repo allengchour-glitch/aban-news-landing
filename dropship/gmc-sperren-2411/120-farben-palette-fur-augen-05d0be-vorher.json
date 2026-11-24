@@ -1,0 +1,72 @@
+{
+ "id": "gid://shopify/Product/15525141217665",
+ "handle": "120-farben-palette-fur-augen-05d0be",
+ "title": "120-Farben-Palette für Augen",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Eine Augenpalette mit 120 verschiedenen Farben, die du für jede Tages- oder Abendlook‑Anforderung einsetzen kannst. Die Palette enthält 120 individuelle Farbtöne, die für alle Hauttypen geeignet sind. Sie umfasst zudem 8 Grundfarben, die sich leicht mischen lassen. Der Lieferumfang beinhaltet die Palette in kompakter Grösse.</p><h3>Das zeichnet es aus</h3><ul>\n<li>120 individuelle Farbtöne</li>\n<li>Für alle Hauttypen geeignet</li>\n<li>Inkl. 8 Basisfarben</li>\n<li>Kompakte Grösse</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff</li>\n<li>\n<strong>Gewicht:</strong> ca. 550 g</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70806844572033",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2232992125345.png?v=1788536416",
+     "width": 819,
+     "height": 877
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806844604801",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2292341681637.jpg?v=1788536415",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806844637569",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/de0f2396-2473-4545-b2d1-94c952c77c1d.jpg?v=1788536416",
+     "width": 515,
+     "height": 455
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70806844670337",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2958333788513.png?v=1788536417",
+     "width": 893,
+     "height": 648
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/68122288259463",
+    "title": "12004 Farbe",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70806844637569"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122288292231",
+    "title": "01",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70806844604801"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

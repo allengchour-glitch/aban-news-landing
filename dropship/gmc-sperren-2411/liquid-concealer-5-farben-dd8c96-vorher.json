@@ -1,0 +1,141 @@
+{
+ "id": "gid://shopify/Product/15525189353857",
+ "handle": "liquid-concealer-5-farben-dd8c96",
+ "title": "Liquid Concealer 5 Farben",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Ein flüssiger Concealer, der dunkle Augenringe und Unreinheiten kaschiert und die Haut gleichmässig abdichtet. Er ist 9,4 × 1,8 × 1,8 cm gross, wiegt 21 g und enthält pflanzliche Feuchtigkeitsspender für ein seidiges Finish. Mit fünf Farbvarianten lässt sich die passende Nuance für jeden Hautton wählen. Die kompakte Tube ist leicht zu tragen und hinterlässt kein Staubpolster.</p><h3>Das zeichnet es aus</h3><ul>\n<li>5 Farboptionen</li>\n<li>Feuchtigkeitsspendend</li>\n<li>Seidig‑weiches Finish</li>\n<li>Keine aufsteigenden Pulverreste</li>\n<li>Kompakte 9,4 × 1,8 × 1,8 cm Tube</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Masse:</strong> 9.4 × 1.8 × 1.8cm</li>\n<li>\n<strong>Gewicht:</strong> 21g</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70807046652289",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/834259057724.jpg?v=1788539985",
+     "width": 1005,
+     "height": 1005
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807046619521",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/442505691001.jpg?v=1788539984",
+     "width": 1005,
+     "height": 1005
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70807046685057",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1122107868287.jpg?v=1788539985",
+     "width": 1005,
+     "height": 1005
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949936075143",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/43485654276395.jpg?v=1793762803",
+     "width": 1005,
+     "height": 1005
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949936107911",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1625558864364.jpg?v=1793762803",
+     "width": 1005,
+     "height": 1005
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949936140679",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/730484401905.jpg?v=1793762803",
+     "width": 1005,
+     "height": 1005
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949936173447",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/478415671229.jpg?v=1793762803",
+     "width": 1005,
+     "height": 1005
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77949936206215",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1092505198827.jpg?v=1793762803",
+     "width": 1005,
+     "height": 1005
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67948448285063",
+    "title": "Nummer 4",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77949936075143"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948448317831",
+    "title": "Nummer 5",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77949936107911"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948448350599",
+    "title": "Nummer 1",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77949936140679"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948448383367",
+    "title": "Nummer 3",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77949936173447"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67948448416135",
+    "title": "Nummer 2",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/77949936206215"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

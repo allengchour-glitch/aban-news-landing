@@ -1,0 +1,90 @@
+{
+ "id": "gid://shopify/Product/15496384807297",
+ "handle": "kabelloses-6-in-1-multifunktions-ladegerat-896320",
+ "title": "Kabelloses 6-in-1 Multifunktions-Ladegerät",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Das Q720 ist ein vielseitiges kabelloses Ladegerät, das mehrere Geräte gleichzeitig mit Strom versorgt. Dank der zwei Schnittstellen-Designs ist es einfach zu bedienen und unterstützt QI-Laden für eine breite Palette kompatibler Geräte. Mit einer Ladeleistung von 15W und einem Ladestrom von 1500 mA sorgt es für effizientes Aufladen. Es verfügt über eine praktische Anzeige und bietet vierfache Sicherheit zum Schutz deiner Geräte. Erhältlich in elegantem Hohlschwarz oder Hohlweiss.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Zwei Schnittstellen-Designs für einfache Handhabung</li>\n<li>Unterstützt QI-Laden für diverse Geräte</li>\n<li>Vierfacher Sicherheitsschutz</li>\n<li>15W Ausgangsleistung</li>\n<li>Integrierte Ladeanzeige</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70510760624513",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1620700583784.jpg?v=1786592404",
+     "width": 1500,
+     "height": 1500
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70510760657281",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1620700583772.jpg?v=1786592405",
+     "width": 1500,
+     "height": 1500
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70510760690049",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1621234069052.jpg?v=1786592405",
+     "width": 1500,
+     "height": 1500
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70510760722817",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1620700583742.jpg?v=1786592405",
+     "width": 1500,
+     "height": 1500
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70510760755585",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1620700583763.jpg?v=1786592406",
+     "width": 1500,
+     "height": 1500
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70510760788353",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1620700583765.jpg?v=1786592406",
+     "width": 1500,
+     "height": 1500
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/67870847893895",
+    "title": "Weiss",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70510760755585"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/67870847926663",
+    "title": "Schwarz",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70510760788353"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}
