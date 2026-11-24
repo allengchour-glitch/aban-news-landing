@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-24T08:40Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-24T09:43Z
 
 Aktive gescannt: 2 · ohne Kategorie: 2 · heute gesetzt: 2 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
@@ -7,6 +7,6 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- chameleon-silikon-nachtlicht-tier-design-637600 · Beleuchtung → Home & Garden > Lighting
-- herz-kokon-schmetterlingsbrosche-599488 · Schmuck → Apparel & Accessories > Jewelry
+- katzen-fisch-brosche-mit-strass-807360 · Schmuck → Apparel & Accessories > Jewelry
+- geometrische-brosche-mit-doppelkopf-und-langen-629568 · Schmuck → Apparel & Accessories > Jewelry
 
