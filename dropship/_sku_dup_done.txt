@@ -720,3 +720,4 @@ gid://shopify/Product/15495190544769	CJSL293135501AZ	Vintage Eulen-Fusskettchen 
 gid://shopify/Product/15496579940737	CJLX293083901AZ	Feuerfliegenring
 gid://shopify/Product/15495129039233	CJSL293552301AZ	Gravierbares Armband mit Herzanhänger
 gid://shopify/Product/15495129170305	CJSL293548701AZ	Graviertes Edelstahl-Armband, doppellagig
+gid://shopify/Product/16732296708487	CJYD283754501AZ	Kleines Nachtlicht – Touch-Bedienung, USB-aufladbar

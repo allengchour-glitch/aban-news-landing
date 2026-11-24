@@ -8594,3 +8594,9 @@ gid://shopify/Product/15496509686145	zugeordnet	14	Retro Sandalen mit eckiger Ze
 gid://shopify/Product/15496509948289	zugeordnet	21	Spitze Slip-on Schuhe mit Keilabsatz
 gid://shopify/Product/15496510013825	zugeordnet	18	Glitzer-Rhinestone-Sandalen mit mittlerem Absatz
 gid://shopify/Product/15496510243201	zugeordnet	40	Handgenähte High-Top Herrenschuhe für Draussen
+gid://shopify/Product/15477922857345	bild-urls-tot
+gid://shopify/Product/15477964898689	bild-urls-tot
+gid://shopify/Product/15477964996993	bild-urls-tot
+gid://shopify/Product/15477965160833	bild-urls-tot
+gid://shopify/Product/15477965291905	bild-urls-tot
+gid://shopify/Product/15477965390209	bild-urls-tot
