@@ -1,4 +1,4 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 19:23 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 20:41 UTC)
 
 Suche: `status:active AND created_at:>=2026-11-21` · gemessen 232 · **129 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 124, teilweise: 5, keine: 0; Preisspanne > 2×: 10) · 1 CJ-Variante: 102 · ohne Antwort: 1
 

@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 19:23 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 20:40 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 188 · **126 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 97, teilweise: 27, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 187 · **125 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 97, teilweise: 26, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -35,7 +35,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Sommerdecke aus Baumwollgaze mit Sojafasern (`sommerdecke-aus-baumwollgaze-mit-sojafasern-614300`) | 48 | 48 | 30.43–37.26 | 102.90 | Clover-150x200cm 1.2kg, Clover-150x200cm 1.6kg, Clover-200x230cm 1.6kg, Clover-200x230cm 2.8kg |
 | Kissenbezug im französischen Stil mit Rüschen (`kissenbezug-im-franzosischen-stil-mit-ruschen-637600`) | 48 | 48 | 2.71–3.98 | 21.90 | Beige-30X50CM-Pillowcase, Beige-30X50CM-Pillow, Beige-45X45CM-Pillowcase, Beige-45X45CM-Pillow |
 | Tutu Samt-Bettwäsche, 4-teilig (`tutu-samt-bettwasche-4-teilig-878528`) | 48 | 48 | 36.16–45.67 | 58.90 | Bean-1.2m, Bean-1.5m, Bean-1.5mbed, Bean-1.8m |
-| Leuchtendes LED-Hundehalsband (`leuchtendes-led-hundehalsband-680704`) | 44 | 32 | 4.19–4.19 | 16.90 | Red-XS, Red-S, Red-M, Red-L |
 | Festlicher Tischläufer im New Chinese-Stil (`festlicher-tischlaufer-im-new-chinese-stil-619200`) | 44 | 44 | 3.19–7.79 | 21.90 | Red With A White Beard-30x120cm, Red With A White Beard-30x140cm, Red With A White Beard-30x160cm, Red With A White Beard-30x180cm |
 | Eleganter Valentinstag-Ring im Quadrat-Design (`eleganter-valentinstag-ring-im-quadrat-design-636800`) | 42 | 42 | 6.26–8.18 | 15.90 | Rose Gold 3 Stones-Size 5, Rose Gold 3 Stones-Size 6, Rose Gold 3 Stones-Size 7, Rose Gold 3 Stones-Size 8 |
 | Gestreiftes Baumwoll-Bettwäsche-Set (`gestreiftes-baumwoll-bettwasche-set-617200`) | 42 | 42 | 19.97–28.65 | 76.90 | Cream Blue-1.2m flat sheet 3pcs, Cream Blue-1.5m flat sheet 4pcs, Cream Blue-1.8m flat sheet 4pcs, Cream Blue-2.0m flat sheet 4pcs |

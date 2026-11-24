@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 19:23 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 20:40 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 166 · **28 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 19, teilweise: 5, keine: 4; Preisspanne > 2×: 6) · 1 CJ-Variante: 138 · ohne Antwort: 0
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 165 · **27 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 18, teilweise: 5, keine: 4; Preisspanne > 2×: 6) · 1 CJ-Variante: 138 · ohne Antwort: 0
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -24,7 +24,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | 3D Holzpuzzle Blumen-Modellbausatz (`3d-holzpuzzle-blumen-modellbausatz-638500`) | 10 | 10 | 2.17–2.41 | 15.90 | Dreamy Rose JM001, Cloud Steps JM002, Blazing Sunflower JM003, Pink Daisy JM004 |
 | ROCKBROS Velo Frontlicht USB-Ladefunktion (`rockbros-velo-frontlicht-usb-ladefunktion-0d243e`) | 8 | 7 | 5.15–23.68 | 20.90 | LUMEN TD-100, R31000-1000lumens bright headlights, D31000-1000lumens bright headlights, LUMEN BC02-700 |
 | DIY Stickset mit 50 Garnfarben (`diy-stickset-mit-50-garnfarben-cb3e23`) | 7 | 0 | 2.57–7.17 | 21.90 | 136pcs, 10pcs, 12pcs, Set AC177 |
-| Weinöffner mit Luftdruckpumpe (`weinoffner-mit-luftdruckpumpe-198db1`) | 6 | 6 | 3.51–6.62 | 22.90 | Gold-Upgrade, Silver-Set, Black-Set 2, Red-Upgrade |
 | 3D-gedruckte Gummimatte (`3d-gedruckte-gummimatte-621900`) | 4 | 4 | 4.86–4.86 | 14.90 | Black-33x60cm-US, Black-33x60cm-UK, Black-33x60cm-AU, Black-33x60cm-EU |
 | Gebäude-Modell Bausatz für Erwachsene (`gebaude-modell-bausatz-fur-erwachsene-600200`) | 4 | 4 | 2.19–2.19 | 16.90 | Peking University Standard, Tsinghua University Standard, Wuhan University Standard, Fudan University Standard |
 | USB Powerbank mit Handwärmer und Massage (`usb-powerbank-mit-handwarmer-und-massage-45aeb2`) | 4 | 0 | 5.24–5.24 | 17.90 | Rose gold-107X 60X 25mm, Silver-107X 60X 25mm, Sky blue-107X 60X 25mm, Tyrant Gold-107X 60X 25mm |
