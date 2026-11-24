@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-24 15:46 UTC, Stand 2026-11-24 16:39 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-24 15:46 UTC, Stand 2026-11-24 16:42 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **10'847**
-- Optionen mit englischen Werten (Kandidaten): 510
+- Produkte gesehen: **12'043**
+- Optionen mit englischen Werten (Kandidaten): 539
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 1'320
+- Werte mit unbekanntem Wort (unverändert): 1'393
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 19
 - übersprungen «kleidungsstueck-im-wert»: 12
@@ -70,5 +70,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 45, `powder` 43, `diamond` 37, `high` 24, `end` 23, `eyelashes` 23, `plush` 22, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `one` 19, `lamp` 19, `holder` 19, `cherry` 18, `line` 18, `tea` 17, `degrees` 17, `⟨satzbau:praeposition⟩` 17, `blossom` 15, `tc` 15, `data` 14, `to` 14, `carbon` 14, `elegant` 11, `bag` 11, `shell` 11, `titanium` 11, `sunflower` 11, `size` 11, `hat` 10, `storage` 10, `color` 10, `⟨satzbau:adjektivfolge⟩` 10, `fiber` 10, `ding` 10, `three` 9, `hot` 9, `four` 9, `insert` 9, `cocoa` 9, `promax` 9, `ball` 9, `milk` 8, `full` 8, `gun` 8, `electric` 8, `glittering` 8, `waist` 8, `rope` 8, `ice` 8, `soft` 8, `stone` 8, `sport` 8, `button` 8, `machine` 7, `washed` 7, `back` 7, `filter` 7
+`⟨satzbau:adjektiv-vor-nomen⟩` 46, `powder` 43, `diamond` 37, `high` 24, `end` 23, `eyelashes` 23, `plush` 22, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `one` 19, `lamp` 19, `holder` 19, `cherry` 18, `line` 18, `tea` 17, `four` 17, `degrees` 17, `⟨satzbau:praeposition⟩` 17, `pin` 15, `blossom` 15, `tc` 15, `data` 14, `to` 14, `carbon` 14, `rain` 14, `elegant` 13, `cup` 13, `titanium` 12, `sunflower` 12, `bag` 11, `shell` 11, `size` 11, `hat` 10, `storage` 10, `color` 10, `⟨satzbau:adjektivfolge⟩` 10, `of` 10, `fiber` 10, `ding` 10, `three` 9, `hot` 9, `insert` 9, `deep` 9, `cocoa` 9, `the` 9, `promax` 9, `ball` 9, `milk` 8, `full` 8, `gun` 8, `electric` 8, `glittering` 8, `waist` 8, `rope` 8, `ice` 8, `soft` 8, `stone` 8
 
