@@ -1,4 +1,4 @@
-# Feinkategorie (automatisch, 2026-11-24 19:12 UTC)
+# Feinkategorie (automatisch, 2026-11-24 20:12 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
@@ -6,34 +6,24 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 |---|---:|
 | gleich | 36034 |
 | shopify-feiner | 16300 |
-| rueckfall-grob | 1310 |
+| rueckfall-grob | 1434 |
 | kein-google | 1010 |
 | anderer-zweig | 1000 |
-| verfeinern | 151 |
+| verfeinern | 25 |
 | kreuz | 15 |
-| schon-im-ledger | 13 |
+| schon-im-ledger | 15 |
 | titelprobe-nein | 12 |
 | keine-zuordnung | 1 |
-| **geschrieben** | 126 (Fehler 0) |
+| **geschrieben** | 0 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
-- 54 → Lighting > Lamps
-- 21 → Clothing > Outerwear > Coats & Jackets
-- 20 → Lighting > Lighting Fixtures > Wall Light Fixtures
-- 20 → Lighting > Night Lights & Ambient Lighting
-- 11 → Clothing > Shirts & Tops
-- 9 → Lighting > Lighting Fixtures > Ceiling Light Fixtures
-- 4 → Clothing > Pants
-- 2 → Clothing > Outerwear > Vests
-- 2 → Jewelry > Charms & Pendants
-- 2 → Jewelry > Brooches & Lapel Pins
-- 1 → Cameras & Optics
-- 1 → Audio > Audio Components > Speakers
-- 1 → Camera & Optic Accessories > Camera Parts & Accessories > Camera Stabilizers & Supports
-- 1 → Clothing > Outfit Sets
-- 1 → Lighting > Flood & Spot Lights
+- 17 → Lighting > Lamps
+- 4 → Lighting > Night Lights & Ambient Lighting
+- 1 → Jewelry > Brooches & Lapel Pins
 - 1 → Lighting > Lighting Fixtures > Cabinet Light Fixtures
+- 1 → Lighting > Lighting Fixtures > Wall Light Fixtures
+- 1 → Lighting > Lighting Fixtures > Ceiling Light Fixtures
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
