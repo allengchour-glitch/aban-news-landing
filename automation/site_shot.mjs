@@ -15,7 +15,12 @@ const URL = process.argv[2] || 'https://luxestyle.ch';
 const OUT = process.argv[3] || '/tmp/home_shot.png';
 const H = parseInt(process.argv[4] || '3600', 10);
 const PROXY = process.env.HTTPS_PROXY || process.env.https_proxy || '';
-const CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+import * as __lxFs from 'node:fs';
+const CHROME = (() => { // 24.11.2026: Pfad je nach Container-Version (1194 → 1243); den ersten vorhandenen nehmen
+  const fs = __lxFs;
+  for (const p of [process.env.CHROME_PFAD, '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome', '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'].filter(Boolean)) if (fs.existsSync(p)) return p;
+  return '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome';
+})();
 let seq = 0;
 function curlGet(url){
   return new Promise(res=>{

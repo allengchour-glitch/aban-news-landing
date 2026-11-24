@@ -1,0 +1,613 @@
+{
+ "id": "gid://shopify/Product/16592643817863",
+ "title": "Rizinusöl-Wickel wiederverwendbar · Bauch & Nacken",
+ "descriptionHtml": "<p>Der wiederverwendbare Rizinusöl-Wickel macht die klassische Anwendung unkompliziert: Stoffeinlage mit Rizinusöl beträufeln, um Bauch oder Nacken legen und mit Knöpfen, Klett oder Gummiband fixieren. So bleibt das Tuch an Ort und Stelle, und du brauchst keine Frischhaltefolie oder Handtücher zum Umwickeln.</p>\n<p>Die Bauchwickel messen 24 × 48 cm. Der Nackenwickel liegt am Hals an. In den Sets bekommst du beides zusammen – Bauch- und Nackenwickel.</p>\n<h3>Das zeichnet es aus</h3><ul>\n<li>Wiederverwendbar statt Einweg-Tücher</li>\n<li>Drei Verschlüsse zur Wahl: Knöpfe, Klett oder Gummiband</li>\n<li>Bauchwickel 24 × 48 cm, dazu Nackenwickel oder Set</li>\n<li>Vier Farben: Khaki, Weiss, Rosa, Schwarz (Schwarz nur mit Klett, als Set oder Nackenwickel)</li>\n</ul>\n<p><strong>Rizinusöl ist nicht enthalten.</strong> Für den Wickel brauchst du reines, kaltgepresstes Rizinusöl.</p>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Stoff</li>\n<li>\n<strong>Grösse Bauchwickel:</strong> 24 × 48 cm</li>\n<li>\n<strong>Lieferumfang:</strong> 1 Wickel (Set: Bauch- und Nackenwickel), ohne Öl</li>\n<li>\n<strong>Gewicht:</strong> ca. 95–170 g (je nach Ausführung)</li>\n</ul>\n</div>\n<div style=\"border-left:3px solid #d9e7d9;padding:8px 0 8px 12px;margin:14px 0;font-size:14px;line-height:1.5;\">\n<strong>Passend dazu im Ratgeber:</strong> <a href=\"/blogs/ratgeber/rizinusoel-wickel-anwendung-anleitung\">Rizinusöl-Wickel richtig anwenden: Öl, Material und Ablauf</a>\n</div>\n\n<!-- ls-riz-link-v1 -->\n<div class=\"ls-riz-verwandt\" style=\"border-top:1px solid #e6e6e6;margin:14px 0 0;padding-top:11px;font-size:14px;line-height:1.6\">\n<strong>Weitere Rizinusöl-Produkte bei uns</strong>\n<ul style=\"margin:6px 0 8px;padding-left:20px\">\n<li>\n<a href=\"/products/rizinusol-wimpernserum-313025\">Rizinusöl Wimpernserum</a> <span style=\"opacity:.75\">— für Wimpern &amp; Brauen, mit Bürstchen</span>\n</li>\n<li>\n<a href=\"/products/tunmate-rizinusol-382081\">Tunmate Rizinus-Haaröl · 60 ml</a> <span style=\"opacity:.75\">— Ölmischung für Haar &amp; Kopfhaut</span>\n</li>\n<li>\n<a href=\"/products/rizinusol-roll-on-fur-haar-kopfhaut-10-ml-737089\">Rizinusöl Roll-On · 10 ml</a> <span style=\"opacity:.75\">— Roll-on-Kugel, handlich für unterwegs</span>\n</li>\n</ul>\n<a href=\"/collections/rizinusoel\">Alle Rizinusöl-Produkte ansehen</a>\n</div>",
+ "productType": "Hautpflege",
+ "vendor": "LuxeStyle",
+ "tags": [
+  "beauty",
+  "cj-real",
+  "dropship",
+  "ersatz-wickelset-0928",
+  "hautpflege",
+  "mengenrabatt-a",
+  "nachfrage-liebling",
+  "neu",
+  "pflege",
+  "rizinusoel"
+ ],
+ "seo": {
+  "title": "Rizinusöl-Wickel Schweiz: Bauch & Nacken | LuxeStyle",
+  "description": "Wiederverwendbarer Rizinusöl-Wickel für Bauch und Nacken – mit Knöpfen, Klett oder Gummiband. 4 Farben, Versand in die Schweiz."
+ },
+ "options": [
+  {
+   "name": "Farbe",
+   "values": [
+    "Rosa",
+    "Khaki",
+    "Weiss",
+    "Schwarz"
+   ]
+  },
+  {
+   "name": "Ausführung",
+   "values": [
+    "Bauchwickel · Knöpfe",
+    "Bauchwickel · Klett",
+    "Set Bauch + Nacken · Knöpfe",
+    "Set Bauch + Nacken · Klett",
+    "Bauchwickel · Gummiband",
+    "Nackenwickel"
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/66048961315207",
+    "title": "Rosa / Bauchwickel · Knöpfe",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874501AZ",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44290b37-d641-4580-b9a0-e4dddc590653.jpg?v=1790550858"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961347975",
+    "title": "Khaki / Bauchwickel · Knöpfe",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874502BY",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b9e5519-cf92-434a-b9b2-97a65eeb7c75.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961380743",
+    "title": "Weiss / Bauchwickel · Knöpfe",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874503CX",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e0cb6545-7bca-407d-b73b-ea55a241b989.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961413511",
+    "title": "Khaki / Bauchwickel · Klett",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874515OL",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/517ed8ef-a917-4dec-b2c0-49f20cc17356.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961446279",
+    "title": "Khaki / Set Bauch + Nacken · Knöpfe",
+    "price": "22.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874504DW",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a83a61c4-9ccf-4671-9ea0-5cc6eb7bc693.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961479047",
+    "title": "Khaki / Set Bauch + Nacken · Klett",
+    "price": "22.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874505EV",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03a14a10-bdb2-46c0-89ae-fa365c109b37.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961511815",
+    "title": "Khaki / Bauchwickel · Gummiband",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874506FU",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ca3fb91-4c0b-4f40-8c71-03f89c19b9e6.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961544583",
+    "title": "Khaki / Nackenwickel",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874507GT",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb1eae4a-f837-4dd9-ac0c-cff96fc269a3.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961577351",
+    "title": "Rosa / Bauchwickel · Klett",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874510JQ",
+    "inventoryQuantity": -6,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/76fc15c6-85b1-4358-b94a-33b0fd67cad2.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961610119",
+    "title": "Rosa / Set Bauch + Nacken · Knöpfe",
+    "price": "22.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874511KP",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/42892006-b21c-4c22-96e2-514aae9e049d.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961642887",
+    "title": "Rosa / Set Bauch + Nacken · Klett",
+    "price": "22.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874512LO",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57f1fb88-7343-43b0-bd66-41031f4896ef.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961675655",
+    "title": "Rosa / Bauchwickel · Gummiband",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874513MN",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec1b6cf7-3530-4c91-93d9-71d39a3f3765.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961708423",
+    "title": "Rosa / Nackenwickel",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874514NM",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf6a9620-3b7e-46de-87cd-d4cd13d0541c.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961741191",
+    "title": "Weiss / Bauchwickel · Klett",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874517QJ",
+    "inventoryQuantity": -1,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d17dff90-9303-4895-bf7b-b7e5bab7a916.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961773959",
+    "title": "Weiss / Set Bauch + Nacken · Knöpfe",
+    "price": "22.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874518RI",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/98c0dbe8-babb-4612-b358-616dbd15a92e.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961806727",
+    "title": "Weiss / Set Bauch + Nacken · Klett",
+    "price": "22.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874519SH",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/77dd31dd-2839-4517-a756-7293a356ca5c.jpg?v=1790550856"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961839495",
+    "title": "Weiss / Bauchwickel · Gummiband",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874520TG",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b3f15257-efab-4e5f-bef7-6eec7e1572d7.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961872263",
+    "title": "Weiss / Nackenwickel",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874521UF",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/16ff4784-c63b-466e-bda9-d6de32c490ab.jpg?v=1790550856"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961905031",
+    "title": "Schwarz / Bauchwickel · Klett",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874524XC",
+    "inventoryQuantity": -1,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e46a72e4-4aab-40f2-a04c-1a09bd3d7f7d.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961937799",
+    "title": "Schwarz / Set Bauch + Nacken · Knöpfe",
+    "price": "22.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874525YB",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cd202ac7-3d24-4277-ae2c-9aa4bcb139e0.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048961970567",
+    "title": "Schwarz / Set Bauch + Nacken · Klett",
+    "price": "22.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874526ZA",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d1e6f8a9-a7d5-408f-aae2-0a503ba9541b.jpg?v=1790550857"
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/66048962003335",
+    "title": "Schwarz / Nackenwickel",
+    "price": "16.90",
+    "compareAtPrice": null,
+    "sku": "CJ-CJYD169874528BY",
+    "inventoryQuantity": 0,
+    "availableForSale": true,
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e94fabce-e329-4299-93e2-a5761d50275d.jpg?v=1790550857"
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/77349345984903",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8d4b2416-8822-40fa-814b-547bee2822ec.jpg?v=1790550857",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345952135",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2c1679e0-da0e-4837-bbf5-2d3177dbd164.jpg?v=1790550857",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346279815",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/49eecaa1-6ce0-41e5-8642-184692b9c59c.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346247047",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/68377f0a-b506-403e-b943-d45856f8710a.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345624455",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/7b9e5519-cf92-434a-b9b2-97a65eeb7c75.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345657223",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/517ed8ef-a917-4dec-b2c0-49f20cc17356.jpg?v=1790550857",
+     "width": 1706,
+     "height": 1706
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345689991",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bb1eae4a-f837-4dd9-ac0c-cff96fc269a3.jpg?v=1790550857",
+     "width": 376,
+     "height": 572
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345722759",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a83a61c4-9ccf-4671-9ea0-5cc6eb7bc693.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345755527",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/44290b37-d641-4580-b9a0-e4dddc590653.jpg?v=1790550858",
+     "width": 1601,
+     "height": 1601
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345788295",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/cd202ac7-3d24-4277-ae2c-9aa4bcb139e0.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345821063",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e0cb6545-7bca-407d-b73b-ea55a241b989.jpg?v=1790550857",
+     "width": 1601,
+     "height": 1601
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345853831",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e94fabce-e329-4299-93e2-a5761d50275d.jpg?v=1790550857",
+     "width": 931,
+     "height": 673
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345886599",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/76fc15c6-85b1-4358-b94a-33b0fd67cad2.jpg?v=1790550857",
+     "width": 541,
+     "height": 468
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349345919367",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/42892006-b21c-4c22-96e2-514aae9e049d.jpg?v=1790550857",
+     "width": 925,
+     "height": 763
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346017671",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57f1fb88-7343-43b0-bd66-41031f4896ef.jpg?v=1790550857",
+     "width": 897,
+     "height": 717
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346050439",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d17dff90-9303-4895-bf7b-b7e5bab7a916.jpg?v=1790550857",
+     "width": 884,
+     "height": 720
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346083207",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b3f15257-efab-4e5f-bef7-6eec7e1572d7.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346115975",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/98c0dbe8-babb-4612-b358-616dbd15a92e.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346148743",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/bf6a9620-3b7e-46de-87cd-d4cd13d0541c.jpg?v=1790550857",
+     "width": 709,
+     "height": 598
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346181511",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/16ff4784-c63b-466e-bda9-d6de32c490ab.jpg?v=1790550856",
+     "width": 747,
+     "height": 709
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346214279",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e203c3ed-b82a-47bd-bcd4-1a7059b4377b.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346312583",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/0e6d174a-d820-4e4f-b0ae-1d87fe7d59c3.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346345351",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1ca3fb91-4c0b-4f40-8c71-03f89c19b9e6.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346378119",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/77dd31dd-2839-4517-a756-7293a356ca5c.jpg?v=1790550856",
+     "width": 912,
+     "height": 699
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346410887",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03a14a10-bdb2-46c0-89ae-fa365c109b37.jpg?v=1790550857",
+     "width": 951,
+     "height": 705
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346443655",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e46a72e4-4aab-40f2-a04c-1a09bd3d7f7d.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346476423",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/d1e6f8a9-a7d5-408f-aae2-0a503ba9541b.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/77349346509191",
+    "alt": "Rizinusöl-Wickel wiederverwendbar",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ec1b6cf7-3530-4c91-93d9-71d39a3f3765.jpg?v=1790550857",
+     "width": 1000,
+     "height": 1000
+    }
+   }
+  ]
+ },
+ "metafields": {
+  "nodes": [
+   {
+    "namespace": "global",
+    "key": "title_tag",
+    "value": "Rizinusöl-Wickel Schweiz: Bauch & Nacken | LuxeStyle"
+   },
+   {
+    "namespace": "judgeme",
+    "key": "badge",
+    "value": "<div style='display:none' class='jdgm-prev-badge' data-average-rating='0.00' data-number-of-reviews='0' data-number-of-questions='0'> <span class='jdgm-prev-badge__stars' data-score='0.00' tabindex='0' aria-label='0.00 stars' role='button'> <span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span><span class='jdgm-star jdgm--off'></span> </span> <span class='jdgm-prev-badge__text'> Keine Bewertungen </span> </div>"
+   },
+   {
+    "namespace": "judgeme",
+    "key": "widget",
+    "value": "<div></div>"
+   },
+   {
+    "namespace": "judgeme",
+    "key": "review_widget_data",
+    "value": "{\"number_of_reviews\":0,\"average_rating\":\"0.00\",\"number_of_questions\":0,\"product_name\":\"Rizinusöl-Wickel wiederverwendbar · Bauch & Nacken\",\"product_external_id\":16592643817863,\"product_coupons_enabled\":true,\"image_url\":\"https://cdn.shopify.com/s/files/1/0943/6856/3585/files/8d4b2416-8822-40fa-814b-547bee2822ec.jpg?v=1790550857\",\"histogram\":[{\"rating\":5,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":4,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":3,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":2,\"frequency\":0,\"percentage\":0,\"extra_class\":null},{\"rating\":1,\"frequency\":0,\"percentage\":0,\"extra_class\":null}],\"review_keywords\":null,\"product_medals\":[],\"custom_form_filters_and_averages\":null,\"photo_gallery\":null,\"review_summary_text\":\"Be the first to write a review\",\"ai_summary_text\":\"\",\"sort_key\":\"created_at\",\"multi_language_sorting_enabled\":false,\"metafield_updated_at\":\"2026-09-27T23:23:07Z\",\"reviews\":[],\"pagination\":{\"total_pages\":0,\"current_page\":1,\"per_page\":5}}"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "custom_product",
+    "value": "true"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "excluded_destination",
+    "value": "[\"Shopping_ads\"]"
+   },
+   {
+    "namespace": "mm-google-shopping",
+    "key": "google_product_category",
+    "value": "Health & Beauty > Personal Care > Cosmetics"
+   },
+   {
+    "namespace": "global",
+    "key": "description_tag",
+    "value": "Wiederverwendbarer Rizinusöl-Wickel für Bauch und Nacken – mit Knöpfen, Klett oder Gummiband. 4 Farben, Versand in die Schweiz."
+   }
+  ]
+ }
+}

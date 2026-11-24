@@ -31,7 +31,12 @@
  * Anmeldung verlangen — dafuer bleibt der PC-Weg (`automation/local/ig-reel-lesen.mjs`).
  */
 
-export const CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+import * as __lxFs from 'node:fs';
+export const CHROME = (() => { // 24.11.2026: Pfad je nach Container-Version (1194 → 1243); den ersten vorhandenen nehmen
+  const fs = __lxFs;
+  for (const p of [process.env.CHROME_PFAD, '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome', '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'].filter(Boolean)) if (fs.existsSync(p)) return p;
+  return '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome';
+})();
 export const PLAYWRIGHT = '/opt/node22/lib/node_modules/playwright/index.mjs';
 
 /** SPKI-Fingerabdruecke der dokumentierten Anthropic-Proxy-CAs (kein Blankoscheck). */
