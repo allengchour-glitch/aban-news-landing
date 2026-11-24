@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-23T14:30:57Z",
+ "stand": "2026-11-24T14:48:22Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Nvidia reverses course and brings Jensen Huang back as CEO",
-   "u": "https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-23T14:21:59Z",
-   "s": "The stunning reversal was supported by senior officials in the U.S. government.",
-   "sprache": "en"
-  },
-  {
-   "t": "KI-Update kompakt: KI-Aktien, Gemini 4 Neon, Riemannsche Vermutung, Geschenktipp",
-   "u": "https://www.heise.de/news/KI-Update-kompakt-KI-Aktien-Gemini-4-Neon-Riemannsche-Vermutung-Geschenktipp-11532019.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "LogikStrom: Kostenloses Schaltplan-Programm nach DIN EN, gebaut mit KI",
+   "u": "https://www.heise.de/news/LogikStrom-Kostenloses-Schaltplan-Programm-nach-DIN-EN-gebaut-mit-KI-11536576.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-23T14:00:00Z",
-   "s": "Das „KI-Update“ liefert drei mal pro Woche eine Zusammenfassung der wichtigsten KI-Entwicklungen.",
+   "d": "2026-11-24T14:28:00Z",
+   "s": "LogikStrom zeichnet Stromlaufpläne nach DIN EN und erzeugt Kontaktspiegel und Klemmenplan automatisch. Kostenlos, offline, ohne Konto.",
    "sprache": "de"
   },
   {
-   "t": "The Download: AI’s judgment problem and carbon removal’s crop threat",
-   "u": "https://www.technologyreview.com/2026/11/23/1149548/the-download-ai-judgment-problem-carbon-removal-crop-threat/",
+   "t": "Google führt eine neue Suchseite mit KI-Seitenleiste ohne Suchbutton ein",
+   "u": "https://www.heise.de/news/Google-fuehrt-eine-neue-Suchseite-mit-KI-Seitenleiste-ohne-Suchbutton-ein-11536330.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-24T14:07:00Z",
+   "s": "Google baut seine Startseite um: Aus dem Such- wird ein KI-Button, zudem zieht eine Seitenleiste für die letzten KI-Suchanfragen und Gemini Notebook ein.",
+   "sprache": "de"
+  },
+  {
+   "t": "The Download: AI’s gas power boom and a consciousness reality check",
+   "u": "https://www.technologyreview.com/2026/11/24/1149669/the-download-data-centers-gas-ai-consciousness/",
    "q": "MIT Tech Review",
-   "d": "2026-11-23T13:10:00Z",
-   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The most misunderstood graph in AI just got a major update A n…",
+   "d": "2026-11-24T13:10:00Z",
+   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Data centers are getting their own natural gas power plants On…",
    "sprache": "en"
   },
   {
-   "t": "heise+ | AI Bill of Materials: KI-Bausteine im Inventar sichtbar machen",
-   "u": "https://www.heise.de/hintergrund/AI-Bill-of-Materials-KI-Bausteine-im-Inventar-sichtbar-machen-11509380.html?wt_mc=rss.red.ho.ho.atom.beitrag_plus.beitrag_plus",
-   "q": "heise",
-   "d": "2026-11-23T12:30:00Z",
-   "s": "Eine Softwarestückliste erfasst Pakete, Bibliotheken und mehr. Bestehende SBOMs lassen sich auch um wichtige KI-Daten erweitern – das Ergebnis ist eine AI-BOM.",
-   "sprache": "de"
-  },
-  {
-   "t": "Alice Huang: Hinter Megaspeed stand ein komplexes Schmuggelnetzwerk",
-   "u": "https://www.golem.de/news/alice-huang-hinter-megaspeed-stand-ein-komplexes-schmuggelnetzwerk-2611-215533.html",
-   "q": "Golem",
-   "d": "2026-11-23T11:41:02Z",
-   "s": "Komplexe Firmengeflechte, Verbindungen zur organisierten Kriminalität: Der Schmuggel von Nvidia-Hardware nach China wurde aufwendig vorbereitet. (Nvidia, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Gaming: Anthropic-Chef sah Games als Mittel gegen KI-Unruhen",
-   "u": "https://www.golem.de/news/gaming-anthropic-chef-sah-games-als-mittel-gegen-ki-unruhen-2611-215529.html",
-   "q": "Golem",
-   "d": "2026-11-23T11:15:01Z",
-   "s": "Dario Amodei hat Computerspiele als Mittel gegen gesellschaftliche Konflikte durch KI-Arbeitslosigkeit ins Gespräch gebracht. (Anthropic, KI)",
-   "sprache": "de"
-  },
-  {
-   "t": "Vermummungsverbot: Ein Mensch muss ins Gefängnis, weil er sein Gesicht schützte",
-   "u": "https://netzpolitik.org/2026/vermummungsverbot-ein-mensch-muss-ins-gefaengnis-weil-er-sein-gesicht-schuetzte/",
-   "q": "netzpolitik.org",
-   "d": "2026-11-23T10:07:43Z",
-   "s": "Ein Polizist prügelt auf Protestierende ein. Hinter dem Banner: der vermummte Tim. – Alle Rechte vorbehalten: Screenshot aus einem Video von OAP RosenheimEin Student hat sich auf einer Demonstration v…",
-   "sprache": "de"
-  },
-  {
-   "t": "Heiliger Gral der Mathematik: Anthropic-Mitarbeiter will mit Claude die Riemannsche Vermutung bewiesen haben",
-   "u": "https://t3n.de/news/heiliger-gral-der-mathematik-anthropic-mitarbeiter-will-mit-claude-die-riemannsche-vermutung-bewiesen-haben-1774754/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Smarte Schwimmbrille im Test: Kann ein KI-Coach meinen Freistil retten?",
+   "u": "https://t3n.de/news/smarte-schwimmbrille-im-test-kann-ein-ki-coach-meinen-freistil-retten-1774277/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-23T08:00:48Z",
-   "s": "Der „Heilige Gral“ der Mathematik könnte gefunden sein. Das Problem: Der Beweis wäre für Menschen mehr als 250.000 Seiten lang – und selbst ihr Urheber versteht ihn noch nicht ganz.weiterlesen auf t3n…",
+   "d": "2026-11-24T12:32:30Z",
+   "s": "Eine Schwimmbrille für jederfrau oder -mann, die Bahnen zählt, Zeiten überwacht und gegen Aufpreis das Schwimmtraining managt: Das jedenfalls verspricht die Smaweiterlesen auf t3n.de",
    "sprache": "de"
   },
   {
-   "t": "Mensch oder ChatGPT: Neuer KI-Detektor soll erkennen, woher die Idee für einen Text kommt",
-   "u": "https://t3n.de/news/mensch-chatgpt-ki-detektor-idee-text-1773809/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "Optimierung versus Datenschutz: Google verknüpft KI-Modus mit Drive, Wallet und Gemini",
+   "u": "https://t3n.de/news/google-verknuepft-ki-modus-drive-1775003/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-23T07:55:00Z",
-   "s": "Bisher untersuchen KI-Detektoren vor allem die Wortwahl und wiederkehrende Muster in einem Text. Ein neues Modell namens Idea Lens geht tiefer: Es soll erkennen können, ob bereits die Idee eines Texte…",
+   "d": "2026-11-24T12:18:27Z",
+   "s": "Google baut seinen KI-Dienst Personal Intelligence weiter aus. Der KI-Modus der Suche soll künftig auch Zugriff auf Drive, Wallet und die Gemini-App der Nutzer:innen erhalten – wenn diese das wollen. …",
    "sprache": "de"
   },
   {
-   "t": "How Notable Capital, GIC, and Baillie Gifford bet big on Anthropic before its IPO",
-   "u": "https://techcrunch.com/2026/11/22/how-notable-capital-gic-and-baillie-gifford-bet-big-on-anthropic-before-its-ipo/",
+   "t": "Serie Blade Runner 2099: Was bleibt vom Menschen, wenn er sich selbst überflüssig macht?",
+   "u": "https://www.golem.de/news/serie-blade-runner-2099-was-bleibt-vom-menschen-wenn-er-sich-selbst-ueberfluessig-macht-2611-215576.html",
+   "q": "Golem",
+   "d": "2026-11-24T11:07:01Z",
+   "s": "50 Jahre nach Blade Runner 2049 sind es die Menschen, die gejagt werden - und die Replikanten herrschen. Die neue Serie führt das Erbe der Kultfilme fort, und zwar brillant. Eine Rezension von Peter O…",
+   "sprache": "de"
+  },
+  {
+   "t": "Data centers are getting their own natural gas power plants",
+   "u": "https://www.technologyreview.com/2026/11/24/1149622/data-centers-natural-gas/",
+   "q": "MIT Tech Review",
+   "d": "2026-11-24T11:00:00Z",
+   "s": "One of the biggest roadblocks to starting up a data center is getting approval to connect to the electric grid—a wait that could last as long as a decade. Some developers aren’t willing to wait and ar…",
+   "sprache": "en"
+  },
+  {
+   "t": "KI in der Cloud: Neue US-Exportregeln erzeugen Chaos in Asien",
+   "u": "https://www.golem.de/news/ki-in-der-cloud-neue-us-exportregeln-erzeugen-chaos-in-asien-2611-215571.html",
+   "q": "Golem",
+   "d": "2026-11-24T10:23:02Z",
+   "s": "Die neuen US-Regeln sollen chinesische Firmen daran hindern, exportbeschränkte Hardware in der Cloud zu nutzen. Vorerst stiftet sie viel Verwirrung. (China, Nvidia)",
+   "sprache": "de"
+  },
+  {
+   "t": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+   "u": "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
    "q": "TechCrunch AI",
-   "d": "2026-11-23T01:25:53Z",
-   "s": "Three significant backers share what gave them conviction to bet billions on Anthropic.",
+   "d": "2026-11-23T22:05:50Z",
+   "s": "As AI-generated code piles up, Anthropic's new developer tools aim to eliminate another bottleneck by letting agents handle routine approvals.",
+   "sprache": "en"
+  },
+  {
+   "t": "Supertake raises $20M to let AI agents turn your market predictions into stock portfolios",
+   "u": "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-23T22:02:05Z",
+   "s": "Think you know where the market is headed? A startup called Supertake lets you put money behind your ideas without having to pick the stocks yourself.",
    "sprache": "en"
   }
  ]
