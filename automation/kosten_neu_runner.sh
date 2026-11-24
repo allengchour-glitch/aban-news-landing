@@ -20,10 +20,19 @@ flock -n 9 || { echo "kosten_neu_runner läuft bereits"; exit 0; }
 LISTE=dropship/kosten-neu-2411/liste.txt
 VERSUCHT=dropship/_cj_kosten_neu_versucht.txt
 LED=dropship/_cj_kosten_neu.tsv
-STUECK=${STUECK:-150}
+STUECK=${STUECK:-40}   # 24.11.: 150 dauerte ~25 min, Container-Neustarts kappten jedes Stück vor dem Preisschritt
+PREIS_OK=dropship/_cj_kosten_neu_preis.txt   # Produkte, deren Preis nach der Neurechnung schon geprüft wurde
 N=/opt/node22/bin/node; [ -x "$N" ] || N=node
 TMPD=${TMPDIR:-/tmp}
-touch "$VERSUCHT" "$LED"
+touch "$VERSUCHT" "$LED" "$PREIS_OK"
+preise_nachziehen() {   # alle «ok» ohne Preisprüfung (auch aus abgebrochenen Stücken) → Verlustschutz, dann quittieren
+  awk -F'\t' '$3=="ok"{print $1}' "$LED" | sort -u | comm -23 - <(sort -u "$PREIS_OK") > "$TMPD/kosten_neu_fertig.txt"
+  [ -s "$TMPD/kosten_neu_fertig.txt" ] || return 0
+  P=$(SCHARF=1 NUR_IDS="$TMPD/kosten_neu_fertig.txt" timeout 3000 python3 automation/preis_verlustschutz.py 9>&- 2>&1 | tail -1)
+  echo "$(date -u +%FT%TZ) preise ($(wc -l < "$TMPD/kosten_neu_fertig.txt") Produkte): $(echo "$P" | cut -c1-300)"
+  echo "$P" | grep -q "^FERTIG" && cat "$TMPD/kosten_neu_fertig.txt" >> "$PREIS_OK"
+}
+preise_nachziehen
 while true; do
   if [ -f dropship/_kosten_neu_aus.txt ]; then echo "$(date -u +%FT%TZ) AUS (Notbremse dropship/_kosten_neu_aus.txt)"; exit 0; fi
   [ -f "$LISTE" ] || { echo "PAUSE: $LISTE fehlt"; exit 0; }
@@ -50,12 +59,6 @@ PY
   # Nach einem regulär beendeten Lauf zählt jedes Produkt des Stücks einen Versuch (erledigt = Zeile im NEU-Ledger; wer nach
   # 3 Versuchen keine hat, bleibt draussen und steht im Schlussbericht). Shopify stumm / Timeout → kein Versuch gezählt.
   if echo "$OUT" | grep -q "^FERTIG (NUR_IDS)"; then cat "$TMPD/kosten_neu_stueck.txt" >> "$VERSUCHT"; fi
-  # Preise heben: alle Produkte des Stücks, die jetzt (auch aus einem früheren, abgebrochenen Lauf) «ok» im Ledger haben.
-  awk -F'\t' '$3=="ok"{print $1}' "$LED" | sort -u > "$TMPD/kosten_neu_ok.txt"
-  sort -u "$TMPD/kosten_neu_stueck.txt" | comm -12 - "$TMPD/kosten_neu_ok.txt" > "$TMPD/kosten_neu_fertig.txt"
-  if [ -s "$TMPD/kosten_neu_fertig.txt" ]; then
-    P=$(SCHARF=1 NUR_IDS="$TMPD/kosten_neu_fertig.txt" timeout 3000 python3 automation/preis_verlustschutz.py 9>&- 2>&1 | tail -1)
-    echo "$(date -u +%FT%TZ) preise ($(wc -l < "$TMPD/kosten_neu_fertig.txt") Produkte): $(echo "$P" | cut -c1-300)"
-  fi
+  preise_nachziehen
   sleep 5 9>&-
 done
