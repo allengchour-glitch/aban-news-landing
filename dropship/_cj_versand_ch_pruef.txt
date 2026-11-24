@@ -13878,3 +13878,8 @@ eng-anliegendes-strapse-kleid-626700	2607130903011627701	16	9.40	ok	landeseite
 selbstleuchtendes-fahrradlicht-051904	1357958878934994944	16	5.81	ok	landeseite
 hundeschuhe-uberzug-621800	2503030716531622100	16	8.11	ok	landeseite
 kopfmontierte-led-lampe-mit-aufladefunktion-258112	1357574271941087232	7	7.78	ok	landeseite
+messerscharfer-746280	0982C315-8D44-400E-B4D8-D3344AF1A6CB	16	6.56	ok	klinge
+aroma-diffuser-holzoptik-400ml-ultraschall-luftbefeuchter-mit-7-led-farben	-	-	-	unklar keine CJ-SKU	landeseite
+aroma-diffuser-holzoptik-hohl-design-ultraschall-luftbefeuchter-mit-led-licht	EA534571-2988-44A2-BB04-63FBF336E64D	16	12.55	ok	landeseite
+streifen-bluse-marbella-color-block-kurzarm	-	-	-	unklar keine CJ-SKU	landeseite
+spitzen-bluse-dentelle-v-ausschnitt-loose-fit	-	-	-	unklar keine CJ-SKU	landeseite
