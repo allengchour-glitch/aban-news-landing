@@ -1483,3 +1483,5 @@ gesundheit-alltagshilfen	ok	29	Alltagshilfen & Gesundheitszubehör
 brillen-brillenzubehoer	ok	29	Brillen & Brillenzubehör
 tier-leinen	ok	29	Hundeleinen & Katzenleinen
 tier-leinen-roll	ok	29	Roll- & ausziehbare Leinen
+tier-leinen-reflektierend	ok	29	Reflektierende & Leucht-Leinen
+tier-leinen-doppel	ok	29	Doppelleinen
