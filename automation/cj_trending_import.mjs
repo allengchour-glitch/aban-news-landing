@@ -38,7 +38,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 // $9.49 · $15.77 · $19.35 (Orders #1011, LX1013, LX1015) — die Fracht hängt am Gewicht.
 // Dazu trug er noch den Aufschlag `landed+5`, der am 20.08. als 2 Franken UNTER den Kosten
 // nachgewiesen wurde. Beides kommt jetzt aus cj_preis.mjs.
-import { chf, kosten, gewicht } from './cj_preis.mjs';
+import { chf, kosten, gewicht, versandGewicht } from './cj_preis.mjs';
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
 // Farbtabelle liegt seit 21.08.2026 in automation/farben_de.mjs — es gab drei
@@ -300,7 +300,7 @@ for(const p of cand){
    if(tw.verwerfen){ console.log('  skip(technik)', tw.grund, title.slice(0,40)); continue; }
    if(tw.grund) console.log('  technik-korrigiert', tw.grund);
    title=tw.title; }
- if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice, p.productWeight||p.variantWeight)} | ${title} | listed ${p.listedNum}`);total++;continue;}
+ if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight))} | ${title} | listed ${p.listedNum}`);total++;continue;}
  const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
  const looksFashion=(d.variants||[]).some(v=>{const pv=parseVar(v);return pv.size||pv.color;});
  const fash=looksFashion?buildFashion(d):null;
@@ -310,7 +310,7 @@ for(const p of cand){
  // 09.10.2026: Platzhalter = Shopifys «Title / Default Title» (hasOnlyDefaultVariant) — «Variante / Standard» zeigte
    // der Kundin ein Wahlfeld mit einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus.
    const productOptions=fash?fash.productOptions:[{name:'Title',values:[{name:'Default Title'}]}];
- const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
+ const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight)),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight)),...gewicht(versandGewicht(p.productWeight, p.packingWeight, p.variantWeight))},inventoryPolicy:'CONTINUE'}];
  // ⛔ 08.09.2026 KORREKTUR: Das Tor hing an `!fash` — `buildFashion` liefert aber auch bei
  // EINER CJ-Variante ein Objekt. Gefragt wird jetzt die VARIANTENZAHL selbst.
  if(variants.length===1) g=wahlSicher(g);

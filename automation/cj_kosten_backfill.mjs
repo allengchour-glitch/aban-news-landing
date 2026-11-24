@@ -17,13 +17,17 @@
  * der Ledger bleibt gültig und der nächste Lauf macht weiter.
  */
 import fs from 'node:fs';
-import { kosten, gewicht } from './cj_preis.mjs';
+import { kosten, gewicht, versandGewicht } from './cj_preis.mjs';
 import { takt as cjTakt } from './cj_takt.mjs';
 
 const SHOP = 'au3j0y-hq.myshopify.com';
 const TOK = (fs.existsSync('/tmp/cj_shop_token.txt') ? fs.readFileSync('/tmp/cj_shop_token.txt', 'utf8') : '').trim();
 const CJT = (() => { try { return JSON.parse(fs.readFileSync('/tmp/cj_token.json', 'utf8')).accessToken; } catch { return ''; } })();
 const LEDGER = 'dropship/_cj_kosten_done.txt';
+// 24.11.2026 NEU=1: Kosten NEU rechnen, auch wenn schon ein EK steht (Anlass #1046: EK mit Nettogewicht 100 g statt
+// Versandgewicht 629 g). Nur mit NUR_IDS. Eigenes Ledger mit alt → neu je Produkt (Rückweg + kein Doppellauf).
+const NEU = process.env.NEU === '1';
+const LEDGER_NEU = 'dropship/_cj_kosten_neu.tsv';
 // ⚠️ Der Aufseher startet diesen Lauf mit `CAP=900` — dieselbe Schraube, die die
 // Bild-Laeufe kennen. Dieses Skript las aber nur LIMIT und blieb deshalb still bei 400:
 // eine Stellschraube, die nirgends ankommt, sieht im Startbefehl aus wie eine Wirkung.
@@ -160,7 +164,10 @@ async function main() {
   // 05.10.2026 (Preis/Marge-Lauf): NUR_IDS=<Datei mit Produkt-GIDs je Zeile> → genau diese Produkte, OHNE Ledger-Sprung.
   // Anlass: 87 aktive CJ-Produkte (312 Varianten) ohne EK, 78 davon im Ledger quittiert («cj-abgekuendigt-pruefen»,
   // «cj-ohne-antwort») — live antwortete CJ bei 11 wieder mit Preis. Eine Quittung ist ein Stand, kein Urteil für immer.
-  const NUR_IDS = process.env.NUR_IDS ? fs.readFileSync(process.env.NUR_IDS, 'utf8').split('\n').map(x => x.trim()).filter(Boolean) : null;
+  let NUR_IDS = process.env.NUR_IDS ? fs.readFileSync(process.env.NUR_IDS, 'utf8').split('\n').map(x => x.trim()).filter(Boolean) : null;
+  if (NEU && !NUR_IDS) { console.log('PAUSE (NEU=1 nur mit NUR_IDS)'); return; }
+  const neuErledigt = new Set(NEU && fs.existsSync(LEDGER_NEU) ? fs.readFileSync(LEDGER_NEU, 'utf8').split('\n').map(l => l.split('\t')[0]).filter(Boolean) : []);
+  if (NEU) NUR_IDS = NUR_IDS.filter(id => !neuErledigt.has(id));
   let nurOffset = 0;
   while (gesetzt + ohne < LIMIT) {
     // ⚠️ DIE SEITENABFRAGE WAR ZU TEUER (27.08.2026). Sie holte je Produkt bis zu 100
@@ -186,8 +193,8 @@ async function main() {
     for (const p of pr.nodes) {
       geprueft++;
       if (!NUR_IDS && erledigt.has(p.id)) continue;
-      if (p.variants.nodes.some(v => v.inventoryItem?.unitCost)) { erledigt.add(p.id); continue; }   // hat schon Kosten
-      const vs = (p.variantsCount?.count || 1) > 1 ? await variantenVon(p.id) : p.variants.nodes;
+      if (!NEU && p.variants.nodes.some(v => v.inventoryItem?.unitCost)) { erledigt.add(p.id); continue; }   // hat schon Kosten
+      const vs = (NEU || (p.variantsCount?.count || 1) > 1) ? await variantenVon(p.id) : p.variants.nodes;
       if (!vs.length) continue;
       // ⚠️ DIE SKU HAT VIER FORMEN (live gezählt 20.08.2026), ein Muster reicht nicht:
       //   CJ-2501090747091600500          → Zahlen-pid       → product/query?pid=
@@ -309,7 +316,8 @@ async function main() {
       // Die Variantenabfrage liefert eine LISTE, die Produktabfrage ein Objekt.
       const d = Array.isArray(j.data) ? (j.data[0] || {}) : (j.data || {});
       const preis = d.sellPrice ?? d.variantSellPrice ?? d.variantSugSellPrice;
-      const gew   = d.productWeight ?? d.variantWeight;
+      // 24.11.2026: Versandgewicht = grösstes von productWeight / packingWeight / variantWeight (vorher Nettogewicht zuerst).
+      const gew   = versandGewicht(d.productWeight, d.packingWeight, d.variantWeight);
       if (preis == null) { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-ohne-preis\n`); await sleep(1200); continue; }
       const c = kosten(preis, gew);
       // ⚠️ Das Gewicht wurde hier schon gelesen (fuer die Frachtrechnung) und dann
@@ -331,11 +339,16 @@ async function main() {
         if (v?.variantSku) proSku.set(String(v.variantSku).toUpperCase(), v);
       }
       const ein = vs.map(v => {
-        const kern = (v.sku || '').replace(/^cj-/i, '').split('-')[0].toUpperCase();
-        const e = proSku.get(kern);
+        // 24.11.2026: zuerst die VOLLE Varianten-SKU («CJXFJTTY00142-BLACK-EU»), erst dann der Kern vor dem ersten
+        // Bindestrich — vorher fand «-BLACK-EU» nie seine Variante und fiel auf das Produktgewicht zurück.
+        const voll = (v.sku || '').replace(/^cj-/i, '').toUpperCase();
+        const kern = voll.split('-')[0];
+        const e = proSku.get(voll) || proSku.get(kern);
         const vp = e ? (e.variantSellPrice ?? e.variantSugSellPrice) : null;
-        const vmess = e ? gewicht(e.variantWeight) : {};
-        const vg = vmess.measurement?.weight?.value || 0;
+        // Variantengewicht nie unter dem Produkt-Nettogewicht (konservativ); fehlt es, gilt das Versandgewicht des Produkts.
+        const vgRoh = e ? versandGewicht(e.variantWeight, e.packingWeight) : 0;
+        const vg = vgRoh > 0 ? versandGewicht(vgRoh, d.productWeight) : 0;
+        const vmess = gewicht(vg);
         const vc = vp != null ? kosten(vp, vg || gGramm) : c;
         const vm = vg > 0 ? vmess : messung;
         return { id: v.id, inventoryItem: { cost: vc, ...vm } };
@@ -350,6 +363,11 @@ async function main() {
       }
       if (n) {
         gesetzt++;
+        if (NEU) {
+          const alt = vs.map(v => `${v.id.split('/').pop()}=${v.inventoryItem?.unitCost?.amount ?? ''}`).join(',');
+          const neuW = ein.map(x => `${x.id.split('/').pop()}=${x.inventoryItem.cost}`).join(',');
+          fs.appendFileSync(LEDGER_NEU, `${p.id}\t${new Date().toISOString().slice(0, 10)}\t${gGramm}\talt:${alt}\tneu:${neuW}\n`);
+        } else
         fs.appendFileSync(LEDGER, `${p.id}\tCHF ${c}\t${n} Varianten\t${p.title.slice(0, 50)}\n`);
         if (gesetzt % 20 === 0) console.log(`   ${gesetzt} Produkte mit Einkaufspreis`);
       }

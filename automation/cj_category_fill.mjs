@@ -70,7 +70,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 // Boden von preis_verlustschutz — die 04.10. in cj_preis.mjs eingebaute Korrektur (bodenVerlustschutz, aufNeunzig)
 // kam hier nie an. Jetzt gilt EINE Quelle: cj_preis.mjs (wie cj_sku_import.mjs seit dem 27.08.).
 // Signaturen identisch: chf(usd, grams) → String .90 · kosten(usd, grams) → String · gewicht(grams) → {measurement} | {}.
-import { chf, kosten, gewicht } from './cj_preis.mjs';
+import { chf, kosten, gewicht, versandGewicht } from './cj_preis.mjs';
 
 // ── Fashion-Modus (Zalando-Stil): CJ-Varianten "Farbe-Grösse" → Shopify Farbe+Grösse-Optionen ──
 // Farbtabelle liegt seit 21.08.2026 in automation/farben_de.mjs — es gab drei
@@ -747,7 +747,7 @@ for(const [cat,label] of grp.cats){
    // verliert im Rabattkorb Geld (Messung 03.09.: 781 von 811 Verlustfällen >712 g). Gruppen mit
    // maxG (Gramm) überspringen Ware darüber. CJ nennt Gewichte auch als SPANNE «350-512» → OBERE
    // Grenze (27.08.: die billigste Variante ist nie die, die CJ schickt).
-   if(grp.maxG){ const gwS=String(p.productWeight||p.variantWeight||''); const gwM=gwS.match(/[\d.]+/g)||[];
+   if(grp.maxG){ const gwS=String(versandGewicht(p.productWeight, p.packingWeight, p.variantWeight)||''); const gwM=gwS.match(/[\d.]+/g)||[];
      const gw=gwM.length?Math.max(...gwM.map(Number)):0; if(gw>grp.maxG){console.log('  skip(gewicht)',gw+'g',nm.slice(0,40));continue;} }
    // MOQ-Wache (auch FAST): nur ORDINARY/DIY = einzeln bestellbar (list liefert productType mit)
    const pt=p.productType||''; if(pt&&pt!=='ORDINARY_PRODUCT'&&pt!=='DIY_PRODUCT')continue;
@@ -871,7 +871,7 @@ for(const [cat,label] of grp.cats){
    // 09.10.2026: Platzhalter = Shopifys «Title / Default Title» (hasOnlyDefaultVariant) — «Variante / Standard» zeigte
    // der Kundin ein Wahlfeld mit einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus.
    const productOptions=fash?fash.productOptions:[{name:'Title',values:[{name:'Default Title'}]}];
-   const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, p.productWeight||p.variantWeight),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, p.productWeight||p.variantWeight),...gewicht(p.productWeight||p.variantWeight)},inventoryPolicy:'CONTINUE'}];
+   const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight)),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight)),...gewicht(versandGewicht(p.productWeight, p.packingWeight, p.variantWeight))},inventoryPolicy:'CONTINUE'}];
    // ⛔ 08.09.2026 KORREKTUR: Das Tor hing an `!fash` — aber `buildFashion` liefert auch dann
    // ein Objekt, wenn CJ nur EINE Variante hat. Ein Rucksack und ein Smartwatch-Armband gelten
    // als Mode, bekamen genau eine Variante und versprachen im Text trotzdem «erhältlich in

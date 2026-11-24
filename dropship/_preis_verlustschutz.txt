@@ -345647,3 +345647,6 @@
 67784830714247	sperren	17.90	49.90	40.10	2026-11-23	leuchtender-halloween-schaukelgeist-627400
 67784830747015	sperren	17.90	35.90	28.55	2026-11-23	leuchtender-halloween-schaukelgeist-627400
 67784830779783	sperren	17.90	58.90	46.90	2026-11-23	leuchtender-halloween-schaukelgeist-627400
+67660154405255	heben	31.90	41.90	33.11	2026-11-24	mini-projektor-1080p-yg300-kompakt-leicht-e96804
+67671104717191	heben	31.90	41.90	33.11	2026-11-24	mini-projektor-1080p-yg300-kompakt-leicht-e96804
+67671104749959	heben	37.90	41.90	33.11	2026-11-24	mini-projektor-1080p-yg300-kompakt-leicht-e96804

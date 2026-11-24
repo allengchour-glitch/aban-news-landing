@@ -52,6 +52,15 @@ const obereGrenze = w => {
   return teile.length ? Math.max(...teile) : 0;
 };
 
+// 24.11.2026 — VERSANDGEWICHT STATT NETTOGEWICHT. CJ liefert drei Gewichte: productWeight (Ware ohne Verpackung),
+// packingWeight und variantWeight (das, wonach CJ die Fracht berechnet). Bestellung #1046 (Mini-Projektor): productWeight
+// 100 g, packingWeight = variantWeight = 629 g; gerechnet wurde mit 100 g → Fracht CHF 5.03 statt ~11.4, Preis 31.90 statt
+// ~41.90, Gewinn CHF 4. Jeder Aufrufer nimmt jetzt das GRÖSSTE der vorhandenen Gewichte (Spannen: obere Grenze).
+export const versandGewicht = (...werte) => {
+  const g = werte.map(w => (w == null || w === '' ? 0 : obereGrenze(w))).filter(x => x > 0);
+  return g.length ? Math.max(...g) : 0;
+};
+
 export const fracht = grams => {
   const kg = obereGrenze(grams) / 1000;
   return Math.max(5, 3.4 + 16.3 * kg);

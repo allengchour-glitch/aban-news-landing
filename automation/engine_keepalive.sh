@@ -527,8 +527,10 @@ done
 fi
 
 # ── 3. Übrige /tmp-Dauerläufer. Hier ist der Dateiname AUCH der Prozessname (kein exec).
+# 24.11.2026: kosten_neu_runner = Einkaufspreise aller CJ-Produkte mit Versandgewicht neu + Preise heben (endet mit FERTIG,
+#   Notbremse dropship/_kosten_neu_aus.txt; ein Neustart nach FERTIG endet sofort wieder).
 for S in cj_queue_runner autocommit reel_engine_runner social_autopilot \
-         fortura_img_runner website_hygiene_runner; do
+         fortura_img_runner website_hygiene_runner kosten_neu_runner; do
   # 06.10.2026: Such-Runner importiert wie der Grind → ohne Text-KI nicht starten, laufenden beenden (siehe KI_DA oben).
   if [ "$S" = cj_queue_runner ] && [ "${KI_DA:-1}" = 0 ]; then
     ps -eo pid,args --no-headers | awk '/cj_queue_runner\.sh/ && !/awk/ {print $1}' | xargs -r kill 2>/dev/null; continue
