@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 17:41 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 19:23 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 189 · **127 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 98, teilweise: 27, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 188 · **126 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 97, teilweise: 27, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -106,7 +106,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Multifunktionale Wangenauflage-Tasche (`multifunktionale-wangenauflage-tasche-766016`) | 5 | 5 | 3.28–3.28 | 22.90 | Black, Wolf brown, Army Green, Desert digital |
 | Neun Farben Augen-Malpalette mit Glitzer (`neun-farben-augen-malpalette-mit-glitzer-731328`) | 5 | 5 | 2.46–2.46 | 16.90 | P102 Toffee, P103 Chocolate, P107 Peach Disk, P108 Purple Taro New Color |
 | Digitaler Kalenderwecker mit Medikamenten-Erinnerung (`digitaler-kalenderwecker-mit-medikamenten-erin-609900`) | 4 | 4 | 15.28–15.28 | 26.90 | US-White, EU-White, JP-White, AU-White |
-| Handgemachte Schmetterlings-Maniküre zum Aufkleben · Press-on-Nägel (`handgemachte-schmetterlings-manikure-zum-aufkl-615600`) | 4 | 4 | 3.25–3.25 | 15.90 | Style 1456-XS, Style 1456-S, Style 1456-M, Style 1456-L |
 | Baby-Kopfkissen mit Hirsekissen (`baby-kopfkissen-mit-hirsekissen-635000`) | 4 | 4 | 4.9–4.9 | 44.90 | Whale Fall In The Starry Sea-41X29cm, Mushroom Kingdom-41X29cm, Green Bamboo Panda-41X29cm, Little Prince-41X29cm |
 | Barocke Beauty-Kamee Nagelsticker (`barocke-beauty-kamee-nagelsticker-793984`) | 4 | 4 | 2.55–2.55 | 15.90 | Camellia-Xs Extra Small, Camellia-S Small Size, Camellia-M Medium, Camellia-L Large Size |
 | Panda Tee-Set Geschenkbox (`panda-tee-set-geschenkbox-619300`) | 4 | 4 | 7.96–7.96 | 24.90 | Panda Teacup Sandalwood, Panda Tea Cup Agarwood, Panda Teacup Laoshan, Panda Teacup Water Sink |

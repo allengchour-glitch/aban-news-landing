@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 17:59 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 19:23 UTC)
 
-Suche: `status:active AND created_at:>=2026-11-21` · gemessen 252 · **149 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 142, teilweise: 6, keine: 1; Preisspanne > 2×: 11) · 1 CJ-Variante: 102 · ohne Antwort: 1
+Suche: `status:active AND created_at:>=2026-11-21` · gemessen 232 · **129 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 124, teilweise: 5, keine: 0; Preisspanne > 2×: 10) · 1 CJ-Variante: 102 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -11,7 +11,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Taillengürtel Shapewear mit Reissverschluss (`taillengurtel-shapewear-mit-reissverschluss-604300`) | 49 | 49 | 2.07–2.63 | 16.90 | 2.0 Black Composite Fabric-XS, 2.0 Black Composite Fabric-S, 2.0 Black Composite Fabric-M, 2.0 Black Composite Fabric-L |
 | Wasserdichte Chenille Tischdecke rechteckig (`wasserdichte-chenille-tischdecke-rechteckig-620400`) | 48 | 48 | 3.86–9.57 | 33.90 | Light Camel-100x140cm, Light Camel-140x140cm, Light Camel-140x180cm, Light Camel-140x200cm |
 | Dimmbares höhenverstellbares Nachtlicht mit Timer (`dimmbares-hohenverstellbares-nachtlicht-mit-ti-616100`) | 48 | 48 | 7.46–8.79 | 42.90 | US-Amber Diamond Pattern-Dimming timing, US-Amber Diamond Pattern-Dimming, US-Amber Stripes-Dimming timing, US-Amber Stripes-Dimming |
-| Vintage Tischlampe Nachtlicht (`vintage-tischlampe-nachtlicht-601000`) | 40 | 40 | 9.12–10.12 | 45.90 | AU-1 Style, AU-10 Style, AU-11 Style, AU-13 Style |
 | Vintage Brosche mit Schleifenblume (`vintage-brosche-mit-schleifenblume-737984`) | 28 | 1 | 3.9–4.75 | 16.90 | Gray and white grid1, Haig1, Blue1, Purple grid1 |
 | Nordisches Minimalist-Kuppellicht in Macaron-Farbe (`nordisches-minimalist-kuppellicht-in-macaron-f-626300`) | 24 | 24 | 10.71–11.5 | 36.90 | White A Style-White Light, White A Style-Warm Light, White A Style-Three colors, Gray Model A-White Light |
 | LED Kristallkoffer Einbauschranklicht (`led-kristallkoffer-einbauschranklicht-627500`) | 24 | 24 | 5.87–7.97 | 34.90 | 5w-Black-3000K, 5w-Black-4000K, 5w-Black-6000K, 5w-Black-Three color light |
@@ -28,7 +27,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Bewegungssensor Nachttischlampe 2-er-Set 3000 K (`bewegungssensor-nachttischlampe-2-er-set-3000-627100`) | 16 | 16 | 8.79–8.79 | 19.90 | Black 2PCs-3000K-US, Black 2PCs-3000K-UK, Black 2PCs-3000K-AU, Black 2PCs-3000K-EU |
 | Japanische Windspiel-Tischlampe (`japanische-windspiel-tischlampe-638700`) | 16 | 16 | 10.28–14.59 | 44.90 | A High Style 15CM-US, A High Style 15CM-UK, A High Style 15CM-AU, A High Style 15CM-EU |
 | Wachs-Schmelzlampen in minimalistischer Glasform (`wachs-schmelzlampen-in-minimalistischer-glasfo-611300`) | 16 | 16 | 9.14–9.14 | 39.90 | AU-Amber Walnut, AU-Cream Walnut Wood, AU-Moonlight Log Color, AU-Amber Log Color |
-| Retro-Schreibtischlampe – Europäischer Stil (`retro-schreibtischlampe-europaischer-stil-637200`) | 16 | 16 | 17.91–17.91 | 49.90 | Red-US, Red-EU, Red-UK, Red-AU |
 | Kinder-RC-Helikopter V56, feste Höhe (`kinder-rc-helikopter-v56-feste-hohe-623600`) | 13 | 13 | 8.68–17.36 | 32.90 | Blue-2 Electric, Blue-3 Electric, Blue-4 Electricity, Black-1 Electric |
 | Portable kabellose Tischlampe mit Auflademechanismus (`portable-kabellose-tischlampe-mit-auflademecha-608700`) | 12 | 12 | 46.1–59.37 | 92.90 | Copper Brown Transparent-Wall Mounted, Copper Brown Transparent-Ordinary, Copper Brown Glass-Wall Mounted, Copper Brown Glass-Ordinary |
 | Leuchtendes Pilz-Nachtlicht – DIY-Set (`leuchtendes-pilz-nachtlicht-diy-set-635400`) | 12 | 12 | 5.01–14.76 | 29.90 | No7 Battery Type-Pink Mushroom, No7 Battery Type-Red Mushroom, No7 Battery Type-Blue Mushroom, No7 Battery Type-Purple Mushroom |
@@ -41,7 +39,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Literarische Blumenmuster Tischlampe im Vintage-Stil (`literarische-blumenmuster-tischlampe-im-vintag-627700`) | 10 | 10 | 6.06–9.8 | 45.90 | Electrodeless Remote Control-AStyle-US, Electrodeless Remote Control-BStyle-US, TmallGenie-AStyle-US, TmallGenie-BStyle-US |
 | Elektrisches Beruhigungs-Plüschtier für Babys (`elektrisches-beruhigungs-pluschtier-fur-babys-632100`) | 10 | 10 | 9.72–10.07 | 33.90 | Sleep Bunny, Sleeping Giraffe, Sleep Big White Geese, Sleeping Sea Lion |
 | Babysicherheitshelm für Neugeborene (`babysicherheitshelm-fur-neugeborene-622700`) | 10 | 10 | 9.55–19.1 | 31.90 | Coati-18x8x11cm, Dragon Baby-18x8x11cm, Little Fox-18x8x11cm, Little Monkey-18x8x11cm |
-| Luxus-Perlenbrosche (`luxus-perlenbrosche-199680`) | 10 | 0 | 2.24–5.49 | 16.90 | 1 Style-1PC, 2 Style-1PC, 3 Style-1PC, 4 Style-1PC |
 | Mid-Century Modern Deckenleuchte Creme (`mid-century-modern-deckenleuchte-creme-614700`) | 10 | 10 | 9.45–9.95 | 46.90 | Warm Light-Beige, Warm Light-Pink, Warm Light-Red, Warm Light-Black |
 | Schal Plus Bar Split Doppelseitig (`schal-plus-bar-split-doppelseitig-657100`) | 9 | 9 | 5.31–5.31 | 19.90 | Black And White, Black Camel, Lotus Pink, Black And Red |
 | Smartwatch mit Herzfrequenz, Blutsauerstoff & Telefon (`smartwatch-mit-herzfrequenz-blutsauerstoff-tel-606900`) | 9 | 9 | 20.49–23.09 | 34.90 | Gold And Steel Color, Silver Steel Color, Seven Star Gold Steel, Seven Star Silver Steel |
@@ -51,7 +48,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Einzelne Pendelleuchte für das Bett (`einzelne-pendelleuchte-fur-das-bett-605600`) | 9 | 9 | 4.56–6.94 | 24.90 | Light Source Not Included-Black, Light Source Not Included-Gold, Light Source Not Included-Black Gold, Monochrome White Light-Black |
 | Mushroom-Ladestation Tischlampe (`mushroom-ladestation-tischlampe-600800`) | 9 | 9 | 3.86–4.7 | 23.90 | Black-Thick, Gold-Thick, Silver-Thick, White-Thick |
 | Nachttischlampe Retro & Rustik (`nachttischlampe-retro-rustik-623300`) | 9 | 9 | 4.85–6.45 | 32.90 | Monochrome Warm Light-Floral Pleats, Monochrome Warm Light-Yellow Grid Pleated, Monochrome Warm Light-Beige Pleated, USB Cable Control Three Colors-Floral Pleats |
-| UV-Neonleuchtschrift für Laden & Bar (`uv-neonleuchtschrift-fur-laden-bar-630100`) | 9 | 9 | 19.57–21.23 | 44.90 | 1 Style, 2 Style, 3 Style, 4 Style |
 | Nachtlampe mit ewiger Rose (`nachtlampe-mit-ewiger-rose-606100`) | 9 | 9 | 3.86–5.14 | 19.90 | Champagne Rose-3Head-Battery, Champagne Rose-3Head-Charging, Champagne Rose-3Head-USB, Pink Roses-3Head-Battery |
 | 30W GaN Schnellladegerät Dual-Port USB-A & USB-C (`30w-gan-schnellladegerat-dual-port-usb-a-usb-c-620000`) | 8 | 8 | 2.63–3.01 | 16.90 | Black-AandC Port CN, Black-AandC Port US, Black-AandC Port EU, Black-AandC Socket UK |
 | Minimalistische Aromatherapie Tischlampe (`minimalistische-aromatherapie-tischlampe-618500`) | 8 | 8 | 5.99–9.2 | 31.90 | US-Black, UK-Black, EU-Black, AU-Black |
@@ -64,19 +60,15 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Pendelleuchte Linear Spotlight (`pendelleuchte-linear-spotlight-610400`) | 8 | 8 | 5.95–9.09 | 33.90 | White Light-Single Head, White Light-Double Head, Warm Light-Single Head, Warm Light-Double Head |
 | Kreative Schreibtischlampe für Schlafzimmer & Wohnzimmer (`kreative-schreibtischlampe-fur-schlafzimmer-wo-601800`) | 7 | 7 | 11.28–11.28 | 29.90 | 3.5W-Black, 3.5W-White, 3.5W-Gold, 3.5W-Mushroom Black |
 | Isolierter Rucksack mit grosser Kapazität (`isolierter-rucksack-mit-grosser-kapazitat-631200`) | 7 | 7 | 3.69–3.77 | 17.90 | TH05 Gray, TH05 Navy Blue, TH05 Black, TH05 Khaki |
-| Abenteuer-Stickerei Klett-Badgebundel (`abenteuer-stickerei-klett-badgebundel-650176`) | 7 | 7 | 3.33–3.33 | 16.90 | Style1, Style2, Style3, Style4 |
-| Tischlampe mit Touch-Dimmfunktion und USB-Aufladung (`tischlampe-mit-touch-dimmfunktion-und-usb-aufl-637000`) | 7 | 7 | 16.42–16.42 | 42.90 | USB Charge-Orange red white, USB Charge-Blue gray white, USB Charge-Black white, USB Charge-Gray green black |
 | Minimalistisches LED-Nachtlicht mit USB-Ladung (`minimalistisches-led-nachtlicht-mit-usb-ladung-614400`) | 6 | 6 | 8.51–8.51 | 24.90 | Black-Flat Head, Black-Triangle, Black-Round Head, White-Flat Head |
 | Moderne Wandlampe mit Eisenlampenschirm (`moderne-wandlampe-mit-eisenlampenschirm-622100`) | 6 | 6 | 31.25–39.93 | 79.90 | Black Gold Spotlight Warm-2PCS, Black Spotlight Warm Light-2PCS, Golden Spotlight Warm Light-2PCS, Black Spotlight White Light-2PCS |
 | Bettlampe mit Aufwärtslicht – PVC-Fassung (`bettlampe-mit-aufwartslicht-pvc-fassung-619000`) | 6 | 6 | 6.1–9.09 | 28.90 | Electrodeless Dimming-Black-US, Electrodeless Dimming-White-US, Three Colors-Black-US, Three Colors-White-US |
 | Laufwagen für Babys und Kleinkinder mit blinkenden Rädern (`laufwagen-fur-babys-und-kleinkinder-mit-blinke-604700`) | 6 | 6 | 6.94–8.68 | 58.90 | Black-Regular Wheel, Black-Two Flashes, Green-Regular Wheel, Green-Two Flashes |
 | Wandlampe Outdoor, wasserdicht, 6 W/12 W, 3-Farben (`wandlampe-outdoor-wasserdicht-6-w-12-w-3-farbe-602500`) | 6 | 6 | 11.81–18.23 | 34.90 | 6W Warm Light 3000K, 6W White Light 6000K, 6W Sunset Red, 12W Warm Light 3000K |
 | Ladebare LED-Campinglampe mit Vintage-Ambiente (`ladebare-led-campinglampe-mit-vintage-ambiente-606500`) | 6 | 6 | 6.14–7.13 | 16.90 | Black, Army Green, White, Black With Tripod |
-| Dekorative Schreibtischlampe – wiederaufladbar (`dekorative-schreibtischlampe-wiederaufladbar-601700`) | 6 | 6 | 26.37–26.37 | 47.90 | Grey, Orange, Green, Blue |
 | Kristall-Sandgeätzte Pendelleuchte im Mid-Century-Stil (`kristall-sandgeatzte-pendelleuchte-im-mid-cent-608400`) | 6 | 6 | 10.28–10.28 | 37.90 | Red Lamp Head, Pink Lamp Holder, Black Lamp Holder, Yellow Lamp Head |
 | Tischlampe 12,5 × 31 cm, modern, 220 V (`tischlampe-12-5-31-cm-modern-220-v-625800`) | 6 | 6 | 24.88–24.88 | 51.90 | Wine Red, Gray, Glacier Blue, Transparent Color |
 | Nachttischlampe mit Tierpfoten-Print (`nachttischlampe-mit-tierpfoten-print-620200`) | 6 | 6 | 8.14–10.35 | 24.90 | Monochrome model-No lettering at the bottom, 3color model-No lettering at the bottom, 7color model-No lettering at the bottom, 3color model-Lettering at the bottom |
-| Schwarze Humor-Fabel-Patte für Kleidung (`schwarze-humor-fabel-patte-fur-kleidung-550784`) | 6 | 1 | 2.8–4.8 | 16.90 | A style, B style, C style, D style |
 | Zahncreme-Deckel Weihnachtsmotiv (5 Figuren) (`zahncreme-deckel-weihnachtsmotiv-5-figuren-610800`) | 5 | 5 | 6.08–6.08 | 16.90 | Christmas Reindeer, Santa Claus, Christmas Penguin, Christmas Gnome |
 | Kompakte USB-Tischlampe für Outdoor (`kompakte-usb-tischlampe-fur-outdoor-623400`) | 5 | 5 | 3.02–5.31 | 19.90 | Sand Gold, Red Bronze, Chrome, Electrophoresis Gold |
 | Mehrlagiges wiederverwendbares Brotsack aus Leinen (`mehrlagiges-wiederverwendbares-brotsack-aus-le-615300`) | 5 | 5 | 3.51–3.51 | 16.90 | Autumn Leaves-33X43, Blue Japanese Banana Leaf-33X43, Gray Arrow-33X43, Green Banana Leaves-33X43 |
@@ -84,7 +76,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Mosaiklampe aus Harz – Farbenfroh (`mosaiklampe-aus-harz-farbenfroh-618000`) | 5 | 5 | 4.7–4.7 | 17.90 | Fish, Deer, Cactus, Snail |
 | Kabelloses Nachtschein mit Körpererkennung (`kabelloses-nachtschein-mit-korpererkennung-622000`) | 5 | 5 | 4.86–5.8 | 16.90 | 5W-Wired Charging Model, 5W-CN, 5W-EU, 5W-UK |
 | Brosche Retro-Rhinestone-Bogen (`brosche-retro-rhinestone-bogen-791360`) | 5 | 5 | 2.17–2.17 | 16.90 | Red, Blue, Black, Light Blue |
-| Punk-Butterfly Applique Stickerei Aufnäher (`punk-butterfly-applique-stickerei-aufnaher-849344`) | 5 | 5 | 4.8–4.8 | 16.90 | 1 Style, 2 Style, 3 Style, 4 Style |
 | Neon-Licht mit Hundemotiv – 40x32 cm (`neon-licht-mit-hundemotiv-40x32-cm-618000`) | 5 | 4 | 11.28–13.6 | 38.90 | 40x32cm-USB, Skateboard Puppy 405x32cm-USB, Skateboard Puppy 40x30cm-USB, Toy Dog With Glasses 40 X32cm-USB |
 | Batterie-Set 20 Stück 1,5 V (alkalisch) (`batterie-set-20-stuck-1-5-v-alkalisch-622000`) | 4 | 4 | 4.32–6.63 | 17.90 | Carbonaceous-No 7, Carbonaceous-No 5, Alkaline-No 7, Alkaline-No 5 |
 | Heizhandschuhe für Outdoor und Radfahren (`heizhandschuhe-fur-outdoor-und-radfahren-618800`) | 4 | 4 | 25.17–25.17 | 41.90 | 1 Soft Style-SorM, 1 Soft Style-LorXL, 2 Soft Style-SorM, 2 Soft Style-LorXL |
@@ -111,7 +102,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Wachsschmelzlampa mit Timer und Dimmfunktion (`wachsschmelzlampa-mit-timer-und-dimmfunktion-609200`) | 4 | 4 | 16.58–16.58 | 47.90 | YS-Wax Melting Lamp, UK-Wax Melting Lamp, AU-Wax Melting Lamp, EU-Wax Melting Lamp |
 | Skull-Lampe aus Kunstharz, USB-Betrieb (`skull-lampe-aus-kunstharz-usb-betrieb-602800`) | 4 | 4 | 5.14–6.25 | 25.90 | Skull Lamp A, Skull Light B, A USBRGB switch, Btype USBRGB power on |
 | LED Weihnachtslichter mit Vogelkäfig-Design (`led-weihnachtslichter-mit-vogelkafig-design-625600`) | 4 | 4 | 5.11–5.89 | 23.90 | Double Bird Cage-Battery, Double Bird Cage-USB charging, Single Bird Cage-Battery, Single Bird Cage-USB charging |
-| Kuschelige Hasen-Nachtlampe mit Touch-Dimmung (`kuschelige-hasen-nachtlampe-mit-touch-dimmung-638100`) | 4 | 4 | 7.96–7.96 | 36.90 | USB Charging-Yellow, USB Charging-Gray, USB Charging-White, USB Charging-Pink |
 | Kabelloser Reifenpumpe mit Licht und Druckanzeige (`kabelloser-reifenpumpe-mit-licht-und-druckanze-635800`) | 3 | 3 | 7.95–9.17 | 26.90 | Wireless Rechargeable, USB Version, USB Cigarette Lighter Cable |
 | Teleskop mit Infrarot-Nachtsicht 6x-10x (`teleskop-mit-infrarot-nachtsicht-6x-10x-605600`) | 3 | 3 | 26.91–50.0 | 70.90 | SY102 Night Vision Device, SY102 Night Vision Device 2, R12 |
 | GT3MINI Dual-Lens Langzeit-Drohne (`gt3mini-dual-lens-langzeit-drohne-629800`) | 3 | 3 | 27.43–32.64 | 51.90 | 1 Electricity, 2 Electricity, 3 Electricity |
@@ -120,12 +110,10 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Florales Doppel-Tüll-Baumwollstoff (`florales-doppel-tull-baumwollstoff-621700`) | 3 | 3 | 2.21–2.21 | 16.90 | Small Floral-Other-50x135cm, Striped Floral-Other-50x135cm, Small Cherry-Other-50x135cm |
 | Bewegungssensor-Wandlicht für das Bett (`bewegungssensor-wandlicht-fur-das-bett-637800`) | 3 | 3 | 3.52–3.52 | 16.90 | White, Light Wood, Deep Wood |
 | LED-Nachtlicht Samojede-Figur aus Resin (`led-nachtlicht-samojede-figur-aus-resin-620500`) | 3 | 3 | 4.7–4.7 | 17.90 | Standing Position, Sitting Posture, Lying Position |
-| LED Nachttischlampe im Blumen-Design (`led-nachttischlampe-im-blumen-design-631400`) | 3 | 3 | 4.83–4.83 | 21.90 | 2000mA-Red, 2000mA-Green, 2000mA-Yellow |
 | Brosche aus Titanstahl mit Namensbuchstaben (`brosche-aus-titanstahl-mit-namensbuchstaben-515776`) | 3 | 3 | 3.03–3.73 | 16.90 | Rose Gold, Gold, Steel |
 | Phönix-Brosche aus Kupfer, bunt (`phonix-brosche-aus-kupfer-bunt-962240`) | 3 | 3 | 5.0–5.0 | 16.90 | Yellow, Blue, Color |
 | Deckenleuchte Minimalistisch Nordisch Warmweiss (`deckenleuchte-minimalistisch-nordisch-warmweis-639400`) | 3 | 3 | 9.77–10.71 | 34.90 | Three Heads-Warm White Light, Three Heads-Positive White Light, Three Heads-Light Source Not Included |
 | Nordic Retro Minimalist Nachttischlampe (`nordic-retro-minimalist-nachttischlampe-620800`) | 3 | 3 | 63.02–63.02 | 102.90 | Warm Light-US, White Light-US, Neutral Light-US |
-| Engel-Flügel-Brosche aus Metall, 50×43 mm (`engel-flugel-brosche-aus-metall-50-43-mm-352960`) | 3 | 3 | 2.55–2.55 | 16.90 | Silver White, Silver Purple, Rose Gold |
 | Vintage Wandlampe aus Kupferglas (`vintage-wandlampe-aus-kupferglas-610100`) | 2 | 2 | 15.28–16.15 | 42.90 | No Bulb-12 Small Green Leaf Wall Lamps, Warm Light Bulb-12 Small Green Leaf Wall Lamps |
 | Vier-Achsen-Fernsteuerungs-Flugzeug-Spielzeug (`vier-achsen-fernsteuerungs-flugzeug-spielzeug-631400`) | 2 | 2 | 5.9–7.81 | 20.90 | E88 Gray Dual Camera, Gray single camera  1battery |
 | Nachttisch-Lampe mit Stoffschirm und Akku (`nachttisch-lampe-mit-stoffschirm-und-akku-609700`) | 2 | 2 | 7.46–7.46 | 27.90 | Brown Shade, Light Gray Lampshade |
@@ -142,16 +130,8 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Silikon-Tier-Nachtlicht mit 30-Minuten-Timer (`silikon-tier-nachtlicht-mit-30-minuten-timer-606400`) | 2 | 2 | 5.03–5.03 | 16.90 | The Third Gear Adjustment-Silicone Sloth, Rechargeable Colorful-Silicone Sloth |
 | Silicon-Handgriffe-Warnlicht für Mountainbike (`silicon-handgriffe-warnlicht-fur-mountainbike-603000`) | 2 | 2 | 6.6–11.81 | 23.90 | Cover Lamp, With Remote Control |
 | Minimalistisches Nachttisch-Licht mit Ladestation (`minimalistisches-nachttisch-licht-mit-ladestat-629200`) | 2 | 2 | 22.39–22.39 | 49.90 | Milk Light Height 2315CM, Pink High 2315CM |
-| Vintage Brosche mit geometrischem Design in Blau, Lila, Grün (`vintage-brosche-mit-geometrischem-design-in-bl-651904`) | 2 | 2 | 14.51–14.51 | 23.90 | Blue, Green |
-| Engel-Brosche mit künstlichen Zirkonia (`engel-brosche-mit-kunstlichen-zirkonia-380608`) | 2 | 2 | 4.06–4.06 | 16.90 | Gold, Silver |
-| Königin-Buchstaben-Brosche in Silber und Gold (`konigin-buchstaben-brosche-in-silber-und-gold-833024`) | 2 | 2 | 2.99–2.99 | 16.90 | Silver, Gold |
 | Schmuckbrosche mit Perlen und Pailletten (`schmuckbrosche-mit-perlen-und-pailletten-768832`) | 2 | 2 | 2.43–2.95 | 16.90 | Advanced Woven Pattern 3, Advanced Woven 9 |
-| Tiermotiv-Brosche aus Legierung (`tiermotiv-brosche-aus-legierung-687616`) | 2 | 2 | 2.6–2.6 | 16.90 | Red bead, Green bead |
-| Kupfer-Brosche mit Zirkonia-Leopardenmuster (`kupfer-brosche-mit-zirkonia-leopardenmuster-580480`) | 2 | 2 | 7.0–7.0 | 16.90 | Gold, Silver |
 | Goldbeschichtete Tierbrooch aus Legierung – 47,1×68,8 mm (`goldbeschichtete-tierbrooch-aus-legierung-47-1-734528`) | 2 | 2 | 5.2–8.17 | 16.90 | BM774 brooch, BM963 makes old brooches |
 | Vorsatzlampe mit Flügeldeko – Schlafzimmer (`vorsatzlampe-mit-flugeldeko-schlafzimmer-634800`) | 2 | 2 | 28.67–29.46 | 62.90 | Warm Light, Tricolor Light |
-| Liebe-Vögel-Fringe-Brosche (`liebe-vogel-fringe-brosche-823552`) | 2 | 2 | 3.8–3.8 | 16.90 | White, Gold |
 | Lanternenfigur Fisch – Handlampe mit Batterie (`lanternenfigur-fisch-handlampe-mit-batterie-613600`) | 2 | 2 | 4.62–5.2 | 17.90 | Battery Type, Rechargeable |
-| Klappbare Leselampe für Kinder – USB (`klappbare-leselampe-fur-kinder-usb-609900`) | 2 | 2 | 13.76–13.76 | 46.90 | Black-USB Plug In, Silver-USB Plug In |
-| Kompakte Tischlampe mit Touch-Dimmung (`kompakte-tischlampe-mit-touch-dimmung-635100`) | 2 | 2 | 24.88–24.88 | 53.90 | USB Charging-Black, USB Charging-White |
 | Kristallglas Nachttischlampe mit Kupfergestell (`kristallglas-nachttischlampe-mit-kupfergestell-614400`) | 2 | 2 | 24.71–24.71 | 62.90 | Brown-Brass Base, Brown-Copper plated base |
