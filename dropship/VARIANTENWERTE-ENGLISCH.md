@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-24 15:46 UTC, Stand 2026-11-24 16:18 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-24 15:46 UTC, Stand 2026-11-24 16:34 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **7'822**
-- Optionen mit englischen Werten (Kandidaten): 340
+- Produkte gesehen: **9'014**
+- Optionen mit englischen Werten (Kandidaten): 402
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 791
+- Werte mit unbekanntem Wort (unverändert): 944
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 13
+- übersprungen «kollision-nach-uebersetzung»: 15
 - übersprungen «kleidungsstueck-im-wert»: 10
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -42,6 +42,8 @@
 - `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: White Color → Weiss
 - `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
 - `15449432555905` [Farbe] ems-bauch-und-muskel-trainer-b08b29: A Set1 → A Set 1; A Set2 → A Set 2; Set2 → Set 2; Set1 → Set 1; Yellow 3pcs → Gelb · 3 Stück
+- `15450036601217` [Farbe] retro-high-top-schuhe-fur-herren-600800: Black → Schwarz
+- `15450830176641` [Farbe] kuschel-hoodie-mit-grosser-tasche-052928: Dark gray → Dunkelgrau; Set1 → Set 1; Set2 → Set 2; Set3 → Set 3; Set4 → Set 4
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -64,5 +66,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`powder` 37, `diamond` 36, `⟨satzbau:adjektiv-vor-nomen⟩` 21, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `deer` 19, `degrees` 17, `one` 15, `tea` 14, `cherry` 13, `blossom` 12, `shell` 11, `hat` 10, `storage` 10, `to` 10, `elegant` 9, `bag` 9, `insert` 9, `glittering` 8, `waist` 8, `rope` 8, `soft` 8, `cocoa` 8, `carbon` 8, `titanium` 8, `milk` 7, `hot` 7, `color` 7, `machine` 7, `ice` 7, `washed` 7, `stone` 7, `filter` 7, `kopfband` 7, `models` 6, `handle` 6, `gun` 6, `four` 6, `electric` 6, `three` 5, `1er` 5, `smoke` 5, `data` 5, `fog` 5, `fruit` 5, `skin` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `rice` 5, `meter` 5, `sunflower` 5, `3english` 5, `3chinese` 5, `4chinese` 5, `4english` 5, `cn` 5
+`powder` 38, `diamond` 36, `⟨satzbau:adjektiv-vor-nomen⟩` 32, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `deer` 19, `cherry` 17, `degrees` 17, `tea` 16, `one` 15, `blossom` 14, `carbon` 13, `bag` 11, `shell` 11, `titanium` 11, `size` 11, `elegant` 10, `hat` 10, `storage` 10, `color` 10, `⟨satzbau:adjektivfolge⟩` 10, `to` 10, `ding` 10, `insert` 9, `promax` 9, `milk` 8, `glittering` 8, `waist` 8, `rope` 8, `soft` 8, `cocoa` 8, `stone` 8, `sport` 8, `button` 8, `hot` 7, `machine` 7, `ice` 7, `washed` 7, `filter` 7, `kopfband` 7, `models` 6, `handle` 6, `gun` 6, `four` 6, `electric` 6, `mocha` 6, `rice` 6, `15promax` 6, `three` 5, `1er` 5, `smoke` 5, `⟨satzbau:material-vor-farbe⟩` 5, `data` 5, `fog` 5, `fruit` 5, `skin` 5, `no` 5, `papa` 5
 
