@@ -1,0 +1,151 @@
+{
+ "title": "Weinöffner mit Luftdruckpumpe",
+ "tags": [
+  "auswahl-offen",
+  "bild-ok",
+  "bildmass-ok-0906",
+  "cj-real",
+  "dropship",
+  "geschenkwelt-hochzeit",
+  "haushalt",
+  "kochen",
+  "kueche",
+  "sort-bar-wein-weinzubehoer",
+  "sort-bar-weinzubehoer"
+ ],
+ "descriptionHtml": "<!-- ls-text-v2 --><p>Der Weinöffner mit Luftdruckpumpe löst den Korken mit Luft, statt dass du ihn herausdrehen musst. Eine Pumpe und ein Pin aus Edelstahl übernehmen die Arbeit. Wie viele Pumpstösse nötig sind, hängt vom jeweiligen Korken ab. Das Gerät ist klein, besteht aus Kunststoff und Metall und wiegt 70 g, du kannst es also leicht mitnehmen.</p><h4>Wo er passt</h4><p>Die Grösse macht ihn zum Begleiter für Hochzeiten, Feiern, das Picknick im Freien oder das Essen mit Freunden. Er ist für Korken gedacht, für Flaschen mit Schraubverschluss brauchst du ihn nicht.</p><h4>Die Auswahl</h4><p>Es gibt den Weinöffner in Gold, Silber, Schwarz und Rot, je nach Farbe als «Upgrade», «Set», «Set 1» oder «Set 2». «Set 1» enthält zusätzlich einen Folienschneider, «Set 2» zusätzlich einen Folienschneider und einen Vakuum-Weinstopfen. Was in «Upgrade» und «Set» steckt, ist nicht beschrieben, schau dir dazu die Produktbilder an.</p><!-- /ls-text-v2 -->\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff, Metall</li>\n<li>\n<strong>Gewicht:</strong> 74g</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/sub-kueche\">Küche &amp; Kochen</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "seo": {
+  "title": "Weinöffner mit Luftdruckpumpe | LuxeStyle CH",
+  "description": "Weinöffner mit Luftdruckpumpe – bei LuxeStyle Schweiz. Gratis-Versand ab CHF 50, 30 Tage Rückgabe."
+ },
+ "options": [
+  {
+   "name": "Title",
+   "values": [
+    "Default Title"
+   ]
+  }
+ ],
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/56156119204225",
+    "title": "Default Title",
+    "sku": "CJ-0EA586E3-C468-433C-8E4E-BAD818198DB1",
+    "price": "22.90",
+    "compareAtPrice": null,
+    "inventoryPolicy": "CONTINUE",
+    "inventoryItem": {
+     "tracked": false,
+     "unitCost": {
+      "amount": "18.16"
+     },
+     "measurement": {
+      "weight": {
+       "value": 0.0,
+       "unit": "KILOGRAMS"
+      }
+     }
+    }
+   }
+  ]
+ },
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70622640570753",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/786810691299.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/Video/77437947445639",
+    "mediaContentType": "VIDEO"
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640537985",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/757115612208.jpg?v=1787351723",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640898433",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/531271114022.jpg?v=1787351724",
+     "width": 640,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640669057",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/711639900361853.jpg?v=1787351724",
+     "width": 640,
+     "height": 640
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640931201",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4626807385620.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640996737",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1173563080334.jpg?v=1787351737",
+     "width": 782,
+     "height": 780
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640701825",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/422022547449.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640865665",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1302290357820.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640832897",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/111073512621864.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70622640767361",
+    "mediaContentType": "IMAGE",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/297815859197.jpg?v=1787351724",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ }
+}
