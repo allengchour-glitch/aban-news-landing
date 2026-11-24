@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-24 15:46 UTC, Stand 2026-11-24 16:17 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-24 15:46 UTC, Stand 2026-11-24 16:18 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **7'224**
-- Optionen mit englischen Werten (Kandidaten): 316
+- Produkte gesehen: **7'822**
+- Optionen mit englischen Werten (Kandidaten): 340
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 745
+- Werte mit unbekanntem Wort (unverändert): 791
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 13
 - übersprungen «kleidungsstueck-im-wert»: 10
@@ -64,5 +64,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`diamond` 36, `powder` 34, `⟨satzbau:adjektiv-vor-nomen⟩` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `deer` 19, `degrees` 17, `one` 15, `tea` 14, `cherry` 13, `blossom` 11, `shell` 11, `hat` 10, `storage` 10, `to` 10, `bag` 9, `insert` 9, `elegant` 8, `glittering` 8, `waist` 8, `rope` 8, `soft` 8, `cocoa` 8, `milk` 7, `hot` 7, `color` 7, `machine` 7, `ice` 7, `washed` 7, `stone` 7, `filter` 7, `handle` 6, `gun` 6, `four` 6, `electric` 6, `carbon` 6, `three` 5, `1er` 5, `data` 5, `fog` 5, `fruit` 5, `skin` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `rice` 5, `meter` 5, `sunflower` 5, `3english` 5, `3chinese` 5, `4chinese` 5, `4english` 5, `cn` 5, `11pro` 5, `plugin` 4, `models` 4, `touch` 4
+`powder` 37, `diamond` 36, `⟨satzbau:adjektiv-vor-nomen⟩` 21, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `deer` 19, `degrees` 17, `one` 15, `tea` 14, `cherry` 13, `blossom` 12, `shell` 11, `hat` 10, `storage` 10, `to` 10, `elegant` 9, `bag` 9, `insert` 9, `glittering` 8, `waist` 8, `rope` 8, `soft` 8, `cocoa` 8, `carbon` 8, `titanium` 8, `milk` 7, `hot` 7, `color` 7, `machine` 7, `ice` 7, `washed` 7, `stone` 7, `filter` 7, `kopfband` 7, `models` 6, `handle` 6, `gun` 6, `four` 6, `electric` 6, `three` 5, `1er` 5, `smoke` 5, `data` 5, `fog` 5, `fruit` 5, `skin` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `rice` 5, `meter` 5, `sunflower` 5, `3english` 5, `3chinese` 5, `4chinese` 5, `4english` 5, `cn` 5
 
