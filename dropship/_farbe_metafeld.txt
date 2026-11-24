@@ -543,3 +543,4 @@ gid://shopify/Product/16732290646407	Schwarz
 gid://shopify/Product/16733483368839	Rot
 gid://shopify/Product/16733920625031	Mehrfarbig
 gid://shopify/Product/16734046749063	Mehrfarbig
+gid://shopify/Product/16734418141575	Blau

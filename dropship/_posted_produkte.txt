@@ -567,3 +567,6 @@ slug:kabelloser-handstaubsauger-fur-auto-zuhause-3da44c
 name:oceanwaveprojektorlednachtlicht
 pid:15450856063361
 slug:ocean-wave-projektor-led-nachtlicht-33b26c
+name:lenkradtischfürunterwegs
+pid:15450851639681
+slug:lenkrad-tisch-fur-unterwegs-8f43ff

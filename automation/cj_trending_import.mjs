@@ -52,6 +52,7 @@ import { snippet } from './cj_snippet.mjs';   // Google-Suchergebnis-Text, EINE 
 import { codesNummerieren, kanarienGruen as farbcodeKanarien } from './farbcode_modell.mjs';   // 09.10.2026: Codes im Farbfeld → «Modell N»
 import { praefixWeg, kanarienGruen as farbpraefixKanarien } from './farbcode_praefix.mjs';   // 10.10.2026: «2350 Black» → «Schwarz»
 import { familienWerte, kanarienGruen as familiensetKanarien } from './familienset_werte.mjs';   // 10.10.2026: «Gray-Father S» → «Grau · Papa S»
+import { akkuEinzeln } from './lib/akku_einzeln.mjs';   // 24.11.2026: Einzel-Akkus/Powerstations = kein CH-Versand
 const FAMSET_OK=familiensetKanarien(); if(!FAMSET_OK)console.error('familienset_werte: Kanarien rot — Familien-Sets bleiben roh');
 const FARBPRAEFIX_OK=farbpraefixKanarien(); if(!FARBPRAEFIX_OK)console.error('farbcode_praefix: Kanarien rot — Code vor Farbe bleibt');
 const FARBCODE_OK=farbcodeKanarien(); if(!FARBCODE_OK)console.error('farbcode_modell: Kanarien rot — Codes bleiben unverändert');
@@ -256,7 +257,7 @@ for(let page=PSTART;page<PSTART+PAGES;page++){
  lastPage=page;
  for(const p of list){
   const nm=p.productNameEn||'';
-  if(!nm||done.has(String(p.pid))||BAN.test(nm))continue;
+  if(!nm||done.has(String(p.pid))||BAN.test(nm)||akkuEinzeln(nm))continue;
   const _pp=(''+p.sellPrice).split('--'); const _lo=parseFloat(_pp[0])||0, _hi=parseFloat(_pp[1]||_pp[0])||_lo; if(_hi<1.5||_lo>90)continue;
   cand.push(p);
  }

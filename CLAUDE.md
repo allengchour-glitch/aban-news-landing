@@ -485,6 +485,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-11-24 · 🎄🔋 **Startseite saisonal: 18 Weihnachts-/Winterprodukte in `startseite-pool-trends`, 6 in `startseite-pool-mehr` (abwechselnd mit den alten, Sicherung `dropship/startseite-saison-2411/pools_vorher.json`). Einzel-Akkus/Powerstations (UN3480) = kein CH-Versand → 19 gedraftet (Tag `akku-einzeln-kein-ch-versand`), Sperre `lib/akku_einzeln.mjs` in category_fill + trending_import.**
 - 2026-11-24 · 🪙 **Betreiber «gezielt token nicht verschwenden, keine doppelten Prüfungen»: Ergebnis einmal messen und dem Messwert glauben (nicht nachlesen, was ein Rücklesen schon bestätigt hat); keine Workflows/Prüfer für kleine Aufgaben (nur bei Massen-Schreibern); Stop-Hook-Drift = EIN Commit-Befehl + eine Zeile, keine Zweitrunde (Motoren schreiben dauernd, sauber wird es nie); Dateien nur so weit lesen wie nötig.**
 - 2026-11-24 · 🗣️ **Betreiber «weniger details wie codex»: Meldungen kurz — Ergebnis + was er tun muss, 1–3 Zeilen, keine Herleitung, keine IDs/Zahlenkolonnen ausser nötig.**
 

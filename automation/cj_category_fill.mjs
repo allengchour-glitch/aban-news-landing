@@ -16,6 +16,7 @@ const PLUESCH_TYP=_plt.typ_textil, PLUESCH_TAGS=_plt.tags_textil;
 // 🎄 12.10.2026: «weihnachten» muss VERDIENT sein — EINE Regelquelle mit automation/weihnachten_tag_wache.py (Bestand).
 const WEIHNACHT_WORT=new RegExp(JSON.parse(fs.readFileSync(new URL('../data/weihnachten_tag_regel.json',import.meta.url),'utf8')).weihnachtswort,'i');
 import { istKlinge, istHandklinge } from './klingenregel.mjs';
+import { akkuEinzeln } from './lib/akku_einzeln.mjs';
 import { nurAltnetz, DRAFT_TAG as MOBILFUNK_TAG } from './mobilfunk.mjs';   // 10.10.2026: nur 2G/3G = in CH ohne Netz
 import { schonBeansprucht } from './cj_claim.mjs';
 import {googleKategorie, werkzeugKorb, WERKZEUG_TYPEN} from './google_kategorie.mjs';
@@ -741,6 +742,7 @@ for(const [cat,label] of grp.cats){
    if(total>=CAP)break;
    const nm=p.productNameEn||''; if(!nm||done.has(String(p.pid))||(grp.ban&&grp.ban.test(nm)))continue;
    if(laserVerboten(nm)){console.log(`  ⛔ Laserpointer (V-NISSG) übersprungen: ${nm.slice(0,60)}`);continue;}
+   if(akkuEinzeln(nm)){console.log(`  ⛔ Einzel-Akku (kein CH-Versand) übersprungen: ${nm.slice(0,60)}`);continue;}
    if(waffenNachbildung(nm)){console.log(`  ⛔ Schusswaffen-Nachbildung übersprungen: ${nm.slice(0,60)}`);continue;}
    const pr=parseFloat((''+p.sellPrice).split('--')[0])||0; if(pr<grp.minP||pr>grp.maxP)continue;
    // GEWICHTSDECKEL (14.09.2026): die Fracht CN→CH hängt am Gewicht (3.84+16.42·kg), schwere Ware
