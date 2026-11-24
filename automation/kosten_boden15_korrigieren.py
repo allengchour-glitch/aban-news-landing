@@ -112,7 +112,14 @@ def main():
     if not os.path.exists(EXPORT):
         print(f"Export {EXPORT} fehlt — erst einen Bulk-Export mit unitCost+weight ziehen.")
         return 1
-    erlaubt = {l.strip().split("\t")[0] for l in open(LEDGER_QUELLE) if l.strip()}
+    # ⚠️ 24.11.2026 — DIESER SENKER SENKTE RICHTIGE KOSTEN. Er nahm JEDE ID aus _cj_kosten_done.txt als «mit Boden 15
+    # geschrieben» — der Nachtrag rechnet aber seit dem 28.08. selbst mit Boden 5. Gemessen: 16661098398087 EK 23.19 (CJ
+    # live 23.19) am 23.11. auf 20.69 gesenkt; das Fix-Ledger zählt 18'045 Produkte, das Kosten-Ledger stand am 28.08. bei
+    # 4'625. Erlaubt sind jetzt NUR die bis zum 28.08. quittierten IDs (eingefroren, git 471ce08a5) und nie ein Produkt,
+    # das kosten_neu_runner mit dem Versandgewicht neu gerechnet hat (dropship/_cj_kosten_neu.tsv).
+    erlaubt = {l.strip().split("\t")[0] for l in open("dropship/_cj_kosten_done_bis_2808.txt") if l.strip()}
+    if os.path.exists("dropship/_cj_kosten_neu.tsv"):
+        erlaubt -= {l.split("\t")[0] for l in open("dropship/_cj_kosten_neu.tsv") if l.strip()}
     fertig = {l.strip().split("\t")[0] for l in open(LEDGER)} if os.path.exists(LEDGER) else set()
     print(f"Ledger des Backfills: {len(erlaubt)} Produkte · schon korrigiert: {len(fertig)}")
 
@@ -143,8 +150,10 @@ def main():
         return len(cs) == 1 and next(iter(cs)) >= 15.0
 
     kandidaten, per_signatur = [], set()
+    neu_gerechnet = {l.split("\t")[0] for l in open("dropship/_cj_kosten_neu.tsv") if l.strip()} \
+        if os.path.exists("dropship/_cj_kosten_neu.tsv") else set()
     for pid, vs in varianten.items():
-        if pid in fertig:
+        if pid in fertig or pid in neu_gerechnet:
             continue
         if pid not in erlaubt:
             if not (SIGNATUR and signatur(vs, titel.get(pid, ("", ""))[1])):

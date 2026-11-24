@@ -28,6 +28,7 @@ const LEDGER = 'dropship/_cj_kosten_done.txt';
 // Versandgewicht 629 g). Nur mit NUR_IDS. Eigenes Ledger mit alt → neu je Produkt (Rückweg + kein Doppellauf).
 const NEU = process.env.NEU === '1';
 const LEDGER_NEU = 'dropship/_cj_kosten_neu.tsv';
+const HEUTE = new Date().toISOString().slice(0, 10);
 // ⚠️ Der Aufseher startet diesen Lauf mit `CAP=900` — dieselbe Schraube, die die
 // Bild-Laeufe kennen. Dieses Skript las aber nur LIMIT und blieb deshalb still bei 400:
 // eine Stellschraube, die nirgends ankommt, sieht im Startbefehl aus wie eine Wirkung.
@@ -140,7 +141,7 @@ async function cj(pfad) {
 // gerechnet waeren es 149. Faellt die Abfrage aus, wird das Produkt spaeter erneut geprueft
 // (kein Ledger-Eintrag) — ein Ausfall ist keine Erledigung.
 async function variantenVon(id) {
-  const r = await sgql(`query($id:ID!){product(id:$id){variants(first:250){nodes{id sku inventoryItem{id unitCost{amount}}}}}}`, { id });
+  const r = await sgql(`query($id:ID!){product(id:$id){variants(first:250){nodes{id sku inventoryItem{id unitCost{amount} measurement{weight{value unit}}}}}}}`, { id });
   return r.data?.product?.variants?.nodes || [];
 }
 
@@ -195,7 +196,7 @@ async function main() {
       if (!NUR_IDS && erledigt.has(p.id)) continue;
       if (!NEU && p.variants.nodes.some(v => v.inventoryItem?.unitCost)) { erledigt.add(p.id); continue; }   // hat schon Kosten
       const vs = (NEU || (p.variantsCount?.count || 1) > 1) ? await variantenVon(p.id) : p.variants.nodes;
-      if (!vs.length) continue;
+      if (!vs.length) { if (NEU) fs.appendFileSync(LEDGER_NEU, `${p.id}\t${HEUTE}\tfehl:keine-varianten\n`); continue; }
       // ⚠️ DIE SKU HAT VIER FORMEN (live gezählt 20.08.2026), ein Muster reicht nicht:
       //   CJ-2501090747091600500          → Zahlen-pid       → product/query?pid=
       //   CJ-EC52E079-9BEF-4475-...       → UUID-pid         → product/query?pid=
@@ -214,7 +215,11 @@ async function main() {
       // quittierte der Lauf JEDES dieser Produkte als «cj-ohne-antwort». Richtig ist
       // `productSku=`; damit liefert CJ result:true samt variantSellPrice UND variantWeight.
       else if (mVar) {
-        j = await cj(`product/variant/query?productSku=${mVar[1]}`);
+        // 24.11.2026: Bei Varianten-SKUs (…01AZ) traf der erste Aufruf nie (37'785 von 53'604 Produkten) → erst den Stamm
+        // fragen, dann die volle SKU. Spart je Produkt 10 CJ-Punkte; die Reihenfolge der übrigen Formen bleibt.
+        const stamm0 = mVar[1].match(/^(.*[0-9])\d{2}[A-Z]{2}$/i);
+        j = stamm0 ? await cj(`product/variant/query?productSku=${stamm0[1]}`) : { result: false };
+        if (!j.result && !j.gedrosselt) j = await cj(`product/variant/query?productSku=${mVar[1]}`);
         // ⚠️ FÜNFTE SKU-FORM (22.08.2026). `productSku=` heisst wörtlich PRODUKT-SKU —
         // eine VARIANTEN-SKU kennt CJ unter diesem Parameter NICHT. Der Modemodus des
         // Importers schreibt aber genau die (Zeile 157 cj_category_fill.mjs: `v.variantSku`),
@@ -224,7 +229,7 @@ async function main() {
         // «cj-ohne-antwort», obwohl CJ sie alle kennt. Das Muster ist eng gefasst
         // (zwei Ziffern + zwei Grossbuchstaben am Ende), damit «CJJJJTJT35117» und
         // «CJJJCFCF00364» — beides ECHTE Produkt-SKUs — unangetastet bleiben.
-        const stamm = mVar[1].match(/^(.*[0-9])\d{2}[A-Z]{2}$/i);
+        const stamm = null;   // 24.11.2026: Stamm wird oben schon zuerst gefragt
         if (!j.result && !j.gedrosselt && stamm) {
           await sleep(1200);
           j = await cj(`product/variant/query?productSku=${stamm[1]}`);
@@ -248,7 +253,7 @@ async function main() {
           if (jv.result && jv.data) { j = jv; if (Array.isArray(j.data.variants) && !Array.isArray(j.data)) j = { ...j, data: j.data.variants.map(v => ({ ...v, sellPrice: j.data.sellPrice, productWeight: j.data.productWeight })) }; }
         }
       }
-      else { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tkeine-cj-referenz\n`); continue; }
+      else { ohne++; fs.appendFileSync(NEU ? LEDGER_NEU : LEDGER, NEU ? `${p.id}\t${HEUTE}\tfehl:keine-cj-referenz\n` : `${p.id}\tkeine-cj-referenz\n`); continue; }
       // ⚠️ 21.08.2026 — DIESE PRÜFUNG WAR DER GRUND, WARUM DER BACKFILL NIE LIEF.
       // Sie suchte im Antworttext nach «point». CJ hängt aber an JEDE Antwort den Block
       //   "pointsInfo":{"total":61171,"usedToday":101960,"remaining":455}
@@ -309,7 +314,7 @@ async function main() {
         // Blick ins Ledger sie findet; alles andere bleibt UNQUITTIERT und wird beim
         // nächsten Lauf erneut gefragt (ein transienter Ausfall ist keine Endstation).
         if (j.code === 1602002 || /removed from shelves/i.test(String(j.message||''))) {
-          ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-abgekuendigt-pruefen\n`); await sleep(1200); continue;
+          ohne++; fs.appendFileSync(NEU ? LEDGER_NEU : LEDGER, NEU ? `${p.id}\t${HEUTE}\tfehl:cj-abgekuendigt\n` : `${p.id}\tcj-abgekuendigt-pruefen\n`); await sleep(1200); continue;
         }
         ohne++; await sleep(1200); continue;
       }
@@ -318,7 +323,7 @@ async function main() {
       const preis = d.sellPrice ?? d.variantSellPrice ?? d.variantSugSellPrice;
       // 24.11.2026: Versandgewicht = grösstes von productWeight / packingWeight / variantWeight (vorher Nettogewicht zuerst).
       const gew   = versandGewicht(d.productWeight, d.packingWeight, d.variantWeight);
-      if (preis == null) { ohne++; fs.appendFileSync(LEDGER, `${p.id}\tcj-ohne-preis\n`); await sleep(1200); continue; }
+      if (preis == null) { ohne++; fs.appendFileSync(NEU ? LEDGER_NEU : LEDGER, NEU ? `${p.id}\t${HEUTE}\tfehl:cj-ohne-preis\n` : `${p.id}\tcj-ohne-preis\n`); await sleep(1200); continue; }
       const c = kosten(preis, gew);
       // ⚠️ Das Gewicht wurde hier schon gelesen (fuer die Frachtrechnung) und dann
       // weggeworfen — dasselbe Muster wie im Importer. Es wird jetzt mitgeschrieben:
@@ -338,6 +343,11 @@ async function main() {
       if (Array.isArray(j.data)) for (const v of j.data) {
         if (v?.variantSku) proSku.set(String(v.variantSku).toUpperCase(), v);
       }
+      // 24.11.2026: pid-/Produkt-SKU-Antworten sind ein OBJEKT mit data.variants — vorher ignoriert, jede Variante bekam
+      // Höchstpreis + Höchstgewicht des ganzen Produkts.
+      else if (Array.isArray(j.data?.variants)) for (const v of j.data.variants) {
+        if (v?.variantSku) proSku.set(String(v.variantSku).toUpperCase(), v);
+      }
       const ein = vs.map(v => {
         // 24.11.2026: zuerst die VOLLE Varianten-SKU («CJXFJTTY00142-BLACK-EU»), erst dann der Kern vor dem ersten
         // Bindestrich — vorher fand «-BLACK-EU» nie seine Variante und fiel auf das Produktgewicht zurück.
@@ -346,8 +356,9 @@ async function main() {
         const e = proSku.get(voll) || proSku.get(kern);
         const vp = e ? (e.variantSellPrice ?? e.variantSugSellPrice) : null;
         // Variantengewicht nie unter dem Produkt-Nettogewicht (konservativ); fehlt es, gilt das Versandgewicht des Produkts.
-        const vgRoh = e ? versandGewicht(e.variantWeight, e.packingWeight) : 0;
-        const vg = vgRoh > 0 ? versandGewicht(vgRoh, d.productWeight) : 0;
+        // variantWeight IST das Versandgewicht der Variante (13 von 13 CJ-Datensätzen: max(variantWeight) = packingWeight).
+        // Kein Boden aus d.productWeight: das ist eine Spanne über ALLE Varianten und hob leichte Grössen auf die schwerste.
+        const vg = e ? versandGewicht(e.variantWeight, e.packingWeight) : 0;
         const vmess = gewicht(vg);
         const vc = vp != null ? kosten(vp, vg || gGramm) : c;
         const vm = vg > 0 ? vmess : messung;
@@ -357,16 +368,19 @@ async function main() {
       for (let i = 0; i < ein.length; i += 25) {
         const r = await sgql(`mutation($p:ID!,$v:[ProductVariantsBulkInput!]!){productVariantsBulkUpdate(productId:$p,variants:$v){userErrors{message}}}`,
           { p: p.id, v: ein.slice(i, i + 25) });
-        const e = r.data?.productVariantsBulkUpdate?.userErrors || [];
-        if (e.length) { console.log('  ⚠️', JSON.stringify(e[0]).slice(0, 90)); break; }
+        if (!r.data?.productVariantsBulkUpdate) { console.log('  ⚠️ Mutation ohne Antwort — Produkt nicht quittiert'); n = -1; break; }
+        const e = r.data.productVariantsBulkUpdate.userErrors || [];
+        if (e.length) { console.log('  ⚠️', JSON.stringify(e[0]).slice(0, 90)); n = -1; break; }
         n += ein.slice(i, i + 25).length;
       }
+      // 24.11.2026: Nur ein VOLLSTÄNDIG geschriebenes Produkt wird quittiert (vorher galt eine stumme Antwort als Erfolg).
+      if (n === -1) { ohne++; await sleep(1200); continue; }
       if (n) {
         gesetzt++;
         if (NEU) {
-          const alt = vs.map(v => `${v.id.split('/').pop()}=${v.inventoryItem?.unitCost?.amount ?? ''}`).join(',');
-          const neuW = ein.map(x => `${x.id.split('/').pop()}=${x.inventoryItem.cost}`).join(',');
-          fs.appendFileSync(LEDGER_NEU, `${p.id}\t${new Date().toISOString().slice(0, 10)}\t${gGramm}\talt:${alt}\tneu:${neuW}\n`);
+          const alt = vs.map(v => { const w = v.inventoryItem?.measurement?.weight; return `${v.id.split('/').pop()}=${v.inventoryItem?.unitCost?.amount ?? ''}@${w?.value ?? ''}${w?.unit ? w.unit[0] : ''}`; }).join(',');
+          const neuW = ein.map(x => `${x.id.split('/').pop()}=${x.inventoryItem.cost}@${x.inventoryItem.measurement?.weight?.value ?? ''}`).join(',');
+          fs.appendFileSync(LEDGER_NEU, `${p.id}\t${HEUTE}\tok\t${gGramm}\talt:${alt}\tneu:${neuW}\n`);
         } else
         fs.appendFileSync(LEDGER, `${p.id}\tCHF ${c}\t${n} Varianten\t${p.title.slice(0, 50)}\n`);
         if (gesetzt % 20 === 0) console.log(`   ${gesetzt} Produkte mit Einkaufspreis`);

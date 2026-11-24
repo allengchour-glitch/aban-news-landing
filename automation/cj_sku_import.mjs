@@ -49,7 +49,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 // musste. Die Rechnung liegt jetzt EINMAL in cj_preis.mjs — es gab vier Fassungen, und nur
 // die in cj_category_fill.mjs trug die Korrektur vom 20.08. (dieselbe Geschwister-Lehre wie
 // bei der viermal kopierten Farbtabelle und bei publishVerified()).
-import { chf, kosten, gewicht } from './cj_preis.mjs';
+import { chf, kosten, gewicht, versandGewicht } from './cj_preis.mjs';
 import { titelMitMenge } from './stueckzahl.mjs';
 import { dubletteFinden, slugMerken } from './cj_dublette.mjs';
 import { snippet } from './cj_snippet.mjs';   // Google-Suchergebnis-Text, EINE Quelle
@@ -385,7 +385,7 @@ for (let ji = 0; ji < JOBS.length; ji++) {
   if (imgKey && imgSeen.has(imgKey)) { console.log('= Bild existiert:', title); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   if (imgKey) fs.appendFileSync(IMGLEDGER, imgKey + '\n');
   // Preis-Deckel + Sperrgut-/Möbel-Filter (GEHIRN §5 + 2026-07-10: «L-förmiger Schminktisch CHF 653» war Trust-Killer)
-  const priceChf = parseFloat(chf(d.sellPrice, d.variants?.[0]?.variantWeight));
+  const priceChf = parseFloat(chf(d.sellPrice, versandGewicht(d.productWeight, d.packingWeight, ...(d.variants||[]).map(x=>x.variantWeight))));
   const MAXCHF = parseFloat(process.env.MAXCHF || '200');
   if (priceChf > MAXCHF) { console.log(`✗ zu teuer (CHF ${priceChf}) — non-fit:`, title.slice(0,40)); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
   if (/schminktisch|schrank|\bregal\b|kommode|\bbett\b|\bsofa\b|couch|\btisch\b|\bstuhl\b|matratze|kleiderständer|garderobe|sideboard|vitrine|werkbank|möbel/i.test(title)) { console.log('✗ sperriges möbel — skip:', title.slice(0,40)); fs.appendFileSync(LEDGER, 'cj:' + pid + '\n'); continue; }
@@ -428,7 +428,7 @@ for (let ji = 0; ji < JOBS.length; ji++) {
            description: snippet(g.html, title).slice(0, 320) },
     // 09.10.2026: «Title / Default Title» statt «Variante / Standard» (Wahlfeld mit einem Knopf, Nachrüster gesperrt)
     productOptions: [{ name: 'Title', values: [{ name: 'Default Title' }] }],
-    variants: [{ optionValues: [{ optionName: 'Title', name: 'Default Title' }], price: chf(d.sellPrice, d.variants?.[0]?.variantWeight), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false, cost: kosten(d.sellPrice, d.variants?.[0]?.variantWeight), ...gewicht(d.variants?.[0]?.variantWeight) }, inventoryPolicy: 'CONTINUE' }],
+    variants: [{ optionValues: [{ optionName: 'Title', name: 'Default Title' }], price: chf(d.sellPrice, versandGewicht(d.productWeight, d.packingWeight, ...(d.variants||[]).map(x=>x.variantWeight))), inventoryItem: { sku: ('CJ-' + pid).slice(0, 70), tracked: false, cost: kosten(d.sellPrice, versandGewicht(d.productWeight, d.packingWeight, ...(d.variants||[]).map(x=>x.variantWeight))), ...gewicht(versandGewicht(d.productWeight, d.packingWeight, ...(d.variants||[]).map(x=>x.variantWeight))) }, inventoryPolicy: 'CONTINUE' }],
     // ⚠️ GOOGLE-FELDER GEHÖREN IN DEN IMPORTER, nicht in einen Backfill (15.08.2026: die 30
     // neuesten Produkte hatten genau 3 ohne condition/custom_product — alle drei aus DIESEM
     // Skript. cj_category_fill schreibt sie seit dem 11.08., hier fehlten sie: die Abdeckung
@@ -510,7 +510,7 @@ for (let ji = 0; ji < JOBS.length; ji++) {
   fs.appendFileSync(LEDGER, 'cj:' + pid + '\n');
   angelegt++;
   if (st) { st.angelegt++; relSumme.angelegt++; }
-  console.log(`✅ ${title} → ${spid.split('/').pop()} (CHF ${chf(d.sellPrice, d.variants?.[0]?.variantWeight)})`);
+  console.log(`✅ ${title} → ${spid.split('/').pop()} (CHF ${chf(d.sellPrice, versandGewicht(d.productWeight, d.packingWeight, ...(d.variants||[]).map(x=>x.variantWeight)))})`);
 }
 // ⚠️ 02.09.2026: Fehlen die Texte fuer ALLE gefundenen Produkte (Groq-Schluessel/Modell), darf der
 // Queue-Runner den Suchbegriff NICHT quittieren — Exit 3 haelt ihn offen (RC≠0-Zweig).

@@ -30,8 +30,10 @@ while true; do
   python3 - "$LISTE" "$VERSUCHT" "$STUECK" "$TMPD/kosten_neu_stueck.txt" <<'PY'
 import sys
 liste, versucht, n, aus = sys.argv[1], sys.argv[2], int(sys.argv[3]), sys.argv[4]
-schon = {z.strip() for z in open(versucht) if z.strip()}
-offen = [z.strip() for z in open(liste) if z.strip() and z.strip() not in schon]
+import collections
+led = {z.split("\t")[0] for z in open("dropship/_cj_kosten_neu.tsv") if z.strip()}   # ok ODER fehl:… = erledigt
+versuche = collections.Counter(z.strip() for z in open(versucht) if z.strip())      # vorübergehend gescheitert (Drosselung, leerer Eimer)
+offen = [z.strip() for z in open(liste) if z.strip() and z.strip() not in led and versuche[z.strip()] < 3]
 open(aus, "w").write("\n".join(offen[:n]) + ("\n" if offen else ""))
 print(len(offen))
 PY
@@ -39,17 +41,18 @@ PY
   if [ "$OFFEN" -eq 0 ]; then
     echo "$(date -u +%FT%TZ) FERTIG: alle $(wc -l < "$LISTE") Produkte versucht, $(wc -l < "$LED") neu gerechnet"; exit 0
   fi
-  VORHER=$(wc -l < "$LED")
   OUT=$(NEU=1 NUR_IDS="$TMPD/kosten_neu_stueck.txt" LIMIT="$STUECK" timeout 3000 "$N" automation/cj_kosten_backfill.mjs 9>&- 2>&1 | tail -3)
   echo "$(date -u +%FT%TZ) kosten: $(echo "$OUT" | tr '\n' ' ' | cut -c1-300)"
   if echo "$OUT" | grep -q "PAUSE (CJ-Tagesbudget"; then
     echo "$(date -u +%FT%TZ) CJ-Budget leer — 1 h warten (Stück NICHT als versucht markiert)"
     sleep 3600 9>&-; continue
   fi
-  # Nur bei einem regulär beendeten Lauf das Stück als versucht quittieren (Shopify stumm / Timeout → nochmals)
+  # Nach einem regulär beendeten Lauf zählt jedes Produkt des Stücks einen Versuch (erledigt = Zeile im NEU-Ledger; wer nach
+  # 3 Versuchen keine hat, bleibt draussen und steht im Schlussbericht). Shopify stumm / Timeout → kein Versuch gezählt.
   if echo "$OUT" | grep -q "^FERTIG (NUR_IDS)"; then cat "$TMPD/kosten_neu_stueck.txt" >> "$VERSUCHT"; fi
-  # Preise der in diesem Lauf neu gerechneten Produkte heben
-  tail -n +"$((VORHER + 1))" "$LED" | cut -f1 | sort -u > "$TMPD/kosten_neu_fertig.txt"
+  # Preise heben: alle Produkte des Stücks, die jetzt (auch aus einem früheren, abgebrochenen Lauf) «ok» im Ledger haben.
+  awk -F'\t' '$3=="ok"{print $1}' "$LED" | sort -u > "$TMPD/kosten_neu_ok.txt"
+  sort -u "$TMPD/kosten_neu_stueck.txt" | comm -12 - "$TMPD/kosten_neu_ok.txt" > "$TMPD/kosten_neu_fertig.txt"
   if [ -s "$TMPD/kosten_neu_fertig.txt" ]; then
     P=$(SCHARF=1 NUR_IDS="$TMPD/kosten_neu_fertig.txt" timeout 3000 python3 automation/preis_verlustschutz.py 9>&- 2>&1 | tail -1)
     echo "$(date -u +%FT%TZ) preise ($(wc -l < "$TMPD/kosten_neu_fertig.txt") Produkte): $(echo "$P" | cut -c1-300)"

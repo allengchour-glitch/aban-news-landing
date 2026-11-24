@@ -85,7 +85,7 @@ const isSize=s=>{const u=(s||'').trim().toUpperCase();return SIZESET.has(u)||/^\
 function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-');let color=null,size=null;
  if(i>0){const a=k.slice(0,i).trim(),b=k.slice(i+1).trim();if(isSize(b)){color=a;size=b.toUpperCase();}else color=k;}
  else if(isSize(k))size=k.toUpperCase();else color=k||null;
- return {color:color?deColor(color):null,size:size||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||''};}
+ return {color:color?deColor(color):null,size:size||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||'',weight:versandGewicht(v.variantWeight, v.packingWeight)};}
 function buildFashion(d){
  const vs=(d.variants||[]).map(parseVar).filter(v=>v.color||v.size); if(!vs.length)return null;
  const colors=[...new Set(vs.map(v=>v.color).filter(Boolean))];
@@ -300,7 +300,7 @@ for(const p of cand){
    if(tw.verwerfen){ console.log('  skip(technik)', tw.grund, title.slice(0,40)); continue; }
    if(tw.grund) console.log('  technik-korrigiert', tw.grund);
    title=tw.title; }
- if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight))} | ${title} | listed ${p.listedNum}`);total++;continue;}
+ if(DRY){console.log(`  [DRY] CHF${chf(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight, d?.productWeight, d?.packingWeight, ...((d?.variants)||[]).map(x=>x.variantWeight)))} | ${title} | listed ${p.listedNum}`);total++;continue;}
  const slug=title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,46)+'-'+String(p.pid).slice(-6);
  const looksFashion=(d.variants||[]).some(v=>{const pv=parseVar(v);return pv.size||pv.color;});
  const fash=looksFashion?buildFashion(d):null;
@@ -310,7 +310,7 @@ for(const p of cand){
  // 09.10.2026: Platzhalter = Shopifys «Title / Default Title» (hasOnlyDefaultVariant) — «Variante / Standard» zeigte
    // der Kundin ein Wahlfeld mit einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus.
    const productOptions=fash?fash.productOptions:[{name:'Title',values:[{name:'Default Title'}]}];
- const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight)),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight)),...gewicht(versandGewicht(p.productWeight, p.packingWeight, p.variantWeight))},inventoryPolicy:'CONTINUE'}];
+ const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight, d?.productWeight, d?.packingWeight, ...((d?.variants)||[]).map(x=>x.variantWeight))),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight, d?.productWeight, d?.packingWeight, ...((d?.variants)||[]).map(x=>x.variantWeight))),...gewicht(versandGewicht(p.productWeight, p.packingWeight, p.variantWeight, d?.productWeight, d?.packingWeight, ...((d?.variants)||[]).map(x=>x.variantWeight)))},inventoryPolicy:'CONTINUE'}];
  // ⛔ 08.09.2026 KORREKTUR: Das Tor hing an `!fash` — `buildFashion` liefert aber auch bei
  // EINER CJ-Variante ein Objekt. Gefragt wird jetzt die VARIANTENZAHL selbst.
  if(variants.length===1) g=wahlSicher(g);

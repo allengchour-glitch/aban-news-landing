@@ -164,7 +164,7 @@ function parseVar(v){const k=(v.variantKey||'').trim();const i=k.lastIndexOf('-'
    else if(LETTERSIZE.test(a1)&&b1.length>1&&!/^\d/.test(b1)&&!METERKEY.test(k)){size=deSize(a1);color=b1;}
    else color=k;}
  else if(isSize(k))size=deSize(k);else color=k||null;
- return {color:color?deColor(color):null,size:size||null,extra:extra||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||'',img:(v.variantImage||'').trim()};}
+ return {color:color?deColor(color):null,size:size||null,extra:extra||null,price:v.variantSellPrice||v.variantSellPrice===0?v.variantSellPrice:v.sellPrice,sku:v.variantSku||'',img:(v.variantImage||'').trim(),weight:versandGewicht(v.variantWeight, v.packingWeight)};}
 function buildFashion(d){
  const vs=(d.variants||[]).map(parseVar).filter(v=>v.color||v.size); if(!vs.length)return null;
  const colors=[...new Set(vs.map(v=>v.color).filter(Boolean))];
@@ -871,7 +871,7 @@ for(const [cat,label] of grp.cats){
    // 09.10.2026: Platzhalter = Shopifys «Title / Default Title» (hasOnlyDefaultVariant) — «Variante / Standard» zeigte
    // der Kundin ein Wahlfeld mit einem Knopf (1'063 Produkte) und sperrte den Auswahl-Nachrüster aus.
    const productOptions=fash?fash.productOptions:[{name:'Title',values:[{name:'Default Title'}]}];
-   const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight)),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight)),...gewicht(versandGewicht(p.productWeight, p.packingWeight, p.variantWeight))},inventoryPolicy:'CONTINUE'}];
+   const variants=fash?fash.variants:[{optionValues:[{optionName:'Title',name:'Default Title'}],price:chf(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight, d?.productWeight, d?.packingWeight, ...((d?.variants)||[]).map(x=>x.variantWeight))),inventoryItem:{sku:('CJ-'+p.pid).slice(0,70),tracked:false,cost:kosten(p.sellPrice, versandGewicht(p.productWeight, p.packingWeight, p.variantWeight, d?.productWeight, d?.packingWeight, ...((d?.variants)||[]).map(x=>x.variantWeight))),...gewicht(versandGewicht(p.productWeight, p.packingWeight, p.variantWeight, d?.productWeight, d?.packingWeight, ...((d?.variants)||[]).map(x=>x.variantWeight)))},inventoryPolicy:'CONTINUE'}];
    // ⛔ 08.09.2026 KORREKTUR: Das Tor hing an `!fash` — aber `buildFashion` liefert auch dann
    // ein Objekt, wenn CJ nur EINE Variante hat. Ein Rucksack und ein Smartwatch-Armband gelten
    // als Mode, bekamen genau eine Variante und versprachen im Text trotzdem «erhältlich in
