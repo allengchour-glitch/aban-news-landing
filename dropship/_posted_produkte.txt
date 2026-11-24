@@ -574,3 +574,5 @@ name:quallenlavalampemit17farben
 pid:15450858193281
 slug:quallen-lava-lampe-mit-17-farben
 slug:lassiger-kapuzenpullover-fur-damen
+slug:shirt-zum-selbstgestalten
+name:tshirtbedruckenselbstgestalten
