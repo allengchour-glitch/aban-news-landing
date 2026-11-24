@@ -1,14 +1,10 @@
 # Rankende Seiten, die es nicht mehr zu kaufen gibt
 
-> **Stand: 23.11.2026 21:55 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
+> **Stand: 24.11.2026 22:49 UTC.** An einem Katalog, an dem taeglich Waechter arbeiten, altert
 > diese Liste in Stunden. Vor jeder Reparatur den Status am OBJEKT nachmessen.
 
 Automatisch erzeugt von `automation/tote_rankings.py`. Google schickt Besucher
 auf diese Adressen; für sie ist die Seite ein 404.
-
-## /products/strandtuch-selbst-gestalten  — **DRAFT**
-Strandtuch & Badetuch bedrucken · selbst gestalten  ·  **~590 Suchen/Monat** betroffen
-- «badetuch bedrucken lassen» — Position 66, 590/Monat
 
 ## /products/bluetooth-tastatur-927234  — **DRAFT**
 K68 Kabellose Mechanische 60% Gaming-Tastatur, Grau-Rot  ·  **~390 Suchen/Monat** betroffen
@@ -33,4 +29,8 @@ Holz-Kleiderständer  ·  **~140 Suchen/Monat** betroffen
 ## /products/automatisches-anti-bell-halsband-544512  — **DRAFT**
 Automatisches Anti-Bell Halsband  ·  **~140 Suchen/Monat** betroffen
 - «anti bell halsband» — Position 75, 140/Monat
+
+## /products/kostum-aladdin-fgss1022  — **DRAFT**
+Kostüm Aladdin  ·  **~90 Suchen/Monat** betroffen
+- «aladdin kostüm» — Position 24, 90/Monat
 

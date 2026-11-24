@@ -1,6 +1,6 @@
 # Startseiten-Video: eingebrannte Angaben stimmen nicht mehr
 
-Stand 2026-11-23 21:54 UTC · Sektion `lux_spotlight_video` · `meisterwerk-0830-clean.mp4`
+Stand 2026-11-24 22:47 UTC · Sektion `lux_spotlight_video` · `meisterwerk-0830-clean.mp4`
 
 Das Video traegt Preise und Titel fest im Bild. Reparatur = Video austauschen (neu rendern braucht freien Datei-Speicher) oder das Produkt zurueck auf den eingebrannten Stand.
 

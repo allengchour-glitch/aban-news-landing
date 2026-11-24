@@ -318,3 +318,4 @@
 16654417953159	522x463 -> 522x522	Digitale Herrenuhr mit Stahlarmband und Alarm
 15469962789249	tag-veraltet 880x2048	Kostüm Hase
 16604905767303	tag-veraltet 700x700	Wanduhr mit Spiegelei-Design
+16655511650695	495x574 -> 574x574	Magnetische Erdungszwinge für Schweissgeräte

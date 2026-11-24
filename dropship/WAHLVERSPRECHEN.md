@@ -35,18 +35,10 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…in zwei Varianten…»
 - `15476165673345` · Kissenbezug im französischen Stil mit Rüschen
   - «…Erhältlich in zwei Grössen…»
-- `15479339286913` · Handgemachte Schmetterlings-Maniküre zum Aufkleben · Press-on-Nägel
-  - «…Erhältlich in verschiedenen Grössen…»
 - `15479378051457` · Lenkradbezug aus Leder
   - «…Erhältlich in verschiedenen Farbkombinationen…»
-- `15480565301633` · Outdoor Solar Powerbank 10000mAh mit LED & Kompass
-  - «…Erhältlich in verschiedenen Farben…»
-- `15481712673153` · Powerbank 10000 mAh mit integriertem Kabel
-  - «…Erhältlich in verschiedenen ansprechenden Farben…»
 - `15481775849857` · Magnetische Wireless Powerbank
   - «…Erhältlich in den Farben…»
-- `15481776046465` · 45W Power Bank mit Kabel, 20000 mAh
-  - «…Erhältlich in verschiedenen ansprechenden Farben…»
 - `15481800262017` · Bluetooth-Maske mit integrierten Kopfhörern
   - «…Erhältlich in verschiedenen Farben…»
 - `15481817727361` · Handgemachte, abnehmbare Kunstnägel (Kurz)
@@ -63,8 +55,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in den Farben…»
 - `15491417309569` · Edelstahl-Halskette mit U-Form & Perle
   - «…Erhältlich in verschiedenen Ausführungen…»
-- `15491983835521` · Lange Weisse Kunstnägel
-  - «…Erhältlich in verschiedenen Grössen…»
 - `15493811995009` · Sisal Kratzbaum mit Liegefläche
   - «…Erhältlich in verschiedenen Ausführungen…»
 - `15493837554049` · Traditioneller unbeschichteter Eisenwok
@@ -101,8 +91,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen stilvollen Ausführungen…»
 - `15497150759297` · Hundehalsband mit Metallschnalle
   - «…Erhältlich in 14 attraktiven Farben…»
-- `15497151775105` · Leuchtendes LED-Hundehalsband
-  - «…Verfügbare Grössen:…»
 - `15497427452289` · Samtiges Haustierhalsband mit Leine
   - «…Erhältlich in verschiedenen Grössen…»
 - `15497434071425` · Universal-Laptop-Netzteil 75W mit USB-C PD
@@ -167,8 +155,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Grössen…»
 - `15508479213953` · Umhängetasche für Herren aus Nylon
   - «…Erhältlich in drei Grössen…»
-- `15509366014337` · Handbemalte Blumen-Press-On Nägel
-  - «…Erhältlich in vier Grössen…»
 - `15509382463873` · Mini Powerbank mit LED-Taschenlampe
   - «…Schwarz, Rot oder Blau verfügbar…»
 - `15509392982401` · Tutu Samt-Bettwäsche, 4-teilig
@@ -197,8 +183,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in verschiedenen Farben…»
 - `15515289813377` · Kompakte, tragbare Mini-Kaffeemaschine
   - «…Erhältlich in zwei Ausführungen…»
-- `15516219048321` · Lange Press-on-Nägel in Rosa-Gold
-  - «…Erhältlich in verschiedenen Grössen…»
 - `15518514676097` · Leder-Leinen- und Halsband-Set für Hunde
   - «…in verschiedenen Grössen…»
 - `15520396214657` · Frischhaltedose für Mikrowelle, Silikon
@@ -209,8 +193,6 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Verfügbare Farben:…»
 - `15520407814529` · Antihaft Pfannenset mit Titanbeschichtung
   - «…in verschiedenen Grössen…»
-- `15522084782465` · Ersatzarmband für Xiaomi Mi Band
-  - «…Erhältlich in drei Grössen…»
 - `15522140619137` · Bequemer Riesen-Sitzsack
   - «…Erhältlich in verschiedenen Grössen…»
 - `15522211037569` · Alice Wonderland aufklebbare Nägel
@@ -231,5 +213,5 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in zwei praktischen Varianten…»
 - `15523863527809` · Nagelclipper für Senioren – 5,7 cm & 8 cm
   - «…in zwei Grössen…»
-- `16652813828487` · Kissenbezug mit abstraktem Kunstmuster
-  - «…Farben: Dust Mark – Coffee, Dust Mark – Black, Swirl Sequence – Coffee…»
+- `16732488204679` · Portabler Kofferbeutel für Anzüge – Oxford-Tasche
+  - «…Grau, Schwarz oder Weiss erhältlich…»
