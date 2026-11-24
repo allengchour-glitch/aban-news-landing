@@ -346979,3 +346979,10 @@
 67660373098887	heben	45.90	65.90	53.19	2026-11-24	ledermanner-stiefel-mit-schnurung-935808
 67660373131655	heben	45.90	66.90	54.00	2026-11-24	ledermanner-stiefel-mit-schnurung-935808
 67660373164423	heben	45.90	67.90	54.82	2026-11-24	ledermanner-stiefel-mit-schnurung-935808
+67814847414663	heben	44.90	45.90	36.29	2026-11-24	wasserdichte-luxus-armbanduhr-mit-grossem-ziff-618200
+67879691682183	heben	43.90	44.90	35.41	2026-11-24	luftbefeuchter-mit-ventilator-fernbedienung-757440
+67879691714951	heben	43.90	44.90	35.41	2026-11-24	luftbefeuchter-mit-ventilator-fernbedienung-757440
+67821260013959	heben	39.90	43.90	35.01	2026-11-24	falteste-flugdrohne-f63315
+67821260046727	heben	43.90	47.90	38.27	2026-11-24	falteste-flugdrohne-f63315
+67790525727111	heben	44.90	45.90	36.80	2026-11-24	vintage-herren-umhangetasche-aus-leder-679168
+67948322324871	heben	44.90	45.90	36.37	2026-11-24	elektrisches-ufo-spielzeug-fur-katzen-613200
