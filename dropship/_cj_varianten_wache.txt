@@ -12215,3 +12215,6 @@ gid://shopify/Product/15412978352513	1795515250	ok	5 Shop / 5 CJ / 0 fehlend / 0
 gid://shopify/Product/15412978483585	1795515250	ok	6 Shop / 6 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15412978516353	1795515250	ok	16 Shop / 16 CJ / 0 fehlend / 0 DENY
 gid://shopify/Product/15413023015297	1795515250	ok	18 Shop / 18 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15413023113601	1795515250	ok	56 Shop / 56 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15413023342977	1795515250	ok	48 Shop / 48 CJ / 0 fehlend / 0 DENY
+gid://shopify/Product/15413024915841	1795515250	ok	4 Shop / 4 CJ / 0 fehlend / 0 DENY
