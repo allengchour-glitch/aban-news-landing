@@ -1,0 +1,9 @@
+{%- comment -%}Produktkarte der Startseiten-Saisonreihen (24.11.2026). Gleiche Ausgabe wie die Schmuck-/Wohnen-Karten in luxe-edit-home, aber direkt aus dem Pool-Produkt statt über all_products (höchstens 20 Handles je Seite). Parameter: p (Produkt), sid (section.id).{%- endcomment -%}
+<div class="lx-wishcard"><a class="lx-edit-product-card" href="{{ p.url }}" data-edit-product-id="{{ p.id }}" data-edit-handle="{{ p.handle | escape }}" aria-labelledby="lx-edit-name-{{ sid }}-{{ p.id }}">
+  <div class="lx-edit-product-image">{{ p.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', widths: '280, 420, 560, 700', sizes: '(max-width: 760px) 68vw, 23vw', alt: '' }}</div>
+  <div class="lx-edit-product-info"><h3 id="lx-edit-name-{{ sid }}-{{ p.id }}">{{ p.title | escape }}</h3>
+    <div class="lx-review-badge" data-luxe-review-card data-product-id="{{ p.id }}" data-review-placeholder hidden><script type="application/json">{"data":{% render 'luxe-product-review-data', product: p %},"locale":{{ request.locale.iso_code | json }},"labels":{"unavailable":{{ 'luxe_clothing.reviews_unavailable' | t | json }},"zero":{{ 'luxe_clothing.reviews_zero' | t | json }},"summary":{{ 'luxe_clothing.reviews_summary' | t | json }}}}</script></div>
+    <p class="lx-edit-product-price">{% if p.price_varies %}<span>{{ 'luxe_home.mobile.from' | t }}</span> {% endif %}{{ p.price_min | money_with_currency }}</p>
+    <span class="lx-edit-product-open">{{ 'luxe_home.trends.open' | t }}<svg class="lx-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
+  </div>
+</a><button type="button" class="lux-wish" data-handle="{{ p.handle }}" aria-label="{{ p.title | escape }}: zur Merkliste">&#9825;</button></div>
