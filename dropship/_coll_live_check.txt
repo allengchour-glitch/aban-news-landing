@@ -1632,3 +1632,39 @@ staubsauger-saugroboter	ok	29	Saugroboter
 staubsauger-handstaubsauger	ok	29	Handstaubsauger & Zubehör
 desinfektion-reinigungsgeraete	ok	25	Desinfektions- & Reinigungsgeräte
 waesche-buegeln-fusselentferner	ok	29	Wäsche, Bügeln & Fusselentferner
+muelleimer-abfall	ok	25	Mülleimer & Abfall
+aufbewahrungsbeutel-taschen	ok	29	Aufbewahrungsbeutel & Vakuumbeutel
+schubladen-organizer	http-429	0	Organizer & Schubladenboxen
+kosmetik-schmuck-organizer	ok	29	Kosmetik- & Schmuck-Organizer
+kleiderbuegel-schuhregale	ok	29	Kleiderbügel, Kleiderständer & Schuhregale
+haken-garderobenhalter	ok	29	Haken & Garderobenhalter
+regale-wandregale	ok	29	Regale & Wandregale
+regale-wandregale-wand	ok	27	Wandregale
+regale-badregale	ok	22	Bad & Kosmetik
+regale-kuechenregale	ok	23	Küche & Gewürze
+regale-holz-bambus	ok	26	Holz & Bambus
+moebel-hocker-tische	ok	29	Möbel, Hocker & Tische
+badematten-badteppiche	ok	29	Badematten & Badteppiche
+duschvorhaenge-duschstangen	ok	29	Duschvorhänge & Duschstangen
+seifenspender-bad-accessoires	ok	29	Seifenspender & Bad-Accessoires
+wc-zubehoer-taschentuchboxen	ok	29	WC-Zubehör & Taschentuchboxen
+handtuchhalter-badregale	ok	23	Handtuchhalter
+handtuecher-badetuecher	ok	29	Handtücher & Badetücher
+handtuecher-bade-strand	http-429	0	Bade- & Strandtücher
+handtuecher-baumwolle	ok	26	Baumwolle
+kopfkissen-nackenkissen	ok	29	Kopfkissen & Nackenkissen
+kopfkissen-memory-schaum	ok	29	Memory-Schaum
+kopfkissen-nackenkissen-nacken	ok	29	Nackenkissen
+kopfkissen-seitenschlaefer	ok	29	Seiten- & Beinkissen
+bettwaesche-bettbezuege	ok	29	Bettwäsche & Bettbezüge
+bettwaesche-sets	ok	29	Bettwäsche-Sets
+bettwaesche-satin-baumwolle	ok	29	Satin, Seide & Baumwolle
+decken-plaids	ok	29	Decken & Plaids
+decken-kuscheldecken	http-429	0	Kuschel- & Plüschdecken
+decken-strickdecken	ok	28	Strick- & Wolldecken
+decken-sommerdecken	ok	24	Sommer- & Kühldecken
+teppiche-fussmatten	ok	29	Teppiche & Fussmatten
+vorhaenge-gardinen-rollos	ok	29	Vorhänge, Gardinen & Rollos
+vorhaenge-verdunkelung	ok	29	Verdunkelungsvorhänge
+vorhaenge-gardinen-voile	ok	23	Gardinen & Voile
+vorhaenge-samt-leinen	http-429	0	Samt, Chenille & Leinen

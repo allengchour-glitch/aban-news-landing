@@ -557,3 +557,6 @@ slug:helm-pilot-mit-visier-fgabo01420
 slug:bildreel-perucke-lola-biene-fgaor32528
 pid:15469997425025
 slug:perucke-lola-biene-fgaor32528
+name:ledsensorlichtleiste
+pid:15450832863617
+slug:led-sensor-lichtleiste-5e2d3d
