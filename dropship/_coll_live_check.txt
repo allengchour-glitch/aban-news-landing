@@ -1503,3 +1503,6 @@ tier-auto	ok	29	Auto-Zubehör für Haustiere
 tier-naepfe	ok	29	Näpfe & Schüsseln
 tier-naepfe-keramik	ok	29	Keramiknäpfe
 tier-naepfe-edelstahl	ok	29	Edelstahlnäpfe
+tier-naepfe-doppel	ok	29	Doppelnäpfe
+tier-naepfe-faltbar	ok	29	Faltbare Reisenäpfe & Trinkflaschen
+tier-futterautomaten	ok	30	Futterautomaten & Futterspender
