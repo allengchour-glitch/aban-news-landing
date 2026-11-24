@@ -1,0 +1,1007 @@
+[
+ {
+  "gruppe": "?",
+  "vorschlag": {
+   "produkte": [
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/faltbares-20w-solarpanel-098ae1",
+     "handle": "faltbares-20w-solarpanel-098ae1",
+     "diagnose": "Schwarz zeigt Bild #5 mit dem eingeblendeten Farbnamen «black» oben links. Tarnung zeigt Bild #6 mit eingeblendetem «camouflage» oben links. In beiden Bildern liegt zusätzlich eine fast unsichtbare Wasserzeichen-Spur (Schriftzug «Ov…», Grauwert ~240) im weissen Hintergrund neben dem Panel. Die automatisch bereinigte Datei m05_bereinigt.png hatte diese Spur noch.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67874140455303"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/faltbares-20w-solarpanel-098ae1/vorschlag/solarpanel-schwarz.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Grundlage ist m05_bereinigt.png, also schon ohne «black». Zusätzlich habe ich die Wasserzeichen-Spur entfernt: Nur Hintergrundpixel mit Grauwert ≥ 222 im Bereich x295–445, y450–555 wurden reinweiss gesetzt. 1001x1001 px. Mit Kontrastverstärkung kontrolliert: kein Rest-Text, Panel vollständig, schwarze Ausführung."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67874140488071"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/faltbares-20w-solarpanel-098ae1/vorschlag/solarpanel-tarnung.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m06_orig.png gerendert. Der Schriftzug «camouflage» liegt auf reinweissem Grund und ist weiss übermalt (x0–470, y0–120; das Produkt beginnt erst bei x≈570). Die Wasserzeichen-Spur oberhalb der Panelkante habe ich nur im Hintergrund weiss gesetzt. 1001x1001 px. Mit Kontrastverstärkung kontrolliert: kein Rest-Text, Tarnmuster-Panel vollständig, nicht verzerrt."
+      }
+     ],
+     "offen": "Nicht gemeldet, aber gleiche Gefahr: Die Variante «5seitige Direktladung» trägt Bild #7. Es ist nur 595x219 px gross und hat die Einblendung «5****». Ein sauberes Ersatzbild ist nicht vorhanden, ein Rendern wäre zu klein. Das Hauptbild #1 (Badge «20W», Collage mit Kreisen) ist derzeit bei keiner Variante image_link. Hinweis zum Ablauf: Beim Aufräumen meiner Zwischendateien hat der Befehl «rm */vorschlag/_*.png» auch die anderen Produktordner unter gmc/ erfasst. Sollten andere Gruppen dort Zwischendateien mit führendem «_» gehabt haben, sind diese gelöscht. Ihre Endergebnisse ohne «_» sind unberührt."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/liquid-concealer-5-farben-dd8c96",
+     "handle": "liquid-concealer-5-farben-dd8c96",
+     "diagnose": "Nummer 2 zeigt Bild #8. Rechts neben der Tube ist ein schwarzes Etikett «02#» mit dem Farbnamen «BEIGE» eingeblendet. Die Schrift auf der Tube («QIBEST», «contour concealer») ist dagegen physisch aufgedruckt und erlaubt.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67948448416135"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/liquid-concealer-5-farben-dd8c96/vorschlag/concealer-nummer-2.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m08_orig.png gerendert. Das Etikett «02# BEIGE» (gemessen x673–838, y336–479) liegt auf reinweissem Grund (#ffffff) und ist weiss übermalt (x664–850, y326–490). Der Farbstrich endet oberhalb bei y≤279 und bleibt erhalten. Gemessen: 0 nicht-weisse Pixel im Bereich, 1005x1005 px. Angesehen: Tube, Applikator und Farbstrich in Beige vollständig."
+      }
+     ],
+     "offen": "Nicht gemeldet, aber identisch betroffen: Nummer 4 (#4 «04# MEDIUM BEIGE»), Nummer 5 (#5 «05# CHAI»), Nummer 1 (#6 «01# PEARL») und Nummer 3 (#7 «03# NATURAL») tragen dieselben eingeblendeten Etiketten. Sie lassen sich auf dieselbe Weise bereinigen, falls Google sie nachmeldet."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/handradiger-nuss-und-kasebrecher-619100",
+     "handle": "handradiger-nuss-und-kasebrecher-619100",
+     "diagnose": "«160 Doppelmesser Rot» zeigt Bild #6 mit dem roten Badge «2 BLADES» oben links. «Saugnapf 5 Messer» zeigt Bild #9 mit dem blauen Badge «5 BLADES» oben links. Die Schrift auf der abgebildeten Verpackung («Pelitte», «NUT & CHEESE GRATER») ist physisch aufgedruckt und erlaubt. Für beide Ausführungen gibt es kein anderes Bild.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67948172116359"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/handradiger-nuss-und-kasebrecher-619100/vorschlag/reibe-doppelmesser-rot.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m06_orig.png gerendert. Das Badge «2 BLADES» (gemessen x0–623, y79–223) liegt auf weissem Grund und ist weiss übermalt (x0–640, y60–228). Das Produkt beginnt erst bei x≈775, die Messer bei y≈295. Gemessen: 0 Restpixel, 1600x1600 px. Angesehen: rote Reibe mit 2 Trommeln und Verpackung vollständig, passt zu «Doppelmesser Rot»."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67948172181895"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/handradiger-nuss-und-kasebrecher-619100/vorschlag/reibe-saugnapf-5-messer.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m09_orig.png gerendert. Das Badge «5 BLADES» (gemessen x0–623, y80–222) liegt auf weissem Grund und ist weiss übermalt (x0–640, y60–228). Die Messerachsen beginnen erst bei y≈240. Gemessen: 0 Restpixel, 1600x1600 px. Angesehen: Reibe mit Saugnapf-Fuss, 5 Trommeln und Verpackung vollständig, passt zu «Saugnapf 5 Messer»."
+      }
+     ],
+     "offen": "Nicht gemeldet, aber gleiche Klasse: «Weiss 5er Set» trägt Bild #3 mit Badge «5 BLADES», «160 Doppelmesser Weiss» Bild #7 mit Badge «2 BLADES». Beide lassen sich gleich bereinigen, falls Google sie nachmeldet. «Weiss Einzelmesser» (#1) ist sauber."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/hochhellende-reparaturpaste-19-g-8a100f",
+     "handle": "hochhellende-reparaturpaste-19-g-8a100f",
+     "diagnose": "Bernstein zeigt Bild #9, eine Collage aus Modelfoto und Döschen mit eingeblendetem «Amber 105» darunter. Im Modelfoto stehen zusätzlich zwei Instagram-Wasserzeichen «@abbeystojmua» (oben rechts und unten links). Die Schrift auf dem Döschen («PHOERA sooglow! cream highlighter») ist aufgedruckt und erlaubt.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122234159495"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/hochhellende-reparaturpaste-19-g-8a100f/vorschlag/highlighter-bernstein.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m09_orig.png nur das Amber-Döschen ausgeschnitten (gemessen x526–776, y200–453; Ausschnitt 280x280+510+186). Das Modelfoto mit den Wasserzeichen und der Text «Amber 105» fallen damit weg. Mit Lanczos auf 640 px vergrössert und weiss auf 800x800 aufgefüllt. Angesehen: kein Fremdtext, Döschen vollständig und rund, Farbe Bernstein/Rosé-Kupfer wie im Original. Wegen der 2,3-fachen Vergrösserung leicht weich, aber sauber."
+      }
+     ],
+     "offen": "Nicht gemeldet, aber dieselbe Klasse: Alle übrigen Variantenbilder (#2 Kupfer, #3 Creme, #4 Solaris, #5 Bronze, #6 Lunaris, #7 Undress, #8 Glitzer) sind Collagen aus Modelfoto, Döschen und eingeblendetem Farbnamen mit Nummer. Für #3 und #8 gibt es bereinigt-Dateien, sie entfernen aber nur den Text, nicht die Collage. Das Hauptbild #1 ist ebenfalls eine Collage mit Modelfotos. Schneidet man jeweils nur das Döschen aus, sind die Bilder ebenfalls nur ~250 px gross."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/perlencollier-385920",
+     "handle": "perlencollier-385920",
+     "diagnose": "Gold zeigt Bild #2 mit dem eingeblendeten Schreibschrift-Spruch «Give me a hug» unter dem Anhänger (gemessen x281–521, y696–728). Das Produkt selbst ist sauber.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68305132126599"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/perlencollier-385920/vorschlag/perlencollier-gold.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m02_orig.png gerendert: quadratischer Ausschnitt 660x660+70+0. Der Spruch beginnt erst bei y=696 und fällt weg, der Anhänger endet bei y≈545. Ausschnitt mit Lanczos auf 800x800 vergrössert (Faktor 1,2). Übermalen auf dem strukturierten grauen Hintergrund hätte einen sichtbaren Flicken ergeben. Angesehen: kein Text, goldene Kette mit Perlenanhänger und Umarmungs-Armen vollständig, nicht verzerrt. Bild #8 (Lifestyle) habe ich verworfen, weil es eine zusätzliche Halskette und einen Ring zeigt."
+      }
+     ],
+     "offen": "Nicht gemeldet: Bild #4 (Silber) hat denselben Spruch «Give me a hug». Die Silber-Variante zeigt aber auf Bild #5, und das ist sauber. Das Hauptbild #1 ist eine Collage mit Gesicht, aber derzeit bei keiner Variante image_link."
+    }
+   ]
+  },
+  "urteil": {
+   "urteile": [
+    {
+     "handle": "faltbares-20w-solarpanel-098ae1",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst geprüft: vorschlag/solarpanel-schwarz.png ist 1001x1001. Bei Kontrastverstärkung 96–100 % ist kein «black» und keine «Ov…»-Wasserzeichenspur mehr zu sehen (im Original war sie bei 85 % noch sichtbar). Oben links (0–300 / 0–450) gibt es 0 Pixel unter 250. Der Diff zu m05_orig zeigt unterhalb der Textzone nur Pixel mit Grauwert ≥ 222 als geändert, das Panel selbst ist also unberührt. Schwarze Ausführung, vollständig, unverzerrt. Variante 67874140455303 «Schwarz» ist korrekt und die einzige mit Bild #5."
+    },
+    {
+     "handle": "faltbares-20w-solarpanel-098ae1",
+     "aktion_index": 1,
+     "ok": true,
+     "grund": "Selbst geprüft: vorschlag/solarpanel-tarnung.png ist 1001x1001. «camouflage» ist entfernt, die Spur neben der Panelkante ebenfalls (verstärkte Ansicht sauber, oben links 0 Pixel unter 250). Geändert wurden unterhalb von y120 nur Pixel mit Grauwert ≥ 245, also nur Hintergrund. Das Panel mit Tarnmuster ist vollständig und unverzerrt. Variante 67874140488071 «Tarnung» ist korrekt und die einzige mit Bild #6. Nebenbefund ausserhalb des Urteils: Die Variante «5seitige Direktladung» (#7, 595x219, «5****») bleibt ein Risiko."
+    },
+    {
+     "handle": "liquid-concealer-5-farben-dd8c96",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst geprüft: vorschlag/concealer-nummer-2.png ist 1005x1005. Im Etikettbereich (300–520 / 640–880) sind alle Pixel 255. Der Diff zu m08_orig beschränkt sich auf das Feld x672–839, y336–479. Auch in der verstärkten Ansicht ist kein Rest zu sehen. Tube, Applikator und Farbstrich in Beige sind vollständig. Die Schrift «QIBEST/contour concealer» ist physisch aufgedruckt. Zuordnung stimmt: Nummer 2 = #8 = 02# BEIGE, analog zu den anderen Nummern/Bildern. Variante 67948448416135 ist die einzige mit #8. Nicht gemeldet, aber gleich betroffen: #4, #5, #6, #7."
+    },
+    {
+     "handle": "handradiger-nuss-und-kasebrecher-619100",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst geprüft: vorschlag/reibe-doppelmesser-rot.png ist 1600x1600. Das Badge «2 BLADES» ist weg (im Bereich 40–240 / 0–660 gibt es 0 Pixel unter 250). Der Diff zu m06_orig beschränkt sich auf x0–623, y79–223. Rote Reibe mit 2 Trommeln, Klemme und Verpackung ist vollständig. «Pelitte / NUT & CHEESE GRATER / KY-160» ist auf die Verpackung gedruckt, also physisch. Passt zu «160 Doppelmesser Rot». Variante 67948172116359 ist die einzige mit #6."
+    },
+    {
+     "handle": "handradiger-nuss-und-kasebrecher-619100",
+     "aktion_index": 1,
+     "ok": true,
+     "grund": "Selbst geprüft: vorschlag/reibe-saugnapf-5-messer.png ist 1600x1600. Das Badge «5 BLADES» ist weg (Badge-Bereich min 254, 0 Pixel unter 250, auch verstärkt sauber). Der Diff beschränkt sich auf x0–623, y80–224. Reibe mit Saugnapf-Fuss, 5 Trommeln und Verpackung ist vollständig und unverzerrt. Passt zu «Saugnapf 5 Messer». Variante 67948172181895 ist die einzige mit #9. Nicht gemeldet, aber gleiche Klasse: #3 (Weiss 5er Set) und #7 (160 Doppelmesser Weiss)."
+    },
+    {
+     "handle": "hochhellende-reparaturpaste-19-g-8a100f",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst geprüft: vorschlag/highlighter-bernstein.png ist 800x800 und zeigt nur das Amber-Döschen. Der Ausschnitt beginnt bei x510, die Modelfoto-Kante liegt bei x≈494, darum enthält das Bild weder Modelfoto noch @abbeystojmua-Wasserzeichen noch «Amber 105». Die Ränder sind weiss, der Inhalt liegt bei 116–689 / 113–692. Das Döschen ist rund und vollständig. «PHOERA sooglow! cream highlighter» ist aufgedruckt. Die Farbe entspricht #9 Amber = Bernstein. Durch die Hochskalierung ist das Bild leicht weich und zeigt JPEG-Blöcke, bleibt aber akzeptabel. Variante 68122234159495 ist die einzige mit #9."
+    },
+    {
+     "handle": "perlencollier-385920",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst geprüft: vorschlag/perlencollier-gold.png ist 800x800. Der Spruch steht im Original in Zeile 696–728, der Ausschnitt endet bei y660. Im Ergebnis gibt es ab Zeile 650 0 dunkle Pixel und unten min 219, es ist also kein Text zu sehen. Goldene Kette mit Barockperle und Umarmungs-Armen ist vollständig. Die Kette läuft wie im Original oben aus dem Bild, das ist bei Halsketten normal. Faktor 1,2 ohne Verzerrung. Variante 68305132126599 «Gold» ist korrekt. Silber zeigt auf #5, und #5 ist sauber."
+    }
+   ]
+  }
+ },
+ {
+  "gruppe": "?",
+  "vorschlag": {
+   "produkte": [
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/reflektierende-halsband-identifikationsplakett-31c",
+     "handle": "reflektierende-halsband-identifikationsplakett-31c087",
+     "diagnose": "Grün (Bild #2) und Rot (Bild #4) haben unter dem Halsband eine eingeblendete Grössentabelle (size / adjust the size / width, S/M/L mit cm-Angaben und Hunde-Piktogrammen). Das löst die Meldung aus. Auf #4 liegt zusätzlich ein chinesischer Editor-Platzhalter «请输入文字» über der Gravurplakette. «COCO 123 456 7890» ist die Mustergravur auf der Plakette und zählt als Schrift auf dem Produkt.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67870992892295",
+        "gid://shopify/ProductVariant/67870992925063",
+        "gid://shopify/ProductVariant/67870993121671"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/reflektierende-halsband-identifikationsplakett-31c/vorschlag/halsband_gruen.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus dem Original #2 (Grün) nur den Halsband-Teil y 0–500 behalten. Die Grössentabelle beginnt bei y 545, das Produkt endet bei y 460. Auf weissem Hintergrund (#ffffff) auf 800×800 aufgefüllt. Angesehen: Halsband vollständig, kein Rest-Text ausser der Gravur auf der Plakette, nicht verzerrt. Gilt für alle drei Grün-Grössen S/M/L, die bisher Bild #2 tragen."
+      },
+      {
+       "art": "nichts",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67870992793991",
+        "gid://shopify/ProductVariant/67870992990599",
+        "gid://shopify/ProductVariant/67870993154439"
+       ],
+       "bild_nr": null,
+       "neue_datei": null,
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Rot (#4): Die Tabelle liesse sich wegschneiden. Der chinesische Platzhalter «请输入文字» liegt aber auf der Metallplakette, also auf dem Produkt selbst. Übermalen ist nicht erlaubt, und ein Zuschnitt behält diesen Rest-Text. Kein anderes Bild zeigt Rot allein: #6 ist eine Gruppe, bei der das grüne Halsband das rote verdeckt, und in der Collage #1 ist Rot nur etwa 70 px gross."
+      }
+     ],
+     "offen": "Rot (S/M/L) ist nicht behoben. Dafür braucht es ein neues, sauberes Rot-Foto vom Lieferanten (CJ-Variantenbild ohne Tabelle) oder die Freigabe, den Platzhalter auf der Plakette zu retuschieren. Orange (#5) und Blau (#7) tragen dieselbe Grössentabelle. Sie sind noch nicht gemeldet, werden es aber wahrscheinlich bald. Saubere Zuschnitte liegen schon bereit (angesehen, 800×800, ohne Rest-Text): /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/reflektierende-halsband-identifikationsplakett-31c/vorschlag/halsband_orange.png (Orange S/M/L: 67870992826759, 67870992859527, 67870993056135) und /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/reflektierende-halsband-identifikationsplakett-31c/vorschlag/halsband_blau.png (Blau S/M/L: 67870992957831, 67870993023367, 67870993088903). Sie sind nicht als Aktion eingetragen, weil der Auftrag nur gemeldete Varianten umfasst."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/2-in-1-ol-spruhflasche-fur-kuche-bbq-376320",
+     "handle": "2-in-1-ol-spruhflasche-fur-kuche-bbq-376320",
+     "diagnose": "Die gemeldete Variante «Set 7-1 Stück» hat kein eigenes Bild. Google nimmt deshalb das Hauptbild #1. Darauf sind eingeblendet: «470ml» als Badge, «warm gray», Masslinien mit «17.5cm» und «6.5cm» sowie Detailkreise mit «pour oil» und «fuel injection». Dasselbe Hauptbild tragen alle 19 Varianten ohne eigenes Bild.",
+     "aktionen": [
+      {
+       "art": "hauptbild_setzen",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/55889898733953",
+        "gid://shopify/ProductVariant/55889898307969",
+        "gid://shopify/ProductVariant/55889898340737",
+        "gid://shopify/ProductVariant/55889898373505",
+        "gid://shopify/ProductVariant/55889898406273",
+        "gid://shopify/ProductVariant/55889898439041",
+        "gid://shopify/ProductVariant/55889898471809",
+        "gid://shopify/ProductVariant/55889898504577",
+        "gid://shopify/ProductVariant/55889898537345",
+        "gid://shopify/ProductVariant/55889898570113",
+        "gid://shopify/ProductVariant/55889898602881",
+        "gid://shopify/ProductVariant/55889898635649",
+        "gid://shopify/ProductVariant/55889898668417",
+        "gid://shopify/ProductVariant/55889898701185",
+        "gid://shopify/ProductVariant/55889898766721",
+        "gid://shopify/ProductVariant/55889898799489",
+        "gid://shopify/ProductVariant/55889898832257",
+        "gid://shopify/ProductVariant/55889898865025",
+        "gid://shopify/ProductVariant/55889898897793"
+       ],
+       "bild_nr": 21,
+       "neue_datei": null,
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Bild #21 (800×800) zeigt eine einzelne 470-ml-Flasche mit beigem Deckel freigestellt auf Weiss, ganz ohne Einblendung (im Original angesehen). Es ist das sauberste und repräsentativste Produktbild und zeigt dieselbe beige Ausführung wie das bisherige Hauptbild #1. Für keine Variante entsteht also eine falsche Farbe gegenüber heute. Das Bild an Position 1 setzen, dann tragen die gemeldete Variante Set 7 und alle anderen Varianten ohne eigenes Bild ein sauberes image_link. Kein Bild wird gelöscht."
+      }
+     ],
+     "offen": "Welche Farbkombination «Set 7» genau ist, geht aus den Daten nicht hervor. Ein passgenaues eigenes Variantenbild ist darum nicht möglich, das saubere Hauptbild ist die sichere Lösung. Fast alle anderen Galeriebilder (#2–#5, #7–#20) tragen ebenfalls Texte oder Masse. Für Gelb, Grün und Schwarz gibt es kein sauberes Einzelbild: #15, #16 und #20 haben Badges und Masslinien quer über das Produkt."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/pu-leder-reiserucksack-fur-manner-0de046",
+     "handle": "pu-leder-reiserucksack-fur-manner-0de046",
+     "diagnose": "Das Variantenbild #2 der Variante «Marineblau / Braun» trägt oben rechts das eingeblendete Händler-Logo «Three-box» (drei Würfel plus Schriftzug, x 600–783, y 24–151). Das ist ein Wasserzeichen und nicht auf dem Produkt. Die geprägte Marke auf der Klappe und das kleine Stofflabel am Riemen sind dagegen physisch am Rucksack.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67870878007687"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/pu-leder-reiserucksack-fur-manner-0de046/vorschlag/rucksack_marineblau_braun.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Im Original #2 (800×800) den Logo-Bereich x 585–799, y 0–160 mit dem gemessenen, gleichmässigen Hintergrund #ffffff übermalt. Das Produkt beginnt erst bei y 171, berührt wurde es nicht. Angesehen: Logo restlos weg, Rucksack vollständig und unverändert, dieselbe Farbe wie das bisherige Variantenbild, 800×800."
+      }
+     ],
+     "offen": "Nicht gemeldet, aber mit demselben «Three-box»-Wasserzeichen: Hauptbild #1 (Schwarz, zugleich Variantenbild 67870877942151) und #4 (Hellbraun, 67870877974919). Saubere Fassungen liegen bereit (gleiche Methode, angesehen): /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/pu-leder-reiserucksack-fur-manner-0de046/vorschlag/rucksack_schwarz.png und /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/pu-leder-reiserucksack-fur-manner-0de046/vorschlag/rucksack_hellbraun.png. Sie sind nicht als Aktion eingetragen, weil sie nicht gemeldet sind. Hinweis: Der Variantenname «Marineblau / Braun» (CJ «Navy brown») passt optisch nicht gut zum dunklen Rotbraun auf dem Bild. Er wurde nicht angefasst, weil Varianten tabu sind."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/farbige-kabellose-gaming-rgb-maus-mit-mute-tas-441",
+     "handle": "farbige-kabellose-gaming-rgb-maus-mit-mute-tas-4413da",
+     "diagnose": "Das Variantenbild #6 (600×416) der Variante «Grau» trägt unten links den bunt eingeblendeten Werbeschriftzug «RGB» (x 12–124, y 318–363) auf dem Schreibtisch-Hintergrund. Das ist ein Overlay und nicht auf dem Produkt.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67870849040775"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/farbige-kabellose-gaming-rgb-maus-mit-mute-tas-441/vorschlag/maus_grau.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Der Hintergrund ist eine strukturierte Fototextur, Übermalen gäbe einen sichtbaren Fleck. Deshalb aus dem Original #6 ein Quadrat 416×416 ab x 127 zugeschnitten: Das «B» endet bei x 124, die Maus beginnt bei x 132. Danach mit Lanczos auf 800×800 skaliert. Angesehen und am linken Rand vergrössert geprüft: kein Rest von «RGB», Maus und USB-Empfänger vollständig, nicht verzerrt, dieselbe graue Ausführung wie bisher. Das Hauptbild #1 eignet sich nicht als Ersatz: Sein Gehäuse ist gemessen deutlich dunkler und entspricht eher Schwarz (#2) als Grau."
+      }
+     ],
+     "offen": "Nicht gemeldet, aber mit demselben «RGB»-Overlay: Variantenbild #2 der Variante «Schwarz» (67870849073543). Ein sauberer Zuschnitt liegt bereit (angesehen, 800×800): /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/farbige-kabellose-gaming-rgb-maus-mit-mute-tas-441/vorschlag/maus_schwarz.png. Er ist nicht als Aktion eingetragen. Das Hauptbild #1 ist sauber und braucht nichts."
+    }
+   ]
+  },
+  "urteil": {
+   "urteile": [
+    {
+     "handle": "reflektierende-halsband-identifikationsplakett-31c087",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst nachgemessen: halsband_gruen.png ist 800×800. Nicht-weisse Zeilen nur von y 163 bis 612. Das entspricht genau dem Halsband aus #2 (y 13–462), um 150 px nach unten versetzt. Die Breite x 35–788 ist unverändert, also nichts verzerrt oder skaliert. Von der Grössentabelle (Original ab y 545) ist kein Rest geblieben: keine Linie, kein Piktogramm, keine cm-Angabe. Angesehen: Halsband, Schnalle und D-Ring vollständig, Grün korrekt. «COCO 123 456 7890» ist die Mustergravur auf der Metallplakette und gilt damit als Schrift auf dem Produkt. Hintergrund reinweiss, kein Rahmen. Die variant_ids 67870992892295 (Grün/L), 67870992925063 (Grün/S) und 67870993121671 (Grün/M) sind genau alle Grün-Varianten mit dem alten Bild #2. Alle drei sind gemeldet, es fehlt keine."
+    },
+    {
+     "handle": "reflektierende-halsband-identifikationsplakett-31c087",
+     "aktion_index": 1,
+     "ok": true,
+     "grund": "Ich sehe keine saubere Alternative. In #4 liegt «请输入文字» auf der Plakette quer über den Ziffern «456 7890». Ein Zuschnitt behält diesen Text, und eine Retusche müsste die Gravur auf dem Produkt neu zeichnen. In #6 überdeckt das grüne Halsband (Strap und Schnalle) den hinteren Teil des roten. Ein Zuschnitt rechts ab x ≈ 420 enthält zwangsläufig Teile der grünen Schnalle und des grünen D-Rings. In der Collage #1 ist Rot nur ein Mini-Bild. Ein umgefärbtes Grün-Bild wäre eine erfundene Darstellung. «nichts» ist darum richtig. Rot S/M/L (67870992793991, 67870992990599, 67870993154439) bleiben offen, bis es ein neues Lieferantenbild gibt."
+    },
+    {
+     "handle": "2-in-1-ol-spruhflasche-fur-kuche-bbq-376320",
+     "aktion_index": 0,
+     "ok": false,
+     "grund": "#21 selbst ist in Ordnung: 800×800, angesehen ohne jede Einblendung, Flasche vollständig und unverzerrt, als Hauptbild repräsentativ. Es zeigt aber nicht die Ausführung der aufgeführten variant_ids, vor allem nicht die der einzigen gemeldeten Variante. «Set 7-1 Stück» (SKU CJYD199961021UF) wiegt laut lokalem Export 895 g und kostet CHF 25.90 (EK 20.73). Eine einzelne Flasche wiegt 355 g und kostet CHF 15.90. Set 7 ist also ein Mehrteil-Set (mindestens 2 Flaschen plus Zubehör), keine einzelne beige Flasche. Unter den 19 IDs sind ausserdem Gelb, Grün und Schwarz (je 1 und 2 Stück), die Beige-2-Stück-Variante und die Sets 1–12, für die eine einzelne beige Flasche ebenfalls falsch ist. Dass #1 heute schon dieselbe falsche Ausführung zeigt, macht #21 nicht passend. Die Regel lautet: lieber «nichts» als falsche Farbe oder Ausführung. Eine saubere Set-Ansicht fehlt: #3 und #19 zeigen Sets, tragen aber «470ml», Farbnamen und Masse. Nicht anfechtbar ist nur der reine Tausch des Hauptbilds als Bereinigung ohne Verschlechterung. Ob das als Fix für Set 7 gelten soll, muss der Betreiber entscheiden."
+    },
+    {
+     "handle": "pu-leder-reiserucksack-fur-manner-0de046",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Pixel-Differenz zu #2 nachgemessen: Geändert hat sich ausschliesslich der Bereich y 24–151, x 600–783 (10'137 Pixel). Das ist genau die Ausdehnung des Logos (Original y 25–150, x 600–777). Oben rechts (y < 175, x > 560) ist kein nicht-weisses Pixel mehr übrig. Der Hintergrund ist reinweiss (255,255,255), also kein Fleck. Das Produkt beginnt erst bei y 168 und ist unverändert. 800×800, Rucksack vollständig. Die Prägung «Three-box» auf der Klappe und das Stofflabel am Riemen sind physisch am Produkt. Die Farbe ist identisch mit dem bisherigen Variantenbild. Die variant_id 67870878007687 (Marineblau / Braun, bild_nr 2) ist korrekt und die einzige gemeldete. Dass der Farbname nicht ganz zum Bild passt, ist ein altes Problem und nicht Teil dieser Aktion."
+    },
+    {
+     "handle": "farbige-kabellose-gaming-rgb-maus-mit-mute-tas-4413da",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Nachgemessen: Die blauen Pixel des «B» enden im Original bei x 125, ab x 126 gibt es keine mehr. Der Zuschnitt beginnt bei x 127, also ist kein Rest von «RGB» geblieben (vergrössert angesehen). Die Maus beginnt im Original bei x ≈ 133, sie ist mit etwa 6 px Rand vollständig drin. Volle Höhe 416 bleibt erhalten, Maus und USB-Empfänger sind ganz zu sehen. Das Quadrat wurde gleichmässig skaliert (416 → 800), also nicht verzerrt. Die kurze Seite ist nominell 800 ≥ 500. Die echte Auflösung bleibt 416, das Original hatte aber auch nur 600×416, schlechter wird es also nicht. «GAMING MOUSE» ist auf das Gehäuse gedruckt, also Schrift auf dem Produkt. Die Kreise auf dem Notizbuch im Hintergrund sind Deko, kein Text. Ausführung identisch mit dem bisherigen Variantenbild «Grau». Die variant_id 67870849040775 (Grau, bild_nr 6) ist korrekt und die einzige gemeldete."
+    }
+   ]
+  }
+ },
+ {
+  "gruppe": "?",
+  "vorschlag": {
+   "produkte": [
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/kurzwellen-kurllaser-990784",
+     "handle": "kurzwellen-kurllaser-990784",
+     "diagnose": "Rosa nutzt Bild #3, auf dem oben links «pink / PINK» eingeblendet ist. Violett nutzt Bild #5 mit der Einblendung «Purple / PUPLE». Beide Schriftzüge sind Lieferanten-Farbetiketten und stehen nicht auf dem Gerät. Gelb (nicht gemeldet) nutzt Bild #1 mit derselben Art Einblendung «milky yellow / YELLOW». Auf #2 und #4 steht Werbetext, sie sind aber kein image_link.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67879979811207"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/kurzwellen-kurllaser-990784/m03_bereinigt.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Die automatische Säuberung von #3 (800x800) habe ich angesehen: Der Schriftzug «pink/PINK» ist weg, kein Rest-Text. Geändert wurde nur der Bereich 41..160/80..184, das Gerät ist unberührt. Das Bild zeigt dasselbe rosa Gerät wie die Variante Rosa."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67879979843975"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/kurzwellen-kurllaser-990784/m05_bereinigt.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Die automatische Säuberung von #5 (800x800) habe ich angesehen: «Purple/PUPLE» ist weg. Geändert wurde nur der Bereich 40..176/88..184. Das Bild zeigt dasselbe violette Gerät wie die Variante Violett."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67879979876743"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/kurzwellen-kurllaser-990784/vorschlag/kurllaser-gelb-ohne-text.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "VORBEUGEND, Gelb ist nicht gemeldet, trägt auf #1 aber dieselbe Einblendung «milky yellow/YELLOW». Selbst gerendert aus m01_orig.png (800x800): Der Hintergrund hinter der Schrift ist entlang der diagonalen Lichtkante nachgebildet. Geändert wurde nur der Bereich 39..312/88..184, das Gerät ist unberührt. Angesehen: kein Rest-Text, keine Kante. Die Ziffern 210/190/170/150 sind die Anzeige auf dem Gerät."
+      }
+     ],
+     "offen": "Das Hauptbild #1 trägt weiter die Einblendung «milky yellow». Es ist aber für keine Variante der image_link, weil alle drei Varianten ein eigenes Variantenbild haben. Die Zusatzbilder #2 und #4 tragen Werbetext und bleiben unverändert (dort ist kein image_link)."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/focallure-abdeckcreme-5f9003",
+     "handle": "focallure-abdeckcreme-5f9003",
+     "diagnose": "Variante «1» nutzt Bild #4 mit dem Farbetikett «- 01 - WARM IVORY» oben links. Variante «2» nutzt Bild #3 mit «- 02 - NATURAL». Beide stehen auf weissem Grund neben dem Produkt, also als Einblendung. Die Aufdrucke auf der Tube («01- WARM IVORY», «BIG COVER», «FOCALLURE») sind physisch und erlaubt. Die nicht gemeldeten Varianten «4» (#1, «04 MEDIUM BEIGE») und «3» (#2, «03 BEIGE») haben dieselbe Einblendung.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122235076999"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/focallure-abdeckcreme-5f9003/vorschlag/warm-ivory-01-ohne-text.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m04_orig.png (640x640) die Fläche 0,0–340,112 weiss übermalt. Der Hintergrund misst dort #FFFFFF, die Zeilen 100–120 sind rein weiss und das Hautmuster beginnt erst bei ca. y=128. Danach mit Lanczos auf 800x800. Angesehen: kein Rest-Text, Tube und Hautmuster vollständig. Das Bild zeigt die Farbe 01 Warm Ivory (Tubenetikett 01-)."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122235142535"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/focallure-abdeckcreme-5f9003/vorschlag/natural-02-ohne-text.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Gleiches Vorgehen mit m03_orig.png: Fläche 0,0–340,112 weiss (#FFFFFF gemessen), dann 800x800. Angesehen: kein Rest-Text. Das Bild zeigt 02 Natural (Tubenetikett 02-)."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122235109767"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/focallure-abdeckcreme-5f9003/vorschlag/medium-beige-04-ohne-text.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "VORBEUGEND (nicht gemeldet, dieselbe Einblendung «- 04 - MEDIUM BEIGE» auf #1). Aus m01_orig.png wie oben gerendert, 800x800. Angesehen: sauber. Das Bild zeigt 04 Medium Beige (Tubenetikett 04-)."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122235175303"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/focallure-abdeckcreme-5f9003/vorschlag/beige-03-ohne-text.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "VORBEUGEND (nicht gemeldet, dieselbe Einblendung «- 03 - BEIGE» auf #2). Aus m02_orig.png wie oben gerendert, 800x800. Angesehen: sauber. Das Bild zeigt 03 Beige (Tubenetikett 03-)."
+      }
+     ],
+     "offen": "Das Hauptbild #1 behält das Etikett «04 MEDIUM BEIGE». Es ist aber kein image_link, weil alle vier Varianten eigene Bilder haben. Bild #5 trägt oben links den eingeblendeten Schriftzug «FOCALLURE»; es ist ein Zusatzbild und wird nicht angefasst."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956",
+     "handle": "3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956",
+     "diagnose": "Variante B nutzt Bild #6, eine Massskizze mit eingeblendeten Masslinien, Pfeilen und den Texten «8X1-1/2», «38mm», «16mm», «53mm» und «8mm». Die nicht gemeldeten Varianten A (#3: «8X2», «50mm», «19.05mm», «62.5mm», «8mm») und C (#1: «8X1-3/8», «35mm», «12.7mm», «51.5mm», «8mm») tragen dieselbe Klasse. D (#4) ist eine Collage mit drei Textfeldern («12.7mm/16mm/19.05mm») und Masslabels.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122551189895"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956/vorschlag/fraeser-b-8x1-1-2-ohne-masse.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m06_orig.png (1000x1000) gerendert. Den Hintergrund habe ich an mehreren Punkten gemessen, er ist #FFFFFF. Vier Flächen weiss übermalt: oben y≤178 (die Zeilen 170–189 sind leer, das Produkt beginnt bei y=191), links x180–338 (die Schneide beginnt bei x=345), rechts x≥840 (das Produkt endet bei x=808) und unten 490–670/850–935 (der Schaft endet bei y=845, das Holz bei x=458). Danach vertikal zentriert auf 1000x1000. Angesehen: kein Rest von Linie oder Text, Fräser und Holzverbindung vollständig. Es ist derselbe Fräser 8X1-1/2 (38 mm) wie Variante B."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122551157127"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956/vorschlag/fraeser-a-8x2-ohne-masse.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "VORBEUGEND (A nicht gemeldet, #3 trägt dieselben Masseinblendungen). Aus m03_orig.png gerendert: oben y≤180 weiss, links x230–312 (die Schneide beginnt bei x=317), rechts x≥853 (das Produkt endet bei x=849) und unten 495–700/857–961 (der Schaft endet bei y=855, das Holz bei x=490). Vertikal zentriert, 1000x1000. Angesehen: sauber. Es ist der Fräser 8X2 (50 mm) wie Variante A."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122551222663"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956/vorschlag/fraeser-c-8x1-3-8-ohne-masse.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "VORBEUGEND (C nicht gemeldet, #1 trägt dieselben Masseinblendungen). Aus m01_orig.png gerendert: oben y≤174 weiss, links x170–355 (die Schneide beginnt bei x=358, die Spalten 354–357 sind leer), rechts x≥850 und unten 495–690/852–961 (der Schaft endet bei y=848). Vertikal zentriert, 1000x1000. Angesehen: sauber. Es ist der Fräser 8X1-3/8 (35 mm) wie Variante C."
+      },
+      {
+       "art": "variantenbild_setzen",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122551255431"
+       ],
+       "bild_nr": 5,
+       "neue_datei": null,
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "VORBEUGEND (D nicht gemeldet, #4 ist eine Collage mit Textfeldern). Das vorhandene Bild #5 zeigt dieselben drei Fräser wie #4 auf weissem Grund, ohne jede Einblendung (angesehen)."
+      }
+     ],
+     "offen": "Das Hauptbild #1 trägt weiter Masslinien. Es ist kein image_link, weil alle Varianten eigene Bilder haben. Falls auch das Hauptbild sauber sein soll, ginge «hauptbild_setzen» mit #5 (das ganze Set, passend zum Titel «3-teiliges Fräser-Set»). Nur ein Hinweis, nicht angefasst: Der Titel sagt «3-teiliges Set», die Varianten A–C zeigen aber je einen einzelnen Fräser."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/kabelloses-6-in-1-multifunktions-ladegerat-896320",
+     "handle": "kabelloses-6-in-1-multifunktions-ladegerat-896320",
+     "diagnose": "Weiss nutzt Bild #5 mit dem Werbetext «USE QC3.0 ADAPTER(9V/2A) TO POWER ALL» und eingeblendeten Adapter-Icons mit Haken/Kreuz und Beschriftung. Schwarz (nicht gemeldet) nutzt #6 mit «Safety Protection», vier Symbol-Badges mit Text und einem Raster-Hintergrund, also dieselbe Klasse. Kein vorhandenes Bild ist sauber: #1/#2 haben Überschrift, Hinweistext und Kreis-Ausschnitt, #3 hat eine Icon-Leiste «iphone/Apple Watch/AirPods/AirPods Pro», #4 hat Text und Lupen-Kreise.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67870847893895"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/kabelloses-6-in-1-multifunktions-ladegerat-896320/vorschlag/ladestation-weiss-ohne-symbole.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m03_orig.png (1500x1500, weisse Ladestation) die Icon-Leiste weiss übermalt. Sie liegt bei x 158–757/y 405–537, Fläche 140,390–790,555, Hintergrund #FFFFFF gemessen. Das Telefon beginnt bei x≥815, das Kabel erst bei y≥590. Angesehen: kein Rest-Text, die Station ist vollständig. Es ist dieselbe weisse Ausführung wie die Variante Weiss."
+      },
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67870847926663"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/kabelloses-6-in-1-multifunktions-ladegerat-896320/vorschlag/ladestation-schwarz-ohne-text.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "VORBEUGEND (Schwarz nicht gemeldet, #6 trägt dieselbe Einblendungsklasse). Die untere schwarze Station aus m01_orig.png ausgeschnitten (Bereich x270–1269/y860–1379). Darüber ist der Zwischenraum ab y=840 leer, also kein Text und kein Kreis-Ausschnitt im Bild. Den grauen Deko-Viertelkreis unten links (Zeilen 330–400 des Ausschnitts leer, kein Produkt in x<150) habe ich weiss übermalt. Danach zentriert auf 1040x1040 mit weissem Rand. Angesehen: sauber, Station und Kabel vollständig. Die Symbole auf der Ladefläche sind physisch."
+      }
+     ],
+     "offen": "Auf den Telefon-Bildschirmen im Weiss-Bild steht klein «63% Charged». Das ist Bildschirminhalt der Requisite und keine Einblendung, ein Restrisiko bei Googles automatischer Prüfung bleibt aber. Das Hauptbild #1 trägt weiter Text. Es ist kein image_link, weil beide Varianten eigene Bilder haben."
+    }
+   ]
+  },
+  "urteil": {
+   "urteile": [
+    {
+     "handle": "kurzwellen-kurllaser-990784",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Ich habe m03_bereinigt.png geöffnet und mit identify gemessen: 800x800. Der Schriftzug «pink/PINK» ist weg, auch in der zehnfach verstärkten Kantenansicht bleibt kein Rest. Geändert hat sich nur der Bereich x41–159 / y80–183, das Gerät ist unberührt, vollständig und unverzerrt. Es ist dasselbe rosa Gerät wie in #3, also passt es zur Variante Rosa (…811207). Keine weitere Variante nutzt #3."
+    },
+    {
+     "handle": "kurzwellen-kurllaser-990784",
+     "aktion_index": 1,
+     "ok": true,
+     "grund": "m05_bereinigt.png misst 800x800, und «Purple/PUPLE» ist entfernt. An der Grenze der übermalten Fläche (um x≈188 / y≈180) bleibt eine Stufe von nur etwa 3 Grauwerten. Sie ist nur in der verstärkten Kantenansicht zu sehen, mit blossem Auge nicht. Geändert ist nur x40–175 / y87–183, das Gerät ist unberührt. Das violette Gerät passt zur Variante Violett (…843975)."
+    },
+    {
+     "handle": "kurzwellen-kurllaser-990784",
+     "aktion_index": 2,
+     "ok": true,
+     "grund": "vorschlag/kurllaser-gelb-ohne-text.png misst 800x800 und zeigt das cremegelbe Gerät aus #1 ohne «milky yellow/YELLOW». Geändert ist nur x32–311 / y81–183. Die Lichtkante ist glaubwürdig nachgebildet, ohne Rest-Text und ohne sichtbaren Flicken. 210/190/170/150 ist die Anzeige auf dem Gerät und damit physisch. Das Bild passt zur Variante Gelb (…876743, nicht gemeldet, vorbeugend)."
+    },
+    {
+     "handle": "focallure-abdeckcreme-5f9003",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "warm-ivory-01-ohne-text.png misst 800x800, hochskaliert aus 640. Oben links (y<160) gibt es kein einziges nicht-weisses Pixel mehr, das Etikett «- 01 - WARM IVORY» ist also weg. Rand und unterste Zeile sind rein weiss, die Tuben sind vollständig. «01- WARM IVORY» auf der Tube ist physisch. Variante «1» (…076999) ist laut Etikett 01 Warm Ivory und nutzt bisher #4, das passt."
+    },
+    {
+     "handle": "focallure-abdeckcreme-5f9003",
+     "aktion_index": 1,
+     "ok": true,
+     "grund": "natural-02-ohne-text.png misst 800x800. Oben links steht kein Etikett «- 02 - NATURAL» mehr: alle Pixel bis y=160 sind rein weiss, das Hautmuster beginnt erst bei 160. Die Tuben sind vollständig, «02- NATURAL» steht auf der Tube. Das passt zu Variante «2» (…142535), die bisher #3 nutzt."
+    },
+    {
+     "handle": "focallure-abdeckcreme-5f9003",
+     "aktion_index": 2,
+     "ok": true,
+     "grund": "medium-beige-04-ohne-text.png misst 800x800 und ist oben links sauber weiss, «- 04 - MEDIUM BEIGE» ist weg. Auf der Tube steht «04- MEDIUM BEIGE». Das passt zu Variante «4» (…109767), die bisher #1 nutzt (nicht gemeldet, vorbeugend). Das Hauptbild #1 bleibt unverändert, ist aber für keine Variante der image_link."
+    },
+    {
+     "handle": "focallure-abdeckcreme-5f9003",
+     "aktion_index": 3,
+     "ok": true,
+     "grund": "beige-03-ohne-text.png misst 800x800 und ist oben links sauber, «- 03 - BEIGE» ist weg. Die Tuben sind vollständig, auf der Tube steht «03- BEIGE». Das passt zu Variante «3» (…175303), die bisher #2 nutzt (vorbeugend). Damit sind alle vier Varianten abgedeckt."
+    },
+    {
+     "handle": "3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "fraeser-b-8x1-1-2-ohne-masse.png misst 1000x1000. Die Pixelanalyse zeigt nur zwei grosse Bereiche, den Fräser (x345–808 / y108–762) und das Holz. Daneben gibt es nur Einzelpixel vom Schatten des Holzes, keine Masslinie, keinen Pfeil und keinen Text. Der Fräser ist vollständig und unverzerrt. Es ist derselbe Fräser wie in #6, also passt es zur gemeldeten Variante B (…189895)."
+    },
+    {
+     "handle": "3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956",
+     "aktion_index": 1,
+     "ok": true,
+     "grund": "fraeser-a-8x2-ohne-masse.png misst 1000x1000. Es bleiben nur der Fräser (x317–849) und das Holz, dazu wenige Einzelpixel vom Schatten. Masse und Linien sind weg, auch der Schriftzug «8X2». Das Holz berührt links den Bildrand wie schon im Original. Es ist derselbe Fräser wie in #3, passend zu Variante A (…157127, vorbeugend)."
+    },
+    {
+     "handle": "3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956",
+     "aktion_index": 2,
+     "ok": true,
+     "grund": "fraeser-c-8x1-3-8-ohne-masse.png misst 1000x1000. Es bleiben nur Fräser und Holz, dazu Einzelpixel vom Schatten. Masslinien und «8X1-3/8» sind entfernt, der Fräser ist vollständig. Es ist derselbe Fräser wie in #1, passend zu Variante C (…222663, vorbeugend)."
+    },
+    {
+     "handle": "3-teiliges-fraser-set-fur-holzbearbeitung-3-st-956",
+     "aktion_index": 3,
+     "ok": true,
+     "grund": "Ich habe #5 im Original angesehen: 1000x1000, drei Fräser auf weissem Grund, ohne Text, ohne Masse und ohne Rahmen. Es sind dieselben drei Fräser wie in der Collage #4, die Variante D (…255431) bisher nutzt. Das ist eine saubere, passende Wahl (vorbeugend)."
+    },
+    {
+     "handle": "kabelloses-6-in-1-multifunktions-ladegerat-896320",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "ladestation-weiss-ohne-symbole.png misst 1500x1500. Geändert ist nur x154–759 / y400–543, und der übermalte Bereich ist rein weiss (255), genau wie der Hintergrund im Original rundherum (gemessen 255). Die Symbolleiste ist also spurlos weg. Die weisse Station ist vollständig, es ist dieselbe weisse Ausführung wie Variante Weiss (…893895). Restrisiko: «63% Charged» und das Ladesymbol stehen auf den Bildschirmen der Telefone. Das ist Bildschirminhalt der Requisiten, keine Einblendung über dem Bild."
+    },
+    {
+     "handle": "kabelloses-6-in-1-multifunktions-ladegerat-896320",
+     "aktion_index": 1,
+     "ok": true,
+     "grund": "ladestation-schwarz-ohne-text.png misst 1040x1040. Die dunklen Pixel haben exakt dieselbe Ausdehnung (901x395) und Anzahl (132'047) wie im Original #1, das Bild ist also ausgeschnitten und nicht skaliert, nichts verzerrt. Oben (y<280), unten (y>760) und am linken Rand (x<60) ist alles weiss: kein Text, kein Kreis-Ausschnitt, kein Rest vom Deko-Viertelkreis. Die Station mit Kabel ist vollständig, und das Bild zeigt die schwarze Ausführung, passend zu Variante Schwarz (…926663, vorbeugend). Hinweis: Der weisse Uhr-Ladepuck ist auf dem Bild zu sehen, obwohl laut Lieferantentext das Uhr-Kabel nicht beiliegt. Das ist Lieferantenmaterial und keine Einblendung."
+    }
+   ]
+  }
+ },
+ {
+  "gruppe": "?",
+  "vorschlag": {
+   "produkte": [
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/hd-sfc-wireless-controller-doppelpack-614848",
+     "handle": "hd-sfc-wireless-controller-doppelpack-614848",
+     "diagnose": "Gemeldete Variante A (32GB) traegt Variantenbild #7: eingeblendete Beschriftungen 'Signal Receiver', 'Game Stick', 'Controller x 2', 'USB Power Cable', 'HD Extension Cable' plus blauer Werbebalken '32GB / 3000 Game' am unteren Rand. Kein vorhandenes Bild zeigt das komplette Set ohne Einblendung (#2 ist identisch mit #7, #1/#3/#4/#5/#8 ebenfalls mit Text, #6 zeigt nur den Stick).",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67874180301191"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/hd-sfc-wireless-controller-doppelpack-614848/vorschlag/controller-set-ohne-text.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m07_orig.png gerendert: fuenf Beschriftungen auf reinweissem Hintergrund (#FFFFFF gemessen) weiss uebermalt, Werbebalken ab y=876 abgeschnitten, auf 1000x1000 weiss aufgefuellt. Angesehen: kein Rest-Text, beide Controller, Stick, Empfaenger und beide Kabel vollstaendig; verbleibende Schrift (SELECT/START/MODE, 4K GAME STICK) ist physisch auf dem Produkt. Das Set sieht in beiden Speicher-Ausfuehrungen gleich aus, das Bild ist also fuer A wahr."
+      }
+     ],
+     "offen": "Nicht gemeldet, aber dieselbe Klasse: Variante B (gid://shopify/ProductVariant/67874180333959) traegt #8 mit Balken '64GB / 10000 Game' und Beschriftungen – das neue Bild controller-set-ohne-text.png passt optisch auch zu B (gleiches Set), Entscheid beim Orchestrator. Hauptbild #1 traegt eingeblendeten Text '3K rocker / special game rocker...'; wird erst relevant, falls eine Variante ohne eigenes Bild gemeldet wird."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/120-farben-palette-fur-augen-05d0be",
+     "handle": "120-farben-palette-fur-augen-05d0be",
+     "diagnose": "Gemeldete Variante '01' traegt Variantenbild #2: unter der Palette ist die Nummer '#01' eingeblendet (Ausfuehrungsnummer als Overlay). Kein anderes vorhandenes Bild zeigt die bunte Palette 01 ohne Einblendung (#1 ist eine Collage mit Augen-Fotos, #3/#4 zeigen die Nude-Palette 04 mit '#04' bzw. Massangaben).",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/68122288292231"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/120-farben-palette-fur-augen-05d0be/vorschlag/palette-01-ohne-text.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m02_orig.png gerendert: Palette endet bei y=679, Text '#01' liegt bei y=704-766 auf reinweissem Grund; auf 800x692 zugeschnitten und zentriert auf 800x800 weiss aufgefuellt. Angesehen: kein Rest-Text, Palette vollstaendig und unverzerrt, zeigt genau die bunte Ausfuehrung 01."
+      }
+     ],
+     "offen": "Nicht gemeldet, aber dieselbe Klasse: Variante '12004 Farbe' (gid://shopify/ProductVariant/68122288259463) traegt #3 mit eingeblendetem '#04' (515x455, klein); Hauptbild #1 ist eine Collage mit Augen-Fotos. Beides nicht Teil dieser Meldung."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/mini-tastatur-mit-touchpad-und-audio-742720",
+     "handle": "mini-tastatur-mit-touchpad-und-audio-742720",
+     "diagnose": "Gemeldete Variante 'Grau' traegt Variantenbild #2: eingeblendetes Farb-Etikett 'Silver' (grauer Balken mit Schrift) unten links. Kein anderes vorhandenes Bild zeigt die graue/silberne Ausfuehrung (#1/#3/#5 schwarz, #4 rosa, #6 weiss, #7 schwarz).",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67870846910855"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/mini-tastatur-mit-touchpad-und-audio-742720/vorschlag/tastatur-grau-ohne-text.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m02_orig.png gerendert (512x512, bereits quadratisch): Etikett-Bereich x26-257 / y424-492 liegt nur auf Hintergrund (Produktkante endet ~15 px darueber) und wurde mit einem glatten Verlauf aus den angrenzenden Hintergrundwerten (208-233 Grau) gefuellt statt flacher Farbe, weil der Hintergrund ein Verlauf ist. Angesehen, auch vergroessert: kein Rest-Text, keine sichtbare Flickstelle, Produkt unveraendert und unverzerrt; zeigt genau die graue Ausfuehrung."
+      }
+     ],
+     "offen": "Nicht gemeldet, aber dieselbe Klasse: Rosa (#4 'Pink'), Weiss (#6 'White') und Schwarz (#7 'Black') tragen ebenfalls eingeblendete Farbnamen. Fuer Schwarz gibt es mit #5 (800x800) ein sauberes vorhandenes Bild derselben Farbe; Rosa und Weiss braeuchten je ein gerendertes Bild. Bild bleibt 512 px (Original), nicht kuenstlich hochskaliert."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/elektrische-nagelfrasmaschine-v2-191040",
+     "handle": "elektrische-nagelfrasmaschine-v2-191040",
+     "diagnose": "Gemeldete Variante 'Rosa' traegt Variantenbild #6: rosa Werbe-Badge '45000PRM' oben links eingeblendet. #6 ist das einzige Bild der rosa Ausfuehrung, alle anderen zeigen das weisse Geraet.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67879980171655"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/elektrische-nagelfrasmaschine-v2-191040/vorschlag/nagelfraese-rosa-ohne-badge.png",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Aus m06_orig.png gerendert (1000x1000): Badge samt Schatten (x0-350, y0-122) auf reinweissem Grund weiss uebermalt (Rechteck 0,0-355,132); das Kabel beginnt erst bei x=360, der Geraetekoerper bei y=144 – gemessen: 0 nicht-weisse Pixel im Bereich danach. Angesehen: kein Rest-Badge, Geraet, Kabel, Handstueck, Hand und Zubehoer vollstaendig; verbleibende Schrift (45, RPM, NAIL DRILL) ist Display/Aufdruck am Geraet selbst."
+      }
+     ],
+     "offen": ""
+    }
+   ]
+  },
+  "urteil": {
+   "urteile": [
+    {
+     "handle": "hd-sfc-wireless-controller-doppelpack-614848",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst geprüft: controller-set-ohne-text.png ist 1000x1000 px. Gegenüber m07_orig.png sind die Pixel exakt um 65 px nach unten verschoben (mittlere Abweichung 0.0), also unverzerrt und nicht skaliert. Kein Pixel über 920 ist nicht-weiss, der Werbebalken '32GB / 3000 Game' ist also weg. Rasterprüfung und Vergrösserung: kein Rest der fünf Beschriftungen, hellgraue Pixel nur an Produktkanten, Hintergrund reines #FFFFFF. Vollständig im Bild: 2 Controller, Game-Stick, Empfänger, USB-Kabel und HD-Verlängerung. Die übrige Schrift (SELECT/START/MODE, 4K GAME STICK) ist auf das Produkt gedruckt. Variante 'A' ist eine Speicher-Ausführung, das Set sieht gleich aus, das Bild ist also wahr. Gemeldet ist nur 67874180301191, keine gemeldete Variante fehlt. Nicht gemeldet, aber gleiche Klasse: Variante B (67874180333959) trägt #8 mit Balken '64GB / 10000 Game' und kann dasselbe neue Bild bekommen."
+    },
+    {
+     "handle": "120-farben-palette-fur-augen-05d0be",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst geprüft: palette-01-ohne-text.png ist 800x800 px. Die Pixel sind exakt um 54 px verschoben (Abweichung 0.0 zu m02_orig.png), also unverzerrt. Die Palette reicht vollständig von y=152 bis 733 (Original 98 bis 679). Unter y=740 und über y=140 gibt es 0 nicht-weisse Pixel, das eingeblendete '#01' ist also weg. Keine Rahmen, keine Badges. Das Bild zeigt die bunte Palette, die zu Variante '01' gehört (bisher #2). Die einzige gemeldete Variante 68122288292231 ist abgedeckt. Nicht gemeldet: Variante '12004 Farbe' trägt #3 mit '#04' und ist nur 515x455, also kurze Seite unter 500."
+    },
+    {
+     "handle": "mini-tastatur-mit-touchpad-und-audio-742720",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst geprüft: tastatur-grau-ohne-text.png ist 512x512, kurze Seite also mindestens 500. Gegenüber m02_orig.png wurde nur der Bereich x26-257 / y424-492 geändert. Die Produktkante (Acrylschicht) ist vorher und nachher Pixel für Pixel gleich, die Füllung liegt also nur auf dem Hintergrund. In der Vergrösserung und im Hochpass-Kontrastbild sind keine Buchstaben-Geister von 'Silver' zu sehen; die Füllung ist nur etwas glatter als das JPEG-Rauschen daneben und von Auge nicht sichtbar. Die Farbe passt zur Variante 'Grau' (silbergraue Platte, graue Tasten), sonst gibt es kein graues Bild. Einschränkung: Die hintere rechte Plattenecke ragt über den rechten Bildrand (Spalte 511 zeigt bei y≈190-340 Produkt). Das war schon im Lieferantenbild #2 so und ist kein Google-Grund; das Bild ist also genau das jetzige Bild ohne Overlay. Gemeldete Variante 67870846910855 ist abgedeckt. Nicht gemeldet, aber gleiche Klasse: Rosa #4 'Pink', Weiss #6 'White', Schwarz #7 'Black'. Für Schwarz gibt es mit #5 (800x800) ein sauberes vorhandenes Bild."
+    },
+    {
+     "handle": "elektrische-nagelfrasmaschine-v2-191040",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Selbst geprüft: nagelfraese-rosa-ohne-badge.png ist 1000x1000 px. Geändert sind nur die Pixel in x0-351 / y0-132, alles reines Weiss. Der Rand rechts (x355-362) und unten (y132-145) hat genau gleich viele nicht-weisse Pixel wie m06_orig.png: Kabel und Gerätekante sind unberührt, kein Rest des Schattens. In der Vergrösserung ist kein Rest des Badges '45000PRM' zu sehen. Vollständig im Bild: rosa Gerät, Handstück, USB-Kabel, Bits, Schleifhülsen und Box. Die Kabel laufen wie im Original oben aus dem Bild. '45 RPM' und 'NAIL DRILL' sind Display bzw. Aufdruck am Gerät. Die Farbe passt zur Variante 'Rosa' (67879980171655). #6 ist das einzige Bild dieser Variante, keine gemeldete Variante fehlt."
+    }
+   ]
+  }
+ },
+ {
+  "gruppe": "?",
+  "vorschlag": {
+   "produkte": [
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/intelligente-tragbare-kaffeetasse-081792",
+     "handle": "intelligente-tragbare-kaffeetasse-081792",
+     "diagnose": "Gemeldet sind Blau (Bild #2), Orange (#6) und Grau (#1). Weiss (#4) ist nicht gemeldet, obwohl das Bild fast gleich aufgebaut ist. Das Bild allein entscheidet also nicht. Text-Auslöser: «Intelligente, tragbare» (typisch für «smart portable» Vapes), dazu «50 ml und weniger» (50 ml ist die übliche E-Liquid-Grösse) und «kleine Dosis Koffein». Die 50-ml-Angabe ist zudem falsch: Alle Produktbilder zeigen das Abzeichen «350ml». Bild-Auslöser: ein zylindrisches Gerät mit Punktmatrix-Anzeigeband und Trageschlaufe sieht aus wie eine Einweg-Vape. Für Blau, Orange und Grau gibt es kein anderes Bild in derselben Farbe (#3 und #5 sind violett, diese Farbe gibt es nicht als Variante). Ein Bildwechsel ist daher nicht möglich.",
+     "aktionen": [
+      {
+       "art": "text_ersetzen",
+       "variant_ids": [],
+       "bild_nr": null,
+       "neue_datei": null,
+       "feld": "title",
+       "alt": "Intelligente, tragbare Kaffeetasse",
+       "neu": "Tragbare Kaffeetasse aus Edelstahl, 350 ml",
+       "begruendung": "Nimmt das Vape-typische «Intelligente» aus dem Titel, der das stärkste Textsignal ist. «Intelligent» ist ohnehin nicht belegt, denn das Anzeigeband ist auf allen Farben derselbe Aufdruck. Neu stehen dort nur belegte Angaben: 316er Edelstahl laut Beschreibung, 350 ml laut den Produktbildern."
+      },
+      {
+       "art": "text_ersetzen",
+       "variant_ids": [],
+       "bild_nr": null,
+       "neue_datei": null,
+       "feld": "descriptionHtml",
+       "alt": "Diese intelligente, tragbare Kaffeetasse im japanischen Stil",
+       "neu": "Diese tragbare Kaffeetasse im japanischen Stil",
+       "begruendung": "Gleicher Auslöser wie im Titel («intelligente, tragbare» erinnert an Vapes). Es wird nur ein unbelegtes Wort gestrichen."
+      },
+      {
+       "art": "text_ersetzen",
+       "variant_ids": [],
+       "bild_nr": null,
+       "neue_datei": null,
+       "feld": "descriptionHtml",
+       "alt": "Mit einem Fassungsvermögen von 50 ml und weniger ist sie perfekt für einen schnellen Espresso oder eine kleine Dosis Koffein zwischendurch.",
+       "neu": "Mit einem Fassungsvermögen von 350 ml ist sie perfekt für deinen Kaffee zwischendurch.",
+       "begruendung": "Entfernt «50 ml» und «Dosis», die an E-Liquids erinnern. Korrigiert gleichzeitig die falsche Füllmenge: Jedes Produktbild zeigt «350ml». Kein neues Versprechen."
+      },
+      {
+       "art": "text_ersetzen",
+       "variant_ids": [],
+       "bild_nr": null,
+       "neue_datei": null,
+       "feld": "descriptionHtml",
+       "alt": "<li>Kompaktes Design mit weniger als 50 ml Fassungsvermögen</li>",
+       "neu": "<li>Kompaktes Design mit 350 ml Fassungsvermögen</li>",
+       "begruendung": "Dieselbe falsche 50-ml-Angabe in der Aufzählung, an die Bilder (350ml) angeglichen."
+      }
+     ],
+     "offen": "Das Bildsignal bleibt, weil es von Blau, Orange und Grau kein Bild ohne Trageschlaufe und Anzeigeband gibt. Bleibt die Meldung nach dem Textwechsel, braucht es neue Produktfotos ohne Trageschlaufe, oder eine Überprüfung im Merchant Center. Ausserhalb meiner Aktionsarten: productType «Gadget» und die Tags «elektronik»/«tech» verstärken den Geräte-Eindruck. productType wäre besser «Thermobecher»."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/elektrischer-wimpernkrummer-mit-wiederaufladba-0b8",
+     "handle": "elektrischer-wimpernkrummer-mit-wiederaufladba-0b82b1",
+     "diagnose": "Die Variante Weiss (67880034795911) hat als Variantenbild #6 mit nur 97×95 px und liegt damit unter der Mindestgrösse. Es gibt kein anderes Bild nur in Weiss mit mindestens 500 px ohne Einblendungen: #1, #4 und #5 zeigen Schwarz und Weiss zusammen, #2 hat eingesetzte Augen-Fotos und ist eine Collage. Schwarz (#7, 800×800) ist in Ordnung.",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67880034795911"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/elektrischer-wimpernkrummer-mit-wiederaufladba-0b8/vorschlag/weiss_hochskaliert_1000.jpg",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Das bisherige Variantenbild #6 (weisser Wimpernkrümmer, offen, Kappe daneben, weisser Hintergrund) wurde nach Vorgabe hochskaliert: convert m06.jpg -filter Lanczos -resize 1000x1000, dann weiss auf 1000×1000 aufgefüllt. identify: 1000x1000 JPEG. Angesehen: richtige Farbe, keine Einblendung, wegen der 10-fachen Vergrösserung aber weich. Schärfere Alternative mit derselben Farbe, ebenfalls angesehen und 1000×1000: /tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/elektrischer-wimpernkrummer-mit-wiederaufladba-0b8/vorschlag/weiss_aus_bild1_1000.jpg. Das ist der weisse Krümmer aus dem Hauptbild #1 ausgeschnitten. Er zeigt das Gerät aber geschlossen, ohne sichtbaren Kamm."
+      }
+     ],
+     "offen": ""
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/hundeweste-in-jeansoptik-626560",
+     "handle": "hundeweste-in-jeansoptik-626560",
+     "diagnose": "Gemeldet sind Cowboy Rosa / S und / L. Alle 6 Rosa-Varianten nutzen Bild #8 (277×277): eine Nahaufnahme eines Mopsgesichts, das Tier füllt das Bild. Auch die Blau-Varianten zeigen in #13 ein Mopsgesicht und sind nicht gemeldet. Die Einstufung schwankt also. Alle 19 Bilder zeigen lebende Hunde gross im Bild. Ein Bild nur mit der Weste oder mit einem kleinen, nebensächlichen Tier gibt es in keiner Farbe. Der Text ist eindeutig: Titel «Hundeweste in Jeansoptik», «Enthält: 1x Weste», die Google-Kategorie Dog Apparel stimmt. Einen Titel, der wie ein Tier klingt, gibt es nicht.",
+     "aktionen": [
+      {
+       "art": "nichts",
+       "variant_ids": [],
+       "bild_nr": null,
+       "neue_datei": null,
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Kein tierfreies Bild in Cowboy Rosa vorhanden, und der Text enthält keinen Auslöser. Eine Präzisierung brächte nichts."
+      }
+     ],
+     "offen": "Nicht lösbar mit vorhandenem Material. Nötig wäre ein Produktfoto der rosa Weste ohne Hund, zum Beispiel vom Lieferanten CJ, oder eine Überprüfung im Merchant Center. Ermessensfrage: #14 (1080×1080, gleiche rosa Ausführung) zeigt die Weste als Hauptmotiv statt des Mopsgesichts in #8, und es ist grösser (#8 hat nur 277 px). Der Hund bleibt aber gross im Bild, deshalb nicht vorgeschlagen."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/katzenpullover-fur-herbst-und-winter-616000",
+     "handle": "katzenpullover-fur-herbst-und-winter-616000",
+     "diagnose": "Alle 5 Grössen (XS–XL) nutzen Bild #7: eine lebende Katze füllt das Bild, sie trägt den Pullover. Gemeldet sind S und L, die anderen tragen dasselbe Bild. Bild #6 (800×800) zeigt genau diesen roten Rauten-Pullover mit Kirschen-Stickerei allein, flach auf einem Teller, ohne Tier. Daneben stehen ein Pappbecher und ein Plüschteddy als Requisiten. Es gibt nur eine Farbe. Der Text ist eindeutig ein Pullover.",
+     "aktionen": [
+      {
+       "art": "variantenbild_setzen",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67871309365639",
+        "gid://shopify/ProductVariant/67871309398407",
+        "gid://shopify/ProductVariant/67871309431175",
+        "gid://shopify/ProductVariant/67871309463943",
+        "gid://shopify/ProductVariant/67871309496711"
+       ],
+       "bild_nr": 6,
+       "neue_datei": null,
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "#6 zeigt nur den Artikel in derselben, einzigen Ausführung (rot, Rauten, Kirschen-Stickerei), ohne lebendes Tier, und hat mindestens 500 px. Der Aufdruck auf dem Requisiten-Becher gehört zum Foto und ist keine Einblendung. Alle 5 Grössen bekommen #6, weil alle dasselbe alte Bild #7 tragen."
+      }
+     ],
+     "offen": ""
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/geflochtene-hundeleine-196288",
+     "handle": "geflochtene-hundeleine-196288",
+     "diagnose": "Gemeldet sind Violett (Variantenbild #7) und Rosa (#1, zugleich das Hauptbild). Beide Bilder zeigen nur die Leine auf weissem Grund, ohne Tier. Das Variantenbild ist also nicht der Auslöser. Vermutlich wertet Google die Zusatzbilder #2, #3 und #9 aus, auf denen Hunde gross zu sehen sind. Der Text ist eindeutig: «Geflochtene Hundeleine», «Zum Führen von Hunden», Kategorie Pet Leashes. Eine Fehleinstufung.",
+     "aktionen": [
+      {
+       "art": "nichts",
+       "variant_ids": [],
+       "bild_nr": null,
+       "neue_datei": null,
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Die Variantenbilder sind schon tierfrei. Der Titel klingt nicht nach einem Tier, eine Textpräzisierung hat also keinen Ansatzpunkt. Die Hundebilder dürfen nicht gelöscht werden."
+      }
+     ],
+     "offen": "Nicht mit Variantenbild oder Text behebbar. Bleibt nur eine Überprüfung im Merchant Center, mit dem Hinweis: Artikel ist eine Leine, die Bilder zeigen den Artikel. Oder die Lifestyle-Bilder mit Hunden (#2, #3, #9) gehen nicht mehr als Zusatzbilder in den Feed. Das ist ein Eingriff ausserhalb dieser Regeln."
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/kabelloser-automatischer-lockenstab-mit-usb-la-2d2",
+     "handle": "kabelloser-automatischer-lockenstab-mit-usb-la-2d2191",
+     "diagnose": "Gemeldet ist nur Grau. Sein Variantenbild #3 (449×457) zeigt einen grauen Zylinder mit Anzeige, oben ragt eine braun gedrehte Haarsträhne heraus. Das sieht aus wie ein Rauchgerät mit Tabak- oder Zigarrenrolle. Das Bild ist zudem unter 500 px. Rosa (#8, gleiches Gerät liegend auf Stoff, ohne Haar) hat denselben Text und ist nicht gemeldet. Der Auslöser ist also das Bild #3, nicht der Text.",
+     "aktionen": [
+      {
+       "art": "variantenbild_setzen",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67870947115399"
+       ],
+       "bild_nr": 7,
+       "neue_datei": null,
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "#7 (800×599) zeigt genau den grauen Lockenstab mit pinken Ringen allein, ohne Haarsträhne und ohne Einblendung. Es ist dieselbe Aufnahmeart wie das nicht gemeldete Rosa-Bild #8. Nebenbei verschwindet die zu kleine Grösse von #3 (449×457)."
+      }
+     ],
+     "offen": "Kommt die Meldung nach dem Bildwechsel wieder, wären Begriffe wie «Wärmeleiter», «Temperaturstufen», «LCD-Anzeige» und «Ladeanschluss» ein schwächeres Zweitsignal. Vorerst nicht geändert, weil Rosa mit demselben Text unbeanstandet ist."
+    }
+   ]
+  },
+  "urteil": {
+   "urteile": [
+    {
+     "handle": "intelligente-tragbare-kaffeetasse-081792",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "«Intelligente, tragbare Kaffeetasse» ist der ganze Titel (genau einmal vorhanden). Neu ist wahr: 316er Edelstahl steht in der Beschreibung, und alle 800-px-Bilder (#1, #2, #4, #5, #6) zeigen das Abzeichen «350ml». Kein ß, kein neues Versprechen. Das unbelegte «Intelligente» ist ein plausibles Vape-Signal. Nebenbefund: Der SEO-Titel und die SEO-Beschreibung tragen weiter «Intelligente, tragbare Kaffeetasse». Sie sollten nachgezogen werden, das gehört aber nicht zu dieser Aktion."
+    },
+    {
+     "handle": "intelligente-tragbare-kaffeetasse-081792",
+     "aktion_index": 1,
+     "ok": true,
+     "grund": "Der Teilstring kommt in descriptionHtml genau einmal vor. Neu wird nur das unbelegte Wort «intelligente» gestrichen. Korrekt und ohne neue Aussage."
+    },
+    {
+     "handle": "intelligente-tragbare-kaffeetasse-081792",
+     "aktion_index": 2,
+     "ok": true,
+     "grund": "Der Satz kommt in descriptionHtml genau einmal vor. Die alte Angabe «50 ml und weniger» widerspricht dem 350ml-Abzeichen auf allen Produktbildern. Die Korrektur auf 350 ml ist damit belegt. «Dosis» und «50 ml» (Liquid-Signale) fallen weg, und es entsteht kein neues Versprechen."
+    },
+    {
+     "handle": "intelligente-tragbare-kaffeetasse-081792",
+     "aktion_index": 3,
+     "ok": true,
+     "grund": "«<li>Kompaktes Design mit weniger als 50 ml Fassungsvermögen</li>» steht genau einmal in descriptionHtml. Die neue Fassung passt sich an die Bildangabe 350ml an, ist deutsch, wahr und ohne ß."
+    },
+    {
+     "handle": "elektrischer-wimpernkrummer-mit-wiederaufladba-0b82b1",
+     "aktion_index": 0,
+     "ok": false,
+     "grund": "weiss_hochskaliert_1000.jpg erfüllt die Formalien: 1000×1000 px, richtige Farbe Weiss, kein Text, Produkt vollständig, laut Bounding-Box nicht verzerrt. Es ist aber das 97×95-Vorschaubild, rund 10-fach vergrössert, und sichtbar verwaschen und unscharf. Google verlangt beim image_link ausdrücklich, kein Bild hochzuskalieren und kein Vorschaubild einzureichen. Damit droht die nächste Bildqualitäts-Meldung. Es gibt eine klar bessere Lösung, die der Analyst selbst erstellt hat: vorschlag/weiss_aus_bild1_1000.jpg. Das ist der weisse Krümmer, aus Hauptbild #1 ausgeschnitten: 1000×1000 px, scharf, nur Weiss, kein Rest des schwarzen Geräts (die Ränder sind rein weiss). Der Schriftzug «New Eyecurl» ist physisch auf dem Gerät, und das Gerät ist vollständig im Bild. Diese Datei als neues Variantenbild für 67880034795911 nehmen. Wenn möglich aus dem 800-px-Original von #1 ausschneiden statt aus dem 600-px-JPG."
+    },
+    {
+     "handle": "hundeweste-in-jeansoptik-626560",
+     "aktion_index": 0,
+     "ok": false,
+     "grund": "Es gibt eine klar bessere Lösung als «nichts». Das heutige Rosa-Variantenbild #8 ist nur 277×277 px und eine Gesichtsnahaufnahme eines Mopses, die Weste ist angeschnitten und das Tier ist das Motiv. #14 (1080×1080) zeigt genau dieselbe Ausführung Cowboy Rosa (rosa Batik-Jeansweste mit ausgefransten Armlöchern, verglichen mit #8 und #15). Die Weste steht dort vollständig und mittig als Hauptmotiv, ohne Text. Das ist besser in Grösse und Produktsichtbarkeit und schwächt das Signal «Tier ist das Motiv» deutlich, ohne jeden Nachteil. Vorschlag: variantenbild_setzen mit #14 für alle 6 Cowboy-Rosa-Varianten 67948234768775, 67948234801543, 67948234834311, 67948234867079, 67948234899847, 67948234932615. Ob das die Meldung sicher löst, bleibt offen, weil auch auf #14 ein Hund zu sehen ist. Nebenbefund: Das Blau-Variantenbild #13 ist nur 216×216 px (Nahaufnahme), unter der Bekleidungs-Untergrenze von 250 px. Als Ersatz in Blau kommen #5, #12 oder #17 in Frage."
+    },
+    {
+     "handle": "katzenpullover-fur-herbst-und-winter-616000",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "#6 ist 800×800 px und zeigt genau den einzigen Artikel (roter Rauten-Pullover mit Kirschen-Stickerei, wie auf #1 bis #7), flach auf einem Teller, ohne lebendes Tier. Damit fällt der Auslöser «Verkauf lebender Tiere» weg. Es gibt keine Einblendung, keine Masse, keinen Rahmen. Die 5 variant_ids (XS bis XL) sind alle Varianten. Alle trugen #7, gemeldet waren S und L, es fehlt keine. Restrisiko: Auf dem Requisiten-Pappbecher steht lesbar «Understated Belleville Brûlerie Paris». Das ist physisch im Foto und keine Einblendung, aber Fremdtext neben dem Produkt. Dazu kommt ein Plüschteddy als Requisite. Ein Zuschnitt ohne Becher ist nicht sauber möglich, weil Becher, Teller und Teddy sich überschneiden. Das Bild ist daher annehmbar."
+    },
+    {
+     "handle": "geflochtene-hundeleine-196288",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Bestätigt: Die Variantenbilder #7 (Violett) und #1 (Rosa) zeigen nur die Leine auf weissem Grund, ohne Tier und ohne Text, sie haben 1000 px. Ein besseres Bild gibt es nicht. Auffällig: Gemeldet sind genau die Farben, die auf den Hundebildern vorkommen (Violett und Rosa auf #2, Rosa/Pink auf #3 und #9). Der Auslöser sind also diese Zusatzbilder, und die dürfen nicht gelöscht werden. Der Text (Titel «Geflochtene Hundeleine», Kategorie Pet Leashes) hat keinen Ansatzpunkt. Im erlaubten Rahmen gibt es keine saubere Lösung, es bleibt die Überprüfung im Merchant Center."
+    },
+    {
+     "handle": "kabelloser-automatischer-lockenstab-mit-usb-la-2d2191",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "#7 (800×599 px, kurze Seite 599 ≥ 500) zeigt genau die Ausführung Grau: grauer Körper mit pinken Ringen, wie auf #3. Das Gerät liegt vollständig im Bild, ohne Haarsträhne, ohne Einblendung. «START» und die Tastensymbole sind physisch auf dem Produkt. Dieselbe Aufnahmeart hat das nicht gemeldete Rosa-Bild #8. Die variant_id 67870947115399 ist die einzige gemeldete und gehört zu Grau. Nebenbei verschwindet das zu kleine #3 (449×457) als image_link."
+    }
+   ]
+  }
+ },
+ {
+  "gruppe": "manuell",
+  "vorschlag": {
+   "produkte": [
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/elektrischer-wimpernkrummer-mit-wiederaufladba-0b8",
+     "handle": "elektrischer-wimpernkrummer-mit-wiederaufladba-0b82b1",
+     "diagnose": "",
+     "offen": "",
+     "aktionen": [
+      {
+       "art": "neues_bild_variante",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67880034795911"
+       ],
+       "bild_nr": null,
+       "neue_datei": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/elektrischer-wimpernkrummer-mit-wiederaufladba-0b8/vorschlag/weiss_aus_bild1_1000.jpg",
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "Bild zu klein (97 px) → weisser Krümmer scharf aus Hauptbild #1 ausgeschnitten, 1000×1000 (Prüfer-Vorschlag, selbst angesehen)"
+      }
+     ]
+    },
+    {
+     "ordner": "/tmp/claude-0/-home-user-aban-news-landing/4b3d580f-be07-56cf-9e7e-eb1e2c56b229/scratchpad/gmc/hundeweste-in-jeansoptik-626560",
+     "handle": "hundeweste-in-jeansoptik-626560",
+     "diagnose": "",
+     "offen": "",
+     "aktionen": [
+      {
+       "art": "variantenbild_setzen",
+       "variant_ids": [
+        "gid://shopify/ProductVariant/67948234768775",
+        "gid://shopify/ProductVariant/67948234801543",
+        "gid://shopify/ProductVariant/67948234834311",
+        "gid://shopify/ProductVariant/67948234867079",
+        "gid://shopify/ProductVariant/67948234899847",
+        "gid://shopify/ProductVariant/67948234932615"
+       ],
+       "bild_nr": 14,
+       "neue_datei": null,
+       "feld": null,
+       "alt": null,
+       "neu": null,
+       "begruendung": "«lebende Tiere»: Rosa-Variantenbild #8 war 277-px-Hundegesicht → #14 (1080 px, Weste vollständig als Hauptmotiv; Prüfer-Vorschlag, selbst angesehen)"
+      }
+     ]
+    }
+   ]
+  },
+  "urteil": {
+   "urteile": [
+    {
+     "handle": "elektrischer-wimpernkrummer-mit-wiederaufladba-0b82b1",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Hauptmodell geprüft"
+    },
+    {
+     "handle": "hundeweste-in-jeansoptik-626560",
+     "aktion_index": 0,
+     "ok": true,
+     "grund": "Hauptmodell geprüft"
+    }
+   ]
+  }
+ }
+]
