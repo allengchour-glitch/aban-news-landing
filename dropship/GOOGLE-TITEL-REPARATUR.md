@@ -16,17 +16,12 @@
 Gegenproben: «Sexy» im Titel (45) trägt 0 «Inappropriate title»; RAUCH-Regex über 50'016 Titel = 45 Treffer, alle
 echtes Rauchzubehör; Such-Kanarienvogel `title:*zzzkanari*` = 0.
 
-## Letzter Lauf 2026-11-23T17:51:54Z — SCHARF
+## Letzter Lauf 2026-11-24T18:01:33Z — SCHARF
 
-Gescannt 56264 aktive von 56247 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 6x gewartet, 26 s gesamt.
+Gescannt 55859 aktive von 55859 (EXACT); Wächter-Stand 0 h alt; Kanarienvögel und Taxonomie-IDs geprüft. Eimer-Etikette: 0x gewartet, 0 s gesamt.
 
 | Produkt | Regel | Änderung | Status |
 |---|---|---|---|
-| infrarot-nachtsichtgerat-1080p-687680 | POLICY | +google-policy-flag,google-policy-waffen | ok |
-| game-gunstock-fur-nintendo-switch-300672 | POLICY | +google-policy-flag,google-policy-waffen | ok |
-| binokulares-infrarot-nachtsichtgerat-mit-foto-623600 | POLICY | +google-policy-flag,google-policy-waffen | ok |
-| bluetooth-pedometer-uhr-a6a3f1 | POLICY | +google-policy-flag,google-policy-waffen | ok |
-| akazien-pfeffer-und-salzmuhle-2er-set-mit-stan-570048 | POLICY | +google-policy-flag,google-policy-waffen | ok |
 
 ## Ledger gesamt
 
@@ -99,3 +94,11 @@ Typ-/Tag-Korrekturen (rückgelesen):
 - zigarrenschneider-011392: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - zigarrenschneider-gezackt-und-doppelklingig-769728: typ Raucherzubehör; tags_dazu raucher,smoke-zubehoer
 - zisha-keramik-gongfu-teetasse-tenmoku-glasur-638100: typ Küche & Bar
+
+## Nachmessung (≥ 20 h nach dem Schreiben, Google live)
+
+- infrarot-nachtsichtgerat-1080p-687680: keine Google-Meldung
+- game-gunstock-fur-nintendo-switch-300672: keine Google-Meldung
+- binokulares-infrarot-nachtsichtgerat-mit-foto-623600: keine Google-Meldung
+- bluetooth-pedometer-uhr-a6a3f1: keine Google-Meldung
+- akazien-pfeffer-und-salzmuhle-2er-set-mit-stan-570048: keine Google-Meldung

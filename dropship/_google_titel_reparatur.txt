@@ -459,3 +459,8 @@
 2026-11-23T17:51:52Z	SCHREIB	gid://shopify/Product/15502587789697	binokulares-infrarot-nachtsichtgerat-mit-foto-623600	POLICY	tags_dazu		google-policy-flag,google-policy-waffen	ok
 2026-11-23T17:51:53Z	SCHREIB	gid://shopify/Product/15504227402113	bluetooth-pedometer-uhr-a6a3f1	POLICY	tags_dazu		google-policy-flag,google-policy-waffen	ok
 2026-11-23T17:51:54Z	SCHREIB	gid://shopify/Product/15508406731137	akazien-pfeffer-und-salzmuhle-2er-set-mit-stan-570048	POLICY	tags_dazu		google-policy-flag,google-policy-waffen	ok
+2026-11-24T18:01:32Z	NACHMESSUNG	gid://shopify/Product/15449486328193	infrarot-nachtsichtgerat-1080p-687680	-	google		keine Google-Meldung	ok
+2026-11-24T18:01:32Z	NACHMESSUNG	gid://shopify/Product/15451639677313	game-gunstock-fur-nintendo-switch-300672	-	google		keine Google-Meldung	ok
+2026-11-24T18:01:32Z	NACHMESSUNG	gid://shopify/Product/15502587789697	binokulares-infrarot-nachtsichtgerat-mit-foto-623600	-	google		keine Google-Meldung	ok
+2026-11-24T18:01:33Z	NACHMESSUNG	gid://shopify/Product/15504227402113	bluetooth-pedometer-uhr-a6a3f1	-	google		keine Google-Meldung	ok
+2026-11-24T18:01:33Z	NACHMESSUNG	gid://shopify/Product/15508406731137	akazien-pfeffer-und-salzmuhle-2er-set-mit-stan-570048	-	google		keine Google-Meldung	ok

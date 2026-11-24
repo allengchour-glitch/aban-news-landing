@@ -1766,3 +1766,12 @@ gid://shopify/Product/15504138666369	a	kids
 gid://shopify/Product/15512315953537	a	kids
 gid://shopify/Product/15522295841153	a	kids
 gid://shopify/Product/16732213543303	a	toddler
+gid://shopify/Product/16732279636359	w	Kleinteile	Bauklötze: Polizeiauto, Rennwagen, Kippmulde
+gid://shopify/Product/16732280291719	w	Kleinteile	Bauklötze Off-Road Fahrzeug Modell für Jugendliche
+gid://shopify/Product/16732282683783	w	Magnete	Magnetisches Baustein-Set für Kinder
+gid://shopify/Product/16732218065287	a	toddler
+gid://shopify/Product/16732257419655	a	toddler
+gid://shopify/Product/16732283109767	a	toddler
+gid://shopify/Product/16732284256647	a	toddler
+gid://shopify/Product/16732287861127	a	toddler
+gid://shopify/Product/16732288614791	a	toddler
