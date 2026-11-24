@@ -1363,3 +1363,6 @@ handarbeit-stickerei	ok	29	Stickereisets & Stickbilder
 naehmaschinen-naehzubehoer	ok	29	Nähmaschinen & Nähzubehör
 garn-wolle-nadeln	ok	29	Garn, Wolle & Handarbeitsnadeln
 musikinstrumente-trommeln-kalimba	ok	23	Musikinstrumente
+instrumenten-zubehoer	ok	29	Instrumenten-Zubehör
+instrumente-gitarre-ukulele	ok	25	Gitarre, Bass & Ukulele
+geschenkverpackung-boxen	ok	23	Geschenkverpackung & Boxen
