@@ -35,4 +35,4 @@ Sicherungen (Stand vor dem Schreiben): `sicherung/`.
 ## #1042 Kundin (24.11.)
 - 04:47 UTC erste Mail (Betreiber gesendet). 08:12 UTC Antwort Kundin: «Bitte 2 …Ich möchte unbedingt die 2 Wickel» → gelesen als: Wickel liefern.
 - 08:39 UTC Antwort an Kundin gesendet (info@luxestyle.ch): Wickel kommen, Bergamotte CHF 15.21 zurück, Weihrauch je nach CJ, Versand gratis; falls «2» doch Storno gemeint war, kurz melden.
-- Offen (Betreiber): CJ-Ticket-Antwort (Auftrag SD2611172218050640600 um 08:3x noch unverändert mit beiden Ölen), Shopify-Teilerstattung Bergamotte CHF 15.21.
+- CJ-Ticket-Antwort vom Betreiber am 24.11. morgens gesendet (Auftrag um 08:3x UTC noch unverändert mit beiden Ölen). Offen: Shopify-Teilerstattung Bergamotte CHF 15.21; Nachprüfung 12:4x UTC (send_later).
