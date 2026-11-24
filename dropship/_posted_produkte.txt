@@ -564,3 +564,6 @@ slug:kabelloses-lavalier-mikrofon
 slug:cjreel-cjqcqccz00034-7903black-wireless
 pid:15450835059073
 slug:kabelloser-handstaubsauger-fur-auto-zuhause-3da44c
+name:oceanwaveprojektorlednachtlicht
+pid:15450856063361
+slug:ocean-wave-projektor-led-nachtlicht-33b26c

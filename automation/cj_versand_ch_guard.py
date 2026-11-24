@@ -40,6 +40,9 @@ CJT = _cj_token()
 DRY = os.environ.get("DRY") == "1"
 REVIVE = os.environ.get("REVIVE") == "1"
 MINPREIS = float(os.environ.get("MINPREIS", "100"))
+SENSIBEL = re.compile(r"akku|batterie|powerbank|lithium|ladeger|ladestation|ladekabel|projektor|beamer|lautsprecher|kopfh[oö]rer|"
+                      r"smartwatch|kamera|drohne|parfum|[äa]therisch|\b[öo]l\b|spray|fl[üu]ssig|magnet|e-bike|scooter|heizdecke|"
+                      r"heizkissen|massagege|haartrockner|f[öo]hn|rasierer|epilierer|led-", re.I)
 LEDGER = "dropship/_cj_versand_ch.txt"
 TAG = "cj-nicht-versendbar-ch"
 USD_CHF = float(os.environ.get("USD_CHF", "0.81"))
@@ -250,7 +253,10 @@ def main():
         for p in pg["nodes"]:
             preis = float(p["priceRangeV2"]["minVariantPrice"]["amount"])
             sku = (p["variants"]["nodes"][0]["sku"] if p["variants"]["nodes"] else "") or ""
-            if preis >= MINPREIS and ist_kandidat(sku):
+            # 24.11.2026 (Betreiber «leute kaufen und es sollte auch haben statt immer rückerstattung»): Akku-, Flüssig- und
+            # Magnetware fährt nur über Sensitive-Linien und hat am ehesten GAR KEINE Linie in die CH (#1016; Powerbank
+            # 30000 mAh am 24.11. ohne Linie, VK 21.90) → unabhängig vom Preis prüfen, nicht erst ab CHF 100.
+            if (preis >= MINPREIS or SENSIBEL.search(p.get("title") or "")) and ist_kandidat(sku):
                 kandidaten.append((p["id"], p["title"], preis, sku))
         if not pg["pageInfo"]["hasNextPage"]:
             break
