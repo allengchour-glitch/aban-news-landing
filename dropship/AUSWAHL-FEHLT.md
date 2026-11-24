@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-23 21:58 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 07:32 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 194 · **130 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 103, teilweise: 25, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 63 · ohne Antwort: 1
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 193 · **131 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 102, teilweise: 27, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -75,6 +75,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Nagel-Set "Thigh Coarse Hair Bow" (`nagel-set-thigh-coarse-hair-bow-258880`) | 9 | 9 | 2.42–2.42 | 15.90 | Prolate Ellipse-XS, Prolate Ellipse-S, Prolate Ellipse-M, Long T-XS |
 | Magnetisches L-förmiges Ladekabel für diverse Geräte (`magnetisches-l-formiges-ladekabel-fur-diverse-947712`) | 9 | 9 | 3.87–3.87 | 16.90 | Red-8PIN, Red-Micro USB, Red-Typc, Black-8PIN |
 | Verstellbares Katzenhalsband mit Halstuch (`verstellbares-katzenhalsband-mit-halstuch-616800`) | 9 | 6 | 6.86–7.63 | 29.90 | Wine Red-S Size Scarf 29 To37cm, Wine Red-M Size Scarf 36 To42cm, Wine Red-L Size Scarf 42 To52cm, Barbie Pink-S Size Scarf 29 To37cm |
+| Gestreifter Natursteinring für Damen (`gestreifter-natursteinring-fur-damen-604801`) | 9 | 6 | 2.93–2.93 | 22.90 | Lapis Lazuli-6, Lapis Lazuli-7, Lapis Lazuli-8, Pearl-6 |
 | Handgenähtes Lenkradbezug Modifiziert (`handgenahtes-lenkradbezug-modifiziert-620500`) | 8 | 8 | 4.19–4.19 | 19.90 | Black Coffee-38cm, Black Orange-38cm, Black-38cm, Beige-38cm |
 | Duftkerze im Aluminiumgehäuse (`duftkerze-im-aluminiumgehause-601100`) | 8 | 8 | 2.06–2.06 | 15.90 | Baltic Amber, Black Wolfberry Tarocco, Morocco Mint Tea, Organge Flower |
 | Magnetische Wireless Powerbank (`magnetische-wireless-powerbank-601800`) | 8 | 8 | 4.86–6.3 | 19.90 | Black-5000 MA, Black-10000 MA, White-5000 MA, White-10000 MA |
@@ -97,10 +98,9 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Intelligenter Quadcopter mit drei Kameras (`intelligenter-quadcopter-mit-drei-kameras-620700`) | 6 | 6 | 24.05–30.02 | 41.90 | Gray-Single Battery Version, Gray-Dual Battery Version, Gray-Three Battery Versions, Carbon Fiber-Single Battery Version |
 | Cat Eye Oval-Kunstnägel – Transparent Fluorescent (`cat-eye-oval-kunstnagel-transparent-fluorescen-609700`) | 6 | 6 | 6.54–6.54 | 19.90 | M-Medium Ellipse, M-Short ellipse, S-Medium Ellipse, S-Short ellipse |
 | Bucheriti Cat's Eye Press-on Nägel (`bucheriti-cat-s-eye-press-on-nagel-867712`) | 6 | 6 | 4.87–4.87 | 17.90 | XS Short Square, S Short Square, M Short Square, XS Short Ladder |
-| Weinöffner mit Luftdruckpumpe (`weinoffner-mit-luftdruckpumpe-198db1`) | 6 | 6 | 3.51–6.62 | 22.90 | Gold-Upgrade, Silver-Set, Black-Set 2, Red-Upgrade |
 | Retro-Minimalistische Herrenuhr mit grossem Zifferblatt (`retro-minimalistische-herrenuhr-mit-gro-em-zif-616300`) | 5 | 5 | 8.96–8.96 | 16.90 | White X White X G, G X G X G, Gold X Gold X Green, Gold X Gold X White |
+| 4L Trinkbrunnen für Haustiere (`4l-trinkbrunnen-fur-haustiere-634800`) | 5 | 4 | 15.38–18.92 | 38.90 | Water Droplet Shaped Window-US, Water Droplet Shaped Window-EU, Water Droplet Shaped Window-AU, Water Droplet Shaped Window-UK |
 | 45W Power Bank mit Kabel, 20000 mAh (`45w-power-bank-mit-kabel-20000-mah-629900`) | 5 | 5 | 9.76–10.61 | 24.90 | White-45W 20000 MA, Black-45W 20000 MA, Pink-45W 20000 MA, Violet-45W 20000 MA |
-| Lordosenstützkissen für erholsamen Schlaf (`lordosenstutzkissen-fur-erholsamen-schlaf-613700`) | 5 | 5 | 3.23–3.23 | 22.90 | Bean Green-Memory Foam Inner Core, Pink Jade-Memory Foam Inner Core, Light Gray-Memory Foam Inner Core, Light Blue-Memory Foam Inner Core |
 | Carryan Herren-Quarzuhr mit Stahlarmband (`carryan-herren-quarzuhr-mit-stahlarmband-626200`) | 5 | 5 | 5.8–5.8 | 18.90 | White × White × White, White × White × Black, White × White × Green, White × White × Blue |
 | Ferngesteuertes Spielzeug für Haustiere (`ferngesteuertes-spielzeug-fur-haustiere-616400`) | 5 | 5 | 5.72–6.22 | 18.90 | Pet Owl, Funny Pet Yellow Chicken, Pet Bat, Funny Pet Honey Skunk |
 | Automatischer Futterspender (5L) (`automatischer-futterspender-5l-622900`) | 5 | 5 | 16.42–29.19 | 64.90 | 5L Button-Single Bowl, 5L Button-Double Bowl, 5L WIFI-Single Bowl, 5L WIFI-Double Bowl |
@@ -108,6 +108,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Hoch elastisches Gummiband (`hoch-elastisches-gummiband-628100`) | 5 | 5 | 7.46–7.46 | 27.90 | 1745 Plain, 1745 Red, 1745 Green, 1745 Black |
 | Multifunktionale Wangenauflage-Tasche (`multifunktionale-wangenauflage-tasche-766016`) | 5 | 5 | 3.28–3.28 | 22.90 | Black, Wolf brown, Army Green, Desert digital |
 | Neun Farben Augen-Malpalette mit Glitzer (`neun-farben-augen-malpalette-mit-glitzer-731328`) | 5 | 5 | 2.46–2.46 | 16.90 | P102 Toffee, P103 Chocolate, P107 Peach Disk, P108 Purple Taro New Color |
+| Digitaler Kalenderwecker mit Medikamenten-Erinnerung (`digitaler-kalenderwecker-mit-medikamenten-erin-609900`) | 4 | 4 | 15.28–15.28 | 26.90 | US-White, EU-White, JP-White, AU-White |
 | Handgemachte Schmetterlings-Maniküre zum Aufkleben · Press-on-Nägel (`handgemachte-schmetterlings-manikure-zum-aufkl-615600`) | 4 | 4 | 3.25–3.25 | 15.90 | Style 1456-XS, Style 1456-S, Style 1456-M, Style 1456-L |
 | Baby-Kopfkissen mit Hirsekissen (`baby-kopfkissen-mit-hirsekissen-635000`) | 4 | 4 | 4.9–4.9 | 44.90 | Whale Fall In The Starry Sea-41X29cm, Mushroom Kingdom-41X29cm, Green Bamboo Panda-41X29cm, Little Prince-41X29cm |
 | Barocke Beauty-Kamee Nagelsticker (`barocke-beauty-kamee-nagelsticker-793984`) | 4 | 4 | 2.55–2.55 | 15.90 | Camellia-Xs Extra Small, Camellia-S Small Size, Camellia-M Medium, Camellia-L Large Size |
