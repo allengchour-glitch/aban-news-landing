@@ -41254,3 +41254,5 @@ gid://shopify/Product/15430238634369	keine-cj-referenz
 gid://shopify/Product/15448887001473	cj-abgekuendigt-pruefen
 gid://shopify/Product/15450836631937	keine-cj-referenz
 gid://shopify/Product/15491411804545	CHF 21.85	4 Varianten	Leuchtender Halloween-Schaukelgeist
+gid://shopify/Product/15430238634369	keine-cj-referenz
+gid://shopify/Product/15450836631937	keine-cj-referenz
