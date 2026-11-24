@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 20:40 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 22:49 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 187 · **125 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 97, teilweise: 26, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 184 · **122 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 94, teilweise: 26, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -116,9 +116,6 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Abnehmbare Kunstnägel «North Sea King» (`abnehmbare-kunstnagel-north-sea-king-624900`) | 4 | 4 | 10.66–10.66 | 24.90 | Sunset-XS, Sunset-S, Sunset-M, Sunset-L |
 | Nacken- und Schultermassagekissen (`nacken-und-schultermassagekissen-176640`) | 4 | 4 | 48.86–48.86 | 73.90 | Lemon yellow-USB, Soft brown-USB, Turquoise-USB, Vibrant Orange-USB |
 | Douji Wear Armor Turmalin Feenkrone K9 Edelstein Aurora Maniküre (`douji-wear-armor-turmalin-feenkrone-k9-edelste-534272`) | 4 | 4 | 24.1–24.1 | 42.90 | XS-As Shown, S-As Shown, M-As Shown, L-As Shown |
-| Handbemalte Blumen-Press-On Nägel (`handbemalte-blumen-press-on-nagel-586688`) | 4 | 4 | 19.53–19.53 | 38.90 | XS-As Shown In The Figure Shape, S-As Shown In The Figure Shape, M-As Shown In The Figure Shape, L-As Shown In The Figure Shape |
-| Handgemachtes Meerjungfrau-Ozean Nagel-Set (`handgemachtes-meerjungfrau-ozean-nagel-set-544640`) | 4 | 4 | 2.23–2.23 | 19.90 | Extra Small XS-Mermaid Ocean, Small Size S-Mermaid Ocean, Medium M-Mermaid Ocean, Large L-Mermaid Ocean |
-| Qianjinmingyuan Sanfte Maniküre (`qianjinmingyuan-sanfte-manikure-140608`) | 4 | 4 | 2.92–2.92 | 20.90 | Pink-XS, Pink-S, Pink-M, Pink-L |
 | Miniatur Diamant-Partikel Häuschen Puzzle (`miniatur-diamant-partikel-hauschen-puzzle-616256`) | 4 | 4 | 4.36–4.36 | 23.90 | Sweetheart handmade, Afternoon time, Annies studio, Sunshine flower house |
 | Smartwatch mit HD-Display & Gesundheitsmonitoring (`smartwatch-mit-hd-display-gesundheitsmonitorin-622100`) | 4 | 4 | 15.71–16.48 | 36.90 | F59plus Vinyl, F59plus Ryuguang Silver Glue, F59plus Rose Gold, F59plus Black Leather |
 | Keramik-Vorratsdose für Gewürze (`keramik-vorratsdose-fur-gewurze-736000`) | 4 | 4 | 4.01–5.8 | 23.90 | Chiba 670ml, Chiba 1200ml, Little Yellow Flower 670ml, Little Yellow Flower 1200ml |
