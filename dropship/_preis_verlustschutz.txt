@@ -346665,3 +346665,8 @@
 67789893042567	heben	51.90	53.90	43.05	2026-11-24	vintage-motorradsattelanzug-mit-pu-futter-960576
 67789893075335	heben	51.90	53.90	43.21	2026-11-24	vintage-motorradsattelanzug-mit-pu-futter-960576
 67789893108103	heben	51.90	52.90	42.07	2026-11-24	vintage-motorradsattelanzug-mit-pu-futter-960576
+68305411277191	heben	62.90	66.90	53.80	2026-11-24	handgefertigte-rattan-stehlampe-fur-wohnzimmer-619000
+68305151525255	heben	37.90	42.90	34.31	2026-11-24	deckenleuchte-aus-eisen-fur-lernraume-602300
+68305412292999	heben	37.90	39.90	32.05	2026-11-24	deckenleuchte-aus-eisen-fur-lernraume-602300
+68305412358535	heben	37.90	39.90	32.05	2026-11-24	deckenleuchte-aus-eisen-fur-lernraume-602300
+68305411309959	heben	75.90	78.90	63.04	2026-11-24	wandlampe-mit-miniatur-schloss-design-619300
