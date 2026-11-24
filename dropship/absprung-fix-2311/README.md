@@ -26,3 +26,8 @@ Sicherungen (Stand vor dem Schreiben): `sicherung/`.
 - CJ-Ticket #1042: Antwort an CJ = Betreiber-Klick (Text im Chat 23.11.). Kundenmail liegt als Gmail-Entwurf bereit (vor dem Senden Absender info@luxestyle.ch wählen und frischen Thread lesen). Rückerstattung Bergamotte CHF 15.21 = Betreiber-Klick in Shopify; Weihrauch erst nach CJ-Bestätigung.
 - 24.11. 00:25 UTC Erinnerung (trig_015BvpQyN8q2a33MRUdPmwAQ): CJ-Bestand der 11 übrigen Düfte, Daunen-Beleg 636700 (Titel «Lange Steppjacke für Damen» nur ohne Beleg), Auftrag LX1042.
 - Jacken 636700 und 612500: alle Bilder mit Herz-Sticker → neue Fotos nötig (kein sauberes Bild vorhanden).
+
+## Nachprüfung 24.11.2026 00:26 UTC (CJ-Punkte frisch)
+- **CJBJPFJY00219:** CJ führt weiterhin alle 13 Varianten (status 3). `stock/queryByVid` meldet für ALLE ~10–14k «factoryInventory» (cjInventory 0), **auch für die laut Ticket eingestellte Bergamotte** → die CJ-Bestandszahl beweist hier nichts. Sperren Bergamotte/Weihrauch bleiben; die übrigen 11 bleiben offen (kein Beleg für eingestellt). Lehre: Ein CJ-Ticket «Discontinued» schlägt die API-Bestandszahl.
+- **CJWY2689967 (Jacke 636700):** Name bei CJ «Casual Down Jackets …», aber Material «Cloth», Kategorie «Women's Padded Jackets», kein Füllungs-/Daunen-Satz in der Beschreibung → Daunen nicht belegt. LIVE: Titel «Lange Steppjacke für Damen», SEO-Titel/-Beschreibung, «diese Steppjacke» im Text, 21 Alt-Texte (Handle bleibt). Rückweg: `sicherung/jacken_636700_titel_vorher.json`.
+- **LX1042 / SD2611172218050640600:** unverändert UNSHIPPED, USD 24.61, alle 3 Positionen noch im Auftrag → CJ hat noch nichts storniert; Antwort im Ticket weiter offen (Betreiber).

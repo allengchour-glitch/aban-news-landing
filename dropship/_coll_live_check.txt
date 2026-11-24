@@ -1339,3 +1339,27 @@ hallen-kampfsportschuhe	ok	26	Hallen- & Kampfsportschuhe
 tanz-ballettschuhe	ok	29	Tanz- & Ballettschuhe
 skateschuhe	ok	22	Skateschuhe
 inline-skates-rollschuhe	ok	29	Inline-Skates & Rollschuhe
+wasser-aquaschuhe	ok	29	Wasser- & Aquaschuhe
+wasserschuhe-kinder	ok	23	Kinder-Wasserschuhe
+wasserschuhe-badeschuhe	ok	22	Badeschuhe
+radschuhe	ok	21	Radschuhe & Velo-Schuhe
+malen-nach-zahlen-sets	ok	29	Malen nach Zahlen
+mnz-landschaft	ok	29	Landschaften & Natur
+mnz-blumen	ok	29	Blumen & Pflanzen
+mnz-tiere	ok	29	Tiere
+mal-zeichenbedarf	ok	29	Farben, Pinsel & Zeichenbedarf
+bastelsets-diy-kits	ok	22	Bastelsets & DIY-Kits
+baender-borten-verzierungen	ok	29	Bänder, Borten & Verzierungen
+bastelwerkzeug-schneiden-kleben	ok	29	Bastelwerkzeug & Scheren
+kunstleder-lederhandwerk	ok	29	Kunstleder & Lederhandwerk
+kerzen-seifenformen	ok	26	Kerzen- & Seifenformen
+epoxidharz-giessformen	ok	21	Epoxidharz, Pigmente & Giessformen
+stoffe-meterware	ok	29	Stoffe & Meterware
+stoffe-baumwolle-twill	ok	29	Baumwoll- & Twillstoffe
+stoffe-bedruckt-muster	ok	29	Bedruckte & gemusterte Stoffe
+handarbeitssets-sticken-haekeln	ok	29	Stick-, Häkel- & Nähsets
+handarbeit-kreuzstich	ok	29	Kreuzstich-Sets
+handarbeit-stickerei	ok	29	Stickereisets & Stickbilder
+naehmaschinen-naehzubehoer	ok	29	Nähmaschinen & Nähzubehör
+garn-wolle-nadeln	ok	29	Garn, Wolle & Handarbeitsnadeln
+musikinstrumente-trommeln-kalimba	ok	23	Musikinstrumente
