@@ -1,14 +1,2763 @@
 {
- "stand": "2026-10-23T07:58Z",
- "ziele": 412,
- "waisen": 0,
- "liste": [],
+ "stand": "2026-11-24T08:12Z",
+ "ziele": 1547,
+ "waisen": 537,
+ "liste": [
+  {
+   "handle": "mengenrabatt-ab-2-stueck",
+   "titel": "Mengenrabatt: ab 2 Stück 5 %, ab 3 Stück 10 %",
+   "aktiv": 4629
+  },
+  {
+   "handle": "mengenrabatt-ab-3-stueck",
+   "titel": "Mengenrabatt: ab 3 Stück 5 %",
+   "aktiv": 1705
+  },
+  {
+   "handle": "damen-sandalen-absatz",
+   "titel": "Sandalen mit Absatz",
+   "aktiv": 338
+  },
+  {
+   "handle": "toepfe-pfannen-backen",
+   "titel": "Töpfe, Pfannen & Backen",
+   "aktiv": 323
+  },
+  {
+   "handle": "damen-blusen-bluse",
+   "titel": "Blusen",
+   "aktiv": 323
+  },
+  {
+   "handle": "sanitaer-schrauben-beschlaege",
+   "titel": "Sanitär, Schrauben & Beschläge",
+   "aktiv": 296
+  },
+  {
+   "handle": "geschirr-teller",
+   "titel": "Geschirr & Teller",
+   "aktiv": 288
+  },
+  {
+   "handle": "lockenstaebe-curler",
+   "titel": "Lockenstäbe & Curler",
+   "aktiv": 285
+  },
+  {
+   "handle": "herren-hemden-langarm",
+   "titel": "Langarmhemden",
+   "aktiv": 260
+  },
+  {
+   "handle": "glaetteisen-glaettkaemme",
+   "titel": "Glätteisen & Glättkämme",
+   "aktiv": 259
+  },
+  {
+   "handle": "damen-schals-tuecher-schal",
+   "titel": "Schals",
+   "aktiv": 244
+  },
+  {
+   "handle": "tassen-becher",
+   "titel": "Tassen & Becher",
+   "aktiv": 240
+  },
+  {
+   "handle": "leder-echt",
+   "titel": "Echtleder-Rucksäcke (Rindsleder, Crazy Horse)",
+   "aktiv": 237
+  },
+  {
+   "handle": "damen-hoodies-hoodie",
+   "titel": "Hoodies",
+   "aktiv": 223
+  },
+  {
+   "handle": "herren-hoodies",
+   "titel": "Hoodies",
+   "aktiv": 215
+  },
+  {
+   "handle": "lidschatten-paletten",
+   "titel": "Lidschatten & Paletten",
+   "aktiv": 209
+  },
+  {
+   "handle": "damen-t-shirts-langarm",
+   "titel": "Langarmshirts",
+   "aktiv": 206
+  },
+  {
+   "handle": "herren-t-shirts-langarm",
+   "titel": "Langarm",
+   "aktiv": 204
+  },
+  {
+   "handle": "herren-hemden-kurzarm",
+   "titel": "Kurzarmhemden",
+   "aktiv": 202
+  },
+  {
+   "handle": "herren-umhaengetaschen-leder",
+   "titel": "Leder-Umhängetaschen",
+   "aktiv": 189
+  },
+  {
+   "handle": "herren-sneaker-mesh-atmungsaktiv",
+   "titel": "Mesh- & Atmungsaktive Sneaker",
+   "aktiv": 187
+  },
+  {
+   "handle": "damen-strickjacken-cardigan",
+   "titel": "Cardigans",
+   "aktiv": 185
+  },
+  {
+   "handle": "herren-umhaengetaschen-schultertaschen",
+   "titel": "Schultertaschen",
+   "aktiv": 185
+  },
+  {
+   "handle": "smartwatches-anruf",
+   "titel": "Mit Anruffunktion",
+   "aktiv": 177
+  },
+  {
+   "handle": "portemonnaies-geldboersen",
+   "titel": "Portemonnaies & Geldbörsen",
+   "aktiv": 175
+  },
+  {
+   "handle": "herren-businessschuhe-loafer-slipper",
+   "titel": "Loafer & Slipper",
+   "aktiv": 170
+  },
+  {
+   "handle": "damen-sandalen-riemchen-roemer",
+   "titel": "Riemchen- & Römersandalen",
+   "aktiv": 163
+  },
+  {
+   "handle": "damen-keilsandalen-keil",
+   "titel": "Keilsandalen",
+   "aktiv": 161
+  },
+  {
+   "handle": "damen-keilsandalen-plateau",
+   "titel": "Plateausandalen",
+   "aktiv": 159
+  },
+  {
+   "handle": "damen-blusen-hemd",
+   "titel": "Hemden",
+   "aktiv": 157
+  },
+  {
+   "handle": "damen-hoodies-sweatshirt",
+   "titel": "Sweatshirts",
+   "aktiv": 156
+  },
+  {
+   "handle": "canvas-retro",
+   "titel": "Retro- & Vintage-Rucksäcke",
+   "aktiv": 156
+  },
+  {
+   "handle": "herren-umhaengetaschen-nylon-canvas",
+   "titel": "Nylontaschen & Canvas-Taschen",
+   "aktiv": 155
+  },
+  {
+   "handle": "herren-umhaengetaschen-crossbody",
+   "titel": "Crossbody Bags",
+   "aktiv": 154
+  },
+  {
+   "handle": "damen-pullover-strick",
+   "titel": "Strickpullover",
+   "aktiv": 144
+  },
+  {
+   "handle": "herren-hemden-freizeit",
+   "titel": "Freizeithemden",
+   "aktiv": 144
+  },
+  {
+   "handle": "tier-sets-halsband",
+   "titel": "Halsband mit Leine",
+   "aktiv": 143
+  },
+  {
+   "handle": "canvas-canvas",
+   "titel": "Canvas-Rucksäcke",
+   "aktiv": 141
+  },
+  {
+   "handle": "herren-businessschuhe-lederschuhe",
+   "titel": "Lederschuhe",
+   "aktiv": 140
+  },
+  {
+   "handle": "tier-naepfe-keramik",
+   "titel": "Keramiknäpfe",
+   "aktiv": 137
+  },
+  {
+   "handle": "damen-t-shirts-tshirt",
+   "titel": "T-Shirts",
+   "aktiv": 136
+  },
+  {
+   "handle": "damen-umhaengetaschen-schultertaschen",
+   "titel": "Schultertaschen",
+   "aktiv": 136
+  },
+  {
+   "handle": "tier-sets-geschirr",
+   "titel": "Geschirr mit Leine",
+   "aktiv": 133
+  },
+  {
+   "handle": "herren-t-shirts-kurzarm",
+   "titel": "Kurzarm",
+   "aktiv": 130
+  },
+  {
+   "handle": "herren-pullover-cardigans",
+   "titel": "Cardigans & Strickjacken",
+   "aktiv": 128
+  },
+  {
+   "handle": "bausteine-fahrzeuge-sportwagen",
+   "titel": "Sportwagen & Rennautos",
+   "aktiv": 128
+  },
+  {
+   "handle": "laptop-reise",
+   "titel": "Laptop-Rucksäcke für Geschäftsreisen",
+   "aktiv": 114
+  },
+  {
+   "handle": "herren-hemden-leinen",
+   "titel": "Leinenhemden",
+   "aktiv": 112
+  },
+  {
+   "handle": "foundation-concealer",
+   "titel": "Foundation & Concealer",
+   "aktiv": 111
+  },
+  {
+   "handle": "herren-pullover-strickpullover",
+   "titel": "Strickpullover",
+   "aktiv": 110
+  },
+  {
+   "handle": "controller-bluetooth-kabellos",
+   "titel": "Kabellos & Bluetooth",
+   "aktiv": 109
+  },
+  {
+   "handle": "damen-umhaengetaschen-nylon-canvas",
+   "titel": "Nylontaschen & Canvas-Taschen",
+   "aktiv": 107
+  },
+  {
+   "handle": "damen-sport-leggings",
+   "titel": "Sport-Leggings",
+   "aktiv": 102
+  },
+  {
+   "handle": "damen-umhaengetaschen-leder",
+   "titel": "Leder-Umhängetaschen",
+   "aktiv": 96
+  },
+  {
+   "handle": "freizeit-alltag",
+   "titel": "Alltags- & Stadtrucksäcke",
+   "aktiv": 93
+  },
+  {
+   "handle": "drohnen-mit-kamera-4k",
+   "titel": "Drohnen mit Kamera",
+   "aktiv": 93
+  },
+  {
+   "handle": "pfannen-woks-bratpfannen",
+   "titel": "Bratpfannen",
+   "aktiv": 93
+  },
+  {
+   "handle": "kopfkissen-nackenkissen-nacken",
+   "titel": "Nackenkissen",
+   "aktiv": 93
+  },
+  {
+   "handle": "freizeit-mode",
+   "titel": "Mode- & Stil-Rucksäcke",
+   "aktiv": 92
+  },
+  {
+   "handle": "tier-leinen-roll",
+   "titel": "Roll- & ausziehbare Leinen",
+   "aktiv": 92
+  },
+  {
+   "handle": "kopfkissen-memory-schaum",
+   "titel": "Memory-Schaum",
+   "aktiv": 90
+  },
+  {
+   "handle": "damen-hoodies-kapuzenpullover",
+   "titel": "Kapuzenpullover",
+   "aktiv": 89
+  },
+  {
+   "handle": "herren-sneaker-plateau-chunky",
+   "titel": "Plateausneaker & Chunky-Sneaker",
+   "aktiv": 89
+  },
+  {
+   "handle": "herren-sneaker-leder-sneaker",
+   "titel": "Leder-Sneaker",
+   "aktiv": 89
+  },
+  {
+   "handle": "damen-hosen-weit",
+   "titel": "Weite Hosen & Culottes",
+   "aktiv": 88
+  },
+  {
+   "handle": "kopfhoerer-kabellos-bluetooth",
+   "titel": "Kabellos & Bluetooth",
+   "aktiv": 87
+  },
+  {
+   "handle": "damen-umhaengetaschen-crossbody",
+   "titel": "Crossbody Bags",
+   "aktiv": 86
+  },
+  {
+   "handle": "herren-sportschuhe-laufschuhe",
+   "titel": "Laufschuhe",
+   "aktiv": 86
+  },
+  {
+   "handle": "tier-katzenspielzeug-elektrisch",
+   "titel": "Elektrisches & interaktives Spielzeug",
+   "aktiv": 86
+  },
+  {
+   "handle": "damen-schals-tuecher-wolle-kaschmir",
+   "titel": "Wolle & Kaschmir-Optik",
+   "aktiv": 84
+  },
+  {
+   "handle": "damen-roecke-midi",
+   "titel": "Midiröcke",
+   "aktiv": 82
+  },
+  {
+   "handle": "herren-geldboersen-leder",
+   "titel": "Leder-Geldbörsen",
+   "aktiv": 81
+  },
+  {
+   "handle": "damen-pumps-stilettos",
+   "titel": "Stilettos & High Heels",
+   "aktiv": 80
+  },
+  {
+   "handle": "stoffe-baumwolle-twill",
+   "titel": "Baumwoll- & Twillstoffe",
+   "aktiv": 80
+  },
+  {
+   "handle": "herren-hemden-kariert",
+   "titel": "Karo & Flanell",
+   "aktiv": 79
+  },
+  {
+   "handle": "damen-sneaker-plateau-chunky",
+   "titel": "Plateausneaker & Chunky-Sneaker",
+   "aktiv": 79
+  },
+  {
+   "handle": "armbaender-apple-watch",
+   "titel": "Für Apple Watch",
+   "aktiv": 79
+  },
+  {
+   "handle": "tier-leinen-reflektierend",
+   "titel": "Reflektierende & Leucht-Leinen",
+   "aktiv": 79
+  },
+  {
+   "handle": "besteck",
+   "titel": "Besteck & Essstäbchen",
+   "aktiv": 77
+  },
+  {
+   "handle": "leder-herren",
+   "titel": "Lederrucksäcke für Herren",
+   "aktiv": 77
+  },
+  {
+   "handle": "kabellos-laden-mehrfach",
+   "titel": "Mehrfach-Lader (2-in-1 bis 6-in-1)",
+   "aktiv": 77
+  },
+  {
+   "handle": "rouge-bronzer-highlighter",
+   "titel": "Rouge, Bronzer & Highlighter",
+   "aktiv": 77
+  },
+  {
+   "handle": "herren-stiefel-cowboy-worker",
+   "titel": "Cowboy-, Worker- & Bikerstiefel",
+   "aktiv": 75
+  },
+  {
+   "handle": "tracker-herzfrequenz",
+   "titel": "Mit Herzfrequenzmessung",
+   "aktiv": 75
+  },
+  {
+   "handle": "herren-hemden-business",
+   "titel": "Business-Hemden",
+   "aktiv": 74
+  },
+  {
+   "handle": "herren-t-shirts-print",
+   "titel": "Print & Grafik",
+   "aktiv": 74
+  },
+  {
+   "handle": "leder-retro",
+   "titel": "Retro- & Vintage-Lederrucksäcke",
+   "aktiv": 73
+  },
+  {
+   "handle": "velolichter-ruecklichter",
+   "titel": "Rücklichter",
+   "aktiv": 71
+  },
+  {
+   "handle": "damen-sandalen-flach",
+   "titel": "Flache Sandalen",
+   "aktiv": 67
+  },
+  {
+   "handle": "damen-sneaker-mesh-atmungsaktiv",
+   "titel": "Mesh- & Atmungsaktive Sneaker",
+   "aktiv": 67
+  },
+  {
+   "handle": "laptop-wasserdicht",
+   "titel": "Wasserdichte Laptop-Rucksäcke",
+   "aktiv": 67
+  },
+  {
+   "handle": "wd-outdoor",
+   "titel": "Wasserdichte Outdoor-Rucksäcke",
+   "aktiv": 65
+  },
+  {
+   "handle": "drohnen-mini-faltbar",
+   "titel": "Mini- & Falt-Drohnen",
+   "aktiv": 65
+  },
+  {
+   "handle": "gesichtscremes-lotionen",
+   "titel": "Cremes & Lotionen",
+   "aktiv": 65
+  },
+  {
+   "handle": "damen-jeans-weit",
+   "titel": "Weite Jeans & Wide Leg",
+   "aktiv": 64
+  },
+  {
+   "handle": "damen-geldboersen-leder",
+   "titel": "Leder-Geldbörsen",
+   "aktiv": 64
+  },
+  {
+   "handle": "laptop-leder",
+   "titel": "Laptoprucksäcke aus Leder & Kunstleder",
+   "aktiv": 64
+  },
+  {
+   "handle": "wd-business",
+   "titel": "Wasserdichte Business-Rucksäcke",
+   "aktiv": 64
+  },
+  {
+   "handle": "wander-gross",
+   "titel": "Grosse Wanderrucksäcke ab 36 Liter",
+   "aktiv": 63
+  },
+  {
+   "handle": "controller-handy-mobile",
+   "titel": "Für Handy & Tablet",
+   "aktiv": 63
+  },
+  {
+   "handle": "schneiden-gemuesehobel",
+   "titel": "Gemüseschneider & Hobel",
+   "aktiv": 63
+  },
+  {
+   "handle": "leder-business",
+   "titel": "Lederrucksäcke für Business & Laptop",
+   "aktiv": 62
+  },
+  {
+   "handle": "damen-pullover-rundhals",
+   "titel": "Rundhalspullover",
+   "aktiv": 61
+  },
+  {
+   "handle": "vintage-retro-schmuck-armbaender",
+   "titel": "Vintage-Armbänder & -Armreifen",
+   "aktiv": 61
+  },
+  {
+   "handle": "mikrofone-funk-ansteck",
+   "titel": "Funk- & Ansteckmikrofone",
+   "aktiv": 60
+  },
+  {
+   "handle": "sportschuhe-herren",
+   "titel": "Herren-Sportschuhe",
+   "aktiv": 60
+  },
+  {
+   "handle": "tier-halsbaender-leuchten",
+   "titel": "Leucht- & reflektierende Halsbänder",
+   "aktiv": 60
+  },
+  {
+   "handle": "damen-ballerinas-loafer-mokassins",
+   "titel": "Loafer & Mokassins",
+   "aktiv": 59
+  },
+  {
+   "handle": "sportschuhe-mesh",
+   "titel": "Mesh & atmungsaktiv",
+   "aktiv": 59
+  },
+  {
+   "handle": "laptop-mit-usb",
+   "titel": "Laptop-Rucksäcke mit USB-Anschluss",
+   "aktiv": 58
+  },
+  {
+   "handle": "konsolen-ladestationen",
+   "titel": "Ladestationen & Netzteile",
+   "aktiv": 58
+  },
+  {
+   "handle": "pfannen-woks-antihaft",
+   "titel": "Antihaft",
+   "aktiv": 58
+  },
+  {
+   "handle": "damen-tops-spitze",
+   "titel": "Spitzentops",
+   "aktiv": 57
+  },
+  {
+   "handle": "damen-pumps-blockabsatz",
+   "titel": "Blockabsatz",
+   "aktiv": 57
+  },
+  {
+   "handle": "usb-business",
+   "titel": "USB-Rucksäcke für Business & Laptop",
+   "aktiv": 57
+  },
+  {
+   "handle": "lippenstifte",
+   "titel": "Lippenstifte",
+   "aktiv": 57
+  },
+  {
+   "handle": "damen-roecke-mini",
+   "titel": "Miniröcke",
+   "aktiv": 56
+  },
+  {
+   "handle": "takt-takt",
+   "titel": "Taktische Rucksäcke",
+   "aktiv": 56
+  },
+  {
+   "handle": "armbaender-metall-edelstahl",
+   "titel": "Metall- & Edelstahlarmbänder",
+   "aktiv": 56
+  },
+  {
+   "handle": "tier-geschirre-reflektierend",
+   "titel": "Reflektierende & Leucht-Geschirre",
+   "aktiv": 56
+  },
+  {
+   "handle": "nagellampen-uv-led",
+   "titel": "UV-/LED-Nagellampen",
+   "aktiv": 55
+  },
+  {
+   "handle": "schul-studenten",
+   "titel": "Studenten- & Uni-Rucksäcke",
+   "aktiv": 54
+  },
+  {
+   "handle": "canvas-herren",
+   "titel": "Canvas-Rucksäcke für Herren",
+   "aktiv": 54
+  },
+  {
+   "handle": "velolichter-usb",
+   "titel": "USB-aufladbar",
+   "aktiv": 54
+  },
+  {
+   "handle": "damen-jeans-gerade",
+   "titel": "Straight-Leg-Jeans",
+   "aktiv": 53
+  },
+  {
+   "handle": "herren-poloshirts-kurzarm",
+   "titel": "Kurzarm",
+   "aktiv": 53
+  },
+  {
+   "handle": "leder-kunst",
+   "titel": "Kunstleder-Rucksäcke",
+   "aktiv": 53
+  },
+  {
+   "handle": "powerbanks-mini",
+   "titel": "Mini & kompakt",
+   "aktiv": 53
+  },
+  {
+   "handle": "armbaender-leder",
+   "titel": "Uhrenarmbänder aus Leder",
+   "aktiv": 53
+  },
+  {
+   "handle": "tassen-kaffeebecher-keramik",
+   "titel": "Keramik & Porzellan",
+   "aktiv": 53
+  },
+  {
+   "handle": "freizeit-sport",
+   "titel": "Sportrucksäcke",
+   "aktiv": 52
+  },
+  {
+   "handle": "ladegeraete-gan-schnell",
+   "titel": "GaN & Schnellladen",
+   "aktiv": 52
+  },
+  {
+   "handle": "nagelsticker-folien",
+   "titel": "Nagelsticker & Folien",
+   "aktiv": 52
+  },
+  {
+   "handle": "tier-halsbaender-leder",
+   "titel": "Lederhalsbänder",
+   "aktiv": 52
+  },
+  {
+   "handle": "tier-naepfe-doppel",
+   "titel": "Doppelnäpfe",
+   "aktiv": 52
+  },
+  {
+   "handle": "wander-wasserdicht",
+   "titel": "Wasserdichte Wanderrucksäcke",
+   "aktiv": 51
+  },
+  {
+   "handle": "puzzles-holz",
+   "titel": "Holzpuzzles",
+   "aktiv": 51
+  },
+  {
+   "handle": "damen-sandalen-sport-outdoor",
+   "titel": "Sportsandalen & Outdoor-Sandalen",
+   "aktiv": 50
+  },
+  {
+   "handle": "beamer-mini-tragbar",
+   "titel": "Mini-Beamer",
+   "aktiv": 50
+  },
+  {
+   "handle": "backformen-kuchenformen",
+   "titel": "Kuchen- & Brotformen",
+   "aktiv": 50
+  },
+  {
+   "handle": "servierplatten-platten",
+   "titel": "Servierplatten & Teller",
+   "aktiv": 50
+  },
+  {
+   "handle": "herren-sakkos-blazer",
+   "titel": "Sakkos & Blazer",
+   "aktiv": 49
+  },
+  {
+   "handle": "damen-kopfbedeckung-caps",
+   "titel": "Caps & Kappen",
+   "aktiv": 49
+  },
+  {
+   "handle": "kabellos-laden-magnetisch",
+   "titel": "Magnetisch & MagSafe",
+   "aktiv": 49
+  },
+  {
+   "handle": "eyeliner-kajal",
+   "titel": "Eyeliner & Augenstifte",
+   "aktiv": 49
+  },
+  {
+   "handle": "schneidebretter-holz-bambus",
+   "titel": "Holz & Bambus",
+   "aktiv": 49
+  },
+  {
+   "handle": "damen-sets-hose",
+   "titel": "Sets mit Hose",
+   "aktiv": 48
+  },
+  {
+   "handle": "damen-jeans-highwaist",
+   "titel": "High-Waist-Jeans",
+   "aktiv": 48
+  },
+  {
+   "handle": "takt-tarn",
+   "titel": "Rucksäcke mit Tarnmuster",
+   "aktiv": 48
+  },
+  {
+   "handle": "schaedlingsabwehr-insektenschutz",
+   "titel": "Schädlingsabwehr & Insektenfallen",
+   "aktiv": 48
+  },
+  {
+   "handle": "thermobecher-isoliert",
+   "titel": "Isolierbecher aus Edelstahl",
+   "aktiv": 48
+  },
+  {
+   "handle": "armreifen-bangles-zirkonia",
+   "titel": "Armreifen mit Zirkonia & Strass",
+   "aktiv": 47
+  },
+  {
+   "handle": "tassen-kaffeebecher-motive",
+   "titel": "Schweizer Motiv-Tassen",
+   "aktiv": 47
+  },
+  {
+   "handle": "herz-schmuck-armbaender",
+   "titel": "Herz-Armbänder & -Armreifen",
+   "aktiv": 46
+  },
+  {
+   "handle": "controller-konsole-pc",
+   "titel": "Für PS, Xbox, Switch & PC",
+   "aktiv": 46
+  },
+  {
+   "handle": "tracker-farbdisplay",
+   "titel": "Mit Farbdisplay",
+   "aktiv": 46
+  },
+  {
+   "handle": "lipgloss-lipglaze",
+   "titel": "Lipgloss & Lip Glaze",
+   "aktiv": 46
+  },
+  {
+   "handle": "puder-fixierspray",
+   "titel": "Puder & Fixierspray",
+   "aktiv": 46
+  },
+  {
+   "handle": "fahrrad-auto-werkzeug",
+   "titel": "Fahrradwerkzeug & Autowerkzeug",
+   "aktiv": 45
+  },
+  {
+   "handle": "damen-blusen-rueschen",
+   "titel": "Blusen mit Rüschen",
+   "aktiv": 45
+  },
+  {
+   "handle": "herren-hemden-hawaii-strand",
+   "titel": "Hawaii- & Strandhemden",
+   "aktiv": 45
+  },
+  {
+   "handle": "reise-rucksaecke-outdoor",
+   "titel": "Outdoor-Reiserucksäcke",
+   "aktiv": 45
+  },
+  {
+   "handle": "sportschuhe-kinder",
+   "titel": "Kinder-Sportschuhe",
+   "aktiv": 45
+  },
+  {
+   "handle": "bar-wein-weinzubehoer",
+   "titel": "Wein-Zubehör",
+   "aktiv": 45
+  },
+  {
+   "handle": "luftbefeuchter-mini-usb",
+   "titel": "Mini- & USB-Luftbefeuchter",
+   "aktiv": 45
+  },
+  {
+   "handle": "kartenhalter-kartenetuis",
+   "titel": "Kartenhalter & Kartenetuis",
+   "aktiv": 44
+  },
+  {
+   "handle": "mauspads-unterlagen",
+   "titel": "Mauspads & Schreibtischunterlagen",
+   "aktiv": 44
+  },
+  {
+   "handle": "herren-sweatshirts",
+   "titel": "Sweatshirts",
+   "aktiv": 44
+  },
+  {
+   "handle": "kinder-baby-strampler",
+   "titel": "Strampler",
+   "aktiv": 44
+  },
+  {
+   "handle": "stoffe-bedruckt-muster",
+   "titel": "Bedruckte & gemusterte Stoffe",
+   "aktiv": 44
+  },
+  {
+   "handle": "tier-kratz-baeume",
+   "titel": "Kratzbäume",
+   "aktiv": 44
+  },
+  {
+   "handle": "damen-jeans-slim",
+   "titel": "Slimjeans & Stretch-Jeans",
+   "aktiv": 43
+  },
+  {
+   "handle": "damen-pullover-v",
+   "titel": "Pullover mit V-Ausschnitt",
+   "aktiv": 43
+  },
+  {
+   "handle": "damen-sportschuhe-laufschuhe",
+   "titel": "Laufschuhe",
+   "aktiv": 43
+  },
+  {
+   "handle": "ladegeraete-mehrfach-usb",
+   "titel": "Mehrfach-Lader",
+   "aktiv": 43
+  },
+  {
+   "handle": "wandbilder-uf-leinwand",
+   "titel": "Leinwandbilder & Gemälde",
+   "aktiv": 43
+  },
+  {
+   "handle": "damen-hoodies-zip",
+   "titel": "Zip-Hoodies & Sweatjacken",
+   "aktiv": 42
+  },
+  {
+   "handle": "damen-t-shirts-print",
+   "titel": "Shirts mit Print",
+   "aktiv": 42
+  },
+  {
+   "handle": "damen-tops-neckholder",
+   "titel": "Neckholdertops & Bandeau-Tops",
+   "aktiv": 42
+  },
+  {
+   "handle": "herren-sandalen-badeschuhe",
+   "titel": "Badeschuhe & Wasserschuhe",
+   "aktiv": 42
+  },
+  {
+   "handle": "herren-sneaker-canvas-stoff",
+   "titel": "Canvasschuhe & Stoffschuhe",
+   "aktiv": 42
+  },
+  {
+   "handle": "kochutensilien-silikon",
+   "titel": "Silikon-Sets",
+   "aktiv": 42
+  },
+  {
+   "handle": "damen-sport-yogahosen",
+   "titel": "Yogahosen",
+   "aktiv": 41
+  },
+  {
+   "handle": "herren-hoodies-zip",
+   "titel": "Zip-Hoodies & Kapuzenjacken",
+   "aktiv": 41
+  },
+  {
+   "handle": "herren-kopfbedeckung-caps",
+   "titel": "Caps & Kappen",
+   "aktiv": 41
+  },
+  {
+   "handle": "powerbanks-magnetisch",
+   "titel": "Magnetisch & kabellos",
+   "aktiv": 41
+  },
+  {
+   "handle": "kopfkissen-seitenschlaefer",
+   "titel": "Seiten- & Beinkissen",
+   "aktiv": 41
+  },
+  {
+   "handle": "aus-tiktok-und-instagram",
+   "titel": "Aus TikTok und Instagram",
+   "aktiv": 41
+  },
+  {
+   "handle": "damen-bademode-bikini",
+   "titel": "Bikinis & Tankinis",
+   "aktiv": 40
+  },
+  {
+   "handle": "damen-roecke-maxi",
+   "titel": "Maxiröcke & lange Röcke",
+   "aktiv": 40
+  },
+  {
+   "handle": "damen-stiefel-stiefeletten",
+   "titel": "Stiefeletten & Ankle Boots",
+   "aktiv": 40
+  },
+  {
+   "handle": "tracker-bluetooth-anruf",
+   "titel": "Mit Bluetooth & Anruf",
+   "aktiv": 40
+  },
+  {
+   "handle": "tassen-kaffeebecher-tee-kaffee",
+   "titel": "Tee- & Kaffeetassen",
+   "aktiv": 40
+  },
+  {
+   "handle": "damen-blusen-leinen",
+   "titel": "Leinenblusen & -hemden",
+   "aktiv": 39
+  },
+  {
+   "handle": "herren-jeans-loose",
+   "titel": "Loose & Baggy",
+   "aktiv": 39
+  },
+  {
+   "handle": "herren-jeans-destroyed",
+   "titel": "Destroyed & Vintage",
+   "aktiv": 39
+  },
+  {
+   "handle": "herren-hosen-freizeit",
+   "titel": "Freizeithosen",
+   "aktiv": 39
+  },
+  {
+   "handle": "damen-ballerinas-spitze-flats",
+   "titel": "Spitze Flats",
+   "aktiv": 39
+  },
+  {
+   "handle": "smartwatches-gps",
+   "titel": "Mit GPS",
+   "aktiv": 39
+  },
+  {
+   "handle": "laufschuhe-mesh",
+   "titel": "Mesh & atmungsaktiv",
+   "aktiv": 39
+  },
+  {
+   "handle": "mnz-landschaft",
+   "titel": "Landschaften & Natur",
+   "aktiv": 39
+  },
+  {
+   "handle": "velolichter-frontlichter",
+   "titel": "Frontlichter & Scheinwerfer",
+   "aktiv": 39
+  },
+  {
+   "handle": "luftbefeuchter-aroma",
+   "titel": "Mit Aroma-Funktion",
+   "aktiv": 39
+  },
+  {
+   "handle": "herren-hemden-jeans-cord",
+   "titel": "Jeans- & Cordhemden",
+   "aktiv": 38
+  },
+  {
+   "handle": "herren-hosen-cargo",
+   "titel": "Cargohosen",
+   "aktiv": 38
+  },
+  {
+   "handle": "freizeit-herren",
+   "titel": "Freizeitrucksäcke für Herren",
+   "aktiv": 38
+  },
+  {
+   "handle": "armbaender-silikon",
+   "titel": "Silikonarmbänder",
+   "aktiv": 38
+  },
+  {
+   "handle": "mixer-entsafter-entsafter",
+   "titel": "Entsafter & Saftpressen",
+   "aktiv": 38
+  },
+  {
+   "handle": "teller-schalen-schalen",
+   "titel": "Schalen & Schüsseln",
+   "aktiv": 38
+  },
+  {
+   "handle": "damen-tops-tank",
+   "titel": "Tanktops",
+   "aktiv": 37
+  },
+  {
+   "handle": "damen-tops-cami",
+   "titel": "Camisoles",
+   "aktiv": 37
+  },
+  {
+   "handle": "herz-schmuck-zirkonia",
+   "titel": "Herz mit Zirkonia & Strass",
+   "aktiv": 37
+  },
+  {
+   "handle": "vintage-retro-schmuck-ringe",
+   "titel": "Vintage-Ringe",
+   "aktiv": 37
+  },
+  {
+   "handle": "velo-velo",
+   "titel": "Velo- & Fahrradrucksäcke",
+   "aktiv": 37
+  },
+  {
+   "handle": "leder-reise",
+   "titel": "Leder-Reiserucksäcke",
+   "aktiv": 37
+  },
+  {
+   "handle": "festplattengehaeuse-docks",
+   "titel": "Festplattengehäuse & Festplatten-Docks",
+   "aktiv": 37
+  },
+  {
+   "handle": "tier-naepfe-edelstahl",
+   "titel": "Edelstahlnäpfe",
+   "aktiv": 37
+  },
+  {
+   "handle": "herren-businessschuhe-derby-oxford",
+   "titel": "Derby & Oxford",
+   "aktiv": 36
+  },
+  {
+   "handle": "akkus-18650-lithium",
+   "titel": "Lithium-Akkus & 18650",
+   "aktiv": 36
+  },
+  {
+   "handle": "bauchtrainer-bauchroller",
+   "titel": "Bauchroller & Bauchräder",
+   "aktiv": 36
+  },
+  {
+   "handle": "tier-naepfe-faltbar",
+   "titel": "Faltbare Reisenäpfe & Trinkflaschen",
+   "aktiv": 36
+  },
+  {
+   "handle": "damen-dessous-shapewear",
+   "titel": "Shapewear",
+   "aktiv": 35
+  },
+  {
+   "handle": "damen-pullover-rollkragen",
+   "titel": "Rollkragenpullover",
+   "aktiv": 35
+  },
+  {
+   "handle": "damen-pullover-oversize",
+   "titel": "Oversize-Pullover",
+   "aktiv": 35
+  },
+  {
+   "handle": "damen-stiefel-hohe-stiefel",
+   "titel": "Hohe Stiefel & Overknees",
+   "aktiv": 35
+  },
+  {
+   "handle": "auto-ladegeraete-kabellos",
+   "titel": "Kabellos & magnetisch",
+   "aktiv": 35
+  },
+  {
+   "handle": "kameras-action-sport",
+   "titel": "Action- & Sportkameras",
+   "aktiv": 35
+  },
+  {
+   "handle": "mnz-tiere",
+   "titel": "Tiere",
+   "aktiv": 35
+  },
+  {
+   "handle": "tier-leinen-leder",
+   "titel": "Lederleinen",
+   "aktiv": 35
+  },
+  {
+   "handle": "toepfe-kochgeschirr-suppentoepfe",
+   "titel": "Koch- & Suppentöpfe",
+   "aktiv": 35
+  },
+  {
+   "handle": "vorhaenge-verdunkelung",
+   "titel": "Verdunkelungsvorhänge",
+   "aktiv": 35
+  },
+  {
+   "handle": "ventilatoren-hand-mini",
+   "titel": "Hand- & Mini-Ventilatoren",
+   "aktiv": 35
+  },
+  {
+   "handle": "damen-hoodies-fleece",
+   "titel": "Fleecehoodies & Plüsch-Hoodies",
+   "aktiv": 34
+  },
+  {
+   "handle": "damen-tops-strick",
+   "titel": "Strick-Tops",
+   "aktiv": 34
+  },
+  {
+   "handle": "canvas-reise",
+   "titel": "Canvas-Reiserucksäcke",
+   "aktiv": 34
+  },
+  {
+   "handle": "powerbanks-gross",
+   "titel": "Grosse Kapazität (ab 20 000 mAh)",
+   "aktiv": 34
+  },
+  {
+   "handle": "kopfhoerer-sport-knochenschall",
+   "titel": "Sport, Open-Ear & Knochenschall",
+   "aktiv": 34
+  },
+  {
+   "handle": "instrumenten-zubehoer",
+   "titel": "Instrumenten-Zubehör",
+   "aktiv": 34
+  },
+  {
+   "handle": "backformen-silikonformen",
+   "titel": "Silikonformen",
+   "aktiv": 34
+  },
+  {
+   "handle": "bettwaesche-sets",
+   "titel": "Bettwäsche-Sets",
+   "aktiv": 34
+  },
+  {
+   "handle": "damen-blusen-spitze",
+   "titel": "Spitzenblusen",
+   "aktiv": 33
+  },
+  {
+   "handle": "herren-hosen-outdoor",
+   "titel": "Outdoor-Hosen",
+   "aktiv": 33
+  },
+  {
+   "handle": "damen-ballerinas-mary-janes",
+   "titel": "Mary Janes",
+   "aktiv": 33
+  },
+  {
+   "handle": "herz-schmuck-ketten",
+   "titel": "Herz-Ketten & Anhänger",
+   "aktiv": 33
+  },
+  {
+   "handle": "kopfhoerer-in-ear",
+   "titel": "In-Ear- & Ohrhörer",
+   "aktiv": 33
+  },
+  {
+   "handle": "konsolen-huellen-taschen",
+   "titel": "Hüllen, Taschen & Skins",
+   "aktiv": 33
+  },
+  {
+   "handle": "smartwatches-kinder",
+   "titel": "Kinder-Smartwatches",
+   "aktiv": 33
+  },
+  {
+   "handle": "laufschuhe-kinder",
+   "titel": "Kinder-Laufschuhe",
+   "aktiv": 33
+  },
+  {
+   "handle": "velotaschen-fahrradrucksaecke",
+   "titel": "Fahrradrucksäcke",
+   "aktiv": 33
+  },
+  {
+   "handle": "nagelfraeser-polierer",
+   "titel": "Nagelfräser & Polierer",
+   "aktiv": 33
+  },
+  {
+   "handle": "teller-schalen-teller",
+   "titel": "Teller",
+   "aktiv": 33
+  },
+  {
+   "handle": "damen-dessous-strumpfhosen",
+   "titel": "Strumpfhosen, Strümpfe & Socken",
+   "aktiv": 32
+  },
+  {
+   "handle": "damen-blusen-chiffon",
+   "titel": "Chiffonblusen",
+   "aktiv": 32
+  },
+  {
+   "handle": "damen-t-shirts-oversize",
+   "titel": "Oversize-Shirts",
+   "aktiv": 32
+  },
+  {
+   "handle": "blumen-schmetterlingsschmuck-zirkonia",
+   "titel": "Zirkonia-Blumen & -Schmetterlinge",
+   "aktiv": 32
+  },
+  {
+   "handle": "reise-canvas",
+   "titel": "Canvas- & Retro-Reiserucksäcke",
+   "aktiv": 32
+  },
+  {
+   "handle": "tastenkappen",
+   "titel": "Tastenkappen & Keycaps",
+   "aktiv": 32
+  },
+  {
+   "handle": "mikrofone-usb-kondensator",
+   "titel": "USB- & Kondensatormikrofone",
+   "aktiv": 32
+  },
+  {
+   "handle": "grills-zubehoer",
+   "titel": "Grillzubehör & Besteck",
+   "aktiv": 32
+  },
+  {
+   "handle": "motorrad-taschen-koffer",
+   "titel": "Taschen, Koffer & Beutel",
+   "aktiv": 32
+  },
+  {
+   "handle": "servierplatten-holz",
+   "titel": "Holz & Bambus",
+   "aktiv": 32
+  },
+  {
+   "handle": "lunchboxen-bento",
+   "titel": "Lunchboxen & Bento",
+   "aktiv": 32
+  },
+  {
+   "handle": "reinigung-reiniger-sprays",
+   "titel": "Reiniger & Sprays",
+   "aktiv": 32
+  },
+  {
+   "handle": "bettwaesche-satin-baumwolle",
+   "titel": "Satin, Seide & Baumwolle",
+   "aktiv": 32
+  },
+  {
+   "handle": "herren-sportschuhe-kampfsport-ballsport",
+   "titel": "Kampfschuhe & Ballsportschuhe",
+   "aktiv": 31
+  },
+  {
+   "handle": "reise-leder",
+   "titel": "Reiserucksäcke aus Leder & Kunstleder",
+   "aktiv": 31
+  },
+  {
+   "handle": "tastaturen-kabellos",
+   "titel": "Kabellose & Bluetooth-Tastaturen",
+   "aktiv": 31
+  },
+  {
+   "handle": "damen-dessous-bh",
+   "titel": "BHs, Dessous & Korsetts",
+   "aktiv": 30
+  },
+  {
+   "handle": "damen-roecke-plissee",
+   "titel": "Plissee- & Faltenröcke",
+   "aktiv": 30
+  },
+  {
+   "handle": "damen-hoodies-oversize",
+   "titel": "Oversize-Hoodies",
+   "aktiv": 30
+  },
+  {
+   "handle": "herren-jeans-straight",
+   "titel": "Straight",
+   "aktiv": 30
+  },
+  {
+   "handle": "herren-sportschuhe-training-fitness",
+   "titel": "Trainingsschuhe & Fitnessschuhe",
+   "aktiv": 30
+  },
+  {
+   "handle": "blumen-schmetterlingsschmuck-ringe",
+   "titel": "Blumen- & Schmetterlingsringe",
+   "aktiv": 30
+  },
+  {
+   "handle": "auto-kissen-sitz",
+   "titel": "Sitzkissen & Polster",
+   "aktiv": 30
+  },
+  {
+   "handle": "handarbeit-stickerei",
+   "titel": "Stickereisets & Stickbilder",
+   "aktiv": 30
+  },
+  {
+   "handle": "tier-katzenspielzeug-feder",
+   "titel": "Federangeln & Teaser",
+   "aktiv": 30
+  },
+  {
+   "handle": "schneiden-reiben-pressen-scheren",
+   "titel": "Reiben, Pressen & Scheren",
+   "aktiv": 30
+  },
+  {
+   "handle": "wasserkocher-kaffee-zubehoer",
+   "titel": "Kaffee-Zubehör & Filter",
+   "aktiv": 30
+  },
+  {
+   "handle": "staubsauger-saugroboter",
+   "titel": "Saugroboter",
+   "aktiv": 30
+  },
+  {
+   "handle": "saison-christbaumschmuck",
+   "titel": "Christbaumschmuck & Ornamente",
+   "aktiv": 30
+  },
+  {
+   "handle": "damen-hosen-jogging",
+   "titel": "Jogginghosen & Freizeithosen",
+   "aktiv": 29
+  },
+  {
+   "handle": "herren-hoodies-fleece",
+   "titel": "Fleece-Hoodies",
+   "aktiv": 29
+  },
+  {
+   "handle": "audio-zubehoer-kopfhoerer",
+   "titel": "Für Kopfhörer & Ohrhörer",
+   "aktiv": 29
+  },
+  {
+   "handle": "trinkflaschen-thermos",
+   "titel": "Thermos- & Isolierflaschen",
+   "aktiv": 29
+  },
+  {
+   "handle": "besteck-essstaebchen-sets",
+   "titel": "Besteck-Sets",
+   "aktiv": 29
+  },
+  {
+   "handle": "damen-jeans-flare",
+   "titel": "Bootcutjeans & Flare-Jeans",
+   "aktiv": 28
+  },
+  {
+   "handle": "herren-pullover-v-ausschnitt",
+   "titel": "V-Ausschnitt",
+   "aktiv": 28
+  },
+  {
+   "handle": "damen-guertel-leder",
+   "titel": "Ledergürtel",
+   "aktiv": 28
+  },
+  {
+   "handle": "ketten-mit-anhaenger-stahl",
+   "titel": "Anhänger aus Edelstahl & Titan",
+   "aktiv": 28
+  },
+  {
+   "handle": "edelstahl-titanarmbaender-zirkonia",
+   "titel": "Edelstahl mit Zirkonia & Strass",
+   "aktiv": 28
+  },
+  {
+   "handle": "blumen-schmetterlingsschmuck-armbaender",
+   "titel": "Blumen- & Schmetterlings-Armbänder",
+   "aktiv": 28
+  },
+  {
+   "handle": "fliegengitter-insektenschutz-vorhaenge",
+   "titel": "Fliegengitter & Insektenschutz-Vorhänge",
+   "aktiv": 28
+  },
+  {
+   "handle": "handarbeit-kreuzstich",
+   "titel": "Kreuzstich-Sets",
+   "aktiv": 28
+  },
+  {
+   "handle": "manikuere-sets",
+   "titel": "Maniküre- & Pediküre-Sets",
+   "aktiv": 28
+  },
+  {
+   "handle": "bar-wein-cocktail",
+   "titel": "Cocktail- & Bar-Zubehör",
+   "aktiv": 28
+  },
+  {
+   "handle": "luftbefeuchter-licht",
+   "titel": "Mit Nachtlicht",
+   "aktiv": 28
+  },
+  {
+   "handle": "damen-shorts-jeans",
+   "titel": "Jeansshorts",
+   "aktiv": 27
+  },
+  {
+   "handle": "damen-tops-schulterfrei",
+   "titel": "Schulterfreie Tops",
+   "aktiv": 27
+  },
+  {
+   "handle": "herren-poloshirts-langarm",
+   "titel": "Langarm",
+   "aktiv": 27
+  },
+  {
+   "handle": "vintage-retro-schmuck-ohrringe",
+   "titel": "Vintage-Ohrringe",
+   "aktiv": 27
+  },
+  {
+   "handle": "minimalistischer-schmuck-armbaender",
+   "titel": "Minimalistische Armbänder",
+   "aktiv": 27
+  },
+  {
+   "handle": "wander-klettern",
+   "titel": "Kletter- & Bergsteigerrucksäcke",
+   "aktiv": 27
+  },
+  {
+   "handle": "beamer-wlan-smart",
+   "titel": "Mit WLAN & Android",
+   "aktiv": 27
+  },
+  {
+   "handle": "motorrad-rucksaecke",
+   "titel": "Motorrad-Rucksäcke",
+   "aktiv": 27
+  },
+  {
+   "handle": "serum-essenzen-gesicht",
+   "titel": "Seren & Essenzen",
+   "aktiv": 27
+  },
+  {
+   "handle": "tier-leinen-doppel",
+   "titel": "Doppelleinen",
+   "aktiv": 27
+  },
+  {
+   "handle": "damen-bademode-badeanzug",
+   "titel": "Badeanzüge",
+   "aktiv": 26
+  },
+  {
+   "handle": "damen-hosen-stoff",
+   "titel": "Stoffhosen & Business-Hosen",
+   "aktiv": 26
+  },
+  {
+   "handle": "damen-schals-tuecher-tuch",
+   "titel": "Tücher & Kopftücher",
+   "aktiv": 26
+  },
+  {
+   "handle": "herren-sneaker-low-top",
+   "titel": "Low-Top-Sneaker",
+   "aktiv": 26
+  },
+  {
+   "handle": "powerbanks-solar",
+   "titel": "Solar-Powerbanks",
+   "aktiv": 26
+  },
+  {
+   "handle": "powerbanks-mit-kabel",
+   "titel": "Mit eingebautem Kabel",
+   "aktiv": 26
+  },
+  {
+   "handle": "handyhalter-magnet",
+   "titel": "Magnetisch & MagSafe",
+   "aktiv": 26
+  },
+  {
+   "handle": "kameras-wlan",
+   "titel": "WLAN-Kameras",
+   "aktiv": 26
+  },
+  {
+   "handle": "bausteine-fahrzeuge-militaer",
+   "titel": "Panzer, Militär & Flugzeuge",
+   "aktiv": 26
+  },
+  {
+   "handle": "sport-schutzausruestung-helme",
+   "titel": "Helme",
+   "aktiv": 26
+  },
+  {
+   "handle": "nagelschmuck-strass",
+   "titel": "Strass & Nagelschmuck",
+   "aktiv": 26
+  },
+  {
+   "handle": "teller-schalen-sets",
+   "titel": "Geschirrsets",
+   "aktiv": 26
+  },
+  {
+   "handle": "tischdecken-schuerzen-tischdecken-laeufer",
+   "titel": "Tischdecken & Läufer",
+   "aktiv": 26
+  },
+  {
+   "handle": "handtuecher-bade-strand",
+   "titel": "Bade- & Strandtücher",
+   "aktiv": 26
+  },
+  {
+   "handle": "damen-blusen-satin",
+   "titel": "Satin- & Seidenblusen",
+   "aktiv": 25
+  },
+  {
+   "handle": "herren-sandalen-pantoletten-mules",
+   "titel": "Pantoletten, Mules & Clogs",
+   "aktiv": 25
+  },
+  {
+   "handle": "lederarmbaender-stahl",
+   "titel": "Leder mit Edelstahl & Titan",
+   "aktiv": 25
+  },
+  {
+   "handle": "edelstahl-titanarmbaender-leder",
+   "titel": "Edelstahl mit Leder",
+   "aktiv": 25
+  },
+  {
+   "handle": "blumen-schmetterlingsschmuck-ohrringe",
+   "titel": "Blumen- & Schmetterlings-Ohrringe",
+   "aktiv": 25
+  },
+  {
+   "handle": "tier-schmuck-armbaender",
+   "titel": "Tier-Armbänder & -Armreifen",
+   "aktiv": 25
+  },
+  {
+   "handle": "kinder-kinder",
+   "titel": "Kinderrucksäcke",
+   "aktiv": 25
+  },
+  {
+   "handle": "smart-home-geraete",
+   "titel": "Smart-Home-Geräte",
+   "aktiv": 25
+  },
+  {
+   "handle": "schaedlinge-vertreiber",
+   "titel": "Vertreiber & Abwehr",
+   "aktiv": 25
+  },
+  {
+   "handle": "rc-helikopter",
+   "titel": "RC-Helikopter",
+   "aktiv": 25
+  },
+  {
+   "handle": "rc-flugzeuge-gleiter",
+   "titel": "RC-Flugzeuge & Gleiter",
+   "aktiv": 25
+  },
+  {
+   "handle": "laufschuhe-herren",
+   "titel": "Herren-Laufschuhe",
+   "aktiv": 25
+  },
+  {
+   "handle": "mascara-wimperntusche",
+   "titel": "Mascara",
+   "aktiv": 25
+  },
+  {
+   "handle": "tier-futterautomaten-smart",
+   "titel": "Mit App oder Kamera",
+   "aktiv": 25
+  },
+  {
+   "handle": "mixer-entsafter-fleischwolf",
+   "titel": "Fleischwölfe & Zerkleinerer",
+   "aktiv": 25
+  },
+  {
+   "handle": "servierplatten-tabletts",
+   "titel": "Tabletts",
+   "aktiv": 25
+  },
+  {
+   "handle": "startseite-pool-trends",
+   "titel": "Startseite Pool Trends",
+   "aktiv": 25
+  },
+  {
+   "handle": "damen-roecke-jeans",
+   "titel": "Jeansröcke",
+   "aktiv": 24
+  },
+  {
+   "handle": "damen-sets-sommer",
+   "titel": "Sommersets & Freizeit-Sets",
+   "aktiv": 24
+  },
+  {
+   "handle": "damen-stiefel-cowboy-worker",
+   "titel": "Cowboy-, Worker- & Bikerstiefel",
+   "aktiv": 24
+  },
+  {
+   "handle": "herren-sneaker-high-top",
+   "titel": "High-Top-Sneaker",
+   "aktiv": 24
+  },
+  {
+   "handle": "vintage-retro-schmuck-stahl",
+   "titel": "Vintage aus Edelstahl & Titan",
+   "aktiv": 24
+  },
+  {
+   "handle": "gehaeuse-festplatte",
+   "titel": "Festplatten-Gehäuse & -Docks",
+   "aktiv": 24
+  },
+  {
+   "handle": "lenkradbezuege-leder",
+   "titel": "Leder & Kunstleder",
+   "aktiv": 24
+  },
+  {
+   "handle": "auto-organizer-taschen-boxen",
+   "titel": "Taschen, Boxen & Beutel",
+   "aktiv": 24
+  },
+  {
+   "handle": "mnz-blumen",
+   "titel": "Blumen & Pflanzen",
+   "aktiv": 24
+  },
+  {
+   "handle": "magnetische-wimpern",
+   "titel": "Magnetische Wimpern",
+   "aktiv": 24
+  },
+  {
+   "handle": "nail-art-stifte-pinsel",
+   "titel": "Stifte, Pinsel & Stempel",
+   "aktiv": 24
+  },
+  {
+   "handle": "staubsauger-handstaubsauger",
+   "titel": "Handstaubsauger & Zubehör",
+   "aktiv": 24
+  },
+  {
+   "handle": "saison-adventskalender",
+   "titel": "Adventskalender & Countdown",
+   "aktiv": 24
+  },
+  {
+   "handle": "aroma-diffuser-flamme-licht",
+   "titel": "Mit Flammen- oder LED-Licht",
+   "aktiv": 24
+  },
+  {
+   "handle": "damen-nachtwaesche-nachthemd",
+   "titel": "Nachthemden & Morgenmäntel",
+   "aktiv": 23
+  },
+  {
+   "handle": "damen-strickjacken-strickjacke",
+   "titel": "Strickjacken",
+   "aktiv": 23
+  },
+  {
+   "handle": "damen-strickjacken-kapuze",
+   "titel": "Cardigans mit Kapuze",
+   "aktiv": 23
+  },
+  {
+   "handle": "herren-pullover-rollkragen",
+   "titel": "Rollkragenpullover",
+   "aktiv": 23
+  },
+  {
+   "handle": "herren-hosen-arbeit",
+   "titel": "Workwearhosen & Arbeitshosen",
+   "aktiv": 23
+  },
+  {
+   "handle": "herren-sneaker-slip-on",
+   "titel": "Slip-on-Sneaker",
+   "aktiv": 23
+  },
+  {
+   "handle": "canvas-laptop",
+   "titel": "Canvas-Rucksäcke für Laptop & Business",
+   "aktiv": 23
+  },
+  {
+   "handle": "auto-ladegeraete-usb",
+   "titel": "USB-Lader für den Zigarettenanzünder",
+   "aktiv": 23
+  },
+  {
+   "handle": "schaedlinge-fallen-lampen",
+   "titel": "Mückenlampen, Fallen & Klatschen",
+   "aktiv": 23
+  },
+  {
+   "handle": "auto-kissen-nacken",
+   "titel": "Nacken- & Kopfstützenkissen",
+   "aktiv": 23
+  },
+  {
+   "handle": "autowaesche-buersten-sauger",
+   "titel": "Bürsten, Staubsauger & Sets",
+   "aktiv": 23
+  },
+  {
+   "handle": "bausteine-fahrzeuge-gelaende",
+   "titel": "Geländewagen, Trucks & Baufahrzeuge",
+   "aktiv": 23
+  },
+  {
+   "handle": "kinderwagen-kindersitz-zubehoer",
+   "titel": "Kinderwagen- & Kindersitz-Zubehör",
+   "aktiv": 23
+  },
+  {
+   "handle": "baby-kissen",
+   "titel": "Babykissen",
+   "aktiv": 23
+  },
+  {
+   "handle": "kinder-geschirr-babynahrung",
+   "titel": "Geschirr, Besteck & Babynahrung",
+   "aktiv": 23
+  },
+  {
+   "handle": "velohelme-mountainbike",
+   "titel": "Mountainbike-Helme",
+   "aktiv": 23
+  },
+  {
+   "handle": "wimpern-cluster-diy",
+   "titel": "Cluster & DIY-Wimpern",
+   "aktiv": 23
+  },
+  {
+   "handle": "tier-geschirre-katzen",
+   "titel": "Katzengeschirre",
+   "aktiv": 23
+  },
+  {
+   "handle": "tier-betten-hunde",
+   "titel": "Betten & Matten für Hunde",
+   "aktiv": 23
+  },
+  {
+   "handle": "kochutensilien-holz",
+   "titel": "Holz & Bambus",
+   "aktiv": 23
+  },
+  {
+   "handle": "reinigung-mopps-tuecher",
+   "titel": "Mopps, Besen & Tücher",
+   "aktiv": 23
+  },
+  {
+   "handle": "damen-sets-sport",
+   "titel": "Trainingssets & Hoodie-Sets",
+   "aktiv": 22
+  },
+  {
+   "handle": "damen-jeans-ripped",
+   "titel": "Ripped & Destroyed",
+   "aktiv": 22
+  },
+  {
+   "handle": "herren-pullover-halbzip",
+   "titel": "Half-Zip & Troyer",
+   "aktiv": 22
+  },
+  {
+   "handle": "herz-schmuck-stahl",
+   "titel": "Herz aus Edelstahl & Titan",
+   "aktiv": 22
+  },
+  {
+   "handle": "velo-trink",
+   "titel": "Rucksäcke mit Trinksystem",
+   "aktiv": 22
+  },
+  {
+   "handle": "wd-reise",
+   "titel": "Wasserdichte Rucksäcke für Reisen",
+   "aktiv": 22
+  },
+  {
+   "handle": "wd-gross",
+   "titel": "Grosse wasserdichte Rucksäcke",
+   "aktiv": 22
+  },
+  {
+   "handle": "kabellos-laden-staender",
+   "titel": "Ladeständer & Halterungen",
+   "aktiv": 22
+  },
+  {
+   "handle": "smartwatches-damen",
+   "titel": "Damen-Smartwatches",
+   "aktiv": 22
+  },
+  {
+   "handle": "liegestuetz-klimmzug-geraete",
+   "titel": "Liegestütz & Klimmzug",
+   "aktiv": 22
+  },
+  {
+   "handle": "siebe-muehlen-pfeffermuehlen",
+   "titel": "Salz- & Pfeffermühlen",
+   "aktiv": 22
+  },
+  {
+   "handle": "trinkflaschen-strohhalm-tee",
+   "titel": "Mit Strohhalm oder Teesieb",
+   "aktiv": 22
+  },
+  {
+   "handle": "regale-wandregale-wand",
+   "titel": "Wandregale",
+   "aktiv": 22
+  },
+  {
+   "handle": "vorhaenge-samt-leinen",
+   "titel": "Samt, Chenille & Leinen",
+   "aktiv": 22
+  },
+  {
+   "handle": "wandbilder-uf-poster",
+   "titel": "Poster & Kunstdrucke",
+   "aktiv": 22
+  },
+  {
+   "handle": "aroma-diffuser-holz",
+   "titel": "Holzoptik",
+   "aktiv": 22
+  },
+  {
+   "handle": "damen-sport-shorts",
+   "titel": "Sport-Shorts",
+   "aktiv": 21
+  },
+  {
+   "handle": "herren-hosen-stoff-chino",
+   "titel": "Chinohosen & Stoffhosen",
+   "aktiv": 21
+  },
+  {
+   "handle": "kinder-baby-sets-sommer",
+   "titel": "Sommer & Kurzarm",
+   "aktiv": 21
+  },
+  {
+   "handle": "damen-handschuhe-strick-fleece",
+   "titel": "Strickschuhe & Fleecehandschuhe",
+   "aktiv": 21
+  },
+  {
+   "handle": "lederarmbaender-herren",
+   "titel": "Lederarmbänder für Herren",
+   "aktiv": 21
+  },
+  {
+   "handle": "vintage-retro-schmuck-zirkonia",
+   "titel": "Vintage mit Zirkonia & Strass",
+   "aktiv": 21
+  },
+  {
+   "handle": "kabellos-laden-kompakt",
+   "titel": "Ladepads & kompakte Lader",
+   "aktiv": 21
+  },
+  {
+   "handle": "maeuse-kabellos",
+   "titel": "Kabellose & Bluetooth-Mäuse",
+   "aktiv": 21
+  },
+  {
+   "handle": "kameras-wasserdicht-4k",
+   "titel": "Wasserdicht & 4K",
+   "aktiv": 21
+  },
+  {
+   "handle": "schneidebretter-edelstahl-titan",
+   "titel": "Edelstahl & Titan",
+   "aktiv": 21
+  },
+  {
+   "handle": "siebe-muehlen-siebe",
+   "titel": "Siebe & Abtropfkörbe",
+   "aktiv": 21
+  },
+  {
+   "handle": "mixer-entsafter-mixer",
+   "titel": "Mixer & Blender",
+   "aktiv": 21
+  },
+  {
+   "handle": "tischdecken-schuerzen-schuerzen",
+   "titel": "Schürzen",
+   "aktiv": 21
+  },
+  {
+   "handle": "lunchboxen-kuehltaschen-picknick",
+   "titel": "Kühltaschen & Picknick",
+   "aktiv": 21
+  },
+  {
+   "handle": "regale-holz-bambus",
+   "titel": "Holz & Bambus",
+   "aktiv": 21
+  },
+  {
+   "handle": "handtuecher-baumwolle",
+   "titel": "Baumwolle",
+   "aktiv": 21
+  },
+  {
+   "handle": "damen-jumpsuits-overall",
+   "titel": "Overalls & Latzhosen",
+   "aktiv": 20
+  },
+  {
+   "handle": "damen-sets-rock",
+   "titel": "Sets mit Rock",
+   "aktiv": 20
+  },
+  {
+   "handle": "damen-hosen-capri",
+   "titel": "Caprihosen & Cropped-Hosen",
+   "aktiv": 20
+  },
+  {
+   "handle": "damen-pullover-grob",
+   "titel": "Grobstrickpullover & Zopfmuster-Pullover",
+   "aktiv": 20
+  },
+  {
+   "handle": "kinder-familie-pyjamas",
+   "titel": "Pyjamas & Hausanzüge",
+   "aktiv": 20
+  },
+  {
+   "handle": "damen-geldboersen-kurz",
+   "titel": "Kurze Geldbörsen",
+   "aktiv": 20
+  },
+  {
+   "handle": "damen-kopfbedeckung-muetzen",
+   "titel": "Mützen & Beanies",
+   "aktiv": 20
+  },
+  {
+   "handle": "herren-sandalen-flip-flops",
+   "titel": "Flip-Flops & Zehentrenner",
+   "aktiv": 20
+  },
+  {
+   "handle": "ketten-mit-anhaenger-herz",
+   "titel": "Herz-Anhänger",
+   "aktiv": 20
+  },
+  {
+   "handle": "ladegeraete-ladestationen",
+   "titel": "Ladestationen",
+   "aktiv": 20
+  },
+  {
+   "handle": "tastaturen-gaming",
+   "titel": "Gaming-Tastaturen",
+   "aktiv": 20
+  },
+  {
+   "handle": "maeuse-gaming",
+   "titel": "Gaming-Mäuse",
+   "aktiv": 20
+  },
+  {
+   "handle": "gehaeuse-ssd-m2",
+   "titel": "SSD- & M.2-Gehäuse",
+   "aktiv": 20
+  },
+  {
+   "handle": "auto-organizer-ruecksitz",
+   "titel": "Rücksitz- & Sitzlücken-Organizer",
+   "aktiv": 20
+  },
+  {
+   "handle": "puzzles-kinder-lernen",
+   "titel": "Puzzles für Kinder & Lernpuzzles",
+   "aktiv": 20
+  },
+  {
+   "handle": "stillkissen-schwangerschaftskissen",
+   "titel": "Still- & Schwangerschaftskissen",
+   "aktiv": 20
+  },
+  {
+   "handle": "flaschen-waermer-beikost",
+   "titel": "Flaschen, Wärmer & Beikost",
+   "aktiv": 20
+  },
+  {
+   "handle": "instrumente-gitarre-ukulele",
+   "titel": "Gitarre, Bass & Ukulele",
+   "aktiv": 20
+  },
+  {
+   "handle": "nagelpflege-stifte-oele",
+   "titel": "Nagelpflege-Stifte & Öle",
+   "aktiv": 20
+  },
+  {
+   "handle": "pfannen-woks-omelett",
+   "titel": "Omelett- & Crêpe-Pfannen",
+   "aktiv": 20
+  },
+  {
+   "handle": "kuechenformen-burger-sushi",
+   "titel": "Burger-, Sushi- & Pralinenformen",
+   "aktiv": 20
+  },
+  {
+   "handle": "schneiden-schaeler",
+   "titel": "Schäler & Entkerner",
+   "aktiv": 20
+  },
+  {
+   "handle": "ventilatoren-tisch-usb",
+   "titel": "Tisch- & USB-Ventilatoren",
+   "aktiv": 20
+  },
+  {
+   "handle": "damen-pullover-weihnacht",
+   "titel": "Weihnachts- & Motivpullover",
+   "aktiv": 19
+  },
+  {
+   "handle": "damen-geldboersen-langborsen",
+   "titel": "Lange Geldbörsen",
+   "aktiv": 19
+  },
+  {
+   "handle": "damen-handschuhe-sport-outdoor",
+   "titel": "Ski-, Velohandschuhe & Outdoor-Handschuhe",
+   "aktiv": 19
+  },
+  {
+   "handle": "herren-stiefel-stiefeletten",
+   "titel": "Stiefeletten & Ankle Boots",
+   "aktiv": 19
+  },
+  {
+   "handle": "herren-geldboersen-kurz",
+   "titel": "Kurze Geldbörsen",
+   "aktiv": 19
+  },
+  {
+   "handle": "edelstahl-titanarmbaender-vergoldet",
+   "titel": "Vergoldete Edelstahlarmbänder",
+   "aktiv": 19
+  },
+  {
+   "handle": "punk-gothic-schmuck-armbaender",
+   "titel": "Punk-Armbänder & -Armreifen",
+   "aktiv": 19
+  },
+  {
+   "handle": "laptop-anti-diebstahl",
+   "titel": "Anti-Diebstahl-Laptoprucksäcke",
+   "aktiv": 19
+  },
+  {
+   "handle": "handyhalter-tisch",
+   "titel": "Ständer, faltbar & verstellbar",
+   "aktiv": 19
+  },
+  {
+   "handle": "handyhalter-unterwegs",
+   "titel": "Unterwegs & im Auto",
+   "aktiv": 19
+  },
+  {
+   "handle": "laptop-netzteile-akkus",
+   "titel": "Laptop-Netzteile & Akkus",
+   "aktiv": 19
+  },
+  {
+   "handle": "konsolen-retro-arcade",
+   "titel": "Retro & Arcade",
+   "aktiv": 19
+  },
+  {
+   "handle": "baby-decken-nester-tuecher",
+   "titel": "Decken, Nester & Tücher",
+   "aktiv": 19
+  },
+  {
+   "handle": "kinder-trinken-lunchbox",
+   "titel": "Trinkflaschen, Becher & Lunchboxen",
+   "aktiv": 19
+  },
+  {
+   "handle": "picknick-rucksaecke-taschen",
+   "titel": "Rucksäcke & Taschen",
+   "aktiv": 19
+  },
+  {
+   "handle": "velo-teile-saettel-komponenten",
+   "titel": "Sättel & Komponenten",
+   "aktiv": 19
+  },
+  {
+   "handle": "kochutensilien-zangen-kellen",
+   "titel": "Zangen, Wender & Kellen",
+   "aktiv": 19
+  },
+  {
+   "handle": "startseite-pool-mehr",
+   "titel": "Startseite Pool Mehr",
+   "aktiv": 19
+  },
+  {
+   "handle": "damen-sport-sets",
+   "titel": "Sets, Anzüge & Jumpsuits",
+   "aktiv": 18
+  },
+  {
+   "handle": "herren-t-shirts-tanktops",
+   "titel": "Tanktops & Muskelshirts",
+   "aktiv": 18
+  },
+  {
+   "handle": "kinder-baby-sets-langarm",
+   "titel": "Langarm & Pullover",
+   "aktiv": 18
+  },
+  {
+   "handle": "damen-kopfbedeckung-huete",
+   "titel": "Hüte",
+   "aktiv": 18
+  },
+  {
+   "handle": "herren-handschuhe-sport-outdoor",
+   "titel": "Ski-, Velohandschuhe & Outdoor-Handschuhe",
+   "aktiv": 18
+  },
+  {
+   "handle": "blumen-schmetterlingsschmuck-perlen",
+   "titel": "Blumen & Schmetterlinge mit Perlen",
+   "aktiv": 18
+  },
+  {
+   "handle": "velo-lauf",
+   "titel": "Lauf- & Trailrucksäcke",
+   "aktiv": 18
+  },
+  {
+   "handle": "tastaturen-sets",
+   "titel": "Tastatur-Maus-Sets",
+   "aktiv": 18
+  },
+  {
+   "handle": "wasserschuhe-kinder",
+   "titel": "Kinder-Wasserschuhe",
+   "aktiv": 18
+  },
+  {
+   "handle": "musikinstrumente-trommeln-kalimba",
+   "titel": "Musikinstrumente",
+   "aktiv": 18
+  },
+  {
+   "handle": "velohelme-mit-licht",
+   "titel": "Mit Licht",
+   "aktiv": 18
+  },
+  {
+   "handle": "tier-geschirre-outdoor",
+   "titel": "Outdoor- & taktische Geschirre",
+   "aktiv": 18
+  },
+  {
+   "handle": "tier-kratz-bretter",
+   "titel": "Kratzbretter & -matten",
+   "aktiv": 18
+  },
+  {
+   "handle": "toepfe-kochgeschirr-sets-sets",
+   "titel": "Kochgeschirr-Sets",
+   "aktiv": 18
+  },
+  {
+   "handle": "kuechenformen-tortendeko-tuellen",
+   "titel": "Tortendeko & Spritztüllen",
+   "aktiv": 18
+  },
+  {
+   "handle": "trinkflaschen-sport",
+   "titel": "Sport & Outdoor",
+   "aktiv": 18
+  },
+  {
+   "handle": "regale-kuechenregale",
+   "titel": "Küche & Gewürze",
+   "aktiv": 18
+  },
+  {
+   "handle": "vorhaenge-gardinen-voile",
+   "titel": "Gardinen & Voile",
+   "aktiv": 18
+  },
+  {
+   "handle": "damen-sport-tops",
+   "titel": "Sport-Tops & BHs",
+   "aktiv": 17
+  },
+  {
+   "handle": "damen-jumpsuits-sport",
+   "titel": "Jumpsuits für Sport & Yoga",
+   "aktiv": 17
+  },
+  {
+   "handle": "herren-anzuege",
+   "titel": "Anzüge",
+   "aktiv": 17
+  },
+  {
+   "handle": "herren-poloshirts-business",
+   "titel": "Business & Golf",
+   "aktiv": 17
+  },
+  {
+   "handle": "herren-westen-strick-anzug",
+   "titel": "Strick- & Anzugwesten",
+   "aktiv": 17
+  },
+  {
+   "handle": "herren-jeans-slim",
+   "titel": "Slim & Skinny",
+   "aktiv": 17
+  },
+  {
+   "handle": "kinder-baby-overalls",
+   "titel": "Overalls & Jumpsuits",
+   "aktiv": 17
+  },
+  {
+   "handle": "damen-sportschuhe-training-fitness",
+   "titel": "Trainingsschuhe & Fitnessschuhe",
+   "aktiv": 17
+  },
+  {
+   "handle": "damen-pumps-keilabsatz",
+   "titel": "Keilabsatz & Wedges",
+   "aktiv": 17
+  },
+  {
+   "handle": "damen-guertel-taillen",
+   "titel": "Taillengürtel",
+   "aktiv": 17
+  },
+  {
+   "handle": "herren-kopfbedeckung-huete",
+   "titel": "Hüte",
+   "aktiv": 17
+  },
+  {
+   "handle": "ohrstecker-vintage",
+   "titel": "Vintage-Ohrstecker",
+   "aktiv": 17
+  },
+  {
+   "handle": "freizeit-leder",
+   "titel": "Freizeitrucksäcke aus Leder & Kunstleder",
+   "aktiv": 17
+  },
+  {
+   "handle": "kabelmanagement",
+   "titel": "Kabelhalter & Kabel-Organizer",
+   "aktiv": 17
+  },
+  {
+   "handle": "kameras-aussen-solar",
+   "titel": "Aussen- & Solarkameras",
+   "aktiv": 17
+  },
+  {
+   "handle": "autowaesche-pistolen-schaum",
+   "titel": "Waschpistolen, Düsen & Schaum",
+   "aktiv": 17
+  },
+  {
+   "handle": "baby-tragen-wickeltaschen",
+   "titel": "Babytragen & Wickeltaschen",
+   "aktiv": 17
+  },
+  {
+   "handle": "wasserschuhe-badeschuhe",
+   "titel": "Badeschuhe",
+   "aktiv": 17
+  },
+  {
+   "handle": "velohelme-kinder",
+   "titel": "Kinderhelme",
+   "aktiv": 17
+  },
+  {
+   "handle": "nagelknipser-trimmer",
+   "titel": "Nagelknipser",
+   "aktiv": 17
+  },
+  {
+   "handle": "reisekissen",
+   "titel": "Reisekissen & Nackenkissen",
+   "aktiv": 17
+  },
+  {
+   "handle": "tier-katzenspielzeug-minze",
+   "titel": "Katzenminze-Spielzeug",
+   "aktiv": 17
+  },
+  {
+   "handle": "tier-pullover-katzen",
+   "titel": "Katzenpullover",
+   "aktiv": 17
+  },
+  {
+   "handle": "pfannen-woks-woks",
+   "titel": "Woks",
+   "aktiv": 17
+  },
+  {
+   "handle": "kuechenformen-eiswuerfel",
+   "titel": "Eiswürfel- & Eisformen",
+   "aktiv": 17
+  },
+  {
+   "handle": "siebe-muehlen-messbecher",
+   "titel": "Messbecher, Thermometer & Timer",
+   "aktiv": 17
+  },
+  {
+   "handle": "siebe-muehlen-oelspender",
+   "titel": "Öl- & Essigspender, Mörser",
+   "aktiv": 17
+  },
+  {
+   "handle": "wasserkocher-kaffee-wasserkocher",
+   "titel": "Wasserkocher & Warmhalten",
+   "aktiv": 17
+  },
+  {
+   "handle": "wandbilder-uf-metall",
+   "titel": "Metall-Wanddeko",
+   "aktiv": 17
+  },
+  {
+   "handle": "damen-jumpsuits-playsuit",
+   "titel": "Playsuits & kurze Jumpsuits",
+   "aktiv": 16
+  },
+  {
+   "handle": "damen-tops-crop",
+   "titel": "Crop-Tops & Bodys",
+   "aktiv": 16
+  },
+  {
+   "handle": "herren-pullover-fleece",
+   "titel": "Fleece & Thermo",
+   "aktiv": 16
+  },
+  {
+   "handle": "herren-t-shirts-henley",
+   "titel": "Henley & Knopfleiste",
+   "aktiv": 16
+  },
+  {
+   "handle": "herren-westen-outdoor",
+   "titel": "Outdoor- & Sportwesten",
+   "aktiv": 16
+  },
+  {
+   "handle": "herren-jeans-bootcut",
+   "titel": "Bootcut & Flared",
+   "aktiv": 16
+  },
+  {
+   "handle": "kinder-familie-weihnachten",
+   "titel": "Weihnachts-Looks",
+   "aktiv": 16
+  },
+  {
+   "handle": "damen-ballerinas-ballerinas",
+   "titel": "Ballerinas",
+   "aktiv": 16
+  },
+  {
+   "handle": "herz-schmuck-ringe",
+   "titel": "Herz-Ringe",
+   "aktiv": 16
+  },
+  {
+   "handle": "laptop-kompression",
+   "titel": "Erweiterbare Laptop-Rucksäcke",
+   "aktiv": 16
+  },
+  {
+   "handle": "laptop-gross",
+   "titel": "Grosse Laptop-Rucksäcke ab 36 Liter",
+   "aktiv": 16
+  },
+  {
+   "handle": "freizeit-wasserdicht",
+   "titel": "Wasserdichte Freizeitrucksäcke",
+   "aktiv": 16
+  },
+  {
+   "handle": "usb-wasserdicht",
+   "titel": "Wasserdichte USB-Rucksäcke",
+   "aktiv": 16
+  },
+  {
+   "handle": "kameras-nachtsicht",
+   "titel": "Kameras mit Nachtsicht",
+   "aktiv": 16
+  },
+  {
+   "handle": "lautsprecher-outdoor-wasserdicht",
+   "titel": "Outdoor & wasserdicht",
+   "aktiv": 16
+  },
+  {
+   "handle": "mikrofone-karaoke",
+   "titel": "Karaoke- & Gesangsmikrofone",
+   "aktiv": 16
+  },
+  {
+   "handle": "drohnen-zubehoer-akkus-lader",
+   "titel": "Akkus & Ladegeräte",
+   "aktiv": 16
+  },
+  {
+   "handle": "grills-geraete",
+   "titel": "Grills & Feuerstellen",
+   "aktiv": 16
+  },
+  {
+   "handle": "lenkradbezuege-sport",
+   "titel": "Sportlich & rutschfest",
+   "aktiv": 16
+  },
+  {
+   "handle": "widerstandsbaender-sets",
+   "titel": "Bänder-Sets",
+   "aktiv": 16
+  },
+  {
+   "handle": "haengematten-camping",
+   "titel": "Hängematten",
+   "aktiv": 16
+  },
+  {
+   "handle": "velotaschen-heck-gepaecktraeger",
+   "titel": "Heck- & Gepäckträgertaschen",
+   "aktiv": 16
+  },
+  {
+   "handle": "schlafmasken-augenmasken",
+   "titel": "Schlafmasken",
+   "aktiv": 16
+  },
+  {
+   "handle": "tier-betten-matten",
+   "titel": "Matten, Decken & Kissen",
+   "aktiv": 16
+  },
+  {
+   "handle": "toepfe-kochgeschirr-schmoertoepfe",
+   "titel": "Schmor- & Gusseisentöpfe",
+   "aktiv": 16
+  },
+  {
+   "handle": "wasserkocher-kaffee-muehlen",
+   "titel": "Kaffeemühlen",
+   "aktiv": 16
+  },
+  {
+   "handle": "thermobecher-strohhalm",
+   "titel": "Becher mit Strohhalm",
+   "aktiv": 16
+  },
+  {
+   "handle": "damen-nachtwaesche-pyjama",
+   "titel": "Pyjamas & Schlafanzüge",
+   "aktiv": 15
+  },
+  {
+   "handle": "kinder-sets-pullover",
+   "titel": "Pullover & Langarm",
+   "aktiv": 15
+  },
+  {
+   "handle": "damen-sneaker-leder-sneaker",
+   "titel": "Leder-Sneaker",
+   "aktiv": 15
+  },
+  {
+   "handle": "damen-pumps-plateau-pumps",
+   "titel": "Plateau-Pumps",
+   "aktiv": 15
+  },
+  {
+   "handle": "herren-sportschuhe-rad",
+   "titel": "Radschuhe",
+   "aktiv": 15
+  },
+  {
+   "handle": "herren-kopfbedeckung-muetzen",
+   "titel": "Mützen & Beanies",
+   "aktiv": 15
+  },
+  {
+   "handle": "reise-wasserdicht",
+   "titel": "Wasserdichte Reiserucksäcke",
+   "aktiv": 15
+  },
+  {
+   "handle": "kinder-wickel",
+   "titel": "Wickelrucksäcke & Mama-Rucksäcke",
+   "aktiv": 15
+  },
+  {
+   "handle": "takt-militaer",
+   "titel": "Militär- & Kampfrucksäcke",
+   "aktiv": 15
+  },
+  {
+   "handle": "kopfhoerer-geraeuschunterdrueckung",
+   "titel": "Mit Geräuschunterdrückung",
+   "aktiv": 15
+  },
+  {
+   "handle": "lautsprecher-mit-licht",
+   "titel": "Mit Licht & Lampe",
+   "aktiv": 15
+  },
+  {
+   "handle": "drohnen-zubehoer-dji",
+   "titel": "Für DJI & Mavic",
+   "aktiv": 15
+  },
+  {
+   "handle": "tier-pullover-hoodies",
+   "titel": "Pullover & Hoodies für Haustiere",
+   "aktiv": 15
+  },
+  {
+   "handle": "kochutensilien-edelstahl",
+   "titel": "Edelstahl",
+   "aktiv": 15
+  },
+  {
+   "handle": "minimalistischer-schmuck-ringe",
+   "titel": "Minimalistische Ringe",
+   "aktiv": 13
+  },
+  {
+   "handle": "startseite-pool-wohnen",
+   "titel": "Startseite Pool Wohnen",
+   "aktiv": 11
+  },
+  {
+   "handle": "startseite-pool-schmuck",
+   "titel": "Startseite Pool Schmuck",
+   "aktiv": 9
+  },
+  {
+   "handle": "ohrstecker-silber",
+   "titel": "Silber-Ohrstecker",
+   "aktiv": 3
+  }
+ ],
  "verzeichnis_veroeffentlicht": true,
- "nicht_im_verzeichnis": [],
+ "nicht_im_verzeichnis": [
+  "3d-drucker-zubehoer",
+  "abfluss-sanitaerzubehoer",
+  "action-sport-wildkameras",
+  "akku-ladegeraete",
+  "akkus-18650-lithium",
+  "aktentaschen-messenger",
+  "alarm-sensoren-melder",
+  "allround-sportschuhe",
+  "angeln-angelzubehoer",
+  "aquarium-fische",
+  "arbeitsschuhe",
+  "arbeitsschutz-masken",
+  "armaturen-duschen",
+  "armbaender-apple-watch",
+  "armbaender-leder",
+  "armbaender-metall-edelstahl",
+  "armbaender-silikon",
+  "armreifen-bangles",
+  "armreifen-bangles-zirkonia",
+  "aroma-diffuser-duftlampen",
+  "aroma-diffuser-flamme-licht",
+  "aroma-diffuser-holz",
+  "audio-zubehoer-adapter",
+  "audio-zubehoer-kopfhoerer",
+  "aufbewahrungsbeutel-taschen",
+  "augen-make-up",
+  "augenbrauen-wimpernpflege",
+  "augenmassagegeraete",
+  "aus-tiktok-und-instagram",
+  "auto-aussen-dekor-licht",
+  "auto-diagnose-messgeraete",
+  "auto-diebstahlschutz-sicherheit",
+  "auto-duft-luft",
+  "auto-interieur-zierteile",
+  "auto-karosserie-wetterschutz",
+  "auto-kissen-nacken",
+  "auto-kissen-sitz",
+  "auto-kissen-stuetzen",
+  "auto-komfort-reise",
+  "auto-ladegeraete",
+  "auto-ladegeraete-kabellos",
+  "auto-ladegeraete-usb",
+  "auto-multimedia-navi",
+  "auto-organizer-ablagen",
+  "auto-organizer-ruecksitz",
+  "auto-organizer-taschen-boxen",
+  "auto-reparatur-karosseriewerkzeug",
+  "auto-schluessel-etuis",
+  "autopflege-politur-lack",
+  "autositzbezuege-auflagen",
+  "autowaesche-buersten-sauger",
+  "autowaesche-pistolen-schaum",
+  "autowaesche-reinigung",
+  "baby-ausstattung",
+  "baby-baden-wickeln-pflege",
+  "baby-decken-nester-tuecher",
+  "baby-kinderwagen-unterwegs",
+  "baby-kissen",
+  "baby-schlafen-kuscheln",
+  "baby-sicherheit-babyphone"
+ ],
  "ausgelassen_intern": [
   "frauen-favoriten"
  ],
  "ausgelassen_doppel": [
-  "gaming"
+  "gaming",
+  "motorrad-taschen-wasserdicht",
+  "reinigung-buersten"
  ]
 }
