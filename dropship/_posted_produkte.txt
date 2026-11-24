@@ -560,3 +560,4 @@ slug:perucke-lola-biene-fgaor32528
 name:ledsensorlichtleiste
 pid:15450832863617
 slug:led-sensor-lichtleiste-5e2d3d
+slug:kabelloses-lavalier-mikrofon
