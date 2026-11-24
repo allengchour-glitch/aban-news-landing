@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-24 15:46 UTC, Stand 2026-11-24 17:49 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-24 15:46 UTC, Stand 2026-11-24 17:54 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **38'417**
-- Optionen mit englischen Werten (Kandidaten): 1'218
+- Produkte gesehen: **45'610**
+- Optionen mit englischen Werten (Kandidaten): 1'350
 - Optionen übersetzt: **0** · Werte übersetzt: **0**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 3'618
+- Werte mit unbekanntem Wort (unverändert): 3'918
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 28
-- übersprungen «kleidungsstueck-im-wert»: 25
+- übersprungen «kollision-nach-uebersetzung»: 30
+- übersprungen «kleidungsstueck-im-wert»: 27
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -61,6 +61,8 @@
 - `15485613965697` [Farbe] herren-outdoor-flip-flops-fur-zuhause-604300: Black → Schwarz
 - `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 3 Apricot → 3 Aprikose; 3 Apricot color → 3 Aprikose
 - `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
+- `15509446885761` [Grösse] magic-academy-freizeit-rucksack-2c9b67: 16 inches → 16 Zoll; 16inches → 16 Zoll
+- `15517782933889` [Farbe] a-linien-kleid-mit-spitze-und-ruschen-616000: Emerald Green → Smaragdgrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -83,5 +85,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 126, `powder` 101, `french` 84, `size` 63, `elegant` 58, `core` 58, `high` 56, `cherry` 55, `one` 53, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `chain` 40, `four` 39, `inner` 38, `(insole` 36, `space` 33, `tc` 31, `li` 31, `blossom` 30, `end` 30, `carbon` 28, `intergold` 28, `avocado` 27, `of` 27, `opp` 27, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `×` 23, `eyelashes` 23, `weiß` 22, `two` 21, `no` 21, `love` 21, `lotus` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `2er` 19, `gun` 19, `line` 19, `light` 19, `⟨satzbau:menge-vor-nomen⟩` 19, `lamp` 19, `holder` 19, `three` 18, `full` 18, `color` 18, `waist` 18, `to` 18, `the` 18
+`⟨satzbau:adjektiv-vor-nomen⟩` 143, `powder` 104, `french` 84, `core` 70, `elegant` 65, `high` 64, `size` 63, `one` 60, `cherry` 55, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 44, `chain` 40, `inner` 38, `(insole` 36, `space` 33, `blossom` 31, `tc` 31, `end` 31, `li` 31, `carbon` 30, `avocado` 29, `of` 29, `lotus` 28, `intergold` 28, `tea` 27, `opp` 27, `plush` 27, `gel` 26, `stickers` 26, `×` 25, `happy` 25, `two` 24, `weiß` 24, `you` 24, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `no` 21, `love` 21, `inside` 21, `gun` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `three` 19, `2er` 19, `line` 19, `light` 19, `the` 19, `⟨satzbau:menge-vor-nomen⟩` 19, `lamp` 19, `holder` 19, `⟨satzbau:mass-ohne-zahl⟩` 19, `full` 18
 
