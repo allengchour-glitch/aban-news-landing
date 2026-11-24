@@ -31,3 +31,6 @@ Summe der Funding-Sätze je Jahr (Short-Perp bekommt es bei positivem Satz), Ant
 - **ETH:** 2024 +13,0 %, 2025 +4,9 %, 2026 +1,7 %. **SOL:** 2022 −38 %, 2025 +0,4 %, 2026 −0,5 % (Carry dort unbrauchbar).
 - **Deutung (meine):** Der Carry ist stark geschrumpft. Bei Delta-neutral (Spot + Short-Perp) bindet er rund das Doppelte an Kapital und kostet vier Handelsseiten; 2025/26 bleibt netto etwa 1 bis 2,5 % aufs Kapital, bei Börsen-, Basis- und Liquidationsrisiko. Deckt sich mit der Recherche (Carry komprimiert). Für den Papierbot nicht umgesetzt, kein Beleg für einen Vorteil.
 - **Weiter ungemessen:** Kerzen unter einem Tag, Short, On-Chain-Daten.
+
+## Papier-Lauf v2 (24.11.2026, nur Spielgeld)
+`papier_lauf_v2.mjs` führt zwei getrennte Ledger: **A** die Bitcoin-Regel unverändert, jetzt mit Begründung, Abstand zum 100-Tage-Schnitt und Risiko bis Trendbruch je Entscheid; **B** ein Korb aus bis zu 30 Coins (Trend über SMA100 + Bitcoin-Filter, Gewicht ~ 1/Schwankung, je Coin höchstens 25 %). Test `papier_lauf_v2.test.mjs` (Mutationsprobe 8 von 8). Starter `BTC-TREND-PAPIER-V2.sh` (Prüfsumme, Rücknahme `zurueck`). Backtest-Zahlen des Korbs: siehe Nachricht 24.11. (2025 −25 % gegen +3 % der Bitcoin-Regel, Survivorship-Verzerrung): der Korb ist ein Vorwärtstest, kein Beleg. EOS ist nicht mehr handelbar und wird ausgelassen.

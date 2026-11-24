@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {decideA,stepA,weightsB,stepB,sma,vol,COST} from './papier_lauf_v2.mjs';
+const up=Array.from({length:130},(_,i)=>100+i), down=Array.from({length:130},(_,i)=>230-i);
+assert.equal(decideA(up).want,'long'); assert.equal(decideA(down).want,'cash'); assert.equal(decideA(up.slice(0,50)),null);
+assert.ok(/ueber dem 100-Tage-Schnitt/.test(decideA(up).reason)); assert.ok(decideA(up).risikoBisTrendbruchProzent>0); assert.equal(decideA(down).risikoBisTrendbruchProzent,0);
+let a={cash:1000,btc:0,trades:0,fees:0,history:[]};
+a=stepA(a,'d1',decideA(up)); assert.equal(a.cash,0); assert.ok(Math.abs(a.btc-1000*(1-COST)/up.at(-1))<1e-9); assert.equal(a.history[0].aktion,'Kauf');
+assert.equal(stepA(a,'d1',decideA(down)),a,'gleiches Datum'); assert.equal(stepA(a,'d2',null),a,'keine Daten');
+a=stepA(a,'d2',decideA(up)); assert.equal(a.trades,1,'schon drin');
+a=stepA(a,'d3',decideA(down)); assert.equal(a.btc,0); assert.equal(a.history.at(-1).aktion,'Verkauf'); assert.ok(a.cash<1000);
+// Korb
+const flat=Array.from({length:130},(_,i)=>100+Math.sin(i)*2+i*0.5), calm=Array.from({length:130},(_,i)=>100+i*0.2);
+const wob=Array.from({length:130},(_,i)=>100+i*0.2+(i%2?3:-3));
+let r=weightsB({BTCUSDT:down,ETHUSDT:up}); assert.deepEqual(r.w,{},'BTC unter Schnitt: Cash');
+r=weightsB({BTCUSDT:up,ETHUSDT:calm,SOLUSDT:wob}); assert.ok(r.w.ETHUSDT>r.w.SOLUSDT,'ruhiger Coin hoeher gewichtet'); assert.ok(Object.values(r.w).every(x=>x<=0.25+1e-12));
+assert.ok(!('XRPUSDT' in weightsB({BTCUSDT:up,XRPUSDT:down}).w),'Coin unter eigenem Schnitt fehlt');
+let b={cash:1000,hold:{},trades:0,fees:0,history:[]};
+b=stepB(b,'d1',{BTCUSDT:100,ETHUSDT:50},{BTCUSDT:.25,ETHUSDT:.25},'t'); const eq1=b.cash+b.hold.BTCUSDT*100+b.hold.ETHUSDT*50;
+assert.ok(Math.abs(eq1-(1000-500*COST))<1e-6,'Kosten auf Umschichtung'); assert.ok(Math.abs(b.cash-(1000-500*COST)*.5)<1e-6);
+assert.equal(stepB(b,'d1',{BTCUSDT:1,ETHUSDT:1},{},'t'),b,'gleiches Datum');
+b=stepB(b,'d2',{BTCUSDT:100,ETHUSDT:50},{},'cash'); assert.deepEqual(b.hold,{}); assert.ok(b.cash<eq1&&b.cash>990);
+assert.ok(Math.abs(vol(up)-vol(up))<1e-12); assert.equal(sma([1,2,3],5),null);
+console.log('ok Pruefungen Papier-Lauf v2');
