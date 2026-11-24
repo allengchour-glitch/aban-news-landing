@@ -10,7 +10,7 @@ for (let n = 1; n <= 4; n++) {
   const l = r.data?.list || []; alle.push(...l); if (l.length < 50) break;
   await new Promise((s) => setTimeout(s, 1200));
 }
-const offen = alle.filter((o) => /^LX/i.test(o.orderNum || '') && o.orderStatus === 'CREATED');
+const offen = alle.filter((o) => /^LX/i.test(o.orderNum || '') && (o.orderStatus === 'CREATED' || o.orderStatus === 'IN_CART'));  // 24.11.: CJ legt neue Aufträge als IN_CART an (LX1045) — vorher «NICHTS OFFEN» trotz offener Zahlung
 if (!offen.length) { console.log(`NICHTS OFFEN (${alle.length} Aufträge gelesen)`); process.exit(0); }
 for (const o of offen) {
   await new Promise((s) => setTimeout(s, 1200));
