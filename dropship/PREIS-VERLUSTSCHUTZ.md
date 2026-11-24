@@ -1,4 +1,4 @@
-# Preis-Verlustschutz — scharf 2026-11-24 22:22 UTC
+# Preis-Verlustschutz — scharf 2026-11-24 22:24 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
