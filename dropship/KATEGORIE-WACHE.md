@@ -1,15 +1,15 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-24T11:14Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-24T17:21Z
 
-Aktive gescannt: 14 · ohne Kategorie: 14 · heute gesetzt: 14 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 39 · ohne Kategorie: 39 · heute gesetzt: 39 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Beispiele (heute gesetzt)
 
-- vintage-brosche-mit-geometrischem-design-in-bl-651904 · Schmuck → Apparel & Accessories > Jewelry
-- led-nachttischlampe-im-blumen-design-631400 · Beleuchtung → Home & Garden > Lighting
-- brosche-aus-titanstahl-mit-namensbuchstaben-515776 · Schmuck → Apparel & Accessories > Jewelry
-- engel-brosche-mit-kunstlichen-zirkonia-380608 · Schmuck → Apparel & Accessories > Jewelry
-- mushroom-ladestation-tischlampe-600800 · Beleuchtung → Home & Garden > Lighting
+- schreibtischlampe-mit-touchsteuerung-622900 · Beleuchtung → Home & Garden > Lighting
+- brosche-retro-rhinestone-bogen-791360 · Schmuck → Apparel & Accessories > Jewelry
+- keramische-butterlampe-rot-633300 · Beleuchtung → Home & Garden > Lighting
+- uv-neonleuchtschrift-fur-laden-bar-630100 · Beleuchtung → Home & Garden > Lighting
+- wandlampe-resin-minimalistisches-design-629000 · Beleuchtung → Home & Garden > Lighting
 
