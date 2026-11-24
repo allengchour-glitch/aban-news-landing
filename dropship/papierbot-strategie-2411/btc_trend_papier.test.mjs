@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {decide,step,COST} from './btc_trend_papier.mjs';
+const up=Array.from({length:120},(_,i)=>100+i), down=Array.from({length:120},(_,i)=>220-i);
+assert.equal(decide(up),'long'); assert.equal(decide(down),'cash'); assert.equal(decide(up.slice(0,50)),null);
+let l={cash:1000,btc:0,trades:0,fees:0,history:[]};
+l=step(l,'d1',100,'long'); assert.equal(l.cash,0); assert.ok(Math.abs(l.btc-1000*(1-COST)/100)<1e-9);
+assert.equal(step(l,'d1',200,'cash'),l,'gleiches Datum: keine zweite Aktion');
+l=step(l,'d2',100,'long'); assert.equal(l.trades,1,'schon drin: kein Handel');
+l=step(l,'d3',100,'cash'); assert.equal(l.btc,0); assert.ok(Math.abs(l.cash-1000*(1-COST)**2)<1e-9);
+assert.equal(step(l,'d4',100,null),l,'zu wenig Daten: nichts tun');
+console.log('ok 9 Pruefungen');
