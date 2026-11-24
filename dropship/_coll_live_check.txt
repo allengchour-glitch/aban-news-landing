@@ -1731,3 +1731,6 @@ shop-weihnachten-zuhause	unveroeffentlicht	0	Weihnachten Zuhause
 shop-unterwegs-alltag	unveroeffentlicht	0	Unterwegs & Alltag
 shop-mode-stil	unveroeffentlicht	0	Mode & Stil
 shop-schmuck-accessoires	unveroeffentlicht	0	Schmuck & Accessoires
+startseite-pool-weihnachten	ok	25	Startseite Pool Weihnachten
+startseite-pool-winter	ok	29	Startseite Pool Winter
+startseite-pool-geschenke	ok	24	Startseite Pool Geschenke

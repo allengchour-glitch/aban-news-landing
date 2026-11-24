@@ -1,4 +1,4 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-11-24T20:28:23Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-11-24T20:33:13Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1291 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
@@ -169,7 +169,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Inline-Skate-Set für Kids `15453781557633` | [69926731776385](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/22712a88-427a-4d84-b10f-6edb2551ccb4_trans.jpg) | 5 | material Hard shell crash protection | ENTFERNT |
 | Magnetische Kühlschrank-Marker `15453779034497` | [69926719095169](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/b7925275-5a1b-4a5a-ba07-0319761fa6b1.jpg) | 5 | not just keep moving forward | offen |
 | Velo-Frontlicht 2000LM XPT*6 LED Aluminium `15448957518209` | [77410975318407](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/c73e9f7d-9e53-4472-9a85-89b14bf186c1_trans.jpg) | 5 | The main light has advance | offen |
-| Freihand-Hundeleine für mittelgrosse und grosse  `15519837127041` | [70709921546625](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1615103635301.jpg) | 5 | use one just say Just | offen |
+| Freihand-Hundeleine für kleine, mittelgrosse und `15519837127041` | [70709921546625](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1615103635301.jpg) | 5 | use one just say Just | offen |
 | Schlaf-Nackenkissen mit Moxibustion `15453777002881` | [69926709461377](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/2a853db6-9b9d-4b90-aabb-1d14cf817e22_trans.jpg) | 5 | Mugwort Heat Pack Classic Gray | offen |
 | Mehrzweck-Hundeleine mit Frosch Schnalle `15453790142849` | [77408597934471](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/35e1164a-a08f-4ce2-b4b4-78d80f17b055_fine.jpg) | 5 | Lake Blue Small frog clasp | offen |
 | Dickes Korallen-Fleece Badetuch `15453792436609` | [69926765724033](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/42b48f14-7470-4f15-ad28-5a75b765be12_fine.jpg) | 5 | Comfortable and soft Enlarged Thickened | offen |
