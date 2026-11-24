@@ -5,7 +5,7 @@
 > Im Bio steht die Adresse als **Text** (`luxestyle.ch`), aber **kein klickbarer
 > Link**. Der Abschluss-Slide sagt «Link in Bio»: ungenau, aber niemand läuft
 > mehr ins Leere — die Zuschauerin findet den Shop im Bio.
-> Gemessen: 568 Follower · 200 Videos · 422 Likes.
+> Gemessen: 568 Follower · 206 Videos · 423 Likes.
 >
 > **Was den klickbaren Link bringt** (lohnt sich, ist aber kein Blocker):
 > Das Website-Feld gibt es im Privatkonto nicht — live geprüft, «Profil
@@ -20,7 +20,7 @@
 **Automatisch fortgeschrieben.** Alle Dateien liegen öffentlich auf dem Shopify-CDN;
 Cowork kann sie direkt herunterladen, es braucht keinen Repo-Zugriff.
 
-**Profil am 2026-11-23 gemessen:** 568 Follower · 200 Videos · 422 Likes · Bio-Link: **keiner**
+**Profil am 2026-11-24 gemessen:** 568 Follower · 206 Videos · 423 Likes · Bio-Link: **keiner**
 
 ## So vorgehen (gilt für jeden Beitrag)
 1. **Zuerst das Profil ansehen:** tiktok.com/@luxestyle.ch — steht das Produkt dort schon,
@@ -436,7 +436,29 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/leckmatte-fur-hunde-katze
 
 ---
 
-## 17. `lockenstab-fur-einfache-stylings-631872`
+## 17. `led-teelichter-flackernd-batteriebetrieben-594688`
+
+**Caption:**
+
+```
+LED Teelichter Flackernd (Batteriebetrieben) · CHF 19.90
+Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferung 10–20 Werktage, dafür ehrlich angeschrieben · 30 Tage Rückgabe · TWINT oder Rechnung.
+Fragen? Schreib sie in die Kommentare 👇
+Jetzt im Shop 🇨🇭 luxestyle.ch
+
+#luxestyle #swissstyle #homedecor #zuhause #wohnen
+```
+
+**Slides in dieser Reihenfolge:**
+
+1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_a07426b7-d04f-4754-8efa-210980b2e97b.jpg?v=1795560552
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_9f55174a-f7c3-438e-98cc-fc4c3efab039.jpg?v=1795560559
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_209829cb-a3d5-4894-be12-a4ca08b178c3.jpg?v=1795560566
+6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_1a67d422-0d04-4fb1-988d-0b08de033abe.jpg?v=1795560573
+
+---
+
+## 18. `lockenstab-fur-einfache-stylings-631872`
 
 **Caption:**
 
@@ -459,7 +481,7 @@ Code WELCOME10 für −10%
 
 ---
 
-## 18. `meisterwerk-0830`
+## 19. `meisterwerk-0830`
 
 **Caption:**
 
@@ -486,7 +508,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/meisterwerk-0830-clean_ab
 
 ---
 
-## 19. `meisterwerk-0913`
+## 20. `meisterwerk-0913`
 
 **Caption:**
 
@@ -511,7 +533,7 @@ Code WELCOME10 für −10%
 
 ---
 
-## 20. `meisterwerk-0927`
+## 21. `meisterwerk-0927`
 
 **Caption:**
 
@@ -538,7 +560,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/meisterwerk-0927-clean.mp
 
 ---
 
-## 21. `meisterwerk-1004`
+## 22. `meisterwerk-1004`
 
 **Caption:**
 
@@ -565,7 +587,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/meisterwerk-1004-clean.mp
 
 ---
 
-## 22. `meisterwerk-1018`
+## 23. `meisterwerk-1018`
 
 **Caption:**
 
@@ -592,7 +614,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/meisterwerk-1018-clean.mp
 
 ---
 
-## 23. `mini-waffeleisen-fur-zuhause-445824`
+## 24. `mini-waffeleisen-fur-zuhause-445824`
 
 **Caption:**
 
@@ -616,7 +638,7 @@ Jetzt im Shop 🇨🇭 luxestyle.ch
 
 ---
 
-## 24. `outdoor-wireless-powerbank-mit-kabel-618100`  ⛔ GESPERRT
+## 25. `outdoor-wireless-powerbank-mit-kabel-618100`  ⛔ GESPERRT
 
 ⛔ **Nicht posten.** Das Produkt ist nicht mehr ACTIVE oder nicht im Onlineshop — der Beitrag würde auf eine tote Seite führen.
 
@@ -642,7 +664,7 @@ Jetzt im Shop 🇨🇭 luxestyle.ch
 
 ---
 
-## 25. `samt-kurbis-kissen-95e02d`
+## 26. `samt-kurbis-kissen-95e02d`
 
 **Caption:**
 
@@ -664,7 +686,7 @@ Jetzt im Shop 🇨🇭 luxestyle.ch
 
 ---
 
-## 26. `schmuck-organizer-mit-faltwand-958528`
+## 27. `schmuck-organizer-mit-faltwand-958528`
 
 **Caption:**
 
@@ -690,7 +712,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/schmuck-organizer-mit-fal
 
 ---
 
-## 27. `selfie-stick-stativ-mit-led-ringlicht-699712`
+## 28. `selfie-stick-stativ-mit-led-ringlicht-699712`
 
 **Caption:**
 
@@ -714,7 +736,7 @@ Jetzt im Shop 🇨🇭 luxestyle.ch
 
 ---
 
-## 28. `sonnenuntergang-projektor-sunset-stimmungslich-610600`
+## 29. `sonnenuntergang-projektor-sunset-stimmungslich-610600`
 
 **Caption:**
 
@@ -738,7 +760,7 @@ Jetzt im Shop 🇨🇭 luxestyle.ch
 
 ---
 
-## 29. `strickpullover-rundhals-loose-fit-634500`
+## 30. `strickpullover-rundhals-loose-fit-634500`
 
 **Caption:**
 
@@ -765,7 +787,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/strickpullover-rundhals-l
 
 ---
 
-## 30. `t20-mini-beamer-hd-heimkino-fur-unterwegs-682880`
+## 31. `t20-mini-beamer-hd-heimkino-fur-unterwegs-682880`
 
 **Caption:**
 
@@ -791,7 +813,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/t20-mini-beamer-hd-heimki
 
 ---
 
-## 31. `top-3-unter-90-0917`
+## 32. `top-3-unter-90-0917`
 
 **Caption:**
 
@@ -819,7 +841,7 @@ Alles auf luxestyle.ch
 
 ---
 
-## 32. `top-5-unter-100-0910`
+## 33. `top-5-unter-100-0910`
 
 **Caption:**
 
@@ -851,7 +873,7 @@ Alles auf luxestyle.ch
 
 ---
 
-## 33. `top-5-unter-110-0918`
+## 34. `top-5-unter-110-0918`
 
 **Caption:**
 
@@ -883,7 +905,7 @@ Alles auf luxestyle.ch
 
 ---
 
-## 34. `top-5-unter-120-1013`
+## 35. `top-5-unter-120-1013`
 
 **Caption:**
 
@@ -918,7 +940,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-120-1013-clea
 
 ---
 
-## 35. `top-5-unter-140-0914`
+## 36. `top-5-unter-140-0914`
 
 **Caption:**
 
@@ -950,7 +972,7 @@ Alles auf luxestyle.ch
 
 ---
 
-## 36. `top-5-unter-30-0907`
+## 37. `top-5-unter-30-0907`
 
 **Caption:**
 
@@ -982,7 +1004,7 @@ Alles auf luxestyle.ch
 
 ---
 
-## 37. `top-5-unter-30-0915`
+## 38. `top-5-unter-30-0915`
 
 **Caption:**
 
@@ -1014,7 +1036,7 @@ Alles auf luxestyle.ch
 
 ---
 
-## 38. `top-5-unter-40-0829`
+## 39. `top-5-unter-40-0829`
 
 **Caption:**
 
@@ -1048,7 +1070,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-40-0829-clean
 
 ---
 
-## 39. `top-5-unter-40-1009`
+## 40. `top-5-unter-40-1009`
 
 **Caption:**
 
@@ -1083,7 +1105,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-40-1009-clean
 
 ---
 
-## 40. `top-5-unter-40-1015`
+## 41. `top-5-unter-40-1015`
 
 **Caption:**
 
@@ -1118,7 +1140,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-40-1015-clean
 
 ---
 
-## 41. `top-5-unter-40-1023`
+## 42. `top-5-unter-40-1023`
 
 **Caption:**
 
@@ -1150,7 +1172,7 @@ Alles auf luxestyle.ch
 
 ---
 
-## 42. `top-5-unter-50-0828`
+## 43. `top-5-unter-50-0828`
 
 **Caption:**
 
@@ -1184,7 +1206,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-50-0828-clean
 
 ---
 
-## 43. `top-5-unter-50-0908`
+## 44. `top-5-unter-50-0908`
 
 **Caption:**
 
@@ -1216,7 +1238,7 @@ Alles auf luxestyle.ch
 
 ---
 
-## 44. `top-5-unter-50-1019`
+## 45. `top-5-unter-50-1019`
 
 **Caption:**
 
@@ -1251,7 +1273,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-50-1019-clean
 
 ---
 
-## 45. `top-5-unter-50-1020`
+## 46. `top-5-unter-50-1020`
 
 **Caption:**
 
@@ -1286,7 +1308,39 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-50-1020-clean
 
 ---
 
-## 46. `top-5-unter-60-0905`
+## 47. `top-5-unter-50-1124`
+
+**Caption:**
+
+```
+5 Trend-Teile unter CHF 50 🇨🇭
+
+1. Kristallspitzen-Set 8-teilig in Holzbox · CHF 29.90
+2. E-Scooter Ladegerät 42 V / 2 A · EU-Stecker, Xiaomi-Anschluss · CHF 34.90
+3. Midikleid mit Zopfmuster und Blumenprint · CHF 39.90
+4. Herren Cargo-Hose «Trail» · Multi-Pocket Outdoor · CHF 44.90
+5. Runder Gemüseschneider mit Handkurbel · CHF 39.90
+
+Kleiner Schweizer Shop aus Belp, kein Konzern. Lieferzeit steht auf jeder Produktseite · 30 Tage Rückgabe · TWINT oder Rechnung.
+Fragen? Schreib sie in die Kommentare 👇
+Alles auf luxestyle.ch
+
+#luxestyle #swissstyle #fundstück #geschenkidee #weihnachtsgeschenk
+```
+
+**Slides in dieser Reihenfolge:**
+
+1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_c00963e5-475f-4cd2-bb68-a2000c6d069f.jpg?v=1795560577
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_ea394060-9db4-467a-b5d4-89ff3594f7a6.jpg?v=1795560585
+3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_262bbbc5-a462-4a81-a77e-7edf0f9fcbc3.jpg?v=1795560591
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_797cde93-0a66-417d-a985-5af8cc5031c9.jpg?v=1795560598
+5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_f9cfd67f-e109-44f5-98f2-994dcfdd2b3c.jpg?v=1795560604
+6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_87067040-ccdd-4d20-af93-407dcb51760b.jpg?v=1795560611
+7. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/07_bb5ee700-c95c-42ee-982a-879c7bb2b3bc.jpg?v=1795560618
+
+---
+
+## 48. `top-5-unter-60-0905`
 
 **Caption:**
 
@@ -1317,7 +1371,7 @@ Code WELCOME10 für −10%
 
 ---
 
-## 47. `top-5-unter-60-1022`
+## 49. `top-5-unter-60-1022`
 
 **Caption:**
 
@@ -1340,14 +1394,16 @@ Alles auf luxestyle.ch
 **Slides in dieser Reihenfolge:**
 
 1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_83d1a207-8a00-4fe1-ab54-fbda8a56497f.jpg?v=1795470981
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_8252988d-e9cb-4fde-a1e1-973f25e2b462.jpg?v=1795560624
 3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_50b2d1bb-0459-4143-a2cf-16da67a7fd0a.jpg?v=1795470989
 4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_4b77f8d9-d2b4-4686-a8b3-7adf36046d00.jpg?v=1795470996
 5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_b062afce-2dc1-43ef-9b9d-d3c150e7deb4.jpg?v=1795471003
 6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_1518d1d1-42b0-410e-976e-f31ac3238424.jpg?v=1795471009
+7. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/07_ab77e413-8143-4ea4-923d-f9cd7dec9b7c.jpg?v=1795560631
 
 ---
 
-## 48. `top-5-unter-70-0902`
+## 50. `top-5-unter-70-0902`
 
 **Caption:**
 
@@ -1378,7 +1434,7 @@ Code WELCOME10 für −10%
 
 ---
 
-## 49. `top-5-unter-70-1008`
+## 51. `top-5-unter-70-1008`
 
 **Caption:**
 
@@ -1413,7 +1469,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/top-5-unter-70-1008-clean
 
 ---
 
-## 50. `top-5-unter-80-0901`
+## 52. `top-5-unter-80-0901`
 
 **Caption:**
 
@@ -1444,7 +1500,7 @@ Code WELCOME10 für −10%
 
 ---
 
-## 51. `top-5-unter-80-0903`
+## 53. `top-5-unter-80-0903`
 
 **Caption:**
 
@@ -1468,13 +1524,14 @@ Code WELCOME10 für −10%
 1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_5c25ec59-56c4-445d-9c9e-6267ea2434e3.jpg?v=1795471028
 2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_d49dd986-72a0-438e-b607-e87ada2e2e42.jpg?v=1795471034
 3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_80a3aacc-4d35-48ce-b8a2-57d8a4eb650f.jpg?v=1795471038
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_af3dbe88-5144-4b7e-b192-7286f2cd14bc.jpg?v=1795560634
 5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_162215c7-1e49-4092-9da2-e7a9bc275a86.jpg?v=1795471046
 6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_238e4f8b-d6ca-49af-b3aa-4ab93cf7e567.jpg?v=1795471052
 7. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/07_39dfd59c-e279-42c6-b436-a75f70d40ead.jpg?v=1795471056
 
 ---
 
-## 52. `top-5-unter-80-0913`
+## 54. `top-5-unter-80-0913`
 
 **Caption:**
 
@@ -1496,15 +1553,17 @@ Alles auf luxestyle.ch
 
 **Slides in dieser Reihenfolge:**
 
+1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_c03d7ae8-b421-4042-9363-18042fbe73b3.jpg?v=1795560642
 2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_3e2fb5bb-4ffb-410c-b722-74e3b43235a4.jpg?v=1795471061
 3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_cee96e92-b2a9-49dd-a445-70a30f15e92c.jpg?v=1795471068
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_bcc6c356-c826-4fc2-86fc-1165417d9bf2.jpg?v=1795560648
 5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_71dae19b-9f10-479f-96cd-b869d4349ce1.jpg?v=1795471076
 6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_f36d9213-8c4a-4cd5-9cbd-b030b53381d3.jpg?v=1795471079
 7. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/07_21d62098-59a5-4939-bb0f-d56b5327e0a9.jpg?v=1795471086
 
 ---
 
-## 53. `vakuumierer-kabellos-lebensmittel`  ⛔ GESPERRT
+## 55. `vakuumierer-kabellos-lebensmittel`  ⛔ GESPERRT
 
 ⛔ **Nicht posten.** Das Produkt ist nicht mehr ACTIVE oder nicht im Onlineshop — der Beitrag würde auf eine tote Seite führen.
 
@@ -1531,7 +1590,7 @@ https://cdn.shopify.com/s/files/1/0943/6856/3585/files/vakuumierer-kabellos-lebe
 
 ---
 
-## 54. `verstellbare-teleskop-faszienrolle-aus-schaums-877824`
+## 56. `verstellbare-teleskop-faszienrolle-aus-schaums-877824`
 
 **Caption:**
 
@@ -1554,7 +1613,7 @@ Code WELCOME10 für −10%
 
 ---
 
-## 55. `verzierte-blockabsatz-damenstiefel-oberschenke-628000`
+## 57. `verzierte-blockabsatz-damenstiefel-oberschenke-628000`
 
 **Caption:**
 
@@ -1572,11 +1631,13 @@ Jetzt im Shop 🇨🇭 luxestyle.ch
 1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_683afe48-1665-43db-ab0d-99a38475be80.jpg?v=1795471127
 2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_46eaef18-b93a-4d46-816e-5cc8382abfdb.jpg?v=1795471134
 3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_6b8c2751-8c20-4503-93ce-3455922fbae4.jpg?v=1795471141
+4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_90e70e31-1929-46a8-9dfc-dbc916ca59f0.jpg?v=1795560655
 5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_b5358472-19fc-4820-893a-02e610a4df40.jpg?v=1795471149
+6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_547940a7-9e22-4f0d-b656-56074c3a8ad7.jpg?v=1795560658
 
 ---
 
-## 56. `warme-lederhandschuhe-mit-fleecefutter-626600`
+## 58. `warme-lederhandschuhe-mit-fleecefutter-626600`
 
 **Caption:**
 
@@ -1592,13 +1653,15 @@ Jetzt im Shop 🇨🇭 luxestyle.ch
 **Slides in dieser Reihenfolge:**
 
 1. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/01_e8d6ca5f-0ea8-4a0d-9466-4772a01d3eca.jpg?v=1795471157
+2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_d7ee03f4-a295-4553-8f18-59e085e1856c.jpg?v=1795560662
 3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_f789b9b1-a32e-4a6e-8265-d356ccfe1caf.jpg?v=1795471165
 4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_ade81825-4615-4f4e-ab4e-b1c860964c01.jpg?v=1795471171
+5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_1ec9f868-c4e5-48d2-bd7d-f43cb0187237.jpg?v=1795560669
 6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_ee59fd6a-91f2-4a6c-83dc-4a8a2cea06b9.jpg?v=1795471179
 
 ---
 
-## 57. `yoga-massagerolle-390720`
+## 59. `yoga-massagerolle-390720`
 
 **Caption:**
 
@@ -1616,5 +1679,6 @@ Jetzt im Shop 🇨🇭 luxestyle.ch
 2. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/02_dc9d282a-1b81-4473-8861-0bd1233ab56b.jpg?v=1795471184
 3. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/03_b4af9af2-0e98-4946-bd98-ac4f6068d240.jpg?v=1795471191
 4. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/04_a85c5cef-39f1-4287-844d-7351a60d31cc.jpg?v=1795471198
+5. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/05_4cf523fb-cc9f-49fb-b502-0951af9ee45b.jpg?v=1795560677
 6. https://cdn.shopify.com/s/files/1/0943/6856/3585/files/06_c2679576-cc1e-45c9-9ec9-f32f163ea398.jpg?v=1795471205
 

@@ -1,4 +1,4 @@
-# Judge.me — doppelt importierte Bewertungen · Stand 2026-11-23T21:54:05Z
+# Judge.me — doppelt importierte Bewertungen · Stand 2026-11-24T22:47:51Z
 
 Gelesen: 14557 Bewertungen, davon 10169 veröffentlicht. **Unvollständig:** 5★ 2450 nicht lesbar (API-Seitendeckel)
 

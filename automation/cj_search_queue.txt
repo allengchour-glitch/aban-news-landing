@@ -14,7 +14,7 @@
 # 2026-10-05 semrush draft-ersatz: Entwürfe ranken bei Google (katzenklo möbel 320/Mt Platz 26, camping wasserkanister 210/34, corduroy rucksack 90/28) → nach Import Redirect umstellen, Ledger dropship/semrush/_draft_ersatz_2026-10-05.tsv
 # 2026-10-13 google_nachfrage_luecke.py: Google-Besucher landeten auf heute toten Seiten → Ersatz suchen
 # 2026-11-24 google_nachfrage_luecke.py: Google-Besucher landeten auf heute toten Seiten → Ersatz suchen
-search:mace weapon
+#ohne-treffer 2026-11-24 search:mace weapon
 #done search:leather sewing kit
 #done search:cat litter box furniture
 #done search:collapsible water container with tap
@@ -789,8 +789,8 @@ search:mace weapon
 #ohne-treffer 2026-10-13 search:thermal underwear set
 #done search:ski goggles
 # 24.11.2026 Betreiber «suche gute weitere produkten für shop von cj»: Winter/Weihnachten/Geschenke, leicht, ohne Akku/Flüssigkeit (weniger Rückerstattungen); Bestseller-Umfeld Rizinusöl-Wickel, Thermo-Strumpfhose, Jacken.
-search:christmas pajamas family matching
-search:christmas sweater women knit
+#ohne-treffer 2026-11-24 search:christmas pajamas family matching
+#ohne-treffer 2026-11-24 search:christmas sweater women knit
 search:sherpa slippers women
 search:knitted beanie scarf set
 search:touchscreen gloves women knit

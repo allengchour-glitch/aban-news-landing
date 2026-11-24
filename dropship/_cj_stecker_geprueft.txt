@@ -1186,3 +1186,11 @@
 15501679755649	kein-stecker-merkmal	2026-11-23	Ladestation für Game-Kontrollen
 15501681295745	kein-stecker-merkmal	2026-11-23	Universal-Ladestation mit Wecker und Licht
 15501681787265	kein-stecker-merkmal	2026-11-23	Fünf-in-eins-Ladestation
+16733438181767	mehrere-varianten	2026-11-24	Deckenleuchte aus Eisen für Lernräume
+16733438476679	kein-stecker-merkmal	2026-11-24	Kabellose Tischlampe mit Aufladestation
+16733439361415	kein-stecker-merkmal	2026-11-24	Kreative Untertassen-Deckenleuchte für das Schlafzimmer
+16733473341831	mehrere-varianten	2026-11-24	Handgefertigte Rattan Stehlampe für Wohnzimmer
+16733545693575	kein-stecker-merkmal	2026-11-24	Minimalistisches Nachttisch-Licht mit Ladestation
+16733772939655	kein-stecker-merkmal	2026-11-24	Mushroom-Ladestation Tischlampe
+16733921378695	kein-stecker-merkmal	2026-11-24	Deckenleuchte Minimalistisch Nordisch Warmweiss
+16734027612551	kein-stecker-merkmal	2026-11-24	Mid-Century Modern Deckenleuchte Creme
