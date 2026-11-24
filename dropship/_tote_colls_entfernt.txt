@@ -64,3 +64,6 @@ indoor-grow	unpublished	Indoor-Gärtnern & Grow	leer-auto 2026-10-19T12:47:00Z	3
 fan-zone-schweiz	unpublished	Fan-Zone Schweiz – WM 2026	leer-auto 2026-10-19T12:47:05Z	301:/collections/fussball-fanshop
 haustier-kuehlung	unpublished	Haustier-Sommer & Kühlung	leer-auto 2026-10-19T12:47:10Z	301:/collections/sub-haustier
 kueche-organisation	unpublished	Küchen-Organisation	leer-auto 2026-10-19T12:47:15Z	301:/collections/sub-kueche
+sg-wohnen	unpublished	Wohnen & Deko selbst gestalten	leer-auto 2026-11-24T07:36:36Z	301:/collections/bestseller
+herz-schmuck-silber	unpublished	Herz-Schmuck aus Silber	leer-auto 2026-11-24T07:36:41Z	301:/collections/bestseller
+blumen-schmetterlingsschmuck-silber	unpublished	Silber-Blumen & -Schmetterlinge	leer-auto 2026-11-24T07:36:45Z	301:/collections/bestseller
