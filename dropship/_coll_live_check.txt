@@ -1373,3 +1373,6 @@ hanteln-kettlebells	ok	29	Hanteln, Kettlebells & Gewichte
 widerstandsbaender-expander	ok	29	Widerstandsbänder & Expander
 widerstandsbaender-sets	ok	21	Bänder-Sets
 springseile	ok	29	Springseile
+bauchtrainer-liegestuetz-klimmzug	ok	29	Bauchtrainer, Liegestütz- & Klimmzuggeräte
+bauchtrainer-bauchroller	ok	29	Bauchroller & Bauchräder
+liegestuetz-klimmzug-geraete	ok	27	Liegestütz & Klimmzug
