@@ -1675,3 +1675,5 @@ gid://shopify/Product/15448907776385	ok	Sportliche Herrenuhr mit Magnetschwebe-K
 gid://shopify/Product/15449128960385	ok	WLAN-Wildkamera für die Outdoor-Forschung
 gid://shopify/Product/15479074062721	ok	Smartwatch Armband
 gid://shopify/Product/15479469998465	ok	M99 Smartwatch mit grossem AMOLED-Display
+gid://shopify/Product/15480283365761	ok	Smart X5G HD Beamer mit PTZ-Halterung
+gid://shopify/Product/15484388147585	nicht-versendbar	Racing Drohne mit Display
