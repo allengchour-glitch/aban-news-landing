@@ -8621,3 +8621,4 @@ gid://shopify/Product/15510329295233	zugeordnet	30	Tie-Dye Kurzarmhemd für Herr
 gid://shopify/Product/15510330540417	zugeordnet	63	Herren Sommerhemd – Lässiger Ferien-Look
 gid://shopify/Product/15510334046593	zugeordnet	18	Graceful Square Toe Sandalen mit Absatz
 gid://shopify/Product/15510336110977	zugeordnet	24	Retro-Sandalen aus Rindsleder mit Plateau
+gid://shopify/Product/15519838339457	zugeordnet	5	Besticktes Shirt im französischen Stil
