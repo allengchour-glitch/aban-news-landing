@@ -603,3 +603,7 @@ name:kubanischegliederkettemitstrass20
 name:acaciasnackplattehandpoliert
 pid:15452681994625
 slug:acacia-snackplatte-handpoliert
+pid:15413961130369
+name:magnetischehandyhalterungfürsauto
+pid:15450856653185
+slug:magnetische-handyhalterung-furs-auto
