@@ -1,17 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 15:52 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 15:54 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **1'256**
-- Optionen mit englischen Werten (Kandidaten): 19
+- Produkte gesehen: **1'853**
+- Optionen mit englischen Werten (Kandidaten): 87
 - Optionen übersetzt: **1** · Werte übersetzt: **1**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 79
+- Werte mit unbekanntem Wort (unverändert): 218
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
+- übersprungen «kollision-nach-uebersetzung»: 11
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -24,8 +25,17 @@ _keine_
 
 > Die Übersetzung ergäbe zwei gleichlautende Werte (meist «Blue» neben «Blau»). Zusammenlegen ist Sache von `farbwert_dubletten.py` bzw. eines Menschen.
 
-_keine_
-
+- `15447596302721` [Farbe] glanzendes-mini-kleid-mit-raffung-634500: Marineblaublau → Marineblau
+- `15447598268801` [Farbe] damen-kleid-mit-puffarmeln-und-taillengurtel-613900: Marineblaublau → Marineblau
+- `15447603413377` [Farbe] leinenhemd-kurzarm-loose-fit-fur-herren-613900: Marineblaublau → Marineblau
+- `15447603806593` [Farbe] casual-loose-fit-t-shirt-mit-zwei-taschen-628400: Marineblaublau → Marineblau
+- `15447603937665` [Farbe] herren-jacquard-polo-shirt-mit-reissverschluss-614101: Marineblaublau → Marineblau
+- `15447604658561` [Farbe] polo-shirt-kurzarm-slim-fit-pique-baumwolle-615000: Marineblaublau → Marineblau
+- `15447605510529` [Farbe] leinenhemd-langarmlig-fur-herren-624700: Marineblaublau → Marineblau
+- `15447606198657` [Farbe] jacquard-polo-shirt-mit-reverskragen-602400: Marineblaublau → Marineblau
+- `15447606428033` [Farbe] herren-langarmhemd-mit-revers-619700: Marineblaublau → Marineblau
+- `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
+- `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: White Color → Weiss
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -48,5 +58,5 @@ _keine_
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`diamond` 36, `tea` 5, `powder` 5, `plugin` 4, `models` 4, `drill` 4, `hut` 3, `elegant` 2, `three` 2, `touch` 2, `modelle` 2, `pin` 2, `breathing` 2, `milk` 2, `bag` 2, `stk` 1, `drei` 1, `including` 1, `1er` 1, `2er` 1, `optic` 1, `rabbit` 1, `elephant` 1, `extended` 1, `packaginggray` 1, `kaki` 1, `obsidian` 1, `state` 1, `nail` 1, `tip` 1, `6pcs18` 1, `6pcs19` 1, `6pcs20` 1, `candy` 1, `cherry` 1, `cat` 1, `eye` 1, `flash` 1, `lovers` 1, `socket` 1, `zipper` 1
+`diamond` 36, `powder` 9, `hat` 9, `insert` 9, `bag` 7, `tea` 6, `electric` 6, `⟨satzbau:adjektiv-vor-nomen⟩` 6, `waist` 6, `three` 5, `cherry` 5, `storage` 5, `color` 5, `one` 5, `blossom` 5, `plugin` 4, `models` 4, `drill` 4, `gallium` 4, `nitride` 4, `machine` 4, `4x` 4, `elegant` 3, `hut` 3, `milk` 3, `handle` 3, `lichtbecher` 3, `weisslicht` 3, `lampenschirm` 3, `dual` 3, `brushed` 3, `×` 3, `roman` 3, `rod` 3, `touch` 2, `modelle` 2, `pin` 2, `optic` 2, `breathing` 2, `makeup` 2, `pinseltasche` 2, `hot` 2, `full` 2, `face` 2, `mask` 2, `aromatherapy` 2, `protocol` 2, `smoke` 2, `making` 2, `use` 2, `8x` 2, `copperplated` 2, `glittering` 2, `⟨satzbau:material-vor-farbe⟩` 2, `background` 2, `line` 2, `grain` 2, `edge` 2, `pressing` 2, `swirl` 2
 
