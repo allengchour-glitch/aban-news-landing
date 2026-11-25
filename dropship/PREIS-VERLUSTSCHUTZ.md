@@ -1,21 +1,20 @@
-# Preis-Verlustschutz — scharf 2026-11-25 05:53 UTC
+# Preis-Verlustschutz — scharf 2026-11-25 05:57 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **11** · Varianten gehoben: **31** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.03× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 11 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **10** · Varianten gehoben: **95** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.22× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 10 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Memory Foam Heizkissen | 32.90 | 26.48 | **33.90** | 1.03× |
-| Heizbare Tierfutterschale | 32.90 | 28.92 | **36.90** | 1.12× |
-| Retro Messenger Bag aus Rindsleder | 32.90 | 26.58 | **33.90** | 1.03× |
-| ORICO 5-Port USB-Ladestation 40W | 32.90 | 26.53 | **33.90** | 1.03× |
-| Kabelloses Mini-Ladegerät, magnetisch, 15W | 30.90 | 26.05 | **32.90** | 1.06× |
-| Wanzen- & Kamera-Detektor | 31.90 | 25.96 | **32.90** | 1.03× |
-| PU-Leder Rucksack für Studierende | 31.90 | 25.67 | **32.90** | 1.03× |
-| Gesichtsbefeuchter mit Kaltspray-Funktion | 31.90 | 27.79 | **34.90** | 1.09× |
-| Nachtlicht mit 12 W Augen-schutzlampe – 5 Farben | 32.90 | 31.36 | **39.90** | 1.21× |
-| Kamerarucksack aus Baumwolle | 32.90 | 43.96 | **54.90** | 1.67× |
-| Echtleder Box für Ohrringe und Schmuck | 32.90 | 27.00 | **33.90** | 1.03× |
+| Vintage Auto-Bluetooth-Modell mit LED-Licht | 31.90 | 25.98 | **32.90** | 1.03× |
+| U21 Kabellose HD Überwachungskamera mit USB | 21.90 | 17.99 | **22.90** | 1.05× |
+| Sandalen aus Kunstleder mit Kristall- und Transp | 31.90 | 25.93 | **32.90** | 1.03× |
+| Mädchen Lederstiefel mit weicher Sohle | 31.90 | 26.92 | **33.90** | 1.06× |
+| PU Lederjacke Damen, Slim Fit, Schwarz | 31.90 | 30.18 | **37.90** | 1.19× |
+| Leder-Sneaker im Retro-Look für Herren | 31.90 | 27.16 | **33.90** | 1.06× |
+| Magnetisches Bauklötzchen-Set für Mädchen | 31.90 | 25.89 | **32.90** | 1.03× |
+| Motocross-Racing-Rucksack mit LED-Licht | 30.90 | 37.67 | **46.90** | 1.52× |
+| Grosszügiger Business-Rucksack aus PU-Leder | 31.90 | 25.91 | **32.90** | 1.03× |
+| Low-Top Herren Sneaker aus synthetischem Kunstle | 31.90 | 33.29 | **41.90** | 1.31× |
