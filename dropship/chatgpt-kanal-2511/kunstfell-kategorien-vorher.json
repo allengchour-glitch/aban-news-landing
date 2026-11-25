@@ -1,0 +1,135 @@
+{
+ "16603335229831": {
+  "id": "gid://shopify/Product/16603335229831",
+  "title": "Gothic-Stil Plüschmantel mit Fell-Bustier",
+  "productType": "Spielzeug & Spiele",
+  "tags": [
+   "cj-real",
+   "damen",
+   "dropship",
+   "herbst",
+   "kat-kinder-baby",
+   "mantel",
+   "mode",
+   "neuheit",
+   "sort-damen-jacken-kunstfell",
+   "sort-damen-jacken-maentel",
+   "sort-damen-jacken-maentel-maentel",
+   "sort-kinder-baby",
+   "sort-puppen",
+   "spielzeug",
+   "winter"
+  ],
+  "category": {
+   "id": "gid://shopify/TaxonomyCategory/tg-5-8-11",
+   "fullName": "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Stuffed Animals"
+  },
+  "metafield": {
+   "value": "Toys & Games > Toys > Dolls, Playsets & Toy Figures > Stuffed Animals"
+  }
+ },
+ "15448000135553": {
+  "id": "gid://shopify/Product/15448000135553",
+  "title": "Damen-Plüschweste, doppelseitig tragbar",
+  "productType": "Damenmode",
+  "tags": [
+   "bild-ok",
+   "bildmass-ok-0906",
+   "cj-real",
+   "damen",
+   "dropship",
+   "gfeed-anstupsen-260930",
+   "kat-damen-jacke",
+   "mode",
+   "plueschweste",
+   "rueckhol-0907",
+   "sort-damen-jacken-kunstfell",
+   "sort-damen-jacken-maentel",
+   "sort-damen-jacken-westen",
+   "sort-westen-gilets",
+   "weste"
+  ],
+  "category": {
+   "id": "gid://shopify/TaxonomyCategory/tg",
+   "fullName": "Toys & Games"
+  },
+  "metafield": {
+   "value": "Apparel & Accessories > Clothing > Outerwear > Vests"
+  }
+ },
+ "16603336802695": {
+  "id": "gid://shopify/Product/16603336802695",
+  "title": "Mittellanger Cape-Mantel mit Fellkragen",
+  "productType": "Damenmode",
+  "tags": [
+   "cj-real",
+   "damen",
+   "dropship",
+   "fokus-damenmode",
+   "herbst",
+   "kat-damen-jacke",
+   "mode",
+   "neuheit",
+   "sort-damen-jacken-cape",
+   "sort-damen-jacken-kunstfell",
+   "sort-damen-jacken-maentel",
+   "sort-damen-jacken-maentel-maentel",
+   "winter"
+  ],
+  "category": {
+   "id": "gid://shopify/TaxonomyCategory/aa-1-13",
+   "fullName": "Apparel & Accessories > Clothing > Clothing Tops"
+  },
+  "metafield": {
+   "value": "Apparel & Accessories > Clothing > Shirts & Tops"
+  }
+ },
+ "16652023562631": {
+  "id": "gid://shopify/Product/16652023562631",
+  "title": "Poncho mit Faux-Pelzkragen",
+  "productType": "Accessoires",
+  "tags": [
+   "accessoires",
+   "auswahl-nachgeruestet",
+   "cj-real",
+   "dropship",
+   "herbst",
+   "mode",
+   "neuheit",
+   "sort-damen-jacken-cape",
+   "sort-damen-jacken-kunstfell",
+   "sort-damen-jacken-maentel"
+  ],
+  "category": {
+   "id": "gid://shopify/TaxonomyCategory/aa-2",
+   "fullName": "Apparel & Accessories > Clothing Accessories"
+  },
+  "metafield": {
+   "value": "Apparel & Accessories > Clothing > Outerwear > Coats & Jackets"
+  }
+ },
+ "16652022120839": {
+  "id": "gid://shopify/Product/16652022120839",
+  "title": "Poncho mit Pelzkragen",
+  "productType": "Accessoires",
+  "tags": [
+   "accessoires",
+   "auswahl-nachgeruestet",
+   "cj-real",
+   "dropship",
+   "herbst",
+   "mode",
+   "neuheit",
+   "sort-damen-jacken-cape",
+   "sort-damen-jacken-kunstfell",
+   "sort-damen-jacken-maentel"
+  ],
+  "category": {
+   "id": "gid://shopify/TaxonomyCategory/aa-2",
+   "fullName": "Apparel & Accessories > Clothing Accessories"
+  },
+  "metafield": {
+   "value": "Apparel & Accessories > Clothing > Outerwear > Coats & Jackets"
+  }
+ }
+}
