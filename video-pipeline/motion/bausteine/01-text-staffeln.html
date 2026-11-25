@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>Baustein 1: Text einblenden mit Staffelung</title>
+<link rel="stylesheet" href="_basis.css">
+<style>
+ .zeile{position:absolute;left:100px;top:620px;width:760px;font-size:84px;font-weight:800;line-height:1.15;color:#16324f}
+ .w{display:inline-block;margin-right:.28em}
+</style>
+<div class="stage"><div class="zeile" id="z"></div></div>
+<script src="../motion.js"></script>
+<script>
+ const M = Motion;
+ const text = 'Jedes Wort kommt einzeln und weich herein';
+ const z = document.getElementById('z');
+ text.split(' ').forEach(w => { const s = document.createElement('span'); s.className = 'w'; s.textContent = w; z.appendChild(s); });
+ // Lernpunkt: Staffelung = gleiche Bewegung, jedes Element 0.12 s später. Wirkt sofort «gebaut» statt «hingeklatscht».
+ M.stagger('.w', [{ opacity: 0, transform: 'translateY(40px)' }, { opacity: 1, transform: 'translateY(0)' }], { t: 0.3, d: 0.7, gap: 0.12, ease: M.EASE.out });
+ M.fertig(3);
+</script>

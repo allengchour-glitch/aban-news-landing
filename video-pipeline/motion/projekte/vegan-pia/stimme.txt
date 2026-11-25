@@ -1,0 +1,5 @@
+S1	Das ist Pia. Sie wünscht sich eine friedliche Welt, in der niemand leiden muss.	Was wäre, wenn niemand leiden müsste?
+S2	Beim Frühstück fragt sich Pia, was hinter ihrem Essen steckt.	Was steckt hinter meinem Essen?
+S2	Rund drei Viertel der Agrarfläche gehören Tieren, liefern aber nur etwa achtzehn Prozent der Kalorien.	Rund ¾ der Fläche, etwa 18 % der Kalorien
+S3	Und jedes Jahr werden über achtzig Milliarden Landtiere für Fleisch geschlachtet.	Über 80 Milliarden Landtiere pro Jahr
+S4	Dann probiert sie pflanzliche Gerichte. Jede Mahlzeit ist eine kleine Entscheidung für mehr Mitgefühl.	Eine kleine Entscheidung, mehr Mitgefühl

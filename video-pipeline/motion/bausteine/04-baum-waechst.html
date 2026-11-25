@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>Baustein 4: Wachsender Baum</title>
+<link rel="stylesheet" href="_basis.css">
+<div class="stage"><svg id="s" width="1080" height="1920" viewBox="0 0 1080 1920"></svg></div>
+<script src="../motion.js"></script>
+<script>
+ const M = Motion, s = document.getElementById('s');
+ M.svg('rect', { width: 1080, height: 1920, fill: '#fdf1e3' }, s);
+ M.svg('ellipse', { cx: 540, cy: 1400, rx: 300, ry: 36, fill: '#c9dcb5' }, s);
+ const stamm = M.svg('rect', { x: 520, y: 1000, width: 40, height: 400, rx: 14, fill: '#7a5230' }, s);
+ const krone = M.svg('circle', { cx: 540, cy: 930, r: 220, fill: '#5fa85a' }, s);
+ // Lernpunkt: transform-origin setzen, sonst wächst alles aus der Ecke. Pfad: vom Boden nach oben.
+ stamm.style.transformOrigin = '540px 1400px'; krone.style.transformOrigin = '540px 1000px';
+ M.at(stamm, [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }], { t: 0.2, d: 0.9, ease: M.EASE.out });
+ // Überschwingen (EASE.back) lässt die Krone «poppen»
+ M.at(krone, [{ transform: 'scale(0)' }, { transform: 'scale(1)' }], { t: 0.9, d: 0.9, ease: M.EASE.back });
+ M.fertig(3);
+</script>
