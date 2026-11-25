@@ -353784,3 +353784,5 @@
 56100487037313	heben	71.90	75.90	61.28	2026-11-25	eleganter-lederrucksack-fur-herren-563392
 56105835299201	heben	73.90	93.90	75.95	2026-11-25	ersatzbatterie-fur-scooter-300736
 56118448161153	heben	73.90	74.90	59.86	2026-11-25	proled-intelligente-augenschutz-tischlampe-430016
+56142436172161	heben	71.90	74.90	60.26	2026-11-25	massagekissen-mit-heizfunktion-fur-nacken-ruck-678464
+56157781000577	heben	72.90	73.90	59.27	2026-11-25	elektrische-popcornmaschine-8d42d7
