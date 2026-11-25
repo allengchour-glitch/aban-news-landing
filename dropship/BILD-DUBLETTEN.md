@@ -36,12 +36,6 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (4 bzw. 4 insgesamt, 100%)
   - 15449469485441 · 2026-07-06 · CHF 49.90 · CJ-1388690499426193408 · Game Joystick mit Rocker
   - 15496385331585 · 2026-08-13 · CHF 49.90 · CJ-1388685376935301120 · 7-in-1 Arcade Stick für diverse Konsolen
-- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
-  - 15463671005569 · 2026-07-20 · CHF 20.90 · CJ-CJMB108818901AZ · Ultraschall-Hautschaufel Reinigungsgerät
-  - 15523907633537 · 2026-09-03 · CHF 30.90 · CJMB108818901AZ · Ultraschall-Hautschaufel für die Gesichtsreinigung
-- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (2 bzw. 2 insgesamt, 100%)
-  - 15469970555265 · 2026-07-23 · CHF 35.90 · fortura-OR40032S-M · Tutu Pink
-  - 15469975830913 · 2026-07-23 · CHF 34.90 · fortura-OR40032116-140 · Tutu Pink Kindergrösse 116/140
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (2 bzw. 2 insgesamt, 100%)
   - 15470022099329 · 2026-07-23 · CHF 25.90 · fortura-33034 · Fahne Schweiz
   - 15470036091265 · 2026-07-23 · CHF 19.90 · fortura-21137 · Flagge Schweiz 90x90 cm
@@ -79,7 +73,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15500959318401 · 2026-08-16 · CHF 17.90 · CJ-CJDS276571901AZ · Langes Poloshirt
   - 15502485586305 · 2026-08-17 · CHF 17.90 · CJ-CJDS273885001AZ · Seidenweiches, knitterarmes Hemd mit Kühl-Effekt
 - **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
-  - 15501033013633 · 2026-08-16 · CHF 66.90 · CJNS140525501AZ · Kaffeebraune Leder-Rucksack
+  - 15501033013633 · 2026-08-16 · CHF 75.90 · CJNS140525501AZ · Kaffeebraune Leder-Rucksack
   - 15523116876161 · 2026-09-02 · CHF 69.90 · CJNS167467301AZ · Vintage Rindsleder-Rucksack – Unisex
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 4 insgesamt, 100%)
   - 15501883605377 · 2026-08-17 · CHF 15.90 · CJ-A306A914-71C4-4B7F-8BCE-1FEEB828952D · Malen nach Zahlen für Erwachsene – Kunstklassiker
@@ -120,12 +114,6 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 9 gemeinsame Bilder (9 bzw. 13 insgesamt, 100%)
   - 16644217667975 · 2026-10-16 · CHF 16.90 · CJYD239036601AZ · Wasserdichte Oxford-Stoff Crossbody-Tasche
   - 16651933876615 · 2026-10-19 · CHF 16.90 · CJYD230049501AZ · Spritzwassergeschützte Umhängetasche
-- **DUBLETTE** · 5 gemeinsame Bilder (5 bzw. 5 insgesamt, 100%)
-  - 16649283731847 · 2026-10-17 · CHF 23.90 · CJNS112467601AZ · Rucksack Männer Alltagskunststoff
-  - 16649283961223 · 2026-10-17 · CHF 41.90 · CJNS112466701AZ · Grosser Rucksack für Studenten
-- **DUBLETTE** · 8 gemeinsame Bilder (8 bzw. 8 insgesamt, 100%)
-  - 16655153136007 · 2026-10-20 · CHF 16.90 · CJYD283754501AZ · Kleines Nachtlicht mit Touch-Steuerung, USB
-  - 16732296708487 · 2026-11-23 · CHF 16.90 · CJ-2604160728331609700 · Kleines Nachtlicht – Touch-Bedienung, USB-aufladbar
 - **DUBLETTE** · 14 gemeinsame Bilder (15 bzw. 15 insgesamt, 93%)
   - 15422823465345 · 2026-06-08 · CHF 22.90 · 9365183_1320 · Keramik-Tasse – Selbst gestalten
   - 15427282633089 · 2026-06-11 · CHF 22.90 · 9000001_1320 · Tasse bedrucken & selbst gestalten · dein Foto
@@ -141,9 +129,6 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 7 gemeinsame Bilder (9 bzw. 8 insgesamt, 88%)
   - 15483877425537 · 2026-08-03 · CHF 25.90 · CJ-CJZBNSSY00795-Black · Sportuhr Chronograph
   - 15524777230721 · 2026-09-04 · CHF 31.90 · CJZBNSSY02623-Rose gold coffee · Karin 8291 Herrenkalenderuhr
-- **DUBLETTE** · 6 gemeinsame Bilder (7 bzw. 7 insgesamt, 86%)
-  - 15422934647169 · 2026-06-08 · CHF 69.90 · CJYD292633701AZ · Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz
-  - 15512313725313 · 2026-08-25 · CHF 28.90 · CJ-CJYD292633701AZ · Elegantes Satin-Abendkleid mit Mesh-Einsätzen
 - **DUBLETTE** · 6 gemeinsame Bilder (7 bzw. 7 insgesamt, 86%)
   - 15503955919233 · 2026-08-19 · CHF 60.90 · CJXFZNKC00243-black · DODO DEER Holz-Kalenderuhr
   - 15525501108609 · 2026-09-05 · CHF 37.90 · CJZBNSSY02014-Black · Ebenholz-Holzuhr mit Kalenderfunktion
@@ -190,6 +175,9 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15454058152321 · 2026-07-12 · CHF 15.90 · CJ-1397507123809751040 · Weisser Weihnachten mit Engel - Malen nach Zahlen
   - 15454058250625 · 2026-07-12 · CHF 15.90 · CJ-1397505371513425920 · Water Lambo DIY-Zahlen-Mal-Set
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+  - 15463671005569 · 2026-07-20 · CHF 20.90 · CJ-CJMB108818901AZ · Ultraschall-Hautschaufel Reinigungsgerät
+  - 15523907633537 · 2026-09-03 · CHF 30.90 · CJMB108818901AZ · Ultraschall-Hautschaufel für die Gesichtsreinigung
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15490725347713 · 2026-08-07 · CHF 18.90 · CJSZ124111401AZ · Malen nach Zahlen – drei Kreuze
   - 15493908693377 · 2026-08-11 · CHF 18.90 · CJSZ124110801AZ · Digitales Leinwandbild, personalisierbar
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
@@ -207,19 +195,19 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15497431712129 · 2026-08-14 · CHF 20.90 · CJZS115718101AZ · DIY Malset "Baby Kuh"
   - 15497431777665 · 2026-08-14 · CHF 20.90 · CJZS115682301AZ · Herbstfenster – Malen nach Zahlen
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 6 insgesamt, 80%)
   - 15497431712129 · 2026-08-14 · CHF 20.90 · CJZS115718101AZ · DIY Malset "Baby Kuh"
   - 15497431843201 · 2026-08-14 · CHF 19.90 · CJZS115677801AZ · Baby Eule – Malen nach Zahlen
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15497431712129 · 2026-08-14 · CHF 20.90 · CJZS115718101AZ · DIY Malset "Baby Kuh"
   - 15497432105345 · 2026-08-14 · CHF 20.90 · CJZS115671601AZ · DIY Malen nach Zahlen "Herbstliches Weisswedelhirsch"
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 6 insgesamt, 80%)
   - 15497431777665 · 2026-08-14 · CHF 20.90 · CJZS115682301AZ · Herbstfenster – Malen nach Zahlen
   - 15497431843201 · 2026-08-14 · CHF 19.90 · CJZS115677801AZ · Baby Eule – Malen nach Zahlen
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
   - 15497431777665 · 2026-08-14 · CHF 20.90 · CJZS115682301AZ · Herbstfenster – Malen nach Zahlen
   - 15497432105345 · 2026-08-14 · CHF 20.90 · CJZS115671601AZ · DIY Malen nach Zahlen "Herbstliches Weisswedelhirsch"
-- **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
+- **DUBLETTE** · 4 gemeinsame Bilder (6 bzw. 5 insgesamt, 80%)
   - 15497431843201 · 2026-08-14 · CHF 19.90 · CJZS115677801AZ · Baby Eule – Malen nach Zahlen
   - 15497432105345 · 2026-08-14 · CHF 20.90 · CJZS115671601AZ · DIY Malen nach Zahlen "Herbstliches Weisswedelhirsch"
 - **DUBLETTE** · 4 gemeinsame Bilder (5 bzw. 5 insgesamt, 80%)
@@ -474,7 +462,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 6 insgesamt, 67%)
   - 15449468699009 · 2026-07-06 · CHF 69.90 · CJ-2052592808441843714 · Doppel-Schüssel für Hund und Katze
   - 15449468731777 · 2026-07-06 · CHF 69.90 · CJ-2052592390034853890 · Doppel-Schüssel für Katze & Hund
-- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 4 insgesamt, 67%)
   - 15490724725121 · 2026-08-07 · CHF 26.90 · CJSZ127502701AZ · 5D Diamond Painting
   - 15495119765889 · 2026-08-12 · CHF 25.90 · CJZS127544701AZ · Diamond Painting: Kreuzstich-Set
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
@@ -483,10 +471,10 @@ drei taeuschen bei CJ-Doppellistings alle drei.
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
   - 15490724725121 · 2026-08-07 · CHF 26.90 · CJSZ127502701AZ · 5D Diamond Painting
   - 15495120257409 · 2026-08-12 · CHF 26.90 · CJZS127511001AZ · DIY Diamond Painting Set «Schlafzimmer-Deko»
-- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 3 insgesamt, 67%)
   - 15495119765889 · 2026-08-12 · CHF 25.90 · CJZS127544701AZ · Diamond Painting: Kreuzstich-Set
   - 15495119995265 · 2026-08-12 · CHF 26.90 · CJZS127511601AZ · DIY 5D Diamond Painting Schlafzimmer Deko
-- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
+- **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (4 bzw. 3 insgesamt, 67%)
   - 15495119765889 · 2026-08-12 · CHF 25.90 · CJZS127544701AZ · Diamond Painting: Kreuzstich-Set
   - 15495120257409 · 2026-08-12 · CHF 26.90 · CJZS127511001AZ · DIY Diamond Painting Set «Schlafzimmer-Deko»
 - **Bildfamilie — von Hand ansehen** · 2 gemeinsame Bilder (3 bzw. 3 insgesamt, 67%)
@@ -512,10 +500,7 @@ drei taeuschen bei CJ-Doppellistings alle drei.
   - 15524879597953 · 2026-09-04 · CHF 26.90 · CJ-CJNY143793001AZ · Mädchen Prinzessin Pailletten Tanzschuhe
 - **Bildfamilie — von Hand ansehen** · 4 gemeinsame Bilder (6 bzw. 15 insgesamt, 67%)
   - 15510959456641 · 2026-08-24 · CHF 43.90 · CJSY121198701AZ · Holz-Armbanduhr für Jugend & Business
-  - 15520398967169 · 2026-08-30 · CHF 36.90 · CJSY114460901AZ · Holzarmbanduhr mit Quarzwerk
-- **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (5 bzw. 6 insgesamt, 60%)
-  - 15447564222849 · 2026-07-03 · CHF 18.90 · CJ-CJDC293008601AZ · USB-Ladegerät für 18650 Li-ion Akkus
-  - 15447567303041 · 2026-07-03 · CHF 18.90 · CJ-CJDC272928001AZ · Li-ion Akku & USB-Ladegerät Set 3000mAh
+  - 15520398967169 · 2026-08-30 · CHF 46.90 · CJSY114460901AZ · Holzarmbanduhr mit Quarzwerk
 - **Bildfamilie — von Hand ansehen** · 3 gemeinsame Bilder (9 bzw. 5 insgesamt, 60%)
   - 15454003462529 · 2026-07-12 · CHF 25.90 · CJHB162449402BY · Malen nach Zahlen – Bergsee
   - 15506284609921 · 2026-08-20 · CHF 14.90 · CJ-1397380197384327168 · DIY Leinwandbild: Rote Rose als Digital Painting

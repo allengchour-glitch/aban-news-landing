@@ -353813,3 +353813,11 @@
 56138756424065	heben	37.90	38.90	30.82	2026-11-25	business-casual-leder-loafer-fur-herren-616600
 56159351374209	heben	69.90	70.90	56.82	2026-11-25	mini-luftpumpe-mit-akku-037778
 67610312606087	heben	69.90	70.90	56.79	2026-11-25	wandlampe-mid-century-wabi-sabi-634700
+56076704678273	heben	68.90	69.90	55.76	2026-11-25	reise-rucksack-aus-leder-fur-15-zoll-laptop-612000
+56070086852993	heben	69.90	70.90	56.66	2026-11-25	dampfgarer-mixer-fur-babynahrung-606400
+56086776086913	heben	68.90	70.90	56.96	2026-11-25	leder-reiserucksack-mit-usb-ladefunktion-304192
+56099629924737	heben	68.90	69.90	56.10	2026-11-25	fotorucksack-wasserdicht-fur-slr-drohne-291264
+56140722569601	heben	67.90	68.90	55.07	2026-11-25	elektrischer-glas-fleischwolf-mit-doppeltaste-839040
+56164197990785	heben	66.90	69.90	56.09	2026-11-25	mini-akku-kettensage-4-zoll-905088
+67726184579463	heben	68.90	69.90	55.84	2026-11-25	leder-computerrucksack-mit-schloss-2b4625
+67737688080775	heben	67.90	68.90	55.07	2026-11-25	moderne-wiederaufladbare-led-schreibtischlampe-636800
