@@ -485,6 +485,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-11-25 · 💸 **Betreiber «2 ja 4 ja»: Mindest-Stückgewinn Einkauf + CHF 8 (`mindest_stueckgewinn.py`, nur anheben, .90, ohne Streichpreis, POD/Editor gesperrt) startet automatisch nach der Black Week (Aufseher ab 30.11. 23 UTC, ~35'000 Produkte, Ø +CHF 3; Rückweg `--zurueck`, Messung 15.12.). Abbruch-Mail 2 mit 10-%-Code nur noch an E-Mail-Abonnenten (Klaviyo XEGbTB/SPNjDp). WELCOME10 ab CHF 40 (Punkt 3) NICHT freigegeben.**
 - 2026-11-25 · 📈 **«10 Verkäufe/Tag»: Gewinn Ø CHF 16 je Bestellung, Preise auf Verlustschutz-Boden; ChatGPT-iPhone-Kasse 3/13 (Verdacht In-App-Browser). Kaufleiste am Handy sofort sichtbar (Auswahl-Sprung statt stiller 1. Variante), 12 Kollektionen mit «Häufige Fragen» für ChatGPT. Offene Betreiber-Entscheide in `dropship/verkauf-2511/ANALYSE.md` §Massnahmen.**
 - 2026-11-25 · 🐾 **Haustierwelt: erste 24 = Winter/Weihnacht, neuer Text (Tore 5/5, Saison im Januar zurück). CJ-Suchimport-Relevanz: nennt die Suche ein Tier/Kinder, ist das Wort im CJ-Namen Pflicht (vorher «dog winter coat» → Damenmäntel als Haustierbedarf).**
 - 2026-11-25 · 📣 **«locke leute an»: Social bringt nur 12 Besuche/Woche; 15 fremd angelegte Metricool-Entwürfe (draft/autoPublish aus) hingen trotz Wache-Meldung → geprüft (ACTIVE, Preise) und freigegeben, Black-Week-Zeile ergänzt. Regel: Zeile «METRICOOL-PLANER … Entwurf ≤ 72 h» heisst handeln, nicht nur melden.**

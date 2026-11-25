@@ -59,6 +59,12 @@
 
 
 
+
+## 2026-11-25 · 💸 Entscheide «2 ja 4 ja»: Mindest-Stückgewinn + Abbruch-Mail 2 nur an Abonnenten
+- **Punkt 2 (Mindest-Stückgewinn CHF 8):** `automation/mindest_stueckgewinn.py` hebt Varianten auf kleinsten .90-Preis ≥ unitCost + 8; nur erhöhen, Streichpreis-Varianten, POD/Editor, Werbetest-Sperre, ohne Kosten und Sprünge > ×1.6 ausgenommen. Scharf vor 30.11. 23:00 UTC = Exit 3 (Black Week). Aufseher-Block in `fixer_keepalive.sh`. Trockenlauf: 418'330 Varianten in ~35'000 Produkten, Ø +CHF 3.07. Ledger `dropship/_mindest_stueckgewinn.tsv`, Rückweg `--zurueck`. Tore `dropship/tore/mindestgewinn.md`; Erinnerungen 01.12. (Lauf prüfen) und 15.12. (Wirkung).
+- **Punkt 4 (Abbruch-Mail 2):** Klaviyo-Flow XEGbTB, Aktion 120053547 (Nachricht SPNjDp, Code -10 %) trägt jetzt `additional_filters` = E-Mail-Marketing «subscribed». Vorher ging der Code an alle Abbrecher (7 von 8 echten seit 10.10. nicht angemeldet). Mail 1 bleibt Service-Hinweis für alle. Sicherung `dropship/verkauf-2511/klaviyo-xegbtb-vorher.json`. Muster: Filter je Mail über `update_flow_action` (ganze Nachricht mitschicken, `additional_filters.condition_groups[].conditions[]` mit `profile-marketing-consent`).
+- **Punkt 3 (WELCOME10 ab CHF 40):** nicht freigegeben — nicht umsetzen.
+
 ## 📱 26.11.2026: ChatGPT-App-Kasse — TWINT/Apple Pay SIND sichtbar (Betreiber «1 ja»)
 - Verdacht «Zahlarten fehlen im ChatGPT-In-App-Browser» widerlegt. Offen: Absprung beim App-Wechsel (TWINT-App öffnen/zurück) oder Apple-Pay-Fenster. Betreiber testet beides (abbrechen, nicht zahlen).
 
