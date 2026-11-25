@@ -1,0 +1,357 @@
+{
+ "zeit": "2026-11-25T23:13:06Z",
+ "toleranz_prozent": 10,
+ "min_aktiv": 10,
+ "kollektionen": {
+  "selbst-gestalten": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 16.90",
+    "bis": null,
+    "median": null,
+    "teilpreise_ungeprueft": [
+     2290,
+     2390,
+     2490,
+     3990,
+     7590
+    ],
+    "anteil": [],
+    "unter": [],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 39,
+    "aktiv": 18,
+    "aktiv_onlineshop": 18,
+    "ab": "CHF 16.90",
+    "bis": "CHF 141.90",
+    "bis_einstieg": "CHF 52.90",
+    "median": "CHF 26.90"
+   },
+   "befunde": []
+  },
+  "damen-jacken-kunstfell": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 14.90",
+    "bis": "CHF 140.90",
+    "median": "CHF 31.40",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 35,
+    "aktiv": 34,
+    "aktiv_onlineshop": 34,
+    "ab": "CHF 14.90",
+    "bis": "CHF 140.90",
+    "bis_einstieg": "CHF 140.90",
+    "median": "CHF 31.40"
+   },
+   "befunde": []
+  },
+  "weihnachtspyjama-familie": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 14.90",
+    "bis": null,
+    "median": null,
+    "teilpreise_ungeprueft": [],
+    "anteil": [
+     {
+      "n": 29,
+      "m": 30,
+      "grenze": 2990
+     }
+    ],
+    "unter": [],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 30,
+    "aktiv": 30,
+    "aktiv_onlineshop": 30,
+    "ab": "CHF 14.90",
+    "bis": "CHF 155.90",
+    "bis_einstieg": "CHF 23.90",
+    "median": "CHF 14.90"
+   },
+   "befunde": []
+  },
+  "weihnachten-2026": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 14.90",
+    "bis": "CHF 75.90",
+    "median": "CHF 19.40",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [
+     {
+      "wer": "fast alle",
+      "grenze": 5000,
+      "satz": "Fast alle Artikel starten unter CHF 50"
+     }
+    ],
+    "erreichen": [],
+    "ueber": [
+     300
+    ]
+   },
+   "ist": {
+    "produkte": 387,
+    "aktiv": 310,
+    "aktiv_onlineshop": 310,
+    "ab": "CHF 14.90",
+    "bis": "CHF 75.90",
+    "bis_einstieg": "CHF 66.90",
+    "median": "CHF 19.40"
+   },
+   "befunde": []
+  },
+  "tier-pullover": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 14.90",
+    "bis": null,
+    "median": "CHF 16.90",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [
+     {
+      "wer": "alle",
+      "grenze": 5000,
+      "satz": "alle Modelle starten unter CHF 50"
+     }
+    ],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 169,
+    "aktiv": 168,
+    "aktiv_onlineshop": 168,
+    "ab": "CHF 14.90",
+    "bis": "CHF 61.90",
+    "bis_einstieg": "CHF 29.90",
+    "median": "CHF 16.90"
+   },
+   "befunde": []
+  },
+  "punk-gothic-schmuck": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 14.90",
+    "bis": "CHF 66.90",
+    "median": "CHF 16.90",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [
+     {
+      "wer": "fast alle",
+      "grenze": 5000,
+      "satz": "fast alle Stücke starten unter CHF 50"
+     }
+    ],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 48,
+    "aktiv": 47,
+    "aktiv_onlineshop": 47,
+    "ab": "CHF 14.90",
+    "bis": "CHF 66.90",
+    "bis_einstieg": "CHF 60.90",
+    "median": "CHF 16.90"
+   },
+   "befunde": []
+  },
+  "trinkbrunnen-katzen": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 19.90",
+    "bis": "CHF 118.90",
+    "median": "CHF 39.40",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 24,
+    "aktiv": 24,
+    "aktiv_onlineshop": 24,
+    "ab": "CHF 19.90",
+    "bis": "CHF 118.90",
+    "bis_einstieg": "CHF 114.90",
+    "median": "CHF 39.40"
+   },
+   "befunde": []
+  },
+  "futterautomaten": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 28.90",
+    "bis": "CHF 139.90",
+    "median": "CHF 74.40",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [],
+    "erreichen": [
+     {
+      "wer": "die meisten",
+      "grenze": 5000
+     }
+    ],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 46,
+    "aktiv": 46,
+    "aktiv_onlineshop": 46,
+    "ab": "CHF 28.90",
+    "bis": "CHF 139.90",
+    "bis_einstieg": "CHF 129.90",
+    "median": "CHF 74.40"
+   },
+   "befunde": []
+  },
+  "gliederarmbaender": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 15.90",
+    "bis": "CHF 125.90",
+    "median": "CHF 22.90",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [
+     {
+      "wer": "fast alle",
+      "grenze": 5000,
+      "satz": "fast alle Modelle starten unter CHF 50"
+     }
+    ],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 40,
+    "aktiv": 33,
+    "aktiv_onlineshop": 33,
+    "ab": "CHF 15.90",
+    "bis": "CHF 125.90",
+    "bis_einstieg": "CHF 97.90",
+    "median": "CHF 22.90"
+   },
+   "befunde": []
+  },
+  "personalisierte-ringe": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 14.90",
+    "bis": "CHF 44.90",
+    "median": "CHF 16.90",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 39,
+    "aktiv": 37,
+    "aktiv_onlineshop": 37,
+    "ab": "CHF 14.90",
+    "bis": "CHF 44.90",
+    "bis_einstieg": "CHF 42.90",
+    "median": "CHF 16.90"
+   },
+   "befunde": []
+  },
+  "make-up-sets": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 14.90",
+    "bis": "CHF 69.90",
+    "median": "CHF 25.40",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [
+     {
+      "wer": "fast alle",
+      "grenze": 5000,
+      "satz": "fast alle Sets starten unter CHF 50"
+     }
+    ],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 84,
+    "aktiv": 84,
+    "aktiv_onlineshop": 84,
+    "ab": "CHF 14.90",
+    "bis": "CHF 69.90",
+    "bis_einstieg": "CHF 69.90",
+    "median": "CHF 25.40"
+   },
+   "befunde": []
+  },
+  "zirkonia-moissanit-ketten": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 14.90",
+    "bis": "CHF 78.90",
+    "median": "CHF 15.90",
+    "teilpreise_ungeprueft": [
+     2290
+    ],
+    "anteil": [],
+    "unter": [
+     {
+      "wer": "fast alle",
+      "grenze": 5000,
+      "satz": "fast alle Ketten starten unter CHF 50"
+     }
+    ],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 45,
+    "aktiv": 39,
+    "aktiv_onlineshop": 39,
+    "ab": "CHF 14.90",
+    "bis": "CHF 78.90",
+    "bis_einstieg": "CHF 78.90",
+    "median": "CHF 15.90"
+   },
+   "befunde": []
+  }
+ },
+ "ohne_block": [],
+ "bloecke": 12,
+ "abweichungen": 0,
+ "geprueft": 12,
+ "dauer_s": 10.6
+}
