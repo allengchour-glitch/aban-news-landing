@@ -803,10 +803,10 @@
 #done search:pearl earrings women
 #done search:stainless steel bracelet women gold
 #ohne-treffer 2026-11-25 search:silk scrunchies set
-search:satin pillowcase
-search:weighted blanket
-search:faux fur throw blanket
-search:cozy hoodie blanket wearable
+#ohne-treffer 2026-11-25 search:satin pillowcase
+#ohne-treffer 2026-11-25 search:weighted blanket
+#ohne-treffer 2026-11-25 search:faux fur throw blanket
+#ohne-treffer 2026-11-25 search:cozy hoodie blanket wearable
 search:castor oil pack wrap
 search:gua sha set
 search:makeup bag travel organizer
