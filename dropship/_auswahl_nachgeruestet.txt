@@ -3815,3 +3815,7 @@
 16732296839559	Motiv:5:5+ki	2026-11-25	zahncreme-deckel-weihnachtsmotiv-5-figuren-610800
 16732294775175	Variante:7:7+ki	2026-11-25	isolierter-rucksack-mit-grosser-kapazitat-631200
 16732219048327	Ausführung:2:2+ki	2026-11-25	minimalistische-aromatherapie-tischlampe-618500
+16732140142983	Farbe:9:9+ki	2026-11-25	schal-plus-bar-split-doppelseitig-657100
+16731869872519	Ausführung:3:3+ki	2026-11-25	kabelloser-reifenpumpe-mit-licht-und-druckanze-635800
+16731868922247	Farbe:10:10+ki	2026-11-25	kaschmir-ahnlicher-schal-mit-fleece-innenfutte-634900
+16656731177351	Farbe:4:4+ki	2026-11-25	business-armbanduhr-mit-dual-datum-und-stahlba-633900
