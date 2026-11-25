@@ -583,3 +583,6 @@ name:rettangolo
 slug:bildreel-thermo-strumpfhose-mit-fleece-futter
 pid:15450828898689
 slug:thermo-strumpfhose-mit-fleece-futter
+name:dreifachladegerät
+pid:15483793703297
+slug:dreifach-ladegerat
