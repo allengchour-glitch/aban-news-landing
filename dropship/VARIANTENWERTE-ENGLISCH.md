@@ -6,11 +6,11 @@
 
 ## Zahlen
 
-- Produkte gesehen: **39'605**
-- Optionen mit englischen Werten (Kandidaten): 1'236
+- Produkte gesehen: **40'859**
+- Optionen mit englischen Werten (Kandidaten): 1'254
 - Optionen übersetzt: **2** · Werte übersetzt: **2**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 3'658
+- Werte mit unbekanntem Wort (unverändert): 3'705
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 29
 - übersprungen «kleidungsstueck-im-wert»: 25
@@ -84,5 +84,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 126, `powder` 102, `french` 84, `core` 69, `size` 63, `elegant` 59, `high` 56, `cherry` 55, `one` 54, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 40, `chain` 40, `inner` 38, `(insole` 36, `space` 33, `tc` 31, `li` 31, `blossom` 30, `end` 30, `carbon` 28, `intergold` 28, `avocado` 27, `of` 27, `opp` 27, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `×` 23, `eyelashes` 23, `weiß` 22, `two` 21, `no` 21, `love` 21, `gun` 20, `lotus` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `2er` 19, `line` 19, `light` 19, `⟨satzbau:menge-vor-nomen⟩` 19, `lamp` 19, `holder` 19, `three` 18, `full` 18, `color` 18, `waist` 18, `to` 18, `the` 18
+`⟨satzbau:adjektiv-vor-nomen⟩` 128, `powder` 103, `french` 84, `core` 69, `size` 63, `elegant` 60, `high` 56, `cherry` 55, `one` 54, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 41, `chain` 40, `inner` 38, `(insole` 36, `space` 33, `tc` 31, `li` 31, `blossom` 30, `end` 30, `carbon` 28, `intergold` 28, `avocado` 27, `of` 27, `opp` 27, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `two` 23, `×` 23, `eyelashes` 23, `weiß` 22, `lotus` 21, `no` 21, `love` 21, `⟨satzbau:praeposition⟩` 21, `inside` 21, `gun` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `2er` 19, `line` 19, `light` 19, `⟨satzbau:menge-vor-nomen⟩` 19, `lamp` 19, `holder` 19, `⟨satzbau:mass-ohne-zahl⟩` 19, `three` 18, `full` 18, `color` 18
 

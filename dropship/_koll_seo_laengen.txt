@@ -119,3 +119,12 @@
 2026-11-23T17:38:51Z	startseite-pool-wohnen	titel		Startseite Pool Wohnen kaufen | LuxeStyle Schweiz
 2026-11-23T17:38:52Z	startseite-pool-trends	titel		Startseite Pool Trends kaufen | LuxeStyle Schweiz
 2026-11-23T17:38:53Z	startseite-pool-mehr	titel		Startseite Pool Mehr kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:37Z	startseite-pool-weihnachten	titel		Startseite Pool Weihnachten kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:38Z	startseite-pool-winter	titel		Startseite Pool Winter kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:39Z	startseite-pool-geschenke	titel		Startseite Pool Geschenke kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:40Z	startseite-pool-kleider	titel		Startseite Pool Kleider kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:41Z	startseite-pool-damenmode	titel		Startseite Pool Damenmode kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:47Z	startseite-pool-herrenmode	titel		Startseite Pool Herrenmode kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:48Z	startseite-pool-schuhe	titel		Startseite Pool Schuhe kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:50Z	startseite-pool-taschen	titel		Startseite Pool Taschen kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:51Z	startseite-pool-beauty	titel		Startseite Pool Beauty kaufen | LuxeStyle Schweiz
