@@ -61,9 +61,12 @@ def bulk_holen():
     if fe:
         print(f"BULK belegt/abgelehnt: {fe} — nächster Lauf", flush=True)
         return os.path.exists(LISTE)
+    # ⚠️ 25.11.: NICHT `currentBulkOperation` fragen — das ist der neueste Bulk der App, auch der eines ANDEREN Skripts.
+    # Gemessen: 24 MB fremder Export statt 312 MB (bulk_laden verwarf ihn per 80-%-Regel). Darum nach UNSERER ID fragen.
+    eigene = r["bulkOperationRunQuery"]["bulkOperation"]["id"]
     for _ in range(180):
         time.sleep(10)
-        s = gql("{currentBulkOperation{status url errorCode}}")["currentBulkOperation"]
+        s = gql("query($i:ID!){node(id:$i){... on BulkOperation{status url errorCode}}}", {"i": eigene})["node"]
         if s["status"] in ("COMPLETED", "FAILED", "CANCELED"):
             break
     if s["status"] != "COMPLETED" or not s.get("url"):

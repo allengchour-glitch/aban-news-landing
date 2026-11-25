@@ -54,6 +54,13 @@
 
 
 
+
+## ✅ 25.11.2026: «Fertig beweisen» — Tore aus dem Skill «unlazy» übernommen (Betreiber-TikTok «Claude wird immer dümmer», «ja»)
+- **Video:** Werbe-Kurzvideo (@sebastiankauffmann) für den Skill `unlazy` (Leonxlnx/unlazy): vor der Arbeit Tore mit Prüfbefehl, «fertig» erst wenn alle erfüllt. Die Behauptung «Anthropic bestätigt» ist im Video unbelegt.
+- **Übernommen (eigener Code, keine fremden Skripte/Hooks):** `tools/tore.py` (Tor-Datei → erfüllt/offen/aufgegeben, Selbsttest 11/11, 3 Mutanten erkannt) + Skill `.claude/skills/fertig-beweisen/`. Erste Tor-Datei `dropship/tore/variantenbild-500.md`.
+- **Was die Tore sofort fanden:** (1) Bildlauf stand nach Neustarts still (Aufseher erreichte den Block spät) → zusätzlich in `autostart.sh` (Positivprobe 0→1, kein Doppelstart 1→1). (2) Mein Fehlerquote-Tor zählte Fehler-Einträge statt hängender Medien (18 Netzfehler aus einer Minute, alle nachgeholt) → Tor korrigiert. (3) `currentBulkOperation` lieferte einen FREMDEN Export (24 MB statt 312 MB; bulk_laden verwarf ihn) → `variantenbild_500.py` fragt die eigene Bulk-ID ab.
+- **Stand 20:3x UTC:** T1–T3 erfüllt, T4 offen (frischer Bulk: 5'597 Bilder < 500 übrig, ~18/Min. wenn er läuft), T5 Hand-Tor = Merchant-Screenshot des Betreibers.
+
 ## 🖼️ 25.11.2026: Google «Bild zu klein (500×500) für die bevorstehende Maßnahme» — Variantenbilder an Ort und Stelle vergrössert
 - **Auslöser:** Merchant-Screenshot des Betreibers: 5'773 Angebote (3,4 %) mit Bild < 500×500, «nach dem 31. Januar 2027 nicht mehr angezeigt».
 - **GEMESSEN (Bulk 25.11., 55'883 aktive, 596'381 Varianten):** 15'641 Varianten mit Bild < 500, davon 15'511 über ihr eigenes Variantenbild (nur 130 über das Hauptbild); 7'016 verschiedene Bilder, fast alle 300–499 px (CJ-Farbbilder). 2'748 Produkte, Neuimporte Nov. nur 28.

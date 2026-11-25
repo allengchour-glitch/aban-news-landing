@@ -127,4 +127,15 @@ if ! ps -eo args --no-headers | awk '$1=="bash" && $2 ~ /engine_keepalive\.sh$/ 
   log "Keepalive/Aufseher über den Hook angestossen (PID $!)"
 fi
 
+# ── 6. Variantenbilder ≥ 500 px (25.11.2026, Google-Frist 31.01.2027): GEMESSEN 25.11. — nach den Neustarts 18:42 und 20:00
+# lief der Lauf NICHT, bis der Aufseher-Kreis den Block erreichte (nur 1 Start im Aufseher-Log 17:47; ~18 Bilder/Min., wenn er läuft).
+# Darum startet ihn auch der Neustart-Hook; flock verhindert Doppelläufe, fertig = Logzeile «noch offen ~0».
+if [ -f automation/variantenbild_500.py ] && ! tail -1 /tmp/variantenbild_500.log 2>/dev/null | grep -qE "noch offen ~0$|^offen: 0 "; then
+  if ! ps -eo args --no-headers | grep -q "^python3 automation/variantenbild_500.py"; then
+    touch /tmp/variantenbild_500.log
+    SCHARF=1 CAP=3000 WORKERS=8 nohup setsid bash -c "exec 9>/tmp/lock_variantenbild_500.lock; flock -n 9 || exit 0; exec python3 automation/variantenbild_500.py" >> /tmp/variantenbild_500.log 2>&1 9>&- &
+    log "Variantenbilder-500 gestartet (PID $!)"
+  fi
+fi
+
 log "fertig. Laufend: $(pgrep -fc 'cj_perpetual|bigbuy_import|gmc_desc' 2>/dev/null || echo 0) Engine(s)."
