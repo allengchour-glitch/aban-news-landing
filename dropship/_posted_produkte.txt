@@ -591,3 +591,7 @@ name:maskeeinhornweiss
 slug:cjreel-cjsj179397501az
 pid:15450831192449
 slug:magnetische-biegbare-auto-halterung-mit-15w-wi
+pid:15413086323073
+name:cdpatternmagsafehüllemitständer
+pid:15450837057921
+slug:cd-pattern-magsafe-hulle-mit-stander

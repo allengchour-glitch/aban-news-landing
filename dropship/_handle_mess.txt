@@ -268,3 +268,4 @@ gid://shopify/Product/16732211872135	weiblicher-soft-leder-bondage-gurtel-611600
 gid://shopify/Product/16732212003207	breite-lederwinter-stiefel-fur-herren-619800	breite-kunstlederwinter-stiefel-fur-herren-619800	301
 gid://shopify/Product/16732253553031	kinder-lederschuhe-mit-mikrofaserfutter-608100	kinder-kunstlederschuhe-mit-mikrofaserfutter-608100	301
 gid://shopify/Product/16732648309127	schuhpolitur-set-mit-burste-und-lederpflege-614700	schuhpolitur-set-mit-burste-und-kunstlederpflege-614700	301
+gid://shopify/Product/15453895786881	winddichte-slim-fit-lederhose-herren-618400	winddichte-slim-fit-kunstlederhose-herren-618400	301
