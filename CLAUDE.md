@@ -35,7 +35,7 @@ Arbeitsgebiet ist der **CJ-Dropship-Import für den Shopify-Shop LuxeStyle CH**.
   Fenster): nur `push`/`pull_request`, **0 Schedule-Runs seit 12.06.** — 4 scharfe cron-Zeilen auf main (shop-guards,
   bestseller-refresh, shop-autopilot, image-audit) feuern trotzdem nicht; `metricool-schedule.yml` + Voice Linter
   scheitern bei jedem Push; 167 Workflows `active`. Nulldiät bleibt. Alle «Actions gesperrt»-Zeilen in
-  SHARED-MEMORY.md sind ÜBERHOLT (dort markiert). GitLab `aban-ci` fällt seit 27.07. täglich (tote Variablen).
+  SHARED-MEMORY.md sind ÜBERHOLT (dort markiert). GitLab `aban-ci` fiel seit 27.07. täglich (tote Variablen) → **Zeitplan am 25.11. vom Betreiber abgeschaltet/gelöscht** (Jobs ersetzt durch Metricool; keine Fehlermails mehr).
 - **🔎 OpenSEO verbunden 10.10.** (Projekt «LuxeStyle CH» `443c940c-93c9-4feb-9d0c-1e4d1d88c6cf`, CH/de, 430 Credits; ab 2'000 Credits/Paket Betreiber fragen). Daten über den claude.ai-Konnektor (kein Plugin = keine Doppel-Verbindung); 12 Skills (`/seo-audit`, `/seo-coach`, `/keyword-research` …) in `.claude/skills/` aus every-app/open-seo v1.0.21. GSC in OpenSEO verbunden (10.10. ~08:50); Audit-Crawler-Signatur per API `storefrontCrawlerSignatureGenerate` (unstable, max 90 T) — läuft am **08.01.2027** ab → neu erzeugen + in OpenSEO einfügen. Befund: 97/100 Treffer Produktseiten auf Pos 41–100 → Kollektionen für grosse Begriffe fehlen (`dropship/OPENSEO-START-2026-10-10.md`).
 - **⛔ B2B bleibt AUS** (Betreiber 15.09.: «b2b sein lassen wen kosten»). Gemessen: 0 Firmen,
   0 B2B-Kataloge, Plan Basic. Ersatz = Seite «Firmen & Vereine» mit Anfrageformular.
