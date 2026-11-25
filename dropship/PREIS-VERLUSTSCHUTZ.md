@@ -1,16 +1,17 @@
-# Preis-Verlustschutz — scharf 2026-11-25 21:47 UTC
+# Preis-Verlustschutz — scharf 2026-11-25 21:54 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **6** · Varianten gehoben: **26** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.20× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 6 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **7** · Varianten gehoben: **7** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.01× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 7 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Quadratische Digitaluhr mit Leuchtanzeige | 14.90 | 12.93 | **16.90** | 1.13× |
-| Herren Business Armbanduhr mit drei Zifferblätte | 14.90 | 11.87 | **15.90** | 1.07× |
-| Trendige Leuchtarmbanduhr | 14.90 | 12.26 | **15.90** | 1.07× |
-| Elektrische Zahnbürste mit 4 Reinigungsmodi | 14.90 | 12.76 | **16.90** | 1.13× |
-| Elektrischer Lockenstab für natürliche Wellen | 14.90 | 14.62 | **18.90** | 1.27× |
-| PU-Leder mit Dreiecksprägung, 0.7mm | 14.90 | 13.87 | **17.90** | 1.20× |
+| Mini Beamer für Home Office & Heimkino | 190.90 | 155.61 | **191.90** | 1.01× |
+| Smarter Full HD Heimkino-Projektor | 173.90 | 141.34 | **174.90** | 1.01× |
+| Smarter Bluetooth Lautsprecher | 14.90 | 14.09 | **17.90** | 1.20× |
+| Elektrische Oberfräse mit Fasen- und Trimmfunkti | 248.90 | 202.34 | **249.90** | 1.00× |
+| Elektrische Nudelmaschine mit 13 Formen | 169.90 | 137.77 | **170.90** | 1.01× |
+| Stativ-Querstange für Kamera & Handy | 247.90 | 201.89 | **248.90** | 1.00× |
+| Faltbarer, blattloser Ventilator | 109.90 | 89.68 | **110.90** | 1.01× |
