@@ -8750,3 +8750,16 @@ gid://shopify/Product/15478570287489	zugeordnet	36	Outdoor Loose Straight-Leg Mu
 gid://shopify/Product/15478570320257	zugeordnet	22	Leichte, atmungsaktive Strandschuhe für Kinder
 gid://shopify/Product/15478582247809	zugeordnet	2	DIY Einzel-Wimpern Mix – natürlich & voluminös
 gid://shopify/Product/15478583198081	zugeordnet	45	Baumwollkleid ohne Ruecken
+gid://shopify/Product/15478584902017	zugeordnet	12	Pailletten- und Perlenkleid im Patchwork-Stil
+gid://shopify/Product/15478585033089	zugeordnet	12	Figurbetontes Strickkleid mit Rückenausschnitt
+gid://shopify/Product/15478585229697	zugeordnet	14	Elegantes ärmelloses Plissee-Kleid mit Rückenschlitz
+gid://shopify/Product/15478585262465	zugeordnet	99	Gestreifte Retro-Bluse mit Blumenmuster
+gid://shopify/Product/15478585753985	zugeordnet	24	Retro Strickpullover mit Rundhals
+gid://shopify/Product/15478585983361	zugeordnet	30	Pullover mit Reverskragen und langen Ärmeln
+gid://shopify/Product/15478586442113	zugeordnet	35	Springautumn Pullover mit Aushöhlungen
+gid://shopify/Product/15478586605953	zugeordnet	36	Vintage Rollkragen-Pullover mit halbem Reissverschluss
+gid://shopify/Product/15478586835329	zugeordnet	12	Color-Block Pullover mit Puffärmeln
+gid://shopify/Product/15478586966401	zugeordnet	12	Off-Shoulder Strickshirt im French-Style
+gid://shopify/Product/15478587097473	zugeordnet	8	Gestreifter Rollkragenpullover für Damen (Plus Size)
+gid://shopify/Product/15478587195777	zugeordnet	8	Pullover mit Herzausschnitt und Schleifendetail
+gid://shopify/Product/15478610723201	zugeordnet	12	Minimalistischer Bodycon-Minirock
