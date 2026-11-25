@@ -427,3 +427,4 @@ gid://shopify/Product/16736678707591	led-digitaluhr-mit-datum-639600	LED Digital
 gid://shopify/Product/16737806680455	tragbarer-dachventilator-mit-fernbedienung-628000	Tragbarer Dachventilator mit Fernbedienung
 gid://shopify/Product/16737807303047	grosszugige-soft-leather-crossbody-tote-618300	Grosszügige Soft-Leather Crossbody Tote
 gid://shopify/Product/16737808023943	kinder-urinaltuch-fur-auto-603100	Kinder-Urinaltuch für Auto
+gid://shopify/Product/16737844953479	kleiner-faltbarer-stiftbeutel-mit-cartoon-desi-607000	Kleiner faltbarer Stiftbeutel mit Cartoon-Design
