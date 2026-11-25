@@ -348421,3 +348421,5 @@
 67814898958727	heben	35.90	38.90	30.64	2026-11-24	bluetooth-smartwatch-outdoor-mit-herzfrequenz-189376
 67814898991495	heben	35.90	38.90	30.64	2026-11-24	bluetooth-smartwatch-outdoor-mit-herzfrequenz-189376
 67814899024263	heben	35.90	38.90	30.64	2026-11-24	bluetooth-smartwatch-outdoor-mit-herzfrequenz-189376
+67870940201351	heben	35.90	39.90	31.32	2026-11-25	tischventilator-mit-timer-622100
+67870940234119	heben	35.90	46.90	37.71	2026-11-25	tischventilator-mit-timer-622100

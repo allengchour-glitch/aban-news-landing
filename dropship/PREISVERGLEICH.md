@@ -1,8 +1,8 @@
 # Preisvergleich mit dem Schweizer Markt (Firecrawl)
 
-Stand 24.11.2026 18:40 UTC · 144 Produkte geprüft, 138 mit vergleichbaren Angeboten. Vergleich = Median der Angebote gleicher Art (CHF; EUR × 0.94 geschätzt). Nur Hinweis — Preise ändert dieses Werkzeug nicht; nie unter EK + Verlustschutz.
+Stand 25.11.2026 03:33 UTC · 145 Produkte geprüft, 139 mit vergleichbaren Angeboten. Vergleich = Median der Angebote gleicher Art (CHF; EUR × 0.94 geschätzt). Nur Hinweis — Preise ändert dieses Werkzeug nicht; nie unter EK + Verlustschutz.
 
-## Deutlich teurer als der Markt (≥ 25 %): 36
+## Deutlich teurer als der Markt (≥ 25 %): 37
 
 | Faktor | Produkt | wir | Markt-Median | günstigstes | Belege |
 |---|---|---|---|---|---|
@@ -32,6 +32,7 @@ Stand 24.11.2026 18:40 UTC · 144 Produkte geprüft, 138 mit vergleichbaren Ange
 | 1.50 | [Weihnachtsgirlande mit Kiefernzapfen, 2.7 m](https://luxestyle.ch/products/weihnachtsgirlande-mit-kiefernzapfen-2-7-m-611100) | 29.90 | 19.95 | 15.95 | 35.70 https://www.floristik24.ch/girlande-kiefernzapfen-nadelzweigen-kunstst ; 19.95 https://www.loberon.ch/Weihnachten/Weihnachtsdeko/Girlanden-Kraenze/ ; 15.95 https://www.finenordic.ch/chic-antique |
 | 1.47 | [Christbaumkugel-Set in Geschenkbox](https://luxestyle.ch/products/christbaumkugel-exquisites-design-geschenkball-647300) | 24.90 | 16.95 | 2.45 | 16.95 https://www.bauhaus.ch/de/weihnachtskugelboxen/c/10002840?srsltid=AYCX ; 39.90 https://www.zweiblatt.ch/products/geschenkbox-6-pulp-weihnachtskugeln- ; 2.45 https://www.damoreno.ch/de/prodotto/w |
 | 1.45 | [Weihnachts-Nussknacker aus Holz, 12 cm](https://luxestyle.ch/products/weihnachts-nussknacker-aus-holz-12-cm-356800) | 23.90 | 16.50 | 16.50 | 16.50 https://www.johannwanner.ch/weihnachtsdekoration/nussknacker/ |
+| 1.43 | [Weihnachts-Türkranz mit Zuckerstangen-Deko](https://luxestyle.ch/products/weihnachtskranz-zuckerstangen-baum-girlande-656200) | 26.90 | 18.79 | 9.95 | 76.93 https://www.etsy.com/de/listing/1832659803/zuckerstange-weihnachtskran ; 9.95 https://www.hornbach.ch/de/c/weihnachten/weihnachtsdeko/weihnachtsschm ; 18.79 https://www.eminza.ch/de/weihnachtsde |
 | 1.43 | [Mini Weihnachtsbaumornamente in Rot & Weiss 21 cm](https://luxestyle.ch/products/mini-weihnachtsbaumornamente-in-rot-weiss-21-c-612300) | 21.90 | 15.30 | 7.65 | 7.65 https://ch.erwinmueller.com/Mini-Weihnachtsbaum-158263-210804-0 ; 22.95 https://www.apfelkiste.ch/mehr-entdecken/weihnachten/baeume-schmuck.ht |
 | 1.42 | [Verstellbarer Futternapf für Katzen](https://luxestyle.ch/products/verstellbarer-futternapf-fur-katzen-65c638) | 34.90 | 24.61 | 19.95 | 24.61 https://www.bitiba.ch/shop/katzen_zubehoer/katzenbrunnen_katzennapf/ed ; 19.95 https://ch.rotho.com/collections/futternapfe ; 24.90 https://ipet.ch/hunde/hundezubehoer/futternaepfe-traenken/futt |
 | 1.40 | [Kabelloser Mini-Staubsauger fürs Auto](https://luxestyle.ch/products/kabelloser-mini-staubsauger-furs-auto-f2796b) | 34.90 | 24.95 | 24.95 | 24.95 https://www.apfelkiste.ch/kabelloser-auto-hand-staubsauger-reinigungsa |

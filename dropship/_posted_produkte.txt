@@ -579,3 +579,7 @@ name:tshirtbedruckenselbstgestalten
 name:ledgetränkehalterfürihrauto
 pid:15450831454593
 slug:led-getrankehalter-fur-ihr-auto
+name:rettangolo
+slug:bildreel-thermo-strumpfhose-mit-fleece-futter
+pid:15450828898689
+slug:thermo-strumpfhose-mit-fleece-futter
