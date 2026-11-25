@@ -1,5 +1,11 @@
 {
- "stand": "2026-10-24T00:13Z",
+ "stand": "2026-11-25T03:40Z",
  "url": "https://luxestyle.ch/",
- "befunde": []
+ "befunde": [
+  {
+   "art": "LUECKE",
+   "wo": "34334599053703__luxe_home",
+   "wert": "1589px Leerraum ab y=19395 der Sektion"
+  }
+ ]
 }

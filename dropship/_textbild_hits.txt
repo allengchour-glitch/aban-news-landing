@@ -18915,3 +18915,4 @@ gid://shopify/Product/15449407783297	28->0	Selbstreinigende Haarbürste
 gid://shopify/Product/15453784605057	56->0	Kleinblech Fritteuse mit Sieb
 gid://shopify/Product/15453794664833	160->1	Bissfester Spielkamerad
 gid://shopify/Product/15453794795905	62->0	Katzenklettergerüst mit Saugnapf
+gid://shopify/Product/15455662801281	10->0	Isolierter Sportbecher
