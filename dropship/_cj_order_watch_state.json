@@ -1,8 +1,4 @@
 {
- "LX1019": {
-  "status": "TRASH",
-  "tracking": ""
- },
  "LX1021": {
   "status": "DELIVERED",
   "tracking": "EQKPT8612951662YQ"
@@ -12,7 +8,7 @@
   "tracking": "EQKPT8612975206YQ"
  },
  "LX1023": {
-  "status": "DELIVERED",
+  "status": "CLOSED",
   "tracking": "EQKPT8613048701YQ"
  },
  "LX1025": {
@@ -72,7 +68,7 @@
   "tracking": "EQKPT8613349505YQ"
  },
  "LX1042": {
-  "status": "UNSHIPPED",
+  "status": "SHIPPED",
   "tracking": "EQKPT8613502003YQ"
  },
  "LX1043": {
@@ -90,6 +86,10 @@
  "LX1046": {
   "status": "UNSHIPPED",
   "tracking": "EQKPT8613498314YQ"
+ },
+ "LX1047": {
+  "status": "UNSHIPPED",
+  "tracking": "EQKPT8613518515YQ"
  },
  "#1024": {
   "status": "MANUELL_MISTER_DTF_BESTELLT",
