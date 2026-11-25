@@ -111,10 +111,13 @@ SCHALTER = os.path.join(REPO, 'dropship', '_fortura_xml_aktiv')
 NOTIFY = os.environ.get('NOTIFY', '1') == '1'     # wie cj_fulfill_engine: Shopifys normale Versandbestätigung an die Kundin
 
 
-def sendung_eintragen(nr, tracking, geliefert):
+def sendung_eintragen(nr, tracking, geliefert, nur_pruefen=False):
     """06.10.2026: DPD-Tracking aus dem Fortura-Lieferschein als Sendung in Shopify — NUR die Fortura-Positionen
     (gemischte Bestellungen: CJ-Teil bleibt offen für den CJ-Automaten), Menge = geliefert laut DELVRY.
-    geliefert: {artnr: menge}. Rückgabe (ok, text)."""
+    geliefert: {artnr: menge}. Rückgabe (ok, text).
+    25.11.2026 (#1031): Lieferschein OHNE Tracking → nur_pruefen=True schreibt nichts. Ist keine Fortura-Position mehr offen (Sendung
+    schon von Hand eingetragen), ist das erledigt (ok) — vorher stand «Shopify-Sendung NICHT eingetragen» jede Stunde, drei Wochen lang,
+    obwohl #1031 längst FULFILLED war. Ist noch etwas offen, bleibt es eine Warnung."""
     q = ('query($q:String!){orders(first:1,query:$q){nodes{id name fulfillmentOrders(first:10){nodes{id status '
          'lineItems(first:50){nodes{id remainingQuantity lineItem{sku}}}}}}}}')
     o = (gql(q, {'q': f'name:#{nr}'})['orders']['nodes'] or [None])[0]
@@ -136,6 +139,8 @@ def sendung_eintragen(nr, tracking, geliefert):
                 teile.append({'id': li['id'], 'quantity': menge})
         if teile:
             gruppen.append({'fulfillmentOrderId': fo['id'], 'fulfillmentOrderLineItems': teile})
+    if nur_pruefen:
+        return (False, 'Lieferschein ohne Tracking — Fortura-Position in Shopify noch offen') if gruppen else (True, 'bereits eingetragen (Lieferschein ohne Tracking)')
     if not gruppen:
         return False, 'keine offene Fortura-Position'
     m = ('mutation($f:FulfillmentInput!){fulfillmentCreate(fulfillment:$f){fulfillment{status trackingInfo{number company}} '
@@ -359,7 +364,7 @@ def stufe2(led, zeilen, offen, gehalten=None):
                         # anderer ARTICLE_NO → still «erfuellt», das bestellte Teil blieb in Shopify offen.
                         geliefert, teil, fremd = fx.abgleich(fx.positionen_aus_text(led[nr][2]), d['positionen'])
                         led[nr][3] = 'versandt'; schreibe(led)       # Härtung: Zustand VOR der Shopify-Sendung sichern (Kill danach darf nicht zur Dauer-Falschmeldung werden)
-                        ok, info = sendung_eintragen(nr, d['tracking'], geliefert) if d['tracking'] else (False, 'Lieferschein ohne Tracking')
+                        ok, info = sendung_eintragen(nr, d['tracking'], geliefert) if d['tracking'] else sendung_eintragen(nr, [], geliefert, nur_pruefen=True)
                         if fremd and (ok or info == 'keine offene Fortura-Position'):
                             led[nr][3] = 'abweichend'
                         elif ok:
@@ -1216,6 +1221,15 @@ def selbsttest():
         sendung_eintragen('2007', ['TR7'], {'93583': 2})
         teile7 = [t_ for g_ in gesendet[-1] for t_ in g_['fulfillmentOrderLineItems']] if gesendet else []
         pruef('R6 Gegenprobe: geliefert 2, zwei Positionen → beide erfüllt', sum(t_['quantity'] for t_ in teile7) == 2, teile7)
+
+        # R8 (25.11.2026, #1031): Lieferschein ohne Tracking — schon eingetragen = erledigt, noch offen = Warnung, nie ein Schreibversuch
+        shop['2010'] = []
+        gesendet.clear()
+        ok8, info8 = sendung_eintragen('2010', [], {'93583': 1}, nur_pruefen=True)
+        pruef('R8 ohne Tracking, nichts mehr offen → ok, kein fulfillmentCreate', ok8 and not gesendet and 'bereits eingetragen' in info8, (ok8, info8, gesendet))
+        shop['2011'] = [('fortura-93583', 1)]
+        ok8b, info8b = sendung_eintragen('2011', [], {'93583': 1}, nur_pruefen=True)
+        pruef('R8 Gegenprobe: ohne Tracking, Position offen → Warnung, kein fulfillmentCreate', not ok8b and not gesendet and 'noch offen' in info8b, (ok8b, info8b, gesendet))
 
         # R7: Seitengrenze der Shopify-Abfrage wird sichtbar
         gql = _gql_bestellung(_bestellung('2008', 'Weg 1', seite=True))
