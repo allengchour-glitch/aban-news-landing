@@ -607,3 +607,6 @@ pid:15413961130369
 name:magnetischehandyhalterungfürsauto
 pid:15450856653185
 slug:magnetische-handyhalterung-furs-auto
+name:kleinercartoondampfer
+pid:15454414406017
+slug:kleiner-cartoon-dampfer
