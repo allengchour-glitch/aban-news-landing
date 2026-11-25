@@ -1,6 +1,6 @@
-# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-24 22:49 UTC)
+# Auswahl fehlt — 1 Shop-Variante, mehrere CJ-Varianten (Stand 2026-11-25 16:29 UTC)
 
-Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 184 · **122 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 94, teilweise: 26, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 61 · ohne Antwort: 1
+Suche: `status:active AND (title:*Nagel* OR title:*Maniküre* OR title:*Nägel* OR title:*Press-on* OR title:*Nageldesign* OR title:*Kunstnägel*)` · gemessen 185 · **124 mit mehreren CJ-Varianten** (alle Variantenbilder schon am Produkt: 96, teilweise: 26, keine: 2; Preisspanne > 2×: 18) · 1 CJ-Variante: 60 · ohne Antwort: 1
 
 Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die Kundin konnte nichts wählen.
 
@@ -11,6 +11,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Samtiges Hundehalsband-Set mit Leine und Schleife (`samtiges-hundehalsband-set-mit-leine-und-schle-621500`) | 96 | 96 | 2.46–2.46 | 15.90 | Dog Collar-Aqua-XXS, Dog Collar-Aqua-XS, Dog Collar-Aqua-S, Dog Collar-Aqua-M |
 | Beruhigende Angst-Weste für Haustiere (`beruhigende-angst-weste-fur-haustiere-155712`) | 95 | 80 | 4.62–11.99 | 26.90 | Dark Grey-XS, Dark Grey-M, Dark Grey-L, Dark Grey-XL |
 | Reflektierendes taktisches Hundegeschirr (`reflektierendes-taktisches-hundegeschirr-892544`) | 90 | 85 | 3.08–4.63 | 22.90 | Black Chest Strap-XS, Black Chest Strap-S, Black Chest Strap-M, Black Chest Strap-L |
+| Standkollar-Fleece-Workjacke für Männer (`standkollar-fleece-workjacke-fur-manner-628900`) | 90 | 90 | 6.6–8.16 | 37.90 | Red Collar-M, Red Collar-L, Red Collar-XL, Red Collar-XXL |
 | Kissenbezug mit abstraktem Kunstmuster (`kissenbezug-mit-abstraktem-kunstmuster-620200`) | 88 | 88 | 2.21–10.07 | 48.90 | Dust Trail Brown-70×70cm, Dust Trail Brown-70×90cm, Dust Trail Brown-70×120cm, Dust Trail Brown-70×150cm |
 | Winter Haustierjacke in Kaschmir-Optik (`winter-cashmere-haustierjacke-600400`) | 80 | 80 | 3.68–5.03 | 15.90 | DZ279 Purple Camouflage-S, DZ279 Purple Camouflage-M, DZ279 Purple Camouflage-L, DZ279 Purple Camouflage-XL |
 | Samtiges Haustierhalsband mit Leine (`samtiges-haustierhalsband-mit-leine-423808`) | 80 | 80 | 5.33–7.15 | 17.90 | Dog pen dog rope1-XS, Dog pen dog rope1-S, Dog pen dog rope1-M, Dog pen dog rope1-L |
@@ -104,6 +105,7 @@ Folge ohne Reparatur: Bestell-Automat stoppt «manuell prüfen» (rät nie), die
 | Hoch elastisches Gummiband (`hoch-elastisches-gummiband-628100`) | 5 | 5 | 7.46–7.46 | 27.90 | 1745 Plain, 1745 Red, 1745 Green, 1745 Black |
 | Multifunktionale Wangenauflage-Tasche (`multifunktionale-wangenauflage-tasche-766016`) | 5 | 5 | 3.28–3.28 | 22.90 | Black, Wolf brown, Army Green, Desert digital |
 | Neun Farben Augen-Malpalette mit Glitzer (`neun-farben-augen-malpalette-mit-glitzer-731328`) | 5 | 5 | 2.46–2.46 | 16.90 | P102 Toffee, P103 Chocolate, P107 Peach Disk, P108 Purple Taro New Color |
+| Mosaiklampe aus Harz – Farbenfroh (`mosaiklampe-aus-harz-farbenfroh-618000`) | 5 | 5 | 4.7–4.7 | 17.90 | Fish, Deer, Cactus, Snail |
 | Digitaler Kalenderwecker mit Medikamenten-Erinnerung (`digitaler-kalenderwecker-mit-medikamenten-erin-609900`) | 4 | 4 | 15.28–15.28 | 26.90 | US-White, EU-White, JP-White, AU-White |
 | Baby-Kopfkissen mit Hirsekissen (`baby-kopfkissen-mit-hirsekissen-635000`) | 4 | 4 | 4.9–4.9 | 44.90 | Whale Fall In The Starry Sea-41X29cm, Mushroom Kingdom-41X29cm, Green Bamboo Panda-41X29cm, Little Prince-41X29cm |
 | Barocke Beauty-Kamee Nagelsticker (`barocke-beauty-kamee-nagelsticker-793984`) | 4 | 4 | 2.55–2.55 | 15.90 | Camellia-Xs Extra Small, Camellia-S Small Size, Camellia-M Medium, Camellia-L Large Size |

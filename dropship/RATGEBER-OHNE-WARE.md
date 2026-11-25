@@ -17,11 +17,10 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 
 | Ratgeber | Produktlinks (alle tot/keine) |
 |---|---:|
-| [Aromatherapy Guide: 10 ätherische Öle und ihre Wirkung 🌸](/blogs/ratgeber/aromatherapy-guide-10-atherische-ole-wirkung) | 0 |
+| [Lavendel — Der Wellness-Champion. Warum dieses eine Öl alles](/blogs/ratgeber/lavendel-wellness-champion-schweiz) | 0 |
 | [Schweizer Wohlfühl-Geheimnisse — 7 Rituale, die wir aus den ](/blogs/ratgeber/schweizer-wohlfuhl-geheimnisse) | 0 |
 | [Sommerkleider-Trends 2026: Die schönsten Looks für die Schwe](/blogs/ratgeber/sommerkleider-trends-2026-die-schonsten-looks-fur-die-schweiz) | 0 |
 | [Partner-Geschenke & Couple-Sets: Ideen für Verliebte 2026](/blogs/ratgeber/partner-geschenke-couple-sets-ideen-fur-verliebte-2026) | 0 |
-| [Taschen-Trends 2026: von Crossbody bis Henkeltasche](/blogs/ratgeber/taschen-trends-2026-von-crossbody-bis-henkeltasche) | 0 |
 | [Open-Ear Kopfhörer: Die bessere Wahl für Sport, Velo & Büro?](/blogs/ratgeber/open-ear-kopfhoerer-sport-velo-ratgeber) | 0 |
 | [Strohtaschen & Beach-Bags 2026: die schönsten Sommer-Looks](/blogs/ratgeber/strohtaschen-beach-bags-sommer-looks-2026) | 0 |
 | [Leinen pflegen: knitterfrei waschen, trocknen & bügeln](/blogs/ratgeber/leinen-pflegen-knitterfrei-material-guide) | 0 |
@@ -91,7 +90,6 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 | [Waffeleisen-Ratgeber: knusprige Waffeln wie vom Markt](/blogs/ratgeber/waffeleisen-ratgeber-knusprige-waffeln-wie-vom-markt) | 0 |
 | [Heissluftfritteuse kaufen: der grosse Airfryer-Guide](/blogs/ratgeber/heissluftfritteuse-kaufen-der-grosse-airfryer-guide) | 0 |
 | [Nähzubehör für Einsteiger: die richtige Grundausstattung](/blogs/ratgeber/nahzubehor-fur-einsteiger-die-richtige-grundausstattung) | 0 |
-| [Modellbau für Einsteiger: das richtige Set & Werkzeug](/blogs/ratgeber/modellbau-fur-einsteiger-das-richtige-set-werkzeug) | 0 |
 | [Mechanische Tastatur kaufen: Switches, Layout & Formfaktor e](/blogs/ratgeber/mechanische-tastatur-kaufen-switches-layout-formfaktor-erklart) | 0 |
 | [Monitor kaufen: Auflösung, Grösse & Bildwiederholrate verstä](/blogs/ratgeber/monitor-kaufen-auflosung-grosse-bildwiederholrate-verstandlich-erklart) | 0 |
 | [SSD oder Festplatte? Der richtige Speicher für deinen PC](/blogs/ratgeber/ssd-oder-festplatte-der-richtige-speicher-fur-deinen-pc) | 0 |
@@ -158,7 +156,6 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 | [Auto-Innenreinigung: Tipps für ein sauberes Cockpit & frisch](/blogs/ratgeber/auto-innenreinigung-tipps-fur-ein-sauberes-cockpit-frische-polster) | 0 |
 | [Winter-Essentials: die wichtigsten Dinge für warme & entspan](/blogs/ratgeber/winter-essentials-die-wichtigsten-dinge-fur-warme-entspannte-wintertage) | 0 |
 | [Rucksack für die Uni: der richtige Begleiter für Campus & Vo](/blogs/ratgeber/rucksack-fur-die-uni-der-richtige-begleiter-fur-campus-vorlesung) | 0 |
-| [Chronograph oder Automatik? Uhrwerke verstehen & die richtig](/blogs/ratgeber/chronograph-oder-automatik-uhrwerke-verstehen-die-richtige-uhr-wahlen) | 0 |
 | [Baby-Erstausstattung clever kaufen: das brauchst du wirklich](/blogs/ratgeber/baby-erstausstattung-clever-kaufen-das-brauchst-du-wirklich) | 0 |
 | [Home-Gym einrichten: Platz, Ausstattung & Aufbau für dein Tr](/blogs/ratgeber/home-gym-einrichten-platz-ausstattung-aufbau-fur-dein-training-zuhause) | 0 |
 | [Sommerkleider 2026: die schönsten Trends & worauf du beim Ka](/blogs/ratgeber/sommerkleider-2026-die-schonsten-trends-worauf-du-beim-kauf-achtest) | 0 |
@@ -169,16 +166,13 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 | [Handtasche für jeden Anlass: der komplette Taschen-Ratgeber](/blogs/ratgeber/handtasche-fur-jeden-anlass-der-komplette-taschen-ratgeber) | 0 |
 | [Smartwatch kaufen 2026: welche passt zu deinem Alltag?](/blogs/ratgeber/smartwatch-kaufen-2026-welche-passt-zu-deinem-alltag) | 0 |
 | [Kopfhörer-Kaufberatung 2026: In-Ear, Over-Ear oder ANC?](/blogs/ratgeber/kopfhorer-kaufberatung-2026-in-ear-over-ear-oder-anc) | 0 |
-| [Herrenmode-Basics 2026: die Kleidungsstücke für jeden Look](/blogs/ratgeber/herrenmode-basics-2026-die-kleidungsstucke-fur-jeden-look) | 0 |
 | [Hundezubehör-Guide: die richtige Grundausstattung für deinen](/blogs/ratgeber/hundezubehor-guide-die-richtige-grundausstattung-fur-deinen-hund) | 0 |
 | [Katzen glücklich halten: Zubehör, Spiel & Wohlfühl-Tipps](/blogs/ratgeber/katzen-glucklich-halten-zubehor-spiel-wohlfuhl-tipps) | 0 |
 | [Beauty-Geräte für zuhause: IPL, Gua Sha & Gesichtsroller im ](/blogs/ratgeber/beauty-gerate-fur-zuhause-ipl-gua-sha-gesichtsroller-im-uberblick) | 0 |
 | [Ringgrösse bestimmen & den perfekten Ring finden](/blogs/ratgeber/ringgrosse-bestimmen-den-perfekten-ring-finden) | 0 |
-| [Halskette richtig wählen: Länge, Material & Stil kombinieren](/blogs/ratgeber/halskette-richtig-wahlen-lange-material-stil-kombinieren) | 0 |
 | [Sneaker-Guide 2026: der richtige Schuh für jeden Anlass](/blogs/ratgeber/sneaker-guide-2026-der-richtige-schuh-fur-jeden-anlass) | 0 |
 | [Wohnaccessoires & Deko: so schaffst du ein gemütliches Zuhau](/blogs/ratgeber/wohnaccessoires-deko-so-schaffst-du-ein-gemutliches-zuhause) | 0 |
 | [Geschenkideen 2026: die passende Idee für jeden Anlass finde](/blogs/ratgeber/geschenkideen-2026-die-passende-idee-fur-jeden-anlass-finden) | 0 |
-| [Rucksack für Alltag, Uni & Reise: der grosse Rucksack-Guide](/blogs/ratgeber/rucksack-fur-alltag-uni-reise-der-grosse-rucksack-guide) | 0 |
 | [Ohrringe-Guide: Stecker, Creolen & Hänger für jeden Typ](/blogs/ratgeber/ohrringe-guide-stecker-creolen-hanger-fur-jeden-typ) | 0 |
 | [Gaming-Setup für Einsteiger: die richtige Grundausstattung](/blogs/ratgeber/gaming-setup-fur-einsteiger-die-richtige-grundausstattung) | 0 |
 | [Herrenuhr-Guide: welcher Uhrentyp passt zu deinem Stil?](/blogs/ratgeber/herrenuhr-guide-welcher-uhrentyp-passt-zu-deinem-stil) | 0 |
@@ -187,12 +181,3 @@ Das ist nicht nur eine Lücke, sondern eine Falschaussage: ein Artikel mit Namen
 | [Edelstahl-Schmuck für Herren 2026: Der Guide für hypoallerge](/blogs/ratgeber/edelstahl-schmuck-fur-herren-2026-der-guide-fur-hypoallergene-ketten-armbander) | 0 |
 | [Beauty-Routine 2026: Die 5 Essentials für strahlende Haut](/blogs/ratgeber/beauty-routine-2026-die-5-essentials-fur-strahlende-haut) | 0 |
 
-## Verlinktes Produkt ist ausverkauft (aktiv, aber Bestand 0 bei DENY)
-
-Die Produktseite sagt «Ausverkauft», der Ratgeber wirbt weiter. Ware nachlegen, Karte tauschen oder den Link auf die Kollektion umbiegen.
-
-| Ratgeber | Produkt |
-|---|---|
-| [Trainingsanzug & Jogging-Set 2026: Bequem & s](/blogs/ratgeber/trainingsanzug-jogging-set-2026-ratgeber) | [Kostüm Trainingsanzug](/products/kostum-trainingsanzug-fgss00180) |
-| [Halloween-Deko selber machen: 10 Ideen für dr](/blogs/ratgeber/halloween-deko-selber-machen-10-ideen-ratgeber) | [Spinnennetz weiss](/products/spinnennetz-weiss-fga95405) |
-| [Halloween-Deko selber machen: 10 Ideen für dr](/blogs/ratgeber/halloween-deko-selber-machen-10-ideen-ratgeber) | [Skelett beweglich](/products/skelett-beweglich-fga904874) |
