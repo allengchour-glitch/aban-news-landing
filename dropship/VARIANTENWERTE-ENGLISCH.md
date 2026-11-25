@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 18:44 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 18:48 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **40'859**
-- Optionen mit englischen Werten (Kandidaten): 1'254
+- Produkte gesehen: **46'856**
+- Optionen mit englischen Werten (Kandidaten): 1'382
 - Optionen übersetzt: **2** · Werte übersetzt: **2**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 3'705
+- Werte mit unbekanntem Wort (unverändert): 3'993
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 29
-- übersprungen «kleidungsstueck-im-wert»: 25
+- übersprungen «kollision-nach-uebersetzung»: 30
+- übersprungen «kleidungsstueck-im-wert»: 28
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -62,6 +62,7 @@
 - `15498676502913` [Farbe] kapuzen-shirt-mit-stickerei-und-hakel-details-620500: 3 Apricot → 3 Aprikose; 3 Apricot color → 3 Aprikose
 - `15504103768449` [Farbe] pailletten-disco-hemd-fur-teenager-618700: Black Color → Schwarz
 - `15509446885761` [Grösse] magic-academy-freizeit-rucksack-2c9b67: 16 inches → 16 Zoll; 16inches → 16 Zoll
+- `15517782933889` [Farbe] a-linien-kleid-mit-spitze-und-ruschen-616000: Emerald Green → Smaragdgrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -84,5 +85,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 128, `powder` 103, `french` 84, `core` 69, `size` 63, `elegant` 60, `high` 56, `cherry` 55, `one` 54, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 41, `chain` 40, `inner` 38, `(insole` 36, `space` 33, `tc` 31, `li` 31, `blossom` 30, `end` 30, `carbon` 28, `intergold` 28, `avocado` 27, `of` 27, `opp` 27, `plush` 26, `gel` 26, `stickers` 26, `happy` 25, `tea` 24, `you` 24, `two` 23, `×` 23, `eyelashes` 23, `weiß` 22, `lotus` 21, `no` 21, `love` 21, `⟨satzbau:praeposition⟩` 21, `inside` 21, `gun` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `2er` 19, `line` 19, `light` 19, `⟨satzbau:menge-vor-nomen⟩` 19, `lamp` 19, `holder` 19, `⟨satzbau:mass-ohne-zahl⟩` 19, `three` 18, `full` 18, `color` 18
+`⟨satzbau:adjektiv-vor-nomen⟩` 147, `powder` 105, `french` 84, `core` 74, `elegant` 67, `high` 64, `one` 63, `size` 63, `cherry` 55, `shell` 51, `diamond` 48, `⟨satzbau:mass-ohne-einheit⟩` 45, `four` 44, `chain` 40, `inner` 38, `(insole` 36, `×` 33, `space` 33, `blossom` 31, `tc` 31, `avocado` 31, `end` 31, `li` 31, `lotus` 30, `of` 30, `carbon` 30, `intergold` 28, `tea` 27, `opp` 27, `plush` 27, `gel` 26, `stickers` 26, `happy` 25, `gun` 24, `two` 24, `weiß` 24, `you` 24, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `star` 22, `no` 21, `love` 21, `inside` 21, `light` 20, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `basic` 20, `strawberry` 20, `oxford` 20, `three` 19, `2er` 19, `color` 19, `line` 19, `the` 19, `⟨satzbau:menge-vor-nomen⟩` 19, `lamp` 19, `holder` 19
 

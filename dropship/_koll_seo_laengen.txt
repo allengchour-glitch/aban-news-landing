@@ -128,3 +128,8 @@
 2026-11-25T18:44:48Z	startseite-pool-schuhe	titel		Startseite Pool Schuhe kaufen | LuxeStyle Schweiz
 2026-11-25T18:44:50Z	startseite-pool-taschen	titel		Startseite Pool Taschen kaufen | LuxeStyle Schweiz
 2026-11-25T18:44:51Z	startseite-pool-beauty	titel		Startseite Pool Beauty kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:56Z	startseite-pool-technik	titel		Startseite Pool Technik kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:58Z	startseite-pool-kueche	titel		Startseite Pool Küche kaufen | LuxeStyle Schweiz
+2026-11-25T18:44:59Z	startseite-pool-haustier	titel		Startseite Pool Haustier kaufen | LuxeStyle Schweiz
+2026-11-25T18:45:01Z	startseite-pool-kinder	titel		Startseite Pool Kinder kaufen | LuxeStyle Schweiz
+2026-11-25T18:45:02Z	startseite-pool-sport	titel		Startseite Pool Sport kaufen | LuxeStyle Schweiz
