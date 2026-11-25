@@ -485,6 +485,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-11-25 · 📈 **«10 Verkäufe/Tag»: Gewinn Ø CHF 16 je Bestellung, Preise auf Verlustschutz-Boden; ChatGPT-iPhone-Kasse 3/13 (Verdacht In-App-Browser). Kaufleiste am Handy sofort sichtbar (Auswahl-Sprung statt stiller 1. Variante), 12 Kollektionen mit «Häufige Fragen» für ChatGPT. Offene Betreiber-Entscheide in `dropship/verkauf-2511/ANALYSE.md` §Massnahmen.**
 - 2026-11-25 · 🐾 **Haustierwelt: erste 24 = Winter/Weihnacht, neuer Text (Tore 5/5, Saison im Januar zurück). CJ-Suchimport-Relevanz: nennt die Suche ein Tier/Kinder, ist das Wort im CJ-Namen Pflicht (vorher «dog winter coat» → Damenmäntel als Haustierbedarf).**
 - 2026-11-25 · 📣 **«locke leute an»: Social bringt nur 12 Besuche/Woche; 15 fremd angelegte Metricool-Entwürfe (draft/autoPublish aus) hingen trotz Wache-Meldung → geprüft (ACTIVE, Preise) und freigegeben, Black-Week-Zeile ergänzt. Regel: Zeile «METRICOOL-PLANER … Entwurf ≤ 72 h» heisst handeln, nicht nur melden.**
 - 2026-11-25 · ✅ **«Fertig beweisen» (aus Skill unlazy): vor mehrteiliger Arbeit Tore in `dropship/tore/<aufgabe>.md`, vor jeder Meldung `python3 tools/tore.py …` → «n erfüllt · n offen · n aufgegeben»; Skill `fertig-beweisen`. Fand sofort 3 Lücken (Neustart-Start, falsches Fehler-Tor, `currentBulkOperation` = fremder Export → eigene Bulk-ID abfragen).**

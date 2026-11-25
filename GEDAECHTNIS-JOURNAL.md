@@ -57,6 +57,13 @@
 
 
 
+
+## 📈 25./26.11.2026: «10 Verkäufe am Tag» Schritte 1–3 + ChatGPT-Antwortseiten (Betreiber «ja dann bis 3, sehr intensiv», «ja»)
+- **Zwei Workflows** (wf_68e2dce8-496: 4 Spuren + 4 Skeptiker; wf_77694929-bd9: 3 Spuren + Plan + Skeptiker). Berichte: `dropship/verkauf-2511/ANALYSE.md`, `WERBETEST-ANLEITUNG.md`, `dropship/chatgpt-antworten-2511/PLAN.md`. Tore: `dropship/tore/verkauf-10-pro-tag.md` (5/6, T4 = Betreiber startet Werbung), `dropship/tore/chatgpt-antworten.md` (2/2).
+- **GEMESSEN:** Gewinn je Bestellung Ø CHF 16.24 inkl. Versanderlös/Gebühren (ohne Versand 10.98); 71 % der sichtbaren Produkte stehen ≤ CHF 1 über dem Verlustschutz-Boden (Stückgewinn Median 6.69). ChatGPT-Besucher auf dem iPhone: 13 an der Kasse → 3 bezahlt (andere iOS 7 → 4), ChatGPT-Käufer zahlten 0× mit TWINT → Verdacht In-App-Browser, Betreiber-Test nötig. Nur 37 % der Besuche mobil, aber 75 % der Käufe. Rückhol-Mails 60 T: 0 Klicks. ChatGPT-Verkehr landet zur Hälfte auf Kollektionen; 0 von 15 hatten «Häufige Fragen».
+- **Umgesetzt:** Kaufleiste am Handy sofort sichtbar (`assets/sticky-add-to-cart.js`, bei Produkten mit Auswahl springt der Knopf zur Auswahl statt still die erste Variante einzulegen; Messgerät `tools/kaufleiste_pruefen.mjs`: vorher 0/1, nachher 2/2; Klicktest Warenkorb blieb 0), Hilfe-Knopf auf Produktseiten am Handy kompakt, Masstabellen scrollen (Sicherungen `theme_backup/*-2511`). 12 Kollektionen mit geprüftem «Häufige Fragen»-Block (6 vom Skeptiker korrigiert), Sicherung `vorher.json`, IndexNow 13 URLs.
+- **Betreiber-Entscheide offen:** ChatGPT-App-Kauftest iPhone; Mindest-Stückgewinn (+CHF 8, nach Black Week); WELCOME10 ab CHF 40; Abbruch-Mail 2 nur an Angemeldete; Werbetest starten. OpenSEO Prompt-Explorer braucht Bezahlplan (6 Credits).
+
 ## 🐾 25.11.2026 spät: Haustierwelt besser — Winter oben, Fremdkörper-Quelle im CJ-Suchimport geschlossen
 - Betreiber «kannst du die seite für haustiere noch besser machen». Tore `dropship/tore/haustierwelt.md` 5/5, Bericht `dropship/haustier-2511/README.md`.
 - Erste 24 von `sub-haustier` = Winter/Weihnachten (vorher 6 Brustgeschirre oben); Text mit 11 Schnellwahl-Links + «ab CHF 50 nach Rabatt». Im Januar Saison zurückdrehen.
