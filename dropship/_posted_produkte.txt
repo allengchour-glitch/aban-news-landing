@@ -610,3 +610,6 @@ slug:magnetische-handyhalterung-furs-auto
 name:kleinercartoondampfer
 pid:15454414406017
 slug:kleiner-cartoon-dampfer
+name:badezimmerteppichmitmemoryschaum
+pid:15455081562497
+slug:badezimmer-teppich-mit-memory-schaum-8d05c0
