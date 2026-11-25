@@ -8920,3 +8920,5 @@ gid://shopify/Product/15479436968321	zugeordnet	24	Wasserdichte Plateau-Wedge-He
 gid://shopify/Product/15479437033857	zugeordnet	18	Personality Wild Suit British Plus Size Shoes
 gid://shopify/Product/15479437099393	zugeordnet	27	Perforierte Leder-Sandalen mit Riemchen
 gid://shopify/Product/15479437197697	zugeordnet	28	Retro Leder Halbschuhe für Herren
+gid://shopify/Product/15479437230465	zugeordnet	30	High Heel Sandalen mit passender Handtasche
+gid://shopify/Product/15479437296001	zugeordnet	18	Elegante offene Sandalen mit Schnalle
