@@ -353437,3 +353437,7 @@
 67866113114503	heben	15.90	16.90	12.80	2026-11-25	bluetooth-lautsprecher-mit-subwoofer-und-later-767104
 67866113147271	heben	15.90	16.90	12.80	2026-11-25	bluetooth-lautsprecher-mit-subwoofer-und-later-767104
 67866113180039	heben	15.90	16.90	12.80	2026-11-25	bluetooth-lautsprecher-mit-subwoofer-und-later-767104
+67866383548807	heben	15.90	20.90	16.11	2026-11-25	universal-echtleder-lenkradbezug-631400
+67866383581575	heben	15.90	20.90	16.11	2026-11-25	universal-echtleder-lenkradbezug-631400
+67866383614343	heben	15.90	20.90	16.11	2026-11-25	universal-echtleder-lenkradbezug-631400
+67866383647111	heben	15.90	20.90	16.11	2026-11-25	universal-echtleder-lenkradbezug-631400
