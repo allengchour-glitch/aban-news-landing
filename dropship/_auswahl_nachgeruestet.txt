@@ -3801,3 +3801,5 @@
 16734503862663	Material:2:2+ki	2026-11-24	kristallglas-nachttischlampe-mit-kupfergestell-614400
 16734412833159	Farbe:3:3+ki	2026-11-24	led-nachttischlampe-dimmbar-wiederaufladbar-626400
 16734366761351	Farbe:4+Grösse:3+Typ:2:11+ki	2026-11-25	aufstellbare-tischlampe-mit-weisser-und-orange-614200
+16734112612743	Farbe:4:4+ki	2026-11-25	wachs-schmelzlampen-in-minimalistischer-glasfo-611300
+16734027612551	Farbe:2+Ausführung:5:10+ki	2026-11-25	mid-century-modern-deckenleuchte-creme-614700
