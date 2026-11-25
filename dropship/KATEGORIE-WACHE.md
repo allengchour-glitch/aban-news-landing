@@ -1,6 +1,6 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-25T18:46Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-25T20:04Z
 
-Aktive gescannt: 48 · ohne Kategorie: 48 · heute gesetzt: 41 (SCHARF, CAP 1500) · danach offen: 7 · Fehler: 0
+Aktive gescannt: 13 · ohne Kategorie: 13 · heute gesetzt: 5 (SCHARF, CAP 1500) · danach offen: 8 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
@@ -8,12 +8,13 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 ## Unbekannte Typen (nicht geraten — Tabelle ergänzen)
 
 - Büro & Home Office: 7
+- Trend-Produkt: 1
 
 ## Beispiele (heute gesetzt)
 
-- weihnachtsbaum-geschenkbeutel-mit-selbstversie-612900 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- silikon-malmatte-mit-doppelbecher-50x40-cm-613200 · Büro & Home Office → Home & Garden > Kitchen & Dining
-- floral-lederkartenbeutel-616000 · Büro & Home Office → Home & Garden > Household Supplies > Storage & Organization
-- wollmantel-mit-fellkragen-619200 · Haustierbedarf → Animals & Pet Supplies > Pet Supplies
-- surfer-bar-dashboard-dekor-mit-duftspender-637700 · Auto-Zubehör → Vehicles & Parts > Vehicle Parts & Accessories
+- rfid-sicheres-kartenfach-aus-pu-leder-609400 · Taschen → Luggage & Bags
+- handtasche-aus-rindleder-lange-leichte-geldbor-628000 · Taschen → Luggage & Bags
+- kartenbeutel-mit-magnetverschluss-604600 · Taschen → Luggage & Bags
+- echte-leder-munzborse-625300 · Taschen → Luggage & Bags
+- familien-pyjama-mit-weihnachts-print-607200 · Mode → Apparel & Accessories > Clothing
 

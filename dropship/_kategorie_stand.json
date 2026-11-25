@@ -1,12 +1,13 @@
 {
- "stand": "2026-11-25T18:46Z",
- "gescannt": 48,
- "ohne_kategorie_vorher": 48,
- "gesetzt": 41,
- "ohne_kategorie_nachher": 7,
+ "stand": "2026-11-25T20:04Z",
+ "gescannt": 13,
+ "ohne_kategorie_vorher": 13,
+ "gesetzt": 5,
+ "ohne_kategorie_nachher": 8,
  "fehler": 0,
  "unbekannte_typen": {
-  "Büro & Home Office": 7
+  "Büro & Home Office": 7,
+  "Trend-Produkt": 1
  },
  "scharf": true
 }
