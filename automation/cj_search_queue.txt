@@ -811,14 +811,14 @@
 #ohne-treffer 2026-11-25 search:gua sha set
 #done search:makeup bag travel organizer
 #done search:crossbody bag women leather
-search:phone crossbody strap
-search:dog winter coat
-search:cat tree small
-search:kids winter hat gloves set
-search:baby snowsuit
-search:christmas tree skirt
-search:table runner christmas
-search:felt christmas ornaments
+#ohne-treffer 2026-11-25 search:phone crossbody strap
+#done search:dog winter coat
+#done search:cat tree small
+#ohne-treffer 2026-11-25 search:kids winter hat gloves set
+#ohne-treffer 2026-11-25 search:baby snowsuit
+#done search:christmas tree skirt
+#ohne-treffer 2026-11-25 search:table runner christmas
+#done search:felt christmas ornaments
 
 # 24.11.2026 Firecrawl-Trendrecherche (wf_eb3cb179-5e1; Google Holiday 100 2026 via nypost 09.11. + galaxus 19.11.): Bestand dünn bei Perlen-Ohrringen (7), Halstuch (13, meist CHF 16), roter Strickjacke (0), Packwürfeln (0), Decken-Hoodie (1).
 search:high waist wide leg denim pants
