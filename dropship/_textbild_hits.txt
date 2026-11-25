@@ -18916,3 +18916,6 @@ gid://shopify/Product/15453784605057	56->0	Kleinblech Fritteuse mit Sieb
 gid://shopify/Product/15453794664833	160->1	Bissfester Spielkamerad
 gid://shopify/Product/15453794795905	62->0	Katzenklettergerüst mit Saugnapf
 gid://shopify/Product/15455662801281	10->0	Isolierter Sportbecher
+gid://shopify/Product/15493350228353	120->1	Elastisches Stahl-Kugelarmband
+gid://shopify/Product/15493500305793	45->0	Magnetisches 15W Wireless Ladegerät für iPhone
+gid://shopify/Product/15493720146305	43->0	Bestickter Plüsch-Kissenbezug, 45x45 cm
