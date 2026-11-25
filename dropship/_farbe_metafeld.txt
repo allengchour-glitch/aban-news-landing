@@ -544,3 +544,5 @@ gid://shopify/Product/16733483368839	Rot
 gid://shopify/Product/16733920625031	Mehrfarbig
 gid://shopify/Product/16734046749063	Mehrfarbig
 gid://shopify/Product/16734418141575	Blau
+gid://shopify/Product/16736594297223	Weiss
+gid://shopify/Product/16736677593479	Gold
