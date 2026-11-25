@@ -600,3 +600,6 @@ pid:16617711239559
 slug:multifunktionaler-sandwich-und-waffelautomat
 slug:kubanische-gliederkette-mit-strass-45-cm-629400
 name:kubanischegliederkettemitstrass20
+name:acaciasnackplattehandpoliert
+pid:15452681994625
+slug:acacia-snackplatte-handpoliert

@@ -4393,3 +4393,4 @@ gid://shopify/Product/16732309651847	Grösse	3
 gid://shopify/Product/16733438345607	Farbe	1
 gid://shopify/Product/16733438542215	Farbe	3
 gid://shopify/Product/16733438869895	Farbe	1
+gid://shopify/Product/15508396802433	Farbe	1
