@@ -353404,3 +353404,5 @@
 67841493500295	heben	16.90	17.90	13.58	2026-11-25	magnetische-kabellose-auto-ladehalterung-a8-644800
 67841493533063	heben	16.90	17.90	13.58	2026-11-25	magnetische-kabellose-auto-ladehalterung-a8-644800
 67841493565831	heben	16.90	17.90	13.58	2026-11-25	magnetische-kabellose-auto-ladehalterung-a8-644800
+67822075314567	heben	16.90	26.90	20.75	2026-11-25	wlan-uberwachungskamera-fur-zuhause-259584
+67822075347335	heben	16.90	26.90	20.75	2026-11-25	wlan-uberwachungskamera-fur-zuhause-259584
