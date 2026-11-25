@@ -132,6 +132,7 @@ BEWORBEN = 50.00          # das, was in Leiste, Produkt-, Kollektions- und Blogt
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ch_lager_profil import GRATIS_AB_CH as ENTSCHEID  # noqa: E402
 LEDGER = "dropship/_versandschwelle_rabatt.txt"
+NACH_RABATT = True        # 25.11.2026: Versprechen «ab CHF 50 nach Rabatt» (Betreiber 22.10.) — siehe main()
 
 
 def token():
@@ -294,7 +295,11 @@ def main():
 
     prozent, betrags_rabatte = hoechster_automatik_rabatt()
     methode, ist = gratis_versandart()
-    soll = min(round(BEWORBEN * (1 - prozent) + 1e-9, 2), ENTSCHEID)
+    # 25.11.2026: Seit dem Betreiber-Entscheid 22.10. («Alle auf CHF 50», dann «50 behalten, Text anpassen») heisst das Versprechen
+    # «ab CHF 50 NACH Rabatt» (Theme, FAQ, Versandrichtlinie, JSON-LD). Die Obergrenze BEWORBEN × (1 − Rabatt) galt nur für das alte
+    # Versprechen «ab CHF 50 Warenwert» — sie drehte die Schwelle seither immer wieder auf 45 zurück (Log 23.11. 23:02 «50.00 -> 45.00»)
+    # und hätte mit dem Black-Week-Rabatt (15 %) auf 42.50 gesenkt. Soll ist jetzt allein ch_lager_profil.GRATIS_AB_CH.
+    soll = ENTSCHEID if NACH_RABATT else min(round(BEWORBEN * (1 - prozent) + 1e-9, 2), ENTSCHEID)
 
     print("Beworbene Schwelle .............. CHF %.2f" % BEWORBEN)
     print("Hoechster AUTOMATIK-Rabatt ...... %.0f %%" % (prozent * 100))

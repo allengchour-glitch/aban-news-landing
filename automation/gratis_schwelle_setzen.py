@@ -39,7 +39,9 @@ from ch_lager_profil import GRATIS_AB_CH as IST_KONSTANTE, gql  # noqa: E402
 
 # Ziel-Schwelle dieses Laufs (Entscheid D). Bewusst NICHT ch_lager_profil.GRATIS_AB_CH: die Konstante beschreibt den IST-Stand
 # und wird erst NACH einem erfolgreichen --scharf-Lauf auf 40.50 gestellt (sonst stellt versandschwelle_rabatt nur General um).
-GRATIS_AB_CH = float(os.environ.get("SOLL", "40.50"))
+# 25.11.2026: Vorgabe 50.00 = Betreiber-Entscheid 22.10. («Alle auf CHF 50», «ab CHF 50 nach Rabatt»). Bis heute stand hier noch 40.50
+# aus dem Plan D vom 13.10. — ein Lauf ohne SOLL hätte alle drei Profile auf 40.50 gesenkt.
+GRATIS_AB_CH = float(os.environ.get("SOLL", "50.00"))
 
 PROFILE = ["General profile", "CH-Lager", "Druck auf Bestellung"]
 NAME = "Kostenloser Versand"

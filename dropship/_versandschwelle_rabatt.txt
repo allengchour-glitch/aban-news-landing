@@ -2,3 +2,4 @@ tarif 50.00 -> 45.00 (von Hand gesetzt, danach im Skript nachgezogen)
 leiste total_price -> items_subtotal_price
 tarif 50.00 -> 45.00
 tarif 50.00 -> 45.00
+2026-11-25T06:17Z	General profile Zone CH: >=45 (1583637856647) aus, >=50 (1540193485191) an — Betreiber-Entscheid 22.10. «ab CHF 50 nach Rabatt»; Wache auf NACH_RABATT umgestellt
