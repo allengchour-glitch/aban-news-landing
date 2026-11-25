@@ -18931,3 +18931,9 @@ gid://shopify/Product/15495730200961	70->3	Kleiner Kissenbezug Wildleder
 gid://shopify/Product/15496015085953	55->0	Fellball Deko-Kissen für Sofa
 gid://shopify/Product/15504197386625	17->0	Q6S Smartwatch mit Farbdisplay
 gid://shopify/Product/15508415807873	22->0	X7 Smartwatch mit TWS Bluetooth Headset
+gid://shopify/Product/15509317452161	35->0	Weinöffner mit Luftdruckpumpe
+gid://shopify/Product/15509380759937	16->0	Mary Jane Kinderschuhe im koreanischen Stil
+gid://shopify/Product/15512319918465	16->3	Smartwatch für Frauen mit Bluetooth & Herzfrequenz
+gid://shopify/Product/15518595318145	29->0	Smartwatch für Kinder mit Video und Touch
+gid://shopify/Product/15523222946177	41->1	Smartwatch mit HD-Farbdisplay
+gid://shopify/Product/15523223503233	60->0	GT2 Smartwatch mit NFC & Bluetooth-Anrufen
