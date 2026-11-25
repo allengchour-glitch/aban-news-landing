@@ -1,9 +1,9 @@
-# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-11-25T20:38:09Z
+# Bild-Werbetext in Nicht-Hauptbildern — Stand 2026-11-25T20:39:08Z
 
 Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., QUELLE_ART=textbild) die August-Umsortierung `dropship/_textbild_hits.txt` — aktuell gewählt: nachfueller, 1298 Produkte. Geprüft werden nur Bilder ab Position 2, nie das Hauptbild. Messgerät `bildtext_pruefen.woerter()`, Schwelle ≥ 4 sichere Wörter (Tesseract, Konfidenz ≥ 60, mind. 3 Buchstaben).
 
-- Medien geprüft: **4873** in 1296 Produkten
-- Treffer (≥ 4 Wörter): **192** in 163 Produkten
+- Medien geprüft: **4900** in 1303 Produkten
+- Treffer (≥ 4 Wörter): **193** in 164 Produkten
 - nicht lesbar (−1, wird beim nächsten Lauf erneut versucht): 0
 - entfernt (`_bild_werbetext_entfernt.txt`): **57**
 
@@ -203,6 +203,7 @@ Quelle: «+N»-Produkte aus `dropship/_cj_bild_backfill.txt` und (seit 24.09., Q
 | Silikonkissen für Kinder mit Wirbelsäulenstütze `15523940270465` | [77414983074183](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1f15a2c8-bd86-4fdc-aafc-dc131f8d63ed_trans_5c6b88a6-6872-4594-973f-0287e85392ec.jpg) | 4 | silicone Scm and more | offen |
 | Schleckmatte für Hunde und Katzen – Silikon `15453773693313` | [69926701138305](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/4ae547c3-e798-484b-89b4-2c2757c39591.jpg) | 4 | Pet slow food bowl | offen |
 | Langer Griff für Türen `15453780738433` | [69926728663425](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/568ec57a-3bda-471d-a8a6-ec464862f0a6_trans.jpg) | 4 | Height Single Piece Width | offen |
+| USB-Ladegerät für AA/AAA-Batterien, 4 Slots `16732102394247` | [78207164973447](https://cdn.shopify.com/s/files/1/0943/6856/3585/files/91300ae2-2622-4630-948a-01b5fc520cf0.jpg) | 4 | Suitable for Alkaline rechargeabie | offen |
 
 Kontaktbogen der ersten 24 Treffer: `dropship/bild_werbetext_kontaktbogen.jpg`
 

@@ -55,6 +55,13 @@
 
 
 
+
+## 📣 25.11.2026 abends: «locke leute an» — 15 hängende Metricool-Entwürfe freigegeben
+- **GEMESSEN:** Besuche 7 T: direkt 526 (enthält ChatGPT), Suche 83, **Social 12**; 5 Bestellungen / CHF 122.79. Newsletter ~18 Empfänger (zweite BW-Mail lohnt nicht).
+- **Befund:** 15 fremd angelegte Planer-Einträge (ChatGPT/Betreiber, angelegt 11./16./23.11.) standen als `draft true / autoPublish false` — Kaffeebecher, Wichtel, Girlande, Kartenetui auf IG/FB/TikTok/Threads/Pinterest. Die Planer-Wache meldete sie stündlich («12 Entwurf ≤ 72 h», «3 überfällig»), aber niemand handelte → gleiche Klasse wie 18.10.
+- **Getan:** Produkte ACTIVE + Preise in den Texten geprüft (15.90 / 16.90 / 31.90–40.90 / 15.90 = live), alle 12 freigegeben, die 3 verfallenen Kartenetui-Posts auf 29./30.11. verschoben; IG/FB/TikTok/Threads-Texte mit «🖤 Black Week bis 30.11.: 15 % Rabatt ab CHF 80 Bestellwert» (Pins ohne, da langlebig). Wache danach: 0 Entwurf ≤ 72 h, 0 überfällig.
+- **Offen/Lehre:** Die Wache meldet, handelt aber nicht — Freigabe fremder Entwürfe bleibt ein Schritt, den jede Runde aus der Zeile «METRICOOL-PLANER» ableiten muss. Grössere Hebel (Werbebudget Google Ads 7198263241 / TikTok Ads) = Betreiber-Entscheid.
+
 ## ✅ 25.11.2026: «Fertig beweisen» — Tore aus dem Skill «unlazy» übernommen (Betreiber-TikTok «Claude wird immer dümmer», «ja»)
 - **Video:** Werbe-Kurzvideo (@sebastiankauffmann) für den Skill `unlazy` (Leonxlnx/unlazy): vor der Arbeit Tore mit Prüfbefehl, «fertig» erst wenn alle erfüllt. Die Behauptung «Anthropic bestätigt» ist im Video unbelegt.
 - **Übernommen (eigener Code, keine fremden Skripte/Hooks):** `tools/tore.py` (Tor-Datei → erfüllt/offen/aufgegeben, Selbsttest 11/11, 3 Mutanten erkannt) + Skill `.claude/skills/fertig-beweisen/`. Erste Tor-Datei `dropship/tore/variantenbild-500.md`.
