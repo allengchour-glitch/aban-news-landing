@@ -1,13 +1,16 @@
-# Titelprobe-Fein — Stand 2026-10-23 21:23 UTC
+# Titelprobe-Fein — Stand 2026-11-25 17:37 UTC
 
-Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gesetzt 0 · fehler 0.
+Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 3 · gesetzt 3 · fehler 0.
 
+- 1 → Swimwear
+- 1 → Rings
+- 1 → Necklaces
 
 ## «Rock» mit Ärmeln/Ausschnitt = Kleid — Titel umbenennen (1)
 
 - Velours-Kolbenrock mit V-Ausschnitt
 
-## Ohne Treffer — bleibt grob (48)
+## Ohne Treffer — bleibt grob (46)
 
 - Ear-Cuffs «Papillon» – blauer Schmetterling  [G: Earrings]
 - Damen- und Kind-Freizeitanzug mit Print  [G: Activewear]
@@ -15,13 +18,12 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - High-quality Slanted-button Placket Design Straight-leg No-stretch Sho  [G: Shorts]
 - Legging Tights · Damen  [G: Pants]
 - Herren-Funktionsveste mit Taschen  [G: Vests]
+- Damenkleid mit asymmetrischer Drapierung  [G: Skirts]
 - Vintage-Blumenstecker  [G: Earrings]
 - Kristall Stein Set  [G: Rings]
 - Multikant-Stahlkombi-Ringset  [G: Rings]
-- Gestapelte Ringkombination europäisch-amerikanischer Stil  [G: Rings]
 - Vintageschmuck-Kollier  [G: Necklaces]
 - Neu: Retro-Geometrische Steckerohrgehänge  [G: Earrings]
-- Vintage-Steckerohr Sterlingsilber Luxus  [G: Earrings]
 - Premium-Herz-U-Form Hörlinge  [G: Earrings]
 - Blumenprint-Midi mit Volantsärmeln und A-Silhouette  [G: Dresses]
 - Blaues Denim für Herren  [G: Pants]
@@ -31,16 +33,17 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - Mesh Maxi Cape mit Fledermausärmeln  [G: Dresses]
 - Acryl-Hängeornament  [G: Necklaces]
 - Langarm-Base-Layer für Herren  [G: Activewear]
-- Wandlampe Glas Kürbis  [G: Necklaces]
-- Wandlampe modern 1- oder 2-Kopf 220 V  [G: Necklaces]
-- Wandleuchte für Aussenbereiche  [G: Necklaces]
-- Nordische Wandlampe für stimmungsvolles Licht  [G: Necklaces]
+- Wandleuchte in sechs Ausführungen  [G: Necklaces]
+- Moderne Wandleuchte, ein- oder zweiflammig  [G: Necklaces]
+- Lineare Wandleuchte  [G: Necklaces]
+- Leuchtenserie mit Wand- und Deckenvarianten  [G: Necklaces]
 - Pflanzen-Wachstumslampe für Setzlinge  [G: Necklaces]
-- Rattan Vintage Wandlampe  [G: Necklaces]
+- Wandlampe im Vintage-Stil  [G: Necklaces]
 - Herren-Baselayer mit Reissverschluss, Langarm  [G: Activewear]
 - Mini-Short mit Rüschen aus Denim  [G: Shorts]
 - Abstrakter A-Linien-Maxi mit Batwing-Ärmeln  [G: Dresses]
 - Langrocke in Einfarbigem Stoff – Midi  [G: Skirts]
+- Retro-Stil Umhang Maillard  [G: Coats & Jackets]
 - Einseitige Schulter, Meerjungfrau-Schnitt  [G: Dresses]
 - Einseitiger Rüschensprunganzug  [G: Jumpsuits & Rompers]
 - Einteiliger Rückenfreier Sommeranzug  [G: Jumpsuits & Rompers]
@@ -50,8 +53,6 @@ Werkzeug `automation/titelprobe_fein.py` (Regel im Kopf). SCHARF: Plan 0 · gese
 - Damen-V-Ausschnitt-Maxi in A-Linie  [G: Dresses]
 - Obst-Nackchen · Damen  [G: Necklaces]
 - Farbenfrohes Handgeflecht  [G: Bracelets]
-- Sterling-Silber-Handschmuck  [G: Bracelets]
-- Grasformband  [G: Bracelets]
 - Kristall-Handschmeichler  [G: Bracelets]
 - Langärmelige Bead- und Diamanten-Verzierter Rock  [G: Dresses]
 - Blauer Striped-Langarm-Shirtrock  [G: Dresses]
