@@ -18924,3 +18924,8 @@ gid://shopify/Product/15494642663809	45->0	Katzen Kratzbrett-Nest Villa
 gid://shopify/Product/15494643024257	75->0	Kuechen-Schurze
 gid://shopify/Product/15494694306177	50->0	Silikon-Spülbeckenmatte, schmutzabweisend
 gid://shopify/Product/15495131431297	29->0	Antihaft Silikon Küchenhelfer Set
+gid://shopify/Product/15495213220225	26->0	Minimalistisches Kissen mit Katzen-Stickerei
+gid://shopify/Product/15495395574145	15->0	Quarz-Armbanduhr für Sie & Ihn mit Strass
+gid://shopify/Product/15495397867905	18->0	Mori Style Rucksack mit grossem Fassungsvermögen
+gid://shopify/Product/15495730200961	70->3	Kleiner Kissenbezug Wildleder
+gid://shopify/Product/15496015085953	55->0	Fellball Deko-Kissen für Sofa

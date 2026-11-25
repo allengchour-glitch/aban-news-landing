@@ -596,3 +596,5 @@ name:cdpatternmagsafehüllemitständer
 pid:15450837057921
 slug:cd-pattern-magsafe-hulle-mit-stander
 slug:nahtloser-body-shaper-mit-rundhals-und-bauchko
+pid:16617711239559
+slug:multifunktionaler-sandwich-und-waffelautomat
