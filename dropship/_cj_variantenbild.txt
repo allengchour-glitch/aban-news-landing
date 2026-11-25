@@ -8735,3 +8735,10 @@ gid://shopify/Product/15478568616321	zugeordnet	2	Glätteisen-Kamm
 gid://shopify/Product/15478568747393	zugeordnet	3	Kabelloser 2-in-1 Ionen-Haarglätter & Lockenstab
 gid://shopify/Product/15478568812929	zugeordnet	2	Keramik Haarglätter
 gid://shopify/Product/15478568911233	zugeordnet	16	Elegantes, plissiertes Abendkleid mit Taillengürtel
+gid://shopify/Product/15478568976769	zugeordnet	60	Kuscheldecke, handgestrickt mit extra-dickem Garn
+gid://shopify/Product/15478569042305	zugeordnet	3	Memphis Glas-Hängelampe
+gid://shopify/Product/15478569075073	zugeordnet	25	Ärmelloses Rollkragen-Shirt mit Band
+gid://shopify/Product/15478569140609	zugeordnet	60	Sofa-Überzug mit Blättermuster
+gid://shopify/Product/15478569173377	zugeordnet	18	Gestreifter Strick-Hoodie für Damen
+gid://shopify/Product/15478569238913	bild-urls-tot
+gid://shopify/Product/15478569271681	zugeordnet	96	Oversized Strickpullover für Damen
