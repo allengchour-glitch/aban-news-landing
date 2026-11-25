@@ -2240,3 +2240,23 @@
 2026-11-25	16733173973383	68311592403335	CJSN279864323WD	CN / Weiß mit Schwarz / Timer-Schalter	sperren	DENY	True	0	gesperrt-belegt
 2026-11-25	16733173973383	68311592436103	CJSN279864324XC	CN / Weiß mit Gold / Standard-Schalter	sperren	DENY	True	0	gesperrt-belegt
 2026-11-25	16733173973383	68311592468871	CJSN279864325YB	CN / Weiß mit Gold / Timer-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733847880071	68311587357063	CJJT274764002BY	CN	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733847880071	68311587357063	CJJT274764002BY	CN	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16734483153287	68311587062151	CJSN268736742PK	CN / Amber Diamond Pattern / Dimmzeit	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16734483153287	68311587094919	CJSN268736743QJ	CN / Amber Diamond Pattern / Dimmung	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16734483153287	68311587127687	CJSN268736744RI	CN / Bernstein gestreift / Dimmzeit	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16734483153287	68311587160455	CJSN268736745SH	CN / Bernstein gestreift / Dimmung	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16734483153287	68311587193223	CJSN268736746TG	CN / Clear Light Diamond Pattern / Dimmzeit	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16734483153287	68311587225991	CJSN268736747UF	CN / Clear Light Diamond Pattern / Dimmung	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16734483153287	68311587258759	CJSN268736748VE	CN / Dark Gray Diamond Pattern / Dimmzeit	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16734483153287	68311587291527	CJSN268736749WD	CN / Dark Gray Diamond Pattern / Dimmung	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16734483153287	68311587062151	CJSN268736742PK	CN / Amber Diamond Pattern / Dimmzeit	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16734483153287	68311587094919	CJSN268736743QJ	CN / Amber Diamond Pattern / Dimmung	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16734483153287	68311587127687	CJSN268736744RI	CN / Bernstein gestreift / Dimmzeit	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16734483153287	68311587160455	CJSN268736745SH	CN / Bernstein gestreift / Dimmung	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16734483153287	68311587193223	CJSN268736746TG	CN / Clear Light Diamond Pattern / Dimmzeit	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16734483153287	68311587225991	CJSN268736747UF	CN / Clear Light Diamond Pattern / Dimmung	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16734483153287	68311587258759	CJSN268736748VE	CN / Dark Gray Diamond Pattern / Dimmzeit	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16734483153287	68311587291527	CJSN268736749WD	CN / Dark Gray Diamond Pattern / Dimmung	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	15479397482881	68311594369415	CJSJ282920204DW	UK-Set	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	15479397482881	68311594369415	CJSJ282920204DW	UK-Set	sperren	DENY	True	0	gesperrt-belegt

@@ -1,9 +1,9 @@
-# Netzstecker je Variante — Stand 2026-11-24
+# Netzstecker je Variante — Stand 2026-11-25
 
 Waechter `automation/cj_stecker_pruefen.py --varianten` (taeglich im Aufseher). Klasse: aktive Produkte mit ≥ 2 Varianten, von denen mindestens eine einen fremden Stecker (US/UK/AU/CN/JP …) traegt.
 
-- Produkte in der Klasse: **69** · Urteile: {'ok-gesperrt': 68, 'reiseadapter-ausgenommen': 1}
-- in diesem Lauf gesperrt: **0** Varianten · gedraftet: **0** · Fehler: 0
+- Produkte in der Klasse: **73** · Urteile: {'ok-gesperrt': 68, 'sperren': 4, 'reiseadapter-ausgenommen': 1}
+- in diesem Lauf gesperrt: **22** Varianten · gedraftet: **0** · Fehler: 0
 - Varianten OHNE Steckerkennung werden nie angefasst (welche Version CJ schickt, ist nicht belegt).
 - Rueckweg je Produkt: `python3 automation/cj_stecker_pruefen.py --rueckweg <pid>` (Ledger `dropship/_cj_stecker_varianten.tsv`).
 
@@ -78,3 +78,7 @@ Waechter `automation/cj_stecker_pruefen.py --varianten` (taeglich im Aufseher). 
 | `15495214072193` Dual-Port USB-C Schnellladeadapter 20W | ok-gesperrt | 1 | AU:1,UK:1,US:1 | 0 |
 | `15495319388545` Haar-Volumen-Heizclip | ok-gesperrt | 2 | CN:2 | 0 |
 | `15495321584001` Smart Travel Charger mit Schnellladefunktion | reiseadapter-ausgenommen | 2 | AU:2,UK:2,US:2 | 2 |
+| `16733173973383` Aromatherapie-Lampe mit Duftkerzenmelter | sperren | 12 | CN:12 | 0 |
+| `16733847880071` Kabelloses Nachtschein mit Körpererkennung | sperren | 1 | CN:1 | 1 |
+| `16734483153287` Dimmbares höhenverstellbares Nachtlicht mit Timer | sperren | 8 | CN:8 | 0 |
+| `15479397482881` 45W GaN Ladegerät für Tablets, Smartphones & Lapto | sperren | 1 | UK:1 | 0 |

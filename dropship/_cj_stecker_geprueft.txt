@@ -1194,3 +1194,4 @@
 16733772939655	kein-stecker-merkmal	2026-11-24	Mushroom-Ladestation Tischlampe
 16733921378695	kein-stecker-merkmal	2026-11-24	Deckenleuchte Minimalistisch Nordisch Warmweiss
 16734027612551	kein-stecker-merkmal	2026-11-24	Mid-Century Modern Deckenleuchte Creme
+16737959641479	kein-stecker-merkmal	2026-11-25	Kabelloser Staubsauger mit UV-Sterilisation & Aromatherapie

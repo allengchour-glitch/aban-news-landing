@@ -353742,3 +353742,26 @@
 56222424957313	heben	78.90	79.90	63.88	2026-11-25	amalek-wochenendtasche-aus-leder-725056
 67676205482375	heben	78.90	79.90	63.86	2026-11-25	smarter-futterautomat-mit-kamera-635700
 55878352765313	heben	75.90	76.90	61.84	2026-11-25	vogelhaus-mit-infrarotkamera-solarpanel-611500
+55889915642241	heben	26.90	28.90	23.02	2026-11-25	tragbarer-mixer-fur-frische-drinks-770432
+55889915675009	heben	26.90	28.90	23.02	2026-11-25	tragbarer-mixer-fur-frische-drinks-770432
+55889915707777	heben	26.90	28.90	23.02	2026-11-25	tragbarer-mixer-fur-frische-drinks-770432
+55889915740545	heben	26.90	28.90	23.02	2026-11-25	tragbarer-mixer-fur-frische-drinks-770432
+55917931463041	heben	75.90	76.90	61.76	2026-11-25	kamera-helikopter-fur-luftaufnahmen-220608
+56069475631489	heben	53.90	55.90	45.11	2026-11-25	led-spiegel-mit-licht-fur-badezimmer-make-up-628700
+56100082844033	heben	63.90	64.90	51.72	2026-11-25	leder-freizeitschuhe-mit-plateau-656200
+56100083007873	heben	62.90	63.90	51.39	2026-11-25	leder-freizeitschuhe-mit-plateau-656200
+56100083040641	heben	72.90	73.90	59.56	2026-11-25	leder-freizeitschuhe-mit-plateau-656200
+56100083073409	heben	73.90	74.90	59.89	2026-11-25	leder-freizeitschuhe-mit-plateau-656200
+56100083204481	heben	72.90	73.90	59.24	2026-11-25	leder-freizeitschuhe-mit-plateau-656200
+56107410719105	heben	75.90	92.90	74.84	2026-11-25	handgemachter-retro-rucksack-aus-rindsleder-323008
+67658590683527	heben	75.90	92.90	74.84	2026-11-25	handgemachter-retro-rucksack-aus-rindsleder-323008
+56114884444545	heben	76.90	77.90	62.73	2026-11-25	half-moon-led-nagellampe-mit-handyhalterung-626900
+56122986398081	sperren	75.90	200.90	162.70	2026-11-25	deckenventilator-mit-licht-42-zoll-167488
+67670534291847	sperren	75.90	200.90	162.70	2026-11-25	deckenventilator-mit-licht-42-zoll-167488
+67670534324615	sperren	75.90	198.90	160.80	2026-11-25	deckenventilator-mit-licht-42-zoll-167488
+15503087010177	draft				2026-11-25	deckenventilator-mit-licht-42-zoll-167488
+56162687549825	heben	75.90	76.90	61.54	2026-11-25	leder-rucksack-fur-reise-und-freizeit-604000
+56225592705409	heben	75.90	76.90	61.60	2026-11-25	elektrische-zitruspresse-1dfd9b
+67666023776647	heben	74.90	106.90	85.97	2026-11-25	reisetasche-aus-leder-fur-herren-599360
+67665533862279	heben	74.90	75.90	60.83	2026-11-25	schultertasche-aus-erster-schicht-rindsleder-4a2405
+67673184305543	heben	74.90	75.90	60.83	2026-11-25	schultertasche-aus-erster-schicht-rindsleder-4a2405
