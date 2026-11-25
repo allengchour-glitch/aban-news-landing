@@ -105,6 +105,15 @@ def melden(urls):
     raise RuntimeError("IndexNow ohne Antwort — " + letzter)
 
 
+def chatgpt_vorrang():
+    """25.11.2026: lebende ChatGPT-Landeseiten (dropship/_chatgpt_landeseiten.json, Zustand ok) als volle URLs. Fehlt der Stand: leer."""
+    try:
+        s = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dropship", "_chatgpt_landeseiten.json"), encoding="utf-8"))
+        return {f"https://{HOST}{e['pfad']}" for e in s.get("liste", []) if e.get("zustand") == "ok"}
+    except Exception:
+        return set()
+
+
 def protokoll(n, status, text):
     neu = not os.path.exists(LAEUFE)
     with open(LAEUFE, "a", encoding="utf-8") as f:
@@ -123,7 +132,7 @@ def main():
     led = ledger()
     heute = dt.date.today()
     kand = kandidaten()
-    urls, n_faellig, n_nie = auswahl(kand, led, heute, MAX, WIEDER_TAGE, WIEDER_TAGE_PRODUKT)
+    urls, n_faellig, n_nie = auswahl(kand, led, heute, MAX, WIEDER_TAGE, WIEDER_TAGE_PRODUKT, vorrang=chatgpt_vorrang())
     tot = entfernte([u for _, u, _, _ in kand], led) if "--ohne-entfernt" not in sys.argv else []
     print(f"  {len(kand)} öffentliche Seiten, {n_faellig} fällig (davon {n_nie} nie gemeldet), melde {len(urls)} · "
           f"{len(tot)} entfernte Adressen", flush=True)

@@ -37,16 +37,26 @@ def ledger_datum(led, url):
     return d, False
 
 
-def auswahl(kand, led, heute, max_n, wieder_seite=WIEDER_SEITE, wieder_produkt=WIEDER_PRODUKT):
+WIEDER_VORRANG = 7       # 25.11.2026: ChatGPT-Landeseiten (Stand von chatgpt_landeseiten_wache.py) wöchentlich statt 30/90 T
+
+
+def auswahl(kand, led, heute, max_n, wieder_seite=WIEDER_SEITE, wieder_produkt=WIEDER_PRODUKT, vorrang=None, wieder_vorrang=WIEDER_VORRANG):
     """kand = [(prio, url, art, created)], art 'p' = Produkt / 's' = sonst, created = ISO-Text oder ''.
+    vorrang = Menge von URLs (ChatGPT-Landeseiten): fällig schon nach wieder_vorrang Tagen und vor allen anderen Wiederholungen
+    (25.11.2026: ChatGPT ist der stärkste Verkaufskanal und sucht teils über Bing; Bing zeigte für kuschel-heizdecken noch den
+    Titel von vor dem 02.10.). Nie Gemeldetes bleibt trotzdem vorn.
     Gibt (urls, faellig_gesamt, nie_gesamt) zurück — urls höchstens max_n, in Meldereihenfolge."""
     heute = heute if isinstance(heute, dt.date) else dt.date.fromisoformat(str(heute))
     g_seite = str(heute - dt.timedelta(days=wieder_seite))
     g_prod = str(heute - dt.timedelta(days=wieder_produkt))
+    g_vor = str(heute - dt.timedelta(days=wieder_vorrang))
+    vorrang = vorrang or set()
     faellig = {}
     for prio, url, art, created in kand:
         datum, nie = ledger_datum(led, url)
-        if datum < (g_prod if art == "p" else g_seite):
+        if url in vorrang and datum < g_vor:
+            faellig[url] = (0 if nie else 1, -1, datum, created or "", url)
+        elif datum < (g_prod if art == "p" else g_seite):
             faellig[url] = (0 if nie else 1, prio, datum, created or "", url)
     reihe = sorted(faellig.values(), key=lambda x: x[4])
     reihe.sort(key=lambda x: x[3], reverse=True)         # jüngstes createdAt zuerst (stabil: bleibt innerhalb gleicher Schlüssel)
@@ -155,7 +165,14 @@ def selbsttest():
     # 8. Schutz bei Teilabfrage
     ok(entfernte(lebend[:900], {u: "2026-10-01" for u in lebend}) == [], "unter 1'000 Adressen → nichts als entfernt melden")
     ok(entfernte(lebend[:1200], {u: "2026-10-01" for u in lebend}) == [], "mehr als 15 % fehlen → nichts als entfernt melden")
-    # 9. Ampelzeile
+    # 9. Vorrang (ChatGPT-Landeseiten): nach 8 T fällig (Produkt sonst 90 T) und vor anderen Wiederholungen; nach 3 T nicht
+    led9 = {"https://x/products/chat": "2026-10-26", "https://x/products/neu": "2026-10-31", "https://x/collections/alt": "2026-09-01"}
+    k9 = [(2, u, "p" if "/products/" in u else "s", "") for u in led9]
+    urls, _, _ = auswahl(k9, led9, heute, 10, vorrang={"https://x/products/chat", "https://x/products/neu"})
+    ok(urls == ["https://x/products/chat", "https://x/collections/alt"], f"Vorrang nach 8 T vorn, nach 3 T nicht: {urls}")
+    urls, _, _ = auswahl(k9, led9, heute, 10)
+    ok(urls == ["https://x/collections/alt"], f"Gegenprobe ohne Vorrang: Produkt erst nach 90 T: {urls}")
+    # 10. Ampelzeile
     global STAND
     alt = STAND
     try:
