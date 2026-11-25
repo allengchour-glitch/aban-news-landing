@@ -153,12 +153,29 @@ function wortMuster(w) {
   if (w.length > 3 && w.endsWith('s')) formen.add(w.slice(0, -1));
   return new RegExp(`(?<![a-z0-9])(?:${[...formen].map(rxEsc).join('|')})(?:s|es)?(?![a-z0-9])`);
 }
+// 🐾 25.11.2026: ZIELGRUPPE IST PFLICHT. GEMESSEN im Runner-Log 25.11.: «dog winter coat» legte vier Damenjacken an
+// (Faux-Fur-Kurzjacke, Daunenjacke, Wollmantel, Basic-Jacke — «winter»+«coat» = 2/3 genügten), «cat tree small» einen
+// Weihnachtsbaumstumpf («tree»+«small»). Alle landeten als «Haustierbedarf» in der Haustierwelt. Regel: Nennt die Suche
+// ein Tier (oder Kinder), muss der CJ-Name eines der Wörter dieser Gruppe tragen — sonst irrelevant, egal wie viele
+// übrige Kernwörter passen.
+const RELEVANZ_ZIELGRUPPEN = [
+  /(?<![a-z])(?:dog|dogs|puppy|puppies|pet|pets|doggy|canine)(?![a-z])/,
+  /(?<![a-z])(?:cat|cats|kitten|kittens|kitty|pet|pets|feline)(?![a-z])/,
+  /(?<![a-z])(?:pet|pets|dog|dogs|cat|cats|puppy|kitten|bird|birds|parrot|hamster|rabbit|bunny|guinea|reptile|aquarium|fish)(?![a-z])/,
+  /(?<![a-z])(?:kid|kids|child|children|baby|babies|toddler|toddlers|girl|girls|boy|boys|infant|infants|newborn)(?![a-z])/,
+];
+function zielgruppe(s) {
+  const t = relNorm(s);
+  return RELEVANZ_ZIELGRUPPEN.filter(rx => rx.test(t));
+}
 function relevanzUrteil(suche, nameEn) {
   const kern = kernwoerter(suche);
   if (!kern.length) return { ok: true, treffer: 0, noetig: 0, kern };
   const name = relNorm(nameEn);
   const treffer = kern.filter(w => wortMuster(w).test(name)).length;
   const noetig = Math.max(Math.min(2, kern.length), Math.ceil(kern.length * 0.6));
+  const ziel = zielgruppe(suche);
+  if (ziel.length && !ziel.some(rx => rx.test(name))) return { ok: false, treffer, noetig, kern, zielFehlt: true };
   return { ok: treffer >= noetig, treffer, noetig, kern };
 }
 // Kanarien: [Suche, CJ-Name, erwartet]. Die ersten vier stehen so im Auftrag K8; die übrigen sind echte Fehlgriffe aus
@@ -184,6 +201,15 @@ const RELEVANZ_KANARIEN = [
   ['thermal underwear set', 'Red Wine Thermal Cooler Bag Thickened And Waterproof With A Handle', false],
   ['hand warmer power bank', 'Power Bank 10000mAh Fast Charging', false],
   ['rechargeable hand warmer usb', 'Rechargeable Electric Hand Warmer Winter Double-Side Heating Mini Pocket Power Bank', true],
+  // 25.11.2026 (Zielgruppe Pflicht): echte Fehlgriffe aus dem Runner-Log + Gegenproben
+  ['dog winter coat', "Women's Thickened Warm Coat With A Large Fur-Lined Hood Winter", false],
+  ['dog winter coat', 'Short Faux Fur Winter Coat With Blazer Collar', false],
+  ['dog winter coat', 'Warm Winter Dog Coat Waterproof Reflective', true],
+  ['dog winter coat', 'Pet Winter Coat For Small Dogs Fleece Lined', true],
+  ['cat tree small', 'Small Christmas Tree Stump Ornament With Bells', false],
+  ['cat tree small', 'Small Cat Tree Tower With Scratching Post', true],
+  ['kids winter hat gloves set', 'Winter Warm Knit Hat Gloves Set Adult', false],
+  ['kids winter hat gloves set', 'Kids Winter Hat And Gloves Set Knitted', true],
 ];
 function relevanzSelbsttest() {
   let rot = 0;

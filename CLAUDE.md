@@ -485,6 +485,7 @@ Flacher Ledger ist meist KEIN Token-/Punkte-Problem: «Rings: total 0» ist der 
 
 ## 📚 Jüngste Lehren (Index — Volltext im Journal)
 
+- 2026-11-25 · 🐾 **Haustierwelt: erste 24 = Winter/Weihnacht, neuer Text (Tore 5/5, Saison im Januar zurück). CJ-Suchimport-Relevanz: nennt die Suche ein Tier/Kinder, ist das Wort im CJ-Namen Pflicht (vorher «dog winter coat» → Damenmäntel als Haustierbedarf).**
 - 2026-11-25 · 📣 **«locke leute an»: Social bringt nur 12 Besuche/Woche; 15 fremd angelegte Metricool-Entwürfe (draft/autoPublish aus) hingen trotz Wache-Meldung → geprüft (ACTIVE, Preise) und freigegeben, Black-Week-Zeile ergänzt. Regel: Zeile «METRICOOL-PLANER … Entwurf ≤ 72 h» heisst handeln, nicht nur melden.**
 - 2026-11-25 · ✅ **«Fertig beweisen» (aus Skill unlazy): vor mehrteiliger Arbeit Tore in `dropship/tore/<aufgabe>.md`, vor jeder Meldung `python3 tools/tore.py …` → «n erfüllt · n offen · n aufgegeben»; Skill `fertig-beweisen`. Fand sofort 3 Lücken (Neustart-Start, falsches Fehler-Tor, `currentBulkOperation` = fremder Export → eigene Bulk-ID abfragen).**
 - 2026-11-25 · 🖼️ **Google «Bild < 500×500» ab 31.01.2027 (5'773 Angebote): 7'016 CJ-Variantenbilder (300–499 px) per `variantenbild_500.py` an Ort und Stelle auf 600 px (fileUpdate, Media-ID bleibt), Aufseher alle 30 Min. bis 0, dann täglich. `variant.image` = ProductImage-ID, fileUpdate braucht MediaImage → `variant.media`.**

@@ -54504,3 +54504,6 @@ handtasche-aus-rindleder-lange-leichte-geldbor-628000	lb	Taschen	2026-11-25T20:0
 kartenbeutel-mit-magnetverschluss-604600	lb	Taschen	2026-11-25T20:04Z
 echte-leder-munzborse-625300	lb	Taschen	2026-11-25T20:04Z
 familien-pyjama-mit-weihnachts-print-607200	aa-1	Mode	2026-11-25T20:04Z
+kleinhandtasche-aus-rindleder-607900	lb	Taschen	2026-11-25T21:00Z
+retro-leder-munzbeutel-mit-schlusselring-604100	lb	Taschen	2026-11-25T21:00Z
+alcantara-reisepass-holder-aus-echtes-leder-602800	lb	Taschen	2026-11-25T21:00Z

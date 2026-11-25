@@ -56,6 +56,13 @@
 
 
 
+
+## 🐾 25.11.2026 spät: Haustierwelt besser — Winter oben, Fremdkörper-Quelle im CJ-Suchimport geschlossen
+- Betreiber «kannst du die seite für haustiere noch besser machen». Tore `dropship/tore/haustierwelt.md` 5/5, Bericht `dropship/haustier-2511/README.md`.
+- Erste 24 von `sub-haustier` = Winter/Weihnachten (vorher 6 Brustgeschirre oben); Text mit 11 Schnellwahl-Links + «ab CHF 50 nach Rabatt». Im Januar Saison zurückdrehen.
+- **Lehre:** Das Relevanz-Tor des CJ-Suchimports (2 von 3 Kernwörtern) liess bei «dog winter coat» Damenmäntel und bei «cat tree small» einen Weihnachtsbaumstumpf durch — das Tierwort fehlte, die Ware wurde «Haustierbedarf». Jetzt: nennt die Suche ein Tier/Kinder, ist ein Wort dieser Gruppe im CJ-Namen Pflicht (`RELEVANZ_ZIELGRUPPEN`, 8 Kanarien, Mutante 24/28 rot). 6 Produkte umkategorisiert.
+- Offen (nicht geändert): Mantel mit Fremdmarken-Logo, 2 falsche Bilder, 144 ältere Titel ohne Tierwort.
+
 ## 📣 25.11.2026 abends: «locke leute an» — 15 hängende Metricool-Entwürfe freigegeben
 - **GEMESSEN:** Besuche 7 T: direkt 526 (enthält ChatGPT), Suche 83, **Social 12**; 5 Bestellungen / CHF 122.79. Newsletter ~18 Empfänger (zweite BW-Mail lohnt nicht).
 - **Befund:** 15 fremd angelegte Planer-Einträge (ChatGPT/Betreiber, angelegt 11./16./23.11.) standen als `draft true / autoPublish false` — Kaffeebecher, Wichtel, Girlande, Kartenetui auf IG/FB/TikTok/Threads/Pinterest. Die Planer-Wache meldete sie stündlich («12 Entwurf ≤ 72 h», «3 überfällig»), aber niemand handelte → gleiche Klasse wie 18.10.
