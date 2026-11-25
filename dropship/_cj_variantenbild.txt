@@ -8922,3 +8922,4 @@ gid://shopify/Product/15479437099393	zugeordnet	27	Perforierte Leder-Sandalen mi
 gid://shopify/Product/15479437197697	zugeordnet	28	Retro Leder Halbschuhe für Herren
 gid://shopify/Product/15479437230465	zugeordnet	30	High Heel Sandalen mit passender Handtasche
 gid://shopify/Product/15479437296001	zugeordnet	18	Elegante offene Sandalen mit Schnalle
+gid://shopify/Product/15479437427073	zugeordnet	20	Vintage Leder Slipper für Herren
