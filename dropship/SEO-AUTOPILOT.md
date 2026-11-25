@@ -1,6 +1,6 @@
 # SEO-Autopilot — Wirkung
 
-Stand 2026-11-25 07:58 UTC · Quelle ShopifyQL (human, 90 T)
+Stand 2026-11-25 09:46 UTC · Quelle ShopifyQL (human, 90 T)
 
 | Datum | Artikel | Phrase | Sitzungen | Warenkörbe | Urteil |
 |---|---|---|---|---|---|
@@ -26,3 +26,4 @@ Stand 2026-11-25 07:58 UTC · Quelle ShopifyQL (human, 90 T)
 | 2026-10-24 | [tastaturen-test-fuer-deine-beduerfnisse](https://luxestyle.ch/blogs/ratgeber/tastaturen-test-fuer-deine-beduerfnisse) | tastaturen test | 0 | 0 | überarbeiten |
 | 2026-11-23 | [ventilatoren-test-die-besten-modelle-fuer-2026-im-ueberblick](https://luxestyle.ch/blogs/ratgeber/ventilatoren-test-die-besten-modelle-fuer-2026-im-ueberblick) | ventilatoren test | 0 | 0 | zu jung (2 T) |
 | 2026-11-24 | [luftreiniger-test-worauf-du-beim-kauf-achten-solltest](https://luxestyle.ch/blogs/ratgeber/luftreiniger-test-worauf-du-beim-kauf-achten-solltest) | luftreiniger test | 0 | 0 | zu jung (1 T) |
+| 2026-11-25 | [jumpsuits-fuer-hochzeitsgaeste-elegante-auswahl-tipps](https://luxestyle.ch/blogs/ratgeber/jumpsuits-fuer-hochzeitsgaeste-elegante-auswahl-tipps) | jumpsuits für hochzeitsgäste | 0 | 0 | zu jung (0 T) |
