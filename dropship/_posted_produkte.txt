@@ -598,3 +598,5 @@ slug:cd-pattern-magsafe-hulle-mit-stander
 slug:nahtloser-body-shaper-mit-rundhals-und-bauchko
 pid:16617711239559
 slug:multifunktionaler-sandwich-und-waffelautomat
+slug:kubanische-gliederkette-mit-strass-45-cm-629400
+name:kubanischegliederkettemitstrass20
