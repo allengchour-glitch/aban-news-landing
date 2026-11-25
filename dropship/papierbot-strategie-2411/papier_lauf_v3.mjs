@@ -38,11 +38,13 @@ if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop()
   const date = dates.BTCUSDT; if (!date) throw Error('Bitcoin-Kurse fehlen');
   for (const s of Object.keys(d)) if (dates[s] !== date) { delete d[s]; console.log('anderes Datum, ausgelassen', s); }
   const px = Object.fromEntries(Object.entries(d).map(([s, x]) => [s, x.c.at(-1)])), closes = Object.fromEntries(Object.entries(d).map(([s, x]) => [s, x.c]));
+  const pausiert = new Set(load(dir + '/steuerung.json', { pausiert: [] }).pausiert || []); // per Handy (Telegram) pausiert
   const fa = dir + '/ledger-btc-trend.json'; let A = load(fa, { paperOnly: true, start: 1000, cash: 1000, btc: 0, trades: 0, fees: 0, history: [] });
-  A = stepA(A, date, decideA(closes.BTCUSDT)); fs.writeFileSync(fa, JSON.stringify(A, null, 1));
-  const summary = [['A Bitcoin-Trend', A.history.at(-1).equity]];
+  if (!pausiert.has('btc-trend')) { A = stepA(A, date, decideA(closes.BTCUSDT)); fs.writeFileSync(fa, JSON.stringify(A, null, 1)); } else console.log('pausiert: btc-trend');
+  const summary = [['A Bitcoin-Trend', A.history.at(-1)?.equity ?? A.cash]];
   const bots = [['ledger-korb.json', 'B Korb', () => weightsB(closes)], ['ledger-donchian.json', '3 Donchian', L => donchianW(d, Object.keys(L.hold))], ['ledger-momentum.json', '4 Momentum', () => momentumW(d)], ['ledger-rueckkehr.json', '5 Rueckkehr', L => rueckkehrW(d, Object.keys(L.hold))]];
   for (const [file, name, fn] of bots) {
+    if (pausiert.has(file.replace(/^ledger-|\.json$/g, ''))) { console.log('pausiert:', name); continue; }
     let L = load(dir + '/' + file, fresh());
     for (const s of Object.keys(L.hold)) if (px[s] === undefined) throw Error(name + ': Kurs fehlt fuer gehaltenen Coin ' + s);
     const { w, why } = fn(L); L = stepB(L, date, px, w, why); fs.writeFileSync(dir + '/' + file, JSON.stringify(L, null, 1)); summary.push([name, L.history.at(-1).equity]);
