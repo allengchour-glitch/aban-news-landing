@@ -821,10 +821,10 @@
 #done search:felt christmas ornaments
 
 # 24.11.2026 Firecrawl-Trendrecherche (wf_eb3cb179-5e1; Google Holiday 100 2026 via nypost 09.11. + galaxus 19.11.): Bestand dünn bei Perlen-Ohrringen (7), Halstuch (13, meist CHF 16), roter Strickjacke (0), Packwürfeln (0), Decken-Hoodie (1).
-search:high waist wide leg denim pants
-search:dangle pearl earrings stainless steel
-search:satin square scarf
-search:silk feel printed square scarf 70cm
+#ohne-treffer 2026-11-25 search:high waist wide leg denim pants
+#done search:dangle pearl earrings stainless steel
+#ohne-treffer 2026-11-25 search:satin square scarf
+#ohne-treffer 2026-11-25 search:silk feel printed square scarf 70cm
 search:satin pajama set women
 search:flannel pajama set unisex
 search:matching couple pajamas
