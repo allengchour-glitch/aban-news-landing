@@ -340,6 +340,30 @@
     "btc": 61210.984375,
     "eth": 1708.851318359375
    }
+  },
+  {
+   "stand": "2026-11-24",
+   "zeit": "2026-11-25T14:23:49+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 715,
+   "kosten_usd": 0.020992,
+   "stufe": "opus",
+   "btc": {
+    "position": -0.05,
+    "begruendung": "Klarer Abwärtstrend: -25 % in 30 Tagen, 21 % unter dem 50-Tage-Schnitt, Tiefs bei 58,8k/59,7k. Gleichzeitig ist der Markt stark überverkauft. Angst&Gier steht bei 11, MVRV bei 1,13. Das Risiko einer Gegenbewegung ist hoch. Ich halte den kleinen Short unverändert und spare so die Gebühr. Das Funding ist leicht positiv und bringt dem Short einen kleinen Ertrag.",
+    "sicherheit": 0.35
+   },
+   "eth": {
+    "position": 0.0,
+    "begruendung": "Der Trend ist ähnlich schwach: -28 % in 30 Tagen, 24 % unter dem 50-Tage-Schnitt. Das MVRV von 0,84 zeigt eine Unterbewertung. Das Funding ist negativ, ein Short müsste also zahlen. Die Schwankung ist mit 67 % hoch. Ich bleibe flach und habe keinen Grund für eine Änderung.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Die Positionen bleiben unverändert: BTC -0,05, ETH 0. Der Trend spricht für Short, die extreme Angst und die Überverkauftheit sprechen dagegen. Deshalb bleibe ich minimal positioniert und vermeide Gebühren. Ein Ausbau des Shorts kommt erst bei einem Bruch unter 58,8k BTC bzw. 1'619 ETH infrage.",
+   "kurse": {
+    "btc": 59747.765625,
+    "eth": 1677.69482421875
+   }
   }
  ]
 }
