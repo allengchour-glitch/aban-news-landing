@@ -8967,3 +8967,19 @@ gid://shopify/Product/15479469932929	zugeordnet	27	Transparente Chunky-Heel Sand
 gid://shopify/Product/15479470129537	zugeordnet	15	Keilsandalen mit Klettverschluss
 gid://shopify/Product/15479470293377	zugeordnet	14	Spitzen-Slipper mit Schleife und Keilabsatz
 gid://shopify/Product/15479470489985	zugeordnet	24	Halb-Slipper für Damen mit geschlossener Zehenpartie
+gid://shopify/Product/15486308385153	zugeordnet	55	Loose-fit Langarm-Top mit Tunnelzug
+gid://shopify/Product/15486308483457	zugeordnet	30	Kapuzenpullover mit Kordelzug und Knöpfen
+gid://shopify/Product/15486308581761	zugeordnet	35	Waffelstrick V-Ausschnitt Langarm-Sweatshirt
+gid://shopify/Product/15486308680065	zugeordnet	14	Sommerlicher A-Linien Jupe mit Tupfenmuster
+gid://shopify/Product/15486308778369	zugeordnet	12	High-Waist Cordrock aus Feincord
+gid://shopify/Product/15486308843905	zugeordnet	20	Dünner High-Waist Midi-Rock aus Eisseide
+gid://shopify/Product/15486373691777	zugeordnet	21	Retro-Sandalen mit Webmuster und Blockabsatz
+gid://shopify/Product/15486373757313	zugeordnet	24	Sandaletten mit Knöchelriemen und Blockabsatz
+gid://shopify/Product/15486373855617	zugeordnet	81	Keil-Sneaker mit runder und offener Zehenpartie
+gid://shopify/Product/15486373953921	zugeordnet	60	Lackleder-Sandalen mit Blockabsatz
+gid://shopify/Product/15486374052225	zugeordnet	18	Chunky-Heel Sandalen mit offener Spitze
+gid://shopify/Product/15486445257089	zugeordnet	14	Trendige Casual Low-top Sneakers für Herren
+gid://shopify/Product/15486446076289	zugeordnet	24	Herren Loafer mit Metallschnalle und Quaste
+gid://shopify/Product/15486447681921	zugeordnet	40	Britische Chelsea Boots aus Leder für Herren
+gid://shopify/Product/15486448304513	zugeordnet	55	Herren Casual Lederschuhe mit weicher Sohle
+gid://shopify/Product/15486448664961	zugeordnet	13	Herren Slip-On Lederschuhe

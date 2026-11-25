@@ -1,4 +1,4 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-25T05:37Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-25T06:44Z
 
 Aktive gescannt: 4 · ohne Kategorie: 4 · heute gesetzt: 4 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
@@ -7,8 +7,8 @@ productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Sk
 
 ## Beispiele (heute gesetzt)
 
-- grosse-plastik-schreibwarenbox-mit-taschen-622000 · Büro & Home Office → Home & Garden > Household Supplies > Storage & Organization
-- auto-luftpumpe-mit-stromversorgung-605600 · Auto-Zubehör → Vehicles & Parts > Vehicle Parts & Accessories
-- manner-strickcardigan-mit-v-ausschnitt-619600 · Trend-Produkt → Apparel & Accessories > Clothing
-- langsocken-aus-wolle-ein-size-fur-manner-613400 · Trend-Produkt → Apparel & Accessories > Clothing
+- auto-luftpumpe-mit-notstarter-100w-606100 · Auto-Zubehör → Vehicles & Parts > Vehicle Parts & Accessories
+- kabelknitter-cardigan-mit-patchwork-617400 · Trend-Produkt → Apparel & Accessories > Clothing
+- leinen-malbuch-fur-malen-schreiben-609100 · Büro & Home Office → Media > Books > Print Books
+- mint-green-rucksack-fur-den-alltag-626900 · Büro & Home Office → Luggage & Bags > Backpacks
 
