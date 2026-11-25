@@ -1,4 +1,4 @@
-# Klassen-Kontrolle (VOLLSCAN, 56436 aktive Produkte)
+# Klassen-Kontrolle (VOLLSCAN, 55865 aktive Produkte)
 
 > Gemessen AM OBJEKT mit tag-toleranten Mustern, nicht ueber die Shopify-Suche.
 > Eine Klassenzahl gilt nur fuer die Form, mit der man gesucht hat — deshalb dieser Lauf.
@@ -29,7 +29,7 @@ Vollstaendige Liste: `dropship/_klassen/mess-versprechen-an-wearables.txt`
 
 - `15479417766273` KT80 Smartwatch mit HD-Display & Bluetooth-Anrufen
 
-## Auswahl-Versprechen bei EINER Variante — 205
+## Auswahl-Versprechen bei EINER Variante — 192
 
 Der Text beschreibt das CJ-Listing, nicht was wir verkaufen (Lehre 27.08.).
 
@@ -62,5 +62,5 @@ Vollstaendige Liste: `dropship/_klassen/auswahl-versprechen-bei-einer-variante.t
 - `15450258145665` Handgenähtes Lenkradbezug Modifiziert
 - `15450831585665` Perlen Armreif vergoldet, Vintage-Stil
 - `15451640398209` Dynamische Reflexion Keramik-Kaffeetasse
-- … und 180 weitere
+- … und 167 weitere
 
