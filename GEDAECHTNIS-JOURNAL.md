@@ -53,6 +53,12 @@
 
 
 
+## 🤖 25.11.2026: ChatGPT ist der stärkste Verkaufskanal (gemessen, nicht vermutet)
+- **ShopifyQL `utm_source = 'chatgpt.com'`** (Wochen): Aug/Sept 6–32, ab 19.10. 91, dann 111 / 152 / 176 / 122 Sitzungen, 9–12 Warenkörbe je Woche. Google (search) 7 T: 60 Sitzungen, 1 Warenkorb. ChatGPT 7 T: 140 Sitzungen, 12 Warenkörbe, 5 Kassen.
+- **`customerJourneySummary.firstVisit`** der letzten 25 Bestellungen: 9 kamen über ChatGPT (#1029 #1030 #1031 #1036 #1039 #1042 #1043 #1044, #1034 letzter Besuch), alle verschiedene Kunden-IDs = echte Kunden; Google 7, direkt/unbekannt Rest.
+- ChatGPT verlinkt Produkt- UND Kollektionsseiten (damen-jacken-kunstfell, glaetteisen-locken-foehn, edelstahl-titanarmbaender-vergoldet, pc-gaming, kochutensilien-sets, halloween) → die neue Kategorie-Taxonomie mit SEO-Texten wirkt dort. Kein ChatGPT-/Agentic-Kanal unter den Publications; robots.txt `Allow: /`, llms.txt 200.
+- **Lehre:** Bei «mehr Käufer» zuerst `firstVisit` der Bestellungen messen, nicht nur Sitzungen — der Kanal mit den Käufen war nicht der mit den meisten Sitzungen. Workflow «chatgpt-kanal-ausbauen» (25.11.) sucht die Hebel.
+
 ## ✉️💰 24.11.2026: Betreiber «du bist mail chef» + Preise nach echtem Versandgewicht + Rabattcodes
 - **Erweitert 24.11. 09:0x UTC (Betreiber «jaa mach du alles für mich»):** auch Rückerstattungen in Shopify macht die Sitzung selbst (suggestedRefund lesen → refundCreate auf die Ursprungszahlung, notify an, Notiz mit Grund, Rücklesen). #1042: CHF 30.42 für beide Öle (Refund 1254391775623).
 - **Dauerauftrag Kundenmails (Betreiber 24.11. «kannst du email bitte an kunden senden, du bist mail chef»):** Kundenmails schreibt UND sendet die Sitzung selbst (Gmail-Konnektor sendet von info@luxestyle.ch, gemessen 24.11.). Vorher IMMER den frischen Thread lesen (Lehre 15.09.), Sie-Form, Anrede ohne Frau/Herr wenn Geschlecht unbekannt, keine erledigte Rückerstattung behaupten (Rückerstattung in Shopify bleibt Betreiber-Klick, ausser er sagt anders). #1042: zwei Mails 08:38/08:53 UTC (Wickel kommen, beide Öle CHF 30.42 zurück).
