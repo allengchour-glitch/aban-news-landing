@@ -1,25 +1,28 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 15:54 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 15:57 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **1'853**
-- Optionen mit englischen Werten (Kandidaten): 87
+- Produkte gesehen: **3'048**
+- Optionen mit englischen Werten (Kandidaten): 145
 - Optionen übersetzt: **1** · Werte übersetzt: **1**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 218
+- Werte mit unbekanntem Wort (unverändert): 350
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 11
+- übersprungen «kleidungsstueck-im-wert»: 8
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
 > Zwei verschiedene Kleidungsstücke in EINER Option, oder ein Kleidungsstück, das nicht zum Titel passt. Beispiel Jeansjacke: «Blue Coat» / «Blue Pants» — die zweite «Farbe» ist eine Hose. Entscheid am Bild und Preis: Option umbenennen (z. B. «Artikel»: Jacke/Hose) oder Variante entfernen.
 
-_keine_
-
+- `15447957733761` [Farbe] **Familien-T-Shirt im Partnerlook · Kurzarm mit Brusttasche** — hose, jacke: coat | coat-100 | coat-110 | coat-120 | coat-130 | coat-140 | coat-150 | coat-Female S
+- `15447962091905` [Farbe] **Partnerlook Herbst Sweatshirts für Eltern & Kinder** — overall, pullover: Sweater Autumn-90cm | Sweater Autumn-100cm | Sweater Autumn-110cm | Sweater Autumn-120cm | Sweater Autumn-130cm | Sweater Autumn-140cm | Sweater Autumn-150cm | Sweater Autumn-Adult S
+- `15447969595777` [Ausführung] **Freizeit Cheongsam Familien-Set im China-Stil** — hose, oberteil · Titel nennt Set: Herren Oberteil | Herren Shorts | Damen Shirt | Damen Stil Rock | Grün Cheongsam Anzug
+- `15448011178369` [Farbe] **T-Shirt mit Cartoon-Hasen-Print für Damen** — pullover: Violent Robber Bear | Delivery Team | HOODIE Bear | Paradise Shark Letters | MOTORS Letters | POTRO Letters | VINTAGE Gelbe Buchstaben | Three Rows Lettered Rabbit
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -58,5 +61,5 @@ _keine_
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`diamond` 36, `powder` 9, `hat` 9, `insert` 9, `bag` 7, `tea` 6, `electric` 6, `⟨satzbau:adjektiv-vor-nomen⟩` 6, `waist` 6, `three` 5, `cherry` 5, `storage` 5, `color` 5, `one` 5, `blossom` 5, `plugin` 4, `models` 4, `drill` 4, `gallium` 4, `nitride` 4, `machine` 4, `4x` 4, `elegant` 3, `hut` 3, `milk` 3, `handle` 3, `lichtbecher` 3, `weisslicht` 3, `lampenschirm` 3, `dual` 3, `brushed` 3, `×` 3, `roman` 3, `rod` 3, `touch` 2, `modelle` 2, `pin` 2, `optic` 2, `breathing` 2, `makeup` 2, `pinseltasche` 2, `hot` 2, `full` 2, `face` 2, `mask` 2, `aromatherapy` 2, `protocol` 2, `smoke` 2, `making` 2, `use` 2, `8x` 2, `copperplated` 2, `glittering` 2, `⟨satzbau:material-vor-farbe⟩` 2, `background` 2, `line` 2, `grain` 2, `edge` 2, `pressing` 2, `swirl` 2
+`diamond` 36, `deer` 19, `powder` 17, `degrees` 17, `tea` 12, `hat` 10, `insert` 9, `rope` 8, `to` 8, `bag` 7, `cherry` 6, `electric` 6, `blossom` 6, `⟨satzbau:adjektiv-vor-nomen⟩` 6, `waist` 6, `soft` 6, `three` 5, `storage` 5, `color` 5, `one` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `plugin` 4, `models` 4, `drill` 4, `milk` 4, `gun` 4, `gallium` 4, `nitride` 4, `machine` 4, `4x` 4, `glittering` 4, `⟨satzbau:adjektivfolge⟩` 4, `c1color` 4, `c2color` 4, `c3color` 4, `c4color` 4, `c5color` 4, `ski` 4, `gloves` 4, `charming` 4, `crotch` 4, `elegant` 3, `optic` 3, `hut` 3, `handle` 3, `lichtbecher` 3, `weisslicht` 3, `lampenschirm` 3, `dual` 3, `brushed` 3, `×` 3, `roman` 3, `rod` 3, `c6color` 3, `haqing` 3, `ice` 3, `touch` 2
 
