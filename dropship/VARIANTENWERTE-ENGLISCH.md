@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 16:01 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 16:03 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **3'645**
-- Optionen mit englischen Werten (Kandidaten): 158
+- Produkte gesehen: **4'837**
+- Optionen mit englischen Werten (Kandidaten): 218
 - Optionen übersetzt: **1** · Werte übersetzt: **1**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 371
+- Werte mit unbekanntem Wort (unverändert): 470
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 - übersprungen «kollision-nach-uebersetzung»: 12
-- übersprungen «kleidungsstueck-im-wert»: 8
+- übersprungen «kleidungsstueck-im-wert»: 9
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -62,5 +62,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`diamond` 36, `powder` 21, `deer` 19, `degrees` 17, `tea` 12, `hat` 10, `insert` 9, `rope` 8, `to` 8, `bag` 7, `hot` 7, `cherry` 6, `electric` 6, `color` 6, `blossom` 6, `⟨satzbau:adjektiv-vor-nomen⟩` 6, `waist` 6, `soft` 6, `three` 5, `milk` 5, `storage` 5, `one` 5, `glittering` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `plugin` 4, `models` 4, `drill` 4, `gun` 4, `gallium` 4, `nitride` 4, `machine` 4, `4x` 4, `⟨satzbau:adjektivfolge⟩` 4, `c1color` 4, `c2color` 4, `c3color` 4, `c4color` 4, `c5color` 4, `ski` 4, `gloves` 4, `charming` 4, `crotch` 4, `ice` 4, `elegant` 3, `optic` 3, `hut` 3, `aromatherapy` 3, `handle` 3, `lichtbecher` 3, `weisslicht` 3, `lampenschirm` 3, `dual` 3, `smoke` 3, `brushed` 3, `×` 3, `roman` 3, `rod` 3
+`diamond` 36, `powder` 30, `deer` 19, `degrees` 17, `tea` 14, `one` 13, `hat` 10, `blossom` 9, `insert` 9, `cherry` 8, `⟨satzbau:adjektiv-vor-nomen⟩` 8, `rope` 8, `to` 8, `bag` 7, `hot` 7, `glittering` 7, `soft` 7, `washed` 7, `handle` 6, `gun` 6, `electric` 6, `color` 6, `machine` 6, `waist` 6, `ice` 6, `stone` 6, `three` 5, `milk` 5, `storage` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `elegant` 4, `plugin` 4, `models` 4, `optic` 4, `drill` 4, `gallium` 4, `nitride` 4, `4x` 4, `⟨satzbau:material-vor-farbe⟩` 4, `⟨satzbau:adjektivfolge⟩` 4, `c1color` 4, `c2color` 4, `c3color` 4, `c4color` 4, `c5color` 4, `ski` 4, `gloves` 4, `charming` 4, `crotch` 4, `otg` 4, `hut` 3, `flesh` 3, `aromatherapy` 3, `dragon` 3, `lichtbecher` 3, `weisslicht` 3, `lampenschirm` 3
 
