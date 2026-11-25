@@ -348443,3 +348443,10 @@
 56150727754113	heben	34.90	42.90	34.08	2026-11-25	trendige-freizeit-lederschuhe-im-koreanischen-603100
 56150727786881	heben	34.90	42.90	34.40	2026-11-25	trendige-freizeit-lederschuhe-im-koreanischen-603100
 56150727819649	heben	34.90	43.90	34.73	2026-11-25	trendige-freizeit-lederschuhe-im-koreanischen-603100
+56156090139009	heben	34.90	51.90	41.24	2026-11-25	matte-leder-commuter-schuhe-mit-dicker-sohle-613600
+56156090171777	heben	34.90	51.90	41.56	2026-11-25	matte-leder-commuter-schuhe-mit-dicker-sohle-613600
+56156090204545	heben	34.90	52.90	41.89	2026-11-25	matte-leder-commuter-schuhe-mit-dicker-sohle-613600
+56156090237313	heben	34.90	52.90	42.22	2026-11-25	matte-leder-commuter-schuhe-mit-dicker-sohle-613600
+56156090270081	heben	34.90	52.90	42.54	2026-11-25	matte-leder-commuter-schuhe-mit-dicker-sohle-613600
+56156090302849	heben	34.90	53.90	42.87	2026-11-25	matte-leder-commuter-schuhe-mit-dicker-sohle-613600
+56156090335617	heben	34.90	53.90	43.19	2026-11-25	matte-leder-commuter-schuhe-mit-dicker-sohle-613600

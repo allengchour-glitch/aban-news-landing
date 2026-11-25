@@ -67389,3 +67389,5 @@ gid://shopify/Product/15453996908929	gid://shopify/MediaImage/69929668641153
 gid://shopify/Product/15454131847553	gid://shopify/MediaImage/69931892474241
 gid://shopify/Product/15454180278657	gid://shopify/MediaImage/69932982305153
 gid://shopify/Product/15454202167681	gid://shopify/MediaImage/69933364543873
+gid://shopify/Product/15454234018177	gid://shopify/MediaImage/69933759070593
+gid://shopify/Product/15454302339457	gid://shopify/MediaImage/69934517289345
