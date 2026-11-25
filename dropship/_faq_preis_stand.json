@@ -1,5 +1,5 @@
 {
- "zeit": "2026-11-25T23:13:06Z",
+ "zeit": "2026-11-25T23:32:34Z",
  "toleranz_prozent": 10,
  "min_aktiv": 10,
  "kollektionen": {
@@ -353,5 +353,5 @@
  "bloecke": 12,
  "abweichungen": 0,
  "geprueft": 12,
- "dauer_s": 10.6
+ "dauer_s": 5.4
 }
