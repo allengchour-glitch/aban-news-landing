@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-24T14:48:22Z",
+ "stand": "2026-11-25T14:15:17Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "LogikStrom: Kostenloses Schaltplan-Programm nach DIN EN, gebaut mit KI",
-   "u": "https://www.heise.de/news/LogikStrom-Kostenloses-Schaltplan-Programm-nach-DIN-EN-gebaut-mit-KI-11536576.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-24T14:28:00Z",
-   "s": "LogikStrom zeichnet Stromlaufpläne nach DIN EN und erzeugt Kontaktspiegel und Klemmenplan automatisch. Kostenlos, offline, ohne Konto.",
-   "sprache": "de"
-  },
-  {
-   "t": "Google führt eine neue Suchseite mit KI-Seitenleiste ohne Suchbutton ein",
-   "u": "https://www.heise.de/news/Google-fuehrt-eine-neue-Suchseite-mit-KI-Seitenleiste-ohne-Suchbutton-ein-11536330.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-24T14:07:00Z",
-   "s": "Google baut seine Startseite um: Aus dem Such- wird ein KI-Button, zudem zieht eine Seitenleiste für die letzten KI-Suchanfragen und Gemini Notebook ein.",
-   "sprache": "de"
-  },
-  {
-   "t": "The Download: AI’s gas power boom and a consciousness reality check",
-   "u": "https://www.technologyreview.com/2026/11/24/1149669/the-download-data-centers-gas-ai-consciousness/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-24T13:10:00Z",
-   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Data centers are getting their own natural gas power plants On…",
-   "sprache": "en"
-  },
-  {
-   "t": "Smarte Schwimmbrille im Test: Kann ein KI-Coach meinen Freistil retten?",
-   "u": "https://t3n.de/news/smarte-schwimmbrille-im-test-kann-ein-ki-coach-meinen-freistil-retten-1774277/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-24T12:32:30Z",
-   "s": "Eine Schwimmbrille für jederfrau oder -mann, die Bahnen zählt, Zeiten überwacht und gegen Aufpreis das Schwimmtraining managt: Das jedenfalls verspricht die Smaweiterlesen auf t3n.de",
-   "sprache": "de"
-  },
-  {
-   "t": "Optimierung versus Datenschutz: Google verknüpft KI-Modus mit Drive, Wallet und Gemini",
-   "u": "https://t3n.de/news/google-verknuepft-ki-modus-drive-1775003/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-24T12:18:27Z",
-   "s": "Google baut seinen KI-Dienst Personal Intelligence weiter aus. Der KI-Modus der Suche soll künftig auch Zugriff auf Drive, Wallet und die Gemini-App der Nutzer:innen erhalten – wenn diese das wollen. …",
-   "sprache": "de"
-  },
-  {
-   "t": "Serie Blade Runner 2099: Was bleibt vom Menschen, wenn er sich selbst überflüssig macht?",
-   "u": "https://www.golem.de/news/serie-blade-runner-2099-was-bleibt-vom-menschen-wenn-er-sich-selbst-ueberfluessig-macht-2611-215576.html",
-   "q": "Golem",
-   "d": "2026-11-24T11:07:01Z",
-   "s": "50 Jahre nach Blade Runner 2049 sind es die Menschen, die gejagt werden - und die Replikanten herrschen. Die neue Serie führt das Erbe der Kultfilme fort, und zwar brillant. Eine Rezension von Peter O…",
-   "sprache": "de"
-  },
-  {
-   "t": "Data centers are getting their own natural gas power plants",
-   "u": "https://www.technologyreview.com/2026/11/24/1149622/data-centers-natural-gas/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-24T11:00:00Z",
-   "s": "One of the biggest roadblocks to starting up a data center is getting approval to connect to the electric grid—a wait that could last as long as a decade. Some developers aren’t willing to wait and ar…",
-   "sprache": "en"
-  },
-  {
-   "t": "KI in der Cloud: Neue US-Exportregeln erzeugen Chaos in Asien",
-   "u": "https://www.golem.de/news/ki-in-der-cloud-neue-us-exportregeln-erzeugen-chaos-in-asien-2611-215571.html",
-   "q": "Golem",
-   "d": "2026-11-24T10:23:02Z",
-   "s": "Die neuen US-Regeln sollen chinesische Firmen daran hindern, exportbeschränkte Hardware in der Cloud zu nutzen. Vorerst stiftet sie viel Verwirrung. (China, Nvidia)",
-   "sprache": "de"
-  },
-  {
-   "t": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
-   "u": "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+   "t": "Amazon and Meta reportedly in talks to lift blockade on AI agent Muse",
+   "u": "https://techcrunch.com/2026/11/25/amazon-and-meta-reportedly-in-talks-to-lift-blockade-on-ai-agent-muse/",
    "q": "TechCrunch AI",
-   "d": "2026-11-23T22:05:50Z",
-   "s": "As AI-generated code piles up, Anthropic's new developer tools aim to eliminate another bottleneck by letting agents handle routine approvals.",
+   "d": "2026-11-25T14:10:18Z",
+   "s": "Amazon and Meta are discussing a potential deal that would end a two-month-long blockade of Muse.",
    "sprache": "en"
   },
   {
-   "t": "Supertake raises $20M to let AI agents turn your market predictions into stock portfolios",
-   "u": "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/",
+   "t": "Widersprüchliche Anweisungen: Wenn bei ChatGPT und Claude der Zufall entscheidet",
+   "u": "https://t3n.de/news/widerspruechliche-anweisungen-chatgpt-claude-zufall-entscheidet-1775247/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-25T14:05:31Z",
+   "s": "Du hast der KI feste Regeln mitgegeben, und trotzdem hält sie sich nicht daran? Oft liegt das nicht am Tool, sondern an einer Rangordnung. Was dahintersteckt, hörst du im Podcast t3n MeisterPrompter. …",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-Update kompakt: Nvidia, KI-Migrationsgesetz, Valiants Vermutung, Perplexity",
+   "u": "https://www.heise.de/news/KI-Update-kompakt-Nvidia-KI-Migrationsgesetz-Valiants-Vermutung-Perplexity-11536344.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-25T14:00:00Z",
+   "s": "Das „KI-Update“ liefert drei mal pro Woche eine Zusammenfassung der wichtigsten KI-Entwicklungen.",
+   "sprache": "de"
+  },
+  {
+   "t": "KI-generierte Musik: Tidal will 27 Millionen Songs löschen",
+   "u": "https://t3n.de/news/ki-generierte-musik-tidal-will-27-millionen-songs-loeschen-1775228/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-25T13:30:16Z",
+   "s": "Tidal zieht eine harte Grenze: Musik, die komplett aus einem KI-Werkzeug stammt, fliegt aus dem Katalog. Zuletzt waren 43 Prozent aller neu angelieferten Titel maschinell erzeugt.weiterlesen auf t3n.d…",
+   "sprache": "de"
+  },
+  {
+   "t": "The Download: AI swamping open records, and firefighting for permafrost",
+   "u": "https://www.technologyreview.com/2026/11/25/1149808/the-download-ai-open-records-permafrost-fires/",
+   "q": "MIT Tech Review",
+   "d": "2026-11-25T13:10:00Z",
+   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. AI is straining America’s open records systems AI has intensif…",
+   "sprache": "en"
+  },
+  {
+   "t": "The questions Jensen Huang and Nvidia will still have to answer about Megaspeed",
+   "u": "https://techcrunch.com/2026/11/25/the-questions-jensen-huang-and-nvidia-will-still-have-to-answer-about-megaspeed/",
    "q": "TechCrunch AI",
-   "d": "2026-11-23T22:02:05Z",
-   "s": "Think you know where the market is headed? A startup called Supertake lets you put money behind your ideas without having to pick the stocks yourself.",
+   "d": "2026-11-25T13:00:00Z",
+   "s": "Huang still faces questions from Congress and his own board about his romantic relationship with an alleged chip smuggler.",
+   "sprache": "en"
+  },
+  {
+   "t": "Flut an KI-Spielen bringt Atari-Entwickler-Wettbewerb zum Stillstand",
+   "u": "https://www.heise.de/news/Zu-viel-KI-Retro-Wettbewerb-der-Atari-Homebrew-Szene-faellt-aus-11537667.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-25T11:46:00Z",
+   "s": "Der Organisator sieht keine Möglichkeit mehr, menschliche Entwicklungsleistungen fair zu bewerten. Ähnliche Probleme kennen Open-Source-Projekte.",
+   "sprache": "de"
+  },
+  {
+   "t": "Musikstreaming: Tidal verbannt vollständig KI-generierte Musiktitel",
+   "u": "https://www.golem.de/news/musikstreaming-tidal-verbannt-vollstaendig-ki-generierte-musiktitel-2611-215635.html",
+   "q": "Golem",
+   "d": "2026-11-25T11:15:02Z",
+   "s": "Fast jeder zweite neu eingereichte Titel bei Tidal ist vollständig KI-generiert. Die Abonnenten interessieren sich allerdings kaum dafür. (KI, Streaming)",
+   "sprache": "de"
+  },
+  {
+   "t": "An Indic Voice Agent with CUGA",
+   "u": "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
+   "q": "Hugging Face",
+   "d": "2026-11-25T10:22:09Z",
+   "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "AI is straining America’s open records systems",
+   "u": "https://www.technologyreview.com/2026/11/25/1149702/ai-is-straining-americas-open-records-systems/",
+   "q": "MIT Tech Review",
+   "d": "2026-11-25T10:00:00Z",
+   "s": "In Panton, Vermont, population 660, town clerk Kyle Rowe did it all. He crafted budgets, paid vendors, handled property tax disputes, and served as the town’s zoning supervisor and presiding elections…",
    "sprache": "en"
   }
  ]
