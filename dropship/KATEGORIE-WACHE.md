@@ -1,14 +1,19 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-25T06:44Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-25T07:49Z
 
-Aktive gescannt: 4 · ohne Kategorie: 4 · heute gesetzt: 4 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 13 · ohne Kategorie: 13 · heute gesetzt: 12 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
+## Unbekannte Typen (nicht geraten — Tabelle ergänzen)
+
+- Büro & Home Office: 1
+
 ## Beispiele (heute gesetzt)
 
-- auto-luftpumpe-mit-notstarter-100w-606100 · Auto-Zubehör → Vehicles & Parts > Vehicle Parts & Accessories
-- kabelknitter-cardigan-mit-patchwork-617400 · Trend-Produkt → Apparel & Accessories > Clothing
-- leinen-malbuch-fur-malen-schreiben-609100 · Büro & Home Office → Media > Books > Print Books
-- mint-green-rucksack-fur-den-alltag-626900 · Büro & Home Office → Luggage & Bags > Backpacks
+- weisser-wollpullover-mit-perlenknopfen-605900 · Schmuck → Apparel & Accessories > Jewelry
+- quadcopter-mit-bildschirm-fur-luftaufnahmen-615900 · Elektronik → Electronics
+- bluetooth-maus-kabellose-computer-maus-605300 · Büro & Home Office → Electronics > Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs
+- kleinflugdrone-mit-optischer-positionsbestimmu-607100 · Elektronik → Electronics
+- auto-montierbarer-5g-gps-tracker-mit-aufnahmef-634300 · Auto-Zubehör → Vehicles & Parts > Vehicle Parts & Accessories
 

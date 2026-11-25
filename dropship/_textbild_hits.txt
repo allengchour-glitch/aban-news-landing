@@ -18919,3 +18919,4 @@ gid://shopify/Product/15455662801281	10->0	Isolierter Sportbecher
 gid://shopify/Product/15493350228353	120->1	Elastisches Stahl-Kugelarmband
 gid://shopify/Product/15493500305793	45->0	Magnetisches 15W Wireless Ladegerät für iPhone
 gid://shopify/Product/15493720146305	43->0	Bestickter Plüsch-Kissenbezug, 45x45 cm
+gid://shopify/Product/15493870125441	39->0	Armband für Watch Ultra8 49mm
