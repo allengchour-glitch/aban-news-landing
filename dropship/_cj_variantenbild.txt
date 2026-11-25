@@ -8988,3 +8988,5 @@ gid://shopify/Product/15486450008449	zugeordnet	18	Business-Freizeitschuhe aus L
 gid://shopify/Product/15486564106625	zugeordnet	49	Midi-Strickkleid mit Stehkragen und langen Ärmeln
 gid://shopify/Product/15486564598145	zugeordnet	15	Off-Shoulder Gestreiftes Kurzarmkleid
 gid://shopify/Product/15486564925825	zugeordnet	30	Elegantes Damenkleid mit geometrischem Muster
+gid://shopify/Product/15496381333889	zugeordnet	10	Herren Loose-Fit Kurzarmhemd mit Plaid-Print
+gid://shopify/Product/15496381432193	zugeordnet	20	Herren Hemd im japanischen Stil, Loose Fit
