@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 16:05 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 16:08 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **7'231**
-- Optionen mit englischen Werten (Kandidaten): 315
+- Produkte gesehen: **10'856**
+- Optionen mit englischen Werten (Kandidaten): 509
 - Optionen übersetzt: **1** · Werte übersetzt: **1**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 738
+- Werte mit unbekanntem Wort (unverändert): 1'313
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 13
-- übersprungen «kleidungsstueck-im-wert»: 10
+- übersprungen «kollision-nach-uebersetzung»: 19
+- übersprungen «kleidungsstueck-im-wert»: 12
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -42,6 +42,12 @@
 - `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: White Color → Weiss
 - `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
 - `15449432555905` [Farbe] ems-bauch-und-muskel-trainer-b08b29: A Set1 → A Set 1; A Set2 → A Set 2; Set2 → Set 2; Set1 → Set 1; Yellow 3pcs → Gelb · 3 Stück
+- `15450036601217` [Farbe] retro-high-top-schuhe-fur-herren-600800: Black → Schwarz
+- `15450830176641` [Farbe] kuschel-hoodie-mit-grosser-tasche-052928: Dark gray → Dunkelgrau; Set1 → Set 1; Set2 → Set 2; Set3 → Set 3; Set4 → Set 4
+- `15450840596865` [Farbe] kompression-shorts-mit-taschen-ebe7fd: Weissweiss → Weiss; Schwarzschwarz → Schwarz
+- `15453570597249` [Farbe] hochtaillierte-caprihosen-638600: Marineblaublau → Marineblau
+- `15453761798529` [Farbe] lassiger-waffelstrick-stehkragen-pullover-mit-610300: Marineblaublau → Marineblau
+- `15453761929601` [Farbe] farbige-hoodie-mit-kordelzug-636100: Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -64,5 +70,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`diamond` 36, `powder` 34, `⟨satzbau:adjektiv-vor-nomen⟩` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `deer` 19, `degrees` 17, `one` 15, `tea` 14, `cherry` 13, `blossom` 11, `shell` 11, `hat` 10, `to` 10, `bag` 9, `insert` 9, `elegant` 8, `glittering` 8, `waist` 8, `rope` 8, `soft` 8, `cocoa` 8, `milk` 7, `hot` 7, `color` 7, `machine` 7, `ice` 7, `washed` 7, `stone` 7, `filter` 7, `handle` 6, `gun` 6, `four` 6, `electric` 6, `carbon` 6, `three` 5, `1er` 5, `storage` 5, `fog` 5, `fruit` 5, `skin` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `rice` 5, `meter` 5, `sunflower` 5, `3english` 5, `3chinese` 5, `4chinese` 5, `4english` 5, `cn` 5, `11pro` 5, `plugin` 4, `models` 4, `touch` 4, `2er` 4
+`⟨satzbau:adjektiv-vor-nomen⟩` 45, `powder` 43, `diamond` 37, `high` 24, `end` 23, `eyelashes` 23, `plush` 22, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `one` 19, `lamp` 19, `holder` 19, `cherry` 18, `line` 18, `tea` 17, `degrees` 17, `⟨satzbau:praeposition⟩` 17, `blossom` 15, `tc` 15, `to` 14, `carbon` 14, `elegant` 11, `bag` 11, `shell` 11, `titanium` 11, `sunflower` 11, `size` 11, `hat` 10, `color` 10, `⟨satzbau:adjektivfolge⟩` 10, `fiber` 10, `ding` 10, `three` 9, `hot` 9, `four` 9, `insert` 9, `cocoa` 9, `promax` 9, `ball` 9, `data` 9, `milk` 8, `full` 8, `gun` 8, `electric` 8, `glittering` 8, `waist` 8, `rope` 8, `ice` 8, `soft` 8, `stone` 8, `sport` 8, `button` 8, `machine` 7, `washed` 7, `back` 7, `filter` 7, `suit` 7
 

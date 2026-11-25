@@ -350521,3 +350521,4 @@
 56159528485249	heben	23.90	26.90	21.22	2026-11-25	fashion-leder-basketball-sneaker-fur-herren-626700
 56159528518017	heben	23.90	26.90	21.54	2026-11-25	fashion-leder-basketball-sneaker-fur-herren-626700
 56159528550785	heben	23.90	27.90	21.90	2026-11-25	fashion-leder-basketball-sneaker-fur-herren-626700
+68122662306183	heben	23.90	24.90	19.62	2026-11-25	usb-licht-mit-kurbis-resin-lampe-600000
