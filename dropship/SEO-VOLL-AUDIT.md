@@ -1,6 +1,6 @@
-# SEO-Voll-Audit · 24.11.2026 19:10 UTC
+# SEO-Voll-Audit · 25.11.2026 20:31 UTC
 
-Aktive Produkte im Onlineshop: **55828** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
+Aktive Produkte im Onlineshop: **55933** · Prüfungen wie Semrush Site Audit, lokal gerechnet.
 
 | Klasse | Produkte | Beispiele |
 |---|---:|---|
@@ -11,7 +11,7 @@ Aktive Produkte im Onlineshop: **55828** · Prüfungen wie Semrush Site Audit, l
 | titel_lang | 0 |  |
 | meta_lang | 1 | wasserwellen-projektor-mit-sternenlicht-bluetooth-musik-fernbedienung-nachtlicht-furs-schlafzimmer |
 | text_duenn | 46 | eliza-circle-frosch-halskrause-fur-hunde-004288, hopfenfilter-aus-edelstahl-9f9627, manueller-eisraspler-fur-zuhause-621600, kuhlbeutel-fur-rotwein-631000 |
-| alt_leer | 1 | bandschleifmaschine-zum-polieren-d8198a |
+| alt_leer | 4 | kleiner-kissenbezug-wildleder-680256, magnetische-erdungszwinge-fur-schweissgerate-e67c68, harz-schmuckfarbe-c11c75, bandschleifmaschine-zum-polieren-d8198a |
 
 ## Grösste Titel-Gruppen
 - 3× «smartwatch mit herzfrequenz | luxestyle ch»
