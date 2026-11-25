@@ -352592,3 +352592,23 @@
 67821415301511	heben	17.90	18.90	14.29	2026-11-25	drohnen-rotorblatter-fur-f11s-rc-153088
 67821359956359	heben	17.90	22.90	18.11	2026-11-25	brusttasche-messenger-bag-aus-pu-leder-225984
 67821359989127	heben	17.90	22.90	18.11	2026-11-25	brusttasche-messenger-bag-aus-pu-leder-225984
+67821322076551	heben	17.90	22.90	17.95	2026-11-25	ladegerat-fur-72v20ah-e-fahrzeug-batterien-3efd2a
+67821322109319	heben	17.90	21.90	17.17	2026-11-25	ladegerat-fur-72v20ah-e-fahrzeug-batterien-3efd2a
+67821300679047	heben	17.90	23.90	18.85	2026-11-25	wirelos-kamera-a86de3
+67821300711815	heben	17.90	18.90	14.74	2026-11-25	wirelos-kamera-a86de3
+67821307036039	heben	17.90	18.90	14.46	2026-11-25	led-nagellampe-601700
+67821307068807	heben	17.90	18.90	14.46	2026-11-25	led-nagellampe-601700
+67814819758471	heben	17.90	18.90	14.46	2026-11-25	manner-multifunktions-lumineszenz-wasserdichte-372608
+67815007322503	sperren	17.90	42.90	34.16	2026-11-25	grosser-reise-laptop-rucksack-aus-pu-leder-160064
+67815007355271	sperren	17.90	42.90	34.16	2026-11-25	grosser-reise-laptop-rucksack-aus-pu-leder-160064
+67815007388039	sperren	17.90	42.90	34.16	2026-11-25	grosser-reise-laptop-rucksack-aus-pu-leder-160064
+15500906070401	draft				2026-11-25	grosser-reise-laptop-rucksack-aus-pu-leder-160064
+67790109835655	heben	17.90	23.90	18.59	2026-11-25	brown-leder-armbanduhr-set-239872
+67790109868423	heben	17.90	21.90	16.83	2026-11-25	brown-leder-armbanduhr-set-239872
+67866294976903	heben	16.90	17.90	13.62	2026-11-25	nackenmassagekissen-zur-entspannung-705280
+67866295042439	heben	16.90	17.90	13.62	2026-11-25	nackenmassagekissen-zur-entspannung-705280
+67866267025799	heben	17.90	19.90	15.57	2026-11-25	in-ear-gaming-kopfhorer-mit-mikrofon-d8fcbc
+67866250838407	heben	17.90	18.90	14.93	2026-11-25	kleiner-rucksack-aus-weichem-leder-892096
+67866250871175	heben	17.90	18.90	14.93	2026-11-25	kleiner-rucksack-aus-weichem-leder-892096
+67866250903943	heben	17.90	18.90	14.93	2026-11-25	kleiner-rucksack-aus-weichem-leder-892096
+67866250936711	heben	17.90	18.90	14.93	2026-11-25	kleiner-rucksack-aus-weichem-leder-892096
