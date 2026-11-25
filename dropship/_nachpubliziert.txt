@@ -419,3 +419,6 @@ gid://shopify/Product/16732296839559	zahncreme-deckel-weihnachtsmotiv-5-figuren-
 gid://shopify/Product/16733415702919	manner-3d-digitaldruck-strandshirt-610000	Männer 3D Digitaldruck Strandshirt
 gid://shopify/Product/16733415801223	brosche-geometrisches-design-metallisch-xz010-074048	Brosche geometrisches Design, metallisch, XZ010
 gid://shopify/Product/16733484843399	windmuhlen-nachtlicht-aus-jade-modern-minimali-633900	Windmühlen-Nachtlicht aus Jade, modern-minimalistisch
+gid://shopify/Product/16734370824583	schwarze-humor-fabel-patte-fur-kleidung-550784	Schwarze Humor-Fabel-Patte für Kleidung
+gid://shopify/Product/16734418502023	skull-lampe-aus-kunstharz-usb-betrieb-602800	Skull-Lampe aus Kunstharz, USB-Betrieb
+gid://shopify/Product/16734418731399	vintage-brosche-mit-schleifenblume-737984	Vintage Brosche mit Schleifenblume
