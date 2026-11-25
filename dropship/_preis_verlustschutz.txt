@@ -353786,3 +353786,5 @@
 56118448161153	heben	73.90	74.90	59.86	2026-11-25	proled-intelligente-augenschutz-tischlampe-430016
 56142436172161	heben	71.90	74.90	60.26	2026-11-25	massagekissen-mit-heizfunktion-fur-nacken-ruck-678464
 56157781000577	heben	72.90	73.90	59.27	2026-11-25	elektrische-popcornmaschine-8d42d7
+56158390780289	heben	73.90	78.90	63.15	2026-11-25	elektrischer-entsafter-800w-c7813d
+56159401771393	heben	73.90	74.90	60.20	2026-11-25	elektrischer-knoblauchschaler-269553
