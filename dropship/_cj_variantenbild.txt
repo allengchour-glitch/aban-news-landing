@@ -8748,3 +8748,5 @@ gid://shopify/Product/15478569959809	zugeordnet	5	Koreanischer Grobstrick-Pullov
 gid://shopify/Product/15478569992577	zugeordnet	10	Retro Slim Fit Jeansrock für Damen
 gid://shopify/Product/15478570287489	zugeordnet	36	Outdoor Loose Straight-Leg Multi-Pocket Freizeithose
 gid://shopify/Product/15478570320257	zugeordnet	22	Leichte, atmungsaktive Strandschuhe für Kinder
+gid://shopify/Product/15478582247809	zugeordnet	2	DIY Einzel-Wimpern Mix – natürlich & voluminös
+gid://shopify/Product/15478583198081	zugeordnet	45	Baumwollkleid ohne Ruecken
