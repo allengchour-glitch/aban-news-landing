@@ -1642,6 +1642,21 @@ while true; do
       echo "$(date -u +%H:%M) $(tail -1 "$GVG")"
     fi
   fi
+  # GOOGLE «Bild zu klein für die bevorstehende Maßnahme» (25.11.2026, Merchant: 5'773 Angebote, ab 31.01.2027 unsichtbar):
+  # ALLE Variantenbilder < 500 px per fileUpdate an Ort und Stelle auf 600 px (Media-ID und Farbzuordnung bleiben).
+  # Gemessen 25.11.: 7'016 Bilder an 15'511 Varianten. Solange offen: alle 30 Min. weiter (flock, Ledger); danach täglich
+  # (Neuimporte). Liste = eigener Bulk, 20 h gültig.
+  VB5=/tmp/variantenbild_500.log
+  if [ -f "$REPO/automation/variantenbild_500.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$VB5" 2>/dev/null || echo 0) ))
+    GATE=1800
+    tail -1 "$VB5" 2>/dev/null | grep -qE "noch offen ~0$|^offen: 0 " && GATE=86400
+    if [ "$ALTER" -gt "$GATE" ]; then
+      touch "$VB5"
+      ( cd "$REPO" && SCHARF=1 CAP=3000 WORKERS=4 setsid bash -c "exec 9>/tmp/lock_variantenbild_500.lock; flock -n 9 || exit 0; exec python3 automation/variantenbild_500.py" >> "$VB5" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) variantenbild-500 gestartet"
+    fi
+  fi
   # TOP-30-PRODUKTSEITEN (04.10.2026, 12-Tage-Plan Tag 5): meistbesuchte Landeseiten (30 T, Menschen) täglich auf
   # kaufbar/301, ≥ 5 Bilder (POD ≥ 2), Grössen-Option bei Kleidung (sonst keine Grössentabelle), 4 Empfehlungen.
   # Schreibt nichts im Shop; Mängel stehen im Log und in der Aufseher-Zeile.

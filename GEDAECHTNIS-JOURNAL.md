@@ -53,6 +53,14 @@
 
 
 
+
+## 🖼️ 25.11.2026: Google «Bild zu klein (500×500) für die bevorstehende Maßnahme» — Variantenbilder an Ort und Stelle vergrössert
+- **Auslöser:** Merchant-Screenshot des Betreibers: 5'773 Angebote (3,4 %) mit Bild < 500×500, «nach dem 31. Januar 2027 nicht mehr angezeigt».
+- **GEMESSEN (Bulk 25.11., 55'883 aktive, 596'381 Varianten):** 15'641 Varianten mit Bild < 500, davon 15'511 über ihr eigenes Variantenbild (nur 130 über das Hauptbild); 7'016 verschiedene Bilder, fast alle 300–499 px (CJ-Farbbilder). 2'748 Produkte, Neuimporte Nov. nur 28.
+- **Umsetzung:** `automation/variantenbild_500.py` (eigener Bulk über `productVariants` + `media(first:1)`, je Bild Lanczos auf kurze Seite 600, `fileUpdate` ersetzt die Datei → Media-ID und Farbzuordnung bleiben; Rücklesen READY ≥ 500; Ledger `dropship/_variantenbild_500.tsv`; POD/Printful ausgeschlossen; < 150 px und Extremformate nicht). Probe 6/6 ok, Bikini «Cyan» zeigt weiter Cyan (600×848). Aufseher startet ihn alle 30 Min., bis offen 0, danach täglich (Neuimporte).
+- **Lehre:** `variant.image{id}` liefert eine **ProductImage-ID** — `fileUpdate` verlangt die **MediaImage-ID** («Invalid id: gid://shopify/ProductImage/…»). Varianten-Medien über `variant.media` holen (Bulk: `productVariants` oben, `media` verschachtelt — products→variants→media wäre eine Ebene zu tief).
+- Hauptbilder bleiben bei `bild_klein_fix.py` / `bild_quadrat_auffuellen.py` («nie hochskalieren»); Rest 130 Angebote.
+
 ## 🤖 25.11.2026: ChatGPT ist der stärkste Verkaufskanal (gemessen, nicht vermutet)
 - **ShopifyQL `utm_source = 'chatgpt.com'`** (Wochen): Aug/Sept 6–32, ab 19.10. 91, dann 111 / 152 / 176 / 122 Sitzungen, 9–12 Warenkörbe je Woche. Google (search) 7 T: 60 Sitzungen, 1 Warenkorb. ChatGPT 7 T: 140 Sitzungen, 12 Warenkörbe, 5 Kassen.
 - **`customerJourneySummary.firstVisit`** der letzten 25 Bestellungen: 9 kamen über ChatGPT (#1029 #1030 #1031 #1036 #1039 #1042 #1043 #1044, #1034 letzter Besuch), alle verschiedene Kunden-IDs = echte Kunden; Google 7, direkt/unbekannt Rest.
