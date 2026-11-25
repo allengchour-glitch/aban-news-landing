@@ -353509,3 +353509,10 @@
 67814606668167	heben	15.90	16.90	12.88	2026-11-25	leder-crossbody-bag-605500
 67842075558279	heben	15.90	16.90	12.91	2026-11-25	panda-ladestation-und-schreibtisch-organizer-621000
 67842075591047	heben	15.90	16.90	12.91	2026-11-25	panda-ladestation-und-schreibtisch-organizer-621000
+67841794703751	heben	15.90	16.90	12.90	2026-11-25	schaumstoff-drohne-mit-schwerkraft-illusion-601000
+67841794736519	heben	15.90	16.90	12.90	2026-11-25	schaumstoff-drohne-mit-schwerkraft-illusion-601000
+67841610383751	heben	15.90	16.90	12.76	2026-11-25	elefant-mit-schwebendem-ball-elektrisches-spie-266112
+67841610416519	heben	15.90	16.90	12.76	2026-11-25	elefant-mit-schwebendem-ball-elektrisches-spie-266112
+67841544388999	heben	15.90	16.90	12.66	2026-11-25	deko-halterung-fur-smartwatch-mit-ladegerat-601800
+67841544421767	heben	15.90	16.90	12.66	2026-11-25	deko-halterung-fur-smartwatch-mit-ladegerat-601800
+67841544454535	heben	15.90	16.90	12.66	2026-11-25	deko-halterung-fur-smartwatch-mit-ladegerat-601800
