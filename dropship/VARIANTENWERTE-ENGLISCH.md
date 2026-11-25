@@ -1,16 +1,16 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 15:47 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 15:52 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **623**
-- Optionen mit englischen Werten (Kandidaten): 11
+- Produkte gesehen: **1'256**
+- Optionen mit englischen Werten (Kandidaten): 19
 - Optionen übersetzt: **1** · Werte übersetzt: **1**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 62
+- Werte mit unbekanntem Wort (unverändert): 79
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -48,5 +48,5 @@ _keine_
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`diamond` 36, `powder` 5, `plugin` 4, `models` 4, `drill` 4, `hut` 3, `elegant` 2, `three` 2, `touch` 2, `modelle` 2, `pin` 2, `breathing` 2, `stk` 1, `drei` 1, `tea` 1, `including` 1, `1er` 1, `2er` 1, `optic` 1, `rabbit` 1, `elephant` 1
+`diamond` 36, `tea` 5, `powder` 5, `plugin` 4, `models` 4, `drill` 4, `hut` 3, `elegant` 2, `three` 2, `touch` 2, `modelle` 2, `pin` 2, `breathing` 2, `milk` 2, `bag` 2, `stk` 1, `drei` 1, `including` 1, `1er` 1, `2er` 1, `optic` 1, `rabbit` 1, `elephant` 1, `extended` 1, `packaginggray` 1, `kaki` 1, `obsidian` 1, `state` 1, `nail` 1, `tip` 1, `6pcs18` 1, `6pcs19` 1, `6pcs20` 1, `candy` 1, `cherry` 1, `cat` 1, `eye` 1, `flash` 1, `lovers` 1, `socket` 1, `zipper` 1
 
