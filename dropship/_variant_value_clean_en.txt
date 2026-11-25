@@ -22984,3 +22984,4 @@ gid://shopify/Product/16733438542215	Farbe	gid://shopify/ProductOptionValue/5965
 gid://shopify/Product/16733438542215	Farbe	gid://shopify/ProductOptionValue/59656138555783	Green Apple Green	Grün-Apfelgrün	2026-11-24T17:59Z
 gid://shopify/Product/16733438869895	Farbe	gid://shopify/ProductOptionValue/59656198226311	Light Brown Plaid	Hellbraun kariert	2026-11-24T17:59Z
 gid://shopify/Product/15508396802433	Farbe	gid://shopify/ProductOptionValue/59395557720455	Set1 · Blau	Set 1 · Blau	2026-11-25T15:46Z
+gid://shopify/Product/15499699683713	Farbe	gid://shopify/ProductOptionValue/59701011284359	Apricot	Aprikose	2026-11-25T17:25Z

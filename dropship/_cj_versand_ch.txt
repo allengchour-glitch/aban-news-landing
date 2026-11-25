@@ -1663,3 +1663,14 @@ gid://shopify/Product/16732007891335	nicht-versendbar	21700 Lithium-Ionen-Batter
 gid://shopify/Product/15450838106497	ok	Astronaut Roboter Überwachungskamera
 gid://shopify/Product/16732099379591	ok	Aluminiumlegierung Powerbank-Gehäuse
 gid://shopify/Product/16732279341447	ok	Call-System Tischlampe mit USB-Ladefunktion
+gid://shopify/Product/16738227585415	nicht-versendbar	Kleiner Benzingenerator 650 W
+gid://shopify/Product/16736598131079	ok	Live-Video-Kamera mit Mikrofon für Computer
+gid://shopify/Product/15523850551681	ok	Rucksack Retro 20-35L aus Rindleder
+gid://shopify/Product/15523129262465	ok	Schultertasche aus Rindsleder
+gid://shopify/Product/15500344820097	ok	Leder Businesstasche für 16 Zoll Laptops
+gid://shopify/Product/16734030954887	ok	Nordic Retro Minimalist Nachttischlampe
+gid://shopify/Product/15500908626305	ok	Retro Leder Reisetasche
+gid://shopify/Product/15448880054657	ok	4G Smartwatch für Kinder mit Bluetooth
+gid://shopify/Product/15448907776385	ok	Sportliche Herrenuhr mit Magnetschwebe-Kugel
+gid://shopify/Product/15449128960385	ok	WLAN-Wildkamera für die Outdoor-Forschung
+gid://shopify/Product/15479074062721	ok	Smartwatch Armband
