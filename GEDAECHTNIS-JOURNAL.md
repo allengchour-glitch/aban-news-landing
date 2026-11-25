@@ -58,6 +58,10 @@
 
 
 
+
+## 📱 26.11.2026: ChatGPT-App-Kasse — TWINT/Apple Pay SIND sichtbar (Betreiber «1 ja»)
+- Verdacht «Zahlarten fehlen im ChatGPT-In-App-Browser» widerlegt. Offen: Absprung beim App-Wechsel (TWINT-App öffnen/zurück) oder Apple-Pay-Fenster. Betreiber testet beides (abbrechen, nicht zahlen).
+
 ## 📈 25./26.11.2026: «10 Verkäufe am Tag» Schritte 1–3 + ChatGPT-Antwortseiten (Betreiber «ja dann bis 3, sehr intensiv», «ja»)
 - **Zwei Workflows** (wf_68e2dce8-496: 4 Spuren + 4 Skeptiker; wf_77694929-bd9: 3 Spuren + Plan + Skeptiker). Berichte: `dropship/verkauf-2511/ANALYSE.md`, `WERBETEST-ANLEITUNG.md`, `dropship/chatgpt-antworten-2511/PLAN.md`. Tore: `dropship/tore/verkauf-10-pro-tag.md` (5/6, T4 = Betreiber startet Werbung), `dropship/tore/chatgpt-antworten.md` (2/2).
 - **GEMESSEN:** Gewinn je Bestellung Ø CHF 16.24 inkl. Versanderlös/Gebühren (ohne Versand 10.98); 71 % der sichtbaren Produkte stehen ≤ CHF 1 über dem Verlustschutz-Boden (Stückgewinn Median 6.69). ChatGPT-Besucher auf dem iPhone: 13 an der Kasse → 3 bezahlt (andere iOS 7 → 4), ChatGPT-Käufer zahlten 0× mit TWINT → Verdacht In-App-Browser, Betreiber-Test nötig. Nur 37 % der Besuche mobil, aber 75 % der Käufe. Rückhol-Mails 60 T: 0 Klicks. ChatGPT-Verkehr landet zur Hälfte auf Kollektionen; 0 von 15 hatten «Häufige Fragen».

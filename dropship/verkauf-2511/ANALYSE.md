@@ -532,7 +532,7 @@ Alle mit Stückgewinn < 8 und laut dropship/PREISVERGLEICH.md (Firecrawl 25.11.)
 
 **Entscheide des Betreibers (Empfehlung in Klammern):**
 
-1. ChatGPT-App-Kauftest auf dem iPhone: luxestyle.ch in der ChatGPT-App öffnen, bis zur Zahlungsseite gehen — sind TWINT und Apple Pay sichtbar? (sehr empfohlen; grösster Kassen-Hebel)
+1. ChatGPT-App-Kauftest auf dem iPhone: luxestyle.ch in der ChatGPT-App öffnen, bis zur Zahlungsseite gehen — sind TWINT und Apple Pay sichtbar? **→ Betreiber 26.11.: «1 ja» = sichtbar.** Nächster Test: TWINT antippen (öffnet die App? kommt man zurück?) und Apple Pay antippen (erscheint das Fenster?), jeweils abbrechen.
 2. Mindest-Stückgewinn: Preise der Boden-Ware auf Einkauf + CHF 8 anheben, nur erhöhen, ohne Streichpreise, erst NACH der Black Week (empfohlen, kehrt aber den Entscheid «15 % Reserve» vom 02.10. teilweise um).
 3. WELCOME10 erst ab CHF 40 Bestellwert (empfohlen) — Text im Willkommens-Pop-up/Flow gleichzeitig anpassen.
 4. Abbruch-Mail 2 mit 10-%-Code nur an angemeldete Profile (empfohlen, Einwilligung).
