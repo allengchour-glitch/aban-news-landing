@@ -4395,3 +4395,12 @@ gid://shopify/Product/16733438542215	Farbe	3
 gid://shopify/Product/16733438869895	Farbe	1
 gid://shopify/Product/15508396802433	Farbe	1
 gid://shopify/Product/15499699683713	Farbe	1
+gid://shopify/Product/16732212855175	Modell	2
+gid://shopify/Product/16732357099911	Farbe	1
+gid://shopify/Product/16732657418631	Farbe	1
+gid://shopify/Product/16733434610055	Modell	2
+gid://shopify/Product/16734366302599	Farbe	2
+gid://shopify/Product/16734370660743	Menge	2
+gid://shopify/Product/16734483153287	Grösse	1
+gid://shopify/Product/16737984610695	Farbe	36
+gid://shopify/Product/16738252882311	Farbe	6

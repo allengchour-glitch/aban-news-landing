@@ -22985,3 +22985,52 @@ gid://shopify/Product/16733438542215	Farbe	gid://shopify/ProductOptionValue/5965
 gid://shopify/Product/16733438869895	Farbe	gid://shopify/ProductOptionValue/59656198226311	Light Brown Plaid	Hellbraun kariert	2026-11-24T17:59Z
 gid://shopify/Product/15508396802433	Farbe	gid://shopify/ProductOptionValue/59395557720455	Set1 · Blau	Set 1 · Blau	2026-11-25T15:46Z
 gid://shopify/Product/15499699683713	Farbe	gid://shopify/ProductOptionValue/59701011284359	Apricot	Aprikose	2026-11-25T17:25Z
+gid://shopify/Product/16732357099911	Farbe	gid://shopify/ProductOptionValue/59721527787911	Schwarz 2PCs	Schwarz · 2 Stück	2026-11-25T20:20Z
+gid://shopify/Product/16732657418631	Farbe	gid://shopify/ProductOptionValue/59721527099783	Rot Klein Floral	Rot Klein geblümt	2026-11-25T20:20Z
+gid://shopify/Product/16733434610055	Modell	gid://shopify/ProductOptionValue/59721536831879	Battery-Version	Batterie-Version	2026-11-25T20:20Z
+gid://shopify/Product/16733434610055	Modell	gid://shopify/ProductOptionValue/59721536864647	Battery-Geschenkbox-Version	Batterie-Geschenkbox-Version	2026-11-25T20:20Z
+gid://shopify/Product/16734370660743	Menge	gid://shopify/ProductOptionValue/59721536569735	1PC	1 Stück	2026-11-25T20:21Z
+gid://shopify/Product/16734370660743	Menge	gid://shopify/ProductOptionValue/59721536602503	2PCS	2 Stück	2026-11-25T20:21Z
+gid://shopify/Product/16734483153287	Grösse	gid://shopify/ProductOptionValue/59721534767495	Amber Stripes	Bernstein gestreift	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609236871	Bright Pink-Inner Length 121mm	Leuchtendes Pink-Innenlänge 121 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609269639	Bright Pink-Inner Length 136mm	Leuchtendes Pink-Innenlänge 136 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609302407	Bright Pink-Inner Length 151mm	Leuchtendes Pink-Innenlänge 151 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609335175	Bright Pink-Inner Length 166mm	Leuchtendes Pink-Innenlänge 166 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609367943	Bright Pink-Inner Length 181mm	Leuchtendes Pink-Innenlänge 181 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609400711	Bright Pink-Inner Length 192mm	Leuchtendes Pink-Innenlänge 192 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609433479	Bright Pink-Inner Length 204mm	Leuchtendes Pink-Innenlänge 204 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609466247	Bright Pink-Inner Length 216mm	Leuchtendes Pink-Innenlänge 216 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609499015	Bright Pink-Inner Length 227mm	Leuchtendes Pink-Innenlänge 227 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609531783	Purplish Red-Inner Length 121mm	Purpurrot-Innenlänge 121 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609564551	Purplish Red-Inner Length 136mm	Purpurrot-Innenlänge 136 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609597319	Purplish Red-Inner Length 151mm	Purpurrot-Innenlänge 151 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609630087	Purplish Red-Inner Length 166mm	Purpurrot-Innenlänge 166 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609662855	Purplish Red-Inner Length 181mm	Purpurrot-Innenlänge 181 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609695623	Purplish Red-Inner Length 192mm	Purpurrot-Innenlänge 192 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609728391	Purplish Red-Inner Length 204mm	Purpurrot-Innenlänge 204 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609761159	Purplish Red-Inner Length 216mm	Purpurrot-Innenlänge 216 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609793927	Purplish Red-Inner Length 227mm	Purpurrot-Innenlänge 227 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609826695	Yellow-Inner Length 121mm	Gelb-Innenlänge 121 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609859463	Yellow-Inner Length 136mm	Gelb-Innenlänge 136 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609892231	Yellow-Inner Length 151mm	Gelb-Innenlänge 151 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609924999	Yellow-Inner Length 166mm	Gelb-Innenlänge 166 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609957767	Yellow-Inner Length 181mm	Gelb-Innenlänge 181 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777609990535	Yellow-Inner Length 192mm	Gelb-Innenlänge 192 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610023303	Yellow-Inner Length 204mm	Gelb-Innenlänge 204 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610056071	Yellow-Inner Length 216mm	Gelb-Innenlänge 216 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610088839	Yellow-Inner Length 227mm	Gelb-Innenlänge 227 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610121607	Pink-Inner Length 121mm	Pink-Innenlänge 121 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610154375	Pink-Inner Length 136mm	Pink-Innenlänge 136 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610187143	Pink-Inner Length 151mm	Pink-Innenlänge 151 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610219911	Pink-Inner Length 166mm	Pink-Innenlänge 166 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610252679	Pink-Inner Length 181mm	Pink-Innenlänge 181 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610285447	Pink-Inner Length 192mm	Pink-Innenlänge 192 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610318215	Pink-Inner Length 204mm	Pink-Innenlänge 204 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610350983	Pink-Inner Length 216mm	Pink-Innenlänge 216 mm	2026-11-25T20:21Z
+gid://shopify/Product/16737984610695	Farbe	gid://shopify/ProductOptionValue/59777610383751	Pink-Inner Length 227mm	Pink-Innenlänge 227 mm	2026-11-25T20:21Z
+gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/59781532942727	Pink-Size  12	Pink-Gr. 12	2026-11-25T20:21Z
+gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/59781532975495	Pink-Size 13	Pink-Gr. 13	2026-11-25T20:21Z
+gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/59781533008263	Khaki-Size  12	Khaki-Gr. 12	2026-11-25T20:21Z
+gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/59781533041031	Khaki-Size 13	Khaki-Gr. 13	2026-11-25T20:21Z
+gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/59781533073799	White-Size  12	Weiss-Gr. 12	2026-11-25T20:21Z
+gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/59781533106567	White-Size 13	Weiss-Gr. 13	2026-11-25T20:21Z

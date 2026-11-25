@@ -351176,3 +351176,15 @@
 68300986679687	heben	22.90	37.90	30.38	2026-11-25	kinder-kunstlederschuhe-mit-mikrofaserfutter-608100
 68300986712455	heben	22.90	38.90	30.71	2026-11-25	kinder-kunstlederschuhe-mit-mikrofaserfutter-608100
 68300986745223	heben	22.90	38.90	30.71	2026-11-25	kinder-kunstlederschuhe-mit-mikrofaserfutter-608100
+67842421784967	heben	22.90	23.90	18.39	2026-11-25	usb-mini-tischventilator-600400
+67842421817735	heben	22.90	23.90	18.39	2026-11-25	usb-mini-tischventilator-600400
+67870941413767	heben	22.90	24.90	19.59	2026-11-25	leder-taille-bag-601700
+67870941446535	heben	22.90	24.90	19.59	2026-11-25	leder-taille-bag-601700
+67870941479303	heben	22.90	24.90	19.59	2026-11-25	leder-taille-bag-601700
+67790140440967	heben	22.90	23.90	18.95	2026-11-25	led-display-anion-glattburste-351104
+67814937395591	heben	21.90	26.90	20.88	2026-11-25	kabelloses-led-warnlicht-furs-velo-2835db
+67814937428359	heben	21.90	26.90	20.88	2026-11-25	kabelloses-led-warnlicht-furs-velo-2835db
+67790412480903	heben	21.90	23.90	18.87	2026-11-25	elektrischer-kopfhaut-massagekamm-mit-rotlicht-601400
+67790412513671	heben	21.90	23.90	18.87	2026-11-25	elektrischer-kopfhaut-massagekamm-mit-rotlicht-601400
+67866311950727	heben	20.90	21.90	17.24	2026-11-25	leder-leinen-set-fur-hunde-394304
+67866311983495	heben	21.90	23.90	18.34	2026-11-25	leder-leinen-set-fur-hunde-394304
