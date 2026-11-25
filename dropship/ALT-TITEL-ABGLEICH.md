@@ -1,18 +1,6 @@
-# Bild-Alt-Texte ↔ aktueller Titel — Stand 2026-11-24 20:02 UTC
+# Bild-Alt-Texte ↔ aktueller Titel — Stand 2026-11-25 20:37 UTC
 
-Regel: `automation/alt_titel_abgleich.py` (nur Schema «<Titel> – Bild N | LuxeStyle», POD/Editor ausgenommen, live entschieden). Export: 55831 aktive · Produkte geändert: 15 · Alt-Texte: 108 · Fehler: 0 · offen für den nächsten Lauf: 0
-
-## anderer titel (9 Produkte)
-
-- «Plaid-Leder-Sandalen mit dicker Sohle | LuxeStyle» → «Plaid-Kunstleder-Sandalen mit dicker Sohle | LuxeStyle»
-- «Retro-Leder Gürtel mit Stierkopf-Schnalle, 125 cm | LuxeStyle» → «Retro-Kunstleder Gürtel mit Stierkopf-Schnalle, 125 cm | LuxeStyle»
-- «Retro-Britische Lederschuhe – leichte, runde Zehen | LuxeStyle» → «Retro-Britische Kunstlederschuhe – leichte, runde Zehen | LuxeStyle»
-- «Weiblicher Soft-Leder-Bondage-Gürtel | LuxeStyle» → «Weiblicher Soft-Kunstleder-Bondage-Gürtel | LuxeStyle»
-- «Breite Lederwinter-Stiefel für Herren | LuxeStyle» → «Breite Kunstlederwinter-Stiefel für Herren | LuxeStyle»
-- «Kinder-Lederschuhe mit Mikrofaserfutter | LuxeStyle» → «Kinder-Kunstlederschuhe mit Mikrofaserfutter | LuxeStyle»
-- «Schuhpolitur-Set mit Bürste und Lederpflege | LuxeStyle» → «Schuhpolitur-Set mit Bürste und Kunstlederpflege | LuxeStyle»
-- «Elektrisch leitende Yogamatte aus Leder – Bild 1 | LuxeStyle» → «Elektrisch leitende Yogamatte aus Kunstleder – Bild 1 | LuxeStyle»
-- «Winddichte slim-fit Lederhose Herren – Bild 2 | LuxeStyle» → «Winddichte slim-fit Kunstlederhose Herren – Bild 2 | LuxeStyle»
+Regel: `automation/alt_titel_abgleich.py` (nur Schema «<Titel> – Bild N | LuxeStyle», POD/Editor ausgenommen, live entschieden). Export: 55933 aktive · Produkte geändert: 7 · Alt-Texte: 43 · Fehler: 0 · offen für den nächsten Lauf: 0
 
 ## titel+zusatz (5 Produkte)
 
@@ -24,5 +12,9 @@ Regel: `automation/alt_titel_abgleich.py` (nur Schema «<Titel> – Bild N | Lux
 
 ## titel gekürzt (1 Produkte)
 
-- «Saure Zungen – Bild 1 | LuxeStyle» → «Saure Zungen · 100 Stück – Bild 1 | LuxeStyle»
+- «Kunstige Nagel-Verzierungen – Bild 1 | LuxeStyle» → «Kunstige Nagel-Verzierungen · Press-on-Nägel – Bild 1 | LuxeStyle»
+
+## anderer titel (1 Produkte)
+
+- «Intelligente, tragbare Kaffeetasse | LuxeStyle» → «Tragbare Kaffeetasse aus Edelstahl, 350 ml | LuxeStyle»
 

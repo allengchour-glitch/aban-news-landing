@@ -1,4 +1,4 @@
-# Essbares aus China im Verkauf — Stand 2026-11-24 20:04 UTC
+# Essbares aus China im Verkauf — Stand 2026-11-25 20:38 UTC
 
-Regel: `automation/data/essbar_regel.json` (Wächter `essbar_wache.py`, Importer `essbar.mjs`). Geprüft: 55831 aktive · Treffer: 0 · gedraftet: 0 · Fehler: 0
+Regel: `automation/data/essbar_regel.json` (Wächter `essbar_wache.py`, Importer `essbar.mjs`). Geprüft: 55932 aktive · Treffer: 0 · gedraftet: 0 · Fehler: 0
 
