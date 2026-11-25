@@ -1657,6 +1657,20 @@ while true; do
       echo "$(date -u +%H:%M) variantenbild-500 gestartet"
     fi
   fi
+  # MINDEST-STÜCKGEWINN (26.11.2026, Betreiber «2 ja»): Preis ≥ unitCost + CHF 8, nur erhöhen, ohne Streichpreise, POD aus.
+  # Das Skript bricht vor dem Ende der Black Week (30.11. 22:59 UTC) selbst ab (Exit 3). Danach: alle 10 Min. weiter bis
+  # FERTIG, dann täglich (Neuimporte; Kandidaten aus /tmp/kost28.jsonl der Kosten-Kette). Rückweg: --zurueck.
+  MSG=/tmp/mindest_stueckgewinn.log
+  if [ -f "$REPO/automation/mindest_stueckgewinn.py" ] && [ "$(date -u +%Y%m%d%H)" -ge 2026113023 ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$MSG" 2>/dev/null || echo 0) ))
+    GATE=600
+    tail -1 "$MSG" 2>/dev/null | grep -q "^FERTIG" && GATE=86400
+    if [ "$ALTER" -gt "$GATE" ]; then
+      touch "$MSG"
+      ( cd "$REPO" && SCHARF=1 setsid bash -c "exec 9>/tmp/lock_mindest_stueckgewinn.lock; flock -n 9 || exit 0; exec python3 automation/mindest_stueckgewinn.py" >> "$MSG" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) mindest-stueckgewinn gestartet"
+    fi
+  fi
   # TOP-30-PRODUKTSEITEN (04.10.2026, 12-Tage-Plan Tag 5): meistbesuchte Landeseiten (30 T, Menschen) täglich auf
   # kaufbar/301, ≥ 5 Bilder (POD ≥ 2), Grössen-Option bei Kleidung (sonst keine Grössentabelle), 4 Empfehlungen.
   # Schreibt nichts im Shop; Mängel stehen im Log und in der Aufseher-Zeile.
