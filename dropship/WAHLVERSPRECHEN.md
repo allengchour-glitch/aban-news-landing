@@ -213,5 +213,5 @@ CJ-Listing, das mehrere Varianten hat — angelegt wurde bei uns eine.
   - «…Erhältlich in zwei praktischen Varianten…»
 - `15523863527809` · Nagelclipper für Senioren – 5,7 cm & 8 cm
   - «…in zwei Grössen…»
-- `16732488204679` · Portabler Kofferbeutel für Anzüge – Oxford-Tasche
-  - «…Grau, Schwarz oder Weiss erhältlich…»
+- `16735045091719` · Standkollar-Fleece-Workjacke für Männer
+  - «…Farben: Angola Rot, Aprikose Grau, Taro Lila, Dunkel Grau, Tsinghua Li…»
