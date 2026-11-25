@@ -67391,3 +67391,4 @@ gid://shopify/Product/15454180278657	gid://shopify/MediaImage/69932982305153
 gid://shopify/Product/15454202167681	gid://shopify/MediaImage/69933364543873
 gid://shopify/Product/15454234018177	gid://shopify/MediaImage/69933759070593
 gid://shopify/Product/15454302339457	gid://shopify/MediaImage/69934517289345
+gid://shopify/Product/15454413455745	gid://shopify/MediaImage/69935639921025
