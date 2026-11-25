@@ -666,7 +666,7 @@ while true; do
     ( cd "$REPO" && flock -n /tmp/lock_hype_export.lock python3 automation/hype_export_bauen.py >> /tmp/hype_export_bauen.log 2>&1 )
     echo "$(date -u +%H:%M) export.jsonl im falschen Format → neu gebaut"
   fi
-  for L in verkauf_gewinn_wache queue_schreiber_wache preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache google_bild_abruf startseite_gewicht startseite_schlank_patch bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit baby_claims_wache umschrift_heilen fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen anlass_social_sperre cj_real_luecke merkliste_wache medizinprodukte_guard platzhalter_farbwert chatgpt_landeseiten_wache; do
+  for L in verkauf_gewinn_wache queue_schreiber_wache preisboden farbwerte_zusammengesetzt suchwort_tags suchwort_mehrzahl google_identifier hauptbild_ohne_text umlaut_suchtags ss_statt_scharf_s bigbuy_abschied google_ads_kuration versand_jenachland lieferblock_doppelt fremdzeichen_guard handle_messversprechen tote_kollektionslinks variant_value_clean menue_links ohne_lieferantenref_guard pod_druckdatei groesse_im_farbwert farbwert_dubletten mass_im_farbwert quittungs_wache heilversprechen_wache produkttexte_du_form verlustbringer social_queue_saeubern jury_nachbessern bild_queue_captions_ehrlich google_feedback_wache google_bild_abruf startseite_gewicht bild_mini_entfernen kategorie_wache bild_heilversprechen styling_floskel_wache heilversprechen_seo_wache koll_seo_laengen beleuchtung_tags_fix kollektion_accessoires_fix ig_gepostet_tags herbst_kuratieren google_titel_reparatur bild_werbetext_rueckholer kollektion_doppel preis_verlustschutz fortura_ek_nachtragen kinder_sicherheit baby_claims_wache umschrift_heilen fuellmenge_nachtragen nachfrage_liebling social_saison_vorrang gfeed_anstupsen google_kategorie_fein schmuck_tag_heilen saison_tags_nachtragen anlass_social_sperre cj_real_luecke merkliste_wache medizinprodukte_guard platzhalter_farbwert chatgpt_landeseiten_wache; do
     fehlt "$REPO/automation/$L.py" && continue
     # ⚠️ FERTIG IST KEIN AUSSCHALTER (04.09.2026). Bis heute hiess «FERTIG im Log» =
     # nie wieder starten — nur ein /tmp-Wipe hat die Waechter je wieder geweckt. Gemessen:
@@ -782,6 +782,8 @@ while true; do
     # 19.10.2026 (katalog K7): ae/oe/ue-Umschrift im Bestand zurück zu Umlauten (Whitelist, nur Textknoten) — ohne SCHARF=1 ein Trockenlauf
     [ "$L" = umschrift_heilen ] && EXP="SCHARF=1"
     # 14.10.2026: Startseite schlank (A2–A5) nach Theme-Update/Editor wieder setzen; Anker fehlt → nichts schreiben, Exit 1, Zeile im Log.
+    # 26.11.2026: startseite_schlank_patch aus der Liste genommen — Prüfanker hero_jVaWmY gibt es auf der neuen Startseite
+    # (21.11.) nicht mehr, und main() schreibt Teilstände auch bei «Anker fehlt» (Skeptiker wf_4b04b1cd-ab8). Erst neu bauen.
     [ "$L" = startseite_schlank_patch ] && EXP="SCHARF=1"
     # 14.10.2026: aktive CJ-Ware ohne «cj-real» war für alle Lieferbarkeits-Wächter unsichtbar (1'331) → tagsAdd, 500 je Lauf, Exit 1 = offen.
     [ "$L" = cj_real_luecke ] && EXP="SCHARF=1"
@@ -854,7 +856,7 @@ while true; do
     # solange Arbeit offen ist (verlustbringer, versand_jenachland …) — die bleiben ausserhalb der Liste.
     NACH=""
     # anlass_social_sperre: Exit 0 = FERTIG; Exit 1 bei offenen Kanal-Einträgen/Tags → `--faellig` meldet nach ≥ 10 min «fällig» (ZN=1 oben), der nächste Tick versucht erneut.
-    case " social_queue_saeubern bild_queue_captions_ehrlich ig_gepostet_tags suchwort_mehrzahl herbst_kuratieren koll_seo_laengen anlass_social_sperre queue_schreiber_wache google_bild_abruf startseite_gewicht startseite_schlank_patch cj_real_luecke " in
+    case " social_queue_saeubern bild_queue_captions_ehrlich ig_gepostet_tags suchwort_mehrzahl herbst_kuratieren koll_seo_laengen anlass_social_sperre queue_schreiber_wache google_bild_abruf startseite_gewicht cj_real_luecke " in
       *" $L "*) NACH=1 ;;
     esac
     [ "$ERG_ZN" = 1 ] && tageslauf_claim "$L"      # Versuch zählen + Claim (40 min) — erst jetzt, nachdem alle continue-Tore passiert sind
@@ -1671,6 +1673,19 @@ while true; do
       echo "$(date -u +%H:%M) mindest-stueckgewinn gestartet"
     fi
   fi
+  # FAQ-PREISE (26.11.2026, Hausregel 05.10. «jede behobene Klasse = Regel + Wächter»): die «Häufige Fragen»-Blöcke der
+  # ChatGPT-Antwortseiten nennen Preise (ab/bis/Median), Versandschwelle und keine Fristen. Wöchentlich gegen den Bestand;
+  # liest nur. ⚠️ bei > 10 % Abweichung, < 10 aktiven Produkten, Frist im Block oder Gratisversand ≠ 50 nach Rabatt.
+  FPW=/tmp/faq_preis_wache.log
+  if [ -f "$REPO/automation/faq_preis_wache.py" ]; then
+    ALTER=$(( $(date +%s) - $(stat -c %Y "$FPW" 2>/dev/null || echo 0) ))
+    if [ "$ALTER" -gt 604800 ]; then
+      touch "$FPW"
+      ( cd "$REPO" && setsid bash -c "exec 9>/tmp/lock_faq_preis_wache.lock; flock -n 9 || exit 0; exec timeout 600 python3 automation/faq_preis_wache.py" >> "$FPW" 2>&1 9>&- & )
+      echo "$(date -u +%H:%M) faq-preis-wache gestartet"
+    fi
+    tail -1 "$FPW" 2>/dev/null | grep -q -E "⚠️|unklar" && echo "$(tail -1 "$FPW" | cut -c1-220)"
+  fi
   # TOP-30-PRODUKTSEITEN (04.10.2026, 12-Tage-Plan Tag 5): meistbesuchte Landeseiten (30 T, Menschen) täglich auf
   # kaufbar/301, ≥ 5 Bilder (POD ≥ 2), Grössen-Option bei Kleidung (sonst keine Grössentabelle), 4 Empfehlungen.
   # Schreibt nichts im Shop; Mängel stehen im Log und in der Aufseher-Zeile.
@@ -2151,8 +2166,11 @@ fi
   fi
 # ── Mobil & Tempo (05.10.2026): 4 Theme-Patches idempotent halten (Preload LCP-Hero, Lazy-Autoplay Videos, Mobil-sizes, srcset-Stufen).
 #    Theme-Editor/Horizon-Update kann sie überschreiben; findet ein Patch seinen Anker nicht (Tati-Block gelöscht), lässt er die Datei in Ruhe.
+# 26.11.2026 STILLGELEGT: Teil 1+2 zielen auf Startseiten-Abschnitte, die es seit 21.11. nicht mehr gibt (neue Startseite lädt
+# Hero eager/Videos preload=none selbst), Teil 3–5 sind im Live-Theme vorhanden; mit der alten ID lief es ins falsche Theme.
+# Datei bleibt (mobil_tempo_patch_2.py importiert THEME/lese daraus). Prüfung wf_4b04b1cd-ab8: «veraltet».
 LOG=/tmp/mobil_tempo_patch.log
-if [ -f "$REPO/automation/mobil_tempo_patch.py" ]; then ALTER=$(( $(date +%s) - $(stat -c %Y "$LOG" 2>/dev/null || echo 0) )); else ALTER=0; fi
+if false && [ -f "$REPO/automation/mobil_tempo_patch.py" ]; then ALTER=$(( $(date +%s) - $(stat -c %Y "$LOG" 2>/dev/null || echo 0) )); else ALTER=0; fi
 if [ "$ALTER" -gt 86400 ]; then
   ( cd "$REPO" && SCHARF=1 timeout 300 python3 automation/mobil_tempo_patch.py >> "$LOG" 2>&1 )
   echo "MOBIL-TEMPO: $(grep -c 'schon gepatcht' "$LOG" | tail -1) Patches geprüft · $(tail -1 "$LOG" | cut -c1-120)"
@@ -3133,8 +3151,12 @@ KLT=/tmp/test_klingen_tor.log
   # Faktenzeile; Farbwahl unbekannt -> Tag stecker-unklar, aus der Hype-Reihe. 10 CJ-Punkte je Produkt.
   # 14.09.2026 «mach 8 produkte aber fuelle die ganze webseite mit anderen katalogen»: Startseite
   # 8 Produkte je Reihe, 8 Wechsel-Reihen drehen taeglich durch 25 Kataloge (Saison zuerst). Idempotent.
+  # 26.11.2026 STILLGELEGT: seit dem Theme-Wechsel 21.11. hat die Live-Startseite keine product-list-Reihen mehr
+  # (sections/luxe-edit-home.liquid, Pools «startseite-pool-*» wechseln alle 4 h über lx_edit_groups); die Rotation schrieb
+  # nur noch ins unveröffentlichte Theme 187533001089. Datei bleibt (kollektion_doppel.py importiert sie). Prüfung: Workflow
+  # wf_4b04b1cd-ab8, Analyse + Skeptiker einig «veraltet».
   HKR=/tmp/homepage_katalog_rotation.log
-  if [ -f "$REPO/automation/homepage_katalog_rotation.py" ]; then
+  if false && [ -f "$REPO/automation/homepage_katalog_rotation.py" ]; then
     ALTER=$(( $(date +%s) - $(stat -c %Y "$HKR" 2>/dev/null || echo 0) ))
     if [ "$ALTER" -gt 86400 ] || absturz_nachholen "$HKR"; then
       touch "$HKR"   # 21.09.2026: Anspruch VOR dem Start — die Tor-Frage ist das Log-Alter, und ein Lauf, der erst nach Minuten schreibt (oder am Shopify-Platz wartet), wurde nach 120 s ein zweites Mal gestartet (Bewertungs-Import 2x gemessen)

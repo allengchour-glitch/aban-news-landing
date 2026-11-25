@@ -1,5 +1,5 @@
 {
- "zeit": "2026-11-25T23:32:34Z",
+ "zeit": "2026-11-25T23:37:41Z",
  "toleranz_prozent": 10,
  "min_aktiv": 10,
  "kollektionen": {
@@ -347,11 +347,72 @@
     "median": "CHF 15.90"
    },
    "befunde": []
+  },
+  "kratzbaeume": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 15.90",
+    "bis": "CHF 152.90",
+    "median": "CHF 41.90",
+    "teilpreise_ungeprueft": [],
+    "anteil": [],
+    "unter": [],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 90,
+    "aktiv": 35,
+    "aktiv_onlineshop": 35,
+    "ab": "CHF 15.90",
+    "bis": "CHF 152.90",
+    "bis_einstieg": "CHF 152.90",
+    "median": "CHF 41.90"
+   },
+   "befunde": []
+  },
+  "licht-nachtlicht-projektor": {
+   "block": true,
+   "soll": {
+    "preisfrage": true,
+    "ab": "CHF 14.90",
+    "bis": "CHF 150.90",
+    "median": "CHF 22.90",
+    "teilpreise_ungeprueft": [
+     1590
+    ],
+    "anteil": [],
+    "unter": [],
+    "erreichen": [],
+    "ueber": []
+   },
+   "ist": {
+    "produkte": 164,
+    "aktiv": 162,
+    "aktiv_onlineshop": 162,
+    "ab": "CHF 14.90",
+    "bis": "CHF 150.90",
+    "bis_einstieg": "CHF 150.90",
+    "median": "CHF 22.90"
+   },
+   "befunde": []
+  },
+  "weihnachtspullover": {
+   "block": false,
+   "grund": "kein «Häufige Fragen»"
+  },
+  "futterautomat-fur-katze-527488": {
+   "block": false,
+   "grund": "Kollektion nicht gefunden"
   }
  },
- "ohne_block": [],
- "bloecke": 12,
+ "ohne_block": [
+  "weihnachtspullover",
+  "futterautomat-fur-katze-527488"
+ ],
+ "bloecke": 14,
  "abweichungen": 0,
- "geprueft": 12,
- "dauer_s": 5.4
+ "geprueft": 16,
+ "dauer_s": 7.0
 }

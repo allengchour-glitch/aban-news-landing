@@ -72,7 +72,15 @@ import json, os, re, subprocess, sys, tempfile, time
 
 SHOP = "au3j0y-hq.myshopify.com"
 API = "2026-01"
-THEME = "gid://shopify/OnlineStoreTheme/187533001089"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+# 26.11.2026: Live-Theme statt fester ID (Theme-Wechsel 21.11. machte die feste ID des alten Themes blind). Fail-closed:
+# ohne ermittelbares MAIN-Theme ist THEME None → jede Theme-Abfrage scheitert, statt ein falsches Theme zu lesen/schreiben.
+try:
+    from main_theme import gid as _main_theme_gid
+    THEME = _main_theme_gid()
+except Exception:  # noqa: BLE001
+    THEME = None
 TOKEN = open("/tmp/cj_shop_token.txt").read().strip()
 DRY = os.environ.get("DRY_RUN") == "1"
 MARK = "LSPOD-DESIGNZWANG"

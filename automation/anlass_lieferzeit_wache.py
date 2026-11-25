@@ -57,7 +57,13 @@ BERICHT = os.path.join(REPO, "dropship", "ANLASS-LIEFERZEIT.md")
 SCHARF = os.environ.get("SCHARF") == "1"
 STAND_HINWEIS = os.path.join(REPO, "dropship", "_anlass_hinweis.json")
 LEDGER_ZUBEHOER = os.path.join(REPO, "dropship", "_kostuem_ch_zubehoer.tsv")
-THEME = "gid://shopify/OnlineStoreTheme/187533001089"
+# 26.11.2026: Live-Theme statt fester ID (Theme-Wechsel 21.11. machte die feste ID des alten Themes blind). Fail-closed:
+# ohne ermittelbares MAIN-Theme ist THEME None → jede Theme-Abfrage scheitert, statt ein falsches Theme zu lesen/schreiben.
+try:
+    from main_theme import gid as _main_theme_gid
+    THEME = _main_theme_gid()
+except Exception:  # noqa: BLE001
+    THEME = None
 BLOCK_MARKE = "LUX-ANLASS-HINWEIS"
 META_NS, META_KEY = "luxe", "anlass_hinweis"
 MARKE_PROFIL = "profil-ch-lager"

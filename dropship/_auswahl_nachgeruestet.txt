@@ -3835,3 +3835,4 @@
 16739505832327	Farbe:6:6	2026-11-25	tri-fold-taschen-buch-mit-rhombus-design-626400
 16739264725383	Farbe:3:3+ki	2026-11-25	alcantara-reisepass-holder-aus-echtes-leder-602800
 16739023585671	Farbe:16:16+ki	2026-11-25	echte-leder-munzborse-625300
+16738683453831	Farbe:9:9+ki	2026-11-25	handtasche-aus-rindleder-lange-leichte-geldbor-628000

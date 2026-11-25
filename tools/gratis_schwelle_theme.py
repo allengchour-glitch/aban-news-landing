@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""gratis_schwelle_theme.py — Theme-Zahlen der Gratis-Schwelle 45 → 40.50 nachziehen (Entscheid D, Schritt 4).
+"""
+⛔ VERALTET (26.11.2026): setzte Entscheid D (45 → 40.50) um; abgelöst durch «Alle auf CHF 50 / ab CHF 50 nach Rabatt» (22.10.,
+theme_gratis_schwelle_50.py). Nicht mehr ausführen; Anker existieren im Live-Theme nicht. Theme-ID bewusst NICHT umgestellt.
+gratis_schwelle_theme.py — Theme-Zahlen der Gratis-Schwelle 45 → 40.50 nachziehen (Entscheid D, Schritt 4).
 
 ERST NACH `automation/gratis_schwelle_setzen.py --scharf` (Profile live auf 40.50, zurückgelesen) und dem Umstellen von
 ch_lager_profil.GRATIS_AB_CH. Vorher würde der Warenkorb ab 40.50 «gratis» sagen, die Kasse aber CHF 7 verlangen.

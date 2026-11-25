@@ -22,7 +22,13 @@ HIER = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HIER)
 from kaufwille_zeile import gql  # noqa: E402
 
-THEME = "gid://shopify/OnlineStoreTheme/187533001089"
+# 26.11.2026: Live-Theme statt fester ID (Theme-Wechsel 21.11. machte die feste ID des alten Themes blind). Fail-closed:
+# ohne ermittelbares MAIN-Theme ist THEME None → jede Theme-Abfrage scheitert, statt ein falsches Theme zu lesen/schreiben.
+try:
+    from main_theme import gid as _main_theme_gid
+    THEME = _main_theme_gid()
+except Exception:  # noqa: BLE001
+    THEME = None
 DATEI = "snippets/meta-tags.liquid"
 MARKE = "LUX-META-EINMAL-ESCAPE"
 ALT = "{{ meta_desc | escape }}"

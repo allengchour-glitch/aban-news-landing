@@ -34,7 +34,15 @@ import re
 import sys
 
 HIER = os.path.dirname(os.path.abspath(__file__))
-THEME = "gid://shopify/OnlineStoreTheme/187533001089"
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+# 26.11.2026: Live-Theme statt fester ID (Theme-Wechsel 21.11. machte die feste ID des alten Themes blind). Fail-closed:
+# ohne ermittelbares MAIN-Theme ist THEME None → jede Theme-Abfrage scheitert, statt ein falsches Theme zu lesen/schreiben.
+try:
+    from main_theme import gid as _main_theme_gid
+    THEME = _main_theme_gid()
+except Exception:  # noqa: BLE001
+    THEME = None
 CACHE = "/tmp/variant_links_cache.json"
 MIN_DATEIEN = 150          # weniger gelesene Theme-Dateien = die Messung ist unvollständig → unklar
 RUECKBLICK = 600           # Zeichen vor dem Treffer, in denen die Bedingung stehen muss
@@ -125,7 +133,10 @@ def live_inhalte():
                    {"id": THEME, "c": cur})["theme"]["files"]
         for n in d["nodes"]:
             f = n["filename"]
-            if f.endswith((".liquid", ".json")) and not f.startswith(("locales/", "config/")):
+            # 26.11.: assets/*.json sind Datendateien (im Live-Theme 6 Stück à 210–548 KB, von Shopify als URL statt Text
+            # geliefert → «nicht lesbar»); Kartenlinks stehen nie darin. assets/*.json.liquid bleibt drin.
+            if f.endswith((".liquid", ".json")) and not f.startswith(("locales/", "config/")) \
+                    and not (f.startswith("assets/") and f.endswith(".json")):
                 liste[f] = n["checksumMd5"]
         if not d["pageInfo"]["hasNextPage"]:
             break
