@@ -18920,3 +18920,7 @@ gid://shopify/Product/15493350228353	120->1	Elastisches Stahl-Kugelarmband
 gid://shopify/Product/15493500305793	45->0	Magnetisches 15W Wireless Ladegerät für iPhone
 gid://shopify/Product/15493720146305	43->0	Bestickter Plüsch-Kissenbezug, 45x45 cm
 gid://shopify/Product/15493870125441	39->0	Armband für Watch Ultra8 49mm
+gid://shopify/Product/15494642663809	45->0	Katzen Kratzbrett-Nest Villa
+gid://shopify/Product/15494643024257	75->0	Kuechen-Schurze
+gid://shopify/Product/15494694306177	50->0	Silikon-Spülbeckenmatte, schmutzabweisend
+gid://shopify/Product/15495131431297	29->0	Antihaft Silikon Küchenhelfer Set

@@ -595,3 +595,4 @@ pid:15413086323073
 name:cdpatternmagsafehüllemitständer
 pid:15450837057921
 slug:cd-pattern-magsafe-hulle-mit-stander
+slug:nahtloser-body-shaper-mit-rundhals-und-bauchko
