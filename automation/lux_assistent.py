@@ -38,7 +38,7 @@ FAKTEN = [
     ("SHIPPING_POLICY", "10–20 Werktage", "10–20 Werktage"),
     ("SHIPPING_POLICY", "15–45 Tage", "15–45 Tage"),
     ("REFUND_POLICY", "30-tägiges Rückgaberecht", "30 Tage Rückgaberecht"),
-    ("REFUND_POLICY", "innerhalb von 7 Tagen nach Erhalt", "innerhalb von 7 Tagen nach Erhalt"),
+    ("REFUND_POLICY", "innerhalb von 30 Tagen nach Erhalt", "innerhalb von 30 Tagen nach Erhalt"),  # 26.11.: Richtlinie + Live-Assistent sagen 30 (vorher 7)
     ("REFUND_POLICY", "innerhalb von 14 Tagen nach Eingang", "14 Tage nach Eingang"),
     ("TERMS_OF_SERVICE", "TWINT", "TWINT"),
     ("TERMS_OF_SERVICE", "Klarna", "Klarna"),
@@ -251,7 +251,7 @@ def selbsttest():
             fehler.append(f"{name}: erwartet {erwartet!r}, war {ist!r}")
     quelle = open(QUELLE, encoding="utf-8").read()
     pol_ok = {"SHIPPING_POLICY": "ab CHF 50 gratis. Liechtenstein CHF 14.90. 2–3 Werktage, 7–14 Werktage, 10–20 Werktage, 15–45 Tage",
-              "REFUND_POLICY": "30-tägiges Rückgaberecht … innerhalb von 7 Tagen nach Erhalt … spätestens innerhalb von 14 Tagen nach Eingang",
+              "REFUND_POLICY": "30-tägiges Rückgaberecht … innerhalb von 30 Tagen nach Erhalt … spätestens innerhalb von 14 Tagen nach Eingang",
               "TERMS_OF_SERVICE": "TWINT PayPal Klarna Apple Pay Google Pay", "CONTACT_INFORMATION": "info@luxestyle.ch",
               "PAGE:kontakt-support": "Antwort in der Regel innert 24 Stunden an Werktagen. Eine Telefon-Hotline gibt es bewusst nicht — schriftlich", "PAGE:versand-lieferung": "Die Sendungsnummer folgt in einer zweiten E-Mail, sobald",
               "PAGE:faq": "dort fällt nie etwas an: Blitzversand aus dem Schweizer Lager. Einfuhrsteuer wird erst ab einem Steuerbetrag von CHF 5 erhoben — ab rund CHF 60 Warenwert inklusive Versand. Raucherzubehör — geben wir ausschliesslich an volljährige Personen ab.",

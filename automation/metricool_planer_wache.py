@@ -82,7 +82,10 @@ def handle(p):
 
 def bewerten(posts, jetzt):
     """Reine Funktion: Planer-Einträge → Befunde je Klasse. `jetzt` aware datetime."""
-    b = {k: [] for k in ("UEBERFAELLIG", "ENTWURF_BALD", "FEHLER", "HAENGT", "DOPPELT", "ERSETZT")}
+    b = {k: [] for k in ("UEBERFAELLIG", "ENTWURF_BALD", "FEHLER", "HAENGT", "DOPPELT", "ERSETZT", "NACHGEHOLT")}
+    FEHL = ("ERROR", "FAIL")
+    fehl_netze = lambda p: [x.get("network", "?") for x in p.get("providers", [])
+                            if any(s in (x.get("status") or "").upper() for s in FEHL)]
     je_produkt = {}
     echt = {handle(p) for p in posts if not p.get("draft") and handle(p)}
     for p in posts:
@@ -101,17 +104,35 @@ def bewerten(posts, jetzt):
             b["UEBERFAELLIG"].append(eintrag)
         elif entwurf and 0 <= -alter_min <= ENTWURF_STD * 60:
             b["ENTWURF_BALD"].append(eintrag)
-        if any(s in (x.get("status") or "").upper() for x in p.get("providers", []) for s in ("ERROR", "FAIL")):
+        if fehl_netze(p):
+            eintrag["fehl_netze"] = fehl_netze(p)
+            eintrag["_t"] = t
             b["FEHLER"].append(eintrag)
         if auto and not entwurf and offen and alter_min > HAENGT_MIN:
             b["HAENGT"].append(eintrag)
         # Doppel: nur echte Posts (keine Entwürfe), keine Stories (kein Text), Produkt aus dem Link
-        if not entwurf and eintrag["handle"]:
+        # 26.11.: ein Netz mit ERROR/FAILED hat NICHT veröffentlicht → sein Nachholtermin ist kein Doppel
+        # Schlüssel = Produkt aus dem Link, sonst der gleiche Text (Posts ohne Produktlink, z. B. «Shop: luxestyle.ch/ig»)
+        roh = " ".join((p.get("text") or "").lower().split())
+        eintrag["_k"] = eintrag["handle"] or ("text:" + roh[:80] if len(roh) >= 30 else "")
+        if not entwurf and eintrag["_k"]:
             for n in netze(p):
-                je_produkt.setdefault((eintrag["handle"], n), []).append(eintrag)
+                if n not in fehl_netze(p):
+                    je_produkt.setdefault((eintrag["_k"], n), []).append(dict(eintrag, _t=t))
+    # Fehler, deren Produkt auf JEDEM fehlgeschlagenen Netz später erneut geplant/veröffentlicht ist = nachgeholt (kein ⚠️)
+    offen_fehler = []
+    for e in b["FEHLER"]:
+        ok = e["_k"] and all(any(x["_t"] > e["_t"] and x["id"] != e["id"] for x in je_produkt.get((e["_k"], n), []))
+                                 for n in e["fehl_netze"])
+        (b["NACHGEHOLT"] if ok else offen_fehler).append(e)
+    b["FEHLER"] = offen_fehler
     for (h, n), liste in je_produkt.items():
         if len({e["id"] for e in liste}) > 1:
             b["DOPPELT"].append({"handle": h, "netz": n, "termine": ", ".join(e["termin"] for e in liste)})
+    for k in b:
+        for e in b[k]:
+            if isinstance(e, dict):
+                e.pop("_t", None); e.pop("_k", None)
     if _mw:
         b.update(_mw.musik_befunde(posts, termin, _mw.bekannte_ids() or None))
     return b
@@ -178,6 +199,8 @@ def zeile(b, geplant, inaktiv=()):
     if teile:
         return f"⚠️ METRICOOL-PLANER: {' · '.join(teile)} · {geplant} geplant — `python3 automation/metricool_planer_wache.py --liste`"
     info = f", {len(b['ERSETZT'])} Altentwurf ersetzt" if b["ERSETZT"] else ""
+    if b.get("NACHGEHOLT"):
+        info += f", {len(b['NACHGEHOLT'])} Fehler nachgeholt"
     return f"METRICOOL-PLANER: ok · {geplant} geplant (14 T), nichts überfällig, kein Produkt doppelt{info}"
 
 
@@ -194,7 +217,11 @@ def selbsttest():
         post(3, "2026-10-20T10:00:00", "C " + L + "projektor-3"),                                  # ok
         post(4, "2026-10-18T22:20:00", "D " + L + "tasche-1", netz=("instagram",)),                # ok, erstes echtes tasche-1
         post(5, "2026-10-20T11:00:00", "E " + L + "tasche-1", netz=("instagram", "tiktok")),       # doppelt auf instagram
-        post(6, "2026-10-18T20:00:00", "F " + L + "x-9", status="ERROR"),                          # Fehler
+        post(6, "2026-10-18T20:00:00", "F " + L + "x-9", status="ERROR"),                          # Fehler (kein Nachholtermin)
+        post(14, "2026-10-18T19:00:00", "M " + L + "r-4", status="ERROR", netz=("threads",)),      # Fehler, unten nachgeholt
+        post(15, "2026-10-21T11:00:00", "N " + L + "r-4", netz=("threads",)),                      # Nachholtermin: kein Doppel
+        post(16, "2026-10-18T17:00:00", "Ohne Link: Stuhlbezug in drei Motiven, Shop luxestyle.ch/ig", status="ERROR"),  # Fehler ohne Link …
+        post(17, "2026-10-19T12:30:00", "Ohne Link: Stuhlbezug in drei Motiven, Shop luxestyle.ch/ig"),  # … mit gleichem Text nachgeholt
         post(7, "2026-10-18T20:30:00", "G " + L + "y-8"),                                          # hängt (90 Min)
         post(8, "2026-10-18T21:55:00", "", draft=False, auto=True),                                # Story ohne Link: nie Doppel
         post(9, "2026-10-18T21:50:00", "H " + L + "z-7", status="PUBLISHED"),                      # veröffentlicht: ok
@@ -205,7 +232,7 @@ def selbsttest():
     ]
     b = bewerten(posts, jetzt)
     ids = lambda k: sorted(e["id"] for e in b[k])
-    erw = [("UEBERFAELLIG", [1]), ("ENTWURF_BALD", [2]), ("FEHLER", [6]), ("HAENGT", [7]), ("ERSETZT", [13])]
+    erw = [("UEBERFAELLIG", [1]), ("ENTWURF_BALD", [2]), ("FEHLER", [6]), ("HAENGT", [7]), ("ERSETZT", [13]), ("NACHGEHOLT", [14, 16])]
     fehler = [f"{k}: erwartet {w}, gemessen {ids(k)}" for k, w in erw if ids(k) != w]
     if [(d["handle"], d["netz"]) for d in b["DOPPELT"]] != [("tasche-1", "instagram")]:
         fehler.append(f"DOPPELT: {b['DOPPELT']}")

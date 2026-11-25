@@ -2216,3 +2216,27 @@
 2026-11-23	15495214072193	67821887684999	CJCD165180801AZ	AU Doppelausgang 20W	sperren	DENY	True	0	gesperrt-belegt
 2026-11-23	15495214072193	67821887750535	CJCD165180803CX	UK Doppelausgang 20W	sperren	DENY	True	0	gesperrt-belegt
 2026-11-23	15495214072193	67821887783303	CJCD165180804DW	US Doppelausgang 20W	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592108423	CJSN279864314NM	CN / Schwarz mit Schwarz / Standard-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592141191	CJSN279864315OL	CN / Schwarz mit Schwarz / Timer-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592173959	CJSN279864316PK	CN / Schwarz mit Gold / Standard-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592206727	CJSN279864317QJ	CN / Schwarz mit Gold / Timer-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592239495	CJSN279864318RI	CN / Bronze mit Schwarz / Standard-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592272263	CJSN279864319SH	CN / Bronze mit Schwarz / Timer-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592305031	CJSN279864320TG	CN / Bronze mit Gold / Standard-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592337799	CJSN279864321UF	CN / Bronze mit Gold / Timer-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592370567	CJSN279864322VE	CN / Weiß mit Schwarz / Standard-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592403335	CJSN279864323WD	CN / Weiß mit Schwarz / Timer-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592436103	CJSN279864324XC	CN / Weiß mit Gold / Standard-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592468871	CJSN279864325YB	CN / Weiß mit Gold / Timer-Schalter	sperren	CONTINUE	False	0	sperre-geplant
+2026-11-25	16733173973383	68311592108423	CJSN279864314NM	CN / Schwarz mit Schwarz / Standard-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592141191	CJSN279864315OL	CN / Schwarz mit Schwarz / Timer-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592173959	CJSN279864316PK	CN / Schwarz mit Gold / Standard-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592206727	CJSN279864317QJ	CN / Schwarz mit Gold / Timer-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592239495	CJSN279864318RI	CN / Bronze mit Schwarz / Standard-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592272263	CJSN279864319SH	CN / Bronze mit Schwarz / Timer-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592305031	CJSN279864320TG	CN / Bronze mit Gold / Standard-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592337799	CJSN279864321UF	CN / Bronze mit Gold / Timer-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592370567	CJSN279864322VE	CN / Weiß mit Schwarz / Standard-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592403335	CJSN279864323WD	CN / Weiß mit Schwarz / Timer-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592436103	CJSN279864324XC	CN / Weiß mit Gold / Standard-Schalter	sperren	DENY	True	0	gesperrt-belegt
+2026-11-25	16733173973383	68311592468871	CJSN279864325YB	CN / Weiß mit Gold / Timer-Schalter	sperren	DENY	True	0	gesperrt-belegt
