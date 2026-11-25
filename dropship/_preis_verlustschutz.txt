@@ -353516,3 +353516,13 @@
 67841544388999	heben	15.90	16.90	12.66	2026-11-25	deko-halterung-fur-smartwatch-mit-ladegerat-601800
 67841544421767	heben	15.90	16.90	12.66	2026-11-25	deko-halterung-fur-smartwatch-mit-ladegerat-601800
 67841544454535	heben	15.90	16.90	12.66	2026-11-25	deko-halterung-fur-smartwatch-mit-ladegerat-601800
+67814585663879	heben	15.90	16.90	12.88	2026-11-25	mehrere-funktionen-sportuhr-626000
+67814585696647	heben	15.90	16.90	12.88	2026-11-25	mehrere-funktionen-sportuhr-626000
+67814585729415	heben	15.90	16.90	12.88	2026-11-25	mehrere-funktionen-sportuhr-626000
+67814585762183	heben	15.90	16.90	12.88	2026-11-25	mehrere-funktionen-sportuhr-626000
+67814585893255	heben	15.90	16.90	12.66	2026-11-25	mehrere-funktionen-sportuhr-626000
+67814574883207	heben	15.90	16.90	12.99	2026-11-25	multifunktionale-kamera-umhangetasche-950400
+67814572556679	heben	15.90	16.90	12.75	2026-11-25	led-fahrradlicht-fur-vorne-350-lumen-eca8dc
+67814572687751	heben	15.90	16.90	12.75	2026-11-25	led-fahrradlicht-fur-vorne-350-lumen-eca8dc
+67814572720519	heben	15.90	16.90	12.75	2026-11-25	led-fahrradlicht-fur-vorne-350-lumen-eca8dc
+67814572753287	heben	15.90	16.90	12.75	2026-11-25	led-fahrradlicht-fur-vorne-350-lumen-eca8dc
