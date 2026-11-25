@@ -1734,3 +1734,15 @@ shop-schmuck-accessoires	unveroeffentlicht	0	Schmuck & Accessoires
 startseite-pool-weihnachten	ok	25	Startseite Pool Weihnachten
 startseite-pool-winter	ok	29	Startseite Pool Winter
 startseite-pool-geschenke	ok	24	Startseite Pool Geschenke
+startseite-pool-kleider	ok	24	Startseite Pool Kleider
+startseite-pool-damenmode	ok	25	Startseite Pool Damenmode
+startseite-pool-herrenmode	ok	25	Startseite Pool Herrenmode
+startseite-pool-schuhe	ok	24	Startseite Pool Schuhe
+startseite-pool-taschen	ok	23	Startseite Pool Taschen
+startseite-pool-beauty	ok	17	Startseite Pool Beauty
+startseite-pool-technik	ok	21	Startseite Pool Technik
+startseite-pool-kueche	ok	22	Startseite Pool Küche
+startseite-pool-haustier	ok	19	Startseite Pool Haustier
+startseite-pool-kinder	ok	18	Startseite Pool Kinder
+startseite-pool-sport	ok	23	Startseite Pool Sport
+black-week	ok	29	Black Week: 15 % ab CHF 80
