@@ -15,3 +15,9 @@ Prüfen: `python3 tools/tore.py dropship/tore/verkauf-10-pro-tag.md`. Umsetzungs
     ERWARTET: TOR-OK
 - [ ] T4: Betreiber startet den Werbetest (Google Ads) nach der Anleitung
     HAND: Betreiber-Klick in Google Ads (Konto 7198263241); danach misst die Sitzung Klickpreis und Kosten je Verkauf
+- [ ] T5: Handy-Produktseiten zeigen die Kaufleiste schon im ersten Bildschirm (vorher 0/1, Knopf bei 1'005 px)
+    PRUEFUNG: timeout 300 /opt/node22/bin/node tools/kaufleiste_pruefen.mjs "https://luxestyle.ch/products/beruhigungsspielzeug-fur-haustiere-617100?cb=$(date +%s)" "https://luxestyle.ch/products/roter-weihnachtssweater-fur-hunde-442176?cb=$(date +%s)" 2>&1 | tail -1
+    ERWARTET: /KAUFLEISTE (\d+)\/\1 sichtbar/
+- [ ] T6: Live-Theme trägt alle drei Änderungen (Kaufleiste früh + Auswahl-Sprung, Hilfe-Knopf kompakt auf Produktseiten, Masstabelle scrollt)
+    PRUEFUNG: python3 -c "import sys;sys.path.insert(0,'automation');from seo_autopilot import gql;n={x['filename']:x['body']['content'] for x in gql('{theme(id:\"gid://shopify/OnlineStoreTheme/214565814663\"){files(filenames:[\"assets/sticky-add-to-cart.js\",\"sections/lux-assistent.liquid\",\"layout/theme.liquid\"],first:3){nodes{filename body{... on OnlineStoreThemeFileBodyText{content}}}}}}')['theme']['files']['nodes']};ok=['#earlyMobile' in n['assets/sticky-add-to-cart.js'],'#hatAuswahl()' in n['assets/sticky-add-to-cart.js'],'data-seite=\"produkt\"' in n['sections/lux-assistent.liquid'],'.ls-masstabelle { max-width: 100%' in n['layout/theme.liquid']];print(ok);assert all(ok);print('TOR-OK')"
+    ERWARTET: TOR-OK
