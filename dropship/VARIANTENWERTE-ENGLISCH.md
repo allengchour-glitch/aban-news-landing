@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 15:57 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 16:01 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **3'048**
-- Optionen mit englischen Werten (Kandidaten): 145
+- Produkte gesehen: **3'645**
+- Optionen mit englischen Werten (Kandidaten): 158
 - Optionen übersetzt: **1** · Werte übersetzt: **1**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 350
+- Werte mit unbekanntem Wort (unverändert): 371
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 11
+- übersprungen «kollision-nach-uebersetzung»: 12
 - übersprungen «kleidungsstueck-im-wert»: 8
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -39,6 +39,7 @@
 - `15447606428033` [Farbe] herren-langarmhemd-mit-revers-619700: Marineblaublau → Marineblau
 - `15447606657409` [Farbe] leinenhemd-kurzarm-fur-herren-605000: Marineblaublau → Marineblau
 - `15447889740161` [Farbe] sonnen-cape-im-retro-stil-617300: White Color → Weiss
+- `15448539922817` [Farbe] eleganter-casual-jumpsuit-mit-weitem-bein-613100: Lemon Green → Zitronengrün
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -61,5 +62,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`diamond` 36, `deer` 19, `powder` 17, `degrees` 17, `tea` 12, `hat` 10, `insert` 9, `rope` 8, `to` 8, `bag` 7, `cherry` 6, `electric` 6, `blossom` 6, `⟨satzbau:adjektiv-vor-nomen⟩` 6, `waist` 6, `soft` 6, `three` 5, `storage` 5, `color` 5, `one` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `plugin` 4, `models` 4, `drill` 4, `milk` 4, `gun` 4, `gallium` 4, `nitride` 4, `machine` 4, `4x` 4, `glittering` 4, `⟨satzbau:adjektivfolge⟩` 4, `c1color` 4, `c2color` 4, `c3color` 4, `c4color` 4, `c5color` 4, `ski` 4, `gloves` 4, `charming` 4, `crotch` 4, `elegant` 3, `optic` 3, `hut` 3, `handle` 3, `lichtbecher` 3, `weisslicht` 3, `lampenschirm` 3, `dual` 3, `brushed` 3, `×` 3, `roman` 3, `rod` 3, `c6color` 3, `haqing` 3, `ice` 3, `touch` 2
+`diamond` 36, `powder` 21, `deer` 19, `degrees` 17, `tea` 12, `hat` 10, `insert` 9, `rope` 8, `to` 8, `bag` 7, `hot` 7, `cherry` 6, `electric` 6, `color` 6, `blossom` 6, `⟨satzbau:adjektiv-vor-nomen⟩` 6, `waist` 6, `soft` 6, `three` 5, `milk` 5, `storage` 5, `one` 5, `glittering` 5, `papa` 5, `mama` 5, `hunde` 5, `halstuch` 5, `plugin` 4, `models` 4, `drill` 4, `gun` 4, `gallium` 4, `nitride` 4, `machine` 4, `4x` 4, `⟨satzbau:adjektivfolge⟩` 4, `c1color` 4, `c2color` 4, `c3color` 4, `c4color` 4, `c5color` 4, `ski` 4, `gloves` 4, `charming` 4, `crotch` 4, `ice` 4, `elegant` 3, `optic` 3, `hut` 3, `aromatherapy` 3, `handle` 3, `lichtbecher` 3, `weisslicht` 3, `lampenschirm` 3, `dual` 3, `smoke` 3, `brushed` 3, `×` 3, `roman` 3, `rod` 3
 

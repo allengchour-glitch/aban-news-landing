@@ -422,3 +422,8 @@ gid://shopify/Product/16733484843399	windmuhlen-nachtlicht-aus-jade-modern-minim
 gid://shopify/Product/16734370824583	schwarze-humor-fabel-patte-fur-kleidung-550784	Schwarze Humor-Fabel-Patte für Kleidung
 gid://shopify/Product/16734418502023	skull-lampe-aus-kunstharz-usb-betrieb-602800	Skull-Lampe aus Kunstharz, USB-Betrieb
 gid://shopify/Product/16734418731399	vintage-brosche-mit-schleifenblume-737984	Vintage Brosche mit Schleifenblume
+gid://shopify/Product/16736678510983	gelkissen-aus-silikon-mit-luftkammern-619200	Gelkissen aus Silikon mit Luftkammern
+gid://shopify/Product/16736678707591	led-digitaluhr-mit-datum-639600	LED Digitaluhr mit Datum
+gid://shopify/Product/16737806680455	tragbarer-dachventilator-mit-fernbedienung-628000	Tragbarer Dachventilator mit Fernbedienung
+gid://shopify/Product/16737807303047	grosszugige-soft-leather-crossbody-tote-618300	Grosszügige Soft-Leather Crossbody Tote
+gid://shopify/Product/16737808023943	kinder-urinaltuch-fur-auto-603100	Kinder-Urinaltuch für Auto
