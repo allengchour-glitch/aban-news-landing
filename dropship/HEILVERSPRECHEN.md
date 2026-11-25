@@ -1,6 +1,6 @@
-# Heilversprechen in Produkttexten — Stand 2026-11-24T17:16:46Z
+# Heilversprechen in Produkttexten — Stand 2026-11-25T16:01:46Z
 
-Geprüft: 17542 (Filter: `status:active updated_at:>2026-11-23T16:52:49Z`) · entschärft: 0 · offen: 3 · Schreibfehler: 0
+Geprüft: 13585 (Filter: `status:active updated_at:>2026-11-24T17:16:46Z`) · entschärft: 0 · offen: 4 · Schreibfehler: 0
 
 Offen = Muster getroffen, aber keine geprüfte Ersatzphrase. Satz lesen, Ersatz in `ERSATZ` eintragen, nächster Lauf schreibt.
 
@@ -10,3 +10,5 @@ Offen = Muster getroffen, aber keine geprüfte Ersatzphrase. Satz lesen, Ersatz 
   - …ren und Farbgebungen aufweisen kann. Es können auch leichte Narben vorhanden sein, die zur natürlichen Beschaffenheit des Holz…
 - **Antihaft-Vierloch-Omelettpfanne** (`antihaft-vierloch-omelettpfanne-622500`)
   - …von 19 cm und ist mit einer Antihaftbeschichtung aus Weizen-Heilsteinen versehen. Sie ist in den Farben Blaugrau, Milchweiss und Sc…
+- **Erhöhte Keramikschüssel mit Katzenohr-Design** (`erhohte-keramikschussel-mit-katzenohr-design-600000`)
+  - …ützung für die Halswirbelsäule und reduziert das Risiko von Akne. Die Schüssel ist aus Keramik gefertigt und hat ein niedlic…
