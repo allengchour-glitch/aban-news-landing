@@ -1,10 +1,10 @@
-# Weiterleitungen ins Leere — Stand 2026-11-24 22:55 UTC (FIX, Lauf 2026-11-24T2247)
+# Weiterleitungen ins Leere — Stand 2026-11-25 23:02 UTC (FIX, Lauf 2026-11-25T2256)
 
 Erzeugt von `automation/weiterleitung_ziel_wache.py` (täglich im Aufseher). Regel und Anlass: Kopf des Skripts.
 
-- Weiterleitungen gesamt: 1897
-- Ziel lebt: 1861 · zwei Sprünge (Kette): 0 · ins Leere: 2 (2 tote Ziele) · Seiten/Blog/Datei (nicht geprüft): 34
-- Dieser Lauf: gedreht 0 · angelegt 0 · offen 2 · Fehler 0
+- Weiterleitungen gesamt: 1906
+- Ziel lebt: 1869 · zwei Sprünge (Kette): 0 · ins Leere: 3 (3 tote Ziele) · Seiten/Blog/Datei (nicht geprüft): 34
+- Dieser Lauf: gedreht 1 · angelegt 1 · offen 2 · Fehler 0
 - Set → Einzelteil (gemeldet, nicht gedreht): 14 bestehende · 0 verworfene Zwillinge
 
 ## Offen (Mensch entscheidet)
@@ -13,6 +13,14 @@ Erzeugt von `automation/weiterleitung_ziel_wache.py` (täglich im Aufseher). Reg
 |---|---:|---|
 | /products/kostum-hexe-magie-fgssck4194 | 1 | kein eindeutiges Ziel |
 | /products/y2hdmax-retro-gaming-konsole-3b78d0 | 1 | kein eindeutiges Ziel |
+
+## Neu angelegt (totes Ziel → Ersatz)
+
+- /products/manner-schuhe-aus-kunstleder-schwarze-casual-schuhe-601300 → /collections/sneaker-sportschuhe (Kategorie aus Produkt)
+
+## Gedreht
+
+- /products/manner-schuhe-aus-leder-schwarze-casual-schuhe-601300 : /products/manner-schuhe-aus-kunstleder-schwarze-casual-schuhe-601300 → /collections/sneaker-sportschuhe (Kategorie aus Produkt)
 
 ## Set/Stück/«mit X» fehlt im Ziel — melden, nicht drehen (automation/bestandteil_regel.py)
 

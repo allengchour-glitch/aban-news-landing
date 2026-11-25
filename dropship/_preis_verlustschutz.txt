@@ -353768,3 +353768,15 @@
 67676016083335	heben	75.90	78.90	63.18	2026-11-25	marmor-tischlampe-mit-klopf-funktion-633000
 67714826174855	heben	76.90	77.90	62.47	2026-11-25	grosses-lederreise-backpack-fur-freizeit-776064
 67738802815367	heben	76.90	77.90	62.47	2026-11-25	grosses-lederreise-backpack-fur-freizeit-776064
+67720422392199	heben	75.90	76.90	61.73	2026-11-25	retro-ledergurt-tasche-fur-laptop-bucher-954624
+67739652948359	heben	75.90	76.90	61.73	2026-11-25	retro-ledergurt-tasche-fur-laptop-bucher-954624
+67722039263623	heben	75.90	76.90	61.40	2026-11-25	rucksack-aus-rindsleder-20-l-795328
+67739628896647	heben	75.90	76.90	61.40	2026-11-25	rucksack-aus-rindsleder-20-l-795328
+67739628929415	heben	75.90	76.90	61.40	2026-11-25	rucksack-aus-rindsleder-20-l-795328
+55879484277121	heben	71.90	72.90	58.63	2026-11-25	wifi-solar-outdoor-kamera-8k-626800
+55879870448001	heben	72.90	73.90	59.18	2026-11-25	led-anhanger-fur-haustiere-623600
+55889697374593	heben	16.90	17.90	13.88	2026-11-25	elektrischer-krallenschleifer-fur-haustiere-7e13ae
+55889697669505	heben	16.90	18.90	14.92	2026-11-25	elektrischer-krallenschleifer-fur-haustiere-7e13ae
+55889697767809	heben	19.90	20.90	16.24	2026-11-25	elektrischer-krallenschleifer-fur-haustiere-7e13ae
+55904659079553	heben	73.90	74.90	59.85	2026-11-25	led-gesichtsmaske-fur-schone-haut-620800
+55905316372865	heben	73.90	74.90	59.93	2026-11-25	vollkorn-leder-rucksack-618400
