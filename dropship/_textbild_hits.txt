@@ -18929,3 +18929,5 @@ gid://shopify/Product/15495395574145	15->0	Quarz-Armbanduhr für Sie & Ihn mit S
 gid://shopify/Product/15495397867905	18->0	Mori Style Rucksack mit grossem Fassungsvermögen
 gid://shopify/Product/15495730200961	70->3	Kleiner Kissenbezug Wildleder
 gid://shopify/Product/15496015085953	55->0	Fellball Deko-Kissen für Sofa
+gid://shopify/Product/15504197386625	17->0	Q6S Smartwatch mit Farbdisplay
+gid://shopify/Product/15508415807873	22->0	X7 Smartwatch mit TWS Bluetooth Headset
