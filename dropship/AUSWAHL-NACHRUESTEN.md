@@ -1,132 +1,20 @@
-# Auswahl nachrüsten — scharf 2026-11-25 21:19 UTC
+# Auswahl nachrüsten — scharf 2026-11-25 23:39 UTC
 
-umgebaut: 20 · MANUELL: 126 · Fehler: 0
+umgebaut: 16 · MANUELL: 14 · Fehler: 0
 
 ## MANUELL (Grund)
 
-- Auto-Montierbarer 5G GPS-Tracker mit Aufnahmefunktion (`auto-montierbarer-5g-gps-tracker-mit-aufnahmef-634300`): KI-Übersetzung fehlt/abgelehnt: ['Enhanced Version', 'Deluxe Edition', 'Permanent Version', 'Endurance Edition']
 - Weihnachts-Geschenksäckli aus Baumwolle/Leinen (`weihnachts-geschenksackli-aus-baumwolle-leinen-638400`): Lesefehler: Zweitprüfer nicht erreichbar: Zweitprüfer-Antwort unvollständig (25 statt 26)
 - 7-teiliges Nagelverlängerungs-Set · 7 Stück (`7-teiliges-nagelverlangerungs-set-7-stuck-159936`): Lesefehler: Zweitprüfer nicht erreichbar: Zweitprüfer-Antwort unvollständig (45 statt 48)
-- Standkollar-Fleece-Workjacke für Männer (`standkollar-fleece-workjacke-fur-manner-628900`): KI-Übersetzung fehlt/abgelehnt: ['Red Collar', 'Gray Collar', 'Purple Collar', 'Dark Gray Collar']
-- Kabellose, ultradünne Bewegungssensor-Lampe (`kabellose-ultradunne-bewegungssensor-lampe-627500`): hat inzwischen mehrere Varianten
-- Nachttischlampe mit Tierpfoten-Print (`nachttischlampe-mit-tierpfoten-print-620200`): hat inzwischen mehrere Varianten
-- Vorsatzlampe mit Flügeldeko – Schlafzimmer (`vorsatzlampe-mit-flugeldeko-schlafzimmer-634800`): hat inzwischen mehrere Varianten
-- Goldbeschichtete Tierbrooch aus Legierung – 47,1×68,8 mm (`goldbeschichtete-tierbrooch-aus-legierung-47-1-734528`): hat inzwischen mehrere Varianten
-- LED Kristallkoffer Einbauschranklicht (`led-kristallkoffer-einbauschranklicht-627500`): hat inzwischen mehrere Varianten
-- Tischlampe 12,5 × 31 cm, modern, 220 V (`tischlampe-12-5-31-cm-modern-220-v-625800`): hat inzwischen mehrere Varianten
-- Nordisches Minimalist-Kuppellicht in Macaron-Farbe (`nordisches-minimalist-kuppellicht-in-macaron-f-626300`): hat inzwischen mehrere Varianten
-- Deckenleuchte Minimalistisch Nordisch Warmweiss (`deckenleuchte-minimalistisch-nordisch-warmweis-639400`): KI-Übersetzung fehlt/abgelehnt: ['Warm White Light', 'Positive White Light', 'Light Source Not Included']
-- Kristall-Sandgeätzte Pendelleuchte im Mid-Century-Stil (`kristall-sandgeatzte-pendelleuchte-im-mid-cent-608400`): hat inzwischen mehrere Varianten
-- Phönix-Brosche aus Kupfer, bunt (`phonix-brosche-aus-kupfer-bunt-962240`): KI-Übersetzung fehlt/abgelehnt: ['Yellow', 'Blue', 'Color']
-- Atmosphärische Kristall-Leopard-Brosche (`atmospharische-kristall-leopard-brosche-796416`): hat inzwischen mehrere Varianten
-- Wandlampe Resin – Minimalistisches Design (`wandlampe-resin-minimalistisches-design-629000`): hat inzwischen mehrere Varianten
-- Keramische Butterlampe – Rot (`keramische-butterlampe-rot-633300`): KI-Übersetzung fehlt/abgelehnt: ['Stick shaped Crisp Pastry', 'Gourd', 'Oil Droplet', 'Lantern']
-- Schmuckbrosche mit Perlen und Pailletten (`schmuckbrosche-mit-perlen-und-pailletten-768832`): hat inzwischen mehrere Varianten
-- Brosche Retro-Rhinestone-Bogen (`brosche-retro-rhinestone-bogen-791360`): hat inzwischen mehrere Varianten
-- Nachttischlampe Retro & Rustik (`nachttischlampe-retro-rustik-623300`): hat inzwischen mehrere Varianten
-- Brosche aus Titanstahl mit Namensbuchstaben (`brosche-aus-titanstahl-mit-namensbuchstaben-515776`): hat inzwischen mehrere Varianten
-- Minimalistisches Nachttisch-Licht mit Ladestation (`minimalistisches-nachttisch-licht-mit-ladestat-629200`): hat inzwischen mehrere Varianten
-- Silicon-Handgriffe-Warnlicht für Mountainbike (`silicon-handgriffe-warnlicht-fur-mountainbike-603000`): hat inzwischen mehrere Varianten
-- Silikon-Tier-Nachtlicht mit 30-Minuten-Timer (`silikon-tier-nachtlicht-mit-30-minuten-timer-606400`): hat inzwischen mehrere Varianten
-- Rotes Touch-Nachtlicht mit stufenloser Dimmung (`rotes-touch-nachtlicht-mit-stufenloser-dimmung-619400`): hat inzwischen mehrere Varianten
-- LED-Nachtlicht Samojede-Figur aus Resin (`led-nachtlicht-samojede-figur-aus-resin-620500`): hat inzwischen mehrere Varianten
-- Leuchtendes Pilz-Nachtlicht – DIY-Set (`leuchtendes-pilz-nachtlicht-diy-set-635400`): hat inzwischen mehrere Varianten
-- Wandlampe Streifenbeleuchtung 120 cm Sand/Schwarz (`wandlampe-streifenbeleuchtung-120-cm-sand-schw-628000`): KI-Übersetzung fehlt/abgelehnt: ['Three Colors', 'Monochrome Warm Light', 'Wuji Tmall Genie', 'Bluetooth Version']
-- Wandlampe Outdoor, wasserdicht, 6 W/12 W, 3-Farben (`wandlampe-outdoor-wasserdicht-6-w-12-w-3-farbe-602500`): KI-Übersetzung fehlt/abgelehnt: ['6W Warm Light 3000K', '6W White Light 6000K', '6W Sunset Red', '12W Warm Light 3000K']
-- Florales Doppel-Tüll-Baumwollstoff (`florales-doppel-tull-baumwollstoff-621700`): hat inzwischen mehrere Varianten
-- Wandlampe verstellbarer Winkel – 6 W Tri-Color (`wandlampe-verstellbarer-winkel-6-w-tri-color-636800`): KI-Übersetzung fehlt/abgelehnt: ['Neutral Light', 'Three Colors', 'Warm Light', 'White Light']
-- Leichtes Imitations-Leinen-Bambusgewebe 75 g/m² (`leichtes-imitations-leinen-bambusgewebe-75-g-m-628300`): KI-Übersetzung fehlt/abgelehnt: ['No 1 Beige', 'No 2 Light Gray', 'No 3 Light Blue', 'No 4 Pink']
-- Retro-Halbhelm aus ABS für Sommer (`retro-halbhelm-aus-abs-fur-sommer-628300`): hat inzwischen mehrere Varianten
-- Babysicherheitshelm für Neugeborene (`babysicherheitshelm-fur-neugeborene-622700`): hat inzwischen mehrere Varianten
-- Wandlampe Outdoor, Edelstahl, IP65, 26 cm (`wandlampe-outdoor-edelstahl-ip65-26-cm-614800`): hat inzwischen mehrere Varianten
-- Laufwagen für Babys und Kleinkinder mit blinkenden Rädern (`laufwagen-fur-babys-und-kleinkinder-mit-blinke-604700`): hat inzwischen mehrere Varianten
-- Einzelne Pendelleuchte für das Bett (`einzelne-pendelleuchte-fur-das-bett-605600`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Ambient Licht 2-er-Set mit Bluetooth (`ambient-licht-2-er-set-mit-bluetooth-611700`): hat inzwischen mehrere Varianten
-- Baumwollkordel-Brosche mit doppelten Haken (`baumwollkordel-brosche-mit-doppelten-haken-636000`): hat inzwischen mehrere Varianten
-- Pendelleuchte Modern Minimalist für Flur (`pendelleuchte-modern-minimalist-fur-flur-601700`): Farbe-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Camellia Schmetterlings-Schlüsselanhänger (`camellia-schmetterlings-schlusselanhanger-606400`): hat inzwischen mehrere Varianten
-- Vasenlampe mit kabellosem Laden und Blumendekor (`vasenlampe-mit-kabellosem-laden-und-blumendeko-636000`): KI-Übersetzung fehlt/abgelehnt: ['Chrome color', 'French gold', 'Ceramic blue', 'Fashionable orange']
-- Portable kabellose Tischlampe mit Auflademechanismus (`portable-kabellose-tischlampe-mit-auflademecha-608700`): hat inzwischen mehrere Varianten
-- Pudding-Nachtlicht für Dessertdekoration (`pudding-nachtlicht-fur-dessertdekoration-616200`): hat inzwischen mehrere Varianten
-- Japanische Windspiel-Tischlampe (`japanische-windspiel-tischlampe-638700`): KI-Übersetzung fehlt/abgelehnt: ['A High Style 15CM', 'A Short 15CM', 'B 20x40cm', 'D 20CM']
-- Aromatherapie-Lampe mit Duftkerzenmelter (`aromatherapie-lampe-mit-duftkerzenmelter-610700`): hat inzwischen mehrere Varianten
-- Bettlampen-Design: Bud-Form Tischlampe (`bettlampen-design-bud-form-tischlampe-629800`): hat inzwischen mehrere Varianten
-- Kristall-Weihnachtsanhänger (`kristall-weihnachtsanhanger-613000`): hat inzwischen mehrere Varianten
-- Mehrlagiges wiederverwendbares Brotsack aus Leinen (`mehrlagiges-wiederverwendbares-brotsack-aus-le-615300`): hat inzwischen mehrere Varianten
-- Resin-Weltraumlampe – Modernes Nachtlicht (`resin-weltraumlampe-modernes-nachtlicht-626000`): hat inzwischen mehrere Varianten
-- Weihnachtslichtkette mit farbigem Bänderhaken (`weihnachtslichtkette-mit-farbigem-banderhaken-603400`): hat inzwischen mehrere Varianten
-- Weihnachts-Countdown-Set aus Sperrholz (`weihnachts-countdown-set-aus-sperrholz-630200`): hat inzwischen mehrere Varianten
-- Wandlampe für Schlafzimmer – 10 cm & 20 cm Modelle (`wandlampe-fur-schlafzimmer-10-cm-20-cm-modelle-620200`): hat inzwischen mehrere Varianten
-- Projektions-Nachtlicht USB Sternenhimmellampe (`projektions-nachtlicht-usb-sternenhimmellampe-609300`): hat inzwischen mehrere Varianten
-- Weihnachtsdorf-Resin-Kugeln (`weihnachtsdorf-resin-kugeln-605300`): hat inzwischen mehrere Varianten
-- Wandlampe LED 7,5 × 4,5 cm, 2,5 W (`wandlampe-led-7-5-4-5-cm-2-5-w-602100`): hat inzwischen mehrere Varianten
-- Kompakte USB-Tischlampe für Outdoor (`kompakte-usb-tischlampe-fur-outdoor-623400`): hat inzwischen mehrere Varianten
-- Faltbarer Kunststoff Aufbewahrungsschrank für das Wohnzimmer (`faltbarer-kunststoff-aufbewahrungsschrank-fur-625900`): hat inzwischen mehrere Varianten
-- Quadratischer Gewürzbehälter aus Glas mit Holzdeckel 4 oz (`quadratischer-gewurzbehalter-aus-glas-mit-holz-617400`): hat inzwischen mehrere Varianten
-- Edelstahl Kochgeschirr-Set mit dicker Basis (`edelstahl-kochgeschirr-set-mit-dicker-basis-625300`): hat inzwischen mehrere Varianten
-- USB Signal Audio und Power Isolator (`usb-signal-audio-und-power-isolator-629600`): hat inzwischen mehrere Varianten
-- Bluetooth-Lautsprecher mit Digitaluhr und RGB-Licht (`bluetooth-lautsprecher-mit-digitaluhr-und-rgb-608500`): hat inzwischen mehrere Varianten
-- Smart Sensor Mülleimer für Schlafzimmer (`smart-sensor-mulleimer-fur-schlafzimmer-606800`): hat inzwischen mehrere Varianten
-- GT3MINI Dual-Lens Langzeit-Drohne (`gt3mini-dual-lens-langzeit-drohne-629800`): KI-Übersetzung fehlt/abgelehnt: ['1 Electricity', '2 Electricity', '3 Electricity']
-- Wandlampe in Brotform, Chrome- oder Gold-Finish (`wandlampe-in-brotform-chrome-oder-gold-finish-627900`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Wandlampe 14 cm, modernes Minimaldesign (`wandlampe-14-cm-modernes-minimaldesign-625500`): hat inzwischen mehrere Varianten
-- Drehbare Wandleuchte 30 cm, weiss oder schwarz (`drehbare-wandleuchte-30-cm-weiss-oder-schwarz-607000`): hat inzwischen mehrere Varianten
-- Moderne Wandlampe mit Eisenlampenschirm (`moderne-wandlampe-mit-eisenlampenschirm-622100`): hat inzwischen mehrere Varianten
-- Minimalistisches LED-Nachtlicht mit USB-Ladung (`minimalistisches-led-nachtlicht-mit-usb-ladung-614400`): hat inzwischen mehrere Varianten
-- Kompakte Ambient Night Light mit USB-Ladung (`kompakte-ambient-night-light-mit-usb-ladung-625100`): hat inzwischen mehrere Varianten
-- LED Tischlampe mit wiederaufladbarer Batterie (`led-tischlampe-mit-wiederaufladbarer-batterie-614600`): hat inzwischen mehrere Varianten
-- Nachttisch-Lampe mit Stoffschirm und Akku (`nachttisch-lampe-mit-stoffschirm-und-akku-609700`): hat inzwischen mehrere Varianten
-- Kinder-RC-Helikopter V56, feste Höhe (`kinder-rc-helikopter-v56-feste-hohe-623600`): KI-Übersetzung fehlt/abgelehnt: ['Blue', 'Black', 'Blue Aerial Photography', 'Black Aerial Photography'] | ['2 Electric', '3 Electric', '4 Electricity', '1 Electric']
-- Vier-Achsen-Fernsteuerungs-Flugzeug-Spielzeug (`vier-achsen-fernsteuerungs-flugzeug-spielzeug-631400`): KI-Übersetzung fehlt/abgelehnt: ['E88 Gray Dual Camera', 'Gray single camera  1battery']
-- Kreative Schreibtischlampe für Schlafzimmer & Wohnzimmer (`kreative-schreibtischlampe-fur-schlafzimmer-wo-601800`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'White', 'Gold', 'Mushroom Black']
-- Bionischer Roboterhund mit Fernsteuerung (`bionischer-roboterhund-mit-fernsteuerung-617500`): hat inzwischen mehrere Varianten
-- Elektrisches Beruhigungs-Plüschtier für Babys (`elektrisches-beruhigungs-pluschtier-fur-babys-632100`): KI-Übersetzung fehlt/abgelehnt: ['Sleep Bunny', 'Sleeping Giraffe', 'Sleep Big White Geese', 'Sleeping Sea Lion']
-- Vintage Wandlampe aus Kupferglas (`vintage-wandlampe-aus-kupferglas-610100`): Ausführung-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Retro Handheld Game Console 4,5-Zoll (`retro-handheld-game-console-4-5-zoll-609000`): KI-Übersetzung fehlt/abgelehnt: ['64g English Version', '64g Chinese Version', '128g English Version', '128g Chinese Version'] | ['White', 'Transparent Basket', 'Transparent Black', 'Basket Color']
-- Kabelloser Gamecontroller (`kabelloser-gamecontroller-621200`): hat inzwischen mehrere Varianten
-- Heizhandschuhe für Outdoor und Radfahren (`heizhandschuhe-fur-outdoor-und-radfahren-618800`): KI-Übersetzung fehlt/abgelehnt: ['1 Soft Style', '2 Soft Style'] | ['SorM', 'LorXL']
-- Teleskop mit Infrarot-Nachtsicht 6x-10x (`teleskop-mit-infrarot-nachtsicht-6x-10x-605600`): hat inzwischen mehrere Varianten
-- Smartwatch mit Herzfrequenz, Blutsauerstoff & Telefon (`smartwatch-mit-herzfrequenz-blutsauerstoff-tel-606900`): KI-Übersetzung fehlt/abgelehnt: ['Gold And Steel Color', 'Silver Steel Color', 'Seven Star Gold Steel', 'Seven Star Silver Steel']
-- Smartwatch für Sport & Outdoor (`smartwatch-fur-sport-outdoor-623400`): KI-Übersetzung fehlt/abgelehnt: ['G5 Black Silicone', 'G5 Orange Silicone', 'G5 Emerald Green Silicone', 'G5 Army Green Silicone']
-- Taillengürtel Shapewear mit Reissverschluss (`taillengurtel-shapewear-mit-reissverschluss-604300`): KI-Übersetzung fehlt/abgelehnt: ['2.0 Black Composite Fabric', '2.0 Pink Composite Fabric', '2.0 skin color compound', 'Dark Gray Composite Fabric']
-- Batterie-Set 20 Stück 1,5 V (alkalisch) (`batterie-set-20-stuck-1-5-v-alkalisch-622000`): KI-Übersetzung fehlt/abgelehnt: ['Carbonaceous', 'Alkaline']
-- 30W GaN Schnellladegerät Dual-Port USB-A & USB-C (`30w-gan-schnellladegerat-dual-port-usb-a-usb-c-620000`): Typ-Auswahl, aber Variantenbilder nicht unterscheidbar
-- Wollschal Dreieck – Winter (`wollschal-dreieck-winter-611000`): KI-Übersetzung fehlt/abgelehnt: ['01 Black', '02 Red', '03 Dark Gray', '07 Coffee']
-- Weisser Woll- und Kaschmir-Schal mit Pompons (`weisser-woll-und-kaschmir-schal-mit-pompons-600800`): KI-Übersetzung fehlt/abgelehnt: ['Camel Yellow', 'Khaki', 'Beige', 'Milky White']
-- Gestreifter Natursteinring für Damen (`gestreifter-natursteinring-fur-damen-604801`): KI-Übersetzung fehlt/abgelehnt: ['Lapis Lazuli', 'Pearl', 'Turquoise']
-- Gestrickter Kapuzen-Schal mit Quasten (`gestrickter-kapuzen-schal-mit-quasten-607700`): KI-Übersetzung fehlt/abgelehnt: ['Wine Red', 'Rose Red', 'Yellow', 'Sky Blue']
-- Umhängetasche für Laptop (`umhangetasche-fur-laptop-620200`): KI-Übersetzung fehlt/abgelehnt: ['8005 Horizontal Black', '8005 Horizontal Style In Brown', '8005 Horizontal Khaki']
-- Marmor Seifenspender – Nordischer Stil (`marmor-seifenspender-nordischer-stil-637900`): KI-Übersetzung fehlt/abgelehnt: ['Circular', 'Square'] | ['White', 'Green', 'Black', 'Grey']
-- Aufbewahrungskorb aus Baumwollseil mit Löwenmuster (`aufbewahrungskorb-aus-baumwollseil-mit-lowenmu-620100`): KI-Übersetzung fehlt/abgelehnt: ['Beige Lion', 'Beige Giraffe', 'Pure White Lion', 'Pure White Giraffe']
-- Personalisierte bestickte Geschenktasche 50×70 cm (`personalisierte-bestickte-geschenktasche-50-70-614600`): KI-Übersetzung fehlt/abgelehnt: ['White', 'Dark Red', 'Purple', 'Yellow'] | ['Single Color Embroidery', 'Mixed Color Embroidery']
-- Musikalische Taschenuhr – individuell (`musikalische-taschenuhr-individuell-609100`): KI-Übersetzung fehlt/abgelehnt: ['Black P6001C', 'Gold P6002C', 'Silver P6003C', 'Rose Gold P6004C']
-- 3D-Kugel-Puzzle Weihnachtsanhänger – 60 Teile (`3d-kugel-puzzle-weihnachtsanhanger-60-teile-604800`): KI-Übersetzung fehlt/abgelehnt: ['Football 3D Puzzle', 'Basketball 3D Puzzle', 'Earth 3D Puzzle', 'Jupiter 3D Puzzle']
-- Smart Lamp mit RGB- und Warmlicht (`smart-lamp-mit-rgb-und-warmlicht-614600`): KI-Übersetzung fehlt/abgelehnt: ['Matter Version', 'Tuya Version']
-- Kissenbezug aus Baumwolle mit rutschfester Rückseite (`kissenbezug-aus-baumwolle-mit-rutschfester-ruc-635800`): KI-Übersetzung fehlt/abgelehnt: ['Coffee Color', 'Black', 'Starlink Brown', 'Starlink Black']
-- Sofaabdeckung aus Baumwolle, rutschfest, alljährlich (`sofaabdeckung-aus-baumwolle-rutschfest-alljahr-638900`): KI-Übersetzung fehlt/abgelehnt: ['Peach Joy', 'Pushu', 'Fruit']
-- Kissenbezug Baumwolle, 100 % – Muster (`kissenbezug-baumwolle-100-muster-601500`): KI-Übersetzung fehlt/abgelehnt: ['Olive Green', 'Scotland', 'Turmeric', 'Purplish Blue']
-- Geschenkverpackung aus Hartpapier (`geschenkverpackung-aus-hartpapier-606400`): KI-Übersetzung fehlt/abgelehnt: ['1 Brushed Silver', '2 Pure White', '3 Luxury Gold', '4 Pure Gold']
-- Keramik-Blumentopf für Pflanzen (`keramik-blumentopf-fur-pflanzen-606500`): KI-Übersetzung fehlt/abgelehnt: ['Light Blue', 'Blue Hanging White', 'Yellow', 'Green Ice']
-- Keramiktasse 400 ml 3D Zebra (`keramiktasse-400-ml-3d-zebra-624400`): KI-Übersetzung fehlt/abgelehnt: ['3D Zebra', '3D Sika Deer', '3D Elephant', '3D Orangutan']
-- Violetter Tontopf im Antikstil für den Schreibtisch (`violetter-tontopf-im-antikstil-fur-den-schreib-613000`): KI-Übersetzung fehlt/abgelehnt: ['Twilight Gray', 'Moon White', 'Lavender', 'Anonymous Glaze']
-- Neun Farben Augen-Malpalette mit Glitzer (`neun-farben-augen-malpalette-mit-glitzer-731328`): KI-Übersetzung fehlt/abgelehnt: ['P102 Toffee', 'P103 Chocolate', 'P107 Peach Disk', 'P108 Purple Taro New Color']
-- S138 UAV mit 360° Hinderniserkennung, Dualkamera (`s138-uav-mit-360-hinderniserkennung-dualkamera-618900`): KI-Übersetzung fehlt/abgelehnt: ['No Camera', 'Single E88 Black', 'Dual Camera', 's138'] | ['Single Electric Package', '2 Electric Package', '3 Electric Package']
-- Multifunktionales Babykissen zum Sitzenlernen (`multifunktionales-babykissen-zum-sitzenlernen-625200`): KI-Übersetzung fehlt/abgelehnt: ['Rhine Fish Set', 'Brunswick Cat Suit', 'Dolphin Sea Suit', 'Tongyan Xiyu Suit']
-- Sofaabdeckung mit geometrischem Muster – 180×130 cm (`sofaabdeckung-mit-geometrischem-muster-180-130-605500`): KI-Übersetzung fehlt/abgelehnt: ['Diamond Coffee Color', 'Diamond Shape In Gray', 'Totem Brown', 'Totem Gray']
-- Sommer-Bettlaken-Set Viskose (`sommer-bettlaken-set-viskose-866432`): KI-Übersetzung fehlt/abgelehnt: ['Summer Mat Army Green', 'Summer Mat Beige', 'Summer Mat Dark Blue', 'Summer Mat Elegant Gray'] | ['120x200cm+1pc Pillowcase', '150x200cm+2pc Pillowcase', '180x200cm+2pc Pillowcase', '200x220cm+2pc Pillowcase']
-- Kühle Sommerdecke mit Eiskrem-Muster (`kuhle-sommerdecke-mit-eiskrem-muster-615000`): KI-Übersetzung fehlt/abgelehnt: ['Pink And Gray Colorblock', 'Pink Pintuo', 'Pink Jade', 'Hulan'] | ['105x150cm', '150x200cm', '180x200cm', '200x230cm']
-- Smartwatch mit Bluetooth-Telefonie und Taschenlampe (`smartwatch-mit-bluetooth-telefonie-und-taschen-606100`): KI-Übersetzung fehlt/abgelehnt: ['TK18 Black', 'TK18 Blue', 'TK18 Red', 'TK18 Beige']
-- Kopftuch aus Modal-Baumwolle mit Marmor-Print (`kopftuch-aus-modal-baumwolle-mit-marmor-print-609900`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
-- Kashmirähnlicher Karomuster-Schal (`kashmirahnlicher-karomuster-schal-619500`): KI-Übersetzung fehlt/abgelehnt: ['WT1582 Black', 'WT1583 Pink', 'WT1585 Gray Big Plaid', 'WT1586 Red Plaid']
-- Business-Leisure Computer-Rucksack, 36-55 L, wasserabweisend (`business-leisure-computer-rucksack-36-55-l-was-602400`): KI-Übersetzung fehlt/abgelehnt: ['J001 Beige', 'J002 Beige', '2533style', '2571 Black']
-- Passendbettlaken 90–200 cm – Sommerbettlaken (`passendbettlaken-90-200-cm-sommerbettlaken-621500`): KI-Übersetzung fehlt/abgelehnt: ['Hulan', 'Pink Jade', 'Khaki', 'Beige'] | ['Single Summer Mat 90X200cm', 'Single Summer Mat 120X200cm', 'Single Summer Mat 150X200cm', 'Single Summer Mat 180X200cm']
-- Mehrzweck-Babypflaster für Muttermilch-Stillkissen (`mehrzweck-babypflaster-fur-muttermilch-stillki-629200`): KI-Übersetzung fehlt/abgelehnt: ['Forest Paradise', 'Cherry Blossom Powder', 'Sea Sky Blue', 'Oko Pink']
-- Kühlkörper mit digitaler Anzeige und Lichtabschaltung (`kuhlkorper-mit-digitaler-anzeige-und-lichtabsc-616500`): KI-Übersetzung fehlt/abgelehnt: ['TL07 White', 'TL07 Black', 'TL01 Transparent', 'X122 Transparent']
-- Zusammenklappbarer Carbon-Trekkingstock 110 cm (`zusammenklappbarer-carbon-trekkingstock-110-cm-625500`): KI-Übersetzung fehlt/abgelehnt: ['105CM Pair Folding', '110CM Pair Folding', '130CM Pair Folding', 'Gold Gray 110CM Folding']
-- Plaid-Schal in Mintgrün, Pink, Lila, Schwarz, Blau (`plaid-schal-in-mintgrun-pink-lila-schwarz-blau-605600`): KI-Übersetzung fehlt/abgelehnt: ['Mint Green', 'Retro Pink', 'Taro Purple', 'Classic Black']
-- Keramik-Essteller im nordischen Stil (`keramik-essteller-im-nordischen-stil-612800`): KI-Übersetzung fehlt/abgelehnt: ['E673 1 P 08182 75', 'E673 1 P 08182 85', 'E673 1 P 08182 95', 'E673 1 P 08182 105']
-- Keramikdüse für Sandstrahlgerät (`keramikduse-fur-sandstrahlgerat-fff6be`): KI-Übersetzung fehlt/abgelehnt: ['Karcher K', 'Commonly used', 'Copper joint']
-- Doppelseitiger Schal (`doppelseitiger-schal-621300`): KI-Übersetzung fehlt/abgelehnt: ['02 Korean Fans', '03 Apricot Beige', '05 Pink Orange', '06 Light Gray']
-- Seidenschal mit digitalem Print – leichte Luftigkeit (`seidenschal-mit-digitalem-print-leichte-luftig-637900`): KI-Übersetzung fehlt/abgelehnt: ['Golden Tulip', 'Paisley Paisley', 'Flowers Blossoming', 'Large Ginkgo Leaf']
-- Schal aus Wolle (`schal-aus-wolle-633300`): KI-Übersetzung fehlt/abgelehnt: ['Black', 'Red', 'Dark Gray', 'Barbie Pink']
-- Seidenschal quadratisch 53 × 53 cm (`seidenschal-quadratisch-53-53-cm-612900`): KI-Übersetzung fehlt/abgelehnt: ['Green Flower Mango', 'Blooming Flowers Yellow', 'Blooming Blue With Flowers', 'Blooming Flowers Green']
+- Klassischer Strickcardigan mit Rundhals (`klassischer-strickcardigan-mit-rundhals-637300`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Ultradünner Kartenhalter mit Anti-Diebstahl-Funktion (`ultradunner-kartenhalter-mit-anti-diebstahl-fu-617000`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Flanell-Body-Pyjama Familie (`flanell-body-pyjama-familie-602100`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Reise- und Passtasche RFID-Schutz, wasserfest (`reise-und-passtasche-rfid-schutz-wasserfest-629700`): KI-Übersetzung fehlt/abgelehnt: ['A5508 Small Size White', 'A5508 Small Size Black', 'A5508 Small Sizekhaki', 'A5508 Small Size Dark Blue']
+- Männer-Tasche RFID Anti-Diebstahl Ultra-dünn (`manner-tasche-rfid-anti-diebstahl-ultra-dunn-612100`): KI-Übersetzung fehlt/abgelehnt: ['Two Yellow Brown Head', 'Two Blue And Gray Heads', 'Two Retro Brown Head', 'Two Black Head']
+- Retro-Leder-Münzbeutel mit Schlüsselring (`retro-leder-munzbeutel-mit-schlusselring-604100`): KI-Übersetzung fehlt/abgelehnt: ['Crazy Horse Leather Brown', 'Oily Leather Brown', 'Brown', '9202 Oily Coffee']
+- Kleinhandtasche aus Rindleder (`kleinhandtasche-aus-rindleder-607900`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Familien-Pyjama mit Weihnachts-Print (`familien-pyjama-mit-weihnachts-print-607200`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Flanell-Camisole mit Leuchtprint – Schlafset (`flanell-camisole-mit-leuchtprint-schlafset-634700`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- Kartenbeutel mit Magnetverschluss (`kartenbeutel-mit-magnetverschluss-604600`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- RFID-Sicheres Kartenfach aus PU-Leder (`rfid-sicheres-kartenfach-aus-pu-leder-609400`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
+- RFID-Schutz Geldbörse mit Kartenfächern (`rfid-schutz-geldborse-mit-kartenfachern-629900`): Lesefehler: Zweitprüfer nicht erreichbar: Groq ohne Antwort — HTTPError: HTTP Error 429: Too Many Requests
