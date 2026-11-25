@@ -594,3 +594,4 @@
 2026-10-24T08:06:56.000Z	luxe-epic-elegant.wav	26.0	allgemein	bildreel-krone-seekonigin-fgabo64556	stimme:nein	fehler	quelle:bild
 2026-10-24T08:29:48.000Z	luxe-orchestra.wav	10.97	allgemein	bildreel-perucke-lola-biene-fgaor32528	stimme:nein	anteil	quelle:bild
 2026-11-24T21:45:50.000Z	luxe-epic-anime.wav	4.86	mode	bildreel-thermo-strumpfhose-mit-fleece-futter-065536	stimme:nein	anteil	quelle:bild
+2026-11-25T21:25:51.000Z	luxe-epic-hero.wav	42.64	home	bildreel-dreifach-led-makeup-spiegel-mit-usb-ladefunkti-605600	stimme:nein	fehler	quelle:bild
