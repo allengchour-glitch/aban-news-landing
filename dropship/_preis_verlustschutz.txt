@@ -353780,3 +353780,7 @@
 55889697767809	heben	19.90	20.90	16.24	2026-11-25	elektrischer-krallenschleifer-fur-haustiere-7e13ae
 55904659079553	heben	73.90	74.90	59.85	2026-11-25	led-gesichtsmaske-fur-schone-haut-620800
 55905316372865	heben	73.90	74.90	59.93	2026-11-25	vollkorn-leder-rucksack-618400
+56086969811329	heben	73.90	78.90	63.16	2026-11-25	vierfach-schnellladegerat-fur-elektrowerkzeuge-086016
+56100487037313	heben	71.90	75.90	61.28	2026-11-25	eleganter-lederrucksack-fur-herren-563392
+56105835299201	heben	73.90	93.90	75.95	2026-11-25	ersatzbatterie-fur-scooter-300736
+56118448161153	heben	73.90	74.90	59.86	2026-11-25	proled-intelligente-augenschutz-tischlampe-430016
