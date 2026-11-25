@@ -1,7 +1,6 @@
-# Google-Nachfrage-Lücke (automatisch, 2026-11-24 19:02 UTC)
+# Google-Nachfrage-Lücke (automatisch, 2026-11-25 20:25 UTC)
 
-Google-Landeseiten 180 T: 298. Neu bewertet: 1 — auftrag 1. CJ-Aufträge vorne eingereiht: 1.
+Google-Landeseiten 180 T: 304. Neu bewertet: 0 — . CJ-Aufträge vorne eingereiht: 0.
 
 | Seite | Sitz. | WK | Ergebnis | Suchbegriff / Grund |
 |---|---|---|---|---|
-| morgenstern-71-cm-fgabo73235 | 2 | 0 | auftrag | mace weapon |
