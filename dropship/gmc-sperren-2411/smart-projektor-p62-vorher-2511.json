@@ -1,0 +1,129 @@
+{
+ "id": "gid://shopify/Product/15525513822593",
+ "handle": "tragbarer-smart-projektor-p62-hd-auflosung-844800",
+ "title": "Tragbarer Smart-Projektor P62, HD-Auflösung",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Dieser tragbare Projektor P62 projiziert Inhalte von deinem Smartphone auf eine grössere Leinwand. Du verbindest dein Telefon über WLAN, um Filme zu streamen. Die Projektionsmethode ist die Frontprojektion. Die Helligkeit ist höher als bei gewöhnlichen tragbaren Projektoren. Das Gerät wiegt 1 kg und hat eine Leistung von 50 W bei einer Spannung von 110–240 V. Eingebaute Lautsprecher machen externe Audiogeräte überflüssig.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Verbinde dein Smartphone über WLAN.</li>\n<li>Helligkeit ist höher als bei ähnlichen Geräten.</li>\n<li>Integrierte Lautsprecher vorhanden.</li>\n<li>Wiegt 1 kg.</li>\n<li>Spannung von 110–240 V.</li>\n</ul>\n<div class=\"ls-produktdetails\">\n<h4>Produktdetails</h4>\n<ul>\n<li>\n<strong>Material:</strong> Kunststoff, Metall</li>\n<li>\n<strong>Spannung:</strong> 110-240 (V)</li>\n<li>\n<strong>Gewicht:</strong> 1 (kg)</li>\n<li>\n<strong>Leistung:</strong> 50 (w)</li>\n</ul>\n</div>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div><!-- ls-xsell-v1 --><p><strong>🛍️ Das könnte dir auch gefallen:</strong> <a href=\"/collections/trends-gadgets\">Trends &amp; Gadgets</a> · <a href=\"/collections/bestseller-premium-heroes\">Bestseller</a></p>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/70814358995329",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/72415558-05d3-4582-a736-a35b6a5a5746.jpg?v=1788596868",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814358962561",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/ee0947db-6749-44ca-8b1c-33ec008d3279.jpg?v=1788596869",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814359028097",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/e8d89e73-1975-4645-a043-eea693a75e43.jpg?v=1788596869",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814359060865",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/a1327b7a-82a4-4725-9b1d-e80f838485fa.jpg?v=1788596869",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70814359093633",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/57f2ab5c-b689-4bba-bead-e9fa04882fc0.jpg?v=1788596868",
+     "width": 1000,
+     "height": 1000
+    }
+   },
+   {
+    "id": "gid://shopify/Video/70839816356225",
+    "status": "READY"
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/68262626591111",
+    "title": "480P Android-Version",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70814359028097"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68262626623879",
+    "title": "480P Basis-Version",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70814359028097"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68262626656647",
+    "title": "480P Gleicher Bildschirm-Version",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70814359028097"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68262626689415",
+    "title": "720P Android-Version",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70814359093633"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68262626722183",
+    "title": "720P Basis-Version",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70814359093633"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68262626754951",
+    "title": "720P Gleicher Bildschirm-Version",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70814359093633"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

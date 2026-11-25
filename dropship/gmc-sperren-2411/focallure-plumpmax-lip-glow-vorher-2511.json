@@ -1,0 +1,134 @@
+{
+ "id": "gid://shopify/Product/15522213986689",
+ "handle": "focallure-plumpmax-lip-glow-high-shine-591616",
+ "title": "FOCALLURE PLUMPMAX Lip Glow High Shine",
+ "descriptionHtml": "<!-- ls-var-v1 --><p>Der FOCALLURE PLUMPMAX Lip Glow High Shine ist ein nicht klebriger Lipgloss, der deinen Lippen Glanz und Schimmer verleiht. Er ist in zehn verschiedenen Farben erhältlich und gehört zur FA-Serie von FOCALLURE. Die Formulierung ist darauf ausgelegt, die Lippen zu pflegen und ihnen ein pralleres Aussehen zu verleihen. Mit einer Haltbarkeit von drei Jahren ist dieses Produkt ein langanhaltender Begleiter für dein Make-up-Sortiment.</p><h3>Das zeichnet es aus</h3><ul>\n<li>Nicht klebrige Textur</li>\n<li>Verleiht Glanz und Schimmer</li>\n\n<li>Enthält Kokosnussextrakt, Jojobasamenöl, Pfefferminzöl und Vitamin E</li>\n</ul>\n<div style=\"background:#f7faf7;border:1px solid #d9e7d9;border-radius:10px;padding:11px 14px;margin:12px 0;font-size:14px;line-height:1.5;\">\n<strong>🛡️ Sorglos shoppen:</strong> ✅ Geprüfte Angaben · 🚚 Lieferung 10–20 Werktage · 🔄 30 Tage Rückgabe · 🇨🇭 Schweizer Shop · 💳 TWINT, Karte &amp; Klarna.</div>",
+ "media": {
+  "nodes": [
+   {
+    "id": "gid://shopify/MediaImage/78014931665287",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/hf_20261111_194426_bccfaff5-dab0-4680-9d79-a3f8d4db4752.png?v=1794427315",
+     "width": 1024,
+     "height": 1024
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652049793",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614838998274.jpg?v=1788244065",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652082561",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614838998283.jpg?v=1788244065",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652115329",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614838998310.jpg?v=1788244065",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652148097",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614838998288.jpg?v=1788244065",
+     "width": 800,
+     "height": 800
+    }
+   },
+   {
+    "id": "gid://shopify/MediaImage/70746652180865",
+    "status": "READY",
+    "image": {
+     "url": "https://cdn.shopify.com/s/files/1/0943/6856/3585/files/1614838998279.jpg?v=1788244065",
+     "width": 800,
+     "height": 800
+    }
+   }
+  ]
+ },
+ "variants": {
+  "nodes": [
+   {
+    "id": "gid://shopify/ProductVariant/68122245267847",
+    "title": "Schwarz",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70746652180865"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245300615",
+    "title": "Weiss",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70746652082561"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245333383",
+    "title": "Rot",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70746652049793"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245366151",
+    "title": "Blau",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70746652115329"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245398919",
+    "title": "Grün",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/70746652148097"
+      }
+     ]
+    }
+   },
+   {
+    "id": "gid://shopify/ProductVariant/68122245431687",
+    "title": "Gelb",
+    "media": {
+     "nodes": [
+      {
+       "id": "gid://shopify/MediaImage/78014931665287"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

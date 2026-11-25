@@ -54407,3 +54407,6 @@ pendelleuchte-linear-spotlight-610400	hg-13	Beleuchtung	2026-11-24T17:59Z
 neon-licht-mit-hundemotiv-40x32-cm-618000	hg-13	Beleuchtung	2026-11-24T17:59Z
 kristallglas-nachttischlampe-mit-kupfergestell-614400	hg-13	Beleuchtung	2026-11-24T17:59Z
 kinderplusch-schuhe-mit-klettverschluss-602300	tg-5	Spielzeug & Spiele	2026-11-24T22:13Z
+standkollar-fleece-workjacke-fur-manner-628900	aa-1	Trend-Produkt	2026-11-25T03:37Z
+corduroy-jacke-mit-schaumstofffleece-herren-m-616000	aa-1	Herrenmode	2026-11-25T03:37Z
+fleece-gefullte-winterjacke-mit-kapuze-634500	aa-1	Trend-Produkt	2026-11-25T03:37Z

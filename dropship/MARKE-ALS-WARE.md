@@ -2,7 +2,7 @@
 
 Geschrieben von `automation/marke_als_ware.py` (Aufseher täglich). Jede Zeile = aktives Produkt mit Markenname als Ware, ohne Kompatibilitätsangabe und ohne Lizenz-Lieferant. Automatisch: Tag `marken-pruefen` (raus aus Google). **Nach Bildprüfung urteilen:** Fälschung → `--draften ID GRUND=marke-faelschung`; echte/erlaubte Ware → Tag `marke-ok`; Fehltitel → Titel ohne Marke umschreiben (+ 301).
 
-Stand 2026-11-24 07:23 UTC · 12 offen
+Stand 2026-11-25 03:37 UTC · 12 offen
 
 | Produkt | Marke | Titel |
 |---|---|---|

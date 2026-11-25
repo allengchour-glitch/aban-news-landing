@@ -44,3 +44,9 @@ Bilanz: {"umgesetzt": 35, "abgelehnt": 2, "nichts": 3, "fehler": 0}
 | kabelloser-automatischer-lockenstab-mit- | variantenbild_setzen | #7 (800×599) zeigt genau den grauen Lockenstab mit pinken Ringen allein, ohne Haarsträhne und ohne Einblendung. Es ist d |
 | elektrischer-wimpernkrummer-mit-wiederau | neues_bild_variante | Bild zu klein (97 px) → weisser Krümmer scharf aus Hauptbild #1 ausgeschnitten, 1000×1000 (Prüfer-Vorschlag, selbst ange |
 | hundeweste-in-jeansoptik-626560 | variantenbild_setzen | «lebende Tiere»: Rosa-Variantenbild #8 war 277-px-Hundegesicht → #14 (1080 px, Weste vollständig als Hauptmotiv; Prüfer- |
+
+## Nachtrag 25.11. 03:40 UTC (Routine «Google-Bild-Overlay 11 Produkte»)
+9 der 11 Overlay-Produkte waren schon am 24.11. korrigiert. Offen waren 2, jetzt erledigt (ohne Gemini, selbst angesehen, OCR leer):
+- focallure-plumpmax-lip-glow: Farbname-Text (#3 ROSE QUARTZ …) weiss übermalt, 5 neue Variantenbilder
+- tragbarer-smart-projektor-p62: 6 Varianten von «Upgrade 480P/720P»-Bildern auf Bild 1 ohne Text
+Alte Bilder bleiben in der Galerie. Sicherungen *-vorher-2511.json.

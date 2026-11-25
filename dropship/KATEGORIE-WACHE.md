@@ -1,11 +1,13 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-24T22:13Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-25T03:37Z
 
-Aktive gescannt: 1 · ohne Kategorie: 1 · heute gesetzt: 1 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 3 · ohne Kategorie: 3 · heute gesetzt: 3 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Beispiele (heute gesetzt)
 
-- kinderplusch-schuhe-mit-klettverschluss-602300 · Spielzeug & Spiele → Toys & Games > Toys
+- standkollar-fleece-workjacke-fur-manner-628900 · Trend-Produkt → Apparel & Accessories > Clothing
+- corduroy-jacke-mit-schaumstofffleece-herren-m-616000 · Herrenmode → Apparel & Accessories > Clothing
+- fleece-gefullte-winterjacke-mit-kapuze-634500 · Trend-Produkt → Apparel & Accessories > Clothing
 
