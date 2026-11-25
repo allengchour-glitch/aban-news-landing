@@ -353788,3 +353788,9 @@
 56157781000577	heben	72.90	73.90	59.27	2026-11-25	elektrische-popcornmaschine-8d42d7
 56158390780289	heben	73.90	78.90	63.15	2026-11-25	elektrischer-entsafter-800w-c7813d
 56159401771393	heben	73.90	74.90	60.20	2026-11-25	elektrischer-knoblauchschaler-269553
+67665658184071	heben	72.90	73.90	59.38	2026-11-25	herren-laptoptasche-aus-rindsleder-bd1547
+67668282147207	heben	71.90	74.90	60.53	2026-11-25	fotorucksack-fur-spiegelreflexkamera-0ef51b
+67674020675975	heben	71.90	74.90	60.53	2026-11-25	fotorucksack-fur-spiegelreflexkamera-0ef51b
+67674020708743	heben	71.90	74.90	60.53	2026-11-25	fotorucksack-fur-spiegelreflexkamera-0ef51b
+67674020741511	heben	71.90	74.90	60.53	2026-11-25	fotorucksack-fur-spiegelreflexkamera-0ef51b
+67720179188103	heben	72.90	73.90	59.63	2026-11-25	schwarzer-retro-leder-rucksack-fur-herren-003008
