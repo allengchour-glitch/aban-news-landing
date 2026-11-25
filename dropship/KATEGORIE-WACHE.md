@@ -1,13 +1,14 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-25T03:37Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-25T05:37Z
 
-Aktive gescannt: 3 · ohne Kategorie: 3 · heute gesetzt: 3 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
+Aktive gescannt: 4 · ohne Kategorie: 4 · heute gesetzt: 4 (SCHARF, CAP 1500) · danach offen: 0 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Beispiele (heute gesetzt)
 
-- standkollar-fleece-workjacke-fur-manner-628900 · Trend-Produkt → Apparel & Accessories > Clothing
-- corduroy-jacke-mit-schaumstofffleece-herren-m-616000 · Herrenmode → Apparel & Accessories > Clothing
-- fleece-gefullte-winterjacke-mit-kapuze-634500 · Trend-Produkt → Apparel & Accessories > Clothing
+- grosse-plastik-schreibwarenbox-mit-taschen-622000 · Büro & Home Office → Home & Garden > Household Supplies > Storage & Organization
+- auto-luftpumpe-mit-stromversorgung-605600 · Auto-Zubehör → Vehicles & Parts > Vehicle Parts & Accessories
+- manner-strickcardigan-mit-v-ausschnitt-619600 · Trend-Produkt → Apparel & Accessories > Clothing
+- langsocken-aus-wolle-ein-size-fur-manner-613400 · Trend-Produkt → Apparel & Accessories > Clothing
 

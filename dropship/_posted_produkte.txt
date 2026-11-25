@@ -588,3 +588,6 @@ pid:15483793703297
 slug:dreifach-ladegerat
 slug:maske-einhorn-weiss-fga996653
 name:maskeeinhornweiss
+slug:cjreel-cjsj179397501az
+pid:15450831192449
+slug:magnetische-biegbare-auto-halterung-mit-15w-wi

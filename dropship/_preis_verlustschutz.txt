@@ -348589,3 +348589,12 @@
 67814768640391	heben	34.90	37.90	29.89	2026-11-25	mid-calf-lederstiefel-mit-schnallen-design-605900
 67814768673159	heben	34.90	37.90	30.22	2026-11-25	mid-calf-lederstiefel-mit-schnallen-design-605900
 67814768705927	heben	34.90	38.90	30.55	2026-11-25	mid-calf-lederstiefel-mit-schnallen-design-605900
+67790030635399	heben	34.90	35.90	28.66	2026-11-25	mini-elektro-kochtopf-605500
+67790030733703	heben	34.90	35.90	28.66	2026-11-25	mini-elektro-kochtopf-605500
+67790030832007	heben	34.90	35.90	28.66	2026-11-25	mini-elektro-kochtopf-605500
+67841675886983	heben	33.90	34.90	27.29	2026-11-25	rc-motorrad-fur-kinder-elektrisch-806400
+67841675952519	heben	33.90	34.90	27.29	2026-11-25	rc-motorrad-fur-kinder-elektrisch-806400
+67874278801799	heben	27.90	28.90	22.46	2026-11-25	mini-drohne-mit-hd-kamera-e2103e
+67874278834567	heben	34.90	35.90	28.80	2026-11-25	mini-drohne-mit-hd-kamera-e2103e
+67874278965639	heben	27.90	28.90	22.46	2026-11-25	mini-drohne-mit-hd-kamera-e2103e
+67874278998407	heben	27.90	28.90	22.46	2026-11-25	mini-drohne-mit-hd-kamera-e2103e
