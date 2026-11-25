@@ -304,7 +304,10 @@ TITEL_ZIEL = [
     # veröffentlicht (gefunden von weiterleitung_ziel_wache.py) → «Ladegeräte & Powerbanks» (elektronik-laden, Tag kat-laden)
     ("dashcam", "auto-kfz-zubehoer"), ("powerbank", "elektronik-laden"),
     ("kulturbeutel", "sub-reise"), ("koffer", "sub-reise"),
-    ("wolldecke", "kissen-wohntextilien"), ("kuscheldecke", "kissen-wohntextilien"),
+    # 25.11.2026: «Heizbare Kuscheldecke mit Ärmeln und Kapuze» (ChatGPT-Landeseite, Bestellung #1029) landete nach dem
+    # Draften auf «Kissen & Wohntextilien» (1'649 Produkte) — es gibt die engere Kollektion «Kuscheldecken & Heizdecken».
+    ("heizdecke", "kuschel-heizdecken"), ("kuscheldecke", "kuschel-heizdecken"),
+    ("wolldecke", "kissen-wohntextilien"),
     # 14.10.2026: Stiefel fielen über den Typ «Damenschuhe» auf Sneaker («Winter Mid-Calf Stiefel aus Faux-Fell» → Sneaker &
     # Sportschuhe). Ziel ist die Endadresse (schuhe-stiefel ist selbst eine 301; Shopify lehnt eine Weiterleitung darauf ab).
     ("stiefel", "sub-stiefel-boots"),
@@ -612,6 +615,8 @@ KANARIEN_TITEL = [
     ("Pool-Volleyball Set", "pool"),
     ("Schraubendreher Set 24-teilig", "handwerkzeug"),
     ("Arbeitsschuhe Stahlkappe", "sub-wander-arbeitsschuhe"),
+    ("Heizbare Kuscheldecke mit Ärmeln und Kapuze", "kuschel-heizdecken"),
+    ("USB Heizdecke 150x80", "kuschel-heizdecken"),
 ]
 
 
