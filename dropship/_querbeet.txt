@@ -192,3 +192,8 @@ gid://shopify/Product/16732220031367	2026-11-24	Kinder & Baby
 gid://shopify/Product/16732279636359	2026-11-24	Spielzeug & Plüsch
 gid://shopify/Product/16616667185543	2026-11-24	Sport, Fitness & Outdoor
 gid://shopify/Product/16656672424327	2026-11-24	Taschen & Rucksäcke
+gid://shopify/Product/16732288254343	2026-11-25	Damen-Mode
+gid://shopify/Product/16732296184199	2026-11-25	Herren-Mode
+gid://shopify/Product/16732009070983	2026-11-25	Schuhe
+gid://shopify/Product/16733918822791	2026-11-25	Wohnen & Dekoration
+gid://shopify/Product/16733439492487	2026-11-25	Kinder & Baby
