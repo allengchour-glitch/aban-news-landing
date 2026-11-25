@@ -1,19 +1,19 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 16:08 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-25 15:45 UTC, Stand 2026-11-25 16:21 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **10'856**
-- Optionen mit englischen Werten (Kandidaten): 509
+- Produkte gesehen: **19'206**
+- Optionen mit englischen Werten (Kandidaten): 804
 - Optionen übersetzt: **1** · Werte übersetzt: **1**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 1'313
+- Werte mit unbekanntem Wort (unverändert): 2'491
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kollision-nach-uebersetzung»: 19
-- übersprungen «kleidungsstueck-im-wert»: 12
+- übersprungen «kollision-nach-uebersetzung»: 24
+- übersprungen «kleidungsstueck-im-wert»: 15
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
 
@@ -48,6 +48,11 @@
 - `15453570597249` [Farbe] hochtaillierte-caprihosen-638600: Marineblaublau → Marineblau
 - `15453761798529` [Farbe] lassiger-waffelstrick-stehkragen-pullover-mit-610300: Marineblaublau → Marineblau
 - `15453761929601` [Farbe] farbige-hoodie-mit-kordelzug-636100: Marineblaublau → Marineblau
+- `15454132371841` [Farbe] mid-rise-flared-jeans-629100: Medium Blue → Mittelblau
+- `15454235689345` [Farbe] high-waist-yoga-pants-mit-beutlifting-effekt-632800: Kaffeebraun-Braun → Kaffeebraun
+- `15455729582465` [Farbe] sonnenschutzpullover-mit-kragen-und-kurzarmel-629700: Mustard Yellow → Senfgelb
+- `15456157794689` [Farbe] weite-cropped-hosen-620200: Marineblaublau → Marineblau
+- `15466024305025` [Farbe] elegantes-a-linien-kleid-mit-ruschenarmeln-620600: Polka Dot → Gepunktet; Marineblaublau → Marineblau
 
 ## C · Besuchte Seiten: Werte, die stehen blieben (unbekanntes Wort)
 
@@ -70,5 +75,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 45, `powder` 43, `diamond` 37, `high` 24, `end` 23, `eyelashes` 23, `plush` 22, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `one` 19, `lamp` 19, `holder` 19, `cherry` 18, `line` 18, `tea` 17, `degrees` 17, `⟨satzbau:praeposition⟩` 17, `blossom` 15, `tc` 15, `to` 14, `carbon` 14, `elegant` 11, `bag` 11, `shell` 11, `titanium` 11, `sunflower` 11, `size` 11, `hat` 10, `color` 10, `⟨satzbau:adjektivfolge⟩` 10, `fiber` 10, `ding` 10, `three` 9, `hot` 9, `four` 9, `insert` 9, `cocoa` 9, `promax` 9, `ball` 9, `data` 9, `milk` 8, `full` 8, `gun` 8, `electric` 8, `glittering` 8, `waist` 8, `rope` 8, `ice` 8, `soft` 8, `stone` 8, `sport` 8, `button` 8, `machine` 7, `washed` 7, `back` 7, `filter` 7, `suit` 7
+`powder` 87, `⟨satzbau:adjektiv-vor-nomen⟩` 85, `french` 84, `shell` 47, `⟨satzbau:mass-ohne-einheit⟩` 45, `diamond` 40, `cherry` 39, `chain` 39, `elegant` 34, `high` 33, `space` 33, `tc` 31, `intergold` 28, `four` 27, `end` 26, `plush` 26, `happy` 25, `tea` 24, `you` 24, `eyelashes` 23, `one` 22, `blossom` 21, `of` 21, `deer` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `oxford` 20, `lamp` 19, `holder` 19, `full` 18, `line` 18, `lotus` 18, `carbon` 18, `titanium` 18, `degrees` 17, `⟨satzbau:praeposition⟩` 17, `color` 16, `waist` 16, `to` 16, `love` 16, `the` 16, `rain` 16, `pin` 15, `rabbit` 15, `ice` 15, `strawberry` 15, `light` 14, `basic` 14, `three` 13, `milk` 13, `bag` 13, `starlight` 13, `deep` 13, `no` 13, `cloud` 13, `card` 13, `ink` 13, `cup` 13
 
