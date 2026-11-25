@@ -353765,3 +353765,6 @@
 67666023776647	heben	74.90	106.90	85.97	2026-11-25	reisetasche-aus-leder-fur-herren-599360
 67665533862279	heben	74.90	75.90	60.83	2026-11-25	schultertasche-aus-erster-schicht-rindsleder-4a2405
 67673184305543	heben	74.90	75.90	60.83	2026-11-25	schultertasche-aus-erster-schicht-rindsleder-4a2405
+67676016083335	heben	75.90	78.90	63.18	2026-11-25	marmor-tischlampe-mit-klopf-funktion-633000
+67714826174855	heben	76.90	77.90	62.47	2026-11-25	grosses-lederreise-backpack-fur-freizeit-776064
+67738802815367	heben	76.90	77.90	62.47	2026-11-25	grosses-lederreise-backpack-fur-freizeit-776064
