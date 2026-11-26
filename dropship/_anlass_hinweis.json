@@ -1,21 +1,21 @@
 {
- "stand": "2026-10-23T08:20Z",
+ "stand": "2026-11-26T06:55Z",
  "scharf": true,
  "hinweise": [
   {
-   "tag": "halloween",
-   "anlass": "Halloween",
-   "datum": "20261031",
-   "datum_text": "Sa, 31. Okt.",
-   "ab": "20261002",
-   "kipptag": "20261015",
-   "schnell_bis": "20261026",
-   "schnell_bis_text": "Mo, 26. Okt.",
-   "link": "/collections/halloween"
+   "tag": "weihnachten",
+   "anlass": "Weihnachten",
+   "datum": "20261224",
+   "datum_text": "Do, 24. Dez.",
+   "ab": "20261126",
+   "kipptag": "20261209",
+   "schnell_bis": "20261220",
+   "schnell_bis_text": "So, 20. Dez.",
+   "link": ""
   }
  ],
  "metafeld_aktuell": true,
- "metafeld_updated": "2026-10-13T20:07:56Z",
+ "metafeld_updated": "2026-11-26T06:55:15Z",
  "block_im_theme": true,
  "befunde": [],
  "zubehoer": {

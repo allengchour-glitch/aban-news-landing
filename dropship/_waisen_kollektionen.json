@@ -1,12 +1,12 @@
 {
- "stand": "2026-11-24T08:12Z",
- "ziele": 1547,
- "waisen": 537,
+ "stand": "2026-11-26T06:55Z",
+ "ziele": 1563,
+ "waisen": 552,
  "liste": [
   {
    "handle": "mengenrabatt-ab-2-stueck",
    "titel": "Mengenrabatt: ab 2 Stück 5 %, ab 3 Stück 10 %",
-   "aktiv": 4629
+   "aktiv": 4628
   },
   {
    "handle": "mengenrabatt-ab-3-stueck",
@@ -160,7 +160,7 @@
   },
   {
    "handle": "canvas-retro",
-   "titel": "Retro- & Vintage-Rucksäcke",
+   "titel": "Retrorucksäcke & Vintage-Rucksäcke",
    "aktiv": 156
   },
   {
@@ -236,7 +236,7 @@
   {
    "handle": "laptop-reise",
    "titel": "Laptop-Rucksäcke für Geschäftsreisen",
-   "aktiv": 114
+   "aktiv": 113
   },
   {
    "handle": "herren-hemden-leinen",
@@ -275,7 +275,7 @@
   },
   {
    "handle": "freizeit-alltag",
-   "titel": "Alltags- & Stadtrucksäcke",
+   "titel": "Alltagsrucksäcke & Stadtrucksäcke",
    "aktiv": 93
   },
   {
@@ -295,7 +295,7 @@
   },
   {
    "handle": "freizeit-mode",
-   "titel": "Mode- & Stil-Rucksäcke",
+   "titel": "Moderucksäcke & Stil-Rucksäcke",
    "aktiv": 92
   },
   {
@@ -435,7 +435,7 @@
   },
   {
    "handle": "leder-retro",
-   "titel": "Retro- & Vintage-Lederrucksäcke",
+   "titel": "Retrolederrucksäcke & Vintage-Lederrucksäcke",
    "aktiv": 73
   },
   {
@@ -465,7 +465,7 @@
   },
   {
    "handle": "drohnen-mini-faltbar",
-   "titel": "Mini- & Falt-Drohnen",
+   "titel": "Minidrohnen & Falt-Drohnen",
    "aktiv": 65
   },
   {
@@ -484,14 +484,14 @@
    "aktiv": 64
   },
   {
-   "handle": "laptop-leder",
-   "titel": "Laptoprucksäcke aus Leder & Kunstleder",
-   "aktiv": 64
-  },
-  {
    "handle": "wd-business",
    "titel": "Wasserdichte Business-Rucksäcke",
    "aktiv": 64
+  },
+  {
+   "handle": "laptop-leder",
+   "titel": "Laptoprucksäcke aus Leder & Kunstleder",
+   "aktiv": 63
   },
   {
    "handle": "wander-gross",
@@ -509,11 +509,6 @@
    "aktiv": 63
   },
   {
-   "handle": "leder-business",
-   "titel": "Lederrucksäcke für Business & Laptop",
-   "aktiv": 62
-  },
-  {
    "handle": "damen-pullover-rundhals",
    "titel": "Rundhalspullover",
    "aktiv": 61
@@ -521,6 +516,11 @@
   {
    "handle": "vintage-retro-schmuck-armbaender",
    "titel": "Vintage-Armbänder & -Armreifen",
+   "aktiv": 61
+  },
+  {
+   "handle": "leder-business",
+   "titel": "Lederrucksäcke für Business & Laptop",
    "aktiv": 61
   },
   {
@@ -539,6 +539,11 @@
    "aktiv": 60
   },
   {
+   "handle": "black-week",
+   "titel": "Black Week: 15 % ab CHF 80",
+   "aktiv": 60
+  },
+  {
    "handle": "damen-ballerinas-loafer-mokassins",
    "titel": "Loafer & Mokassins",
    "aktiv": 59
@@ -551,11 +556,6 @@
   {
    "handle": "laptop-mit-usb",
    "titel": "Laptop-Rucksäcke mit USB-Anschluss",
-   "aktiv": 58
-  },
-  {
-   "handle": "konsolen-ladestationen",
-   "titel": "Ladestationen & Netzteile",
    "aktiv": 58
   },
   {
@@ -594,6 +594,11 @@
    "aktiv": 56
   },
   {
+   "handle": "konsolen-ladestationen",
+   "titel": "Ladestationen & Netzteile",
+   "aktiv": 56
+  },
+  {
    "handle": "armbaender-metall-edelstahl",
    "titel": "Metall- & Edelstahlarmbänder",
    "aktiv": 56
@@ -610,7 +615,7 @@
   },
   {
    "handle": "schul-studenten",
-   "titel": "Studenten- & Uni-Rucksäcke",
+   "titel": "Studentenrucksäcke & Uni-Rucksäcke",
    "aktiv": 54
   },
   {
@@ -634,11 +639,6 @@
    "aktiv": 53
   },
   {
-   "handle": "leder-kunst",
-   "titel": "Kunstleder-Rucksäcke",
-   "aktiv": 53
-  },
-  {
    "handle": "powerbanks-mini",
    "titel": "Mini & kompakt",
    "aktiv": 53
@@ -656,6 +656,11 @@
   {
    "handle": "freizeit-sport",
    "titel": "Sportrucksäcke",
+   "aktiv": 52
+  },
+  {
+   "handle": "leder-kunst",
+   "titel": "Kunstleder-Rucksäcke",
    "aktiv": 52
   },
   {
@@ -694,11 +699,6 @@
    "aktiv": 50
   },
   {
-   "handle": "beamer-mini-tragbar",
-   "titel": "Mini-Beamer",
-   "aktiv": 50
-  },
-  {
    "handle": "backformen-kuchenformen",
    "titel": "Kuchen- & Brotformen",
    "aktiv": 50
@@ -721,6 +721,11 @@
   {
    "handle": "kabellos-laden-magnetisch",
    "titel": "Magnetisch & MagSafe",
+   "aktiv": 49
+  },
+  {
+   "handle": "beamer-mini-tragbar",
+   "titel": "Mini-Beamer",
    "aktiv": 49
   },
   {
@@ -825,7 +830,7 @@
   },
   {
    "handle": "luftbefeuchter-mini-usb",
-   "titel": "Mini- & USB-Luftbefeuchter",
+   "titel": "Miniluftbefeuchter & USB-Luftbefeuchter",
    "aktiv": 45
   },
   {
@@ -1049,6 +1054,11 @@
    "aktiv": 38
   },
   {
+   "handle": "startseite-pool-trends",
+   "titel": "Startseite Pool Trends",
+   "aktiv": 38
+  },
+  {
    "handle": "damen-tops-tank",
    "titel": "Tanktops",
    "aktiv": 37
@@ -1070,12 +1080,7 @@
   },
   {
    "handle": "velo-velo",
-   "titel": "Velo- & Fahrradrucksäcke",
-   "aktiv": 37
-  },
-  {
-   "handle": "leder-reise",
-   "titel": "Leder-Reiserucksäcke",
+   "titel": "Velorucksäcke & Fahrradrucksäcke",
    "aktiv": 37
   },
   {
@@ -1094,8 +1099,8 @@
    "aktiv": 36
   },
   {
-   "handle": "akkus-18650-lithium",
-   "titel": "Lithium-Akkus & 18650",
+   "handle": "leder-reise",
+   "titel": "Leder-Reiserucksäcke",
    "aktiv": 36
   },
   {
@@ -1107,11 +1112,6 @@
    "handle": "tier-naepfe-faltbar",
    "titel": "Faltbare Reisenäpfe & Trinkflaschen",
    "aktiv": 36
-  },
-  {
-   "handle": "damen-dessous-shapewear",
-   "titel": "Shapewear",
-   "aktiv": 35
   },
   {
    "handle": "damen-pullover-rollkragen",
@@ -1160,8 +1160,13 @@
   },
   {
    "handle": "ventilatoren-hand-mini",
-   "titel": "Hand- & Mini-Ventilatoren",
+   "titel": "Handventilatoren & Mini-Ventilatoren",
    "aktiv": 35
+  },
+  {
+   "handle": "damen-dessous-shapewear",
+   "titel": "Shapewear",
+   "aktiv": 34
   },
   {
    "handle": "damen-hoodies-fleece",
@@ -1280,7 +1285,7 @@
   },
   {
    "handle": "reise-canvas",
-   "titel": "Canvas- & Retro-Reiserucksäcke",
+   "titel": "Canvasreiserucksäcke & Retro-Reiserucksäcke",
    "aktiv": 32
   },
   {
@@ -1339,11 +1344,6 @@
    "aktiv": 31
   },
   {
-   "handle": "damen-dessous-bh",
-   "titel": "BHs, Dessous & Korsetts",
-   "aktiv": 30
-  },
-  {
    "handle": "damen-roecke-plissee",
    "titel": "Plissee- & Faltenröcke",
    "aktiv": 30
@@ -1394,14 +1394,14 @@
    "aktiv": 30
   },
   {
-   "handle": "staubsauger-saugroboter",
-   "titel": "Saugroboter",
-   "aktiv": 30
-  },
-  {
    "handle": "saison-christbaumschmuck",
    "titel": "Christbaumschmuck & Ornamente",
    "aktiv": 30
+  },
+  {
+   "handle": "damen-dessous-bh",
+   "titel": "BHs, Dessous & Korsetts",
+   "aktiv": 29
   },
   {
    "handle": "damen-hosen-jogging",
@@ -1455,7 +1455,7 @@
   },
   {
    "handle": "blumen-schmetterlingsschmuck-armbaender",
-   "titel": "Blumen- & Schmetterlings-Armbänder",
+   "titel": "Blumenarmbänder & Schmetterlings-Armbänder",
    "aktiv": 28
   },
   {
@@ -1470,12 +1470,17 @@
   },
   {
    "handle": "manikuere-sets",
-   "titel": "Maniküre- & Pediküre-Sets",
+   "titel": "Maniküresets & Pediküre-Sets",
    "aktiv": 28
   },
   {
    "handle": "bar-wein-cocktail",
-   "titel": "Cocktail- & Bar-Zubehör",
+   "titel": "Cocktailzubehör & Bar-Zubehör",
+   "aktiv": 28
+  },
+  {
+   "handle": "staubsauger-saugroboter",
+   "titel": "Saugroboter",
    "aktiv": 28
   },
   {
@@ -1510,12 +1515,7 @@
   },
   {
    "handle": "wander-klettern",
-   "titel": "Kletter- & Bergsteigerrucksäcke",
-   "aktiv": 27
-  },
-  {
-   "handle": "beamer-wlan-smart",
-   "titel": "Mit WLAN & Android",
+   "titel": "Kletterrucksäcke & Bergsteigerrucksäcke",
    "aktiv": 27
   },
   {
@@ -1569,8 +1569,8 @@
    "aktiv": 26
   },
   {
-   "handle": "kameras-wlan",
-   "titel": "WLAN-Kameras",
+   "handle": "beamer-wlan-smart",
+   "titel": "Mit WLAN & Android",
    "aktiv": 26
   },
   {
@@ -1604,6 +1604,11 @@
    "aktiv": 26
   },
   {
+   "handle": "startseite-pool-winter",
+   "titel": "Startseite Pool Winter",
+   "aktiv": 26
+  },
+  {
    "handle": "damen-blusen-satin",
    "titel": "Satin- & Seidenblusen",
    "aktiv": 25
@@ -1625,7 +1630,7 @@
   },
   {
    "handle": "blumen-schmetterlingsschmuck-ohrringe",
-   "titel": "Blumen- & Schmetterlings-Ohrringe",
+   "titel": "Blumenohrringe & Schmetterlings-Ohrringe",
    "aktiv": 25
   },
   {
@@ -1636,6 +1641,11 @@
   {
    "handle": "kinder-kinder",
    "titel": "Kinderrucksäcke",
+   "aktiv": 25
+  },
+  {
+   "handle": "kameras-wlan",
+   "titel": "WLAN-Kameras",
    "aktiv": 25
   },
   {
@@ -1681,11 +1691,6 @@
   {
    "handle": "servierplatten-tabletts",
    "titel": "Tabletts",
-   "aktiv": 25
-  },
-  {
-   "handle": "startseite-pool-trends",
-   "titel": "Startseite Pool Trends",
    "aktiv": 25
   },
   {
@@ -1744,18 +1749,13 @@
    "aktiv": 24
   },
   {
-   "handle": "staubsauger-handstaubsauger",
-   "titel": "Handstaubsauger & Zubehör",
-   "aktiv": 24
-  },
-  {
    "handle": "saison-adventskalender",
    "titel": "Adventskalender & Countdown",
    "aktiv": 24
   },
   {
    "handle": "aroma-diffuser-flamme-licht",
-   "titel": "Mit Flammen- oder LED-Licht",
+   "titel": "Mit Flammenlicht oder LED-Licht",
    "aktiv": 24
   },
   {
@@ -1820,7 +1820,7 @@
   },
   {
    "handle": "kinderwagen-kindersitz-zubehoer",
-   "titel": "Kinderwagen- & Kindersitz-Zubehör",
+   "titel": "Kinderwagenzubehör & Kindersitz-Zubehör",
    "aktiv": 23
   },
   {
@@ -1861,6 +1861,21 @@
   {
    "handle": "reinigung-mopps-tuecher",
    "titel": "Mopps, Besen & Tücher",
+   "aktiv": 23
+  },
+  {
+   "handle": "staubsauger-handstaubsauger",
+   "titel": "Handstaubsauger & Zubehör",
+   "aktiv": 23
+  },
+  {
+   "handle": "wandbilder-uf-poster",
+   "titel": "Poster & Kunstdrucke",
+   "aktiv": 23
+  },
+  {
+   "handle": "startseite-pool-mehr",
+   "titel": "Startseite Pool Mehr",
    "aktiv": 23
   },
   {
@@ -1931,11 +1946,6 @@
   {
    "handle": "vorhaenge-samt-leinen",
    "titel": "Samt, Chenille & Leinen",
-   "aktiv": 22
-  },
-  {
-   "handle": "wandbilder-uf-poster",
-   "titel": "Poster & Kunstdrucke",
    "aktiv": 22
   },
   {
@@ -2089,8 +2099,13 @@
    "aktiv": 20
   },
   {
+   "handle": "akkus-18650-lithium",
+   "titel": "Lithium-Akkus & 18650",
+   "aktiv": 20
+  },
+  {
    "handle": "auto-organizer-ruecksitz",
-   "titel": "Rücksitz- & Sitzlücken-Organizer",
+   "titel": "Rücksitzorganizer & Sitzlücken-Organizer",
    "aktiv": 20
   },
   {
@@ -2120,7 +2135,7 @@
   },
   {
    "handle": "pfannen-woks-omelett",
-   "titel": "Omelett- & Crêpe-Pfannen",
+   "titel": "Omelettpfannen & Crêpe-Pfannen",
    "aktiv": 20
   },
   {
@@ -2135,7 +2150,22 @@
   },
   {
    "handle": "ventilatoren-tisch-usb",
-   "titel": "Tisch- & USB-Ventilatoren",
+   "titel": "Tischventilatoren & USB-Ventilatoren",
+   "aktiv": 20
+  },
+  {
+   "handle": "startseite-pool-weihnachten",
+   "titel": "Startseite Pool Weihnachten",
+   "aktiv": 20
+  },
+  {
+   "handle": "startseite-pool-damenmode",
+   "titel": "Startseite Pool Damenmode",
+   "aktiv": 20
+  },
+  {
+   "handle": "startseite-pool-herrenmode",
+   "titel": "Startseite Pool Herrenmode",
    "aktiv": 20
   },
   {
@@ -2189,11 +2219,6 @@
    "aktiv": 19
   },
   {
-   "handle": "laptop-netzteile-akkus",
-   "titel": "Laptop-Netzteile & Akkus",
-   "aktiv": 19
-  },
-  {
    "handle": "konsolen-retro-arcade",
    "titel": "Retro & Arcade",
    "aktiv": 19
@@ -2224,8 +2249,18 @@
    "aktiv": 19
   },
   {
-   "handle": "startseite-pool-mehr",
-   "titel": "Startseite Pool Mehr",
+   "handle": "startseite-pool-geschenke",
+   "titel": "Startseite Pool Geschenke",
+   "aktiv": 19
+  },
+  {
+   "handle": "startseite-pool-kleider",
+   "titel": "Startseite Pool Kleider",
+   "aktiv": 19
+  },
+  {
+   "handle": "startseite-pool-schuhe",
+   "titel": "Startseite Pool Schuhe",
    "aktiv": 19
   },
   {
@@ -2260,12 +2295,17 @@
   },
   {
    "handle": "velo-lauf",
-   "titel": "Lauf- & Trailrucksäcke",
+   "titel": "Laufrucksäcke & Trailrucksäcke",
    "aktiv": 18
   },
   {
    "handle": "tastaturen-sets",
    "titel": "Tastatur-Maus-Sets",
+   "aktiv": 18
+  },
+  {
+   "handle": "laptop-netzteile-akkus",
+   "titel": "Laptop-Netzteile & Akkus",
    "aktiv": 18
   },
   {
@@ -2316,6 +2356,16 @@
   {
    "handle": "vorhaenge-gardinen-voile",
    "titel": "Gardinen & Voile",
+   "aktiv": 18
+  },
+  {
+   "handle": "startseite-pool-taschen",
+   "titel": "Startseite Pool Taschen",
+   "aktiv": 18
+  },
+  {
+   "handle": "startseite-pool-sport",
+   "titel": "Startseite Pool Sport",
    "aktiv": 18
   },
   {
@@ -2389,11 +2439,6 @@
    "aktiv": 17
   },
   {
-   "handle": "kameras-aussen-solar",
-   "titel": "Aussen- & Solarkameras",
-   "aktiv": 17
-  },
-  {
    "handle": "autowaesche-pistolen-schaum",
    "titel": "Waschpistolen, Düsen & Schaum",
    "aktiv": 17
@@ -2461,6 +2506,11 @@
   {
    "handle": "wandbilder-uf-metall",
    "titel": "Metall-Wanddeko",
+   "aktiv": 17
+  },
+  {
+   "handle": "startseite-pool-kueche",
+   "titel": "Startseite Pool Küche",
    "aktiv": 17
   },
   {
@@ -2534,6 +2584,11 @@
    "aktiv": 16
   },
   {
+   "handle": "kameras-aussen-solar",
+   "titel": "Aussen- & Solarkameras",
+   "aktiv": 16
+  },
+  {
    "handle": "lautsprecher-outdoor-wasserdicht",
    "titel": "Outdoor & wasserdicht",
    "aktiv": 16
@@ -2541,11 +2596,6 @@
   {
    "handle": "mikrofone-karaoke",
    "titel": "Karaoke- & Gesangsmikrofone",
-   "aktiv": 16
-  },
-  {
-   "handle": "drohnen-zubehoer-akkus-lader",
-   "titel": "Akkus & Ladegeräte",
    "aktiv": 16
   },
   {
@@ -2570,7 +2620,7 @@
   },
   {
    "handle": "velotaschen-heck-gepaecktraeger",
-   "titel": "Heck- & Gepäckträgertaschen",
+   "titel": "Hecktaschen & Gepäckträgertaschen",
    "aktiv": 16
   },
   {
@@ -2596,6 +2646,11 @@
   {
    "handle": "thermobecher-strohhalm",
    "titel": "Becher mit Strohhalm",
+   "aktiv": 16
+  },
+  {
+   "handle": "startseite-pool-technik",
+   "titel": "Startseite Pool Technik",
    "aktiv": 16
   },
   {
@@ -2640,7 +2695,7 @@
   },
   {
    "handle": "takt-militaer",
-   "titel": "Militär- & Kampfrucksäcke",
+   "titel": "Militärrucksäcke & Kampfrucksäcke",
    "aktiv": 15
   },
   {
@@ -2654,11 +2709,6 @@
    "aktiv": 15
   },
   {
-   "handle": "drohnen-zubehoer-dji",
-   "titel": "Für DJI & Mavic",
-   "aktiv": 15
-  },
-  {
    "handle": "tier-pullover-hoodies",
    "titel": "Pullover & Hoodies für Haustiere",
    "aktiv": 15
@@ -2669,9 +2719,34 @@
    "aktiv": 15
   },
   {
+   "handle": "drohnen-zubehoer-dji",
+   "titel": "Für DJI & Mavic",
+   "aktiv": 14
+  },
+  {
+   "handle": "startseite-pool-haustier",
+   "titel": "Startseite Pool Haustier",
+   "aktiv": 14
+  },
+  {
    "handle": "minimalistischer-schmuck-ringe",
    "titel": "Minimalistische Ringe",
    "aktiv": 13
+  },
+  {
+   "handle": "startseite-pool-kinder",
+   "titel": "Startseite Pool Kinder",
+   "aktiv": 13
+  },
+  {
+   "handle": "drohnen-zubehoer-akkus-lader",
+   "titel": "Akkus & Ladegeräte",
+   "aktiv": 12
+  },
+  {
+   "handle": "startseite-pool-beauty",
+   "titel": "Startseite Pool Beauty",
+   "aktiv": 12
   },
   {
    "handle": "startseite-pool-wohnen",

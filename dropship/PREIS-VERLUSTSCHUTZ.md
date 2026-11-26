@@ -1,21 +1,22 @@
-# Preis-Verlustschutz — scharf 2026-11-26 06:49 UTC
+# Preis-Verlustschutz — scharf 2026-11-26 06:55 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **11** · Varianten gehoben: **74** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.06× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 11 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **12** · Varianten gehoben: **40** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.03× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 12 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| USB-LED-Taschenlampe extrem hell | 36.90 | 32.06 | **39.90** | 1.08× |
-| Drohne mit 3 Kameras und optischer Flusssteuerun | 36.90 | 29.99 | **37.90** | 1.03× |
-| Mini-Drohne mit Dual-Kamera und Fernsteuerung | 36.90 | 29.86 | **37.90** | 1.03× |
-| Solar- und Kurbel-Powerbank, 20'000 mAh | 36.90 | 31.02 | **38.90** | 1.05× |
-| Solar Powerbank, faltbar, 20000 mAh | 36.90 | 29.96 | **37.90** | 1.03× |
-| JY018 Mini-Drohne mit WLAN-Kamera | 36.90 | 37.89 | **47.90** | 1.30× |
-| Flachschuhe aus Kunstleder | 30.90 | 26.54 | **33.90** | 1.10× |
-| Schuh aus Leder mit atmungsaktiver Sohle | 32.90 | 28.24 | **35.90** | 1.09× |
-| Elegante Peep-Toe Sandalette aus Wildleder | 29.90 | 24.52 | **30.90** | 1.03× |
-| Smartwatch mit Touchscreen und Herzfrequenz | 36.90 | 30.07 | **37.90** | 1.03× |
-| Magnetische Levitation Sci-Fi Studentenuhr | 36.90 | 29.84 | **37.90** | 1.03× |
+| 3in1 Nachttischlampe | 35.90 | 29.55 | **36.90** | 1.03× |
+| Herren-Wanderschuhe aus Leder | 30.90 | 25.04 | **31.90** | 1.03× |
+| Damen Leder Slipper mit weicher Sohle | 29.90 | 26.19 | **32.90** | 1.10× |
+| Herren-Strandsandalen aus Leder mit Zehenschutz | 27.90 | 24.03 | **30.90** | 1.11× |
+| Elektrischer Porenreiniger & Fettstiftentferner | 35.90 | 28.95 | **36.90** | 1.03× |
+| Kunstleder Lychee-Muster für Möbel & DIY | 35.90 | 30.33 | **37.90** | 1.06× |
+| Elektronische Küchenwaage aus Edelstahl | 35.90 | 28.97 | **36.90** | 1.03× |
+| Wandlampe im nordischen Minimal-Stil für Innen u | 35.90 | 38.41 | **47.90** | 1.33× |
+| Mechanische Sternuhr für Herren | 35.90 | 29.05 | **36.90** | 1.03× |
+| Echter Leder Clutch mit Zahlenschloss | 35.90 | 32.83 | **40.90** | 1.14× |
+| Schwarze Tischlampe mit Akku | 35.90 | 29.01 | **36.90** | 1.03× |
+| Smartwatch 1,75" AMOLED mit Herzfrequenz und Blu | 35.90 | 29.12 | **36.90** | 1.03× |

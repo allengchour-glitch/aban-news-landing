@@ -184,14 +184,18 @@ def theme_datei(theme):
 
 def tarif():
     """(Standardpreis CH, kleinste aktive Gratis-Schwelle CH) aus dem General profile."""
-    q = '''{ deliveryProfiles(first:10){ nodes{ default profileLocationGroups{ locationGroupZones(first:20){ nodes{
+    q = '''query($id:ID!){ deliveryProfile(id:$id){ default profileLocationGroups{ locationGroupZones(first:10){ nodes{
       zone{ countries{ code{ countryCode } } }
-      methodDefinitions(first:30){ nodes{ active rateProvider{ ... on DeliveryRateDefinition{ price{ amount } } }
-        methodConditions{ field operator conditionCriteria{ ... on MoneyV2{ amount } } } } } } } } } } }'''
+      methodDefinitions(first:15){ nodes{ active rateProvider{ ... on DeliveryRateDefinition{ price{ amount } } }
+        methodConditions{ field operator conditionCriteria{ ... on MoneyV2{ amount } } } } } } } } } }'''
     std, gratis = None, []
-    for p in gql(q)["deliveryProfiles"]["nodes"]:
-        if not p["default"]:
-            continue
+    # 26.11.2026: nur das General profile abfragen — die alte Abfrage über deliveryProfiles(first:10) kostete 618 Punkte
+    # und blieb neben den Dauerläufern dauerhaft gedrosselt (40× «Throttled»); jetzt ~1/10.
+    from ch_lager_profil import GENERAL
+    prof = gql(q, {"id": GENERAL})["deliveryProfile"]
+    if not prof or not prof["default"]:
+        raise RuntimeError("General profile nicht (mehr) das Standard-Versandprofil — Tarif nicht lesbar")
+    for p in [prof]:
         for g in p["profileLocationGroups"]:
             for z in g["locationGroupZones"]["nodes"]:
                 if "CH" not in [c["code"]["countryCode"] for c in z["zone"]["countries"]]:
