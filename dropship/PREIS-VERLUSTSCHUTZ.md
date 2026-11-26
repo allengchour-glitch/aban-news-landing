@@ -1,25 +1,22 @@
-# Preis-Verlustschutz — scharf 2026-11-26 22:08 UTC
+# Preis-Verlustschutz — scharf 2026-11-26 22:13 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **15** · Varianten gehoben: **70** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.22× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 15 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **12** · Varianten gehoben: **15** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.05× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 12 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Minimalistische Wildleder-Flip-Flops | 18.90 | 17.38 | **21.90** | 1.16× |
-| Mini Raumluft-Heizer mit Keramik-Heizung | 16.90 | 16.14 | **20.90** | 1.24× |
-| LED Selfie Ringlicht mit Handyhalterung | 19.90 | 17.58 | **22.90** | 1.15× |
-| Ocean Wave Projektor LED Nachtlicht | 19.90 | 19.08 | **23.90** | 1.20× |
-| Mountainbike-Leuchte 1800 Lumen | 19.90 | 16.93 | **21.90** | 1.10× |
-| Weisse Lederflats für Mädchen | 15.90 | 15.05 | **18.90** | 1.19× |
-| Meerjungfrauen-Wandlampe mit Muschelmotiv | 19.90 | 15.92 | **20.90** | 1.05× |
-| Handtasche aus Vollschicht-Rindleder | 19.90 | 16.13 | **20.90** | 1.05× |
-| 2-in-1 10W kabelloses Ladegerät | 19.90 | 16.63 | **20.90** | 1.05× |
-| Tragbarer elektrischer Entsafter | 19.90 | 21.74 | **27.90** | 1.40× |
-| Nackenmassagegerät zur Haltungskorrektur | 19.90 | 17.20 | **21.90** | 1.10× |
-| Leder-Geldbörse mit Krokodilmuster | 19.90 | 16.27 | **20.90** | 1.05× |
-| Quadratischer Herren-Umhängetasche aus PU-Leder | 19.90 | 15.88 | **20.90** | 1.05× |
-| Kartenhalter mit Reissverschluss aus Rindsleder | 19.90 | 16.03 | **20.90** | 1.05× |
-| Mesh-Armband Uhr, wasserabweisend, Quarz | 19.90 | 15.97 | **20.90** | 1.05× |
+| USB-Ladegerät für 18650 Li-ion Akkus | 18.90 | 15.99 | **20.90** | 1.11× |
+| Wasserdichte Solar-Powerbank mit Wireless Chargi | 19.90 | 15.89 | **20.90** | 1.05× |
+| Smartwatch mit HD-Display und Bluetooth-Anrufen | 19.90 | 16.15 | **20.90** | 1.05× |
+| PD66W Powerbank 20000 mAh mit Kabel | 19.90 | 15.99 | **20.90** | 1.05× |
+| Magnetische Wireless Powerbank | 19.90 | 15.92 | **20.90** | 1.05× |
+| Kabelloses Ladegerät mit LED-Schreibtischlampe | 19.90 | 15.93 | **20.90** | 1.05× |
+| Bartpflege Öl | 14.90 | 14.73 | **18.90** | 1.27× |
+| PS5 Wireless Controller Ladestation mit RGB-Lich | 19.90 | 16.54 | **20.90** | 1.05× |
+| Solar Powerbank mit Digitalanzeige | 19.90 | 16.58 | **20.90** | 1.05× |
+| Leuchtende UFO-Drohne für Kinder | 18.90 | 21.35 | **26.90** | 1.42× |
+| Elektrischer Flaschenöffner mit Zubehör | 15.90 | 14.23 | **17.90** | 1.13× |
+| Multifunktionale Ladestation für Nintendo Switch | 18.90 | 19.19 | **24.90** | 1.32× |

@@ -1,19 +1,19 @@
-# Produktkategorie (Taxonomie) — Stand 2026-11-26T21:15Z
+# Produktkategorie (Taxonomie) — Stand 2026-11-26T22:11Z
 
-Aktive gescannt: 83 · ohne Kategorie: 83 · heute gesetzt: 79 (SCHARF, CAP 1500) · danach offen: 4 · Fehler: 0
+Aktive gescannt: 27 · ohne Kategorie: 27 · heute gesetzt: 26 (SCHARF, CAP 1500) · danach offen: 1 · Fehler: 0
 
 Grund: Der Shop-Kanal (App «Shop») zeigt nur Produkte mit Kategorie — 33'863 «nicht auffindbar» am 23.09. Die Importer setzen
 productType, keine Taxonomie. Regel: productType → Taxonomie-ID (Tabelle im Skript, IDs beim Start verifiziert).
 
 ## Unbekannte Typen (nicht geraten — Tabelle ergänzen)
 
-- Büro & Home Office: 4
+- Büro & Home Office: 1
 
 ## Beispiele (heute gesetzt)
 
-- multifunktionale-reisekosmetiktasche-mit-led-l-618800 · Aufbewahrung & Organizer → Luggage & Bags
-- rosa-samt-und-pailletten-bodycon-mini-kleid-610100 · Damenmode → Apparel & Accessories > Clothing
-- runde-baby-spielmatte-aus-gepolstertem-latex-638700 · Haushalt & Wohnen → Baby & Toddler
-- sonnenuntergangslampe-10-cm-schwarz-602600 · Beleuchtung → Home & Garden > Lighting
-- tischlampe-mit-touch-steuerung-635700 · Beleuchtung → Home & Garden > Lighting
+- boden-ambientlicht-mit-bluetooth-618200 · Beleuchtung → Home & Garden > Lighting
+- lassige-shirtjacke-mit-blau-weissem-karomuster-607300 · Herrenmode → Apparel & Accessories > Clothing
+- ultraschall-luftbefeuchter-mit-farblichtern-fu-601300 · Beleuchtung → Home & Garden > Lighting
+- slim-fit-herren-formelle-weste-627600 · Herrenmode → Apparel & Accessories > Clothing
+- nagelkunst-pen-set-12-stuck-600300 · Nageldesign → Health & Beauty > Personal Care > Cosmetics > Nail Care
 
