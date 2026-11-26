@@ -52632,3 +52632,4 @@ gid://shopify/Product/15451569324417	pod	1	Spiral-Notizbuch – Selbst gestalten
 gid://shopify/Product/16672778289543	pod	1	Samsung-Hülle selbst gestalten
 gid://shopify/Product/15433463857537	direkt	1	BW06 Bluetooth Gaming Headset Over-Ear
 gid://shopify/Product/15433464217985	direkt	1	RGB-Kopfhörerständer mit E-Sports-Rhythmusbeleuchtung
+gid://shopify/Product/15427217195393	pod	1	Magnet zum Selbstgestalten
