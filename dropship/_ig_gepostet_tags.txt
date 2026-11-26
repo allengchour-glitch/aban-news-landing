@@ -180,3 +180,7 @@
 2026-11-25T20:23Z	gid://shopify/Product/15413086323073	+	ig-seit-2026-11-25	thermo-isolierbecher-edelstahl-halt-warm-kalt-suppe-kaffee
 2026-11-25T20:24Z	gid://shopify/Product/15413961130369	+	ig-seit-2026-11-25	sunset-projection-lamp-16-colors-adjustable
 2026-11-25T20:24Z	gid://shopify/Product/15448109220225	+	ig-seit-2026-11-25	nahtloser-body-shaper-mit-rundhals-und-bauchko-341953
+2026-11-26T17:04Z	gid://shopify/Product/15414270558593	+	ig-seit-2026-11-25	herz-mond-halskette-zarte-schlusselbein-kette-silber-optik
+2026-11-26T17:04Z	gid://shopify/Product/15414270624129	+	ig-seit-2026-11-26	herz-muschel-anhanger-titanstahl-wasserfest-stahl-rosegold-gold
+2026-11-26T17:04Z	gid://shopify/Product/15414270689665	+	ig-seit-2026-11-26	offenes-armband-metallic-verstellbarer-cuff-4-farben
+2026-11-26T17:04Z	gid://shopify/Product/15450832372097	+	ig-seit-2026-11-26	intelligentes-nacken-und-schultermassagegerat-c6c310
