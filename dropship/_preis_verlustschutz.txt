@@ -354576,3 +354576,31 @@
 56131164111233	heben	37.90	39.90	31.67	2026-11-26	madchen-leder-barenstiefel-mit-reissverschluss-174656
 56131164144001	heben	38.90	39.90	31.83	2026-11-26	madchen-leder-barenstiefel-mit-reissverschluss-174656
 56131164176769	heben	38.90	39.90	32.00	2026-11-26	madchen-leder-barenstiefel-mit-reissverschluss-174656
+55889704944001	heben	35.90	36.90	28.92	2026-11-26	nex-2-in-1-fellpfleger-fohn-burste-fur-haustie-615424
+55889705009537	heben	35.90	36.90	28.89	2026-11-26	nex-2-in-1-fellpfleger-fohn-burste-fur-haustie-615424
+56066494529921	heben	17.90	21.90	16.82	2026-11-26	elektrisch-leitende-yogamatte-aus-kunstleder-654700
+55987610452353	heben	38.90	39.90	31.87	2026-11-26	industrieller-retro-kronleuchter-schwarz-604200
+56222313513345	heben	38.90	57.90	46.33	2026-11-26	drohnen-rucksack-mit-hartschale-533376
+67665018421639	heben	38.90	39.90	31.33	2026-11-26	faszien-massagegerat-mini-256960
+67671315317127	heben	38.90	39.90	31.33	2026-11-26	faszien-massagegerat-mini-256960
+67671315349895	heben	38.90	39.90	31.33	2026-11-26	faszien-massagegerat-mini-256960
+67671315382663	heben	38.90	39.90	31.33	2026-11-26	faszien-massagegerat-mini-256960
+56191228150145	sperren	38.90	87.90	70.35	2026-11-26	kompakter-hd-wlan-projektor-fur-business-home-519488
+15519829229953	draft				2026-11-26	kompakter-hd-wlan-projektor-fur-business-home-519488
+67666277007751	heben	38.90	39.90	31.62	2026-11-26	rucksack-mit-led-licht-fur-radsport-14939a
+67672753504647	heben	38.90	39.90	31.62	2026-11-26	rucksack-mit-led-licht-fur-radsport-14939a
+67660317360519	sperren	38.90	155.90	125.81	2026-11-26	auto-heizkissen-mit-12v-stromversorgung-66e148
+16613785698695	draft				2026-11-26	auto-heizkissen-mit-12v-stromversorgung-66e148
+55873540915585	heben	37.90	39.90	31.64	2026-11-26	enger-lederhandschuh-fur-damen-602100
+56007184580993	heben	38.90	39.90	31.69	2026-11-26	holz-bluetooth-lautsprecher-608200
+56030240473473	heben	38.90	39.90	31.34	2026-11-26	i5pro-drohne-mit-hd-kamera-und-fernsteuerung-625900
+56075798708609	heben	38.90	39.90	31.32	2026-11-26	retro-umhangetasche-aus-rindsleder-191488
+56081795252609	heben	38.90	39.90	31.55	2026-11-26	usb-lederrucksack-fur-herren-605900
+67652246569351	heben	38.90	39.90	31.55	2026-11-26	usb-lederrucksack-fur-herren-605900
+56094517461377	heben	37.90	44.90	35.75	2026-11-26	e58-faltbare-mini-drohne-4fc735
+56095624200577	heben	37.90	38.90	31.19	2026-11-26	velo-scheinwerfer-mit-16-t6-leds-52d312
+56103748764033	heben	37.90	38.90	30.94	2026-11-26	ps4-multi-funktions-ladestation-mit-kuhlung-1dd518
+56131160899969	heben	37.90	38.90	30.61	2026-11-26	wellen-eisen-mit-drei-xl-heizstaben-441984
+56148630831489	heben	25.90	26.90	20.87	2026-11-26	peep-toe-sandalen-flach-weiche-ledersohle-624100
+56169513779585	heben	37.90	38.90	30.66	2026-11-26	dickes-kunstleder-mit-palmenprint-761728
+56204883493249	heben	37.90	40.90	32.76	2026-11-26	elektrische-pfeffermuhle-wiederaufladbar-657100
