@@ -356088,3 +356088,6 @@
 56131154215297	heben	23.90	26.90	21.11	2026-11-26	madchen-lauflernschuhe-aus-mikrofaserleder-142976
 56131154248065	heben	24.90	26.90	21.43	2026-11-26	madchen-lauflernschuhe-aus-mikrofaserleder-142976
 56131154280833	heben	25.90	27.90	21.76	2026-11-26	madchen-lauflernschuhe-aus-mikrofaserleder-142976
+56221053026689	heben	25.90	26.90	20.77	2026-11-26	elektrischer-anzundofen-fur-kokoskohle-724352
+56213055275393	sperren	25.90	81.90	65.54	2026-11-26	48v-29ah-li-ion-akku-18650-523456
+15523540140417	draft				2026-11-26	48v-29ah-li-ion-akku-18650-523456

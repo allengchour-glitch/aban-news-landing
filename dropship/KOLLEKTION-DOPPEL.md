@@ -1,6 +1,6 @@
-# Kollektionen mit gleicher Regel — Stand 2026-11-26T05:50:40Z
+# Kollektionen mit gleicher Regel — Stand 2026-11-26T18:09:55Z
 
-OFFEN: 0 · erledigt heute: 0 · übersprungen (Zahlen ungleich): 9 · Gruppen: 9 · DRY
+OFFEN: 0 · erledigt heute: 0 · übersprungen (Zahlen ungleich): 9 · Gruppen: 9 · SCHARF
 
 Regel: eine Bleiberin je Gruppe (Menü > Startseite > Rotation > Kanäle > Text), die anderen abgemeldet + 301. Ledger `dropship/_kollektion_doppel.txt`. Rückweg: Redirect löschen + publizieren.
 
