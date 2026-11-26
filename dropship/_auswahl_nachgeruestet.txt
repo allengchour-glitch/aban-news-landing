@@ -3838,3 +3838,6 @@
 16738683453831	Farbe:9:9+ki	2026-11-25	handtasche-aus-rindleder-lange-leichte-geldbor-628000
 16739825254791	Farbe:13+Grösse:4:52+ki	2026-11-26	chenillentoilette-mit-3-5-cm-pile-rutschfest-s-601700
 16739818045831	stecker-eu	2026-11-26	tragbare-flanell-heissdecke-grau-631000
+16739817849223	Farbe:3:3	2026-11-26	backblech-mit-antihaft-30-mm-tiefe-530-g-626900
+16739813523847	Farbe:6:6	2026-11-26	langstreifen-polarfleece-hoodie-mit-kapuze-625600
+16739813294471	Grösse:6:6	2026-11-26	pineapple-muster-flanelldecke-dunkelgrau-611000
