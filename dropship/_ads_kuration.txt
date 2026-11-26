@@ -28669,3 +28669,5 @@ gid://shopify/Product/16739509797255	billig
 gid://shopify/Product/16739512811911	billig
 gid://shopify/Product/16739513205127	billig
 gid://shopify/Product/16739813458311	billig
+gid://shopify/Product/16739824894343	billig
+gid://shopify/Product/16739853107591	billig
