@@ -9382,3 +9382,6 @@ gid://shopify/Product/15483933753729	bild-urls-tot
 gid://shopify/Product/15483933786497	zugeordnet	4	Canvas-Rucksack
 gid://shopify/Product/15483933819265	zugeordnet	8	Gemuese-Scheibe
 gid://shopify/Product/15483933852033	zugeordnet	18	Schuhe für den Alltag
+gid://shopify/Product/15483933884801	zugeordnet	60	Katzenstreumatte
+gid://shopify/Product/15483933917569	zugeordnet	4	Makeup Brush Set 5-teilig
+gid://shopify/Product/15483934015873	zugeordnet	8	Kinderkleidungs-Set
