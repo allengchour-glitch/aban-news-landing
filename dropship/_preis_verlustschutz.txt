@@ -353870,3 +353870,14 @@
 67671331045767	heben	63.90	67.90	54.65	2026-11-25	yoga-matte-aus-wildleder-183-68-cm-940160
 67671331078535	heben	63.90	67.90	54.65	2026-11-25	yoga-matte-aus-wildleder-183-68-cm-940160
 67715672342919	heben	63.90	64.90	51.82	2026-11-25	retro-messenger-tasche-aus-rindleder-283840
+56075456086401	heben	62.90	63.90	50.90	2026-11-26	multifunktionaler-akku-schrauber-610300
+56082283364737	heben	62.90	63.90	51.08	2026-11-26	business-commute-laptop-rucksack-aus-leder-294784
+56103337394561	heben	54.90	56.90	45.35	2026-11-26	superweiche-lammleder-sandalen-604600
+56209688756609	heben	62.90	68.90	55.48	2026-11-26	brusttasche-crazy-horse-leder-braun-872512
+56216379621761	heben	61.90	88.90	71.68	2026-11-26	schwarzer-lederrucksack-fur-manner-619776
+67688916779399	heben	62.90	64.90	51.79	2026-11-26	schwarzer-leder-rucksack-mit-3d-hood-bcc9cb
+67702263218567	heben	62.90	63.90	51.25	2026-11-26	rindsleder-flip-schultertasche-fur-manner-625200
+67737795789191	heben	62.90	63.90	51.25	2026-11-26	rindsleder-flip-schultertasche-fur-manner-625200
+67711722750343	heben	63.90	64.90	52.20	2026-11-26	backpack-fashion-travel-manner-lederrucksack-609300
+67714573271431	heben	61.90	62.90	50.34	2026-11-26	echtleder-rucksack-mit-36-55-l-753920
+67721847341447	heben	61.90	62.90	50.26	2026-11-26	business-casual-rucksack-aus-leder-974272

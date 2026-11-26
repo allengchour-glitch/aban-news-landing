@@ -18937,3 +18937,11 @@ gid://shopify/Product/15512319918465	16->3	Smartwatch für Frauen mit Bluetooth 
 gid://shopify/Product/15518595318145	29->0	Smartwatch für Kinder mit Video und Touch
 gid://shopify/Product/15523222946177	41->1	Smartwatch mit HD-Farbdisplay
 gid://shopify/Product/15523223503233	60->0	GT2 Smartwatch mit NFC & Bluetooth-Anrufen
+gid://shopify/Product/15525495472513	33->0	USB-Mixer für unterwegs
+gid://shopify/Product/16603943436679	23->0	Christbaumdecke mit goldenen Pailletten-Schneeflocken
+gid://shopify/Product/16603990819207	47->0	Glasierte Weihnachtsbaum-Ornamente
+gid://shopify/Product/16609705689479	94->0	Sicherungsringzange 7 Zoll
+gid://shopify/Product/16609855832455	12->0	Wanddeko aus Stoff – Nordisches Kinderzimmermotiv
+gid://shopify/Product/16612791550343	66->1	Smartwatch-Armband aus Silikon mit Magnetverschluss
+gid://shopify/Product/16613404541319	15->3	Uhrarmband aus Stahl mit Doppeldiamant-Shell
+gid://shopify/Product/16616719942023	15->1	Gaming-Maus mit Atemlicht

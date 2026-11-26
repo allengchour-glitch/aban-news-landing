@@ -1,6 +1,6 @@
 # Preisvergleich mit dem Schweizer Markt (Firecrawl)
 
-Stand 25.11.2026 03:33 UTC · 145 Produkte geprüft, 139 mit vergleichbaren Angeboten. Vergleich = Median der Angebote gleicher Art (CHF; EUR × 0.94 geschätzt). Nur Hinweis — Preise ändert dieses Werkzeug nicht; nie unter EK + Verlustschutz.
+Stand 26.11.2026 05:42 UTC · 145 Produkte geprüft, 139 mit vergleichbaren Angeboten. Vergleich = Median der Angebote gleicher Art (CHF; EUR × 0.94 geschätzt). Nur Hinweis — Preise ändert dieses Werkzeug nicht; nie unter EK + Verlustschutz.
 
 ## Deutlich teurer als der Markt (≥ 25 %): 37
 

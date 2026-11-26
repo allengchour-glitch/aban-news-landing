@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-25T05:33Z",
+ "stand": "2026-11-26T05:41Z",
  "datum_in_kasse": true,
  "bearbeitungszeit_tage": 1,
  "versand_werktage": [
@@ -10,6 +10,10 @@
   [
    "#1043",
    2
+  ],
+  [
+   "#1042",
+   6
   ],
   [
    "#1041",
@@ -46,38 +50,32 @@
   [
    "#1032",
    1
-  ],
-  [
-   "#1030",
-   4
   ]
  ],
  "median": 2.5,
- "p80": 4.800000000000001,
- "empfohlen": 5,
+ "p80": 5.800000000000001,
+ "empfohlen": 6,
  "zu_frueh": false,
  "ch_lager_profil": {
   "ch_lager": {
    "profile": [
     "CH-Lager"
    ],
-   "anzahl": 1601
+   "anzahl": 1586
   },
   "cj": {
    "profile": [
     "General profile"
    ],
-   "anzahl": 53729
+   "anzahl": 53855
   }
  },
  "ch_lager_im_asien_profil": false,
  "theme_kassendatum": {
-  "befunde": [
-   "Theme nicht MAIN (UNPUBLISHED)"
-  ],
+  "befunde": [],
   "md5": {
-   "templates/cart.json": "24c11d674873cd3ce8d5832afc871573",
-   "templates/product.json": "f6625c20bb13716b520b3a3975ebb5b8"
+   "templates/cart.json": "2b691ad7737898fe0612a42d51f30406",
+   "templates/product.json": "ccd299f1eb34c442924a65f86fbd1c8f"
   }
  },
  "zusage_ch_lager": {
@@ -86,7 +84,7 @@
   "je_quelle": {},
   "liste": [],
   "produkte": {
-   "gelesen": 1001,
+   "gelesen": 1008,
    "offen_vorher": 0,
    "geschrieben": 0,
    "unloesbar": 0,
