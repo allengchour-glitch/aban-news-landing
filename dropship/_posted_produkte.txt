@@ -620,3 +620,6 @@ slug:dreifach-led-makeup-spiegel-mit-usb-ladefunkti
 pid:15414270624129
 slug:polygel-nagelverlangerungs-kit-caefd5
 name:polygelnagelverlängerungskit
+slug:bildreel-bondi-blue-petpullover-fur-katzen
+pid:16652425560455
+slug:bondi-blue-petpullover-fur-katzen
