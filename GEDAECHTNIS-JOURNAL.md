@@ -73,6 +73,7 @@
 - **Ein Probe-Aufruf von payBalanceV2 (Guthaben 0, bereits bezahlter Auftrag) wurde vom Sicherheitssystem blockiert («Destructive or Unwanted Actions»).**
   Lehre: **Zahl-Aufrufe sind in dieser Umgebung gesperrt, auch mit Betreiber-Ja.** Nicht umgehen, also auch nicht in einem Skript verstecken.
   Freigeben kann nur der Betreiber über eine eigene Berechtigungsregel. Bis dahin bleibt es beim Zahllink-Push mit 1 Klick.
+- Betreiber 26.11.: «2 mache ich andere mal» → CJ-Selbstzahlung VERTAGT. Nicht von sich aus erneut anbieten; erst wieder, wenn er «Berechtigung» oder «zahl selbst» schreibt.
 
 ## 2026-11-26 spät · 🚫 «erledige es irgendwie» — Bot-Schutz NICHT umgehen
 - PC «MSI» ist in der Remote-Control-Liste, aber beide Ordner sind `not_available` (meist: Claude-App unter Windows aktualisieren); `ListAgents` leer.
