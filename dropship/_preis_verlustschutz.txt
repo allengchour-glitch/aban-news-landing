@@ -354836,3 +354836,13 @@
 56114971279745	heben	29.90	31.90	24.99	2026-11-26	casual-leder-sneaker-610600
 56114971312513	heben	30.90	31.90	25.32	2026-11-26	casual-leder-sneaker-610600
 56114971345281	heben	31.90	32.90	25.65	2026-11-26	casual-leder-sneaker-610600
+55879487062401	heben	34.90	35.90	28.59	2026-11-26	micro-carving-elektro-schleifer-kit-56-teilig-623400
+56123982676353	heben	34.90	39.90	32.08	2026-11-26	elektrischer-mini-entsafter-wiederaufladbar-951488
+67755653955975	heben	34.90	39.90	32.01	2026-11-26	elektrischer-mini-entsafter-wiederaufladbar-951488
+56129296728449	heben	21.90	24.90	19.44	2026-11-26	herrenschuhe-kroko-muster-lackleder-621300
+56141432062337	heben	34.90	37.90	29.79	2026-11-26	feuchtigkeitsspendender-nano-sprayer-53c65e
+56222481187201	heben	34.90	35.90	28.31	2026-11-26	rucksack-aus-kunstleder-geflochten-schwarz-907520
+67633623433607	heben	34.90	36.90	29.46	2026-11-26	mixer-klinge-aus-edelstahl-fur-thermomix-tm21-44a469
+67641760579975	heben	34.90	36.90	29.61	2026-11-26	mini-elektroschrauber-mit-schraubenset-9cd0eb
+67677338075527	heben	34.90	36.90	29.61	2026-11-26	mini-elektroschrauber-mit-schraubenset-9cd0eb
+67641972031879	heben	34.90	35.90	28.41	2026-11-26	elektrische-ballaufblaspumpe-mit-nadel-621500
