@@ -623,3 +623,6 @@ name:polygelnagelverlängerungskit
 slug:bildreel-bondi-blue-petpullover-fur-katzen
 pid:16652425560455
 slug:bondi-blue-petpullover-fur-katzen
+name:handgemachte
+pid:15480490492289
+slug:handgemachte-ice-transparent-nagel

@@ -143,11 +143,36 @@ def menue_handles():
     return hs
 
 
+def startseite_sammlungen(texte):
+    """Rein: Theme-Texte → Sammlungs-Handles der Startseite. Quellen: product-list-Einträge in templates/index.json
+    ("collection": …), collections['…'] im Liquid und die Reihen-Liste lx_edit_groups der neuen Startseite
+    (sections/luxe-edit-home.liquid, 24.11.: «schlüssel|sammlung|pool-endung», Pool = startseite-pool-<endung>)."""
+    hs = set()
+    for c in texte:
+        hs |= set(re.findall(r'"collection":\s*"([^"]+)"', c))
+        hs |= set(re.findall(r"collections\[['\"]([a-z0-9-]+)['\"]\]", c))
+        for m in re.finditer(r"assign lx_edit_groups = '([^']+)'", c):
+            for g in m.group(1).split(","):
+                f = [x.strip() for x in g.split("|")]
+                if len(f) >= 2 and f[1]:
+                    hs.add(f[1])
+                if len(f) >= 3 and f[2]:
+                    hs.add("startseite-pool-" + f[2])
+    return hs
+
+
 def startseite_handles():
-    import homepage_katalog_rotation as H
-    raw = H.gql('{theme(id:"%s"){files(filenames:["templates/index.json"]){nodes{body{... on OnlineStoreThemeFileBodyText{content}}}}}}'
-                % H.THEME)["data"]["theme"]["files"]["nodes"][0]["body"]["content"]
-    return set(re.findall(r'"collection":\s*"([^"]+)"', raw))
+    """26.11.2026: liest das LIVE-Theme (main_theme.gid()). Vorher las es über homepage_katalog_rotation die feste ID des
+    alten Themes → seit dem Theme-Wechsel 21.11. zählten 18 Sammlungen der ALTEN Startseite als «auf der Startseite», die
+    echten (Pools, lx_edit_groups) nicht. Fail-closed: findet es keine Sammlung, bricht es ab, statt Startseiten-Sammlungen
+    ungeschützt als Doppel abzumelden."""
+    from main_theme import gid
+    nodes = gql('query($i:ID!){theme(id:$i){files(filenames:["templates/index.json","sections/luxe-edit-home.liquid"]){'
+                'nodes{filename body{... on OnlineStoreThemeFileBodyText{content}}}}}}', {"i": gid()})["theme"]["files"]["nodes"]
+    hs = startseite_sammlungen([((n.get("body") or {}).get("content") or "") for n in nodes])
+    if not hs:
+        raise RuntimeError("Startseite: keine Sammlungen im Live-Theme gefunden (Startseite umgebaut?) — Abbruch")
+    return hs
 
 
 def rotation_handles():
@@ -345,6 +370,11 @@ def selbsttest():
     pruefe(bew[0][2]["handle"] == "tauchen-schnorcheln", "Online Store schlägt Text und Handle-Länge (Falle 23.09.)")
     pruefe(redirect_ziel_online("/collections/trinken-barware", {"trinken-barware"}) and not redirect_ziel_online("/collections/fitness", {"fitness-training"}), "Redirect-Ziel: nur Online-Store-Kollektionen gelten als lebendig")
     pruefe(urllib.parse.quote("🎁-geschenke-bis-chf-30") == "%F0%9F%8E%81-geschenke-bis-chf-30", "Redirect-Ziel ist der prozentkodierte Pfad")
+    t = ["{% assign lx_edit_groups = 'christmas|weihnachten-2026|weihnachten,jewellery|schmuck,pets|sub-haustier|haustier' %}"
+         " {{ collections['hype-jetzt'] }}", '{"collection": "alt-x"}']
+    pruefe(startseite_sammlungen(t) == {"weihnachten-2026", "startseite-pool-weihnachten", "schmuck", "sub-haustier",
+                                        "startseite-pool-haustier", "hype-jetzt", "alt-x"},
+           "Startseite 26.11.: lx_edit_groups (Sammlung + Pool), collections['…'] und alte product-list zählen")
     print("SELBSTTEST " + ("BESTANDEN" if ok else "GESCHEITERT"))
     return 0 if ok else 1
 
