@@ -9473,3 +9473,14 @@ gid://shopify/Product/15492997972353	zugeordnet	8	Kurzer Umstandsrock mit hoher 
 gid://shopify/Product/15492998005121	zugeordnet	8	Workwear Chic Midi-Rock mit Tunnelzug
 gid://shopify/Product/15492998070657	zugeordnet	6	Fransen-Midirock im Heavy-Industry-Stil
 gid://shopify/Product/15492998136193	zugeordnet	20	High-Waist Jupe im Sticky-Rice-Stil
+gid://shopify/Product/15519839158657	zugeordnet	10	Elegante Langarm-Bluse mit Spitze
+gid://shopify/Product/15519839224193	zugeordnet	8	Damen Hoodie aus doppelseitigem Coral Fleece
+gid://shopify/Product/15521417232769	zugeordnet	60	Herren Langarmshirt Henley mit Kapuze
+gid://shopify/Product/15521418183041	zugeordnet	6	Langarmhemd für Herren – Business Casual
+gid://shopify/Product/15521418445185	zugeordnet	30	Freizeit-Set: Langarmhemd und Shorts
+gid://shopify/Product/15521698775425	zugeordnet	27	Wasserdichte Plateau-Sandalen mit Keilabsatz
+gid://shopify/Product/15521994015105	zugeordnet	8	Sandalen mit Lackleder & Blockabsatz
+gid://shopify/Product/15522084979073	zugeordnet	16	Elegante Vintage-Pumps mit Blockabsatz
+gid://shopify/Product/15522085306753	zugeordnet	14	High-Heel-Sandalen mit Nieten für Damen
+gid://shopify/Product/15522098282881	zugeordnet	18	Elegante High-Heel-Sandalen mit spitzer Kappe
+gid://shopify/Product/15522098413953	zugeordnet	24	High-Heel Kontrast-Sandalen aus Wolle
