@@ -626,3 +626,4 @@ slug:bondi-blue-petpullover-fur-katzen
 name:handgemachte
 pid:15480490492289
 slug:handgemachte-ice-transparent-nagel
+name:metallic
