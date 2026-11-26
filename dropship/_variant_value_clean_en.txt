@@ -23034,3 +23034,6 @@ gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/5978
 gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/59781533041031	Khaki-Size 13	Khaki-Gr. 13	2026-11-25T20:21Z
 gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/59781533073799	White-Size  12	Weiss-Gr. 12	2026-11-25T20:21Z
 gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/59781533106567	White-Size 13	Weiss-Gr. 13	2026-11-25T20:21Z
+gid://shopify/Product/16638236230023	Farbe	gid://shopify/ProductOptionValue/59813059035527	Mint / Grün	Mintgrün / Grün	2026-11-26T18:25Z
+gid://shopify/Product/16638236230023	Farbe	gid://shopify/ProductOptionValue/59813059068295	Retro Rosa	Retro-Rosa	2026-11-26T18:25Z
+gid://shopify/Product/16638236230023	Farbe	gid://shopify/ProductOptionValue/59813059133831	Classic Schwarz	Klassisches Schwarz	2026-11-26T18:25Z
