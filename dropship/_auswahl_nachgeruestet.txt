@@ -3841,3 +3841,4 @@
 16739817849223	Farbe:3:3	2026-11-26	backblech-mit-antihaft-30-mm-tiefe-530-g-626900
 16739813523847	Farbe:6:6	2026-11-26	langstreifen-polarfleece-hoodie-mit-kapuze-625600
 16739813294471	Grösse:6:6	2026-11-26	pineapple-muster-flanelldecke-dunkelgrau-611000
+16738291417479	Farbe:2:2	2026-11-26	smart-vorhangschalter-86-typ-mit-temperglas-618500

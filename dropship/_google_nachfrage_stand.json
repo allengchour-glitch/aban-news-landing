@@ -1,19 +1,19 @@
 {
- "stand": "2026-10-22T03:17Z",
+ "stand": "2026-11-26T06:58Z",
  "tage": 120,
- "mit_nachfrage": 209,
- "weg": 62,
+ "mit_nachfrage": 210,
+ "weg": 113,
  "ersatz": 8,
- "ohne_ersatz": 54,
- "ohne_ersatz_korb": 10,
- "behebbar": 14,
+ "ohne_ersatz": 105,
+ "ohne_ersatz_korb": 4,
+ "behebbar": 83,
  "zeilen": [
   {
    "handle": "rizinusol-wickel-set-mit-bio-ol-323457",
    "titel": "Rizinusöl-Wickel-Set mit Bio-Öl",
    "status": "DRAFT",
    "google_kanal": false,
-   "sitz": 56,
+   "sitz": 54,
    "korb": 2,
    "kauf": 0,
    "quelle": [
@@ -26,57 +26,9 @@
    "ersatz_art": "Weiterleitung"
   },
   {
-   "handle": "kompakte-kuhlung-angenehme-frische-fur-sie-1193638",
-   "titel": "Kompakte Kühlung: Angenehme Frische für Sie!",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 3,
-   "korb": 2,
-   "kauf": 1,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "mobile-klimaanlage-kuhle-wo-sie-wollen-550253",
-   "titel": "Mobile Klimaanlage: Kühle, wo Sie wollen!",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 4,
-   "korb": 1,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "flexible-raumkuhlung-angenehmes-klima-mobil-1145529",
-   "titel": "Flexible Raumkühlung: Angenehmes Klima mobil!",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 3,
-   "korb": 1,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "damenparfum-rubin-kostbare-eleganz-fur-frauen-640621",
-   "titel": "Alvarez Gómez Rubí Femme Agua de Perfume",
-   "status": "DRAFT",
+   "handle": "abendkleid-aurora-satin-spaghettitrager-schlitz",
+   "titel": "Abendkleid «Aurora» · Satin, Spaghettiträger & Schlitz",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 2,
    "korb": 1,
@@ -84,31 +36,15 @@
    "quelle": [
     "Gratis-Eintrag"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
+   "grund": "Saison (Sommerware)",
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "schlauchboot-intex-excursion-5-5-personen-366-cm",
-   "titel": "Schlauchboot «Intex Excursion 5» · 5 Personen, 366 cm",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 1,
-   "kauf": 1,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "rollstuhl-fur-hunde-mit-hinterbein-lahmung-629100",
-   "titel": "Rollstuhl für Hunde mit Hinterbein-Lähmung",
-   "status": "DRAFT",
+   "handle": "maxi-kleid-aria-langarm-tailliert-mit-gurtel",
+   "titel": "Maxi-Kleid «Aria» · Langarm, tailliert mit Gürtel",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 1,
@@ -116,58 +52,10 @@
    "quelle": [
     "Gratis-Eintrag"
    ],
-   "grund": "nicht in die Schweiz lieferbar",
+   "grund": "Saison (Sommerware)",
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
-  },
-  {
-   "handle": "elektrischer-fleischwolf-5l-kuchenmaschine-656962",
-   "titel": "Elektrischer Fleischwolf 5L – Küchenmaschine",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 1,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "nicht in die Schweiz lieferbar",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "smartes-raumklima-kraftvolle-kuhlung-einfach-per-a-1194795",
-   "titel": "Smartes Raumklima: Kraftvolle Kühlung, einfach per App!",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 1,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "u-formiges-schwangerschaftskissen-aus-eisseide-004544",
-   "titel": "U-förmiges Schwangerschaftskissen aus Eisseide",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 1,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Verlust → Preis/EK prüfen",
-   "behebbar": true,
-   "ersatz": "u-formiges-schwangerschaftskissen-679488",
-   "ersatz_art": "Zwilling (Ähnlichkeit 0.67)"
   },
   {
    "handle": "2-in-1-wendegurtel-fur-damen-236417",
@@ -186,41 +74,57 @@
    "ersatz_art": ""
   },
   {
-   "handle": "warmer-campingschlafsack-fur-kuhle-nachte-bis-8-c-815094",
-   "titel": "Warmer Campingschlafsack – Für kühle Nächte bis -8°C!",
-   "status": "DRAFT",
+   "handle": "led-wasserwellen-projektionsleuchte-677504",
+   "titel": "LED Wasserwellen Projektionsleuchte",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 1,
-   "kauf": 0,
+   "kauf": 1,
    "quelle": [
     "Google-Suche"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "aufblasbare-pool-liege-lounge-xl",
-   "titel": "Aufblasbare Pool-Liege · Lounge XL",
-   "status": "DRAFT",
+   "handle": "herzschlag-kissen-fur-hund-katze-600500",
+   "titel": "Herzschlag-Kissen für Hund & Katze",
+   "status": "ACTIVE",
    "google_kanal": false,
-   "sitz": 4,
+   "sitz": 5,
    "korb": 0,
    "kauf": 0,
    "quelle": [
     "Google-Suche"
    ],
-   "grund": "ohne Lieferant → Lieferant suchen",
+   "grund": "Grund unbekannt (kein Grund-Tag)",
    "behebbar": true,
-   "ersatz": "aufblasbare-wasserliege-fur-pool-und-see-629800",
-   "ersatz_art": "Weiterleitung"
+   "ersatz": null,
+   "ersatz_art": ""
   },
   {
-   "handle": "kuhlmatte-fur-haustiere-petitto-blau-941211",
-   "titel": "Kühlmatte für Haustiere Petitto Blau",
-   "status": "DRAFT",
+   "handle": "kuscheldecke-mit-halloween-print-611200",
+   "titel": "Kuscheldecke mit Oster-Print zum Ausmalen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 3,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "strick-cape-aria-solid-poncho-optik",
+   "titel": "Strick-Cape «Aria» · Solid, Poncho-Optik",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 2,
    "korb": 0,
@@ -228,15 +132,15 @@
    "quelle": [
     "Gratis-Eintrag"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
+   "grund": "Saison (Sommerware)",
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "silikon-abtropfmatte-fur-geschirr-637442",
-   "titel": "Silikon-Abtropfmatte für Geschirr",
-   "status": "DRAFT",
+   "handle": "augenbrauen-stempel-kit-wasserfest-naturlich-546ee8",
+   "titel": "Augenbrauen-Stempel-Kit wasserfest & natürlich",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 2,
    "korb": 0,
@@ -246,38 +150,6 @@
    ],
    "grund": "Grund unbekannt (kein Grund-Tag)",
    "behebbar": true,
-   "ersatz": "abtropfmatte-aus-silikon-selbstentleerend-214145",
-   "ersatz_art": "Zwilling (Ähnlichkeit 0.5)"
-  },
-  {
-   "handle": "morgenstern-71-cm-fgabo73235",
-   "titel": "Morgenstern 71 cm",
-   "status": "ACTIVE",
-   "google_kanal": false,
-   "sitz": 2,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "bewusst nicht bei Google (Kostüm)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "schwingerhose-fgahb2887ml",
-   "titel": "Schwingerhose",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 2,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "bewusst nicht bei Google (Kostüm)",
-   "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
   },
@@ -298,73 +170,169 @@
    "ersatz_art": ""
   },
   {
-   "handle": "schwarzer-standventilator-kraftvolle-kuhle-im-desi-551512",
-   "titel": "Schwarzer Standventilator – Kraftvolle Kühle im Design",
-   "status": "ARCHIVED",
+   "handle": "winter-sneaker-fur-herren-warm-gefuttert-602700",
+   "titel": "Winter-Sneaker für Herren, warm gefüttert",
+   "status": "ACTIVE",
    "google_kanal": false,
-   "sitz": 1,
+   "sitz": 2,
    "korb": 0,
    "kauf": 0,
    "quelle": [
-    "Gratis-Eintrag"
+    "Google-Suche"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "3d-drucker-tisch-mit-filamenthalterung-781569",
-   "titel": "3D-Drucker-Tisch mit Filamenthalterung",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Sortiment-Entscheid",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "freistehender-ventilator-esperanza-ehf001ww-weiss-681837",
-   "titel": "Freistehender Ventilator Esperanza EHF001WW Weiss 50 W",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "bladeless-nackenventilator-usb-akku-5-stufen-flusterleise",
-   "titel": "Bladeless Nackenventilator – USB-Akku, 5 Stufen, flüsterleise",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Dublette → Zwilling muss aktiv sein",
+   "grund": "Grund unbekannt (kein Grund-Tag)",
    "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "dreirad-ociotrends-zwillinge-restauriert-d-v0710203",
-   "titel": "Dreirad Ociotrends Zwillinge (Restauriert D)",
+   "handle": "wasserfester-bartstift-fur-prazise-konturen-c94505",
+   "titel": "Wasserfester Bartstift für präzise Konturen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "schwingerhose-fgahb2887ml",
+   "titel": "Schwingerhose",
    "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "wasserdichte-warm-gefutterte-sneaker-611900",
+   "titel": "Wasserdichte, warm gefütterte Sneaker",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "pinguin-aromadiffusor-mit-duftolen-828288",
+   "titel": "Pinguin-Aromadiffusor mit Duftölen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "dekorative-bucherregal-laternenlampe-607700",
+   "titel": "Dekorative Bücherregal-Laternenlampe",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "silikon-abtropfmatte-fur-geschirr-637442",
+   "titel": "Silikon-Abtropfmatte für Geschirr",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": "abtropfmatte-aus-silikon-selbstentleerend-214145",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.5)"
+  },
+  {
+   "handle": "wimpernstempel-eyeliner-2-in-1-577600",
+   "titel": "Wimpernstempel Eyeliner 2-in-1",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "morgenstern-71-cm-fgabo73235",
+   "titel": "Morgenstern 71 cm",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "herren-lumberjack-hosen-605700",
+   "titel": "Herren-Lumberjack-Hosen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 2,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "thermischer-strickschal-mit-totenkopf-design-600300",
+   "titel": "Thermischer Strickschal mit Totenkopf-Design",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
@@ -372,15 +340,15 @@
    "quelle": [
     "Gratis-Eintrag"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "rc-motorrad-1-10-erlebe-spannende-verfolgungsjagde-812004",
-   "titel": "RC Motorrad 1:10 – Erlebe spannende Verfolgungsjagden",
-   "status": "DRAFT",
+   "handle": "sport-smartwatch-mit-temperatur-und-pulsmessun-353536",
+   "titel": "Sport-Smartwatch mit Temperatur- und Pulsmessung",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
@@ -388,15 +356,15 @@
    "quelle": [
     "Gratis-Eintrag"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "damenparfum-calyx-clinique-edp-edp-47377",
-   "titel": "Damenparfüm Calyx Clinique EDP",
-   "status": "DRAFT",
+   "handle": "tennis-kleid-match-plissee-integrierte-shorts",
+   "titel": "Tennis-Kleid «Match» · Plissee, integrierte Shorts",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
@@ -404,15 +372,15 @@
    "quelle": [
     "Gratis-Eintrag"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
+   "grund": "Saison (Sommerware)",
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "bikini-ysabel-mora-blau",
-   "titel": "Bikini «Ysabel Mora» · Blau",
-   "status": "DRAFT",
+   "handle": "herren-clutch-aus-vollleder-634000",
+   "titel": "Herren Clutch aus Vollleder",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
@@ -420,14 +388,78 @@
    "quelle": [
     "Gratis-Eintrag"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "wandkunst-metall-sonne-boho-statement",
-   "titel": "Wandkunst Metall-Sonne · Boho Statement",
+   "handle": "retro-denim-overall-fur-herren-601200",
+   "titel": "Retro-Denim-Overall für Herren",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "ice-out-bling-diamond-luxusuhr-fur-herren-791936",
+   "titel": "ICE-Out Bling Diamond Luxusuhr für Herren",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kinder-basketballschuhe-mit-drehverschluss-602600",
+   "titel": "Kinder Basketballschuhe mit Drehverschluss",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "herrenuhr-mit-ewigem-kalender-und-mondphase-654976",
+   "titel": "Herrenuhr mit ewigem Kalender und Mondphase",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": "herrenuhr-mit-mondphase-434880",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.5)"
+  },
+  {
+   "handle": "rundes-strandtuch-xl-mandala-mikrofaser",
+   "titel": "Rundes Strandtuch XL · Mandala Mikrofaser",
    "status": "DRAFT",
    "google_kanal": false,
    "sitz": 1,
@@ -437,6 +469,70 @@
     "Gratis-Eintrag"
    ],
    "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "herren-leinenhose-lino-locker-atmungsaktiv",
+   "titel": "Herren-Leinenhose «Lino» – locker & atmungsaktiv",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Saison (Sommerware)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "marathon-carbon-racing-laufschuhe-609500",
+   "titel": "Marathon Carbon Racing Laufschuhe",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "abendkleid-sirene-high-slit-meerjungfrau-mit-schleppe",
+   "titel": "Abendkleid «Sirène» – High-Slit Meerjungfrau mit Schleppe",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kabellose-2-in-1-glattburste-fur-schnelles-sty-599296",
+   "titel": "Kabellose 2-in-1 Glättbürste für schnelles Styling",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Gratis-Eintrag"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
    "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
@@ -458,9 +554,9 @@
    "ersatz_art": ""
   },
   {
-   "handle": "strand-sonnenschirm-uv-schutz-mit-erdanker",
-   "titel": "Strand-Sonnenschirm · UV-Schutz mit Erdanker",
-   "status": "DRAFT",
+   "handle": "robuste-outdoor-sportuhr-fur-herren-620800",
+   "titel": "Robuste Outdoor Sportuhr für Herren",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
@@ -468,174 +564,142 @@
    "quelle": [
     "Gratis-Eintrag"
    ],
-   "grund": "ohne Lieferant → Lieferant suchen",
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": "robuste-outdoor-sportuhr-mit-grossem-digitaldi-638700",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.6)"
+  },
+  {
+   "handle": "keilabsatz-sandalen-mit-fischmaul-zehenpartie-611300",
+   "titel": "Keilabsatz-Sandalen mit Fischmaul-Zehenpartie",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
    "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "endless-hoop-ohrringe-titan-hypoallergen",
-   "titel": "Endless Hoop Ohrringe · Titan hypoallergen",
-   "status": "DRAFT",
+   "handle": "new-minority-skateboard-schuhe-605200",
+   "titel": "New Minority Skateboard-Schuhe",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
    "kauf": 0,
    "quelle": [
-    "Gratis-Eintrag"
+    "Google-Suche"
    ],
-   "grund": "ohne Lieferant → Lieferant suchen",
+   "grund": "Grund unbekannt (kein Grund-Tag)",
    "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "tischventilator-domo-do154a-weiss-6-w-902226",
-   "titel": "Tischventilator DOMO DO154A Weiss 6 W",
-   "status": "DRAFT",
+   "handle": "2-teilige-mesh-bluse-resille-langarm-mit-hollow-out",
+   "titel": "2-teilige Mesh-Bluse «Résille» – Langarm mit Hollow-out",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
    "kauf": 0,
    "quelle": [
-    "Gratis-Eintrag"
+    "Google-Suche"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
+   "grund": "Saison (Sommerware)",
    "behebbar": false,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "schwimminsel-mit-haltern-dein-luxus-im-pool-659332",
-   "titel": "Luftmatratze Intex 18 Gläser Silberfarben 188 x 30 x 71 cm",
-   "status": "DRAFT",
+   "handle": "mattes-portugiesisches-besteck-set-24-teilig-059968",
+   "titel": "Mattes portugiesisches Besteck-Set (24-teilig)",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
    "kauf": 0,
    "quelle": [
-    "Gratis-Eintrag"
+    "Google-Suche"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "rundes-strandtuch-xl-mandala-mikrofaser",
-   "titel": "Rundes Strandtuch XL · Mandala Mikrofaser",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
+   "grund": "Grund unbekannt (kein Grund-Tag)",
    "behebbar": true,
-   "ersatz": "mikrofaser-strandtuch-277504",
-   "ersatz_art": "Zwilling (Ähnlichkeit 0.5)"
+   "ersatz": null,
+   "ersatz_art": ""
   },
   {
-   "handle": "kompakte-klimaanlage-angenehme-kuhle-uberall-1099314",
-   "titel": "Kompakte Klimaanlage: Angenehme Kühle überall!",
-   "status": "DRAFT",
+   "handle": "intelligenter-futterautomat-mit-keramiknapf-200640",
+   "titel": "Intelligenter Futterautomat mit Keramiknapf",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
    "kauf": 0,
    "quelle": [
-    "Gratis-Eintrag"
+    "Google-Suche"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "schaum-abflussreiniger-604000",
-   "titel": "Schaum-Abflussreiniger",
-   "status": "DRAFT",
+   "handle": "weihnachts-pyjama-sets-fur-die-ganze-familie-613100",
+   "titel": "Weihnachts Pyjama-Sets für die ganze Familie",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
    "kauf": 0,
    "quelle": [
-    "Gratis-Eintrag"
+    "Google-Suche"
    ],
-   "grund": "nicht in die Schweiz lieferbar",
-   "behebbar": false,
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "universal-ladegerat-fur-60v-e-scooter-bike-580481",
-   "titel": "Universal-Ladegerät für 60V E-Scooter/Bike",
-   "status": "DRAFT",
+   "handle": "leuchtendes-diamond-painting-fur-erwachsene-557376",
+   "titel": "Leuchtendes Diamond Painting für Erwachsene",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
    "kauf": 0,
    "quelle": [
-    "Gratis-Eintrag"
+    "Google-Suche"
    ],
-   "grund": "nicht in die Schweiz lieferbar",
-   "behebbar": false,
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "effiziente-mobil-klima-frische-fur-ihr-zuhause-565413",
-   "titel": "Effiziente Mobil-Klima: Frische für Ihr Zuhause!",
-   "status": "DRAFT",
+   "handle": "geflochtene-haremshose-herren-trendig-615700",
+   "titel": "Geflochtene Haremshose Herren – Trendig",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
    "kauf": 0,
    "quelle": [
-    "Gratis-Eintrag"
+    "Google-Suche"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
   {
-   "handle": "schlauchboot-intex-challenger-3-3-personen-295-cm",
-   "titel": "Schlauchboot «Intex Challenger 3» · 3 Personen, 295 cm",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "trinkbrunnen-fur-haustiere-innovagoods-gener-v0800005",
-   "titel": "Trinkbrunnen für Haustiere InnovaGoods · Generalüberholt (Note B)",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Gratis-Eintrag"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "lidschatten-deborah-n-05-bb265249",
-   "titel": "Lidschatten Deborah Nº 05",
+   "handle": "tennis-armband-zirkonia-316l-edelstahl",
+   "titel": "Tennis-Armband Zirkonia · 316L Edelstahl",
    "status": "DRAFT",
    "google_kanal": false,
    "sitz": 1,
@@ -644,8 +708,40 @@
    "quelle": [
     "Google-Suche"
    ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
+   "grund": "ohne Lieferant → Lieferant suchen",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "elegantes-figurbetontes-abendkleid-mit-schlitz-601200",
+   "titel": "Elegantes, figurbetontes Abendkleid mit Schlitz",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "retro-super-console-x-cube-058112",
+   "titel": "Retro-Konsole X Cube mit HDMI und mehreren Anschlüssen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   },
@@ -666,9 +762,9 @@
    "ersatz_art": ""
   },
   {
-   "handle": "galaxy-aurora-led-projektor-360-sternenhimmel",
-   "titel": "Galaxy Aurora LED-Projektor 360° · Sternenhimmel & Nordlicht mit Fernbedienung",
-   "status": "DRAFT",
+   "handle": "kariertes-familien-pyjama-set-mit-hirschgeweih-616100",
+   "titel": "Kariertes Familien-Pyjama-Set mit Hirschgeweih",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
@@ -676,7 +772,39 @@
    "quelle": [
     "Google-Suche"
    ],
-   "grund": "ohne Lieferant → Lieferant suchen",
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "rc-stunt-truck-mit-schaumstoffreifen-724288",
+   "titel": "RC Stunt Truck mit Schaumstoffreifen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "q36-clip-on-bluetooth-kopfhorer-mit-gerauschun-634400",
+   "titel": "Q36 Clip-on Bluetooth Kopfhörer mit Geräuschunterdrückung",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
    "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
@@ -698,9 +826,25 @@
    "ersatz_art": "Weiterleitung"
   },
   {
-   "handle": "pgm-golfschlager-holz-fur-damen-und-herren-604000",
-   "titel": "PGM Golfschläger (Holz) für Damen und Herren",
-   "status": "DRAFT",
+   "handle": "schaumstoff-drohne-mit-schwerkraft-illusion-601000",
+   "titel": "Schaumstoff-Drohne mit Schwerkraft-Illusion",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "leinenhemd-fur-herren-im-chinesischen-stil-624000",
+   "titel": "Leinenhemd für Herren im chinesischen Stil",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
@@ -716,214 +860,6 @@
   {
    "handle": "damenuhr-bellevue-b39-35-mm-295895",
    "titel": "Damenuhr Bellevue B39 (Ø 35 mm)",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "herren-sonnenbrille-robuster-schutz-fur-starke-man-80688",
-   "titel": "Herrensonnenbrille Timberland · Modell 317884",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "kostum-hosenanzug-fgss3865",
-   "titel": "Kostüm Hosenanzug «Good Vibes» · 5 Designs",
-   "status": "ACTIVE",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "bewusst nicht bei Google (Kostüm)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "tennis-armband-zirkonia-316l-edelstahl",
-   "titel": "Tennis-Armband Zirkonia · 316L Edelstahl",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": "tennis-armband-aus-edelstahl-mit-zirkonia-637200",
-   "ersatz_art": "Weiterleitung"
-  },
-  {
-   "handle": "pilzsammel-taschen-set-421313",
-   "titel": "Pilzsammel-Taschen-Set",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Grund unbekannt (kein Grund-Tag)",
-   "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "paul-hewitt-armband-r-23m-s0397548",
-   "titel": "Paul Hewitt Armband «R-23M»",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "zitruspresse-orbegozo-18269-s9916470",
-   "titel": "Zitruspresse «Orbegozo» 18269",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "sport-trinkflasche-isoliert-mit-strohhalm-1l",
-   "titel": "Sport-Trinkflasche · Isoliert mit Strohhalm 1L",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "mr-mrs-partner-shirts-couple-t-shirts-zur-hochzeit-%F0%9F%92%8D",
-   "titel": "",
-   "status": "WEG",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Handle existiert nicht mehr",
-   "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "trinkglas-luminarc-maine-grau-glas-320-ml-6-stuc-bb1196852",
-   "titel": "Trinkglas Luminarc Maine Grau Glas 320 ml (6 Stück)",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Lieferant beendet (BigBuy)",
-   "behebbar": false,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "strand-poncho-kapuzen-badetuch-mikrofaser",
-   "titel": "Strand-Poncho · Kapuzen-Badetuch Mikrofaser",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "rotes-schaumstoff-flugzeug-mit-elektromotor-860418",
-   "titel": "Rotes Schaumstoff-Flugzeug mit Elektromotor",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "Grund unbekannt (kein Grund-Tag)",
-   "behebbar": true,
-   "ersatz": "blaues-schaumstoff-flugzeug-mit-elektromotor-239681",
-   "ersatz_art": "Zwilling (Ähnlichkeit 0.6)"
-  },
-  {
-   "handle": "marmor-optik-vase-luxe-30-cm",
-   "titel": "Marmor-Optik Vase Luxe 30 cm",
-   "status": "DRAFT",
-   "google_kanal": false,
-   "sitz": 1,
-   "korb": 0,
-   "kauf": 0,
-   "quelle": [
-    "Google-Suche"
-   ],
-   "grund": "ohne Lieferant → Lieferant suchen",
-   "behebbar": true,
-   "ersatz": null,
-   "ersatz_art": ""
-  },
-  {
-   "handle": "industrie-deckenventilator-stark-stilvoll-kuhlen-565238",
-   "titel": "Industrie Deckenventilator – Stark & Stilvoll Kühlen",
    "status": "DRAFT",
    "google_kanal": false,
    "sitz": 1,
@@ -954,6 +890,38 @@
    "ersatz_art": ""
   },
   {
+   "handle": "retro-tang-hemd-im-chinesischen-stil-616000",
+   "titel": "Retro-Tang-Hemd im chinesischen Stil",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "turkis-ohrringe-fur-frauen-614800",
+   "titel": "Türkis-Ohrringe für Frauen",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
    "handle": "kostum-prinzessin-rosalia-fgssck4660",
    "titel": "Kostüm Prinzessin Rosalia",
    "status": "ACTIVE",
@@ -970,9 +938,601 @@
    "ersatz_art": ""
   },
   {
+   "handle": "paul-hewitt-armband-r-23m-s0397548",
+   "titel": "Paul Hewitt Armband «R-23M»",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "ferngesteuerte-infrarot-wurst-223168",
+   "titel": "Ferngesteuerte Infrarot-Wurst",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "auto-schiebedach-ablaufreiniger-614500",
+   "titel": "Auto Schiebedach-Ablaufreiniger",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "halsband-mit-glocke-und-blumen-design-050368",
+   "titel": "Halsband mit Glocke und Blumen-Design",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "retro-overknee-stiefel-fur-damen-623500",
+   "titel": "Retro Overknee-Stiefel für Damen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "blutstillendes-pulver-fur-hunde-und-katzenkral-613600",
+   "titel": "Blutstillendes Pulver für Hunde- und Katzenkrallen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "manner-geldborse-mit-tri-fold-design-607600",
+   "titel": "Männer-Geldbörse mit Tri-Fold-Design",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "thermoaktive-farbwechsel-herrenjacke-627300",
+   "titel": "Thermoaktive Farbwechsel-Herrenjacke",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "gymnastikschuhe-fur-damen-601200",
+   "titel": "Gymnastikschuhe für Damen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "zweiteiler-ruschen-top-langer-rock-622800",
+   "titel": "Zweiteiler: Rüschen-Top & langer Rock",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "lauflern-socken-mit-grip-288576",
+   "titel": "Lauflern-Socken mit Grip",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kupferarmreif-mit-bunten-zirkonia-einlagen-614900",
+   "titel": "Kupferarmreif mit bunten Zirkonia-Einlagen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "herren-hemd-mit-blumenprint-und-kurzarm-632200",
+   "titel": "Herren Hemd mit Blumenprint und Kurzarm",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kinder-elektro-gabelstapler-fga41606",
+   "titel": "Kinder Elektro Gabelstapler",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "beim Lieferanten ausverkauft",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "fledermaus-lampe-631400",
+   "titel": "Fledermaus-Lampe",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "retro-kordelanzug-607600",
+   "titel": "Retro-Kordelanzug",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kostum-hosenanzug-fgss3865",
+   "titel": "Kostüm Hosenanzug «Good Vibes» · 5 Designs",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "koreanische-campus-laufschuhe-e17e6f",
+   "titel": "Koreanische Campus Laufschuhe",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "personalisierbare-kopfhorer-a8ab40",
+   "titel": "Personalisierbare Kopfhörer",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "leoparden-volantkleid-fur-den-sommer-462400",
+   "titel": "Leoparden-Volantkleid für den Sommer",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
    "handle": "waschmaschinen-untergestell-mit-rollen-2-stk-306370",
    "titel": "Waschmaschinen-Untergestell mit Rollen (2 Stk.)",
    "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "pilzsammel-taschen-set-421313",
+   "titel": "Pilzsammel-Taschen-Set",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "bugelfreies-langarm-polohemd-fur-herren-604700",
+   "titel": "Bügelfreies Langarm-Polohemd für Herren",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "sommerkleid-sole-casual-midi-raglan-armel",
+   "titel": "Sommerkleid «Sole» · Casual Midi, Raglan-Ärmel",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Saison (Sommerware)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "nagelverlangerungs-gel-set-198336",
+   "titel": "Nagelverlängerungs-Gel-Set",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": "nagelverlangerungs-set-mit-gel-63b69c",
+   "ersatz_art": "Zwilling (Ähnlichkeit 1.0)"
+  },
+  {
+   "handle": "thermohose-mit-knieschutz-618600",
+   "titel": "Thermohose mit Knieschutz",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "dr-japanische-sakura-creme-178242",
+   "titel": "DR Japanische Sakura Creme",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "warmeschutz-weste-fur-hunde-608500",
+   "titel": "Wärmeschutz Weste für Hunde",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "vintage-spitzen-tischdecke-wei-schwarz-140-cm-624800",
+   "titel": "Vintage Spitzen Tischdecke – Weiss/Schwarz, 140 cm",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "rc-schaumstoff-flugzeug-fur-stunts-619700",
+   "titel": "RC Schaumstoff-Flugzeug für Stunts",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "geflochtener-kissenbezug-aus-baumwoll-leinen-ec3af1",
+   "titel": "Geflochtener Kissenbezug aus Baumwoll-Leinen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "baby-lauflernschuhe-mit-streifen-35f5fd",
+   "titel": "Baby Lauflernschuhe mit Streifen",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kostum-plusch-wildschwein-fgssck46401k",
+   "titel": "Kostüm Plüsch Wildschwein",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "herren-sneaker-korean-style-atmungsaktiv-961984",
+   "titel": "Herren Sneaker Korean Style Atmungsaktiv",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kostum-konig-fgss4231k",
+   "titel": "Kostüm König · Kindergrösse",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "bewusst nicht bei Google (Kostüm)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "silikon-hangetasche-fur-lockenstab-622400",
+   "titel": "Silikon-Hängetasche für Lockenstab",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "winter-leggings-mit-pfirsichpo-effekt-622400",
+   "titel": "Winter Leggings mit Pfirsichpo-Effekt",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "englische-madchenlederschuhe-mit-weichsohle-605700",
+   "titel": "Englische Mädchenlederschuhe mit Weichsohle",
+   "status": "ACTIVE",
    "google_kanal": false,
    "sitz": 1,
    "korb": 0,
@@ -998,6 +1558,262 @@
    ],
    "grund": "nicht in die Schweiz lieferbar",
    "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "kupfer-lowe-dekoration-623200",
+   "titel": "Kupfer-Löwe Dekoration",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "retro-brusttasche-fur-herren-606500",
+   "titel": "Retro-Brusttasche für Herren",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": "retro-brusttasche-aus-rindsleder-626600",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.67)"
+  },
+  {
+   "handle": "fajas-colombianas-postpartum-shapewear-889346",
+   "titel": "Fajas Colombianas Postpartum Shapewear",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "herren-weste-mit-drachen-skala-muster-609600",
+   "titel": "Herren Weste mit Drachen-Skala Muster",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "handy-schutzfolie-mit-anime-stickern-968512",
+   "titel": "Konsolen- & Controller-Skin für PS5 · Aufkleber-Set",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "lederjacke-im-korean-style-fur-herren-636600",
+   "titel": "Lederjacke im Korean Style für Herren",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "fressnapf-katze-schrag-erhoht-keramik-616800",
+   "titel": "Fressnapf Katze schräg & erhöht Keramik",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "rotes-schaumstoff-flugzeug-mit-elektromotor-860418",
+   "titel": "Rotes Schaumstoff-Flugzeug mit Elektromotor",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": "blaues-schaumstoff-flugzeug-mit-elektromotor-239681",
+   "ersatz_art": "Zwilling (Ähnlichkeit 0.6)"
+  },
+  {
+   "handle": "pgm-golfschlager-holz-fur-damen-und-herren-604000",
+   "titel": "PGM Golfschläger (Holz) für Damen und Herren",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "zirkon-ring-mit-silikon-einlage-im-tropfen-des-610900",
+   "titel": "Zirkon-Ring mit Silikon-Einlage im Tropfen-Design",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "3d-muster-hoodie-fur-herren-624800",
+   "titel": "3D Muster Hoodie für Herren",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "buro-nickerchen-kissen-fur-den-schreibtisch-635600",
+   "titel": "Büro-Nickerchen Kissen für den Schreibtisch",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "leinen-set-lino-weste-weite-hose",
+   "titel": "Set «Lino» · Weste + Hose mit geradem Bein",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Saison (Sommerware)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "lidschatten-deborah-n-05-bb265249",
+   "titel": "Lidschatten Deborah Nº 05",
+   "status": "DRAFT",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Lieferant beendet (BigBuy)",
+   "behebbar": false,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "koreanischer-slim-anzug-973760",
+   "titel": "Koreanischer Slim-Anzug",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
+   "ersatz": null,
+   "ersatz_art": ""
+  },
+  {
+   "handle": "mesh-haartrockenhaube-fur-locken-627900",
+   "titel": "Mesh-Haartrockenhaube für Locken",
+   "status": "ACTIVE",
+   "google_kanal": false,
+   "sitz": 1,
+   "korb": 0,
+   "kauf": 0,
+   "quelle": [
+    "Google-Suche"
+   ],
+   "grund": "Grund unbekannt (kein Grund-Tag)",
+   "behebbar": true,
    "ersatz": null,
    "ersatz_art": ""
   }
