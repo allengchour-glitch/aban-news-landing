@@ -1,10 +1,12 @@
 # Kollektionstexte bewerben nicht kaufbare Ware
 
-Stand: 24.11.2026 07:30 UTC · MELDET NUR, ein Kollektionstext ist eine redaktionelle Entscheidung.
+Stand: 26.11.2026 16:40 UTC · MELDET NUR, ein Kollektionstext ist eine redaktionelle Entscheidung.
 
 | Kollektion | beworbener Name | Treffer im Katalog |
 |---|---|---:|
 | `gaming-headsets` (Gaming-Headsets) | «Gaming» | 14, alle DRAFT |
+| `licht-nachtlicht-projektor` (Nachtlicht & Projektoren) | «für Kinder» | 1, alle DRAFT |
+| `licht-nachtlicht-projektor` (Nachtlicht & Projektoren) | «Bluetooth-Lautsprecher» | 28, alle DRAFT |
 | `damen-hosen-weit` (Weite Hosen & Culottes) | «Hosen» | 3, alle DRAFT |
 | `damen-hosen-stoff` (Stoffhosen & Business-Hosen) | «Hosen» | 3, alle DRAFT |
 | `damen-hosen-jogging` (Jogginghosen & Freizeithosen) | «Hosen» | 3, alle DRAFT |

@@ -1677,3 +1677,6 @@ gid://shopify/Product/15479074062721	ok	Smartwatch Armband
 gid://shopify/Product/15479469998465	ok	M99 Smartwatch mit grossem AMOLED-Display
 gid://shopify/Product/15480283365761	ok	Smart X5G HD Beamer mit PTZ-Halterung
 gid://shopify/Product/15484388147585	nicht-versendbar	Racing Drohne mit Display
+gid://shopify/Product/15497450914177	ok	Elektrischer Grilltopf mit Dual-Temperaturkontrolle
+gid://shopify/Product/15500281905537	ok	Retro Reiserucksack aus Crazy Horse Leder
+gid://shopify/Product/16739509961095	nicht-versendbar	Teleskop für Sternenhimmel
