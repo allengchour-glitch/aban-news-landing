@@ -353911,3 +353911,12 @@
 67738814841223	heben	59.90	60.90	48.41	2026-11-26	rindsleder-crossbody-tasche-fur-manner-603500
 67738814873991	heben	59.90	60.90	48.41	2026-11-26	rindsleder-crossbody-tasche-fur-manner-603500
 55911861780865	heben	58.90	59.90	48.30	2026-11-26	untertisch-heizung-634400
+56080184082817	heben	59.90	60.90	48.87	2026-11-26	magnetischer-messerhalter-aus-bambus-und-acryl-622600
+56086772351361	heben	58.90	59.90	47.75	2026-11-26	retro-rucksack-aus-rindsleder-142080
+56099937943937	heben	57.90	69.90	56.50	2026-11-26	12v100ah-lithium-eisenphosphat-akku-749248
+56106033316225	heben	57.90	63.90	51.24	2026-11-26	elektrische-munddusche-mit-10-druckstufen-d574df
+56110659928449	heben	58.90	61.90	49.42	2026-11-26	auto-ladestation-328768
+67722306257287	heben	59.90	60.90	49.10	2026-11-26	wasserdichte-anti-diebstahl-kamera-rucksack-137408
+67739610579335	heben	59.90	60.90	49.10	2026-11-26	wasserdichte-anti-diebstahl-kamera-rucksack-137408
+67725086097799	heben	59.90	60.90	48.48	2026-11-26	rindsleder-business-rucksack-schwarz-688064
+67726140572039	heben	59.90	61.90	49.80	2026-11-26	echter-leder-rucksack-fur-herren-0ace56
