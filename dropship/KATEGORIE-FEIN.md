@@ -1,29 +1,40 @@
-# Feinkategorie (automatisch, 2026-11-26 18:16 UTC)
+# Feinkategorie (automatisch, 2026-11-26 20:17 UTC)
 
 Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
 
 | Zustand | Produkte |
 |---|---:|
-| gleich | 36243 |
-| shopify-feiner | 16325 |
-| rueckfall-grob | 1324 |
-| anderer-zweig | 1041 |
-| kein-google | 1005 |
-| kreuz | 13 |
+| gleich | 36259 |
+| shopify-feiner | 16326 |
+| rueckfall-grob | 1312 |
+| anderer-zweig | 1046 |
+| kein-google | 1007 |
+| ohne-kategorie | 32 |
+| verfeinern | 29 |
+| kreuz | 18 |
 | schon-im-ledger | 13 |
-| titelprobe-nein | 12 |
-| ohne-kategorie | 10 |
+| titelprobe-nein | 13 |
 | keine-zuordnung | 1 |
-| verfeinern | 0 |
-| **geschrieben** | 0 (Fehler 0) |
+| **geschrieben** | 29 (Fehler 0) |
 
 ## Ziele (dieser Lauf)
 
+- 12 → Clothing > Dresses
+- 4 → Lighting > Lamps
+- 2 → Handbags, Wallets & Cases > Wallets & Money Clips
+- 2 → Handbags, Wallets & Cases > Handbags
+- 2 → Lighting > Night Lights & Ambient Lighting
+- 2 → Lighting > Lighting Fixtures > Wall Light Fixtures
+- 1 → Clothing > Shirts & Tops
+- 1 → Clothing > Skirts
+- 1 → Camera & Optic Accessories > Camera Parts & Accessories > Camera Stabilizers & Supports
+- 1 → Lighting > Landscape Pathway Lighting
+- 1 → Clothing > Outfit Sets
 
 ## Titelprobe hat abgelehnt (bleibt grob)
 
+- 4 × Dresses
 - 3 × Activewear
-- 3 × Dresses
 - 2 × Bracelets
 - 1 × Pants
 - 1 × Necklaces
@@ -38,4 +49,4 @@ Werkzeug `automation/kategorie_fein.py` — Regel im Kopf der Datei. SCHARF.
   - «Mini-Short mit Rüschen aus Denim» → Shorts
   - «Abstrakter A-Linien-Maxi mit Batwing-Ärmeln» → Dresses
   - «Langrocke in Einfarbigem Stoff – Midi» → Skirts
-  - «Kristall-Handschmeichler» → Bracelets
+  - «Eleganter Off-Shoulder-Maxi mit offenem Rücken» → Dresses

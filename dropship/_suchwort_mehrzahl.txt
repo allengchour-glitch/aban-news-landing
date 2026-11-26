@@ -4429,3 +4429,15 @@ gid://shopify/Product/16732647031175	taschen	Reiseaufbewahrungssatz – 7 Packta
 gid://shopify/Product/16732647522695	kleider	Sommerkleid mit V-Ausschnitt und ausgestellten Ärmeln
 gid://shopify/Product/16733438968199	ketten	Fusskette Little Girl mit H
 gid://shopify/Product/16733439000967	ketten	Doppellagige Edelstahl-Fusskette – elegant
+gid://shopify/Product/16738395750791	taschen	Kleinhandtasche aus Echtleder
+gid://shopify/Product/16738683453831	taschen	Handtasche aus Rindleder – lange, leichte Geldbörse
+gid://shopify/Product/16739094888839	taschen	Kleinhandtasche aus Rindleder
+gid://shopify/Product/16739506618759	taschen	Reise- und Passtasche RFID-Schutz, wasserfest
+gid://shopify/Product/16739510681991	taschen	Kleinhandtasche mit 8 Karten, 2 Fotos, Führerschein, Geldfach
+gid://shopify/Product/16739867656583	kleider	Damenkleid aus PU Kunstfell, locker, V-Ausschnitt
+gid://shopify/Product/16740218765703	kleider	Grünes Weihnachtskleid für Mädchen
+gid://shopify/Product/16740547035527	kleider	Lockerer Plus-Size Alltagskleid
+gid://shopify/Product/16740575478151	kleider	Schwarzes V-Ausschnitt Damenkleid mit High Waist
+gid://shopify/Product/16740576067975	kleider	Strickkleid mit langen Ärmeln – Midi
+gid://shopify/Product/16740576461191	kleider	Asymmetrisches Tüllkleid mit Rüschenrand
+gid://shopify/Product/16740617421191	kleider	Rotes Woll-Vestkleid für Frauen
