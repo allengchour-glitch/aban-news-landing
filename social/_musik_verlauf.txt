@@ -596,3 +596,4 @@
 2026-11-24T21:45:50.000Z	luxe-epic-anime.wav	4.86	mode	bildreel-thermo-strumpfhose-mit-fleece-futter-065536	stimme:nein	anteil	quelle:bild
 2026-11-25T21:25:51.000Z	luxe-epic-hero.wav	42.64	home	bildreel-dreifach-led-makeup-spiegel-mit-usb-ladefunkti-605600	stimme:nein	fehler	quelle:bild
 2026-11-25T23:28:00.000Z	luxe-epic-fantasy.wav	24.83	haustier	bildreel-bondi-blue-petpullover-fur-katzen-760576	stimme:nein	fehler	quelle:bild
+2026-11-26T06:00:41.000Z	luxe-epic-hybrid.wav	22.62	allgemein	bildreel-latex-maske-schweinekopf-fgabo97519	stimme:nein	anteil	quelle:bild

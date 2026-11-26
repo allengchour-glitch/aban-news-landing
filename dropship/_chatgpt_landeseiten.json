@@ -1,27 +1,18 @@
 {
- "stand": "2026-11-25T06:45Z",
+ "stand": "2026-11-26T05:58Z",
  "tage": 30,
- "sitzungen": 448,
- "warenkorb": 33,
- "seiten": 190,
+ "sitzungen": 447,
+ "warenkorb": 41,
+ "seiten": 193,
  "befunde": [
   {
-   "pfad": "/collections/widerstandsbaender-expander/products/fitness-widerstandsband-set-mit-griffen-4bbe0f",
+   "pfad": "/collections/damen-jacken-kunstfell/products/poncho-mit-faux-pelzkragen-657200",
    "sitzungen": 1,
    "warenkorb": 0,
    "befund": "TOT",
    "weiter_ziel": null,
    "ziel_anzahl": null,
    "anzahl": 0
-  },
-  {
-   "pfad": "/products/allover-sport-bh-selbst-gestalten",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "befund": "TOT",
-   "weiter_ziel": null,
-   "ziel_anzahl": null,
-   "anzahl": null
   },
   {
    "pfad": "/collections/tier-erhoehte-naepfe/products/erhohter-futternapf-fur-katzen-mit-transparent-253504",
@@ -54,7 +45,7 @@
  "liste": [
   {
    "pfad": "/",
-   "sitzungen": 27,
+   "sitzungen": 25,
    "warenkorb": 1,
    "zustand": "nicht_geprueft",
    "weiter_ziel": null,
@@ -79,27 +70,19 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/halloween",
-   "sitzungen": 12,
-   "warenkorb": 1,
+   "pfad": "/collections/damen-jacken-kunstfell",
+   "sitzungen": 10,
+   "warenkorb": 4,
    "zustand": "ok",
    "weiter_ziel": null,
    "sprachen": []
   },
   {
    "pfad": "/products/heizbare-kuscheldecke-mit-armeln-und-kapuze-606000",
-   "sitzungen": 9,
+   "sitzungen": 8,
    "warenkorb": 1,
    "zustand": "weiter",
    "weiter_ziel": "/collections/kuschel-heizdecken",
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/damen-jacken-kunstfell",
-   "sitzungen": 9,
-   "warenkorb": 3,
-   "zustand": "ok",
-   "weiter_ziel": null,
    "sprachen": []
   },
   {
@@ -127,8 +110,8 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/magnet-zum-selbstgestalten",
-   "sitzungen": 6,
+   "pfad": "/collections/halloween",
+   "sitzungen": 7,
    "warenkorb": 1,
    "zustand": "ok",
    "weiter_ziel": null,
@@ -143,14 +126,28 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/geschenkbox-mit-decke-und-wellness-produkten-605100",
+   "pfad": "/products/magnet-zum-selbstgestalten",
    "sitzungen": 6,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/pc-gaming",
+   "sitzungen": 5,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/geschenkbox-mit-decke-und-wellness-produkten-605100",
+   "sitzungen": 5,
    "warenkorb": 1,
    "zustand": "weiter",
    "weiter_ziel": "/collections/premium-geschenke",
-   "sprachen": [
-    "fr"
-   ]
+   "sprachen": []
   },
   {
    "pfad": "/products/shirt-zum-selbstgestalten",
@@ -181,7 +178,7 @@
    ]
   },
   {
-   "pfad": "/collections/uhren-herren",
+   "pfad": "/products/schwarzer-langmantel-mit-fellkragen-602100",
    "sitzungen": 4,
    "warenkorb": 0,
    "zustand": "ok",
@@ -205,7 +202,15 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/buegeltransfer-selbst-gestalten",
+   "pfad": "/products/adventskalender-geschenkbox-603200",
+   "sitzungen": 4,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/uhren-herren",
    "sitzungen": 4,
    "warenkorb": 0,
    "zustand": "ok",
@@ -221,15 +226,23 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/pc-gaming",
+   "pfad": "/collections/gliederarmbaender",
    "sitzungen": 4,
-   "warenkorb": 0,
+   "warenkorb": 1,
    "zustand": "ok",
    "weiter_ziel": null,
    "sprachen": []
   },
   {
    "pfad": "/products/hardcase-iphone®-hulle-mit-magsafe®-selbst-gestalten",
+   "sitzungen": 4,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/make-up-sets",
    "sitzungen": 4,
    "warenkorb": 1,
    "zustand": "ok",
@@ -245,9 +258,9 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/gliederarmbaender",
+   "pfad": "/products/buegeltransfer-selbst-gestalten",
    "sitzungen": 4,
-   "warenkorb": 1,
+   "warenkorb": 0,
    "zustand": "ok",
    "weiter_ziel": null,
    "sprachen": []
@@ -263,15 +276,7 @@
    ]
   },
   {
-   "pfad": "/collections/perlen-edelsteinarmbaender",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/langmantel-mit-fellkragen-in-camel-639400",
+   "pfad": "/collections/auto-interieur-zierteile",
    "sitzungen": 3,
    "warenkorb": 0,
    "zustand": "ok",
@@ -287,62 +292,6 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/moissanit-ringe",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/damen-jacken-kapuze",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/make-up-sets",
-   "sitzungen": 3,
-   "warenkorb": 1,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/silberarmbaender",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/kostueme-ch-lager",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/zirkonia-moissanit-ketten",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/creolen-ohrclips",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
    "pfad": "/collections/wohnen-dekoration",
    "sitzungen": 3,
    "warenkorb": 0,
@@ -351,41 +300,9 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/adventskalender-geschenkbox-603200",
+   "pfad": "/collections/auto-duft-luft",
    "sitzungen": 3,
    "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/inline-skates-rollschuhe",
-   "sitzungen": 3,
-   "warenkorb": 2,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/mauspad-mit-us-dollar-muster-40-60-cm-628900",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/auto-interieur-zierteile",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/kombisets-kette-armband-ohrringe",
-   "sitzungen": 3,
-   "warenkorb": 1,
    "zustand": "ok",
    "weiter_ziel": null,
    "sprachen": []
@@ -407,15 +324,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/tanz-ballettschuhe",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/mauspad-selbst-gestalten",
+   "pfad": "/products/mauspad-mit-us-dollar-muster-40-60-cm-628900",
    "sitzungen": 3,
    "warenkorb": 0,
    "zustand": "ok",
@@ -431,6 +340,110 @@
    "sprachen": []
   },
   {
+   "pfad": "/collections/damen-jacken-kapuze",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/zirkonia-moissanit-ketten",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/kostueme-ch-lager",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/langmantel-mit-fellkragen-in-camel-639400",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/moissanit-ringe",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/personalisierte-armbaender",
+   "sitzungen": 3,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/inline-skates-rollschuhe",
+   "sitzungen": 3,
+   "warenkorb": 2,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/mauspad-selbst-gestalten",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/kombisets-kette-armband-ohrringe",
+   "sitzungen": 3,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/tanz-ballettschuhe",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/perlen-edelsteinarmbaender",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/creolen-ohrclips",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/silberarmbaender",
+   "sitzungen": 3,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
    "pfad": "/collections/lockenstaebe",
    "sitzungen": 3,
    "warenkorb": 0,
@@ -439,41 +452,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/pages/influencer-partner",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "nicht_geprueft",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/auto-duft-luft",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/schwarzer-langmantel-mit-fellkragen-602100",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
    "pfad": "/products/adventskalender-24-teile-charm-armband-132416",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": [
-    "fr"
-   ]
-  },
-  {
-   "pfad": "/collections/haltungsgurte-ruecken",
    "sitzungen": 3,
    "warenkorb": 0,
    "zustand": "ok",
@@ -493,9 +472,9 @@
    ]
   },
   {
-   "pfad": "/collections/vintage-retro-schmuck",
+   "pfad": "/products/polygel-nagelverlangerungs-kit-caefd5",
    "sitzungen": 3,
-   "warenkorb": 0,
+   "warenkorb": 1,
    "zustand": "ok",
    "weiter_ziel": null,
    "sprachen": [
@@ -503,17 +482,7 @@
    ]
   },
   {
-   "pfad": "/collections/ringsets-stapelringe",
-   "sitzungen": 3,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": [
-    "fr"
-   ]
-  },
-  {
-   "pfad": "/collections/leder-kunstleder-rucksaecke",
+   "pfad": "/collections/aufbewahrungsbeutel-taschen",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -522,70 +491,6 @@
   },
   {
    "pfad": "/collections/wanddeko",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/memory-nackenkissen-schmetterlingsform-2690ad",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/tier-hilfsmittel",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/winter-hai-slippers-flauschige-hausschuhe-478720",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/pinkes-off-shoulder-kleid-mit-glitzer-607800",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/herrenarmbaender",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/haarstyling-geraete",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/schwarze-kurze-winterjacke-mit-kapuze-636500",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/auto-schluessel-etuis",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -609,7 +514,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/malen-nach-zahlen-sets",
+   "pfad": "/collections/wasserkocher-kaffeemaschinen",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -617,7 +522,47 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/sitzkissenbezug-aus-weichem-samt-613300",
+   "pfad": "/products/langes-abendkleid-mit-pailletten-627500",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/damen-jacken-trench",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/streaming-hdmi-adapter",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/personalisierte-ketten",
+   "sitzungen": 2,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/winter-hai-slippers-flauschige-hausschuhe-478720",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/pinkes-off-shoulder-kleid-mit-glitzer-607800",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -633,6 +578,14 @@
    "sprachen": []
   },
   {
+   "pfad": "/products/garderobenhaken-aus-walnussholz-764864",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
    "pfad": "/collections/gamepads-controller",
    "sitzungen": 2,
    "warenkorb": 0,
@@ -641,7 +594,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/selbst-gestalten-1",
+   "pfad": "/products/drehbarer-kosmetikpinsel-halter-623400",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -649,7 +602,71 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/herren-jacken-winter",
+   "pfad": "/products/samsung-huelle-selbst-gestalten",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/polygel-set-mit-3-farben-und-dual-tips-5bb219",
+   "sitzungen": 2,
+   "warenkorb": 2,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/herrenarmbaender",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/haarstyling-geraete",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/selbst-gestalten",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/schwarze-kurze-winterjacke-mit-kapuze-636500",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/auto-schluessel-etuis",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/tier-kleider-shirts",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/malen-nach-zahlen-sets",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -665,7 +682,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/garderobenhaken-aus-walnussholz-764864",
+   "pfad": "/products/strap-flared-denim-jeans-fur-herren-606900",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -673,17 +690,9 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/plusch-sofauberwurf-fur-modulare-sofas-604700",
+   "pfad": "/collections/leder-kunstleder-rucksaecke",
    "sitzungen": 2,
    "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/personalisierte-ketten",
-   "sitzungen": 2,
-   "warenkorb": 1,
    "zustand": "ok",
    "weiter_ziel": null,
    "sprachen": []
@@ -705,7 +714,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/selbst-gestalten",
+   "pfad": "/collections/herren-jeans-destroyed",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -713,15 +722,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/personalisierte-armbaender",
-   "sitzungen": 2,
-   "warenkorb": 1,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/langes-abendkleid-mit-pailletten-627500",
+   "pfad": "/collections/tier-hilfsmittel",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -729,7 +730,15 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/strap-flared-denim-jeans-fur-herren-606900",
+   "pfad": "/products/kurze-kapuzenjacke-mit-fellkragen-626300",
+   "sitzungen": 2,
+   "warenkorb": 2,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/heizjacke-mit-usb-anschluss-907264",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -745,15 +754,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/kupfer-magnetarmbaender",
-   "sitzungen": 2,
-   "warenkorb": 1,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/schloesser-safes",
+   "pfad": "/collections/herren-jacken-winter",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -761,7 +762,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/heizjacke-mit-usb-anschluss-907264",
+   "pfad": "/collections/ringsets-stapelringe",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -769,23 +770,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/tier-kleider-shirts",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/herren-jeans-destroyed",
-   "sitzungen": 2,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/herren-freizeit-sneaker-mit-dezenter-erhohung-614600",
+   "pfad": "/products/plusch-sofauberwurf-fur-modulare-sofas-604700",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -809,7 +794,23 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/aufbewahrungsbeutel-taschen",
+   "pfad": "/products/sitzkissenbezug-aus-weichem-samt-613300",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/haltungsgurte-ruecken",
+   "sitzungen": 2,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/selbst-gestalten-1",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -825,7 +826,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/wasserkocher-kaffeemaschinen",
+   "pfad": "/collections/vintage-retro-schmuck",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -833,7 +834,15 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/drehbarer-kosmetikpinsel-halter-623400",
+   "pfad": "/collections/kupfer-magnetarmbaender",
+   "sitzungen": 2,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/schloesser-safes",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -841,15 +850,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/kurze-kapuzenjacke-mit-fellkragen-626300",
-   "sitzungen": 2,
-   "warenkorb": 2,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/damen-jacken-trench",
+   "pfad": "/products/weihnachtsbaumdecke-mit-vergoldung-738496",
    "sitzungen": 2,
    "warenkorb": 0,
    "zustand": "ok",
@@ -889,7 +890,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/polygel-nagelverlangerungs-kit-caefd5",
+   "pfad": "/collections/spiele-karten-geschick",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -897,205 +898,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/🎁-geschenke-bis-chf-30",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/badematten-badteppiche",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/herren-jacken-maentel-lang",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/rucksaecke-motorrad",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": [
-    "fr"
-   ]
-  },
-  {
-   "pfad": "/products/fussmassage-matte-mit-ems-611100",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/edelstahl-armreifen-fur-paare-632800",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": [
-    "fr"
-   ]
-  },
-  {
-   "pfad": "/products/e-scooter-lithium-akku-ladegerat-605700",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/kurze-wattierte-jacke-mit-gurtel-und-kapuze-628800",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/grosser-runder-luftbefeuchter-27ec99",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/widerstandsbaender-expander/products/fitness-widerstandsband-set-mit-griffen-4bbe0f",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "tot",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/rc-stunt-auto-beidseitig-fahrbar-796faa",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/ft-herrenkostuem",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/haushaltsgeraete",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": [
-    "fr"
-   ]
-  },
-  {
-   "pfad": "/collections/pluesch-kuscheltiere",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/keramik-seifenschale-mit-ablauf-474368",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/alpaka-fleece-set-hut-schal-handschuhe-651600",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/casual-damen-sneaker-mit-plattform-968128",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/bunte-kristall-halskette-mit-natursteinperlen-628100",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/figuren-skulpturen",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/auto-aussen-dekor-licht",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/geflochtene-wickelarmbaender",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/warmes-fleece-pyjama-set-mit-kapuze-632900",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/damen-kleider-samt",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/stickbild-set-fur-fotorahmen-blumenmuster-629900",
+   "pfad": "/products/bulldoggen-taschenanhanger-aus-kunstleder-617200",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1111,7 +914,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/digitaler-skorpion-bausatz-aus-metall-063616",
+   "pfad": "/products/reflektierendes-katzengeschirr-mit-zugseil-976896",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1119,7 +922,79 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/g5-game-box-jingchen-905l-tv-spielekonsole-602700",
+   "pfad": "/collections/damen-jacken-kunstfell/products/poncho-mit-faux-pelzkragen-657200",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "tot",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/damen-blusen",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/edelstahl-halskette-mit-gravur-603700",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/dual-use-lockenstab-glatteisen-black-gold-276352",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/mini-malset-15x20-gerahmt-6-teilig-6-stuck-639700",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/weihnachtsgirlande-mit-schleifen-629900",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/silberner-kissenbezug-aus-mulberry-seide-610700",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/boxen-kampfsport",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/mech-warrior-roboter-mit-fernbedienung-33ca04",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/edelstahl-titanketten",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1129,7 +1004,7 @@
    ]
   },
   {
-   "pfad": "/products/maske-horror-clown-latex-fgack13088",
+   "pfad": "/collections/perlen-ohrringe",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1137,103 +1012,15 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/kuscheldecke-mit-halloween-print-611200",
+   "pfad": "/products/kubanische-gliederkette-mit-strass-45-cm-629400",
    "sitzungen": 1,
-   "warenkorb": 0,
+   "warenkorb": 1,
    "zustand": "ok",
    "weiter_ziel": null,
    "sprachen": []
   },
   {
-   "pfad": "/products/allover-sport-bh-selbst-gestalten",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "tot",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/astronaut-phone-case-298816",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/zelte-zeltzubehoer",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/minimalistisches-armband-aus-edelstahl-628800",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/quadratische-damenuhr-mit-strasssteinen-333440",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/bodenstativ-mit-led-ringlicht-fur-livestreams-083200",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/initialanhanger-603600",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/sommerliches-baumwollshirt-fur-haarlose-katzen-611100",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/nagelsticker-nail-art",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/herren-schuhe",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/2-in-1-trink-und-futterflasche-fur-haustiere-204160",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/auto-komfort-reise",
+   "pfad": "/collections/ballsport-teamsport",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1257,7 +1044,47 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/rosenquarz-und-jade-roller-mit-3d-metall-609500",
+   "pfad": "/collections/brillen-brillenzubehoer",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/gesichts-kopf-massagegeraete",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/ft-herrenkostuem",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/draculagebiss-fga59774",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/wasserhaehne-armaturen",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/strampler-bodys",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1276,6 +1103,216 @@
   },
   {
    "pfad": "/products/mittelalterliches-trinkhorn-fgaru1676",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/damen-hosen-stoff",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/geschenke-fuer-ihn",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/samtkleid-mit-glockenarmeln-und-stickerei-626600",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/edelstahl-titanringe",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/bunte-kristall-halskette-mit-natursteinperlen-628100",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/kuhlende-sommerdecke-cool-feel-atmungsaktiv-waschbar",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/drohnen-kameras",
+   "sitzungen": 1,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/pages/influencer-partner",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "nicht_geprueft",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/warmes-sweater-fur-haarlose-katzen-615100",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/tier-kratzmoebel",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/personalisierte-sternzeichen-halskette-610600",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/tier-interaktives-spielzeug",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/wandbilder-wanddeko",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/transparente-iphone®-hulle-selbst-gestalten",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": [
+    "fr"
+   ]
+  },
+  {
+   "pfad": "/products/fussmassage-matte-mit-ems-611100",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/nagellack-display-aus-acryl-mehrstockig-608400",
+   "sitzungen": 1,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/baby-stillen-fuettern",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/desktop-schminkspiegel-mit-led-licht-811392",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/herren-schuhe",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/ft-peruecke",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/smarter-auto-aroma-diffuser-626900",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/kurze-steppjacke-mit-gerafftem-rundhals-627100",
+   "sitzungen": 1,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/hundebetten",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/trinkflaschen-thermosflaschen",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/dreifach-led-makeup-spiegel-mit-usb-ladefunkti-605600",
+   "sitzungen": 1,
+   "warenkorb": 1,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/products/pailletten-abendkleid-mit-v-ausschnitt-632500",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1307,7 +1344,15 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/grillpfannen-elektrogrills",
+   "pfad": "/products/weihnachtskugeln-filz-schneeflocken-36er-set-607700",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/handyhuellen-displayschutz",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1323,15 +1368,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/drohnen-kameras",
-   "sitzungen": 1,
-   "warenkorb": 1,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/tailliertes-wickelkleid-ohne-armel-v-ausschnit-602500",
+   "pfad": "/products/haltungskorrektur-gurt-fur-rucken-und-schulter-614700",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1339,7 +1376,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/glaetteisen",
+   "pfad": "/collections/starthilfe-batterie-wandler",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1347,7 +1384,23 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/radios-audioplayer-diktiergeraete",
+   "pfad": "/products/new-flame-aroma-diffuser-mit-flammeneffekt-620700",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/boho-ethno-schmuck",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": []
+  },
+  {
+   "pfad": "/collections/kunstblumen-kraenze-girlanden",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1363,7 +1416,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/reflektierendes-katzengeschirr-mit-zugseil-976896",
+   "pfad": "/collections/ft-kinderkostuem",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1371,7 +1424,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/lenkradbezug-plusch-leopard-913ee5",
+   "pfad": "/products/futterstation-holz-fur-katze-aa9e7e",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1379,7 +1432,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/pumps-mit-blockabsatz-und-plateau-761472",
+   "pfad": "/products/firework-ultraschall-diffusor-710f1d",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1387,7 +1440,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/damen-jacken-winter",
+   "pfad": "/products/schwebende-led-weltkarte-mit-magnetlevitation-81a2c9",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1411,7 +1464,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/sprechender-shiba-inu-pluschhund-0e7169",
+   "pfad": "/products/damen-kurzmantel-mit-grossem-pelzkragen-606900",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1419,7 +1472,17 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/tier-maentel-jacken",
+   "pfad": "/products/ocean-wave-projektor-led-nachtlicht-33b26c",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": [
+    "fr"
+   ]
+  },
+  {
+   "pfad": "/collections/wellness-selfcare",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1427,7 +1490,17 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/silberner-kissenbezug-aus-mulberry-seide-610700",
+   "pfad": "/collections/geschenke-fuer-kinder",
+   "sitzungen": 1,
+   "warenkorb": 0,
+   "zustand": "ok",
+   "weiter_ziel": null,
+   "sprachen": [
+    "fr"
+   ]
+  },
+  {
+   "pfad": "/products/weihnachts-press-on-nagel-zum-ablosen-623900",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1435,7 +1508,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/boxen-kampfsport",
+   "pfad": "/collections/perlenketten",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1443,7 +1516,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/ornamente-anhaenger-dekofiguren",
+   "pfad": "/collections/herrenuhren-schmuck",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1451,15 +1524,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/suesses-esswaren",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/silberketten",
+   "pfad": "/products/grosser-runder-luftbefeuchter-27ec99",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1491,7 +1556,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/bastelsets-diy-kits",
+   "pfad": "/products/baby-strampler-mit-hasenohren-dreiteiler-613400",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1499,17 +1564,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/schwarzes-gothic-vestkleid-619200",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": [
-    "fr"
-   ]
-  },
-  {
-   "pfad": "/products/einfaches-baumwoll-pyjama-set-608000",
+   "pfad": "/products/herren-hoodie-trainerhosen-set-fleece-gefutter-626200",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1517,7 +1572,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/collections/lederarmbaender",
+   "pfad": "/collections/herren-jeans-straight",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1525,7 +1580,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/adventskalender-set-aus-satin-geschenkbeutel-622900",
+   "pfad": "/collections/led-streifen-lichterketten",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1533,17 +1588,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/intelligentes-wecker-armband-mit-vibrationsala-620000",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": [
-    "fr"
-   ]
-  },
-  {
-   "pfad": "/collections/handyhuellen-displayschutz",
+   "pfad": "/products/weihnachts-geschenksackli-aus-baumwolle-leinen-638400",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1551,17 +1596,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/54w-uv-led-nagellampe-mit-dual-lichtquelle-949888",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": [
-    "fr"
-   ]
-  },
-  {
-   "pfad": "/products/retro-weihnachtskugeln-12er-set-615500",
+   "pfad": "/collections/herz-schmuck",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
@@ -1569,39 +1604,7 @@
    "sprachen": []
   },
   {
-   "pfad": "/products/polygel-set-mit-3-farben-und-dual-tips-5bb219",
-   "sitzungen": 1,
-   "warenkorb": 1,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/haltungskorrektur-gurt-fur-rucken-und-schulter-614700",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/products/eukalyptus-rosen-girlande-601800",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/geschenke-unter-50-franken",
-   "sitzungen": 1,
-   "warenkorb": 0,
-   "zustand": "ok",
-   "weiter_ziel": null,
-   "sprachen": []
-  },
-  {
-   "pfad": "/collections/kunstblumen-kraenze-girlanden",
+   "pfad": "/collections/tier-halskrausen",
    "sitzungen": 1,
    "warenkorb": 0,
    "zustand": "ok",
