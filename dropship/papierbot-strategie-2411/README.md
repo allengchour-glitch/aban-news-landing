@@ -37,3 +37,8 @@ Summe der Funding-Sätze je Jahr (Short-Perp bekommt es bei positivem Satz), Ant
 
 ## Papier-Lauf v3: fünf Bots (24.11.2026, nur Spielgeld)
 `papier_lauf_v3.mjs` (braucht `papier_lauf_v2.mjs`): 1 Bitcoin-Trend, 2 Korb, 3 Donchian 50/20 long (bis 5 Coins), 4 Momentum 30 Tage Top 5 (nur wenn Bitcoin über SMA200), 5 Rückkehr zum Mittel (Kauf unter dem unteren Bollinger-Band 20/2, Verkauf über SMA20, Bitcoin über SMA200). Je Bot eigenes Ledger und 1000 Papier-USDT, Kosten 0,15 % je Seite auf Umschichtungen. Test `papier_lauf_v3.test.mjs` (Mutationsprobe 9 von 9 nach Nachbesserung zweier zu grober Tests). Starter `BTC-TREND-PAPIER-V3.sh`, Rücknahme `zurueck2`. Bots 3 bis 5 sind Lern-Experimente: Bot 3 hatte im Backtest 2025 −44 %, Bot 4 −53 %, Bot 5 wurde nicht rückgetestet; keiner gilt als Beleg.
+
+## Handy-Steuerung per Telegram (25.11.2026)
+Dateien: `steuerung.mjs` (Logik, getestet), `telegram_steuerung.mjs` (Long-Polling, nimmt nur den privaten Chat des Besitzers an), Starter `BTC-TREND-PAPIER-STEUERUNG.sh` (Prüfsummen fest, Token wird am Server getippt). Befehle: `/status`, `/pause <bot|alle>`, `/weiter <bot|alle>`, `/reset <bot>` mit `/ja` (5 Minuten gültig, Ledger wird gesichert, nicht gelöscht), `/nein`. `papier_lauf_v3.mjs` liest `steuerung.json` und überspringt pausierte Bots (offene Positionen bleiben stehen).
+**GEMESSEN:** Test 40 Prüfungen grün, Mutationsprobe 14 von 14 erkannt, echter Lauf von v3 mit Pause für Korb und Bitcoin-Trend: beide nicht geschrieben, die anderen drei gelaufen.
+**Ungemessen:** echter Telegram-Betrieb auf Hetzner, Zustellzeit. Nicht enthalten: neue Bot-Typen per Handy (der Lauf kennt fünf feste Strategien). Nur Papiergeld, keine Orders, keine Börsenschlüssel.
