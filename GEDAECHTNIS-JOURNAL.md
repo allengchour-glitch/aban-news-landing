@@ -62,6 +62,17 @@
 
 
 
+## 2026-11-26 22:50 · ⛏️ «gute cj produkten grinden»: Groq-Engpass behoben + beliebte Ware zuerst
+- **Befund:** Die 4 Runner liefen, aber ~880× «skip(gemini)» in den Logs. Groq war in Spitzen gedrosselt: je Schlüssel 8'000 Tokens/Minute
+  und ~1'000 Anfragen/Tag je Modell (Header `x-ratelimit-*`). Bei 4 parallelen Läufen und nur 3 Schlüsseln traf ein 429 alle Versuche → Text null.
+  DeepSeek/Gemini fangen nicht auf. Jedes verworfene Produkt hatte seine CJ-Punkte (product/query) schon gekostet.
+- **Fix `automation/groq_text.mjs`:** alle 5 Schlüssel (GROQ_API_KEY4/5 lagen ungenutzt im Env). `groq/compound-mini` gibt es nicht mehr (404) → raus.
+  Sind alle Versuche gedrosselt, wird `retry-after` (höchstens 20 s) abgewartet und bis zu 2× neu versucht.
+  `qwen/qwen3.8-27b` getestet: nur 1'000 Ausgabe-Tokens/Minute → untauglich.
+- **Fix `automation/cj_category_fill.mjs`:** `product/list` mit `orderBy=listedNum` (gemessen: absteigend 70976, 50743 …) und eigener Seitenzeiger
+  `<cat>_beliebt`. Bereits Importiertes kostet nur den Listen-Abruf. `SORTIERUNG=standard` = alter Weg.
+  `cj_trending_import` (Perpetual) sortierte schon nach listedNum.
+
 ## 2026-11-26 22:30 · ⭐ Trustpilot-Einladungen LIVE (nicht selektiv) + Datenschutz
 - AFS-Adresse `luxestyle.ch+a0cc73ef58@invite.trustpilot.com` (Konto aktiv, Gratisplan, «Quick set-up").
 - **Klaviyo RnTvsY, Aktion 107500830 «Review Request T+28d» (live):** `bcc_email` = AFS-Adresse, **Smart Sending AUS** (sonst Vorauswahl),

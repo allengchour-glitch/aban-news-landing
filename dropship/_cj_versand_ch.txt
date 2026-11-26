@@ -1682,3 +1682,6 @@ gid://shopify/Product/15500281905537	ok	Retro Reiserucksack aus Crazy Horse Lede
 gid://shopify/Product/16739509961095	nicht-versendbar	Teleskop für Sternenhimmel
 gid://shopify/Product/15500346163585	ok	Retro-Lederrucksack für Herren
 gid://shopify/Product/16615208616327	ok	Reisetasche aus Leder für Herren
+gid://shopify/Product/16740820386183	nicht-versendbar	Holz Monitorständer mit 2-stufigem Organizer 100 cm
+gid://shopify/Product/16740938482055	ok	Bonsai-Blumentopf aus Purpursand, mittel
+gid://shopify/Product/16740940153223	ok	Edelstahl-Gemüse- und Obstschneider

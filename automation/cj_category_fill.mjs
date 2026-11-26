@@ -710,14 +710,19 @@ for(const [cat,label] of grp.cats){
  // gemeinsamen JSON: vier Runner schreiben parallel, eine geteilte Datei würde sich gegenseitig
  // überschreiben.
  const ZDIR='dropship/_cj_pages'; try{fs.mkdirSync(ZDIR,{recursive:true});}catch{}
- const zFile=`${ZDIR}/${String(cat).replace(/[^A-Za-z0-9_-]/g,'')}`;
+ // 26.11.2026 (Betreiber «gute cj produkten grinden»): beliebte Ware zuerst — CJ sortiert die Kategorie nach «listedNum»
+ // (wie viele Shops das Produkt führen; gemessen: product/list&orderBy=listedNum liefert 70976, 50743, 38995 … absteigend).
+ // Eigener Zeiger je Sortierung, sonst stünde der Beliebt-Lauf auf der Seite des alten Standard-Laufs und überspränge die besten Seiten.
+ // Bereits Importiertes kostet nur den Listen-Abruf (done.has(pid) vor product/query). SORTIERUNG=standard = alte Reihenfolge.
+ const BELIEBT=(process.env.SORTIERUNG||'beliebt')!=='standard';
+ const zFile=`${ZDIR}/${String(cat).replace(/[^A-Za-z0-9_-]/g,'')}${BELIEBT?'_beliebt':''}`;
  let startSeite=1;
  try{ const v=parseInt(fs.readFileSync(zFile,'utf8').trim(),10); if(v>0)startSeite=v; }catch{}
  let letzteSeite=startSeite, zeigerBehalten=false;
  for(let page=startSeite;page<startSeite+MAXPAGE && total<CAP && got<perCat;page++){
   letzteSeite=page;
   const WH=(process.env.WAREHOUSE||'').trim(); // EU-Lager-Filter (z.B. DE) — User 2026-07-07 «cj sachen aus eu lager»
-  const j=await cj(`/product/list?pageSize=30&pageNum=${page}&categoryId=${cat}${WH?`&countryCode=${WH}`:''}`); await sleep(700);
+  const j=await cj(`/product/list?pageSize=30&pageNum=${page}&categoryId=${cat}${WH?`&countryCode=${WH}`:''}${BELIEBT?'&orderBy=listedNum':''}`); await sleep(700);
   const list=(j.data&&j.data.list)||[];
   // ⚠️ «Leere Liste» heisst NICHT automatisch «Kategorie zu Ende». Bei erschöpftem Punkte-
   // budget antwortet CJ mit code 16900500 und ebenfalls leerer Liste. Wer das verwechselt,

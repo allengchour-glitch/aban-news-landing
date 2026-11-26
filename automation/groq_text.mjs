@@ -12,7 +12,10 @@
 // Der Parser nimmt das JSON zwischen erster «{» und letzter «}» — Fences oder Vorspann sind egal.
 
 import { floskelZaehler, VERBOTEN, beginntMitDies } from './cj_copy_prompt.mjs';
-const KEYS = [(process.env.GROQ_API_KEY || ''), (process.env.GROQ_API_KEY2 || ''), (process.env.GROQ_API_KEY3 || process.env.GROQ_API_KEY_3 || '')].map(s => s.trim()).filter(Boolean);
+// 26.11.2026: alle fünf Schlüssel (KEY4/KEY5 lagen ungenutzt im Env). Gemessen: je Schlüssel 8'000 Tokens/Minute und
+// ~1'000 Anfragen/Tag je Modell — 4 parallele Runner sprengten mit 3 Schlüsseln die Minutengrenze → «skip(gemini)», CJ-Punkte verloren.
+const KEYS = [...new Set([process.env.GROQ_API_KEY, process.env.GROQ_API_KEY2, process.env.GROQ_API_KEY3 || process.env.GROQ_API_KEY_3,
+  process.env.GROQ_API_KEY4, process.env.GROQ_API_KEY5].map(s => (s || '').trim()).filter(Boolean))];
 
 export const GROQ_MODELLE = [
   { model: 'openai/gpt-oss-20b', body: { reasoning_effort: 'low', max_tokens: 1500 } },
@@ -21,7 +24,8 @@ export const GROQ_MODELLE = [
   // gpt-oss-120b hat ein eigenes Kontingent; mit reasoning_effort low und 2'500 Tokens kommt JSON (gemessen 1,7 s,
   // «Gepolsterte Kapuzenjacke für Damen» — besser als 20b). Vor compound-mini, das Details erfindet.
   { model: 'openai/gpt-oss-120b', body: { reasoning_effort: 'low', max_tokens: 2500 } },
-  { model: 'groq/compound-mini', body: { max_tokens: 1200, response_format: { type: 'json_object' } } },
+  // 26.11.2026: groq/compound-mini gibt es nicht mehr (404 model_not_found für alle Schlüssel) — entfernt.
+  // qwen/qwen3.8-27b getestet: Ausgabegrenze 1'000 Tokens/Minute → für Produkttexte zu klein.
 ];
 
 export function jsonAusText(c) {
@@ -32,13 +36,14 @@ export function jsonAusText(c) {
 }
 
 // Gibt das geparste JSON-Objekt zurueck (title/html), oder null wenn kein Modell antwortet.
-export async function groqText(prompt, { temperature = 0.5, nachbesserung = false } = {}) {
+export async function groqText(prompt, { temperature = 0.5, nachbesserung = false, runde = 0 } = {}) {
+  let warte = 0;   // 26.11.2026: höchste retry-after-Angabe aller 429 dieser Runde (Sekunden)
   for (const { model, body } of GROQ_MODELLE) for (const key of KEYS) {
     try {
       const r = await fetch('https://api.groq.com/openai/v1/chat/completions', { method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
         body: JSON.stringify({ model, temperature, messages: [{ role: 'user', content: prompt }], ...body }) });
-      if (r.status === 429) continue;
+      if (r.status === 429) { warte = Math.max(warte, Number(r.headers.get('retry-after')) || 5); continue; }
       const j = await r.json(); if (j.error) continue;
       const o = jsonAusText(j.choices?.[0]?.message?.content);
       if (o && o.title && o.html) {
@@ -55,6 +60,9 @@ export async function groqText(prompt, { temperature = 0.5, nachbesserung = fals
       }
     } catch {}
   }
+  // 26.11.2026: Waren ALLE Versuche gedrosselt (Minutengrenze), einmal warten und neu versuchen statt das Produkt zu verwerfen —
+  // ein verworfenes Produkt hat seine CJ-Punkte schon gekostet und kommt später erneut (doppelte Punkte).
+  if (warte && runde < 2) { await new Promise(res => setTimeout(res, Math.min(20, warte) * 1000)); return groqText(prompt, { temperature, nachbesserung, runde: runde + 1 }); }
   return null;
 }
 
