@@ -364,6 +364,34 @@
     "btc": 59747.765625,
     "eth": 1677.69482421875
    }
+  },
+  {
+   "stand": "2026-11-25",
+   "zeit": "2026-11-26T14:01:13+00:00",
+   "modell": "claude-opus-5-5",
+   "tokens_ein": 1673,
+   "tokens_aus": 733,
+   "kosten_usd": 0.021873,
+   "stufe": "opus",
+   "eskaliert": {
+    "von": "claude-haiku-5-5",
+    "grund": "Haiku nur 0.40 sicher bei Bitcoin"
+   },
+   "btc": {
+    "position": -0.05,
+    "begruendung": "Der Trend ist klar abwärts: −24,5 % in 30 Tagen und rund 20 % unter allen gleitenden Durchschnitten. Gleichzeitig ist der Markt stark überverkauft (Angst&Gier 13, MVRV 1,14), und der Kurs pendelt seit 5 Tagen zwischen 58'800 und 61'200. Das Risiko einer Gegenbewegung ist hoch, deshalb nur ein Mini-Short. Er bleibt unverändert, also keine Gebühr, und das positive Funding fliesst mir zu.",
+    "sicherheit": 0.3
+   },
+   "eth": {
+    "position": 0.0,
+    "begruendung": "ETH ist schwächer als BTC (−27 % in 30 Tagen, Volatilität 67 %), aber mit einem MVRV von 0,85 tief unterbewertet und extrem überverkauft. Der Kurs stabilisiert sich bei 1'620–1'720. Weder Short noch Long bieten ein gutes Chance-Risiko-Verhältnis. Ich bleibe flach und spare die Gebühr.",
+    "sicherheit": 0.3
+   },
+   "kommentar": "Die Positionen bleiben unverändert. Der Abwärtstrend dauert an, aber die Übertreibung ist gross: extreme Angst und weiter Abstand zu den Durchschnitten. Seit 5 Tagen bildet sich eine Bodenzone. Bei einem Ausbruch unter 58'800 bzw. 1'620 würde ich den Short ausbauen. Erholt sich BTC über 64'000, stelle ich auf flach.",
+   "kurse": {
+    "btc": 60378.19921875,
+    "eth": 1690.76904296875
+   }
   }
  ]
 }
