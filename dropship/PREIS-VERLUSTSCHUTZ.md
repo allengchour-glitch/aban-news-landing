@@ -1,18 +1,17 @@
-# Preis-Verlustschutz — scharf 2026-11-26 07:06 UTC
+# Preis-Verlustschutz — scharf 2026-11-26 07:19 UTC
 
 Regel: Preis ≥ Mindestpreis bei **15% Rabatt + Gratisversand** (EK inkl. Fracht, 2.9 % + 0.30 Gebühr, 1.5 % Währung), aufgerundet auf .90. Nur heben. Faktor > 2.0 → Variante nicht kaufbar statt absurder Preis.
 
-- Produkte mit Anpassung: **8** · Varianten gehoben: **10** · gesperrt (Faktor > 2.0): 0
-- Median-Faktor der Hebungen: 1.06× · Varianten ohne EK (nicht geprüft): 0
-- geschrieben: 8 · Fehler: 0 · Lesefehler: 0
+- Produkte mit Anpassung: **7** · Varianten gehoben: **35** · gesperrt (Faktor > 2.0): 0
+- Median-Faktor der Hebungen: 1.03× · Varianten ohne EK (nicht geprüft): 0
+- geschrieben: 7 · Fehler: 0 · Lesefehler: 0
 
 | Produkt (erste Variante) | Preis alt | EK | Preis neu | Faktor |
 |---|---|---|---|---|
-| Elektrischer Mini-Entsafter, wiederaufladbar | 34.90 | 32.08 | **39.90** | 1.14× |
-| Micro-Carving Elektro-Schleifer Kit, 56-teilig | 34.90 | 28.59 | **35.90** | 1.03× |
-| Herrenschuhe Kroko-Muster Lackleder | 21.90 | 19.44 | **24.90** | 1.14× |
-| Feuchtigkeitsspendender Nano-Sprayer | 34.90 | 29.79 | **37.90** | 1.09× |
-| Rucksack aus Kunstleder, geflochten, schwarz | 34.90 | 28.31 | **35.90** | 1.03× |
-| Mixer-Klinge aus Edelstahl für Thermomix TM21 | 34.90 | 29.46 | **36.90** | 1.06× |
-| Mini-Elektroschrauber mit Schraubenset | 34.90 | 29.61 | **36.90** | 1.06× |
-| Elektrische Ballaufblaspumpe mit Nadel | 34.90 | 28.41 | **35.90** | 1.03× |
+| Ohrenreiniger mit Kamera und LED-Licht | 33.90 | 28.37 | **35.90** | 1.06× |
+| Patentleder Keilsandaletten mit Bügelverschluss | 27.90 | 24.63 | **30.90** | 1.11× |
+| Herren Loafer aus Rindsleder | 28.90 | 23.59 | **29.90** | 1.03× |
+| LED-Faseroptik-Rucksack | 34.90 | 28.15 | **35.90** | 1.03× |
+| Dualkalender Business-Uhr mit Edelstahlarmband | 34.90 | 28.21 | **35.90** | 1.03× |
+| Smartwatch mit Herzfrequenz, Blutsauerstoff & Te | 34.90 | 28.26 | **35.90** | 1.03× |
+| Nachtlicht Bettlampen-LED tragbar | 34.90 | 28.13 | **35.90** | 1.03× |
