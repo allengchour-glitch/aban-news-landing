@@ -28,7 +28,7 @@ Was ohne dich geht, ist erledigt oder vorbereitet.
    4. Nach der Freigabe die Texte aus `dropship/CHATGPT-PROFIL-TEXTE.md` einfügen.
    - ⚠️ Gut zu wissen: Das Profil lässt sich danach nicht mehr löschen. OpenAI erhält eine dauerhafte Lizenz an Name, Adresse und Kontakt.
      NIE «Ads-Konto», «Pixel», «Kampagne» oder «Sponsor» anklicken und kein Zahlungsmittel hinterlegen.
-3. **Microsoft (Bing-Shopping gratis): du musst klicken, ich habe vorbereitet**
+3. **Microsoft (Bing-Shopping gratis)** — ✅ 26.11. 22:00: Shopify-Meta + Store-Beschreibung gespeichert, **Store ist «genehmigt»** (kein Review nötig). Offen: 0 aktive Produkte trotz Feed-Update 21:55 → ab 29.11. nachsehen.
    - Von mir erledigt: Die Fusszeile nennt jetzt die Lieferzeit, wie in der Versandrichtlinie: «ab Schweizer Lager meist 2–3 Werktage, sonst 7–20 Werktage, Liechtenstein 15–45 Tage».
    - Du (am PC, ca. 10 Min.):
      1. Shopify → Onlineshop → Einstellungen → «Bild für soziale Medien und SEO» → Meta-Beschreibung ersetzen durch:
@@ -38,7 +38,7 @@ Was ohne dich geht, ist erledigt oder vorbereitet.
      3. Erst danach: Merchant Center → Summary → Reiter «Product issues» → **«Request a review»**. ⚠️ Es gibt nur EINEN Versuch pro Store. Die Prüfung dauert bis 5 Tage.
      4. Nach der Freigabe: Feeds → «Import from Google Merchant Center» (Konto 5797470070), Zielregion Schweiz.
    - Nicht klicken: Guthaben, Kampagne, Performance Max. Die App «Microsoft Channel» nicht installieren (Schweiz fehlt). Microsoft in Shopify-Autopilot nicht wieder verbinden (das wären bezahlte Anzeigen).
-4. **Trustpilot: Anmeldung macht du (5 Min.), den Rest mache ich**
+4. **Trustpilot** — 26.11.: Anmeldung abgeschickt, Link geöffnet; es fehlt nur AGB-Häkchen + «Complete setup», dann AFS-Adresse an mich.
    - Die Sitzung kann das nicht: Das Formular hat ein Captcha und verlangt deine Zustimmung zu den AGB.
    - Du: signup.business.trustpilot.com/create-account → Land Schweiz, «LuxeStyle», luxestyle.ch → E-Mail **info@luxestyle.ch** (damit ist die Domain gleich bestätigt) → Link in der Mail klicken → AGB → fertig.
      Dann Invitations → Emails → «Automatic Feedback Service» → Adresse kopieren und mir schicken.

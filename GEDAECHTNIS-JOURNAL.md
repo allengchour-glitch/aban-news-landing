@@ -62,6 +62,18 @@
 
 
 
+## 2026-11-26 22:00 · ✅ Betreiber-Agent (Claude in Chrome) erledigte den Cowork-Block — Microsoft-Store ist GENEHMIGT
+- **Shopify `shop.description`** ist neu (per API gemessen): «LuxeStyle aus Belp: … 30 Tage Rückgabe, ausser selbst gestaltete Artikel.» Damit kein «Deutschland» mehr.
+- **Microsoft Merchant Center:** Store 50042597 «LuxeStyle CH» hat den **Status «genehmigt»** (Screenshot 26.11.). Die Ablehnung vom 01.10.
+  ist also überholt, ein Review ist nicht nötig (darum fehlt der Knopf). Werbekonto im Screenshot: «LuxeStyle (G107RP8C)», Login über das
+  Google-Konto des Betreibers. Kampagnen pausiert, also keine Kosten. Store-Beschreibung neu gespeichert (mit Lieferzeiten). Sprache «Deutsch – Deutschland».
+  **Offen: 0 aktive Produkte**, obwohl der Feed am 26.11. um 21:55 aktualisiert wurde. Diagnose 0/0/0 Probleme. Nachsehen ab 29.11.
+  (Verarbeitung bis 72 h); bleibt es bei 0: Feed-Import → Zielland Schweiz? Einstellungen → «Product listings» an?
+- **Trustpilot:** Anmeldung abgeschickt (info@luxestyle.ch), Aktivierungslink geöffnet. Es fehlt nur das AGB-Häkchen + «Complete setup» (Betreiber),
+  danach die AFS-Adresse (Invitations → Emails → Automatic Feedback Service).
+- Screenshots kamen als Drive-Dateien «mcp-claude-in-chrome-blob-…jpg». Der Text ist über `get_file_metadata` (contentSnippet = OCR)
+  lesbar, ohne Bild-Download. Das spart Tokens.
+
 ## 2026-11-26 nachts · 💳 «1 und 2» (PC freigeben + CJ selbst zahlen) — beides blockiert, gemessen
 - **PC «MSI»:** `list_computer_folders` weiterhin beide Ordner `not_available` → der Betreiber muss die Claude-App unter Windows aktualisieren,
   der Ordner darf nicht in einem versteckten Verzeichnis liegen; danach erneut prüfen und `request_computer_folder`.
