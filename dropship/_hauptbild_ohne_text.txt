@@ -59129,3 +59129,4 @@ gid://shopify/Product/16737794195847	schon-sauber	0
 gid://shopify/Product/16737802846599	schon-sauber	0
 gid://shopify/Product/16737821524359	schon-sauber	0
 gid://shopify/Product/16737941881223	schon-sauber	0
+gid://shopify/Product/16732309225863	schon-sauber	0
