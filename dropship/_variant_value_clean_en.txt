@@ -23037,3 +23037,9 @@ gid://shopify/Product/16738252882311	Farbe	gid://shopify/ProductOptionValue/5978
 gid://shopify/Product/16638236230023	Farbe	gid://shopify/ProductOptionValue/59813059035527	Mint / Grün	Mintgrün / Grün	2026-11-26T18:25Z
 gid://shopify/Product/16638236230023	Farbe	gid://shopify/ProductOptionValue/59813059068295	Retro Rosa	Retro-Rosa	2026-11-26T18:25Z
 gid://shopify/Product/16638236230023	Farbe	gid://shopify/ProductOptionValue/59813059133831	Classic Schwarz	Klassisches Schwarz	2026-11-26T18:25Z
+gid://shopify/Product/16736598262151	Grösse	gid://shopify/ProductOptionValue/59813988401543	Small Size	Klein	2026-11-26T18:27Z
+gid://shopify/Product/16736598262151	Grösse	gid://shopify/ProductOptionValue/59813988434311	Large Size	Gross	2026-11-26T18:27Z
+gid://shopify/Product/16736677396871	Grösse	gid://shopify/ProductOptionValue/59813440520583	Rechargeable	Wiederaufladbar	2026-11-26T18:27Z
+gid://shopify/Product/16738265170311	Grösse	gid://shopify/ProductOptionValue/59814039552391	8PCS	8 Stück	2026-11-26T18:27Z
+gid://shopify/Product/16740218536327	Farbe	gid://shopify/ProductOptionValue/59839124078983	Dark Coffee Color	Dunkelkaffeebraun	2026-11-26T18:27Z
+gid://shopify/Product/16740218536327	Farbe	gid://shopify/ProductOptionValue/59839124111751	Light Gold	Hellgold	2026-11-26T18:27Z

@@ -1,18 +1,18 @@
 # Englische Lieferanten-Variantenwerte — Bericht
 
-> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-26 16:39 UTC, Stand 2026-11-26 18:26 UTC — **läuft noch (Zahlen sind Zwischenstand)**.
+> Werkzeug: `automation/variant_value_clean.py` (täglich im Aufseher). Durchgang seit 2026-11-26 16:39 UTC, Stand 2026-11-26 18:27 UTC — **vollständig**.
 
 > Übersetzt wird nur, wenn JEDES Wort eines Werts bekannt ist (farben_de.json, Farbkomposition, Begriffstabellen im Skript). Alles andere bleibt stehen und erscheint unten. Jede Umbenennung steht Wert für Wert in `dropship/_variant_value_clean_en.txt` (alt → neu, rückgängig machbar).
 
 ## Zahlen
 
-- Produkte gesehen: **54'616**
-- Optionen mit englischen Werten (Kandidaten): 1'504
-- Optionen übersetzt: **1** · Werte übersetzt: **3**
+- Produkte gesehen: **56'024**
+- Optionen mit englischen Werten (Kandidaten): 1'543
+- Optionen übersetzt: **5** · Werte übersetzt: **9**
 - Optionen nur codebereinigt: 0
-- Werte mit unbekanntem Wort (unverändert): 4'303
+- Werte mit unbekanntem Wort (unverändert): 4'536
 - Fehler Shopify: 0 · Rückgelesen abweichend: 0
-- übersprungen «kleidungsstueck-im-wert»: 36
+- übersprungen «kleidungsstueck-im-wert»: 38
 - übersprungen «kollision-nach-uebersetzung»: 30
 
 ## A · NUR MELDEN — Kleidungsstück als «Farbe» (Wahl bestellt evtl. eine andere Ware)
@@ -33,6 +33,7 @@
 - `16603765899655` [Farbe] **Baby Strick-Set mit Hose und Haarband · 3 Stück** — hose, pullover · Titel nennt Set: Cardigan Sweater | Knitted Pants | Haarband | Three Piece Set
 - `16614832112007` [Farbe] **Halloween Kostümkleid Set** — rock · Titel nennt Set: 8735 One Skirt | 8735, Einzelner Umhang | 8735 Skirt Cloak
 - `16615656194439` [Farbe] **Jacquard Kleid-Set mit Schleife** — jacke, oberteil, rock · Titel nennt Set: Top Skirt Blazer | Oberteil, Rock, Bluse, Ärmel | Schwarz, Rockstütze
+- `16740617421191` [Farbe] **Rotes Woll-Vestkleid für Frauen** — oberteil, rock, weste: Red vest skirt | Beige white top
 
 ## B · Kollision nach Übersetzung (nicht geschrieben)
 
@@ -90,5 +91,5 @@
 
 ## E · Häufigste unbekannte Wörter (daraus wächst die Tabelle — nur mit EINER Lesart aufnehmen)
 
-`⟨satzbau:adjektiv-vor-nomen⟩` 155, `powder` 107, `french` 84, `core` 78, `elegant` 74, `high` 69, `size` 69, `one` 64, `cherry` 59, `shell` 51, `diamond` 48, `four` 47, `⟨satzbau:mass-ohne-einheit⟩` 45, `chain` 40, `lotus` 39, `inner` 38, `(insole` 36, `color` 34, `avocado` 34, `×` 33, `end` 33, `space` 33, `carbon` 32, `blossom` 31, `tc` 31, `li` 31, `of` 30, `star` 28, `opp` 28, `intergold` 28, `tea` 27, `basic` 27, `plush` 27, `weiß` 26, `gel` 26, `stickers` 26, `to` 25, `happy` 25, `gun` 24, `two` 24, `you` 24, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `three` 22, `crown` 22, `no` 21, `love` 21, `inside` 21, `2er` 20, `rabbit` 20, `light` 20, `deer` 20, `perforated` 20, `⟨satzbau:menge-vor-nomen⟩` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `strawberry` 20, `oxford` 20, `cool` 19
+`⟨satzbau:adjektiv-vor-nomen⟩` 164, `powder` 112, `inner` 92, `french` 84, `core` 78, `elegant` 74, `high` 70, `size` 70, `one` 64, `cherry` 59, `diamond` 51, `shell` 51, `four` 49, `⟨satzbau:mass-ohne-einheit⟩` 45, `chain` 40, `lotus` 39, `(insole` 36, `color` 34, `avocado` 34, `×` 33, `end` 33, `space` 33, `carbon` 32, `blossom` 31, `tc` 31, `li` 31, `of` 30, `weiß` 29, `basic` 29, `star` 28, `opp` 28, `intergold` 28, `tea` 27, `plush` 27, `gel` 26, `stickers` 26, `two` 25, `to` 25, `happy` 25, `gun` 24, `you` 24, `three` 23, `⟨satzbau:praeposition⟩` 23, `eyelashes` 23, `light` 22, `⟨satzbau:menge-vor-nomen⟩` 22, `crown` 22, `no` 21, `love` 21, `inside` 21, `2er` 20, `rabbit` 20, `milk` 20, `deer` 20, `ice` 20, `perforated` 20, `acupuncture` 20, `magnetic` 20, `therapy` 20, `strawberry` 20
 
