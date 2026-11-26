@@ -15,7 +15,7 @@ Quelle: Workflow «neue-kunden-wege». 10 Wege, jeder von einem Skeptiker gegen 
    - Messung ab 26.12.
 
 ## Nur du kannst klicken (je 10–30 Min., kein Geld)
-1. **iPhone-Kassentest in der ChatGPT-App**
+1. ✅ **iPhone-Kassentest in der ChatGPT-App** — Betreiber 26.11.: «geht» (TWINT und Apple Pay kommen zur Kasse zurück).
    - In ChatGPT «luxestyle.ch» suchen, Produkt in den Warenkorb legen, zur Kasse gehen.
    - Prüfen: Kommst du nach TWINT bzw. nach dem Apple-Pay-Fenster zur Kasse zurück? Dann abbrechen.
    - Mir melden: «geht» oder «bricht ab bei …».

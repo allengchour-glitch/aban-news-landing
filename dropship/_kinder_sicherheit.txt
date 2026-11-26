@@ -1777,3 +1777,9 @@ gid://shopify/Product/16732287861127	a	toddler
 gid://shopify/Product/16732288614791	a	toddler
 gid://shopify/Product/16734412603783	a	kids
 gid://shopify/Product/16738234368391	a	toddler
+gid://shopify/Product/16736598360455	a	kids
+gid://shopify/Product/16737808023943	a	kids
+gid://shopify/Product/16737941881223	a	kids
+gid://shopify/Product/16737945485703	a	kids
+gid://shopify/Product/16737959313799	a	kids
+gid://shopify/Product/16738261205383	a	kids
