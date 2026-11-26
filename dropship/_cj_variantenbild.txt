@@ -9283,3 +9283,5 @@ gid://shopify/Product/15481755894145	zugeordnet	40	Business Oxford-Schuhe mit sp
 gid://shopify/Product/15481755926913	zugeordnet	14	Trendige Business-Lederschuhe für Herren
 gid://shopify/Product/15481755992449	zugeordnet	50	Business-Schuhe im britischen Stil mit Schnürung
 gid://shopify/Product/15481756090753	zugeordnet	36	Leder Slipper im britischen Casual-Stil
+gid://shopify/Product/15481756123521	zugeordnet	44	Business-Schnürschuhe aus PU-Leder für Herren
+gid://shopify/Product/15481756189057	zugeordnet	22	Herren Business-Schuhe mit Holzmaserung
