@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-25T14:15:17Z",
+ "stand": "2026-11-26T13:51:03Z",
  "quellen": [
   "OpenAI",
   "Google AI",
@@ -18,83 +18,83 @@
  "fenster_h": 72,
  "items": [
   {
-   "t": "Amazon and Meta reportedly in talks to lift blockade on AI agent Muse",
-   "u": "https://techcrunch.com/2026/11/25/amazon-and-meta-reportedly-in-talks-to-lift-blockade-on-ai-agent-muse/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-25T14:10:18Z",
-   "s": "Amazon and Meta are discussing a potential deal that would end a two-month-long blockade of Muse.",
-   "sprache": "en"
-  },
-  {
-   "t": "Widersprüchliche Anweisungen: Wenn bei ChatGPT und Claude der Zufall entscheidet",
-   "u": "https://t3n.de/news/widerspruechliche-anweisungen-chatgpt-claude-zufall-entscheidet-1775247/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "t": "75 % weniger HR-Tickets: Wie IBM KI im Personalwesen einsetzt",
+   "u": "https://t3n.de/news/ki-im-personalwesen-ibm-askhr-1775483/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
    "q": "t3n",
-   "d": "2026-11-25T14:05:31Z",
-   "s": "Du hast der KI feste Regeln mitgegeben, und trotzdem hält sie sich nicht daran? Oft liegt das nicht am Tool, sondern an einer Rangordnung. Was dahintersteckt, hörst du im Podcast t3n MeisterPrompter. …",
+   "d": "2026-11-26T13:30:52Z",
+   "s": "IBM kommt heute mit drei Viertel weniger HR-Tickets aus als 2016. Bevor alle Personalanfragen in einem KI-Chat landen konnten, musste der Konzern aufräumen und klären, was die KI überhaupt darf.weiter…",
    "sprache": "de"
   },
   {
-   "t": "KI-Update kompakt: Nvidia, KI-Migrationsgesetz, Valiants Vermutung, Perplexity",
-   "u": "https://www.heise.de/news/KI-Update-kompakt-Nvidia-KI-Migrationsgesetz-Valiants-Vermutung-Perplexity-11536344.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
-   "q": "heise",
-   "d": "2026-11-25T14:00:00Z",
-   "s": "Das „KI-Update“ liefert drei mal pro Woche eine Zusammenfassung der wichtigsten KI-Entwicklungen.",
-   "sprache": "de"
-  },
-  {
-   "t": "KI-generierte Musik: Tidal will 27 Millionen Songs löschen",
-   "u": "https://t3n.de/news/ki-generierte-musik-tidal-will-27-millionen-songs-loeschen-1775228/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
-   "q": "t3n",
-   "d": "2026-11-25T13:30:16Z",
-   "s": "Tidal zieht eine harte Grenze: Musik, die komplett aus einem KI-Werkzeug stammt, fliegt aus dem Katalog. Zuletzt waren 43 Prozent aller neu angelieferten Titel maschinell erzeugt.weiterlesen auf t3n.d…",
-   "sprache": "de"
-  },
-  {
-   "t": "The Download: AI swamping open records, and firefighting for permafrost",
-   "u": "https://www.technologyreview.com/2026/11/25/1149808/the-download-ai-open-records-permafrost-fires/",
+   "t": "The Download: Better bionic hands and AI’s natural-gas boom",
+   "u": "https://www.technologyreview.com/2026/11/26/1149934/the-download-better-bionic-hands-ai-natural-gas-boom/",
    "q": "MIT Tech Review",
-   "d": "2026-11-25T13:10:00Z",
-   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. AI is straining America’s open records systems AI has intensif…",
+   "d": "2026-11-26T13:10:00Z",
+   "s": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The next generation of bionic hands is here—and they can feel …",
    "sprache": "en"
   },
   {
-   "t": "The questions Jensen Huang and Nvidia will still have to answer about Megaspeed",
-   "u": "https://techcrunch.com/2026/11/25/the-questions-jensen-huang-and-nvidia-will-still-have-to-answer-about-megaspeed/",
-   "q": "TechCrunch AI",
-   "d": "2026-11-25T13:00:00Z",
-   "s": "Huang still faces questions from Congress and his own board about his romantic relationship with an alleged chip smuggler.",
-   "sprache": "en"
-  },
-  {
-   "t": "Flut an KI-Spielen bringt Atari-Entwickler-Wettbewerb zum Stillstand",
-   "u": "https://www.heise.de/news/Zu-viel-KI-Retro-Wettbewerb-der-Atari-Homebrew-Szene-faellt-aus-11537667.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "t": "Software Testing: Wer jedes Problem der KI übergibt, verlernt das Denken",
+   "u": "https://www.heise.de/blog/Software-Testing-Wer-jedes-Problem-der-KI-uebergibt-verlernt-das-Denken-11538597.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
    "q": "heise",
-   "d": "2026-11-25T11:46:00Z",
-   "s": "Der Organisator sieht keine Möglichkeit mehr, menschliche Entwicklungsleistungen fair zu bewerten. Ähnliche Probleme kennen Open-Source-Projekte.",
+   "d": "2026-11-26T12:54:00Z",
+   "s": "Richard Seidl spricht mit Gerald Hüther darüber, wie KI uns das Denken abgewöhnen kann und warum ein scheinbar perfekter Text leblos wirkt.",
    "sprache": "de"
   },
   {
-   "t": "Musikstreaming: Tidal verbannt vollständig KI-generierte Musiktitel",
-   "u": "https://www.golem.de/news/musikstreaming-tidal-verbannt-vollstaendig-ki-generierte-musiktitel-2611-215635.html",
-   "q": "Golem",
-   "d": "2026-11-25T11:15:02Z",
-   "s": "Fast jeder zweite neu eingereichte Titel bei Tidal ist vollständig KI-generiert. Die Abonnenten interessieren sich allerdings kaum dafür. (KI, Streaming)",
+   "t": "Riemannsche Vermutung: Claude kürzt KI-Beweis um mehr als 99 Prozent",
+   "u": "https://www.heise.de/news/Riemannsche-Vermutung-Claude-kuerzt-KI-Beweis-um-mehr-als-99-Prozent-11539145.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag",
+   "q": "heise",
+   "d": "2026-11-26T12:50:00Z",
+   "s": "Claude hat den eigenen Beweis der Riemannschen Vermutung drastisch verschlankt. Die mathematische Fachwelt arbeitet weiterhin daran, ihn zu verstehen.",
    "sprache": "de"
   },
   {
-   "t": "An Indic Voice Agent with CUGA",
-   "u": "https://huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga",
+   "t": "Alarm nach globalem IT-Ausfall: Microsoft ruft intern Code Red aus",
+   "u": "https://t3n.de/news/microsoft-code-red-it-ausfall-1775106/?utm_source=rss&utm_medium=newsFeed&utm_campaign=newsFeed",
+   "q": "t3n",
+   "d": "2026-11-26T11:55:00Z",
+   "s": "Ein rund 24 Stunden dauernder weltweiter Ausfall von zentralen Diensten wie Outlook, Teams oder Copilot hat bei Microsoft die Alarmglocken schrillen lassen. Der Softwarekonzern löste Code Red aus und …",
+   "sprache": "de"
+  },
+  {
+   "t": "Introducing the llama.cpp benchmark dashboard for AMD Ryzen and Radeon",
+   "u": "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
    "q": "Hugging Face",
-   "d": "2026-11-25T10:22:09Z",
+   "d": "2026-11-26T11:37:17Z",
    "s": "",
    "sprache": "en"
   },
   {
-   "t": "AI is straining America’s open records systems",
-   "u": "https://www.technologyreview.com/2026/11/25/1149702/ai-is-straining-americas-open-records-systems/",
-   "q": "MIT Tech Review",
-   "d": "2026-11-25T10:00:00Z",
-   "s": "In Panton, Vermont, population 660, town clerk Kyle Rowe did it all. He crafted budgets, paid vendors, handled property tax disputes, and served as the town’s zoning supervisor and presiding elections…",
+   "t": "N hoch 9/4: OpenAI will Untergrenze für Matrixmultiplikation gefunden haben",
+   "u": "https://www.golem.de/news/n-hoch-9-4-openai-will-untergrenze-fuer-matrixmultiplikation-gefunden-haben-2611-215683.html",
+   "q": "Golem",
+   "d": "2026-11-26T10:27:01Z",
+   "s": "Wie viele Multiplikationen braucht eine Matrixmultiplikation? OpenAIs KI soll die runde, praktisch nur für Mathematiker relevante Antwort gefunden haben. (Innovation & Forschung, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Auch in Deutschland: 22 Organisationen über Check-Point-Server gehackt",
+   "u": "https://www.golem.de/news/auch-in-deutschland-22-organisationen-ueber-check-point-server-gehackt-2611-215682.html",
+   "q": "Golem",
+   "d": "2026-11-26T10:14:01Z",
+   "s": "Angreifer haben es auf Check-Point-Server abgesehen. Durch teils seit Monaten bekannte Sicherheitslücken konnten sie in mehrere IT-Umgebungen eindringen. (Sicherheitslücke, KI)",
+   "sprache": "de"
+  },
+  {
+   "t": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference",
+   "u": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+   "q": "Hugging Face",
+   "d": "2026-11-26T05:05:36Z",
+   "s": "",
+   "sprache": "en"
+  },
+  {
+   "t": "S&P considers Nvidia credit downgrade over governance and ‘key man’ risks",
+   "u": "https://techcrunch.com/2026/11/25/sp-considers-nvidia-credit-downgrade-over-governance-and-key-man-risks/",
+   "q": "TechCrunch AI",
+   "d": "2026-11-25T22:44:32Z",
+   "s": "The credit rating agency may lower Nvidia's credit rating to AA-, the fourth-highest rating.",
    "sprache": "en"
   }
  ]
