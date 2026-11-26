@@ -5,7 +5,7 @@ Prüfen: `python3 tools/tore.py dropship/tore/theme-id-live.md`
 
 - [ ] T1: Helfer main_theme.py wählt genau das MAIN-Theme (Selbsttest) und liefert live die GID
     PRUEFUNG: python3 automation/main_theme.py --selbsttest && python3 automation/main_theme.py
-    ERWARTET: /OK \(5\/5\)[\s\S]*OnlineStoreTheme\/\d+/
+    ERWARTET: /OK \(\d+\/\d+[\s\S]*OnlineStoreTheme\/\d+/
 - [ ] T2: Die 7 als sicher beurteilten Skripte tragen keine feste Theme-ID mehr und lösen beim Import das Live-Theme auf
     PRUEFUNG: cd automation && python3 -c "import importlib,main_theme;g=main_theme.gid();ms=['theme_text_kanarien','variant_links_wache','kassen_lieferdatum_wache','anlass_lieferzeit_wache','versandschwelle_rabatt','pod_designzwang','meta_beschreibung_escape'];b=[m for m in ms if '187533001089' in open(m+'.py').read() or importlib.import_module(m).THEME!=g];print(b);assert not b;print('TOR-OK')"
     ERWARTET: TOR-OK
@@ -15,5 +15,6 @@ Prüfen: `python3 tools/tore.py dropship/tore/theme-id-live.md`
 - [ ] T4: Varianten-Link-Wache liest das Live-Theme vollständig (Kanarienvogel ok)
     PRUEFUNG: env -u SHOPIFY_CLIENT_ID -u SHOPIFY_CLIENT_SECRET SHOPIFY_SHOP=au3j0y-hq.myshopify.com SHOPIFY_ADMIN_TOKEN="$(cat /tmp/cj_shop_token.txt | tr -d '\n')" timeout 300 python3 automation/variant_links_wache.py 2>&1 | tail -1
     ERWARTET: /Kanarienvogel ok/
-- [ ] T5: Warenkorb-Schreiber (warenkorb_gratisversand, warenkorb_einig) erst NACH Umbau umstellen: BLOCK/JS_NEU auf «ab CHF 50 nach Rabatt» (5000/5556), gid() zur Laufzeit, abendaktion.py und theme_gratis_schwelle_50.py --zurueck von w.THEME lösen
-    HAND: offen — Rezept des Skeptikers in dropship/theme-id-2611/URTEILE.md; bis dahin zeigen beide bewusst aufs alte Theme (harmlos, aber blind)
+- [ ] T5: Warenkorb-Schreiber umgebaut (Workflow wf_d6e5dcb3-ae2: Umbau + 2 Skeptiker + Nachbesserung): Soll-Block 50/5556/«nach Rabatt», gid() zur Laufzeit, abendaktion --start gesperrt, theme_gratis_schwelle_50 --zurueck nur altes Theme mit Prüfsumme; alle Selbsttests grün
+    PRUEFUNG: cd automation && for s in main_theme theme_attrappe warenkorb_gratisversand warenkorb_einig abendaktion theme_gratis_schwelle_50 google_org_richtlinien; do timeout 300 python3 $s.py --selbsttest 2>&1 | tail -1; done | grep -c -E "OK"
+    ERWARTET: /^7$/

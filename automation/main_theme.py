@@ -67,8 +67,46 @@ def zahl(frisch=False):
     return gid(frisch).rsplit("/", 1)[1]
 
 
+# 26.11.2026: Prüfgerät für «der Import eines Moduls fragt NICHTS ab» (weder gid() noch Netz). Läuft in einem frischen Prozess, in dem
+# gid(), urllib.request.urlopen und Socket-Verbindungen eine Ausnahme werfen; danach wird das Modul importiert.
+_PROBE = r"""
+import os, socket, sys, urllib.request
+for _p in reversed(sys.argv[1].split(os.pathsep)):
+    sys.path.insert(0, _p)
+import main_theme
+def _boom(*a, **k):
+    raise SystemExit("ABFRAGE BEIM IMPORT: " + (str(a[0])[:80] if a else ""))
+main_theme.gid = _boom
+urllib.request.urlopen = _boom
+socket.create_connection = _boom
+socket.socket.connect = _boom
+import importlib
+for m in sys.argv[2:]:
+    importlib.import_module(m)
+print("IMPORT-OHNE-NETZ OK")
+"""
+
+
+def import_ohne_netz(*module, pfad=HIER):
+    """(ok, Meldung): importiert die Module in einem frischen Prozess, in dem jede gid()-/Netz-Abfrage abbricht."""
+    import subprocess
+    r = subprocess.run([sys.executable, "-c", _PROBE, pfad, *module], capture_output=True, text=True, timeout=60)
+    aus = (r.stdout + r.stderr).strip().splitlines()
+    return (r.returncode == 0 and "IMPORT-OHNE-NETZ OK" in r.stdout), (aus[-1] if aus else f"rc {r.returncode}")
+
+
 def selbsttest():
     f = []
+    ok, m = import_ohne_netz("main_theme")
+    if not ok:
+        f.append(f"main_theme selbst fragt beim Import ab: {m}")
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:   # Gegenprobe: ein Modul, das beim Import gid() ruft, MUSS auffallen
+        with open(os.path.join(d, "_probe_gid_beim_import.py"), "w") as fh:
+            fh.write("from main_theme import gid\nTHEME = gid()\n")
+        ok, m = import_ohne_netz("_probe_gid_beim_import", pfad=d + os.pathsep + HIER)
+        if ok:
+            f.append("Gegenprobe gid() beim Import nicht erkannt")
     if waehle([{"id": PRAEFIX + "1", "role": "UNPUBLISHED"}, {"id": PRAEFIX + "2", "role": "MAIN"}]) != PRAEFIX + "2":
         f.append("MAIN gewählt")
     for falsch in ([], [{"id": PRAEFIX + "1", "role": "UNPUBLISHED"}], [{"id": PRAEFIX + "1", "role": "MAIN"}, {"id": PRAEFIX + "2", "role": "MAIN"}],
@@ -77,7 +115,7 @@ def selbsttest():
             waehle(falsch); f.append(f"kein Fehler bei {falsch}")
         except RuntimeError:
             pass
-    print("SELBSTTEST main_theme:", "OK (5/5)" if not f else "FEHLER " + "; ".join(f))
+    print("SELBSTTEST main_theme:", "OK (7/7: Wahl MAIN, 4 Fehlfälle, Import ohne Abfrage, Gegenprobe)" if not f else "FEHLER " + "; ".join(f))
     return 1 if f else 0
 
 
